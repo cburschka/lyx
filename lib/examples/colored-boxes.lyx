@@ -2,7 +2,7 @@
 \lyxformat 498
 \begin_document
 \begin_header
-\origin /systemlyxdir/examples/
+\origin unavailable
 \textclass scrartcl
 \begin_preamble
 % if pdflatex is used
@@ -2235,8 +2235,8 @@ Side by side
 Normally the boxes are a paragraph of its own.
  They will therefore appear by default one upon another separated by vertical
  space.
- To change this behavior to place for example boxes side by side and uses
- the placement options 
+ To change this behavior, to place for example boxes side by side, use the
+ placement options 
 \series bold
 before=code
 \series default
@@ -2434,7 +2434,7 @@ cm wide, square box.
 
 \begin_layout Standard
 If you prefer \SpecialChar TeX
- code you can alternative use the option 
+ code you can alternatively use the option 
 \series bold
 after=
 \backslash
@@ -2495,7 +2495,7 @@ b
 \begin_inset Quotes erd
 \end_inset
 
-, and 
+ and 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2516,7 +2516,7 @@ Float
 
 Placement
 \family default
- of the of the 
+ of the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -2673,8 +2673,8 @@ tcbox raise=0pt
 \series bold
 tcbox raise base
 \series default
- the box is lowered that the base of the box content matches the base of
- the surrounding line.
+ the box is lowered so that the base of the box content matches the base
+ of the surrounding line.
 \end_layout
 
 \begin_layout Standard
@@ -2753,7 +2753,7 @@ Raster
 \begin_layout Standard
 The easiest way to place boxes in a table-like raster is to put them into
  a raster box.
- To get a raster box insert a 
+ The 
 \family sans
 Raster
 \begin_inset space ~
@@ -2765,7 +2765,7 @@ Color
 
 Box
 \family default
- inset via the menu 
+ inset is inserted via the menu 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets
@@ -2908,7 +2908,8 @@ A simple box.
 \end_layout
 
 \begin_layout Standard
-For more info options of the raster color box, please consult the 
+For more info about options of the raster color box, please consult the
+ 
 \series bold
 tcolorbox
 \series default
@@ -3013,7 +3014,7 @@ One can also set a width only for the text of the box with the option
 text width=length
 \series default
 .
- If the width is shorter than required for the text new lines will be created
+ If the width is shorter than required for the text, new lines will be created
  automatically.
 \end_layout
 
@@ -3052,7 +3053,7 @@ width
 \series bold
 text width
 \series default
- because only the last given width option is taken into account.
+; only the last given width option is taken into account.
 \end_layout
 
 \begin_layout Standard
@@ -3060,7 +3061,7 @@ To extend the width of the box one must use the
 \series bold
 width
 \series default
- option and can then uses the option 
+ option and can then use the option 
 \series bold
 add to width=length
 \series default
@@ -3146,7 +3147,11 @@ Embedded
 Objects
 \emph default
  manual.
- All option require of course the option sidebyside.
+ All options require of course the option 
+\series bold
+sidebyside
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -3154,7 +3159,7 @@ Objects
 \series bold
 sidebyside gap
 \series default
- sets the space between the left and the right part.
+ sets the space between the left and the right part:
 \end_layout
 
 \begin_layout Standard
@@ -3200,7 +3205,7 @@ lefthand width
 \series bold
 righthand width
 \series default
- sets the absolute width of the left and right part, respectively.
+ set the absolute width of the left and right part, respectively:
 \end_layout
 
 \begin_layout Standard
@@ -3246,7 +3251,7 @@ lefthand ratio
 \series bold
 righthand ratio
 \series default
- sets the relative width of the left and right part, respectively.
+ set the relative width of the left and right part, respectively:
 \end_layout
 
 \begin_layout Standard
@@ -3338,7 +3343,7 @@ cm high box.
 \end_layout
 
 \begin_layout Standard
-If the specified height is smaller then the one consumed by the content,
+If the specified height is smaller than the one consumed by the content,
  the content will be placed below the box:
 \end_layout
 
@@ -3376,7 +3381,7 @@ With the option
 \series bold
 square
 \series default
- the height will automatically set to the same value than the box width.
+ the height will automatically be set to the same value than the box width.
 \end_layout
 
 \begin_layout Standard
@@ -3545,7 +3550,7 @@ max
  are values.
  The height will then be at least the given minimal value or the height
  consumed by the content.
- It does not exceed the maximum independent of the content:
+ It does not exceed the maximum, independent of the content:
 \end_layout
 
 \begin_layout Standard
@@ -3601,11 +3606,7 @@ cm and maximal height of 3
 \end_inset
 
 cm.
- A box with minimal height of 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm and maximal height of 3
+ The content consumes more space than 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3615,6 +3616,39 @@ cm.
 \end_inset
 
 cm and maximal height of 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ The content consumes more space than 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ A box with minimal height of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm and maximal height of 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ The content consumes more space than 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ A box with minimal height of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+cm and maximal height of 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ The content consumes more space than 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3655,12 +3689,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-height=1.5cm, add to height=1cm
+height=1cm, add to height=1cm
 \end_layout
 
 \end_inset
 
-A 1.5
+A 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3709,7 +3743,7 @@ true
 \end_inset
 
 In this example the box is in the main text and therefore consumes the rest
- of the current page.
+ of the current page:
 \end_layout
 
 \begin_layout Standard
@@ -3791,7 +3825,7 @@ height
 \series bold
 text height
 \series default
- because only the last given width option is taken into account.
+; only the last given width option is taken into account.
 \end_layout
 
 \begin_layout Standard
@@ -3950,7 +3984,7 @@ split
 fraction
 \series default
  is the fraction of the complete height (not the additional height).
- Therefore one must be careful of e.
+ Therefore one must be careful if e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -4046,7 +4080,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-adjusted title=ice, width=0.3
+adjusted title=ace, width=0.3
 \backslash
 columnwidth, nobeforeafter, equal height group=A
 \end_layout
@@ -4169,7 +4203,7 @@ Grapefruit
 \begin_inset Quotes eld
 \end_inset
 
-ice
+ace
 \begin_inset Quotes erd
 \end_inset
 
@@ -5550,7 +5584,7 @@ geen!30
 \begin_inset Quotes eld
 \end_inset
 
-transparent
+transparence
 \begin_inset Quotes erd
 \end_inset
 
