@@ -49,13 +49,14 @@
 #   Note that the option names have been selected (rather arbitrarily)
 #   because the respective styles are common in the respective countries.
 #   Of course this does not imply any fixed relation to those countries.
-# * Encoding is not relevant for XeTeX (which is utf8 always), and if
-#   Document > Settings > Language > Encoding is not set to "Language
-#   Default"
+# * Encoding is the default encoding used with TeX fonts.
+#   It is only used if Document > Settings > Language > Encoding
+#   is set to "Language Default" and "use non-TeX fonts" is FALSE.
 # * InternalEncoding is used to tell LyX that babel internally sets a
 #   non-standard font encoding (such as hebrew to LHE or greek to LGR).
 #   If True, LyX cares for characters/macros that do not exist in
-#   some font encodings ("<", ">", "|" and straight quote). See bug #5091.
+#   some font encodings ("<", ">", "|" and straight quote).
+#   It is not required for standard encodings like T2A. See bug #5091.
 # * "FontEncoding none" tells LyX that fontenc should not be loaded with this
 #   language.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
