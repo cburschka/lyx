@@ -4622,9 +4622,13 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::SET_LINE_TOP:
 		case Tabular::SET_LINE_BOTTOM:
+			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			break;
+
 		case Tabular::SET_LINE_LEFT:
 		case Tabular::SET_LINE_RIGHT:
-			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.use_booktabs
+			                  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			break;
 
 		case Tabular::TOGGLE_LINE_TOP:
@@ -4638,12 +4642,14 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::TOGGLE_LINE_LEFT:
-			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.use_booktabs
+			                  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.leftLine(cur.idx()));
 			break;
 
 		case Tabular::TOGGLE_LINE_RIGHT:
-			status.setEnabled(!tabular.ltCaption(tabular.cellRow(cur.idx())));
+			status.setEnabled(!tabular.use_booktabs
+			                  && !tabular.ltCaption(tabular.cellRow(cur.idx())));
 			status.setOnOff(tabular.rightLine(cur.idx()));
 			break;
 

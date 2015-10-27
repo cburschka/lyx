@@ -320,6 +320,10 @@ void GuiTabular::enableWidgets() const
 	multirowOffsetLA->setEnabled(enable_mr);
 	multirowOffsetED->setEnabled(enable_mr);
 	multirowOffsetUnitLC->setEnabled(enable_mr);
+
+	// Vertical lines cannot be set in formal tables
+	borders->setLeftEnabled(!booktabsRB->isChecked());
+	borders->setRightEnabled(!booktabsRB->isChecked());
 }
 
 

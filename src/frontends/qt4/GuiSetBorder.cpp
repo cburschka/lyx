@@ -151,31 +151,31 @@ void GuiSetBorder::drawBottom(bool draw)
 }
 
 
-void GuiSetBorder::setLeftEnabled(bool border)
+void GuiSetBorder::setLeftEnabled(bool enabled)
 {
-	left_.enabled = border;
-	drawLeft(border);
+	left_.enabled = enabled;
+	drawLeft(left_.set);
 }
 
 
-void GuiSetBorder::setRightEnabled(bool border)
+void GuiSetBorder::setRightEnabled(bool enabled)
 {
-	right_.enabled = border;
-	drawRight(border);
+	right_.enabled = enabled;
+	drawRight(right_.set);
 }
 
 
-void GuiSetBorder::setTopEnabled(bool border)
+void GuiSetBorder::setTopEnabled(bool enabled)
 {
-	top_.enabled = border;
-	drawTop(border);
+	top_.enabled = enabled;
+	drawTop(top_.set);
 }
 
 
-void GuiSetBorder::setBottomEnabled(bool border)
+void GuiSetBorder::setBottomEnabled(bool enabled)
 {
-	bottom_.enabled = border;
-	drawBottom(border);
+	bottom_.enabled = enabled;
+	drawBottom(bottom_.set);
 }
 
 
