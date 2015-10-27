@@ -352,7 +352,7 @@ private:
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	void checkCursorScrollOffset();
+	void checkCursorScrollOffset(PainterInfo & pi);
 
 	/// The minimal size of the document that is visible. Used
 	/// when it is allowed to scroll below the document.
