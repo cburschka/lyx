@@ -637,6 +637,8 @@ void TeXOnePar(Buffer const & buf,
 
 	// This paragraph's language
 	Language const * const par_language = par.getParLanguage(bparams);
+	Language const * const nextpar_language = nextpar ?
+		nextpar->getParLanguage(bparams) : 0;
 	// The document's language
 	Language const * const doc_language = bparams.language;
 	// The language that was in effect when the environment this paragraph is
@@ -672,6 +674,9 @@ void TeXOnePar(Buffer const & buf,
 		getPolyglossiaEnvName(prev_language) : prev_language->babel();
 	string const outer_lang = use_polyglossia ?
 		getPolyglossiaEnvName(outer_language) : outer_language->babel();
+	string const nextpar_lang = nextpar_language ? (use_polyglossia ?
+		getPolyglossiaEnvName(nextpar_language) :
+		nextpar_language->babel()) : string();
 	string lang_begin_command = use_polyglossia ?
 		"\\begin{$$lang}$$opts" : lyxrc.language_command_begin;
 	string lang_end_command = use_polyglossia ?
@@ -934,13 +939,12 @@ void TeXOnePar(Buffer const & buf,
 		&& runparams.local_font != 0
 		&& runparams.local_font->isRightToLeft() != par_language->rightToLeft()
 		// are we about to close the language?
-		&&((nextpar && par_language->babel() != (nextpar->getParLanguage(bparams))->babel())
-		   || (runparams.isLastPar && par_language->babel() != outer_language->babel()));
+		&&((nextpar && par_lang != nextpar_lang)
+		   || (runparams.isLastPar && par_lang != outer_lang));
 
 	if (closing_rtl_ltr_environment
 	    || (runparams.isLastPar
-	        && ((!use_polyglossia && par_language->babel() != outer_language->babel())
-		    || (use_polyglossia && par_language->polyglossia() != outer_language->polyglossia())))) {
+	        && par_lang != outer_lang)) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
 		// float.
@@ -1000,7 +1004,7 @@ void TeXOnePar(Buffer const & buf,
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (nextpar
 		&& state->open_encoding_ == CJK
-		&& (nextpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK
+		&& (nextpar_language->encoding()->package() != Encoding::CJK
 		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
 		&& (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
