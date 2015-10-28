@@ -41,7 +41,19 @@ int Row::Element::countSeparators() const
 {
 	if (type != STRING)
 		return 0;
-	return count(str.begin(), str.end(), ' ');
+	// Consecutive spaces count as only one separator.
+	bool wasspace = false;
+	int nsep = 0;
+	for (size_t i = 0 ; i < str.size() ; ++i) {
+		if (str[i] == ' ') {
+			if (!wasspace) {
+				++nsep;
+				wasspace = true;
+			}
+		} else
+			wasspace = false;
+	}
+	return nsep;
 }
 
 
