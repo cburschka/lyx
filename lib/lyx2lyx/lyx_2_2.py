@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2011 The LyX team
+# Copyright (C) 2015 The LyX team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -1812,6 +1812,187 @@ def revert_tcolorbox_8(document):
       return
 
 
+def revert_moderncv_1(document):
+  " Reverts the new inset of moderncv to TeX-code in preamble "
+  
+  if document.textclass != "moderncv":
+    return
+  i = 0
+  j = 0
+  lineArg = 0
+  while True:
+    # at first revert the new styles
+    # \moderncvicons
+    i = find_token(document.body, "\\begin_layout CVIcons", 0)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of CVIcons layout")
+      i += 1
+      continue
+    content = lyx2latex(document, document.body[i:j + 1])
+    add_to_preamble(document, ["\\moderncvicons{" + content + "}"])
+    del document.body[i:j + 1]
+    # \hintscolumnwidth
+    i = find_token(document.body, "\\begin_layout CVColumnWidth", 0)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of CVColumnWidth layout")
+      i += 1
+      continue
+    content = lyx2latex(document, document.body[i:j + 1])
+    add_to_preamble(document, ["\\setlength{\hintscolumnwidth}{" + content + "}"])
+    del document.body[i:j + 1]
+    # now change the new styles to the obsolete ones
+    # \name
+    i = find_token(document.body, "\\begin_layout Name", 0)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of Name layout")
+      i += 1
+      continue
+    lineArg = find_token(document.body, "\\begin_inset Argument 1", i)
+    if lineArg > j and j != 0:
+      return
+    if lineArg != -1:
+      beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+      # we have to assure that no other inset is in the Argument
+      beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+      endInset = find_token(document.body, "\\end_inset", beginPlain)
+      k = beginPlain + 1
+      l = k
+      while beginInset < endInset and beginInset != -1:
+        beginInset = find_token(document.body, "\\begin_inset", k)
+        endInset = find_token(document.body, "\\end_inset", l)
+        k = beginInset + 1
+        l = endInset + 1
+      Arg2 = document.body[l + 5 : l + 6]
+      # rename the style
+      document.body[i : i + 1]= ["\\begin_layout FirstName"]
+      # delete the Argument inset
+      del( document.body[endInset - 2 : endInset + 3])
+      del( document.body[lineArg : beginPlain + 1])
+      document.body[i + 4 : i + 4]= ["\\begin_layout FamilyName"] + Arg2 + ["\\end_layout"] + [""]
+
+
+def revert_moderncv_2(document):
+  " Reverts the phone inset of moderncv to the obsoleted mobile or fax "
+  
+  if document.textclass != "moderncv":
+    return
+  i = 0
+  j = 0
+  lineArg = 0
+  while True:
+    # \phone
+    i = find_token(document.body, "\\begin_layout Phone", i)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of Phone layout")
+      i += 1
+      return
+    lineArg = find_token(document.body, "\\begin_inset Argument 1", i)
+    if lineArg > j and j != 0:
+      i += 1
+      continue
+    if lineArg != -1:
+      beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+      # we have to assure that no other inset is in the Argument
+      beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+      endInset = find_token(document.body, "\\end_inset", beginPlain)
+      k = beginPlain + 1
+      l = k
+      while beginInset < endInset and beginInset != -1:
+        beginInset = find_token(document.body, "\\begin_inset", k)
+        endInset = find_token(document.body, "\\end_inset", l)
+        k = beginInset + 1
+        l = endInset + 1
+      Arg = document.body[beginPlain + 1 : beginPlain + 2]
+      # rename the style
+      if Arg[0] == "mobile":
+        document.body[i : i + 1]= ["\\begin_layout Mobile"]
+      if Arg[0] == "fax":
+        document.body[i : i + 1]= ["\\begin_layout Fax"]
+      # delete the Argument inset
+      del(document.body[endInset - 2 : endInset + 1])
+      del(document.body[lineArg : beginPlain + 3])
+    i += 1
+
+
+def convert_moderncv(document):
+  " Convert the Fax and Mobile inset of moderncv to the new phone inset "
+  
+  if document.textclass != "moderncv":
+    return
+  i = 0
+  j = 0
+  lineArg = 0
+  while True:
+    # \mobile
+    i = find_token(document.body, "\\begin_layout Mobile", i)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of Mobile layout")
+      i += 1
+      return
+    document.body[i + 1 : i + 1] = ["\\begin_inset Argument 1", "status open", "",
+                        "\\begin_layout Plain Layout", "mobile", "\\end_layout", "",
+                        "\\end_inset", ""]
+    # \fax
+    i = find_token(document.body, "\\begin_layout Fax", i)
+    if i == -1:
+      return
+    j = find_end_of_layout(document.body, i)
+    if j == -1:
+      document.warning("Malformed LyX document: Can't find end of Fax layout")
+      i += 1
+      return
+    document.body[i + 1 : i + 1] = ["\\begin_inset Argument 1", "status open", "",
+                        "\\begin_layout Plain Layout", "fax", "\\end_layout", "",
+                        "\\end_inset", ""]
+    # \firstname and \familyname
+    i1 = find_token(document.body, "\\begin_layout FirstName", 0)
+    if i1 == -1:
+      return
+    j1 = find_end_of_layout(document.body, i1)
+    if j1 == -1:
+      document.warning("Malformed LyX document: Can't find end of FirstName layout")
+      i1 += 1
+      return
+    FirstName = document.body[i1 + 1 : i1 + 2]
+    i2 = find_token(document.body, "\\begin_layout FamilyName", 0)
+    if i2 == -1:
+      return
+    j2 = find_end_of_layout(document.body, i2)
+    if j2 == -1:
+      document.warning("Malformed LyX document: Can't find end of FamilyName layout")
+      i2 += 1
+      return
+    FamilyName = document.body[i2 + 1 : i2 + 2]
+    if j1 > j2:
+      k = j1
+      l = i2
+    else:
+      k = j2
+      l = i1
+    document.body[k + 1 : k + 1] = ["\\begin_layout Name", "\\begin_inset Argument 1", "status open", "",
+                        "\\begin_layout Plain Layout", FirstName[0], "\\end_layout", "",
+                        "\\end_inset", "", FamilyName[0], "\\end_layout", ""]
+    #document.body[i2 + 1 : i2 + 1] = ["hellok: ", str(k)]
+    del(document.body[l : k])
+    i += 1
+    i1 += 1
+    i2 += 1
+
 ##
 # Conversion hub
 #
@@ -1844,10 +2025,12 @@ convert = [
            [495, [convert_subref]],
            [496, [convert_nounzip]],
            [497, [convert_external_bbox]],
-           [498, []]
+           [498, []],
+           [499, [convert_moderncv]]
           ]
 
 revert =  [
+           [498, [revert_moderncv_1, revert_moderncv_2]],
            [497, [revert_tcolorbox_1, revert_tcolorbox_2,
                   revert_tcolorbox_3, revert_tcolorbox_4, revert_tcolorbox_5,
                   revert_tcolorbox_6, revert_tcolorbox_7, revert_tcolorbox_8]],

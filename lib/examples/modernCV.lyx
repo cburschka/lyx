@@ -2,12 +2,8 @@
 \lyxformat 498
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/examples/
 \textclass moderncv
-\begin_preamble
-% uncomment if you want to change the width of the column with the dates:
-%\setlength{\hintscolumnwidth}{3cm} 
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -81,9 +77,8 @@
 status open
 
 \begin_layout Plain Layout
-The moderncv class offers lots of customization possibilities; one is explained
- in the preamble of this document; for more information look at the documentatio
-n of the \SpecialChar LaTeX
+The moderncv class offers lots of customization possibilities; for more
+ information look at the documentation of the \SpecialChar LaTeX
 -package 
 \series bold
 moderncv
@@ -112,6 +107,24 @@ http://mirrors.ctan.org/macros/latex/contrib/moderncv/examples/template.tex
 \end_layout
 
 \begin_layout CVStyle
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+left
+\end_layout
+
+\end_inset
+
+options can only be activated if moderncv 2.0 is installed
+\end_layout
+
+\end_inset
+
 casual
 \begin_inset Note Note
 status open
@@ -119,6 +132,21 @@ status open
 \begin_layout Plain Layout
 required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
  requires moderncv 2.0), 'oldstyle' and 'banking'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To be able to use style options you need at least moderncv version 2.0 installed.
+ A list of possible options can be found here:
+\begin_inset Newline newline
+\end_inset
+
+http://article.gmane.org/gmane.comp.tex.ctan.announce/11898
 \end_layout
 
 \end_inset
@@ -134,6 +162,40 @@ status open
 \begin_layout Plain Layout
 required, possible colors are 'blue' (default), 'orange', 'green', 'red',
  'purple', 'burgundy' ('burgundy' requires moderncv 2.0), 'grey' and 'black'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVIcons
+awesome
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, must be inserted after the 
+\family sans
+CV Style
+\family default
+, possible icon sets are 'awesome' (default for style 'casual' and 'banking'),
+ 'marvosym' (default for the other styles) and 'letters' (default for style
+ 'oldstyle')
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVColumnWidth
+3cm
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, the width of the column with the dates, default is '3cm'
 \end_layout
 
 \end_inset
@@ -203,11 +265,16 @@ Fonts.
 
 \end_layout
 
-\begin_layout FirstName
+\begin_layout Name
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Paul
 \end_layout
 
-\begin_layout FamilyName
+\end_inset
+
 Testman
 \end_layout
 
@@ -285,7 +352,16 @@ oldstyle
 
 \end_layout
 
-\begin_layout Mobile
+\begin_layout Phone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+mobile
+\end_layout
+
+\end_inset
+
 +43(0)999 888
 \end_layout
 
@@ -293,7 +369,16 @@ oldstyle
 +43(0)999 9999
 \end_layout
 
-\begin_layout Fax
+\begin_layout Phone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+fax
+\end_layout
+
+\end_inset
+
 +43(0)999 7777
 \end_layout
 

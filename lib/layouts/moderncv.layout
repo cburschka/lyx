@@ -48,6 +48,10 @@ Style CVStyle
 	  Series	Bold
 	  Color		Blue
 	EndFont
+	Argument 1
+	  LabelString	"Style Options"
+	  Tooltip		"Options for the CV style"
+	EndArgument
 End
 
 Style CVColor
@@ -56,15 +60,27 @@ Style CVColor
 	LabelString	"CV Color Scheme:"
 End
 
+Style CVIcons
+	CopyStyle	CVStyle
+	LatexName	moderncvicons
+	LabelString	"CV Icon Set:"
+End
+
+Style CVColumnWidth
+	CopyStyle	CVStyle
+	LatexName	setlength{\hintscolumnwidth}
+	LabelString	"Column Width:"
+End
+
 Style PDF_Page_Mode
 	CopyStyle	CVStyle
 	LatexName	renewcommand{\pdfpagemode}
 	LabelString	"PDF Page Mode:"
 End
 
-Style FirstName
+Style Name
 	LatexType	command
-	LatexName	firstname
+	LatexName	name
 	Category	FrontMatter
 	InPreamble	1
 	TopSep		0.7
@@ -73,6 +89,18 @@ Style FirstName
 	  Family	Sans
 	  Size		Largest
 	EndFont
+	Argument 1
+	  LabelString	"First Name"
+	  Tooltip	"First name"
+	  Mandatory	1
+	EndArgument
+End
+
+Style FirstName
+	CopyStyle	Name
+	LatexName	firstname
+	ResetArgs	0
+	ObsoletedBy	Name
 End
 
 Style FamilyName
@@ -80,6 +108,7 @@ Style FamilyName
 	LatexName	familyname
 	TopSep		0.3
 	LabelString	"Family Name:"
+	ObsoletedBy	Name
 End
 
 Style Title
@@ -121,22 +150,28 @@ Style Address
 	EndArgument
 End
 
-Style Mobile
-	CopyStyle	CVStyle
-	LatexName	mobile
-	LabelString	"Mobile:"
-End
-
 Style Phone
 	CopyStyle	CVStyle
 	LatexName	phone
 	LabelString	"Phone:"
+	Argument 1
+	  LabelString	"Phone Type"
+	  Tooltip	"can be fixed, mobile or fax"
+	EndArgument
+End
+
+Style Mobile
+	CopyStyle	CVStyle
+	LatexName	mobile
+	LabelString	"Mobile:"
+	ObsoletedBy	Phone
 End
 
 Style Fax
 	CopyStyle	CVStyle
 	LatexName	fax
 	LabelString	"Fax:"
+	ObsoletedBy	Phone
 End
 
 Style Email

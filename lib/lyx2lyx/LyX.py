@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2011 The LyX Team
+# Copyright (C) 2002-2015 The LyX Team
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
 #
@@ -85,7 +85,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_6", list(range(277,346)), minor_versions("1.6" , 10)),
                    ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
                    ("2_1", list(range(414,475)), minor_versions("2.1" , 0)),
-                   ("2_2", list(range(475,499)), minor_versions("2.2" , 0))
+                   ("2_2", list(range(475,500)), minor_versions("2.2" , 0))
                   ]
 
 ####################################################################

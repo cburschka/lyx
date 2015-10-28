@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-10-27 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 499
+	  No new parameters.
+	  moderncv layout improvements:
+	  - new style Name ,obsoletes the styles FamilyName and FirstName
+	  - new argument for style Phone, obsoletes styles Mobile and Fax
+	  - new styles CVIcons and CVColumnWidth
+
 2015-10-19 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 498
 	  No new parameters.
