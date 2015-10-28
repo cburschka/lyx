@@ -174,9 +174,18 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		opt = "\\hypersetup{" + rtrim(opt + hyperset, ",") + "}\n";
 	}
 
-	// hyperref expects utf8!
+	// hyperref expects LICR with 8-bit TeX and LICR or utf8 with Xe/LuaTeX.
+	// (LICR encoding is provided by lib/unicodesymbols, or "inputenc".)
+	// FIXME: inputenc (part 1 of 2)
+	// 	  Replace the "FullUnicode" check with
+	// 	  check for loading of inputenc or luainputenc package.
+	// 	  Otherwise \inputencoding is not defined
+	//	  (e.g. if "latex-encoding" is set to "ascii").
+	// 	  See also BufferParams::writeEncodingPreamble
+	//	  and runparams.encoding->package()
+	//        Dont forget to keep the check below (part 2) in sync!
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) { // FIXME: check must be done for useNonTeXFonts!
+	    &&!runparams.isFullUnicode()) {
 		os << "\\inputencoding{utf8}\n"
 		   << setEncoding("UTF-8");
 	}
@@ -194,9 +203,9 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		   << "\\fi\n";
 	} else
 		os << from_utf8(opt);
-
+	// FIXME: inputenc (part 2 of 2)
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) { // FIXME: check for useNonTeXFonts!
+	    &&!runparams.isFullUnicode()) {
 		os << setEncoding(enc->iconvName())
 		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
 	}
