@@ -243,13 +243,11 @@ void RowPainter::paintStringAndSel(Row::Element const & e)
 	bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
 		|| pi_.selected;
 
-	if (all_sel) {
+	if (all_sel || e.change.changed()) {
 		Font copy = e.font;
-		copy.fontInfo().setPaintColor(Color_selectiontext);
-		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra);
-	} else if (e.change.changed()) {
-		Font copy = e.font;
-		copy.fontInfo().setPaintColor(e.change.color());
+		Color const col = e.change.changed() ? e.change.color()
+		                                     : Color_selectiontext;
+		copy.fontInfo().setPaintColor(col);
 		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra);
 	} else if (!some_sel) {
 		pi_.pain.text(int(x_), yo_, e.str, e.font, e.extra);
