@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 499
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/
 \textclass scrbook
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -108,7 +109,8 @@ End
 \begin_body
 
 \begin_layout Title
-Developing LyX
+Developing \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subtitle
@@ -116,14 +118,16 @@ Version 2.2.x
 \end_layout
 
 \begin_layout Author
-by the LyX Team
+by the \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list, 
+If you have comments or error corrections, please send them to the \SpecialChar LyX
+ Documentatio
+n mailing list, 
 \begin_inset Flex Code
 status collapsed
 
@@ -156,7 +160,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This manual documents some aspects of LyX development.
+This manual documents some aspects of \SpecialChar LyX
+ development.
  It is currently rather incomplete, but will hopefully be extended in the
  future.
  Meanwhile, additional information can be found in the 
@@ -169,13 +174,17 @@ development
 
 \end_inset
 
- subfolder of the LyX source code distribution.
- This document is not translated, since the development language of LyX
- is english.
- If you want to use LyX you don't need to read this manual.
- However, if you want to learn more about how LyX is developed, or even
- want to participate in LyX development, you may find some interesting informati
-on.
+ subfolder of the \SpecialChar LyX
+ source code distribution.
+ This document is not translated, since the development language of \SpecialChar LyX
+ is
+ english.
+ If you want to use \SpecialChar LyX
+ you don't need to read this manual.
+ However, if you want to learn more about how \SpecialChar LyX
+ is developed, or even want
+ to participate in \SpecialChar LyX
+ development, you may find some interesting information.
 \end_layout
 
 \begin_layout Chapter
@@ -183,7 +192,8 @@ File formats
 \end_layout
 
 \begin_layout Standard
-LyX uses several custom file formats for configuration files and documents.
+\SpecialChar LyX
+ uses several custom file formats for configuration files and documents.
  This chapter contains some background concerning these file formats.
  Several file formats are also described in detail in the regular user documenta
 tion.
@@ -272,7 +282,8 @@ New
 \begin_inset space ~
 \end_inset
 
-style in any layout file or module shipped with LyX, or new shipped layout
+style in any layout file or module shipped with \SpecialChar LyX
+, or new shipped layout
  file or module.
  These requirements are currently under discussion and might change in the
  future.
@@ -327,7 +338,8 @@ Once you came to the conclusion that a file format update is needed you
 Implement and test the new feature, including the reading and writing of
  .lyx files.
  Note that any file produced at this stage does not use a valid format,
- so do not use this version of LyX for working on any important documents.
+ so do not use this version of \SpecialChar LyX
+ for working on any important documents.
 \end_layout
 
 \begin_layout Enumerate
@@ -345,7 +357,8 @@ development/FORMAT
 \end_layout
 
 \begin_layout Enumerate
-Update the LyX file format number in 
+Update the \SpecialChar LyX
+ file format number in 
 \begin_inset Flex Code
 status collapsed
 
@@ -391,18 +404,25 @@ a new header setting always needs a conversion that adds the new setting,
  If possible, try to produce a proper reversion, using ERT if needed, but
  for some features this might be too complicated.
  In this case, the minimum requirement of the reversion routine is that
- it produces a valid document which can be read by an older LyX.
+ it produces a valid document which can be read by an older \SpecialChar LyX
+.
  If absolutely needed, even data loss is allowed for the reversion.
 \end_layout
 
 \begin_layout Enumerate
 Since tex2lyx has several implicit file format dependencies caused by sharing
- code with LyX, updating the file format of .lyx files produced by tex2lyx
- at the same time as updating the main .lyx file format is strongly recommended.
- Therefore, a compiler warning will be issued if the LyX and tex2lyx .lyx
- file format numbers differ.
+ code with \SpecialChar LyX
+, updating the file format of .lyx files produced by tex2lyx at
+ the same time as updating the main .lyx file format is strongly recommended.
+ Therefore, a compiler warning will be issued if the \SpecialChar LyX
+ and tex2lyx .lyx file
+ format numbers differ.
  In many cases the tex2lyx update requires only the first and last item
  of the list below:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -456,8 +476,9 @@ src/tex2lyx/TODO.txt
  Note that it is perfectly fine if you do not add full tex2lyx support for
  a new feature: The updating recommendation above is only issued for the
  syntax of the produced .lyx file.
- It is no problem if some features supported by LyX are still output as
- ERT by tex2lyx, since the problems in the past that resulted in the update
+ It is no problem if some features supported by \SpecialChar LyX
+ are still output as ERT
+ by tex2lyx, since the problems in the past that resulted in the update
  recommendation were related to mixed version syntax, not ERT.
 \end_layout
 
@@ -474,9 +495,9 @@ Backporting new styles to the stable version
 \end_layout
 
 \begin_layout Standard
-Starting with the stable LyX 2.1 branch, there is a mechanism in place to
- backport new styles to the stable version without the need to update the
- file format.
+Starting with the stable \SpecialChar LyX
+ 2.1 branch, there is a mechanism in place to backport
+ new styles to the stable version without the need to update the file format.
  The basic idea is that the new style definition is automatically copied
  to the document preamble, so that it can even be used by older minor revisions
  that did not yet include the style.
@@ -573,7 +594,8 @@ Automated tests are an important tool to detect bugs and regressions in
 \end_layout
 
 \begin_layout Section
-LyX tests
+\SpecialChar LyX
+ tests
 \end_layout
 
 \begin_layout Standard
@@ -587,7 +609,8 @@ development/autotests
 
 \end_inset
 
- subfolder of the LyX source code distribution.
+ subfolder of the \SpecialChar LyX
+ source code distribution.
 \end_layout
 
 \begin_layout Subsection
@@ -595,7 +618,8 @@ Running the tests
 \end_layout
 
 \begin_layout Standard
-The LyX tests can be run by the commands 
+The \SpecialChar LyX
+ tests can be run by the commands 
 \begin_inset Flex Code
 status collapsed
 
@@ -643,7 +667,8 @@ src/tex2lyx/test
 
 \end_inset
 
- subfolder of the LyX source code distribution.
+ subfolder of the \SpecialChar LyX
+ source code distribution.
  The actual testing is performed by the simple python script 
 \begin_inset Flex Code
 status collapsed
@@ -665,7 +690,8 @@ status collapsed
 
 \end_inset
 
- contains the LaTeX code that should be tested.
+ contains the \SpecialChar LaTeX
+ code that should be tested.
  
 \begin_inset Flex Code
 status collapsed
@@ -690,7 +716,8 @@ status collapsed
 
 \end_inset
 
- by exporting the produced .lyx file with LyX again.
+ by exporting the produced .lyx file with \SpecialChar LyX
+ again.
  This may be useful for roundtrip comparisons.
 \end_layout
 
@@ -823,7 +850,8 @@ Note that this is a case where a make target in the build directory can
 \end_inset
 
  .tex, and does not compare the produced dvi or pdf output, it assumes that
- the stored .lyx reference produces correct output if processed by LyX.
+ the stored .lyx reference produces correct output if processed by \SpecialChar LyX
+.
  There is only one chance to detect wrong output: before committing a new
  reference.
  Once it is committed, it is quite difficult to verify whether it is correct.
@@ -834,9 +862,11 @@ Please
 \emph on
 do not
 \emph default
- update the test references by opening them with LyX or directly running
- lyx2lyx on them.
- This would not work, since lyx2lyx and LyX produce slightly different files
+ update the test references by opening them with \SpecialChar LyX
+ or directly running lyx2lyx
+ on them.
+ This would not work, since lyx2lyx and \SpecialChar LyX
+ produce slightly different files
  regarding insignificant whitespace and line breaks.
 \end_layout
 
@@ -985,16 +1015,20 @@ splash.lyx it is the first file you see after an installation.
  We assume that a new user sees this.
  It is therefore designed to be as simple as possible.
  Therefore please don't add any new formatting, only fix typos etc.
- Splash.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+ Splash.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
-Intro.lyx This is the manual new users will read to learn LyX.
+Intro.lyx This is the manual new users will read to learn \SpecialChar LyX
+.
  It therefore uses a limited set of formatting.
  For example a standard document class.
  Since new users will first learn about the formatting possibilities of
- LyX please keep this file that simple.
- Intro.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+ \SpecialChar LyX
+ please keep this file that simple.
+ Intro.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
@@ -1002,8 +1036,10 @@ Tutorial.lyx our tutorial.
  It must be always up to date.
  Normally there is nothing to add since we don't want to overwhelm new users
  with too much details.
- The will learn these details while using LyX and we have special manuals.
- Tutorial.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+ The will learn these details while using \SpecialChar LyX
+ and we have special manuals.
+ Tutorial.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
@@ -1011,30 +1047,35 @@ UserGuide.lyx our main user guide.
  It covers a mixture of basic and detailed information.
  Some information is also in the Math and EmbeddedObjects manual so that
  the UserGuide refers to these files.
- UserGuide.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+ UserGuide.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
 EmbeddedObjects.lyx a special manual to explain things like tables floats
  boxes etc.
  in all detail.
- EmbeddedObjects.lyx is up to date for LyX 2.1.x, currently maintained by Uwe
+ EmbeddedObjects.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe
  Stöhr.
 \end_layout
 
 \begin_layout Description
 Math.lyx a special manual to explain everything regarding math in all detail.
- Math.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+ Math.lyx is up to date for \SpecialChar LyX
+ 2.1.x, currently maintained by Uwe Stöhr.
 \end_layout
 
 \begin_layout Description
 Additional.lyx this manual covers information that would be too much detail
  for the UserGuide or would make the UserGuide uncompilable or only compilable
- when installing a lot of special LaTeX-packages.
+ when installing a lot of special \SpecialChar LaTeX
+-packages.
  What should be in the UserGuide or better in Additional is a matter of
  taste.
  it is up to you to decide that.
- Additional.lyx is not completely up to date for LyX 2.1.x.
+ Additional.lyx is not completely up to date for \SpecialChar LyX
+ 2.1.x.
  Only chapter
 \begin_inset space ~
 \end_inset
@@ -1050,11 +1091,13 @@ Additional.lyx this manual covers information that would be too much detail
 \end_layout
 
 \begin_layout Description
-Customization.lyx this manual covers information how to customize LyX for
- certain output formats, operating systems, languages etc.
+Customization.lyx this manual covers information how to customize \SpecialChar LyX
+ for certain
+ output formats, operating systems, languages etc.
  It is currently completely out of date and needs a major rewrite and update.
  If you do this please assure that your information are given for all OSes
- and LaTeX distributions (meaning be as objective as possible).
+ and \SpecialChar LaTeX
+ distributions (meaning be as objective as possible).
 \end_layout
 
 \begin_layout Standard
