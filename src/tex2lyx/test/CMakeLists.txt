@@ -64,8 +64,11 @@ add_dependencies(lyx_run_tests ${_tex2lyx} ${_lyx})
 add_custom_command(
   OUTPUT LyxTestFiles
   COMMAND ${CMAKE_COMMAND} -E touch LyxTestFiles
-  COMMAND env LYX_USERDIR_VER=${LYX_USERDIR_VER} 
-    ${LYX_PYTHON_EXECUTABLE} "${runtestsScript}" $<TARGET_FILE:${_tex2lyx}> "${scriptDir}" "${CMAKE_CURRENT_SOURCE_DIR}"
+  COMMAND ${CMAKE_COMMAND}
+    -DENVIRON="${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR}"
+    -DCOMMAND="${LYX_PYTHON_EXECUTABLE}"
+    -DPARAMS="${runtestsScript}'$<TARGET_FILE:${_tex2lyx}>'${scriptDir}'${CMAKE_CURRENT_SOURCE_DIR}"
+    -P ${TOP_SRC_DIR}/src/tex2lyx/test/env_custom_command.cmake
   WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
   DEPENDS ${_tex2lyx} ${_lyx}
 )

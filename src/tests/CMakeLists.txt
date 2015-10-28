@@ -38,11 +38,11 @@ foreach(bns ${layout_files} ${module_files})
   if("${_checktype}" STREQUAL "module")
     file(WRITE "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#% Do not delete the line below; configure depends on this\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#  \\DeclareLaTeXClass{test${bn}}\n")
-
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 55\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Input ${bns}\n")
     add_test(NAME "check_layout/${bns}"
-      COMMAND env LYX_USERDIR_22x=${LYX_TESTS_USERDIR} $<TARGET_FILE:check_layout> "${LYX_TESTS_USERDIR}/layouts/test${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
+      COMMAND $<TARGET_FILE:check_layout> "${LYX_TESTS_USERDIR}/layouts/test${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
+    set_tests_properties("check_layout/${bns}" PROPERTIES ENVIRONMENT ${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR})
   else()
     add_test(NAME "check_layout/${bns}"
       COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
