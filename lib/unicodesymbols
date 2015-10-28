@@ -1997,7 +1997,7 @@
 #0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
 0x21a2 ""                         "" "" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
 0x21a3 ""                         "" "" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
-0x21a4 ""                         "" "" "\\mapsfromchar" "stmaryrd" # LEFTWARDS ARROW FROM BAR
+0x21a4 ""                         "" "" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
 #0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
 0x21a6 ""                         "" "" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
 #0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
@@ -2008,7 +2008,8 @@
 0x21ac ""                         "" "" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
 #0x21ad ""                         "" "" "" "" # LEFT RIGHT WAVE ARROW
 0x21ae ""                         "" "" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
-0x21af ""                         "" "" "\\lightning" "stmaryrd|wasysym" # DOWNWARDS ZIGZAG ARROW
+# stmaryrd defines \lightnig as math-command but this clashes with wasysym where \lightning in math mode produces "`"
+0x21af "\\lightning"              "wasysym" "" "" "" # DOWNWARDS ZIGZAG ARROW
 0x21b0 ""                         "" "" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
 0x21b1 ""                         "" "" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
@@ -2065,7 +2066,7 @@
 0x21e5 "Tab"                      "" "notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
 #0x21e6 ""                         "" "" "" "" # LEFTWARDS WHITE ARROW
 #0x21e7 ""                         "" "" "" "" # UPWARDS WHITE ARROW
-#0x21e8 ""                         "" "" "" "" # RIGHTWARDS WHITE ARROW
+0x21e8 "\\pointer"                "wasysym" "" "" "" # RIGHTWARDS WHITE ARROW
 #0x21e9 ""                         "" "" "" "" # DOWNWARDS WHITE ARROW
 0x21ea "Caps Lock"                "" "notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
 #0x21eb ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL
@@ -2156,7 +2157,7 @@
 0x223c ""                         "" "" "\\sim" "" # TILDE OPERATOR
 #0x223d ""                         "" "" "" "" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
-#0x223f ""                         "" "" "" "" # SINE WAVE
+0x223f "\AC"                      "wasysym" "" "\AC" "wasysym" # SINE WAVE = alternating current
 #0x2240 ""                         "" "" "" "" # WREATH PRODUCT
 #0x2241 ""                         "" "" "" "" # NOT TILDE
 #0x2242 ""                         "" "" "" "" # MINUS TILDE
@@ -2373,7 +2374,7 @@
 #0x2312 ""                         "" "" "" "" # ARC
 #0x2313 ""                         "" "" "" "" # SEGMENT
 #0x2314 ""                         "" "" "" "" # SECTOR
-#0x2315 ""                         "" "" "" "" # TELEPHONE RECORDER
+0x2315 "\\recorder"               "wasysym" "" "" "" # TELEPHONE RECORDER
 #0x2316 ""                         "" "" "" "" # POSITION INDICATOR
 #0x2317 ""                         "" "" "" "" # VIEWDATA SQUARE
 #0x2318 ""                         "" "" "" "" # PLACE OF INTEREST SIGN
@@ -2539,6 +2540,8 @@
 #
 0x2605 "\\FiveStar"               "bbding" "" "\\bigstar" "amssymb" # BLACK STAR
 0x2606 "\\FiveStarOpen"           "bbding" "" # WHITE STAR
+0x260c "\\conjunction"            "wasysym" "" # CONJUNCTION = alchemical symbol for day
+0x260d "\\opposition"             "wasysym" "" #OPPOSITION
 0x260e "\\Telefon"                "marvosym" "" # BLACK TELEPHON
 0x2610 "\\Square"                 "wasysym" "" "\\Square" "wasysym" # BALLOT BOX
 0x2611 "\\CheckedBox"             "wasysym" "" "\\CheckedBox" "wasysym" # BALLOT BOX WITH CHECK
