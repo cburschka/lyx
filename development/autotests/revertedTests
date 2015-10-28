@@ -99,6 +99,9 @@ export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #
 # These exports correctly fail now that we've switched to polyglossia. Although
 # they compiled without error with babel, the resulting PDFs had gibberish.
+# Note that there is a problem with the LyX-generated preamble in the Russian
+# docs:
+# https://www.mail-archive.com/search?l=mid&q=n0j157%246a1%241%40ger.gmane.org
 export/doc/ru/Intro_pdf5_systemF
 export/doc/ru/Tutorial_pdf5_systemF
 export/doc/el/Intro_pdf5_systemF
