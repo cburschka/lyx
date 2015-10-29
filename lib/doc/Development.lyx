@@ -618,8 +618,21 @@ Running the tests
 \end_layout
 
 \begin_layout Standard
-The \SpecialChar LyX
+cmake is required to run the \SpecialChar LyX
+ tests, running them is not implemented for
+ autotools.
+ The \SpecialChar LyX
  tests can be run by the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ (all platforms) or 
 \begin_inset Flex Code
 status collapsed
 
@@ -629,7 +642,7 @@ make test
 
 \end_inset
 
- (cmake) in the 
+ (when using a make based build system and not MSVC) in the 
 \begin_inset Flex Code
 status collapsed
 
@@ -640,16 +653,6 @@ autotests
 \end_inset
 
  subfolder of the build directory.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME: Is this possible with autotools?
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -731,12 +734,22 @@ The tex2lyx tests can be run by the commands
 status collapsed
 
 \begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ (cmake, all platforms), 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 make test
 \end_layout
 
 \end_inset
 
- (cmake) or 
+ (cmake, when using a make based build system and not MSVC) or 
 \begin_inset Flex Code
 status collapsed
 
