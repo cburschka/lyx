@@ -2440,7 +2440,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_VIEW_CACHE:
 		(d->preview_file_).refresh();
-		enable = (d->preview_file_).exists();
+		enable = (d->preview_file_).exists() && !(d->preview_file_).isFileEmpty();
 		break;
 
 	default:
