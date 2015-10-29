@@ -244,6 +244,16 @@ ToolbarSet
 		Item "Next note" "note-next"
 	End
 
+	Toolbar "documentation" "LyX Documentation Tools"
+		Item "Info" "info-insert"
+		Item "Menu Separator" "specialchar-insert menu-separator"
+		Separator
+		Item "LyX Logo" "specialchar-insert lyx"
+		Item "TeX Logo" "specialchar-insert tex"
+		Item "LaTeX Logo" "specialchar-insert latex"
+		Item "LaTeX2e Logo" "specialchar-insert latex2e"
+	End
+
 	Toolbar "view-others" "View Other Formats"
 		ViewFormats
 	End
