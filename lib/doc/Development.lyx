@@ -945,6 +945,572 @@ Commit the changes to the repository, or send a patch to the development
  list and ask for committing if you do not have commit rights.
 \end_layout
 
+\begin_layout Section
+Export tests
+\end_layout
+
+\begin_layout Standard
+The export tests are integration tests.
+ They take longer to run and are more likely to break than the tex2lyx tests.
+ Nevertheless, they have caught many regressions and without a better alternativ
+e it is important to keep them up-to-date and understand how they work.
+\end_layout
+
+\begin_layout Subsection
+Expectations of LyX developers
+\end_layout
+
+\begin_layout Standard
+Because the export tests are integration tests and take a long time to run,
+ LyX developers are rarely expected to run all of the tests.
+ Here are some good practices to follow by developers:
+\end_layout
+
+\begin_layout Itemize
+When making a non-trivial change to a .layout file, run the export and layout
+ tests corresponding with that .layout file.
+\end_layout
+
+\begin_layout Itemize
+When making non-trivial changes to a .lyx file, run the export tests correspondin
+g to that .lyx file.
+\end_layout
+
+\begin_layout Itemize
+When making non-trivial changes to LyX's LaTeX export code (e.g.
+ touching the encoding code or package handling code that you expect will
+ change the exported LaTeX in some way), consider running all of the export
+ tests before and after your change.
+ If there are differences, please reconcile these (i.e.
+ fix the bug or fix the tests) 
+\emph on
+before
+\emph default
+ committing.
+ Ask for help if you're not sure what to do or if you do not want to run
+ the tests, post the patch on the list and others will run the tests.
+\end_layout
+
+\begin_layout Itemize
+Understand how to interpret test failures.
+ If your commit is found to have broken a test, you should be able to interpret
+ the test results when made aware of them.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Interpreting-export-tests"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Configuring the tests
+\end_layout
+
+\begin_layout Standard
+To enable these tests when using CMake, add the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-DLYX_ENABLE_EXPORT_TESTS=ON
+\end_layout
+
+\end_inset
+
+ flag.
+ For example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cmake -DLYX_ENABLE_EXPORT_TESTS=ON /path/to/source
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+This flag will increase the time for the cmake command by several seconds,
+ mainly because of the process of inverting tests (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Interpreting-export-tests"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Running the tests
+\end_layout
+
+\begin_layout Standard
+To run all of the export tests, in the build directory simply run the command
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+.
+ To run only some of the tests, use the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -R <pattern>
+\end_layout
+
+\end_inset
+
+, where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<pattern>
+\end_layout
+
+\end_inset
+
+ is a regular expression that matches test names.
+ It is often useful to list the tests without running them (e.g.
+ if you want to know how many tests there are or whether your 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<pattern>
+\end_layout
+
+\end_inset
+
+ regular expression did what you expected).
+ This can be done with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-N
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+--show-only
+\end_layout
+
+\end_inset
+
+ argument.
+ We are still working on getting the tests to run in parallel which is supported
+ by the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ command with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-j <jobs>
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+--parallel <jobs>
+\end_layout
+
+\end_inset
+
+ argument.
+ However, when running the tests in parallel, sometimes tests fail that
+ pass when run sequentially.
+ A reasonable approach is to first run the tests in parallel and then run
+ the failed tests sequentially.
+ For example, to run 8 jobs at a time:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -j8
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+-rerun-failed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Note that some tests cannot be run in parallel.
+ These tests are marked in the code with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+RUN_SERIAL ON
+\end_layout
+
+\end_inset
+
+ CMake property.
+\end_layout
+
+\begin_layout Standard
+In some situations the option 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+--timeout <seconds>
+\end_layout
+
+\end_inset
+
+ is useful.
+ There have been bugs in LyX and in LaTeX which cause compilation to hang,
+ and without a timeout a test might never stop (in one case there was even
+ a memory leak).
+ If a test times out, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ command exits with error, but you can distinguish between a timed out test
+ and a failed test in the output reported at the end of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ command.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Interpreting-export-tests"
+
+\end_inset
+
+Interpreting the export test results
+\end_layout
+
+\begin_layout Standard
+A test can fail for several reasons, not all of them bad.
+\end_layout
+
+\begin_layout Itemize
+The .lyx file could have been added recently and some formats are not expected
+ to work well.
+\end_layout
+
+\begin_layout Itemize
+A dependency is not met (e.g.
+ the LaTeX class file).
+ One hint that this is the case is that the corresponding 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+check_load
+\end_layout
+
+\end_inset
+
+ test will likely also fail.
+\end_layout
+
+\begin_layout Itemize
+An export that previously failed to compile now compiles.
+\end_layout
+
+\begin_layout Itemize
+An external dependency was updated (e.g.
+ TeX Live).
+\end_layout
+
+\begin_layout Itemize
+A recent code change introduced a bug.
+\end_layout
+
+\begin_layout Standard
+Because the .lyx files are exported in several formats, it is not surprising
+ that many of the exports fail.
+ This expectation of failure is addressed by 
+\begin_inset Quotes eld
+\end_inset
+
+inverting
+\begin_inset Quotes erd
+\end_inset
+
+ the tests, that is, by marking the test as 
+\begin_inset Quotes eld
+\end_inset
+
+passing
+\begin_inset Quotes erd
+\end_inset
+
+ if the export exits with error and as 
+\begin_inset Quotes eld
+\end_inset
+
+failing
+\begin_inset Quotes erd
+\end_inset
+
+ if the export succeeds
+\emph on
+.
+
+\emph default
+ It follows that these expected failures will not show up as failed tests
+ in the test results and thus will not pollute the 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ tests.
+ If the export actually succeeds, then the test will fail.
+ The purpose of this failure is to get your attentions—something has changed,
+ possibly for the better.
+\end_layout
+
+\begin_layout Standard
+We try to document why a test is inverted or ignored.
+ See the comment (prefixed with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+#
+\end_layout
+
+\end_inset
+
+) above the block in which the test is listed as inverted or ignored in
+ the files 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/revertedTests
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/ignoredTests
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+What action should you take if a test fails? First, check manually that
+ when the compilation succeeded before the resulting PDF was good.
+ In fact, sometimes it is an improvement when a test fails.
+ If you check manually, it might be the case that the export was succeeding
+ before but showing garbled text in a PDF output.
+ Now it might fail with a clear message of "language xyz not supported".
+ It is always good to check manually why something fails and if it passes
+ if the PDF output is good.
+\end_layout
+
+\begin_layout Standard
+Sometimes a test is fixed by accident.
+ We should uninvert a test (remove it from the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+revertedTests
+\end_layout
+
+\end_inset
+
+ file) in order to preserve the fix.
+\end_layout
+
+\begin_layout Standard
+When a test or several tests fail, consider checking the files in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Testing/Temporary/
+\end_layout
+
+\end_inset
+
+ subdirectory of your build directory.
+ In this subdirectory are three files: the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LastTestsFailed.log
+\end_layout
+
+\end_inset
+
+ simply lists the tests that failed on your last 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ command; the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LastTest.log
+\end_layout
+
+\end_inset
+
+ file contains the output from the tests (and often has details explaining
+ why a test failed); and the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+CTestCostData.txt
+\end_layout
+
+\end_inset
+
+ file lists the times that it took to run the tests.
+\end_layout
+
+\begin_layout Section
+check_load tests
+\end_layout
+
+\begin_layout Standard
+These tests check whether a .lyx file loads without any terminal messages.
+ They correspond to the manual operations of simply opening a .lyx file on
+ the terminal, exiting LyX once the file is loaded, and then checking whether
+ there is any output from the terminal.
+ These tests are useful for catching malformed .lyx files and parsing bugs.
+ They can also be used to find a .lyx file in which an instance of something
+ happens.
+ To do this, compile LyX with a local patch that outputs something to the
+ terminal when an instance is found, and then run the check_load tests to
+ see if any fail, which would mean that the situation occurs in the LyX
+ documentation files corresponding to the failed tests.
+ These tests are expectedly fragile: any LyX diagnostic message, which is
+ not necessarily an error, would cause the tests to fail.
+ Similarly, any message output by a library (e.g.
+ Qt) would also cause failure.
+ There are some messages that the check_load tests are instructed to ignore,
+ which are stored in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/filterCheckWarnings
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+URL tests
+\end_layout
+
+\begin_layout Standard
+These tests are extremely fragile and a failed URL test should not be taken
+ too seriously.
+ They are useful for finding broken links in our documentation files.
+ These must be enabled at configure.
+\end_layout
+
 \begin_layout Chapter
 Development policies
 \end_layout
