@@ -3,13 +3,14 @@
 #
 # Copyright (c) 2015 Kornel Benko <kornel@lyx.org>
 #
-# Environ and parameter strings are separated by "'"
+# ENVIRON, SINGLEPARLIST and PARAMS strings are separated by "'"
 # Script should be called like:
 #   add_custom_command(
 #     COMMAND ${CMAKE_COMMAND}
-#     -DENVIRON="${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR}" \
-#     -DCOMMAND="${LYX_PYTHON_EXECUTABLE}" \
+#     -DCOMMAND="${LYX_PYTHON_EXECUTABLE}"
+#     -DENVIRON="${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR}"
 #     -DPARAMS="${runtestsScript}'$<TARGET_FILE:${_tex2lyx}>'${scriptDir}'${CMAKE_CURRENT_SOURCE_DIR}"
+#     -DSINGLEPARLIST="${LyxTestFiles}"
 #     -P ${TOP_SRC_DIR}/src/tex2lyx/test/env_custom_command.cmake
 #     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
 #     DEPENDS ...
@@ -26,15 +27,17 @@ foreach(_env ${ENVIRON_LIST})
 endforeach()
 
 string(REGEX MATCHALL "[^']+" parameters "${PARAMS}")
-execute_process(COMMAND "${COMMAND}" ${parameters}
-  RESULT_VARIABLE _err
-  OUTPUT_VARIABLE _out)
+string(REGEX MATCHALL "[^']+" extrasingleparamlist "${SINGLEPARLIST}")
 
-message(STATUS ${_out})
-#message(STATUS "Error output of \"${COMMAND}\" " ${parameters} " = ${_err}")
-string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+foreach(_extraparam ${extrasingleparamlist} )
+  execute_process(COMMAND "${COMMAND}" ${parameters} ${_extraparam}
+    RESULT_VARIABLE _err
+    OUTPUT_VARIABLE _out)
 
-if(_erg)
-  message(FATAL_ERROR "\"${COMMAND}\" ${parameters} failed")
-endif()
+  message(STATUS ${_out})
+  string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+  if(_erg)
+    message(FATAL_ERROR "\"${COMMAND}\" ${parameters} failed")
+  endif()
+endforeach()
 

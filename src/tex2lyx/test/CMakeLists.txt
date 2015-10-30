@@ -61,17 +61,43 @@ endforeach()
 
 add_dependencies(lyx_run_tests ${_tex2lyx} ${_lyx})
 
+set(LyxTestFiles "")            # "'" separated test-filenames
+set(LyxRemoveFiles)             # Extra files created by runtests.py
+foreach(_fl ${_tex_tests})
+  set(LyxTestFiles "${LyxTestFiles}'${_fl}")
+  if (_fl MATCHES "^\(.*\)\\.\([^\\.]+)$")
+    list(APPEND LyxRemoveFiles "${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_MATCH_1}.lyx.tex")
+  endif()
+endforeach()
+foreach(_lrf "DummyDocument.lyx.tex" "Dummy~Document.lyx.tex" "foo.pdf" "xfigtest.pdf" "xfigtest.pdftex_t")
+  list(APPEND LyxRemoveFiles "${CMAKE_CURRENT_SOURCE_DIR}/${_lrf}")
+endforeach()
+list(APPEND LyxRemoveFiles "${TOP_SRC_DIR}/lib/examples/longsheet.tex")
+
 add_custom_command(
-  OUTPUT LyxTestFiles
-  COMMAND ${CMAKE_COMMAND} -E touch LyxTestFiles
+  OUTPUT Tex2lyxFilesUpdated
   COMMAND ${CMAKE_COMMAND}
-    -DENVIRON="${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR}"
-    -DCOMMAND="${LYX_PYTHON_EXECUTABLE}"
-    -DPARAMS="${runtestsScript}'$<TARGET_FILE:${_tex2lyx}>'${scriptDir}'${CMAKE_CURRENT_SOURCE_DIR}"
-    -P ${TOP_SRC_DIR}/src/tex2lyx/test/env_custom_command.cmake
+  -DCOMMAND="${LYX_PYTHON_EXECUTABLE}"
+  -DENVIRON="${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR}"
+  -DPARAMS="${runtestsScript}'$<TARGET_FILE:${_tex2lyx}>'${scriptDir}'${CMAKE_CURRENT_SOURCE_DIR}"
+  -DSINGLEPARLIST="${LyxTestFiles}"
+  -P ${TOP_SRC_DIR}/src/tex2lyx/test/env_custom_command.cmake
+  COMMAND ${CMAKE_COMMAND} -E touch Tex2lyxFilesUpdated
   WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
   DEPENDS ${_tex2lyx} ${_lyx}
+  )
+
+add_custom_target(updatetex2lyxtests DEPENDS Tex2lyxFilesUpdated)
+set_target_properties(updatetex2lyxtests PROPERTIES FOLDER "tests/tex2lyx")
+
+# In order to not pollute the source directory
+# now remove some untracked files created by the target updatetex2lyxtests
+add_custom_command(
+  OUTPUT UpdateFilesRemoved
+  COMMAND ${CMAKE_COMMAND} -E remove -f ${LyxRemoveFiles}
+  COMMAND ${CMAKE_COMMAND} -E touch UpdateFilesRemoved
+  DEPENDS Tex2lyxFilesUpdated
 )
 
-add_custom_target(updatetex2lyxtests DEPENDS LyxTestFiles)
-set_target_properties(updatetex2lyxtests PROPERTIES FOLDER "tests/tex2lyx")
+add_custom_target(cleanupdatetex2lyxtests DEPENDS UpdateFilesRemoved)
+set_target_properties(cleanupdatetex2lyxtests PROPERTIES FOLDER "tests/tex2lyx")
