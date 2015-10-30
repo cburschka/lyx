@@ -117,3 +117,8 @@ export/templates/IUCr-article_pdf4_systemF
 # # (hpstatement)                is not defined.
 # 1580:export/examples/H-P-statements_pdf5_systemF
 export/examples/H-P-statements_pdf[45]_systemF
+#
+# The math document now depends on the mhchem package which produces wrong
+# output with XeTeX/LuaTeX and both TeX fonts and non-TeX fonts:
+# https://www.mail-archive.com/search?l=mid&q=n0sne9%24iis%241%40ger.gmane.org
+export/doc(|/de|/es|/fr)/Math.*(texF|systemF)
