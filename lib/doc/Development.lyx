@@ -1300,12 +1300,12 @@ Interpreting the export test results
 A test can fail for several reasons, not all of them bad.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 The .lyx file could have been added recently and some formats are not expected
  to work well.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 A dependency is not met (e.g.
  the LaTeX class file).
  One hint that this is the case is that the corresponding 
@@ -1321,17 +1321,29 @@ check_load
  test will likely also fail.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 An export that previously failed to compile now compiles.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 An external dependency was updated (e.g.
  TeX Live).
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 A recent code change introduced a bug.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:exposed"
+
+\end_inset
+
+A change in a document exposed the incompatibility of that class with an
+ export format (e.g.
+ LuaTeX).
 \end_layout
 
 \begin_layout Standard
@@ -1377,7 +1389,7 @@ good
 
  tests.
  If the export actually succeeds, then the test will fail.
- The purpose of this failure is to get your attentions—something has changed,
+ The purpose of this failure is to get your attention—something has changed,
  possibly for the better.
 \end_layout
 
@@ -1415,6 +1427,20 @@ development/autotests/ignoredTests
 \end_inset
 
 .
+ It is possible that an export goes from succeeding to failing just because
+ the document was changed and the document was never expected to work with
+ a certain export format in the first case.
+ Once this is confirmed to be the situation, the test can be inverted.
+\end_layout
+
+\begin_layout Standard
+A good question is why do we enable the tests for non-default formats? The
+ answer is that if a non-default route is broken it is often because a bug
+ was introduced in LyX and not because a document-specific change was made
+ that is not supported by the route.
+ In other words, there is a high signal/noise ratio in the export tests
+ for the non-default formats.
+ 
 \end_layout
 
 \begin_layout Standard
