@@ -734,7 +734,7 @@ The tex2lyx tests can be run by the commands
 status collapsed
 
 \begin_layout Plain Layout
-ctest
+ctest -R tex2lyx
 \end_layout
 
 \end_inset
@@ -1068,8 +1068,7 @@ Running the tests
 \end_layout
 
 \begin_layout Standard
-To run all of the export tests, in the build directory simply run the command
- 
+To run all tests, in the build directory simply run the command 
 \begin_inset Flex Code
 status collapsed
 
@@ -1101,6 +1100,36 @@ status collapsed
 \end_inset
 
  is a regular expression that matches test names.
+ To run only the export tests, you can use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L export
+\end_layout
+
+\end_inset
+
+.
+ For the list of test categories available in addition to 
+\begin_inset Quotes eld
+\end_inset
+
+export
+\begin_inset Quotes erd
+\end_inset
+
+, run 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest --print-labels
+\end_layout
+
+\end_inset
+
+.
  It is often useful to list the tests without running them (e.g.
  if you want to know how many tests there are or whether your 
 \begin_inset Flex Code
@@ -1191,18 +1220,9 @@ ctest -j8
 status collapsed
 
 \begin_layout Plain Layout
-ctest -
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
--rerun-failed
+ctest \SpecialChar nobreakdash
+\SpecialChar nobreakdash
+rerun-failed
 \end_layout
 
 \end_inset
@@ -1518,10 +1538,33 @@ URL tests
 \end_layout
 
 \begin_layout Standard
-These tests are extremely fragile and a failed URL test should not be taken
- too seriously.
- They are useful for finding broken links in our documentation files.
- These must be enabled at configure.
+The URL tests are enabled with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-DLYX_ENABLE_URLTESTS=ON
+\end_layout
+
+\end_inset
+
+ CMake flag and are useful for finding broken links in our documentation
+ files.
+ If a URL test fails, to see which link in particular was reported as broken,
+ see the output in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LastTest.log
+\end_layout
+
+\end_inset
+
+.
+ These tests are extremely fragile (e.g.
+ a test can depend on your Internet connection) and a failed URL test should
+ not be taken too seriously.
 \end_layout
 
 \begin_layout Chapter
