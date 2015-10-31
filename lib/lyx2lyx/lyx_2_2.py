@@ -901,7 +901,6 @@ def revert_glossgroup(document):
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
         content = lyx2latex(document, document.body[beginPlain : endPlain])
-        document.warning("content: %s" % content)
 
         document.body[i:j + 1] = ["{", "", content, "", "}"]
         # no need to reset i
