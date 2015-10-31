@@ -1,0 +1,6 @@
+This file describes tests that might be useful to implement.
+
+- lyx2lyx tests
+  One way to implemente tests of lyx2lyx is to do a roundtrip lyx2lyx
+  conversion (e.g. with the previous major release format) and then compare the
+  exported .tex files before and after. Ideally there should be no change.
