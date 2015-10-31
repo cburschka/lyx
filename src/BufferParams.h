@@ -82,7 +82,7 @@ public:
 	/// check what features are implied by the buffer parameters.
 	void validate(LaTeXFeatures &) const;
 
-	/** \returns true if the babel package is used (interogates
+	/** \returns true if the babel package is used (interrogates
 	 *  the BufferParams, a LyXRC variable, and the document class).
 	 *  This returned value can then be passed to the insets...
 	 */
