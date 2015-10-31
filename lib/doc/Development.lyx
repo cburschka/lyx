@@ -2,7 +2,7 @@
 \lyxformat 499
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -729,12 +729,23 @@ Running the tests
 \end_layout
 
 \begin_layout Standard
-The tex2lyx tests can be run by the commands 
+The tex2lyx tests can be run in several ways.
+ When in the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-ctest -R tex2lyx
+src/tex2lyx
+\end_layout
+
+\end_inset
+
+ subfolder of the build directory, the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
 \end_layout
 
 \end_inset
@@ -759,17 +770,54 @@ make alltests
 
 \end_inset
 
- (autotools) in the 
+ (autotools) will run the tex2lyx tests.
+ Alternatively, in the root of the build directory, the command 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-src/tex2lyx
+ctest -R tex2lyx
 \end_layout
 
 \end_inset
 
- subfolder of the build directory.
+ runs all tests whose names match the regex 
+\begin_inset Quotes eld
+\end_inset
+
+tex2lyx
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Another way to run the tex2lyx tests in the root build directory is to
+ instead use the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L '(cmplyx|roundtrip)'
+\end_layout
+
+\end_inset
+
+, which runs all tests categorized with the label 
+\begin_inset Quotes eld
+\end_inset
+
+roundtrip
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+cmplyx
+\begin_inset Quotes erd
+\end_inset
+
+.
  If a test fails, the differences between the expected and actual results
  are output in unified diff format.
 \end_layout
