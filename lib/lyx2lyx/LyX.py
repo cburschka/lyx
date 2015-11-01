@@ -553,6 +553,9 @@ class LyX_base:
 
     def convert(self):
         "Convert from current (self.format) to self.end_format."
+        if self.format == self.end_format:
+            return
+
         mode, conversion_chain = self.chain()
         self.warning("conversion chain: " + str(conversion_chain), 3)
 
