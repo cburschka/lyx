@@ -2005,6 +2005,7 @@ dist_layouts_DATA =\
 	layouts/book.layout \
 	layouts/braille.module \
 	layouts/broadway.layout \
+	layouts/changebars.module \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \
 	layouts/ctex-article.layout \

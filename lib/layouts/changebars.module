@@ -1,0 +1,29 @@
+#\DeclareLyXModule[changebar.sty]{Change bars}
+#
+#DescriptionBegin
+#Enables LyX to add vertical change bars in the margin of PDF output
+#when change tracking is turned on and pdflatex output format is chosen.
+#DescriptionEnd
+#
+#Author: Paul A. Rubin (rubin@msu.edu)
+#Based on code proposed by Juergen Spitzmueller
+#(http://comments.gmane.org/gmane.editors.lyx.general/66666).
+#
+# Note: the \providecommand statements are necessary to avoid
+# error messages from the \renewcommand statements if change
+# tracking is turned off in the document.
+#
+
+Format 49
+
+AddToPreamble
+  \usepackage{changebar}
+  \providecommand{\lyxadded}[3]{}
+  \providecommand{\lyxdeleted}{}
+  \renewcommand{\lyxadded}[3]{
+    {\protect\cbstart\color{lyxadded}{}#3\protect\cbend}
+  }
+  \renewcommand{\lyxdeleted}[3]{%
+    {\protect\cbstart\color{lyxdeleted}\sout{#3}\protect\cbend}
+  }
+EndPreamble
