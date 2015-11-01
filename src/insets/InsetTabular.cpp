@@ -2676,14 +2676,16 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	bool const is_tabular_star = !tabular_width.zero();
+	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid,
+											 runparams.lastpos);
 
 	//+---------------------------------------------------------------------
 	//+                      first the opening preamble                    +
 	//+---------------------------------------------------------------------
 
 	os << safebreakln;
-	if (runparams.lastid != -1)
-		os.texrow().start(runparams.lastid, runparams.lastpos);
+	if (!TexRow::isNone(pos))
+		os.texrow().start(pos);
 
 	if (rotate != 0)
 		os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
@@ -2812,6 +2814,9 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (rotate != 0)
 		os << breakln << "\\end{turn}";
+
+	if (!TexRow::isNone(pos))
+		os.texrow().start(pos);
 }
 
 
