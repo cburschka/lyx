@@ -1,0 +1,42 @@
+#\DeclareLyXModule{Variable-width Minipages}
+#DescriptionBegin
+# Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package.
+# The varwidth package provides a variable-width minipage, whose resulting
+# width is the width of its contents (if this does not exceed the specified
+# maximum width).
+#
+# The inset has two optional arguments: vertical adjustment (c|t|b) and
+# maximum width (defaults to \linewidth).
+#DescriptionEnd
+#
+# Authors: d.iabo <gm@lyx.org>
+# 	   Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 49
+
+InsetLayout Flex:Minipage_(Var._Width)
+  LyXType     		custom
+  LabelString 		"Minipage (var.)"
+  LatexType		Environment
+  LatexName		varwidth
+  Decoration  		Classic
+  MultiPar              true
+  CustomPars  		true
+  ResetsFont 		true
+  LabelFont
+    Color               foreground
+    Size                Small
+  EndFont
+  Argument 1
+    LabelString 	"Vert. Adjustment"
+    Tooltip 		"Vertical adjustment: c (center), t (top) or b (bottom)"
+  EndArgument
+  Argument 2
+    LabelString 	"Max. Width"
+    Tooltip 		"Maximum width (default: \linewidth)"
+    DefaultArg 		"\linewidth"
+    Mandatory 		1
+  EndArgument
+  Requires		varwidth
+End
+

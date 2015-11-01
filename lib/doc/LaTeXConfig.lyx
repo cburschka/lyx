@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 497
+\lyxformat 499
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -6596,7 +6596,7 @@ macros/latex/contrib/todonotes/
 
 \begin_layout Description
 
-\change_inserted -712698321 1409489236
+\change_inserted -712698321 1446371553
 Notes: The package 
 \family sans
 todonotes
@@ -6611,6 +6611,53 @@ TODO
 \end_inset
 
  notes into documents.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1446371571
+Variable-width Minipages module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1446371576
+varwidth
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1446371554
+Found: 
+\begin_inset Info
+type  "package"
+arg   "varwidth"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1446371591
+CTAN: 
+\family typewriter
+macros/latex/contrib/varwidth/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1446371666
+Notes: The package 
+\family sans
+varwidth
+\family default
+\color none
+ is used to produce minipages variable (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., content-dependent) width.
 \change_unchanged
 
 \end_layout

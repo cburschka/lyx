@@ -796,7 +796,8 @@ char const * simplefeatures[] = {
 	"pdfcomment",
 	"fixme",
 	"todonotes",
-	"forest"
+	"forest",
+	"varwidth"
 };
 
 char const * bibliofeatures[] = {

@@ -2185,7 +2185,8 @@ dist_layouts_DATA =\
 	layouts/todonotes.module \
 	layouts/treport.layout \
 	layouts/tufte-book.layout \
-	layouts/tufte-handout.layout
+	layouts/tufte-handout.layout \
+	layouts/varwidth.module
 
 scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \
