@@ -554,6 +554,8 @@ class LyX_base:
     def convert(self):
         "Convert from current (self.format) to self.end_format."
         if self.format == self.end_format:
+            self.warning("No conversion needed: Target format %s "
+                "same as current format!" % self.format, default_debug__)
             return
 
         mode, conversion_chain = self.chain()
