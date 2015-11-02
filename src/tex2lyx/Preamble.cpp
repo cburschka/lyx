@@ -1164,13 +1164,13 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\use_hyperref " << h_use_hyperref << '\n';
 	if (h_use_hyperref == "true") {
 		if (!h_pdf_title.empty())
-			os << "\\pdf_title \"" << h_pdf_title << "\"\n";
+			os << "\\pdf_title " << Lexer::quoteString(h_pdf_title) << '\n';
 		if (!h_pdf_author.empty())
-			os << "\\pdf_author \"" << h_pdf_author << "\"\n";
+			os << "\\pdf_author " << Lexer::quoteString(h_pdf_author) << '\n';
 		if (!h_pdf_subject.empty())
-			os << "\\pdf_subject \"" << h_pdf_subject << "\"\n";
+			os << "\\pdf_subject " << Lexer::quoteString(h_pdf_subject) << '\n';
 		if (!h_pdf_keywords.empty())
-			os << "\\pdf_keywords \"" << h_pdf_keywords << "\"\n";
+			os << "\\pdf_keywords " << Lexer::quoteString(h_pdf_keywords) << '\n';
 		os << "\\pdf_bookmarks " << h_pdf_bookmarks << "\n"
 		      "\\pdf_bookmarksnumbered " << h_pdf_bookmarksnumbered << "\n"
 		      "\\pdf_bookmarksopen " << h_pdf_bookmarksopen << "\n"
@@ -1183,7 +1183,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		if (!h_pdf_pagemode.empty())
 			os << "\\pdf_pagemode " << h_pdf_pagemode << '\n';
 		if (!h_pdf_quoted_options.empty())
-			os << "\\pdf_quoted_options \"" << h_pdf_quoted_options << "\"\n";
+			os << "\\pdf_quoted_options " << Lexer::quoteString(h_pdf_quoted_options) << '\n';
 	}
 	os << "\\papersize " << h_papersize << "\n"
 	   << "\\use_geometry " << h_use_geometry << '\n';
