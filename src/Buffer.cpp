@@ -3435,7 +3435,7 @@ Buffer::References & Buffer::getReferenceCache(docstring const & label)
 		return it->second.second;
 
 	static InsetLabel const * dummy_il = 0;
-	static References const dummy_refs;
+	static References const dummy_refs = References();
 	it = d->ref_cache_.insert(
 		make_pair(label, make_pair(dummy_il, dummy_refs))).first;
 	return it->second.second;
