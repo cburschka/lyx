@@ -1833,6 +1833,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 		}
+		cur.setCurrentFont();
 		dr.screenUpdate(Update::Force);
 		break;
 

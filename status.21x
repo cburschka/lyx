@@ -84,7 +84,10 @@ What's new
 
 - Reset cursor font when leaving an inset to the left (bug 6032).
 
-- Reset cursor font when navigating with find or spellcheck (bug 9500).
+- Reset cursor font when navigating with find or spellcheck (bug
+  9500).
+
+- Reset cursor font after inset-select-all (bug 9719).
 
 - Correctly update previews when cursor leaves inset (bug 6173).
 
