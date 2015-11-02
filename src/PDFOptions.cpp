@@ -61,13 +61,13 @@ void PDFOptions::writeFile(ostream & os) const
 		return;
 	
 	if (!title.empty() )
-		os << "\\pdf_title \"" << title << "\"\n";
+		os << "\\pdf_title " << Lexer::quoteString(title) << '\n';
 	if (!author.empty())
-		os << "\\pdf_author \"" << author << "\"\n";
+		os << "\\pdf_author " << Lexer::quoteString(author) << '\n';
 	if (!subject.empty())
-		os << "\\pdf_subject \"" << subject << "\"\n";
+		os << "\\pdf_subject " << Lexer::quoteString(subject) << '\n';
 	if (!keywords.empty())
-		os << "\\pdf_keywords \"" << keywords << "\"\n";
+		os << "\\pdf_keywords " << Lexer::quoteString(keywords) << '\n';
 	
 	
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
@@ -85,7 +85,7 @@ void PDFOptions::writeFile(ostream & os) const
 		os << "\\pdf_pagemode " << pagemode << '\n';
 	
 	if (!quoted_options.empty())
-		os << "\\pdf_quoted_options \"" << quoted_options << "\"\n";
+		os << "\\pdf_quoted_options " << Lexer::quoteString(quoted_options) << '\n';
 }
 
 
@@ -206,13 +206,25 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 	if (token == "\\use_hyperref") {
 		lex >> use_hyperref;
 	} else if (token == "\\pdf_title") {
-		lex >> title;
+		if (lex.isOK()) {
+			lex.next(true);
+			title = lex.getString();
+		}
 	} else if (token == "\\pdf_author") {
-		lex >> author;
+		if (lex.isOK()) {
+			lex.next(true);
+			author = lex.getString();
+		}
 	} else if (token == "\\pdf_subject") {
-		lex >> subject;
+		if (lex.isOK()) {
+			lex.next(true);
+			subject = lex.getString();
+		}
 	} else if (token == "\\pdf_keywords") {
-		lex >> keywords;
+		if (lex.isOK()) {
+			lex.next(true);
+			keywords = lex.getString();
+		}
 	} else if (token == "\\pdf_bookmarks") {
 		lex >> bookmarks;
 	} else if (token == "\\pdf_bookmarksnumbered") {
@@ -234,7 +246,10 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 	} else if (token == "\\pdf_pagemode") {
 		lex >> pagemode;
 	} else if (token == "\\pdf_quoted_options") {
-		lex >> quoted_options;
+		if (lex.isOK()) {
+			lex.next(true);
+			quoted_options = lex.getString();
+		}
 	} else {
 		return token;
 	}

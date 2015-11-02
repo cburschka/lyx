@@ -105,6 +105,8 @@ What's new
 - Another attempt to fix NSAutoreleasePool related crashes within LinkBack
   driver. Now there is no global static pool used anymore (bug 8637).
 
+- Allow quotes in PDF text properties (bug 9830).
+
 
 
 * DOCUMENTATION AND LOCALIZATION
