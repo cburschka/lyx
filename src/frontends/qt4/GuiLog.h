@@ -41,6 +41,8 @@ private Q_SLOTS:
 	void on_nextErrorPB_clicked();
 	/// jump to next warning
 	void on_nextWarningPB_clicked();
+	/// open containing directory
+	void on_openDirPB_clicked();
 	/// Log type changed
 	void typeChanged(int);
 

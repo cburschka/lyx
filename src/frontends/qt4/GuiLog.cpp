@@ -24,8 +24,10 @@
 #include "support/FileName.h"
 #include "support/gettext.h"
 
+#include <QDesktopServices>
 #include <QTextBrowser>
 #include <QSyntaxHighlighter>
+#include <QUrl>
 #include <QClipboard>
 
 #include <fstream>
@@ -186,6 +188,23 @@ void GuiLog::on_nextErrorPB_clicked()
 void GuiLog::on_nextWarningPB_clicked()
 {
 	goTo(exprWarning);
+}
+
+
+void GuiLog::on_openDirPB_clicked()
+{
+	support::FileName dir = logfile_.onlyPath();
+	if (!dir.exists())
+		return;
+	QUrl qdir(toqstr(from_utf8("file://" + dir.absFileName())),
+			  QUrl::StrictMode);
+	// Give hints in case of bugs
+	if (!qdir.isValid()) {
+		LYXERR0("QUrl is invalid!");
+		return;
+	}
+	if (!QDesktopServices::openUrl(qdir))
+		LYXERR0("Unable to open QUrl even though dir exists!");
 }
 
 

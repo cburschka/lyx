@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0" >
  <class>LogUi</class>
  <widget class="QDialog" name="LogUi" >
@@ -105,9 +106,9 @@
     </spacer>
    </item>
    <item row="4" column="0" colspan="2" >
-    <widget class="QPushButton" name="copyPB" >
+    <widget class="QPushButton" name="openDirPB" >
      <property name="text" >
-      <string>Copy to Clip&amp;board</string>
+      <string>&amp;Open Containing Directory</string>
      </property>
     </widget>
    </item>
