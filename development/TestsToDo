@@ -1,6 +1,30 @@
 This file describes tests that might be useful to implement.
 
-- lyx2lyx tests
-  One way to implemente tests of lyx2lyx is to do a roundtrip lyx2lyx
-  conversion (e.g. with the previous major release format) and then compare the
-  exported .tex files before and after. Ideally there should be no change.
+-----
+lyx2lyx tests
+
+One way to implemente tests of lyx2lyx is to do a roundtrip lyx2lyx
+conversion (e.g. with the previous major release format) and then compare the
+exported .tex files before and after. Ideally there should be no change.
+
+Georg detailed a clearly better idea, but would take more time to implement:
+
+  If you want to test lyx2lyx, then I would strongly advise to test lyx2lyx
+  alone, without LyX. This would be exactly the same procedure as we do with
+  tex2lyx: For each test case, keep the expected output of lyx2lyx as
+  reference, and verify once (when creating the test), that LyX will produce
+  the correct output. When testing, do only compare the lyx2lyx output against
+  the refernce. If you keep LyX (and even pdflatex) in the chain, then you
+  will be testing lyx2lyx, LyX and pdflatex at the same time, which will
+  increase the probability of failing tests, and the search for the cause will
+  be more difficult.
+    
+  Finally I have a general remark: The forward conversion in lyx2lyx is much
+  more important than the backward conversion, and the only one we guarantee
+  to work for each format step. The backward conversion is only implemented
+  for those cases where it is possible with reasonable effort. If we start to
+  test lyx2lyx, then we should start with the forward conversion.
+
+For (possibly) more discussion, see:
+https://www.mail-archive.com/search?l=mid&q=n15uao%24upk%241%40ger.gmane.org
+-----
