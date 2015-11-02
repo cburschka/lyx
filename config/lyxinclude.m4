@@ -298,7 +298,7 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
-      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
+      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra -Wno-deprecated-declarations"
   fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc 4.x is required]);;
