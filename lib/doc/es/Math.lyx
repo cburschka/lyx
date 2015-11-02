@@ -3759,13 +3759,6 @@ Esto
  es una frase.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Líneas
 \begin_inset Index idx
@@ -4178,10 +4171,6 @@ dots
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \begin_inset Separator parbreak
 \end_inset
 
@@ -6796,13 +6785,6 @@ reference "subsec:Vectores-cuánticos"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -12450,13 +12432,6 @@ mathsurround
 pt.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Marcos y bordes
 \begin_inset Index idx
@@ -12681,7 +12656,10 @@ framebox
 fbox
 \series default
 .
-\begin_inset Separator parbreak
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -12692,8 +12670,8 @@ fbox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -12710,29 +12688,13 @@ Comando
 
 \begin_layout Plain Layout
 Resultado
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-raisebox
-\series default
- se usa sólo como espaciador
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row topspace="1.5mm">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12757,11 +12719,11 @@ A=B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\fbox{\ensuremath{\int A=B}}\raisebox{-4mm}{}$
+\begin_inset Formula $\fbox{\ensuremath{\int A=B}}$
 \end_inset
 
 
@@ -12770,8 +12732,8 @@ A=B
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row topspace="1.5mm">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12792,11 +12754,11 @@ A=B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{8.5mm}{}\boxed{\int A=B}\raisebox{-6.5mm}{}$
+\begin_inset Formula $\boxed{\int A=B}$
 \end_inset
 
 
@@ -12805,8 +12767,8 @@ A=B
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row topspace="1.5mm">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12821,11 +12783,11 @@ B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}A+\fbox{B}\raisebox{-3mm}{}$
+\begin_inset Formula $A+\fbox{B}$
 \end_inset
 
 
@@ -12834,8 +12796,8 @@ B
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row topspace="1.5mm" bottomspace="1mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -12872,19 +12834,11 @@ B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}$
-\end_inset
-
-
 \begin_inset Formula $\framebox[20mm][]{\ensuremath{\frac{A}{B}}}$
-\end_inset
-
-
-\begin_inset Formula $\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -13217,8 +13171,8 @@ raisebox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -13241,7 +13195,7 @@ Resultado
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13262,7 +13216,7 @@ raisebox{2mm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13276,7 +13230,7 @@ raisebox{2mm
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13297,7 +13251,7 @@ lo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13599,8 +13553,8 @@ yellow
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -13617,29 +13571,13 @@ Comando
 
 \begin_layout Plain Layout
 Resultado
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-raisebox
-\series default
- se usa sólo como espaciador
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13656,11 +13594,11 @@ colorbox{yellow
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\colorbox{yellow}{A=B}\raisebox{-3mm}{}$
+\begin_inset Formula $\colorbox{yellow}{A=B}$
 \end_inset
 
 
@@ -13669,8 +13607,8 @@ colorbox{yellow
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row topspace="1.5mm">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13693,11 +13631,11 @@ A=B
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{6mm}{}\colorbox{green}{\fbox{A=B}}\raisebox{-3mm}{}$
+\begin_inset Formula $\colorbox{green}{\fbox{A=B}}$
 \end_inset
 
 
@@ -13706,8 +13644,8 @@ A=B
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row topspace="1.5mm" bottomspace="1mm">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -13727,7 +13665,11 @@ colorbox{green
 \backslash
 {
 \family sans
-Ctrl+M Ctrl+M
+Ctrl+M
+\family default
+ 
+\family sans
+Ctrl+M
 \family default
  
 \backslash
@@ -13740,11 +13682,11 @@ C=D
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{7mm}{}\fbox{\colorbox{green}{\mbox{\ensuremath{\int C=D}}}}\raisebox{-5mm}{}$
+\begin_inset Formula $\fbox{\colorbox{green}{\mbox{\ensuremath{\int C=D}}}}$
 \end_inset
 
 
@@ -16472,6 +16414,13 @@ reference "subsec:Operadores-de-usuario"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Decoración para operadores
 \begin_inset Index idx
@@ -16747,10 +16696,6 @@ Operadores ! binarios
 \begin_layout Standard
 Los operadores binarios se rodean por espacios si llevan un carácter delante
  o detrás.
-\begin_inset VSpace medskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20334,6 +20279,13 @@ reference "subsec:Griegas-en-redonda"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Mayúsculas
 \begin_inset Index idx
@@ -21029,6 +20981,13 @@ arg   "math-insert \\digamma"
 \end_inset
 
  de la barra de ecuaciones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -34669,6 +34628,13 @@ Octave
  se limita a casos muy simples.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Utilización
 \end_layout
@@ -34768,7 +34734,7 @@ command-alternatives paragraph-break;math-extern maxima
 \begin_layout Section
 Miscelánea
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Miscelánea
