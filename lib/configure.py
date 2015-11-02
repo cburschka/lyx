@@ -229,7 +229,7 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
             for searching but the whole string is used to replace
             %% for a rc_entry. So, feel free to add '$$i' etc for programs.
 
-        path: additional pathes
+        path: additional paths (will be prepended to the program name)
 
         rc_entry: entry to outfile, can be
             1. emtpy: no rc entry will be added
@@ -278,6 +278,8 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
                         ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
                     elif ac_word.endswith('.pl'):
                         ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
+                    elif ac_dir in additional_path:
+                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"' % (os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if len(rc_entry) == 1:
                         addToRC(rc_entry[0].replace('%%', ac_prog))
@@ -337,6 +339,8 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
                         ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
                     elif ac_word.endswith('.pl'):
                         ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
+                    elif ac_dir in additional_path:
+                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"' % (os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if found_prime == False:
                         if len(rc_entry) == 1:
@@ -468,6 +472,23 @@ def checkDTLtools():
         dtl_tools = False
     return dtl_tools
 
+def checkInkscape():
+    ''' Check whether Inkscape is available and return the full path (Windows only) '''
+    if os.name != 'nt':
+        return 'inkscape'
+    import _winreg
+    aReg = _winreg.ConnectRegistry(None, _winreg.HKEY_CLASSES_ROOT)
+    try:
+        aKey = _winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
+        val = _winreg.QueryValueEx(aKey, "")
+        return str(val[0]).split('"')[1].replace('.exe', '')
+    except EnvironmentError:
+        try:
+            aKey = _winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
+            val = _winreg.QueryValueEx(aKey, "")
+            return str(val[0]).split('"')[1].replace('.exe', '')
+        except EnvironmentError:
+            return 'inkscape'
 
 def checkLatex(dtl_tools):
     ''' Check latex, return lyx_check_config '''
@@ -583,8 +604,9 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""	""'])
     #
-    checkViewerEditor('a SVG viewer and editor', ['inkscape'],
-        rc_entry = [r'\Format svg        "svg, svgz" SVG                "" "%%" "%%"	"vector,zipped=native"	"image/svg+xml"'])
+    checkViewerEditor('a SVG viewer and editor', [inkscape_name],
+        rc_entry = [r'\Format svg        "svg, svgz" SVG                "" "%%" "%%"	"vector,zipped=native"	"image/svg+xml"'],
+        path = [inkscape_path])
     #
     imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""	"image/x-bmp"
 \Format gif        gif     GIF                    "" "%s"	"%s"	""	"image/gif"
@@ -972,14 +994,17 @@ def checkConverterEntries():
     checkProg('an OpenDocument -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
     # Only define a converter to pdf6 for graphics
-    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
-        rc_entry = [ r'\converter svg        pdf6       "%%"	""'])
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+        rc_entry = [ r'\converter svg        pdf6       "%%"    ""'],
+        path = ['', inkscape_path])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
-        rc_entry = [ r'\converter svg        eps        "%%"	""'])
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
+        rc_entry = [ r'\converter svg        eps        "%%"    ""'],
+        path = ['', inkscape_path])
     #
-    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', 'inkscape --without-gui --file=$$i --export-png=$$o'],
-        rc_entry = [ r'\converter svg        png        "%%"	""'])
+    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', inkscape_name + ' --without-gui --file=$$i --export-png=$$o'],
+        rc_entry = [ r'\converter svg        png        "%%"    ""'],
+        path = ['', inkscape_path])
 
     #
     # gnumeric/xls/ods to tex
@@ -1564,6 +1589,7 @@ Format %i
     # check java and perl before any checkProg that may require them
     java = checkProg('a java interpreter', ['java'])[1]
     perl = checkProg('a perl interpreter', ['perl'])[1]
+    (inkscape_path, inkscape_name) = os.path.split(checkInkscape())
     checkFormatEntries(dtl_tools)
     checkConverterEntries()
     (chk_docbook, bool_docbook, docbook_cmd) = checkDocBook()
