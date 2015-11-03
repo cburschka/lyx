@@ -1311,7 +1311,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		MenuDefinition submenu;
 		// "Open outliner..." entry
 		FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
-		submenu.add(MenuItem(MenuItem::Command, qt_("Open outliner..."), f));
+		submenu.add(MenuItem(MenuItem::Command, qt_("Open Outliner..."), f));
 		submenu.add(MenuItem(MenuItem::Separator));
 		// add entries
 		submenu.expandToc2(* cit->second, 0, cit->second->size(), 0);
