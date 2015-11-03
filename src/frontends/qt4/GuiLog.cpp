@@ -196,8 +196,7 @@ void GuiLog::on_openDirPB_clicked()
 	support::FileName dir = logfile_.onlyPath();
 	if (!dir.exists())
 		return;
-	QUrl qdir(toqstr(from_utf8("file://" + dir.absFileName())),
-			  QUrl::StrictMode);
+	QUrl qdir(QUrl::fromLocalFile(toqstr(from_utf8(dir.absFileName()))));
 	// Give hints in case of bugs
 	if (!qdir.isValid()) {
 		LYXERR0("QUrl is invalid!");
