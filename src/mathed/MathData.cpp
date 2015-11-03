@@ -492,6 +492,8 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos)
 {
 	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
+	// We store this now, because the inset pointer will be invalidated in the scond loop below
+	size_t const optionals = macroInset->optionals();
 
 	// detach all arguments
 	vector<MathData> detachedArgs;
@@ -517,7 +519,7 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 
 	// only [] after the last non-empty argument can be dropped later
 	size_t lastNonEmptyOptional = 0;
-	for (size_t l = 0; l < detachedArgs.size() && l < macroInset->optionals(); ++l) {
+	for (size_t l = 0; l < detachedArgs.size() && l < optionals; ++l) {
 		if (!detachedArgs[l].empty())
 			lastNonEmptyOptional = l;
 	}
@@ -525,7 +527,8 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 	// optional arguments to be put back?
 	pos_type p = macroPos + 1;
 	size_t j = 0;
-	for (; j < detachedArgs.size() && j < macroInset->optionals(); ++j) {
+	// WARNING: do not use macroInset below, the insert() call in the lopp will invalidate it!
+	for (; j < detachedArgs.size() && j < optionals; ++j) {
 		// another non-empty parameter follows?
 		bool canDropEmptyOptional = j >= lastNonEmptyOptional;
 
