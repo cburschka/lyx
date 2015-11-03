@@ -1675,6 +1675,8 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 	// XeTeX with TeX fonts is only safe with ASCII encoding,
 	// See #9740 and FIXME in BufferParams::encoding()
+	// FIXME: when only the current paragraph is shown, this seems to be ignored:
+	//   characters encodable in the current encoding are not converted to ASCII-representation.
 	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
 		runparams.encoding = encodings.fromLyXName("ascii");
 
