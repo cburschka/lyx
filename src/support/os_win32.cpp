@@ -544,19 +544,34 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 {
 	string const texinputs = os::latex_path_list(
 			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const otherinputs = os::latex_path_list(path);
 	string const sep = windows_style_tex_paths_ ? ";" : ":";
-	string const oldval = getEnv("TEXINPUTS");
-	string const newval = "." + sep + texinputs + sep + oldval;
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", newval);
+	string const oldtexinputs = getEnv("TEXINPUTS");
+	string const newtexinputs = "." + sep + texinputs + sep + oldtexinputs;
+	string const oldbibinputs = getEnv("BIBINPUTS");
+	string const newbibinputs = "." + sep + otherinputs + sep + oldbibinputs;
+	string const oldbstinputs = getEnv("BSTINPUTS");
+	string const newbstinputs = "." + sep + otherinputs + sep + oldbstinputs;
+	string const oldtexfonts = getEnv("TEXFONTS");
+	string const newtexfonts = "." + sep + otherinputs + sep + oldtexfonts;
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", newtexinputs);
+		setEnv("BIBINPUTS", newbibinputs);
+		setEnv("BSTINPUTS", newbstinputs);
+		setEnv("TEXFONTS", newtexfonts);
+	}
 
 	// reference: http://msdn.microsoft.com/en-us/library/bb762153.aspx
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	bool success = reinterpret_cast<int>(ShellExecute(NULL, action,
 		to_local8bit(from_utf8(filename)).c_str(), NULL, NULL, 1)) > 32;
 
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", oldval);
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", oldtexinputs);
+		setEnv("BIBINPUTS", oldbibinputs);
+		setEnv("BSTINPUTS", oldbstinputs);
+		setEnv("TEXFONTS", oldtexfonts);
+	}
 	return success;
 }
 

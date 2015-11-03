@@ -710,8 +710,12 @@ string latexEnvCmdPrefix(string const & path, string const & lpath)
 	string texinputs_prefix = lyxrc.texinputs_prefix.empty() ? string()
 		: os::latex_path_list(
 			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const allother_prefix = os::latex_path_list(path);
 	string const sep = string(1, os::path_separator(os::TEXENGINE));
 	string const texinputs = getEnv("TEXINPUTS");
+	string const bibinputs = getEnv("BIBINPUTS");
+	string const bstinputs = getEnv("BSTINPUTS");
+	string const texfonts = getEnv("TEXFONTS");
 
 	if (use_lpath) {
 		string const abslpath = FileName::isAbsolute(lpath)
@@ -727,13 +731,28 @@ string latexEnvCmdPrefix(string const & path, string const & lpath)
 
 	if (os::shell() == os::UNIX)
 		return "env TEXINPUTS=\"." + sep + texinputs_prefix
-					  + sep + texinputs + "\" ";
+		                           + sep + texinputs + "\" "
+		         + "BIBINPUTS=\"." + sep + allother_prefix
+		                           + sep + bibinputs + "\" "
+		         + "BSTINPUTS=\"." + sep + allother_prefix
+		                           + sep + bstinputs + "\" "
+		         + "TEXFONTS=\"."  + sep + allother_prefix
+		                           + sep + texfonts + "\" ";
 	else
-		// NOTE: the dummy blank dir is necessary to force the
+		// NOTE: the dummy blank dirs are necessary to force the
 		//       QProcess parser to quote the argument (see bug 9453)
 		return "cmd /d /c set \"TEXINPUTS=." + sep + " "
-						+ sep + texinputs_prefix
-						+ sep + texinputs + "\" & ";
+		                                + sep + texinputs_prefix
+		                                + sep + texinputs + "\" & "
+		               + "set \"BIBINPUTS=." + sep + " "
+		                                + sep + allother_prefix
+		                                + sep + bibinputs + "\" & "
+		               + "set \"BSTINPUTS=." + sep + " "
+		                                + sep + allother_prefix
+		                                + sep + bstinputs + "\" & "
+		               + "set \"TEXFONTS=."  + sep + " "
+		                                + sep + allother_prefix
+		                                + sep + texfonts + "\" & ";
 }
 
 

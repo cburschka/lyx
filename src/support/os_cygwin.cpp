@@ -438,11 +438,21 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 {
 	string const texinputs = os::latex_path_list(
 			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+	string const otherinputs = os::latex_path_list(path);
 	string const sep = windows_style_tex_paths_ ? ";" : ":";
-	string const oldval = getEnv("TEXINPUTS");
-	string const newval = "." + sep + texinputs + sep + oldval;
+	string const oldtexinputs = getEnv("TEXINPUTS");
+	string const newtexinputs = "." + sep + texinputs + sep + oldtexinputs;
+	string const oldbibinputs = getEnv("BIBINPUTS");
+	string const newbibinputs = "." + sep + otherinputs + sep + oldbibinputs;
+	string const oldbstinputs = getEnv("BSTINPUTS");
+	string const newbstinputs = "." + sep + otherinputs + sep + oldbstinputs;
+	string const oldtexfonts = getEnv("TEXFONTS");
+	string const newtexfonts = "." + sep + otherinputs + sep + oldtexfonts;
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
-		setEnv("TEXINPUTS", newval);
+		setEnv("TEXINPUTS", newtexinputs);
+		setEnv("BIBINPUTS", newbibinputs);
+		setEnv("BSTINPUTS", newbstinputs);
+		setEnv("TEXFONTS", newtexfonts);
 		cygwin_internal(CW_SYNC_WINENV);
 	}
 
@@ -453,7 +463,10 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 					win_path.c_str(), NULL, NULL, 1)) > 32;
 
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
-		setEnv("TEXINPUTS", oldval);
+		setEnv("TEXINPUTS", oldtexinputs);
+		setEnv("BIBINPUTS", oldbibinputs);
+		setEnv("BSTINPUTS", oldbstinputs);
+		setEnv("TEXFONTS", oldtexfonts);
 		cygwin_internal(CW_SYNC_WINENV);
 	}
 	return success;

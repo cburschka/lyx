@@ -298,14 +298,29 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 
 	string const texinputs = os::latex_path_list(
 		replaceCurdirPath(path, lyxrc.texinputs_prefix));
-	string const oldval = getEnv("TEXINPUTS");
-	string const newval = ".:" + texinputs + ":" + oldval;
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", newval);
+	string const otherinputs = os::latex_path_list(path);
+	string const oldtexinputs = getEnv("TEXINPUTS");
+	string const newtexinputs = ".:" + texinputs + ":" + oldtexinputs;
+	string const oldbibinputs = getEnv("BIBINPUTS");
+	string const newbibinputs = ".:" + otherinputs + ":" + oldbibinputs;
+	string const oldbstinputs = getEnv("BSTINPUTS");
+	string const newbstinputs = ".:" + otherinputs + ":" + oldbstinputs;
+	string const oldtexfonts = getEnv("TEXFONTS");
+	string const newtexfonts = ".:" + otherinputs + ":" + oldtexfonts;
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", newtexinputs);
+		setEnv("BIBINPUTS", newbibinputs);
+		setEnv("BSTINPUTS", newbstinputs);
+		setEnv("TEXFONTS", newtexfonts);
+	}
 	status = LSOpenFromURLSpec (&launchUrlSpec, NULL);
 	CFRelease(launchItems);
-	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
-		setEnv("TEXINPUTS", oldval);
+	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
+		setEnv("TEXINPUTS", oldtexinputs);
+		setEnv("BIBINPUTS", oldbibinputs);
+		setEnv("BSTINPUTS", oldbstinputs);
+		setEnv("TEXFONTS", oldtexfonts);
+	}
 	return status == 0;
 #else
 	// silence compiler warnings
