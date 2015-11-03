@@ -221,6 +221,8 @@ public:
 	///
 	void writePlaintextTocList(std::string const & type,
 	        odocstringstream & os, size_t max_length) const;
+	///
+	docstring outlinerName(std::string const & type) const;
 
 private:
 	///

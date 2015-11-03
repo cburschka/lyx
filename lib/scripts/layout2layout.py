@@ -193,6 +193,11 @@ import os, re, string, sys
 # New Layout tag "ProvideStyle"
 # Change "IfStyle" to "ModifyStyle"
 
+# Incremented to format 59, 22 November 2015 by gm
+# New Tag "OutlinerName"
+# New Layout tags "AddToToc", "IsTocCaption"
+# New Layout argument tag "IsTocCaption"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -200,7 +205,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 58
+currentFormat = 59
 
 
 def usage(prog_name):
@@ -425,6 +430,10 @@ def convert(lines):
                 i += 1
             continue
 
+        if format == 58:
+            # nothing to do.
+            i += 1
+            continue
 
         if format == 57:
             match = re_IfStyle.match(lines[i])

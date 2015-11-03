@@ -199,6 +199,8 @@ public:
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
 	std::string outputFormat() const { return outputFormat_; }
+	///
+	docstring outlinerName(std::string const & type) const;
 protected:
 	/// Protect construction
 	TextClass();
@@ -327,6 +329,8 @@ protected:
 	bool cite_full_author_list_;
 	/// The possible citation styles
 	std::map<CiteEngineType, std::vector<CitationStyle> > cite_styles_;
+	///
+	std::map<std::string, docstring> outliner_names_;
 private:
 	///////////////////////////////////////////////////////////////////
 	// helper routines for reading layout files
@@ -359,6 +363,8 @@ private:
 	int readCiteEngineType(Lexer &) const;
 	///
 	bool readCiteFormat(Lexer &);
+	///
+	bool readOutlinerName(Lexer &);
 };
 
 

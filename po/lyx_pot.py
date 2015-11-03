@@ -84,6 +84,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     # match LabelString, EndLabelString, LabelStringAppendix and maybe others but no comments
     LabelString = re.compile(r'^[^#]*LabelString\S*\s+(.*\S)\s*$', re.IGNORECASE)
     MenuString = re.compile(r'^[^#]*MenuString\S*\s+(.*\S)\s*$', re.IGNORECASE)
+    OutlinerName = re.compile(r'^[^#]*OutlinerName\s+(\S+|\"[^\"]*\")\s+(\S+|\"[^\"]*\")\s*$', re.IGNORECASE)
     Tooltip = re.compile(r'^\s*Tooltip\S*\s+(.*\S)\s*$', re.IGNORECASE)
     GuiName = re.compile(r'^\s*GuiName\s+(.*\S)\s*$', re.IGNORECASE)
     ListName = re.compile(r'^\s*ListName\s+(.*\S)\s*$', re.IGNORECASE)
@@ -247,6 +248,12 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             res = MenuString.search(line)
             if res != None:
                 string = res.group(1)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno, string)
+                continue
+            res = OutlinerName.search(line)
+            if res != None:
+                string = res.group(2)
                 if not layouttranslations:
                     writeString(out, src, base, lineno, string)
                 continue

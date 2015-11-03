@@ -32,6 +32,7 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
@@ -359,6 +360,13 @@ void TocBackend::writePlaintextTocList(string const & type,
 				break;
 		}
 	}
+}
+
+
+docstring TocBackend::outlinerName(std::string const & type) const
+{
+	return translateIfPossible(
+	    buffer_->params().documentClass().outlinerName(type));
 }
 
 

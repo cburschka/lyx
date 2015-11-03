@@ -44,7 +44,7 @@ InsetLayout::InsetLayout() :
 	freespacing_(false), keepempty_(false), forceltr_(false),
 	forceownlines_(false), needprotect_(false), intoc_(false),
 	spellcheck_(true), resetsfont_(false), display_(true),
-	forcelocalfontswitch_(false)
+	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false)
 {
 	labelfont_.setColor(Color_error);
 }
@@ -80,6 +80,7 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 {
 	enum {
+		IL_ADDTOTOC,
 		IL_ARGUMENT,
 		IL_BABELPREAMBLE,
 		IL_BGCOLOR,
@@ -106,6 +107,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_HTMLSTYLE,
 		IL_HTMLPREAMBLE,
 		IL_INTOC,
+		IL_ISTOCCAPTION,
 		IL_LABELFONT,
 		IL_LABELSTRING,
 		IL_LANGPREAMBLE,
@@ -133,6 +135,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 
 	LexerKeyword elementTags[] = {
+		{ "addtotoc", IL_ADDTOTOC },
 		{ "argument", IL_ARGUMENT },
 		{ "babelpreamble", IL_BABELPREAMBLE },
 		{ "bgcolor", IL_BGCOLOR },
@@ -160,6 +163,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "htmlstyle", IL_HTMLSTYLE },
 		{ "htmltag", IL_HTMLTAG },
 		{ "intoc", IL_INTOC },
+		{ "istoccaption", IL_ISTOCCAPTION },
 		{ "keepempty", IL_KEEPEMPTY },
 		{ "labelfont", IL_LABELFONT },
 		{ "labelstring", IL_LABELSTRING },
@@ -454,6 +458,13 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_DISPLAY:
 			lex >> display_;
 			break;
+		case IL_ADDTOTOC:
+			lex >> toc_type_;
+			add_to_toc_ = !toc_type_.empty();
+			break;
+		case IL_ISTOCCAPTION:
+			lex >> is_toc_caption_;
+			break;
 		case IL_END:
 			getout = true;
 			break;
@@ -569,6 +580,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	bool finished = false;
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
+	arg.is_toc_caption = false;
 	string nr;
 	lex >> nr;
 	bool const postcmd = prefixIs(nr, "post:");
@@ -630,6 +642,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();
+		} else if (tok == "istoccaption") {
+			lex.next();
+			arg.is_toc_caption = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

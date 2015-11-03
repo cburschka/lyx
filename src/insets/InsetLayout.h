@@ -181,6 +181,12 @@ public:
 	bool forcelocalfontswitch() const { return forcelocalfontswitch_; }
 	///
 	docstring const & obsoleted_by() const { return obsoleted_by_; }
+	///
+	bool addToToc() const { return add_to_toc_; }
+	///
+	std::string tocType() const { return toc_type_; }
+	///
+	bool isTocCaption() const { return is_toc_caption_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -296,6 +302,12 @@ private:
 	Layout::LaTeXArgMap latexargs_;
 	///
 	Layout::LaTeXArgMap postcommandargs_;
+	///
+	bool add_to_toc_;
+	///
+	std::string toc_type_;
+	///
+	bool is_toc_caption_;
 };
 
 ///

@@ -108,12 +108,15 @@ enum LayoutTags {
 	LT_RIGHTDELIM,
 	LT_FORCELOCAL,
 	LT_TOGGLE_INDENT,
+	LT_ADDTOTOC,
+	LT_ISTOCCAPTION,
 	LT_INTITLE // keep this last!
 };
 
 /////////////////////
 
 Layout::Layout()
+	: add_to_toc_(false), is_toc_caption_(false)
 {
 	unknown_ = false;
 	margintype = MARGIN_STATIC;
@@ -180,6 +183,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 {
 	// This table is sorted alphabetically [asierra 30March96]
 	LexerKeyword layoutTags[] = {
+		{ "addtotoc",       LT_ADDTOTOC },
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
 		{ "argument",       LT_ARGUMENT },
@@ -209,6 +213,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "innertag",       LT_INNERTAG },
 		{ "inpreamble",     LT_INPREAMBLE },
 		{ "intitle",        LT_INTITLE },
+		{ "istoccaption",   LT_ISTOCCAPTION },
 		{ "itemcommand",    LT_ITEMCOMMAND },
 		{ "itemsep",        LT_ITEMSEP },
 		{ "itemtag",        LT_ITEMTAG },
@@ -638,6 +643,16 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_FORCELOCAL:
 			lex >> forcelocal;
 			break;
+
+		case LT_ADDTOTOC:
+			lex >> toc_type_;
+			add_to_toc_ = !toc_type_.empty();
+			break;
+
+		case LT_ISTOCCAPTION:
+			lex >> is_toc_caption_;
+			break;
+
 		}
 	}
 	lex.popTable();
@@ -951,6 +966,7 @@ void Layout::readArgument(Lexer & lex)
 	bool finished = false;
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
+	arg.is_toc_caption = false;
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
@@ -1011,6 +1027,9 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();
+		} else if (tok == "istoccaption") {
+			lex.next();
+			arg.is_toc_caption = lex.getBool();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

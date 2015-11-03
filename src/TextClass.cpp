@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 58; // rgh: ProvideStyle
+int const LAYOUT_FORMAT = 59; //gm: OutlinerName, AddToToc, IsTocCaption
 
 namespace {
 
@@ -213,7 +213,8 @@ enum TextClassTags {
 	TC_CITEENGINETYPE,
 	TC_CITEFORMAT,
 	TC_DEFAULTBIBLIO,
-	TC_FULLAUTHORLIST
+	TC_FULLAUTHORLIST,
+	TC_OUTLINERNAME
 };
 
 
@@ -249,6 +250,7 @@ LexerKeyword textClassTags[] = {
 	{ "nofloat",           TC_NOFLOAT },
 	{ "noinsetlayout",     TC_NOINSETLAYOUT },
 	{ "nostyle",           TC_NOSTYLE },
+	{ "outlinername",      TC_OUTLINERNAME },
 	{ "outputformat",      TC_OUTPUTFORMAT },
 	{ "outputtype",        TC_OUTPUTTYPE },
 	{ "packageoptions",    TC_PKGOPTS },
@@ -801,6 +803,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				floatlist_.erase(nofloat);
 			}
 			break;
+
+		case TC_OUTLINERNAME:
+			error = !readOutlinerName(lexrc);
+			break;
 		} // end of switch
 
 		// Note that this is triggered the first time through the loop unless
@@ -1292,6 +1298,39 @@ bool TextClass::readFloat(Lexer & lexrc)
 				      "\\alph{" + subtype + "}", docstring());
 	}
 	return getout;
+}
+
+
+bool TextClass::readOutlinerName(Lexer & lexrc)
+{
+	std::string type;
+	docstring name;
+	if (lexrc.next())
+		type = lexrc.getString();
+	else {
+		lexrc.printError("No type given for OutlinerName: `$$Token'.");
+		return false;
+	}
+	if (lexrc.next())
+		name = lexrc.getDocString();
+	else {
+		lexrc.printError("No name given for OutlinerName: `$$Token'.");
+		return false;
+	}
+	outliner_names_[type] = name;
+    return true;
+}
+
+
+docstring TextClass::outlinerName(std::string const & type) const
+{
+	std::map<std::string,docstring>::const_iterator const it
+		= outliner_names_.find(type);
+	if (it == outliner_names_.end()) {
+		LYXERR0("Missing OutlinerName for " << type << "!");
+		return from_utf8(type);
+	} else
+		return it->second;
 }
 
 

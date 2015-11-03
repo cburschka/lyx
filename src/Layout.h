@@ -106,6 +106,7 @@ public:
 		bool autoinsert;
 		bool insertcotext;
 		docstring pass_thru_chars;
+		bool is_toc_caption;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;
@@ -203,6 +204,12 @@ public:
 			|| labeltype == LABEL_CENTERED
 		  || labeltype == LABEL_BIBLIO;
 	}
+	///
+	bool addToToc() const { return add_to_toc_; }
+	///
+	std::string tocType() const { return toc_type_; }
+	///
+	bool isTocCaption() const { return is_toc_caption_; }
 
 	///
 	bool operator==(Layout const &) const;
@@ -459,7 +466,14 @@ private:
 	LaTeXArgMap postcommandargs_;
 	///
 	LaTeXArgMap itemargs_;
+	///
+	bool add_to_toc_;
+	///
+	std::string toc_type_;
+	///
+	bool is_toc_caption_;
 };
+
 
 } // namespace lyx
 
