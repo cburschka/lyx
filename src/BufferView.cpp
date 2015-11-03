@@ -3045,7 +3045,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 	int offset = d->horiz_scroll_offset_;
 	int const MARGIN = 2 * theFontMetrics(d->cursor_.real_current_font).em()
 	                   + row.right_margin;
-	if (row.width() <= workWidth() - row.right_margin) {
+	if (row.right_x() <= workWidth() - row.right_margin) {
 		// Row is narrower than the work area, no offset needed.
 		offset = 0;
 	} else {
@@ -3059,8 +3059,8 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		// Correct the offset to make sure that we do not scroll too much
 		if (offset < 0)
 			offset = 0;
-		if (row.width() - offset < workWidth() - row.right_margin)
-			offset = row.width() - workWidth() + row.right_margin;
+		if (row.right_x() - offset < workWidth() - row.right_margin)
+			offset = row.right_x() - workWidth() + row.right_margin;
 	}
 
 	//lyxerr << "cur_x=" << cur_x << ", offset=" << offset << ", row.wid=" << row.width() << ", margin=" << MARGIN << endl;
