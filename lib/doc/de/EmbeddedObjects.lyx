@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 498
+\lyxformat 499
 \begin_document
 \begin_header
 \origin unavailable
@@ -62,9 +62,6 @@
 
 % beschleunigt die Berechnung von langen Tabellen
 \setcounter{LTchunksize}{100}
-
-% wird für skalierte und rotierte Boxen benötigt
-\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % wird bei farbigen Tabellen benutzt
 \@ifundefined{textcolor}
@@ -169,6 +166,7 @@
 \use_default_options false
 \begin_modules
 initials
+graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \language ngerman
@@ -316,7 +314,7 @@ Autor: Uwe Stöhr <uwestoehr@web.de>
 
 
 \family sans
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Standard
@@ -35149,52 +35147,8 @@ Rotierte und skalierte Boxen
 \end_layout
 
 \begin_layout Standard
-Um die Befehle dieses Abschnitts nutzen zu können, muss das Paket 
-\series bold
-graphicx
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Pakete ! graphicx
-\end_layout
-
-\end_inset
-
- im \SpecialChar LaTeX
--Vorspann mit folgendem Befehl geladen werden:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{rotatebox}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-usepackage{graphicx}}{}
+Um die in diesem Abschnitt beschriebenen Boxen nutzen zu können, muss das
+ Modul ?? in den Dokumenteinstellungen geladen sein.
 \end_layout
 
 \begin_layout Standard
@@ -35256,26 +35210,27 @@ Rotiertes Material
 \end_layout
 
 \begin_layout Standard
-Um Text zu drehen, verwendet man den Befehl 
-\series bold
-
-\backslash
-rotatebox
-\series default
- im \SpecialChar TeX
--Code nach folgendem Schema:
+Um Text zu drehen, setzt man ihn in eine Rotationsbox.
+ Solch eine Box wird über das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
+Rotationsbox
+\family default
+ eingefügt.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-rotatebox[Drehpunkt]{Winkel}{Boxinhalt}
-\end_layout
-
-\begin_layout Standard
-Der Drehpunkt wird mit 
+Der Drehpunkt kann über die Einfügung 
+\family sans
+Drehpunkt
+\family default
+ (Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Drehpunkt
+\family default
+) in der Form 
 \series bold
 origin=Position
 \series default
@@ -35321,43 +35276,51 @@ l
 \end_layout
 
 \begin_layout Standard
-Im folgenden Beispiel wurde vor dem Text der Befehl 
+Im folgenden Beispiel wurde
 \series bold
-
-\backslash
-rotatebox[origin=c]{60}{
+ origin=c
 \series default
- im \SpecialChar TeX
--Modus eingegeben.
- Nach dem Text wurde die schließende Klammer 
+ in the Einfügung 
+\family sans
+Drehpunkt
+\family default
+ und 
 \series bold
-}
+60
 \series default
- wiederum im \SpecialChar TeX
--Modus eingegeben.
+ in die Einfügung 
+\family sans
+Winkel
+\family default
+ eingegeben.
 \end_layout
 
 \begin_layout Standard
 Dies ist eine Zeile 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=c
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=c]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
 
 mit rotiertem
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35371,14 +35334,25 @@ Der Boxinhalt kann auch eine andere Box oder eine eingebettete Formel sein:
 
 \begin_layout Standard
 Dies ist eine Zeile 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=r
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=r]{-60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-60
 \end_layout
 
 \end_inset
@@ -35409,25 +35383,30 @@ mit rotiertem
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  umrandeten Text 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -35437,12 +35416,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35456,14 +35429,25 @@ Oder ein Bild oder Tabelle:
 
 \begin_layout Standard
 Dies ist eine Zeile 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{90}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+90
 \end_layout
 
 \end_inset
@@ -35477,25 +35461,20 @@ rotatebox[origin=lb]{90}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  mit einem rotierten Bild 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 2
+status open
 
-
-\backslash
-rotatebox[origin=l]{-90}{
+\begin_layout Plain Layout
+-90
 \end_layout
 
 \end_inset
@@ -35551,12 +35530,6 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset

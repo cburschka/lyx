@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 498
+\lyxformat 499
 \begin_document
 \begin_header
 \origin unavailable
@@ -64,9 +64,6 @@
 
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
-
-% used for scaled and rotated boxes
-\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % used for colored tables
 \@ifundefined{textcolor}
@@ -166,6 +163,7 @@
 \use_default_options false
 \begin_modules
 initials
+graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -296,7 +294,7 @@ author: Uwe Stöhr
 
 
 \family sans
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Standard
@@ -16778,7 +16776,7 @@ status collapsed
 \begin_layout Standard
 As you will see, the content of the first and last table row is not correctly
  aligned.
- To get this alignment, the minipage box must be set into a raisebox
+ To get this alignment, the minipage box must be set into a raisebox.
 \begin_inset Foot
 status collapsed
 
@@ -16799,7 +16797,6 @@ reference "subsec:Vertical-Alignment"
 
 \end_inset
 
-.
  In the example above the second table in the first item is aligned using
  the \SpecialChar TeX
  Code command
@@ -35020,52 +35017,11 @@ Rotated and Scaled Boxes
 \end_layout
 
 \begin_layout Standard
-To use the commands described in this section, the \SpecialChar LaTeX
--package 
-\series bold
-graphicx
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--packages ! graphicx
-\end_layout
-
-\end_inset
-
- needs to be loaded in the document preamble with the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{rotatebox}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-usepackage{graphicx}}{}
+To use the boxes described in this section, the module 
+\family sans
+GraphicBoxes
+\family default
+ must be loaded in the document settings.
 \end_layout
 
 \begin_layout Standard
@@ -35128,26 +35084,26 @@ Rotated Material
 
 \begin_layout Standard
 To rotate material, you can put it into a rotated box.
- Such a box is created using the command 
-\series bold
-
-\backslash
-rotatebox
-\series default
- in \SpecialChar TeX
- Code with the following scheme:
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Rotatebox
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-rotatebox[rotation origin]{rotation angle}{box content}
-\end_layout
-
-\begin_layout Standard
-The rotation origin is specified in the form 
+The rotation origin can be specified via the inset 
+\family sans
+Origin
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Origin
+\family default
+) in the form 
 \series bold
 origin=position
 \series default
@@ -35189,50 +35145,51 @@ l
 \end_layout
 
 \begin_layout Standard
-In the following example the command 
+In the following example 
 \series bold
-
-\backslash
-rotatebox[origin=c]{60}{
+origin=c
 \series default
- was inserted as \SpecialChar TeX
- Code before the text 
-\begin_inset Quotes eld
-\end_inset
-
-with rotated
-\begin_inset Quotes erd
-\end_inset
-
-; after the text the box was closed by a closing brace 
+ was inserted to the 
+\family sans
+Option
+\family default
+ inset and 
 \series bold
-}
+60
 \series default
- in \SpecialChar TeX
- Code.
+ was inserted to the 
+\family sans
+Angle
+\family default
+ inset.
 \end_layout
 
 \begin_layout Standard
 This is a line 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=c
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=c]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
 
 with rotated
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35245,15 +35202,26 @@ The box content can also be another box or an inline formula:
 \end_layout
 
 \begin_layout Standard
-This is a line
-\begin_inset ERT
-status collapsed
+This is a line 
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=r
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=r]{-60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-60
 \end_layout
 
 \end_inset
@@ -35284,25 +35252,30 @@ with rotated
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  framed text 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -35312,12 +35285,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35330,15 +35297,26 @@ or an image or table:
 \end_layout
 
 \begin_layout Standard
-This is a line
-\begin_inset ERT
-status collapsed
+This is a line 
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{90}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+90
 \end_layout
 
 \end_inset
@@ -35352,25 +35330,20 @@ rotatebox[origin=lb]{90}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  with a rotated image 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 2
+status open
 
-
-\backslash
-rotatebox[origin=l]{-90}{
+\begin_layout Plain Layout
+-90
 \end_layout
 
 \end_inset
@@ -35426,12 +35399,6 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset

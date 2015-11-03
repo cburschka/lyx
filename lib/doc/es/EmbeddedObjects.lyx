@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 498
+\lyxformat 499
 \begin_document
 \begin_header
 \origin unavailable
@@ -64,9 +64,6 @@
 
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
-
-% used for scaled and rotated boxes
-\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % used for colored tables
 \@ifundefined{textcolor}
@@ -170,6 +167,7 @@
 \use_default_options false
 \begin_modules
 initials
+graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \language spanish
@@ -311,7 +309,7 @@ Traducción de: Ignacio García
 
 
 \family sans
-Versión 2.1.x
+Versión 2.2.x
 \end_layout
 
 \begin_layout Standard
@@ -34620,53 +34618,13 @@ Marcos girados y a escala
 \end_layout
 
 \begin_layout Standard
-Para poder usar los comandos descritos en esta sección hay que cargar el
- paquete \SpecialChar LaTeX
- 
-\series bold
-graphicx
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--paquetes ! graphicx
-\end_layout
-
-\end_inset
-
- en el preámbulo del documento, con el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{rotatebox}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-usepackage{graphicx}}{}
+Para poder usar
+\lang english
+ the boxes described in this section, the module 
+\family sans
+GraphicBoxes
+\family default
+ must be loaded in the document settings.
 \end_layout
 
 \begin_layout Standard
@@ -34728,27 +34686,32 @@ Material rotado
 \end_layout
 
 \begin_layout Standard
-Para girar material debes ponerlo en un marco girado.
- Los marcos girados se crean con el comando 
-\series bold
-
-\backslash
-rotatebox
-\series default
- en código \SpecialChar TeX
-, según el esquema:
+Para girar material debes ponerlo
+\lang english
+ into a rotated box.
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Rotatebox
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-rotatebox[origen de rotación]{ángulo de rotación}{contenido del marco}
-\end_layout
-
-\begin_layout Standard
-El origen de rotación se especifica en la forma 
+El origen de rotación 
+\lang english
+can be specified via the inset 
+\family sans
+Origin
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Origin
+\family default
+\lang spanish
+) en la forma 
 \series bold
 origin=position
 \series default
@@ -34790,39 +34753,52 @@ l
 \end_layout
 
 \begin_layout Standard
-En el siguiente ejemplo se ha insertado el comando 
+En el siguiente ejemplo 
 \series bold
-
-\backslash
-rotatebox[origin=c]{60}{ 
+\lang english
+origin=c
 \series default
-como código \SpecialChar TeX
- delante del texto «con rotación»; después del texto, el marco
- se ha cerrado con llave en código \SpecialChar TeX
-.
+ was inserted to the 
+\family sans
+Option
+\family default
+ inset and 
+\series bold
+60
+\series default
+ was inserted to the 
+\family sans
+Angle
+\family default
+ inset.
 \end_layout
 
 \begin_layout Standard
 Esta línea contiene texto 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=c
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=c]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
 
 con rotación
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -34836,14 +34812,25 @@ El contenido del marco puede ser también otro marco o una ecuación en línea:
 
 \begin_layout Standard
 En esta línea hay texto enmarcado 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=r
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=r]{-60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-60
 \end_layout
 
 \end_inset
@@ -34874,25 +34861,30 @@ con rotación
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  y 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -34902,12 +34894,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -34921,14 +34907,25 @@ O una imagen o un cuadro:
 
 \begin_layout Standard
 Aquí hay una imagen girada 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{90}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+90
 \end_layout
 
 \end_inset
@@ -34942,25 +34939,20 @@ rotatebox[origin=lb]{90}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  y un cuadro girado 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 2
+status open
 
-
-\backslash
-rotatebox[origin=l]{-90}{
+\begin_layout Plain Layout
+-90
 \end_layout
 
 \end_inset
@@ -35016,17 +35008,11 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-
+.
 \begin_inset Index idx
 status collapsed
 

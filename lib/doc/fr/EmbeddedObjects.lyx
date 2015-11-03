@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 498
+\lyxformat 499
 \begin_document
 \begin_header
 \origin unavailable
@@ -64,9 +64,6 @@
 
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
-
-% used for scaled and rotated boxes
-\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % used for colored tables
 \@ifundefined{textcolor}
@@ -172,6 +169,7 @@
 \use_default_options false
 \begin_modules
 initials
+graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \language french
@@ -321,7 +319,7 @@ Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
 
 
 \family sans
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Standard
@@ -35711,53 +35709,13 @@ Les boîtes pivotées et redimensionnées
 \end_layout
 
 \begin_layout Standard
-Pour pouvoir utiliser les commandes décrites dans cette section, vous devez
- charger le paquetage \SpecialChar LaTeX
- 
-\series bold
-graphicx
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages \SpecialChar LaTeX
- ! graphicx
-\end_layout
-
-\end_inset
-
- dans le préambule de votre document avec la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{rotatebox}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-usepackage{graphicx}}{}
+Pour pouvoir utiliser
+\lang english
+ the boxes described in this section, the module 
+\family sans
+GraphicBoxes
+\family default
+ must be loaded in the document settings.
 \end_layout
 
 \begin_layout Description
@@ -35824,29 +35782,32 @@ Pivoter des objets
 \end_layout
 
 \begin_layout Standard
-Pour faire tourner des objets, vous pouvez les mettre dans une boîte pivotante
- (rotated).
- Une telle boîte est créée avec la commande 
-\series bold
-
-\backslash
-rotatebox
-\series default
- en code \SpecialChar TeX
- avec la syntaxe
+Pour faire tourner des objets, vous pouvez les mettre dans une
+\lang english
+ rotated box.
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Rotatebox
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-rotatebox[origine rotation]{angle rotation}{contenu de la boîte}
-\end_layout
-
-\begin_layout Standard
-La position du pivot est donnée par l'origine de rotation spécifiée sous
- la forme 
+La position du pivot 
+\lang english
+can be specified via the inset 
+\family sans
+Origin
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Origin
+\family default
+\lang french
+) sous la forme 
 \series bold
 origin=position
 \series default
@@ -35904,55 +35865,52 @@ l
 \end_layout
 
 \begin_layout Standard
-Dans l'exemple qui suit, la commande 
+Dans l'exemple qui suit, 
 \series bold
-
-\backslash
-rotatebox[origin=c]{60}{
+\lang english
+origin=c
 \series default
- a été insérée en code \SpecialChar TeX
- juste avant le texte 
-\begin_inset Quotes fld
-\end_inset
-
-pivoté de 90°
-\begin_inset Quotes frd
-\end_inset
-
- ; la boîte est refermée juste après le texte par une accolade fermante
- 
-\begin_inset Quotes fld
-\end_inset
-
-}
-\begin_inset Quotes frd
-\end_inset
-
- en code \SpecialChar TeX
-.
+ was inserted to the 
+\family sans
+Option
+\family default
+ inset and 
+\series bold
+60
+\series default
+ was inserted to the 
+\family sans
+Angle
+\family default
+ inset.
 \end_layout
 
 \begin_layout Standard
-Voici une ligne avec du texte 
-\begin_inset ERT
-status collapsed
+Voici une ligne avec du 
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{60}{
+\begin_layout Plain Layout
+origin=c
 \end_layout
 
 \end_inset
 
-pivoté de 60°
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
+60
+\end_layout
 
-}
+\end_inset
+
+texte pivoté
 \end_layout
 
 \end_inset
@@ -35965,15 +35923,26 @@ La boîte peut contenir une autre boîte ou une formule en ligne :
 \end_layout
 
 \begin_layout Standard
-Voici une ligne avec du texte 
-\begin_inset ERT
-status collapsed
+Voici une ligne avec du 
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=r
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=r]{-60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-60
 \end_layout
 
 \end_inset
@@ -35998,31 +35967,36 @@ backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
-pivoté de -60°
+texte pivoté
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  et encadré 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -36032,12 +36006,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -36050,15 +36018,26 @@ ou encore une figure ou un tableau :
 \end_layout
 
 \begin_layout Standard
-Voici une ligne
-\begin_inset ERT
-status collapsed
+Voici une ligne 
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{90}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+90
 \end_layout
 
 \end_inset
@@ -36072,25 +36051,20 @@ rotatebox[origin=lb]{90}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  avec une image pivotée de 90° 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 2
+status open
 
-
-\backslash
-rotatebox[origin=l]{-90}{
+\begin_layout Plain Layout
+-90
 \end_layout
 
 \end_inset
@@ -36146,12 +36120,6 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset

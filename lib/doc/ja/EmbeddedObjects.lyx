@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 498
+\lyxformat 499
 \begin_document
 \begin_header
 \origin unavailable
@@ -70,9 +70,6 @@
 
 % speed up the longtable calculation
 \setcounter{LTchunksize}{100}
-
-% used for scaled and rotated boxes
-\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 
 % used for colored tables
 \@ifundefined{textcolor}
@@ -180,6 +177,7 @@
 \use_default_options false
 \begin_modules
 initials
+graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -343,7 +341,7 @@ status collapsed
 
 
 \family sans
-第2.1.x版
+第2.2.x版
 \end_layout
 
 \begin_layout Standard
@@ -32981,57 +32979,13 @@ fcolorbox{枠の色}{ボックスの色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-本節で述べられているコマンドを使用するには、文書プリアンブルで
-\end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{rotatebox}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-{
-\backslash
-usepackage{graphicx}}{}
-\end_layout
-
-\begin_layout Standard
-というコマンドを使用して、
-\series bold
-graphicx
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
-ぱっけーじ@\SpecialChar LaTeX
-パッケージ ! graphicx
-\end_layout
-
-\end_inset
-
-\SpecialChar LaTeX
-パッケージを読み込む必要があります。
+\lang english
+To use the boxes described in this section, the module 
+\family sans
+GraphicBoxes
+\family default
+ must be loaded in the document settings.
 \end_layout
 
 \begin_layout Standard
@@ -33113,30 +33067,36 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-何かを回転させたい場合には、回転させたボックスに入れましょう。そのようなボックスは、\SpecialChar TeX
-コードで以下のような書式で
-\series bold
 
-\backslash
-rotatebox
-\series default
-コマンドを使用すれば作成することができます。
+\lang english
+To rotate material, you can put it into a rotated box.
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Rotatebox
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 
+\lang english
+The rotation origin can be specified via the inset 
+\family sans
+Origin
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Origin
+\family default
+) in the form 
 \series bold
-
-\backslash
-rotatebox[回転の原点]{回転角}{ボックスの内容}
-\end_layout
-
-\begin_layout Standard
-回転の原点は、
-\series bold
+\lang japanese
 origin=位置
 \series default
-の形で指定します。位置として指定可能なのは、
+。位置として指定可能なのは、
 \emph on
 c
 \emph default
@@ -33168,47 +33128,58 @@ l
 \end_layout
 
 \begin_layout Standard
-以下の例では、「回転した」文章の前に\SpecialChar TeX
-コードで
-\series bold
 
-\backslash
-rotatebox[origin=c]{60}{
-\series default
-というコマンドを挿入し、文章の後に\SpecialChar TeX
-コードで閉じ括弧
+\lang english
+In the following example 
 \series bold
-}
+origin=c
 \series default
-でボックスを閉じています。
+ was inserted to the 
+\family sans
+Option
+\family default
+ inset and 
+\series bold
+60
+\series default
+ was inserted to the 
+\family sans
+Angle
+\family default
+ inset.
 \end_layout
 
 \begin_layout Standard
 これは、
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=c
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=c]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
 
 回転した
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
- 文章を含む行です。
+文章を含む行です。
 \end_layout
 
 \begin_layout Standard
@@ -33217,14 +33188,25 @@ status collapsed
 
 \begin_layout Standard
 これは、
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=r
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=r]{-60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -33255,25 +33237,30 @@ status open
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 枠付き文章と
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{60}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+60
 \end_layout
 
 \end_inset
@@ -33283,12 +33270,6 @@ rotatebox[origin=lb]{60}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -33302,14 +33283,25 @@ status collapsed
 
 \begin_layout Standard
 これは、
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+origin=lb
+\end_layout
+
+\end_inset
 
 
-\backslash
-rotatebox[origin=lb]{90}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+90
 \end_layout
 
 \end_inset
@@ -33323,25 +33315,20 @@ rotatebox[origin=lb]{90}{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
 回転した画像と
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 2
+status open
 
-
-\backslash
-rotatebox[origin=l]{-90}{
+\begin_layout Plain Layout
+-90
 \end_layout
 
 \end_inset
@@ -33397,12 +33384,6 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
