@@ -39,7 +39,6 @@ export/doc/uk/Intro_dvi3_systemF
 # XeTeX/LuaTeX with system fonts.
 export/doc/(de/|es/|fr/)Customization_pdf4_systemF
 export/doc/(es/|fr/)Math_dvi3_systemF
-export/doc/(es/)Math_pdf4_systemF
 export/doc/(es|fr|id)/UserGuide_pdf4_systemF
 export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
@@ -104,7 +103,6 @@ export/doc/el/Intro_pdf5_systemF
 # to work with pdflatex and possibly lualatex.
 export/examples/PDF-(form)_(dvi.*|pdf[^25]*)
 export/examples/PDF-comment_dvi3_.*F
-export/examples/PDF-comment_pdf4_texF
 #
 export/templates/IUCr-article_pdf4_systemF
 #
@@ -117,4 +115,4 @@ export/examples/H-P-statements_pdf[45]_systemF
 # The math document now depends on the mhchem package which produces wrong
 # output with XeTeX/LuaTeX and both TeX fonts and non-TeX fonts:
 # https://www.mail-archive.com/search?l=mid&q=n0sne9%24iis%241%40ger.gmane.org
-export/doc(|/de|/es|/fr)/Math.*(texF|systemF)
+export/doc(|/de|/es|/fr)/Math.*systemF
