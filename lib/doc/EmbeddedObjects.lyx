@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 499
+\lyxformat 500
 \begin_document
 \begin_header
 \origin unavailable
@@ -35033,7 +35033,7 @@ status open
 \series bold
 Note:
 \series default
- Not all DVI-viewers are able to display rotated or scaled material.
+ Not all DVI viewers are able to display rotated or scaled material.
 \end_layout
 
 \end_inset
@@ -35083,7 +35083,11 @@ Rotated Material
 \end_layout
 
 \begin_layout Standard
-To rotate material, you can put it into a rotated box.
+To rotate material, you can put it into a 
+\family sans
+Rotatebox
+\family default
+.
  Such a box is inserted via the menu 
 \family sans
 Insert\SpecialChar menuseparator
@@ -35426,6 +35430,29 @@ Table Customization ! Rotating
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If the 
+\family sans
+Angle
+\family default
+ inset is empty or contains other characters than numbers you will get \SpecialChar LaTeX
+
+ errors when viewing/exporting the document.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Scaled Boxes
 \begin_inset Index idx
@@ -35451,107 +35478,123 @@ Scaled Material
 \end_layout
 
 \begin_layout Standard
-To scale material the commands 
-\series bold
+To scale material put it into a 
+\family sans
+Scalebox
+\family default
+.
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Scalebox
+\family default
+.
+\end_layout
 
-\backslash
-scalebox
+\begin_layout Standard
+The 
+\family sans
+Scalebox
+\family default
+ inset has the mandatory inset 
+\family sans
+H-Factor
+\family default
+ and the optional inset 
+\family sans
+V-Factor
+\family default
+ (inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+V-Factor)
+\family default
+.
+ Input there there horizontal and vertical scale factor, respectively.
+ If no 
+\family sans
+V-Factor
+\family default
+ inset is used, the horizontal factor will also be used as the vertical
+ one.
+\end_layout
+
+\begin_layout Standard
+To get for example the double text size, compared to the document text size,
+ insert 
+\series bold
+2
 \series default
+ into the 
+\family sans
+H-Factor
+\family default
+ inset.
+ An example: 
+\begin_inset Flex Scalebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Hello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+2
+\series default
+ as 
+\family sans
+H-Factor
+\family default
  and 
 \series bold
-
-\backslash
-resizebox
+1
 \series default
- can be used as \SpecialChar TeX
- Code.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-scalebox
-\series default
- is used with the following scheme:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-scalebox{horizontal}[vertical]{box content}
-\end_layout
-
-\begin_layout Standard
-Horizontal and vertical are the corresponding scaling factors.
- If no vertical scaling factor is given, the horizontal factor will also
- be used as the vertical one.
-\end_layout
-
-\begin_layout Standard
-The command 
-\series bold
-
-\backslash
-scalebox{2}{Hello}
-\series default
- creates for example a double size 
-\begin_inset ERT
-status collapsed
+ as 
+\family sans
+V-Factor
+\family default
+ distorts the 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{2}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
 
 Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-, compared with the document text size.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-scalebox{2}[1]{Hello}
-\series default
- on the other hand distorts the 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-scalebox{2}[1]{
-\end_layout
-
-\end_inset
-
-Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35561,32 +35604,47 @@ status collapsed
 
 \begin_layout Standard
 If the scaling factor is negative, the box content will be mirrored.
- Therefore the command 
+ Therefore 
 \series bold
-
-\backslash
-scalebox{-1}[1]{Hello}
+-1
 \series default
+ as 
+\family sans
+H-Factor
+\family default
+ and 
+\series bold
+1
+\series default
+ as 
+\family sans
+V-Factor
+\family default
  can be used to create mirror writing: 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{-1}[1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
 
 Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35597,30 +35655,45 @@ status collapsed
 \begin_layout Standard
 
 \series bold
-
-\backslash
-scalebox{1}[-1]{Hello}
+-1
 \series default
+ as 
+\family sans
+H-Factor
+\family default
+ and 
+\series bold
+1
+\series default
+ as 
+\family sans
+V-Factor
+\family default
  reflects the 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{1}[-1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-1
 \end_layout
 
 \end_inset
 
 Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35629,128 +35702,40 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Equivalent to 
+The 
+\family sans
+Reflectbox
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Reflectbox
+\family default
+) is equivalent to 
 \series bold
-
-\backslash
-scalebox{-1}[1]{box content}
+-1
 \series default
- there exists the command
-\begin_inset Newline newline
-\end_inset
-
-
+ as 
+\family sans
+H-Factor
+\family default
+ and 
 \series bold
-
-\backslash
-reflectbox{box content}
+1
 \series default
+ as 
+\family sans
+V-Factor 
+\family default
+for a 
+\family sans
+Scalebox
+\family default
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-The command 
-\series bold
-
-\backslash
-resizebox
-\series default
- is used to scale the box to a defined width and height.
- The command scheme is:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-resizebox{width}{height}{box content}
-\end_layout
-
-\begin_layout Standard
-If one of the two command arguments given is an exclamation mark 
-\series bold
-!
-\series default
-, the size is set so that the aspect ratio of the box content is kept.
-\end_layout
-
-\begin_layout Standard
-The command 
-\series bold
-
-\backslash
-resizebox{2cm}{1cm}{Hello}
-\series default
- produces: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{2cm}{1cm}{
-\end_layout
-
-\end_inset
-
-Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-The command 
-\series bold
-
-\backslash
-resizebox{2cm}{!}{Hello}
-\series default
- produces: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{2cm}{!}{
-\end_layout
-
-\end_inset
-
-Hello
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \begin_inset Note Greyedout
 status open
 
@@ -35759,21 +35744,191 @@ status open
 \series bold
 Note:
 \series default
- When arguments of 
-\series bold
+ If the 
+\family sans
+H-Factor
+\family default
+ inset is empty or contains other characters than numbers you will get LaTeX
+ errors when viewing/exporting the document.
+\end_layout
 
-\backslash
-scalebox
-\series default
- or 
-\series bold
+\end_inset
 
-\backslash
-resizebox
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+The 
+\family sans
+Resizebox
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Resizebox
+\family default
+) is used to scale the content to a defined width and height.
+ The 
+\family sans
+Resizebox
+\family default
+ inset has the mandatory inset 
+\family sans
+Width
+\family default
+ and the optional inset 
+\family sans
+Height
+\family default
+ (inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Height)
+\family default
+.
+ Input there there width and height, respectively, as value with a unit.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Units"
+
+\end_inset
+
+ lists the possible units.
+ If there is an exclamation mark 
+\series bold
+!
 \series default
- are set to zero, no \SpecialChar LaTeX
--errors occur when exporting the document but the exported
- files can not or only partly be displayed.
+ in of of the two insets, the size is set so that the aspect ratio of the
+ box content is kept.
+ If no 
+\family sans
+Height
+\family default
+ inset is used an exclamation mark will internally be used for the height.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+2cm
+\series default
+ as 
+\family sans
+Width
+\family default
+ and 
+\series bold
+1cm
+\series default
+ as 
+\family sans
+Height
+\family default
+ produces: 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1cm
+\end_layout
+
+\end_inset
+
+Hello
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+2cm
+\series default
+ as 
+\family sans
+Width
+\family default
+ and 
+\series bold
+!
+\series default
+ as 
+\family sans
+Height
+\family default
+ (or no 
+\family sans
+Height
+\family default
+) produces: 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+Hello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If the 
+\family sans
+Width
+\family default
+ inset is empty or contains an invalid unit you will get LaTeX errors when
+ viewing/exporting the document.
 \end_layout
 
 \end_inset
@@ -35790,64 +35945,77 @@ resizebox
 
 \begin_layout Standard
 The boxes can be combined in any order.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the command
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{Hello}}}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-produces:
-\begin_inset Separator parbreak
-\end_inset
-
-
+ As example a 
+\family sans
+Reflectbox
+\family default
+ inside a 
+\family sans
+Resizebox
+\family default
+ which is in turn inside a 
+\family sans
+Rotatebox
+\family default
+:
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+origin=c
 \end_layout
 
 \end_inset
 
-Hello
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
+-45
+\end_layout
 
-}}}
+\end_inset
+
+
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
+Hello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35858,31 +36026,29 @@ status collapsed
 \begin_layout Standard
 \noindent
 Images, tables, and inline formulas are allowed as box content:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-30}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename clipart/platypus.eps
 	lyxscale 50
@@ -35891,34 +36057,34 @@ reflectbox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -35969,44 +36135,43 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+3cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\int A\,\mathrm{d}x=B$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-}}}
+
 \end_layout
 
 \end_inset

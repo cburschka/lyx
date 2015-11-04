@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 499
+\lyxformat 500
 \begin_document
 \begin_header
 \origin unavailable
@@ -34618,9 +34618,9 @@ Marcos girados y a escala
 \end_layout
 
 \begin_layout Standard
-Para poder usar
+Para poder usar los marcos 
 \lang english
- the boxes described in this section, the module 
+described in this section, the module 
 \family sans
 GraphicBoxes
 \family default
@@ -34688,7 +34688,11 @@ Material rotado
 \begin_layout Standard
 Para girar material debes ponerlo
 \lang english
- into a rotated box.
+ into a 
+\family sans
+Rotatebox
+\family default
+.
  Such a box is inserted via the menu 
 \family sans
 Insert\SpecialChar menuseparator
@@ -35035,6 +35039,32 @@ Cuadros ! Girar
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ If the 
+\family sans
+Angle
+\family default
+ inset is empty or contains other characters than numbers you will get \SpecialChar LaTeX
+
+ errors when viewing/exporting the document.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Marcos para variar la escala
 \begin_inset Index idx
@@ -35060,152 +35090,138 @@ Material a escala
 \end_layout
 
 \begin_layout Standard
-Para modificar las proporciones de un material se pueden usar los comandos
- 
-\series bold
-
-\backslash
-scalebox
-\series default
- y 
-\series bold
-
-\backslash
-resizebox 
-\series default
-en código \SpecialChar TeX
+Para modificar las proporciones de un material
+\lang english
+ put it into a 
+\family sans
+Scalebox
+\family default
+.
+ Such a box is inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Scalebox
+\family default
 .
 \end_layout
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-scalebox
-\series default
- se usa con el esquema siguiente:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-scalebox{horizontal}[vertical]{contenido del marco}
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-horizontal
-\emph default
- y 
-\emph on
-vertical
-\emph default
- son los factores de escala correspondientes.
- Si no se especifica factor vertical, su valor será el mismo que el factor
- de escala horizontal.
- 
-\end_layout
-
-\begin_layout Standard
-Por ejemplo, el comando 
-\series bold
-
-\backslash
-scalebox{2}{Hola} 
-\series default
-crea un 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-scalebox{2}{
-\end_layout
-
-\end_inset
-
-Hola
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- de doble tamaño que el texto normal del documento.
-\end_layout
-
-\begin_layout Standard
-El comando 
-\series bold
-
-\backslash
-scalebox{2}[1]{Hola} 
-\series default
-distorsiona el 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-scalebox{2}[1]{
-\end_layout
-
-\end_inset
-
-Hola
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
+\lang english
+The 
+\family sans
+Scalebox
+\family default
+ inset has the mandatory inset 
+\family sans
+H-Factor
+\family default
+ and the optional inset 
+\family sans
+V-Factor
+\family default
+ (inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+V-Factor)
+\family default
 .
+ Input there there horizontal and vertical scale factor, respectively.
+ If no 
+\family sans
+V-Factor
+\family default
+ inset is used
+\lang spanish
+, su valor será el mismo que el factor de escala horizontal.
 \end_layout
 
 \begin_layout Standard
-Si un factor de escala es negativo el contenido del marco es reflejado.
- Por eso el comando 
-\series bold
 
-\backslash
-scalebox{-1}[1]{Hola} 
+\lang english
+To get for example 
+\lang spanish
+de doble tamaño que el texto normal del documento
+\lang english
+, insert 
+\series bold
+2
 \series default
-puede usarse para reflejar un texto: 
-\begin_inset ERT
-status collapsed
+ into the 
+\family sans
+H-Factor
+\family default
+ inset.
+ An example
+\lang spanish
+: 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-scalebox{-1}[1]{
+\begin_layout Plain Layout
+2
 \end_layout
 
 \end_inset
 
 Hola
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+2
+\series default
+ as 
+\family sans
+H-Factor
+\family default
+ and 
+\series bold
+1
+\series default
+ as 
+\family sans
+V-Factor
+\family default
+ distorts the
+\lang spanish
+ 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-}
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+Hola
 \end_layout
 
 \end_inset
@@ -35215,195 +35231,377 @@ status collapsed
 
 \begin_layout Standard
 
+\lang english
+If the scaling factor is negative, the box content will be mirrored.
+ Therefore 
 \series bold
-
-\backslash
-scalebox{1}[-1]{Hola} 
+-1
 \series default
-refleja el 
-\begin_inset ERT
-status collapsed
+ as 
+\family sans
+H-Factor
+\family default
+ and 
+\series bold
+1
+\series default
+ as 
+\family sans
+V-Factor
+\family default
+ can be used to create mirror writing
+\lang spanish
+: 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{1}[-1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
 
 Hola
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
- sobre la base.
+
 \end_layout
 
 \begin_layout Standard
-El comando 
-\series bold
 
-\backslash
-scalebox{-1}[1]{contenido del cuadro} 
+\series bold
+\lang english
+-1
 \series default
-puede sustituirse por 
+ as 
+\family sans
+H-Factor
+\family default
+ and 
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-reflectbox{contenido del cuadro}
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-El comando 
-\series bold
-
-\backslash
-resizebox
+1
 \series default
- sirve para redimensionar el marco a una altura y anchura definidas, según
- el esquema:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-resizebox{anchura}{altura}{contenido del marco}
-\end_layout
-
-\begin_layout Standard
-Si uno de los argumentos del comando es un signo de exclamación, 
-\series bold
-!
-\series default
-, la escala se hace de forma que se mantiene la relación de las dimensiones
- originales del contenido del marco.
+ as 
+\family sans
+V-Factor
+\family default
+ reflects the
+\lang spanish
  
-\end_layout
-
-\begin_layout Standard
-El comando 
-\series bold
-
-\backslash
-resizebox{2cm}{1cm}{Hola}
-\series default
- genera: 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
 
 
-\backslash
-resizebox{2cm}{1cm}{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-1
 \end_layout
 
 \end_inset
 
 Hola
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
+ 
+\lang english
+at the base line.
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
+\begin_layout Standard
 
-El comando 
+\lang english
+The 
+\family sans
+Reflectbox
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Reflectbox
+\family default
+) is equivalent to 
 \series bold
-
-\backslash
-resizebox{2cm}{!}{Hola}
+-1
 \series default
- genera: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{2cm}{!}{
-\end_layout
-
-\end_inset
-
-Hola
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+ as 
+\family sans
+H-Factor
+\family default
+ and 
+\series bold
+1
+\series default
+ as 
+\family sans
+V-Factor 
+\family default
+for a 
+\family sans
+Scalebox
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Nota: 
+\lang english
+Note:
 \series default
-Si los argumentos de 
-\series bold
-
-\backslash
-scalebox
-\series default
- o 
-\series bold
-
-\backslash
-resizebox
-\series default
- son cero, no se generan errores de \SpecialChar LaTeX
- al exportar el documento, pero puede
- suceder que la salida no se muestre o que sea incompleta.
- 
+ If the 
+\family sans
+H-Factor
+\family default
+ inset is empty or contains other characters than numbers you will get LaTeX
+ errors when viewing/exporting the document.
 \end_layout
 
 \end_inset
 
 
-\begin_inset VSpace defskip
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\lang english
+The 
+\family sans
+Resizebox
+\family default
+ (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Resizebox
+\family default
+) is used to scale the content to a defined width and height.
+ The 
+\family sans
+Resizebox
+\family default
+ inset has the mandatory inset 
+\family sans
+Width
+\family default
+ and the optional inset 
+\family sans
+Height
+\family default
+ (inserted via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Height)
+\family default
+.
+ Input there there width and height, respectively, as value with a unit.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Unidades"
+
+\end_inset
+
+ lists the possible units.
+ If there is an 
+\lang spanish
+signo de exclamación, 
+\series bold
+!
+\series default
+, 
+\lang english
+in of of the two insets
+\lang spanish
+, la escala se hace de forma que se mantiene la relación de las dimensiones
+ originales del contenido del marco.
+
+\lang english
+ If no 
+\family sans
+Height
+\family default
+ inset is used an 
+\lang spanish
+signo de exclamación
+\lang english
+ will internally be used for the height.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+2cm
+\series default
+ as 
+\family sans
+Width
+\family default
+ and 
+\series bold
+1cm
+\series default
+ as 
+\family sans
+Height
+\family default
+ produces:
+\lang spanish
+ 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1cm
+\end_layout
+
+\end_inset
+
+Hola
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang english
+2cm
+\series default
+ as 
+\family sans
+Width
+\family default
+ and 
+\series bold
+!
+\series default
+ as 
+\family sans
+Height
+\family default
+ (or no 
+\family sans
+Height
+\family default
+) produces:
+\lang spanish
+ 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+Hola
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ If the 
+\family sans
+Width
+\family default
+ inset is empty or contains an invalid unit you will get LaTeX errors when
+ viewing/exporting the document.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -35411,57 +35609,79 @@ resizebox
 
 \begin_layout Standard
 Los marcos se pueden combinar en cualquier orden.
- Por ejemplo, el comando
-\series bold
 
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{Hola}}}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-genera:
-\begin_inset Separator parbreak
-\end_inset
-
-
+\lang english
+ As example a 
+\family sans
+Reflectbox
+\family default
+ inside a 
+\family sans
+Resizebox
+\family default
+ which is in turn inside a 
+\family sans
+Rotatebox
+\family default
+:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+origin=c
 \end_layout
 
 \end_inset
 
-Hola
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
+-45
+\end_layout
 
-}}}
+\end_inset
+
+
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
+Hola
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35472,31 +35692,29 @@ status collapsed
 \begin_layout Standard
 \noindent
 Un marco puede contener imágenes, cuadros y ecuaciones en línea:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-30}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
 	lyxscale 50
@@ -35505,34 +35723,34 @@ reflectbox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -35583,44 +35801,43 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+3cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\int A\,\mathrm{d}x=B$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-}}}
+
 \end_layout
 
 \end_inset

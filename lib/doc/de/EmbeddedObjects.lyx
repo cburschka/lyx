@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 499
+\lyxformat 500
 \begin_document
 \begin_header
 \origin unavailable
@@ -35148,7 +35148,11 @@ Rotierte und skalierte Boxen
 
 \begin_layout Standard
 Um die in diesem Abschnitt beschriebenen Boxen nutzen zu können, muss das
- Modul ?? in den Dokumenteinstellungen geladen sein.
+ Modul 
+\family sans
+Grafik-Boxen
+\family default
+ in den Dokumenteinstellungen geladen sein.
 \end_layout
 
 \begin_layout Standard
@@ -35210,7 +35214,11 @@ Rotiertes Material
 \end_layout
 
 \begin_layout Standard
-Um Text zu drehen, setzt man ihn in eine Rotationsbox.
+Um Material zu drehen, setzt man es in eine 
+\family sans
+Rotationsbox
+\family default
+.
  Solch eine Box wird über das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -35557,6 +35565,29 @@ Tabellen ! rotierte
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Wenn die Einfügung 
+\family sans
+Drehpunkt
+\family default
+ leer ist oder Zeichen enthält, die keine Nummern sind, erhält man \SpecialChar LaTeX
+-Fehler
+ wenn man das Dokument ansieht/exportiert.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Skalierte Boxen
 \begin_inset Index idx
@@ -35582,112 +35613,144 @@ Skaliertes Material
 \end_layout
 
 \begin_layout Standard
-Um Text zu skalieren, kann man die Befehle 
-\series bold
+Um Material zu skalieren, setzt man es in eine 
+\family sans
+Skalierende
+\begin_inset space ~
+\end_inset
 
-\backslash
-scalebox
-\series default
- und 
-\series bold
+Box
+\family default
+.
+ Solch eine Box wird über das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
+Skalierende
+\begin_inset space ~
+\end_inset
 
-\backslash
-resizebox
-\series default
- im \SpecialChar TeX
--Modus verwenden.
+Box
+\family default
+ eingefügt.
 \end_layout
 
 \begin_layout Standard
+Die 
+\family sans
+Skalierende
+\begin_inset space ~
+\end_inset
 
-\series bold
+Box
+\family default
+ Einfügung hat die obligatorische Einfügung 
+\family sans
+H-Faktor
+\family default
+ und die optionale Einfügung 
+\family sans
+V-Faktor
+\family default
+ (wird eingefügt über das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+V-Faktor)
+\family default
+.
+ Fügen Sie hier den horizontalen bzw.
+\begin_inset space \space{}
+\end_inset
 
-\backslash
-scalebox
-\series default
- wird nach folgendem Schema verwendet:
+den vertikalen Skalierungsfaktor ein.
+ Wenn die Einfügung 
+\family sans
+V-Faktor
+\family default
+ nicht verwendet wird, wird der horizontale Skalierungsfaktor auch für den
+ vertikalen verwendet.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-scalebox{horizontal}[vertikal]{Boxinhalt}
-\end_layout
-
-\begin_layout Standard
-Horizontal und vertikal geben die jeweiligen Skalierungsfaktoren an.
- Wird kein vertikaler Skalierungsfaktor angegeben, wird dafür der horizontale
- verwendet.
-\end_layout
-
-\begin_layout Standard
-Z.
+Um z.
 \begin_inset space \thinspace{}
 \end_inset
 
 B.
- ergibt der Befehl 
+ doppelte Textgröße als die Dokument-Schriftgröße zu erhalten, gibt man
+ 
 \series bold
-
-\backslash
-scalebox{2}{Hallo}
+2
 \series default
- ein im Vergleich zur Dokumentschriftgröße doppelt so großes 
-\begin_inset ERT
-status collapsed
+ in die Einfügung 
+\family sans
+H-Faktor
+\family default
+ ein.
+ Ein Beispiel: 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-scalebox{2}{
+\begin_layout Plain Layout
+2
 \end_layout
 
 \end_inset
 
 Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-
-\backslash
-scalebox{2}[1]{Hallo}
+2
 \series default
- verzerrt hingegen das 
-\begin_inset ERT
-status collapsed
+ als 
+\family sans
+H-Faktor
+\family default
+ und 
+\series bold
+1
+\series default
+ als 
+\family sans
+V-Faktor
+\family default
+ verzerrt das 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{2}[1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
 
 Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35698,35 +35761,47 @@ status collapsed
 \begin_layout Standard
 Die Skalierungsfaktoren dürfen auch negativ sein.
  In diesem Fall wird der Boxinhalt gespiegelt.
-\end_layout
-
-\begin_layout Standard
-Daher lässt sich mit dem Befehl 
+ Daher kann 
 \series bold
-
-\backslash
-scalebox{-1}[1]{Hallo}
+-1
 \series default
- Spiegelschrift erstellen: 
-\begin_inset ERT
-status collapsed
+ als 
+\family sans
+H-Faktor
+\family default
+ und 
+\series bold
+1
+\series default
+ als 
+\family sans
+V-Faktor
+\family default
+ verwendet werden um Spiegelschrift zu erstellen: 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{-1}[1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
 
 Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35737,30 +35812,45 @@ status collapsed
 \begin_layout Standard
 
 \series bold
-
-\backslash
-scalebox{1}[-1]{Hallo}
+-1
 \series default
- spiegelt das 
-\begin_inset ERT
-status collapsed
+ als 
+\family sans
+H-Faktor
+\family default
+ und 
+\series bold
+1
+\series default
+ als 
+\family sans
+V-Faktor
+\family default
+ reflektiert das 
+\begin_inset Flex Scalebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
 
 
-\backslash
-scalebox{1}[-1]{
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-1
 \end_layout
 
 \end_inset
 
 Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -35769,153 +35859,248 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Zu 
+Die 
+\family sans
+Spiegelbox
+\family default
+ (Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
+Spiegelbox
+\family default
+) ist äquivalent zu 
 \series bold
-
-\backslash
-scalebox{-1}[1]{Boxinhalt}
+-1
 \series default
- gibt es den äquivalenten Befehl
-\begin_inset Newline newline
+ als 
+\family sans
+H-Faktor
+\family default
+ und 
+\series bold
+1
+\series default
+ als 
+\family sans
+V-Faktor 
+\family default
+für eine 
+\family sans
+Skalierende
+\begin_inset space ~
 \end_inset
 
-
-\series bold
-
-\backslash
-reflectbox{Boxinhalt}
-\series default
+Box
+\family default
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\series bold
-
-\backslash
-resizebox
-\series default
- verwendet man, um den Boxinhalt auf eine bestimmte Höhe oder Breite zu
- skalieren.
- Das Befehlsschema ist folgendes:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-resizebox{Breite}{Höhe}{Boxinhalt}
-\end_layout
-
-\begin_layout Standard
-Gibt man für eines der beiden Argumente ein Ausrufezeichen 
-\series bold
-!
-\series default
- ein, wird die Größe so gewählt, dass das Seitenverhältnis der Box beibehalten
- wird.
-\end_layout
-
-\begin_layout Standard
-Der Befehl 
-\series bold
-
-\backslash
-resizebox{2cm}{1cm}{Hallo}
-\series default
- ergibt: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{2cm}{1cm}{
-\end_layout
-
-\end_inset
-
-Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Der Befehl 
-\series bold
-
-\backslash
-resizebox{2cm}{!}{Hallo}
-\series default
- ergibt: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-resizebox{2cm}{!}{
-\end_layout
-
-\end_inset
-
-Hallo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Bemerkung:
+Achtung:
 \series default
- Wurde in Argumenten von 
-\series bold
+ Wenn die Einfügung 
+\family sans
+Drehpunkt
+\family default
+ leer ist oder Zeichen enthält, die keine Nummern sind, erhält man \SpecialChar LaTeX
+-Fehler
+ wenn man das Dokument ansieht/exportiert.
+\end_layout
 
-\backslash
-scalebox
-\series default
- oder 
-\series bold
+\end_inset
 
-\backslash
-resizebox
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Die 
+\family sans
+Neugrößenbox
+\family default
+ (Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
+Neugrößenbox
+\family default
+) verwendet man, um den Boxinhalt auf eine bestimmte Höhe oder Breite zu
+ skalieren.
+ Die 
+\family sans
+Neugrößenbox
+\family default
+ Einfügung hat die obligatorische Einfügung 
+\family sans
+Breite
+\family default
+ und die optionale Einfügung 
+\family sans
+Höhe
+\family default
+ (wird eingefügt über das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Höhe)
+\family default
+.
+ Fügen Sie hier die Breite bzw.
+\begin_inset space \space{}
+\end_inset
+
+Höhe als Wert mit Einheit ein.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Maßeinheiten"
+
+\end_inset
+
+ listet die möglichen Maßeinheiten auf.
+ Befindet sich ein Ausrufezeichen 
+\series bold
+!
 \series default
- eine Null angegeben, entstehen beim Exportieren zwar keine \SpecialChar LaTeX
--Fehler, die
- erzeugten Dateien können jedoch nicht oder nur teilweise angezeigt werden.
+ in einer der beiden
+\lang english
+ 
+\lang ngerman
+Einfügungen, wird die Größe so gewählt, dass das Seitenverhältnis der Box
+ beibehalten wird.
+ Wenn die Einfügung 
+\family sans
+Höhe
+\family default
+ nicht verwendet wird, wird intern ein Ausrufezeichen für die Höhe verwendet.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+2cm
+\series default
+ als 
+\family sans
+Breite
+\family default
+ und 
+\series bold
+1cm
+\series default
+ als 
+\family sans
+Höhe
+\family default
+ ergibt: 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+1cm
+\end_layout
+
+\end_inset
+
+Hallo
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+2cm
+\series default
+ als 
+\family sans
+Breite
+\family default
+ und 
+\series bold
+!
+\series default
+ als 
+\family sans
+Höhe
+\family default
+ (oder keine 
+\family sans
+Höhe
+\family default
+) ergibt: 
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\end_inset
+
+Hallo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Wenn die Einfügung
+\family sans
+ Breite 
+\family default
+leer ist oder eine ungültige Einheit enthält, erhält man \SpecialChar LaTeX
+-Fehler wenn man
+ das Dokument ansieht/exportiert.
 \end_layout
 
 \end_inset
@@ -35932,57 +36117,77 @@ resizebox
 
 \begin_layout Standard
 Alle Boxen können beliebig miteinander kombiniert werden.
- So ergibt z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- der Befehl
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{Hallo}}}
-\series default
-:
-\begin_inset Separator parbreak
-\end_inset
-
-
+ Als Beispiel eine 
+\family sans
+Spiegelbox
+\family default
+ in einer 
+\family sans
+Neugrößenbox
+\family default
+, die wiederum in einer 
+\family sans
+Rotationsbox
+\family default
+ ist:
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Rotatebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+origin=c
 \end_layout
 
 \end_inset
 
-Hallo
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
+-45
+\end_layout
 
-}}}
+\end_inset
+
+
+\begin_inset Flex Resizebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
+Hallo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35993,31 +36198,29 @@ status collapsed
 \begin_layout Standard
 \noindent
 Bilder, Tabellen und eingebettete Formeln sind als Boxinhalt erlaubt:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-30}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../clipart/platypus.eps
 	lyxscale 50
@@ -36026,34 +36229,34 @@ reflectbox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+2cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -36104,44 +36307,43 @@ r
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}}}
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Resizebox
+status open
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
 
-
-\backslash
-rotatebox[origin=c]{-45}{
-\backslash
-resizebox{2cm}{!}{
-\backslash
-reflectbox{
+\begin_layout Plain Layout
+3cm
 \end_layout
 
 \end_inset
 
 
+\begin_inset Flex Reflectbox
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\int A\,\mathrm{d}x=B$
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-}}}
+
 \end_layout
 
 \end_inset
