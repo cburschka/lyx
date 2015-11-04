@@ -1997,6 +1997,9 @@ def convert_moderncv(document):
 
 def revert_achemso(document):
   " Reverts the flex inset Latin to TeX code "
+  
+  if document.textclass != "achemso":
+    return
   i = 0
   j = 0
   while True:
