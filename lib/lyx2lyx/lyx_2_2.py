@@ -1186,16 +1186,16 @@ def revert_colorbox(document):
 
         beg = document.body[frame].find('"')
         end = document.body[frame].rfind('"')
-        framecolor = document.body[frame][beg+1:end]
+        framecolor = document.body[frame][beg + 1 : end]
 
         # this should be on the next line
         bgcolor = frame + 1
         beg = document.body[bgcolor].find('"')
         end = document.body[bgcolor].rfind('"')
-        backcolor = document.body[bgcolor][beg+1:end]
+        backcolor = document.body[bgcolor][beg + 1 : end]
 
         # delete those bits
-        del document.body[frame:frame+2]
+        del document.body[frame : frame + 2]
         # adjust end of inset
         einset -= 2
 
@@ -1209,11 +1209,13 @@ def revert_colorbox(document):
             # nothing needed
             pass
         else:
+            # we also neeed to load xcolor in the preamble but only once
+            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
             document.body[einset + 1 : einset + 1] = put_cmd_in_ert("}")
             if framecolor != defaultframecolor:
-                document.body[binset:binset] = put_cmd_in_ert("\\backslash fcolorbox{" + framecolor + "}{" + backcolor + "}{")
+                document.body[binset:binset] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
             else:
-              document.body[binset:binset] = put_cmd_in_ert("\\backslash colorbox{" + backcolor + "}{")
+              document.body[binset:binset] = put_cmd_in_ert("\\colorbox{" + backcolor + "}{")
 
         binset = einset
 
