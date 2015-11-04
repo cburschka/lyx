@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 500
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass achemso
 \begin_preamble
 % If issues arise when submitting your manuscript, you may want to
@@ -84,8 +85,9 @@ theorems-ams
 status open
 
 \begin_layout Plain Layout
-This is an example LyX file for articles to be submitted to journals of
- the American Chemistry Society (ACS).
+This is an example \SpecialChar LyX
+ file for articles to be submitted to journals of the
+ American Chemistry Society (ACS).
  For general infos see 
 \begin_inset Flex URL
 status open
@@ -124,7 +126,8 @@ Note:
 \end_layout
 
 \begin_layout Title
-A demonstration of the achemso LaTeX class
+A demonstration of the achemso \SpecialChar LaTeX
+ class
 \begin_inset Argument 1
 status open
 
@@ -257,7 +260,8 @@ IR,NMR,UV
 \end_layout
 
 \begin_layout Keywords
-American Chemical Society, LaTeX
+American Chemical Society, \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Abstract
@@ -363,6 +367,25 @@ key "Pople2003"
 \end_inset
 
 .
+ Notice that 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Latin
+status open
+
+\begin_layout Plain Layout
+et al.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ is auto-formatted.
 \end_layout
 
 \begin_layout Standard
@@ -392,7 +415,7 @@ status open
 This is a bibnote; its text will be moved the the references section.
  Bibnotes are inserted with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 .
@@ -422,7 +445,8 @@ Some Infos
 \end_layout
 
 \begin_layout Standard
-Besides the standard figure and table floats, the achemso LaTeX-class provides
+Besides the standard figure and table floats, the achemso \SpecialChar LaTeX
+-class provides
  scheme, chart, and graph floats.
 \end_layout
 

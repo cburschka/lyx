@@ -1,7 +1,7 @@
 #% Do not delete the line below; configure depends on this
 #  \DeclareLaTeXClass[achemso,caption.sty,courier.sty,cleveref.sty,float.sty,helvet.sty,mathptmx.sty,mciteplus.sty,natbib.sty,natmove.sty,setspace.sty,xkeyval.sty]{American Chemical Society (ACS)}
 #  \DeclareCategory{Articles}
-# textclass definition file for achemso 3.7c
+# textclass definition file for achemso 3.8 and 3.9
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 Format 54
@@ -293,5 +293,12 @@ InsetLayout Flex:Chemistry
 	LabelFont
 	  Color			blue
 	EndFont
+	MultiPar		false
+End
+
+InsetLayout Flex:Latin
+	CopyStyle		Flex:Bibnote
+	LatexName		latin
+	LabelString		"Latin"
 	MultiPar		false
 End

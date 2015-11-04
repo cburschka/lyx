@@ -1992,6 +1992,30 @@ def convert_moderncv(document):
     i1 += 1
     i2 += 1
 
+
+def revert_achemso(document):
+  " Reverts the flex inset Latin to TeX code "
+  i = 0
+  j = 0
+  while True:
+    i = find_token(document.body, "\\begin_inset Flex Latin", i)
+    if i != -1:
+      j = find_end_of_inset(document.body, i)
+    else:
+      return
+    if j != -1:
+      beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+      endPlain = find_end_of_layout(document.body, beginPlain)
+      content = lyx2latex(document, document.body[beginPlain : endPlain])
+      #content = lyx2latex(document, document.body[i : j + 1])
+      document.body[i:j + 1] = put_cmd_in_ert("\\latin{" + content + "}")
+      #del document.body[i : j + 1]
+    else:
+      document.warning("Malformed LyX document: Can't find end of flex inset Latin")
+      return
+    i += 1
+
+
 ##
 # Conversion hub
 #
@@ -2025,10 +2049,12 @@ convert = [
            [496, [convert_nounzip]],
            [497, [convert_external_bbox]],
            [498, []],
-           [499, [convert_moderncv]]
+           [499, [convert_moderncv]],
+           [500, []]
           ]
 
 revert =  [
+           [499, [revert_achemso]],
            [498, [revert_moderncv_1, revert_moderncv_2]],
            [497, [revert_tcolorbox_1, revert_tcolorbox_2,
                   revert_tcolorbox_3, revert_tcolorbox_4, revert_tcolorbox_5,
