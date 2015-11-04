@@ -137,8 +137,26 @@ endmacro()
 
 loadTestList(revertedTests revertedTests)
 loadTestList(ignoredTests ignoredTests)
+loadTestList(suspendedTests suspendedTests)
 
-foreach(libsubfolder doc examples templates)
+macro(handlesuspended TestName reverted testlabel)
+  set(mylabel ${testlabel})
+  set(myreverted ${reverted})
+  if (${reverted})
+    # check suspension only for reverted tests
+    findexpr(tfound TestName suspendedTests)
+    if (tfound)
+      set(mylabel "suspended")
+      set(myreverted 0) # if test is to be suspended, remove the 'reverted' flag
+    endif()
+  endif()
+  setmarkedtestlabel(${TestName} ${myreverted} ${mylabel})
+endmacro()
+
+# preparing to add e.g. development/mathmacro to the foreach() loop
+foreach(libsubfolderx lib/doc lib/examples lib/templates)
+  set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/${libsubfolderx}")
+  string(REGEX REPLACE "^(lib|development)/" "" libsubfolder "${libsubfolderx}")
   set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/lib/${libsubfolder}")
   file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
   list(SORT lyx_files)
@@ -173,7 +191,7 @@ foreach(libsubfolder doc examples templates)
         -DTOP_SRC_DIR=${TOP_SRC_DIR}
         -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
         -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-      setmarkedtestlabel(${TestName} ${reverted} "export")
+      handlesuspended(${TestName} ${reverted} "export") # checking for suspended lyx16 exports
     endif()
     if(LYX_PYTHON_EXECUTABLE)
       # For use of lyx2lyx we need the python executable
@@ -188,7 +206,7 @@ foreach(libsubfolder doc examples templates)
           "-DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}"
           "-DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx"
           -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
-        setmarkedtestlabel(${TestName} ${reverted} "lyx2lyx")
+        handlesuspended(${TestName} ${reverted} "lyx2lyx")
       endif()
     endif()
     set(TestName "check_load/${libsubfolder}/${f}")
@@ -202,7 +220,7 @@ foreach(libsubfolder doc examples templates)
         -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
-      setmarkedtestlabel(${TestName} ${reverted} "load")
+      handlesuspended(${TestName} ${reverted} "load")
       set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
@@ -234,7 +252,7 @@ foreach(libsubfolder doc examples templates)
             -DTOP_SRC_DIR=${TOP_SRC_DIR}
             -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-          setmarkedtestlabel(${TestName} ${reverted} "export")
+          handlesuspended(${TestName} ${reverted} "export") # check for suspended pdf/dvi exports
         endif()
       endforeach()
     endforeach()
