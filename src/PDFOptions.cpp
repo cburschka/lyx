@@ -174,21 +174,15 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		opt = "\\hypersetup{" + rtrim(opt + hyperset, ",") + "}\n";
 	}
 
-	// hyperref expects LICR macros for non-ASCII chars. With Xe/LuaTeX utf-8 works, too.
-	// Usually, "(lua)inputenc" converts the input to LICR.
+	// hyperref expects LICR macros for non-ASCII chars.
+	// Usually, "(lua)inputenc" converts the input to LICR, with XeTeX utf-8 works, too.
 	// As hyperref provides good coverage for \inputencoding{utf8}, we can try
 	// this if the current input encoding does not support a character.
-	// FIXME: inputenc (part 1 of 2)
-	//   Replace the "FullUnicode" check with
-	//   check for loading of inputenc or luainputenc package
-	//   (see BufferParams::writeEncodingPreamble and runparams.encoding->package()).
-	//   Otherwise \inputencoding is not defined
-	//   (e.g. if "latex-encoding" is set to "ascii").
-	//   Dont forget to keep the check below (part 2) in sync!
-	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) {
-		os << "\\inputencoding{utf8}\n"
-		   << setEncoding("UTF-8");
+	// FIXME: don't use \inputencoding if "inputenc" is not loaded (#9839).
+	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+	    if (runparams.flavor != OutputParams::XETEX)
+			os << "\\inputencoding{utf8}\n";
+		os << setEncoding("UTF-8");
 	}
 	// If hyperref is loaded by the document class, we output
 	// \hypersetup \AtBeginDocument if hypersetup is not (yet)
@@ -204,11 +198,10 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		   << "\\fi\n";
 	} else
 		os << from_utf8(opt);
-	// FIXME: inputenc (part 2 of 2)
-	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) {
-		os << setEncoding(enc->iconvName())
-		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
+	if (need_unicode && enc && enc->iconvName() != "UTF-8") {
+		os << setEncoding(enc->iconvName());
+	    if (runparams.flavor != OutputParams::XETEX)
+			os << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
 	}
 }
 
@@ -247,6 +240,7 @@ string PDFOptions::readToken(Lexer &lex, string const & token)
 		lex >> pagemode;
 	} else if (token == "\\pdf_quoted_options") {
 		lex >> quoted_options;
+		lyxerr << "Q_O=" << quoted_options << endl;
 	} else {
 		return token;
 	}
