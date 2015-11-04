@@ -2007,9 +2007,7 @@ def revert_achemso(document):
       beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
       endPlain = find_end_of_layout(document.body, beginPlain)
       content = lyx2latex(document, document.body[beginPlain : endPlain])
-      #content = lyx2latex(document, document.body[i : j + 1])
       document.body[i:j + 1] = put_cmd_in_ert("\\latin{" + content + "}")
-      #del document.body[i : j + 1]
     else:
       document.warning("Malformed LyX document: Can't find end of flex inset Latin")
       return
