@@ -33,9 +33,9 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
 \font_math auto
 \font_default_family default
 \use_non_tex_fonts false
@@ -485,7 +485,7 @@ src/tex2lyx/TODO.txt
 \begin_layout Enumerate
 It would be nice if you could create a .lyx test file which contains instances
  of all changed or added features.
- This could then be used to test lyxl2yx and tex2lyx.
+ This could then be used to test lyx2lyx and tex2lyx.
  Unfortunately it has not yet been decided how to collect such examples,
  so please ask on the development list if you want to create one.
 \end_layout
@@ -886,7 +886,7 @@ src/tex2lyx/test
 
 \end_inset
 
- subdirectory of the build directory
+ subdirectory of the build directory.
 \begin_inset Foot
 status collapsed
 
@@ -897,8 +897,51 @@ Note that this is a case where a make target in the build directory can
 
 \end_inset
 
+ On Windows do the following:
+\end_layout
+
+\begin_layout Itemize
+Assure that the path to the python.exe is in your system PATH variable.
+\end_layout
+
+\begin_layout Itemize
+Double-click on the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+updatetex2lyxtests.vcxproj
+\end_layout
+
+\end_inset
+
+ in the build directory or in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test
+\end_layout
+
+\end_inset
+
+ subdirectory of your build directory.
+\end_layout
+
+\begin_layout Itemize
+In the appearing MSVC program right-click on the project 
+\family sans
+updatetex2lyxtests
+\family default
+ in the project explorer and chose 
+\family sans
+Create
+\family default
 .
- For convenience, these commands also produce re-exported roundtrip .lyx.tex
+\end_layout
+
+\begin_layout Standard
+For convenience, these commands also produce re-exported roundtrip .lyx.tex
  files.
  Please examine the changed output carefully before committing the changed
  files to the repository: Since the test machinery does not do a roundtrip
