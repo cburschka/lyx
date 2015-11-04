@@ -49,7 +49,6 @@ class MetricsInfo;
 class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
-class TexRow;
 class Toc;
 class WordLangTuple;
 class XHTMLStream;

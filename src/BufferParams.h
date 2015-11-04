@@ -48,7 +48,6 @@ class LayoutFileIndex;
 class Lexer;
 class PDFOptions;
 class Spacing;
-class TexRow;
 class VSpace;
 
 /** Buffer parameters.
