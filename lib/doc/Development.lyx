@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 499
+\lyxformat 500
 \begin_document
 \begin_header
 \origin unavailable
@@ -1215,7 +1215,9 @@ export
 status collapsed
 
 \begin_layout Plain Layout
-ctest --print-labels
+ctest \SpecialChar nobreakdash
+\SpecialChar nobreakdash
+print-labels
 \end_layout
 
 \end_inset
@@ -1248,7 +1250,9 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
---show-only
+\SpecialChar nobreakdash
+\SpecialChar nobreakdash
+show-only
 \end_layout
 
 \end_inset
@@ -1280,7 +1284,9 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
---parallel <jobs>
+\SpecialChar nobreakdash
+\SpecialChar nobreakdash
+parallel <jobs>
 \end_layout
 
 \end_inset
@@ -1344,7 +1350,9 @@ In some situations the option
 status collapsed
 
 \begin_layout Plain Layout
---timeout <seconds>
+\SpecialChar nobreakdash
+\SpecialChar nobreakdash
+timeout <seconds>
 \end_layout
 
 \end_inset
@@ -1614,6 +1622,60 @@ CTestCostData.txt
 \end_inset
 
  file lists the times that it took to run the tests.
+\end_layout
+
+\begin_layout Subsection
+Suspended tests
+\end_layout
+
+\begin_layout Standard
+Some inverted tests are 'suspended'.
+ This means, they are not executed using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L export
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L reverted
+\end_layout
+
+\end_inset
+
+.
+ From time to time they still have to be checked.
+\end_layout
+
+\begin_layout Standard
+These tests are suspended, because they fail for known reasons which cannot
+ ATM be resolved.
+ But it is expected the reason might disappear in the future.
+ Be it new TL or better handling in \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+For ctest commands without the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-L
+\end_layout
+
+\end_inset
+
+ parameter nothing changes.
+ Suspended or not, tests will be executed depending only on the regexes
+ parameters given to the ctest command.
 \end_layout
 
 \begin_layout Section
