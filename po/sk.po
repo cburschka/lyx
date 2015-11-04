@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-10-18 15:42+0200\n"
-"PO-Revision-Date: 2015-10-18 13:42+0000\n"
+"POT-Creation-Date: 2015-11-03 17:03+0100\n"
+"PO-Revision-Date: 2015-11-03 21:44+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2430,9 +2430,9 @@ msgstr "Aktualizovať zobrazenie"
 msgid "&Update"
 msgstr "&Aktualizovať"
 
-#: src/frontends/qt4/ui/LogUi.ui:110
-msgid "Copy to Clip&board"
-msgstr "&Kopírovať do schránky"
+#: src/frontends/qt4/ui/LogUi.ui:111
+msgid "&Open Containing Directory"
+msgstr "&Otvoriť Obsahujúci Adresár"
 
 #: src/frontends/qt4/ui/LogUi.ui:130
 msgid "&Go!"
@@ -3302,13 +3302,13 @@ msgstr ""
 msgid "Use s&ingle instance"
 msgstr "Jednoduchá &inštancia"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:194
 msgid "Whether to place close button on each tab or only one in the top left."
-msgstr "Dať tlačidlo \"Zavrieť\" na každý panel, alebo len jediné vľavo hore."
+msgstr "Dať tlačidlo \"Zavrieť\" na každú kartu, alebo len jediné vľavo hore."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:197
 msgid "Displa&y single close-tab button"
-msgstr "Zobraziť &jediné tlačidlo na zavretie panelov"
+msgstr "Zobraziť &jediné tlačidlo na zavretie kariet"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
@@ -10236,9 +10236,17 @@ msgstr "\\thesubsubsection."
 msgid "Plain Title"
 msgstr "Prostý Titul"
 
+#: lib/layouts/jss.layout:116
+msgid "Plain Title:"
+msgstr "Prostý Titul:"
+
 #: lib/layouts/jss.layout:39
 msgid "Plain Author"
 msgstr "Prostý Autor"
+
+#: lib/layouts/jss.layout:128
+msgid "Plain Author:"
+msgstr "Prostý Autor:"
 
 #: lib/layouts/jss.layout:100
 msgid "Plain Keywords"
@@ -10596,12 +10604,36 @@ msgid "CV Style:"
 msgstr "CV Štýl:"
 
 #: lib/layouts/moderncv.layout:52
+msgid "Style Options"
+msgstr "Voľby pre Štýl"
+
+#: lib/layouts/moderncv.layout:53
+msgid "Options for the CV style"
+msgstr "Voľby pre CV štýl"
+
+#: lib/layouts/moderncv.layout:52
 msgid "CVColor"
 msgstr "CVFarba"
 
 #: lib/layouts/moderncv.layout:55
 msgid "CV Color Scheme:"
 msgstr "CV Farebné Schéma:"
+
+#: lib/layouts/moderncv.layout:63
+msgid "CVIcons"
+msgstr "CVIcons"
+
+#: lib/layouts/moderncv.layout:66
+msgid "CV Icon Set:"
+msgstr "Sada CV Ikon:"
+
+#: lib/layouts/moderncv.layout:69
+msgid "CVColumnWidth"
+msgstr "CVColumnWidth"
+
+#: lib/layouts/moderncv.layout:72
+msgid "Column Width:"
+msgstr "Šírka Stĺpca:"
 
 #: lib/layouts/moderncv.layout:58
 msgid "PDF Page Mode"
@@ -10610,6 +10642,10 @@ msgstr "Režim pre PDF Zobrazovanie"
 #: lib/layouts/moderncv.layout:61
 msgid "PDF Page Mode:"
 msgstr "Režim pre PDF Zobrazovanie:"
+
+#: lib/layouts/moderncv.layout:94
+msgid "First name"
+msgstr "Krstné meno"
 
 #: lib/layouts/moderncv.layout:64 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
@@ -10634,6 +10670,14 @@ msgstr "Voliteľný riadok adresy"
 #: lib/layouts/moderncv.layout:120
 msgid "Line 2"
 msgstr "Riadok 2"
+
+#: lib/layouts/moderncv.layout:158
+msgid "Phone Type"
+msgstr "Typ Telefónu"
+
+#: lib/layouts/moderncv.layout:159
+msgid "can be fixed, mobile or fax"
+msgstr "môže byť pevný, mobilný alebo fax"
 
 #: lib/layouts/moderncv.layout:128
 msgid "Mobile:"
@@ -13097,6 +13141,18 @@ msgstr "BrailleRámik"
 msgid "Braille box"
 msgstr "Braille rámik"
 
+#: lib/layouts/changebars.module:2
+msgid "Change bars"
+msgstr "Pruhy zmien"
+
+#: lib/layouts/changebars.module:7
+msgid ""
+"Enables LyX to add vertical change bars in the margin of PDF output when "
+"change tracking is turned on and pdflatex output format is chosen."
+msgstr ""
+"Umožní LyX pridať vertikálne pruhy zmien na okraji PDF-výstupu. Treba na to "
+"zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
+
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
 msgstr "Vlastné riadky pre Hlavičku/Pätu"
@@ -14681,6 +14737,18 @@ msgstr "Prispôsobiť Farebný Rámik"
 msgid "Color Box (Fit Contents)"
 msgstr "Farebný Rámik (Prispôsobiť Obsah)"
 
+#: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
+msgid "Raster Color Box"
+msgstr "Rasterizovaný Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:50
+msgid "Subtitle Options"
+msgstr "Podtitulové Voľby"
+
+#: lib/layouts/tcolorbox.module:51
+msgid "Insert the options here"
+msgstr "Vložte sem voľby"
+
 #: lib/layouts/tcolorbox.module:49
 msgid "Color Box Separator"
 msgstr "Farebný Rámik Oddeľovač"
@@ -14700,6 +14768,66 @@ msgstr "Farebný Rámik Čiarka"
 #: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
 msgid "Color Box Setup"
 msgstr "Farebný Rámik Nastavenie"
+
+#: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
+msgid "New Color Box Type"
+msgstr "Nový Typ pre Farebné Rámiky"
+
+#: lib/layouts/tcolorbox.module:129
+msgid "New Box Options"
+msgstr "Nové Voľby pre Rámik"
+
+#: lib/layouts/tcolorbox.module:130
+msgid "Options for the new box type (optional)"
+msgstr "Voľby pre tento nový typ rámiku (voliteľné)"
+
+#: lib/layouts/tcolorbox.module:135
+msgid "Name of the new box type"
+msgstr "Názov pre tento nový typ rámiku"
+
+#: lib/layouts/tcolorbox.module:140
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: lib/layouts/tcolorbox.module:141
+msgid "Number of arguments (remove this inset if none!)"
+msgstr "Počet argumentov (keď žiadna, odstráňte túto vložku!)"
+
+#: lib/layouts/tcolorbox.module:145
+msgid "Default Value"
+msgstr "Predvolená Hodnota"
+
+#: lib/layouts/tcolorbox.module:146
+msgid "Default value for argument (keep empty!)"
+msgstr "Predvolená hodnota argumentu (držte prázdne!)"
+
+#: lib/layouts/tcolorbox.module:153 lib/layouts/tcolorbox.module:155
+msgid "Custom Color Box 1"
+msgstr "Vlastný Farebný Rámik 1"
+
+#: lib/layouts/tcolorbox.module:158
+msgid "More Color Box Options"
+msgstr "Ďalšie Voľby pre Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:159
+msgid "Insert more color box options here"
+msgstr "Vložte sem ďalšie voľby pre farebný rámik"
+
+#: lib/layouts/tcolorbox.module:164 lib/layouts/tcolorbox.module:166
+msgid "Custom Color Box 2"
+msgstr "Vlastný Farebný Rámik 2"
+
+#: lib/layouts/tcolorbox.module:170 lib/layouts/tcolorbox.module:172
+msgid "Custom Color Box 3"
+msgstr "Vlastný Farebný Rámik 3"
+
+#: lib/layouts/tcolorbox.module:176 lib/layouts/tcolorbox.module:178
+msgid "Custom Color Box 4"
+msgstr "Vlastný Farebný Rámik 4"
+
+#: lib/layouts/tcolorbox.module:182 lib/layouts/tcolorbox.module:184
+msgid "Custom Color Box 5"
+msgstr "Vlastný Farebný Rámik 5"
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
@@ -15183,6 +15311,48 @@ msgstr "Todo[okraj]"
 #: lib/layouts/todonotes.module:128
 msgid "MissingFigure"
 msgstr "ChybiaciObrázok"
+
+#: lib/layouts/varwidth.module:2
+msgid "Variable-width Minipages"
+msgstr "Variabilná Šírka pre Minipage"
+
+#: lib/layouts/varwidth.module:11
+msgid ""
+"Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
+"varwidth package provides a variable-width minipage, whose resulting width "
+"is the width of its contents (if this does not exceed the specified maximum "
+"width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
+"and maximum width (defaults to \\linewidth)."
+msgstr ""
+"Pridá vložku 'Minipage (Var. Šírka)' použijúc LaTeX balík varwidth. Balík "
+"varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
+"obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
+"voliteľné argumenty: vertikálna úprava (c|t|b) a maximálna šírka (štandardne "
+"\\linewidth)."
+
+#: lib/layouts/varwidth.module:17
+msgid "Minipage (Var. Width)"
+msgstr "Minipage (Var. Šírka)"
+
+#: lib/layouts/varwidth.module:19
+msgid "Minipage (var.)"
+msgstr "Minipage (var.)"
+
+#: lib/layouts/varwidth.module:31
+msgid "Vert. Adjustment"
+msgstr "Vert. Úprava"
+
+#: lib/layouts/varwidth.module:32
+msgid "Vertical adjustment: c (center), t (top) or b (bottom)"
+msgstr "Vertikálna úprava: c (stred), t (vrch) alebo b (spodok)"
+
+#: lib/layouts/varwidth.module:35
+msgid "Max. Width"
+msgstr "Max. Šírka"
+
+#: lib/layouts/varwidth.module:36
+msgid "Maximum width (default: \\linewidth)"
+msgstr "Maximálna šírka (štandard: \\linewidth)"
 
 #: lib/languages:73 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
 #: src/Font.cpp:73 src/Font.cpp:76
@@ -17455,6 +17625,26 @@ msgstr "Viditeľná Medzera|M"
 msgid "Phonetic Symbols|P"
 msgstr "Fonetické Symboly|F"
 
+#: lib/ui/stdmenus.inc:401
+msgid "Logos|L"
+msgstr "Logá|g"
+
+#: lib/ui/stdmenus.inc:405
+msgid "LyX Logo|L"
+msgstr "LyX Logo|L"
+
+#: lib/ui/stdmenus.inc:406
+msgid "TeX Logo|T"
+msgstr "TeX Logo|T"
+
+#: lib/ui/stdmenus.inc:407
+msgid "LaTeX Logo|a"
+msgstr "LaTeX Logo|a"
+
+#: lib/ui/stdmenus.inc:408
+msgid "LaTeX2e Logo|e"
+msgstr "LaTeX2e Logo|e"
+
 #: lib/ui/stdmenus.inc:402
 msgid "LyX Logo"
 msgstr "LyX Logo"
@@ -17746,6 +17936,10 @@ msgstr "Beamer Prezentácie"
 #: lib/ui/stdmenus.inc:608
 msgid "Braille|a"
 msgstr "Braille|a"
+
+#: lib/ui/stdmenus.inc:609
+msgid "Colored boxes|r"
+msgstr "Farebné rámiky"
 
 #: lib/ui/stdmenus.inc:605
 msgid "Feynman-diagram|F"
@@ -18274,6 +18468,10 @@ msgstr "Vložiť poznámku"
 #: lib/ui/stdtoolbars.inc:245
 msgid "Next note"
 msgstr "Ďalšia poznámka"
+
+#: lib/ui/stdtoolbars.inc:247
+msgid "LyX Documentation Tools"
+msgstr "Nástrojové Dokumenty LyXu"
 
 #: lib/ui/stdtoolbars.inc:248
 msgid "View Other Formats"
@@ -25726,6 +25924,10 @@ msgstr "Iné ("
 msgid ", Inset: "
 msgstr ", Vložka: "
 
+#: src/Cursor.cpp:2113
+msgid ", Cell: "
+msgstr ", Bunka: "
+
 #: src/Text.cpp:1902
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
@@ -29134,13 +29336,13 @@ msgstr "Zavrieť Súbor"
 msgid "%1 (read only)"
 msgstr "%1 (iba pre čítanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2023
+#: src/frontends/qt4/GuiWorkArea.cpp:2044
 msgid "Hide tab"
-msgstr "Panel skryť"
+msgstr "Kartu skryť"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2025
+#: src/frontends/qt4/GuiWorkArea.cpp:2046
 msgid "Close tab"
-msgstr "Panel zavrieť"
+msgstr "Kartu zavrieť"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -29239,8 +29441,8 @@ msgid "Master Document"
 msgstr "Hlavný dokument"
 
 #: src/frontends/qt4/Menus.cpp:1314
-msgid "Open outliner..."
-msgstr "Otvoriť prehľad…"
+msgid "Open Outliner..."
+msgstr "Otvoriť Prehľad…"
 
 #: src/frontends/qt4/Menus.cpp:1338
 msgid "Other Lists"
@@ -29451,6 +29653,10 @@ msgstr "Horizontálna medzera"
 #: src/insets/Inset.cpp:118
 msgid "Info"
 msgstr "Info"
+
+#: lib/ui/stdtoolbars.inc:249
+msgid "Menu Separator"
+msgstr "Oddeľovač v Menu"
 
 #: src/insets/Inset.cpp:163
 msgid "Horizontal Math Space"
@@ -30989,6 +31195,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Copy to Clip&board"
+#~ msgstr "&Kopírovať do schránky"
 
 #~ msgid "Open Navigator..."
 #~ msgstr "Otvoriť navigátor..."
@@ -34207,3 +34416,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "<Empty Table of Contents>"
 #~ msgstr "<Prázdny Obsah>"
+
+#~ msgid "Colored boxes|C"
+#~ msgstr "Farebné rámiky"
