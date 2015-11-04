@@ -21,6 +21,9 @@ export/.*/es/europeCV_pdf_texF
 # somehow lualatex is not able to compile with non-tex fonts
 export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
 
+# (dvi)?lualatex with tex fonts does not like formal tables?
+export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
+
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
 #
