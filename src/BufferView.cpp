@@ -1124,16 +1124,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		    || getInsetByCode<InsetRef>(cur, REF_CODE));
 		break;
 
-	case LFUN_CHANGES_TRACK:
-		flag.setEnabled(true);
-		flag.setOnOff(buffer_.params().track_changes);
-		break;
-
-	case LFUN_CHANGES_OUTPUT:
-		flag.setEnabled(true);
-		flag.setOnOff(buffer_.params().output_changes);
-		break;
-
 	case LFUN_CHANGES_MERGE:
 	case LFUN_CHANGE_NEXT:
 	case LFUN_CHANGE_PREVIOUS:
@@ -1145,16 +1135,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		// optimizations, this will inevitably result in poor performance.
 		flag.setEnabled(true);
 		break;
-
-	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
-		flag.setOnOff(buffer_.params().compressed);
-		break;
-	}
-
-	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC: {
-		flag.setOnOff(buffer_.params().output_sync);
-		break;
-	}
 
 	case LFUN_SCREEN_UP:
 	case LFUN_SCREEN_DOWN:
@@ -1458,33 +1438,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_CHANGES_TRACK:
-		buffer_.params().track_changes = !buffer_.params().track_changes;
-		break;
-
-	case LFUN_CHANGES_OUTPUT:
-		buffer_.params().output_changes = !buffer_.params().output_changes;
-		if (buffer_.params().output_changes) {
-			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
-			bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
-					  LaTeXFeatures::isAvailable("xcolor");
-
-			if (!dvipost && !xcolorulem) {
-				Alert::warning(_("Changes not shown in LaTeX output"),
-					       _("Changes will not be highlighted in LaTeX output, "
-						 "because neither dvipost nor xcolor/ulem are installed.\n"
-						 "Please install these packages or redefine "
-						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
-			} else if (!xcolorulem) {
-				Alert::warning(_("Changes not shown in LaTeX output"),
-					       _("Changes will not be highlighted in LaTeX output "
-						 "when using pdflatex, because xcolor and ulem are not installed.\n"
-						 "Please install both packages or redefine "
-						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
-			}
-		}
-		break;
-
 	case LFUN_CHANGE_NEXT:
 		findNextChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
@@ -1722,15 +1675,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		Alert::information(_("Statistics"), message);
 	}
-		break;
-
-	case LFUN_BUFFER_TOGGLE_COMPRESSION:
-		// turn compression on/off
-		buffer_.params().compressed = !buffer_.params().compressed;
-		break;
-
-	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
-		buffer_.params().output_sync = !buffer_.params().output_sync;
 		break;
 
 	case LFUN_SCREEN_UP:

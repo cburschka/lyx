@@ -2445,6 +2445,26 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = (d->preview_file_).exists() && !(d->preview_file_).isFileEmpty();
 		break;
 
+	case LFUN_CHANGES_TRACK:
+		flag.setEnabled(true);
+		flag.setOnOff(params().track_changes);
+		break;
+
+	case LFUN_CHANGES_OUTPUT:
+		flag.setEnabled(true);
+		flag.setOnOff(params().output_changes);
+		break;
+
+	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
+		flag.setOnOff(params().compressed);
+		break;
+	}
+
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC: {
+		flag.setOnOff(params().output_sync);
+		break;
+	}
+
 	default:
 		return false;
 	}
@@ -2672,6 +2692,46 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		if (!formats.view(*this, d->preview_file_,
 				  d->preview_format_))
 			dr.setMessage(_("Error viewing the output file."));
+		break;
+
+	case LFUN_CHANGES_TRACK:
+		undo().recordUndoBufferParams(CursorData());
+		params().track_changes = !params().track_changes;
+		break;
+
+	case LFUN_CHANGES_OUTPUT:
+		undo().recordUndoBufferParams(CursorData());
+		params().output_changes = !params().output_changes;
+		if (params().output_changes) {
+			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
+			bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
+					  LaTeXFeatures::isAvailable("xcolor");
+
+			if (!dvipost && !xcolorulem) {
+				Alert::warning(_("Changes not shown in LaTeX output"),
+					       _("Changes will not be highlighted in LaTeX output, "
+						 "because neither dvipost nor xcolor/ulem are installed.\n"
+						 "Please install these packages or redefine "
+						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+			} else if (!xcolorulem) {
+				Alert::warning(_("Changes not shown in LaTeX output"),
+					       _("Changes will not be highlighted in LaTeX output "
+						 "when using pdflatex, because xcolor and ulem are not installed.\n"
+						 "Please install both packages or redefine "
+						 "\\lyxadded and \\lyxdeleted in the LaTeX preamble."));
+			}
+		}
+		break;
+
+	case LFUN_BUFFER_TOGGLE_COMPRESSION:
+		// turn compression on/off
+		undo().recordUndoBufferParams(CursorData());
+		params().compressed = !params().compressed;
+		break;
+
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
+		undo().recordUndoBufferParams(CursorData());
+		params().output_sync = !params().output_sync;
 		break;
 
 	default:
