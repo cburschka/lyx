@@ -136,7 +136,7 @@ Format 2
 #  +: "Option-Command-D"             # Show or hide the Dock
 #  -: "Command-Control D"            # Display the definition of the selected word in the Dictionary application
 \bind "C-d"                          "buffer-view dvi"	# 'd' for dvi
-\bind "C-M-d"                        "master-buffer-view dvi"
+\bind "C-M-d"                        "command-alternatives master-buffer-view dvi; buffer.view dvi"
 \bind "C-S-D"                        "buffer-update dvi"	# 'd' for dvi
 #  -: "Command-E"                    # Use the selection for a find
 \bind "C-e"                          "font-emph"
@@ -176,7 +176,7 @@ Format 2
 \bind "C-S-S"                        "buffer-write-as"
 #  -: "Command-T"                    # Display the Fonts window
 \bind "C-t"                          "buffer-view pdf"
-\bind "C-M-t"                        "master-buffer-view pdf"
+\bind "C-M-t"                        "command-alternatives master-buffer-view pdf; buffer-view pdf"
 #  -: "Option-Command-T"             # Show or hide a toolbar
 #  -: "Command-U"                    # Underline the selected text or turn underlining on or off
 \bind "C-u"                          "font-underline"
@@ -253,8 +253,8 @@ Format 2
 \bind "C-S-O"                        "font-strikeout"
 \bind "C-S-T"                        "buffer-update pdf" # (pdflatex; was "ps")
 \bind "C-S-R"                        "buffer-update"
-\bind "C-M-S-T"                      "master-buffer-update pdf"
-\bind "C-M-S-D"                      "master-buffer-update dvi"
+\bind "C-M-S-T"                      "command-alternatives master-buffer-update pdf; buffer-update pdf"
+\bind "C-M-S-D"                      "command-alternatives master-buffer-update dvi; buffer-update dvi"
 
 \bind "C-S-E"                        "changes-track" # it's what MS Word uses
 \bind "~S-M-quotedbl"                "quote-insert single"
