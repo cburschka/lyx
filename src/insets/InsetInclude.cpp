@@ -688,9 +688,9 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// and language.
 		Encoding const * const oldEnc = runparams.encoding;
 		Language const * const oldLang = runparams.master_language;
-		// If the master has full unicode flavor (XeTeX, LuaTeX),
+		// If the master uses non-TeX fonts (XeTeX, LuaTeX),
 		// the children must be encoded in plain utf8!
-		runparams.encoding = runparams.isFullUnicode() ?
+		runparams.encoding = masterBuffer->params().useNonTeXFonts ?
 			encodings.fromLyXName("utf8-plain")
 			: &tmp->params().encoding();
 		runparams.master_language = buffer().params().language;
