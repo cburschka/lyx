@@ -407,10 +407,11 @@ End
 
 Style Frame
   Category         Frames
-  Margin           Dynamic
+  Margin           First_Dynamic
+  LeftMargin       xx
   LatexType        Environment
   LatexName        frame
-  LabelString      "Frame"  
+  LabelString      "Frame"
   TocLevel         4
   KeepEmpty        1
   NextNoIndent     1
