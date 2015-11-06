@@ -590,10 +590,10 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			if (ns && !row.right_boundary()
 			    && row.endpos() != par.size()) {
 				row.setSeparatorExtraWidth(double(w) / ns);
-				row.dimension().wid = width;
+				row.dimension().wid += w;
 			} else if (text_->isRTL(par)) {
-				row.dimension().wid = width;
 				row.left_margin += w;
+				row.dimension().wid += w;
 			}
 			break;
 		}
@@ -602,7 +602,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			row.dimension().wid += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			row.dimension().wid = width - w / 2;
+			row.dimension().wid += w / 2;
 			row.left_margin += w / 2;
 			break;
 		case LYX_ALIGN_LEFT:
