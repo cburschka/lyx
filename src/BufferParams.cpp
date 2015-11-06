@@ -347,6 +347,8 @@ BufferParams::BufferParams()
 	: pimpl_(new Impl)
 {
 	setBaseClass(defaultBaseclass());
+	cite_engine_.push_back("basic");
+	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	quotes_language = InsetQuotes::EnglishQuotes;
@@ -356,8 +358,6 @@ BufferParams::BufferParams()
 	papersize = PAPER_DEFAULT;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	cite_engine_.push_back("basic");
-	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;

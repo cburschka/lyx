@@ -103,6 +103,10 @@ What's new
 
 - Disable setting vertical lines when using a formal table (bug 9816).
 
+- Fix two bibliography related bugs: No default style shown in bibliography
+  dialog in certain cases, and bad enabling-disabling behavior in Document>
+  Settings> Bibliography (bugs 9797 and 9848).
+
 
 * INTERNALS
 
