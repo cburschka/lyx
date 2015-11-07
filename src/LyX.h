@@ -91,13 +91,6 @@ private:
 	/// Execute batch commands if available.
 	void execCommands();
 
-	/// Load files passed at command-line.
-	/// return true on success false if we encounter an error
-	/**
-	This method is used only in non-GUI mode.
-	*/
-	bool loadFiles();
-
 	/// initial LyX set up
 	bool init();
 	/** Check for the existence of the user's support directory and,

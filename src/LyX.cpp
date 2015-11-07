@@ -472,21 +472,51 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 		return exit_status;
 	}
 
-	// this is correct, since return values are inverted.
-	exit_status = !loadFiles();
+	// Used to keep track of which buffers were explicitly loaded by user request.
+	// This is necessary because master and child document buffers are loaded, even 
+	// if they were not named on the command line. We do not want to dispatch to
+	// those.
+	vector<Buffer *> command_line_buffers;
 
-	if (pimpl_->batch_commands.empty() || pimpl_->buffer_list_.empty()) {
+	// Load the files specified on the command line
+	vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
+	vector<string>::const_iterator end = pimpl_->files_to_load_.end();
+	for (; it != end; ++it) {
+		// get absolute path of file and add ".lyx" to the filename if necessary
+		FileName fname = fileSearch(string(), os::internal_path(*it), "lyx",
+																may_not_exist);
+
+		if (fname.empty())
+			continue;
+
+		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFileName());
+		LYXERR(Debug::FILES, "Loading " << fname);
+		if (buf->loadLyXFile() == Buffer::ReadSuccess) {
+			ErrorList const & el = buf->errorList("Parse");
+			if (!el.empty())
+					for_each(el.begin(), el.end(),
+									 bind(&LyX::printError, this, _1));
+			command_line_buffers.push_back(buf);
+		} else {
+			pimpl_->buffer_list_.release(buf);
+			docstring const error_message =
+					bformat(_("LyX failed to load the following file: %1$s"),
+									from_utf8(fname.absFileName()));
+			lyxerr << to_utf8(error_message) << endl;
+			exit_status = 1; // failed
+		}
+	}
+
+	if (exit_status || pimpl_->batch_commands.empty() || pimpl_->buffer_list_.empty()) {
 		prepareExit();
 		return exit_status;
 	}
 
-	BufferList::iterator begin = pimpl_->buffer_list_.begin();
-
+	// Iterate through the buffers that were specified on the command line
 	bool final_success = false;
-	for (BufferList::iterator I = begin; I != pimpl_->buffer_list_.end(); ++I) {
-		Buffer * buf = *I;
-		if (buf != buf->masterBuffer())
-			continue;
+	vector<Buffer *>::iterator buf_it = command_line_buffers.begin();
+	for (; buf_it != command_line_buffers.end(); ++buf_it) {
+		Buffer * buf = *buf_it;
 		vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
 		vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
 		DispatchResult dr;
@@ -498,42 +528,6 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 	}
 	prepareExit();
 	return !final_success;
-}
-
-
-bool LyX::loadFiles()
-{
-	LATTEST(!use_gui);
-	bool success = true;
-	vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
-	vector<string>::const_iterator end = pimpl_->files_to_load_.end();
-
-	for (; it != end; ++it) {
-		// get absolute path of file and add ".lyx" to
-		// the filename if necessary
-		FileName fname = fileSearch(string(), os::internal_path(*it), "lyx",
-			may_not_exist);
-
-		if (fname.empty())
-			continue;
-
-		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFileName());
-		if (buf->loadLyXFile() == Buffer::ReadSuccess) {
-			ErrorList const & el = buf->errorList("Parse");
-			if (!el.empty())
-				for_each(el.begin(), el.end(),
-				bind(&LyX::printError, this, _1));
-		}
-		else {
-			pimpl_->buffer_list_.release(buf);
-			docstring const error_message =
-				bformat(_("LyX failed to load the following file: %1$s"),
-				from_utf8(fname.absFileName()));
-			lyxerr << to_utf8(error_message) << endl;
-			success = false;
-		}
-	}
-	return success;
 }
 
 
