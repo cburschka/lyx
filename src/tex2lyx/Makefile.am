@@ -33,7 +33,7 @@ TEST_FILES = \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
-	test/test-insets-basic.lyx \
+	test/test-insets-basic.tex \
 	test/test.ltx \
 	test/test-memoir.tex \
 	test/test-modules.tex \
