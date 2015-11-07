@@ -113,10 +113,6 @@
 
 * LyX now gives an error if the underlying LaTeX command exited with error.
 
-* With LuaTeX, LyX now uses polyglossia instead of babel if the language
-  package option "Automatic" is selected. In order to use babel, select
-  "Always babel" instead.
-
 
 !!Known issues in version 2.2.0
 
@@ -142,3 +138,8 @@
   to compile under pdflatex for users of MikTeX due to an automatically
   half-installed "grtimes" package. A workaround in LyX was removed as it
   stands in the way of alternative approaches (see bug #6469).
+
+* With LuaTeX, LyX now uses polyglossia instead of babel if the language
+  package option "Automatic" is selected. In order to use babel, select
+  "Always babel" instead. This may be needed if a document uses code that
+  is specific to babel.
