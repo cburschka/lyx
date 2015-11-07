@@ -77,6 +77,9 @@
 #   Add option to allow saving the document directory
 #   No conversion necessary.
 
+# Incremented to format 19, by rgh
+#   remove print support
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
