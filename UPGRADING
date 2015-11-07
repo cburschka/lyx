@@ -1,5 +1,43 @@
-How do I upgrade my existing LyX system to version 2.1.x?
+How do I upgrade my existing LyX system to version 2.2.x?
 ---------------------------------------------------------
+
+* Upgrading from LyX 2.1.x:
+
+With LuaTeX, LyX now uses polyglossia instead of babel if the language
+package option "Automatic" is selected. In order to use babel, select
+"Always babel" instead.
+
+The format of preference and session files has changed. LyX 2.2.x is able to
+read old files but will save them in the new format.
+
+The format of layout files has changed but, as before, layout2layout.py will
+convert older versions to the new format automatically.
+
+The prefix for subsections in labels and references has been changed from
+"sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
+\subref command, see bug #7550). Files are automatically converted to the new
+scheme. Please assure that you adapt external refstyle or prettyref definitions
+and your own layout files.
+
+BibTeX errors are now processed and cause LyX to show the errors dialog.
+Before, these errors were ignored, which means that it may happen that
+documents that compiled without error with a previous version now
+compile with error. However, because now in 2.2.x users can click on
+the "Show Output Anyway" button, the document can still be viewed.
+
+Missing characters in the output are now reported as errors. This leads
+to error reports for documents that compiled without error before.
+However, the error was always present but went undetected!
+
+Documents using Times fonts and containing Greek characters may now fail
+to compile under pdflatex for users of MikTeX due to an automatically
+half-installed "grtimes" package. A workaround in LyX was removed as it
+stands in the way of alternative approaches (see bug #6469).
+
+With LuaTeX, LyX now uses polyglossia instead of babel if the language
+package option "Automatic" is selected. In order to use babel, select
+"Always babel" instead. This may be needed if a document uses code that
+is specific to babel.
 
 * Upgrading from LyX 2.0.x:
 
