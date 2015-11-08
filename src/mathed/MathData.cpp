@@ -527,7 +527,9 @@ void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos
 	// optional arguments to be put back?
 	pos_type p = macroPos + 1;
 	size_t j = 0;
-	// WARNING: do not use macroInset below, the insert() call in the lopp will invalidate it!
+	// We do not want to use macroInset below, the insert() call in
+	// the loop will invalidate it.
+	macroInset = 0;
 	for (; j < detachedArgs.size() && j < optionals; ++j) {
 		// another non-empty parameter follows?
 		bool canDropEmptyOptional = j >= lastNonEmptyOptional;
