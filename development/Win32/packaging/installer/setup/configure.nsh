@@ -151,7 +151,7 @@ Section -Configure
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set the format to the latest LyXRC format
-  FileWrite $R1 'Format 15$\r$\n'
+  FileWrite $R1 'Format 19$\r$\n'
   # set some general things
   FileWrite $R1 '\screen_zoom 120$\r$\n'
   ${if} "$PathPrefix" != ""
