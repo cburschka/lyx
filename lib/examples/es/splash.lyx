@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 500
 \begin_document
 \begin_header
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -70,31 +71,36 @@
 \begin_body
 
 \begin_layout Title
-¡Bienvenido a LyX!
+¡Bienvenido a \SpecialChar LyX
+!
 \end_layout
 
 \begin_layout Section*
-Las n primeras cosas que debe saber al usar LyX
+Las n primeras cosas que debe saber al usar \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Enumerate
-LyX viene con una excelente documentación (por favor, ¡úsela!).
+\SpecialChar LyX
+ viene con una excelente documentación (por favor, ¡úsela!).
  Comience en el menú con 
 \family sans
-Ayuda\SpecialChar \menuseparator
+Ayuda\SpecialChar menuseparator
 Introducción
 \family default
 , que le hará una introducción muy breve a los manuales.
- Después aprenda a usar LyX con 
+ Después aprenda a usar \SpecialChar LyX
+ con 
 \family sans
-Ayuda\SpecialChar \menuseparator
+Ayuda\SpecialChar menuseparator
 Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX es lo que llamamos un 
+\SpecialChar LyX
+ es lo que llamamos un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -110,10 +116,11 @@ procesador de documentos
 \end_layout
 
 \begin_layout Enumerate
-La salida de LyX tiene un aspecto impecable.
+La salida de \SpecialChar LyX
+ tiene un aspecto impecable.
  Ejecute en el menú 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
 Ver
 \begin_inset space ~
 \end_inset
@@ -134,13 +141,20 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-Sí, LyX puede imitar casi toda la funcionalidad de LaTeX.
- Y sí, LyX puede importar ficheros LaTeX.
- Los usuarios experimentados de LaTeX deberían leerse el capítulo 
+Sí, \SpecialChar LyX
+ puede imitar casi toda la funcionalidad de \SpecialChar LaTeX
+.
+ Y sí, \SpecialChar LyX
+ puede importar ficheros \SpecialChar LaTeX
+.
+ Los usuarios experimentados de \SpecialChar LaTeX
+ deberían leerse el capítulo 
 \begin_inset Quotes eld
 \end_inset
 
-LyX para usuarios de LaTeX
+\SpecialChar LyX
+ para usuarios de \SpecialChar LaTeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -149,25 +163,28 @@ LyX para usuarios de LaTeX
 Tutorial
 \emph default
 .
- (Al resto de lectores: no se preocupe, no necesita saber LaTeX para usar
- LyX).
+ (Al resto de lectores: no se preocupe, no necesita saber \SpecialChar LaTeX
+ para usar \SpecialChar LyX
+).
 \end_layout
 
 \begin_layout Enumerate
-LyX tiene montones de ventajas para aquellos que leen o escriben en un idioma
+\SpecialChar LyX
+ tiene montones de ventajas para aquellos que leen o escriben en un idioma
  distinto del inglés.
  Además, las asociaciones de teclas, la barra de herramientas y muchas otras
  características son altamente configurables.
  Mire en 
 \family sans
-Ayuda\SpecialChar \menuseparator
+Ayuda\SpecialChar menuseparator
 Personalización
 \family default
  para más detalles.
 \end_layout
 
 \begin_layout Enumerate
-La página de LyX en Internet está en 
+La página de \SpecialChar LyX
+ en Internet está en 
 \family typewriter
 
 \begin_inset Flex URL
@@ -186,7 +203,8 @@ http://www.lyx.org/WebEs.Home
  Consiga allí información sobre el programa, subscríbase a la(s) lista(s)
  de correo, obtenga el 
 \emph on
-Tour Gráfico de LyX
+Tour Gráfico de \SpecialChar LyX
+
 \emph default
 , y muchas más cosas.
 \end_layout

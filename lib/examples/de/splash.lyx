@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 500
 \begin_document
 \begin_header
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -70,31 +71,36 @@
 \begin_body
 
 \begin_layout Title
-Willkommen bei LyX!
+Willkommen bei \SpecialChar LyX
+!
 \end_layout
 
 \begin_layout Section*
-Die wichtigsten Dinge, wenn Sie LyX verwenden 
+Die wichtigsten Dinge, wenn Sie \SpecialChar LyX
+ verwenden 
 \end_layout
 
 \begin_layout Enumerate
-LyX besitzt eine exzellente Dokumentation — bitte machen Sie Gebrauch davon!
+\SpecialChar LyX
+ besitzt eine exzellente Dokumentation — bitte machen Sie Gebrauch davon!
  Lesen Sie zunächst 
 \family sans
-Hilfe\SpecialChar \menuseparator
+Hilfe\SpecialChar menuseparator
 Einführung
 \family default
 , dies gibt Ihnen einen kurzen Überblick über die vorhandene Dokumentation.
- Wie Sie mit LyX arbeiten, erläutert Ihnen 
+ Wie Sie mit \SpecialChar LyX
+ arbeiten, erläutert Ihnen 
 \family sans
-Hilfe\SpecialChar \menuseparator
+Hilfe\SpecialChar menuseparator
 Tutorium
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX kann man am besten als 
+\SpecialChar LyX
+ kann man am besten als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -110,10 +116,11 @@ ion erläutert.
 \end_layout
 
 \begin_layout Enumerate
-Mit LyX erstellte Texte sehen gut aus.
+Mit \SpecialChar LyX
+ erstellte Texte sehen gut aus.
  Überzeugen Sie sich davon mit 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
 Ansehen
 \begin_inset space ~
 \end_inset
@@ -134,9 +141,14 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-Ja, LyX kann (fast) die gesamte Funktionalität von LaTeX umsetzen.
- Und, ja, LyX kann vorhandene LaTeX-Dateien importieren.
- Erfahrene LaTeX-Anwender sollten das 
+Ja, \SpecialChar LyX
+ kann (fast) die gesamte Funktionalität von \SpecialChar LaTeX
+ umsetzen.
+ Und, ja, \SpecialChar LyX
+ kann vorhandene \SpecialChar LaTeX
+-Dateien importieren.
+ Erfahrene \SpecialChar LaTeX
+-Anwender sollten das 
 \emph on
 Tutorium
 \emph default
@@ -144,30 +156,36 @@ Tutorium
 \begin_inset Quotes gld
 \end_inset
 
-LyX für LaTeX-Benutzer
+\SpecialChar LyX
+ für \SpecialChar LaTeX
+-Benutzer
 \begin_inset Quotes grd
 \end_inset
 
  lesen.
  Alle anderen brauchen sich keine Gedanken zu machen: Sie müssen (fast)
- kein LaTeX lernen, um mit LyX zu arbeiten.
+ kein \SpecialChar LaTeX
+ lernen, um mit \SpecialChar LyX
+ zu arbeiten.
 \end_layout
 
 \begin_layout Enumerate
-LyX bietet ausführliche Unterstützung für all diejenigen, die eine andere
- Sprache als Englisch lesen und schreiben.
+\SpecialChar LyX
+ bietet ausführliche Unterstützung für all diejenigen, die eine andere Sprache
+ als Englisch lesen und schreiben.
  Darüber hinaus sind Dinge wie Tastaturbelegung, Werkzeugleiste und viele
  weitere Sachen frei konfigurierbar.
  Näheres erläutert 
 \family sans
-Hilfe\SpecialChar \menuseparator
+Hilfe\SpecialChar menuseparator
 Anpassung
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Die Internet-Seite von LyX ist 
+Die Internet-Seite von \SpecialChar LyX
+ ist 
 \family typewriter
 
 \begin_inset Flex URL
@@ -183,27 +201,21 @@ http://www.lyx.org/WebDe.Home
 
 \family default
 .
- Dort bekommen Sie aktuelle Informationen zu LyX, können Mailing-Listen
- abonnieren, sich einen grafischen Rundgang durch LyX ansehen und vieles
- mehr.
+ Dort bekommen Sie aktuelle Informationen zu \SpecialChar LyX
+, können Mailing-Listen abonnieren,
+ sich einen grafischen Rundgang durch \SpecialChar LyX
+ ansehen und vieles mehr.
 \end_layout
 
 \begin_layout Enumerate
-Installationshinweis für LyX unter Linux: Wenn Ihre Linux-Distribution zusammen
- mit LyX die LaTeX-Distribution 
+Installationshinweis für \SpecialChar LyX
+ unter Linux: Wenn Ihre Linux-Distribution zusammen
+ mit \SpecialChar LyX
+ die \SpecialChar LaTeX
+-Distribution 
 \family typewriter
-Te
-\begin_inset ERT
-status collapsed
+\SpecialChar TeX
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
 \begin_inset space ~
 \end_inset
 
@@ -211,18 +223,8 @@ Live
 \family default
  installiert hat, oder 
 \family typewriter
-Te
-\begin_inset ERT
-status collapsed
+\SpecialChar TeX
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
 \begin_inset space ~
 \end_inset
 
@@ -230,6 +232,10 @@ Live
 \family default
  bereits installiert war, prüfen Sie ob das deutsche Sprachpaket installiert
  wurde.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -246,7 +252,7 @@ Nach der Installation führen Sie das Menü
 \family sans
  Werkzeuge
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Neu

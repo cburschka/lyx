@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 500
 \begin_document
 \begin_header
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -70,31 +71,36 @@
 \begin_body
 
 \begin_layout Title
-Welcome to LyX!
+Welcome to \SpecialChar LyX
+!
 \end_layout
 
 \begin_layout Section*
-Most important things to know when using LyX
+Most important things to know when using \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Enumerate
-LyX comes with excellent documentation — please use it! Start with the menu
+\SpecialChar LyX
+ comes with excellent documentation — please use it! Start with the menu
  
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Introduction
 \family default
 , which will give you a very brief introduction to the documentation.
- Then learn about using LyX with 
+ Then learn about using \SpecialChar LyX
+ with 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX is what we call a 
+\SpecialChar LyX
+ is what we call a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -109,9 +115,10 @@ document processor.
 \end_layout
 
 \begin_layout Enumerate
-The output from LyX looks great! Use the menu 
+The output from \SpecialChar LyX
+ looks great! Use the menu 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 View
 \begin_inset space ~
 \end_inset
@@ -132,9 +139,14 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-Yes, LyX can mimic (almost) all LaTeX functionality.
- And yes, LyX can import LaTeX files.
- Experienced LaTeX users should skim the rest of the 
+Yes, \SpecialChar LyX
+ can mimic (almost) all \SpecialChar LaTeX
+ functionality.
+ And yes, \SpecialChar LyX
+ can import \SpecialChar LaTeX
+ files.
+ Experienced \SpecialChar LaTeX
+ users should skim the rest of the 
 \emph on
 Tutorial
 \emph default
@@ -142,29 +154,35 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-LyX for LaTeX Users
+\SpecialChar LyX
+ for \SpecialChar LaTeX
+ Users
 \begin_inset Quotes erd
 \end_inset
 
  chapter.
- (Everyone else: don't worry, you don't need to know LaTeX to use LyX.) 
+ (Everyone else: don't worry, you don't need to know \SpecialChar LaTeX
+ to use \SpecialChar LyX
+.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX has lots of features for people who read or write a language other than
+\SpecialChar LyX
+ has lots of features for people who read or write a language other than
  English.
  In addition, the key bindings, toolbars, and many other characteristics
  are highly configurable.
  See 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Customization
 \family default
  for details.
 \end_layout
 
 \begin_layout Enumerate
-The LyX home page is at 
+The \SpecialChar LyX
+ home page is at 
 \family typewriter
 
 \begin_inset Flex URL
@@ -180,8 +198,11 @@ http://www.lyx.org/
 
 \family default
 .
- Get information about LyX, subscribe to the LyX mailing list(s), take the
- LyX Graphical Tour, and more.
+ Get information about \SpecialChar LyX
+, subscribe to the \SpecialChar LyX
+ mailing list(s), take the \SpecialChar LyX
+ Graphical
+ Tour, and more.
 \end_layout
 
 \end_body

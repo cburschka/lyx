@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 500
 \begin_document
 \begin_header
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -70,31 +71,36 @@
 \begin_body
 
 \begin_layout Title
-Benvenuti in LyX!
+Benvenuti in \SpecialChar LyX
+!
 \end_layout
 
 \begin_layout Section*
-Le prime n cose che dovete sapere quando usate LyX
+Le prime n cose che dovete sapere quando usate \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Enumerate
-LyX è accompagnato da una eccellente documentazione—per favore, consultatela!
+\SpecialChar LyX
+ è accompagnato da una eccellente documentazione—per favore, consultatela!
  Iniziate da 
 \family sans
-Aiuto\SpecialChar \menuseparator
+Aiuto\SpecialChar menuseparator
 Introduzione
 \family default
 , il quale vi fornirà una breve introduzione alla documentazione.
- Quindi imparate ad usare LyX mediante il documento 
+ Quindi imparate ad usare \SpecialChar LyX
+ mediante il documento 
 \family sans
-Aiuto\SpecialChar \menuseparator
+Aiuto\SpecialChar menuseparator
 Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX è ciò che noi chiamiamo un 
+\SpecialChar LyX
+ è ciò che noi chiamiamo un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -119,19 +125,32 @@ Abbiamo già ribadito il fatto che dovreste leggere la documentazione?
 \end_layout
 
 \begin_layout Enumerate
-I documenti scritti con LyX sono, in termini visivi, davvero notevoli! Provate
+I documenti scritti con \SpecialChar LyX
+ sono, in termini visivi, davvero notevoli! Provate
  adesso ad invocare 
 \family sans
-View\SpecialChar \menuseparator
-DVI
+Documento\SpecialChar menuseparator
+Mostra
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
  per constatrlo con i vostri occhi.
 \end_layout
 
 \begin_layout Enumerate
-Ebbene sì, LyX è in grado di realizzare (quasi) tutte le funzionalità del
- LaTeX, potendo anche importare i file LaTeX.
- Gli utilizzatori esperti di LaTeX potrebbero scorrere velocemente la restante
+Ebbene sì, \SpecialChar LyX
+ è in grado di realizzare (quasi) tutte le funzionalità del \SpecialChar LaTeX
+,
+ potendo anche importare i file \SpecialChar LaTeX
+.
+ Gli utilizzatori esperti di \SpecialChar LaTeX
+ potrebbero scorrere velocemente la restante
  parte del 
 \emph on
 Tutorial
@@ -140,14 +159,19 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-LyX per gli Utilizzatori di LaTeX.
+\SpecialChar LyX
+ per gli Utilizzatori di \SpecialChar LaTeX
+.
  (Per tutti gli altri: non preoccupatevi, non avete bisogno di conoscere
- LaTeX per usare LyX.) 
+ \SpecialChar LaTeX
+ per usare \SpecialChar LyX
+.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX possiede un mucchio di caratteristiche per tutti coloro che leggono
- o scrivono in una lingua diversa dall'Inglese.
+\SpecialChar LyX
+ possiede un mucchio di caratteristiche per tutti coloro che leggono o scrivono
+ in una lingua diversa dall'Inglese.
  In più, le funzioni attivabili mediante i tasti, la barra degli strumenti,
  e molte altre caratteristiche sono fortemente configurabili (la maggior
  parte editando il vostro file 
@@ -157,14 +181,15 @@ lyxrc
 ).
  Leggete 
 \family sans
-Aiuto\SpecialChar \menuseparator
+Aiuto\SpecialChar menuseparator
 Personalizzazione
 \family default
  per ulteriori dettagli.
 \end_layout
 
 \begin_layout Enumerate
-La home page di LyX si trova all'indirizzo 
+La home page di \SpecialChar LyX
+ si trova all'indirizzo 
 \family typewriter
 
 \begin_inset Flex URL
@@ -180,8 +205,11 @@ http://www.lyx.org
 
 \family default
 .
- Consultatela per informazioni su LyX, per iscrivervi alle mailing list(s)
- sul LyX, per effettuare il Tour Grafico di LyX e per altro ancora.
+ Consultatela per informazioni su \SpecialChar LyX
+, per iscrivervi alle mailing list(s)
+ sul \SpecialChar LyX
+, per effettuare il Tour Grafico di \SpecialChar LyX
+ e per altro ancora.
 \end_layout
 
 \end_body
