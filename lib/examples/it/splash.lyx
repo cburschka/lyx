@@ -122,8 +122,16 @@ Abbiamo già ribadito il fatto che dovreste leggere la documentazione?
 I documenti scritti con LyX sono, in termini visivi, davvero notevoli! Provate
  adesso ad invocare 
 \family sans
-View\SpecialChar \menuseparator
-DVI
+Documento\SpecialChar \menuseparator
+Mostra
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
  per constatrlo con i vostri occhi.
 \end_layout
