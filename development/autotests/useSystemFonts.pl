@@ -75,11 +75,12 @@ $dest = File::Spec->rel2abs($dest);
 
 my %font = ();
 my $lang = "main";
-if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)\//) {
+if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
   $lang = $1;
 }
+
 if ($fontT eq "systemF") {
-  if ($lang =~ /^(ru|uk)$/) {
+  if ($lang =~ /^(ru|uk|sk)$/) {
     $font{roman} = "DejaVu Serif";
     $font{sans} = "DejaVu Sans";
     $font{typewriter} = "DejaVu Sans Mono";

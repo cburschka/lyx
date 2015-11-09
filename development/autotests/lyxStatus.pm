@@ -196,10 +196,19 @@ sub checkForHeader($)
 			   "result" => ["\\master ", ""]);
     if (keys %{$rFont}) {
       for my $ff ( keys %{$rFont}) {
-	my $elem = newMatch("search" => '^\\\\font_' . $ff . '\s+',
+	# fontentry of type '\font_roman default'
+	my $elem = newMatch("search" => '^\\\\font_' . $ff . '\s+[^"]*\s*$',
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", $rFont->{$ff}]);
-	push(@rElems, $elem);
+	# fontentry of type '\font_roman "default"'
+	my $elem1 = newMatch("search" => '^\\\\font_' . $ff . '\s+"[^"]*"\s*$',
+			     "filetype" => "replace_only",
+			     "result" => ["\\font_$ff \"", $rFont->{$ff}, '"']);
+	# fontentry of type '\font_roman "default" "default"'
+	my $elem2 = newMatch("search" => '^\\\\font_' . $ff . '\s+"(.*)"\s+"(.*)"\s*$',
+			     "filetype" => "replace_only",
+			     "result" => ["\\font_$ff ", '"', "1", '" "', $rFont->{$ff}, '"']);
+	push(@rElems, $elem, $elem1, $elem2);
       }
     }
     my $elemntf = newMatch("search" => '^\\\\use_non_tex_fonts\s+(false|true)',
