@@ -51,6 +51,7 @@ class GuiIndices;
 class ModuleSelectionManager;
 class PreambleModule;
 class LocalLayout;
+class FontModule;
 
 ///
 typedef void const * BufferId;
@@ -134,7 +135,7 @@ private:
 
 	UiWidget<Ui::TextLayoutUi> *textLayoutModule;
 	UiWidget<Ui::MasterChildUi> *masterChildModule;
-	UiWidget<Ui::FontUi> *fontModule;
+	FontModule *fontModule;
 	UiWidget<Ui::PageLayoutUi> *pageLayoutModule;
 	UiWidget<Ui::MarginsUi> *marginsModule;
 	UiWidget<Ui::LanguageUi> *langModule;
@@ -326,6 +327,25 @@ private Q_SLOTS:
 private:
 	BufferId current_id_;
 	bool validated_;
+};
+
+
+class FontModule : public UiWidget<Ui::FontUi>
+{
+	Q_OBJECT
+public:
+	/// The roman font currently not selected by osFontsCB->isChecked()
+	QString font_roman;
+	/// The sans font currently not selected by osFontsCB->isChecked()
+	QString font_sans;
+	/// The typewriter font currently not selected by osFontsCB->isChecked()
+	QString font_typewriter;
+	/// The math font currently not selected by osFontsCB->isChecked()
+	QString font_math;
+	/// The sans font scale currently not selected by osFontsCB->isChecked()
+	int font_sf_scale;
+	/// The typewriter font scale currently not selected by osFontsCB->isChecked()
+	int font_tt_scale;
 };
 
 

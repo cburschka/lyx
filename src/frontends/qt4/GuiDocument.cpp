@@ -774,7 +774,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		outputModule->synccustomCB));
 
 	// fonts
-	fontModule = new UiWidget<Ui::FontUi>;
+	fontModule = new FontModule;
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->osFontsCB, SIGNAL(toggled(bool)),
@@ -1775,6 +1775,18 @@ void GuiDocument::languageChanged(int i)
 void GuiDocument::osFontsChanged(bool nontexfonts)
 {
 	bool const tex_fonts = !nontexfonts;
+	// store current fonts
+	QString const font_roman = fontModule->fontsRomanCO->itemData(
+			fontModule->fontsRomanCO->currentIndex()).toString();
+	QString const font_sans = fontModule->fontsSansCO->itemData(
+			fontModule->fontsSansCO->currentIndex()).toString();
+	QString const font_typewriter = fontModule->fontsTypewriterCO->itemData(
+			fontModule->fontsTypewriterCO->currentIndex()).toString();
+	QString const font_math = fontModule->fontsMathCO->itemData(
+			fontModule->fontsMathCO->currentIndex()).toString();
+	int const font_sf_scale = fontModule->scaleSansSB->value();
+	int const font_tt_scale = fontModule->scaleTypewriterSB->value();
+
 	updateFontlist();
 	// store default format
 	QString const dformat = outputModule->defaultFormatCO->itemData(
@@ -1786,6 +1798,28 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	if (index == -1)
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
+
+	// try to restore fonts which were selected two toggles ago
+	index = fontModule->fontsRomanCO->findData(fontModule->font_roman);
+	if (index != -1)
+		fontModule->fontsRomanCO->setCurrentIndex(index);
+	index = fontModule->fontsSansCO->findData(fontModule->font_sans);
+	if (index != -1)
+		fontModule->fontsSansCO->setCurrentIndex(index);
+	index = fontModule->fontsTypewriterCO->findData(fontModule->font_typewriter);
+	if (index != -1)
+		fontModule->fontsTypewriterCO->setCurrentIndex(index);
+	index = fontModule->fontsMathCO->findData(fontModule->font_math);
+	if (index != -1)
+		fontModule->fontsMathCO->setCurrentIndex(index);
+	// save fonts for next next toggle
+	fontModule->font_roman = font_roman;
+	fontModule->font_sans = font_sans;
+	fontModule->font_typewriter = font_typewriter;
+	fontModule->font_math = font_math;
+	fontModule->font_sf_scale = font_sf_scale;
+	fontModule->font_tt_scale = font_tt_scale;
+
 	langModule->encodingCO->setEnabled(tex_fonts &&
 		!langModule->defaultencodingRB->isChecked());
 	langModule->defaultencodingRB->setEnabled(tex_fonts);
@@ -2823,21 +2857,25 @@ void GuiDocument::applyView()
 	bp_.display_pixel_ratio = theGuiApp()->pixelRatio();
 
 	// fonts
-	bp_.fonts_roman =
+	bp_.fonts_roman[nontexfonts] =
 		fromqstr(fontModule->fontsRomanCO->
 			itemData(fontModule->fontsRomanCO->currentIndex()).toString());
+	bp_.fonts_roman[!nontexfonts] = fromqstr(fontModule->font_roman);
 
-	bp_.fonts_sans =
+	bp_.fonts_sans[nontexfonts] =
 		fromqstr(fontModule->fontsSansCO->
 			itemData(fontModule->fontsSansCO->currentIndex()).toString());
+	bp_.fonts_sans[!nontexfonts] = fromqstr(fontModule->font_sans);
 
-	bp_.fonts_typewriter =
+	bp_.fonts_typewriter[nontexfonts] =
 		fromqstr(fontModule->fontsTypewriterCO->
 			itemData(fontModule->fontsTypewriterCO->currentIndex()).toString());
+	bp_.fonts_typewriter[!nontexfonts] = fromqstr(fontModule->font_typewriter);
 
-	bp_.fonts_math =
+	bp_.fonts_math[nontexfonts] =
 		fromqstr(fontModule->fontsMathCO->
 			itemData(fontModule->fontsMathCO->currentIndex()).toString());
+	bp_.fonts_math[!nontexfonts] = fromqstr(fontModule->font_math);
 
 	QString const fontenc =
 		fontModule->fontencCO->itemData(fontModule->fontencCO->currentIndex()).toString();
@@ -2849,9 +2887,11 @@ void GuiDocument::applyView()
 	bp_.fonts_cjk =
 		fromqstr(fontModule->cjkFontLE->text());
 
-	bp_.fonts_sans_scale = fontModule->scaleSansSB->value();
+	bp_.fonts_sans_scale[nontexfonts] = fontModule->scaleSansSB->value();
+	bp_.fonts_sans_scale[!nontexfonts] = fontModule->font_sf_scale;
 
-	bp_.fonts_typewriter_scale = fontModule->scaleTypewriterSB->value();
+	bp_.fonts_typewriter_scale[nontexfonts] = fontModule->scaleTypewriterSB->value();
+	bp_.fonts_typewriter_scale[!nontexfonts] = fontModule->font_tt_scale;
 
 	bp_.fonts_expert_sc = fontModule->fontScCB->isChecked();
 
@@ -3269,37 +3309,41 @@ void GuiDocument::paramsToDialog()
 	updateFontsize(documentClass().opt_fontsize(),
 			bp_.fontsize);
 
-	QString font = toqstr(bp_.fonts_roman);
+	QString font = toqstr(bp_.fontsRoman());
 	int rpos = fontModule->fontsRomanCO->findData(font);
 	if (rpos == -1) {
 		rpos = fontModule->fontsRomanCO->count();
 		fontModule->fontsRomanCO->addItem(font + qt_(" (not installed)"), font);
 	}
 	fontModule->fontsRomanCO->setCurrentIndex(rpos);
+	fontModule->font_roman = toqstr(bp_.fonts_roman[!bp_.useNonTeXFonts]);
 
-	font = toqstr(bp_.fonts_sans);
+	font = toqstr(bp_.fontsSans());
 	int spos = fontModule->fontsSansCO->findData(font);
 	if (spos == -1) {
 		spos = fontModule->fontsSansCO->count();
 		fontModule->fontsSansCO->addItem(font + qt_(" (not installed)"), font);
 	}
 	fontModule->fontsSansCO->setCurrentIndex(spos);
+	fontModule->font_sans = toqstr(bp_.fonts_sans[!bp_.useNonTeXFonts]);
 
-	font = toqstr(bp_.fonts_typewriter);
+	font = toqstr(bp_.fontsTypewriter());
 	int tpos = fontModule->fontsTypewriterCO->findData(font);
 	if (tpos == -1) {
 		tpos = fontModule->fontsTypewriterCO->count();
 		fontModule->fontsTypewriterCO->addItem(font + qt_(" (not installed)"), font);
 	}
 	fontModule->fontsTypewriterCO->setCurrentIndex(tpos);
+	fontModule->font_typewriter = toqstr(bp_.fonts_typewriter[!bp_.useNonTeXFonts]);
 
-	font = toqstr(bp_.fonts_math);
+	font = toqstr(bp_.fontsMath());
 	int mpos = fontModule->fontsMathCO->findData(font);
 	if (mpos == -1) {
 		mpos = fontModule->fontsMathCO->count();
 		fontModule->fontsMathCO->addItem(font + qt_(" (not installed)"), font);
 	}
 	fontModule->fontsMathCO->setCurrentIndex(mpos);
+	fontModule->font_math = toqstr(bp_.fonts_math[!bp_.useNonTeXFonts]);
 
 	if (bp_.useNonTeXFonts && os_fonts_available) {
 		fontModule->fontencLA->setEnabled(false);
@@ -3322,8 +3366,10 @@ void GuiDocument::paramsToDialog()
 
 	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
 	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);
-	fontModule->scaleSansSB->setValue(bp_.fonts_sans_scale);
-	fontModule->scaleTypewriterSB->setValue(bp_.fonts_typewriter_scale);
+	fontModule->scaleSansSB->setValue(bp_.fontsSansScale());
+	fontModule->font_sf_scale = bp_.fonts_sans_scale[!bp_.useNonTeXFonts];
+	fontModule->scaleTypewriterSB->setValue(bp_.fontsTypewriterScale());
+	fontModule->font_tt_scale = bp_.fonts_typewriter_scale[!bp_.useNonTeXFonts];
 
 	int nn = findToken(GuiDocument::fontfamilies, bp_.fonts_default_family);
 	if (nn >= 0)

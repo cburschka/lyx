@@ -11,6 +11,15 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-11-08 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 501
+	  \fonts_roman, \fonts_sans, \fonts_typewriter and \fonts_math,
+	  take now two quoted values instead of one unquoted one.
+	  The first one is for TeX fonts, the second one for non-TeX fonts.
+	  \font_sf_scale and \font_tt_scale
+	  take now two values instead of one.
+	  The first one is for TeX fonts, the second one for non-TeX fonts.
+
 2015-11-04 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 500
 	  No new parameters.

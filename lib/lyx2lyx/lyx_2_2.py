@@ -2019,6 +2019,79 @@ def revert_achemso(document):
     i += 1
 
 
+fontsettings = ["\\font_roman", "\\font_sans", "\\font_typewriter", "\\font_math", \
+                "\\font_sf_scale", "\\font_tt_scale"]
+fontdefaults = ["default", "default", "default", "auto", "100", "100"]
+fontquotes = [True, True, True, True, False, False]
+
+def convert_fontsettings(document):
+    " Duplicate font settings "
+
+    i = find_token(document.header, "\\use_non_tex_fonts ", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: No \\use_non_tex_fonts!")
+        use_non_tex_fonts = "false"
+    else:
+        use_non_tex_fonts = get_value(document.header, "\\use_non_tex_fonts", i)
+    j = 0
+    for f in fontsettings:
+        i = find_token(document.header, f + " ", 0)
+        if i == -1:
+            document.warning("Malformed LyX document: No " + f + "!")
+            j = j + 1
+            continue
+        value = document.header[i][len(f):].strip()
+        if fontquotes[j]:
+            if use_non_tex_fonts == "true":
+                document.header[i:i+1] = [f + ' "' + fontdefaults[j] + '" "' + value + '"']
+            else:
+                document.header[i:i+1] = [f + ' "' + value + '" "' + fontdefaults[j] + '"']
+        else:
+            if use_non_tex_fonts == "true":
+                document.header[i:i+1] = [f + ' ' + fontdefaults[j] + ' ' + value]
+            else:
+                document.header[i:i+1] = [f + ' ' + value + ' ' + fontdefaults[j]]
+        j = j + 1
+
+
+def revert_fontsettings(document):
+    " Merge font settings "
+
+    i = find_token(document.header, "\\use_non_tex_fonts ", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: No \\use_non_tex_fonts!")
+        use_non_tex_fonts = "false"
+    else:
+        use_non_tex_fonts = get_value(document.header, "\\use_non_tex_fonts", i)
+    j = 0
+    for f in fontsettings:
+        i = find_token(document.header, f + " ", 0)
+        if i == -1:
+            document.warning("Malformed LyX document: No " + f + "!")
+            j = j + 1
+            continue
+        line = get_value(document.header, f, i)
+        if fontquotes[j]:
+            q1 = line.find('"')
+            q2 = line.find('"', q1+1)
+            q3 = line.find('"', q2+1)
+            q4 = line.find('"', q3+1)
+            if q1 == -1 or q2 == -1 or q3 == -1 or q4 == -1:
+                document.warning("Malformed LyX document: Missing quotes!")
+                j = j + 1
+                continue
+            if use_non_tex_fonts == "true":
+                document.header[i:i+1] = [f + ' ' + line[q3+1:q4]]
+            else:
+                document.header[i:i+1] = [f + ' ' + line[q1+1:q2]]
+        else:
+            if use_non_tex_fonts == "true":
+                document.header[i:i+1] = [f + ' ' + line.split()[2]]
+            else:
+                document.header[i:i+1] = [f + ' ' + line.split()[1]]
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -2053,10 +2126,12 @@ convert = [
            [497, [convert_external_bbox]],
            [498, []],
            [499, [convert_moderncv]],
-           [500, []]
+           [500, []],
+           [501, [convert_fontsettings]]
           ]
 
 revert =  [
+           [500, [revert_fontsettings]],
            [499, [revert_achemso]],
            [498, [revert_moderncv_1, revert_moderncv_2]],
            [497, [revert_tcolorbox_1, revert_tcolorbox_2,

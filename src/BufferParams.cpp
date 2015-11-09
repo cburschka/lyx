@@ -377,16 +377,22 @@ BufferParams::BufferParams()
 	tocdepth = 3;
 	language = default_language;
 	fontenc = "global";
-	fonts_roman = "default";
-	fonts_sans = "default";
-	fonts_typewriter = "default";
-	fonts_math = "auto";
+	fonts_roman[0] = "default";
+	fonts_roman[1] = "default";
+	fonts_sans[0] = "default";
+	fonts_sans[1] = "default";
+	fonts_typewriter[0] = "default";
+	fonts_typewriter[1] = "default";
+	fonts_math[0] = "auto";
+	fonts_math[1] = "auto";
 	fonts_default_family = "default";
 	useNonTeXFonts = false;
 	fonts_expert_sc = false;
 	fonts_old_figures = false;
-	fonts_sans_scale = 100;
-	fonts_typewriter_scale = 100;
+	fonts_sans_scale[0] = 100;
+	fonts_sans_scale[1] = 100;
+	fonts_typewriter_scale[0] = 100;
+	fonts_typewriter_scale[1] = 100;
 	inputenc = "auto";
 	lang_package = "default";
 	graphics_driver = "default";
@@ -726,17 +732,17 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.eatLine();
 		fontenc = lex.getString();
 	} else if (token == "\\font_roman") {
-		lex.eatLine();
-		fonts_roman = lex.getString();
+		lex >> fonts_roman[0];
+		lex >> fonts_roman[1];
 	} else if (token == "\\font_sans") {
-		lex.eatLine();
-		fonts_sans = lex.getString();
+		lex >> fonts_sans[0];
+		lex >> fonts_sans[1];
 	} else if (token == "\\font_typewriter") {
-		lex.eatLine();
-		fonts_typewriter = lex.getString();
+		lex >> fonts_typewriter[0];
+		lex >> fonts_typewriter[1];
 	} else if (token == "\\font_math") {
-		lex.eatLine();
-		fonts_math = lex.getString();
+		lex >> fonts_math[0];
+		lex >> fonts_math[1];
 	} else if (token == "\\font_default_family") {
 		lex >> fonts_default_family;
 	} else if (token == "\\use_non_tex_fonts") {
@@ -746,9 +752,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\font_osf") {
 		lex >> fonts_old_figures;
 	} else if (token == "\\font_sf_scale") {
-		lex >> fonts_sans_scale;
+		lex >> fonts_sans_scale[0];
+		lex >> fonts_sans_scale[1];
 	} else if (token == "\\font_tt_scale") {
-		lex >> fonts_typewriter_scale;
+		lex >> fonts_typewriter_scale[0];
+		lex >> fonts_typewriter_scale[1];
 	} else if (token == "\\font_cjk") {
 		lex >> fonts_cjk;
 	} else if (token == "\\paragraph_separation") {
@@ -1092,16 +1100,22 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\\language_package " << lang_package
 	   << "\n\\inputencoding " << inputenc
 	   << "\n\\fontencoding " << fontenc
-	   << "\n\\font_roman " << fonts_roman
-	   << "\n\\font_sans " << fonts_sans
-	   << "\n\\font_typewriter " << fonts_typewriter
-	   << "\n\\font_math " << fonts_math
+	   << "\n\\font_roman \"" << fonts_roman[0]
+	   << "\" \"" << fonts_roman[1] << '"'
+	   << "\n\\font_sans \"" << fonts_sans[0]
+	   << "\" \"" << fonts_sans[1] << '"'
+	   << "\n\\font_typewriter \"" << fonts_typewriter[0]
+	   << "\" \"" << fonts_typewriter[1] << '"'
+	   << "\n\\font_math " << fonts_math[0]
+	   << "\" \"" << fonts_math[1] << '"'
 	   << "\n\\font_default_family " << fonts_default_family
 	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
 	   << "\n\\font_sc " << convert<string>(fonts_expert_sc)
 	   << "\n\\font_osf " << convert<string>(fonts_old_figures)
-	   << "\n\\font_sf_scale " << fonts_sans_scale
-	   << "\n\\font_tt_scale " << fonts_typewriter_scale
+	   << "\n\\font_sf_scale " << fonts_sans_scale[0]
+	   << ' ' << fonts_sans_scale[1]
+	   << "\n\\font_tt_scale " << fonts_typewriter_scale[0]
+	   << ' ' << fonts_typewriter_scale[1]
 	   << '\n';
 	if (!fonts_cjk.empty()) {
 		os << "\\font_cjk " << fonts_cjk << '\n';
@@ -1373,7 +1387,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		|| useNonTeXFonts))
 		features.require("polyglossia");
 
-	if (useNonTeXFonts && fonts_math != "auto")
+	if (useNonTeXFonts && fontsMath() != "auto")
 		features.require("unicode-math");
 
 	if (!language->requires().empty())
@@ -1540,7 +1554,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	string const ams = features.loadAMSPackages();
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
 	bool const use_newtxmath =
-		theLaTeXFonts().getLaTeXFont(from_ascii(fonts_math)).getUsedPackage(
+		theLaTeXFonts().getLaTeXFont(from_ascii(fontsMath())).getUsedPackage(
 			ot1, false, false) == "newtxmath";
 	if ((useNonTeXFonts || use_newtxmath) && !ams.empty())
 		os << from_ascii(ams);
@@ -3033,9 +3047,9 @@ string const BufferParams::parseFontName(string const & name) const
 
 string const BufferParams::loadFonts(LaTeXFeatures & features) const
 {
-	if (fonts_roman == "default" && fonts_sans == "default"
-	    && fonts_typewriter == "default"
-	    && (fonts_math == "default" || fonts_math == "auto"))
+	if (fontsRoman() == "default" && fontsSans() == "default"
+	    && fontsTypewriter() == "default"
+	    && (fontsMath() == "default" || fontsMath() == "auto"))
 		//nothing to do
 		return string();
 
@@ -3064,28 +3078,28 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 		string const texmapping =
 			(features.runparams().flavor == OutputParams::XETEX) ?
 			"Mapping=tex-text" : "Ligatures=TeX";
-		if (fonts_roman != "default") {
+		if (fontsRoman() != "default") {
 			os << "\\setmainfont[" << texmapping;
 			if (fonts_old_figures)
 				os << ",Numbers=OldStyle";
-			os << "]{" << parseFontName(fonts_roman) << "}\n";
+			os << "]{" << parseFontName(fontsRoman()) << "}\n";
 		}
-		if (fonts_sans != "default") {
-			string const sans = parseFontName(fonts_sans);
-			if (fonts_sans_scale != 100)
+		if (fontsSans() != "default") {
+			string const sans = parseFontName(fontsSans());
+			if (fontsSansScale() != 100)
 				os << "\\setsansfont[Scale="
-				   << float(fonts_sans_scale) / 100
+				   << float(fontsSansScale()) / 100
 				   << "," << texmapping << "]{"
 				   << sans << "}\n";
 			else
 				os << "\\setsansfont[" << texmapping << "]{"
 				   << sans << "}\n";
 		}
-		if (fonts_typewriter != "default") {
-			string const mono = parseFontName(fonts_typewriter);
-			if (fonts_typewriter_scale != 100)
+		if (fontsTypewriter() != "default") {
+			string const mono = parseFontName(fontsTypewriter());
+			if (fontsTypewriterScale() != 100)
 				os << "\\setmonofont[Scale="
-				   << float(fonts_typewriter_scale) / 100
+				   << float(fontsTypewriterScale()) / 100
 				   << "]{"
 				   << mono << "}\n";
 			else
@@ -3098,26 +3112,26 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 	// Tex Fonts
 	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
-	bool const complete = (fonts_sans == "default" && fonts_typewriter == "default");
-	bool const nomath = (fonts_math == "default");
+	bool const complete = (fontsSans() == "default" && fontsTypewriter() == "default");
+	bool const nomath = (fontsMath() == "default");
 
 	// ROMAN FONTS
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_roman)).getLaTeXCode(
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsRoman())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
 		nomath);
 
 	// SANS SERIF
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_sans)).getLaTeXCode(
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsSans())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
-		nomath, fonts_sans_scale);
+		nomath, fontsSansScale());
 
 	// MONOSPACED/TYPEWRITER
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_typewriter)).getLaTeXCode(
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsTypewriter())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
-		nomath, fonts_typewriter_scale);
+		nomath, fontsTypewriterScale());
 
 	// MATH
-	os << theLaTeXFonts().getLaTeXFont(from_ascii(fonts_math)).getLaTeXCode(
+	os << theLaTeXFonts().getLaTeXFont(from_ascii(fontsMath())).getLaTeXCode(
 		dryrun, ot1, complete, fonts_expert_sc, fonts_old_figures,
 		nomath);
 

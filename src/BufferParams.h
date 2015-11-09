@@ -245,14 +245,22 @@ public:
 	std::string index_command;
 	/// font encoding(s) requested for this document
 	std::string fontenc;
+	/// the rm font: [0] for TeX fonts, [1] for non-TeX fonts
+	std::string fonts_roman[2];
 	/// the rm font
-	std::string fonts_roman;
+	std::string const & fontsRoman() const { return fonts_roman[useNonTeXFonts]; }
+	/// the sf font: [0] for TeX fonts, [1] for non-TeX fonts
+	std::string fonts_sans[2];
 	/// the sf font
-	std::string fonts_sans;
+	std::string const & fontsSans() const { return fonts_sans[useNonTeXFonts]; }
+	/// the tt font: [0] for TeX fonts, [1] for non-TeX fonts
+	std::string fonts_typewriter[2];
 	/// the tt font
-	std::string fonts_typewriter;
+	std::string const & fontsTypewriter() const { return fonts_typewriter[useNonTeXFonts]; }
+	/// the math font: [0] for TeX fonts, [1] for non-TeX fonts
+	std::string fonts_math[2];
 	/// the math font
-	std::string fonts_math;
+	std::string const & fontsMath() const { return fonts_math[useNonTeXFonts]; }
 	/// the default family (rm, sf, tt)
 	std::string fonts_default_family;
 	/// use the fonts of the OS (OpenType, True Type) directly
@@ -261,10 +269,14 @@ public:
 	bool fonts_expert_sc;
 	/// use Old Style Figures
 	bool fonts_old_figures;
+	/// the scale factor of the sf font: [0] for TeX fonts, [1] for non-TeX fonts
+	int fonts_sans_scale[2];
 	/// the scale factor of the sf font
-	int fonts_sans_scale;
+	int fontsSansScale() const { return fonts_sans_scale[useNonTeXFonts]; }
+	/// the scale factor of the tt font: [0] for TeX fonts, [1] for non-TeX fonts
+	int fonts_typewriter_scale[2];
 	/// the scale factor of the tt font
-	int fonts_typewriter_scale;
+	int fontsTypewriterScale() const { return fonts_typewriter_scale[useNonTeXFonts]; }
 	/// the font used by the CJK command
 	std::string fonts_cjk;
 	///

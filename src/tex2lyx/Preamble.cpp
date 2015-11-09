@@ -473,16 +473,22 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	//h_float_placement;
 	//h_fontcolor;
 	h_fontencoding            = "default";
-	h_font_roman              = "default";
-	h_font_sans               = "default";
-	h_font_typewriter         = "default";
-	h_font_math               = "auto";
+	h_font_roman[0]           = "default";
+	h_font_roman[1]           = "default";
+	h_font_sans[0]            = "default";
+	h_font_sans[1]            = "default";
+	h_font_typewriter[0]      = "default";
+	h_font_typewriter[1]      = "default";
+	h_font_math[0]            = "auto";
+	h_font_math[1]            = "auto";
 	h_font_default_family     = "default";
 	h_use_non_tex_fonts       = false;
 	h_font_sc                 = "false";
 	h_font_osf                = "false";
-	h_font_sf_scale           = "100";
-	h_font_tt_scale           = "100";
+	h_font_sf_scale[0]        = "100";
+	h_font_sf_scale[1]        = "100";
+	h_font_tt_scale[0]        = "100";
+	h_font_tt_scale[1]        = "100";
 	//h_font_cjk
 	h_graphics                = "default";
 	h_default_output_format   = "default";
@@ -684,25 +690,25 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// roman fonts
 	if (is_known(name, known_roman_fonts))
-		h_font_roman = name;
+		h_font_roman[0] = name;
 
 	if (name == "fourier") {
-		h_font_roman = "utopia";
+		h_font_roman[0] = "utopia";
 		// when font uses real small capitals
 		if (opts == "expert")
 			h_font_sc = "true";
 	}
 
 	if (name == "garamondx") {
-		h_font_roman = "garamondx";
+		h_font_roman[0] = "garamondx";
 		if (opts == "osfI")
 			h_font_osf = "true";
 	}
 
 	if (name == "libertine") {
-		h_font_roman = "libertine";
+		h_font_roman[0] = "libertine";
 		// this automatically invokes biolinum
-		h_font_sans = "biolinum";
+		h_font_sans[0] = "biolinum";
 		if (opts == "osf")
 			h_font_osf = "true";
 		else if (opts == "lining")
@@ -710,7 +716,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	if (name == "libertine-type1") {
-		h_font_roman = "libertine";
+		h_font_roman[0] = "libertine";
 		// NOTE: contrary to libertine.sty, libertine-type1
 		// does not automatically invoke biolinum
 		if (opts == "lining")
@@ -721,11 +727,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (name == "mathdesign") {
 		if (opts.find("charter") != string::npos)
-			h_font_roman = "md-charter";
+			h_font_roman[0] = "md-charter";
 		if (opts.find("garamond") != string::npos)
-			h_font_roman = "md-garamond";
+			h_font_roman[0] = "md-garamond";
 		if (opts.find("utopia") != string::npos)
-			h_font_roman = "md-utopia";
+			h_font_roman[0] = "md-utopia";
 		if (opts.find("expert") != string::npos) {
 			h_font_sc = "true";
 			h_font_osf = "true";
@@ -733,22 +739,22 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	else if (name == "mathpazo")
-		h_font_roman = "palatino";
+		h_font_roman[0] = "palatino";
 
 	else if (name == "mathptmx")
-		h_font_roman = "times";
+		h_font_roman[0] = "times";
 
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
-		h_font_sans = name;
+		h_font_sans[0] = name;
 		if (options.size() >= 1) {
-			if (scale_as_percentage(opts, h_font_sf_scale))
+			if (scale_as_percentage(opts, h_font_sf_scale[0]))
 				options.clear();
 		}
 	}
 
 	if (name == "biolinum-type1") {
-		h_font_sans = "biolinum";
+		h_font_sans[0] = "biolinum";
 		// biolinum can have several options, e.g. [osf,scaled=0.97]
 		string::size_type pos = opts.find("osf");
 		if (pos != string::npos)
@@ -760,16 +766,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// fourier can be set as roman font _only_
 		// fourier as typewriter is handled in handling of \ttdefault
 		if (name != "fourier") {
-			h_font_typewriter = name;
+			h_font_typewriter[0] = name;
 			if (options.size() >= 1) {
-				if (scale_as_percentage(opts, h_font_tt_scale))
+				if (scale_as_percentage(opts, h_font_tt_scale[0]))
 					options.clear();
 			}
 		}
 	}
 
 	if (name == "libertineMono-type1") {
-		h_font_typewriter = "libertine-mono";
+		h_font_typewriter[0] = "libertine-mono";
 	}
 
 	// font uses old-style figure
@@ -778,26 +784,26 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	// math fonts
 	if (is_known(name, known_math_fonts))
-		h_font_math = name;
+		h_font_math[0] = name;
 
 	if (name == "newtxmath") {
 		if (opts.empty())
-			h_font_math = "newtxmath";
+			h_font_math[0] = "newtxmath";
 		else if (opts == "garamondx")
-			h_font_math = "garamondx-ntxm";
+			h_font_math[0] = "garamondx-ntxm";
 		else if (opts == "libertine")
-			h_font_math = "libertine-ntxm";
+			h_font_math[0] = "libertine-ntxm";
 		else if (opts == "minion")
-			h_font_math = "minion-ntxm";
+			h_font_math[0] = "minion-ntxm";
 	}
 
 	if (name == "iwona")
 		if (opts == "math")
-			h_font_math = "iwona-math";
+			h_font_math[0] = "iwona-math";
 
 	if (name == "kurier")
 		if (opts == "math")
-			h_font_math = "kurier-math";
+			h_font_math[0] = "kurier-math";
 
 	// after the detection and handling of special cases, we can remove the
 	// fonts, otherwise they would appear in the preamble, see bug #7856
@@ -1138,16 +1144,20 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\language_package " << h_language_package << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontencoding " << h_fontencoding << "\n"
-	   << "\\font_roman " << h_font_roman << "\n"
-	   << "\\font_sans " << h_font_sans << "\n"
-	   << "\\font_typewriter " << h_font_typewriter << "\n"
-	   << "\\font_math " << h_font_math << "\n"
+	   << "\\font_roman \"" << h_font_roman[0]
+	   << "\" \"" << h_font_roman[1] << "\"\n"
+	   << "\\font_sans \"" << h_font_sans[0] << "\" \"" << h_font_sans[1] << "\"\n"
+	   << "\\font_typewriter \"" << h_font_typewriter[0]
+	   << "\" \"" << h_font_typewriter[1] << "\"\n"
+	   << "\\font_math \"" << h_font_math[0] << "\" \"" << h_font_math[1] << "\"\n"
 	   << "\\font_default_family " << h_font_default_family << "\n"
 	   << "\\use_non_tex_fonts " << (h_use_non_tex_fonts ? "true" : "false") << '\n'
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
-	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
-	   << "\\font_tt_scale " << h_font_tt_scale << '\n';
+	   << "\\font_sf_scale " << h_font_sf_scale[0]
+	   << ' ' << h_font_sf_scale[1] << '\n'
+	   << "\\font_tt_scale " << h_font_tt_scale[0]
+	   << ' ' << h_font_tt_scale[1] << '\n';
 	if (!h_font_cjk.empty())
 		os << "\\font_cjk " << h_font_cjk << '\n';
 	os << "\\graphics " << h_graphics << '\n'
@@ -1357,7 +1367,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		else if (t.cs() == "setmainfont") {
 			// we don't care about the option
 			p.hasOpt() ? p.getOpt() : string();
-			h_font_roman = p.getArg('{', '}');
+			h_font_roman[1] = p.getArg('{', '}');
 		}
 
 		else if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
@@ -1377,12 +1387,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			if (t.cs() == "setsansfont") {
 				if (!scale.empty())
-					h_font_sf_scale = scale;
-				h_font_sans = p.getArg('{', '}');
+					h_font_sf_scale[1] = scale;
+				h_font_sans[1] = p.getArg('{', '}');
 			} else {
 				if (!scale.empty())
-					h_font_tt_scale = scale;
-				h_font_typewriter = p.getArg('{', '}');
+					h_font_tt_scale[1] = scale;
+				h_font_typewriter[1] = p.getArg('{', '}');
 			}
 		}
 
@@ -1528,19 +1538,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// font settings
 			if (name == "\\rmdefault")
 				if (is_known(body, known_roman_fonts)) {
-					h_font_roman = body;
+					h_font_roman[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\sfdefault")
 				if (is_known(body, known_sans_fonts)) {
-					h_font_sans = body;
+					h_font_sans[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}
 			if (name == "\\ttdefault")
 				if (is_known(body, known_typewriter_fonts)) {
-					h_font_typewriter = body;
+					h_font_typewriter[0] = body;
 					p.skip_spaces();
 					in_lyx_preamble = true;
 				}

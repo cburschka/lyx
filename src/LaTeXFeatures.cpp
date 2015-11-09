@@ -516,24 +516,24 @@ bool LaTeXFeatures::isProvided(string const & name) const
 
 	bool const ot1 = (params_.font_encoding() == "default"
 		|| params_.font_encoding() == "OT1");
-	bool const complete = (params_.fonts_sans == "default")
-		&& (params_.fonts_typewriter == "default");
-	bool const nomath = (params_.fonts_math == "default");
+	bool const complete = (params_.fontsSans() == "default"
+		&& params_.fontsTypewriter() == "default");
+	bool const nomath = (params_.fontsMath() == "default");
 	return params_.documentClass().provides(name)
 		|| theLaTeXFonts().getLaTeXFont(
-			from_ascii(params_.fonts_roman)).provides(name, ot1,
+			from_ascii(params_.fontsRoman())).provides(name, ot1,
 								  complete,
 								  nomath)
 		|| theLaTeXFonts().getLaTeXFont(
-			from_ascii(params_.fonts_sans)).provides(name, ot1,
+			from_ascii(params_.fontsSans())).provides(name, ot1,
 								 complete,
 								 nomath)
 		|| theLaTeXFonts().getLaTeXFont(
-			from_ascii(params_.fonts_typewriter)).provides(name, ot1,
+			from_ascii(params_.fontsTypewriter())).provides(name, ot1,
 								       complete,
 								       nomath)
 		|| theLaTeXFonts().getLaTeXFont(
-			from_ascii(params_.fonts_math)).provides(name, ot1,
+			from_ascii(params_.fontsMath())).provides(name, ot1,
 								       complete,
 								       nomath);
 	// TODO: "textbaltic" provided, if the font-encoding is "L7x"
@@ -934,7 +934,7 @@ string const LaTeXFeatures::getPackages() const
 	string const amsPackages = loadAMSPackages();
 	bool const ot1 = (params_.font_encoding() == "default" || params_.font_encoding() == "OT1");
 	bool const use_newtxmath =
-		theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_math)).getUsedPackage(
+		theLaTeXFonts().getLaTeXFont(from_ascii(params_.fontsMath())).getUsedPackage(
 			ot1, false, false) == "newtxmath";
 
 	if (!params_.useNonTeXFonts && !use_newtxmath && !amsPackages.empty())
