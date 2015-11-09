@@ -259,8 +259,9 @@ FontLoader::~FontLoader()
 
 /////////////////////////////////////////////////
 
+namespace {
 
-static QString makeFontName(QString const & family, QString const & foundry)
+QString makeFontName(QString const & family, QString const & foundry)
 {
 	QString res = family;
 	if (!foundry.isEmpty())
@@ -269,9 +270,9 @@ static QString makeFontName(QString const & family, QString const & foundry)
 }
 
 
-GuiFontInfo::GuiFontInfo(FontInfo const & f)
-	: metrics(QFont())
+QFont makeQFont(FontInfo const & f)
 {
+	QFont font;
 	QString const pat = symbolFamily(f.family());
 	if (!pat.isEmpty()) {
 		bool ok;
@@ -347,8 +348,15 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 
-	metrics = GuiFontMetrics(font);
+	return font;
 }
+
+} // anon namespace
+
+
+GuiFontInfo::GuiFontInfo(FontInfo const & f)
+	: font(makeQFont(f)), metrics(font)
+{}
 
 
 bool FontLoader::available(FontInfo const & f)

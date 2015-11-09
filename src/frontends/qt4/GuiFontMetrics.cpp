@@ -53,7 +53,10 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-GuiFontMetrics::GuiFontMetrics(QFont const & font) : font_(font), metrics_(font, 0)
+// Limit strwidth_cache_ size to 512kB of string data
+GuiFontMetrics::GuiFontMetrics(QFont const & font)
+	: font_(font), metrics_(font, 0),
+	  strwidth_cache_(1 << 19)
 {
 }
 
@@ -138,14 +141,14 @@ int GuiFontMetrics::rbearing(char_type c) const
 
 int GuiFontMetrics::width(docstring const & s) const
 {
-	int w = 0;
-	map<docstring, int>::const_iterator it = strwidth_cache_.find(s);
-	if (it != strwidth_cache_.end()) {
-		w = it->second;
-	} else {
-		w = metrics_.width(toqstr(s));
-		strwidth_cache_[s] = w;
-	}
+	QByteArray qba =
+		QByteArray(reinterpret_cast<char const *>(s.data()),
+		           s.size() * sizeof(docstring::value_type));
+	int * pw = strwidth_cache_[qba];
+	if (pw)
+		return *pw;
+	int w = metrics_.width(toqstr(s));
+	strwidth_cache_.insert(qba, new int(w), qba.size());
 	return w;
 }
 
