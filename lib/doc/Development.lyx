@@ -1,17 +1,13 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 500
+\lyxformat 501
 \begin_document
 \begin_header
 \origin unavailable
-\textclass scrbook
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\textclass scrartcl
+\options BCOR8mm,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
-theorems-ams
-theorems-ams-extended
-multicol
-shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -33,16 +29,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -155,7 +151,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Introduction
 \end_layout
 
@@ -187,7 +183,7 @@ development
  development, you may find some interesting information.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 File formats
 \end_layout
 
@@ -199,11 +195,11 @@ File formats
 tion.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 File Format Numbers
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 When is an update of the .lyx file format number needed?
 \begin_inset CommandInset label
 LatexCommand label
@@ -325,7 +321,7 @@ use_package
 If you are still unsure, please ask on the development list.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 How to update the file format number of .lyx files
 \end_layout
 
@@ -490,7 +486,7 @@ It would be nice if you could create a .lyx test file which contains instances
  so please ask on the development list if you want to create one.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Backporting new styles to the stable version
 \end_layout
 
@@ -579,7 +575,14 @@ lyx2lyx
  version.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Tests
 \end_layout
 
@@ -593,7 +596,7 @@ Automated tests are an important tool to detect bugs and regressions in
  easily, and some tests of this kind exist.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 \SpecialChar LyX
  tests
 \end_layout
@@ -613,7 +616,7 @@ development/autotests
  source code distribution.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Running the tests
 \end_layout
 
@@ -655,7 +658,7 @@ autotests
  subfolder of the build directory.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 tex2lyx tests
 \end_layout
 
@@ -724,7 +727,7 @@ status collapsed
  This may be useful for roundtrip comparisons.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Running the tests
 \end_layout
 
@@ -822,7 +825,7 @@ cmplyx
  are output in unified diff format.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Updating test references
 \begin_inset CommandInset label
 LatexCommand label
@@ -974,7 +977,7 @@ do not
  regarding insignificant whitespace and line breaks.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Adding a new test
 \end_layout
 
@@ -1049,7 +1052,7 @@ Commit the changes to the repository, or send a patch to the development
  list and ask for committing if you do not have commit rights.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Export tests
 \end_layout
 
@@ -1060,7 +1063,7 @@ The export tests are integration tests.
 e it is important to keep them up-to-date and understand how they work.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Expectations of LyX developers
 \end_layout
 
@@ -1109,7 +1112,7 @@ reference "subsec:Interpreting-export-tests"
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Configuring the tests
 \end_layout
 
@@ -1154,7 +1157,7 @@ reference "subsec:Interpreting-export-tests"
 ).
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Running the tests
 \end_layout
 
@@ -1385,7 +1388,7 @@ ctest
  command.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Interpreting-export-tests"
@@ -1624,7 +1627,7 @@ CTestCostData.txt
  file lists the times that it took to run the tests.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Suspended tests
 \end_layout
 
@@ -1678,7 +1681,7 @@ status collapsed
  parameters given to the ctest command.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 check_load tests
 \end_layout
 
@@ -1712,7 +1715,7 @@ development/autotests/filterCheckWarnings
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 URL tests
 \end_layout
 
@@ -1746,7 +1749,7 @@ LastTest.log
  not be taken too seriously.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Development policies
 \end_layout
 
@@ -1771,7 +1774,7 @@ reference "sec:When-is-an"
 .
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 When to set a fixed milestone?
 \end_layout
 
@@ -1794,7 +1797,7 @@ If a bug is important, but nobody is working on it, and it is no showstopper,
  For all other bugs, do not set a milestone at all.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Can we add rc entries in stable branch?
 \end_layout
 
@@ -1803,7 +1806,7 @@ No.
  We are supposed to increase the prefs2prefs version number with such things.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Documentation policies
 \end_layout
 
