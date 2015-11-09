@@ -235,6 +235,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 			      TeXEnvironmentData const & data)
 {
 	OutputState * state = getOutputState();
+	// BufferParams const & bparams = buf.params(); // FIXME: for speedup shortcut below, would require passing of "buf" as argument
 	if (state->open_encoding_ == CJK && data.cjk_nested) {
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
@@ -248,7 +249,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
+			//if (!bparams.useNonTeXFonts) // FIXME just for speedup, would require passing of "buf" as argument
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -258,7 +259,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
+			//if (!bparams.useNonTeXFonts) //FIXME just for speedup
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -883,7 +884,7 @@ void TeXOnePar(Buffer const & buf,
 			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
+			if (!bparams.useNonTeXFonts)
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -1048,7 +1049,7 @@ void TeXOnePar(Buffer const & buf,
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-	    && (!runparams.isFullUnicode())) { // FIXME: test for UseTeXFonts
+	    && !bparams.useNonTeXFonts) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
 	}
