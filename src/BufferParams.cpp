@@ -1106,7 +1106,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\" \"" << fonts_sans[1] << '"'
 	   << "\n\\font_typewriter \"" << fonts_typewriter[0]
 	   << "\" \"" << fonts_typewriter[1] << '"'
-	   << "\n\\font_math " << fonts_math[0]
+	   << "\n\\font_math \"" << fonts_math[0]
 	   << "\" \"" << fonts_math[1] << '"'
 	   << "\n\\font_default_family " << fonts_default_family
 	   << "\n\\use_non_tex_fonts " << convert<string>(useNonTeXFonts)
