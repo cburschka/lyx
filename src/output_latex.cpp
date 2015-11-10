@@ -249,7 +249,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			//if (!bparams.useNonTeXFonts) // FIXME just for speedup, would require passing of "buf" as argument
+			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -259,7 +259,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			//if (!bparams.useNonTeXFonts) //FIXME just for speedup
+			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -884,7 +884,7 @@ void TeXOnePar(Buffer const & buf,
 			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!bparams.useNonTeXFonts)
+			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -1049,7 +1049,8 @@ void TeXOnePar(Buffer const & buf,
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-	    && !bparams.useNonTeXFonts) {
+		&& runparams.flavor != OutputParams::XETEX // see BufferParams::encoding
+	   ) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
 	}

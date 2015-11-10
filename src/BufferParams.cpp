@@ -2321,7 +2321,7 @@ string BufferParams::bufferFormat() const
 	string format = documentClass().outputFormat();
 	if (format == "latex") {
 		if (useNonTeXFonts)
-			return "xetex"; // FIXME: why not "luatex"?
+			return "xetex"; // actually "xetex or luatex"
 		if (encoding().package() == Encoding::japanese)
 			return "platex";
 	}
@@ -3141,11 +3141,14 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 
 Encoding const & BufferParams::encoding() const
 {
-	// FIXME: additionally, we must check for runparams().flavor == XeTeX
-	// or runparams.isFullUnicode() to care for the combination
-	// of XeTeX and TeX-fonts (see #9740).
-	// Currently, we reset the encoding in Buffer::makeLaTeXFile
-	// (for export) and Buffer::writeLaTeXSource (for preview).
+	// FIXME: For export with XeTeX and TeX fonts,
+	//   this function returns the wrong value.
+	//   The combination of XeTeX and TeX-fonts requires ASCII (see #9740).
+	//   However, the flavor is no buffer parameter but only known once export started.
+	//   Currently, we set runparams.encoding to ASCII in Buffer::makeLaTeXFile
+	//   (for export) and Buffer::writeLaTeXSource (for preview)
+	//   and prevent overwriting it with another encoding in Paragraph::latex
+	//   and at four places in output_latex.cpp.
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
