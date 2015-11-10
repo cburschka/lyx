@@ -1,5 +1,5 @@
 # This file provides theorem environments without adding preamble code or
-# requiring packages. THis is useful for classes that define their own theorems
+# requiring packages. This is useful for classes that define their own theorems
 # like svjour3 or ijmpc.
 # Author: Uwe Stöhr <uwestoehr@web.de>
 
