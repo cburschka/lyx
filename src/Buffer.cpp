@@ -204,6 +204,13 @@ public:
 	 */
 	bool file_fully_loaded;
 
+	/// original format of loaded file
+	int file_format;
+
+	/// if the file was originally loaded from an older format, do
+	/// we need to back it up still?
+	bool need_format_backup;
+
 	/// Ignore the parent (e.g. when exporting a child standalone)?
 	bool ignore_parent;
 
@@ -405,11 +412,11 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	Buffer const * cloned_buffer)
 	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  internal_buffer(false), read_only(readonly_), filename(file),
-	  file_fully_loaded(false), ignore_parent(false), toc_backend(owner),
-	  macro_lock(false), timestamp_(0), checksum_(0), wa_(0), gui_(0),
-	  undo_(*owner), bibinfo_cache_valid_(false), bibfile_cache_valid_(false),
-	  cite_labels_valid_(false), inset(0), preview_loader_(0),
-	  cloned_buffer_(cloned_buffer), clone_list_(0),
+	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
+	  ignore_parent(false),  toc_backend(owner), macro_lock(false), timestamp_(0),
+	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
+	  bibfile_cache_valid_(false), cite_labels_valid_(false), inset(0),
+	  preview_loader_(0), cloned_buffer_(cloned_buffer), clone_list_(0),
 	  doing_export(false), parent_buffer(0),
 	  word_count_(0), char_count_(0), blank_count_(0)
 {
@@ -1132,10 +1139,15 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 
 	if (file_format != LYX_FORMAT) {
 		FileName tmpFile;
-		ReadStatus const ret_clf = convertLyXFormat(fn, tmpFile, file_format);
+		ReadStatus ret_clf = convertLyXFormat(fn, tmpFile, file_format);
 		if (ret_clf != ReadSuccess)
 			return ret_clf;
-		return readFile(tmpFile);
+		ret_clf = readFile(tmpFile);
+		if (ret_clf == ReadSuccess) {
+			d->file_format = file_format;
+			d->need_format_backup = true;
+		}
+		return ret_clf;
 	}
 
 	// FIXME: InsetInfo needs to know whether the file is under VCS
@@ -1294,6 +1306,41 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 }
 
 
+string Buffer::getBackupName() const {
+	FileName const & fn = fileName();
+	string const fname = fn.onlyFileNameWithoutExt();
+	string const fext  = fn.extension();
+	string const fpath = lyxrc.backupdir_path.empty() ?
+		fn.onlyPath().absFileName() :
+		lyxrc.backupdir_path;
+	string const fform = convert<string>(d->file_format);
+	string const backname = fname + "-" + fform;
+	FileName backup(addName(fpath, addExtension(backname, fext)));
+
+	// limit recursion, just in case
+	int v = 1;
+	unsigned long orig_checksum = 0;
+	while (backup.exists() && v < 100) {
+		if (orig_checksum == 0)
+			orig_checksum = fn.checksum();
+		unsigned long new_checksum = backup.checksum();
+		if (orig_checksum == new_checksum) {
+			LYXERR(Debug::FILES, "Not backing up " << fn <<
+			       "since " << backup << "has the same checksum.");
+			// a bit of a hack, but we have to check this anyway
+			// below, and setting this is simpler than introducing
+			// a special boolean for this purpose.
+			v = 1000;
+			break;
+		}
+		string newbackname = backname + "-" + convert<string>(v);
+		backup.set(addName(fpath, addExtension(newbackname, fext)));
+		v++;
+	}
+	return v < 100 ? backup.onlyFileName() : "";
+}
+
+
 // Should probably be moved to somewhere else: BufferView? GuiView?
 bool Buffer::save() const
 {
@@ -1353,13 +1400,24 @@ bool Buffer::save() const
 	// we will set this to false if we fail
 	bool made_backup = true;
 
-	FileName backupName(absFileName() + '~');
-	if (lyxrc.make_backup) {
-		if (!lyxrc.backupdir_path.empty()) {
-			string const mangledName =
-				subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
-			backupName = FileName(addName(lyxrc.backupdir_path,
-						      mangledName));
+	FileName backupName;
+	if (lyxrc.make_backup || d->need_format_backup) {
+		if (d->need_format_backup) {
+			string backup_name = getBackupName();
+			if (!backup_name.empty())
+				backupName.set(backup_name);
+		}
+
+		// If we for some reason failed to find a backup name in case of
+		// a format change, this will still set one. It's the best we can
+		// do in this case.
+		if (backupName.empty()) {
+			backupName.set(fileName().absFileName() + "~");
+			if (!lyxrc.backupdir_path.empty()) {
+				string const mangledName =
+					subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
+				backupName.set(addName(lyxrc.backupdir_path, mangledName));
+			}
 		}
 
 		LYXERR(Debug::FILES, "Backing up original file to " <<
@@ -1376,6 +1434,10 @@ bool Buffer::save() const
 					       "Please check whether the directory exists and is writable."),
 					     from_utf8(backupName.absFileName())));
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
+		} else if (d->need_format_backup) {
+			// the original file has been backed up successfully, so we
+			// will not need to do that again
+			d->need_format_backup = false;
 		}
 	}
 
@@ -1392,6 +1454,9 @@ bool Buffer::save() const
 		// time stamp is invalidated by copying/moving
 		saveCheckSum();
 		markClean();
+		if (d->file_format != LYX_FORMAT)
+			// the file associated with this buffer is now in the current format
+			d->file_format = LYX_FORMAT;
 		return true;
 	}
 	// else we saved the file, but failed to move it to the right location.

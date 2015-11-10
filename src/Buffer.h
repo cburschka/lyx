@@ -267,6 +267,8 @@ private:
 	/// of the temporary file to be read
 	ReadStatus convertLyXFormat(support::FileName const & fn,
 		support::FileName & tmpfile, int from_format);
+	/// get appropriate name for backing up files from older versions
+	std::string getBackupName() const;
 	//@}
 
 public:
