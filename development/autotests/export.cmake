@@ -28,6 +28,7 @@
 #
 
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
+set(LanguageFile "${TOP_SRC_DIR}/lib/languages")
 set(GetTempDir "${TOP_SRC_DIR}/development/autotests/getTempDir.pl")
 set(_ft ${fonttype})
 execute_process(COMMAND ${PERL_EXECUTABLE} "${GetTempDir}" "${WORKDIR}" OUTPUT_VARIABLE TempDir)
@@ -38,7 +39,7 @@ if(format MATCHES "dvi3|pdf4|pdf5")
   set(LYX_SOURCE "${TempDir}/${file}_${format}_${_ft}.lyx")
   message(STATUS "Using source \"${LYX_ROOT}/${file}.lyx\"")
   message(STATUS "Using dest \"${LYX_SOURCE}\"")
-  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft}
+  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft} ${LanguageFile}
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)

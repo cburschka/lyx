@@ -59,10 +59,13 @@ sub copyJobPending($$);
 sub addNewJob($$$$$);
 sub addFileCopyJob($$$$);
 sub getNewNameOf($$);
+sub getlangs($$);
+sub getLangEntry();
 
 # convert lyx file to be compilable with xetex
 
-my ($source, $dest, $format, $fontT, $rest) = @ARGV;
+my ($source, $dest, $format, $fontT, $languageFile, $rest) = @ARGV;
+my %encodings = ();      # Encoding with TeX fonts, depending on language tag
 
 diestack("Too many arguments") if (defined($rest));
 diestack("Sourcefilename not defined") if (! defined($source));
@@ -79,6 +82,8 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
   $lang = $1;
 }
 
+if (defined($languageFile)) {
+}
 my $inputEncoding = undef;
 if ($fontT eq "systemF") {
   if ($lang =~ /^(ru|uk|sk)$/) {
@@ -121,6 +126,10 @@ if ($fontT eq "systemF") {
 }
 else {
   # use tex font here
+  my %encoding = ();
+  if (defined($languageFile)) {
+    &getlangs($languageFile, \%encoding);
+  }
   if ($format =~ /^(pdf4)$/) { # xelatex
     # set input encoding to 'ascii' always
     $inputEncoding = {
@@ -130,10 +139,12 @@ else {
   }
   elsif ($format =~ /^(dvi3|pdf5)$/) { # (dvi)?lualatex
     # when to set input encoding to 'ascii'?
-    #$inputEncoding = {
-    #  "search" => 'auto|default', # this will be substituted from '\inputencoding'-line
-    #  "out" => "ascii",
-    #};
+    if (defined($encoding{$lang})) {
+      $inputEncoding = {
+	"search" => 'auto|default', # this will be substituted from '\inputencoding'-line
+	"out" => $encoding{$lang},
+      };
+    }
   }
 }
 
@@ -395,4 +406,50 @@ sub getNewNameOf($$)
     }
   }
   return($resultf);
+}
+
+sub getlangs($$)
+{
+  my ($languagefile, $rencoding) = @_;
+
+  if (open(FI, $languagefile)) {
+    while (my $l = <FI>) {
+      if ($l =~ /^Language/) {
+        my ($lng, $enc) = &getLangEntry();
+        if (defined($lng)) {
+          my @tag = split('_', $lng);
+          if ($tag[0] eq lc($tag[1])) {
+            $lng = $tag[0];
+          }
+          if (! defined($rencoding->{$lng})) {
+            $rencoding->{$lng} = $enc;
+          }
+        }
+      }
+    }
+    close(FI);
+  }
+}
+
+sub getLangEntry()
+{
+  my ($lng, $enc) = (undef, undef);
+  while (my $l = <FI>) {
+    chomp($l);
+    if ($l =~ /^\s*Encoding\s+([^ ]+)\s*$/) {
+      $enc = $1;
+    }
+    elsif ($l =~ /^\s*LangCode\s+([^ ]+)\s*$/) {
+      $lng = $1;
+    }
+    elsif ($l =~ /^\s*End\s*$/) {
+      last;
+    }
+  }
+  if (defined($lng) && defined($enc)) {
+    return($lng, $enc);
+  }
+  else {
+    return(undef, undef);
+  }
 }
