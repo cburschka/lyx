@@ -1,25 +1,10 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin unavailable
 \textclass scrbook
 \begin_preamble
-% increases link area for cross-references and autoname them
-% if you change the document language to e.g. French
-% you must change "extrasenglish" to "extrasfrench"
-\AtBeginDocument{%
- \renewcommand{\ref}[1]{\mbox{\autoref{#1}}}
-}
-\def\refnamechanges{%
- \renewcommand*{\equationautorefname}[1]{}%
- \renewcommand{\sectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
- \renewcommand{\figureautorefname}{Fig.\negthinspace}%
- \renewcommand{\tableautorefname}{Tab.\negthinspace}%
-}
-\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
-
 % in case somebody want to have the label "Equation"
 %\renewcommand{\eqref}[1]{Equation~(\negthinspace\autoref{#1})}
 
@@ -56,6 +41,23 @@
 
 % avoids that floats are placed above its sections
 \let\mySection\section\renewcommand{\section}{\suppressfloats[t]\mySection}
+
+% increases link area for cross-references and autoname them
+% if you change the document language to e.g. French
+% you must change "extrasenglish" to "extrasfrench"
+% if you uncomment the following lines, you cannot use the reference version Ref+Text in LyX
+%\AtBeginDocument{%
+% \renewcommand{\ref}[1]{\autoref{#1}}
+%}
+%\def\refnamechanges{%
+% \renewcommand*{\equationautorefname}[1]{}
+% \renewcommand{\sectionautorefname}{sec.\negthinspace}
+% \renewcommand{\subsectionautorefname}{sec.\negthinspace}
+% \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+% \renewcommand{\figureautorefname}{Fig.\negthinspace}
+% \renewcommand{\tableautorefname}{Tab.\negthinspace}
+%}
+%\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 \end_preamble
 \options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
 \use_default_options true
@@ -67,15 +69,16 @@ customHeadersFooters
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -98,14 +101,14 @@ customHeadersFooters
 \papersize a4paper
 \use_geometry false
 \use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
-\use_package amssymb 2
-\use_package mathtools 0
-\use_package esint 1
-\use_package mhchem 1
-\use_package mathdots 1
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
@@ -114,6 +117,7 @@ customHeadersFooters
 \use_indices false
 \paperorientation portrait
 \suppress_date true
+\justification true
 \use_refstyle 0
 \branch chapter-1
 \selected 1
@@ -175,13 +179,13 @@ Notes:
 When renaming this file, you must also rename it in all its subdocuments
  in the document settings in the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document
 \begin_inset space ~
 \end_inset
 
-Class\SpecialChar \menuseparator
+Class\SpecialChar menuseparator
 Select
 \begin_inset space ~
 \end_inset
@@ -201,9 +205,10 @@ document
 For special settings like the header/footer lines or the font of captions,
  see also the document preamble (menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaTeX Preamble
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialChar LaTeX
+ Preamble
 \family default
 ).
 \end_layout
@@ -268,6 +273,11 @@ width "40col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -492,11 +502,13 @@ thesection
 \end_layout
 
 \begin_layout Itemize
-Further adjustments can be made in the LaTeX preamble of thios document
- in the menu Document\SpecialChar \menuseparator
+Further adjustments can be made in the \SpecialChar LaTeX
+ preamble of thios document in the
+ menu Document\SpecialChar menuseparator
 Settings.
  For a brief description how the header/footer lines can be modified, see
- the manual of the LaTeX package 
+ the manual of the \SpecialChar LaTeX
+ package 
 \series bold
 fancyhdr
 \series default
@@ -634,7 +646,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Usually the summary should not have page headers.
- If it should, remove this TeX code.
+ If it should, remove this \SpecialChar TeX
+ code.
 \end_layout
 
 \end_inset
