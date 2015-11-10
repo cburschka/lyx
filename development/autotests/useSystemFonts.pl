@@ -79,6 +79,7 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
   $lang = $1;
 }
 
+my $inputEncoding = undef;
 if ($fontT eq "systemF") {
   if ($lang =~ /^(ru|uk|sk)$/) {
     $font{roman} = "DejaVu Serif";
@@ -120,6 +121,20 @@ if ($fontT eq "systemF") {
 }
 else {
   # use tex font here
+  if ($format =~ /^(pdf4)$/) { # xelatex
+    # set input encoding to 'ascii' always
+    $inputEncoding = {
+      "search" => '.*', # this will be substituted from '\inputencoding'-line
+      "out" => "ascii",
+    };
+  }
+  elsif ($format =~ /^(dvi3|pdf5)$/) { # (dvi)?lualatex
+    # when to set input encoding to 'ascii'?
+    #$inputEncoding = {
+    #  "search" => 'auto|default', # this will be substituted from '\inputencoding'-line
+    #  "out" => "ascii",
+    #};
+  }
 }
 
 my $sourcedir = dirname($source);
@@ -176,7 +191,7 @@ sub interpretedCopy($$$$)
   diestack("could not read \"$source\"") if (!open(FI, $source));
   diestack("could not write \"$dest\"") if (! open(FO, '>', $dest));
 
-  initLyxStack(\%font, $fontT);
+  initLyxStack(\%font, $fontT, $inputEncoding);
 
   while (my $l = <FI>) {
     chomp($l);
