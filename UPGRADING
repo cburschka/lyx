@@ -3,10 +3,6 @@ How do I upgrade my existing LyX system to version 2.2.x?
 
 * Upgrading from LyX 2.1.x:
 
-With LuaTeX, LyX now uses polyglossia instead of babel if the language
-package option "Automatic" is selected. In order to use babel, select
-"Always babel" instead.
-
 The format of preference and session files has changed. LyX 2.2.x is able to
 read old files but will save them in the new format.
 
