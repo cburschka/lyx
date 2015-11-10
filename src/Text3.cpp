@@ -2966,13 +2966,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_LAYOUT: {
-		enable = !cur.inset().forcePlainLayout();
-
+		DocumentClass const & tclass = cur.buffer()->params().documentClass();
 		docstring layout = cmd.argument();
-		if (layout.empty()) {
-			DocumentClass const & tclass = cur.buffer()->params().documentClass();
+		if (layout.empty())
 			layout = tclass.defaultLayoutName();
-		}
+		enable = !cur.inset().forcePlainLayout() && tclass.hasLayout(layout);
+
 		flag.setOnOff(layout == cur.paragraph().layout().name());
 		break;
 	}
