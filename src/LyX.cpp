@@ -404,10 +404,8 @@ void LyX::prepareExit()
 			LYXERR(Debug::INFO, "Deleting tmp dir "
 				<< package().temp_dir().absFileName());
 			if (!package().temp_dir().destroyDirectory()) {
-				docstring const msg =
-					bformat(_("Unable to remove the temporary directory %1$s"),
-					from_utf8(package().temp_dir().absFileName()));
-				Alert::warning(_("Unable to remove temporary directory"), msg);
+				LYXERR0(bformat(_("Unable to remove the temporary directory %1$s"),
+					from_utf8(package().temp_dir().absFileName())));
 			}
 		}
 	}
