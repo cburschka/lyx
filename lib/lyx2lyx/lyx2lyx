@@ -63,6 +63,8 @@ Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__
                       help = "list all available formats and supported versions")
     parser.add_option("-n", "--try-hard", action="store_true",
                       help = "try hard (ignore any convertion errors)")
+    parser.add_option("-s", "--systemlyxdir", dest= "systemlyxdir",
+                      help= "LyX system directory for conversion from version 489 or older")
 
     (options, args) = parser.parse_args()
     if args:

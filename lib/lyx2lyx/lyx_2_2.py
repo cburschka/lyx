@@ -1090,7 +1090,26 @@ def convert_origin(document):
     if document.dir == "":
         origin = "stdin"
     else:
-        origin = document.dir.replace('\\', '/') + '/'
+        relpath = ''
+        if document.systemlyxdir and document.systemlyxdir != '':
+            try:
+                if os.path.isabs(document.dir):
+                    absdir = os.path.normpath(document.dir)
+                else:
+                    absdir = os.path.normpath(os.path.abspath(document.dir))
+                if os.path.isabs(document.systemlyxdir):
+                    abssys = os.path.normpath(document.systemlyxdir)
+                else:
+                    abssys = os.path.normpath(os.path.abspath(document.systemlyxdir))
+                relpath = os.path.relpath(absdir, abssys)
+                if relpath.find('..') == 0:
+                    relpath = ''
+            except:
+                relpath = ''
+        if relpath == '':
+            origin = document.dir.replace('\\', '/') + '/'
+        else:
+            origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
         if os.name != 'nt':
             origin = unicode(origin, sys.getfilesystemencoding())
     document.header[i:i] = ["\\origin " + origin]

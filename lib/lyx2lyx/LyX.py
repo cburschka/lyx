@@ -188,7 +188,8 @@ class LyX_base:
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
                  debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = "", language = "english", encoding = "auto"):
+                 final_version = "", systemlyxdir = '', language = "english",
+                 encoding = "auto"):
 
         """Arguments:
         end_format: final format that the file should be converted. (integer)
@@ -253,6 +254,7 @@ class LyX_base:
         self.status = 0
         self.encoding = encoding
         self.language = language
+        self.systemlyxdir = systemlyxdir
 
 
     def warning(self, message, debug_level= default_debug__):
@@ -733,9 +735,10 @@ class File(LyX_base):
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
                  debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = ''):
+                 final_version = '', systemlyxdir = ''):
         LyX_base.__init__(self, end_format, input, output, error,
-                          debug, try_hard, cjk_encoding, final_version)
+                          debug, try_hard, cjk_encoding, final_version,
+                          systemlyxdir)
         self.read()
 
 
