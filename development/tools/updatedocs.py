@@ -21,9 +21,10 @@ def convertdir(docdir, prefix, lyx2lyx):
     os.chdir(docdir)
     for i in os.listdir("."):
         if os.path.isdir(i):
-            subdir = os.path.join(docdir, i)
-            subprefix = os.path.join(prefix, i)
-            convertdir(subdir, subprefix, lyx2lyx)
+            if i != 'attic':
+                subdir = os.path.join(docdir, i)
+                subprefix = os.path.join(prefix, i)
+                convertdir(subdir, subprefix, lyx2lyx)
             continue
         (base, ext) = os.path.splitext(i)
         if ext != ".lyx":
