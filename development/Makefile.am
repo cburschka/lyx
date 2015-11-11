@@ -17,7 +17,11 @@ tools/gen_lfuns.py \
 tools/generate_symbols_images.lyx \
 tools/generate_symbols_images.py \
 tools/generate_symbols_list.py \
+tools/generate_symbols_svg.lyx \
+tools/generate_symbols_svg.py \
 tools/unicodesymbols.py \
+tools/updatedocs.py \
+tools/updatelayouts.py \
 tools/x-font \
 tools/README \
 tools/count_total_lines_of_compiled_code.sh \
