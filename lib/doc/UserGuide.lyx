@@ -141,11 +141,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -195340706 "Georg Baum" 
 \end_header
 
 \begin_body
@@ -8170,12 +8171,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8188,6 +8191,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -37641,10 +37645,34 @@ reference "sec:File-Formats"
 
 \begin_layout Subsection
 Compressed
+\change_inserted -195340706 1447278411
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Compressed"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Un/compresses the current document.
+
+\change_inserted -195340706 1447279328
+ Use this if you want to save a compressed document in uncompressed format
+ or vice versa.
+ For documents under version control it is strongly recommended to disable
+ compression (see 
+\emph on
+Additional \SpecialChar LyX
+ Features
+\emph default
+ for details).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -43058,6 +43086,24 @@ Backup documents, every
 Save documents compressed by default
 \family default
  always saves files in a compressed format.
+
+\change_inserted -195340706 1447278517
+ This applies to newly created documents only.
+ The compression status of existing documents is not changed when saving
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Compressed"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
