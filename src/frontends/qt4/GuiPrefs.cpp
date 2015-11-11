@@ -3371,8 +3371,6 @@ void GuiPreferences::dispatchParams()
 		update_screen_font_ = false;
 	}
 
-	theBufferList().updatePreviews();
-
 	// The Save button has been pressed
 	if (isClosing())
 		dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
