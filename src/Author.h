@@ -25,6 +25,8 @@ public:
 	Author() : used_(false), buffer_id_(0) {};
 	///
 	Author(docstring const & name, docstring const & email);
+	/// For when the \author line is missing (#9854)
+	Author(int buffer_id);
 	///
 	docstring name() const { return name_; }
 	///
@@ -37,6 +39,8 @@ public:
 	void setUsed(bool u) const { used_ = u; }
 	///
 	bool used() const { return used_; }
+	/// Was the author line not missing?
+	bool valid() const;
 	///
 	friend std::istream & operator>>(std::istream & os, Author & a);
 	///
@@ -78,8 +82,6 @@ public:
 	friend
 	std::ostream & operator<<(std::ostream & os, AuthorList const & a);
 private:
-	///
-	int last_id_;
 	///
 	Authors authors_;
 };

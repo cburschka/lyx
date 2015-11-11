@@ -12,6 +12,7 @@
 
 #include "Author.h"
 
+#include "support/convert.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
@@ -36,9 +37,21 @@ static int computeHash(docstring const & name,
 
 
 Author::Author(docstring const & name, docstring const & email)
-	: name_(name), email_(email), used_(true)
+	: name_(name), email_(email), used_(true),
+	  buffer_id_(computeHash(name, email))
+{}
+
+
+Author::Author(int buffer_id)
+	: name_(convert<docstring>(buffer_id)), email_(docstring()), used_(false),
+	  buffer_id_(buffer_id)
+{}
+
+
+bool Author::valid() const
 {
-	buffer_id_ = computeHash(name_, email_);
+	//this cannot be equal if the buffer_id was produced by the hash function.
+	return name_ != convert<docstring>(buffer_id_);
 }
 
 
@@ -77,26 +90,36 @@ bool author_smaller(Author const & lhs, Author const & rhs)
 
 
 AuthorList::AuthorList()
-	: last_id_(0)
 {}
 
 
 int AuthorList::record(Author const & a)
 {
+	bool const valid = a.valid();
 	// If we record an author which equals the current
 	// author, we copy the buffer_id, so that it will
 	// keep the same id in the file.
-	if (!authors_.empty() && a == authors_[0])
+	if (valid && !authors_.empty() && a == authors_[0])
 		authors_[0].setBufferId(a.bufferId());
 
-	Authors::const_iterator it(authors_.begin());
-	Authors::const_iterator itend(authors_.end());
-	for (int i = 0;  it != itend; ++it, ++i) {
-		if (*it == a)
-			return i;
+	Authors::const_iterator it = authors_.begin();
+	Authors::const_iterator const beg = it;
+	Authors::const_iterator const end = authors_.end();
+	for (; it != end; ++it) {
+		if (valid && *it == a)
+			return it - beg;
+		if (it->bufferId() == a.bufferId()) {
+			int id = it - beg;
+			if (!it->valid())
+				// we need to handle the case of a valid author being registred
+				// after an invalid one. For instance, because "buffer-reload"
+				// does not clear the buffer's author list.
+				record(id, a);
+			return id;
+		}
 	}
 	authors_.push_back(a);
-	return last_id_++;
+	return authors_.size() - 1;
 }
 
 
@@ -146,10 +169,10 @@ ostream & operator<<(ostream & os, AuthorList const & a)
 	sorted.sort();
 
 	AuthorList::Authors::const_iterator a_it = sorted.begin();
-	AuthorList::Authors::const_iterator a_end = sorted.end();
-	
-	for (a_it = sorted.begin(); a_it != a_end; ++a_it) {
-		if (a_it->used())
+	AuthorList::Authors::const_iterator const a_end = sorted.end();
+
+	for (; a_it != a_end; ++a_it) {
+		if (a_it->used() && a_it->valid())
 			os << "\\author " << *a_it << "\n";	
 	}
 	return os;

@@ -360,7 +360,7 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	string const & token, Font & font, Change & change, ErrorList & errorList)
 {
 	Buffer * buf = const_cast<Buffer *>(&owner_->buffer());
-	BufferParams const & bp = buf->params();
+	BufferParams & bp = buf->params();
 
 	if (token[0] != '\\') {
 		docstring dstr = lex.getDocString();
@@ -534,18 +534,25 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		int aid;
 		time_t ct;
 		is >> aid >> ct;
-		BufferParams::AuthorMap const & am = bp.author_map;
+		BufferParams::AuthorMap const & am = bp.author_map_;
 		if (am.find(aid) == am.end()) {
-			errorList.push_back(ErrorItem(_("Change tracking error"),
-					    bformat(_("Unknown author index for change: %1$d\n"), aid),
-					    par.id(), 0, par.size()));
-			change = Change(Change::UNCHANGED);
-		} else {
-			if (token == "\\change_inserted")
-				change = Change(Change::INSERTED, am.find(aid)->second, ct);
-			else
-				change = Change(Change::DELETED, am.find(aid)->second, ct);
+			errorList.push_back(ErrorItem(
+				_("Change tracking author index missing"),
+				bformat(_("A change tracking author information for index "
+				          "%1$d is missing. This can happen after a wrong "
+				          "merge by a version control system. In this case, "
+				          "either fix the merge, or have this information "
+				          "missing until the corresponding tracked changes "
+				          "are merged or this user edits the file again.\n"),
+				        aid),
+				par.id(), par.size(), par.size() + 1
+				));
+			bp.addAuthor(Author(aid));
 		}
+		if (token == "\\change_inserted")
+			change = Change(Change::INSERTED, am.find(aid)->second, ct);
+		else
+			change = Change(Change::DELETED, am.find(aid)->second, ct);
 	} else {
 		lex.eatLine();
 		errorList.push_back(ErrorItem(_("Unknown token"),

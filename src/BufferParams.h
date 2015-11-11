@@ -15,6 +15,7 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
+#include "Author.h"
 #include "Citation.h"
 #include "DocumentClassPtr.h"
 #include "Format.h"
@@ -33,7 +34,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class AuthorList;
 class BranchList;
 class Bullet;
 class DocumentClass;
@@ -394,10 +394,12 @@ public:
 	/// the author list for the document
 	AuthorList & authors();
 	AuthorList const & authors() const;
+	void addAuthor(Author a);
 
 	/// map of the file's author IDs to AuthorList indexes
 	typedef std::map<int, int> AuthorMap;
-	AuthorMap author_map;
+	AuthorMap author_map_;
+
 	/// the buffer's active font encoding
 	std::string const font_encoding() const;
 	/// all font encodings requested by the prefs/document/main language.

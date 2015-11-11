@@ -429,6 +429,9 @@ BufferParams::BufferParams()
 
 	output_sync = false;
 	use_refstyle = true;
+
+	// map current author
+	author_map_[pimpl_->authorlist.get(0).bufferId()] = 0;
 }
 
 
@@ -501,6 +504,12 @@ AuthorList & BufferParams::authors()
 AuthorList const & BufferParams::authors() const
 {
 	return pimpl_->authorlist;
+}
+
+
+void BufferParams::addAuthor(Author a)
+{
+	author_map_[a.bufferId()] = pimpl_->authorlist.record(a);
 }
 
 
@@ -876,7 +885,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
-		author_map[a.bufferId()] = pimpl_->authorlist.record(a);
+		addAuthor(a);
 	} else if (token == "\\paperorientation") {
 		string orient;
 		lex >> orient;
