@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/de/
 \textclass scrartcl
 \begin_preamble
 \usepackage{ifpdf}
@@ -48,16 +49,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman ae
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "ae" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -296,7 +297,8 @@ height "1pt"
 
 Um dieses Beispiel zu erzeugen, muss zuerst für die römisch zu nummerierenden
  Formeln ein eigener Gleichungszähler angelegt werden.
- Dazu gibt man im LaTeX-Vorspann Folgendes ein:
+ Dazu gibt man im \SpecialCharNoPassThru LaTeX
+-Vorspann Folgendes ein:
 \end_layout
 
 \begin_layout Standard
@@ -321,7 +323,8 @@ roman{roem}}
 \begin_inset Newpage newpage
 \end_inset
 
-Damit sich LaTeX den Zählerstand des arabischen Zählers 
+Damit sich \SpecialCharNoPassThru LaTeX
+ den Zählerstand des arabischen Zählers 
 \series bold
 equation
 \series default
@@ -426,7 +429,8 @@ für arabische.
 
 \begin_layout Standard
 Jede Formel im Dokument wird standardmäßig arabisch nummeriert.
- Um auf römische Nummerierung umzuschalten, wird im TeX-Modus der Befehl
+ Um auf römische Nummerierung umzuschalten, wird im \SpecialCharNoPassThru TeX
+-Modus der Befehl
  
 \series bold
 

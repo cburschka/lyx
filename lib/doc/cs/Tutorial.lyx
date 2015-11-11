@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/cs/
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,16 +37,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -111,11 +112,13 @@
 \begin_body
 
 \begin_layout Title
-Průvodce programem LyX 
+Průvodce programem \SpecialCharNoPassThru LyX
+ 
 \end_layout
 
 \begin_layout Author
-napsal Amir Karger a LyX Team
+napsal Amir Karger a \SpecialCharNoPassThru LyX
+ Team
 \end_layout
 
 \begin_layout Standard
@@ -132,16 +135,23 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Vítejte v LyXu!
+Vítejte v \SpecialCharNoPassThru LyX
+u!
 \end_layout
 
 \begin_layout Standard
-Tento soubor je určen všem, kteří doposud neslyšeli o LaTeXu či jej dobře
+Tento soubor je určen všem, kteří doposud neslyšeli o \SpecialCharNoPassThru LaTeX
+u či jej dobře
  neznají.
- Ale teď není třeba panikařit - pro používání LyXu se nemusíte učit LaTeX.
- To je, konec konců, celý vtip LyXu: vytvořit WYSIWYM rozhraní pro LaTeX.
+ Ale teď není třeba panikařit - pro používání \SpecialCharNoPassThru LyX
+u se nemusíte učit \SpecialCharNoPassThru LaTeX
+.
+ To je, konec konců, celý vtip \SpecialCharNoPassThru LyX
+u: vytvořit WYSIWYM rozhraní pro \SpecialCharNoPassThru LaTeX
+.
  Na druhé straně je třeba říci, že se něco naučit musíte, abyste mohli používat
- LyX efektivně.
+ \SpecialCharNoPassThru LyX
+ efektivně.
 \end_layout
 
 \begin_layout Standard
@@ -149,11 +159,13 @@ Někteří z vás si možná otevřeli tento dokument poté, co jste napsali dv�
  mezery za tečkou, či se snažili vložit tři prázdné řádky na oddělení odstavců.
  Po několika pokusech jste pravděpodobně zjistili, že to nejde.
  Ve skutečnosti zjistíte, že většina malých triků, které jste používali
- v jiných textových procesorech prostě v LyXu nefunguje.
+ v jiných textových procesorech prostě v \SpecialCharNoPassThru LyX
+u nefunguje.
  To je proto, že většina textových procesorů, které jste dosud používali,
  vyžaduje ruční nastavování velikosti, typu písma a podobně.
  Takže najednou nejenom píšete, ale i formátujete.
- LyX formátuje za vás, a to konzistentně v celém dokumentu, takže se vy
+ \SpecialCharNoPassThru LyX
+ formátuje za vás, a to konzistentně v celém dokumentu, takže se vy
  můžete plně koncentrovat na důležitější věci, jako například na obsah textu.
 \end_layout
 
@@ -171,7 +183,8 @@ Než začneme, rádi bychom řekli něco o tomto dokumentu.
  Předpokládáme, že víte, jak se pracuje s klávesnicí, umíte najít všechny
  klávesy, víte jak pracovat s myší, víte jak se orientovat v grafickém prostředí
  atd.
- Předpokládáme také, že nevíte absolutně nic o LaTeXu.
+ Předpokládáme také, že nevíte absolutně nic o \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Section
@@ -197,12 +210,16 @@ Tento průvodce sestává z příkladů a cvičení.
 \end_layout
 
 \begin_layout Standard
-Jestliže ovládáte LaTeX, pravděpodobně budete schopen přečíst 
+Jestliže ovládáte \SpecialCharNoPassThru LaTeX
+, pravděpodobně budete schopen přečíst 
 \emph on
 Průvodce
 \emph default
- o něco rychleji, protože mnoho postupů v LyXu je vlastně převzato z LaTeXu.
- Ačkoli, LyX má idosynkrasie
+ o něco rychleji, protože mnoho postupů v \SpecialCharNoPassThru LyX
+u je vlastně převzato z \SpecialCharNoPassThru LaTeX
+u.
+ Ačkoli, \SpecialCharNoPassThru LyX
+ má idosynkrasie
 \begin_inset Foot
 status collapsed
 
@@ -232,7 +249,8 @@ reference "sec:latexusers"
 
 \end_inset
 
-, která je určena speciálně pro zkušené uživatele LaTeXu.
+, která je určena speciálně pro zkušené uživatele \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -252,7 +270,9 @@ psaný z povzdálí
 \begin_inset Quotes grd
 \end_inset
 
- do LyXu, takže si jej můžete přečíst, abyste získali pocit, o čem LyX je.
+ do \SpecialCharNoPassThru LyX
+u, takže si jej můžete přečíst, abyste získali pocit, o čem \SpecialCharNoPassThru LyX
+ je.
 \end_layout
 
 \begin_layout Subsection
@@ -265,6 +285,9 @@ najdete
 
 \begin_layout Itemize
 Instrukce, jak používat myš a klávesnici.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -282,7 +305,11 @@ NEJSTE
 
 \end_deeper
 \begin_layout Itemize
-Detailní popis všech vlastností LyXu.
+Detailní popis všech vlastností \SpecialCharNoPassThru LyX
+u.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -315,13 +342,18 @@ Uživatelskou příručku
 
 \end_deeper
 \begin_layout Itemize
-Detailní výklad LaTeXu.
+Detailní výklad \SpecialCharNoPassThru LaTeX
+u.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Není nutný.
- Jestli vás to skutečně zajímá a chcete se naučit možnosti programu LaTeX,
+ Jestli vás to skutečně zajímá a chcete se naučit možnosti programu \SpecialCharNoPassThru LaTeX
+,
  kupte si o něm knížku.
  Na trhu jich je několik velice dobrých.
 \end_layout
@@ -341,7 +373,8 @@ reference "sec:first-doc-ex"
 \end_layout
 
 \begin_layout Section
-Co je LyX?
+Co je \SpecialCharNoPassThru LyX
+?
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:what-is-lyx"
@@ -356,7 +389,8 @@ name "sec:what-is-lyx"
 \end_layout
 
 \begin_layout Standard
-Jeden z podnětů pro používání LyXu vychází ze změny, kterou vy jako uživatel
+Jeden z podnětů pro používání \SpecialCharNoPassThru LyX
+u vychází ze změny, kterou vy jako uživatel
  musíte projít.
  Kdysi dávno, když jsme vše psali na psacím stroji, všichni jsme se naučili,
  jak obejít jejich omezení.
@@ -382,13 +416,16 @@ Logicky téměř všechny textové procesory převzaly tuto mentalitu.
 \end_layout
 
 \begin_layout Standard
-A právě tady se LyX liší od běžných textových procesorů.
+A právě tady se \SpecialCharNoPassThru LyX
+ liší od běžných textových procesorů.
  Nestaráte se o to, kam který znak napsat.
- Říkáte LyXu 
+ Říkáte \SpecialCharNoPassThru LyX
+u 
 \emph on
 co píšete
 \emph default
- a LyX se stará o zbytek, poslušen souboru pravidel, zvaných 
+ a \SpecialCharNoPassThru LyX
+ se stará o zbytek, poslušen souboru pravidel, zvaných 
 \emph on
 styl
 \emph default
@@ -417,7 +454,8 @@ Předpokládejme, že píšete zprávu.
 \end_layout
 
 \begin_layout Standard
-V LyXu, otevřete nabídku vlevo nahoře, vyberete 
+V \SpecialCharNoPassThru LyX
+u, otevřete nabídku vlevo nahoře, vyberete 
 \family sans
 Sekci
 \family default
@@ -425,7 +463,7 @@ Sekci
 \begin_inset Quotes eld
 \end_inset
 
-Úvod\SpecialChar \@.
+Úvod\SpecialChar endofsentence
 
 \begin_inset Quotes erd
 \end_inset
@@ -437,7 +475,8 @@ Sekci
 Ano, to je vše.
  Jestliže přesunete sekci pomocí funkcí vystřihni a vlož, číslování bude
  automaticky změněno - a to kdekoli v textu.
- Dokonce existuje možnost, že LyX automaticky obnoví všechny odkazy uvnitř
+ Dokonce existuje možnost, že \SpecialCharNoPassThru LyX
+ automaticky obnoví všechny odkazy uvnitř
  dané sekce.
 \end_layout
 
@@ -446,7 +485,8 @@ Také je zde problém s konzistencí.
  Po pěti dnech, když znovu otevřete svoji zprávu začnete psát sekci 4.
  Zapomenete ovšem, že jste použili tučné písmo o velikost 18 bodů místo
  16, takže napíšete titulek sekce 4 v jiném písmu než sekci 1.
- Toto se vám v LyXu nemůže stát.
+ Toto se vám v \SpecialCharNoPassThru LyX
+u nemůže stát.
  Počítač převezme starost a zapamatuje si všechny tyto únavné detaily jako
  je velikost písma.
  Konec konců, v tomto jsou počítače dobré.
@@ -458,13 +498,15 @@ Tady je další příklad.
  V textovém procesoru je seznam vlastně hromada znaků nový řádek a tabelátor.
  Vy musíte určit, kam dát nadpisy, co v nich má být, jak mnoho prázdných
  řádek je třeba, apod.
- V LyXu je třeba vědět jen dvě věci: co je to za seznam a co do něj chcete
+ V \SpecialCharNoPassThru LyX
+u je třeba vědět jen dvě věci: co je to za seznam a co do něj chcete
  dát.
  To je vše.
 \end_layout
 
 \begin_layout Standard
-Takže, základní myšlenkou LyXu je: říkej mi co děláš a nikoli jak je to
+Takže, základní myšlenkou \SpecialCharNoPassThru LyX
+u je: říkej mi co děláš a nikoli jak je to
  třeba udělat.
  Místo modelu 
 \begin_inset Quotes eld
@@ -484,7 +526,8 @@ co vidíš to dostaneš
 
 \end_inset
 
- je heslem LyXu 
+ je heslem \SpecialCharNoPassThru LyX
+u 
 \begin_inset Quotes eld
 \end_inset
 
@@ -510,7 +553,8 @@ vidíš to, co jsi myslel
 \end_layout
 
 \begin_layout Subsection
-Rozdíly mezi LyXem a jinými textovými procesory
+Rozdíly mezi \SpecialCharNoPassThru LyX
+em a jinými textovými procesory
 \begin_inset ERT
 status collapsed
 
@@ -529,7 +573,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Ne, my nechceme začít (nebo vyhrát) svatou válku o textové procesory.
- Ale domníváme se, že je důležité popsat možnosti a vlastnosti LyXu.
+ Ale domníváme se, že je důležité popsat možnosti a vlastnosti \SpecialCharNoPassThru LyX
+u.
  A jedna z jeho vlastností, WYSIWYM, je od základů jiný koncept než zná
  99
 \begin_inset space \thinspace{}
@@ -572,7 +617,8 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-Zde je seznam toho, co v LyXu nenajdete:
+Zde je seznam toho, co v \SpecialCharNoPassThru LyX
+u nenajdete:
 \end_layout
 
 \begin_layout Itemize
@@ -598,16 +644,19 @@ Mezera
 
 \begin_layout Standard
 Jak zarážky tabelátoru, tak i pravítko, podle kterého poznáte svoji polohu
- na stránce jsou v LyXu zbytečné.To je starostí programu, kam které věci
+ na stránce jsou v \SpecialCharNoPassThru LyX
+u zbytečné.To je starostí programu, kam které věci
  vytisknout, ne vaší.
- S mezerami navíc je to obdobné; LyX je přidá, pokud jsou v daném kontextu
+ S mezerami navíc je to obdobné; \SpecialCharNoPassThru LyX
+ je přidá, pokud jsou v daném kontextu
  potřeba.
  Nemožnost napsat dva prázdné řádky za sebou vás možná nepotěší, ale je
  velice výhodná, pokud uvažujete v termínech WYSIWYM.
 \end_layout
 
 \begin_layout Standard
-Zde je několik termínů, jejichž použití v LyXu se liší od tzv.
+Zde je několik termínů, jejichž použití v \SpecialCharNoPassThru LyX
+u se liší od tzv.
  obvyklého:
 \end_layout
 
@@ -636,8 +685,10 @@ Písmo a velikost písma
 \end_layout
 
 \begin_layout Standard
-Ačkoli tyto parametry lze v LyXu nastavit, ve skutečnosti je nepotřebujete.
- LyX si přebírá starost o jejich správné nastavení na sebe, přičemž se rozhoduje
+Ačkoli tyto parametry lze v \SpecialCharNoPassThru LyX
+u nastavit, ve skutečnosti je nepotřebujete.
+ \SpecialCharNoPassThru LyX
+ si přebírá starost o jejich správné nastavení na sebe, přičemž se rozhoduje
  podle toho, co zrovna děláte.
  Různé části dokumentu mají automaticky nastaveny různé řezy a velikosti
  písma.
@@ -645,13 +696,15 @@ Ačkoli tyto parametry lze v LyXu nastavit, ve skutečnosti je nepotřebujete.
  odsazovány.
  Stejně tak je automatické rozdělování stránek.
  Obecně lze říci, že vzdálenosti mezi slovy, řádky a odstavci se liší, a
- jsou nastavovány LyXem.
+ jsou nastavovány \SpecialCharNoPassThru LyX
+em.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Jsou zde cesty jak tyto hodnoty nastavit (zde je třeba mít menší znalost
- LaTeXu), a to jak pro celý dokument, tak i pro jeho specifickou část.
+ \SpecialCharNoPassThru LaTeX
+u), a to jak pro celý dokument, tak i pro jeho specifickou část.
  Viz 
 \emph on
 Uživatelská příručka.
@@ -663,7 +716,9 @@ Uživatelská příručka.
 \end_layout
 
 \begin_layout Standard
-Nakonec několik oblastí, v nichž je LyX [a LaTeX] lepší než většina textových
+Nakonec několik oblastí, v nichž je \SpecialCharNoPassThru LyX
+ [a \SpecialCharNoPassThru LaTeX
+] lepší než většina textových
  procesorů:
 \end_layout
 
@@ -692,8 +747,11 @@ Je pravda, že mnoho moderních textových procesorů umožňuje pracovat s mate
 ými symboly, tabulkami, dělením slov, některé dokonce zvládají styly a koncept
  WYSIWYM.
  Na druhé straně tyto výhody jsou zde zapracovány poměrně nedávno, zatímco
- LyX je postaven nad systémem pro přípravu dokumentů LaTeX.
- LaTeX již existuje více než dvacet let a 
+ \SpecialCharNoPassThru LyX
+ je postaven nad systémem pro přípravu dokumentů \SpecialCharNoPassThru LaTeX
+.
+ \SpecialCharNoPassThru LaTeX
+ již existuje více než dvacet let a 
 \emph on
 funguje
 \emph default
@@ -703,7 +761,8 @@ funguje
 status collapsed
 
 \begin_layout Plain Layout
-OK, víme, že vše není perfektní, ale LaTeX má jen tak málo chyb, kolik jen
+OK, víme, že vše není perfektní, ale \SpecialCharNoPassThru LaTeX
+ má jen tak málo chyb, kolik jen
  počítačový program může mít.
 \end_layout
 
@@ -717,11 +776,13 @@ Co to
 \emph on
 je
 \emph default
- LaTeX?
+ \SpecialCharNoPassThru LaTeX
+?
 \end_layout
 
 \begin_layout Standard
-LaTeX je systém pro přípravu dokumentů navržený Leslie Lamportem v roce
+\SpecialCharNoPassThru LaTeX
+ je systém pro přípravu dokumentů navržený Leslie Lamportem v roce
  1985.
 \begin_inset Foot
 status collapsed
@@ -733,7 +794,7 @@ Zdroj této informace pochází ze sekce
 
 
 \emph on
-A Guide to LaTeX2e
+A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph default
 ,
 \begin_inset Quotes erd
@@ -744,19 +805,20 @@ A Guide to LaTeX2e
 \emph on
 Uživatelské příručce
 \emph default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
 \end_inset
 
- Tento systém je postaven nad sázecím jazykem zvaným TeX, vytvořeným Donaldem
+ Tento systém je postaven nad sázecím jazykem zvaným \SpecialCharNoPassThru TeX
+, vytvořeným Donaldem
  Knuthem roku 1984.
  
 \begin_inset Quotes eld
 \end_inset
 
-TeX
+\SpecialCharNoPassThru TeX
 \begin_inset Quotes erd
 \end_inset
 
@@ -769,8 +831,10 @@ tech
 \end_inset
 
 .
- Mnoho lidí však neví, co TeX ve skutečnosti je.
- TeX dostává sekvenci tiskových příkazů, napsaných jako skript v textovém
+ Mnoho lidí však neví, co \SpecialCharNoPassThru TeX
+ ve skutečnosti je.
+ \SpecialCharNoPassThru TeX
+ dostává sekvenci tiskových příkazů, napsaných jako skript v textovém
  souboru, a vykoná je.
  Výsledkem je soubor 
 \begin_inset Quotes gld
@@ -794,46 +858,66 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Kdyby neuměl TeX více, byl by jen procesorem na sázení textu.
- TeX však umožňuje definovat makra.
+Kdyby neuměl \SpecialCharNoPassThru TeX
+ více, byl by jen procesorem na sázení textu.
+ \SpecialCharNoPassThru TeX
+ však umožňuje definovat makra.
  A zde celá akce začíná.
  
 \end_layout
 
 \begin_layout Standard
-Většina uživatelů TeXu ve skutečnosti používá sady maker, které napsal Knuth
+Většina uživatelů \SpecialCharNoPassThru TeX
+u ve skutečnosti používá sady maker, které napsal Knuth
  pro ukrytí mnoha detailů sázení.
- O tom mluví uživatelé, když mluví o TeXu.
- Běžní uživatelé nepracují se syrovým TeXem, který obsahuje jen základní
+ O tom mluví uživatelé, když mluví o \SpecialCharNoPassThru TeX
+u.
+ Běžní uživatelé nepracují se syrovým \SpecialCharNoPassThru TeX
+em, který obsahuje jen základní
  příkazy pro sázení, to obstarávají lidé, píšící nové balíky maker.
  A zde Leslie Lamport vstoupil do našeho příběhu.
  Chtěl mít balíček maker více orientovaný na uživatele a méně na tiskové
  příkazy; sadu příkazů, které umožní konzistentní sazbu věcí jako jsou sekce,
  tabulky či matematické formule s minimálními vstupy uživatele.
- Takto vznikl LaTeX.
+ Takto vznikl \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-Nyní, souběžně s vývojem a rozšiřováním LaTeXu vytvářejí jiní lidé pro svoje
- vlastní potřeby balíčky pro TeX.
- Některé používali čistý TeX, jiné modifikovali LaTeX.
- Jako pokus o sjednocení, tým LaTeX-niků, [včetně Lamporta] začal koncem
- roku 1990 pracovat na LaTeX2e, současné verzi LaTeXu.
- Tato nová verze LaTeXu má příkazy, které jsou jednodušeji použitelné pro
- uživatele než jsou příkazy TeXu je možno používat nová písma atd.
- Ve skutečnosti, LaTeX je rozšiřitelným jazykem sám o sobě! Uživatelé na
- celém světě vytvářejí balíčky, které rozšiřují možnosti LaTeXu.
+Nyní, souběžně s vývojem a rozšiřováním \SpecialCharNoPassThru LaTeX
+u vytvářejí jiní lidé pro svoje
+ vlastní potřeby balíčky pro \SpecialCharNoPassThru TeX
+.
+ Některé používali čistý \SpecialCharNoPassThru TeX
+, jiné modifikovali \SpecialCharNoPassThru LaTeX
+.
+ Jako pokus o sjednocení, tým \SpecialCharNoPassThru LaTeX
+-niků, [včetně Lamporta] začal koncem
+ roku 1990 pracovat na \SpecialCharNoPassThru LaTeX2e
+, současné verzi \SpecialCharNoPassThru LaTeX
+u.
+ Tato nová verze \SpecialCharNoPassThru LaTeX
+u má příkazy, které jsou jednodušeji použitelné pro
+ uživatele než jsou příkazy \SpecialCharNoPassThru TeX
+u je možno používat nová písma atd.
+ Ve skutečnosti, \SpecialCharNoPassThru LaTeX
+ je rozšiřitelným jazykem sám o sobě! Uživatelé na
+ celém světě vytvářejí balíčky, které rozšiřují možnosti \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Standard
-Jsou dvě cesty, jak rozšířit LaTeX: třídy a styly.
+Jsou dvě cesty, jak rozšířit \SpecialCharNoPassThru LaTeX
+: třídy a styly.
  
 \emph on
 Třída
 \emph default
- je skupina maker v LaTeXu [a TeXu], která popisuje nový typ dokumentu,
+ je skupina maker v \SpecialCharNoPassThru LaTeX
+u [a \SpecialCharNoPassThru TeX
+u], která popisuje nový typ dokumentu,
  jako je kniha či článek.
- Jsou zde třídy pro slidy, fyzikální a matematické časopisy\SpecialChar \ldots{}
+ Jsou zde třídy pro slidy, fyzikální a matematické časopisy\SpecialChar ldots
  Některé univerzity
  dokonce mají třídy pro diplomové práce.
  
@@ -845,7 +929,9 @@ Styl
 vzhledu
 \emph default
 , které může dokument použít.
- Například, LyX řídí zarážky stránek a řádkování dvěma různými styly LaTeXu
+ Například, \SpecialCharNoPassThru LyX
+ řídí zarážky stránek a řádkování dvěma různými styly \SpecialCharNoPassThru LaTeX
+u
  vytvořenými pro tento případ.
  Jsou zde styly pro všechny parametry: tisk nálepek či obálek, změna odsazování,
  přidávání nových písem, pro vkládání grafiky, vytváření hlaviček a patiček
@@ -859,29 +945,36 @@ Zde je seznam:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-TeX: Jazyk pro sazbu s možností rozšíření makry.
+\SpecialCharNoPassThru TeX
+: Jazyk pro sazbu s možností rozšíření makry.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LaTeX: Balíček maker nad TeXem\SpecialChar \@.
+\SpecialCharNoPassThru LaTeX
+: Balíček maker nad \SpecialCharNoPassThru TeX
+em\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-třídy: Popis typů dokumentů pomocí LaTeXu\SpecialChar \@.
+třídy: Popis typů dokumentů pomocí \SpecialCharNoPassThru LaTeX
+u\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-styly: Změna chování LaTeXu v některém směru.
+styly: Změna chování \SpecialCharNoPassThru LaTeX
+u v některém směru.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LyX: Vizuální, WYSIWYM textový procesor používající LaTeX v celé jeho kráse
+\SpecialCharNoPassThru LyX
+: Vizuální, WYSIWYM textový procesor používající \SpecialCharNoPassThru LaTeX
+ v celé jeho kráse
  pro tisk.
 \end_layout
 
@@ -890,9 +983,14 @@ Myšlenkou této sekce je pokus vysvětlit,
 \emph on
 proč
 \emph default
- LyX pracuje trochu jinak než ostatní textové procesory.
- Důvod je jednoduchý: LyX používá LaTeX jako jeho tiskový výstup.
- Tak jako LaTeX se LyX soustřeďuje na kontext vašeho dokumentu — 
+ \SpecialCharNoPassThru LyX
+ pracuje trochu jinak než ostatní textové procesory.
+ Důvod je jednoduchý: \SpecialCharNoPassThru LyX
+ používá \SpecialCharNoPassThru LaTeX
+ jako jeho tiskový výstup.
+ Tak jako \SpecialCharNoPassThru LaTeX
+ se \SpecialCharNoPassThru LyX
+ soustřeďuje na kontext vašeho dokumentu — 
 \emph on
 co
 \emph default
@@ -902,7 +1000,9 @@ co
 
 \begin_layout Standard
 Oh — ještě jedna věc.
- LaTeX se vyslovuje stejně jako TeX.
+ \SpecialCharNoPassThru LaTeX
+ se vyslovuje stejně jako \SpecialCharNoPassThru TeX
+.
  Rýmuje se to na 
 \begin_inset Quotes gld
 \end_inset
@@ -924,7 +1024,7 @@ la tech
 \begin_inset Quotes grd
 \end_inset
 
- nebo\SpecialChar \ldots{}
+ nebo\SpecialChar ldots
 
 \end_layout
 
@@ -934,11 +1034,13 @@ la tech
 \end_layout
 
 \begin_layout Chapter
-Začínáme s LyXem
+Začínáme s \SpecialCharNoPassThru LyX
+em
 \end_layout
 
 \begin_layout Section
-Váš první dokument v LyXu
+Váš první dokument v \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
@@ -948,7 +1050,7 @@ name "sec:first-doc-ex"
 
 \end_inset
 
- OK\SpecialChar \@.
+ OK\SpecialChar endofsentence
  Teď jste připraveni začít psát.
  Než začnete, máme zde několik věcí, které chceme zmínit, a které vám, jak
  doufáme, pomohou porozumět 
@@ -966,7 +1068,8 @@ nejprve
 \series default
  si najděte ostatní soubory s nápovědou.
  Naštěstí je to velmi jednoduché.
- Nastartujte LyX.
+ Nastartujte \SpecialCharNoPassThru LyX
+.
  Vyberte 
 \emph on
 Průvodce
@@ -989,7 +1092,8 @@ N
 status collapsed
 
 \begin_layout Plain Layout
-Toto také dává pěknou ukázku jak používat LyX.
+Toto také dává pěknou ukázku jak používat \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -1005,7 +1109,8 @@ Prohlížet
 Průvodce
 \emph default
  neuvádí všechny detaily v plné šíři, tak jak jsou popsány v jiných manuálech
- k LyXu.
+ k \SpecialCharNoPassThru LyX
+u.
  Toto vám možná na začátku znepříjemní život, ale významně to zkracuje délku
  
 \emph on
@@ -1021,7 +1126,9 @@ V tomto
 \emph on
 Průvodci,
 \emph default
- budeme předpokládat, že máte plně funkční verzi LyXu, stejně jako LaTeXu,
+ budeme předpokládat, že máte plně funkční verzi \SpecialCharNoPassThru LyX
+u, stejně jako \SpecialCharNoPassThru LaTeX
+u,
  
 \family typewriter
 xdvi
@@ -1043,21 +1150,25 @@ dvi
 
 \begin_layout Standard
 A v neposlední řadě, napsali jsme pro vás soubor na vyzkoušení vaší znalosti
- LyXu.
+ \SpecialCharNoPassThru LyX
+u.
  Jmenuje se 
 \family typewriter
 priklad_syrovy.lyx
 \family default
 .
- Představte si, že byl napsán někým, kdo neznal žádnou z velkých výhod LyXu
+ Představte si, že byl napsán někým, kdo neznal žádnou z velkých výhod \SpecialCharNoPassThru LyX
+u
  a my vám doporučujeme, abyste jej opravili.
  Soubor obsahuje nápovědu, jak to udělat.
  Jestli chcete napovídat (nebo si ověřit vaše výsledky), je zde také soubor
  
 \family typewriter
-priklad_zLyXovany.lyx
+priklad_z\SpecialCharNoPassThru LyX
+ovany.lyx
 \family default
-, který obsahuje tentýž text napsaný zkušeným uživatelem LyXu (oba soubory
+, který obsahuje tentýž text napsaný zkušeným uživatelem \SpecialCharNoPassThru LyX
+u (oba soubory
  naleznete v příkladech).
 \end_layout
 
@@ -1065,7 +1176,8 @@ priklad_zLyXovany.lyx
 Jedno varování: Protože je tento průvodce z pochopitelných důvod otevřen
  pouze pro čtení, spousta akcí typu vložení značky, změn stylů apod.
  vám nebude fungovat.
- Pro experimenty je lepší otevřít nové okno LyXu.
+ Pro experimenty je lepší otevřít nové okno \SpecialCharNoPassThru LyX
+u.
 \end_layout
 
 \begin_layout Subsection
@@ -1147,10 +1259,12 @@ Vlna
 
 \begin_layout Standard
 Program vlna automaticky přidává chráněné mezery za neslabičné předložky
- v souborech pro (La)TeX, což zabraňuje zlomu řádku v nežádoucích místech.
+ v souborech pro (La)\SpecialCharNoPassThru TeX
+, což zabraňuje zlomu řádku v nežádoucích místech.
  Pokud chcete tento program využívat, lze tuto konverzi automatizovat pomocí
  vestavěného mechanismu konvertorů.
- Samotný program je součástí nových distribucí TeX Live, nebo ho lze samostatně
+ Samotný program je součástí nových distribucí \SpecialCharNoPassThru TeX
+ Live, nebo ho lze samostatně
  stáhnout na internetu.
 \begin_inset Foot
 status open
@@ -1267,7 +1381,8 @@ formátu
 \begin_inset Quotes gld
 \end_inset
 
-LaTeX (pdflatex)
+\SpecialCharNoPassThru LaTeX
+ (pdflatex)
 \begin_inset Quotes grd
 \end_inset
 
@@ -1327,7 +1442,7 @@ PDF (vlna,pdflatex)
 \end_layout
 
 \begin_layout Standard
-Jinou možností je napsat vlastní skript, který interně volá vlnu & LaTeX
+Jinou možností je napsat vlastní skript, který interně volá vlnu & \SpecialCharNoPassThru LaTeX
  a tento skript podstrčit coby konvertor PDF/PS.
  Příklad, pro tentokrát z prostředí Windows, by vypadal následovně:
 \end_layout
@@ -1357,7 +1472,8 @@ Soubor->Nový
 \begin_layout Itemize
 Napište větu jako: 
 \family typewriter
-Toto je můj první dokument v LyXu!
+Toto je můj první dokument v \SpecialCharNoPassThru LyX
+u!
 \begin_inset Foot
 status collapsed
 
@@ -1382,12 +1498,13 @@ Soubor->Uložit
 \begin_inset space ~
 \end_inset
 
-jako\SpecialChar \@.
+jako\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-Spusťte LaTeX pro vytvoření souboru 
+Spusťte \SpecialCharNoPassThru LaTeX
+ pro vytvoření souboru 
 \family typewriter
 dvi
 \family default
@@ -1395,10 +1512,13 @@ dvi
 \family sans
 Prohlížet->Dvi
 \family default
-\SpecialChar \@.
- V okně, z něhož jste LyX spustili, můžete vidět nějaké výstupy.
- To jsou zprávy LaTeXu, které teď můžete ignorovat.
- LyX spustí 
+\SpecialChar endofsentence
+ V okně, z něhož jste \SpecialCharNoPassThru LyX
+ spustili, můžete vidět nějaké výstupy.
+ To jsou zprávy \SpecialCharNoPassThru LaTeX
+u, které teď můžete ignorovat.
+ \SpecialCharNoPassThru LyX
+ spustí 
 \family typewriter
 xdvi
 \family default
@@ -1427,7 +1547,8 @@ Dokument
 \family typewriter
 xdvi
 \family default
- (nebo jej obnovte) po ukončení příkazů LaTeXu.
+ (nebo jej obnovte) po ukončení příkazů \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \end_inset
@@ -1439,12 +1560,13 @@ xdvi
 \begin_layout Itemize
 Soubor vytisknete příkazem 
 \family sans
-Soubor->Tisk\SpecialChar \@.
+Soubor->Tisk\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Gratulujeme! Napsali a vytiskli jste svůj první dokument v LyXu.
+Gratulujeme! Napsali a vytiskli jste svůj první dokument v \SpecialCharNoPassThru LyX
+u.
  Vše ostatní jsou jen detaily, které jsou popsány ve zbytku 
 \emph on
 Průvodce
@@ -1461,7 +1583,8 @@ Jednoduché operace
 \end_layout
 
 \begin_layout Standard
-LyX samozřejmě zvládá většinu věcí, které jste zvyklí dělat s textovými
+\SpecialCharNoPassThru LyX
+ samozřejmě zvládá většinu věcí, které jste zvyklí dělat s textovými
  procesory.
  Bude přesouvat slova mezi řádky a automaticky odsazovat odstavce.
  Prohlédněte si několik nabídek
@@ -1503,7 +1626,8 @@ Zpět
 \begin_inset space ~
 \end_inset
 
-změnu LyX má 
+změnu \SpecialCharNoPassThru LyX
+ má 
 \emph on
 schopnost
 \emph default
@@ -1586,7 +1710,8 @@ status collapsed
 \begin_layout Plain Layout
 Zavřete dialog po ukončení hledání.
  Nebo jej nechte otevřený, vyhovuje-li vám to více.
- Většina dialogů v LyXu — včetně 
+ Většina dialogů v \SpecialCharNoPassThru LyX
+u — včetně 
 \family sans
 Najít/Zaměnit
 \family default
@@ -1596,7 +1721,8 @@ Najít/Zaměnit
 \family sans
 Soubor->Otevřít
 \family default
-, vám nedovolí napsat nic v hlavním okně LyXu dokud neuzavřete dialog.
+, vám nedovolí napsat nic v hlavním okně \SpecialCharNoPassThru LyX
+u dokud neuzavřete dialog.
 \end_layout
 
 \end_inset
@@ -1645,7 +1771,8 @@ Tiskni
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Mezery v LyXu
+WYSIWYM: Mezery v \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
@@ -1655,7 +1782,8 @@ name "sec:whitespace"
 
 \end_inset
 
-Jedna z nejtěžších věcí pro nové uživatele je metoda jakou LyX zpracovává
+Jedna z nejtěžších věcí pro nové uživatele je metoda jakou \SpecialCharNoPassThru LyX
+ zpracovává
  mezery.
  Ačkoli tisknete 
 \family sans
@@ -1689,7 +1817,8 @@ What You See Is What You Get — Co vidíš, to dostaneš
 \end_inset
 
 .
- Na druhé straně je LyX založen na principu 
+ Na druhé straně je \SpecialCharNoPassThru LyX
+ založen na principu 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1702,7 +1831,8 @@ Mean
 \end_inset
 
 .
- Vy se staráte o obsah a LyX se stará o to, aby výstup dobře vypadal.
+ Vy se staráte o obsah a \SpecialCharNoPassThru LyX
+ se stará o to, aby výstup dobře vypadal.
  Klávesa 
 \family sans
 Enter
@@ -1716,8 +1846,10 @@ Mezera
 \family sans
 Tab
 \family default
- nemá žádný gramatický význam, takže ji LyX nevyužívá.
- Při používání LyXu strávíte více času starostí o 
+ nemá žádný gramatický význam, takže ji \SpecialCharNoPassThru LyX
+ nevyužívá.
+ Při používání \SpecialCharNoPassThru LyX
+u strávíte více času starostí o 
 \emph on
 obsah
 \emph default
@@ -1737,8 +1869,10 @@ reference "sec:what-is-lyx"
 \end_layout
 
 \begin_layout Standard
-LyX má mnoho cest jak jemně doladit vzhled vašeho dokumentu.
- Konec konců, LyX nemusí vysázet 
+\SpecialCharNoPassThru LyX
+ má mnoho cest jak jemně doladit vzhled vašeho dokumentu.
+ Konec konců, \SpecialCharNoPassThru LyX
+ nemusí vysázet 
 \emph on
 přesně
 \emph default
@@ -1799,7 +1933,8 @@ What You See Is What You Mean
  titulky kapitol, zatímco jiný používá 15 bodů vysokou kurzívu, zarovnanou
  doleva; různé jazyky mohou mít různé zvyklosti pro odsazování; formátů
  pro rejstřík může existovat skutečně mnoho.
- LyX vás oprošťuje od nutnosti toto všechno znát.
+ \SpecialCharNoPassThru LyX
+ vás oprošťuje od nutnosti toto všechno znát.
 \end_layout
 
 \begin_layout Standard
@@ -1829,7 +1964,8 @@ Napište slovo
 \family typewriter
 Úvod
 \family default
- na první řádku vašeho souboru v LyXu, vyberte 
+ na první řádku vašeho souboru v \SpecialCharNoPassThru LyX
+u, vyberte 
 \family sans
 Sekci
 \family default
@@ -1845,7 +1981,8 @@ Není třeba
 zvýrazňovat
 \emph default
  tento řádek.
- Není-li nic zvýrazněno, LyX přenastaví současný odstavec.
+ Není-li nic zvýrazněno, \SpecialCharNoPassThru LyX
+ přenastaví současný odstavec.
  Na druhé straně, pokud zvýrazníte několik odstavců, bude změna uplatněna
  na všech zvýrazněných.
 \end_layout
@@ -1853,7 +1990,8 @@ zvýrazňovat
 \end_inset
 
 .
- LyX čísluje oddíly od jedné a sází hlavičku oddílu (nadpis) větším písmem.
+ \SpecialCharNoPassThru LyX
+ čísluje oddíly od jedné a sází hlavičku oddílu (nadpis) větším písmem.
  (Pochopitelně, všechno bude vysazeno korektně i případě
 \family default
  
@@ -1864,7 +2002,7 @@ dvi
 \family sans
 Enter
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Povšimněte si, že indikátor 
 \family sans
 Styl
@@ -1874,7 +2012,7 @@ Styl
 \family sans
 Enter
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \begin_inset Foot
 status collapsed
@@ -1905,7 +2043,8 @@ Stylu
 \end_layout
 
 \begin_layout LyX-Code
-Toto je úvod do mého prvního dokumentu v LyXu.
+Toto je úvod do mého prvního dokumentu v \SpecialCharNoPassThru LyX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -1922,7 +2061,8 @@ Sekci
 Styl
 \family default
 .
- LyX napíše 
+ \SpecialCharNoPassThru LyX
+ napíše 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1935,12 +2075,14 @@ Styl
 \family typewriter
 Další text
 \family default
- a uvidíte, že LyX znovu nastavil tento text jako nadpis kapitoly.
+ a uvidíte, že \SpecialCharNoPassThru LyX
+ znovu nastavil tento text jako nadpis kapitoly.
 \end_layout
 
 \begin_layout Standard
 Teď to bude lepší.
- Přejděte na konec první kapitoly (za můj první dokument v LyXu) a stiskněte
+ Přejděte na konec první kapitoly (za můj první dokument v \SpecialCharNoPassThru LyX
+u) a stiskněte
  znovu 
 \family sans
 Enter
@@ -1954,7 +2096,8 @@ Sekci
 Styl
 \family default
 .
- A znovu, LyX napíše 
+ A znovu, \SpecialCharNoPassThru LyX
+ napíše 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1977,7 +2120,8 @@ Další text
 \end_inset
 
 , který byl dříve kapitolou 2, se automaticky stal kapitolou 3! Ve skutečném
- prostředí WYSIWYM je třeba jen říci, co jsou nadpisy kapitol, a LyX se
+ prostředí WYSIWYM je třeba jen říci, co jsou nadpisy kapitol, a \SpecialCharNoPassThru LyX
+ se
  postará o jejich číslování a vysázení.
 \end_layout
 
@@ -2023,14 +2167,16 @@ Subsekci
 Styl.
 
 \family default
- LyX očísluje kapitolu jako 2.1 a zvolí písmo větší než běžné, ale menší
+ \SpecialCharNoPassThru LyX
+ očísluje kapitolu jako 2.1 a zvolí písmo větší než běžné, ale menší
  než pro nadpis oddílu.
  Změňte také čtvrtý řádek na 
 \family sans
 Subsekci
 \family default
 .
- Jak jste asi očekávali, LyX mu přiřadil číslo 2.2.
+ Jak jste asi očekávali, \SpecialCharNoPassThru LyX
+ mu přiřadil číslo 2.2.
  Jestliže vložíte další oddíl před oddíl 2, bude přečíslován na 3 a kapitoly
  pak na 3.1 a 3.2.
 \end_layout
@@ -2057,7 +2203,8 @@ Uživatelské příručce
 \emph default
 .
  Kapitoly jsou vyšší úrovní, ale je možno je použít jen v určitých dokumentech
- LyXu.(viz 
+ \SpecialCharNoPassThru LyX
+u.(viz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:textclasses"
@@ -2076,7 +2223,8 @@ Můžete požadovat, aby se názvy oddílů a pododdílů nečíslovaly.
 \family sans
 Sekce*
 \family default
-, (budete se potřebovat posunout v okně se styly), LyX použije totéž písmo
+, (budete se potřebovat posunout v okně se styly), \SpecialCharNoPassThru LyX
+ použije totéž písmo
  i velikost jako pro normální nadpis oddílu, ale nebude jej číslovat.
  Obdobně ohvězdičkované styly jsou zde i pro 
 \family sans
@@ -2130,7 +2278,8 @@ Seznamy a podseznamy
 \end_layout
 
 \begin_layout Standard
-LyX má několik různých stylů pro sázení seznamů.
+\SpecialCharNoPassThru LyX
+ má několik různých stylů pro sázení seznamů.
  Toto vám ušetří asi tak milion stisků klávesy 
 \family sans
 Tab
@@ -2150,7 +2299,8 @@ Průvodci
 \emph on
 je
 \emph default
- hlavní filozofie LyXu, tak nám to odpusťte.
+ hlavní filozofie \SpecialCharNoPassThru LyX
+u, tak nám to odpusťte.
 \end_layout
 
 \end_inset
@@ -2190,7 +2340,8 @@ Styl
 \family sans
 Seznam
 \family default
- — není obsažen v LaTeXu — je jinou formou stylu 
+ — není obsažen v \SpecialCharNoPassThru LaTeX
+u — je jinou formou stylu 
 \family sans
 Popis
 \family default
@@ -2198,14 +2349,16 @@ Popis
 \end_layout
 
 \begin_layout Standard
-Zkusme tedy napsat seznam důvodů, proč je LyX lepší než jiné textové procesory.
+Zkusme tedy napsat seznam důvodů, proč je \SpecialCharNoPassThru LyX
+ lepší než jiné textové procesory.
  Někde ve vašem dokumentu napište:
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-LyX je lepší než jiné textové procesory, protože: 
+\SpecialCharNoPassThru LyX
+ je lepší než jiné textové procesory, protože: 
 \end_layout
 
 \begin_layout Standard
@@ -2219,7 +2372,8 @@ Enter
 Položka
 \family default
  z nabídky stylů.
- LyX napíše 
+ \SpecialCharNoPassThru LyX
+ napíše 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2250,7 +2404,8 @@ Styly seznamů, na rozdíl od nadpisů, se neukončí stiskem klávesy
 Enter
 \family default
 .
- Naproti tomu LyX předpokládá, že chcete psát další položku seznamu.
+ Naproti tomu \SpecialCharNoPassThru LyX
+ předpokládá, že chcete psát další položku seznamu.
  Předchozí seznam sestává ze tří jednoodstavcových položek.
  Jestliže chcete napsat položku, která sestává z více odstavců, jednou z
  cest je použít tzv.
@@ -2294,7 +2449,8 @@ Získali jste pěkně vysázený seznam.
 status collapsed
 
 \begin_layout Plain Layout
-LyX vám nedovolí označit první kuličku pokud současně neoznačíte odstavec
+\SpecialCharNoPassThru LyX
+ vám nedovolí označit první kuličku pokud současně neoznačíte odstavec
  
 \emph on
 před
@@ -2311,7 +2467,7 @@ před
 Výčet
 \family default
 .
- Jak jsme již zmínili, když přidáte či odstraníte položku ze seznamu, LyX
+ Jak jsme již zmínili, když přidáte či odstraníte položku ze seznamu, \SpecialCharNoPassThru LyX
  jej přečísluje.
 \end_layout
 
@@ -2397,7 +2553,8 @@ Ostatní styly: Verše, citace, a jiné
 \end_layout
 
 \begin_layout Standard
-LyX předdefinovává dva styly pro odlišení citace od okolního textu: 
+\SpecialCharNoPassThru LyX
+ předdefinovává dva styly pro odlišení citace od okolního textu: 
 \family sans
 Citace
 \family default
@@ -2408,7 +2565,8 @@ Citát
  pro delší.
  Programy (styl 
 \family sans
-LyX-Kód
+\SpecialCharNoPassThru LyX
+-Kód
 \family default
 , použitý v 
 \emph on
@@ -2418,14 +2576,15 @@ Průvodci
 \family typewriter
 psacího stroje
 \family default
-; pouze v tomto stylu vám LyX dovolí napsat několik mezer za sebou, aby
+; pouze v tomto stylu vám \SpecialCharNoPassThru LyX
+ dovolí napsat několik mezer za sebou, aby
  bylo možno odsazovat.
  Dokonce můžete psát i poezii
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
+\SpecialChar ldots
 předpokládáme, že jste tak dobrý básník, že píšete poezii zpatra.
 \end_layout
 
@@ -2448,7 +2607,8 @@ C-Enter
 \emph on
 Uživatelská příručka
 \emph default
- pro detailní popis všech stylů LyXu.
+ pro detailní popis všech stylů \SpecialCharNoPassThru LyX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -2458,7 +2618,8 @@ Cvičení
 \series default
 : Opravte sázení 
 \family sans
-Citát, LyX-Kód
+Citát, \SpecialCharNoPassThru LyX
+-Kód
 \family default
  a 
 \family sans
@@ -2474,10 +2635,12 @@ Psaní dokumentů
 \end_layout
 
 \begin_layout Standard
-Předchozí část vám umožnila získat první zkušenosti s psaním v LyXu.
+Předchozí část vám umožnila získat první zkušenosti s psaním v \SpecialCharNoPassThru LyX
+u.
  Popsala vám základní úkony při zpracování textu, stejně tak jako vás seznámila
  s problematikou stylů.
- Drtivá většina lidi, kteří používají LyX, chce psát různé dokumenty: zprávy,
+ Drtivá většina lidi, kteří používají \SpecialCharNoPassThru LyX
+, chce psát různé dokumenty: zprávy,
  články, knihy, návody či dopisy.
  Tato část si klade za cíl vám popsat cestu od psaní textu až po vytvoření
  celého dokumentu.
@@ -2510,7 +2673,9 @@ Třídy dokumentu
 status collapsed
 
 \begin_layout Plain Layout
-Pro uživatele LaTeXu: toto je totéž jako v LaTeXu documentclass.
+Pro uživatele \SpecialCharNoPassThru LaTeX
+u: toto je totéž jako v \SpecialCharNoPassThru LaTeX
+u documentclass.
 \end_layout
 
 \end_inset
@@ -2523,7 +2688,8 @@ Pro uživatele LaTeXu: toto je totéž jako v LaTeXu documentclass.
 Article
 \family default
 .
- Třídy dokumentu jsou další významnou částí konceptu WYSIWYM; říkají LyXu
+ Třídy dokumentu jsou další významnou částí konceptu WYSIWYM; říkají \SpecialCharNoPassThru LyX
+u
  jak sázet dokument, takže vy to vědět nemusíte.
 \end_layout
 
@@ -2589,9 +2755,12 @@ Kapitola
 Velikost písma, jedno či dvousloupcový tisk a hlavičky stránek jsou právě
  ty rozdíly, kterými se jeden časopis liší od jiného.
  A tak jak postupuje počítačový věk, časopisy vám dovolují posílat vaše
- články v LaTeXu, jestliže použijete jejich textovou třídu.
- LyX toto podporuje také.
- Například LyX podporuje sazbu (a speciální styly) pro časopisy American
+ články v \SpecialCharNoPassThru LaTeX
+u, jestliže použijete jejich textovou třídu.
+ \SpecialCharNoPassThru LyX
+ toto podporuje také.
+ Například \SpecialCharNoPassThru LyX
+ podporuje sazbu (a speciální styly) pro časopisy American
  Mathematics Society pomocí textové třídy 
 \family sans
 Article
@@ -2738,7 +2907,8 @@ slides
 \begin_inset Text
 
 \begin_layout Plain Layout
-slidy; průhlednost (včetně FoilTeX)
+slidy; průhlednost (včetně Foil\SpecialCharNoPassThru TeX
+)
 \end_layout
 
 \end_inset
@@ -2758,7 +2928,7 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-dopis; mnoho speciálních stylů pro adresu, podpis\SpecialChar \ldots{}
+dopis; mnoho speciálních stylů pro adresu, podpis\SpecialChar ldots
 
 \end_layout
 
@@ -2788,7 +2958,7 @@ Jednou z nejpopulárnějších textových tříd je
 \family sans
 Letter
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Jednou z cest jak napsat dopis je vytvořit 
 \family sans
 Nový
@@ -2817,7 +2987,8 @@ Dokument->Nastavení
  Oproti obvyklé cestě jak psát dopis to vypadá jako práce navíc.
  Kdykoli píšete obchodní dopis, chcete tam mít svoji adresu, adresáta, text,
  podpis a podobně.
- Proto má LyX šablonu pro dopisy, která obsahuje jednoduchý dopis; když
+ Proto má \SpecialCharNoPassThru LyX
+ šablonu pro dopisy, která obsahuje jednoduchý dopis; když
  máte jednou šablonu, můžete jen nahrazovat text v šabloně textem, který
  chcete napsat.
 \end_layout
@@ -2888,12 +3059,15 @@ Signature:
  Toto slovo se nevytiskne (o čemž se můžete snadno přesvědčit), jen vás
  upozorňuje, že se v dopise bude podpis nacházet.
  Také nezáleží na tom, kde je řádka s podpisem.
- LyX je WYSIWYM; můžete dát tuto řádku kamkoli, ale LyX ví, že podpis má
+ \SpecialCharNoPassThru LyX
+ je WYSIWYM; můžete dát tuto řádku kamkoli, ale \SpecialCharNoPassThru LyX
+ ví, že podpis má
  být na konci.
 \end_layout
 
 \begin_layout Standard
-Šablona je obyčejný dokument v LyXu.
+Šablona je obyčejný dokument v \SpecialCharNoPassThru LyX
+u.
  To znamená, že můžete uložit svou adresu a podpis do nové šablony.
  A od teď, chcete-li psát dopis, můžete pro úsporu času použít svou novou
  šablonu.
@@ -2929,7 +3103,9 @@ Nadpisy dokumentu
 \end_layout
 
 \begin_layout Standard
-LyX (stejně jako LaTeX) odděluje titulek — který může obsahovat nadpis,
+\SpecialCharNoPassThru LyX
+ (stejně jako \SpecialCharNoPassThru LaTeX
+) odděluje titulek — který může obsahovat nadpis,
  autora, datum a dokonce shrnutí obsahu — a vlastní text dokumentu.
 \end_layout
 
@@ -3000,9 +3176,12 @@ Máte možnost označit značkou jakoukoli sekci vašeho dokumentu (v podstatě
  Jakmile to uděláte, máte možnost se na ni odkázat odkudkoli z dokumentu
  pomocí křížového odkazu, a to včetně čísla oddílu či strany, na které se
  nachází.
- Stejně tak jako s oddíly či poznámkami pod čarou, LyX obhospodařuje odkazy
+ Stejně tak jako s oddíly či poznámkami pod čarou, \SpecialCharNoPassThru LyX
+ obhospodařuje odkazy
  pro vás.
- Automatické značky a odkazy na ně jsou nejsilnější zbraní LyXu (a LaTeXu)
+ Automatické značky a odkazy na ně jsou nejsilnější zbraní \SpecialCharNoPassThru LyX
+u (a \SpecialCharNoPassThru LaTeX
+u)
  proti obvyklým textovým procesorům.
 \end_layout
 
@@ -3122,7 +3301,8 @@ Použít.
 \end_layout
 
 \begin_layout Standard
-LyX umístí odkazovací obdélníček na místo, kde byl kurzor.
+\SpecialCharNoPassThru LyX
+ umístí odkazovací obdélníček na místo, kde byl kurzor.
  Při tisku se odkaz změní na skutečné číslo sekce či jeho stranu (podle
  toho, co jste zvolili v dialogu).
  Odkaz při editaci dokumentu funguje jako hyperlink; kliknutí na něj vás
@@ -3140,9 +3320,11 @@ Další možnosti značek
 \end_layout
 
 \begin_layout Standard
-Již jsme řekli, že LyX se stará o číslování odkazů; vyzkoušejme si to.
+Již jsme řekli, že \SpecialCharNoPassThru LyX
+ se stará o číslování odkazů; vyzkoušejme si to.
  Přidejte novou sekci před sekci 2.
- Nyní nechte proběhnout LaTeX, a — kupodivu — číslo sekce se změnilo na
+ Nyní nechte proběhnout \SpecialCharNoPassThru LaTeX
+, a — kupodivu — číslo sekce se změnilo na
  3! Změňte O tomto dokumentu na subsekci, a odkaz bude nyní na 2.1 místo
  3.
  Číslo stránky se nezmění (samozřejmě pokud jste nepřidali celou stranu
@@ -3171,7 +3353,8 @@ Vložte
 status collapsed
 
 \begin_layout Plain Layout
-Mimochodem, kopírování nadpisu kapitoly může způsobit chybu v LyXu, protože
+Mimochodem, kopírování nadpisu kapitoly může způsobit chybu v \SpecialCharNoPassThru LyX
+u, protože
  názvy kapitol nejsou povoleny pro články.
  Jestliže se to stalo, pak prostě onen nadpis vymažte.
  Jestli chcete znát důvod, podívejte se na kapitolu 
@@ -3218,8 +3401,9 @@ pod
 
 čarou
 \family default
-\SpecialChar \@.
- Klikněte na slovo LyX kdekoli ve vašem dokumentu a stiskněte tlačítko pro
+\SpecialChar endofsentence
+ Klikněte na slovo \SpecialCharNoPassThru LyX
+ kdekoli ve vašem dokumentu a stiskněte tlačítko pro
  vložení poznámky pod čarou.
  Vložka pro text poznámky se objeví napravo od slova, které jste psali.
  Nalevo je slovo patička napsané červeně v šedém obdélníku.
@@ -3228,7 +3412,8 @@ pod
 \end_layout
 
 \begin_layout LyX-Code
-LyX je textový procesor.
+\SpecialCharNoPassThru LyX
+ je textový procesor.
 \end_layout
 
 \begin_layout Standard
@@ -3241,13 +3426,16 @@ Nyní klikněte na slovo patička.
 \end_layout
 
 \begin_layout Standard
-Možná se ptáte, proč LyX ukazuje slovo místo čísla.
+Možná se ptáte, proč \SpecialCharNoPassThru LyX
+ ukazuje slovo místo čísla.
  Odpověď je jednoduchá, protože číslování poznámek se děje až při tisku
- LaTeXem, což můžete vidět v souboru 
+ \SpecialCharNoPassThru LaTeX
+em, což můžete vidět v souboru 
 \family typewriter
 dvi
 \family default
- nebo na výtisku, takže skutečně není třeba tato čísla ukazovat v LyXu.
+ nebo na výtisku, takže skutečně není třeba tato čísla ukazovat v \SpecialCharNoPassThru LyX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -3339,7 +3527,7 @@ na
 
 okraj
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Poznámky na okraji se chovají jako poznámky pod čarou vyjma: 
 \end_layout
 
@@ -3373,7 +3561,8 @@ poznámky po straně nejsou číslovány
 
 \begin_layout Standard
 Změňte vaši poznámku pod čarou na text a pak na poznámku po straně.
- Prohlédněte si výstup z LaTeXu.
+ Prohlédněte si výstup z \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -3400,7 +3589,9 @@ name "sec:bibliographies"
 Citace jsou podobné odkazům.
  Citace obsahuje seznam odkazů na konci dokumentu, které mohou být zmiňovány
  v textu dokumentu.
- Tak jako nadpisy sekcí, LyX a LaTeX vám ulehčuje život automatickým číslováním
+ Tak jako nadpisy sekcí, \SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+ vám ulehčuje život automatickým číslováním
  citací, přičemž mění čísla, změní-li se jejich počet nebo pořadí.
 \end_layout
 
@@ -3413,10 +3604,12 @@ Bibliografie
  Nyní je každý odstavec jednou citací.
  Napište 
 \family typewriter
-The Lyx Tutorial, by the LyX DocTeam
+The Lyx Tutorial, by the \SpecialCharNoPassThru LyX
+ DocTeam
 \family default
  jako vaši první citaci.
- Povšimněte si, že LyX automaticky očísluje každou citaci.
+ Povšimněte si, že \SpecialCharNoPassThru LyX
+ automaticky očísluje každou citaci.
  Klikněte na obdélník s číslem a objeví se dialog 
 \family sans
 Položka
@@ -3430,7 +3623,8 @@ bibliografie
 \family sans
 Klíč
 \family default
-, se používá jako reference uvnitř dokumentu v LyXu.
+, se používá jako reference uvnitř dokumentu v \SpecialCharNoPassThru LyX
+u.
  Implicitně se jedná o číslo.
  Změňte jeho hodnotu na lyxtutorial, abyste si jej mohli lépe zapamatovat.
 \end_layout
@@ -3439,10 +3633,11 @@ Klíč
 Nyní zvolte místo ve vašem dokumentu, kam chcete vložit citaci.
  To se provede pomocí 
 \family sans
-Vložit->Citace\SpecialChar \@.
+Vložit->Citace\SpecialChar endofsentence
 
 \family default
- LyX nakreslí šedivý obdélník s otazníkem v závorce a objeví se dialog pro
+ \SpecialCharNoPassThru LyX
+ nakreslí šedivý obdélník s otazníkem v závorce a objeví se dialog pro
  vložení citace.
  Zvolte, co chcete citovat(lze volit více citací najednou!)
 \begin_inset Foot
@@ -3457,7 +3652,8 @@ Zde je vidět, proč je vhodné pojmenovávat citace namísto jejich automatick�
 
  Klikněte na šipku, rozbalí se nabídka, a v ní zvolte lyxtutorial (momentálně
  jediná položka v citacích).
- Nyní spusťte LaTeX, a podívejte se jak se citace zobrazí.
+ Nyní spusťte \SpecialCharNoPassThru LaTeX
+, a podívejte se jak se citace zobrazí.
 \end_layout
 
 \begin_layout Standard
@@ -3473,7 +3669,8 @@ Uživatelské příručce.
  
 \emph default
 Dokumenty s větší bibliografií budou pravděpodobně používat spíše vestavěnou
- podporu BibTeXu.
+ podporu Bib\SpecialCharNoPassThru TeX
+u.
 \end_layout
 
 \begin_layout Standard
@@ -3492,7 +3689,8 @@ Obsah
 
 \begin_layout Standard
 Možná chcete vložit obsah na začátek dokumentu.
- LyX tento požadavek hravě splní.
+ \SpecialCharNoPassThru LyX
+ tento požadavek hravě splní.
  Stačí stisknout 
 \family sans
 Enter
@@ -3504,7 +3702,8 @@ status collapsed
 \begin_layout Plain Layout
 Nezkoušejte mazat číslo sekce.
  Nepůjde to.
- LyX totiž čísluje za vás.
+ \SpecialCharNoPassThru LyX
+ totiž čísluje za vás.
 \end_layout
 
 \end_inset
@@ -3565,21 +3764,27 @@ Použití matematického režimu
 \end_layout
 
 \begin_layout Standard
-LaTeX je používán mnoha vědci, protože umí tisknout velmi dobře vypadající
+\SpecialCharNoPassThru LaTeX
+ je používán mnoha vědci, protože umí tisknout velmi dobře vypadající
  rovnice bez nutností používat speciální řídící znaky textových procesorů
  a jejich editorů rovnic.
  Na druhé straně mnoho z těchto vědců je nespokojených, protože psaní rovnic
- v LaTeXu je spíše programování než psaní.
- Naštěstí LyX podporuje WYSIWYM pro rovnice.
- Jestliže ovládáte LaTeX, můžete zde přímo psát všechny obvyklé matematické
+ v \SpecialCharNoPassThru LaTeX
+u je spíše programování než psaní.
+ Naštěstí \SpecialCharNoPassThru LyX
+ podporuje WYSIWYM pro rovnice.
+ Jestliže ovládáte \SpecialCharNoPassThru LaTeX
+, můžete zde přímo psát všechny obvyklé matematické
  příkazy, ale uvidíte je jako WYSIWYM.
- Jestliže naopak, jste nikdy v LaTeXu nepsali, tak potom vám matematický
+ Jestliže naopak, jste nikdy v \SpecialCharNoPassThru LaTeX
+u nepsali, tak potom vám matematický
  panel umožní psát profesionálně vypadající text jednoduše a rychle
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyX pochopitelně neumí kontrolovat, zda to, co jste napsali, je 
+\SpecialCharNoPassThru LyX
+ pochopitelně neumí kontrolovat, zda to, co jste napsali, je 
 \emph on
 dobře
 \emph default
@@ -3612,7 +3817,8 @@ dvi
 \family default
 ; není zde mezera mezi znaky a rovnítkem, a navíc jste chtěli napsat dvojku
  jako mocninu.
- Takto to dopadlo, protože jste LyXu neřekli, že píšete matematický výraz,
+ Takto to dopadlo, protože jste \SpecialCharNoPassThru LyX
+u neřekli, že píšete matematický výraz,
  takže toto napsal jako obyčejný text.
 \end_layout
 
@@ -3623,14 +3829,16 @@ Matematika se píše v Mathedu, jinak též v matematickém režimu.
 \end_inset
 
 .
- LyX otevře malý modrý obdélníček s fialovým okrajem.
+ \SpecialCharNoPassThru LyX
+ otevře malý modrý obdélníček s fialovým okrajem.
  Modrý obdélníček je 
 \emph on
 bod pro vkládání
 \emph default
 , který říká, že Mathed čeká na váš vstup, a obdélníček vám oznamuje, že
  se nacházíte v Mathedu.
- LyX posunul kurzor dovnitř modrého obdélníka, takže znovu napište E=mc
+ \SpecialCharNoPassThru LyX
+ posunul kurzor dovnitř modrého obdélníka, takže znovu napište E=mc
 \family typewriter
 ^2
 \family default
@@ -3655,7 +3863,8 @@ opuštění
 \end_layout
 
 \begin_layout Standard
-Spusťte LaTeX a prohlédněte si soubor 
+Spusťte \SpecialCharNoPassThru LaTeX
+ a prohlédněte si soubor 
 \family typewriter
 dvi
 \family default
@@ -3668,18 +3877,23 @@ dvi
 
 \begin_layout Standard
 Mathed je dalším příkladem filozofie WYSIWYM.
- V LaTeXu píšete matematický výraz pomocí textu a příkazů jako 
+ V \SpecialCharNoPassThru LaTeX
+u píšete matematický výraz pomocí textu a příkazů jako 
 \family typewriter
 
 \backslash
 sqrt
 \family default
-; toto může být velice nepříjemné, protože dokud nespustíte LaTeX nevidíte
+; toto může být velice nepříjemné, protože dokud nespustíte \SpecialCharNoPassThru LaTeX
+ nevidíte
  jak bude vypadat výstup, abyste pak našli chybějící závorky či jiné chyby.
- Na druhé straně LyX vám na obrazovce neukáže výraz úplně perfektně (WYSIWYG),
+ Na druhé straně \SpecialCharNoPassThru LyX
+ vám na obrazovce neukáže výraz úplně perfektně (WYSIWYG),
  ale dá vám dostatečně dobrou představu jak bude vypadat po vysázení.
- LaTeX se pak postará o profesionální vysázení.
- V 99% případů není třeba měnit na výstupu z LaTeXu nic.
+ \SpecialCharNoPassThru LaTeX
+ se pak postará o profesionální vysázení.
+ V 99% případů není třeba měnit na výstupu z \SpecialCharNoPassThru LaTeX
+u nic.
  Takto (omlouváme se za mentorování) se můžete soustředit na 
 \emph on
 obsah
@@ -3840,7 +4054,9 @@ Tab
 nelze
 \series default
  použít pro přidávání mezer dovnitř výrazu.
- Mezery jsou věcí sázení, takže jsou plně v kompetenci LyXu (LaTeXu) (viz
+ Mezery jsou věcí sázení, takže jsou plně v kompetenci \SpecialCharNoPassThru LyX
+u (\SpecialCharNoPassThru LaTeX
+u) (viz
  sekce 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3919,7 +4135,8 @@ Exponent lze napsat stříškou,
 \end_inset
 
 .
- LyX umístí vkládací bod (modrý obdélníček, pamatujete se?) na místo exponentu,
+ \SpecialCharNoPassThru LyX
+ umístí vkládací bod (modrý obdélníček, pamatujete se?) na místo exponentu,
  takže cokoli teď napíšete, bude umístěno nahoře a bude vysázeno v menší
  velikosti písma; a to až do stisku 
 \family sans
@@ -3997,7 +4214,8 @@ Panelu
 Jestliže kliknete na menu v Symbolech, otevře se nabídka, ze které můžete
  vybrat řecká písmena, která se budou vkládat na místo kurzoru.
  Povšimněte si, že postavením kurzoru myši nad tlačítko panelu zjistíte
- klávesovou zkratku (vlastně TeXové makro) pro daný symbol.
+ klávesovou zkratku (vlastně \SpecialCharNoPassThru TeX
+ové makro) pro daný symbol.
  Mathed se automaticky otevře kliknutím levého tlačítka myši na daný výraz.
  
 \end_layout
@@ -4015,7 +4233,7 @@ Panelu
 \begin_inset Quotes gld
 \end_inset
 
-Nic není nemožné\SpecialChar \ldots{}
+Nic není nemožné\SpecialChar ldots
  Vše co potřebuješ je 
 \begin_inset Formula $\heartsuit$
 \end_inset
@@ -4035,7 +4253,8 @@ Mocniny, zvýraznění a oddělovače
 Pro napsání odmocniny stačí kliknout na symbol odmocniny.
  Objeví se odmocnina a vkládací bod se přesune dovnitř, kam můžete psát
  proměnné, čísla, jiné odmocniny, zlomky, prostě cokoli chcete.
- LyX bude automaticky měnit velikost odmocniny podle jejího argumentu.
+ \SpecialCharNoPassThru LyX
+ bude automaticky měnit velikost odmocniny podle jejího argumentu.
 \end_layout
 
 \begin_layout Standard
@@ -4054,7 +4273,8 @@ Akcentování znaku (
 \end_inset
 
 (~).
- Po kliknutí LyX otevře akcentaci s bodem pro vkládání pod (nebo nad) akcentem.
+ Po kliknutí \SpecialCharNoPassThru LyX
+ otevře akcentaci s bodem pro vkládání pod (nebo nad) akcentem.
  Jen klikněte na typ akcentu, vložte obsah a poté stiskněte 
 \family sans
 Mezeru
@@ -4122,7 +4342,8 @@ levým tlačítkem myši.
 \begin_inset Quotes grd
 \end_inset
 
- (prázdný oddělovač se v LyXu zobrazí jako přerušená vertikální černá čára,
+ (prázdný oddělovač se v \SpecialCharNoPassThru LyX
+u zobrazí jako přerušená vertikální černá čára,
  která se při tisku nezobrazuje).
 \end_layout
 
@@ -4180,7 +4401,8 @@ Panelu
 \family default
 , které je označeno zlomkem se dvěma modrými obdélníčky místo čitatele i
  jmenovatele.
- LyX vytvoří dva vkládací body ve zlomku.
+ \SpecialCharNoPassThru LyX
+ vytvoří dva vkládací body ve zlomku.
  Tak, jak byste očekávali, můžete se po zlomku pohybovat myší i šipkami.
  Klikněte na čitatele a napište 
 \begin_inset Quotes gld
@@ -4221,7 +4443,8 @@ priklad_syrovy.lyx
 \end_layout
 
 \begin_layout Subsection
-Režim TeX : Limity, log, sin a jiné
+Režim \SpecialCharNoPassThru TeX
+ : Limity, log, sin a jiné
 \end_layout
 
 \begin_layout Standard
@@ -4234,7 +4457,8 @@ sin
 \begin_inset Quotes grd
 \end_inset
 
-, bude si LyX myslet, že píšete součin 
+, bude si \SpecialCharNoPassThru LyX
+ myslet, že píšete součin 
 \begin_inset Formula $s$
 \end_inset
 
@@ -4257,7 +4481,8 @@ sin
 \end_inset
 
  napsané normálním písmem.
- Navíc, LyX neumístí mezeru mezi 
+ Navíc, \SpecialCharNoPassThru LyX
+ neumístí mezeru mezi 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4332,7 +4557,8 @@ sin
 \end_inset
 
  je nyní napsáno červeně a normálním písmem, jinak též v tzv.
- TeX módu.
+ \SpecialCharNoPassThru TeX
+ módu.
  Celé slovo se chová jako jeden symbol, takže jedno stisknutí 
 \family sans
 Backspace
@@ -4356,7 +4582,8 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Mezi dalšími příkazy, které píšete v TeXu pomocí nabídky 
+Mezi dalšími příkazy, které píšete v \SpecialCharNoPassThru TeX
+u pomocí nabídky 
 \family sans
 Funkce
 \family default
@@ -4431,7 +4658,8 @@ Použít
 OK
 \family default
 .
- LyX vytiskne 6 bodů pro vkládání v matici 
+ \SpecialCharNoPassThru LyX
+ vytiskne 6 bodů pro vkládání v matici 
 \begin_inset Formula $2\times3$
 \end_inset
 
@@ -4466,7 +4694,8 @@ Uživatelská příručka
  pro informace o tom, jak změnit vodorovné zarovnávání sloupců a jak změnit
  svislou pozici celé matice.
  Jestliže chcete psát tabulku obsahující text, pak vám doporučujeme použít
- tabulkovou podporu LyXu namísto snahy psát text dovnitř matice.
+ tabulkovou podporu \SpecialCharNoPassThru LyX
+u namísto snahy psát text dovnitř matice.
 \end_layout
 
 \begin_layout Subsection
@@ -4503,8 +4732,10 @@ Celořádkový režim
 Panelu
 \family default
 , který je zobrazen jako několik řádek nad a pod modrým obdélníčkem.
- LyX vytvoří vkládací bod, který se nachází na nové řádce a je na ní vystředěn.
- Nyní napište výraz a spusťte LaTeX, abyste se podívali, jak to bude vypadat.
+ \SpecialCharNoPassThru LyX
+ vytvoří vkládací bod, který se nachází na nové řádce a je na ní vystředěn.
+ Nyní napište výraz a spusťte \SpecialCharNoPassThru LaTeX
+, abyste se podívali, jak to bude vypadat.
  Toto tlačítko je ve skutečnosti přepínač; zkuste ho použít na přepnutí
  několika výrazů do a z režimu zobrazení.
 \end_layout
@@ -4632,7 +4863,8 @@ x=y+y+y+y+y
 To vůbec nevypadá dobře.
  Jestliže píšete dvě a více rovnic pod sebou, vypadají podstatně lépe, jsou-li
  rovnítka zarovnána pod sebou; zvlášť, nemá-li druhá rovnice levou stranu.
- LyX umožňuje psát víceřádkové rovnice s řízením jejich zarovnání.
+ \SpecialCharNoPassThru LyX
+ umožňuje psát víceřádkové rovnice s řízením jejich zarovnání.
 \begin_inset Formula 
 \begin{eqnarray*}
 x & = & y+y+y+y+y\\
@@ -4660,7 +4892,8 @@ Víceřádkovou rovnici napíšete pomocí mathedu v režimu zobrazení, když s
 C-Enter
 \family default
 .
- LyX vypíše dvě řádky, každou se třemi vkládacími body.
+ \SpecialCharNoPassThru LyX
+ vypíše dvě řádky, každou se třemi vkládacími body.
  Pohybovat se mezi nimi můžete stejně jako v matici: myší, šipkami nebo
  klávesou 
 \family sans
@@ -4683,7 +4916,8 @@ x & = & a+b+c+d\\
 \end_layout
 
 \begin_layout Standard
-LyX zarovná druhé (střední) pole na každé řádce, takže obvykle toto pole
+\SpecialCharNoPassThru LyX
+ zarovná druhé (střední) pole na každé řádce, takže obvykle toto pole
  obsahuje rovnítko či jiný relační operátor, i když tam můžete napsat jakýkoli
  výraz.
  Nepoužívejte víceřádkové rovnice pro vysázení polí, pro tento účel použijte
@@ -4813,11 +5047,13 @@ Různé
 \end_layout
 
 \begin_layout Section
-Další významné možnosti LyXu
+Další významné možnosti \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
-Neprošli jsme všechny možné příkazy v LyXu, což jsme ani neplánovali.
+Neprošli jsme všechny možné příkazy v \SpecialCharNoPassThru LyX
+u, což jsme ani neplánovali.
  Jako obvykle vás odkazujeme na 
 \emph on
 Uživatelskou příručku
@@ -4828,12 +5064,14 @@ Uživatelskou příručku
 Referenční příručce.
 
 \emph default
- Zde chceme jen zmínit některé důležitější schopnosti LyXu\SpecialChar \ldots{}
+ Zde chceme jen zmínit některé důležitější schopnosti \SpecialCharNoPassThru LyX
+u\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-LyX má WYSIWYG podporu pro tabulky.
+\SpecialCharNoPassThru LyX
+ má WYSIWYG podporu pro tabulky.
  Použijte 
 \family sans
 Vložit->Tabulka
@@ -4851,19 +5089,22 @@ tabulky,
 \end_layout
 
 \begin_layout Itemize
-LyX také podporuje vkládání (nejen) PostScriptových obrázků.
+\SpecialCharNoPassThru LyX
+ také podporuje vkládání (nejen) PostScriptových obrázků.
  (Jak jste asi odhadli: 
 \family sans
 Vložit->Obrázek.
 
 \family default
  Pak klikněte na obrázek, který chcete vložit, můžete jej otočit, zmenšit
- či zvětšit atd.) Tabulky a obrázky lze pojmenovat a LyX automaticky vygeneruje
+ či zvětšit atd.) Tabulky a obrázky lze pojmenovat a \SpecialCharNoPassThru LyX
+ automaticky vygeneruje
  seznamy obrázků či tabulek.
 \end_layout
 
 \begin_layout Itemize
-LyX podporuje program pro správu verzí RCS (
+\SpecialCharNoPassThru LyX
+ podporuje program pro správu verzí RCS (
 \family typewriter
 man rcsintro
 \family default
@@ -4871,24 +5112,31 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-LyX je velmi konfigurovatelný.
- Vše od vzhledu oken LyXu po výstup lze mnoha způsoby měnit.
+\SpecialCharNoPassThru LyX
+ je velmi konfigurovatelný.
+ Vše od vzhledu oken \SpecialCharNoPassThru LyX
+u po výstup lze mnoha způsoby měnit.
 \end_layout
 
 \begin_layout Itemize
-LyX je vyvíjen týmem programátorů na pěti kontinentech.
- Proto má LyX lepší podporu pro neanglické (Holanďany, Němce, Řeky, Čechy,
- Turky, \SpecialChar \ldots{}
+\SpecialCharNoPassThru LyX
+ je vyvíjen týmem programátorů na pěti kontinentech.
+ Proto má \SpecialCharNoPassThru LyX
+ lepší podporu pro neanglické (Holanďany, Němce, Řeky, Čechy,
+ Turky, \SpecialChar ldots
 ) jazyky než mnoho jiných textových procesorů.
  A navíc, tato podpora se stále zlepšuje.
 \end_layout
 
 \begin_layout Itemize
-LyX umí načíst dokumenty v LaTeXu.
+\SpecialCharNoPassThru LyX
+ umí načíst dokumenty v \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Itemize
-LyX umí pracovat s revizemi daného dokumentu (Dokument->Změnit
+\SpecialCharNoPassThru LyX
+ umí pracovat s revizemi daného dokumentu (Dokument->Změnit
 \begin_inset space ~
 \end_inset
 
@@ -4896,7 +5144,8 @@ revize).
 \end_layout
 
 \begin_layout Itemize
-LyX umí dokument rozdělit na části, které se na požádání tisknou nebo zůstávají
+\SpecialCharNoPassThru LyX
+ umí dokument rozdělit na části, které se na požádání tisknou nebo zůstávají
  netištěné.
  Díky tomu můžete v jednom dokumentu uchovávat např.
  jak test, tak správné odpovědi na jeho otázky.
@@ -4917,7 +5166,7 @@ Nástroje -> Kontrola
 
 pravopisu
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \begin_inset Foot
 status collapsed
@@ -4936,11 +5185,13 @@ Nástroje -> Nastavení
 \end_layout
 
 \begin_layout Itemize
-LyX umí porovnávat dokumenty.
+\SpecialCharNoPassThru LyX
+ umí porovnávat dokumenty.
 \end_layout
 
 \begin_layout Itemize
-LyX má wiki stránky se spoustou rad a triků (
+\SpecialCharNoPassThru LyX
+ má wiki stránky se spoustou rad a triků (
 \begin_inset Flex URL
 status collapsed
 
@@ -4955,7 +5206,9 @@ wiki.lyx.org
 \end_layout
 
 \begin_layout Section
-LyX pro uživatele LaTeXu
+\SpecialCharNoPassThru LyX
+ pro uživatele \SpecialCharNoPassThru LaTeX
+u
 \end_layout
 
 \begin_layout Standard
@@ -4965,19 +5218,30 @@ name "sec:latexusers"
 
 \end_inset
 
-Jestliže nevíte nic o LaTeXu, nemusíte číst tento oddíl.
+Jestliže nevíte nic o \SpecialCharNoPassThru LaTeX
+u, nemusíte číst tento oddíl.
  Můžete se však 
 \emph on
 chtít
 \emph default
- naučit něco o LaTeXu a přečíst si tuto sekci.
- Na druhé straně mnoho nových uživatelů LyXu má již s LaTeXem své zkušenosti.
+ naučit něco o \SpecialCharNoPassThru LaTeX
+u a přečíst si tuto sekci.
+ Na druhé straně mnoho nových uživatelů \SpecialCharNoPassThru LyX
+u má již s \SpecialCharNoPassThru LaTeX
+em své zkušenosti.
  Jestli je to váš případ, pak se možná chcete přesvědčit, zda jsou možnosti
- LyXu stejné jako možnosti LaTeXu.
- Krátká odpověď říká, že LyX umí totéž jako LaTeX, ať už tak či onak, a
- rozhodně zjednodušuje většinu fází psaní dokumentu v LaTeXu.
- Nyní sice vznikají některé problémy s přenosem starých dokumentů z LaTeXu,
- a i někde jinde, nicméně následující verze LyXu postupně tyto problémy
+ \SpecialCharNoPassThru LyX
+u stejné jako možnosti \SpecialCharNoPassThru LaTeX
+u.
+ Krátká odpověď říká, že \SpecialCharNoPassThru LyX
+ umí totéž jako \SpecialCharNoPassThru LaTeX
+, ať už tak či onak, a
+ rozhodně zjednodušuje většinu fází psaní dokumentu v \SpecialCharNoPassThru LaTeX
+u.
+ Nyní sice vznikají některé problémy s přenosem starých dokumentů z \SpecialCharNoPassThru LaTeX
+u,
+ a i někde jinde, nicméně následující verze \SpecialCharNoPassThru LyX
+u postupně tyto problémy
  vyřeší.
 \end_layout
 
@@ -4986,27 +5250,37 @@ Protože toto je
 \emph on
 Průvodce
 \emph default
-, omezíme se na věci, které zajímají začínající uživatele LyXu.
+, omezíme se na věci, které zajímají začínající uživatele \SpecialCharNoPassThru LyX
+u.
  Protože nechceme prodlužovat tento dokument, najdete zde jen skutečné minimum
  informací.
  
 \emph on
 Uživatelská příručka
 \emph default
- obsahuje mnoho informací o rozdílech LyXu a LaTeXu, a také tipy, jak použít
- některé triky LaTeXu v LyXu.
+ obsahuje mnoho informací o rozdílech \SpecialCharNoPassThru LyX
+u a \SpecialCharNoPassThru LaTeX
+u, a také tipy, jak použít
+ některé triky \SpecialCharNoPassThru LaTeX
+u v \SpecialCharNoPassThru LyX
+u.
 \end_layout
 
 \begin_layout Subsection
-Režim TeX  
+Režim \SpecialCharNoPassThru TeX
+  
 \end_layout
 
 \begin_layout Standard
-Cokoli napíšete v režimu TeX, bude zasláno přímo do LaTeXu, a bude zobrazeno
+Cokoli napíšete v režimu \SpecialCharNoPassThru TeX
+, bude zasláno přímo do \SpecialCharNoPassThru LaTeX
+u, a bude zobrazeno
  na obrazovce červeně.
- Do režimu TeX se dostanete pomocí nabídky 
+ Do režimu \SpecialCharNoPassThru TeX
+ se dostanete pomocí nabídky 
 \family typewriter
-Vložit -> TeX-ový
+Vložit -> \SpecialCharNoPassThru TeX
+-ový
 \begin_inset space ~
 \end_inset
 
@@ -5016,15 +5290,20 @@ kód
 \end_layout
 
 \begin_layout Standard
-V mathedu je TeX použit trochu jinak.
- Do režimu TeX se dostanete stiskem zpětného lomítka.
+V mathedu je \SpecialCharNoPassThru TeX
+ použit trochu jinak.
+ Do režimu \SpecialCharNoPassThru TeX
+ se dostanete stiskem zpětného lomítka.
  To se nezobrazí, ale vše, co píšete, se zobrazí červeně.
- Režim TeX ukončíte 
+ Režim \SpecialCharNoPassThru TeX
+ ukončíte 
 \family sans
 Mezerou
 \family default
  nebo nějakým nepísmenným znakem, jako je číslo, stříška čí závorka.
- Jakmile opustíte režim TeX a LyX zná příkaz, který byl napsán, převede
+ Jakmile opustíte režim \SpecialCharNoPassThru TeX
+ a \SpecialCharNoPassThru LyX
+ zná příkaz, který byl napsán, převede
  jej do WYSIWYM.
  Takže když napíšete v mathedu 
 \family typewriter
@@ -5036,7 +5315,8 @@ gamma
 \family sans
 Mezeru
 \family default
-, LyX změní červené gamma na modrou 
+, \SpecialCharNoPassThru LyX
+ změní červené gamma na modrou 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -5057,11 +5337,13 @@ Math
 
 Panelu
 \family default
-, zvláště pro zkušené uživatele LaTeXu.
+, zvláště pro zkušené uživatele \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Standard
-Jako zvláštní případ, napíšete-li závorku v režimu TeX, mathed napíše otevírací
+Jako zvláštní případ, napíšete-li závorku v režimu \SpecialCharNoPassThru TeX
+, mathed napíše otevírací
  
 \emph on
 i
@@ -5072,11 +5354,18 @@ i
 \end_layout
 
 \begin_layout Standard
-LyX neumí absolutně všechno, co LaTeX (zatím?).
+\SpecialCharNoPassThru LyX
+ neumí absolutně všechno, co \SpecialCharNoPassThru LaTeX
+ (zatím?).
  Některé funkce nejsou podporovány vůbec, některé fungují, ale nejsou WYSIWYG.
- Režim TeX dává uživateli plnou flexibilitu LaTeXu a přitom zachovává přednosti
- LyXu, jako je WYSIWYG matematika, tabulky a upravování.
- LyX nebude nikdy podporovat žádný balíček LaTeXu.
+ Režim \SpecialCharNoPassThru TeX
+ dává uživateli plnou flexibilitu \SpecialCharNoPassThru LaTeX
+u a přitom zachovává přednosti
+ \SpecialCharNoPassThru LyX
+u, jako je WYSIWYG matematika, tabulky a upravování.
+ \SpecialCharNoPassThru LyX
+ nebude nikdy podporovat žádný balíček \SpecialCharNoPassThru LaTeX
+u.
  Ačkoli jej můžete používat pomocí 
 \family typewriter
 
@@ -5094,19 +5383,24 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Konverze dokumentů v LyXu do LaTeXu
+Konverze dokumentů v \SpecialCharNoPassThru LyX
+u do \SpecialCharNoPassThru LaTeX
+u
 \end_layout
 
 \begin_layout Standard
-Můžete také požadovat konverzi z LyXu do LaTeXu.
- Například, váš kolega, který nemá LyX může chtít číst váš dokument.
+Můžete také požadovat konverzi z \SpecialCharNoPassThru LyX
+u do \SpecialCharNoPassThru LaTeX
+u.
+ Například, váš kolega, který nemá \SpecialCharNoPassThru LyX
+ může chtít číst váš dokument.
  To je velmi jednoduché.
  Zvolte 
 \family sans
 \bar under
 S
 \bar default
-oubor -> Export -> LaTeX
+oubor -> Export -> \SpecialCharNoPassThru LaTeX
 \family default
 .
  Toto vytvoří soubor 
@@ -5118,12 +5412,16 @@ cokoli.tex
 cokoli.lyx
 \family default
  — ze souboru, který máte právě otevřený.
- LyX vždy vytváří dočasné soubory v LaTeXu pro náhled a tisk, takže umí
- generovat LaTeX docela dobře.
+ \SpecialCharNoPassThru LyX
+ vždy vytváří dočasné soubory v \SpecialCharNoPassThru LaTeX
+u pro náhled a tisk, takže umí
+ generovat \SpecialCharNoPassThru LaTeX
+ docela dobře.
 \end_layout
 
 \begin_layout Subsection
-Preambule LaTeX 
+Preambule \SpecialCharNoPassThru LaTeX
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -5173,26 +5471,33 @@ name "sec:preamble"
 
 \end_inset
 
-Jestliže chcete umístit speciální příkazy do preambule LaTeXu, můžete je
- použít i v LyXu.
+Jestliže chcete umístit speciální příkazy do preambule \SpecialCharNoPassThru LaTeX
+u, můžete je
+ použít i v \SpecialCharNoPassThru LyX
+u.
  Zvolte 
 \family sans
 Dokument->Nastavení->Preambule
 \begin_inset space ~
 \end_inset
 
-LaTeXu
+\SpecialCharNoPassThru LaTeX
+u
 \family default
  a pište do dialogu.
- Cokoli napíšete, bude posláno (tak jako v režimu TeX) přímo do LaTeXu.
+ Cokoli napíšete, bude posláno (tak jako v režimu \SpecialCharNoPassThru TeX
+) přímo do \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-LyX má dobrou, i když ne úplnou podporu, pro BibTeX, který umožňuje budovat
+\SpecialCharNoPassThru LyX
+ má dobrou, i když ne úplnou podporu, pro Bib\SpecialCharNoPassThru TeX
+, který umožňuje budovat
  databázi bibliografických odkazů pro použití v mnoha dokumentech.
  Zvolte 
 \family sans
@@ -5200,7 +5505,8 @@ Vložit->Seznamy/Obsah->Bibliografie
 \begin_inset space ~
 \end_inset
 
-BibTeXu
+Bib\SpecialCharNoPassThru TeX
+u
 \family default
  pro vložení souboru 
 \family typewriter
@@ -5211,11 +5517,13 @@ bib
 \begin_inset Quotes gld
 \end_inset
 
-Odkazy vygenerované BibTeXem
+Odkazy vygenerované Bib\SpecialCharNoPassThru TeX
+em
 \begin_inset Quotes grd
 \end_inset
 
- a objeví se dialog BibTeX.
+ a objeví se dialog Bib\SpecialCharNoPassThru TeX
+.
  Cokoli napíšete v poli 
 \family sans
 Databáze
@@ -5229,7 +5537,8 @@ bibliography{}
 status collapsed
 
 \begin_layout Plain Layout
-Jako v obyčejném LaTeX, vícenásobné odkazy budou odděleny čárkami bez mezer.
+Jako v obyčejném \SpecialCharNoPassThru LaTeX
+, vícenásobné odkazy budou odděleny čárkami bez mezer.
 \end_layout
 
 \end_inset
@@ -5268,8 +5577,12 @@ reference "sec:bibliographies"
 \end_inset
 
 ).
- LyX se postará o spuštění BibTeXu.
- Důvod, proč podpora pro BibTeX není úplná, je v tom, že LyX neumí generovat
+ \SpecialCharNoPassThru LyX
+ se postará o spuštění Bib\SpecialCharNoPassThru TeX
+u.
+ Důvod, proč podpora pro Bib\SpecialCharNoPassThru TeX
+ není úplná, je v tom, že \SpecialCharNoPassThru LyX
+ neumí generovat
  soubory 
 \family typewriter
 bib
@@ -5314,13 +5627,22 @@ Chyby!
 \end_layout
 
 \begin_layout Standard
-Někdy při spuštění LaTeXu se objeví chyby, věci, kterým LyX nebo LaTeX nerozumí.
- Když se to stane, LyX vytvoří chybový obdélníček (uvnitř se slovem error).
+Někdy při spuštění \SpecialCharNoPassThru LaTeX
+u se objeví chyby, věci, kterým \SpecialCharNoPassThru LyX
+ nebo \SpecialCharNoPassThru LaTeX
+ nerozumí.
+ Když se to stane, \SpecialCharNoPassThru LyX
+ vytvoří chybový obdélníček (uvnitř se slovem error).
  Kliknutím na něj se objeví okénko s vysvětlením chyby.
- Jestliže jste udělali něco špatně v LyXu, půjde o chybu LyXu.
+ Jestliže jste udělali něco špatně v \SpecialCharNoPassThru LyX
+u, půjde o chybu \SpecialCharNoPassThru LyX
+u.
  Tyto by měly být velice řídké.
- Jestliže se problém objevil v LaTeXu (obvykle chyba v režimu TeX), LyX
- zobrazí chybovou zprávu LaTeXu.
+ Jestliže se problém objevil v \SpecialCharNoPassThru LaTeX
+u (obvykle chyba v režimu \SpecialCharNoPassThru TeX
+), \SpecialCharNoPassThru LyX
+ zobrazí chybovou zprávu \SpecialCharNoPassThru LaTeX
+u.
 \end_layout
 
 \begin_layout Section

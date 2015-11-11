@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/hu/
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -36,16 +37,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics none
 \default_output_format default
 \output_sync 0
@@ -111,11 +112,13 @@
 \begin_body
 
 \begin_layout Title
-A LyX tankönyv
+A \SpecialCharNoPassThru LyX
+ tankönyv
 \end_layout
 
 \begin_layout Author
-Készítette: a LyX csapat
+Készítette: a \SpecialCharNoPassThru LyX
+ csapat
 \begin_inset Foot
 status open
 
@@ -129,7 +132,8 @@ Amir Karger
 \noun default
 .
  Amennyiben megjegyzése vagy hibajavítási javaslatai lennének, kérem küldje
- őket a LyX dokumentációs levelezési listára 
+ őket a \SpecialCharNoPassThru LyX
+ dokumentációs levelezési listára 
 \family typewriter
 lyx-docs@lists.lyx.org
 \family default
@@ -162,15 +166,20 @@ Bevezetés
 \end_layout
 
 \begin_layout Section
-Üdvözöljük a LyX-ben!
+Üdvözöljük a \SpecialCharNoPassThru LyX
+-ben!
 \end_layout
 
 \begin_layout Standard
-Ez a tankönyv azok számára készült, akik még sohasem hallottak a LaTeX-ről
+Ez a tankönyv azok számára készült, akik még sohasem hallottak a \SpecialCharNoPassThru LaTeX
+-ről
  vagy nem ismerik azt elég jól.
- De ne essen pánikba, nem kell megtanulnia a LaTeX-et ahhoz, hogy használni
- tudja a LyX-et.
- Tulajdonképpen a LyX lényege éppen ez: egy majdnem WYSIWYG
+ De ne essen pánikba, nem kell megtanulnia a \SpecialCharNoPassThru LaTeX
+-et ahhoz, hogy használni
+ tudja a \SpecialCharNoPassThru LyX
+-et.
+ Tulajdonképpen a \SpecialCharNoPassThru LyX
+ lényege éppen ez: egy majdnem WYSIWYG
 \begin_inset Foot
 status collapsed
 
@@ -199,8 +208,10 @@ azt kap amit lát
 
 \end_inset
 
- kezelőfelület a LaTeX-hez.
- Azonban van néhány dolog, amit érdemes megtanulnia a LyX eredményes használatáh
+ kezelőfelület a \SpecialCharNoPassThru LaTeX
+-hez.
+ Azonban van néhány dolog, amit érdemes megtanulnia a \SpecialCharNoPassThru LyX
+ eredményes használatáh
 oz.
 \end_layout
 
@@ -217,12 +228,14 @@ Valószínűleg, sokan azért kezdték olvasni ezt a dokumentumot, mert megprób
  után vagy 3 sort kihagyni két bekezdés között.
  Sok-sok csalódás után be kellett látniuk, hogy valamiért ez nem sikerül.
  Ráadásul azt is tapasztalhatják, hogy a legtöbb ügyes trükk, amit megszokhattak
- az eddig használt szövegszerkesztőknél, az nem működik a LyX-ben.
+ az eddig használt szövegszerkesztőknél, az nem működik a \SpecialCharNoPassThru LyX
+-ben.
  Ez azért van, mert a korábban használt szövegszerkesztők engedték, hogy
  manuálisan állítsa be a betűméreteket, kihagyásokat, oldaltöréseket, stb.
  Szóval önnek kellett elvégezni a dokumentum megírásán kívül a szedését
  is.
- A LyX következetesen végzi el ön helyett a szöveg szedését és tördelését,
+ A \SpecialCharNoPassThru LyX
+ következetesen végzi el ön helyett a szöveg szedését és tördelését,
  így önnek csak az írásának tartalmára kell koncentrálnia.
 \end_layout
 
@@ -288,12 +301,16 @@ Ez a tankönyv példákból és feladatokból áll.
 \end_layout
 
 \begin_layout Standard
-Ha ön már ismeri a LaTeX-et valószínűleg gyorsabban tudja elolvasni a 
+Ha ön már ismeri a \SpecialCharNoPassThru LaTeX
+-et valószínűleg gyorsabban tudja elolvasni a 
 \emph on
 Tankönyv
 \emph default
--et, mivel a legtöbb LyX-es dolog tulajdonképpen egy elrejtett LaTeX parancs.
- Azonban a LyX-nek van néhány olyan egyéni sajátossága
+-et, mivel a legtöbb \SpecialCharNoPassThru LyX
+-es dolog tulajdonképpen egy elrejtett \SpecialCharNoPassThru LaTeX
+ parancs.
+ Azonban a \SpecialCharNoPassThru LyX
+-nek van néhány olyan egyéni sajátossága
 \begin_inset Foot
 status collapsed
 
@@ -330,7 +347,8 @@ reference "sec:latexusers"
 \begin_inset space ~
 \end_inset
 
-részt, amit a gyakorlott LaTeX felhasználóknak szántunk.
+részt, amit a gyakorlott \SpecialCharNoPassThru LaTeX
+ felhasználóknak szántunk.
 \end_layout
 
 \begin_layout Subsection
@@ -342,7 +360,11 @@ nem fog
 \end_layout
 
 \begin_layout Itemize
-A LyX összes jellemzőjének részletes magyarázata.
+A \SpecialCharNoPassThru LyX
+ összes jellemzőjének részletes magyarázata.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -384,23 +406,29 @@ Felhasználói kézikönyv
 
 \end_deeper
 \begin_layout Itemize
-Részletes útmutató a LaTeX-hez
+Részletes útmutató a \SpecialCharNoPassThru LaTeX
+-hez
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Szükségtelen.
- Ha ön kiváncsi arra, milyen ügyes trükköket lehet megcsinálni a LaTeX-el,
- bármikor vehet egy jó LaTeX könyvet.
+ Ha ön kiváncsi arra, milyen ügyes trükköket lehet megcsinálni a \SpecialCharNoPassThru LaTeX
+-el,
+ bármikor vehet egy jó \SpecialCharNoPassThru LaTeX
+ könyvet.
  Sok jó könyvet talál a boltokban.
- Nincs rá szükség, hogy feltaláljuk a spanyolviaszt\SpecialChar \ldots{}
+ Nincs rá szükség, hogy feltaláljuk a spanyolviaszt\SpecialChar ldots
 
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 Hát bátor olvasó, ideje továbblépni.
- Eljött az idő az első dokumentum elkészítéséhez\SpecialChar \ldots{}
+ Eljött az idő az első dokumentum elkészítéséhez\SpecialChar ldots
 
 \end_layout
 
@@ -409,7 +437,8 @@ Kezdő lépések
 \end_layout
 
 \begin_layout Section
-Az első LyX dokumentuma
+Az első \SpecialCharNoPassThru LyX
+ dokumentuma
 \end_layout
 
 \begin_layout Standard
@@ -429,7 +458,8 @@ legfontosabb
 \emph default
  dolog, hogy megtalálja a többi súgó fájlt.
  Szerencsére mindez nagyon egyszerű.
- Indítsa el a LyX-et, majd válassza a 
+ Indítsa el a \SpecialCharNoPassThru LyX
+-et, majd válassza a 
 \emph on
 Felhasználói kézikönyv
 \emph default
@@ -454,7 +484,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-Ezek jó példaként is szolgálnak, hogyan használja ki a LyX lehetőségeit.
+Ezek jó példaként is szolgálnak, hogyan használja ki a \SpecialCharNoPassThru LyX
+ lehetőségeit.
 \end_layout
 
 \end_inset
@@ -474,7 +505,8 @@ et
 \emph on
 Tankönyv
 \emph default
- nem részletez olyan dolgokat, amelyeket megtalál más LyX kézikönyvekben.
+ nem részletez olyan dolgokat, amelyeket megtalál más \SpecialCharNoPassThru LyX
+ kézikönyvekben.
  Ez kezdetben megnehezíti a dolgát, de a 
 \emph on
 Tankönyv
@@ -485,7 +517,9 @@ Tankönyv
 
 \begin_layout Standard
 Ez a tankönyv feltételezi, hogy önnek a következő alkalmazások tökéletesen
- működőképesek: LyX, LaTeX, 
+ működőképesek: \SpecialCharNoPassThru LyX
+, \SpecialCharNoPassThru LaTeX
+, 
 \family typewriter
 xdvi
 \family default
@@ -510,9 +544,12 @@ Végül megtalálja az
 \family typewriter
 example-raw.lyx
 \family default
- nevű fájlt, amit azért készítettünk, hogy gyakorolhassa a LyX használatát.
- Ezt a fájlt egy a LyX-hez egyáltalán nem értő személy gépelte be.
- Ahogy megismer egy-egy új LyX funkciót, javasoljuk javítsa ki a 
+ nevű fájlt, amit azért készítettünk, hogy gyakorolhassa a \SpecialCharNoPassThru LyX
+ használatát.
+ Ezt a fájlt egy a \SpecialCharNoPassThru LyX
+-hez egyáltalán nem értő személy gépelte be.
+ Ahogy megismer egy-egy új \SpecialCharNoPassThru LyX
+ funkciót, javasoljuk javítsa ki a 
 \family typewriter
 example-raw.lyx
 \family default
@@ -546,7 +583,8 @@ megjegyzés
 \family typewriter
 example_lyxified.lyx
 \family default
- nevű fájlt is, ami ugyanazt a szöveget tartalmazza, de azt egy a LyX-hez
+ nevű fájlt is, ami ugyanazt a szöveget tartalmazza, de azt egy a \SpecialCharNoPassThru LyX
+-hez
  profi szinten értő személy készítette.
 \end_layout
 
@@ -560,7 +598,7 @@ examples/
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Meg
 \bar under
 n
@@ -584,7 +622,7 @@ example-raw.lyx
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Men
 \bar under
 t
@@ -593,7 +631,7 @@ t
 \begin_inset space ~
 \end_inset
 
-másként\SpecialChar \ldots{}
+másként\SpecialChar ldots
 
 \family default
  kiválasztásával a saját munkakönyvtárába, hogy dolgozhasson rajta.
@@ -629,7 +667,7 @@ Nyisson meg egy fájlt a
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Ú
 \bar under
 j
@@ -641,7 +679,8 @@ j
 \begin_layout Itemize
 Gépeljen be egy mondatot, például ezt: 
 \family typewriter
-Ez az első LyX dokumentumom!
+Ez az első \SpecialCharNoPassThru LyX
+ dokumentumom!
 \end_layout
 
 \begin_layout Itemize
@@ -650,7 +689,7 @@ Mentse el a dokumentumot a
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Men
 \bar under
 t
@@ -659,20 +698,21 @@ t
 \begin_inset space ~
 \end_inset
 
-másként\SpecialChar \ldots{}
+másként\SpecialChar ldots
 
 \family default
  menüpont használatával
 \end_layout
 
 \begin_layout Itemize
-Futtassa a LaTeX-et a dvi fájl létrehozásához a 
+Futtassa a \SpecialCharNoPassThru LaTeX
+-et a dvi fájl létrehozásához a 
 \family sans
 Né
 \bar under
 z
 \bar default
-et\SpecialChar \menuseparator
+et\SpecialChar menuseparator
 
 \bar under
 D
@@ -685,8 +725,10 @@ VI
 lyx
 \family default
  parancsot futtatta.
- Ezek a LaTeX üzenetei, amyelyeket most nyugodtan figyelmen kívül hagyhat.
- Ezután a LyX el fogja indítani az 
+ Ezek a \SpecialCharNoPassThru LaTeX
+ üzenetei, amyelyeket most nyugodtan figyelmen kívül hagyhat.
+ Ezután a \SpecialCharNoPassThru LyX
+ el fogja indítani az 
 \family typewriter
 xdvi
 \family default
@@ -710,12 +752,12 @@ Né
 \bar under
 z
 \bar default
-et\SpecialChar \menuseparator
+et\SpecialChar menuseparator
 Fr
 \bar under
 i
 \bar default
-ssít\SpecialChar \menuseparator
+ssít\SpecialChar menuseparator
 
 \bar under
 D
@@ -726,7 +768,8 @@ VI
 \family typewriter
 xdvi
 \family default
- ablakára kattint miután a LaTeX lefutott.
+ ablakára kattint miután a \SpecialCharNoPassThru LaTeX
+ lefutott.
 \end_layout
 
 \end_inset
@@ -740,19 +783,20 @@ Nyomtassa ki a fájlt a
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Ny
 \bar under
 o
 \bar default
-mtatás\SpecialChar \ldots{}
+mtatás\SpecialChar ldots
 
 \family default
  menüpont használatával.
 \end_layout
 
 \begin_layout Standard
-Gratulálunk! Ön elkészítette és kinyomtatta az első LyX dokumentumát.
+Gratulálunk! Ön elkészítette és kinyomtatta az első \SpecialCharNoPassThru LyX
+ dokumentumát.
  Minden egyéb, amit a 
 \emph on
 Tankönyv
@@ -773,14 +817,16 @@ Alapműveletek
 \end_layout
 
 \begin_layout Standard
-A LyX természetesen képes azokra a dolgokra is, amiket megszokhatott akármelyik
+A \SpecialCharNoPassThru LyX
+ természetesen képes azokra a dolgokra is, amiket megszokhatott akármelyik
  szövegszerkesztőben.
  Sortörést végez, automatikusan behúzza a bekezdéseket, stb.
  Íme egy gyors leírás néhány alapvető dologról.
 \end_layout
 
 \begin_layout Description
-Visszavonás A LyX-ben az összes elvégzett művelet visszavonható egészen
+Visszavonás A \SpecialCharNoPassThru LyX
+-ben az összes elvégzett művelet visszavonható egészen
  a fájl megnyitásáig visszamenőleg, ami azt jelenti, hogy minden amit csinált,
  azt vissza tudja vonni a 
 \family sans
@@ -788,7 +834,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
  Visszavo
 \bar under
 n
@@ -802,7 +848,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
 
 \family default
  
@@ -817,6 +863,11 @@ M
 alkalmaz
 \family default
  menüpontot kell használnia.
+\bar default
+\family default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -827,7 +878,8 @@ Pillanatnyilag ez le van korlátozva 100 műveletig.
 mindent
 \emph default
  visszavonni, például a dokumentum formátumának változásait.
- Ezek mind a LyX hibái.
+ Ezek mind a \SpecialCharNoPassThru LyX
+ hibái.
 \end_layout
 
 \end_deeper
@@ -838,7 +890,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
 
 \family default
  
@@ -851,7 +903,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
  Beillesztés
 \family default
  és a 
@@ -860,7 +912,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
+rkesztés\SpecialChar menuseparator
 Másolás
 \family default
  menüpontokat ezekhez a műveletekhez vagy automatikusan illessze be a kiválaszto
@@ -886,7 +938,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
+rkesztés\SpecialChar menuseparator
 Keresés
 \begin_inset space ~
 \end_inset
@@ -907,7 +959,7 @@ sere
 \bar under
 K
 \bar default
-övetkező\SpecialChar \ldots{}
+övetkező\SpecialChar ldots
 
 \family default
  gombot a kereséséhez, valamint a keresett szöveg kicseréléshez a 
@@ -955,12 +1007,12 @@ Formátum
 \bar under
 F
 \bar default
-ájl\SpecialChar \menuseparator
+ájl\SpecialChar menuseparator
 Meg
 \bar under
 n
 \bar default
-yitás\SpecialChar \ldots{}
+yitás\SpecialChar ldots
 
 \family default
  nem engedi, hogy bármit is írjon a dokumentumba amíg be nem csukja azt.
@@ -995,7 +1047,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
+rkesztés\SpecialChar menuseparator
 
 \bar under
 S
@@ -1004,7 +1056,7 @@ zöveg
 \begin_inset space ~
 \end_inset
 
-stílus\SpecialChar \ldots{}
+stílus\SpecialChar ldots
 
 \family default
  dialógusablakban.
@@ -1032,11 +1084,13 @@ t, stb.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Szóközök a LyX-ben
+WYSIWYM: Szóközök a \SpecialCharNoPassThru LyX
+-ben
 \end_layout
 
 \begin_layout Standard
-Az egyik legnehezebb dolog kezdő LyX felhasználóknak, a szóközök és kihagyások
+Az egyik legnehezebb dolog kezdő \SpecialCharNoPassThru LyX
+ felhasználóknak, a szóközök és kihagyások
  használatának elsajátítása.
  Akárhányszor leütheti a 
 \family sans
@@ -1095,7 +1149,8 @@ Amit Lát Azt Kapja HŰen
 
 \end_inset
 
-, ellenben a LyX filozófiája: 
+, ellenben a \SpecialCharNoPassThru LyX
+ filozófiája: 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1130,7 +1185,8 @@ Amit Lát Arra Gondol
 \end_inset
 
 .
- Ön begépeli a szöveget annak logikai felépítésében, majd a LyX elvégzi
+ Ön begépeli a szöveget annak logikai felépítésében, majd a \SpecialCharNoPassThru LyX
+ elvégzi
  a szöveg szedését ön helyett úgy, hogy a nyomtatott forma jól nézzen ki.
  A 
 \family sans
@@ -1146,8 +1202,10 @@ Szóköz
 \family sans
 Tab
 \family default
- billentyűnek nyelvtani jelentése nincs emiatt a LyX nem támogatja azt.
- A LyX-et használva ön több időt fog a dokumentumának 
+ billentyűnek nyelvtani jelentése nincs emiatt a \SpecialCharNoPassThru LyX
+ nem támogatja azt.
+ A \SpecialCharNoPassThru LyX
+-et használva ön több időt fog a dokumentumának 
 \emph on
 tartalmára
 \emph default
@@ -1165,8 +1223,10 @@ Bevezetés
 \end_layout
 
 \begin_layout Standard
-A LyX-ben számos lehetősége nyílik a szövegtördelés finomhangolására, mivel
- lehet hogy a LyX nem pont úgy szed, ahogy azt ön 
+A \SpecialCharNoPassThru LyX
+-ben számos lehetősége nyílik a szövegtördelés finomhangolására, mivel
+ lehet hogy a \SpecialCharNoPassThru LyX
+ nem pont úgy szed, ahogy azt ön 
 \emph on
 akarja
 \emph default
@@ -1214,7 +1274,8 @@ What You See Is What You Mean
 \begin_inset Quotes prd
 \end_inset
 
- filozófia és a LyX szerves részei.
+ filozófia és a \SpecialCharNoPassThru LyX
+ szerves részei.
  Egy adott környezet bizonyos betűtípust, betűméretet, behúzást, sortávolságot
  és még sok mindent jelenthet.
  Ez a probléma fokozódik, mivel a végleges formázás egy adott környezetnél
@@ -1223,7 +1284,8 @@ What You See Is What You Mean
  magas.
  Különböző nyelveknél a behúzás szabályai is mások lehetnek, az irodalomjegyzék
  formátuma is nagyon eltérő lehet.
- A LyX segítségével elkerülheti ezen formázási szabályok megtanulását.
+ A \SpecialCharNoPassThru LyX
+ segítségével elkerülheti ezen formázási szabályok megtanulását.
  
 \end_layout
 
@@ -1280,7 +1342,8 @@ Szakaszok és alszakaszok
 \family typewriter
 Bevezetés
 \family default
- szót LyX dokumentumának első sorába és válassza ki a 
+ szót \SpecialCharNoPassThru LyX
+ dokumentumának első sorába és válassza ki a 
 \family sans
 Szakasz
 \family default
@@ -1301,7 +1364,8 @@ Nem kell
 kijelölnie
 \emph default
  a sort.
- Amennyiben nincs semmi sem kijelölve, a LyX az aktuális bekezdést módosítja
+ Amennyiben nincs semmi sem kijelölve, a \SpecialCharNoPassThru LyX
+ az aktuális bekezdést módosítja
  a kiválasztott környezetre.
  Több bekezdés környezetét is módosíthatjuk, ha kijelöljük őket a környezetválas
 ztás előtt.
@@ -1323,7 +1387,8 @@ nem
 Szakasz*
 \family default
 -ot, amit hamarosan bemutatunk.
- A LyX beszámozza a szakaszt 
+ A \SpecialCharNoPassThru LyX
+ beszámozza a szakaszt 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1369,7 +1434,8 @@ Return
 \begin_layout LyX-Code
 
 \family typewriter
-Ez a bevezetés az első LyX dokumentumomhoz.
+Ez a bevezetés az első \SpecialCharNoPassThru LyX
+ dokumentumomhoz.
 \end_layout
 
 \begin_layout Standard
@@ -1386,7 +1452,8 @@ Szakasz
 Környezetek
 \family default
  menüből.
- A LyX kiírja, hogy 
+ A \SpecialCharNoPassThru LyX
+ kiírja, hogy 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1408,7 +1475,8 @@ Ez egyre jobb.
 \begin_inset Quotes pld
 \end_inset
 
-első LyX dokumentumom
+első \SpecialCharNoPassThru LyX
+ dokumentumom
 \begin_inset Quotes prd
 \end_inset
 
@@ -1425,7 +1493,8 @@ Szakasz
 környezetek
 \family default
  közül.
- A LyX kiírja hogy 
+ A \SpecialCharNoPassThru LyX
+ kiírja hogy 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1456,7 +1525,8 @@ szakasz volt, automatikusan átszámozódott 3.
 \end_inset
 
 szakasszá! A valódi WYSIWYM filozófiában, önnek csak be kell azonosítania
- a szakaszícmeket alkotó szöveget, a LyX fog gondoskodni a szakaszok számozásáró
+ a szakaszícmeket alkotó szöveget, a \SpecialCharNoPassThru LyX
+ fog gondoskodni a szakaszok számozásáró
 l és a szakaszcímek szedéséről.
 \end_layout
 
@@ -1516,7 +1586,8 @@ Alszakasz
 Környezetek
 \family default
  menüből.
- A LyX beszámozza azt 
+ A \SpecialCharNoPassThru LyX
+ beszámozza azt 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1524,14 +1595,16 @@ Környezetek
 \begin_inset Quotes prd
 \end_inset
 
--re, ekkor a LyX olyan betűkészletűre módosítja a sort, amit nagyobb, mint
+-re, ekkor a \SpecialCharNoPassThru LyX
+ olyan betűkészletűre módosítja a sort, amit nagyobb, mint
  a normál szöveg, de kisebb mint a szakaszcím.
  Váloztassa át a negyedik sort is 
 \family sans
 Alszakasz
 \family default
 -ra.
- Ahogy várta, a LyX automatikusan beszámozta azt 
+ Ahogy várta, a \SpecialCharNoPassThru LyX
+ automatikusan beszámozta azt 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1598,7 +1671,8 @@ Fejezet
 \family sans
 Szakasz
 \family default
- után, de csak bizonyos típusú (szöveg osztályú) LyX dokumentumoknál használható
+ után, de csak bizonyos típusú (szöveg osztályú) \SpecialCharNoPassThru LyX
+ dokumentumoknál használható
  (Lásd 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1625,7 +1699,8 @@ Szakasz*
 \family sans
 Környezetek
 \family default
- menüt hogy megtalálja), a LyX azonos betűméretet fog használni, de nem
+ menüt hogy megtalálja), a \SpecialCharNoPassThru LyX
+ azonos betűméretet fog használni, de nem
  fogja megszámozni azt.
  Következetesen vannak 
 \begin_inset Quotes pld
@@ -1666,7 +1741,8 @@ Felsorolások és részlisták
 \end_layout
 
 \begin_layout Standard
-A LyX több különböző környezettel rendelkezik felsorolások szedéséhez.
+A \SpecialCharNoPassThru LyX
+ több különböző környezettel rendelkezik felsorolások szedéséhez.
  Ezek a különböző környezetek mentesek a 
 \family sans
 Tab
@@ -1691,7 +1767,8 @@ ben.
 \emph on
 fő 
 \emph default
-filozófiája a LyX-nek, ezért kérjük bocsásson meg nekünk.
+filozófiája a \SpecialCharNoPassThru LyX
+-nek, ezért kérjük bocsásson meg nekünk.
 \end_layout
 
 \end_inset
@@ -1730,7 +1807,8 @@ A
 \family sans
 Lista
 \family default
- környezet – nincs a LaTeX-ben – egy kicsit különbözik a 
+ környezet – nincs a \SpecialCharNoPassThru LaTeX
+-ben – egy kicsit különbözik a 
 \family sans
 Leírás
 \family default
@@ -1738,7 +1816,8 @@ tól.
 \end_layout
 
 \begin_layout Standard
-Készítsünk egy listát arról, hogy a LyX miért jobb, mint a többi szövegszerkeszt
+Készítsünk egy listát arról, hogy a \SpecialCharNoPassThru LyX
+ miért jobb, mint a többi szövegszerkeszt
 ő.
  A dokumentumában valahol írja be:
 \end_layout
@@ -1746,7 +1825,8 @@ Készítsünk egy listát arról, hogy a LyX miért jobb, mint a többi szövegs
 \begin_layout Standard
 
 \family typewriter
-A LyX jobb, mint a többi szövegszerkesztő, mert:
+A \SpecialCharNoPassThru LyX
+ jobb, mint a többi szövegszerkesztő, mert:
 \end_layout
 
 \begin_layout Standard
@@ -1764,7 +1844,8 @@ t a
 Környezet
 \family default
 ek menüből.
- A LyX a sor elejére tesz egy 
+ A \SpecialCharNoPassThru LyX
+ a sor elejére tesz egy 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1800,7 +1881,8 @@ A felsorolások, nem úgy mint a címek, nem érnek véget amit leüti a
 Return
 \family default
  billentyűt.
- Helyette, a LyX úgy gondolja, hogy a következő elemet fogja begépelni.
+ Helyette, a \SpecialCharNoPassThru LyX
+ úgy gondolja, hogy a következő elemet fogja begépelni.
  Ezért a fenti eredménye, egy három soros felsorolás.
  Amennyiben, több mint egy bekezdést szeretne egy 
 \emph on
@@ -1840,7 +1922,8 @@ s
 
 \begin_layout Standard
 Kapott egy gyönyörű felsorolást.
- Lehet hogy futtatni akarja a LaTeX-et hogy meggyőződjöm arról, hogyan néz
+ Lehet hogy futtatni akarja a \SpecialCharNoPassThru LaTeX
+-et hogy meggyőződjöm arról, hogyan néz
  ki mindez nyomtatásban.
  De mi lenne, ha meg szeretné számozni az okokat? Nos, csak jelölje ki a
  teljes felsorolást
@@ -1876,7 +1959,8 @@ Környezet
 \family default
 ek menüből.
  Hoppá! Ahogy korábban említettük, amint hozzáad vagy töröl egy elemet a
- LyX azonnal korrigálni fogja a számozást.
+ \SpecialCharNoPassThru LyX
+ azonnal korrigálni fogja a számozást.
 \end_layout
 
 \begin_layout Standard
@@ -1985,7 +2069,8 @@ Idézet
  a hosszabbakhoz.
  Programlistákhoz (a 
 \family sans
-LyX-kód
+\SpecialCharNoPassThru LyX
+-kód
 \family default
  környezetet használtuk a 
 \emph on
@@ -1995,7 +2080,8 @@ ben, a hosszabb gépelési példákban)
 \family typewriter
 írógép
 \family default
- betűkészlettel íródtak; ez az egyetlen környezet a LyX-ben, ahol egymás
+ betűkészlettel íródtak; ez az egyetlen környezet a \SpecialCharNoPassThru LyX
+-ben, ahol egymás
  mellé le lehet ütni több szóközt is, amivel úgye pozícionálni lehet.
  De készíthet költeményt is a 
 \family sans
@@ -2028,7 +2114,8 @@ Idézet
 \family default
 , 
 \family sans
-LyX-kód
+\SpecialCharNoPassThru LyX
+-kód
 \family default
  és 
 \family sans
@@ -2046,10 +2133,13 @@ Dokumentumok készítése
 \end_layout
 
 \begin_layout Standard
-Az előző fejezet segítségével remélhetőleg már el tud kezdeni írni a LyX-el.
- Bemutattuk a LyX elemi szerkesztési műveleteit, csak úgy, mint a környezetek
+Az előző fejezet segítségével remélhetőleg már el tud kezdeni írni a \SpecialCharNoPassThru LyX
+-el.
+ Bemutattuk a \SpecialCharNoPassThru LyX
+ elemi szerkesztési műveleteit, csak úgy, mint a környezetek
  használatának hatékonyságát.
- Habár a legtöbb ember, aki a LyX-et használja, a következő típusokat dokumentum
+ Habár a legtöbb ember, aki a \SpecialCharNoPassThru LyX
+-et használja, a következő típusokat dokumentum
  szeretné elkészíteni: publikációk, cikkek, könyvek, kézikönyvek vagy levelek.
  Ebben a fejezetben az olvasó a szavak beírásától eljut egy teljes dokumentum
  elkészítéséig.
@@ -2082,7 +2172,8 @@ A különböző típusú dokumentumokat különbözőképpen kell elkészíteni.
  Továbbá, sokféle dokumentum tartalmaz különleges környezeteket, pl.
  levelek tartalmazzák a küldő címét és aláírását, amit persze nem használunk
  egy könyv esetében.
- A LyX 
+ A \SpecialCharNoPassThru LyX
+ 
 \emph on
 szövegosztály
 \emph default
@@ -2094,7 +2185,9 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-LaTeX felhasználóknak: ez megegyezik a LaTeX dokumentum osztállyal
+\SpecialCharNoPassThru LaTeX
+ felhasználóknak: ez megegyezik a \SpecialCharNoPassThru LaTeX
+ dokumentum osztállyal
 \end_layout
 
 \end_inset
@@ -2110,7 +2203,8 @@ Book
 \family default
  szövegosztállyal készítettük.
  A szövegosztályok, a WYSIWYM filozófia szerves részei.
- Ezek közlik a LyX-el, hogyan kell szednie a dokumentumot, amit önnek nem
+ Ezek közlik a \SpecialCharNoPassThru LyX
+-el, hogyan kell szednie a dokumentumot, amit önnek nem
  kell észben tartania.
 \end_layout
 
@@ -2160,14 +2254,14 @@ Rendszerint ez, az alapértelmezett szövegosztály
 \bar under
 D
 \bar default
-okumentum\SpecialChar \menuseparator
+okumentum\SpecialChar menuseparator
 
 \bar under
 B
 \bar default
 eállítások
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
  dialógusban), a különböző szedés megismeréséhez.
  Amennnyiben módosítja a dokumentumának a szövegosztályát 
 \family sans
@@ -2218,7 +2312,8 @@ Környezet
 Betűméretek, egy- vagy kéthasábos nyomtatás vagy oldalcímek, csak néhány
  apróság amiben az egyes folyóiratok szedési módja különbözik.
  Ahogy a számítógépek korába léptünk, a folyóiratok elkezdték a cikkeket
- elektromos formában is elfogadni, LaTeX 
+ elektromos formában is elfogadni, \SpecialCharNoPassThru LaTeX
+ 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2227,8 +2322,10 @@ stílus fájlokat
 \end_inset
 
  készítve, ezáltal a szerzők a megfelelő formában tudják elkészíteni a cikküket.
- A LyX támogatja ezt a formát.
- A LyX például támogatja az American Mathematics Society folyóirat szedését
+ A \SpecialCharNoPassThru LyX
+ támogatja ezt a formát.
+ A \SpecialCharNoPassThru LyX
+ például támogatja az American Mathematics Society folyóirat szedését
  (és extra környezeteit) az 
 \family sans
 Article
@@ -2251,6 +2348,9 @@ Speciális Dokumentum osztályok
 Haladó szolgáltatások
 \emph default
  kézikönyvben a további részletekért.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -2458,7 +2558,8 @@ Prezentáció
 \begin_inset Text
 
 \begin_layout Plain Layout
-írásvetítő fóliákhoz (tartalmazza a FoilTeX-et)
+írásvetítő fóliákhoz (tartalmazza a Foil\SpecialCharNoPassThru TeX
+-et)
 \end_layout
 
 \end_inset
@@ -2499,7 +2600,7 @@ Levél
 \begin_inset Text
 
 \begin_layout Plain Layout
-sok extra környezet címhez, aláíráshoz\SpecialChar \ldots{}
+sok extra környezet címhez, aláíráshoz\SpecialChar ldots
 
 \end_layout
 
@@ -2533,7 +2634,7 @@ Levél
 \bar under
 D
 \bar default
-okumentum \SpecialChar \menuseparator
+okumentum \SpecialChar menuseparator
 
 \family default
  
@@ -2548,7 +2649,8 @@ eállítások
  munkát.
  Ahányszor csak írni szeretne egy üzleti levelet, mindig bele fogja írni
  a saját címét valamint a címzettét, a levél törzsét, aláírás helyét, stb.
- Ezért a LyX rendelkezik egy 
+ Ezért a \SpecialCharNoPassThru LyX
+ rendelkezik egy 
 \emph on
 sablonnal
 \emph default
@@ -2562,12 +2664,12 @@ Válassza a
 \bar under
 F
 \bar default
-ájl \SpecialChar \menuseparator
+ájl \SpecialChar menuseparator
  Új, sab
 \bar under
 l
 \bar default
-on alapján\SpecialChar \ldots{}
+on alapján\SpecialChar ldots
  
 \family default
 menüpontot.
@@ -2618,16 +2720,19 @@ Signature:
 Aláírás
 \family default
  sor.
- Emlékezzen a LyX WYSIWYM egy program, bárhol elhelyezheti az 
+ Emlékezzen a \SpecialCharNoPassThru LyX
+ WYSIWYM egy program, bárhol elhelyezheti az 
 \family sans
 Aláírás
 \family default
- környezetet, a LyX tudja mit hová kell raknia, az aláírásnak pontosan a
+ környezetet, a \SpecialCharNoPassThru LyX
+ tudja mit hová kell raknia, az aláírásnak pontosan a
  levél végére kell kerülnie!
 \end_layout
 
 \begin_layout Standard
-A sablon egy normális LyX fájl.
+A sablon egy normális \SpecialCharNoPassThru LyX
+ fájl.
  Ez azt jelenti, hogy beleírhatja a saját címét és aláírását és elmentheti
  a fájlt sablonként.
  Mostantól, bármikor használhatja az új sablonját levél írásához, használja
@@ -2673,9 +2778,11 @@ A sablonokkal nagyon sok időt takaríthatunk meg, ezért javasoljuk hogy haszn�
  őket amikor csak tudja.
  Továbbá használatukkal könyebbé tehetjük a komplexebb szövegoszályok megismerés
 ét.
- Végül hasznos lehet annak, aki sok számítógépre állítja be a LyX-et olyanoknak,
+ Végül hasznos lehet annak, aki sok számítógépre állítja be a \SpecialCharNoPassThru LyX
+-et olyanoknak,
  akik nem nagyon értenek a számítógéphez.
- Amikor ők először tanulják a LyX-et sokkal kevésbé fognak megrémülni, amennyibe
+ Amikor ők először tanulják a \SpecialCharNoPassThru LyX
+-et sokkal kevésbé fognak megrémülni, amennyibe
 n pl.
  a levélsablon már a cégüknek megfelelően be van állítva.
 \end_layout
@@ -2685,7 +2792,9 @@ Dokumentum címek
 \end_layout
 
 \begin_layout Standard
-A LyX (mint a LaTeX) a címet – ami a dokumentum címét, a szerző nevét, a
+A \SpecialCharNoPassThru LyX
+ (mint a \SpecialCharNoPassThru LaTeX
+) a címet – ami a dokumentum címét, a szerző nevét, a
  dátumot és még a kivonatot is tartalmazza – a dokumentum egy különálló
  részének tekinti.
 \end_layout
@@ -2768,9 +2877,12 @@ Felcímkézheti a dokumentumának egy szakaszát (vagy alszakaszát, ritkábban
  Amint ezt megteszi, a dokumentum bármely részében hivatkozhat rá a keresztrefer
 enciák segítségével.
  Hivatkozhat a szakasz számára, vagy arra, hogy melyik oldalon található.
- Csak úgy mint a szakaszokról és a lábjegyzetekről, a LyX gondoskodik a
+ Csak úgy mint a szakaszokról és a lábjegyzetekről, a \SpecialCharNoPassThru LyX
+ gondoskodik a
  kereszthivatkozásokról is.
- Automatikus címkék és keresztreferenciák a LyX (és persze a LaTeX) egyik
+ Automatikus címkék és keresztreferenciák a \SpecialCharNoPassThru LyX
+ (és persze a \SpecialCharNoPassThru LaTeX
+) egyik
  legnagyobb előnye a konvencionális szövegszerkesztőkkel szemben.
 \end_layout
 
@@ -2793,14 +2905,14 @@ Erről a dokumentumról
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
  Cí
 \bar under
 m
 \bar default
 ke
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 .
  Egy dialógusablak jelenik meg a címke nevét kérve, egy cím-javaslattal.
  Miután kattint az 
@@ -2867,14 +2979,14 @@ szakasz
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
  Ke
 \bar under
 r
 \bar default
 eszthivatkozás
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 -t
 \family sans
 .
@@ -2932,7 +3044,8 @@ szóköz
 \end_layout
 
 \begin_layout Standard
-A hivatkozásokat, a LyX egy betétbe helyezi el oda ahol a kurzor áll.
+A hivatkozásokat, a \SpecialCharNoPassThru LyX
+ egy betétbe helyezi el oda ahol a kurzor áll.
  A nyomtatott dokumentumban, ez a hivatkozás ki lesz cserélve a megfelelő
  típusúra, legyen az oldalszám vagy a szakasz száma (attól függően, hogy
  mit választott ki a 
@@ -2946,12 +3059,12 @@ Né
 \bar under
 z
 \bar default
-et \SpecialChar \menuseparator
+et \SpecialChar menuseparator
  Fr
 \bar under
 i
 \bar default
-ssítés \SpecialChar \menuseparator
+ssítés \SpecialChar menuseparator
 
 \family default
  
@@ -3021,25 +3134,27 @@ További játék a címkékkel
 \end_layout
 
 \begin_layout Standard
-Ahogy már említettük, a LyX kezeli a kereszthivatkozások számozását; mindjárt
+Ahogy már említettük, a \SpecialCharNoPassThru LyX
+ kezeli a kereszthivatkozások számozását; mindjárt
  le is tesztelheti ezt.
  Írjon be egy új szakaszt a 2.
 \begin_inset space ~
 \end_inset
 
 szakasz elé.
- Futtasa újra a LaTeX-et (
+ Futtasa újra a \SpecialCharNoPassThru LaTeX
+-et (
 \family sans
 Né
 \bar under
 z
 \bar default
-et\SpecialChar \menuseparator
+et\SpecialChar menuseparator
 Fr
 \bar under
 i
 \bar default
-ssítés\SpecialChar \menuseparator
+ssítés\SpecialChar menuseparator
 
 \bar under
 D
@@ -3183,7 +3298,7 @@ beszúrása
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
 
 \family default
  
@@ -3199,7 +3314,7 @@ jegyzet
 \begin_inset Quotes pld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes prd
 \end_inset
 
@@ -3213,12 +3328,14 @@ beszúrása
 \family default
  gombra.
  Egy lábjegyzet betét fog megjelenni, ahova be tudja írni a lábjegyzet szövegét.
- LyX a kurzort a lábjegyzet elejére helyezi.
+ \SpecialCharNoPassThru LyX
+ a kurzort a lábjegyzet elejére helyezi.
  Gépelje be a következőt:
 \end_layout
 
 \begin_layout LyX-Code
-A LyX egy szövegszedő szövegszerkesztő.
+A \SpecialCharNoPassThru LyX
+ egy szövegszedő szövegszerkesztő.
 \end_layout
 
 \begin_layout Standard
@@ -3249,16 +3366,21 @@ lábjegyzet
 
 \begin_layout Standard
 Csodálkozhat azon miért lábjegyzet gomb van és miért nem egy szám.
- A válasz az, hogy a LyX gondoskodik a lábjegyzetek számozásáról a nyomtatott
+ A válasz az, hogy a \SpecialCharNoPassThru LyX
+ gondoskodik a lábjegyzetek számozásáról a nyomtatott
  szövegben.
  Mindebben Ön is meggyőződhet a 
 \family typewriter
 dvi
 \family default
  fájl megtekintésével (vagy a nyomtatásával).
- Ha további lábjegyzetet szúr be, a LyX át fogja őket számozni.
- Mivel a LyX (nos, ténylegesen a LaTeX) gondoskodik a sorszámozásról, ezért
- nincs rá szükség, hogy ezzel is növeljük a LyX fájl méretét.
+ Ha további lábjegyzetet szúr be, a \SpecialCharNoPassThru LyX
+ át fogja őket számozni.
+ Mivel a \SpecialCharNoPassThru LyX
+ (nos, ténylegesen a \SpecialCharNoPassThru LaTeX
+) gondoskodik a sorszámozásról, ezért
+ nincs rá szükség, hogy ezzel is növeljük a \SpecialCharNoPassThru LyX
+ fájl méretét.
 \end_layout
 
 \begin_layout Standard
@@ -3326,7 +3448,7 @@ beszúrása
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
 
 \family default
  
@@ -3372,7 +3494,8 @@ nincsenek megszámozva.
 \begin_layout Standard
 Változtassa vissza szöveggé a lábjegyzetét, azután jelölje ki és változtassa
  széljegyzetté.
- Futassa le a LaTeX-et, és nézze meg hogyan néz ki.
+ Futassa le a \SpecialCharNoPassThru LaTeX
+-et, és nézze meg hogyan néz ki.
 \end_layout
 
 \begin_layout Standard
@@ -3402,7 +3525,9 @@ Az irodalomjegyzék (tudományos életben legalábbis) olyan, mint a kereszthiva
 ás.
  A dokumentum végén elhelyezett irodalomjegyzék egy listát tartalmaz, amelyekre
  a dokumentumban hivatkozhatunk.
- Csak úgy mint a szakaszcímek, a LyX és a LaTeX könnyűvé teszi a munkát
+ Csak úgy mint a szakaszcímek, a \SpecialCharNoPassThru LyX
+ és a \SpecialCharNoPassThru LaTeX
+ könnyűvé teszi a munkát
  a azáltal, hogy automatikusan beszámozza az irodalomjegyzék elemeket és
  megváltoztatja a számozást amikor az elemek számozása változik.
 \end_layout
@@ -3416,10 +3541,13 @@ Irodalomjegyzék
  A most begépelt minden egyes bekezdés, egy-egy hivatkozás lesz.
  Írja be 
 \family typewriter
-A LyX kézikönyv, a LyX dokumentációs csapat készítésében
+A \SpecialCharNoPassThru LyX
+ kézikönyv, a \SpecialCharNoPassThru LyX
+ dokumentációs csapat készítésében
 \family default
  mint első hivatkozást.
- Figyelje meg, hogy a LyX minden egyes hivatkozás elé szögletes zárójelben
+ Figyelje meg, hogy a \SpecialCharNoPassThru LyX
+ minden egyes hivatkozás elé szögletes zárójelben
  egy számot tesz.
  Kattintson a betétben lévő számra, és az 
 \family sans
@@ -3459,10 +3587,10 @@ Most menjen oda a dokumentumban, ahol be szeretne szúrni egy hivatkozást
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
  Idézet
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 .
  Az 
 \family sans
@@ -3494,7 +3622,8 @@ Ok
 \family default
  gombra a beszúráshoz.
  (Ki lehet választani egyszerre több elemet is, ezáltal a zárójelben több
- szám fog megjelenni.) Akkor most futtassa a LaTeX-et és ellenőrizze hogyan
+ szám fog megjelenni.) Akkor most futtassa a \SpecialCharNoPassThru LaTeX
+-et és ellenőrizze hogyan
  jelenik meg az irodalomjegyzék elem hivatkozva a dokumentum végén elhelyezett
  listára.
 \end_layout
@@ -3563,7 +3692,8 @@ Tartalomjegyzék
 
 \begin_layout Standard
 A tartalomjegyzéket elhelyezheti a dokumentumának elejére.
- A LyX ezt eléggé megkönnyíti.
+ A \SpecialCharNoPassThru LyX
+ ezt eléggé megkönnyíti.
  Csak üsse le a 
 \family sans
 Return
@@ -3574,7 +3704,7 @@ Return
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
+eszúrás\SpecialChar menuseparator
 Listá
 \bar under
 k
@@ -3587,7 +3717,7 @@ k
 \begin_inset space ~
 \end_inset
 
-tartalomjegyzék\SpecialChar \menuseparator
+tartalomjegyzék\SpecialChar menuseparator
 
 \bar under
 T
@@ -3637,7 +3767,8 @@ Tartalomjegyzék
 \family default
  ablakot arra, hogy gyorsan mozogjon a dokumentumban.
  Rákattintva az egyik (al)szakasz címére, az kijelölődik és a kurzor a(z)
- (al)szakasz első sorába kerül (természetesen a LyX szerkesztő ablakában).
+ (al)szakasz első sorába kerül (természetesen a \SpecialCharNoPassThru LyX
+ szerkesztő ablakában).
  Használhatja a kurzor billentyűket is a tartalomjegyzékben való mozgásra.
  Ezen oknál fogva kényelmesnek találhatja a használatát és nyitva is tarthatja
  ezt az ablakot a dokumentum szerkesztése közben.
@@ -3674,16 +3805,22 @@ Képletek használata
 \end_layout
 
 \begin_layout Standard
-Nagyon sok tudós használja a LaTeX-et, mivel nagyszerűen kezeli a képleteket,
+Nagyon sok tudós használja a \SpecialCharNoPassThru LaTeX
+-et, mivel nagyszerűen kezeli a képleteket,
  elkerülve a szövegszerkesztők vezérlő karaktereinek vagy képletszerkesztőinek
  használatát.
  Ezen tudósok nagy része azonban egy kicsit csalódott, mivel a képletek
- elkészítése a LaTeX-el inkább programozás, mintsem írás.
- Szerencsére, a LyX WYSIWYM támogatással rendelkezik a képletek elkészítéséhez.
- Amennyiben használt már LaTeX-et, azt tapasztalhatja, hogy a LaTeX parancsokat
+ elkészítése a \SpecialCharNoPassThru LaTeX
+-el inkább programozás, mintsem írás.
+ Szerencsére, a \SpecialCharNoPassThru LyX
+ WYSIWYM támogatással rendelkezik a képletek elkészítéséhez.
+ Amennyiben használt már \SpecialCharNoPassThru LaTeX
+-et, azt tapasztalhatja, hogy a \SpecialCharNoPassThru LaTeX
+ parancsokat
  bármikor begépelheti, és azok eredményei a WYSIWYM filozófiának megfelelően
  fognak megjelenni.
- Azonban amennyiben még sohasem készített képletet LaTeX-el, a 
+ Azonban amennyiben még sohasem készített képletet \SpecialCharNoPassThru LaTeX
+-el, a 
 \family sans
 Képletszerkesztő
 \family default
@@ -3695,7 +3832,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-Sajnos, a LyX nem tudja eldönteni, hogy a bevitt képletek 
+Sajnos, a \SpecialCharNoPassThru LyX
+ nem tudja eldönteni, hogy a bevitt képletek 
 \emph on
 helyesek
 \emph default
@@ -3712,7 +3850,8 @@ Képlet mód
 \end_layout
 
 \begin_layout Standard
-A LyX dokumentumában valahva írja be:
+A \SpecialCharNoPassThru LyX
+ dokumentumában valahva írja be:
 \end_layout
 
 \begin_layout LyX-Code
@@ -3735,7 +3874,8 @@ dvi
 \end_inset
 
 -t a felső indexbe kellene írni.
- Ez a rossz szedés azért történhetett, mert nem tudattuk a LyX-nek, hogy
+ Ez a rossz szedés azért történhetett, mert nem tudattuk a \SpecialCharNoPassThru LyX
+-nek, hogy
  egy matematikai kifejezést 
 \begin_inset Quotes pld
 \end_inset
@@ -3756,8 +3896,10 @@ Képletet kell létrehoznunk ahhoz, hogy a szedés megfelelő legyen.
 \end_inset
 
  gombjára.
- A LyX be fog szúrni egy kis kék négyzetet, ami egy üres képlet.
- A LyX, a kurzort ebbe a kis négyzetbe rakja, így csak újra be kell írnia
+ A \SpecialCharNoPassThru LyX
+ be fog szúrni egy kis kék négyzetet, ami egy üres képlet.
+ A \SpecialCharNoPassThru LyX
+, a kurzort ebbe a kis négyzetbe rakja, így csak újra be kell írnia
  
 \family typewriter
 E=mc^2
@@ -3775,7 +3917,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Futtassa a LaTeX-et, és nézze meg a 
+Futtassa a \SpecialCharNoPassThru LaTeX
+-et, és nézze meg a 
 \family typewriter
 dvi
 \family default
@@ -3797,7 +3940,8 @@ dvi
 
 \begin_layout Standard
 A képletszerksztő, csak egy másik példája a WYSIWYM filozófiának.
- A LaTeX-ben a matematikai kifejezéseket szöveggel és parancsokkal, mint
+ A \SpecialCharNoPassThru LaTeX
+-ben a matematikai kifejezéseket szöveggel és parancsokkal, mint
  pl.
  az 
 \family typewriter
@@ -3807,7 +3951,8 @@ sqrt
 \family default
  adjuk meg.
  Ez nehézkes lehet, mivel nem tudja hogyan néz ki az egész kifejezés, amíg
- le nem futtatja a LaTeX-et.
+ le nem futtatja a \SpecialCharNoPassThru LaTeX
+-et.
  Sok időt tölthet el hiányzó zárójelek vagy 
 \begin_inset Quotes pld
 \end_inset
@@ -3817,9 +3962,11 @@ egyéb
 \end_inset
 
  hibák keresésével.
- Egyébként a LyX nem próbálja meg a legtökéletesebben megjeleníteni a kifejezést
+ Egyébként a \SpecialCharNoPassThru LyX
+ nem próbálja meg a legtökéletesebben megjeleníteni a kifejezést
  (WYSIWYG), de segít abban, hogy láthassuk milyen lesz a kifejezés.
- A LaTeX fog gondoskodni a professzionális szedésről.
+ A \SpecialCharNoPassThru LaTeX
+ fog gondoskodni a professzionális szedésről.
  Az esetek 99%-ban semmilyen változtatást nem kell eszközölni a betűméreteken
  vagy a térközökön.
  Ezáltal (elnézést az ismétlésért) ön a képleteinek a 
@@ -3889,7 +4036,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés\SpecialChar \menuseparator
+rkesztés\SpecialChar menuseparator
 Visszavo
 \bar under
 n
@@ -4005,7 +4152,8 @@ Képletszerkesztő
 \end_inset
 
 .
- A LyX egy másik kis kék négyzetet fog megjeleníteni a felső indexben, bármit
+ A \SpecialCharNoPassThru LyX
+ egy másik kis kék négyzetet fog megjeleníteni a felső indexben, bármit
  amit most fog írni, az ide fog kerülni persze kisebb betűmérettel.
  Minden amit a 
 \family sans
@@ -4070,7 +4218,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
  Ké
 \bar under
 p
@@ -4084,7 +4232,7 @@ B
 \bar default
 eszúrás
 \bar under
- \SpecialChar \menuseparator
+ \SpecialChar menuseparator
 
 \bar default
  Kép
@@ -4107,7 +4255,7 @@ B
 \bar default
 eszúrás
 \bar under
- \SpecialChar \menuseparator
+ \SpecialChar menuseparator
 
 \bar default
  Kép
@@ -4119,7 +4267,7 @@ et
  
 \family sans
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \bar default
  Kép
@@ -4145,7 +4293,7 @@ z
 \bar default
 et 
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \bar default
  Esz
@@ -4154,7 +4302,7 @@ k
 \bar default
 öztárak 
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \bar default
  Képlet
@@ -4182,7 +4330,7 @@ Képletszerkesztő
 \begin_inset Quotes pld
 \end_inset
 
-Nincs olyan, amit meg ne tehetne\SpecialChar \ldots{}
+Nincs olyan, amit meg ne tehetne\SpecialChar ldots
  
 \begin_inset Formula $\heartsuit$
 \end_inset
@@ -4204,7 +4352,8 @@ Egy gyökjel beviteléhez, csak kattintson a gyökjelet szimbólumot tartalmazó
  Egy gyökjel fog megjelenni, a kurzor pedig a gyökjel alá kerül.
  Ahova beírhat változókat, számokat esetleg másik gyökjeleket, törteket
  vagy bármit amit szeretne.
- A LyX mindig úgy fogja átméretezni a gyökjelet, hogy az fedje az alatta
+ A \SpecialCharNoPassThru LyX
+ mindig úgy fogja átméretezni a gyökjelet, hogy az fedje az alatta
  lévőket.
 \end_layout
 
@@ -4227,7 +4376,8 @@ Keret
 díszítőelemek
 \family default
  egy panelen keresztül érhetőek el.
- Kattintson egy ilyen elemre a LyX erre be fogja azt szúrni, az aktuális
+ Kattintson egy ilyen elemre a \SpecialCharNoPassThru LyX
+ erre be fogja azt szúrni, az aktuális
  elem alá vagy fölé, hogy a hozzá tartozó szöveget bevihessük.
  Két fajta ilyen elemkészlet létezik: az egyik mérete a hozzá tartozó szöveggel
  együtt nő vagy csökken, amíg a másik fix méretű mindössze egyetlen betűhöz
@@ -4263,7 +4413,8 @@ Határolójelek
 \begin_inset Quotes prd
 \end_inset
 
- (az üres határoló jel szaggatott vonalként jelenik meg a LyX-ben, de nem
+ (az üres határoló jel szaggatott vonalként jelenik meg a \SpecialCharNoPassThru LyX
+-ben, de nem
  fog megjelenni a kimenetben).
 \end_layout
 
@@ -4322,7 +4473,8 @@ Törtek
 \family default
  gombra, arra ami egy fekete törtvonalat mutat egy-egy kék négyzettel a
  számlálóban és a nevezőben.
- A LyX létrehoz két kék négyzetet a törtben.
+ A \SpecialCharNoPassThru LyX
+ létrehoz két kék négyzetet a törtben.
  A várakozásnak megfelelően a nyíl billentyűkkel vagy az egér használatával
  mozoghat a törtön belül.
  Kattintson a felső kék négyzetbe és írja be 
@@ -4365,7 +4517,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-TeX mód: határok, log, sin és a többiek
+\SpecialCharNoPassThru TeX
+ mód: határok, log, sin és a többiek
 \end_layout
 
 \begin_layout Standard
@@ -4378,7 +4531,8 @@ sin
 \begin_inset Quotes prd
 \end_inset
 
-, a LyX azt hiszi, hogy ön a három 
+, a \SpecialCharNoPassThru LyX
+ azt hiszi, hogy ön a három 
 \begin_inset Formula $s$
 \end_inset
 
@@ -4401,7 +4555,8 @@ sin
 \end_inset
 
 -t szerette volna Román betűtípussal.
- Továbbá, a LyX nem tesz szóközt a 
+ Továbbá, a \SpecialCharNoPassThru LyX
+ nem tesz szóközt a 
 \begin_inset Quotes pld
 \end_inset
 
@@ -4572,7 +4727,8 @@ beszúrása
 OK
 \family default
  gombot.
- A LyX be fog szúrni 6 kék négyzetet egy 
+ A \SpecialCharNoPassThru LyX
+ be fog szúrni 6 kék négyzetet egy 
 \begin_inset Formula $2\times3$
 \end_inset
 
@@ -4612,7 +4768,7 @@ Sz
 \bar under
 e
 \bar default
-rkesztés \SpecialChar \menuseparator
+rkesztés \SpecialChar menuseparator
  So
 \bar under
 r
@@ -4625,7 +4781,7 @@ ok
 \begin_inset space ~
 \end_inset
 
-oszlopok \SpecialChar \menuseparator
+oszlopok \SpecialChar menuseparator
  Oszlop
 \begin_inset space ~
 \end_inset
@@ -4677,7 +4833,8 @@ Felhasználói kézikönyv
 -ben megtalálja hogyan változtassa meg az egyes oszlopok igazítását és azt,
  hogyan változtassa meg a teljes mátrix függőleges pozícióját.
  Amennyiben szöveget tartalmazó táblázatot szeretne készíteni, érdemes a
- LyX nagyszerű táblázatkezelőjét használnia, mátrixok használata helyett.
+ \SpecialCharNoPassThru LyX
+ nagyszerű táblázatkezelőjét használnia, mátrixok használata helyett.
  
 \end_layout
 
@@ -4720,7 +4877,8 @@ váltása
  gombjára, amelynek megjelenése: egy kék négyzet alatta és fölötte két vonalalla
 l.
  A képlet megjelenési módja megváltozik, az új sorba kerül középre igazítva.
- Most vigyen be egy képletet majd futtasa le a LaTeX-et és nézze meg hogyan
+ Most vigyen be egy képletet majd futtasa le a \SpecialCharNoPassThru LaTeX
+-et és nézze meg hogyan
  néz ki.
  A 
 \family sans
@@ -4815,12 +4973,12 @@ Miután a bonyolultabb módon elkészítette, miért nem próbálja ki a
 \bar under
 B
 \bar default
-eszúrás\SpecialChar \menuseparator
+eszúrás\SpecialChar menuseparator
 Kép
 \bar under
 l
 \bar default
-et\SpecialChar \menuseparator
+et\SpecialChar menuseparator
 E
 \bar under
 s
@@ -4908,33 +5066,37 @@ Egyéb dolgok
 \end_layout
 
 \begin_layout Section
-Egyéb fontos LyX jellemzők
+Egyéb fontos \SpecialCharNoPassThru LyX
+ jellemzők
 \end_layout
 
 \begin_layout Standard
-Nem néztük át az összes lehetséges LyX parancsot, nem is terveztük.
+Nem néztük át az összes lehetséges \SpecialCharNoPassThru LyX
+ parancsot, nem is terveztük.
  A részletekért szokás szerint lásd a 
 \emph on
 Felhasználói kézikönyv
 \emph default
 -et.
  Most is csak megemlítünk néhány további fontos dolgot, amit használhat
- a LyX-ben:
+ a \SpecialCharNoPassThru LyX
+-ben:
 \end_layout
 
 \begin_layout Itemize
-A LyX támogatja a táblázatokat WYSIWYM módon.
+A \SpecialCharNoPassThru LyX
+ támogatja a táblázatokat WYSIWYM módon.
  Használja a 
 \family sans
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
 
 \bar under
  T
 \bar default
-áblázat\SpecialChar \ldots{}
+áblázat\SpecialChar ldots
 
 \family default
  parancsot, táblázat beszúrásához.
@@ -4958,7 +5120,8 @@ beállítása
 \end_layout
 
 \begin_layout Itemize
-A LyX támogatja képek beszúrását számos formátumban (beleértve JPEG-et,
+A \SpecialCharNoPassThru LyX
+ támogatja képek beszúrását számos formátumban (beleértve JPEG-et,
  és bitmap formátumokat, a PostScript
 \begin_inset ERT
 status collapsed
@@ -4972,23 +5135,25 @@ textregistered
 
 \end_inset
 
--et és nyers LaTeX-et) a dokumentumba.
+-et és nyers \SpecialCharNoPassThru LaTeX
+-et) a dokumentumba.
  (Ahogy kitalálhatta: 
 \family sans
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
 
 \bar under
  G
 \bar default
 rafika
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 .
  Ezután kattintson a képre a fájl megadásához, a kép elforgatásához, méretezéséh
-ez, stb.) A táblázatoknak és ábráknak lehet címkéjük, a LyX automatikusan
+ez, stb.) A táblázatoknak és ábráknak lehet címkéjük, a \SpecialCharNoPassThru LyX
+ automatikusan
  elkészíti a táblázatok és képek listáját.
 \end_layout
 
@@ -5002,8 +5167,10 @@ man rcsintro
 \end_layout
 
 \begin_layout Itemize
-A LyX nagymértékben beállítható.
- A LyX ablak kinézetétől kezdve, hogy a kimenet hogyan keletkezik, mindez
+A \SpecialCharNoPassThru LyX
+ nagymértékben beállítható.
+ A \SpecialCharNoPassThru LyX
+ ablak kinézetétől kezdve, hogy a kimenet hogyan keletkezik, mindez
  számtalan módon beállítható.
  Sok beállítás az 
 \family sans
@@ -5011,21 +5178,21 @@ Esz
 \bar under
 k
 \bar default
-özök \SpecialChar \menuseparator
+özök \SpecialChar menuseparator
 
 \bar under
  B
 \bar default
 eállítások
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 -on keresztül valósul meg.
  További információért olvassa el a 
 \family sans
 \bar under
 S
 \bar default
-egítség \SpecialChar \menuseparator
+egítség \SpecialChar menuseparator
  T
 \bar under
 e
@@ -5036,30 +5203,34 @@ streszabás
 \end_layout
 
 \begin_layout Itemize
-A LyX fejlesztését öt kontinensen található programozók csoportja végzi.
- Ezért a LyX jobb támogatással rendelkezik nem angol nyelvekhez (mint, pl.
- a holland, német, francia, görög, cseh, török\SpecialChar \ldots{}
+A \SpecialCharNoPassThru LyX
+ fejlesztését öt kontinensen található programozók csoportja végzi.
+ Ezért a \SpecialCharNoPassThru LyX
+ jobb támogatással rendelkezik nem angol nyelvekhez (mint, pl.
+ a holland, német, francia, görög, cseh, török\SpecialChar ldots
 ) mint a többi szövegszerkesztő.
  Még néhány jobbról-balra író nyelvet is, mint a Héber vagy az Arab támogat.
- Írhat dokumentumot más nyelveken, de beállíthatja a LyX-et úgy, hogy a
+ Írhat dokumentumot más nyelveken, de beállíthatja a \SpecialCharNoPassThru LyX
+-et úgy, hogy a
  menük és az üzenetek egy másik nyelven jelenjenek meg.
 \end_layout
 
 \begin_layout Itemize
-A LyX menük tartalmaznak gyorsító elemeket.
+A \SpecialCharNoPassThru LyX
+ menük tartalmaznak gyorsító elemeket.
  Ez azt jelenti, hogy a 
 \family sans
 \bar under
 F
 \bar default
-ájl \SpecialChar \menuseparator
+ájl \SpecialChar menuseparator
  Meg
 \bar under
 n
 \bar default
 yitás
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
  elérhető az 
 \family sans
 M-F
@@ -5076,7 +5247,7 @@ N
 \bar under
 S
 \bar default
-egítség \SpecialChar \menuseparator
+egítség \SpecialChar menuseparator
  T
 \bar under
 e
@@ -5087,7 +5258,9 @@ streszabás
 \end_layout
 
 \begin_layout Itemize
-A LyX be tudja olvasni a LaTeX dokumentumokat.
+A \SpecialCharNoPassThru LyX
+ be tudja olvasni a \SpecialCharNoPassThru LaTeX
+ dokumentumokat.
  Lásd a 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5107,7 +5280,8 @@ Helyesírás-ellenőrzés és tézaurusz lehetőségek szintén elérhetőek.
 \end_layout
 
 \begin_layout Itemize
-A LyX ablak alsó részén látható szövegmező neve minibuffer (az 
+A \SpecialCharNoPassThru LyX
+ ablak alsó részén látható szövegmező neve minibuffer (az 
 \family typewriter
 emacs
 \family default
@@ -5118,7 +5292,9 @@ emacs
 \end_layout
 
 \begin_layout Section
-LyX a LaTeX felhasználóknak
+\SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+ felhasználóknak
 \end_layout
 
 \begin_layout Standard
@@ -5128,21 +5304,33 @@ name "sec:latexusers"
 
 \end_inset
 
-Ha semmit sem tud a LaTeX-ről, nem kell elolvasnia ezt a szakaszt.
+Ha semmit sem tud a \SpecialCharNoPassThru LaTeX
+-ről, nem kell elolvasnia ezt a szakaszt.
  Lehet, hogy szeretne valamit 
 \emph on
 tanulni
 \emph default
- a LaTeX-ről, és el olvassa ezt a fejezetet.
- Sok ember aki a LyX-et most kezdi el használni, már ismeri a LaTeX-et.
- Ha ön egy ilyen ember, jogosan kérdezheti hogyan képes a LyX mindarra amire
- a LaTeX.
- A rövid válasz az, hogy a LyX meglehetősen sokmindenre képes amit a LaTeX
+ a \SpecialCharNoPassThru LaTeX
+-ről, és el olvassa ezt a fejezetet.
+ Sok ember aki a \SpecialCharNoPassThru LyX
+-et most kezdi el használni, már ismeri a \SpecialCharNoPassThru LaTeX
+-et.
+ Ha ön egy ilyen ember, jogosan kérdezheti hogyan képes a \SpecialCharNoPassThru LyX
+ mindarra amire
+ a \SpecialCharNoPassThru LaTeX
+.
+ A rövid válasz az, hogy a \SpecialCharNoPassThru LyX
+ meglehetősen sokmindenre képes amit a \SpecialCharNoPassThru LaTeX
  ilyen vagy olyan formában.
- Valamint minden bizonnyal egyszerüsíti egy LaTeX dokumentum elkészítését.
- A segédeszközt – aminek segítségével a LaTeX dokumentumokat átalakíthatjuk
- LyX által feldolgozható formára – teljesen újraírtuk a LyX 1.4 változatához.
- Mostmár képesnek kell lennie a könnyedén lekezelni a LaTeX nagy részét.
+ Valamint minden bizonnyal egyszerüsíti egy \SpecialCharNoPassThru LaTeX
+ dokumentum elkészítését.
+ A segédeszközt – aminek segítségével a \SpecialCharNoPassThru LaTeX
+ dokumentumokat átalakíthatjuk
+ \SpecialCharNoPassThru LyX
+ által feldolgozható formára – teljesen újraírtuk a \SpecialCharNoPassThru LyX
+ 1.4 változatához.
+ Mostmár képesnek kell lennie a könnyedén lekezelni a \SpecialCharNoPassThru LaTeX
+ nagy részét.
  
 \end_layout
 
@@ -5160,25 +5348,35 @@ Haladó szolgáltatások
 \emph default
  kézikönyvben, különösen a 
 \emph on
-LaTeX mesterek titkai (Secrets of the LaTeX Masters
+\SpecialCharNoPassThru LaTeX
+ mesterek titkai (Secrets of the \SpecialCharNoPassThru LaTeX
+ Masters
 \emph default
-) fejezetben találhat sok-sok információt a LyX és a LaTeX különbségéről,
- valamint arról, hogyan valósíthat meg egyes LaTeX trükköket LyX-ben.
+) fejezetben találhat sok-sok információt a \SpecialCharNoPassThru LyX
+ és a \SpecialCharNoPassThru LaTeX
+ különbségéről,
+ valamint arról, hogyan valósíthat meg egyes \SpecialCharNoPassThru LaTeX
+ trükköket \SpecialCharNoPassThru LyX
+-ben.
 \end_layout
 
 \begin_layout Subsection
-TeX-mód
+\SpecialCharNoPassThru TeX
+-mód
 \end_layout
 
 \begin_layout Standard
-Bármi, amit TeX-módban ír be, azt a LaTeX közvetlen (változtatás nélkül)
+Bármi, amit \SpecialCharNoPassThru TeX
+-módban ír be, azt a \SpecialCharNoPassThru LaTeX
+ közvetlen (változtatás nélkül)
  kapja meg, a képernyőn pirossal fog megjelenni.
- A TeX parancsok beviteléhez válassza a 
+ A \SpecialCharNoPassThru TeX
+ parancsok beviteléhez válassza a 
 \family sans
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
  Te
 \bar under
 X
@@ -5186,12 +5384,15 @@ X
 \bar default
  menüt.
  A parancs létrehoz egy betétet, amit ebbe a betétbe beírunk közvetlen átadásra
- kerül a LaTeX-nek.
+ kerül a \SpecialCharNoPassThru LaTeX
+-nek.
 \end_layout
 
 \begin_layout Standard
-Képleten belül a TeX-mód kicsit másként működik.
- A TeX módba lépéshez a visszafeleperjel 
+Képleten belül a \SpecialCharNoPassThru TeX
+-mód kicsit másként működik.
+ A \SpecialCharNoPassThru TeX
+ módba lépéshez a visszafeleperjel 
 \begin_inset Quotes pld
 \end_inset
 
@@ -5202,13 +5403,17 @@ backslash
  karaktert kell leütnie.
  A perjel nem kerül a képernyőre, de amit utána beírunk az pirossal fog
  megjelenni.
- A TeX-módból való kilépéshez üüse le a 
+ A \SpecialCharNoPassThru TeX
+-módból való kilépéshez üüse le a 
 \family sans
 Szóköz-
 \family default
 t vagy egy nem betű karaktert, mint pl.
  szám, aláhúzás, hiányjel, zárójel.
- Miután kilépett a TeX-módból, amennyiben a LyX ismeri a bevitt TeX parancsot,
+ Miután kilépett a \SpecialCharNoPassThru TeX
+-módból, amennyiben a \SpecialCharNoPassThru LyX
+ ismeri a bevitt \SpecialCharNoPassThru TeX
+ parancsot,
  át fogja alakítani azt a WYSIWYM formába.
  Azaz, ha egy képletben beírja 
 \backslash
@@ -5216,7 +5421,8 @@ gamma valamint leüti a
 \family sans
 Szóköz
 \family default
--t, a LyX a piros 
+-t, a \SpecialCharNoPassThru LyX
+ a piros 
 \begin_inset Quotes pld
 \end_inset
 
@@ -5242,29 +5448,40 @@ gamma
 \family sans
 Képletszerkesztő
 \family default
--vel, és persze nagyon kényelmes a tapasztalt LaTeX felhasználóknak.
+-vel, és persze nagyon kényelmes a tapasztalt \SpecialCharNoPassThru LaTeX
+ felhasználóknak.
  
 \end_layout
 
 \begin_layout Standard
-Amennyiben TeX-módan egy speciális esetben beír egy zárójelet, mind a nyitó
+Amennyiben \SpecialCharNoPassThru TeX
+-módan egy speciális esetben beír egy zárójelet, mind a nyitó
  
 \emph on
 és
 \emph default
- záró pár pirosban fog megjelenni, a rendszer kilép TeX módból és kurzor
+ záró pár pirosban fog megjelenni, a rendszer kilép \SpecialCharNoPassThru TeX
+ módból és kurzor
  a két zárójel közé kerül.
- Ezzel kényelmesebbé teszi olyan parancsok beírását, amiket a LyX nem ismeri.
+ Ezzel kényelmesebbé teszi olyan parancsok beírását, amiket a \SpecialCharNoPassThru LyX
+ nem ismeri.
 \end_layout
 
 \begin_layout Standard
-A LyX (egyenlőre) nem képes mindarra amire a LaTeX.
+A \SpecialCharNoPassThru LyX
+ (egyenlőre) nem képes mindarra amire a \SpecialCharNoPassThru LaTeX
+.
  Valamely funkciókat jelenleg egyáltalán nem támogat, van ami működik, de
  nem a WYSIWYM-nak megfelelően.
- A TeX-mód segítségével kiaknázhatjuk a LaTeX összes lehetőségét, miközben
- kényelmesen kihasználjuk a LyX által nyújtott szolgáltatásokat, mint pl.
+ A \SpecialCharNoPassThru TeX
+-mód segítségével kiaknázhatjuk a \SpecialCharNoPassThru LaTeX
+ összes lehetőségét, miközben
+ kényelmesen kihasználjuk a \SpecialCharNoPassThru LyX
+ által nyújtott szolgáltatásokat, mint pl.
  WYSIWYM képletek, táblázatok és szerkesztés.
- A LyX sohasem lesz képes az összes LaTeX csomag támogatására.
+ A \SpecialCharNoPassThru LyX
+ sohasem lesz képes az összes \SpecialCharNoPassThru LaTeX
+ csomag támogatására.
  Azonban, ha beírja a 
 \family typewriter
 
@@ -5287,7 +5504,8 @@ szakaszt), olyan csomagot használ, amilyet csak akar – azonban nem lesz
 \end_layout
 
 \begin_layout Subsection
-LaTeX dokumentumok importálása – 
+\SpecialCharNoPassThru LaTeX
+ dokumentumok importálása – 
 \family typewriter
 tex2lyx
 \end_layout
@@ -5299,22 +5517,23 @@ name "sec:relyx"
 
 \end_inset
 
-Importálhat LaTeX fájlokat a 
+Importálhat \SpecialCharNoPassThru LaTeX
+ fájlokat a 
 \family sans
 \bar under
 F
 \bar default
-ájl \SpecialChar \menuseparator
+ájl \SpecialChar menuseparator
 
 \bar under
  I
 \bar default
-mportálás \SpecialChar \menuseparator
+mportálás \SpecialChar menuseparator
 
 \bar under
  L
 \bar default
-aTeX
+a\SpecialCharNoPassThru TeX
 \family default
  parancs segítségével.
  Ez a 
@@ -5343,8 +5562,10 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
- a LaTeX jelentős részét le tudja fordítani, de mégsem mindent.
- Amit nem ért meg azt TeX módban fogja hagyni, ezért miután lefordította
+ a \SpecialCharNoPassThru LaTeX
+ jelentős részét le tudja fordítani, de mégsem mindent.
+ Amit nem ért meg azt \SpecialCharNoPassThru TeX
+ módban fogja hagyni, ezért miután lefordította
  a fájlt 
 \family typewriter
 tex2lyx
@@ -5358,18 +5579,24 @@ A
 tex2lyx
 \family default
 -nek van saját kézikönyvoldala.
- Érdemes elolvasnia ahhoz, hogy megtudja mely, LaTeX parancsokat és környezeteke
+ Érdemes elolvasnia ahhoz, hogy megtudja mely, \SpecialCharNoPassThru LaTeX
+ parancsokat és környezeteke
 t nem támogatja a program, ismerteti a hibáit (és azt hogyan lehet megkerülni
  őket), valamint miként használjunk bizonyos kapcsolókat.
 \end_layout
 
 \begin_layout Subsection
-LyX dokumentumok átalakítása LaTeX-re
+\SpecialCharNoPassThru LyX
+ dokumentumok átalakítása \SpecialCharNoPassThru LaTeX
+-re
 \end_layout
 
 \begin_layout Standard
-LyX dokumentumát lehet, hogy át akarja alakítani LaTeX formátumba.
- Például, egy segítőnek vagy szerzőtársnak, aki nem rendelkezik LyX-el és
+\SpecialCharNoPassThru LyX
+ dokumentumát lehet, hogy át akarja alakítani \SpecialCharNoPassThru LaTeX
+ formátumba.
+ Például, egy segítőnek vagy szerzőtársnak, aki nem rendelkezik \SpecialCharNoPassThru LyX
+-el és
  el szeretné olvasni a művét.
  Ezt nagyon könnyedén meg tudja csinálni.
  Válassza a 
@@ -5377,17 +5604,17 @@ LyX dokumentumát lehet, hogy át akarja alakítani LaTeX formátumba.
 \bar under
 F
 \bar default
-ájl \SpecialChar \menuseparator
+ájl \SpecialChar menuseparator
  E
 \bar under
 x
 \bar default
-portálás \SpecialChar \menuseparator
+portálás \SpecialChar menuseparator
 
 \bar under
  L
 \bar default
-aTeX
+a\SpecialCharNoPassThru TeX
 \family default
  menüpontot.
  Ez létre fogja hozni a 
@@ -5399,13 +5626,17 @@ valami.tex
 valami.lyx
 \family default
  fájlból, amit éppen szerkeszt.
- A LyX minden esetben ideiglenes LaTeX fájlokat hoz létre, mindahányszor
+ A \SpecialCharNoPassThru LyX
+ minden esetben ideiglenes \SpecialCharNoPassThru LaTeX
+ fájlokat hoz létre, mindahányszor
  megnézzük a dokumentumunk kimenetet vagy ki szeretnénk azt nyomtatni, emiatt
- nagyon jó LaTeX fájl készítésben.
+ nagyon jó \SpecialCharNoPassThru LaTeX
+ fájl készítésben.
 \end_layout
 
 \begin_layout Subsection
-LaTeX Preambulum
+\SpecialCharNoPassThru LaTeX
+ Preambulum
 \end_layout
 
 \begin_layout Subsubsection
@@ -5418,12 +5649,12 @@ A
 \bar under
 D
 \bar default
-okumentum \SpecialChar \menuseparator
+okumentum \SpecialChar menuseparator
 
 \bar under
  B
 \bar default
-eállítások\SpecialChar \ldots{}
+eállítások\SpecialChar ldots
 
 \family default
  dialógusablak tartalmazza mindazokat a beállításokat amiket a 
@@ -5463,14 +5694,16 @@ name "sec:preamble"
 
 \end_inset
 
- Amennyiben valamilyen speciális beállításokat használ a LaTeX fájl preambulumáb
-an, azokról a LyX dokumentum esetén sem kell lemondania.
+ Amennyiben valamilyen speciális beállításokat használ a \SpecialCharNoPassThru LaTeX
+ fájl preambulumáb
+an, azokról a \SpecialCharNoPassThru LyX
+ dokumentum esetén sem kell lemondania.
  Válassza a 
 \family sans
 \bar under
 D
 \bar default
-okumentum \SpecialChar \menuseparator
+okumentum \SpecialChar menuseparator
 
 \bar under
  B
@@ -5479,28 +5712,32 @@ eállítások
 \bar under
  
 \bar default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \bar under
  
 \bar default
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
 Preambulum
 \family default
 -ot és írja be a megjelenő dialógusablakba.
- Bármi amit begépel, (csak úgy mint TeX módban) azt a LaTeX közvetlen fogja
+ Bármi amit begépel, (csak úgy mint \SpecialCharNoPassThru TeX
+ módban) azt a \SpecialCharNoPassThru LaTeX
+ közvetlen fogja
  feldolgozni.
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-A LyX támogatja a BibTeX használatát, amely segítségével irodalomjegyzék
+A \SpecialCharNoPassThru LyX
+ támogatja a Bib\SpecialCharNoPassThru TeX
+ használatát, amely segítségével irodalomjegyzék
  adatbázisokat építhetünk fel, ezáltal azokat több dokumentumban is felhasználha
 tjuk.
  Válassza a 
@@ -5508,7 +5745,7 @@ tjuk.
 B
 \family sans
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
  Listák
 \begin_inset space ~
 \end_inset
@@ -5521,12 +5758,12 @@ tartal
 \bar under
 o
 \bar default
-mjegyzék \SpecialChar \menuseparator
+mjegyzék \SpecialChar menuseparator
 
 \bar under
  B
 \bar default
-ibTeX
+ib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -5541,7 +5778,7 @@ bib
 \begin_inset Quotes pld
 \end_inset
 
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -5559,7 +5796,7 @@ irodalomjegyzék
 
  gombra és megjelenik a 
 \family sans
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \family default
  dialgusablak.
  Az 
@@ -5580,7 +5817,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-Mint a LaTeX-nél, több irodalomjegyzék elemet is megadhatunk vesszővel elválaszt
+Mint a \SpecialCharNoPassThru LaTeX
+-nél, több irodalomjegyzék elemet is megadhatunk vesszővel elválaszt
 va, szóközök nélkül
 \end_layout
 
@@ -5607,14 +5845,14 @@ gyzék elemre a
 \bar under
 B
 \bar default
-eszúrás \SpecialChar \menuseparator
+eszúrás \SpecialChar menuseparator
 
 \bar under
  I
 \bar default
 dézet
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
  paranccsal (lásd 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5627,7 +5865,9 @@ reference "sec:bibliographies"
 \end_inset
 
 szakasz).
- A LyX fogja futtatni a BibTeX-et.
+ A \SpecialCharNoPassThru LyX
+ fogja futtatni a Bib\SpecialCharNoPassThru TeX
+-et.
  Az 
 \family sans
 Idézet
@@ -5645,10 +5885,13 @@ Hibák!
 
 \begin_layout Standard
 Néha, miközben feldolgozzuk a dokumentumunkat, hibák léphetnek fel, amelyeket
- a LyX vagy a LaTeX nem ért meg.
+ a \SpecialCharNoPassThru LyX
+ vagy a \SpecialCharNoPassThru LaTeX
+ nem ért meg.
  Amikor ez történik, a hibák egy ablakban fognak megjelenni.
  Rájuk kattintva a kurzor a megfelelő szövegrészhez ugrik, valamint egy
- magyarázó ablakban megjelenik a LaTeX által adott hibaüzenet.
+ magyarázó ablakban megjelenik a \SpecialCharNoPassThru LaTeX
+ által adott hibaüzenet.
  Azt azért meg kell jegyezni, hogy ezek a hibaüzenetek nem minden esetben
  kielégítőek.
 \end_layout

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/id/
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -47,16 +48,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -122,7 +123,7 @@
 \begin_body
 
 \begin_layout Title
-Tutorial Menggunakan LyX
+Tutorial Menggunakan \SpecialCharNoPassThru LyX
 \begin_inset Note Note
 status open
 
@@ -133,9 +134,11 @@ Dokumen ini dirancang untuk dicetak bolak-balik.
  otomatis akan menambah satu halaman transisi kosong, sebelum memulai bab
  berikutnya di halaman ganjil.
  Nomor halaman kosong transisi tetap diperhitungkan namun tidak dituliskan.
- Cara pengaturannya ditulis di LaTeX preamble (Dokumen\SpecialChar \menuseparator
-Pengaturan\SpecialChar \menuseparator
-LaTeX Preamble)
+ Cara pengaturannya ditulis di \SpecialCharNoPassThru LaTeX
+ preamble (Dokumen\SpecialChar menuseparator
+Pengaturan\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ Preamble)
 \end_layout
 
 \end_inset
@@ -144,7 +147,8 @@ LaTeX Preamble)
 \end_layout
 
 \begin_layout Author
-oleh LyX Team
+oleh \SpecialCharNoPassThru LyX
+ Team
 \begin_inset Foot
 status open
 
@@ -159,7 +163,8 @@ dan
 \noun default
 .
  Apabila anda mempunyai komentar atau menemukan kesalahan yang perlu dikoreksi,
- silakan kirim komentar ke mailing list LyX, 
+ silakan kirim komentar ke mailing list \SpecialCharNoPassThru LyX
+, 
 \family typewriter
 
 \begin_inset CommandInset href
@@ -194,17 +199,24 @@ Pendahuluan
 \end_layout
 
 \begin_layout Section
-Selamat Datang di LyX!
+Selamat Datang di \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Standard
-Buku ini dirancang untuk anda yang belum mengenal LaTeX, atau hanya sedikit
- pengetahuan mengenai LaTeX.
- Anda jangan terlalu kawatir karena belajar LyX tidak perlu memahami LaTeX
+Buku ini dirancang untuk anda yang belum mengenal \SpecialCharNoPassThru LaTeX
+, atau hanya sedikit
+ pengetahuan mengenai \SpecialCharNoPassThru LaTeX
+.
+ Anda jangan terlalu kawatir karena belajar \SpecialCharNoPassThru LyX
+ tidak perlu memahami \SpecialCharNoPassThru LaTeX
  terlebih dahulu.
- LyX akan memberikan fasilitas antarmuka ke LaTeX yang hampir mendekati
+ \SpecialCharNoPassThru LyX
+ akan memberikan fasilitas antarmuka ke \SpecialCharNoPassThru LaTeX
+ yang hampir mendekati
  WYSIWYG.
- Agar dapat menggunakan LyX secara efektif ada beberapa hal yang perlu dipelajar
+ Agar dapat menggunakan \SpecialCharNoPassThru LyX
+ secara efektif ada beberapa hal yang perlu dipelajar
 i.
 \end_layout
 
@@ -223,7 +235,9 @@ Mungkin anda pernah atau bahkan sering melakukan ketika melakukan  penyuntingan
  dengan menambahkan, misalnya 3 baris kosong sebelum paragraf berikutnya.
  Hal-hal yang biasa dilakukan seperti contoh tadi sudah merupakan hal umum
  apabila anda menggunakan program pengolah kata biasa.
- Apabila menggunakan LyX, anda tidak perlu melakukan lagi karena LyX akan
+ Apabila menggunakan \SpecialCharNoPassThru LyX
+, anda tidak perlu melakukan lagi karena \SpecialCharNoPassThru LyX
+ akan
  mengatur secara otomatis dan rapi.
 \end_layout
 
@@ -244,23 +258,27 @@ Tutorial
  atau anda boleh mencoba untuk menambahkan 3 baris kosong diantara dua paragraf.
  Anda tidak akan bisa.
  Banyak lagi trik yang biasa dilakukan di pengolah kata lain tidak bisa
- diterapkan di LyX.
+ diterapkan di \SpecialCharNoPassThru LyX
+.
  Pada pengolah kata biasa, pengaturan spasi, perubahan huruf serta berbagai
  pengaturan lainnya dilakukan secara manual, sehingga yang anda lakukan
  tidak hanya menulis atau menyunting dokumen, tetapi juga melakukan pengaturan
  format penulisan.
- Sebaliknya LyX akan melakukan pengaturan format penulisan untuk anda secara
+ Sebaliknya \SpecialCharNoPassThru LyX
+ akan melakukan pengaturan format penulisan untuk anda secara
  konsisten, sehingga anda hanya perlu berkonsentrasi pada isi dan apa yang
  anda tulis di dokumen.
 \end_layout
 
 \begin_layout Standard
-Oleh karena itu teruskan membaca dan memahami tentang LyX.
+Oleh karena itu teruskan membaca dan memahami tentang \SpecialCharNoPassThru LyX
+.
  Mempelajari buku 
 \emph on
 Tutorial
 \emph default
- ini akan sangat membantu anda dan mempercepat menguasai penggunaan LyX.
+ ini akan sangat membantu anda dan mempercepat menguasai penggunaan \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -323,12 +341,12 @@ Dalam buku tutorial akan diberikan contoh dan latihan-latihan.
 \family sans
 Berkas
 \family default
- \SpecialChar \menuseparator
+ \SpecialChar menuseparator
  
 \family sans
 Expor
 \family default
- \SpecialChar \menuseparator
+ \SpecialChar menuseparator
  
 \family sans
 PDF(pdflatex)
@@ -337,9 +355,13 @@ PDF(pdflatex)
 \end_layout
 
 \begin_layout Standard
-Apabila sudah mengenal LaTeX, anda akan bisa mengikuti Tutorial dengan cepat,
- karena banyak ide yang ada di LyX sebenarnya juga berasal dari LaTeX.
- Namun demikian LyX memiliki berbagai fitur yang perlu dipelajari.
+Apabila sudah mengenal \SpecialCharNoPassThru LaTeX
+, anda akan bisa mengikuti Tutorial dengan cepat,
+ karena banyak ide yang ada di \SpecialCharNoPassThru LyX
+ sebenarnya juga berasal dari \SpecialCharNoPassThru LaTeX
+.
+ Namun demikian \SpecialCharNoPassThru LyX
+ memiliki berbagai fitur yang perlu dipelajari.
  Apabila  anda merasa tidak perlu membaca keseluruhan, anda tetap harus
  membaca subbab
 \begin_inset space ~
@@ -352,7 +374,8 @@ reference "sec:latexusers"
 
 \end_inset
 
-, yang khusus ditulis bagi yang sudah mengenal LaTeX.
+, yang khusus ditulis bagi yang sudah mengenal \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Subsection
@@ -360,7 +383,11 @@ Apakah yang tidak ada di Tutorial
 \end_layout
 
 \begin_layout Itemize
-Penjelasan terperinci tentang semua fitur yang ada di LyX.
+Penjelasan terperinci tentang semua fitur yang ada di \SpecialCharNoPassThru LyX
+.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -378,7 +405,11 @@ Penggunaan
 
 \end_deeper
 \begin_layout Itemize
-Penjelasan terperinci perintah-perintah LaTeX.
+Penjelasan terperinci perintah-perintah \SpecialCharNoPassThru LaTeX
+.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -388,8 +419,10 @@ Hal ini belum perlu di
 Tutorial
 \emph default
 .
- Apabila anda ingin mempelajari berbagai trik penggunaan LaTeX di dalam
- LyX, anda perlu melihat ke buku 
+ Apabila anda ingin mempelajari berbagai trik penggunaan \SpecialCharNoPassThru LaTeX
+ di dalam
+ \SpecialCharNoPassThru LyX
+, anda perlu melihat ke buku 
 \emph on
 Obyek Tambahan
 \emph default
@@ -399,20 +432,22 @@ Obyek Tambahan
 \end_deeper
 \begin_layout Standard
 Sekarang kita bisa meneruskan.
- Anda akan menulis dokumen yang pertama kali \SpecialChar \ldots{}
+ Anda akan menulis dokumen yang pertama kali \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Chapter
-Memulai LyX 
+Memulai \SpecialCharNoPassThru LyX
+ 
 \end_layout
 
 \begin_layout Section
-Dokumen LyX anda yang pertama
+Dokumen \SpecialCharNoPassThru LyX
+ anda yang pertama
 \end_layout
 
 \begin_layout Standard
-Baiklah\SpecialChar \@.
+Baiklah\SpecialChar endofsentence
  Anda sudah siap menulis dokumen.
  Tetapi sebelum memulai, ada beberapa hal penting yang perlu mendapat perhatian
  agar tutorial ini dapat diikuti dengan baik dan bermanfaat.
@@ -425,8 +460,10 @@ Ada beberapa informasi yang tidak lengkap di Tutorial, oleh karena itu anda
 Bantuan
 \family default
 .
- Apabila anda membaca dokumen cetakan dan belum membuka LyX, maka sekarang
- silakan jalankan LyX, ke menu 
+ Apabila anda membaca dokumen cetakan dan belum membuka \SpecialCharNoPassThru LyX
+, maka sekarang
+ silakan jalankan \SpecialCharNoPassThru LyX
+, ke menu 
 \family sans
 Bantuan
 \family default
@@ -442,7 +479,8 @@ Tutorial
 \emph on
 Tutorial
 \emph default
- dari dalam LyX).
+ dari dalam \SpecialCharNoPassThru LyX
+).
  Dengan cara ini anda dapat membaca buku panduan sambil menulis ke berkas
  anda sendiri.
 \begin_inset Foot
@@ -450,7 +488,8 @@ status open
 
 \begin_layout Plain Layout
 Buku panduan yang anda buka memuat dan menerapkan contoh penggunaan berbagai
- fitur LyX.
+ fitur \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -465,11 +504,14 @@ Tampilan
 \end_layout
 
 \begin_layout Standard
-Dalam Tutorial ini, kami menganggap anda menggunakan versi LyX yang sesuai
- dengan buku Panduan, demikian pula LaTeX yang diinstal, serta adanya fasilitas
+Dalam Tutorial ini, kami menganggap anda menggunakan versi \SpecialCharNoPassThru LyX
+ yang sesuai
+ dengan buku Panduan, demikian pula \SpecialCharNoPassThru LaTeX
+ yang diinstal, serta adanya fasilitas
  untuk melihat tampilan PDF.
  Hal ini biasanya sudah ada hampir semua distribusi Linux dan BSD, juga
- Windows yang instalasinya dilakukan oleh LyX 
+ Windows yang instalasinya dilakukan oleh \SpecialCharNoPassThru LyX
+ 
 \emph on
 Installer
 \emph default
@@ -477,7 +519,8 @@ Installer
 \end_layout
 
 \begin_layout Standard
-Untuk memudahkan latihan agar mahir menggunakan LyX, kami sudah mempersiapkan
+Untuk memudahkan latihan agar mahir menggunakan \SpecialCharNoPassThru LyX
+, kami sudah mempersiapkan
  berkas dengan nama 
 \family typewriter
 example_raw.lyx
@@ -487,7 +530,7 @@ example_raw.lyx
 \family sans
 Berkas
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Buka
@@ -496,7 +539,7 @@ Buka
 
 berkas
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Tekan 
 \family sans
 Contoh
@@ -507,8 +550,10 @@ example_raw.lyx
 \family default
 .
  Berkas ini anggap saja dibuat oleh seseorang yang belum memahami fitur-fitur
- yang ada di LyX.
- Sambil belajar menggunakan LyX, silakan anda memperbaiki berkas tersebut.
+ yang ada di \SpecialCharNoPassThru LyX
+.
+ Sambil belajar menggunakan \SpecialCharNoPassThru LyX
+, silakan anda memperbaiki berkas tersebut.
  Anda perlu perlu memperhatikan 
 \begin_inset Quotes eld
 \end_inset
@@ -543,12 +588,13 @@ example_lyxified.lyx.
 
 \family default
  Pada berkas ini sudah diatur menggunakan pemformatan dokumen oleh orang
- sudah memahami LyX.
+ sudah memahami \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
 Apabila sudah anda perbaiki, cobalah simpan berkas latihan ke lokasi direktori
- kerja anda, dengan cara menu Berkas\SpecialChar \menuseparator
+ kerja anda, dengan cara menu Berkas\SpecialChar menuseparator
 Simpan
 \begin_inset space ~
 \end_inset
@@ -566,7 +612,7 @@ lain.
 \family sans
 Tampilam
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 DVI
@@ -575,7 +621,7 @@ DVI
 \family sans
 Tampilan
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 PDF(pdflatex).
@@ -590,7 +636,7 @@ Sebenarnya dalam direktori
 \family sans
 Berkas
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Buka
@@ -599,16 +645,18 @@ Buka
 
 berkas
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Tekan 
 \family sans
 Contoh
 \family default
 ) ada berbagai berkas contoh yang bisa anda lihat.
- Berkas-berkas tersebut mengandung berbagai contoh fitur LyX yang bisa dipakai
+ Berkas-berkas tersebut mengandung berbagai contoh fitur \SpecialCharNoPassThru LyX
+ yang bisa dipakai
  dan digunakan sebagai bahan perbandingan, baik setelah selesai mengikuti
  Tutorial, atau ketika anda kurang yakin bagaimana seharusnya melakukan
- pengaturan di LyX.
+ pengaturan di \SpecialCharNoPassThru LyX
+.
  Dengan melihat berbagai berkas yang ada di direktori tersebut akan sangat
  membantu anda.
 \end_layout
@@ -620,20 +668,21 @@ Menyunting, Melihat Hasil, dan Mengekspor
 \begin_layout Itemize
 Buka berkas baru dari menu 
 \family sans
-Berkas\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
 Baru
 \end_layout
 
 \begin_layout Itemize
 Tulislah kalimat ini: 
 \family typewriter
-Ini kalimat pertama di LyX, coba!
+Ini kalimat pertama di \SpecialCharNoPassThru LyX
+, coba!
 \end_layout
 
 \begin_layout Itemize
 Simpan berkas dan beri nama, dari 
 \family sans
-Berkas\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
 Simpan
 \begin_inset space ~
 \end_inset
@@ -646,14 +695,15 @@ Nama
 \begin_inset space ~
 \end_inset
 
-Lain\SpecialChar \@.
+Lain\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-Jalankan LaTeX untuk membuat berkas DVI, melalui 
+Jalankan \SpecialCharNoPassThru LaTeX
+ untuk membuat berkas DVI, melalui 
 \family sans
-Tampilan\SpecialChar \menuseparator
+Tampilan\SpecialChar menuseparator
 DVI
 \family default
  atau dari tombol bantuan 
@@ -664,7 +714,8 @@ DVI
 \end_inset
 
 .
- LyX akan menjalankan program penampil DVI yang memperlihatkan tampilan
+ \SpecialCharNoPassThru LyX
+ akan menjalankan program penampil DVI yang memperlihatkan tampilan
  hasil dokumen anda seperti bila dicetak.
 \begin_inset Foot
 status open
@@ -673,8 +724,8 @@ status open
 Anda tidak perlu menutup tampilan DVI, biarkan sebagai latar belakang.
  Untuk memperbarui bila ada perubahan, gunakan 
 \family sans
-Tampilan\SpecialChar \menuseparator
-Perbarui\SpecialChar \menuseparator
+Tampilan\SpecialChar menuseparator
+Perbarui\SpecialChar menuseparator
 DVI
 \family default
  atau tekan tombol bantuan 
@@ -685,7 +736,8 @@ DVI
 \end_inset
 
 .
- Setelah LaTeX selesai memperbarui, kemudian klik di jendela penampil DVI
+ Setelah \SpecialCharNoPassThru LaTeX
+ selesai memperbarui, kemudian klik di jendela penampil DVI
  (atau kembalikan ke ukuran semula bila sebelumnya jendela tampilan DVI
  diperkecil).
 \end_layout
@@ -698,7 +750,7 @@ DVI
 \begin_layout Itemize
 Expor ke format yang bisa dicetak, dari menu 
 \family sans
-Berkas\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
 Expor
 \family default
  kemudian pilih ke format yang anda inginkan, misal PDF(pdflatex)
@@ -707,7 +759,8 @@ Expor
 \end_layout
 
 \begin_layout Standard
-Selamat! Anda telah berhasil menulis dokumen yang pertama menggunakan LyX.
+Selamat! Anda telah berhasil menulis dokumen yang pertama menggunakan \SpecialCharNoPassThru LyX
+.
  Selanjutnya hanyalah hal-hal yang sifatnya lebih terperinci, anda akan
  bisa pelajari dari buku petunjuk lainnya.
 \end_layout
@@ -717,7 +770,8 @@ Penyuntingan Dasar
 \end_layout
 
 \begin_layout Standard
-LyX pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah
+\SpecialCharNoPassThru LyX
+ pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah
  kata lain, seperti penataan teks sesuai lebar teks yang ditentukan juga
  indentasi paragraf secara otomatis.
  Disini akan dipaparkan berbagai operasi yang sering digunakan sebagai alat
@@ -725,11 +779,12 @@ LyX pada dasarnya mampu melakukan berbagai hal yang biasa dilakukan di pengolah
 \end_layout
 
 \begin_layout Description
-Batalkan LyX mempunyai kemampuan untuk membatalkan proses penyun-tingan
+Batalkan \SpecialCharNoPassThru LyX
+ mempunyai kemampuan untuk membatalkan proses penyun-tingan
  sampai beberapa tahap, artinya anda dapat membatalkan hal-hal yang sudah
  dilakukan sejak dimulai sesi penyuntingan, caranya melalui 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Batalkan
 \family default
  (menekan tombol bantuan 
@@ -746,7 +801,7 @@ Batalkan
 \family default
  terlalu jauh, anda cukup ke menu 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Kembalikan
 \family default
  (tombol bantuan 
@@ -758,6 +813,10 @@ Kembalikan
 
 ) untuk mengerjakan proses suntingan lagi.
  
+\family default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -784,7 +843,7 @@ semua
 Potong/Salin/Tempelkan Proses penyuntingan ini sangat sering dimanfaatkan.
  Untuk memotong, dari 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Potong
 \family default
  (tombol bantuan 
@@ -796,7 +855,7 @@ Potong
 
 ), untuk menyalin bisa dari 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Salin
 \family default
  (tombol bantuan 
@@ -808,7 +867,7 @@ Salin
 
 ), sedangkan untuk menempelkan dengan cara 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Tempelkan
 \family default
  (atau tekan tombol bantuan 
@@ -820,7 +879,8 @@ Tempelkan
 
 ).
  Ada cara lain yang lebih sederhana untuk menempelkan teks yang sudah ditandai
- (bisa juga dari program lain untuk ditempelkan di LyX) yaitu dengan cara
+ (bisa juga dari program lain untuk ditempelkan di \SpecialCharNoPassThru LyX
+) yaitu dengan cara
  tekan 
 \emph on
 tombol tengah dari tetikus
@@ -831,7 +891,7 @@ tombol tengah dari tetikus
 \begin_layout Description
 Cari/Ganti Gunakan 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Cari
 \begin_inset space ~
 \end_inset
@@ -874,10 +934,13 @@ Cari dan Ganti
 
  atau membiarkan tetap terbuka untuk memudahkan kerja penyuntingan anda,
  apabila sewaktu-waktu memerlukan mencari kata tertentu.
- Sebagian besar jendela dialog yang ada di LyX dapat dibiarkan tetap terbuka.
+ Sebagian besar jendela dialog yang ada di \SpecialCharNoPassThru LyX
+ dapat dibiarkan tetap terbuka.
  Anda hanya perlu memastikan dimana kursor anda berada pada jendela yang
- seharusnya, apakah anda mengetik di jendela kerja LyX atau di salah satu
- jendela dialog LyX.
+ seharusnya, apakah anda mengetik di jendela kerja \SpecialCharNoPassThru LyX
+ atau di salah satu
+ jendela dialog \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -924,7 +987,7 @@ Huruf Besar
  Pengaturan corak dan gaya teks dilakukan dari dialog yang akan muncul dari
  menu 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Corak
 \begin_inset space ~
 \end_inset
@@ -937,7 +1000,7 @@ Gaya
 \begin_inset space ~
 \end_inset
 
-Teks\SpecialChar \menuseparator
+Teks\SpecialChar menuseparator
 Pengaturan
 \family default
  (atau langsung dari tombol bantuan 
@@ -984,12 +1047,13 @@ Tentu saja, saat ini anda belum banyak memanfaatkan.
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Spasi kosong di LyX
+WYSIWYM: Spasi kosong di \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
 Salah satu hal penting dan perlu dibiasakan bagi yang baru saja mempelajari
- LyX adalah bagaimana pengaturan spasi kosong.
+ \SpecialCharNoPassThru LyX
+ adalah bagaimana pengaturan spasi kosong.
  Berapa kalipun anda coba menekan 
 \family sans
 Return
@@ -1002,7 +1066,8 @@ Return
 Tab 
 \family default
 di papan ketik tidak akan berfungsi sebagaimana biasanya! Demikian pula
- di LyX anda tidak akan menemukan mistar yang biasanya di pengolah kata
+ di \SpecialCharNoPassThru LyX
+ anda tidak akan menemukan mistar yang biasanya di pengolah kata
  untuk mengatur batas dan tempat hentian 
 \family sans
 Tab.
@@ -1021,7 +1086,8 @@ What You See Is What You Get
 \begin_inset Quotes erd
 \end_inset
 
- LyX tidak menggunakan prinsip itu tetapi WYSIWYM: 
+ \SpecialCharNoPassThru LyX
+ tidak menggunakan prinsip itu tetapi WYSIWYM: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1034,7 +1100,8 @@ What You See Is What You Mean
 \end_inset
 
 .
- Jadi apa yang anda ketik adalah yang anda maksudkan, kemudian LyX akan
+ Jadi apa yang anda ketik adalah yang anda maksudkan, kemudian \SpecialCharNoPassThru LyX
+ akan
  mengatur berbagai tata letak sehingga hasil cetakan nanti akan cantik seperti
  yang anda kehendaki.
  Perintah dengan tombol papan ketik 
@@ -1052,9 +1119,10 @@ Spasi
 \family sans
 Tab
 \family default
- sama sekali tidak mempunyai arti dalam tata bahasa, oleh karena itu LyX
+ sama sekali tidak mempunyai arti dalam tata bahasa, oleh karena itu \SpecialCharNoPassThru LyX
  tidak menggunakannya.
- Dengan demikian menggunakan LyX hanya perlu berkonsentrasi pada 
+ Dengan demikian menggunakan \SpecialCharNoPassThru LyX
+ hanya perlu berkonsentrasi pada 
 \emph on
 isi
 \emph default
@@ -1071,8 +1139,10 @@ Pengantar
 \end_layout
 
 \begin_layout Standard
-LyX mempunyai banyak cara untuk pengaturan akhir format dari dokumen anda.
- Dalam masalah ini kemungkinan LyX tidak memberikan seperti yang anda kehendaki,
+\SpecialCharNoPassThru LyX
+ mempunyai banyak cara untuk pengaturan akhir format dari dokumen anda.
+ Dalam masalah ini kemungkinan \SpecialCharNoPassThru LyX
+ tidak memberikan seperti yang anda kehendaki,
  buku 
 \emph on
 Petunjuk Penggunaan
@@ -1121,7 +1191,8 @@ What You See Is What You Mean
 \begin_inset Quotes erd
 \end_inset
 
- dalam LyX.
+ dalam \SpecialCharNoPassThru LyX
+.
  Pada lingkungan mengandung definisi jenis huruf, ukuran huruf, indentasi
  paragraf, spasi baris dan berbagai definisi format lain.
  Permasalahan yang sering terjadi adalah lingkungan dapat didefinisikan
@@ -1131,7 +1202,8 @@ What You See Is What You Mean
  Jurnal lainnya menggunakan huruf miring 15 poin ditulis dari batas kiri.
  Ada juga kebiasaan di bahasa tertentu menggunakan format indentasi yang
  berbeda; serta cara penulisan bibliografi yang sangat bervariasi.
- Dengan bantuan LyX anda tidak perlu lagi mempelajari berbagai macam format
+ Dengan bantuan \SpecialCharNoPassThru LyX
+ anda tidak perlu lagi mempelajari berbagai macam format
  penulisan.
 \end_layout
 
@@ -1184,7 +1256,8 @@ Lingkungan
 status open
 
 \begin_layout Plain Layout
-LyX merubah lingkungan 
+\SpecialCharNoPassThru LyX
+ merubah lingkungan 
 \family sans
 standar
 \family default
@@ -1216,7 +1289,8 @@ yang
  
 \family default
 mempunyai arti berbeda (akan dibahas kemudian).
- LyX akan memberi nomor 
+ \SpecialCharNoPassThru LyX
+ akan memberi nomor 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1229,7 +1303,7 @@ mempunyai arti berbeda (akan dibahas kemudian).
 \family sans
 Return
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Perhatikan bahwa kotak lingkungan berubah dari 
 \begin_inset Quotes eld
 \end_inset
@@ -1252,12 +1326,13 @@ Standar
 \family sans
 Return
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Sekarang cobalah menulis teks seperti dibawah ini: 
 \end_layout
 
 \begin_layout LyX-Code
-Kalimat pertama saya menggunakan LyX.
+Kalimat pertama saya menggunakan \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -1274,7 +1349,8 @@ SubBab
 Lingkungan
 \family default
 .
- LyX sekarang menulis angka 
+ \SpecialCharNoPassThru LyX
+ sekarang menulis angka 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1299,7 +1375,8 @@ Lainnya
 \begin_inset Quotes erd
 \end_inset
 
-, anda lihat LyX kembali mengatur ukuran huruf yang sama untuk judul subbab.
+, anda lihat \SpecialCharNoPassThru LyX
+ kembali mengatur ukuran huruf yang sama untuk judul subbab.
 \end_layout
 
 \begin_layout Standard
@@ -1316,7 +1393,7 @@ Kita akan mencoba menyisipkan subbab.
 \begin_inset Quotes eld
 \end_inset
 
-menggunakan LyX
+menggunakan \SpecialCharNoPassThru LyX
 \begin_inset Quotes erd
 \end_inset
 
@@ -1329,7 +1406,8 @@ Return
 SubBab
 \family default
 .
- LyX menulis 
+ \SpecialCharNoPassThru LyX
+ menulis 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1364,7 +1442,8 @@ Contoh Lainnya
 \end_inset
 
 3! Inilah yang menjadi ciri WYSIWYM, anda cukup menuliskan judul, selanjutnya
- LyX akan mengatur penomoran dan formatnya.
+ \SpecialCharNoPassThru LyX
+ akan mengatur penomoran dan formatnya.
 \end_layout
 
 \begin_layout Standard
@@ -1410,7 +1489,8 @@ Lingkungan
 Sub-SubBab
 \family default
 .
- LyX akan memberi nomor 
+ \SpecialCharNoPassThru LyX
+ akan memberi nomor 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1425,7 +1505,8 @@ Sub-SubBab
 Sub-SubBab
 \family default
 .
- Seperti yang anda harapkan, LyX secara otomatis akan memberi nomor 
+ Seperti yang anda harapkan, \SpecialCharNoPassThru LyX
+ secara otomatis akan memberi nomor 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1467,7 +1548,8 @@ Sub-SubBab
 \end_layout
 
 \begin_layout Standard
-Tingkatan bab yang ada di LyX termasuk Sub-SubSubBab, 
+Tingkatan bab yang ada di \SpecialCharNoPassThru LyX
+ termasuk Sub-SubSubBab, 
 \family sans
 Paragra
 \family default
@@ -1509,7 +1591,8 @@ SubBab
 Bab
 \family default
 , namun demikian anda akan melihat lingkungan Bab apabila anda menggunakan
- class dokumen tertentu yang tersedia di LyX (lihat SubBab
+ class dokumen tertentu yang tersedia di \SpecialCharNoPassThru LyX
+ (lihat SubBab
 \begin_inset space ~
 \end_inset
 
@@ -1538,7 +1621,8 @@ SubBab
 
 \begin_layout Standard
 Apabila anda ingin menggunakan tingkatan pembagian bab yang tidak bernomor,
- LyX juga menyediakan lingkungan untuk tujuan itu.
+ \SpecialCharNoPassThru LyX
+ juga menyediakan lingkungan untuk tujuan itu.
  Apabila anda merubah salah satu 
 \family sans
 SubBab
@@ -1617,7 +1701,8 @@ List
 \end_layout
 
 \begin_layout Standard
-LyX memiliki berbagai lingkungan untuk penulisan daftar.
+\SpecialCharNoPassThru LyX
+ memiliki berbagai lingkungan untuk penulisan daftar.
  Dari semua lingkungan yang ada, anda tidak perlu menggunakan tombol 
 \family sans
 Tab
@@ -1680,7 +1765,8 @@ Daftar
 \end_layout
 
 \begin_layout Standard
-Sekarang mari kita coba untuk menuliskan daftar alasan mengapa LyX lebih
+Sekarang mari kita coba untuk menuliskan daftar alasan mengapa \SpecialCharNoPassThru LyX
+ lebih
  baik dari program pengolah kata lain.
  Tuliskan di berkas latihan anda dengan mengetikkan:
 \end_layout
@@ -1688,7 +1774,8 @@ Sekarang mari kita coba untuk menuliskan daftar alasan mengapa LyX lebih
 \begin_layout Standard
 
 \family typewriter
-LyX lebih baik dari program pengolah kata lain karena: 
+\SpecialCharNoPassThru LyX
+ lebih baik dari program pengolah kata lain karena: 
 \end_layout
 
 \begin_layout Standard
@@ -1706,7 +1793,8 @@ Enter
  Bersimbol
 \family default
 .
- LyX membuat satu baris kosong 
+ \SpecialCharNoPassThru LyX
+ membuat satu baris kosong 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1744,7 +1832,8 @@ Daftar
 Return.
  
 \family default
-Pada lingkungan ini LyX akan terus menganggap anda meneruskan daftar yang
+Pada lingkungan ini \SpecialCharNoPassThru LyX
+ akan terus menganggap anda meneruskan daftar yang
  anda tulis.
  Apabila anda ingin menulis beberapa baris pada satu lingkungan bersimbol,
  anda perlu menggunakan pemisahan baris 
@@ -1768,7 +1857,8 @@ S.
 
 \begin_layout Standard
 Anda baru saja belajar menuliskan daftar dengan rapi.
- Sekarang anda perlu menjalankan LaTeX untuk melihat tampilan hasil apabila
+ Sekarang anda perlu menjalankan \SpecialCharNoPassThru LaTeX
+ untuk melihat tampilan hasil apabila
  dicetak.
  Tapi sebelum itu, bagaimana jika anda ingin daftar yang bernomor bukan
  daftar bersimbol.
@@ -1793,7 +1883,8 @@ sebelum
 
  kemudian gantilah kotak lingkungan menjadi Bernomor.
  Seketika semuanya akan bernomor.
- Apabila anda menghapus atau menyisipkan daftar, LyX secara otomatis akan
+ Apabila anda menghapus atau menyisipkan daftar, \SpecialCharNoPassThru LyX
+ secara otomatis akan
  menyesuaikan nomornya.
 \end_layout
 
@@ -1942,7 +2033,8 @@ Tutorial
 \family typewriter
 mesin ketik
 \family default
-; lingkungan ini adalah satu-satunya lingkungan LyX yang mengijinkan anda
+; lingkungan ini adalah satu-satunya lingkungan \SpecialCharNoPassThru LyX
+ yang mengijinkan anda
  menggunakan spasi berganda untuk pengaturan indentasi kode program yang
  anda tulis.
  Apabila anda ingin menuliskan dan menyunting sajak, anda bisa menggunakan
@@ -1960,13 +2052,15 @@ Return
 Ctrl+Return
 \family default
 .
- Untuk memahami semua lingkungan yang ada di LyX, silakan lihat buku 
+ Untuk memahami semua lingkungan yang ada di \SpecialCharNoPassThru LyX
+, silakan lihat buku 
 \emph on
 Petunjuk Penggunaan
 \emph default
 .
  Di buku tersebut anda akan dapat membaca semua penjelasan dan penggunaan
- lingkungan yang ada di LyX.
+ lingkungan yang ada di \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -2002,14 +2096,18 @@ Menulis Dokumen
 \end_layout
 
 \begin_layout Standard
-Pada bab sebelumnya anda sudah diperkenalkan menulis dengan LyX dan harapan
+Pada bab sebelumnya anda sudah diperkenalkan menulis dengan \SpecialCharNoPassThru LyX
+ dan harapan
  kami anda sudah mulai terbiasa.
- Anda sudah diperkenalkan tentang dasar penyuntingan dalam LyX, disamping
+ Anda sudah diperkenalkan tentang dasar penyuntingan dalam \SpecialCharNoPassThru LyX
+, disamping
  juga diperkenalkan dengan lingkungan.
- Sebagian besar pemakai menggunakan LyX untuk menulis dokumen: makalah,
+ Sebagian besar pemakai menggunakan \SpecialCharNoPassThru LyX
+ untuk menulis dokumen: makalah,
  artikel, buku, buku petunjuk, atau surat.
  Bab ini akan meningkatkan kemampuan anda dari sekedar menulis teks menggunakan
- LyX menjadi mampu menulis dokumen yang lengkap.
+ \SpecialCharNoPassThru LyX
+ menjadi mampu menulis dokumen yang lengkap.
  Disini anda akan diperkenalkan dengan class dokumen yang digunakan untuk
  menulis jenis dokumen yang berbeda.
  Setelah itu anda mempelajari bagaimana merubah teks menjadi judul, catatan
@@ -2039,14 +2137,17 @@ Dokumen perlu ditata secara berbeda tergantung dari jenis dokumen.
 status collapsed
 
 \begin_layout Plain Layout
-untuk pemakai LaTeX: hal ini bermakna sama dengan LaTeX 
+untuk pemakai \SpecialCharNoPassThru LaTeX
+: hal ini bermakna sama dengan \SpecialCharNoPassThru LaTeX
+ 
 \emph on
 document class
 \end_layout
 
 \end_inset
 
- yang ada di LyX akan mengatur berbagai aturan penulisan yang ada untuk
+ yang ada di \SpecialCharNoPassThru LyX
+ akan mengatur berbagai aturan penulisan yang ada untuk
  berbagai jenis dokumen.
  Tutorial ini sebagai salah satu contoh, ditulis dalam class dokumen 
 \family sans
@@ -2055,7 +2156,8 @@ Book.
 \family default
  Berbagai jenis class dokumen yang ada merupakan salah satu bagian utama
  dari filosofi WYSIWYM; class dokumen akan mengatur format aturan dalam
- LyX, sehingga anda tidak perlu melakukannya sendiri.
+ \SpecialCharNoPassThru LyX
+, sehingga anda tidak perlu melakukannya sendiri.
 \end_layout
 
 \begin_layout Standard
@@ -2069,7 +2171,7 @@ Sebelum ini, pada bab sebelumnya, anda menggunakan class dokumen yaitu
 status open
 
 \begin_layout Plain Layout
-Ini adalah class dokumen bawaan di LyX
+Ini adalah class dokumen bawaan di \SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -2077,7 +2179,7 @@ Ini adalah class dokumen bawaan di LyX
  Sekarang cobalah merubah dokumen latihan anda ke class dokumen yang lain
  (dari menu 
 \family sans
-Dokumen\SpecialChar \menuseparator
+Dokumen\SpecialChar menuseparator
 Pengaturan
 \family default
 ) untuk melihat adanya perbedaan pengaturan.
@@ -2109,14 +2211,17 @@ heading
  halaman adalah contoh beberapa aturan dan format penulisan yang berbeda
  dari satu dokumen ke lainnya.
  Dengan semakin matangnya dunia komputer, beberapa penerbit Jurnal dapat
- menerima naskah secara elektronik, dan menyediakan berkas LaTeX 
+ menerima naskah secara elektronik, dan menyediakan berkas \SpecialCharNoPassThru LaTeX
+ 
 \emph on
 style
 \emph default
  yang dapat digunakan penulis untuk menyusun naskahnya yang sudah mengikuti
  secara akurat aturan penulisan yang dikehendaki jurnal tersebut.
- LyX sudah dirancang untuk dapat mendukung sistem seperti itu juga.
- Sebagai contoh, LyX mendukung aturan penulisan (juga lingkungan tambahan)
+ \SpecialCharNoPassThru LyX
+ sudah dirancang untuk dapat mendukung sistem seperti itu juga.
+ Sebagai contoh, \SpecialCharNoPassThru LyX
+ mendukung aturan penulisan (juga lingkungan tambahan)
  untuk jurnal-jurnal terbitan American Mathematics Society dengan menggunakan
  class dokumen 
 \family sans
@@ -2136,6 +2241,9 @@ Tabel dibawah ini dapat anda gunakan sebagai acuan ringkas dari beberapa
 Fitur Tambahan
 \emph default
 .
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -2279,7 +2387,7 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-berbagai lingkungan ekstra untuk alamat, tanda tangan\SpecialChar \ldots{}
+berbagai lingkungan ekstra untuk alamat, tanda tangan\SpecialChar ldots
 
 \end_layout
 
@@ -2301,7 +2409,7 @@ Templet: Menulis Surat
 Salah satu cara untuk menulis surat adalah dengan membuka berkas baru, kemudian
  dari menu
 \family sans
- Dokumen\SpecialChar \menuseparator
+ Dokumen\SpecialChar menuseparator
 Pengaturan 
 \family default
 kemudian pilih class dokumen 
@@ -2314,7 +2422,8 @@ Letter
  Setiap kali anda ingin menulis surat, anda harus menuliskan alamat anda,
  alamat yang dikirim, menulis isi surat, menulis nama yang bertanda tangan,
  dll.
- Untuk menyederhanakan proses penulisan surat, LyX menyediakan 
+ Untuk menyederhanakan proses penulisan surat, \SpecialCharNoPassThru LyX
+ menyediakan 
 \emph on
 templet
 \emph default
@@ -2326,7 +2435,7 @@ templet
 \begin_layout Standard
 Bukalah berkas baru dari menu 
 \family sans
-Berkas\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
 Baru
 \begin_inset space ~
 \end_inset
@@ -2394,17 +2503,20 @@ f atau ekspor ke pdf.
  Kata tersebut hanya sebagai petunjuk dimana anda harus menuliskan nama
  penanda tangan.
  Selain itu letak lingkungan juga tidak penting.
- Anda perlu ingat bahwa LyX adalah WYSIWYM; anda bisa menempatkan lingkungan
+ Anda perlu ingat bahwa \SpecialCharNoPassThru LyX
+ adalah WYSIWYM; anda bisa menempatkan lingkungan
  
 \family sans
 Tandatangan 
 \family default
-dimana saja, tetapi LyX mengetahui dimana lokasi menempatkan tandatangan
+dimana saja, tetapi \SpecialCharNoPassThru LyX
+ mengetahui dimana lokasi menempatkan tandatangan
  dengan tepat yaitu di bagian akhir.
 \end_layout
 
 \begin_layout Standard
-Berkas templet sebenarnya berkas LyX biasa.
+Berkas templet sebenarnya berkas \SpecialCharNoPassThru LyX
+ biasa.
  Hal ini berarti anda dapat mengisi alamat, tanda tangan kemudian menyimpan
  sebagai templet baru.
  Setelah ini, apabila anda ingin menulis surat, anda tinggal membuka berkas
@@ -2451,10 +2563,13 @@ Templet akan sangat membantu anda untuk menghemat waktu, kami menyarankan
  untuk menggunakan templet apabila memungkinkan.
  Selain daripada itu, berbagai templet dapat membantu anda untuk mempelajari
  bagaimana menggunakan berbagai class dokumen dengan variasi pengaturan.
- Templet juga dapat membantu anda untuk menyiapkan berkas LyX yang akan
+ Templet juga dapat membantu anda untuk menyiapkan berkas \SpecialCharNoPassThru LyX
+ yang akan
  digunakan untuk pemakai yang kurang dalam pemahaman komputer atau kurang
- mengerti LyX.
- Bagi pemula akan lebih mudah mempelajari penggunaan LyX apabila ada contoh
+ mengerti \SpecialCharNoPassThru LyX
+.
+ Bagi pemula akan lebih mudah mempelajari penggunaan \SpecialCharNoPassThru LyX
+ apabila ada contoh
  templet yang hanya memerlukan merubah sebagian isinya saja.
 \end_layout
 
@@ -2463,13 +2578,16 @@ Judul Dokumen
 \end_layout
 
 \begin_layout Standard
-Dokumen di LyX (seperti juga LaTeX) selalu menggunakan halaman judul — yang
+Dokumen di \SpecialCharNoPassThru LyX
+ (seperti juga \SpecialCharNoPassThru LaTeX
+) selalu menggunakan halaman judul — yang
  biasanya mengandung informasi judul sesungguhnya, penulis, tanggal, atau
  abstrak dari suatu makalah — dipisahkan dari bagian isi dokumen.
 \end_layout
 
 \begin_layout Standard
-Untuk memahami hal ini, silakan ke berkas LyX anda dan pastikan anda menggunakan
+Untuk memahami hal ini, silakan ke berkas \SpecialCharNoPassThru LyX
+ anda dan pastikan anda menggunakan
  class dokumen 
 \family sans
 Article
@@ -2516,7 +2634,7 @@ Tanggal
 \family sans
 Tampilan
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 PDF(pdflatex).
  Apabila anda merubah class dokumen menjadi 
 \family sans
@@ -2568,10 +2686,13 @@ Petunjuk Penggunaan
  Setelah anda memberi label, bagian lain dalam dokumen anda dapat mengacu
  pada bagian yang mempunyai label, dengan menggunakan referensi silang.
  Anda dapat mengacu menggunakan nomor acuan atau nomor halaman lokasi acuan.
- Apabila memilih nomor acuan, LyX akan mengatur penomoran referensi-silang
+ Apabila memilih nomor acuan, \SpecialCharNoPassThru LyX
+ akan mengatur penomoran referensi-silang
  secara otomatis.
  Referensi-silang dan pemberian nama label secara otomatis merupakan salah
- satu keunggulan LyX (dan LaTeX) daripada program pengolah kata lain.
+ satu keunggulan \SpecialCharNoPassThru LyX
+ (dan \SpecialCharNoPassThru LaTeX
+) daripada program pengolah kata lain.
 \end_layout
 
 \begin_layout Subsection
@@ -2591,7 +2712,7 @@ Tentang Dokumen Ini
 .
  Klik di akhir judul subbab ini, kemudian dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Label
 \family default
  atau tekan tombol bantuan 
@@ -2663,7 +2784,7 @@ subbab
 
  kemudian dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Referensi
 \begin_inset space ~
 \end_inset
@@ -2751,7 +2872,7 @@ Referensi-Silang
  Selanjutnya anda dapat menempelkan di lokasi tertentu yang mengacu acuan
  dengan label yang sudah dipilih, dengan menggunakan menu 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Tempelkan
 \family default
  (atau cara pintas 
@@ -2762,7 +2883,8 @@ Ctrl+V
 \end_layout
 
 \begin_layout Standard
-LyX akan menempatkan acuan dalam kotak tepat disebelah kanan dari posisi
+\SpecialCharNoPassThru LyX
+ akan menempatkan acuan dalam kotak tepat disebelah kanan dari posisi
  kursor berada.
  Bila dokumen yang dicetak, tanda kotak acuan tersebut akan diganti dengan
  nomor halaman atau nomor subbab (tergantung dari pilihan dalam kotak dialog
@@ -2805,7 +2927,8 @@ halaman
 
 \begin_layout Standard
 Referensi-silang juga berfungsi sebagai tautan ketika anda melakukan penyuntinga
-n dokumen di LyX; bila anda klik di kotak acuan, dialog 
+n dokumen di \SpecialCharNoPassThru LyX
+; bila anda klik di kotak acuan, dialog 
 \family sans
 Referensi-Silang
 \family default
@@ -2829,7 +2952,8 @@ Bermain-main dengan label
 \end_layout
 
 \begin_layout Standard
-Tadi sudah dikatakan bahwa LyX mengatur secara otomatis penomoran dalam
+Tadi sudah dikatakan bahwa \SpecialCharNoPassThru LyX
+ mengatur secara otomatis penomoran dalam
  referensi-silang; sekarang anda boleh mencobanya.
  Tambahkan SubBab baru sebelum SubBab
 \begin_inset space ~
@@ -2963,7 +3087,7 @@ Catatan kaki dapat dibuat dengan menggunakan tombol bantuan
 
  atau dari menu
 \family sans
- Sisipan\SpecialChar \menuseparator
+ Sisipan\SpecialChar menuseparator
 Catatan
 \begin_inset space ~
 \end_inset
@@ -2975,7 +3099,7 @@ kaki
 \begin_inset Quotes eld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes erd
 \end_inset
 
@@ -2991,12 +3115,14 @@ LyX
 .
  Kotak catatan kaki akan muncul untuk menuliskan teks informasi dalam catatan
  kaki.
- LyX akan menempatkan kursor di dalam kotak penyuntingan catatan kaki.
+ \SpecialCharNoPassThru LyX
+ akan menempatkan kursor di dalam kotak penyuntingan catatan kaki.
  Tulislah:
 \end_layout
 
 \begin_layout LyX-Code
-LyX adalah sebuah program pengatur dan penyunting dokumen.
+\SpecialCharNoPassThru LyX
+ adalah sebuah program pengatur dan penyunting dokumen.
 \end_layout
 
 \begin_layout Standard
@@ -3048,7 +3174,8 @@ kaki
 \begin_inset Quotes erd
 \end_inset
 
-, LyX juga memberikan nomor.
+, \SpecialCharNoPassThru LyX
+ juga memberikan nomor.
  Nomor ini merupakan nomor catatan kaki.
  Apabila anda menyisipkan catatan kaki, maka nomor ini akan secara otomatis
  disesuaikan.
@@ -3105,7 +3232,7 @@ Delete.
 \begin_layout Standard
 Catatan tepi dapat ditambahkan dari menu
 \family sans
- Sisipan\SpecialChar \menuseparator
+ Sisipan\SpecialChar menuseparator
 Catatan
 \begin_inset space ~
 \end_inset
@@ -3120,7 +3247,7 @@ atau dari tombol bantuan
 
 \end_inset
 
-\SpecialChar \@.
+\SpecialChar endofsentence
  Catatan tepi sama dengan catatan kaki, kecuali dalam beberapa hal: 
 \end_layout
 
@@ -3154,9 +3281,11 @@ catatan tepi tidak bernomor
 \end_layout
 
 \begin_layout Standard
-Untuk percobaan, kembalikanlah catatan kaki untuk kata LyX menjadi teks
+Untuk percobaan, kembalikanlah catatan kaki untuk kata \SpecialCharNoPassThru LyX
+ menjadi teks
  biasa, kemudian tandai dan buatlah menjadi catatan tepi.
- Jalankan LaTeX (lihat berkas DVI atau PDF) untuk melihat bagaimana bentuk
+ Jalankan \SpecialCharNoPassThru LaTeX
+ (lihat berkas DVI atau PDF) untuk melihat bagaimana bentuk
  catatan tepi ini.
 \end_layout
 
@@ -3186,7 +3315,9 @@ Bibliografi (dalam penerapan bidang sains) sebenarnya mirip dengan referensi-sil
 ang.
  Bibliografi mengandung daftar acuan yang dituliskan di bagian akhir dokumen,
  dan daftar tersebut dapat diacu di teks dalam dokumen.
- LyX dan LaTeX membuat pekerjaan menjadi lebih mudah karena secara otomatis
+ \SpecialCharNoPassThru LyX
+ dan \SpecialCharNoPassThru LaTeX
+ membuat pekerjaan menjadi lebih mudah karena secara otomatis
  mengatur nomor dalam daftar bibliografi serta merubah nomor acuan bila
  ada perubahan dalam daftar bibliografi.
 \end_layout
@@ -3204,14 +3335,16 @@ Setiap paragraf yang anda tuliskan merupakan satu referensi.
 
 
 \family typewriter
-The Lyx Tutorial, by the LyX Documentation Team
+The Lyx Tutorial, by the \SpecialCharNoPassThru LyX
+ Documentation Team
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
  sebagai referensi yang pertama.
- LyX secara otomatis menulis nomor dalam kotak sebelum teks acuan.
+ \SpecialCharNoPassThru LyX
+ secara otomatis menulis nomor dalam kotak sebelum teks acuan.
  Apabila anda klik kotak acuan akan muncul kotak dialog 
 \family sans
 Bibliografi.
@@ -3221,7 +3354,8 @@ Nama
 \family sans
  Kunci
 \family default
- merupakan nama acuan dalam dokumen LyX, sedangkan nama 
+ merupakan nama acuan dalam dokumen \SpecialCharNoPassThru LyX
+, sedangkan nama 
 \family sans
 Label
 \family default
@@ -3250,7 +3384,7 @@ lyxtutorial
 Kita akan mencoba untuk mengacu pada daftar acuan di Bibliografi.
  Dari tempat teks akan mengacu ke daftar acuan, melalui menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Acuan
 \family default
  atau dari tombol bantuan 
@@ -3342,7 +3476,8 @@ Daftar Isi
 
 \begin_layout Standard
 Anda tentunya ingin menambahkan daftar isi di bagian awal dokumen.
- Dalam LyX pembuatan daftar isi dilakukan dengan mudah dan sederhana.
+ Dalam \SpecialCharNoPassThru LyX
+ pembuatan daftar isi dilakukan dengan mudah dan sederhana.
  Yang anda perlukan adalah tekan tombol papan ketik 
 \family sans
 Return
@@ -3353,12 +3488,12 @@ Judul
 \family default
  tetapi sebelum Bab atau SubBab yang pertama, kemudian pilih menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Daftar
 \begin_inset space ~
 \end_inset
 
-Isi\SpecialChar \menuseparator
+Isi\SpecialChar menuseparator
 Daftar
 \begin_inset space ~
 \end_inset
@@ -3387,7 +3522,8 @@ Tampaknya kotak ini tidak memuat daftar isi yang anda harapkan.
 \end_layout
 
 \begin_layout Standard
-Bawaan awal dari LyX, daftar isi secara lengkap tidak ditampilkan di layar
+Bawaan awal dari \SpecialCharNoPassThru LyX
+, daftar isi secara lengkap tidak ditampilkan di layar
  anda.
  Namun demikian jika anda menginginkan melihat daftar isi, anda dapat menampilka
 n di jendela 
@@ -3408,7 +3544,7 @@ Isi
 
 , atau dari menu 
 \family sans
-Dokumen\SpecialChar \menuseparator
+Dokumen\SpecialChar menuseparator
 Paparan
 \begin_inset space ~
 \end_inset
@@ -3419,12 +3555,12 @@ Isi.
 Pemaparan isi disini akan menampilkan daftar isi dari dokumen anda walaupun
  anda belum memerintahkan daftar isi (dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Daftar
 \begin_inset space ~
 \end_inset
 
-Isi\SpecialChar \menuseparator
+Isi\SpecialChar menuseparator
 Daftar
 \begin_inset space ~
 \end_inset
@@ -3488,20 +3624,26 @@ Menggunakan Rumus Matematika
 \end_layout
 
 \begin_layout Standard
-Salah satu alasan LaTeX banyak digunakan oleh para saintis adalah karena
+Salah satu alasan \SpecialCharNoPassThru LaTeX
+ banyak digunakan oleh para saintis adalah karena
  dapat menghasilkan rumus matematika yang sangat rapi dan bagus, tanpa menggunak
 an berbagai kombinasi karakter yang biasa dipakai di berbagai program pengolah
  kata atau program penyunting rumus matematika.
- Namun demikian banyak juga saintis yang kesulitan menggunakan LaTeX karena
+ Namun demikian banyak juga saintis yang kesulitan menggunakan \SpecialCharNoPassThru LaTeX
+ karena
  menulis persamaan matematika bagaikan menulis program komputer, bukannya
  menulis biasa.
- Dengan menggunakan LyX kesulitan tidak akan terjadi, karena LyX mempunyai
+ Dengan menggunakan \SpecialCharNoPassThru LyX
+ kesulitan tidak akan terjadi, karena \SpecialCharNoPassThru LyX
+ mempunyai
  fasilitas WYSIWYM untuk penulisan rumus matematika.
- Apabila anda biasa menggunakan LaTeX, semua kebiasaan anda menuliskan rumus
+ Apabila anda biasa menggunakan \SpecialCharNoPassThru LaTeX
+, semua kebiasaan anda menuliskan rumus
  matematika masih anda gunakan seperti biasa, namun apa yang anda tuliskan
  akan berubah dalam tampilan WYSIWYM.
  Apabila anda belum pernah mengenal bagaimana menulis persamaan matematika
- dalam LaTeX, berbagai tombol bantuan yang ada di kotak bantuan 
+ dalam \SpecialCharNoPassThru LaTeX
+, berbagai tombol bantuan yang ada di kotak bantuan 
 \family sans
 Rumus
 \begin_inset space ~
@@ -3518,7 +3660,8 @@ Lingkungan Rumus Matematika
 \end_layout
 
 \begin_layout Standard
-Sekarang coba ketikkan di berkas latihan LyX anda: 
+Sekarang coba ketikkan di berkas latihan \SpecialCharNoPassThru LyX
+ anda: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -3534,7 +3677,8 @@ Anda dapat lihat sendiri, rumus yang anda tulis tidak nampak rapi, baik
  Demikian pula tanda pangkat 2 tidak tertulis diatas seperti bagaimana tanda
  pangkat yang kita kenal.
  Tidak rapinya rumus yang anda tulis dikarenakan anda tidak mengatakan kepada
- LyX bahwa rumus yang anda tulis merupakan rumus matematika, sehingga LyX
+ \SpecialCharNoPassThru LyX
+ bahwa rumus yang anda tulis merupakan rumus matematika, sehingga \SpecialCharNoPassThru LyX
  masih menganggap bahwa rumus tadi adalah teks biasa.
 \end_layout
 
@@ -3551,12 +3695,12 @@ Sekarang kita akan lihat bagaimana seharusnya menulis rumus matematika dengan
 
  atau bisa juga dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Rumus
 \begin_inset space ~
 \end_inset
 
-Matematika\SpecialChar \menuseparator
+Matematika\SpecialChar menuseparator
 Rumus
 \begin_inset space ~
 \end_inset
@@ -3564,7 +3708,8 @@ Rumus
 Inline
 \family default
 .
- LyX akan memunculkan lingkungan rumus matematika, berupa kotak kecil berwarna
+ \SpecialCharNoPassThru LyX
+ akan memunculkan lingkungan rumus matematika, berupa kotak kecil berwarna
  biru yang masih kosong.
  Cobalah menulis dalam lingkungan rumus matematika yang masih kosong tersebut
  dengan 
@@ -3587,7 +3732,8 @@ Esc
 \end_layout
 
 \begin_layout Standard
-Untuk melihat hasilnya, kita perlu menjalankan LaTeX untuk menampilkan hasil.
+Untuk melihat hasilnya, kita perlu menjalankan \SpecialCharNoPassThru LaTeX
+ untuk menampilkan hasil.
  Tekanlah tombol bantuan 
 \begin_inset Graphics
 	filename ../../images/buffer-export_pdf2.png
@@ -3616,7 +3762,8 @@ Untuk melihat hasilnya, kita perlu menjalankan LaTeX untuk menampilkan hasil.
 \begin_layout Standard
 Penyuntingan rumus matematika merupakan salah satu contoh dari filosofi
  WYSIWYM.
- Apabila anda menggunakan perintah LaTeX biasa, misalnya anda akan menuliskan
+ Apabila anda menggunakan perintah \SpecialCharNoPassThru LaTeX
+ biasa, misalnya anda akan menuliskan
  suatu ekspresi matematika yang mengandung akar menggunakan perintah 
 \family typewriter
 
@@ -3624,13 +3771,16 @@ Penyuntingan rumus matematika merupakan salah satu contoh dari filosofi
 sqrt
 \family default
 ; kemungkinan anda akan menemui kesulitan, karena anda tidak biasa melihat
- bagaimana ekspresi tersebut sampai anda menjalankan LaTeX untuk melihat
+ bagaimana ekspresi tersebut sampai anda menjalankan \SpecialCharNoPassThru LaTeX
+ untuk melihat
  tampilan hasil.
  Kesulitan lain adalah apabila ingin mencari lokasi penambahan tanda kurung
  yang masih belum lengkap.
- LyX tidak menampilkan rumus matematika secara WYSIWYG dengan sempurna,
+ \SpecialCharNoPassThru LyX
+ tidak menampilkan rumus matematika secara WYSIWYG dengan sempurna,
  namun akan memberikan gambaran bagaimana tampilan hasil yang anda inginkan.
- LaTeX lah yang kemudian akan mengatur secara profesional tampilan hasil
+ \SpecialCharNoPassThru LaTeX
+ lah yang kemudian akan mengatur secara profesional tampilan hasil
  akhirnya.
 \end_layout
 
@@ -3677,7 +3827,7 @@ Kanan
  Untuk keluar dari lingkungan rumus matematika anda dapat menggunakan tombol
  
 \family sans
-Esc\SpecialChar \@.
+Esc\SpecialChar endofsentence
 
 \end_layout
 
@@ -3695,7 +3845,7 @@ Backspace
 ) untuk menghapus, demikian pula anda bisa memilih, memotong, menyalin atau
  menempel atau membatalkan penyuntingan dengan 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Batalkan
 \family default
 .
@@ -3715,7 +3865,7 @@ Backspace
  Namun bila hal tersebut tidak anda kehendaki, anda bisa mengembalikannya
  dengan 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Batalkan
 \family default
 .
@@ -3799,7 +3949,8 @@ Subscript
 \begin_layout Standard
 Penulisan pangkat dalam lingkungan rumus matematika dapat dibantu dengan
  salah satu tombol di kotak bantuan matematika (berada di bawah jendela
- kerja LyX), atau dapat dengan cara sederhana dan cepat yaitu menggunakan
+ kerja \SpecialCharNoPassThru LyX
+), atau dapat dengan cara sederhana dan cepat yaitu menggunakan
  tombol papan ketik 
 \begin_inset Quotes eld
 \end_inset
@@ -3809,7 +3960,8 @@ Penulisan pangkat dalam lingkungan rumus matematika dapat dibantu dengan
 \end_inset
 
 .
- LyX akan menampilan kotak biru di baris atas, 
+ \SpecialCharNoPassThru LyX
+ akan menampilan kotak biru di baris atas, 
 \emph on
 superscript
 \emph default
@@ -3888,7 +4040,7 @@ Matematika
 a.
  Berbagai macam penulisan rumus juga dapat dilakukan dari menu 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Rumus
 \begin_inset space ~
 \end_inset
@@ -3897,7 +4049,7 @@ Matematika
 \family default
  atau dari 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Rumus
 \begin_inset space ~
 \end_inset
@@ -3927,7 +4079,7 @@ Kotak bantuan matematika ini akan muncul secara otomatis bila kursor berada
  dalam lingkungan rumus matematika, serta dapat dimunculkan secara manual
  dari menu 
 \family sans
-Tampilan\SpecialChar \menuseparator
+Tampilan\SpecialChar menuseparator
 Kotak
 \begin_inset space ~
 \end_inset
@@ -4000,7 +4152,7 @@ superscript
 \begin_inset Quotes eld
 \end_inset
 
-Tidak ada yang tidak bisa dilakukan\SpecialChar \ldots{}
+Tidak ada yang tidak bisa dilakukan\SpecialChar ldots
  Anda hanya memerlukan 
 \begin_inset Formula $\heartsuit$
 \end_inset
@@ -4030,7 +4182,8 @@ Untuk menuliskan akar, tekan tombol akar di kotak bantuan di bawah jendela
  Tanda akar akan muncul dan kursor akan berada dalam kotak penyuntingan.
  Anda bisa menuliskan variabel, angka, tanda pangkat lainnya, pembagian,
  atau apa saja yang anda perlukan untuk menuliskan rumus matematika.
- LyX akan secara otomatis menyesuaikan ukuran simbol akar agar sesuai dengan
+ \SpecialCharNoPassThru LyX
+ akan secara otomatis menyesuaikan ukuran simbol akar agar sesuai dengan
  keperluan yang ada di dalam tanda akar.
  
 \end_layout
@@ -4055,7 +4208,8 @@ Cara pemberian simbol dekorasi untuk suatu variabel, misalnya
 \end_inset
 
 .
- Setelah anda memilih salah satu simbol dekorasi, LyX akan menampilkan kotak
+ Setelah anda memilih salah satu simbol dekorasi, \SpecialCharNoPassThru LyX
+ akan menampilkan kotak
  biru kosong tempat penyuntingan beserta dekorasi pilihan anda.
  Ada dua tipe dekorasi yang bisa anda lakukan: yang pertama adalah dekorasi
  yang besar dan panjangnya mengikuti rumus yang ada di dalam dekorasi, dan
@@ -4109,7 +4263,8 @@ tidak ada
 \begin_inset Quotes erd
 \end_inset
 
- pembatas akan muncul dalam jendela kerja LyX dalam bentuk garis putus-putus,
+ pembatas akan muncul dalam jendela kerja \SpecialCharNoPassThru LyX
+ dalam bentuk garis putus-putus,
  namun tidak ada dalam tampilan hasil yang sesungguhnya).
 \end_layout
 
@@ -4180,7 +4335,8 @@ Bantuan
 Matematika
 \family default
 .
- LyX akan menyediakan dua kotak penyuntingan yang dipisahkan garis pembagian.
+ \SpecialCharNoPassThru LyX
+ akan menyediakan dua kotak penyuntingan yang dipisahkan garis pembagian.
  Seperti yang mungkin sudah anda duga, anda bisa menggunakan tombol tanda
  panah di papan ketik anda untuk memindahkan lokasi kursor anda, atau anda
  juga bisa menggunakan tetikus untuk menempatkan kursor di lokasi pembagian
@@ -4238,7 +4394,8 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- dalam lingkungan rumus matematika, LyX akan mengira bahwa yang anda ketikkan
+ dalam lingkungan rumus matematika, \SpecialCharNoPassThru LyX
+ akan mengira bahwa yang anda ketikkan
  adalah gabungan dari tiga variabel 
 \begin_inset Formula $s$
 \end_inset
@@ -4263,7 +4420,8 @@ sin
 \end_inset
 
  dan seharusnya ditulis dengan huruf Roman.
- Selain dari hal tadi, LyX akan menambahkan spasi setelah menuliskan kata
+ Selain dari hal tadi, \SpecialCharNoPassThru LyX
+ akan menambahkan spasi setelah menuliskan kata
  
 \begin_inset Quotes eld
 \end_inset
@@ -4350,7 +4508,8 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- akan ditampilkan LyX dengan warna hitam, dan mempunyai huruf tegak dari
+ akan ditampilkan \SpecialCharNoPassThru LyX
+ dengan warna hitam, dan mempunyai huruf tegak dari
  tipe huruf roman.
  Kata ini akan dikenal sebagai satu simbol, sehingga bila anda menghapus
  dengan tombol 
@@ -4376,7 +4535,8 @@ sin
 
 , yang ditulis dengan huruf biru dan dalam huruf miring, seperti pada rumus
  matematika.
- Hasil tampilan setelah menjalankan LaTeX, penulisan tadi akan rapi dan
+ Hasil tampilan setelah menjalankan \SpecialCharNoPassThru LaTeX
+, penulisan tadi akan rapi dan
  cantik.
  Silakan mencobanya.
 \end_layout
@@ -4465,7 +4625,8 @@ Matematika
 Setuju
 \family default
 .
- LyX akan menampilkan 6 kotak penyuntingan untuk matriks orde 
+ \SpecialCharNoPassThru LyX
+ akan menampilkan 6 kotak penyuntingan untuk matriks orde 
 \begin_inset Formula $2\times3$
 \end_inset
 
@@ -4500,7 +4661,7 @@ akan memindahkan kursor ke kotak berikutnya di sebelah kanan, tombol panah
 \begin_layout Standard
 Apabila anda ingin merubah jumlah baris dan kolom, gunakan menu 
 \family sans
-Suntingan\SpecialChar \menuseparator
+Suntingan\SpecialChar menuseparator
 Baris
 \begin_inset space \thinspace{}
 \end_inset
@@ -4555,7 +4716,8 @@ Petunjuk Penggunaan
 .
  Perlu mendapat perhatian anda, apabila anda ingin menu-liskan tabel yang
  berisi informasi teks, anda perlu menggunakan fasilitas tabel yang disediakan
- LyX, jangan mendefinisikan tabel menggunakan matriks.
+ \SpecialCharNoPassThru LyX
+, jangan mendefinisikan tabel menggunakan matriks.
 \end_layout
 
 \begin_layout Subsection
@@ -4625,9 +4787,11 @@ Bantuan
 Matematika
 \family default
 .
- LyX akan menyisipkan tempat formula pada baris yang baru, dan berada di
+ \SpecialCharNoPassThru LyX
+ akan menyisipkan tempat formula pada baris yang baru, dan berada di
  tengah baris.
- Cobalah menulis pada mode display ini kemudian jalankan LaTeX dengan menampilka
+ Cobalah menulis pada mode display ini kemudian jalankan \SpecialCharNoPassThru LaTeX
+ dengan menampilka
 n hasil pdf.
  Tombol mode display ini sebenarnya tombol pengaturan yang bisa digunakan
  untuk merubah tipe rumus inline ke rumus display atau sebaliknya.
@@ -4723,12 +4887,12 @@ status open
 Setelah anda mencoba yang mungkin tidak mudah, cobalah menulis persamaan
  tadi dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Rumus
 \begin_inset space ~
 \end_inset
 
-Matematika\SpecialChar \menuseparator
+Matematika\SpecialChar menuseparator
 Lingkungan
 \begin_inset space ~
 \end_inset
@@ -4761,7 +4925,8 @@ Berbagai Pengaturan Rumus Matematika
 
 \begin_layout Standard
 Sebenarnya masih banyak lagi pengaturan rumus matematika yang bisa dilakukan
- dalam LyX.
+ dalam \SpecialCharNoPassThru LyX
+.
  Untuk sementara ini, anda sudah menguasai dasar pengaturan yang ada.
  Pengaturan lanjutan dapat anda pelajari dari buku
 \emph on
@@ -4808,12 +4973,13 @@ Lain-Lain
 \end_layout
 
 \begin_layout Section
-Fitur Utama LyX
+Fitur Utama \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
 Sampai bab ini, kita belum membahas secara tuntas semua fasilitas yang dapat
- dimanfaatkan dari LyX.
+ dimanfaatkan dari \SpecialCharNoPassThru LyX
+.
  Seperti biasanya yang bisa kami katakan adalah, silakan membaca buku 
 \emph on
 Petunjuk Penggunaan
@@ -4827,14 +4993,16 @@ Obyek
 Tambahan
 \emph default
  untuk mendapatkan penjelasan terperinci dan lengkap.
- Disini kami hanya paparkan beberapa hal penting yang ada dalam LyX:
+ Disini kami hanya paparkan beberapa hal penting yang ada dalam \SpecialCharNoPassThru LyX
+:
 \end_layout
 
 \begin_layout Itemize
-LyX mempunyai pengaturan tabel yang bersifat WYSIWYM.
+\SpecialCharNoPassThru LyX
+ mempunyai pengaturan tabel yang bersifat WYSIWYM.
  Gunakan menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Tabel
 \family default
  (tombol bantuan 
@@ -4857,16 +5025,18 @@ Tabel
  yang memunculkan jendela dialog untuk penyuntingan tabel.
  Selain itu bila apabila kursor anda masuk pada salah satu sel tabel, maka
  secara otomatis akan muncul kotak bantuan tabel di bawah jendela kerja
- LyX.
+ \SpecialCharNoPassThru LyX
+.
  Kotak bantuan otomatis akan hilang dengan sendirinya bila kursor tidak
  berada dalam sel tabel.
 \end_layout
 
 \begin_layout Itemize
-LyX juga dapat melibatkan gambar dari berbagai format masuk dalam dokumen.
+\SpecialCharNoPassThru LyX
+ juga dapat melibatkan gambar dari berbagai format masuk dalam dokumen.
  (Anda bisa menebak: dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Gambar
 \family default
  (tombol bantuan 
@@ -4884,7 +5054,7 @@ Gambar
 \family sans
 Sisipan
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Obyek
@@ -4893,23 +5063,27 @@ Obyek
 
 Float
 \family default
-, LyX akan memberi nama tabel atau gambar secara otomatis.
+, \SpecialCharNoPassThru LyX
+ akan memberi nama tabel atau gambar secara otomatis.
 \end_layout
 
 \begin_layout Itemize
-LyX dapat diubah sesuai keinginan pengguna.
- Segala sesuatu yang ada di LyX mulai dari bagaimana tampilan jendela kerja
- LyX sampai bentuk tampilan output dokumen dapat diatur dengan berbagai
+\SpecialCharNoPassThru LyX
+ dapat diubah sesuai keinginan pengguna.
+ Segala sesuatu yang ada di \SpecialCharNoPassThru LyX
+ mulai dari bagaimana tampilan jendela kerja
+ \SpecialCharNoPassThru LyX
+ sampai bentuk tampilan output dokumen dapat diatur dengan berbagai
  cara.
  Sebagian besar pengaturan konfigurasi dapat dilakukan dari 
 \family sans
-AlatBantuan\SpecialChar \menuseparator
+AlatBantuan\SpecialChar menuseparator
 Prefere
 \family default
 nsi.
  Penjelasan lebih lanjut, silakan lihat di 
 \family sans
-Bantuan\SpecialChar \menuseparator
+Bantuan\SpecialChar menuseparator
 Perubahan
 \begin_inset space ~
 \end_inset
@@ -4918,30 +5092,34 @@ dan
 \begin_inset space ~
 \end_inset
 
-Pengaturan\SpecialChar \@.
+Pengaturan\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-LyX dikembangkan oleh tim gabungan dari lima benua.
- Oleh karena itu, LyX sangat mendukung berbagai bahasa selain bahasa Inggris
- (seperti Belanda, Jerman, Perancis, Yunani, Turki, Indonesia,\SpecialChar \ldots{}
+\SpecialCharNoPassThru LyX
+ dikembangkan oleh tim gabungan dari lima benua.
+ Oleh karena itu, \SpecialCharNoPassThru LyX
+ sangat mendukung berbagai bahasa selain bahasa Inggris
+ (seperti Belanda, Jerman, Perancis, Yunani, Turki, Indonesia,\SpecialChar ldots
 ) lebih dari
  dukungan bahasa di program pengolah kata yang lain.
  Bahkan bahasa dengan sistem penulisan dari kanan ke kiri seperti bahasa
  Arab, Persia, Hibrani serta bahasa dari Asia yang mempunyai huruf rumit
  seperti Cina, Jepang dan Korea juga didukung.
  Anda dapat menulis dokumen dalam bahasa pilihan anda dan anda juga bisa
- merubah menu yang ada di LyX sesuai bahasa pilihan anda.
+ merubah menu yang ada di \SpecialCharNoPassThru LyX
+ sesuai bahasa pilihan anda.
  
 \end_layout
 
 \begin_layout Itemize
-Menu yang ada di LyX mempunyai berbagai kunci ikatan yang akan mempercepat
+Menu yang ada di \SpecialCharNoPassThru LyX
+ mempunyai berbagai kunci ikatan yang akan mempercepat
  akses ke menu.
  Hal ini berarti bahwa anda dapat mengakses menu 
 \family sans
-Berkas\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
 Buka
 \begin_inset space ~
 \end_inset
@@ -4957,7 +5135,7 @@ Alt+e
  Kunci ikatan ini dapat diubah.
  Penjelasan terperinci dapat dibaca dari 
 \family sans
-Bantuan\SpecialChar \menuseparator
+Bantuan\SpecialChar menuseparator
 Perubahan
 \begin_inset space ~
 \end_inset
@@ -4966,12 +5144,14 @@ dan
 \begin_inset space ~
 \end_inset
 
-Pengaturan\SpecialChar \@.
+Pengaturan\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-LyX dapat membaca dokumen LaTeX.
+\SpecialCharNoPassThru LyX
+ dapat membaca dokumen \SpecialCharNoPassThru LaTeX
+.
  Silakan lihat di bab
 \begin_inset space ~
 \end_inset
@@ -4993,11 +5173,13 @@ Pemeriksa ejaaan, padanan kata, serta fasilitas statistik seperti penghitungan
 
 \begin_layout Itemize
 Fasilitas pembuatan indeks, nomenklatur atau daftar istilah juga ada di
- LyX.
+ \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Section
-LyX untuk pengguna LaTeX
+\SpecialCharNoPassThru LyX
+ untuk pengguna \SpecialCharNoPassThru LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:latexusers"
@@ -5008,23 +5190,33 @@ name "sec:latexusers"
 \end_layout
 
 \begin_layout Standard
-Apabila anda belum tahu sama sekali tentang LaTeX, anda tidak harus membaca
+Apabila anda belum tahu sama sekali tentang \SpecialCharNoPassThru LaTeX
+, anda tidak harus membaca
  bagian ini.
  Namun demikian jika anda ingin 
 \emph on
 mempelajari
 \emph default
- LaTeX, silakan teruskan membaca bab ini.
- Bagi yang sudah mengenal LaTeX dan sekarang akan menggunakan LyX, anda
- mungkin akan bertanya apakah yang anda lakukan di LaTeX bisa juga diterapkan
- di LyX.
- Jawabannya ringkas saja; LyX dapat menjalankan hampir semua yang bisa dikerjaka
-n LaTeX dan akan menyederhanakan sebagian besar perintah LaTeX.
+ \SpecialCharNoPassThru LaTeX
+, silakan teruskan membaca bab ini.
+ Bagi yang sudah mengenal \SpecialCharNoPassThru LaTeX
+ dan sekarang akan menggunakan \SpecialCharNoPassThru LyX
+, anda
+ mungkin akan bertanya apakah yang anda lakukan di \SpecialCharNoPassThru LaTeX
+ bisa juga diterapkan
+ di \SpecialCharNoPassThru LyX
+.
+ Jawabannya ringkas saja; \SpecialCharNoPassThru LyX
+ dapat menjalankan hampir semua yang bisa dikerjaka
+n \SpecialCharNoPassThru LaTeX
+ dan akan menyederhanakan sebagian besar perintah \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
 Buku ini bukanlah sekedar tutorial, kami akan membahas beberapa hal yang
- mungkin akan menarik perhatian bagi yang baru menggunakan LyX.
+ mungkin akan menarik perhatian bagi yang baru menggunakan \SpecialCharNoPassThru LyX
+.
  Namun demikian, agar buku 
 \emph on
 Tutorial
@@ -5047,26 +5239,35 @@ Obyek
 Tempelan
 \emph default
  dapat membantu anda mempelajari lebih lanjut berbagai penjelasan tentang
- perbedaan LyX dan LaTeX, serta berbagai teknik dan trik LaTeX untuk diterapkan
- di LyX.
+ perbedaan \SpecialCharNoPassThru LyX
+ dan \SpecialCharNoPassThru LaTeX
+, serta berbagai teknik dan trik \SpecialCharNoPassThru LaTeX
+ untuk diterapkan
+ di \SpecialCharNoPassThru LyX
+.
  
 \end_layout
 
 \begin_layout Subsection
-Perintah TeX
+Perintah \SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-Semua perintah TeX yang anda ketikkan di dokumen akan diteruskan langsung
- ke LaTeX, serta akan ditampilkan di layar kerja dengan warna merah.
- Untuk menuliskan perintah TeX dalam berkas LyX gunakan 
+Semua perintah \SpecialCharNoPassThru TeX
+ yang anda ketikkan di dokumen akan diteruskan langsung
+ ke \SpecialCharNoPassThru LaTeX
+, serta akan ditampilkan di layar kerja dengan warna merah.
+ Untuk menuliskan perintah \SpecialCharNoPassThru TeX
+ dalam berkas \SpecialCharNoPassThru LyX
+ gunakan 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Perintah
 \begin_inset space ~
 \end_inset
 
-TeX 
+\SpecialCharNoPassThru TeX
+ 
 \family default
 (tombol bantuan 
 \begin_inset Graphics
@@ -5077,7 +5278,8 @@ TeX
 \end_inset
 
 ).
- Perintah yang anda tuliskan dalam kotak inilah yang diteruskan ke LaTeX.
+ Perintah yang anda tuliskan dalam kotak inilah yang diteruskan ke \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -5085,7 +5287,7 @@ Dalam menuliskan rumus matematika (
 \family sans
 Sisipan
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Rumus
@@ -5101,10 +5303,14 @@ Matematika
 
 \end_inset
 
-), pada dasarnya menggunakan perintah TeX tetapi LyX mengaturnya dengan
+), pada dasarnya menggunakan perintah \SpecialCharNoPassThru TeX
+ tetapi \SpecialCharNoPassThru LyX
+ mengaturnya dengan
  cara berbeda.
- Apabila menggunakan sisipan perintah TeX, anda perlu menuliskan perintah
- TeX seperti biasanya yaitu menggunakan 
+ Apabila menggunakan sisipan perintah \SpecialCharNoPassThru TeX
+, anda perlu menuliskan perintah
+ \SpecialCharNoPassThru TeX
+ seperti biasanya yaitu menggunakan 
 \emph on
 backslash
 \emph default
@@ -5114,12 +5320,13 @@ backslash
 \emph default
  tidak akan dimunculkan, hanya semua rumus yang anda tuliskan akan dikenali
  dengan warna biru.
- Setelah selesai menuliskan perintah TeX kemudian mengetik 
+ Setelah selesai menuliskan perintah \SpecialCharNoPassThru TeX
+ kemudian mengetik 
 \family sans
 Spasi
 \family default
  atau karakter selain huruf, seperti angka, atau garis bawah, maka secara
- otomatis akan berubah menjadi MYSIWYM\SpecialChar \@.
+ otomatis akan berubah menjadi MYSIWYM\SpecialChar endofsentence
  Sebagai contoh, apabila anda mengetik
  
 \begin_inset Quotes eld
@@ -5139,7 +5346,7 @@ gamma
 \family sans
 Sisipan
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Rumus
@@ -5159,7 +5366,8 @@ Matematika
 \family sans
 Spa
 \family default
-si, LyX akan merubah perintah yang anda ketikkan 
+si, \SpecialCharNoPassThru LyX
+ akan merubah perintah yang anda ketikkan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5183,7 +5391,8 @@ gamma
 
  dan berwarna biru.
  Hal ini akan berlaku pada hampir semua makro matematika yang ada.
- Bagi para pemakai LaTeX yang biasa menuliskan perintah makro matematika
+ Bagi para pemakai \SpecialCharNoPassThru LaTeX
+ yang biasa menuliskan perintah makro matematika
  dapat bekerja lebih cepat daripada menggunakan 
 \family sans
 Kotak Bantuan Matematika
@@ -5193,19 +5402,26 @@ Kotak Bantuan Matematika
 
 \begin_layout Standard
 Ada satu kasus khusus dalam lingkungan rumus matematika, apabila anda mengetik
- tanda kurung kurawal pembuka dalam program TeX, maka otomatis tanda kurung
+ tanda kurung kurawal pembuka dalam program \SpecialCharNoPassThru TeX
+, maka otomatis tanda kurung
  pembuka 
 \emph on
 dan
 \emph default
  tanda kurung penutup akan muncul dengan warna merah, kemudian secara otomatis
- akan keluar dari mode program TeX.
- Dengan cara ini akan memudahkan menuliskan perintah LaTeX yang LyX tidak
- mengetahui dimana memerlukan informasi argumen dari suatu perintah LaTeX.
+ akan keluar dari mode program \SpecialCharNoPassThru TeX
+.
+ Dengan cara ini akan memudahkan menuliskan perintah \SpecialCharNoPassThru LaTeX
+ yang \SpecialCharNoPassThru LyX
+ tidak
+ mengetahui dimana memerlukan informasi argumen dari suatu perintah \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-LyX tidak bisa melakukan semua yang dapat dilakukan dalam LaTeX, terutama
+\SpecialCharNoPassThru LyX
+ tidak bisa melakukan semua yang dapat dilakukan dalam \SpecialCharNoPassThru LaTeX
+, terutama
  fungsi yang berkaitan dengan berbagai 
 \emph on
 fancy
@@ -5213,12 +5429,15 @@ fancy
  yang sifatnya tambahan, atau tidak semuanya WYSIWYM.
  Dalam hal ini 
 \family sans
-Perintah TeX
+Perintah \SpecialCharNoPassThru TeX
 \family default
  merupakan media untuk menerapkan dan menggunakan semua fleksibilitas yang
- ada di LaTeX dalam lingkungan LyX yang mempunyai kemudahan dalam penulisan
+ ada di \SpecialCharNoPassThru LaTeX
+ dalam lingkungan \SpecialCharNoPassThru LyX
+ yang mempunyai kemudahan dalam penulisan
  rumus matematika, tabel serta fasilitas lain yang sifatnya WYSIWYM.
- Anda bisa juga memanfaatkan semua paket LaTeX yang ada, dengan menuliskan
+ Anda bisa juga memanfaatkan semua paket \SpecialCharNoPassThru LaTeX
+ yang ada, dengan menuliskan
  misalnya 
 \family typewriter
 
@@ -5240,7 +5459,9 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Memuat Berkas LaTeX ke LyX — 
+Memuat Berkas \SpecialCharNoPassThru LaTeX
+ ke \SpecialCharNoPassThru LyX
+ — 
 \family typewriter
 tex2lyx
 \family default
@@ -5255,11 +5476,13 @@ name "sec:tex2lyx"
 \end_layout
 
 \begin_layout Standard
-Ada bisa mengimpor berkas LaTeX ke dalam LyX dari menu 
+Ada bisa mengimpor berkas \SpecialCharNoPassThru LaTeX
+ ke dalam \SpecialCharNoPassThru LyX
+ dari menu 
 \family sans
-Berkas\SpecialChar \menuseparator
-Impor\SpecialChar \menuseparator
-LaTeX
+Berkas\SpecialChar menuseparator
+Impor\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -5278,7 +5501,8 @@ dari berkas yang dikonversi
 \family typewriter
  foo.tex
 \family default
-, kemudian langsung membuka di jendela kerja LyX.
+, kemudian langsung membuka di jendela kerja \SpecialCharNoPassThru LyX
+.
  Anda bisa juga menjalankan program 
 \family typewriter
 tex2lyx
@@ -5300,8 +5524,10 @@ Program
 \family typewriter
  tex2lyx
 \family default
- akan mengkonversi sebagian besar perintah LaTeX, walaupun masih ada kemungkinan
- ada yang tidak dikonversi ke LyX.
+ akan mengkonversi sebagian besar perintah \SpecialCharNoPassThru LaTeX
+, walaupun masih ada kemungkinan
+ ada yang tidak dikonversi ke \SpecialCharNoPassThru LyX
+.
  Sangat disarankan setelah menjalankan 
 \family typewriter
 tex2lyx
@@ -5316,8 +5542,10 @@ Program
  tex2lyx
 \family default
  mempunyai penjelasan dan buku petunjuk sendiri.
- Anda perlu membacanya untuk mengenali perintah-perintah LaTeX serta lingkungan
- yang tidak bisa dikonversi ke LyX.
+ Anda perlu membacanya untuk mengenali perintah-perintah \SpecialCharNoPassThru LaTeX
+ serta lingkungan
+ yang tidak bisa dikonversi ke \SpecialCharNoPassThru LyX
+.
  Selain itu anda juga dapat mengenali kutu program yang ada (dan bagaimana
  mengatasinya), juga akan anda temukan penjelasan mengenai berbagai perintah
  tambahan untuk menjalankan 
@@ -5328,17 +5556,24 @@ tex2lyx
 \end_layout
 
 \begin_layout Subsection
-Konversi Berkas LyX ke LaTeX
+Konversi Berkas \SpecialCharNoPassThru LyX
+ ke \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Standard
-Apabila anda ingin menyimpan berkas LyX ke berkas LaTeX, misalnya anda ingin
- mengirimkan ke mitra kerja atau mitra penulis yang tidak memiliki LyX tetapi
- memahami LaTeX, maka anda perlu mengkonversi LyX ke LaTeX.
+Apabila anda ingin menyimpan berkas \SpecialCharNoPassThru LyX
+ ke berkas \SpecialCharNoPassThru LaTeX
+, misalnya anda ingin
+ mengirimkan ke mitra kerja atau mitra penulis yang tidak memiliki \SpecialCharNoPassThru LyX
+ tetapi
+ memahami \SpecialCharNoPassThru LaTeX
+, maka anda perlu mengkonversi \SpecialCharNoPassThru LyX
+ ke \SpecialCharNoPassThru LaTeX
+.
  Caranya adalah dari menu 
 \family sans
-Berkas\SpecialChar \menuseparator
-Expor\SpecialChar \menuseparator
+Berkas\SpecialChar menuseparator
+Expor\SpecialChar menuseparator
 LaT
 \begin_inset ERT
 status open
@@ -5361,12 +5596,16 @@ whatever.tex
 whatever.lyx
 \family default
  yang sedang anda sunting.
- Sebenarnya LyX selalu membuat berkas sementara dalam format LaTeX sebelum
- menampilkan hasil atau mencetak berkas LyX.
+ Sebenarnya \SpecialCharNoPassThru LyX
+ selalu membuat berkas sementara dalam format \SpecialCharNoPassThru LaTeX
+ sebelum
+ menampilkan hasil atau mencetak berkas \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Subsection
-LaTeX Preamble
+\SpecialCharNoPassThru LaTeX
+ Preamble
 \end_layout
 
 \begin_layout Subsubsection
@@ -5376,11 +5615,12 @@ Class Dokumen
 \begin_layout Standard
 Berbagai pengaturan dokumen dilakukan dari menu 
 \family sans
-Dokumen\SpecialChar \menuseparator
+Dokumen\SpecialChar menuseparator
 Pengaturan.
  D
 \family default
-ialog Class Dokumen sama halnya dengan perintah LaTeX 
+ialog Class Dokumen sama halnya dengan perintah \SpecialCharNoPassThru LaTeX
+ 
 \family typewriter
 
 \backslash
@@ -5408,7 +5648,8 @@ Sendiri
 \end_layout
 
 \begin_layout Subsubsection
-Penulisan LaTeX Preamble
+Penulisan \SpecialCharNoPassThru LaTeX
+ Preamble
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:preamble"
@@ -5419,17 +5660,20 @@ name "sec:preamble"
 \end_layout
 
 \begin_layout Standard
-Bagi yang biasa menggunakan LaTeX, seringkali anda menambahkan perintah
+Bagi yang biasa menggunakan \SpecialCharNoPassThru LaTeX
+, seringkali anda menambahkan perintah
  tertentu yang berada di bagian 
 \family sans
 Preamble
 \family default
- dari berkas LaTeX.
- Anda masih bisa menambahkan perintah di Preamble dalam LyX.
+ dari berkas \SpecialCharNoPassThru LaTeX
+.
+ Anda masih bisa menambahkan perintah di Preamble dalam \SpecialCharNoPassThru LyX
+.
  Caranya adalah dari menu 
 \family sans
-Documen\SpecialChar \menuseparator
-Pengaturan\SpecialChar \menuseparator
+Documen\SpecialChar menuseparator
+Pengaturan\SpecialChar menuseparator
 LaT
 \begin_inset ERT
 status open
@@ -5447,8 +5691,9 @@ eX
 Preamble
 \family default
  kemudian ketikkan perintah yang anda inginkan dalam kotak yang tersedia.
- Semua perintah yang ada disini akan dikirim langsung ke LaTeX yang didefinisika
-n sebagai bagian dari LaTeX
+ Semua perintah yang ada disini akan dikirim langsung ke \SpecialCharNoPassThru LaTeX
+ yang didefinisika
+n sebagai bagian dari \SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -5456,20 +5701,24 @@ Preamble.
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-LyX mempunyai fitur untuk BibTeX yang memungkinkan anda memanfaatkan basis
- data referensi bibliografi BibTeX untuk digunakan dalam LyX.
+\SpecialCharNoPassThru LyX
+ mempunyai fitur untuk Bib\SpecialCharNoPassThru TeX
+ yang memungkinkan anda memanfaatkan basis
+ data referensi bibliografi Bib\SpecialCharNoPassThru TeX
+ untuk digunakan dalam \SpecialCharNoPassThru LyX
+.
  Caranya adalah dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Daftar
 \begin_inset space ~
 \end_inset
 
-Isi\SpecialChar \menuseparator
+Isi\SpecialChar menuseparator
 Bibliografi
 \begin_inset space ~
 \end_inset
@@ -5486,16 +5735,20 @@ status open
 
 eX 
 \family default
-kemudian memilih berkas yang berisi basis data BibTeX.
- Anda mempunyai keleluasaan memuat berkas BibTeX yang anda gunakan, demikian
- pula anda boleh memilih gaya tulis BibTeX pilihan anda.
+kemudian memilih berkas yang berisi basis data Bib\SpecialCharNoPassThru TeX
+.
+ Anda mempunyai keleluasaan memuat berkas Bib\SpecialCharNoPassThru TeX
+ yang anda gunakan, demikian
+ pula anda boleh memilih gaya tulis Bib\SpecialCharNoPassThru TeX
+ pilihan anda.
 \end_layout
 
 \begin_layout Standard
-Setelah anda memuat berkas basis data BibTeX, anda akan bisa mengacu ke
+Setelah anda memuat berkas basis data Bib\SpecialCharNoPassThru TeX
+, anda akan bisa mengacu ke
  isi basis data dari menu 
 \family sans
-Sisipan\SpecialChar \menuseparator
+Sisipan\SpecialChar menuseparator
 Acuan
 \family default
  (lihat
@@ -5515,8 +5768,10 @@ reference "sec:bibliographies"
 
 ).
  Di kotak dialog Acuan anda akan melihat semua data referensi dari berkas
- BibTeX yang sudah anda muat.
- LyX akan mengatur sistem acuan.
+ Bib\SpecialCharNoPassThru TeX
+ yang sudah anda muat.
+ \SpecialCharNoPassThru LyX
+ akan mengatur sistem acuan.
  
 \end_layout
 
@@ -5529,21 +5784,27 @@ Errors
 \end_layout
 
 \begin_layout Standard
-Kadang-kadang ketika anda menuliskan perintah LaTeX dalam dokumen, terjadi
- kesalahan, sehingga baik LyX ataupun LaTeX tidak bisa mengenal atau menjalankan
+Kadang-kadang ketika anda menuliskan perintah \SpecialCharNoPassThru LaTeX
+ dalam dokumen, terjadi
+ kesalahan, sehingga baik \SpecialCharNoPassThru LyX
+ ataupun \SpecialCharNoPassThru LaTeX
+ tidak bisa mengenal atau menjalankan
  perintah yang anda definisikan.
- Apabila kasus seperti terjadi LyX akan membuka jendela dialog
+ Apabila kasus seperti terjadi \SpecialCharNoPassThru LyX
+ akan membuka jendela dialog
 \family sans
  Kesalahan
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family default
 .
  Dengan cara meng klik pesan kesalahan yang ada di dialog, akan membawa
- anda ke tempat teks dalam berkas LyX anda yang menyebabkan kesalahan terjadi.
- Pada dialog tersebut akan ada penjelasan detail dari pesan kesalahan LaTeX.
+ anda ke tempat teks dalam berkas \SpecialCharNoPassThru LyX
+ anda yang menyebabkan kesalahan terjadi.
+ Pada dialog tersebut akan ada penjelasan detail dari pesan kesalahan \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \end_body

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/el/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,16 +38,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -114,13 +115,13 @@
 \begin_layout Title
 Εισαγωγή στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
 από την Ομάδα του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  
 \begin_inset Foot
@@ -131,7 +132,7 @@ status collapsed
 Εάν έχετε σχόλια ή διορθώσεις λαθών, παρακαλούμε στείλτε τα στη λίστα Τεκμηρίωση
 ς 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 : 
 \lang english
@@ -161,17 +162,18 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Η Φιλοσοφία του LyX
+Η Φιλοσοφία του \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Subsection
-Τι είναι το LyX?
+Τι είναι το \SpecialCharNoPassThru LyX
+?
 \end_layout
 
 \begin_layout Standard
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι ένα σύστημα προετοιμασίας εγγράφων.
  Ξεχωρίζει με τη δυνατότητα δημιουργίας πολύπλοκων τεχνικών και επιστημονικών
@@ -188,14 +190,14 @@ LyX
  Μερικά παραδείγματα της χρήσης του: μνημόνια, επιστολές, πραγματείες και
  διατριβές, σημειώσεις παραδόσεων, εγχειρίδια σεμιναρίων, πρακτικά συνεδρίων,
  τεκμηριώσεις λογισμικού βιβλία, άρθρα επιστημονικών περιοδικών, σενάρια
- θεάτρου και κινηματογράφου, επιχειρηματικές προτάσεις, παρουσιάσεις \SpecialChar \ldots{}
+ θεάτρου και κινηματογράφου, επιχειρηματικές προτάσεις, παρουσιάσεις \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Standard
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι ένα πρόγραμμα που παρέχει μια νέα προσέγγιση στη συγγραφή εγγράφων
  με Η/Υ χρησιμοποιώντας μια μέθοδο περιγραφικής γλώσσας, μια προσέγγιση
@@ -213,7 +215,7 @@ LyX
  Η τυπογραφική δουλειά γίνεται ως επί το πλείστον από τον υπολογιστή, όχι
  τον συγγραφέα; με το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , ο συγγραφέας μπορεί να συγκεντρωθεί στα περιεχόμενα του έργου του.
 \end_layout
@@ -221,7 +223,7 @@ LyX
 \begin_layout Standard
 Μέρος της αρχικής πρόκλησης της χρήσης του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  προέρχεται από την αλλαγή στη σκέψη του τι, εσείς ο χρήστης, πρέπει να
  κάνετε.
@@ -288,13 +290,13 @@ What You See Is All You Get
 \begin_layout Standard
 Εδώ είναι που το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  διαφέρει από έναν συνηθισμένο επεξεργαστή κειμένου.
  Δεν ασχολείστε με τη θέση του κάθε χαρακτήρα.
  Λέτε στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  
 \emph on
@@ -302,7 +304,7 @@ LyX
 \emph default
  και το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  αναλαμβάνει τα υπόλοιπα, ακολουθώντας ένα σύνολο κανόνων που ονομάζονται
  
@@ -365,7 +367,7 @@ status collapsed
 \begin_layout Standard
 Στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , πηγαίνετε στο πλαίσιο πολλαπλής επιλογής στην αριστερή άκρη της μπάρας
  κουμπιών και επιλέγετε 
@@ -390,7 +392,7 @@ LyX
  Και αν εισαγάγετε αναφορές προς αυτό το τμήμα σωστά (εισάγοντας λεζάντες
  ενδοαναφοράς), το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  θα τις ανανεώσει όλες αυτόματα σε όλη την έκταση του αρχείου, έτσι ώστε
  ποτέ να μη γράψετε ξανά αριθμούς τμημάτων.
@@ -430,7 +432,7 @@ pt
 1.
  Αυτό το πρόβλημα ούτε καν υφίσταται στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
  Ο υπολογιστής φροντίζει για όλα τα δευτερεύοντα ζητήματα σχετικά με το
@@ -448,7 +450,7 @@ LyX
  αντικειμένων, κοκ.
  Στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  έχετε μόνο δύο πράγματα στο μυαλό σας, τι είδους λίστα είναι και τι θα
  βάλετε μέσα.
@@ -458,7 +460,7 @@ LyX
 \begin_layout Standard
 Επομένως, η βασική ιδέα πίσω από το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι: ορίστε 
 \emph on
@@ -483,7 +485,7 @@ What You See Is What You Get
 
 , το μοντέλο του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι 
 \begin_inset Quotes eld
@@ -519,7 +521,7 @@ WYSIWYM
  Είναι μια ισχυρή ιδέα που απλοποιεί δραματικά το μηχανισμό συγγραφής εγγράφων.
  Γι' αυτό και το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  δεν είναι τόσο καλό για τη δημιουργία αφισών και εντύπων διανομής.
  Σε αυτές τις περιπτώσεις, θέλετε όντως να ορίσετε ακριβώς πού θα πάει το
@@ -527,7 +529,7 @@ LyX
  κλπ.
  Αυτό δε σημαίνει ότι το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  υπολείπεται κάποιας βασικής λειτουργίας.
  Σημαίνει απλά ότι δεν είναι το καταλληλότερο εργαλείο για αυτή τη δουλειά
@@ -537,7 +539,7 @@ LyX
 \begin_layout Subsection
 Διαφορές μεταξύ 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  και Άλλων Επεξεργαστών Κειμένου
 \begin_inset Argument 1
@@ -558,7 +560,7 @@ texorpdfstring{
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 
 \begin_inset ERT
@@ -566,7 +568,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-}{LyX}
+}{\SpecialCharNoPassThru LyX
+}
 \end_layout
 
 \end_inset
@@ -582,7 +585,7 @@ status collapsed
 \begin_layout Standard
 Αυτή είναι μια λίστα πραγμάτων που δεν θα βρείτε στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 :
 \end_layout
@@ -623,13 +626,13 @@ Space
 Οι στηλοθέτες, μαζί με τον χάρακα που δείχνει τη θέση των αντικειμένων στη
  σελίδα, είναι άχρηστα στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
  Το πρόγραμμα ασχολείται με τη χωροταξία της σελίδας, όχι εσείς.
  Το ίδιο ισχύει και για τα κενά διαστήματα; Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  τα προσθέτει όπου χρειάζονται, ανάλογα με το περιεχόμενο.
  Η αδυναμία πληκτρολόγησης δύο συνεχόμενων κενών γραμμών θα είναι ενοχλητική
@@ -643,7 +646,7 @@ WYSIWYM
 \begin_layout Standard
 Αυτά είναι μερικά πράγματα που υπάρχουν στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , αλλά δεν χρησιμοποιούνται με τον τρόπο που νομίζετε:
 \end_layout
@@ -683,12 +686,12 @@ LyX
 \begin_layout Standard
 Αν και υπάρχουν στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , γενικά δεν τα χρειάζεστε.
  Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  αναλαμβάνει όλα αυτά για εσάς, ανάλογα με το τι κάνετε.
  Τα διαφορετικά τμήματα του εγγράφου τίθενται αυτόματα σε διαφορετική μορφή
@@ -699,7 +702,7 @@ LyX
  Γενικά, οι αποστάσεις μεταξύ γραμμών, λέξεων και παραγράφων είναι μεταβλητές
  και ελεγχόμενες από το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
 \begin_inset Foot
@@ -709,7 +712,7 @@ status collapsed
 Υπάρχουν τρόποι για να τα ρυθμίσετε όλα αυτά (μόνο μερικά απαιτούν γνώσεις
  
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 ), είτε για το σύνολο ενός έγγραφου, είτε για μια συγκεκριμένη περιοχή του.
  Δείτε τον 
@@ -731,11 +734,11 @@ LaTeX
 \begin_layout Standard
 Τέλος, υπάρχουν μερικές περιοχές όπου πιστεύουμε ότι το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  (και το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 ) ξεπερνούν πολλούς επεξεργαστές κειμένου:
 \end_layout
@@ -770,11 +773,11 @@ WYSIWYM
 .
  Ωστόσο, μόλις πρόσφατα κατάφεραν να το υλοποιήσουν, ενώ το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι βασισμένο στο σύστημα προετοιμασίας εγγράφων 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  που υπάρχει ήδη για περισσότερα από 20 χρόνια, και 
 \emph on
@@ -784,13 +787,14 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-Τι είναι το LaTeX?
+Τι είναι το \SpecialCharNoPassThru LaTeX
+?
 \end_layout
 
 \begin_layout Standard
 Το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  είναι ένα σύστημα προετοιμασίας εγγράφων σχεδιασμένο από τον 
 \lang english
@@ -808,7 +812,7 @@ status collapsed
 
 \emph on
 \lang english
-A Guide to LaTeX2e
+A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph default
 \lang greek
 ,
@@ -827,7 +831,7 @@ Patrick Daly
 \emph on
 Οδηγού Χρήστη
 \emph default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
@@ -835,7 +839,7 @@ Patrick Daly
 
  Χτίστηκε με τη τυπογραφική γλώσσα 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
 , που δημιουργήθηκε από τον 
 \lang english
@@ -844,7 +848,7 @@ Donald Knuth
  το 1984.
  Το 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
  παίρνει μια ακολουθία από τυπογραφικές εντολές, γραμμένες σε ένα σενάριο
  σε ένα αρχείο 
@@ -867,13 +871,13 @@ Knuth
  σαν αλγόριθμοι και ενσωματώθηκαν στο 
 \emph on
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \emph default
 \lang greek
 , εξ' ου και η άριστη εμφάνιση των εκτυπώσεων.
  Αυτό που προέρχεται άμεσα από το 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
  είναι η μορφή εγγράφων 
 \emph on
@@ -912,13 +916,13 @@ PostScript
 \begin_layout Standard
 Το 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
  δεν είναι μόνο μια τυπογραφική μηχανή; επιτρέπει επιπλέον τον ορισμό μακροεντολ
 ών.
  Οι περισσότεροι χρήστες του 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
  χρησιμοποιούν στην πραγματικότητα ένα πακέτο μακροεντολών που δημιούργησε
  ο 
@@ -941,7 +945,7 @@ Lamport
  με έναν ομοιόμορφο, συνεπή τρόπο.
  Έτσι γεννήθηκε το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
 \end_layout
@@ -949,53 +953,53 @@ LaTeX
 \begin_layout Standard
 Τώρα, παράλληλα με την ανάπτυξη του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 , κάποιοι άλλοι δημιουργούσαν τα δικά τους πακέτα μακροεντολών για το 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
 , για τη δημιουργία διαφανειών ή άρθρων για μαθηματικά περιοδικά κ.ο.κ.
  Κάποιοι χρησιμοποίησαν απευθείας τις δυνατότητες του 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
  για να το κάνουν, άλλοι ξεκίνησαν να τροποποιούν το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
  Σε μια προσπάθεια να ενοποιηθεί το χάος, μια ομάδα 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 -ιανών άρχισε να δουλεύει πάνω στο 
 \lang english
-LaTeX2e
+\SpecialCharNoPassThru LaTeX2e
 \lang greek
 , την τρέχουσα έκδοση του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 , στα τέλη της δεκαετίας του 1980.
  Αυτή η νέα έκδοση του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  έχει εντολές που παρέχουν ένα ευκολότερο στη χρήση περιβάλλον κατασκευής
  μακροεντολών 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
 , βοήθεια στη χρήση νέων γραμματοσειρών, κ.ο.κ.
  Στην πραγματικότητα, το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  είναι μια αρκετά εκτεταμένη γλώσσα από μόνο του! Χρήστες απ' όλον τον κόσμο
  δημιουργούν τα δικά τους πρόσθετα για το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  πέρα από το τυποποιημένα.
 \end_layout
@@ -1003,7 +1007,7 @@ LaTeX
 \begin_layout Standard
 Υπάρχουν δύο τρόποι για να επεκταθεί το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 : κλάσεις και στυλ.
  Μια 
@@ -1012,10 +1016,10 @@ LaTeX
 \emph default
  είναι ένα σύνολο μακροεντολών 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  που περιγράφουν έναν νέο τύπο εγγράφου, όπως ένα βιβλίο ή ένα άρθρο.
- Υπάρχουν κλάσεις για διαφάνειες, για περιοδικά φυσικής και μαθηματικών\SpecialChar \ldots{}
+ Υπάρχουν κλάσεις για διαφάνειες, για περιοδικά φυσικής και μαθηματικών\SpecialChar ldots
 
  πολλά πανεπιστήμια έχουν μάλιστα ειδική κλάση για τη μορφή των διατριβών
  τους! Ένα 
@@ -1030,12 +1034,12 @@ LaTeX
  που κάθε έγγραφο μπορεί να χρησιμοποιεί.
  Για παράδειγμα, το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  ελέγχει τα περιθώρια σελίδων και τα διαστήματα γραμμών μέσω δύο διαφορετικών
  αρχείων στυλ 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  σχεδιασμένων για αυτόν τον σκοπό.
  Υπάρχουν αρχεία στυλ για ένα σωρό πράγματα: εκτύπωση ετικετών ή φακέλων,
@@ -1061,7 +1065,7 @@ status open
 
 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
 : Τυπογραφική γλώσσα με δυνατότητες μακροεντολών.
 \end_layout
@@ -1078,29 +1082,29 @@ status open
 
 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 : Πακέτο μακροεντολών βασισμένο στο 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang greek
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
 κλάσεις: Περιγραφές τύπων εγγράφων, με χρήση 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
 στυλ: Τροποποιούν την προεπιλεγμένη συμπεριφορά του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  κατά κάποιον τρόπο.
 \end_layout
@@ -1117,7 +1121,7 @@ status open
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 : Οπτικός, 
 \lang english
@@ -1125,7 +1129,7 @@ WYSIWYM
 \lang greek
  επεξεργαστής κειμένου που χρησιμοποιεί 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  για τη στοιχειοθεσία.
 \end_layout
@@ -1133,21 +1137,21 @@ LaTeX
 \begin_layout Standard
 Αυτή η ενότητα επιχειρεί να καταδείξει τις διαφορές μεταξύ 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  και άλλων επεξεργαστών κειμένου.
  Με απλά λόγια, το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  είναι η διαφορά.
  Χρησιμοποιώντας το 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  ως θεμέλιο, το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  σας βοηθά να σκέφτεστε περισσότερο
 \emph on
@@ -1169,7 +1173,7 @@ LyX
 Για να διευκολύνουμε την απάντηση των ερωτήσεών σας και την περιγραφή όλων
  των χαρακτηριστικών του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , χωρίσαμε την τεκμηρίωση σε πολλά διαφορετικά αρχεία.
  Καθένα έχει το δικό του σκοπό, όπως περιγράφεται παρακάτω.
@@ -1181,14 +1185,14 @@ LyX
 \begin_layout Standard
 Η ανάπτυξη του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , ελπίζουμε, δε θα σταματήσει ποτέ, γι' αυτό κάποια μέρη της τεκμηρίωσης
  ίσως να είναι ανολοκλήρωτα ή λίγο ξεπερασμένα, αν και προσπαθούμε να τα
  ενημερώνουμε.
  Όπως και το υπόλοιπο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , τα εγχειρίδια χρήσης είναι προϊόν εργασίας μιας ομάδας εθελοντών που έχουν
  
@@ -1259,12 +1263,12 @@ type "mailto:"
 Κάποιοι ίσως να έχουν εκτυπώσει τα εγχειρίδια.
  Άλλοι ίσως να τα διαβάζουν μέσα από το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
  Υπάρχουν μερικές διαφορές μεταξύ ενός αρχείου 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  και της εκτυπωμένης εκδοχής του.
  Καταρχάς, ο τίτλος βρίσκεται απλά στην κορυφή του εγγράφου, όχι μορφοποιημένος
@@ -1283,7 +1287,7 @@ LyX
 \family sans
 Πλοήγηση
 \family default
-, όπου τα περιεχόμενα εμφανίζονται αυτόματα\SpecialChar \@.
+, όπου τα περιεχόμενα εμφανίζονται αυτόματα\SpecialChar endofsentence
 
 \end_layout
 
@@ -1349,7 +1353,7 @@ Typewriter
 \lang greek
  χρησιμοποιείται για ονόματα αρχείων και προγραμμάτων, κώδικα 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  και συναρτήσεις.
 \end_layout
@@ -1380,7 +1384,7 @@ Sans Serif
 \series default
  χρησιμοποιείται για κώδικα 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
 \end_layout
@@ -1482,7 +1486,7 @@ F1
 \begin_inset Quotes erd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Quotes eld
 \end_inset
@@ -1778,7 +1782,7 @@ Enter
  και κάποια έχουν δύο διαφορετικά πλήκτρα.
  Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  τα αντιμετωπίζει σαν ένα, γι' αυτό θα χρησιμοποιούμε τα 
 \family sans
@@ -1826,7 +1830,7 @@ reference "cap:Units-for-image"
 
  επεξηγεί όλες τις διαθέσιμες μονάδες στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
 \end_layout
@@ -2428,16 +2432,16 @@ em)
 
 Εγχειρίδιο Εάν είστε νέος στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , και δεν έχετε χρησιμοποιήσει 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  προηγουμένως, θα πρέπει να ξεκινήσετε από εδώ.
  Εάν έχετε χρησιμοποιήσει 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  στο παρελθόν, θα πρέπει πάραυτα να διαβάσετε το 
 \emph on
@@ -2449,11 +2453,11 @@ LaTeX
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  για χρήστες 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
 \begin_inset Quotes erd
@@ -2474,7 +2478,7 @@ LaTeX
 \emph default
  από τις βασικές λειτουργίες και τα διαθέσιμα χαρακτηριστικά του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
  Το κύριο εγχειρίδιο χρήσης προϋποθέτει την ανάγνωση του 
@@ -2498,7 +2502,7 @@ LyX
  σημειώσεων, λιστών προγραμμάτων, και κουτιών.
  Περιλαμβάνει επιπλέον πολλά κόλπα των μαστόρων του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
 \end_layout
@@ -2524,7 +2528,7 @@ LaTeX
 .
  Τεκμηριώνει τον τρόπο χρήσης άμεσων εντολών 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 , πρόσθετων περιγραμμάτων και χαρακτηριστικών επεξεργασίας ειδικού σκοπού.
 \end_layout
@@ -2532,21 +2536,21 @@ LaTeX
 \begin_layout Description
 Προσαρμογή Μια περιγραφή των προχωρημένων χαρακτηριστικών του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , συμπεριλαμβανομένης της προσαρμογής της γενικής συμπεριφοράς του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
-\SpecialChar \@.
+\SpecialChar endofsentence
  Αυτή περιέχει θέματα όπως σύνδεση πλήκτρων, διεθνοποίηση και αρχεία διαμόρφωσης.
  Επιπλέον, πληροφορίες για τα αρχεία διάταξης που απαιτούνται ώστε το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  να υποστηρίζει κλάσεις ή πακέτα του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
 \end_layout
@@ -2554,7 +2558,7 @@ LaTeX
 \begin_layout Description
 Συντομεύσεις Πίνακες με τις τρέχουσες ορισμένες συντομεύσεις του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
 \end_layout
@@ -2566,16 +2570,16 @@ LyX
 
 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  ερευνά το σύστημά σας κατά την εγκατάσταση Αυτό το αρχείο περιέχει πληροφορίες
  για το τί έμαθε το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  για την εγκατάσταση σας.
  Ελέγξτε το για να δείτε εάν σας λείπει κάτι που θα θέλατε.
@@ -2614,14 +2618,14 @@ LyX
 \align center
 Εάν είστε καινούργιος στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , διαβάστε το 
 \emph on
 Διδακτικό Εγχειρίδιο
 \emph default
 .
- Τώρα\SpecialChar \@.
+ Τώρα\SpecialChar endofsentence
 
 \end_layout
 
@@ -2637,7 +2641,8 @@ LyX
 \end_layout
 
 \begin_layout Section
-Συνεισφορά στο LyX Project
+Συνεισφορά στο \SpecialCharNoPassThru LyX
+ Project
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
@@ -2648,13 +2653,13 @@ name "sec:Contrib"
 \end_layout
 
 \begin_layout Subsection
-Συνεισφορά στο LyX
+Συνεισφορά στο \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι στο μεγαλύτερο μέρος του γραμμένο σε 
 \lang english
@@ -2662,7 +2667,7 @@ C++
 \lang greek
  (ο εισαγωγέας 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  είναι γραμμένος σε 
 \lang english
@@ -2680,19 +2685,19 @@ Python
 \begin_layout Standard
 Χρησιμοποιώντας το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , ίσως συναντήσετε κάποια συμπεριφορά που να τη θεωρήσετε εσφαλμένη.
  Καταστροφικά σφάλματα, αν και σπάνια, μπορούν να συμβούν.
  Τα προβλήματα στη διεπαφή χρήστη θεωρούνται μέγιστα σφάλματα από την ομάδα
  του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 : ιδιαίτερα βοηθητικές είναι οι επισημάνσεις για τμήματα της διεπαφής του
  
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  που είτε σας μπερδεύουν, είτε δεν είναι ξεκάθαρα.
 \end_layout
@@ -2700,7 +2705,7 @@ LyX
 \begin_layout Standard
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  έχει ένα σύστημα παρακολούθησης σφαλμάτων, που μπορείτε να βρείτε στο 
 \family typewriter
@@ -2744,7 +2749,7 @@ type "mailto:"
  Αρχεία αυτής της λίστας είναι προσπελάσιμα από την κύρια ιστοσελίδα του
  
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , 
 \family typewriter
@@ -2769,7 +2774,7 @@ http://www.lyx.org/
 \begin_layout Standard
 Μια αξιοποιήσιμη αναφορά σφάλματος περιλαμβάνει την έκδοση του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  με την οποία αντιμετωπίζετε πρόβλημα.
  Ακριβείς, λεπτομερείς περιγραφές προτιμώνται - όσο περισσότερο χρόνο ξοδεύουν
@@ -2780,7 +2785,7 @@ LyX
  σας, και, εάν σχετίζονται, τις εκδόσεις εξωτερικών προγραμμάτων που χρησιμοποιε
 ί το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .
  Εάν είναι πρόβλημα μεταγλώττισης ή ρύθμισης, συμπεριλάβετε και το αρχείο
@@ -2800,11 +2805,11 @@ config.log
 \begin_layout Standard
 Εάν έχετε κάνει αλλαγές στον κώδικα του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  που θεωρείτε ότι θα έπρεπε να γίνουν τμήμα του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , στείλτε τις ως αρχείο 
 \lang english
@@ -2821,11 +2826,11 @@ diff
 \begin_layout Standard
 Η τεκμηρίωση του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι εκτενής; ωστόσο το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  αναπτύσσετε συνεχώς, και κάθε νέα έκδοση προσθέτει καινούργια χαρακτηριστικά.
  Ίσως θεωρήσετε ότι κάποια τεκμηρίωση επιδέχεται βελτίωση.
@@ -2861,11 +2866,12 @@ type "mailto:"
 \begin_layout Standard
 Το έργο της Τεκμηρίωσης του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , όπως οτιδήποτε στο 
 \lang english
-LyX project
+\SpecialCharNoPassThru LyX
+ project
 \lang greek
 , καλοδέχεται οποιαδήποτε βοήθεια! Εάν ενδιαφέρεστε να συνεισφέρετε στο
  έργο της Τεκμηρίωσης, πρέπει να κάνετε τα ακόλουθα:
@@ -2874,7 +2880,7 @@ LyX project
 \begin_layout Enumerate
 Κατεβάστε την πιο πρόσφατη έκδοση της Τεκμηρίωσης του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  από 
 \begin_inset Newline newline

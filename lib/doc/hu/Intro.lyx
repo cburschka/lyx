@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/hu/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!! 
@@ -37,16 +38,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -112,11 +113,13 @@
 \begin_body
 
 \begin_layout Title
-Bevezetés a LyX használatába
+Bevezetés a \SpecialCharNoPassThru LyX
+ használatába
 \end_layout
 
 \begin_layout Author
-Készítette: a LyX csapat
+Készítette: a \SpecialCharNoPassThru LyX
+ csapat
 \shape italic
 \size small
 
@@ -128,7 +131,8 @@ status collapsed
 \end_inset
 
 Amennyiben megjegyzése vagy hibajavítási javaslatai lennének, úgy kérem
- küldje azokat a LyX dokumentációs levelezési listára 
+ küldje azokat a \SpecialCharNoPassThru LyX
+ dokumentációs levelezési listára 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -158,15 +162,18 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-A LyX filozófiája
+A \SpecialCharNoPassThru LyX
+ filozófiája
 \end_layout
 
 \begin_layout Subsection
-Mi a LyX?
+Mi a \SpecialCharNoPassThru LyX
+?
 \end_layout
 
 \begin_layout Standard
-A LyX egy dokumentum előkészítő rendszer.
+A \SpecialCharNoPassThru LyX
+ egy dokumentum előkészítő rendszer.
  Segítségével, nagyméretű és bonyolult műszaki és tudományos cikkeket készíthetü
 nk, képletekkel, keresztreferenciákkal, irodalomjegyzékkel, tárgymutatóval,
  stb.
@@ -182,12 +189,13 @@ nk, képletekkel, keresztreferenciákkal, irodalomjegyzékkel, tárgymutatóval,
  disszertációkat, előadás-jegyzeteket, tankönyveket, konferencia-jegyzőkönyveket
 , program dokumentációkat, könyveket, újságcikkeket hivatkozott tudományos
  folyóiratokban, színházi és film forgatókönyveket, üzleti javaslatokat,
- prezentációkat \SpecialChar \ldots{}
+ prezentációkat \SpecialChar ldots
  
 \end_layout
 
 \begin_layout Standard
-A LyX, a számítógépes szövegszerkesztés egy modern megközelítését alkalmazza,
+A \SpecialCharNoPassThru LyX
+, a számítógépes szövegszerkesztés egy modern megközelítését alkalmazza,
  jelölő nyelvet használva, amellyel megtöri a régi 
 \begin_inset Quotes pld
 \end_inset
@@ -200,11 +208,13 @@ A LyX, a számítógépes szövegszerkesztés egy modern megközelítését alka
  Azoknak a szerzőknek készült, akik művüknek professzionális kinézetet szeretnén
 ek minimális energiabefektetéssel anélkül, hogy nyomdai szakértőkké válnának.
  A formázás munkáját a számítógép végezni el helyettünk, nem a szerző.
- A LyX használata közben a szerző, a művére tud koncentrálni.
+ A \SpecialCharNoPassThru LyX
+ használata közben a szerző, a művére tud koncentrálni.
 \end_layout
 
 \begin_layout Standard
-A használatból eredő kezdeti kihívás, a LyX másfajta működéséből adódik,
+A használatból eredő kezdeti kihívás, a \SpecialCharNoPassThru LyX
+ másfajta működéséből adódik,
  ezt kell önnek megértenie.
  Régen, szövegíráshoz csak írógépeink voltak, megtanultuk hogyan tudjuk
  kihozni belőlük amit csak lehet.
@@ -310,13 +320,16 @@ WYSIAYG
 \end_layout
 
 \begin_layout Standard
-Ez az, ahol a LyX különbözik egy szokásos szövegszerkesztőtől.
+Ez az, ahol a \SpecialCharNoPassThru LyX
+ különbözik egy szokásos szövegszerkesztőtől.
  Nem kell törődnie azzal, melyik betű hova fog kerülni.
- Elmondja a LyX-nek 
+ Elmondja a \SpecialCharNoPassThru LyX
+-nek 
 \emph on
 mi az amit akar
 \emph default
- és a LyX felügyeli a többit, követve a szabályok csoportját, amit 
+ és a \SpecialCharNoPassThru LyX
+ felügyeli a többit, követve a szabályok csoportját, amit 
 \emph on
 stílus
 \emph default
@@ -375,7 +388,8 @@ Bevezetés
 \end_layout
 
 \begin_layout Standard
-A LyX-ben a legördülő-menüben az eszköztár bal szélén kiválassza a 
+A \SpecialCharNoPassThru LyX
+-ben a legördülő-menüben az eszköztár bal szélén kiválassza a 
 \family sans
 Szakasz
 \family default
@@ -396,7 +410,8 @@ Igen, ez minden.
  Amennyiben kivág és beilleszt valahova egy fejezetet, automatikusan újra
  lesz számozva – mindenütt.
  Amennyiben a hivatkozásokat helyesen viszi be ehhez a szakaszhoz (beszúrva
- a kereszt-referencia elem-et), a LyX automatikusan frissíteni fogja ezeket
+ a kereszt-referencia elem-et), a \SpecialCharNoPassThru LyX
+ automatikusan frissíteni fogja ezeket
  az egész fájlban, így sohasem fog fejezet számot beírni, sehova.
 \end_layout
 
@@ -417,7 +432,8 @@ fejezet címét egy másmilyen betűvel, mint amit az 1.
 \end_inset
 
 fejezet-hez használt.
- Ez a probléma a LyX-ben nem létezik.
+ Ez a probléma a \SpecialCharNoPassThru LyX
+-ben nem létezik.
  A számítógép gondoskodik azon ostoba információk nyilvántartásáról, hogy
  milyen dolognak, milyen méretűnek kell lennie, nem pedig ön.
  Ebben a számítógép nagyon jó.
@@ -430,13 +446,15 @@ Itt egy másik példa.
  Ki kell találnia hova rakja címkét a lista egyes elemeihez, annak milyen
  címkéje kell legyen, és mennyi üres sort kell rakni az elemek közé, és
  így tovább.
- LyX használatakor, két dolgot kell észben tartania: milyen lista ez és
+ \SpecialCharNoPassThru LyX
+ használatakor, két dolgot kell észben tartania: milyen lista ez és
  mi az amit bele akar írni.
  Ez minden.
 \end_layout
 
 \begin_layout Standard
-A LyX alapötlete: add meg 
+A \SpecialCharNoPassThru LyX
+ alapötlete: add meg 
 \emph on
 mit
 \emph default
@@ -482,7 +500,8 @@ WYSIWYG
 
 \end_inset
 
- helyett, a LyX modellje: 
+ helyett, a \SpecialCharNoPassThru LyX
+ modellje: 
 \begin_inset Quotes pld
 \end_inset
 
@@ -529,25 +548,29 @@ WYSIWYM
 
  Ez a nagyszerű ötlet, nagymértékben csökkenti a dokumentumok elkészítésének
  a nehézségeit.
- Szintén emiatt mondjuk, miért nem túl jó választás a LyX, poszterek és
+ Szintén emiatt mondjuk, miért nem túl jó választás a \SpecialCharNoPassThru LyX
+, poszterek és
  röplapok készítésére – ezekben az esetekben, ön 
 \emph on
 pontosan
 \emph default
  akarja definiálni minden pontos elhelyezkedését, azonban nincsenek olyan
  funkcionális egységek, mint bekezdések, fejezetek, stb.
- Ez nem jelenti azt, hogy a LyX-ből hiányoznak fontos funkciók.
+ Ez nem jelenti azt, hogy a \SpecialCharNoPassThru LyX
+-ből hiányoznak fontos funkciók.
  Egyszerűen csak azt jelenti, hogy nem ez a legjobb eszköz erre a munkára
  – ugye nem a csavarhúzóját használja egy szeg falba veréséhez.
 \end_layout
 
 \begin_layout Subsection
-Eltérések a LyX és a többi szövegszerkesztő között
+Eltérések a \SpecialCharNoPassThru LyX
+ és a többi szövegszerkesztő között
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-LyX és a többi szövegszerkesztő
+\SpecialCharNoPassThru LyX
+ és a többi szövegszerkesztő
 \end_layout
 
 \end_inset
@@ -556,7 +579,8 @@ LyX és a többi szövegszerkesztő
 \end_layout
 
 \begin_layout Standard
-A következő dolgokat nem fogja megtalálni a LyX-ben:
+A következő dolgokat nem fogja megtalálni a \SpecialCharNoPassThru LyX
+-ben:
 \end_layout
 
 \begin_layout Itemize
@@ -581,16 +605,19 @@ Szóköz
 
 \begin_layout Standard
 Tabulátor pozíciók, a vonalzóval egyetemben a papíron elfoglalt pozíciókat
- mutatva, haszontalan dolgok a LyX-ben.
+ mutatva, haszontalan dolgok a \SpecialCharNoPassThru LyX
+-ben.
  A program gondoskodik arról, mi hova kerül a papíron, nem ön.
- Az extra térköz szintén hasonló, a LyX szükség esetén beállítja, természetesen
+ Az extra térköz szintén hasonló, a \SpecialCharNoPassThru LyX
+ szükség esetén beállítja, természetesen
  a környezettől függően.
  Két üres sor bevitelének lehetetlensége először kicsit bosszantóan hat,
  azonban miután áttérünk a WYSIWYM gondolkodásra megértjük ezt.
 \end_layout
 
 \begin_layout Standard
-Néhány dolog, ami ugyan létezik a LyX-ben, de mégis másként használjuk őket,
+Néhány dolog, ami ugyan létezik a \SpecialCharNoPassThru LyX
+-ben, de mégis másként használjuk őket,
  mint ahogy elképzeli:
 \end_layout
 
@@ -619,8 +646,10 @@ Betűstílusok (félkövér, dőlt, aláhúzott, stb.)
 \end_layout
 
 \begin_layout Standard
-Habár mindezek léteznek a LyX-ben, általában nincs rájuk szüksége.
- A LyX gondoskodni fog ezekről a dolgokról, függően attól, hogy éppen mit
+Habár mindezek léteznek a \SpecialCharNoPassThru LyX
+-ben, általában nincs rájuk szüksége.
+ A \SpecialCharNoPassThru LyX
+ gondoskodni fog ezekről a dolgokról, függően attól, hogy éppen mit
  csinál.
  A dokumentum különböző részeit magától beállítja a megfelelő betűstílusokra
  és méretekre.
@@ -628,7 +657,8 @@ Habár mindezek léteznek a LyX-ben, általában nincs rájuk szüksége.
  bekezdésekhez különböző függő behúzásokat fog használni.
  A laptöréseket szintén automatikusan kezeli.
  Általánosan: a sorok, szavak, betűk és bekezdések közötti térköz változó,
- amit a LyX állít be.
+ amit a \SpecialCharNoPassThru LyX
+ állít be.
 \begin_inset Foot
 status collapsed
 
@@ -636,7 +666,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-Van rá mód, hogyan módosíthatjuk ezeket (közülük néhány LaTeX ismeretet
+Van rá mód, hogyan módosíthatjuk ezeket (közülük néhány \SpecialCharNoPassThru LaTeX
+ ismeretet
  igényel), a teljes dokumentumra, vagy pedig a dokumentum egy bizonyos pontjára
  vonatkozóan.
  A részleteket megtalálja a 
@@ -656,7 +687,9 @@ Haladó szolgáltatások
 \end_layout
 
 \begin_layout Standard
-Végül néhány terület, ahol hisszük a LyX (és a LaTeX) túltesz a legtöbb
+Végül néhány terület, ahol hisszük a \SpecialCharNoPassThru LyX
+ (és a \SpecialCharNoPassThru LaTeX
+) túltesz a legtöbb
  szövegszerkesztőn:
 \end_layout
 
@@ -684,9 +717,12 @@ Kereszthivatkozások
 Természetesen, sok modern szövegszerkesztő kezeli a matematikai szimbólumokat,
  táblázatokat és elválasztást.
  Sokuk továbblépett a típusdefiníció a WYSIWYM-elv felé.
- Habár mindezekre csak mostanában lettek képesek, amíg a LyX a LaTeX dokumentum
+ Habár mindezekre csak mostanában lettek képesek, amíg a \SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+ dokumentum
  formázó rendszerre épül.
- A LaTeX már több, mint 20 éve létezik és 
+ A \SpecialCharNoPassThru LaTeX
+ már több, mint 20 éve létezik és 
 \shape italic
 működik
 \shape default
@@ -694,11 +730,13 @@ működik
 \end_layout
 
 \begin_layout Subsection
-Mi a LaTeX?
+Mi a \SpecialCharNoPassThru LaTeX
+?
 \end_layout
 
 \begin_layout Standard
-A LaTeX egy dokumentum előkészítő rendszer amit Leslie Lamport készített
+A \SpecialCharNoPassThru LaTeX
+ egy dokumentum előkészítő rendszer amit Leslie Lamport készített
  1985-ben.
 \begin_inset Foot
 status collapsed
@@ -729,9 +767,11 @@ Felhasználói kézikönyv
 
 \end_inset
 
- Ez a nyelv a TeX írásszedő nyelvből lett kifejlesztve, melyet Donald Knuth
+ Ez a nyelv a \SpecialCharNoPassThru TeX
+ írásszedő nyelvből lett kifejlesztve, melyet Donald Knuth
  készített 1984-ben.
- A TeX egy szöveges (ASCII) fájlban tárolt írásszedő parancsok sorozatát
+ A \SpecialCharNoPassThru TeX
+ egy szöveges (ASCII) fájlban tárolt írásszedő parancsok sorozatát
  fogadja, amiket sorban végrehajt.
  A nyomtatás legtöbb 
 \begin_inset Quotes pld
@@ -742,9 +782,11 @@ trükkjét
 \end_inset
 
  Knuth lemodellezte számítógépes algoritmusok segítségével és beépítette
- a TeX-be.
+ a \SpecialCharNoPassThru TeX
+-be.
  Innen származik a kiváló kinézet nyomtatáskor.
- A TeX kimenete lehet egy hordozható pdf dokumentum vagy egy eszközfüggetlen
+ A \SpecialCharNoPassThru TeX
+ kimenete lehet egy hordozható pdf dokumentum vagy egy eszközfüggetlen
  formátum fájl
 \begin_inset Foot
 status collapsed
@@ -764,8 +806,10 @@ DVI – Device Independent
 \end_layout
 
 \begin_layout Standard
-A TeX nem csak egy írásszedő motor, lehetőségünk van definiálni makrókat.
- A legtöbb ember aki a a TeX-et használja, valójában egy makrócsomagot használ,
+A \SpecialCharNoPassThru TeX
+ nem csak egy írásszedő motor, lehetőségünk van definiálni makrókat.
+ A legtöbb ember aki a a \SpecialCharNoPassThru TeX
+-et használja, valójában egy makrócsomagot használ,
  amit Knuth az írásszedő parancsok elrejtéséhez készített.
  Itt lép be a történetünkbe Leslie Lamport.
  Elképzelt egy makrócsomagot ami jobban felhasználó barát, mintsem szövegszedés
@@ -773,27 +817,40 @@ A TeX nem csak egy írásszedő motor, lehetőségünk van definiálni makrókat
  Egy olyan parancskészletet, amivel következetesen szedhetünk például szakaszoka
 t, táblázatokat vagy képleteket egységes kinézetben a lehető legkevesebb
  problémával.
- Hát így született a LaTeX.
+ Hát így született a \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-Most, a LaTeX növekedésével és fejlesztésével párhuzamosan, egyesek készítettek
- saját TeX makrócsomagokat, fóliákhoz, matematikai folyóiratokba készülő
+Most, a \SpecialCharNoPassThru LaTeX
+ növekedésével és fejlesztésével párhuzamosan, egyesek készítettek
+ saját \SpecialCharNoPassThru TeX
+ makrócsomagokat, fóliákhoz, matematikai folyóiratokba készülő
  cikkekhez és így tovább.
- A megvalósításhoz néhány, a TeX elemi lehetőségeit használja, míg mások
- elkezdték módosítani a LaTeX-et.
- Hogy az így kialakult zűrzavar csökkenjen, a 80-as évek végén LaTeX mesterek
- elkezdtek dolgozni a LaTeX2e-n, ami az aktuális LaTeX.
+ A megvalósításhoz néhány, a \SpecialCharNoPassThru TeX
+ elemi lehetőségeit használja, míg mások
+ elkezdték módosítani a \SpecialCharNoPassThru LaTeX
+-et.
+ Hogy az így kialakult zűrzavar csökkenjen, a 80-as évek végén \SpecialCharNoPassThru LaTeX
+ mesterek
+ elkezdtek dolgozni a \SpecialCharNoPassThru LaTeX2e
+-n, ami az aktuális \SpecialCharNoPassThru LaTeX
+.
  Ezen új változat tartalmaz olyan új parancsokat, amelyek könnyen használható
- felületet adnak a TeX makrókészítő parancsaihoz (emlékszik még a TeX-re?),
+ felületet adnak a \SpecialCharNoPassThru TeX
+ makrókészítő parancsaihoz (emlékszik még a \SpecialCharNoPassThru TeX
+-re?),
  hogy könnyen használhassunk például új betűkészleteket, stb.
- Valójában a LaTeX egy igen hatékony nyelv a maga nemében.
- Szerte a világban sok felhasználó elkészítette a saját LaTeX kiegészítőjét
+ Valójában a \SpecialCharNoPassThru LaTeX
+ egy igen hatékony nyelv a maga nemében.
+ Szerte a világban sok felhasználó elkészítette a saját \SpecialCharNoPassThru LaTeX
+ kiegészítőjét
  a beépítetteken kívül.
 \end_layout
 
 \begin_layout Standard
-Kétféle módon lehet bővíteni a LaTeX-et: osztályokkal
+Kétféle módon lehet bővíteni a \SpecialCharNoPassThru LaTeX
+-et: osztályokkal
 \begin_inset Foot
 status collapsed
 
@@ -801,7 +858,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-LaTeX neve: class
+\SpecialCharNoPassThru LaTeX
+ neve: class
 \end_layout
 
 \end_inset
@@ -814,7 +872,8 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-LaTeX neve: style
+\SpecialCharNoPassThru LaTeX
+ neve: style
 \end_layout
 
 \end_inset
@@ -823,9 +882,10 @@ LaTeX neve: style
 \emph on
 osztály
 \emph default
-, LaTeX makrók csoportja, ami leír egy új dokumentum típust, mint például
+, \SpecialCharNoPassThru LaTeX
+ makrók csoportja, ami leír egy új dokumentum típust, mint például
  könyv vagy újságcikk.
- Készítettek osztályokat fóliákhoz, fizikai és matematikai folyóiratokhoz\SpecialChar \ldots{}
+ Készítettek osztályokat fóliákhoz, fizikai és matematikai folyóiratokhoz\SpecialChar ldots
 
  sok egyetem elkészítette saját osztályát disszertációhoz! A 
 \emph on
@@ -837,7 +897,8 @@ stílus
 viselkedés formát
 \emph default
 , amit bármely dokumentum használhat.
- A LyX például a margót és a sortávolságot, két erre a célra tervezett LaTeX
+ A \SpecialCharNoPassThru LyX
+ például a margót és a sortávolságot, két erre a célra tervezett \SpecialCharNoPassThru LaTeX
  stílus fájllal kezeli.
  Létezik stílus fájl rengeteg dologhoz: címke vagy boríték nyomtatáshoz,
  függőbehúzás módosításához, új betűkészlet felhasználásához, grafikák manipulác
@@ -852,41 +913,57 @@ tatásához, stb.
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-TeX: írásszedő nyelv, makrózási képességekkel
+\SpecialCharNoPassThru TeX
+: írásszedő nyelv, makrózási képességekkel
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LaTeX: TeX-re épülő makrócsomag
+\SpecialCharNoPassThru LaTeX
+: \SpecialCharNoPassThru TeX
+-re épülő makrócsomag
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-osztályok: dokumentum típusok leírása, LaTeX felhasználásával
+osztályok: dokumentum típusok leírása, \SpecialCharNoPassThru LaTeX
+ felhasználásával
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-stílusok: a LaTeX viselkedésmódjának megváltoztatása valamilyen módon
+stílusok: a \SpecialCharNoPassThru LaTeX
+ viselkedésmódjának megváltoztatása valamilyen módon
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-LyX: vizuális WYSIWYM szövegszerkesztő, ami a LaTeX-et használja, a professzioná
+\SpecialCharNoPassThru LyX
+: vizuális WYSIWYM szövegszerkesztő, ami a \SpecialCharNoPassThru LaTeX
+-et használja, a professzioná
 lis végeredményhez.
 \end_layout
 
 \begin_layout Standard
-A LaTeX az oka miért különbözik a LyX a többi szövegszerkesztőtől.
- A LyX egy grafikus felhasználói felület (GUI) a LaTeX-hez.
+A \SpecialCharNoPassThru LaTeX
+ az oka miért különbözik a \SpecialCharNoPassThru LyX
+ a többi szövegszerkesztőtől.
+ A \SpecialCharNoPassThru LyX
+ egy grafikus felhasználói felület (GUI) a \SpecialCharNoPassThru LaTeX
+-hez.
  Arra tervezték, hogy a dokumentumokat a makro parancsok ismerete nélkül
  készítse el.
- A LyX sohasem fogja az összes makró parancsot grafikusan támogatni, de
- lehetővé teszi a használatukat, ezért a LyX annyira hatékony, mint a LaTeX.
+ A \SpecialCharNoPassThru LyX
+ sohasem fogja az összes makró parancsot grafikusan támogatni, de
+ lehetővé teszi a használatukat, ezért a \SpecialCharNoPassThru LyX
+ annyira hatékony, mint a \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-Csakúgy, mint a LaTeX a LyX is az írás tartalmára koncentrál — arra amit
+Csakúgy, mint a \SpecialCharNoPassThru LaTeX
+ a \SpecialCharNoPassThru LyX
+ is az írás tartalmára koncentrál — arra amit
  beír.
  A számítógép fog gondoskodni arról, hogyan nézzen ki.
 \end_layout
@@ -897,7 +974,8 @@ A dokumentumok közötti eligazodás
 
 \begin_layout Standard
 Hogy kérdéseire könnyen megtalálja a választ, és könnyen tudjuk bemutatni
- a LyX összes sajátosságát, a dokumentációt több különböző részre bontottuk.
+ a \SpecialCharNoPassThru LyX
+ összes sajátosságát, a dokumentációt több különböző részre bontottuk.
  Minden egyes résznek a maga feladata, ahogy azt később majd részletezzük.
  Mielőtt nekilátna valamelyik olvasásának, először olvassa végig ezt a fájlt,
  ugyanis sok hasznos információt tartalmaz, aminek tudatában időt spórolhat
@@ -905,7 +983,8 @@ Hogy kérdéseire könnyen megtalálja a választ, és könnyen tudjuk bemutatni
 \end_layout
 
 \begin_layout Standard
-Remélhetőleg a LyX fejlesztése sohasem fog leállni, a dokumentáció néhány
+Remélhetőleg a \SpecialCharNoPassThru LyX
+ fejlesztése sohasem fog leállni, a dokumentáció néhány
  része kiegészítésre szorulhat vagy már elavult, de igyekszünk azt frissen
  tartani.
  Ahogy magát a programot, a dokumentációt is önkéntesek készítik, akiknek
@@ -931,7 +1010,7 @@ reference "rész:Közreműködés"
 \begin_inset space ~
 \end_inset
 
-részt\SpecialChar \@.
+részt\SpecialChar endofsentence
 
 \end_layout
 
@@ -998,8 +1077,10 @@ A kézikönyvek formátuma
 
 \begin_layout Standard
 Vannak akik nyomtatott formában olvassák a kézikönyvet, mások közvetlenül
- a LyX-ből.
- A LyX fájl és a nyomtatott forma között különbségek vannak.
+ a \SpecialCharNoPassThru LyX
+-ből.
+ A \SpecialCharNoPassThru LyX
+ fájl és a nyomtatott forma között különbségek vannak.
  Először is, a cím nincs külön oldalon, egyszerűen csak ott van a dokumentum
  elején.
  Továbbá, a lábjegyzet és a tartalomjegyzék sem látható.
@@ -1033,7 +1114,7 @@ A nyomtatott formában az összes kereszthivatkozásnál látható az aktuális
 
 \end_inset
 
-\SpecialChar \@.
+\SpecialChar endofsentence
  Ha rákattint az utóbbira bal egérgombbal, egy dialógusablak jelenik meg,
  ami a dokumentumban lévő összes hivatkozást tartalmazza.
  Ez a dokumentum csak kettőt tartalmaz az első a 
@@ -1091,7 +1172,8 @@ Kiemelt Stílus
 \family typewriter
 Írógép
 \family default
- - ezt a programok és fájlok neveihez, LyX kódokhoz, funkciókhoz használjuk.
+ - ezt a programok és fájlok neveihez, \SpecialCharNoPassThru LyX
+ kódokhoz, funkciókhoz használjuk.
 \end_layout
 
 \begin_layout Itemize
@@ -1115,7 +1197,8 @@ Kiskapitális Stílus
 \series bold
 Félkövér
 \series default
- - a LaTeX kódok jelöléséhez
+ - a \SpecialCharNoPassThru LaTeX
+ kódok jelöléséhez
 \end_layout
 
 \begin_layout Standard
@@ -1214,7 +1297,7 @@ F1
 \begin_inset Quotes prd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \family sans
 
@@ -1453,7 +1536,8 @@ Enter
 
  névvel van illetve.
  Néhol két külön billentyű is van.
- A LyX mindegyiket egyformán kezeli, így mi a 
+ A \SpecialCharNoPassThru LyX
+ mindegyiket egyformán kezeli, így mi a 
 \family sans
 Return
 \family default
@@ -1493,7 +1577,8 @@ Haladó szolgáltatások Kézikönyv
 
 -ben, nézzen utána ott is.
  Észrevehette, hogy két különböző billentyű-kombináció gyűjtemény is megtalálhat
-ó a LyX-ben.
+ó a \SpecialCharNoPassThru LyX
+-ben.
  Az egyik a 
 \begin_inset Quotes pld
 \end_inset
@@ -1539,7 +1624,8 @@ reference "tab:mertekegysegek"
 
 \end_inset
 
-.táblázatban taltálja meg a LyX-ben használt mértékegységeket értelmezését.
+.táblázatban taltálja meg a \SpecialCharNoPassThru LyX
+-ben használt mértékegységeket értelmezését.
 \end_layout
 
 \begin_layout Standard
@@ -2075,6 +2161,9 @@ A következő listából megismerheti az összes kézikönyv tartalmát:
 Bevezetés
 \emph default
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2089,6 +2178,9 @@ Ez a fájl
 
 \emph on
 Tankönyv 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2097,9 +2189,12 @@ Tankönyv
 \series medium
 Ha
 \series default
- ön most találkozik először a LyX-et, és nem használta korábban a LaTeX-et,
+ ön most találkozik először a \SpecialCharNoPassThru LyX
+-et, és nem használta korábban a \SpecialCharNoPassThru LaTeX
+-et,
  ez az a kézikönyv amivel érdemes kezdenie.
- Ha korábban már használta a LaTeX-et, akkor is érdemes elolvasni a 
+ Ha korábban már használta a \SpecialCharNoPassThru LaTeX
+-et, akkor is érdemes elolvasni a 
 \emph on
 Tankönyv
 \emph default
@@ -2108,7 +2203,9 @@ et.
 \begin_inset Quotes pld
 \end_inset
 
-LyX a LaTeX felhasználóknak
+\SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+ felhasználóknak
 \begin_inset Quotes prd
 \end_inset
 
@@ -2125,6 +2222,9 @@ Felhasználói
 \end_inset
 
 Kézikönyv
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2134,7 +2234,8 @@ Az elsődleges dokumentáció.
 \emph on
 legtöbb
 \emph default
- alapvető funkciót és a LyX jellemzőit.
+ alapvető funkciót és a \SpecialCharNoPassThru LyX
+ jellemzőit.
  Ez a dokumentum feltételezi, hogy ön elolvasta a 
 \emph on
 Tankönyv
@@ -2151,6 +2252,9 @@ Beágyazott
 \end_inset
 
 objektumok
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2160,7 +2264,8 @@ objektumok
 A felhasználói kéziköny bővítése.
  Részletesen lerja, hogyan használjunk táblázatokat, képeket, lebegőket,
  jegyzeteket és dobozokat.
- LaTeX mesterek sok trükkjét is tartalmazza.
+ \SpecialCharNoPassThru LaTeX
+ mesterek sok trükkjét is tartalmazza.
 \end_layout
 
 \end_deeper
@@ -2172,6 +2277,9 @@ Haladó
 \end_inset
 
 Szolgáltatások
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2181,7 +2289,8 @@ Ez egy kiterjesztése a
 Felhasználói Kézikönyv
 \emph default
 nek.
- Itt ismerheti meg, hogyan használhat alap LaTeX parancsokat, további dokumentum
+ Itt ismerheti meg, hogyan használhat alap \SpecialCharNoPassThru LaTeX
+ parancsokat, további dokumentum
  osztályokat, speciális szerkesztési jellemzőket.
  
 \end_layout
@@ -2191,11 +2300,15 @@ nek.
 
 \emph on
 Testreszabás
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Bemutatja a LyX fejlett képességeit, valamint a saját igényeinknek megfelelő
+Bemutatja a \SpecialCharNoPassThru LyX
+ fejlett képességeit, valamint a saját igényeinknek megfelelő
  beállítást.
  Tartalmazza még a konfigurációs fájlok leírását, a honosítást, további
  billentyűzet-kombinációk beállítását is.
@@ -2205,17 +2318,21 @@ Bemutatja a LyX fejlett képességeit, valamint a saját igényeinknek megfelel�
 \begin_layout Description
 
 \emph on
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
 információ
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Ez a fájl a telepítés vagy az újrakonfigurálás során jön létre.
- Ebben a fájlban találhat információt a LyX aktuális beállításairól, az
+ Ebben a fájlban találhat információt a \SpecialCharNoPassThru LyX
+ aktuális beállításairól, az
  elérhető szolgáltatásokról.
  Ha valamit hiányol először ezt érdemes megnéznie.
  
@@ -2246,7 +2363,8 @@ Testreszabás
 
 \begin_layout Standard
 \align center
-Ha most használja először a LyX-et, olvassa el a Tankönyvet.
+Ha most használja először a \SpecialCharNoPassThru LyX
+-et, olvassa el a Tankönyvet.
  Most azonnal!
 \end_layout
 
@@ -2259,7 +2377,8 @@ Ha most használja először a LyX-et, olvassa el a Tankönyvet.
 
 \begin_layout Standard
 Különben felesleges csalódást okozhat önmagának.
- A LyX mindent tud, amit egy szövegszerkesztőtől elvárhat, de másként közelíti
+ A \SpecialCharNoPassThru LyX
+ mindent tud, amit egy szövegszerkesztőtől elvárhat, de másként közelíti
  meg a dolgokat, mint ahogy azokat megszokhatta.
 \end_layout
 
@@ -2278,11 +2397,13 @@ name "rész:Közreműködés"
 \end_layout
 
 \begin_layout Subsection
-Közreműködés a LyX-hez
+Közreműködés a \SpecialCharNoPassThru LyX
+-hez
 \end_layout
 
 \begin_layout Standard
-A LyX többnyire C++-ban készült.
+A \SpecialCharNoPassThru LyX
+ többnyire C++-ban készült.
  Egy hatalmas projekt, aminek eredményeként nem mentes programhibáktól,
  továbbá a továbbfejlesztésére is szükség van.
  
@@ -2293,16 +2414,19 @@ Hiba jelentése
 \end_layout
 
 \begin_layout Standard
-A LyX használata közben előfordulhat, hogy a program valamire rosszul reagál
+A \SpecialCharNoPassThru LyX
+ használata közben előfordulhat, hogy a program valamire rosszul reagál
  és ezt ön hibaként fogja értelmezni.
  Váratlan programkilépések, bár ritkán de előfordulhatnak.
- A felhasználói felület hibáit a LyX csapat nagyon fontosnak tartja: különösen
+ A felhasználói felület hibáit a \SpecialCharNoPassThru LyX
+ csapat nagyon fontosnak tartja: különösen
  fontosak a felhasználó felület utalásai, amelyek nem teljesen egyértelműek
  és világosak.
 \end_layout
 
 \begin_layout Standard
-A LyX rendelkezik egy hibakövető rendszerrel, amelyet a következő web címen
+A \SpecialCharNoPassThru LyX
+ rendelkezik egy hibakövető rendszerrel, amelyet a következő web címen
  található meg: 
 \begin_inset Flex URL
 status collapsed
@@ -2345,15 +2469,18 @@ http://www.lyx.org
 \end_layout
 
 \begin_layout Standard
-Egy hasznos hibajelentésnek tartalmazni kell, hogy a LyX melyik verziójában
+Egy hasznos hibajelentésnek tartalmazni kell, hogy a \SpecialCharNoPassThru LyX
+ melyik verziójában
  talált hibát.
  Ajánlott pontosan és részletesen leírni a hibát - ellenben a fejlesztőknek
  sok időt kell a hiba helyének pontos meghatározására pazarolniuk, így kevesebb
  idejük marad a fejlesztések kivitelezésére.
- Írja le a LyX futtatásához használt operációs rendszert, adja meg annak
+ Írja le a \SpecialCharNoPassThru LyX
+ futtatásához használt operációs rendszert, adja meg annak
  verziószámát.
  Adja meg a rendszerére telepített függvénykönyvtárak verziószámait, valamint
- szükség szerint a LyX által használt egyéb programok verziószámait.
+ szükség szerint a \SpecialCharNoPassThru LyX
+ által használt egyéb programok verziószámait.
  Amennyiben ez egy forráskódból történő fordítási vagy beállítási hiba,
  csatolja a 
 \family typewriter
@@ -2367,8 +2494,10 @@ Javítások és új funkciók közreadása
 \end_layout
 
 \begin_layout Standard
-Ha megváltoztatta a LyX forráskódját, és úgy gondolja mindenképpen érdemes
- azt a LyX részévé tenni, módosításait diff fájlként (egységes formátumban)
+Ha megváltoztatta a \SpecialCharNoPassThru LyX
+ forráskódját, és úgy gondolja mindenképpen érdemes
+ azt a \SpecialCharNoPassThru LyX
+ részévé tenni, módosításait diff fájlként (egységes formátumban)
  küldje el a fejlesztői levelezőlistára, az előbb említett címre.
  Csatoljon hozzá a módosításról pár szót és egy leírást arról, hogy módosítása
  mire vonatkozik.
@@ -2379,7 +2508,8 @@ Közreműködés a dokumentációhoz
 \end_layout
 
 \begin_layout Standard
-A LyX dokumentációja elég átfogó, habár folyamatos fejlesztés alatt van
+A \SpecialCharNoPassThru LyX
+ dokumentációja elég átfogó, habár folyamatos fejlesztés alatt van
  és minden új kiadás valamilyen újítást is tartalmaz.
  Úgy találhatja, a dokumentáció valamely részét ki kell javítani vagy ki
  kell egészíteni.
@@ -2423,13 +2553,16 @@ Csatlakozás a dokumentációs csapathoz
 \end_layout
 
 \begin_layout Standard
-A LyX dokumentációs projekt, mint minden a LyX projekten belül, hasznosítani
+A \SpecialCharNoPassThru LyX
+ dokumentációs projekt, mint minden a \SpecialCharNoPassThru LyX
+ projekten belül, hasznosítani
  tudja az ön segítségét is.
  Ha szeretne közreműködni, először is el kell végeznie a következőket:
 \end_layout
 
 \begin_layout Enumerate
-Töltse le a legfrissebb LyX forráskódot a 
+Töltse le a legfrissebb \SpecialCharNoPassThru LyX
+ forráskódot a 
 \begin_inset Flex URL
 status collapsed
 
@@ -2453,6 +2586,9 @@ et és a
 Tankönyv
 \emph default
 et.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2474,6 +2610,9 @@ Felhasználói Kézikönyv
 \end_deeper
 \begin_layout Enumerate
 Lépjen kapcsolatba a csapattal: 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper

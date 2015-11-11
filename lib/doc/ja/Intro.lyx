@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/ja/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -42,21 +43,21 @@ BgColor		none
 LabelString		"ルビ"
 Decoration		Conglomerate
 Argument post:1
-      LabelString	"ルビ文"
-      MenuString	"ルビ文(S)|S"
-      Decoration	Conglomerate
-      Font
-            Size		tiny
-      EndFont
-      LabelFont
-            Size		tiny
-      EndFont
-      Mandatory	1
+LabelString	"ルビ文"
+MenuString	"ルビ文(S)|S"
+Decoration	Conglomerate
+Font
+Size		tiny
+EndFont
+LabelFont
+Size		tiny
+EndFont
+Mandatory	1
 EndArgument
 Preamble
 \IfFileExists{okumacro.sty}
- {\usepackage{okumacro}}
- {\newcommand{\ruby}[2]{#2}}
+{\usepackage{okumacro}}
+{\newcommand{\ruby}[2]{#2}}
 EndPreamble
 End
 \end_local_layout
@@ -64,16 +65,16 @@ End
 \language_package auto
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -139,16 +140,19 @@ End
 \begin_body
 
 \begin_layout Title
-LyXはじめの一歩
+\SpecialCharNoPassThru LyX
+はじめの一歩
 \end_layout
 
 \begin_layout Author
-LyXプロジェクトチーム
+\SpecialCharNoPassThru LyX
+プロジェクトチーム
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-コメントや間違いの修正がある場合には、LyX文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい。この文書の翻訳は、当初人見光太
+コメントや間違いの修正がある場合には、\SpecialCharNoPassThru LyX
+文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい。この文書の翻訳は、当初人見光太
 郎氏が行った貢献に基づいています。
 \end_layout
 
@@ -167,29 +171,37 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-LyXの哲学
+\SpecialCharNoPassThru LyX
+の哲学
 \end_layout
 
 \begin_layout Subsection
-LyXとは
+\SpecialCharNoPassThru LyX
+とは
 \end_layout
 
 \begin_layout Standard
-LyXは文書作成システムであり、特に、数学や相互参照・参考文献・索引などを含む、複雑な技術文書や科学論文を作成するのに適しています。自動化された節分けやページ分
+\SpecialCharNoPassThru LyX
+は文書作成システムであり、特に、数学や相互参照・参考文献・索引などを含む、複雑な技術文書や科学論文を作成するのに適しています。自動化された節分けやページ分
 け、スペルチェックなど、よく行われる処理能力を要求する文書の作成は、どのような長さのものであれ、たいへん得意とします。あなたのお母さんに手紙を書くのにも使うこと
-ができることは確かですが、そのような目的には、おそらくもっと単純なプログラムを使うこともできるでしょう。LyXは、横断幕やチラシ・広告などを作成する目的には、あ
-きらかに最適なツールではありませんが（理由は後で説明します）、これらのものも、少し工夫すれば作ることはできます。LyXを使うに適した例を挙げると、メモ・書簡・博
+ができることは確かですが、そのような目的には、おそらくもっと単純なプログラムを使うこともできるでしょう。\SpecialCharNoPassThru LyX
+は、横断幕やチラシ・広告などを作成する目的には、あ
+きらかに最適なツールではありませんが（理由は後で説明します）、これらのものも、少し工夫すれば作ることはできます。\SpecialCharNoPassThru LyX
+を使うに適した例を挙げると、メモ・書簡・博
 士論文・講義ノート・セミナーノート・学会会誌・ソフトウエアの説明書・書籍・査読つき科学雑誌の論文・演劇や映画の台本・企画書・プレゼンテーションなどがあります。
 \end_layout
 
 \begin_layout Standard
-LyXは、コンピュータで文書を書くにあたって、古色蒼然たる「タイプライタ方式」の伝統を打ち破った、マークアップ言語パラダイムに基づいた近代的アプローチを採用した
-プログラムです。LyXは、組版に長ける必要なしに、最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています。組版作業のほとんどは、著者では
-なくコンピュータによって行われるので、LyXを使えば著者は執筆に専念できるのです。
+\SpecialCharNoPassThru LyX
+は、コンピュータで文書を書くにあたって、古色蒼然たる「タイプライタ方式」の伝統を打ち破った、マークアップ言語パラダイムに基づいた近代的アプローチを採用した
+プログラムです。\SpecialCharNoPassThru LyX
+は、組版に長ける必要なしに、最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています。組版作業のほとんどは、著者では
+なくコンピュータによって行われるので、\SpecialCharNoPassThru LyX
+を使えば著者は執筆に専念できるのです。
 \end_layout
 
 \begin_layout Standard
-LyX
+\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -199,8 +211,10 @@ LyX
 \noun off
 \color none
 を使う上での最初の戸惑いは、おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます。かつて、文書を作成するのに使うことのできるものはタイプラ
-イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは---これは単に「＿」を文字の上に
-打ち直すことに他ならなかったわけですが---文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設
+イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは\threehyphens
+これは単に「＿」を文字の上に
+打ち直すことに他ならなかったわけですが\threehyphens
+文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設
 定することを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予
 測することが要求されたものでした。
 \end_layout
@@ -293,7 +307,7 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-、LyX
+、\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -311,7 +325,7 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-あなたがLyX
+あなたが\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -347,7 +361,7 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-、後はLyX
+、後は\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -430,7 +444,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-一方、LyXでは、ボタンバーの一番左のプルダウンメニューから
+一方、\SpecialCharNoPassThru LyX
+では、ボタンバーの一番左のプルダウンメニューから
 \family sans
 節
 \family default
@@ -447,7 +462,9 @@ status collapsed
 \bar no
 \noun off
 \color none
-そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に---すべての箇所で---振り直されます。さらに、この節に対する参照が正しく（内部参
+そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に\threehyphens
+すべての箇所で\threehyphens
+振り直されます。さらに、この節に対する参照が正しく（内部参
 照タグを挿入することによって）入れられていれば
 \family default
 \series default
@@ -457,7 +474,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-、ファイル内すべての参照は、LyX
+、ファイル内すべての参照は、\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -496,7 +513,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-LyX
+\SpecialCharNoPassThru LyX
 \family roman
 \series medium
 \shape up
@@ -520,7 +537,7 @@ LyX
 \noun off
 \color none
 もうひとつの例として、箇条書きを作りたいものとしましょう。他のワープロでは、箇条書きを作るには、タブストップと改行を多用しなくてはなりません。各項目のラベルをど
-こに配置するか予測しなくてはなりませんし、そのラベルにはどのラベルを採用するか、各項目間には空行をいくつ入れるか等々といったことも計算する必要があります。LyX
+こに配置するか予測しなくてはなりませんし、そのラベルにはどのラベルを採用するか、各項目間には空行をいくつ入れるか等々といったことも計算する必要があります。\SpecialCharNoPassThru LyX
 においては、考慮すべきことは2つしかありません。この箇条書きがどのような種類のものなのかということと、箇条書きに何を入れたいのかということ、それだけなのです。
 \end_layout
 
@@ -534,7 +551,8 @@ LyX
 \bar no
 \noun off
 \color none
-つまり、LyXの根底に流れる基本的な考え方は、「
+つまり、\SpecialCharNoPassThru LyX
+の根底に流れる基本的な考え方は、「
 \family default
 \series default
 \shape default
@@ -588,7 +606,8 @@ What You See Is What You Get (WYSIWYG)
 \bar no
 \noun off
 \color none
-」の代わりに、LyXのモデルは、「
+」の代わりに、\SpecialCharNoPassThru LyX
+のモデルは、「
 \family default
 \series default
 \shape default
@@ -616,7 +635,8 @@ Mean
 \bar no
 \noun off
 \color none
-」を採用しています。これは、文書を執筆する手順を、大幅に簡素化する強力なアイデアです。またこれが、LyXがポスターや広告を作成するのに向いた道具ではない理由でも
+」を採用しています。これは、文書を執筆する手順を、大幅に簡素化する強力なアイデアです。またこれが、\SpecialCharNoPassThru LyX
+がポスターや広告を作成するのに向いた道具ではない理由でも
 あります。この場合には、段落や節といった機能単位が存在しないがゆえに、各要素をどこに配置するかを、むしろ
 \family default
 \series default
@@ -635,12 +655,17 @@ Mean
 \bar no
 \noun off
 \color none
-からです。これは、LyXがなにか洗練された機能を備えていないということを意味するものではありません。これは単に、LyXはそのような仕事を行うのにはふさわしいツー
-ルではないというだけです。------ 釘を打つのにネジ回しは使わないではありませんか。
+からです。これは、\SpecialCharNoPassThru LyX
+がなにか洗練された機能を備えていないということを意味するものではありません。これは単に、\SpecialCharNoPassThru LyX
+はそのような仕事を行うのにはふさわしいツー
+ルではないというだけです。\threehyphens
+\threehyphens
+ 釘を打つのにネジ回しは使わないではありませんか。
 \end_layout
 
 \begin_layout Subsection
-LyXと他のワープロとの違い
+\SpecialCharNoPassThru LyX
+と他のワープロとの違い
 \begin_inset Argument 1
 status collapsed
 
@@ -657,13 +682,14 @@ texorpdfstring{
 
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{LyX}
+}{\SpecialCharNoPassThru LyX
+}
 \end_layout
 
 \end_inset
@@ -686,7 +712,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-以下は、LyXにないものの一覧です。
+以下は、\SpecialCharNoPassThru LyX
+にないものの一覧です。
 \end_layout
 
 \begin_layout Itemize
@@ -737,8 +764,10 @@ Enter
 \bar no
 \noun off
 \color none
-各要素のページ上の位置を示すルーラーやタブストップは、LyXでは無用の長物です。各要素がページ上のどこへ行くかはプログラムが気にすることであって、あなたではあり
-ません。余分な空白についても同様です。LyXが、文脈に応じて必要ならば空白を追加します。空白行を2つ続けて入れられないということは、最初は当惑するでしょうが、
+各要素のページ上の位置を示すルーラーやタブストップは、\SpecialCharNoPassThru LyX
+では無用の長物です。各要素がページ上のどこへ行くかはプログラムが気にすることであって、あなたではあり
+ません。余分な空白についても同様です。\SpecialCharNoPassThru LyX
+が、文脈に応じて必要ならば空白を追加します。空白行を2つ続けて入れられないということは、最初は当惑するでしょうが、
 \family default
 \series default
 \shape default
@@ -769,7 +798,8 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-以下は、LyXに存在するものの、あなたの予想どおりとは限らない使われ方をするものです。
+以下は、\SpecialCharNoPassThru LyX
+に存在するものの、あなたの予想どおりとは限らない使われ方をするものです。
 \end_layout
 
 \begin_layout Itemize
@@ -860,9 +890,12 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-これらはLyXに存在はしますが、必要とされることは一般的にほとんどないでしょう。これらは、LyXがあなたが何をしているかに応じて調整するからです。文書の各部分は
+これらは\SpecialCharNoPassThru LyX
+に存在はしますが、必要とされることは一般的にほとんどないでしょう。これらは、\SpecialCharNoPassThru LyX
+があなたが何をしているかに応じて調整するからです。文書の各部分は
 、自動的にそれぞれのタイプフェイスとフォント寸法に設定されます。段落の字下げは文脈に依存します。すなわち、別種の段落はそれぞれ異なった字下げ法がなされます。改頁
-もやはり自動的に行われます。一般的に、行間・単語間・段落間の距離は可変的であり、LyXによって調整されます
+もやはり自動的に行われます。一般的に、行間・単語間・段落間の距離は可変的であり、\SpecialCharNoPassThru LyX
+によって調整されます
 \begin_inset Foot
 status collapsed
 
@@ -885,7 +918,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -957,7 +990,8 @@ LaTeX
 \bar no
 \noun off
 \color none
-最後にLyX（および
+最後に\SpecialCharNoPassThru LyX
+（および
 \family default
 \series default
 \shape default
@@ -966,7 +1000,8 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-LaTeX）
+\SpecialCharNoPassThru LaTeX
+）
 \family roman
 \series medium
 \shape up
@@ -1071,7 +1106,8 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-の概念の方向に接近してきてはいます。しかしながら、他のワープロでは、最近になってこれらの機能が可能となったばかりです。これに対して、LyXは
+の概念の方向に接近してきてはいます。しかしながら、他のワープロでは、最近になってこれらの機能が可能となったばかりです。これに対して、\SpecialCharNoPassThru LyX
+は
 \family default
 \series default
 \shape default
@@ -1080,7 +1116,7 @@ WYSIWYM
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1098,7 +1134,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-そのLaTeX
+その\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1129,11 +1165,12 @@ LaTeX
 \end_layout
 
 \begin_layout Subsection
-LaTeXとは何か
+\SpecialCharNoPassThru LaTeX
+とは何か
 \end_layout
 
 \begin_layout Standard
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1223,7 +1260,7 @@ Patrick Daly
 \bar default
 \noun default
 \color inherit
-A Guide to LaTeX2e
+A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph default
 』
 \family roman
@@ -1266,7 +1303,7 @@ A Guide to LaTeX2e
 \bar default
 \noun default
 \color inherit
-TeX
+\SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1284,7 +1321,7 @@ TeX
 \bar default
 \noun default
 \color inherit
-TeX
+\SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1338,7 +1375,9 @@ TeX
 \bar default
 \noun default
 \color inherit
-印刷業界の多くの「小技」は、Knuthによってコンピュータアルゴリズムにモデル化され、TeXの中に組み込まれたために、すばらしい印刷品質を誇るのです。TeXから
+印刷業界の多くの「小技」は、Knuthによってコンピュータアルゴリズムにモデル化され、\SpecialCharNoPassThru TeX
+の中に組み込まれたために、すばらしい印刷品質を誇るのです。\SpecialCharNoPassThru TeX
+から
 直接得ることができるのは、ポータブル・ドキュメント・フォーマットこと
 \emph on
 pdf
@@ -1360,7 +1399,8 @@ dvi
 \bar no
 \noun off
 \color none
-TeXは、組版のエンジンであるばかりでなく、ユーザーがマクロを定義することをも容認します。
+\SpecialCharNoPassThru TeX
+は、組版のエンジンであるばかりでなく、ユーザーがマクロを定義することをも容認します。
 \family default
 \series default
 \shape default
@@ -1369,7 +1409,7 @@ TeXは、組版のエンジンであるばかりでなく、ユーザーがマ�
 \bar default
 \noun default
 \color inherit
-TeX
+\SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1424,7 +1464,7 @@ Leslie Lamport
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1437,7 +1477,7 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-このとき、LaTeX
+このとき、\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1455,7 +1495,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-TeX
+\SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1473,7 +1513,7 @@ TeX
 \bar default
 \noun default
 \color inherit
-、そのために生のTeX
+、そのために生の\SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1491,7 +1531,7 @@ TeX
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1509,7 +1549,8 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-、LaTeX-nician
+、\SpecialCharNoPassThru LaTeX
+-nician
 \family roman
 \series medium
 \shape up
@@ -1527,7 +1568,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-バージョンのLaTeX
+バージョンの\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1545,7 +1586,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-LaTeX2e
+\SpecialCharNoPassThru LaTeX2e
 \family roman
 \series medium
 \shape up
@@ -1563,7 +1604,7 @@ LaTeX2e
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1581,7 +1622,8 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-TeXのマクロ作成
+\SpecialCharNoPassThru TeX
+のマクロ作成
 \family roman
 \series medium
 \shape up
@@ -1599,7 +1641,7 @@ TeXのマクロ作成
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1617,7 +1659,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-、LaTeX
+、\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1630,7 +1672,7 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1732,7 +1774,8 @@ eX
 \bar no
 \noun off
 \color none
-の型を定義します。例えば、LyXではページ余白や行間の距離を変えるのに、それぞれ別の
+の型を定義します。例えば、\SpecialCharNoPassThru LyX
+ではページ余白や行間の距離を変えるのに、それぞれ別の
 \family default
 \series default
 \shape default
@@ -1741,7 +1784,7 @@ eX
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1768,7 +1811,8 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-TeX: 
+\SpecialCharNoPassThru TeX
+: 
 \family roman
 \series medium
 \shape up
@@ -1781,7 +1825,8 @@ TeX:
 \end_layout
 
 \begin_layout Description
-LaTeX: TeX
+\SpecialCharNoPassThru LaTeX
+: \SpecialCharNoPassThru TeX
 \family roman
 \series medium
 \shape up
@@ -1802,7 +1847,7 @@ LaTeX: TeX
 \size default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1833,7 +1878,7 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1846,7 +1891,8 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-LyX:
+\SpecialCharNoPassThru LyX
+:
 \family roman
 \series medium
 \shape up
@@ -1864,7 +1910,7 @@ LyX:
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1922,7 +1968,8 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-本節では、LyXと他のワードプロセッサの違いの説明を試みました。簡単にいえば、
+本節では、\SpecialCharNoPassThru LyX
+と他のワードプロセッサの違いの説明を試みました。簡単にいえば、
 \family default
 \series default
 \shape default
@@ -1931,7 +1978,7 @@ WYSIWYM
 \bar default
 \noun default
 \color inherit
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \family roman
 \series medium
 \shape up
@@ -1949,7 +1996,8 @@ LaTeX
 \bar default
 \noun default
 \color inherit
-LaTeXをバックエンドとして用いることによって、
+\SpecialCharNoPassThru LaTeX
+をバックエンドとして用いることによって、
 \family roman
 \series medium
 \shape up
@@ -1958,7 +2006,8 @@ LaTeXをバックエンドとして用いることによって、
 \bar no
 \noun off
 \color none
-LyXは、あなたが
+\SpecialCharNoPassThru LyX
+は、あなたが
 \family default
 \series default
 \shape default
@@ -2013,7 +2062,8 @@ LyXは、あなたが
 \bar no
 \noun off
 \color none
-ユーザーの抱きうる質問を網羅し、すべてのLyXの機能を説明するために、取扱説明書はいくつかの独立したファイルに分けられています。各ファイルは以下に述べるように、
+ユーザーの抱きうる質問を網羅し、すべての\SpecialCharNoPassThru LyX
+の機能を説明するために、取扱説明書はいくつかの独立したファイルに分けられています。各ファイルは以下に述べるように、
 それぞれの目的を持っています。しかしながら、本章にはいつかあなたを助けることになる、役に立つ情報とコメントが書いてありますので、これらのファイルのいずれかを読み
 始める前に、まずこの章を通してお読み下さい。
 \end_layout
@@ -2028,8 +2078,10 @@ LyXは、あなたが
 \bar no
 \noun off
 \color none
-LyXの開発は、望むらくは留まることがないと思われるので、我々の更新の努力にも関わらず、取扱説明書のうちの一部は不完全であったり、内容が若干古くなっていたりする
-かもしれません。LyXの他の部分と同様に、この取扱説明書も、他に「本当の仕事」や、家族や、洗わなければならない皿、手のかかる猫なんかを持つボランティアのグループ
+\SpecialCharNoPassThru LyX
+の開発は、望むらくは留まることがないと思われるので、我々の更新の努力にも関わらず、取扱説明書のうちの一部は不完全であったり、内容が若干古くなっていたりする
+かもしれません。\SpecialCharNoPassThru LyX
+の他の部分と同様に、この取扱説明書も、他に「本当の仕事」や、家族や、洗わなければならない皿、手のかかる猫なんかを持つボランティアのグループ
 によって作られているのです。もし手を差し伸べていただけるならば、この文書の残りと、第
 \family default
 \series default
@@ -2068,7 +2120,9 @@ reference "sec:貢献"
 \bar no
 \noun off
 \color none
-それともうひとつお願いがあります ------ もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私
+それともうひとつお願いがあります \threehyphens
+\threehyphens
+ もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私
 たちにお知らせ下さい。
 \family default
 \series default
@@ -2120,7 +2174,9 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-これを読まれている方の中には、取扱説明書を印刷した方もいらっしゃるでしょうし、LyXの中で読んでいる方もいらっしゃるかもしれません。LyXファイルと印刷されたも
+これを読まれている方の中には、取扱説明書を印刷した方もいらっしゃるでしょうし、\SpecialCharNoPassThru LyX
+の中で読んでいる方もいらっしゃるかもしれません。\SpecialCharNoPassThru LyX
+ファイルと印刷されたも
 のの間にはいくらか違いがあります。まずタイトルは、画面では単に文書の先頭に表示されるだけなのに対し、印刷版では場合によっては独立したページに表示されます。また、
 画面では脚注や目次も完全には表示されません。脚注を開くには
 \begin_inset Graphics
@@ -2157,7 +2213,8 @@ type "mailto:"
 
 。この箱を左のマウスボタンでクリックすると、文書内すべての相互参照の一覧があるダイアログウインドウがあらわれます。この
 \emph on
-LyXはじめの一歩
+\SpecialCharNoPassThru LyX
+はじめの一歩
 \emph default
 には、二つだけ相互参照が含まれていて、そのうち最初のものには「sec:貢献」という名前が付いています。その箱を右クリックするか、開いたダイアログの中の
 \family sans
@@ -2211,7 +2268,8 @@ LyXはじめの一歩
 \bar no
 \noun off
 \color none
-は、プログラム名・ファイル名・LyXのコード・関数名に使われます。
+は、プログラム名・ファイル名・\SpecialCharNoPassThru LyX
+のコード・関数名に使われます。
 \end_layout
 
 \begin_layout Itemize
@@ -2298,7 +2356,8 @@ status collapsed
 \series bold
 ボールド体（Bold）
 \series default
-は、LaTeXコードを表すのに使われます。
+は、\SpecialCharNoPassThru LaTeX
+コードを表すのに使われます。
 \end_layout
 
 \begin_layout Standard
@@ -2822,7 +2881,8 @@ Next
 \bar no
 \noun off
 \color none
-」と表示しているものもあり、はたまた両方の鍵を持つキーボードもあります。LyXはそれらをすべて同じ鍵として扱うので、われわれも
+」と表示しているものもあり、はたまた両方の鍵を持つキーボードもあります。\SpecialCharNoPassThru LyX
+はそれらをすべて同じ鍵として扱うので、われわれも
 \family sans
 \series default
 \shape default
@@ -2928,7 +2988,8 @@ reference "tab:画像用単位"
 
 \end_inset
 
-に、LyXで使うことのできる単位をまとめておきます。
+に、\SpecialCharNoPassThru LyX
+で使うことのできる単位をまとめておきます。
 \end_layout
 
 \begin_layout Standard
@@ -3507,7 +3568,10 @@ em)
 \bar no
 \noun off
 \color none
- もしあなたがLyXを使うのが初めてで、LaTeXを使ったことがないのであれば、これから始めてください。LaTeXを使ったことのある方は、
+ もしあなたが\SpecialCharNoPassThru LyX
+を使うのが初めてで、\SpecialCharNoPassThru LaTeX
+を使ったことがないのであれば、これから始めてください。\SpecialCharNoPassThru LaTeX
+を使ったことのある方は、
 \family default
 \series default
 \shape default
@@ -3525,7 +3589,9 @@ em)
 \bar no
 \noun off
 \color none
-の「LaTeXユーザーのためのLyX」の節から読み始めてください（他の節も読んだっていいんですよ）。
+の「\SpecialCharNoPassThru LaTeX
+ユーザーのための\SpecialCharNoPassThru LyX
+」の節から読み始めてください（他の節も読んだっていいんですよ）。
 \end_layout
 
 \begin_layout Description
@@ -3538,7 +3604,8 @@ em)
 \bar no
 \noun off
 \color none
- 中心となる取扱説明書です。この文書でLyXの機能と基本的な操作の
+ 中心となる取扱説明書です。この文書で\SpecialCharNoPassThru LyX
+の機能と基本的な操作の
 \family default
 \series default
 \shape default
@@ -3582,7 +3649,8 @@ em)
 \emph on
 ユーザーの手引き
 \emph default
-の拡張です。表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています。これには、LaTeX熟練者向けのテクニックもたくさん含まれてい
+の拡張です。表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています。これには、\SpecialCharNoPassThru LaTeX
+熟練者向けのテクニックもたくさん含まれてい
 ます。
 \end_layout
 
@@ -3606,7 +3674,8 @@ em)
 \bar no
 \noun off
 \color none
-の拡張です。生のLaTeXコマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています。
+の拡張です。生の\SpecialCharNoPassThru LaTeX
+コマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています。
 \end_layout
 
 \begin_layout Description
@@ -3619,7 +3688,9 @@ em)
 \bar no
 \noun off
 \color none
-LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、
+\SpecialCharNoPassThru LyX
+全体の挙動のカスタマイズの仕方など、高度な\SpecialCharNoPassThru LyX
+の機能を説明しています。これには、
 \family default
 \series default
 \shape default
@@ -3666,12 +3737,15 @@ status collapsed
 \bar no
 \noun off
 \color none
-設定・国際化・設定ファイルの説明などを含みます。これには、LyXがLaTeXクラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています
+設定・国際化・設定ファイルの説明などを含みます。これには、\SpecialCharNoPassThru LyX
+が\SpecialCharNoPassThru LaTeX
+クラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています
 。
 \end_layout
 
 \begin_layout Description
-捷径 現在定義されているLyXの
+捷径 現在定義されている\SpecialCharNoPassThru LyX
+の
 \family roman
 \series medium
 \shape up
@@ -3713,7 +3787,8 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-LaTeXの設定 
+\SpecialCharNoPassThru LaTeX
+の設定 
 \family roman
 \series medium
 \shape up
@@ -3722,7 +3797,9 @@ LaTeXの設定
 \bar no
 \noun off
 \color none
-LyXは、導入時にお使いのシステムを精査します。このファイルには、その際LyXが取得した情報が記録してあります。もしお使いになりたい機能が使用できない場合には、
+\SpecialCharNoPassThru LyX
+は、導入時にお使いのシステムを精査します。このファイルには、その際\SpecialCharNoPassThru LyX
+が取得した情報が記録してあります。もしお使いになりたい機能が使用できない場合には、
 このファイルの内容を調べてみて下さい。
 \end_layout
 
@@ -3754,7 +3831,8 @@ LyXは、導入時にお使いのシステムを精査します。このファ�
 \bar no
 \noun off
 \color none
-は、LyXの導入とカスタマイズについて
+は、\SpecialCharNoPassThru LyX
+の導入とカスタマイズについて
 \family default
 \series default
 \shape default
@@ -3806,6 +3884,15 @@ LyXは、導入時にお使いのシステムを精査します。このファ�
 \noun off
 \color none
 重要な点をもう一度言わせてください。
+\bar default
+\family default
+\color inherit
+\series default
+\shape default
+\size default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -3908,15 +3995,20 @@ name "sec:貢献"
 
 \end_inset
 
-LyXプロジェクトへの貢献
+\SpecialCharNoPassThru LyX
+プロジェクトへの貢献
 \end_layout
 
 \begin_layout Subsection
-LyXプロジェクトへの貢献
+\SpecialCharNoPassThru LyX
+プロジェクトへの貢献
 \end_layout
 
 \begin_layout Standard
-LyXは、ほとんどがC++で書かれています（LaTeXインポート部には、Pythonを使っています）。LyXは大きなプロジェクトですから、バグからは逃れることは
+\SpecialCharNoPassThru LyX
+は、ほとんどがC++で書かれています（\SpecialCharNoPassThru LaTeX
+インポート部には、Pythonを使っています）。\SpecialCharNoPassThru LyX
+は大きなプロジェクトですから、バグからは逃れることは
 できませんし、ソースコードも改良していく必要があります。
 \end_layout
 
@@ -3925,13 +4017,17 @@ LyXは、ほとんどがC++で書かれています（LaTeXインポート部に
 \end_layout
 
 \begin_layout Standard
-LyXを使っていると、バグだと思われる振る舞いを見つけることがあるかもしれません。ほとんどないことですが、クラッシュを経験するかもしれません。また、ユーザーイン
-ターフェイスに問題がある場合も、LyXチームは大きなバグだと考えています。特に、混乱しやすかったりわかりにくいLyXのインターフェイスを指摘していただけると助か
+\SpecialCharNoPassThru LyX
+を使っていると、バグだと思われる振る舞いを見つけることがあるかもしれません。ほとんどないことですが、クラッシュを経験するかもしれません。また、ユーザーイン
+ターフェイスに問題がある場合も、\SpecialCharNoPassThru LyX
+チームは大きなバグだと考えています。特に、混乱しやすかったりわかりにくい\SpecialCharNoPassThru LyX
+のインターフェイスを指摘していただけると助か
 ります。
 \end_layout
 
 \begin_layout Standard
-LyXにはバグ追跡システムがあり、
+\SpecialCharNoPassThru LyX
+にはバグ追跡システムがあり、
 \begin_inset Flex URL
 status collapsed
 
@@ -3955,7 +4051,8 @@ type "mailto:"
 
 
 \family default
-にメールを送ってください。このメーリングリストのアーカイブには、LyXのメインウェブサイト
+にメールを送ってください。このメーリングリストのアーカイブには、\SpecialCharNoPassThru LyX
+のメインウェブサイト
 \family typewriter
 
 \begin_inset Flex URL
@@ -3974,9 +4071,12 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-バグ報告を役立つものにするには、少なくとも問題のあったLyXのバージョンが明記されていなくてはなりません。また、正確で詳しい説明があることが望まれます。開発者が
-、どこにバグがあるのかを特定するのに時間を取られれば取られるほど、他に改良を加える時間がなくなります。LyXを走らせているシステムと、システムのバージョンを明記
-してください。システムに導入されているライブラリのバージョンと、関係がある場合には、LyXが使用している外部プログラムのバージョンも書いてください。バグが、コン
+バグ報告を役立つものにするには、少なくとも問題のあった\SpecialCharNoPassThru LyX
+のバージョンが明記されていなくてはなりません。また、正確で詳しい説明があることが望まれます。開発者が
+、どこにバグがあるのかを特定するのに時間を取られれば取られるほど、他に改良を加える時間がなくなります。\SpecialCharNoPassThru LyX
+を走らせているシステムと、システムのバージョンを明記
+してください。システムに導入されているライブラリのバージョンと、関係がある場合には、\SpecialCharNoPassThru LyX
+が使用している外部プログラムのバージョンも書いてください。バグが、コン
 パイルやその前のコンフィギュレーションの問題ならば、
 \family typewriter
 config.log
@@ -3989,7 +4089,9 @@ config.log
 \end_layout
 
 \begin_layout Standard
-LyXを改良するためにLyXのソースに手を加えた場合には、変更したところを（unifiedフォーマットの）diffファイルとして、上でした開発者用のメーリングリ
+\SpecialCharNoPassThru LyX
+を改良するために\SpecialCharNoPassThru LyX
+のソースに手を加えた場合には、変更したところを（unifiedフォーマットの）diffファイルとして、上でした開発者用のメーリングリ
 ストに送ってください。そのときには、チェンジログとあなたのパッチの説明もいっしょに送ってください。
 \end_layout
 
@@ -3998,7 +4100,9 @@ LyXを改良するためにLyXのソースに手を加えた場合には、変�
 \end_layout
 
 \begin_layout Standard
-LyXの取扱説明書は広範にわたっています。しかし、LyXはつねに開発が続けられていて、新しいリリースごとに新しい機能が増えています。改善を必要とする取扱説明書を
+\SpecialCharNoPassThru LyX
+の取扱説明書は広範にわたっています。しかし、\SpecialCharNoPassThru LyX
+はつねに開発が続けられていて、新しいリリースごとに新しい機能が増えています。改善を必要とする取扱説明書を
 見つけることもあるでしょう。本節では、取扱説明書に間違いを見つけた場合や、取扱説明書を改善する提案がある場合にはどうしたらいいのかを説明します。
 \end_layout
 
@@ -4036,7 +4140,9 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-LyX文書化プロジェクトは、他のLyXプロジェクトと同様に常に手助けを必要としています。もし文書化プロジェクトへの貢献に興味があるなら、次のことを行って下さい。
+\SpecialCharNoPassThru LyX
+文書化プロジェクトは、他の\SpecialCharNoPassThru LyX
+プロジェクトと同様に常に手助けを必要としています。もし文書化プロジェクトへの貢献に興味があるなら、次のことを行って下さい。
 \end_layout
 
 \begin_layout Enumerate
@@ -4049,7 +4155,8 @@ LyX文書化プロジェクトは、他のLyXプロジェクトと同様に常�
 \bar no
 \noun off
 \color none
-最新のLyXのソースコードを
+最新の\SpecialCharNoPassThru LyX
+のソースコードを
 \size largest
 
 \begin_inset Newline newline

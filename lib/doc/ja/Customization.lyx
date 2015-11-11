@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/ja/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -72,21 +73,21 @@ BgColor		none
 LabelString		"ルビ"
 Decoration		Conglomerate
 Argument post:1
-      LabelString	"ルビ文"
-      MenuString	"ルビ文(S)|S"
-      Decoration	Conglomerate
-      Font
-            Size		tiny
-      EndFont
-      LabelFont
-            Size		tiny
-      EndFont
-      Mandatory	1
+LabelString	"ルビ文"
+MenuString	"ルビ文(S)|S"
+Decoration	Conglomerate
+Font
+Size		tiny
+EndFont
+LabelFont
+Size		tiny
+EndFont
+Mandatory	1
 EndArgument
 Preamble
 \IfFileExists{okumacro.sty}
- {\usepackage{okumacro}}
- {\newcommand{\ruby}[2]{#2}}
+{\usepackage{okumacro}}
+{\newcommand{\ruby}[2]{#2}}
 EndPreamble
 End
 \end_local_layout
@@ -94,16 +95,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -174,7 +175,8 @@ End
 \begin_body
 
 \begin_layout Title
-LyXの高度設定
+\SpecialCharNoPassThru LyX
+の高度設定
 \begin_inset Newline newline
 \end_inset
 
@@ -182,13 +184,15 @@ LyXの高度設定
 \end_layout
 
 \begin_layout Author
-LyX開発チーム
+\SpecialCharNoPassThru LyX
+開発チーム
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-もしコメントや誤りの修正をお持ちでしたら、LyX文書化メーリングリスト
+もしコメントや誤りの修正をお持ちでしたら、\SpecialCharNoPassThru LyX
+文書化メーリングリスト
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -228,7 +232,8 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-LyX翻訳者陣が変更点を認識しやすくなり、メンテナが最新の状態を維持することが容易になります。
+\SpecialCharNoPassThru LyX
+翻訳者陣が変更点を認識しやすくなり、メンテナが最新の状態を維持することが容易になります。
 \end_layout
 
 \end_inset
@@ -241,7 +246,8 @@ LyX翻訳者陣が変更点を認識しやすくなり、メンテナが最新�
 \end_layout
 
 \begin_layout Standard
-この取扱説明書は、LyXに備わっている高度設定機能を取り扱います。ここでは、
+この取扱説明書は、\SpecialCharNoPassThru LyX
+に備わっている高度設定機能を取り扱います。ここでは、
 \begin_inset Flex Ruby
 status collapsed
 
@@ -261,7 +267,11 @@ status collapsed
 
 \end_inset
 
-や画面プレビューオプション、プリンタオプション、LyXサーバ経由でのLyXへのコマンド送信、国際化、新しいLaTeXクラスやLyXレイアウトの導入などの題材につ
+や画面プレビューオプション、プリンタオプション、\SpecialCharNoPassThru LyX
+サーバ経由での\SpecialCharNoPassThru LyX
+へのコマンド送信、国際化、新しい\SpecialCharNoPassThru LaTeX
+クラスや\SpecialCharNoPassThru LyX
+レイアウトの導入などの題材につ
 いて論じます。おそらくは変更可能なことすべてについて触れることは無理でしょうが—私たちの開発者たちは私たちが文書化できる速さよりも速く新しい機能を付け加えてしま
 うので—、もっとも一般的な高度設定については説明を行い、わかりにくいものについては正しい方向を指し示すことができるようにしていくつもりです。
 \end_layout
@@ -273,7 +283,8 @@ status collapsed
 \begin_layout Standard
 Information from previous versions of this document that now seems to be
  outdated is contained in the OutDated branch of this document.
- By default, this information will not appear in the LaTeX output.
+ By default, this information will not appear in the \SpecialCharNoPassThru LaTeX
+ output.
 \end_layout
 
 \end_inset
@@ -282,16 +293,18 @@ Information from previous versions of this document that now seems to be
 \end_layout
 
 \begin_layout Chapter
-LyX設定ファイル
+\SpecialCharNoPassThru LyX
+設定ファイル
 \end_layout
 
 \begin_layout Standard
-本章の目的は、LyX設定ファイル群を理解するための一助となることです。本章を読み進める前に、
+本章の目的は、\SpecialCharNoPassThru LyX
+設定ファイル群を理解するための一助となることです。本章を読み進める前に、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 L
 \begin_inset ERT
 status collapsed
@@ -308,7 +321,9 @@ yXについて
 
 \end_inset
 
-を使って、LyXライブラリとユーザディレクトリがどこにあるかを確認しておいてください。ライブラリディレクトリは、LyXがシステム全体の設定ファイルを置いておくと
+を使って、\SpecialCharNoPassThru LyX
+ライブラリとユーザディレクトリがどこにあるかを確認しておいてください。ライブラリディレクトリは、\SpecialCharNoPassThru LyX
+がシステム全体の設定ファイルを置いておくと
 ころです。一方、ユーザディレクトリは、自身がそれを修正した版を置いておくところです。私たちは、本書の以下の部分で、前者を
 \begin_inset Flex Code
 status collapsed
@@ -388,18 +403,21 @@ yXDir
 
 \end_inset
 
-とそのサブディレクトリには、多くのファイルがあり、LyXの挙動を高度設定するのに使用されます。これらのファイルの多くは、LyX内の
+とそのサブディレクトリには、多くのファイルがあり、\SpecialCharNoPassThru LyX
+の挙動を高度設定するのに使用されます。これらのファイルの多くは、\SpecialCharNoPassThru LyX
+内の
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 設定
 \end_layout
 
 \end_inset
 
-ダイアログから変更することができます。LyX中で行いたいと思うような高度設定は、ほとんどこのダイアログから行うことができるようになっています。しかしながら、Ly
+ダイアログから変更することができます。\SpecialCharNoPassThru LyX
+中で行いたいと思うような高度設定は、ほとんどこのダイアログから行うことができるようになっています。しかしながら、Ly
 Xの他の多くの内部動作は、
 \begin_inset Flex Code
 status collapsed
@@ -438,7 +456,8 @@ UserDir
 
 \end_inset
 
-にある各ファイルは、LyXが自動設定を行ったときに生成されます。これらのファイルは、内部調査中に推測された様々な既定値が置かれています。これらは、随時上書きされ
+にある各ファイルは、\SpecialCharNoPassThru LyX
+が自動設定を行ったときに生成されます。これらのファイルは、内部調査中に推測された様々な既定値が置かれています。これらは、随時上書きされ
 てしまうので、一般的には修正しないことが望まれます。
 \end_layout
 
@@ -467,13 +486,15 @@ packages.lst
 
 \end_inset
 
- このファイルには、LyXが認識したパッケージの一覧が収められています。現在のところ、これはLyXプログラム自体には使用されていませんが、抽出された情報その他は
+ このファイルには、\SpecialCharNoPassThru LyX
+が認識したパッケージの一覧が収められています。現在のところ、これは\SpecialCharNoPassThru LyX
+プログラム自体には使用されていませんが、抽出された情報その他は
 、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -514,7 +535,8 @@ Plain L
 
 \end_inset
 
-ディレクトリで検出されたテキストクラスと、関連したLaTeX文書クラスおよびその説明の一覧です。
+ディレクトリで検出されたテキストクラスと、関連した\SpecialCharNoPassThru LaTeX
+文書クラスおよびその説明の一覧です。
 \end_layout
 
 \begin_layout Labeling
@@ -552,7 +574,8 @@ status collapsed
 
 \end_inset
 
- ご使用のシステムで検出された様々な種類のLaTeX関連ファイルの一覧です。
+ ご使用のシステムで検出された様々な種類の\SpecialCharNoPassThru LaTeX
+関連ファイルの一覧です。
 \end_layout
 
 \begin_layout Labeling
@@ -598,7 +621,8 @@ eXConfig.lyx.in
 
 \end_inset
 
-から自動的に生成されます。ご使用中のLaTeXの設定に関する情報が納められています。
+から自動的に生成されます。ご使用中の\SpecialCharNoPassThru LaTeX
+の設定に関する情報が納められています。
 \end_layout
 
 \begin_layout Subsection
@@ -661,7 +685,8 @@ bind/
 
 \end_inset
 
- このディレクトリには、LyXで使用されるキー割当を定義している、拡張子が
+ このディレクトリには、\SpecialCharNoPassThru LyX
+で使用されるキー割当を定義している、拡張子が
 \begin_inset Flex Code
 status collapsed
 
@@ -709,7 +734,8 @@ doc/
 
 \end_inset
 
- このディレクトリには、LyXの取扱説明書ファイル（今お読みのものも含めて）が納められています。上述のように、
+ このディレクトリには、\SpecialCharNoPassThru LyX
+の取扱説明書ファイル（今お読みのものも含めて）が納められています。上述のように、
 \begin_inset Flex Code
 status collapsed
 
@@ -795,7 +821,8 @@ status collapsed
 
 \end_inset
 
-ダイアログで使用される画像ファイルが納められています。さらに、ツールバーの各アイコンや、LyXを起動したときに現れるバナーも納められています。
+ダイアログで使用される画像ファイルが納められています。さらに、ツールバーの各アイコンや、\SpecialCharNoPassThru LyX
+を起動したときに現れるバナーも納められています。
 \end_layout
 
 \begin_layout Labeling
@@ -851,7 +878,8 @@ lyx2lyx
 
 \end_inset
 
- このディレクトリには、LyXの各バージョン間の変換に使用される
+ このディレクトリには、\SpecialCharNoPassThru LyX
+の各バージョン間の変換に使用される
 \begin_inset Flex Code
 status collapsed
 
@@ -885,7 +913,8 @@ status collapsed
 
 \end_inset
 
-機能の有用性を示すためのファイルがいくつか納められています。LyX自身が使用するスクリプトもいくつか収められています。
+機能の有用性を示すためのファイルがいくつか納められています。\SpecialCharNoPassThru LyX
+自身が使用するスクリプトもいくつか収められています。
 \end_layout
 
 \begin_layout Labeling
@@ -906,7 +935,8 @@ reference "sec:ひな型を作成する"
 
 \end_inset
 
-で述べられている標準のLyXひな型ファイルが納められています。
+で述べられている標準の\SpecialCharNoPassThru LyX
+ひな型ファイルが納められています。
 \end_layout
 
 \begin_layout Labeling
@@ -920,7 +950,8 @@ ui/
 
 \end_inset
 
- このディレクトリには、LyXの操作画面を定義する拡張子
+ このディレクトリには、\SpecialCharNoPassThru LyX
+の操作画面を定義する拡張子
 \begin_inset Flex Code
 status collapsed
 
@@ -938,7 +969,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-これらのファイルはLyXが内部的に使用するもので、あなたが開発者でない限りは、凡そこれらに変更を加える必要はありません。
+これらのファイルは\SpecialCharNoPassThru LyX
+が内部的に使用するもので、あなたが開発者でない限りは、凡そこれらに変更を加える必要はありません。
 \end_layout
 
 \begin_layout Labeling
@@ -952,12 +984,13 @@ CREDITS
 
 \end_inset
 
- このファイルは、LyX開発陣の名簿です。この内容は、メニュー項目
+ このファイルは、\SpecialCharNoPassThru LyX
+開発陣の名簿です。この内容は、メニュー項目
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 L
 \begin_inset ERT
 status collapsed
@@ -988,7 +1021,8 @@ chkconfig.ltx
 
 \end_inset
 
- これは、自動設定プロセスによって使用されるLaTeXスクリプトです。直接実行しないでください。
+ これは、自動設定プロセスによって使用される\SpecialCharNoPassThru LaTeX
+スクリプトです。直接実行しないでください。
 \end_layout
 
 \begin_layout Labeling
@@ -1002,7 +1036,8 @@ configure.py
 
 \end_inset
 
- これは、LyXの環境構成によって使用されるスクリプトです。これは、このスクリプトを実行したディレクトリに設定ファイルを生成します。
+ これは、\SpecialCharNoPassThru LyX
+の環境構成によって使用されるスクリプトです。これは、このスクリプトを実行したディレクトリに設定ファイルを生成します。
 \end_layout
 
 \begin_layout Subsection
@@ -1065,7 +1100,8 @@ languages
 
 \end_inset
 
- このファイルには、現在LyXがサポートしている言語の全一覧が載っています。
+ このファイルには、現在\SpecialCharNoPassThru LyX
+がサポートしている言語の全一覧が載っています。
 \end_layout
 
 \begin_layout Labeling
@@ -1096,7 +1132,7 @@ layouttranslations
  このファイルは、国際化された段落様式の翻訳が収録されています(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式の国際化"
+reference "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -1114,7 +1150,9 @@ unicodesymbols
 
 \end_inset
 
- このファイルは、unicodeエンコーディングされたグリフに関する情報と、LyXがLaTeXを介してそれらをどのようにサポートしているかについての情報を含んで
+ このファイルは、unicodeエンコーディングされたグリフに関する情報と、\SpecialCharNoPassThru LyX
+が\SpecialCharNoPassThru LaTeX
+を介してそれらをどのようにサポートしているかについての情報を含んで
 います。
 \end_layout
 
@@ -1123,7 +1161,9 @@ unicodesymbols
 \end_layout
 
 \begin_layout Standard
-LyXを非特権ユーザとして利用している場合でも、自分自身で使うために、LyXの設定を変更したいと思うかもしれません。
+\SpecialCharNoPassThru LyX
+を非特権ユーザとして利用している場合でも、自分自身で使うために、\SpecialCharNoPassThru LyX
+の設定を変更したいと思うかもしれません。
 \begin_inset Flex Code
 status collapsed
 
@@ -1138,7 +1178,7 @@ UserDir
 status collapsed
 
 \begin_layout Plain Layout
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 L
 \begin_inset ERT
 status collapsed
@@ -1230,7 +1270,7 @@ yXDir
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -1264,13 +1304,14 @@ preferences
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 環境構成
 \end_layout
 
 \end_inset
 
-を使用して環境構成を行うと、LyXは
+を使用して環境構成を行うと、\SpecialCharNoPassThru LyX
+は
 \begin_inset Flex Code
 status collapsed
 
@@ -1295,7 +1336,7 @@ UserDir/layouts
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -1305,7 +1346,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-たとえば、LyXのFTPサイトから最新の取扱説明書をとってきたものの、使用中のシステム上で管理者権限がないために、それをインストールすることができなかったとして
+たとえば、\SpecialCharNoPassThru LyX
+のFTPサイトから最新の取扱説明書をとってきたものの、使用中のシステム上で管理者権限がないために、それをインストールすることができなかったとして
 も、それらのファイルを
 \begin_inset Flex Code
 status collapsed
@@ -1330,7 +1372,8 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-LyXを複数の設定を使って実行するには
+\SpecialCharNoPassThru LyX
+を複数の設定を使って実行するには
 \end_layout
 
 \begin_layout Standard
@@ -1340,7 +1383,8 @@ LyXを複数の設定を使って実行するには
 \end_layout
 
 \begin_layout Standard
-LyXをコマンドラインスイッチ
+\SpecialCharNoPassThru LyX
+をコマンドラインスイッチ
 \begin_inset Flex Code
 status collapsed
 
@@ -1354,7 +1398,8 @@ P
 \emph on
 <ディレクトリ名>
 \emph default
-と共に起動すると、設定を既定のディレクトリではなく、指定したディレクトリから読み込むように、指示することになります（LyXを
+と共に起動すると、設定を既定のディレクトリではなく、指定したディレクトリから読み込むように、指示することになります（\SpecialCharNoPassThru LyX
+を
 \begin_inset Flex Code
 status collapsed
 
@@ -1364,7 +1409,9 @@ status collapsed
 
 \end_inset
 
-スイッチなしで実行すれば、既定ディレクトリを指定することになります）。指定したディレクトリが存在しない場合には、LyXは、初めてLyXを実行したときに既定ディレ
+スイッチなしで実行すれば、既定ディレクトリを指定することになります）。指定したディレクトリが存在しない場合には、\SpecialCharNoPassThru LyX
+は、初めて\SpecialCharNoPassThru LyX
+を実行したときに既定ディレ
 クトリを訊いてくるのと同様に、そのディレクトリを作るかどうか訊いてきます。この追加したユーザディレクトリでは、既定ディレクトリで行うのと全く同じように設定オプシ
 ョンを修正することができます。これらのディレクトリは完全に独立しています（が、読み進めてください）。また、環境変数
 \begin_inset Flex Code
@@ -1391,7 +1438,8 @@ NewUserDir/layouts
 \end_inset
 
 に加えて、これをすべての設定で利用できるようにしたいならば、これをすべての設定ディレクトリで個々に付け加えなくてはなりません。これを避けるには、次のようなトリッ
-クを使用してください。LyXが新しい設定ディレクトリを生成すると、そのサブディレクトリ（上記参照）はほとんど空です。新しい設定が既存のものをミラーするようにする
+クを使用してください。\SpecialCharNoPassThru LyX
+が新しい設定ディレクトリを生成すると、そのサブディレクトリ（上記参照）はほとんど空です。新しい設定が既存のものをミラーするようにする
 には、空のサブディレクトリを、既存の設定の対応するサブディレクトリへのシンボリックリンクに置き換えてください。ただし
 \begin_inset Flex Code
 status collapsed
@@ -1407,7 +1455,7 @@ doc/
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 環境構成
 \end_layout
 
@@ -1449,7 +1497,7 @@ name "sec:ファイル形式"
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -1460,7 +1508,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ファイル処理\SpecialChar \menuseparator
+ファイル処理\SpecialChar menuseparator
 ファイル形式
 \end_layout
 
@@ -1471,7 +1519,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-新規\SpecialChar \ldots{}
+新規\SpecialChar ldots
 
 \end_layout
 
@@ -1542,7 +1590,7 @@ Ctrl+D
 status collapsed
 
 \begin_layout Plain Layout
-表示\SpecialChar \menuseparator
+表示\SpecialChar menuseparator
 DVI
 \end_layout
 
@@ -1583,7 +1631,8 @@ Ghostview
 \end_inset
 
 を使用したいとしましょう。このプログラムを起動するのに必要なコマンドを対応するフィールドに入力します。ここで、コマンドを定義するのに、次節に掲げる4つの変数を用
-いることができます。この閲覧プログラムは、LyX中で画像を閲覧したり
+いることができます。この閲覧プログラムは、\SpecialCharNoPassThru LyX
+中で画像を閲覧したり
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -1626,7 +1675,8 @@ target "http://www.iana.org/assignments/media-types/"
 
 \end_inset
 
-に公式に登録されたMIME型がないものがあります。そこで、LyXは、
+に公式に登録されたMIME型がないものがあります。そこで、\SpecialCharNoPassThru LyX
+は、
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
@@ -1647,7 +1697,8 @@ status collapsed
 
 \end_inset
 
-オプションは、LyXに、この形式が文書として書き出すのに適していることを指示するものです。このオプションが有効となっていて、適切な変換経路が存在する場合には（第
+オプションは、\SpecialCharNoPassThru LyX
+に、この形式が文書として書き出すのに適していることを指示するものです。このオプションが有効となっていて、適切な変換経路が存在する場合には（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:変換子"
@@ -1659,7 +1710,7 @@ reference "sec:変換子"
 status collapsed
 
 \begin_layout Plain Layout
-ファイル\SpecialChar \menuseparator
+ファイル\SpecialChar menuseparator
 書き出し
 \end_layout
 
@@ -1708,7 +1759,8 @@ status collapsed
 
 \end_inset
 
-オプションは、LyXにこの形式がベクター画像を含みうることを教示するものです。この情報は、
+オプションは、\SpecialCharNoPassThru LyX
+にこの形式がベクター画像を含みうることを教示するものです。この情報は、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -1816,7 +1868,8 @@ png
 \end_layout
 
 \begin_layout Standard
-形式の変換はすべて、LyXの一時ディレクトリで行われるため、変換用にファイルを一時ディレクトリにコピーする前段階で、ファイルに変更を加える必要のあることがありま
+形式の変換はすべて、\SpecialCharNoPassThru LyX
+の一時ディレクトリで行われるため、変換用にファイルを一時ディレクトリにコピーする前段階で、ファイルに変更を加える必要のあることがありま
 す
 \begin_inset Foot
 status collapsed
@@ -1846,7 +1899,8 @@ $$s
 
 \end_inset
 
- LyXのシステムディレクトリ（例：
+ \SpecialCharNoPassThru LyX
+のシステムディレクトリ（例：
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -1898,7 +1952,8 @@ $$b
 
 \end_inset
 
- LyX一時ディレクトリ内でのベース名(ファイル拡張子なし)
+ \SpecialCharNoPassThru LyX
+一時ディレクトリ内でのベース名(ファイル拡張子なし)
 \end_layout
 
 \begin_layout Labeling
@@ -1912,7 +1967,8 @@ $$p
 
 \end_inset
 
- LyX一時ディレクトリのフルパス名
+ \SpecialCharNoPassThru LyX
+一時ディレクトリのフルパス名
 \end_layout
 
 \begin_layout Labeling
@@ -1926,7 +1982,8 @@ $$r
 
 \end_inset
 
- 処理されている元のLyXファイルのフルパス名
+ 処理されている元の\SpecialCharNoPassThru LyX
+ファイルのフルパス名
 \end_layout
 
 \begin_layout Labeling
@@ -1940,7 +1997,8 @@ $$f
 
 \end_inset
 
- LyXファイルのファイル名(ディレクトリパスなし)
+ \SpecialCharNoPassThru LyX
+ファイルのファイル名(ディレクトリパスなし)
 \end_layout
 
 \begin_layout Labeling
@@ -1954,11 +2012,13 @@ $$l
 
 \end_inset
 
- 「LaTeX名」
+ 「\SpecialCharNoPassThru LaTeX
+名」
 \end_layout
 
 \begin_layout Standard
-最後の変数は、LaTeXの
+最後の変数は、\SpecialCharNoPassThru LaTeX
+の
 \series bold
 
 \backslash
@@ -2018,12 +2078,13 @@ status collapsed
 
 \end_inset
 
-のような、自身のローカルLyXディレクトリに保存し、お使いのプラットフォームが必要とするならば、実行可能属性を付与します。それから、
+のような、自身のローカル\SpecialCharNoPassThru LyX
+ディレクトリに保存し、お使いのプラットフォームが必要とするならば、実行可能属性を付与します。それから、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -2034,7 +2095,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ファイル処理\SpecialChar \menuseparator
+ファイル処理\SpecialChar menuseparator
 ファイル形式
 \end_layout
 
@@ -2074,7 +2135,9 @@ pdfcopier.sh $$i $$o
 \end_layout
 
 \begin_layout Standard
-複写子は、LyX自身が様々な変換に使用します。たとえば、適切なプログラムが検出された場合、LyXは自動的に
+複写子は、\SpecialCharNoPassThru LyX
+自身が様々な変換に使用します。たとえば、適切なプログラムが検出された場合、\SpecialCharNoPassThru LyX
+は自動的に
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2099,7 +2162,8 @@ HTML
 \end_inset
 
 形式の複写子を導入します。これらの形式を書き出す際、複写子は、本体のHTMLファイルだけでなく、関連した様々なファイル（スタイルファイルや画像など）もコピーされ
-るように手配します。これらのファイルはすべて、元のLyXファイルのあるディレクトリのサブディレクトリに書き込まれます
+るように手配します。これらのファイルはすべて、元の\SpecialCharNoPassThru LyX
+ファイルのあるディレクトリのサブディレクトリに書き込まれます
 \begin_inset Foot
 status collapsed
 
@@ -2183,9 +2247,9 @@ name "sec:変換子"
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+ファイル処理\SpecialChar menuseparator
 変換子
 \end_layout
 
@@ -2239,7 +2303,8 @@ $$s
 
 \end_inset
 
- LyXシステムディレクトリ
+ \SpecialCharNoPassThru LyX
+システムディレクトリ
 \end_layout
 
 \begin_layout Labeling
@@ -2350,7 +2415,10 @@ latex
 
 \end_inset
 
- この変換子がLaTeXの一種を実行することを示します。これによって、LyXのLaTeXエラーログに記録を残せるようになります。
+ この変換子が\SpecialCharNoPassThru LaTeX
+の一種を実行することを示します。これによって、\SpecialCharNoPassThru LyX
+の\SpecialCharNoPassThru LaTeX
+エラーログに記録を残せるようになります。
 \end_layout
 
 \begin_layout Labeling
@@ -2364,7 +2432,8 @@ needaux
 
 \end_inset
 
- 変換にLaTeXの
+ 変換に\SpecialCharNoPassThru LaTeX
+の
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2396,7 +2465,9 @@ nice
 \begin_inset Quotes erd
 \end_inset
 
-なファイル、つまりLyXが書き出すLaTeXファイルのように、
+なファイル、つまり\SpecialCharNoPassThru LyX
+が書き出す\SpecialCharNoPassThru LaTeX
+ファイルのように、
 \begin_inset Flex Code
 status open
 
@@ -2406,7 +2477,8 @@ input@path
 
 \end_inset
 
-のないLaTeXファイルを必要とします。
+のない\SpecialCharNoPassThru LaTeX
+ファイルを必要とします。
 \end_layout
 
 \begin_layout Labeling
@@ -2500,7 +2572,8 @@ resultdir
 
 \end_inset
 
- これには、変換子が生成したファイルをダンプするディレクトリ名を指定します。LyXはこのディレクトリを作成せず、ここに何もコピーしませんが、このディレクトリを宛
+ これには、変換子が生成したファイルをダンプするディレクトリ名を指定します。\SpecialCharNoPassThru LyX
+はこのディレクトリを作成せず、ここに何もコピーしませんが、このディレクトリを宛
 先にコピーします。引数には、
 \begin_inset Flex Code
 status collapsed
@@ -2543,14 +2616,20 @@ $$b
 \end_layout
 
 \begin_layout Standard
-最後の3つは、LyXとともに導入される変換子には、現在いずれも使用されておりません。
+最後の3つは、\SpecialCharNoPassThru LyX
+とともに導入される変換子には、現在いずれも使用されておりません。
 \end_layout
 
 \begin_layout Standard
-変換しようとするすべての形式のあいだに変換子を定義する必要はありません。たとえば、「LyXからPostScript」変換子が定義されていないのに、LyXはPos
-tScriptを書き出していることに気づかれることでしょう。これは、まずLaTeXファイルを生成した後に（これには変換子を定義する必要はありません）、「LaTe
-XからDVI」変換子を使用してDVIに変換し、最後に、得られたDVIをPostScriptに変換することによって実現しています。LyXはこのような変換子の「連鎖
-」を自動的に見つけ、つねに最も短い連鎖を選択します。しかしながら、なお形式間に複数の変換方法を定義することも可能です。たとえば、標準的なLyX設定は、LaTeX
+変換しようとするすべての形式のあいだに変換子を定義する必要はありません。たとえば、「\SpecialCharNoPassThru LyX
+からPostScript」変換子が定義されていないのに、\SpecialCharNoPassThru LyX
+はPos
+tScriptを書き出していることに気づかれることでしょう。これは、まず\SpecialCharNoPassThru LaTeX
+ファイルを生成した後に（これには変換子を定義する必要はありません）、「LaTe
+XからDVI」変換子を使用してDVIに変換し、最後に、得られたDVIをPostScriptに変換することによって実現しています。\SpecialCharNoPassThru LyX
+はこのような変換子の「連鎖
+」を自動的に見つけ、つねに最も短い連鎖を選択します。しかしながら、なお形式間に複数の変換方法を定義することも可能です。たとえば、標準的な\SpecialCharNoPassThru LyX
+設定は、\SpecialCharNoPassThru LaTeX
 からPDFへ変換するのに、以下の3つの方法を用意しています。
 \end_layout
 
@@ -2602,7 +2681,7 @@ dvipdfm
 status collapsed
 
 \begin_layout Plain Layout
-XeTeX
+Xe\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -2616,7 +2695,7 @@ XeTeX
 status collapsed
 
 \begin_layout Plain Layout
-LuaTeX
+Lua\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -2707,7 +2786,7 @@ pdf4
 status collapsed
 
 \begin_layout Plain Layout
-XeTeX
+Xe\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -2727,12 +2806,12 @@ pdf5
 status collapsed
 
 \begin_layout Plain Layout
-LuaTeX
+Lua\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
 
-用\SpecialChar \-
+用\SpecialChar softhyphen
 ) と命名された形式が定義されていて、すべて共通の拡張子
 \begin_inset Flex MenuItem
 status collapsed
@@ -2747,7 +2826,8 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-LyXの各国語対応
+\SpecialCharNoPassThru LyX
+の各国語対応
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:LyXの各国語対応"
@@ -2758,7 +2838,9 @@ name "cha:LyXの各国語対応"
 \end_layout
 
 \begin_layout Standard
-LyXは、翻訳された操作画面の利用をサポートしています。私たちが最後に確かめたところでは、LyXは30言語の翻訳を提供しています。選択した言語は、使用する
+\SpecialCharNoPassThru LyX
+は、翻訳された操作画面の利用をサポートしています。私たちが最後に確かめたところでは、\SpecialCharNoPassThru LyX
+は30言語の翻訳を提供しています。選択した言語は、使用する
 \emph on
 ロケール
 \emph default
@@ -2803,16 +2885,19 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-もしあなたが英語以外の言語を流暢に操れるならば、これらのチームに参加することは、LyXコミュニティに報いるたいへん素晴らしい方法です！
+もしあなたが英語以外の言語を流暢に操れるならば、これらのチームに参加することは、\SpecialCharNoPassThru LyX
+コミュニティに報いるたいへん素晴らしい方法です！
 \end_layout
 
 \end_inset
 
-—は、LyXの将来のバージョンでこれらの欠点を修正しようとするでしょう。
+—は、\SpecialCharNoPassThru LyX
+の将来のバージョンでこれらの欠点を修正しようとするでしょう。
 \end_layout
 
 \begin_layout Section
-LyXを翻訳する
+\SpecialCharNoPassThru LyX
+を翻訳する
 \end_layout
 
 \begin_layout Subsection
@@ -2830,7 +2915,8 @@ GUI（テキストメッセージ）を翻訳する
 \end_layout
 
 \begin_layout Standard
-LyXは、操作画面の国際化対応にGNU 
+\SpecialCharNoPassThru LyX
+は、操作画面の国際化対応にGNU 
 \begin_inset Flex Code
 status collapsed
 
@@ -2840,7 +2926,8 @@ gettext
 
 \end_inset
 
-ライブラリを使用します。LyXのすべてのメニューやダイアログでお好みの言語を話させたいときには、その言語の
+ライブラリを使用します。\SpecialCharNoPassThru LyX
+のすべてのメニューやダイアログでお好みの言語を話させたいときには、その言語の
 \begin_inset Flex Code
 status collapsed
 
@@ -2880,8 +2967,10 @@ gettext
 
 \end_inset
 
-の取扱説明書に説明があります。この作業をあなたのためだけに行うこともできますが、もしせっかくするのであれば、あなたの骨折りの結果をLyXコミュニティの他の人々と
-分かち合いませんか。どのように段取りを進めればよいか、詳しくはLyX開発者メーリングリストにメールを送ってください。
+の取扱説明書に説明があります。この作業をあなたのためだけに行うこともできますが、もしせっかくするのであれば、あなたの骨折りの結果を\SpecialCharNoPassThru LyX
+コミュニティの他の人々と
+分かち合いませんか。どのように段取りを進めればよいか、詳しくは\SpecialCharNoPassThru LyX
+開発者メーリングリストにメールを送ってください。
 \end_layout
 
 \begin_layout Standard
@@ -2889,7 +2978,8 @@ gettext
 \end_layout
 
 \begin_layout Itemize
-LyXソースコードをチェックアウトしてください（
+\SpecialCharNoPassThru LyX
+ソースコードをチェックアウトしてください（
 \begin_inset CommandInset href
 LatexCommand href
 name "ウェブ上の情報"
@@ -3100,7 +3190,9 @@ po
 
 \end_inset
 
-ファイルを他の人たちが使用できるよう、LyX頒布版に追加できることが最善です。これを追加するには、LyXに変更を加える必要がありますので、もしその気があれば、開
+ファイルを他の人たちが使用できるよう、\SpecialCharNoPassThru LyX
+頒布版に追加できることが最善です。これを追加するには、\SpecialCharNoPassThru LyX
+に変更を加える必要がありますので、もしその気があれば、開
 発者メーリングリストに電子メールを送ってください。
 \end_layout
 
@@ -3183,7 +3275,8 @@ gettext
 \end_layout
 
 \begin_layout Standard
-もちろん、この文脈情報は、翻訳が存在しないときには取り去られる必要がありますので、メッセージの終わりに二重大括弧で囲わなくてはなりません（上例参照）。LyXの翻
+もちろん、この文脈情報は、翻訳が存在しないときには取り去られる必要がありますので、メッセージの終わりに二重大括弧で囲わなくてはなりません（上例参照）。\SpecialCharNoPassThru LyX
+の翻
 訳機構では、メッセージの終わりに二重大括弧で囲われているものはすべて、メッセージを表示する前に取り去るようにされています。
 \end_layout
 
@@ -3212,7 +3305,9 @@ status collapsed
 
 \end_inset
 
-、ロケールがその言語に設定されている場合、LyXはこれを自動的に使用します。LyXは、翻訳版を
+、ロケールがその言語に設定されている場合、\SpecialCharNoPassThru LyX
+はこれを自動的に使用します。\SpecialCharNoPassThru LyX
+は、翻訳版を
 \begin_inset Flex Code
 status collapsed
 
@@ -3290,7 +3385,7 @@ Intro.lyx
 status collapsed
 
 \begin_layout Plain Layout
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 はじめの一歩
 \end_layout
 
@@ -3333,7 +3428,8 @@ UserDir/doc/xx/
 \end_layout
 
 \begin_layout Itemize
-（LyXチームが維持している）原典の説明書は、時折更新されます。変更点については、
+（\SpecialCharNoPassThru LyX
+チームが維持している）原典の説明書は、時折更新されます。変更点については、
 \begin_inset CommandInset href
 LatexCommand href
 name "http://www.lyx.org/trac/timeline"
@@ -3794,7 +3890,8 @@ status collapsed
 
 \end_inset
 
- marks comments, quotes start and end LaTeX-style commands.
+ marks comments, quotes start and end \SpecialCharNoPassThru LaTeX
+-style commands.
  To enter quote, you'll need to use 
 \begin_inset Flex Code
 status collapsed
@@ -4544,7 +4641,8 @@ status collapsed
 
 \end_inset
 
-ファイルは、記号の作り出す文字列を現在のフォントの文字に割り当てます。LyX頒布版には、現在のところ、少なくとも
+ファイルは、記号の作り出す文字列を現在のフォントの文字に割り当てます。\SpecialCharNoPassThru LyX
+頒布版には、現在のところ、少なくとも
 \begin_inset Flex Code
 status collapsed
 
@@ -4687,7 +4785,8 @@ iso-8859-7.cdef
 \end_layout
 
 \begin_layout Standard
-という例があります。LyXは、キー打鍵やデッドキーの組み合わせで生成される文字列の割り当てを見つけることができないとき、それがアクセント付き文字のように解釈がで
+という例があります。\SpecialCharNoPassThru LyX
+は、キー打鍵やデッドキーの組み合わせで生成される文字列の割り当てを見つけることができないとき、それがアクセント付き文字のように解釈がで
 きないかどうかチェックして、画面上の文字にアクセントを引くことを試みます。
 \end_layout
 
@@ -4731,7 +4830,8 @@ Shift-6
 
 \end_inset
 
-キー）を、LyXコマンドの
+キー）を、\SpecialCharNoPassThru LyX
+コマンドの
 \begin_inset Flex Code
 status collapsed
 
@@ -4781,7 +4881,8 @@ t
 
 \end_inset
 
-」は曲折アクセントをとることは決してないために、LyXはビープを鳴らして文句を付けます。デッドキーの後に
+」は曲折アクセントをとることは決してないために、\SpecialCharNoPassThru LyX
+はビープを鳴らして文句を付けます。デッドキーの後に
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -4926,7 +5027,8 @@ usldead_cedilla
 
 \end_inset
 
-などに割り当てることで、これらのキーをデッドキーに仕立て、このシンボリックキーを対応するLyXコマンドに割り当てることもできます
+などに割り当てることで、これらのキーをデッドキーに仕立て、このシンボリックキーを対応する\SpecialCharNoPassThru LyX
+コマンドに割り当てることもできます
 \begin_inset Foot
 status collapsed
 
@@ -5042,9 +5144,11 @@ Ctrl-
 
 \end_inset
 
-キーの片方や使われていないファンクションキーなど、ほぼ何でも指定することができます。アクセントを生み出すLyXコマンドについては、
+キーの片方や使われていないファンクションキーなど、ほぼ何でも指定することができます。アクセントを生み出す\SpecialCharNoPassThru LyX
+コマンドについては、
 \emph on
-LyX関数説明書
+\SpecialCharNoPassThru LyX
+関数説明書
 \emph default
 の
 \begin_inset Flex Code
@@ -5068,13 +5172,14 @@ LFUN_ACCENT_*
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 設定
 \end_layout
 
 \end_inset
 
-ダイアログを使えば、LyXを起動したときに、ご希望の言語環境に自動的に設定されるように、設定を編集することができます。
+ダイアログを使えば、\SpecialCharNoPassThru LyX
+を起動したときに、ご希望の言語環境に自動的に設定されるように、設定を編集することができます。
 \end_layout
 
 \begin_layout Chapter
@@ -5099,20 +5204,33 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この章では、新しくLyXのレイアウトファイルやひな型ファイルを作成して、導入する手順を説明すると共に、新規にLaTeX文書クラス（ドキュメントクラス）を正しく導
+この章では、新しく\SpecialCharNoPassThru LyX
+のレイアウトファイルやひな型ファイルを作成して、導入する手順を説明すると共に、新規に\SpecialCharNoPassThru LaTeX
+文書クラス（ドキュメントクラス）を正しく導
 入する方法を復習します。
 \end_layout
 
 \begin_layout Standard
-まず、LyXとLaTeXの間の関係をどのように考えるべきか、若干の注釈を加えておくことにしましょう。理解していただきたいことは、ある意味において、LyXは、La
-TeXについて何も知らないと云うことです。実際のところ、LyXの観点からは、LaTeXは、LyXが出力を生成することができる、複数の「バックエンド形式」のうちの
-一つに過ぎないということです。同種のバックエンド形式には、DocBook・平文・XHTMLがあります。もちろんLaTeXは、とくに重要な形式ですが、LyXがLa
-TeXについて持っている情報のほとんどは、実はプログラム本体には含まれていないのです
+まず、\SpecialCharNoPassThru LyX
+と\SpecialCharNoPassThru LaTeX
+の間の関係をどのように考えるべきか、若干の注釈を加えておくことにしましょう。理解していただきたいことは、ある意味において、\SpecialCharNoPassThru LyX
+は、La
+\SpecialCharNoPassThru TeX
+について何も知らないと云うことです。実際のところ、\SpecialCharNoPassThru LyX
+の観点からは、\SpecialCharNoPassThru LaTeX
+は、\SpecialCharNoPassThru LyX
+が出力を生成することができる、複数の「バックエンド形式」のうちの
+一つに過ぎないということです。同種のバックエンド形式には、DocBook・平文・XHTMLがあります。もちろん\SpecialCharNoPassThru LaTeX
+は、とくに重要な形式ですが、\SpecialCharNoPassThru LyX
+がLa
+\SpecialCharNoPassThru TeX
+について持っている情報のほとんどは、実はプログラム本体には含まれていないのです
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-過度に複雑なため、LyXに「ハードコード化」されているコマンドもありますが、一般的に開発者は、これを「わるいこと」とみなしています。
+過度に複雑なため、\SpecialCharNoPassThru LyX
+に「ハードコード化」されているコマンドもありますが、一般的に開発者は、これを「わるいこと」とみなしています。
 \end_layout
 
 \end_inset
@@ -5127,13 +5245,20 @@ article.cls
 
 \end_inset
 
-のような標準クラスでも、「レイアウトファイル」に保管されています。同様に、LyXは、DocBookやXHTMLについてもほとんど知りません。LyXが知っているこ
+のような標準クラスでも、「レイアウトファイル」に保管されています。同様に、\SpecialCharNoPassThru LyX
+は、DocBookやXHTMLについてもほとんど知りません。\SpecialCharNoPassThru LyX
+が知っているこ
 とは、レイアウトファイルの中にあります。
 \end_layout
 
 \begin_layout Standard
-文書クラス用のレイアウトファイルは、LyX構成体---対応する様式や何らかの差込枠などを有する段落群---と、それに対応するLaTeX構成体・DocBook構成
-体・XHTML構成体との間の翻訳指南書のようなものです。たとえば、LyXが
+文書クラス用のレイアウトファイルは、\SpecialCharNoPassThru LyX
+構成体\threehyphens
+対応する様式や何らかの差込枠などを有する段落群\threehyphens
+と、それに対応する\SpecialCharNoPassThru LaTeX
+構成体・DocBook構成
+体・XHTML構成体との間の翻訳指南書のようなものです。たとえば、\SpecialCharNoPassThru LyX
+が
 \begin_inset Flex Code
 status collapsed
 
@@ -5194,7 +5319,9 @@ stdsections.inc
 
 \end_inset
 
-は、節様式や小節様式などとしてマークされている段落を、対応するLaTeX・DocBook・XHTMLのコマンドやタグにどのように翻訳すべきかをLyXに知らせるも
+は、節様式や小節様式などとしてマークされている段落を、対応する\SpecialCharNoPassThru LaTeX
+・DocBook・XHTMLのコマンドやタグにどのように翻訳すべきかを\SpecialCharNoPassThru LyX
+に知らせるも
 のです。基本的に
 \begin_inset Flex Code
 status collapsed
@@ -5219,24 +5346,43 @@ std*.inc
 \end_layout
 
 \begin_layout Standard
-しかしながら、LyX--LaTeX間の対応を定義するだけが、レイアウトファイルが行うことではありません。レイアウトファイルが行うもう一つの仕事は、LyX構成体自
+しかしながら、\SpecialCharNoPassThru LyX
+\twohyphens
+\SpecialCharNoPassThru LaTeX
+間の対応を定義するだけが、レイアウトファイルが行うことではありません。レイアウトファイルが行うもう一つの仕事は、\SpecialCharNoPassThru LyX
+構成体自
 身が画面上にどのように表示されるべきかを定義することです。この2つの仕事は全く独立したものであるので、レイアウトファイルが2つの仕事を行うという事実は、しばしば
-混乱を引き起こす元となります。ある段落様式をLaTeXに翻訳する仕方をLyXに指示することは、その表示の仕方をLyXに指示するものではありません。逆に、ある段落
-様式の表示の仕方をLyXに指示することは、その段落様式をどのようにLaTeXに翻訳するかをLyXに指示するものではありません（ましてやLaTeXに表示の仕方を指
-示するものではありません）。つまり、一般的に、新しいLyX構成体を定義する際には、(i)
+混乱を引き起こす元となります。ある段落様式を\SpecialCharNoPassThru LaTeX
+に翻訳する仕方を\SpecialCharNoPassThru LyX
+に指示することは、その表示の仕方を\SpecialCharNoPassThru LyX
+に指示するものではありません。逆に、ある段落
+様式の表示の仕方を\SpecialCharNoPassThru LyX
+に指示することは、その段落様式をどのように\SpecialCharNoPassThru LaTeX
+に翻訳するかを\SpecialCharNoPassThru LyX
+に指示するものではありません（ましてや\SpecialCharNoPassThru LaTeX
+に表示の仕方を指
+示するものではありません）。つまり、一般的に、新しい\SpecialCharNoPassThru LyX
+構成体を定義する際には、(i)
 \begin_inset space ~
 \end_inset
 
-LaTeXにどのように翻訳するかをLyXに指示する、(ii)
+\SpecialCharNoPassThru LaTeX
+にどのように翻訳するかを\SpecialCharNoPassThru LyX
+に指示する、(ii)
 \begin_inset space ~
 \end_inset
 
-それをどのように表示するかをLyXに指示する、という、二つのかなり異なることを行わなくてはならないのです。
+それをどのように表示するかを\SpecialCharNoPassThru LyX
+に指示する、という、二つのかなり異なることを行わなくてはならないのです。
 \end_layout
 
 \begin_layout Standard
-もちろん、LyXの他のバックエンド形式に関しても、ほぼ同じことが言えますが、XHTMLの場合には若干事情が異なり、LyXが、ブラウザ中での段落の表示方法を（CS
-Sの形で）出力するにあたって、当該段落をLyXが画面上に出力する仕方の情報を、ある程度利用することができます。しかし、この場合でも、LyXが内部的に行うことと、
+もちろん、\SpecialCharNoPassThru LyX
+の他のバックエンド形式に関しても、ほぼ同じことが言えますが、XHTMLの場合には若干事情が異なり、\SpecialCharNoPassThru LyX
+が、ブラウザ中での段落の表示方法を（CS
+Sの形で）出力するにあたって、当該段落を\SpecialCharNoPassThru LyX
+が画面上に出力する仕方の情報を、ある程度利用することができます。しかし、この場合でも、\SpecialCharNoPassThru LyX
+が内部的に行うことと、
 外部的に行う物事の間の区別は、依然として有効であり、この2つは独立して制御することができます。詳細に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5248,13 +5394,21 @@ reference "sec:XHTML出力のタグ"
 \end_layout
 
 \begin_layout Section
-新しいLaTeXファイルの導入
+新しい\SpecialCharNoPassThru LaTeX
+ファイルの導入
 \end_layout
 
 \begin_layout Standard
-頒布版によっては、LyXで使いたいLaTeXパッケージやクラスファイルが含まれていないことがあるかもしれません。たとえば、オーバーヘッドプロジェクタ用のスライド
-を準備するためのパッケージである、FoilTeXがないかもしれません。TeXLive（2008年以降）やMiKTeXのような最近のLaTeX頒布版には、これらの
-パッケージを導入するためのユーザーインタフェースが用意されています。たとえば、MiKTeXでは、付属の「Package
+頒布版によっては、\SpecialCharNoPassThru LyX
+で使いたい\SpecialCharNoPassThru LaTeX
+パッケージやクラスファイルが含まれていないことがあるかもしれません。たとえば、オーバーヘッドプロジェクタ用のスライド
+を準備するためのパッケージである、Foil\SpecialCharNoPassThru TeX
+がないかもしれません。\SpecialCharNoPassThru TeX
+Live（2008年以降）やMiK\SpecialCharNoPassThru TeX
+のような最近の\SpecialCharNoPassThru LaTeX
+頒布版には、これらの
+パッケージを導入するためのユーザーインタフェースが用意されています。たとえば、MiK\SpecialCharNoPassThru TeX
+では、付属の「Package
 \begin_inset space ~
 \end_inset
 
@@ -5263,7 +5417,8 @@ Manager」プログラムを起動すると、利用できるパッケージの�
 \end_layout
 
 \begin_layout Standard
-お使いのLaTeX頒布版がこのような「パッケージマネジャー」を提供していなかったり、使用中の頒布版にそのパッケージが入っていない場合には、以下のステップに従って
+お使いの\SpecialCharNoPassThru LaTeX
+頒布版がこのような「パッケージマネジャー」を提供していなかったり、使用中の頒布版にそのパッケージが入っていない場合には、以下のステップに従って
 手動で導入してください。
 \end_layout
 
@@ -5289,7 +5444,8 @@ status collapsed
 
 \end_inset
 
-」で終わるファイル名が入っている場合（FoilTeXがその一例です）は、コンソールを開いて、このファイルのフォルダに移動し、コマンド
+」で終わるファイル名が入っている場合（Foil\SpecialCharNoPassThru TeX
+がその一例です）は、コンソールを開いて、このファイルのフォルダに移動し、コマンド
 \begin_inset Flex Code
 status collapsed
 
@@ -5299,18 +5455,24 @@ latex foiltex.ins
 
 \end_inset
 
-を実行してください。すると、パッケージが解凍されて、導入すべきすべてのファイルが展開されます。たいていのLaTeXパッケージは圧縮されていないので、このステップ
+を実行してください。すると、パッケージが解凍されて、導入すべきすべてのファイルが展開されます。たいていの\SpecialCharNoPassThru LaTeX
+パッケージは圧縮されていないので、このステップ
 は飛ばすことができます。
 \end_layout
 
 \begin_layout Enumerate
 ここで、パッケージを全ユーザーに使用可能にするか自分自身だけで使うかを決定する必要があります。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-（Linux・OSXなどの）*nix系システムでは、システム上の全ユーザーに新パッケージを利用可能にしたければ、「ローカル」TeXツリーに導入し、そうでなければ
-「ユーザー」TeXツリーに導入してください。これらのツリーが存在しない場合にどこに作成すればよいかは、お使いのシステムに依存します。これを見いだすには、
+（Linux・OSXなどの）*nix系システムでは、システム上の全ユーザーに新パッケージを利用可能にしたければ、「ローカル」\SpecialCharNoPassThru TeX
+ツリーに導入し、そうでなければ
+「ユーザー」\SpecialCharNoPassThru TeX
+ツリーに導入してください。これらのツリーが存在しない場合にどこに作成すればよいかは、お使いのシステムに依存します。これを見いだすには、
 \begin_inset Flex Code
 status collapsed
 
@@ -5344,7 +5506,8 @@ kpsewhich texmf.cnf
 
 \end_inset
 
-。「ローカル」TeXツリーの場所は、
+。「ローカル」\SpecialCharNoPassThru TeX
+ツリーの場所は、
 \begin_inset Flex Code
 status collapsed
 
@@ -5364,7 +5527,8 @@ status collapsed
 
 \end_inset
 
-のような場所になっています。「ユーザー」TeXツリーの場所は、
+のような場所になっています。「ユーザー」\SpecialCharNoPassThru TeX
+ツリーの場所は、
 \begin_inset Flex Code
 status collapsed
 
@@ -5394,7 +5558,8 @@ $HOME/texmf/
 \end_layout
 
 \begin_layout Enumerate
-Windowで、システム上の全ユーザーに新パッケージを利用可能にしたい場合には、LaTeXの導入されているフォルダのサブフォルダ
+Windowで、システム上の全ユーザーに新パッケージを利用可能にしたい場合には、\SpecialCharNoPassThru LaTeX
+の導入されているフォルダのサブフォルダ
 \begin_inset Flex Code
 status collapsed
 
@@ -5408,7 +5573,8 @@ latex
 
 \end_inset
 
-に移動します（MiKTeXの既定値では、これは
+に移動します（MiK\SpecialCharNoPassThru TeX
+の既定値では、これは
 \begin_inset Flex Code
 status collapsed
 
@@ -5447,7 +5613,7 @@ status collapsed
 \begin_layout Plain Layout
 ~:Programme
 \backslash
-MiKTeX
+MiK\SpecialCharNoPassThru TeX
 \backslash
 tex
 \backslash
@@ -5471,8 +5637,9 @@ foiltex
 
 \end_inset
 
-を作成し、パッケージの全ファイルをそこにコピーしてください。パッケージを自分だけで使用したい場合や、admin権限を持っていない場合には、ローカルLaTeXフォ
-ルダで同じことを行います。たとえばMiKTeX
+を作成し、パッケージの全ファイルをそこにコピーしてください。パッケージを自分だけで使用したい場合や、admin権限を持っていない場合には、ローカル\SpecialCharNoPassThru LaTeX
+フォ
+ルダで同じことを行います。たとえばMiK\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -5597,12 +5764,18 @@ latex
 
 \end_deeper
 \begin_layout Enumerate
-ここまで来れば、あとはLaTeXに新しいファイルがあることを告げるだけです。これは使用しているLaTeX頒布版に依存します。
+ここまで来れば、あとは\SpecialCharNoPassThru LaTeX
+に新しいファイルがあることを告げるだけです。これは使用している\SpecialCharNoPassThru LaTeX
+頒布版に依存します。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-TeXLiveの場合には、コンソールから
+\SpecialCharNoPassThru TeX
+Liveの場合には、コンソールから
 \begin_inset Flex Code
 status collapsed
 
@@ -5616,7 +5789,8 @@ texhash
 \end_layout
 
 \begin_layout Enumerate
-MiKTeXでは、パッケージを全ユーザー用に導入した場合には、「Settings
+MiK\SpecialCharNoPassThru TeX
+では、パッケージを全ユーザー用に導入した場合には、「Settings
 \begin_inset space ~
 \end_inset
 
@@ -5626,8 +5800,11 @@ MiKTeXでは、パッケージを全ユーザー用に導入した場合には�
 
 \end_deeper
 \begin_layout Enumerate
-最後に、LyXに新しいパッケージがあることを告げなくてはなりません。そこで、LyXからツール\SpecialChar \menuseparator
-環境構成メニューを実行して、LyXを再起動します。
+最後に、\SpecialCharNoPassThru LyX
+に新しいパッケージがあることを告げなくてはなりません。そこで、\SpecialCharNoPassThru LyX
+からツール\SpecialChar menuseparator
+環境構成メニューを実行して、\SpecialCharNoPassThru LyX
+を再起動します。
 \end_layout
 
 \begin_layout Standard
@@ -5661,8 +5838,8 @@ X)
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 文書クラス
 \end_layout
 
@@ -5676,14 +5853,15 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 文書クラス
 \end_layout
 
 \end_inset
 
-メニューに列挙されてもいないLaTeX文書クラスを使用したい場合には、その「レイアウト」ファイルを作り出さなくてはなりません。これが次節のトピックです。
+メニューに列挙されてもいない\SpecialCharNoPassThru LaTeX
+文書クラスを使用したい場合には、その「レイアウト」ファイルを作り出さなくてはなりません。これが次節のトピックです。
 \end_layout
 
 \begin_layout Section
@@ -5691,18 +5869,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この節は、レイアウト情報を含む各種LyXファイルについて述べます。これらのファイルは、各種段落様式や文字様式についての記述がされているものであり、LyXがそれら
-をどのように表示すべきなのか、また、それらをどのようにLaTeXやDocBook、XHTMLその他の出力形式に翻訳すればよいのかが記されています。
+この節は、レイアウト情報を含む各種\SpecialCharNoPassThru LyX
+ファイルについて述べます。これらのファイルは、各種段落様式や文字様式についての記述がされているものであり、\SpecialCharNoPassThru LyX
+がそれら
+をどのように表示すべきなのか、また、それらをどのように\SpecialCharNoPassThru LaTeX
+やDocBook、XHTMLその他の出力形式に翻訳すればよいのかが記されています。
 \end_layout
 
 \begin_layout Standard
-ここでは、レイアウトファイル作成過程の包括的な解説を試みたいと思いますが、LaTeXクラスだけでもサポートする文書の種類があまりにたくさんあるので、読者が出会い
-うるケースや問題をすべてカバーすることはとても望めません。LyXユーザーメーリングリストには、自身の経験を人々と分かち合いたいと望む、レイアウトデザインの経験豊
+ここでは、レイアウトファイル作成過程の包括的な解説を試みたいと思いますが、\SpecialCharNoPassThru LaTeX
+クラスだけでもサポートする文書の種類があまりにたくさんあるので、読者が出会い
+うるケースや問題をすべてカバーすることはとても望めません。\SpecialCharNoPassThru LyX
+ユーザーメーリングリストには、自身の経験を人々と分かち合いたいと望む、レイアウトデザインの経験豊
 かな人々がよく顔を出していますので、気軽に質問を投げかけてみてください。
 \end_layout
 
 \begin_layout Standard
-新しいレイアウトを準備するに当たっては、LyXと共に頒布されているレイアウトの例を見るのがたいへん役立ちます。他の人々も使用できるLaTeX文書クラス用のLyX
+新しいレイアウトを準備するに当たっては、\SpecialCharNoPassThru LyX
+と共に頒布されているレイアウトの例を見るのがたいへん役立ちます。他の人々も使用できる\SpecialCharNoPassThru LaTeX
+文書クラス用の\SpecialCharNoPassThru LyX
 レイアウトを作ったり、他の人々にも有用なモジュールをお書きになった場合には、
 \begin_inset CommandInset href
 LatexCommand href
@@ -5711,12 +5896,16 @@ target "http://wiki.lyx.org/Layouts/Layouts"
 
 \end_inset
 
-か、LyX開発者メーリングリストに投稿して、LyX頒布版に同梱することができるようにしてください
+か、\SpecialCharNoPassThru LyX
+開発者メーリングリストに投稿して、\SpecialCharNoPassThru LyX
+頒布版に同梱することができるようにしてください
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyXはGeneral Public Licenseの下でライセンスされていますので、LyXに寄贈されたものは総て同じライセンス下に置かれることに注意してくださ
+\SpecialCharNoPassThru LyX
+はGeneral Public Licenseの下でライセンスされていますので、\SpecialCharNoPassThru LyX
+に寄贈されたものは総て同じライセンス下に置かれることに注意してくださ
 い。
 \end_layout
 
@@ -5729,7 +5918,7 @@ LyXはGeneral Public Licenseの下でライセンスされていますので、L
 レイアウトモジュール
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:レイアウトモジュール"
+name "subsec:レイアウトモジュール"
 
 \end_inset
 
@@ -5748,7 +5937,9 @@ status collapsed
 
 \end_inset
 
-拡張子を持ち、文書クラスに関する情報をLyXに提供するものを指します。しかしながら、LyX 1.6以降、レイアウト情報は、拡張子が
+拡張子を持ち、文書クラスに関する情報を\SpecialCharNoPassThru LyX
+に提供するものを指します。しかしながら、\SpecialCharNoPassThru LyX
+ 1.6以降、レイアウト情報は、拡張子が
 \begin_inset Flex Code
 status collapsed
 
@@ -5762,7 +5953,9 @@ status collapsed
 \emph on
 モジュール
 \emph default
-にも含めることができます。レイアウトがLaTeXクラスに対応しているように、モジュールはLaTeXパッケージに対応するものであり、
+にも含めることができます。レイアウトが\SpecialCharNoPassThru LaTeX
+クラスに対応しているように、モジュールは\SpecialCharNoPassThru LaTeX
+パッケージに対応するものであり、
 \begin_inset Flex Code
 status collapsed
 
@@ -5818,7 +6011,7 @@ article.cls
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -5843,13 +6036,14 @@ layout/
 
 \end_inset
 
-フォルダにコピーした後、モジュールがメニューに現れるようにするためには、LyXの環境構成を行って再起動しなくてはなりません。しかしながら、モジュールの修正の場合
+フォルダにコピーした後、モジュールがメニューに現れるようにするためには、\SpecialCharNoPassThru LyX
+の環境構成を行って再起動しなくてはなりません。しかしながら、モジュールの修正の場合
 には、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -5863,7 +6057,8 @@ status collapsed
 \emph on
 実際の文書で作業しているときに、同時にモジュールの編集をしようとしないことを強く勧めます
 \emph default
-。もちろん開発陣は、そのような場合でもLyXが安定性を維持するように努力していますが、あなたが作成したモジュール中の文法エラー等によって、奇妙な挙動が引き起こさ
+。もちろん開発陣は、そのような場合でも\SpecialCharNoPassThru LyX
+が安定性を維持するように努力していますが、あなたが作成したモジュール中の文法エラー等によって、奇妙な挙動が引き起こさ
 れることがあるからです。
 \end_layout
 
@@ -5872,7 +6067,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXに於けるモジュールは、LaTeXに於けるパッケージに当たります。しかしながら、特定の差込枠や文字様式を、ひとつの文書のためだけに作りたいこともあるでしょう
+\SpecialCharNoPassThru LyX
+に於けるモジュールは、\SpecialCharNoPassThru LaTeX
+に於けるパッケージに当たります。しかしながら、特定の差込枠や文字様式を、ひとつの文書のためだけに作りたいこともあるでしょう
 から、そのような場合に、他の文書でも利用できるようなモジュールをわざわざ書くことには、あまり意味がありません。このような場合に必要となるのが、「ローカルレイアウ
 ト」なのです。
 \end_layout
@@ -5880,8 +6077,8 @@ LyXに於けるモジュールは、LaTeXに於けるパッケージに当たり
 \begin_layout Standard
 これは、
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 ローカルのレイアウト
 \family default
 にあります。そこにある大きなテキストボックスは、本来ならレイアウトファイルやモジュールに入力すべきものを、入力するためのものです。特定の文書のローカルレイアウト
@@ -5895,10 +6092,16 @@ Format
 
 \end_inset
 
-タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(LyX 2.1では、最新書式は48です)。
-また、ローカルレイアウトは、LyX 1.6より前の版ではサポートされていないことを認識しておく必要があります。したがって、文書をLyX 1.5またはそれ以前の版に(
-ローカルレイアウト情報を失うことなく)書き出せることを望むならば、使用するべきではありません。第1.6版へ---第1.6版はUIはありませんがローカルレイアウトをサ
-ポートしています---書き出せることを望むならば、書式11を用いて、さらにLyX 1.6で使用できるレイアウト要素のみを使用してください。
+タグは挿入しなくてはなりません。どの書式を使用しても構いませんが、通常は、執筆時点の最新書式を用いることになるでしょう(\SpecialCharNoPassThru LyX
+ 2.1では、最新書式は48です)。
+また、ローカルレイアウトは、\SpecialCharNoPassThru LyX
+ 1.6より前の版ではサポートされていないことを認識しておく必要があります。したがって、文書を\SpecialCharNoPassThru LyX
+ 1.5またはそれ以前の版に(
+ローカルレイアウト情報を失うことなく)書き出せることを望むならば、使用するべきではありません。第1.6版へ\threehyphens
+第1.6版はUIはありませんがローカルレイアウトをサ
+ポートしています\threehyphens
+書き出せることを望むならば、書式11を用いて、さらに\SpecialCharNoPassThru LyX
+ 1.6で使用できるレイアウト要素のみを使用してください。
 \end_layout
 
 \begin_layout Standard
@@ -5912,7 +6115,9 @@ status collapsed
 \end_inset
 
 面に何かを入力すると、下部にある「検証」ボタンが有効になります。このボタンを押すと、ユーザーの入力したものが、指定された書式に沿って、有効なレイアウト情報になっ
-ているかどうかが検証されます。すると、LyXがその結果を返しますが、残念ながら、エラーがあった場合にそれが何のエラーであるかは返しません。しかしながら、LyXを
+ているかどうかが検証されます。すると、\SpecialCharNoPassThru LyX
+がその結果を返しますが、残念ながら、エラーがあった場合にそれが何のエラーであるかは返しません。しかしながら、\SpecialCharNoPassThru LyX
+を
 ターミナル(擬似端末)から起動した場合には、そのエラーがターミナルに返されます。ローカルレイアウトは、正しい書式で入力されないうちは、保存することができません。
 \end_layout
 
@@ -5935,7 +6140,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-新しくLaTeX文書クラスをサポートしようとするとき、LaTeX2eクラス（
+新しく\SpecialCharNoPassThru LaTeX
+文書クラスをサポートしようとするとき、\SpecialCharNoPassThru LaTeX2e
+クラス（
 \begin_inset Flex Code
 status collapsed
 
@@ -5990,7 +6197,8 @@ report.cls
 status collapsed
 
 \begin_layout Plain Layout
-もちろん、どのディレクトリがローカルディレクトリとなるかは、プラットフォームに依存します。LyXでは、起動時に
+もちろん、どのディレクトリがローカルディレクトリとなるかは、プラットフォームに依存します。\SpecialCharNoPassThru LyX
+では、起動時に
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -6093,23 +6301,25 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
-LyXを起動して
+\SpecialCharNoPassThru LyX
+を起動して
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 環境構成
 \end_layout
 
 \end_inset
 
-を選択してください。それからLyXを再起動し、新規文書を作成してみてください。すると、
+を選択してください。それから\SpecialCharNoPassThru LyX
+を再起動し、新規文書を作成してみてください。すると、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -6222,7 +6432,8 @@ myclass.sty
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule{My Package}
+Declare\SpecialCharNoPassThru LyX
+Module{My Package}
 \end_layout
 
 \begin_layout LyX-Code
@@ -6313,7 +6524,8 @@ LoadClass{book}
 status collapsed
 
 \begin_layout Plain Layout
-DeclareLaTeXClass
+Declare\SpecialCharNoPassThru LaTeX
+Class
 \end_layout
 
 \end_inset
@@ -6343,7 +6555,8 @@ book
 status collapsed
 
 \begin_layout Plain Layout
-DeclareLaTeXClass
+Declare\SpecialCharNoPassThru LaTeX
+Class
 \end_layout
 
 \end_inset
@@ -6353,7 +6566,8 @@ DeclareLaTeXClass
 status collapsed
 
 \begin_layout Plain Layout
-さらにLyXは、文書クラス名がレイアウトファイル名と同じだと仮定するので、クラスファイルを
+さらに\SpecialCharNoPassThru LyX
+は、文書クラス名がレイアウトファイル名と同じだと仮定するので、クラスファイルを
 \begin_inset Flex Code
 status collapsed
 
@@ -6389,7 +6603,8 @@ eXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
-他方、新しいクラスが既存のクラスに基づいていない場合には、おそらくあなた自身のレイアウトをしたためる必要があります。もし可能であれば、類似したLaTeXクラスを
+他方、新しいクラスが既存のクラスに基づいていない場合には、おそらくあなた自身のレイアウトをしたためる必要があります。もし可能であれば、類似した\SpecialCharNoPassThru LaTeX
+クラスを
 使用している既存のレイアウトファイルをコピーして、それに修正を加えるようにすることを強くお勧めします。少なくとも、どの項目を考慮すべきかがわかるように、既存のフ
 ァイルを作業の開始点としてください。
 \end_layout
@@ -6407,11 +6622,13 @@ name "sec:ひな型を作成する"
 
 \begin_layout Standard
 新しい文書クラス用のレイアウトファイルを書いたならば、そのレイアウト用のひな型も書くことを検討されるかもしれません。ひな型は、内容はダミーですが、レイアウトの使
-い方を示す一種のチュートリアルとして動作します。もちろん、イメージを得るために、LyX添付のひな型をあれこれ見てみるのもよいでしょう。
+い方を示す一種のチュートリアルとして動作します。もちろん、イメージを得るために、\SpecialCharNoPassThru LyX
+添付のひな型をあれこれ見てみるのもよいでしょう。
 \end_layout
 
 \begin_layout Standard
-ひな型は、通常の文書と同様、LyXを使って作成することができます。唯一違う点は、通常の文書では、フォント構成や用紙寸法を含め、すべてのあり得る設定が為されている
+ひな型は、通常の文書と同様、\SpecialCharNoPassThru LyX
+を使って作成することができます。唯一違う点は、通常の文書では、フォント構成や用紙寸法を含め、すべてのあり得る設定が為されている
 点です。これらの場合、通常ユーザーはひな型が彼の設定値を上書きすることを望みません。この理由から、ひな型の設計者は、
 \begin_inset Flex Code
 status collapsed
@@ -6436,7 +6653,8 @@ papersize
 
 \end_inset
 
-などの対応するコマンドをひな型LyXファイルから取り除く必要があります。これは、たとえば
+などの対応するコマンドをひな型\SpecialCharNoPassThru LyX
+ファイルから取り除く必要があります。これは、たとえば
 \begin_inset Flex Code
 status collapsed
 
@@ -6475,7 +6693,8 @@ UserDir/templates/
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/templates/
+\SpecialCharNoPassThru LyX
+Dir/templates/
 \end_layout
 
 \end_inset
@@ -6485,8 +6704,8 @@ LyXDir/templates/
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 パス
 \end_layout
 
@@ -6511,13 +6730,14 @@ defaults.lyx
 status collapsed
 
 \begin_layout Plain Layout
-ファイル\SpecialChar \menuseparator
+ファイル\SpecialChar menuseparator
 新規
 \end_layout
 
 \end_inset
 
-を使って新規文書を作成する際、便利な既定値を提供する目的で必ず読み込まれます。このひな型をLyX内部から作成するのにしなくてはならないことは、対応する設定を持つ
+を使って新規文書を作成する際、便利な既定値を提供する目的で必ず読み込まれます。このひな型を\SpecialCharNoPassThru LyX
+内部から作成するのにしなくてはならないことは、対応する設定を持つ
 文書を開き、
 \begin_inset Flex MenuItem
 status collapsed
@@ -6536,18 +6756,23 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-レイアウトファイルの書式は、LyXのリリース毎に変更されますので、古いレイアウトファイルは変換されなくてはなりません。LyXが古い書式のレイアウトファイルを読み
-込むと、LyXは、自動的に変換ツール
+レイアウトファイルの書式は、\SpecialCharNoPassThru LyX
+のリリース毎に変更されますので、古いレイアウトファイルは変換されなくてはなりません。\SpecialCharNoPassThru LyX
+が古い書式のレイアウトファイルを読み
+込むと、\SpecialCharNoPassThru LyX
+は、自動的に変換ツール
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/scripts/layout2layout.py
+\SpecialCharNoPassThru LyX
+Dir/scripts/layout2layout.py
 \end_layout
 
 \end_inset
 
-を呼び出し、それを現在の書式の一時ファイルに変換します。元のファイルは変更を加えられずに措かれます。もしこのレイアウトファイルをよく使うならば、LyXがこれを毎
+を呼び出し、それを現在の書式の一時ファイルに変換します。元のファイルは変更を加えられずに措かれます。もしこのレイアウトファイルをよく使うならば、\SpecialCharNoPassThru LyX
+がこれを毎
 回行なわくて済むように、レイアウトファイルを恒久的に変換しておきたいと思うかもしれません。これを行うには、以下のように変換子を手動で呼び出してください。
 \end_layout
 
@@ -6585,7 +6810,8 @@ myclass.old
 status collapsed
 
 \begin_layout Plain Layout
-python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+python \SpecialCharNoPassThru LyX
+Dir/scripts/layout2layout.py myclass.old myclass.layout
 \end_layout
 
 \end_inset
@@ -6599,12 +6825,14 @@ python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialCharNoPassThru LyX
+Dir
 \end_layout
 
 \end_inset
 
-はLyXシステムディレクトリの名前です。
+は\SpecialCharNoPassThru LyX
+システムディレクトリの名前です。
 \end_layout
 
 \begin_layout Standard
@@ -6625,7 +6853,8 @@ name "sec:テキストクラス"
 以下の各節では、いよいよ自分の手を汚してレイアウトファイルを作成したり編集したりする段階になった際、直面することの説明を行います。私たちからのアドバイスとしては
 、ゆっくりと進めるようにして、ちょっと進むごとに保存やテストを行い、心休まる音楽を聴き、好きな大人の飲み物を一二杯口にしながら行うのがいいでしょう。特に行き詰ま
 ってしまったときにはそうです。実際にはそんなに難しいことではないのですが、特に一度に多くのことをやろうとすると、選択肢が多くありすぎて圧倒されてしまうのです。さ
-て、もう一杯大人向け飲料をどうぞ。適量ね。LyXの既存のレイアウトを例や参考に使ったり、既存のレイアウトを自身の目的に合わせて修正したりすると、作業が容易になり
+て、もう一杯大人向け飲料をどうぞ。適量ね。\SpecialCharNoPassThru LyX
+の既存のレイアウトを例や参考に使ったり、既存のレイアウトを自身の目的に合わせて修正したりすると、作業が容易になり
 ます。
 \end_layout
 
@@ -6753,7 +6982,9 @@ DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-2行目と3行目は、LyXが環境構成を行う際に用いられます。このレイアウトファイルは、LaTeXスクリプト
+2行目と3行目は、\SpecialCharNoPassThru LyX
+が環境構成を行う際に用いられます。このレイアウトファイルは、\SpecialCharNoPassThru LaTeX
+スクリプト
 \begin_inset Flex Code
 status collapsed
 
@@ -6773,7 +7004,8 @@ status collapsed
 
 \end_inset
 
-を無視する特別なモードで読み込みます。1行目は単なるLaTeXコメントですが、2行目にはテキストクラスの宣言が、3行目にはクラスの分類(非必須)が書かれています
+を無視する特別なモードで読み込みます。1行目は単なる\SpecialCharNoPassThru LaTeX
+コメントですが、2行目にはテキストクラスの宣言が、3行目にはクラスの分類(非必須)が書かれています
 。これらの行が
 \begin_inset Flex Code
 status collapsed
@@ -6794,7 +7026,8 @@ article
 
 \end_inset
 
-（レイアウトファイル名）という名称のテキストクラスを定義し、LaTeX文書クラス
+（レイアウトファイル名）という名称のテキストクラスを定義し、\SpecialCharNoPassThru LaTeX
+文書クラス
 \begin_inset Flex Code
 status collapsed
 
@@ -6809,7 +7042,7 @@ article.cls
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -6820,7 +7053,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -6893,7 +7126,8 @@ DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-これは、LaTeX文書クラス
+これは、\SpecialCharNoPassThru LaTeX
+文書クラス
 \begin_inset Flex Code
 status collapsed
 
@@ -7029,7 +7263,9 @@ DeclareCategory{分類}
 \end_layout
 
 \begin_layout Standard
-ここで「クラス」は、LaTeXクラスファイル名とレイアウトファイル名が異なるときのみ、指定する必要があります。クラスファイル名が指定されなければ、LyXは単純に
+ここで「クラス」は、\SpecialCharNoPassThru LaTeX
+クラスファイル名とレイアウトファイル名が異なるときのみ、指定する必要があります。クラスファイル名が指定されなければ、\SpecialCharNoPassThru LyX
+は単純に
 、クラスファイル名がレイアウトファイル名と同じであると仮定します。
 \end_layout
 
@@ -7070,28 +7306,33 @@ UserDir/layouts
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
 環境構成
 \end_layout
 
 \end_inset
 
-を実行し、LyXを終了して再起動するだけです。そうすれば、この新しいテキストクラスが、他のテキストクラスと同様に使用できるようになります。
+を実行し、\SpecialCharNoPassThru LyX
+を終了して再起動するだけです。そうすれば、この新しいテキストクラスが、他のテキストクラスと同様に使用できるようになります。
 \end_layout
 
 \begin_layout Standard
-レイアウトファイルが導入されたならば、これを編集して、環境構成したりLyXを再起動したりすることなく、その変更を確認することができます
+レイアウトファイルが導入されたならば、これを編集して、環境構成したり\SpecialCharNoPassThru LyX
+を再起動したりすることなく、その変更を確認することができます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-第1.6版よりも前のLyXでは、これを行うことはできませんでした。その結果、レイアウトファイルに加えた変更を反映させるには、その度にLyXを再起動しなくてはならな
+第1.6版よりも前の\SpecialCharNoPassThru LyX
+では、これを行うことはできませんでした。その結果、レイアウトファイルに加えた変更を反映させるには、その度に\SpecialCharNoPassThru LyX
+を再起動しなくてはならな
 かったので、レイアウトファイルを編集する作業は、たいへん時間を浪費する作業だったのです。
 \end_layout
 
 \end_inset
 
-。LyX関数
+。\SpecialCharNoPassThru LyX
+関数
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -7128,19 +7369,23 @@ layout-reload
 \emph on
 強く
 \emph default
-勧めます。テスト用文書を使用してください。レイアウトファイル中の文法エラー等が奇妙な挙動を引き起こす可能性があります。特に、そのようなエラーが起こると、LyXは
+勧めます。テスト用文書を使用してください。レイアウトファイル中の文法エラー等が奇妙な挙動を引き起こす可能性があります。特に、そのようなエラーが起こると、\SpecialCharNoPassThru LyX
+は
 現在のレイアウトが無効であるものと判断して、別のレイアウトに切り替えようとする可能性があります
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-非常に悪質な文法エラーの場合には、LyXが終了してしまうことさえあります。これは、ある種のエラーでは、LyXがレイアウト情報を全く読めなくなる可能性があるからで
+非常に悪質な文法エラーの場合には、\SpecialCharNoPassThru LyX
+が終了してしまうことさえあります。これは、ある種のエラーでは、\SpecialCharNoPassThru LyX
+がレイアウト情報を全く読めなくなる可能性があるからで
 す。ご注意ください。
 \end_layout
 
 \end_inset
 
-。LyX開発陣は、このような状況下でも安定性を保つよう努力していますが、後悔よりも安心の方が良いでしょう
+。\SpecialCharNoPassThru LyX
+開発陣は、このような状況下でも安定性を保つよう努力していますが、後悔よりも安心の方が良いでしょう
 \begin_inset Foot
 status collapsed
 
@@ -7184,13 +7429,14 @@ yXModule[endnotes.sty]{Endnotes}
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
 \end_inset
 
-内に表示されます。角括弧内の引数は非必須です。これは、モジュールが依存するLaTeXパッケージをすべて宣言します。また、非必須引数として、
+内に表示されます。角括弧内の引数は非必須です。これは、モジュールが依存する\SpecialCharNoPassThru LaTeX
+パッケージをすべて宣言します。また、非必須引数として、
 \begin_inset Flex Code
 status collapsed
 
@@ -7229,7 +7475,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-モジュールをLyXに公開する場合には英語が望ましいです。この説明は翻訳メッセージ一覧に現れるようになるので、次回のインタフェースの更新時に翻訳されることになりま
+モジュールを\SpecialCharNoPassThru LyX
+に公開する場合には英語が望ましいです。この説明は翻訳メッセージ一覧に現れるようになるので、次回のインタフェースの更新時に翻訳されることになりま
 す。
 \end_layout
 
@@ -7287,7 +7534,7 @@ eX code where you
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -7413,22 +7660,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-このタグはLyX
+このタグは\SpecialCharNoPassThru LyX
 \begin_inset space ~
 \end_inset
 
-1.4.0で導入されました。LyX
+1.4.0で導入されました。\SpecialCharNoPassThru LyX
 \begin_inset space ~
 \end_inset
 
-1.3.x以前のレイアウトファイルには、明示されたファイル形式がないため、書式1と解されます。LyX現行版のファイル形式は、書式35です。しかし、LyXの各版は、旧
-版のLyXで作成されたファイルを読むことができるように、旧版のレイアウトファイルも読むことができます。しかしながら、以前の書式に変換する方法はありません。
+1.3.x以前のレイアウトファイルには、明示されたファイル形式がないため、書式1と解されます。\SpecialCharNoPassThru LyX
+現行版のファイル形式は、書式35です。しかし、\SpecialCharNoPassThru LyX
+の各版は、旧
+版の\SpecialCharNoPassThru LyX
+で作成されたファイルを読むことができるように、旧版のレイアウトファイルも読むことができます。しかしながら、以前の書式に変換する方法はありません。
 \end_layout
 
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:汎用テキストクラスパラメータ"
+name "subsec:汎用テキストクラスパラメータ"
 
 \end_inset
 
@@ -7532,7 +7782,7 @@ CiteFormat
  書誌情報の表示に使う書式を定義します。詳細については、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:引用書式指定"
+reference "subsec:引用書式指定"
 
 \end_inset
 
@@ -7562,7 +7812,7 @@ ClassOptions
  文書クラスがサポートする様々な大域オプションを記します。説明は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ClassOptions"
+reference "subsec:ClassOptions"
 
 \end_inset
 
@@ -7620,7 +7870,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -7666,7 +7916,7 @@ End
 カウンタについての詳細は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:カウンタ"
+reference "subsec:カウンタ"
 
 \end_inset
 
@@ -7686,7 +7936,7 @@ DefaultFont
  文書を表示するのに用いられる既定フォントを設定します。フォントの宣言の仕方については、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -7822,7 +8072,7 @@ theorems-sec
 。モジュールは、他のモジュールを排除する独自の枠組みがあります（
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:レイアウトモジュール"
+reference "subsec:レイアウトモジュール"
 
 \end_inset
 
@@ -7842,7 +8092,7 @@ Float
  フロートを新規に定義します。詳細は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フロート"
+reference "subsec:フロート"
 
 \end_inset
 
@@ -7943,7 +8193,8 @@ status collapsed
 \end_inset
 
 ] 文書がHTMLに出力されるときに、目次や書誌情報などに使用されるレイアウトです。articleの場合には、これは通常「節」であり、bookの場合は「章」です
-。これを指定しない場合には、LyXはどのレイアウトを使用するべきか、解析しようと試みます。
+。これを指定しない場合には、\SpecialCharNoPassThru LyX
+はどのレイアウトを使用するべきか、解析しようと試みます。
 \end_layout
 
 \begin_layout Description
@@ -7983,7 +8234,7 @@ End
 カウンタについての詳細は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:カウンタ"
+reference "subsec:カウンタ"
 
 \end_inset
 
@@ -8102,7 +8353,7 @@ End
 詳しい情報は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:任意設定差込枠"
+reference "subsec:任意設定差込枠"
 
 \end_inset
 
@@ -8397,7 +8648,8 @@ square
 
 \end_inset
 
-オプションとともに読み込みます(TeXperts向けに述べると、これは、
+オプションとともに読み込みます(\SpecialCharNoPassThru TeX
+perts向けに述べると、これは、
 \begin_inset Flex Code
 status collapsed
 
@@ -8407,7 +8659,8 @@ natbib
 
 \end_inset
 
-を読み込む前に、LyXに
+を読み込む前に、\SpecialCharNoPassThru LyX
+に
 \begin_inset Flex Code
 status collapsed
 
@@ -8471,7 +8724,7 @@ headings
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -8490,7 +8743,8 @@ Preamble
 
 \end_inset
 
- LaTeX文書のプリアンブルを設定します。前に行った
+ \SpecialCharNoPassThru LaTeX
+文書のプリアンブルを設定します。前に行った
 \begin_inset Flex Code
 status collapsed
 
@@ -8605,7 +8859,7 @@ makeidx
 
 \end_inset
 
-・\SpecialChar \ldots{}
+・\SpecialChar ldots
 ）やマクロ名（
 \begin_inset Flex Code
 status collapsed
@@ -8626,7 +8880,7 @@ boldsymbol
 
 \end_inset
 
-・\SpecialChar \ldots{}
+・\SpecialChar ldots
 ）です。機能一覧については、
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8785,7 +9039,8 @@ int=3
 
 \end_inset
 
-] どの節区切りまで連番を振るかを指定します。LaTeXにおける
+] どの節区切りまで連番を振るかを指定します。\SpecialCharNoPassThru LaTeX
+における
 \begin_inset Flex Code
 status collapsed
 
@@ -8841,7 +9096,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \end_layout
 
@@ -8891,7 +9146,7 @@ End
 段落様式に関する詳細は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式-XHTML"
+reference "subsec:段落様式-XHTML"
 
 \end_inset
 
@@ -9065,7 +9320,8 @@ int=3
 
 \end_inset
 
-] どの節区切りまで目次に取り込むかを指定します。LaTeXの
+] どの節区切りまで目次に取り込むかを指定します。\SpecialCharNoPassThru LaTeX
+の
 \begin_inset Flex Code
 status collapsed
 
@@ -9091,7 +9347,7 @@ ClassOptions
 部
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ClassOptions"
+name "subsec:ClassOptions"
 
 \end_inset
 
@@ -9260,7 +9516,7 @@ End
 段落様式
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:段落様式"
+name "subsec:段落様式"
 
 \end_inset
 
@@ -9351,7 +9607,8 @@ block
 
 \end_inset
 
-] 使用できる揃えのコンマ区切りリスト（LaTeXスタイルには、意味を成さない一部の揃えが禁じられているものがあります。たとえば、連番箇条書きを右揃えや中央揃え
+] 使用できる揃えのコンマ区切りリスト（\SpecialCharNoPassThru LaTeX
+スタイルには、意味を成さない一部の揃えが禁じられているものがあります。たとえば、連番箇条書きを右揃えや中央揃え
 にすることはできません）。
 \end_layout
 
@@ -9375,8 +9632,11 @@ status collapsed
 
 \end_inset
 
-] 現在の様式に関連付けられたコマンドまたは環境の引数番号<整数>を定義します。これは、節見出しのようなものに便利で、またLaTeXでのみ意味を持ちます。コマン
-ドまたは環境の引数は全て--段落の内容自身に関連付けられた必須引数を除き、必須・非必須を問わず--、別の場所で定義され、引数番号はその順序を表します。定義は
+] 現在の様式に関連付けられたコマンドまたは環境の引数番号<整数>を定義します。これは、節見出しのようなものに便利で、また\SpecialCharNoPassThru LaTeX
+でのみ意味を持ちます。コマン
+ドまたは環境の引数は全て\twohyphens
+段落の内容自身に関連付けられた必須引数を除き、必須・非必須を問わず\twohyphens
+、別の場所で定義され、引数番号はその順序を表します。定義は
 \begin_inset Flex Code
 status collapsed
 
@@ -9387,6 +9647,9 @@ EndArgument
 \end_inset
 
 で閉じなくてはなりません。非必須引数が2つあるコマンドの場合は、以下のようになります。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -9652,7 +9915,8 @@ status collapsed
 
 \end_inset
 
- この引数が出力されるとき、必要となる別の引数を(番号によって)指定します。例えば、LaTeXコマンドでは、
+ この引数が出力されるとき、必要となる別の引数を(番号によって)指定します。例えば、\SpecialCharNoPassThru LaTeX
+コマンドでは、
 \begin_inset Flex Code
 status collapsed
 
@@ -9853,7 +10117,7 @@ Font
  引数の内容に用いられるフォント。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -9873,7 +10137,7 @@ LabelFont
  ラベルに用いられるフォント。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -9961,7 +10225,8 @@ Command
 
 \end_inset
 
-のとき、各レイアウトでLyX作業領域に入力した文字列は、コマンドの最後の(必須)引数になります。しかしながら、前置句
+のとき、各レイアウトで\SpecialCharNoPassThru LyX
+作業領域に入力した文字列は、コマンドの最後の(必須)引数になります。しかしながら、前置句
 \begin_inset Flex Code
 status collapsed
 
@@ -10086,7 +10351,7 @@ EndBabelPreamble
 」で閉じる必要があります。これの利用法についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式の国際化"
+reference "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -10220,7 +10485,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-この機能以外には、プリアンブルの順序を確定する方法はないことに注意してください。LyXの特定のバージョンで観察された順序は、将来のバージョンで警告なしに変わる可
+この機能以外には、プリアンブルの順序を確定する方法はないことに注意してください。\SpecialCharNoPassThru LyX
+の特定のバージョンで観察された順序は、将来のバージョンで警告なしに変わる可
 能性があります。
 \end_layout
 
@@ -10396,7 +10662,7 @@ Font
 用いられるフォント。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -10443,7 +10709,9 @@ int=0
 
 \end_inset
 
-] 新しい様式をLyX安定版にバックポートするのに用いられます。このタグを最初にサポートした安定版はLyX 2.1.0です。引数は数字で、0・-1・1以上の任意の数
+] 新しい様式を\SpecialCharNoPassThru LyX
+安定版にバックポートするのに用いられます。このタグを最初にサポートした安定版は\SpecialCharNoPassThru LyX
+ 2.1.0です。引数は数字で、0・-1・1以上の任意の数
 をとることができます。様式の
 \begin_inset Flex Code
 status collapsed
@@ -10455,7 +10723,8 @@ ForceLocal
 \end_inset
 
 フラグが1以上ならば、これは常に文書ヘッダに書き込まれます。.lyxファイルが読み込まれると、文書ヘッダからの様式定義が文書クラスに追加されます。したがって、古い
-版のLyXもこの様式を取り扱えるようになります。
+版の\SpecialCharNoPassThru LyX
+もこの様式を取り扱えるようになります。
 \begin_inset Flex Code
 status collapsed
 
@@ -10507,8 +10776,10 @@ status collapsed
 
 \end_inset
 
-] LyXは、空白をそれ自体文字や記号ではなく、2つの単語の間の分割子として捉えているため、単語間に2つ以上の空白を入れることは、通常許可していません。これ自体
-はとても素晴らしいことですが、たとえばプログラムコードや生のLaTeXコードを入力しようとするときなどに、煩わしくなることがあります。このことから、
+] \SpecialCharNoPassThru LyX
+は、空白をそれ自体文字や記号ではなく、2つの単語の間の分割子として捉えているため、単語間に2つ以上の空白を入れることは、通常許可していません。これ自体
+はとても素晴らしいことですが、たとえばプログラムコードや生の\SpecialCharNoPassThru LaTeX
+コードを入力しようとするときなどに、煩わしくなることがあります。このことから、
 \begin_inset Flex Code
 status collapsed
 
@@ -10518,7 +10789,9 @@ FreeSpacing
 
 \end_inset
 
-を有効にすることが認められています。LyXは、LaTeXモード以外では2つめ以降の空白には、保護された空白を使用することに注意してください。
+を有効にすることが認められています。\SpecialCharNoPassThru LyX
+は、\SpecialCharNoPassThru LaTeX
+モード以外では2つめ以降の空白には、保護された空白を使用することに注意してください。
 \end_layout
 
 \begin_layout Description
@@ -10534,7 +10807,7 @@ HTML*
  これらのタグは、XHTML出力で使用されます。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式-XHTML"
+reference "subsec:段落様式-XHTML"
 
 \end_inset
 
@@ -10727,7 +11000,9 @@ status collapsed
 
 \end_inset
 
-] 箇条書きの項目を宣言するLaTeXコマンド。コマンドは、前置されるバックスラッシュを除いた部分で定義されます(既定値は「item」です。これは、LaTeX出
+] 箇条書きの項目を宣言する\SpecialCharNoPassThru LaTeX
+コマンド。コマンドは、前置されるバックスラッシュを除いた部分で定義されます(既定値は「item」です。これは、\SpecialCharNoPassThru LaTeX
+出
 力中では
 \begin_inset Flex Code
 status collapsed
@@ -10841,7 +11116,9 @@ status collapsed
 
 \end_inset
 
-] 段落を空のままにすると、LaTeX出力が空になってしまうので、通常、LyXは段落を空にすることを許可しません。しかしながら、これを無効にすることが望ましい場
+] 段落を空のままにすると、\SpecialCharNoPassThru LaTeX
+出力が空になってしまうので、通常、\SpecialCharNoPassThru LyX
+は段落を空にすることを許可しません。しかしながら、これを無効にすることが望ましい場
 合が存在します。たとえば、書簡のひな型では、必須フィールドを人々が忘れないように、空のフィールドのまま提供する手もあります。特別なクラスにおいては、レイアウトを
 実際には文章を含まないある種の改行として使用することもあります。
 \end_layout
@@ -10916,7 +11193,7 @@ status collapsed
 ] 自動連番に使われるカウンタ名（詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:カウンタ"
+reference "subsec:カウンタ"
 
 \end_inset
 
@@ -11004,7 +11281,8 @@ LabelCounter myenum
 
 \end_inset
 
-」と宣言したものとしましょう。すると、LaTeXにおけるのと同様、実際に使われるカウンタは、
+」と宣言したものとしましょう。すると、\SpecialCharNoPassThru LaTeX
+におけるのと同様、実際に使われるカウンタは、
 \begin_inset Flex Code
 status collapsed
 
@@ -11051,7 +11329,7 @@ myenumiv
 カウンタの詳細については、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:カウンタ"
+reference "subsec:カウンタ"
 
 \end_inset
 
@@ -11071,7 +11349,7 @@ LabelFont
  ラベルに使用されるフォント。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -11167,7 +11445,7 @@ LabelCounter
 を設定している場合、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:カウンタ"
+reference "subsec:カウンタ"
 
 \end_inset
 
@@ -11273,6 +11551,9 @@ Itemize, Bibliography
 \end_inset
 
 ]
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -11483,7 +11764,7 @@ LangPreamble
 宣言をすべて、完全に上書きしますので、注意してください。使用法についての詳細は、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式の国際化"
+reference "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -11510,7 +11791,8 @@ status collapsed
 
 \end_inset
 
-] 対応するLaTeXの名称です。環境名かコマンド名を指します。
+] 対応する\SpecialCharNoPassThru LaTeX
+の名称です。環境名かコマンド名を指します。
 \end_layout
 
 \begin_layout Description
@@ -11543,7 +11825,8 @@ LatexName
 
 \end_inset
 
-の非必須パラメータです。このパラメータは、LyX内部から変更することはできません(変更可能なパラメータには
+の非必須パラメータです。このパラメータは、\SpecialCharNoPassThru LyX
+内部から変更することはできません(変更可能なパラメータには
 \begin_inset Flex Code
 status collapsed
 
@@ -11553,7 +11836,8 @@ Argument
 
 \end_inset
 
-を使用してください)。これは、全てのLaTeX 
+を使用してください)。これは、全ての\SpecialCharNoPassThru LaTeX
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -11594,7 +11878,8 @@ List_Environment, Bib_Environment
 
 \end_inset
 
-] レイアウトがどのようにLaTeXに変換されるべきかを示します
+] レイアウトがどのように\SpecialCharNoPassThru LaTeX
+に変換されるべきかを示します
 \begin_inset Foot
 status collapsed
 
@@ -11625,6 +11910,9 @@ db_*.inc
 \end_inset
 
 。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -11662,7 +11950,7 @@ status collapsed
 \emph on
 LatexName
 \emph default
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \end_layout
 
@@ -11692,7 +11980,7 @@ begin{
 \emph on
 LatexName
 \emph default
-}\SpecialChar \ldots{}
+}\SpecialChar ldots
 
 \backslash
 end{
@@ -11787,7 +12075,7 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 段落設定
 \end_layout
 
@@ -11840,13 +12128,15 @@ begin{thebibliography}{99}
 \end_layout
 
 \begin_layout Standard
-上記最後のいくつかをまとめると、LaTeX出力は、LaTeX型に依存して
+上記最後のいくつかをまとめると、\SpecialCharNoPassThru LaTeX
+出力は、\SpecialCharNoPassThru LaTeX
+型に依存して
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-LatexName[LatexParam]{\SpecialChar \ldots{}
+LatexName[LatexParam]{\SpecialChar ldots
 }
 \end_layout
 
@@ -11857,7 +12147,7 @@ LatexName[LatexParam]{\SpecialChar \ldots{}
 \begin_layout LyX-Code
 
 \backslash
-begin{LatexName}[LatexParam] \SpecialChar \ldots{}
+begin{LatexName}[LatexParam] \SpecialChar ldots
  
 \backslash
 end{LatexName}.
@@ -12021,6 +12311,9 @@ Static
 \end_inset
 
 このレイアウトの左余白の種類です。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -12052,7 +12345,7 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 段落設定
 \end_layout
 
@@ -12205,7 +12498,8 @@ status collapsed
 
 \end_inset
 
-] 新規行をLaTeXの新規行（
+] 新規行を\SpecialCharNoPassThru LaTeX
+の新規行（
 \begin_inset Flex Code
 status collapsed
 
@@ -12219,7 +12513,9 @@ status collapsed
 
 \end_inset
 
-）に変換するか否か。LyX中でLaTeX編集をやりやすくするために、変換は無効にすることができます。
+）に変換するか否か。\SpecialCharNoPassThru LyX
+中で\SpecialCharNoPassThru LaTeX
+編集をやりやすくするために、変換は無効にすることができます。
 \end_layout
 
 \begin_layout Description
@@ -12340,7 +12636,8 @@ status collapsed
 
 \end_inset
 
-] LaTeX出力中で、段落を空行ではなく、改行で区切るよう指定します。
+] \SpecialCharNoPassThru LaTeX
+出力中で、段落を空行ではなく、改行で区切るよう指定します。
 \begin_inset Flex Code
 status collapsed
 
@@ -12350,7 +12647,8 @@ PassThru 1
 
 \end_inset
 
-と併用すれば、（TeXコードを使用したときのように）テキストエディタをエミュレートすることができます。
+と併用すれば、（\SpecialCharNoPassThru TeX
+コードを使用したときのように）テキストエディタをエミュレートすることができます。
 \end_layout
 
 \begin_layout Description
@@ -12459,8 +12757,10 @@ status collapsed
 
 \end_inset
 
-] LyXでは、文書を組版するのに、ユーザが「行頭下げ」か「スキップ」を選ぶことができます。「行頭下げ」を選択した際には、この値は完全に無視されます。「スキップ
-」を選択した際には、LaTeX型「段落」レイアウトの
+] \SpecialCharNoPassThru LyX
+では、文書を組版するのに、ユーザが「行頭下げ」か「スキップ」を選ぶことができます。「行頭下げ」を選択した際には、この値は完全に無視されます。「スキップ
+」を選択した際には、\SpecialCharNoPassThru LaTeX
+型「段落」レイアウトの
 \begin_inset Flex Code
 status collapsed
 
@@ -12555,7 +12855,8 @@ status collapsed
 
 \end_inset
 
-] この段落の内容が、LaTeXが必要とするような特別な変換を行わずに、生の形で出力されるべきかどうか。
+] この段落の内容が、\SpecialCharNoPassThru LaTeX
+が必要とするような特別な変換を行わずに、生の形で出力されるべきかどうか。
 \end_layout
 
 \begin_layout Description
@@ -12568,7 +12869,8 @@ Preamble
 
 \end_inset
 
- この様式が使用されたときに、LaTeXプリアンブルに付け加えるべき情報。この特定の様式が要求するマクロを定義したり、パッケージを読み込んだりと言ったことに使用
+ この様式が使用されたときに、\SpecialCharNoPassThru LaTeX
+プリアンブルに付け加えるべき情報。この特定の様式が要求するマクロを定義したり、パッケージを読み込んだりと言ったことに使用
 します。「
 \begin_inset Flex Code
 status collapsed
@@ -12648,7 +12950,7 @@ Provides
 の説明(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:汎用テキストクラスパラメータ"
+reference "subsec:汎用テキストクラスパラメータ"
 
 \end_inset
 
@@ -12697,7 +12999,8 @@ Argument
 
 \end_inset
 
-タグで定義された)この様式のLaTeX引数をリセットします。これは、様式を
+タグで定義された)この様式の\SpecialCharNoPassThru LaTeX
+引数をリセットします。これは、様式を
 \begin_inset Flex Code
 status collapsed
 
@@ -12890,7 +13193,8 @@ Spacing
 
 \end_inset
 
-は、LaTeXパッケージ
+は、\SpecialCharNoPassThru LaTeX
+パッケージ
 \begin_inset Flex Code
 status collapsed
 
@@ -12900,7 +13204,8 @@ setspace
 
 \end_inset
 
-パッケージを使用した、限定的なLaTeXコードを生成することを意味することにご注意ください。
+パッケージを使用した、限定的な\SpecialCharNoPassThru LaTeX
+コードを生成することを意味することにご注意ください。
 \end_layout
 
 \begin_layout Description
@@ -12953,7 +13258,7 @@ TextFont
  本文に使うフォント。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -13011,7 +13316,7 @@ status collapsed
 段落様式の国際化
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:段落様式の国際化"
+name "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -13019,7 +13324,8 @@ name "sub:段落様式の国際化"
 \end_layout
 
 \begin_layout Standard
-LyXは、長きにわたってレイアウト情報の国際化をサポートしてきましたが、第2.0版までは、これは操作画面にのみ適用されるものであって、たとえばPDF出力には適用さ
+\SpecialCharNoPassThru LyX
+は、長きにわたってレイアウト情報の国際化をサポートしてきましたが、第2.0版までは、これは操作画面にのみ適用されるものであって、たとえばPDF出力には適用さ
 れませんでした。たとえば、フランスの著者が、「Theorem 1」の代わりに「
 \lang french
 Théorème
@@ -13073,6 +13379,9 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -13154,8 +13463,10 @@ BabelPreamble
 
 \end_inset
 
-タグ内には、有効なLaTeXコードはすべて用いることができますが、実際においては、ここで典型的に示したような形になるでしょう。組版文字列が正しく翻訳されるための
-鍵となるのは、LaTeXコマンド
+タグ内には、有効な\SpecialCharNoPassThru LaTeX
+コードはすべて用いることができますが、実際においては、ここで典型的に示したような形になるでしょう。組版文字列が正しく翻訳されるための
+鍵となるのは、\SpecialCharNoPassThru LaTeX
+コマンド
 \begin_inset Flex Code
 status collapsed
 
@@ -13212,7 +13523,9 @@ _()
 
 \end_inset
 
-が使用されていることです。これは、LyXがLaTeX出力を生成する際、その引数を文書言語に翻訳したもので置き換えられます。
+が使用されていることです。これは、\SpecialCharNoPassThru LyX
+が\SpecialCharNoPassThru LaTeX
+出力を生成する際、その引数を文書言語に翻訳したもので置き換えられます。
 \end_layout
 
 \begin_layout Standard
@@ -13296,7 +13609,8 @@ claimname}{Behauptung}
 \end_layout
 
 \begin_layout Standard
-それから、LaTeXと
+それから、\SpecialCharNoPassThru LaTeX
+と
 \begin_inset Flex Code
 status collapsed
 
@@ -13320,7 +13634,8 @@ layouttranslations
 
 \end_inset
 
-ファイルを通じて、LyX自身によって提供されるということです。つまり、ユーザー作成のレイアウトファイルに入力された文字列は、
+ファイルを通じて、\SpecialCharNoPassThru LyX
+自身によって提供されるということです。つまり、ユーザー作成のレイアウトファイルに入力された文字列は、
 \begin_inset Flex Code
 status collapsed
 
@@ -13330,7 +13645,8 @@ layouttranslations
 
 \end_inset
 
-ファイルをそれに応じて変更しない限り、LyXの国際化ルーチンでは取り扱われないので、
+ファイルをそれに応じて変更しない限り、\SpecialCharNoPassThru LyX
+の国際化ルーチンでは取り扱われないので、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -13350,8 +13666,11 @@ BabelPreamble
 
 \end_inset
 
-は、事実上、LyXとともに提供されるレイアウトファイルでのみ、使うことができるということを意味します。とはいえ、こういうことでありますので、将来的にLyXに同梱
-させようという意図を以て作成されたレイアウトは、適切なところではすべて、これらのタグを使用するべきです。LyXが提供する段落様式の翻訳は、マイナー更新(例えば2.
+は、事実上、\SpecialCharNoPassThru LyX
+とともに提供されるレイアウトファイルでのみ、使うことができるということを意味します。とはいえ、こういうことでありますので、将来的に\SpecialCharNoPassThru LyX
+に同梱
+させようという意図を以て作成されたレイアウトは、適切なところではすべて、これらのタグを使用するべきです。\SpecialCharNoPassThru LyX
+が提供する段落様式の翻訳は、マイナー更新(例えば2.
 1.x版から2.1.y版)では変更されないことに注意してください。しかしながら、メジャー更新(例えば2.0.x版から2.1.y版)では、新しい翻訳や修正が導入される可能性は大
 いにあります。
 \end_layout
@@ -13360,7 +13679,7 @@ BabelPreamble
 フロート
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:フロート"
+name "subsec:フロート"
 
 \end_inset
 
@@ -13368,7 +13687,8 @@ name "sub:フロート"
 \end_layout
 
 \begin_layout Standard
-LyX第1.3.0版以来、テキストクラス自体の中でフロート（
+\SpecialCharNoPassThru LyX
+第1.3.0版以来、テキストクラス自体の中でフロート（
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -13388,7 +13708,7 @@ table
 
 \end_inset
 
-・\SpecialChar \ldots{}
+・\SpecialChar ldots
 ）を定義することが可能となり、かつ必要となりました。標準的なフロートは
 \begin_inset Flex Code
 status collapsed
@@ -13407,7 +13727,8 @@ Input stdfloats.inc
 \end_layout
 
 \begin_layout Standard
-と加えるだけで済むことも多いでしょう。LyXに同梱されているAGUクラスのように、それ以外のフロート型を提供するテキストクラスを実装するには、以下の情報が役立つ
+と加えるだけで済むことも多いでしょう。\SpecialCharNoPassThru LyX
+に同梱されているAGUクラスのように、それ以外のフロート型を提供するテキストクラスを実装するには、以下の情報が役立つ
 でありましょう。
 \end_layout
 
@@ -13439,7 +13760,8 @@ status collapsed
 \begin_inset Quotes erd
 \end_inset
 
-] 図などのリストを含む外部ファイルのファイル拡張子名。LaTeXがキャプションを書き込むファイルです。
+] 図などのリストを含む外部ファイルのファイル拡張子名。\SpecialCharNoPassThru LaTeX
+がキャプションを書き込むファイルです。
 \end_layout
 
 \begin_layout Description
@@ -13529,7 +13851,8 @@ status collapsed
 
 \end_inset
 
-] フロートがドキュメントクラス中に既に定義されているのか、あるいはLaTeXパッケージ
+] フロートがドキュメントクラス中に既に定義されているのか、あるいは\SpecialCharNoPassThru LaTeX
+パッケージ
 \begin_inset Flex Code
 status collapsed
 
@@ -13559,7 +13882,8 @@ float
 
 \end_inset
 
-を使用します。LaTeXドキュメントクラス中に既に定義されているときには、
+を使用します。\SpecialCharNoPassThru LaTeX
+ドキュメントクラス中に既に定義されているときには、
 \begin_inset Flex Code
 status collapsed
 
@@ -13657,8 +13981,10 @@ status collapsed
 \begin_inset Quotes erd
 \end_inset
 
-] この種類のフロート一覧（図一覧・表一覧など）に使用される見出し。LyX中では、これは画面上のラベルとして使用されます。また、見出しとして使用するために、La
-TeXに渡され、XHTML出力でも見出しとして使用されます。これは、文書言語に翻訳されます。
+] この種類のフロート一覧（図一覧・表一覧など）に使用される見出し。\SpecialCharNoPassThru LyX
+中では、これは画面上のラベルとして使用されます。また、見出しとして使用するために、La
+\SpecialCharNoPassThru TeX
+に渡され、XHTML出力でも見出しとして使用されます。これは、文書言語に翻訳されます。
 \end_layout
 
 \begin_layout Description
@@ -13740,7 +14066,8 @@ status collapsed
 \begin_inset Quotes erd
 \end_inset
 
-] このクラスのフロートの既定の配置法。文字列は、標準的なLaTeX表記に従い、
+] このクラスのフロートの既定の配置法。文字列は、標準的な\SpecialCharNoPassThru LaTeX
+表記に従い、
 \begin_inset Flex Code
 status collapsed
 
@@ -13785,7 +14112,8 @@ h
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX同様、文字列中でのこれらの文字の順序は関係ありません。
+\SpecialCharNoPassThru LaTeX
+同様、文字列中でのこれらの文字の順序は関係ありません。
 \end_layout
 
 \end_inset
@@ -14003,7 +14331,8 @@ status collapsed
 
 \end_inset
 
-] このフロートが、クラスファイルやパッケージ中で、LaTeXパッケージ
+] このフロートが、クラスファイルやパッケージ中で、\SpecialCharNoPassThru LaTeX
+パッケージ
 \begin_inset Flex Code
 status collapsed
 
@@ -14013,7 +14342,8 @@ float
 
 \end_inset
 
-が提供しているものを使用して定義されているのか、LyX自身がオン・ザ・フライで定義しているのかを示します。
+が提供しているものを使用して定義されているのか、\SpecialCharNoPassThru LyX
+自身がオン・ザ・フライで定義しているのかを示します。
 \end_layout
 
 \begin_layout Standard
@@ -14051,7 +14381,7 @@ type
 自由差込枠と差込枠レイアウト
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:任意設定差込枠"
+name "subsec:任意設定差込枠"
 
 \end_inset
 
@@ -14097,7 +14427,8 @@ code
 
 \end_inset
 
-などのLaTeXコマンドに対応した意味論的マークアップを定義するものです。
+などの\SpecialCharNoPassThru LaTeX
+コマンドに対応した意味論的マークアップを定義するものです。
 \end_layout
 
 \begin_layout Itemize
@@ -14111,7 +14442,8 @@ Custom
 
 \end_inset
 
-）。これは、TeXコードや脚注などに似たユーザ設定の折りたたみ式差込枠を定義するのに使用することができます。わかりやすい例はendnote差込枠で、これは
+）。これは、\SpecialCharNoPassThru TeX
+コードや脚注などに似たユーザ設定の折りたたみ式差込枠を定義するのに使用することができます。わかりやすい例はendnote差込枠で、これは
 \begin_inset Flex Code
 status collapsed
 
@@ -14172,7 +14504,8 @@ InsetLayout
 
 \end_inset
 
-は自由差込枠を定義することの他に、脚注・傍注・注釈差込枠・TeXコード（ERT）差込枠・派生枝・リスト・索引・ボックス・表・アルゴリズム・URL・キャプションを
+は自由差込枠を定義することの他に、脚注・傍注・注釈差込枠・\SpecialCharNoPassThru TeX
+コード（ERT）差込枠・派生枝・リスト・索引・ボックス・表・アルゴリズム・URL・キャプションを
 ユーザー定義するのに使用されます。
 \end_layout
 
@@ -14458,7 +14791,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+\SpecialCharNoPassThru LyX
+Type
 \end_layout
 
 \end_inset
@@ -14498,7 +14832,8 @@ status collapsed
 \end_inset
 
 は、ユーザーの文書で定義されている有効な派生枝名です。派生枝名には空白を入れても構いませんが、その場合は派生枝全体を引用符で囲まなくてはなりません。この機能の主
-な目的は、ユーザーの必要に応じて、特定の派生枝をLaTeXがくるむことができるようにすることです。
+な目的は、ユーザーの必要に応じて、特定の派生枝を\SpecialCharNoPassThru LaTeX
+がくるむことができるようにすることです。
 \end_layout
 
 \begin_layout Enumerate
@@ -14625,7 +14960,7 @@ EndArgument
 で閉じなくてはなりません。詳細は
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -14645,7 +14980,7 @@ BabelPreamble
  言語コマンドを変更するプリアンブル。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式の国際化"
+reference "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -14734,7 +15069,7 @@ CopyStyle
  [<型>] 段落様式と同様です。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -14840,7 +15175,8 @@ Classic
 
 \end_inset
 
-を使用し、TeXコード差込枠は通常
+を使用し、\SpecialCharNoPassThru TeX
+コード差込枠は通常
 \begin_inset Flex Code
 status collapsed
 
@@ -14919,7 +15255,8 @@ Environment
 
 \end_inset
 
-の時のみ意味をもちます。環境を、出力中で独立して出力させるか、周囲のテキストとインラインで出力させるかを示します。偽にすると、LaTeX環境は、
+の時のみ意味をもちます。環境を、出力中で独立して出力させるか、周囲のテキストとインラインで出力させるかを示します。偽にすると、\SpecialCharNoPassThru LaTeX
+環境は、
 \begin_inset Flex Code
 status collapsed
 
@@ -14986,7 +15323,7 @@ Font
 使用されるフォントです。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -15112,7 +15449,8 @@ status collapsed
 
 \end_inset
 
-] たとえばTeXコードやURLで「latex」言語が「左から右」（ラテン式）出力になるように強制します。うまく機能しません。
+] たとえば\SpecialCharNoPassThru TeX
+コードやURLで「latex」言語が「左から右」（ラテン式）出力になるように強制します。うまく機能しません。
 \end_layout
 
 \begin_layout Description
@@ -15195,7 +15533,7 @@ status collapsed
 ] 段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -15303,7 +15641,7 @@ status collapsed
 ] 段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -15323,7 +15661,7 @@ LabelFont
  ラベルに使用されるフォント。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -15372,7 +15710,8 @@ status collapsed
 \lang english
  
 \lang japanese
-ボタンなどに差込枠のラベルとして表示されるもの。差込枠型によっては（TeXコードや派生枝）、ラベルが動的に変更されます。
+ボタンなどに差込枠のラベルとして表示されるもの。差込枠型によっては（\SpecialCharNoPassThru TeX
+コードや派生枝）、ラベルが動的に変更されます。
 \end_layout
 
 \begin_layout Description
@@ -15388,7 +15727,7 @@ LangPreamble
  言語依存のプリアンブル。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式の国際化"
+reference "subsec:段落様式の国際化"
 
 \end_inset
 
@@ -15415,7 +15754,8 @@ status collapsed
 
 \end_inset
 
-] 対応するLaTeX関連物の名称。環境名ないしはコマンド名。
+] 対応する\SpecialCharNoPassThru LaTeX
+関連物の名称。環境名ないしはコマンド名。
 \end_layout
 
 \begin_layout Description
@@ -15462,7 +15802,8 @@ status collapsed
 
 \end_inset
 
-のような括弧対を含む。このパラメータはLyX内部から変更することはできません(変更可能なパラメータには
+のような括弧対を含む。このパラメータは\SpecialCharNoPassThru LyX
+内部から変更することはできません(変更可能なパラメータには
 \begin_inset Flex Code
 status collapsed
 
@@ -15472,7 +15813,8 @@ Argument
 
 \end_inset
 
-を使用してください)。これは、全てのLaTeX 
+を使用してください)。これは、全ての\SpecialCharNoPassThru LaTeX
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -15505,7 +15847,8 @@ Command, Environment, None
 
 \end_inset
 
-] 様式がどのようにLaTeXに変換されるべきかを示します
+] 様式がどのように\SpecialCharNoPassThru LaTeX
+に変換されるべきかを示します
 \begin_inset Foot
 status collapsed
 
@@ -15526,6 +15869,9 @@ LatexType
 \end_inset
 
 。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -15563,7 +15909,7 @@ status collapsed
 \emph on
 LatexName
 \emph default
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \end_layout
 
@@ -15593,7 +15939,7 @@ begin{
 \emph on
 LatexName
 \emph default
-}\SpecialChar \ldots{}
+}\SpecialChar ldots
 
 \backslash
 end{
@@ -15609,13 +15955,15 @@ LatexName
 \end_layout
 
 \begin_layout Standard
-上記最後のいくつかをまとめると、LaTeX出力は、LaTeX型に依存して
+上記最後のいくつかをまとめると、\SpecialCharNoPassThru LaTeX
+出力は、\SpecialCharNoPassThru LaTeX
+型に依存して
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-LatexName[LatexParam]{\SpecialChar \ldots{}
+LatexName[LatexParam]{\SpecialChar ldots
 }
 \end_layout
 
@@ -15626,7 +15974,7 @@ LatexName[LatexParam]{\SpecialChar \ldots{}
 \begin_layout LyX-Code
 
 \backslash
-begin{LatexName}[LatexParam] \SpecialChar \ldots{}
+begin{LatexName}[LatexParam] \SpecialChar ldots
  
 \backslash
 end{LatexName}.
@@ -15978,7 +16326,7 @@ status collapsed
 ] 段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -16026,7 +16374,7 @@ status collapsed
 ] 段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -16046,7 +16394,7 @@ Preamble
  段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -16099,7 +16447,7 @@ status collapsed
 ] 段落様式と同様。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落様式"
+reference "subsec:段落様式"
 
 \end_inset
 
@@ -16152,7 +16500,8 @@ Argument
 
 \end_inset
 
-タグで定義された)この様式のLaTeX引数をリセットします。これは、様式を
+タグで定義された)この様式の\SpecialCharNoPassThru LaTeX
+引数をリセットします。これは、様式を
 \begin_inset Flex Code
 status collapsed
 
@@ -16290,7 +16639,7 @@ status collapsed
 カウンタ
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:カウンタ"
+name "subsec:カウンタ"
 
 \end_inset
 
@@ -16318,7 +16667,7 @@ figure
 
 \end_inset
 
-・\SpecialChar \ldots{}
+・\SpecialChar ldots
 ）を定義することが必要です。標準的なカウンタは
 \begin_inset Flex Code
 status collapsed
@@ -16416,6 +16765,9 @@ LabelStringAppendix
 \end_inset
 
 も同じ値に設定されます。文字列中では、以下の構成要素を使用することができます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -16469,7 +16821,8 @@ LabelStringAppendix
 \end_layout
 
 \begin_layout Itemize
-カウンタ値は、LaTeX型マクロ
+カウンタ値は、\SpecialCharNoPassThru LaTeX
+型マクロ
 \begin_inset Flex Code
 status collapsed
 
@@ -16511,7 +16864,7 @@ arabic
 
 \end_inset
 
-：1, 2, 3,\SpecialChar \ldots{}
+：1, 2, 3,\SpecialChar ldots
 ；
 \begin_inset Flex Code
 status collapsed
@@ -16522,7 +16875,7 @@ alph
 
 \end_inset
 
-：a, b, c, \SpecialChar \ldots{}
+：a, b, c, \SpecialChar ldots
 （小文字）；
 \begin_inset Flex Code
 status collapsed
@@ -16533,7 +16886,7 @@ Alph
 
 \end_inset
 
-：A, B, C, \SpecialChar \ldots{}
+：A, B, C, \SpecialChar ldots
 （大文字）；
 \begin_inset Flex Code
 status collapsed
@@ -16544,7 +16897,7 @@ roman
 
 \end_inset
 
-：i, ii, iii, \SpecialChar \ldots{}
+：i, ii, iii, \SpecialChar ldots
 （小文字ローマ数字）；
 \begin_inset Flex Code
 status collapsed
@@ -16555,7 +16908,7 @@ Roman
 
 \end_inset
 
-：I, II, III\SpecialChar \ldots{}
+：I, II, III\SpecialChar ldots
 （大文字ローマ数字）。
 \end_layout
 
@@ -16747,7 +17100,7 @@ section
 フォント指定
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:フォント指定"
+name "subsec:フォント指定"
 
 \end_inset
 
@@ -17308,7 +17661,7 @@ giant
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:引用書式指定"
+name "subsec:引用書式指定"
 
 \end_inset
 
@@ -17316,7 +17669,8 @@ name "sub:引用書式指定"
 \end_layout
 
 \begin_layout Standard
-（引用ダイアログやツールチップなどの）LyX内部やXHTML出力において、書誌情報をどのように表示するべきかの叙述には、
+（引用ダイアログやツールチップなどの）\SpecialCharNoPassThru LyX
+内部やXHTML出力において、書誌情報をどのように表示するべきかの叙述には、
 \begin_inset Flex Code
 status collapsed
 
@@ -17346,8 +17700,11 @@ End
 \end_layout
 
 \begin_layout Standard
-上記の各行は、それぞれarticleやbookに関連付けられた書誌情報をどのように表示するべきかを定義するものですが、このような定義は、BibTeXファイル中に
-存在しうる「項目型」すべてについて与えることができます。特定の定義が与えられなければ、LyXは、ソースコード中に定義されている既定書式を使用します。LyXは、い
+上記の各行は、それぞれarticleやbookに関連付けられた書誌情報をどのように表示するべきかを定義するものですが、このような定義は、Bib\SpecialCharNoPassThru TeX
+ファイル中に
+存在しうる「項目型」すべてについて与えることができます。特定の定義が与えられなければ、\SpecialCharNoPassThru LyX
+は、ソースコード中に定義されている既定書式を使用します。\SpecialCharNoPassThru LyX
+は、い
 くつかの書式を
 \begin_inset Flex Code
 status collapsed
@@ -17358,11 +17715,13 @@ stdciteformats.inc
 
 \end_inset
 
-ファイルで事前定義しており、これはほとんどのLyX文書クラスにインクルードされています。
+ファイルで事前定義しており、これはほとんどの\SpecialCharNoPassThru LyX
+文書クラスにインクルードされています。
 \end_layout
 
 \begin_layout Standard
-この定義は、BibTeXキーをその値で置換できる機能を持った、簡単な言語を使用しています。キーは、
+この定義は、Bib\SpecialCharNoPassThru TeX
+キーをその値で置換できる機能を持った、簡単な言語を使用しています。キーは、
 \begin_inset Flex Code
 status collapsed
 
@@ -17566,7 +17925,8 @@ status collapsed
 
 \end_inset
 
-のように、これがキーであるかのように扱って使用することができます。LyXは、
+のように、これがキーであるかのように扱って使用することができます。\SpecialCharNoPassThru LyX
+は、
 \begin_inset Flex Code
 status collapsed
 
@@ -17584,7 +17944,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-のようなことはしないでください。LyXは、無限ループに陥るようなことはありませんが、諦めるまでに長いループに入るかもしれません。
+のようなことはしないでください。\SpecialCharNoPassThru LyX
+は、無限ループに陥るようなことはありませんが、諦めるまでに長いループに入るかもしれません。
 \end_layout
 
 \begin_layout Standard
@@ -17702,8 +18063,12 @@ XHTML出力のタグ
 \end_layout
 
 \begin_layout Standard
-LaTeXやDocBookと同様、LyXのXHTML出力の書式も、レイアウト情報によって制御することができます。一般的に、LyXは適切な既定値を提供し、前述した
-ように、他のレイアウトタグに基づいて、既定のCSSスタイルの構成まで行ないます。たとえば、章見出しを適切に整形するためのCSSを書き出すために、LyXは、章様式
+\SpecialCharNoPassThru LaTeX
+やDocBookと同様、\SpecialCharNoPassThru LyX
+のXHTML出力の書式も、レイアウト情報によって制御することができます。一般的に、\SpecialCharNoPassThru LyX
+は適切な既定値を提供し、前述した
+ように、他のレイアウトタグに基づいて、既定のCSSスタイルの構成まで行ないます。たとえば、章見出しを適切に整形するためのCSSを書き出すために、\SpecialCharNoPassThru LyX
+は、章様式
 の
 \begin_inset Flex Code
 status collapsed
@@ -17719,7 +18084,8 @@ Font
 
 \begin_layout Standard
 したがって、多くの場合、使いたい環境やユーザ設定差込枠などのために満足のいくXHTML出力を得るために、まったく何もしなくてよいことになるでしょう。しかしながら
-、これが必要になる場合もあるので、LyXは、生成されるXHTMLやCSSをカスタマイズするために使用できるレイアウトタグを、たくさん提供しています。
+、これが必要になる場合もあるので、\SpecialCharNoPassThru LyX
+は、生成されるXHTMLやCSSをカスタマイズするために使用できるレイアウトタグを、たくさん提供しています。
 \end_layout
 
 \begin_layout Standard
@@ -17746,7 +18112,7 @@ AddToHTMLPreamble
 の2つがあることに注意してください。これらの詳細については、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:汎用テキストクラスパラメータ"
+reference "subsec:汎用テキストクラスパラメータ"
 
 \end_inset
 
@@ -17756,7 +18122,7 @@ reference "sub:汎用テキストクラスパラメータ"
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:段落様式-XHTML"
+name "subsec:段落様式-XHTML"
 
 \end_inset
 
@@ -17764,13 +18130,15 @@ name "sub:段落様式-XHTML"
 \end_layout
 
 \begin_layout Standard
-LyXが段落のために出力するXHTMLの種類は、通常の段落を取り扱っているのか、コマンドを取り扱っているのか、あるいは環境を取り扱っているのかに依存し、これは対
+\SpecialCharNoPassThru LyX
+が段落のために出力するXHTMLの種類は、通常の段落を取り扱っているのか、コマンドを取り扱っているのか、あるいは環境を取り扱っているのかに依存し、これは対
 応する
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXType
+\SpecialCharNoPassThru LaTeX
+Type
 \end_layout
 
 \end_inset
@@ -18035,7 +18403,8 @@ HTMLLabelFirst
 \end_layout
 
 \begin_layout Standard
-各段落の特定のタグ出力や属性出力は、以下に述べるようなレイアウトタグを使って制御することができます。しかしながら、前述のように、多くの場合、LyXは適切な既定値
+各段落の特定のタグ出力や属性出力は、以下に述べるようなレイアウトタグを使って制御することができます。しかしながら、前述のように、多くの場合、\SpecialCharNoPassThru LyX
+は適切な既定値
 を生成するので、たいしたことをしなくても、望ましいXHTML出力を得ることができるということになるはずです。ここで利用出来るタグは、自分の好みにあわせて微調整す
 る目的でここにあるものと考えてください。
 \end_layout
@@ -18070,7 +18439,8 @@ class=`mydiv'
 
 \end_inset
 
-」のようなものです。既定においては、LyXは「
+」のようなものです。既定においては、\SpecialCharNoPassThru LyX
+は「
 \begin_inset Flex Code
 status collapsed
 
@@ -18090,7 +18460,8 @@ status collapsed
 
 \end_inset
 
-は、レイアウトのLyX名であり、chapterのように小文字で記述します。
+は、レイアウトの\SpecialCharNoPassThru LyX
+名であり、chapterのように小文字で記述します。
 \end_layout
 
 \begin_layout Description
@@ -18127,7 +18498,8 @@ HTMLStyle
 
 \end_inset
 
-で追加情報が明示的に与えられているときでも、LyXがこのレイアウト用に生成する既定CSS情報を出力するか否か。これを
+で追加情報が明示的に与えられているときでも、\SpecialCharNoPassThru LyX
+がこのレイアウト用に生成する既定CSS情報を出力するか否か。これを
 \begin_inset Flex Code
 status collapsed
 
@@ -18400,8 +18772,8 @@ tion環境の中で、
 status collapsed
 
 \begin_layout Plain Layout
-`<dt>\SpecialChar \ldots{}
-</dt><dd>\SpecialChar \ldots{}
+`<dt>\SpecialChar ldots
+</dt><dd>\SpecialChar ldots
 </dd>
 \end_layout
 
@@ -18612,11 +18984,13 @@ status collapsed
 
 \end_inset
 
-。ここでも、LyXは適切な既定値を提供しようと試み、既定のCSS様式を構成します。しかし、すべてカスタマイズ可能です。
+。ここでも、\SpecialCharNoPassThru LyX
+は適切な既定値を提供しようと試み、既定のCSS様式を構成します。しかし、すべてカスタマイズ可能です。
 \end_layout
 
 \begin_layout Standard
-LyXが差込枠用に出力するXHTMLは、以下の形を取ります。
+\SpecialCharNoPassThru LyX
+が差込枠用に出力するXHTMLは、以下の形を取ります。
 \end_layout
 
 \begin_layout LyX-Code
@@ -18652,7 +19026,8 @@ value
 \end_layout
 
 \begin_layout Standard
-差込枠が多段落を許可している---つまり
+差込枠が多段落を許可している\threehyphens
+つまり
 \begin_inset Flex Code
 status collapsed
 
@@ -18662,7 +19037,8 @@ MultiPar
 
 \end_inset
 
-が真---ならば、差込枠の内容は、それ自身段落として出力され、それらの段落に用いられる様式（標準、引用など）を用いて整形されます。もちろん、段落にラベルがなけれ
+が真\threehyphens
+ならば、差込枠の内容は、それ自身段落として出力され、それらの段落に用いられる様式（標準、引用など）を用いて整形されます。もちろん、段落にラベルがなけれ
 ば、labelタグは省略され、ラベルがあれば、現在のところ、つねに
 \begin_inset Flex Code
 status collapsed
@@ -18702,13 +19078,14 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-class=`myinset' onclick=`\SpecialChar \ldots{}
+class=`myinset' onclick=`\SpecialChar ldots
 '
 \end_layout
 
 \end_inset
 
-」のようなものです。既定においては、LyXは「
+」のようなものです。既定においては、\SpecialCharNoPassThru LyX
+は「
 \begin_inset Flex Code
 status collapsed
 
@@ -18728,7 +19105,8 @@ status collapsed
 
 \end_inset
 
-は、差込枠のLyX名であり、小文字で記述します。アルファベットや数字以外の文字は、アンダースコアに置き換えられます。
+は、差込枠の\SpecialCharNoPassThru LyX
+名であり、小文字で記述します。アルファベットや数字以外の文字は、アンダースコアに置き換えられます。
 \end_layout
 
 \begin_layout Description
@@ -18765,7 +19143,8 @@ HTMLStyle
 
 \end_inset
 
-で追加情報が明示的に与えられているときでも、LyXがこのレイアウト用に生成する既定CSS情報を出力するか否か。これを
+で追加情報が明示的に与えられているときでも、\SpecialCharNoPassThru LyX
+がこのレイアウト用に生成する既定CSS情報を出力するか否か。これを
 \begin_inset Flex Code
 status collapsed
 
@@ -19111,13 +19490,14 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-class=`myfloat' onclick=`\SpecialChar \ldots{}
+class=`myfloat' onclick=`\SpecialChar ldots
 '
 \end_layout
 
 \end_inset
 
-」のようなものです。既定においては、LyXは「
+」のようなものです。既定においては、\SpecialCharNoPassThru LyX
+は「
 \begin_inset Flex Code
 status collapsed
 
@@ -19140,11 +19520,12 @@ status collapsed
 は、フロート宣言で定義された（
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フロート"
+reference "subsec:フロート"
 
 \end_inset
 
-参照）、この型のフロートのLyX名です。ただし、これは小文字に変換され、アルファベットや数字でない文字はアンダースコアに変換されます。例：float-table
+参照）、この型のフロートの\SpecialCharNoPassThru LyX
+名です。ただし、これは小文字に変換され、アルファベットや数字でない文字はアンダースコアに変換されます。例：float-table
 。
 \end_layout
 
@@ -19232,7 +19613,7 @@ CiteFormat
 ブロックを使用して整形することができます。詳細については、
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:引用書式指定"
+reference "subsec:引用書式指定"
 
 \end_inset
 
@@ -19240,16 +19621,20 @@ reference "sub:引用書式指定"
 \end_layout
 
 \begin_layout Subsection
-LyXが生成したCSS
+\SpecialCharNoPassThru LyX
+が生成したCSS
 \end_layout
 
 \begin_layout Standard
-LyXは、提供されている他のレイアウト情報に基づいて、差込枠と段落様式の両方の既定CSS様式ルールを生成ということすることを、これまでに何度か触れました。この節
-では、LyXがどのレイアウト情報を、どのように使うのか、ひとこと述べておきたいと思います。
+\SpecialCharNoPassThru LyX
+は、提供されている他のレイアウト情報に基づいて、差込枠と段落様式の両方の既定CSS様式ルールを生成ということすることを、これまでに何度か触れました。この節
+では、\SpecialCharNoPassThru LyX
+がどのレイアウト情報を、どのように使うのか、ひとこと述べておきたいと思います。
 \end_layout
 
 \begin_layout Standard
-LyXは、現在のところ、
+\SpecialCharNoPassThru LyX
+は、現在のところ、
 \begin_inset Flex Code
 status collapsed
 
@@ -19302,7 +19687,7 @@ Size
 を利用して、フォント情報についてのみCSSを自動生成します（
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:フォント指定"
+reference "subsec:フォント指定"
 
 \end_inset
 
@@ -19326,7 +19711,8 @@ font-family: sans-serif
 
 \end_inset
 
-」になります。LyXの寸法とCSSの寸法のあいだの対応は、少し複雑ですが、それでも直感的に分かります。詳細については、
+」になります。\SpecialCharNoPassThru LyX
+の寸法とCSSの寸法のあいだの対応は、少し複雑ですが、それでも直感的に分かります。詳細については、
 \begin_inset Flex URL
 status collapsed
 
@@ -19373,6 +19759,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -19385,7 +19776,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-LyX外部のソースから素材を使用する方法は、取扱説明書『
+\SpecialCharNoPassThru LyX
+外部のソースから素材を使用する方法は、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -19397,21 +19789,24 @@ LyX外部のソースから素材を使用する方法は、取扱説明書『
 \end_layout
 
 \begin_layout Standard
-外部素材の機能は、ひな型の概念に基づいています。ひな型は、LyXがある型の素材とどのように橋渡しをするべきかを指定するものです。同梱物として、LyXは、Xfig
+外部素材の機能は、ひな型の概念に基づいています。ひな型は、\SpecialCharNoPassThru LyX
+がある型の素材とどのように橋渡しをするべきかを指定するものです。同梱物として、\SpecialCharNoPassThru LyX
+は、Xfig
 の図や、様々なラスター形式画像、チェス棋譜、LilyPond楽譜用のひな型を事前に定義されたものとして含んでいます。実際に何が入っているかは、
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
-ファイル\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+ファイル\SpecialChar menuseparator
 外部素材
 \end_layout
 
 \end_inset
 
 メニューで見ることができます。さらに、特定の型の素材をサポートするのに、自分自身のひな型を作成することも可能です。後でどのようなことをすればいいか詳細に説明しま
-すが、できればあなたが作ったすべてのひな型を投稿して、我々がLyXの後の版に取り込むことができるようにしてくださることを希望します。
+すが、できればあなたが作ったすべてのひな型を投稿して、我々が\SpecialCharNoPassThru LyX
+の後の版に取り込むことができるようにしてくださることを希望します。
 \end_layout
 
 \begin_layout Standard
@@ -19446,7 +19841,8 @@ fig
 
 \end_inset
 
-ファイルに保存します。この図をお使いの文書に取り込みたいときには、LaTeXファイルにそのままインクルードできるように、
+ファイルに保存します。この図をお使いの文書に取り込みたいときには、\SpecialCharNoPassThru LaTeX
+ファイルにそのままインクルードできるように、
 \begin_inset Flex Code
 status collapsed
 
@@ -19472,13 +19868,17 @@ status collapsed
 \begin_layout Standard
 この区別は、文書を執筆している最中に、素材を更新することができるようにするために重要です。さらに、これによって、複数の書き出し書式をサポートするために必要な柔軟
 性が提供されます。たとえば、平文テキストファイルの場合には、図を生のPostScriptファイルとして取り込むのは、とても褒められた発想とはいえません。むしろ、
-その図への参照だけを含めるか、最終出力が実際の画像に近いものとなるように画像からASCIIへの変換子を呼び出したいと考えることでしょう。LyXの外部素材マネジメ
-ントは、LyXがサポートする各書き出し書式別に仕分けしているので、ユーザがこれを行うことが可能となっています。
+その図への参照だけを含めるか、最終出力が実際の画像に近いものとなるように画像からASCIIへの変換子を呼び出したいと考えることでしょう。\SpecialCharNoPassThru LyX
+の外部素材マネジメ
+ントは、\SpecialCharNoPassThru LyX
+がサポートする各書き出し書式別に仕分けしているので、ユーザがこれを行うことが可能となっています。
 \end_layout
 
 \begin_layout Standard
-LyXの外部素材マネジメントは、書き出し書式によって異なる生成物をサポートすることの他に、編集・閲覧アプリケーションを緊密に統合することもサポートします。Xfi
-gの図の場合には、LyXの外部素材ダイアログからシングルクリックでオリジナルファイルをXfigで開くことができ、ダブルクリックすることで生成されたPostScr
+\SpecialCharNoPassThru LyX
+の外部素材マネジメントは、書き出し書式によって異なる生成物をサポートすることの他に、編集・閲覧アプリケーションを緊密に統合することもサポートします。Xfi
+gの図の場合には、\SpecialCharNoPassThru LyX
+の外部素材ダイアログからシングルクリックでオリジナルファイルをXfigで開くことができ、ダブルクリックすることで生成されたPostScr
 iptファイルをGhostviewで閲覧することができます。もうコマンドラインをもてあそんだり、オリジナルファイルや生成ファイルがどこにあるか探したり変更を加え
 るためにファイルブラウザをいじくり回す必要はないのです。このようにして、文書を執筆する際に必要となる多くのアプリケーションを最大限に利用し、最終的により生産性を
 上げることができるようになるのです。
@@ -19489,7 +19889,8 @@ iptファイルをGhostviewで閲覧することができます。もうコマ�
 \end_layout
 
 \begin_layout Standard
-LyXに自製の外用ひな型を付け加えるのは、比較的簡単です。しかしながら、これを不用心に行ってしまうと、たいていの場合、簡単に濫用されてしまうようなセキュリティホ
+\SpecialCharNoPassThru LyX
+に自製の外用ひな型を付け加えるのは、比較的簡単です。しかしながら、これを不用心に行ってしまうと、たいていの場合、簡単に濫用されてしまうようなセキュリティホ
 ールを作ってしまいがちであることを心に留めておいてください。したがって、これを実行に移す前に、
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19510,7 +19911,8 @@ reference "sec:セキュリティに関する論点"
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/lib/external_templates
+\SpecialCharNoPassThru LyX
+Dir/lib/external_templates
 \end_layout
 
 \end_inset
@@ -19785,7 +20187,7 @@ Template
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -19806,7 +20208,7 @@ Format
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -19838,7 +20240,8 @@ true|false
 
 \end_inset
 
- このひな型で扱うファイルをLyXが生成しなくてはならないか否か。このコマンドは、一度だけ必ず現れなくてはなりません。
+ このひな型で扱うファイルを\SpecialCharNoPassThru LyX
+が生成しなくてはならないか否か。このコマンドは、一度だけ必ず現れなくてはなりません。
 \end_layout
 
 \begin_layout Description
@@ -19941,7 +20344,8 @@ InputFormat
 
 \end_inset
 
- オリジナルファイルのファイル形式。これは、LyXが知っている書式名でなくてはなりません（
+ オリジナルファイルのファイル形式。これは、\SpecialCharNoPassThru LyX
+が知っている書式名でなくてはなりません（
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ファイル形式"
@@ -19958,7 +20362,8 @@ status collapsed
 
 \end_inset
 
-」を使用してください。この場合、LyXはファイル形式を推定するために、ファイル自体に詮索を試みます。このコマンドは、一度だけ必ず現れなくてはなりません。
+」を使用してください。この場合、\SpecialCharNoPassThru LyX
+はファイル形式を推定するために、ファイル自体に詮索を試みます。このコマンドは、一度だけ必ず現れなくてはなりません。
 \end_layout
 
 \begin_layout Description
@@ -20212,7 +20617,8 @@ Preamble
 
 \end_inset
 
- このコマンドは、LaTeXプリアンブルに入れるプリアンブル片を指定します。これは
+ このコマンドは、\SpecialCharNoPassThru LaTeX
+プリアンブルに入れるプリアンブル片を指定します。これは
 \begin_inset Flex Code
 status collapsed
 
@@ -20222,7 +20628,7 @@ PreambleDef
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -20272,7 +20678,9 @@ Requirement
 
 \end_inset
 
- 必要とされるLaTeXパッケージ名。パッケージは、LaTeXプリアンブル中で
+ 必要とされる\SpecialCharNoPassThru LaTeX
+パッケージ名。パッケージは、\SpecialCharNoPassThru LaTeX
+プリアンブル中で
 \begin_inset Flex Code
 status collapsed
 
@@ -20305,7 +20713,8 @@ RotationLatexCommand
 
 \end_inset
 
- このコマンドは、回転用に、組み込みのLaTeXコマンドを使用するように指定します。このコマンドは、1回現れても全く現れなくても構いません。
+ このコマンドは、回転用に、組み込みの\SpecialCharNoPassThru LaTeX
+コマンドを使用するように指定します。このコマンドは、1回現れても全く現れなくても構いません。
 \end_layout
 
 \begin_layout Description
@@ -20326,7 +20735,8 @@ ResizeLatexCommand
 
 \end_inset
 
- このコマンドは、伸縮用に、組み込みのLaTeXコマンドを使用するように指定します。このコマンドは、1回現れても全く現れなくても構いません。
+ このコマンドは、伸縮用に、組み込みの\SpecialCharNoPassThru LaTeX
+コマンドを使用するように指定します。このコマンドは、1回現れても全く現れなくても構いません。
 \end_layout
 
 \begin_layout Description
@@ -20427,14 +20837,15 @@ UpdateFormat
 
 \end_inset
 
- 変換されたファイルのファイル形式。これは、LyXが知っている書式名でなくてはなりません（
+ 変換されたファイルのファイル形式。これは、\SpecialCharNoPassThru LyX
+が知っている書式名でなくてはなりません（
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+ファイル処理\SpecialChar menuseparator
 ファイル書式
 \end_layout
 
@@ -20485,7 +20896,7 @@ PreambleDef
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -20536,7 +20947,8 @@ $$AbsOrRelPathMaster
 
 \end_inset
 
- LyX親文書への絶対ファイルパスないしは相対ファイルパス
+ \SpecialCharNoPassThru LyX
+親文書への絶対ファイルパスないしは相対ファイルパス
 \end_layout
 
 \begin_layout Description
@@ -20549,7 +20961,8 @@ $$AbsOrRelPathParent
 
 \end_inset
 
- LyX文書への絶対ファイルパスないしは相対ファイルパス
+ \SpecialCharNoPassThru LyX
+文書への絶対ファイルパスないしは相対ファイルパス
 \end_layout
 
 \begin_layout Description
@@ -20632,7 +21045,8 @@ $$FName
 
 \end_inset
 
- 外部素材ダイアログで指定されたファイルのファイル名。これはLyX文書への絶対パスでも良いですし、相対パスでも構いません。
+ 外部素材ダイアログで指定されたファイルのファイル名。これは\SpecialCharNoPassThru LyX
+文書への絶対パスでも良いですし、相対パスでも構いません。
 \end_layout
 
 \begin_layout Description
@@ -20655,7 +21069,8 @@ $$FName
 
 \end_inset
 
-のパス部分（LyX文書への絶対パス名か相対パス名）
+のパス部分（\SpecialCharNoPassThru LyX
+文書への絶対パス名か相対パス名）
 \end_layout
 
 \begin_layout Description
@@ -20668,7 +21083,8 @@ $$RelPathMaster
 
 \end_inset
 
- LyX親文書への相対ファイルパス
+ \SpecialCharNoPassThru LyX
+親文書への相対ファイルパス
 \end_layout
 
 \begin_layout Description
@@ -20681,7 +21097,8 @@ $$RelPathParent
 
 \end_inset
 
- LyX文書への相対ファイルパス
+ \SpecialCharNoPassThru LyX
+文書への相対ファイルパス
 \end_layout
 
 \begin_layout Description
@@ -20694,7 +21111,8 @@ $$Sysdir
 
 \end_inset
 
- このマクロは、システムディレクトリの絶対パスを展開します。これは、典型的には、LyXに同梱されているヘルパースクリプト群を示したりするのに使用されます。
+ このマクロは、システムディレクトリの絶対パスを展開します。これは、典型的には、\SpecialCharNoPassThru LyX
+に同梱されているヘルパースクリプト群を示したりするのに使用されます。
 \end_layout
 
 \begin_layout Description
@@ -20905,10 +21323,16 @@ $$Rotate
 \end_layout
 
 \begin_layout Enumerate
-LaTeXは、相対ファイル名に関して、LyXや入れ子にした取り込みファイル中の他のプログラムとは異なった取り扱いを行います。LyXにとって相対ファイル名とは、常
-にこのファイル名が書かれている文書に対して相対的なものになります。LaTeXにとっての相対ファイル名は、常に親文書に対するものになります。これら二つの定義は、一
-つの文書しかないときには同じですが、部分文書を含む親文書があるときには異なったものとなってきます。つまり、相対ファイル名は、LaTeXに提示されるときに変換され
-なくてはならないのです。幸い、正しいマクロを選びさえすれば、これはLyXが自動的に行ってくれます。
+\SpecialCharNoPassThru LaTeX
+は、相対ファイル名に関して、\SpecialCharNoPassThru LyX
+や入れ子にした取り込みファイル中の他のプログラムとは異なった取り扱いを行います。\SpecialCharNoPassThru LyX
+にとって相対ファイル名とは、常
+にこのファイル名が書かれている文書に対して相対的なものになります。\SpecialCharNoPassThru LaTeX
+にとっての相対ファイル名は、常に親文書に対するものになります。これら二つの定義は、一
+つの文書しかないときには同じですが、部分文書を含む親文書があるときには異なったものとなってきます。つまり、相対ファイル名は、\SpecialCharNoPassThru LaTeX
+に提示されるときに変換され
+なくてはならないのです。幸い、正しいマクロを選びさえすれば、これは\SpecialCharNoPassThru LyX
+が自動的に行ってくれます。
 \end_layout
 
 \begin_layout Standard
@@ -20930,7 +21354,8 @@ $$AbsPath
 \end_layout
 
 \begin_layout Itemize
-代入された文字列が、LaTeXインプットの一種である場合には、
+代入された文字列が、\SpecialCharNoPassThru LaTeX
+インプットの一種である場合には、
 \begin_inset Flex Code
 status collapsed
 
@@ -20999,7 +21424,8 @@ name "sec:セキュリティに関する論点"
 \end_layout
 
 \begin_layout Standard
-しかしながら、外部プログラムコマンドはひな型設定ファイルでのみ指定されているので、LyXが安全なひな型でのみ適切に設定されているならば、セキュリティ上の問題は発
+しかしながら、外部プログラムコマンドはひな型設定ファイルでのみ指定されているので、\SpecialCharNoPassThru LyX
+が安全なひな型でのみ適切に設定されているならば、セキュリティ上の問題は発
 生しません。これは、外部プログラムが
 \begin_inset Flex Code
 status collapsed
@@ -21025,7 +21451,8 @@ execvp
 
 \begin_layout Standard
 これは、外部素材ひな型でどのようなコマンド文字列を使用することのできるかについて、制限があることを意味します。特に、パイプやリダイレクトはそのまま使用することは
-できません。これは、LyXの安全性を維持するためにそうしなくてはならないのです。もしシェル機能の一部を使用したいとすると、これを完全に統御の下においたまま行う安
+できません。これは、\SpecialCharNoPassThru LyX
+の安全性を維持するためにそうしなくてはならないのです。もしシェル機能の一部を使用したいとすると、これを完全に統御の下においたまま行う安
 全なスクリプトを書いた上で、このスクリプトをコマンド文字列から呼び出すようにしなくてはなりません。
 \end_layout
 
@@ -21047,20 +21474,23 @@ execvp
 間違いなく
 \emph default
 導入することを理解しておいてください。オープンソースの伝統に従って、私たちは人々に新しいひな型を投稿してくれるよう促していますが、そのような安全でないひな型はL
-yXの標準頒布版には取り入れるべきでないとすることには当然の正当性があります。公式の頒布チャンネルから出荷されているLyXには、安全でないひな型は決して入ってい
+yXの標準頒布版には取り入れるべきでないとすることには当然の正当性があります。公式の頒布チャンネルから出荷されている\SpecialCharNoPassThru LyX
+には、安全でないひな型は決して入ってい
 ません。
 \end_layout
 
 \begin_layout Standard
 外部素材を含めることで強力な力を手に入れることができますが、この力とともにセキュリティ上の危険を導入してしまわないように気をつける必要があります。無防備なスクリ
 プトのたった一行に入り込んだ、ちょっとしたエラーが、巨大なセキュリティ上の問題に扉を開きうるのです。したがって、もしこの問題を完全に理解していないならば、特定の
-ひな型が安全であるかどうか疑問がある際には、知識豊富なセキュリティの専門家か、LyX開発チームに相談してみてください。そしてこの相談は、管理されていない環境下で
+ひな型が安全であるかどうか疑問がある際には、知識豊富なセキュリティの専門家か、\SpecialCharNoPassThru LyX
+開発チームに相談してみてください。そしてこの相談は、管理されていない環境下で
 これを使用する前に、行うようにしてください。
 \end_layout
 
 \begin_layout Chapter
 \start_of_appendix
-サポートされているレイアウト用LyX関数一覧
+サポートされているレイアウト用\SpecialCharNoPassThru LyX
+関数一覧
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:関数一覧"
@@ -21916,7 +22346,8 @@ name "chap:色名"
 \end_layout
 
 \begin_layout Standard
-ここに列挙されている色は標準色であり、LyX設定で調整できるものです。
+ここに列挙されている色は標準色であり、\SpecialCharNoPassThru LyX
+設定で調整できるものです。
 \end_layout
 
 \begin_layout Description
@@ -21924,7 +22355,8 @@ none
 \series medium
  
 \series default
-特定の色ではありません -- 透明か既定色です
+特定の色ではありません \twohyphens
+ 透明か既定色です
 \end_layout
 
 \begin_layout Description
@@ -22068,7 +22500,8 @@ eolmarker 行末標色
 \end_layout
 
 \begin_layout Description
-error LaTeXエラーボックス色
+error \SpecialCharNoPassThru LaTeX
+エラーボックス色
 \end_layout
 
 \begin_layout Description
@@ -22120,7 +22553,8 @@ language 外国語の単語を標識するための色
 \end_layout
 
 \begin_layout Description
-latex LaTeXモードの文字色
+latex \SpecialCharNoPassThru LaTeX
+モードの文字色
 \end_layout
 
 \begin_layout Description

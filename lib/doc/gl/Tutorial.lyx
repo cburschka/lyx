@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/gl/
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -34,16 +35,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -109,11 +110,12 @@
 \begin_body
 
 \begin_layout Title
-O Tutorial de LyX
+O Tutorial de \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
-pola equipa de LyX 
+pola equipa de \SpecialCharNoPassThru LyX
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -142,17 +144,24 @@ Introdución
 \end_layout
 
 \begin_layout Section
-Ben-vido ao LyX!
+Ben-vido ao \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Standard
 Este ficheiro foi escrito pensando en todos aqueles que nunca ouviron falar
- de LaTeX ou non o coñecen alá moi ben.
- Comecemos dando unha boa notícia: non é preciso aprender LaTeX para usar
- o LyX.
- En realidade a razón de ser do LyX é fornecer unha interface cuase-WYSIWYG
- para o LaTeX.
- Porén ha algunhas cousas que precisará aprender para usar o LyX, e que
+ de \SpecialCharNoPassThru LaTeX
+ ou non o coñecen alá moi ben.
+ Comecemos dando unha boa notícia: non é preciso aprender \SpecialCharNoPassThru LaTeX
+ para usar
+ o \SpecialCharNoPassThru LyX
+.
+ En realidade a razón de ser do \SpecialCharNoPassThru LyX
+ é fornecer unha interface cuase-WYSIWYG
+ para o \SpecialCharNoPassThru LaTeX
+.
+ Porén ha algunhas cousas que precisará aprender para usar o \SpecialCharNoPassThru LyX
+, e que
  lle sexa de utilidade.
 \end_layout
 
@@ -161,12 +170,14 @@ Alguns dos leitores chegarian a este documento tras tentar inserir dous
  espazos despois dun ponto, ou 3 liñas en branco entre parágrafos, mais
  con certa frustración decataron-se que non o daban feito.
  De facto, acharán que a maioria dos pequenos truques que están afeitos
- a empregar noutros procesadores de texto, non funcionan en LyX.
+ a empregar noutros procesadores de texto, non funcionan en \SpecialCharNoPassThru LyX
+.
  Isto é por a maioria dos procesadores de texto permitiren, cando non requereren
 , que o usuário introduza manualmente espazos, fontes, etc.
  Co cal o usuário non só escrebe o documento, senón que tamén fai a composición
  tipográfica do mesmo.
- O LyX fai a composición automática e consistentemente, deixando ao usuário
+ O \SpecialCharNoPassThru LyX
+ fai a composición automática e consistentemente, deixando ao usuário
  concentrar-se nas cousas importantes: os contidos do documento.
 \end_layout
 
@@ -198,7 +209,7 @@ Introdu
 \emph default
 ción
 \shape default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Se comezou a ler a documentación por este manual, recomendamos-lle que
  o deixe por un pouco e lea primeiro a 
 \shape italic
@@ -233,12 +244,16 @@ Tutorial
 \end_layout
 
 \begin_layout Standard
-Se estiver familiarizado co LaTeX, probabelmente poderá ler o 
+Se estiver familiarizado co \SpecialCharNoPassThru LaTeX
+, probabelmente poderá ler o 
 \shape italic
 Tutorial
 \shape default
- máis rapidamente, xa que a base do LyX é o LaTeX.
- Porén o LyX posui algunhas idiosincrasias
+ máis rapidamente, xa que a base do \SpecialCharNoPassThru LyX
+ é o \SpecialCharNoPassThru LaTeX
+.
+ Porén o \SpecialCharNoPassThru LyX
+ posui algunhas idiosincrasias
 \begin_inset Foot
 status collapsed
 
@@ -272,7 +287,8 @@ reference "sec:usuarioslatex"
 
 \end_inset
 
-, escrita pensando especificamente nos usuários de LaTeX.
+, escrita pensando especificamente nos usuários de \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Subsection
@@ -284,7 +300,11 @@ vai
 \end_layout
 
 \begin_layout Itemize
-Explicacións detalladas de todas as funcións do LyX.
+Explicacións detalladas de todas as funcións do \SpecialCharNoPassThru LyX
+.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -310,30 +330,38 @@ te desactualizado.
 
 \end_deeper
 \begin_layout Itemize
-Explicacións detalladas de LaTeX.
+Explicacións detalladas de \SpecialCharNoPassThru LaTeX
+.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Non son necesárias para usar o LyX.
+Non son necesárias para usar o \SpecialCharNoPassThru LyX
+.
  Mais se estiver interesado en aprender alguns dos elegantes truques que
- pode facer co LaTeX, sempre pode ler un libro de LaTeX.
+ pode facer co \SpecialCharNoPassThru LaTeX
+, sempre pode ler un libro de \SpecialCharNoPassThru LaTeX
+.
  No mercado existen vários bons libros, polo cal escusamos de escreber un
  novo.
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-E agora chegou o momento de elaborar o seu primeiro documento \SpecialChar \ldots{}
+E agora chegou o momento de elaborar o seu primeiro documento \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Chapter
-Comezando co LyX
+Comezando co \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Section
-O seu primeiro documento no LyX 
+O seu primeiro documento no \SpecialCharNoPassThru LyX
+ 
 \end_layout
 
 \begin_layout Standard
@@ -349,7 +377,8 @@ Tutorial
 \begin_layout Standard
 Dado que ha moita información que non vamos fornecer neste documento, o
  primeiro que ten que facer é procurar os restantes documentos de axuda.
- Isto é bastante sinxelo; inicie o LyX e vaia ao menu 
+ Isto é bastante sinxelo; inicie o \SpecialCharNoPassThru LyX
+ e vaia ao menu 
 \family sans
 Axuda,
 \family default
@@ -368,7 +397,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Poden servir tamén como bons exemplos de como usar as moitas características
- do LyX.
+ do \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -383,13 +413,15 @@ Ver
 \emph on
 Tutorial
 \emph default
- non cobre en detalle asuntos descritos noutros manuais do LyX, se ben isto
+ non cobre en detalle asuntos descritos noutros manuais do \SpecialCharNoPassThru LyX
+, se ben isto
  pode resultar incomodo inicialmente, permite termos un 
 \emph on
 Tutorial
 \emph default
  breve.
- Ademais afará-se a utilizar outros manuais do LyX, o cal — a longo prazo
+ Ademais afará-se a utilizar outros manuais do \SpecialCharNoPassThru LyX
+, o cal — a longo prazo
  — aforrará-lle moito tempo.
 \end_layout
 
@@ -398,8 +430,10 @@ Neste
 \emph on
 Tutorial
 \emph default
- imos asumir que no seu computador ten instalada unha versión do LyX totalmente
- funcional, unha outra versión do LaTeX, o 
+ imos asumir que no seu computador ten instalada unha versión do \SpecialCharNoPassThru LyX
+ totalmente
+ funcional, unha outra versión do \SpecialCharNoPassThru LaTeX
+, o 
 \family typewriter
 un
 \family default
@@ -421,13 +455,16 @@ Guia do Usuário
 
 \begin_layout Standard
 Por último ha un documento especificamente escrito para praticar os seus
- coñecimentos de LyX.
+ coñecimentos de \SpecialCharNoPassThru LyX
+.
  Chama-se 
 \family typewriter
 exemplo_bruto.lyx
 \family default
-, supostamente escrito por alguén que ignora as grandes capacidades do LyX.
- Segundo vaia aprendendo as novas funcións do LyX, suxeriremo-lle modificar
+, supostamente escrito por alguén que ignora as grandes capacidades do \SpecialCharNoPassThru LyX
+.
+ Segundo vaia aprendendo as novas funcións do \SpecialCharNoPassThru LyX
+, suxeriremo-lle modificar
  as partes correspondentes do documento 
 \family typewriter
 exemplo_bruto.lyx
@@ -466,7 +503,8 @@ Notas
 \family typewriter
 exemplo_lyxificado.lyx
 \family default
- que contén o mesmo texto escrito por un mestre LyXeiro.
+ que contén o mesmo texto escrito por un mestre \SpecialCharNoPassThru LyX
+eiro.
 \end_layout
 
 \begin_layout Standard
@@ -474,9 +512,10 @@ Os ficheiros de exemplo achan-se na directória
 \family typewriter
 examples/
 \family default
-, á cal pode aceder desde LyX seleccionando 
+, á cal pode aceder desde \SpecialCharNoPassThru LyX
+ seleccionando 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Abrir
 \family default
  e clicando no botón 
@@ -486,7 +525,7 @@ Exemplos
 .
  Abra o documento en bruto, e use 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Gravar
 \family default
  
@@ -504,14 +543,16 @@ Por certo, o directório
 examples/
 \family default
  contén moitos outros ficheiros de exemplo, que mostran como utilizar o
- LyX para obter resultados complexos e gozosos.
+ \SpecialCharNoPassThru LyX
+ para obter resultados complexos e gozosos.
  Estes ficheiros de exemplo son especialmente úteis para mostrar cousas
  que (devido ao tamaño ou a outras razóns) non entran ben na documentación.
  Após ler o 
 \emph on
 Tutorial
 \emph default
-, ou se non sabe como facer algo complicado no LyX, dé unha olladela a estes
+, ou se non sabe como facer algo complicado no \SpecialCharNoPassThru LyX
+, dé unha olladela a estes
  ficheiros.
 \end_layout
 
@@ -522,30 +563,32 @@ Escreber, visualizar e imprimir
 \begin_layout Itemize
 Abra un novo ficheiro con 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Novo
 \end_layout
 
 \begin_layout Itemize
 Escreba unha frase como: 
 \family typewriter
-Este é o meu primeiro documento en LyX!
+Este é o meu primeiro documento en \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Itemize
 Grave o seu documento con 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Gravar
 \begin_inset space ~
 \end_inset
 
-como\SpecialChar \@.
+como\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-Execute o LaTeX para criar unha pré-impresión (versión 
+Execute o \SpecialCharNoPassThru LaTeX
+ para criar unha pré-impresión (versión 
 \family typewriter
 dvi,
 \family default
@@ -559,23 +602,26 @@ pdf
 \family default
 ), con 
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 DVI,
 \family default
  
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 Postcript
 \family default
  ou 
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 PDF
 \family default
-\SpecialChar \@.
- Se lanzou o LyX desde un terminal poderá ver como nel van aparecendo unha
- série de mensaxes, escritos polo LaTeX, e que polo momento pode ignorar.
- O LyX lanzará algun visualizador (de 
+\SpecialChar endofsentence
+ Se lanzou o \SpecialCharNoPassThru LyX
+ desde un terminal poderá ver como nel van aparecendo unha
+ série de mensaxes, escritos polo \SpecialCharNoPassThru LaTeX
+, e que polo momento pode ignorar.
+ O \SpecialCharNoPassThru LyX
+ lanzará algun visualizador (de 
 \family typewriter
 dvi,
 \family default
@@ -597,18 +643,18 @@ Pode aforrar algo de tempo, maior canto maior sexa o documento, se tras
  a primeira vez que execute algun dos visores o deixa sen fechar, e após
  facer calquer mudanza no documento usa 
 \family sans
-Ver\SpecialChar \menuseparator
-Actualizar\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
+Actualizar\SpecialChar menuseparator
 DVI
 \family default
  (ou 
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Postscritp
 \family default
  ou 
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 PDF
 \family default
 ) para ver o novo aspeito do documento.
@@ -622,13 +668,14 @@ PDF
 \begin_layout Itemize
 Imprima usando 
 \family sans
-Ficheiro\SpecialChar \menuseparator
-imprimir\SpecialChar \@.
+Ficheiro\SpecialChar menuseparator
+imprimir\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Parabéns! Escrebeu e imprimiu o seu primeiro documento en LyX.
+Parabéns! Escrebeu e imprimiu o seu primeiro documento en \SpecialCharNoPassThru LyX
+.
  O resto son pequenos detalles que se tratan no resto do 
 \emph on
 Tutorial
@@ -649,7 +696,8 @@ Operacións sinxelas
 \end_layout
 
 \begin_layout Standard
-Loxicamente o LyX permite-lle realizar a maioria das cousas que está afeito
+Loxicamente o \SpecialCharNoPassThru LyX
+ permite-lle realizar a maioria das cousas que está afeito
  a facer con un procesador de texto.
  Vai engadir novas liñas cando for necesário, e identar parágrafos automaticamen
 te.
@@ -658,18 +706,23 @@ te.
 \end_layout
 
 \begin_layout Description
-Desfacer O LyX ten múltiplos níveis de desfacer, o que significa que poderia
+Desfacer O \SpecialCharNoPassThru LyX
+ ten múltiplos níveis de desfacer, o que significa que poderia
  desfacer todo o que fixo desde o início da sesión seleccionando 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Desfacer
 \family default
  unha e outra vez.
  Caso se pasar desfacendo, pode refacer as accións desfeitas seleccionando
  
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Refacer.
+\family default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -683,24 +736,25 @@ Desfacer
 todo
 \emph default
 , como por exemplo para mudanzas no formato do documento.
- Estes son un par de defeitos do LyX, que ainda non están solucionados.
+ Estes son un par de defeitos do \SpecialCharNoPassThru LyX
+, que ainda non están solucionados.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Cortar/Colar/Copiar Use 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Cortar
 \family default
  (ou Crtl+X), 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Colar
 \family default
  (ou Crtl+V), e 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Copiar (ou Crtl+C)
 \family default
  para cortar, colar e copiar.
@@ -715,7 +769,7 @@ botón central
 \begin_layout Description
 Procurar/Substituir Utilice 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Procurar
 \begin_inset space ~
 \end_inset
@@ -737,7 +791,8 @@ status open
 \begin_layout Plain Layout
 Cando rematar pode fechar a xanela, ou deixa-la aberta, segundo lle resulte
  mais cómodo.
- A maioria das caixas de diálogo no LyX — incluindo as correspondentes a
+ A maioria das caixas de diálogo no \SpecialCharNoPassThru LyX
+ — incluindo as correspondentes a
  
 \family sans
 Procurar
@@ -770,13 +825,15 @@ Configuración
  poden deixar-se abertas, ou minimizadas, en vez de fechadas.
  Uns poucos diálogos, como o 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Abrir
 \family default
-, non lle permiten porén escreber nada na xanela principal do LyX, até os
+, non lle permiten porén escreber nada na xanela principal do \SpecialCharNoPassThru LyX
+, até os
  fechar.
  Asegure-se de manter en foco a xanela axeitada, ao tentar escreber na xanela
- principal do LyX ou ao executar un comando noutra caixa de diálogo.
+ principal do \SpecialCharNoPassThru LyX
+ ou ao executar un comando noutra caixa de diálogo.
 \end_layout
 
 \end_inset
@@ -817,7 +874,7 @@ Versalete
  (normalmente pequenas maiúsculas, usado para nomes de persoas) no diálogo
  
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Estilo
 \begin_inset space ~
 \end_inset
@@ -846,7 +903,7 @@ Colar, Imprimir, Inserir
 \begin_inset space ~
 \end_inset
 
-formula\SpecialChar \ldots{}
+formula\SpecialChar ldots
 
 \family default
  Se mantiver o ponteiro do rato por riba dun deses botóns un par de segundos
@@ -859,11 +916,12 @@ Por agora ainda non escrebeu abondo para que estas funcións sexan úteis,
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Espazos en branco no LyX
+WYSIWYM: Espazos en branco no \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-Unha das cousas que mais estraña ao novo usuário é a forma como o LyX xere
+Unha das cousas que mais estraña ao novo usuário é a forma como o \SpecialCharNoPassThru LyX
+ xere
  os espazos en branco.
  Pode premer repetidamente o 
 \family sans
@@ -874,7 +932,8 @@ Return
 barra espazadora
 \family default
 , e só obterá un espazo.
- Nunha liña en branco, o LyX non permite nen introducir tan sequer un espazo
+ Nunha liña en branco, o \SpecialCharNoPassThru LyX
+ non permite nen introducir tan sequer un espazo
  en branco.
  A tecla 
 \family sans
@@ -911,7 +970,8 @@ What You See Is What You Get
 
 \end_inset
 
- (o que vé e o que obtén), porén o LyX ten filosofia própria: WYSIWYM
+ (o que vé e o que obtén), porén o \SpecialCharNoPassThru LyX
+ ten filosofia própria: WYSIWYM
 \begin_inset Foot
 status collapsed
 
@@ -952,7 +1012,8 @@ ean.
 \end_inset
 
  (o que vé é o que pretende facer).
- O usuário especifica o que pretende obter, sendo o LyX o que se preocupa
+ O usuário especifica o que pretende obter, sendo o \SpecialCharNoPassThru LyX
+ o que se preocupa
  da composición tipográfica, dando lugar a unha saída con cualidade profisional.
  Gramaticalmente un 
 \family sans
@@ -963,8 +1024,10 @@ Return
 \family sans
 espazo de tabulado
 \family default
- non ten nengunha función gramatical, e portanto o LyX non o considera.
- Ao traballar co LyX, investirá máis tempo preocupando-se do 
+ non ten nengunha función gramatical, e portanto o \SpecialCharNoPassThru LyX
+ non o considera.
+ Ao traballar co \SpecialCharNoPassThru LyX
+, investirá máis tempo preocupando-se do 
 \emph on
 contido
 \emph default
@@ -985,9 +1048,11 @@ Introdución
 \end_layout
 
 \begin_layout Standard
-Contodo, no LyX tamén existen (moitas) maneiras de afinar manualmente o
+Contodo, no \SpecialCharNoPassThru LyX
+ tamén existen (moitas) maneiras de afinar manualmente o
  formato dos documentos.
- Ao fin e ao cabo é posíbel que o LyX non acerte coa composición tipográfica
+ Ao fin e ao cabo é posíbel que o \SpecialCharNoPassThru LyX
+ non acerte coa composición tipográfica
  exacta que o autor tiña en mente.
  Estas formas de afinar o formato aparecen descritas no 
 \emph on
@@ -996,7 +1061,8 @@ Guia do Usuário
 , incluindo entre outras espazados horizontal e vertical máis potentes e
  versáteis que os espazos ou as liñas en branco — e formas para especificar
  manualmente o tamaño e o tipo de fonte, e o aliñamentos dos parágrafos.
- Agora ben, o que pretenden os autores do LyX é que o usuário poda despreocupar-
+ Agora ben, o que pretenden os autores do \SpecialCharNoPassThru LyX
+ é que o usuário poda despreocupar-
 se do formato, prestando-lle atención só ao final.
  Evitando algo que ocorre con frecuéncia cos procesadores de texto tradicionais;
  que o usuário dedica mais tempo e esforzo a forma do que ao contido do
@@ -1008,14 +1074,15 @@ Ambientes
 \end_layout
 
 \begin_layout Standard
-En LyX o texto, en función do seu propósito no documento, clasifica-se en
+En \SpecialCharNoPassThru LyX
+ o texto, en función do seu propósito no documento, clasifica-se en
  
 \emph on
 ambientes
 \emph default
 .
  Usualmente nun documento a maioria do texto non ten un formato especial,
- é texto normal, mais é usual que estexa divido en capítulos, seccións \SpecialChar \ldots{}
+ é texto normal, mais é usual que estexa divido en capítulos, seccións \SpecialChar ldots
 
  e que cada unha desas partes teña un título que lle permiten dan unha idea
  ao leitor do que vai ser tratado a seguir.
@@ -1027,7 +1094,8 @@ ambientes
 
 \begin_layout Standard
 Os ambientes son unha peza importante a hora de implementar a filosofia
- WYSIWYM no LyX.
+ WYSIWYM no \SpecialCharNoPassThru LyX
+.
  Os vários ambientes teñen en xeral diferente aspeito, o título dun capítulo
  ten que diferenciar-se do título dunha subsección ou da bibliografia, e
  para os distinguir empregan-se: fontes diferentes (família, tamaño, tipo),
@@ -1038,7 +1106,8 @@ Os ambientes son unha peza importante a hora de implementar a filosofia
  negrito, e o texto centrado, entanto outro teña por norma utilizar outra
  fonte de 15 pontos, en itálico, e o texto xustificado á esquerda; e desde
  logo moi dificilmente van estar de acordo nos formatos da bibliografia.
- O LyX está deseñado para lle permitir lidar dignamente con estas complexidades,
+ O \SpecialCharNoPassThru LyX
+ está deseñado para lle permitir lidar dignamente con estas complexidades,
  sen necesidade de lle prestar atención de mais aos diferentes estilos de
  formatación.
 \end_layout
@@ -1076,7 +1145,8 @@ Escreba a palabra
 \family typewriter
 Introdución
 \family default
- na primeira liña do seu ficheiro LyX, e seleccione 
+ na primeira liña do seu ficheiro \SpecialCharNoPassThru LyX
+, e seleccione 
 \family sans
 Sección
 \family default
@@ -1092,7 +1162,8 @@ Non precisa
 seleccionar
 \emph default
  a liña.
- Se non ha nada seleccionado, o LyX muda o ambiente do parágrafo onde se
+ Se non ha nada seleccionado, o \SpecialCharNoPassThru LyX
+ muda o ambiente do parágrafo onde se
  acha o cursor.
  Mais tamén é posíbel mudar o ambiente de vários parágrafos; seleccionando-os
  antes de escoller o ambiente.
@@ -1116,7 +1187,8 @@ non
 Sección*,
 \family default
  do que xa falaremos máis tarde.
- O LyX etiqueta a sección con un 
+ O \SpecialCharNoPassThru LyX
+ etiqueta a sección con un 
 \family sans
 
 \begin_inset Quotes eld
@@ -1146,7 +1218,8 @@ Sección
 Normal
 \family default
 .
- Na maior parte dos ambientes, incluído o cabezallo dunha sección, LyX asume
+ Na maior parte dos ambientes, incluído o cabezallo dunha sección, \SpecialCharNoPassThru LyX
+ asume
  que o ambiente remata ao teclear 
 \family sans
 Return.
@@ -1156,7 +1229,8 @@ Return.
 \end_layout
 
 \begin_layout LyX-Code
-Esta é a introdución do meu primeiro documento en LyX.
+Esta é a introdución do meu primeiro documento en \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -1169,7 +1243,8 @@ Sección
 Ambientes
 \family default
 .
- O LyX escrebe un 
+ O \SpecialCharNoPassThru LyX
+ escrebe un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1182,7 +1257,8 @@ Ambientes
 \family typewriter
 Mais cousas
 \family default
-, e verá que o LyX o escrebe coa tipografia própria do título dunha sección.
+, e verá que o \SpecialCharNoPassThru LyX
+ o escrebe coa tipografia própria do título dunha sección.
 \end_layout
 
 \begin_layout Standard
@@ -1203,7 +1279,7 @@ Sección
 \begin_inset Quotes eld
 \end_inset
 
-primeiro documento en LyX
+primeiro documento en \SpecialCharNoPassThru LyX
 \begin_inset Quotes erd
 \end_inset
 
@@ -1220,7 +1296,8 @@ Sección
 Ambientes
 \family default
 .
- O LyX escrebe un 
+ O \SpecialCharNoPassThru LyX
+ escrebe un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1271,7 +1348,8 @@ Sección
 \end_inset
 
  ! Aplicando a filosofia WYSIWYM, ao identificar un anaco de texto como
- título da sección, o LyX encarrega-se automaticamente da sua numeración
+ título da sección, o \SpecialCharNoPassThru LyX
+ encarrega-se automaticamente da sua numeración
  e tipografia.
 \end_layout
 
@@ -1321,7 +1399,8 @@ Subsección
 Ambientes
 \family default
 .
- O LyX etiqueta a subsección con 
+ O \SpecialCharNoPassThru LyX
+ etiqueta a subsección con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1336,7 +1415,8 @@ Ambientes
 Subsección
 \family default
 .
- Como seguramente xa esperaba, o LyX asignou-lle automaticamente a etiqueta
+ Como seguramente xa esperaba, o \SpecialCharNoPassThru LyX
+ asignou-lle automaticamente a etiqueta
  
 \begin_inset Quotes eld
 \end_inset
@@ -1383,7 +1463,8 @@ Sección 3
 \end_layout
 
 \begin_layout Standard
-O LyX contempla outros níveis de hierarquia: 
+O \SpecialCharNoPassThru LyX
+ contempla outros níveis de hierarquia: 
 \family sans
 Subsubsección
 \family default
@@ -1412,7 +1493,8 @@ Capítulos,
 \emph on
 clases
 \emph default
-) de documentos LyX (vexa-se a Sección
+) de documentos \SpecialCharNoPassThru LyX
+ (vexa-se a Sección
 \begin_inset space ~
 \end_inset
 
@@ -1437,7 +1519,8 @@ Sección
 \family sans
 Sección*
 \family default
-, o LyX usará a mesma tipografia, mais sen numeración.
+, o \SpecialCharNoPassThru LyX
+ usará a mesma tipografia, mais sen numeración.
  Outros ambientes similares son 
 \family sans
 Capítulo*, Subsección*
@@ -1478,7 +1561,8 @@ Listas e sub-listas
 \end_layout
 
 \begin_layout Standard
-O LyX oferece diferentes ambientes para elaborar listas.
+O \SpecialCharNoPassThru LyX
+ oferece diferentes ambientes para elaborar listas.
  Estes ambientes liberan-no de premer a tecla 
 \family sans
 Tab
@@ -1498,7 +1582,8 @@ Tutorial
 \emph on
 é
 \emph default
- o ponto principal da filosofia na que se basea o LyX.
+ o ponto principal da filosofia na que se basea o \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -1510,8 +1595,8 @@ Tutorial
 
 \begin_layout Itemize
 Nas apresentación son usuais as listas, como esta, onde cada ítem vai precedido
- dunha marca (ponto, asterisco\SpecialChar \ldots{}
-), que se poden elaborar facilmente en LyX
+ dunha marca (ponto, asterisco\SpecialChar ldots
+), que se poden elaborar facilmente en \SpecialCharNoPassThru LyX
  co ambiente 
 \family sans
 Listapontuada
@@ -1542,8 +1627,10 @@ O ambiente
 \family sans
 Lista
 \family default
- (próprio do LyX, i.e.
- non existe en LaTeX) é unha forma levemente diferente do ambiente 
+ (próprio do \SpecialCharNoPassThru LyX
+, i.e.
+ non existe en \SpecialCharNoPassThru LaTeX
+) é unha forma levemente diferente do ambiente 
 \family sans
 Descrición
 \family default
@@ -1551,7 +1638,8 @@ Descrición
 \end_layout
 
 \begin_layout Standard
-Escrebamos unha lista de razóns polas cais o LyX é mellor que os outros
+Escrebamos unha lista de razóns polas cais o \SpecialCharNoPassThru LyX
+ é mellor que os outros
  procesadores de texto.
  Algures no seu documento escreba:
 \end_layout
@@ -1559,7 +1647,8 @@ Escrebamos unha lista de razóns polas cais o LyX é mellor que os outros
 \begin_layout Standard
 
 \family typewriter
-O LyX é mellor que os outros procesadores de texto porque: 
+O \SpecialCharNoPassThru LyX
+ é mellor que os outros procesadores de texto porque: 
 \end_layout
 
 \begin_layout Standard
@@ -1578,7 +1667,8 @@ Listapontuada
 Ambientes
 \family default
 .
- O LyX engade á liña unha 
+ O \SpecialCharNoPassThru LyX
+ engade á liña unha 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1610,7 +1700,8 @@ Os ambientes de lista, a diferenza dos cabezallos, non terminan ao premer
 Return
 \family default
 .
- As avesas, o LyX asume que o usuário quer continuar a engadir ítens á lista,
+ As avesas, o \SpecialCharNoPassThru LyX
+ asume que o usuário quer continuar a engadir ítens á lista,
  de maneira que ao premer 
 \family sans
 Return
@@ -1649,27 +1740,28 @@ p
 Ten xa unha fermosa lista pontuada, e pode visualizar cal será o seu aspeito
  no documento impreso indo a 
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 DVI
 \family default
  (ou 
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 PostScript
 \family default
  ou 
 \family sans
-Ver\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
 PDF
 \family default
-)\SpecialChar \@.
+)\SpecialChar endofsentence
  Mais se cadra muda de idea e quer que a lista sexa numerada, non ten mais
  que seleccionar toda a lista
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-O LyX non lle permite seleccionar a primeira marca sen seleccionar tamén
+O \SpecialCharNoPassThru LyX
+ non lle permite seleccionar a primeira marca sen seleccionar tamén
  o parágrafo 
 \emph on
 anterior
@@ -1691,7 +1783,8 @@ Ambientes
 \family default
  e voilá!.
  E como xa vimos, se agora quixera engadir ou eliminar un ítem da lista,
- o LyX encarregaria-se de manter coerente a numeración.
+ o \SpecialCharNoPassThru LyX
+ encarregaria-se de manter coerente a numeración.
 \end_layout
 
 \begin_layout Standard
@@ -1829,7 +1922,7 @@ Citación
 , para textos maiores.
  Pensado para reproducir o código fonte de programas, o ambiente 
 \family sans
-Código-LyX
+Código-\SpecialCharNoPassThru LyX
 \family default
  usa a fonte monoespazada 
 \family typewriter
@@ -1852,7 +1945,8 @@ Ctrl-Return
 \family default
  para separar liñas nunha estrofe.
  No Guia do Usuário incluen-se as descricións completas de todos os ambientes
- disponíbeis no LyX.
+ disponíbeis no \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -1866,7 +1960,8 @@ Cita,
 \family default
  
 \family sans
-Código-LyX,
+Código-\SpecialCharNoPassThru LyX
+,
 \family default
  e 
 \family sans
@@ -1896,7 +1991,8 @@ Escrebendo documentos
 
 \begin_layout Standard
 Esperamos que o capítulo anterior servise para facilitar os seus primeiros
- pasos en LyX.
+ pasos en \SpecialCharNoPassThru LyX
+.
  Agora xa sabe escreber texto simples, coñece algunhas operacións de edición,
  e os úteis ambientes, mais seguramente espera poder escreber documentos
  mais completos, e complexos, tais como: artigos, libros, manuais ou cartas.
@@ -1943,17 +2039,20 @@ text class
 \emph on
 document class
 \emph default
- do LaTeX.
+ do \SpecialCharNoPassThru LaTeX
+.
  Sendo ambos conceitos equivalentes.
  De facto os nomes das clases de documentos non están traducidos, por se
- utilizar os de LaTeX.
+ utilizar os de \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \end_inset
 
 
 \family default
- do LyX ocupan-se destas diferenzas a grande escala entre os diferentes
+ do \SpecialCharNoPassThru LyX
+ ocupan-se destas diferenzas a grande escala entre os diferentes
  tipos de documento.
  Este 
 \emph on
@@ -1964,7 +2063,8 @@ Tutorial
 \emph on
 clases de documentos
 \emph default
- son outra peza importante da filosofia WYSIWYM; grazas a elas o LyX sabe
+ son outra peza importante da filosofia WYSIWYM; grazas a elas o \SpecialCharNoPassThru LyX
+ sabe
  cal é a tipografia axeitada para o documento, e o usuário pode despreocupar-se
  dese aspeito.
 \end_layout
@@ -1988,7 +2088,7 @@ Esta é usualmente a clase predefinida
 \family default
  experimente a trocar de clase (na caixa de diálogo 
 \family sans
-Documento\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
 Configuración
 \family default
 ) para ver como varia a tipografia.
@@ -2022,9 +2122,11 @@ Tamaños das fontes, unha ou duas colunas, e cabezallos das páxinas son algunha
  xornais.
  Ao ir avanzando na era da computación, os xornais pasaron a aceitar artigos
  submetidos electronicamente, para o cal definen os seus próprios ficheiros
- de estilo en LaTeX, de maneira que os autores podan enviar os seus artigos
+ de estilo en \SpecialCharNoPassThru LaTeX
+, de maneira que os autores podan enviar os seus artigos
  xa coa tipografia axeitada.
- Estes ficheiros de estilo poden adaptar-se facilmente para o LyX, e unha
+ Estes ficheiros de estilo poden adaptar-se facilmente para o \SpecialCharNoPassThru LyX
+, e unha
  boa chea deles xa o están.
  
 \end_layout
@@ -2207,7 +2309,8 @@ slides (apresentación)
 \begin_inset Text
 
 \begin_layout Plain Layout
-transparéncias (tamén inclui FoilTeX)
+transparéncias (tamén inclui Foil\SpecialCharNoPassThru TeX
+)
 \end_layout
 
 \end_inset
@@ -2227,7 +2330,7 @@ letter (carta)
 \begin_inset Text
 
 \begin_layout Plain Layout
-ambientes específicos para enderezos, sinatura\SpecialChar \ldots{}
+ambientes específicos para enderezos, sinatura\SpecialChar ldots
 
 \end_layout
 
@@ -2254,9 +2357,10 @@ Modelos: escrebendo unha carta
 
 \begin_layout Standard
 Todos os dias escreben-se inumeras cartas no mundo.
- En LyX pode-se escreber unha carta criando un ficheiro novo, 
+ En \SpecialCharNoPassThru LyX
+ pode-se escreber unha carta criando un ficheiro novo, 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Novo,
 \family default
  e escollendo 
@@ -2269,21 +2373,22 @@ Clase do documento
 \family default
  da caixa de diálogo 
 \family sans
-Documento\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
 Configuración
 \family default
 .
  Mais esta non é a opción mais cómoda.
  Calquer carta comercial debe incluir o enderezo do remitente e o do recipendári
 o, a sinatura, etc.
- O LyX facilita a escritura das cartas fornecendo ao usuário con un modelo
+ O \SpecialCharNoPassThru LyX
+ facilita a escritura das cartas fornecendo ao usuário con un modelo
  para cartas, do cal partir para escreber unha.
 \end_layout
 
 \begin_layout Standard
 Abra un novo ficheiro con 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2366,7 +2471,7 @@ Opening
 \begin_layout Standard
 Como vimos anteriormente ao seleccionar o menu 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2378,7 +2483,8 @@ desde
 modelo
 \family default
  aparece un diálogo onde se poden escoller unha série de modelos fornecidos
- polo LyX.
+ polo \SpecialCharNoPassThru LyX
+.
  Agora ben, neste diálogo pode-se navegar polas diversas directórias do
  seu computador, e portanto escoller calquer ficheiro lyx, que entón servirá
  como 
@@ -2396,7 +2502,7 @@ miña_carta.lyx
 , e na sua directória.
  Este ficheiro servira-lle como modelo sempre que o abra indo ao menu 
 \family sans
-Ficheiro\SpecialChar \menuseparator
+Ficheiro\SpecialChar menuseparator
 Novo
 \begin_inset space ~
 \end_inset
@@ -2461,7 +2567,9 @@ Títulos dos documentos
 \end_layout
 
 \begin_layout Standard
-O LyX (tal como o LaTeX) considera o título — que pode conter o próprio
+O \SpecialCharNoPassThru LyX
+ (tal como o \SpecialCharNoPassThru LaTeX
+) considera o título — que pode conter o próprio
  título, o autor, a data e mesmo o resumo dun artigo — como unha parte separada
  do documento.
  
@@ -2550,7 +2658,7 @@ Etiquetas e referéncias cruzadas
 
 \begin_layout Standard
 É posíbel etiquetar partes do documento, como seccións, subseccións, figuras,
- táboas\SpecialChar \ldots{}
+ táboas\SpecialChar ldots
  para posteriormente facer referéncia a esas partes en calquer lugar
  do seu documento.
  Este tipo de referéncias, coñecidas como referéncias cruzadas, poden ser
@@ -2559,9 +2667,12 @@ Etiquetas e referéncias cruzadas
  E tal como coas seccións ou coas notas de rodapé, o usuário non precisa
  de se preocupar cos detalles do manexo das referéncias cruzadas, basta
  etiquetar e referir-se a etiqueta, en calquer orde e en calquer momento,
- e o LyX ocupa-se do resto.
+ e o \SpecialCharNoPassThru LyX
+ ocupa-se do resto.
  O manexo flexíbel e fiábel das etiquetas e das referéncias cruzadas por
- parte do LyX (e do LaTeX), constitui un dos seu pontos fortes en comparación
+ parte do \SpecialCharNoPassThru LyX
+ (e do \SpecialCharNoPassThru LaTeX
+), constitui un dos seu pontos fortes en comparación
  cos procesadores de texto convencionais.
 \end_layout
 
@@ -2582,7 +2693,7 @@ Acerca deste documento
 .
  Clique no fin da liña do título da sección e seleccione 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Etiqueta
 \family default
 , abrirá-se entón unha caixa de diálogo con unha suxestión para o nome da
@@ -2639,7 +2750,7 @@ sección
 
 , escolla 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Referéncia
 \begin_inset space ~
 \end_inset
@@ -2684,7 +2795,8 @@ protexido (Crtl-Space)
 \end_layout
 
 \begin_layout Standard
-O LyX coloca a referéncia nunha caixa cincenta onde estaba o cursor.
+O \SpecialCharNoPassThru LyX
+ coloca a referéncia nunha caixa cincenta onde estaba o cursor.
  No documento impreso esta caixa vai ser substituída polo número da sección
  ou da páxina (dependendo do formato escollido no diálogo 
 \family sans
@@ -2697,20 +2809,20 @@ cruzada
 ).
  Obteña unha pré-impresión (
 \family sans
-Ver\SpecialChar \menuseparator
-Actualizar\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
+Actualizar\SpecialChar menuseparator
 DVI
 \family default
  ou 
 \family sans
-Ver\SpecialChar \menuseparator
-Actualizar\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
+Actualizar\SpecialChar menuseparator
 Postscritp
 \family default
  ou 
 \family sans
-Ver\SpecialChar \menuseparator
-Actualizar\SpecialChar \menuseparator
+Ver\SpecialChar menuseparator
+Actualizar\SpecialChar menuseparator
 PDF
 \family default
 ) para ver como son substituídas as referéncias.
@@ -2718,7 +2830,8 @@ PDF
 
 \begin_layout Standard
 Ademais as referéncias facilitan a vida do usuário funcionando como hiper-ligazó
-ns á hora de editar documentos en LyX; clicando nunha xurde o diálogo 
+ns á hora de editar documentos en \SpecialCharNoPassThru LyX
+; clicando nunha xurde o diálogo 
 \family sans
 Referéncia
 \begin_inset space ~
@@ -2743,7 +2856,8 @@ Un pouco mais de xogo
 \end_layout
 
 \begin_layout Standard
-Dixemos anteriormente que o LyX se encarrega do manexo das referéncias cruzadas;
+Dixemos anteriormente que o \SpecialCharNoPassThru LyX
+ se encarrega do manexo das referéncias cruzadas;
  chegou o momento de ver como!.
  Insira unha nova sección antes da Sección
 \begin_inset space ~
@@ -2787,7 +2901,8 @@ sub-sección
 Se quixer praticar un pouco máis tente inserir unha nova etiqueta onde colocou
  a sua primeira referéncia cruzada, e refira esa etiqueta noutra parte calquer
  do documento.
- Para comprobar que o LyX manexa correctamente as referéncias cruzadas en
+ Para comprobar que o \SpecialCharNoPassThru LyX
+ manexa correctamente as referéncias cruzadas en
  documentos mais extensos, copie algunhas páxinas do 
 \emph on
 Guia do Usuário
@@ -2868,15 +2983,15 @@ O botón mostra unha páxina con unha nota de rodapé.
 
  ou através do menu 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Nota de rodapé
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Situe o cursor no fin da palabra 
 \begin_inset Quotes eld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes eld
 \end_inset
 
@@ -2919,7 +3034,8 @@ rodapé
 
  e non un número ou outra marca mais esclarecedora de como vai aparecer
  no texto impreso.
- A resposta é que o LyX ocupa-se automaticamente da numeración das notas
+ A resposta é que o \SpecialCharNoPassThru LyX
+ ocupa-se automaticamente da numeración das notas
  de rodapé, de maneira que pode inserir notas de rodapé en calquer lugar
  do documento e en calquer momento, e o programa as renumera convenientemente.
  
@@ -2951,7 +3067,7 @@ Colar
  o texto e facer o mesmo que para inserir unha nota de rodapé valeira, ben
  ir ao menu 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Nota de rodapé
 \family default
 , ben clicar no botón 
@@ -2986,14 +3102,14 @@ As notas á marxe poden inserir-se ben desde o botón
 
  da barra de tarefas ou através do menu 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Nota á
 \family default
  
 \family sans
 marxe
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Esta notas son semellantes ás anteriores agás no seguinte:
 \end_layout
 
@@ -3054,7 +3170,9 @@ As bibliografias, cando menos en ciéncias, son semellantes as referéncias
  cruzadas.
  A bibliografia contén unha série de referéncias no fin do documento, que
  poden ser referidas en calquer parte do mesmo.
- LyX e LaTeX numeran automanticamente as entradas bibliográficas, encarregando-s
+ \SpecialCharNoPassThru LyX
+ e \SpecialCharNoPassThru LaTeX
+ numeran automanticamente as entradas bibliográficas, encarregando-s
 e en todo momento de manter correcta tal numeración, sexan cais sexan as
  mudanzas que se fagan na mesma.
 \end_layout
@@ -3068,10 +3186,11 @@ Bibliografia
  Agora, cada novo parágrafo será unha referéncia bibliográfica.
  Como primeira referéncia escreba: 
 \family typewriter
-O Tutorial do Lyx, pola Equipa de documentación do LyX
+O Tutorial do Lyx, pola Equipa de documentación do \SpecialCharNoPassThru LyX
 \family default
 .
- Observe que o LyX insere automaticamente unha caixa cincenta e numerada
+ Observe que o \SpecialCharNoPassThru LyX
+ insere automaticamente unha caixa cincenta e numerada
  antes de cada referéncia.
  Clicando na caixa xurde o diálogo 
 \family sans
@@ -3111,7 +3230,7 @@ tutorial-lyx
 É hora de inserir unha cita bibliográfica no seu documento; coloque o cursor
  onde lle pareza oportuno, e vaia ao menu 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Citación,
 \family default
  que fai xurdir un par de caixas de diálogo superpostas.
@@ -3222,13 +3341,14 @@ exemplo_bruto.lyx
 \begin_layout Standard
 Nalgunhas ocasións pode desexar incluir un índice no seu documento, ben
  no início ben no fin.
- Co LyX isto é moi doado; prema 
+ Co \SpecialCharNoPassThru LyX
+ isto é moi doado; prema 
 \family sans
 Return
 \family default
  entre o título e a primeira sección do seu documento e escolla 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Lista
 \begin_inset space ~
 \end_inset
@@ -3237,7 +3357,7 @@ Lista
 \begin_inset space ~
 \end_inset
 
-Indices\SpecialChar \menuseparator
+Indices\SpecialChar menuseparator
 Indice
 \begin_inset space ~
 \end_inset
@@ -3263,7 +3383,7 @@ xeral
  No entanto, se for dar unha espreitadela á pré-impresión, pode verificar
  que acabou de xerar un índice onde se encontran listadas as várias seccións
  e sub-seccións do seu documento.
- Se en calquer momento reordena as seccións ou cria seccións novas, o LyX
+ Se en calquer momento reordena as seccións ou cria seccións novas, o \SpecialCharNoPassThru LyX
  encarrega-se de manter todo en orde.
 \end_layout
 
@@ -3297,23 +3417,29 @@ Escrebendo fórmulas
 \end_layout
 
 \begin_layout Standard
-Moitos cientistas usan LaTeX porque a composición tipográfica que permite
+Moitos cientistas usan \SpecialCharNoPassThru LaTeX
+ porque a composición tipográfica que permite
  obter, especialmente coas fórmulas matemáticas, ten moi boa cualidade,
  dando unha aparéncia profisional aos documentos que non se obtén cos procesador
 es de texto estándar e os seus editores matemáticos.
- Agora ben, escreber ecuacións en LaTeX asemella-se mais á programazón do
+ Agora ben, escreber ecuacións en \SpecialCharNoPassThru LaTeX
+ asemella-se mais á programazón do
  que á escrita, razón pola que ha tamén moitos outros cientistas que non
  o usan, a pesar dos magníficos resultados.
  
 \end_layout
 
 \begin_layout Standard
-O LyX é unha moi boa solución neste caso, xa que permite escreber fórmulas
+O \SpecialCharNoPassThru LyX
+ é unha moi boa solución neste caso, xa que permite escreber fórmulas
  facilmente, a sua filosofia WYSIWYM é especialmente axeitada para esta
- tarefa, e os resultados son iguais de bons que co LaTeX.
- Se está afeito a escreber con LaTeX poderá seguir a empregar os seus úteis
+ tarefa, e os resultados son iguais de bons que co \SpecialCharNoPassThru LaTeX
+.
+ Se está afeito a escreber con \SpecialCharNoPassThru LaTeX
+ poderá seguir a empregar os seus úteis
  mas incómodos comandos, mais con unha intuitiva visualización WYSIWYM.
- Se, por outro lado, nunca usou LaTeX, non teña medo, o 
+ Se, por outro lado, nunca usou \SpecialCharNoPassThru LaTeX
+, non teña medo, o 
 \family sans
 Painel
 \begin_inset space ~
@@ -3326,7 +3452,8 @@ matemático
 status collapsed
 
 \begin_layout Plain Layout
-Polo momento o LyX non garante que as suas fórmulas estexa correctas, mais
+Polo momento o \SpecialCharNoPassThru LyX
+ non garante que as suas fórmulas estexa correctas, mais
  si un bon resultado estético.
  
 \end_layout
@@ -3398,7 +3525,8 @@ Consulte a pré-impresión e verá como a fórmula ten agora moito mellor aspeit
 
 \begin_layout Standard
 O editor matemático é outro exemplo da filosofia WYSIWYM.
- En LaTeX, usan-se comandos tais como 
+ En \SpecialCharNoPassThru LaTeX
+, usan-se comandos tais como 
 \family typewriter
 
 \backslash
@@ -3420,7 +3548,8 @@ frac
 \end_layout
 
 \begin_layout Standard
-O LyX non trata de visualizar exactamente cal vai ser o resultado impreso
+O \SpecialCharNoPassThru LyX
+ non trata de visualizar exactamente cal vai ser o resultado impreso
  da fórmula (WYSIWYG), mais dá unha idea aproximada, que con un pouco de
  experiéncia resulta moi fiábel.
  Na imensa maioria das veces o resultado final vai ser satisfactório sen
@@ -3515,7 +3644,7 @@ Backspace
 ) elimina-a toda ela.
  Nese caso pode empregar 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Desfacer
 \family default
  para a recuperar.
@@ -3701,7 +3830,8 @@ matemático
  permite inserir facilmente símbolos ou comandos matemáticos.
  Tamén existen atallos de teclado que permiten inserir moitos símbolos e
  comandos, mais para aprender as posibilidades.
- que oferece o editor matemático do LyX o mais fácil e didáctico é usar
+ que oferece o editor matemático do \SpecialCharNoPassThru LyX
+ o mais fácil e didáctico é usar
  o 
 \family sans
 Painel
@@ -3714,8 +3844,8 @@ matemático
  Posteriormente poderá ver noutros manuais os atallos de teclado correspondentes.
  Abra entón o painel desde o menu con 
 \family sans
-Inserir\SpecialChar \menuseparator
-Formula\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
+Formula\SpecialChar menuseparator
 Painel
 \begin_inset space ~
 \end_inset
@@ -3735,7 +3865,7 @@ Símbolos
 Na parte direita do painel ha un recadro con un conxunto de símbolos.
  Na parte superior do recadro ha un menu despregueábel que permite escoller
  entre distintos conxuntos de símbolos: operadores, relacións, letras gregas,
- frechas \SpecialChar \ldots{}
+ frechas \SpecialChar ldots
  Non ten mais que clicar en calquer deses símbolos para os incluir
  no seu texto, ou nas suas fórmulas.
  Na parte inferior do recadro, por riba do botón de 
@@ -3763,7 +3893,7 @@ Eu
 \begin_inset Formula $\heartsuit$
 \end_inset
 
- LyX
+ \SpecialCharNoPassThru LyX
 \begin_inset Quotes erd
 \end_inset
 
@@ -3829,7 +3959,8 @@ Acentos e delimitadores
 \end_layout
 
 \begin_layout Standard
-O LyX permite usar un bon número de 
+O \SpecialCharNoPassThru LyX
+ permite usar un bon número de 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3887,7 +4018,8 @@ e desde un painel que se lanza ao premer o botón
 \begin_inset Quotes erd
 \end_inset
 
- (o delimitador valeiro mostra-se como unha liña a trazos en LyX, mais non
+ (o delimitador valeiro mostra-se como unha liña a trazos en \SpecialCharNoPassThru LyX
+, mais non
  aparecerá no documento impreso).
 \end_layout
 
@@ -3947,7 +4079,8 @@ exemplo_bruto.lyx
 \end_layout
 
 \begin_layout Subsection
-Modo TeX: Limites, log, sin e outros
+Modo \SpecialCharNoPassThru TeX
+: Limites, log, sin e outros
 \end_layout
 
 \begin_layout Standard
@@ -3960,7 +4093,8 @@ cos
 \begin_inset Quotes erd
 \end_inset
 
-, o LyX pensará que está a escreber o produto de várias variábeis, neste
+, o \SpecialCharNoPassThru LyX
+ pensará que está a escreber o produto de várias variábeis, neste
  caso tres: 
 \begin_inset Formula $c$
 \end_inset
@@ -3974,7 +4108,8 @@ cos
 \end_inset
 
 .
- Para diferenciar as variábeis das funcións o LaTeX escrebe as primeiras
+ Para diferenciar as variábeis das funcións o \SpecialCharNoPassThru LaTeX
+ escrebe as primeiras
  en itálico, e as segundas en 
 \family sans
 Roman,
@@ -4068,7 +4203,8 @@ x
 \end_layout
 
 \begin_layout Standard
-Ás funcións predefinidas polo LyX, como a calquer outro texto, pode-se-lle
+Ás funcións predefinidas polo \SpecialCharNoPassThru LyX
+, como a calquer outro texto, pode-se-lle
  engadir índices e expoentes, o que permite escreber expresións tais como
  
 \begin_inset Quotes eld
@@ -4137,12 +4273,13 @@ Matriz matemática
 \family default
  que permite escoller o número de liñas e de colunas que vai ter a matriz.
  Escolla 2 liñas e 3 colunas e feche o diálogo.
- O LyX inserirá unha matriz de 
+ O \SpecialCharNoPassThru LyX
+ inserirá unha matriz de 
 \begin_inset Formula $2\times3$
 \end_inset
 
  rectángulos azuis, nos que poderá escreber calquer expresión matemática
- (raices cúbicas, fraccións, logaritmos, outras matrices\SpecialChar \ldots{}
+ (raices cúbicas, fraccións, logaritmos, outras matrices\SpecialChar ldots
 ), mesmo pode deixar
  algun dos rectángulos valeiro.
  Pode mover-se entre os elementos da matriz coa tecla 
@@ -4315,8 +4452,8 @@ status collapsed
 \begin_layout Plain Layout
 Despois de facé-lo desde zero probe con 
 \family sans
-Inserir\SpecialChar \menuseparator
-Formula\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
+Formula\SpecialChar menuseparator
 Entorno
 \family default
  
@@ -4394,12 +4531,13 @@ Miscelánea
 \end_layout
 
 \begin_layout Section
-Outras importantes funcionalidades do LyX
+Outras importantes funcionalidades do \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
 Neste tutorial non se pretende documentar todos os posíbeis comandos do
- LyX, para iso están o 
+ \SpecialCharNoPassThru LyX
+, para iso están o 
 \emph on
 Guia do Usuário
 \emph default
@@ -4408,7 +4546,7 @@ Guia do Usuário
 Funcións avanzadas
 \emph default
 .
- Mais para nos despedir apresentamos algunhas das funcionalidades do LyX
+ Mais para nos despedir apresentamos algunhas das funcionalidades do \SpecialCharNoPassThru LyX
  das cais ainda non falamos:
 \end_layout
 
@@ -4416,7 +4554,7 @@ Funcións avanzadas
 tratamento WYSIWYM de táboas.
  As táboas poden inserir-se ben desde o menu principal, 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Táboa,
 \family default
  ben clicando no botón 
@@ -4450,7 +4588,7 @@ táboa
 \begin_layout Itemize
 inclusión, e manexo, de imaxe nos documentos, (con 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 
 \family default
  
@@ -4473,9 +4611,11 @@ De fabrica
 \begin_inset Quotes erd
 \end_inset
 
- o LyX entende vários formatos vectoriais: PostScript, PostScript Encapsulado
- (EPS), Scalable Vector Graphics (SVG) e LaTeX puro, e os formatos bitmap
- mais usuais (png, jpeg, tif, bmp, \SpecialChar \ldots{}
+ o \SpecialCharNoPassThru LyX
+ entende vários formatos vectoriais: PostScript, PostScript Encapsulado
+ (EPS), Scalable Vector Graphics (SVG) e \SpecialCharNoPassThru LaTeX
+ puro, e os formatos bitmap
+ mais usuais (png, jpeg, tif, bmp, \SpecialChar ldots
 ), mais é posíbel configurá-lo para utilizar
  praticamente calquer formato.
  Tanto as táboas como as figuras pode ser acompañadas de lexendas, sendo
@@ -4492,7 +4632,8 @@ man rcsintro
 
 \begin_layout Itemize
 altamente personalizábel.
- Ha moitas cousas que o usuário pode mudar no LyX, desde o aspeito visual
+ Ha moitas cousas que o usuário pode mudar no \SpecialCharNoPassThru LyX
+, desde o aspeito visual
  da xanela principal até os comandos para exportar documentos.
  Moitas destas mudanzas poden-se facer desde o menu, 
 \family sans
@@ -4500,7 +4641,7 @@ Ferramentas
 \family default
  
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Preféncias,
 \family default
  outras son menos acesíbeis e para as facer cumpre ler o manual de 
@@ -4508,13 +4649,14 @@ Preféncias,
 Personalización
 \family sans
 \emph default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
 poliglota.
- O LyX está é desenvolvido por unha equipa de programadores distribuída
+ O \SpecialCharNoPassThru LyX
+ está é desenvolvido por unha equipa de programadores distribuída
  pelos cinco continentes.
  Por iso entende moitas línguas, podendo-se escreber documentos en distintos
  alfabetos, e con escritas tanto de esquerda->direita como direita->esquerda.
@@ -4527,7 +4669,7 @@ poliglota.
 corrección ortográfica disponíbel en ducias de línguas.
  
 \family sans
-Ferramentas\SpecialChar \menuseparator
+Ferramentas\SpecialChar menuseparator
 Corrector ortográfico
 \begin_inset Foot
 status collapsed
@@ -4543,7 +4685,8 @@ Note-se que a corrección ortográfica comeza a partir do cursor.
 
 \begin_layout Itemize
 navegación dos menus co teclado.
- O LyX ten atallos de teclado que permite non ter que utilizar continuamente
+ O \SpecialCharNoPassThru LyX
+ ten atallos de teclado que permite non ter que utilizar continuamente
  o rato, e que poden ser personalizados polo usuário (vexa-se o manual de
  
 \emph on
@@ -4554,7 +4697,8 @@ Personalización
 \end_layout
 
 \begin_layout Itemize
-importación de documentos LaTeX.
+importación de documentos \SpecialCharNoPassThru LaTeX
+.
  Vexa-se a sección
 \begin_inset space ~
 \end_inset
@@ -4585,7 +4729,8 @@ emacs
 \end_layout
 
 \begin_layout Section
-O LyX para usuários de LaTeX
+O \SpecialCharNoPassThru LyX
+ para usuários de \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -4595,26 +4740,36 @@ name "sec:usuarioslatex"
 
 \end_inset
 
-Non é necesário saber nada de LaTeX para empregar o LyX, mais ter unha certa
+Non é necesário saber nada de \SpecialCharNoPassThru LaTeX
+ para empregar o \SpecialCharNoPassThru LyX
+, mais ter unha certa
  idea permite aproveitá-lo mellor.
- En todo caso moitos dos novos usuário de LyX teñen alguns coñecimentos
- básico de LaTeX, e esta sección está pensada para eles.
+ En todo caso moitos dos novos usuário de \SpecialCharNoPassThru LyX
+ teñen alguns coñecimentos
+ básico de \SpecialCharNoPassThru LaTeX
+, e esta sección está pensada para eles.
  
 \end_layout
 
 \begin_layout Standard
-Unha cuestión que se lle ocorre ao usuário de LaTeX que está a considerar
- en usar o LyX, é se neste programa poderá conseguir facer todo o que o
- LaTeX permite facer.
- A resposta é afirmativa, dunha forma ou doutra, o LyX permite realizar
- practicamente o mesmo que o LaTeX, mais simplificando grandemente o proceso
+Unha cuestión que se lle ocorre ao usuário de \SpecialCharNoPassThru LaTeX
+ que está a considerar
+ en usar o \SpecialCharNoPassThru LyX
+, é se neste programa poderá conseguir facer todo o que o
+ \SpecialCharNoPassThru LaTeX
+ permite facer.
+ A resposta é afirmativa, dunha forma ou doutra, o \SpecialCharNoPassThru LyX
+ permite realizar
+ practicamente o mesmo que o \SpecialCharNoPassThru LaTeX
+, mais simplificando grandemente o proceso
  de escrita.
  
 \end_layout
 
 \begin_layout Standard
 Co intuito de manter un Tutorial breve só se mencionan nel as cousas mais
- básicas, as que os novos usuário do LyX precisan para comezar.
+ básicas, as que os novos usuário do \SpecialCharNoPassThru LyX
+ precisan para comezar.
  Mais no manual 
 \emph on
 Funcións avanzadas
@@ -4622,21 +4777,31 @@ Funcións avanzadas
 , especificamente no capítulo 
 \emph on
 \lang english
-Secrets of the LaTeX Masters
+Secrets of the \SpecialCharNoPassThru LaTeX
+ Masters
 \emph default
 \lang galician
- (Secretos dos mestres do LaTeX), trata-se en profundidade as diferenzas
- entre o LyX e o LaTeX, e como usar vários truques do LaTeX no LyX.
+ (Secretos dos mestres do \SpecialCharNoPassThru LaTeX
+), trata-se en profundidade as diferenzas
+ entre o \SpecialCharNoPassThru LyX
+ e o \SpecialCharNoPassThru LaTeX
+, e como usar vários truques do \SpecialCharNoPassThru LaTeX
+ no \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Subsection
-Modo TeX
+Modo \SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-O LyX implementa moitos comandos do LaTeX, mais non todos.
- No seu defeito oferece o modo TeX, que permite utilizar calquer comando
- de LaTeX, sempre que o usuário o coñeza.
+O \SpecialCharNoPassThru LyX
+ implementa moitos comandos do \SpecialCharNoPassThru LaTeX
+, mais non todos.
+ No seu defeito oferece o modo \SpecialCharNoPassThru TeX
+, que permite utilizar calquer comando
+ de \SpecialCharNoPassThru LaTeX
+, sempre que o usuário o coñeza.
  Para entrar neste modo pode-se ben clicar no botón 
 \begin_inset Graphics
 	filename ../../images/ert-insert.png
@@ -4647,12 +4812,13 @@ O LyX implementa moitos comandos do LaTeX, mais non todos.
 
  na barra de ferramentas, ou seleccionar no menu 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Código
 \begin_inset space ~
 \end_inset
 
-TeX.
+\SpecialCharNoPassThru TeX
+.
 
 \family default
  Abre-se entón unha caixa vermella precedida por un botón que pon en vermello
@@ -4662,16 +4828,22 @@ status collapsed
 
 \begin_layout Plain Layout
 [N.T] Evil Red Text = Malvado texto vermello.
- O nome fai referéncia a que o texto no modo TeX aparece escrito en vermello,
- e que unha das tarefas da equipa desenvolvedora do LyX e facer desaparecer
+ O nome fai referéncia a que o texto no modo \SpecialCharNoPassThru TeX
+ aparece escrito en vermello,
+ e que unha das tarefas da equipa desenvolvedora do \SpecialCharNoPassThru LyX
+ e facer desaparecer
  a necesidade de usar ese texto vermello.
 \end_layout
 
 \end_inset
 
 .
- A caixa é loxicamente para escreber comandos TeX (LaTeX), que o LyX vai
- pasar directamente ao LaTeX.
+ A caixa é loxicamente para escreber comandos \SpecialCharNoPassThru TeX
+ (\SpecialCharNoPassThru LaTeX
+), que o \SpecialCharNoPassThru LyX
+ vai
+ pasar directamente ao \SpecialCharNoPassThru LaTeX
+.
  Todo o escrito na caixa vai aparecer en vermello, para asi diferenciá-lo
  claramente.
  
@@ -4688,15 +4860,20 @@ No modo matemático basta con dixitar a barra invertida,
 \begin_inset Quotes erd
 \end_inset
 
-, para entrar no modo TeX.
- Entanto estexa no modo TeX o texto será escrito en vermello, saindo-se
+, para entrar no modo \SpecialCharNoPassThru TeX
+.
+ Entanto estexa no modo \SpecialCharNoPassThru TeX
+ o texto será escrito en vermello, saindo-se
  del premendo na barra espazadora ou calquer outra tecla non alfabética:
  un número, un paréntese, etc.
- Unha vez abandonado o modo TeX, se o LyX coñece o comando escrito, vai-no
+ Unha vez abandonado o modo \SpecialCharNoPassThru TeX
+, se o \SpecialCharNoPassThru LyX
+ coñece o comando escrito, vai-no
  representar no xeito WYSIWYM.
  Asi se nunha formula escreber o comando 
 \backslash
-gamma, ao premer a barra espazadora o LyX trocará o texto 
+gamma, ao premer a barra espazadora o \SpecialCharNoPassThru LyX
+ trocará o texto 
 \family sans
 \shape italic
 \color red
@@ -4722,13 +4899,16 @@ Painel
 
 Matemático
 \family default
-, especialmente para os usuários experientes do LaTeX.
+, especialmente para os usuários experientes do \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-Constantemente están a aparecer novos pacotes de LaTeX, con novas funcionalidade
+Constantemente están a aparecer novos pacotes de \SpecialCharNoPassThru LaTeX
+, con novas funcionalidade
 s e sen pedir permiso a unha autoridade central.
- O LyX permite utilizar calquer deles sen mais que escreber 
+ O \SpecialCharNoPassThru LyX
+ permite utilizar calquer deles sen mais que escreber 
 \family typewriter
 
 \backslash
@@ -4749,7 +4929,8 @@ reference "sec:preambulo"
 \end_layout
 
 \begin_layout Subsection
-Importando de LaTeX — 
+Importando de \SpecialCharNoPassThru LaTeX
+ — 
 \family typewriter
 tex2lyx
 \end_layout
@@ -4761,18 +4942,23 @@ name "sec:tex2lyx"
 
 \end_inset
 
-Para importar un documento LaTeX seleccione 
+Para importar un documento \SpecialCharNoPassThru LaTeX
+ seleccione 
 \family sans
-Ficheiro\SpecialChar \menuseparator
-Importar\SpecialChar \menuseparator
-LaTeX (plain)
+Ficheiro\SpecialChar menuseparator
+Importar\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ (plain)
 \family default
  no menu principal.
- Isto dá lugar a que o LyX chame o comando 
+ Isto dá lugar a que o \SpecialCharNoPassThru LyX
+ chame o comando 
 \family typewriter
 tex2lyx
 \family default
-, responsábel da tradución de LaTeX a LyX, crie un ficheiro co mesmo nome
+, responsábel da tradución de \SpecialCharNoPassThru LaTeX
+ a \SpecialCharNoPassThru LyX
+, crie un ficheiro co mesmo nome
  que o orixinal, en latex, mais coa extensión 
 \family typewriter
 lyx
@@ -4790,14 +4976,19 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
- entende e traduz a maior parte dos comandos e ambientes LaTeX, mais non
+ entende e traduz a maior parte dos comandos e ambientes \SpecialCharNoPassThru LaTeX
+, mais non
  todos.
- Usualmente deixa inalteradas as partes que non entende, en modo TeX.
- Portanto tras importar un ficheiro LaTeX é bon procurar as partes non traducida
+ Usualmente deixa inalteradas as partes que non entende, en modo \SpecialCharNoPassThru TeX
+.
+ Portanto tras importar un ficheiro \SpecialCharNoPassThru LaTeX
+ é bon procurar as partes non traducida
 s, en vermello, e editá-las manualmente.
- Se ben, en moitos casos, un documento con partes en modo TeX pode dar lugar
+ Se ben, en moitos casos, un documento con partes en modo \SpecialCharNoPassThru TeX
+ pode dar lugar
  a un texto impreso de boa cualidade.
- Ainda que no LyX non sexa facilmente lexíbel, perdendo-se o espirito do
+ Ainda que no \SpecialCharNoPassThru LyX
+ non sexa facilmente lexíbel, perdendo-se o espirito do
  WYSIWYM.
 \end_layout
 
@@ -4811,38 +5002,47 @@ tex2lyx
 man tex2lyx
 \family default
 .
- Lea-o para aprender que comandos e ambientes LaTeX non están soportados,
+ Lea-o para aprender que comandos e ambientes \SpecialCharNoPassThru LaTeX
+ non están soportados,
  os seus erros (e como contorná-los), e as diferentes opcións coas que se
  pode executar.
 \end_layout
 
 \begin_layout Subsection
-Exportando a LaTeX
+Exportando a \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Standard
-O LyX permite exportar directamente a LaTeX, escollendo 
+O \SpecialCharNoPassThru LyX
+ permite exportar directamente a \SpecialCharNoPassThru LaTeX
+, escollendo 
 \family sans
-Ficheiro\SpecialChar \menuseparator
-Exportar\SpecialChar \menuseparator
-LaTeX (plain)
+Ficheiro\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ (plain)
 \family default
- no menu xerará-se un ficheiro LaTeX co nome igual ao documento lyx, mais
+ no menu xerará-se un ficheiro \SpecialCharNoPassThru LaTeX
+ co nome igual ao documento lyx, mais
  coa extensión 
 \family typewriter
 .tex.
 
 \family default
- É tamén posíbel tamén xerar un ficheiro LaTeX especialmente deseñado para
+ É tamén posíbel tamén xerar un ficheiro \SpecialCharNoPassThru LaTeX
+ especialmente deseñado para
  compilar con pdflatex, en vez de con latex, escollendo 
 \family sans
-Ficheiro\SpecialChar \menuseparator
-Exportar\SpecialChar \menuseparator
-LaTeX (pdflatex)
+Ficheiro\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ (pdflatex)
 \family default
  no menu.
- Para visualizar pré-impresións, ou para imprimir, o LyX xera ficheiros
- temporários en LaTeX, portanto ten que ser bon xerando documentos con este
+ Para visualizar pré-impresións, ou para imprimir, o \SpecialCharNoPassThru LyX
+ xera ficheiros
+ temporários en \SpecialCharNoPassThru LaTeX
+, portanto ten que ser bon xerando documentos con este
  formato.
 \end_layout
 
@@ -4861,7 +5061,7 @@ Clase
 \begin_layout Standard
 Indo a 
 \family sans
-Documento\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
 Configuración
 \family default
  abre-se unha caixa de diálogo que serve loxicamente para configurar o documento
@@ -4872,7 +5072,8 @@ Configuración
 \backslash
 documentclass
 \family default
- de LaTeX.
+ de \SpecialCharNoPassThru LaTeX
+.
  Asi pode-se mudar a 
 \emph on
 clase
@@ -4901,7 +5102,7 @@ Clase do documento
 \end_layout
 
 \begin_layout Subsubsection
-Preámbulo LaTeX
+Preámbulo \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -4917,23 +5118,26 @@ Configuración do documento
 \family default
 , que se veu no parágrafo anterior, existe unha sección chamada 
 \family sans
-Preámbulo LaTeX
+Preámbulo \SpecialCharNoPassThru LaTeX
 \family default
-, onde se poden incluir directamente comandos en LaTeX que afectarán a todo
+, onde se poden incluir directamente comandos en \SpecialCharNoPassThru LaTeX
+ que afectarán a todo
  o documento.
  
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-O LyX permite utilizar o BibTeX, un pacote para construir bases de dados
+O \SpecialCharNoPassThru LyX
+ permite utilizar o Bib\SpecialCharNoPassThru TeX
+, un pacote para construir bases de dados
  con referéncias bibliográficas, que poden ser usadas en diferentes documentos.
  Seleccione 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Lista
 \begin_inset space ~
 \end_inset
@@ -4942,8 +5146,8 @@ Lista
 \begin_inset space ~
 \end_inset
 
-Indice\SpecialChar \menuseparator
-Bibliografia BibTeX
+Indice\SpecialChar menuseparator
+Bibliografia Bib\SpecialCharNoPassThru TeX
 \family default
  para incluir un ficheiro 
 \family typewriter
@@ -4954,13 +5158,13 @@ bib
 \begin_inset Quotes eld
 \end_inset
 
-Bibliografia Xerada BibTeX
+Bibliografia Xerada Bib\SpecialCharNoPassThru TeX
 \begin_inset Quotes erd
 \end_inset
 
  e xurdirá a caixa de diálogo 
 \family sans
-Bibliografia BibTeX
+Bibliografia Bib\SpecialCharNoPassThru TeX
 \family default
 .
  No campo 
@@ -4986,7 +5190,8 @@ bibliography{}
 status collapsed
 
 \begin_layout Plain Layout
-Do mesmo xeito que en LaTeX, se ha várias bibliografias estas deben ir separadas
+Do mesmo xeito que en \SpecialCharNoPassThru LaTeX
+, se ha várias bibliografias estas deben ir separadas
  por vírgulas, sen espazos en branco.
 \end_layout
 
@@ -5010,7 +5215,7 @@ bibliographystyle{}
 Após disto pode citar de calquer das bibliografias incluídas mediante o
  comando 
 \family sans
-Inserir\SpecialChar \menuseparator
+Inserir\SpecialChar menuseparator
 Citación
 \family default
  (vexa a sección
@@ -5025,7 +5230,9 @@ reference "sec:bibliografias"
 \end_inset
 
 ).
- A execución do BibTeX fica a cargo do LyX.
+ A execución do Bib\SpecialCharNoPassThru TeX
+ fica a cargo do \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -5033,11 +5240,13 @@ Erros !
 \end_layout
 
 \begin_layout Standard
-Ás veces, ao tentar imprimir ou ver unha pré-impresión do documento, o LaTeX
+Ás veces, ao tentar imprimir ou ver unha pré-impresión do documento, o \SpecialCharNoPassThru LaTeX
  topa con algo que non comprende.
- Nestes casos o LyX abrirá a caixa de diálogo 
+ Nestes casos o \SpecialCharNoPassThru LyX
+ abrirá a caixa de diálogo 
 \family sans
-LyX: latex Erros
+\SpecialCharNoPassThru LyX
+: latex Erros
 \family default
  onde se listan os erros atopados.
  Ao clicar nun erro determinado neste diálogo move-se o cursor até o ponto

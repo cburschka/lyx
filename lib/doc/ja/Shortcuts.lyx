@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/ja/
 \textclass jsarticle
 \use_default_options false
 \maintain_unincluded_children false
@@ -14,21 +15,21 @@ BgColor		none
 LabelString		"ルビ"
 Decoration		Conglomerate
 Argument post:1
-      LabelString	"ルビ文"
-      MenuString	"ルビ文(S)|S"
-      Decoration	Conglomerate
-      Font
-            Size		tiny
-      EndFont
-      LabelFont
-            Size		tiny
-      EndFont
-      Mandatory	1
+LabelString	"ルビ文"
+MenuString	"ルビ文(S)|S"
+Decoration	Conglomerate
+Font
+Size		tiny
+EndFont
+LabelFont
+Size		tiny
+EndFont
+Mandatory	1
 EndArgument
 Preamble
 \IfFileExists{okumacro.sty}
- {\usepackage{okumacro}}
- {\newcommand{\ruby}[2]{#2}}
+{\usepackage{okumacro}}
+{\newcommand{\ruby}[2]{#2}}
 EndPreamble
 End
 \end_local_layout
@@ -36,16 +37,16 @@ End
 \language_package auto
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -97,11 +98,13 @@ End
 \begin_body
 
 \begin_layout Title
-LyXキーボードショートカット
+\SpecialCharNoPassThru LyX
+キーボードショートカット
 \end_layout
 
 \begin_layout Author
-LyXプロジェクトチーム
+\SpecialCharNoPassThru LyX
+プロジェクトチーム
 \end_layout
 
 \begin_layout Standard
@@ -135,15 +138,15 @@ status collapsed
 
 \end_inset
 
-を列挙しています。捷径は、LyX
+を列挙しています。捷径は、\SpecialCharNoPassThru LyX
 \emph on
 ユーザーの手引き
 \emph default
 の「捷径」の節に述べられているように、
 \family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-編集\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+編集\SpecialChar menuseparator
 捷径
 \family default
 で変更できます。

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/nl/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!! 
@@ -37,16 +38,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -112,7 +113,7 @@
 \begin_body
 
 \begin_layout Title
-Inleiding tot LyX
+Inleiding tot \SpecialCharNoPassThru LyX
 \begin_inset Newline newline
 \end_inset
 
@@ -124,7 +125,8 @@ Hoe gebruik je de Documentatie!!
 \end_layout
 
 \begin_layout Author
-door het LyX Team
+door het \SpecialCharNoPassThru LyX
+ Team
 \end_layout
 
 \begin_layout Standard
@@ -141,12 +143,14 @@ Door de Documentatie Navigeren
 \end_layout
 
 \begin_layout Standard
-Welkom bij LyX!
+Welkom bij \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Standard
 Om het beantwoorden van je vragen gemakkelijker te maken en om alle mogelijkhede
-n van LyX te beschrijven, is de documentatie opgesplitst in een aantal verschill
+n van \SpecialCharNoPassThru LyX
+ te beschrijven, is de documentatie opgesplitst in een aantal verschill
 ende delen.
  Elk onderdeel heeft een eigen functie die verderop zal worden beschreven.
  Echter, voordat je de documentatie begint door te ploegen, zou je eerst
@@ -156,9 +160,11 @@ ende delen.
 \end_layout
 
 \begin_layout Standard
-Alhoewel het versienummer van LyX nu 1.0 (of hoger) is, kan de documentatie
+Alhoewel het versienummer van \SpecialCharNoPassThru LyX
+ nu 1.0 (of hoger) is, kan de documentatie
  gedeeltelijk incompleet zijn of een versie achter lopen.
- Net als de rest van LyX, is de documentatie het product van een groep vrijwilli
+ Net als de rest van \SpecialCharNoPassThru LyX
+, is de documentatie het product van een groep vrijwilli
 gers die 
 \begin_inset Quotes eld
 \end_inset
@@ -217,7 +223,8 @@ Het formaat van de Handleidingen
 
 \begin_layout Standard
 Misschien hebben sommigen van jullie de handleiding(en) uitgeprint.
- Anderen lezen het misschien online, als een bestand binnen LyX.
+ Anderen lezen het misschien online, als een bestand binnen \SpecialCharNoPassThru LyX
+.
  Voor diegenen die het online lezen zijn er enkele verschillen met de uitgeprint
 e versie.
  Ten eerste, staat de titel gewoon bovenaan het document en niet geformatteerd
@@ -315,7 +322,9 @@ Cursieve Stijl
 \family typewriter
 Typemachine
 \family default
- wordt gebruikt voor programma,- en bestandsnamen, LaTeX-code, en LyX-code
+ wordt gebruikt voor programma,- en bestandsnamen, \SpecialCharNoPassThru LaTeX
+-code, en \SpecialCharNoPassThru LyX
+-code
  en functies.
 \end_layout
 
@@ -435,7 +444,7 @@ F1
 \begin_inset Quotes erd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Quotes eld
 \end_inset
@@ -670,7 +679,8 @@ Return
 
 , op anderen staat een geknikte pijl.
  Weer andere toetsenborden hebben beide toetsen.
- Voor LyX zijn beide toetsen gelijkwaardig dus zullen we beiden door elkaar
+ Voor \SpecialCharNoPassThru LyX
+ zijn beide toetsen gelijkwaardig dus zullen we beiden door elkaar
  gebruiken.
 \end_layout
 
@@ -699,7 +709,8 @@ Referentie Handleiding
  Daar zijn, voor elke functie, alle mogelijke toetsencombinaties opgesomd.
  Je kunt daar dus altijd kijken.
  Merk op dat er twee verschillende sets toetscombinaties in gebruik zijn
- bij de LyX gemeenschap: de 
+ bij de \SpecialCharNoPassThru LyX
+ gemeenschap: de 
 \begin_inset Quotes eld
 \end_inset
 
@@ -762,22 +773,31 @@ Tutorial
 \begin_inset Newline newline
 \end_inset
 
-Als LyX nieuw voor je is en je nog nooit eerder LaTeX hebt gebruikt, zou
+Als \SpecialCharNoPassThru LyX
+ nieuw voor je is en je nog nooit eerder \SpecialCharNoPassThru LaTeX
+ hebt gebruikt, zou
  je hier moeten beginnen.
- Als je denkt dat LaTeX het spul is waar condooms van worden gemaakt, moet
+ Als je denkt dat \SpecialCharNoPassThru LaTeX
+ het spul is waar condooms van worden gemaakt, moet
  je hier zeker beginnen.
  Waarschijnlijk ben je na het lezen van de 
 \emph on
 Tutorial
 \emph default
- nog steeds van mening dat LaTeX rekbaar materiaal is maar je weet dan in
- ieder geval hoe je met LyX om moet gaan.
+ nog steeds van mening dat \SpecialCharNoPassThru LaTeX
+ rekbaar materiaal is maar je weet dan in
+ ieder geval hoe je met \SpecialCharNoPassThru LyX
+ om moet gaan.
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Als je LaTeX 
+Als je \SpecialCharNoPassThru LaTeX
+ 
 \emph on
 wel
 \emph default
@@ -789,7 +809,9 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-LyX voor LaTeX gebruikers.
+\SpecialCharNoPassThru LyX
+ voor \SpecialCharNoPassThru LaTeX
+ gebruikers.
 \begin_inset Quotes erd
 \end_inset
 
@@ -821,7 +843,8 @@ Gebruikshandleiding
 \end_inset
 
 Het belangrijkste deel van de documentatie.
- We zullen trachten hier alle basismogelijkheden en functies van LyX te
+ We zullen trachten hier alle basismogelijkheden en functies van \SpecialCharNoPassThru LyX
+ te
  beschrijven.
  Deze handleiding gaat er van uit dat je de 
 \emph on
@@ -832,8 +855,9 @@ Tutorial
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
-of dat je oppervlakkig bekend bent met LaTeX.
+\SpecialChar ldots
+of dat je oppervlakkig bekend bent met \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \end_inset
@@ -864,7 +888,8 @@ Gebruikshandleiding
 \emph default
 .
  Documenteert aanvullende layouts en specifieke bewerkingsmogelijkheden,
- inclusief enkele trucjes van de LaTeX tovenaars.
+ inclusief enkele trucjes van de \SpecialCharNoPassThru LaTeX
+ tovenaars.
  
 \end_layout
 
@@ -881,8 +906,10 @@ Instellingen
 \begin_inset Newline newline
 \end_inset
 
-Een beschrijving van geavanceerde LyX mogelijkheden, inclusief het instellen
- van het globale gedrag van van LyX zoals toetscombinaties, internationalisatie,
+Een beschrijving van geavanceerde \SpecialCharNoPassThru LyX
+ mogelijkheden, inclusief het instellen
+ van het globale gedrag van van \SpecialCharNoPassThru LyX
+ zoals toetscombinaties, internationalisatie,
  en configuratiebestanden.
  Peins er zelfs niet over om hier te komen voordat je de 
 \emph on
@@ -909,7 +936,8 @@ Handleiding
 \end_inset
 
 Dit bevat een volledige en gedetailleerde beschrijving van de mogelijkheden
- van LyX, maar zonder de handige gebruiksaanwijzingen en beschrijvingen
+ van \SpecialCharNoPassThru LyX
+, maar zonder de handige gebruiksaanwijzingen en beschrijvingen
  zoals je die vindt in de 
 \emph on
 Gebruikshandleiding
@@ -939,15 +967,17 @@ fouten
 \begin_inset Newline newline
 \end_inset
 
-Dit bestand bevat een lijst van bekende fouten van LyX, en tevens informatie
- over wat je moet doen als je een fout in LyX hebt gevonden.
+Dit bestand bevat een lijst van bekende fouten van \SpecialCharNoPassThru LyX
+, en tevens informatie
+ over wat je moet doen als je een fout in \SpecialCharNoPassThru LyX
+ hebt gevonden.
  
 \end_layout
 
 \begin_layout Description
 
 \emph on
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -961,9 +991,11 @@ configuratie
 \begin_inset Newline newline
 \end_inset
 
-Bij het installeren onderzoekt LyX je systeem.
+Bij het installeren onderzoekt \SpecialCharNoPassThru LyX
+ je systeem.
  Dit bestand bevat de tijdens de installatie gevonden informatie.
- Bekijk het eens, om te zien of er mogelijk ontbrekende LaTeX pakketten
+ Bekijk het eens, om te zien of er mogelijk ontbrekende \SpecialCharNoPassThru LaTeX
+ pakketten
  tussen zitten die je graag geinstalleerd zou willen hebben.
  
 \end_layout
@@ -1000,8 +1032,9 @@ We zullen het nog een keer zeggen:
 
 \begin_layout Standard
 \align center
-Als je voor het eerst met LyX werkt, lees dan de Tutorial.
- En wel nu meteen\SpecialChar \@.
+Als je voor het eerst met \SpecialCharNoPassThru LyX
+ werkt, lees dan de Tutorial.
+ En wel nu meteen\SpecialChar endofsentence
 
 \end_layout
 
@@ -1014,7 +1047,8 @@ Als je voor het eerst met LyX werkt, lees dan de Tutorial.
 
 \begin_layout Standard
 Je zou jezelf nodeloos kunnen frustreren als je het niet doet.
- LyX doet alles wat je van een tekstverwerker mag verwachten, maar het heeft
+ \SpecialCharNoPassThru LyX
+ doet alles wat je van een tekstverwerker mag verwachten, maar het heeft
  een andere aanpak.
 \end_layout
 
@@ -1078,7 +1112,8 @@ Verander nooit iets in een handleiding zonder toestemming van het Documentatie
 \begin_layout Standard
 
 \lang english
-LyX has a bug tracking system, which you can find at
+\SpecialCharNoPassThru LyX
+ has a bug tracking system, which you can find at
 \lang dutch
  
 \begin_inset Flex URL
@@ -1105,7 +1140,8 @@ Jezelf Aanmelden bij het Documentation Team.
 \end_layout
 
 \begin_layout Standard
-Net als de rest van het LyX Project, kan het Documentatie Project altijd
+Net als de rest van het \SpecialCharNoPassThru LyX
+ Project, kan het Documentatie Project altijd
  hulp gebruiken! Als je geïnteresseerd bent om mee te helpen met het Documentati
 e Project, zorg dan dat je het volgende 
 \emph on
@@ -1115,12 +1151,13 @@ eerst
 \end_layout
 
 \begin_layout Enumerate
-Haal de broncode op van de meest recente versie van LyX, en pak het uit.
+Haal de broncode op van de meest recente versie van \SpecialCharNoPassThru LyX
+, en pak het uit.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Als je avontuurlijk bent ingesteld kun je ook anoniem meest actuele LyX
+Als je avontuurlijk bent ingesteld kun je ook anoniem meest actuele \SpecialCharNoPassThru LyX
  broncode ophalen via CVS systeem.
 \end_layout
 
@@ -1144,6 +1181,9 @@ Tutorial
 \emph default
 .
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1174,6 +1214,9 @@ DocStyle.lyx
 
 \begin_layout Enumerate
 En als laatste; neem contact op met het team: 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/fr/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -37,16 +38,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -112,7 +113,7 @@
 \begin_body
 
 \begin_layout Title
-Introduction à LyX
+Introduction à \SpecialCharNoPassThru LyX
 \begin_inset Note Note
 status collapsed
 
@@ -131,13 +132,14 @@ Dernière revue: 17/03/2013 par JPC
 \end_layout
 
 \begin_layout Author
-par l'Équipe LyX
+par l'Équipe \SpecialCharNoPassThru LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
- de la documentation de LyX, 
+ de la documentation de \SpecialCharNoPassThru LyX
+, 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -145,7 +147,8 @@ type "mailto:"
 
 \end_inset
 
- ou à la liste de diffusion de LyX en français 
+ ou à la liste de diffusion de \SpecialCharNoPassThru LyX
+ en français 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
@@ -209,15 +212,17 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-La philosophie de LyX
+La philosophie de \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Subsection
-Qu'est-ce que LyX ?
+Qu'est-ce que \SpecialCharNoPassThru LyX
+ ?
 \end_layout
 
 \begin_layout Standard
-LyX est un système de préparation de documents.
+\SpecialCharNoPassThru LyX
+ est un système de préparation de documents.
  Il est excellent si vous voulez écrire des articles scientifiques et techniques
  complexes avec des mathématiques, des références croisées, des bibliographies,
  des index, etc.
@@ -236,23 +241,26 @@ LyX est un système de préparation de documents.
  (sur PostgreSQL, les capteurs à distance, la cryptologie, des romans, de
  la poésie, et même un ou deux livres pour enfants), des articles dans des
  publications scientifiques, des scripts pour des pièces de théâtre ou des
- films, des propositions de contrats\SpecialChar \ldots{}
+ films, des propositions de contrats\SpecialChar ldots
  vous voyez le genre.
 \end_layout
 
 \begin_layout Standard
-LyX est un programme qui offre une approche moderne de l'écriture de documents
+\SpecialCharNoPassThru LyX
+ est un programme qui offre une approche moderne de l'écriture de documents
  par ordinateur, inspirée des langages à balises, une approche qui rompt
  avec la tradition périmée héritée de la machine à écrire.
  Il est destiné aux auteurs qui veulent obtenir rapidement un rendu professionne
 l avec le minimum d'effort sans devenir des spécialistes en typographie.
  Le travail de typographie sera pris en charge en majorité par l'ordinateur,
- non par l'auteur; avec LyX, l'auteur peut se concentrer sur le contenu
+ non par l'auteur; avec \SpecialCharNoPassThru LyX
+, l'auteur peut se concentrer sur le contenu
  de ce qu'il écrit.
 \end_layout
 
 \begin_layout Standard
-Pour faire le choix d'utiliser LyX, il faut avant tout changer d'état d'esprit.
+Pour faire le choix d'utiliser \SpecialCharNoPassThru LyX
+, il faut avant tout changer d'état d'esprit.
  À une époque, pour créer des documents il n'y avait que les machines à
  écrire, et nous avons donc tous appris certains trucs pour contourner leurs
  limitations.
@@ -340,13 +348,16 @@ Vous n'obtenez que ce que vous voyez.
 \end_layout
 
 \begin_layout Standard
-C'est là-dessus que LyX diffère d'un traitement de texte ordinaire.
+C'est là-dessus que \SpecialCharNoPassThru LyX
+ diffère d'un traitement de texte ordinaire.
  Vous ne vous souciez pas de savoir où sera placé tel ou tel caractère.
- Vous dites à LyX 
+ Vous dites à \SpecialCharNoPassThru LyX
+ 
 \shape slanted
 ce que vous voulez faire
 \shape default
- et LyX se charge du reste, appliquant un ensemble de règles appelé un 
+ et \SpecialCharNoPassThru LyX
+ se charge du reste, appliquant un ensemble de règles appelé un 
 \emph on
 style
 \emph default
@@ -406,7 +417,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Avec LyX, vous allez sur le menu déroulant tout à fait à gauche de la barre
+Avec \SpecialCharNoPassThru LyX
+, vous allez sur le menu déroulant tout à fait à gauche de la barre
  d'outils, sélectionnez 
 \family sans
 Section
@@ -427,7 +439,8 @@ Eh oui, c'est tout.
  Si vous coupez-collez la section, la numérotation sera automatiquement
  remise à jour — partout.
  Et si vous entrez correctement des références à cette section (en insérant
- des balises de références croisées), LyX les mettra à jour automatiquement
+ des balises de références croisées), \SpecialCharNoPassThru LyX
+ les mettra à jour automatiquement
  tout au long du document, de sorte que vous n'aurez jamais à taper de numéro
  de section.
 \end_layout
@@ -456,7 +469,8 @@ pt, et vous tapez l'en-tête de la Section
 \end_inset
 
 1.
- Ce problème n'existe pas avec LyX.
+ Ce problème n'existe pas avec \SpecialCharNoPassThru LyX
+.
  L'ordinateur prend soin de toute cette comptabilité stupide.
  Après tout, c'est bien le domaine de prédilection d'un ordinateur.
 \end_layout
@@ -469,13 +483,15 @@ Voici un autre exemple.
  Vous devez décider où mettre le marqueur pour chaque élément de la liste,
  quel doit être ce marqueur, combien de lignes blanches mettre entre chaque
  élément, et ainsi de suite.
- Avec LyX, il n'y a que deux choses à savoir : de quel genre de liste il
+ Avec \SpecialCharNoPassThru LyX
+, il n'y a que deux choses à savoir : de quel genre de liste il
  s'agit, et ce qu'il y a dedans.
  C'est tout.
 \end_layout
 
 \begin_layout Standard
-Ainsi, l'idée maîtresse avec LyX est la suivante : dites ce que vous faites,
+Ainsi, l'idée maîtresse avec \SpecialCharNoPassThru LyX
+ est la suivante : dites ce que vous faites,
  et non pas comment le faire.
  À la place de 
 \begin_inset Quotes fld
@@ -495,7 +511,8 @@ NdT : Vous voyez ce que vous obtenez.
 \begin_inset Quotes frd
 \end_inset
 
-, le modèle de LyX serait plutôt 
+, le modèle de \SpecialCharNoPassThru LyX
+ serait plutôt 
 \begin_inset Quotes fld
 \end_inset
 
@@ -530,26 +547,30 @@ WYSIWYM
  en abrégé.
  C'est une idée puissante qui simplifie grandement le processus d'écriture
  de documents.
- C'est aussi pour ça que LyX n'est pas très adapté pour créer des affiches
+ C'est aussi pour ça que \SpecialCharNoPassThru LyX
+ n'est pas très adapté pour créer des affiches
  et des tracts — dans ce cas, vous 
 \emph on
 voulez
 \emph default
  définir exactement où va chaque chose, parce qu'il n'y a pas d'unités fonctionn
 elles comme des paragraphes, des sections, etc.
- Ça ne veut pas dire qu'il manque à LyX des fonctions utiles.
+ Ça ne veut pas dire qu'il manque à \SpecialCharNoPassThru LyX
+ des fonctions utiles.
  Ça signifie simplement que ce n'est pas l'outil adapté — vous n'utilisez
  pas un tournevis pour enfoncer des clous (sauf si votre tournevis est garanti
  à vie).
 \end_layout
 
 \begin_layout Subsection
-Différences entre LyX et les autres traitements de texte
+Différences entre \SpecialCharNoPassThru LyX
+ et les autres traitements de texte
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-LyX et les autres traitements de texte
+\SpecialCharNoPassThru LyX
+ et les autres traitements de texte
 \end_layout
 
 \end_inset
@@ -558,7 +579,8 @@ LyX et les autres traitements de texte
 \end_layout
 
 \begin_layout Standard
-Voici une liste de choses que vous ne trouverez pas dans LyX :
+Voici une liste de choses que vous ne trouverez pas dans \SpecialCharNoPassThru LyX
+ :
 \end_layout
 
 \begin_layout Itemize
@@ -583,9 +605,11 @@ Espace
 
 \begin_layout Standard
 Les taquets de tabulation, au même titre que la règle qui vous indique la
- position des éléments dans la page, n'ont aucune utilité avec LyX.
+ position des éléments dans la page, n'ont aucune utilité avec \SpecialCharNoPassThru LyX
+.
  Le programme s'occupe de placer les éléments dans la page, pas vous.
- Pour les espaces, c'est pareil: LyX les ajoute quand c'est nécessaire,
+ Pour les espaces, c'est pareil: \SpecialCharNoPassThru LyX
+ les ajoute quand c'est nécessaire,
  en fonction du contexte.
  Le fait de ne pas pouvoir taper deux lignes vides à la suite vous agacera
  au début, mais prendra tout son sens une fois que vous penserez en termes
@@ -593,7 +617,8 @@ Les taquets de tabulation, au même titre que la règle qui vous indique la
 \end_layout
 
 \begin_layout Standard
-Voilà quelques notions qui existent avec LyX, mais ne sont pas utilisées
+Voilà quelques notions qui existent avec \SpecialCharNoPassThru LyX
+, mais ne sont pas utilisées
  comme vous pourriez le penser :
 \end_layout
 
@@ -622,21 +647,24 @@ types de caractère (gras, italique, souligné, etc.).
 \end_layout
 
 \begin_layout Standard
-Même si elles existent dans LyX, vous n'en aurez généralement pas besoin.
- LyX prendra en charge tout cela pour vous, en fonction de ce que vous écrivez.
+Même si elles existent dans \SpecialCharNoPassThru LyX
+, vous n'en aurez généralement pas besoin.
+ \SpecialCharNoPassThru LyX
+ prendra en charge tout cela pour vous, en fonction de ce que vous écrivez.
  Les différentes parties du document sont automatiquement imprimées avec
  des types de caractères et des tailles de police différents.
  L'indentation dépend du contexte; des paragraphes de types différents suivent
  des règles d'indentation différentes.
  Les sauts de page, eux aussi, sont gérés automatiquement.
  En général, l'interligne, l'espace entre les mots et entre les paragraphes
- est variable, et est défini par LyX
+ est variable, et est défini par \SpecialCharNoPassThru LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Il y a des .façons d'ajuster manuellement toutes ces propriétés (et seules
- quelques-unes nécessitent des connaissances en LaTeX), que ce soit pour
+ quelques-unes nécessitent des connaissances en \SpecialCharNoPassThru LaTeX
+), que ce soit pour
  l'ensemble du document ou seulement pour une partie.
  Référez-vous au 
 \emph on
@@ -667,7 +695,9 @@ avancées
 \end_layout
 
 \begin_layout Standard
-Enfin, il y a quelques domaines où nous pensons que LyX (et LaTeX) surpasse
+Enfin, il y a quelques domaines où nous pensons que \SpecialCharNoPassThru LyX
+ (et \SpecialCharNoPassThru LaTeX
+) surpasse
  quantité d'autres traitements de texte :
 \end_layout
 
@@ -696,19 +726,24 @@ Nous sommes d'accord, un certain nombre de traitements de texte modernes
  peuvent gérer les symboles mathématiques, les tableaux et les césures,
  et beaucoup ont adopté des définitions de style et ont évolué en direction
  du concept WYSIWYM.
- Cependant, ils ne le font que depuis peu, alors que LyX est construit sur
- le système de préparation de document LaTeX.
- LaTeX existe depuis 1985, et 
+ Cependant, ils ne le font que depuis peu, alors que \SpecialCharNoPassThru LyX
+ est construit sur
+ le système de préparation de document \SpecialCharNoPassThru LaTeX
+.
+ \SpecialCharNoPassThru LaTeX
+ existe depuis 1985, et 
 \shape slanted
 fonctionne.
 \end_layout
 
 \begin_layout Subsection
-Qu'est-ce donc que LaTeX ?
+Qu'est-ce donc que \SpecialCharNoPassThru LaTeX
+ ?
 \end_layout
 
 \begin_layout Standard
-LaTeX est un système de préparation de document conçu par Leslie 
+\SpecialCharNoPassThru LaTeX
+ est un système de préparation de document conçu par Leslie 
 \noun on
 Lamport
 \noun default
@@ -723,7 +758,7 @@ La source des informations de cette section est
 
 
 \emph on
-A Guide to LaTeX2e
+A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph default
 
 \begin_inset Quotes frd
@@ -742,7 +777,7 @@ de
 
 l'utilisateur
 \emph default
-\SpecialChar \@.
+\SpecialChar endofsentence
 
 \end_layout
 
@@ -750,12 +785,14 @@ l'utilisateur
 
 .
  À son tour, il a été construit à partir d'un langage de composition typographiq
-ue appelé TeX, créé par Donald 
+ue appelé \SpecialCharNoPassThru TeX
+, créé par Donald 
 \noun on
 Knuth
 \noun default
  en 1984.
- TeX prend une séquence de commandes typographiques, écrites dans un fichier
+ \SpecialCharNoPassThru TeX
+ prend une séquence de commandes typographiques, écrites dans un fichier
  ASCII, et les exécute.
  La plupart des 
 \begin_inset Quotes fld
@@ -769,9 +806,11 @@ trucs
 \noun on
 Knuth
 \noun default
- sous la forme d'algorithmes informatiques et incorporés dans TeX, d'où
+ sous la forme d'algorithmes informatiques et incorporés dans \SpecialCharNoPassThru TeX
+, d'où
  son excellent rendu d'impression.
- Dans tous les cas, la sortie produite par TeX est le format de document
+ Dans tous les cas, la sortie produite par \SpecialCharNoPassThru TeX
+ est le format de document
  portable 
 \family typewriter
 pdf
@@ -823,20 +862,24 @@ dvi
 \end_layout
 
 \begin_layout Standard
-TeX ne serait qu'un moteur de rendu typographique s'il n'avait pas une capacité
+\SpecialCharNoPassThru TeX
+ ne serait qu'un moteur de rendu typographique s'il n'avait pas une capacité
  supplémentaire.
- En effet, TeX permet également de définir des macros.
+ En effet, \SpecialCharNoPassThru TeX
+ permet également de définir des macros.
  C'est là que ça devient intéressant.
 \end_layout
 
 \begin_layout Standard
-La plupart de ceux qui utilisent TeX utilisent en fait un paquetage de macros
+La plupart de ceux qui utilisent \SpecialCharNoPassThru TeX
+ utilisent en fait un paquetage de macros
  que Donald 
 \noun on
 Knuth
 \noun default
  créa pour masquer nombre de détails typographiques.
- C'est ce à quoi la plupart des gens pensent quand ils pensent à TeX.
+ C'est ce à quoi la plupart des gens pensent quand ils pensent à \SpecialCharNoPassThru TeX
+.
  Et c'est ici que Leslie 
 \noun on
 Lamport
@@ -846,41 +889,56 @@ Lamport
  de commandes pour composer avec cohérence des sections, des tableaux ou
  des formules de maths, d'une façon uniforme et cohérente avec le moins
  de tracas possible.
- C'est ainsi qu'est né LaTeX.
+ C'est ainsi qu'est né \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-Parallèlement au développement et au déploiement de LaTeX, d'autres personnes
- créèrent leurs propres paquetages de macros pour TeX, certains pour faire
+Parallèlement au développement et au déploiement de \SpecialCharNoPassThru LaTeX
+, d'autres personnes
+ créèrent leurs propres paquetages de macros pour \SpecialCharNoPassThru TeX
+, certains pour faire
  des transparents, d'autres pour des articles de journaux mathématiques
  et bien d'autres encore.
- Si certains utilisaient le TeX brut, d'autre commençaient à modifier LaTeX.
- Pour essayer d'unifier cette foire, un groupe de LaTeX-niciens (dont Leslie
+ Si certains utilisaient le \SpecialCharNoPassThru TeX
+ brut, d'autre commençaient à modifier \SpecialCharNoPassThru LaTeX
+.
+ Pour essayer d'unifier cette foire, un groupe de \SpecialCharNoPassThru LaTeX
+-niciens (dont Leslie
  
 \noun on
 Lamport
 \noun default
-, bien sûr) a commencé à travailler à LaTeX2e, la version actuelle de LaTeX,
+, bien sûr) a commencé à travailler à \SpecialCharNoPassThru LaTeX2e
+, la version actuelle de \SpecialCharNoPassThru LaTeX
+,
  à la fin des années 1980.
- Cette nouvelle version de LaTeX comporte notamment un jeu de commandes
+ Cette nouvelle version de \SpecialCharNoPassThru LaTeX
+ comporte notamment un jeu de commandes
  qui fournit une interface conviviale pour les anciennes commandes de création
- de macros de TeX, des commandes facilitant l'utilisation de nouvelles polices,
+ de macros de \SpecialCharNoPassThru TeX
+, des commandes facilitant l'utilisation de nouvelles polices,
  et d'autres extensions.
- En fait, LaTeX est pratiquement un langage complet à lui tout seul! Des
- utilisateurs du monde entier ont créé leur propres extensions de LaTeX,
+ En fait, \SpecialCharNoPassThru LaTeX
+ est pratiquement un langage complet à lui tout seul! Des
+ utilisateurs du monde entier ont créé leur propres extensions de \SpecialCharNoPassThru LaTeX
+,
  en plus de celles qui sont en standard.
 \end_layout
 
 \begin_layout Standard
-Il y a deux façons d'étendre LaTeX: les classes et les styles.
+Il y a deux façons d'étendre \SpecialCharNoPassThru LaTeX
+: les classes et les styles.
  Une 
 \shape slanted
 classe
 \shape default
- est un jeu de macros LaTeX (et TeX) qui décrivent un nouveau type de document,
+ est un jeu de macros \SpecialCharNoPassThru LaTeX
+ (et \SpecialCharNoPassThru TeX
+) qui décrivent un nouveau type de document,
  comme un livre, ou un article.
  On trouve des classes pour des transparents, pour des articles de journaux
- de physique et de maths\SpecialChar \ldots{}
+ de physique et de maths\SpecialChar ldots
  de nombreuses universités ont même une classe pour
  la composition de leurs thèses! Le 
 \shape slanted
@@ -892,7 +950,8 @@ style
 comportement
 \shape default
  différent applicable dans n'importe quel document.
- Par exemple, LyX contrôle les marges et l'interligne grâce à deux fichiers
+ Par exemple, \SpecialCharNoPassThru LyX
+ contrôle les marges et l'interligne grâce à deux fichiers
  de style conçus à cet effet.
  Il y a des fichiers de style pour plein d'éléments: créer des étiquettes,
  imprimer des enveloppes, modifier l'indentation, ajouter des polices, manipuler
@@ -906,34 +965,45 @@ Voici un résumé :
 \end_layout
 
 \begin_layout Description
-TeX: langage de composition avec possibilité de macros;
+\SpecialCharNoPassThru TeX
+: langage de composition avec possibilité de macros;
 \end_layout
 
 \begin_layout Description
-LaTeX: paquetage de macros basé sur TeX;
+\SpecialCharNoPassThru LaTeX
+: paquetage de macros basé sur \SpecialCharNoPassThru TeX
+;
 \end_layout
 
 \begin_layout Description
-classes: définitions d'un type de document, utilisant LaTeX;
+classes: définitions d'un type de document, utilisant \SpecialCharNoPassThru LaTeX
+;
 \end_layout
 
 \begin_layout Description
-styles: modifications du comportement implicite de LaTeX d'une façon donnée;
+styles: modifications du comportement implicite de \SpecialCharNoPassThru LaTeX
+ d'une façon donnée;
 \end_layout
 
 \begin_layout Description
-LyX: traitement de texte visuel, WYSIWYM, qui utilise LaTeX pour la typographie.
+\SpecialCharNoPassThru LyX
+: traitement de texte visuel, WYSIWYM, qui utilise \SpecialCharNoPassThru LaTeX
+ pour la typographie.
 \end_layout
 
 \begin_layout Standard
-Cette section tente de rendre compte des différences entre LyX et les autres
+Cette section tente de rendre compte des différences entre \SpecialCharNoPassThru LyX
+ et les autres
  traitements de texte.
- En bref, LaTeX 
+ En bref, \SpecialCharNoPassThru LaTeX
+ 
 \emph on
 est
 \emph default
  la différence.
- En utilisant LaTeX comme processeur typographique, LyX vous permet de vous
+ En utilisant \SpecialCharNoPassThru LaTeX
+ comme processeur typographique, \SpecialCharNoPassThru LyX
+ vous permet de vous
  focaliser sur le contenu de vos écrits — le 
 \shape italic
 quoi.
@@ -952,7 +1022,8 @@ Naviguer dans la documentation
 
 \begin_layout Standard
 Pour répondre plus facilement à vos questions tout en décrivant toutes les
- fonctionnalités de LyX, la documentation a été répartie sur plusieurs fichiers.
+ fonctionnalités de \SpecialCharNoPassThru LyX
+, la documentation a été répartie sur plusieurs fichiers.
  Ils ont chacun leur rôle, comme indiqué un peu plus loin.
  Mais avant de parcourir tous ces fichiers, il vaut mieux lire ce chapitre
  avec attention, parce qu'il contient des informations et commentaires qui
@@ -960,10 +1031,12 @@ Pour répondre plus facilement à vos questions tout en décrivant toutes les
 \end_layout
 
 \begin_layout Standard
-Le développement de LyX ne s'arrêtera jamais, nous l'espérons, et de ce
+Le développement de \SpecialCharNoPassThru LyX
+ ne s'arrêtera jamais, nous l'espérons, et de ce
  fait certains documents seront peut-être incomplets ou un peu en retard
  dans la mise à jour, même si nous travaillons dur pour suivre les évolutions.
- Comme pour l'ensemble de LyX, les manuels sont l'œuvre de bénévoles qui
+ Comme pour l'ensemble de \SpecialCharNoPassThru LyX
+, les manuels sont l'œuvre de bénévoles qui
  ont un 
 \begin_inset Quotes fld
 \end_inset
@@ -1116,8 +1189,10 @@ la police à
 \family typewriter
 Chasse fixe
 \family default
- sert pour les sources de programmes et les noms de fichiers, le code LyX,
- ainsi que les codes et fonctions LyX;
+ sert pour les sources de programmes et les noms de fichiers, le code \SpecialCharNoPassThru LyX
+,
+ ainsi que les codes et fonctions \SpecialCharNoPassThru LyX
+;
 \end_layout
 
 \begin_layout Itemize
@@ -1142,7 +1217,8 @@ le style
 \series bold
 Gras
 \series default
- sert pour le code LaTeX.
+ sert pour le code \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -1214,7 +1290,7 @@ F1
 \begin_inset Quotes frd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Quotes fld
 \end_inset
@@ -1561,7 +1637,8 @@ Entr
 
  sur les différents claviers.
  Certains ont même deux de ces touches.
- LyX les traite toutes de la même façon, nous utiliserons 
+ \SpecialCharNoPassThru LyX
+ les traite toutes de la même façon, nous utiliserons 
 \family sans
 Return
 \family default
@@ -2150,6 +2227,9 @@ La liste suivante décrit le contenu de chaque fichier de la documentation:
 
 \emph on
 Introduction
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2164,17 +2244,24 @@ Manuel
 \end_inset
 
 d'apprentissage
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Si vous commencez avec LyX, et n'avez jamais touché à LaTeX, vous devriez
+Si vous commencez avec \SpecialCharNoPassThru LyX
+, et n'avez jamais touché à \SpecialCharNoPassThru LaTeX
+, vous devriez
  commencer par là.
- Si vous connaissez déjà LaTeX, vous devriez lire au moins la section 
+ Si vous connaissez déjà \SpecialCharNoPassThru LaTeX
+, vous devriez lire au moins la section 
 \begin_inset Quotes fld
 \end_inset
 
-LyX pour les connaisseurs de LaTeX
+\SpecialCharNoPassThru LyX
+ pour les connaisseurs de \SpecialCharNoPassThru LaTeX
 \begin_inset Quotes frd
 \end_inset
 
@@ -2195,6 +2282,10 @@ de
 \end_inset
 
 l'utilisateur
+\shape default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2204,14 +2295,15 @@ C'est le document de base.
 \emph on
 majeure partie
 \emph default
- des opérations et fonctions de base disponibles avec LyX.
+ des opérations et fonctions de base disponibles avec \SpecialCharNoPassThru LyX
+.
  Pour bien en tirer profit, il faut avoir lu le 
 \emph on
 Manuel
 \begin_inset space ~
 \end_inset
 
-d'apprentissage\SpecialChar \@.
+d'apprentissage\SpecialChar endofsentence
 .
 \end_layout
 
@@ -2222,6 +2314,9 @@ Objets
 \end_inset
 
 insérés 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2236,12 +2331,16 @@ de L'Utilisateur
 \emph default
 , il explique en détail comment utiliser les tableaux, les graphiques, les
  objets flottants, les notes et les boîtes.
- Il inclut également de nombreuses astuces connues des spécialistes de LaTeX.
+ Il inclut également de nombreuses astuces connues des spécialistes de \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Maths
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2264,6 +2363,9 @@ Options
 \end_inset
 
 avancées
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2280,35 +2382,45 @@ de
 
 l'Utilisateur
 \emph default
-, il décrit comment utiliser des commandes LaTeX brutes, des formats supplémenta
+, il décrit comment utiliser des commandes \SpecialCharNoPassThru LaTeX
+ brutes, des formats supplémenta
 ires, des fonctions d'édition particulières.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Personnalisation
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-C'est une description de certaines fonctions avancées de LyX, notamment
+C'est une description de certaines fonctions avancées de \SpecialCharNoPassThru LyX
+, notamment
  la façon de personnaliser son comportement général.
  Y sont abordés la configuration du clavier (raccourcis), l'internationalisation
 , et les fichiers de configuration.
  Il contient également les informations nécessaires concernant les fichiers
- de formats, indispensables pour permettre à LyX de reconnaître vos propres
+ de formats, indispensables pour permettre à \SpecialCharNoPassThru LyX
+ de reconnaître vos propres
  classes et paquetages.
 \end_layout
 
 \end_deeper
 \begin_layout Description
 Raccourcis
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Contient des tableaux avec les raccourcis claviers qui sont définis actuellement
- dans LyX.
+ dans \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_deeper
@@ -2317,14 +2429,19 @@ Configuration
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialCharNoPassThru LaTeX
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Pendant son installation, LyX analyse votre système.
+Pendant son installation, \SpecialCharNoPassThru LyX
+ analyse votre système.
  Les informations qu'il découvre sont consignées dans ce document.
- Vous pouvez le consulter s'il manquait à LyX quelque chose qu'il est censé
+ Vous pouvez le consulter s'il manquait à \SpecialCharNoPassThru LyX
+ quelque chose qu'il est censé
  délivrer.
 \end_layout
 
@@ -2368,7 +2485,8 @@ Répétons un point important :
 
 \begin_layout Standard
 \align center
-Si vous débutez avec LyX, lisez le 
+Si vous débutez avec \SpecialCharNoPassThru LyX
+, lisez le 
 \emph on
 Manuel
 \begin_inset space ~
@@ -2376,7 +2494,7 @@ Manuel
 
 d'apprentissage
 \emph default
- dès maintenant\SpecialChar \@.
+ dès maintenant\SpecialChar endofsentence
 
 \end_layout
 
@@ -2392,7 +2510,7 @@ Sinon, vous vous poserez des problèmes inutilement.
 \end_layout
 
 \begin_layout Section
-Contribuer au projet LyX
+Contribuer au projet \SpecialCharNoPassThru LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Contrib"
@@ -2403,11 +2521,13 @@ name "sec:Contrib"
 \end_layout
 
 \begin_layout Subsection
-Contribuer à LyX
+Contribuer à \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-LyX est pour l'essentiel écrit en C++ (l'importation LaTeX est écrite en
+\SpecialCharNoPassThru LyX
+ est pour l'essentiel écrit en C++ (l'importation \SpecialCharNoPassThru LaTeX
+ est écrite en
  Python).
  C'est un vaste projet, il n'est donc pas exempt de bogues, et des améliorations
  peuvent être nécessaires dans le code source.
@@ -2418,17 +2538,21 @@ Signaler un bogue
 \end_layout
 
 \begin_layout Standard
-Lors de votre utilisation de LyX, vous pouvez rencontrer un comportement
+Lors de votre utilisation de \SpecialCharNoPassThru LyX
+, vous pouvez rencontrer un comportement
  que vous considérez comme un bogue.
  Les plantages sont rares, mais ça peut arriver.
- Les problèmes d'interface utilisateur sont considérés par l'équipe LyX
+ Les problèmes d'interface utilisateur sont considérés par l'équipe \SpecialCharNoPassThru LyX
  comme des bogues importants: des indications sur les parties de l'interface
- LyX que vous trouvez confuses et peu claires nous sont précieuses.
+ \SpecialCharNoPassThru LyX
+ que vous trouvez confuses et peu claires nous sont précieuses.
 \end_layout
 
 \begin_layout Standard
-LyX a un système de recensement de bogues, que vous trouverez sur le traceur
- de bogues de LyX 
+\SpecialCharNoPassThru LyX
+ a un système de recensement de bogues, que vous trouverez sur le traceur
+ de bogues de \SpecialCharNoPassThru LyX
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -2455,7 +2579,8 @@ type "mailto:"
 
 .
  L'adresse des archives de cette liste est indiquée sur le site web principal
- de LyX, 
+ de \SpecialCharNoPassThru LyX
+, 
 \begin_inset Flex URL
 status collapsed
 
@@ -2470,15 +2595,18 @@ http://www.lyx.org/WebFr.Home
 \end_layout
 
 \begin_layout Standard
-Un bon rapport de bogue doit au minimum comprendre la version de LyX avec
+Un bon rapport de bogue doit au minimum comprendre la version de \SpecialCharNoPassThru LyX
+ avec
  laquelle vous avez rencontré le problème.
  Envoyez les descriptions les plus exactes et détaillées possibles: plus
  les développeurs devront passer de temps à trouver l'origine du bogue,
  moins ils en auront pour d'autres améliorations.
  Dites sur quel système, et dans quelle version de celui-ci vous faites
- tourner LyX.
+ tourner \SpecialCharNoPassThru LyX
+.
  Donnez les versions des bibliothèques installées sur votre système, et
- si nécessaire les versions des programmes externes utilisés par LyX.
+ si nécessaire les versions des programmes externes utilisés par \SpecialCharNoPassThru LyX
+.
  S'il s'agit d'un problème de configuration ou de compilation, joignez le
  fichier 
 \family typewriter
@@ -2498,7 +2626,8 @@ type "mailto:"
 \end_inset
 
 , bien qu'elle soit théoriquement réservée aux seuls problèmes de francisation
- de LyX.
+ de \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -2510,7 +2639,8 @@ Offrir des corrections et de nouvelles fonctions
 \end_layout
 
 \begin_layout Standard
-Si vous avez fait des changements au code source de LyX et que vous pensez
+Si vous avez fait des changements au code source de \SpecialCharNoPassThru LyX
+ et que vous pensez
  qu'ils devraient faire partie de la distribution, envoyez vos modifications
  sous la forme d'un fichier diff (au format unifié) à la liste des développeurs
  référencée plus haut, avec un 
@@ -2529,7 +2659,9 @@ Contribuer à la documentation
 \end_layout
 
 \begin_layout Standard
-La documentation de LyX est assez exhaustive; cependant LyX est en constant
+La documentation de \SpecialCharNoPassThru LyX
+ est assez exhaustive; cependant \SpecialCharNoPassThru LyX
+ est en constant
  développement, et chaque nouvelle version ajoute de nouvelles fonctions.
  Vous pouvez trouver qu'une partie de la documentation nécessite des amélioratio
 ns.
@@ -2560,8 +2692,10 @@ Se joindre à l'équipe de documentation
 \end_layout
 
 \begin_layout Standard
-Comme pour l'ensemble du projet LyX, toute aide est bienvenue pour la documentat
-ion de LyX! Si vous êtes volontaire, merci de respecter 
+Comme pour l'ensemble du projet \SpecialCharNoPassThru LyX
+, toute aide est bienvenue pour la documentat
+ion de \SpecialCharNoPassThru LyX
+! Si vous êtes volontaire, merci de respecter 
 \shape italic
 avant tout
 \shape default
@@ -2569,7 +2703,8 @@ avant tout
 \end_layout
 
 \begin_layout Enumerate
-Récupérez le code source de LyX le plus récent
+Récupérez le code source de \SpecialCharNoPassThru LyX
+ le plus récent
 \begin_inset Newline newline
 \end_inset
 
@@ -2610,6 +2745,10 @@ d'apprentissage
 \emph default
 .
  
+\shape default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2644,6 +2783,9 @@ l'utilisateur
 \end_deeper
 \begin_layout Enumerate
 Contactez l'équipe de documentation à l'adresse suivante : 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2725,7 +2867,8 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc/fr?rev=master
 \lang french
 .
  On peut y accéder également en suivant les indications qui se trouvent
- sur le site des développeurs de LyX 
+ sur le site des développeurs de \SpecialCharNoPassThru LyX
+ 
 \begin_inset Flex URL
 status collapsed
 

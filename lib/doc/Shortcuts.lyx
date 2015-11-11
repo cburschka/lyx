@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,11 +71,13 @@
 \begin_body
 
 \begin_layout Title
-LyX Keyboard Shortcuts
+\SpecialCharNoPassThru LyX
+ Keyboard Shortcuts
 \end_layout
 
 \begin_layout Author
-By the LyX Team
+By the \SpecialCharNoPassThru LyX
+ Team
 \end_layout
 
 \begin_layout Standard
@@ -91,9 +94,9 @@ arg   "bind_file"
 .
  You can change the shortcuts in the menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Editing\SpecialChar menuseparator
 Shortcuts
 \family default
  as described in section 
@@ -104,7 +107,8 @@ Shortcuts
 \begin_inset Quotes erd
 \end_inset
 
- of the LyX 
+ of the \SpecialCharNoPassThru LyX
+ 
 \emph on
 User's Guide
 \emph default

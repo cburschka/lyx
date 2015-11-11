@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/zh_CN/
 \textclass article
 \begin_preamble
 \usepackage{ifxetex}
@@ -15,16 +16,16 @@
 \language_package default
 \inputencoding utf8-cjk
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \font_cjk gbsn
 \graphics default
 \default_output_format default
@@ -91,11 +92,13 @@
 \begin_body
 
 \begin_layout Title
-LyX 简介
+\SpecialCharNoPassThru LyX
+ 简介
 \end_layout
 
 \begin_layout Author
-LyX 工作组
+\SpecialCharNoPassThru LyX
+ 工作组
 \begin_inset Foot
 status collapsed
 
@@ -130,26 +133,35 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-LyX 的哲学
+\SpecialCharNoPassThru LyX
+ 的哲学
 \end_layout
 
 \begin_layout Subsection
-什么是 LyX？
+什么是 \SpecialCharNoPassThru LyX
+？
 \end_layout
 
 \begin_layout Standard
-LyX 是一个文档写作系统，除了处理一般文档所需的自动章节编号、自动页码、拼写检查等功能之外，其强项在于包含数学公式、交叉引用、参考文献、附录等东西的复杂科技文
-档的写作。虽然有更简单的软件，但你的确可以用 LyX 给 MM 写信。LyX 不适合制作横幅、传单、广告（后边解释），当然通过一些努力也能达到目的。下边是
- LyX 应用的一些例子：备忘录、书信、（学位）论文、课程笔记、会议记录、会议论文集、软件文档、书、科技文章、剧本、标书、幻灯片……
+\SpecialCharNoPassThru LyX
+ 是一个文档写作系统，除了处理一般文档所需的自动章节编号、自动页码、拼写检查等功能之外，其强项在于包含数学公式、交叉引用、参考文献、附录等东西的复杂科技文
+档的写作。虽然有更简单的软件，但你的确可以用 \SpecialCharNoPassThru LyX
+ 给 MM 写信。\SpecialCharNoPassThru LyX
+ 不适合制作横幅、传单、广告（后边解释），当然通过一些努力也能达到目的。下边是
+ \SpecialCharNoPassThru LyX
+ 应用的一些例子：备忘录、书信、（学位）论文、课程笔记、会议记录、会议论文集、软件文档、书、科技文章、剧本、标书、幻灯片……
 \end_layout
 
 \begin_layout Standard
-LyX 使用现代标记语言书写文档，它颠覆了传统的“打字机概念”。使用 LyX 你可以快捷的得到专业的输出效果，而不需要成为排版专家。计算机会处理大部分的排版工作
+\SpecialCharNoPassThru LyX
+ 使用现代标记语言书写文档，它颠覆了传统的“打字机概念”。使用 \SpecialCharNoPassThru LyX
+ 你可以快捷的得到专业的输出效果，而不需要成为排版专家。计算机会处理大部分的排版工作
 ，而作者只需要专心于其写作的内容。
 \end_layout
 
 \begin_layout Standard
-使用 LyX 最初的挑战来自于使用者观念上必需经历的变化。以前用于写作文档的工具就是打字机，我们都会一些使用打字机的小技巧。下划线用于强调；创建表格前需要计算各
+使用 \SpecialCharNoPassThru LyX
+ 最初的挑战来自于使用者观念上必需经历的变化。以前用于写作文档的工具就是打字机，我们都会一些使用打字机的小技巧。下划线用于强调；创建表格前需要计算各
 种尺寸并设定之，写信或右对齐的文本也是这样；每行末尾的连字符也需要特别小心。
 \end_layout
 
@@ -160,7 +172,10 @@ LyX 使用现代标记语言书写文档，它颠覆了传统的“打字机概�
 \end_layout
 
 \begin_layout Standard
-LyX 的不同之处在于，你不必关心排版的问题。你只需要告诉 LyX 你正在干什么，LyX 会按照预定的样式处理排版的问题
+\SpecialCharNoPassThru LyX
+ 的不同之处在于，你不必关心排版的问题。你只需要告诉 \SpecialCharNoPassThru LyX
+ 你正在干什么，\SpecialCharNoPassThru LyX
+ 会按照预定的样式处理排版的问题
 \begin_inset Foot
 status collapsed
 
@@ -186,35 +201,45 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-在 LyX 中，你需要工具栏左边的下拉列表中选择节，然后输入“简介”。
+在 \SpecialCharNoPassThru LyX
+ 中，你需要工具栏左边的下拉列表中选择节，然后输入“简介”。
 \end_layout
 
 \begin_layout Standard
-嗯，就是这么简单。如果你剪切该节到其它地方，节编号会自动重排。如果你在该节中使用了交叉引用，LyX 也会自动处理的，所以你永远不用输入节编号。
+嗯，就是这么简单。如果你剪切该节到其它地方，节编号会自动重排。如果你在该节中使用了交叉引用，\SpecialCharNoPassThru LyX
+ 也会自动处理的，所以你永远不用输入节编号。
 \end_layout
 
 \begin_layout Standard
 现在我们再来看看一致性。5 天后，你继续写报告的第 4 节，但是你忘记了，你应该使用小二号字而不是三号字。这样你第 4 节和第 1 节标题的字体就不同了。这种问
-题在 LyX 中是不存在的，LyX 将会安排什么东西使用什么字体的，毕竟计算机对这些是很在行的。
+题在 \SpecialCharNoPassThru LyX
+ 中是不存在的，\SpecialCharNoPassThru LyX
+ 将会安排什么东西使用什么字体的，毕竟计算机对这些是很在行的。
 \end_layout
 
 \begin_layout Standard
 另一例：假设你正在做一个列表。在其它的字处理软件中，列表就是一堆的 Tab 和新行。你需要确定在什么地方放置列表项的标签、应该使用哪个标签、每个标签项之间需要多
-少个空行……在 LyX 中你只需要关心两件事：使用什么类型的列表；列表放在什么地方。
+少个空行……在 \SpecialCharNoPassThru LyX
+ 中你只需要关心两件事：使用什么类型的列表；列表放在什么地方。
 \end_layout
 
 \begin_layout Standard
-LyX 的基本理念是：指定你在做什么，而不是怎样做。对应于“所见即所得”，LyX 的模式是“所见即所想”（WYSIWYM）。这种观念非常有效，它大大简化了文档的
-书写过程。这也是为什么 LyX 不适合做海报、传单，这时候你的确需要确定什么东西应该放在什么地方，因为这里没有节、段的概念。这并不是说 LyX
- 缺少了很酷的功能，而是说 LyX 不是干这些事合适的工具。就像你不会用螺丝刀去砸钉子。
+\SpecialCharNoPassThru LyX
+ 的基本理念是：指定你在做什么，而不是怎样做。对应于“所见即所得”，\SpecialCharNoPassThru LyX
+ 的模式是“所见即所想”（WYSIWYM）。这种观念非常有效，它大大简化了文档的
+书写过程。这也是为什么 \SpecialCharNoPassThru LyX
+ 不适合做海报、传单，这时候你的确需要确定什么东西应该放在什么地方，因为这里没有节、段的概念。这并不是说 \SpecialCharNoPassThru LyX
+ 缺少了很酷的功能，而是说 \SpecialCharNoPassThru LyX
+ 不是干这些事合适的工具。就像你不会用螺丝刀去砸钉子。
 \end_layout
 
 \begin_layout Subsection
-与众不同的 LyX
+与众不同的 \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-下边的东西你不会在 LyX 中找到：
+下边的东西你不会在 \SpecialCharNoPassThru LyX
+ 中找到：
 \end_layout
 
 \begin_layout Itemize
@@ -230,12 +255,15 @@ Tab 位
 \end_layout
 
 \begin_layout Standard
-Tab 位、标尺标明了页面上各元素的位置，这些东西在 LyX 中没有用处，程序自会处理这些东西，而不是您。空白也是，LyX 会根据上下文情况加上空白。开始时，不
+Tab 位、标尺标明了页面上各元素的位置，这些东西在 \SpecialCharNoPassThru LyX
+ 中没有用处，程序自会处理这些东西，而不是您。空白也是，\SpecialCharNoPassThru LyX
+ 会根据上下文情况加上空白。开始时，不
 能输入两个空行会很烦人，但当你能使用所见即所想的方式去思考问题的时候，你会发现这将更有意义。
 \end_layout
 
 \begin_layout Standard
-下边是 LyX 中存在的东西，但它们可能不像你想象的那样：
+下边是 \SpecialCharNoPassThru LyX
+ 中存在的东西，但它们可能不像你想象的那样：
 \end_layout
 
 \begin_layout Itemize
@@ -263,13 +291,17 @@ Tab 位、标尺标明了页面上各元素的位置，这些东西在 LyX 中�
 \end_layout
 
 \begin_layout Standard
-这些东西存在于 LyX 中，但你一般用不到它们。LyX 会根据你正在做的事情帮你处理好它们。文档的不同部分会被设置成为不同的字型与字号。段落的缩进是上下文相关的
-，不同的段落类型会有不同的缩进。断页也是自动进行的。字间、行间、段间的距离是可以通过 LyX 设置的。
+这些东西存在于 \SpecialCharNoPassThru LyX
+ 中，但你一般用不到它们。\SpecialCharNoPassThru LyX
+ 会根据你正在做的事情帮你处理好它们。文档的不同部分会被设置成为不同的字型与字号。段落的缩进是上下文相关的
+，不同的段落类型会有不同的缩进。断页也是自动进行的。字间、行间、段间的距离是可以通过 \SpecialCharNoPassThru LyX
+ 设置的。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-有多种方法可以调节这些东西（只有一小部分需要 LaTeX 知识），你可以调整整篇文档，也可以调整文档中的某一部分。参见用户指南或 
+有多种方法可以调节这些东西（只有一小部分需要 \SpecialCharNoPassThru LaTeX
+ 知识），你可以调整整篇文档，也可以调整文档中的某一部分。参见用户指南或 
 \emph on
 Additional Features
 \emph default
@@ -282,7 +314,8 @@ Additional Features
 \end_layout
 
 \begin_layout Standard
-最后，有些地方 LyX 比其它字处理软件强：
+最后，有些地方 \SpecialCharNoPassThru LyX
+ 比其它字处理软件强：
 \end_layout
 
 \begin_layout Itemize
@@ -306,19 +339,21 @@ Additional Features
 \end_layout
 
 \begin_layout Standard
-当然很多现代字处理软件都能处理这些，而且有些软件也使用了样式和所见即所想的理念。要知道这些软件也仅仅是最近才开始这么做的，而 LyX 使用的 LaTeX
+当然很多现代字处理软件都能处理这些，而且有些软件也使用了样式和所见即所想的理念。要知道这些软件也仅仅是最近才开始这么做的，而 \SpecialCharNoPassThru LyX
+ 使用的 \SpecialCharNoPassThru LaTeX
  在 20 年前就开始玩这些了。
 \end_layout
 
 \begin_layout Subsection
-什么是 LaTeX？
+什么是 \SpecialCharNoPassThru LaTeX
+？
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 本节资料来源于《
 \emph on
-A Guide to LaTeX2e
+A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph default
 》，作者：Helmut Kopka 和 Patrick Daly，
 \emph on
@@ -333,26 +368,45 @@ User's Guide
 \end_layout
 
 \begin_layout Standard
-LaTeX 是由 Leslie Lamport 在 1985 年设计的一套基于 TeX 的文档写作系统。TeX 是 Donald Knuth 在
- 1984 年编写的一种排版语言。TeX 将一系列的排版命令写在角本文件中并执行之。印刷业的很多排版方法都是由 Knuth 用算法实现的并合并到了
- TeX 中，因此 TeX 的排版效果是非常优秀的。TeX 的输出文件格式为 PDF 或 DVI（device independent）。DVI
+\SpecialCharNoPassThru LaTeX
+ 是由 Leslie Lamport 在 1985 年设计的一套基于 \SpecialCharNoPassThru TeX
+ 的文档写作系统。\SpecialCharNoPassThru TeX
+ 是 Donald Knuth 在
+ 1984 年编写的一种排版语言。\SpecialCharNoPassThru TeX
+ 将一系列的排版命令写在角本文件中并执行之。印刷业的很多排版方法都是由 Knuth 用算法实现的并合并到了
+ \SpecialCharNoPassThru TeX
+ 中，因此 \SpecialCharNoPassThru TeX
+ 的排版效果是非常优秀的。\SpecialCharNoPassThru TeX
+ 的输出文件格式为 PDF 或 DVI（device independent）。DVI
  文件常被用于预览，还可以被转化为其它的格式，比如 PostScript。
 \end_layout
 
 \begin_layout Standard
-TeX 不仅仅是一个排版引擎，它还可以定义宏。我们通常说的使用 TeX，实际上是在使用 TeX 的宏包，这些宏包隐藏了大部分的排版细节。提到宏包就不能不说
- Leslie Lamport，他希望有一个宏包能够更加用户友好，有命令集可以一致可靠的排版节、表格和数学公式。这样，LaTeX 宏包诞生了。
+\SpecialCharNoPassThru TeX
+ 不仅仅是一个排版引擎，它还可以定义宏。我们通常说的使用 \SpecialCharNoPassThru TeX
+，实际上是在使用 \SpecialCharNoPassThru TeX
+ 的宏包，这些宏包隐藏了大部分的排版细节。提到宏包就不能不说
+ Leslie Lamport，他希望有一个宏包能够更加用户友好，有命令集可以一致可靠的排版节、表格和数学公式。这样，\SpecialCharNoPassThru LaTeX
+ 宏包诞生了。
 \end_layout
 
 \begin_layout Standard
-现在，在 LaTeX 研发成长的同时，还有些人也建立了他们自己定制的宏包，如为某个数学杂志制作幻灯片、文档等。有的宏包使用了原生的 TeX 工具，有的是在
- LaTeX 之上修改而来，局面那叫一个混乱。为了一统天下，二十世纪八十年代一个小组开始着手于 LaTeX2e。这个新版本提供了易用的用户界面，方便创建宏包、帮
-助使用新字体等。实际上 LaTeX 是一种可扩展性极强的语言，世界各地的用户编写了大量的插件。
+现在，在 \SpecialCharNoPassThru LaTeX
+ 研发成长的同时，还有些人也建立了他们自己定制的宏包，如为某个数学杂志制作幻灯片、文档等。有的宏包使用了原生的 \SpecialCharNoPassThru TeX
+ 工具，有的是在
+ \SpecialCharNoPassThru LaTeX
+ 之上修改而来，局面那叫一个混乱。为了一统天下，二十世纪八十年代一个小组开始着手于 \SpecialCharNoPassThru LaTeX2e
+。这个新版本提供了易用的用户界面，方便创建宏包、帮
+助使用新字体等。实际上 \SpecialCharNoPassThru LaTeX
+ 是一种可扩展性极强的语言，世界各地的用户编写了大量的插件。
 \end_layout
 
 \begin_layout Standard
-有两种方法对 LaTeX 进行扩展：类和样式。类就是描述一个新文档类型的 LaTeX 宏集，如书籍类、文章类。类还可以用于幻灯、物理、数学期刊……很多大学甚至还
-有学位论文专用的类。样式并不定义新的文档类型，它定义了所有文档都可用的不同行为。例：LyX 使用两个样式文件来控制页边距和行间距。样式文件可以做很多事情：排印标
+有两种方法对 \SpecialCharNoPassThru LaTeX
+ 进行扩展：类和样式。类就是描述一个新文档类型的 \SpecialCharNoPassThru LaTeX
+ 宏集，如书籍类、文章类。类还可以用于幻灯、物理、数学期刊……很多大学甚至还
+有学位论文专用的类。样式并不定义新的文档类型，它定义了所有文档都可用的不同行为。例：\SpecialCharNoPassThru LyX
+ 使用两个样式文件来控制页边距和行间距。样式文件可以做很多事情：排印标
 签或信封；控制缩进行为；添加字体；复制图片；设计页眉；定制参考文献；改变脚注、表格、图形的位置与外观；定制列表项……
 \end_layout
 
@@ -361,27 +415,38 @@ TeX 不仅仅是一个排版引擎，它还可以定义宏。我们通常说的�
 \end_layout
 
 \begin_layout Description
-TeX： 有宏扩展能力的排版语言。
+\SpecialCharNoPassThru TeX
+： 有宏扩展能力的排版语言。
 \end_layout
 
 \begin_layout Description
-LaTeX： 基于 TeX 的宏包。
+\SpecialCharNoPassThru LaTeX
+： 基于 \SpecialCharNoPassThru TeX
+ 的宏包。
 \end_layout
 
 \begin_layout Description
-文档类： 用 LaTeX 描述文档类型。
+文档类： 用 \SpecialCharNoPassThru LaTeX
+ 描述文档类型。
 \end_layout
 
 \begin_layout Description
-样式： 改变 LaTeX 的默认行为方式。
+样式： 改变 \SpecialCharNoPassThru LaTeX
+ 的默认行为方式。
 \end_layout
 
 \begin_layout Description
-LyX： LaTeX 的可视化图形前端。
+\SpecialCharNoPassThru LyX
+： \SpecialCharNoPassThru LaTeX
+ 的可视化图形前端。
 \end_layout
 
 \begin_layout Standard
-本节历数了 LyX 同其它字处理软件的不同之处。简单说就是：LaTeX。使用 LaTeX 作为其后台程序，LyX 使你更加关注你所写的东西。计算机则去处理它们看
+本节历数了 \SpecialCharNoPassThru LyX
+ 同其它字处理软件的不同之处。简单说就是：\SpecialCharNoPassThru LaTeX
+。使用 \SpecialCharNoPassThru LaTeX
+ 作为其后台程序，\SpecialCharNoPassThru LyX
+ 使你更加关注你所写的东西。计算机则去处理它们看
 起来应该是什么样子。
 \end_layout
 
@@ -390,12 +455,16 @@ LyX： LaTeX 的可视化图形前端。
 \end_layout
 
 \begin_layout Standard
-为了使你能够更容易的找到问题的答案以及更好的描述 LyX 的特性，我们将 LyX 的文档分成了几个不同的文件。每个文件有其特定的目的，后边将会一一描述。在你阅读
+为了使你能够更容易的找到问题的答案以及更好的描述 \SpecialCharNoPassThru LyX
+ 的特性，我们将 \SpecialCharNoPassThru LyX
+ 的文档分成了几个不同的文件。每个文件有其特定的目的，后边将会一一描述。在你阅读
 那些文档之前你应该先读一下这一节的内容，它包含了很多有用的信息与评论，这反而会为你节约一些时间。
 \end_layout
 
 \begin_layout Standard
-LyX 的开发不会停止，虽然我们努力使文档跟上开发的节奏，但还是有些文档不完整或者有点过时。与 LyX 的其它部分一样，文档的维护工作是由一群志愿者完成的，他们
+\SpecialCharNoPassThru LyX
+ 的开发不会停止，虽然我们努力使文档跟上开发的节奏，但还是有些文档不完整或者有点过时。与 \SpecialCharNoPassThru LyX
+ 的其它部分一样，文档的维护工作是由一群志愿者完成的，他们
 都有自己的工作、家庭。如果你想帮忙，请阅读第 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -431,8 +500,12 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-有的人会把手册打印出来，有的人在 LyX 中阅读。LyX 文档和打印出来的版本有些区别。首先，LyX 文档中标题就只是在文档的最上边，有些手册的打印版中标题是单
-独占一页的。LyX 中脚注、目录并不是完全可见的。脚注看起来是这样：
+有的人会把手册打印出来，有的人在 \SpecialCharNoPassThru LyX
+ 中阅读。\SpecialCharNoPassThru LyX
+ 文档和打印出来的版本有些区别。首先，\SpecialCharNoPassThru LyX
+ 文档中标题就只是在文档的最上边，有些手册的打印版中标题是单
+独占一页的。\SpecialCharNoPassThru LyX
+ 中脚注、目录并不是完全可见的。脚注看起来是这样：
 \begin_inset Graphics
 	filename ../clipart/footnoteQt4.png
 	scale 70
@@ -455,7 +528,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-现在我们已经知道一些打印版和 LyX 电子文档之间的区别了，我们再看看本文档的格式。你会注意到一些不同的字体：
+现在我们已经知道一些打印版和 \SpecialCharNoPassThru LyX
+ 电子文档之间的区别了，我们再看看本文档的格式。你会注意到一些不同的字体：
 \end_layout
 
 \begin_layout Itemize
@@ -471,7 +545,8 @@ type "mailto:"
 \family typewriter
 打字机字体
 \family default
-用于程序、文档名、LyX 代码与函数。
+用于程序、文档名、\SpecialCharNoPassThru LyX
+ 代码与函数。
 \end_layout
 
 \begin_layout Itemize
@@ -493,7 +568,8 @@ Sans Serif 字体用于菜单、按钮、对话框名、按键名。
 \series bold
 黑体
 \series default
-用于 LaTeX 代码。
+用于 \SpecialCharNoPassThru LaTeX
+ 代码。
 \end_layout
 
 \begin_layout Standard
@@ -557,7 +633,7 @@ F1
 \begin_inset Quotes erd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Quotes eld
 \end_inset
@@ -601,7 +677,8 @@ reference "tab:单位"
 
 \end_inset
 
- 解释了 LyX 中用到的长度单位。
+ 解释了 \SpecialCharNoPassThru LyX
+ 中用到的长度单位。
 \end_layout
 
 \begin_layout Standard
@@ -1108,11 +1185,16 @@ em）
 \end_layout
 
 \begin_layout Description
-简明教程（Tutorial） LyX 新手与没用过 LaTeX 的人从这里读起。用过 LaTeX 的人从简明手册（
+简明教程（Tutorial） \SpecialCharNoPassThru LyX
+ 新手与没用过 \SpecialCharNoPassThru LaTeX
+ 的人从这里读起。用过 \SpecialCharNoPassThru LaTeX
+ 的人从简明手册（
 \emph on
 Tutorial
 \emph default
-）的“LyX for LaTeX users”一节读起。
+）的“\SpecialCharNoPassThru LyX
+ for \SpecialCharNoPassThru LaTeX
+ users”一节读起。
 \end_layout
 
 \begin_layout Description
@@ -1120,7 +1202,8 @@ Tutorial
 \begin_inset space ~
 \end_inset
 
-Guide） 这是主帮助文档。我们将讲解绝大部分的基本操作与 LyX 特性。该手册默认你已经读过了简明教程（
+Guide） 这是主帮助文档。我们将讲解绝大部分的基本操作与 \SpecialCharNoPassThru LyX
+ 特性。该手册默认你已经读过了简明教程（
 \emph on
 Tutorial
 \emph default
@@ -1132,7 +1215,8 @@ Tutorial
 \begin_inset space ~
 \end_inset
 
-Objects） 用户指南的扩展，包含了表格、图形、浮动体、注释、程序列表与盒子的详细使用方法。另外还包含了一些使用 LaTeX 的技巧。
+Objects） 用户指南的扩展，包含了表格、图形、浮动体、注释、程序列表与盒子的详细使用方法。另外还包含了一些使用 \SpecialCharNoPassThru LaTeX
+ 的技巧。
 \end_layout
 
 \begin_layout Description
@@ -1144,27 +1228,33 @@ Objects） 用户指南的扩展，包含了表格、图形、浮动体、注释
 \begin_inset space ~
 \end_inset
 
-Features） 用户指南的扩展，介绍了如何使用原生的 LaTeX 指令、附加的页面布局与特殊目的的编辑特性。
+Features） 用户指南的扩展，介绍了如何使用原生的 \SpecialCharNoPassThru LaTeX
+ 指令、附加的页面布局与特殊目的的编辑特性。
 \end_layout
 
 \begin_layout Description
-定制（Customization） 介绍了 LyX 的高级特性：定制 LyX 的所有行为，包括键盘绑定、国际化与配置文件。
+定制（Customization） 介绍了 \SpecialCharNoPassThru LyX
+ 的高级特性：定制 \SpecialCharNoPassThru LyX
+ 的所有行为，包括键盘绑定、国际化与配置文件。
 \end_layout
 
 \begin_layout Description
-快捷键（Shortcuts） 默认的 LyX 快捷键列表。
+快捷键（Shortcuts） 默认的 \SpecialCharNoPassThru LyX
+ 快捷键列表。
 \end_layout
 
 \begin_layout Description
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
-配置（LaTeX
+配置（\SpecialCharNoPassThru LaTeX
 \begin_inset space ~
 \end_inset
 
-configuration） LyX 检查你的系统安装情况，将 LaTeX 的安装情况汇总在该文档中。看看这个文档，没准你会找到些喜欢的东西。
+configuration） \SpecialCharNoPassThru LyX
+ 检查你的系统安装情况，将 \SpecialCharNoPassThru LaTeX
+ 的安装情况汇总在该文档中。看看这个文档，没准你会找到些喜欢的东西。
 \end_layout
 
 \begin_layout Standard
@@ -1184,7 +1274,8 @@ configuration） LyX 检查你的系统安装情况，将 LaTeX 的安装情况�
 
 \begin_layout Standard
 \align center
-如果你没用过 LyX 请现在就阅读简明教程（Tutorial）。
+如果你没用过 \SpecialCharNoPassThru LyX
+ 请现在就阅读简明教程（Tutorial）。
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -1196,7 +1287,8 @@ configuration） LyX 检查你的系统安装情况，将 LaTeX 的安装情况�
 \end_layout
 
 \begin_layout Section
-为 LyX 项目添砖加瓦
+为 \SpecialCharNoPassThru LyX
+ 项目添砖加瓦
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:为-LyX-项目添砖加瓦"
@@ -1207,11 +1299,14 @@ name "sec:为-LyX-项目添砖加瓦"
 \end_layout
 
 \begin_layout Subsection
-给 LyX 做贡献
+给 \SpecialCharNoPassThru LyX
+ 做贡献
 \end_layout
 
 \begin_layout Standard
-LyX 是一个大项目，大部分代码由 C++ 写成（LaTeX 导入部分是用 Python 写的），所以它免不了会有很多 bug，也需要我们去完善其代码。
+\SpecialCharNoPassThru LyX
+ 是一个大项目，大部分代码由 C++ 写成（\SpecialCharNoPassThru LaTeX
+ 导入部分是用 Python 写的），所以它免不了会有很多 bug，也需要我们去完善其代码。
 \end_layout
 
 \begin_layout Subsubsection
@@ -1219,12 +1314,14 @@ LyX 是一个大项目，大部分代码由 C++ 写成（LaTeX 导入部分是�
 \end_layout
 
 \begin_layout Standard
-使用 LyX 的时候，你没准会发现些你认为是 bug 的问题。崩溃也是有可能发生的。用户界面被开发组认为是 bug 最多的地方。如果你觉得什么地方让你看不懂了，
+使用 \SpecialCharNoPassThru LyX
+ 的时候，你没准会发现些你认为是 bug 的问题。崩溃也是有可能发生的。用户界面被开发组认为是 bug 最多的地方。如果你觉得什么地方让你看不懂了，
 就请告诉他们吧，这会对他们帮助很大的。
 \end_layout
 
 \begin_layout Standard
-LyX 有个 bug 跟踪系统，你可以在这找到它：
+\SpecialCharNoPassThru LyX
+ 有个 bug 跟踪系统，你可以在这找到它：
 \family typewriter
 
 \begin_inset Flex URL
@@ -1248,7 +1345,8 @@ type "mailto:"
 
 \end_inset
 
- 来完成这些事。该邮件列表的存档链接你可以在 LyX 的网站上找到，
+ 来完成这些事。该邮件列表的存档链接你可以在 \SpecialCharNoPassThru LyX
+ 的网站上找到，
 \family typewriter
 
 \begin_inset Flex URL
@@ -1267,8 +1365,10 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-好的 bug 报告至少应该包含 LyX 版本和准确详细的问题描述。要知道，开发者定位 bug 的时间越长，他们用于其它改进的时间就越少。别忘了写上操作系统及其版
-本号，系统上装的函数库的版本号，必要的话还要写上 LyX 使用的外部程序的版本号。如果是编译或配置问题，别忘了写上编译器并附上配置文件（
+好的 bug 报告至少应该包含 \SpecialCharNoPassThru LyX
+ 版本和准确详细的问题描述。要知道，开发者定位 bug 的时间越长，他们用于其它改进的时间就越少。别忘了写上操作系统及其版
+本号，系统上装的函数库的版本号，必要的话还要写上 \SpecialCharNoPassThru LyX
+ 使用的外部程序的版本号。如果是编译或配置问题，别忘了写上编译器并附上配置文件（
 \family typewriter
 config.log
 \family default
@@ -1280,7 +1380,9 @@ config.log
 \end_layout
 
 \begin_layout Standard
-如果你希望你对 LyX 源码所做的修改成为 LyX 的一部分的话请将 diff 文件和变更日志一起发到邮件列表 
+如果你希望你对 \SpecialCharNoPassThru LyX
+ 源码所做的修改成为 \SpecialCharNoPassThru LyX
+ 的一部分的话请将 diff 文件和变更日志一起发到邮件列表 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -1296,7 +1398,9 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-LyX 的帮助文档比较多，而且 LyX 的更新也比较快，每一个新的版本都有新的特性。你可能会发现有些文档已经老旧了。本节告诉你，如果你发现错误或改进意见的话应该
+\SpecialCharNoPassThru LyX
+ 的帮助文档比较多，而且 \SpecialCharNoPassThru LyX
+ 的更新也比较快，每一个新的版本都有新的特性。你可能会发现有些文档已经老旧了。本节告诉你，如果你发现错误或改进意见的话应该
 怎么做。
 \end_layout
 
@@ -1321,7 +1425,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-LyX 文档项目任何时候都是需要帮手的，如果你想帮忙的话，你需要做以下几件事：
+\SpecialCharNoPassThru LyX
+ 文档项目任何时候都是需要帮手的，如果你想帮忙的话，你需要做以下几件事：
 \end_layout
 
 \begin_layout Enumerate
@@ -1336,7 +1441,8 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 
 \end_inset
 
- 得到 LyX 的最新源码。
+ 得到 \SpecialCharNoPassThru LyX
+ 的最新源码。
 \end_layout
 
 \begin_layout Enumerate
