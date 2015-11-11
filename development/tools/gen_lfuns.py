@@ -43,9 +43,10 @@ ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID,
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
 LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\\lyxformat 474
+\\lyxformat 501
 \\begin_document
 \\begin_header
+\\origin /systemlyxdir/doc/
 \\textclass article
 \\begin_preamble
 \\renewcommand{\\descriptionlabel}[1]{\\hspace\\labelsep\\upshape\\bfseries #1:}
@@ -69,16 +70,16 @@ End
 \\language_package default
 \\inputencoding auto
 \\fontencoding global
-\\font_roman default
-\\font_sans default
-\\font_typewriter default
-\\font_math auto
+\\font_roman "default" "default"
+\\font_sans "default" "default"
+\\font_typewriter "default" "default"
+\\font_math "auto" "auto"
 \\font_default_family default
 \\use_non_tex_fonts false
 \\font_sc false
 \\font_osf false
-\\font_sf_scale 100
-\\font_tt_scale 100
+\\font_sf_scale 100 100
+\\font_tt_scale 100 100
 \\graphics default
 \\default_output_format default
 \\output_sync 0
@@ -134,11 +135,13 @@ End
 \\begin_body
 
 \\begin_layout Title
-LyX Functions (LFUNs)
+\\SpecialChar LyX
+ Functions (LFUNs)
 \\end_layout
 
 \\begin_layout Author
-The LyX Team
+The \\SpecialChar LyX
+ Team
 \\end_layout
 
 \\begin_layout Date""" + "\n" + str(date.today()) + """
@@ -160,15 +163,17 @@ LyX Functions
 \\end_inset
 
  (abbreviated LFUNs).
- These are commands that are used to make LyX perform specific actions.
- LyX itself uses these functions internally, and every internal action is
+ These are commands that are used to make \\SpecialChar LyX
+ perform specific actions.
+ \\SpecialChar LyX
+ itself uses these functions internally, and every internal action is
  bound to an LFUN.
 \\end_layout
 
 \\begin_layout Standard
 LFUNs are also used in the files that define keyboard shortcuts, menu or
  toolbar items.
- So if you want to change\\SpecialChar \\slash{}
+ So if you want to change\\SpecialChar breakableslash
 customize the user interface, you need to deal
  with LFUNs.
  Furthermore, external programs can use LFUNs to communicate with and 
@@ -179,7 +184,8 @@ remote-control
 \\begin_inset Quotes erd
 \\end_inset
 
- LyX.
+ \\SpecialChar LyX
+ .
  Finally, you can also issue LFUNs directly via the so called mini-buffer
  which can be opened via 
 \\begin_inset Info

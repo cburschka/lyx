@@ -1,7 +1,8 @@
 # gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\lyxformat 474
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/
 \textclass article
 \begin_preamble
 \renewcommand{\descriptionlabel}[1]{\hspace\labelsep\upshape\bfseries #1:}
@@ -25,16 +26,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -90,15 +91,17 @@ End
 \begin_body
 
 \begin_layout Title
-LyX Functions (LFUNs)
+\SpecialChar LyX
+ Functions (LFUNs)
 \end_layout
 
 \begin_layout Author
-The LyX Team
+The \SpecialChar LyX
+ Team
 \end_layout
 
 \begin_layout Date
-2015-05-28
+2015-11-11
 \end_layout
 
 \begin_layout Section*
@@ -115,15 +118,17 @@ LyX Functions
 \end_inset
 
  (abbreviated LFUNs).
- These are commands that are used to make LyX perform specific actions.
- LyX itself uses these functions internally, and every internal action is
+ These are commands that are used to make \SpecialChar LyX
+ perform specific actions.
+ \SpecialChar LyX
+ itself uses these functions internally, and every internal action is
  bound to an LFUN.
 \end_layout
 
 \begin_layout Standard
 LFUNs are also used in the files that define keyboard shortcuts, menu or
  toolbar items.
- So if you want to change\SpecialChar \slash{}
+ So if you want to change\SpecialChar breakableslash
 customize the user interface, you need to deal
  with LFUNs.
  Furthermore, external programs can use LFUNs to communicate with and 
@@ -134,7 +139,8 @@ remote-control
 \begin_inset Quotes erd
 \end_inset
 
- LyX.
+ \SpecialChar LyX
+ .
  Finally, you can also issue LFUNs directly via the so called mini-buffer
  which can be opened via 
 \begin_inset Info
@@ -639,6 +645,16 @@ Action Adds an ogonek accent to the next character typed.
 \end_layout
 \begin_layout Description
 Syntax accent-ogonek
+\end_layout
+
+\begin_layout Subsection*
+accent-perispomeni
+\end_layout
+\begin_layout Description
+Action Adds a perispomeni (Greek circumflex) over the next character typed.
+\end_layout
+\begin_layout Description
+Syntax accent-perispomeni
 \end_layout
 
 \begin_layout Subsection*
