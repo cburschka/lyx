@@ -854,6 +854,9 @@ def checkConverterEntries():
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
     #
+    checkProg('an Open Document (Pandoc) -> LaTeX converter', ['pandoc -s -f odt -o $$o -t latex $$i'],
+        rc_entry = [ r'\converter odt3        latex      "%%"	""' ])
+    #
     checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
         rc_entry = [ r'\converter word2      latex      "%%"	""' ])
     # Only define a converter to pdf6, otherwise the odt format could be
