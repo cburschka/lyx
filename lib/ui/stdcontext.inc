@@ -405,23 +405,27 @@ Menuset
 # InsetTabular context menu
 #
 
-	Menu "context-tabular"
-		Item "Multicolumn|u" "inset-modify tabular multicolumn"
-		Item "Multirow|w" "inset-modify tabular multirow"
-		Separator
-		Item "Top Line|n" "inset-modify tabular toggle-line-top"
-		Item "Bottom Line|i" "inset-modify tabular toggle-line-bottom"
-		Item "Left Line|L" "inset-modify tabular toggle-line-left"
-		Item "Right Line|R" "inset-modify tabular toggle-line-right"
-		Separator
+	Menu "table-borders"
+		Item "Top|T" "inset-modify tabular toggle-line-top"
+		Item "Bottom|B" "inset-modify tabular toggle-line-bottom"
+		Item "Left|L" "inset-modify tabular toggle-line-left"
+		Item "Right|R" "inset-modify tabular toggle-line-right"
+	End
+	
+	Menu "table-alignment"
 		Item "Left|f" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
 		Item "Center|C" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
 		Item "Right|h" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
 		Item "Decimal" "inset-modify tabular align-decimal"
 		Separator
-		Item "Top|T" "inset-modify tabular valign-top"
-		Item "Middle|M" "inset-modify tabular valign-middle"
-		Item "Bottom|B" "inset-modify tabular valign-bottom"
+		Item "Top" "inset-modify tabular valign-top"
+		Item "Middle" "inset-modify tabular valign-middle"
+		Item "Bottom" "inset-modify tabular valign-bottom"
+	End
+	
+	Menu "table-cols-rows"
+		Item "Multicolumn|u" "inset-modify tabular multicolumn"
+		Item "Multirow|w" "inset-modify tabular multirow"
 		Separator
 		Item "Append Row|A" "inset-modify tabular append-row"
 		Item "Delete Row|D" "inset-modify tabular delete-row"
@@ -434,6 +438,17 @@ Menuset
 		Item "Copy Column|y" "inset-modify tabular copy-column"
 		Item "Move Column Right|v" "inset-modify tabular move-column-right"
 		Item "Move Column Left" "inset-modify tabular move-column-left"
+	End
+	
+	Menu "context-tabular"
+		Item "Formal Style|m" "inset-modify tabular set-booktabs"
+		Item "Longtable|g" "inset-modify tabular set-longtabular"
+		Separator
+		Submenu "Borders|d" "table-borders"
+		Separator
+		Submenu "Align|i" "table-alignment"
+		Separator
+		Submenu "Columns/Rows|C" "table-cols-rows"
 		Separator
 		Item "Settings...|S" "inset-settings tabular"
 	End
