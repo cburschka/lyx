@@ -2941,15 +2941,13 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(otexstream & os,
 					 LaTeXFeatures & features) const
 {
-	// "inputenc" package not required with non-TeX fonts.
-	if (useNonTeXFonts)
+	// XeTeX/LuaTeX: (see also #9740)
+	// With Unicode fonts we use utf8-plain without encoding package.
+	// With TeX fonts, we cannot use utf8-plain, but "inputenc" fails.
+	// XeTeX must use ASCII encoding, for LuaTeX, we load
+	// "luainputenc" (see below).
+	if (useNonTeXFonts || features.runparams().flavor == OutputParams::XETEX)
 		return;
-	// "inputenc"  fails with XeTeX (even in 8-bit compatiblitly mode) and with TeX fonts,
-	// (this is a bug in the "inputenc" package see #9740).
-	if (features.runparams().flavor == OutputParams::XETEX)
-		return;
-	// For LuaTeX with TeX fonts, we can load
-	// the "luainputenc" package with the specified encoding(s) (see below).
 
 	if (inputenc == "auto") {
 		string const doc_encoding =
@@ -2957,10 +2955,12 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		Encoding::Package const package =
 			language->encoding()->package();
 
-		// Create a list with all the input encodings used
-		// in the document
-		set<string> encodings =
-			features.getEncodingSet(doc_encoding);
+		// Create list of inputenc options:
+		set<string> encodings;
+		// luainputenc fails with more than one encoding
+		if (!features.runparams().isFullUnicode()) // if we reach this point, this means LuaTeX with TeX fonts
+			// list all input encodings used in the document
+			encodings = features.getEncodingSet(doc_encoding);
 
 		// If the "japanese" package (i.e. pLaTeX) is used,
 		// inputenc must be omitted.

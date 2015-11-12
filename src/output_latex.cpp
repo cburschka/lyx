@@ -249,8 +249,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
-				os << setEncoding(data.prev_encoding->iconvName());
+			os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
 
@@ -259,8 +258,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
-				os << setEncoding(data.prev_encoding->iconvName());
+			os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
 
@@ -772,6 +770,7 @@ void TeXOnePar(Buffer const & buf,
 	// encoding, since this only affects the position of the outputted
 	// \inputencoding command; the encoding switch will occur when necessary
 	if (bparams.inputenc == "auto"
+		&& !runparams.isFullUnicode() // Xe/LuaTeX use one document-wide encoding  (see also switchEncoding())
 		&& runparams.encoding->package() != Encoding::none) {
 		// Look ahead for future encoding changes.
 		// We try to output them at the beginning of the paragraph,
@@ -884,8 +883,7 @@ void TeXOnePar(Buffer const & buf,
 			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (runparams.flavor != OutputParams::XETEX) // see BufferParams::encoding
-				os << setEncoding(prev_encoding->iconvName());
+			os << setEncoding(prev_encoding->iconvName());
 		}
 	}
 
@@ -1043,13 +1041,13 @@ void TeXOnePar(Buffer const & buf,
 	}
 
 	// If this is the last paragraph, and a local_font was set upon entering
-	// the inset, and we're using "auto" or "default" encoding, the encoding
+	// the inset, and we're using "auto" or "default" encoding, and not
+	// compiling with XeTeX or LuaTeX, the encoding
 	// should be set back to that local_font's encoding.
-	// However, do not change the encoding when non-TeX fonts are used.
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-		&& runparams.flavor != OutputParams::XETEX // see BufferParams::encoding
+		&& !runparams.isFullUnicode()
 	   ) {
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
@@ -1288,6 +1286,13 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
 		   bool force)
 {
+	// XeTeX/LuaTeX use only one encoding per document:
+	// * with useNonTeXFonts: "utf8plain",
+	// * with XeTeX and TeX fonts: "ascii" (inputenc fails),
+	// * with LuaTeX and TeX fonts: only one encoding accepted by luainputenc.
+	if (runparams.isFullUnicode())
+		return make_pair(false, 0);
+
 	Encoding const & oldEnc = *runparams.encoding;
 	bool moving_arg = runparams.moving_arg;
 	// If we switch from/to CJK, we need to switch anyway, despite custom inputenc

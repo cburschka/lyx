@@ -327,6 +327,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		}
 	}
 
+	// FIXME: skip this for XeTeX/LuaTeX? With nonTeXfonts or always?
 	if (language()->encoding()->package() == Encoding::CJK) {
 		pair<bool, int> const c = switchEncoding(os, bparams,
 				runparams, *(language()->encoding()));

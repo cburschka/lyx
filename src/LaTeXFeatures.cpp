@@ -711,8 +711,9 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 
 void LaTeXFeatures::getFontEncodings(vector<string> & encodings) const
 {
-	// these must be loaded if glyphs of this script
-	// are used (notwithstanding the language)
+	// these must be loaded if glyphs of this script are used
+	// unless a language providing them is used in the document
+	// FIXME: currently the option is written twice in this case
 	if (mustProvide("textgreek"))
 		encodings.insert(encodings.begin(), "LGR");
 	if (mustProvide("textcyr"))
