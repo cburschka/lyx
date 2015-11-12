@@ -60,6 +60,7 @@ sub addNewJob($$$$$);
 sub addFileCopyJob($$$$);
 sub getNewNameOf($$);
 sub getlangs($$);
+sub simplifylangs($);
 sub getLangEntry();
 
 # convert lyx file to be compilable with xetex
@@ -82,11 +83,9 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)[\/_]/) {
   $lang = $1;
 }
 
-if (defined($languageFile)) {
-}
 my $inputEncoding = undef;
 if ($fontT eq "systemF") {
-  if ($lang =~ /^(ru|uk|sk)$/) {
+  if ($lang =~ /^(ru|uk|sk|el)$/) {
     $font{roman} = "DejaVu Serif";
     $font{sans} = "DejaVu Sans";
     $font{typewriter} = "DejaVu Sans Mono";
@@ -119,16 +118,18 @@ if ($fontT eq "systemF") {
   }
   else {
     # default system fonts
-    $font{roman} = "FreeSans";
+    $font{roman} = "FreeSerif";
     $font{sans} = "FreeSans";
-    $font{typewriter} = "FreeSans";
+    $font{typewriter} = "FreeMono";
   }
 }
 else {
   # use tex font here
   my %encoding = ();
   if (defined($languageFile)) {
-    &getlangs($languageFile, \%encoding);
+    # The 2 lines below does not seem to have any effect
+    #&getlangs($languageFile, \%encoding);
+    #&simplifylangs(\%encoding);
   }
   if ($format =~ /^(pdf4)$/) { # xelatex
     # set input encoding to 'ascii' always
@@ -141,7 +142,7 @@ else {
     # when to set input encoding to 'ascii'?
     if (defined($encoding{$lang})) {
       $inputEncoding = {
-	"search" => 'auto|default', # this will be substituted from '\inputencoding'-line
+	"search" => '.*', # this will be substituted from '\inputencoding'-line
 	"out" => $encoding{$lang},
       };
     }
@@ -417,17 +418,53 @@ sub getlangs($$)
       if ($l =~ /^Language/) {
         my ($lng, $enc) = &getLangEntry();
         if (defined($lng)) {
-          my @tag = split('_', $lng);
-          if ($tag[0] eq lc($tag[1])) {
-            $lng = $tag[0];
-          }
-          if (! defined($rencoding->{$lng})) {
-            $rencoding->{$lng} = $enc;
-          }
+          $rencoding->{$lng} = $enc;
         }
       }
     }
     close(FI);
+  }
+}
+
+sub simplifylangs($)
+{
+  my ($rencoding) = @_;
+  my $base = "";
+  my $enc = "";
+  my $differ = 0;
+  my @klist = ();
+  my @klist2 = ();
+  for my $k (reverse sort keys %{$rencoding}) {
+    my @tag = split('_', $k);
+    if ($tag[0] eq $base) {
+      push(@klist, $k);
+      if ($rencoding->{$k} ne $enc) {
+	$differ = 1;
+      }
+    }
+    else {
+      # new base, check that old base was OK
+      if ($base ne "") {
+	if ($differ == 0) {
+	  $rencoding->{$base} = $enc;
+	  push(@klist2, @klist);
+	}
+      }
+      @klist = ($k);
+      $base = $tag[0];
+      $enc = $rencoding->{$k};
+      $differ = 0;
+    }
+  }
+  if ($base ne "") {
+    # close handling for last entry too
+    if ($differ == 0) {
+      $rencoding->{$base} = $enc;
+      push(@klist2, @klist);
+    }
+  }
+  for my $k (@klist2) {
+    delete($rencoding->{$k});
   }
 }
 
