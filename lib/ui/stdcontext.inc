@@ -441,16 +441,17 @@ Menuset
 	End
 	
 	Menu "context-tabular"
+		Item "Normal Table|g" "inset-modify tabular unset-longtabular"		
+		Item "Breakable Table|g" "inset-modify tabular set-longtabular"
+		Separator
+		Item "Default Style|m" "inset-modify tabular unset-booktabs"
 		Item "Formal Style|m" "inset-modify tabular set-booktabs"
-		Item "Longtable|g" "inset-modify tabular set-longtabular"
 		Separator
 		Submenu "Borders|d" "table-borders"
-		Separator
-		Submenu "Align|i" "table-alignment"
-		Separator
+		Submenu "Alignment|i" "table-alignment"
 		Submenu "Columns/Rows|C" "table-cols-rows"
 		Separator
-		Item "Settings...|S" "inset-settings tabular"
+		Item "Settings Dialog...|S" "inset-settings tabular"
 	End
 
 #
