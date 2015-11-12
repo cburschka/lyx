@@ -147,6 +147,7 @@ enumitem
 \html_css_as_file 0
 \html_be_strict true
 \author -195340706 "Georg Baum" 
+\author 2047637253 "Guillaume Munch" 
 \end_header
 
 \begin_body
@@ -8171,14 +8172,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8191,7 +8190,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -22651,7 +22649,11 @@ This is a minipage with some stupid dummy text.
 \begin_layout Standard
 When you right-click on a minipage box, you can transform the box to another
  box type.
- All box types and their settings are explained in detail in chapter 
+ All box types and their settings
+\change_inserted 2047637253 1447344632
+, as well as variable-width minipages,
+\change_unchanged
+ are explained in detail in chapter 
 \emph on
 Boxes
 \emph default
