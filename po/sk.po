@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-11-03 17:03+0100\n"
-"PO-Revision-Date: 2015-11-03 21:44+0000\n"
+"POT-Creation-Date: 2015-11-12 14:10+0100\n"
+"PO-Revision-Date: 2015-11-12 13:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4576,7 +4576,7 @@ msgstr "O&kraje"
 
 #: src/frontends/qt4/ui/TabularUi.ui:590
 msgid "Set Borders"
-msgstr "Nastaviť okraje"
+msgstr "Nastaviť Okraje"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1086
 msgid "Set borders of the current (selected) cell(s)"
@@ -4584,7 +4584,7 @@ msgstr "Nastaviť okraje pre aktuálne (vybrané) bunky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1099
 msgid "All Borders"
-msgstr "Všetky okraje"
+msgstr "Všetky Okraje"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1105
 msgid "Set all borders of the current (selected) cell(s)"
@@ -16769,14 +16769,6 @@ msgstr "Viacstĺpcové"
 msgid "Multirow|w"
 msgstr "Viacriadkové"
 
-#: lib/ui/stdcontext.inc:412
-msgid "Top Line|n"
-msgstr "Vrchný riadok"
-
-#: lib/ui/stdcontext.inc:413
-msgid "Bottom Line|i"
-msgstr "Spodný Riadok"
-
 #: lib/ui/stdcontext.inc:414 lib/ui/stdmenus.inc:200
 msgid "Left Line|L"
 msgstr "Ľavý riadok"
@@ -16852,6 +16844,26 @@ msgstr "Presunúť Stĺpec Doprava"
 #: lib/ui/stdcontext.inc:436 lib/ui/stdmenus.inc:228
 msgid "Move Column Left"
 msgstr "Presunúť Stĺpec Doľava"
+
+#: lib/ui/stdcontext.inc:444
+msgid "Formal Style|m"
+msgstr "Formálny Štýl|F"
+
+#: lib/ui/stdcontext.inc:445
+msgid "Longtable|g"
+msgstr "Dlhá tabuľka|D"
+
+#: lib/ui/stdcontext.inc:447
+msgid "Borders|d"
+msgstr "Okraje|O"
+
+#: lib/ui/stdcontext.inc:449
+msgid "Align|i"
+msgstr "Zarovnanie|Z"
+
+#: lib/ui/stdcontext.inc:451
+msgid "Columns/Rows|C"
+msgstr "Stĺpce/Riadky|S"
 
 #: lib/ui/stdcontext.inc:446 lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -23273,10 +23285,6 @@ msgstr "LyX sa pokúsil zavrieť dokument s neuloženými zmenami!\n"
 msgid "Attempting to close changed document!"
 msgstr "Pokúšam sa zavrieť zmenený dokument!"
 
-#: src/Buffer.cpp:502
-msgid "Could not remove temporary directory"
-msgstr "Pomocný adresár sa nedal zmazať"
-
 #: src/Buffer.cpp:503
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
@@ -25023,10 +25031,6 @@ msgstr "Nedá sa zmazať pomocný adresár"
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Nedá sa zmazať pomocný adresár %1$s"
-
-#: src/LyX.cpp:426
-msgid "Unable to remove temporary directory"
-msgstr "Nedá sa zmazať pomocný adresár"
 
 #: src/LyX.cpp:454
 #, c-format
@@ -31195,6 +31199,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Top Line|n"
+#~ msgstr "Vrchný riadok"
+
+#~ msgid "Bottom Line|i"
+#~ msgstr "Spodný Riadok"
+
+#~ msgid "Could not remove temporary directory"
+#~ msgstr "Pomocný adresár sa nedal zmazať"
+
+#~ msgid "Unable to remove temporary directory"
+#~ msgstr "Nedá sa zmazať pomocný adresár"
 
 #~ msgid "Copy to Clip&board"
 #~ msgstr "&Kopírovať do schránky"
