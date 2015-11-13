@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/hu/
 \textclass article
 \begin_preamble
 \usepackage{indentfirst}
@@ -13,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -74,33 +75,38 @@
 \begin_body
 
 \begin_layout Title
-Üdvözli Önt a LyX!
+Üdvözli Önt a \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-A legfontosabb dolgok, amiket tudnia kell a LyX-ről
+A legfontosabb dolgok, amiket tudnia kell a \SpecialCharNoPassThru LyX
+-ről
 \end_layout
 
 \begin_layout Enumerate
-A LyX rendkívül jól dokumentált.
+A \SpecialCharNoPassThru LyX
+ rendkívül jól dokumentált.
  Kérjük használja ki ezt! Kezdje a 
 \family sans
-Segítség\SpecialChar \menuseparator
+Segítség\SpecialChar menuseparator
 Bevezetés
 \family default
  elolvasásával, ami gyors áttekintést ad a dokumentáció használatával kapcsolatb
 an.
  Aztán folytassa a 
 \family sans
-Segítség\SpecialChar \menuseparator
+Segítség\SpecialChar menuseparator
 Tankönyv
 \family default
- olvasásával, amelynek segítségével elsajátíthatja a LyX használatával kapcsolat
+ olvasásával, amelynek segítségével elsajátíthatja a \SpecialCharNoPassThru LyX
+ használatával kapcsolat
 os alapvető dolgokat.
 \end_layout
 
 \begin_layout Enumerate
-A LyX az, amit mi 
+A \SpecialCharNoPassThru LyX
+ az, amit mi 
 \begin_inset Quotes pld
 \end_inset
 
@@ -126,18 +132,22 @@ Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 \end_layout
 
 \begin_layout Enumerate
-A LyX segítségével szép dokumentumokat készíthetünk! Válassza a 
+A \SpecialCharNoPassThru LyX
+ segítségével szép dokumentumokat készíthetünk! Válassza a 
 \family sans
-Nézet\SpecialChar \menuseparator
+Nézet\SpecialChar menuseparator
 DVI
 \family default
  menüpontot, és ellenőrizze saját maga.
 \end_layout
 
 \begin_layout Enumerate
-Igen, a LyX tudja (majdnem) mindazt, amit a LaTeX, valamint képes LaTeX
+Igen, a \SpecialCharNoPassThru LyX
+ tudja (majdnem) mindazt, amit a \SpecialCharNoPassThru LaTeX
+, valamint képes \SpecialCharNoPassThru LaTeX
  fájlokat importálni is.
- Gyakorlott LaTeX felhasználók ki is hagyhatják a 
+ Gyakorlott \SpecialCharNoPassThru LaTeX
+ felhasználók ki is hagyhatják a 
 \emph on
 Tankönyv
 \emph default
@@ -145,30 +155,36 @@ Tankönyv
 \begin_inset Quotes pld
 \end_inset
 
-LyX LaTeX felhasználóknak
+\SpecialCharNoPassThru LyX
+ \SpecialCharNoPassThru LaTeX
+ felhasználóknak
 \begin_inset Quotes prd
 \end_inset
 
  résszel.
- (A többiek ne essenek kétségbe, nem kell megtanulni a LaTeX használatát
- ahhoz, hogy a LyX-et használni tudják.)
+ (A többiek ne essenek kétségbe, nem kell megtanulni a \SpecialCharNoPassThru LaTeX
+ használatát
+ ahhoz, hogy a \SpecialCharNoPassThru LyX
+-et használni tudják.)
 \end_layout
 
 \begin_layout Enumerate
-A LyX rengeteg hasznos lehetőséggel rendelkezik mindazok számára, akik az
+A \SpecialCharNoPassThru LyX
+ rengeteg hasznos lehetőséggel rendelkezik mindazok számára, akik az
  angol-tól eltérő nyelven készítenek dokumentumokat.
  A billentyűzet, a eszköztárak és sok egyéb jellemző nagymértékben testreszabhat
 ó az igényeinek megfelelően.
  További információkért olvassa el a 
 \family sans
-Segítség\SpecialChar \menuseparator
+Segítség\SpecialChar menuseparator
 Testreszabás
 \family default
  részt.
 \end_layout
 
 \begin_layout Enumerate
-A LyX honlapja a következő címen található meg: 
+A \SpecialCharNoPassThru LyX
+ honlapja a következő címen található meg: 
 \family typewriter
 
 \begin_inset Flex URL
@@ -184,13 +200,16 @@ http://www.lyx.org/
 
 \family default
 .
- Itt további információkat tudhat meg a LyX-ről, feliratkozhat a levelezőlistákr
-a, vagy megnézheti hogyan néz ki a LyX menetközben stb\SpecialChar \ldots{}
+ Itt további információkat tudhat meg a \SpecialCharNoPassThru LyX
+-ről, feliratkozhat a levelezőlistákr
+a, vagy megnézheti hogyan néz ki a \SpecialCharNoPassThru LyX
+ menetközben stb\SpecialChar ldots
 
 \begin_inset Newline newline
 \end_inset
 
-A LyX magyar honlapja a 
+A \SpecialCharNoPassThru LyX
+ magyar honlapja a 
 \family typewriter
 
 \begin_inset Flex URL

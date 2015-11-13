@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ja/
 \textclass beamer
 \begin_preamble
 % 3.45em幅のサイドバーを左に付けた「Berkeley」テーマを用います
@@ -22,16 +23,16 @@
 \language_package default
 \inputencoding utf8-platex
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -83,7 +84,8 @@
 \begin_body
 
 \begin_layout Title
-BeamerとLyXを用いた発表
+Beamerと\SpecialCharNoPassThru LyX
+を用いた発表
 \end_layout
 
 \begin_layout Subtitle
@@ -91,7 +93,8 @@ BeamerとLyXを用いた発表
 \end_layout
 
 \begin_layout Author
-LyXプロジェクトチーム
+\SpecialCharNoPassThru LyX
+プロジェクトチーム
 \end_layout
 
 \begin_layout Date
@@ -110,6 +113,9 @@ LyXプロジェクトチーム
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -175,6 +181,9 @@ Beamer
 \end_inset
 
 クラスを用いると、発表スライドを生成することができます。これは
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -199,7 +208,8 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-LaTeXの超高品質な出力を使用することができ
+\SpecialCharNoPassThru LaTeX
+の超高品質な出力を使用することができ
 \end_layout
 
 \begin_layout Itemize
@@ -215,9 +225,13 @@ LaTeXの超高品質な出力を使用することができ
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -234,6 +248,9 @@ status open
 
 \begin_layout Frame
 この発表は、
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -251,7 +268,8 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-とくに、これらをLyX中でどのように使うことができるか
+とくに、これらを\SpecialCharNoPassThru LyX
+中でどのように使うことができるか
 \end_layout
 
 \end_deeper
@@ -295,6 +313,9 @@ status open
 
 \begin_layout Frame
 通常、発表には
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -315,9 +336,13 @@ status open
 などが含まれます。以下では、全体構造のうちの、これらの各部について説明します。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -333,7 +358,8 @@ status open
 \end_layout
 
 \begin_layout Frame
-LyXでは、表題ページは、
+\SpecialCharNoPassThru LyX
+では、表題ページは、
 \begin_inset Flex Structure
 status collapsed
 
@@ -394,6 +420,9 @@ status collapsed
 \end_inset
 
 の各レイアウトで構成されます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -470,10 +499,10 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
-見出し短縮形\SpecialChar \slash{}
-日付短縮形\SpecialChar \slash{}
-\SpecialChar \ldots{}
+挿入\SpecialChar menuseparator
+見出し短縮形\SpecialChar breakableslash
+日付短縮形\SpecialChar breakableslash
+\SpecialChar ldots
 
 \end_layout
 
@@ -506,9 +535,13 @@ status collapsed
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -534,6 +567,9 @@ Beamer
 \end_inset
 
 では、スライドのことを「フレーム」と呼びます。フレーム内のものは全て、1つのスライドに収められます(スライドの中に副スライドを収めることもあります)。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -557,7 +593,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 フレーム見出し
 \end_layout
 
@@ -601,7 +637,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 フレームオプション
 \end_layout
 
@@ -619,7 +655,7 @@ key "beamer-ug"
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 重ね合わせ指定
 \end_layout
 
@@ -630,7 +666,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 重ね合わせ指定の既定値
 \end_layout
 
@@ -640,9 +676,13 @@ status collapsed
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -683,6 +723,9 @@ status open
 
 \begin_layout Frame
 それには、(このフレームで行なっているように)各フレームのフレームオプションに「label」を指定して、ラベル名を付けます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -717,13 +760,16 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 重ね合わせ指定
 \end_layout
 
 \end_inset
 
 で指定するだけです(再度「重ね合わせ」の概念については、下記参照)。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -767,9 +813,10 @@ proofname}{証明}
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-LaTeXプリアンブル
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+プリアンブル
 \end_layout
 
 \end_inset
@@ -778,9 +825,13 @@ LaTeXプリアンブル
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -792,6 +843,9 @@ status open
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -815,7 +869,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 リストの階層を下げる
 \end_layout
 
@@ -831,7 +885,8 @@ arg   "depth-increment"
 \end_layout
 
 \begin_layout Itemize
-内容物を入れ子にしたことは、LyX作業領域の余白に赤い傍線で表示されます。
+内容物を入れ子にしたことは、\SpecialCharNoPassThru LyX
+作業領域の余白に赤い傍線で表示されます。
 \end_layout
 
 \end_deeper
@@ -843,9 +898,13 @@ arg   "depth-increment"
 ですから、これは避けてくださいね。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -874,6 +933,9 @@ status collapsed
 \end_inset
 
 段落様式で分けることができます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -903,7 +965,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 環境を分割
 \end_layout
 
@@ -960,9 +1022,13 @@ status open
 myframe
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout PlainFrame
 \begin_inset Argument 4
@@ -978,7 +1044,11 @@ status open
 \end_layout
 
 \begin_layout PlainFrame
-LyXは、以下の2つの特殊なフレーム型を提供しています。
+\SpecialCharNoPassThru LyX
+は、以下の2つの特殊なフレーム型を提供しています。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1013,9 +1083,13 @@ status collapsed
 白紙の脆弱フレームが欲しい場合には、脆弱フレームに「plain」オプションを渡すか、白紙フレームに「fragile」オプションを渡してください。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1027,6 +1101,9 @@ status open
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1070,9 +1147,13 @@ status collapsed
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1084,6 +1165,9 @@ status open
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1107,7 +1191,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-表示\SpecialChar \menuseparator
+表示\SpecialChar menuseparator
 文書構造面
 \end_layout
 
@@ -1131,9 +1215,13 @@ status collapsed
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1146,6 +1234,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1154,7 +1245,11 @@ status open
 \end_layout
 
 \begin_layout Itemize
-付録は、LyX中では、以下のようにして通常通り入力することができます。
+付録は、\SpecialCharNoPassThru LyX
+中では、以下のようにして通常通り入力することができます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1164,7 +1259,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 ここから付録を開始
 \end_layout
 
@@ -1176,11 +1271,15 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 付録によく収録されるのは書誌情報です。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-他の全LyXクラスで行われるように、
+他の全\SpecialCharNoPassThru LyX
+クラスで行われるように、
 \begin_inset Flex Structure
 status collapsed
 
@@ -1194,7 +1293,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-BibTeXスタイルのすべてが
+Bib\SpecialCharNoPassThru TeX
+スタイルのすべてが
 \begin_inset Flex Structure
 status collapsed
 
@@ -1204,7 +1304,8 @@ Beamer
 
 \end_inset
 
-と協働できる訳ではないですが、BibTeXを使うこともできます。
+と協働できる訳ではないですが、Bib\SpecialCharNoPassThru TeX
+を使うこともできます。
 \end_layout
 
 \end_deeper
@@ -1229,6 +1330,9 @@ status open
 \begin_layout Frame
 基本的には、重ね合わせは、スライドの中身を動的に変更できるようにするものです。ものや文章を少しずつ開示したり、内容をフェイドアウトさせ、強調したり、文字や画像を
 取り替えたりといったことができます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1281,9 +1385,13 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1309,6 +1417,9 @@ Beamer
 \end_inset
 
 では、多くの重ね合わせ型が提供されています。中でも重要なものは
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1329,9 +1440,13 @@ Beamer
 これらの型の例は後に挙げますが、まずは重ね合わせの指定可能性についての一般的な注意から始めましょう。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1406,16 +1521,20 @@ article
 \end_inset
 
 など)。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyXでは、これらの設定は、一般に
+\SpecialCharNoPassThru LyX
+では、これらの設定は、一般に
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 重ね合わせ指定
 \end_layout
 
@@ -1426,7 +1545,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 動作指定
 \end_layout
 
@@ -1445,6 +1564,9 @@ status open
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1478,9 +1600,10 @@ status collapsed
 \begin_layout Plain Layout
 
 \size footnotesize
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-LaTeXプリアンブル
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+プリアンブル
 \end_layout
 
 \end_inset
@@ -1500,6 +1623,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1508,7 +1634,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-LaTeX愛の人たちへの註
+\SpecialCharNoPassThru LaTeX
+愛の人たちへの註
 \end_layout
 
 \end_inset
@@ -1517,7 +1644,8 @@ LaTeX愛の人たちへの註
 \end_layout
 
 \begin_layout AlertBlock
-上述の重ね合わせと動作の設定は、LaTeX出力では
+上述の重ね合わせと動作の設定は、\SpecialCharNoPassThru LaTeX
+出力では
 \begin_inset Flex Alert
 status collapsed
 
@@ -1525,7 +1653,7 @@ status collapsed
 \begin_inset space \space{}
 \end_inset
 
-<\SpecialChar \ldots{}
+<\SpecialChar ldots
 >
 \end_layout
 
@@ -1536,7 +1664,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-[<\SpecialChar \ldots{}
+[<\SpecialChar ldots
 >]
 \end_layout
 
@@ -1546,15 +1674,20 @@ status collapsed
 \end_layout
 
 \begin_layout AlertBlock
-LyXは、書き出し時に括弧を追加しますので、括弧は自分で入れてはなりません。つまり、重ね合わせ/動作差込枠には、「<1>」や「[<+->]」ではなく、「1」や「
+\SpecialCharNoPassThru LyX
+は、書き出し時に括弧を追加しますので、括弧は自分で入れてはなりません。つまり、重ね合わせ/動作差込枠には、「<1>」や「[<+->]」ではなく、「1」や「
 +-」と入力してください。
 \end_layout
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1585,13 +1718,16 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 重ね合わせ指定
 \end_layout
 
 \end_inset
 
 で指定することができます。このようにして「2」を入力すれば、引用は第2(副)スライドにのみ表示されます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1633,9 +1769,13 @@ im Winter ist mir heiß.
 重ね合わせは、基本的にこのように動作します。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1653,6 +1793,9 @@ status open
 \begin_layout Frame
 「被覆(covering)」と「蔵匿(hiding)」の違いは、蔵匿対象がそこに無いかのごとく扱われるのに対し、被覆対象は覆われているだけである(スペースは確保
 されている)という点です。前スライドの引用を被覆する代わりに蔵匿したとすると、以下のように、スペースは表示される時だけ確保されます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1694,9 +1837,13 @@ im Winter ist mir heiß.
 引用の蔵匿が解かれるとともに、この文が移動するのがわかるでしょう。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1751,6 +1898,9 @@ setbeamercovered
 
 コマンドを使って、(発表全体にわたって)グローバルにも、(ここでのように1フレームのみなど)ローカルにも設定することができます。既定では、対象は完全に被覆されま
 す。「transparent(透過)」モードでは、被覆文は、以下のように淡色表示されているのがわかります。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1802,9 +1952,13 @@ Beamer
 取扱説明書を参照してください。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1821,6 +1975,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1836,6 +1993,9 @@ status open
 \begin_layout Itemize
 通常の重ね合わせ/動作指定には、順序指定用文法を用います。例えば「+(1)-」とすると、以下のように、個別の項目指定がない限りは、箇条書き中の各項目を一つづつ(
 開始オフセット1で)開示します。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1893,9 +2053,13 @@ Beamer
 
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 2
@@ -1930,26 +2094,29 @@ status open
 \end_layout
 
 \begin_layout Frame
-これによって、重ね合わせ対応の段落や\SpecialChar \ldots{}
+これによって、重ね合わせ対応の段落や\SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
-箇条書き項目は\SpecialChar \ldots{}
+\SpecialChar ldots
+箇条書き項目は\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
-副スライドに一つづつ\SpecialChar \ldots{}
+\SpecialChar ldots
+副スライドに一つづつ\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
-表示されます\SpecialChar \ldots{}
+\SpecialChar ldots
+表示されます\SpecialChar ldots
 
 \end_layout
 
@@ -1967,14 +2134,18 @@ status open
 \end_layout
 
 \begin_layout Block
-\SpecialChar \ldots{}
+\SpecialChar ldots
 次から次へと
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 2
@@ -2005,32 +2176,39 @@ status open
 
 \begin_layout Frame
 \noindent
-このフレームは、既定の重ね合わせ指定を使用しています\SpecialChar \ldots{}
+このフレームは、既定の重ね合わせ指定を使用しています\SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
-これによって、重ね合わせ対応の箇条書き各項目は\SpecialChar \ldots{}
+\SpecialChar ldots
+これによって、重ね合わせ対応の箇条書き各項目は\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
-それぞれの副スライド上で\SpecialChar \ldots{}
+\SpecialChar ldots
+それぞれの副スライド上で\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
 強調されています
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2057,6 +2235,9 @@ status collapsed
 
 レイアウトを用いると、以下のように、それ以降のすべての内容を被覆する点を指定できます(既定では、一時停止以前の内容が開示された後、1つのスライドの間のみ被覆しま
 す)。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2100,7 +2281,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 一時停止回数
 \end_layout
 
@@ -2109,9 +2290,13 @@ status collapsed
 を使えば、それ以前に挿入された一時停止の数に関わらず、一時停止を解除する副スライドを指定することができます。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2136,11 +2321,15 @@ Beamer
 
 \end_inset
 
-およびLyXは、段落全体や複数の段落を、特定のスライドで表示させたり隠したりするための段落レイアウトを用意しています。
+および\SpecialCharNoPassThru LyX
+は、段落全体や複数の段落を、特定のスライドで表示させたり隠したりするための段落レイアウトを用意しています。
 \end_layout
 
 \begin_layout Frame
 これらは具体的に
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2168,13 +2357,16 @@ status collapsed
 
 \end_inset
 
-レイアウト\SpecialChar \ldots{}
+レイアウト\SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
 これには入れ子になっている他のレイアウト段落も追従します。
 \end_layout
 
@@ -2217,11 +2409,14 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-特定のスライドで決められたスペースを占める文を入力することを許す \SpecialChar \ldots{}
+特定のスライドで決められたスペースを占める文を入力することを許す \SpecialChar ldots
 
 \end_layout
 
@@ -2237,11 +2432,14 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  
 \begin_inset Flex Structure
 status collapsed
@@ -2261,9 +2459,13 @@ status collapsed
 ここに表示されています。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2309,12 +2511,13 @@ Beamer
 
 \end_inset
 
-は、文章の一部の行内での重ね合わせをサポートしており、LyX中では、以下のように
+は、文章の一部の行内での重ね合わせをサポートしており、\SpecialCharNoPassThru LyX
+中では、以下のように
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 文字様式
 \end_layout
 
@@ -2324,6 +2527,9 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -2515,9 +2721,13 @@ status collapsed
 メニューから行うことができます。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2538,13 +2748,16 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 文字様式
 \end_layout
 
 \end_inset
 
 でも見つけられます)が重ねあわせを認識します。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2662,7 +2875,8 @@ Beamer
 
 \end_inset
 
-における強調やボールド体の定義のされ方のおかげで、通常の強調やボールド体の指定の仕方では、例えば節見出しで使用したりすると、LaTeXエラーが発生することがあり
+における強調やボールド体の定義のされ方のおかげで、通常の強調やボールド体の指定の仕方では、例えば節見出しで使用したりすると、\SpecialCharNoPassThru LaTeX
+エラーが発生することがあり
 ます。
 \end_layout
 
@@ -2686,6 +2900,9 @@ status open
 
 \begin_layout Frame
 特に発表に適した環境に
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2706,9 +2923,13 @@ status open
 があります。以下では、これらを簡単に説明します。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2735,6 +2956,9 @@ Beamer
 \end_inset
 
 クラスは、外見の異なる、以下の3つの定義済ブロックを提供しています。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2820,9 +3044,13 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2835,11 +3063,18 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyXでは、ブロックは、フレームに類似のインターフェースを持ちます。つまり
+\SpecialCharNoPassThru LyX
+では、ブロックは、フレームに類似のインターフェースを持ちます。つまり
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2857,9 +3092,13 @@ LyXでは、ブロックは、フレームに類似のインターフェース�
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2872,6 +3111,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2882,6 +3124,9 @@ status open
 \end_deeper
 \begin_layout Frame
 定理は、出力はブロックに類似していますが、(型に依存して)固定した見出しを持っています。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2913,9 +3158,10 @@ status collapsed
 \begin_layout Plain Layout
 
 \size footnotesize
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-LaTeXプリアンブル
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+プリアンブル
 \end_layout
 
 \end_inset
@@ -2937,7 +3183,7 @@ LaTeXプリアンブル
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 定理見出し文
 \end_layout
 
@@ -2947,6 +3193,9 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -2969,9 +3218,13 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2988,10 +3241,16 @@ status open
 
 \begin_layout Frame
 発表を段組にすると便利なことがあります。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -3075,6 +3334,9 @@ status collapsed
 
 \begin_layout Frame
 註:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3088,7 +3350,8 @@ status collapsed
 
 \end_inset
 
-環境では、LaTeX文法を使って(とはいえ「3.5cm」のようなものも大丈夫です)幅を指定しなくてはなりません。
+環境では、\SpecialCharNoPassThru LaTeX
+文法を使って(とはいえ「3.5cm」のようなものも大丈夫です)幅を指定しなくてはなりません。
 \end_layout
 
 \begin_layout Itemize
@@ -3153,6 +3416,9 @@ Beamer
 \end_inset
 
 用語では、「モード」は特定の出力経路を指します。各目的のためにモードがいくつか存在しますが、特に3つを取り上げてみたいと思います。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3183,9 +3449,13 @@ Beamer
 文書は「beamer」モードになります。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -3213,11 +3483,17 @@ status open
 \begin_layout Frame
 しかし、文書の一部やフレーム、見出し、すべての「動作」対応環境は、別のモードに切り替えることができます。例えば、このフレームは「presentation」モード
 に切り替えられています。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 それはどういうことですか？
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3228,9 +3504,13 @@ status open
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -3259,9 +3539,13 @@ status open
 このフレームは、発表では表示されませんが、「article」モードにあるので原稿には表示されます。
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3277,7 +3561,12 @@ status open
 \end_layout
 
 \begin_layout Frame
-これは、本当に便利なのですよ！文書を一つだけ作っておいて、発表と配布資料---article(原稿)モードを使って---の両方を生成することができるのです。
+これは、本当に便利なのですよ！文書を一つだけ作っておいて、発表と配布資料\threehyphens
+article(原稿)モードを使って\threehyphens
+の両方を生成することができるのです。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3305,14 +3594,18 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-等々 \SpecialChar \ldots{}
+等々 \SpecialChar ldots
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3329,6 +3622,9 @@ status open
 
 \begin_layout Frame
 既述のように多くの要素がモードに対応しています。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3339,8 +3635,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-編集\SpecialChar \menuseparator
-文字様式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+文字様式\SpecialChar menuseparator
 限定挿入(only)
 \end_layout
 
@@ -3398,8 +3694,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
-任意設定差込枠\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+任意設定差込枠\SpecialChar menuseparator
 原稿モード
 \end_layout
 
@@ -3420,8 +3716,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
-任意設定差込枠\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+任意設定差込枠\SpecialChar menuseparator
 発表モード
 \end_layout
 
@@ -3432,6 +3728,9 @@ status collapsed
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -3483,14 +3782,18 @@ article
 \end_layout
 
 \begin_layout Itemize
-この種のことはまだまだあります\SpecialChar \ldots{}
+この種のことはまだまだあります\SpecialChar ldots
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3506,7 +3809,11 @@ status open
 \end_layout
 
 \begin_layout Frame
-LyXでbeamer article(原稿)を作るのは簡単です。
+\SpecialCharNoPassThru LyX
+でbeamer article(原稿)を作るのは簡単です。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3542,9 +3849,9 @@ Beamer Article (KOMA-Script)
 status collapsed
 
 \begin_layout Plain Layout
-挿入\SpecialChar \menuseparator
-ファイル\SpecialChar \menuseparator
-子文書\SpecialChar \ldots{}
+挿入\SpecialChar menuseparator
+ファイル\SpecialChar menuseparator
+子文書\SpecialChar ldots
 
 \end_layout
 
@@ -3578,6 +3885,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3610,9 +3920,10 @@ Beamer
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-LaTeXプリアンブル
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+プリアンブル
 \end_layout
 
 \end_inset
@@ -3654,9 +3965,13 @@ key "beamer-ug"
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3673,6 +3988,9 @@ status open
 
 \begin_layout Frame
 しかし、外見を変更したい時に、更の状態からテーマを書く必要はありません。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3703,7 +4021,7 @@ key "beamer-ug"
 
 \end_deeper
 \begin_layout Section
-さらに\SpecialChar \ldots{}
+さらに\SpecialChar ldots
 
 \end_layout
 
@@ -3712,7 +4030,7 @@ key "beamer-ug"
 status open
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
+\SpecialChar ldots
 もっとたくさん！
 \end_layout
 
@@ -3752,7 +4070,8 @@ key "beamer-ug"
 \end_layout
 
 \begin_layout Frame
-また、LyXに同梱されている
+また、\SpecialCharNoPassThru LyX
+に同梱されている
 \begin_inset Flex Structure
 status collapsed
 
@@ -3796,6 +4115,9 @@ newblock
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 

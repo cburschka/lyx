@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \begin_preamble
 %
@@ -22,16 +23,16 @@ noweb
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -99,7 +100,7 @@ May 6, 1999
 
 \begin_layout Abstract
 This document describes and implements a perl script for importing noweb
- files into LyX
+ files into \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
@@ -123,19 +124,22 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Since version 1.0.1, LyX now supports Literate Programming using 
+Since version 1.0.1, \SpecialCharNoPassThru LyX
+ now supports Literate Programming using 
 \noun on
 noweb
 \noun default
 .
- This addition to LyX made it very pleasant to write programs in the literate
+ This addition to \SpecialCharNoPassThru LyX
+ made it very pleasant to write programs in the literate
  style (like this one).
  In addition to being able to write new literate programs, it would be quite
  useful if old 
 \noun on
 noweb
 \noun default
- code could be imported into LyX in some fashion.
+ code could be imported into \SpecialCharNoPassThru LyX
+ in some fashion.
  That's where this program comes in.
 \end_layout
 
@@ -148,7 +152,8 @@ noweb2lyx
 \noun on
 noweb
 \noun default
- file to LyX.
+ file to \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -248,7 +253,8 @@ noweb2lyx.in
 
 \begin_layout Plain Layout
 
-<<Convert noweb to LyX>>
+<<Convert noweb to \SpecialCharNoPassThru LyX
+>>
 \end_layout
 
 \end_inset
@@ -279,7 +285,8 @@ status open
 
 \begin_layout Plain Layout
 
-We can do arbitrary LaTeX code here.
+We can do arbitrary \SpecialCharNoPassThru LaTeX
+ code here.
 \end_layout
 
 \begin_layout Plain Layout
@@ -381,13 +388,17 @@ noweb
 \end_layout
 
 \begin_layout Standard
-When first tackling this problem, I spoke with members of the LyX team that
- knew about the literate programming extensions and reLyX (the LaTeX importing
+When first tackling this problem, I spoke with members of the \SpecialCharNoPassThru LyX
+ team that
+ knew about the literate programming extensions and re\SpecialCharNoPassThru LyX
+ (the \SpecialCharNoPassThru LaTeX
+ importing
  code).
 \end_layout
 
 \begin_layout Standard
-One of the first ideas was to extend the reLyX code to understand the 
+One of the first ideas was to extend the re\SpecialCharNoPassThru LyX
+ code to understand the 
 \noun on
 noweb
 \noun default
@@ -403,7 +414,8 @@ Not the least of these problems is the fact that << is a quote in French.
 \end_inset
 
 .
- On the other hand, it turns out that reLyX contains a very useful literal
+ On the other hand, it turns out that re\SpecialCharNoPassThru LyX
+ contains a very useful literal
  quoting mechanism.
  If the input file contains the construct
 \end_layout
@@ -411,42 +423,51 @@ Not the least of these problems is the fact that << is a quote in French.
 \begin_layout LyX-Code
 
 \backslash
-begin{reLyXskip}
+begin{re\SpecialCharNoPassThru LyX
+skip}
 \begin_inset Newline newline
 \end_inset
 
 {...
- LaTeX stuff ...}
+ \SpecialCharNoPassThru LaTeX
+ stuff ...}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
-end{reLyXskip}
+end{re\SpecialCharNoPassThru LyX
+skip}
 \end_layout
 
 \begin_layout Standard
-then reLyX will copy the surrounded code to the output file verbatim.
+then re\SpecialCharNoPassThru LyX
+ will copy the surrounded code to the output file verbatim.
  Given this, the first part of the translation is easy; we simply have to
  copy the code chunks into an intermediate file that surrounds them with
  
 \family typewriter
 
 \backslash
-begin{reLyXskip}
+begin{re\SpecialCharNoPassThru LyX
+skip}
 \family default
  and 
 \family typewriter
 
 \backslash
-end{reLyXskip}
+end{re\SpecialCharNoPassThru LyX
+skip}
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-Once reLyX is done with the input file, the problem is reduced to changing
- the code chunks from LyX's LaTeX layout to the Chunk layout.
+Once re\SpecialCharNoPassThru LyX
+ is done with the input file, the problem is reduced to changing
+ the code chunks from \SpecialCharNoPassThru LyX
+'s \SpecialCharNoPassThru LaTeX
+ layout to the Chunk layout.
 \end_layout
 
 \begin_layout Standard
@@ -456,7 +477,8 @@ noweb2lyx
 \noun default
 .
  We want to be able to run it as a simple pre-processor and post-processor
- from within reLyX.
+ from within re\SpecialCharNoPassThru LyX
+.
  We can accomplish this by setting the flags 
 \family roman
 \series medium
@@ -536,7 +558,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Convert noweb to LyX
+Convert noweb to \SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -546,7 +568,8 @@ if (!$post_only) {
 
 \begin_layout Plain Layout
 
-  <<Transform noweb for reLyX>>
+  <<Transform noweb for re\SpecialCharNoPassThru LyX
+>>
 \end_layout
 
 \begin_layout Plain Layout
@@ -561,7 +584,8 @@ if ((!$pre_only) && (!$post_only)) {
 
 \begin_layout Plain Layout
 
-  <<Run reLyX on intermediate file>>
+  <<Run re\SpecialCharNoPassThru LyX
+ on intermediate file>>
 \end_layout
 
 \begin_layout Plain Layout
@@ -576,7 +600,8 @@ if (!$pre_only) {
 
 \begin_layout Plain Layout
 
-  <<Fix up LyX file>>
+  <<Fix up \SpecialCharNoPassThru LyX
+ file>>
 \end_layout
 
 \begin_layout Plain Layout
@@ -595,12 +620,14 @@ if (!$pre_only) {
 \end_layout
 
 \begin_layout Section
-Making a file that reLyX can process
+Making a file that re\SpecialCharNoPassThru LyX
+ can process
 \end_layout
 
 \begin_layout Standard
 In this section, we present the code that performs the task of creating
- the intermediate file that reLyX can process, using the algorithm that
+ the intermediate file that re\SpecialCharNoPassThru LyX
+ can process, using the algorithm that
  we just outlined.
  This algorithm is outlined in the code that follows:
 \end_layout
@@ -615,7 +642,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<Transform noweb for reLyX>>=
+<<Transform noweb for re\SpecialCharNoPassThru LyX
+>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -715,7 +743,8 @@ s+(.*)/) { # Beginning of a documentation chunk
 
 \begin_layout Standard
 In the code above, we do some pre-processing of the noweb ``[[...]]'' construct.
- This avoids some problems with reLyX confusing lists composed of ``[[...]]''
+ This avoids some problems with re\SpecialCharNoPassThru LyX
+ confusing lists composed of ``[[...]]''
  constructs.
 \end_layout
 
@@ -789,7 +818,8 @@ file, once we have identified a
 \noun on
 noweb
 \noun default
- code chunk, we transform it into a form that is usable by reLyX.
+ code chunk, we transform it into a form that is usable by re\SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -817,7 +847,8 @@ Read in and output the noweb code chunk
 
 \begin_layout Plain Layout
 
-<<print out the chunk in a reLyXskip block>>
+<<print out the chunk in a re\SpecialCharNoPassThru LyX
+skip block>>
 \end_layout
 
 \end_inset
@@ -897,7 +928,8 @@ status collapsed
 \color inherit
 to read and write files.
  In the code fragment above, we need to read from the input file and write
- to a file that will be later transformed by reLyX.
+ to a file that will be later transformed by re\SpecialCharNoPassThru LyX
+.
  If we are being called only to pre-process the input file, then there is
  no need to create a temporary file.
 \end_layout
@@ -1166,7 +1198,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-print out the chunk in a reLyXskip block
+print out the chunk in a re\SpecialCharNoPassThru LyX
+skip block
 \end_layout
 
 \end_inset
@@ -1175,7 +1208,8 @@ print OUTPUT "
 \backslash
 
 \backslash
-begin{reLyXskip}
+begin{re\SpecialCharNoPassThru LyX
+skip}
 \backslash
 n";
 \end_layout
@@ -1191,7 +1225,8 @@ print OUTPUT "
 \backslash
 
 \backslash
-end{reLyXskip}
+end{re\SpecialCharNoPassThru LyX
+skip}
 \backslash
 n
 \backslash
@@ -1302,11 +1337,12 @@ close(OUTPUT);
 \end_layout
 
 \begin_layout Section
-Running reLyX
+Running re\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-In this section, we describe and implement the code that runs reLyX on the
+In this section, we describe and implement the code that runs re\SpecialCharNoPassThru LyX
+ on the
  intermediate file 
 \family roman
 \series medium
@@ -1345,7 +1381,8 @@ Selecting the document class
 \end_layout
 
 \begin_layout Standard
-In order to run reLyX, we need to know the article class of the input document
+In order to run re\SpecialCharNoPassThru LyX
+, we need to know the article class of the input document
  (to choose the corresponding literate document layout).
  For this, we need to parse the intermediate file.
 \end_layout
@@ -1360,7 +1397,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-Run reLyX on intermediate file
+Run re\SpecialCharNoPassThru LyX
+ on intermediate file
 \end_layout
 
 \end_inset
@@ -1370,7 +1408,8 @@ Run reLyX on intermediate file
 
 \begin_layout Plain Layout
 
-<<Run reLyX with document class>>
+<<Run re\SpecialCharNoPassThru LyX
+ with document class>>
 \end_layout
 
 \end_inset
@@ -1389,12 +1428,13 @@ noweb2lyx
 \emph on
 noweb2lyx.nw
 \emph default
- file that is generated by LyX
+ file that is generated by \SpecialCharNoPassThru LyX
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-reLyX searches for 
+re\SpecialCharNoPassThru LyX
+ searches for 
 \backslash
 
 \backslash
@@ -1466,7 +1506,8 @@ class and gets confused, so we have to obfuscate it slightly.
 \noun on
 noweb2lyx
 \noun default
- on itself and a produce a quite reasonable LyX file.
+ on itself and a produce a quite reasonable \SpecialCharNoPassThru LyX
+ file.
 \end_layout
 
 \begin_layout Standard
@@ -1544,7 +1585,8 @@ close(INPUT);
 \end_layout
 
 \begin_layout Subsection
-Running reLyX with the corresponding literate document layout
+Running re\SpecialCharNoPassThru LyX
+ with the corresponding literate document layout
 \end_layout
 
 \begin_layout Standard
@@ -1557,7 +1599,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<Run reLyX with document class>>= 
+<<Run re\SpecialCharNoPassThru LyX
+ with document class>>= 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1568,14 +1611,16 @@ $doc_class = "literate-" .
 
 \begin_layout Plain Layout
 
-die "reLyX returned non-zero: $!
+die "re\SpecialCharNoPassThru LyX
+ returned non-zero: $!
 \backslash
 n"
 \end_layout
 
 \begin_layout Plain Layout
 
-  if (system("reLyX -c $doc_class $relyx_file"));
+  if (system("re\SpecialCharNoPassThru LyX
+ -c $doc_class $relyx_file"));
 \end_layout
 
 \begin_layout Plain Layout
@@ -1589,12 +1634,14 @@ n"
 \end_layout
 
 \begin_layout Standard
-reLyX performs the main bulk of the translation work.
+re\SpecialCharNoPassThru LyX
+ performs the main bulk of the translation work.
  Note that if the ``literate-
 \emph on
 class
 \emph default
-'' document layout is not found, then reLyX will fail with an error.
+'' document layout is not found, then re\SpecialCharNoPassThru LyX
+ will fail with an error.
  In that case, you may need to modify your 
 \noun on
 noweb
@@ -1603,11 +1650,13 @@ noweb
 \end_layout
 
 \begin_layout Section
-Fixing the reLyX output
+Fixing the re\SpecialCharNoPassThru LyX
+ output
 \end_layout
 
 \begin_layout Standard
-We need to perform some post-processing of what reLyX produces in order
+We need to perform some post-processing of what re\SpecialCharNoPassThru LyX
+ produces in order
  to have the best output for our literate document.
  The outline of the post-processing steps are:
 \end_layout
@@ -1622,7 +1671,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-Fix up LyX file
+Fix up \SpecialCharNoPassThru LyX
+ file
 \end_layout
 
 \end_inset
@@ -1734,7 +1784,8 @@ status collapsed
 \color inherit
 is sufficient to restart the loop.
  We can use this construct to do some relatively complex parsing of the
- reLyX generated file.
+ re\SpecialCharNoPassThru LyX
+ generated file.
 \end_layout
 
 \begin_layout Subsection
@@ -1855,7 +1906,9 @@ Making sure the code chunks are in the Chunk layout
 
 \begin_layout Standard
 Now, as we outlined before, the final step is transforming the code-chunks
- which have been put into a LaTeX layout by LyX into the Chunk layout.
+ which have been put into a \SpecialCharNoPassThru LaTeX
+ layout by \SpecialCharNoPassThru LyX
+ into the Chunk layout.
 \end_layout
 
 \begin_layout Standard
@@ -2088,14 +2141,17 @@ noweb
 \noun on
 noweb
 \noun default
- syntax means putting the ``[[quoted-code]]'' in a LaTeX layout in the LyX
+ syntax means putting the ``[[quoted-code]]'' in a \SpecialCharNoPassThru LaTeX
+ layout in the \SpecialCharNoPassThru LyX
  file.
- Otherwise, LyX will backslash-quote the brackets, creating ugly output.
+ Otherwise, \SpecialCharNoPassThru LyX
+ will backslash-quote the brackets, creating ugly output.
  The quoted-code is transformed by 
 \noun on
 noweb
 \noun default
- when it generates the final LaTeX code.
+ when it generates the final \SpecialCharNoPassThru LaTeX
+ code.
 \end_layout
 
 \begin_layout Standard
@@ -2212,7 +2268,8 @@ The
 noweb2lyx
 \noun default
  script understands two arguments, input-file and output-file.
- It is also set up to be used internally by reLyX to pre-process or postprocess
+ It is also set up to be used internally by re\SpecialCharNoPassThru LyX
+ to pre-process or postprocess
  files in the import pipeline.
 \end_layout
 
@@ -2311,12 +2368,14 @@ sub usage() {
 
 \begin_layout Plain Layout
 
-If -pre is specified, only pre-processes the input-file for reLyX.
+If -pre is specified, only pre-processes the input-file for re\SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Plain Layout
 
-Similarly, in the case of -post, post-processes reLyX output.
+Similarly, in the case of -post, post-processes re\SpecialCharNoPassThru LyX
+ output.
 \end_layout
 
 \begin_layout Plain Layout
@@ -2357,7 +2416,8 @@ noweb2lyx
 \end_layout
 
 \begin_layout Standard
-The noweb2lyx script can be tangled from LyX if you set 
+The noweb2lyx script can be tangled from \SpecialCharNoPassThru LyX
+ if you set 
 \family typewriter
 
 \backslash

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/cs/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,15 +71,18 @@
 \begin_body
 
 \begin_layout Title
-Vítejte v LyXu !
+Vítejte v \SpecialCharNoPassThru LyX
+u !
 \end_layout
 
 \begin_layout Section*
-Co byste měli vědět pro používání LyXu
+Co byste měli vědět pro používání \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Enumerate
-LyX přichází s
+\SpecialCharNoPassThru LyX
+ přichází s
 \size largest
 \noun off
 \color none
@@ -89,19 +93,21 @@ LyX přichází s
 výbornou dokumentací — prosíme používejte ji! Český úvod můžete najít v
  menu 
 \family sans
-Nápověda\SpecialChar \menuseparator
+Nápověda\SpecialChar menuseparator
 Průvodce
 \begin_inset space ~
 \end_inset
 
-LyXem
+\SpecialCharNoPassThru LyX
+em
 \family default
 .
  
 \end_layout
 
 \begin_layout Enumerate
-LyX nazýváme 
+\SpecialCharNoPassThru LyX
+ nazýváme 
 \begin_inset Quotes eld
 \end_inset
 
@@ -126,18 +132,24 @@ Už jsme se zmínili o tom, že byste si mohli přečíst dokumentaci?
 \end_layout
 
 \begin_layout Enumerate
-Výstup z LyXu vypadá skvěle! Zkuste vybrat v menu 
+Výstup z \SpecialCharNoPassThru LyX
+u vypadá skvěle! Zkuste vybrat v menu 
 \family sans
-Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
 Prohlížet [PDF (pdflatex)] 
 \family default
 ať se přesvědčíte na vlastní oči.
 \end_layout
 
 \begin_layout Enumerate
-LyX umí napodobit (téměř) veškerou funkcionalitu LaTeXu.
- A ano, LyX umí importovat LaTeXové soubory.
- Zkušení uživatelé LaTeXu mohou jen zběžně prolétnout začátek 
+\SpecialCharNoPassThru LyX
+ umí napodobit (téměř) veškerou funkcionalitu \SpecialCharNoPassThru LaTeX
+u.
+ A ano, \SpecialCharNoPassThru LyX
+ umí importovat \SpecialCharNoPassThru LaTeX
+ové soubory.
+ Zkušení uživatelé \SpecialCharNoPassThru LaTeX
+u mohou jen zběžně prolétnout začátek 
 \emph on
 Průvodce
 \emph default
@@ -145,30 +157,37 @@ Průvodce
 \begin_inset Quotes eld
 \end_inset
 
-LyX pro uživatele LaTeXu
+\SpecialCharNoPassThru LyX
+ pro uživatele \SpecialCharNoPassThru LaTeX
+u
 \begin_inset Quotes erd
 \end_inset
 
 .
- (Ostatní se nemusíte znepokojovat: nepotřebujete znát LaTeX pro používání
- LyXu.) 
+ (Ostatní se nemusíte znepokojovat: nepotřebujete znát \SpecialCharNoPassThru LaTeX
+ pro používání
+ \SpecialCharNoPassThru LyX
+u.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, nežli
+\SpecialCharNoPassThru LyX
+ nabízí mnoho možností lidem, kteří čtou a píší jiným jazykem, nežli
  je angličtina.
  Navíc jsou klávesové zkratky, nástrojová lišta a i další vlastnosti dobře
  konfigurovatelné.
  Viz 
 \family sans
-Nápověda\SpecialChar \menuseparator
-Přizpůsobení LyXu
+Nápověda\SpecialChar menuseparator
+Přizpůsobení \SpecialCharNoPassThru LyX
+u
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Domovská stránka LyXu je na adrese 
+Domovská stránka \SpecialCharNoPassThru LyX
+u je na adrese 
 \family typewriter
 
 \begin_inset Flex URL
@@ -185,7 +204,8 @@ http://www.lyx.org/
 \family default
 .
  Můžete zde najít další informace, přihlásit se do konference, udělat si
- grafickou výpravu do LyXu (Graphical Tour) a najít spousty rad a triků
+ grafickou výpravu do \SpecialCharNoPassThru LyX
+u (Graphical Tour) a najít spousty rad a triků
  v rámci wiki.
 \end_layout
 

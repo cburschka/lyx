@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 479
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass revtex4-1
 \options reprint, aps
 \use_default_options false
@@ -10,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -75,10 +76,14 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to the American
+This is a template \SpecialCharNoPassThru LyX
+ file for articles to be submitted to the American
  Physical Society (APS).
- APS uses the LaTeX class REVTeX for submissions.
- For general information about REVTeX and the latest author guide see 
+ APS uses the \SpecialCharNoPassThru LaTeX
+ class REV\SpecialCharNoPassThru TeX
+ for submissions.
+ For general information about REV\SpecialCharNoPassThru TeX
+ and the latest author guide see 
 \begin_inset Flex URL
 status open
 
@@ -154,7 +159,7 @@ preprintnumbers
 \family default
  under 
 \family sans
-Documents\SpecialChar \menuseparator
+Documents\SpecialChar menuseparator
 Settings
 \family default
  to override the journal defaults to display numbers if necessary.
@@ -224,13 +229,14 @@ The Affiliation layout applies to all authors since the last Affiliation
 status collapsed
 
 \begin_layout Plain Layout
-For the case that there is no affitilation use the LaTeX command 
+For the case that there is no affitilation use the \SpecialCharNoPassThru LaTeX
+ command 
 \series bold
 
 \backslash
 noaffiliation
 \series default
- as TeX
+ as \SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -254,7 +260,7 @@ superscriptaddress
 \family default
  in 
 \family sans
-Documents\SpecialChar \menuseparator
+Documents\SpecialChar menuseparator
 Settings
 \family default
  to associate authors with aliations via superscript numbers.
@@ -458,7 +464,8 @@ Surround tables with the Turn Page layout for landscape.
 \end_layout
 
 \begin_layout Itemize
-Use LyX's span column option to get a full-width table or figure in two-column.
+Use \SpecialCharNoPassThru LyX
+'s span column option to get a full-width table or figure in two-column.
 \end_layout
 
 \end_inset
@@ -580,7 +587,7 @@ Citations
 \end_layout
 
 \begin_layout Standard
-Because REVTeX
+Because REV\SpecialCharNoPassThru TeX
 \begin_inset space \space{}
 \end_inset
 
@@ -655,7 +662,7 @@ compresses
 \end_inset
 
  runs of three or more consecutive numerical citations.
- REVTeX
+ REV\SpecialCharNoPassThru TeX
 \begin_inset space \space{}
 \end_inset
 
@@ -724,11 +731,11 @@ References
 \end_layout
 
 \begin_layout Standard
-REVTeX
+REV\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
-4.1 includes the BibTeX
+4.1 includes the Bib\SpecialCharNoPassThru TeX
 \begin_inset space \space{}
 \end_inset
 
@@ -772,7 +779,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -790,7 +797,7 @@ Math and Equations
 \end_layout
 
 \begin_layout Standard
-In LaTeX
+In \SpecialCharNoPassThru LaTeX
 \begin_inset space \space{}
 \end_inset
 
@@ -865,7 +872,8 @@ Only number the last line of a continued equation:
 
 \begin_layout Standard
 To obtain numbers not normally produced by the automatic numbering, use
- the LaTeX-command 
+ the \SpecialCharNoPassThru LaTeX
+-command 
 \series bold
 
 \backslash
@@ -880,7 +888,8 @@ tag
 \emph on
 User-defined Numbering
 \emph default
- of LyX's 
+ of \SpecialCharNoPassThru LyX
+'s 
 \emph on
 Math
 \emph default
@@ -897,12 +906,14 @@ tag
 \backslash
 tag
 \series default
- should only be used in exceptional cases---do not use it to number many
+ should only be used in exceptional cases\threehyphens
+do not use it to number many
  equations in your paper.
 \end_layout
 
 \begin_layout Standard
-Enclosing display math within the LaTeX-commands 
+Enclosing display math within the \SpecialCharNoPassThru LaTeX
+-commands 
 \series bold
 
 \backslash
@@ -1091,7 +1102,7 @@ name "tab:table1"
 \end_inset
 
 A table that fits into a single column of a two-column layout.
- Note that REVTeX
+ Note that REV\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -1321,6 +1332,11 @@ width ""
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1377,6 +1393,11 @@ width ""
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1737,7 +1758,8 @@ reference "tab:table3"
 
 \end_inset
 
-: LaTeX's float placement algorithms need to know about a full-page-width
+: \SpecialCharNoPassThru LaTeX
+'s float placement algorithms need to know about a full-page-width
  float earlier.
 \end_layout
 
@@ -2634,7 +2656,8 @@ definitely
 \emph on
 Longtables
 \emph default
- of LyX's 
+ of \SpecialCharNoPassThru LyX
+'s 
 \emph on
 EmbeddedObjects
 \emph default
@@ -2650,7 +2673,8 @@ There are two methods for setting footnotes within a table (these footnotes
  However, it is sometimes necessary to have multiple entries in the table
  share the same footnote.
  In this case, there is no choice but to manually create the footnotes using
- the LaTeX-command 
+ the \SpecialCharNoPassThru LaTeX
+-command 
 \series bold
 
 \backslash
@@ -2664,7 +2688,8 @@ footnotemark
 \emph on
 Footnotes
 \emph default
- of LyX's 
+ of \SpecialCharNoPassThru LyX
+'s 
 \emph on
 EmbeddedObjects
 \emph default
@@ -2702,7 +2727,8 @@ reference "vid:PRSTPER.4.010101"
 
 \end_inset
 
- illustrates several features new with REVTeX4.1, starting with the 
+ illustrates several features new with REV\SpecialCharNoPassThru TeX
+4.1, starting with the 
 \family typewriter
 video
 \family default
@@ -2779,7 +2805,8 @@ Students explain their initial idea about Newton's third law to a teaching
 \end_layout
 
 \begin_layout Standard
-The LaTeX-command 
+The \SpecialCharNoPassThru LaTeX
+-command 
 \series bold
 
 \backslash
@@ -2821,7 +2848,8 @@ reference "fig:epsart"
 \end_layout
 
 \begin_layout Acknowledgments
-We wish to acknowledge the support of the author community in using REVTeX,
+We wish to acknowledge the support of the author community in using REV\SpecialCharNoPassThru TeX
+,
  offering suggestions and encouragement, testing new versions, ….
  
 \end_layout
@@ -2855,8 +2883,10 @@ appendix
 \end_layout
 
 \begin_layout Standard
-This is not yet supported by LyX so that you have to do that manually in
- the exported LaTeX-file.
+This is not yet supported by \SpecialCharNoPassThru LyX
+ so that you have to do that manually in
+ the exported \SpecialCharNoPassThru LaTeX
+-file.
 \end_layout
 
 \begin_layout Section
@@ -2976,7 +3006,8 @@ reference "appc"
 status open
 
 \begin_layout Plain Layout
-Click on the following inset to add your BibTeX file (and replace 
+Click on the following inset to add your Bib\SpecialCharNoPassThru TeX
+ file (and replace 
 \begin_inset Quotes eld
 \end_inset
 

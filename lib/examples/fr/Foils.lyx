@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass foils
 \begin_preamble
 \raggedright
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding iso8859-15
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics dvips
 \default_output_format default
 \output_sync 0
@@ -115,7 +116,7 @@ height "7pt"
 \noun on
 Allan Rae 
 \noun default
-et l'Équipe LyX
+et l'Équipe \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Date
@@ -123,7 +124,9 @@ et l'Équipe LyX
 \end_layout
 
 \begin_layout Abstract
-On peut combiner LyX et FoilTeX en un puissant outil de préparation de 
+On peut combiner \SpecialCharNoPassThru LyX
+ et Foil\SpecialCharNoPassThru TeX
+ en un puissant outil de préparation de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -171,19 +174,28 @@ zerolistvertdimens{}
 
 \end_inset
 
-La fenêtre de sélection de la forme des puces Format\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
+La fenêtre de sélection de la forme des puces Format\SpecialChar menuseparator
+Document\SpecialChar menuseparator
 Puces
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 est idéale avec la classe foils
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 vous permettant de choisir la puce
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -213,13 +225,15 @@ fr_ListesPuces.lyx
 
 \begin_layout Itemize
 NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
- FoilTeX 
+ Foil\SpecialCharNoPassThru TeX
+ 
 \family typewriter
 
 \backslash
 zerolistvertdimens{}
 \family default
- dans un insert TeX au début du premier élément.
+ dans un insert \SpecialCharNoPassThru TeX
+ au début du premier élément.
 \end_layout
 
 \begin_layout ShortFoilhead
@@ -462,13 +476,18 @@ Proof
 As you can see, we are still in the same lemma.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
+
 \begin_layout Lemma*
 Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
- par du texte standard ou, comme ici, par un insert TeX qui contient juste
+ par du texte standard ou, comme ici, par un insert \SpecialCharNoPassThru TeX
+ qui contient juste
  un 
 \family typewriter
 \emph on
@@ -484,8 +503,11 @@ Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
 \family default
 \emph default
 .
- C'est simplement le caractère de commentaire en LaTeX mais l'apparition
- d'un paragraphe contenant du LaTeX suffit pour forcer LyX à présenter correctem
+ C'est simplement le caractère de commentaire en \SpecialCharNoPassThru LaTeX
+ mais l'apparition
+ d'un paragraphe contenant du \SpecialCharNoPassThru LaTeX
+ suffit pour forcer \SpecialCharNoPassThru LyX
+ à présenter correctem
 ent les deux environnements.
 \end_layout
 
@@ -795,7 +817,8 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-FoilTeX offre de nombreuses possibilités pour gérer les en-têtes et les
+Foil\SpecialCharNoPassThru TeX
+ offre de nombreuses possibilités pour gérer les en-têtes et les
  pieds de page
 \begin_inset Foot
 status collapsed
@@ -832,7 +855,8 @@ Restriction{}
 \begin_inset Quotes fld
 \end_inset
 
--Typeset by FoilTeX-
+-Typeset by Foil\SpecialCharNoPassThru TeX
+-
 \begin_inset Quotes frd
 \end_inset
 
@@ -851,7 +875,8 @@ Les autres coins sont contrôlés par :
 \backslash
 rightfooter{}
 \family default
- -- par défaut le numéro de page
+ \twohyphens
+ par défaut le numéro de page
 \end_layout
 
 \begin_layout Standard
@@ -887,10 +912,14 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Il devrait y avoir de la documentation sur FoilTeX dans votre distribution
- LaTeX.
- Il y a bien d'autres fonctions de FoilTeX qui n'ont pas été décrites ici.
- Par exemple, FoilTeX peut automatiquement tracer un trait horizontal entre
+Il devrait y avoir de la documentation sur Foil\SpecialCharNoPassThru TeX
+ dans votre distribution
+ \SpecialCharNoPassThru LaTeX
+.
+ Il y a bien d'autres fonctions de Foil\SpecialCharNoPassThru TeX
+ qui n'ont pas été décrites ici.
+ Par exemple, Foil\SpecialCharNoPassThru TeX
+ peut automatiquement tracer un trait horizontal entre
  les en-têtes de page et ceux de diapo, et entre le corps et les pieds de
  page.
 \end_layout
@@ -906,7 +935,8 @@ Jim Hafner,
 \begin_inset Quotes fld
 \end_inset
 
-The FoilTeX Class Package
+The Foil\SpecialCharNoPassThru TeX
+ Class Package
 \begin_inset Quotes frd
 \end_inset
 
@@ -922,7 +952,8 @@ key "2"
 
 \end_inset
 
-Équipe de Documentation LyX, manuel d'
+Équipe de Documentation \SpecialCharNoPassThru LyX
+, manuel d'
 \emph on
 Options
 \begin_inset space ~

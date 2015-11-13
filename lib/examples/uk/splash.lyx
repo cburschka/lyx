@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/uk/
 \textclass article
 \begin_preamble
 \usepackage[russian,ukrainian]{babel}
@@ -13,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -74,31 +75,35 @@
 \begin_body
 
 \begin_layout Title
-Ласкаво просимо до LyX!
+Ласкаво просимо до \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-Ось декілька речей, про які ви маєте знати, користуючись LyX
+Ось декілька речей, про які ви маєте знати, користуючись \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX постачається з відмінною документацією — будь ласка, користуйтеся нею!
+\SpecialCharNoPassThru LyX
+ постачається з відмінною документацією — будь ласка, користуйтеся нею!
  Почніть з пункту меню
 \family sans
-Довідка\SpecialChar \menuseparator
+Довідка\SpecialChar menuseparator
 Вступ
 \family default
 , — програма покаже дуже короткий вступ до документації.
- Продовжіть вивчення LyX за допомогою пункту меню
+ Продовжіть вивчення \SpecialCharNoPassThru LyX
+ за допомогою пункту меню
 \family sans
-Довідка\SpecialChar \menuseparator
+Довідка\SpecialChar menuseparator
 Підручник
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX — це те, що ми називаємо «процесором документів».
+\SpecialCharNoPassThru LyX
+ — це те, що ми називаємо «процесором документів».
  За своєю структурою програма відрізняється від звичайних текстових процесорів
  — вона спрощує написання документів.
  Але відмінності не такі значні, отже, не лякайтеся.
@@ -116,42 +121,54 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-Документи, створені у LyX виглядають чудово! Скористайтеся пунктом меню
+Документи, створені у \SpecialCharNoPassThru LyX
+ виглядають чудово! Скористайтеся пунктом меню
 \family sans
-Перегляд\SpecialChar \menuseparator
+Перегляд\SpecialChar menuseparator
 DVI
 \family default
 , щоб переконатися у цьому на власні очі.
 \end_layout
 
 \begin_layout Enumerate
-Так, у LyX можна користуватися (майже) всіма функціональними можливостями
- LaTeX.
- І так, LyX може імпортувати файли LaTeX.
- Досвідчені користувачі LaTeX можуть не читати решти
+Так, у \SpecialCharNoPassThru LyX
+ можна користуватися (майже) всіма функціональними можливостями
+ \SpecialCharNoPassThru LaTeX
+.
+ І так, \SpecialCharNoPassThru LyX
+ може імпортувати файли \SpecialCharNoPassThru LaTeX
+.
+ Досвідчені користувачі \SpecialCharNoPassThru LaTeX
+ можуть не читати решти
 \emph on
 Підручника
 \emph default
-, і одразу перейти до читання глави «LyX для користувачів LaTeX».
- (Всім іншим: не переймайтеся, вам не потрібно знати LaTeX, щоб користуватися
- LyX.)
+, і одразу перейти до читання глави «\SpecialCharNoPassThru LyX
+ для користувачів \SpecialCharNoPassThru LaTeX
+».
+ (Всім іншим: не переймайтеся, вам не потрібно знати \SpecialCharNoPassThru LaTeX
+, щоб користуватися
+ \SpecialCharNoPassThru LyX
+.)
 \end_layout
 
 \begin_layout Enumerate
-У LyX передбачено багато можливостей для користувачів, які читають або пишуть
+У \SpecialCharNoPassThru LyX
+ передбачено багато можливостей для користувачів, які читають або пишуть
  мовою, відмінною від англійської.
  Крім того, у програмі можна налаштувати майже всі клавіатурні скорочення,
  панелі інструментів та багато інших характеристик.
  Докладніше про це можна дізнатися з розділу
 \family sans
-Довідка\SpecialChar \menuseparator
+Довідка\SpecialChar menuseparator
 Підручник з налаштування
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Домашню сторінку LyX розташовано за адресою
+Домашню сторінку \SpecialCharNoPassThru LyX
+ розташовано за адресою
 \family typewriter
 
 \begin_inset Flex URL
@@ -167,8 +184,11 @@ http://www.lyx.org/
 
 \family default
 .
- Там ви можете отримати відомості про LyX, підписатися на списки листування
- LyX, здійснити візуальну подорож LyX, а також знайти багато іншої корисної
+ Там ви можете отримати відомості про \SpecialCharNoPassThru LyX
+, підписатися на списки листування
+ \SpecialCharNoPassThru LyX
+, здійснити візуальну подорож \SpecialCharNoPassThru LyX
+, а також знайти багато іншої корисної
  інформації.
 \end_layout
 

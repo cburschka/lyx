@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass aastex
 \begin_preamble
 \newcommand{\vdag}{(v)^\dagger}
@@ -16,16 +17,16 @@
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -77,7 +78,7 @@
 \begin_body
 
 \begin_layout Title
-Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX
+Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AAS\SpecialCharNoPassThru TeX
  Examples
 \end_layout
 
@@ -239,7 +240,8 @@ This is a preliminary report on surface photometry of the major fraction
 \end_layout
 
 \begin_layout Keywords
-clusters: globular, peanut---bosons: bozos
+clusters: globular, peanut\threehyphens
+bosons: bozos
 \end_layout
 
 \begin_layout Section
@@ -744,7 +746,8 @@ reference "bozomath"
 \end_inset
 
 .
- More information on the AASTeX macros package are available at 
+ More information on the AAS\SpecialCharNoPassThru TeX
+ macros package are available at 
 \begin_inset Flex URL
 status collapsed
 
@@ -2279,7 +2282,8 @@ reference "tbl-2"
 
 \end_inset
 
- that was generated with the LaTeX table environment
+ that was generated with the \SpecialCharNoPassThru LaTeX
+ table environment
 \end_layout
 
 \begin_layout Table note
@@ -2340,7 +2344,8 @@ We can also attach a long-ish paragraph of explanatory material to a table.
 \backslash
 tablerefs to append a list of references.
  The following references were from a different table: I've patched them
- in here to show how they look, but don't take them too seriously---I certainly
+ in here to show how they look, but don't take them too seriously\threehyphens
+I certainly
  have not.
 \end_layout
 
@@ -2369,7 +2374,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% LyX can load deluxetable files verbatim.
+% \SpecialCharNoPassThru LyX
+ can load deluxetable files verbatim.
  To see this in action, uncomment the following
 \end_layout
 
@@ -2414,7 +2420,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-) and copy the file table.tex from the AASTeX 5.0 distribution into
+) and copy the file table.tex from the AAS\SpecialCharNoPassThru TeX
+ 5.0 distribution into
 \end_layout
 
 \end_inset

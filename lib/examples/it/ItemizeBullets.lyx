@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/it/
 \textclass article
 \begin_preamble
 
@@ -12,16 +13,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -118,6 +119,10 @@ itemize
 gli elenchi puntati
 \color none
  
+\color inherit
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -125,6 +130,10 @@ gli elenchi puntati
 
 \color black
 questi possiede un contatore che gli impone un limite di 4 livelli
+\color inherit
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -136,11 +145,16 @@ ogni livello può avere
 un proprio indice
 \color none
  
+\color inherit
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX mostra comunque tutti i puntatori come un `*'
+\SpecialCharNoPassThru LyX
+ mostra comunque tutti i puntatori come un `*'
 \end_layout
 
 \end_deeper
@@ -153,16 +167,22 @@ te
 \color none
  
 \color inherit
-anche che LyX *NON* controlla la profondità dell'ambiente al posto
+anche che \SpecialCharNoPassThru LyX
+ *NON* controlla la profondità dell'ambiente al posto
 \color none
  
 \color black
 vostro
+\color inherit
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-A meno che non si forzi LaTeX alla profondità limite di 6 per tutte le liste.
+A meno che non si forzi \SpecialCharNoPassThru LaTeX
+ alla profondità limite di 6 per tutte le liste.
 \end_layout
 
 \end_deeper
@@ -190,7 +210,7 @@ Per vedere comparire la finestra nella quale poter effettuare tali modifiche,
  
 \family sans
 \color black
-Documento\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
 Impostazioni
 \family default
  dal menù 

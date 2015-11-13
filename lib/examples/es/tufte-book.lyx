@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/es/
 \textclass tufte-book
 \begin_preamble
 \def\spanishoptions{es-noindentfirst}
@@ -13,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -83,13 +84,18 @@ status open
 \lang english
 Note
 \series default
-: To be able to view your file as PDF you must have the LaTeX-package 
+: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+-package 
 \family sans
 fpl
 \family default
- installed to your LaTeX system.
- If you are using MiKTeX, you will automatically be asked to install this
- package when previewing your file, if you are using TeXLive, use TeXLive's
+ installed to your \SpecialCharNoPassThru LaTeX
+ system.
+ If you are using MiK\SpecialCharNoPassThru TeX
+, you will automatically be asked to install this
+ package when previewing your file, if you are using \SpecialCharNoPassThru TeX
+Live, use \SpecialCharNoPassThru TeX
+Live's
  package manager.
 \end_layout
 
@@ -237,8 +243,8 @@ Personalizado
 \emph default
  en 
 \family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Clase del documento
 \family default
 .
@@ -278,8 +284,8 @@ Personalizado
 \emph default
  del menú 
 \family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Clase del documento
 \family default
 .
@@ -298,8 +304,8 @@ Numeración
 \emph default
  en 
 \family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Numeación e IG
 \family default
  al extremo derecho (como se ha hecho en este documento).
@@ -341,6 +347,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -400,6 +411,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -493,6 +509,11 @@ width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -561,7 +582,7 @@ nota al margen
 \family default
 ; lo encontrarás en el menú
 \family sans
- Insertar\SpecialChar \menuseparator
+ Insertar\SpecialChar menuseparator
 Recuadro personalizado
 \family default
 .
@@ -630,8 +651,8 @@ Idea nueva
 \family default
 (
 \family sans
-Editar\SpecialChar \menuseparator
-Estilo del texto\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
+Estilo del texto\SpecialChar menuseparator
 Idea nueva
 \family default
 ).
@@ -679,8 +700,8 @@ Mayúsculas
 \emph default
  (
 \family sans
-Editar\SpecialChar \menuseparator
-Estilo del texto\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
+Estilo del texto\SpecialChar menuseparator
 M
 \begin_inset space \thinspace{}
 \end_inset
@@ -735,8 +756,8 @@ Versalitas Tufte
 \emph default
  (
 \family sans
-Editar\SpecialChar \menuseparator
-Estilo del texto\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
+Estilo del texto\SpecialChar menuseparator
 V
 \begin_inset space \thinspace{}
 \end_inset
@@ -857,13 +878,13 @@ La sección anterior incluye una cita.
 La lista completa de referencias se puede además imprimir automáticamente
  usando 
 \family sans
-Insertar\SpecialChar \menuseparator
-Lista/Índice\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
+Lista/Índice\SpecialChar menuseparator
 Bibliografía
 \begin_inset space ~
 \end_inset
 
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \family default
  (véase un ejemplo al final del documento).
  Si no quieres imprimir una bibliografía al final de un documento, inserta
@@ -873,9 +894,11 @@ BibTeX
 \begin_inset space ~
 \end_inset
 
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \family default
- dentro de una nota LyX y usa el comando LaTeX 
+ dentro de una nota \SpecialCharNoPassThru LyX
+ y usa el comando \SpecialCharNoPassThru LaTeX
+ 
 \family typewriter
 
 \backslash
@@ -921,6 +944,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -974,6 +1002,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1245,6 +1278,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -1342,6 +1380,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout

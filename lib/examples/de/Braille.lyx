@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass article
 \begin_preamble
 % color greyed-out notes blue
@@ -17,16 +18,16 @@ braille
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -92,7 +93,7 @@ braille
 \begin_body
 
 \begin_layout Title
-Schreiben von Braille mit LyX
+Schreiben von Braille mit \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
@@ -100,17 +101,21 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-Zuerst etwas Allgemeines: Die Braille, die man mit LyX schreiben kann, ist
+Zuerst etwas Allgemeines: Die Braille, die man mit \SpecialCharNoPassThru LyX
+ schreiben kann, ist
  nicht komplett! Braille kann 6 oder 8
 \begin_inset space \space{}
 \end_inset
 
-Punkte haben, während LaTeX (und damit LyX) nur 6-Punkt-Braille ohne akzentuiert
+Punkte haben, während \SpecialCharNoPassThru LaTeX
+ (und damit \SpecialCharNoPassThru LyX
+) nur 6-Punkt-Braille ohne akzentuiert
 e Zeichen unterstützt.
 \end_layout
 
 \begin_layout Standard
-Um Braille mit LyX zu schreiben, laden Sie das Modul 
+Um Braille mit \SpecialCharNoPassThru LyX
+ zu schreiben, laden Sie das Modul 
 \family sans
 Braille
 \family default
@@ -135,7 +140,8 @@ Braille
 
 (Textgröße)
 \family default
- in LyX' Umgebungs-Auswahlbox und schreiben Ihren Text.
+ in \SpecialCharNoPassThru LyX
+' Umgebungs-Auswahlbox und schreiben Ihren Text.
  Die anderen Braille-Umgebungen schalten nur bestimmte Eigenschaften an/aus,
  die nachfolgend beschrieben werden.
  Lassen Sie diese leer!
@@ -191,7 +197,8 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Man kann sehen, dass LaTeX Wörter in Braille nicht trennen kann; dies müssen
+Man kann sehen, dass \SpecialCharNoPassThru LaTeX
+ Wörter in Braille nicht trennen kann; dies müssen
  Sie manuell tun.
 \end_layout
 
@@ -247,11 +254,13 @@ status open
 \series bold
 Beachte:
 \series default
- LyX' und LaTeXs Eigennamen 
+ \SpecialCharNoPassThru LyX
+' und \SpecialCharNoPassThru LaTeX
+s Eigennamen 
 \begin_inset Quotes gld
 \end_inset
 
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset Quotes grd
 \end_inset
 
@@ -259,7 +268,7 @@ LaTeX
 \begin_inset Quotes gld
 \end_inset
 
-LaTeX2e
+\SpecialCharNoPassThru LaTeX2e
 \begin_inset Quotes grd
 \end_inset
 
@@ -267,7 +276,7 @@ LaTeX2e
 \begin_inset Quotes gld
 \end_inset
 
-TeX
+\SpecialCharNoPassThru TeX
 \begin_inset Quotes grd
 \end_inset
 
@@ -275,11 +284,12 @@ TeX
 \begin_inset Quotes gld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes grd
 \end_inset
 
- müssen, wie im folgenden Beispiel, als TeX-Code eingefügt werden:
+ müssen, wie im folgenden Beispiel, als \SpecialCharNoPassThru TeX
+-Code eingefügt werden:
 \end_layout
 
 \end_inset
@@ -307,7 +317,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -325,7 +335,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -387,7 +397,8 @@ Braille
 
 (Textgröße)
 \family default
- -- die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
+ \twohyphens
+ die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -406,7 +417,8 @@ Braille
 
 (Punkte an)
 \family default
- -- kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
+ \twohyphens
+ kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -473,7 +485,7 @@ Braille-Zeichen können alternativ erzeugt werden, indem man eine Nummer
  in eine Braille-Box schreibt.
  Eine Braille-Box wird mit dem Menü
 \family sans
- Einfügen\SpecialChar \menuseparator
+ Einfügen\SpecialChar menuseparator
 Benutzerdefinierte
 \begin_inset space ~
 \end_inset
@@ -589,7 +601,8 @@ mm.
 
 B.
  Braille in der doppelten Größe zu erhalten, benutzen Sie diesen Befehl
- im TeX-Code in Ihrem Dokument:
+ im \SpecialCharNoPassThru TeX
+-Code in Ihrem Dokument:
 \end_layout
 
 \begin_layout Standard

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ja/
 \textclass article
 \begin_preamble
 %% Uncomment the following for Tableaux captions on top:
@@ -17,16 +18,16 @@ linguistics
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -87,7 +88,8 @@ linguistics
 \begin_body
 
 \begin_layout Title
-LyXで言語学の論文を書く
+\SpecialCharNoPassThru LyX
+で言語学の論文を書く
 \end_layout
 
 \begin_layout Author
@@ -111,7 +113,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Abstract
-この小論は、LyXが言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成
+この小論は、\SpecialCharNoPassThru LyX
+が言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成
 するために用意されているネイティブサポートを利用する方法を説明します。
 \end_layout
 
@@ -120,11 +123,13 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-基本的に、この小論は、第1.6.0版現在においてLyXに同梱されている「言語学」モジュールの機能を説明するものです。（LyX 1.6.0で導入された）「モジュール」は、
+基本的に、この小論は、第1.6.0版現在において\SpecialCharNoPassThru LyX
+に同梱されている「言語学」モジュールの機能を説明するものです。（\SpecialCharNoPassThru LyX
+ 1.6.0で導入された）「モジュール」は、
 どの文書からでも簡単に選択できるようにしたサポートファイルです。言語学モジュールを使用するためには、
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 モジュール
 \family default
 を開き、選択可能モジュール一覧から「言語学」を選択し、（この文書で既にそうなっているように）使用中の文書に加えるために
@@ -136,7 +141,8 @@ type "mailto:"
 
 \begin_layout Standard
 このモジュールは、どの文書クラスでも使えるようになったはずです（もしそうなっていなければ、私に知らせてください）。しかし、すべての機能を使用するには、以下の各L
-aTeXパッケージが導入されている必要があります。
+a\SpecialCharNoPassThru TeX
+パッケージが導入されている必要があります。
 \end_layout
 
 \begin_layout Enumerate
@@ -212,7 +218,8 @@ key "float"
 
 \end_inset
 
-：OT表とフロート一覧に必要とsれます。このパッケージは、すべてのLaTeX頒布版に同梱されているはずです。
+：OT表とフロート一覧に必要とsれます。このパッケージは、すべての\SpecialCharNoPassThru LaTeX
+頒布版に同梱されているはずです。
 \end_layout
 
 \begin_layout Section
@@ -258,7 +265,7 @@ name "exa:single-example"
 これは小例です。
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:subexample"
+name "subsec:subexample"
 
 \end_inset
 
@@ -276,7 +283,7 @@ name "sub:subexample"
 \begin_layout Standard
 例への参照は通常通り作成することができます。例にラベルを挿入し、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 相互参照
 \family default
 で相互参照を入れてください。これを例示するために、ここでは
@@ -289,7 +296,7 @@ reference "exa:single-example"
 と
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:subexample"
+reference "subsec:subexample"
 
 \end_inset
 
@@ -303,7 +310,7 @@ reference "sub:subexample"
 \begin_layout Standard
 言語学モジュールは、2つの語句注解を提供しており、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 任意設定差込枠
 \family default
 で挿入することができます。標準の
@@ -321,7 +328,9 @@ reference "sub:subexample"
 \backslash
 glt
 \family default
-コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（TeXモードは必要でなく、実のところTeXモードにすることはできません）。
+コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（\SpecialCharNoPassThru TeX
+モードは必要でなく、実のところ\SpecialCharNoPassThru TeX
+モードにすることはできません）。
 \end_layout
 
 \begin_layout Standard
@@ -333,20 +342,47 @@ glt
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 C'est un exemple simple
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 {This is} an example simple
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+This is a simple example
+\end_layout
 
-\backslash
-glt This is a simple example
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -368,25 +404,59 @@ glt This is a simple example
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 C'est un exemple simple
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 {Das ist} ein Beispiel einfach
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
 {This is} an example simple
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+This is a simple example
+\end_layout
 
-\backslash
-glt This is a simple example
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -404,25 +474,59 @@ glt This is a simple example
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 My skeertuig is vol palings
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
 My hovercraft is {full of} eels
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+Do you have matches?
+\end_layout
 
-\backslash
-glt Do you have matches?
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -435,7 +539,8 @@ glt Do you have matches?
 \family sans
 文字様式
 \family default
-ダイアログは無効になっています。語句注解はハイフネートしないので、LaTeX出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサ
+ダイアログは無効になっています。語句注解はハイフネートしないので、\SpecialCharNoPassThru LaTeX
+出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサ
 ポートしないため、出力が崩れてしまいます）。それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。現在のところ、これは以下のようにし
 なくてはなりません。文章を選択して、
 \begin_inset Info
@@ -463,7 +568,8 @@ french
 \family sans
 ngerman
 \family default
-などの各言語に置き換えてください。LaTeX出力中では、この設定は出力されません。
+などの各言語に置き換えてください。\SpecialCharNoPassThru LaTeX
+出力中では、この設定は出力されません。
 \end_layout
 
 \begin_layout Section
@@ -489,7 +595,7 @@ OT表一覧
 \begin_layout Standard
 言語学モジュールは、この2つをサポートしています。
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 フロート
 \family default
 の中には、以下のようなOT表フロートがあります。
@@ -790,12 +896,14 @@ OT表の例
 \end_layout
 
 \begin_layout Standard
-出力中のキャプションは、LyXウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには
+出力中のキャプションは、\SpecialCharNoPassThru LyX
+ウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには
 、
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-LaTeX プリアンブル
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ プリアンブル
 \family default
 に以下のコードを書いてください。
 \end_layout
@@ -831,7 +939,7 @@ restylefloat{tableau}
 \begin_layout Standard
 OT表一覧差込枠の一覧は、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 一覧/目次
 \family default
 にあります。OT表一覧は、通常、文書の始まりか終わりに置かれますが、ここでは例示のためにこの場所に置くことにします。
@@ -898,7 +1006,7 @@ meaning
 \begin_layout Standard
 これらの文字様式は、
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 文字様式
 \family default
 サブメニューで入れることができます。これらの様式の外観を後で変更する必要があれば、プリアンブル中で再定義することができます。たとえば、ボールド体の表現にするため
@@ -936,12 +1044,15 @@ lingmeaning
 \end_layout
 
 \begin_layout Standard
-発音記号を挿入するには、言語学モジュールは必要でなく、LyXの基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明
+発音記号を挿入するには、言語学モジュールは必要でなく、\SpecialCharNoPassThru LyX
+の基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明
 します。
 \end_layout
 
 \begin_layout Standard
-LyXのIPAサポートを利用するには、LaTeXパッケージ
+\SpecialCharNoPassThru LyX
+のIPAサポートを利用するには、\SpecialCharNoPassThru LaTeX
+パッケージ
 \emph on
 tipa
 \emph default
@@ -969,8 +1080,8 @@ key "preview"
 \begin_layout Standard
 発音記号は、
 \family sans
-挿入\SpecialChar \menuseparator
-特殊文字\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+特殊文字\SpecialChar menuseparator
 発音記号
 \family default
 で入れることができます。すると小さな枠が現れるので、そこに
@@ -995,8 +1106,8 @@ preview-latex
 \emph default
 が導入されていて、自動プレビューを（
 \family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 表示
 \family default
 で）有効にしてあれば、カーソルを枠から出すとすぐに、きれいなプレビューを見ることができます。
@@ -1005,12 +1116,13 @@ preview-latex
 \begin_layout Standard
 さらに、ほとんどのIPAグリフを（
 \family sans
-挿入\SpecialChar \menuseparator
-特殊文字\SpecialChar \menuseparator
-記号\SpecialChar \ldots{}
+挿入\SpecialChar menuseparator
+特殊文字\SpecialChar menuseparator
+記号\SpecialChar ldots
 
 \family default
-で）挿入したり、[ɛkspləˈneɪʃən]のように直接LyXに貼り付けたりすることもできます。出力中では、これらは正しい
+で）挿入したり、[ɛkspləˈneɪʃən]のように直接\SpecialCharNoPassThru LyX
+に貼り付けたりすることもできます。出力中では、これらは正しい
 \emph on
 tipa
 \emph default
@@ -1021,8 +1133,8 @@ tipa
 \begin_layout Enumerate
 直接入力すると、フォントがばらばらになる可能性があります（上例では、ラテン文字は基本フォントから採られ、IPAグリフはIPAフォントから採られていますが、
 \family sans
-挿入\SpecialChar \menuseparator
-特殊文字\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+特殊文字\SpecialChar menuseparator
 発音記号
 \family default
 で入れると、すべての文字にIPAフォントが使われます）。
@@ -1041,14 +1153,16 @@ tipa
 \end_layout
 
 \begin_layout Standard
-言語学者に特有の利用法について詳しくは、LyX wiki
+言語学者に特有の利用法について詳しくは、\SpecialCharNoPassThru LyX
+ wiki
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
 
 \end_inset
 
-のLinguistLyXページをご参照ください（ご自身のコツもご自由に書き加えてください）。
+のLinguist\SpecialCharNoPassThru LyX
+ページをご参照ください（ご自身のコツもご自由に書き加えてください）。
 \end_layout
 
 \begin_layout Bibliography
@@ -1142,7 +1256,8 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguisti
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialCharNoPassThru LyX
+ for Linguisti
 c Papers.
  
 \begin_inset Flex URL
@@ -1150,7 +1265,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/LinguistLyX
+http://wiki.lyx.org/\SpecialCharNoPassThru LyX
+/Linguist\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset

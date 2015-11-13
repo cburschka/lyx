@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/sr/
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,20 +71,24 @@
 \begin_body
 
 \begin_layout Title
-Dodrodošli u LyX!
+Dodrodošli u \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-Stvari koje treba da znate kada koristite LyX
+Stvari koje treba da znate kada koristite \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX dolazi sa odličnom dokumentacijom --- koristite je! Počnite sa 
+\SpecialCharNoPassThru LyX
+ dolazi sa odličnom dokumentacijom \threehyphens
+ koristite je! Počnite sa 
 \family sans
 Pomoć-Uvod
 \family default
 , koji će vam dati vrlo kratak uvod u dokumentaciju.
- Saznajte više o korišćenju LyX-a uz 
+ Saznajte više o korišćenju \SpecialCharNoPassThru LyX
+-a uz 
 \family sans
 Pomoć-Vodič
 \family default
@@ -91,7 +96,8 @@ Pomoć-Vodič
 \end_layout
 
 \begin_layout Enumerate
-LyX je ono što zovemo 
+\SpecialCharNoPassThru LyX
+ je ono što zovemo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -100,7 +106,8 @@ dokument procesor
 \end_inset
 
 .
- Po dizajnu je drugačiji od redovnog programa za obradu teksta --- na način
+ Po dizajnu je drugačiji od redovnog programa za obradu teksta \threehyphens
+ na način
  koji omogućava lakše pisanje dokumenata.
  Ali samo malo je drugačiji, tako da ne morate biti uplašeni.
  Dokumentacija će vam učiniti sve jasnijim.
@@ -117,13 +124,19 @@ Da li smo pomenuli da treba da pročitate dokumentaciju?
 \end_layout
 
 \begin_layout Enumerate
-Izlaz iz LyX-a izgleda odlično! Izaberite Pogled DVI, da sami vidite.
+Izlaz iz \SpecialCharNoPassThru LyX
+-a izgleda odlično! Izaberite Pogled DVI, da sami vidite.
 \end_layout
 
 \begin_layout Enumerate
-LyX može da imitira (skoro) svu LaTeX funkcionalnost.
- I da, LyX može da uveze LaTeX datoteke.
- Iskusni LaTeX korisnici treba da obrade ostatak 
+\SpecialCharNoPassThru LyX
+ može da imitira (skoro) svu \SpecialCharNoPassThru LaTeX
+ funkcionalnost.
+ I da, \SpecialCharNoPassThru LyX
+ može da uveze \SpecialCharNoPassThru LaTeX
+ datoteke.
+ Iskusni \SpecialCharNoPassThru LaTeX
+ korisnici treba da obrade ostatak 
 \emph on
 Vodiča
 \emph default
@@ -131,17 +144,22 @@ Vodiča
 \begin_inset Quotes eld
 \end_inset
 
-LyX za LaTeX korisnike
+\SpecialCharNoPassThru LyX
+ za \SpecialCharNoPassThru LaTeX
+ korisnike
 \begin_inset Quotes erd
 \end_inset
 
 .
- (Svi ostali: ne brinite, ne morate da znate da koristite LaTeX da bi koristili
- LyX.)
+ (Svi ostali: ne brinite, ne morate da znate da koristite \SpecialCharNoPassThru LaTeX
+ da bi koristili
+ \SpecialCharNoPassThru LyX
+.)
 \end_layout
 
 \begin_layout Enumerate
-LyX ima mnogo mogućnosti za ljude koji čitaju i pišu na jeziku koji nije
+\SpecialCharNoPassThru LyX
+ ima mnogo mogućnosti za ljude koji čitaju i pišu na jeziku koji nije
  engleski.
  Pored toga, trake sa alatkama, kao i mnoge druge karakteristike su visoko
  konfigurabilne.
@@ -153,7 +171,8 @@ Pomoć-Prilagođavanje
 \end_layout
 
 \begin_layout Enumerate
-LyX naslovna strana je u 
+\SpecialCharNoPassThru LyX
+ naslovna strana je u 
 \begin_inset Flex URL
 status collapsed
 
@@ -164,8 +183,11 @@ http://www.lyx.org/
 
 \end_inset
 
-, gde možete preuzeti informacije o LyX-u, upisati se na LyX-ovu mailing
- listu, ići na LyX Grafičku turu, i još mnogo toga.
+, gde možete preuzeti informacije o \SpecialCharNoPassThru LyX
+-u, upisati se na \SpecialCharNoPassThru LyX
+-ovu mailing
+ listu, ići na \SpecialCharNoPassThru LyX
+ Grafičku turu, i još mnogo toga.
 \end_layout
 
 \end_body

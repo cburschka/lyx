@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /home/scott/lyxbuilds/master/repo/development/MacOSX/ReadMe/
 \textclass scrartcl
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans lmss
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "lmss" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,7 +71,8 @@
 \begin_body
 
 \begin_layout Title
-Installation rapide de LyX 2.0
+Installation rapide de \SpecialCharNoPassThru LyX
+ 2.0
 \end_layout
 
 \begin_layout Date
@@ -97,17 +99,23 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
-Pour installer LyX, la marche à suivre est la suivante :
+Pour installer \SpecialCharNoPassThru LyX
+, la marche à suivre est la suivante :
 \end_layout
 
 \begin_layout Enumerate
 Préparation du système
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Si c'est votre première installation de LyX, assurez-vous d'avoir une version
- récente de MacTeX 
+Si c'est votre première installation de \SpecialCharNoPassThru LyX
+, assurez-vous d'avoir une version
+ récente de Mac\SpecialCharNoPassThru TeX
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -119,7 +127,9 @@ http://www.tug.org/mactex
 \end_inset
 
 .
- LyX s'appuie sur LaTeX pour composer les documents et ne peut pas produire
+ \SpecialCharNoPassThru LyX
+ s'appuie sur \SpecialCharNoPassThru LaTeX
+ pour composer les documents et ne peut pas produire
  de documents imprimables sans cela.
 \end_layout
 
@@ -128,17 +138,22 @@ Si vous utilisiez précédemment
 \begin_inset Quotes fld
 \end_inset
 
-LyX 1.6
+\SpecialCharNoPassThru LyX
+ 1.6
 \begin_inset Quotes frd
 \end_inset
 
  et que vous voulez continuer à utiliser vos réglages, procédez comme suit
  :
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Dans le Finder, sélectionnez le dossier LyX-1.6 dans Bibliothèque>Application
+Dans le Finder, sélectionnez le dossier \SpecialCharNoPassThru LyX
+-1.6 dans Bibliothèque>Application
  Support.
 \end_layout
 
@@ -151,7 +166,8 @@ Renommez la copie en
 \begin_inset Quotes fld
 \end_inset
 
-LyX-2.0
+\SpecialCharNoPassThru LyX
+-2.0
 \begin_inset Quotes frd
 \end_inset
 
@@ -161,27 +177,33 @@ LyX-2.0
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-Ouvrez l'image disque de LyX 2.0 (ce que vous avez probablement déjà fait
+Ouvrez l'image disque de \SpecialCharNoPassThru LyX
+ 2.0 (ce que vous avez probablement déjà fait
  si vous lisez ceci).
 \end_layout
 
 \begin_layout Enumerate
-Glissez l'icône LyX dans le dossier Applications.
+Glissez l'icône \SpecialCharNoPassThru LyX
+ dans le dossier Applications.
 \end_layout
 
 \begin_layout Enumerate
-Démarrez LyX.
+Démarrez \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Enumerate
-Vous trouverez une liste des nouvelles fonctionnalités de LyX 2.0 (malheureusemen
+Vous trouverez une liste des nouvelles fonctionnalités de \SpecialCharNoPassThru LyX
+ 2.0 (malheureusemen
 t en anglais) à 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/NewInLyX20
+http://wiki.lyx.org/\SpecialCharNoPassThru LyX
+/NewIn\SpecialCharNoPassThru LyX
+20
 \end_layout
 
 \end_inset

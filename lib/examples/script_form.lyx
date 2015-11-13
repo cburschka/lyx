@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass hollywood
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -113,7 +114,10 @@ Copyright 1998 by the Academy of Motion Picture Arts and Sciences
 \end_layout
 
 \begin_layout General
-----------
+\threehyphens
+\threehyphens
+\threehyphens
+-
 \end_layout
 
 \begin_layout General
@@ -121,7 +125,10 @@ FILE NOTES
 \end_layout
 
 \begin_layout General
-----------
+\threehyphens
+\threehyphens
+\threehyphens
+-
 \end_layout
 
 \begin_layout General
@@ -149,7 +156,8 @@ File Info: April, 1998 (online)
 \end_layout
 
 \begin_layout General
-- View in a monospaced font -- preferably 12-point Courier.
+- View in a monospaced font \twohyphens
+ preferably 12-point Courier.
 \end_layout
 
 \begin_layout General
@@ -157,11 +165,15 @@ Copyright 1998 by the Academy of Motion Picture Arts and Sciences
 \end_layout
 
 \begin_layout General
-----------
+\threehyphens
+\threehyphens
+\threehyphens
+-
 \end_layout
 
 \begin_layout General
-Permission to use this script as a LyX example file was kindly granted by
+Permission to use this script as a \SpecialCharNoPassThru LyX
+ example file was kindly granted by
  Greg Beal, gbeal@oscars.org.
 \end_layout
 
@@ -175,7 +187,8 @@ I'd never let you miss a meal.
 \begin_inset Quotes erd
 \end_inset
 
- There were also references to tabs, which don't exist in LyX, so I made
+ There were also references to tabs, which don't exist in \SpecialCharNoPassThru LyX
+, so I made
  minor changes in the text.
  Apologies and kudos to Ann Garretson.
  Be sure to thank her when you get your Oscar.
@@ -325,7 +338,8 @@ speakeroffset}{1.2in}
 \end_layout
 
 \begin_layout General
-click TeX and enter new values as above.
+click \SpecialCharNoPassThru TeX
+ and enter new values as above.
 \end_layout
 
 \begin_layout General
@@ -516,7 +530,8 @@ reference "Joe"
 
 \end_inset
 
- both look out across the room -- rows of empty chairs and nary a person
+ both look out across the room \twohyphens
+ rows of empty chairs and nary a person
  in sight.
 \end_layout
 
@@ -610,7 +625,8 @@ Right above me.
  Scene headers, like INT., remain attached to Description.
  If a page breaks between a Speaker and a one sentence Dialogue, move it
  above the Speaker.
- A long Dialogue passage would be split -- but I'll get to that later.
+ A long Dialogue passage would be split \twohyphens
+ but I'll get to that later.
 \end_layout
 
 \begin_layout Speaker
@@ -743,7 +759,8 @@ reference "April"
 
 \end_inset
 
- -- come on! There's no one here.
+ \twohyphens
+ come on! There's no one here.
 \end_layout
 
 \begin_layout Speaker
@@ -764,7 +781,7 @@ walking through the door
 Ah, a scene heading.
  Or a slug line, as I was taught in film school.
  Always CAPPED.
- What happens if we \SpecialChar \ldots{}
+ What happens if we \SpecialChar ldots
 
 \end_layout
 
@@ -814,8 +831,10 @@ reference "April"
 \end_layout
 
 \begin_layout Dialogue
-There was a cut -- from the hallway to the capitol.
- What'd you want to do -- ride in a cab?
+There was a cut \twohyphens
+ from the hallway to the capitol.
+ What'd you want to do \twohyphens
+ ride in a cab?
 \end_layout
 
 \begin_layout Speaker
@@ -1171,7 +1190,8 @@ reference "April"
 \end_layout
 
 \begin_layout Dialogue
-Not very -- about 1.5 inches.
+Not very \twohyphens
+ about 1.5 inches.
  And they should wrap to the following line when they extend beyond that
  point.
 \end_layout
@@ -1219,7 +1239,8 @@ reference "Joe"
 \end_layout
 
 \begin_layout Dialogue
-I have to ask -- what happened to CUT TO:s between scenes.
+I have to ask \twohyphens
+ what happened to CUT TO:s between scenes.
 \end_layout
 
 \begin_layout Speaker
@@ -1302,7 +1323,7 @@ reference "April"
 \end_layout
 
 \begin_layout Dialogue
-If you'd like \SpecialChar \ldots{}
+If you'd like \SpecialChar ldots
 
 \end_layout
 
@@ -1597,10 +1618,13 @@ reference "April"
 
 \end_inset
 
- punches the accelerator and -- THE BLUE CAMARO leaps forward, leaving a
+ punches the accelerator and \twohyphens
+ THE BLUE CAMARO leaps forward, leaving a
  trail of rubber.
- The Camaro takes a left, then a quick right to accelerate into -- A DARK
- ALLEY The Camaro quickly reaches a dead end, just as -- THE BLACK CADILLAC
+ The Camaro takes a left, then a quick right to accelerate into \twohyphens
+ A DARK
+ ALLEY The Camaro quickly reaches a dead end, just as \twohyphens
+ THE BLACK CADILLAC
  pulls into the alley, sealing it shut.
 \end_layout
 
@@ -1674,7 +1698,8 @@ Many do.
 \end_layout
 
 \begin_layout INT.
-DRISKILL HOTEL ENTRANCE HALL -- PHONE BOOTH - DAY
+DRISKILL HOTEL ENTRANCE HALL \twohyphens
+ PHONE BOOTH - DAY
 \end_layout
 
 \begin_layout Description
@@ -1936,7 +1961,8 @@ reference "April"
 
 \end_inset
 
- sneaks up behind him and mimics his movements -- until he notices.
+ sneaks up behind him and mimics his movements \twohyphens
+ until he notices.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1958,7 +1984,7 @@ reference "Joe"
 \end_layout
 
 \begin_layout Dialogue
-Why I ought'a \SpecialChar \ldots{}
+Why I ought'a \SpecialChar ldots
 
 \end_layout
 

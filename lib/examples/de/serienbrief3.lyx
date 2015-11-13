@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass scrlttr2
 \begin_preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,16 +67,16 @@ fromurl=true%               print sender URL
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -136,7 +137,8 @@ fromurl=true%               print sender URL
 \begin_body
 
 \begin_layout Name
-Das LyX-Entwicklerteam
+Das \SpecialCharNoPassThru LyX
+-Entwicklerteam
 \end_layout
 
 \begin_layout SenderAddress
@@ -165,7 +167,8 @@ www.lyx.org
 \end_layout
 
 \begin_layout Backaddress
-Das LyX-Entwicklerteam
+Das \SpecialCharNoPassThru LyX
+-Entwicklerteam
 \begin_inset Newline newline
 \end_inset
 
@@ -178,7 +181,8 @@ Planstr.
 \end_layout
 
 \begin_layout Signature
-Das LyX-Team
+Das \SpecialCharNoPassThru LyX
+-Team
 \end_layout
 
 \begin_layout Subject
@@ -302,11 +306,13 @@ alle weiblichen Personen
 Die Vorlage beschreibt den Gebrauch der neuen scrlttr2-Klasse, die mit KOMA-Scri
 pt 2.9 eingeführt wurde.
  Diese, den europäischen Bedürfnissen angepasste Klasse, ist sehr flexibel.
- Im LyX-Menü 
+ Im \SpecialCharNoPassThru LyX
+-Menü 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-LaTeX-Vorspann
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+-Vorspann
 \family default
  finden sich die Einstellmöglichkeiten der meisten gebräuchlichen Parameter.
  Die KOMA
@@ -364,7 +370,8 @@ S.: Blaufarbige Items sollen vor der Adresse eingefügt werden, magentafarbige
 \end_layout
 
 \begin_layout CC
-Die LyX-User
+Die \SpecialCharNoPassThru LyX
+-User
 \end_layout
 
 \begin_layout EndLetter

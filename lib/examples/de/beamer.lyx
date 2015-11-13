@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass beamer
 \begin_preamble
 % Wir verwenden das "Berkeley"-Thema
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -75,7 +76,7 @@
 \begin_body
 
 \begin_layout Title
-Präsentationen mit Beamer und LyX
+Präsentationen mit Beamer und \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Subtitle
@@ -83,7 +84,8 @@ Eine Einführung in die Grundlagen
 \end_layout
 
 \begin_layout Author
-Das LyX-Team
+Das \SpecialCharNoPassThru LyX
+-Team
 \end_layout
 
 \begin_layout Date
@@ -103,6 +105,9 @@ V.
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -169,6 +174,9 @@ Beamer
 \end_inset
 
 -Klasse können Sie Präsentationsfolien erstellen, die
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -198,7 +206,8 @@ verschiedene Navigationspfade enthalten können (beachten Sie, dass die Folien
 \end_layout
 
 \begin_layout Itemize
-LaTeX' überragende Ausgabequalität nutzen,
+\SpecialCharNoPassThru LaTeX
+' überragende Ausgabequalität nutzen,
 \end_layout
 
 \begin_layout Itemize
@@ -211,14 +220,18 @@ leicht in Begleitmaterialien transformiert werden können (bspw.
 \end_layout
 
 \begin_layout Itemize
-und vieles mehr \SpecialChar \ldots{}
+und vieles mehr \SpecialChar ldots
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -235,6 +248,9 @@ Zweck dieser Präsentation
 
 \begin_layout Frame
 Diese Präsentation
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -253,7 +269,8 @@ Beamer
 \end_layout
 
 \begin_layout Itemize
-und vor allem, wie Sie diese mit LyX nutzen können.
+und vor allem, wie Sie diese mit \SpecialCharNoPassThru LyX
+ nutzen können.
 \end_layout
 
 \end_deeper
@@ -306,6 +323,9 @@ Die globale Struktur
 
 \begin_layout Frame
 Eine Präsentation besteht üblicherweise aus
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -328,9 +348,13 @@ einem Anhang mit zusätzlichen Informationen, bspw.
 Im Folgenden beschreiben wir diese Bestandteile der globalen Struktur.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -346,7 +370,8 @@ Die Titelfolie
 \end_layout
 
 \begin_layout Frame
-In LyX wird eine Titelfolie mit Hilfe der Absatzstile 
+In \SpecialCharNoPassThru LyX
+ wird eine Titelfolie mit Hilfe der Absatzstile 
 \begin_inset Flex Structure
 status collapsed
 
@@ -408,6 +433,9 @@ Titelgrafik
 
  erstellt.
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -487,10 +515,10 @@ Datum
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
-Kurztitel\SpecialChar \slash{}
-Kurzdatum\SpecialChar \slash{}
-\SpecialChar \ldots{}
+Einfügen\SpecialChar menuseparator
+Kurztitel\SpecialChar breakableslash
+Kurzdatum\SpecialChar breakableslash
+\SpecialChar ldots
 
 \end_layout
 
@@ -505,8 +533,8 @@ Kurzformen
 \end_inset
 
  definieren.
- Diese werden in der Seitenleiste und\SpecialChar \slash{}
-oder Kopf-\SpecialChar \slash{}
+ Diese werden in der Seitenleiste und\SpecialChar breakableslash
+oder Kopf-\SpecialChar breakableslash
 Fußzeile verwendet (falls
  das verwendete Thema solche Bereiche vorsieht).
 \end_layout
@@ -536,9 +564,13 @@ Titel
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -624,6 +656,9 @@ Teilfolien
 \end_inset
 
  bestehen kann).
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -656,7 +691,7 @@ Rahmentitel
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Rahmentitel
 \end_layout
 
@@ -722,7 +757,7 @@ key "beamer-ug"
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Rahmen-Optionen
 \end_layout
 
@@ -733,7 +768,7 @@ Rahmen-Optionen
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Overlay-Spezifikation
 \end_layout
 
@@ -744,7 +779,7 @@ Overlay-Spezifikation
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Standard
 \begin_inset ERT
 status collapsed
@@ -776,9 +811,13 @@ Spezifikation
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -852,6 +891,9 @@ small
 Rahmen können vollständig oder partiell (nur in Form einzelner Unterfolien)
  wiederholt werden, und zwar beliebig oft und jederzeit in späteren Phasen
  der Präsentation.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -866,6 +908,9 @@ label
 \end_inset
 
  (was wir für diesen Rahmen gemacht haben).
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -901,7 +946,7 @@ RahmenNochmal
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Overlay-Spezifikation
 \end_layout
 
@@ -944,9 +989,13 @@ Hier ist der Beweis!
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -958,6 +1007,9 @@ Rahmen zusammenhalten
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -990,7 +1042,7 @@ eingebettet
 status collapsed
 
 \begin_layout Plain Layout
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Listentiefe erhöhen
 \end_layout
 
@@ -1006,7 +1058,7 @@ arg   "depth-increment"
 \end_layout
 
 \begin_layout Itemize
-Eingebettete Absätze sind durch eine rote Linie am Rand des LyX
+Eingebettete Absätze sind durch eine rote Linie am Rand des \SpecialCharNoPassThru LyX
 \begin_inset ERT
 status collapsed
 
@@ -1031,9 +1083,13 @@ Nicht eingebettete Inhalte (wie dieser und der nächste Absatz) werden zwar
 Vermeiden Sie dies also möglichst!
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1063,6 +1119,9 @@ Trenner
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1086,7 +1145,7 @@ Die komfortabelste Methode, um einen neuen Rahmen zu beginnen, ist wie folgt:
 status collapsed
 
 \begin_layout Plain Layout
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Neue Umgebung
 \end_layout
 
@@ -1113,7 +1172,7 @@ Rahmen
 status collapsed
 
 \begin_layout Plain Layout
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Neue äußere Umgebung
 \end_layout
 
@@ -1152,9 +1211,13 @@ status open
 meinrahmen
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout PlainFrame
 \begin_inset Argument 4
@@ -1170,7 +1233,11 @@ Spezielle Rahmentypen
 \end_layout
 
 \begin_layout PlainFrame
-LyX bietet zwei spezielle Rahmentypen:
+\SpecialCharNoPassThru LyX
+ bietet zwei spezielle Rahmentypen:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1185,7 +1252,7 @@ Schlichter Rahmen
 \end_inset
 
  ist einen Rahmen ohne Seitenleiste, Kopf- oder Fußzeile (so wie dieser).
- Das ist nützlich für Folien mit viel Inhalt\SpecialChar \slash{}
+ Das ist nützlich für Folien mit viel Inhalt\SpecialChar breakableslash
 breiten Tabellen.
 \end_layout
 
@@ -1207,7 +1274,8 @@ fragile
 \begin_inset Quotes grd
 \end_inset
 
- Inhalte (in LaTeX' Sinn) hat, besonders bei 
+ Inhalte (in \SpecialCharNoPassThru LaTeX
+' Sinn) hat, besonders bei 
 \begin_inset Quotes gld
 \end_inset
 
@@ -1240,9 +1308,13 @@ fragile
  an einen schlichten Rahmen.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1254,6 +1326,9 @@ Eine Präsentation gliedern
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1323,9 +1398,13 @@ Modi
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1345,6 +1424,9 @@ Teile
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1387,17 +1469,21 @@ key "beamer-ug"
 \begin_layout Itemize
 Das bedeutet, dass beispielsweise ein Inhaltsverzeichnis, sobald Sie die
  Präsentation in Teile untergliedern, nur die Abschnitte und Unterabschnitte
- des Teils auf\SpecialChar \textcompwordmark{}
+ des Teils auf\SpecialChar ligaturebreak
 führt, in den Sie das Inhaltsverzeichnis eingefügt haben.
  Auch die Seitenleiste bzw.
- Kopf-\SpecialChar \slash{}
+ Kopf-\SpecialChar breakableslash
 Fußzeile enthält dann jeweils nur die Abschnitte des aktuelles Teils.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1409,6 +1495,9 @@ Rahmen neu anordnen
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1433,7 +1522,7 @@ Wussten Sie, dass Sie komplette Rahmen mit Hilfe der Gliederungsansicht
 status collapsed
 
 \begin_layout Plain Layout
-Ansicht\SpecialChar \menuseparator
+Ansicht\SpecialChar menuseparator
 Gliederung des Dokuments
 \end_layout
 
@@ -1457,9 +1546,13 @@ Navigieren
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1471,6 +1564,9 @@ Der Anhang
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1490,7 +1586,11 @@ Reserve
 \end_layout
 
 \begin_layout Itemize
-Ein Anhang wird wie in LyX üblich eingefügt:
+Ein Anhang wird wie in \SpecialCharNoPassThru LyX
+ üblich eingefügt:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1500,7 +1600,7 @@ Wählen Sie
 status collapsed
 
 \begin_layout Plain Layout
-Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
 Anhang hier beginnen
 \end_layout
 
@@ -1512,11 +1612,15 @@ Anhang hier beginnen
 \end_deeper
 \begin_layout Itemize
 Ein typischer Bestandteil des Anhangs ist das Literaturverzeichnis
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Dieses geben Sie wie in den anderen LyX-Klassen auch ein, über den Absatzstil
+Dieses geben Sie wie in den anderen \SpecialCharNoPassThru LyX
+-Klassen auch ein, über den Absatzstil
  
 \begin_inset Flex Structure
 status collapsed
@@ -1531,7 +1635,9 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Itemize
-Sie können auch BibTeX verwenden, jedoch sind nicht alle BibTeX-Stile kompatibel
+Sie können auch Bib\SpecialCharNoPassThru TeX
+ verwenden, jedoch sind nicht alle Bib\SpecialCharNoPassThru TeX
+-Stile kompatibel
  mit 
 \begin_inset Flex Structure
 status collapsed
@@ -1592,6 +1698,9 @@ Overlay
 -Konzept einen dynamischen Aufbau und Wechsel von Folieninhalten.
  Sie können Dinge oder Text Schritt für Schritt aufdecken, Inhalte ausblenden,
  hervorheben, ersetzen usw.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1644,9 +1753,13 @@ Wirklich, verwenden Sie sie!
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1673,6 +1786,9 @@ Beamer
 
  bietet viele verschiedene Overlay-Typen.
  Die wichtigsten sind:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1717,9 +1833,13 @@ Wir geben im Folgenden Beispiele für diese Typen.
  Möglichkeiten von Overlays.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1796,16 +1916,20 @@ article
 \end_inset
 
  etc.)
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-In LyX können diese Spezifikationen grundsätzlich über 
+In \SpecialCharNoPassThru LyX
+ können diese Spezifikationen grundsätzlich über 
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Overlay-Spezifikation
 \end_layout
 
@@ -1816,7 +1940,7 @@ Overlay-Spezifikation
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Aktionsspezifikation
 \end_layout
 
@@ -1835,6 +1959,9 @@ status open
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -1859,8 +1986,8 @@ Overlays
 \begin_inset Quotes gld
 \end_inset
 
-auf welchen Teilfolien soll dies gezeigt\SpecialChar \slash{}
-verborgen\SpecialChar \slash{}
+auf welchen Teilfolien soll dies gezeigt\SpecialChar breakableslash
+verborgen\SpecialChar breakableslash
 hervorgehoben
 \begin_inset Quotes erd
 \end_inset
@@ -1905,6 +2032,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -1913,7 +2043,8 @@ status open
 status open
 
 \begin_layout Plain Layout
-Hinweis an die LaTeXperten
+Hinweis an die \SpecialCharNoPassThru LaTeX
+perten
 \end_layout
 
 \end_inset
@@ -1953,10 +2084,11 @@ small
 
 \end_inset
 
-Die erwähnten Overlay-\SpecialChar \slash{}
-Aktionsspezifikationen entsprechen den Befehls-\SpecialChar \slash{}
+Die erwähnten Overlay-\SpecialChar breakableslash
+Aktionsspezifikationen entsprechen den Befehls-\SpecialChar breakableslash
 Umgebungsop
-tionen in der LaTeX-Ausgabe, die mit
+tionen in der \SpecialCharNoPassThru LaTeX
+-Ausgabe, die mit
 \begin_inset Flex Alert
 status collapsed
 
@@ -1964,7 +2096,7 @@ status collapsed
 \begin_inset space \space{}
 \end_inset
 
-<\SpecialChar \ldots{}
+<\SpecialChar ldots
 >
 \end_layout
 
@@ -1975,7 +2107,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-[<\SpecialChar \ldots{}
+[<\SpecialChar ldots
 >]
 \end_layout
 
@@ -1985,7 +2117,8 @@ status collapsed
 \end_layout
 
 \begin_layout AlertBlock
-Beachten Sie, dass LyX diese Klammern beim Export hinzufügt, Sie dürfen
+Beachten Sie, dass \SpecialCharNoPassThru LyX
+ diese Klammern beim Export hinzufügt, Sie dürfen
  Sie also nicht selbst eingeben.
  D.
 \begin_inset space \thinspace{}
@@ -2007,7 +2140,7 @@ h., geben Sie
 \begin_inset Quotes grd
 \end_inset
 
- in die Overlay-\SpecialChar \slash{}
+ in die Overlay-\SpecialChar breakableslash
 Aktionseinfügungen ein, nicht 
 \begin_inset Quotes gld
 \end_inset
@@ -2029,9 +2162,13 @@ Aktionseinfügungen ein, nicht
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2063,7 +2200,7 @@ Zitat
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Overlay-Spezifikation
 \end_layout
 
@@ -2080,6 +2217,9 @@ Overlay-Spezifikation
 \end_inset
 
  eingeben, erscheint das Zitat nur auf der zweiten Teilfolie:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2113,9 +2253,13 @@ im Winter ist mir heiß.
 So funktioniert das Konzept.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2168,6 +2312,9 @@ unsichtbar
  sind (aber trotzdem Platz beanspruchen).
  Wenn wir das Zitat auf der vorherigen Folie verborgen und nicht bloß verdeckt
  hätten, hätte es erst Platz beansprucht, nachdem es aufgedeckt wurde:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2209,9 +2356,13 @@ wandert
 , wenn das Zitat aufgedeckt wird.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2288,6 +2439,9 @@ transparent
 \end_inset
 
  ist der verdeckte Text noch (ausgegraut) zu erkennen:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2331,22 +2485,26 @@ Beamer
 -Handbuch für weitere Möglichkeiten.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-Standard-Overlay-\SpecialChar \slash{}
+Standard-Overlay-\SpecialChar breakableslash
 Aktionsspezifikationen vs.
 \begin_inset Newline newline
 \end_inset
 
-(normale) Overlay-\SpecialChar \slash{}
-Aktions\SpecialChar \-
+(normale) Overlay-\SpecialChar breakableslash
+Aktions\SpecialChar softhyphen
 spezifikationen
 \end_layout
 
@@ -2378,6 +2536,9 @@ small
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2395,7 +2556,7 @@ Standard-Spezifikationen
 \begin_inset Quotes grd
 \end_inset
 
- zusätzlich zu den normalen Overlay-\SpecialChar \slash{}
+ zusätzlich zu den normalen Overlay-\SpecialChar breakableslash
 Aktionsspezifikationen festlegen (bei
  Listen: 
 \begin_inset Quotes gld
@@ -2425,7 +2586,7 @@ Standard-Spezifikationen
 \end_inset
 
  gelten für den gesamten Inhalt der Umgebung, wenn keine spezifischen Spezifikat
-ionen für einzelne Abschnitte\SpecialChar \slash{}
+ionen für einzelne Abschnitte\SpecialChar breakableslash
 Einträge gegeben werden.
 \end_layout
 
@@ -2441,6 +2602,9 @@ Sie verwenden eine Platzhalter-Syntax.
 
  etwa deckt alle Einträge in einer Liste schrittweise auf (mit einer Verzögerung
  von 1), sofern sie keine individuelle Eintragsspezifikation haben:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2498,9 +2662,13 @@ Beamer
 
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 2
@@ -2517,13 +2685,13 @@ status open
 status open
 
 \begin_layout Plain Layout
-Standard-Overlay-\SpecialChar \slash{}
+Standard-Overlay-\SpecialChar breakableslash
 Aktionsspezifikationen vs.
 \begin_inset Newline newline
 \end_inset
 
-(normale) Overlay-\SpecialChar \slash{}
-Aktions\SpecialChar \-
+(normale) Overlay-\SpecialChar breakableslash
+Aktions\SpecialChar softhyphen
 spezifikationen
 \end_layout
 
@@ -2535,26 +2703,29 @@ spezifikationen
 \begin_layout Frame
 \noindent
 Dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
- die bewirkt, dass jeder overlay-fähige Absatz \SpecialChar \ldots{}
+ die bewirkt, dass jeder overlay-fähige Absatz \SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
- oder Listeneintrag \SpecialChar \ldots{}
+\SpecialChar ldots
+ oder Listeneintrag \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
- auf einer eigenen Unterfolie \SpecialChar \ldots{}
+\SpecialChar ldots
+ auf einer eigenen Unterfolie \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
- eingeblendet wird, \SpecialChar \ldots{}
+\SpecialChar ldots
+ eingeblendet wird, \SpecialChar ldots
 
 \end_layout
 
@@ -2572,14 +2743,18 @@ Ein Block
 \end_layout
 
 \begin_layout Block
-\SpecialChar \ldots{}
+\SpecialChar ldots
  und zwar Stück für Stück.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 2
@@ -2596,13 +2771,13 @@ alert@+
 status open
 
 \begin_layout Plain Layout
-Standard-Overlay-\SpecialChar \slash{}
+Standard-Overlay-\SpecialChar breakableslash
 Aktionsspezifikationen vs.
 \begin_inset Newline newline
 \end_inset
 
-(normale) Overlay-\SpecialChar \slash{}
-Aktions\SpecialChar \-
+(normale) Overlay-\SpecialChar breakableslash
+Aktions\SpecialChar softhyphen
 spezifikationen
 \end_layout
 
@@ -2614,32 +2789,39 @@ spezifikationen
 \begin_layout Frame
 \noindent
 Und dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
- \SpecialChar \ldots{}
+ \SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
- die jeden overlayfähigen Listeneintrag \SpecialChar \ldots{}
+\SpecialChar ldots
+ die jeden overlayfähigen Listeneintrag \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
- auf einer entsprechenden Unterfolie \SpecialChar \ldots{}
+\SpecialChar ldots
+ auf einer entsprechenden Unterfolie \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
  hervorhebt.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2668,6 +2850,9 @@ Pause
  können Sie einen Punkt auf der Folie markieren, nach dem jeder folgende
  Inhalt verdeckt wird (standardmäßig für eine Folie in Bezug auf die Inhalte
  vor der Pause):
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2712,7 +2897,7 @@ Standardmäßig enden alle aufeinanderfolgenden Pausen auch nacheinander.
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Pausennummer
 \end_layout
 
@@ -2722,9 +2907,13 @@ Pausennummer
  endet, unabhängig davon, wie viele Pausen vor ihr eingefügt wurden.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2749,9 +2938,13 @@ Beamer
 
 \end_inset
 
- und LyX bieten Absatzstile, deren einziger Zweck es ist, ganze Absätze
+ und \SpecialCharNoPassThru LyX
+ bieten Absatzstile, deren einziger Zweck es ist, ganze Absätze
  oder Sequenzen von Absätzen auf bestimmten (Teil-)Folien aus- oder einzublenden.
  Dies sind vor allem:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2783,13 +2976,16 @@ Aufgedeckt
 \emph on
 aufdeckt
 \emph default
-, \SpecialChar \ldots{}
+, \SpecialChar ldots
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
  und zwar einschließlich eingebetteter Absätze anderen Stils.
 \end_layout
 
@@ -2844,6 +3040,9 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -2858,7 +3057,7 @@ status collapsed
 
 \end_inset
 
-, mit welchem Sie \SpecialChar \ldots{}
+, mit welchem Sie \SpecialChar ldots
 
 \end_layout
 
@@ -2874,11 +3073,14 @@ status open
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  alternativen Text eingeben können, der einen bestimmten Raum beansprucht.
 \end_layout
 
@@ -2888,9 +3090,13 @@ status open
 Diese Folie demonstriert die grundsätzlichen Möglichkeiten.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -2938,18 +3144,22 @@ Beamer
 
  ermöglicht auch absatzinterne Overlays für Textteile (im Gegensatz zu ganzen
  Absätzen).
- Sie sind in LyX über 
+ Sie sind in \SpecialCharNoPassThru LyX
+ über 
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Textstil
 \end_layout
 
 \end_inset
 
  zugänglich:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3159,9 +3369,13 @@ Einfügen
  zugänglich.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3190,7 +3404,7 @@ absatzinterne
 status collapsed
 
 \begin_layout Plain Layout
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Textstil
 \end_layout
 
@@ -3198,6 +3412,9 @@ Textstil
 
  findet) sind overlayfähig.
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3333,7 +3550,8 @@ normale
 \begin_inset Quotes grd
 \end_inset
 
- Hervorhebung LaTeX-Fehler nach sich ziehen, vor allem in Überschriften.
+ Hervorhebung \SpecialCharNoPassThru LaTeX
+-Fehler nach sich ziehen, vor allem in Überschriften.
 \end_layout
 
 \end_deeper
@@ -3364,6 +3582,9 @@ präsentationsspezifische
 \end_inset
 
  Umgebungen sind:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3391,9 +3612,13 @@ Spalten
 Wir erläutern ihren Gebrauch im Folgenden kurz.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3438,6 +3663,9 @@ Beamer
 \end_inset
 
  bietet drei vordefinierte Blocktypen mit unterschiedlichem Aussehen:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3539,9 +3767,13 @@ Alarm
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3554,12 +3786,19 @@ Umgang mit Blocks
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-In LyX verhalten sich Blocks ähnlich wie Rahmen.
+In \SpecialCharNoPassThru LyX
+ verhalten sich Blocks ähnlich wie Rahmen.
  Das heißt:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3589,6 +3828,9 @@ Trenner
 \end_inset
 
  getrennt werden.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3621,7 +3863,7 @@ Verwenden Sie
 status collapsed
 
 \begin_layout Plain Layout
-Beabeiten\SpecialChar \menuseparator
+Beabeiten\SpecialChar menuseparator
 Neue Umgebung
 \end_layout
 
@@ -3643,9 +3885,13 @@ Blocks sind overlayfähig.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3657,6 +3903,9 @@ Theoremartige Umgebungen
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -3671,6 +3920,9 @@ Theoremartige Umgebungen
 Theoreme sehen ähnlich aus wie Blocks, aber sie haben einen vom Typ abhängigen
  festen Titel.
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3694,13 +3946,16 @@ Dies ist ein Fakt!
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Zusätzlicher Theoremtext
 \end_layout
 
 \end_inset
 
  können Sie an diesen festen Titel einen Zusatztext anhängen
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3722,9 +3977,13 @@ Ein Beispiel mit zusätzlichem Text (die Klammern werden automatisch eingefügt)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -3741,10 +4000,16 @@ Spalten
 
 \begin_layout Frame
 Manchmal ist es nützlich, eine Folie in Spalten aufzuteilen
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -3810,7 +4075,7 @@ Spalte
 
 \end_inset
 
- (Singular), um eine spezifische\SpecialChar \slash{}
+ (Singular), um eine spezifische\SpecialChar breakableslash
 neue Spalte zu beginnen
 \end_layout
 
@@ -3829,6 +4094,9 @@ neue Spalte zu beginnen
 
 \begin_layout Frame
 Achtung:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -3843,7 +4111,8 @@ Spalte
 
 \end_inset
 
- (Singular) müssen Sie die Breite mit Hilfe von LaTeX-Syntax definieren
+ (Singular) müssen Sie die Breite mit Hilfe von \SpecialCharNoPassThru LaTeX
+-Syntax definieren
  (einfache Varianten davon sind Angaben wie 
 \begin_inset Quotes gld
 \end_inset
@@ -3964,6 +4233,9 @@ mode
 ) ein spezieller Ausgabeweg.
  Es gibt verschiedene Modi für verschiedene Zwecke.
  Wir heben hier nur drei heraus:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4069,9 +4341,13 @@ Beamer
 -Modus.
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -4117,11 +4393,17 @@ presentation
 \end_inset
 
 ).
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Was bedeutet das nun?
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4141,9 +4423,13 @@ Artikel
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 1
@@ -4189,9 +4475,13 @@ article
 ).
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -4208,8 +4498,13 @@ Na und?
 
 \begin_layout Frame
 Das ist wirklich sehr nützlich! Sie können so ein einziges Dokument erstellen,
- aus dem Sie sowohl Präsentationsfolien als auch -- über den Artikelmodus
- -- ein Handout generieren können.
+ aus dem Sie sowohl Präsentationsfolien als auch \twohyphens
+ über den Artikelmodus
+ \twohyphens
+ ein Handout generieren können.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4236,7 +4531,8 @@ Beamer
 
 \end_inset
 
-/LyX auch ein solches erstellen)!
+/\SpecialCharNoPassThru LyX
+ auch ein solches erstellen)!
 \end_layout
 
 \begin_layout Itemize
@@ -4250,14 +4546,18 @@ Sie können bspw.
 \end_layout
 
 \begin_layout Itemize
-und so weiter \SpecialChar \ldots{}
+und so weiter \SpecialChar ldots
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -4275,6 +4575,9 @@ Beispiele
 \begin_layout Frame
 Wie gesagt, viele Elemente sind modusfähig.
  
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4286,8 +4589,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
 Nur
 \end_layout
 
@@ -4345,8 +4648,8 @@ Oder alle möglichen komplexen Inhalte über
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Artikelmodus
 \end_layout
 
@@ -4367,8 +4670,8 @@ Oder alle möglichen komplexen Inhalte über
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Präsentationsmodus
 \end_layout
 
@@ -4380,6 +4683,9 @@ Präsentationsmodus
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -4428,8 +4734,8 @@ ein Fettdruck
 
 \begin_layout Itemize
 Auch können Sie etwa Abschnittsüberschriften oder Rahmentitel bzw.
- \SpecialChar \nobreakdash-
-untertitel nur in der Präsentation\SpecialChar \slash{}
+ \SpecialChar nobreakdash
+untertitel nur in der Präsentation\SpecialChar breakableslash
 dem Handout ausgeben lassen (wie wir
  das in dieser Präsentation für die Rahmen 
 \begin_inset Quotes gld
@@ -4451,14 +4757,18 @@ Literatur
 \end_layout
 
 \begin_layout Itemize
-Und einiges mehr in diese Richtung \SpecialChar \ldots{}
+Und einiges mehr in diese Richtung \SpecialChar ldots
 
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -4475,6 +4785,9 @@ Ein Handout (via Artikelmodus) erstellen
 
 \begin_layout Frame
 Ein Handout (via Artikelmodus) zu erstellen, ist leicht.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4512,9 +4825,9 @@ Fügen Sie diesem Dokument dann die Präsentation als Unterdokument hinzu
 status collapsed
 
 \begin_layout Plain Layout
-Einfügen\SpecialChar \menuseparator
-Datei\SpecialChar \menuseparator
-Unterdokument\SpecialChar \ldots{}
+Einfügen\SpecialChar menuseparator
+Datei\SpecialChar menuseparator
+Unterdokument\SpecialChar ldots
 
 \end_layout
 
@@ -4526,7 +4839,7 @@ Unterdokument\SpecialChar \ldots{}
 \begin_layout Itemize
 Das ist schon alles! Nun können Sie das Handout und die Präsentation erzeugen,
  indem Sie eines der beiden Dokumente (den Beamer-Aufsatz oder die Präsentation
- selbst) ansehen\SpecialChar \slash{}
+ selbst) ansehen\SpecialChar breakableslash
 exportieren.
  Inhaltlich bearbeiten müssen Sie nur eines, nämlich die Präsentation.
 \end_layout
@@ -4559,6 +4872,9 @@ Themen
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -4611,9 +4927,10 @@ Berkeley
 status collapsed
 
 \begin_layout Plain Layout
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-LaTeX-Vorspann
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+-Vorspann
 \end_layout
 
 \end_inset
@@ -4666,9 +4983,13 @@ key "beamer-ug"
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -4686,6 +5007,9 @@ Themen kann man auch modifizieren
 \begin_layout Frame
 Aber Sie müssen nicht notwendigerweise ein komplett neues Thema erstellen,
  wenn Sie das Aussehen verändern wollen.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -4717,7 +5041,7 @@ key "beamer-ug"
 
 \end_deeper
 \begin_layout Section
-Und mehr \SpecialChar \ldots{}
+Und mehr \SpecialChar ldots
 
 \end_layout
 
@@ -4726,7 +5050,7 @@ Und mehr \SpecialChar \ldots{}
 status open
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
+\SpecialChar ldots
  viel mehr!
 \end_layout
 
@@ -4777,7 +5101,8 @@ Beamer
 
 \end_inset
 
--Beispiele und die Vorlagen an, die LyX mitbringt!
+-Beispiele und die Vorlagen an, die \SpecialCharNoPassThru LyX
+ mitbringt!
 \end_layout
 
 \begin_layout Section
@@ -4842,6 +5167,9 @@ newblock
 \end_layout
 
 \begin_layout Frame
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 

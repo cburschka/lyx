@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \use_default_options false
 \begin_modules
@@ -12,16 +13,16 @@ noweb
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -73,7 +74,8 @@ noweb
 \begin_body
 
 \begin_layout Title
-LyX and Literate Programming
+\SpecialCharNoPassThru LyX
+ and Literate Programming
 \begin_inset Newline newline
 \end_inset
 
@@ -90,7 +92,8 @@ edmar-w-jr@technologist.com
 status collapsed
 
 \begin_layout Plain Layout
-Modified by Bernard Michael Hurley bernardh@westherts.ac.uk ---- Don't blame
+Modified by Bernard Michael Hurley bernardh@westherts.ac.uk \threehyphens
+- Don't blame
  Edmar for any errors that have crept in!
 \end_layout
 
@@ -110,7 +113,8 @@ Note:
 \emph on
 examples/listerrors.lyx
 \emph default
- which should be installed in the LyX scripts directory.
+ which should be installed in the \SpecialCharNoPassThru LyX
+ scripts directory.
 \end_layout
 
 \begin_layout Date
@@ -143,15 +147,19 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-After typesetting a document, LyX scans the LaTeX log file looking for errors.
+After typesetting a document, \SpecialCharNoPassThru LyX
+ scans the \SpecialCharNoPassThru LaTeX
+ log file looking for errors.
  For each error found, the line number is obtained and a error box is displayed
- in the LyX screen at that position.
+ in the \SpecialCharNoPassThru LyX
+ screen at that position.
 \end_layout
 
 \begin_layout Standard
 To use this feature to view compilation errors while working with literate
  documents, we need a program that filters the compilation errors and puts
- them in a format suitable for LyX reading it.
+ them in a format suitable for \SpecialCharNoPassThru LyX
+ reading it.
  
 \end_layout
 
@@ -164,8 +172,11 @@ In this document we present a filter that recognizes compilation error messages
 The filter is required to read from standard input, parse for error messages
  and copy the error messages to the standard output.
  During the output process, the filter must present the error messages in
- a format that LyX can interpret, currently, the LaTeX error message format.
- Of course, nothing will prevent future LyX releases from being able to
+ a format that \SpecialCharNoPassThru LyX
+ can interpret, currently, the \SpecialCharNoPassThru LaTeX
+ error message format.
+ Of course, nothing will prevent future \SpecialCharNoPassThru LyX
+ releases from being able to
  read other formats as well (like gcc error messages for example).
  This mechanism is necessary to fully explore the literate programming tool's
  capabilities.
@@ -401,7 +412,8 @@ The output format
 \end_layout
 
 \begin_layout Standard
-The output format mimics the TeX error messages format.
+The output format mimics the \SpecialCharNoPassThru TeX
+ error messages format.
  This function prints a number of lines residing in the global variable
  
 \family typewriter
@@ -414,9 +426,13 @@ status collapsed
 
 \begin_layout Plain Layout
 This function has been slightly changed from EW's original to make scanning
- a bit easier with LaTeX::scanLogFile().
- The test has been added because LyX can crash if empty lines are allowed
- here --- I can't figure out why! --- BMH
+ a bit easier with \SpecialCharNoPassThru LaTeX
+::scanLogFile().
+ The test has been added because \SpecialCharNoPassThru LyX
+ can crash if empty lines are allowed
+ here \threehyphens
+ I can't figure out why! \threehyphens
+ BMH
 \end_layout
 
 \end_inset
@@ -1165,7 +1181,8 @@ The gcc compiler error messages are more complicated to scan.
  line number is still the same.
  At the time they differ, all the accumulated lines, except the last one,
  will belong to one single error message, which now can be output-ed to
- LyX.
+ \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -1293,7 +1310,7 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to LyX
+      /****** Completed the scan of one error message, output it to \SpecialCharNoPassThru LyX
  */
 \end_layout
 
@@ -1975,7 +1992,7 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to LyX
+      /****** Completed the scan of one error message, output it to \SpecialCharNoPassThru LyX
  */
 \end_layout
 
@@ -2144,7 +2161,8 @@ gcc -g -o listerrors listerrors.c
 \end_layout
 
 \begin_layout Standard
-This project can be tangled and compiled from LyX if you set 
+This project can be tangled and compiled from \SpecialCharNoPassThru LyX
+ if you set 
 \family typewriter
 
 \backslash

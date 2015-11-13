@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass article
 \begin_preamble
 \usepackage{dcolumn}
@@ -13,16 +14,16 @@
 \language_package default
 \inputencoding iso8859-1
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -120,7 +121,7 @@ Une méthode alternative pour obtenir un alignement décimal dans les tableaux
 dcolumn
 \family default
 .
- Ajoutez ce qui suit au préambule LaTeX
+ Ajoutez ce qui suit au préambule \SpecialCharNoPassThru LaTeX
 \begin_inset Foot
 status collapsed
 
@@ -154,7 +155,7 @@ Colonne
 \begin_inset space ~
 \end_inset
 
-spéciale\SpecialChar \menuseparator
+spéciale\SpecialChar menuseparator
 Alignement
 \family default
  de la fenêtre 
@@ -167,7 +168,7 @@ du
 \begin_inset space ~
 \end_inset
 
-Tableau\SpecialChar \menuseparator
+Tableau\SpecialChar menuseparator
 Colonne/Rangée
 \family default
  :

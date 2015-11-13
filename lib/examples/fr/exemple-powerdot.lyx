@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass powerdot
 \begin_preamble
 \pdsetup{%
@@ -22,16 +23,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -83,7 +84,7 @@
 \begin_body
 
 \begin_layout Title
-Un exemple en LyX
+Un exemple en \SpecialCharNoPassThru LyX
 \begin_inset Note Note
 status open
 
@@ -130,7 +131,8 @@ powerdot
 \series bold
 Note:
 \series default
- En fonction de votre distribution LaTeX, vous pouvez avoir à ajouter l'option
+ En fonction de votre distribution \SpecialCharNoPassThru LaTeX
+, vous pouvez avoir à ajouter l'option
  
 \begin_inset Quotes fld
 \end_inset
@@ -220,7 +222,8 @@ Diapo
 \begin_inset Quotes frd
 \end_inset
 
- (couleur magenta, voyez le texte ci-dessus dans la fenêtre LyX) pour le
+ (couleur magenta, voyez le texte ci-dessus dans la fenêtre \SpecialCharNoPassThru LyX
+) pour le
  titre de chaque transparent d'une section ou d'un document.
 \end_layout
 
@@ -244,7 +247,8 @@ DiapoLarge
 \end_inset
 
  pour des transparents larges (couleur verte, voyez le texte ci-dessus dans
- la fenêtre LyX).
+ la fenêtre \SpecialCharNoPassThru LyX
+).
 \end_layout
 
 \begin_layout Standard
@@ -273,7 +277,7 @@ Ceci est la première section
 status collapsed
 
 \begin_layout Plain Layout
-toc=Cette diapo a \SpecialChar \ldots{}
+toc=Cette diapo a \SpecialChar ldots
 
 \end_layout
 
@@ -303,7 +307,7 @@ N'oubliez pas d'utiliser
 \family typewriter
 Ins
 \family default
-érer\SpecialChar \menuseparator
+érer\SpecialChar menuseparator
 
 \family typewriter
 Titre court
@@ -337,7 +341,7 @@ pause
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  et continuons.
 \end_layout
 
@@ -452,6 +456,9 @@ pause
 
 \begin_layout ItemizeType1
 <3> le deuxième;
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -494,7 +501,7 @@ Le transparent vide!
 
 \begin_layout Standard
 \align center
-Ce transparent est vide\SpecialChar \ldots{}
+Ce transparent est vide\SpecialChar ldots
 
 \end_layout
 
@@ -511,6 +518,9 @@ pause
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -524,7 +534,8 @@ DiapoVide
 \begin_inset Quotes frd
 \end_inset
 
- style pour le titre (voyez la couleur cyan dans la fenêtre LyX).
+ style pour le titre (voyez la couleur cyan dans la fenêtre \SpecialCharNoPassThru LyX
+).
 \end_layout
 
 \begin_layout Standard
@@ -540,6 +551,9 @@ pause
 
 \end_inset
 
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
 
@@ -574,7 +588,7 @@ method=direct
 
 \end_inset
 
-Exemple de code source LaTeX
+Exemple de code source \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -587,7 +601,8 @@ listings
 \end_inset
 
  pour saisir du code source.
- Voici la commande LaTeX 
+ Voici la commande \SpecialCharNoPassThru LaTeX
+ 
 \family typewriter
 
 \backslash
@@ -621,7 +636,8 @@ Notez que ce transparent utilise l'option
 \family typewriter
 method=direct 
 \family default
-(ouvrez la boîte du titre court dans la fenêtre LyX).
+(ouvrez la boîte du titre court dans la fenêtre \SpecialCharNoPassThru LyX
+).
 \end_layout
 
 \begin_layout Slide
@@ -709,7 +725,8 @@ FinDiapo
 \family typewriter
 à la fin du documen
 \family default
-t (voyez le symbole noir ci-dessous dans le fenêtre LyX).
+t (voyez le symbole noir ci-dessous dans le fenêtre \SpecialCharNoPassThru LyX
+).
 \end_layout
 
 \begin_layout Standard

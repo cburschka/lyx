@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /home/scott/lyxbuilds/master/repo/development/MacOSX/ReadMe/
 \textclass scrartcl
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans lmss
-\font_typewriter default
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "lmss" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,7 +71,8 @@
 \begin_body
 
 \begin_layout Title
-Guía de instalación rápida LyX 2.0
+Guía de instalación rápida \SpecialCharNoPassThru LyX
+ 2.0
 \end_layout
 
 \begin_layout Date
@@ -97,18 +99,25 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
-Para instalar LyX procedan de la siguiente manera:
+Para instalar \SpecialCharNoPassThru LyX
+ procedan de la siguiente manera:
 \end_layout
 
 \begin_layout Enumerate
-Preparación del sistema para LyX
+Preparación del sistema para \SpecialCharNoPassThru LyX
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-En caso que se trate de su primera instalación de LyX, asegúrense de tener
- una versión reciente de LaTeX.
- Una posibilidad simple es la instalación de MacTeX: 
+En caso que se trate de su primera instalación de \SpecialCharNoPassThru LyX
+, asegúrense de tener
+ una versión reciente de \SpecialCharNoPassThru LaTeX
+.
+ Una posibilidad simple es la instalación de Mac\SpecialCharNoPassThru TeX
+: 
 \begin_inset Flex URL
 status collapsed
 
@@ -120,12 +129,17 @@ http://www.tug.org/mactex
 \end_inset
 
 .
- LyX utiliza LaTeX para producir documentos imprimibles.
+ \SpecialCharNoPassThru LyX
+ utiliza \SpecialCharNoPassThru LaTeX
+ para producir documentos imprimibles.
 \end_layout
 
 \begin_layout Itemize
 En caso que hayan utilizado la versión anterior 1.6 y quieran continuar con
  sus regulaciones procedan como sigue:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -142,17 +156,20 @@ Librería > Application Support
 \end_layout
 
 \begin_layout Itemize
-Seleccionar y duplicar el directorio LyX 1.6 (Archivo > Duplicar)
+Seleccionar y duplicar el directorio \SpecialCharNoPassThru LyX
+ 1.6 (Archivo > Duplicar)
 \end_layout
 
 \begin_layout Itemize
-Cambiar el nombre de la copia en LyX-2.0
+Cambiar el nombre de la copia en \SpecialCharNoPassThru LyX
+-2.0
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
-Abren el disk image LyX 2.0
+Abren el disk image \SpecialCharNoPassThru LyX
+ 2.0
 \begin_inset Newline newline
 \end_inset
 
@@ -160,11 +177,13 @@ Abren el disk image LyX 2.0
 \end_layout
 
 \begin_layout Enumerate
-Disloquen el símbolo LyX a Applications.
+Disloquen el símbolo \SpecialCharNoPassThru LyX
+ a Applications.
 \end_layout
 
 \begin_layout Enumerate
-Despeguen LyX desde el directorio Applications.
+Despeguen \SpecialCharNoPassThru LyX
+ desde el directorio Applications.
 \end_layout
 
 \begin_layout Enumerate
@@ -174,12 +193,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/NewInLyX20
+http://wiki.lyx.org/\SpecialCharNoPassThru LyX
+/NewIn\SpecialCharNoPassThru LyX
+20
 \end_layout
 
 \end_inset
 
- para saber más sobre las nuevas posibilidades de LyX 2.0.
+ para saber más sobre las nuevas posibilidades de \SpecialCharNoPassThru LyX
+ 2.0.
  Desgraciadamente el texto está a disposición solamente en idioma inglés.
 \end_layout
 

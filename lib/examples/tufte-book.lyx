@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass tufte-book
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -88,13 +89,18 @@ status open
 \series bold
 Note
 \series default
-: To be able to view your file as PDF you must have the LaTeX-package 
+: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+-package 
 \family sans
 fpl
 \family default
- installed to your LaTeX system.
- If you are using MiKTeX, you will automatically be asked to install this
- package when previewing your file, if you are using TeXLive, use TeXLive's
+ installed to your \SpecialCharNoPassThru LaTeX
+ system.
+ If you are using MiK\SpecialCharNoPassThru TeX
+, you will automatically be asked to install this
+ package when previewing your file, if you are using \SpecialCharNoPassThru TeX
+Live, use \SpecialCharNoPassThru TeX
+Live's
  package manager.
 \end_layout
 
@@ -103,7 +109,9 @@ fpl
 \series bold
 Note 2
 \series default
-: If you wish to compile to PDF with plain LaTeX (instead of pdfTeX), there
+: If you wish to compile to PDF with plain \SpecialCharNoPassThru LaTeX
+ (instead of pdf\SpecialCharNoPassThru TeX
+), there
  is currently a bug in the Tufte class that causes errors.
  You can add the class option 'nols' (put this in the 
 \begin_inset Quotes eld
@@ -113,8 +121,8 @@ Custom
 \begin_inset Quotes erd
 \end_inset
 
- field of Document\SpecialChar \menuseparator
-Settings \SpecialChar \menuseparator
+ field of Document\SpecialChar menuseparator
+Settings \SpecialChar menuseparator
 Document Class) to get rid of the errors, but
  this also removes letterspacing, an important part of the Tufte design.
 \end_layout
@@ -266,8 +274,8 @@ Custom
 \emph default
  field in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document Class
 \family default
 .
@@ -306,8 +314,8 @@ Custom
 \emph default
  field in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document Class
 \family default
 .
@@ -326,8 +334,8 @@ Numbering
 \emph default
  slider in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Numbering & TOC
 \family default
  to the very right (as done in this document).
@@ -369,6 +377,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -434,6 +447,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -555,6 +573,11 @@ width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -623,7 +646,7 @@ Sidenote
 \family default
  inset directly; you'll find it in the 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom Insets
 \family default
  menu.
@@ -692,8 +715,8 @@ NewThought
 \family default
  character style (
 \family sans
-Edit\SpecialChar \menuseparator
-TextStyle\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
 NewThought
 \family default
 ).
@@ -728,7 +751,9 @@ small caps
 
 \end_inset
 
-, the letterspacing---that is, the spacing between the letters---should
+, the letterspacing\threehyphens
+that is, the spacing between the letters\threehyphens
+should
  be increased slightly.
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -742,8 +767,8 @@ AllCaps
 \emph default
  character style (
 \family sans
-Edit\SpecialChar \menuseparator
-TextStyle\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
 AllCaps
 \family default
 ) has proper letterspacing for strings of 
@@ -762,8 +787,8 @@ SmallCaps
 \emph default
  character style (
 \family sans
-Edit\SpecialChar \menuseparator
-TextStyle\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+TextStyle\SpecialChar menuseparator
 SmallCaps
 \family default
 ) has letterspacing for 
@@ -847,9 +872,9 @@ The previous section includes a citation.
 The complete list of references may also be printed automatically by using
  
 \family sans
-Insert\SpecialChar \menuseparator
-Lists/TOC\SpecialChar \menuseparator
-BibTeX
+Insert\SpecialChar menuseparator
+Lists/TOC\SpecialChar menuseparator
+Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
@@ -858,13 +883,15 @@ Bibliography
  (see the end of this document for an example.) If you do not want to print
  a bibliography at the end of your document, place the 
 \family sans
-BibTeX
+Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
 Bibliography
 \family default
- inset inside a LyX note and use the LaTeX command 
+ inset inside a \SpecialCharNoPassThru LyX
+ note and use the \SpecialCharNoPassThru LaTeX
+ command 
 \family typewriter
 
 \backslash
@@ -910,6 +937,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -963,6 +995,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1274,6 +1311,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -1384,6 +1426,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout

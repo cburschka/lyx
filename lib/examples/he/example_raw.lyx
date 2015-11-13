@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/he/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -205,7 +206,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
----------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -243,7 +252,7 @@ status collapsed
 \begin_layout Standard
 ליקס משתמשת ב- 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 , מערכת להכנת מסמכים שתוכננה על ידי לסלי למפורט ב- 
 \numeric on
@@ -252,7 +261,7 @@ LaTeX
 .
  היא, בתורה, בנויה מעל שפת מחשב יעודית בשם 
 \lang english
-TeX
+\SpecialCharNoPassThru TeX
 \lang hebrew
  שנוצרה על ידי דונלד קנות ב- 
 \numeric on
@@ -261,7 +270,7 @@ TeX
 .
  
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
  בנוה מסביב לפילוסופיה דומה לזו של ליקס.
  לסלי למפורט אמר פעם )ראה הפניה ]
@@ -296,7 +305,7 @@ citation reference
  ויזואלית זה מזה...
  מכיוון ש- 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
  לא יכולה להבין את הפרוזה שלך, אתה חיב לציין במפורש את המבנה הלוגי על ידי
  הקלדת פקודות מיוחדות...
@@ -332,12 +341,12 @@ Quote
 \begin_layout Standard
 ליקס פונה להרבה יותר משתמשים מאשר 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 .
  היא קלה יותר ללימוד בצורה משמעותית, כי, בניגוד ל- 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 , שהיא שפת מחשב לכל דבר, ליקס היא כמו מעבדי תמלילים 
 \begin_inset Quotes eld
@@ -366,7 +375,7 @@ What you see is what you mean
 .
  כך היא מסוגלת לשלב בין הנוחות של מעבדי תמלילים והכוח של 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 .
  מה אפשר לבקש יותר? פורמט הקבצים אינו תלוי במערכת שאתה עובד עליה, והכי טוב,
@@ -605,7 +614,19 @@ x
 \end_layout
 
 \begin_layout Standard
----------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -616,7 +637,8 @@ x
 
 \lang english
 [1] Lamport, Leslie.
- LaTeX: A Document Preparation System.
+ \SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, second edition, 1994.
 \end_layout
 

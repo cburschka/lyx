@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -84,7 +85,7 @@ Hint: the title should look more like a title
 \end_layout
 
 \begin_layout Standard
-by Fee LyX
+by Fee \SpecialCharNoPassThru LyX
 \begin_inset Note Note
 status collapsed
 
@@ -135,21 +136,24 @@ of Contents explicitly
 \end_layout
 
 \begin_layout Standard
-1.1 How LyX Does It...............1
+1.1 How \SpecialCharNoPassThru LyX
+ Does It...............1
 \end_layout
 
 \begin_layout Standard
-1.2 Why LyX is Better...............1
+1.2 Why \SpecialCharNoPassThru LyX
+ is Better...............1
 \end_layout
 
 \begin_layout Standard
 2.
- Features of LyX
+ Features of \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
 3.
- Lame Attempts to use more LyX stuff
+ Lame Attempts to use more \SpecialCharNoPassThru LyX
+ stuff
 \end_layout
 
 \begin_layout Standard
@@ -158,7 +162,23 @@ of Contents explicitly
 \end_layout
 
 \begin_layout Standard
----------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -177,20 +197,27 @@ Hint: Section titles should probably stand out more
 \end_layout
 
 \begin_layout Standard
-The basic philosophy of LyX is that you should worry about the content of
+The basic philosophy of \SpecialCharNoPassThru LyX
+ is that you should worry about the content of
  what you're writing and not the form.
 \end_layout
 
 \begin_layout Standard
-1.1 How LyX does it
+1.1 How \SpecialCharNoPassThru LyX
+ does it
 \end_layout
 
 \begin_layout Standard
-LyX uses LaTeX, a document preparation system designed by Leslie Lamport
+\SpecialCharNoPassThru LyX
+ uses \SpecialCharNoPassThru LaTeX
+, a document preparation system designed by Leslie Lamport
  in 1985.
- It, in turn, was built up from a typesetting language called TeX, created
+ It, in turn, was built up from a typesetting language called \SpecialCharNoPassThru TeX
+, created
  by Donald Knuth in 1984.
- LaTeX is designed around a philosophy similar to that of LyX.
+ \SpecialCharNoPassThru LaTeX
+ is designed around a philosophy similar to that of \SpecialCharNoPassThru LyX
+.
  Leslie Lamport once said (see reference [1])
 \begin_inset Note Note
 status collapsed
@@ -223,7 +250,8 @@ The function of typographic design is to help the reader understand the
  logical structure.
  Quotations and computer programs, being logically distinct structural elements,
  should be distinguished visually from one another....
- Since LaTeX can't understand your prose, you must explicitly indicate the
+ Since \SpecialCharNoPassThru LaTeX
+ can't understand your prose, you must explicitly indicate the
  logical structure by typing special commands....
  As you are writing your document, you should be concerned with its logical
  structure, not its visual appearance.
@@ -244,14 +272,18 @@ Hint: This is a QUOTE
 \end_layout
 
 \begin_layout Standard
-1.2 Why LyX is better
+1.2 Why \SpecialCharNoPassThru LyX
+ is better
 \end_layout
 
 \begin_layout Standard
-LyX can be useful to more people than LaTeX.
- It's considerably easier to learn, because you don't need to learn LaTeX
+\SpecialCharNoPassThru LyX
+ can be useful to more people than \SpecialCharNoPassThru LaTeX
+.
+ It's considerably easier to learn, because you don't need to learn \SpecialCharNoPassThru LaTeX
  (which is practically a programming language).
- LyX is basically like other 
+ \SpecialCharNoPassThru LyX
+ is basically like other 
 \begin_inset Quotes eld
 \end_inset
 
@@ -259,7 +291,8 @@ What you see is what you get
 \begin_inset Quotes erd
 \end_inset
 
- word processors, except that LyX is 
+ word processors, except that \SpecialCharNoPassThru LyX
+ is 
 \begin_inset Quotes eld
 \end_inset
 
@@ -269,7 +302,8 @@ What you see is what you mean
 
 .
  In this way, it combines the ease of use of word processors with the power
- of LaTeX.
+ of \SpecialCharNoPassThru LaTeX
+.
  This is a Good Thing.
  Also, the file format is platform independent.
  Best of all, it's FREE!
@@ -277,11 +311,12 @@ What you see is what you mean
 
 \begin_layout Standard
 2.
- Features of LyX
+ Features of \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-LyX has many features which make writing documents easier.
+\SpecialCharNoPassThru LyX
+ has many features which make writing documents easier.
  (After all, why else would you want to use it?
 \begin_inset Note Note
 status collapsed
@@ -307,15 +342,18 @@ Hint: Emphasize!
 \end_layout
 
 \begin_layout Standard
-* LyX worries about margins, and footnote numbering for you
+* \SpecialCharNoPassThru LyX
+ worries about margins, and footnote numbering for you
 \end_layout
 
 \begin_layout Standard
-* LyX makes it simple to write and edit mathematical formulae
+* \SpecialCharNoPassThru LyX
+ makes it simple to write and edit mathematical formulae
 \end_layout
 
 \begin_layout Standard
-For a more philosophical discussion of why LyX is better than lots of other
+For a more philosophical discussion of why \SpecialCharNoPassThru LyX
+ is better than lots of other
  word processors, see Section 1.2, which can be found on page 1.
 \begin_inset Note Note
 status collapsed
@@ -336,7 +374,8 @@ Hint: Probably, these CROSS-REFERENCES shouldn't be
 
 \begin_layout Standard
 3.
- Lame attempts to use other LyX stuff
+ Lame attempts to use other \SpecialCharNoPassThru LyX
+ stuff
 \end_layout
 
 \begin_layout Standard
@@ -380,7 +419,8 @@ After all that scientific thinking, I started feeling more artistic, so
 \end_layout
 
 \begin_layout Standard
-LyX is really great
+\SpecialCharNoPassThru LyX
+ is really great
 \end_layout
 
 \begin_layout Standard
@@ -435,7 +475,22 @@ Another favorite equation is the basis of calculus: f'(x) is defined as
 \end_layout
 
 \begin_layout Standard
-------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -444,7 +499,8 @@ REFERENCES
 
 \begin_layout Standard
 [1] Lamport, Leslie.
- LaTeX: A Document Preparation System.
+ \SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, second edition, 1994.
 \end_layout
 

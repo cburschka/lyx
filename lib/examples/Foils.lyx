@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass foils
 \begin_preamble
 \raggedright
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics dvips
 \default_output_format default
 \output_sync 0
@@ -121,7 +122,9 @@ November 19 1997
 \end_layout
 
 \begin_layout Abstract
-LyX and FoilTeX combine to provide a powerful presentation package for creating
+\SpecialCharNoPassThru LyX
+ and Foil\SpecialCharNoPassThru TeX
+ combine to provide a powerful presentation package for creating
  
 \begin_inset Quotes eld
 \end_inset
@@ -174,16 +177,25 @@ zerolistvertdimens{}
 \end_inset
 
 The new Itemize Bullet Selection popup
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 is tailor-made for use with the foils class
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 allowing you to select the bullet used
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -201,14 +213,16 @@ NOTE: to get the full capabilities of the Itemize Bullet Selection popup
 \end_layout
 
 \begin_layout Itemize
-NOTE 2: To get your list spacing small like this use the FoilTeX command:
+NOTE 2: To get your list spacing small like this use the Foil\SpecialCharNoPassThru TeX
+ command:
  
 \family typewriter
 
 \backslash
 zerolistvertdimens{}
 \family default
- set as TeX at the start of the first item.
+ set as \SpecialCharNoPassThru TeX
+ at the start of the first item.
 \end_layout
 
 \begin_layout ShortFoilhead
@@ -248,7 +262,8 @@ CrossList
 These two lists were added because the listing of do's and don'ts or good
  and bad are relatively common in foils.
  Providing a dedicated paragraph style for these occasions should allow
- faster entry and simplify interaction with LyX.
+ faster entry and simplify interaction with \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Rotatefoilhead
@@ -384,16 +399,20 @@ Proof
 As you can see, we are still in the same lemma.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Lemma*
 To force this second Lemma straight after the first it's necessary to add
  some dividing text or as I've done in this case separate the two by inserting
  a 
 \emph on
-TeX
+\SpecialCharNoPassThru TeX
 \emph default
  inset that simply contains a 
 \begin_inset Quotes eld
@@ -404,8 +423,10 @@ TeX
 \end_inset
 
 .
- This is simply a comment character in LaTeX but the insertion of the LaTeX
- paragraph is sufficient to fool LyX into correctly handling the multiple
+ This is simply a comment character in \SpecialCharNoPassThru LaTeX
+ but the insertion of the \SpecialCharNoPassThru LaTeX
+ paragraph is sufficient to fool \SpecialCharNoPassThru LyX
+ into correctly handling the multiple
  environments.
 \end_layout
 
@@ -716,7 +737,8 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-FoilTeX provides some powerful header and footer capabilities
+Foil\SpecialCharNoPassThru TeX
+ provides some powerful header and footer capabilities
 \begin_inset Foot
 status collapsed
 
@@ -752,7 +774,8 @@ Restriction{}
 \begin_inset Quotes eld
 \end_inset
 
--Typeset by FoilTeX-
+-Typeset by Foil\SpecialCharNoPassThru TeX
+-
 \begin_inset Quotes erd
 \end_inset
 
@@ -780,7 +803,8 @@ The remaining corners are controlled by:
 \backslash
 rightfooter{}
 \family default
- -- which defaults to page numbers
+ \twohyphens
+ which defaults to page numbers
 \end_layout
 
 \begin_layout Standard
@@ -816,9 +840,13 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Your LaTeX distribution should include some documentation on FoilTeX.
- There are many more features in FoilTeX than those described here.
- For example, FoilTeX can automatically place a horizontal rule between
+Your \SpecialCharNoPassThru LaTeX
+ distribution should include some documentation on Foil\SpecialCharNoPassThru TeX
+.
+ There are many more features in Foil\SpecialCharNoPassThru TeX
+ than those described here.
+ For example, Foil\SpecialCharNoPassThru TeX
+ can automatically place a horizontal rule between
  the headers and all foilheads, and between the body and the footers.
 \end_layout
 
@@ -833,7 +861,8 @@ Jim Hafner,
 \begin_inset Quotes eld
 \end_inset
 
-The FoilTeX Class Package
+The Foil\SpecialCharNoPassThru TeX
+ Class Package
 \begin_inset Quotes erd
 \end_inset
 
@@ -849,7 +878,8 @@ key "2"
 
 \end_inset
 
-LyX Documentation Team, 
+\SpecialCharNoPassThru LyX
+ Documentation Team, 
 \begin_inset Quotes eld
 \end_inset
 

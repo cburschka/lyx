@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/sk/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,31 +71,36 @@
 \begin_body
 
 \begin_layout Title
-Vítajte v LyX-e!
+Vítajte v \SpecialCharNoPassThru LyX
+-e!
 \end_layout
 
 \begin_layout Section*
-Čo by ste mali vedieť pre používanie LyX-u
+Čo by ste mali vedieť pre používanie \SpecialCharNoPassThru LyX
+-u
 \end_layout
 
 \begin_layout Enumerate
-LyX prichádza s výbornou dokumentáciou — prosím, používajte ju! Začnite
+\SpecialCharNoPassThru LyX
+ prichádza s výbornou dokumentáciou — prosím, používajte ju! Začnite
  s Pomocník
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Úvod
 \family default
 , ktorý vám dá veľmi stručný úvod do dokumentácie.
- Používať LyX sa potom dá naučiť pomocou Pomocník
+ Používať \SpecialCharNoPassThru LyX
+ sa potom dá naučiť pomocou Pomocník
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family default
 Uživateľská príručka.
 \end_layout
 
 \begin_layout Enumerate
-LyX je niečo, čo nazývame 
+\SpecialCharNoPassThru LyX
+ je niečo, čo nazývame 
 \begin_inset Quotes eld
 \end_inset
 
@@ -119,18 +125,24 @@ Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
 \end_layout
 
 \begin_layout Enumerate
-Výstup z LyX-u vyzerá skvele! Vyberte Názor
+Výstup z \SpecialCharNoPassThru LyX
+-u vyzerá skvele! Vyberte Názor
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 DVI
 \family default
  a presvedčte sa na vlastné oči.
 \end_layout
 
 \begin_layout Enumerate
-Áno, LyX imituje (skoro) všetky možnosti LaTeX-u.
- A áno, LyX dokáže importovať LaTeX-súbory.
- Skúseným uživateľom LaTeX-u stačí zbežne prehliadnuť 
+Áno, \SpecialCharNoPassThru LyX
+ imituje (skoro) všetky možnosti \SpecialCharNoPassThru LaTeX
+-u.
+ A áno, \SpecialCharNoPassThru LyX
+ dokáže importovať \SpecialCharNoPassThru LaTeX
+-súbory.
+ Skúseným uživateľom \SpecialCharNoPassThru LaTeX
+-u stačí zbežne prehliadnuť 
 \emph on
 Prúručku
 \emph default
@@ -138,29 +150,34 @@ Prúručku
 \begin_inset Quotes eld
 \end_inset
 
-LyX pre uživateľov LaTeX-u
+\SpecialCharNoPassThru LyX
+ pre uživateľov \SpecialCharNoPassThru LaTeX
+-u
 \begin_inset Quotes erd
 \end_inset
 
 .
- (Všetci ostatný: netreba sa znepokojovať, nie je potrebné poznať LaTeX
- na používanie LyX-u.) 
+ (Všetci ostatný: netreba sa znepokojovať, nie je potrebné poznať \SpecialCharNoPassThru LaTeX
+ na používanie \SpecialCharNoPassThru LyX
+-u.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX má mnoho možností pre ľudí ktorí píšu alebo čítajú neaglickým jazykom.
+\SpecialCharNoPassThru LyX
+ má mnoho možností pre ľudí ktorí píšu alebo čítajú neaglickým jazykom.
  Naviac, klávesové skratky, nástrojová lišta a mnohé iné vlastnosti sú vynikajúc
 o konfigurateľné.
  Pre detajly si pozrite na 
 \family sans
-Pomocník\SpecialChar \menuseparator
+Pomocník\SpecialChar menuseparator
 Prispôsobenie
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Domáca stránka LyX-u je na 
+Domáca stránka \SpecialCharNoPassThru LyX
+-u je na 
 \family typewriter
 
 \begin_inset Flex URL
@@ -176,8 +193,11 @@ http://www.lyx.org/
 
 \family default
 .
- Tu nájdete informácie o LyX-e, prihlásite sa do mailing list(ov) LyX-u,
- môžte si užiť grafickú výpravu do LyX-u (Graphical Tour), a iné.
+ Tu nájdete informácie o \SpecialCharNoPassThru LyX
+-e, prihlásite sa do mailing list(ov) \SpecialCharNoPassThru LyX
+-u,
+ môžte si užiť grafickú výpravu do \SpecialCharNoPassThru LyX
+-u (Graphical Tour), a iné.
 \end_layout
 
 \end_body

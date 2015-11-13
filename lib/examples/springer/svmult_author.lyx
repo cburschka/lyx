@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/springer/
 \textclass svmult
 \begin_preamble
 \usepackage{type1cm}
@@ -20,16 +21,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
-\font_math auto
+\font_roman "times" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -94,7 +95,8 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for books and journals to be published by the
+This is a template \SpecialCharNoPassThru LyX
+ file for books and journals to be published by the
  Springer publishing group.
  This template is for authors, the template for editors has the filename
  
@@ -102,7 +104,9 @@ This is a template LyX file for books and journals to be published by the
 svmult_editor.lyx
 \family default
 .
- How to install the svmult LaTeX class to your LaTeX system is explained
+ How to install the svmult \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained
  in 
 \begin_inset Flex URL
 status open
@@ -261,7 +265,8 @@ name@email.address
 \end_layout
 
 \begin_layout Abstract*
-Each chapter should be preceded by an abstract (10--15 lines long) that
+Each chapter should be preceded by an abstract (10\twohyphens
+15 lines long) that
  summarizes the content.
  The abstract will appear 
 \shape italic
@@ -313,7 +318,8 @@ abstract
 \end_layout
 
 \begin_layout Abstract
-Each chapter should be preceded by an abstract (10--15 lines long) that
+Each chapter should be preceded by an abstract (10\twohyphens
+15 lines long) that
  summarizes the content.
  The abstract will appear 
 \shape italic
@@ -463,7 +469,7 @@ a\times b & = & c\nonumber \\
 Subsection Heading
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Subsection-Heading"
+name "subsec:Subsection-Heading"
 
 \end_inset
 
@@ -473,7 +479,7 @@ name "sub:Subsection-Heading"
 \begin_layout Standard
 Instead of simply listing headings of different levels we recommend to let
  every heading be followed by at least a short passage of text.
- Further on please use the LyX
+ Further on please use the \SpecialCharNoPassThru LyX
 \begin_inset space \space{}
 \end_inset
 
@@ -516,7 +522,8 @@ Please do not use quotation marks when quoting texts! Simply use the
 \family sans
 quotation
 \family default
- environment -- it will automatically render Springer's preferred layout.
+ environment \twohyphens
+ it will automatically render Springer's preferred layout.
  
 \end_layout
 
@@ -527,7 +534,7 @@ Subsubsection Heading
 \begin_layout Standard
 Instead of simply listing headings of different levels we recommend to let
  every heading be followed by at least a short passage of text.
- Further on please use the LyX
+ Further on please use the \SpecialCharNoPassThru LyX
 \begin_inset space \space{}
 \end_inset
 
@@ -539,7 +546,7 @@ automatism for all your cross-references and citations as has already been
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Subsection-Heading"
+reference "subsec:Subsection-Heading"
 
 \end_inset
 
@@ -622,6 +629,11 @@ width "7.5cm"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -650,7 +662,8 @@ sidecapion
 \family default
  command to flush the caption on the left side of the page.
  If the figure is positioned at the top of the page, align the sidecaption
- with the top of the figure -- to achieve this you simply need to use the
+ with the top of the figure \twohyphens
+ to achieve this you simply need to use the
  optional argument 
 \family typewriter
 [t]
@@ -686,12 +699,16 @@ For typesetting numbered lists we recommend to use the
 \family sans
 enumerate
 \family default
- environment -- it will automatically render Springer's preferred layout.
+ environment \twohyphens
+ it will automatically render Springer's preferred layout.
 \end_layout
 
 \begin_layout Enumerate
 Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomi
 c development.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -718,7 +735,7 @@ Subparagraph Heading
 \begin_layout Standard
 In order to avoid simply listing headings of different levels we recommend
  to let every heading be followed by at least a short passage of text.
- Use the LyX
+ Use the \SpecialCharNoPassThru LyX
 \begin_inset space \space{}
 \end_inset
 
@@ -753,7 +770,8 @@ For unnumbered list we recommend to use the
 \family sans
 itemize
 \family default
- environment -- it will automatically render Springer's preferred layout.
+ environment \twohyphens
+ it will automatically render Springer's preferred layout.
 \end_layout
 
 \begin_layout Itemize
@@ -771,6 +789,9 @@ reference "tab:1"
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -822,6 +843,11 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -858,7 +884,7 @@ Run-in Heading Boldface Version
 \end_layout
 
 \begin_layout Standard
-Use the LyX
+Use the \SpecialCharNoPassThru LyX
 \begin_inset space \space{}
 \end_inset
 
@@ -882,11 +908,11 @@ Run-in Heading Italic Version
 \end_layout
 
 \begin_layout Standard
-Use the LyX
+Use the \SpecialCharNoPassThru LyX
 \begin_inset space \space{}
 \end_inset
 
-automatism for all your cross-refer\SpecialChar \-
+automatism for all your cross-refer\SpecialChar softhyphen
 ences and citations as has already been
  described in Sect.
 \begin_inset space ~
@@ -1019,7 +1045,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-22 (19--25) 
+22 (19\twohyphens
+25) 
 \end_layout
 
 \end_inset
@@ -1095,7 +1122,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-21--22 
+21\twohyphens
+22 
 \end_layout
 
 \end_inset
@@ -1133,7 +1161,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-24--26 
+24\twohyphens
+26 
 \end_layout
 
 \end_inset
@@ -1229,7 +1258,8 @@ anced
 \family sans
 description
 \family default
- environment -- it will automatically render Springer's preferred layout.
+ environment \twohyphens
+ it will automatically render Springer's preferred layout.
 \end_layout
 
 \begin_layout Description
@@ -1286,7 +1316,7 @@ Type
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Subsection-Heading"
+reference "subsec:Subsection-Heading"
 
 \end_inset
 
@@ -1326,9 +1356,13 @@ svgraybox
 percent screened box 'behind' your text.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Svgraybox
 If you want to emphasize complete paragraphs of texts we recommend to use
@@ -1433,7 +1467,8 @@ If you want to include acknowledgments of assistance and the like at the
 \family sans
 acknowledgement
 \family default
- environment -- it will automatically render Springer's preferred layout.
+ environment \twohyphens
+ it will automatically render Springer's preferred layout.
 \end_layout
 
 \begin_layout Section*

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/hu/
 \textclass article
 \begin_preamble
 %\def\magyarOptions{defaults=over-1.4,footnote=huplain}
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -79,7 +80,8 @@ Ez a dokumentum címe
 \end_layout
 
 \begin_layout Author
-készítette egy LyX-es
+készítette egy \SpecialCharNoPassThru LyX
+-es
 \end_layout
 
 \begin_layout Date
@@ -101,20 +103,26 @@ Alap filozófia
 \end_layout
 
 \begin_layout Standard
-A LyX alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
+A \SpecialCharNoPassThru LyX
+ alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
  írni, nem arra hogyan fog kinézni.
 \end_layout
 
 \begin_layout Subsection
-Hogyan valósítja meg ezt a LyX
+Hogyan valósítja meg ezt a \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-A LyX a LaTeX-et használja, ami egy dokumentum elkészítő rendszer, amit
+A \SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+-et használja, ami egy dokumentum elkészítő rendszer, amit
  1985-ben készített Leslie Lamport.
- Ezt egy TeX nevű írásszedő rendszerre építette, amit Donald Knuth készített
+ Ezt egy \SpecialCharNoPassThru TeX
+ nevű írásszedő rendszerre építette, amit Donald Knuth készített
  1984-ben.
- A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
+ A \SpecialCharNoPassThru LaTeX
+-et, a \SpecialCharNoPassThru LyX
+-hez hasonló filozófia miatt készítették.
  Leslie Lamport egyszer azt mondta (lásd a hivatkozásban
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -131,16 +139,18 @@ A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
  Ahhoz, hogy egy művet könnyen el lehessen olvasni, a vizuális szerkezetének
  követnie kell a logikai felépítését.
  Az idézetek és számítógépprogramok teljesen különálló logikai elemek, ezért
- meg kell tudni őket egymásól különböztetni\SpecialChar \ldots{}
- Mivel a LyX nem érti az írott
+ meg kell tudni őket egymásól különböztetni\SpecialChar ldots
+ Mivel a \SpecialCharNoPassThru LyX
+ nem érti az írott
  szöveget, ezért világosan meg kell adnia a logikai struktúrát bizonyos
- parancsok használatával\SpecialChar \ldots{}
+ parancsok használatával\SpecialChar ldots
  Miközben művét készíti, a logikai felépítésével
  kell törődnie, nem a megjelenésével.
 \end_layout
 
 \begin_layout Subsection
-Miért jobb a LyX 
+Miért jobb a \SpecialCharNoPassThru LyX
+ 
 \end_layout
 
 \begin_layout Standard
@@ -150,10 +160,14 @@ name "sec:lyxbetter"
 
 \end_inset
 
-A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
- Meglehetősen könnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
+A \SpecialCharNoPassThru LyX
+ sokkal több embernek lehet hasznos, mint a \SpecialCharNoPassThru LaTeX
+.
+ Meglehetősen könnyebb megtanulni, mivel nem kell megtanulni a \SpecialCharNoPassThru LaTeX
+-et
  (ami gyakorlatilag egy programozási nyelv).
- A LyX alapvetően egy másik 
+ A \SpecialCharNoPassThru LyX
+ alapvetően egy másik 
 \begin_inset Quotes pld
 \end_inset
 
@@ -171,18 +185,21 @@ amit lát arra gondol
 
  típusú.
  Ezáltal a word típusú szövegszerkesztők könnyű használatát kombinálja,
- a LaTeX hatékonyságával.
+ a \SpecialCharNoPassThru LaTeX
+ hatékonyságával.
  Ez egy jó dolog.
  A fájl formátuma platform független.
  De legfőképpen, ingyenes!
 \end_layout
 
 \begin_layout Section
-A LyX jellemzői
+A \SpecialCharNoPassThru LyX
+ jellemzői
 \end_layout
 
 \begin_layout Standard
-A LyX rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást.
+A \SpecialCharNoPassThru LyX
+ rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást.
 \begin_inset Foot
 status open
 
@@ -204,15 +221,18 @@ Nagyon igazgatott
 \end_layout
 
 \begin_layout Itemize
-A LyX gondoskodik a margókról és a lábjegyzetek számozásáról
+A \SpecialCharNoPassThru LyX
+ gondoskodik a margókról és a lábjegyzetek számozásáról
 \end_layout
 
 \begin_layout Itemize
-A LyX-el könnyen készíthet és szerkeszthet képleteket
+A \SpecialCharNoPassThru LyX
+-el könnyen készíthet és szerkeszthet képleteket
 \end_layout
 
 \begin_layout Standard
-A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztőnél,
+A filozófiai értekezést, hogy miért jobb a \SpecialCharNoPassThru LyX
+ a többi szövegszerkesztőnél,
  megtalálja a 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -233,7 +253,8 @@ reference "sec:lyxbetter"
 \end_layout
 
 \begin_layout Section
-Gyenge próbálkozások más LyX-es cuccok használatához
+Gyenge próbálkozások más \SpecialCharNoPassThru LyX
+-es cuccok használatához
 \end_layout
 
 \begin_layout Standard
@@ -267,7 +288,8 @@ A tudományos gondolkodás után, teljesen művészien éreztem magam, és írta
 \end_layout
 
 \begin_layout Verse
-A LyX egy nagyon szuper
+A \SpecialCharNoPassThru LyX
+ egy nagyon szuper
 \begin_inset Newline newline
 \end_inset
 
@@ -318,7 +340,9 @@ Pár megjegyzés a fájl lyx-esítéséről:
 Ki tudtam szedni a kötőjeles sorokat.
  Amelyek egyszerűen elválasztották a címet és a hivatkozást a dokumentum
  többi részétől.
- A LyX (LaTeX) elég sokat tud arról, hogyan kell ezt az elkülönítést elvégezni.
+ A \SpecialCharNoPassThru LyX
+ (\SpecialCharNoPassThru LaTeX
+) elég sokat tud arról, hogyan kell ezt az elkülönítést elvégezni.
 \end_layout
 
 \begin_layout Itemize
@@ -341,7 +365,8 @@ Hivatkozások
 \end_inset
 
  szót lentebb.
- A LyX magától odaírta nekem (vagy az 
+ A \SpecialCharNoPassThru LyX
+ magától odaírta nekem (vagy az 
 \begin_inset Quotes pld
 \end_inset
 
@@ -362,7 +387,8 @@ key "lamport"
 Lamport, Leslie.
  
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, Reading, Massachusetts, második kiadás, 1994.

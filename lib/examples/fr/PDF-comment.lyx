@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass scrartcl
 \begin_preamble
 % to be able to use all color settings of pdfcomment
@@ -27,16 +28,16 @@ pdfcomment
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -125,7 +126,7 @@ Ceci positionne le jaune comme couleur implicite pour les nouveaux commentaires
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:PDF-Comment-setup"
+reference "subsec:PDF-Comment-setup"
 
 \end_inset
 
@@ -184,7 +185,8 @@ Les différentes sortes de commentaires
 \end_layout
 
 \begin_layout Standard
-Le paquetage LaTeX 
+Le paquetage \SpecialCharNoPassThru LaTeX
+ 
 \series bold
 pdfcomment
 \series default
@@ -218,7 +220,7 @@ http://mirrors.ctan.org/macros/latex/contrib/pdfcomment/doc/pdfcomment.pdf
 \begin_layout Standard
 Les différents commentaires sont insérés via le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Inserts personnalisables
 \family default
 .
@@ -249,7 +251,7 @@ Pour tous les commentaires PDF, vous pouvez préciser beaucoup de choses
  Pour insérer une ou plusieurs options, positionner le curseur dans l'insert
  et utiliser le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Options de commentaire PDF
 \family default
 .
@@ -265,7 +267,8 @@ status open
 Nota:
 \series default
  toutes les accolades et crochets des options de commentaires PDF doivent
- être saisis en code TeX!
+ être saisis en code \SpecialCharNoPassThru TeX
+!
 \end_layout
 
 \end_inset
@@ -900,7 +903,8 @@ l'annotation par balisage ne peut dépasser une page, sinon la reconnaissance
 \end_layout
 
 \begin_layout Itemize
-avec XeTeX, il faut vérifier que les dimensions de la page sont exportées
+avec Xe\SpecialCharNoPassThru TeX
+, il faut vérifier que les dimensions de la page sont exportées
  de manière interne, c'est-à-dire avec l'option de classe 
 \series bold
 pagesize
@@ -909,7 +913,8 @@ pagesize
 \series bold
 pagesize
 \series default
- pour le paquetage LaTeX 
+ pour le paquetage \SpecialCharNoPassThru LaTeX
+ 
 \series bold
 typearea
 \series default
@@ -932,7 +937,8 @@ Nota:
  pour des limitations techniques, la Réponse PDF ne fonctionne qu'avec pdflatex.
  
 \lang english
-On some LaTeX installations it won't even work in general.
+On some \SpecialCharNoPassThru LaTeX
+ installations it won't even work in general.
 \end_layout
 
 \end_inset
@@ -1193,7 +1199,8 @@ l'annotation ne peut dépasser une page, sinon la reconnaissance du saut
 \end_layout
 
 \begin_layout Itemize
-avec XeTeX, il faut vérifier que les dimensions de la page sont exportées
+avec Xe\SpecialCharNoPassThru TeX
+, il faut vérifier que les dimensions de la page sont exportées
  de manière interne, c'est-à-dire avec l'option de classe 
 \series bold
 pagesize
@@ -1202,7 +1209,8 @@ pagesize
 \series bold
 pagesize
 \series default
- pour le paquetage LaTeX 
+ pour le paquetage \SpecialCharNoPassThru LaTeX
+ 
 \series bold
 typearea
 \series default
@@ -1282,7 +1290,8 @@ Avec ce type de commentaire, vous pouvez annoter n’importe quel objet
 status collapsed
 
 \begin_layout Plain Layout
-Tous les objets qui peuvent être mis dans une boîte TeX pour mesurer sa
+Tous les objets qui peuvent être mis dans une boîte \SpecialCharNoPassThru TeX
+ pour mesurer sa
  taille.
 \end_layout
 
@@ -1420,7 +1429,7 @@ pdfcomment
 Réglage des commentaires PDF
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:PDF-Comment-setup"
+name "subsec:PDF-Comment-setup"
 
 \end_inset
 
@@ -1447,10 +1456,12 @@ Avec l'option facultative
 \series bold
 local
 \series default
-, vous pouvez restreindre le réglage par groupage dans des accolades TeX.
+, vous pouvez restreindre le réglage par groupage dans des accolades \SpecialCharNoPassThru TeX
+.
  Si par exemple vous désirez une nouvelle couleur uniquement dans deux commentai
 res consécutifs, alors enserrez le réglage de commentaire PDF et les deux
- commentaires concernés entre des accolades TeX.
+ commentaires concernés entre des accolades \SpecialCharNoPassThru TeX
+.
  Voici un exemple:
 \end_layout
 
@@ -1959,7 +1970,8 @@ Définir un style de liste pour les commentaires PDF
 
 
 \family default
-si vous êtes à l'aise avec le fonctionnement interne de LaTeX.
+si vous êtes à l'aise avec le fonctionnement interne de \SpecialCharNoPassThru LaTeX
+.
  Avec l’environnement
 \begin_inset Newline newline
 \end_inset
@@ -2032,7 +2044,8 @@ Indications générales
 
 \begin_layout Itemize
 Pour pouvoir utiliser toutes sortes de couleurs, vous devez charger le paquetage
- LaTeX 
+ \SpecialCharNoPassThru LaTeX
+ 
 \series bold
 xcolor
 \series default
@@ -2137,7 +2150,8 @@ Pierre dit également: j'ai horreur de me répéter.
 \begin_layout Itemize
 Vous ne pouvez pas utiliser de caractères non latins dans vos commentaires
  ou dans les noms d'auteur, du fait que le PDF utilise un encodage des caractère
-s particulier incompatible avec LaTeX.
+s particulier incompatible avec \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \end_body

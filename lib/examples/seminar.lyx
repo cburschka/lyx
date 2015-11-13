@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass seminar
 \begin_preamble
 \renewcommand{\printlandscape}{\special{landscape}}
@@ -20,16 +21,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -171,7 +172,7 @@ LandscapeSlide
 \series bold
 PortraitSlide
 \series default
- inset (Insert\SpecialChar \menuseparator
+ inset (Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
@@ -243,8 +244,8 @@ Options
 \family default
  field in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document
 \begin_inset space ~
 \end_inset
@@ -288,12 +289,13 @@ Preamble commands
 \begin_layout Plain Layout
 The following options can be added to the 
 \family sans
-LaTeX preambel
+\SpecialCharNoPassThru LaTeX
+ preambel
 \family default
  in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document
 \begin_inset space ~
 \end_inset
@@ -337,7 +339,8 @@ Slide contents
 \end_layout
 
 \begin_layout Plain Layout
-Virtually everything that can appear in normal LaTeX (except floats) can
+Virtually everything that can appear in normal \SpecialCharNoPassThru LaTeX
+ (except floats) can
  also be on a slide.
 \end_layout
 
@@ -394,7 +397,7 @@ DVI.
 \end_layout
 
 \begin_layout Plain Layout
-With the current configuration in Document\SpecialChar \menuseparator
+With the current configuration in Document\SpecialChar menuseparator
 Settings,
 \end_layout
 
@@ -425,9 +428,9 @@ PDF (dvipdfm)
 
 \begin_layout Standard
 Seminar uses non-standard ways to deal with paper layout and orientation.
- Therefore, also Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Page Layout\SpecialChar \menuseparator
+ Therefore, also Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page Layout\SpecialChar menuseparator
 Orientation has no effect on
  the output.
 \end_layout
@@ -550,7 +553,8 @@ Fancier formatting
 \end_layout
 
 \begin_layout Standard
-The LaTeX preamble is the right place for many options to get fancier formatting
+The \SpecialCharNoPassThru LaTeX
+ preamble is the right place for many options to get fancier formatting
 , e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -602,6 +606,8 @@ slideframe[
 setlength{
 \backslash
 shadowsize}{1pt}]{shadow} 
+framecolor "black"
+backgroundcolor "none"
 \end_layout
 
 \begin_layout Standard
@@ -630,8 +636,8 @@ seminar.cls
  versions before 1.5 (2008-10-15) contained a bug regarding the a4paper option.
  If you use A4 paper with such a version, set in the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Page
 \begin_inset space ~
 \end_inset
@@ -658,7 +664,8 @@ A4
 \begin_inset Quotes erd
 \end_inset
 
- (unless it is the default layout of your LaTeX distribution), and delete
+ (unless it is the default layout of your \SpecialCharNoPassThru LaTeX
+ distribution), and delete
  the option 
 \begin_inset Quotes eld
 \end_inset
@@ -677,8 +684,8 @@ Options
 \family default
  field in the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document
 \begin_inset space ~
 \end_inset

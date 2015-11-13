@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass scrartcl
 \begin_preamble
 \usepackage[all]{xy}
@@ -32,16 +33,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -120,7 +121,7 @@ Xy
 
 \end_inset
 
--pic dans LyX
+-pic dans \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
@@ -143,8 +144,10 @@ Traduction française Jean-Pierre Chrétien,
 \end_layout
 
 \begin_layout Abstract
-Avec les versions récentes de LyX et grâce à la possibilité d'afficher un
- aperçu sur le vif offerte par la distribution LaTeX, le paquetage de tracé
+Avec les versions récentes de \SpecialCharNoPassThru LyX
+ et grâce à la possibilité d'afficher un
+ aperçu sur le vif offerte par la distribution \SpecialCharNoPassThru LaTeX
+, le paquetage de tracé
  de diagrammes 
 \family typewriter
 
@@ -162,8 +165,10 @@ Xy
 
 
 \family default
--pic peut être utilisé confortablement dans LyX: les diagrammes peuvent
- être affichés et modifiés dans le fenêtre principale de LyX.
+-pic peut être utilisé confortablement dans \SpecialCharNoPassThru LyX
+: les diagrammes peuvent
+ être affichés et modifiés dans le fenêtre principale de \SpecialCharNoPassThru LyX
+.
  Nous décrivons ici comment utiliser la commande 
 \family typewriter
 
@@ -174,7 +179,8 @@ xymatrix
 \family typewriter
 xypic
 \family default
- depuis LyX pour tracer, modifier et visionner des diagrammes utilisés typiqueme
+ depuis \SpecialCharNoPassThru LyX
+ pour tracer, modifier et visionner des diagrammes utilisés typiqueme
 nt dans la théorie des catégories, l'algèbre et les disciplines voisines.
  
 \end_layout
@@ -198,11 +204,17 @@ Le paquetage
 xypic
 \family default
  est utilisé depuis longtemps comme un outil approprié pour construire facilemen
-t des graphiques et des diagrammes en LaTeX.
- Malheureusement, son utilisation depuis LyX était limitée par les infâmes
- boîtes de code TeX, ce qui faisait que la fenêtre LyX ne pouvait afficher
- que les sources LaTeX et non pas le diagramme résultant.
- Le mode LaTeX 
+t des graphiques et des diagrammes en \SpecialCharNoPassThru LaTeX
+.
+ Malheureusement, son utilisation depuis \SpecialCharNoPassThru LyX
+ était limitée par les infâmes
+ boîtes de code \SpecialCharNoPassThru TeX
+, ce qui faisait que la fenêtre \SpecialCharNoPassThru LyX
+ ne pouvait afficher
+ que les sources \SpecialCharNoPassThru LaTeX
+ et non pas le diagramme résultant.
+ Le mode \SpecialCharNoPassThru LaTeX
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -214,7 +226,7 @@ Aperçu sur le vif
 \emph on
 preview-style
 \emph default
-), inclus dans le projet AUCTeX
+), inclus dans le projet AUC\SpecialCharNoPassThru TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AUCTeX"
@@ -225,7 +237,8 @@ key "AUCTeX"
 \family typewriter
 xypic
 \family default
-, qui peuvent être construits, modifiés et visionnés depuis LyX.
+, qui peuvent être construits, modifiés et visionnés depuis \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -268,8 +281,10 @@ Xy
 
 \end_inset
 
--pic depuis la fenêtre LyX, et comment créer et modifier des diagrammes.
- Nous avons testé ce qui suit avec LyX (versions 1.3.7 à 1.6), exécuté sur
+-pic depuis la fenêtre \SpecialCharNoPassThru LyX
+, et comment créer et modifier des diagrammes.
+ Nous avons testé ce qui suit avec \SpecialCharNoPassThru LyX
+ (versions 1.3.7 à 1.6), exécuté sur
  Windows
 \begin_inset space \thinspace{}
 \end_inset
@@ -294,7 +309,8 @@ Xy
 
 \end_inset
 
--pic dans la fenêtre LyX, de le sélectionner en entier et de le convertir
+-pic dans la fenêtre \SpecialCharNoPassThru LyX
+, de le sélectionner en entier et de le convertir
  dans sa représentation graphique en pressant 
 \family sans
 Ctrl-m
@@ -319,7 +335,8 @@ Xy
 
 -pic plus fréquemment, ou si vous désirez modifier votre diagramme initial,
  vous préférerez assembler et modifier vos figures à l'aide de l'éditeur
- mathématique de LyX.
+ mathématique de \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -331,7 +348,8 @@ Lorsque le curseur se trouve superposé à un diagramme, celui-ci est affiché
 
 \begin_layout Standard
 Dans les deux premiers chapitres de la documentation, nous expliquons comment
- utiliser LyX dans le premier mode mentionné ci-dessus et nous introduisons
+ utiliser \SpecialCharNoPassThru LyX
+ dans le premier mode mentionné ci-dessus et nous introduisons
  toutes le fonctionnalités de 
 \begin_inset ERT
 status collapsed
@@ -397,7 +415,8 @@ Xy
 \end_inset
 
 -pic, notre motivation est plutôt de montrer comment les commandes les plus
- importantes fonctionnent dans LyX, puisque les combinaisons de saisies
+ importantes fonctionnent dans \SpecialCharNoPassThru LyX
+, puisque les combinaisons de saisies
  décrites dans le manuel 
 \begin_inset ERT
 status collapsed
@@ -422,7 +441,8 @@ key "xypic manual"
 
 \end_inset
 
- ne sont pas toutes interprétées dans LyX.
+ ne sont pas toutes interprétées dans \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -430,7 +450,8 @@ Préparation
 \end_layout
 
 \begin_layout Standard
-Ce qui suit nécessite que les paquetages LaTeX 
+Ce qui suit nécessite que les paquetages \SpecialCharNoPassThru LaTeX
+ 
 \family typewriter
 xypic
 \family default
@@ -438,7 +459,8 @@ xypic
 \family typewriter
 preview
 \family default
- fassent partie de la distribution LaTeX.
+ fassent partie de la distribution \SpecialCharNoPassThru LaTeX
+.
  Ils sont disponibles sur CTAN, voir à
 \begin_inset space ~
 \end_inset
@@ -465,25 +487,31 @@ key "xypic"
 .
  Si vous devez les installer, il est nécessaire d'exécuter 
 \family sans
-Outils\SpecialChar \menuseparator
+Outils\SpecialChar menuseparator
 Reconfigurer
 \family default
- dans le menu principal de LyX.
- Les étapes pour créer un premier diagramme dans LyX sont alors les suivantes:
+ dans le menu principal de \SpecialCharNoPassThru LyX
+.
+ Les étapes pour créer un premier diagramme dans \SpecialCharNoPassThru LyX
+ sont alors les suivantes:
  
 \end_layout
 
 \begin_layout Enumerate
 Activation et aperçu de test
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Ouvrir LyX, choisir 
+Ouvrir \SpecialCharNoPassThru LyX
+, choisir 
 \family sans
-Outils\SpecialChar \menuseparator
-Préférences\SpecialChar \menuseparator
-Apparence\SpecialChar \menuseparator
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Apparence\SpecialChar menuseparator
 Affichage écran
 \family default
  et positionner 
@@ -500,8 +528,8 @@ Activé
 \begin_layout Enumerate
 Dans 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres...\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres...\SpecialChar menuseparator
 Options mode math
 \family default
 , décocher 
@@ -514,7 +542,8 @@ Utiliser le paquetage math AMS;
 \end_layout
 
 \begin_layout Enumerate
-Tester si l'aperçu sur le vif fonctionne en ouvrant un document LyX et en
+Tester si l'aperçu sur le vif fonctionne en ouvrant un document \SpecialCharNoPassThru LyX
+ et en
  saisissant n'importe quelle formule mathématique, par exemple 
 \begin_inset Formula $a+b=c$
 \end_inset
@@ -545,6 +574,10 @@ Xy
 -pic
 \family typewriter
 :
+\family default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -567,8 +600,8 @@ ar[r] & B}
 \begin_layout Enumerate
 Sélectionner tout ce texte et choisir 
 \family sans
-Insertion\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Formule hors ligne
 \family default
 , ou pressez le raccourci clavier correspondant 
@@ -684,8 +717,8 @@ De nouveau, pour convertir ce code sous forme graphique, le sélectionner
 \backslash
 xymatrix{
 \family default
- \SpecialChar \ldots{}
- jusqu'à l'accolade fermante \SpecialChar \ldots{}
+ \SpecialChar ldots
+ jusqu'à l'accolade fermante \SpecialChar ldots
  
 \family typewriter
 }
@@ -773,7 +806,8 @@ times_Z Y   & X
 \end_layout
 
 \begin_layout Standard
-La structure semble familière aux connaisseurs de LaTeX: nous voyons trois
+La structure semble familière aux connaisseurs de \SpecialCharNoPassThru LaTeX
+: nous voyons trois
  lignes, les deux premières étant terminées par le marqueur de fin de ligne
 \family typewriter
  
@@ -1096,7 +1130,8 @@ Xy
 (.3)
 \family default
 .
- Avec LyX, ceci ne fonctionne qu'avec les étiquettes placées au-dessus de
+ Avec \SpecialCharNoPassThru LyX
+, ceci ne fonctionne qu'avec les étiquettes placées au-dessus de
  la flèche, par exemple 
 \family typewriter
 
@@ -1145,7 +1180,8 @@ ar[r]_(.3)
 \backslash
 psi
 \family default
-) n'est pas correctement interprété par l'éditeur mathématique de LyX.
+) n'est pas correctement interprété par l'éditeur mathématique de \SpecialCharNoPassThru LyX
+.
  Deux solutions alternatives sont suggérées dans le dernier chapitre de
  cette note.
 \end_layout
@@ -1213,7 +1249,7 @@ ar
 \family typewriter
 @
 \family default
- et une paire d'accolades{\SpecialChar \ldots{}
+ et une paire d'accolades{\SpecialChar ldots
 } contenant des caractères décrivant le plumage,
  le corps et le dard de la flèche.
  Ces caractères sont choisis pour évoquer une équivalence ASCII du résultat
@@ -1264,7 +1300,7 @@ Résultat
 \begin_inset Text
 
 \begin_layout Plain Layout
-Code source LyX
+Code source \SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -1320,7 +1356,8 @@ $
 \family typewriter
 
 \backslash
-ar@{-->}
+ar@{\twohyphens
+>}
 \end_layout
 
 \end_inset
@@ -1432,7 +1469,8 @@ $
 \family typewriter
 
 \backslash
-ar@{-->>}
+ar@{\twohyphens
+>>}
 \end_layout
 
 \end_inset
@@ -1610,7 +1648,7 @@ Résultat
 \begin_inset Text
 
 \begin_layout Plain Layout
-Source code for LyX
+Source code for \SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -1806,7 +1844,8 @@ $
 \family typewriter
 
 \backslash
-ar@2{--}
+ar@2{\twohyphens
+}
 \end_layout
 
 \end_inset
@@ -1878,7 +1917,8 @@ Ceci définit un nouveau dard, référencé par
 \backslash
 ar@{-|>}[r]
 \family default
-, et qui s'affiche correctement dans LyX comme:
+, et qui s'affiche correctement dans \SpecialCharNoPassThru LyX
+ comme:
 \begin_inset Formula 
 \[
 \xymatrix{A\ar@{-|>}[r] & \ \ B}
@@ -1954,7 +1994,8 @@ $
 \end_inset
 
 .
- Quand, le code est saisi dans LyX comme précédemment, sélectionnez-le et
+ Quand, le code est saisi dans \SpecialCharNoPassThru LyX
+ comme précédemment, sélectionnez-le et
  pressez soit 
 \family sans
 Ctrl-m
@@ -1967,12 +2008,12 @@ Ctrl-M
  Les diagrammes disposés en ligne peuvent être positionnés hors ligne plus
  tard, via 
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Math
 \family default
  
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Changer le type de formule
 \family default
  (il faut que le curseur soit dans la formeule pour que ce menu apparaisse).
@@ -2006,7 +2047,8 @@ Pour courber les flèches nous utilisons le modifieur
 \end_inset
 
 / .
- Les points de suspension représentent une mesure TeX, qui doit être introduite
+ Les points de suspension représentent une mesure \SpecialCharNoPassThru TeX
+, qui doit être introduite
  en exposant ou en indice.
  Alors que dans 
 \family typewriter
@@ -2039,7 +2081,8 @@ ar@/_1pc/
 \family typewriter
 1pc
 \family default
-, ceci ne peut plus être fait directement dans LyX.
+, ceci ne peut plus être fait directement dans \SpecialCharNoPassThru LyX
+.
  Il est nécessaire d'enclore la mesure dans une paire d'accolades, comme
  par exemple 
 \family typewriter
@@ -2306,13 +2349,14 @@ ar@(ur,ul)[l]
 \end_layout
 
 \begin_layout Standard
-Les commandes LaTeX 
+Les commandes \SpecialCharNoPassThru LaTeX
+ 
 \family typewriter
 
 \backslash
 entrymodifiers={
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 }
@@ -2363,7 +2407,7 @@ Xy{}
 \family typewriter
 
 \backslash
-save \SpecialChar \ldots{}
+save \SpecialChar ldots
  
 \backslash
 restore
@@ -2438,7 +2482,7 @@ restore
 \end_layout
 
 \begin_layout Section
-Utilisation de l'éditeur mathématique de LyX
+Utilisation de l'éditeur mathématique de \SpecialCharNoPassThru LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:math-editor"
@@ -2477,7 +2521,8 @@ Attention à la saisie les accolades
 \end_layout
 
 \begin_layout Standard
-Rappelez-vous que, dans l'éditeur mathématique de LyX, toute paire d'accolades
+Rappelez-vous que, dans l'éditeur mathématique de \SpecialCharNoPassThru LyX
+, toute paire d'accolades
  destinée à enclore un paramètre de macro-instruction doit être saisie en
  ne tapant que 
 \family typewriter
@@ -2505,7 +2550,7 @@ Xy
 \family typewriter
 @{
 \family default
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \family typewriter
 }
@@ -2518,7 +2563,8 @@ Xy
 \backslash
 {
 \family default
- et laissez LyX afficher l'accolade fermante et la boîte de saisie destinée
+ et laissez \SpecialCharNoPassThru LyX
+ afficher l'accolade fermante et la boîte de saisie destinée
  à la description de la flèche.
 \end_layout
 
@@ -2606,7 +2652,7 @@ Alt-m c i
 Ensuite, vous pourrez ajouter lignes et colonnes quand vous le désirerez,
  en utilisant les commandes du menu 
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Math,
 \family default
  leurs raccourcis qui débutent par 
@@ -2621,7 +2667,7 @@ Alt-m w
  Plus simplement, il vous suffira d'utiliser les icônes de la palette mathématiq
 ue, en l'activant si ce n'est déjà fait via 
 \family sans
-Visualiser\SpecialChar \menuseparator
+Visualiser\SpecialChar menuseparator
 Barres d'outils.
 \end_layout
 
@@ -2677,7 +2723,8 @@ r
 \begin_layout Standard
 Ensuite, étiquetez les flèches en associant un texte en tant qu'indice ou
  d'exposant à la fin du chemin décrivant le flèche.
- Comme habituellement dans l'éditeur mathématique de LyX, un caractère souligné
+ Comme habituellement dans l'éditeur mathématique de \SpecialCharNoPassThru LyX
+, un caractère souligné
 \begin_inset space ~
 \end_inset
 
@@ -2694,7 +2741,8 @@ _
 ^
 \family default
  (suivi éventuellement d'un espace) ouvre une boîte pour un exposant.
- Vous pouvez saisir n'importe quel code LaTeX dans une étiquette.
+ Vous pouvez saisir n'importe quel code \SpecialCharNoPassThru LaTeX
+ dans une étiquette.
 \end_layout
 
 \begin_layout Subsection
@@ -2711,7 +2759,7 @@ Finalement, vous pouvez modifier l'apparence des flèches en saisissant les
 \family typewriter
 @{
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 }
@@ -2720,18 +2768,18 @@ Finalement, vous pouvez modifier l'apparence des flèches en saisissant les
 \family typewriter
 @<
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 >, 
 \family typewriter
 @(
 \family default
-\SpecialChar \ldots{}
-,\SpecialChar \ldots{}
+\SpecialChar ldots
+,\SpecialChar ldots
 ) ou 
 \family typewriter
 @/
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 /
@@ -2744,7 +2792,8 @@ Finalement, vous pouvez modifier l'apparence des flèches en saisissant les
 \backslash
 {
 \family default
- avec la description de la flèche saisie dans le boîte LyX.
+ avec la description de la flèche saisie dans le boîte \SpecialCharNoPassThru LyX
+.
  Si cette boîte reste vide, vous aurez spécifié une flèche vide, ce qui
  est une construction utile également, comme vous le verrez dans la section
  suivante.
@@ -2755,7 +2804,7 @@ Les autres modificateurs,
 \family typewriter
 @<
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 >
@@ -2764,8 +2813,8 @@ Les autres modificateurs,
 \family typewriter
 @(
 \family default
-\SpecialChar \ldots{}
-,\SpecialChar \ldots{}
+\SpecialChar ldots
+,\SpecialChar ldots
 
 \family typewriter
 ) 
@@ -2774,7 +2823,7 @@ et
 \family typewriter
 @/
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 / 
@@ -2801,7 +2850,9 @@ où
 \emph on
 mesure
 \emph default
- est n'importe quelle mesure TeX, doit être saisi en LyX comme l'indice
+ est n'importe quelle mesure \SpecialCharNoPassThru TeX
+, doit être saisi en \SpecialCharNoPassThru LyX
+ comme l'indice
  ou l'exposant de la première barre inclinée
 \begin_inset space ~
 \end_inset
@@ -2850,7 +2901,8 @@ Une raison plus profonde peut être une erreur de syntaxe dans la saisie:
 Ctrl+Z
 \family default
  ou via l'icône de la barre d'outils principale, ou essayez de traduire
- le fichier LyX en 
+ le fichier \SpecialCharNoPassThru LyX
+ en 
 \family typewriter
 DVI
 \family default
@@ -2863,7 +2915,7 @@ Ctrl
 \emph default
  ou en sélectionnant 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 DVI
 \family default
 , ou encore via l'icône de la barre d'outil de création des sorties imprimables.
@@ -2877,7 +2929,8 @@ Astuces
 \end_layout
 
 \begin_layout Standard
-Certaines choses ne fonctionnent pas depuis LyX.
+Certaines choses ne fonctionnent pas depuis \SpecialCharNoPassThru LyX
+.
  Celles qui manquent (manquaient) le plus sont les mises à l'échelle verticale
  et horizontale des diagrammes, et le positionnement correct des flèches.
  Nous décrivons ci-après quelques solutions alternatives.
@@ -2910,7 +2963,7 @@ Xy
 \backslash
 xymatrix@R=1pc{
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 }
@@ -2939,18 +2992,19 @@ Xy{}
 \backslash
 xymatrix@C=
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 {
 \family default
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family typewriter
 }
 \family default
  permet de modifier l'espacement entre colonnes.
- Malheureusement, ces commandes ne fonctionnent pas encore dans LyX, du
+ Malheureusement, ces commandes ne fonctionnent pas encore dans \SpecialCharNoPassThru LyX
+, du
  fait que le caractère
 \begin_inset space ~
 \end_inset
@@ -2959,7 +3013,8 @@ xymatrix@C=
 \family typewriter
 @
 \family default
- est interprété par LyX comme terminant la macro-instruction matrice-
+ est interprété par \SpecialCharNoPassThru LyX
+ comme terminant la macro-instruction matrice-
 \begin_inset ERT
 status collapsed
 
@@ -3009,8 +3064,8 @@ xymatrixrowsep@
 \family default
 , ajoutez la macro suivante au préambule (
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres...\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres...\SpecialChar menuseparator
 
 \family typewriter
 Préambule
@@ -3101,7 +3156,8 @@ xyC
 \family default
  ou les deux.
  N'oubliez pas les barres inclinées inverses et rappelez-vous que l'accolade
- fermante est fournie par LyX.
+ fermante est fournie par \SpecialCharNoPassThru LyX
+.
  Insérez les dimensions entre les accolades, la valeur implicite étant 
 \family typewriter
 2pt
@@ -3254,7 +3310,8 @@ ar[ur]_(0.3)
 \backslash
 phi
 \family default
-, ne fonctionne pas depuis LyX.
+, ne fonctionne pas depuis \SpecialCharNoPassThru LyX
+.
  0 la place, il faut remplacer l'accent circonflexe
 \begin_inset space ~
 \end_inset
@@ -3411,8 +3468,8 @@ Cette astuce a deux inconvénients mineurs: d'abord, elle ne fonctionne pas
  suivant ou le paragraphe précédent (sauf a créer un espacement négatif
  à l'aide de 
 \family sans
-Insertion\SpecialChar \menuseparator
-Typographie spéciale\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Typographie spéciale\SpecialChar menuseparator
 
 \family typewriter
 Espacement vertical
@@ -3556,7 +3613,8 @@ Xy
 \family typewriter
 inset_preview.lyx
 \family default
- empaqueté avec LyX, qui montre comment utiliser des commandes
+ empaqueté avec \SpecialCharNoPassThru LyX
+, qui montre comment utiliser des commandes
 \begin_inset space ~
 \end_inset
 
@@ -3579,7 +3637,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-TeX
+\SpecialCharNoPassThru TeX
 \family default
  et 
 \family typewriter
@@ -3757,7 +3815,7 @@ key "AUCTeX"
 
 
 \lang english
-Homepage of AUCTeX
+Homepage of AUC\SpecialCharNoPassThru TeX
 \lang french
 : 
 \begin_inset Flex URL

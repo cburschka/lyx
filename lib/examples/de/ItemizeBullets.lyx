@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass article
 \begin_preamble
 
@@ -12,16 +13,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -108,37 +109,52 @@ Sie werden recht bald sehen, daß das Anpassen von Aufzählungszeichen recht
 Die Standardumgebung für Listen mit  Aufzählungszeichen ist 
 \emph on
 Auflistung
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 sie hat einen eigenen Zähler mit 4 Stufen
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 jede Stufe kann ihr eigenes Aufzählungszeichen haben
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX stellt aber alle Aufzählungszeichen als `*' dar
+\SpecialCharNoPassThru LyX
+ stellt aber alle Aufzählungszeichen als `*' dar
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-LyX prüft 
+\SpecialCharNoPassThru LyX
+ prüft 
 \emph on
 nicht
 \emph default
 , ob die Stufen richtig sind
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-nur LaTeX begrenzt die Tiefe für alle Listen auf 6.
+nur \SpecialCharNoPassThru LaTeX
+ begrenzt die Tiefe für alle Listen auf 6.
 \end_layout
 
 \end_deeper
@@ -155,10 +171,10 @@ Ja.
 \begin_layout Standard
 Das Menü erreichen Sie über 
 \family sans
-Dokument\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
 Einstellungen
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Aufzählungszeichen.
@@ -1151,31 +1167,34 @@ Ding 1 (PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS (New Font Selecting Scheme) ist das neue Schema von LaTeX2e (im wesentliche
+NFSS (New Font Selecting Scheme) ist das neue Schema von \SpecialCharNoPassThru LaTeX2e
+ (im wesentliche
 n die Befehlsänderungen von 
 \family typewriter
 {
 \backslash
-bf \SpecialChar \ldots{}
+bf \SpecialChar ldots
 }
 \family default
  nach 
 \family typewriter
 
 \backslash
-textbf{\SpecialChar \ldots{}
+textbf{\SpecialChar ldots
 }
 \family default
 , obwohl die wirklichen Änderungen im Inneren zu finden sind).
  PS bedeutet PostScript®.
- PSNFSS ist eine Zahl von LaTeX-Dateien, die die NFSS-Unterstützung für
+ PSNFSS ist eine Zahl von \SpecialCharNoPassThru LaTeX
+-Dateien, die die NFSS-Unterstützung für
  35 PS-Fonts liefern, die in vielen  PostScript®-Druckern zu finden sind.
  
 \end_layout
 
 \end_inset
 
- Fonts -- Zapf Dingbats und Symbole)
+ Fonts \twohyphens
+ Zapf Dingbats und Symbole)
 \end_layout
 
 \begin_layout Standard

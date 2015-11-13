@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fr/
 \textclass article
 \begin_preamble
 
@@ -12,16 +13,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -132,21 +133,32 @@ Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
 ListePuces
 \family default
  est l'environnement standard pour les listes à puces
+\family default
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 il a son propre compteur limité à 4 niveaux
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 chaque niveau peut avoir sa propre forme de puce
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX affiche cependant toutes les puces comme des 
+\SpecialCharNoPassThru LyX
+ affiche cependant toutes les puces comme des 
 \begin_inset Quotes fld
 \end_inset
 
@@ -161,16 +173,21 @@ LyX affiche cependant toutes les puces comme des
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-À noter aussi que LyX 
+À noter aussi que \SpecialCharNoPassThru LyX
+ 
 \emph on
 ne vérifie pas
 \emph default
  tout seul la profondeur de l'environnement
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Sauf pour appliquer la limite de profondeur de LaTeX qui est de 6 pour toutes
+Sauf pour appliquer la limite de profondeur de \SpecialCharNoPassThru LaTeX
+ qui est de 6 pour toutes
  les listes.
 \end_layout
 
@@ -189,7 +206,7 @@ Oui.
 \begin_layout Standard
 Vous pouvez accéder à la fenêtre par le menu 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Paramètres
 \family default
  et sélectionner l'onglet 
@@ -1203,7 +1220,8 @@ status collapsed
 
 \begin_layout Plain Layout
 NFSS est le nouveau schéma de sélection de police (New Font Selecting Scheme)
- de LaTeX2e (basiquement, c'est ce qui a changé les commandes de police
+ de \SpecialCharNoPassThru LaTeX2e
+ (basiquement, c'est ce qui a changé les commandes de police
  de 
 \family typewriter
 {
@@ -1218,7 +1236,8 @@ textbf{...}
 \family default
 , bien que les vrais changements soient à l'intérieur).
  PS signifie PostScript®.
- PSNFSS est un ensemble de fichiers LaTeX qui fournissent le support de
+ PSNFSS est un ensemble de fichiers \SpecialCharNoPassThru LaTeX
+ qui fournissent le support de
  NFSS pour les 35 polices PS de base présentes dans beaucoup d'imprimantes
  postscript.
 \end_layout

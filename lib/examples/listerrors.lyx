@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \begin_preamble
 %
@@ -26,16 +27,16 @@ noweb
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
-\font_math auto
+\font_roman "times" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -87,7 +88,8 @@ noweb
 \begin_body
 
 \begin_layout Title
-LyX listerrors:
+\SpecialCharNoPassThru LyX
+ listerrors:
 \begin_inset Newline newline
 \end_inset
 
@@ -124,7 +126,8 @@ The listerrors program used to be compiled as a C program and installed
 \emph on
 BINDIR/listerrors
 \emph default
- along with LyX in order to perform some simple re-formatting of noweb and
+ along with \SpecialCharNoPassThru LyX
+ in order to perform some simple re-formatting of noweb and
  GCC error messages.
  This document describes and implements the Python version of the same program.
 \end_layout
@@ -143,7 +146,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The motivation for this program was LyX bug 190
+The motivation for this program was \SpecialCharNoPassThru LyX
+ bug 190
 \begin_inset Foot
 status collapsed
 
@@ -184,11 +188,15 @@ listerrors
 \begin_inset Quotes erd
 \end_inset
 
-? Usually, LyX has great support for parsing of error messages.
- For each error in the log file, LyX pops up an error box at that location
- in the LyX window.
+? Usually, \SpecialCharNoPassThru LyX
+ has great support for parsing of error messages.
+ For each error in the log file, \SpecialCharNoPassThru LyX
+ pops up an error box at that location
+ in the \SpecialCharNoPassThru LyX
+ window.
  The error scanning routines expect these errors to be in a certain format
- (similar to LaTeX errors).
+ (similar to \SpecialCharNoPassThru LaTeX
+ errors).
  When dealing with Literate Programs, you have 
 \begin_inset Quotes eld
 \end_inset
@@ -220,7 +228,8 @@ http://www.eecs.harvard.edu/~nr/noweb
 
  as well as gcc error messages (and potentially others).
  The listerrors program attempts to standardize these error messages to
- a format that LyX can parse and react to.
+ a format that \SpecialCharNoPassThru LyX
+ can parse and react to.
 \end_layout
 
 \begin_layout Standard
@@ -230,7 +239,8 @@ In a nutshell, the problems with the old implementation of listerrors that
 
 \begin_layout Enumerate
 It was a C program and it was installed in the user path in the same directory
- as LyX.
+ as \SpecialCharNoPassThru LyX
+.
  Having such a generically named binary in, for example, 
 \emph on
 /usr/bin
@@ -261,7 +271,8 @@ The new version deals with these problems in the following fashion:
 
 \begin_layout Enumerate
 Both the example file (this document) and the program are to be added to
- the LyX CVS repository.
+ the \SpecialCharNoPassThru LyX
+ CVS repository.
 \end_layout
 
 \begin_layout Enumerate
@@ -269,7 +280,8 @@ The program itself will be installed in
 \emph on
 SHAREDIR/lyx/scripts
 \emph default
-, along with other LyX-specific helper scripts.
+, along with other \SpecialCharNoPassThru LyX
+-specific helper scripts.
 \end_layout
 
 \begin_layout Standard
@@ -333,7 +345,8 @@ status open
 
 \begin_layout Plain Layout
 
-"""reformat noweb and compiler errors for LyX.
+"""reformat noweb and compiler errors for \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -378,7 +391,8 @@ __credits__ = """Edmar Wienskoski Jr.
 
 \begin_layout Plain Layout
 
-    original Literate support for LyX.
+    original Literate support for \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Plain Layout
@@ -439,11 +453,13 @@ if __name__ == "__main__":
 \end_layout
 
 \begin_layout Section
-LaTeX style error message
+\SpecialCharNoPassThru LaTeX
+ style error message
 \end_layout
 
 \begin_layout Standard
-The following function mimics the TeX error message format.
+The following function mimics the \SpecialCharNoPassThru TeX
+ error message format.
 \end_layout
 
 \begin_layout Standard
@@ -462,7 +478,8 @@ def write_error(msg, tool = "noweb", line_number = 1):
 
 \begin_layout Plain Layout
 
-  """Write out the given message in TeX error style.
+  """Write out the given message in \SpecialCharNoPassThru TeX
+ error style.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1603,7 +1620,8 @@ Extracting the code
 \end_layout
 
 \begin_layout Standard
-This project can be tangled from LyX if you set your 
+This project can be tangled from \SpecialCharNoPassThru LyX
+ if you set your 
 \begin_inset Quotes eld
 \end_inset
 

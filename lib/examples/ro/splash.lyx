@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ro/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,30 +71,34 @@
 \begin_body
 
 \begin_layout Title
-Bine aţi venit în LyX!
+Bine aţi venit în \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-Primele N lucruri de ştiut când folosiţi LyX
+Primele N lucruri de ştiut când folosiţi \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX vine cu o documentaţie excelentă — utilizaţi-o! Începeţi cu 
+\SpecialCharNoPassThru LyX
+ vine cu o documentaţie excelentă — utilizaţi-o! Începeţi cu 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Introduction
 \family default
 , care vă va face o scurtă introducere la documentaţie.
- Apoi învăţaţi să utilizaţi LyX cu 
+ Apoi învăţaţi să utilizaţi \SpecialCharNoPassThru LyX
+ cu 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX este ceea ce numim un 
+\SpecialCharNoPassThru LyX
+ este ceea ce numim un 
 \begin_inset Quotes eld
 \end_inset
 
@@ -119,18 +124,24 @@ V-am spus oare deja că ar trebui să citiţi documentaţia ?
 \end_layout
 
 \begin_layout Enumerate
-Rezultatul produs de LyX arată splendid! Selectaţi acum 
+Rezultatul produs de \SpecialCharNoPassThru LyX
+ arată splendid! Selectaţi acum 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 DVI
 \family default
  ca să vă convingeţi.
 \end_layout
 
 \begin_layout Enumerate
-Da, LyX poate imita (aproape) întreaga funcţionalitate LaTeX.
- Şi da, LyX poate importa fişiere LaTeX.
- Utilizatorii LaTeX experimentaţi ar trebui numai să treacă în revistă restul
+Da, \SpecialCharNoPassThru LyX
+ poate imita (aproape) întreaga funcţionalitate \SpecialCharNoPassThru LaTeX
+.
+ Şi da, \SpecialCharNoPassThru LyX
+ poate importa fişiere \SpecialCharNoPassThru LaTeX
+.
+ Utilizatorii \SpecialCharNoPassThru LaTeX
+ experimentaţi ar trebui numai să treacă în revistă restul
  
 \emph on
 Tutorialului
@@ -139,17 +150,22 @@ Tutorialului
 \begin_inset Quotes eld
 \end_inset
 
-LyX for LaTeX Users
+\SpecialCharNoPassThru LyX
+ for \SpecialCharNoPassThru LaTeX
+ Users
 \begin_inset Quotes erd
 \end_inset
 
 .
- (Pentru toţi ceilalţi: nu vă îngrijoraţi, nu e nevoie să ştiţi LaTeX ca
- să folosiţi LyX).
+ (Pentru toţi ceilalţi: nu vă îngrijoraţi, nu e nevoie să ştiţi \SpecialCharNoPassThru LaTeX
+ ca
+ să folosiţi \SpecialCharNoPassThru LyX
+).
 \end_layout
 
 \begin_layout Enumerate
-LyX are o mulţime de facilităţi pentru cei care citesc sau scriu într-o
+\SpecialCharNoPassThru LyX
+ are o mulţime de facilităţi pentru cei care citesc sau scriu într-o
  altă limbă decât engleza.
  În plus, asocierile de taste, bara de scule şi multe alte caracteristici
  sunt extrem de configurabile (în general prin editarea fişierului dumneavoastră
@@ -160,14 +176,15 @@ lyxrc
 ).
  Consultaţi 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Customization
 \family default
  pentru detalii.
 \end_layout
 
 \begin_layout Enumerate
-Pagina web LyX se găseşte la 
+Pagina web \SpecialCharNoPassThru LyX
+ se găseşte la 
 \family typewriter
 
 \begin_inset Flex URL
@@ -183,8 +200,11 @@ http://www.lyx.org/
 
 \family default
 .
- Puteţi să vă informaţi asupra lui LyX, să vă abonaţi la listele de discuţii
- LyX, să încercaţi Turul Grafic LyX şi altele.
+ Puteţi să vă informaţi asupra lui \SpecialCharNoPassThru LyX
+, să vă abonaţi la listele de discuţii
+ \SpecialCharNoPassThru LyX
+, să încercaţi Turul Grafic \SpecialCharNoPassThru LyX
+ şi altele.
 \end_layout
 
 \end_body

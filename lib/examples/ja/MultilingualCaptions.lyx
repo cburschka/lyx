@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ja/
 \textclass scrartcl
 \begin_preamble
 % use this when you only need the document language captions in te list of figures/tables
@@ -28,16 +29,16 @@ bicaption
 \language_package default
 \inputencoding utf8-platex
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -138,11 +139,13 @@ ohr
 \family sans
 多言語キャプション
 \family default
-モジュールを用いると、キャプションを二言語で組むことができます。これを用いるには、LaTeXパッケージ
+モジュールを用いると、キャプションを二言語で組むことができます。これを用いるには、\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 caption
 \series default
-に組み込まれているLaTeXパッケージ
+に組み込まれている\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 bicaption
 \series default
@@ -230,13 +233,13 @@ reference "tab:babel名一覧"
 \family default
 を選択してください。キャプションが挿入されていない場合には、
 \family sans
-挿入\SpecialChar \menuseparator
-キャプション\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+キャプション\SpecialChar menuseparator
 複言語キャプション
 \family default
 で多言語キャプションを挿入することができます。文書言語でのキャプション文は、キャプション中で
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 主言語文
 \family default
 として挿入される差込枠に書き込まなくてはなりません。第二言語のキャプション文は、キャプション中に、通常の文章として書き込みます。
@@ -245,12 +248,12 @@ reference "tab:babel名一覧"
 \begin_layout Standard
 (図表一覧用の)表題短縮形は、各言語とも、それぞれ
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 主言語短縮表題
 \family default
 と
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 第二言語短縮表題
 \family default
 で指定することができます。
@@ -310,6 +313,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -439,7 +447,8 @@ bicaption
 \series bold
 caption
 \series default
-と同じですので、他に行うことができる設定についての詳細は、LaTeXパッケージ
+と同じですので、他に行うことができる設定についての詳細は、\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 caption
 \series default
@@ -574,6 +583,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -696,7 +710,8 @@ tableGer
 \emph on
 figureGer
 \emph default
-の一覧は、TeXコードで
+の一覧は、\SpecialCharNoPassThru TeX
+コードで
 \end_layout
 
 \begin_layout Standard
@@ -768,7 +783,8 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-LaTeXパッケージ
+\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 bicaption
 \series default
@@ -1766,7 +1782,8 @@ key "bicaption"
 
 \end_inset
 
-LaTeXパッケージ
+\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 
 \begin_inset CommandInset href
@@ -1788,7 +1805,8 @@ key "caption"
 
 \end_inset
 
-LaTeXパッケージ
+\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 
 \begin_inset CommandInset href

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass tufte-handout
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans helvet
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "helvet" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -78,14 +79,19 @@ status open
 \series bold
 Achtung
 \series default
-: Um dieses Dokument als PDF zu betrachten, muss das LaTeX-paket 
+: Um dieses Dokument als PDF zu betrachten, muss das \SpecialCharNoPassThru LaTeX
+-paket 
 \family sans
 fpl
 \family default
- in ihrem LaTeX-Sytem installiert sein.
- Wenn Sie MiKTeX benutzen, werden Sie automatisch danach gefragt dieses
+ in ihrem \SpecialCharNoPassThru LaTeX
+-Sytem installiert sein.
+ Wenn Sie MiK\SpecialCharNoPassThru TeX
+ benutzen, werden Sie automatisch danach gefragt dieses
  Paket zu installieren, wenn sie das Dokument als PDF ansehen.
- Wenn Sie TeXLive benutzen,verwenden Sie TeXLives Paket-Manager.
+ Wenn Sie \SpecialCharNoPassThru TeX
+Live benutzen,verwenden Sie \SpecialCharNoPassThru TeX
+Lives Paket-Manager.
 \end_layout
 
 \end_inset
@@ -148,11 +154,13 @@ Tufte Handout
 \emph default
 .
  Es zeigt anhand von Beispielen, wie die Klasse verwendet wird.
- Das Dokument basiert auf der Beispieldatei, die mit der LaTeX-Klasse 
+ Das Dokument basiert auf der Beispieldatei, die mit der \SpecialCharNoPassThru LaTeX
+-Klasse 
 \emph on
 tufte-handout.cls
 \emph default
- vertrieben wird, wurde aber an LyX-Spezifika angepasst.
+ vertrieben wird, wurde aber an \SpecialCharNoPassThru LyX
+-Spezifika angepasst.
 \end_layout
 
 \begin_layout Standard
@@ -346,8 +354,8 @@ Neuer Gedanke
 \family default
  (
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
 Neuer Gedanke
 \family default
 ).
@@ -365,7 +373,7 @@ name "sec:Randnotizen"
 \end_layout
 
 \begin_layout Standard
-Eine der auf\SpecialChar \textcompwordmark{}
+Eine der auf\SpecialChar ligaturebreak
 fälligsten Eigenschaften der vorliegenden Klasse ist seine extensive
  Nutzung von Randnotizen.
  Der Stil definiert einen breiten rechten Rand, der viel Raum für Randnotizen
@@ -387,8 +395,8 @@ Fußnote
  Alternativ können Sie nummerierte Randnotizen auch direkt eingeben, und
  zwar über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Randnotiz (nummeriert)
 \family default
 .
@@ -398,8 +406,8 @@ status collapsed
 \begin_layout Plain Layout
 Dies ist eine nummerierte Randnotiz, eingegeben über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Randnotiz (nummeriert)
 \family default
 .
@@ -413,8 +421,8 @@ Randnotiz (nummeriert)
 \begin_layout Standard
 Nicht nummerierte Randnotizen gibt es ebenfalls; Sie finden Sie in 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Randnotiz (nicht nummeriert)
 \family default
 .
@@ -428,9 +436,10 @@ Dies ist eine nicht-nummerierte Randnotiz.
 
 \end_inset
 
- Die normale Randnotiz, die Sie aus anderen LyX-Klassen kennen (
+ Die normale Randnotiz, die Sie aus anderen \SpecialCharNoPassThru LyX
+-Klassen kennen (
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Randnotiz
 \family default
 ), funktioniert ebenfalls, sie sieht aber nicht sehr elegant aus.
@@ -452,8 +461,10 @@ Literaturverweise
 \end_layout
 
 \begin_layout Standard
-Literaturhinweise werden ebenfalls -- als Randnotizen neben den Literaturverweis
-en -- im Rand platziert.
+Literaturhinweise werden ebenfalls \twohyphens
+ als Randnotizen neben den Literaturverweis
+en \twohyphens
+ im Rand platziert.
  Verwenden Sie hierfür einfach den normalen Literaturverweis-Befehl.
 \begin_inset Foot
 status collapsed
@@ -471,7 +482,7 @@ Der erste Abschnitt dieses Dokuments enthält einen solchen Literaturverweis.
 Eine vollständige Bibliographie können sie ebenfalls ausgeben, und zwar
  über 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Liste
 \begin_inset space ~
 \end_inset
@@ -480,19 +491,23 @@ Liste
 \begin_inset space \space{}
 \end_inset
 
-Inhaltsverzeichnis\SpecialChar \menuseparator
-BibTeX-Literaturverzeichnis
+Inhaltsverzeichnis\SpecialChar menuseparator
+Bib\SpecialCharNoPassThru TeX
+-Literaturverzeichnis
 \family default
  (am Ende dieses Dokuments sehen Sie ein Beispiel).
  Wenn Sie keine vollständige Bibliographie ausgeben möchten, platzieren
- Sie das BibTeX-Literaturverzeichnis in eine LyX-Notiz und setzen Sie in
+ Sie das Bib\SpecialCharNoPassThru TeX
+-Literaturverzeichnis in eine \SpecialCharNoPassThru LyX
+-Notiz und setzen Sie in
  den Text 
 \family typewriter
 
 \backslash
 nobibliography
 \family default
- im TeX-Modus.
+ im \SpecialCharNoPassThru TeX
+-Modus.
 \end_layout
 
 \begin_layout Section*
@@ -546,7 +561,8 @@ reference "fig:Randabbildung"
 status collapsed
 
 \begin_layout Plain Layout
-Leider ist die Zählung im LyX-Arbeitsfenster falsch.
+Leider ist die Zählung im \SpecialCharNoPassThru LyX
+-Arbeitsfenster falsch.
  Normale und Rand-Gleitabbildungen werden separat gezählt, Sie verwenden
  aber in der Ausgabe denselben Zähler.
 \end_layout
@@ -571,6 +587,11 @@ width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -649,6 +670,11 @@ width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -713,6 +739,11 @@ width "100line%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -779,7 +810,8 @@ formal
 \end_inset
 
  in den Tabellen-Einstellungen).
- Beachten Sie, dass es keine vertikalen Tabellenlinien gibt -- diese zerstören
+ Beachten Sie, dass es keine vertikalen Tabellenlinien gibt \twohyphens
+ diese zerstören
  ohnehin nur das Tabellenbild.
 \end_layout
 
@@ -1102,8 +1134,8 @@ Versalien
 \emph default
  (
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
 Versalien
 \family default
 ) bietet einen solchen optimierten Zeichenabstand für 
@@ -1122,8 +1154,8 @@ Kapitälchen
 \emph default
  (
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
 Kapitälchen
 \family default
 ) sperrt die 
@@ -1153,7 +1185,7 @@ Versalien
 \begin_layout Standard
 Der normale Kapitälchenstil wurde ebenfalls so umdefiniert, dass die Zeichen
  leicht gesperrt werden.
- Die Groß-\SpecialChar \slash{}
+ Die Groß-\SpecialChar breakableslash
 Kleinschreibung wurde allerdings nicht angetastet.
  Das ermöglicht die (im Deutschen übliche) Verwendung von Groß- und Kleinbuchsta
 ben innerhalb von Kapitälchensequenzen: 
@@ -1368,9 +1400,10 @@ makeatother
 \begin_layout Standard
 Nachdem Sie diesen Code in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-LaTeX-Vorspann
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+-Vorspann
 \family default
  eingegeben haben, können Sie 
 \family typewriter
@@ -1378,14 +1411,15 @@ LaTeX-Vorspann
 \backslash
 paragraph
 \family default
- im LaTeX-Modus verwenden.
+ im \SpecialCharNoPassThru LaTeX
+-Modus verwenden.
 \end_layout
 
 \begin_layout Standard
 Für weitere Informationen zur Definition von Abschnittsüberschriften lesen
  Sie bitte 
 \shape italic
-The LaTeX
+The \SpecialCharNoPassThru LaTeX
 \begin_inset space \space{}
 \end_inset
 
@@ -1493,7 +1527,8 @@ beramono*
 \end_layout
 
 \begin_layout Subsection*
-Tufte-LaTeX-Website
+Tufte-\SpecialCharNoPassThru LaTeX
+-Website
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Website"
@@ -1504,7 +1539,8 @@ name "sec:Website"
 \end_layout
 
 \begin_layout Standard
-Die Website des Tufte-LaTeX-Paketes finden Sie unter 
+Die Website des Tufte-\SpecialCharNoPassThru LaTeX
+-Paketes finden Sie unter 
 \begin_inset Flex URL
 status collapsed
 

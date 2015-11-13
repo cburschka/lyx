@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/es/
 \textclass article
 \begin_preamble
 %% Uncomment the following for Tableaux captions on top:
@@ -20,16 +21,16 @@ linguistics
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -90,7 +91,7 @@ linguistics
 \begin_body
 
 \begin_layout Title
-Escribiendo artículos lingüísticos con LyX
+Escribiendo artículos lingüísticos con \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
@@ -114,7 +115,8 @@ type "mailto:"
 \end_layout
 
 \begin_layout Abstract
-Este artículo describe algunas características que LyX provee para lingüistas.
+Este artículo describe algunas características que \SpecialCharNoPassThru LyX
+ provee para lingüistas.
  Muestra cómo usar algún soporte nativo con el fin de generar ejemplos numerados
 , glosas, cuadros de Teoría de la Optimidad (
 \emph on
@@ -136,7 +138,8 @@ Lingüística
 \begin_inset Quotes frd
 \end_inset
 
- incorporado en LyX desde la versión 1.6.0.
+ incorporado en \SpecialCharNoPassThru LyX
+ desde la versión 1.6.0.
  Los 
 \begin_inset Quotes fld
 \end_inset
@@ -145,13 +148,14 @@ módulos
 \begin_inset Quotes frd
 \end_inset
 
- son archivos de soporte (introducidos con LyX 1.6.0) que se pueden seleccionar
+ son archivos de soporte (introducidos con \SpecialCharNoPassThru LyX
+ 1.6.0) que se pueden seleccionar
  fácilmente para cualquier documento.
  Para usar el módulo Lingüística hay que seleccionarlo en la lista de módulos
  disponibles en el menú 
 \family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Módulos
 \family default
 , y pulsar el botón
@@ -166,7 +170,8 @@ Módulos
 Debería ser posible usar el módulo con cualquier clase de documento (si
  no es así, infórmame, por favor).
  Sin embargo, con el fin de usar todas sus características, debes tener
- instalados los siguientes paquetes LaTeX:
+ instalados los siguientes paquetes \SpecialCharNoPassThru LaTeX
+:
 \end_layout
 
 \begin_layout Enumerate
@@ -263,7 +268,8 @@ key "float"
 Índice de Tableaux
 \emph default
 .
- Este paquete estará incluido en cualquier distribución de LaTeX.
+ Este paquete estará incluido en cualquier distribución de \SpecialCharNoPassThru LaTeX
+.
 \end_layout
 
 \begin_layout Section
@@ -311,7 +317,7 @@ Los ejemplos simples consecutivos tienen sus propios números
 Esto es un subejemplo
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:subejemplo"
+name "subsec:subejemplo"
 
 \end_inset
 
@@ -331,7 +337,7 @@ Las referencias a los ejemplos se generan como es habitual: inserta una
  etiqueta en el ejemplo y haz la correspondiente referencia mediante el
  menú 
 \family sans
-Insertar\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
 Referencia cruzada
 \family default
 .
@@ -345,7 +351,7 @@ reference "ej:ejemplo-simple"
  y a 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:subejemplo"
+reference "subsec:subejemplo"
 
 \end_inset
 
@@ -360,7 +366,7 @@ Glosas
 El módulo Lingüística proporciona dos tipos de glosas, que se pueden insertar
  con el menú 
 \family sans
-Insertar\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
 Objeto personalizado
 \family default
 : el estándar 
@@ -383,7 +389,8 @@ Personalizado:Tri-Glosa
 glt
 \family default
 , que se debe insertar literal en el recuadro glosa (no hace falta código
- TeX, y de hecho no es posible).
+ \SpecialCharNoPassThru TeX
+, y de hecho no es posible).
 \end_layout
 
 \begin_layout Standard
@@ -395,20 +402,47 @@ He aquí un sencillo ejemplo:
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 C'est un exemple simple
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 {Esto es} un ejemplo sencillo
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+Esto es un ejemplo sencillo
+\end_layout
 
-\backslash
-glt Esto es un ejemplo sencillo
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -430,25 +464,59 @@ De igual modo podemos hacer una glosa de tres líneas:
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 C'est un exemple simple
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 {Das ist} ein Beispiel einfach
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
 {Esto es} un ejemplo sencillo
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+Esto es un ejemplo sencillo
+\end_layout
 
-\backslash
-glt Esto es un ejemplo sencillo
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -467,25 +535,59 @@ Si quieres tener glosas numeradas, puedes simplemente insertar el recuadro
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
 
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
+
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 My skeertuig is vol palings
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
 Mi hidrodeslizador está {lleno de} anguilas
 \end_layout
 
+\end_inset
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
 \begin_layout Plain Layout
 
+Do you have matches?
+\end_layout
 
-\backslash
-glt Do you have matches?
+\end_inset
+
+\end_layout
+
+\end_inset
 \end_layout
 
 \end_inset
@@ -501,7 +603,8 @@ Estilo de carácter
 \family default
  esté desactivado.
  Puesto que las glosas no se separan con guión, no se requiere una configuración
- explícita de idioma en la salida LaTeX, (de hecho, podría romper la salida,
+ explícita de idioma en la salida \SpecialCharNoPassThru LaTeX
+, (de hecho, podría romper la salida,
  pues covington no lo soporta).
  No obstante, puede darse el caso de querer establecer el idioma para una
  revisión ortográfica adecuada.
@@ -541,7 +644,8 @@ ngerman
 spanish
 \family default
 .
- En la salida LaTeX esta configuración será suprimida.
+ En la salida \SpecialCharNoPassThru LaTeX
+ esta configuración será suprimida.
 \end_layout
 
 \begin_layout Section
@@ -578,7 +682,7 @@ Objetos insertados
 El módulo Lingüística proporciona soporte para ambas cosas.
  En 
 \family sans
-Insertar\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
 Flotante
 \family default
  encontrarás la entrada 
@@ -599,7 +703,8 @@ Tableaux
 \end_inset
 
  en la salida (por ej., por Cuadro semántico, o Árbol...), inserta en el preámbulo
- LaTeX el comando 
+ \SpecialCharNoPassThru LaTeX
+ el comando 
 \family typewriter
 
 \backslash
@@ -917,13 +1022,14 @@ Tableau
 
 \begin_layout Standard
 Observa que, por omisión, la leyenda siempre se coloca bajo el cuadro en
- la salida, no importa donde la pongas en LyX.
+ la salida, no importa donde la pongas en \SpecialCharNoPassThru LyX
+.
  Para poner las leyendas encima de los cuadros, hay que añadir el siguiente
  código en 
 \family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
-Preámbulo LaTeX
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Preámbulo \SpecialCharNoPassThru LaTeX
 \family default
 :
 \end_layout
@@ -960,14 +1066,15 @@ restylefloat{tableau}
 \begin_layout Standard
 En 
 \family sans
-Insertar\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
 Índice
 \family default
  puedes encontrar un 
 \family sans
 Índice de Tableaux
 \family default
- que se incorporará como recuadro en LyX.
+ que se incorporará como recuadro en \SpecialCharNoPassThru LyX
+.
  Aunque habitualmente se coloca al principio o al final del documento, lo
  insertamos aquí a modo de ejemplo:
 \end_layout
@@ -1034,7 +1141,7 @@ significado
 \begin_layout Standard
 Los estilos de carácter se pueden insertar mediante el submenú 
 \family sans
-Editar\SpecialChar \menuseparator
+Editar\SpecialChar menuseparator
 Estilo del texto
 \family default
 .
@@ -1075,13 +1182,15 @@ Símbolos fonéticos (IPA)
 
 \begin_layout Standard
 No es necesario el módulo Lingüística para insertar símbolos fonéticos,
- esto es una funcionalidad básica en LyX.
+ esto es una funcionalidad básica en \SpecialCharNoPassThru LyX
+.
  Sin embargo, puesto que esto es usado frecuentemente por lingüistas, lo
  describiremos (brevemente) en este artículo.
 \end_layout
 
 \begin_layout Standard
-Un requisito previo para usar el soporte IPA en LyX es el paquete LaTeX
+Un requisito previo para usar el soporte IPA en \SpecialCharNoPassThru LyX
+ es el paquete \SpecialCharNoPassThru LaTeX
 \emph on
  tipa
 \emph default
@@ -1111,8 +1220,8 @@ key "preview"
 \begin_layout Standard
 Los símbolos fonéticos se pueden insertar mediante 
 \family sans
-Insertar\SpecialChar \menuseparator
-Carácter especial\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
+Carácter especial\SpecialChar menuseparator
 Símbolos fonéticos
 \family default
 .
@@ -1145,9 +1254,9 @@ e
 x está instalado y que has activado la previsualización instantánea, (en
  
 \family sans
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Apariencia\SpecialChar \menuseparator
+Herramientas\SpecialChar menuseparator
+Preferencias\SpecialChar menuseparator
+Apariencia\SpecialChar menuseparator
 Visualización
 \family default
 ), en cuanto el cursor abandone el marco verás el bonito aspecto final.
@@ -1162,12 +1271,13 @@ Por otra parte, la mayoría de caracteres IPA se pueden también insertar
 e.
  con 
 \family sans
-Insertar\SpecialChar \menuseparator
-Carácter especial\SpecialChar \menuseparator
-Símbolos\SpecialChar \ldots{}
+Insertar\SpecialChar menuseparator
+Carácter especial\SpecialChar menuseparator
+Símbolos\SpecialChar ldots
 
 \family default
-) o pegar directamente en LyX: [ɛkspləˈneɪʃən].
+) o pegar directamente en \SpecialCharNoPassThru LyX
+: [ɛkspləˈneɪʃən].
  En la salida, serán automáticamente transformados en la macro 
 \emph on
 tipa
@@ -1182,8 +1292,8 @@ la entrada directa podría resultar en una mezcla de fuentes (en el ejemplo
  anterior, los caracteres latinos se toman de la fuente básica, los caracteres
  IPA de la fuente IPA, mientras que 
 \family sans
-Insertar\SpecialChar \menuseparator
-Carácter especial\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
+Carácter especial\SpecialChar menuseparator
 Símbolos fonéticos
 \family default
  usa la fuente IPA para todos los caracteres).
@@ -1211,9 +1321,10 @@ Información adicional
 Para una descripción detallada de posibilidades específicas para lingüistas,
  puedes acudir a la página web 
 \emph on
-LinguistLyX
+Linguist\SpecialCharNoPassThru LyX
 \emph default
- en la wiki de LyX 
+ en la wiki de \SpecialCharNoPassThru LyX
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
@@ -1314,7 +1425,8 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguisti
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialCharNoPassThru LyX
+ for Linguisti
 c Papers.
  
 \begin_inset Flex URL
@@ -1322,7 +1434,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/LyX/LinguistLyX
+http://wiki.lyx.org/\SpecialCharNoPassThru LyX
+/Linguist\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset

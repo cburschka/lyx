@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass scrartcl
 \begin_preamble
 % if pdflatex is used
@@ -38,16 +39,16 @@ bicaption
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -145,11 +146,13 @@ Legenden
 
 B.
  Beschriftungen von Abbildungen) in zwei Sprachen gedruckt werden.
- Es benötigt das LaTeX-Paket 
+ Es benötigt das \SpecialCharNoPassThru LaTeX
+-Paket 
 \series bold
 bicaption
 \series default
-, das Teil des LaTeX-Pakets 
+, das Teil des \SpecialCharNoPassThru LaTeX
+-Pakets 
 \series bold
 caption
 \series default
@@ -277,15 +280,15 @@ Legende
  Ist keine Legende vorhanden, kann man eine mehrsprachige Legende über das
  Menü 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Legende\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Legende\SpecialChar menuseparator
 Zweisprachig
 \family default
  einfügen.
  Der Legendentext der Dokumentsprache muss in die Box eingegeben werden,
  die mit 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Legendentext (Hauptsprache) 
 \family default
 in die Legende eingefügt wird.
@@ -295,12 +298,12 @@ in die Legende eingefügt wird.
 \begin_layout Standard
 Kurztitel für beide Sprachen können über 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Legendenkurztitel (Hauptsprache)
 \family default
  und 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Legendenkurztitel (Zweitsprache)
 \family default
  eingefügt werden.
@@ -365,6 +368,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -484,7 +492,8 @@ font=
 \series default
 .
  Für weitere Informationen über mögliche Anpassungen siehe die Dokumentation
- des LaTeX-Pakets 
+ des \SpecialCharNoPassThru LaTeX
+-Pakets 
 \series bold
 caption
 \series default
@@ -645,6 +654,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -722,7 +736,8 @@ PassOptionsToPackage{list=off}{bicaption}
 Es ist auch möglich zwei verschiedene Verzeichnisse zu haben, eine für die
  Dokumentsprache und eine für die zweite Sprache.
  Dies ist in diesem Dokument der Fall.
- Um die Liste zu Teilen, müssen diese Zeilen in den LaTeX-Vorspann des Dokuments
+ Um die Liste zu Teilen, müssen diese Zeilen in den \SpecialCharNoPassThru LaTeX
+-Vorspann des Dokuments
  hinzugefügt werden:
 \end_layout
 
@@ -786,7 +801,8 @@ listoffigureEnges
 \end_layout
 
 \begin_layout Standard
-als TeX-Code eingefügt werden.
+als \SpecialCharNoPassThru TeX
+-Code eingefügt werden.
  Hier ist das englische Abbildungsverzeichnis:
 \end_layout
 
@@ -848,7 +864,8 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-Für mehr Informationen was man mit dem LaTeX-Paket 
+Für mehr Informationen was man mit dem \SpecialCharNoPassThru LaTeX
+-Paket 
 \series bold
 bicaption
 \series default
@@ -1882,7 +1899,8 @@ key "bicaption"
 
 \end_inset
 
-Dokumentation des LaTeX-Pakets 
+Dokumentation des \SpecialCharNoPassThru LaTeX
+-Pakets 
 \series bold
 
 \begin_inset CommandInset href
@@ -1902,7 +1920,8 @@ key "caption"
 
 \end_inset
 
-Dokumentation de LaTeX-Pakets 
+Dokumentation de \SpecialCharNoPassThru LaTeX
+-Pakets 
 \series bold
 
 \begin_inset CommandInset href

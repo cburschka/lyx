@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/springer/
 \textclass svmult
 \begin_preamble
 %\usepackage{type1cm} % activate if the fonts mathptmx, helvet or courier are 
@@ -21,16 +22,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
-\font_math auto
+\font_roman "times" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -95,7 +96,8 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for books and monographs to be published by
+This is a template \SpecialCharNoPassThru LyX
+ file for books and monographs to be published by
  the Springer publishing group.
  This template is for editors, the template for authors has the filename
  
@@ -103,7 +105,9 @@ This is a template LyX file for books and monographs to be published by
 svmult_author.lyx
 \family default
 .
- How to install the svmult LaTeX class to your LaTeX system is explained
+ How to install the svmult \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained
  in 
 \begin_inset Flex URL
 status open

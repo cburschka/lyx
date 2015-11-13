@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/es/
 \textclass moderncv
 \begin_preamble
 % adjust the page margins
@@ -51,16 +52,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -136,7 +137,7 @@ status open
 \begin_layout Plain Layout
 La clase moderncv ofrece muchas posibilidades se personalización; algunas
  se explican en el preámbulo de este documento.
- Para más información echa un vistazo a la documentación del paquete LaTeX
+ Para más información echa un vistazo a la documentación del paquete \SpecialCharNoPassThru LaTeX
  
 \series bold
 moderncv
@@ -185,7 +186,8 @@ Estudios.
 status open
 
 \begin_layout Plain Layout
-2001--2005
+2001\twohyphens
+2005
 \end_layout
 
 \end_inset
@@ -198,17 +200,18 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 status open
 
 \begin_layout Plain Layout
-2005--2006
+2005\twohyphens
+2006
 \end_layout
 
 \end_inset
 
-Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar \ldots{}
+Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Section
-Tesis, Tesina\SpecialChar \ldots{}
+Tesis, Tesina\SpecialChar ldots
 
 \end_layout
 
@@ -280,7 +283,7 @@ Experiencia
 status open
 
 \begin_layout Plain Layout
-Febrero 2006--
+Febrero 2006\twohyphens
 \begin_inset Newline newline
 \end_inset
 
@@ -337,7 +340,8 @@ Mantenedor de la documentación xxx
 status open
 
 \begin_layout Plain Layout
-2005--2006
+2005\twohyphens
+2006
 \end_layout
 
 \end_inset
@@ -551,7 +555,9 @@ status collapsed
 
 \end_inset
 
-LaTeX, ConTeXt, Scribus, QuarkXPress
+\SpecialCharNoPassThru LaTeX
+, Con\SpecialCharNoPassThru TeX
+t, Scribus, QuarkXPress
 \end_layout
 
 \begin_layout DoubleItem
@@ -675,18 +681,18 @@ end{itemize}
 status open
 
 \begin_layout Plain Layout
-Doble\SpecialChar \ldots{}
+Doble\SpecialChar ldots
 
 \end_layout
 
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
  ítem.
 \end_layout
 
 \begin_layout DoubleItem
-Otro doble\SpecialChar \ldots{}
+Otro doble\SpecialChar ldots
 
 \begin_inset ERT
 status collapsed
@@ -698,7 +704,7 @@ status collapsed
 
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
  ítem.
 \end_layout
 
@@ -784,9 +790,13 @@ Volvemos al formato moderncv, sin poner sección nueva
 Puedes usar bibitems:
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator parbreak
+\end_inset
 
 \end_layout
+
 
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
@@ -798,7 +808,8 @@ key "latexguide"
 Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to LaTeX Fourth Edition.
+A Guide to \SpecialCharNoPassThru LaTeX
+ Fourth Edition.
 
 \emph default
  Addison-Wesley, 2003
@@ -813,14 +824,16 @@ key "latexbook"
 
 Leslie Lamport: 
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, second edition, 1994
 \end_layout
 
 \begin_layout Standard
-o referencias BibTeX:
+o referencias Bib\SpecialCharNoPassThru TeX
+:
 \end_layout
 
 \begin_layout Standard

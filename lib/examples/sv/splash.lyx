@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/sv/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,31 +71,35 @@
 \begin_body
 
 \begin_layout Title
-Välkommen till LyX!
+Välkommen till \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-Topp N saker att veta när man använder LyX
+Topp N saker att veta när man använder \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX levereras med utmärkt dokumentation – vänligen använd den! Börja med
+\SpecialCharNoPassThru LyX
+ levereras med utmärkt dokumentation – vänligen använd den! Börja med
  
 \family sans
-Hjälp\SpecialChar \menuseparator
+Hjälp\SpecialChar menuseparator
 Introduktion
 \family default
 , som ger dig en väldigt kortfattad introduktion till dokumentationen.
- Lär dig sedan om hur man använder LyX med 
+ Lär dig sedan om hur man använder \SpecialCharNoPassThru LyX
+ med 
 \family sans
-Hjälp\SpecialChar \menuseparator
+Hjälp\SpecialChar menuseparator
 Nybörjarkurs
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX är vad vi kallar en 
+\SpecialCharNoPassThru LyX
+ är vad vi kallar en 
 \begin_inset Quotes sld
 \end_inset
 
@@ -103,7 +108,8 @@ dokumentbehandlare
 \end_inset
 
 .
- LyX är avsiktligt annorlunda från vanliga ordbehandlare – på ett sätt som
+ \SpecialCharNoPassThru LyX
+ är avsiktligt annorlunda från vanliga ordbehandlare – på ett sätt som
  gör det lättare att skriva dokument.
  Men bara lite annorlunda, så bli inte skrämd.
  Dokumentationen klargör allt.
@@ -120,18 +126,24 @@ Har vi nämnt att du bör läsa dokumentationen?
 \end_layout
 
 \begin_layout Enumerate
-Utmatningen från LyX ser fantastisk ut! Välj 
+Utmatningen från \SpecialCharNoPassThru LyX
+ ser fantastisk ut! Välj 
 \family sans
-Visa\SpecialChar \menuseparator
+Visa\SpecialChar menuseparator
 Visa [PDF (pdflatex)]
 \family default
  nu för att se själv.
 \end_layout
 
 \begin_layout Enumerate
-Ja, LyX kan härma (nästan) all LaTeX-funktionalitet.
- Och ja, LyX kan importera LaTeX-filer.
- Erfarna LaTeX-användare bör skumma igenom resten av 
+Ja, \SpecialCharNoPassThru LyX
+ kan härma (nästan) all \SpecialCharNoPassThru LaTeX
+-funktionalitet.
+ Och ja, \SpecialCharNoPassThru LyX
+ kan importera \SpecialCharNoPassThru LaTeX
+-filer.
+ Erfarna \SpecialCharNoPassThru LaTeX
+-användare bör skumma igenom resten av 
 \emph on
 Nybörjarkursen
 \emph default
@@ -139,30 +151,36 @@ Nybörjarkursen
 \begin_inset Quotes sld
 \end_inset
 
-LyX för LaTeXperter
+\SpecialCharNoPassThru LyX
+ för \SpecialCharNoPassThru LaTeX
+perter
 \begin_inset Quotes srd
 \end_inset
 
 .
- (Alla andra: oroa er inte, ni behöver inte kunna LaTeX för att använda
- LyX.) 
+ (Alla andra: oroa er inte, ni behöver inte kunna \SpecialCharNoPassThru LaTeX
+ för att använda
+ \SpecialCharNoPassThru LyX
+.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX har en mängd funktioner för oss som läser och skriver ett annat språk
+\SpecialCharNoPassThru LyX
+ har en mängd funktioner för oss som läser och skriver ett annat språk
  än engelska.
  Dessutom är tangentbindningarna, verktygsraderna, och många andra saker
  högst konfigurerbara.
  Se 
 \family sans
-Hjälp\SpecialChar \menuseparator
+Hjälp\SpecialChar menuseparator
 Anpassning
 \family default
  för detaljer.
 \end_layout
 
 \begin_layout Enumerate
-Hemsidan för LyX är 
+Hemsidan för \SpecialCharNoPassThru LyX
+ är 
 \family typewriter
 
 \begin_inset Flex URL
@@ -178,7 +196,8 @@ http://www.lyx.org/
 
 \family default
 .
- Hämta information om LyX, prenumerera på sändlistor, ta den grafiska rundturen,
+ Hämta information om \SpecialCharNoPassThru LyX
+, prenumerera på sändlistor, ta den grafiska rundturen,
  och mer.
 \end_layout
 

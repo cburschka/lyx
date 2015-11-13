@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 480
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass beamer
 \begin_preamble
 \usetheme{Warsaw}
@@ -21,16 +22,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman times
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -211,8 +212,8 @@ status open
 \end_layout
 
 \begin_layout Itemize
-著者が別々の肩書を持っている場合には、「所属機関マーク」差込枠(挿入\SpecialChar \menuseparator
-任意設定差込枠\SpecialChar \menuseparator
+著者が別々の肩書を持っている場合には、「所属機関マーク」差込枠(挿入\SpecialChar menuseparator
+任意設定差込枠\SpecialChar menuseparator
 所属機関マーク)を使ってください
 \end_layout
 
@@ -291,8 +292,8 @@ status collapsed
 status collapsed
 
 \begin_layout Itemize
-複数の所属機関がある場合に限り、「所属機関マーク」差込枠(挿入\SpecialChar \menuseparator
-任意設定差込枠\SpecialChar \menuseparator
+複数の所属機関がある場合に限り、「所属機関マーク」差込枠(挿入\SpecialChar menuseparator
+任意設定差込枠\SpecialChar menuseparator
 所属機関マーク)を使ってください
 \end_layout
 
@@ -1239,7 +1240,8 @@ newblock
 Journal on This and That
 \emph default
 .
- 2(1):50--100, 2000.
+ 2(1):50\twohyphens
+100, 2000.
 \end_layout
 
 \end_deeper

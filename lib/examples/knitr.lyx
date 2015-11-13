@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \use_default_options true
 \begin_modules
@@ -12,16 +13,16 @@ knitr
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman palatino
-\font_sans lmss
-\font_typewriter lmtt
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -77,7 +78,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-Using knitr with LyX
+Using knitr with \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
@@ -122,7 +123,8 @@ knitr
 \series default
  is an alternative tool to Sweave based on a different design with more
  features.
- LyX has native support to Sweave since version 2.0.0, and the support to
+ \SpecialCharNoPassThru LyX
+ has native support to Sweave since version 2.0.0, and the support to
  
 \series bold
 knitr
@@ -137,9 +139,10 @@ Sweave
 status open
 
 \begin_layout Plain Layout
-read the LyX/Sweave manual from 
+read the \SpecialCharNoPassThru LyX
+/Sweave manual from 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Specific Manuals
 \end_layout
 
@@ -149,14 +152,15 @@ Specific Manuals
 \end_layout
 
 \begin_layout Enumerate
-Open a new LyX document;
+Open a new \SpecialCharNoPassThru LyX
+ document;
 \end_layout
 
 \begin_layout Enumerate
 Go to 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \family default
  and insert the module named 
@@ -169,8 +173,9 @@ Rnw (knitr)
 \begin_layout Enumerate
 Then insert R code in the document with either 
 \family sans
-Insert\SpecialChar \menuseparator
-TeX Code
+Insert\SpecialChar menuseparator
+\SpecialCharNoPassThru TeX
+ Code
 \family default
  or the 
 \family sans
@@ -195,7 +200,8 @@ http://yihui.name/knitr
 \series bold
 knitr
 \series default
-; many of the examples have links to the LyX source documents.
+; many of the examples have links to the \SpecialCharNoPassThru LyX
+ source documents.
 \end_layout
 
 \begin_layout Standard

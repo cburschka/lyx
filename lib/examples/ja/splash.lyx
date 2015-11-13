@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ja/
 \textclass jarticle
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package none
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -70,29 +71,36 @@
 \begin_body
 
 \begin_layout Title
-LyXへようこそ！
+\SpecialCharNoPassThru LyX
+へようこそ！
 \end_layout
 
 \begin_layout Section*
-LyXを使うために最初に知っておくべきことがら
+\SpecialCharNoPassThru LyX
+を使うために最初に知っておくべきことがら
 \end_layout
 
 \begin_layout Enumerate
-LyXは優秀な取扱説明書を同梱していますので、これをお使いください！まずは
+\SpecialCharNoPassThru LyX
+は優秀な取扱説明書を同梱していますので、これをお使いください！まずは
 \family sans
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 はじめの一歩
 \family default
 から始めてください。これは、各取扱説明書を簡潔に紹介しています。つぎに
 \family sans
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 入門篇
 \family default
-をお読みになれば、LyXの使い方を学ぶことができます。
+をお読みになれば、\SpecialCharNoPassThru LyX
+の使い方を学ぶことができます。
 \end_layout
 
 \begin_layout Enumerate
-LyXは、われわれが「文書プロセッサ」と呼ぶところのものです。設計思想として、通常のワードプロセッサとは異なっています------すなわち文書の執筆を容易にする
+\SpecialCharNoPassThru LyX
+は、われわれが「文書プロセッサ」と呼ぶところのものです。設計思想として、通常のワードプロセッサとは異なっています\threehyphens
+\threehyphens
+すなわち文書の執筆を容易にする
 ことを優先しているのです。しかしながら、その違いはわずかですので、恐れることはありません。取扱説明書を読めば、すべてあきらかになるでしょう
 \begin_inset Foot
 status collapsed
@@ -107,36 +115,48 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-LyXの出力は素晴らしい出来映えです！ご覧になりたければ、
+\SpecialCharNoPassThru LyX
+の出力は素晴らしい出来映えです！ご覧になりたければ、
 \family sans
-表示\SpecialChar \menuseparator
+表示\SpecialChar menuseparator
 DVI
 \family default
  を選択してみてください。
 \end_layout
 
 \begin_layout Enumerate
-なによりも、LyXは（ほとんど）すべてのLaTeXの機能を実現することができます。さらに、LyXはLaTeXファイルをインポートすることもできます。熟練したLa
-TeXユーザーの方々は、
+なによりも、\SpecialCharNoPassThru LyX
+は（ほとんど）すべての\SpecialCharNoPassThru LaTeX
+の機能を実現することができます。さらに、\SpecialCharNoPassThru LyX
+は\SpecialCharNoPassThru LaTeX
+ファイルをインポートすることもできます。熟練したLa
+\SpecialCharNoPassThru TeX
+ユーザーの方々は、
 \emph on
 入門篇
 \emph default
-の他の部分はざっと飛ばし読みしてけっこうですので、その「LaTeXユーザーのためのLyX」という章を読んでください（その他の方々へ：LyXを使うのにLaTeXを
+の他の部分はざっと飛ばし読みしてけっこうですので、その「\SpecialCharNoPassThru LaTeX
+ユーザーのための\SpecialCharNoPassThru LyX
+」という章を読んでください（その他の方々へ：\SpecialCharNoPassThru LyX
+を使うのに\SpecialCharNoPassThru LaTeX
+を
 知っている必要はありませんので、ご安心ください）。
 \end_layout
 
 \begin_layout Enumerate
-LyXは、英語以外の言語を読み書きする方に適した機能をたくさん備えています。くわえて、キー割当てやツールバー、その他多くの特徴が、たいへん自由に設定可能です。詳
+\SpecialCharNoPassThru LyX
+は、英語以外の言語を読み書きする方に適した機能をたくさん備えています。くわえて、キー割当てやツールバー、その他多くの特徴が、たいへん自由に設定可能です。詳
 しくは、
 \family sans
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 カスタマイズ篇
 \family default
 をご覧ください。
 \end_layout
 
 \begin_layout Enumerate
-LyXのホームページは、
+\SpecialCharNoPassThru LyX
+のホームページは、
 \family typewriter
 
 \begin_inset Flex URL
@@ -151,7 +171,10 @@ http://www.lyx.org/
 
 
 \family default
-にあります。LyXの情報を収集したり、LyXメーリングリストに加入したり、LyXのグラフィカル・ツアーを見てみるなど、さまざまなことを提供しています。
+にあります。\SpecialCharNoPassThru LyX
+の情報を収集したり、\SpecialCharNoPassThru LyX
+メーリングリストに加入したり、\SpecialCharNoPassThru LyX
+のグラフィカル・ツアーを見てみるなど、さまざまなことを提供しています。
 \end_layout
 
 \end_body

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/cs/
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -84,12 +85,13 @@ Nápověda: Název by měl vypadat víc jako název (Titulek).
 \end_layout
 
 \begin_layout Standard
-napsal Fe LyX
+napsal Fe \SpecialCharNoPassThru LyX
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Nápověda: Fe LyX je Autor.
+Nápověda: Fe \SpecialCharNoPassThru LyX
+ je Autor.
 \end_layout
 
 \end_inset
@@ -132,21 +134,25 @@ Nápověda: Bylo by příjemné, kdybychom nemuseli psát obsah my sami.
 \end_layout
 
 \begin_layout Standard
-1.1 Jak to dělá LyX...................1
+1.1 Jak to dělá \SpecialCharNoPassThru LyX
+...................1
 \end_layout
 
 \begin_layout Standard
-1.2 Proč je LyX lepší................1
+1.2 Proč je \SpecialCharNoPassThru LyX
+ lepší................1
 \end_layout
 
 \begin_layout Standard
 2.
- Vlastnosti LyXu
+ Vlastnosti \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
 3.
- Chabé pokusy o využití dalších možností LyXu
+ Chabé pokusy o využití dalších možností \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
@@ -155,7 +161,23 @@ Nápověda: Bylo by příjemné, kdybychom nemuseli psát obsah my sami.
 \end_layout
 
 \begin_layout Standard
----------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -174,20 +196,26 @@ Nápověda: Název Sekce by měl být nejspíš výraznější.
 \end_layout
 
 \begin_layout Standard
-Základní filosofií LyXu je, že byste se měli starat o obsah toho, co píšete,
+Základní filosofií \SpecialCharNoPassThru LyX
+u je, že byste se měli starat o obsah toho, co píšete,
  a ne o formu.
 \end_layout
 
 \begin_layout Standard
-1.1 Jak to dělá LyX
+1.1 Jak to dělá \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-LyX používá LaTeX, systém pro přípravu dokumentů, který vytvořil Leslie
+\SpecialCharNoPassThru LyX
+ používá \SpecialCharNoPassThru LaTeX
+, systém pro přípravu dokumentů, který vytvořil Leslie
  Lamport v roce 1985.
- Tento systém je zase postaven nad sázecím jazykem zvaným TeX, vytvořeným
+ Tento systém je zase postaven nad sázecím jazykem zvaným \SpecialCharNoPassThru TeX
+, vytvořeným
  Donaldem Knuthem roku 1984.
- LaTeX je postaven na podobné filosofii jako LyX.
+ \SpecialCharNoPassThru LaTeX
+ je postaven na podobné filosofii jako \SpecialCharNoPassThru LyX
+.
  Leslie Lamport jednou řekl (viz.
  reference [1])
 \begin_inset Note Note
@@ -221,7 +249,8 @@ natvrdo
  jeho logické struktuře.
  Logicky rozdílné části textu, jako třeba citáty a počítačové programy,
  by měly být rozdílné i co se týče vzhledu...
- Protože LaTeX nerozumí vašemu textu, musíte explicitně vyjádřit logickou
+ Protože \SpecialCharNoPassThru LaTeX
+ nerozumí vašemu textu, musíte explicitně vyjádřit logickou
  strukturu napsáním speciálních příkazů.
  Při psaní dokumentu byste se měli zabývat jeho logickou strukturou a ne
  jeho výsledným vzhledem.
@@ -242,14 +271,19 @@ Nápověda: Toto je Citát.
 \end_layout
 
 \begin_layout Standard
-1.2 Proč je LyX lepší
+1.2 Proč je \SpecialCharNoPassThru LyX
+ lepší
 \end_layout
 
 \begin_layout Standard
-LyX může být užitečný pro více lidí než LaTeX.
+\SpecialCharNoPassThru LyX
+ může být užitečný pro více lidí než \SpecialCharNoPassThru LaTeX
+.
  Naučit se s ním pracovat je mnohem jednodušší, protože se nemusíte učit
- LaTeX (což je v podstatě programovací jazyk).
- LyX je podobný ostatním textovým procesorům typu 
+ \SpecialCharNoPassThru LaTeX
+ (což je v podstatě programovací jazyk).
+ \SpecialCharNoPassThru LyX
+ je podobný ostatním textovým procesorům typu 
 \begin_inset Quotes gld
 \end_inset
 
@@ -257,7 +291,8 @@ what you see is what you get
 \begin_inset Quotes grd
 \end_inset
 
- (vidíš to, co dostaneš) až na to, že LyX je 
+ (vidíš to, co dostaneš) až na to, že \SpecialCharNoPassThru LyX
+ je 
 \begin_inset Quotes gld
 \end_inset
 
@@ -266,19 +301,23 @@ what you see is what you mean
 \end_inset
 
  (vidíš to, co jsi myslel).
- Jednoduché používání textových procesorů tak kombinuje se silou LaTeXu,
+ Jednoduché používání textových procesorů tak kombinuje se silou \SpecialCharNoPassThru LaTeX
+u,
  což je skvělé.
  Dále je formát souboru nezávislý na operačním systému.
- A to nejlepší nakonec: LyX je zadarmo!
+ A to nejlepší nakonec: \SpecialCharNoPassThru LyX
+ je zadarmo!
 \end_layout
 
 \begin_layout Standard
 2.
- Vlastnosti LyXu
+ Vlastnosti \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
-LyX má spoustu vlastností, které usnadňují psaní dokumentů.
+\SpecialCharNoPassThru LyX
+ má spoustu vlastností, které usnadňují psaní dokumentů.
  (Nakonec, proč byste ho jinak chtěli používat?
 \begin_inset Note Note
 status collapsed
@@ -304,15 +343,18 @@ Nápověda: Zvýraznit!
 \end_layout
 
 \begin_layout Standard
-* LyX se stará o okraje stránky a číslování poznámek pod čarou za vás.
+* \SpecialCharNoPassThru LyX
+ se stará o okraje stránky a číslování poznámek pod čarou za vás.
 \end_layout
 
 \begin_layout Standard
-* S LyXem je jednoduché psát a upravovat matematické vzorce.
+* S \SpecialCharNoPassThru LyX
+em je jednoduché psát a upravovat matematické vzorce.
 \end_layout
 
 \begin_layout Standard
-Filosofičtější pojednání o tom, proč je LyX lepší než spousta jiných textových
+Filosofičtější pojednání o tom, proč je \SpecialCharNoPassThru LyX
+ lepší než spousta jiných textových
  procesorů, najdete v Sekci 1.2, která je na straně 1.
 \begin_inset Note Note
 status collapsed
@@ -337,7 +379,8 @@ natvrdo
 
 \begin_layout Standard
 3.
- Chabé pokusy o využití dalších možností LyXu
+ Chabé pokusy o využití dalších možností \SpecialCharNoPassThru LyX
+u
 \end_layout
 
 \begin_layout Standard
@@ -371,7 +414,8 @@ Po všem tom vědátorování jsem se začal cítit víc jako umělec, a tak jse
 \end_layout
 
 \begin_layout Standard
-LyX je úžasný
+\SpecialCharNoPassThru LyX
+ je úžasný
 \end_layout
 
 \begin_layout Standard
@@ -422,7 +466,22 @@ Moje další oblíbená rovnice je základem diferenciálního počtu: f'(x) je
 \end_layout
 
 \begin_layout Standard
-------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -431,7 +490,9 @@ Reference:
 
 \begin_layout Standard
 [1] Lamport, Leslie.
- LaTeX -- A document preparation system.
+ \SpecialCharNoPassThru LaTeX
+ \twohyphens
+ A document preparation system.
  Massachusetts: Addison-Wesley, second edition, 1994.
 \end_layout
 

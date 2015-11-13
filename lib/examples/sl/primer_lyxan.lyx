@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/sl/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -74,7 +75,7 @@ To je naslov vašega spisa
 \end_layout
 
 \begin_layout Author
-Fe LyX
+Fe \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Date
@@ -96,20 +97,27 @@ Temeljna filozofija
 \end_layout
 
 \begin_layout Standard
-Temeljna filozofija LyXa je, da naj bi se posvečali vsebini tistega, o čemer
+Temeljna filozofija \SpecialCharNoPassThru LyX
+a je, da naj bi se posvečali vsebini tistega, o čemer
  pišemo, ne obliki.
 \end_layout
 
 \begin_layout Subsection
-Kako se stvari loteva LyX
+Kako se stvari loteva \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-LyX uporablja LaTeX, sistem za pripravljanje spisov, ki ga je leta 1985
+\SpecialCharNoPassThru LyX
+ uporablja \SpecialCharNoPassThru LaTeX
+, sistem za pripravljanje spisov, ki ga je leta 1985
  zasnoval Leslie Lamport.
- LaTeX pa temelji na stavnem jeziku, imenovanem TeX, ki ga je leta 1984
+ \SpecialCharNoPassThru LaTeX
+ pa temelji na stavnem jeziku, imenovanem \SpecialCharNoPassThru TeX
+, ki ga je leta 1984
  ustvaril Donald Knuth.
- Filozofija LaTeXa je podobna filozofiji LyXa.
+ Filozofija \SpecialCharNoPassThru LaTeX
+a je podobna filozofiji \SpecialCharNoPassThru LyX
+a.
  Leslie Lamport je nekoč rekel (glej vir 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -125,10 +133,11 @@ Tipografsko oblikovanje naj bi pomagalo bralcu razumeti avtorjeve zamisli.
  Da bi bilo spis lahko brati, mora njegova zunanja podoba odsevati njegovo
  logično zgradbo.
  Navedki in računalniški programi, ki so logično različni strukturni elementi,
- bi se morali med seboj na pogled razlikovati\SpecialChar \ldots{}
- Ker LaTeX ne more razumeti
+ bi se morali med seboj na pogled razlikovati\SpecialChar ldots
+ Ker \SpecialCharNoPassThru LaTeX
+ ne more razumeti
  vaše poezije, morate izrecno označiti logično strukturo z vnosom posebnih
- ukazov\SpecialChar \ldots{}
+ ukazov\SpecialChar ldots
  Med pisanjem bi se morali ukvarjati z logično zgradbo spisa, ne
  pa z njegovo zunanjo podobo.
 \end_layout
@@ -140,14 +149,19 @@ name "sec:lyxbetter"
 
 \end_inset
 
-Zakaj je LyX boljši
+Zakaj je \SpecialCharNoPassThru LyX
+ boljši
 \end_layout
 
 \begin_layout Standard
-LyX je uporaben za več ljudi kot LaTeX.
- Precej lažje se ga je naučiti, saj ni treba znati LaTeXa (ki je praktično
+\SpecialCharNoPassThru LyX
+ je uporaben za več ljudi kot \SpecialCharNoPassThru LaTeX
+.
+ Precej lažje se ga je naučiti, saj ni treba znati \SpecialCharNoPassThru LaTeX
+a (ki je praktično
  programski jezik).
- LyX je pravzaprav tak kot drugi urejevalniki besedil tipa 
+ \SpecialCharNoPassThru LyX
+ je pravzaprav tak kot drugi urejevalniki besedil tipa 
 \begin_inset Quotes gld
 \end_inset
 
@@ -164,7 +178,8 @@ to, kar vidiš, to tudi misliš
 \end_inset
 
 .
- Tako združuje preprostost uporabe urejevalnikov besedil z močjo LaTeXa.
+ Tako združuje preprostost uporabe urejevalnikov besedil z močjo \SpecialCharNoPassThru LaTeX
+a.
  To je Dobra Stvar.
  Tudi datotečni format je neodvisen od platforme.
  Najboljše od vsega pa je, da je 
@@ -175,11 +190,13 @@ prost
 \end_layout
 
 \begin_layout Section
-Odlike LyXa
+Odlike \SpecialCharNoPassThru LyX
+a
 \end_layout
 
 \begin_layout Standard
-LyX ima številne odlike, ki nam olajšajo pisanje spisov.
+\SpecialCharNoPassThru LyX
+ ima številne odlike, ki nam olajšajo pisanje spisov.
 \begin_inset Foot
 status collapsed
 
@@ -194,7 +211,8 @@ Navsezadnje, le zakaj bi ga drugače sploh želeli uporabljati?
 Zelo me veseli
 \emph default
 , da lahko pišem o tem.
- Omenimo le dve odliki LyXa:
+ Omenimo le dve odliki \SpecialCharNoPassThru LyX
+a:
 \end_layout
 
 \begin_layout Itemize
@@ -206,7 +224,8 @@ Olajša pisanje in urejanje matematičnih obrazcev.
 \end_layout
 
 \begin_layout Standard
-Bolj filozofsko razpravo o tem, zakaj je LyX boljši od drugih urejevalnikov
+Bolj filozofsko razpravo o tem, zakaj je \SpecialCharNoPassThru LyX
+ boljši od drugih urejevalnikov
  besedil, pa boste našli v razdelku 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -225,7 +244,8 @@ reference "sec:lyxbetter"
 \end_layout
 
 \begin_layout Section
-Nerodni poskusi uporabe LyXa
+Nerodni poskusi uporabe \SpecialCharNoPassThru LyX
+a
 \end_layout
 
 \begin_layout Standard
@@ -250,7 +270,8 @@ Po tem učenem razmišljanju me je nenadoma preplavilo bolj umetniško razpolož
 \end_layout
 
 \begin_layout Verse
-LyX je zares čudovit
+\SpecialCharNoPassThru LyX
+ je zares čudovit
 \begin_inset Newline newline
 \end_inset
 
@@ -294,19 +315,23 @@ Opazke
 \end_layout
 
 \begin_layout Standard
-Nekaj opazk o LyXanju te datoteke:
+Nekaj opazk o \SpecialCharNoPassThru LyX
+anju te datoteke:
 \end_layout
 
 \begin_layout Itemize
 Vrstice z vezaji, sem lahko odstranil.
  Njihova edina naloga je bila, da so ločevale naslove in vire od preostanka
  spisa.
- LyX (LaTeX) ve dovolj, da loči te dele spisa z razmikom.
+ \SpecialCharNoPassThru LyX
+ (\SpecialCharNoPassThru LaTeX
+) ve dovolj, da loči te dele spisa z razmikom.
 \end_layout
 
 \begin_layout Itemize
 Nisem se trudil z vstavljanjem matematičnih enačb v prikazni način.
- Tudi samodejnega številčenja enačb, ki ga pozna LyX, nisem uporabljal,
+ Tudi samodejnega številčenja enačb, ki ga pozna \SpecialCharNoPassThru LyX
+, nisem uporabljal,
  saj to ni opisano v 
 \emph on
 Učbeniku
@@ -323,7 +348,8 @@ Literatura
 \begin_inset Quotes grd
 \end_inset
 
- (v LyX-u pravzaprav 
+ (v \SpecialCharNoPassThru LyX
+-u pravzaprav 
 \begin_inset Quotes gld
 \end_inset
 
@@ -348,7 +374,8 @@ Literatura
 \end_inset
 
 ).
- LyX jo samodejno zapiše, ko izberete okolje 
+ \SpecialCharNoPassThru LyX
+ jo samodejno zapiše, ko izberete okolje 
 \family sans
 Bibliography
 \family default
@@ -365,7 +392,8 @@ key "lamport"
 Lamport, Leslie.
  
 \emph on
-LaTeX: A Document Preparation System
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System
 \emph default
 ; Addison-Wesley, Reading, Massachusetts, druga izdaja, 1994.
 \end_layout

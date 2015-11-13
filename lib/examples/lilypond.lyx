@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \use_default_options true
 \begin_modules
@@ -12,16 +13,16 @@ lilypond
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans lmss
-\font_typewriter lmtt
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -89,11 +90,12 @@ lilypond
 \begin_body
 
 \begin_layout Title
-LilyPond-book and LyX
+LilyPond-book and \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
-The LyX Team
+The \SpecialCharNoPassThru LyX
+ Team
 \end_layout
 
 \begin_layout Date
@@ -102,7 +104,8 @@ Version 2.1.x
 
 \begin_layout Abstract
 This document explains and demonstrates the inclusion of musical snippets
- in a LyX document, using the LilyPond syntax for music notation and the
+ in a \SpecialCharNoPassThru LyX
+ document, using the LilyPond syntax for music notation and the
  LilyPond-book utility for processing.
 \end_layout
 
@@ -122,16 +125,21 @@ While LilyPond itself supports the display of title, author information,
  footnotes, endnotes, etc., its primary focus is on music typesetting.
  For text typesetting, other programs are generally better suited.
  LilyPond-book is a utility provided by the LilyPond project that helps
- incorporate musical scores using the LilyPond notation into LaTeX documents,
+ incorporate musical scores using the LilyPond notation into \SpecialCharNoPassThru LaTeX
+ documents,
  among other formats.
 \end_layout
 
 \begin_layout Standard
-This document describes the use of the LilyPond music notation within LyX
- documents that use a LaTeX-based layout, thus combining the beauty and
- quality of the typesetting achieved by both LaTeX and LilyPond.
+This document describes the use of the LilyPond music notation within \SpecialCharNoPassThru LyX
+ documents that use a \SpecialCharNoPassThru LaTeX
+-based layout, thus combining the beauty and
+ quality of the typesetting achieved by both \SpecialCharNoPassThru LaTeX
+ and LilyPond.
  While a basic understanding of the LilyPond syntax for music notation is
- in order, knowledge of LaTeX is not necessary when using LyX.
+ in order, knowledge of \SpecialCharNoPassThru LaTeX
+ is not necessary when using \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -143,7 +151,8 @@ reference "sec:Using-LilyPond-code"
 \end_inset
 
  explains the requirements, usage instructions, and shortcomings of LilyPond
- music notation within LyX.
+ music notation within \SpecialCharNoPassThru LyX
+.
  Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -155,7 +164,7 @@ reference "sec:LilyPond-examples"
 \end_layout
 
 \begin_layout Section
-Using LilyPond code within LyX
+Using LilyPond code within \SpecialCharNoPassThru LyX
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Using-LilyPond-code"
@@ -166,19 +175,25 @@ name "sec:Using-LilyPond-code"
 \end_layout
 
 \begin_layout Standard
-Support for LilyPond music notation (LilyPond code) within LyX is enabled
+Support for LilyPond music notation (LilyPond code) within \SpecialCharNoPassThru LyX
+ is enabled
  by adding the LilyPond module to your document.
  This is done from the menu 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
 , then selecting LilyPond in the list of modules.
- You can use any LaTeX-based LyX layout and use the regular preview and
- export mechanism; LyX will take care of processing the mixed LaTeX/LilyPond
+ You can use any \SpecialCharNoPassThru LaTeX
+-based \SpecialCharNoPassThru LyX
+ layout and use the regular preview and
+ export mechanism; \SpecialCharNoPassThru LyX
+ will take care of processing the mixed \SpecialCharNoPassThru LaTeX
+/LilyPond
  code through LilyPond-book for you.
  LilyPond-book can also handle DocBook and HTML documents, but the integration
- of these document types with LilyPond-book and LyX is missing at the moment.
+ of these document types with LilyPond-book and \SpecialCharNoPassThru LyX
+ is missing at the moment.
 \end_layout
 
 \begin_layout Subsection
@@ -191,15 +206,20 @@ LilyPond-book version 2.13 or newer.
 status collapsed
 
 \begin_layout Plain Layout
-LilyPond-book supports LaTeX output since version 2.1.
- However, some features used by LyX are available only in recent versions:
- PDFLaTeX support (version 2.9), the 
+LilyPond-book supports \SpecialCharNoPassThru LaTeX
+ output since version 2.1.
+ However, some features used by \SpecialCharNoPassThru LyX
+ are available only in recent versions:
+ PDF\SpecialCharNoPassThru LaTeX
+ support (version 2.9), the 
 \family typewriter
---lily-output-dir
+\twohyphens
+lily-output-dir
 \family default
  flag (version 2.11) and especially the 
 \family typewriter
---safe
+\twohyphens
+safe
 \family default
  flag (version 2.13).
 \end_layout
@@ -216,7 +236,7 @@ Integration
 \begin_layout Standard
 The module provides a LilyPond inset which you insert from the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
@@ -271,7 +291,9 @@ relative c'' {
 
 \begin_layout Standard
 \noindent
-The previous LyX inset produces the following LaTeX-lookalike code:
+The previous \SpecialCharNoPassThru LyX
+ inset produces the following \SpecialCharNoPassThru LaTeX
+-lookalike code:
 \end_layout
 
 \begin_layout LyX-Code
@@ -306,7 +328,8 @@ end{lilypond}
 
 \begin_layout Standard
 What appear first inside square brackets are options to pass to LilyPond-book.
- This is inserted in LyX from the 
+ This is inserted in \SpecialCharNoPassThru LyX
+ from the 
 \family sans
 Insert
 \family default
@@ -329,13 +352,15 @@ pt.
 \begin_layout Standard
 What follows after the options block is the textual representation in LilyPond
  syntax of a musical fragment.
- This code is not, in fact, processed by LaTeX, but is preprocessed by LilyPond-
-book, which creates the graphics files and includes them in the LaTeX document
+ This code is not, in fact, processed by \SpecialCharNoPassThru LaTeX
+, but is preprocessed by LilyPond-
+book, which creates the graphics files and includes them in the \SpecialCharNoPassThru LaTeX
+ document
  by replacing the above with a 
 \family typewriter
 
 \backslash
-includegraphics{\SpecialChar \ldots{}
+includegraphics{\SpecialChar ldots
 }
 \family default
  command.
@@ -344,16 +369,20 @@ includegraphics{\SpecialChar \ldots{}
 \begin_layout Standard
 Thus, the conversion process is as follow: 
 \family sans
-LyX\SpecialChar \menuseparator
-LilyPond-book\SpecialChar \menuseparator
-LaTeX
+\SpecialCharNoPassThru LyX
+\SpecialChar menuseparator
+LilyPond-book\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
 \family default
 .
- LyX creates a .lytex file, LilyPond-book creates a .tex files and the accompanyin
-g image files, and LaTeX creates the final document.
+ \SpecialCharNoPassThru LyX
+ creates a .lytex file, LilyPond-book creates a .tex files and the accompanyin
+g image files, and \SpecialCharNoPassThru LaTeX
+ creates the final document.
  Every step of the tool chain obeys your spacing, so whether you put the
  musical extract inline, or in its own paragraph, centered, left-aligned,
- etc., what you see in the LyX window should be respected in the final format.
+ etc., what you see in the \SpecialCharNoPassThru LyX
+ window should be respected in the final format.
  An example of inline use may be to display a chord name, such as
 \begin_inset Flex LilyPond
 status open
@@ -391,15 +420,17 @@ Previews
 
 \begin_layout Standard
 It is possible to have a direct feedback of what the music notation looks
- like from within LyX.
+ like from within \SpecialCharNoPassThru LyX
+.
  To do this, wrap a LilyPond inset inside a Preview inset, which you find
  from the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Preview
 \family default
 .
- This only affects the display within LyX, not the output:
+ This only affects the display within \SpecialCharNoPassThru LyX
+, not the output:
 \end_layout
 
 \begin_layout Standard
@@ -450,7 +481,8 @@ Gotchas
 
 \begin_layout Standard
 A few gotchas that have been experienced with the integration of LilyPond-book
- and LyX are reported here.
+ and \SpecialCharNoPassThru LyX
+ are reported here.
 \end_layout
 
 \begin_layout Subsubsection
@@ -458,7 +490,8 @@ Child documents
 \end_layout
 
 \begin_layout Standard
-A LyX document using the LilyPond module cannot have child documents using
+A \SpecialCharNoPassThru LyX
+ document using the LilyPond module cannot have child documents using
  the 
 \begin_inset Quotes eld
 \end_inset
@@ -486,8 +519,8 @@ Include Type
 
  under 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Child
 \begin_inset space ~
 \end_inset
@@ -540,7 +573,7 @@ usepackage{graphicx}
 \begin_layout Standard
 to your master document's preamble under 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
 .
@@ -721,8 +754,10 @@ lilypondfile
  command.
  With this command, the LilyPond code is processed as if it was typed inside
  the document and the output score follows the typesetting determined by
- LaTeX with respect to line width, page breaks, and so on.
- This is in contrast to the long-standing LyX feature to include LilyPond
+ \SpecialCharNoPassThru LaTeX
+ with respect to line width, page breaks, and so on.
+ This is in contrast to the long-standing \SpecialCharNoPassThru LyX
+ feature to include LilyPond
  scores as external material, which calls LilyPond on the external file
  to produce a rigid figure, and includes this figure in the document, leaving
  the typesetting decisions to LilyPond.
@@ -732,8 +767,10 @@ lilypondfile
 \backslash
 lilypondfile
 \family default
- command in LyX is not implemented yet, but it is possible to use it inside
- a TeX-Code block, provided that one writes the complete, absolute path
+ command in \SpecialCharNoPassThru LyX
+ is not implemented yet, but it is possible to use it inside
+ a \SpecialCharNoPassThru TeX
+-Code block, provided that one writes the complete, absolute path
  to the desired file.
 \end_layout
 
@@ -752,7 +789,7 @@ name "sec:LilyPond-examples"
 Example 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Editorial-headword"
+reference "subsec:Editorial-headword"
 
 \end_inset
 
@@ -762,7 +799,7 @@ reference "sub:Editorial-headword"
  Example 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tablatures-template"
+reference "subsec:Tablatures-template"
 
 \end_inset
 
@@ -773,7 +810,7 @@ reference "sub:Tablatures-template"
 Editorial headword
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Editorial-headword"
+name "subsec:Editorial-headword"
 
 \end_inset
 
@@ -783,7 +820,11 @@ name "sub:Editorial-headword"
 \begin_layout Standard
 NR 1.7 Editorial annotations Beethoven, Op.
  31, No.
- 3 Piano sonata 18, Movt II, Scherzo Measures 9--14.
+ 3 Piano sonata 18, Movt II, Scherzo Measures 9\twohyphens
+14.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -1305,7 +1346,7 @@ http://lsr.di.unimi.it/LSR/Item?id=627
 Tablatures template
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Tablatures-template"
+name "subsec:Tablatures-template"
 
 \end_inset
 

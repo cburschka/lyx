@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/nl/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -74,7 +75,7 @@ DIT IS DE TITEL VAN HET DOCUMENT
 \end_layout
 
 \begin_layout Author
-door Fee LyX
+door Fee \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Date
@@ -95,20 +96,27 @@ Uitgangspunten
 \end_layout
 
 \begin_layout Standard
-Het uitgangspunt van LyX is dat je je niet bezig houdt met de vormgeving,
+Het uitgangspunt van \SpecialCharNoPassThru LyX
+ is dat je je niet bezig houdt met de vormgeving,
  maar met de inhoud van je tekst.
 \end_layout
 
 \begin_layout Subsection
-Hoe LyX het fikst
+Hoe \SpecialCharNoPassThru LyX
+ het fikst
 \end_layout
 
 \begin_layout Standard
-LyX gebruikt LaTeX, een tekstverwerkingssysteem ontworpen door Leslie Lamport
+\SpecialCharNoPassThru LyX
+ gebruikt \SpecialCharNoPassThru LaTeX
+, een tekstverwerkingssysteem ontworpen door Leslie Lamport
  in 1985.
- Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd TeX,
+ Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd \SpecialCharNoPassThru TeX
+,
  door Donald Knuth gemaakt in 1984.
- LaTeX is ontworpen met dezelfde uitgangspunten als LyX.
+ \SpecialCharNoPassThru LaTeX
+ is ontworpen met dezelfde uitgangspunten als \SpecialCharNoPassThru LyX
+.
  Leslie Lamport zei eens (zie referentie 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -127,14 +135,16 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  Een citaat en een computerprogramma, die als structurele elementen logisch
  van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
  moeten zijn....
- Omdat LaTeX niet kan begrijpen wat je schrijft, zul je expliciet de logische
+ Omdat \SpecialCharNoPassThru LaTeX
+ niet kan begrijpen wat je schrijft, zul je expliciet de logische
  structuur moeten aangeven door bepaalde commando's te typen....
  Als je je document aan het schrijven bent, zou je je bezig moeten houden
  met de logische structuur, niet met het zichtbare uiterlijk.
 \end_layout
 
 \begin_layout Subsection
-Waarom LyX beter is
+Waarom \SpecialCharNoPassThru LyX
+ beter is
 \end_layout
 
 \begin_layout Standard
@@ -144,10 +154,14 @@ name "sec:lyxbeter"
 
 \end_inset
 
-LyX kan voor meer mensen handig zijn dan LaTeX.
- Het is aanzienlijk eenvoudiger te leren, omdat je LaTeX niet hoeft te leren
+\SpecialCharNoPassThru LyX
+ kan voor meer mensen handig zijn dan \SpecialCharNoPassThru LaTeX
+.
+ Het is aanzienlijk eenvoudiger te leren, omdat je \SpecialCharNoPassThru LaTeX
+ niet hoeft te leren
  (wat eigenlijk een programmeertaal is).
- LyX is in feite net als andere 
+ \SpecialCharNoPassThru LyX
+ is in feite net als andere 
 \begin_inset Quotes eld
 \end_inset
 
@@ -155,7 +169,8 @@ Wat je ziet is wat je krijgt
 \begin_inset Quotes erd
 \end_inset
 
- tekstverwerkers, behalve dat LyX 
+ tekstverwerkers, behalve dat \SpecialCharNoPassThru LyX
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -165,18 +180,20 @@ Wat je ziet is wat je bedoelt
 
  is.
  Op deze manier combineert het het gemak van tekstverwerkers met de kracht
- van LaTeX.
+ van \SpecialCharNoPassThru LaTeX
+.
  Dit is Goed.
  Ook is het bestandsformaat niet afhankelijk van het platform.
  En als beste: het is VRIJ!
 \end_layout
 
 \begin_layout Section
-De mogelijkheden van LyX
+De mogelijkheden van \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-LyX heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
+\SpecialCharNoPassThru LyX
+ heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
 \begin_inset Foot
 status collapsed
 
@@ -195,15 +212,18 @@ geweldig
 \end_layout
 
 \begin_layout Itemize
-LyX regelt marges, en het nummeren van voetnoten voor je
+\SpecialCharNoPassThru LyX
+ regelt marges, en het nummeren van voetnoten voor je
 \end_layout
 
 \begin_layout Itemize
-LyX maakt het gemakkelijk om wiskundige formules te maken en te veranderen
+\SpecialCharNoPassThru LyX
+ maakt het gemakkelijk om wiskundige formules te maken en te veranderen
 \end_layout
 
 \begin_layout Standard
-Voor een meer filosofische verhandeling waarom LyX beter is dan andere tekstverw
+Voor een meer filosofische verhandeling waarom \SpecialCharNoPassThru LyX
+ beter is dan andere tekstverw
 erkers, zie Sectie 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -222,7 +242,8 @@ reference "sec:lyxbeter"
 \end_layout
 
 \begin_layout Section
-Slappe pogingen om andere dingen in LyX te gebruiken
+Slappe pogingen om andere dingen in \SpecialCharNoPassThru LyX
+ te gebruiken
 \end_layout
 
 \begin_layout Standard
@@ -256,7 +277,8 @@ Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
 \end_layout
 
 \begin_layout Verse
-LyX is echt geweldig 
+\SpecialCharNoPassThru LyX
+ is echt geweldig 
 \begin_inset Newline newline
 \end_inset
 
@@ -299,21 +321,25 @@ Opmerkingen
 \end_layout
 
 \begin_layout Standard
-Een paar opmerkingen over het verLyXen van dit bestand:
+Een paar opmerkingen over het ver\SpecialCharNoPassThru LyX
+en van dit bestand:
 \end_layout
 
 \begin_layout Itemize
 Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
  Deze waren daar enkel om de titel en de referenties van de rest van het
  document te scheiden.
- LyX (LaTeX) begrijpt genoeg om deze onderdelen van het document met witruimte
+ \SpecialCharNoPassThru LyX
+ (\SpecialCharNoPassThru LaTeX
+) begrijpt genoeg om deze onderdelen van het document met witruimte
  te scheiden.
 \end_layout
 
 \begin_layout Itemize
 Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
  te zetten.
- Ik gebruikte ook niet de mogelijkheid van LyX om de vergelijkingen automatisch
+ Ik gebruikte ook niet de mogelijkheid van \SpecialCharNoPassThru LyX
+ om de vergelijkingen automatisch
  te nummeren, omdat dit niet in de 
 \emph on
 Turorial
@@ -331,7 +357,8 @@ Referenties
 \end_inset
 
  niet te typen.
- LyX schrijft dit automatisch (of het woord 
+ \SpecialCharNoPassThru LyX
+ schrijft dit automatisch (of het woord 
 \begin_inset Quotes eld
 \end_inset
 
@@ -355,7 +382,8 @@ key "lamport"
 
 Lamport, Leslie.
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, Reading, Massachusetts, second edition, 1994.

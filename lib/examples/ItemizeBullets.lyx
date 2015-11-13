@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \begin_preamble
 
@@ -12,16 +13,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -92,37 +93,52 @@ You'll see pretty quickly that bullet settings can be quite complex if you
 itemize
 \emph default
  is the standard environment for bullet lists
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 it has its own counter that limits it to 4 levels
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 each level can have its own bullet shape
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX however displays all bullets as an `*'
+\SpecialCharNoPassThru LyX
+ however displays all bullets as an `*'
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Also note that LyX does 
+Also note that \SpecialCharNoPassThru LyX
+ does 
 \emph on
 not
 \emph default
  check the environment depths for you
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Other than to enforce the LaTeX depth limit of 6 for all lists.
+Other than to enforce the \SpecialCharNoPassThru LaTeX
+ depth limit of 6 for all lists.
 \end_layout
 
 \end_deeper
@@ -140,8 +156,8 @@ Yes.
 \begin_layout Standard
 You can access the popup via the 
 \family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \ldots{}
+Layout\SpecialChar menuseparator
+Document\SpecialChar ldots
 
 \family default
  menu and select the 
@@ -1140,24 +1156,26 @@ Ding 1 (PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS is the New Font Selecting Scheme of LaTeX2e (basically, what changed
+NFSS is the New Font Selecting Scheme of \SpecialCharNoPassThru LaTeX2e
+ (basically, what changed
  the font commands from 
 \family typewriter
 {
 \backslash
-bf \SpecialChar \ldots{}
+bf \SpecialChar ldots
 }
 \family default
  to 
 \family typewriter
 
 \backslash
-textbf{\SpecialChar \ldots{}
+textbf{\SpecialChar ldots
 }
 \family default
 , although the real changes are inside the guts).
  PS stands for PostScript.
- PSNFSS is a set of LaTeX files which provide NFSS support for the basic
+ PSNFSS is a set of \SpecialCharNoPassThru LaTeX
+ files which provide NFSS support for the basic
  set of 35 PS fonts present in many postscript printers.
  
 \end_layout

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass a0poster
 \begin_preamble
 % Adjust padding in boxes
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding iso8859-1
 \fontencoding global
-\font_roman palatino
-\font_sans default
-\font_typewriter courier
-\font_math auto
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -91,6 +92,11 @@ width "98col%"
 special "none"
 height "5cm"
 height_special "none"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -133,6 +139,11 @@ width "60col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Abstract
@@ -142,7 +153,8 @@ This example poster is not nice, but you get an idea of what is possible
 \family sans
 a0poster
 \family default
- document class within LyX, when not using additional modules (such as 
+ document class within \SpecialCharNoPassThru LyX
+, when not using additional modules (such as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -178,6 +190,11 @@ width "47col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -206,6 +223,11 @@ width "47col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -245,10 +267,16 @@ width "98col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection*
-Available font sizes (with corresponding LaTeX command)
+Available font sizes (with corresponding \SpecialCharNoPassThru LaTeX
+ command)
 \end_layout
 
 \begin_layout Plain Layout
@@ -267,13 +295,13 @@ Giant
 
  etc.) are available at at 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 .
  For small inline snippets, there are variants at 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Text Style.
 \end_layout
 
@@ -466,6 +494,11 @@ width "98col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Section
@@ -478,7 +511,8 @@ The
 a0poster
 \family default
  class and layout provide the means to create a poster in A3 through A0big
- size using LyX.
+ size using \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \begin_layout Itemize
@@ -488,9 +522,9 @@ Page and font size are set accordingly.
 \begin_layout Itemize
 The margins can be adjusted in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
- \SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+ \SpecialChar menuseparator
 Page Margins
 \family default
 .
@@ -499,9 +533,9 @@ Page Margins
 \begin_layout Itemize
 The background color of the poster can be changed via 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
- \SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+ \SpecialChar menuseparator
 Colors
 \family default
 .
@@ -512,12 +546,13 @@ The usual paragraph and text styles can be used.
 \end_layout
 
 \begin_layout Itemize
-LyX's boxes, as used here, are a simple means for structuring the content,
+\SpecialCharNoPassThru LyX
+'s boxes, as used here, are a simple means for structuring the content,
  simple colored boxes (of one color, predefined in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
- \SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+ \SpecialChar menuseparator
 Colors
 \family default
 ) are also possible with the 
@@ -579,7 +614,7 @@ Multiple Columns
 
  module as documented in 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Additional Features
 \family default
 .
@@ -602,7 +637,8 @@ http://www.physik.uni-augsburg.de/theo3/Comp/hp750c/computing_hp750c_A0.de.shtml
 \end_inset
 
 ) provides additional commands for color, headings, columns, and boxes,
- but those are not natively supported by LyX.
+ but those are not natively supported by \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset

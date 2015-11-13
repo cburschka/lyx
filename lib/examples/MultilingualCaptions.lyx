@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass scrartcl
 \begin_preamble
 % if pdflatex is used
@@ -38,16 +39,16 @@ bicaption
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -140,11 +141,13 @@ Multilingual
 captions
 \family default
  allows to typeset captions in two languages.
- It requires the LaTeX package 
+ It requires the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 bicaption
 \series default
- which is part of the LaTeX package 
+ which is part of the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 caption
 \series default
@@ -262,15 +265,15 @@ Caption
  If no caption is inserted, you can insert the multilingual caption via
  
 \family sans
-Insert\SpecialChar \menuseparator
-Caption\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Caption\SpecialChar menuseparator
 Bicaption
 \family default
 .
  The caption text in the document language must be inserted in the inset
  which is inserted in the caption via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Main Language Text
 \family default
 .
@@ -279,16 +282,16 @@ Main Language Text
 \end_layout
 
 \begin_layout Standard
-Short Titles for both languages (for the List of Tables\SpecialChar \slash{}
+Short Titles for both languages (for the List of Tables\SpecialChar breakableslash
 Figures) can be inserted
  via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Main Language Short Title
 \family default
  and 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Second Language Short Title.
 \end_layout
 
@@ -350,6 +353,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -467,7 +475,8 @@ font=
 \series default
 .
  For more information about possible customizations, see the documentation
- of the LaTeX package 
+ of the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 caption
 \series default
@@ -620,6 +629,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -696,7 +710,8 @@ PassOptionsToPackage{list=off}{bicaption}
 It is also possible to have two different lists, one for the document language,
  one for the second language.
  This is the case in this file.
- To split the list one needs to add these lines to the LaTeX preamble:
+ To split the list one needs to add these lines to the \SpecialCharNoPassThru LaTeX
+ preamble:
 \end_layout
 
 \begin_layout Standard
@@ -759,7 +774,8 @@ listoffigureGeres
 \end_layout
 
 \begin_layout Standard
-as TeX code.
+as \SpecialCharNoPassThru TeX
+ code.
  Here is the German list of figures:
 \end_layout
 
@@ -822,7 +838,8 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-For more information what can be done with the LaTeX package 
+For more information what can be done with the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 bicaption
 \series default
@@ -1840,7 +1857,8 @@ key "bicaption"
 
 \end_inset
 
-Documentation of the LaTeX package 
+Documentation of the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 
 \begin_inset CommandInset href
@@ -1860,7 +1878,8 @@ key "caption"
 
 \end_inset
 
-Documentation of the LaTeX package 
+Documentation of the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 
 \begin_inset CommandInset href

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass revtex4
 \options aps,preprint
 \use_default_options false
@@ -10,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -118,7 +119,8 @@ Use Thanks layout instead of inserting footnotes.
 \end_layout
 
 \begin_layout Plain Layout
-Footnotes in the title will do weird things in REVTeX 4!
+Footnotes in the title will do weird things in REV\SpecialCharNoPassThru TeX
+ 4!
 \end_layout
 
 \end_inset
@@ -155,7 +157,8 @@ status collapsed
 You don't have to write 
 \backslash
 maketitle..
- LyX does this by itself.
+ \SpecialCharNoPassThru LyX
+ does this by itself.
 \end_layout
 
 \end_inset
@@ -197,7 +200,8 @@ Layout
 Layout
 \family default
  menu).
- See the REVTeX 4 manual for style options, special macros, and the like.
+ See the REV\SpecialCharNoPassThru TeX
+ 4 manual for style options, special macros, and the like.
 \end_layout
 
 \begin_layout Section
@@ -205,13 +209,16 @@ methods
 \end_layout
 
 \begin_layout Standard
-Special REVTeX macros must be typed in TeX mode, so typing 
+Special REV\SpecialCharNoPassThru TeX
+ macros must be typed in \SpecialCharNoPassThru TeX
+ mode, so typing 
 \family typewriter
 
 \backslash
 openone
 \family default
- in TeX mode yields 
+ in \SpecialCharNoPassThru TeX
+ mode yields 
 \begin_inset ERT
 status collapsed
 
@@ -225,12 +232,14 @@ openone{}
 \end_inset
 
 .
- REVTeX macros can also be used freely in the math editor, so you can type
+ REV\SpecialCharNoPassThru TeX
+ macros can also be used freely in the math editor, so you can type
  
 \begin_inset Formula $\sqrt{\overstar{a}}>b$
 \end_inset
 
-, for example, which uses the REVTeX 
+, for example, which uses the REV\SpecialCharNoPassThru TeX
+ 
 \family typewriter
 
 \backslash
@@ -241,8 +250,13 @@ overstar
 
 \begin_layout Standard
 You can do a bibliography by hand, as shown below, but it may be easier
- to erase that and use BibTeX---in fact, APS encourages authors to use BibTeX.
- If you do use BibTeX, use the REVTeX bibliography style file, 
+ to erase that and use Bib\SpecialCharNoPassThru TeX
+\threehyphens
+in fact, APS encourages authors to use Bib\SpecialCharNoPassThru TeX
+.
+ If you do use Bib\SpecialCharNoPassThru TeX
+, use the REV\SpecialCharNoPassThru TeX
+ bibliography style file, 
 \family typewriter
 revtex.bst
 \family default
@@ -264,7 +278,7 @@ style
 
  box in the 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Lists
 \begin_inset space ~
 \end_inset
@@ -273,15 +287,16 @@ Lists
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
-BibTeX
+TOC\SpecialChar menuseparator
+Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
 Reference
 \family default
  popup).
- With either method, you can cite references with the LyX citation commands
+ With either method, you can cite references with the \SpecialCharNoPassThru LyX
+ citation commands
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mycitation"
@@ -314,7 +329,8 @@ Title
 \series bold
 Volume
 \series default
-, page--numbers (year).
+, page\twohyphens
+numbers (year).
 \end_layout
 
 \end_body

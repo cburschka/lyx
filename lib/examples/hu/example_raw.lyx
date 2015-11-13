@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/hu/
 \textclass article
 \begin_preamble
 %\def\magyarOptions{defaults=over-1.4,footnote=huplain}
@@ -14,16 +15,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -89,7 +90,8 @@ Tanács: a címnek jobban CÍMNEK kell látszania
 \end_layout
 
 \begin_layout Standard
-készítette egy LyX-es
+készítette egy \SpecialCharNoPassThru LyX
+-es
 \begin_inset Note Note
 status collapsed
 
@@ -137,21 +139,25 @@ Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
 \end_layout
 
 \begin_layout Standard
-1.1 Hogyan valósítja meg ezt a LyX...............1
+1.1 Hogyan valósítja meg ezt a \SpecialCharNoPassThru LyX
+...............1
 \end_layout
 
 \begin_layout Standard
-1.2 Miért jobb a LyX ...............1
+1.2 Miért jobb a \SpecialCharNoPassThru LyX
+ ...............1
 \end_layout
 
 \begin_layout Standard
 2.
- A LyX jellemzői
+ A \SpecialCharNoPassThru LyX
+ jellemzői
 \end_layout
 
 \begin_layout Standard
 3.
- Gyenge próbálkozások más LyX-es cuccok használatához
+ Gyenge próbálkozások más \SpecialCharNoPassThru LyX
+-es cuccok használatához
 \end_layout
 
 \begin_layout Standard
@@ -160,7 +166,23 @@ Tanács: jó lenne nem kellene külön begépelni a tartalomjegyzéket
 \end_layout
 
 \begin_layout Standard
----------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -179,20 +201,26 @@ Tanács: a szakaszcímnek jobban ki kellene tűnnie
 \end_layout
 
 \begin_layout Standard
-A LyX alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
+A \SpecialCharNoPassThru LyX
+ alapfilozófiája az, hogy csak arra kell koncentrálnia amit le akarni
  írni, nem arra hogyan fog kinézni.
 \end_layout
 
 \begin_layout Standard
-1.1 Hogyan valósítja meg ezt a LyX
+1.1 Hogyan valósítja meg ezt a \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Standard
-A LyX a LaTeX-et használja, ami egy dokumentum elkészítő rendszer, amit
+A \SpecialCharNoPassThru LyX
+ a \SpecialCharNoPassThru LaTeX
+-et használja, ami egy dokumentum elkészítő rendszer, amit
  1985-ben készített Leslie Lamport.
- Ezt egy TeX nevű írásszedő rendszerre építette, amit Donald Knuth készített
+ Ezt egy \SpecialCharNoPassThru TeX
+ nevű írásszedő rendszerre építette, amit Donald Knuth készített
  1984-ben.
- A LaTeX-et, a LyX-hez hasonló filozófia miatt készítették.
+ A \SpecialCharNoPassThru LaTeX
+-et, a \SpecialCharNoPassThru LyX
+-hez hasonló filozófia miatt készítették.
  Leslie Lamport egyszer azt mondta (lásd a [2] hivatkozásban):
 \begin_inset Note Note
 status collapsed
@@ -218,8 +246,9 @@ A tipográfiai tervezés célja az, hogy segítsen az olvasónak megérteni a
  követnie kell a logikai felépítését.
  Az idézetek és számítógépprogramok teljesen különálló logikai elemek, ezért
  meg kell tudni őket egymásól különböztetni...
- Mivel a LyX nem érti az írott szöveget, ezért világosan meg kell adnia
- a logikai struktúrát bizonyos parancsok használatával\SpecialChar \ldots{}
+ Mivel a \SpecialCharNoPassThru LyX
+ nem érti az írott szöveget, ezért világosan meg kell adnia
+ a logikai struktúrát bizonyos parancsok használatával\SpecialChar ldots
  Miközben művét készíti,
  a logikai felépítésével kell törődnie, nem a megjelenésével.
 \begin_inset Quotes prd
@@ -239,14 +268,19 @@ Tanács: ez egy IDÉZET
 \end_layout
 
 \begin_layout Standard
-1.2 Miért jobb a LyX 
+1.2 Miért jobb a \SpecialCharNoPassThru LyX
+ 
 \end_layout
 
 \begin_layout Standard
-A LyX sokkal több embernek lehet hasznos, mint a LaTeX.
- Meglehetősen könnyebb megtanulni, mivel nem kell megtanulni a LaTeX-et
+A \SpecialCharNoPassThru LyX
+ sokkal több embernek lehet hasznos, mint a \SpecialCharNoPassThru LaTeX
+.
+ Meglehetősen könnyebb megtanulni, mivel nem kell megtanulni a \SpecialCharNoPassThru LaTeX
+-et
  (ami gyakorlatilag egy programozási nyelv).
- A LyX alapvetően egy másik 
+ A \SpecialCharNoPassThru LyX
+ alapvetően egy másik 
 \begin_inset Quotes pld
 \end_inset
 
@@ -264,7 +298,8 @@ amit lát arra gondol
 
  típusú.
  Ezáltal a word típusú szövegszerkesztők könnyű használatát kombinálja,
- a LaTeX hatékonyságával.
+ a \SpecialCharNoPassThru LaTeX
+ hatékonyságával.
  Ez egy jó dolog.
  A fájl formátuma platform független.
  De legfőképpen, ingyenes!
@@ -272,11 +307,13 @@ amit lát arra gondol
 
 \begin_layout Standard
 2.
- A LyX jellemzői
+ A \SpecialCharNoPassThru LyX
+ jellemzői
 \end_layout
 
 \begin_layout Standard
-A LyX rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást.
+A \SpecialCharNoPassThru LyX
+ rengeteg olyan jellemzővel rendelkezik, amelyek megkönnyítik az írást.
  (Ezek után, miért ne akarná használni? 
 \begin_inset Note Note
 status collapsed
@@ -309,15 +346,18 @@ Tanács: KIEMELÉS!
 \end_layout
 
 \begin_layout Standard
-*A LyX gondoskodik a margókról és a lábjegyzetek számozásáról
+*A \SpecialCharNoPassThru LyX
+ gondoskodik a margókról és a lábjegyzetek számozásáról
 \end_layout
 
 \begin_layout Standard
-*A LyX-el könnyen készíthet és szerkeszthet képleteket
+*A \SpecialCharNoPassThru LyX
+-el könnyen készíthet és szerkeszthet képleteket
 \end_layout
 
 \begin_layout Standard
-A filozófiai értekezést, hogy miért jobb a LyX a többi szövegszerkesztőnél,
+A filozófiai értekezést, hogy miért jobb a \SpecialCharNoPassThru LyX
+ a többi szövegszerkesztőnél,
  megtalálja a 1.2 szakaszban, amit az 1.
  oldalon talál.
 \begin_inset Note Note
@@ -335,7 +375,8 @@ Tanács: ennek a KERESZT-HIVATKOZÁSNAK nem kellene fixnek lennie.
 
 \begin_layout Standard
 3.
- Gyenge próbálkozások más LyX-es cuccok használatához
+ Gyenge próbálkozások más \SpecialCharNoPassThru LyX
+-es cuccok használatához
 \end_layout
 
 \begin_layout Standard
@@ -379,7 +420,8 @@ A tudományos gondolkodás után, teljesen művészien éreztem magam, és írta
 \end_layout
 
 \begin_layout Standard
-A LyX egy nagyon szuper
+A \SpecialCharNoPassThru LyX
+ egy nagyon szuper
 \begin_inset Newline newline
 \end_inset
 
@@ -430,7 +472,22 @@ x)- f(x)]-ben deltax tart a nullához és az egész osztva deltax-el (3.
 \end_layout
 
 \begin_layout Standard
-------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -441,7 +498,8 @@ HIVATKOZÁSOK
 [1] Lamport, Leslie.
  
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, Reading, Massachusetts, második kiadás, 1994.

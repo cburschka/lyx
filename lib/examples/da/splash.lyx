@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/da/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,30 +71,34 @@
 \begin_body
 
 \begin_layout Title
-Velkommen til LyX!
+Velkommen til \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-7 ting du bør vide om brugen af LyX
+7 ting du bør vide om brugen af \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX indeholder grundig dokumentation — brug den! Start med 
+\SpecialCharNoPassThru LyX
+ indeholder grundig dokumentation — brug den! Start med 
 \family sans
-Hjælp\SpecialChar \menuseparator
+Hjælp\SpecialChar menuseparator
 Introduktion
 \family default
-, som vil give dig et meget kort overblik over dokumentationen\SpecialChar \@.
+, som vil give dig et meget kort overblik over dokumentationen\SpecialChar endofsentence
  Lær derefter
- om LyX med 
+ om \SpecialCharNoPassThru LyX
+ med 
 \family sans
-Hjælp\SpecialChar \menuseparator
-Gennemgang\SpecialChar \@.
+Hjælp\SpecialChar menuseparator
+Gennemgang\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Enumerate
-LyX er, hvad vi kalder en 
+\SpecialCharNoPassThru LyX
+ er, hvad vi kalder en 
 \begin_inset Quotes sld
 \end_inset
 
@@ -101,11 +106,11 @@ dokumentbehandler
 \begin_inset Quotes srd
 \end_inset
 
-\SpecialChar \@.
+\SpecialChar endofsentence
  Den er grundlæggende forskellig fra almindelige tekstbehandlere — på en
- måde letter det skrivning af dokumenter\SpecialChar \@.
+ måde letter det skrivning af dokumenter\SpecialChar endofsentence
  Men bare rolig, den er kun en smule
- anderledes\SpecialChar \@.
+ anderledes\SpecialChar endofsentence
  Dokumentationen vil gøre dette tydeligt for dig.
 \begin_inset Foot
 status collapsed
@@ -120,19 +125,25 @@ Fik vi nævnt, at du bør læse dokumentationen?
 \end_layout
 
 \begin_layout Enumerate
-Resultaterne fra LyX ser fantastiske ud! Vælg 
+Resultaterne fra \SpecialCharNoPassThru LyX
+ ser fantastiske ud! Vælg 
 \family sans
-Vis\SpecialChar \menuseparator
+Vis\SpecialChar menuseparator
 DVI
 \family default
  nu, så kan du selv se.
 \end_layout
 
 \begin_layout Enumerate
-Ja, LyX kan efterligne (næsten) al LaTeX's funktioner\SpecialChar \@.
- Og ja, LyX kan importere
- LaTeX-filer\SpecialChar \@.
- Erfarne LaTeX-brugere kan skimme resten af 
+Ja, \SpecialCharNoPassThru LyX
+ kan efterligne (næsten) al \SpecialCharNoPassThru LaTeX
+'s funktioner\SpecialChar endofsentence
+ Og ja, \SpecialCharNoPassThru LyX
+ kan importere
+ \SpecialCharNoPassThru LaTeX
+-filer\SpecialChar endofsentence
+ Erfarne \SpecialCharNoPassThru LaTeX
+-brugere kan skimme resten af 
 \emph on
 Gennemgangen
 \emph default
@@ -140,19 +151,24 @@ Gennemgangen
 \begin_inset Quotes eld
 \end_inset
 
-LyX for LaTeX-brugere
+\SpecialCharNoPassThru LyX
+ for \SpecialCharNoPassThru LaTeX
+-brugere
 \begin_inset Quotes erd
 \end_inset
 
-\SpecialChar \@.
- (Alle andre: bare rolig, du behøver ikke at kende noget til LaTeX for at
- kunne bruge LyX\SpecialChar \@.
+\SpecialChar endofsentence
+ (Alle andre: bare rolig, du behøver ikke at kende noget til \SpecialCharNoPassThru LaTeX
+ for at
+ kunne bruge \SpecialCharNoPassThru LyX
+\SpecialChar endofsentence
 )
 \end_layout
 
 \begin_layout Enumerate
-LyX har mange funktioner for dem, der læser eller skriver på andre sprog
- end engelsk\SpecialChar \@.
+\SpecialCharNoPassThru LyX
+ har mange funktioner for dem, der læser eller skriver på andre sprog
+ end engelsk\SpecialChar endofsentence
  Derover kan tastebindinger, værktøjslinie og mange andre egenskaber
  kan ændres (de fleste ved at rette i 
 \family typewriter
@@ -161,15 +177,16 @@ lyxrc
 -filen).
  Se 
 \family sans
-Hjælp\SpecialChar \menuseparator
+Hjælp\SpecialChar menuseparator
 Personliggørelse
 \family default
- for detaljer\SpecialChar \@.
+ for detaljer\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Enumerate
-LyX's hjemmeside er på 
+\SpecialCharNoPassThru LyX
+'s hjemmeside er på 
 \family typewriter
 
 \begin_inset Flex URL
@@ -184,9 +201,11 @@ http://www.lyx.org/
 
 
 \family default
-\SpecialChar \@.
- Find oplysninger om LyX, abonnér på LyX's postlister, tag en grafisk rundtur
- m.m\SpecialChar \@.
+\SpecialChar endofsentence
+ Find oplysninger om \SpecialCharNoPassThru LyX
+, abonnér på \SpecialCharNoPassThru LyX
+'s postlister, tag en grafisk rundtur
+ m.m\SpecialChar endofsentence
 
 \end_layout
 

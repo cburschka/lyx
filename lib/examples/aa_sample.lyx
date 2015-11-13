@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass aa
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -78,9 +79,12 @@ status open
 \family roman
 \series medium
 \size normal
-This is an example LyX file for articles to be submitted to the Journal
+This is an example \SpecialCharNoPassThru LyX
+ file for articles to be submitted to the Journal
  of Astronomy & Astrophysics (A&A).
- How to install the A&A LaTeX class to your LaTeX system is explained in
+ How to install the A&A \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained in
  
 \begin_inset Flex URL
 status open
@@ -274,7 +278,7 @@ Received September 15, 1996; accepted March 16, 1997
 \end_layout
 
 \begin_layout Abstract (unstructured)
-To investigate the physical nature of the `nuc\SpecialChar \-
+To investigate the physical nature of the `nuc\SpecialChar softhyphen
 leated instability' of proto
  giant planets, the stability of layers in static, radiative gas spheres
  is analysed on the basis of Baker's standard one-zone model.
@@ -339,7 +343,8 @@ This is the unstructured abstract type, an example for the structured abstract
 \family sans
 aa.lyx
 \family default
- template file that comes with LyX.
+ template file that comes with \SpecialCharNoPassThru LyX
+.
 \end_layout
 
 \end_inset
@@ -348,11 +353,13 @@ aa.lyx
 \end_layout
 
 \begin_layout Keywords
-giant planet formation -- 
+giant planet formation \twohyphens
+ 
 \begin_inset Formula $\kappa$
 \end_inset
 
--mechanism -- stability of gas spheres
+-mechanism \twohyphens
+ stability of gas spheres
 \end_layout
 
 \begin_layout Section
@@ -551,6 +558,9 @@ key "Abernethy2003"
 
 ).
  Using Baker's notation:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -788,7 +798,9 @@ reference "tab:KapSou"
 
 ), are specified (in practice by specifying a chemical composition) the
  one-zone stability can be inferred if the thermodynamic state is specified.
- The zone -- or in other words the layer -- will be stable or unstable in
+ The zone \twohyphens
+ or in other words the layer \twohyphens
+ will be stable or unstable in
  whatever object it is imbedded as long as it satisfies the one-zone-model
  assumptions.
  Only the specific growth rates (depending upon the time scales) will be
@@ -1163,8 +1175,10 @@ key "Abernethy2003"
 \end_layout
 
 \begin_layout Enumerate
-If the constitutive relations -- equations of state and Rosseland mean opacities
- -- are specified, the stability equations of state can be evaluated without
+If the constitutive relations \twohyphens
+ equations of state and Rosseland mean opacities
+ \twohyphens
+ are specified, the stability equations of state can be evaluated without
  specifying properties of the layer.
  
 \end_layout
@@ -1189,18 +1203,19 @@ y than the second He ionization zone that drives the Cepheı̈d pulsations.
 \begin_layout Acknowledgement
 Part of this work was supported by the German 
 \emph on
-Deut\SpecialChar \-
-sche For\SpecialChar \-
-schungs\SpecialChar \-
-ge\SpecialChar \-
-mein\SpecialChar \-
+Deut\SpecialChar softhyphen
+sche For\SpecialChar softhyphen
+schungs\SpecialChar softhyphen
+ge\SpecialChar softhyphen
+mein\SpecialChar softhyphen
 schaft, DFG
 \emph default
  project number Ts
 \begin_inset space ~
 \end_inset
 
-17/2--1.
+17/2\twohyphens
+1.
 \end_layout
 
 \begin_layout Standard
@@ -1222,11 +1237,13 @@ status open
 Note:
 \series default
  If you cannot see the bibliography in the output, assure that you have
- gievn the full path to the BibTeX style file 
+ gievn the full path to the Bib\SpecialCharNoPassThru TeX
+ style file 
 \family sans
 aa.bst
 \family default
- that is part of the A&A LaTeX-package.
+ that is part of the A&A \SpecialCharNoPassThru LaTeX
+-package.
 \end_layout
 
 \end_inset

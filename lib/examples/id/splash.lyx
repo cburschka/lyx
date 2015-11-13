@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/id/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,32 +71,36 @@
 \begin_body
 
 \begin_layout Title
-Selamat Datang di LyX!
+Selamat Datang di \SpecialCharNoPassThru LyX
+!
 \end_layout
 
 \begin_layout Section*
-Hal utama yang perlu diketahui ketika menggunakan LyX
+Hal utama yang perlu diketahui ketika menggunakan \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
-LyX dilengkapi dengan dokumentasi yang sangat lengkap — Silakan dimanfaatkan!
+\SpecialCharNoPassThru LyX
+ dilengkapi dengan dokumentasi yang sangat lengkap — Silakan dimanfaatkan!
  Dimulai dari 
 \family sans
-Bantuan\SpecialChar \menuseparator
+Bantuan\SpecialChar menuseparator
 Pengantar
 \family default
 , yang akan memberikan gambaran awal kepada anda tentang dokumentasi yang
  ada.
- Setelah memahaminya teruskan untuk belajar menggunakan LyX dari 
+ Setelah memahaminya teruskan untuk belajar menggunakan \SpecialCharNoPassThru LyX
+ dari 
 \family sans
-Bantuan\SpecialChar \menuseparator
+Bantuan\SpecialChar menuseparator
 Tutorial
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX kita sebut dengan 
+\SpecialCharNoPassThru LyX
+ kita sebut dengan 
 \begin_inset Quotes eld
 \end_inset
 
@@ -126,19 +131,25 @@ Bantuan
 \end_layout
 
 \begin_layout Enumerate
-Tampilan hasil dari LyX akan terlihat mengagumkan! Cobalah sekarang 
+Tampilan hasil dari \SpecialCharNoPassThru LyX
+ akan terlihat mengagumkan! Cobalah sekarang 
 \family sans
-Tampilan\SpecialChar \menuseparator
+Tampilan\SpecialChar menuseparator
 DVI
 \family default
  maka anda akan melihat hasil yang cantik.
 \end_layout
 
 \begin_layout Enumerate
-Benar, LyX dapat menampilkan (hampir semuanya) dari fungsi-fungsi yang ada
- pada LaTeX.
- Demikian pula, LyX dapat mengenal dan mengimpor berkas LaTeX.
- Bagi yang sudah mengenal dan mempunyai pengalaman menggunakan LaTeX bisa
+Benar, \SpecialCharNoPassThru LyX
+ dapat menampilkan (hampir semuanya) dari fungsi-fungsi yang ada
+ pada \SpecialCharNoPassThru LaTeX
+.
+ Demikian pula, \SpecialCharNoPassThru LyX
+ dapat mengenal dan mengimpor berkas \SpecialCharNoPassThru LaTeX
+.
+ Bagi yang sudah mengenal dan mempunyai pengalaman menggunakan \SpecialCharNoPassThru LaTeX
+ bisa
  memahami bagian awal 
 \emph on
 Tutorial
@@ -147,17 +158,21 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-LyX untuk pengguna LaTeX
+\SpecialCharNoPassThru LyX
+ untuk pengguna \SpecialCharNoPassThru LaTeX
 \begin_inset Quotes erd
 \end_inset
 
 .
- (yang belum mengenal LaTeX: jangan kawatir, anda tidak perlu memahami LaTeX
- untuk menggunakan LyX.) 
+ (yang belum mengenal \SpecialCharNoPassThru LaTeX
+: jangan kawatir, anda tidak perlu memahami \SpecialCharNoPassThru LaTeX
+ untuk menggunakan \SpecialCharNoPassThru LyX
+.) 
 \end_layout
 
 \begin_layout Enumerate
-LyX mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa
+\SpecialCharNoPassThru LyX
+ mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa
  selain bahasa Inggris.
  Selain hal tersebut ada rangkaian kunci (
 \emph on
@@ -170,12 +185,13 @@ toolbars
 ), serta banyak hal lain yang bisa disesuaikan mengikuti kehendak pengguna.
  Untuk detailnya dapat dilihat melalui 
 \family sans
-Bantuan\SpecialChar \menuseparator
+Bantuan\SpecialChar menuseparator
 Perubahan dan Pengaturan.
 \end_layout
 
 \begin_layout Enumerate
-Halaman utama LyX dapat dilihat di 
+Halaman utama \SpecialCharNoPassThru LyX
+ dapat dilihat di 
 \family typewriter
 
 \begin_inset Flex URL
@@ -192,11 +208,14 @@ http://www.lyx.org/
 \family default
 .
  Pada halaman tersebut anda akan mendapatkan keterangan lebih lanjut tentang
- LyX, juga bisa mendaftar ke 
+ \SpecialCharNoPassThru LyX
+, juga bisa mendaftar ke 
 \emph on
 mailing list
 \emph default
- LyX yang ada, bisa melihat gambar-gambar LyX ketika digunakan, serta banyak
+ \SpecialCharNoPassThru LyX
+ yang ada, bisa melihat gambar-gambar \SpecialCharNoPassThru LyX
+ ketika digunakan, serta banyak
  hal lagi.
 \end_layout
 

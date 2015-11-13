@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass apa
 \begin_preamble
 %% uncomment the following line to get this information
@@ -32,16 +33,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -115,7 +116,8 @@ Printed Journal mode (jou)
 \emph default
  and 
 \emph on
-Regular LaTeX mode (doc)
+Regular \SpecialCharNoPassThru LaTeX
+ mode (doc)
 \emph default
 .
  The modes can be switched by entering the class options 
@@ -130,15 +132,15 @@ jou
 \emph on
 doc
 \emph default
- to Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+ to Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Options.
  This template uses the Printed Journal mode.
 \end_layout
 
 \begin_layout Plain Layout
-Have a look at Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Have a look at Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Preamble for further settings like acknowledgemen
 ts.
  A brief documentation can be found at 
@@ -165,7 +167,8 @@ Title
 \end_layout
 
 \begin_layout RightHeader
-Running Head for Journal and LaTeX Mode
+Running Head for Journal and \SpecialCharNoPassThru LaTeX
+ Mode
 \begin_inset Note Note
 status open
 
@@ -235,7 +238,8 @@ status collapsed
 
 \end_inset
 
- in TeX mode, e.
+ in \SpecialCharNoPassThru TeX
+ mode, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -338,7 +342,7 @@ Methods
 \end_layout
 
 \begin_layout Standard
-Descibing our methods \SpecialChar \ldots{}
+Descibing our methods \SpecialChar ldots
 
 \end_layout
 
@@ -347,7 +351,7 @@ Participants
 \end_layout
 
 \begin_layout Standard
-Involved participants \SpecialChar \ldots{}
+Involved participants \SpecialChar ldots
 
 \end_layout
 
@@ -356,7 +360,7 @@ Procedures
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  and procedures
 \end_layout
 
@@ -365,7 +369,7 @@ Results
 \end_layout
 
 \begin_layout Standard
-And what came out \SpecialChar \ldots{}
+And what came out \SpecialChar ldots
 
 \end_layout
 
@@ -374,7 +378,7 @@ Descriptives
 \end_layout
 
 \begin_layout Standard
-This \SpecialChar \ldots{}
+This \SpecialChar ldots
 
 \end_layout
 
@@ -383,7 +387,7 @@ Analysis
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  and that.
 \end_layout
 
@@ -397,7 +401,8 @@ status open
 
 \begin_layout Plain Layout
 The APA class has a hardcoded bibliography style (apacite).
- So whatever you chose below in the BibTeX setting as a bibliography style,
+ So whatever you chose below in the Bib\SpecialCharNoPassThru TeX
+ setting as a bibliography style,
  it will be ignored.
 \end_layout
 

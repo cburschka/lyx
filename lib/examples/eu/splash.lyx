@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/eu/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -70,33 +71,38 @@
 \begin_body
 
 \begin_layout Title
-Ongietorri LyX-era!
+Ongietorri \SpecialCharNoPassThru LyX
+-era!
 \end_layout
 
 \begin_layout Section*
-LyX erabiltzean lehendabizi jakin beharreko gauzak
+\SpecialCharNoPassThru LyX
+ erabiltzean lehendabizi jakin beharreko gauzak
 \end_layout
 
 \begin_layout Enumerate
-LyX-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
+\SpecialCharNoPassThru LyX
+-ek laguntza eskuliburu bikain bat dauka (erabil ezazu).
  
 \family sans
-Laguntza\SpecialChar \menuseparator
+Laguntza\SpecialChar menuseparator
 Sarrera
 \family default
  zerrenda aukerarekin hasi (eskuliburuei buruzko sarreratxo bat da).
  Ondoren, 
 \family sans
-Laguntza\SpecialChar \menuseparator
+Laguntza\SpecialChar menuseparator
 Tutoretza-n
 \family default
- laguntzaz LyX erabiltzen ikasi
+ laguntzaz \SpecialCharNoPassThru LyX
+ erabiltzen ikasi
 \family sans
 .
 \end_layout
 
 \begin_layout Enumerate
-LyX 
+\SpecialCharNoPassThru LyX
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -122,10 +128,11 @@ Laguntzako eskuliburuak irakurtzea komeni zaizkizula esan al dizugu?
 \end_layout
 
 \begin_layout Enumerate
-LyX-en irteera emaitzak (output) itxura hobezina dauka.
+\SpecialCharNoPassThru LyX
+-en irteera emaitzak (output) itxura hobezina dauka.
  Begiztatzeko 
 \family sans
-Fitxategia\SpecialChar \menuseparator
+Fitxategia\SpecialChar menuseparator
 Dvi
 \begin_inset space ~
 \end_inset
@@ -137,14 +144,19 @@ ikusi
 
 \begin_layout Enumerate
 Bai,.
- LyX-ek LaTeX-en betebeharreko ia dena errepika (edo landu) dezake.
- Eta bai, LyX-ek LaTeX-eko fitxategiak beregana (
+ \SpecialCharNoPassThru LyX
+-ek \SpecialCharNoPassThru LaTeX
+-en betebeharreko ia dena errepika (edo landu) dezake.
+ Eta bai, \SpecialCharNoPassThru LyX
+-ek \SpecialCharNoPassThru LaTeX
+-eko fitxategiak beregana (
 \family sans
-Fitxategia\SpecialChar \menuseparator
+Fitxategia\SpecialChar menuseparator
 Barneratu
 \family default
 ) ditzake.
- LaTeX-eko erabiltzaile adituei 
+ \SpecialCharNoPassThru LaTeX
+-eko erabiltzaile adituei 
 \emph on
 Tutoretzako
 \emph default
@@ -152,13 +164,17 @@ Tutoretzako
 \begin_inset Quotes eld
 \end_inset
 
-LyX LaTeX-eko erabiltzaileentzat
+\SpecialCharNoPassThru LyX
+ \SpecialCharNoPassThru LaTeX
+-eko erabiltzaileentzat
 \begin_inset Quotes erd
 \end_inset
 
  alea irakurtzea komeni zaie, eta gainerakoentzat gainetik begiradatxo bat
  ematearekin nahikoa izango da.
- Beste irakurle guztiontzat (ez zaitez kezkatu), LyX erabiltzeko LaTeX jakin
+ Beste irakurle guztiontzat (ez zaitez kezkatu), \SpecialCharNoPassThru LyX
+ erabiltzeko \SpecialCharNoPassThru LaTeX
+ jakin
  beharrik ez dago.
 \end_layout
 
@@ -173,14 +189,15 @@ lyxrc
  fitxategia landuz).
  
 \family sans
-Laguntza\SpecialChar \menuseparator
+Laguntza\SpecialChar menuseparator
 Egokitua
 \family default
  ikus ezazu.
 \end_layout
 
 \begin_layout Enumerate
-LyX-en Interneteko orria 
+\SpecialCharNoPassThru LyX
+-en Interneteko orria 
 \family typewriter
 
 \begin_inset Flex URL
@@ -199,7 +216,8 @@ http://www.lyx.org/
  Bertan programari buruzko informazioa lortu, gutun zerrendetan harpidetu,
  
 \emph on
-LyX-eko Marrazkidun Ibilalditxoa (edo Tour)
+\SpecialCharNoPassThru LyX
+-eko Marrazkidun Ibilalditxoa (edo Tour)
 \emph default
 -a lortu eta gauza gehiago egin dezakezu.
 \end_layout

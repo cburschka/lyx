@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/es/
 \textclass europecv
 \begin_preamble
 \usepackage{graphicx}
@@ -41,16 +42,16 @@
 \language_package default
 \inputencoding utf8x
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -110,7 +111,10 @@
 status open
 
 \begin_layout Plain Layout
-Exportar con XeTeX y LuaTeX (con tipografías no TeX o en modo compatible
+Exportar con Xe\SpecialCharNoPassThru TeX
+ y Lua\SpecialCharNoPassThru TeX
+ (con tipografías no \SpecialCharNoPassThru TeX
+ o en modo compatible
  8-bit) no funciona porque, por el momento, la carga de inputenc con utf8x
  está incrustada en el código fuente de europecv.cls.
 \end_layout
@@ -187,7 +191,8 @@ Títulos académicos
 status open
 
 \begin_layout Plain Layout
-2001--2005
+2001\twohyphens
+2005
 \end_layout
 
 \end_inset
@@ -200,17 +205,18 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 status open
 
 \begin_layout Plain Layout
-2005--2006
+2005\twohyphens
+2006
 \end_layout
 
 \end_inset
 
-Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar \ldots{}
+Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Section
-Tesis, Tesina\SpecialChar \ldots{}
+Tesis, Tesina\SpecialChar ldots
 
 \end_layout
 
@@ -266,7 +272,8 @@ Experiencia
 status open
 
 \begin_layout Plain Layout
-Febrero 2006--actual
+Febrero 2006\twohyphens
+actual
 \end_layout
 
 \end_inset
@@ -279,7 +286,8 @@ Mantenedor de proyectos de software libre
 status open
 
 \begin_layout Plain Layout
-2005--2006
+2005\twohyphens
+2006
 \end_layout
 
 \end_inset
@@ -700,7 +708,9 @@ Tipograpía
 
 \end_inset
 
- LaTeX, ConTeXt, Scribus, QuarkXPress
+ \SpecialCharNoPassThru LaTeX
+, Con\SpecialCharNoPassThru TeX
+t, Scribus, QuarkXPress
 \end_layout
 
 \begin_layout Item
@@ -813,7 +823,8 @@ Referencias
 [1] Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to LaTeX Fourth Edition.
+A Guide to \SpecialCharNoPassThru LaTeX
+ Fourth Edition.
 
 \emph default
  Addison-Wesley, 2003
@@ -852,7 +863,8 @@ newline%
 
 [2] Leslie Lamport: 
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, second edition, 1994
@@ -867,7 +879,8 @@ Publicaciones
 status open
 
 \begin_layout Plain Layout
-También se pueden usar referencias BibTeX:
+También se pueden usar referencias Bib\SpecialCharNoPassThru TeX
+:
 \end_layout
 
 \end_inset

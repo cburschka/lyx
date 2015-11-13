@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/springer/
 \textclass svmono
 \use_default_options false
 \master svmono_book-master.lyx
@@ -10,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -143,7 +144,7 @@ bla
 Section Heading 2
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Section-HeadingA-2"
+name "subsec:Section-HeadingA-2"
 
 \end_inset
 
@@ -204,6 +205,11 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -344,7 +350,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-22 (19--25) 
+22 (19\twohyphens
+25) 
 \end_layout
 
 \end_inset
@@ -420,7 +427,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-21--22 
+21\twohyphens
+22 
 \end_layout
 
 \end_inset
@@ -458,7 +466,8 @@ mRNA
 \begin_inset Text
 
 \begin_layout Plain Layout
-24--26 
+24\twohyphens
+26 
 \end_layout
 
 \end_inset

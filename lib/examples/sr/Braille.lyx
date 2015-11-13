@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/sr/
 \textclass article
 \begin_preamble
 % color greyed-out notes blue
@@ -17,16 +18,16 @@ braille
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -92,7 +93,8 @@ braille
 \begin_body
 
 \begin_layout Title
-Kako pisati Brajevo pismo u LyX-u
+Kako pisati Brajevo pismo u \SpecialCharNoPassThru LyX
+-u
 \end_layout
 
 \begin_layout Author
@@ -105,12 +107,15 @@ Serbian translation: Zoran T.
 \end_layout
 
 \begin_layout Standard
-Prvo opšta napomena: Brajeva azbuka koju kreirate sa LaTeX-om nije kompletna!
+Prvo opšta napomena: Brajeva azbuka koju kreirate sa \SpecialCharNoPassThru LaTeX
+-om nije kompletna!
  Brajevo pismo može da ima 6 ili 8
 \begin_inset space \thinspace{}
 \end_inset
 
-tačkica, dok LaTeX (i stoga LyX) podržava samo Brajevo pismo od 6
+tačkica, dok \SpecialCharNoPassThru LaTeX
+ (i stoga \SpecialCharNoPassThru LyX
+) podržava samo Brajevo pismo od 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -118,7 +123,8 @@ tačkica bez akcentovanih znakova.
 \end_layout
 
 \begin_layout Standard
-Za pisanje Brajevom azbukom sa LyX-om, učitajte modul 
+Za pisanje Brajevom azbukom sa \SpecialCharNoPassThru LyX
+-om, učitajte modul 
 \family sans
 Braille
 \family default
@@ -143,7 +149,8 @@ Braille
 
 (textsize)
 \family default
- iz LyX kompleta okruženja i pišite Vaš tekst.
+ iz \SpecialCharNoPassThru LyX
+ kompleta okruženja i pišite Vaš tekst.
  Za druga Brajeva okruženja samo uključite/isključite neke osobine kao što
  je opisano u nastavku; čuvajte ih praznim!
 \end_layout
@@ -202,7 +209,8 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
-Možete videti da LaTeX nije u stanju da napiše reči sa crticom pisane na
+Možete videti da \SpecialCharNoPassThru LaTeX
+ nije u stanju da napiše reči sa crticom pisane na
  Brajevom pismu, što treba da uradite ručno.
 \end_layout
 
@@ -258,11 +266,13 @@ status open
 \series bold
 Note:
 \series default
- LyX i LaTeX vlastita imena 
+ \SpecialCharNoPassThru LyX
+ i \SpecialCharNoPassThru LaTeX
+ vlastita imena 
 \begin_inset Quotes eld
 \end_inset
 
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset Quotes erd
 \end_inset
 
@@ -270,7 +280,7 @@ LaTeX
 \begin_inset Quotes eld
 \end_inset
 
-LaTeX2e
+\SpecialCharNoPassThru LaTeX2e
 \begin_inset Quotes erd
 \end_inset
 
@@ -278,7 +288,7 @@ LaTeX2e
 \begin_inset Quotes eld
 \end_inset
 
-TeX
+\SpecialCharNoPassThru TeX
 \begin_inset Quotes erd
 \end_inset
 
@@ -286,11 +296,12 @@ TeX
 \begin_inset Quotes eld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes erd
 \end_inset
 
- moraju da se ubace kao TeX kod, što je prikazano u sledećem primeru:
+ moraju da se ubace kao \SpecialCharNoPassThru TeX
+ kod, što je prikazano u sledećem primeru:
 \end_layout
 
 \end_inset
@@ -318,7 +329,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -336,7 +347,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -484,7 +495,7 @@ Brajeva slova mogu alternativno biti kreirana pisanjem broja u Brajevom
  kutiji.
  Brajeva kutija je ubačena u meni
 \family sans
- Insert\SpecialChar \menuseparator
+ Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
@@ -599,7 +610,8 @@ brailleunit
 
 mm.
  Da biste dobili primer dvostruke veličine Brajevog pisma koristite sledeću
- komandu u TeX kodu u vašem dokumentu:
+ komandu u \SpecialCharNoPassThru TeX
+ kodu u vašem dokumentu:
 \end_layout
 
 \begin_layout Standard

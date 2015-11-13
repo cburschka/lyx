@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 493
+\lyxformat 501
 \begin_document
 \begin_header
 \origin unavailable
@@ -71,16 +71,16 @@ pdfform
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -334,7 +334,7 @@ get
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Submit-button"
+reference "subsec:Submit-button"
 
 \end_inset
 
@@ -1141,7 +1141,7 @@ if your push button border color is red (the default), otherwise use the
 Submit button
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Submit-button"
+name "subsec:Submit-button"
 
 \end_inset
 
@@ -2256,7 +2256,7 @@ View the form in fullscreen
 Action button customization
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Action-button-customization"
+name "subsec:Action-button-customization"
 
 \end_inset
 

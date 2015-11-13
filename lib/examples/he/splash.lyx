@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/he/
 \textclass heb-article
 \begin_preamble
 \frenchspacing
@@ -12,16 +13,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -75,13 +76,13 @@
 \begin_layout Title
 ברוכים הבאים ל- 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Section*
 כמה נקודות שחשוב לדעת על שימוש ב- 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
@@ -96,7 +97,7 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  מגיע עם מסמכי תיעוד ועזרה מצויינים 
 \lang english
@@ -126,7 +127,7 @@ LyX
 \family default
  על מנת ללמוד איך להשתמש ב- 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
 .
 \end_layout
@@ -134,7 +135,7 @@ LyX
 \begin_layout Enumerate
 אנחנו מתייחסים אל 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  כאל "מעבד מסמכים".
  הוא מתוכנן להיות שונה ממעבד תמלילים רגיל כך שמלאכת כתיבת המסמכים תהיה קלה
@@ -155,7 +156,7 @@ status collapsed
 \begin_layout Enumerate
 הפלט שיוצא מ- 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  נראה פשוט נהדר 
 \lang english
@@ -190,20 +191,20 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  מסוגל לחקות )כמעט( את כל האפשרויות של 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 , והוא מסוגל לייבא קבצי 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 .
  משתמשי 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
  מנוסים יכולים לפיכך לקרוא את "השיעור המודרך" ברפרוף ולהעמיק בחלק 
 \begin_inset Quotes prd
@@ -211,19 +212,19 @@ LaTeX
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  למשתמשי 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
 " )כל השאר אל תדאגו! לא צריך לדעת 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang hebrew
  בשביל להשתמש ב- 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
 (.
 \end_layout
@@ -240,7 +241,7 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  מכיל מגוון של אפשרויות המיועדות עבור משתמשים הכותבים או קוראים שפות נוספות
  חוץ מאנגלית.
@@ -265,7 +266,7 @@ LyX
 \begin_layout Enumerate
 דף הבית של 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
  הוא: 
 \begin_inset Flex URL
@@ -282,7 +283,7 @@ http://www.lyx.org
  באתר זה תוכלו לקבל מידע נוסף על התוכנה, להרשם לרשימות הדיוור וללמוד מהסיור
  המודרך של 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang hebrew
 .
 \end_layout

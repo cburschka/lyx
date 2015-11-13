@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/eu/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -135,21 +136,25 @@ beharrik ez edukitzea.
 \end_layout
 
 \begin_layout Standard
-1.1 LyX-ek nola lantzen duen...............1
+1.1 \SpecialCharNoPassThru LyX
+-ek nola lantzen duen...............1
 \end_layout
 
 \begin_layout Standard
-1.2 LyX Zergaitik da hobeagoa...............1
+1.2 \SpecialCharNoPassThru LyX
+ Zergaitik da hobeagoa...............1
 \end_layout
 
 \begin_layout Standard
 2.
- LyX-en Ezaugarriak
+ \SpecialCharNoPassThru LyX
+-en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
 3.
- LyX-eko gauz gehiago erabiltzean saiakera hutsak
+ \SpecialCharNoPassThru LyX
+-eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
 \begin_layout Standard
@@ -158,7 +163,23 @@ beharrik ez edukitzea.
 \end_layout
 
 \begin_layout Standard
----------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -177,19 +198,26 @@ Argibidea: Ataleko izenburuek gehiago nabarmendu beharko ziren.
 \end_layout
 
 \begin_layout Standard
-LyX-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
+\SpecialCharNoPassThru LyX
+-en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
 \end_layout
 
 \begin_layout Standard
-1.1 LyX-ek nola lantzen duen
+1.1 \SpecialCharNoPassThru LyX
+-ek nola lantzen duen
 \end_layout
 
 \begin_layout Standard
-LyX-ek LaTeX erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
+\SpecialCharNoPassThru LyX
+-ek \SpecialCharNoPassThru LaTeX
+ erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
  prestaketa sisteman.
- TeX (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
+ \SpecialCharNoPassThru TeX
+ (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
  eraikia izan zen.
- LaTeX LyX-en antzeko izakera baten gain diseinatuta dago.
+ \SpecialCharNoPassThru LaTeX
+ \SpecialCharNoPassThru LyX
+-en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen ([1] erreferentzia ikusi) 
 \begin_inset Note Note
 status collapsed
@@ -225,7 +253,8 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  islada izan behar du.
  Aipamenak eta ordenagailu programek, egitura ezberdineko elementuak izaterakoan
 , bata bestearengandik begi bistara ezberdindu beharra daukate [...] Eta nola
- LaTeX-ek zuzenean ezin zaituen ulertu, zerorrek eskuz agindu berezi batzuek
+ \SpecialCharNoPassThru LaTeX
+-ek zuzenean ezin zaituen ulertu, zerorrek eskuz agindu berezi batzuek
  idatziz nahi duzun logika egitura esan behar diozu [...] Idazki bat idazten
  duzun bitartean, bere logikaren egituran arduratu beharra daukazu, ez bere
  itxuran.
@@ -246,14 +275,19 @@ Argibidea: Hau AIPAMEN bat da.
 \end_layout
 
 \begin_layout Standard
-1.2 LyX zergatik da hobeagoa
+1.2 \SpecialCharNoPassThru LyX
+ zergatik da hobeagoa
 \end_layout
 
 \begin_layout Standard
-LyX erabiltzaileentzat LaTeX baino erabilgarriagoa izan daiteke.
- Askoz ere erabil errazagokoa da, LaTeX zer den ikasi beharrik ez bait daukazu
+\SpecialCharNoPassThru LyX
+ erabiltzaileentzat \SpecialCharNoPassThru LaTeX
+ baino erabilgarriagoa izan daiteke.
+ Askoz ere erabil errazagokoa da, \SpecialCharNoPassThru LaTeX
+ zer den ikasi beharrik ez bait daukazu
  (azken finean ia programaketa hizkuntza denez).
- LyX ia beste 
+ \SpecialCharNoPassThru LyX
+ ia beste 
 \begin_inset Quotes eld
 \end_inset
 
@@ -261,7 +295,8 @@ ikusten duzuna lortzen duzu
 \begin_inset Quotes erd
 \end_inset
 
--n idazki prozesatzaileen bezalakoa da, LyX ordea 
+-n idazki prozesatzaileen bezalakoa da, \SpecialCharNoPassThru LyX
+ ordea 
 \begin_inset Quotes eld
 \end_inset
 
@@ -270,7 +305,8 @@ ikusten duzuna esan nahi duzu
 \end_inset
 
  da.
- Era honetan, idazki prozesatzaileen erreztasuna LaTeX-en indarrarekin batzen
+ Era honetan, idazki prozesatzaileen erreztasuna \SpecialCharNoPassThru LaTeX
+-en indarrarekin batzen
  da.
  Eta hau onuragarria da.
  Horretaz gain, fitxategiaren egitura erabiltzen duzun ordenagailu/sistema-tik
@@ -280,11 +316,13 @@ ikusten duzuna esan nahi duzu
 
 \begin_layout Standard
 2.
- LyX-en Ezaugarriak
+ \SpecialCharNoPassThru LyX
+-en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
-LyX-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
+\SpecialCharNoPassThru LyX
+-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
  ditu (bestela, zertarako nahiko zenuke erabiltzea?
 \begin_inset Note Note
 status collapsed
@@ -315,16 +353,19 @@ Argibidea: Nabarmendu ezazu!
 \end_layout
 
 \begin_layout Standard
-* Margenak eta Orri Oineko Oharren zenbaketetaz LyX bera arduratzen da
+* Margenak eta Orri Oineko Oharren zenbaketetaz \SpecialCharNoPassThru LyX
+ bera arduratzen da
 \end_layout
 
 \begin_layout Standard
-* LyX-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
+* \SpecialCharNoPassThru LyX
+-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
  du.
 \end_layout
 
 \begin_layout Standard
-LyX beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
+\SpecialCharNoPassThru LyX
+ beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  1.2 atala ikusi, 1.
  orrialdean aurkitzen da.
 \begin_inset Note Note
@@ -349,7 +390,8 @@ Eta ataletako zenbakiak aldatzen baditugu?
 
 \begin_layout Standard
 3.
- LyX-eko gauz gehiago erabiltzean saiakera hutsak
+ \SpecialCharNoPassThru LyX
+-eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
 \begin_layout Standard
@@ -393,7 +435,8 @@ Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
 \end_layout
 
 \begin_layout Standard
-LyX idazki prozezatzaile
+\SpecialCharNoPassThru LyX
+ idazki prozezatzaile
 \end_layout
 
 \begin_layout Standard
@@ -451,7 +494,22 @@ Beste ekuazio ederrenetakoa kalkulu oinarria da: f'(x) limitzat definitzen
 \end_layout
 
 \begin_layout Standard
-------------------------------------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -460,7 +518,8 @@ ERREFERENTZIAK
 
 \begin_layout Standard
 [1] Lamport, Leslie.
- LaTeX: A Document Preparation System.
+ \SpecialCharNoPassThru LaTeX
+: A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.
 \end_layout
 

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/es/
 \textclass article
 \begin_preamble
 % color greyed-out notes blue
@@ -17,16 +18,16 @@ braille
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -91,7 +92,7 @@ braille
 \begin_body
 
 \begin_layout Title
-Cómo escribir Braille con LyX
+Cómo escribir Braille con \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Author
@@ -111,12 +112,14 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-Nota preliminar: ¡El Braille que se puede componer con LaTeX no es profesional!
+Nota preliminar: ¡El Braille que se puede componer con \SpecialCharNoPassThru LaTeX
+ no es profesional!
  El Braille profesional puede ser de 6 u 8
 \begin_inset space \thinspace{}
 \end_inset
 
-puntos, mientras que LaTeX sólo soporta Braille de 6
+puntos, mientras que \SpecialCharNoPassThru LaTeX
+ sólo soporta Braille de 6
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -124,7 +127,8 @@ puntos sin caracteres acentuados.
 \end_layout
 
 \begin_layout Standard
-Para escribir Braille con LyX, hay que cargar antes el módulo 
+Para escribir Braille con \SpecialCharNoPassThru LyX
+, hay que cargar antes el módulo 
 \family sans
 Braille
 \family default
@@ -133,7 +137,7 @@ Braille
 Módulos
 \family default
  de la configuración del documento.
- Después, al final del cuadro desplegable de selección de entornos de LyX
+ Después, al final del cuadro desplegable de selección de entornos de \SpecialCharNoPassThru LyX
  se selecciona el entorno de párrafo 
 \family sans
 Braille
@@ -205,7 +209,8 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Como se puede ver, LaTeX no es capaz de dividir con guiones las palabras
+Como se puede ver, \SpecialCharNoPassThru LaTeX
+ no es capaz de dividir con guiones las palabras
  escritas en Braille.
  Hay que hacerlo manualmente.
 \end_layout
@@ -262,11 +267,13 @@ status open
 \series bold
 Nota:
 \series default
- Los nombres propios de LyX y LaTeX 
+ Los nombres propios de \SpecialCharNoPassThru LyX
+ y \SpecialCharNoPassThru LaTeX
+ 
 \begin_inset Quotes fld
 \end_inset
 
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \begin_inset Quotes frd
 \end_inset
 
@@ -274,7 +281,7 @@ LaTeX
 \begin_inset Quotes fld
 \end_inset
 
-LaTeX2e
+\SpecialCharNoPassThru LaTeX2e
 \begin_inset Quotes frd
 \end_inset
 
@@ -282,7 +289,7 @@ LaTeX2e
 \begin_inset Quotes fld
 \end_inset
 
-TeX
+\SpecialCharNoPassThru TeX
 \begin_inset Quotes frd
 \end_inset
 
@@ -290,11 +297,12 @@ TeX
 \begin_inset Quotes fld
 \end_inset
 
-LyX
+\SpecialCharNoPassThru LyX
 \begin_inset Quotes frd
 \end_inset
 
- deben insertarse en código TeX, como en el siguiente ejemplo:
+ deben insertarse en código \SpecialCharNoPassThru TeX
+, como en el siguiente ejemplo:
 \end_layout
 
 \end_inset
@@ -348,7 +356,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -367,7 +375,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \end_inset
@@ -485,7 +493,7 @@ Los caracteres en Braille se pueden crear de forma alternativa escribiendo
  un número en un recuadro Braille.
  Un recuadro Braille se inserta con el menú 
 \family sans
-Insertar\SpecialChar \menuseparator
+Insertar\SpecialChar menuseparator
 Objeto personalizado
 \family default
 .
@@ -597,7 +605,8 @@ mm.
 \end_inset
 
 e., Braille de doble tamaño con los puntos diminutos también de doble tamaño,
- se emplea el siguiente comando en código TeX: 
+ se emplea el siguiente comando en código \SpecialCharNoPassThru TeX
+: 
 \end_layout
 
 \begin_layout Standard

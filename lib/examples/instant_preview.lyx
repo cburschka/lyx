@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass article
 \begin_preamble
 \usepackage{etex}
@@ -21,16 +22,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -104,7 +105,8 @@ reference "sec:PSTricks"
 
 , only the Postscript or PDF (ps2pdf) output formats will correctly render
  the included images.
- However, the PDF (XeTeX) output seems to also work, while trying to typeset
+ However, the PDF (Xe\SpecialCharNoPassThru TeX
+) output seems to also work, while trying to typeset
  the document with 
 \family typewriter
 pdflatex

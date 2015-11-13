@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass jasatex
 \options showkeys
 \use_default_options false
@@ -10,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -75,34 +76,40 @@
 status open
 
 \begin_layout Plain Layout
-Update: the ASA does not recommend JASATeX for submission.
+Update: the ASA does not recommend JASA\SpecialCharNoPassThru TeX
+ for submission.
  See 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://jasa.peerx-press.org/html/jasa/Using_LaTeX_for_JASA.html
+http://jasa.peerx-press.org/html/jasa/Using_\SpecialCharNoPassThru LaTeX
+_for_JASA.html
 \end_layout
 
 \end_inset
 
 .
- Note that the JASATeX .cls file has not been updated in years and that lualatex
+ Note that the JASA\SpecialCharNoPassThru TeX
+ .cls file has not been updated in years and that lualatex
  and xelatex might enter into infinit loops if system fonts are used.
 \end_layout
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to the Journal
+This is a template \SpecialCharNoPassThru LyX
+ file for articles to be submitted to the Journal
  of the Acoustical Society of America (JASA).
- How to install the JASAS LaTeX class to your LaTeX system is explained
+ How to install the JASAS \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained
  in 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Layouts/JASATeX
+http://wiki.lyx.org/Layouts/JASA\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -244,7 +251,8 @@ Charlie.Author
 status collapsed
 
 \begin_layout Plain Layout
-Tildes have to be inserted as TeX code.
+Tildes have to be inserted as \SpecialCharNoPassThru TeX
+ code.
 \end_layout
 
 \end_inset
@@ -432,11 +440,17 @@ Appendix, only when needed, inserted behind the acknowledgments but before
 \end_layout
 
 \begin_layout Standard
------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\twohyphens
 \end_layout
 
 \begin_layout Standard
-You can use either BibTeX:
+You can use either Bib\SpecialCharNoPassThru TeX
+:
 \begin_inset Note Note
 status open
 
@@ -467,7 +481,13 @@ options "jasaauthyear"
 \end_layout
 
 \begin_layout Standard
----------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -484,7 +504,8 @@ key "key-1"
 
 Frank Mittelbach and Michel Goossens: 
 \emph on
-The LaTeX Companion Second Edition.
+The \SpecialCharNoPassThru LaTeX
+ Companion Second Edition.
 
 \emph default
  Addison-Wesley, 2004.
@@ -498,7 +519,8 @@ key "key-2"
 \end_inset
 
 Scott Pakin.
- The comprehensive LaTeX symbol list, 2005.
+ The comprehensive \SpecialCharNoPassThru LaTeX
+ symbol list, 2005.
 \end_layout
 
 \end_body

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/el/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -72,7 +73,7 @@
 \begin_layout Title
 Καλώς ήρθατε στο 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 !
 \end_layout
@@ -80,28 +81,28 @@ LyX
 \begin_layout Section*
 Τα πρώτα N πράγματα που πρέπει να γνωρίζετε όταν χρησιμοποιείτε το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Enumerate
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  συνοδεύεται από άριστη τεκμηρίωση — παρακαλούμε χρησιμοποιήστε την! Ξεκινήστε
  από το 
 \family sans
-Βοήθεια\SpecialChar \menuseparator
+Βοήθεια\SpecialChar menuseparator
 Εισαγωγή
 \family default
 , που θα σας εισάγει πολύ σύντομα στην τεκμηρίωση.
  Έπειτα, μάθετε να χρησιμοποιείτε το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  με το 
 \family sans
-Βοήθεια\SpecialChar \menuseparator
+Βοήθεια\SpecialChar menuseparator
 Διδακτικό Εγχειρίδιο
 \family default
 .
@@ -110,7 +111,7 @@ LyX
 \begin_layout Enumerate
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι αυτό που ονομάζουμε 
 \begin_inset Quotes eld
@@ -139,11 +140,11 @@ status collapsed
 \begin_layout Enumerate
 Η έξοδος του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  έχει φανταστική όψη! Επιλέξτε 
 \family sans
-Προβολή\SpecialChar \menuseparator
+Προβολή\SpecialChar menuseparator
 
 \lang english
 DVI
@@ -155,25 +156,25 @@ DVI
 \begin_layout Enumerate
 Ναι, το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  μπορεί να μιμηθεί (σχεδόν) όλη τη λειτουργικότητα του 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
  Και ναι, το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  μπορεί να εισάγει αρχεία 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
 .
  Οι έμπειροι χρήστες 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  καλύτερα να προσπεράσουν το υπόλοιπο της 
 \emph on
@@ -185,7 +186,9 @@ LaTeX
 
 
 \lang english
-LyX for LaTeX Users
+\SpecialCharNoPassThru LyX
+ for \SpecialCharNoPassThru LaTeX
+ Users
 \lang greek
 
 \begin_inset Quotes erd
@@ -194,11 +197,11 @@ LyX for LaTeX Users
 .
  (Όλοι οι υπόλοιποι: μην ανησυχείτε, δε χρειάζεται να γνωρίζετε 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang greek
  για να χρησιμοποιήσετε το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 .) 
 \end_layout
@@ -206,7 +209,7 @@ LyX
 \begin_layout Enumerate
 Το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  έχει πολλές δυνατότητες για ανθρώπους που διαβάζουν ή γράφουν σε γλώσσα
  διαφορετική από τα Αγγλικά.
@@ -214,7 +217,7 @@ LyX
  χαρακτηριστικά είναι εκτενώς ρυθμιζόμενα.
  Δείτε 
 \family sans
-Βοήθεια\SpecialChar \menuseparator
+Βοήθεια\SpecialChar menuseparator
 Προσαρμογή
 \family default
  για λεπτομέρειες.
@@ -223,7 +226,7 @@ LyX
 \begin_layout Enumerate
 Η ιστοσελίδα του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
  είναι 
 \family typewriter
@@ -245,15 +248,15 @@ http://www.lyx.org/
 .
  Βρείτε πληροφορίες για το 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , γίνετε συνδρομητές στις λίστες ηλεκτρονικού ταχυδρομείου του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , ακολουθήστε τη Γραφική Περιήγηση του 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang greek
 , και πολλά περισσότερα.
 \end_layout

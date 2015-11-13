@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/nl/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -90,33 +91,48 @@ Je zult snel genoeg ondervinden dat de instellingen voor opsommingstekens
 itemize
 \emph default
  is de standaard voor een lijst met opsommingen
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 het heeft zijn eigen teller die tot 4 niveaus diep gaat
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 elk niveau kan zijn eigen opsommingsteken hebben
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-LyX laat echter in alle gevallen een `*' zien
+\SpecialCharNoPassThru LyX
+ laat echter in alle gevallen een `*' zien
 \end_layout
 
 \end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Merk op dat LyX *NIET* de diepte van het niveau voor je controleert
+Merk op dat \SpecialCharNoPassThru LyX
+ *NIET* de diepte van het niveau voor je controleert
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Behalve dan dat hij voor alle lijsten, een door LaTeX opgelegde limiet van
+Behalve dan dat hij voor alle lijsten, een door \SpecialCharNoPassThru LaTeX
+ opgelegde limiet van
  6 hanteert voor de diepte van het niveau.
 \end_layout
 
@@ -142,7 +158,7 @@ ayout->
 \bar under
 D
 \bar default
-ocument\SpecialChar \ldots{}
+ocument\SpecialChar ldots
  menu en door op de knop 
 \begin_inset Quotes eld
 \end_inset
@@ -1155,14 +1171,16 @@ Ding 1 (PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS staat voor New Font Selecting Scheme dat in LaTeX2e wordt gebruikt.
+NFSS staat voor New Font Selecting Scheme dat in \SpecialCharNoPassThru LaTeX2e
+ wordt gebruikt.
  In feite veranderde het de font commando's van {
 \backslash
 bf ...} in 
 \backslash
 textbf{...}, alhoewel de echte veranderingen inwendig waren.
  PS staat voor PostScript.
- PSNFSS is een verzameling LaTeX bestanden die NFSS ondersteuning geven
+ PSNFSS is een verzameling \SpecialCharNoPassThru LaTeX
+ bestanden die NFSS ondersteuning geven
  voor de basisset van 35 PostScript fonts die in veel PostScript printers
  te vinden zijn.
  Is dat duidelijk? Nog vragen?

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -34,16 +35,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -129,7 +130,8 @@ To be able to create
 \noun on
 Feynman
 \noun default
- diagrams, the LaTeX-package 
+ diagrams, the \SpecialCharNoPassThru LaTeX
+-package 
 \series bold
 feyn
 \series default
@@ -167,6 +169,9 @@ propagators
 \end_inset
 
 , for example:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -825,7 +830,8 @@ Align Environments
 \begin_inset Quotes erd
 \end_inset
 
- of LyX's Math manual).
+ of \SpecialCharNoPassThru LyX
+'s Math manual).
 \end_layout
 
 \end_inset
@@ -848,7 +854,8 @@ target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
 
 \end_inset
 
- of the LaTeX package 
+ of the \SpecialCharNoPassThru LaTeX
+ package 
 \series bold
 feyn
 \end_layout

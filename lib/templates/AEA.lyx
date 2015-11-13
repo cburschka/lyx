@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 476
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass AEA
 \begin_preamble
 % Uncomment the line below if you wish to use the mathtime package:
@@ -19,16 +20,16 @@
 \language_package none
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -84,9 +85,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to Journals of
+This is a template \SpecialCharNoPassThru LyX
+ file for articles to be submitted to Journals of
  the American Economic Association (AEA).
- How to install the AEA LaTeX class to your LaTeX system is explained in
+ How to install the AEA \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained in
  
 \begin_inset Flex URL
 status open
@@ -113,10 +117,10 @@ status open
 \begin_layout Enumerate
 A journal name must be provided in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
-Class options\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class options\SpecialChar menuseparator
 Custom
 \family default
 .
@@ -189,9 +193,10 @@ mathtime
 \family default
 in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaTeX Preamble
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialCharNoPassThru LaTeX
+ Preamble
 \family default
 .
 \end_layout
@@ -199,7 +204,8 @@ LaTeX Preamble
 \begin_layout Enumerate
 Set 
 \family sans
-LaTeX font encoding
+\SpecialCharNoPassThru LaTeX
+ font encoding
 \family default
  to 
 \begin_inset Quotes eld
@@ -211,8 +217,8 @@ None (no fontenc)
 
  in menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Fonts
 \family default
 .
@@ -224,12 +230,14 @@ T1
 \begin_inset Quotes erd
 \end_inset
 
- may cause font problems in LaTeX export.)
+ may cause font problems in \SpecialCharNoPassThru LaTeX
+ export.)
 \end_layout
 
 \begin_layout Enumerate
 When you finalize your manuscript for submission, clean up unnecessary preambles
- in the exported LaTeX file.
+ in the exported \SpecialCharNoPassThru LaTeX
+ file.
  You need to minimize the usage of packages.
 \end_layout
 
@@ -589,8 +597,10 @@ An example Algorithm
 \end_layout
 
 \begin_layout Standard
-References here (manual or BibTeX).
- If you are using BibTeX you must use the bibliography style 
+References here (manual or Bib\SpecialCharNoPassThru TeX
+).
+ If you are using Bib\SpecialCharNoPassThru TeX
+ you must use the bibliography style 
 \series bold
 aea
 \series default
@@ -603,7 +613,9 @@ all cited references
 \begin_inset Quotes erd
 \end_inset
 
- is selected for the BibTeX bibliography, then BibTeX will complain if there
+ is selected for the Bib\SpecialCharNoPassThru TeX
+ bibliography, then Bib\SpecialCharNoPassThru TeX
+ will complain if there
  is no citation in the document so let
 \begin_inset Quotes ers
 \end_inset

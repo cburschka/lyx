@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass chess
 \begin_preamble
 \usepackage{multicol}
@@ -17,16 +18,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -137,7 +138,8 @@ Note:
 \series bold
 Note:
 \series default
- Depending on your LaTeX-system you might have to add the option 
+ Depending on your \SpecialCharNoPassThru LaTeX
+-system you might have to add the option 
 \begin_inset Quotes fld
 \end_inset
 
@@ -171,7 +173,8 @@ begin{multicols}{2}
 
 \begin_layout Standard
 The following game was played at the IECC (International Email Chess Club).
- It is presented as an example of the fun you can have with LyX's new chess
+ It is presented as an example of the fun you can have with \SpecialCharNoPassThru LyX
+'s new chess
  layout (based on the 
 \begin_inset Quotes eld
 \end_inset

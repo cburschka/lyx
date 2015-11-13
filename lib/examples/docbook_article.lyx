@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass docbook
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -158,6 +159,9 @@ This is an example with several nested lists.
 
 \begin_layout Itemize
 item 1
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -167,6 +171,9 @@ item 2
 
 \begin_layout Description
 new item
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -346,7 +353,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-long, very long\SpecialChar \ldots{}
+long, very long\SpecialChar ldots
  :-)
 \end_layout
 
@@ -570,6 +577,9 @@ target "http://www.oasis-open.org/docbook/documentation/reference/"
 
 \begin_layout Quotation
 It is also possible to insert margin notes inside some environments.
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -615,6 +625,9 @@ These environments are easily added to the docbook layout.
 \end_inset
 
  and so is the follow:
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -642,6 +655,9 @@ This is a small list of the remaining tasks:
 
 \begin_layout Itemize
 Expand the number of layouts
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -672,6 +688,9 @@ important
 \end_deeper
 \begin_layout Itemize
 Compose other layout files, besides article
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper
@@ -700,6 +719,9 @@ refentry
 \end_deeper
 \begin_layout Itemize
 goodies
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_deeper

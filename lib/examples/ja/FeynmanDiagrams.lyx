@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/ja/
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -44,16 +45,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -125,7 +126,8 @@
 \noun on
 Feynman
 \noun default
- diagram）を利用するためには、LaTeXパッケージ
+ diagram）を利用するためには、\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 feyn
 \series default
@@ -140,6 +142,9 @@ Diagram
 
 \begin_layout Standard
 以下に示すように、「分子」や「伝搬関数」として振る舞うコマンドを、行列の項目として入力することができます。
+\begin_inset Separator parbreak
+\end_inset
+
 \end_layout
 
 \begin_layout Standard
@@ -780,7 +785,8 @@ key "Feyn"
 
 \end_inset
 
-LaTeXパッケージ
+\SpecialCharNoPassThru LaTeX
+パッケージ
 \series bold
 feyn
 \series default

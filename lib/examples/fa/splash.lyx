@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/fa/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +10,16 @@
 \language_package default
 \inputencoding utf8
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -72,7 +73,7 @@
 \begin_layout Title
 به 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  خوش آمدید!
 \end_layout
@@ -80,7 +81,7 @@ LyX
 \begin_layout Section*
 چند چیزی که برای استفاده از 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  باید بدانید
 \end_layout
@@ -97,18 +98,18 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  مستنداتی عالی دارد
 \lang english
----
+\threehyphens
 \lang farsi
 لطفا از آن استفاده کنید! از قسمت 
 \family sans
 \lang english
 Help
 \lang farsi
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang english
 Introduction
@@ -120,7 +121,7 @@ Introduction
 \lang english
 Help
 \lang farsi
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang english
 Tutorial
@@ -128,7 +129,7 @@ Tutorial
 \lang farsi
  نحوه استفاده از 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  را بیاموزید.
 \end_layout
@@ -145,12 +146,12 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  چیزی است که به آن »پردازشگر متن« می‌گویند.
  از لحاظ طراحی، با دیگر پردازشگرهای متن معمول تفاوت دارد
 \lang english
----
+\threehyphens
 \lang farsi
 به گونه‌ای که نوشتن متون را ساده‌تر می‌کند.
  ولی تفاوتی اندک، در نتیجه نهراسید.
@@ -170,14 +171,14 @@ status collapsed
 \begin_layout Enumerate
 خروجی 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  بسیار زیبا به نظر می‌رسد! 
 \family sans
 \lang english
 View
 \lang farsi
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang english
 DVI
@@ -189,42 +190,42 @@ DVI
 \begin_layout Enumerate
 درست است! 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  می‌تواند (تا اندازه‌ی زیادی) تمام کارکرد 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang farsi
  را به شما ارائه دهد.
  همین طور 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  می‌تواند فایلهای 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang farsi
  را نیز وارد کند.
  کاربران مجرب 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang farsi
  باید از فصل »
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  برای کاربران 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang farsi
 « شروع کنند.
  (دیگران: برای استفاده از 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
 ،  لازم نیست 
 \lang english
-LaTeX
+\SpecialCharNoPassThru LaTeX
 \lang farsi
  بدانید.)
 \end_layout
@@ -241,7 +242,7 @@ status collapsed
 
 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  امکانات فراوانی برای کسانی که از زبانی غیر از انگلیسی برای خواندن و نوشتن
  استفاده می‌کنند فراهم می‌کند.
@@ -252,7 +253,7 @@ LyX
 \lang english
 Help
 \lang farsi
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang english
 Customization
@@ -263,7 +264,7 @@ Customization
 \begin_layout Enumerate
 سایت خانگی 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  در 
 \family typewriter
@@ -283,11 +284,11 @@ http://www.lyx.org/
  قرار دارد.
  در مورد 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  اطلاعات بگیرید، در لیست-نامه(ها) مشترک شوید، تور گرافیکی 
 \lang english
-LyX
+\SpecialCharNoPassThru LyX
 \lang farsi
  را ملاحظه کنید، و چیزهای دیگر.
 \end_layout

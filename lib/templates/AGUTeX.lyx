@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/templates/
 \textclass agutex
 \begin_preamble
 % OPTIONAL: To Create numbered lines uncomment these 2 lines:
@@ -47,16 +48,16 @@ theorems-std
 \language_package none
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -112,16 +113,20 @@ theorems-std
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to Journals of
+This is a template \SpecialCharNoPassThru LyX
+ file for articles to be submitted to Journals of
  the American Geophysical Union (AGU).
- How to install the AGUTeX LaTeX class to your LaTeX system is explained
+ How to install the AGU\SpecialCharNoPassThru TeX
+ \SpecialCharNoPassThru LaTeX
+ class to your \SpecialCharNoPassThru LaTeX
+ system is explained
  in 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Examples/AGUTeX
+http://wiki.lyx.org/Examples/AGU\SpecialCharNoPassThru TeX
 \end_layout
 
 \end_inset
@@ -143,10 +148,11 @@ status open
 \series bold
 Note
 \series default
-: To be able to compile AguTeX articles, assure that in the menu 
+: To be able to compile Agu\SpecialCharNoPassThru TeX
+ articles, assure that in the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Language
 \family default
  the option 
@@ -482,33 +488,45 @@ status collapsed
 \end_layout
 
 \begin_layout Section*
------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\twohyphens
 \end_layout
 
 \begin_layout Standard
-You can use either BibTeX.
+You can use either Bib\SpecialCharNoPassThru TeX
+.
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the LaTeX-file.
+phy entries embedded in the \SpecialCharNoPassThru LaTeX
+-file.
  This means you eventually have to copy the .bbl file into the latex file
  at this position.
  Follow these steps:
 \end_layout
 
 \begin_layout Enumerate
-Run LaTeX on your LaTeX file.
+Run \SpecialCharNoPassThru LaTeX
+ on your \SpecialCharNoPassThru LaTeX
+ file.
 \end_layout
 
 \begin_layout Enumerate
-Run BiBTeX on your LaTeX file.
+Run BiB\SpecialCharNoPassThru TeX
+ on your \SpecialCharNoPassThru LaTeX
+ file.
 \end_layout
 
 \begin_layout Enumerate
 Open the new .bbl file containing the reference list and copy all the contents
- into your LaTeX file here.
+ into your \SpecialCharNoPassThru LaTeX
+ file here.
 \end_layout
 
 \begin_layout Enumerate
@@ -520,7 +538,8 @@ bibliography commands.
 \end_layout
 
 \begin_layout Enumerate
-Run LaTeX on your new file before submitting.
+Run \SpecialCharNoPassThru LaTeX
+ on your new file before submitting.
  AGU does not want a .bib or a .bbl file, but asks that you copy in the contents
  of your .bbl file here.
 \end_layout
@@ -542,7 +561,13 @@ options "agu"
 \end_layout
 
 \begin_layout Section*
----------------------
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
+\threehyphens
 \end_layout
 
 \begin_layout Standard
@@ -569,7 +594,8 @@ IEEE Trans.
 \shape italic
 23
 \shape default
-, 648--650.
+, 648\twohyphens
+650.
 \end_layout
 
 \begin_layout Bibliography
@@ -592,7 +618,8 @@ IEEE Trans.
 \shape italic
 23
 \shape default
-, 648--650.
+, 648\twohyphens
+650.
 \end_layout
 
 \begin_layout Standard

@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 501
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/de/
 \textclass scrartcl
 \begin_preamble
 % to be able to use all color settings of pdfcomment
@@ -27,16 +28,16 @@ pdfcomment
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -125,7 +126,7 @@ Dies setzt gelb als voreingestellte Farbe für neue PDF-Kommentare, siehe
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:PDF-Kommentar-Einstellung"
+reference "subsec:PDF-Kommentar-Einstellung"
 
 \end_inset
 
@@ -146,7 +147,8 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-Das LaTeX-Paket 
+Das \SpecialCharNoPassThru LaTeX
+-Paket 
 \series bold
 pdfcomment
 \series default
@@ -187,7 +189,7 @@ Die verschiedenen Kommentar-Typen
 \begin_layout Standard
 Die verschiedenen Kommentar-Typen werden über das Menü 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen
 \family default
  eingefügt.
@@ -219,7 +221,7 @@ Wie bei allen PDF-Kommentar-Typen kann man viele Dinge zu den Optionen der
  Um eine Optionen-Einfügung zu erstellen, setzt man den Cursor in die Kommentar-
 Einfügung und verwendet das Menü 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 PDF-Kommentar-Optionen
 \family default
 .
@@ -235,7 +237,8 @@ status open
 Note:
 \series default
  Alle geschweiften und eckigen Klammern in Kommentar-Optionen müssen als
- TeX-Code eingefügt werden!
+ \SpecialCharNoPassThru TeX
+-Code eingefügt werden!
 \end_layout
 
 \end_inset
@@ -937,7 +940,8 @@ Die PDF-Markierung darf nicht länger als eine Seite sein, sonst wird der
 \end_layout
 
 \begin_layout Itemize
-Verwendet man XeTeX, muss man sicherstellen, dass die Seitengröße intern
+Verwendet man Xe\SpecialCharNoPassThru TeX
+, muss man sicherstellen, dass die Seitengröße intern
  ausgegeben wird, z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -954,7 +958,8 @@ pagesize
 \series bold
 pagesize
 \series default
- für das LaTeX-Paket 
+ für das \SpecialCharNoPassThru LaTeX
+-Paket 
 \series bold
 typearea
 \series default
@@ -976,7 +981,8 @@ Achtung:
 \series default
  Aufgrund technischer Limitierungen funktioniert PDF-Antwort nur, wenn man
  pdflatex verwendet.
- Bei manchen LaTeX-Installationen funktioniert es überhaupt nicht!
+ Bei manchen \SpecialCharNoPassThru LaTeX
+-Installationen funktioniert es überhaupt nicht!
 \end_layout
 
 \end_inset
@@ -1230,7 +1236,8 @@ h nicht erkannt.
 \end_layout
 
 \begin_layout Itemize
-Verwendet man XeTeX, muss man sicherstellen, dass die Seitengröße intern
+Verwendet man Xe\SpecialCharNoPassThru TeX
+, muss man sicherstellen, dass die Seitengröße intern
  ausgegeben wird, z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1247,7 +1254,8 @@ pagesize
 \series bold
 pagesize
 \series default
- für das LaTeX-Paket 
+ für das \SpecialCharNoPassThru LaTeX
+-Paket 
 \series bold
 typearea
 \series default
@@ -1327,7 +1335,8 @@ Damit kann jedes Objekt mit einem Tooltip versehen werden.
 status open
 
 \begin_layout Plain Layout
-Jedes Objekt, dass man in eine TeX-Box setzen kann, um seine Größe zu messen.
+Jedes Objekt, dass man in eine \SpecialCharNoPassThru TeX
+-Box setzen kann, um seine Größe zu messen.
 \end_layout
 
 \end_inset
@@ -1469,7 +1478,7 @@ pdfcomment
 PDF-Kommentar-Einstellung
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:PDF-Kommentar-Einstellung"
+name "subsec:PDF-Kommentar-Einstellung"
 
 \end_inset
 
@@ -1495,14 +1504,16 @@ Verwendet man die optionale Option
 \series bold
 local
 \series default
- , kann man die Änderung lokal begrenzen, indem man es in TeX-Klammern setzt.
+ , kann man die Änderung lokal begrenzen, indem man es in \SpecialCharNoPassThru TeX
+-Klammern setzt.
  Will man z.
 \begin_inset space \thinspace{}
 \end_inset
 
 B.
  die Farbe nur für zwei aufeinanderfolgende Kommentare ändern, setzt man
- die PDF-Kommentar-Einstellung und die zwei Kommentare in TeX-Klammern.
+ die PDF-Kommentar-Einstellung und die zwei Kommentare in \SpecialCharNoPassThru TeX
+-Klammern.
  Hier ist ein Beispiel:
 \end_layout
 
@@ -2040,7 +2051,8 @@ definieren
 
 
 \family default
-definieren, wenn man genug über die komplizierte LaTeX-Interna kennt.
+definieren, wenn man genug über die komplizierte \SpecialCharNoPassThru LaTeX
+-Interna kennt.
  Mit der Umgebung
 \begin_inset Newline newline
 \end_inset
@@ -2115,12 +2127,14 @@ Allgemeine Hinweise
 \end_layout
 
 \begin_layout Itemize
-Um alle Farben und Farbdefinitionen verwenden zu können, muss das LaTeX-Paket
+Um alle Farben und Farbdefinitionen verwenden zu können, muss das \SpecialCharNoPassThru LaTeX
+-Paket
  
 \series bold
 xcolor
 \series default
- im LaTeX-Vorspann des Dokuments folgendermaßen geladen sein:
+ im \SpecialCharNoPassThru LaTeX
+-Vorspann des Dokuments folgendermaßen geladen sein:
 \begin_inset Newline newline
 \end_inset
 
@@ -2227,7 +2241,8 @@ Oleg sagte auch: Ich hasse es, mich zu wiederholen.
 Man kann keine nicht-lateinischen Zeichen in Kommentaren und in Autorennamen
  verwenden.
  Der Grund ist, dass PDF eine spezielle Zeichenkodierung verwendet, die
- nicht mit der von LaTeX kompatibel ist.
+ nicht mit der von \SpecialCharNoPassThru LaTeX
+ kompatibel ist.
 \end_layout
 
 \end_body
