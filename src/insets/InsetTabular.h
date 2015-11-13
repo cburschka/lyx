@@ -219,6 +219,8 @@ public:
 		///
 		UNSET_ALL_LINES,
 		///
+		TOGGLE_LONGTABULAR,
+		///
 		SET_LONGTABULAR,
 		///
 		UNSET_LONGTABULAR,
@@ -265,6 +267,8 @@ public:
 		SET_SPECIAL_COLUMN,
 		///
 		SET_SPECIAL_MULTICOLUMN,
+		///
+		TOGGLE_BOOKTABS,
 		///
 		SET_BOOKTABS,
 		///

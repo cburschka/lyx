@@ -191,6 +191,9 @@ Menuset
 
 # not much we can do to help here
 	Menu "edit_tabular"
+		Item "Multi-page Table|g" "inset-modify tabular toggle-longtabular"
+		Item "Formal Style|F" "inset-modify tabular toggle-booktabs"
+		Separator
 		Item "Multicolumn|M" "inset-modify tabular multicolumn"
 		Item "Multirow|u" "inset-modify tabular multirow"
 		Separator

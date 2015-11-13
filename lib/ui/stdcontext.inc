@@ -411,7 +411,7 @@ Menuset
 		Item "Left|L" "inset-modify tabular toggle-line-left"
 		Item "Right|R" "inset-modify tabular toggle-line-right"
 	End
-	
+
 	Menu "table-alignment"
 		Item "Left|f" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
 		Item "Center|C" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
@@ -422,7 +422,7 @@ Menuset
 		Item "Middle" "inset-modify tabular valign-middle"
 		Item "Bottom" "inset-modify tabular valign-bottom"
 	End
-	
+
 	Menu "table-cols-rows"
 		Item "Multicolumn|u" "inset-modify tabular multicolumn"
 		Item "Multirow|w" "inset-modify tabular multirow"
@@ -439,19 +439,16 @@ Menuset
 		Item "Move Column Right|v" "inset-modify tabular move-column-right"
 		Item "Move Column Left" "inset-modify tabular move-column-left"
 	End
-	
+
 	Menu "context-tabular"
-		Item "Normal Table|g" "inset-modify tabular unset-longtabular"		
-		Item "Multi-page Table|g" "inset-modify tabular set-longtabular"
-		Separator
-		Item "Default Style|m" "inset-modify tabular unset-booktabs"
-		Item "Formal Style|m" "inset-modify tabular set-booktabs"
+		Item "Multi-page Table|g" "inset-modify tabular toggle-longtabular"
+		Item "Formal Style|m" "inset-modify tabular toggle-booktabs"
 		Separator
 		Submenu "Borders|d" "table-borders"
 		Submenu "Alignment|i" "table-alignment"
 		Submenu "Columns/Rows|C" "table-cols-rows"
 		Separator
-		Item "Settings Dialog...|S" "inset-settings tabular"
+		Item "Settings...|S" "inset-settings tabular"
 	End
 
 #

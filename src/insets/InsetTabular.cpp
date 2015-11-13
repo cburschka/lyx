@@ -151,6 +151,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::SET_MROFFSET, "set-mroffset", true },
 	{ Tabular::SET_ALL_LINES, "set-all-lines", false },
 	{ Tabular::UNSET_ALL_LINES, "unset-all-lines", false },
+	{ Tabular::TOGGLE_LONGTABULAR, "toggle-longtabular", false },
 	{ Tabular::SET_LONGTABULAR, "set-longtabular", false },
 	{ Tabular::UNSET_LONGTABULAR, "unset-longtabular", false },
 	{ Tabular::SET_PWIDTH, "set-pwidth", true },
@@ -177,6 +178,7 @@ TabularFeature tabularFeature[] =
 	{ Tabular::UNSET_LTCAPTION, "unset-ltcaption", false },
 	{ Tabular::SET_SPECIAL_COLUMN, "set-special-column", true },
 	{ Tabular::SET_SPECIAL_MULTICOLUMN, "set-special-multicolumn", true },
+	{ Tabular::TOGGLE_BOOKTABS, "toggle-booktabs", false },
 	{ Tabular::SET_BOOKTABS, "set-booktabs", false },
 	{ Tabular::UNSET_BOOKTABS, "unset-booktabs", false },
 	{ Tabular::SET_TOP_SPACE, "set-top-space", true },
@@ -4718,6 +4720,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::SET_LONGTABULAR:
+		case Tabular::TOGGLE_LONGTABULAR:
 			// setting as longtable is not allowed when table is inside a float
 			if (cur.innerInsetOfType(FLOAT_CODE) != 0
 				|| cur.innerInsetOfType(WRAP_CODE) != 0)
@@ -4866,6 +4869,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setOnOff(tabular.ltCaption(sel_row_start));
 			break;
 
+		case Tabular::TOGGLE_BOOKTABS:
 		case Tabular::SET_BOOKTABS:
 			status.setOnOff(tabular.use_booktabs);
 			break;
@@ -5761,6 +5765,13 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		}
 		break;
 
+	case Tabular::TOGGLE_LONGTABULAR:
+		if (tabular.is_long_tabular)
+			tabularFeatures(cur, Tabular::UNSET_LONGTABULAR);
+		else
+			tabular.is_long_tabular = true;
+		break;
+
 	case Tabular::SET_LONGTABULAR:
 		tabular.is_long_tabular = true;
 		break;
@@ -5928,6 +5939,10 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			tabularFeatures(cur, Tabular::SET_LTCAPTION);
 		break;
 	}
+
+	case Tabular::TOGGLE_BOOKTABS:
+		tabular.use_booktabs = !tabular.use_booktabs;
+		break;
 
 	case Tabular::SET_BOOKTABS:
 		tabular.use_booktabs = true;
