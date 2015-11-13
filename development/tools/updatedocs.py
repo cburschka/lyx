@@ -44,10 +44,12 @@ def convertdir(docdir, prefix, lyx2lyx, systemlyxdir):
 def main(argv):
 
     toolsdir = os.path.dirname(argv[0])
-    docdir = os.path.abspath(os.path.join(toolsdir, '../../lib/doc'))
     lyx2lyx = os.path.abspath(os.path.join(toolsdir, "../../lib/lyx2lyx/lyx2lyx"))
     systemlyxdir = os.path.abspath(os.path.join(toolsdir, "../../lib"))
-    convertdir(docdir, '', lyx2lyx, systemlyxdir)
+    docpaths = ['../../lib/doc', '../../lib/examples', '../../lib/templates', '../../development/MacOSX/ReadMe']
+    for docpath in docpaths:
+        docdir = os.path.abspath(os.path.join(toolsdir, docpath))
+        convertdir(docdir, '', lyx2lyx, systemlyxdir)
 
     return 0
 
