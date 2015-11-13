@@ -681,9 +681,9 @@ RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym # works in text
 LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym # works in text mode only (produces \imath in math mode)
 UParrow            wasy          75  0 textmode &#x25B2; wasysym # works in text mode only (produces K in math mode)
 DOWNarrow          wasy          76  0 textmode &#x25BC; wasysym # works in text mode only (produces L in math mode)
-AC                 wasy          58  0 textmode x        wasysym # works in text mode only
+AC                 wasy          58  0 textmode &#x223F; wasysym # works in text mode only
 \def\HF{\approx}                                         wasysym
-VHF                wasy          64  0 x        x
+VHF                wasy          64  0 x        &#x224B; # triple tilde
 Square             wasy          50  0 x        &square;
 \def\CheckedBox{\Square\kern-0.8em\checked}              wasysym
 XBox               wasy          52  0 x        &timesb;
@@ -695,8 +695,7 @@ hexstar            wasy          65  0 x        &sext;
 varhexstar         wasy          66  0 x        &sext;
 davidsstar         wasy          67  0 x        &#x2721;
 diameter           wasy          31  0 x        &#x2300;
-# Unicode is wrong, but a true alternate doesn't seem available.
-invdiameter        wasy          21  0 x        &#x2300;
+invdiameter        wasy          21  0 x        x	 # 2205 EMPTY SET and 2300 DIAMETER SIGN are similar but not quite right
 varangle           wasy          30  0 x        &angsph;
 wasylozenge        wasy          53  0 x        &#x2311;
 kreuz              wasy          54  0 x        &#x2720;
