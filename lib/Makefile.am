@@ -350,6 +350,7 @@ dist_examples_DATA = \
 	examples/sweave.lyx \
 	examples/tufte-book.lyx \
 	examples/tufte-handout.lyx \
+	examples/varwidth-floats-side-by-side.lyx \
 	examples/xyfigure.lyx \
 	examples/xyfigure.png \
 	examples/xypic.lyx
