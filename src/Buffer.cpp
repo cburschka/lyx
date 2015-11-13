@@ -1306,7 +1306,7 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 }
 
 
-string Buffer::getBackupName() const {
+FileName Buffer::getBackupName() const {
 	FileName const & fn = fileName();
 	string const fname = fn.onlyFileNameWithoutExt();
 	string const fext  = fn.extension();
@@ -1337,7 +1337,7 @@ string Buffer::getBackupName() const {
 		backup.set(addName(fpath, addExtension(newbackname, fext)));
 		v++;
 	}
-	return v < 100 ? backup.absFileName() : "";
+	return v < 100 ? backup : FileName();
 }
 
 
@@ -1402,11 +1402,8 @@ bool Buffer::save() const
 
 	FileName backupName;
 	if (lyxrc.make_backup || d->need_format_backup) {
-		if (d->need_format_backup) {
-			string backup_name = getBackupName();
-			if (!backup_name.empty())
-				backupName.set(backup_name);
-		}
+		if (d->need_format_backup)
+			backupName = getBackupName();
 
 		// If we for some reason failed to find a backup name in case of
 		// a format change, this will still set one. It's the best we can

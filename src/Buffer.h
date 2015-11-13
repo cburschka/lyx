@@ -268,7 +268,7 @@ private:
 	ReadStatus convertLyXFormat(support::FileName const & fn,
 		support::FileName & tmpfile, int from_format);
 	/// get appropriate name for backing up files from older versions
-	std::string getBackupName() const;
+	support::FileName getBackupName() const;
 	//@}
 
 public:
