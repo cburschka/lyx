@@ -64,8 +64,9 @@ bool operator==(Author const & l, Author const & r)
 ostream & operator<<(ostream & os, Author const & a)
 {
 	// FIXME UNICODE
-	os << a.buffer_id_ << " \"" << to_utf8(a.name_)
-			<< "\" " << to_utf8(a.email_);
+	os << a.buffer_id_ << " \"" << to_utf8(a.name_) << "\"";
+	if (!a.email_.empty())
+		os << " " << to_utf8(a.email_);
 
 	return os;
 }
