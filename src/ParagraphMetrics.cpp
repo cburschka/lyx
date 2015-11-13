@@ -194,6 +194,7 @@ int ParagraphMetrics::rightMargin(BufferView const & bv) const
 }
 
 
+// FIXME: this code seems bogus. Audit and rewrite (see bug #9860).
 bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
 {
 	if (!par_->isHfill(pos))

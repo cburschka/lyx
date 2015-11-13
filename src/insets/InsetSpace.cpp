@@ -200,9 +200,10 @@ int const arrow_size = 8;
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (isHfill()) {
-		// The metrics for this kinds are calculated externally in
-		// \c TextMetrics::computeRowMetrics. Those are dummy value:
-		dim = Dimension(10, 10, 10);
+		// The width for hfills is calculated externally in
+		// TextMetrics::computeRowMetrics. The value of 5 is the
+		// minimal value when the hfill is not active.
+		dim = Dimension(5, 10, 10);
 		return;
 	}
 

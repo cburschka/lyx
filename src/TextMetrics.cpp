@@ -584,15 +584,19 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			row.label_hfill = labelFill(pit, row) / double(nlh);
 	}
 
-	double hfill = 0;
 	// are there any hfills in the row?
-	if (int const nh = numberOfHfills(row, par.beginOfBody())) {
-		if (w > 0)
-			hfill = double(w) / nh;
-	// we don't have to look at the alignment if it is ALIGN_LEFT and
-	// if the row is already larger then the permitted width as then
-	// we force the LEFT_ALIGN'edness!
-	} else if (int(row.width()) < max_width_) {
+	int nh = numberOfHfills(row, par.beginOfBody());
+	int hfill = 0;
+	int hfill_rem = 0;
+
+	// We don't have to look at the alignment if
+	// * we use hfills, or
+	// * the row is already larger then the permitted width as then we
+	//   force the LEFT_ALIGN'edness!
+	if (nh > 0) {
+		hfill = w / nh;
+		hfill_rem = w % nh;
+	} else if (nh == 0 && int(row.width()) < max_width_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		switch (getAlign(par, row)) {
@@ -641,11 +645,15 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			cit->dim.wid -= int(row.label_hfill * (nlh - 1));
 		if (!cit->inset || !cit->inset->isHfill())
 			continue;
-		if (pm.hfillExpansion(row, cit->pos))
-			cit->dim.wid = int(cit->pos >= body_pos ?
-					   max(hfill, 5.0) : row.label_hfill);
-		else
-			cit->dim.wid = 5;
+		if (pm.hfillExpansion(row, cit->pos)) {
+			if (cit->pos >= body_pos) {
+				cit->dim.wid += hfill;
+				--nh;
+				if (nh == 0)
+					cit->dim.wid += hfill_rem;
+			} else
+				cit->dim.wid += int(row.label_hfill);
+		}
 		// Cache the inset dimension.
 		insetCache.add(cit->inset, cit->dim);
 	}
