@@ -1337,7 +1337,7 @@ string Buffer::getBackupName() const {
 		backup.set(addName(fpath, addExtension(newbackname, fext)));
 		v++;
 	}
-	return v < 100 ? backup.onlyFileName() : "";
+	return v < 100 ? backup.absFileName() : "";
 }
 
 
