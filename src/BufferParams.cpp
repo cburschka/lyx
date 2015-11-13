@@ -3141,14 +3141,13 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 
 Encoding const & BufferParams::encoding() const
 {
-	// FIXME: For export with XeTeX and TeX fonts,
-	//   this function returns the wrong value.
-	//   The combination of XeTeX and TeX-fonts requires ASCII (see #9740).
-	//   However, the flavor is no buffer parameter but only known once export started.
-	//   Currently, we set runparams.encoding to ASCII in Buffer::makeLaTeXFile
-	//   (for export) and Buffer::writeLaTeXSource (for preview)
-	//   and prevent overwriting it with another encoding in Paragraph::latex
-	//   and at four places in output_latex.cpp.
+	// Main encoding for LaTeX output.
+	// 
+	// Exception: XeTeX with 8-bit TeX fonts requires ASCII (see #9740).
+	// As the "flavor" is only known once export started, this
+	// cannot be handled here. Instead, runparams.encoding is set
+	// to ASCII in Buffer::makeLaTeXFile (for export)
+	// and Buffer::writeLaTeXSource (for preview).
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")

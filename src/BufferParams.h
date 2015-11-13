@@ -314,6 +314,8 @@ public:
 	std::string inputenc;
 	/// The main encoding used by this buffer for LaTeX output.
 	/// Individual pieces of text can use different encodings.
+	/// Output for XeTeX with 8-bit TeX fonts uses ASCII (set at runtime)
+	/// instead of the value returned by this function.
 	Encoding const & encoding() const;
 	///
 	std::string origin;

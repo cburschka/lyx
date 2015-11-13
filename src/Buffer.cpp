@@ -1651,7 +1651,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	OutputParams runparams = runparams_in;
 
 	// XeTeX with TeX fonts is only safe with ASCII encoding,
-	// See #9740 and FIXME in BufferParams::encoding()
+	// but the "flavor" is not known in BufferParams::encoding().
 	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
 		runparams.encoding = encodings.fromLyXName("ascii");
 
@@ -1738,12 +1738,12 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	OutputParams runparams = runparams_in;
 
 	// XeTeX with TeX fonts is only safe with ASCII encoding,
-	// See #9740 and FIXME in BufferParams::encoding()
-	// FIXME: when only the current paragraph is shown, this is ignored and
-	//        characters encodable in the current encoding are not converted
-	//        to ASCII-representation.
+	// but the "flavor" is not known in BufferParams::encoding().
 	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
 		runparams.encoding = encodings.fromLyXName("ascii");
+	// FIXME: when only the current paragraph is shown, this is ignored
+	//        (or not reached) and characters encodable in the current
+	//        encoding are not converted to ASCII-representation.
 
 	// If we are compiling a file standalone, even if this is the
 	// child of some other buffer, let's cut the link here, so the
