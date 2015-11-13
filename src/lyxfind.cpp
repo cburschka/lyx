@@ -385,7 +385,6 @@ bool lyxreplace(BufferView * bv,
 		else
 			bv->message(_("String not found."));
 	}
-	bv->buffer().updatePreviews();
 	return update;
 }
 
