@@ -328,39 +328,37 @@ def write_fields(file, lfun):
     file.write("\\begin_layout Subsection*\n")
     file.write(lfun["name"] + "\n")
     file.write("\\end_layout\n")
-    #file.write("\n")
+    file.write("\n")
     if lfun["action"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Action " + lfun["action"] + "\n")
-        #file.write("\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
+        file.write("\n")
     if lfun["notion"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Notion " + lfun["notion"] + "\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
+        file.write("\n")
     if lfun["syntax"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Syntax " + lfun["syntax"] + "\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
+        file.write("\n")
     if lfun["params"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Params " + lfun["params"] + "\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
+        file.write("\n")
     if lfun["sample"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Sample " + lfun["sample"] + "\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
+        file.write("\n")
     if lfun["origin"] != "":
         file.write("\\begin_layout Description\n")
         file.write("Origin " + lfun["origin"] + "\n")
         file.write("\\end_layout\n")
-        #file.write("\n")
-    file.write("\n")
+        file.write("\n")
 
 def write_sections(file,lfuns):
     """Write sections of LFUNs"""
@@ -378,6 +376,7 @@ def write_sections(file,lfuns):
         file.write("\\begin_layout Section\n")
         file.write(section_headings[val] + "\n")
         file.write("\\end_layout\n")
+        file.write("\n")
         for lf in lfuns:
             if lf["type"] == val:
                 write_fields(file, lf)
