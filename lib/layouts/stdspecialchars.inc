@@ -2,7 +2,7 @@
 # Standard special characters
 #
 
-Format 54
+Format 57
 SpecialChar LigatureBreak
 	Type		Formatting
 	LabelString	"Ligature Break|k"

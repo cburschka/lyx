@@ -9,7 +9,7 @@
 # modifying the style of the regular sectioning layouts.
 
 
-Format 54
+Format 57
 Style Part*
 	CopyStyle             Part
 	Margin                Static
