@@ -1426,7 +1426,6 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	LYXERR(Debug::FIND, "After pos adj cur=" << cur << " with depth: " << cur.depth() << " and len: " << sel_len);
 	bv->putSelectionAt(DocIterator(cur), sel_len, !opt.forward);
 	bv->processUpdateFlags(Update::Force);
-	bv->buffer().updatePreviews();
 }
 
 
