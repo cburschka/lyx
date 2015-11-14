@@ -16,7 +16,7 @@
 import os, re, string, sys, subprocess, shutil
 
 
-def convertdir(docdir, prefix, lyx2lyx, systemlyxdir):
+def convertdir(docdir, prefix, lyx2lyx, lyx, systemlyxdir):
     olddir = os.getcwd()
     os.chdir(docdir)
     for i in os.listdir("."):
@@ -24,7 +24,7 @@ def convertdir(docdir, prefix, lyx2lyx, systemlyxdir):
             if i != 'attic':
                 subdir = os.path.join(docdir, i)
                 subprefix = os.path.join(prefix, i)
-                convertdir(subdir, subprefix, lyx2lyx, systemlyxdir)
+                convertdir(subdir, subprefix, lyx2lyx, lyx, systemlyxdir)
             continue
         (base, ext) = os.path.splitext(i)
         if ext != ".lyx":
@@ -38,6 +38,12 @@ def convertdir(docdir, prefix, lyx2lyx, systemlyxdir):
             cmd = [lyx2lyx, old, '-s', systemlyxdir, '-o', i]
         sys.stderr.write('Converting %s\n' % os.path.join(prefix, i))
         subprocess.call(cmd)
+        if lyx != '':
+            # This is a hack, but without modifying the doc LyX refuses to save and stays open
+            # FIXME: Is self-insert a; char-delete-backward always a noop?
+            #        What if change-tracking is enabled?
+            cmd = [lyx, '-f', '-x', 'command-sequence self-insert a; char-delete-backward; buffer-write; lyx-quit', i]
+            subprocess.call(cmd)
     os.chdir(olddir)
 
 
@@ -46,10 +52,15 @@ def main(argv):
     toolsdir = os.path.dirname(argv[0])
     lyx2lyx = os.path.abspath(os.path.join(toolsdir, "../../lib/lyx2lyx/lyx2lyx"))
     systemlyxdir = os.path.abspath(os.path.join(toolsdir, "../../lib"))
+    if len(argv) > 1:
+        sys.stderr.write('Warning: Converting with LyX is experimental. Check the results carefully.\n'))
+        lyx = os.path.abspath(argv[1])
+    else:
+        lyx = ''
     docpaths = ['../../lib/doc', '../../lib/examples', '../../lib/templates', '../../development/MacOSX/ReadMe']
     for docpath in docpaths:
         docdir = os.path.abspath(os.path.join(toolsdir, docpath))
-        convertdir(docdir, '', lyx2lyx, systemlyxdir)
+        convertdir(docdir, '', lyx2lyx, lyx, systemlyxdir)
 
     return 0
 
