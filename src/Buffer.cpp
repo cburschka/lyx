@@ -1333,7 +1333,7 @@ FileName Buffer::getBackupName() const {
 			v = 1000;
 			break;
 		}
-		string newbackname = backname + "-" + convert<string>(v);
+		string const newbackname = backname + "-" + convert<string>(v);
 		backup.set(addName(fpath, addExtension(newbackname, fext)));
 		v++;
 	}
@@ -1401,7 +1401,8 @@ bool Buffer::save() const
 	bool made_backup = true;
 
 	FileName backupName;
-	if (lyxrc.make_backup || d->need_format_backup) {
+	bool const needBackup = lyxrc.make_backup || d->need_format_backup;
+	if (needBackup) {
 		if (d->need_format_backup)
 			backupName = getBackupName();
 
@@ -1458,8 +1459,8 @@ bool Buffer::save() const
 	}
 	// else we saved the file, but failed to move it to the right location.
 
-	if (lyxrc.make_backup && made_backup && !symlink) {
-		// the original file was moved to filename.lyx~, so it will look
+	if (needBackup && made_backup && !symlink) {
+		// the original file was moved to some new location, so it will look
 		// to the user as if it was deleted. (see bug #9234.) we could try
 		// to restore it, but that would basically mean trying to do again
 		// what we just failed to do. better to leave things as they are.
