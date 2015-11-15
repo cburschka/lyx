@@ -164,27 +164,12 @@ void ViewSourceWidget::updateView()
 						short_delay : long_delay);
 }
 
+
 void ViewSourceWidget::updateViewNow()
 {
 	update_timer_->start(0);
 }
 
-namespace {
-
-QString prependTexRow(TexRow const & texrow, QString const & content)
-{
-	QStringList list = content.split(QChar('\n'));
-	docstring_list dlist;
-	for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
-		dlist.push_back(from_utf8(fromqstr(*it)));
-	texrow.prepend(dlist);
-	QString qstr;
-	for (docstring_list::iterator it = dlist.begin(); it != dlist.end(); ++it)
-		qstr += toqstr(*it) + '\n';
-	return qstr;
-}
-
-} // anon namespace
 
 void ViewSourceWidget::realUpdateView()
 {
@@ -217,8 +202,18 @@ void ViewSourceWidget::realUpdateView()
 	QString old = document_->toPlainText();
 	QString qcontent = toqstr(content);
 #ifdef DEVEL_VERSION
-	if (texrow_.get() && lyx::lyxerr.debugging(Debug::LATEX))
-		qcontent = prependTexRow(*texrow_, qcontent);
+	// output tex<->row correspondences in the source panel if the "-dbg latex"
+	// option is given.
+	if (texrow_.get() && lyx::lyxerr.debugging(Debug::LATEX)) {
+		QStringList list = qcontent.split(QChar('\n'));
+		docstring_list dlist;
+		for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
+			dlist.push_back(from_utf8(fromqstr(*it)));
+		texrow_->prepend(dlist);
+		qcontent.clear();
+		for (docstring_list::iterator it = dlist.begin(); it != dlist.end(); ++it)
+			qcontent += toqstr(*it) + '\n';
+	}
 #endif
 	// prevent gotoCursor()
 	viewSourceTV->blockSignals(true);
