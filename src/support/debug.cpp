@@ -31,14 +31,14 @@ namespace lyx {
 
 namespace {
 
-struct ErrorItem {
+struct DebugErrorItem {
 	Debug::Type level;
 	char const * name;
 	char const * desc;
 };
 
 
-ErrorItem errorTags[] = {
+DebugErrorItem errorTags[] = {
 	{ Debug::NONE,      "none",      N_("No debugging messages")},
 	{ Debug::INFO,      "info",      N_("General information")},
 	{ Debug::INIT,      "init",      N_("Program initialisation")},
