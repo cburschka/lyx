@@ -442,7 +442,7 @@ Menuset
 	
 	Menu "context-tabular"
 		Item "Normal Table|g" "inset-modify tabular unset-longtabular"		
-		Item "Breakable Table|g" "inset-modify tabular set-longtabular"
+		Item "Multi-page Table|g" "inset-modify tabular set-longtabular"
 		Separator
 		Item "Default Style|m" "inset-modify tabular unset-booktabs"
 		Item "Formal Style|m" "inset-modify tabular set-booktabs"

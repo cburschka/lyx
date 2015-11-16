@@ -550,7 +550,7 @@
              <string>Merge cells of different columns</string>
             </property>
             <property name="text" >
-             <string>&amp;Multicolumn</string>
+             <string>Mu&amp;lticolumn</string>
             </property>
            </widget>
           </item>
@@ -1301,7 +1301,7 @@
      </widget>
      <widget class="QWidget" name="Longtables" >
       <attribute name="title" >
-       <string>&amp;Longtable</string>
+       <string>&amp;Multi-page table</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_7" >
        <item row="0" column="0" >
@@ -1310,7 +1310,7 @@
           <string>Select for tables that span multiple pages</string>
          </property>
          <property name="text" >
-          <string>&amp;Use long table</string>
+          <string>&amp;Use multi-page table</string>
          </property>
         </widget>
        </item>
@@ -1537,10 +1537,10 @@
           <bool>false</bool>
          </property>
          <property name="toolTip" >
-          <string>Horizontal alignment of the longtable</string>
+          <string>Horizontal alignment of the multi-page table</string>
          </property>
          <property name="title" >
-          <string>Longtable alignment</string>
+          <string>Multi-page table alignment</string>
          </property>
          <layout class="QGridLayout" name="gridLayout9" >
           <item row="0" column="0" >
