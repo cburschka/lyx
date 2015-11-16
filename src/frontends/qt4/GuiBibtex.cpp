@@ -329,10 +329,10 @@ void GuiBibtex::updateContents()
 
 	docstring const & btprint = params_["btprint"];
 	int btp = 0;
-	if ((bibtopic && btprint == "btPrintNotCited") ||
-	   (!bibtopic && btprint == "btPrintAll"))
+	if ((bibtopic && btprint == from_ascii("btPrintNotCited")) ||
+	   (!bibtopic && btprint == from_ascii("btPrintAll")))
 		btp = 1;
-	else if (bibtopic && btprint == "btPrintAll")
+	else if (bibtopic && btprint == from_ascii("btPrintAll"))
 		btp = 2;
 
 	btPrintCO->setCurrentIndex(btp);
