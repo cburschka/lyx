@@ -228,7 +228,7 @@ class Compare::Impl {
 public:
 	///
 	Impl(Compare const & compare)
-		: abort_(false), N_(0), M_(0), offset_reverse_diagonal_(0),
+		: abort_(false), n_(0), m_(0), offset_reverse_diagonal_(0),
 		  odd_offset_(0), compare_(compare),
 		  old_buf_(0), new_buf_(0), dest_buf_(0), dest_pars_(0),
 		  recursion_level_(0), nested_inset_level_(0), D_(0)
@@ -306,9 +306,9 @@ private:
 	void writeToDestBuffer(ParagraphList const & copy_pars) const;
 
 	/// The length of the old chunk currently processed
-	int N_;
+	int n_;
 	/// The length of the new chunk currently processed
-	int M_;
+	int m_;
 	/// The offset diagonal of the reverse path of the
 	/// currently processed chunk
 	int offset_reverse_diagonal_;
@@ -612,7 +612,7 @@ Compare::Impl::SnakeResult Compare::Impl::retrieveMiddleSnake(
 	if (os[k].empty() && os_r[kk].empty()) {
 		// No, there is no snake at all, in which case
 		// the length of the shortest edit script is M+N.
-		LATTEST(2 * D - odd_offset_ == M_ + N_);
+		LATTEST(2 * D - odd_offset_ == m_ + n_);
 		return NoSnake;
 	}
 
@@ -634,12 +634,12 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	DocPair & middle_snake)
 {
 	// The lengths of the old and new chunks.
-	N_ = rp.o.length();
-	M_ = rp.n.length();
+	n_ = rp.o.length();
+	m_ = rp.n.length();
 
 	// Forward paths are centered around the 0-diagonal; reverse paths
 	// are centered around the diagonal N - M. (Delta in the article)
-	offset_reverse_diagonal_ = N_ - M_;
+	offset_reverse_diagonal_ = n_ - m_;
 
 	// If the offset is odd, only check for overlap while extending forward
     // paths, otherwise only check while extending reverse paths.
@@ -655,7 +655,7 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	nrs.reset(DocIterator());
 
 	// In the formula below, the "+ 1" ensures we round like ceil()
-	int const D_max = (M_ + N_ + 1)/2;
+	int const D_max = (m_ + n_ + 1)/2;
 	// D is the number of horizontal and vertical steps, i.e.
 	// different characters in the old and new chunk.
 	for (int D = 0; D <= D_max; ++D) {
