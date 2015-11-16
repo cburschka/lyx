@@ -192,12 +192,6 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 	combo->addItem(qt_("Reset"), "inherit");
 }
 
-
-bool ColorSorter(ColorCode lhs, ColorCode rhs)
-{
-	return support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-}
-
 } // namespace anon
 
 GuiCharacter::GuiCharacter(GuiView & lv)

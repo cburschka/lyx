@@ -13,6 +13,7 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
+#include "ColorSet.h"
 #include "Length.h"
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
@@ -72,6 +73,9 @@ void doubleToWidget(QLineEdit * input, std::string const & value,
  * ever using scientific notation
  */
 QString formatLocFPNumber(double d);
+
+/// Method to sort colors by GUI name in combo widgets
+bool ColorSorter(ColorCode lhs, ColorCode rhs);
 
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);

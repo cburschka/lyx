@@ -103,16 +103,6 @@ static QList<ColorCode> colors()
 }
 
 
-namespace {
-
-bool ColorSorter(ColorCode lhs, ColorCode rhs)
-{
-	return support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-}
-
-} // namespace anon
-
-
 GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);

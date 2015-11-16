@@ -213,6 +213,12 @@ QString formatLocFPNumber(double d)
 }
 
 
+bool ColorSorter(ColorCode lhs, ColorCode rhs)
+{
+	return compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
+}
+
+
 void setValid(QWidget * widget, bool valid)
 {
 	if (valid) {

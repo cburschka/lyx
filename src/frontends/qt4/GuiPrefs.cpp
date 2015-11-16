@@ -1115,19 +1115,6 @@ void PrefScreenFonts::selectTypewriter(const QString & name)
 /////////////////////////////////////////////////////////////////////
 
 
-namespace {
-
-struct ColorSorter
-{
-	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return
-			compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-	}
-};
-
-} // namespace anon
-
-
 PrefColors::PrefColors(GuiPreferences * form)
 	: PrefModule(catLookAndFeel, N_("Colors"), form)
 {
@@ -1164,7 +1151,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 			continue;
 		lcolors_.push_back(lc);
 	}
-	sort(lcolors_.begin(), lcolors_.end(), ColorSorter());
+	qSort(lcolors_.begin(), lcolors_.end(), ColorSorter);
 	vector<ColorCode>::const_iterator cit = lcolors_.begin();
 	vector<ColorCode>::const_iterator const end = lcolors_.end();
 	for (; cit != end; ++cit) {
