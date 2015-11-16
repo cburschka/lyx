@@ -21,11 +21,11 @@
 
 #include <string>
 
-class BufferView;
 
 namespace lyx {
 
 namespace frontend { class Painter; }
+class BufferView;
 class Inset;
 class MacroContext;
 
