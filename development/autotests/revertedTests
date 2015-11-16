@@ -116,3 +116,16 @@ export/examples/H-P-statements_pdf[45]_systemF
 # https://www.mail-archive.com/search?l=mid&q=n0sne9%24iis%241%40ger.gmane.org
 export/doc(|/de|/es|/fr)/Math.*systemF
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
+#
+# Example of "high bit" chars in listings. Fails with XeTeX due ot 
+# limiation to ASCII (no LICR in listings possible). Gives correct warning.
+export/doc/EmbeddedObjects_pdf4_systemF
+#
+# Non-ASCII char in verbatim environment.
+# Fails with ASCII (and hence also with XeTeX).
+export/doc/UserGuide_pdf4_texF
+#
+# Non-ASCII characters in a comment in the user-preamble.
+# Warning with inputenc == ASCII or XeTeX
+export/doc/de/(Additional|UserGuide)_pdf4_texF
+export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
