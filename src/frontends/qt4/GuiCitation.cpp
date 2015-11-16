@@ -665,12 +665,10 @@ void GuiCitation::filterByEntryType(BiblioInfo const & bi,
 static docstring escape_special_chars(docstring const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
-	// Note that '[' and '\' must be escaped.
-	// This is a limitation of lyx::regex, but all other chars in BREs
-	// are assumed literal.
-	static const lyx::regex reg("[].|*?+(){}^$\\[\\\\]");
+	// Note that '[', ']', and '\' must be escaped.
+	static const lyx::regex reg("[.|*?+(){}^$\\[\\]\\\\]");
 
-	// $& is a perl-like expression that expands to all
+	// $& is an ECMAScript format expression that expands to all
 	// of the current match
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.

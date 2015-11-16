@@ -15,12 +15,10 @@ using namespace std;
 string const escape_special_chars(string const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
-	// Note that '[' and '\' must be escaped.
-	// This is a limitation of lyx::regex, but all other chars in BREs
-	// are assumed literal.
-	lyx::regex reg("[].|*?+(){}^$\\[\\\\]");
+	// Note that '[', ']', and '\' must be escaped.
+	lyx::regex reg("[.|*?+(){}^$\\[\\]\\\\]");
 
-	// $& is a perl-like expression that expands to all
+	// $& is a ECMAScript format expression that expands to all
 	// of the current match
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
