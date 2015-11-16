@@ -125,7 +125,12 @@ export/doc/EmbeddedObjects_pdf4_systemF
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/UserGuide_pdf4_texF
 #
-# Non-ASCII characters in a comment in the user-preamble.
-# Warning with inputenc == ASCII or XeTeX
+# TODO: We need to determine the correct reason for failure (most probably
+# incompatible packages, maybe also loading of lmodern.sty in the user
+# preamble) or state that we don't know it.
 export/doc/de/(Additional|UserGuide)_pdf4_texF
 export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
+#
+# Seems to be a case of the polyglossia + language-nesting problem
+export/doc/es/Customization_pdf[45]_systemF
+export/doc/es/Additional_pdf4_texF

@@ -242,6 +242,12 @@ sub checkForPreamble($)
 			  "search" => '^\\\\(photo|ecvpicture)(.*\{)(.*)\}',
 			  "fileidx" => 3,
 			  "result" => ["\\", "1", "2", "3", "}"]);
+    #
+    # Remove comments from preamble
+    my $comments = newMatch("search" => '^([^%]*)([%]+)([^%]*)$',
+    	                    "filetype" => "replace_only",
+			    "result" => ["1", "2"]);
+    #setMatching([$rElem, $comments]);
     setMatching([$rElem]);
     return(1);
   }
