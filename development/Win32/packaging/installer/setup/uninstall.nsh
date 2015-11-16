@@ -97,7 +97,17 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # delete info that programs were installed together with LyX
   DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
-  DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"  
+  DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  
+  # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
+  # so we have to remove it now
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+   ${un.EnvVarUpdate} $0 "PATH" "R" "HKCU" "$INSTDIR\Perl\bin"
+  ${else}
+   ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" "$INSTDIR\Perl\bin"
+  ${endif}
 
 SectionEnd
 

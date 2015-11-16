@@ -179,6 +179,15 @@ Section -Configure
   IfErrors 0 +2
    MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)" /SD IDOK
   ClearErrors
+  
+  # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+   ${EnvVarUpdate} $0 "PATH" "A" "HKCU" "$INSTDIR\Perl\bin"
+  ${else}
+   ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\Perl\bin"
+  ${endif}
 
 SectionEnd
 
