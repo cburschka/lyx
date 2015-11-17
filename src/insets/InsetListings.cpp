@@ -122,13 +122,16 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 
 	bool encoding_switched = false;
 	Encoding const * const save_enc = runparams.encoding;
+	// The listings package cannot deal with multi-byte-encoded
+	// glyphs, except if full-unicode aware backends
+	// such as XeTeX or LuaTeX are used, and with pLaTeX.
+	bool const multibyte_possible =	runparams.isFullUnicode()
+	    || (buffer().params().bufferFormat() == "platex"
+	        && runparams.encoding->package() == Encoding::japanese);
 
-	if (!runparams.isFullUnicode()
-	    && !runparams.encoding->hasFixedWidth()) {
-		// We need to switch to a singlebyte encoding, since the
-		// listings package cannot deal with multi-byte-encoded
-		// glyphs (not needed with full-unicode aware backends
-		// such as XeTeX).
+	if (!multibyte_possible && !runparams.encoding->hasFixedWidth()) {
+		// We need to switch to a singlebyte encoding, due to
+		// the restrictions of the listings package (see above).
 		// This needs to be consistent with
 		// LaTeXFeatures::getTClassI18nPreamble().
 		Language const * const outer_language =
@@ -242,10 +245,20 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	if (!uncodable.empty() && !runparams.silent) {
 		// issue a warning about omitted characters
 		// FIXME: should be passed to the error dialog
-		frontend::Alert::warning(_("Uncodable characters in listings inset"),
-			bformat(_("The following characters in one of the program listings are\n"
-				  "not representable in the current encoding and have been omitted:\n%1$s."),
-			uncodable));
+		if (!multibyte_possible && !runparams.encoding->hasFixedWidth())
+			frontend::Alert::warning(_("Uncodable characters in listings inset"),
+				bformat(_("The following characters in one of the program listings are\n"
+					  "not representable in the current encoding and have been omitted:\n%1$s.\n"
+					  "This is due to a restriction of the listings package, which does\n"
+					  "not support your encoding '%2$s'.\n"
+					  "Toggling 'Use non-TeX fonts' in Document > Settings...\n"
+					  "might help."),
+				uncodable, _(runparams.encoding->guiName())));
+		else
+			frontend::Alert::warning(_("Uncodable characters in listings inset"),
+				bformat(_("The following characters in one of the program listings are\n"
+					  "not representable in the current encoding and have been omitted:\n%1$s."),
+				uncodable));
 	}
 }
 
