@@ -101,7 +101,7 @@ The \SpecialChar LyX
 \end_layout
 
 \begin_layout Date
-2015-11-11
+2015-11-17
 \end_layout
 
 \begin_layout Section*
@@ -2552,7 +2552,7 @@ m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
 \begin_inset Newline newline
 \end_inset
 
-set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|
+set-all-lines|unset-all-lines|toggle-longtabular|set-longtabular|unset-longtabular|set-pwidth|
 \begin_inset Newline newline
 \end_inset
 
@@ -2576,7 +2576,7 @@ set-special-column|set-special-multicolumn|set-special-multirow|
 \begin_inset Newline newline
 \end_inset
 
-set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
+toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
 \begin_inset Newline newline
 \end_inset
 

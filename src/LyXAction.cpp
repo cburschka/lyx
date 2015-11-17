@@ -2473,13 +2473,13 @@ void LyXAction::init()
                        valign-top|valign-bottom|valign-middle|longtabular-align-left|\n
                        longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|\n
                        m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|\n
-                       set-all-lines|unset-all-lines|set-longtabular|unset-longtabular|set-pwidth|\n
+                       set-all-lines|unset-all-lines|toggle-longtabular|set-longtabular|unset-longtabular|set-pwidth|\n
                        set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|\n
                        set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|\n
                        unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|\n
                        set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|\n
                        set-special-column|set-special-multicolumn|set-special-multirow|\n
-                       set-booktabs|unset-booktabs|set-top-space|set-bottom-space|\n
+                       toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|\n
                        set-interline-space|set-border-lines|tabular-valign-top|\n
                        tabular-valign-middle|tabular-valign-bottom|set-tabular-width
                <ARG>: additional argument for some commands, use debug mode to explore its values.
