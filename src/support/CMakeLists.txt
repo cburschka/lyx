@@ -12,6 +12,8 @@ list(REMOVE_ITEM support_sources ${moc_files} .)
 if(APPLE)
 	list(APPEND dont_merge ${TOP_SRC_DIR}/src/support/AppleSpeller.m)
 	list(APPEND dont_merge ${TOP_SRC_DIR}/src/support/AppleScript.m)
+else()
+	list(REMOVE_ITEM support_sources "${TOP_SRC_DIR}/src/support/AppleScriptProxy.cpp")
 endif()
 
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})

@@ -19,10 +19,6 @@ include_directories(BEFORE
 	"${TOP_SRC_DIR}/boost" 
 	${ZLIB_INCLUDE_DIR})
 
-if(LYX_MERGE_FILES)
-	set(_lyxclient_sources ${_lyxclient_sources} ${TOP_SRC_DIR}/src/TexRow.cpp)
-endif()
-
 add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})
 
 target_link_libraries(${_lyxclient}
