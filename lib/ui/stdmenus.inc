@@ -90,7 +90,7 @@ Menuset
 	Menu "file_export"
 		Item "Export As...|s" "buffer-export-as"
 		ExportFormats
-		Item "More Formats & Options...|O" "buffer-export custom"
+		Item "More Formats & Options...|r" "buffer-export custom"
 	End
 
 #
