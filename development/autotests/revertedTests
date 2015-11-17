@@ -134,3 +134,16 @@ export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
 # Seems to be a case of the polyglossia + language-nesting problem
 export/doc/es/Customization_pdf[45]_systemF
 export/doc/es/Additional_pdf4_texF
+#
+# Files in the attic with changed settings 
+# (i.e. could be ERT, package incompatiblity, ...)
+export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
+export/doc/attic/sk_UserGuide_pdf4_texF
+#
+# Don't know what is to be expected with indices and Xe/Lua
+export/doc/es/EmbeddedObjects_(dvi3|pdf[45])_texF
+#
+# Babel's Russian language definition file has the same
+# problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
+# testing the engine, it switches to "unicode modus".
+export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF

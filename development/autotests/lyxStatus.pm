@@ -247,8 +247,7 @@ sub checkForPreamble($)
     my $comments = newMatch("search" => '^([^%]*)([%]+)([^%]*)$',
     	                    "filetype" => "replace_only",
 			    "result" => ["1", "2"]);
-    #setMatching([$rElem, $comments]);
-    setMatching([$rElem]);
+    setMatching([$rElem, $comments]);
     return(1);
   }
   return(0);
