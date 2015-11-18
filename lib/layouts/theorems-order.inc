@@ -58,6 +58,12 @@ End
 Style Exercise*
 End
 
+Style Solution
+End
+
+Style Solution*
+End
+
 Style Remark
 End
 

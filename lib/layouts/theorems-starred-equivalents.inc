@@ -52,6 +52,13 @@ Style Example
 	EndPreamble
 End
 
+Style Solution
+	CopyStyle	Solution*
+	DependsOn	Solution*
+	Preamble
+	EndPreamble
+End
+
 Style Problem
 	CopyStyle	Problem*
 	DependsOn	Problem*

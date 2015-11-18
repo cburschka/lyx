@@ -38,6 +38,10 @@ IfStyle Exercise
 	RefPrefix exer
 End
 
+IfStyle Solution
+	RefPrefix solu
+End
+
 IfStyle Remark
 	RefPrefix rem
 End

@@ -14,6 +14,7 @@
 # - Example
 # - Problem
 # - Exercise
+# - Solution
 # - Remark
 # - Claim
 # - Proof
@@ -221,6 +222,23 @@ Style Exercise*
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
+	EndBabelPreamble
+End
+
+
+Style Solution*
+	CopyStyle             Definition*
+	LatexName             sol*
+	LabelString           "Solution."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem*{sol*}{\protect\solutionname}
+	EndPreamble
+	LangPreamble
+	  \providecommand{\solutionname}{_(Solution)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
 	EndBabelPreamble
 End
 

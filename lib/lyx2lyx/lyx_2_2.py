@@ -2118,7 +2118,8 @@ def revert_solution(document):
     have_mod = False
     mods = document.get_module_list()
     for mod in mods:
-        if mod == "theorems-std" or mod == "theorems-bytype":
+        if mod == "theorems-std" or mod == "theorems-bytype" \
+        or mod == "theorems-ams" or mod == "theorems-ams-bytype":
             have_mod = True
             continue
     if not have_mod:
@@ -2146,10 +2147,10 @@ def revert_solution(document):
             document.body[j : j + 1] = put_cmd_in_ert("\\end{sol}") + ["\\end_layout"]
         document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd
         add_to_preamble(document, "\\providecommand{\solutionname}{Solution}")
-        if mod == "theorems-std":
+        if mod == "theorems-std" or mod == "theorems-ams":
             add_to_preamble(document, "\\theoremstyle{plain}\n" \
                                       "\\newtheorem{sol}[thm]{\\protect\\solutionname}")
-        if mod == "theorems-bytype":
+        if mod == "theorems-bytype" or mod == "theorems-ams-bytype":
             add_to_preamble(document, "\\theoremstyle{definition}\n" \
                                       "\\newtheorem{sol}{\\protect\\solutionname}")
         i = j
