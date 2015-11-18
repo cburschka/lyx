@@ -16,6 +16,7 @@
 # - Example
 # - Problem
 # - Exercise
+# - Solution
 # - Remark
 # - Claim
 # - Proof
@@ -237,6 +238,25 @@ Style Exercise
 		\addto\captions$$lang{\renewcommand{\exercisename}{_(Exercise)}}
 	EndBabelPreamble
 	LabelCounter          exercise
+End
+
+
+Style Solution
+	CopyStyle             Definition
+	LatexName             sol
+	LabelString           "Solution \thesolution."
+	Preamble
+	  \theoremstyle{definition}
+	  \newtheorem{sol}{\protect\solutionname}
+	EndPreamble
+	Requires              amsthm
+	LangPreamble
+		\providecommand{\solutionname}{_(Solution)}
+	EndLangPreamble
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\solutionname}{_(Solution)}}
+	EndBabelPreamble
+	LabelCounter          solution
 End
 
 

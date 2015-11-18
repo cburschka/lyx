@@ -2111,6 +2111,50 @@ def revert_fontsettings(document):
         j = j + 1
 
 
+def revert_solution(document):
+    " Reverts the solution environmen of the theorem module to TeX code "
+
+    # Do we use theorems-std module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "theorems-std" or mod == "theorems-bytype":
+            have_mod = True
+            continue
+    if not have_mod:
+        return
+    consecutive = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Solution", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Solution layout")
+            i += 1
+            continue
+        # if this is not a consecutive env, add start command
+        begcmd = []
+        if not consecutive:
+            begcmd = put_cmd_in_ert("\\begin{sol}")
+        # has this a consecutive theorem of same type?
+        consecutive = False
+        consecutive = document.body[j + 2] == "\\begin_layout Solution"
+        # if this is not followed by a consecutive env, add end command
+        if not consecutive:
+            document.body[j : j + 1] = put_cmd_in_ert("\\end{sol}") + ["\\end_layout"]
+        document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd
+        add_to_preamble(document, "\\providecommand{\solutionname}{Solution}")
+        if mod == "theorems-std":
+            add_to_preamble(document, "\\theoremstyle{plain}\n" \
+                                      "\\newtheorem{sol}[thm]{\\protect\\solutionname}")
+        if mod == "theorems-bytype":
+            add_to_preamble(document, "\\theoremstyle{definition}\n" \
+                                      "\\newtheorem{sol}{\\protect\\solutionname}")
+        i = j
+
+
 ##
 # Conversion hub
 #
@@ -2146,10 +2190,12 @@ convert = [
            [498, []],
            [499, [convert_moderncv]],
            [500, []],
-           [501, [convert_fontsettings]]
+           [501, [convert_fontsettings]],
+           [502, []]
           ]
 
 revert =  [
+           [501, [revert_solution]],
            [500, [revert_fontsettings]],
            [499, [revert_achemso]],
            [498, [revert_moderncv_1, revert_moderncv_2]],
