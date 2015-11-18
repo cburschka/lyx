@@ -22,7 +22,7 @@
 # - Case (by inclusion)
 
 # We need separate counters for each theorem-like style.
-Format 58
+Format 59
 Counter theorem
 End
 Counter corollary
@@ -50,6 +50,8 @@ End
 Counter claim
 End
 
+OutlinerName thm "Definitions & Theorems"
+
 Style Theorem
 	Category              Reasoning
 	Margin                First_Dynamic
@@ -57,9 +59,12 @@ Style Theorem
 	LatexName             thm
 	NextNoIndent          1
 	ResetArgs             1
+	AddToToc              thm
+	IsTocCaption          1
 	Argument 1
 		LabelString    "Additional Theorem Text"
 		Tooltip        "Additional text appended to the theorem header"
+		IsTocCaption      1
 	EndArgument
 	LabelSep              xx
 	ParIndent             MMM

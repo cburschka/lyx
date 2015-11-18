@@ -12,7 +12,9 @@
 # Authors: Mark Edgington <edgimar@gmail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 58
+Format 59
+
+OutlinerName fixme "Fixme"
 
 #
 # List of FIXMEs
@@ -59,6 +61,8 @@ InsetLayout Flex:Fixme_Note
           Size                Small
         EndFont
         MultiPar              false
+        AddToToc              fixme
+        IsTocCaption          1
         Argument 1
           LabelString         "Options"
           MenuString          "Fixme Note Options|s"
@@ -103,6 +107,7 @@ InsetLayout Flex:Fixme_Note_(Targeted)
           LabelString         "Note"
           Mandatory            1
           MenuString          "Fixme Note|x"
+          IsTocCaption        1
           Tooltip             "Insert the FIXME note here"
           AutoInsert          1
         EndArgument
@@ -144,6 +149,7 @@ InsetLayout Flex:Fixme_Note_(Multipar)
         Argument 2
           LabelString         "Summary"
           Mandatory            1
+          IsTocCaption        1
           MenuString          "Fixme Summary"
           Tooltip             "Insert a summary of the FIXME note here"
           AutoInsert          1
@@ -184,6 +190,7 @@ InsetLayout Flex:Fixme_Note_(Multipar_Targeted)
         EndArgument
         Argument 2
           LabelString         "Summary"
+          IsTocCaption        1
           Mandatory            1
           MenuString          "Fixme Summary"
           Tooltip             "Insert a summary of the FIXME note here"

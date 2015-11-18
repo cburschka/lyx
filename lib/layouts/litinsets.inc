@@ -6,11 +6,13 @@
 # Note that this file is included in sweave.module,
 # knitr.module and noweb.module.
 
-Format 58
+Format 59
 
 Counter chunk
     PrettyFormat "Chunk ##"
 End
+
+OutlinerName literate "Literate programming"
 
 InsetLayout "Flex:Chunk"
     LabelString          "Chunk"
@@ -36,12 +38,15 @@ InsetLayout "Flex:Chunk"
     Spellcheck            0
     FreeSpacing           true
     ForceLTR              true
+    AddToToc              literate
+    IsTocCaption          0
     Argument 1
             Mandatory     1
             LabelString   "Options"
             Tooltip       "Options"
             LeftDelim     <<
             RightDelim    >>=<br/>
+			IsTocCaption  1
     EndArgument
     ResetsFont            false
     ForceOwnlines         true

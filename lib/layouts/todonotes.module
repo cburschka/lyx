@@ -8,7 +8,9 @@
 # Authors: Stephen <stephen4mailinglists@googlemail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 58
+Format 59
+
+OutlinerName todonotes "TODO"
 
 #
 # List of TODOs
@@ -67,6 +69,8 @@ InsetLayout Flex:TODO_Note_(Margin)
 	MultiPar	true
 	LatexType	command
 	LatexName	todo
+	AddToToc      todonotes
+	IsTocCaption  1
 	Argument 1
 		LabelString	"Options"
 		MenuString	"TODO Note Options|s"

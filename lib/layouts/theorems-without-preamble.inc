@@ -26,8 +26,9 @@
 # - Note
 
 
-Format 58
+Format 59
 
+OutlinerName thm "Definitions & Theorems"
 
 Counter		theorem
 End
@@ -37,9 +38,12 @@ Style Theorem
 	LatexType	Environment
 	LatexName	theorem
 	NextNoIndent	1
+	AddToToc              thm
+	IsTocCaption          1
 	Argument 1
 	  LabelString	"Name/Title"
 	  Tooltip	"Alternative optional name or title"
+	  IsTocCaption      1
 	EndArgument
 	LabelSep	xx
 	ParIndent	MMM
@@ -259,6 +263,8 @@ Style Prob
 	LabelFont
 	  Series	Bold
 	EndFont
+	AddToToc	thm
+	IsTocCaption	true
 End
 
 
@@ -288,6 +294,7 @@ Style Sol
 	  Mandatory	1
 	  LabelString	"Label of Problem"
 	  Tooltip	"Label of the corresponding problem"
+	  InToc
 	EndArgument
 End
 

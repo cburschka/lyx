@@ -19,7 +19,9 @@
 # - Claim
 # - Proof
 
-Format 58
+Format 59
+
+OutlinerName thm "Definitions & Theorems"
 
 Style Theorem*
 	Category              Reasoning
@@ -30,9 +32,12 @@ Style Theorem*
 	LabelString           "Theorem."
 	NextNoIndent          1
 	ResetArgs             1
+	AddToToc              thm
+	IsTocCaption          1
 	Argument 1
 		LabelString    "Additional Theorem Text"
 		Tooltip        "Additional text appended to the theorem header"
+		IsTocCaption      1
 	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
