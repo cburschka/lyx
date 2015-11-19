@@ -232,12 +232,12 @@ int LaTeX::run(TeXErrors & terr)
 	LYXERR(Debug::LATEX, "Run #" << count);
 	message(runMessage(count));
 
-	int const exit_code = startscript();
+	int exit_code = startscript();
 
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		LYXERR(Debug::LATEX, "Rerunning LaTeX");
-		startscript();
+		exit_code = startscript();
 		scanres = scanLogFile(terr);
 	}
 
