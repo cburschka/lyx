@@ -64,6 +64,8 @@ public:
 	void insertError(int line, docstring const & error_desc,
 			 docstring const & error_text,
 			 std::string const & child_name = empty_string());
+	///
+	void clearErrors() { errors.clear(); }
 private:
 	///
 	Errors errors;

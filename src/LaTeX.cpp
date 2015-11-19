@@ -237,6 +237,7 @@ int LaTeX::run(TeXErrors & terr)
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		LYXERR(Debug::LATEX, "Rerunning LaTeX");
+		terr.clearErrors();
 		exit_code = startscript();
 		scanres = scanLogFile(terr);
 	}
