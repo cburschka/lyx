@@ -407,8 +407,12 @@ int LaTeX::run(TeXErrors & terr)
 	// Write the dependencies to file.
 	head.write(depfile);
 
-	if (exit_code)
+	if (exit_code) {
+		// add flag here, just before return, instead of when exit_code
+		// is defined because scanres is sometimes overwritten above
+		// (e.g. rerun)
 		scanres |= NONZERO_ERROR;
+	}
 
 	LYXERR(Debug::LATEX, "Done.");
 
