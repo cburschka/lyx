@@ -147,3 +147,39 @@ export/doc/es/EmbeddedObjects_(dvi3|pdf[45])_texF
 # problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
 # testing the engine, it switches to "unicode modus".
 export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
+#
+# Babel-Spanish uses Babel's "strings" feature to define separate auto-strings
+# using UTF-8 literals.
+# 
+# Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
+# This is wrong for Xe/Lua with 8-bit TeX-fonts.
+# (It can be overridden adding the "strings=generic" option to Babel.)
+# for now inverted
+export/doc/es/.*_(dvi3|pdf[45])_texF
+#
+# * lmodern.sty
+# * missing commands and missing characters
+export/doc/es/(EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+#
+# Non-ASCII in ERT
+export/doc/fr/Additional_pdf4_texF
+#
+# Non-ASCII in verbatim and index entries
+export/doc/fr/UserGuide_pdf4_texF
+#
+# lmodern.sty? + maybe more
+export/doc/fr/(Additional_pdf5|Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+#
+# language nesting error (polyglossia) (known bug)
+export/doc/nb/Intro_pdf5_systemF
+#
+# Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
+# This fails unless the inputencoding is set to utf-8, too.
+export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
+export/doc/(ru|uk)/splash_(dvi3|pdf[45])_texF
+#
+# chemgreek incompatible with LuaTeX (cf. Math.lyx)
+# for now inverted
+export/doc/sk/Intro_pdf5_systemF
+export/examples/PDF-comment_pdf5_texF
+export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
