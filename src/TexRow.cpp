@@ -475,7 +475,7 @@ docstring TexRow::asString(RowEntry const & entry)
 ///prepends the texrow to the source given by tex, for debugging purpose
 void TexRow::prepend(docstring_list & tex) const
 {
-	int const prefix_length = 25;
+	size_type const prefix_length = 25;
 	if (tex.size() < rowlist_.size())
 		tex.resize(rowlist_.size());
 	std::vector<RowEntryList>::const_iterator it = rowlist_.begin();
@@ -489,7 +489,7 @@ void TexRow::prepend(docstring_list & tex) const
 			entry += asString(*it2);
 		if (entry.length() < prefix_length)
 			entry = entry + docstring(prefix_length - entry.length(), L' ');
-		int i = it - beg;
+		ptrdiff_t i = it - beg;
 		tex[i] = entry + "  " + tex[i];
 	}
 }
