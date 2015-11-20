@@ -41,12 +41,17 @@ void CoordCache::clear()
 
 void CoordCache::dump() const
 {
+	if (getInsets().data_.empty()) {
+		LYXERR0("InsetCache is empty.");
+		return;
+	}
+
 	LYXERR0("InsetCache contains:");
 	CoordCache::Insets::cache_type::const_iterator it =
 		getInsets().data_.begin();
 	for (; it != getInsets().data_.end(); ++it) {
 		// Warning: it is not guaranteed that inset is a valid pointer
-		// (therefore it has type 'void *') (see bug #7376).	
+		// (therefore it has type 'void *') (see bug #7376).
 		void const * inset = it->first;
 		Point const p = it->second.pos;
 		LYXERR0("Inset " << inset << " has point " << p.x_ << "," << p.y_);
