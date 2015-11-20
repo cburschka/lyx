@@ -111,6 +111,9 @@ What's new
 
 - The math command \sideset is now in the autocomplete list (bug 9810).
 
+- Disable Apply button in InsetParams dialogs if there is no inset to apply
+  to (bug 9386).
+
 
 * INTERNALS
 

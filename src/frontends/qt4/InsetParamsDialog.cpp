@@ -181,7 +181,7 @@ docstring InsetParamsDialog::checkWidgets(bool immediate)
 	bool const can_be_restored = !immediate && !read_only
 			&& ins && (ins != d->inset_ || d->changed_);
 	restorePB->setEnabled(can_be_restored);
-	applyPB->setEnabled(!immediate && lfun_ok && widget_ok && !read_only && valid_argument);
+	applyPB->setEnabled(ins && !immediate && lfun_ok && widget_ok && !read_only && valid_argument);
 	d->widget_->setEnabled(!read_only);
 	synchronizedCB->setEnabled(!immediate);
 	return argument;
