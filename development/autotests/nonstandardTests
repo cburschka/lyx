@@ -4,4 +4,9 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 export/templates/kluwer_pdf5_systemF
 export/templates/kluwer_pdf[45]_systemF
 #
-export/examples/seminar_pdf
+export/examples/(|fr/)seminar_(dvi|pdf|pdf[23]|pdf4_texF|pdf5_systemF)
+#
+# 1.) missing farsi package with lfeenc.def
+# 2.) LuaTeX does not support Farsi yet. See:
+#     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))

@@ -1,3 +1,5 @@
+# Comments by Günter Milde (GM)
+#
 # Hebrew docs do not currently work with LuaTeX
 export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
 export/.*/he/(splash).*(dvi3)_.*
@@ -24,10 +26,6 @@ export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
 #
-# LuaTeX does not support Farsi yet. See:
-# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/examples/fa/splash_(pdf5|dvi3)_.*
-#
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
 export/doc/uk/Intro_dvi3_systemF
@@ -44,7 +42,7 @@ export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
 export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
-export/examples/fr/(Foils|ListesPuces|seminar)_pdf4_systemF
+export/examples/fr/(ListesPuces|seminar)_pdf4_systemF
 export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 # Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
@@ -67,9 +65,10 @@ export/examples/(docbook_article)_(pdf[245]|dvi3).*
 export/examples/instant_preview_(dvi3|pdf4)_systemF
 export/examples/instant_preview_pdf[25].*
 export/examples/listerrors_(pdf[245]).*
-export/examples/seminar_pdf4_systemF
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 export/examples/fr/exemple-powerdot_pdf[25].*
+export/examples/fr/exemple-powerdot_pdf
+export/examples/powerdot-example_pdf
 export/examples/ja/(.*)_(dvi3|pdf[245]).*
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 export/examples/ko/splash_(dvi||pdf[23]?)
@@ -90,6 +89,14 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/doc/he/(Intro|Tutorial)_pdf4_texF
 export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #
+# GM: False positive: if the font is e.g. set to 
+# LinuxLibertine and LinuxBiolinum, there are no missing characters but
+# polyglossia anyway throws the error:
+# 
+#  ! Package polyglossia Error: The current roman font does not contain the
+#  Hebrew script!
+export/examples/he/splash_pdf5_systemF
+#
 # These exports correctly fail now that we've switched to polyglossia. Although
 # they compiled without error with babel, the resulting PDFs had gibberish.
 # Note that there is a problem with the LyX-generated preamble in the Russian
@@ -101,7 +108,9 @@ export/doc/ru/Tutorial_pdf5_systemF
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
 export/examples/PDF-(form)_(dvi.*|pdf[^25]*)
-export/examples/PDF-comment_dvi3_.*F
+# PDF comments in DVI? No wonder we have:
+# ! Package zref Error: \pdfsavepos is not supported in DVI mode
+export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
 #
 export/templates/IUCr-article_pdf4_systemF
 #
@@ -117,11 +126,11 @@ export/examples/H-P-statements_pdf[45]_systemF
 export/doc(|/de|/es|/fr)/Math.*systemF
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 #
-# Example of "high bit" chars in listings. Fails with XeTeX due ot 
+# GM: Example of "high bit" chars in listings. Fails with XeTeX due ot 
 # limiation to ASCII (no LICR in listings possible). Gives correct warning.
 export/doc/EmbeddedObjects_pdf4_systemF
 #
-# Non-ASCII char in verbatim environment.
+# GM: Non-ASCII char in verbatim environment.
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/UserGuide_pdf4_texF
 #
@@ -131,55 +140,77 @@ export/doc/UserGuide_pdf4_texF
 export/doc/de/(Additional|UserGuide)_pdf4_texF
 export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
 #
-# Seems to be a case of the polyglossia + language-nesting problem
+# GM: Seems to be a case of the polyglossia + language-nesting problem
 export/doc/es/Customization_pdf[45]_systemF
 export/doc/es/Additional_pdf4_texF
 #
-# Files in the attic with changed settings 
+# GM: Files in the attic with changed settings 
 # (i.e. could be ERT, package incompatiblity, ...)
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
 #
-# Don't know what is to be expected with indices and Xe/Lua
+# GM: Don't know what is to be expected with indices and Xe/Lua
 export/doc/es/EmbeddedObjects_(dvi3|pdf[45])_texF
 #
-# Babel's Russian language definition file has the same
+# GM: Babel's Russian language definition file has the same
 # problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
 # testing the engine, it switches to "unicode modus".
 export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
 #
-# Babel-Spanish uses Babel's "strings" feature to define separate auto-strings
-# using UTF-8 literals.
+# GM: Babel-Spanish uses Babel's "strings" feature to define
+# separate auto-strings using UTF-8 literals.
 # 
 # Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
 # This is wrong for Xe/Lua with 8-bit TeX-fonts.
 # (It can be overridden adding the "strings=generic" option to Babel.)
 # for now inverted
 export/doc/es/.*_(dvi3|pdf[45])_texF
+export/.*/es/.*_(dvi3|pdf5)_texF
+export/examples/es/linguistics_pdf4_texF
+export/examples/linguistics_(dvi3|pdf[45])_systemF
 #
-# * lmodern.sty
-# * missing commands and missing characters
+# GM: Missing character: There is no 砋 (U+780B) in font
+#     "file:lmroman10-regular:script=latn;+trep;+tlig;"!
+# Character '砋' (30731, 0x780B) is not in my list of known Unicode points,
+# don't know where it comes from. On first inspection, the output looks OK.
+# Explore later.
+export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
+export/examples/modernCV_pdf4_(texF|systemF)
+#
+# GM: * lmodern.sty
+#     * missing commands and missing characters
 export/doc/es/(EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
 #
-# Non-ASCII in ERT
+# GM: Non-ASCII in ERT
 export/doc/fr/Additional_pdf4_texF
 #
-# Non-ASCII in verbatim and index entries
+# GM: Non-ASCII in verbatim and index entries
 export/doc/fr/UserGuide_pdf4_texF
 #
-# lmodern.sty? + maybe more
+# GM: lmodern.sty? + maybe more
 export/doc/fr/(Additional_pdf5|Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
 #
-# language nesting error (polyglossia) (known bug)
+# GM: language nesting error (polyglossia) (known bug)
 export/doc/nb/Intro_pdf5_systemF
 #
-# Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
+# GM: Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/doc/(ru|uk)/splash_(dvi3|pdf[45])_texF
 #
-# chemgreek incompatible with LuaTeX (cf. Math.lyx)
+# GM: chemgreek incompatible with LuaTeX (cf. Math.lyx)
 # for now inverted
 export/doc/sk/Intro_pdf5_systemF
-export/examples/PDF-comment_pdf5_texF
+export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
+export/examples/achemso_(dvi3|pdf5)_texF
+#
+# GM: * seminar uses Postscript specials and does not work with PDF (pdflatex).
+#     * Landscape slides do not work with DVI.
+# Export to certain formats cannot be excluded from a module currently,
+# but even if they don't report an error, other formats result in corrupt
+# output documents (missing landscape slides).
+export/examples/(|fr/)seminar_pdf(2|4_systemF|5.*F)
+#
+# GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
+export/examples/ko/splash_(dvi3|pdf[45])_texF

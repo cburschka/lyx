@@ -150,17 +150,16 @@ macro(handlesuspended TestName reverted testlabel)
   set(mylabel ${testlabel})
   set(myreverted ${reverted})
 
-  if (${reverted})
+  # check for nonstandard
+  if ("${TestName}" MATCHES "^NON_STANDARD")
+    set(mylabel "nonstandard")
+    set(myreverted 0)
+  elseif (${reverted})
     # check suspension only for reverted tests
     findexpr(tfound TestName suspendedTests)
     if (tfound)
       set(mylabel "suspended")
       set(myreverted 0) # if test is to be suspended, remove the 'reverted' flag
-    endif()
-  else ()
-    # check for nonstandard
-    if ("${TestName}" MATCHES "^NON_STANDARD")
-      set(mylabel "nonstandard")
     endif()
   endif()
   setmarkedtestlabel(${TestName} ${myreverted} ${mylabel})
