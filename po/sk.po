@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-11-12 14:10+0100\n"
-"PO-Revision-Date: 2015-11-12 13:14+0000\n"
+"POT-Creation-Date: 2015-11-19 17:18+0100\n"
+"PO-Revision-Date: 2015-11-20 10:11+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -454,11 +454,11 @@ msgstr "&Oddeľovač rámikov:"
 msgid "Size value"
 msgstr "Hodnota veľkosti"
 
-#: src/frontends/qt4/ui/BoxUi.ui:243 src/frontends/qt4/ui/ExternalUi.ui:420
+#: src/frontends/qt4/ui/BoxUi.ui:61 src/frontends/qt4/ui/ExternalUi.ui:420
 #: src/frontends/qt4/ui/LineUi.ui:58 src/frontends/qt4/ui/PageLayoutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:475 src/frontends/qt4/ui/WrapUi.ui:85
 msgid "&Width:"
-msgstr "Šír&ka:"
+msgstr "Ší&rka:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:259
 msgid "Height value"
@@ -4463,7 +4463,7 @@ msgstr "Zlúčiť bunky rozličných riadkov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr "Viac&riadkové"
+msgstr "V&iacriadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
@@ -4511,7 +4511,7 @@ msgstr "Otočiť tabuľku o 90 stupňov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:319
 msgid "&Rotate"
-msgstr "&Otočiť"
+msgstr "Otočiť"
 
 #: src/frontends/qt4/ui/TabularUi.ui:366
 msgid "Column settings"
@@ -4559,7 +4559,7 @@ msgid "Merge cells of different columns"
 msgstr "Zlúčiť bunky rozličných stĺpcov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
-msgid "&Multicolumn"
+msgid "Mu&lticolumn"
 msgstr "Viac-&stĺpcové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:560
@@ -4572,7 +4572,7 @@ msgstr "Vlastný formát stĺpca (LaTeX)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:584
 msgid "&Borders"
-msgstr "O&kraje"
+msgstr "Okra&je"
 
 #: src/frontends/qt4/ui/TabularUi.ui:590
 msgid "Set Borders"
@@ -4633,16 +4633,16 @@ msgid "Bet&ween rows:"
 msgstr "&Medzi riadkami:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1304
-msgid "&Longtable"
-msgstr "D&lhá tabuľka"
+msgid "&Multi-page table"
+msgstr "Via&cstranná tabuľka"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
 msgstr "Vyberte to pre tabuľky presahujúce viac strán"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
-msgid "&Use long table"
-msgstr "Použiť d&lhú tabuľku"
+msgid "&Use multi-page table"
+msgstr "Použiť viacstrannú tabuľku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Row settings"
@@ -4742,12 +4742,12 @@ msgid "Page &break on current row"
 msgstr "Zalo&m stranu na aktuálnom riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1540
-msgid "Horizontal alignment of the longtable"
-msgstr "Horizontálne zarovnanie dlhej tabuľky"
+msgid "Horizontal alignment of the multi-page table"
+msgstr "Horizontálne zarovnanie viacstrannej tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1543
-msgid "Longtable alignment"
-msgstr "Zarovnanie dlhej tabuľky"
+msgid "Multi-page table alignment"
+msgstr "Zarovnanie viacstrannej tabuľky"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -12875,6 +12875,10 @@ msgid "Exercise \\thetheorem."
 msgstr "Úloha \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:239 lib/layouts/theorems.inc:239
+msgid "Solution \\thetheorem."
+msgstr "Riešenie \\thetheorem."
+
+#: lib/layouts/theorems-ams.inc:239 lib/layouts/theorems.inc:239
 msgid "Remark \\thetheorem."
 msgstr "Pripomienka \\thetheorem."
 
@@ -12910,6 +12914,10 @@ msgstr "Problém*"
 msgid "Exercise*"
 msgstr "Úloha*"
 
+#: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:229
+msgid "Solution*"
+msgstr "Riešenie*"
+
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:228
 msgid "Remark*"
 msgstr "Pripomienka*"
@@ -12937,6 +12945,10 @@ msgstr "Problém."
 #: lib/layouts/theorems-starred.inc:214
 msgid "Exercise."
 msgstr "Úloha."
+
+#: lib/layouts/theorems-starred.inc:232
+msgid "Solution."
+msgstr "Riešenie."
 
 #: lib/layouts/theorems-starred.inc:231
 msgid "Remark."
@@ -16686,7 +16698,7 @@ msgstr "Štýl Textu"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:121
 msgid "Paragraph Settings...|P"
-msgstr "Nastavenia odstavca…|a"
+msgstr "Nastavenia Odstavca…|O"
 
 #: lib/ui/stdcontext.inc:346
 msgid "Fullscreen Mode"
@@ -16845,21 +16857,21 @@ msgstr "Presunúť Stĺpec Doprava"
 msgid "Move Column Left"
 msgstr "Presunúť Stĺpec Doľava"
 
+#: lib/ui/stdcontext.inc:445
+msgid "Multi-page Table|g"
+msgstr "Viacstranná Tabuľka|V"
+
 #: lib/ui/stdcontext.inc:444
 msgid "Formal Style|m"
 msgstr "Formálny Štýl|F"
 
-#: lib/ui/stdcontext.inc:445
-msgid "Longtable|g"
-msgstr "Dlhá tabuľka|D"
-
-#: lib/ui/stdcontext.inc:447
+#: lib/ui/stdcontext.inc:450
 msgid "Borders|d"
-msgstr "Okraje|O"
+msgstr "Okraje|k"
 
-#: lib/ui/stdcontext.inc:449
-msgid "Align|i"
-msgstr "Zarovnanie|Z"
+#: lib/ui/stdcontext.inc:451
+msgid "Alignment|i"
+msgstr "Zarovnanie"
 
 #: lib/ui/stdcontext.inc:451
 msgid "Columns/Rows|C"
@@ -17110,16 +17122,16 @@ msgid "Export As...|s"
 msgstr "Exportovať Ako…"
 
 #: lib/ui/stdmenus.inc:93
-msgid "More Formats & Options...|O"
+msgid "More Formats & Options...|r"
 msgstr "Viac Formátov a Volieb…"
 
 #: lib/ui/stdmenus.inc:102
 msgid "Undo|U"
 msgstr "Späť|S"
 
-#: lib/ui/stdmenus.inc:103
+#: lib/ui/stdmenus.inc:102
 msgid "Redo|R"
-msgstr "Opakovať|O"
+msgstr "Opakovať|p"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Paste Special"
@@ -17280,6 +17292,10 @@ msgstr "Veľké písmená"
 #: lib/ui/stdmenus.inc:190
 msgid "Lowercase|L"
 msgstr "Malé písmená"
+
+#: lib/ui/stdmenus.inc:195
+msgid "Formal Style|F"
+msgstr "Formálny Štýl|F"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Multicolumn|M"
@@ -22611,16 +22627,16 @@ msgstr "GnumericTabuľkovýProcesor"
 msgid "Spreadsheet"
 msgstr "Tabuľkový procesor"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
-"It imports as a long table, so any length\n"
+"It imports as a multi-page table, so any length\n"
 "is ok. Excessive width could be a problem.\n"
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
 "Tabuľka vytvorená s gnumeric, libreoffice, openoffice alebo excel.\n"
-"Import prevádza do dlhých tabuliek, čiže každá dĺžka je v poriadku.\n"
+"Import prevádza do viacstranných tabuliek, čiže každá dĺžka je v poriadku.\n"
 "Prehnaná šírka by mohla mať problém.\n"
 "Pre konverziu gnumeric alebo excel súborov\n"
 "je potrebný program gnumeric.\n"
@@ -25860,14 +25876,22 @@ msgstr ""
 msgid "Unknown Inset"
 msgstr "Neznáma vložka"
 
-#: src/Text.cpp:517
-msgid "Change tracking error"
-msgstr "Chyba pri zmene sledovania"
+#: src/Text.cpp:540
+msgid "Change tracking author index missing"
+msgstr "Chýba index autora pri sledovaní zmien"
 
-#: src/Text.cpp:518
+#: src/Text.cpp:541
 #, c-format
-msgid "Unknown author index for change: %1$d\n"
-msgstr "Neznámy index autora pre zmenu: %1$d\n"
+msgid ""
+"A change tracking author information for index %1$d is missing. This can "
+"happen after a wrong merge by a version control system. In this case, either "
+"fix the merge, or have this information missing until the corresponding "
+"tracked changes are merged or this user edits the file again.\n"
+msgstr ""
+"Autorská informácia pre index %1$d chýba v sledovaní zmien. To sa môže stať "
+"pri chybnom zlúčení v systéme správe verzií. V tomto pripade alebo opravte "
+"zlúčenie, alebo tá informácia bude chýbať až sa príslušné sledovanie zmien "
+"zlúči alebo ten používateľ upraví ten súbor znovu.\n"
 
 #: src/Text.cpp:529
 msgid "Unknown token"
@@ -30193,6 +30217,25 @@ msgstr ""
 msgid "Uncodable characters in listings inset"
 msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
 
+#: src/insets/InsetListings.cpp:250
+#, c-format
+msgid ""
+"The following characters in one of the program listings are\n"
+"not representable in the current encoding and have been omitted:\n"
+"%1$s.\n"
+"This is due to a restriction of the listings package, which does\n"
+"not support your encoding '%2$s'.\n"
+"Toggling 'Use non-TeX fonts' in Document > Settings...\n"
+"might help."
+msgstr ""
+"Nasledujúce znaky vo výpisoch zdrojových kódov sú nereprezentovateľné\n"
+"vo zvolenom kódovaní a boli vynechané:\n"
+"%1$s.\n"
+"Je to kvôli reštrikcii balíka listings, ktorý nepodporuje\n"
+"vaše kódovanie '%2$s'.\n"
+"Prepnutím 'Použiť fonty mimo TeXu' v Dokument -> Nastavenia ... -> Písma\n"
+"sa to možno zlepší."
+
 #: src/insets/InsetListings.cpp:260
 #, c-format
 msgid ""
@@ -31199,6 +31242,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Unknown author index for change: %1$d\n"
+#~ msgstr "Neznámy index autora pre zmenu: %1$d\n"
+
+#~ msgid "Normal Table|g"
+#~ msgstr "Normálna Tabuľka|N"
+
+#~ msgid "Default Style|m"
+#~ msgstr "Štandardný Štýl|t"
+
+#~ msgid "Settings Dialog...|S"
+#~ msgstr "Nastavenia Tabuľky…|a"
+
+#~ msgid "&Longtable"
+#~ msgstr "Via&cstranná tabuľka"
+
+#~ msgid "Breakable Table|g"
+#~ msgstr "Viacstranná Tabuľka|V"
+
+#~ msgid "Longtable|g"
+#~ msgstr "Dlhá tabuľka|D"
+
+#~ msgid "Align|i"
+#~ msgstr "Zarovnanie|Z"
 
 #~ msgid "Top Line|n"
 #~ msgstr "Vrchný riadok"
@@ -32409,9 +32476,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Line Right|R"
 #~ msgstr "Čiara vpravo"
-
-#~ msgid "Alignment|i"
-#~ msgstr "Zarovnanie"
 
 #~ msgid "Delete Row|w"
 #~ msgstr "Zmazať riadok"
@@ -34435,3 +34499,34 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Colored boxes|C"
 #~ msgstr "Farebné rámiky"
+
+#~ msgid "&Multicolumn"
+#~ msgstr "Viac-&stĺpcové"
+
+#~ msgid "&Use long table"
+#~ msgstr "Použiť viacstrannú tabuľku"
+
+#~ msgid "Horizontal alignment of the longtable"
+#~ msgstr "Horizontálne zarovnanie viacstrannej tabuľky"
+
+#~ msgid "Longtable alignment"
+#~ msgstr "Zarovnanie viacstrannej tabuľky"
+
+#~ msgid ""
+#~ "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
+#~ "It imports as a long table, so any length\n"
+#~ "is ok. Excessive width could be a problem.\n"
+#~ "The gnumeric software is necessary for conversion,\n"
+#~ "both for gnumeric and excel files.\n"
+#~ msgstr ""
+#~ "Tabuľka vytvorená s gnumeric, libreoffice, openoffice alebo excel.\n"
+#~ "Import prevádza do viacstranných tabuliek, čiže každá dĺžka je v poriadku.\n"
+#~ "Prehnaná šírka by mohla mať problém.\n"
+#~ "Pre konverziu gnumeric alebo excel súborov\n"
+#~ "je potrebný program gnumeric.\n"
+
+#~ msgid "More Formats & Options...|O"
+#~ msgstr "Viac Formátov a Volieb…"
+
+#~ msgid "Change tracking error"
+#~ msgstr "Chyba pri zmene sledovania"
