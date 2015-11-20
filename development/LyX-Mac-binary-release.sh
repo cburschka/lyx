@@ -55,6 +55,9 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -fast -no-exceptions"
 	QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+	for arch in ${ARCH_LIST} ; do
+		QTARCHS="${QTARCHS} -arch ${arch}"
+	done
 	;;
 5.0*)
 	QtConfigureOptions="${QtConfigureOptions} -fast -no-strip"
@@ -75,7 +78,8 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
 	QtConfigureOptions="${QtConfigureOptions} -skip qtquick1 -skip qtwebkit -skip qtconnectivity -skip qtscript"
-	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols -skip qtdeclarative"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols"
+#	QtConfigureOptions="${QtConfigureOptions} -skip qtdeclarative"
 	QtMajorVersion=qt5
 	;;
 *)
@@ -83,6 +87,9 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtConfigureOptions="${QtConfigureOptions} ${QtAPI}"
+	for arch in ${ARCH_LIST} ; do
+		QTARCHS="${QTARCHS} -arch ${arch}"
+	done
 	;;
 esac
 
@@ -389,12 +396,9 @@ if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${
 	fi
 	(
 		mkdir -p "${QtBuildDir}" && cd "${QtBuildDir}"
-		for arch in ${ARCH_LIST} ; do
-			ARCHS="${ARCHS} -arch ${arch}"
-		done
 		echo configure options:
-		echo ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-		"${QtSourceDir}"/configure ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
+		echo ${QtConfigureOptions} ${QTARCHS} -prefix "${QtInstallDir}"
+		"${QtSourceDir}"/configure ${QtConfigureOptions} ${QTARCHS} -prefix "${QtInstallDir}"
 		make -j1 && make -j1 install
 	)
 fi
