@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 501
+\lyxformat 502
 \begin_document
 \begin_header
-\origin /systemlyxdir/examples/fa/
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -73,7 +73,8 @@
 \begin_layout Title
 به 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  خوش آمدید!
 \end_layout
@@ -81,7 +82,8 @@
 \begin_layout Section*
 چند چیزی که برای استفاده از 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  باید بدانید
 \end_layout
@@ -98,11 +100,12 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  مستنداتی عالی دارد
 \lang english
-\threehyphens
+—
 \lang farsi
 لطفا از آن استفاده کنید! از قسمت 
 \family sans
@@ -129,7 +132,8 @@ Tutorial
 \lang farsi
  نحوه استفاده از 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  را بیاموزید.
 \end_layout
@@ -146,12 +150,13 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  چیزی است که به آن »پردازشگر متن« می‌گویند.
  از لحاظ طراحی، با دیگر پردازشگرهای متن معمول تفاوت دارد
 \lang english
-\threehyphens
+—
 \lang farsi
 به گونه‌ای که نوشتن متون را ساده‌تر می‌کند.
  ولی تفاوتی اندک، در نتیجه نهراسید.
@@ -171,7 +176,8 @@ status collapsed
 \begin_layout Enumerate
 خروجی 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  بسیار زیبا به نظر می‌رسد! 
 \family sans
@@ -190,42 +196,51 @@ DVI
 \begin_layout Enumerate
 درست است! 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  می‌تواند (تا اندازه‌ی زیادی) تمام کارکرد 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang farsi
  را به شما ارائه دهد.
  همین طور 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  می‌تواند فایلهای 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang farsi
  را نیز وارد کند.
  کاربران مجرب 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang farsi
  باید از فصل »
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  برای کاربران 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang farsi
 « شروع کنند.
  (دیگران: برای استفاده از 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
 ،  لازم نیست 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang farsi
  بدانید.)
 \end_layout
@@ -242,7 +257,8 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  امکانات فراوانی برای کسانی که از زبانی غیر از انگلیسی برای خواندن و نوشتن
  استفاده می‌کنند فراهم می‌کند.
@@ -264,13 +280,15 @@ Customization
 \begin_layout Enumerate
 سایت خانگی 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  در 
 \family typewriter
+\lang british
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -281,14 +299,17 @@ http://www.lyx.org/
 
 
 \family default
+\lang farsi
  قرار دارد.
  در مورد 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  اطلاعات بگیرید، در لیست-نامه(ها) مشترک شوید، تور گرافیکی 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang farsi
  را ملاحظه کنید، و چیزهای دیگر.
 \end_layout
