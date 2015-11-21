@@ -161,8 +161,6 @@ export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
 # This is wrong for Xe/Lua with 8-bit TeX-fonts.
 # (It can be overridden adding the "strings=generic" option to Babel.)
 # for now inverted
-export/doc/es/.*_(dvi3|pdf[45])_texF
-export/.*/es/.*_(dvi3|pdf5)_texF
 export/examples/es/linguistics_pdf4_texF
 export/examples/linguistics_(dvi3|pdf[45])_systemF
 #
@@ -172,7 +170,6 @@ export/examples/linguistics_(dvi3|pdf[45])_systemF
 # don't know where it comes from. On first inspection, the output looks OK.
 # Explore later.
 export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
-export/examples/modernCV_pdf4_(texF|systemF)
 #
 # GM: * lmodern.sty
 #     * missing commands and missing characters
@@ -207,7 +204,7 @@ export/examples/achemso_(dvi3|pdf5)_texF
 # Export to certain formats cannot be excluded from a module currently,
 # but even if they don't report an error, other formats result in corrupt
 # output documents (missing landscape slides).
-export/examples/(|fr/)seminar_pdf(2|4_systemF|5.*F)
+export/examples/(|fr/)seminar_pdf(2|[45]_systemF)
 #
 # GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
 export/examples/ko/splash_(dvi3|pdf[45])_texF
