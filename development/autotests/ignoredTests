@@ -6,3 +6,6 @@ check_load/templates/attic/latex8
 export/templates/attic/latex8_pdf.*
 export/.*/ko[/_].*_texF
 #
+# Are they ever expected to success?
+export/.*/ja/.*_(pdf[245]|dvi3).*
+#

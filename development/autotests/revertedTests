@@ -59,7 +59,6 @@ export/.*/zh_CN/.*(pdf[45]|dvi3)_texF
 # see whether they are supposed to fail or if there is something LyX
 # can do to add support for exporting them.
 export/doc/hu/Tutorial_dvi3_.*F
-export/doc/ja/.*_(pdf[245]|dvi3).*
 export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
 export/examples/(docbook_article)_(pdf[245]|dvi3).*
 export/examples/instant_preview_(dvi3|pdf4)_systemF
@@ -69,14 +68,12 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 export/examples/fr/exemple-powerdot_pdf[25].*
 export/examples/fr/exemple-powerdot_pdf
 export/examples/powerdot-example_pdf
-export/examples/ja/(.*)_(dvi3|pdf[245]).*
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 export/examples/ko/splash_(dvi||pdf[23]?)
 export/templates/DocBook_article_(dvi3_|pdf2|pdf[45]_).*
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 export/templates/attic/latex8_(dvi|dvi3_.*)
 export/templates/ctex_(pdf[23]?|pdf4_texF)
-export/templates/ja_.*(pdf[245]|dvi3).*
 #
 # The following exports worked with TeX Live 2013, but not in 2014.
 # For a workaround, see:
