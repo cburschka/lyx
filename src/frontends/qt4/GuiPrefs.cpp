@@ -1272,10 +1272,16 @@ void PrefDisplay::applyRC(LyXRC & rc) const
 			rc.preview = LyXRC::PREVIEW_OFF;
 			break;
 		case 1:
-			rc.preview = LyXRC::PREVIEW_NO_MATH;
+			if (rc.preview != LyXRC::PREVIEW_NO_MATH) {
+				rc.preview = LyXRC::PREVIEW_NO_MATH;
+				form_->updatePreviews();
+			}
 			break;
 		case 2:
-			rc.preview = LyXRC::PREVIEW_ON;
+			if (rc.preview != LyXRC::PREVIEW_ON) {
+				rc.preview = LyXRC::PREVIEW_ON;
+				form_->updatePreviews();
+			}
 			break;
 	}
 
@@ -3205,7 +3211,8 @@ void PrefIdentity::updateRC(LyXRC const & rc)
 /////////////////////////////////////////////////////////////////////
 
 GuiPreferences::GuiPreferences(GuiView & lv)
-	: GuiDialog(lv, "prefs", qt_("Preferences")), update_screen_font_(false)
+	: GuiDialog(lv, "prefs", qt_("Preferences")), update_screen_font_(false),
+	  update_previews_(false)
 {
 	setupUi(this);
 
@@ -3315,6 +3322,7 @@ bool GuiPreferences::initialiseParams(string const &)
 	movers_ = theMovers();
 	colors_.clear();
 	update_screen_font_ = false;
+	update_previews_ = false;
 
 	updateRC(rc_);
 	// Make sure that the bc is in the INITIAL state
@@ -3359,6 +3367,12 @@ void GuiPreferences::dispatchParams()
 		update_screen_font_ = false;
 	}
 
+        if (update_previews_) {
+		// resets flag in case second apply in same dialog
+		theBufferList().updatePreviews();
+		update_previews_ = false;
+	}
+
 	// The Save button has been pressed
 	if (isClosing())
 		dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
@@ -3374,6 +3388,12 @@ void GuiPreferences::setColor(ColorCode col, QString const & hex)
 void GuiPreferences::updateScreenFonts()
 {
 	update_screen_font_ = true;
+}
+
+
+void GuiPreferences::updatePreviews()
+{
+	update_previews_ = true;
 }
 
 

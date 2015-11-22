@@ -101,6 +101,9 @@ public:
 	/// update the screen fonts after change
 	void updateScreenFonts();
 
+	/// update the previews after change
+	void updatePreviews();
+
 	LyXRC & rc() { return rc_; }
 	Converters & converters() { return converters_; }
 	Formats & formats() { return formats_; }
@@ -123,6 +126,7 @@ private:
 	std::vector<std::string> colors_;
 
 	bool update_screen_font_;
+	bool update_previews_;
 };
 
 
