@@ -778,7 +778,9 @@ Un exemple d'environnement minipage.
 \begin_inset Newline newline
 \end_inset
 
-mettre presque tout dedans, même des figures
+mettre presque tout dedans, m
+\backslash
+^eme des figures
 \begin_inset Newline newline
 \end_inset
 
@@ -876,8 +878,9 @@ begin{minipage}{5cm}
 \begin_layout Plain Layout
 
 Un exemple d'environnement minipage.
- Vous pouvez mettre presque tout dedans, même des figures et des tableaux
- (non flottants).
+ Vous pouvez mettre presque tout dedans, m
+\backslash
+^eme des figures et des tableaux (non flottants).
 \end_layout
 
 \begin_layout Plain Layout
