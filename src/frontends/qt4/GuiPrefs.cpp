@@ -3355,6 +3355,7 @@ void GuiPreferences::dispatchParams()
 
 	if (update_screen_font_) {
 		dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+		// resets flag in case second apply in same dialog
 		update_screen_font_ = false;
 	}
 
