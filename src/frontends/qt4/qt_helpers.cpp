@@ -598,6 +598,7 @@ QStringList fileFilters(QString const & desc)
 
 QString guiName(string const & type, BufferParams const & bp)
 {
+	// FIXME: hardcoded
 	if (type == "tableofcontents")
 		return qt_("Table of Contents");
 	if (type == "child")
@@ -646,7 +647,7 @@ QString guiName(string const & type, BufferParams const & bp)
 	if (floats.typeExist(type))
 		return qt_(floats.getType(type).listName());
 
-	return qt_(type);
+	return toqstr(bp.documentClass().outlinerName(type));
 }
 
 

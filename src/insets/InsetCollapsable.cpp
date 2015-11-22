@@ -576,11 +576,18 @@ void InsetCollapsable::setLabel(docstring const & l)
 }
 
 
+docstring InsetCollapsable::getLabel() const
+{
+	InsetLayout const & il = getLayout();
+	return labelstring_.empty() ?
+		translateIfPossible(il.labelstring()) : labelstring_;
+}
+
+
 docstring const InsetCollapsable::buttonLabel(BufferView const & bv) const
 {
 	InsetLayout const & il = getLayout();
-	docstring const label = labelstring_.empty() ?
-		translateIfPossible(il.labelstring()) : labelstring_;
+	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
 		return label;
 	return getNewLabel(label);

@@ -75,6 +75,8 @@ public:
 	///
 	void setLabel(docstring const & l);
 	///
+	docstring getLabel() const;
+	///
 	virtual void setButtonLabel() {}
 	///
 	virtual docstring const buttonLabel(BufferView const &) const;
