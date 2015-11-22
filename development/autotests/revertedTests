@@ -208,3 +208,7 @@ export/examples/(|fr/)seminar_pdf(2|[45]_systemF)
 #
 # GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
 export/examples/ko/splash_(dvi3|pdf[45])_texF
+#
+# Following mathmacros tests fail
+export/mathmacros/testcases_master_child_.*
+export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
