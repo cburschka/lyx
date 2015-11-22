@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 501
+\lyxformat 502
 \begin_document
 \begin_header
-\origin /home/scott/lyxbuilds/master/repo/development/MacOSX/ReadMe/
+\origin unavailable
 \textclass scrartcl
 \use_default_options true
 \maintain_unincluded_children false
@@ -71,8 +71,8 @@
 \begin_body
 
 \begin_layout Title
-Installation rapide de \SpecialCharNoPassThru LyX
- 2.0
+Installation rapide de \SpecialChar LyX
+ 2.2
 \end_layout
 
 \begin_layout Date
@@ -99,7 +99,7 @@ thispagestyle{empty}
 \end_layout
 
 \begin_layout Standard
-Pour installer \SpecialCharNoPassThru LyX
+Pour installer \SpecialChar LyX
 , la marche à suivre est la suivante :
 \end_layout
 
@@ -108,13 +108,14 @@ Préparation du système
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Si c'est votre première installation de \SpecialCharNoPassThru LyX
+Si c'est votre première installation de \SpecialChar LyX
 , assurez-vous d'avoir une version
- récente de Mac\SpecialCharNoPassThru TeX
+ récente de Mac\SpecialChar TeX
  
 \begin_inset Flex URL
 status collapsed
@@ -127,83 +128,39 @@ http://www.tug.org/mactex
 \end_inset
 
 .
- \SpecialCharNoPassThru LyX
- s'appuie sur \SpecialCharNoPassThru LaTeX
- pour composer les documents et ne peut pas produire
- de documents imprimables sans cela.
-\end_layout
-
-\begin_layout Itemize
-Si vous utilisiez précédemment 
-\begin_inset Quotes fld
-\end_inset
-
-\SpecialCharNoPassThru LyX
- 1.6
-\begin_inset Quotes frd
-\end_inset
-
- et que vous voulez continuer à utiliser vos réglages, procédez comme suit
- :
-\begin_inset Separator parbreak
-\end_inset
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Dans le Finder, sélectionnez le dossier \SpecialCharNoPassThru LyX
--1.6 dans Bibliothèque>Application
- Support.
-\end_layout
-
-\begin_layout Itemize
-Dupliquez ce dossier (Fichier > Dupliquer).
-\end_layout
-
-\begin_layout Itemize
-Renommez la copie en 
-\begin_inset Quotes fld
-\end_inset
-
-\SpecialCharNoPassThru LyX
--2.0
-\begin_inset Quotes frd
-\end_inset
-
-.
+ \SpecialChar LyX
+ s'appuie sur \SpecialChar LaTeX
+ pour composer les documents et ne peut pas produire de documents
+ imprimables sans cela.
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Enumerate
-Ouvrez l'image disque de \SpecialCharNoPassThru LyX
- 2.0 (ce que vous avez probablement déjà fait
- si vous lisez ceci).
+Ouvrez l'image disque de \SpecialChar LyX
+ 2.2 (ce que vous avez probablement déjà fait si
+ vous lisez ceci).
 \end_layout
 
 \begin_layout Enumerate
-Glissez l'icône \SpecialCharNoPassThru LyX
+Glissez l'icône \SpecialChar LyX
  dans le dossier Applications.
 \end_layout
 
 \begin_layout Enumerate
-Démarrez \SpecialCharNoPassThru LyX
+Démarrez \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Enumerate
-Vous trouverez une liste des nouvelles fonctionnalités de \SpecialCharNoPassThru LyX
- 2.0 (malheureusemen
-t en anglais) à 
+Vous trouverez une liste des nouvelles fonctionnalités de \SpecialChar LyX
+ 2.2 (malheureusement
+ en anglais) à 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/\SpecialCharNoPassThru LyX
-/NewIn\SpecialCharNoPassThru LyX
-20
+http://wiki.lyx.org/LyX/NewInLyX22
 \end_layout
 
 \end_inset
