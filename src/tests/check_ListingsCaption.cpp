@@ -23,7 +23,7 @@ string test_ListingsCaption(string const & cap)
 	//
 	// NOTE that } is not allowed in blah2.
 	regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
-	string const new_cap("\\1\\3},label={\\2");
+	string const new_cap("$1$3},label={$2");
 	return regex_replace(cap, reg, new_cap);
 }
 

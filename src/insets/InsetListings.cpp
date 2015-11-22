@@ -418,7 +418,7 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	//
 	// NOTE that } is not allowed in blah2.
 	regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
-	string const new_cap("\\1\\3},label={\\2");
+	string const new_cap("$1$3},label={$2");
 	return from_utf8(regex_replace(to_utf8(cap), reg, new_cap));
 }
 
