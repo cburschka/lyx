@@ -1,0 +1,7 @@
+#!/bin/sh
+
+regfile=`cat ${srcdir}/tests/regfiles/ListingsCaption`
+output=`./check_ListingsCaption`
+
+test "$regfile" = "$output"
+exit $?

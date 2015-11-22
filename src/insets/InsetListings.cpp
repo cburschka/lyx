@@ -400,6 +400,10 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	otexstream os(ods, texrow);
 	ins->getArgs(os, runparams);
 	ins->getArgument(os, runparams);
+
+	// TODO: The code below should be moved to support, and then the test
+	//       in ../tests should be moved there as well.
+
 	// the caption may contain \label{} but the listings
 	// package prefer caption={}, label={}
 	docstring cap = ods.str();

@@ -104,3 +104,25 @@ add_test(NAME "check_Length"
 	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
 add_dependencies(lyx_run_tests check_Length)
 
+include_directories(${TOP_SRC_DIR}/src/tests)
+set(check_ListingsCaption_SOURCES)
+foreach(_f tests/check_ListingsCaption.cpp tests/boost.cpp tests/dummy_functions.cpp)
+  list(APPEND check_ListingsCaption_SOURCES ${TOP_SRC_DIR}/src/${_f})
+endforeach()
+add_executable(check_ListingsCaption ${check_ListingsCaption_SOURCES})
+
+target_link_libraries(check_ListingsCaption support
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+lyx_target_link_libraries(check_ListingsCaption Magic)
+
+add_dependencies(lyx_run_tests check_ListingsCaption)
+set_target_properties(check_ListingsCaption PROPERTIES FOLDER "tests/src")
+target_link_libraries(check_ListingsCaption ${ICONV_LIBRARY})
+
+add_test(NAME "check_ListingsCaption"
+  COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:check_ListingsCaption>
+	"-DInput=${TOP_SRC_DIR}/src/tests/regfiles/ListingsCaption"
+	"-DOutput=${CMAKE_CURRENT_BINARY_DIR}/ListingsCaption_data"
+	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
+add_dependencies(lyx_run_tests check_ListingsCaption)
+
