@@ -75,14 +75,6 @@ add_test(NAME "check_ExternalTransforms"
 	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 
-set(check_ExternalTransforms_SOURCES)
-foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
-	Length.cpp lengthcommon.cpp tests/check_ExternalTransforms.cpp
-	tests/boost.cpp tests/dummy_functions.cpp)
-    list(APPEND check_ExternalTransforms_SOURCES ${TOP_SRC_DIR}/src/${_f})
-endforeach()
-
-include_directories(${TOP_SRC_DIR}/src/tests)
 set(check_Length_SOURCES)
 foreach(_f Length.cpp lengthcommon.cpp tests/check_Length.cpp tests/boost.cpp tests/dummy_functions.cpp)
   list(APPEND check_Length_SOURCES ${TOP_SRC_DIR}/src/${_f})
