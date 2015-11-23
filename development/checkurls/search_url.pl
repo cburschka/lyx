@@ -166,7 +166,7 @@ if (%URLS) {
 
 print "\n$errorcount URL-tests failed out of $URLScount\n\n";
 if (defined($summaryFile)) {
-  close(DFO);
+  close(SFO);
 }
 exit($errorcount);
 
