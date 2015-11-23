@@ -166,7 +166,7 @@ macro(handlesuspended TestName reverted testlabel)
 endmacro()
 
 # preparing to add e.g. development/mathmacros to the foreach() loop
-foreach(libsubfolderx lib/doc lib/examples lib/templates development/mathmacros)
+foreach(libsubfolderx lib/doc lib/examples lib/templates development/mathmacros autotests/export)
   set(testlabel "export")
   if (libsubfolderx MATCHES "lib/doc")
     list(APPEND testlabel "manuals")
