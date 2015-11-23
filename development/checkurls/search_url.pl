@@ -58,6 +58,7 @@ my %ignoredURLS = ();
 my %revertedURLS = ();
 my %extraURLS = ();
 my %selectedURLS = ();
+my $summaryFile = undef;
 
 my $checkSelectedOnly = 0;
 for my $arg (@ARGV) {
@@ -86,6 +87,11 @@ for my $arg (@ARGV) {
     $checkSelectedOnly = 1;
     readUrls($val,  %selectedURLS);
   }
+  elsif ($type eq "summaryFile") {
+    if (open(SFO, '>', "$val")) {
+      $summaryFile = $val;
+    }
+  }
   else {
     die("Invalid argument \"$arg\"");
   }
@@ -107,21 +113,25 @@ for my $u (@urls) {
   next if ($checkSelectedOnly && ! defined($selectedURLS{$u}));
   $URLScount++;
   print "Checking '$u': ";
-  my ($res, $prnt);
+  my ($res, $prnt, $outSum);
   try {
     $res = check_url($u);
     if ($res) {
-     $prnt = "Failed";
+      print "Failed\n";
+      $prnt = "";
+      $outSum = 1;
     }
     else {
-      $prnt = "OK";
+      $prnt = "OK\n";
+      $outSum = 0;
     }
   }
   catch {
-    $prnt = "Failed, caught error: $_";
+    $prnt = "Failed, caught error: $_\n";
+    $outSum = 1;
     $res = 700;
   };
-  print "$prnt\n";
+  printx("$prnt", $outSum);
   my $printSourceFiles = 0;
   my $err_txt = "Error url:";
 
@@ -133,13 +143,13 @@ for my $u (@urls) {
   }
   $res = ! $res if (defined($revertedURLS{$u}));
   if ($res || $checkSelectedOnly) {
-    print "$err_txt \"$u\"\n";
+    printx("$err_txt \"$u\"\n", $outSum);
   }
   if ($printSourceFiles) {
     if (defined($URLS{$u})) {
       for my $f(sort keys %{$URLS{$u}}) {
 	my $lines = ":" . join(',', @{$URLS{$u}->{$f}});
-	print "  $f$lines\n";
+	printx("  $f$lines\n", $outSum);
       }
     }
     if ($res ) {
@@ -155,9 +165,20 @@ if (%URLS) {
 }
 
 print "\n$errorcount URL-tests failed out of $URLScount\n\n";
+if (defined($summaryFile)) {
+  close(DFO);
+}
 exit($errorcount);
 
 ###############################################################################
+sub printx($$)
+{
+  my ($txt, $outSum) = @_;
+  print "$txt";
+  if ($outSum && defined($summaryFile)) {
+    print SFO "$txt";
+  }
+}
 
 sub printNotUsedURLS($\%)
 {
