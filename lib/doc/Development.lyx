@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 501
+\lyxformat 502
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -360,6 +360,30 @@ status collapsed
 
 \begin_layout Plain Layout
 src/version.h
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Update the range of file formats in the array 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+format_relation
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lib/lyx2lyx/LyX.py
 \end_layout
 
 \end_inset
