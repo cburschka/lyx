@@ -814,7 +814,7 @@ def revert_cancel(document):
     revert_use_package(document, "cancel", cancel_commands, False)
 
 
-def revert_verbatim(document, starred):
+def revert_verbatim(document, starred = False):
     " Revert verbatim environments completely to TeX-code. "
     i = 0
     consecutive = False
