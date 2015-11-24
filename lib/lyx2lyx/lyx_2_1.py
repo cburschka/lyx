@@ -814,8 +814,8 @@ def revert_cancel(document):
     revert_use_package(document, "cancel", cancel_commands, False)
 
 
-def revert_verbatim(document):
-    " Revert verbatim einvironments completely to TeX-code. "
+def revert_verbatim(document, starred):
+    " Revert verbatim environments completely to TeX-code. "
     i = 0
     consecutive = False
     subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
@@ -830,14 +830,32 @@ def revert_verbatim(document):
                    '\\begin_layout Plain Layout', '', '', '\\backslash',
                    'begin{verbatim}',
                    '\\end_layout', '', '\\begin_layout Plain Layout', '']
+    if starred:
+        subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
+    	         '\end_layout', '',
+                 '\\begin_layout Plain Layout', '', '',
+                 '\\backslash', '',
+                 'end{verbatim*}',
+                 '\\end_layout', '', '\\end_inset',
+                 '', '', '\\end_layout']
+        subst_begin = ['\\begin_layout Standard', '\\noindent',
+                       '\\begin_inset ERT', 'status open', '',
+                       '\\begin_layout Plain Layout', '', '', '\\backslash',
+                       'begin{verbatim*}',
+                       '\\end_layout', '', '\\begin_layout Plain Layout', '']
+
+    layout_name = "Verbatim"
+    if starred:
+        layout_name = "Verbatim*"
 
     while 1:
-        i = find_token(document.body, "\\begin_layout Verbatim", i)
+        i = find_token(document.body, "\\begin_layout %s" % (layout_name), i)
         if i == -1:
             return
         j = find_end_of_layout(document.body, i)
         if j == -1:
-            document.warning("Malformed LyX document: Can't find end of Verbatim layout")
+            document.warning("Malformed LyX document: Can't find end of %s layout" \
+              % (layout_name))
             i += 1
             continue
         # delete all line breaks insets (there are no other insets)

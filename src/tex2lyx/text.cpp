@@ -1555,15 +1555,25 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		preamble.registerAutomaticallyLoadedPackage("verbatim");
 	}
 
-	else if (name == "verbatim") {
+	else if (unstarred_name == "verbatim" || name == "verbatim*") {
 		// FIXME: this should go in the generic code that
 		// handles environments defined in layout file that
 		// have "PassThru 1". However, the code over there is
 		// already too complicated for my taste.
+		string ascii_name;
+		string env_name;
+		if (unstarred_name == "verbatim") {
+			ascii_name = "Verbatim";
+			env_name = "verbatim";
+		}
+		if (name == "verbatim*") {
+			ascii_name = "Verbatim*";
+			env_name = name;
+		}
 		parent_context.new_paragraph(os);
 		Context context(true, parent_context.textclass,
-				&parent_context.textclass[from_ascii("Verbatim")]);
-		string s = p.verbatimEnvironment("verbatim");
+				&parent_context.textclass[from_ascii(ascii_name)]);
+		string s = p.verbatimEnvironment(env_name);
 		output_ert(os, s, context);
 		p.skip_spaces();
 	}

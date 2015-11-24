@@ -95,3 +95,8 @@ Style Verbatim
 	HTMLItem              p
 End
 
+
+Style Verbatim*
+	CopyStyle             Verbatim
+	LatexName             verbatim*
+End

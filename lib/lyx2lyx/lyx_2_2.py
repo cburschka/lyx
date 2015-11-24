@@ -31,7 +31,7 @@ import sys, os
 #  del_token, check_token, get_option_value
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, lyx2latex, \
-  length_in_bp#, \
+  length_in_bp
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -2156,6 +2156,11 @@ def revert_solution(document):
         i = j
 
 
+def revert_verbatim_star(document):
+    from lyx_2_1 import revert_verbatim
+    revert_verbatim(document, True)
+
+
 ##
 # Conversion hub
 #
@@ -2192,10 +2197,12 @@ convert = [
            [499, [convert_moderncv]],
            [500, []],
            [501, [convert_fontsettings]],
-           [502, []]
+           [502, []],
+           [503, []]
           ]
 
 revert =  [
+           [502, [revert_verbatim_star]],
            [501, [revert_solution]],
            [500, [revert_fontsettings]],
            [499, [revert_achemso]],
