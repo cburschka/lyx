@@ -2,7 +2,7 @@
 \lyxformat 502
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -87,8 +87,8 @@ End
 \shortcut idx
 \color #008000
 \end_index
-\secnumdepth 3
-\tocdepth 3
+\secnumdepth 4
+\tocdepth 4
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
@@ -1077,7 +1077,7 @@ Commit the changes to the repository, or send a patch to the development
 \end_layout
 
 \begin_layout Subsection
-Export tests
+Export tests (cmake only)
 \end_layout
 
 \begin_layout Standard
@@ -1141,7 +1141,7 @@ Configuring the tests
 \end_layout
 
 \begin_layout Standard
-To enable these tests when using CMake, add the 
+To enable these tests, add the 
 \begin_inset Flex Code
 status collapsed
 
@@ -1652,11 +1652,21 @@ CTestCostData.txt
 \end_layout
 
 \begin_layout Subsubsection
-Suspended tests
+Inverted tests
 \end_layout
 
 \begin_layout Standard
-Some inverted tests are 'suspended'.
+These tests are expected to always fail.
+\end_layout
+
+\begin_layout Description
+reverted These tests are expected to fail, but are subject to be examined.
+ It is expected that they will pass in a foreseeable future.
+ They are labeled 'reverted'.
+\end_layout
+
+\begin_layout Description
+suspended Some inverted tests are labeled 'suspended'.
  This means, they are not executed using 
 \begin_inset Flex Code
 status collapsed
@@ -1678,9 +1688,20 @@ ctest -L reverted
 \end_inset
 
 .
- From time to time they still have to be checked.
+ From time to time they still have to be checked using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L suspended
 \end_layout
 
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 These tests are suspended, because they fail for known reasons which cannot
  ATM be resolved.
@@ -1705,6 +1726,46 @@ status collapsed
  parameters given to the ctest command.
 \end_layout
 
+\end_deeper
+\begin_layout Subsubsection
+Unreliable tests
+\end_layout
+
+\begin_layout Description
+nonstandard In primary sense such test means "requires non-standard ressources
+ (LaTeX packages and document classes, fonts, ...
+ that are not a requirement for running this test suite".
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In a wider sense, it is currently used also for "not to be expected to succeed
+ on every site that runs this test suite".
+ This wider definition includes tests that have "arbitrary" result depending
+ on local configuration, OS, TeX distribution, package versions, or the
+ phase of the moon.
+\end_layout
+
+\begin_layout Standard
+These tests are labeled as 
+\family typewriter
+'nonstandard'.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+erratic Tests depending on local configuration, OS, TeX distribution, package
+ versions, or the phase of the moon.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+These tests are labeled as 
+\family typewriter
+'erratic'.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 check_load tests
 \end_layout
@@ -1739,8 +1800,12 @@ development/autotests/filterCheckWarnings
 .
 \end_layout
 
+\begin_layout Standard
+Under cmake, the tests are labeled as 'load'.
+\end_layout
+
 \begin_layout Subsection
-URL tests
+URL tests (cmake only)
 \end_layout
 
 \begin_layout Standard
@@ -1771,6 +1836,88 @@ LastTest.log
  These tests are extremely fragile (e.g.
  a test can depend on your Internet connection) and a failed URL test should
  not be taken too seriously.
+ URL tests are labeled as 
+\family typewriter
+'url'.
+\end_layout
+
+\begin_layout Subsubsection
+Running URL tests
+\end_layout
+
+\begin_layout Standard
+cmake is required to run the \SpecialChar LyX
+ tests, running them is not implemented for
+ autotools.
+\end_layout
+
+\begin_layout Standard
+The appropriate commands are:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+ctest -L url
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+runns all tests with label 
+\family typewriter
+'url'
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+ctest -R 'check_.*urls'
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+runns the tests 'check_accessible_urls'
+\end_layout
+
+\begin_layout Standard
+Associated test results can be examined in ctest-log directory in files
+ of the form 'LastFailed.*URLS.log'
+\end_layout
+
+\begin_layout Subsection
+Test labels (cmake only)
+\end_layout
+
+\begin_layout Standard
+ctest label commands:
+\end_layout
+
+\begin_layout Description
+\SpecialChar nobreakdash
+\SpecialChar nobreakdash
+print-labels shows all assigned labels
+\end_layout
+
+\begin_layout Description
+\SpecialChar nobreakdash
+L
+\begin_inset space ~
+\end_inset
+
+labelname executes all tests to which this label is asigned to.
+ A test may have more that one label.
+\end_layout
+
+\begin_layout Description
+\SpecialChar nobreakdash
+j
+\begin_inset space ~
+\end_inset
+
+number executes tests in parallel using 'number' simultaneously processes.
+ Some tests are marked as 'sequencial', for them this parameter has no effect.
 \end_layout
 
 \begin_layout Section
