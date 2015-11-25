@@ -103,7 +103,6 @@ private:
 	int solid_line_thickness_;
 	int solid_line_offset_;
 	int dotted_line_thickness_;
-	int dotted_line_offset_;
 };
 
 } // namespace lyx

@@ -62,7 +62,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  pm_(text_metrics_.parMetrics(pit)), change_(pi_.change_),
 	  xo_(x), yo_(y), width_(text_metrics_.width()),
 	  solid_line_thickness_(1), solid_line_offset_(1),
-	  dotted_line_thickness_(1), dotted_line_offset_(2)
+	  dotted_line_thickness_(1)
 {
 	if (lyxrc.zoom >= 200) {
 		// derive the line thickness from zoom factor
@@ -77,8 +77,6 @@ RowPainter::RowPainter(PainterInfo & pi,
 		// the zoom is given in percent
 		// (increase thickness at 150%, 250% etc.)
 		dotted_line_thickness_ = (lyxrc.zoom + 50) / 100;
-		// adjust line_offset_ too
-		dotted_line_offset_ = 1 + dotted_line_thickness_ / 2;
 	}
 
 	x_ = row_.left_margin + xo_;
@@ -183,9 +181,11 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
+	FontMetrics const & fm = theFontMetrics(e.font);
+	int const thickness = max(fm.lineWidth(), 2);
 	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
 		+ (e.change.changed() ? solid_line_thickness_ + 1 : 0)
-		+ dotted_line_offset_;
+		+ 1 + thickness / 2;
 
 	//FIXME: this could be computed only once, it is probably not costly.
 	// check for cursor position
@@ -228,7 +228,7 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 
 		pi_.pain.line(int(orig_x) + x1, y, int(orig_x) + x2, y,
 		              Color_error,
-		              Painter::line_onoffdash, dotted_line_thickness_);
+		              Painter::line_onoffdash, thickness);
 		pos = range.last + 1;
 	}
 }
