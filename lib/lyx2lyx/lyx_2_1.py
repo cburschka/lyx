@@ -818,35 +818,25 @@ def revert_verbatim(document, starred = False):
     " Revert verbatim environments completely to TeX-code. "
     i = 0
     consecutive = False
-    subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
-    	         '\end_layout', '',
+
+    layout_name = "Verbatim"
+    latex_name  = "verbatim"
+    if starred:
+        layout_name = "Verbatim*"
+        latex_name  = "verbatim*"
+
+    subst_end = ['\\end_layout', '', '\\begin_layout Plain Layout',
+                 '\\end_layout', '',
                  '\\begin_layout Plain Layout', '', '',
                  '\\backslash', '',
-                 'end{verbatim}',
+                 'end{%s}' % (latex_name),
                  '\\end_layout', '', '\\end_inset',
                  '', '', '\\end_layout']
     subst_begin = ['\\begin_layout Standard', '\\noindent',
                    '\\begin_inset ERT', 'status open', '',
                    '\\begin_layout Plain Layout', '', '', '\\backslash',
-                   'begin{verbatim}',
+                   'begin{%s}' % (latex_name),
                    '\\end_layout', '', '\\begin_layout Plain Layout', '']
-    if starred:
-        subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
-    	         '\end_layout', '',
-                 '\\begin_layout Plain Layout', '', '',
-                 '\\backslash', '',
-                 'end{verbatim*}',
-                 '\\end_layout', '', '\\end_inset',
-                 '', '', '\\end_layout']
-        subst_begin = ['\\begin_layout Standard', '\\noindent',
-                       '\\begin_inset ERT', 'status open', '',
-                       '\\begin_layout Plain Layout', '', '', '\\backslash',
-                       'begin{verbatim*}',
-                       '\\end_layout', '', '\\begin_layout Plain Layout', '']
-
-    layout_name = "Verbatim"
-    if starred:
-        layout_name = "Verbatim*"
 
     while 1:
         i = find_token(document.body, "\\begin_layout %s" % (layout_name), i)
@@ -868,24 +858,29 @@ def revert_verbatim(document, starred = False):
                     break
             m = find_end_of_inset(document.body, n)
             del(document.body[m:m+1])
-            document.body[n:n+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[n:n+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             l += 1
             # we deleted a line, so the end of the inset moved forward.
+            # FIXME But we also added some lines, didn't we? I think this
+            # should be j += 1.
             j -= 1
         # consecutive verbatim environments need to be connected
-        k = find_token(document.body, "\\begin_layout Verbatim", j)
+        k = find_token(document.body, "\\begin_layout %s" % (layout_name), j)
         if k == j + 2 and consecutive == False:
             consecutive = True
-            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[j:j+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             document.body[i:i+1] = subst_begin
             continue
         if k == j + 2 and consecutive == True:
-            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[j:j+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             del(document.body[i:i+1])
             continue
         if k != j + 2 and consecutive == True:
             document.body[j:j+1] = subst_end
             # the next paragraph must not be indented
+            # FIXME This seems to be causing problems, because of the
+            # hardcoded use of 19. We should figure out exactly where
+            # this needs to go by searching for the right tag.
             document.body[j+19:j+19] = ['\\noindent']
             del(document.body[i:i+1])
             consecutive = False
@@ -893,6 +888,9 @@ def revert_verbatim(document, starred = False):
         else:
             document.body[j:j+1] = subst_end
             # the next paragraph must not be indented
+            # FIXME This seems to be causing problems, because of the
+            # hardcoded use of 19. We should figure out exactly where
+            # this needs to go by searching for the right tag.
             document.body[j+19:j+19] = ['\\noindent']
             document.body[i:i+1] = subst_begin
 
