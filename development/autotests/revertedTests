@@ -1,5 +1,8 @@
 # Comments by Günter Milde (GM)
 #
+# Some references and keys contain non-ascii chars
+export/doc/es/UserGuide_(dvi3|pdf[45])_texF
+#
 # Hebrew docs do not currently work with LuaTeX
 export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
 export/.*/he/(splash).*(dvi3)_.*

@@ -1,7 +1,8 @@
 # Tests using some non-standard tex class
 Sublabel: nonstandard
 export/templates/IUCr-article_(dvi|pdf).*
-export/templates/es_beamer-conference-ornate-20min_pdf4_texF
+export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]_(texF|systemF))
+export/templates/es_beamer-conference-ornate-20min_(pdf2|pdf[45]_(texF|systemF))
 export/templates/kluwer_pdf[45]_systemF
 export/examples/modernCV_pdf4_(tex|system)F
 export/templates/ectaart_(dvi3|pdf5)_(tex|system)F
