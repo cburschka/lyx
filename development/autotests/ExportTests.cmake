@@ -150,7 +150,12 @@ set(known_labels "export" "key" "layout" "load" "lyx2lyx"
 
 macro(loadTestList filename resList)
   # Create list of strings from a file without comments
-  file(STRINGS ${filename} tempList ENCODING "UTF-8")
+  # ENCODING parameter is a new feature in cmake 3.1
+  if (CMAKE_VERSION VERSION_GREATER "3.1")
+    file(STRINGS ${filename} tempList ENCODING "UTF-8")
+  else()
+    file(STRINGS ${filename} tempList)
+  endif()
   set(${resList})
   set(sublabel)
   set(mylabels "")
