@@ -104,7 +104,10 @@ Section -Configure
    # .lyx16
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "" "${APP_REGNAME_DOC}"
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}16" "Content Type" "${APP_MIME_TYPE}"
-   # .lyx20 don't set this, because this is designed to be opened with LyX 2.0.x
+   # .lyx20
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}20" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}20" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx21 don't set this, because this is designed to be opened with LyX 2.1.x
   
    # Refresh shell
    ${RefreshShellIcons}
@@ -165,6 +168,11 @@ Section -Configure
 		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
 		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n'
 
+  # for the wmf image type we need to specify a resolution for the converter
+  # otherwise 1024 dpi are used and eps2pdf takes ages
+  # 300 dpi are a good compromise for speed and size
+  FileWrite $R1 '\converter "wmf" "eps" "convert -density 300 $$$$i $$$$o" ""$\r$\n\'
+  
   # if LilyPondPath was found
   # we need to add these entris because python scripts can only be executed
   # if the full path is given
@@ -187,23 +195,6 @@ Section -Configure
    ${EnvVarUpdate} $0 "PATH" "A" "HKCU" "$INSTDIR\Perl\bin"
   ${else}
    ${EnvVarUpdate} $0 "PATH" "A" "HKLM" "$INSTDIR\Perl\bin"
-  ${endif}
-
-SectionEnd
-
-#--------------------------------
-# Postscript printer for metafile to EPS converter
-
-Section -PSPrinter
-
-  ${if} $MultiUser.Privileges == "Admin"
-  ${orif} $MultiUser.Privileges == "Power"
-   # Delete printer
-   ExecWait '$PrinterConf /q /dl /n "Metafile to EPS Converter"'
-   # Install printer and driver
-   ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
-  ${else}
-   MessageBox MB_OK|MB_ICONINFORMATION "$(MetafileNotAvailable)" /SD IDOK
   ${endif}
 
 SectionEnd

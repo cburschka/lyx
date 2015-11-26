@@ -132,12 +132,6 @@ Lists of files to include in the installer
   
 !macroend
 
-!macro FileListMetaFile2EPS COMMAND DIRECTORY
-
-  ${FILE}metafile2eps.exe"
-
-!macroend
-
 !macro FileListImageMagick COMMAND DIRECTORY
 
 # FIXME: simply copy the whole directory!
