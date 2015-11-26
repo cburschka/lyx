@@ -20,6 +20,7 @@ Lists of files to include in the installer
   ${FILE}QtCore4.dll"
   ${FILE}QtGui4.dll"
   ${FILE}QtSvg4.dll"
+  ${FILE}QtXml4.dll"
 
 !macroend
 
@@ -32,6 +33,12 @@ Lists of files to include in the installer
   ${FILE}qsvg4.dll"
   ${FILE}qtga4.dll"
   ${FILE}qtiff4.dll"
+
+!macroend
+
+!macro FileListQtIconengines COMMAND DIRECTORY
+
+  ${FILE}qsvgicon4.dll"
 
 !macroend
 
