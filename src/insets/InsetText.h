@@ -201,6 +201,9 @@ public:
 	/// e.g., "Index: ".
 	/// \param numlines: the number of lines in the tooltip
 	/// \param len: length of those lines
+	/// NOTE This routine is kind of slow. It's fine to use it within the 
+	/// GUI, but definitely do not try to use it in updateBuffer or anything
+	/// of that sort.
 	docstring toolTipText(docstring prefix = empty_docstring(),
 			size_t numlines = 5, size_t len = 80) const;
 

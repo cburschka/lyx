@@ -74,7 +74,7 @@ std::string insetName(InsetCode);
 /// Eg, insetDisplayName(BRANCH_CODE) == _("Branch")
 docstring insetDisplayName(InsetCode);
 ///
-static int const TOC_ENTRY_LENGTH = 128;
+static int const TOC_ENTRY_LENGTH = 120;
 
 /// Common base class to all insets
 

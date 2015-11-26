@@ -3269,8 +3269,6 @@ void Paragraph::forOutliner(docstring & os, size_t const maxlen,
 		char_type const c = d->text_[i];
 		if (isPrintable(c))
 			os += c;
-		else if (c == '\t' || c == '\n')
-			os += ' ';
 		else if (c == META_INSET)
 			getInset(i)->forOutliner(os, tmplen, false);
 	}

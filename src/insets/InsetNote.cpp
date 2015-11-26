@@ -37,6 +37,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 #include "support/Translator.h"
 
 #include "frontends/Application.h"
@@ -213,11 +214,14 @@ void InsetNote::addToToc(DocIterator const & cpit, bool output_active,
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
 	
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("note");
 	InsetLayout const & il = getLayout();
-	docstring str = translateIfPossible(il.labelstring()) + from_ascii(": ");
-	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	toc->push_back(TocItem(pit, 0, str, output_active, toolTipText(docstring(), 3, 60)));
+	docstring tooltip;
+	text().forOutliner(tooltip, TOC_ENTRY_LENGTH);
+	docstring str = translateIfPossible(il.labelstring()) + ": " + tooltip;
+	tooltip = support::wrapParas(tooltip, 0, 60, 2);
+	
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("note");
+	toc->push_back(TocItem(pit, 0, str, output_active, tooltip));
 
 	// Proceed with the rest of the inset.
 	bool doing_output = output_active && producesOutput();
