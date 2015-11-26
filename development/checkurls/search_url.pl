@@ -48,6 +48,7 @@ setlocale(LC_MESSAGES, "en_US.UTF-8");
 
 # Prototypes
 sub printNotUsedURLS($\%);
+sub replaceSpecialChar($);
 sub readUrls($\%);
 sub parse_file($ );
 sub handle_url($$$ );
@@ -199,6 +200,13 @@ sub printNotUsedURLS($\%)
   }
 }
 
+sub replaceSpecialChar($)
+{
+  my ($l) = @_;
+  $l =~ s/\\SpecialChar(NoPassThru)?\s*(TeX|LaTeX|LyX)[\s]?/\2/;
+  return($l);
+}
+
 sub readUrls($\%)
 {
   my ($file, $rUrls) = @_;
@@ -209,6 +217,7 @@ sub readUrls($\%)
     $line++;
     $l =~ s/[\r\n]+$//;		# remove eol
     $l =~ s/\s*\#.*$//;		# remove comment
+    $l = &replaceSpecialChar($l);
     next if ($l eq "");
     if (! defined($rUrls->{$l} )) {
       $rUrls->{$l} = {$file => $line, count => 1};
@@ -272,6 +281,7 @@ sub handle_url($$$)
 {
   my($url, $f, $line) = @_;
 
+  $url = &replaceSpecialChar($url);
   if(!defined($URLS{$url})) {
     $URLS{$url} = {};
   }

@@ -19,7 +19,7 @@ endforeach()
 
 # Define the perl-script running the actual test
 set(SEARCH_URL_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/search_url.pl")
-set(GET_TRANSLATORS_SCRIP "${CMAKE_CURRENT_SOURCE_DIR}/getTranslators.pl")
+set(GET_TRANSLATORS_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/getTranslators.pl")
 
 # Test used and as accessible expected urls
 add_test(NAME "check_accessible_urls"
@@ -52,12 +52,15 @@ add_test(NAME "check_invalid_urls"
     "revertedURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS"
     "summaryFile=${TOP_BINARY_DIR}/Testing/Temporary/LastFailedKnownInvalidURLS.log")
 
+set(URL_TEST_NAMES "check_accessible_urls" "check_inaccessible_urls" "check_invalid_urls")
 add_test(NAME "check_translators"
   WORKING_DIRECTORY "${TOP_BINARY_DIR}"
-  COMMAND ${PERL_EXECUTABLE} "${GET_TRANSLATORS_SCRIP}")
+  COMMAND ${PERL_EXECUTABLE} "${GET_TRANSLATORS_SCRIPT}")
 
-set_tests_properties("check_accessible_urls" "check_inaccessible_urls" "check_invalid_urls" "check_translators"
+set_tests_properties(${URL_TEST_NAMES}
         PROPERTIES RESOURCE_LOCK "url.lock" LABELS "url")
+set_tests_properties("check_translators"
+        PROPERTIES RESOURCE_LOCK "url.lock")
 
 settestlabel("check_inaccessible_urls" "reverted")
 settestlabel("check_invalid_urls" "reverted")
