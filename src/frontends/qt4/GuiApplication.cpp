@@ -380,7 +380,6 @@ size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
 PngMap sorted_theme_icon_map[] = {
 	{ "bookmark-goto 0", "go-jump" },
 	{ "buffer-new", "document-new" },
-	{ "buffer-print", "document-print" },
 	{ "buffer-write", "document-save" },
 	{ "buffer-write-as", "document-save-as" },
 	{ "buffer-zoom-in", "zoom-in" },
@@ -389,7 +388,6 @@ PngMap sorted_theme_icon_map[] = {
 	{ "cut", "edit-cut" },
 	{ "depth-decrement", "format-indent-less" },
 	{ "depth-increment", "format-indent-more" },
-	{ "dialog-show print", "document-print" },
 	{ "dialog-show spellchecker", "tools-check-spelling" },
 	{ "dialog-show-new-inset graphics", "insert-image" },
 	{ "dialog-toggle findreplaceadv", "edit-find-replace" },

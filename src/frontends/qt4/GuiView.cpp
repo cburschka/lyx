@@ -4153,7 +4153,7 @@ char const * const dialognames[] = {
 "external", "file", "findreplace", "findreplaceadv", "float", "graphics",
 "href", "include", "index", "index_print", "info", "listings", "label", "line",
 "log", "mathdelimiter", "mathmatrix", "mathspace", "nomenclature",
-"nomencl_print", "note", "paragraph", "phantom", "prefs", "print", "ref",
+"nomencl_print", "note", "paragraph", "phantom", "prefs", "ref",
 "sendto", "space", "spellchecker", "symbols", "tabular", "tabularcreate",
 "thesaurus", "texinfo", "toc", "view-source", "vspace", "wrap", "progress"};
 
