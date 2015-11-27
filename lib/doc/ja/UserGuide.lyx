@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 502
+\lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % Commands inserted by lyx2lyx for proper underlining
@@ -112,7 +112,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -171,8 +171,8 @@ End
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 2
@@ -6906,7 +6906,13 @@ status collapsed
 \family sans
 Verbatim
 \family default
-環境は、\SpecialChar LyX
+\lang english
+and
+\family sans
+\lang japanese
+Verbatim
+\family default
+*環境は、\SpecialChar LyX
 中で空白を連続して入れることのできる唯一の環境です。ただし空白行を入れたい場合には
 \begin_inset Info
 type  "shortcut"
@@ -7174,12 +7180,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7192,9 +7200,34 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Verbatim*
+\family default
+ environment is identical to 
+\family sans
+Verbatim
+\family default
+ with the difference that spaces appear in the output as the character '
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+'.
+ An example:
+\end_layout
+
+\begin_layout Verbatim*
+
+This is Verbatim*.
 \end_layout
 
 \begin_layout Section
@@ -7467,6 +7500,12 @@ arg   "depth-decrement"
 
 \family sans
 無調整(verbatim)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+無調整*(verbatim*)
 \end_layout
 
 \end_deeper
@@ -25343,6 +25382,57 @@ emph
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+To customize the appearance of all symbols add e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the command
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+nomlabel}[1]{
+\backslash
+textsf{
+\backslash
+textbf{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble in the document settings.
+ This command will make the font of all symbols 
+\series bold
+bold
+\series default
+ and 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 もし
 \begin_inset space \space{}
 \end_inset
@@ -32599,10 +32689,24 @@ reference "sec:ファイル形式"
 
 \begin_layout Subsection
 圧縮
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:圧縮"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 現在の文書を圧縮したり解凍したりします。
+\lang english
+For documents under version control it is strongly recommended to disable
+ compression (see the 
+\emph on
+Additional Features
+\emph default
+ manual for details).
 \end_layout
 
 \begin_layout Subsection
@@ -37141,7 +37245,22 @@ reference "sec:パス"
 ファイル\SpecialChar menuseparator
 直近のファイルを開く
 \family default
-メニューに表示する最後に開いたファイルの数です。
+メニューに表示する最後に開いたファイルの数です
+\lang english
+(see also
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:圧縮"
+
+\end_inset
+
+
+\lang english
+).
+ This applies to newly created documents only.
+ The compression status of existing documents is not changed when saving.
 \end_layout
 
 \begin_layout Subsubsection

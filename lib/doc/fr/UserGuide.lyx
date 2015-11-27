@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 502
+\lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/fr/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -141,8 +141,8 @@ logicalmkup
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language french
 \papercolumns 1
 \papersides 2
@@ -8433,9 +8433,13 @@ Insécable
 \SpecialChar LyX
 -Code
 \family default
- et 
+, 
 \family sans
 Verbatim
+\family default
+ et 
+\family sans
+Verbatim*
 \family default
  sont les seuls environnements où vous pouvez taper des espaces consécutives
  dans \SpecialChar LyX
@@ -8712,12 +8716,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-This is verbatim.
+
+This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8730,9 +8736,34 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-Almost everything is allowed in verbatim:"%&$§#~'`
+
+Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Verbatim*
+\family default
+ environment is identical to 
+\family sans
+Verbatim
+\family default
+ with the difference that spaces appear in the output as the character '
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+'.
+ An example:
+\end_layout
+
+\begin_layout Verbatim*
+
+This is Verbatim*.
 \end_layout
 
 \begin_layout Section
@@ -9157,6 +9188,12 @@ Liste
 
 \family sans
 Verbatim
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verbatim*
 \end_layout
 
 \end_deeper
@@ -30966,6 +31003,57 @@ emph
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+To customize the appearance of all symbols add e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the command
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+nomlabel}[1]{
+\backslash
+textsf{
+\backslash
+textbf{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble in the document settings.
+ This command will make the font of all symbols 
+\series bold
+bold
+\series default
+ and 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Si les caractères |
 \begin_inset space \space{}
 \end_inset
@@ -39878,10 +39966,25 @@ reference "sec:Formats-de-Fichiers"
 
 \begin_layout Subsection
 Comprimé
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Comprimé"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Compresse ou décompresse le document courant.
+ 
+\lang english
+For documents under version control it is strongly recommended to disable
+ compression (see the 
+\emph on
+Additional Features
+\emph default
+ manual for details).
 \end_layout
 
 \begin_layout Subsection
@@ -40457,11 +40560,9 @@ menu déroulant pour les environnements de paragraphes
 \begin_layout Plain Layout
 
 \family sans
-\begin_inset Graphics
-	filename ../../images/buffer-new.png
-	scale 85
-	groupId toolbarbouton
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-new"
 \end_inset
 
 
@@ -40487,11 +40588,11 @@ Nouveau
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/file-open.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "file-open"
 \end_inset
 
 
@@ -40517,11 +40618,11 @@ Ouvrir
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/buffer-write.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "buffer-write"
 \end_inset
 
 
@@ -40547,11 +40648,11 @@ Enregistrer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 
@@ -40577,11 +40678,11 @@ Imprimer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show_spellchecker.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show spellchecker"
 \end_inset
 
 
@@ -40611,11 +40712,11 @@ orthographique
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/undo.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
 
@@ -40641,11 +40742,11 @@ Annuler
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/redo.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
 
@@ -40671,11 +40772,11 @@ Refaire
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/cut.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
 
@@ -40701,11 +40802,11 @@ Couper
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/copy.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
 
@@ -40731,11 +40832,11 @@ Copier
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/paste.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
 
@@ -40761,11 +40862,11 @@ Coller
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show_findreplace.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
 
@@ -40843,11 +40944,11 @@ remplacer
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/bookmark-goto_0.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "bookmark-goto 0"
 \end_inset
 
 
@@ -40874,11 +40975,11 @@ Naviguer en arrière
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/font-emph.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
 \end_inset
 
 
@@ -40913,11 +41014,11 @@ Personnalisé
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/font-noun.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
 \end_inset
 
 
@@ -40952,11 +41053,11 @@ Personnalisé
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/textstyle-apply.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "textstyle-apply"
 \end_inset
 
 
@@ -40991,11 +41092,11 @@ Personnalisé
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
 
@@ -41030,11 +41131,11 @@ ligne
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -41060,11 +41161,9 @@ Graphique
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 85
-	groupId toolbarbouton
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
 
@@ -41090,11 +41189,11 @@ Tableau
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
 
@@ -41120,11 +41219,11 @@ Plan
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/toolbar-toggle_math.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
 \end_inset
 
 
@@ -41147,11 +41246,11 @@ Active ou désactive la barre d'outils Maths
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/toolbar-toggle_table.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
 \end_inset
 
 
@@ -41230,11 +41329,11 @@ La barre d'outils supplémentaire illustrée ci-dessus contient les boutons
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout"
 \end_inset
 
 
@@ -41257,11 +41356,11 @@ Implicite
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout_Enumerate.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
 \end_inset
 
 
@@ -41284,11 +41383,11 @@ Liste numérotée
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout_Itemize.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
 \end_inset
 
 
@@ -41311,11 +41410,11 @@ Liste à puces
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout_List.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout List"
 \end_inset
 
 
@@ -41338,11 +41437,11 @@ Liste
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout_Description.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
 \end_inset
 
 
@@ -41365,11 +41464,11 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/depth-increment.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "depth-increment"
 \end_inset
 
 
@@ -41403,11 +41502,11 @@ profondeur
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/depth-decrement.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "depth-decrement"
 \end_inset
 
 
@@ -41441,11 +41540,11 @@ profondeur
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/float-insert_figure.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
 \end_inset
 
 
@@ -41472,11 +41571,11 @@ Figure
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/float-insert_table.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
 \end_inset
 
 
@@ -41503,11 +41602,11 @@ Tableau
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
 
@@ -41533,11 +41632,11 @@ Insertion\SpecialChar menuseparator
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
 
@@ -41563,11 +41662,11 @@ Référence croisée
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
 
@@ -41593,11 +41692,11 @@ Citation
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/index-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "index-insert"
 \end_inset
 
 
@@ -41627,11 +41726,11 @@ d'index
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/nomencl-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "nomencl-insert"
 \end_inset
 
 
@@ -41665,11 +41764,11 @@ glossaire
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
 
@@ -41711,11 +41810,11 @@ page
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
 
@@ -41749,11 +41848,11 @@ marge
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
 
@@ -41795,11 +41894,11 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "box-insert Frameless"
 \end_inset
 
 
@@ -41825,11 +41924,11 @@ Boîte
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/url-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "href-insert"
 \end_inset
 
 
@@ -41855,11 +41954,11 @@ Hyperlien
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
 
@@ -41900,11 +41999,11 @@ eX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_include.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "math-macro newmacroname newcommand"
 \end_inset
 
 
@@ -41931,11 +42030,11 @@ Sous-document
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset include"
 \end_inset
 
 
@@ -41970,11 +42069,11 @@ Personnalisé
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
 
@@ -42008,11 +42107,11 @@ paragraphe
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/thesaurus-entry.png
-	scale 85
-	groupId toolbarbouton
 
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
 \end_inset
 
 
@@ -45327,7 +45426,7 @@ crée une copie de sauvegarde du fichier dans l'état où il était lorsqu'il
 Répertoire de sauvegarde
 \family default
  voir la section
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
@@ -45370,7 +45469,26 @@ Sauvegarde automatique, toutes les x minutes
 \family sans
 Enregistrer les documents sous forme compressée
 \family default
- enregistre toujours dans un format compressé.
+ enregistre toujours dans un format compressé (
+\lang english
+see also
+\lang french
+ section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Comprimé"
+
+\end_inset
+
+).
+ 
+\lang english
+This applies to newly created documents only.
+ The compression status of existing documents is not changed when saving.
 \end_layout
 
 \begin_layout Subsubsection

@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 502
+\lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/es/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -135,8 +135,8 @@ enumitem
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language french
 \papercolumns 1
 \papersides 2
@@ -8290,11 +8290,15 @@ protegido
 Código-\SpecialChar LyX
 
 \family default
+, 
+\family sans
+Literal
+\family default
  y 
 \family sans
 Literal
 \family default
- son los únicos entornos en que puedes insertar más de un espacio.
+* son los únicos entornos en que puedes insertar más de un espacio.
  Si necesitas insertar líneas en blanco debes usar 
 \family sans
 Ctrl+Entrar
@@ -8473,7 +8477,7 @@ Objetos insertados
 \begin_layout Subsubsection
 Literal
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8551,12 +8555,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-Esto es entorno literal.
+
+Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8569,9 +8575,38 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-Casi todo está permitido en entorno literal:"%&$§#~'`
+
+Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
+\end_layout
+
+\begin_layout Standard
+El entorno 
+\family sans
+Literal*
+\family default
+ 
+\lang english
+is identical to
+\lang spanish
+ 
+\family sans
+Literal
+\family default
+ 
+\lang english
+with the difference that spaces appear in the output as the character '
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+'.
+ An example:
+\end_layout
+
+\begin_layout Verbatim
+
+Esto es entorno Literal*.
 \end_layout
 
 \begin_layout Section
@@ -8871,7 +8906,13 @@ Código-\SpecialChar LyX
 \begin_layout Itemize
 
 \family sans
-Verbatim
+Literal
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Literal*
 \end_layout
 
 \end_deeper
@@ -30179,6 +30220,57 @@ emph
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+To customize the appearance of all symbols add e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the command
+\lang spanish
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+nomlabel}[1]{
+\backslash
+textsf{
+\backslash
+textbf{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble in the document settings.
+ This command will make the font of all symbols 
+\series bold
+bold
+\series default
+ and 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Para introducir en entradas de la nomenclatura caracteres como |
 \begin_inset space \space{}
 \end_inset
@@ -38690,10 +38782,25 @@ reference "sec:Formatos-de-archivo"
 
 \begin_layout Subsection
 Comprimido
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Comprimido"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Comprime/descomprime el documento actual.
+ 
+\lang english
+For documents under version control it is strongly recommended to disable
+ compression (see the 
+\emph on
+Additional Features
+\emph default
+ manual for details).
 \end_layout
 
 \begin_layout Subsection
@@ -44011,7 +44118,26 @@ Hacer copias de seguridad cada
 \family sans
 Guardar los documentos comprimidos por omisión
 \family default
- guarda siempre los archivos en formato comprimido.
+ guarda siempre los archivos en formato comprimido (
+\lang english
+see also
+\lang spanish
+ sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Comprimido"
+
+\end_inset
+
+).
+ 
+\lang english
+This applies to newly created documents only.
+ The compression status of existing documents is not changed when saving.
 \end_layout
 
 \begin_layout Subsubsection

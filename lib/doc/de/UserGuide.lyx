@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 502
+\lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/de/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % Präambel nicht verändern!!!
@@ -145,8 +145,8 @@ enumitem
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language german
 \papercolumns 1
 \papersides 2
@@ -8409,11 +8409,15 @@ End-of-word
 \SpecialChar LyX
 -Code
 \family default
- und 
+, 
 \family sans
-Verbatim
+Unformatiert 
 \family default
- sind die einzigen Umgebungen in denen die Leertaste mehrfach hintereinander
+und 
+\family sans
+Unformatiert
+\family default
+* sind die einzigen Umgebungen in denen die Leertaste mehrfach hintereinander
  benutzt werden kann.
  Für Leerzeilen muss man 
 \family sans
@@ -8592,12 +8596,12 @@ Objekte
 \end_layout
 
 \begin_layout Subsubsection
-Verbatim
+Unformatiert
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Verbatim
+Unformatiert
 \end_layout
 
 \end_inset
@@ -8608,7 +8612,7 @@ Verbatim
 \begin_layout Standard
 Die 
 \family sans
-Verbatim
+Unformatiert
 \family default
  Umgebung ist ähnlich zur 
 \family sans
@@ -8619,7 +8623,7 @@ Verbatim
  behandelt wird.
  
 \family sans
-Verbatim
+Unformatiert
 \family default
  hat daher keine Absätze so dass 
 \family sans
@@ -8644,7 +8648,7 @@ en) und man kann leere Zeilen haben.
 \family default
  kann 
 \family sans
-Verbatim
+Unformatiert
 \family default
  keine
 \end_layout
@@ -8663,17 +8667,19 @@ bungen und \SpecialChar TeX
 \begin_layout Standard
 Aufgrund dieser Eigenschaften funktioniert 
 \family sans
-Verbatim
+Unformatiert
 \family default
  wie eine Schreibmaschine.
  Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Verbatim
-Dies ist Verbatim.
+
+Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8686,9 +8692,34 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-Fast alles ist in Verbatim erlaubt:"%&$§#~'`
+
+Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
+\end_layout
+
+\begin_layout Standard
+
+Die Umgebung 
+\family sans
+\lang ngerman
+Unformatiert*
+\family default
+ ist identisch zu 
+\family sans
+Unformatiert
+\family default
+, mit dem Unterschied, dass Leerzeichen in der Ausgabe mit dem Zeichen '
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+' angezeigt werden.
+ Ein Beispiel:
+\end_layout
+
+\begin_layout Verbatim*
+
+Dies ist Unformatiert*.
 \end_layout
 
 \begin_layout Section
@@ -9067,7 +9098,13 @@ Liste
 \begin_layout Itemize
 
 \family sans
-Verbatim
+Unformatiert
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Unformatiert*
 \end_layout
 
 \end_deeper
@@ -29666,6 +29703,44 @@ emph
 \end_layout
 
 \begin_layout Standard
+Um das Erscheinungsbild anner Symbole zu ändern, fügt man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ den Befehl
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+nomlabel}[1]{
+\backslash
+textsf{
+\backslash
+textbf{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+zum LaTeX-Vorspann in den Dokumenteinstellungen hinzu.
+ Dieser Befehl setzt die Schrift für alle Symbole 
+\series bold
+fett
+\series default
+ und 
+\family sans
+serifenlos
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 Sollen die Zeichen |
 \begin_inset space \space{}
 \end_inset
@@ -38178,10 +38253,23 @@ reference "sec:Dateiformate"
 
 \begin_layout Subsection
 Komprimiert
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Komprimiert"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 De/komprimiert das aktuelle Dokument.
+ Für Dokumente unter Versionskontrolle wird empfohlen die Komprimierung
+ anzuschalten (siehe die 
+\emph on
+Handbuchergänzungen
+\emph default
+ für Details).
 \end_layout
 
 \begin_layout Subsection
@@ -43420,7 +43508,21 @@ Mit der Option
 \family sans
 Dokumente komprimiert speichern
 \family default
- speichert die Dateien immer in einem komprimierten Format.
+ speichert die Dateien immer in einem komprimierten Format (siehe auch Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Komprimiert"
+
+\end_inset
+
+).
+ Dies gilt jedoch nur für neu erstellte Dokumente.
+ Der Komprimierungsstatus von existierenden Dokumenten wird beim Speichern
+ nicht geändert.
 \end_layout
 
 \begin_layout Subsubsection

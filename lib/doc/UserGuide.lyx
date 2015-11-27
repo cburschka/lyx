@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 502
+\lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -135,20 +135,17 @@ enumitem
 \end_index
 \secnumdepth 3
 \tocdepth 2
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -195340706 "Georg Baum"
-\author 5863208 "ab"
-\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -277,12 +274,8 @@ mm space below
 This philosophy is explained in greater detail in the 
 \emph on
 Introduction
-\change_inserted 5863208 1447554393
-
 \emph default
- 
-\change_unchanged
-manual.
+ manual.
  If you haven't read it yet, you need to.
  Yes, we mean now.
 \end_layout
@@ -7890,11 +7883,15 @@ Blank
 \SpecialChar LyX
 -Code
 \family default
+, 
+\family sans
+Verbatim
+\family default
  and 
 \family sans
 Verbatim
 \family default
- are the only environments in which you can type multiple whitespaces in
+* are the only environments in which you can type multiple whitespaces in
  \SpecialChar LyX
 .
  If you need to insert blank lines, you will still need to use 
@@ -8177,12 +8174,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-This is verbatim.
+
+This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8195,9 +8194,32 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-Almost everything is allowed in verbatim:"%&$§#~'`
+
+Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+Verbatim*
+\family default
+ environment is identical to 
+\family sans
+Verbatim
+\family default
+ with the difference that spaces appear in the output as the character '
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+'.
+ An example:
+\end_layout
+
+\begin_layout Verbatim*
+
+This is Verbatim*.
 \end_layout
 
 \begin_layout Section
@@ -8484,6 +8506,12 @@ List
 
 \family sans
 Verbatim
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verbatim*
 \end_layout
 
 \end_deeper
@@ -22654,11 +22682,7 @@ This is a minipage with some stupid dummy text.
 \begin_layout Standard
 When you right-click on a minipage box, you can transform the box to another
  box type.
- All box types and their settings
-\change_inserted 2047637253 1447344632
-, as well as variable-width minipages,
-\change_unchanged
- are explained in detail in chapter 
+ All box types and their settings are explained in detail in chapter 
 \emph on
 Boxes
 \emph default
@@ -28863,6 +28887,51 @@ emphasized
 \backslash
 emph
 \series default
+.
+\end_layout
+
+\begin_layout Standard
+To customize the appearance of all symbols add e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+nomlabel}[1]{
+\backslash
+textsf{
+\backslash
+textbf{#1}}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+to the LaTeX preamble in the document settings.
+ This command will make the font of all symbols 
+\series bold
+bold
+\series default
+ and 
+\family sans
+sans
+\begin_inset space ~
+\end_inset
+
+serif
+\family default
 .
 \end_layout
 
@@ -37652,8 +37721,6 @@ reference "sec:File-Formats"
 
 \begin_layout Subsection
 Compressed
-\change_inserted -195340706 1447278411
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Compressed"
@@ -37661,25 +37728,16 @@ name "subsec:Compressed"
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 Un/compresses the current document.
-
-\change_inserted -195340706 1447279328
- Use this if you want to save a compressed document in uncompressed format
- or vice versa.
  For documents under version control it is strongly recommended to disable
- compression (see 
+ compression (see the 
 \emph on
-Additional \SpecialChar LyX
- Features
+Additional Features
 \emph default
- for details).
-\change_unchanged
-
+ manual for details).
 \end_layout
 
 \begin_layout Subsection
@@ -43092,12 +43150,7 @@ Backup documents, every
 \family sans
 Save documents compressed by default
 \family default
- always saves files in a compressed format.
-
-\change_inserted -195340706 1447278517
- This applies to newly created documents only.
- The compression status of existing documents is not changed when saving
- (see section
+ always saves files in a compressed format (see also section
 \begin_inset space ~
 \end_inset
 
@@ -43109,8 +43162,8 @@ reference "subsec:Compressed"
 \end_inset
 
 ).
-\change_unchanged
-
+ This applies to newly created documents only.
+ The compression status of existing documents is not changed when saving.
 \end_layout
 
 \begin_layout Subsubsection
