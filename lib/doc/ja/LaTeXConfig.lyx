@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 501
+\lyxformat 503
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/ja/
@@ -81,46 +81,45 @@
 \begin_body
 
 \begin_layout Title
-現在の\SpecialCharNoPassThru LaTeX
+現在の\SpecialChar LaTeX
 設定一覧
 \end_layout
 
 \begin_layout Author
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 が自動的に生成（編集しないでください）
 \end_layout
 
 \begin_layout Standard
-このファイルは、\SpecialCharNoPassThru LyX
-が取り扱うことができる\SpecialCharNoPassThru LaTeX
+このファイルは、\SpecialChar LyX
+が取り扱うことができる\SpecialChar LaTeX
 の各追加機能について説明しています。以下に6つの節があります。
 \end_layout
 
 \begin_layout Enumerate
-現在の\SpecialCharNoPassThru LaTeX
-装備の基本情報。特に、現在の\SpecialCharNoPassThru LaTeX
+現在の\SpecialChar LaTeX
+装備の基本情報。特に、現在の\SpecialChar LaTeX
 のバージョンが充分新しいかどうか確認してください。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 が認識する標準フォント。いまのところ、少しのエントリしかありません。
 \end_layout
 
 \begin_layout Enumerate
-どの\SpecialCharNoPassThru LaTeX
+どの\SpecialChar LaTeX
 の実装においても標準とみなされる文書クラス。この節は、完備性のためにのみ存在します。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
-が認識する非必須の文書クラス。これらのうち、いくつかがなく（「検出」項目が「いいえ」になっている）、その機能を必要とする場合には、最寄りのCTANのFTP
-サイト
+\SpecialChar LyX
+が認識する非必須の文書クラス。これらのうち、いくつかがなく（「検出」項目が「いいえ」になっている）、その機能を必要とする場合には、最寄りのCTANのFTPサイト
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Comprehensive \SpecialCharNoPassThru TeX
+Comprehensive \SpecialChar TeX
  Archive Networkに参加しているホストには、
 \end_layout
 
@@ -142,49 +141,46 @@ ftp://ftp.tex.ac.uk/tex-archive
 
 \end_inset
 
-から入手することができます。サイト内の場所は「CTAN」項目に示されています。検出された文書クラスのみが、\SpecialCharNoPassThru LyX
-の文書レイアウトとして使うことができる点に留意し
-てください。
+から入手することができます。サイト内の場所は「CTAN」項目に示されています。検出された文書クラスのみが、\SpecialChar LyX
+の文書レイアウトとして使うことができる点に留意してくだ
+さい。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LaTeX
-開発者が「必須」と太鼓判を押したパッケージ。これらは必ずなくてはなりませんが、使用中の\SpecialCharNoPassThru LaTeX
-頒布版が少し古い場合には、存在しないものもあるかもしれ
-ません。
+\SpecialChar LaTeX
+開発者が「必須」と太鼓判を押したパッケージ。これらは必ずなくてはなりませんが、使用中の\SpecialChar LaTeX
+頒布版が少し古い場合には、存在しないものもあるかもしれません。
 \end_layout
 
 \begin_layout Enumerate
-作成中の文書のマージンを変更しようとするときに\SpecialCharNoPassThru LyX
-が使用するパッケージ。いまのところ、これらが見つかるかどうかは、\SpecialCharNoPassThru LyX
-内部で利用できる選択肢には影響しません
-。
+作成中の文書のマージンを変更しようとするときに\SpecialChar LyX
+が使用するパッケージ。いまのところ、これらが見つかるかどうかは、\SpecialChar LyX
+内部で利用できる選択肢には影響しません。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
-に欲しい機能であり、\SpecialCharNoPassThru LaTeX
-装備にも追加したいと思うような標準的な\SpecialCharNoPassThru LaTeX
-パッケージ。いまのところ、これらが見つかるかどうかは、\SpecialCharNoPassThru LyX
-内部で利用できる
-選択肢には影響しません。
+\SpecialChar LyX
+に欲しい機能であり、\SpecialChar LaTeX
+装備にも追加したいと思うような標準的な\SpecialChar LaTeX
+パッケージ。いまのところ、これらが見つかるかどうかは、\SpecialChar LyX
+内部で利用できる選択肢には影響しません。
 \end_layout
 
 \begin_layout Standard
-これらのパッケージのほとんどは、\SpecialCharNoPassThru TeX
-LiveやMiK\SpecialCharNoPassThru TeX
-のような新しい\SpecialCharNoPassThru TeX
-頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めた
-ら、\SpecialCharNoPassThru LyX
-にそのことを教えなくてはなりません。導入し終えたら、メニュー項目
+これらのパッケージのほとんどは、\SpecialChar TeX
+LiveやMiK\SpecialChar TeX
+のような新しい\SpecialChar TeX
+頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めたら、\SpecialChar LyX
+にそのことを教
+えなくてはなりません。導入し終えたら、メニュー項目
 \family sans
 ツール\SpecialChar menuseparator
 環境構成
 \family default
 を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「いいえ」となっているときは、何らかの理由
-で現在の\SpecialCharNoPassThru LaTeX
-設定の一覧を取得できなかったことを示しています。ほとんどの場合、ファイル名データベース(texhash)を更新し忘れただけでしょう。これを行う
-正しい方法については、お使いの\SpecialCharNoPassThru LaTeX
+で現在の\SpecialChar LaTeX
+設定の一覧を取得できなかったことを示しています。ほとんどの場合、ファイル名データベース(texhash)を更新し忘れただけでしょう。これを行う正しい方法
+については、お使いの\SpecialChar LaTeX
 頒布版の説明書をお読みください。
 \end_layout
 
@@ -217,9 +213,8 @@ fonts/ae/
 \family sans
 AE
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
-の標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではな
-く、
+パッケージは、\SpecialChar LaTeX
+の標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではなく、
 \family sans
 Latin Modern
 \family default
@@ -387,7 +382,7 @@ fonts/ec
 \end_layout
 
 \begin_layout Description
-備考： \SpecialCharNoPassThru LaTeX
+備考： \SpecialChar LaTeX
 では
 \family sans
 ec
@@ -408,7 +403,7 @@ dc
 \family sans
 ec
 \family default
-フォントにアップグレードしてください。\SpecialCharNoPassThru LyX
+フォントにアップグレードしてください。\SpecialChar LyX
 は、このフォントが装備されていることを検知すれば、自動的に使用します。
 \end_layout
 
@@ -437,7 +432,7 @@ fonts/eco/
 \family sans
 eco
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が
 \family sans
 Computer Modern
@@ -506,7 +501,7 @@ feyn
 \family sans
 ファインマン
 \family default
-図を使う際（\SpecialCharNoPassThru LaTeX
+図を使う際（\SpecialChar LaTeX
 コマンド
 \series bold
 
@@ -542,11 +537,10 @@ macros/latex/contrib/fontspec
 fontspec
 \family default
 パッケージは、お使いのオペレーティング・システムのOpenType、TrueTypeおよびPostScriptフォントへのアクセスを提供します。そのためには、パ
-ッケージは、Xe\SpecialCharNoPassThru TeX
-若しくはLua\SpecialCharNoPassThru TeX
-エンジンを必要とします。Lua\SpecialCharNoPassThru TeX
-は、fontspec第2.0版(2010/07/11)以降でのみサポートされています
-。
+ッケージは、Xe\SpecialChar TeX
+若しくはLua\SpecialChar TeX
+エンジンを必要とします。Lua\SpecialChar TeX
+は、fontspec第2.0版(2010/07/11)以降でのみサポートされています。
 \end_layout
 
 \begin_layout Subsection
@@ -614,10 +608,10 @@ fonts/lm/
 \family sans
 Latin Modern
 \family default
-フォントは、\SpecialCharNoPassThru LaTeX
-標準フォント（Computer Modern）のPostScript®版です。このフォントを最終的に\SpecialCharNoPassThru LaTeX
-の既定フォントとすることが企
-図されています。AEのような、他のComputer ModernのPostScript®版を使うよりも、この
+フォントは、\SpecialChar LaTeX
+標準フォント（Computer Modern）のPostScript®版です。このフォントを最終的に\SpecialChar LaTeX
+の既定フォントとすることが企図されています。AE
+のような、他のComputer ModernのPostScript®版を使うよりも、この
 \family sans
 Latin Modern
 \family default
@@ -751,7 +745,7 @@ fonts/mathdesign/
 \family sans
 mathdesign
 \family default
-パッケージは、3つのポピュラーなローマンフォントを提供し、一致する数式フォントへ拡張します。以下のローマンフォントの1つを、\SpecialCharNoPassThru LyX
+パッケージは、3つのポピュラーなローマンフォントを提供し、一致する数式フォントへ拡張します。以下のローマンフォントの1つを、\SpecialChar LyX
 の
 \family sans
 文書\SpecialChar menuseparator
@@ -823,7 +817,7 @@ arg   "mdput"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 の既定数式フォントは維持して、本文用フォントのみが欲しい場合、各フォントの非数式デザイン版を選択するか、
 \family sans
 文書\SpecialChar menuseparator
@@ -962,11 +956,11 @@ macros/latex/required/psnfss/
 \family sans
  psnfss
 \family default
-群を使えば、\SpecialCharNoPassThru LyX
+群を使えば、\SpecialChar LyX
 が使うフォントを、PostScriptプリンタで利用可能な35の伝統的フォントに変更することができるようになります。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -976,9 +970,9 @@ macros/latex/required/psnfss/
 \family sans
 psnfss
 \family default
-のバージョンによって、提供するフォントパッケージは異なります。パッケージによっては、廃止が宣言され、新しいものに置き換わったものもあります。\SpecialCharNoPassThru LyX
-は古くなったパ
-ッケージもサポートしますが、つねに最新版が装備されているように留意されることを強くおすすめします(\SpecialCharNoPassThru LyX
+のバージョンによって、提供するフォントパッケージは異なります。パッケージによっては、廃止が宣言され、新しいものに置き換わったものもあります。\SpecialChar LyX
+は古くなったパッケー
+ジもサポートしますが、つねに最新版が装備されているように留意されることを強くおすすめします(\SpecialChar LyX
 もそれを好みます)。最近の
 \family sans
 psnfss
@@ -1356,9 +1350,9 @@ arg   "utopia"
 \end_layout
 
 \begin_layout Standard
-これらのフォントの一部は、一致する数式フォントを自動的に選択することに注意してください。\SpecialCharNoPassThru LaTeX
-の既定数式フォントは維持して、本文用フォントのみが欲しい場合、
-各フォントの非数式デザイン版を選択するか、
+これらのフォントの一部は、一致する数式フォントを自動的に選択することに注意してください。\SpecialChar LaTeX
+の既定数式フォントは維持して、本文用フォントのみが欲しい場合、各フォント
+の非数式デザイン版を選択するか、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -1374,7 +1368,7 @@ arg   "utopia"
 
 \end_deeper
 \begin_layout Subsection
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyreフォントコレクション
 \end_layout
 
@@ -1393,13 +1387,13 @@ tex-gyre
 \family sans
 psnfss
 \family default
-フォントの代替として使用することのできる、35に及ぶ基本PostScriptフォントのリメークと拡張を提供します。フォントは、\SpecialCharNoPassThru LaTeX
-で使用することを念頭にデ
-ザインされました。現在のところ、以下のフォントが利用でき、かつ\SpecialCharNoPassThru LyX
+フォントの代替として使用することのできる、35に及ぶ基本PostScriptフォントのリメークと拡張を提供します。フォントは、\SpecialChar LaTeX
+で使用することを念頭にデザインされ
+ました。現在のところ、以下のフォントが利用でき、かつ\SpecialChar LyX
 によってネイティブにサポートされています。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1411,7 +1405,7 @@ tgadventor
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Adventor
 \emph default
 ): 
@@ -1446,7 +1440,7 @@ tgbonum
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Bonum
 \emph default
 ): 
@@ -1481,7 +1475,7 @@ tgchorus
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Chorus
 \emph default
 ): 
@@ -1516,7 +1510,7 @@ tgcursor
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Cursor
 \emph default
 ): 
@@ -1551,7 +1545,7 @@ tgheros
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Heros
 \emph default
 ): 
@@ -1586,7 +1580,7 @@ tgpagella
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Pagella
 \emph default
 ): 
@@ -1621,7 +1615,7 @@ tgschola
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Schola
 \emph default
 ): 
@@ -1652,7 +1646,7 @@ tgtermes
 \family default
  (
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Gyre Termes
 \emph default
 ): 
@@ -1716,7 +1710,7 @@ tipx
 特殊文字\SpecialChar menuseparator
 発音記号
 \family default
-あるいは\SpecialCharNoPassThru LyX
+あるいは\SpecialChar LyX
 の数式エディタ、または
 \family sans
 挿入\SpecialChar menuseparator
@@ -1755,7 +1749,7 @@ txfonts
 \emph on
 Times Roman
 \emph default
- に基づいたフォントとその数式サポートを提供します。\SpecialCharNoPassThru LyX
+ に基づいたフォントとその数式サポートを提供します。\SpecialChar LyX
 では、現在のところ、等間隔体(
 \emph on
 TXTT
@@ -1785,9 +1779,9 @@ CTAN:
 
 \begin_layout Description
 備考: URW Classicoは、Hermann Zapfによってデザインされた、非常によく知られたサンセリフ体であるOptima書体のクローンです。このフォ
-ントは、Aladdin Free Public Licenseの下で非商用に使用ができます。\SpecialCharNoPassThru TeX
- Liveの下では、このフォントは「getnonfreefon
-ts-sys」ユーティリティ経由で導入する必要があります。
+ントは、Aladdin Free Public Licenseの下で非商用に使用ができます。\SpecialChar TeX
+ Liveの下では、このフォントは「getnonfreefonts-
+sys」ユーティリティ経由で導入する必要があります。
 \end_layout
 
 \begin_layout Subsection
@@ -1816,9 +1810,9 @@ CTAN:
 garamondx
 \family default
 パッケージは、URW Garamondフォントへのアクセスを提供します。このフォントは、Aladdin Free Public Licenseの下で非商用に使用
-ができます。\SpecialCharNoPassThru TeX
- Liveの下では、フォントは、パッケージとは別に「getnonfreefonts-sys」ユーティリティ経由で導入する必要があります(導入済
-: 
+ができます。\SpecialChar TeX
+ Liveの下では、フォントは、パッケージとは別に「getnonfreefonts-sys」ユーティリティ経由で導入する必要があります(導入済:
+ 
 \begin_inset Info
 type  "package"
 arg   "garamondx-fonts"
@@ -1846,15 +1840,15 @@ arg   "ugm"
 \end_layout
 
 \begin_layout Section
-標準\SpecialCharNoPassThru LaTeX
+標準\SpecialChar LaTeX
 文書クラス
 \end_layout
 
 \begin_layout Standard
-本節で取り扱われている文書クラスは、\SpecialCharNoPassThru LaTeX
-が提供している基本文書クラスです。特に、\SpecialCharNoPassThru LaTeX2e
-が装備されている限り、これらはすべてお使いのシステム上に存在
-するはずです。したがって、あるクラスが検出されないと表示されている場合は、そのクラスをサポートするレイアウトファイルが見つからなかったことを意味します。
+本節で取り扱われている文書クラスは、\SpecialChar LaTeX
+が提供している基本文書クラスです。特に、\SpecialChar LaTeX2e
+が装備されている限り、これらはすべてお使いのシステム上に存在するはずです。したがって
+、あるクラスが検出されないと表示されている場合は、そのクラスをサポートするレイアウトファイルが見つからなかったことを意味します。
 \end_layout
 
 \begin_layout Subsection
@@ -1880,7 +1874,7 @@ CTAN： 該当なし
 \family sans
 article
 \family default
-は、論文や短い文章を植字するのに使われます。\SpecialCharNoPassThru LaTeX
+は、論文や短い文章を植字するのに使われます。\SpecialChar LaTeX
 の基本となる文書クラスです。
 \end_layout
 
@@ -1989,7 +1983,7 @@ CTAN： 該当なし
 \family sans
 slides
 \family default
-は、OHPを作成するためのものです。\SpecialCharNoPassThru LyX
+は、OHPを作成するためのものです。\SpecialChar LyX
 によるサポートは充分とは言えません。可能ならば、代わりに
 \family sans
 foils
@@ -2033,11 +2027,11 @@ amsart
 \family sans
 article
 \family default
-クラスの同等品です。これは、AMS-\SpecialCharNoPassThru LaTeX
-パッケージの一部であり、アメリカ数学会が開発した外観を持つ、数式の植字のために使われます。当学会の書籍や学術雑誌だ
-けでなく、他の数学文献での出版のための原稿を準備するために使うことが推奨されています。アメリカ数学会は、投稿文書をAMS-\SpecialCharNoPassThru LaTeX
-で準備し、それを使っているこ
-とを謝辞に書くことを要請しています。\SpecialCharNoPassThru LyX
+クラスの同等品です。これは、AMS-\SpecialChar LaTeX
+パッケージの一部であり、アメリカ数学会が開発した外観を持つ、数式の植字のために使われます。当学会の書籍や学術雑誌だけでなく、
+他の数学文献での出版のための原稿を準備するために使うことが推奨されています。アメリカ数学会は、投稿文書をAMS-\SpecialChar LaTeX
+で準備し、それを使っていることを謝辞に書くことを
+要請しています。\SpecialChar LyX
 によるサポートはまだ制限されています。
 \end_layout
 
@@ -2201,7 +2195,7 @@ harvard
 \family default
 などの基本機能を提供するものに限定しなくてはなりません。
 \family typewriter
-AEA-\SpecialCharNoPassThru LaTeX
+AEA-\SpecialChar LaTeX
 -AuthorGuide.pdf
 \family default
 およびウェブサイト
@@ -2258,9 +2252,9 @@ jgrga
 Journal of Geophysical Research
 \emph default
 ）』への論文を執筆するのに使用することができます。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -2311,7 +2305,7 @@ macros/latex/contrib/beamer
 \end_layout
 
 \begin_layout Description
-備考： プレゼンテーションとスライドを作成するための\SpecialCharNoPassThru LaTeX
+備考： プレゼンテーションとスライドを作成するための\SpecialChar LaTeX
 クラス。
 \end_layout
 
@@ -2330,7 +2324,7 @@ arg   "broadway"
 \end_layout
 
 \begin_layout Description
-CTAN： 該当なし（\SpecialCharNoPassThru LyX
+CTAN： 該当なし（\SpecialChar LyX
 ソース頒布版の
 \family typewriter
 tex/
@@ -2343,8 +2337,8 @@ tex/
 \family sans
 broadway
 \family default
-は、戯曲を書くためのものです。既存の\SpecialCharNoPassThru LaTeX
-の文書クラスではなく、\SpecialCharNoPassThru LyX
+は、戯曲を書くためのものです。既存の\SpecialChar LaTeX
+の文書クラスではなく、\SpecialChar LyX
 とともに新たに頒布されているものです。
 \end_layout
 
@@ -2455,7 +2449,7 @@ http://www.sgmltools.org
 \family sans
 docbook
 \family default
-は、\SpecialCharNoPassThru LaTeX
+は、\SpecialChar LaTeX
 の文書クラスではありません。Docbook SGMLの文書を生成するためにデザインされたものであり、そこから（
 \family typewriter
 jadetex
@@ -2489,8 +2483,8 @@ usergrps/dante/dtk/
 \family sans
 dtk
 \family default
-は、ドイツ\SpecialCharNoPassThru TeX
-ユーザーグループ誌「Die \SpecialCharNoPassThru TeX
+は、ドイツ\SpecialChar TeX
+ユーザーグループ誌「Die \SpecialChar TeX
 nische Komödie」への論文を執筆するのに使うことができます。
 \end_layout
 
@@ -2734,7 +2728,7 @@ macros/latex/contrib/foiltex/
 \family sans
 foils
 \family default
-（Foil\SpecialCharNoPassThru TeX
+（Foil\SpecialChar TeX
 とも呼ばれます）は、スライドを作成する標準クラス
 \family sans
 slides
@@ -2747,11 +2741,11 @@ slides
 \family sans
 seminar
 \family default
-クラス（\SpecialCharNoPassThru LyX
-は今のところサポートしていません）が持っているような、進んだ機能の一部は備えていません。ライセンスの制約の関係で、te\SpecialCharNoPassThru TeX
-のような無料の\SpecialCharNoPassThru TeX
-頒
-布版には含まれていないことに注意してください。
+クラス（\SpecialChar LyX
+は今のところサポートしていません）が持っているような、進んだ機能の一部は備えていません。ライセンスの制約の関係で、te\SpecialChar TeX
+のような無料の\SpecialChar TeX
+頒布版には含まれてい
+ないことに注意してください。
 \end_layout
 
 \begin_layout Subsection
@@ -2847,7 +2841,7 @@ g-brief
 \family sans
 g-brief
 \family default
-との後方互換性はありません。この文書クラスのひな型文書が\SpecialCharNoPassThru LyX
+との後方互換性はありません。この文書クラスのひな型文書が\SpecialChar LyX
 に付属しています。
 \end_layout
 
@@ -2866,7 +2860,7 @@ arg   "hollywood"
 \end_layout
 
 \begin_layout Description
-CTAN： 該当なし（\SpecialCharNoPassThru LyX
+CTAN： 該当なし（\SpecialChar LyX
 ソース頒布版の
 \family typewriter
 tex/
@@ -2879,10 +2873,10 @@ tex/
 \family sans
 hollywood
 \family default
-はアメリカ映画産業向けのスペック・スクリプト（持ち込み原稿−依頼主なしに書かれた「投機的」脚本）を書くのに使うことができます。既存の\SpecialCharNoPassThru LaTeX
-の文書クラスではな
-く、\SpecialCharNoPassThru LyX
-とともに新たに頒布されているものです。
+はアメリカ映画産業向けのスペック・スクリプト（持ち込み原稿−依頼主なしに書かれた「投機的」脚本）を書くのに使うことができます。既存の\SpecialChar LaTeX
+の文書クラスではなく、\SpecialChar LyX
+ととも
+に新たに頒布されているものです。
 \end_layout
 
 \begin_layout Subsection
@@ -2933,8 +2927,8 @@ IEEEtran.sty
 \family sans
 .sty
 \family default
-ファイルは\SpecialCharNoPassThru LaTeX
- 2.09向けなので、\SpecialCharNoPassThru LyX
+ファイルは\SpecialChar LaTeX
+ 2.09向けなので、\SpecialChar LyX
 で使うには、
 \emph on
 必ず
@@ -2946,7 +2940,7 @@ IEEEtran.sty
 \family sans
 ieeetran.cls
 \family default
-のように小文字になっている場合には、\SpecialCharNoPassThru LyX
+のように小文字になっている場合には、\SpecialChar LyX
 が検知することができませんので、IEEEが大文字になっている新しいバージョンにアップグレードしてください。
 \end_layout
 
@@ -3140,7 +3134,7 @@ install/language/japanese/ptex.tds.zip
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialCharNoPassThru LaTeX
+備考： これらの文書クラスは、\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3191,7 +3185,7 @@ macros/latex/contrib/jsclasses/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、日本語を植字するのにより見栄えの良い、\SpecialCharNoPassThru LaTeX
+備考： これらの文書クラスは、日本語を植字するのにより見栄えの良い、\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3372,7 +3366,7 @@ macros/latex/contrib/koma-script/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialCharNoPassThru LaTeX
+備考： これらの文書クラスは、\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3430,7 +3424,7 @@ reference "subsec:Koma-Script"
 
 \end_inset
 
-参照）。\SpecialCharNoPassThru LyX
+参照）。\SpecialChar LyX
 は、古い（サポートの打ち切られた）
 \family sans
 scrlettr
@@ -3469,11 +3463,11 @@ latex8
 \family sans
 article
 \family default
-にいくらかの追加機能を盛り込んだ\SpecialCharNoPassThru LaTeX
-スタイルファイルです。IEEEの学会へ提出するのに適した文書を作成します。各\SpecialCharNoPassThru LaTeX
-ファイル（Bib\SpecialCharNoPassThru TeX
-スタイルフ
-ァイルを含む）は、IEEE主催学会向けのAuthor Kitとともに頒布されています。
+にいくらかの追加機能を盛り込んだ\SpecialChar LaTeX
+スタイルファイルです。IEEEの学会へ提出するのに適した文書を作成します。各\SpecialChar LaTeX
+ファイル（Bib\SpecialChar TeX
+スタイルファイルを含む）は、IEEE
+主催学会向けのAuthor Kitとともに頒布されています。
 \end_layout
 
 \begin_layout Subsection
@@ -3500,7 +3494,7 @@ CTAN： 該当なし
 linuxdoc
 \family default
 クラスは、LaTexの文書クラスではありません。これは、LinuxDoc-SGML文書を作成するためにデザインされたものであり、その文書からは、HTMLやRTF
-、テキストファイル、\SpecialCharNoPassThru LaTeX
+、テキストファイル、\SpecialChar LaTeX
 ファイル等にエクスポートをすることができます。これを使うためには、一連の
 \family sans
 sgml-tools
@@ -3536,7 +3530,7 @@ CTAN： 該当なし
 llncs
 \family default
 は、Springer社の学術誌『Lecture Notes in Computer Science（計算科学講義ノート）』へ提出する論文を執筆するのに用いること
-ができます。\SpecialCharNoPassThru LaTeX
+ができます。\SpecialChar LaTeX
 文書は、以下のアドレスの、SpringerのFTPサイトから入手することができます。
 \begin_inset Newline newline
 \end_inset
@@ -3553,15 +3547,15 @@ ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e
 \end_inset
 
  
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-この文書クラスの\SpecialCharNoPassThru LyX
+この文書クラスの\SpecialChar LyX
 レイアウトファイルは、まだ不十分にしか検証されていません。
 \end_layout
 
@@ -3645,7 +3639,7 @@ macros/latex/contrib/mwcls/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialCharNoPassThru LaTeX
+備考： これらの文書クラスは、\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3714,7 +3708,7 @@ macros/latex/contrib/powerdot
 \end_layout
 
 \begin_layout Description
-備考： プレゼンテーションやスライドを作成するための\SpecialCharNoPassThru LaTeX
+備考： プレゼンテーションやスライドを作成するための\SpecialChar LaTeX
 クラスです。
 \end_layout
 
@@ -3771,7 +3765,8 @@ http://spie.org/app/Publications/index.cfm?fuseaction=authinfo&type=proceedings
 \end_layout
 
 \begin_layout Subsection
-REV\SpecialCharNoPassThru TeX
+REV\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Description
@@ -3791,7 +3786,7 @@ macros/latex209/contrib/revtex/
 \end_layout
 
 \begin_layout Description
-備考： REV\SpecialCharNoPassThru TeX
+備考： REV\SpecialChar TeX
  3クラスを用いるこのクラスは、
 \family sans
 revtex4
@@ -3800,7 +3795,7 @@ revtex4
 \family sans
 revtex
 \family default
-クラス文書は、たいへん容易に新しいクラスに切り替えることができます）。何らかの理由でこのクラスを使わなくてはならない場合には、\SpecialCharNoPassThru LyX
+クラス文書は、たいへん容易に新しいクラスに切り替えることができます）。何らかの理由でこのクラスを使わなくてはならない場合には、\SpecialChar LyX
 ソース頒布版の
 \family typewriter
 tex/
@@ -3813,7 +3808,7 @@ revtex.cls
 \end_layout
 
 \begin_layout Subsection
-REV\SpecialCharNoPassThru TeX
+REV\SpecialChar TeX
  4
 \end_layout
 
@@ -3834,11 +3829,10 @@ macros/latex/contrib/revtex/
 \end_layout
 
 \begin_layout Description
-備考： REV\SpecialCharNoPassThru TeX
- 4は、アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『P
-hysical Review Special Topics\threehyphens
-Accelerators and Beams』）やアメリカ物理学協会、アメリカ光学会、アメリカ物
-理探査学会等の学術誌への草稿を提出するのに用いることができるクラスです。
+備考： REV\SpecialChar TeX
+ 4は、アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『Phys
+ical Review Special Topics—Accelerators and Beams』）やアメリカ物理学協会、アメリカ光学会、アメリカ物理探査学会
+等の学術誌への草稿を提出するのに用いることができるクラスです。
 \begin_inset Flex URL
 status collapsed
 
@@ -3853,7 +3847,8 @@ http://publish.aps.org/revtex4/
 \end_layout
 
 \begin_layout Subsection
-SIAML\SpecialCharNoPassThru TeX
+SIAML\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Description
@@ -3873,9 +3868,9 @@ macros/latex/contrib/siam/siamltex.tar
 \end_layout
 
 \begin_layout Description
-備考： アメリカ応用数理学会（ペンシルバニア州フィラデルフィア、SIAM）は、この\SpecialCharNoPassThru LaTeX
-スタイルを提供することによって、SIAMスタイル標準にしたがった高品
-質な植字がなされることを望んでいます。
+備考： アメリカ応用数理学会（ペンシルバニア州フィラデルフィア、SIAM）は、この\SpecialChar LaTeX
+スタイルを提供することによって、SIAMスタイル標準にしたがった高品質な植字が
+なされることを望んでいます。
 \end_layout
 
 \begin_layout Subsection
@@ -3904,7 +3899,7 @@ macros/latex/contrib/simplecv
 simplecv
 \family default
 は、簡素ながらエレガントな履歴書を書く方法を提供せんとするものです。比較的簡潔なスタイルではありますが、学術関係者に便利な参考文献のサポートなど優れた機能を持っ
-ています。これは、長い間\SpecialCharNoPassThru LyX
+ています。これは、長い間\SpecialChar LyX
 とともに提供されてきた
 \family sans
 cv
@@ -4202,7 +4197,7 @@ plain/contrib/tugboat.tar
 \family sans
 ltugboat
 \family default
-は、\SpecialCharNoPassThru TeX
+は、\SpecialChar TeX
 ユーザーグループの『TUGboat』誌への論文を執筆するのに用いることができます。
 \end_layout
 
@@ -4267,10 +4262,10 @@ http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 \end_layout
 
 \begin_layout Standard
-本節には、\SpecialCharNoPassThru LaTeX
-メンテナたちが「必須」と宣言しているパッケージが列挙されています。もし一つでも検出されなかった場合には、お使いの\SpecialCharNoPassThru LaTeX
-システムをアップグ
-レードすることを真剣に考えるべきです。
+本節には、\SpecialChar LaTeX
+メンテナたちが「必須」と宣言しているパッケージが列挙されています。もし一つでも検出されなかった場合には、お使いの\SpecialChar LaTeX
+システムをアップグレードすることを真剣
+に考えるべきです。
 \end_layout
 
 \begin_layout Subsection
@@ -4298,7 +4293,7 @@ macros/latex/required/amslatex/math/
 \family sans
 amstext
 \family default
-パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、\SpecialCharNoPassThru LyX
+パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、\SpecialChar LyX
 が正しい寸法に調整するのに必要とします。
 \end_layout
 
@@ -4327,7 +4322,7 @@ macros/latex/required/tools/
 \family sans
 array
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が表の中で「上揃え」以外の垂直揃えをできるようにするために必要です。
 \end_layout
 
@@ -4372,16 +4367,15 @@ babel
 \size default
 ダイアログを参照）。とりわけこのパッケージは、ハイフネーションと、「章」や「目次」のようなラベル全ての自動翻訳を担当します。もし、英語だけをお書きになり、英語以
 外の引用もしないのであれば、このパッケージは必要ありません。
-\family default
-\size default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-お使いの\SpecialCharNoPassThru LaTeX
+お使いの\SpecialChar LaTeX
 装備には、以下の言語のハイフネーションパターンが入っています：
 \begin_inset Info
 type  "package"
@@ -4392,8 +4386,8 @@ arg   "languages"
 \end_layout
 
 \begin_layout Standard
-もしご利用になる言語がこのリストにない場合には、それが入るように\SpecialCharNoPassThru LaTeX
-の装備を再設定しなくてはなりません。te\SpecialCharNoPassThru TeX
+もしご利用になる言語がこのリストにない場合には、それが入るように\SpecialChar LaTeX
+の装備を再設定しなくてはなりません。te\SpecialChar TeX
 の場合には、
 \family typewriter
 texconfig
@@ -4500,7 +4494,7 @@ macros/latex/contrib/booktabs/
 \family sans
 booktabs
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が正しくフォーマルな表を出力できるようにするために必要です。
 \end_layout
 
@@ -4529,7 +4523,7 @@ macros/latex/required/tools/
 \family sans
 calc
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が長さやカウンタを処理する際に必要です。
 \end_layout
 
@@ -4558,9 +4552,9 @@ macros/latex/required/graphics/
 \family sans
 color
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が色付き文字を取り扱うのに必要です。これらの色は、DVIプレビューウィンドウには表示されませんが、印刷出力やPostScript®プレビュー
-アでは、正しく出力されます。このパッケージは、
+パッケージは、\SpecialChar LyX
+が色付き文字を取り扱うのに必要です。これらの色は、DVIプレビューウィンドウには表示されませんが、印刷出力やPostScript®プレビューアでは
+、正しく出力されます。このパッケージは、
 \family sans
 graphics
 \family default
@@ -4592,9 +4586,8 @@ macros/latex/contrib/float/
 \family sans
 float
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が非標準のフロートオブジェクトを作成するのに使用されます。また、フロート配置で「なんとしても現在位置に置く」という設定を利用できるようにしま
-す。
+パッケージは、\SpecialChar LyX
+が非標準のフロートオブジェクトを作成するのに使用されます。また、フロート配置で「なんとしても現在位置に置く」という設定を利用できるようにします。
 \end_layout
 
 \begin_layout Subsection
@@ -4622,7 +4615,7 @@ macros/latex/required/graphics/
 \family sans
 graphicx
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が（新しく導入された図挿入枠を使用して）PostScript®の図を挿入するのに必要です。図をスクリーンに表示するには、
 \family typewriter
 \size normal
@@ -4645,7 +4638,7 @@ arg   "graphicsdriver"
 status collapsed
 
 \begin_layout Plain Layout
-ここで、「既定」と表示されているときは、お使いの\SpecialCharNoPassThru LaTeX
+ここで、「既定」と表示されているときは、お使いの\SpecialChar LaTeX
 装備が、このパラメータに適した値を与えていることを示します。
 \end_layout
 
@@ -4707,7 +4700,7 @@ macros/latex/contrib/hyperref/
 \family sans
 hyperref
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が、お使いの文書のPDF特性を設定し、ハイパーリンクを作成することができるようになるために必要です。
 \end_layout
 
@@ -4736,7 +4729,7 @@ macros/latex/required/tools/
 \family sans
 longtable
 \family default
-パッケージは、 \SpecialCharNoPassThru LyX
+パッケージは、 \SpecialChar LyX
 が複数ページにわたる表を正しく出力することができるようになるために必要です。
 \end_layout
 
@@ -4769,10 +4762,9 @@ macros/latex/unpacked/textcomp.sty
 \family sans
 textcomp
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-がユーロ通貨記号のような特別な記号を出力するのに必要です。このパッケージは、\SpecialCharNoPassThru LaTeX
-基本頒布の一部であり、お使いのシステムに既に装備されて
-いるはずです。
+パッケージは、\SpecialChar LyX
+がユーロ通貨記号のような特別な記号を出力するのに必要です。このパッケージは、\SpecialChar LaTeX
+基本頒布の一部であり、お使いのシステムに既に装備されているはずです。
 \end_layout
 
 \begin_layout Subsection
@@ -4808,9 +4800,9 @@ varioref
 \end_layout
 
 \begin_layout Standard
-文書の余白を変更したいと、多くの人々が思います。\SpecialCharNoPassThru LaTeX
-には、文書の余白を設定する組込みオプションがありますが、一部の人たちは、これらのオプションが提供する余
-白は大きすぎると感じて変更したいと思うようです。この目的のためには、
+文書の余白を変更したいと、多くの人々が思います。\SpecialChar LaTeX
+には、文書の余白を設定する組込みオプションがありますが、一部の人たちは、これらのオプションが提供する余白は大きす
+ぎると感じて変更したいと思うようです。この目的のためには、
 \family sans
 geometry
 \family default
@@ -4885,7 +4877,7 @@ achicago
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に従った引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+の推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -4921,8 +4913,8 @@ CTAN:
 \family sans
 apacite
 \family default
-パッケージは、アメリカ心理学会(American Psychological Association)の推奨に忠実に従った引用様式を提供します。これは、基本La
-\SpecialCharNoPassThru TeX
+パッケージは、アメリカ心理学会(American Psychological Association)の推奨に忠実に従った引用様式を提供します。これは、基本La\SpecialChar TeX
+
 のみ、または
 \family sans
 natbib
@@ -4967,7 +4959,7 @@ biblio/bibtex/base/
 apalike
 \family default
 パッケージは、アメリカ心理学会(American Psychological Association)の推奨に緩やかに従った引用様式を提供します。これは、基本L
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
 のみ、または
 \family sans
 natbib
@@ -5003,7 +4995,7 @@ biblio/bibtex/contrib/astron/
 \family sans
 astron
 \family default
-パッケージは、学術誌『Astronomy and Astrophysics』のガイドラインに従った引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+パッケージは、学術誌『Astronomy and Astrophysics』のガイドラインに従った引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -5051,7 +5043,7 @@ Copy-editing
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に緩やかに従った引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+の推奨に緩やかに従った引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -5084,7 +5076,7 @@ macros/latex/contrib/bibtopic/
 \family sans
 bibtopic
 \family default
-パッケージは、Bib\SpecialCharNoPassThru TeX
+パッケージは、Bib\SpecialChar TeX
 が生成する書誌情報を節分けするのに使用されます。
 \end_layout
 
@@ -5120,7 +5112,7 @@ chicago
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に従った引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+の推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -5161,7 +5153,7 @@ harvard
 Style Manual for Authorsや Editors and Printers of Australian Government
  Publications
 \emph default
-を中心に様々な推奨に従った引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+を中心に様々な推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -5217,9 +5209,9 @@ http://www.jurabib.org
 \family sans
 natbib
 \family default
-の代替として、\SpecialCharNoPassThru LyX
-に柔軟な参考文献様式を与えます。人文科学や法学でよく用いられる引用様式や脚注引用、ibidemなどをサポートします。少なくとも第0.6版以降の
-jurabibが必要です。
+の代替として、\SpecialChar LyX
+に柔軟な参考文献様式を与えます。人文科学や法学でよく用いられる引用様式や脚注引用、ibidemなどをサポートします。少なくとも第0.6版以降のjur
+abibが必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -5251,7 +5243,7 @@ macros/latex/contrib/mslapa/
 mslapa
 \family default
 パッケージは、アメリカ心理学会(American Psychological Association)の推奨におおよそ従った引用様式を提供します。これは、基本L
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
 のみ、または
 \family sans
 natbib
@@ -5287,7 +5279,7 @@ biblio/bibtex/contrib/named/
 \family sans
 named
 \family default
-パッケージは、文書化されていないガイドラインに従った著者-年引用様式を提供します。これは、基本\SpecialCharNoPassThru LaTeX
+パッケージは、文書化されていないガイドラインに従った著者-年引用様式を提供します。これは、基本\SpecialChar LaTeX
 のみ、または
 \family sans
 natbib
@@ -5320,7 +5312,7 @@ macros/latex/contrib/natbib/
 \family sans
 natbib
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が、利用可能な書誌情報様式の大半への柔軟なインタフェースとして必要とします(代わりに
 \family sans
 jurabib
@@ -5584,7 +5576,7 @@ language/arabic/arabi/
 \family sans
 arabi
 \family default
-パッケージは、文書言語がアラビア語やペルシア語の文書を、\SpecialCharNoPassThru LyX
+パッケージは、文書言語がアラビア語やペルシア語の文書を、\SpecialChar LyX
 が出力するために必要です。
 \end_layout
 
@@ -5613,7 +5605,7 @@ macros/latex/contrib/bidi/
 \family sans
 bidi
 \family default
-パッケージは、アラビア語・ウルドゥー語・シリア語・ディベヒ語・ヘブライ語・ペルシャ語など、右から左に書かれる文書を出力するために、\SpecialCharNoPassThru LyX
+パッケージは、アラビア語・ウルドゥー語・シリア語・ディベヒ語・ヘブライ語・ペルシャ語など、右から左に書かれる文書を出力するために、\SpecialChar LyX
 が使用します。
 \end_layout
 
@@ -5642,10 +5634,9 @@ language/japanese/japanese
 \family sans
 babel japanese
 \family default
-オプションは、文書言語が「日本語」の時に、\SpecialCharNoPassThru LyX
-が節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語\SpecialCharNoPassThru TeX
-システムのpTe
-X（CTAN
+オプションは、文書言語が「日本語」の時に、\SpecialChar LyX
+が節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語\SpecialChar TeX
+システムのpTeX（CTAN
 \family typewriter
 ：language/japanese/ptex
 \family default
@@ -5677,7 +5668,7 @@ language/lithuanian/
 \family sans
 lithuanian
 \family default
-パッケージは、文書言語がリトアニア語の文書を、\SpecialCharNoPassThru LyX
+パッケージは、文書言語がリトアニア語の文書を、\SpecialChar LyX
 が出力するために必要です。
 \end_layout
 
@@ -5706,7 +5697,7 @@ language/mongolian/babel/
 \family sans
 mongolian-babel
 \family default
-パッケージは、文書言語がモンゴル語の文書を、\SpecialCharNoPassThru LyX
+パッケージは、文書言語がモンゴル語の文書を、\SpecialChar LyX
 が出力するために必要です。
 \end_layout
 
@@ -5735,13 +5726,13 @@ macros/xetex/latex/polyglossia/
 \family sans
 polyglossia
 \family default
-パッケージは、Xe\SpecialCharNoPassThru TeX
+パッケージは、Xe\SpecialChar TeX
 用の言語インタフェースを提供します。これは、
 \family sans
 babel
 \family default
-パッケージに取り代わって、Xe\SpecialCharNoPassThru TeX
-の多言語機能と多スクリプト機能を利用するようにします。導入されていれば、Xe\SpecialCharNoPassThru TeX
+パッケージに取り代わって、Xe\SpecialChar TeX
+の多言語機能と多スクリプト機能を利用するようにします。導入されていれば、Xe\SpecialChar TeX
 を出力書式に指定したとき、
 \family sans
 babel
@@ -5778,7 +5769,7 @@ language/turkmen/
 \family sans
 turkmen
 \family default
-パッケージは、文書言語がトルクメン語の文書を、\SpecialCharNoPassThru LyX
+パッケージは、文書言語がトルクメン語の文書を、\SpecialChar LyX
 が出力するために必要です。
 \end_layout
 
@@ -5814,7 +5805,7 @@ macros/latex/contrib/bezos/
 \family sans
 accents
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が下にアクセントのついたunicode記号を正しく組版するのに必要です。
 \end_layout
 
@@ -5843,9 +5834,9 @@ macros/latex/contrib/algorithms/
 \family sans
 algorithm
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が「アルゴリズム」フロートを出力できるようにするために必要です。このパッケージは、短いアルゴリズムを複数ページにわたって配置したり、「アルゴ
-リズム目次」をサポートするために使われます。
+パッケージは、\SpecialChar LyX
+が「アルゴリズム」フロートを出力できるようにするために必要です。このパッケージは、短いアルゴリズムを複数ページにわたって配置したり、「アルゴリズム
+目次」をサポートするために使われます。
 \end_layout
 
 \begin_layout Subsection
@@ -5996,9 +5987,9 @@ CJKutf8
 \family sans
 CJK
 \family default
-バンドルの一部）は、\SpecialCharNoPassThru LaTeX
-本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったと
-きに正しい出力を得るために必要です。
+バンドルの一部）は、\SpecialChar LaTeX
+本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったときに正しい
+出力を得るために必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -6026,14 +6017,14 @@ http://freshmeat.net/projects/dvipost/
 \family sans
 dvipost
 \family default
-は\SpecialCharNoPassThru LaTeX
-や\SpecialCharNoPassThru TeX
-が生成したDVIファイルの後処理器です。\SpecialCharNoPassThru LyX
+は\SpecialChar LaTeX
+や\SpecialChar TeX
+が生成したDVIファイルの後処理器です。\SpecialChar LyX
 が、変更追尾記号のDVI出力あるいはPostscript出力を生成するのに必要です。
 \family sans
 dvipost
 \family default
-が正しく動作するためには、te\SpecialCharNoPassThru TeX
+が正しく動作するためには、te\SpecialChar TeX
 第2版以降が必要です。
 \end_layout
 
@@ -6197,7 +6188,7 @@ macros/latex/unpacked/fixltx2e.sty
 \family sans
 fixltx2e
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
+パッケージは、\SpecialChar LaTeX
 カーネル中のバグを修正します。これは、
 \family sans
 fixltx2e
@@ -6258,7 +6249,7 @@ macros/latex/base/ifthen/
 \family sans
 ifthen
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
+パッケージは、\SpecialChar LaTeX
 文書用の条件分岐コマンド（
 \emph on
 if
@@ -6297,9 +6288,8 @@ macros/latex/contrib/listings/
 \family sans
 listings
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-がプログラムリスト（ソースコードの断片）を表示するのに使われます。本パッケージは、多くのプログラム言語、文法強調表示、行番号等をサポートしま
-す。
+パッケージは、\SpecialChar LyX
+がプログラムリスト（ソースコードの断片）を表示するのに使われます。本パッケージは、多くのプログラム言語、文法強調表示、行番号等をサポートします。
 \end_layout
 
 \begin_layout Subsection
@@ -6327,9 +6317,9 @@ macros/luatex/latex/luainputenc/
 \family sans
 luainputenc
 \family default
-パッケージは、Lua\SpecialCharNoPassThru TeX
-用に入力エンコーディング機能を再実装します。\SpecialCharNoPassThru TeX
-フォントを使用し、かつLua\SpecialCharNoPassThru TeX
+パッケージは、Lua\SpecialChar TeX
+用に入力エンコーディング機能を再実装します。\SpecialChar TeX
+フォントを使用し、かつLua\SpecialChar TeX
 が出力書式に指定されてするときに必要とされます。
 \end_layout
 
@@ -6358,7 +6348,7 @@ macros/latex/contrib/jknappen/
 \family sans
 mathrsfs
 \family default
-パッケージは、数式様式「フォーマルスクリプト体」を出力する際、\SpecialCharNoPassThru LyX
+パッケージは、数式様式「フォーマルスクリプト体」を出力する際、\SpecialChar LyX
 が使用します。
 \end_layout
 
@@ -6387,7 +6377,7 @@ macros/generic/mathdots/
 \family sans
 mathdots
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が数式コマンド
 \family sans
 
@@ -6426,7 +6416,7 @@ macros/latex/contrib/mh/
 \family sans
 mathtools
 \family default
-パッケージは、一部unicode記号のために\SpecialCharNoPassThru LyX
+パッケージは、一部unicode記号のために\SpecialChar LyX
 が使用します。
 \end_layout
 
@@ -6455,7 +6445,7 @@ macros/latex/contrib/mhchem/
 \family sans
 mhchem
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が、化学式と反応式を数式中で生成するのに必要です。
 \end_layout
 
@@ -6484,7 +6474,7 @@ macros/latex/contrib/multirow/
 \family sans
 multirow
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が複数行の表セルを連結するのに使用され、同時に表計算外部差込枠のサポートも提供します。
 \end_layout
 
@@ -6513,7 +6503,7 @@ macros/latex/contrib/units/
 \family sans
 nicefrac
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が本文サイズの分数（「3/5」など）を生成するのに必要です。
 \end_layout
 
@@ -6542,7 +6532,7 @@ macros/latex/contrib/nomencl/
 \family sans
 nomencl
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が用語定義（nomenclature）を生成するのに必要です。
 \end_layout
 
@@ -6571,7 +6561,7 @@ macros/latex/contrib/pdfpages
 \family typewriter
 pdfpages
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が、
 \family sans
 挿入\SpecialChar menuseparator
@@ -6606,7 +6596,7 @@ macros/latex/contrib/prettyref
 \family typewriter
 prettyref
 \family default
-パッケージは、参照ラベルを前置詞によって認識するコマンドを提供します。\SpecialCharNoPassThru LyX
+パッケージは、参照ラベルを前置詞によって認識するコマンドを提供します。\SpecialChar LyX
 は、「sec:mysection」の形式でラベルをつけますが、
 \family typewriter
 prettyref
@@ -6639,8 +6629,8 @@ macros/latex/contrib/preview
 \family typewriter
 preview
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が\SpecialCharNoPassThru LaTeX
+パッケージは、\SpecialChar LyX
+が\SpecialChar LaTeX
 出力の一部をプレビューするのに必要です。特に、
 \family sans
 ツール\SpecialChar menuseparator
@@ -6680,9 +6670,8 @@ macros/latex/contrib/rotating
 \family sans
 rotating
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が、お使いの文書の一部の向きを変えるときに必要とします。これは、PostScript®互換プリンタでのみ正しく動作することに注意してください
-。
+パッケージは、\SpecialChar LyX
+が、お使いの文書の一部の向きを変えるときに必要とします。これは、PostScript®互換プリンタでのみ正しく動作することに注意してください。
 \end_layout
 
 \begin_layout Subsection
@@ -6710,7 +6699,7 @@ macros/latex/contrib/rotfloat
 \family sans
 rotfloat
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 がフロートを横向きに回転するのに使用します。この機能が真に機能するのは、PostScript®互換プリンタだけであることに注意してください。
 \end_layout
 
@@ -6739,7 +6728,7 @@ macros/latex/contrib/carlisle/
 \family sans
 slashed
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 がスラッシュのついた記号を数式中で正しく組版するのに必要です。
 \end_layout
 
@@ -6768,7 +6757,7 @@ macros/latex/contrib/splitindex/
 \family sans
 splitidx
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が複数の分割された索引を生成するのに使用されます。同梱の
 \family sans
 splitindex
@@ -6803,7 +6792,7 @@ stackrel
 \family default
 パッケージは、下付き文字に
 \backslash
-stackrelコマンドを使用して数式を出力するのに、\SpecialCharNoPassThru LyX
+stackrelコマンドを使用して数式を出力するのに、\SpecialChar LyX
 が必要とします。
 \end_layout
 
@@ -6832,7 +6821,7 @@ fonts/stmaryrd/
 \family sans
 stmaryrd
 \family default
-パッケージは、St Mary's Roadシンボルフォント由来の拡張文字を出力するのに、\SpecialCharNoPassThru LyX
+パッケージは、St Mary's Roadシンボルフォント由来の拡張文字を出力するのに、\SpecialChar LyX
 が必要とします。
 \end_layout
 
@@ -6861,9 +6850,9 @@ macros/latex/contrib/subfig
 \family sans
 subfig
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-がサブフロート（subfigure・subtable等）を生成するのに使用されます。サブフロートは、それぞれにサブキャプションを付けて、他の
-フロート内に埋め込むことができるフロートです。
+パッケージは、\SpecialChar LyX
+がサブフロート（subfigure・subtable等）を生成するのに使用されます。サブフロートは、それぞれにサブキャプションを付けて、他のフロー
+ト内に埋め込むことができるフロートです。
 \end_layout
 
 \begin_layout Subsection
@@ -6891,8 +6880,8 @@ macros/latex/contrib/fragments/subscript.sty
 \family sans
 subscript
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
-が、一部の文書クラスにおいて下付き文字を出力するのに使用されます。\SpecialCharNoPassThru TeX
+パッケージは、\SpecialChar LyX
+が、一部の文書クラスにおいて下付き文字を出力するのに使用されます。\SpecialChar TeX
 頒布版においては、通常
 \family sans
 fragments
@@ -6925,7 +6914,7 @@ macros/latex/contrib/setspace/
 \family sans
 setspace
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が使用中の文書の行間を変更するのに使用します。
 \end_layout
 
@@ -6954,9 +6943,9 @@ macros/latex/contrib/misc/
 \family sans
 ulem
 \family default
-パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、\SpecialCharNoPassThru LyX
-が、変更追跡が有効になっている文書で、
-取消線を引いた文章をPDFに出力するのに必要です。
+パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、\SpecialChar LyX
+が、変更追跡が有効になっている文書で、取消線
+を引いた文章をPDFに出力するのに必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -6990,7 +6979,7 @@ undertilde
 \backslash
 utilde
 \family default
-コマンドを提供します。数式中でチルダの付いた記号に下線を引くのに、\SpecialCharNoPassThru LyX
+コマンドを提供します。数式中でチルダの付いた記号に下線を引くのに、\SpecialChar LyX
 が使用します。
 \end_layout
 
@@ -7019,7 +7008,7 @@ macros/latex/contrib/units/
 \family sans
 units
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 が数式内で単位を適切に組版するのに必要です。
 \end_layout
 
@@ -7048,7 +7037,7 @@ macros/latex/contrib/misc/url.sty
 \family sans
 url
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 がURLを正しく出力するのに必要です。
 \end_layout
 
@@ -7077,7 +7066,7 @@ macros/latex/contrib/wasysym/
 \family sans
 wasysym
 \family default
-パッケージは、\SpecialCharNoPassThru LyX
+パッケージは、\SpecialChar LyX
 がwasyフォント由来の追加文字を出力するのに必要です。
 \end_layout
 
@@ -7111,7 +7100,7 @@ wrapfig
 挿入\SpecialChar menuseparator
 フロート
 \family default
-メニュー）された時に、\SpecialCharNoPassThru LyX
+メニュー）された時に、\SpecialChar LyX
 が使用します。このパッケージによって、全ページ幅よりも狭い図フロートを生成して、本文がその周りで折り返すようにすることができます。
 \end_layout
 
@@ -7140,7 +7129,7 @@ macros/latex/contrib/xargs/
 \family typewriter
 xargs
 \family default
-パッケージは、非必須引数付きの数式マクロを挿入したとき、\SpecialCharNoPassThru LyX
+パッケージは、非必須引数付きの数式マクロを挿入したとき、\SpecialChar LyX
 が使用します。
 \end_layout
 
@@ -7169,12 +7158,12 @@ macros/latex/contrib/xcolor
 \family sans
 xcolor
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
+パッケージは、\SpecialChar LaTeX
 の標準
 \family sans
 color
 \family default
-パッケージではカバーされていない詳細なカラー機能を提供します。\SpecialCharNoPassThru LyX
+パッケージではカバーされていない詳細なカラー機能を提供します。\SpecialChar LyX
 は、カラーの変更追尾マークをつけるのにこのパッケージを使用します。
 \end_layout
 
