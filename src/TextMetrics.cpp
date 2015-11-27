@@ -80,15 +80,18 @@ int numberOfLabelHfills(Paragraph const & par, Row const & row)
 	return n;
 }
 
-
-int numberOfHfills(Row const & row, pos_type const body_pos)
+// FIXME: this needs to be rewritten, probably by merging it into some
+// code that, besides counting, sets the active status of the space
+// inset in the row element.
+int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
+                   pos_type const body_pos)
 {
 	int n = 0;
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator const end = row.end();
 	for ( ; cit != end ; ++cit)
 		if (cit->pos >= body_pos
-		    && cit->inset && cit->inset->isHfill())
+		    && cit->inset && pm.hfillExpansion(row, cit->pos))
 			++n;
 	return n;
 }
@@ -585,21 +588,20 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	}
 
 	// are there any hfills in the row?
-	int nh = numberOfHfills(row, par.beginOfBody());
+	ParagraphMetrics & pm = par_metrics_[pit];
+	int nh = numberOfHfills(row, pm, par.beginOfBody());
 	int hfill = 0;
 	int hfill_rem = 0;
 
-	// We don't have to look at the alignment if
-	// * we use hfills, or
-	// * the row is already larger then the permitted width as then we
-	//   force the LEFT_ALIGN'edness!
-	if (nh > 0) {
-		hfill = w / nh;
-		hfill_rem = w % nh;
-		row.dimension().wid += w;
-	} else if (nh == 0 && int(row.width()) < max_width_) {
-		// is it block, flushleft or flushright?
-		// set x how you need it
+	// We don't have to look at the alignment if the row is already
+	// larger then the permitted width as then we force the
+	// LEFT_ALIGN'edness!
+	if (int(row.width()) >= max_width_)
+		return;
+
+	if (nh == 0) {
+		// Common case : there is no hfill, and the alignment will be
+		// meaningful
 		switch (getAlign(par, row)) {
 		case LYX_ALIGN_BLOCK: {
 			int const ns = row.countSeparators();
@@ -628,15 +630,19 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		case LYX_ALIGN_DECIMAL:
 			break;
 		}
+		return;
 	}
 
-	// Finally,  handle hfill insets
+	hfill = w / nh;
+	hfill_rem = w % nh;
+	row.dimension().wid += w;
+	// Set size of hfill insets
 	pos_type const endpos = row.endpos();
 	pos_type body_pos = par.beginOfBody();
 	if (body_pos > 0
 	    && (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
-	ParagraphMetrics & pm = par_metrics_[pit];
+
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	Row::iterator cit = row.begin();
 	Row::iterator const cend = row.end();
@@ -644,9 +650,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		if (row.label_hfill && cit->endpos == body_pos
 		    && cit->type == Row::SPACE)
 			cit->dim.wid -= int(row.label_hfill * (nlh - 1));
-		if (!cit->inset || !cit->inset->isHfill())
-			continue;
-		if (pm.hfillExpansion(row, cit->pos)) {
+		if (cit->inset && pm.hfillExpansion(row, cit->pos)) {
 			if (cit->pos >= body_pos) {
 				cit->dim.wid += hfill;
 				--nh;
@@ -654,9 +658,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 					cit->dim.wid += hfill_rem;
 			} else
 				cit->dim.wid += int(row.label_hfill);
+			// Cache the inset dimension.
+			insetCache.add(cit->inset, cit->dim);
 		}
-		// Cache the inset dimension.
-		insetCache.add(cit->inset, cit->dim);
 	}
 }
 
