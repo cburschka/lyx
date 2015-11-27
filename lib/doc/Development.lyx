@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -1087,6 +1087,30 @@ The export tests are integration tests.
 e it is important to keep them up-to-date and understand how they work.
 \end_layout
 
+\begin_layout Standard
+The export tests require the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ command that comes with the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cmake
+\end_layout
+
+\end_inset
+
+ build system
+\end_layout
+
 \begin_layout Subsubsection
 Expectations of LyX developers
 \end_layout
@@ -1412,6 +1436,20 @@ ctest
  command.
 \end_layout
 
+\begin_layout Standard
+See the manual (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+man ctest
+\end_layout
+
+\end_inset
+
+) the full list of command line options.
+\end_layout
+
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1448,7 +1486,8 @@ check_load
 \end_layout
 
 \begin_layout Enumerate
-An export that previously failed to compile now compiles.
+An inverted test fails to fail (i.e.
+ export that previously failed now works).
 \end_layout
 
 \begin_layout Enumerate
@@ -1467,8 +1506,8 @@ name "enu:exposed"
 
 \end_inset
 
-A change in a document exposed the incompatibility of that class with an
- export format (e.g.
+A change in a document exposed a previously unknown bug or an incompatibility
+ with an export format (e.g.
  LuaTeX).
 \end_layout
 
@@ -1565,7 +1604,7 @@ A good question is why do we enable the tests for non-default formats? The
  was introduced in LyX and not because a document-specific change was made
  that is not supported by the route.
  In other words, there is a high signal/noise ratio in the export tests
- for the non-default formats.
+ for some non-default formats.
  
 \end_layout
 
@@ -1581,7 +1620,7 @@ What action should you take if a test fails? First, check manually that
 \end_layout
 
 \begin_layout Standard
-Sometimes a test is fixed by accident.
+Sometimes a test is fixed as side-effect of some change.
  We should uninvert a test (remove it from the 
 \begin_inset Flex Code
 status collapsed
@@ -1732,20 +1771,11 @@ Unreliable tests
 \end_layout
 
 \begin_layout Description
-nonstandard In primary sense such test means "requires non-standard ressources
- (LaTeX packages and document classes, fonts, ...
- that are not a requirement for running this test suite".
+nonstandard Requires non-standard ressources (LaTeX packages and document
+ classes, fonts, ...) that are not a requirement for running this test suite.
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-In a wider sense, it is currently used also for "not to be expected to succeed
- on every site that runs this test suite".
- This wider definition includes tests that have "arbitrary" result depending
- on local configuration, OS, TeX distribution, package versions, or the
- phase of the moon.
-\end_layout
-
 \begin_layout Standard
 These tests are labeled as 
 \family typewriter
@@ -1754,7 +1784,15 @@ These tests are labeled as
 
 \end_deeper
 \begin_layout Description
-erratic Tests depending on local configuration, OS, TeX distribution, package
+erratic Tests with 
+\begin_inset Quotes eld
+\end_inset
+
+arbitrary
+\begin_inset Quotes erd
+\end_inset
+
+ result, depending on local configuration, OS, TeX distribution, package
  versions, or the phase of the moon.
 \end_layout
 
