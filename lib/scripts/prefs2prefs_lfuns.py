@@ -26,15 +26,21 @@ import sys, re
 # These accept a line as argument and should return a list:
 #  (bool, newline)
 # where the bool indicates whether we changed anything. If not,
-# one normally returns: (False, []).
+# one normally returns: (False, "").
 
-no_match = (False, [])
+no_match = (False, "")
 
 def simple_renaming(line, old, new):
 	if line.find(old) == -1:
 		return no_match
 	line = line.replace(old, new)
 	return (True, line)
+
+
+def simple_remove(line, old):
+	if line.find(old) == -1:
+		return no_match
+	return (True, "")
 
 
 def next_inset_modify(line):
@@ -162,7 +168,10 @@ def view_split(line):
 def label_copy_as_reference(line):
 	return simple_renaming(line, "copy-label-as-reference", "label-copy-as-reference")
 
-#
+
+def remove_print_support(line):
+	return simple_remove(line, "dialog-show print")
+
 #
 ###########################################################
 
@@ -188,5 +197,7 @@ conversions = [
 		view_split,
 		label_copy_as_reference
 	]],
+	[ 3, [ # list of conversions to format 3, LyX 2.2
+		remove_print_support
+	]]
 ]
-

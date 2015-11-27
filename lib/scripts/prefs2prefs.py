@@ -111,6 +111,10 @@ def update_format(lines):
 	lines[format_line] = "Format " + str(format + 1)
 
 
+def abort(msg):
+	sys.stderr.write("\n%s\n" % (msg))
+	sys.exit(10)
+
 #
 ###########################################################
 
@@ -127,8 +131,7 @@ def main(argv):
 		(options, args) = getopt(sys.argv[1:], "lp")
 	except:
 		usage()
-		print "\nUnrecognized option"
-		sys.exit(1)
+		abort("Unrecognized option")
 
 	opened_files = False
 	# Open files
@@ -141,8 +144,7 @@ def main(argv):
 		opened_files = True
 	else:
 		usage()
-		print "\nEither zero or two arguments must be given."
-		sys.exit(1)
+		abort("Either zero or two arguments must be given.")
 
 	conversions = False
 
@@ -154,12 +156,10 @@ def main(argv):
 	
 	if not conversions:
 		usage()
-		print "\nNeither -l nor -p given."
-		sys.exit(1)
+		abort("Neither -l nor -p given.")
 	elif len(options) > 1:
 		usage()
-		print "\nOnly one of -l or -p should be given."
-		sys.exit(1)
+		abort("Only one of -l or -p should be given.")
 
 	current_format = len(conversions)
 	lines = read(source)
@@ -171,8 +171,7 @@ def main(argv):
 
 		# make sure the conversion list is sequential
 		if int(old_format) + 1 != target_format:
-			sys.stderr.write("Something is wrong with the conversion chain.\n")
-			sys.exit(1)
+			abort("Something is wrong with the conversion chain.")
 
 		for c in convert:
 			for i in range(len(lines)):
@@ -185,8 +184,7 @@ def main(argv):
 
 		# sanity check
 		if int(old_format) + 1 != int(format):
-			sys.stderr.write("Failed to convert to new format!\n")
-			sys.exit(1)
+			abort("Failed to convert to new format!")
 
 	write(output, lines)
 
