@@ -133,6 +133,7 @@ def paragraph_spacing(line):
 def tabular_feature(line):
 	return simple_renaming(line, "tabular-feature", "inset-modify tabular")
 
+
 re_Bar2bar = re.compile(r'^(\\(?:bind|unbind))\s+"([^"]*)Bar"(\s+"[^"]+")')
 def Bar2bar(line):
 	m = re_Bar2bar.search(line)
@@ -145,14 +146,18 @@ def Bar2bar(line):
 	newline = btype + " \"" + mod + "bar\"" + rest
 	return (True, newline)
 
+
 def paragraph_break(line):
 	return simple_renaming(line, "break-paragraph", "paragraph-break")
+
 
 def tab_group_close(line):
 	return simple_renaming(line, "close-tab-group", "tab-group-close")
 
+
 def view_split(line):
 	return simple_renaming(line, "split-view", "view-split")
+
 
 def label_copy_as_reference(line):
 	return simple_renaming(line, "copy-label-as-reference", "label-copy-as-reference")
