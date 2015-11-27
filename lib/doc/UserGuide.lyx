@@ -28389,7 +28389,7 @@ reference "subsec:LaTeX-settings"
  The available options are listed and explained in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "makeindex,xindy"
+key "makeindex-man,xindy"
 
 \end_inset
 
@@ -46622,6 +46622,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "makeindex-man"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Options"
+target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
+
+\end_inset
+
+ for the program 
+\family sans
+makeindex
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \end_inset

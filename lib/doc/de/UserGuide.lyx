@@ -8699,10 +8699,8 @@ Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \end_layout
 
 \begin_layout Standard
-
 Die Umgebung 
 \family sans
-\lang ngerman
 Unformatiert*
 \family default
  ist identisch zu 
@@ -29193,7 +29191,7 @@ LaTeX
  entnehmen, 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "makeindex,xindy"
+key "makeindex-man,xindy"
 
 \end_inset
 
@@ -46689,6 +46687,43 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "makeindex-man"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Optionen"
+target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
+
+\end_inset
+
+ des Programms 
+\family sans
+makeindex
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \end_inset

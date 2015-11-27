@@ -24951,7 +24951,7 @@ reference "sec:LaTeXの設定"
 節をご参照ください。使用できるオプションの一覧と説明は、
 \begin_inset CommandInset citation
 LatexCommand cite
-key "makeindex,xindy"
+key "makeindex-man,xindy"
 
 \end_inset
 
@@ -40387,6 +40387,46 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "makeindex-man"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Options"
+target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
+
+\end_inset
+
+ for the program 
+\family sans
+makeindex
+\family default
+\lang japanese
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \end_inset
