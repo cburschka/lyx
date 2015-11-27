@@ -53,7 +53,7 @@ def main(argv):
     lyx2lyx = os.path.abspath(os.path.join(toolsdir, "../../lib/lyx2lyx/lyx2lyx"))
     systemlyxdir = os.path.abspath(os.path.join(toolsdir, "../../lib"))
     if len(argv) > 1:
-        sys.stderr.write('Warning: Converting with LyX is experimental. Check the results carefully.\n'))
+        sys.stderr.write('Warning: Converting with LyX is experimental. Check the results carefully.\n')
         lyx = os.path.abspath(argv[1])
     else:
         lyx = ''
