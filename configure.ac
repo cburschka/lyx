@@ -349,6 +349,7 @@ AC_DEFINE_UNQUOTED([LYX_RELEASE_PATCH],$lyx_patch,[Patch version number])
 
 AC_CONFIG_FILES([Makefile \
       lyx.1:lyx.1in \
+      autotests/Makefile \
       boost/Makefile \
       config/Makefile \
       development/Makefile \

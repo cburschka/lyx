@@ -1,0 +1,144 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 503
+\begin_document
+\begin_header
+\origin unavailable
+\textclass scrbook
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 7
+InsetLayout CharStyle:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+End
+\end_local_layout
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "FreeSans"
+\font_sans "default" "FreeSans"
+\font_typewriter "default" "FreeSans"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Handbuchergänzungen"
+\pdf_author "LyX Team, deutsche Übersetzung: Hartmut Haase"
+\pdf_subject "LyX-Dokumentation, Benutzerhandbuch, Ergänzungen"
+\pdf_keywords "LyX, Dokumentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Erweiterte \SpecialChar LyX
+ Features
+\end_layout
+
+\begin_layout Subtitle
+Version 2.1.x
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The important parts are:
+\end_layout
+
+\begin_layout Description
+
+\family sans
+\lang english
+NoWeb
+\family default
+->
+\family sans
+Program 
+\family default
+with Flags set to
+\end_layout
+
+\begin_layout Standard
+geschrieben.
+\end_layout
+
+\end_body
+\end_document
