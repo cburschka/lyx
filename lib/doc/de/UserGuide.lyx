@@ -171,7 +171,7 @@ vom \SpecialChar LyX
 \size normal
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Übersetzung und Bearbeitung : Hartmut Haase (
@@ -218,7 +218,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.1.x
+Version 2.2.x
 \begin_inset Note Note
 status collapsed
 
@@ -8674,12 +8674,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8692,7 +8690,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8716,7 +8713,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
