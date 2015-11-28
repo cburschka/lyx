@@ -2105,9 +2105,9 @@ def revert_fontsettings(document):
                 document.header[i:i+1] = [f + ' ' + line[q1+1:q2]]
         else:
             if use_non_tex_fonts == "true":
-                document.header[i:i+1] = [f + ' ' + line.split()[2]]
-            else:
                 document.header[i:i+1] = [f + ' ' + line.split()[1]]
+            else:
+                document.header[i:i+1] = [f + ' ' + line.split()[0]]
         j = j + 1
 
 
