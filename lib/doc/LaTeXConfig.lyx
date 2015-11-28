@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -61,17 +61,13 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
 \html_latex_start <span class='latex'>
 \html_latex_end </span>
-\author -1379302345 "Julien Rioux" jrioux@lyx.org
-\author -712698321 "Jürgen Spitzmüller"
-\author -195340706 "Georg Baum"
-\author 274215730 "scott"
 \end_header
 
 \begin_body
@@ -2213,14 +2209,10 @@ Additional document classes
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1404301980
 a0poster
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404301976
 Found: 
 \begin_inset Info
 type  "textclass"
@@ -2231,16 +2223,12 @@ arg   "a0poster"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302030
 CTAN: 
 \family typewriter
 /macros/latex/contrib/a0poster
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302077
 Notes: The document class 
 \family sans
 a0poster
@@ -2526,19 +2514,13 @@ macros/latex/contrib/beamer
 \begin_layout Description
 Notes: A \SpecialChar LaTeX
  class for producing presentations and slides.
-\change_inserted -712698321 1404302092
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1404302096
 beamerposter
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302093
 Found: 
 \begin_inset Info
 type  "textclass"
@@ -2549,16 +2531,12 @@ arg   "beamerposter"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302107
 CTAN: 
 \family typewriter
 /macros/latex/contrib/beamerposter
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302191
 Notes: The document class 
 \family sans
 beamerposter
@@ -2569,8 +2547,6 @@ beamerposter
 beamer
 \family default
  presentation class.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -2702,13 +2678,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 274215730 1448599732
-
-http://www.sgmltools.org
-\change_inserted 274215730 1448599732
 http://sgmltools-lite.sourceforge.net/
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -2912,49 +2882,23 @@ Notes: The
 europecv
 \family default
  document class is intended to provide curriculum vitaes (resumes) according
- to the official guidelines of the 
-\change_deleted -712698321 1426498553
-e
-\change_inserted -712698321 1426498553
-E
-\change_unchanged
-uropean community (
-\change_deleted -712698321 1426499033
-e
-\change_inserted -712698321 1426499033
-E
-\change_unchanged
-uropass).
- It therefore supports the 
-\change_deleted -712698321 1426498556
-e
-\change_inserted -712698321 1426499063
-E
-\change_unchanged
-uropean language self-assessment.
+ to the official guidelines of the European community (Europass).
+ It therefore supports the European language self-assessment.
  An example curriculum vitae created using this document class can be found
  in the examples.
-
-\change_inserted -712698321 1426499129
  This class follows the 2002 version of the guidelines (see 
 \family sans
 europasscv
 \family default
  for an implementation of the 2013 version).
  
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1426498490
 europasscv
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426498486
 Found: 
 \begin_inset Info
 type  "textclass"
@@ -2965,16 +2909,12 @@ arg   "europasscv"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426498670
 CTAN: 
 \family typewriter
 macros/latex/contrib/europasscv
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426499137
 Notes: The 
 \family sans
 europasscv
@@ -2989,8 +2929,6 @@ europecv
 \family default
  document class, it includes the major style updates that came out in 2013,
  featuring a neater, more compact and somewhat fancier layout.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -4138,19 +4076,13 @@ macros/latex/contrib/powerdot
 \begin_layout Description
 Notes: A \SpecialChar LaTeX
  class for producing presentations and slides.
-\change_inserted -712698321 1404302204
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1404302208
 sciposter
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302205
 Found: 
 \begin_inset Info
 type  "textclass"
@@ -4161,23 +4093,17 @@ arg   "sciposter"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302219
 CTAN: 
 \family typewriter
 /macros/latex/contrib/sciposter
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404302251
 Notes: The document class 
 \family sans
 sciposter
 \family default
  provides support for conference posters on of ISO A3 size and larger.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -5380,20 +5306,14 @@ a4
 \end_layout
 
 \begin_layout Section
-
-\change_inserted -1379302345 1317932269
 Bibliography and citation packages
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317930904
 achicago
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317930942
 Found: 
 \begin_inset Info
 type  "package"
@@ -5404,21 +5324,15 @@ arg   "achicago"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932177
 CTAN:
 \series medium
  
 \family typewriter
 \series default
 macros/latex/contrib/frankenstein/
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934204
 Notes: The package 
 \family sans
 achicago
@@ -5437,14 +5351,10 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317930951
 apacite
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317930961
 Found: 
 \begin_inset Info
 type  "package"
@@ -5455,8 +5365,6 @@ arg   "apacite"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932696
 CTAN:
 \series medium
  
@@ -5466,8 +5374,6 @@ CTAN:
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934370
 Notes: The package 
 \family sans
 apacite
@@ -5491,19 +5397,13 @@ natbib
 longnamesfirst
 \family default
  option).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317930968
 apalike
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317930974
 Found: 
 \begin_inset Info
 type  "package"
@@ -5514,8 +5414,6 @@ arg   "apalike"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317933595
 CTAN:
 \series medium
  
@@ -5525,8 +5423,6 @@ biblio/bibtex/base/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934316
 Notes: The package 
 \family sans
 apalike
@@ -5539,19 +5435,13 @@ apalike
 natbib
 \family default
  as a replacement, although it does not support full author lists.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317930978
 astron
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317930988
 Found: 
 \begin_inset Info
 type  "package"
@@ -5562,8 +5452,6 @@ arg   "astron"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317933172
 CTAN:
 \series medium
  
@@ -5573,8 +5461,6 @@ biblio/bibtex/contrib/astron/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934402
 Notes: The package 
 \family sans
 astron
@@ -5587,19 +5473,13 @@ astron
 natbib
 \family default
  as a replacement, although it does not support full author lists.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317930994
 authordate1-4
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931004
 Found: 
 \begin_inset Info
 type  "package"
@@ -5610,8 +5490,6 @@ arg   "authordate1-4"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932569
 CTAN:
 \series medium
  
@@ -5621,8 +5499,6 @@ biblio/bibtex/contrib/authordate/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934431
 Notes: The package 
 \family sans
 authordate1-4
@@ -5646,19 +5522,13 @@ Chicago Manual of Style
 natbib
 \family default
  as a replacement, although it does not support full author lists.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931294
 bibtopic
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931294
 Found: 
 \begin_inset Info
 type  "package"
@@ -5669,16 +5539,12 @@ arg   "bibtopic"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931294
 CTAN: 
 \family typewriter
 macros/latex/contrib/bibtopic/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931294
 Notes: The package 
 \family sans
 bibtopic
@@ -5688,14 +5554,10 @@ bibtopic
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931009
 chicago
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931016
 Found: 
 \begin_inset Info
 type  "package"
@@ -5706,8 +5568,6 @@ arg   "chicago"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932936
 CTAN:
 \series medium
  
@@ -5717,8 +5577,6 @@ biblio/bibtex/contrib/chicago/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934468
 Notes: The package 
 \family sans
 chicago
@@ -5734,19 +5592,13 @@ Chicago Manual of Style
 natbib
 \family default
  as a replacement.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931021
 harvard
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931028
 Found: 
 \begin_inset Info
 type  "package"
@@ -5757,21 +5609,15 @@ arg   "harvard"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932224
 CTAN:
 \series medium
  
 \family typewriter
 \series default
 macros/latex/contrib/harvard/
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934523
 Notes: The package 
 \family sans
 harvard
@@ -5800,19 +5646,13 @@ natbib
 longnamesfirst
 \family default
  option).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931143
 jurabib
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931143
 Found: 
 \begin_inset Info
 type  "package"
@@ -5823,16 +5663,12 @@ arg   "jurabib"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931143
 CTAN: 
 \family typewriter
 macros/latex/contrib/jurabib/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931143
 Notes: The package 
 \family sans
 jurabib
@@ -5843,8 +5679,6 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -1379302345 1317931143
 
 http://www.jurabib.org
 \end_layout
@@ -5863,14 +5697,10 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931031
 mslapa
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931039
 Found: 
 \begin_inset Info
 type  "package"
@@ -5881,8 +5711,6 @@ arg   "mslapa"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317932826
 CTAN:
 \series medium
  
@@ -5892,8 +5720,6 @@ macros/latex/contrib/mslapa/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317934634
 Notes: The package 
 \family sans
 mslapa
@@ -5906,19 +5732,13 @@ mslapa
 natbib
 \family default
  as a replacement.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317935200
 named
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317935252
 Found: 
 \begin_inset Info
 type  "package"
@@ -5929,8 +5749,6 @@ arg   "named"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317935282
 CTAN:
 \series medium
  
@@ -5940,8 +5758,6 @@ biblio/bibtex/contrib/named/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317935511
 Notes: The package 
 \family sans
 named
@@ -5956,14 +5772,10 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1379302345 1317931189
 natbib
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931189
 Found: 
 \begin_inset Info
 type  "package"
@@ -5974,16 +5786,12 @@ arg   "natbib"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931189
 CTAN: 
 \family typewriter
 macros/latex/contrib/natbib/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1379302345 1317931189
 Notes: The package 
 \family sans
 natbib
@@ -6060,25 +5868,17 @@ Notes: The package
 braille 
 \family default
 makes it possible to typeset Braille, a character system for blind people.
-\change_inserted -712698321 1409487964
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1409487969
 FIXME module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1409487975
 fixme
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409487965
 Found: 
 \begin_inset Info
 type  "package"
@@ -6089,16 +5889,12 @@ arg   "fixme"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409487990
 CTAN: 
 \family typewriter
 macros/latex/contrib/fixme/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409488012
 Notes: The package 
 \family sans
 fixme
@@ -6113,8 +5909,43 @@ FIXME
 \end_inset
 
  notes into documents.
-\change_unchanged
+\end_layout
 
+\begin_layout Subsection
+Hazard and Precautionary Statements module
+\end_layout
+
+\begin_layout Subsubsection
+hpstatement
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "rsphrase"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mhchem/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+hpstatement
+\family default
+\color none
+ is used to insert the official chemical 
+\color inherit
+risk and safety statements
+\color none
+.
 \end_layout
 
 \begin_layout Subsection
@@ -6250,23 +6081,15 @@ enumitem
  itemize, description).
  It is used by the Linguistics module to fine tune the appearance of numbered
  subexamples.
-
-\change_inserted -195340706 1442746477
  The customization options are also supported directly by the Customisable
  Lists (enumitem) module.
-\change_inserted -712698321 1429547340
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1429547345
 forest
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1429547341
 Found: 
 \begin_inset Info
 type  "package"
@@ -6277,16 +6100,12 @@ arg   "forest"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1429547356
 CTAN: 
 \family typewriter
 macros/latex/contrib/forest/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1429547385
 Notes: The package 
 \family sans
 forest
@@ -6295,20 +6114,14 @@ forest
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1426533969
 Multilingual Captions module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1426533976
 bicaption
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426533959
 Found: 
 \begin_inset Info
 type  "package"
@@ -6319,16 +6132,12 @@ arg   "bicaption"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426533992
 CTAN: 
 \family typewriter
 macros/latex/contrib/caption/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1426534118
 Notes: The package 
 \family sans
 bicaption
@@ -6348,20 +6157,14 @@ caption
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -195340706 1442746713
 Paragraph Lists (paralist) module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -195340706 1442746713
 paralist
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1442746713
 Found: 
 \begin_inset Info
 type  "package"
@@ -6372,16 +6175,12 @@ arg   "paralist"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1442746713
 CTAN: 
 \family typewriter
 macros/latex/contrib/paralist/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1442746713
 Notes: The package 
 \family sans
 paralist
@@ -6391,20 +6190,14 @@ paralist
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1404379473
 PDF Comments module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1404379477
 pdfcomment
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404379467
 Found: 
 \begin_inset Info
 type  "package"
@@ -6415,80 +6208,29 @@ arg   "pdfcomment"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404379548
 CTAN: 
 \family typewriter
 macros/latex/contrib/pdfcomment/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404379579
 Notes: The package 
 \family sans
 pdfcomment
 \family default
 \color none
  is used to insert annotations into PDF documents via pdflatex.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-Risk and Safety Statements module
-\end_layout
-
-\begin_layout Subsubsection
-rsphrase
-\end_layout
-
-\begin_layout Description
-Found: 
-\begin_inset Info
-type  "package"
-arg   "rsphrase"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/mhchem/
-\end_layout
-
-\begin_layout Description
-Notes: The package 
-\family sans
-rsphrase
-\family default
-\color none
- is used to insert the official chemical 
-\color inherit
-risk and safety statements
-\color none
-.
-\change_inserted -712698321 1404300887
-
-\end_layout
-
-\begin_layout Subsection
-
-\change_inserted -712698321 1404300977
 Sectionbox module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1404300982
 sectionbox
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404300973
 Found: 
 \begin_inset Info
 type  "package"
@@ -6499,16 +6241,12 @@ arg   "sectionbox"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404301042
 CTAN: 
 \family typewriter
 macros/latex/contrib/sectionbox/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404301055
 Notes: The package 
 \family sans
 sectionbox
@@ -6527,20 +6265,14 @@ sciposter
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1404300913
 TColorbox module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1404300919
 tcolorbox
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404300887
 Found: 
 \begin_inset Info
 type  "package"
@@ -6551,16 +6283,12 @@ arg   "tcolorbox"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1404300936
 CTAN: 
 \family typewriter
 macros/latex/contrib/tcolorbox/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409489193
 Notes: The package 
 \family sans
 tcolorbox
@@ -6570,20 +6298,14 @@ tcolorbox
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1409489213
 TODO Notes module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1409489210
 todonotes
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409489194
 Found: 
 \begin_inset Info
 type  "package"
@@ -6594,16 +6316,12 @@ arg   "todonotes"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1409489226
 CTAN: 
 \family typewriter
 macros/latex/contrib/todonotes/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1446371553
 Notes: The package 
 \family sans
 todonotes
@@ -6621,20 +6339,14 @@ TODO
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1446371571
 Variable-width Minipages module
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1446371576
 varwidth
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1446371554
 Found: 
 \begin_inset Info
 type  "package"
@@ -6645,16 +6357,12 @@ arg   "varwidth"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1446371591
 CTAN: 
 \family typewriter
 macros/latex/contrib/varwidth/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1446371666
 Notes: The package 
 \family sans
 varwidth
@@ -6665,8 +6373,6 @@ varwidth
 \end_inset
 
 e., content-dependent) width.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -6863,27 +6569,15 @@ Notes: The package
 polyglossia
 \family default
  provides a language interface specifically for Xe\SpecialChar TeX
-
-\change_inserted -712698321 1432730282
  and Lua\SpecialChar TeX
-
-\change_unchanged
 .
  It aims to supersede the 
 \family sans
 babel
 \family default
  package by using Xe\SpecialChar TeX
-'s
-\change_inserted -712698321 1432730291
- and
-\change_unchanged
- 
-\change_inserted -712698321 1432730298
-Lua\SpecialChar TeX
-'s 
-\change_unchanged
-mutlilingual and multiscript facilities.
+'s and Lua\SpecialChar TeX
+'s mutlilingual and multiscript facilities.
  If installed, 
 \family sans
 polyglossia
@@ -6893,12 +6587,8 @@ polyglossia
 babel
 \family default
  when Xe\SpecialChar TeX
- 
-\change_inserted -712698321 1432730308
-or Lua\SpecialChar TeX
- 
-\change_unchanged
-is used as output format.
+ or Lua\SpecialChar TeX
+ is used as output format.
 \end_layout
 
 \begin_layout Subsection
@@ -7013,19 +6703,13 @@ index of algorithms
 \end_inset
 
  too.
-\change_inserted -712698321 1390760230
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1390760234
 algorithm2e
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1390760231
 Found: 
 \begin_inset Info
 type  "package"
@@ -7036,16 +6720,12 @@ arg   "algorithm2e"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1390760405
 CTAN: 
 \family typewriter
 /macros/latex/contrib/algorithm2e/
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1390760383
 Notes: The package 
 \family sans
 algorithm2e
@@ -7074,50 +6754,10 @@ Algorithm2e
  in 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \family default
 .
-\change_unchanged
-
-\end_layout
-
-\begin_layout Subsection
-
-\change_deleted -1379302345 1317931281
-bibtopic
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931281
-Found: 
-\begin_inset Info
-type  "package"
-arg   "bibtopic"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931281
-CTAN: 
-\family typewriter
-macros/latex/contrib/bibtopic/
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931284
-Notes: The package 
-\family sans
-bibtopic
-\family default
- is used to split Bib\SpecialChar TeX
- created bibliographies into sections.
 \end_layout
 
 \begin_layout Subsection
@@ -7460,19 +7100,13 @@ fixltx2e
 fixltx2e
 \family default
  module.
-\change_inserted -195340706 1415992274
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -195340706 1415992274
 footmisc
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1415992274
 Found: 
 \begin_inset Info
 type  "package"
@@ -7483,23 +7117,17 @@ arg   "footmisc"
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1415992274
 CTAN: 
 \family typewriter
 macros/latex/contrib/supported/footmisc/footmisc.sty
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -195340706 1415992274
 Notes: The package 
 \family sans
 footmisc 
 \family default
 is needed to support stable footnotes in chapter titles.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -7574,62 +7202,6 @@ if
 ) for \SpecialChar LaTeX
  documents.
  This functionality is needed by some classes and modules.
-\end_layout
-
-\begin_layout Subsection
-
-\change_deleted -1379302345 1317931128
-jurabib
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931128
-Found: 
-\begin_inset Info
-type  "package"
-arg   "jurabib"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931128
-CTAN: 
-\family typewriter
-macros/latex/contrib/jurabib/
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931180
-Notes: The package 
-\family sans
-jurabib
-\family default
-\color none
- (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.jurabib.org
-\end_layout
-
-\end_inset
-
-) can be used as an alternative to 
-\family sans
-natbib
-\family default
-, to get flexible bibliographic styles with \SpecialChar LyX
-.
- It supports cite styles which are common in human sciences and law studies,
- footcites, ibidems, and more.
- You'll need to have jurabib version 0.6 at least.
 \end_layout
 
 \begin_layout Subsection
@@ -7860,48 +7432,6 @@ multirow
  is needed by \SpecialChar LyX
  to merge table cells over several rows, as well as supporting
  the spreadsheet external inset.
-\end_layout
-
-\begin_layout Subsection
-
-\change_deleted -1379302345 1317931164
-natbib
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931164
-Found: 
-\begin_inset Info
-type  "package"
-arg   "natbib"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931164
-CTAN: 
-\family typewriter
-macros/latex/contrib/natbib/
-\end_layout
-
-\begin_layout Description
-
-\change_deleted -1379302345 1317931170
-Notes: The package 
-\family sans
-natbib
-\family default
- is needed by \SpecialChar LyX
- to produce a flexible interface to most of the available
- bibliographic styles (you can also use 
-\family sans
-jurabib
-\family default
- instead).
 \end_layout
 
 \begin_layout Subsection

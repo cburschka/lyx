@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -2040,6 +2040,36 @@ article
 \end_layout
 
 \begin_layout Subsection
+a0poster
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "textclass"
+arg   "a0poster"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+/macros/latex/contrib/a0poster
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The document class 
+\family sans
+a0poster
+\family default
+ provides support for conference posters on large paper.
+\end_layout
+
+\begin_layout Subsection
 aa
 \end_layout
 
@@ -2307,6 +2337,41 @@ macros/latex/contrib/beamer
 \begin_layout Description
 備考： プレゼンテーションとスライドを作成するための\SpecialChar LaTeX
 クラス。
+\end_layout
+
+\begin_layout Subsection
+beamerposter
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "textclass"
+arg   "beamerposter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+/macros/latex/contrib/beamerposter
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The document class 
+\family sans
+beamerposter
+\family default
+ provides support for conference posters on large paper, thereby using the
+ boxes and design features provided by the 
+\family sans
+beamer
+\family default
+ presentation class.
 \end_layout
 
 \begin_layout Subsection
@@ -2628,6 +2693,52 @@ europecv
 \family default
 は、欧州連合の公式ガイドライン（Europass）に則った履歴書を作成するために作られたものです。したがって、欧州言語能力の自己評価も含まれています。この文書ク
 ラスを用いた履歴書の例が、用例文書として提供されています。
+\lang english
+This class follows the 2002 version of the guidelines (see 
+\family sans
+europasscv
+\family default
+ for an implementation of the 2013 version).
+ 
+\end_layout
+
+\begin_layout Subsection
+europasscv
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "textclass"
+arg   "europasscv"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/europasscv
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The 
+\family sans
+europasscv
+\family default
+ document class is another unofficial \SpecialChar LaTeX
+ implementation of the Europass CV,
+ the standard model for curriculum vitae as recommended by the European
+ Commission.
+ As opposed to the 
+\family sans
+europecv
+\family default
+ document class, it includes the major style updates that came out in 2013,
+ featuring a neater, more compact and somewhat fancier layout.
 \end_layout
 
 \begin_layout Subsection
@@ -3710,6 +3821,36 @@ macros/latex/contrib/powerdot
 \begin_layout Description
 備考： プレゼンテーションやスライドを作成するための\SpecialChar LaTeX
 クラスです。
+\end_layout
+
+\begin_layout Subsection
+sciposter
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "textclass"
+arg   "sciposter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+/macros/latex/contrib/sciposter
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The document class 
+\family sans
+sciposter
+\family default
+ provides support for conference posters on of ISO A3 size and larger.
 \end_layout
 
 \begin_layout Subsection
@@ -5385,6 +5526,92 @@ braille
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+FIXME module
+\end_layout
+
+\begin_layout Subsubsection
+fixme
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "fixme"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/fixme/
+\end_layout
+
+\begin_layout Description
+脚注: 
+\lang english
+The package 
+\family sans
+fixme
+\family default
+\color none
+ is used to insert 
+\begin_inset Quotes eld
+\end_inset
+
+FIXME
+\begin_inset Quotes erd
+\end_inset
+
+ notes into documents.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Hazard and Precautionary Statements module
+\end_layout
+
+\begin_layout Subsubsection
+hpstatement
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "rsphrase"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mhchem/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+hpstatement
+\family default
+\color none
+ is used to insert the official chemical 
+\color inherit
+risk and safety statements
+\color none
+.
+\end_layout
+
+\begin_layout Subsection
 頭文字モジュール
 \end_layout
 
@@ -5510,6 +5737,160 @@ macros/latex/contrib/enumitem/
 enumitem
 \family default
 パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
+\lang english
+The customization options are also supported directly by the Customisable
+ Lists (enumitem) module.
+\end_layout
+
+\begin_layout Subsubsection
+forest
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "forest"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/forest/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+forest
+\family default
+ provides support for generating linguistic structure trees.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Multilingual Captions module
+\end_layout
+
+\begin_layout Subsubsection
+bicaption
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "bicaption"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/caption/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+bicaption
+\family default
+ enables pairs of captions (in different languages), with control of other
+ options similar to that provided by the caption package.
+ Languages to be used are selected using 
+\family sans
+babel
+\family default
+.
+ This package is part of the 
+\family sans
+caption
+\family default
+ bundle.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Paragraph Lists (paralist) module
+\end_layout
+
+\begin_layout Subsubsection
+paralist
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "paralist"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/paralist/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+paralist
+\family default
+ extends the standard list environments by versions that are typeset as
+ paragraphs, in paragraphs and as a more compact version.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+PDF Comments module
+\end_layout
+
+\begin_layout Subsubsection
+pdfcomment
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "pdfcomment"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/pdfcomment/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+pdfcomment
+\family default
+\color none
+ is used to insert annotations into PDF documents via pdflatex.
 \end_layout
 
 \begin_layout Subsection
@@ -5542,6 +5923,175 @@ macros/latex/contrib/mhchem/
 rsphrase
 \family default
 パッケージは、化学物質の公式なリスクと安全性に関する表示を挿入するのに用いられます。
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Sectionbox module
+\end_layout
+
+\begin_layout Subsubsection
+sectionbox
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "sectionbox"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/sectionbox/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+sectionbox
+\family default
+\color none
+ is a \SpecialChar LaTeX
+ package for putting fancy colored boxes around sections, subsections,
+ and subsubsections, especially for use in posters, etc.
+ It was designed with the 
+\family sans
+\color inherit
+sciposter
+\family default
+\color none
+ class in mind, and certainly works with that class and with derived classes.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+TColorbox module
+\end_layout
+
+\begin_layout Subsubsection
+tcolorbox
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "tcolorbox"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/tcolorbox/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+tcolorbox
+\family default
+\color none
+ is used to produce fancy boxes.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+TODO Notes module
+\end_layout
+
+\begin_layout Subsubsection
+todonotes
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "todonotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/todonotes/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+todonotes
+\family default
+\color none
+ is used to insert 
+\begin_inset Quotes eld
+\end_inset
+
+TODO
+\begin_inset Quotes erd
+\end_inset
+
+ notes into documents.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Variable-width Minipages module
+\end_layout
+
+\begin_layout Subsubsection
+varwidth
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "varwidth"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/varwidth/
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+varwidth
+\family default
+\color none
+ is used to produce minipages variable (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., content-dependent) width.
 \end_layout
 
 \begin_layout Section
@@ -5727,12 +6277,27 @@ macros/xetex/latex/polyglossia/
 polyglossia
 \family default
 パッケージは、Xe\SpecialChar TeX
+
+\lang english
+andLua\SpecialChar TeX
+
+\lang japanese
 用の言語インタフェースを提供します。これは、
 \family sans
 babel
 \family default
 パッケージに取り代わって、Xe\SpecialChar TeX
+
+\lang english
+andLua\SpecialChar TeX
+
+\lang japanese
 の多言語機能と多スクリプト機能を利用するようにします。導入されていれば、Xe\SpecialChar TeX
+
+\lang english
+orLua\SpecialChar TeX
+
+\lang japanese
 を出力書式に指定したとき、
 \family sans
 babel
@@ -5871,8 +6436,7 @@ algorithm
 パッケージの代わりに用いたい場合には、
 \family sans
 文書\SpecialChar menuseparator
-設定\SpecialChar ldots
-\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 モジュール
 \family default
 で「Algorithm2e」モジュールを選択してください。
@@ -6194,6 +6758,36 @@ fixltx2e
 fixltx2e
 \family default
 モジュールを取り込むことで使用することができます。
+\end_layout
+
+\begin_layout Subsection
+footmisc
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "footmisc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/supported/footmisc/footmisc.sty
+\end_layout
+
+\begin_layout Description
+備考: 
+\lang english
+The package 
+\family sans
+footmisc 
+\family default
+is needed to support stable footnotes in chapter titles.
 \end_layout
 
 \begin_layout Subsection
