@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/de/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % Präambel nicht verändern!!!
@@ -146,7 +146,7 @@ Erweiterte \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Author
@@ -4977,9 +4977,7 @@ That said, since \SpecialChar LyX
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Bibliography and Citations
+Bibliographie und Zitierungen
 \end_layout
 
 \begin_layout Standard
@@ -5089,9 +5087,7 @@ There is no support at present for sectioned bibliographies.
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Indexes
+Indizes
 \end_layout
 
 \begin_layout Standard
@@ -5415,7 +5411,32 @@ lyxpipe"
 
 \end_inset
 
- on Windows (but any working path can be used).
+ on Windows (where any working path instead of lyxpipe can be used, for
+ example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+"
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+my
+\backslash
+lyx
+\backslash
+pipe"
+\end_layout
+
+\end_inset
+
+ would also work).
  You 
 \emph on
 must
@@ -5528,7 +5549,7 @@ lyx -dbg lyxserver
 \begin_layout Standard
 
 \lang english
-You can find a complete example client written in C in the source distribution
+You can find a complete example client written in C++ in the source distribution
  as 
 \begin_inset Flex Code
 status collapsed
@@ -5536,7 +5557,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-development/lyxserver/server_monitor.c
+development/lyxserver/server_monitor.cpp
 \end_layout
 
 \end_inset
@@ -5902,7 +5923,7 @@ status collapsed
 
 \lang english
 The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
- Skim on Mac OSX and SumatraPDF on Windows.
+ Qpdfview on Unix, Skim on Mac OSX and SumatraPDF on Windows.
 \end_layout
 
 \end_inset
@@ -6403,8 +6424,8 @@ scr-specials
 Live 2008 or a recent Mik\SpecialChar TeX
  distribution in order to use
  it.
- Also note that only a few PDF viewers (Skim on the Mac, SumatraPDF on Windows)
- already provide Sync\SpecialChar TeX
+ Also note that only a few PDF viewers (Okular and Qpdfview on Unix, Skim
+ on the Mac, SumatraPDF on Windows) already provide Sync\SpecialChar TeX
  support.
 \end_layout
 
@@ -6870,8 +6891,7 @@ status collapsed
 
 \lang english
 Settings\SpecialChar menuseparator
-Configure Okular\SpecialChar ldots
-\SpecialChar menuseparator
+Configure Okular\SpecialChar menuseparator
 Editor
 \end_layout
 
@@ -6904,6 +6924,61 @@ lyxclient -g %f %l
 
 \lang english
 Reverse search is triggered by SHIFT-click.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang english
+Qpdfview (Unix)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Qpdfview supports Sync\SpecialChar TeX
+ since version 0.3.5.
+ Go to 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Edit\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Behavior
+\end_layout
+
+\end_inset
+
+, click on the input field of the 
+\begin_inset Quotes eld
+\end_inset
+
+Source editor
+\begin_inset Quotes erd
+\end_inset
+
+ item and add the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyxclient -g %1 %2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Reverse search is triggered by double-click.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7605,14 +7680,65 @@ $$o
 
 \lang english
 Note that only some of the viewers provide full forward search functionality,
- among them yap, xdvi, okular and Sumatra PDF
+ among them yap, xdvi, okular
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-For Sumatra CMCDDE is needed — downloadable from http://www.istri.fr/zip/CMCDDE.zip
+You might want to set 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+okular –unique
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, qpdfview and Sumatra PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+SumatraPDF can also use DDE commands through the external program CMCDDE
+ — downloadable from 
+\begin_inset CommandInset href
+LatexCommand href
+target "ftp://ftp2.commence.com/pub/freebies/"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -20613,17 +20739,10 @@ Einleitung
 \end_layout
 
 \begin_layout Standard
-Ein Freund von mir wollte \SpecialChar LyX
- für ein Gruppenprojekt verwenden.
- Als er aber keinerlei Unterstützung für Versionskontrolle oder File Locking
- fand, verwarf er die Idee.
- 
+
 \lang english
-This angered me a bit, so I thought that I should at least make support
- for RCS (with the possibility of CVS and/or SCCS as a future improvement.)
- This has been done.
- \SpecialChar LyX
- now supports some of the most basic RCS/CVS/SVN commands.
+\SpecialChar LyX
+ supports some of the most basic RCS/CVS/SVN/GIT commands.
  If you need something a bit more sophisticated you will have to do that
  manually in a terminal.
 \end_layout
@@ -20631,11 +20750,11 @@ This angered me a bit, so I thought that I should at least make support
 \begin_layout Standard
 
 \lang english
-Also note that CVS support is not as good as subversion support so we advice
+Also note that CVS support is not as good as subversion support so we advise
  using SVN instead.
- Good place to start with Subversion is SVN Book
+ A good place to start learning Subversion is SVN Book
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -20652,7 +20771,7 @@ target "http://svnbook.red-bean.com/"
 \end_inset
 
 .
- In case of RCS you should read 
+ In the case of RCS you should read 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20679,12 +20798,24 @@ man rcsintro
 \lang english
 Before you begin to use the version control features in \SpecialChar LyX
 , you should be
- familiar with RCS/CVS/SVN usage.
+ familiar with RCS/CVS/SVN/GIT usage.
  The implementation in \SpecialChar LyX
  assumes a recent version of the GNU RCS or CVS/SVN
- package—no guarantees are made for older versions.
+ package — no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
- you can check them in Messages pane if unsure.
+ you can check them in the Messages pane if unsure.
+ Regular users of version control will appreciate VC toolbar, which can
+ be enabled via 
+\family sans
+View\SpecialChar menuseparator
+Toolbars\SpecialChar menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -20693,6 +20824,21 @@ Before you begin to use the version control features in \SpecialChar LyX
 For introducing your own external commands consult vc-command in the manual
  of \SpecialChar LyX
  functions.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is strongly recommended to store documents in uncompressed format if
+ using version control (uncheck 
+\family sans
+Document\SpecialChar menuseparator
+Compressed
+\family default
+ if it is checked): Uncompressed LyX documents are text files and therefore
+ for merging two different versions by version control systems.
+ Compressed LyX documents are binary files, which cannot be merged by version
+ control systems.
 \end_layout
 
 \begin_layout Subsection

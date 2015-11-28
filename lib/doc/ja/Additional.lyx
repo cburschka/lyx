@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -171,24 +171,24 @@ End
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の高度な機能
 \begin_inset Newline newline
 \end_inset
 
 
 \size large
-第2.1.x版
+第2.2.x版
 \end_layout
 
 \begin_layout Author
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 プロジェクトチーム
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-このファイルは主にRichard Heckによって管理されています。コメントをされたい場合や誤りを発見された場合には、\SpecialCharNoPassThru LyX
+このファイルは主にRichard Heckによって管理されています。コメントをされたい場合や誤りを発見された場合には、\SpecialChar LyX
 文書化メーリングリスト
 \begin_inset Flex Code
 status open
@@ -226,7 +226,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 いまお読みの取扱説明書『
 \emph on
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 拡張機能篇
 \emph default
 』は、基本的には『
@@ -241,23 +241,23 @@ LatexCommand tableofcontents
 \emph on
 ユーザーの手引き
 \emph default
-』が、ほとんどの文書を作成する上で必要な基本機能をすべて説明してしまっているためです。一方で、\SpecialCharNoPassThru LyX
-プロジェクトチームは、\SpecialCharNoPassThru LyX
-を各設定ファイルと外部パッケージ
-によって拡張可能な状態にしておくことを長期的な目標にしています。つまり、ある\SpecialCharNoPassThru LaTeX
-パッケージをサポートしたい場合に、\SpecialCharNoPassThru LyX
-自身に変更を加えることなく、当該パ
-ッケージ用のレイアウトファイル(ないしモジュール)を作成すればいいようにしているのです。すでにこのような形で、いくつもの新機能がユーザーによって追加されています
-。この取扱説明書は、そのような形での貢献を文書化する冊子として位置付けられています。
+』が、ほとんどの文書を作成する上で必要な基本機能をすべて説明してしまっているためです。一方で、\SpecialChar LyX
+プロジェクトチームは、\SpecialChar LyX
+を各設定ファイルと外部パッケージによって拡張
+可能な状態にしておくことを長期的な目標にしています。つまり、ある\SpecialChar LaTeX
+パッケージをサポートしたい場合に、\SpecialChar LyX
+自身に変更を加えることなく、当該パッケージ用のレイアウトファイ
+ル(ないしモジュール)を作成すればいいようにしているのです。すでにこのような形で、いくつもの新機能がユーザーによって追加されています。この取扱説明書は、そのよう
+な形での貢献を文書化する冊子として位置付けられています。
 \end_layout
 
 \begin_layout Standard
 この取扱説明書では、ファックスのサポート・バージョン管理・SGMLサポートのような、正しく機能するためには追加的なソフトウェアを必要とする特殊機能についても説明
-しています。さらに、\SpecialCharNoPassThru LaTeX
-の強力な機能を直接使って文書を美しく仕上げるための、\SpecialCharNoPassThru LaTeX
-ツールやテクニックを述べた章も収録しています。つきつめれば、\SpecialCharNoPassThru LyX
-と
-はあくまでWYSIWYMたることを企図しているため、\SpecialCharNoPassThru LaTeX
+しています。さらに、\SpecialChar LaTeX
+の強力な機能を直接使って文書を美しく仕上げるための、\SpecialChar LaTeX
+ツールやテクニックを述べた章も収録しています。つきつめれば、\SpecialChar LyX
+とはあくまでWYSIWYMた
+ることを企図しているため、\SpecialChar LaTeX
 の全機能の一部へのインタフェースは用意するものの、すべてを用意することはないでしょう。
 \end_layout
 
@@ -274,28 +274,29 @@ LatexCommand tableofcontents
 \emph on
 ユーザーの手引き
 \emph default
-』をよくお読みになって、\SpecialCharNoPassThru LyX
+』をよくお読みになって、\SpecialChar LyX
 の全基本機能を習得してください。
 \end_layout
 
 \begin_layout Standard
-この取扱説明書の取り上げられている話題は、\SpecialCharNoPassThru LyX
-が\SpecialCharNoPassThru LaTeX
-にどう関わっているかに強く関係していますので、まず次章では、\SpecialCharNoPassThru LyX
-の内部動作がどうなっているか、Ly
-Xに希望する\SpecialCharNoPassThru LaTeX
-コードを正確に生成させるにはどうしたらいいかを収録しています。本章は、あきらかに熟練\SpecialCharNoPassThru LyX
+この取扱説明書の取り上げられている話題は、\SpecialChar LyX
+が\SpecialChar LaTeX
+にどう関わっているかに強く関係していますので、まず次章では、\SpecialChar LyX
+の内部動作がどうなっているか、LyXに希望する\SpecialChar LaTeX
+コードを正
+確に生成させるにはどうしたらいいかを収録しています。本章は、あきらかに熟練\SpecialChar LyX
 ユーザー向けの章となっています。
 \end_layout
 
 \begin_layout Chapter
-\SpecialCharNoPassThru LyX
-と\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+と\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
-は\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+は\SpecialChar LaTeX
 をどう使っているか
 \end_layout
 
@@ -309,13 +310,13 @@ Xに希望する\SpecialCharNoPassThru LaTeX
 \bar no
 \noun off
 \color none
-は、\SpecialCharNoPassThru TeX
-熟練者と\SpecialCharNoPassThru LaTeX
-に興味のある方向けの章です。ここでは、\SpecialCharNoPassThru LyX
-と\SpecialCharNoPassThru LaTeX
-が、印刷可能な出力を生成するのに、どのように協働しているのかを説明します。全
-取扱説明書中で本章だけは、\SpecialCharNoPassThru LaTeX
-のことを多少なりともご存知であることを前提とします。
+は、\SpecialChar TeX
+熟練者と\SpecialChar LaTeX
+に興味のある方向けの章です。ここでは、\SpecialChar LyX
+と\SpecialChar LaTeX
+が、印刷可能な出力を生成するのに、どのように協働しているのかを説明します。全取扱説明書中で本章だけは、\SpecialChar LaTeX
+のこと
+を多少なりともご存知であることを前提とします。
 \end_layout
 
 \begin_layout Standard
@@ -328,8 +329,8 @@ Xに希望する\SpecialCharNoPassThru LaTeX
 \bar no
 \noun off
 \color none
-かつて\SpecialCharNoPassThru LyX
-は、「\SpecialCharNoPassThru LaTeX
+かつて\SpecialChar LyX
+は、「\SpecialChar LaTeX
 の
 \family default
 \series default
@@ -348,7 +349,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-なフロントエンド」と呼ばれていましたが、いまではこれは正しくありません。\SpecialCharNoPassThru LaTeX
+なフロントエンド」と呼ばれていましたが、いまではこれは正しくありません。\SpecialChar LaTeX
 のフロントエンドは、いくつも出回っています
 \begin_inset Foot
 status collapsed
@@ -363,19 +364,19 @@ status collapsed
 \bar no
 \noun off
 \color none
-有名なものとしては、Linux上の\SpecialCharNoPassThru TeX
-makerとkile、OSX上の\SpecialCharNoPassThru TeX
-shopなどがあります。もちろんviとemacsの\SpecialCharNoPassThru LaTeX
+有名なものとしては、Linux上の\SpecialChar TeX
+makerとkile、OSX上の\SpecialChar TeX
+shopなどがあります。もちろんviとemacsの\SpecialChar LaTeX
 モードも含まれます。
 \end_layout
 
 \end_inset
 
-。これらは、基本的に\SpecialCharNoPassThru LaTeX
-を走らせる機能を有し、編集中のファイルのエラーを表示する機能を持ったテキストエディタです。\SpecialCharNoPassThru LyX
-も、エディタであり、\SpecialCharNoPassThru LaTeX
-を走
-らせる機能を有し、ファイル中のエラーを指摘しますが、それ以上にもっともっと多くのことをしてくれます。
+。これらは、基本的に\SpecialChar LaTeX
+を走らせる機能を有し、編集中のファイルのエラーを表示する機能を持ったテキストエディタです。\SpecialChar LyX
+も、エディタであり、\SpecialChar LaTeX
+を走らせる機能を有し、ファイル
+中のエラーを指摘しますが、それ以上にもっともっと多くのことをしてくれます。
 \family default
 \series default
 \shape default
@@ -393,12 +394,12 @@ shopなどがあります。もちろんviとemacsの\SpecialCharNoPassThru LaTe
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
-を効果的に使うのに、\SpecialCharNoPassThru LaTeX
-の知識が必要とされないことが挙げられます。また\SpecialCharNoPassThru LyX
-は、それ自身、いくつかの拡張を\SpecialCharNoPassThru LaTeX
-に加えています。時間のあるときに
-でも、いちど以下の手順を試してみてください。まず
+\SpecialChar LyX
+を効果的に使うのに、\SpecialChar LaTeX
+の知識が必要とされないことが挙げられます。また\SpecialChar LyX
+は、それ自身、いくつかの拡張を\SpecialChar LaTeX
+に加えています。時間のあるときにでも、いちど以下の手順を試してみ
+てください。まず
 \family sans
 \series default
 \shape default
@@ -445,7 +446,8 @@ status collapsed
 
 \family sans
 エクスポート\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -502,7 +504,7 @@ status collapsed
 
 \end_inset
 
-ファイルのプリアンブルをご覧ください。\SpecialCharNoPassThru LyX
+ファイルのプリアンブルをご覧ください。\SpecialChar LyX
 によって特別に定義された新しいマクロが複数定義されていることに気づかれるはずです
 \family default
 \series default
@@ -525,7 +527,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-自動的に\SpecialCharNoPassThru LaTeX
+自動的に\SpecialChar LaTeX
 を実行するコマンドが、以下のようにいくつかあります。
 \end_layout
 
@@ -608,8 +610,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-これらは、最後に\SpecialCharNoPassThru LaTeX
-を実行してからファイルに変更が加えられた場合のみ、\SpecialCharNoPassThru LaTeX
+これらは、最後に\SpecialChar LaTeX
+を実行してからファイルに変更が加えられた場合のみ、\SpecialChar LaTeX
 を実行します。
 \end_layout
 
@@ -623,9 +625,9 @@ status collapsed
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
-が編集中のファイルを\SpecialCharNoPassThru LaTeX
-にかけるとき、\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+が編集中のファイルを\SpecialChar LaTeX
+にかけるとき、\SpecialChar LyX
 は以下の段階をふみます。
 \end_layout
 
@@ -639,7 +641,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-文書を\SpecialCharNoPassThru LaTeX
+文書を\SpecialChar LaTeX
 に変換し、ファイルの拡張子を
 \begin_inset Flex Code
 status collapsed
@@ -710,8 +712,8 @@ status collapsed
 
 \end_inset
 
-ファイルに対して(必要に応じて複数回)\SpecialCharNoPassThru LaTeX
-を実行し、\SpecialCharNoPassThru LaTeX
+ファイルに対して(必要に応じて複数回)\SpecialChar LaTeX
+を実行し、\SpecialChar LaTeX
 ファイルをコンパイルするのに必要な他のコマンド(
 \begin_inset Flex Code
 status collapsed
@@ -776,7 +778,7 @@ makeindex
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 を
 \family sans
 \series default
@@ -808,7 +810,7 @@ DVI
 \bar no
 \noun off
 \color none
-を使用して実行した場合には、\SpecialCharNoPassThru LyX
+を使用して実行した場合には、\SpecialChar LyX
 はこの後、DVIビューアを実行してDVIファイルを表示します。
 \begin_inset Flex MenuItem
 status collapsed
@@ -829,7 +831,7 @@ PostScript
 
 \end_inset
 
-を使用した場合には、\SpecialCharNoPassThru LyX
+を使用した場合には、\SpecialChar LyX
 はさらに以下の段階をふみます。
 \end_layout
 
@@ -918,18 +920,18 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、他の書式を表示したりエクスポートしたりする際にも、同様のことを行います。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LaTeX
-ファイルを\SpecialCharNoPassThru LyX
+\SpecialChar LaTeX
+ファイルを\SpecialChar LyX
 に読み込む
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で
 \family sans
 
@@ -941,7 +943,8 @@ status collapsed
 \family sans
 ファイル\SpecialChar menuseparator
 インポート\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -955,7 +958,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-コマンドを使用すると、\SpecialCharNoPassThru LaTeX
+コマンドを使用すると、\SpecialChar LaTeX
 ファイルを
 \family default
 \series default
@@ -972,7 +975,7 @@ status collapsed
 \emph off
 \bar no
 \noun off
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 にインポートすることができます。このコマンドは、
 \family typewriter
 \series default
@@ -1038,7 +1041,7 @@ foo.lyx
 
 \end_inset
 
-を生成します。\SpecialCharNoPassThru LyX
+を生成します。\SpecialChar LyX
 は、この変換したファイルを開きます
 \begin_inset Foot
 status collapsed
@@ -1084,7 +1087,7 @@ tex2lyx
 \bar no
 \noun off
 \color none
-は、文法的に正しい\SpecialCharNoPassThru LaTeX
+は、文法的に正しい\SpecialChar LaTeX
 ファイルのほとんどを変換することができますが、すべてを変換できるわけではありません。
 \family typewriter
 \series default
@@ -1115,7 +1118,7 @@ tex2lyx
 \bar no
 \noun off
 \color none
-は、理解不能な部分は\SpecialCharNoPassThru TeX
+は、理解不能な部分は\SpecialChar TeX
 コードボックスの形で残しますので、ファイルを
 \family typewriter
 \series default
@@ -1146,7 +1149,7 @@ tex2lyx
 \bar no
 \noun off
 \color none
-で変換したのち、\SpecialCharNoPassThru TeX
+で変換したのち、\SpecialChar TeX
 コードボックスを探して、手動で正しく編集してください。
 \end_layout
 
@@ -1160,12 +1163,12 @@ tex2lyx
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コードボックスがなにかご存じなければ、次節をお読みください。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 コードを挿入する
 \begin_inset CommandInset label
 LatexCommand label
@@ -1186,18 +1189,17 @@ name "sec:LaTeXコードを挿入する"
 \bar no
 \noun off
 \color none
-どの\SpecialCharNoPassThru LyX
-文書にもつねに\SpecialCharNoPassThru TeX
-コードを挿入することが可能であるというきわめて単純な理由によって、\SpecialCharNoPassThru LaTeX
-にできることは、つねに\SpecialCharNoPassThru LyX
-でも行うことができます。一
-方、\SpecialCharNoPassThru LyX
-は、すべての\SpecialCharNoPassThru LaTeX
-構成物を\SpecialCharNoPassThru LyX
-内に表示できるわけではなく、将来的にもそうならないでしょう。かりに\SpecialCharNoPassThru LaTeX
-コマンドを\SpecialCharNoPassThru LyX
-文書に挿入する必要が出
-てきた場合には、
+どの\SpecialChar LyX
+文書にもつねに\SpecialChar TeX
+コードを挿入することが可能であるというきわめて単純な理由によって、\SpecialChar LaTeX
+にできることは、つねに\SpecialChar LyX
+でも行うことができます。一方、\SpecialChar LyX
+は、すべての\SpecialChar LaTeX
+構成物を\SpecialChar LyX
+内に
+表示できるわけではなく、将来的にもそうならないでしょう。かりに\SpecialChar LaTeX
+コマンドを\SpecialChar LyX
+文書に挿入する必要が出てきた場合には、
 \begin_inset Flex Code
 status collapsed
 
@@ -1211,7 +1213,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \end_layout
 
@@ -1234,7 +1236,7 @@ status collapsed
 
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \end_layout
 
@@ -1344,8 +1346,8 @@ arg   "ert-insert"
 \end_layout
 
 \begin_layout Standard
-以下は、\SpecialCharNoPassThru LaTeX
-コマンドを\SpecialCharNoPassThru LyX
+以下は、\SpecialChar LaTeX
+コマンドを\SpecialChar LyX
 文書中に挿入する例です。コードは以下のようになっているとしましょう。
 \end_layout
 
@@ -1448,16 +1450,16 @@ end{tabular}
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \end_layout
 
 \end_inset
 
-ボックスが、この段落の直後にあります。この取扱説明書を\SpecialCharNoPassThru LyX
-上でご覧になっていれば、\SpecialCharNoPassThru TeX
-コード差込枠のみが見えるはずです。印刷した取扱説明書をご覧であれば、実
-際の結果が見れるはずです。
+ボックスが、この段落の直後にあります。この取扱説明書を\SpecialChar LyX
+上でご覧になっていれば、\SpecialChar TeX
+コード差込枠のみが見えるはずです。印刷した取扱説明書をご覧であれば、実際の結果が見
+れるはずです。
 \end_layout
 
 \begin_layout Standard
@@ -1563,8 +1565,8 @@ end{tabular}
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru TeX
-コードを使用する方法に加えて、複雑な\SpecialCharNoPassThru LaTeX
+\SpecialChar TeX
+コードを使用する方法に加えて、複雑な\SpecialChar LaTeX
 コードを含む部分を別ファイルとして作成しておき、そのファイルをインクルードするのに
 \begin_inset Flex MenuItem
 status collapsed
@@ -1623,7 +1625,7 @@ Input
 \bar no
 \noun off
 \color none
-場合のみに限った方がよいでしょう。さもないと、\SpecialCharNoPassThru LaTeX
+場合のみに限った方がよいでしょう。さもないと、\SpecialChar LaTeX
 エラーを追跡するたいへんな作業を行わなくてはならなくなります。
 \end_layout
 
@@ -1650,8 +1652,8 @@ Input
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
-は、あなたの\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+は、あなたの\SpecialChar LaTeX
 コードが正しいかどうかを
 \family default
 \series default
@@ -1696,11 +1698,11 @@ Input
 \bar no
 \noun off
 \color none
-二番目の点に関して、\SpecialCharNoPassThru LyX
-はひじょうにたくさんの機能を装備しており、その数は増えつづけています。ご自身で\SpecialCharNoPassThru LaTeX
-コードを書かなくてはならないと思い込む前に、L
-yXがこれこれの機能をもっていないことを、取扱説明書で確実に確かめてください。さらに世の中には、封筒のラベルから美しい複数ページにわたる表を作るものまで、ありと
-あらゆることを行う膨大な数の\SpecialCharNoPassThru LaTeX
+二番目の点に関して、\SpecialChar LyX
+はひじょうにたくさんの機能を装備しており、その数は増えつづけています。ご自身で\SpecialChar LaTeX
+コードを書かなくてはならないと思い込む前に、LyXがこれこれの
+機能をもっていないことを、取扱説明書で確実に確かめてください。さらに世の中には、封筒のラベルから美しい複数ページにわたる表を作るものまで、ありとあらゆることを行
+う膨大な数の\SpecialChar LaTeX
 パッケージが存在します。
 \family default
 \series default
@@ -1747,7 +1749,7 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-もし、文書中で例外的に手の込んだことをなさりたければ、かならず良い\SpecialCharNoPassThru LaTeX
+もし、文書中で例外的に手の込んだことをなさりたければ、かならず良い\SpecialChar LaTeX
 関連書籍を参考とするようにしてください。『
 \family default
 \series default
@@ -1766,18 +1768,18 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-』の書誌情報に多くの\SpecialCharNoPassThru LaTeX
+』の書誌情報に多くの\SpecialChar LaTeX
 関連書籍が引用されています。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
-と\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+と\SpecialChar LaTeX
 プリアンブル
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 プリアンブルについて
 \end_layout
 
@@ -1791,13 +1793,13 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-すでに\SpecialCharNoPassThru LaTeX
-についてご存知であれば、ここでプリアンブル(前置文)が何に向いているか説明する必要はないでしょう。もしご存じなければ、以下の説明で大まかな理解は
-得られるはずです。詳しくは\SpecialCharNoPassThru LaTeX
-関連書籍をご参照ください。いずれにしても、以下で\SpecialCharNoPassThru LyX
-文書の\SpecialCharNoPassThru LaTeX
-プリアンブルで何ができるか、または何をする必要がないか
-説明をしますので、以下の各要点はお読みになった方が良いでしょう。
+すでに\SpecialChar LaTeX
+についてご存知であれば、ここでプリアンブル(前置文)が何に向いているか説明する必要はないでしょう。もしご存じなければ、以下の説明で大まかな理解は得られるは
+ずです。詳しくは\SpecialChar LaTeX
+関連書籍をご参照ください。いずれにしても、以下で\SpecialChar LyX
+文書の\SpecialChar LaTeX
+プリアンブルで何ができるか、または何をする必要がないか説明をしますので、以下の各要点はお読
+みになった方が良いでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -1810,8 +1812,8 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LaTeX
-プリアンブルは、\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+プリアンブルは、\SpecialChar LaTeX
 文書のいちばん始め、本文の
 \family default
 \series default
@@ -1847,8 +1849,8 @@ reference "chap:Special-features"
 \begin_inset Newline newline
 \end_inset
 
-これは\SpecialCharNoPassThru LyX
-がすでに行ってくれています。もしあなたが熟達した\SpecialCharNoPassThru LaTeX
+これは\SpecialChar LyX
+がすでに行ってくれています。もしあなたが熟達した\SpecialChar LaTeX
 使いであり、自作の文書クラスを使いたい場合には、取扱説明書『
 \family default
 \series default
@@ -1867,7 +1869,7 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-』をご覧になれば、\SpecialCharNoPassThru LyX
+』をご覧になれば、\SpecialChar LyX
 に自作文書クラスへの仲介を行わせるにはどうすればよいかの情報があります。
 \end_layout
 
@@ -1885,9 +1887,9 @@ reference "chap:Special-features"
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
-パッケージは、パッケージがプリアンブルで宣言された場合のみ、文書中で利用可能となる、追加コマンド群を提供します。パッケージをインクルードすると、特別な
-コマンドが提供されることに加え、文書に変更を加えることができます。例えば
+\SpecialChar LaTeX
+パッケージは、パッケージがプリアンブルで宣言された場合のみ、文書中で利用可能となる、追加コマンド群を提供します。パッケージをインクルードすると、特別なコマンドが
+提供されることに加え、文書に変更を加えることができます。例えば
 \family typewriter
 \series default
 \shape default
@@ -1934,7 +1936,7 @@ indentfirst
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 のカウンタと変数の中には、プリアンブルでグローバルに
 \family default
 \series default
@@ -2015,7 +2017,7 @@ renewcommand
 \begin_inset Newline newline
 \end_inset
 
-ユーザー定義コマンドは、文書中で頻出する\SpecialCharNoPassThru LaTeX
+ユーザー定義コマンドは、文書中で頻出する\SpecialChar LaTeX
 コマンドの短縮形です。このようなコマンドを宣言するには、プリアンブルが適した場所ですが、どこで宣言することも
 \family default
 \series default
@@ -2034,9 +2036,8 @@ renewcommand
 \bar no
 \noun off
 \color none
-です(もちろんコマンドが初めて使用される場所よりも前です)。あまりないことではありますが、お使いの文書中に生の\SpecialCharNoPassThru LaTeX
-コードがあふれている場合には便利でしょう
-。
+です(もちろんコマンドが初めて使用される場所よりも前です)。あまりないことではありますが、お使いの文書中に生の\SpecialChar LaTeX
+コードがあふれている場合には便利でしょう。
 \end_layout
 
 \begin_layout Standard
@@ -2049,7 +2050,7 @@ renewcommand
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、その生成する
 \begin_inset Flex Code
 status collapsed
@@ -2069,8 +2070,8 @@ status collapsed
 
 \end_inset
 
-ファイルのプリアンブルに、それ自身の定義を追加します。これによって、\SpecialCharNoPassThru LyX
-の生成する\SpecialCharNoPassThru LaTeX
+ファイルのプリアンブルに、それ自身の定義を追加します。これによって、\SpecialChar LyX
+の生成する\SpecialChar LaTeX
 ファイルの可搬性を高めています。
 \end_layout
 
@@ -2088,11 +2089,10 @@ status collapsed
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
-が\SpecialCharNoPassThru LaTeX
-ファイルのプリアンブルに追加するコマンドは、つねに同じです。これは、\SpecialCharNoPassThru LyX
-自体にパッチを当てないかぎり変更できないようになっています。しかしな
-がら、
+\SpecialChar LyX
+が\SpecialChar LaTeX
+ファイルのプリアンブルに追加するコマンドは、つねに同じです。これは、\SpecialChar LyX
+自体にパッチを当てないかぎり変更できないようになっています。しかしながら、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2126,13 +2126,13 @@ status collapsed
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 プリアンブル
 \end_layout
 
 \end_inset
 
-の項から、プリアンブルに追加をすることはできます。\SpecialCharNoPassThru LyX
+の項から、プリアンブルに追加をすることはできます。\SpecialChar LyX
 は、
 \family sans
 \series default
@@ -2163,10 +2163,10 @@ status collapsed
 \bar no
 \noun off
 \color none
-ダイアログ内のすべてのものを、\SpecialCharNoPassThru LyX
-埋込みのプリアンブルに付け加えます。ご自身の宣言をプリアンブルに追加する前に、あなたがしようとしていることを\SpecialCharNoPassThru LyX
-がすでにサ
-ポートしていないかどうか確認してください(車輪の再発明をしないように、とはすでに申しあげたことです)。
+ダイアログ内のすべてのものを、\SpecialChar LyX
+埋込みのプリアンブルに付け加えます。ご自身の宣言をプリアンブルに追加する前に、あなたがしようとしていることを\SpecialChar LyX
+がすでにサポートしてい
+ないかどうか確認してください(車輪の再発明をしないように、とはすでに申しあげたことです)。
 \family default
 \series default
 \shape default
@@ -2179,7 +2179,7 @@ status collapsed
 \emph on
 プリアンブルコードが正しいことを確認してください。
 \emph default
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、プリアンブルをチェックしません。
 \family roman
 \series medium
@@ -2244,7 +2244,7 @@ begin{document}
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 には
 \family default
 \series default
@@ -2408,9 +2408,9 @@ voffset
 \noun off
 \color none
 の既定値はともに0ポイント、つまりページをシフトしません。残念ながら、DVIドライバによってはつねにページをシフトすることがあるようです。我々には、どうしてその
-ようなことをするのか、そしてシスアドがどうしてそれを修正しないのか理解できませんが、もし個人的に管理できないシステムで\SpecialCharNoPassThru LyX
-を使用していて、シスアドがお馬鹿さん
-である場合には、
+ようなことをするのか、そしてシスアドがどうしてそれを修正しないのか理解できませんが、もし個人的に管理できないシステムで\SpecialChar LyX
+を使用していて、シスアドがお馬鹿さんである
+場合には、
 \begin_inset Flex Code
 status collapsed
 
@@ -2514,10 +2514,10 @@ labels.sty
 
 \end_inset
 
-という\SpecialCharNoPassThru LaTeX
-パッケージが、お近くのCTANアーカイブで入手可能です。お使いのシステムには、既定ではこのパッケージは導入されていないかもしれません。ご自身でお
-確かめください。また、このパッケージの取扱説明書を読まれたいかもしれませんが、それもご自身にお任せします。これは使用例ですので、このパッケージをどう使うかの例だ
-けお見せすることにします。
+という\SpecialChar LaTeX
+パッケージが、お近くのCTANアーカイブで入手可能です。お使いのシステムには、既定ではこのパッケージは導入されていないかもしれません。ご自身でお確かめくだ
+さい。また、このパッケージの取扱説明書を読まれたいかもしれませんが、それもご自身にお任せします。これは使用例ですので、このパッケージをどう使うかの例だけお見せす
+ることにします。
 \end_layout
 
 \begin_layout Standard
@@ -2686,7 +2686,7 @@ labels.sty
 \bar no
 \noun off
 \color none
-そのうち誰かが、このパッケージを直接サポートする\SpecialCharNoPassThru LyX
+そのうち誰かが、このパッケージを直接サポートする\SpecialChar LyX
 レイアウトファイルを作ってくれるかもしれません。その誰かはあなたかもしれません。
 \end_layout
 
@@ -2803,7 +2803,7 @@ usepackage{indentfirst}
 \bar no
 \noun off
 \color none
-もしお使いの\SpecialCharNoPassThru TeX
+もしお使いの\SpecialChar TeX
 頒布版が脳死状態でなければ、このパッケージが入っているはずなので、建国の父たちが意図したように、すべての段落が字下げされます。
 \end_layout
 
@@ -2846,13 +2846,13 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-章には、他の例や、\SpecialCharNoPassThru LaTeX
+章には、他の例や、\SpecialChar LaTeX
 の各種の「汚い技」があります。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
-および\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+および\SpecialChar LaTeX
 のエラー
 \end_layout
 
@@ -2866,17 +2866,16 @@ reference "chap:Special-features"
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
-が\SpecialCharNoPassThru LaTeX
-を呼び出す際、\SpecialCharNoPassThru LyX
-は\SpecialCharNoPassThru LaTeX
-に、かりにエラーがあったとしても楽観的に無視して先に進むように指示します。その後\SpecialCharNoPassThru LyX
-は、\SpecialCharNoPassThru LaTeX
-の実行ログ
-ファイルを事後処理用に使います。ログファイルを分析したのち、\SpecialCharNoPassThru LyX
-はエラーを一覧表示するダイアログを表示します。エラーのうちどれかをクリックすると、\SpecialCharNoPassThru LyX
-ファイ
-ル中、そのエラーの発生した場所に表示を移動します
+\SpecialChar LyX
+が\SpecialChar LaTeX
+を呼び出す際、\SpecialChar LyX
+は\SpecialChar LaTeX
+に、かりにエラーがあったとしても楽観的に無視して先に進むように指示します。その後\SpecialChar LyX
+は、\SpecialChar LaTeX
+の実行ログファイルを事後処理用に使います。ログファイルを分
+析したのち、\SpecialChar LyX
+はエラーを一覧表示するダイアログを表示します。エラーのうちどれかをクリックすると、\SpecialChar LyX
+ファイル中、そのエラーの発生した場所に表示を移動します
 \begin_inset Foot
 status collapsed
 
@@ -2890,11 +2889,11 @@ status collapsed
 \bar no
 \noun off
 \color none
-正確にいうと、通常は、です。ログファイルの分析は難しい仕事ですので、\SpecialCharNoPassThru LyX
-はつねに正しい行に連れて行ってくれるとは限りません。ときには、\SpecialCharNoPassThru LaTeX
-がある行にエラ
-ーがあると報告したとしても、実際のエラーはそれよりも前であることもあります。これは、プログラムで閉じ括弧を忘れたときに似ていなくもありません。エラーは表示されま
-すが、実際にエラーのある場所よりも後ろでエラーが報告されるのです。
+正確にいうと、通常は、です。ログファイルの分析は難しい仕事ですので、\SpecialChar LyX
+はつねに正しい行に連れて行ってくれるとは限りません。ときには、\SpecialChar LaTeX
+がある行にエラーがあると報告し
+たとしても、実際のエラーはそれよりも前であることもあります。これは、プログラムで閉じ括弧を忘れたときに似ていなくもありません。エラーは表示されますが、実際にエラ
+ーのある場所よりも後ろでエラーが報告されるのです。
 \end_layout
 
 \end_inset
@@ -2936,14 +2935,14 @@ status collapsed
 \noun off
 \color none
 文書\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 ログ
 \end_layout
 
 \end_inset
 
-で見ることができます。エラーメッセージや警告には、よく見かけるものがいくつかありますので、それらをここに収録しておきます。ここにないエラーや警告に関しては、La
-\SpecialCharNoPassThru TeX
+で見ることができます。エラーメッセージや警告には、よく見かけるものがいくつかありますので、それらをここに収録しておきます。ここにないエラーや警告に関しては、La\SpecialChar TeX
+
 関連の良書を参照してください。
 \end_layout
 
@@ -2985,10 +2984,10 @@ X Warning
 \begin_inset Newline newline
 \end_inset
 
-これで始まるメッセージは、\SpecialCharNoPassThru LaTeX
-コード自体を「デバッグ」するための警告メッセージです。相互参照や書誌情報を追加したり変更した場合に、もう一度\SpecialCharNoPassThru LaTeX
-を実行
-する必要があることを知らせるために、このようなメッセージが表示されます。このメッセージは、だいたいにおいて無視しても大丈夫です。
+これで始まるメッセージは、\SpecialChar LaTeX
+コード自体を「デバッグ」するための警告メッセージです。相互参照や書誌情報を追加したり変更した場合に、もう一度\SpecialChar LaTeX
+を実行する必要があることを
+知らせるために、このようなメッセージが表示されます。このメッセージは、だいたいにおいて無視しても大丈夫です。
 \end_layout
 
 \begin_layout Itemize
@@ -3029,10 +3028,10 @@ X Font Warning
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
-がフォントを見つけられなかったと言う警告メッセージです。多くの場合、このメッセージの後に、\SpecialCharNoPassThru LaTeX
-が使用した代替フォントに関する情報が続きます。これ
-も無視して構いません。
+\SpecialChar LaTeX
+がフォントを見つけられなかったと言う警告メッセージです。多くの場合、このメッセージの後に、\SpecialChar LaTeX
+が使用した代替フォントに関する情報が続きます。これも無視して構いません
+。
 \end_layout
 
 \begin_layout Itemize
@@ -3062,7 +3061,7 @@ hbox
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 は、
 \family default
 \series default
@@ -3082,7 +3081,7 @@ hbox
 \noun off
 \color none
 この警告を吐き出します。これは、一行が長すぎて右余白にはみ出してしまったという警告ですが、ほとんどの場合、最終出力を見ても判別できないくらい(せいぜい1ポイント
-か2ポイント)です。あるいは1文字か2文字右余白に出ているくらいです。\SpecialCharNoPassThru LaTeX
+か2ポイント)です。あるいは1文字か2文字右余白に出ているくらいです。\SpecialChar LaTeX
 は、どんな文書を書いても、少なくとも一つはこのメッセージを出すようです。
 \begin_inset Newline newline
 \end_inset
@@ -3103,7 +3102,7 @@ status collapsed
 
 \end_inset
 
-で「draft」オプションを指定する方法もあります。こうすると、\SpecialCharNoPassThru LaTeX
+で「draft」オプションを指定する方法もあります。こうすると、\SpecialChar LaTeX
 は、overfullの発生した行の余白に黒い四角を描画します。
 \end_layout
 
@@ -3141,7 +3140,7 @@ hbox
 \bar no
 \noun off
 \color none
-これは上の警告と違ってあまり出てきません。なぜだかは分かりませんが、\SpecialCharNoPassThru LaTeX
+これは上の警告と違ってあまり出てきません。なぜだかは分かりませんが、\SpecialChar LaTeX
 は1行を短めにする印字するよりは、長めにする方が好きなようです。
 \end_layout
 
@@ -3239,9 +3238,9 @@ Xxxx
 \begin_inset Newline newline
 \end_inset
 
-ファイル「Xxxx」が、システムに導入されていません。これは通常、文書が必要としている\SpecialCharNoPassThru LaTeX
-パッケージに、導入済でないものがある場合に現れます。プリアンブル
-に変更を加えておらず、
+ファイル「Xxxx」が、システムに導入されていません。これは通常、文書が必要としている\SpecialChar LaTeX
+パッケージに、導入済でないものがある場合に現れます。プリアンブルに変更を加
+えておらず、
 \begin_inset Flex Code
 status collapsed
 
@@ -3255,7 +3254,7 @@ usepackage{}
 
 \end_inset
 
-コマンドも使用していないとすれば、\SpecialCharNoPassThru LyX
+コマンドも使用していないとすれば、\SpecialChar LyX
 が読み込もうしているパッケージに存在しないものがあるということです。
 \family default
 \series default
@@ -3271,7 +3270,7 @@ status collapsed
 
 \begin_layout Plain Layout
 ヘルプ\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 の設定
 \end_layout
 
@@ -3286,7 +3285,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-を使用して、\SpecialCharNoPassThru LyX
+を使用して、\SpecialChar LyX
 が認識しているパッケージの一覧を得てください。このファイルは、(
 \begin_inset Flex MenuItem
 status collapsed
@@ -3307,7 +3306,7 @@ status collapsed
 
 \end_inset
 
-を使用して)\SpecialCharNoPassThru LyX
+を使用して)\SpecialChar LyX
 の再設定を行うたびに更新され、どのパッケージが検出されたか、それらのパッケージが何をするものかを表示します。
 \begin_inset Newline newline
 \end_inset
@@ -3416,9 +3415,9 @@ Undefined control sequence
 \begin_inset Newline newline
 \end_inset
 
-お使いの文書に\SpecialCharNoPassThru LaTeX
-コードを挿入した際、打ち間違いをしてしまうと、このようなメッセージが表示されます。あるいは、パッケージを読み込ませるのを忘れたのかもしれ
-ません。いずれにしても、このメッセージは、あなたが未定義のコマンドを使用したことを示しています。
+お使いの文書に\SpecialChar LaTeX
+コードを挿入した際、打ち間違いをしてしまうと、このようなメッセージが表示されます。あるいは、パッケージを読み込ませるのを忘れたのかもしれません。い
+ずれにしても、このメッセージは、あなたが未定義のコマンドを使用したことを示しています。
 \end_layout
 
 \begin_layout Standard
@@ -3431,9 +3430,9 @@ Undefined control sequence
 \bar no
 \noun off
 \color none
-これ以外にも、エラーメッセージや警告メッセージがあります。一般に、読んで意味がすぐにわかるものは、\SpecialCharNoPassThru LaTeX
-のメッセージです。何を言っているのかさっぱりわからな
-いものもありますが、通常これらは、\SpecialCharNoPassThru TeX
+これ以外にも、エラーメッセージや警告メッセージがあります。一般に、読んで意味がすぐにわかるものは、\SpecialChar LaTeX
+のメッセージです。何を言っているのかさっぱりわからないものもあ
+りますが、通常これらは、\SpecialChar TeX
 のメッセージであり、それが何を意味しているのか、どのように解読すればいいのか、
 \family default
 \series default
@@ -3478,7 +3477,7 @@ Undefined control sequence
 \bar no
 \noun off
 \color none
-ご自分で挿入した\SpecialCharNoPassThru LaTeX
+ご自分で挿入した\SpecialChar LaTeX
 コードに打ち間違いがないかどうか確かめる。
 \end_layout
 
@@ -3505,8 +3504,7 @@ Undefined control sequence
 \bar no
 \noun off
 \color none
-文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には\threehyphens
-特に
+文書のもっともはじめの部分にエラーボックスが多数積み上がった場合には—特に
 \begin_inset Flex Code
 status collapsed
 
@@ -3527,8 +3525,7 @@ begin{document}
 
 \end_inset
 
-が表示されているならば\threehyphens
-、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
+が表示されているならば—、プリアンブルにエラーがあることを意味します。プリアンブルのデバックを行ってください。
 \end_layout
 
 \begin_layout Enumerate
@@ -3541,10 +3538,10 @@ begin{document}
 \bar no
 \noun off
 \color none
-プリアンブルに何も追加せず、文書に\SpecialCharNoPassThru LaTeX
-コードをまったく挿入しなかった場合には、\SpecialCharNoPassThru LaTeX
-頒布版自体をまず疑ってください。導入されていないパッケージを探しだ
-して、導入してください。
+プリアンブルに何も追加せず、文書に\SpecialChar LaTeX
+コードをまったく挿入しなかった場合には、\SpecialChar LaTeX
+頒布版自体をまず疑ってください。導入されていないパッケージを探しだして、導入してくださ
+い。
 \end_layout
 
 \begin_layout Enumerate
@@ -3557,7 +3554,7 @@ begin{document}
 \bar no
 \noun off
 \color none
-導入されていないパッケージはなかったものとしましょう。\SpecialCharNoPassThru LyX
+導入されていないパッケージはなかったものとしましょう。\SpecialChar LyX
 を微調整するオプションを使用していますか。特に、手動で
 \begin_inset Flex Code
 status collapsed
@@ -3652,10 +3649,10 @@ Pagebreak
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LaTeX
-が改行位置を見つけられないほど長い一節がありませんか。既定では、改行するために単語間に空白をたくさん追加することを、\SpecialCharNoPassThru LaTeX
-はかなり嫌います。可能で
-あれば、問題が生じないように段落を修正するのが望ましいでしょう。それが難しければ、\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+が改行位置を見つけられないほど長い一節がありませんか。既定では、改行するために単語間に空白をたくさん追加することを、\SpecialChar LaTeX
+はかなり嫌います。可能であれば、問題が生じな
+いように段落を修正するのが望ましいでしょう。それが難しければ、\SpecialChar LaTeX
 が改行しやすく(sloppy)なるように、その部分を
 \family typewriter
 
@@ -3687,9 +3684,9 @@ sloppypar
 \bar no
 \noun off
 \color none
-入れ子の階層を深くしすぎていませんか。\SpecialCharNoPassThru LyX
-は、(今のところ)環境の入れ子の階層が制限内にあるかチェックしません。かりに、環境を17段の入れ子にしたりしていたら
-、それが原因です(\SpecialCharNoPassThru LaTeX
+入れ子の階層を深くしすぎていませんか。\SpecialChar LyX
+は、(今のところ)環境の入れ子の階層が制限内にあるかチェックしません。かりに、環境を17段の入れ子にしたりしていたら、それ
+が原因です(\SpecialChar LaTeX
 の上限は5段です)。
 \end_layout
 
@@ -3704,14 +3701,16 @@ sloppypar
 \noun off
 \color none
 エラーメッセージは発生しないけれども、出力がひどいものとしましょう。図表が幅が広すぎたり長すぎてページに収まらない場合には、
-\bar default
 \family default
-\color inherit
 \series default
 \shape default
 \size default
+\bar default
+\color inherit
+
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -3788,7 +3787,7 @@ sloppypar
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 のバグを発見したのかもしれません‥‥。
 \end_layout
 
@@ -3797,22 +3796,22 @@ sloppypar
 \end_layout
 
 \begin_layout Section
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
 による書誌情報のカスタマイズ
 \end_layout
 
 \begin_layout Standard
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
 の基本的な使用法は、『
 \emph on
 ユーザーの手引き
 \emph default
 』の「
 \emph on
-文献データベース(Bib\SpecialCharNoPassThru TeX
+文献データベース(Bib\SpecialChar TeX
 )
 \emph default
-」の節に説明があります。以下の各小節では、\SpecialCharNoPassThru LyX
+」の節に説明があります。以下の各小節では、\SpecialChar LyX
 でサポートされている書誌情報の特別な機能について説明することとします。
 \end_layout
 
@@ -3821,9 +3820,9 @@ Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-標準のBib\SpecialCharNoPassThru TeX
-は、引用された著作を参照するのに、([12]のように)数字を使用します。しかし、多くの科学分野で、これとは異なる引用様式が用いられています。も
-っともよく見られるのは、著者-出版年様式(例：Knuth 1984a)です。\SpecialCharNoPassThru LyX
+標準のBib\SpecialChar TeX
+は、引用された著作を参照するのに、([12]のように)数字を使用します。しかし、多くの科学分野で、これとは異なる引用様式が用いられています。もっとも
+よく見られるのは、著者-出版年様式(例：Knuth 1984a)です。\SpecialChar LyX
 は、この様式を提供する2つのパッケージ
 \begin_inset Flex Code
 status collapsed
@@ -3883,7 +3882,7 @@ jurabib
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 での両パッケージの取扱い方は、ほぼ同じです。
 \begin_inset Flex MenuItem
 status collapsed
@@ -3966,15 +3965,15 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 
 \begin_layout Standard
 場合によっては、書誌情報をいくつかの節に分ける必要があることがあります。たとえば、あなたが歴史家であるとすれば、出典と学術文献を分ける機能は、おそらく「必需品」
-でさえあります。残念ながら、Bib\SpecialCharNoPassThru TeX
-自身ではこのようなことができません。しかし、適切な\SpecialCharNoPassThru LaTeX
-パッケージの助けを借りると、Bib\SpecialCharNoPassThru TeX
-をこのような必要性を
-満たすように拡張することができます。
+でさえあります。残念ながら、Bib\SpecialChar TeX
+自身ではこのようなことができません。しかし、適切な\SpecialChar LaTeX
+パッケージの助けを借りると、Bib\SpecialChar TeX
+をこのような必要性を満たすように拡張するこ
+とができます。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、このようなパッケージの一つである
 \begin_inset Flex Code
 status collapsed
@@ -4070,7 +4069,7 @@ status collapsed
 
 \end_inset
 
-をチェックしてください。すると、書誌情報の各節に一つずつ、複数の書誌情報を挿入することができます。上記の例では、Bib\SpecialCharNoPassThru TeX
+をチェックしてください。すると、書誌情報の各節に一つずつ、複数の書誌情報を挿入することができます。上記の例では、Bib\SpecialChar TeX
 書誌情報
 \begin_inset Flex Code
 status collapsed
@@ -4112,13 +4111,13 @@ bibtopic
 \end_layout
 
 \begin_layout Standard
-文書の節ごとあるいは章ごとの書誌情報など、複数の書誌情報はBib\SpecialCharNoPassThru TeX
+文書の節ごとあるいは章ごとの書誌情報など、複数の書誌情報はBib\SpecialChar TeX
 自身ではサポートされていません。しかしながら、もし若干の
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \end_layout
 
@@ -4131,7 +4130,7 @@ reference "sec:LaTeXコードを挿入する"
 
 \end_inset
 
-節を参照)を利用することを厭わなければ、\SpecialCharNoPassThru LyX
+節を参照)を利用することを厭わなければ、\SpecialChar LyX
 で節分けされた書誌情報を作るのに使用されている(前節を参照)
 \begin_inset Flex Code
 status collapsed
@@ -4207,7 +4206,7 @@ status collapsed
 
 \end_inset
 
-を有効にしてください。つぎに文書中において、書誌情報(Bib\SpecialCharNoPassThru TeX
+を有効にしてください。つぎに文書中において、書誌情報(Bib\SpecialChar TeX
 書誌情報本体を含む)の入った節を
 \begin_inset Flex Code
 status collapsed
@@ -4232,7 +4231,7 @@ end{btUnit}
 
 \end_inset
 
-のあいだにはさまなくてはなりません(これらのコマンドは\SpecialCharNoPassThru TeX
+のあいだにはさまなくてはなりません(これらのコマンドは\SpecialChar TeX
 コードとして挿入する必要があります)。書誌情報には、現在位置の
 \begin_inset Flex Code
 status collapsed
@@ -4281,7 +4280,7 @@ btUnit
 \begin_layout Standard
 たくさんの節を含んだ大きなファイルで作業をする場合、文書をいくつかのファイルに分割した方が往々にして便利ですし、場合によっては、表部分にはしょっちゅう変更が加え
 られるけれども、その前の文章はつねに同じであるようなケースもあるでしょう。このような場合には、複合文書を利用することを、まずご検討ください。たとえば、科学論文は
-通常、導入部・所見・結果・議論・結論の五つの節から成ります。これら各節を別々の\SpecialCharNoPassThru LyX
+通常、導入部・所見・結果・議論・結論の五つの節から成ります。これら各節を別々の\SpecialChar LyX
 ファイルにして、タイトル・著者・概要・書誌情報等と、これら五つのインクルード
 \begin_inset Foot
 status collapsed
@@ -4298,11 +4297,11 @@ status collapsed
 \end_inset
 
 ファイルを持つ、もう一つ別の「マスター」ファイルを作成するようにすることができます。これらの各ファイルは、単にマスターファイルにインクルードされるだけでなく、単
-独でも出力したり印刷したりすることのできる完全な\SpecialCharNoPassThru LyX
-ファイルであるように注意することが重要です。しかも、これらの各ファイルは、同じ文書クラスでなくてはなりませ
-ん。articleクラスとbookクラスを混在させるようなことはなさらないでください。\SpecialCharNoPassThru LaTeX
-ファイルをインクルードすることもできますが、このファイルにはプリ
-アンブルがあってはなりません(
+独でも出力したり印刷したりすることのできる完全な\SpecialChar LyX
+ファイルであるように注意することが重要です。しかも、これらの各ファイルは、同じ文書クラスでなくてはなりません。a
+rticleクラスとbookクラスを混在させるようなことはなさらないでください。\SpecialChar LaTeX
+ファイルをインクルードすることもできますが、このファイルにはプリアンブルがあって
+はなりません(
 \begin_inset Flex Code
 status collapsed
 
@@ -4330,7 +4329,7 @@ end{document}行
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 では、
 \family sans
 挿入\SpecialChar menuseparator
@@ -4343,16 +4342,15 @@ end{document}行
 
 \begin_layout Standard
 ファイル選択ボックスは、いまや自明でしょう。インクルード方法には、「include」・「input」・「verbatim」の三つがあります。「include」と
-「input」の違いは、正確には\SpecialCharNoPassThru LaTeX
-の達人にしか意味のないものですが、ほとんどの人にとって意味のある違いといえば、「include」されたファイルは新規頁
-から組版されるのに対し、「input」されたファイルは現在のページから組版される点です。
+「input」の違いは、正確には\SpecialChar LaTeX
+の達人にしか意味のないものですが、ほとんどの人にとって意味のある違いといえば、「include」されたファイルは新規頁から組版さ
+れるのに対し、「input」されたファイルは現在のページから組版される点です。
 \end_layout
 
 \begin_layout Standard
-一般に、マスターファイルは、組版前に完全な\SpecialCharNoPassThru LaTeX
-ファイルに変換されますが、インクルードされるファイルは、プリアンブル情報をまったく持たない\SpecialCharNoPassThru LaTeX
-ファイル
-に変換されます。
+一般に、マスターファイルは、組版前に完全な\SpecialChar LaTeX
+ファイルに変換されますが、インクルードされるファイルは、プリアンブル情報をまったく持たない\SpecialChar LaTeX
+ファイルに変換されます。
 \end_layout
 
 \begin_layout Standard
@@ -4366,9 +4364,9 @@ verbatim
 
 \end_inset
 
-」モードで)固定幅タイプライタフォントで組版されます。通常、このファイルの空白は、通常の\SpecialCharNoPassThru LyX
-での空白の取扱いとは違って、連続した複数の空白がそのまま出力される
-ものの、単なる見えない空白です。ただし、
+」モードで)固定幅タイプライタフォントで組版されます。通常、このファイルの空白は、通常の\SpecialChar LyX
+での空白の取扱いとは違って、連続した複数の空白がそのまま出力されるものの
+、単なる見えない空白です。ただし、
 \family sans
 
 \begin_inset Flex MenuItem
@@ -4458,15 +4456,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-すべての子文書の全文献項目を含んだ書誌情報一覧をコピーし、それをコメントに変更してください。このようにすることで、\SpecialCharNoPassThru LyX
-は.bibファイルを見つけることができ、書
-誌情報一覧を見えるようにせずとも簡単に参照を挿入することができるようになります。
+すべての子文書の全文献項目を含んだ書誌情報一覧をコピーし、それをコメントに変更してください。このようにすることで、\SpecialChar LyX
+は.bibファイルを見つけることができ、書誌情報
+一覧を見えるようにせずとも簡単に参照を挿入することができるようになります。
 \end_layout
 
 \begin_layout Standard
-書誌情報一覧がコメントにあるために、\SpecialCharNoPassThru LaTeX
-はそれを使用しないので、参照は[1]のようには表示されないで[?]のように表示されます。ひとつの解決法として、コメ
-ントをインクルードする\SpecialCharNoPassThru LaTeX
+書誌情報一覧がコメントにあるために、\SpecialChar LaTeX
+はそれを使用しないので、参照は[1]のようには表示されないで[?]のように表示されます。ひとつの解決法として、コメントをイン
+クルードする\SpecialChar LaTeX
 パッケージの
 \begin_inset Flex Code
 status collapsed
@@ -4507,14 +4505,14 @@ http://wiki.lyx.org/FAQ/Unsorted#toc31
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 書庫
 \end_layout
 
 \begin_layout Standard
-しばしばユーザーは、出版社に送ったり、共著者とやりとりするために、\SpecialCharNoPassThru LyX
-ファイルを、その依存する全画像(及び他のファイル)と「同梱」する必要に迫られることがあり
-ます。\SpecialCharNoPassThru LyX
+しばしばユーザーは、出版社に送ったり、共著者とやりとりするために、\SpecialChar LyX
+ファイルを、その依存する全画像(及び他のファイル)と「同梱」する必要に迫られることがあります。\SpecialChar LyX
+
  2.0には、この過程を自動化するPythonスクリプト(
 \begin_inset Flex Code
 status collapsed
@@ -4579,8 +4577,8 @@ zip
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-の環境構成時には、「\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+の環境構成時には、「\SpecialChar LyX
 書庫」を書き出すことができるようにスクリプトが準備され、
 \begin_inset Flex MenuItem
 status collapsed
@@ -4613,9 +4611,9 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 \SpecialChar menuseparator
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 書庫
 \end_layout
 
@@ -4684,15 +4682,15 @@ article
 \emph on
 ユーザーの手引き
 \emph default
-』に述べられているように、文書ページスタイルを「装飾的(fancy)」に設定する必要があります。この節では、望んだとおりの効果を得るために、\SpecialCharNoPassThru LaTeX
-プリアンブ
-ルに挿入する必要のある\SpecialCharNoPassThru LaTeX
+』に述べられているように、文書ページスタイルを「装飾的(fancy)」に設定する必要があります。この節では、望んだとおりの効果を得るために、\SpecialChar LaTeX
+プリアンブルに挿入す
+る必要のある\SpecialChar LaTeX
 コードについて解説します。
 \end_layout
 
 \begin_layout Standard
 ページへッダは、「left(左)」・「center(中央)」・「right(右)」と命名された3つのフィールドに分けられています。フッタも同様に3つのフィールド
-に分類されています。これらのフィールドをもっとも簡単に設定する\SpecialCharNoPassThru LaTeX
+に分類されています。これらのフィールドをもっとも簡単に設定する\SpecialChar LaTeX
 コマンドには、
 \family typewriter
 
@@ -4887,7 +4885,7 @@ ge
 
 \end_inset
 
-は、それぞれ\SpecialCharNoPassThru LaTeX
+は、それぞれ\SpecialChar LaTeX
 の節カウンタおよびページカウンタを取得するもので、これによって現在の節番号とページ番号を印字します。
 \begin_inset Flex Code
 status collapsed
@@ -4994,10 +4992,10 @@ thispagestyle{fancy}
 
 \end_inset
 
-のようなコマンドを使えば、各ページごとにへッダ・フッタ設定を有効にしたり無効にしたりすることができます。設定を変更したいページに、これらのコマンドを\SpecialCharNoPassThru TeX
-コード
-として挿入してください。実は、タイトルページは、その後のページは大域的に装飾的(fancy)に設定されていれば装飾的(fancy)になるにもかかわらず、既定でプ
-レーン(plain)になるように設定されているのです。
+のようなコマンドを使えば、各ページごとにへッダ・フッタ設定を有効にしたり無効にしたりすることができます。設定を変更したいページに、これらのコマンドを\SpecialChar TeX
+コードとして
+挿入してください。実は、タイトルページは、その後のページは大域的に装飾的(fancy)に設定されていれば装飾的(fancy)になるにもかかわらず、既定でプレーン
+(plain)になるように設定されているのです。
 \end_layout
 
 \begin_layout Standard
@@ -5088,9 +5086,9 @@ Allan Rae文
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-には、ブリットの形が216個準備されていて、簡単なダイアログから呼び出すことができます。このダイアログを使えば、箇条書き(記号)の各階層で使うブリットの形
-を変更することができます。この設定は文書全体に共通なので、段落ごとに別のブリットを指定することはできません
+\SpecialChar LyX
+には、ブリットの形が216個準備されていて、簡単なダイアログから呼び出すことができます。このダイアログを使えば、箇条書き(記号)の各階層で使うブリットの形を変更
+することができます。この設定は文書全体に共通なので、段落ごとに別のブリットを指定することはできません
 \begin_inset Foot
 status collapsed
 
@@ -5163,17 +5161,17 @@ status collapsed
 
 \end_inset
 
-では、指定したい\SpecialCharNoPassThru LaTeX
-表現を入力することができます。任意のブリットを指定した場合には、そのコマンドが必要とするパッケージを\SpecialCharNoPassThru LaTeX
-プリアンブルで指定する必
-要があります。
+では、指定したい\SpecialChar LaTeX
+表現を入力することができます。任意のブリットを指定した場合には、そのコマンドが必要とするパッケージを\SpecialChar LaTeX
+プリアンブルで指定する必要があります。
 \end_layout
 
 \begin_layout Standard
-6つのパネルは、それぞれが必要とするパッケージによって分類されています。下記は、フォント名と\SpecialCharNoPassThru LaTeX
+6つのパネルは、それぞれが必要とするパッケージによって分類されています。下記は、フォント名と\SpecialChar LaTeX
 パッケージの対応表です。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -5181,7 +5179,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -5237,7 +5235,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family roman
 本体
 \end_layout
@@ -5443,15 +5442,15 @@ pifont.sty
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、ユーザーが導入されていないパッケージのブリットを使用したとしても、警告を発しません。ファイルを閲覧したり印刷したりしようとしたときに\SpecialCharNoPassThru LaTeX
-エラーが
-出るようならば、パッケージが導入されていない可能性が大です
+\SpecialChar LyX
+は、ユーザーが導入されていないパッケージのブリットを使用したとしても、警告を発しません。ファイルを閲覧したり印刷したりしようとしたときに\SpecialChar LaTeX
+エラーが出るようならば、
+パッケージが導入されていない可能性が大です
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 が、パッケージがなくてもブリットを使用することを許すのは、編集をここで行ったとしても、別のところへエクスポートする可能性があるからです。
 \end_layout
 
@@ -5465,7 +5464,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-変更したいブリット階層を選んで、ブリット形と寸法を選択してください。何らかの変更を加えたとしても、\SpecialCharNoPassThru LyX
+変更したいブリット階層を選んで、ブリット形と寸法を選択してください。何らかの変更を加えたとしても、\SpecialChar LyX
 上には反映されませんが、文書の表示を行えば確認されます。
 \end_layout
 
@@ -5479,9 +5478,9 @@ status collapsed
 \emph on
 本当に
 \emph default
-段落ごとに異なるブリットの形を使いたいならば、\SpecialCharNoPassThru TeX
-コードを使って少し手を汚す必要があります。この場合も、ブリット選択ダイアログを使えば、さまざまな形のLaTe
-Xコードを確認することができるので手助けとなるでしょう。任意に設定した段落をつくるには、以下のような選択肢があります。
+段落ごとに異なるブリットの形を使いたいならば、\SpecialChar TeX
+コードを使って少し手を汚す必要があります。この場合も、ブリット選択ダイアログを使えば、さまざまな形のLaTeXコー
+ドを確認することができるので手助けとなるでしょう。任意に設定した段落をつくるには、以下のような選択肢があります。
 \end_layout
 
 \begin_layout Plain Layout
@@ -5531,7 +5530,7 @@ sharp
 \end_layout
 
 \begin_layout Itemize
-特定の階層の新しいブリット形を指定するには、\SpecialCharNoPassThru LaTeX
+特定の階層の新しいブリット形を指定するには、\SpecialChar LaTeX
 コマンド
 \begin_inset Flex Code
 status collapsed
@@ -5547,11 +5546,11 @@ renewcommand{}{}
 \end_inset
 
 を使用します。あとで現在のブリット形に戻すことができるように、現在のブリット形を保存しておく必要もあります。ここで使っている箇条書きでは、第1階層のブリットを変
-更するために、以下の\SpecialCharNoPassThru LaTeX
+更するために、以下の\SpecialChar LaTeX
 コードが使用されています。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -5625,7 +5624,7 @@ star
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \end_layout
 
@@ -5698,19 +5697,19 @@ savelabelitemi}
 \end_layout
 
 \begin_layout Chapter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 とインターネット網
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、これまでも長い間、HTMLを始めとするウェブフレンドリーな文書諸形式への書き出しをサポートしてきました。しかしながら、第2.0版以前では、HTMLへの書
-き出しは、常に外部変換子を用いることで実現されていました
+\SpecialChar LyX
+は、これまでも長い間、HTMLを始めとするウェブフレンドリーな文書諸形式への書き出しをサポートしてきました。しかしながら、第2.0版以前では、HTMLへの書き出し
+は、常に外部変換子を用いることで実現されていました
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で外部変換子を使うことについての詳細は、取扱説明書『
 \emph on
 カスタマイズ篇
@@ -5754,30 +5753,30 @@ plastex
 
 \end_inset
 
-のように、\SpecialCharNoPassThru LaTeX
-を中間形式として用い、その\SpecialCharNoPassThru LaTeX
-を生成するのに\SpecialCharNoPassThru LyX
+のように、\SpecialChar LaTeX
+を中間形式として用い、その\SpecialChar LaTeX
+を生成するのに\SpecialChar LyX
 を用いるもの。2つめは、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-e\SpecialCharNoPassThru LyX
+e\SpecialChar LyX
 er
 \end_layout
 
 \end_inset
 
-のように、直接\SpecialCharNoPassThru LyX
+のように、直接\SpecialChar LyX
 ファイルに働きかける変換子です。これらは、それぞれに長所・短所を有しています。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
-ベースの変換子は、原則として、\SpecialCharNoPassThru LaTeX
-が書きだす文書についてのすべてを知っているという長所があります。この種の変換子は、例えば、特定のコードのくだり
-が、\SpecialCharNoPassThru LyX
-によって生成されたのか、\SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+ベースの変換子は、原則として、\SpecialChar LaTeX
+が書きだす文書についてのすべてを知っているという長所があります。この種の変換子は、例えば、特定のコードのくだりが、\SpecialChar LyX
+によって生成され
+たのか、\SpecialChar TeX
 コードで書かれたのかについては気にしません。これらの変換子は、
 \begin_inset Flex Code
 status collapsed
@@ -5788,7 +5787,7 @@ aux
 
 \end_inset
 
-ファイルやカウンタや参照を取り扱うことができ、Bib\SpecialCharNoPassThru TeX
+ファイルやカウンタや参照を取り扱うことができ、Bib\SpecialChar TeX
 が生成する
 \begin_inset Flex Code
 status collapsed
@@ -5799,15 +5798,12 @@ bbl
 
 \end_inset
 
-ファイルも利用することがよくあります。一方で、\SpecialCharNoPassThru LaTeX
-は解析の非常に難しい言語であり\threehyphens
-\SpecialCharNoPassThru TeX
-自身だけが\SpecialCharNoPassThru TeX
-を理解することができると言われたりすることがあ
-ります\threehyphens
-、\SpecialCharNoPassThru LaTeX
-ベースの変換子は、非常に簡単な文法に見えるものでさえ飲み込めず、複雑なものになると全く歯が立たないこともあります。例えば、この現行を書い
-ている時点では、取扱説明書『
+ファイルも利用することがよくあります。一方で、\SpecialChar LaTeX
+は解析の非常に難しい言語であり—\SpecialChar TeX
+自身だけが\SpecialChar TeX
+を理解することができると言われたりすることがあります—、\SpecialChar LaTeX
+ベースの変換子は
+、非常に簡単な文法に見えるものでさえ飲み込めず、複雑なものになると全く歯が立たないこともあります。例えば、この現行を書いている時点では、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -5822,11 +5818,9 @@ htlatex
 \end_inset
 
 では行うことができません。他には、数式をどう取り扱うかという問題があります。これらの変換子の典型的なものは、数式を小さな画像に変換して、HTML文書からこれらの
-画像へのリンクを張ります。これらの画像は、実は\SpecialCharNoPassThru LaTeX
-によって生成されているので、正確です。しかしながら、これらはうまく伸縮できないので、実際の文書の中で表現
-されるように\threehyphens
-フォント寸が凡そ正しくなるように\threehyphens
-見せようとすると、大変な苦労を伴います。
+画像へのリンクを張ります。これらの画像は、実は\SpecialChar LaTeX
+によって生成されているので、正確です。しかしながら、これらはうまく伸縮できないので、実際の文書の中で表現されるよう
+に—フォント寸が凡そ正しくなるように—見せようとすると、大変な苦労を伴います。
 \end_layout
 
 \begin_layout Standard
@@ -5835,7 +5829,7 @@ Alex Fernandezの
 status collapsed
 
 \begin_layout Plain Layout
-e\SpecialCharNoPassThru LyX
+e\SpecialChar LyX
 er
 \end_layout
 
@@ -5870,7 +5864,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-e\SpecialCharNoPassThru LyX
+e\SpecialChar LyX
 er
 \end_layout
 
@@ -5887,30 +5881,29 @@ er
 status collapsed
 
 \begin_layout Plain Layout
-e\SpecialCharNoPassThru LyX
+e\SpecialChar LyX
 er
 \end_layout
 
 \end_inset
 
-は数式マクロを一部しかサポートしておらず、ユーザ定義の段落様式や文字様式をサポートしていません。これらの制約によって、\SpecialCharNoPassThru LyX
-ユーザが生成する文書の多くにとっては
-、
+は数式マクロを一部しかサポートしておらず、ユーザ定義の段落様式や文字様式をサポートしていません。これらの制約によって、\SpecialChar LyX
+ユーザが生成する文書の多くにとっては、
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-e\SpecialCharNoPassThru LyX
+e\SpecialChar LyX
 er
 \end_layout
 
 \end_inset
 
-は不向きなものになっています。もちろん、原理的に、これらの問題を解決することもできたのですが、\SpecialCharNoPassThru LyX
-開発陣は別の方法を採ることとし、\SpecialCharNoPassThru LyX
-が\SpecialCharNoPassThru LaTeX
-やDocB
-ook、平文を書き出すことができるのと同様に、\SpecialCharNoPassThru LyX
+は不向きなものになっています。もちろん、原理的に、これらの問題を解決することもできたのですが、\SpecialChar LyX
+開発陣は別の方法を採ることとし、\SpecialChar LyX
+が\SpecialChar LaTeX
+やDocBook、平文を書き出す
+ことができるのと同様に、\SpecialChar LyX
 自身にXHTMLを書きだす能力を身につけさせることとしたのです。
 \end_layout
 
@@ -5920,7 +5913,7 @@ ook、平文を書き出すことができるのと同様に、\SpecialCharNoPas
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 ソースツリーもしくは
 \begin_inset CommandInset href
 LatexCommand href
@@ -5956,49 +5949,49 @@ target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new
 \end_layout
 
 \begin_layout Standard
-これらの利点は、主に、XHTML出力ルーチンが\SpecialCharNoPassThru LyX
-の一部となっているため、\SpecialCharNoPassThru LyX
-が出力する文書について\SpecialCharNoPassThru LyX
-が関知しているところのものは、すべて知り得るという
-ところから来ています
+これらの利点は、主に、XHTML出力ルーチンが\SpecialChar LyX
+の一部となっているため、\SpecialChar LyX
+が出力する文書について\SpecialChar LyX
+が関知しているところのものは、すべて知り得るというところから来ていま
+す
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-他には、これらのルーチンが\SpecialCharNoPassThru LyX
-内部にあるため、\SpecialCharNoPassThru LyX
+他には、これらのルーチンが\SpecialChar LyX
+内部にあるため、\SpecialChar LyX
 ファイル形式や既存の差込枠の文法に変更があっても、影響を受けずに済むという利点もあります。
 \end_layout
 
 \end_inset
 
 。つまり、XHTML出力ルーチンは、(文書構造に表示されるような形での)目次や、それぞれの段落様式に関連付けられたカウンタや、ユーザ定義の様式についても知ってい
-るのです。XHTML出力ルーチンは、国際化について\SpecialCharNoPassThru LyX
+るのです。XHTML出力ルーチンは、国際化について\SpecialChar LyX
 が関知しているものも知っているので、ちょうどその時に有効になっている言語に依存して、「Chapter
  1」と出力されたり、「Kapitel 1」と出力されたりするのです。
 \end_layout
 
 \begin_layout Standard
-汎く一般的に、出力ルーチンは、\SpecialCharNoPassThru LyX
-が文書レイアウトについて関知しているものは知っており、したがって、文書が画面上にどのように描画されるかも知っています。文書を
-XHTMLに出力するときには、この情報を利用します。特に、\SpecialCharNoPassThru LyX
+汎く一般的に、出力ルーチンは、\SpecialChar LyX
+が文書レイアウトについて関知しているものは知っており、したがって、文書が画面上にどのように描画されるかも知っています。文書をXHT
+MLに出力するときには、この情報を利用します。特に、\SpecialChar LyX
 は、文書を画面上に描画するときに使用するレイアウト情報に対応したCSSスタイル情報を
 \emph on
 自動的に
 \emph default
-生成します。もし節見出しが、\SpecialCharNoPassThru LyX
-中でサンセリフ体かつボールド体であるとすると、(既定では)ウェブブラウザに表示した時にも、サンセリフでボールドになります。これ
-は、節のような定義済み様式だけでなく、ユーザ定義のものも含めて、すべての様式でそうです。実際、XHTML出力ルーチンは、ユーザ定義の段落・文字様式と、\SpecialCharNoPassThru LyX
-自身
-の定義済み様式とを区別しません。どちらの場合も、\SpecialCharNoPassThru LyX
-が様式について関知しているところのものは、全てレイアウトファイルに含まれています。これは、脚注のような定義
-済み差込枠や、各種ユーザ設定差込枠でもそうです。
+生成します。もし節見出しが、\SpecialChar LyX
+中でサンセリフ体かつボールド体であるとすると、(既定では)ウェブブラウザに表示した時にも、サンセリフでボールドになります。これは、節
+のような定義済み様式だけでなく、ユーザ定義のものも含めて、すべての様式でそうです。実際、XHTML出力ルーチンは、ユーザ定義の段落・文字様式と、\SpecialChar LyX
+自身の定義済み様
+式とを区別しません。どちらの場合も、\SpecialChar LyX
+が様式について関知しているところのものは、全てレイアウトファイルに含まれています。これは、脚注のような定義済み差込枠や、各種
+ユーザ設定差込枠でもそうです。
 \end_layout
 
 \begin_layout Standard
-結果として、XHTML出力は、レイアウトファイルやモジュールを通して、\SpecialCharNoPassThru LaTeX
-出力と全く同じように、ユーザが設定したり拡張したりすることができるのです。詳細に
-ついては、取扱説明書『
+結果として、XHTML出力は、レイアウトファイルやモジュールを通して、\SpecialChar LaTeX
+出力と全く同じように、ユーザが設定したり拡張したりすることができるのです。詳細については、
+取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
@@ -6014,7 +6007,7 @@ XHTMLにおける数式出力
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 では、数式描画に4つの方法を選択できます。以下に示すように、それぞれに利点と欠点があります。
 \end_layout
 
@@ -6039,11 +6032,11 @@ xymatrix
 
 \end_inset
 
-パッケージを使用していたり、\SpecialCharNoPassThru TeX
-コードを使用しているなどで、もし\SpecialCharNoPassThru LyX
-が数式をMathMLとして描画できないとすると、\SpecialCharNoPassThru LyX
-は数式を代わりに画像として出力しま
-す。 
+パッケージを使用していたり、\SpecialChar TeX
+コードを使用しているなどで、もし\SpecialChar LyX
+が数式をMathMLとして描画できないとすると、\SpecialChar LyX
+は数式を代わりに画像として出力します。
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -6066,7 +6059,7 @@ elyxer
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、
 \begin_inset Flex Code
 status collapsed
@@ -6106,9 +6099,9 @@ xymatrix
 
 \end_inset
 
-パッケージを使用していたり、\SpecialCharNoPassThru TeX
-コードを使用しているなどで、もし\SpecialCharNoPassThru LyX
-が数式をHTMLとして描画できないとすると、\SpecialCharNoPassThru LyX
+パッケージを使用していたり、\SpecialChar TeX
+コードを使用しているなどで、もし\SpecialChar LyX
+が数式をHTMLとして描画できないとすると、\SpecialChar LyX
 は数式を代わりに画像として出力します。
  
 \end_layout
@@ -6128,7 +6121,7 @@ htlatex
 
 \end_inset
 
-のように、\SpecialCharNoPassThru LyX
+のように、\SpecialChar LyX
 は数式を画像としても出力できます。この画像は、実は、自動プレビューで使用されているものと全く同じです
 \begin_inset Foot
 status collapsed
@@ -6143,9 +6136,9 @@ status collapsed
 
 \end_inset
 
-。この方法の利点は、画像が他ならぬ\SpecialCharNoPassThru LaTeX
-によって生成されているので、非常に正確であることです。欠点は、前述したとおり、画像がビットマップなので、伸縮が全くう
-まく行かなかったり、コピーが出来なかったりといったことがあります(執筆時点においては、数式の付番にも問題があります。
+。この方法の利点は、画像が他ならぬ\SpecialChar LaTeX
+によって生成されているので、非常に正確であることです。欠点は、前述したとおり、画像がビットマップなので、伸縮が全くうまく行かな
+かったり、コピーが出来なかったりといったことがあります(執筆時点においては、数式の付番にも問題があります。
 \begin_inset CommandInset href
 LatexCommand href
 name "バグ 6894"
@@ -6183,23 +6176,23 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-もし\SpecialCharNoPassThru LyX
-が、何らかの理由によって数式の画像を生成できない(例えば、必要な\SpecialCharNoPassThru LaTeX
-パッケージが導入済みでないなど)ときは、回避策として、生の\SpecialCharNoPassThru LaTeX
-を出力し
-ます。
+もし\SpecialChar LyX
+が、何らかの理由によって数式の画像を生成できない(例えば、必要な\SpecialChar LaTeX
+パッケージが導入済みでないなど)ときは、回避策として、生の\SpecialChar LaTeX
+を出力します。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Newline newline
 \end_inset
 
-最後に、\SpecialCharNoPassThru LyX
-は、数式を\SpecialCharNoPassThru LaTeX
-としても出力することができます。この方法は、最終手段としての出力方法である一方で、HTML文書に埋め込まれた\SpecialCharNoPassThru LaTeX
-を描画す
-るのにJavaScriptを使用する、
+最後に、\SpecialChar LyX
+は、数式を\SpecialChar LaTeX
+としても出力することができます。この方法は、最終手段としての出力方法である一方で、HTML文書に埋め込まれた\SpecialChar LaTeX
+を描画するのにJavaScript
+を使用する、
 \begin_inset CommandInset href
 LatexCommand href
 name "jsMath"
@@ -6207,8 +6200,8 @@ target "http://www.math.union.edu/~dpvc/jsMath/"
 
 \end_inset
 
-のようなツールとともに使用することもできます。\SpecialCharNoPassThru LyX
-は、jsMathで必要とされているのと同じように、\SpecialCharNoPassThru LaTeX
+のようなツールとともに使用することもできます。\SpecialChar LyX
+は、jsMathで必要とされているのと同じように、\SpecialChar LaTeX
 部分を、
 \begin_inset Flex Code
 status collapsed
@@ -6255,24 +6248,24 @@ status collapsed
 
 \end_inset
 
-で選択しなくてはなりません。既定では、\SpecialCharNoPassThru LyX
+で選択しなくてはなりません。既定では、\SpecialChar LyX
 はMathMLで出力を行います。これは、文書全体に適用される設定となります。
 \end_layout
 
 \begin_layout Standard
-最後に、\SpecialCharNoPassThru LyX
+最後に、\SpecialChar LyX
 では、例えば、MathMLではあまりうまく出力されないような差込枠に対して、別の出力方法を選択できる選択肢が用意されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-その他にも、\SpecialCharNoPassThru LyX
-は、差込枠に\SpecialCharNoPassThru TeX
+その他にも、\SpecialChar LyX
+は、差込枠に\SpecialChar TeX
 コードが含まれていると画像出力に回帰するので、数式中に
 \begin_inset Formula $a=b\relax$
 \end_inset
 
-のような無害な\SpecialCharNoPassThru TeX
+のような無害な\SpecialChar TeX
 コードを挿入することによって、画像出力を強制することができます。
 \end_layout
 
@@ -6290,15 +6283,15 @@ XHTML出力は、書誌情報と引用を完全にサポートしています。
 \end_layout
 
 \begin_layout Standard
-引用ラベルは、\SpecialCharNoPassThru LyX
-画面上のラベルを生成するのと同じ機構で生成されているので、出力中のラベルは、\SpecialCharNoPassThru LyX
-中の外見と同質またはそれよりも上質な仕上がりとなっています
-。連番引用を使用している場合には、\SpecialCharNoPassThru LyX
-は、画面上で表示されるような各カッコに囲まれた引用鍵を単純に表示するのではなく、[1]や[17]などの連番ラベルを出力し
-ます。著者-出版年形式の引用を使用している場合で、同じ著者-出版年の組み合わせが複数ある場合、\SpecialCharNoPassThru LyX
-は、Bib\SpecialCharNoPassThru TeX
-が行うように出版年に小文字を付します。ラベル
-は、書誌情報項目とともに印字されます。現在のところ、角括弧を丸括弧に変更するなど、ラベルの外見を変更する手段はありませんのでご注意ください。
+引用ラベルは、\SpecialChar LyX
+画面上のラベルを生成するのと同じ機構で生成されているので、出力中のラベルは、\SpecialChar LyX
+中の外見と同質またはそれよりも上質な仕上がりとなっています。連番引用を
+使用している場合には、\SpecialChar LyX
+は、画面上で表示されるような各カッコに囲まれた引用鍵を単純に表示するのではなく、[1]や[17]などの連番ラベルを出力します。著者-出版年
+形式の引用を使用している場合で、同じ著者-出版年の組み合わせが複数ある場合、\SpecialChar LyX
+は、Bib\SpecialChar TeX
+が行うように出版年に小文字を付します。ラベルは、書誌情報項目とともに印字さ
+れます。現在のところ、角括弧を丸括弧に変更するなど、ラベルの外見を変更する手段はありませんのでご注意ください。
 \end_layout
 
 \begin_layout Standard
@@ -6325,8 +6318,7 @@ Context and Logical Form
 Language in Context: Selected Essays
 \emph default
  (Oxford: Oxford University Press, 2007), pp.
- 30\twohyphens
-68.
+ 30–68.
 \end_layout
 
 \begin_layout Quote
@@ -6343,8 +6335,7 @@ Semantics in Context
 Language in Context: Selected Essays
 \emph default
  (Oxford: Oxford University Press, 2007), pp.
- 201\twohyphens
-30.
+ 201–30.
 \end_layout
 
 \begin_layout Standard
@@ -6352,7 +6343,7 @@ Language in Context: Selected Essays
 \end_layout
 
 \begin_layout Standard
-現在のところ、節ごとの書誌情報出力はサポートされていません。複数の書誌情報がある場合には、\SpecialCharNoPassThru LyX
+現在のところ、節ごとの書誌情報出力はサポートされていません。複数の書誌情報がある場合には、\SpecialChar LyX
 は同じ情報を繰り返し出力してしまいます。
 \end_layout
 
@@ -6361,7 +6352,7 @@ Language in Context: Selected Essays
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、索引をXHTMLとして書きだすことができますが、現在のところ、若干の制約があります。
 \end_layout
 
@@ -6375,10 +6366,9 @@ Language in Context: Selected Essays
 status collapsed
 
 \begin_layout Plain Layout
-ここでの主な問題は、これらの操作の際に、\SpecialCharNoPassThru LyX
-自身は何もしていないという点です。つまり、生の\SpecialCharNoPassThru LaTeX
-で入力しなくてはならないようなものをそのまま入力しているの
-です。
+ここでの主な問題は、これらの操作の際に、\SpecialChar LyX
+自身は何もしていないという点です。つまり、生の\SpecialChar LaTeX
+で入力しなくてはならないようなものをそのまま入力しているのです。
 \end_layout
 
 \end_inset
@@ -6387,9 +6377,9 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-索引項目のグループ化(下層項目): \SpecialCharNoPassThru LyX
-はこれらをサポートしようと努めていますが、項目は「 ! 」(感嘆符の周りに空白)で分離しなくてはなりません。これは、そ
-うしないと数式などで使われているエスケープされた感嘆符をチェックするのが非常に難しくなるからです。
+索引項目のグループ化(下層項目): \SpecialChar LyX
+はこれらをサポートしようと努めていますが、項目は「 ! 」(感嘆符の周りに空白)で分離しなくてはなりません。これは、そうしな
+いと数式などで使われているエスケープされた感嘆符をチェックするのが非常に難しくなるからです。
 \end_layout
 
 \begin_layout Itemize
@@ -6398,24 +6388,24 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-相互参照: 相互参照のサポートはありません。\SpecialCharNoPassThru LyX
+相互参照: 相互参照のサポートはありません。\SpecialChar LyX
 が「|see\SpecialChar ldots
-」という下だりを持つ項目を検出すると、その部分はただ無視されて、残りの部分が通常の索引項目だとみな
-されます。
+」という下だりを持つ項目を検出すると、その部分はただ無視されて、残りの部分が通常の索引項目だとみなされま
+す。
 \end_layout
 
 \begin_layout Itemize
-索引項目の整序: \SpecialCharNoPassThru LyX
-は整序順の変更をサポートします。\SpecialCharNoPassThru LyX
-は、最初に検出した「@」の前の部分を取り出して、それを整序に用い、最初の「@」の後の部分を実際の項
-目として取り出します。現在のところ、\SpecialCharNoPassThru LyX
+索引項目の整序: \SpecialChar LyX
+は整序順の変更をサポートします。\SpecialChar LyX
+は、最初に検出した「@」の前の部分を取り出して、それを整序に用い、最初の「@」の後の部分を実際の項目として取り
+出します。現在のところ、\SpecialChar LyX
 はエスケープされた「@」を取り扱わないので、電子メールアドレスを索引に使わないでください。
 \end_layout
 
 \begin_layout Itemize
-索引項目のレイアウト: 項目は、テキスト様式ダイアログを使うなり、\SpecialCharNoPassThru LyX
-内で使用可能な方法を用いることで、索引項目を成形することができます。「項目|textbf
-」のような文法はサポートされません。\SpecialCharNoPassThru LyX
+索引項目のレイアウト: 項目は、テキスト様式ダイアログを使うなり、\SpecialChar LyX
+内で使用可能な方法を用いることで、索引項目を成形することができます。「項目|textbf」のよ
+うな文法はサポートされません。\SpecialChar LyX
 は、項目内にパイプ記号「|」を検出すると、パイプ記号とその後に続くものすべてを削除してしまいます。
 \end_layout
 
@@ -6433,7 +6423,7 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 サーバー
 \begin_inset CommandInset label
 LatexCommand label
@@ -6449,23 +6439,23 @@ name "chap:LyXサーバー"
 \end_layout
 
 \begin_layout Standard
-「\SpecialCharNoPassThru LyX
-サーバー」を使用すると、他のプログラムが、\SpecialCharNoPassThru LyX
-と通信したり、\SpecialCharNoPassThru LyX
-コマンドを実行させたり、\SpecialCharNoPassThru LyX
-の内部状態に関する情報を取得したりすることができるよう
-になります。これは熟練したユーザー向けの機能ですが、便利なはずです。たとえば、\SpecialCharNoPassThru LyX
-サーバーに書き込むことによって、JabRefのような書誌情報管理ソフトが、L
-yXに文献引用を「押し込む」ことが可能となります。
+「\SpecialChar LyX
+サーバー」を使用すると、他のプログラムが、\SpecialChar LyX
+と通信したり、\SpecialChar LyX
+コマンドを実行させたり、\SpecialChar LyX
+の内部状態に関する情報を取得したりすることができるようになります。これは熟練し
+たユーザー向けの機能ですが、便利なはずです。たとえば、\SpecialChar LyX
+サーバーに書き込むことによって、JabRefのような書誌情報管理ソフトが、LyXに文献引用を「押し込む」こ
+とが可能となります。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 サーバーを開始するには
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 サーバーは、名前をつけたパイプの対を利用することで機能します。パイプは、通常
 \begin_inset Flex Code
 status collapsed
@@ -6575,7 +6565,35 @@ lyxpipe
 
 \end_inset
 
-」などに設定することができます。サーバーを開始するためには、これを
+」などに設定することができます
+\lang english
+(where any working path instead of lyxpipe can be used, for example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+"
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+my
+\backslash
+lyx
+\backslash
+pipe"
+\end_layout
+
+\end_inset
+
+ would also work)
+\lang japanese
+。サーバーを開始するためには、これを
 \emph on
 手動で設定しなくてはなりません
 \emph default
@@ -6583,7 +6601,7 @@ lyxpipe
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、パイプを生成するに際して、「
 \begin_inset Flex Code
 status collapsed
@@ -6604,19 +6622,19 @@ status collapsed
 
 \end_inset
 
-」を付け加えます。パイプがすでに存在していれば、\SpecialCharNoPassThru LyX
-は他の\SpecialCharNoPassThru LyX
-プロセスがすでに実行中であると判断して、サーバーを開始しません。POSIX(Unix型)システ
-ムでは、なんらかの理由で、\SpecialCharNoPassThru LyX
-が終了する際に使用されていない「古い」パイプが削除されずに残ったりすると、\SpecialCharNoPassThru LyX
-はこれを削除しようとします。何らかの理由でこれが
-失敗した場合、手動でパイプを削除したのちに、\SpecialCharNoPassThru LyX
-を再起動する必要があります。Windowsでは、プログラムが終了したりクラッシュしたりすると、OSがパイプを削
-除するので、「古い」パイプが残ることはありません。
+」を付け加えます。パイプがすでに存在していれば、\SpecialChar LyX
+は他の\SpecialChar LyX
+プロセスがすでに実行中であると判断して、サーバーを開始しません。POSIX(Unix型)システムでは、なん
+らかの理由で、\SpecialChar LyX
+が終了する際に使用されていない「古い」パイプが削除されずに残ったりすると、\SpecialChar LyX
+はこれを削除しようとします。何らかの理由でこれが失敗した場合、手動でパイ
+プを削除したのちに、\SpecialChar LyX
+を再起動する必要があります。Windowsでは、プログラムが終了したりクラッシュしたりすると、OSがパイプを削除するので、「古い」パイプが残
+ることはありません。
 \end_layout
 
 \begin_layout Standard
-サーバーを使用する\SpecialCharNoPassThru LyX
+サーバーを使用する\SpecialChar LyX
 プロセスを複数起動するには、それぞれのプロセスに、別のユーザーディレクトリを使用させたり、別々の
 \begin_inset Flex Code
 status collapsed
@@ -6631,7 +6649,7 @@ preferences
 \end_layout
 
 \begin_layout Standard
-クライアントプログラムを開発しようとされているのであれば、\SpecialCharNoPassThru LyX
+クライアントプログラムを開発しようとされているのであれば、\SpecialChar LyX
 サーバーからのデバッグ情報を有効にすると便利かもしれません。そのためには、Lyxを
 \begin_inset Flex Code
 status collapsed
@@ -6646,7 +6664,7 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-Ｃ言語で書かれた完全なサンプルクライアントが、ソース頒布版の
+Ｃ++言語で書かれた完全なサンプルクライアントが、ソース頒布版の
 \begin_inset Newline newline
 \end_inset
 
@@ -6655,7 +6673,7 @@ lyx -dbg lyxserver
 status collapsed
 
 \begin_layout Plain Layout
-development/lyxserver/server_monitor.c
+development/lyxserver/server_monitor.cpp
 \end_layout
 
 \end_inset
@@ -6682,7 +6700,7 @@ src/client/lyxclient
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 コールを発行するには、クライアントはASCIIテキスト行を入力パイプに書き込みまなくてはなりません。この行は、以下の書式を持ちます。
 \end_layout
 
@@ -6701,13 +6719,13 @@ LYXCMD:
 \end_layout
 
 \begin_layout Description
-クライアント名 は、クライアントが自由に選べる名前です。これが用いられるのは、クライアントが他の要求クライアントから結果を見分けることができるように、\SpecialCharNoPassThru LyX
-が返
-答をする際、クライアント名をエコーするときだけです。
+クライアント名 は、クライアントが自由に選べる名前です。これが用いられるのは、クライアントが他の要求クライアントから結果を見分けることができるように、\SpecialChar LyX
+が返答をす
+る際、クライアント名をエコーするときだけです。
 \end_layout
 
 \begin_layout Description
-関数 は、\SpecialCharNoPassThru LyX
+関数 は、\SpecialChar LyX
 に実行させたい関数です。これは、ミニバッファで使用するコマンドと同じです。
 \end_layout
 
@@ -6716,7 +6734,7 @@ LYXCMD:
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 からの返答は、出力パイプに送り出され、
 \end_layout
 
@@ -6747,13 +6765,13 @@ INFO:
 \emph on
 データ
 \emph default
-はコマンド実行の結果に依存した、多少なりとも有用な情報です。「font-state」のような一部のコマンドは、\SpecialCharNoPassThru LyX
-の内部状態に関する情報を返しますが、空のデー
-タ応答を返すものもあります。空のデータ返答は、コマンド実行が無事終わったことを意味します。
+はコマンド実行の結果に依存した、多少なりとも有用な情報です。「font-state」のような一部のコマンドは、\SpecialChar LyX
+の内部状態に関する情報を返しますが、空のデータ応答
+を返すものもあります。空のデータ返答は、コマンド実行が無事終わったことを意味します。
 \end_layout
 
 \begin_layout Standard
-エラーが発生した場合の\SpecialCharNoPassThru LyX
+エラーが発生した場合の\SpecialChar LyX
 の返答は
 \end_layout
 
@@ -6804,7 +6822,7 @@ echo $a
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、発生しているイベントを、非同期的にクライアントに通知することができます。いまのところ、ユーザーがある
 \begin_inset Flex Ruby
 status collapsed
@@ -6825,8 +6843,8 @@ status collapsed
 
 \end_inset
 
-列を関数「notify」に割り当てているときのみ、\SpecialCharNoPassThru LyX
-はこの通知を行います。\SpecialCharNoPassThru LyX
+列を関数「notify」に割り当てているときのみ、\SpecialChar LyX
+はこの通知を行います。\SpecialChar LyX
 が送る文字列の書式は
 \end_layout
 
@@ -6854,21 +6872,21 @@ NOTIFY:
 \end_layout
 
 \begin_layout Standard
-この機構は、\SpecialCharNoPassThru LyX
-のコマンド群を拡張してマクロを実装するのに使用することができます。なんらかの鍵列を「notify」に割り当ててください。それから出力パイプで待
-機するクライアントを起動し、鍵列に応じたコマンドを読み込み、一つないし複数の\SpecialCharNoPassThru LyX
-コマンドを発行する\SpecialCharNoPassThru LyX
-要求と\SpecialCharNoPassThru LyX
+この機構は、\SpecialChar LyX
+のコマンド群を拡張してマクロを実装するのに使用することができます。なんらかの鍵列を「notify」に割り当ててください。それから出力パイプで待機する
+クライアントを起動し、鍵列に応じたコマンドを読み込み、一つないし複数の\SpecialChar LyX
+コマンドを発行する\SpecialChar LyX
+要求と\SpecialChar LyX
 コールを使用する関数を開始するのです。
 \end_layout
 
 \begin_layout Section
-単純な\SpecialCharNoPassThru LyX
+単純な\SpecialChar LyX
 サーバープロトコル
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、セッション管理に使用することができる単純なプロトコルを実装しています。メッセージは、すべて
 \end_layout
 
@@ -6887,9 +6905,10 @@ LYXSRV:
 \emph on
 プロトコルメッセージ
 \emph default
-は「hello」ないし「bye」です。クライアントから「hello」を受け取ると、\SpecialCharNoPassThru LyX
-はメッセージを聴いていることをクライアントに伝えるために返答をし、\SpecialCharNoPassThru LyX
-が終了することをクライアントに伝えるのには、\SpecialCharNoPassThru LyX
+は「hello」ないし「bye」です。クライアントから「hello」を受け取ると、\SpecialChar LyX
+はメッセージを聴いていることをクライアントに伝えるために返答をし、\SpecialChar LyX
+が終了するこ
+とをクライアントに伝えるのには、\SpecialChar LyX
 が「bye」を送信します。
 \end_layout
 
@@ -6903,21 +6922,24 @@ DVI/PDFビューア
 status collapsed
 
 \begin_layout Plain Layout
-PDFの遡及検索機能を提供しているビューアには、KDE/Linux上のOkularとMac OS X上のSkim、Windows上のSumatraPDFがありま
-す。
+PDFの遡及検索機能を提供しているビューアには、KDE/Linux上のOkularと
+\lang english
+Qpdfview on Unix
+\lang japanese
+とMac OS X上のSkim、Windows上のSumatraPDFがあります。
 \end_layout
 
 \end_inset
 
 には、遡及検索(reverse searchないしinverse searchと呼ばれます)機能を提供しているものがあります。これを使えば、DVI/PDF出力の
-特定の場所をクリックすることによって、\SpecialCharNoPassThru LyX
-の文書中で対応する行にカーソルを移動させることができます。これを実現するためには、ビューアは\SpecialCharNoPassThru LyX
-と情報交換を行う必
-要があります。これは、命名パイプ(
+特定の場所をクリックすることによって、\SpecialChar LyX
+の文書中で対応する行にカーソルを移動させることができます。これを実現するためには、ビューアは\SpecialChar LyX
+と情報交換を行う必要があります
+。これは、命名パイプ(
 \emph on
 lyxpipe
 \emph default
-)を使用するか、\SpecialCharNoPassThru LyX
+)を使用するか、\SpecialChar LyX
 が作業ディレクトリに生成するUNIXドメインソケット(
 \emph on
 lyxsocket
@@ -6932,14 +6954,14 @@ lyxclient
 
 \end_inset
 
-プログラムが\SpecialCharNoPassThru LyX
-と通信するのに使用している方法です)ことで、\SpecialCharNoPassThru LyX
-サーバを経由して実現することができます。場合によっては、ビューアと\SpecialCharNoPassThru LyX
-を橋渡しする補助スク
-リプトを必要とすることがあるかもしれませんが、それ以外は、ビューアは\SpecialCharNoPassThru LyX
-と直接通信することができます。これは、選んだビューアと基本ソフトに依存します。また、必
-要とされるビューアの設定法と遡及検索が実際に行われる方法とにも依存します。したがって、下記では個々のビューア毎の遡及検索の設定の仕方を説明することとします。その
-前に、DVI/PDF出力で遡及検索を有効にするためには、一般に何が必要とされるかを説明します。
+プログラムが\SpecialChar LyX
+と通信するのに使用している方法です)ことで、\SpecialChar LyX
+サーバを経由して実現することができます。場合によっては、ビューアと\SpecialChar LyX
+を橋渡しする補助スクリプトを必要とする
+ことがあるかもしれませんが、それ以外は、ビューアは\SpecialChar LyX
+と直接通信することができます。これは、選んだビューアと基本ソフトに依存します。また、必要とされるビューアの設定
+法と遡及検索が実際に行われる方法とにも依存します。したがって、下記では個々のビューア毎の遡及検索の設定の仕方を説明することとします。その前に、DVI/PDF出力
+で遡及検索を有効にするためには、一般に何が必要とされるかを説明します。
 \end_layout
 
 \begin_layout Subsection
@@ -6974,11 +6996,11 @@ status collapsed
 
 \end_inset
 
-オプションを有効にすれば、ほとんどの場合、\SpecialCharNoPassThru LyX
-がすべてをうまくこなしてくれます。その場合、\SpecialCharNoPassThru LyX
-は、自動的に、必要なSync\SpecialCharNoPassThru TeX
-マクロ(PDFの場合)や、s
-rcltxパッケージ(DVIの場合)を挿入してくれます。このオプションは、
+オプションを有効にすれば、ほとんどの場合、\SpecialChar LyX
+がすべてをうまくこなしてくれます。その場合、\SpecialChar LyX
+は、自動的に、必要なSync\SpecialChar TeX
+マクロ(PDFの場合)や、srcltxパッケー
+ジ(DVIの場合)を挿入してくれます。このオプションは、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -7097,7 +7119,7 @@ reference "subsec:特定のビューアを設定して使うには"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 は、遡及検索のために複数の方法を提供しています。ある方法は
 \begin_inset Flex Code
 status collapsed
@@ -7108,9 +7130,9 @@ latex/pdflatex
 
 \end_inset
 
-プログラムに組み込まれており、他の方法は外部パッケージとして提供されています。どちらを選択するかは、お使いの\SpecialCharNoPassThru LaTeX
-頒布版が既に特定の方法を提供しているか(組
-み込みによる方法は比較的新しいものです)と、お使いのビューアがそれに対応しているかに依存します。使用可能な方法を以下に述べます。
+プログラムに組み込まれており、他の方法は外部パッケージとして提供されています。どちらを選択するかは、お使いの\SpecialChar LaTeX
+頒布版が既に特定の方法を提供しているか(組み込みによ
+る方法は比較的新しいものです)と、お使いのビューアがそれに対応しているかに依存します。使用可能な方法を以下に述べます。
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7118,10 +7140,10 @@ src-special経由のDVI組み込み検索(DVIのみ)
 \end_layout
 
 \begin_layout Standard
-この方法は、DVIファイルに遡及検索に必要な情報を追加するものです。これは、かなり前の\SpecialCharNoPassThru LaTeX
-から利用可能となっており(比較的最近の\SpecialCharNoPassThru LaTeX
-頒布版はすべて対
-応しています)、安定して動作します。これを有効にするには、
+この方法は、DVIファイルに遡及検索に必要な情報を追加するものです。これは、かなり前の\SpecialChar LaTeX
+から利用可能となっており(比較的最近の\SpecialChar LaTeX
+頒布版はすべて対応しています)、安定
+して動作します。これを有効にするには、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -7138,18 +7160,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DVI
+LaTeX (plain)->DVI
 \end_layout
 
 \end_inset
@@ -7159,18 +7170,7 @@ eX (plain)->DVI
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DraftDVI
+LaTeX (plain)->DraftDVI
 \end_layout
 
 \end_inset
@@ -7185,9 +7185,8 @@ latex -src-specials $$i
 
 \end_inset
 
-に変更します。もしこれが動作しないときは、お使いの\SpecialCharNoPassThru LaTeX
-エンジンが違うオプションを必要としていないか確認してください(頒布版によっては文法の異なることがあり
-ます)。
+に変更します。もしこれが動作しないときは、お使いの\SpecialChar LaTeX
+エンジンが違うオプションを必要としていないか確認してください(頒布版によっては文法の異なることがあります)。
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7203,9 +7202,9 @@ pdfsync
 \emph on
 srcltx
 \emph default
-パッケージは、PDF出力(pdflatex経由)およびDVI出力での遡及検索を提供します。これを有効にするには、\SpecialCharNoPassThru LyX
-プリアンブルで以下のようにパッケージを読み
-込んでください。
+パッケージは、PDF出力(pdflatex経由)およびDVI出力での遡及検索を提供します。これを有効にするには、\SpecialChar LyX
+プリアンブルで以下のようにパッケージを読み込んで
+ください。
 \end_layout
 
 \begin_layout Itemize
@@ -7290,7 +7289,7 @@ fi
 \end_layout
 
 \begin_layout Subsubsection*
-Sync\SpecialCharNoPassThru TeX
+Sync\SpecialChar TeX
 を使った組み込み遡及検索(DVIおよびPDF)
 \end_layout
 
@@ -7306,18 +7305,22 @@ status collapsed
 
 の最近のバージョンは、PDFおよびDVI両方の遡及検索を組み込みでサポートしています。このいわゆる
 \emph on
-Sync\SpecialCharNoPassThru TeX
+Sync\SpecialChar TeX
+
 \emph default
 機能は、主に、PDFSyncパッケージをpdftexプログラムへ統合したことと、それをsrc-specialsアプローチへ取り込んだことの成果です。これを使用す
-るためには、少なくとも\SpecialCharNoPassThru TeX
-Live 2008か最近のMik\SpecialCharNoPassThru TeX
-頒布版が必要です。また、既にSync\SpecialCharNoPassThru TeX
-サポートを提供しているPDFビューアは少ししかありま
-せん(Mac上のSkimとWindows上のSumatraPDF)。
+るためには、少なくとも\SpecialChar TeX
+Live 2008か最近のMik\SpecialChar TeX
+頒布版が必要です。また、既にSync\SpecialChar TeX
+サポートを提供しているPDFビューアは少ししかありません(
+\lang english
+Okular and Qpdfview on Unix, 
+\lang japanese
+Mac上のSkimとWindows上のSumatraPDF)。
 \end_layout
 
 \begin_layout Standard
-DVI出力でSync\SpecialCharNoPassThru TeX
+DVI出力でSync\SpecialChar TeX
 を有効にするには、
 \begin_inset Flex MenuItem
 status collapsed
@@ -7335,18 +7338,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DVI
+LaTeX (plain)->DVI
 \end_layout
 
 \end_inset
@@ -7356,18 +7348,7 @@ eX (plain)->DVI
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DraftDVI
+LaTeX (plain)->DraftDVI
 \end_layout
 
 \end_inset
@@ -7387,18 +7368,7 @@ latex -synctex=1 $$i
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (pdflatex)->PDF (pdflatex)
+LaTeX (pdflatex)->PDF (pdflatex)
 \end_layout
 
 \end_inset
@@ -7413,7 +7383,7 @@ pdflatex -synctex=1 $$i
 
 \end_inset
 
-に変更してください。また、ビューアをSync\SpecialCharNoPassThru TeX
+に変更してください。また、ビューアをSync\SpecialChar TeX
 で使うのに設定を行う必要があるかどうか、お使いのビューアの取扱説明書をご確認ください。
 \begin_inset Foot
 status collapsed
@@ -7462,7 +7432,7 @@ Xdvi(全プラットフォーム)
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、
 \begin_inset Flex Code
 status collapsed
@@ -7488,7 +7458,7 @@ xdvi
 \end_layout
 
 \begin_layout Standard
-しかし、何らかの理由で、\SpecialCharNoPassThru LyX
+しかし、何らかの理由で、\SpecialChar LyX
 と通信するのにソケットではなく命名パイプを使用したい場合には、
 \begin_inset Flex MenuItem
 status collapsed
@@ -7502,6 +7472,34 @@ status collapsed
 \end_inset
 
 のDVIビューアを
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+On Mac OSX you have to use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DISPLAY=:0.0 xdvi -editor "lyxeditor.sh %f %l"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+
 \begin_inset Flex Code
 status collapsed
 
@@ -7566,18 +7564,7 @@ status collapsed
 
 \end_inset
 
-で指定したLy
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XServerパイプのパスを指定してください
+で指定したLyXServerパイプのパスを指定してください。
 \begin_inset Foot
 status collapsed
 
@@ -7611,7 +7598,7 @@ lyxeditor
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7632,18 +7619,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 
@@ -7651,7 +7627,7 @@ exit 1
 \end_layout
 
 \begin_layout Standard
-という行を付け加えてください。Applicationsフォルダ以外の場所に\SpecialCharNoPassThru LyX
+という行を付け加えてください。Applicationsフォルダ以外の場所に\SpecialChar LyX
 を導入した場合には、それに従って上記の行を修正してください。
 \end_layout
 
@@ -7698,18 +7674,7 @@ Sync
 
 \end_inset
 
-でLy
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xを選択してください。
+でLyXを選択してください。
 \end_layout
 
 \begin_layout Standard
@@ -7751,6 +7716,60 @@ lyxclient -g %f %l
 \end_layout
 
 \begin_layout Subsubsection*
+
+\lang english
+Qpdfview (Unix)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Qpdfview supports Sync\SpecialChar TeX
+ since version 0.3.5.
+ Go to 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Edit\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Behavior
+\end_layout
+
+\end_inset
+
+, click on the input field of the 
+\begin_inset Quotes eld
+\end_inset
+
+Source editor
+\begin_inset Quotes erd
+\end_inset
+
+ item and add the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyxclient -g %1 %2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Reverse search is triggered by double-click.
+\end_layout
+
+\begin_layout Subsubsection*
 YAP(Windows)
 \end_layout
 
@@ -7767,7 +7786,8 @@ Options
 \end_inset
 
 メニューを選択し、「Inverse DVI Search」タブを選択します。「New\SpecialChar ldots
-」ボタンをクリックして開くウィンドウの「Name:」フィールドに「\SpecialCharNoPassThru LyX
+」ボタンをクリックして開くウィンドウの「Name:」フィールドに「\SpecialChar LyX
+
  Editor」(または自分の好きな名称)と入力してください。「\SpecialChar ldots
 」というラベルのボタンをクリックしてファイルダイアログを開き、バッチファイル
 \begin_inset Flex Code
@@ -7813,7 +7833,7 @@ lyxeditor.bat
 \emph on
 lyxpipe
 \emph default
-を通じて\SpecialCharNoPassThru LyX
+を通じて\SpecialChar LyX
 と通信するためのラッパとして使用され、以下のようになっています。
 \end_layout
 
@@ -7846,8 +7866,8 @@ lyxpipe.out
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-で指定した\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+で指定した\SpecialChar LyX
 Serverパイプパスが、
 \begin_inset Flex Code
 status collapsed
@@ -7953,7 +7973,8 @@ Options
 \end_inset
 
 メニューを選択し、「Inverse DVI Search」タブを選択します。「New\SpecialChar ldots
-」ボタンをクリックして開くウィンドウの「Name:」フィールドに「\SpecialCharNoPassThru LyX
+」ボタンをクリックして開くウィンドウの「Name:」フィールドに「\SpecialChar LyX
+
  Editor」(または自分の好きな名称)と入力してください。「\SpecialChar ldots
 」というラベルのボタンをクリックしてファイルダイアログを開き、バッチファイル
 \begin_inset Flex Code
@@ -7965,7 +7986,7 @@ lyxeditor.exe
 
 \end_inset
 
-プログラム(これは、Cygwinでは既定で\SpecialCharNoPassThru LyX
+プログラム(これは、Cygwinでは既定で\SpecialChar LyX
 実行ファイルとともに導入されます)のあるディレクトリを見つけます。
 \begin_inset Flex Code
 status collapsed
@@ -7986,7 +8007,7 @@ status collapsed
 
 \end_inset
 
-と指定してください。これによって、\SpecialCharNoPassThru LyX
+と指定してください。これによって、\SpecialChar LyX
 との通信に
 \emph on
 lyxsocket
@@ -8005,8 +8026,8 @@ status collapsed
 
 \end_inset
 
-オプションを削除して、\SpecialCharNoPassThru LyX
-設定で\SpecialCharNoPassThru LyX
+オプションを削除して、\SpecialChar LyX
+設定で\SpecialChar LyX
 Serverパイプパスを指定することを忘れないでください。
 \end_layout
 
@@ -8078,9 +8099,9 @@ SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
 \end_layout
 
 \begin_layout Standard
-SumatraPDFは、Windowsネイティブのアプリケーションであり、\SpecialCharNoPassThru LyX
-のCygwin版が使用するPOSIXパスを理解しないので、このラッパスクリプトが
-必要となります。SumatraPDF.exeがお使いのコマンドパスにない場合は、上記のスクリプトでPOSIXのフルパスを使用してください。
+SumatraPDFは、Windowsネイティブのアプリケーションであり、\SpecialChar LyX
+のCygwin版が使用するPOSIXパスを理解しないので、このラッパスクリプトが必要と
+なります。SumatraPDF.exeがお使いのコマンドパスにない場合は、上記のスクリプトでPOSIXのフルパスを使用してください。
 \begin_inset Flex Code
 status collapsed
 
@@ -8108,8 +8129,8 @@ status collapsed
 
 \end_inset
 
-オプションを削除して、\SpecialCharNoPassThru LyX
-設定で\SpecialCharNoPassThru LyX
+オプションを削除して、\SpecialChar LyX
+設定で\SpecialChar LyX
 Serverパイプパスを指定することを忘れないでください。
 \end_layout
 
@@ -8122,9 +8143,9 @@ Serverパイプパスを指定することを忘れないでください。
 \end_layout
 
 \begin_layout Standard
-順検索とは、名前が示すとおり、いわば遡及検索の「逆」を意味します。すなわち、\SpecialCharNoPassThru LyX
-内部から、ビューアに特定の箇所を表示させることを可能にします。(以下に説明する
-ように)もし順検索の準備ができていれば、カーソルを\SpecialCharNoPassThru LyX
+順検索とは、名前が示すとおり、いわば遡及検索の「逆」を意味します。すなわち、\SpecialChar LyX
+内部から、ビューアに特定の箇所を表示させることを可能にします。(以下に説明するように
+)もし順検索の準備ができていれば、カーソルを\SpecialChar LyX
 文書の好きなところに置いて、
 \begin_inset Flex MenuItem
 status collapsed
@@ -8150,7 +8171,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-順検索を有効にするためには、生成されたPDF/DVI出力ファイルに、\SpecialCharNoPassThru TeX
+順検索を有効にするためには、生成されたPDF/DVI出力ファイルに、\SpecialChar TeX
 ソースに関する情報を追加する必要があります。これは、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8175,10 +8196,9 @@ status collapsed
 
 \end_inset
 
-で自分の使うビューアを利用するように、\SpecialCharNoPassThru LyX
-を設定する必要があります。いくつかのビューアについては、試験済みの設定が前もって準備されており、ドロップダウンリスト
-から選択することができます。これらの設定の何れも意にそぐわない場合には、ご自身で適切な設定を見つけ出して入力しなくてはなりません。定義文法は、以下の変数を使用し
-ます。
+で自分の使うビューアを利用するように、\SpecialChar LyX
+を設定する必要があります。いくつかのビューアについては、試験済みの設定が前もって準備されており、ドロップダウンリストから選
+択することができます。これらの設定の何れも意にそぐわない場合には、ご自身で適切な設定を見つけ出して入力しなくてはなりません。定義文法は、以下の変数を使用します。
 \end_layout
 
 \begin_layout Itemize
@@ -8256,8 +8276,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-okular \twohyphens
-unique
+okular –unique
 \end_layout
 
 \end_inset
@@ -8267,32 +8286,39 @@ unique
 
 \end_inset
 
-・Sumatra PDFなど、一部のビューアでしか、完全な順検索機能は提供されていないことに注意してください
+・qpdfview・Sumatra PDFなど、一部のビューアでしか、完全な順検索機能は提供されていないことに注意してください
+\lang english
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Sumatraの場合には、
+
+\lang english
+SumatraPDF can also use DDE commands through the external program CMCDDE
+ — downloadable from 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.istri.fr/zip/CMCDDE.zip"
+target "ftp://ftp2.commence.com/pub/freebies/"
 
 \end_inset
 
-からダウンロードできるCMCDDEが必要です。
+
 \end_layout
 
 \end_inset
 
+
+\lang japanese
 。広く使われているPDFビューアの多く(特にAdobe Reader)は、順検索を全く提供していませんが、他の一部のビューア(たとえばEvinceやxpdf)で
 は、少なくとも、文書を読み込み直したり、ファイルの特定ページに移動することはできますので、少なくとも「近く」には移動することができます。この後者の機能は、syn
 ctexの外部コールで提供されています(事前に用意されている用例をご覧ください)。
 \end_layout
 
 \begin_layout Standard
-順検索は、DVI出力とPDF出力の双方で動作します。\SpecialCharNoPassThru LyX
-は、過去にあなたが使用したプレビュー形式をチェックして(つまり、一時ディレクトリにどちらの形式が存在す
-るかをチェックして)、その形式に適切な設定を選択します。
+順検索は、DVI出力とPDF出力の双方で動作します。\SpecialChar LyX
+は、過去にあなたが使用したプレビュー形式をチェックして(つまり、一時ディレクトリにどちらの形式が存在するかを
+チェックして)、その形式に適切な設定を選択します。
 \end_layout
 
 \begin_layout Chapter
@@ -8322,7 +8348,7 @@ aa.cls
 \emph on
 Astronomy and Astrophysics
 \emph default
-(『天文学と宇宙物理学』：www.edpsciences.fr/aa/ 
+(『天文学と宇宙物理学』： 
 \begin_inset Flex URL
 status collapsed
 
@@ -8333,11 +8359,11 @@ http://www.edpsciences.fr/aa/
 
 \end_inset
 
-)に投稿する論文を執筆するための\SpecialCharNoPassThru LyX
+)に投稿する論文を執筆するための\SpecialChar LyX
 の使用法を説明します。このパッケージは、FTPサイト
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -8376,15 +8402,15 @@ ftp://ftp.edpsciences.org/pub/aa/readme.html
 
 \begin_layout Standard
 この学術誌の出版元は、2001年1月1日以降、Springer社からEDP Science社に変更されていることにご注意ください。この出版社の変更によって、th
-esaurusコマンドの廃止など、スタイルファイルに若干の変更が加わっています。\SpecialCharNoPassThru LyX
-のaaクラスは、スタイルファイルの最新版(第5.01版)をサポートしています
-。もし古い版が装備されている場合には、更新してください。互換性のために、古い(第4版)レイアウトは、
+esaurusコマンドの廃止など、スタイルファイルに若干の変更が加わっています。\SpecialChar LyX
+のaaクラスは、スタイルファイルの最新版(第5.01版)をサポートしています。もし
+古い版が装備されている場合には、更新してください。互換性のために、古い(第4版)レイアウトは、
 \family sans
 article (A&A V4)
 \family default
 として残してあります。
 \family typewriter
-$\SpecialCharNoPassThru LyX
+$\SpecialChar LyX
 Dir/layouts/aapaper.layout
 \family default
 のコメントをご参照ください。
@@ -8395,7 +8421,7 @@ Dir/layouts/aapaper.layout
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 とともに頒布されている例示用のひな型を土台として、書き始めることをお勧めします。ひな型を使用しない場合には、以下の設定にしてください。
 \end_layout
 
@@ -8495,9 +8521,9 @@ Received: <日付>; Accepted <日付>
 \backslash
 maketitle
 \family default
-コマンドは、へッダが終了した場所に、\SpecialCharNoPassThru LyX
-が自動的に入れてくれるので、手動で挿入する必要はありません。各項目の順序は関係ありませんが、見た目のためと、実際の文書
-のレイアウトに合わせるために、上記の順序を維持しておくと良いでしょう。
+コマンドは、へッダが終了した場所に、\SpecialChar LyX
+が自動的に入れてくれるので、手動で挿入する必要はありません。各項目の順序は関係ありませんが、見た目のためと、実際の文書のレイ
+アウトに合わせるために、上記の順序を維持しておくと良いでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -8506,7 +8532,7 @@ maketitle
 挿入\SpecialChar menuseparator
 脚注
 \family default
-を使用して標準の脚注を挿入してください。この場合には、\SpecialCharNoPassThru LyX
+を使用して標準の脚注を挿入してください。この場合には、\SpecialChar LyX
 は自動的に
 \family typewriter
 
@@ -8517,8 +8543,8 @@ thanks{}
 \end_layout
 
 \begin_layout Standard
-これらのトピックの他に、このマクロは、\SpecialCharNoPassThru LyX
-が対応していない、以下の3つの\SpecialCharNoPassThru LaTeX
+これらのトピックの他に、このマクロは、\SpecialChar LyX
+が対応していない、以下の3つの\SpecialChar LaTeX
 コマンドを使用します。
 \end_layout
 
@@ -8555,14 +8581,14 @@ email{アドレス}
 \end_layout
 
 \begin_layout Standard
-いずれの場合にも、\SpecialCharNoPassThru LyX
-中に対応したコマンドを入力し、\SpecialCharNoPassThru LaTeX
+いずれの場合にも、\SpecialChar LyX
+中に対応したコマンドを入力し、\SpecialChar LaTeX
 コードとしてマークしてください。
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-$\SpecialCharNoPassThru LyX
+$\SpecialChar LyX
 Dir/examples
 \end_layout
 
@@ -8577,15 +8603,15 @@ Dir/examples
 
 \begin_layout Standard
 概要は、へッダ部の直後に置きます。第5版から、概要は環境からコマンドに変更され、一段落に限るという制限が加えられました。さらに、ここにはキーワードを含む項目を入
-れなくてはなりません。これは、まだ\SpecialCharNoPassThru LyX
-では実装されていないため、\SpecialCharNoPassThru LaTeX
+れなくてはなりません。これは、まだ\SpecialChar LyX
+では実装されていないため、\SpecialChar LaTeX
 コマンド
 \family typewriter
 
 \backslash
 keywords{}
 \family default
-を手動で入力し、\SpecialCharNoPassThru LaTeX
+を手動で入力し、\SpecialChar LaTeX
 コードとしてマークする必要があります。用例にある論文を参照してください。
 \end_layout
 
@@ -8666,16 +8692,17 @@ A&A論文用レイアウトでは、文章を構造化するために、以下�
 \begin_layout Itemize
 
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 でサポートされていないコマンド
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の
 \family sans
 article (A&A)
@@ -8750,7 +8777,7 @@ titlerunning{}
 \begin_layout Standard
 これらのコマンドのいずれかを使いたい場合には、自分で入力する必要があります。
 \series bold
-これを\SpecialCharNoPassThru LaTeX
+これを\SpecialChar LaTeX
 コマンドとしてマークすることを忘れないで下さい。
 \end_layout
 
@@ -8759,7 +8786,7 @@ titlerunning{}
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、必要なフロート環境
 \family sans
 figure
@@ -8871,15 +8898,15 @@ Return
 
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \family default
-を選択して、\SpecialCharNoPassThru TeX
+を選択して、\SpecialChar TeX
 差込枠を挿入します。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 差込枠中に
 \family typewriter
 
@@ -8895,10 +8922,10 @@ parbox[b]{55mm}{
 カーソルをキャプション文の後ろに移動し、
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \family default
-を選択して、別の\SpecialCharNoPassThru TeX
+を選択して、別の\SpecialChar TeX
 差込枠を挿入し、その中に閉じ括弧を入力します 。
 \end_layout
 
@@ -8940,16 +8967,17 @@ referee
 \family sans
 Examples
 \family default
-ディレクトリには、\SpecialCharNoPassThru LyX
-で書かれた例示用論文が収録されています。これは、元のマクロパッケージの例示用論文を\SpecialCharNoPassThru LyX
-用に直したものです。これはヒントを得るために使用
-したり、元の \SpecialCharNoPassThru LaTeX
-コードと\SpecialCharNoPassThru LyX
+ディレクトリには、\SpecialChar LyX
+で書かれた例示用論文が収録されています。これは、元のマクロパッケージの例示用論文を\SpecialChar LyX
+用に直したものです。これはヒントを得るために使用したり、元の
+ \SpecialChar LaTeX
+コードと\SpecialChar LyX
 での書き方の比較に使ったりしてください。
 \end_layout
 
 \begin_layout Section
-AAS\SpecialCharNoPassThru TeX
+AAS\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -8965,21 +8993,22 @@ Mike Ressler
 \end_layout
 
 \begin_layout Standard
-AAS\SpecialCharNoPassThru TeX
-は、American Astronomical Society(アメリカ天文学会)が発行するAstrophysical Journal(宇宙物理学雑
-誌)同誌のLettersとSupplementを含む)・Astronomical Journal(天文学雑誌)・Publications of
- the Astronomical Society of the Pacific(太平洋天文学会誌)三誌への電子投稿を可能にするために、同学会が作成したマクロ集
-です。\SpecialCharNoPassThru LyX
-は、これらの文書を生成する上で、なかでも数式・引用・画像処理能力において、優れたツールであることが認識されています。\SpecialCharNoPassThru LyX
-は、同マクロ第5.0版以降を
-必要としており、できればここで説明されている第5.2版以降が望まれます。第5.0版未満の版は、\SpecialCharNoPassThru LaTeX
-2.09で使用するよう企図されているため、根本的に\SpecialCharNoPassThru LyX
-とは互
-換性がありません。AAS\SpecialCharNoPassThru TeX
-パッケージは、以下のAAS\SpecialCharNoPassThru TeX
+AAS\SpecialChar TeX
+は、American Astronomical Society(アメリカ天文学会)が発行するAstrophysical Journal(宇宙物理学雑誌)同
+誌のLettersとSupplementを含む)・Astronomical Journal(天文学雑誌)・Publications of the
+ Astronomical Society of the Pacific(太平洋天文学会誌)三誌への電子投稿を可能にするために、同学会が作成したマクロ集です。\SpecialChar LyX
+は
+、これらの文書を生成する上で、なかでも数式・引用・画像処理能力において、優れたツールであることが認識されています。\SpecialChar LyX
+は、同マクロ第5.0版以降を必要としており、でき
+ればここで説明されている第5.2版以降が望まれます。第5.0版未満の版は、\SpecialChar LaTeX
+2.09で使用するよう企図されているため、根本的に\SpecialChar LyX
+とは互換性がありません。AAS\SpecialChar TeX
+パッケージは
+、以下のAAS\SpecialChar TeX
 ウェブサイトからダウンロードできるでしょう。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -8994,7 +9023,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.journals.uchicago.edu/AAS/AAS\SpecialCharNoPassThru TeX
+http://www.journals.uchicago.edu/AAS/AASTeX
 \end_layout
 
 \end_inset
@@ -9007,12 +9036,12 @@ http://www.journals.uchicago.edu/AAS/AAS\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-パッケージ中には、完備したユーザーの手引きが収録されていますので、\SpecialCharNoPassThru LyX
-で論文を書き始める前に、その中身を完全に理解しておく必要があります。\SpecialCharNoPassThru LyX
-は、AASTe
-Xの全コマンドを理解する必然性をなくすものではなく、すべてを手入力する苦労を減らすだけです。仕上がりの\SpecialCharNoPassThru LaTeX
-文書が、論文を投稿しようとしているジャーナルの要
-求事項に完全に合致していることを確認するのは、あなたの責任です。
+パッケージ中には、完備したユーザーの手引きが収録されていますので、\SpecialChar LyX
+で論文を書き始める前に、その中身を完全に理解しておく必要があります。\SpecialChar LyX
+は、AASTeXの全コマン
+ドを理解する必然性をなくすものではなく、すべてを手入力する苦労を減らすだけです。仕上がりの\SpecialChar LaTeX
+文書が、論文を投稿しようとしているジャーナルの要求事項に完全に合致して
+いることを確認するのは、あなたの責任です。
 \end_layout
 
 \begin_layout Subsection
@@ -9020,7 +9049,7 @@ Xの全コマンドを理解する必然性をなくすものではなく、す�
 \end_layout
 
 \begin_layout Standard
-論文を書き始めるには、AAS\SpecialCharNoPassThru TeX
+論文を書き始めるには、AAS\SpecialChar TeX
 ひな型ファイルを土台に始めることを強くお勧めします。
 \begin_inset Flex MenuItem
 status collapsed
@@ -9040,9 +9069,9 @@ aastex.lyx
 \family typewriter
 <>
 \family default
-を含む)を正しい情報で上書きしてください。AAS\SpecialCharNoPassThru TeX
-コマンド・AAS\SpecialCharNoPassThru TeX
-環境の多くは、\SpecialCharNoPassThru LyX
+を含む)を正しい情報で上書きしてください。AAS\SpecialChar TeX
+コマンド・AAS\SpecialChar TeX
+環境の多くは、\SpecialChar LyX
 中で直接実行することができますが、特に
 \family typewriter
 
@@ -9056,12 +9085,12 @@ altaffilmark
 altaffiltext
 \family default
 のようにできないものもあります。この二つのコマンドは、ひな型ファイルを開いたとき、赤色に表示されているのですぐ目に入ることでしょう。このようなコマンドは、直接L
-a\SpecialCharNoPassThru TeX
-コードを入力して、それを\SpecialCharNoPassThru TeX
-コードとしてマークしなければなりません。このようなコマンドは、\SpecialCharNoPassThru TeX
-コードあるいはEvil Red Text(邪悪な赤い文
-)と呼ばれます。AAS\SpecialCharNoPassThru TeX
-文書に必要とされる \SpecialCharNoPassThru TeX
+a\SpecialChar TeX
+コードを入力して、それを\SpecialChar TeX
+コードとしてマークしなければなりません。このようなコマンドは、\SpecialChar TeX
+コードあるいはEvil Red Text(邪悪な赤い文)と呼ばれます。A
+AS\SpecialChar TeX
+文書に必要とされる \SpecialChar TeX
 コードを最小にするよう努力はしていますが、まだ望まれるほどにはなっていません。
 \end_layout
 
@@ -9074,7 +9103,7 @@ a\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Enumerate
-論文を \SpecialCharNoPassThru LaTeX
+論文を \SpecialChar LaTeX
 ファイルとして書き出します(
 \family sans
 ファイル\SpecialChar menuseparator
@@ -9090,9 +9119,9 @@ LateX
 .tex
 \family default
 ファイルを好きなエディタで編集します。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -9130,12 +9159,12 @@ secnumdepth
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 プリアンブル中に意図的に置いたコマンド(
 \family typewriter
 .tex
 \family default
-ファイル中、「User specified \SpecialCharNoPassThru LaTeX
+ファイル中、「User specified \SpecialChar LaTeX
  commands」というコメントの直後にあります)を除いて、
 \family typewriter
 
@@ -9153,7 +9182,7 @@ makeatother
 
 \end_deeper
 \begin_layout Enumerate
-編集後のファイルを \SpecialCharNoPassThru LaTeX
+編集後のファイルを \SpecialChar LaTeX
 にかけて、正しく処理されることを確認します。
 \end_layout
 
@@ -9170,14 +9199,14 @@ makeatother
 \end_layout
 
 \begin_layout Standard
-AAS\SpecialCharNoPassThru TeX
+AAS\SpecialChar TeX
 ユーザーの手引き(
 \family typewriter
 aasguide.tex
 \family default
-)に、各AAS\SpecialCharNoPassThru TeX
-コマンドの詳しい説明があるので、ここでは、各コマンドの使用法の詳細な説明は行いません。そこで、ここではユーザーの手引きに現れるとおりに一覧を
-列挙して、必要なところだけコメントを加えることにしましょう。
+)に、各AAS\SpecialChar TeX
+コマンドの詳しい説明があるので、ここでは、各コマンドの使用法の詳細な説明は行いません。そこで、ここではユーザーの手引きに現れるとおりに一覧を列挙し
+て、必要なところだけコメントを加えることにしましょう。
 \end_layout
 
 \begin_layout Subsubsection
@@ -9396,7 +9425,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-以下の項目は、学術誌の編集者向けに取ってあるものですが、どうしても必要ならば、\SpecialCharNoPassThru LaTeX
+以下の項目は、学術誌の編集者向けに取ってあるものですが、どうしても必要ならば、\SpecialChar LaTeX
 プリアンブルに入れることができます。
 \family typewriter
 
@@ -9429,7 +9458,7 @@ cpright
 \end_layout
 
 \begin_layout Itemize
-以下の項目は、\SpecialCharNoPassThru LaTeX
+以下の項目は、\SpecialChar LaTeX
 のプリアンブルに置くことができるもので、これらは、ひな型ファイルには、空の引数と共に含まれています。
 \family typewriter
 
@@ -9458,7 +9487,7 @@ shortauthors
 \backslash
 email
 \family default
-(2.3)―「単独で」使うことはできますが、段落の途中で使うことはできません。埋め込む必要がある場合には、\SpecialCharNoPassThru TeX
+(2.3)―「単独で」使うことはできますが、段落の途中で使うことはできません。埋め込む必要がある場合には、\SpecialChar TeX
 コードを使用してください。
 \end_layout
 
@@ -9479,7 +9508,7 @@ and
 \backslash
 notetoeditor
 \family default
-(2.6)―「単独で」使うことはできますが、段落の途中で使うことはできません。埋め込む必要がある場合には、\SpecialCharNoPassThru TeX
+(2.6)―「単独で」使うことはできますが、段落の途中で使うことはできません。埋め込む必要がある場合には、\SpecialChar TeX
 コードを使用してください。
 \end_layout
 
@@ -9589,7 +9618,7 @@ figcaption
 \end_layout
 
 \begin_layout Subsubsection
-実装されていないため、\SpecialCharNoPassThru TeX
+実装されていないため、\SpecialChar TeX
 コードを使用するもの
 \end_layout
 
@@ -9654,7 +9683,7 @@ tablenum
 \backslash
 tableline
 \family default
-(2.15.4：入れたい場所の後ろに、左側セルの最初の要素として挿入する。表中では、\SpecialCharNoPassThru LyX
+(2.15.4：入れたい場所の後ろに、左側セルの最初の要素として挿入する。表中では、\SpecialChar LyX
 の方法は使わないでください)・
 \family typewriter
 
@@ -9740,7 +9769,7 @@ status collapsed
 
 \end_inset
 
-を使用して、\SpecialCharNoPassThru LyX
+を使用して、\SpecialChar LyX
 ファイルに読み込むことを推奨します。この実例は、
 \family typewriter
 aas_sample.lyx
@@ -9753,20 +9782,20 @@ FAQとヒントと技とその他の考察
 \end_layout
 
 \begin_layout Subsubsection
-\SpecialCharNoPassThru LyX
-をAAS\SpecialCharNoPassThru TeX
+\SpecialChar LyX
+をAAS\SpecialChar TeX
 と協調させる
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 に、新しいレイアウトと文書クラスを認識させるには若干コツが要ります。もしうまく行かなかったら、次のようにしてみてください。
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LaTeX
-が、AAS\SpecialCharNoPassThru TeX
-を検出できることを確認してください。AAS\SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+が、AAS\SpecialChar TeX
+を検出できることを確認してください。AAS\SpecialChar TeX
 頒布版に含まれる
 \family typewriter
 sample.tex
@@ -9775,13 +9804,13 @@ sample.tex
 \family typewriter
 table.tex
 \family default
-でも可)を、\SpecialCharNoPassThru LaTeX
-やAAS\SpecialCharNoPassThru TeX
+でも可)を、\SpecialChar LaTeX
+やAAS\SpecialChar TeX
 とまったく関係のないディレクトリにコピーして、
 \family typewriter
 sample.tex
 \family default
-を\SpecialCharNoPassThru LaTeX
+を\SpecialChar LaTeX
 にかけてください。
 \end_layout
 
@@ -9790,7 +9819,7 @@ sample.tex
 \family typewriter
 aastex.layout
 \family default
-が、\SpecialCharNoPassThru LyX
+が、\SpecialChar LyX
 の
 \family typewriter
 layouts
@@ -9799,18 +9828,18 @@ layouts
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 中から
 \family sans
 ツール\SpecialChar menuseparator
 環境構成
 \family default
-を再度実行し、\SpecialCharNoPassThru LyX
+を再度実行し、\SpecialChar LyX
 を再起動してください。
 \end_layout
 
 \begin_layout Enumerate
-ひな型ではなく、通常の新規ファイルを開いてください。AAS\SpecialCharNoPassThru TeX
+ひな型ではなく、通常の新規ファイルを開いてください。AAS\SpecialChar TeX
 が、
 \family sans
 文書\SpecialChar menuseparator
@@ -9820,22 +9849,22 @@ layouts
 \end_layout
 
 \begin_layout Standard
-既存のAAS\SpecialCharNoPassThru TeX
-文書を処理する際に、AAS\SpecialCharNoPassThru TeX
-レイアウトを見つけられないとか、「タイトルレイアウトと通常のレイアウトを混在させないでください」といった警告が
-出るようであれば、正しい導入が行われていません。
+既存のAAS\SpecialChar TeX
+文書を処理する際に、AAS\SpecialChar TeX
+レイアウトを見つけられないとか、「タイトルレイアウトと通常のレイアウトを混在させないでください」といった警告が出るようであ
+れば、正しい導入が行われていません。
 \end_layout
 
 \begin_layout Subsubsection
-表を処理する際の\SpecialCharNoPassThru LaTeX
+表を処理する際の\SpecialChar LaTeX
 エラー
 \end_layout
 
 \begin_layout Standard
-既定では、\SpecialCharNoPassThru LyX
-は、表のキャプションやタイトルを中央揃えにしようと試みます。これはAAS\SpecialCharNoPassThru TeX
-と悪い相互干渉を発生させるようですので、キャプションやタイトルのど
-こかをクリックして、
+既定では、\SpecialChar LyX
+は、表のキャプションやタイトルを中央揃えにしようと試みます。これはAAS\SpecialChar TeX
+と悪い相互干渉を発生させるようですので、キャプションやタイトルのどこかをクリッ
+クして、
 \family sans
 編集\SpecialChar menuseparator
 段落設定
@@ -9882,32 +9911,32 @@ EPSファイルの読み込み
 \end_layout
 
 \begin_layout Standard
-AAS\SpecialCharNoPassThru TeX
+AAS\SpecialChar TeX
 には、自前の図関連コマンド(たとえば
 \family typewriter
 
 \backslash
 plotone
 \family default
-)がありますが、私は(既定のgraphicxを使った)\SpecialCharNoPassThru LaTeX
-の標準図コマンドの方がずっと好きです。望めば、図フロートボックスに、\SpecialCharNoPassThru TeX
+)がありますが、私は(既定のgraphicxを使った)\SpecialChar LaTeX
+の標準図コマンドの方がずっと好きです。望めば、図フロートボックスに、\SpecialChar TeX
 コードで
 \family typewriter
 
 \backslash
 plotone
 \family default
-等のコマンドを挿入することはできますが、私には正しいレイアウトを得ることができた試しがありません。標準の画像コマンドを使えば、\SpecialCharNoPassThru LyX
+等のコマンドを挿入することはできますが、私には正しいレイアウトを得ることができた試しがありません。標準の画像コマンドを使えば、\SpecialChar LyX
 は、
 \family typewriter
 
 \backslash
 usepackage{graphics}
 \family default
-コマンドを\SpecialCharNoPassThru LaTeX
-プリアンブルに挿入し、図を\SpecialCharNoPassThru LaTeX2e
-の標準的な方法で取り扱って、文章の中にちりばめます。現在、ApJは、ちょうどこのようにして作成した図
-を受け入れていますが、AJはまだ「すべてを末尾に積み上げる」方法を使用しているかもしれません。
+コマンドを\SpecialChar LaTeX
+プリアンブルに挿入し、図を\SpecialChar LaTeX2e
+の標準的な方法で取り扱って、文章の中にちりばめます。現在、ApJは、ちょうどこのようにして作成した図を受け入れていますが、A
+Jはまだ「すべてを末尾に積み上げる」方法を使用しているかもしれません。
 \end_layout
 
 \begin_layout Subsubsection
@@ -9915,10 +9944,10 @@ usepackage{graphics}
 \end_layout
 
 \begin_layout Standard
-「素敵な」ものの中には、実装することも可能だったけれども、あえて実装しなかったものがあります。たとえば、紙の原稿ではダブルスペースであったとしても、\SpecialCharNoPassThru LyX
-ウィン
-ドウ中で、文章をダブルスペースにする意味はないと考えました。また、preprint様式とpreprint2様式を、独立したレイアウトにすることもしませんでした。
-いずれにしても、執筆時間のほとんどを、平の原稿モードで使うのがほとんどですから、これらの機能でディスクスペースを消費しないことにしました。
+「素敵な」ものの中には、実装することも可能だったけれども、あえて実装しなかったものがあります。たとえば、紙の原稿ではダブルスペースであったとしても、\SpecialChar LyX
+ウィンドウ中
+で、文章をダブルスペースにする意味はないと考えました。また、preprint様式とpreprint2様式を、独立したレイアウトにすることもしませんでした。いずれ
+にしても、執筆時間のほとんどを、平の原稿モードで使うのがほとんどですから、これらの機能でディスクスペースを消費しないことにしました。
 \end_layout
 
 \begin_layout Subsection
@@ -9930,18 +9959,19 @@ usepackage{graphics}
 \begin_inset space \thinspace{}
 \end_inset
 
-%は\SpecialCharNoPassThru LyX
+%は\SpecialChar LyX
 上で為されました。残りの2
 \begin_inset space \thinspace{}
 \end_inset
 
-%が、\SpecialCharNoPassThru LaTeX
-での後処理と若干の後片付けです。投稿の過程では何のトラブルもなく、これらの学術誌が通常の投稿原稿と違う点に気づくことはなかったでしょう。ですから
-、がんばって発表してください！
+%が、\SpecialChar LaTeX
+での後処理と若干の後片付けです。投稿の過程では何のトラブルもなく、これらの学術誌が通常の投稿原稿と違う点に気づくことはなかったでしょう。ですから、がんばっ
+て発表してください！
 \end_layout
 
 \begin_layout Section
-AMS \SpecialCharNoPassThru LaTeX
+AMS \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -9961,11 +9991,11 @@ Richard Heck
 \end_layout
 
 \begin_layout Standard
-AMS \SpecialCharNoPassThru LaTeX
-レイアウトは、American Mathematical Society(アメリカ数学会)の刊行物に投稿する数学論文用のスタイルです。レイアウ
-トは、特定の学術誌向けに仕立てられてはいませんが、簡単にそうすることができます。各学術誌毎の指示については、AMSの説明書をご参照ください(通常は、\SpecialCharNoPassThru TeX
-出力中
-の一行を変更する必要があるだけです)。AMSの説明書は、ウェブWeb上の
+AMS \SpecialChar LaTeX
+レイアウトは、American Mathematical Society(アメリカ数学会)の刊行物に投稿する数学論文用のスタイルです。レイアウトは、特定
+の学術誌向けに仕立てられてはいませんが、簡単にそうすることができます。各学術誌毎の指示については、AMSの説明書をご参照ください(通常は、\SpecialChar TeX
+出力中の一行を変更する
+必要があるだけです)。AMSの説明書は、ウェブWeb上の
 \begin_inset Flex URL
 status open
 
@@ -9991,7 +10021,7 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 \end_layout
 
 \begin_layout Standard
-基本となるAMS \SpecialCharNoPassThru LaTeX
+基本となるAMS \SpecialChar LaTeX
 レイアウトには、以下の二つがあります。
 \end_layout
 
@@ -10135,9 +10165,9 @@ book (KOMA-script)
 \end_layout
 
 \begin_layout Standard
-これらのレイアウトが提供している環境を列挙すると、長い一覧となります。AMS-\SpecialCharNoPassThru LaTeX
-では、実のところ、「theorem」環境の派生型を際限なく定義していくこ
-とが可能です。しかし、AMSは、\SpecialCharNoPassThru LyX
+これらのレイアウトが提供している環境を列挙すると、長い一覧となります。AMS-\SpecialChar LaTeX
+では、実のところ、「theorem」環境の派生型を際限なく定義していくことが可能で
+す。しかし、AMSは、\SpecialChar LyX
 で利用可能になっている環境のみを使用することを推奨しています。
 \end_layout
 
@@ -10161,8 +10191,7 @@ book (AMS)
 
 \end_inset
 
-には、\threehyphens
-\threehyphens
+には、——
 \begin_inset space ~
 \end_inset
 
@@ -10220,8 +10249,7 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-\threehyphens
-\threehyphens
+——
 \begin_inset space ~
 \end_inset
 
@@ -10352,11 +10380,8 @@ status collapsed
 \end_layout
 
 \begin_layout Proof
-この環境の最後には、証了記号(通常は四角ですがスタイルによって変わります)が置かれます。この環境の中に別の環境を入れたい\threehyphens
-\threehyphens
-たとえばケース環境など\threehyphens
-\threehyphens
-場合で、証了記号は証明環境の終わりにのみ現れるようにしたい場合には、他の環境は証明環境の中に入れ子にしなくてはなりません。入れ子に関する情報については、
+この環境の最後には、証了記号(通常は四角ですがスタイルによって変わります)が置かれます。この環境の中に別の環境を入れたい——たとえばケース環境など——場合で、証
+了記号は証明環境の終わりにのみ現れるようにしたい場合には、他の環境は証明環境の中に入れ子にしなくてはなりません。入れ子に関する情報については、
 \emph on
 ユーザーの手引き
 \emph default
@@ -10422,9 +10447,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-さらに、AMSクラスは、AMS \SpecialCharNoPassThru LaTeX
-パッケージとAMSフォントパッケージを自動的に提供します。これらの環境を使用するためには、お使いのシステム上で利用可能
-となっている必要があります。
+さらに、AMSクラスは、AMS \SpecialChar LaTeX
+パッケージとAMSフォントパッケージを自動的に提供します。これらの環境を使用するためには、お使いのシステム上で利用可能となってい
+る必要があります。
 \end_layout
 
 \begin_layout Section
@@ -10453,8 +10478,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://publications.agu.org/files/2013/08/AGU-\SpecialCharNoPassThru LaTeX
-.zip
+http://publications.agu.org/files/2013/08/AGU-LaTeX.zip
 \end_layout
 
 \end_inset
@@ -10475,7 +10499,7 @@ http://publications.agu.org/files/2013/08/AGU-\SpecialCharNoPassThru LaTeX
 \family sans
 段落*
 \family default
-は、定義し直されています。\SpecialCharNoPassThru LyX
+は、定義し直されています。\SpecialChar LyX
 の画面では、依然として
 \family sans
 段落
@@ -10484,7 +10508,7 @@ http://publications.agu.org/files/2013/08/AGU-\SpecialCharNoPassThru LaTeX
 \family sans
 段落*
 \family default
-と表示されますが、AGUクラスにおける\SpecialCharNoPassThru LaTeX
+と表示されますが、AGUクラスにおける\SpecialChar LaTeX
 の対応物は、
 \family sans
 Subsubsubsection
@@ -10573,8 +10597,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- \threehyphens
- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -10623,7 +10646,7 @@ jgrga
 \end_layout
 
 \begin_layout Enumerate
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
 差込枠の2番目のフィールドに
 \family sans
 agu
@@ -10965,7 +10988,7 @@ http://www.copernicus.org/
 \family default
 ・
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 タイトル
 \family default
 ・
@@ -11008,7 +11031,7 @@ Elsevier各誌
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 ひな型ファイルの
 \family typewriter
 elsarticle.lyx
@@ -11017,7 +11040,7 @@ elsarticle.lyx
 \end_layout
 
 \begin_layout Section
-Foils (別名Foil\SpecialCharNoPassThru TeX
+Foils (別名Foil\SpecialChar TeX
 )
 \begin_inset CommandInset label
 LatexCommand label
@@ -11041,10 +11064,10 @@ Allan Rae
 \end_layout
 
 \begin_layout Standard
-本節では、プレゼンテーション用のスライドを作るための、\SpecialCharNoPassThru LyX
-の使用法を解説します。スライドを作ることのできる文書クラスには、slides・Foil\SpecialCharNoPassThru TeX
-・sem
-inar・beamer・powerdotといったクラスがありますが、本節では、そのうちslidesの解説を行います。
+本節では、プレゼンテーション用のスライドを作るための、\SpecialChar LyX
+の使用法を解説します。スライドを作ることのできる文書クラスには、slides・Foil\SpecialChar TeX
+・seminar・b
+eamer・powerdotといったクラスがありますが、本節では、そのうちslidesの解説を行います。
 \end_layout
 
 \begin_layout Standard
@@ -11142,8 +11165,8 @@ slides
 \family sans
 foils
 \family default
-クラスは、\SpecialCharNoPassThru LaTeX2e
-の一部として含まれている\SpecialCharNoPassThru LaTeX
+クラスは、\SpecialChar LaTeX2e
+の一部として含まれている\SpecialChar LaTeX
 クラスファイル
 \family sans
 foils.cls
@@ -11225,7 +11248,7 @@ serif
 \end_layout
 
 \begin_layout Itemize
-Foil\SpecialCharNoPassThru TeX
+Foil\SpecialChar TeX
 は、35
 \begin_inset space \thinspace{}
 \end_inset
@@ -11246,7 +11269,7 @@ mmスライド用の特殊寸法の他、A4とレター大の用紙寸法をサ�
 \family sans
 ページレイアウト
 \family default
-の設定は、若干異なった挙動を示します。Foil\SpecialCharNoPassThru TeX
+の設定は、若干異なった挙動を示します。Foil\SpecialChar TeX
 では、ユーザ定義のロゴをはじめ、フッタとへッダに広範な設定ができます。詳細については第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11263,9 +11286,9 @@ reference "sec:foilfoot"
 つねに
 \emph default
 ページ下部中央に表示されます。使用できるページ様式とその挙動は、以下の通りです。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -11311,9 +11334,8 @@ fancy
 \family sans
 fancyheadings
 \family default
-パッケージを使えるようにします。ただし、Foil\SpecialCharNoPassThru TeX
-パッケージの作者は、ページレイアウトが崩れる可能性があるので、これを使用することは勧めないと言及しています
-。
+パッケージを使えるようにします。ただし、Foil\SpecialChar TeX
+パッケージの作者は、ページレイアウトが崩れる可能性があるので、これを使用することは勧めないと言及しています。
 \end_layout
 
 \end_deeper
@@ -11370,7 +11392,7 @@ dvips
 \family sans
 foils
 \family default
-文書を作成する度に自動的に設定されます。このオプションは、横向きに設定されたページを回転させるのに、dvipsドライバを使うようFoil\SpecialCharNoPassThru TeX
+文書を作成する度に自動的に設定されます。このオプションは、横向きに設定されたページを回転させるのに、dvipsドライバを使うようFoil\SpecialChar TeX
 に指示します。
 \end_layout
 
@@ -11419,8 +11441,8 @@ fleqn
 \family sans
 foils
 \family default
-クラスでもサポートされています。それ以外に、Foil\SpecialCharNoPassThru TeX
-が提供している環境と、\SpecialCharNoPassThru LyX
+クラスでもサポートされています。それ以外に、Foil\SpecialChar TeX
+が提供している環境と、\SpecialChar LyX
 が付け加えた環境があります。以下の環境は、他のクラスと共通の環境です。
 \end_layout
 
@@ -11463,7 +11485,7 @@ status open
 \begin_layout Itemize
 
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 コード
 \end_layout
 
@@ -11549,7 +11571,7 @@ status open
 \family sans
 Foil
 \family default
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 は新しいスライドを始める以下のようなコマンドを備えています。
 \end_layout
 
@@ -11566,7 +11588,7 @@ Foil
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、以下のような、これらを若干修正した環境も用意しています。
 \end_layout
 
@@ -11591,7 +11613,7 @@ Foil
 \family sans
 Foil
 \family default
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 はそれらを説明するのに便利な環境を幅広く用意しています。
 \end_layout
 
@@ -11673,7 +11695,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-星付き版は連番が振られず、星なし版は連番が振られます。他に、\SpecialCharNoPassThru LyX
+星付き版は連番が振られず、星なし版は連番が振られます。他に、\SpecialChar LyX
 で追加された以下の2つの箇条書き環境があります。
 \end_layout
 
@@ -11690,9 +11712,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-Foil\SpecialCharNoPassThru TeX
-には、強力なヘッダ機能とフッタ機能があり、これらはプリアンブルで設定するのが最良ですが、文章中のどこでも設定することができます。もし文書中でこれら
-の設定を変更したい場合には、スライドの一番上、foilheadの直後で行うのが良いでしょう。
+Foil\SpecialChar TeX
+には、強力なヘッダ機能とフッタ機能があり、これらはプリアンブルで設定するのが最良ですが、文章中のどこでも設定することができます。もし文書中でこれらの設定
+を変更したい場合には、スライドの一番上、foilheadの直後で行うのが良いでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -11734,8 +11756,10 @@ status open
 \family sans
 左ヘッダ
 \family default
+
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -11754,8 +11778,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-Foil\SpecialCharNoPassThru TeX
-が提供しているコマンドで、\SpecialCharNoPassThru LyX
+Foil\SpecialChar TeX
+が提供しているコマンドで、\SpecialChar LyX
 が直接サポートしていないコマンドもありますが、これらの説明と使い方については、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11771,7 +11795,7 @@ reference "sec:unsuppfoils"
 \end_layout
 
 \begin_layout Standard
-この節は、様々な環境を使ってスライドの組を作る方法を簡単に紹介します。スライド組の例をご覧になりたい場合は、\SpecialCharNoPassThru LyX
+この節は、様々な環境を使ってスライドの組を作る方法を簡単に紹介します。スライド組の例をご覧になりたい場合は、\SpecialChar LyX
 の
 \family typewriter
 examples
@@ -11812,7 +11836,7 @@ foils
 \family sans
 日付
 \family default
-環境を使用しなかった場合には、\SpecialCharNoPassThru LaTeX
+環境を使用しなかった場合には、\SpecialChar LaTeX
 は(出力を生成し直したときにはいつも)その時点の日付を挿入します。
 \end_layout
 
@@ -11862,19 +11886,19 @@ dvips
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-中の小さなバグによって、これらの環境の同じ型をお互いに直接続けて置くことはできません。これらは何かによって分離されなくてはなりません。仮に二つ続けて置いて
-も、2つの環境をマージしたかのように、前の環境が延長されるだけです。この問題を回避するにはどうすればよいのでしょうか。最も簡単な方法は、二つの環境の間に何か文章
-を置くか、あるいは二つの間に「
+\SpecialChar LyX
+中の小さなバグによって、これらの環境の同じ型をお互いに直接続けて置くことはできません。これらは何かによって分離されなくてはなりません。仮に二つ続けて置いても、2
+つの環境をマージしたかのように、前の環境が延長されるだけです。この問題を回避するにはどうすればよいのでしょうか。最も簡単な方法は、二つの環境の間に何か文章を置く
+か、あるいは二つの間に「
 \family typewriter
 %
 \family default
-」だけから成る\SpecialCharNoPassThru LaTeX
-環境を置くことです。これによって、\SpecialCharNoPassThru LyX
-は2つの別々の環境を生成するように強制され、正しい\SpecialCharNoPassThru LaTeX
-出力を得ることができます。\SpecialCharNoPassThru LyX
-頒布
-版に含まれる用例ファイルに例があります。この問題は、二つの同じ定理型環境を立て続けに置こうとした場合にのみ発生することに注意してください。
+」だけから成る\SpecialChar LaTeX
+環境を置くことです。これによって、\SpecialChar LyX
+は2つの別々の環境を生成するように強制され、正しい\SpecialChar LaTeX
+出力を得ることができます。\SpecialChar LyX
+頒布版に含まれる用例ファイルに例があ
+ります。この問題は、二つの同じ定理型環境を立て続けに置こうとした場合にのみ発生することに注意してください。
 \end_layout
 
 \begin_layout Subsubsection
@@ -11930,9 +11954,9 @@ psnfss
 \end_layout
 
 \begin_layout Standard
-Foil\SpecialCharNoPassThru TeX
-では、図表フロートは、本文中の挿入箇所にこれらが正確に表示されるように再定義されており、ページの上部やユーザー指定場所に押しのけたりはしないように
-なっています。たとえフロート配置の設定に変更を加えたとしても、単に無視されます。
+Foil\SpecialChar TeX
+では、図表フロートは、本文中の挿入箇所にこれらが正確に表示されるように再定義されており、ページの上部やユーザー指定場所に押しのけたりはしないようになって
+います。たとえフロート配置の設定に変更を加えたとしても、単に無視されます。
 \end_layout
 
 \begin_layout Subsubsection
@@ -11959,7 +11983,7 @@ name "sec:foilfoot"
 \family sans
 Foil
 \family default
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 -」となっています。後者は、「機密事項」などのように、聴衆に秘密区分を提示することを意図しています。既定値では、何も設定されていません。
 \end_layout
 
@@ -11984,7 +12008,7 @@ Foil
 \family sans
 Foil
 \family default
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 機能
 \begin_inset CommandInset label
 LatexCommand label
@@ -11998,11 +12022,12 @@ name "sec:unsuppfoils"
 \begin_layout Standard
 以下で言及されているコマンドは、
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
 環境内で設定されるか、他の環境中の
 \family sans
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \family default
 として設定される必要があります。
@@ -12480,7 +12505,7 @@ M-z p
 
 話者
 \family default
-への指示。自動的に括弧()が挿入されますが、\SpecialCharNoPassThru LyX
+への指示。自動的に括弧()が挿入されますが、\SpecialChar LyX
 上で表示されるのは、左括弧( のみです。印刷出力には右括弧も表示されます。
 \end_layout
 
@@ -12641,9 +12666,9 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 
 \end_inset
 
-の各サイトからダウンロードすることができます。両パッケージは、標準「article」パッケージの修正版であり、両者は(一部を除き)ほぼ同一です。\SpecialCharNoPassThru LyX
-は、これら
-のパッケージのほとんどの機能をサポートしています。私は両誌へ投稿する論文を\SpecialCharNoPassThru LyX
+の各サイトからダウンロードすることができます。両パッケージは、標準「article」パッケージの修正版であり、両者は(一部を除き)ほぼ同一です。\SpecialChar LyX
+は、これらのパッ
+ケージのほとんどの機能をサポートしています。私は両誌へ投稿する論文を\SpecialChar LyX
 で書き上げましたが、何らの問題も生じませんでした。
 \end_layout
 
@@ -12673,7 +12698,7 @@ ijmpd.lyx
 \end_layout
 
 \begin_layout Enumerate
-両パッケージでは、フォント寸法や文書のページ様式を変更することが禁じられているので、\SpecialCharNoPassThru LyX
+両パッケージでは、フォント寸法や文書のページ様式を変更することが禁じられているので、\SpecialChar LyX
 中でこれらを変更することはできません。
 \end_layout
 
@@ -12713,14 +12738,14 @@ ijmpcパッケージが提供する「分類コード」様式は、PACS番号�
 
 \begin_layout Enumerate
 「定義」「ステップ」「例」「注記」「記法」「定理」「証明」「系」「補題」「命題」「命題(Prop)」「問題」「主張」「予想」といった新しい環境を使用することがで
-きます。これらの使い方は、大凡自明でしょう。\SpecialCharNoPassThru LyX
+きます。これらの使い方は、大凡自明でしょう。\SpecialChar LyX
 は、これらの環境をすべてサポートし、それぞれについて、適切なラベルと文字様式および連番スキームを使用します。
 \end_layout
 
 \begin_layout Enumerate
-両パッケージは、単純な引用を使用しますので、natbibパッケージは使用してはなりません。\SpecialCharNoPassThru LyX
-中では、引用参照は通常通り表示されますが、出力では上付き文字とし
-て表示されます。引用に通常の本文を使用したい場合には、「See Ref.
+両パッケージは、単純な引用を使用しますので、natbibパッケージは使用してはなりません。\SpecialChar LyX
+中では、引用参照は通常通り表示されますが、出力では上付き文字として表示
+されます。引用に通常の本文を使用したい場合には、「See Ref.
 \begin_inset space \space{}
 \end_inset
 
@@ -12778,12 +12803,12 @@ refcite
 \emph on
 前
 \emph default
-であれば、入れることができます。\SpecialCharNoPassThru LyX
-上では、「付録領域」という特別な環境があり、これを使って付録の開始位置を指定することができます。この環境は空のままにしてお
-かなくてはなりません。この環境は、\SpecialCharNoPassThru LaTeX
-コマンドを書き出すだけで、実際に出力は行いません。\SpecialCharNoPassThru LyX
-上では、青字で「Appendix」という単語が表示され、この
-箇所より後の節はすべて付録であることを明示します。「付録領域」は、最初の付録の前に
+であれば、入れることができます。\SpecialChar LyX
+上では、「付録領域」という特別な環境があり、これを使って付録の開始位置を指定することができます。この環境は空のままにしておかなく
+てはなりません。この環境は、\SpecialChar LaTeX
+コマンドを書き出すだけで、実際に出力は行いません。\SpecialChar LyX
+上では、青字で「Appendix」という単語が表示され、この箇所より後の節はすべて
+付録であることを明示します。「付録領域」は、最初の付録の前に
 \emph on
 なくてはならない
 \emph default
@@ -12795,17 +12820,17 @@ ijmpcおよびijmpdパッケージは、表キャプションを実装するの�
 \family typewriter
 tbl
 \family default
-コマンドを使用します。そのため、\SpecialCharNoPassThru LyX
-が作成した表は正しく印字されますが、そのキャプションは無視されます。しかし、\SpecialCharNoPassThru TeX
-コードを少し使えば、この問題を回避して、
-キャプションを望み通り印字することができるようになります。そうするには、表フロートを通常通り作成して、キャプションを削除し、代わりに\SpecialCharNoPassThru TeX
+コマンドを使用します。そのため、\SpecialChar LyX
+が作成した表は正しく印字されますが、そのキャプションは無視されます。しかし、\SpecialChar TeX
+コードを少し使えば、この問題を回避して、キャプション
+を望み通り印字することができるようになります。そうするには、表フロートを通常通り作成して、キャプションを削除し、代わりに\SpecialChar TeX
 コードで
 \family typewriter
 
 \backslash
 tbl{表キャプション}{
 \family default
-(ママ)と入れます。そこに表の内容を入れて、直後を\SpecialCharNoPassThru TeX
+(ママ)と入れます。そこに表の内容を入れて、直後を\SpecialChar TeX
 コード
 \family typewriter
 }
@@ -12815,7 +12840,7 @@ tbl{表キャプション}{
 \family typewriter
 .tex
 \family default
-ファイルに収め、このファイルを\SpecialCharNoPassThru LyX
+ファイルに収め、このファイルを\SpecialChar LyX
 文書に取り込んでください(
 \family sans
 挿入\SpecialChar menuseparator
@@ -12838,22 +12863,23 @@ ws-ijmpd.tex
 \end_layout
 
 \begin_layout Standard
-論文を投稿する前には、\SpecialCharNoPassThru LyX
-文書を\SpecialCharNoPassThru LaTeX
+論文を投稿する前には、\SpecialChar LyX
+文書を\SpecialChar LaTeX
 ファイルに書き出し(
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
 )
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-実は、\SpecialCharNoPassThru LaTeX
- (plain)とpdflatexとの間で選択ができます。論文を準備するのにpdflatexを使用しようとするのであれば、取り込んである画像がP
-DF形式に変換され、pdflatexで使用できるように、pdflatexオプションを指定しなくてはなりません。
+実は、\SpecialChar LaTeX
+ (plain)とpdflatexとの間で選択ができます。論文を準備するのにpdflatexを使用しようとするのであれば、取り込んである画像がPDF形式に
+変換され、pdflatexで使用できるように、pdflatexオプションを指定しなくてはなりません。
 \end_layout
 
 \end_inset
@@ -12876,7 +12902,7 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
-自身で明示的に\SpecialCharNoPassThru LaTeX
+自身で明示的に\SpecialChar LaTeX
 プリアンブルに置いたコマンドを除き、
 \family typewriter
 
@@ -12897,7 +12923,7 @@ makeatother
 \family typewriter
 .tex
 \family default
-ファイルを保存し、必要な回数\SpecialCharNoPassThru LaTeX
+ファイルを保存し、必要な回数\SpecialChar LaTeX
 で処理してください。それによって得られた
 \family typewriter
 .dvi
@@ -12906,12 +12932,12 @@ makeatother
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コードの使用
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コードを使用するのは、2つのコマンドに限られ、これらは文書の最初に置かれなくてはなりません。論文をひな型
 \family typewriter
 ijmpc.lyx
@@ -12920,10 +12946,10 @@ ijmpc.lyx
 \family typewriter
 ijmpd.lyx
 \family default
-を使用して書き始めた場合には、これら必要な\SpecialCharNoPassThru TeX
-コードは、すでに書き込まれています。通常、これらを削除する必要はありません。2つのうち1番めの\SpecialCharNoPassThru TeX
-コードのみが
-、奇数ページおよび偶数ページの上部に印字する情報(それぞれ著者名と論文の短縮タイトル)を指定するために、修正する必要があります。この\SpecialCharNoPassThru TeX
+を使用して書き始めた場合には、これら必要な\SpecialChar TeX
+コードは、すでに書き込まれています。通常、これらを削除する必要はありません。2つのうち1番めの\SpecialChar TeX
+コードのみが、奇数ページ
+および偶数ページの上部に印字する情報(それぞれ著者名と論文の短縮タイトル)を指定するために、修正する必要があります。この\SpecialChar TeX
 コードは、
 \family typewriter
 
@@ -12970,7 +12996,7 @@ ftp://ftp.iop.org/pub/journals/latex2e
 \end_layout
 
 \begin_layout Standard
-論文を書くもっとも簡単な方法は、\SpecialCharNoPassThru LyX
+論文を書くもっとも簡単な方法は、\SpecialChar LyX
 の用例ファイルフォルダにある
 \emph on
 IOP-article.lyx
@@ -12995,6 +13021,7 @@ AMS mathパッケージを使う
 タイトル環境の選択如何によって、論文の種類が定義されます。種類毎に以下の環境をタイトルに使用してください。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -13065,12 +13092,12 @@ Rapid
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 では直接にサポートされていませんが、一般的なタイトル環境として
 \family sans
 Article
 \family default
-があります。執筆する文書が、他のタイトル型にそぐわない場合には、\SpecialCharNoPassThru TeX
+があります。執筆する文書が、他のタイトル型にそぐわない場合には、\SpecialChar TeX
 コードでこれを指定することができます。
 \end_layout
 
@@ -13130,17 +13157,17 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、このパッケージの機能の多くをサポートしていますが、すべてではありません。しかし、\SpecialCharNoPassThru TeX
-コードを必要とするのは、パッケージ中のいくつかの「変わった」コマ
-ンドだけになりました(
+\SpecialChar LyX
+は、このパッケージの機能の多くをサポートしていますが、すべてではありません。しかし、\SpecialChar TeX
+コードを必要とするのは、パッケージ中のいくつかの「変わった」コマンドだけにな
+りました(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:kluwer_peculiarities"
 
 \end_inset
 
-参照)。最近、私は\SpecialCharNoPassThru LyX
+参照)。最近、私は\SpecialChar LyX
 を使って書いた論文を
 \emph on
 Astrophysics and Space Science
@@ -13175,7 +13202,7 @@ kluwer.lyx
 \end_layout
 
 \begin_layout Standard
-AAS\SpecialCharNoPassThru TeX
+AAS\SpecialChar TeX
 パッケージと同様、論文を投稿する前に、以下のような「後処理」を行う必要があります。
 \end_layout
 
@@ -13186,7 +13213,7 @@ AAS\SpecialCharNoPassThru TeX
 書き出し\SpecialChar menuseparator
 LateX
 \family default
-をクリックして、論文を\SpecialCharNoPassThru LaTeX
+をクリックして、論文を\SpecialChar LaTeX
 ファイルに書き出す。
 \end_layout
 
@@ -13196,9 +13223,9 @@ LateX
 .tex
 \family default
 ファイルに、テキストエディタを使用して、以下のような変更を加える。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -13214,7 +13241,7 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
-意図的に\SpecialCharNoPassThru LaTeX
+意図的に\SpecialChar LaTeX
 プリアンブルに加えたコマンドを除き、
 \family typewriter
 
@@ -13244,7 +13271,7 @@ makeatother
 \family typewriter
 .tex
 \family default
-ファイルを必要な回数(通常3回以内)だけ\SpecialCharNoPassThru LaTeX
+ファイルを必要な回数(通常3回以内)だけ\SpecialChar LaTeX
 にかける。
 \end_layout
 
@@ -13276,7 +13303,7 @@ Kluwerパッケージには、以下のような「風変わりな」特徴が�
 \end_layout
 
 \begin_layout Enumerate
-複数の論文を1つの\SpecialCharNoPassThru LaTeX
+複数の論文を1つの\SpecialChar LaTeX
 ファイルへ入れることができます
 \begin_inset Foot
 status collapsed
@@ -13299,7 +13326,7 @@ begin{article}
 \backslash
 end{article}
 \family default
-で終わります。この環境を\SpecialCharNoPassThru LyX
+で終わります。この環境を\SpecialChar LyX
 に実装することも可能でしたが、醜い上に初心者を混乱させる可能性があるので、実装することはしませんでした。したがって、これらの命令(
 \family typewriter
 
@@ -13312,15 +13339,15 @@ begin{article}
 \backslash
 end{article}
 \family default
-)は、直接本文中に入力して、\SpecialCharNoPassThru LaTeX
-コード(「\SpecialCharNoPassThru TeX
+)は、直接本文中に入力して、\SpecialChar LaTeX
+コード(「\SpecialChar TeX
 コード」のことです)としてマークする必要があります。
 \end_layout
 
 \begin_layout Enumerate
 論文の冒頭に置く情報(タイトル・サブタイトル・著者名・所属・ヘッダ用タイトル・ヘッダ用著者名・概要・キーワード)は、「opening」とよばれる環境に入れなくて
-はなりません。これは\SpecialCharNoPassThru LyX
-では実装されていませんので、タイトルやサブタイトルなどは、2つの\SpecialCharNoPassThru TeX
+はなりません。これは\SpecialChar LyX
+では実装されていませんので、タイトルやサブタイトルなどは、2つの\SpecialChar TeX
 コード行(
 \family typewriter
 
@@ -13374,7 +13401,7 @@ kluwer.lyx
 \end_layout
 
 \begin_layout Enumerate
-ひな型にある\SpecialCharNoPassThru TeX
+ひな型にある\SpecialChar TeX
 コードを削除しないでください。
 \end_layout
 
@@ -13399,7 +13426,7 @@ Bernd Rellermeyer
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の文書クラス
 \emph on
 article (koma-script)
@@ -13424,7 +13451,7 @@ letter
 \emph on
 (koma-script)
 \emph default
-は、それぞれKoma-Scriptファミリーの\SpecialCharNoPassThru LaTeX
+は、それぞれKoma-Scriptファミリーの\SpecialChar LaTeX
 文書クラス
 \family typewriter
 scrartcl.cls
@@ -13495,7 +13522,7 @@ status collapsed
 \shape smallcaps
 Walter Schmidt
 \shape default
-作の\SpecialCharNoPassThru LaTeX
+作の\SpecialChar LaTeX
 パッケージ
 \family typewriter
 cmsd.sty
@@ -13507,7 +13534,7 @@ cmsd.sty
 
 。章見出しの連番は、節見出しの連番と同様に行われ、別行立てで「 Chapter\SpecialChar ldots
 」という行がつきません。さらに、多くのオプションによって、見出しの外観を修正するこ
-とができます(\SpecialCharNoPassThru LyX
+とができます(\SpecialChar LyX
 では、
 \family sans
 文書\SpecialChar menuseparator
@@ -13533,7 +13560,7 @@ BCOR
 \family sans
 DIV
 \family default
-オプションを使う方法です(\SpecialCharNoPassThru LyX
+オプションを使う方法です(\SpecialChar LyX
 では、
 \family sans
 文書\SpecialChar menuseparator
@@ -13557,14 +13584,14 @@ scrguide
 \end_layout
 
 \begin_layout Itemize
-Koma-Scriptファミリーの\SpecialCharNoPassThru LaTeX
-文書クラスには、多くの追加コマンドが定義されています。それらのうち、\SpecialCharNoPassThru LyX
-で意味を持つものは、対応する段落環境として
-実装されています。
+Koma-Scriptファミリーの\SpecialChar LaTeX
+文書クラスには、多くの追加コマンドが定義されています。それらのうち、\SpecialChar LyX
+で意味を持つものは、対応する段落環境として実装されています
+。
 \end_layout
 
 \begin_layout Standard
-Koma-Scriptファミリーの\SpecialCharNoPassThru LaTeX
+Koma-Scriptファミリーの\SpecialChar LaTeX
 文書クラスに関する独語の詳細な説明が、Koma-Script取扱説明書
 \emph on
 scrguide
@@ -13583,7 +13610,7 @@ screnggu
 
 \end_inset
 
-。以下の各節では、\SpecialCharNoPassThru LyX
+。以下の各節では、\SpecialChar LyX
 に関係する側面のみ説明致します。
 \end_layout
 
@@ -13632,7 +13659,7 @@ report
 \emph on
 book
 \emph default
-の段落環境を、若干の修正を加えた上ですべて含んでいますが、\SpecialCharNoPassThru LyX
+の段落環境を、若干の修正を加えた上ですべて含んでいますが、\SpecialChar LyX
 固有の
 \family sans
 箇条書き(一覧)
@@ -13740,7 +13767,7 @@ addpart*
 \family sans
 Part*
 \family default
-と同一なので、\SpecialCharNoPassThru LyX
+と同一なので、\SpecialChar LyX
 では実装されていません。
 \end_layout
 
@@ -13821,7 +13848,7 @@ article (koma-script)
 status collapsed
 
 \begin_layout Plain Layout
-つまり、対応する\SpecialCharNoPassThru LaTeX
+つまり、対応する\SpecialChar LaTeX
 コマンドが
 \family typewriter
 
@@ -14030,10 +14057,10 @@ scrlettr.layout
 \emph on
 letter
 \emph default
-の全段落環境が、部分的に変更を加えた形で収録されていますが、\SpecialCharNoPassThru LyX
+の全段落環境が、部分的に変更を加えた形で収録されていますが、\SpecialChar LyX
 固有環境の
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 コード
 \family default
 ・
@@ -14050,7 +14077,8 @@ letter
 \family default
 環境に置き換えられています。それ以外にも、標準文書クラスとは異なり、標準環境の
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
 ・
 \family sans
@@ -14068,8 +14096,8 @@ letter
 \end_layout
 
 \begin_layout Standard
-この文書クラスで作成した書簡の外観は、様々な\SpecialCharNoPassThru LaTeX
-コマンドを\SpecialCharNoPassThru LaTeX
+この文書クラスで作成した書簡の外観は、様々な\SpecialChar LaTeX
+コマンドを\SpecialChar LaTeX
 プリアンブルに置くことで制御することができます
 \begin_inset Foot
 status collapsed
@@ -14139,7 +14167,7 @@ thepage}}
 
 \end_inset
 
-。これらの\SpecialCharNoPassThru LaTeX
+。これらの\SpecialChar LaTeX
 コマンドのドイツ語での詳細な説明は、Koma-Scriptの取扱説明書
 \emph on
 scrguide
@@ -14156,7 +14184,7 @@ scrguide
 \family sans
 頭語
 \family default
-環境は、書簡の冒頭部を定義するもので、すべての書簡で使用しなくてはなりません。\SpecialCharNoPassThru LyX
+環境は、書簡の冒頭部を定義するもので、すべての書簡で使用しなくてはなりません。\SpecialChar LyX
 文書クラスでは、これらの環境を強調するために、左余白にそれぞれ
 \shape italic
 L
@@ -14397,7 +14425,7 @@ status collapsed
 \family sans
 電話
 \family default
-：送り主の電話番号。標準的な挙動では、\SpecialCharNoPassThru LaTeX
+：送り主の電話番号。標準的な挙動では、\SpecialChar LaTeX
 変数
 \family typewriter
 
@@ -14505,7 +14533,7 @@ Yourref・Yourmail・Myref・顧客・インボイス
 \family sans
 場所(Place)
 \family default
-の値は書簡には表示されなくなり、\SpecialCharNoPassThru LaTeX
+の値は書簡には表示されなくなり、\SpecialChar LaTeX
 変数
 \family typewriter
 
@@ -14584,10 +14612,10 @@ scrlttr2
 \family typewriter
 scrlettr
 \family default
-は廃止されてサポート対象外となりました。これは—\SpecialCharNoPassThru LaTeX
-側で—全く新しいインターフェイスを持っており、旧クラスとは互換性がありません。したがって、\SpecialCharNoPassThru LyX
-は両者
-をサポートしていますが、新しい方のクラスを使用することを推奨します。
+は廃止されてサポート対象外となりました。これは—\SpecialChar LaTeX
+側で—全く新しいインターフェイスを持っており、旧クラスとは互換性がありません。したがって、\SpecialChar LyX
+は両者をサポートしてい
+ますが、新しい方のクラスを使用することを推奨します。
 \end_layout
 
 \begin_layout Standard
@@ -14686,7 +14714,7 @@ KOMAold
 
 \end_inset
 
-。用例としては、\SpecialCharNoPassThru LyX
+。用例としては、\SpecialChar LyX
 に収録されているひな型
 \emph on
 koma-letter2
@@ -14703,8 +14731,8 @@ scrguide
 \end_layout
 
 \begin_layout Standard
-Koma-Script文書クラスを\SpecialCharNoPassThru LyX
-上に表示する上で、\SpecialCharNoPassThru LyX
+Koma-Script文書クラスを\SpecialChar LyX
+上に表示する上で、\SpecialChar LyX
 の内部処理が若干の問題を生じめます。
 \end_layout
 
@@ -14717,7 +14745,7 @@ Koma-Script文書クラスを\SpecialCharNoPassThru LyX
 \family sans
 Counter_Chapter
 \family default
-ラベル型に対する\SpecialCharNoPassThru LyX
+ラベル型に対する\SpecialChar LyX
 の内部処理が原因です。
 \end_layout
 
@@ -14730,8 +14758,8 @@ Counter_Chapter
 \family sans
 節(addsec)
 \family default
-環境の見出しは、「本当の」\SpecialCharNoPassThru LaTeX
-の目次には追加されますが、\SpecialCharNoPassThru LyX
+環境の見出しは、「本当の」\SpecialChar LaTeX
+の目次には追加されますが、\SpecialChar LyX
 の目次(
 \family sans
 移動
@@ -14744,9 +14772,8 @@ Counter_Chapter
 \emph on
 letter
 \emph default
-文書クラスでの段落は、垂直スペースによる段落区切りで表示され、字下げはされません。これが標準的な挙動となっていて、特別な\SpecialCharNoPassThru LaTeX
-コマンドは必要ありません。しか
-し、
+文書クラスでの段落は、垂直スペースによる段落区切りで表示され、字下げはされません。これが標準的な挙動となっていて、特別な\SpecialChar LaTeX
+コマンドは必要ありません。しかし、
 \family sans
 文書\SpecialChar menuseparator
 設定
@@ -14759,7 +14786,7 @@ letter
 \family sans
 垂直スペース
 \family default
-は、隙間を空けるために、文書に\SpecialCharNoPassThru LaTeX
+は、隙間を空けるために、文書に\SpecialChar LaTeX
 コマンドをつねに追加するようになっていますが、この文書クラスの場合には、そのような挙動が望まれないためです。
 \end_layout
 
@@ -14786,11 +14813,11 @@ Memoirは、非常に強力で、着実に改良が加えられている文書�
 \end_layout
 
 \begin_layout Standard
-Memoir開発者であるPeter Wilsonは、\SpecialCharNoPassThru LaTeX
-の世界での、多くの便利なパッケージの作者として知られていますが、それらのほとんどは、Memoirに
-統合されました。このため、章のデザインや、目次や付録などのレイアウトを、はるかに簡単に行うことができます。しかしながら、\SpecialCharNoPassThru LyX
-は、これらすべての素晴らしい機能を
-ネイティブでサポートしているわけではありません。これらのうちいくつかは、将来のリリースで追加されるかもしれませんが
+Memoir開発者であるPeter Wilsonは、\SpecialChar LaTeX
+の世界での、多くの便利なパッケージの作者として知られていますが、それらのほとんどは、Memoirに統合されま
+した。このため、章のデザインや、目次や付録などのレイアウトを、はるかに簡単に行うことができます。しかしながら、\SpecialChar LyX
+は、これらすべての素晴らしい機能をネイティブでサポ
+ートしているわけではありません。これらのうちいくつかは、将来のリリースで追加されるかもしれませんが
 \begin_inset Foot
 status collapsed
 
@@ -14811,11 +14838,10 @@ lyx-devel@lists.lyx.org
 
 \end_inset
 
-、\SpecialCharNoPassThru LyX
-のフレームワークが持つ制約のために、おそらく決して追加されることのないと考えられるものも多数あります。もちろん、ネイティブな\SpecialCharNoPassThru LaTeX
-コマンド(\SpecialCharNoPassThru TeX
-コ
-ード
+、\SpecialChar LyX
+のフレームワークが持つ制約のために、おそらく決して追加されることのないと考えられるものも多数あります。もちろん、ネイティブな\SpecialChar LaTeX
+コマンド(\SpecialChar TeX
+コード
 \begin_inset Foot
 status collapsed
 
@@ -14832,9 +14858,9 @@ reference "sec:LaTeXコードを挿入する"
 
 \end_inset
 
-)の助けを借りれば、全機能を使用できます。この節では、\SpecialCharNoPassThru LyX
-がネイティブにサポートしている機能についてのみ、列挙するものとします。詳細な説明(および他の機能)に
-ついては、Memoirクラスの詳しい取扱説明書
+)の助けを借りれば、全機能を使用できます。この節では、\SpecialChar LyX
+がネイティブにサポートしている機能についてのみ、列挙するものとします。詳細な説明(および他の機能)について
+は、Memoirクラスの詳しい取扱説明書
 \begin_inset Foot
 status collapsed
 
@@ -14872,9 +14898,9 @@ Memoirは、基本的に、標準bookクラスの全機能をサポートして�
 \end_layout
 
 \begin_layout Description
-ページ様式: Memoirパッケージとfancyhdrパッケージとのコマンドの衝突のため(両パッケージは同じ名前のコマンドを定義しているため、\SpecialCharNoPassThru LaTeX
-が混乱さ
-せられます)、fancyページ様式は使用できません。その代わり、Memoirには、多くの独自のページ様式が付属してきます(
+ページ様式: Memoirパッケージとfancyhdrパッケージとのコマンドの衝突のため(両パッケージは同じ名前のコマンドを定義しているため、\SpecialChar LaTeX
+が混乱させられます
+)、fancyページ様式は使用できません。その代わり、Memoirには、多くの独自のページ様式が付属してきます(
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -14897,7 +14923,7 @@ chapterstyle{companion}
 
 \begin_layout Description
 節分け: 標準クラスでは、節分けコマンド(章・節・小節等)は、非必須引数を一つ取ることができます。これを用いて、目次やヘッダ用に別のタイトルを指定することができ
-ます(たとえば、タイトルが長すぎる場合などに用います)。\SpecialCharNoPassThru LyX
+ます(たとえば、タイトルが長すぎる場合などに用います)。\SpecialChar LyX
 では、章や節の始めで
 \family sans
 挿入\SpecialChar menuseparator
@@ -14940,7 +14966,7 @@ ticleクラスとは違って、頁を改めることも可)、部はbookクラ�
 \end_layout
 
 \begin_layout Description
-Oldfontcommands: \SpecialCharNoPassThru LaTeX
+Oldfontcommands: \SpecialChar LaTeX
 旧2.09版で使用されていた旧いフォントコマンド(
 \family typewriter
 
@@ -14953,15 +14979,15 @@ rm
 \backslash
 it
 \family default
-など)は、Memoirにおいては、既定では使用することができません。Memoirがこれらのコマンドを検知すると、エラーを発して\SpecialCharNoPassThru LaTeX
-を停止させます。しかし、
-クラスオプション
+など)は、Memoirにおいては、既定では使用することができません。Memoirがこれらのコマンドを検知すると、エラーを発して\SpecialChar LaTeX
+を停止させます。しかし、クラスオプ
+ション
 \emph on
 oldfontcommands
 \emph default
-を指定すると、これらのコマンドが容認され、エラーの代わりに警告を発するのみとなります(これによって、少なくとも\SpecialCharNoPassThru LaTeX
-は停止しなくなります)。まだ、多くのパッ
-ケージと、就中多くのBib\SpecialCharNoPassThru TeX
+を指定すると、これらのコマンドが容認され、エラーの代わりに警告を発するのみとなります(これによって、少なくとも\SpecialChar LaTeX
+は停止しなくなります)。まだ、多くのパッケージと、
+就中多くのBib\SpecialChar TeX
 スタイルファイルが、これらのコマンドを使用しているので、我々はこのオプションを既定で使うこととしました。
 \end_layout
 
@@ -14970,7 +14996,7 @@ oldfontcommands
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 でサポートされる機能(今のところそれほど多くはありません)を簡単に説明しましょう。詳しくはMemoirの取扱説明書
 \begin_inset Foot
 status collapsed
@@ -15006,7 +15032,7 @@ CTAN:/macros/latex/memoir/memman.pdf
 
 \begin_layout Description
 題辞: 題辞(epigraph)は章頭の、気の利いた標語やモットーです。題辞環境は、そのような標語を組む洗練された方法を提供します。標語本体(本文)とその著者(
-出典)は、短い線で区切られます。この環境には二つの引数(本文と出典)が必要なので、ここでも\SpecialCharNoPassThru LyX
+出典)は、短い線で区切られます。この環境には二つの引数(本文と出典)が必要なので、ここでも\SpecialChar LyX
 を少しだます必要があります。ここでは、2つの引数の間に、
 \emph on
 <標語>
@@ -15017,16 +15043,16 @@ CTAN:/macros/latex/memoir/memman.pdf
 \emph on
 <標語の著者>
 \emph default
-のように、(\SpecialCharNoPassThru TeX
+のように、(\SpecialChar TeX
 モードで)波括弧を入れなくてはなりません。
 \end_layout
 
 \begin_layout Description
-詩題: Memoirには(複雑で隠喩的なものも含めて)詩を組版するための多くの機能がありますが、\SpecialCharNoPassThru LyX
-は、そのうちいくつかしかサポートしていません。詩題はその一
-つです。これは詩用の中央揃えタイトルで、目次にも表示されます(詩句が詩の標準環境です。Memoirには、詩句の拡張版もありますが、これらを使うためには\SpecialCharNoPassThru TeX
-コー
-ドを使用しなくてはなりません。これらの環境は通常の詩句環境の中に入れ子にしなくてはならないのですが、\SpecialCharNoPassThru LyX
+詩題: Memoirには(複雑で隠喩的なものも含めて)詩を組版するための多くの機能がありますが、\SpecialChar LyX
+は、そのうちいくつかしかサポートしていません。詩題はその一つです
+。これは詩用の中央揃えタイトルで、目次にも表示されます(詩句が詩の標準環境です。Memoirには、詩句の拡張版もありますが、これらを使うためには\SpecialChar TeX
+コードを使用しな
+くてはなりません。これらの環境は通常の詩句環境の中に入れ子にしなくてはならないのですが、\SpecialChar LyX
 ではそれができないためです)。
 \end_layout
 
@@ -15061,7 +15087,7 @@ Tomasz Luczak
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 文書クラス
 \emph on
 article (mwart)
@@ -15074,7 +15100,7 @@ report (mwrep)・book
 \emph on
 (mwbk)
 \emph default
-は、それぞれ\SpecialCharNoPassThru LaTeX
+は、それぞれ\SpecialChar LaTeX
 文書クラス
 \family typewriter
 mwart.cls
@@ -15119,6 +15145,7 @@ book.cls
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -15156,12 +15183,12 @@ outer ページの外側にページ番号
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-rmheadings セリフ体見出し \threehyphens
- 既定
+rmheadings セリフ体見出し — 既定
 \end_layout
 
 \begin_layout Description
@@ -15169,8 +15196,7 @@ sfheadings サンセリフ体見出し
 \end_layout
 
 \begin_layout Description
-authortitle タイトルページは、著者名・タイトルの順で配置 \threehyphens
- 既定
+authortitle タイトルページは、著者名・タイトルの順で配置 — 既定
 \end_layout
 
 \begin_layout Description
@@ -15203,7 +15229,7 @@ article
 \end_layout
 
 \begin_layout Section
-Rev\SpecialCharNoPassThru TeX
+Rev\SpecialChar TeX
 4
 \end_layout
 
@@ -15230,7 +15256,7 @@ Revtex
 
 4
 \family default
-テキストクラスは、アメリカ物理学会のRev\SpecialCharNoPassThru TeX
+テキストクラスは、アメリカ物理学会のRev\SpecialChar TeX
  4.0(1999年5月の
 \begin_inset Formula $\beta$
 \end_inset
@@ -15239,24 +15265,24 @@ Revtex
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-には、Rev\SpecialCharNoPassThru TeX
+\SpecialChar LyX
+には、Rev\SpecialChar TeX
  3.1で動作する
 \family sans
 Revtex
 \family default
-テキストクラスもあります。しかしながら、第3.1版は\SpecialCharNoPassThru LaTeX
- 2.09で動作するものであり、基本的に時代遅れなものになっています。\SpecialCharNoPassThru LyX
-は\SpecialCharNoPassThru LaTeX2e
-を必要とす
-ることから、第3.1版は\SpecialCharNoPassThru LyX
-とうまく協調しないことを意味しますが、動作するようには調整してあります。Rev\SpecialCharNoPassThru TeX
- 4.0は、\SpecialCharNoPassThru LaTeX2e
-で素直に動作するようにデ
-ザインされているので、\SpecialCharNoPassThru LyX
+テキストクラスもあります。しかしながら、第3.1版は\SpecialChar LaTeX
+ 2.09で動作するものであり、基本的に時代遅れなものになっています。\SpecialChar LyX
+は\SpecialChar LaTeX2e
+を必要とすることから、第3.1版は\SpecialChar LyX
+とうまく
+協調しないことを意味しますが、動作するようには調整してあります。Rev\SpecialChar TeX
+ 4.0は、\SpecialChar LaTeX2e
+で素直に動作するようにデザインされているので、\SpecialChar LyX
 と
 \family sans
-Rev\SpecialCharNoPassThru TeX
+Rev\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -15266,14 +15292,14 @@ Rev\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-この取扱説明書は、Rev\SpecialCharNoPassThru TeX
+この取扱説明書は、Rev\SpecialChar TeX
  4.0の説明書の
 \emph on
 補完
 \emph default
-として使用されることを前提としています。したがって、ここではRev\SpecialCharNoPassThru TeX
-固有マクロの説明はせず、必要な場合にはプリアンブルに何と書けば良いかを知っているものとし
-て説明します。
+として使用されることを前提としています。したがって、ここではRev\SpecialChar TeX
+固有マクロの説明はせず、必要な場合にはプリアンブルに何と書けば良いかを知っているものとして説明
+します。
 \end_layout
 
 \begin_layout Subsection
@@ -15281,10 +15307,11 @@ Rev\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-Rev\SpecialCharNoPassThru TeX
- 4パッケージのREADMEファイルにあるとおり、ともかくRev\SpecialCharNoPassThru TeX
- 4を導入しなくてはなりません。パッケージは、The Rev\SpecialCharNoPassThru TeX
- 4 Web Site 
+Rev\SpecialChar TeX
+ 4パッケージのREADMEファイルにあるとおり、ともかくRev\SpecialChar TeX
+ 4を導入しなくてはなりません。パッケージは、The Rev\SpecialChar TeX
+ 4 Web
+ Site 
 \begin_inset Flex URL
 status collapsed
 
@@ -15295,14 +15322,14 @@ http://publish.aps.org/revtex4/
 
 \end_inset
 
-から入手することができます。これを\SpecialCharNoPassThru LaTeX
-が検出することのできる場所に導入してください。それから、適当に選んだディレクトリ(もといクラスファイルを導入したのと
-は異なるディレクトリ)で簡単なRev\SpecialCharNoPassThru TeX
- 4文書を \SpecialCharNoPassThru LaTeX
-でコンパイルできるかどうか確認してください。この後、\SpecialCharNoPassThru LyX
-を環境構成すると、クラスファイルを検出
-し、Rev\SpecialCharNoPassThru TeX
-4テキストクラスが使用できるようになるはずです。
+から入手することができます。これを\SpecialChar LaTeX
+が検出することのできる場所に導入してください。それから、適当に選んだディレクトリ(もといクラスファイルを導入したのとは異なるデ
+ィレクトリ)で簡単なRev\SpecialChar TeX
+ 4文書を \SpecialChar LaTeX
+でコンパイルできるかどうか確認してください。この後、\SpecialChar LyX
+を環境構成すると、クラスファイルを検出し、Rev\SpecialChar TeX
+4テキストクラスが使用
+できるようになるはずです。
 \end_layout
 
 \begin_layout Standard
@@ -15310,7 +15337,7 @@ http://publish.aps.org/revtex4/
 \family typewriter
 tex2lyx
 \family default
-を使ってRev\SpecialCharNoPassThru TeX
+を使ってRev\SpecialChar TeX
  4文書を読み込むか、またはひな型ディレクトリにある
 \family sans
 Revtex
@@ -15343,7 +15370,7 @@ documentclass
 \family sans
 クラスオプション
 \family default
-フィールドに入れます。Rev\SpecialCharNoPassThru TeX
+フィールドに入れます。Rev\SpecialChar TeX
 では、少なくとも一つの非必須引数が必要なことに注意してください。
 \end_layout
 
@@ -15358,7 +15385,7 @@ draft
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 プリアンブル
 \family default
 に入れてください。
@@ -15369,14 +15396,14 @@ draft
 \end_layout
 
 \begin_layout Standard
-レイアウトは、基本的にRev\SpecialCharNoPassThru TeX
+レイアウトは、基本的にRev\SpecialChar TeX
 4.0のコマンドに対応しています。たとえば、Emailレイアウトは、
 \family typewriter
 
 \backslash
 email{}
 \family default
-に対応しています。(少なくともRev\SpecialCharNoPassThru TeX
+に対応しています。(少なくともRev\SpecialChar TeX
  4.0 Beta現在では)
 \family sans
 住所
@@ -15419,13 +15446,13 @@ affiliation
 \end_layout
 
 \begin_layout Standard
-Rev\SpecialCharNoPassThru TeX
- 4には、バグを引き起こしがちなために、気をつけなくてはならない特殊な面がいくつかあるため、\SpecialCharNoPassThru LyX
+Rev\SpecialChar TeX
+ 4には、バグを引き起こしがちなために、気をつけなくてはならない特殊な面がいくつかあるため、\SpecialChar LyX
 ではさらに気をつけなくてはなりません。
 \end_layout
 
 \begin_layout Standard
-Rev\SpecialCharNoPassThru TeX
+Rev\SpecialChar TeX
 では、
 \family typewriter
 
@@ -15442,7 +15469,7 @@ author
 \emph on
 外側
 \emph default
-に来なくてはなりません。\SpecialCharNoPassThru LyX
+に来なくてはなりません。\SpecialChar LyX
 では、独立した
 \family sans
 感謝
@@ -15451,7 +15478,7 @@ author
 \family sans
 、著者
 \family default
-レイアウトに脚注を付けてしまうと、おかしなことが起こる可能性があります。詳細については、Rev\SpecialCharNoPassThru TeX
+レイアウトに脚注を付けてしまうと、おかしなことが起こる可能性があります。詳細については、Rev\SpecialChar TeX
  4の取扱説明書をご覧ください。
 \end_layout
 
@@ -15484,7 +15511,7 @@ author
 \family sans
 住所
 \family default
-の後に置いてしまうと、\SpecialCharNoPassThru LaTeX
+の後に置いてしまうと、\SpecialChar LaTeX
 はコンパイルに失敗します。
 \end_layout
 
@@ -15494,11 +15521,11 @@ author
 
 \begin_layout Standard
 このレイアウトの主な問題点は、電子メールやタイトルのようなレイアウトに非必須引数を用いることができないことです(これはこのレイアウトだけの問題ではありません。例
-えば、節レイアウトも非必須引数を使用することができません)。これは、たとえばページヘッダにヘッダ用タイトルを設定したい場合などには、ファイルを\SpecialCharNoPassThru LaTeX
-ファイル
-に変換した後に(これは最終的にAPSに原稿を送る際には行わなくてはなりません)、テキストエディタを使って\SpecialCharNoPassThru LaTeX
-ファイルを編集し、非必須引数を書き加えなくては
-ならないということです。これらのレイアウトがないと、
+えば、節レイアウトも非必須引数を使用することができません)。これは、たとえばページヘッダにヘッダ用タイトルを設定したい場合などには、ファイルを\SpecialChar LaTeX
+ファイルに変換した
+後に(これは最終的にAPSに原稿を送る際には行わなくてはなりません)、テキストエディタを使って\SpecialChar LaTeX
+ファイルを編集し、非必須引数を書き加えなくてはならないということで
+す。これらのレイアウトがないと、
 \family typewriter
 
 \backslash
@@ -15519,7 +15546,7 @@ status collapsed
 \emph on
 JMarcからの註:
 \emph default
- 実は、\SpecialCharNoPassThru LyX
+ 実は、\SpecialChar LyX
  1.3.0 では非必須引数を一部サポートしているのですが、このレイアウトは、まだこの機能を使うようにはアップデートされていないのです。
 \end_layout
 
@@ -15558,9 +15585,8 @@ http://www.springer.de/author/tex/help-journals.html
 
 \end_inset
 
-に必要なクラスファイル(\SpecialCharNoPassThru LaTeX2e
-用になりました)とそれに対応する学術誌の一覧があります。このレイアウトはモジュール式になっています。つまり、全ジャーナル共
-通部分は
+に必要なクラスファイル(\SpecialChar LaTeX2e
+用になりました)とそれに対応する学術誌の一覧があります。このレイアウトはモジュール式になっています。つまり、全ジャーナル共通部分は
 \family typewriter
 svjour.inc
 \family default
@@ -15596,14 +15622,14 @@ svjour
 \family typewriter
 svjog
 \family default
-は、標準\SpecialCharNoPassThru LyX
-頒布版に収録済みです。関連するクラスファイルを(Springerからダウンロードして)適切なディレクトリに導入し、\SpecialCharNoPassThru LaTeX
-を再設定した後(teT
-eXの場合は、必要に応じてroot権限で
+は、標準\SpecialChar LyX
+頒布版に収録済みです。関連するクラスファイルを(Springerからダウンロードして)適切なディレクトリに導入し、\SpecialChar LaTeX
+を再設定した後(teTeXの場合は、必
+要に応じてroot権限で
 \family typewriter
 texhash
 \family default
-を実行します)、\SpecialCharNoPassThru LyX
+を実行します)、\SpecialChar LyX
 を環境構成すれば、動作するはずです。
 \end_layout
 
@@ -15612,8 +15638,7 @@ texhash
 \end_layout
 
 \begin_layout Standard
-多くの定理環境 \threehyphens
- 
+多くの定理環境 — 
 \family sans
 主張
 \family default
@@ -15640,9 +15665,9 @@ texhash
 \family default
 ・
 \family sans
-サブタイトル・ヘッダ用\SpecialCharNoPassThru LaTeX
-タイトル・ヘッダ用著者名・所属機関・メール・オフプリント・キーワード・謝辞(acknowledgements)・謝辞(ackno
-wledgement)
+サブタイトル・ヘッダ用\SpecialChar LaTeX
+タイトル・ヘッダ用著者名・所属機関・メール・オフプリント・キーワード・謝辞(acknowledgements)・謝辞(acknowledg
+ement)
 \family default
 。詳しくは Springerのクラスファイルの説明書を読んでください。
 \end_layout
@@ -15660,8 +15685,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- \threehyphens
- Martin Vermeer
+ — Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -15673,8 +15697,7 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- \threehyphens
- Jean-Marc Lasgouttes
+ — Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
@@ -15694,9 +15717,9 @@ ejour2.layout
 \family typewriter
 ejour2.layout
 \family default
-は Springerの\SpecialCharNoPassThru LaTeX
- 2.09用のスタイルファイルを使った素人細工のようなレイアウトファイルです。これらのファイルはすでにありません。Jean-Mar
-c Lasgouttesのおかげで \SpecialCharNoPassThru LyX
+は Springerの\SpecialChar LaTeX
+ 2.09用のスタイルファイルを使った素人細工のようなレイアウトファイルです。これらのファイルはすでにありません。Jean-Marc
+ Lasgouttesのおかげで \SpecialChar LyX
 のレイアウトファイルのメカニズムをよりよく理解することができました。
 \end_layout
 
@@ -15719,7 +15742,8 @@ ejour2
 \begin_layout Section
 Slides (別名
 \noun on
-Sli\SpecialCharNoPassThru TeX
+Sli\SpecialChar TeX
+
 \noun default
 )
 \begin_inset Foot
@@ -15754,10 +15778,11 @@ John Weiss
 \end_layout
 
 \begin_layout Standard
-本節では、オーバーへッドプロジェクタ用のスライドをつくるのに、\SpecialCharNoPassThru LyX
+本節では、オーバーへッドプロジェクタ用のスライドをつくるのに、\SpecialChar LyX
 をどのように使えばよいかを説明します。これを行う文書クラスには、既定のslideクラスと
 \family sans
-Foil\SpecialCharNoPassThru TeX
+Foil\SpecialChar TeX
+
 \family default
 スライドクラスの2つがあります。本節は前者について説明を行います。
 \end_layout
@@ -15806,7 +15831,7 @@ transparencies (slides)
 \begin_layout Standard
 
 \family sans
-「slides (Foil\SpecialCharNoPassThru TeX
+「slides (Foil\SpecialChar TeX
 )
 \family default
 」の説明をお探しならば、第
@@ -15822,7 +15847,7 @@ foils
 \family default
 クラス「
 \family sans
-slides (Foil\SpecialCharNoPassThru TeX
+slides (Foil\SpecialChar TeX
 )
 \family default
 」は、実際、本節で説明している既定
@@ -15837,7 +15862,8 @@ status collapsed
 \SpecialChar ldots
 と
 \family sans
-Foil\SpecialCharNoPassThru TeX
+Foil\SpecialChar TeX
+
 \family default
 の支持者からは聞いています。けれども私は使ったことがないので、本当かどうか確かめようがありません。
 \end_layout
@@ -15848,9 +15874,9 @@ Foil\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-このクラスは、旧SLI\SpecialCharNoPassThru TeX
-パッケージを\SpecialCharNoPassThru LaTeX2e
-用に改良したものです。\SpecialCharNoPassThru LaTeX2e
+このクラスは、旧SLI\SpecialChar TeX
+パッケージを\SpecialChar LaTeX2e
+用に改良したものです。\SpecialChar LaTeX2e
 頒布版すべてが、このクラス(以下では単に「
 \family sans
 slides
@@ -15913,9 +15939,9 @@ slides
 ヘディング様式
 \family default
 オプションは、このクラスでは少し異なった振る舞いをします。各選択肢とその機能は、以下の通りです。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -15955,9 +15981,9 @@ clock
 clock
 \family default
 」と入力してください。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -16088,7 +16114,7 @@ slides
 \begin_layout Itemize
 
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 コード
 \end_layout
 
@@ -16141,12 +16167,11 @@ slides
 \end_layout
 
 \begin_layout Standard
-これら5つの環境は、\SpecialCharNoPassThru LyX
-の「機能」のために使い方に癖があります。ご存じのように、\SpecialCharNoPassThru LyX
-では、空の段落環境に他の環境を入れることができません。それ自体は素晴らし
-いデザインなのですが、これは、スライドを平文以外では書き始めることができないことを意味します。これを取り扱うためには、ちょっとした「\SpecialCharNoPassThru LaTeX
-マジック」が必要に
-なります。
+これら5つの環境は、\SpecialChar LyX
+の「機能」のために使い方に癖があります。ご存じのように、\SpecialChar LyX
+では、空の段落環境に他の環境を入れることができません。それ自体は素晴らしいデザインな
+のですが、これは、スライドを平文以外では書き始めることができないことを意味します。これを取り扱うためには、ちょっとした「\SpecialChar LaTeX
+マジック」が必要になります。
 \end_layout
 
 \begin_layout Subsubsection
@@ -16161,10 +16186,9 @@ name "sec:スライドの癖"
 \end_layout
 
 \begin_layout Standard
-5つの新しい環境にはすべて、\SpecialCharNoPassThru LyX
-現行版の制約に由来する癖があります。いま述べたように、\SpecialCharNoPassThru LyX
-では、環境を別の環境で開始することが禁止されています。これを回避す
-るために、
+5つの新しい環境にはすべて、\SpecialChar LyX
+現行版の制約に由来する癖があります。いま述べたように、\SpecialChar LyX
+では、環境を別の環境で開始することが禁止されています。これを回避するために、
 \family sans
 スライド
 \family default
@@ -16244,7 +16268,7 @@ name "sec:スライドの癖"
 \family sans
 可視文
 \family default
-では、まったく意味がなく、\SpecialCharNoPassThru LyX
+では、まったく意味がなく、\SpecialChar LyX
 はこの部分を完全に無視します。これらの5つの環境の内容は、完全に空のままにしておいて構いません。
 \end_layout
 
@@ -16266,10 +16290,10 @@ Return
 \end_layout
 
 \begin_layout Standard
-一方、説明文を入れたくない場合には、\SpecialCharNoPassThru LyX
-の制約に直面します。自然が真空を憎むように、\SpecialCharNoPassThru LyX
-では、古い環境に何かを置くまでは、その中に新しい環境を入れることがで
-きません。そこで以下のようにしてください。
+一方、説明文を入れたくない場合には、\SpecialChar LyX
+の制約に直面します。自然が真空を憎むように、\SpecialChar LyX
+では、古い環境に何かを置くまでは、その中に新しい環境を入れることができません。そ
+こで以下のようにしてください。
 \end_layout
 
 \begin_layout Itemize
@@ -16337,7 +16361,7 @@ Return
 \end_layout
 
 \begin_layout Standard
-将来の\SpecialCharNoPassThru LyX
+将来の\SpecialChar LyX
 では、このような癖が解決されることを祈っています\SpecialChar ldots
 
 \begin_inset Foot
@@ -16380,7 +16404,7 @@ status collapsed
 \family sans
 slides
 \family default
-クラスを役立てる方法を詳しく説明はしますが、内容をどうするかはあなた次第です(そしてこれも\SpecialCharNoPassThru LyX
+クラスを役立てる方法を詳しく説明はしますが、内容をどうするかはあなた次第です(そしてこれも\SpecialChar LyX
 の哲学です)。
 \end_layout
 
@@ -16396,13 +16420,13 @@ reference "sec:スライドの癖"
 
 \end_inset
 
-節参照のこと)、\SpecialCharNoPassThru LyX
-は新規スライドを開始します。この環境ないし「疑似環境」のラベルは、鮮やかな青で「新規スライド:」と表示されます。この環境の後のテキスト環境
-や段落環境は、すべて新規スライドに入ります。簡単ですよね。
+節参照のこと)、\SpecialChar LyX
+は新規スライドを開始します。この環境ないし「疑似環境」のラベルは、鮮やかな青で「新規スライド:」と表示されます。この環境の後のテキスト環境や段落
+環境は、すべて新規スライドに入ります。簡単ですよね。
 \end_layout
 
 \begin_layout Standard
-Slidesは、おそらく\SpecialCharNoPassThru LyX
+Slidesは、おそらく\SpecialChar LyX
 の中で強制的に改頁をしなくてはならない唯一のクラスです(これは
 \family sans
 段落レイアウト
@@ -16542,7 +16566,7 @@ status collapsed
 \family sans
 スライド
 \family default
-の「一部」であると考えるのがよいでしょう。\SpecialCharNoPassThru LyX
+の「一部」であると考えるのがよいでしょう。\SpecialChar LyX
 では、
 \family sans
 オーバーレイ
@@ -16752,13 +16776,13 @@ reference "sec:スライドの癖"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  
 \family sans
 slides
 \family default
 クラスをデザインする上で、ひとつ残された問題があります。段落途中の文章を不可視にしたり、不可視段落の途中の文章を再度可視にしたりすることはできないのです。これを
-実現するためには、\SpecialCharNoPassThru LaTeX
+実現するためには、\SpecialChar LaTeX
 コードを埋め込む必要があります
 \begin_inset Foot
 status collapsed
@@ -16787,7 +16811,7 @@ visible \SpecialChar ldots
 
 \begin_layout Plain Layout
 \SpecialChar ldots
-のような形となり、\SpecialCharNoPassThru TeX
+のような形となり、\SpecialChar TeX
 としてマークする必要があります。「可視性」を変更したい文章は、波括弧のあいだ(そして
 \family typewriter
 
@@ -16800,7 +16824,7 @@ invisible
 \backslash
 visible
 \family default
-コマンドの後ろ)に入れます。\SpecialCharNoPassThru TeX
+コマンドの後ろ)に入れます。\SpecialChar TeX
 としてマークする方法がわからない場合は、
 \emph on
 ユーザーの手引き
@@ -16841,7 +16865,8 @@ name "sec:スライド注釈"
 \family sans
 スライド
 \family default
-に関連付けられています。ここでも\SpecialCharNoPassThru LyX
+に関連付けられています。ここでも\SpecialChar LyX
+
 \family sans
 スライド
 \family default
@@ -16905,7 +16930,7 @@ name "sec:スライド注釈"
 \family sans
 スライド
 \family default
-についての覚書として使うこともできます。後者の場合には、タイムマーカを利用したいこともあるかもしれません。現在のところ、\SpecialCharNoPassThru LyX
+についての覚書として使うこともできます。後者の場合には、タイムマーカを利用したいこともあるかもしれません。現在のところ、\SpecialChar LyX
 の
 \family sans
 スライド
@@ -16914,8 +16939,8 @@ name "sec:スライド注釈"
 \noun on
 Sli
 \noun default
-\SpecialCharNoPassThru TeX
-の機能であるタイムマーカを「ネイティブには」サポートしていません。したがって、\SpecialCharNoPassThru LaTeX
+\SpecialChar TeX
+の機能であるタイムマーカを「ネイティブには」サポートしていません。したがって、\SpecialChar LaTeX
 コードを使用することに頼らなくてはなりません。
 \end_layout
 
@@ -16935,7 +16960,7 @@ reference "sec:slidesetup"
 \family sans
 注釈
 \family default
-の左下にタイムマーカを表示します。タイムマーカに表示するものを設定するには、\SpecialCharNoPassThru LaTeX
+の左下にタイムマーカを表示します。タイムマーカに表示するものを設定するには、\SpecialChar LaTeX
 コマンド「
 \family typewriter
 
@@ -16996,7 +17021,7 @@ addtime{}
 \end_layout
 
 \begin_layout Standard
-幸いなことに、どれを印刷するか選択することを可能にする\SpecialCharNoPassThru LaTeX
+幸いなことに、どれを印刷するか選択することを可能にする\SpecialChar LaTeX
 コマンドが、2種類あります。どちらも文書のプリアンブルに記述されなくてはなりません。コマンド「
 \family typewriter
 
@@ -17067,7 +17092,7 @@ onlyslides{}
 \backslash
 onlynotes{}
 \family default
-」コマンドには、他の引数を与えることもできます。詳しくは、\SpecialCharNoPassThru LaTeX
+」コマンドには、他の引数を与えることもできます。詳しくは、\SpecialChar LaTeX
 の良書をご覧ください。
 \end_layout
 
@@ -17161,14 +17186,15 @@ notes}
 \end_layout
 
 \begin_layout Standard
-最後に、私はこの文書クラスを、\SpecialCharNoPassThru LaTeX2e
+最後に、私はこの文書クラスを、\SpecialChar LaTeX2e
 の組み込みクラスである「
 \noun on
-Sli\SpecialCharNoPassThru TeX
+Sli\SpecialChar TeX
+
 \noun default
-エミュレーション」クラスをサポートする目的で作成しました。私も\SpecialCharNoPassThru LyX
-チームの他のメンバーも、この組み込みスライドクラスを使用することに賛成したり反対したりするも
-のではありません。これは単に、ユーザーがこれを使いたかったり必要としたりしたときのためにあるものです。プレゼンテーションを作成するためには、
+エミュレーション」クラスをサポートする目的で作成しました。私も\SpecialChar LyX
+チームの他のメンバーも、この組み込みスライドクラスを使用することに賛成したり反対したりするものでは
+ありません。これは単に、ユーザーがこれを使いたかったり必要としたりしたときのためにあるものです。プレゼンテーションを作成するためには、
 \family sans
 Foils
 \family default
@@ -17183,19 +17209,19 @@ reference "sec:foiltex"
 \family typewriter
 seminar
 \family default
-」パッケージ(一部の\SpecialCharNoPassThru TeX
-頒布版に含まれています)のように、他の\SpecialCharNoPassThru LaTeX2e
-クラスも存在します。私はこれらについては知らないのですが、他にどのようなことができ
-るのか試してみてください。
+」パッケージ(一部の\SpecialChar TeX
+頒布版に含まれています)のように、他の\SpecialChar LaTeX2e
+クラスも存在します。私はこれらについては知らないのですが、他にどのようなことができるのか試してみてくだ
+さい。
 \end_layout
 
 \begin_layout Chapter
-ソフトウェアを追加する必要がある \SpecialCharNoPassThru LyX
+ソフトウェアを追加する必要がある \SpecialChar LyX
 機能
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 のチェック
 \end_layout
 
@@ -17221,8 +17247,8 @@ chktex
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LaTeX
-頒布版としてMiK\SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+頒布版としてMiK\SpecialChar TeX
 を使用している場合には、
 \family typewriter
 chktex
@@ -17238,7 +17264,7 @@ chktex
 \family default
 メニューの下に、
 \family sans
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 構文チェック
 \family default
 という項目が表示されます。
@@ -17262,9 +17288,10 @@ target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
 \begin_layout Standard
 
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
+パッケージは、\SpecialChar LaTeX
 の構成物には直感的でないものもあり、すぐ忘れてしまいがちであるのに不満を感じた
 \begin_inset Flex Noun
 status collapsed
@@ -17276,9 +17303,8 @@ Jens T.
 
 \end_inset
 
-が書いたプログラムです。このプログラムは、\SpecialCharNoPassThru LaTeX
-ファイルを走査して、ファイルの整合性をチェックし、犯しがちな誤りを見つけ出します。別の技術用語では、LaTe
-Xにおける
+が書いたプログラムです。このプログラムは、\SpecialChar LaTeX
+ファイルを走査して、ファイルの整合性をチェックし、犯しがちな誤りを見つけ出します。別の技術用語では、LaTeXにおける
 \family typewriter
 lint
 \family default
@@ -17286,9 +17312,9 @@ lint
 \end_layout
 
 \begin_layout Standard
-さて、\SpecialCharNoPassThru LyX
-はつねに正しい\SpecialCharNoPassThru LaTeX
-ファイルを生成するはずなのに、文法チェッカーは\SpecialCharNoPassThru LyX
+さて、\SpecialChar LyX
+はつねに正しい\SpecialChar LaTeX
+ファイルを生成するはずなのに、文法チェッカーは\SpecialChar LyX
 で何をするというのでしょうか。答えは簡単です。
 \family typewriter
 lint
@@ -17303,7 +17329,8 @@ lint
 \emph default
 チェックも行うように、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 は、文法エラーの他に犯しがちな
 \emph on
@@ -17311,7 +17338,8 @@ Chk\SpecialCharNoPassThru TeX
 \emph default
 誤りも検出してくれるからです。
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 は、以下のような誤りを検出することができます。
 \end_layout
@@ -17418,7 +17446,8 @@ reference "sec:chktex"
 などなど\SpecialChar ldots
 
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 は、印刷する前に文書を「仕上げる」上で、たいへん価値のあるツールです。必須のスペルチェックを終えた直後、組版の微調整をする前には、これを実行するべきです。
 \end_layout
@@ -17431,20 +17460,22 @@ Chk\SpecialCharNoPassThru TeX
 このプログラムを導入したならば、使うのは
 \family sans
 ツール\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 構文チェック
 \family default
-を選択するだけなので簡単です。こうすると、\SpecialCharNoPassThru LyX
-は使用中の文書の\SpecialCharNoPassThru LaTeX
+を選択するだけなので簡単です。こうすると、\SpecialChar LyX
+は使用中の文書の\SpecialChar LaTeX
 ファイルを生成して、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 を起動し、当該ファイルを検査しますが、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
-から警告があった場合には、それを含んだ「エラーボックス」を\SpecialCharNoPassThru LyX
+から警告があった場合には、それを含んだ「エラーボックス」を\SpecialChar LyX
 中に挿入します。警告は、誤りのある箇所のそばに置かれるので、メニュー項目の
 \family sans
 移動\SpecialChar menuseparator
@@ -17534,7 +17565,8 @@ C-o
 \family default
 を押します。警告を読み、それが誤りを示していれば修正します。警告が何を意味しているか理解しにくい場合には、無視しても問題はありません。画面上の文書と、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 を起動する際に行なわれる実際の技術的な操作のあいだには、隠された層があり、この隔たりのせいで、一部の警告が不可解なものになったり、明らかに馬鹿げたものになる場合
 があるのです。
@@ -17552,15 +17584,18 @@ Chk\SpecialCharNoPassThru TeX
 \begin_layout Standard
 場合によっては、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 は、あなたが望むよりも煩すぎると思うかもしれません。そのような場合には、必要と思うまで
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 を無効にするか、あなたにもう少し合うように
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 を調整することができます。
 \end_layout
@@ -17568,17 +17603,20 @@ Chk\SpecialCharNoPassThru TeX
 \begin_layout Standard
 
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
-は調整や拡張がひじょうに柔軟なのですが、\SpecialCharNoPassThru LyX
+は調整や拡張がひじょうに柔軟なのですが、\SpecialChar LyX
 における
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
-関連の問題が、それですべて解決すると思うべきではありません。\SpecialCharNoPassThru LyX
+関連の問題が、それですべて解決すると思うべきではありません。\SpecialChar LyX
 は、
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 出力
 \begin_inset Foot
@@ -17596,7 +17634,7 @@ chktex
 を実行した直後に
 \family sans
 文書\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 ログ
 \family default
 を使えば見ることができます。
@@ -17604,9 +17642,9 @@ chktex
 
 \end_inset
 
-から得た行番号と内部構造を一致させるため、やや特殊な\SpecialCharNoPassThru LaTeX
-ファイルを生成しなくてはならないので、警告の一部は正しく表示されていないように見えるでしょう。これ
-に対処するためには、以下の2つの方法があります。
+から得た行番号と内部構造を一致させるため、やや特殊な\SpecialChar LaTeX
+ファイルを生成しなくてはならないので、警告の一部は正しく表示されていないように見えるでしょう。これに対処する
+ためには、以下の2つの方法があります。
 \end_layout
 
 \begin_layout Itemize
@@ -17621,9 +17659,9 @@ status collapsed
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 \SpecialChar menuseparator
-Check\SpecialCharNoPassThru TeX
+Check\SpecialChar TeX
 コマンド
 \end_layout
 
@@ -17633,11 +17671,13 @@ Check\SpecialCharNoPassThru TeX
 \family default
 中の
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 起動コマンドラインを調整するか、グローバルな
 \family sans
-Chk\SpecialCharNoPassThru TeX
+Chk\SpecialChar TeX
+
 \family default
 の設定ファイル(通常は
 \begin_inset Flex Code
@@ -17657,14 +17697,15 @@ chktexrc
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
-を使って文書を\SpecialCharNoPassThru LaTeX
+を使って文書を\SpecialChar LaTeX
 ファイルに変換し、そのファイルに対して
 \family typewriter
 chktex
 \family default
-を手動で実行します。このようにすると、\SpecialCharNoPassThru LyX
+を手動で実行します。このようにすると、\SpecialChar LyX
 文書中の対応箇所を見つけるのがやや面倒ですが、少し我慢すれば見つけることができます。
 \end_layout
 
@@ -17689,7 +17730,7 @@ chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、
 \family typewriter
 chktex
@@ -17971,7 +18012,7 @@ No match found for
 \begin_layout Enumerate
 
 \size small
-Math mode still on at end of \SpecialCharNoPassThru LaTeX
+Math mode still on at end of \SpecialChar LaTeX
  file.
 \end_layout
 
@@ -18120,7 +18161,7 @@ You ought to remove spaces in front of punctuation.
 \begin_layout Enumerate
 
 \size small
-Could not execute \SpecialCharNoPassThru LaTeX
+Could not execute \SpecialChar LaTeX
  command.
 \end_layout
 
@@ -18254,8 +18295,8 @@ You should put punctuation outside inner/inside display math mode.
 \begin_layout Enumerate
 
 \size small
-You ought to not use primitive \SpecialCharNoPassThru TeX
- in \SpecialCharNoPassThru LaTeX
+You ought to not use primitive \SpecialChar TeX
+ in \SpecialChar LaTeX
  code.
 \end_layout
 
@@ -18307,7 +18348,7 @@ You should remove spaces in front of
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の将来の版では、このツール(およびその縮小版
 \family typewriter
 lacheck
@@ -18317,7 +18358,7 @@ lacheck
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 でのバージョン管理
 \end_layout
 
@@ -18338,16 +18379,16 @@ Pavel Sanda
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、今ではもっとも基本的なRCS/CVS/SVN/GITコマンドをサポートしています。もしもっと洗練されたことを行いたい場合には、ターミナル上から手動で行
-う必要があります。
+\SpecialChar LyX
+は、今ではもっとも基本的なRCS/CVS/SVN/GITコマンドをサポートしています。もしもっと洗練されたことを行いたい場合には、ターミナル上から手動で行う必要
+があります。
 \end_layout
 
 \begin_layout Standard
 また、CVSのサポートは、subversionのサポートほど良くないので、CVSよりもSVNを使うことをお勧めします。Subversionを学び始めるには、SV
 N Book
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -18373,12 +18414,12 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-で実際にバージョン管理機能を使い始める前に、RCS/CVS/SVN/GITの使用法に習熟しておかなくてはなりません。\SpecialCharNoPassThru LyX
-で\SpecialCharNoPassThru LyX
-への実装においては、GN
-U RCSまたはCVS/SVNパッケージの最新版を仮定しています。旧版への保証はありません。ログメッセージのほとんどは、現在のところ操作後には表示されません。確
-認したい場合には、メッセージ面で確かめてください。バージョン管理を常用するユーザーには、VCツールバーが便利でしょう。これは
+\SpecialChar LyX
+で実際にバージョン管理機能を使い始める前に、RCS/CVS/SVN/GITの使用法に習熟しておかなくてはなりません。\SpecialChar LyX
+で\SpecialChar LyX
+への実装においては、GNU
+ RCSまたはCVS/SVNパッケージの最新版を仮定しています。旧版への保証はありません。ログメッセージのほとんどは、現在のところ操作後には表示されません。確認
+したい場合には、メッセージ面で確かめてください。バージョン管理を常用するユーザーには、VCツールバーが便利でしょう。これは
 \family sans
 表示\SpecialChar menuseparator
 ツールバー\SpecialChar menuseparator
@@ -18388,38 +18429,39 @@ U RCSまたはCVS/SVNパッケージの最新版を仮定しています。旧�
 \end_layout
 
 \begin_layout Standard
-自製の外部コマンドを導入したい場合には、\SpecialCharNoPassThru LyX
+自製の外部コマンドを導入したい場合には、\SpecialChar LyX
 関数説明書のvcコマンドを確認してください。
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+It is strongly recommended to store documents in uncompressed format if
+ using version control (uncheck 
+\family sans
+Document\SpecialChar menuseparator
+Compressed
+\family default
+ if it is checked): Uncompressed LyX documents are text files and therefore
+ for merging two different versions by version control systems.
+ Compressed LyX documents are binary files, which cannot be merged by version
+ control systems.
+\end_layout
+
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 におけるRCSコマンド
 \end_layout
 
 \begin_layout Standard
-以下の節では\SpecialCharNoPassThru LyX
+以下の節では\SpecialChar LyX
 でサポートされているRCSコマンドを説明します。それらのコマンドは
 \family sans
 ファイル\SpecialChar menuseparator
 バージョン管理
 \family default
-のサブメニューにあります。\SpecialCharNoPassThru LyX
+のサブメニューにあります。\SpecialChar LyX
 は、RCS 5.7/5.8に対して試験されています。
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-古いDOS / MS Windowsビルド(5.7)では、\SpecialCharNoPassThru LyX
-で適切に動作させるためには、環境変数を設定する必要があります。とくに、標準時間帯(TZ)を設定し、
-さらに大事なことは、アーカイブの既定位置を変更する場合には、RCSINITを設定しなくてはなりません("SET RCSINIT=-x,v/")。\threehyphens
- \SpecialCharNoPassThru LyX
-は、文書のあるディレクトリのfile.lyx,vに、アーカイブがあるものと期待します。Windows RCSバイナリ付属のREADMEもご覧ください。
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -18571,9 +18613,9 @@ ci -q -u -i "<新ファイル名>"
 \end_layout
 
 \begin_layout Standard
-これは、最後のチェックインがあたかも為されなかったかのようにします。\SpecialCharNoPassThru LyX
-に読み込まれた文書に変更は加えられませんが、マスターRCSファイルから最後のバージョン
-が削除されます。
+これは、最後のチェックインがあたかも為されなかったかのようにします。\SpecialChar LyX
+に読み込まれた文書に変更は加えられませんが、マスターRCSファイルから最後のバージョンが削除
+されます。
 \end_layout
 
 \begin_layout Standard
@@ -18605,7 +18647,7 @@ man rlog
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、RCSバージョン番号情報(のみ)をサポートしています。詳細については、
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18617,12 +18659,12 @@ reference "subsec:VCS改訂情報"
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 におけるCVSコマンド
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、現在CVSを一部サポートしています。そのコマンドは、
 \family sans
 ファイル\SpecialChar menuseparator
@@ -18646,7 +18688,7 @@ CVSを初めて使いたい場合には、外部ツールを使用して自分�
 。したがって、共著者同士がコンスタントにコミュニケーションを交わしていれば、このようなコンフリクトは滅多に発生しません。もしコミュニケーションがなければ、いずれ
 にしても根本的な問題があるわけです。それにもかかわらず、いわゆる「予備付きチェックアウト」を使用したいと思う人々もいます。この場合、最初にチェックアウトした際に
 、全ファイルの作業コピーは読み込み専用にされ、ユーザーは、作業コピーを書き込み可能にする特別なコマンドを使用した後、編集を開始することになります。変更をチェック
-インすると、作業コピーは読み込み専用状態に戻ります。\SpecialCharNoPassThru LyX
+インすると、作業コピーは読み込み専用状態に戻ります。\SpecialChar LyX
 で予備付きチェックアウトを利用したい場合には、
 \begin_inset Flex Code
 status collapsed
@@ -18672,11 +18714,11 @@ cvs -r
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、あなたが予備付きチェックアウトを使用しているか、予備なしチェックアウトを利用しているか、推測しようと試みます。使用中の作業コピーが読み込み専用になって
-いるか、あるいはそれが書き込み可能であって、CVS/Baseサブディレクトリに使用中文書のコピーが存在している場合には、予備付きチェックアウトを使用しているもの
-と仮定し、そうでない場合には予備なしチェックアウトを使用しているものと仮定します。予備付きチェックアウトが検出された場合には、作業コピーが読み込み専用の場合に書
-き込み可能にするためには、
+\SpecialChar LyX
+は、あなたが予備付きチェックアウトを使用しているか、予備なしチェックアウトを利用しているか、推測しようと試みます。使用中の作業コピーが読み込み専用になっているか
+、あるいはそれが書き込み可能であって、CVS/Baseサブディレクトリに使用中文書のコピーが存在している場合には、予備付きチェックアウトを使用しているものと仮定
+し、そうでない場合には予備なしチェックアウトを使用しているものと仮定します。予備付きチェックアウトが検出された場合には、作業コピーが読み込み専用の場合に書き込み
+可能にするためには、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -18763,7 +18805,7 @@ CVS/Entries
 \end_inset
 
 ファイルが存在する場合にのみ)、お使いの文書をCVSに登録します。つまり、外部ツールを使用して、アーカイブを自分で作成ないしチェックアウトしなくてはならないこと
-を意味します(このステップを忘れてしまうと、\SpecialCharNoPassThru LyX
+を意味します(このステップを忘れてしまうと、\SpecialChar LyX
 は文書をRCSに登録します)。
 \end_layout
 
@@ -19042,11 +19084,11 @@ status collapsed
 
 \end_inset
 
-ファイルを取り込むなど、文書が複雑になるにつれ、バージョン管理の利用は複雑になります。\SpecialCharNoPassThru LyX
-は、文書が存在するツリー全体の更新をサポートします。これは、CVSの
-使用法について詳しい知識のない人々や、レポジトリに追加素材をコミットする野望のない人々と共同作業をするような場合に、特に便利です。ファイル構造は、すべての外部フ
-ァイルが、文書と同じディレクトリかそのサブディレクトリに来るように組織する必要があります。いずれにしても、複合文書を新しいディレクトリを建てて収容するのは、望ま
-しい習慣です。
+ファイルを取り込むなど、文書が複雑になるにつれ、バージョン管理の利用は複雑になります。\SpecialChar LyX
+は、文書が存在するツリー全体の更新をサポートします。これは、CVSの使用法
+について詳しい知識のない人々や、レポジトリに追加素材をコミットする野望のない人々と共同作業をするような場合に、特に便利です。ファイル構造は、すべての外部ファイル
+が、文書と同じディレクトリかそのサブディレクトリに来るように組織する必要があります。いずれにしても、複合文書を新しいディレクトリを建てて収容するのは、望ましい習
+慣です。
 \end_layout
 
 \begin_layout Standard
@@ -19186,7 +19228,7 @@ cvs log
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、CVS版数・著者名・最終コミットの日時をサポートします。これらの情報は、すべて
 \family typewriter
 cvs log -r <ファイル名>
@@ -19202,12 +19244,12 @@ reference "subsec:VCS改訂情報"
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 におけるSVNコマンド
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、現在SVNを一部サポートしています。そのコマンドは、
 \begin_inset Flex MenuItem
 status collapsed
@@ -19219,7 +19261,7 @@ status collapsed
 
 \end_inset
 
-メニューにあります。レポジトリへのアクセスに、ssh経由のパスワード保護アクセスを使用している場合には、端末ウィンドウでの入力を促されます。\SpecialCharNoPassThru LyX
+メニューにあります。レポジトリへのアクセスに、ssh経由のパスワード保護アクセスを使用している場合には、端末ウィンドウでの入力を促されます。\SpecialChar LyX
 は、SVN
  1.5および1.6に対して試験されています。
 \end_layout
@@ -19374,8 +19416,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-svn update \twohyphens
-non-interactive 
+svn update –non-interactive 
 \begin_inset Quotes eld
 \end_inset
 
@@ -19556,7 +19597,7 @@ status collapsed
 
 \end_inset
 
-ファイルを取り込んだりすれば、管理はずっと複雑になります。そこで\SpecialCharNoPassThru LyX
+ファイルを取り込んだりすれば、管理はずっと複雑になります。そこで\SpecialChar LyX
 は、文書のおいてあるツリー全体の更新をサポートします
 \begin_inset Foot
 status collapsed
@@ -19604,8 +19645,7 @@ svn diff $path(変更が発見された場合には通知します)
 \begin_inset Newline newline
 \end_inset
 
-svn update \twohyphens
-accept mine-full $path
+svn update –accept mine-full $path
 \end_layout
 
 \end_inset
@@ -19698,9 +19738,9 @@ http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
 
 \end_inset
 
-。ある文書について、この特性が検出されたときには、\SpecialCharNoPassThru LyX
-は自動的に文書編集にSVNロックを使用するようになり、チェックイン・チェックアウト機構はRCSと同じ枠組
-みに切り替わります。これは特に、\SpecialCharNoPassThru LyX
+。ある文書について、この特性が検出されたときには、\SpecialChar LyX
+は自動的に文書編集にSVNロックを使用するようになり、チェックイン・チェックアウト機構はRCSと同じ枠組みに切
+り替わります。これは特に、\SpecialChar LyX
 でのファイルの使われ方に以下の二つのモードがあることを意味します。
 \end_layout
 
@@ -19934,10 +19974,11 @@ name "subsec:VCS改訂情報"
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 による直接サポート
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -19970,7 +20011,7 @@ svnversion
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -20114,8 +20155,7 @@ info
 \begin_inset space ~
 \end_inset
 
-\twohyphens
-xml
+–xml
 \begin_inset space ~
 \end_inset
 
@@ -20127,6 +20167,7 @@ file.lyx
 の出力を解析したものが返されます。サポートされるフラグは
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -20214,9 +20255,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Itemize
-もう一つの\threehyphens
-ハッカー的な\threehyphens
-方法は、SVNキーワードを使用する方法です
+もう一つの—ハッカー的な—方法は、SVNキーワードを使用する方法です
 \begin_inset Foot
 status collapsed
 
@@ -20230,13 +20269,13 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
 \family sans
 svn propset svn:keywords 'Rev' file.lyx
 \family default
-)、文書中にキーワード\SpecialCharNoPassThru TeX
+)、文書中にキーワード\SpecialChar TeX
 コード
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは、\SpecialCharNoPassThru LyX
+これは、\SpecialChar LyX
 がキーワードタグの途中で改行してしまわないことを確実にするための、簡単な方法です。
 \end_layout
 
@@ -20264,8 +20303,8 @@ $Rev: 59 $
 
 \end_inset
 
-)。このアプローチにはいくつか問題があります。第一に、\SpecialCharNoPassThru TeX
-の世界では「$」文字は数式を表すのに使われるので、\SpecialCharNoPassThru LyX
+)。このアプローチにはいくつか問題があります。第一に、\SpecialChar TeX
+の世界では「$」文字は数式を表すのに使われるので、\SpecialChar LyX
 中の
 \begin_inset Formula $Rev$
 \end_inset
@@ -20276,7 +20315,7 @@ $Rev: 59 $
 
 になってしまいます。その他のId・Date・Authorなどといったキーワードも同様です。第二に、SVN出力は使用中のロケールに依存するので、Dateが用いられ
 ると、SVNは、問題を引き起こすような文字列を容易に生成してしまいます。第三に、文書中には、番号だけでなく「Rev:59」という文字列全体が表示されてしまいます
-。Subversionがユーザ定義のキーワードを実装するまでは、このアプローチを信頼性を持って使用したり、\SpecialCharNoPassThru LyX
+。Subversionがユーザ定義のキーワードを実装するまでは、このアプローチを信頼性を持って使用したり、\SpecialChar LyX
 がこれを直接サポートすることは、難しそうです。
 \end_layout
 
@@ -20285,8 +20324,7 @@ SVNとWindows環境
 \end_layout
 
 \begin_layout Quote
-ユーザが、かなり早いうちに自分自身でコマンドライン操作を理解できないのであれば、TortoiseSVNを使った方が賢明でしょう。\threehyphens
-P.
+ユーザが、かなり早いうちに自分自身でコマンドライン操作を理解できないのであれば、TortoiseSVNを使った方が賢明でしょう。—P.
  A.
  ルービン
 \end_layout
@@ -20296,9 +20334,9 @@ P.
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-を導入して、Subversionレポジトリへのアクセス権を持っている他に、ユーザはSubversionクライアントプログラムを導入する必要があります。クラ
-イアントプログラムのWindows用インストーラは
+\SpecialChar LyX
+を導入して、Subversionレポジトリへのアクセス権を持っている他に、ユーザはSubversionクライアントプログラムを導入する必要があります。クライアン
+トプログラムのWindows用インストーラは
 \begin_inset CommandInset href
 LatexCommand href
 name "CollabNet"
@@ -20314,11 +20352,11 @@ target "http://tortoisesvn.tigris.org/"
 
 \end_inset
 
-も導入することを考えるでしょう。これはSubversionの操作をWindows Explorerのコンテクスト(右クリック)メニューに統合します。\SpecialCharNoPassThru LyX
-外部で
-行う操作は、一般的にExplorerコンテクストメニューを使った方が便利です。TortoiseSVNは、\SpecialCharNoPassThru LyX
-自身が使用するクライアントプログラムの代わりとは成
-りませんので、注意してください。
+も導入することを考えるでしょう。これはSubversionの操作をWindows Explorerのコンテクスト(右クリック)メニューに統合します。\SpecialChar LyX
+外部で行う操
+作は、一般的にExplorerコンテクストメニューを使った方が便利です。TortoiseSVNは、\SpecialChar LyX
+自身が使用するクライアントプログラムの代わりとは成りませんので
+、注意してください。
 \end_layout
 
 \begin_layout Subsubsection
@@ -20326,14 +20364,14 @@ target "http://tortoisesvn.tigris.org/"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-文書をSubversionのバージョン管理下に置く前に、その親ディレクトリをバージョン管理下に置かなくてはなりません。文書を、既にレポジトリに存在するプロ
-ジェクトに追加する際には、新規文書が置かれることになるディレクトリへ、プロジェクトをチェックアウトすることによって実現します。プロジェクト自体がバージョン管理下
-にない場合(たとえばこの文書が新規プロジェクトの最初のファイルである場合)には、このディレクトリをレポジトリにインポートしなくてはなりません。これは、\SpecialCharNoPassThru LyX
-の外
-部で行います。インポートもチェックアウトも共に、TortoiseSVNを使えば、Explorerのコンテクストメニューから簡単に終えることができます。あるいは、
-DOSプロンプトでコマンドライン・クライアントを使って成し遂げることもできます。TortoiseSVNを使ったプロジェクトのインポート手続きを下記で説明します。
-レポジトリは既に存在し、新規プロジェクトを
+\SpecialChar LyX
+文書をSubversionのバージョン管理下に置く前に、その親ディレクトリをバージョン管理下に置かなくてはなりません。文書を、既にレポジトリに存在するプロジェク
+トに追加する際には、新規文書が置かれることになるディレクトリへ、プロジェクトをチェックアウトすることによって実現します。プロジェクト自体がバージョン管理下にない
+場合(たとえばこの文書が新規プロジェクトの最初のファイルである場合)には、このディレクトリをレポジトリにインポートしなくてはなりません。これは、\SpecialChar LyX
+の外部で行います
+。インポートもチェックアウトも共に、TortoiseSVNを使えば、Explorerのコンテクストメニューから簡単に終えることができます。あるいは、DOSプロン
+プトでコマンドライン・クライアントを使って成し遂げることもできます。TortoiseSVNを使ったプロジェクトのインポート手続きを下記で説明します。レポジトリは
+既に存在し、新規プロジェクトを
 \begin_inset Flex Code
 status collapsed
 
@@ -20350,8 +20388,7 @@ new project
 status collapsed
 
 \begin_layout Plain Layout
-svn \twohyphens
-help
+svn –help
 \end_layout
 
 \end_inset
@@ -20464,7 +20501,7 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で文書を新規作成するか開くかして、
 \begin_inset Flex MenuItem
 status collapsed
@@ -20512,8 +20549,7 @@ Linuxに較べて、WindowsでSVNクライアントをSSH経由で通信する�
 status collapsed
 
 \begin_layout Plain Layout
-svn \twohyphens
-version
+svn –version
 \end_layout
 
 \end_inset
@@ -20566,6 +20602,7 @@ status collapsed
 のみを使用することとします。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -20708,10 +20745,10 @@ svn co svn+ssh://user@server/repository_path
 \end_layout
 
 \begin_layout Standard
-共著者同士がLinuxとWindowsを混在させているとき、\SpecialCharNoPassThru LyX
-は.lyxファイル中で異なった行末記号を使用することになります。これは、\SpecialCharNoPassThru LyX
-の機能に関する限り
-問題になりませんが、コミット差分は巨大になり、マージではコンフリクトを引き起こしがちです。幸いにして、SVNは、.lyxファイルを
+共著者同士がLinuxとWindowsを混在させているとき、\SpecialChar LyX
+は.lyxファイル中で異なった行末記号を使用することになります。これは、\SpecialChar LyX
+の機能に関する限り問題になりま
+せんが、コミット差分は巨大になり、マージではコンフリクトを引き起こしがちです。幸いにして、SVNは、.lyxファイルを
 \begin_inset Flex Code
 status collapsed
 
@@ -20765,18 +20802,18 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 におけるGITコマンド
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で、最小限のGITコマンドがサポートされるようになりました。これらのコマンドは、
 \family sans
 ファイル\SpecialChar menuseparator
 バージョン管理
 \family default
-にあります。リポジトリのアクセスに、パスワード保護されたsshを使用している場合には、ターミナルウィンドウでの操作をするように促されます。\SpecialCharNoPassThru LyX
+にあります。リポジトリのアクセスに、パスワード保護されたsshを使用している場合には、ターミナルウィンドウでの操作をするように促されます。\SpecialChar LyX
 は、GIT
  1.7に対して試験を行っています。
 \end_layout
@@ -20804,9 +20841,9 @@ push
 
 \end_inset
 
-を使って、1つ以上のリモートリポジトリと同期されます。\SpecialCharNoPassThru LyX
-は、リモートのGITリポジトリとは、一切関わりません。CVSやSVNの集権的リポジトリに対して行うの
-と同じことを、ローカルのリポジトリに対してのみ行います。リモートのGITリポジトリを使用している場合には、お好みのGITクライアントを使用して、
+を使って、1つ以上のリモートリポジトリと同期されます。\SpecialChar LyX
+は、リモートのGITリポジトリとは、一切関わりません。CVSやSVNの集権的リポジトリに対して行うのと同じ
+ことを、ローカルのリポジトリに対してのみ行います。リモートのGITリポジトリを使用している場合には、お好みのGITクライアントを使用して、
 \begin_inset Flex Code
 status open
 
@@ -21031,18 +21068,14 @@ git log
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 は、ファイルの最終コミットのGITハッシュ番号・著者名・最終コミットの日時をサポートします。これらの情報は、すべて
 \family typewriter
-git log -n 1 \twohyphens
-pretty=format:%H%n%an%n%ai
+git log -n 1 --pretty=format:%H%n%an%n%ai
 \family default
 によって抽出されます。ツリーバージョン情報は、
 \family typewriter
-git describe \twohyphens
-abbrev \twohyphens
-dirty \twohyphens
-long
+git describe --abbrev --dirty --long
 \family default
 で取得されます。詳細については、第
 \begin_inset CommandInset ref
@@ -21059,7 +21092,7 @@ reference "subsec:VCS改訂情報"
 \end_layout
 
 \begin_layout Standard
-vcコマンド機構が最近になって付け加えられたおかげで、\SpecialCharNoPassThru LyX
+vcコマンド機構が最近になって付け加えられたおかげで、\SpecialChar LyX
 のパワーユーザは、改訂管理のための自製コマンドを作ることができるようになりました。
 \end_layout
 
@@ -21110,10 +21143,10 @@ diff
 
 \end_inset
 
-ダンプを生成することによって、改訂版の間の変更点を検査するのが、典型的な使用法です。これは平文ファイルには有効なのですが、複雑な構造を持つ\SpecialCharNoPassThru LyX
-ファイルの場合に
-は、あまり便利ではありません。そこで、\SpecialCharNoPassThru LyX
-は独自の文書比較機能を提供しています。この機能を呼び出すには2つの方法があります。1つは、\SpecialCharNoPassThru LyX
+ダンプを生成することによって、改訂版の間の変更点を検査するのが、典型的な使用法です。これは平文ファイルには有効なのですが、複雑な構造を持つ\SpecialChar LyX
+ファイルの場合には、あ
+まり便利ではありません。そこで、\SpecialChar LyX
+は独自の文書比較機能を提供しています。この機能を呼び出すには2つの方法があります。1つは、\SpecialChar LyX
 の
 \begin_inset Flex Code
 status collapsed
@@ -21124,7 +21157,7 @@ VC_COMPARE
 
 \end_inset
 
-関数を直接呼び出す方法であり(詳細は\SpecialCharNoPassThru LyX
+関数を直接呼び出す方法であり(詳細は\SpecialChar LyX
 関数説明書を参照)、もう1つは
 \begin_inset Flex MenuItem
 status collapsed
@@ -21177,17 +21210,17 @@ Edmar Wienskoski Jr.
 \end_layout
 
 \begin_layout Standard
-この節の主な目的は、文芸的プログラミング(literate programming)のために、\SpecialCharNoPassThru LyX
-をどう使えばよいかをお見せすることです。ここでは、あなたがこ
-のプログラミング技術をよくご存じで、「tangling」や「weaving」の意味するところを知っているものとして説明します。そうでない場合には、以下の各節にあ
-るウェブリンクをたどってください。そこには、かつての開発の歴史から最新のツールチップまで、たくさんの良質なドキュメンテーションがあります。
+この節の主な目的は、文芸的プログラミング(literate programming)のために、\SpecialChar LyX
+をどう使えばよいかをお見せすることです。ここでは、あなたがこのプロ
+グラミング技術をよくご存じで、「tangling」や「weaving」の意味するところを知っているものとして説明します。そうでない場合には、以下の各節にあるウェ
+ブリンクをたどってください。そこには、かつての開発の歴史から最新のツールチップまで、たくさんの良質なドキュメンテーションがあります。
 \end_layout
 
 \begin_layout Standard
-また、あなたが、\SpecialCharNoPassThru LyX
-の設定を変更することを厭わない程度まで\SpecialCharNoPassThru LyX
-に習熟しており、Xリソースファイルにも親しんでいることを前提にしています。そうでない場合は、あ
-なたの必要とするトピックを扱っている、\SpecialCharNoPassThru LyX
+また、あなたが、\SpecialChar LyX
+の設定を変更することを厭わない程度まで\SpecialChar LyX
+に習熟しており、Xリソースファイルにも親しんでいることを前提にしています。そうでない場合は、あなたの必要と
+するトピックを扱っている、\SpecialChar LyX
 の他の説明書で調べてください。
 \end_layout
 
@@ -21208,7 +21241,7 @@ Edmar Wienskoski Jr.
 \end_inset
 
 E.
- Knuthが、\SpecialCharNoPassThru TeX
+ Knuthが、\SpecialChar TeX
 組版ソフトウエアを開発中に作り出したものです。
 \end_layout
 
@@ -21226,6 +21259,7 @@ E.
 3つの際立った特徴があります。重要な順に列挙すれば、
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -21288,7 +21322,7 @@ Noweb
 \end_layout
 
 \begin_layout Itemize
-説明文書を\SpecialCharNoPassThru LaTeX
+説明文書を\SpecialChar LaTeX
 でもHTMLでも出力できる。
 \end_layout
 
@@ -21328,15 +21362,15 @@ http://www.cs.virginia.edu/~nr/noweb/
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 とNowebを使った文芸プログラミング
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-における文芸プログラミングのサポートは、\SpecialCharNoPassThru LyX
-の汎用変換機構を使用して実現しています。このサポートは「Noweb非依存」的な方法で提供されているので、Ly
-Xの設定を変更するだけで、自分の好きな他の文芸プログラミングツールを使って、この新しい\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+における文芸プログラミングのサポートは、\SpecialChar LyX
+の汎用変換機構を使用して実現しています。このサポートは「Noweb非依存」的な方法で提供されているので、LyXの設定を変
+更するだけで、自分の好きな他の文芸プログラミングツールを使って、この新しい\SpecialChar LyX
 の機能を利用することができます。
 \end_layout
 
@@ -21349,7 +21383,7 @@ nowebモジュールの使用
 \end_layout
 
 \begin_layout Standard
-Nowebと\SpecialCharNoPassThru LyX
+Nowebと\SpecialChar LyX
 の導入に成功したならば、新規文書を開いたときにはいつも、文書クラスを選択した後、
 \family sans
 文書\SpecialChar menuseparator
@@ -21364,7 +21398,7 @@ web」モジュールが表示され、文書に追加できるようになっ�
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 では、
 \begin_inset Flex Noun
 status collapsed
@@ -21399,9 +21433,9 @@ Chunk
 \end_layout
 
 \begin_layout Standard
-問題は<<と@の間にあるものを完全にそのままの形で扱わなければならないことです。つまり、\SpecialCharNoPassThru LyX
-は、この間に書かれたものを特別に解釈することは決してあってはなりま
-せん。これも
+問題は<<と@の間にあるものを完全にそのままの形で扱わなければならないことです。つまり、\SpecialChar LyX
+は、この間に書かれたものを特別に解釈することは決してあってはなりません。
+これも
 \begin_inset Flex Noun
 status collapsed
 
@@ -21461,7 +21495,7 @@ LIBDIR/examples/listerrors.lyx
 \end_layout
 
 \begin_layout Standard
-理解を助けるために、\SpecialCharNoPassThru LyX
+理解を助けるために、\SpecialChar LyX
 の内部で何が起っているかを説明しておきましょう。
 \end_layout
 
@@ -21471,11 +21505,11 @@ LIBDIR/examples/listerrors.lyx
 文書\SpecialChar menuseparator
 更新
 \family default
-が選択されると、\SpecialCharNoPassThru LaTeX
+が選択されると、\SpecialChar LaTeX
 ファイルがつくられます。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -21496,7 +21530,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-違いがファイル名だけなのに注意してください。\SpecialCharNoPassThru LyX
+違いがファイル名だけなのに注意してください。\SpecialChar LyX
 による特別な処理は必要ありません。
 \begin_inset Flex Noun
 status collapsed
@@ -21511,9 +21545,9 @@ Chunk
 \end_layout
 
 \begin_layout Enumerate
-文書が何らかの文芸プログラムクラスなら、\SpecialCharNoPassThru LyX
-は、\SpecialCharNoPassThru LyX
-からNowebへの内部変換子を用い、それからNowebから\SpecialCharNoPassThru LaTeX
+文書が何らかの文芸プログラムクラスなら、\SpecialChar LyX
+は、\SpecialChar LyX
+からNowebへの内部変換子を用い、それからNowebから\SpecialChar LaTeX
 への変換子
 \begin_inset Foot
 status collapsed
@@ -21537,11 +21571,11 @@ status collapsed
 
 \end_inset
 
-を使って\SpecialCharNoPassThru LaTeX
+を使って\SpecialChar LaTeX
 ファイルを生成します。
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -21552,7 +21586,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-最後に\SpecialCharNoPassThru LaTeX
+最後に\SpecialChar LaTeX
 が実行され、通常の文書と同じ後処理が行われます。
 \end_layout
 
@@ -21565,8 +21599,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ビルドメニューが選ばれた場合や、それに対応するツールバーのボタンが押された場合、上のステップ1と同様に\SpecialCharNoPassThru LaTeX
-ファイルが生成されます。それから\SpecialCharNoPassThru LyX
+ビルドメニューが選ばれた場合や、それに対応するツールバーのボタンが押された場合、上のステップ1と同様に\SpecialChar LaTeX
+ファイルが生成されます。それから\SpecialChar LyX
 は
 \family typewriter
 Noweb->Program
@@ -21580,10 +21614,9 @@ Noweb->Program
 \end_layout
 
 \begin_layout Enumerate
-エラーログ解析子。これはエラーメッセージを\SpecialCharNoPassThru LyX
-が理解できる形へ書き直します。これによって、\SpecialCharNoPassThru LyX
-はファイルバッファの正しい位置へエラーボックスを配置することが
-できます。
+エラーログ解析子。これはエラーメッセージを\SpecialChar LyX
+が理解できる形へ書き直します。これによって、\SpecialChar LyX
+はファイルバッファの正しい位置へエラーボックスを配置することができます。
 \end_layout
 
 \begin_layout Standard
@@ -21607,7 +21640,7 @@ build-script $$i $$r
 \begin_inset Newline newline
 \end_inset
 
-と指定します。これは基本的に、\SpecialCharNoPassThru LyX
+と指定します。これは基本的に、\SpecialChar LyX
 が
 \begin_inset Quotes erd
 \end_inset
@@ -21620,10 +21653,10 @@ build-script
 \begin_inset Quotes erd
 \end_inset
 
-(プログラムかスクリプト名)を(一般には\SpecialCharNoPassThru LyX
-の一時ファイル用のディレクトリにつくられる)、Nowebファイルの名前と元の\SpecialCharNoPassThru LyX
-ファイルのディレクトリパスを使っ
-て呼び出すことを意味しています。
+(プログラムかスクリプト名)を(一般には\SpecialChar LyX
+の一時ファイル用のディレクトリにつくられる)、Nowebファイルの名前と元の\SpecialChar LyX
+ファイルのディレクトリパスを使って呼び出すこ
+とを意味しています。
 \end_layout
 
 \begin_layout Standard
@@ -21703,16 +21736,16 @@ listerrors
 \end_layout
 
 \begin_layout Standard
-ビルドは、通常\SpecialCharNoPassThru LyX
-の一時ディレクトリで行われるので、変換によって生成されたファイルはそのディレクトリに置かれます。\SpecialCharNoPassThru LyX
-は、主要ファイルとみなされるものをコピ
-ーして取り出しますが、
+ビルドは、通常\SpecialChar LyX
+の一時ディレクトリで行われるので、変換によって生成されたファイルはそのディレクトリに置かれます。\SpecialChar LyX
+は、主要ファイルとみなされるものをコピーして取り出
+しますが、
 \family typewriter
 Noweb→プログラム
 \family default
-変換は複数のファイルを生成することがあるので、\SpecialCharNoPassThru LyX
-を閉じる際に大半が削除される可能性があります。これが、NOWEB_OUTPUT_DIR環境変数を渡して、bu
-ild-script chunkが生成したファイルをその場所に置かれるようにする理由です。
+変換は複数のファイルを生成することがあるので、\SpecialChar LyX
+を閉じる際に大半が削除される可能性があります。これが、NOWEB_OUTPUT_DIR環境変数を渡して、build
+-script chunkが生成したファイルをその場所に置かれるようにする理由です。
 \end_layout
 
 \begin_layout Paragraph
@@ -21720,7 +21753,7 @@ ild-script chunkが生成したファイルをその場所に置かれるよう�
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 とNowebの統合の最後の部分は、
 \begin_inset Quotes eld
 \end_inset
@@ -21798,13 +21831,13 @@ LIBDIR/examples/Literate.lyx
 \emph on
 LIBDIR/examples/noweb2lyx.lyx
 \emph default
-も見てください。面白いことに、これらの3つのファイルは、Python、C、Perlが各々使われていて、\SpecialCharNoPassThru LyX
-の文芸プログラミングのサポートがプログラム言語に依存
-しないことを示しています。
+も見てください。面白いことに、これらの3つのファイルは、Python、C、Perlが各々使われていて、\SpecialChar LyX
+の文芸プログラミングのサポートがプログラム言語に依存しない
+ことを示しています。
 \end_layout
 
 \begin_layout Subsubsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の設定
 \end_layout
 
@@ -21830,7 +21863,7 @@ NoWeb
 \family typewriter
 .nw
 \family default
-に設定してください。これによって、\SpecialCharNoPassThru LyX
+に設定してください。これによって、\SpecialChar LyX
 に変換プロセスの第一段階でつくられるファイルに
 \family typewriter
 .nw
@@ -21849,7 +21882,8 @@ NoWeb
 \family default
 ->
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
  この変換子は、文芸的文書の「weaving」を行います。Nowebの場合、「
 \family typewriter
@@ -21883,7 +21917,7 @@ parselog=$$s/scripts/listerrors
 \end_layout
 
 \begin_layout Standard
-ddd/gdbまたは他のデバッガで使える「server-goto-file-row」関数が新たに\SpecialCharNoPassThru LyX
+ddd/gdbまたは他のデバッガで使える「server-goto-file-row」関数が新たに\SpecialChar LyX
 サーバに実装されました。
 \end_layout
 
@@ -21934,7 +21968,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-新しい\SpecialCharNoPassThru LyX
+新しい\SpecialChar LyX
 サーバの関数と、このdddの機能を使うために
 \begin_inset Flex MenuItem
 status collapsed
@@ -21969,17 +22003,16 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \end_layout
 
 \begin_layout Standard
-こうしておくとdddを使っていてプログラムの編集したい場所があったとき、(dddのウインドウで)Shift-Ctrl-Vを押すだけでdddは\SpecialCharNoPassThru LyX
-サーバに情報を
-送り、\SpecialCharNoPassThru LyX
-は同じファイルを表示し、カーソルはdddが示した場所へあらわれます。これでもうデバッグの最中に推測しながらスクロールして場所を探す必要がなくなります
-。
+こうしておくとdddを使っていてプログラムの編集したい場所があったとき、(dddのウインドウで)Shift-Ctrl-Vを押すだけでdddは\SpecialChar LyX
+サーバに情報を送り、\SpecialChar LyX
+
+は同じファイルを表示し、カーソルはdddが示した場所へあらわれます。これでもうデバッグの最中に推測しながらスクロールして場所を探す必要がなくなります。
 \end_layout
 
 \begin_layout Standard
-この機能が動くには\SpecialCharNoPassThru LyX
-サーバが利用可能でなければなりません(既定では\SpecialCharNoPassThru LyX
-サーバーは使えないようになっています)。\SpecialCharNoPassThru LyX
+この機能が動くには\SpecialChar LyX
+サーバが利用可能でなければなりません(既定では\SpecialChar LyX
+サーバーは使えないようになっています)。\SpecialChar LyX
 サーバを使えるようにするには、
 \family sans
 
@@ -22021,7 +22054,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 サーバーパイプ
 \family default
 に
@@ -22068,11 +22101,12 @@ reference "chap:LyXサーバー"
 \family default
 ・節・
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
 ・
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 コード
 \family default
 ・
@@ -22121,7 +22155,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 はツールバーで使うためのいくつものボタンを用意しています。私のツールバーはこの6つのショートカットに
 \begin_inset Flex MenuItem
 status collapsed
@@ -22166,12 +22200,12 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout \SpecialCharNoPassThru LaTeX
+  Icon "layout \SpecialChar LaTeX
 "
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout \SpecialCharNoPassThru LyX
+  Icon "layout \SpecialChar LyX
 -Code"
 \end_layout
 
@@ -22220,7 +22254,7 @@ End
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 ではいくつもの色を
 \begin_inset Flex MenuItem
 status collapsed
@@ -22231,10 +22265,10 @@ status collapsed
 
 \end_inset
 
-で変えることができます。人々が困りがちなのは、\SpecialCharNoPassThru LaTeX
-フォント色でしょう。これは、既定では赤になっていますが、chunkは\SpecialCharNoPassThru LaTeX
-フォントを使うことになって
-いて、文芸プログラミング文書には多くのchunkが現れるために、すべて赤で見ていると疲れてしまうかもしれません。これは、
+で変えることができます。人々が困りがちなのは、\SpecialChar LaTeX
+フォント色でしょう。これは、既定では赤になっていますが、chunkは\SpecialChar LaTeX
+フォントを使うことになっていて、文芸プログラミ
+ング文書には多くのchunkが現れるために、すべて赤で見ていると疲れてしまうかもしれません。これは、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -22254,7 +22288,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 とknitr/Sweave
 \end_layout
 
@@ -22283,12 +22317,12 @@ name "chap:Special-features"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-では、\SpecialCharNoPassThru LaTeX
-で可能なことは何でも出来ます。すべての\SpecialCharNoPassThru LaTeX
-の機能を直接サポートできるわけではありませんが、どんな場合でも\SpecialCharNoPassThru TeX
-コードを使用することは
-できます。本章は、ユーザの興味が有りそうな特別な機能について、若干取り上げます。図表やフロート、ボックス、注釈に関する特別な機能については、取扱説明書『
+\SpecialChar LyX
+では、\SpecialChar LaTeX
+で可能なことは何でも出来ます。すべての\SpecialChar LaTeX
+の機能を直接サポートできるわけではありませんが、どんな場合でも\SpecialChar TeX
+コードを使用することはできます。本章は、ユーザの興味が
+有りそうな特別な機能について、若干取り上げます。図表やフロート、ボックス、注釈に関する特別な機能については、取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -22316,7 +22350,7 @@ name "chap:Special-features"
 \end_layout
 
 \begin_layout Standard
-文書中で多段組を行うには、\SpecialCharNoPassThru LaTeX
+文書中で多段組を行うには、\SpecialChar LaTeX
 パッケージ
 \series bold
 multicol
@@ -22326,8 +22360,8 @@ multicol
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LaTeX
-ぱっけーじ @ \SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+ぱっけーじ @ \SpecialChar LaTeX
 パッケージ ! multicol
 \end_layout
 
@@ -22572,7 +22606,7 @@ The evidence of those who had played with him– Mr.
 \end_layout
 
 \begin_layout Standard
-多段組機能についてさらに知りたい場合には、\SpecialCharNoPassThru LaTeX
+多段組機能についてさらに知りたい場合には、\SpecialChar LaTeX
 パッケージ
 \series bold
 multicol
@@ -22650,8 +22684,8 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-最初の\SpecialCharNoPassThru TeX
-コードの後に、節宣言コマンドを\SpecialCharNoPassThru TeX
+最初の\SpecialChar TeX
+コードの後に、節宣言コマンドを\SpecialChar TeX
 コードとして使用すれば、節見出しを前書きとして使用することができます。例えば、
 \end_layout
 
@@ -22752,7 +22786,7 @@ baselineskip」を用いて、必要行数を7行に指定しています(コマ
 \backslash
 baselineskip
 \series default
-は\SpecialCharNoPassThru TeX
+は\SpecialChar TeX
 コードとして入力する必要があります)。
 \end_layout
 
@@ -22817,7 +22851,7 @@ On the evening of the crime, he returned from the club exactly at ten.
 \backslash
 multicolsep
 \series default
-を変えることで変更することができます。例えば、\SpecialCharNoPassThru TeX
+を変えることで変更することができます。例えば、\SpecialChar TeX
 コードで書かれたコマンド
 \end_layout
 
@@ -22966,7 +23000,7 @@ go back to the default
 \end_layout
 
 \begin_layout Standard
-改段は、文章中の階段を行いたい位置に、\SpecialCharNoPassThru TeX
+改段は、文章中の階段を行いたい位置に、\SpecialChar TeX
 コードで、コマンド
 \series bold
 
@@ -23081,8 +23115,7 @@ Catullus
 \noun on
 The Holy War
 \noun default
-\twohyphens
-a bargain, every one of them.
+–a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -23330,8 +23363,7 @@ Catullus
 \noun on
 The Holy War
 \noun default
-\twohyphens
-a bargain, every one of them.
+–a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -23359,7 +23391,7 @@ a bargain, every one of them.
 \backslash
 columnseprulecolor
 \series default
-を再定義すれば、着色することができます。これは、多段組差込枠の前に\SpecialCharNoPassThru TeX
+を再定義すれば、着色することができます。これは、多段組差込枠の前に\SpecialChar TeX
 コードで以下のコマンドを挿入すれば、実現できます。
 \begin_inset Newline newline
 \end_inset
@@ -23532,8 +23564,7 @@ Catullus
 \noun on
 The Holy War
 \noun default
-\twohyphens
-a bargain, every one of them.
+–a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -23601,13 +23632,13 @@ go back to the default
 
 \begin_layout Standard
 \noindent
-\SpecialCharNoPassThru LaTeX
-は、他のテキストプロセッサと同様に、既定で長方形の段落を使用します。しかし、例えば、ポスターや招待状、詩などの特殊な場合には、段落の形を好きなように変
-えることができます。これは、文書設定で
+\SpecialChar LaTeX
+は、他のテキストプロセッサと同様に、既定で長方形の段落を使用します。しかし、例えば、ポスターや招待状、詩などの特殊な場合には、段落の形を好きなように変えることが
+できます。これは、文書設定で
 \family sans
 任意設定の段落形
 \family default
-モジュールを読み込んで、\SpecialCharNoPassThru LaTeX
+モジュールを読み込んで、\SpecialChar LaTeX
 パッケージ
 \series bold
 shapepar
@@ -23630,7 +23661,7 @@ shapepar
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
-<features rotate="0" booktabs="true" islongtable="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="middle" width="16col%">
 <column alignment="center" valignment="middle" width="40col%">
 <column alignment="center" valignment="middle" width="35col%">
@@ -23966,7 +23997,8 @@ Drop down/up
 \begin_inset Text
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -23975,7 +24007,7 @@ Drop down/up
 \begin_inset Text
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 ロゴ
 \end_layout
 
@@ -24032,7 +24064,7 @@ left/right
 \end_layout
 
 \begin_layout Standard
-段落に形を適用するには、\SpecialCharNoPassThru LyX
+段落に形を適用するには、\SpecialChar LyX
 ツールバー中の環境プルダウンボックスから形を選んでください。
 \end_layout
 
@@ -24170,7 +24202,7 @@ Arithmetic overflow
 \begin_inset Quotes erd
 \end_inset
 
-という\SpecialCharNoPassThru LaTeX
+という\SpecialChar LaTeX
 エラーが発生します。この時は、文章の一部を追加したり削除したりするか、どれもうまくいかなければ別の形を使用してください。
 \end_layout
 
@@ -24182,7 +24214,7 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
-先端のある形では、先端部の文字列で、\SpecialCharNoPassThru LaTeX
+先端のある形では、先端部の文字列で、\SpecialChar LaTeX
 のハイフネーションルーチンが失敗することがあります。したがって、この部分の文章には、ハイフネーション位置
 \family sans
 (
@@ -24390,8 +24422,8 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 \end_layout
 
 \begin_layout Standard
-座標は\SpecialCharNoPassThru TeX
-ファイルに書き込まれます。これを\SpecialCharNoPassThru LyX
+座標は\SpecialChar TeX
+ファイルに書き込まれます。これを\SpecialChar LyX
 文書で使用するには、
 \end_layout
 
@@ -24400,7 +24432,7 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 の
 \family sans
 挿入\SpecialChar menuseparator
@@ -24553,7 +24585,7 @@ key "multicol"
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \begin_inset CommandInset href
 LatexCommand href
@@ -24572,7 +24604,7 @@ key "shapepar"
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \begin_inset CommandInset href
 LatexCommand href

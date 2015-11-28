@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/fr/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -148,7 +148,7 @@ Options avancées de \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.1.x
+Version 2.2.x
 \begin_inset Note Note
 status collapsed
 
@@ -5106,7 +5106,35 @@ lyxpipe
 \begin_inset Quotes frd
 \end_inset
 
- avec Windows (mais n'importe quel chemin effectif peut être utilisé).
+ avec Windows (
+\lang english
+where any working path instead of lyxpipe can be used, for example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+"
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+my
+\backslash
+lyx
+\backslash
+pipe"
+\end_layout
+
+\end_inset
+
+ would also work
+\lang french
+).
  Vous devez configurer ceci 
 \emph on
 manuellement
@@ -5210,12 +5238,12 @@ lyx -dbg 8192
 \end_layout
 
 \begin_layout Standard
-Vous pouvez trouver un exemple complet de client écrit en C dans la distribution
- source sous le nom 
+Vous pouvez trouver un exemple complet de client écrit en C++ dans la distributi
+on source sous le nom 
 \family typewriter
 development/server_monitor.c
 \family default
-.
+pp.
 \end_layout
 
 \begin_layout Standard
@@ -5532,7 +5560,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Les visionneuses suivantes proposent la fonction de recherche inversée en
- PDF: Okular sur KDE/Linux, Skim sur Mac OSX et SumatraPDF sur Windows.
+ PDF: Okular sur KDE/Linux, Qpdfview sur Unix, Skim sur Mac OSX et SumatraPDF
+ sur Windows.
 \end_layout
 
 \end_inset
@@ -5588,16 +5617,12 @@ lyxclient
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:rev-search"
+name "subsec:Activation-automatique"
 
 \end_inset
 
-
-\lang french
 Activation automatique
 \end_layout
 
@@ -5669,8 +5694,6 @@ gzip
 \family default
 .
  Si votre visionneuse ne la supporte pas, vous devez utiliser à la place
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
@@ -5818,20 +5841,7 @@ Cette méthode équipe le fichier DVI de l'information nécessaire pour la
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (standard)->DVI
+LaTeX (standard)->DVI
 \end_layout
 
 \end_inset
@@ -5841,20 +5851,7 @@ eX (standard)->DVI
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (standard)->DraftDVI
+LaTeX (standard)->DraftDVI
 \end_layout
 
 \end_inset
@@ -6077,8 +6074,8 @@ scr-specials
 Live 2008 ou une distribution Mik\SpecialChar TeX
  récente pour pouvoir
  l'utiliser.
- Notez également que seules quelques visionneuses (Skim sur Mac, SumatraPDF
- sur Windows) supportent actuellement Sync\SpecialChar TeX
+ Notez également que seules quelques visionneuses (Okular et Qpdfview sur
+ Unix, Skim sur Mac, SumatraPDF sur Windows) supportent actuellement Sync\SpecialChar TeX
 .
 \end_layout
 
@@ -6090,20 +6087,7 @@ Pour activer Sync\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (standard) -> DVI
+LaTeX (standard) -> DVI
 \end_layout
 
 \end_inset
@@ -6113,20 +6097,7 @@ eX (standard) -> DVI
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (standard) -> DraftDVI
+LaTeX (standard) -> DraftDVI
 \end_layout
 
 \end_inset
@@ -6148,8 +6119,6 @@ Convertisseurs
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex -synctex=1 $$i
 \end_layout
 
@@ -6160,20 +6129,7 @@ latex -synctex=1 $$i
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (pdflatex) -> PDF (pdflatex)
+LaTeX (pdflatex) -> PDF (pdflatex)
 \end_layout
 
 \end_inset
@@ -6183,8 +6139,6 @@ eX (pdflatex) -> PDF (pdflatex)
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdflatex -synctex=1 $$i
 \end_layout
 
@@ -6281,11 +6235,7 @@ Cependant, si pour quelque raison vous préférez utiliser le tube nommé au
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-P
-\lang french
-références\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
 Gestion des fichiers\SpecialChar menuseparator
 Convertisseurs
 \end_layout
@@ -6371,25 +6321,14 @@ status collapsed
 
 \end_inset
 
- est le chemin d'accès au tube Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XServer spécifié dans 
+ est le chemin d'accès au tube LyXServer spécifié dans 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
+Préférences\SpecialChar menuseparator
 
 \lang english
-Preferences\SpecialChar menuseparator
 Paths
 \end_layout
 
@@ -6458,18 +6397,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 
@@ -6523,32 +6451,19 @@ PDF (pdflatex)
 
 \end_inset
 
-, et sélectionnez Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X dans 
+, et sélectionnez LyX dans 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Skim\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
 Sync
 \end_layout
 
 \end_inset
 
-..
+.
 \end_layout
 
 \begin_layout Standard
@@ -6565,11 +6480,8 @@ Aller à
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Configuration\SpecialChar menuseparator
-Configurer Okular\SpecialChar ldots
-\SpecialChar menuseparator
+Configurer Okular\SpecialChar menuseparator
 Editeur
 \end_layout
 
@@ -6600,6 +6512,60 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 La recherche inversée est déclenchée par SHIFT-clic.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang english
+Qpdfview (Unix)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Qpdfview supports Sync\SpecialChar TeX
+ since version 0.3.5.
+ Go to 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Edit\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Behavior
+\end_layout
+
+\end_inset
+
+, click on the input field of the 
+\begin_inset Quotes eld
+\end_inset
+
+Source editor
+\begin_inset Quotes erd
+\end_inset
+
+ item and add the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+lyxclient -g %1 %2
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Reverse search is triggered by double-click.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7081,8 +7047,6 @@ SumatraPDF.exe
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -g
 \end_layout
 
@@ -7098,8 +7062,6 @@ lyxsocket
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -g
 \end_layout
 
@@ -7175,7 +7137,7 @@ Pour rendre la recherche directe active, vous devez d'abord créer le fichier
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:rev-search"
+reference "subsec:Activation-automatique"
 
 \end_inset
 
@@ -7292,6 +7254,63 @@ okular
 
 \end_inset
 
+
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+You might want to set 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+okular –unique
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang french
+, 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+qpdfview
+\end_layout
+
+\end_inset
+
  et 
 \begin_inset Flex MenuItem
 status collapsed
@@ -7303,26 +7322,29 @@ Sumatra PDF
 \end_inset
 
 
+\lang english
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Pour Sumatra, CMCDDE est requis — téléchargeable ici 
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
+\lang english
+SumatraPDF can also use DDE commands through the external program CMCDDE
+ — downloadable from 
+\begin_inset CommandInset href
+LatexCommand href
+target "ftp://ftp2.commence.com/pub/freebies/"
 
-http://www.istri.fr/zip/CMCDDE.zip
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
+\lang french
 .
  Alors que beaucoup des visionneuses PDF largement diffusées (parmi lesquelles
  on remarquera Adobe Reader) ne comprennent pas du tout la recherche directe,
@@ -21126,7 +21148,7 @@ Notez également que le support de CVS n'est pas aussi bon que celui de Subversi
 n, que nous vous conseillons donc.
  Un bon document de départ pour Subversion est le Manuel SVN
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -21193,6 +21215,21 @@ vc-command
 .
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+It is strongly recommended to store documents in uncompressed format if
+ using version control (uncheck 
+\family sans
+Document\SpecialChar menuseparator
+Compressed
+\family default
+ if it is checked): Uncompressed LyX documents are text files and therefore
+ for merging two different versions by version control systems.
+ Compressed LyX documents are binary files, which cannot be merged by version
+ control systems.
+\end_layout
+
 \begin_layout Subsection
 Les commandes RCS sous \SpecialChar LyX
 
@@ -21215,7 +21252,7 @@ de
 Version
 \family default
 .
- Lyx a été testé avec RCS 5.7.
+ Lyx a été testé avec RCS 5.7/5.8.
 \end_layout
 
 \begin_layout Subsubsection

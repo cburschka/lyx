@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -132,15 +132,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
-\author -195340706 "Georg Baum"
-\author 274215730 "scott"
-\author 711066561 "Enrico Forestieri"
 \end_header
 
 \begin_body
@@ -151,7 +147,7 @@ Additional \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Author
@@ -775,15 +771,8 @@ status collapsed
 \begin_layout Plain Layout
 Insert\SpecialChar menuseparator
 
-\change_deleted -712698321 1437633182
-\SpecialChar TeX
-
-\change_inserted -712698321 1437633182
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  Code
 \end_layout
@@ -5575,25 +5564,12 @@ lyxpipe"
 
 \end_inset
 
- on Windows (
-\change_deleted 711066561 1405258697
-but
-\change_inserted 711066561 1405258701
-where
-\change_unchanged
- any working path 
-\change_inserted 711066561 1405258613
-instead of lyxpipe 
-\change_unchanged
-can be used
-\change_inserted 711066561 1405258962
-, for example 
+ on Windows (where any working path instead of lyxpipe can be used, for
+ example 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 711066561 1405258868
 "
 \backslash
 
@@ -5607,15 +5583,11 @@ my
 lyx
 \backslash
 pipe"
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- would also work
-\change_unchanged
-).
+ would also work).
  You 
 \emph on
 must
@@ -5712,20 +5684,13 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-You can find a complete example client written in C
-\change_inserted 711066561 1405258366
-++
-\change_unchanged
- in the source distribution as 
+You can find a complete example client written in C++ in the source distribution
+ as 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-development/lyxserver/server_monitor.c
-\change_inserted 711066561 1405258386
-pp
-\change_unchanged
-
+development/lyxserver/server_monitor.cpp
 \end_layout
 
 \end_inset
@@ -5734,11 +5699,7 @@ pp
 \end_layout
 
 \begin_layout Standard
-Another useful tool is the command-line based client
-\change_inserted 711066561 1405258403
- 
-\change_unchanged
-found in 
+Another useful tool is the command-line based client found in 
 \begin_inset Flex Code
 status collapsed
 
@@ -6098,11 +6059,8 @@ Some DVI/PDF viewers
 status collapsed
 
 \begin_layout Plain Layout
-The following viewers offer the reverse PDF search feature: Okular on KDE/Linux
-\change_inserted 711066561 1405273809
-, Qpdfview on Unix
-\change_unchanged
-, Skim on Mac OSX and SumatraPDF on Windows.
+The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
+ Qpdfview on Unix, Skim on Mac OSX and SumatraPDF on Windows.
 \end_layout
 
 \end_inset
@@ -6257,13 +6215,7 @@ synctex=-1
 \end_layout
 
 \begin_layout Standard
-Please a
-\change_deleted 711066561 1405259326
-ö
-\change_inserted 711066561 1405259326
-l
-\change_unchanged
-so note that including the 
+Please also note that including the 
 \begin_inset Flex Code
 status collapsed
 
@@ -6370,25 +6322,8 @@ status collapsed
 
 \begin_layout Plain Layout
 La
-\change_deleted -712698321 1437633234
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633234
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  (plain)->DVI
 \end_layout
@@ -6401,25 +6336,8 @@ status collapsed
 
 \begin_layout Plain Layout
 La
-\change_deleted -712698321 1437633251
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633251
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  (plain)->DraftDVI
 \end_layout
@@ -6585,7 +6503,7 @@ scr-specials
  You need at least \SpecialChar TeX
 Live 2008 or a recent Mik\SpecialChar TeX
  distribution in order to use
- it
+ it.
 \begin_inset Foot
 status collapsed
 
@@ -6607,12 +6525,8 @@ The generation of the required info can be forced by changing the converter
 
 \end_inset
 
-.
- Also note that only a few PDF viewers (
-\change_inserted 711066561 1405273879
-Okular and Qpdfview on Unix, 
-\change_unchanged
-Skim on the Mac, SumatraPDF on Windows) already provide Sync\SpecialChar TeX
+ Also note that only a few PDF viewers (Okular and Qpdfview on Unix, Skim
+ on the Mac, SumatraPDF on Windows) already provide Sync\SpecialChar TeX
  support.
 \end_layout
 
@@ -6624,25 +6538,8 @@ status collapsed
 
 \begin_layout Plain Layout
 La
-\change_deleted -712698321 1437633274
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633274
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  (plain) -> DVI
 \end_layout
@@ -6655,25 +6552,8 @@ status collapsed
 
 \begin_layout Plain Layout
 La
-\change_deleted -712698321 1437633275
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633275
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  (plain) -> DraftDVI
 \end_layout
@@ -6708,25 +6588,8 @@ status collapsed
 
 \begin_layout Plain Layout
 La
-\change_deleted -712698321 1437633276
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633276
-
 \family sans
 TeX
-\change_unchanged
-
 \family default
  (pdflatex) -> PDF (pdflatex)
 \end_layout
@@ -7098,8 +6961,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Settings\SpecialChar menuseparator
-Configure Okular\SpecialChar ldots
-\SpecialChar menuseparator
+Configure Okular\SpecialChar menuseparator
 Editor
 \end_layout
 
@@ -7128,19 +6990,13 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 Reverse search is triggered by SHIFT-click.
-\change_inserted 711066561 1405259853
-
 \end_layout
 
 \begin_layout Subsubsection*
-
-\change_inserted 711066561 1405273730
 Qpdfview (Unix)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 711066561 1405263147
 Qpdfview supports Sync\SpecialChar TeX
  since version 0.3.5.
  Go to 
@@ -7148,14 +7004,9 @@ Qpdfview supports Sync\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 711066561 1405260331
 Edit\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Behavior
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7173,11 +7024,7 @@ Source editor
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 711066561 1405260473
 lyxclient -g %1 %2
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7186,11 +7033,7 @@ lyxclient -g %1 %2
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 711066561 1405260506
 Reverse search is triggered by double-click.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7786,31 +7629,12 @@ Formats
 
 \end_inset
 
-
-\change_inserted 711066561 1405264317
-, qpdfview
-\change_unchanged
- and Sumatra
-\change_deleted 711066561 1405264282
- 
-\change_unchanged
-PDF
+, qpdfview and SumatraPDF
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_deleted 711066561 1405264216
-For 
-\change_unchanged
-Sumatra
-\change_inserted 711066561 1405264265
-PDF can also use DDE commands through the external program
-\change_unchanged
- CMCDDE
-\change_deleted 711066561 1405264271
- is needed
-\change_unchanged
+SumatraPDF can also use DDE commands through the external program CMCDDE
  — downloadable from 
 \begin_inset CommandInset href
 LatexCommand href
@@ -7882,10 +7706,6 @@ This section describes how \SpecialChar LyX
 Astronomy and Astrophysics
 \emph default
  (
-\change_deleted 274215730 1448595777
-www.edpsciences.fr/aa/ 
-\change_unchanged
-
 \begin_inset Flex URL
 status collapsed
 
@@ -10823,14 +10643,7 @@ This section documents the class
 
 
 \family sans
-slides (Foil
-\change_inserted -712698321 1437633339
-TeX
-\change_deleted -712698321 1437633344
-\SpecialChar TeX
-
-\change_unchanged
-)
+slides (FoilTeX)
 \family default
 
 \begin_inset Quotes erd
@@ -10883,14 +10696,7 @@ foils
 
 
 \family sans
-slides (Foil
-\change_inserted -712698321 1437633364
-TeX
-\change_deleted -712698321 1437633362
-\SpecialChar TeX
-
-\change_unchanged
-)
+slides (FoilTeX)
 \family default
 
 \begin_inset Quotes erd
@@ -10930,14 +10736,7 @@ Obviously, to use this document class, you need to select
 
 
 \family sans
-slides (Foil
-\change_inserted -712698321 1437633373
-TeX
-\change_deleted -712698321 1437633373
-\SpecialChar TeX
-
-\change_unchanged
-)
+slides (FoilTeX)
 \family default
 
 \begin_inset Quotes erd
@@ -18837,14 +18636,7 @@ Check
 \begin_inset space ~
 \end_inset
 
-
-\change_deleted -712698321 1437633476
-\SpecialChar TeX
-
-\change_inserted -712698321 1437633477
 TeX
-\change_unchanged
-
 \family default
 .
  You can get 
@@ -19070,14 +18862,7 @@ Check
 \begin_inset space ~
 \end_inset
 
-
-\change_deleted -712698321 1437633488
-\SpecialChar TeX
-
-\change_inserted -712698321 1437633488
 TeX
-\change_unchanged
-
 \family default
 .
  This will make \SpecialChar LyX
@@ -19247,22 +19032,8 @@ status collapsed
 Tools\SpecialChar menuseparator
 Preferences\SpecialChar menuseparator
 Output\SpecialChar menuseparator
-
-\change_deleted -712698321 1437633504
-\SpecialChar LaTeX
-
-\change_inserted -712698321 1437633507
-LaTeX
-\change_unchanged
-\SpecialChar menuseparator
-Check
-\change_deleted -712698321 1437633509
-\SpecialChar TeX
-
-\change_inserted -712698321 1437633511
-TeX
-\change_unchanged
- command
+LaTeX\SpecialChar menuseparator
+CheckTeX command
 \end_layout
 
 \end_inset
@@ -19991,7 +19762,7 @@ Also note that CVS support is not as good as subversion support so we advise
  using SVN instead.
  A good place to start learning Subversion is SVN Book
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -20055,13 +19826,9 @@ Control
 For introducing your own external commands consult vc-command in the manual
  of \SpecialChar LyX
  functions.
-\change_inserted -195340706 1447278952
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -195340706 1447279250
 It is strongly recommended to store documents in uncompressed format if
  using version control (uncheck 
 \family sans
@@ -20072,8 +19839,6 @@ Compressed
  for merging two different versions by version control systems.
  Compressed LyX documents are binary files, which cannot be merged by version
  control systems.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -20095,24 +19860,7 @@ Control
 \family default
  submenu.
  \SpecialChar LyX
- was tested against RCS 5.7/5.8
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Note that old DOS / MS Windows builds (5.7) need to setup environment variables
- in order to work properly with \SpecialChar LyX
-.
- In particular time zone (TZ) should be set and more importantly RCSINIT
- in order to change default archive location ("SET RCSINIT=-x,v/") — \SpecialChar LyX
- expects
- archive to be found in file.lyx,v within the original document directory.
- See also README shipped with Windows RCS binaries.
-\end_layout
-
-\end_inset
-
-.
+ was tested against RCS 5.7/5.8.
 \end_layout
 
 \begin_layout Subsubsection
@@ -25295,13 +25043,7 @@ A column break can be forced by inserting the command
 columnbreak{}
 \series default
  as \SpecialChar TeX
-
-\change_inserted -712698321 1437633561
- 
-\change_deleted -712698321 1437633560
--
-\change_unchanged
-Code to that position in the text where the column should be broken.
+ Code to that position in the text where the column should be broken.
  Note that this leads in most cases to whitespace in the text.
 \begin_inset Newline newline
 \end_inset
@@ -25710,13 +25452,7 @@ color{red}}
 \end_inset
 
 as \SpecialChar TeX
-
-\change_inserted -712698321 1437633567
- 
-\change_deleted -712698321 1437633567
--
-\change_unchanged
-Code before the multicolumn inset.
+ Code before the multicolumn inset.
  Replace 
 \series bold
 red
@@ -26663,42 +26399,8 @@ In
 Jpgfdraw
 \family default
  go to the menu 
-\change_deleted -712698321 1437633577
-
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\change_inserted -712698321 1437633577
-TeX
-\change_unchanged
-/La
-\change_deleted -712698321 1437633578
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633578
-TeX
-\change_unchanged
-\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Set Normal Size
 \family default
@@ -26716,42 +26418,8 @@ Draw a shape.
 
 \begin_layout Enumerate
 Use the menu 
-\change_deleted -712698321 1437633580
-
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
-\change_inserted -712698321 1437633580
-TeX
-\change_unchanged
-/La
-\change_deleted -712698321 1437633581
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\change_inserted -712698321 1437633581
-TeX
-\change_unchanged
-\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Shapepar
 \family default
  to export the shape to coordinates.
@@ -26778,13 +26446,7 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 
 \begin_layout Standard
 The coordinates are written into a \SpecialChar TeX
-
-\change_inserted -712698321 1437633584
- 
-\change_deleted -712698321 1437633584
--
-\change_unchanged
-file.
+ file.
  To use it for your \SpecialChar LyX
  document
 \end_layout
