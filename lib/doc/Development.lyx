@@ -323,6 +323,13 @@ If you are still unsure, please ask on the development list.
 
 \begin_layout Subsection
 How to update the file format number of .lyx files
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:update_lyx_files"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -508,6 +515,195 @@ It would be nice if you could create a .lyx test file which contains instances
  This could then be used to test lyx2lyx and tex2lyx.
  Unfortunately it has not yet been decided how to collect such examples,
  so please ask on the development list if you want to create one.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:updatefiles"
+
+\end_inset
+
+Update LyX's .lyx documentation files to the new format.
+ The developer who makes the change knows best what changes to expect when
+ inspecting the resulting diff.
+ Because of this, you might be able to catch a bug in the lyx2lyx code that
+ updates the format just by taking a quick scan through the large diff that
+ is the result
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Another advantage is that if later we suspect a bug in lyx2lyx we can easily
+ see which layout update made an unexpected change by looking at the git
+ log of a .lyx file that suffers the problem.
+\end_layout
+
+\end_inset
+
+.
+ To do this, first make sure that there are no changes to the git repository
+ that you will not want to commit (this is needed because it will be convenient
+ to commit with the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git commit -a
+\end_layout
+
+\end_inset
+
+).
+ Then run the following command in the root folder of the source: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+python development/tools/updatedocs.py
+\end_layout
+
+\end_inset
+
+.
+ Then, revert the change to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LFUNs.lyx
+\end_layout
+
+\end_inset
+
+ because that file is meant to be generated separately: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git checkout lib/doc/LFUNs.lyx
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+TODO: this step should be done within updatedocs.py
+\end_layout
+
+\end_inset
+
+.
+ Look at the resulting changes using the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git diff
+\end_layout
+
+\end_inset
+
+.
+ If anything looks surprising, please investigate.
+ Finally, commit using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git commit -a
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Updating the file format number of layout files
+\end_layout
+
+\begin_layout Standard
+See step 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:updatefiles"
+
+\end_inset
+
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:update_lyx_files"
+
+\end_inset
+
+ but instead of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+updatedocs.py
+\end_layout
+
+\end_inset
+
+ command, use this command: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+python development/tools/updatelayouts.py
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Updating the file format number of bind/ui files
+\end_layout
+
+\begin_layout Standard
+See step 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:updatefiles"
+
+\end_inset
+
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:update_lyx_files"
+
+\end_inset
+
+ but instead of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+updatedocs.py
+\end_layout
+
+\end_inset
+
+ command, use this command: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+bash development/tools/updatelfuns.sh
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
