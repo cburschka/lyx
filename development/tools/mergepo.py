@@ -115,7 +115,7 @@ def mergepo_minimaldiff(target, source):
     msgid = ''
     for line in oldlines:
         if in_msgid:
-            if line.find('"') == 0:
+            if line.find('"') == 0 or line.find('#~ "') == 0:
                 msgid_lines.append(line)
             else:
                 in_msgid = False
@@ -123,7 +123,7 @@ def mergepo_minimaldiff(target, source):
                 newlines.extend(msgid_lines)
                 msgid_lines = []
         elif in_msgstr:
-            if line.find('"') == 0:
+            if line.find('"') == 0 or line.find('#~ "') == 0:
                 msgstr_lines.append(line)
             else:
                 in_msgstr = False
