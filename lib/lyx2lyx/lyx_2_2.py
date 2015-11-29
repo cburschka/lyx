@@ -486,14 +486,7 @@ def revert_question_env(document):
     """
 
     # Do we use theorems-ams-extended-bytype module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "theorems-ams-extended-bytype":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "theorems-ams-extended-bytype" in document.get_module_list():
         return
 
     consecutive = False
@@ -798,15 +791,7 @@ def revert_sigplan_doi(document):
 def revert_ex_itemargs(document):
     " Reverts \\item arguments of the example environments (Linguistics module) to TeX-code "
 
-    # Do we use the linguistics module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "linguistics":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "linguistics" in document.get_module_list():
         return
 
     i = 0
@@ -837,15 +822,7 @@ def revert_ex_itemargs(document):
 def revert_forest(document):
     " Reverts the forest environment (Linguistics module) to TeX-code "
 
-    # Do we use the linguistics module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "linguistics":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "linguistics" in document.get_module_list():
         return
 
     i = 0
@@ -876,15 +853,7 @@ def revert_forest(document):
 def revert_glossgroup(document):
     " Reverts the GroupGlossedWords inset (Linguistics module) to TeX-code "
 
-    # Do we use the linguistics module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "linguistics":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "linguistics" in document.get_module_list():
         return
 
     i = 0
@@ -909,15 +878,7 @@ def revert_glossgroup(document):
 def revert_newgloss(document):
     " Reverts the new Glosse insets (Linguistics module) to the old format "
 
-    # Do we use the linguistics module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "linguistics":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "linguistics" in document.get_module_list():
         return
 
     glosses = ("\\begin_inset Flex Glosse", "\\begin_inset Flex Tri-Glosse")
@@ -965,15 +926,7 @@ def revert_newgloss(document):
 def convert_newgloss(document):
     " Converts Glosse insets (Linguistics module) to the new format "
 
-    # Do we use the linguistics module?
-    have_mod = False
-    mods = document.get_module_list()
-    for mod in mods:
-        if mod == "linguistics":
-            have_mod = True
-            continue
-
-    if not have_mod:
+    if not "linguistics" in document.get_module_list():
         return
 
     glosses = ("\\begin_inset Flex Glosse", "\\begin_inset Flex Tri-Glosse")
