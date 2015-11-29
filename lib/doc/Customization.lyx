@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -9939,25 +9939,19 @@ reference "chap:List-of-functions"
 
 \end_inset
 
- for the list of features.)
-\change_inserted -712698321 1438601536
-.
+ for the list of features.).
  If you require a package with specific options, you can additionally use
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1438601526
 PackageOptions
 \end_layout
 
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -11307,19 +11301,13 @@ status collapsed
 , this argument is automatically inserted when the respective style is selected.
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
-\change_inserted -712698321 1431166542
-
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1431166604
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1431166548
 InsertCotext
 \end_layout
 
@@ -11330,8 +11318,6 @@ InsertCotext
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1431166543
 [int=0]
 \end_layout
 
@@ -11342,8 +11328,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1431166543
 1
 \end_layout
 
@@ -11354,14 +11338,10 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1431070588
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1431070522
 PassThruChars
 \end_layout
 
@@ -11372,8 +11352,6 @@ PassThruChars
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1431070522
 string of characters
 \end_layout
 
@@ -11390,8 +11368,6 @@ Defines individual characters that should be output in raw form, meaning
  arguments.
  That is, arguments do not inherit PassThruChars from their parent inset
  or layout.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -14068,19 +14044,13 @@ status collapsed
 
 ] Name of a style that has replaced this style.
  This is used to rename a style, while keeping backward compatibility.
-\change_inserted -712698321 1432986397
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1432986583
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986403
 ParagraphGroup
 \end_layout
 
@@ -14091,8 +14061,6 @@ ParagraphGroup
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986397
 0
 \end_layout
 
@@ -14107,8 +14075,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986397
 1
 \end_layout
 
@@ -14121,8 +14087,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986460
 GuiLabel
 \end_layout
 
@@ -14134,8 +14098,6 @@ GuiLabel
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986491
 LaTeXType
 \end_layout
 
@@ -14146,11 +14108,7 @@ LaTeXType
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986583
 Environment
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -14160,18 +14118,12 @@ Environment
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1432986572
 Bib_Environment
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  and false for all other types.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -14483,36 +14435,24 @@ status collapsed
 ] Whether the contents of this paragraph should be output in raw form, meaning
  without special translations that \SpecialChar LaTeX
  would require.
-\change_inserted -712698321 1429534178
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1429534242
-
-\lang ngerman
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1429534178
 PassThruChars
 \end_layout
 
 \end_inset
 
-
-\lang english
  [
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1429534178
-string of characters
+string
 \end_layout
 
 \end_inset
@@ -14524,8 +14464,6 @@ string of characters
 Defines individual characters that should be output in raw form, meaning
  without special translations that \SpecialChar LaTeX
  would require.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -14618,33 +14556,7 @@ string
 
 \end_inset
 
-
-\change_deleted -712698321 1438601713
-.
-
-\change_unchanged
- 
-\change_deleted -712698321 1438601638
-See the description of 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Provides
-\end_layout
-
-\end_inset
-
- above (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:General-text-class"
-
-\end_inset
-
-) for information on `features'.
-\change_inserted -712698321 1438601711
-(see 
+ (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
@@ -14658,18 +14570,12 @@ reference "chap:List-of-functions"
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1438601638
 PackageOptions
 \end_layout
 
 \end_inset
 
- as a general text class parameter (see sec.
-\begin_inset space ~
-\end_inset
-
-
+ as a general text class parameter (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:General-text-class"
@@ -14677,8 +14583,6 @@ reference "subsec:General-text-class"
 \end_inset
 
 ).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -15021,19 +14925,13 @@ int=3
 \series default
  The level of the style in the table of contents.
  This is used for automatic numbering of section headings.
-\change_inserted -712698321 1401363541
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1401363906
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363547
 ToggleIndent
 \end_layout
 
@@ -15047,12 +14945,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1401363664
-
 \emph on
 default
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -15064,11 +14958,7 @@ default
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363669
 always
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -15078,11 +14968,7 @@ always
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363675
 never
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -15096,8 +14982,6 @@ never
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363761
 
 \emph off
 default
@@ -15120,8 +15004,6 @@ indent
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363844
 always
 \end_layout
 
@@ -15133,16 +15015,12 @@ always
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1401363901
 never
 \end_layout
 
 \end_inset
 
 , indentation can never be toggled.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description

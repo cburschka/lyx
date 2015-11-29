@@ -9779,7 +9779,22 @@ reference "chap:List-of-functions"
 
  for the list of features
 \lang spanish
-.)
+.) 
+\lang english
+If you require a package with specific options, you can additionally use
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PackageOptions
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -11198,6 +11213,87 @@ status collapsed
 , this argument is automatically inserted when the respective style is selected.
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+, this argument will be inserted with a copy of the co-text (either selected
+ text or the whole paragraph) as content.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string of characters
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ Note that, contrary to PassThru, this needs to be explicitly defined for
+ arguments.
+ That is, arguments do not inherit PassThruChars from their parent inset
+ or layout.
 \end_layout
 
 \begin_layout Standard
@@ -14077,6 +14173,96 @@ d hacia atrás.
 status collapsed
 
 \begin_layout Plain Layout
+ParagraphGroup
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Determines whether consecutive pragraphs of the same type are treated as
+ belonging together.
+ This has the effect that the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+GuiLabel
+\end_layout
+
+\end_inset
+
+ is only printed once before such a group.
+ By default, this is true for 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LaTeXType
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Environment
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Bib_Environment
+\end_layout
+
+\end_inset
+
+ and false for all other types.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ParbreakIsNewline
 \end_layout
 
@@ -14398,6 +14584,36 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+\lang english
+Defines individual characters that should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Preamble
 \end_layout
 
@@ -14487,34 +14703,39 @@ string
 
 \end_inset
 
-.
- Véase arriba (
-\lang english
-sec
-\lang spanish
-.
-\begin_inset space ~
+ (véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:List-of-functions"
+
 \end_inset
 
+ 
+\lang english
+for the list of features).
+ If you require a package with specific options, you can additionally use
+ 
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
+
+\lang english
+PackageOptions
+\end_layout
+
+\end_inset
+
+ as a general text class parameter
+\lang spanish
+ (véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Parámetros-generales-clases"
 
 \end_inset
 
-) la descripción de 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Provides
-\end_layout
-
-\end_inset
-
- para información sobre 'características'.
- 
+).
 \end_layout
 
 \begin_layout Description
@@ -14863,6 +15084,107 @@ int=3
 
 ] El nivel del estilo en el índice general.
  Esto se usa para la numeración automática de los encabezados de sección.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ToggleIndent
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+default
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+This tag determines whether the first line indentation of this paragraph
+ can be toggled via the Paragraph settings dialog.
+ If 
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph off
+\lang english
+default
+\end_layout
+
+\end_inset
+
+
+\emph default
+ is set, indentation can be toggled if the document settings use 
+\begin_inset Quotes eld
+\end_inset
+
+indent
+\begin_inset Quotes erd
+\end_inset
+
+ paragraph style, with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+always
+\end_layout
+
+\end_inset
+
+, indentation can always be toggled, notwithstanding the document settings,
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+never
+\end_layout
+
+\end_inset
+
+, indentation can never be toggled.
 \end_layout
 
 \begin_layout Description

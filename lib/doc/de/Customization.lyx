@@ -8371,7 +8371,18 @@ reference "chap:Liste-von-Funktionen"
 
 \end_inset
 
- für eine Liste der Funktionen.)
+ für eine Liste der Funktionen.) Wenn Sie ein Paket mit bestimmten Optionen
+ anfordern müssen, können Sie zusätzlich 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PackageOptions
+\end_layout
+
+\end_inset
+
+verwenden.
 \end_layout
 
 \begin_layout Description
@@ -9761,6 +9772,78 @@ status collapsed
 layout can be automatically inserted.
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[int=0]
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+, this argument will be inserted with a copy of the co-text (either selected
+ text or the whole paragraph) as content.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string of characters
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+\lang english
+Defines individual characters that should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ Note that, contrary to PassThru, this needs to be explicitly defined for
+ arguments.
+ That is, arguments do not inherit PassThruChars from their parent inset
+ or layout.
+\end_layout
+
 \begin_layout Standard
 
 \lang english
@@ -9806,33 +9889,29 @@ post:
  are output after this workarea argument.
  Note that post-argument numbering restarts at 1, so the first argument
  following the workarea argument is 
+\lang ngerman
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 post:1
 \end_layout
 
 \end_inset
 
 .
- Post-arguments are ignored in any other 
+ Post-Argumente werden in allen anderen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- than
-\lang ngerman
- 
+ außer 
 \begin_inset Flex Code
 status collapsed
 
@@ -9842,7 +9921,7 @@ Command
 
 \end_inset
 
-.
+ ignoriert.
 \end_layout
 
 \begin_layout Standard
@@ -11907,22 +11986,6 @@ Bearbeiten
 \family sans
 Absatz-Einstellungen
 \family default
- 
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
  definiert werden.
 \end_layout
 
@@ -12241,10 +12304,6 @@ Ausrichtung
 \family default
  im Menü 
 \family sans
-Absatz-Einstellungen
-\family default
- (
-\family sans
 Bearbeiten
 \family default
 \SpecialChar menuseparator
@@ -12252,23 +12311,7 @@ Bearbeiten
 \family sans
 Absatz-Einstellungen
 \family default
-
-\begin_inset Marginal
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-) abhängt.
+ abhängt.
  Dies wird für hübsche Listen ohne Tabulatoren benutzt.
  
 \end_layout
@@ -12330,18 +12373,7 @@ Dynamic
 
 , aber nur die erste Zeile wird dynamisch gesetzt, die anderen statisch.
  Dies wird für die \SpecialChar LaTeX
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"=
-\end_layout
-
-\end_inset
-
-Umgebung 
+-Umgebung 
 \begin_inset Flex Code
 status collapsed
 
@@ -12616,6 +12648,86 @@ status collapsed
 
 ] Der Name eines Layouts, das durch dieses ersetzt wurde.
  So können Sie ein Layout umbenennen und die Rückwärtskompatibilität erhalten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ParagraphGroup
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Legt fest ob aufeinanderfolgende Absätze desselben Typs als zusammengehörend
+ behandelt werden.
+ Das hat den Effekt, dass 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+GuiLabel
+\end_layout
+
+\end_inset
+
+ nur einmalig vor einer solchen Gruppe ausgegeben wird.
+ Dies ist standardmäßig der Fall für 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXType
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Bib_Environment
+\end_layout
+
+\end_inset
+
+ und nicht der Fall für alle anderen Typen.
 \end_layout
 
 \begin_layout Description
@@ -12929,6 +13041,32 @@ Legt fest, ob der Absatzinhalt unverändert ausgegeben werden soll, also
 status collapsed
 
 \begin_layout Plain Layout
+PassThruChars
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+] Definiert Zeichen, die unverändert ausgegeben werden sollen.
+ Das bedeutet, dass sie nicht in einen \SpecialChar LaTeX
+-Befehl übersetzt werden, falls das
+ normalerweise der Fall wäre.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Preamble
 \end_layout
 
@@ -12990,7 +13128,7 @@ string
 
 \end_inset
 
-] Der Präfix, der verwendet werden soll, wenn auf Marken dieses Paragraphs
+] Der Präfix, der verwendet werden soll, wenn auf Marken dieses Absatzes
  verwiesen wird.
  Dies erlaubt die Verwendung von Formatierten Querverweisen.
 \end_layout
@@ -13025,25 +13163,33 @@ string
 
 \end_inset
 
- benötigt.
- Siehe die Beschreibung von 
+ benötigt (siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Liste-von-Funktionen"
+
+\end_inset
+
+ für eine List der Funktionen).
+ Wenn Sie ein Paket mit bestimmten Optionen anfordern müssen, können Sie
+ zusätzlich 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Provides
+PackageOptions
 \end_layout
 
 \end_inset
 
- in 
+als allgemeiner Textklassen-Parameter verwenden (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Allgemeine-Parameter-für"
 
 \end_inset
 
-.
+).
 \end_layout
 
 \begin_layout Description
@@ -13125,7 +13271,7 @@ string
 \end_inset
 
 ] Eine Zeichenkette, die am Ende des Inhalts des Stils ausgegeben wird.
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -13338,7 +13484,7 @@ status collapsed
 
 \end_inset
 
-] Erlaubt es, den Inhalt des Paragraphs auf Rechtschreibung zu überprüfen.
+] Erlaubt es, den Inhalt des Absatzes auf Rechtschreibung zu überprüfen.
 \end_layout
 
 \begin_layout Description
@@ -13398,6 +13544,101 @@ ist die Stufe des Stils im Inhaltsverzeichnis und wird zur automatischen
 status collapsed
 
 \begin_layout Plain Layout
+ToggleIndent
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+default
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+] Dieser Befehl legt fest, ob die Einrückung der ersten Absatzzeile über
+ den Absatz-Dialog ein/ausgeschaltet werden kann.
+ Wenn 
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph off
+default
+\end_layout
+
+\end_inset
+
+
+\emph default
+ gesetzt ist, kann umgeschaltet werden, wenn in den Dokumenteinstellungen
+ für die Absatztrennung 
+\begin_inset Quotes gld
+\end_inset
+
+Einrückung
+\begin_inset Quotes grd
+\end_inset
+
+ gewählt ist, Mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+always
+\end_layout
+
+\end_inset
+
+ kann immer umgeschaltet werden, unabhängig von den Dokumenteinstellungen.
+ Mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+never
+\end_layout
+
+\end_inset
+
+kann nie umgeschaltet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 TopSep
 \end_layout
 
@@ -13422,9 +13663,7 @@ name "subsec:I18n"
 
 \end_inset
 
-
-\lang english
-Internationalization of Paragraph Styles
+Internationalisierung von Absatz-Stilen
 \end_layout
 
 \begin_layout Standard
