@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -2013,7 +2013,7 @@ ignoredTests (smal file)
 \begin_inset Newline newline
 \end_inset
 
-Tests selected here are witdrawn
+Tests selected here are withdrawn
 \end_layout
 
 \begin_deeper
@@ -2029,8 +2029,8 @@ Output Stop if tests not selected here
 
 \end_deeper
 \begin_layout Description
-unreliableTests: Tests selected either pass or fail, but that is dependant
- on system where the test is run.
+unreliableTests: Tests selected either pass or fail, but that is dependent
+ on the system where the test is run.
  Selected tests gain the label 'unreliable'.
 \end_layout
 
