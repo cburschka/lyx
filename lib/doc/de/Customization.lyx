@@ -210,7 +210,7 @@ HHa
 \begin_inset Newline newline
 \end_inset
 
-Version 2.1.x
+Version 2.2.x
 \end_layout
 
 \begin_layout Standard
@@ -9093,29 +9093,27 @@ int
 ] Definiert Argument Nummer <int> eines Befehls\SpecialChar breakableslash
 einer Umgebung, der/die im
  aktuellen Stil definiert ist.
- 
-\lang english
-This is useful for things like section headings, and only makes sense with
- \SpecialChar LaTeX
-.
- Every (optional or required) argument of a command or environment – except
- for the required argument that is associated with the content of the paragraph
- itself – has a separate definition, where the number specifies the order
- of the arguments.
- The definition must end with 
+ Dies ist nützlich für Dinge wie Abschnittsüberschriften.
+ Jedes Argument (optional oder erforderlich) eines Befehls oder einer Umgebung
+ hat eine eigene Definition (ausgenommen das erforderliche Haupt-Argument
+ des Absatzes).
+ Die Nummer gibt die Reihenfolge des Arguments an.
+ Die Definition muss mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndArgument
 \end_layout
 
 \end_inset
 
-.
- So a command with two optional arguments has:
+ enden.
+ Ein Befehl mit 2
+\begin_inset space ~
+\end_inset
+
+optionalen Argumenten hat somit diese Struktur:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -9475,7 +9473,7 @@ Requires 1
 
 \end_inset
 
- innherhalb von 
+ innerhalb von 
 \begin_inset Flex Code
 status collapsed
 
@@ -9529,7 +9527,7 @@ status collapsed
 \end_inset
 
 ).
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -9583,7 +9581,7 @@ status collapsed
 \end_inset
 
 ).
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -9616,17 +9614,11 @@ status collapsed
 
 \end_inset
 
- Definiert
-\lang english
- an argument that is inserted if and only if no user-specified arguments
- were given, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
- if no argument inset has been inserted (note that also an empty argument
- inset omits the DefaultArg).
- Multiple arguments need to be separated by comma.
+ Definiert ein Argument, das nur eingefügt wird, wenn der Nutzer kein Argument
+ eingefügt hat.
+ Das heißt, wenn keine Argument-Einfügung eingefügt wurde oder sie eingefügt
+ wurde aber leer ist.
+ Mehrere Argumente werden durch Kommas getrennt.
 \end_layout
 
 \begin_layout Itemize
@@ -9649,11 +9641,9 @@ status collapsed
 
 \end_inset
 
- Definiert
-\lang english
- an argument that is inserted in any case (alone or in addition to user-specifie
-d arguments).
- Multiple arguments need to be separated by comma.
+ Definiert ein Argument, das in jedem Fall eingefügt wird (allein oder zusätzlic
+h zu benutzerdefinierten Argumenten).
+ Mehrere Argumente werden durch Kommas getrennt.
 \end_layout
 
 \begin_layout Itemize
@@ -9666,11 +9656,7 @@ Font
 
 \end_inset
 
- 
-\lang english
-The font used for the argument content
-\lang ngerman
-; siehe 
+ Die Schrift, die für den Argumentinhalt verwendet wird; siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Beschreibung-des-Zeichensatzes"
@@ -9690,11 +9676,7 @@ LabelFont
 
 \end_inset
 
- 
-\lang english
-The font used for the label
-\lang ngerman
-; siehe 
+ Die Schrift, die für die Marke verwendet wird; siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Beschreibung-des-Zeichensatzes"
@@ -9728,9 +9710,7 @@ Classic
 
 \end_inset
 
-] 
-\lang english
-describes the rendering style used for the inset's frame and buttons.
+] legt den Anzeigestil für den Rahmen und Knopf der Einfügung fest.
 \end_layout
 
 \begin_layout Itemize
@@ -12091,7 +12071,7 @@ string
 \end_inset
 
 ] Eine Zeichenkette, die zu Beginn des Inhalts des Stils ausgegeben wird.
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -17067,7 +17047,7 @@ string
 \end_inset
 
 ] Eine Zeichenkette, die zu Beginn des Inhalts des Stils ausgegeben wird.
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
