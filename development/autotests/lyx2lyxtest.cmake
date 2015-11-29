@@ -29,9 +29,11 @@ string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 # Check file "errors" being empty
 file(STRINGS ${errorfile} foundErrors)
 if(foundErrors)
-  set(_erg 1)
   foreach(_l ${foundErrors})
-    message(STATUS "${_l}")
+    if (NOT _l MATCHES "Warning: No conversion needed:")
+      set(_erg 1)
+      message(STATUS "${_l}")
+  endif()
   endforeach()
 endif()
 
