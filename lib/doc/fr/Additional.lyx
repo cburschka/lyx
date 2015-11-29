@@ -48,8 +48,8 @@ shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
-Format 7
-InsetLayout CharStyle:MenuItem
+Format 57
+InsetLayout Flex:MenuItem
 LyxType               charstyle
 LabelString           menu
 LatexType             command
@@ -60,6 +60,7 @@ EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
+ResetsFont true
 End
 \end_local_layout
 \language french
@@ -2069,14 +2070,6 @@ Avez-vous de longues portions de texte dans lesquelles \SpecialChar LaTeX
  quantité d'espace entre les mots qu'il va ajouter pour passer à la ligne.
  Il est alors préférable que vous retravailliez le paragraphe pour éviter
  le problème.
- Si ce n'est pas envisageable, vous pouvez entourer votre texte par 
-\family typewriter
-
-\backslash
-sloppypar
-\family default
- pour que les passages à la ligne de \SpecialChar LaTeX
- soient plus souples;
 \end_layout
 
 \begin_layout Enumerate
@@ -5001,18 +4994,6 @@ Démarrer le Serveur \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{sloppypar}
-\end_layout
-
-\end_inset
-
 Le serveur \SpecialChar LyX
  fonctionne par l'intermédiaire d'une paire de tubes.
  Ils sont habituellement disposés dans votre répertoire utilisateur 
@@ -5140,19 +5121,6 @@ pipe"
 manuellement
 \emph default
  pour que le serveur puisse démarrer.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{sloppypar}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

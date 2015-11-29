@@ -48,18 +48,19 @@ shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
-Format 7
-InsetLayout CharStyle:MenuItem
+Format 57
+InsetLayout Flex:MenuItem
 LyxType               charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
+LabelString          menu
+LatexType           command
+LatexName          menuitem
 Font
 Family              Sans
 EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
+ResetsFont true
 End
 \end_local_layout
 \language english
@@ -2202,20 +2203,6 @@ Do you have long sections of text where \SpecialChar LaTeX
  is rather strict about how much extra inter-word spacing
  it will add in order to break a line.
  Preferably, you should rework the paragraph to avoid the problem.
- If this isn't an option, you can wrap your text in 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-sloppypar
-\end_layout
-
-\end_inset
-
- to make \SpecialChar LaTeX
-'s line breaking more, well, sloppy.
 \end_layout
 
 \begin_layout Enumerate

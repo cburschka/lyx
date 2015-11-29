@@ -53,6 +53,7 @@ shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
+Format 57
 InsetLayout		Flex:MenuItem
 LyxType		charstyle
 LabelString           menu
@@ -64,6 +65,7 @@ EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
+ResetsFont true
 End
 InsetLayout		Flex:Ruby
 LyxType		charstyle
@@ -89,6 +91,7 @@ Preamble
 {\usepackage{okumacro}}
 {\newcommand{\ruby}[2]{#2}}
 EndPreamble
+ResetsFont true
 End
 \end_local_layout
 \language japanese
@@ -106,7 +109,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -3652,26 +3655,7 @@ Pagebreak
 \SpecialChar LaTeX
 が改行位置を見つけられないほど長い一節がありませんか。既定では、改行するために単語間に空白をたくさん追加することを、\SpecialChar LaTeX
 はかなり嫌います。可能であれば、問題が生じな
-いように段落を修正するのが望ましいでしょう。それが難しければ、\SpecialChar LaTeX
-が改行しやすく(sloppy)なるように、その部分を
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-sloppypar
-\end_layout
-
-\end_inset
-
-
-\family default
-で囲んでください。
+いように段落を修正するのが望ましいでしょう。
 \end_layout
 
 \begin_layout Enumerate

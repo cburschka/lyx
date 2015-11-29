@@ -47,8 +47,8 @@ shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
-Format 7
-InsetLayout CharStyle:MenuItem
+Format 57
+InsetLayout Flex:MenuItem
 LyxType               charstyle
 LabelString           menu
 LatexType             command
@@ -59,6 +59,7 @@ EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
+ResetsFont true
 End
 \end_local_layout
 \language ngerman
@@ -2305,20 +2306,6 @@ Haben Sie lange Textabschnitte, bei denen \SpecialChar LaTeX
  Standardmäßig ist \SpecialChar LaTeX
  ziemlich streng mit dem Wortzwischenraum beim Zeilenumbruch.
  Sie sollten den Absatz überarbeiten, um das Problem zu vermeiden.
- Wenn das nicht geht, könnten Sie Ihren Text zwischen 
-\family typewriter
-
-\backslash
-begin{sloppypar}
-\family default
- und 
-\family typewriter
-
-\backslash
-end{sloppypar}
-\family default
- setzen, um \SpecialChar LaTeX
- die Zeilen etwas schlampiger umbrechen zu lassen.
 \end_layout
 
 \begin_layout Enumerate
@@ -3020,8 +3007,7 @@ bibunits
 Zunächst kreuzen Sie in
 \family sans
  Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
 \family default
  
