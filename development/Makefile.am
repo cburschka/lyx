@@ -19,6 +19,7 @@ tools/generate_symbols_images.py \
 tools/generate_symbols_list.py \
 tools/generate_symbols_svg.lyx \
 tools/generate_symbols_svg.py \
+tools/mergepo.py \
 tools/unicodesymbols.py \
 tools/updatedocs.py \
 tools/updatelayouts.py \
