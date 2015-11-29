@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-11-19 17:18+0100\n"
-"PO-Revision-Date: 2015-11-20 10:11+0000\n"
+"POT-Creation-Date: 2015-11-29 20:18+0100\n"
+"PO-Revision-Date: 2015-11-29 19:24+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -12672,6 +12672,10 @@ msgstr "beznávestné"
 #: lib/layouts/stdinsets.inc:547
 msgid "Preview"
 msgstr "Náhľad"
+
+#: lib/layouts/stdlayouts.inc:99
+msgid "Verbatim*"
+msgstr "Doslovne*"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
