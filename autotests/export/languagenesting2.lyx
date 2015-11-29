@@ -1,0 +1,1591 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrbook
+\begin_preamble
+% extra space for tables
+\newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+\end_preamble
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+theorems-ams
+theorems-ams-extended
+multicol
+shapepar
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 49
+InsetLayout Flex:MenuItem
+LyxType               charstyle
+LabelString           menu
+LatexType             command
+LatexName             menuitem
+Font
+Family              Sans
+EndFont
+Preamble
+\newcommand*{\menuitem}[1]{{\sffamily #1}}
+EndPreamble
+ResetsFont true
+End
+\end_local_layout
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman DejaVu Serif
+\font_sans DejaVu Sans
+\font_typewriter DejaVu Sans Mono
+\font_math default
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Erweiterte LyX Features
+\end_layout
+
+\begin_layout Subtitle
+Version 2.2.x
+\end_layout
+
+\begin_layout Author
+vom LyX-Team
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+LyX und das World Wide Web
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX hndly formats.
+\end_layout
+
+\begin_layout Section
+Mathe-Ausgabe in XHTML
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX offers four choices for how math is rendered.
+ These have various advantages and disadvantages:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+MathML
+\begin_inset Newline newline
+\end_inset
+
+MathML ifically fo.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+HTML
+\begin_inset Newline newline
+\end_inset
+
+As mentioned above, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+elyxer
+\end_layout
+
+\end_inset
+
+ 
+\lang ngerman
+outputs .
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Oted under 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar \menuseparator
+
+\lang french
+Settings\SpecialChar \menuseparator
+
+\lang ngerman
+Output
+\end_layout
+
+\end_inset
+
+.
+ By dmerefore.
+\end_layout
+
+\begin_layout Chapter
+Der LyX-S
+\lang french
+erv
+\lang ngerman
+er
+\end_layout
+
+\begin_layout Section
+Einführung
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The `LyX server' almmands,
+\begin_inset Quotes eld
+\end_inset
+
+push
+\begin_inset Quotes erd
+\end_inset
+
+ citations to LyX.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Normal communication
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang english
+External Packages (PDFSync and scrltx) 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\lang french
+packages
+\lang english
+ 
+\emph on
+pdfsync
+\emph default
+ and 
+\emph on
+scrltx
+\emph default
+ provide reverse s.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#!/bin/sh
+\begin_inset Newline newline
+\end_inset
+
+LYXPIPE="/path/to/lyxpipe"
+\begin_inset Newline newline
+\end_inset
+
+read TMP < "${LYXPIPE}".out || exit
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Forward search is, as the name implies,: 
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$n
+\end_layout
+
+\end_inset
+
+: row number
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$t
+\end_layout
+
+\end_inset
+
+: name of the (temporary) exported .tex file (without path)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Noctionality.
+
+\lang ngerman
+ a 
+\end_layout
+
+\begin_layout Chapter
+
+\lang french
+Besondere
+\lang ngerman
+ Dokumentklassen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokumentklasse!besondere
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Versionskontrolle
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Versionskontrolle
+\end_layout
+
+\end_inset
+
+ in LyX
+\end_layout
+
+\begin_layout Standard
+von 
+\noun on
+Lars Gullik Bjønnes 
+\noun default
+und 
+\noun on
+Pavel Sanda
+\end_layout
+
+\begin_layout Subsection
+Einleitung
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Also ste Book
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ In 
+\lang french
+theuld
+\lang english
+ read 
+\begin_inset Quotes eld
+\end_inset
+
+rcsintro
+\begin_inset Quotes erd
+\end_inset
+
+ (a man file, read it with 
+\family typewriter
+man rcsintro
+\family default
+).
+ This of RCS.
+\family typewriter
+,v
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Be LyX, you should
+\family sans
+View\SpecialChar \menuseparator
+Toolbars\SpecialChar \menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+RCS-Befehle in LyX
+\end_layout
+
+\begin_layout Standard
+Die folgetützten RCS-Befehle.
+\family sans
+Datei\SpecialChar \menuseparator
+Versionskontrolle
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Wennerungen
+\end_layout
+
+\begin_layout Standard
+RCS-Befehl: 
+\family typewriter
+ci -q -u -m"<Beschreibung>" <Dateiname>
+\end_layout
+
+\begin_layout Subsubsection
+Entwicklung anzeigen
+\family sans
+\series medium
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Versionskontrolle!anzeigen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da angezeigt.
+\family typewriter
+rlog <Dateiname>
+\family default
+ in einemtionen liefert 
+\family typewriter
+man rlog
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Revision info
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX sast commit.
+\family typewriter
+rlog -r <file-name>
+\family default
+.
+ For other details see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:VCS-Revision-Information"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+CVS commands in LyX
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A subs in the 
+\family sans
+File\SpecialChar \menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control
+\family default
+ submenu.
+ The version control syste plessible.
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+\lang english
+Check Out Changes
+\end_layout
+
+\begin_layout Subsubsection
+
+\family sans
+\lang english
+Show History
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Thment.
+ The output of 
+\family typewriter
+cvs log "<file-name>"
+\family default
+ is shown in a browser.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+SVN commands in LyX
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:SVN-Repo-Update"
+
+\end_inset
+
+Update of the local directory checkout from repository
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All the commands above have one shortcomming - they deal with the current
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.tex
+\end_layout
+
+\end_inset
+
+ files and so on administration becomes more complicated.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ in the same directory or subdirectories of the document.
+ 
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+re two different modes of file use in LyX:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Unls to check-out.
+ 
+\emph on
+Check-out
+\emph default
+ consists of updck.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Loce file.
+ 
+\emph on
+Check-in
+\emph default
+ consists of commiting changes and releasing write-lock.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Don't be puzzled by the fact that you will be asked for commit message anyway.
+\end_layout
+
+\end_inset
+
+ anased.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+SVN commands:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang english
+Check-in:
+\family typewriter
+ svn commit -q -m"<description>" "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn unlock "<file-name>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang english
+Check-out: 
+\family typewriter
+svn update "<file-name>"
+\begin_inset Newline newline
+\end_inset
+
+svn lock "<file-name>"
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:VCS-Revision-Information"
+
+\end_inset
+
+Revision Information in Documents
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are more possibilities how to activate revision information in our
+ document.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+LyX supports directly:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+tree revision information (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+vcs-tree-revision
+\end_layout
+
+\end_inset
+
+).
+ The result is the output of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+svnversion
+\end_layout
+
+\end_inset
+
+ command, the following table gives you an idea, how to read the results.
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\lang english
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Meaning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+4123:4168
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang french
+mixeg copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+4123:4168MS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+mix working copy
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+fing the output of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+svn
+\begin_inset space ~
+\end_inset
+
+info
+\begin_inset space ~
+\end_inset
+
+–xml
+\begin_inset space ~
+\end_inset
+
+file.lyx
+\end_layout
+
+\end_inset
+
+.
+ Supported flags are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+version number of the last commit (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+vcs-revision
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+time of the last 
+\lang french
+commit (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang french
+vcs-time
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\lang english
+You can obtain this info via InsetInfo (e.g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+info-insert buffer vcs-date
+\end_layout
+
+\end_inset
+
+).
+ Thoagment (i.e.
+ the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.svn
+\end_layout
+
+\end_inset
+
+ dirment).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang english
+Another—a hacking one—possibility is to use svn keywords
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
+\end_layout
+
+\end_inset
+
+.
+ In short – you set file keywords property (e.g.
+ 
+\family sans
+svn propset svn:keywords 'Rev' file.lyx
+\family default
+) and then paste keyword TeX code
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+This is an easy way how to ensure that LyX won't break the line in the middle
+ of keyword tag.
+\end_layout
+
+\end_inset
+
+ tag in yent (e.g.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev$
+\end_layout
+
+\end_inset
+
+).
+ Tber (e.g.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$Rev: 59 $
+\end_layout
+
+\end_inset
+
+) aftore problems with this approach.
+\begin_inset Formula $Rev$
+\end_inset
+
+ become 
+\begin_inset Formula $Rev:59$
+\end_inset
+
+ in yords like Id, Date, Author, etc.
+\end_layout
+
+\begin_layout Subsection
+LyX und Literarische Programmierung
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\noun on
+HHa
+\noun default
+: Wahrscheinlich ist das Folgende nicht mehr aktuell, aber ich kenne NoWeb
+ nicht.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um mit Nendig.
+\end_layout
+
+\begin_layout Subsubsection
+Erstellen von Dokumentation und Quellcode
+\end_layout
+
+\begin_layout Paragraph
+
+\lang english
+Using the noweb module
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+I a new
+\begin_inset Quotes eld
+\end_inset
+
+noweb
+\begin_inset Quotes erd
+\end_inset
+
+ module.
+ If Noweb is correctly installed, when your document.
+\end_layout
+
+\begin_layout Paragraph
+Die Eingabe von Programmcode
+\end_layout
+
+\begin_layout Standard
+In LyX verwenden Sie zur Eingabe von Programmcode den Umgebungstyp 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Chunk
+\end_layout
+
+\end_inset
+
+
+\family sans
+.
+
+\family default
+ NoWeb schließt Chunks so ein:
+\end_layout
+
+\begin_layout LyX-Code
+<<Mein Code>>=  
+\end_layout
+
+\begin_layout LyX-Code
+  Noch mehr Code
+\end_layout
+
+\begin_layout LyX-Code
+  @
+\end_layout
+
+\begin_layout Standard
+Dies ist eine Implementierung von 
+\family sans
+build-script
+\family default
+, die Sie in einem Verzeichnis in Ihrem Pfad einfügen können:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+#!/bin/sh
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+#
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The nethe 
+\begin_inset Quotes gld
+\end_inset
+
+Flags
+\begin_inset Quotes grd
+\end_inset
+
+ which is to be set to
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+parselog=$$s/scripts/listerrors
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+This the 
+\begin_inset Quotes gld
+\end_inset
+
+build-script
+\begin_inset Quotes grd
+\end_inset
+
+ process through the 
+\begin_inset Quotes gld
+\end_inset
+
+listerrors
+\begin_inset Quotes grd
+\end_inset
+
+ program.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Thectory, so the
+\family typewriter
+Noweb->Program
+\family default
+ conversion may produce several files, and so most of these would then be
+\end_layout
+
+\begin_layout Paragraph
+Build-Befehle im Dokument
+\end_layout
+
+\begin_layout Standard
+Dallgemeinen sollten die BefePython, C und Perl geschrieben.
+\end_layout
+
+\begin_layout Subsubsection
+LyX-Konfiguration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Anfigured by the 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences
+\family default
+ panel in the 
+\begin_inset Quotes eld
+\end_inset
+
+File Handling
+\begin_inset Quotes erd
+\end_inset
+
+ tab.
+ The important parts are:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+the
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+NoWeb
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+format Set re thee set up.
+ The 
+\family sans
+GUI Name
+\family default
+ is set to 
+\family typewriter
+NoWeb
+\family default
+, the file extension is set to 
+\family typewriter
+.nw
+\family default
+.
+ This the first step of the conversion process.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+parselog=$$s/scripts/listerrors
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Erweiterungen zur Fehlersuche
+\end_layout
+
+\begin_layout Standard
+Um diese nnen, müssen Sie allerdings den LyX-Server 
+\lang english
+You le it in 
+\family sans
+Preferences
+\family default
+ (tab
+\family sans
+aths
+\family default
+) by ehe 
+\family sans
+LyXserver pipe
+\family default
+ a path like
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+/home/<your-home-directory>/.lyx/lyxpipe
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Reentation in the 
+\emph on
+Customization Manual
+\emph default
+ for rmation.
+\end_layout
+
+\begin_layout Chapter
+Spezielle Features
+\end_layout
+
+\begin_layout Subsection
+Grundlagen
+\end_layout
+
+\begin_layout Standard
+Möchte man 2
+\begin_inset space ~
+\end_inset
+
+Spalten im Text haben, verwendet man das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzer\SpecialChar \-
+definierte
+\begin_inset space ~
+\end_inset
+
+Einfügungen\SpecialChar \menuseparator
+Mehrere
+\begin_inset space ~
+\end_inset
+
+Spalten
+\family default
+ aneginnen sollen.
+\begin_inset space ~
+\end_inset
+
+Spalten gedruckt werden soll, schregung.
+\end_layout
+
+\begin_layout Standard
+Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+\series bold
+\size small
+\lang english
+The Adventure of the Empty House
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+by 
+\noun on
+Sir Arthur Conan Doyle
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+It wawn upon the third of last month.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sie könnÜbersichtlichkeit zuträglich sein.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+man den Cursor in die Mehrfachspalten-Einfügung und verwendet das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Vorwort
+\family default
+.
+ Man schreügung.
+\begin_inset Newline newline
+\end_inset
+
+Ein Beispiel mit einem Vorwort:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+
+\size small
+\lang english
+On the evening of the crime, he returned from the club exactly at ten.
+ no weapon of any sort was to be found in the room.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Spaltenabstand
+\end_layout
+
+\begin_layout Subsubsection
+Vertikale Linien
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{1cm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+color{cyan}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+You're surprised to see me, sir,
+\begin_inset Quotes erd
+\end_inset
+
+ said he, in a strange, croaking voice.
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\lang english
+I ac sir.
+ Here's 
+\noun on
+British
+\begin_inset space ~
+\end_inset
+
+Birds
+\noun default
+, and 
+\noun on
+Catullus
+\noun default
+, and 
+\noun on
+The Holy War
+\noun default
+–a bargain, every one of them.
+ With five volumes you could just fill that gap on that second shelf.
+ It looks untidy, does it not, sir?
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnseprule}{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+columnseprulecolor}{
+\backslash
+normalcolor}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+auf Voreinstellung zurücksetzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

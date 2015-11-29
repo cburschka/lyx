@@ -219,3 +219,6 @@ export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF)
 
 # Language nesting, document is OK, fails because of a bug in LyX
 export/export/languagenesting1_(dvi|pdf(|[23]))
+
+# Language nesting, document is OK, fails because of a bug in LyX (regression to 2.1)
+export/export/languagenesting2_(dvi|pdf(|[23]))
