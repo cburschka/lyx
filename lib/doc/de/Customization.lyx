@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/de/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % Präambel nicht verändern!!!
@@ -54,8 +54,8 @@ logicalmkup
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
-Format 7
-InsetLayout CharStyle:MenuItem
+Format 57
+InsetLayout Flex:MenuItem
 LyxType               charstyle
 LabelString           menu
 LatexType             command
@@ -66,6 +66,7 @@ EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
+ResetsFont true
 End
 # In case we need to do with sans...
 #InsetLayout CharStyle:Code
