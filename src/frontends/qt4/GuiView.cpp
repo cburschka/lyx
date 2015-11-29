@@ -2886,7 +2886,7 @@ bool GuiView::closeBuffer(Buffer & buf)
 bool GuiView::closeTabWorkArea(TabWorkArea * twa)
 {
 	while (twa == d.currentTabWorkArea()) {
-		twa->setCurrentIndex(twa->count()-1);
+		twa->setCurrentIndex(twa->count() - 1);
 
 		GuiWorkArea * wa = twa->currentWorkArea();
 		Buffer & b = wa->bufferView().buffer();
