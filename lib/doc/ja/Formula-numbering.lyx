@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass jsbook
 \begin_preamble
 \usepackage{ifpdf}
@@ -293,7 +293,7 @@ height "1pt"
 \begin_inset VSpace medskip
 \end_inset
 
-この例を作成するには、ローマ数字の数式のカウンタをまず定義しなくてはなりません。そのためには、\SpecialCharNoPassThru LaTeX
+この例を作成するには、ローマ数字の数式のカウンタをまず定義しなくてはなりません。そのためには、\SpecialChar LaTeX
 プリアンブルに以下のように入力します。
 \end_layout
 
@@ -421,7 +421,7 @@ org@theeq}
 \end_layout
 
 \begin_layout Standard
-各数式は、既定ではアラビア数字で連番が振られます。ローマ数字に切り替えるには\SpecialCharNoPassThru TeX
+各数式は、既定ではアラビア数字で連番が振られます。ローマ数字に切り替えるには\SpecialChar TeX
 コードで
 \series bold
 

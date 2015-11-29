@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass jsarticle
 \use_default_options false
 \maintain_unincluded_children false
@@ -98,12 +98,12 @@ End
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 キーボードショートカット
 \end_layout
 
 \begin_layout Author
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 プロジェクトチーム
 \end_layout
 
@@ -138,7 +138,8 @@ status collapsed
 
 \end_inset
 
-を列挙しています。捷径は、\SpecialCharNoPassThru LyX
+を列挙しています。捷径は、\SpecialChar LyX
+
 \emph on
 ユーザーの手引き
 \emph default
@@ -161,7 +162,7 @@ status collapsed
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="6">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -541,7 +542,7 @@ arg   "buffer-previous"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -1284,7 +1285,7 @@ arg   "bookmark-goto 0"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="14" columns="6">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2423,7 +2424,7 @@ arg   "math-insert \\Psi"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="6">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3634,7 +3635,7 @@ arg   "math-insert \\superseteq"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="6">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
