@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -1999,6 +1999,95 @@ These tests are labeled as
 'erratic'.
 \end_layout
 
+\end_deeper
+\begin_layout Subsection
+Export test filtering
+\end_layout
+
+\begin_layout Standard
+There are files which control the assignment of a label to a test.
+\end_layout
+
+\begin_layout Description
+ignoredTests (smal file)
+\begin_inset Newline newline
+\end_inset
+
+Tests selected here are witdrawn
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Input Test of any export combination
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Output Stop if tests not selected here
+\end_layout
+
+\end_deeper
+\begin_layout Description
+unreliableTests: Tests selected either pass or fail, but that is dependant
+ on system where the test is run.
+ Selected tests gain the label 'unreliable'.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Input Each test which passed 'ignoredTests'
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Output Stop if test selected, gain label 'unreliable'.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+suspiciousTests 
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Input Each test which passed 'unreliableTests'
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Output Stop if not selected.
+\end_layout
+
+\begin_layout Standard
+The following file is meant as subselections of 'suspiciousTests'.
+ If neither subselection applies, test gains labels 'export' and 'reverted'
+\end_layout
+
+\begin_layout Description
+suspendedTests Tests selected here gain the label 'suspended' but _not_
+ 'export' or 'reverted'.
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Input Each test selected by 'suspiciousTests' 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Output Selected test gains label 'suspended'.
+ 
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Subsection
 check_load tests
