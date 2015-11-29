@@ -14171,6 +14171,228 @@ onen helfen:
 status collapsed
 
 \begin_layout Plain Layout
+AllowedPlacement
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+string
+\end_layout
+
+\end_inset
+
+=!htbpH] Erlaubte Platzierungsoptionen für den Gleitobjekttyp.
+ Der Wert ist eine Zeichenkette aus Platzierungszeichen.
+ Mögliche Zeichen sind: 
+\emph on
+h
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+hier wenn möglich
+\begin_inset Quotes grd
+\end_inset
+
+), 
+\emph on
+t
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+oben auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+), 
+\emph on
+b
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+unten auf Seite
+\begin_inset Quotes grd
+\end_inset
+
+), 
+\emph on
+p
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+auf Seite nur mit Gleitobjekten
+\begin_inset Quotes grd
+\end_inset
+
+), 
+\emph on
+H
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+hier, unbedingt
+\begin_inset Quotes grd
+\end_inset
+
+) und 
+\emph on
+!
+\emph default
+ (
+\begin_inset Quotes gld
+\end_inset
+
+ignoriere LaTeX-Regeln
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Die Reihenfolge der Zeichen in der Zeichenkette ist egal.
+ Wenn keine Platzierungsoptionen erlaubt sind, verwendet man stattdessen
+ die Zeichenkette 
+\emph on
+none
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowsSideways
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\emph default
+] Definiert ob das Gleitobjekt mit Hilfe des \SpecialChar LaTeX
+-Pakets 
+\family typewriter
+rotfloat
+\family default
+ (sidewaysfloat) rotiert werden kann.
+ Falls das nicht der Fall ist, setzt man es auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AllowsWide
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\emph default
+] Definiert ob das Gleitobjekt eine 
+\begin_inset Quotes gld
+\end_inset
+
+gesternte
+\begin_inset Quotes grd
+\end_inset
+
+ Version hat, die in einem zweispaltigen Dokument die komplette Seitenbreite
+ einnimmt.
+ Falls das nicht der Fall ist, setzt man es auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Extension
 \end_layout
 
@@ -15783,17 +16005,7 @@ status collapsed
 
 \end_inset
 
-] zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog (
-\begin_inset Graphics
-	filename ../../images/layout-paragraph.png
-	scale 70
-	scaleBeforeRotation
-	BoundingBox 0bp 6bp 20bp 20bp
-	groupId Icon
-
-\end_inset
-
-) benutzen darf.
+] zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog benutzen darf.
 \end_layout
 
 \begin_layout Description
@@ -16064,6 +16276,88 @@ LabelFont
 status collapsed
 
 \begin_layout Plain Layout
+FixedWidthPreambleEncoding
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Ob eine Zeichenkodierung mit 
+\begin_inset Quotes gld
+\end_inset
+
+fester Breite
+\begin_inset Quotes grd
+\end_inset
+
+ für den übersetzten Inhalt von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+BabelPreamble
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LangPreamble
+\end_layout
+
+\end_inset
+
+ erzwungen wird.
+ Dies wird für spezielle \SpecialChar LaTeX
+-Pakete wie 
+\family typewriter
+listings
+\family default
+ benötigt, die keine variable Zeichenkodierung wie 
+\family sans
+utf8
+\family default
+ erlauben.
+ Diese Einstellung wird ignoriert, wenn \SpecialChar LaTeX
+-Varianten wie Xe\SpecialChar TeX
+ oder Lua\SpecialChar TeX
+ verwendet
+ werden, die Unicode voll unterstützen.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ForceLocalFontSwitch
 \end_layout
 
@@ -16095,15 +16389,12 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-When using babel, always use a local font switch (
+] Wenn babel verwendet wird; ob immer eine lokale Umschaltung der Sprache
+ erfolgen soll (mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 foreignlanguage
@@ -16111,9 +16402,7 @@ foreignlanguage
 
 \end_inset
 
-), never a global one (such as 
-\lang ngerman
-
+) und nie eine globale (mittels 
 \begin_inset Flex Code
 status collapsed
 
@@ -16161,6 +16450,48 @@ ForceLTR
 \end_inset
 
  ist eine Behelfslösung.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceOwnlines
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] erzwingt einen Zeilenumbruch in der \SpecialChar LaTeX
+-Ausgabe vor und nach der Einfügung.
+ Dies stellt sicher, dass die Einfügung in eigenen Zeilen ausgegeben wird,
+ um die Ausgabe später besser anderweitig einfacher verändern zu können.
 \end_layout
 
 \begin_layout Description
@@ -17074,6 +17405,60 @@ InsetLayout
 status collapsed
 
 \begin_layout Plain Layout
+ObsoletedBy
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Layout>
+\end_layout
+
+\end_inset
+
+] Name eines 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+, das dieses 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+ ersetzt.
+ Dies wird verwendet um ein 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+ umzubenennen und dabei die Rückwärtskompatibilität zu erhalten.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ParbreakIsNewline
 \end_layout
 
@@ -17372,7 +17757,7 @@ string
 \end_inset
 
 ] Eine Zeichenkette, die am Ende des Inhalts des Stils ausgegeben wird.
- Ein Zeilenumbruck in der Ausgabe wird mit 
+ Ein Zeilenumbruch in der Ausgabe wird mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -23105,6 +23490,44 @@ $$Extension
 \end_inset
 
  The file extension (including the dot).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$$pngOrjpg
+\end_layout
+
+\end_inset
+
+ This will be the string 
+\begin_inset Quotes eld
+\end_inset
+
+jpg
+\begin_inset Quotes erd
+\end_inset
+
+ if the file is in JPEG format, otherwise it will be the string 
+\begin_inset Quotes eld
+\end_inset
+
+png
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is useful to avoid uneeded conversions for output formats that support
+ both PNG and JPEG fomats.
+ The predefined RasterImage template uses this macro for the pdf\SpecialChar TeX
+ output
+ format.
 \end_layout
 
 \begin_layout Description
