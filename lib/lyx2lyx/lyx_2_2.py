@@ -2112,9 +2112,9 @@ def revert_fontsettings(document):
 
 
 def revert_solution(document):
-    " Reverts the solution environmen of the theorem module to TeX code "
+    " Reverts the solution environment of the theorem module to TeX code "
 
-    # Do we use theorems-std module?
+    # Do we use one of the modules that provides Solution?
     have_mod = False
     mods = document.get_module_list()
     for mod in mods:
@@ -2125,34 +2125,48 @@ def revert_solution(document):
     if not have_mod:
         return
     consecutive = False
+    is_starred = False
     i = 0
     while True:
         i = find_token(document.body, "\\begin_layout Solution", i)
         if i == -1:
             return
+        is_starred = document.body[i].startswith("\\begin_layout Solution*")
+        if is_starred == True:
+            LaTeXName = "sol*"
+            LyXName = "Solution*"
+            theoremName = "newtheorem*"
+        else:
+            LaTeXName = "sol"
+            LyXName = "Solution"
+            theoremName = "newtheorem"
         j = find_end_of_layout(document.body, i)
         if j == -1:
-            document.warning("Malformed LyX document: Can't find end of Solution layout")
+            if starred == True:
+                document.warning("Malformed LyX document: Can't find end of " + LyXName + " layout")
             i += 1
             continue
         # if this is not a consecutive env, add start command
         begcmd = []
+        
         if not consecutive:
-            begcmd = put_cmd_in_ert("\\begin{sol}")
+            begcmd = put_cmd_in_ert("\\begin{" + LaTeXName + "}" )
         # has this a consecutive theorem of same type?
         consecutive = False
-        consecutive = document.body[j + 2] == "\\begin_layout Solution"
+        consecutive = document.body[j + 2] == "\\begin_layout " + LyXName
         # if this is not followed by a consecutive env, add end command
         if not consecutive:
-            document.body[j : j + 1] = put_cmd_in_ert("\\end{sol}") + ["\\end_layout"]
+            document.body[j : j + 1] = put_cmd_in_ert("\\end{" + LaTeXName + "}") + ["\\end_layout"]
         document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd
-        add_to_preamble(document, "\\providecommand{\solutionname}{Solution}")
+        add_to_preamble(document, "\\theoremstyle{definition}")
         if mod == "theorems-std" or mod == "theorems-ams":
-            add_to_preamble(document, "\\theoremstyle{plain}\n" \
-                                      "\\newtheorem{sol}[thm]{\\protect\\solutionname}")
+            if is_starred:
+                add_to_preamble(document, "\\" + theoremName + "{" + LaTeXName + "}{\\protect\\solutionname}")
+            else:
+                add_to_preamble(document, "\\" + theoremName + "{" + LaTeXName + "}[thm]{\\protect\\solutionname}")
         if mod == "theorems-bytype" or mod == "theorems-ams-bytype":
-            add_to_preamble(document, "\\theoremstyle{definition}\n" \
-                                      "\\newtheorem{sol}{\\protect\\solutionname}")
+            add_to_preamble(document, "\\" + theoremName + "{" + LaTeXName + "}{\\protect\\solutionname}")
+        add_to_preamble(document, "\\providecommand{\solutionname}{Solution}")
         i = j
 
 
