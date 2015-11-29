@@ -311,11 +311,11 @@ def revert_smash(document):
     i = find_token(document.header, "\\use_package amsmath", 0)
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package amsmath.")
-        return;
+        return
     value = get_value(document.header, "\\use_package amsmath", i).split()[1]
     if value != "1":
         # nothing to do if package is not auto but on or off
-        return;
+        return
     j = 0
     while True:
         j = find_token(document.body, '\\begin_inset Formula', j)
@@ -1086,7 +1086,7 @@ def convert_origin(document):
     i = find_token(document.header, "\\textclass ", 0)
     if i == -1:
         document.warning("Malformed LyX document: No \\textclass!!")
-        return;
+        return
     if document.dir == "":
         origin = "stdin"
     else:
@@ -1121,7 +1121,7 @@ def revert_origin(document):
     i = find_token(document.header, "\\origin ", 0)
     if i == -1:
         document.warning("Malformed LyX document: No \\origin!!")
-        return;
+        return
     del document.header[i]
 
 
