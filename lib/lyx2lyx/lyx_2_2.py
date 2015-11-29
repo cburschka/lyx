@@ -2142,8 +2142,7 @@ def revert_solution(document):
             theoremName = "newtheorem"
         j = find_end_of_layout(document.body, i)
         if j == -1:
-            if starred == True:
-                document.warning("Malformed LyX document: Can't find end of " + LyXName + " layout")
+            document.warning("Malformed LyX document: Can't find end of " + LyXName + " layout")
             i += 1
             continue
         # if this is not a consecutive env, add start command
