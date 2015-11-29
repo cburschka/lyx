@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 503
 \begin_document
 \begin_header
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % extra space for tables
@@ -37,16 +38,16 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman DejaVu Serif
-\font_sans DejaVu Sans
-\font_typewriter DejaVu Sans Mono
-\font_math default
+\font_roman "default" "DejaVu Serif"
+\font_sans "default" "DejaVu Sans"
+\font_typewriter "default" "DejaVu Sans Mono"
+\font_math "auto" "default"
 \font_default_family default
-\use_non_tex_fonts true
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -108,7 +109,8 @@ End
 \begin_body
 
 \begin_layout Title
-Erweiterte LyX Features
+Erweiterte \SpecialChar LyX
+ Features
 \end_layout
 
 \begin_layout Subtitle
@@ -116,7 +118,8 @@ Version 2.2.x
 \end_layout
 
 \begin_layout Author
-vom LyX-Team
+vom \SpecialChar LyX
+-Team
 \end_layout
 
 \begin_layout Standard
@@ -129,13 +132,15 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Chapter
-LyX und das World Wide Web
+\SpecialChar LyX
+ und das World Wide Web
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-LyX hndly formats.
+\SpecialChar LyX
+ hndly formats.
 \end_layout
 
 \begin_layout Section
@@ -145,7 +150,8 @@ Mathe-Ausgabe in XHTML
 \begin_layout Standard
 
 \lang english
-LyX offers four choices for how math is rendered.
+\SpecialChar LyX
+ offers four choices for how math is rendered.
  These have various advantages and disadvantages:
 \end_layout
 
@@ -195,10 +201,10 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 
 \lang french
-Settings\SpecialChar \menuseparator
+Settings\SpecialChar menuseparator
 
 \lang ngerman
 Output
@@ -211,7 +217,8 @@ Output
 \end_layout
 
 \begin_layout Chapter
-Der LyX-S
+Der \SpecialChar LyX
+-S
 \lang french
 erv
 \lang ngerman
@@ -225,7 +232,8 @@ Einführung
 \begin_layout Standard
 
 \lang english
-The `LyX server' almmands,
+The `\SpecialChar LyX
+ server' almmands,
 \begin_inset Quotes eld
 \end_inset
 
@@ -233,7 +241,8 @@ push
 \begin_inset Quotes erd
 \end_inset
 
- citations to LyX.
+ citations to \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -360,7 +369,8 @@ Versionskontrolle
 
 \end_inset
 
- in LyX
+ in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -426,10 +436,11 @@ man rcsintro
 \begin_layout Standard
 
 \lang english
-Be LyX, you should
+Be \SpecialChar LyX
+, you should
 \family sans
-View\SpecialChar \menuseparator
-Toolbars\SpecialChar \menuseparator
+View\SpecialChar menuseparator
+Toolbars\SpecialChar menuseparator
 Version
 \begin_inset space ~
 \end_inset
@@ -440,13 +451,14 @@ Control
 \end_layout
 
 \begin_layout Subsection
-RCS-Befehle in LyX
+RCS-Befehle in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
 Die folgetützten RCS-Befehle.
 \family sans
-Datei\SpecialChar \menuseparator
+Datei\SpecialChar menuseparator
 Versionskontrolle
 \family default
 .
@@ -500,7 +512,8 @@ Revision info
 \begin_layout Standard
 
 \lang english
-LyX sast commit.
+\SpecialChar LyX
+ sast commit.
 \family typewriter
 rlog -r <file-name>
 \family default
@@ -508,7 +521,7 @@ rlog -r <file-name>
  For other details see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:VCS-Revision-Information"
+reference "subsec:VCS-Revision-Information"
 
 \end_inset
 
@@ -518,7 +531,8 @@ reference "sub:VCS-Revision-Information"
 \begin_layout Subsection
 
 \lang english
-CVS commands in LyX
+CVS commands in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -526,7 +540,7 @@ CVS commands in LyX
 \lang english
 A subs in the 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Version
 \begin_inset space ~
 \end_inset
@@ -565,7 +579,8 @@ cvs log "<file-name>"
 \begin_layout Subsection
 
 \lang english
-SVN commands in LyX
+SVN commands in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -573,7 +588,7 @@ SVN commands in LyX
 \lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:SVN-Repo-Update"
+name "subsec:SVN-Repo-Update"
 
 \end_inset
 
@@ -615,7 +630,8 @@ status collapsed
 \begin_layout Standard
 
 \lang english
-re two different modes of file use in LyX:
+re two different modes of file use in \SpecialChar LyX
+:
 \end_layout
 
 \begin_layout Itemize
@@ -689,7 +705,7 @@ svn lock "<file-name>"
 \lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:VCS-Revision-Information"
+name "subsec:VCS-Revision-Information"
 
 \end_inset
 
@@ -706,7 +722,12 @@ There are more possibilities how to activate revision information in our
 \begin_layout Itemize
 
 \lang english
-LyX supports directly:
+\SpecialChar LyX
+ supports directly:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -747,7 +768,7 @@ svnversion
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -858,6 +879,10 @@ file.lyx
 
 .
  Supported flags are:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -955,14 +980,16 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
 \family sans
 svn propset svn:keywords 'Rev' file.lyx
 \family default
-) and then paste keyword TeX code
+) and then paste keyword \SpecialChar TeX
+ code
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-This is an easy way how to ensure that LyX won't break the line in the middle
+This is an easy way how to ensure that \SpecialChar LyX
+ won't break the line in the middle
  of keyword tag.
 \end_layout
 
@@ -1005,7 +1032,8 @@ $Rev: 59 $
 \end_layout
 
 \begin_layout Subsection
-LyX und Literarische Programmierung
+\SpecialChar LyX
+ und Literarische Programmierung
 \begin_inset Foot
 status collapsed
 
@@ -1057,7 +1085,8 @@ Die Eingabe von Programmcode
 \end_layout
 
 \begin_layout Standard
-In LyX verwenden Sie zur Eingabe von Programmcode den Umgebungstyp 
+In \SpecialChar LyX
+ verwenden Sie zur Eingabe von Programmcode den Umgebungstyp 
 \begin_inset Flex Noun
 status collapsed
 
@@ -1196,7 +1225,8 @@ Dallgemeinen sollten die BefePython, C und Perl geschrieben.
 \end_layout
 
 \begin_layout Subsubsection
-LyX-Konfiguration
+\SpecialChar LyX
+-Konfiguration
 \end_layout
 
 \begin_layout Standard
@@ -1204,7 +1234,7 @@ LyX-Konfiguration
 \lang english
 Anfigured by the 
 \family sans
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \family default
  panel in the 
@@ -1277,7 +1307,8 @@ Erweiterungen zur Fehlersuche
 \end_layout
 
 \begin_layout Standard
-Um diese nnen, müssen Sie allerdings den LyX-Server 
+Um diese nnen, müssen Sie allerdings den \SpecialChar LyX
+-Server 
 \lang english
 You le it in 
 \family sans
@@ -1289,7 +1320,8 @@ aths
 \family default
 ) by ehe 
 \family sans
-LyXserver pipe
+\SpecialChar LyX
+server pipe
 \family default
  a path like
 \begin_inset Newline newline
@@ -1335,13 +1367,13 @@ Möchte man 2
 
 Spalten im Text haben, verwendet man das Menü 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Benutzer\SpecialChar \-
+Einfügen\SpecialChar menuseparator
+Benutzer\SpecialChar softhyphen
 definierte
 \begin_inset space ~
 \end_inset
 
-Einfügungen\SpecialChar \menuseparator
+Einfügungen\SpecialChar menuseparator
 Mehrere
 \begin_inset space ~
 \end_inset
@@ -1406,7 +1438,7 @@ Sie könnÜbersichtlichkeit zuträglich sein.
 \begin_layout Standard
 man den Cursor in die Mehrfachspalten-Einfügung und verwendet das Menü 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Vorwort
 \family default
 .
@@ -1433,7 +1465,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar \ldots{}
+Und die Geschichte geht weiter und weiter und weiter und weiter\SpecialChar ldots
 
 \end_layout
 
