@@ -113,11 +113,12 @@
 \begin_body
 
 \begin_layout Title
-Introduktion til \SpecialCharNoPassThru LyX
+Introduktion til \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
-af \SpecialCharNoPassThru LyX
+af \SpecialChar LyX
 -holdet
 \end_layout
 
@@ -131,17 +132,17 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -filosofien
 \end_layout
 
 \begin_layout Subsection
-Hvad er \SpecialCharNoPassThru LyX
+Hvad er \SpecialChar LyX
 ?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  er et system til at udfærdige dokumenter\SpecialChar endofsentence
  Det udmærker sig ved at kunne
  lave komplekse tekniske og videnskabelige artikler med formler, krydshenvisning
@@ -165,7 +166,7 @@ er, litteraturhenvisninger, indekser m.m\SpecialChar endofsentence
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  er et program, der har en moderne tilgang til dokumentskrivning på computer
  med et markeringsparadigme, en tilgang, der bryder med det gammeldags 
 \begin_inset Quotes sld
@@ -180,21 +181,20 @@ skrivemaskine-koncept
  resultat med en minimal indsats uden at skulle være specialister i tekstopsætni
 ng\SpecialChar endofsentence
  Arbejdet med tekstopsætning klares hovedsageligt af computeren, ikke
- forfatteren; med \SpecialCharNoPassThru LyX
+ forfatteren; med \SpecialChar LyX
  kan forfatteren koncentrere sig om indholdet\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-En af de udfordringer du kommer ud for, når du tager \SpecialCharNoPassThru LyX
- i brug, er den
- anderledes tænkemåde, du er nødt til at lægge for dagen\SpecialChar endofsentence
- Engang for længe
- siden var gammeldags skrivemaskiner det eneste man havde til at skrive
- dokumenter på, så vi lærte os allesammen små trick til at komme udenom
- deres begrænsninger\SpecialChar endofsentence
- Understregning, som ikke er andet end at overskrive
- med 
+En af de udfordringer du kommer ud for, når du tager \SpecialChar LyX
+ i brug, er den anderledes
+ tænkemåde, du er nødt til at lægge for dagen\SpecialChar endofsentence
+ Engang for længe siden var
+ gammeldags skrivemaskiner det eneste man havde til at skrive dokumenter
+ på, så vi lærte os allesammen små trick til at komme udenom deres begrænsninger\SpecialChar endofsentence
+
+ Understregning, som ikke er andet end at overskrive med 
 \begin_inset Quotes sld
 \end_inset
 
@@ -246,16 +246,16 @@ Du får ikke mere end det, du ser
 \end_layout
 
 \begin_layout Standard
-Det er her, \SpecialCharNoPassThru LyX
+Det er her, \SpecialChar LyX
  afviger fra almindelig tekstbehandling\SpecialChar endofsentence
  Du skal ikke bekymre
  dig om, hvor tegnene placeres på arket\SpecialChar endofsentence
- Du fortælle \SpecialCharNoPassThru LyX
+ Du fortælle \SpecialChar LyX
  
 \emph on
 hvad det er, du laver
 \emph default
- og \SpecialCharNoPassThru LyX
+ og \SpecialChar LyX
  klarer resten efter et regelsæt kaldet en 
 \emph on
 stil
@@ -316,7 +316,7 @@ lsen\SpecialChar endofsentence
 \end_layout
 
 \begin_layout Standard
-I \SpecialCharNoPassThru LyX
+I \SpecialChar LyX
  vælger du 
 \family sans
 Sektion
@@ -338,9 +338,9 @@ Det er det hele\SpecialChar endofsentence
  Hvis du flytter rundt på afsnittene vil de automatisk få
  nye numre — overalt\SpecialChar endofsentence
  Og hvis du indsætter referencer til afsnittet korrekt
- (ved at indsætte krydsreference-mærker), vil \SpecialCharNoPassThru LyX
- automatisk opdatere dem
- i hele filen, så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar endofsentence
+ (ved at indsætte krydsreference-mærker), vil \SpecialChar LyX
+ automatisk opdatere dem i
+ hele filen, så du altid nogensinde skal skrive et afsnitsnummer selv\SpecialChar endofsentence
 
 \end_layout
 
@@ -362,12 +362,12 @@ Lad os kigge på problematikken omkring konsistens\SpecialChar endofsentence
 \end_inset
 
 1\SpecialChar endofsentence
- Dette problem findes ganske enkelt ikke i \SpecialCharNoPassThru LyX
+ Dette problem findes ganske enkelt ikke i \SpecialChar LyX
 \SpecialChar endofsentence
- Maskinen holder styr på
- alle detaljerne om, hvilke ting der har hvilken skriftstørrelse for dig\SpecialChar endofsentence
-
- Sådan noget er computere trods alt ret gode til\SpecialChar endofsentence
+ Maskinen holder styr på alle
+ detaljerne om, hvilke ting der har hvilken skriftstørrelse for dig\SpecialChar endofsentence
+ Sådan
+ noget er computere trods alt ret gode til\SpecialChar endofsentence
 
 \end_layout
 
@@ -379,15 +379,15 @@ Endnu et eksempel: Du laver en liste\SpecialChar endofsentence
  for at placere et mærke ud for hvert punkt på listen, hvilket mærke det
  skal være, hvor mange tomme linjer der skal mellem hvert punkt og så videre\SpecialChar endofsentence
 
- I \SpecialCharNoPassThru LyX
- skal du kun tænke på to ting: hvilken slags liste er det og hvad
- skal der stå i den\SpecialChar endofsentence
+ I \SpecialChar LyX
+ skal du kun tænke på to ting: hvilken slags liste er det og hvad skal
+ der stå i den\SpecialChar endofsentence
  Det er det hele\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Så den grundlæggende idé bag \SpecialCharNoPassThru LyX
+Så den grundlæggende idé bag \SpecialChar LyX
  er: angiv 
 \emph on
 hvad
@@ -405,7 +405,7 @@ Du ser, hvad du får
 \begin_inset Quotes srd
 \end_inset
 
- er \SpecialCharNoPassThru LyX
+ er \SpecialChar LyX
 -filosofien 
 \begin_inset Quotes sld
 \end_inset
@@ -421,7 +421,7 @@ mener
  (What You See Is What You Mean, WYSIWYM)\SpecialChar endofsentence
  Den gør det meget simplere at
  skrive dokumenter\SpecialChar endofsentence
- Det er også derfor \SpecialCharNoPassThru LyX
+ Det er også derfor \SpecialChar LyX
  ikke er ret godt til at lave plakater
  og flyers — i disse tilfælde vil du netop 
 \emph on
@@ -429,7 +429,7 @@ gerne
 \emph default
  bestemme præcis hvor alt skal stå, fordi der ikke findes funktionsbestemte
  enheder som afsnit, sektioner o.s.v\SpecialChar endofsentence
- Det betyder ikke at \SpecialCharNoPassThru LyX
+ Det betyder ikke at \SpecialChar LyX
  mangler en bestemt
  funktion, snarere at det ganske enkelt ikke er det rigtigt værktøj til
  dette — du bruger heller ikke en skruetrækker til at hamre søm i med (medmindre
@@ -438,13 +438,13 @@ gerne
 \end_layout
 
 \begin_layout Subsection
-Forskelle mellem \SpecialCharNoPassThru LyX
+Forskelle mellem \SpecialChar LyX
  og anden tekst\SpecialChar softhyphen
 behandling
 \end_layout
 
 \begin_layout Standard
-Dette finder du ikke i \SpecialCharNoPassThru LyX
+Dette finder du ikke i \SpecialChar LyX
 :
 \end_layout
 
@@ -471,23 +471,22 @@ Space
 
 \begin_layout Standard
 Tabulatorstop er sammen med linealen, der viser hvor ting er placeret på
- siden, ubrugelige i \SpecialCharNoPassThru LyX
+ siden, ubrugelige i \SpecialChar LyX
 \SpecialChar endofsentence
  Programmet tager sig selv af, hvor på siden tingene
  placeres\SpecialChar endofsentence
- Det samme gælder ekstra mellemrum; \SpecialCharNoPassThru LyX
- tilføjer det efter behov
- afhængigt af konteksten\SpecialChar endofsentence
- I starten kan det være irriterende ikke at kunne
- indsætte to tomme linjer efter hinanden, men det giver mening, når du tænker
- i WYSIWYM\SpecialChar endofsentence
+ Det samme gælder ekstra mellemrum; \SpecialChar LyX
+ tilføjer det efter behov afhængigt
+ af konteksten\SpecialChar endofsentence
+ I starten kan det være irriterende ikke at kunne indsætte
+ to tomme linjer efter hinanden, men det giver mening, når du tænker i WYSIWYM\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Her er nogle ting, der findes i \SpecialCharNoPassThru LyX
-, men bruges på en anden måde, end man
- skulle tro:
+Her er nogle ting, der findes i \SpecialChar LyX
+, men bruges på en anden måde, end man skulle
+ tro:
 \end_layout
 
 \begin_layout Itemize
@@ -516,19 +515,19 @@ Skriftjustering (fed, skråtstillet, understreget o.s.v.)
 \end_layout
 
 \begin_layout Standard
-Selvom de findes i \SpecialCharNoPassThru LyX
+Selvom de findes i \SpecialChar LyX
 , har du normalt ikke brug for dem\SpecialChar endofsentence
- \SpecialCharNoPassThru LyX
- tager sig af
- disse ting for dig afhængigt af, hvad du er i gang med\SpecialChar endofsentence
- Forskellige dele
- af dokumentet sættes automatisk med en anden skrifttype og -størrelse\SpecialChar endofsentence
- Afsnitsin
-drykning afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt\SpecialChar endofsentence
+ \SpecialChar LyX
+ tager sig af disse
+ ting for dig afhængigt af, hvad du er i gang med\SpecialChar endofsentence
+ Forskellige dele af dokumentet
+ sættes automatisk med en anden skrifttype og -størrelse\SpecialChar endofsentence
+ Afsnitsindrykning
+ afhænger af konteksten; forskellige afsnitstyper indrykkes forskelligt\SpecialChar endofsentence
 
  Sideskift håndteres også automatisk\SpecialChar endofsentence
  Normalt er afstanden mellem ord, linjer
- og afsnit fleksibel, styret af \SpecialCharNoPassThru LyX
+ og afsnit fleksibel, styret af \SpecialChar LyX
 \SpecialChar endofsentence
 
 \begin_inset Foot
@@ -536,7 +535,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Det er muligt selv at finjustere disse (hvoraf enkelte kræver kendskab til
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 ), i hele dokumentet eller dele heraf\SpecialChar endofsentence
  Se detaljerne i manualen 
 \emph on
@@ -556,10 +555,10 @@ Udvidede funktioner
 \end_layout
 
 \begin_layout Standard
-Til sidste er der nogle områder, hvor vi mener at \SpecialCharNoPassThru LyX
- (og \SpecialCharNoPassThru LaTeX
-) overgår
- mange tekstbehandlingsprogrammer:
+Til sidste er der nogle områder, hvor vi mener at \SpecialChar LyX
+ (og \SpecialChar LaTeX
+) overgår mange tekstbeha
+ndlingsprogrammer:
 \end_layout
 
 \begin_layout Itemize
@@ -586,11 +585,10 @@ Krydsreferencer
 Godt nok kan mange nyere tekstbehandlingsprogrammer håndtere matematiske
  symboler, tabeller og orddeling — og mange har bevæget sig mod stildefinitioner
  og WYSIWYM-filosofien.
- Det er dog først for nylig at dette er sket, hvorimod \SpecialCharNoPassThru LyX
- bygger på do
- kuementudviklingssystemet-\SpecialCharNoPassThru LaTeX
-, der har eksisteret i mere end 15 år og
- 
+ Det er dog først for nylig at dette er sket, hvorimod \SpecialChar LyX
+ bygger på do kuementudvi
+klingssystemet-\SpecialChar LaTeX
+, der har eksisteret i mere end 15 år og 
 \emph on
 virker
 \emph default
@@ -600,9 +598,9 @@ virker
 status collapsed
 
 \begin_layout Plain Layout
-Okay, vi ved godt at intet er helt perfekt, men \SpecialCharNoPassThru LaTeX
- er så tæt på at være
- fejlfrit, som et program kan komme\SpecialChar endofsentence
+Okay, vi ved godt at intet er helt perfekt, men \SpecialChar LaTeX
+ er så tæt på at være fejlfrit,
+ som et program kan komme\SpecialChar endofsentence
 
 \end_layout
 
@@ -616,12 +614,12 @@ Hvad
 \emph on
 er
 \emph default
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  (og hvad rager det mig)?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  er et dokumentudviklingssystem, der blev lavet af Leslie Lamport tilbage
  i 1985
 \begin_inset Foot
@@ -634,7 +632,8 @@ Oplysningerne i dette afsnit kommer fra
 \begin_inset Quotes sld
 \end_inset
 
-A Guide to \SpecialCharNoPassThru LaTeX2e
+A Guide to \SpecialChar LaTeX2e
+
 \emph default
 ,
 \begin_inset Quotes erd
@@ -651,7 +650,7 @@ s litteraturliste\SpecialChar endofsentence
 \end_inset
 
 \SpecialChar endofsentence
- Det er igen bygget op omkring et tekstopsætningssprog kaldet \SpecialCharNoPassThru TeX
+ Det er igen bygget op omkring et tekstopsætningssprog kaldet \SpecialChar TeX
  (udtales
  
 \begin_inset Quotes sld
@@ -662,22 +661,21 @@ tæk
 \end_inset
 
 ), som Donald Knuth lavede i 1984.
- Dog er det de færreste, der ved nøjagtig hvad \SpecialCharNoPassThru TeX
+ Dog er det de færreste, der ved nøjagtig hvad \SpecialChar TeX
  er\SpecialChar endofsentence
- \SpecialCharNoPassThru TeX
- udfører en række
- skriftopsætningskommandoer fra en ren tekstfil\SpecialChar endofsentence
- Det er en smule mere indviklet
- end en skrivemaskine, men ikke nær så involveret i selve udskriftsprocessen\SpecialChar endofsentence
-
- Dog er mange af pressens udskrifts-trick blevet omsat til algoritmer af
- Knuth og inkorporeret i \SpecialCharNoPassThru TeX
-, hvilket er skyld i det fremragende udseende
- af udskrifter fra \SpecialCharNoPassThru TeX
+ \SpecialChar TeX
+ udfører en række skriftopsæt
+ningskommandoer fra en ren tekstfil\SpecialChar endofsentence
+ Det er en smule mere indviklet end en
+ skrivemaskine, men ikke nær så involveret i selve udskriftsprocessen\SpecialChar endofsentence
+ Dog
+ er mange af pressens udskrifts-trick blevet omsat til algoritmer af Knuth
+ og inkorporeret i \SpecialChar TeX
+, hvilket er skyld i det fremragende udseende af udskrifter
+ fra \SpecialChar TeX
 \SpecialChar endofsentence
- I alle tilfælde er det, der kommer fra \SpecialCharNoPassThru TeX
- en såkaldt
- 
+ I alle tilfælde er det, der kommer fra \SpecialChar TeX
+ en såkaldt 
 \begin_inset Quotes sld
 \end_inset
 
@@ -707,10 +705,10 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Hvis ikke det var for én yderligere funktion, ville \SpecialCharNoPassThru TeX
+Hvis ikke det var for én yderligere funktion, ville \SpecialChar TeX
  kun være et program
  til opsætning af tekst\SpecialChar endofsentence
- \SpecialCharNoPassThru TeX
+ \SpecialChar TeX
  giver imidlertid mulighed for at definere makroer\SpecialChar endofsentence
 
  Det er her, det bliver spændende\SpecialChar endofsentence
@@ -718,70 +716,70 @@ Hvis ikke det var for én yderligere funktion, ville \SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-De fleste brugere at \SpecialCharNoPassThru TeX
- bruger i virkeligheden en makropakke, som Knuth
- lavede for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar endofsentence
-
- Det er det, de fleste kender som \SpecialCharNoPassThru TeX
+De fleste brugere at \SpecialChar TeX
+ bruger i virkeligheden en makropakke, som Knuth lavede
+ for at skjule en del af detaljerne omkring opsætningen af tekst\SpecialChar endofsentence
+ Det er
+ det, de fleste kender som \SpecialChar TeX
 \SpecialChar endofsentence
- Almindelige brugere arbejder ikke
- med rå \SpecialCharNoPassThru TeX
-, som udelukkende er kommandoer til opsætning af tekst\SpecialChar endofsentence
- Kun folk,
- der laver nye makropakker gør det\SpecialChar endofsentence
- Det er her, Lesslie Lamport kommer ind
- i historien\SpecialChar endofsentence
+ Almindelige brugere arbejder ikke med rå \SpecialChar TeX
+, som
+ udelukkende er kommandoer til opsætning af tekst\SpecialChar endofsentence
+ Kun folk, der laver nye
+ makropakker gør det\SpecialChar endofsentence
+ Det er her, Lesslie Lamport kommer ind i historien\SpecialChar endofsentence
+
  Han ville have en makropakke, der var mere bruger\SpecialChar softhyphen
-orienteret
- og mindre skrivemaskine\SpecialChar softhyphen
+orienteret og mindre skrivemas
+kine\SpecialChar softhyphen
 orienteret\SpecialChar endofsentence
- Et kommandosæt, der kunne sætte tekst,
- sektioner, tabeller og matematiske formler op på en ensartet, sammenhængende
- måde\SpecialChar endofsentence
- Sådan blev \SpecialCharNoPassThru LaTeX
+ Et kommandosæt, der kunne sætte tekst, sektioner, tabeller
+ og matematiske formler op på en ensartet, sammenhængende måde\SpecialChar endofsentence
+ Sådan blev
+ \SpecialChar LaTeX
  født\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Sideløbende med udviklingen af \SpecialCharNoPassThru LaTeX
- lavede andre deres egne makropakker
- til \SpecialCharNoPassThru TeX
+Sideløbende med udviklingen af \SpecialChar LaTeX
+ lavede andre deres egne makropakker til
+ \SpecialChar TeX
  til at lave slides eller artikler til matematik-tidsskrifter o.s.v\SpecialChar endofsentence
-
- Nogle brugte det rå \SpecialCharNoPassThru TeX
--funktioner til dette, mens andre begyndet at ændre
- i \SpecialCharNoPassThru LaTeX
+ Nogle
+ brugte det rå \SpecialChar TeX
+-funktioner til dette, mens andre begyndet at ændre i \SpecialChar LaTeX
 \SpecialChar endofsentence
- I et forsøg på at rydde op i dette rod, begyndte et hold af \SpecialCharNoPassThru LaTeX
--folk
- (heriblandt Lamport, naturligvis) sidst i 80'erne at arbejde på \SpecialCharNoPassThru LaTeX2e
-,
- den nuværende udgave af \SpecialCharNoPassThru LaTeX
+ I
+ et forsøg på at rydde op i dette rod, begyndte et hold af \SpecialChar LaTeX
+-folk (heriblandt
+ Lamport, naturligvis) sidst i 80'erne at arbejde på \SpecialChar LaTeX2e
+, den nuværende udgave
+ af \SpecialChar LaTeX
 \SpecialChar endofsentence
- Denne nye udgave af \SpecialCharNoPassThru LaTeX
- har kommandoer,
- der gør det lettere at oprette \SpecialCharNoPassThru TeX
+ Denne nye udgave af \SpecialChar LaTeX
+ har kommandoer, der gør det lettere at oprette
+ \SpecialChar TeX
 -makroer, bruge nye skrifttyper m.m\SpecialChar endofsentence
- Faktisk
- er \SpecialCharNoPassThru LaTeX
- et ret omfattende selvstændigt sprog! Brugere verden over har
- lavet deres egne tilføjelser til \SpecialCharNoPassThru LaTeX
- ud over de almindelige\SpecialChar endofsentence
+ Faktisk er \SpecialChar LaTeX
+ et ret omfattende selvstændigt
+ sprog! Brugere verden over har lavet deres egne tilføjelser til \SpecialChar LaTeX
+ ud over
+ de almindelige\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-Der er to måder at udvide \SpecialCharNoPassThru LaTeX
+Der er to måder at udvide \SpecialChar LaTeX
 : klasser og stile\SpecialChar endofsentence
  En 
 \emph on
 klasse
 \emph default
- er en samling \SpecialCharNoPassThru LaTeX
-- og \SpecialCharNoPassThru TeX
--makroer, der beskriver en bestemt slags dokument,
- såsom en bog eller artikel\SpecialChar endofsentence
+ er en samling \SpecialChar LaTeX
+- og \SpecialChar TeX
+-makroer, der beskriver en bestemt slags dokument, såsom
+ en bog eller artikel\SpecialChar endofsentence
  Der er klasser til slides, fysiske eller matematiske
  tidsskrifter\SpecialChar ldots
  mange universiteter har ligefrem sine egne klasse sine eksamenspro
@@ -795,9 +793,9 @@ stil
 opførsel
 \emph default
 , ethvert dokument kan have\SpecialChar endofsentence
- For eksempel styrer \SpecialCharNoPassThru LyX
- sidens margin og linjeafstan
-d med to \SpecialCharNoPassThru LaTeX
+ For eksempel styrer \SpecialChar LyX
+ sidens margin og linjeafstand
+ med to \SpecialChar LaTeX
  stil-filer\SpecialChar endofsentence
  Der er stil-filer til en lang række ting: udskrivning
  af labels eller konvolutter, ændring af indrykningsopførsel, tilføjelse
@@ -813,35 +811,35 @@ Her er en opsummering:
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 : Skriftopsætningssprog med makrofunktionalitet.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\SpecialCharNoPassThru LaTeX
-: Makropakke, der bygger på \SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+: Makropakke, der bygger på \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-klasser: Beskrivelser af en dokumenttype ved brug af \SpecialCharNoPassThru LaTeX
+klasser: Beskrivelser af en dokumenttype ved brug af \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-stile: Ændrer \SpecialCharNoPassThru LaTeX
+stile: Ændrer \SpecialChar LaTeX
 's standardopførsel på en eller anden måde.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\SpecialCharNoPassThru LyX
-: Visuel, WYSIWYM-tekstbehandling, der bruger \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+: Visuel, WYSIWYM-tekstbehandling, der bruger \SpecialChar LaTeX
 -systemet til udskrifterne.
 \end_layout
 
@@ -850,15 +848,16 @@ Formålet med dette afsnit var at prøve at forklare
 \emph on
 hvorfor
 \emph default
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  er anderledes end andre tekstbehandlingsprogrammer\SpecialChar endofsentence
- Forklaringen er
- enkel: \SpecialCharNoPassThru LyX
- bruger \SpecialCharNoPassThru LaTeX
+ Forklaringen er enkel:
+ \SpecialChar LyX
+ bruger \SpecialChar LaTeX
  til sine udskrifter\SpecialChar endofsentence
- Ligesom \SpecialCharNoPassThru LaTeX
- fokuserer \SpecialCharNoPassThru LyX
- på konteksten af det, du skriver — 
+ Ligesom \SpecialChar LaTeX
+ fokuserer \SpecialChar LyX
+ på konteksten af det,
+ du skriver — 
 \emph on
 hvad
 \emph default
@@ -875,22 +874,22 @@ Dokumentationen
 \end_layout
 
 \begin_layout Standard
-For at gøre det nemmere at svare på dine spørgsmål og beskrive alle \SpecialCharNoPassThru LyX
-'s
- funktioner, er dokumentationen delt op i flere filer\SpecialChar endofsentence
- De tjener hvert sit
- formål som beskrevet herunder\SpecialChar endofsentence
- Du bør læse dette afsnit nøje før du pløjer
- dig gennem dem\SpecialChar endofsentence
- Det indeholder en masse nyttige oplysninger og kommentarer,
- der kan spare din tid\SpecialChar endofsentence
+For at gøre det nemmere at svare på dine spørgsmål og beskrive alle \SpecialChar LyX
+'s funktione
+r, er dokumentationen delt op i flere filer\SpecialChar endofsentence
+ De tjener hvert sit formål som
+ beskrevet herunder\SpecialChar endofsentence
+ Du bør læse dette afsnit nøje før du pløjer dig gennem
+ dem\SpecialChar endofsentence
+ Det indeholder en masse nyttige oplysninger og kommentarer, der kan
+ spare din tid\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Noget af dokumentationen kan være mangelfuld eller forældet, selvom vi forsøger
  hårdt på at følge med\SpecialChar endofsentence
- Som resten af \SpecialCharNoPassThru LyX
+ Som resten af \SpecialChar LyX
  er manualerne udarbejdet af frivillige,
  der har 
 \begin_inset Quotes sld
@@ -937,7 +936,7 @@ type "mailto:"
 
 .
  Hvis du har spørgsmål, der ikke åbenlyst besvares af dokumentationen og
- skal bruge hurtig hjælp, kan du benytte dig af postlisten for \SpecialCharNoPassThru LyX
+ skal bruge hurtig hjælp, kan du benytte dig af postlisten for \SpecialChar LyX
 -brugere,
  som du kan nå på 
 \begin_inset CommandInset href
@@ -955,7 +954,7 @@ Formatet
 \end_layout
 
 \begin_layout Standard
-Nogen trykker manualerne, mens andre læser dem på skærmen med \SpecialCharNoPassThru LyX
+Nogen trykker manualerne, mens andre læser dem på skærmen med \SpecialChar LyX
 \SpecialChar endofsentence
  Fremtoningen
  på skærmen afviger på flere punkter fra den trykte version\SpecialChar endofsentence
@@ -1083,8 +1082,8 @@ Fremhævet stil
 \family typewriter
 Skrivemaskine
 \family default
- bruges til program- og filnavne, \SpecialCharNoPassThru LaTeX
--, og \SpecialCharNoPassThru LyX
+ bruges til program- og filnavne, \SpecialChar LaTeX
+-, og \SpecialChar LyX
 -koder og funktioner.
 \end_layout
 
@@ -1440,7 +1439,7 @@ Enter,
 \end_inset
 
  atter andre har to taster.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  behandler dem alle som samme tast, og kalder den både 
 \family sans
 Retur
@@ -1481,7 +1480,7 @@ Avancerede funktioner
 
 , så kig også der\SpecialChar endofsentence
  Bemærk, at der er to forskellige tastaturudlægninger,
- der benyttes kan bruges i \SpecialCharNoPassThru LyX
+ der benyttes kan bruges i \SpecialChar LyX
 : 
 \begin_inset Quotes eld
 \end_inset
@@ -1532,6 +1531,7 @@ Introduktion
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1547,17 +1547,18 @@ Selvstudium (Tutorial)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Hvis du ikke kender \SpecialCharNoPassThru LyX
- i forvejen og ikke har brugt \SpecialCharNoPassThru LaTeX
-, bør du starte
- her\SpecialChar endofsentence
- Hvis du tror, at \SpecialCharNoPassThru LaTeX
- er et fleksibelt plastikmateriale, skal du helt
- sikkert læse 
+Hvis du ikke kender \SpecialChar LyX
+ i forvejen og ikke har brugt \SpecialChar LaTeX
+, bør du starte her\SpecialChar endofsentence
+ Hvis
+ du tror, at \SpecialChar LaTeX
+ er et fleksibelt plastikmateriale, skal du helt sikkert læse
+ 
 \emph on
 Selvstudium
 \emph default
@@ -1566,9 +1567,9 @@ Selvstudium
 \emph on
 Selvstudium
 \emph default
- muligvis stadig vil tro, at \SpecialCharNoPassThru LaTeX
- er et elastisk materiale — men du vil
- vide, hvordan du bruger \SpecialCharNoPassThru LyX
+ muligvis stadig vil tro, at \SpecialChar LaTeX
+ er et elastisk materiale — men du vil vide,
+ hvordan du bruger \SpecialChar LyX
 \SpecialChar endofsentence
 
 \end_layout
@@ -1578,7 +1579,7 @@ Hvis du
 \emph on
 har
 \emph default
- prøvet at bruge \SpecialCharNoPassThru LaTeX
+ prøvet at bruge \SpecialChar LaTeX
  før, kan du læse 
 \emph on
 Selvstudium
@@ -1587,8 +1588,8 @@ Selvstudium
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
- for \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ for \SpecialChar LaTeX
 -brugere
 \begin_inset Quotes erd
 \end_inset
@@ -1619,6 +1620,7 @@ Guide)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1628,10 +1630,10 @@ Den primære dokumentation\SpecialChar endofsentence
 \emph on
 de fleste
 \emph default
- af de grundlæggende \SpecialCharNoPassThru LyX
+ af de grundlæggende \SpecialChar LyX
 -funktioner her\SpecialChar endofsentence
- Brugermanualen vil gå ud fra, at
- du har læst 
+ Brugermanualen vil gå ud fra, at du
+ har læst 
 \emph on
 Selvstudium
 \emph default
@@ -1655,6 +1657,7 @@ Features)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1664,10 +1667,10 @@ En udvidelse af
 Brugermanual
 \emph default
 \SpecialChar endofsentence
- Dokumenterer hvordan du bruger de gå \SpecialCharNoPassThru LaTeX
--kommandoer, yderligere layout,
- redigeringsfunktioner til bestemte formål — og viser nogle af de (noget
- bizarre men snedige) trick, \SpecialCharNoPassThru LaTeX
+ Dokumenterer hvordan du bruger de gå \SpecialChar LaTeX
+-kommandoer, yderligere layout, redigering
+sfunktioner til bestemte formål — og viser nogle af de (noget bizarre men
+ snedige) trick, \SpecialChar LaTeX
 -kendere har adgang til\SpecialChar endofsentence
 
 \end_layout
@@ -1680,13 +1683,14 @@ Tilpasning (Customization)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-En beskrivelse af avancerede \SpecialCharNoPassThru LyX
+En beskrivelse af avancerede \SpecialChar LyX
 -funktioner, herunder hvordan du tilpasser
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
 's generelle opførsel til dine behov\SpecialChar endofsentence
  Det omfatter tastaturudlægninger,
  sprogtilpasning og konfigurationsfiler\SpecialChar endofsentence
@@ -1703,8 +1707,9 @@ Selvstudium
 \begin_layout Description
 
 \emph on
-\SpecialCharNoPassThru LaTeX
--konfiguration (\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+-konfiguration (\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -1712,14 +1717,15 @@ configuration)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  undersøger dit system ved installationen\SpecialChar endofsentence
- Denne fil indeholder de oplysninger
-, \SpecialCharNoPassThru LyX
+ Denne fil indeholder de oplysninger,
+ \SpecialChar LyX
  fandt frem til om dit system\SpecialChar endofsentence
  Tjek her for at se, om du mangler noget,
  du muligvis gerne ville have\SpecialChar endofsentence
@@ -1760,7 +1766,7 @@ Læs
 \emph on
 Selvstudium
 \emph default
- nu, hvis du ikke kender \SpecialCharNoPassThru LyX
+ nu, hvis du ikke kender \SpecialChar LyX
  i forvejen\SpecialChar endofsentence
 
 \end_layout
@@ -1774,7 +1780,7 @@ Selvstudium
 
 \begin_layout Standard
 Ellers vil du frustrere dig selv unødigt\SpecialChar endofsentence
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  kan rigtigt meget, men kræver
  en anden angrebsvinkel\SpecialChar endofsentence
 
@@ -1787,17 +1793,18 @@ name "kap:Bidrag"
 
 \end_inset
 
-Bidrag til \SpecialCharNoPassThru LyX
+Bidrag til \SpecialChar LyX
 -projektet
 \end_layout
 
 \begin_layout Subsection
-At bidrage til \SpecialCharNoPassThru LyX
+At bidrage til \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- er hovedsageligt skrevet i C++ (\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ er hovedsageligt skrevet i C++ (\SpecialChar LaTeX
 -indlæseren er skrevet i Perl).
  Det er et stort projekt og er derfor ikke uden fejl eller behov for forbedringe
 r i kildeteksten.
@@ -1808,23 +1815,22 @@ Rapportér fejl
 \end_layout
 
 \begin_layout Standard
-Under brugen af \SpecialCharNoPassThru LyX
- kan det ske at du finder noget, du anser for at være
- en fejl\SpecialChar endofsentence
+Under brugen af \SpecialChar LyX
+ kan det ske at du finder noget, du anser for at være en
+ fejl\SpecialChar endofsentence
  Nedbrud, om end de er sjældne, kan forekomme\SpecialChar endofsentence
- Fejl i brugerfladen
- opfattes af \SpecialCharNoPassThru LyX
--udviklerne som alvorlige fejl: det er især en hjælp, at
- få at vide, hvis der er dele af brugerfladen, du synes er forvirrende eller
- uklare\SpecialChar endofsentence
+ Fejl i brugerfladen opfattes
+ af \SpecialChar LyX
+-udviklerne som alvorlige fejl: det er især en hjælp, at få at vide,
+ hvis der er dele af brugerfladen, du synes er forvirrende eller uklare\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  har et fejlsporingssystem, som du finde på 
 \family typewriter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  fejlsporing
 \family default
  
@@ -1852,10 +1858,10 @@ type "mailto:"
 \end_inset
 
 .
- Du finder arkivet fra denne liste på \SpecialCharNoPassThru LyX
+ Du finder arkivet fra denne liste på \SpecialChar LyX
 's hoved-webside, 
 \family typewriter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  webside
 \family default
  
@@ -1873,20 +1879,20 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af \SpecialCharNoPassThru LyX
-,
- du har problemer med\SpecialChar endofsentence
- Nøjagtige, detaljerede beskrivelser foretrækkes —
- jo mere tid udviklerne skal bruge på at udpege kilden til en fejl, des
- mindre tid har de til andre forbedringer\SpecialChar endofsentence
- Nævn hvilket system du kører \SpecialCharNoPassThru LyX
+En god (brugbar) fejlrapport fortæller som minimum hvilken udgave af \SpecialChar LyX
+, du
+ har problemer med\SpecialChar endofsentence
+ Nøjagtige, detaljerede beskrivelser foretrækkes — jo
+ mere tid udviklerne skal bruge på at udpege kilden til en fejl, des mindre
+ tid har de til andre forbedringer\SpecialChar endofsentence
+ Nævn hvilket system du kører \SpecialChar LyX
  på\SpecialChar endofsentence
- Oplys versionerne på de biblioteker, du har installeret på dit system
- og, hvis det er relevant, udgaverne af de eksterne programmer, \SpecialCharNoPassThru LyX
+ Oplys
+ versionerne på de biblioteker, du har installeret på dit system og, hvis
+ det er relevant, udgaverne af de eksterne programmer, \SpecialChar LyX
  benytter\SpecialChar endofsentence
-
- Hvis det er et problem med oversættelsen af kildekoden, skal du vedlægge
- filen 
+ Hvis det
+ er et problem med oversættelsen af kildekoden, skal du vedlægge filen 
 \family typewriter
 config.log
 \family default
@@ -1895,10 +1901,10 @@ config.log
 \end_layout
 
 \begin_layout Standard
-Hvis du får \SpecialCharNoPassThru LyX
- til at bryde ned, vil vi bede dig om at tage dig tid til
- at spore fejlen med gdb\SpecialChar endofsentence
- Kun \SpecialCharNoPassThru LyX
+Hvis du får \SpecialChar LyX
+ til at bryde ned, vil vi bede dig om at tage dig tid til at
+ spore fejlen med gdb\SpecialChar endofsentence
+ Kun \SpecialChar LyX
  fra gdb ved for eksempel at skrive 
 \family typewriter
 \size small
@@ -1928,7 +1934,7 @@ run
 \end_inset
 
 .
- Få \SpecialCharNoPassThru LyX
+ Få \SpecialChar LyX
  til at bryde ned, hvorefter du går tilbage til gdb\SpecialChar endofsentence
  Brug kommandoen
  
@@ -2015,12 +2021,12 @@ Bidrag med fejlrettelser og nye funktioner
 \end_layout
 
 \begin_layout Standard
-Hvis du har lavet ændringer i \SpecialCharNoPassThru LyX
-'s kildetekst, som du synes bør indføres
- i \SpecialCharNoPassThru LyX
-, kan du sende dine ændringer som en diff-fil (i 'unified' format)
- til udviklingslisten, der blev nævnt ovenfor, sammen med en beskrivelse
- af ændringen og hvad den gør.
+Hvis du har lavet ændringer i \SpecialChar LyX
+'s kildetekst, som du synes bør indføres i
+ \SpecialChar LyX
+, kan du sende dine ændringer som en diff-fil (i 'unified' format) til
+ udviklingslisten, der blev nævnt ovenfor, sammen med en beskrivelse af
+ ændringen og hvad den gør.
 \end_layout
 
 \begin_layout Subsection
@@ -2028,16 +2034,15 @@ Bidrag til dokumentationen
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 's dokumentation er omfattende\SpecialChar endofsentence
- Alligevel er \SpecialCharNoPassThru LyX
- under konstant udvikling,
- og hver ny udgave tilføjer nye funktioner\SpecialChar endofsentence
- Du kan komme ud for at noget
- af dokumentationen trænger til en opdatering\SpecialChar endofsentence
- Dette afsnit beskriver hvad
- du gør, hvis du finder en fejl eller har forslag til forbedring af dokumentatio
-nen.
+ Alligevel er \SpecialChar LyX
+ under konstant udvikling, og
+ hver ny udgave tilføjer nye funktioner\SpecialChar endofsentence
+ Du kan komme ud for at noget af
+ dokumentationen trænger til en opdatering\SpecialChar endofsentence
+ Dette afsnit beskriver hvad du
+ gør, hvis du finder en fejl eller har forslag til forbedring af dokumentationen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2064,10 +2069,10 @@ Deltag i dokumentationsholdet.
 \end_layout
 
 \begin_layout Standard
-Ligesom alt andet i \SpecialCharNoPassThru LyX
--projektet, kan \SpecialCharNoPassThru LyX
-'s dokumentationsprojekt altid
- bruge hjælp! Hvis du er interesseret i at bidrage til dokumentationsprojektet,
+Ligesom alt andet i \SpecialChar LyX
+-projektet, kan \SpecialChar LyX
+'s dokumentationsprojekt altid bruge
+ hjælp! Hvis du er interesseret i at bidrage til dokumentationsprojektet,
  skal du 
 \emph on
 først
@@ -2076,7 +2081,7 @@ først
 \end_layout
 
 \begin_layout Enumerate
-Hent den seneste kildetekst til \SpecialCharNoPassThru LyX
+Hent den seneste kildetekst til \SpecialChar LyX
 \SpecialChar endofsentence
  Udpak den\SpecialChar endofsentence
 
@@ -2084,9 +2089,9 @@ Hent den seneste kildetekst til \SpecialCharNoPassThru LyX
 status collapsed
 
 \begin_layout Plain Layout
-De mere eventyrlystne kan hente den seneste kildtekst fra \SpecialCharNoPassThru LyX
-'s CVS-arkiv
- — den ligger i modulet 
+De mere eventyrlystne kan hente den seneste kildtekst fra \SpecialChar LyX
+'s CVS-arkiv —
+ den ligger i modulet 
 \family typewriter
 lyxdoc
 \family default
@@ -2116,6 +2121,7 @@ Selvstudium
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -2140,6 +2146,7 @@ Brugermanualen
 Kontakt holdet på engelsk på: 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
