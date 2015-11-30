@@ -47,22 +47,6 @@ multicol
 shapepar
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-Format 57
-InsetLayout "Flex:MenuItem"
-LyxType              charstyle
-LabelString         menu
-LatexType          command
-LatexName         menuitem
-Font
-Family              Sans
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
-ResetsFont true
-End
-\end_local_layout
 \language spanish
 \language_package default
 \inputencoding auto
@@ -359,7 +343,7 @@ hace
  ha añadido algunas extensiones a \SpecialChar LaTeX
 .
  Prueba esto en alguna ocasión: selecciona 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -374,7 +358,7 @@ LaTeX
  
 \family default
 desde el menú 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -384,7 +368,7 @@ Archivo
 \end_inset
 
 , (o 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -426,7 +410,7 @@ Hay varios comandos que ejecutan \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -442,7 +426,7 @@ Formato
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -463,7 +447,7 @@ Formato
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -483,7 +467,7 @@ primir
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -588,7 +572,7 @@ Si has ejecutado \SpecialChar LaTeX
  
 \family default
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -610,7 +594,7 @@ DVI
  
 \family default
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -674,7 +658,7 @@ Puedes importar un archivo \SpecialChar LaTeX
  usando el comando
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -815,7 +799,7 @@ código \SpecialChar TeX
 \end_inset
 
 , con el menú 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1055,7 +1039,7 @@ también puedes crear un archivo separado con estructuras de \SpecialChar LaTeX
  
 \family default
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1375,7 +1359,7 @@ Los comandos que \SpecialChar LyX
  Sin embargo, puedes añadir tus cosas al preámbulo seleccionando 
 \family sans
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1394,7 +1378,7 @@ Preámbulo
  
 \family default
 en el diálogo
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1987,7 +1971,7 @@ log
 , que es accesible con el menú
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2288,7 +2272,7 @@ usepackage{}
  Utiliza
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2320,7 +2304,7 @@ para obtener una lista de los paquetes reconocidos por \SpecialChar LyX
  (con
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2789,7 +2773,7 @@ El manejo de ambos paquetes es básicamente el mismo.
  Ve al submenú 
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2808,7 +2792,7 @@ onfiguración
 
 \family default
  y selecciona en el panel
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2820,7 +2804,7 @@ status collapsed
 \end_inset
 
  la opción
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2834,7 +2818,7 @@ Natbib
  o
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3049,7 +3033,7 @@ trabajos.bib
 Ve a
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3066,7 +3050,7 @@ Configuración
  y selecciona en el panel
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3082,7 +3066,7 @@ Bibliografía
 la opción
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3296,7 +3280,7 @@ bibunits
 En primer lugar, en
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3317,7 +3301,7 @@ onfiguración
  selecciona en el panel
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3333,7 +3317,7 @@ Bibliografía
  la opción 
 \family sans
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3549,7 +3533,7 @@ end{document}
  facilita la inclusión de archivos con la opción de menú
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3679,7 +3663,7 @@ ancho fijo
  Sin embargo, si se marca en
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5709,7 +5693,7 @@ Escala de imágenes de ecuaciones
 \end_inset
 
  en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5804,7 +5788,7 @@ class='math'
 
 \begin_layout Standard
 Debemos seleccionar uno de estos métodos en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6674,7 +6658,7 @@ name "subsec:Activación-automática"
 \begin_layout Standard
 En la mayoría de los casos \SpecialChar LyX
  funcionará marcando la opción 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6712,7 +6696,7 @@ srcltx
  (para DVI).
  Esta opción está fácilmente disponible, además, en la barra de herramientas
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6727,7 +6711,7 @@ Ver/Actualizar
 \begin_layout Standard
 Si necesitas una configuración diferente, puedes seleccionar o introducir
  una macro personalizada desde el cuadro desplegable bajo 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6890,7 +6874,7 @@ eX (plain)->DraftDVI
 \end_inset
 
  en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7111,7 +7095,7 @@ eX (plain) -> DraftDVI
 \end_inset
 
  en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7249,7 +7233,7 @@ lyxclient
 Sin embargo, si por la razón que sea quieres usar la tubería en vez del
  zócalo para comunicar con \SpecialChar LyX
 , simplemente cambia el visor DVI en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7338,7 +7322,7 @@ status collapsed
 
  es la ruta de la tubería \SpecialChar LyX
 Server especificada en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7450,7 +7434,7 @@ open -a Skim.app $$i
 \end_inset
 
  en la configuración del visor en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7488,7 +7472,7 @@ Okular (KDE)
 
 \begin_layout Standard
 En 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7538,7 +7522,7 @@ Qpdfview supports Sync\SpecialChar TeX
  Go to 
 \lang spanish
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7679,7 +7663,7 @@ en
  
 \family default
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7786,7 +7770,7 @@ SumatraPDF (Cygwin)
 
 \begin_layout Standard
 En 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7901,7 +7885,7 @@ reference "subsec:Activación-automática"
 \begin_layout Standard
 Adicionalmente, hay que configurar \SpecialChar LyX
  para usar los visores en 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7990,7 +7974,7 @@ okular –unique
  in 
 \lang spanish
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21549,7 +21533,7 @@ reservas reservadas
  escritura y una copia adicional del documento existe en el subdirectorio
  CVS/Base, asume que es no reservada.
  Si se detecta una reservada debes usar 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21560,7 +21544,7 @@ Reservar
 
  para poder escribir en ella.
  Después de hacerlo, la operación 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21623,7 +21607,7 @@ Si el documento no está bajo control de revisión, este es el único ítem
  Y si está bajo control de revisión, el ítem
 \family sans
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21729,7 +21713,7 @@ Cuando has terminado de editar un archivo se ingresan los cambios.
  Después, los cambios son escritos en el repositorio.
  En caso de que no hayas cambiado el documento y se detecte una copia reservada
  se deshace la reserva hecha con 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -22901,7 +22885,7 @@ name "subsec:SVN-Bloqueo-automático"
 \begin_layout Standard
 La configuración automática de los permisos de escritura del archivo .lyx
  se establece con 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -24175,7 +24159,7 @@ VC_COMPARE
  (véase el manual Funciones de \SpecialChar LyX
  para detalles) y otra con el icono o menú
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
