@@ -10,21 +10,6 @@
 logicalmkup
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-Format 7
-InsetLayout CharStyle:MenuItem
-LyxType               charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
-Font
-Family              Sans
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
-End
-\end_local_layout
 \language english
 \language_package default
 \inputencoding auto
