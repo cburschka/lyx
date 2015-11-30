@@ -2797,7 +2797,7 @@ bool GuiView::closeWorkAreaAll()
 
 	// We have to call count() each time, because it can happen that
 	// more than one splitter will disappear in one iteration (bug 5998).
-	for (; d.splitter_->count() > empty_twa; ) {
+	while (d.splitter_->count() > empty_twa) {
 		TabWorkArea * twa = d.tabWorkArea(empty_twa);
 
 		if (twa->count() == 0)
