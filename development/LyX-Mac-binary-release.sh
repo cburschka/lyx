@@ -35,7 +35,7 @@ unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 #   the aspell sources placed in a sibling directory (variable ASpellSource)
 # * for hunspell support:
 #   the hunspell sources placed in a sibling directory (variable HunSpellSource)
-# * for dictionary deployment (per default thesauri only):
+# * for dictionary deployment (only hunspell dicts and mythes thesauri are deployed per default):
 #   - aspell:   the dictionary files of macports (in /opt/local/share/aspell and /opt/local/lib/aspell-0.60)
 #   - hunspell: the dictionary files in the sibling directory dictionaries/dicts
 #   - mythes:   the data and idx files in the sibling directory dictionaries/thes
