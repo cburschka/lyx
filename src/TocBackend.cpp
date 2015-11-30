@@ -339,4 +339,26 @@ docstring TocBackend::outlinerName(string const & type) const
 }
 
 
+bool TocBackend::isOther(std::string const & type)
+{
+	// This is where having an Enum of types would have been more elegant...
+	return type == "graphics"
+		|| type == "note"
+		|| type == "branch"
+		|| type == "change"
+		|| type == "label"
+		|| type == "citation"
+		|| type == "equation"
+		|| type == "footnote"
+		|| type == "marginalnote"
+		|| type == "nomencl"
+		|| type == "listings"
+		|| type == "math-macro"
+		|| type == "external"
+		|| type == "senseless"
+		|| type == "index"
+		|| type.substr(0,6) == "index:";
+}
+
+
 } // namespace lyx

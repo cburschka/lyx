@@ -180,6 +180,9 @@ public:
 	        odocstringstream & os, size_t max_length) const;
 	///
 	docstring outlinerName(std::string const & type) const;
+	/// Whether a toc type is less important and appears in the "Other lists"
+	/// submenu
+	static bool isOther(std::string const & type);
 
 private:
 	///

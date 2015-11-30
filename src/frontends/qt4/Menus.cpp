@@ -1310,7 +1310,6 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-	FloatList const & floatlist = buf->params().documentClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
 	TocList::const_iterator end = toc_list.end();
@@ -1328,7 +1327,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
-		if (floatlist.typeExist(cit->first) || cit->first == "child")
+		if (!TocBackend::isOther(cit->first))
 			add(item);
 		else
 			other_lists.add(item);
