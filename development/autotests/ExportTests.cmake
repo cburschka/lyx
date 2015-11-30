@@ -153,10 +153,10 @@ macro(maketestname testname reverted listsuspicious listignored listunreliable l
       join(sublabel "." tmpprefixx)
       string(TOUPPER "${tmpprefixx}_" tmpprefix)
       set(${testname} "${tmpprefix}${${testname}}")
-      string(TOUPPER "${sublabel}_" tmpprefix)
       set(${listlabels} ${sublabel})
     endif()
   else()
+    # No testname because ignored
     set(${testname} "")
   endif()
 endmacro()
