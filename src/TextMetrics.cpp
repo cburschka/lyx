@@ -596,6 +596,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	if (nh > 0) {
 		hfill = w / nh;
 		hfill_rem = w % nh;
+		row.dimension().wid += w;
 	} else if (nh == 0 && int(row.width()) < max_width_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
