@@ -50,31 +50,6 @@
 logicalmkup
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-Format 57
-InsetLayout Flex:MenuItem
-LyxType               charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
-Font
-Family              Sans
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
-ResetsFont true
-End
-# In case we need to do with sans...
-#InsetLayout CharStyle:Code
-#Font
-#Family              Sans
-#EndFont
-#Preamble
-#\renewcommand{\code}[1]{{\sffamily #1}}
-#EndPreamble
-#End
-\end_local_layout
 \language english
 \language_package default
 \inputencoding auto
@@ -280,7 +255,7 @@ This chapter aims to help you to find your way through the \SpecialChar LyX
  Before continuing to read this chapter, you should find out where your
  \SpecialChar LyX
  library and user directories are by using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -309,7 +284,7 @@ LyXDir
 \end_inset
 
  and the latter 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -351,7 +326,7 @@ LyXDir
 's behavior.
  You can change many of these files from within \SpecialChar LyX
  itself through the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -388,7 +363,7 @@ Automatically generated files
 
 \begin_layout Standard
 The files, which are to be found in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -434,7 +409,7 @@ packages.lst
  It is currently unused by the \SpecialChar LyX
  program itself, but the information extracted,
  and more, is made available with 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -701,7 +676,7 @@ examples/
 
  contains example files that explain how to use some features.
  In the file browser, press the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -725,7 +700,7 @@ images/
 \end_inset
 
  contains image files that are used by the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -822,7 +797,7 @@ scripts/
 \end_inset
 
  contains some files that demonstrate the capabilities of the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -913,7 +888,7 @@ CREDITS
  this file contains the list of \SpecialChar LyX
  developers.
  The contents are displayed with the menu entry 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -993,7 +968,7 @@ external_templates
 \end_inset
 
  this file contains the templates available to the new 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1113,7 +1088,7 @@ user directory
 \end_inset
 
  in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1170,7 +1145,7 @@ To make things clearer, let's provide a few examples:
 
 \begin_layout Itemize
 The preferences set in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1205,7 +1180,7 @@ UserDir
 
 \begin_layout Itemize
 When you reconfigure using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1240,7 +1215,7 @@ UserDir/layouts
 \end_inset
 
  will be added to the list of classes in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1268,7 +1243,7 @@ UserDir/doc/
 \end_inset
 
  and the items in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1375,7 +1350,7 @@ doc/
 
  subdirectory, however, since it contains a file written by the configuration
  script (also accessible through 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1419,7 +1394,7 @@ name "sec:Formats"
 \begin_layout Standard
 The first step is to define your file formats if they are not already defined.
  To do so, open the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1431,7 +1406,7 @@ Preferences
 
  dialog.
  Under 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1442,7 +1417,7 @@ File formats
 \end_inset
 
  press the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1453,7 +1428,7 @@ New
 
  button to define your new format.
  The 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1464,7 +1439,7 @@ Format
 
  field contains the name used to identify the format in the GUI.
  The 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1477,7 +1452,7 @@ Short Name
  You will also need to enter a file extension.
  These are all required.
  The optional 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1488,7 +1463,7 @@ Shortcut
 
  field is used to provide a keyboard shortcut on the menus.
  (For example, pressing 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1498,7 +1473,7 @@ Ctrl+D
 \end_inset
 
  will 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1514,7 +1489,7 @@ DVI
 
 \begin_layout Standard
 A Format can have a 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1524,7 +1499,7 @@ Viewer
 \end_inset
 
  and an 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1535,7 +1510,7 @@ Editor
 
  associated with it.
  For example, you might want to use 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1551,7 +1526,7 @@ Ghostview
  next section.
  The viewer is launched when you view an image in \SpecialChar LyX
  or use the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1564,7 +1539,7 @@ View
  menu.
  The editor is for example launched when you right-click on an image and
  choose 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1578,7 +1553,7 @@ Edit externally
 
 \begin_layout Standard
 The 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1614,7 +1589,7 @@ target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
 
 \begin_layout Standard
 The 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1633,7 +1608,7 @@ reference "sec:Converters"
 \end_inset
 
 ), the format will appear in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1645,7 +1620,7 @@ Export
 
  menu.
  The format will also appear in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1682,7 +1657,7 @@ pdf
 
 \begin_layout Standard
 The option 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1695,7 +1670,7 @@ Vector graphics format
  that a format can contain vector graphics.
  This information is used to determine the target format of included graphics
  for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1706,7 +1681,7 @@ pdflatex
 
  export.
  Included graphics may need to be converted to either 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1716,7 +1691,7 @@ pdf
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1726,7 +1701,7 @@ png
 \end_inset
 
 , or 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1736,7 +1711,7 @@ jpg
 \end_inset
 
 , since 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1747,7 +1722,7 @@ pdflatex
 
  cannot handle other image formats.
  If an included graphic is not already in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1757,7 +1732,7 @@ pdf
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1767,7 +1742,7 @@ png
 \end_inset
 
 , or 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1777,7 +1752,7 @@ jpg
 \end_inset
 
  format, it is converted to 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1787,7 +1762,7 @@ pdf
 \end_inset
 
  if the vector format option is set, and otherwise to 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -1848,7 +1823,7 @@ g.
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2032,7 +2007,7 @@ status collapsed
 
 —and make it executable, if you need to do so on your platform.
  Then, in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2043,7 +2018,7 @@ Preferences
 \end_inset
 
  dialog, select under 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2054,7 +2029,7 @@ File formats
 \end_inset
 
  the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2074,7 +2049,7 @@ pdfcopier.sh $$i $$o
 \end_inset
 
  into the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2093,7 +2068,7 @@ Copiers are used by \SpecialChar LyX
  For example, if appropriate programs are found, \SpecialChar LyX
  will automatically install
  copiers for the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2103,7 +2078,7 @@ HTML
 \end_inset
 
  and 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2152,7 +2127,7 @@ This copier can be customized.
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2166,7 +2141,7 @@ LyXconv
 \end_inset
 
 , so HTML generated from 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2176,7 +2151,7 @@ status collapsed
 \end_inset
 
  will end up in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2208,7 +2183,7 @@ name "sec:Converters"
 \begin_layout Standard
 You can define your own Converters to convert files between different formats.
  This is done in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2225,7 +2200,7 @@ Converters
 
 \begin_layout Standard
 To define a new converter, select the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2239,7 +2214,7 @@ format
 \end_inset
 
  and 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2254,7 +2229,7 @@ format
 
  from the drop-down lists, enter the command needed for the conversion,
  and then press the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2373,7 +2348,7 @@ $$e
 
 \begin_layout Standard
 In the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2420,7 +2395,7 @@ needaux
 
  Needs the \SpecialChar LaTeX
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2483,7 +2458,7 @@ xml
 \begin_layout Standard
 The following three flags are not really flags at all because they take
  an argument in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2641,7 +2616,7 @@ You do not have to define converters for all formats between which you want
 
 \begin_layout Enumerate
 Directly, using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2655,7 +2630,7 @@ pdflatex
 
 \begin_layout Enumerate
 via (DVI and) PostScript, using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2669,7 +2644,7 @@ ps2pdf
 
 \begin_layout Enumerate
 via DVI, using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2683,7 +2658,7 @@ dvipdfm
 
 \begin_layout Enumerate
 directly using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2698,7 +2673,7 @@ Xe\SpecialChar TeX
 
 \begin_layout Enumerate
 directly using 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2722,7 +2697,7 @@ reference "sec:Formats"
 
 .
  For example, in the standard configuration, the formats named 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2732,7 +2707,7 @@ pdf
 \end_inset
 
  (for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2742,7 +2717,7 @@ ps2pdf
 \end_inset
 
 ), 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2752,7 +2727,7 @@ pdf2
 \end_inset
 
  (for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2762,7 +2737,7 @@ pdflatex
 \end_inset
 
 ), 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2772,7 +2747,7 @@ pdf3
 \end_inset
 
  (for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2782,7 +2757,7 @@ dvipdfm
 \end_inset
 
 ), 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2792,7 +2767,7 @@ pdf4
 \end_inset
 
  (for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2803,7 +2778,7 @@ Xe\SpecialChar TeX
 \end_inset
 
 ), and 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2813,7 +2788,7 @@ pdf5
 \end_inset
 
  (for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -2824,7 +2799,7 @@ Lua\SpecialChar TeX
 \end_inset
 
 ) are defined, all of which share the extension 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3336,7 +3311,7 @@ Translating the documentation.
 
 \begin_layout Standard
 The online documentation (in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -3434,7 +3409,7 @@ Intro.lyx
 \end_inset
 
  (
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4302,7 +4277,7 @@ must be escaped with a preceding backslash (
 
 \begin_layout Standard
 An example of a 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4314,7 +4289,7 @@ kmap
 \end_inset
 
  statement to cause the symbol 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4326,7 +4301,7 @@ status collapsed
 \end_inset
 
  to be output for the keystroke 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4478,7 +4453,7 @@ followed by the other, not allowed key, as output.
 
 \family default
  Note that a 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4500,7 +4475,7 @@ char
 \family default
 \emph default
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4906,7 +4881,7 @@ kcomb acute umlaut iyIY
 
 \begin_layout Standard
 This allows you to press 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4941,7 +4916,7 @@ A backspace
 \family default
 \shape default
  in this case cancels the last dead key, so if you press 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5061,7 +5036,7 @@ char_index_in_set
 
 \begin_layout Standard
 For example, in order to map 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5195,7 +5170,7 @@ Suppose you happen to need the circumflex character,
 
 .
  You could bind the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5209,7 +5184,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5241,7 +5216,7 @@ lyxrc
 
  file.
  Now, whenever you type the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5257,7 +5232,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5284,7 +5259,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5303,7 +5278,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5318,7 +5293,7 @@ t
 
  never takes a circumflex accent.
  Hitting 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5331,7 +5306,7 @@ Space
  Please note this last point! If you bind a key to a dead-key, you'll need
  to rebind the character on that key to yet another key.
  Binding the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5345,7 +5320,7 @@ status collapsed
 
 \begin_layout Standard
 One common way to bind dead-keys is to use 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5355,7 +5330,7 @@ Meta-
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5365,7 +5340,7 @@ Ctrl-
 \end_inset
 
 , and 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5379,7 +5354,7 @@ Shift-
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5397,7 +5372,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5415,7 +5390,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5471,7 +5446,7 @@ Mode_Switch
 \end_inset
 
  acts in some ways just like 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5524,7 +5499,7 @@ status collapsed
 
  files.
  I have my 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5566,7 +5541,7 @@ usldead_*
 \end_inset
 
  symbolic keys bound such things as 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5580,7 +5555,7 @@ Lock-^
 \end_inset
 
  and 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5610,7 +5585,7 @@ Mode_Switch
 \end_inset
 
  key: One of the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5647,7 +5622,7 @@ Saving your Language Configuration
 You can edit your preferences so that your desired language environment
  is automatically configured when \SpecialChar LyX
  starts up, via the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6380,7 +6355,7 @@ Finally, you need to tell \SpecialChar LyX
  that there are new packages available.
  So, in \SpecialChar LyX
 , use the menu 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6413,7 +6388,7 @@ Slides
 \end_inset
 
  will now be available under 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6432,7 +6407,7 @@ Document Class
 If you would like to use a \SpecialChar LaTeX
  document class that is not even listed in the
  menu 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6610,7 +6585,7 @@ article.cls
 
  requires editing that file.
  Modules, by contrast, are selected in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6646,7 +6621,7 @@ layouts/
  appear in the menu.
  However, changes you make to the module will be seen immediately, if you
  open 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6785,7 +6760,7 @@ The warnings at the end of the previous section apply here, too.
 
 \begin_layout Subsection
 Layout for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6835,7 +6810,7 @@ The easier case is the one in which your new document class is provided
  document class.
  For the sake of the example, we'll assume that the style file is called
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6845,7 +6820,7 @@ myclass.sty
 \end_inset
 
  and that it is meant to be used with 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6946,7 +6921,7 @@ near the top of the file.
 \begin_layout Standard
 Start \SpecialChar LyX
  and select 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6960,7 +6935,7 @@ Reconfigure
  Then restart \SpecialChar LyX
  and try creating a new document.
  You should see "
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6970,7 +6945,7 @@ report (myclass)
 \end_inset
 
 " as a document class option in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7073,7 +7048,7 @@ reference "sec:TextClass"
 
 \begin_layout Standard
 If 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7147,7 +7122,7 @@ reference "sec:TextClass"
 
 \begin_layout Subsection
 Layout for 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7163,7 +7138,7 @@ status collapsed
 There are two possibilities here.
  One is that the class file is itself based upon an existing document class.
  For example, many thesis classes are based upon 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7371,7 +7346,7 @@ LyXDir/templates/
 \end_inset
 
  to the same place, and redefine the template path in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7399,7 +7374,7 @@ defaults.lyx
 
 .
  This template is loaded every time you create a new document with 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7413,7 +7388,7 @@ New
  To create this template from inside \SpecialChar LyX
 , all you have to do is to open a document
  with the correct settings, and use the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7735,7 +7710,7 @@ Article (Standard Class)
 \end_inset
 
  that appears above is used as a description of the text class in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7755,7 +7730,7 @@ Articles
 \end_inset
 
  in the example) is also used in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8024,7 +7999,7 @@ UserDir/layouts
 \end_inset
 
 , run 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8059,7 +8034,7 @@ In versions of \SpecialChar LyX
 
  You can force a reload of the current layout by using the \SpecialChar LyX
  function 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8082,7 +8057,7 @@ r.
 Warning
 \emph default
 : 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8159,7 +8134,7 @@ DeclareLyXModule[endnotes.sty]{Endnotes}
 \begin_layout Standard
 The mandatory argument, in curly brackets, is the name of the module, as
  it should appear in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8175,7 +8150,7 @@ Modules
  packages
  on which the module depends.
  It is also possible to use the form 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8259,7 +8234,7 @@ theendnotes in TeX code where you
 
 \begin_layout Standard
 The description is used in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8652,7 +8627,7 @@ default
 \emph default
  to having one or two columns.
  Can be changed in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8818,7 +8793,7 @@ status collapsed
 \end_inset
 
 ] This is the style that will be assigned to new paragraphs, usually 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -9647,7 +9622,7 @@ headings
 
 ] The default pagestyle.
  Can be changed in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -10071,7 +10046,7 @@ status collapsed
 ] Whether the class-default should be printing on one or both sides of the
  paper.
  Can be changed in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -13427,7 +13402,7 @@ LabelWidthString
 \end_inset
 
  can be defined in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -13749,7 +13724,7 @@ Manual
 \end_inset
 
  means that the left margin depends on the string entered in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -15471,7 +15446,7 @@ name "subsec:Floats"
 
 \begin_layout Standard
 It is necessary to define the floats (
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -15481,7 +15456,7 @@ figure
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -19047,7 +19022,7 @@ name "subsec:Counters"
 
 \begin_layout Standard
 It is necessary to define the counters (
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -19057,7 +19032,7 @@ chapter
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -22573,7 +22548,7 @@ template
  comes with predefined templates for Xfig figures, various
  raster format images, chess diagrams, and LilyPond music notation.
  You can check the actual list by using the menu 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -23655,7 +23630,7 @@ UpdateFormat
  The file format of the converted file.
  This must be the name of a format that is known to \SpecialChar LyX
  (see the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
