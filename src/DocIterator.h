@@ -167,6 +167,8 @@ public:
 	Paragraph & innerParagraph() const;
 	/// return the inner text slice.
 	CursorSlice const & innerTextSlice() const;
+	/// returns a DocIterator for the containing text inset
+	DocIterator getInnerText() const;
 	/// the first and last positions of a word at top cursor slice
 	/// \warning only works within text!
 	FontSpan locateWord(word_location const loc) const;

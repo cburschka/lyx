@@ -17,6 +17,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Cursor.h"
 #include "FloatList.h"
 #include "FuncRequest.h"
 #include "InsetList.h"
@@ -266,8 +267,11 @@ shared_ptr<TocBuilder> TocBackend::builder(string const & type)
 // TocItem creation and update should be made in a dedicated function and
 // updateItem should be rewritten to uniformly update the matching items from
 // all TOCs.
-bool TocBackend::updateItem(DocIterator const & dit)
+bool TocBackend::updateItem(DocIterator const & dit_in)
 {
+	// we need a text
+	DocIterator dit = dit_in.getInnerText();
+
 	if (dit.text()->getTocLevel(dit.pit()) == Layout::NOT_IN_TOC)
 		return false;
 

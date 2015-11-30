@@ -1303,7 +1303,7 @@ void Cursor::plainInsert(MathAtom const & t)
 	++pos();
 	inset().setBuffer(bv_->buffer());
 	inset().initView();
-	forceBufferUpdate();
+	checkBufferStructure();
 }
 
 

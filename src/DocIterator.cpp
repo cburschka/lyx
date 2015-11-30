@@ -226,6 +226,15 @@ CursorSlice const & DocIterator::innerTextSlice() const
 }
 
 
+DocIterator DocIterator::getInnerText() const
+{
+	DocIterator texted = *this;
+	while (!texted.inTexted()) 
+		texted.pop_back();
+	return texted;
+}
+
+
 pit_type DocIterator::lastpit() const
 {
 	return inMathed() ? 0 : text()->paragraphs().size() - 1;
