@@ -53,31 +53,6 @@
 logicalmkup
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-Format 57
-InsetLayout Flex:MenuItem
-LyxType               charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
-Font
-Family              Sans
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
-ResetsFont true
-End
-# In case we need to do with sans...
-#InsetLayout CharStyle:Code
-#Font
-#Family              Sans
-#EndFont
-#Preamble
-#\renewcommand{\code}[1]{{\sffamily #1}}
-#EndPreamble
-#End
-\end_local_layout
 \language ngerman
 \language_package default
 \inputencoding auto
@@ -4992,7 +4967,7 @@ article.cls
 
  requires editing that file.
  Modules, by contrast, are selected in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5036,7 +5011,7 @@ layouts/
  appear in the menu.
  However, changes you make to the module will be seen immediately, if you
  open 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5189,7 +5164,7 @@ The warnings at the end of the previous section apply here, too.
 
 \begin_layout Subsection
 Layout für 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5247,7 +5222,7 @@ The easier case is the one in which your new document class is provided
  document class.
  For the sake of the example, we'll assume that the style file is called
  
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5259,7 +5234,7 @@ myclass.sty
 \end_inset
 
  and that it is meant to be used with 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5380,7 +5355,7 @@ near the top of the file.
 \lang english
 Start \SpecialChar LyX
  and select 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5396,7 +5371,7 @@ Reconfigure
  Then restart \SpecialChar LyX
  and try creating a new document.
  You should see "
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5408,7 +5383,7 @@ report (myclass)
 \end_inset
 
 " as a document class option in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5527,7 +5502,7 @@ reference "sec:Das-Layout-Dateiformat"
 
 \lang english
 If 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5605,7 +5580,7 @@ reference "sec:Das-Layout-Dateiformat"
 
 \begin_layout Subsection
 Layout für 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5623,7 +5598,7 @@ status collapsed
 There are two possibilities here.
  One is that the class file is itself based upon an existing document class.
  For example, many thesis classes are based upon 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5865,7 +5840,7 @@ LyXDir/templates/
 \end_inset
 
  to the same place, and redefine the template path in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5902,7 +5877,7 @@ defaults.lyx
 
 .
  This template is loaded every time you create a new document with 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5918,7 +5893,7 @@ New
  To create this template from inside \SpecialChar LyX
 , all you have to do is to open a document
  with the correct settings, and use the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6523,7 +6498,7 @@ Module[endnotes.sty]{Endnotes}
 \begin_layout Standard
 Das benötigte Argument in geschweiften Klammern ist der Name des Moduls,
  wie es in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6539,7 +6514,7 @@ Module
 -Pakete,
  die das Modul benötigt.
  Es ist außerdem möglich die Form 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6644,7 +6619,7 @@ theendnotes in \SpecialChar TeX
 
 \begin_layout Standard
 Die Beschreibung wird in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7051,7 +7026,7 @@ status collapsed
 ] Gibt an, ob die Textklasse standardmäßig ein- oder zweispaltig gesetzt
  wird.
  Kann im Menü 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7224,7 +7199,7 @@ status collapsed
 
 der Stil, der für neu angelegte Absätze verwendet wird.
  Normalerweise ist das 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8075,7 +8050,7 @@ headings
 
 ] Der Standard-Seitenstil.
  Kann im Menü 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -8500,7 +8475,7 @@ status collapsed
 ] Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
  gesetzt wird.
  Kann im Dialog 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -14101,7 +14076,7 @@ name "subsec:Gleitobjekte"
 
 \begin_layout Standard
 Es ist nötig Gleitobjekte (
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -14111,7 +14086,7 @@ Abbildung
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -17802,7 +17777,7 @@ name "subsec:Zähler"
 
 \begin_layout Standard
 Es ist notwendig Zähler (
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -17812,7 +17787,7 @@ chapter
 \end_inset
 
 , 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -23215,7 +23190,7 @@ UpdateFormat
  The file format of the converted file.
  This must be the name of a format that is known to \SpecialChar LyX
  (see the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout

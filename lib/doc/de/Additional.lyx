@@ -46,22 +46,6 @@ multicol
 shapepar
 \end_modules
 \maintain_unincluded_children false
-\begin_local_layout
-Format 57
-InsetLayout Flex:MenuItem
-LyxType               charstyle
-LabelString           menu
-LatexType             command
-LatexName             menuitem
-Font
-Family              Sans
-EndFont
-Preamble
-\newcommand*{\menuitem}[1]{{\sffamily #1}}
-EndPreamble
-ResetsFont true
-End
-\end_local_layout
 \language ngerman
 \language_package default
 \inputencoding auto
@@ -4810,7 +4794,7 @@ Math Images Scaling
 \end_inset
 
  parameter under 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -4915,7 +4899,7 @@ class='math'
 
 \lang english
 One of these output methods must be selected under 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5353,7 +5337,7 @@ lyxpipe.out
 
 .
  The stem of the pipe names can be defined in the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -5983,7 +5967,7 @@ name "subsec:rev-search"
 \lang english
 In most cases \SpecialChar LyX
  will do the work for you by enabling 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6021,7 +6005,7 @@ View/Update
 \lang english
 If you need a different setting, you can select or input a custom macro
  from the drop down box just below 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6197,7 +6181,7 @@ This method provides the DVI file with the necessary information for reverse
  distribution
  should include it), and it works reliably.
  To enable it, change the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6209,7 +6193,7 @@ LaTeX (plain)->DVI
 \end_inset
 
  or 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6221,7 +6205,7 @@ LaTeX (plain)->DraftDVI
 \end_inset
 
  converter in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6420,7 +6404,7 @@ Live 2008 or a recent Mik\SpecialChar TeX
 \lang english
 To enable Sync\SpecialChar TeX
  for DVI output, change the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6432,7 +6416,7 @@ LaTeX (plain) -> DVI
 \end_inset
 
  or 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6444,7 +6428,7 @@ LaTeX (plain) -> DraftDVI
 \end_inset
 
  converter in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6470,7 +6454,7 @@ latex -synctex=1 $$i
 \end_inset
 
 , and for PDF output, change the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6595,7 +6579,7 @@ lyxclient
 However, if for whatever reason you want to use the named pipe instead of
  the socket for communicating with \SpecialChar LyX
 , simply change the DVI viewer in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6698,7 +6682,7 @@ status collapsed
 \end_inset
 
  is the LyXServer pipe path specified in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6823,7 +6807,7 @@ open -a Skim.app $$i
 \end_inset
 
  to the viewer setting in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6838,7 +6822,7 @@ PDF (pdflatex)
 \end_inset
 
 , and then in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6870,7 +6854,7 @@ Okular (KDE)
 
 \lang english
 Go to 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6924,7 +6908,7 @@ Qpdfview (Unix)
 Qpdfview supports Sync\SpecialChar TeX
  since version 0.3.5.
  Go to 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -6977,7 +6961,7 @@ YAP (Windows)
 
 \lang english
 Launch yap, choose its 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7191,7 +7175,7 @@ SumatraPDF -inverse-search "lyxeditor.bat %f %l"
 \end_inset
 
  in the viewer setting in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7238,7 +7222,7 @@ YAP (Cygwin)
 \lang english
 First of all, make sure that yap is your default DVI viewer in the Windows
  environment, then launch it, choose its 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7389,7 +7373,7 @@ SumatraPDF.sh
 \end_inset
 
  in the viewer setting in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7517,7 +7501,7 @@ opposite
  If forward search is set up (as described in what follows), you can put
  the cursor anywhere in your \SpecialChar LyX
  document, and hit 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7530,7 +7514,7 @@ Forward search
 \end_inset
 
  (or select 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7567,7 +7551,7 @@ reference "subsec:rev-search"
 \lang english
 Additionally, you need to configure \SpecialChar LyX
  for using your viewers in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -7686,7 +7670,7 @@ okular –unique
 \end_inset
 
  in 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21187,7 +21171,7 @@ cvs -r
  of your document exists in the CVS/Base sub-directory a reserved otherwise
  a non-reserved checkout is assumed.
  When a reserved checkout is detected you have to use 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21200,7 +21184,7 @@ Check Out
 
  to make your working copy writable if it's readonly.
  After doing so the 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -21355,7 +21339,7 @@ When you are finished editing a file, you commit your changes.
  After that changes are written to the repository.
  In case you didn't change the document and a reserved checkout is detected
  the reservation made on 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -23393,7 +23377,7 @@ VC_COMPARE
  \SpecialChar LyX
  function (for details see \SpecialChar LyX
  functions manual) or by icon/menu item 
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
@@ -23408,7 +23392,7 @@ Compare with older revision...
  One can either compare two chosen revisions of the document or he can simply
  compare the current version of edited text with older revisions (where
  '
-\begin_inset Flex MenuItem
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
