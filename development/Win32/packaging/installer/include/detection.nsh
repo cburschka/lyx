@@ -162,8 +162,16 @@ Function MissingPrograms
   ${endif}
   
   # test if Inkscape is installed
-  ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
-  
+  ReadRegStr $SVGPath HKLM "SOFTWARE\Classes\inkscape.svg\DefaultIcon" ""
+  ${if} $SVGPath != ""
+   StrCpy $SVGPath $SVGPath "" 1 # remove the leading quote
+   StrCpy $SVGPath $SVGPath -14 # # delete '\inkscape.exe"'
+  ${endif}
+  ${if} $SVGPath == ""
+   # this was used before Inkscape 0.91:
+   ReadRegStr $SVGPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Inkscape" "InstallLocation"
+  ${endif}
+
   # test if Gnumeric is installed
   ReadRegStr $0 HKLM "Software\Classes\Applications\gnumeric.exe\shell\Open\command" ""
   ${if} $0 != ""

@@ -168,14 +168,17 @@ Section -Configure
 		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
 		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n'
 
-  # for the wmf image type we need to specify a resolution for the converter
-  # otherwise 1024 dpi are used and eps2pdf takes ages
-  # 300 dpi are a good compromise for speed and size
-  FileWrite $R1 '\converter "wmf" "eps" "convert -density 300 $$$$i $$$$o" ""$\r$\n'
+  # if Inkscape is not available Imagemagick will be used to convert WMF/EMF files
+  # We need to specify a resolution for the converter otherwise 1024 dpi are used and
+  # eps2pdf takes ages. 300 dpi are a good compromise for speed and size.
+  ${if} $SVGPath == ""
+   FileWrite $R1 '\converter "wmf" "eps" "convert -density 300 $$$$i $$$$o" ""$\r$\n\
+         \converter "emf" "eps" "convert -density 300 $$$$i $$$$o" ""$\r$\n'
+  ${endif}
   
   # if LilyPondPath was found
-  # we need to add these entris because python scripts can only be executed
-  # if the full path is given
+  # We need to add these entris because python scripts can only be executed
+  # if the full path is given.
   ${if} $LilyPondPath != ""
    FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export" ""$\r$\n\
 		  \converter "lilypond-book" "pdflatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
