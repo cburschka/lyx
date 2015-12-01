@@ -27,6 +27,10 @@ if [%1]==[] (
 	goto :eof
 )
 
+REM Uncomment the following line if you want to compile in parallel.
+REM This uses N cl.exe processes, where N is the number of cores.
+REM set CL=/MP
+
 REM Save path
 set CALLED_FROM=%CD%
 
