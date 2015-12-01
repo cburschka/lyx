@@ -82,7 +82,8 @@ if [%2]==[] (
 
 if "%1%" == "devel" (
 	REM Build solution to develop LyX
-	cmake %LYX_SOURCE% -GNinja -G%USED_STUDIO% -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=0 -DLYX_RELEASE=0 -DLYX_CONSOLE=FORCE %DEPENDENCIES_DOWNLOAD%
+	REM you can add the option "-GNinja" for a faster compilation
+	cmake %LYX_SOURCE% -GNinja -G%USED_STUDIO% -DLYX_ENABLE_EXPORT_TESTS=ON -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=0 -DLYX_RELEASE=0 -DLYX_CONSOLE=FORCE %DEPENDENCIES_DOWNLOAD%
 	msbuild lyx.sln /p:Configuration=Debug /t:LyX /t:tex2lyx
 )
 
