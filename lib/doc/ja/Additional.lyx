@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/ja/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -53,7 +53,7 @@ shapepar
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
-Format 57
+Format 35
 InsetLayout		Flex:MenuItem
 LyxType		charstyle
 LabelString           menu
@@ -65,7 +65,6 @@ EndFont
 Preamble
 \newcommand*{\menuitem}[1]{{\sffamily #1}}
 EndPreamble
-ResetsFont true
 End
 InsetLayout		Flex:Ruby
 LyxType		charstyle
@@ -91,7 +90,6 @@ Preamble
 {\usepackage{okumacro}}
 {\newcommand{\ruby}[2]{#2}}
 EndPreamble
-ResetsFont true
 End
 \end_local_layout
 \language japanese
