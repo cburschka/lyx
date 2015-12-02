@@ -322,11 +322,7 @@ macro(settestlabel testname)
 endmacro()
 
 macro(setmarkedtestlabel testname reverted)
-  if(${reverted})
-    settestlabel(${testname} "reverted" ${ARGN})
-  else()
-    settestlabel(${testname} ${ARGN})
-  endif()
+  settestlabel(${testname} ${ARGN})
 endmacro()
 
 
