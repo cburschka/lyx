@@ -68,14 +68,12 @@ docstring const & TocItem::tooltip() const
 
 docstring const TocItem::asString() const
 {
-	// U+2327 X IN A RECTANGLE BOX
-	// char_type const cross = 0x2327;
-	// U+274E NEGATIVE SQUARED CROSS MARK
-	char_type const cross = 0x274e;
+	static char_type const cross = 0x2716; // ✖ U+2716 HEAVY MULTIPLICATION X
+	static char_type const thin = 0x2009; // U+2009 THIN SPACE
 	docstring prefix;
 	if (!output_) {
 		prefix += cross;
-		prefix += " ";
+		prefix += thin;
 	}
 	return prefix + str_;
 }

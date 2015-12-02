@@ -84,6 +84,8 @@ docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 
 docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 {
+	static char_type const tick = 0x2714; // ✔ U+2714 HEAVY CHECK MARK
+	static char_type const cross = 0x2716; // ✖ U+2716 HEAVY MULTIPLICATION X
 	docstring s = _("Branch: ") + params_.branch;
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
@@ -103,9 +105,9 @@ docstring const InsetBranch::buttonLabel(BufferView const & bv) const
 	}
 	bool const master_selected = isBranchSelected();
 	bool const child_selected = isBranchSelected(true);
-	docstring symb = docstring(1, char_type(master_selected ? 0x2714 : 0x2716));
+	docstring symb = docstring(1, master_selected ? tick : cross);
 	if (inchild && master_selected != child_selected)
-		symb += char_type(child_selected ? 0x2714 : 0x2716);
+		symb += child_selected ? tick : cross;
 	if (decoration() == InsetLayout::CLASSIC)
 		return symb + (isOpen(bv) ? s : getNewLabel(s));
 	else

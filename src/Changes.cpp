@@ -486,23 +486,24 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 		case Change::UNCHANGED:
 			continue;
 		case Change::DELETED:
-			// 0x2702 is a scissors symbol in the Dingbats unicode group.
+			// ✂ U+2702 BLACK SCISSORS
 			str.push_back(0x2702);
 			break;
 		case Change::INSERTED:
-			// 0x270d is the hand writting symbol in the Dingbats unicode group.
-			str.push_back(0x270d); break;
+			// ✍ U+270D WRITING HAND
+			str.push_back(0x270d);
+			break;
 		}
 		dit.pos() = it->range.start;
 		Paragraph const & par = dit.paragraph();
 		str += " " + par.asString(it->range.start, min(par.size(), it->range.end));
 		if (it->range.end > par.size())
-			// the end of paragraph symbol from the Punctuation group
-			str.push_back(0x204B);
+			// ¶ U+00B6 PILCROW SIGN
+			str.push_back(0xb6);
 		docstring const & author = author_list.get(it->change.author).name();
 		Toc::iterator it = change_list->item(0, author);
 		if (it == change_list->end()) {
-			change_list->push_back(TocItem(dit, 0, author, output_active));
+			change_list->push_back(TocItem(dit, 0, author, true));
 			change_list->push_back(TocItem(dit, 1, str, output_active,
 				support::wrapParas(str, 4)));
 			continue;
