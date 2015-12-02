@@ -7180,12 +7180,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7198,6 +7200,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7223,6 +7226,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -12615,7 +12619,54 @@ This is the Small caps font shape
 \family sans
 本文
 \family default
-に指定した既定色が使用されることを意味します。
+に指定した既定色が使用されることを意味します
+\lang english
+, 
+\family sans
+Brown
+\family default
+, 
+\family sans
+Darkgray
+\family default
+, 
+\family sans
+Gray
+\family default
+, 
+\family sans
+Lightgray
+\family default
+, 
+\family sans
+Lime
+\family default
+, 
+\family sans
+Orange
+\family default
+, 
+\family sans
+Olive
+\family default
+, 
+\family sans
+Pink
+\family default
+, 
+\family sans
+Purple
+\family default
+, 
+\family sans
+Teal
+\family default
+ and 
+\family sans
+Violet
+\family default
+\lang japanese
+。
 \begin_inset Index idx
 status collapsed
 
