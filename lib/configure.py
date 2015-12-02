@@ -957,11 +957,17 @@ def checkConverterEntries():
 \converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
 \converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""'''])
     #
-    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
+    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
         rc_entry = [ r'\converter wmf        eps        "%%"	""'])
     #
-    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i'],
+    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
+    #
+    checkProg('a WMF -> PDF converter', [inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+        rc_entry = [ r'\converter wmf        pdf6        "%%"	""'])
+    #
+    checkProg('an EMF -> PDF converter', [inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+        rc_entry = [ r'\converter emf        pdf6        "%%"	""'])
     # Only define a converter to pdf6 for graphics
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
