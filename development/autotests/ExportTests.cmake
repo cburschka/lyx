@@ -161,12 +161,7 @@ macro(maketestname testname reverted listsuspicious listignored listunreliable l
   endif()
 endmacro()
 
-# This labels should not be used in .*Tests files
-set(known_labels "export" "key" "layout" "load" "lyx2lyx"
-  "examples" "manuals" "mathmacros" "reverted" "templates" "unreliable" "suspended" 
-  "module" "roundtrip" "url")
-
-macro(loadTestList filename resList)
+macro(loadTestList filename resList depth)
   # Create list of strings from a file without comments
   # ENCODING parameter is a new feature in cmake 3.1
   if (CMAKE_VERSION VERSION_GREATER "3.1")
@@ -222,7 +217,7 @@ macro(loadTestList filename resList)
     if (_ff GREATER -1)
       message(STATUS "Label \"${_l}\" already in use. Reused in ${filename}")
     else()
-      list(APPEND known_labels ${_l})
+      assignLabelDepth(${depth} ${_l})
     endif()
   endforeach()
   foreach(_lg ${languages})
@@ -232,10 +227,25 @@ macro(loadTestList filename resList)
   endforeach()
 endmacro()
 
-loadTestList(suspiciousTests suspiciousTests)
-loadTestList(ignoredTests ignoredTests)
-loadTestList(suspendedTests suspendedTests)
-loadTestList(unreliableTests unreliableTests)
+# This labels should not be used in .*Tests files
+set(known_labels "")
+# Create depth info to each label
+macro(assignLabelDepth depth)
+  foreach(_lab ${ARGN})
+    list(APPEND known_labels ${_lab})
+    set(depth_${_lab} ${depth})
+  endforeach()
+endmacro()
+
+assignLabelDepth(0 "export" "key" "layout" "load" "lyx2lyx" "module" "roundtrip" "url")
+assignLabelDepth(1 "unreliable" "reverted")
+assignLabelDepth(2 "suspended")
+assignLabelDepth(3 "examples" "manuals" "mathmacros" "templates" "autotests")
+
+loadTestList(suspiciousTests suspiciousTests 7)
+loadTestList(ignoredTests ignoredTests 0)
+loadTestList(suspendedTests suspendedTests 6)
+loadTestList(unreliableTests unreliableTests 5)
 
 # preparing to add e.g. development/mathmacros to the foreach() loop
 foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates development/mathmacros)
@@ -289,7 +299,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
         -DTOP_SRC_DIR=${TOP_SRC_DIR}
         -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
         -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-      setmarkedtestlabel(${TestName} ${reverted} ${mytestlabel})
+      setmarkedtestlabel(${TestName} ${mytestlabel})
     endif()
     if(LYX_PYTHON_EXECUTABLE)
       set(lyx2lyxtestlabel "lyx2lyx")
@@ -306,7 +316,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
           "-DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}"
           "-DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx"
           -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
-        setmarkedtestlabel(${TestName} ${reverted} ${mytestlabel})
+        setmarkedtestlabel(${TestName} ${mytestlabel})
       endif()
     endif()
     set(loadtestlabel "load")
@@ -322,7 +332,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
         -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
-      setmarkedtestlabel(${TestName} ${reverted} ${mytestlabel})
+      setmarkedtestlabel(${TestName} ${mytestlabel})
       set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
@@ -355,7 +365,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
             -DTOP_SRC_DIR=${TOP_SRC_DIR}
             -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-          setmarkedtestlabel(${TestName} ${reverted} ${mytestlabel}) # check for suspended pdf/dvi exports
+          setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
         endif()
       endforeach()
     endforeach()
