@@ -264,23 +264,16 @@ Pavel Sanda
 \begin_layout Standard
 
 \lang english
-It is strongly recommended to store documents in uncompressed format if
- using version control (uncheck 
-\family sans
-Document\SpecialChar menuseparator
-Compressed
-\family default
- if it is checked): Uncompressed LyX documents are text files and therefore
- for merging two different versions by version control systems.
- Compressed LyX documents are binary files, which cannot be merged by version
- control systems.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 The following error if exporting to dvi shows only if the language immediately
  before the subchapter is in non default laguage.
+\begin_inset Newline newline
+\end_inset
+
+There is something special with the \SpecialChar LyX
+-character in the subsection.
+ The error shows only if '\SpecialChar LyX
+' is the first char, but not if preceded with
+ some japanese symbol(s).
 \end_layout
 
 \begin_layout Subsection
