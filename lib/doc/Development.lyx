@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -802,65 +802,15 @@ Automated tests are an important tool to detect bugs and regressions in
 \end_layout
 
 \begin_layout Subsection
-\SpecialChar LyX
- tests
+unit tests
 \end_layout
 
 \begin_layout Standard
-Some tests are located in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-development/autotests
-\end_layout
-
-\end_inset
-
- subfolder of the \SpecialChar LyX
- source code distribution.
-\end_layout
-
-\begin_layout Subsubsection
-Running the tests
+There are attempts to set up a suite of unit tests for LyX.
 \end_layout
 
 \begin_layout Standard
-cmake is required to run the \SpecialChar LyX
- tests, running them is not implemented for
- autotools.
- The \SpecialChar LyX
- tests can be run by the commands 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ctest
-\end_layout
-
-\end_inset
-
- (all platforms) or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-make test
-\end_layout
-
-\end_inset
-
- (when using a make based build system and not MSVC) in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-autotests
-\end_layout
-
-\end_inset
-
- subfolder of the build directory.
+TODO: describe what is done and what is still to do.
 \end_layout
 
 \begin_layout Subsection
@@ -1258,7 +1208,75 @@ Commit the changes to the repository, or send a patch to the development
 \end_layout
 
 \begin_layout Subsection
-Export tests (cmake only)
+automatic LyX tests (cmake only)
+\end_layout
+
+\begin_layout Standard
+Some tests are located in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests
+\end_layout
+
+\end_inset
+
+ subfolder of the \SpecialChar LyX
+ source code distribution.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cmake
+\end_layout
+
+\end_inset
+
+ is required to run the automatic \SpecialChar LyX
+ tests, running them is not implemented
+ for autotools.
+ 
+\end_layout
+
+\begin_layout Standard
+The \SpecialChar LyX
+ tests can be run by the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest
+\end_layout
+
+\end_inset
+
+ (all platforms) or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make test
+\end_layout
+
+\end_inset
+
+ (when using a make based build system and not MSVC) in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+autotests
+\end_layout
+
+\end_inset
+
+ subfolder of the build directory.
+\end_layout
+
+\begin_layout Subsubsection
+Export tests 
 \end_layout
 
 \begin_layout Standard
@@ -1292,7 +1310,7 @@ cmake
  build system
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Expectations of LyX developers
 \end_layout
 
@@ -1341,7 +1359,7 @@ reference "subsec:Interpreting-export-tests"
 .
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Configuring the tests
 \end_layout
 
@@ -1386,7 +1404,7 @@ reference "subsec:Interpreting-export-tests"
 ).
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Running the tests
 \end_layout
 
@@ -1631,7 +1649,7 @@ man ctest
 ) the full list of command line options.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Interpreting-export-tests"
@@ -1871,7 +1889,7 @@ CTestCostData.txt
  file lists the times that it took to run the tests.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Inverted tests
 \end_layout
 
@@ -1947,7 +1965,7 @@ status collapsed
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Unreliable tests
 \end_layout
 
@@ -1985,7 +2003,7 @@ These tests are labeled as
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
+\begin_layout Paragraph
 Export test filtering
 \end_layout
 
@@ -2615,7 +2633,7 @@ No
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 check_load tests
 \end_layout
 
@@ -2653,8 +2671,8 @@ development/autotests/filterCheckWarnings
 Under cmake, the tests are labeled as 'load'.
 \end_layout
 
-\begin_layout Subsection
-URL tests (cmake only)
+\begin_layout Subsubsection
+URL tests
 \end_layout
 
 \begin_layout Standard
@@ -2690,7 +2708,7 @@ LastTest.log
 'url'.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Running URL tests
 \end_layout
 
@@ -2735,8 +2753,8 @@ Associated test results can be examined in ctest-log directory in files
  of the form 'LastFailed.*URLS.log'
 \end_layout
 
-\begin_layout Subsection
-Test labels (cmake only)
+\begin_layout Subsubsection
+Test labels
 \end_layout
 
 \begin_layout Standard
