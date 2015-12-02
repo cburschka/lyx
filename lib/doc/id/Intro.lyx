@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/id/
+\origin unavailable
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -13,14 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
@@ -45,9 +37,9 @@
 \language_package default
 \inputencoding default
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -120,11 +112,12 @@
 \begin_body
 
 \begin_layout Title
-Pengantar \SpecialCharNoPassThru LyX
+Pengantar \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
-oleh \SpecialCharNoPassThru LyX
+oleh \SpecialChar LyX
  Team
 \begin_inset Foot
 status collapsed
@@ -132,7 +125,7 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 Apabila anda mempunyai komentar atau menemukan kesalahan, kirimkan koreksi
- dan komentar ke tim dokumentasi \SpecialCharNoPassThru LyX
+ dan komentar ke tim dokumentasi \SpecialChar LyX
 : 
 \begin_inset CommandInset href
 LatexCommand href
@@ -168,26 +161,27 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Filosofi \SpecialCharNoPassThru LyX
+Filosofi \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsection
-Apakah \SpecialCharNoPassThru LyX
+Apakah \SpecialChar LyX
 ?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- adalah suatu sistem penyuntingan dokumen yang mampu mempersiapkan artikel-ar
-tikel teknik atau sains yang rumit dan mengandung persamaan matematika,
- referensi silang, bibliografi, indeks, dll.
+\SpecialChar LyX
+ adalah suatu sistem penyuntingan dokumen yang mampu mempersiapkan artikel-artik
+el teknik atau sains yang rumit dan mengandung persamaan matematika, referensi
+ silang, bibliografi, indeks, dll.
  Program ini sesuai untuk menulis dokumen yang pendek maupun panjang dengan
  kemampuan pemrosesan yang diperlukan seperti: pengaturan bab dan halaman
  secara otomatis, cek ejaan, serta hal umum lainnya yang biasa digunakan
  dalam penyuntingan dokumen.
- Selain penulisan dokumen, \SpecialCharNoPassThru LyX
- dapat juga digunakan untuk keperluan surat
- menyurat, yang umumnya menggunakan program lain yang lebih sederhana.
+ Selain penulisan dokumen, \SpecialChar LyX
+ dapat juga digunakan untuk keperluan surat menyurat,
+ yang umumnya menggunakan program lain yang lebih sederhana.
  Program ini bukan program terbaik untuk menyiapkan berbagai dokumen khusus
  seperti 
 \emph on
@@ -207,7 +201,7 @@ flyer
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  adalah perangkat lunak yang menggunakan pendekatan modern untuk menulis
  dokumen dengan bantuan komputer menggunakan paradigma 
 \emph on
@@ -222,7 +216,7 @@ mengetik dengan mesin ketik
 \end_inset
 
 .
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  dirancang untuk para penulis yang menginginkan hasil profesional dengan
  tidak perlu menguasai atau menjadi ahli terlebih dahulu dalam 
 \emph on
@@ -230,14 +224,14 @@ typesetting
 \emph default
 .
  Pekerjaan pengaturan tulisan akan dilakukan oleh komputer, bukan oleh penulis;
- dengan bantuan \SpecialCharNoPassThru LyX
-, penulis dapat berkonsentrasi sepenuhnya pada isi dan
- kandungan tulisan.
+ dengan bantuan \SpecialChar LyX
+, penulis dapat berkonsentrasi sepenuhnya pada isi dan kandungan
+ tulisan.
 \end_layout
 
 \begin_layout Standard
 Salah satu kesulitan yang mungkin dirasakan ketika pertama kali menggunakan
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  adalah merubah paradigma bahwa penulis harus merancang sendiri tampilan
  hasil.
  Pada masa lalu ketika masih menggunakan mesin ketik, penulis harus mempelajari
@@ -294,16 +288,16 @@ What You See Is All You Get
 \end_layout
 
 \begin_layout Standard
-Pengolah kata \SpecialCharNoPassThru LyX
+Pengolah kata \SpecialChar LyX
  berbeda dari pengolah kata biasa.
  Anda tidak perlu kawatir dengan pemilihan huruf yang sesuai serta bagaimana
  penempatannya.
- Yang anda perlukan adalah mengatakan ke \SpecialCharNoPassThru LyX
+ Yang anda perlukan adalah mengatakan ke \SpecialChar LyX
  
 \emph on
 apa yang akan anda kerjakan 
 \emph default
-selanjutnya \SpecialCharNoPassThru LyX
+selanjutnya \SpecialChar LyX
  akan menyesuaikan mengikuti aturan-aturan yang didefinisikan
  di berkas 
 \emph on
@@ -371,9 +365,9 @@ n juga.
 \end_layout
 
 \begin_layout Standard
-Apabila menggunakan \SpecialCharNoPassThru LyX
-, anda hanya perlu menekan tombol lingkungan yang
- berada di kiri atas kemudian memilih 
+Apabila menggunakan \SpecialChar LyX
+, anda hanya perlu menekan tombol lingkungan yang berada
+ di kiri atas kemudian memilih 
 \family sans
 Bab
 \family default
@@ -394,7 +388,7 @@ Anda bisa lihat, akan sesederhana itu.
  Apabila anda melakukan salin, potong dan tempel, nomor akan disesuaikan
  secara otomatis.
  Demikian pula jika anda mendefinisikan acuan di bab tersebut (dengan menyisipka
-n label untuk referensi silang), \SpecialCharNoPassThru LyX
+n label untuk referensi silang), \SpecialChar LyX
  akan secara otomatis selalu memperbarui
  walau tempatnya dipindah kemanapun.
  Anda tidak akan pernah perlu menuliskan nomor bab, subbab atau bagian bernomor
@@ -431,7 +425,7 @@ pt), sehingga hasilnya huruf di Bab
 \end_inset
 
 1.
- Permasalahan tidak konsisten ini tidak akan pernah terjadi di \SpecialCharNoPassThru LyX
+ Permasalahan tidak konsisten ini tidak akan pernah terjadi di \SpecialChar LyX
 .
  Komputer akan menyimpan aturan-aturan tentang ukuran huruf dan format lainnya,
  bukannya anda yang harus setiap saat mengaturnya.
@@ -451,14 +445,14 @@ list
  Anda perlu memikirkan dimana akan menuliskan label pada tiap-tiap item,
  model apakah labelnya, seberapa banyak spasi baris kosong untuk memisahkan
  antara item, dan banyak hal lain.
- Apabila menggunakan \SpecialCharNoPassThru LyX
+ Apabila menggunakan \SpecialChar LyX
 , anda hanya perlu menentukan dua hal: apakah tipe
  daftar yang diinginkan, dan apa yang anda ingin masukkan dalam daftar.
  Itu saja.
 \end_layout
 
 \begin_layout Standard
-Dengan demikian, ide dasar dibalik \SpecialCharNoPassThru LyX
+Dengan demikian, ide dasar dibalik \SpecialChar LyX
  adalah: nyatakan 
 \emph on
 apa
@@ -472,7 +466,7 @@ What You See Is What You Get,
 \begin_inset Quotes erd
 \end_inset
 
- yang berlaku di \SpecialCharNoPassThru LyX
+ yang berlaku di \SpecialChar LyX
  adalah 
 \begin_inset Quotes eld
 \end_inset
@@ -495,19 +489,19 @@ WYSIWYM.
 
  Hal ini adalah suatu ide besar yang akan mengubah dan menyederhanakan cara-cara
  penulisan dan penyuntingan dokumen.
- Hal ini juga yang menyebabkan \SpecialCharNoPassThru LyX
- tidak akan sesuai untuk membuat poster
- atau jenis-jenis lembaran iklan.
+ Hal ini juga yang menyebabkan \SpecialChar LyX
+ tidak akan sesuai untuk membuat poster atau
+ jenis-jenis lembaran iklan.
  Pada jenis ini tidak memerlukan fungsi-fungsi seperti paragraf, bab, subbab
  atau sejenisnya.
- Disini bukan berarti \SpecialCharNoPassThru LyX
- tidak mampu mengerjakan, tetapi bisa dikatakan
- bukan alat yang tepat untuk pekerjaan tersebut - anda jangan menggunakan
- pisau untuk memukul paku.
+ Disini bukan berarti \SpecialChar LyX
+ tidak mampu mengerjakan, tetapi bisa dikatakan bukan
+ alat yang tepat untuk pekerjaan tersebut - anda jangan menggunakan pisau
+ untuk memukul paku.
 \end_layout
 
 \begin_layout Subsection
-Perbedaan \SpecialCharNoPassThru LyX
+Perbedaan \SpecialChar LyX
  dan Pengolah Kata Lain
 \begin_inset Argument 1
 status collapsed
@@ -525,14 +519,14 @@ texorpdfstring{
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{\SpecialCharNoPassThru LyX
-}
+}{LyX}
 \end_layout
 
 \end_inset
@@ -546,7 +540,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Berikut ini adalah beberapa hal yang tidak akan ditemui di \SpecialCharNoPassThru LyX
+Berikut ini adalah beberapa hal yang tidak akan ditemui di \SpecialChar LyX
 :
 \end_layout
 
@@ -582,9 +576,9 @@ Tab
 \emph on
 tab
 \emph default
- yang ada di halaman kerja, tidak akan ditemui dan tidak berlaku di \SpecialCharNoPassThru LyX
+ yang ada di halaman kerja, tidak akan ditemui dan tidak berlaku di \SpecialChar LyX
 .
- Demikian pula penambahan spasi kosong tidak diperlukan; \SpecialCharNoPassThru LyX
+ Demikian pula penambahan spasi kosong tidak diperlukan; \SpecialChar LyX
  akan menambahkan
  sendiri apabila diperlukan, tergantung pada kondisi.
  Tidak berlakunya penambahan baris kosong menggunakan 
@@ -597,7 +591,7 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Beberapa fasilitas pengaturan sebenarnya ada juga di \SpecialCharNoPassThru LyX
+Beberapa fasilitas pengaturan sebenarnya ada juga di \SpecialChar LyX
 , tetapi kemungkinan
  penggunaannya tidak seperti pada pengolah kata lain:
 \end_layout
@@ -631,28 +625,28 @@ Tipe huruf (huruf tebal, huruf miring, huruf bergaris bawah, dll.)
 \end_layout
 
 \begin_layout Standard
-Walaupun ada di \SpecialCharNoPassThru LyX
+Walaupun ada di \SpecialChar LyX
 , anda tidak akan terlalu sering melakukan perubahan.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  akan mengatur penggunaannya, tergantung konteks penyuntingan yang sedang
  dilakukan.
  Pada bagian tertentu dalam dokumen, ukuran dan tipe huruf akan ditentukan
- secara otomatis oleh \SpecialCharNoPassThru LyX
+ secara otomatis oleh \SpecialChar LyX
 .
  Indentasi paragraf menyesuaikan dengan tipe paragraf yang mempunyai definisi
  indentasi sendiri.
  Pemisah halaman akan diatur dengan sendirinya secara otomatis.
  Secara umum, spasi antara baris, antara kata, antara paragraf adalah variabel
- yang bisa diatur oleh \SpecialCharNoPassThru LyX
+ yang bisa diatur oleh \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Ada berbagai cara (beberapa memerlukan pengetahuan \SpecialCharNoPassThru LaTeX
-) untuk mengatur
- secara keseluruhan yang berlaku umum atau hanya untuk lokasi tertentu saja
- dalam dokumen.
+Ada berbagai cara (beberapa memerlukan pengetahuan \SpecialChar LaTeX
+) untuk mengatur secara
+ keseluruhan yang berlaku umum atau hanya untuk lokasi tertentu saja dalam
+ dokumen.
  Pembahasan terperinci dapat dilihat di buku 
 \emph on
 Petunjuk Penggunaan
@@ -668,8 +662,8 @@ Fitur Tambahan.
 \end_layout
 
 \begin_layout Standard
-Akhirnya, secara umum kami percaya bahwa \SpecialCharNoPassThru LyX
- (juga \SpecialCharNoPassThru LaTeX
+Akhirnya, secara umum kami percaya bahwa \SpecialChar LyX
+ (juga \SpecialChar LaTeX
 ) mempu-nyai keunggulan
  dari program pengolah kata lainnya, meliputi:
 \end_layout
@@ -702,21 +696,22 @@ Penggunaan referensi-silang
 Berbagai pengolah kata modern dapat menyunting dan menampilkan simbol dan
  rumus matematika, mengatur pemenggalan suku kata, mendefinisikan berbagai
  model dokumen, serta menggunakan konsep WYSIWYM.
- Namun demikian kebanyakan mereka baru saja menggunakannya, sementara \SpecialCharNoPassThru LyX
- dirancang menggunakan sistem penyuntingan dokumen \SpecialCharNoPassThru LaTeX
-, suatu program
- yang sudah ada lebih dari 20 tahun dan pemanfaatannya sudah teruji.
+ Namun demikian kebanyakan mereka baru saja menggunakannya, sementara \SpecialChar LyX
+ dirancang
+ menggunakan sistem penyuntingan dokumen \SpecialChar LaTeX
+, suatu program yang sudah ada
+ lebih dari 20 tahun dan pemanfaatannya sudah teruji.
 \end_layout
 
 \begin_layout Subsection
-Apakah \SpecialCharNoPassThru LaTeX
+Apakah \SpecialChar LaTeX
 ?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
- adalah sistem penyuntingan dokumen yang dirancang oleh Leslie Lamport
- pada tahun 1985.
+\SpecialChar LaTeX
+ adalah sistem penyuntingan dokumen yang dirancang oleh Leslie Lamport pada
+ tahun 1985.
 \begin_inset Foot
 status collapsed
 
@@ -727,7 +722,8 @@ Sumber informasi untuk penulisan disini diperoleh dari buku
 
 
 \emph on
-A Guide to \SpecialCharNoPassThru LaTeX2e
+A Guide to \SpecialChar LaTeX2e
+
 \emph default
 ,
 \begin_inset Quotes erd
@@ -738,20 +734,20 @@ A Guide to \SpecialCharNoPassThru LaTeX2e
 \emph on
 Petunjuk Penggunaan 
 \emph default
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 \SpecialChar endofsentence
 
 \end_layout
 
 \end_inset
 
- Program ini menggunakan bahasa penyuntingan \SpecialCharNoPassThru TeX
- rancangan Donald Knuth
- tahun 1984.
- \SpecialCharNoPassThru TeX
- merupakan kumpulan perintah pengaturan dokumen yang disusun menjadi
- skrip dalam berkas ASCII, kemudian dijalankan untuk memperoleh tampilan
- hasil penyuntingan.
+ Program ini menggunakan bahasa penyuntingan \SpecialChar TeX
+ rancangan Donald Knuth tahun
+ 1984.
+ \SpecialChar TeX
+ merupakan kumpulan perintah pengaturan dokumen yang disusun menjadi skrip
+ dalam berkas ASCII, kemudian dijalankan untuk memperoleh tampilan hasil
+ penyuntingan.
  Berbagai macam 
 \begin_inset Quotes eld
 \end_inset
@@ -760,10 +756,10 @@ trik
 \begin_inset Quotes erd
 \end_inset
 
- disusun oleh Knuth dalam bentuk algoritma dan dimasukkan dalam \SpecialCharNoPassThru TeX
+ disusun oleh Knuth dalam bentuk algoritma dan dimasukkan dalam \SpecialChar TeX
  sehingga
  mampu memberikan hasil cetak yang sangat bagus.
- Hasil keluaran langsung yang diperoleh dari \SpecialCharNoPassThru TeX
+ Hasil keluaran langsung yang diperoleh dari \SpecialChar TeX
  adalah berkas dengan format
  dokumen portabel 
 \emph on
@@ -791,52 +787,52 @@ dvi
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  bukan hanya mesin untuk mengatur format penulisan, tetapi juga memungkinkan
  anda untuk mendefinisikan perintah makro.
- Sebagian orang yang menggunakan \SpecialCharNoPassThru TeX
- biasanya menggunakan paket perintah
- makro yang dibuat Knuth untuk menyembunyikan berbagai detail perintah pemformat
-an penulisan.
+ Sebagian orang yang menggunakan \SpecialChar TeX
+ biasanya menggunakan paket perintah makro
+ yang dibuat Knuth untuk menyembunyikan berbagai detail perintah pemformatan
+ penulisan.
  Dari sinilah Leslie masuk dalam cerita kita.
  Dia menciptakan paket makro yang berorientasi kepada membantu pengguna
  dan mengurangi pekerjaan pengaturan penyuntingan, melalui kumpulan perintah
  yang secara konsisten akan mengatur tampilan bab, tabel, rumus matematika
  yang rapi, dengan tampilan yang selalu seragam dan konsisten.
- Inilah yang kemudian dikenal sebagai \SpecialCharNoPassThru LaTeX
+ Inilah yang kemudian dikenal sebagai \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
-Pada masa sekarang, seiring dengan pengembangan dan perkembangan \SpecialCharNoPassThru LaTeX
-,
- banyak orang yang sudah membuat berbagai paket makro untuk \SpecialCharNoPassThru TeX
-, sebagian
- untuk membuat tayangan presentasi, sebagian lagi untuk penulisan jurnal
- matematika, dan berbagai aplikasi penulisan.
- Ada juga yang menggunakan fasilitas \SpecialCharNoPassThru TeX
+Pada masa sekarang, seiring dengan pengembangan dan perkembangan \SpecialChar LaTeX
+, banyak
+ orang yang sudah membuat berbagai paket makro untuk \SpecialChar TeX
+, sebagian untuk membuat
+ tayangan presentasi, sebagian lagi untuk penulisan jurnal matematika, dan
+ berbagai aplikasi penulisan.
+ Ada juga yang menggunakan fasilitas \SpecialChar TeX
  asli untuk tujuan berbagai penulisan,
- dan tentu saja ada yang mulai modifikasi \SpecialCharNoPassThru LaTeX
+ dan tentu saja ada yang mulai modifikasi \SpecialChar LaTeX
 .
- Untuk menjawab perkembangan yang kacau tadi, tim teknisi \SpecialCharNoPassThru LaTeX
- kemudian
- mendefinisikan \SpecialCharNoPassThru LaTeX2e
-, yaitu versi yang sampai sekarang digunakan sejak
- akhir 1980an.
- Versi baru dari \SpecialCharNoPassThru LaTeX
- ini mempunyai perintah-perintah yang memberikan keleluasa
-an untuk mengkaitkan dengan perintah makro \SpecialCharNoPassThru TeX
-, sehingga sangat membantu
- dalam menggunakan huruf yang baru serta banyak hal.
- Pada kenyataannya, \SpecialCharNoPassThru LaTeX
- merupakan bahasa yang sangat luas! Banyak sekali
- pemakai di berbagai penjuru dunia menciptakan berbagai tambahan untuk \SpecialCharNoPassThru LaTeX
- yang melebihi standar aslinya.
+ Untuk menjawab perkembangan yang kacau tadi, tim teknisi \SpecialChar LaTeX
+ kemudian mendefinisik
+an \SpecialChar LaTeX2e
+, yaitu versi yang sampai sekarang digunakan sejak akhir 1980an.
+ Versi baru dari \SpecialChar LaTeX
+ ini mempunyai perintah-perintah yang memberikan keleluasaan
+ untuk mengkaitkan dengan perintah makro \SpecialChar TeX
+, sehingga sangat membantu dalam
+ menggunakan huruf yang baru serta banyak hal.
+ Pada kenyataannya, \SpecialChar LaTeX
+ merupakan bahasa yang sangat luas! Banyak sekali pemakai
+ di berbagai penjuru dunia menciptakan berbagai tambahan untuk \SpecialChar LaTeX
+ yang melebihi
+ standar aslinya.
 \end_layout
 
 \begin_layout Standard
 Ada dua jenis media berkas yang bisa digunakan untuk memperluas kemampuan
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 : 
 \emph on
 class
@@ -850,7 +846,7 @@ style
 \emph on
 class
 \emph default
- adalah suatu kumpulan makro \SpecialCharNoPassThru LaTeX
+ adalah suatu kumpulan makro \SpecialChar LaTeX
  yang menjelaskan tipe dari dokumen, misalnya
  
 \emph on
@@ -885,12 +881,12 @@ class
 \emph default
  karena tidak mendefinisikan tipe dokumen, tetapi menentukan perilaku dokumen,
  sehingga bisa digunakan di semua dokumen.
- Sebagai contoh, \SpecialCharNoPassThru LyX
+ Sebagai contoh, \SpecialChar LyX
  menggunakan dua 
 \emph on
 style
 \emph default
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  yang berbeda untuk mengontrol batas halaman dan spasi baris.
  Ada berbagai 
 \emph on
@@ -911,7 +907,7 @@ Berikut ini adalah ringkasan penjelasan diatas:
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 : Bahasa pengaturan penulisan (
 \emph on
 typesetting
@@ -920,39 +916,38 @@ typesetting
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru LaTeX
-: Paket Makro yang dibuat berdasarkan \SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+: Paket Makro yang dibuat berdasarkan \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-class: Definisi tipe dokumen, menggunakan \SpecialCharNoPassThru LaTeX
+class: Definisi tipe dokumen, menggunakan \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-style: Merubah perilaku bawaan dari \SpecialCharNoPassThru LaTeX
+style: Merubah perilaku bawaan dari \SpecialChar LaTeX
  dengan cara tertentu.
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru LyX
-: Pengolah kata interaktif, WYSIWYM, yang menggunakan \SpecialCharNoPassThru LaTeX
- untuk mengatur
- format penulisan.
+\SpecialChar LyX
+: Pengolah kata interaktif, WYSIWYM, yang menggunakan \SpecialChar LaTeX
+ untuk mengatur format
+ penulisan.
 \end_layout
 
 \begin_layout Standard
-Pada bab ini sudah dijelaskan perbedaan antara \SpecialCharNoPassThru LyX
+Pada bab ini sudah dijelaskan perbedaan antara \SpecialChar LyX
  dan pengolah kata lainnya.
- Secara ringkas bisa dikatakan \SpecialCharNoPassThru LaTeX
+ Secara ringkas bisa dikatakan \SpecialChar LaTeX
  berbeda dengan pengolah kata lain.
- Dengan menggunakan kekuatan \SpecialCharNoPassThru LaTeX
-, \SpecialCharNoPassThru LyX
- membantu anda berkonsentrasi tentang
- 
+ Dengan menggunakan kekuatan \SpecialChar LaTeX
+, \SpecialChar LyX
+ membantu anda berkonsentrasi tentang 
 \emph on
 apa
 \emph default
@@ -969,7 +964,7 @@ Bagaimana Memahami Sistem Dokumentasi Buku Petunjuk
 \end_layout
 
 \begin_layout Standard
-Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di \SpecialCharNoPassThru LyX
+Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di \SpecialChar LyX
 ,
  perlu kami jelaskan bahwa buku petunjuk dipisah-pisah menjadi beberapa
  berkas dokumen.
@@ -980,7 +975,7 @@ Agar dapat menjawab pertanyaan anda dan menjelaskan fitur yang ada di \SpecialCh
 \end_layout
 
 \begin_layout Standard
-Pada dasarnya pengembangan \SpecialCharNoPassThru LyX
+Pada dasarnya pengembangan \SpecialChar LyX
  tidak pernah berhenti tetapi berkembang dari
  waktu ke waktu, sehingga buku petunjuk kemungkinan menjadi tidak lengkap
  dan kedaluwarsa.
@@ -1031,7 +1026,7 @@ type "mailto:"
 \end_inset
 
 .
- Banyak sesama pemakai \SpecialCharNoPassThru LyX
+ Banyak sesama pemakai \SpecialChar LyX
  bisa membantu anda serta berbagi pengalaman.
 \end_layout
 
@@ -1042,14 +1037,14 @@ Format Penulisan di Buku Petunjuk
 \begin_layout Standard
 Dalam memanfaatkan buku petunjuk ada dua kelompok yang berbeda.
  Yang pertama lebih menyukai membaca buku petunjuk dari hasil cetakan.
- Kelompok yang kedua lebih suka membaca langsung dari \SpecialCharNoPassThru LyX
+ Kelompok yang kedua lebih suka membaca langsung dari \SpecialChar LyX
 .
- Perlu diketahui bahwa ada perbedaan antara berkas \SpecialCharNoPassThru LyX
- yang asli dengan
- versi yang di-cetak.
- Apabila membaca langsung dari berkas \SpecialCharNoPassThru LyX
-, judul hanya tampak paling atas
- dokumen, tidak terformat dan tidak terpisah dari halaman berikutnya.
+ Perlu diketahui bahwa ada perbedaan antara berkas \SpecialChar LyX
+ yang asli dengan versi
+ yang di-cetak.
+ Apabila membaca langsung dari berkas \SpecialChar LyX
+, judul hanya tampak paling atas dokumen,
+ tidak terformat dan tidak terpisah dari halaman berikutnya.
  Demikian pula, catatan kaki dan Daftar Isi tidak akan tampak terperinci.
  Untuk melihat isi catatan kaki, yang akan terlihat hanya seperti ini: 
 \begin_inset Graphics
@@ -1070,9 +1065,9 @@ Pada versi cetakan, buku panduan akan terformat lengkap mulai Judul, Daftar
  Isi, dan catatan kaki, semuanya muncul rapi dan terperinci.
  Selain itu, semua referensi silang akan muncul dalam bentuk angka sesuai
  dengan yang diacu, seperti Bab, SubBab, SubSubBab dan lainnya.
- Apabila membaca langsung dari berkas \SpecialCharNoPassThru LyX
-, semua referensi silang hanya
- akan tampak kotak kelabu dengan nama label yang diacu, misalnya akan tampak
+ Apabila membaca langsung dari berkas \SpecialChar LyX
+, semua referensi silang hanya akan
+ tampak kotak kelabu dengan nama label yang diacu, misalnya akan tampak
  seperti ini 
 \begin_inset Graphics
 	filename clipart/id-contrib.png
@@ -1126,7 +1121,7 @@ Huruf Condong
 \family typewriter
 Huruf Mesinketik
 \family default
- digunakan untuk nama berkas, program dan fungsi dalam \SpecialCharNoPassThru LyX
+ digunakan untuk nama berkas, program dan fungsi dalam \SpecialChar LyX
 .
 \end_layout
 
@@ -1152,7 +1147,7 @@ digunakan untuk nama orang atau kelompok.
 \series bold
 Huruf Tebal
 \series default
- digunakan untuk menuliskan program \SpecialCharNoPassThru LaTeX
+ digunakan untuk menuliskan program \SpecialChar LaTeX
  .
 \end_layout
 
@@ -1492,7 +1487,7 @@ Enter,
 \end_inset
 
  bahkan ada yang mempunyai keduanya.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  menggunakan kedua tombol untuk makna yang sama, sehingga kami terkadang
  menggunakan 
 \family sans
@@ -1521,7 +1516,7 @@ Cara Pintas
 
  silakan untuk membacanya.
  Perlu dipahami ada dua peta kunci ikatan yang biasa digunakan oleh para
- pemakai \SpecialCharNoPassThru LyX
+ pemakai \SpecialChar LyX
 , yaitu: gaya 
 \begin_inset Quotes eld
 \end_inset
@@ -1552,9 +1547,8 @@ Satuan Yang Digunakan di Buku Petunjuk
 
 \begin_layout Standard
 Agar memudahkan dalam memahami satuan yang digunakan dalam buku petunjuk
- \SpecialCharNoPassThru LyX
-, disini akan dipaparkan terlebih dahulu semua satuan yang dipakai di
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
+, disini akan dipaparkan terlebih dahulu semua satuan yang dipakai di \SpecialChar LyX
 .
  Tabel
 \begin_inset space ~
@@ -1567,7 +1561,7 @@ reference "cap:Units-for-image"
 
 \end_inset
 
- merupakan daftar semua satuan yang dipakai di \SpecialCharNoPassThru LyX
+ merupakan daftar semua satuan yang dipakai di \SpecialChar LyX
 .
 \end_layout
 
@@ -1607,7 +1601,7 @@ Satuan
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -2091,13 +2085,14 @@ em)
 \end_layout
 
 \begin_layout Subsection
-Buku Panduan Penggunaan \SpecialCharNoPassThru LyX
+Buku Panduan Penggunaan \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- menyediakan beberapa Buku Panduan Penggunaan yang bisa dibaca melalui
- menu 
+\SpecialChar LyX
+ menyediakan beberapa Buku Panduan Penggunaan yang bisa dibaca melalui menu
+ 
 \family sans
 Bantuan
 \family default
@@ -2106,22 +2101,24 @@ Bantuan
 \end_layout
 
 \begin_layout Description
-Pengantar Dokumen ini merupakan buku Pengantar \SpecialCharNoPassThru LyX
+Pengantar Dokumen ini merupakan buku Pengantar \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Description
-Tutorial Apabila anda baru saja menggunakan \SpecialCharNoPassThru LyX
+Tutorial Apabila anda baru saja menggunakan \SpecialChar LyX
  dan belum pernah me-ngenal
- dan menggunakan \SpecialCharNoPassThru LaTeX
+ dan menggunakan \SpecialChar LaTeX
 , anda perlu mulai belajar dari dokumen Tutorial.
- Apabila anda sudah menggunakan \SpecialCharNoPassThru LaTeX
- sebelumnya, anda tidak perlu membaca
- Tutorial dari awal tetapi langsung ke bab 
+ Apabila anda sudah menggunakan \SpecialChar LaTeX
+ sebelumnya, anda tidak perlu membaca Tutorial
+ dari awal tetapi langsung ke bab 
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
- untuk pemakai \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ untuk pemakai \SpecialChar LaTeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -2134,9 +2131,9 @@ Petunjuk
 \end_inset
 
 Penggunaan Dokumen ini adalah buku petunjuk utama.
- Dokumen ini menjelaskan sebagian besar cara menggunakan \SpecialCharNoPassThru LyX
- bagi pe-mula
- serta memaparkan fitur-fitur yang ada.
+ Dokumen ini menjelaskan sebagian besar cara menggunakan \SpecialChar LyX
+ bagi pe-mula serta
+ memaparkan fitur-fitur yang ada.
  Buku Petunjuk utama ini menganggap bahwa pembaca sudah memahami apa yang
  tertulis di Tutorial.
 \end_layout
@@ -2156,7 +2153,7 @@ Petunjuk Penggunaan
 float
 \emph default
 , nota, dan kotak dibahas secara terperinci.
- Berbagai perintah tambahan dari \SpecialCharNoPassThru LaTeX
+ Berbagai perintah tambahan dari \SpecialChar LaTeX
  yang terkait juga diberikan.
 \end_layout
 
@@ -2171,10 +2168,10 @@ Petunjuk Penggunaan
 \emph default
 .
  Disini dijelaskan dengan terperinci bagaimana menerapkan perintah dari
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 , penambahan dan pendefinisian layout, serta berbagai fitur penyuntingan
  untuk hal-hal yang khusus.
- Pada buku ini juga dipaparkan berbagai trik dari para pakar \SpecialCharNoPassThru LaTeX
+ Pada buku ini juga dipaparkan berbagai trik dari para pakar \SpecialChar LaTeX
 .
 \end_layout
 
@@ -2183,9 +2180,9 @@ Pengaturan
 \begin_inset space ~
 \end_inset
 
-Mandiri Menjelaskan pemakaian lanjut fitur \SpecialCharNoPassThru LyX
+Mandiri Menjelaskan pemakaian lanjut fitur \SpecialChar LyX
 , termasuk bagaimana mengatur
- perilaku \SpecialCharNoPassThru LyX
+ perilaku \SpecialChar LyX
  secara keseluruhan.
  Pengaturan fitur termasuk pengaturan kunci ikatan untuk cara pintas, internasio
 nalisasi bahasa, dan pengaturan berkas konfigurasi.
@@ -2196,11 +2193,11 @@ Konfigurasi
 \begin_inset space ~
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
- \SpecialCharNoPassThru LyX
+\SpecialChar LaTeX
+ \SpecialChar LyX
  akan memeriksa sistem komputer anda setelah instalasi.
  Dokumen ini memberikan informasi lengkap tentang berkas penting yang dikenal
- oleh \SpecialCharNoPassThru LyX
+ oleh \SpecialChar LyX
  di sistem yang diinstal.
  Periksa dokumen ini untuk melihat apakah ada yang tidak lengkap atau belum
  terinstal dengan sempurna.
@@ -2248,7 +2245,7 @@ Untuk melanjutkan, terlebih dahulu perlu memahami tahapan ini:
 
 \begin_layout Standard
 \align center
-Apabila anda baru mengenal \SpecialCharNoPassThru LyX
+Apabila anda baru mengenal \SpecialChar LyX
 , silakan anda membaca 
 \emph on
 Tutorial
@@ -2266,7 +2263,7 @@ Tutorial
 
 \begin_layout Standard
 Apabila belum membaca, anda kemungkinan mendapatkan kesulitan.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  dapat melakukan hal-hal yang anda harapkan dari program pengolah kata,
  namun mempunyai cara pandang yang sedikit berbeda.
  Oleh karena itu perlu mengenal dan membiasakan dengan membaca dan mengikuti
@@ -2278,7 +2275,8 @@ Tutorial
 \end_layout
 
 \begin_layout Section
-Bagaimana Berperan  di \SpecialCharNoPassThru LyX
+Bagaimana Berperan  di \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Kontrib"
@@ -2289,17 +2287,18 @@ name "sec:Kontrib"
 \end_layout
 
 \begin_layout Subsection
-Kontribusi ke \SpecialCharNoPassThru LyX
+Kontribusi ke \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-Sebagian besar program dalam \SpecialCharNoPassThru LyX
- ditulis menggunakan bahasa C++ (program
- memanggil fungsi \SpecialCharNoPassThru LaTeX
+Sebagian besar program dalam \SpecialChar LyX
+ ditulis menggunakan bahasa C++ (program memanggil
+ fungsi \SpecialChar LaTeX
  ditulis dalam Python).
- Proyek \SpecialCharNoPassThru LyX
- adalah suatu pekerjaan yang besar dan rumit, oleh karena itu
- belum terbebas dari kutu program (
+ Proyek \SpecialChar LyX
+ adalah suatu pekerjaan yang besar dan rumit, oleh karena itu belum
+ terbebas dari kutu program (
 \emph on
 bugs
 \emph default
@@ -2319,13 +2318,13 @@ bug
 \end_layout
 
 \begin_layout Standard
-Ketika menggunakan \SpecialCharNoPassThru LyX
-, kemungkinan anda menemukan perilaku program yang
- tidak seperti yang diharapkan; hal ini merupakan tanda adanya tidak kesempurnaa
-n program karena kutu program.
- Ada kemungkinan terjadi, walaupun jarang, \SpecialCharNoPassThru LyX
- berhenti dan keluar dengan
- sendirinya (
+Ketika menggunakan \SpecialChar LyX
+, kemungkinan anda menemukan perilaku program yang tidak
+ seperti yang diharapkan; hal ini merupakan tanda adanya tidak kesempurnaan
+ program karena kutu program.
+ Ada kemungkinan terjadi, walaupun jarang, \SpecialChar LyX
+ berhenti dan keluar dengan sendiriny
+a (
 \emph on
 crash
 \emph default
@@ -2334,14 +2333,14 @@ crash
 hang, freeze
 \emph default
 ) sehingga tidak bisa dikontrol sama sekali.
- Bagi Tim \SpecialCharNoPassThru LyX
-, permasalahan dengan antarmuka pengguna dapat dikatagorikan
- sebagai kutu-kutu yang serius dan perlu diatasi.
+ Bagi Tim \SpecialChar LyX
+, permasalahan dengan antarmuka pengguna dapat dikatagorikan sebagai
+ kutu-kutu yang serius dan perlu diatasi.
  
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  mempunyai sistem pelacak kutu di 
 \family typewriter
 
@@ -2371,7 +2370,7 @@ type "mailto:"
 \end_inset
 
 .
- Arsipnya akan ditautkan ke halaman web \SpecialCharNoPassThru LyX
+ Arsipnya akan ditautkan ke halaman web \SpecialChar LyX
 , 
 \family typewriter
 
@@ -2391,23 +2390,23 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-Laporan kutu program hendaknya dilengkapi dengan versi \SpecialCharNoPassThru LyX
- yang digunakan
- ketika menemui masalah.
+Laporan kutu program hendaknya dilengkapi dengan versi \SpecialChar LyX
+ yang digunakan ketika
+ menemui masalah.
  Laporan yang akurat serta terperinci dengan penjelasan akan sangat membantu
  agar mempercepat menemukan dan membersihkan dari kutu program.
  Waktu dari para pemrogram untuk mengatasi kutu program akan mengurangi
- waktu mereka untuk pengembangan lain di \SpecialCharNoPassThru LyX
+ waktu mereka untuk pengembangan lain di \SpecialChar LyX
 .
  Anda juga perlu memberikan informasi sistem operasi dan versi yang digunakan
- menjalankan \SpecialCharNoPassThru LyX
+ menjalankan \SpecialChar LyX
 .
  Apabila memungkinkan, berikan juga daftar versi 
 \emph on
 library
 \emph default
  yang diinstall dalam sistem operasi anda, juga program eksternal yang digunakan
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  ketika menemui masalah.
  Apabila permasalahan terkait dengan kompilasi dan konfigurasi, sebutkan
  nama kompiler yang dipakai.
@@ -2423,11 +2422,11 @@ Peran serta mengatasi masalah dan pengembangan baru
 \end_layout
 
 \begin_layout Standard
-Apabila anda melakukan perubahan di sumber program \SpecialCharNoPassThru LyX
- dan menurut anda
- seharusnya menjadi bagian sumber program \SpecialCharNoPassThru LyX
-, silakan kirim perubahan dalam
- berkas diff (
+Apabila anda melakukan perubahan di sumber program \SpecialChar LyX
+ dan menurut anda seharusnya
+ menjadi bagian sumber program \SpecialChar LyX
+, silakan kirim perubahan dalam berkas diff
+ (
 \emph on
 unified format
 \emph default
@@ -2440,12 +2439,12 @@ Peran Serta Membuat Buku Petunjuk
 \end_layout
 
 \begin_layout Standard
-Dokumentasi buku petunjuk yang dimiliki \SpecialCharNoPassThru LyX
+Dokumentasi buku petunjuk yang dimiliki \SpecialChar LyX
  sudah sangat lengkap.
- Namun demikian, karena pengembangan \SpecialCharNoPassThru LyX
+ Namun demikian, karena pengembangan \SpecialChar LyX
  terus-menerus dilakukan, dan setiap
  rilis baru pasti mempunyai fitur baru, dokumentasi buku petunjuk perlu
- disesuaikan setiap saat mengikuti perkembangan \SpecialCharNoPassThru LyX
+ disesuaikan setiap saat mengikuti perkembangan \SpecialChar LyX
 .
  Pada bab ini dijelaskan apakah yang perlu anda lakukan ketika menemui kesalahan
  di buku petunjuk, atau saran perbaikan buku petunjuk.
@@ -2474,14 +2473,14 @@ Bergabung dengan Tim Dokumentasi
 \end_layout
 
 \begin_layout Standard
-Pekerjaan Tim Dokumentasi, seperti pekerjaan lainnya di \SpecialCharNoPassThru LyX
-, akan selalu
- memerlukan bantuan! Apabila anda ingin berperan serta aktif dan ingin andil
- dalam Tim Dokumentasi, anda perlu mengikuti langkah-langkah sebagai berikut:
+Pekerjaan Tim Dokumentasi, seperti pekerjaan lainnya di \SpecialChar LyX
+, akan selalu memerlukan
+ bantuan! Apabila anda ingin berperan serta aktif dan ingin andil dalam
+ Tim Dokumentasi, anda perlu mengikuti langkah-langkah sebagai berikut:
 \end_layout
 
 \begin_layout Enumerate
-Muat turun dokumentasi terkini dari \SpecialCharNoPassThru LyX
+Muat turun dokumentasi terkini dari \SpecialChar LyX
  dari
 \begin_inset Newline newline
 \end_inset
@@ -2553,7 +2552,7 @@ Perubahan yang anda usulkan mungkin berupa perubahan untuk meningkat-kan
  kejelasan yang sudah ada, atau bisa berupa perombakan besar dan pengaturan
  ulang dari buku petunjuk sebelumnya.
  Pada dasarnya semua perbaikan akan kami terima dengan terbuka agar lebih
- bermanfaat bagi masyarakat pemakai \SpecialCharNoPassThru LyX
+ bermanfaat bagi masyarakat pemakai \SpecialChar LyX
 .
 \end_layout
 

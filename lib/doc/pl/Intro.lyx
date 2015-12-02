@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/pl/
+\origin unavailable
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!! 
@@ -13,14 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
@@ -38,9 +30,9 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -113,7 +105,7 @@
 \begin_body
 
 \begin_layout Title
-Wprowadzenie do \SpecialCharNoPassThru LyX
+Wprowadzenie do \SpecialChar LyX
 -a
 \begin_inset Newline newline
 \end_inset
@@ -126,7 +118,7 @@ Do czego służą te pliki doc!
 \end_layout
 
 \begin_layout Author
-by the \SpecialCharNoPassThru LyX
+by the \SpecialChar LyX
  Team
 \begin_inset Newline newline
 \end_inset
@@ -148,14 +140,14 @@ Nawigacja po dokumentacji
 \end_layout
 
 \begin_layout Standard
-Witaj w \SpecialCharNoPassThru LyX
+Witaj w \SpecialChar LyX
 -ie!
 \end_layout
 
 \begin_layout Standard
-Aby ułatwić wyszukiwanie informacji i opisać wszystkie możliwości \SpecialCharNoPassThru LyX
--a,
- dokumentacja została rozdzielona na kilka różnych plików.
+Aby ułatwić wyszukiwanie informacji i opisać wszystkie możliwości \SpecialChar LyX
+-a, dokumentac
+ja została rozdzielona na kilka różnych plików.
  Każdy z nich służy innemu celowi, który opisano poniżej.
  Zanim zaczniesz brnąć przez któryś z tych plików, przeczytaj najpierw dokładnie
  niniejszy dokument, który zawiera mnóstwo pożytecznych informacji i komentarzy.
@@ -194,7 +186,7 @@ Dokumentacja, jako całość, jest w tej chwili niekompletna! Podobnie jak
 
 \begin_layout Standard
 Prosimy także o pomoc - jeśli coś w podręcznikach jest niejasne, dezorientujące
- lub nieprawidłowe, nie wahajcie się dać nam znać! \SpecialCharNoPassThru LyX
+ lub nieprawidłowe, nie wahajcie się dać nam znać! \SpecialChar LyX
  Team jest osiągalny
  przez listę dyskusyjną programistów pod adresem 
 \begin_inset CommandInset href
@@ -211,7 +203,7 @@ type "mailto:"
 
 
 \family typewriter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  Docs
 \family default
 
@@ -228,7 +220,7 @@ Format podręczników
 
 \begin_layout Standard
 Część użytkowników mogła już wydrukować podręcznik.
- Inni mogą czytać go w komputerze, jako plik \SpecialCharNoPassThru LyX
+ Inni mogą czytać go w komputerze, jako plik \SpecialChar LyX
 -a.
  Istnieją pewne różnice między wersją drukowaną i elektroniczną.
  Po pierwsze tytuł w pliku jest po prostu na początku dokumentu, a nie na
@@ -275,10 +267,10 @@ Wyróżnienia
 \family typewriter
 Czcionka maszynowa
 \family default
- stosowana jest do zapisu programów i nazw plików, kodu \SpecialCharNoPassThru LaTeX
--a, kodu \SpecialCharNoPassThru LyX
--a
- i jego funkcji.
+ stosowana jest do zapisu programów i nazw plików, kodu \SpecialChar LaTeX
+-a, kodu \SpecialChar LyX
+-a i jego
+ funkcji.
 \end_layout
 
 \begin_layout Itemize
@@ -620,7 +612,7 @@ i Enter
 \family default
  odnoszą się do tego samego klawisza.
  Na niektórych klawiaturach Return nazywa się Enter, na innych Return, są
- i takie posiadające dwa takie klawisze, ale \SpecialCharNoPassThru LyX
+ i takie posiadające dwa takie klawisze, ale \SpecialChar LyX
  traktuje je wszystkie jednakowo
  i w dokumentacji Return i Enter używane są zamiennie
 \end_layout
@@ -692,10 +684,10 @@ Elementarz
 \begin_inset Newline newline
 \end_inset
 
-Dla nowych użytkowników \SpecialCharNoPassThru LyX
--a, którzy nigdy nie używali \SpecialCharNoPassThru LaTeX
--a, ani nawet
- o nim nie słyszeli.
+Dla nowych użytkowników \SpecialChar LyX
+-a, którzy nigdy nie używali \SpecialChar LaTeX
+-a, ani nawet o nim
+ nie słyszeli.
 \end_layout
 
 \begin_layout Description
@@ -719,18 +711,18 @@ zrobić
 \begin_inset Newline newline
 \end_inset
 
-To zbiór często zadawanych pytań (i odpowiedzi: FAQ) na temat obsługi \SpecialCharNoPassThru LyX
+To zbiór często zadawanych pytań (i odpowiedzi: FAQ) na temat obsługi \SpecialChar LyX
 -a
  [a w każdym razie kiedyś takim ma być].
  Maszyny do pisania i zwykłe edytory oferują szereg wspólnych funkcji, znanych
  wielu użytkownikom.
- Nie wszystkie z nich są dostępne w \SpecialCharNoPassThru LyX
+ Nie wszystkie z nich są dostępne w \SpecialChar LyX
 -ie, albo nie mają sensu w środowisku
- \SpecialCharNoPassThru LyX
--a i \SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+-a i \SpecialChar LaTeX
 -a.
  Plik ten próbuje wyjaśnić w formie pytań i odpowiedzi, jak posługiwać się
- odpowiednimi operacjami w \SpecialCharNoPassThru LyX
+ odpowiednimi operacjami w \SpecialChar LyX
 -ie.
  Czasami będzie odwoływał się do głównego podręcznika.
 \end_layout
@@ -760,11 +752,11 @@ użytkownika
 
 Podstawowa dokumentacja.
  Spróbowaliśmy zawrzeć w nim większość zasadniczych operacji i dostępnych
- funkcji \SpecialCharNoPassThru LyX
+ funkcji \SpecialChar LyX
 -a.
- Główny podręcznik zakłada przynajmniej częściową znajomość \SpecialCharNoPassThru LaTeX
--a lub
- przeczytanie 
+ Główny podręcznik zakłada przynajmniej częściową znajomość \SpecialChar LaTeX
+-a lub przeczytanie
+ 
 \emph on
 Elementarza
 \emph default
@@ -794,7 +786,7 @@ Podręcznika użytkownika
 \emph default
 .
  Dokumentuje dodatkowe układy i funkcje edycyjne specjalnego zastosowania,
- włącznie z kilkoma sztuczkami z repertuaru mistrzów \SpecialCharNoPassThru LaTeX
+ włącznie z kilkoma sztuczkami z repertuaru mistrzów \SpecialChar LaTeX
 -a.
 \end_layout
 
@@ -811,7 +803,7 @@ Przystosowywanie
 \begin_inset Newline newline
 \end_inset
 
-Opis zaawansowanych cech \SpecialCharNoPassThru LyX
+Opis zaawansowanych cech \SpecialChar LyX
 -a, wraz z przystosowywaniem zachowania programu:
  skróty klawiszowe, internacjonalizacja i pliki konfiguracyjne.
 \end_layout
@@ -833,9 +825,9 @@ poleceń
 
 
 \emph default
-Zawiera wyczerpujący, szczegółowy opis funkcji \SpecialCharNoPassThru LyX
--a, ale bez wskazówek
- i przykładów jak w 
+Zawiera wyczerpujący, szczegółowy opis funkcji \SpecialChar LyX
+-a, ale bez wskazówek i przykładó
+w jak w 
 \emph on
 Podręczniku użytkownika
 \emph default
@@ -860,9 +852,9 @@ usterki
 \begin_inset Newline newline
 \end_inset
 
-Plik ten zawiera opis znanych usterek \SpecialCharNoPassThru LyX
--a oraz informację, co zrobić w
- razie znalezienia błędu w \SpecialCharNoPassThru LyX
+Plik ten zawiera opis znanych usterek \SpecialChar LyX
+-a oraz informację, co zrobić w razie
+ znalezienia błędu w \SpecialChar LyX
 -ie\SpecialChar endofsentence
 
 \end_layout
@@ -874,7 +866,7 @@ Konfiguracja
 \begin_inset space ~
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 -a 
 \begin_inset space ~
 \end_inset
@@ -885,7 +877,7 @@ Konfiguracja
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  w trakcie instalacji robi przegląd systemu, a uzyskaną informację zapisuje
  w tym pliku.
  Przejrzyj go i sprawdź czy nie brakuje czegoś potrzebnego.
@@ -918,7 +910,7 @@ W tym miejscu ponownie zamieścimy istotne stwierdzenie:
 
 \begin_layout Standard
 \align center
-Jeśli nigdy przedtem nie używałeś, ani nawet nie słyszałeś o \SpecialCharNoPassThru LaTeX
+Jeśli nigdy przedtem nie używałeś, ani nawet nie słyszałeś o \SpecialChar LaTeX
 -u, przeczytaj
  
 \emph on
@@ -936,7 +928,7 @@ Elementarz
 \end_layout
 
 \begin_layout Standard
-W przeciwnym razie \SpecialCharNoPassThru LyX
+W przeciwnym razie \SpecialChar LyX
  wyda Ci się dziwaczny i nieużyteczny.
 \end_layout
 
@@ -987,7 +979,7 @@ Nigdy nie zmieniaj zawartości żadnego z podręczników bez zgody aktualnego
 \begin_layout Standard
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  has a bug tracking system, which you can find at
 \lang polish
  
@@ -1018,11 +1010,11 @@ Pierwsze kroki
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LyX
- Documentation Project, tak jak inne elementy projektu \SpecialCharNoPassThru LyX
-, chętnie
- skorzysta z pomocy! Jeśli jesteś zainteresowany(a) wsparciem wysiłku dokumentow
-ania \SpecialCharNoPassThru LyX
+The \SpecialChar LyX
+ Documentation Project, tak jak inne elementy projektu \SpecialChar LyX
+, chętnie skorzysta
+ z pomocy! Jeśli jesteś zainteresowany(a) wsparciem wysiłku dokumentowania
+ \SpecialChar LyX
 -a, musisz 
 \emph on
 najpierw
@@ -1033,7 +1025,7 @@ wykonać następujące czynności:
 \end_layout
 
 \begin_layout Enumerate
-Ściągnij najnowszy kod źródłowy \SpecialCharNoPassThru LyX
+Ściągnij najnowszy kod źródłowy \SpecialChar LyX
 -a.
  Rozpakuj go.
  W głównym drzewie znajdziesz kartotekę nazwaną 
@@ -1053,6 +1045,7 @@ Podręcznik użytkownika
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1071,6 +1064,7 @@ Podręcznik użytkownika
 Na koniec, skontaktuj się z zespołem pod adresem: 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 

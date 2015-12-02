@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -13,14 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
@@ -38,9 +30,9 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -113,11 +105,12 @@
 \begin_body
 
 \begin_layout Title
-Introduction to \SpecialCharNoPassThru LyX
+Introduction to \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
-by the \SpecialCharNoPassThru LyX
+by the \SpecialChar LyX
  Team
 \begin_inset Foot
 status collapsed
@@ -125,7 +118,7 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 If you have comments on or corrections to this documentation, please send
- them to the \SpecialCharNoPassThru LyX
+ them to the \SpecialChar LyX
  Documentation mailing list: 
 \begin_inset CommandInset href
 LatexCommand href
@@ -152,16 +145,17 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-The Philosophy of \SpecialCharNoPassThru LyX
+The Philosophy of \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsection
-What is \SpecialCharNoPassThru LyX
+What is \SpecialChar LyX
 ?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is a document preparation system.
  It excels at letting you create complex technical and scientific articles
  with mathematics, cross-references, bibliographies, indexes, etc.
@@ -181,7 +175,7 @@ nts (we'll explain why later), though with some effort all these can be
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is a program that provides a modern approach to writing documents with
  a computer by using a markup language paradigm, an approach that breaks
  with the obsolete tradition of the 
@@ -196,12 +190,12 @@ typewriter concept
  It is designed for authors who want professional output quickly with a
  minimum of effort and without becoming specialists in typesetting.
  The job of typesetting is done mostly by the computer, not the author;
- with \SpecialCharNoPassThru LyX
+ with \SpecialChar LyX
 , the author can concentrate on the contents of his writing.
 \end_layout
 
 \begin_layout Standard
-Part of the initial challenge of using \SpecialCharNoPassThru LyX
+Part of the initial challenge of using \SpecialChar LyX
  comes from the change in thinking
  that you, the user, must make.
  At one time, all we had for creating documents were typewriters, so we
@@ -251,15 +245,15 @@ What You See Is All You Get
 \end_layout
 
 \begin_layout Standard
-This is where \SpecialCharNoPassThru LyX
+This is where \SpecialChar LyX
  differs from an ordinary word processor.
  You don't concern yourself with what character goes where.
- You tell \SpecialCharNoPassThru LyX
+ You tell \SpecialChar LyX
  
 \emph on
 what you're doing
 \emph default
- and \SpecialCharNoPassThru LyX
+ and \SpecialChar LyX
  takes care of the rest, following a set of rules called a 
 \emph on
 style
@@ -317,7 +311,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-In \SpecialCharNoPassThru LyX
+In \SpecialChar LyX
 , you go to the pull-down on the far left of the button bar and select
  
 \family sans
@@ -339,9 +333,9 @@ Yes, that's all.
  If you cut and paste the section, it will automatically be renumbered —
  everywhere.
  And if you enter references to that section correctly (by inserting cross-refer
-ence tags), \SpecialCharNoPassThru LyX
- will automatically update them all throughout the file so
- that you never, ever type a section number.
+ence tags), \SpecialChar LyX
+ will automatically update them all throughout the file so that
+ you never, ever type a section number.
 \end_layout
 
 \begin_layout Standard
@@ -368,7 +362,7 @@ pt, so you type in the heading for Section
 \end_inset
 
 1.
- That problem doesn't even exist in \SpecialCharNoPassThru LyX
+ That problem doesn't even exist in \SpecialChar LyX
 .
  The computer takes care of all that silly bookkeeping about which thing
  has what size font, not you.
@@ -382,13 +376,13 @@ Here's another example.
  You need to figure out where to put the label for each list item, what
  that label should be, how many blank lines to put between each item, and
  so on.
- Under \SpecialCharNoPassThru LyX
+ Under \SpecialChar LyX
 , you have only two concerns: what kind of list is this, and what
  do I want to put in it? That is it.
 \end_layout
 
 \begin_layout Standard
-So, the basic idea behind \SpecialCharNoPassThru LyX
+So, the basic idea behind \SpecialChar LyX
  is: specify 
 \emph on
 what
@@ -406,7 +400,7 @@ What You See Is What You Get,
 \begin_inset Quotes erd
 \end_inset
 
- the \SpecialCharNoPassThru LyX
+ the \SpecialChar LyX
  model is 
 \begin_inset Quotes eld
 \end_inset
@@ -428,7 +422,7 @@ WYSIWYM.
 \end_inset
 
  It's a powerful idea that greatly simplifies the mechanics of writing documents.
- This is also why \SpecialCharNoPassThru LyX
+ This is also why \SpecialChar LyX
  isn't so good for creating posters and flyers.
  In this case, you 
 \emph on
@@ -436,14 +430,14 @@ do
 \emph default
  want to specify exactly where everything goes, because there are no functional
  units like paragraphs, sections, etc.
- This doesn't mean \SpecialCharNoPassThru LyX
+ This doesn't mean \SpecialChar LyX
  is missing some cool function.
  It simply means that it isn't the right tool for the job — you don't use
  a screwdriver to drive in nails.
 \end_layout
 
 \begin_layout Subsection
-Differences between \SpecialCharNoPassThru LyX
+Differences between \SpecialChar LyX
  and Other Word Processors
 \begin_inset Argument 1
 status collapsed
@@ -461,14 +455,14 @@ texorpdfstring{
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{\SpecialCharNoPassThru LyX
-}
+}{LyX}
 \end_layout
 
 \end_inset
@@ -482,7 +476,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Here's a list of things you won't find in \SpecialCharNoPassThru LyX
+Here's a list of things you won't find in \SpecialChar LyX
 :
 \end_layout
 
@@ -516,18 +510,17 @@ Space
 
 \begin_layout Standard
 Tab stops, along with a ruler showing you the position of things on the
- page, are useless in \SpecialCharNoPassThru LyX
+ page, are useless in \SpecialChar LyX
 .
  The program worries about where things go on the page, not you.
- Extra whitespace is similar; \SpecialCharNoPassThru LyX
- adds it where necessary, depending on
- context.
+ Extra whitespace is similar; \SpecialChar LyX
+ adds it where necessary, depending on context.
  Not being able to type two blank lines in a row will be annoying at first,
  but it makes more sense once you're thinking in WYSIWYM terms.
 \end_layout
 
 \begin_layout Standard
-Here are some things that exist in \SpecialCharNoPassThru LyX
+Here are some things that exist in \SpecialChar LyX
 , but aren't used as you might think:
 \end_layout
 
@@ -564,9 +557,9 @@ Typefaces (bold, italic, underline, etc.)
 \end_layout
 
 \begin_layout Standard
-Although they exist in \SpecialCharNoPassThru LyX
+Although they exist in \SpecialChar LyX
 , you generally don't need them.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  will take care of these things for you, depending on what you're doing.
  Different parts of the document are automatically set in a different typeface
  and font size.
@@ -574,16 +567,15 @@ Although they exist in \SpecialCharNoPassThru LyX
  get indented differently.
  Page breaks get handled automatically, as well.
  In general, the space between lines, between words, and between paragraphs
- is variable, set by \SpecialCharNoPassThru LyX
+ is variable, set by \SpecialChar LyX
 .
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 There are ways to adjust all of these (only some of which require knowledge
- of \SpecialCharNoPassThru LaTeX
-), either for a whole document or for a specific location in a
- document.
+ of \SpecialChar LaTeX
+), either for a whole document or for a specific location in a document.
  See the 
 \emph on
 User's Guide
@@ -601,10 +593,10 @@ Additional Features
 \end_layout
 
 \begin_layout Standard
-Lastly, there are a few areas where we believe \SpecialCharNoPassThru LyX
- (and \SpecialCharNoPassThru LaTeX
-) surpasses
- many word processors:
+Lastly, there are a few areas where we believe \SpecialChar LyX
+ (and \SpecialChar LaTeX
+) surpasses many word
+ processors:
 \end_layout
 
 \begin_layout Itemize
@@ -631,11 +623,11 @@ Cross-referencing
 Granted, many modern word processors can handle mathematical symbols, tables,
  and hyphenation, and many have moved towards style definitions and the
  WYSIWYM concept.
- However, they've only recently been able to do so, whereas \SpecialCharNoPassThru LyX
- is built
- upon the \SpecialCharNoPassThru LaTeX
+ However, they've only recently been able to do so, whereas \SpecialChar LyX
+ is built upon
+ the \SpecialChar LaTeX
  document preparation system.
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  has been around since 1985, and 
 \emph on
 works
@@ -644,12 +636,12 @@ works
 \end_layout
 
 \begin_layout Subsection
-What is \SpecialCharNoPassThru LaTeX
+What is \SpecialChar LaTeX
 ?
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  is a document preparation system designed by Leslie Lamport in 1985.
 \begin_inset Foot
 status collapsed
@@ -657,7 +649,8 @@ status collapsed
 \begin_layout Plain Layout
 The source for the info in this section is 
 \emph on
-A Guide to \SpecialCharNoPassThru LaTeX2e
+A Guide to \SpecialChar LaTeX2e
+
 \emph default
 , by Helmut Kopka and Patrick Daly, which has an entry in the bibliography
  of the 
@@ -670,12 +663,12 @@ User's Guide
 
 \end_inset
 
- It was built up from a typesetting language called \SpecialCharNoPassThru TeX
+ It was built up from a typesetting language called \SpecialChar TeX
 , created by Donald
  Knuth in 1984.
- \SpecialCharNoPassThru TeX
- takes a sequence of typesetting commands, written in a script in an
- ASCII file, and executes them.
+ \SpecialChar TeX
+ takes a sequence of typesetting commands, written in a script in an ASCII
+ file, and executes them.
  Many of the 
 \begin_inset Quotes eld
 \end_inset
@@ -685,9 +678,9 @@ tricks
 \end_inset
 
  of the printing trade were modeled by Knuth as computer algorithms and
- incorporated into \SpecialCharNoPassThru TeX
+ incorporated into \SpecialChar TeX
 , hence its excellent printed appearance.
- What comes directly out of \SpecialCharNoPassThru TeX
+ What comes directly out of \SpecialChar TeX
  is the portable document format 
 \emph on
 pdf
@@ -711,54 +704,54 @@ dvi
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  isn't only a typesetting engine; it also allows you to define macros.
- Most people who use \SpecialCharNoPassThru TeX
- are actually using a macro package which Knuth
- created to hide a lot of the typesetting details.
+ Most people who use \SpecialChar TeX
+ are actually using a macro package which Knuth created
+ to hide a lot of the typesetting details.
  This is where Leslie Lamport enters our story.
  He wanted a macro package that was more user- and less typesetter-oriented,
  with a set of commands that consistently typeset things like sections,
  tables or math formulas in a uniform, consistent fashion.
- This is how \SpecialCharNoPassThru LaTeX
+ This is how \SpecialChar LaTeX
  was born.
 \end_layout
 
 \begin_layout Standard
-Now, in parallel with the development and growth of \SpecialCharNoPassThru LaTeX
-, other folks were
- creating their own custom macro packages for \SpecialCharNoPassThru TeX
-, ones to make slides or
- articles for math journals and so on.
- Some used the raw \SpecialCharNoPassThru TeX
- facilities to do this, others began modifying \SpecialCharNoPassThru LaTeX
+Now, in parallel with the development and growth of \SpecialChar LaTeX
+, other folks were creating
+ their own custom macro packages for \SpecialChar TeX
+, ones to make slides or articles for
+ math journals and so on.
+ Some used the raw \SpecialChar TeX
+ facilities to do this, others began modifying \SpecialChar LaTeX
 .
- To try and unify this mess, a team of \SpecialCharNoPassThru LaTeX
--nicians began to work on \SpecialCharNoPassThru LaTeX2e
-,
- the current version of \SpecialCharNoPassThru LaTeX
+ To try and unify this mess, a team of \SpecialChar LaTeX
+-nicians began to work on \SpecialChar LaTeX2e
+, the current
+ version of \SpecialChar LaTeX
 , during the late 1980's.
- This new version of \SpecialCharNoPassThru LaTeX
+ This new version of \SpecialChar LaTeX
  has commands which provide an easier-to-use interface
- to \SpecialCharNoPassThru TeX
+ to \SpecialChar TeX
 's macro-creating commands, aid in the use of new fonts, and so on.
- In fact, \SpecialCharNoPassThru LaTeX
+ In fact, \SpecialChar LaTeX
  is quite an extensive language in its own right! Users around
- the world have been creating their own add-ons for \SpecialCharNoPassThru LaTeX
+ the world have been creating their own add-ons for \SpecialChar LaTeX
  beyond the standard
  ones.
 \end_layout
 
 \begin_layout Standard
-There are two ways to extend \SpecialCharNoPassThru LaTeX
+There are two ways to extend \SpecialChar LaTeX
 : classes and styles.
  A 
 \emph on
 class
 \emph default
- is a set of \SpecialCharNoPassThru LaTeX
- macros describing a new type of document, like a book,
- or an article.
+ is a set of \SpecialChar LaTeX
+ macros describing a new type of document, like a book, or
+ an article.
  There are classes for slides, for physics and math journals\SpecialChar ldots
  many universities
  even have a class for their thesis format.
@@ -772,9 +765,9 @@ style
 behavior
 \emph default
  that any document can use.
- For example, \SpecialCharNoPassThru LyX
+ For example, \SpecialChar LyX
  controls page margins and line spacing using two different
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  style-files designed for these purposes.
  There are style-files for a whole slew of things: printing labels or envelopes,
  changing indentation behavior, adding new fonts, manipulating graphics,
@@ -788,41 +781,41 @@ Here is a summary:
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 : Typesetting language with macro capability.
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru LaTeX
-: Macro package built upon \SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+: Macro package built upon \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-classes: Descriptions of types of document used with \SpecialCharNoPassThru LaTeX
+classes: Descriptions of types of document used with \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Description
-styles: Descriptions of the default behavior of particular elements of \SpecialCharNoPassThru LaTeX
+styles: Descriptions of the default behavior of particular elements of \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru LyX
-: Visual, WYSIWYM document processor that uses \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+: Visual, WYSIWYM document processor that uses \SpecialChar LaTeX
  to do its typesetting.
 \end_layout
 
 \begin_layout Standard
-This section attempts to explain the difference between \SpecialCharNoPassThru LyX
+This section attempts to explain the difference between \SpecialChar LyX
  and a word processor.
- Simply put, \SpecialCharNoPassThru LaTeX
+ Simply put, \SpecialChar LaTeX
  is the difference.
- By using \SpecialCharNoPassThru LaTeX
- as its backend, \SpecialCharNoPassThru LyX
+ By using \SpecialChar LaTeX
+ as its backend, \SpecialChar LyX
  helps you to think more about
 \emph on
  what
@@ -845,7 +838,7 @@ Navigating the Documentation
 
 \begin_layout Standard
 To make it easier to answer your questions and describe all of the features
- of \SpecialCharNoPassThru LyX
+ of \SpecialChar LyX
 , the documentation has been split up into several different files.
  Each one has its own purpose, as described below.
  Before you go ploughing into any of those files, however, you should read
@@ -854,12 +847,12 @@ To make it easier to answer your questions and describe all of the features
 \end_layout
 
 \begin_layout Standard
-Hopefully, the development of \SpecialCharNoPassThru LyX
+Hopefully, the development of \SpecialChar LyX
  will never stop; so some of the documentation
  may be incomplete or a bit out of date, though we try to keep up-to-date.
- Like the rest of \SpecialCharNoPassThru LyX
-, the manuals are the work of a group of volunteers
- who have 
+ Like the rest of \SpecialChar LyX
+, the manuals are the work of a group of volunteers who
+ have 
 \begin_inset Quotes eld
 \end_inset
 
@@ -917,13 +910,13 @@ The Format of the Manuals
 
 \begin_layout Standard
 Some of you may have printed out the manuals.
- Others may be reading them within \SpecialCharNoPassThru LyX
+ Others may be reading them within \SpecialChar LyX
 .
- There are some differences between the \SpecialCharNoPassThru LyX
+ There are some differences between the \SpecialChar LyX
 -file and the printed version.
- In \SpecialCharNoPassThru LyX
-, the title is simply at the top of the document, not formatted on
- a separate page as in some of the printed versions.
+ In \SpecialChar LyX
+, the title is simply at the top of the document, not formatted on a
+ separate page as in some of the printed versions.
  Nor are any of the footnotes or the Table of Contents fully visible.
  To open a footnote, which looks like this: 
 \begin_inset Graphics
@@ -945,7 +938,7 @@ Navigate
 \begin_layout Standard
 In the printed manuals, all cross-references appear as the actual numbers
  for a chapter, section, subsection, and so on.
- In the \SpecialCharNoPassThru LyX
+ In the \SpecialChar LyX
 -file, however, all cross-references appear as light-grey boxes
  like the following: 
 \begin_inset Graphics
@@ -985,7 +978,7 @@ Back
 
 \begin_layout Standard
 Now that we've cleared up some of the differences between the printed and
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
 -file versions of this file, we can start looking at the format of this
  document.
  You'll occasionally notice things in different fonts:
@@ -1005,7 +998,7 @@ Emphasized Style
 \family typewriter
 Typewriter
 \family default
- is used for program and file names, \SpecialCharNoPassThru LyX
+ is used for program and file names, \SpecialChar LyX
  code and functions.
 \end_layout
 
@@ -1031,7 +1024,7 @@ Noun Style
 \series bold
 Bold
 \series default
- is used for \SpecialCharNoPassThru LaTeX
+ is used for \SpecialChar LaTeX
  code
 \end_layout
 
@@ -1349,7 +1342,7 @@ Enter,
 \end_inset
 
  still others have two keys.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  treats all of them as the same key, so we'll use 
 \family sans
 Return
@@ -1389,7 +1382,7 @@ reference "tab:Units"
 
 \end_inset
 
- explains all units available in \SpecialCharNoPassThru LyX
+ explains all units available in \SpecialChar LyX
 .
 \end_layout
 
@@ -1428,7 +1421,7 @@ Units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -1937,11 +1930,11 @@ Introduction This file.
 \end_layout
 
 \begin_layout Description
-Tutorial If you are new to \SpecialCharNoPassThru LyX
-, and have never used \SpecialCharNoPassThru LaTeX
- before, you should
- start here.
- If you have used \SpecialCharNoPassThru LaTeX
+Tutorial If you are new to \SpecialChar LyX
+, and have never used \SpecialChar LaTeX
+ before, you should start
+ here.
+ If you have used \SpecialChar LaTeX
  before, you should still read the 
 \emph on
 Tutorial
@@ -1950,8 +1943,8 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
- for \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ for \SpecialChar LaTeX
  users.
 \begin_inset Quotes erd
 \end_inset
@@ -1969,7 +1962,7 @@ Guide The primary documentation.
 \emph on
 most
 \emph default
- of the basic operation and available features of \SpecialCharNoPassThru LyX
+ of the basic operation and available features of \SpecialChar LyX
  here.
  The main manual assumes that you have read the 
 \emph on
@@ -1990,7 +1983,7 @@ User's Guide
 .
  Documents in detail how to use tables, graphics, floats, notes, program
  listings and boxes.
- It also includes many tricks of the \SpecialCharNoPassThru LaTeX
+ It also includes many tricks of the \SpecialChar LaTeX
  masters.
 \end_layout
 
@@ -2013,37 +2006,38 @@ Features Extension of the
 User's Guide
 \emph default
 .
- Documents how to use raw \SpecialCharNoPassThru LaTeX
+ Documents how to use raw \SpecialChar LaTeX
  commands, additional layouts and special-purpose
  editing features.
 \end_layout
 
 \begin_layout Description
-Customization A description of advanced \SpecialCharNoPassThru LyX
+Customization A description of advanced \SpecialChar LyX
  features, including how to customize
- the overall behavior of \SpecialCharNoPassThru LyX
+ the overall behavior of \SpecialChar LyX
 \SpecialChar endofsentence
- This includes such things as keybindings, internati
-onalization and configuration files.
+ This includes such things as keybindings, internationa
+lization and configuration files.
  It also includes information about layout files, which are needed to get
- \SpecialCharNoPassThru LyX
- to support \SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+ to support \SpecialChar LaTeX
  classes or packages.
 \end_layout
 
 \begin_layout Description
-Shortcuts Tables of the currently defined \SpecialCharNoPassThru LyX
+Shortcuts Tables of the currently defined \SpecialChar LyX
  shortcuts.
 \end_layout
 
 \begin_layout Description
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
-Configuration A report produced by \SpecialCharNoPassThru LyX
+Configuration A report produced by \SpecialChar LyX
  about your system.
- This file contains information on what \SpecialCharNoPassThru LyX
+ This file contains information on what \SpecialChar LyX
  learned about your installation.
  Check it to see if you're missing something you might like to have.
 \end_layout
@@ -2079,7 +2073,7 @@ We'll state again an important point:
 
 \begin_layout Standard
 \align center
-If you are new to \SpecialCharNoPassThru LyX
+If you are new to \SpecialChar LyX
 , read the 
 \emph on
 Tutorial
@@ -2101,7 +2095,7 @@ Otherwise, you could needlessly frustrate yourself.
 \end_layout
 
 \begin_layout Section
-Contributing to the \SpecialCharNoPassThru LyX
+Contributing to the \SpecialChar LyX
  Project
 \begin_inset CommandInset label
 LatexCommand label
@@ -2113,12 +2107,13 @@ name "sec:Contrib"
 \end_layout
 
 \begin_layout Subsection
-Contributing to \SpecialCharNoPassThru LyX
+Contributing to \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- is mostly written in C++ (the \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ is mostly written in C++ (the \SpecialChar LaTeX
  importer is written in Python).
  It is a large project, and as a result it is not free from bugs, or the
  need for improvements in the source code.
@@ -2129,18 +2124,18 @@ Reporting a bug
 \end_layout
 
 \begin_layout Standard
-While using \SpecialCharNoPassThru LyX
+While using \SpecialChar LyX
 , you may find behavior which you consider a bug.
  Crashes, though rare, can happen.
- User interface problems are considered major bugs by the \SpecialCharNoPassThru LyX
+ User interface problems are considered major bugs by the \SpecialChar LyX
  team: especially
- helpful are indications of parts of the \SpecialCharNoPassThru LyX
+ helpful are indications of parts of the \SpecialChar LyX
  interface you find confusing,
  or unclear.
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  has a bug tracking system, which you can find at 
 \family typewriter
 
@@ -2170,7 +2165,7 @@ type "mailto:"
 \end_inset
 
 .
- Archives of this list are linked from the main \SpecialCharNoPassThru LyX
+ Archives of this list are linked from the main \SpecialChar LyX
  website, 
 \family typewriter
 
@@ -2190,16 +2185,16 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-A useful bug report will at a minimum include the version of \SpecialCharNoPassThru LyX
- you are
- having the problem with.
+A useful bug report will at a minimum include the version of \SpecialChar LyX
+ you are having
+ the problem with.
  Accurate, detailed descriptions are preferred - the more time developers
  have to spend to pinpoint the source of a bug, the less time they have
  for other improvements.
- Mention the system and system version on which you are running \SpecialCharNoPassThru LyX
+ Mention the system and system version on which you are running \SpecialChar LyX
 .
  Give the versions of the libraries you have installed on your system, and,
- if relevant, the versions of external programs that \SpecialCharNoPassThru LyX
+ if relevant, the versions of external programs that \SpecialChar LyX
  uses.
  If it's a compilation or configuration problem, include the file 
 \family typewriter
@@ -2213,9 +2208,9 @@ Contributing fixes and new features
 \end_layout
 
 \begin_layout Standard
-If you have made changes to \SpecialCharNoPassThru LyX
+If you have made changes to \SpecialChar LyX
 's source that you think should become part
- of \SpecialCharNoPassThru LyX
+ of \SpecialChar LyX
 , send your changes as a diff file (in unified format) to the development
  list referenced above, along with a change log, and a description of what
  your patch does.
@@ -2226,10 +2221,10 @@ Contributing to the Documentation
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-'s documentation is extensive; however \SpecialCharNoPassThru LyX
- is under constant development,
- and each new release adds new features.
+\SpecialChar LyX
+'s documentation is extensive; however \SpecialChar LyX
+ is under constant development, and
+ each new release adds new features.
  You may find some documentation needs improvement.
  This section describes what to do if you find an error, or have some suggestion
 s for improving the documentation.
@@ -2258,15 +2253,15 @@ Joining the Documentation Team.
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LyX
- Documentation Project, like anything else in the \SpecialCharNoPassThru LyX
- project, can
- always use assistance! If you're interested in contributing to the Documentatio
-n Project, you need to do the following:
+The \SpecialChar LyX
+ Documentation Project, like anything else in the \SpecialChar LyX
+ project, can always
+ use assistance! If you're interested in contributing to the Documentation
+ Project, you need to do the following:
 \end_layout
 
 \begin_layout Enumerate
-Get the latest \SpecialCharNoPassThru LyX
+Get the latest \SpecialChar LyX
  source code from 
 \begin_inset Newline newline
 \end_inset
