@@ -103,7 +103,7 @@ function(join rvalues glue routput)
   set(${routput} ${out} PARENT_SCOPE)
 endfunction()
 
-macro(maketestname testname reverted listsuspicious listignored listunreliable listlabels)
+macro(maketestname testname inverted listsuspicious listignored listunreliable listlabels)
   string(REGEX MATCH "\\/[a-z][a-z](_[A-Z][A-Z])?\\/" _v ${${testname}})
   if(_v)
     string(REGEX REPLACE "\\/" "" _v ${_v})
@@ -124,7 +124,7 @@ macro(maketestname testname reverted listsuspicious listignored listunreliable l
     findexpr(foundunreliable ${testname} ${listunreliablex} sublabel2)
     if (foundunreliable)
       set(sublabel "unreliable" ${sublabel} ${sublabel2})
-      list(REMOVE_ITEM sublabel "export" "reverted" "templates" "mathmacros" "manuals" "autotests")
+      list(REMOVE_ITEM sublabel "export" "inverted" "templates" "mathmacros" "manuals" "autotests")
     else()
       string(REGEX MATCH "_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx16|xhtml)$" _v ${${testname}})
       # check if test _may_ be in listsuspicious
@@ -137,15 +137,15 @@ macro(maketestname testname reverted listsuspicious listignored listunreliable l
       if (mfound)
 	set(sublabel3 "")
 	findexpr(foundsuspended ${testname} ${listsuspendedx} sublabel3)
-	set(${reverted} 1)
+	set(${inverted} 1)
 	if (foundsuspended)
 	  set(sublabel "suspended" ${sublabel} ${sublabel2} ${sublabel3})
-	  list(REMOVE_ITEM sublabel "export" "reverted" )
+	  list(REMOVE_ITEM sublabel "export" "inverted" )
 	else()
-	  set(sublabel "reverted" ${sublabel} ${sublabel2} ${sublabel3})
+	  set(sublabel "inverted" ${sublabel} ${sublabel2} ${sublabel3})
 	endif()
       else()
-	set(${reverted} 0)
+	set(${inverted} 0)
       endif()
     endif()
     list(REMOVE_DUPLICATES sublabel)
@@ -238,7 +238,7 @@ macro(assignLabelDepth depth)
 endmacro()
 
 assignLabelDepth(0 "export" "key" "layout" "load" "lyx2lyx" "module" "roundtrip" "url")
-assignLabelDepth(1 "unreliable" "reverted")
+assignLabelDepth(1 "unreliable" "inverted")
 assignLabelDepth(2 "suspended")
 assignLabelDepth(3 "examples" "manuals" "mathmacros" "templates" "autotests")
 
@@ -283,7 +283,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
     set(TestName "export/${libsubfolder}/${f}_lyx16")
     set(mytestlabel ${testlabel})
-    maketestname(TestName reverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+    maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
     if(TestName)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -295,7 +295,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
         -Dformat=lyx16x
         -Dextension=16.lyx
         -Dfile=${f}
-        -Dreverted=${reverted}
+        -Dinverted=${inverted}
         -DTOP_SRC_DIR=${TOP_SRC_DIR}
         -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
         -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
@@ -306,7 +306,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
       # For use of lyx2lyx we need the python executable
       set(mytestlabel ${lyx2lyxtestlabel})
       set(TestName "lyx2lyx/${libsubfolder}/${f}")
-      maketestname(TestName reverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+      maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
         add_test(NAME ${TestName}
           WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -322,7 +322,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
     set(loadtestlabel "load")
     set(mytestlabel ${loadtestlabel})
     set(TestName "check_load/${libsubfolder}/${f}")
-    maketestname(TestName reverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+    maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
     if(TestName)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -349,7 +349,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
           set(TestName "export/${libsubfolder}/${f}_${format}_${fonttype}")
         endif()
         set(mytestlabel ${testlabel})
-        maketestname(TestName reverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+        maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
         if(TestName)
           add_test(NAME ${TestName}
             WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -361,7 +361,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
             -Dfonttype=${fonttype}
             -Dextension=${format}
             -Dfile=${f}
-            -Dreverted=${reverted}
+            -Dinverted=${inverted}
             -DTOP_SRC_DIR=${TOP_SRC_DIR}
             -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")

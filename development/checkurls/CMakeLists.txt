@@ -62,5 +62,5 @@ set_tests_properties(${URL_TEST_NAMES}
 set_tests_properties("check_translators"
         PROPERTIES RESOURCE_LOCK "url.lock")
 
-settestlabel("check_inaccessible_urls" "reverted")
-settestlabel("check_invalid_urls" "reverted")
+settestlabel("check_inaccessible_urls" "inverted")
+settestlabel("check_invalid_urls" "inverted")

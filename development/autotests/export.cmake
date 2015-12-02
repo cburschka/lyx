@@ -21,7 +21,7 @@
 #       -Dfonttype=xxx \
 #       -Dextension=xxx \
 #       -Dfile=xxx \
-#       -Dreverted=[01] \
+#       -Dinverted=[01] \
 #       -DTOP_SRC_DIR=${TOP_SRC_DIR}
 #       -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
@@ -68,7 +68,7 @@ if (NOT _err)
   endif()
 endif()
 
-if(reverted)
+if(inverted)
   string(COMPARE EQUAL  ${_err} 0 _erg)
 else()
   string(COMPARE NOTEQUAL  ${_err} 0 _erg)
