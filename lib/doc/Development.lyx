@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -159,7 +159,7 @@ development
  source code distribution.
  This document is not translated, since the development language of \SpecialChar LyX
  is
- english.
+ English.
  If you want to use \SpecialChar LyX
  you don't need to read this manual.
  However, if you want to learn more about how \SpecialChar LyX
@@ -286,7 +286,7 @@ math
 package Any new math package that is automatically loaded needs a file format
  update.
  The reason for this is that there is no true ERT inset for math formulas:
- Each command is parsed, and if a user happens to defne a local command
+ Each command is parsed, and if a user happens to define a local command
  with the same name as a command that triggers an automatic load of a package,
  he needs to be able to switch off the automatic loading of that package.
  This switch is stored by the 
@@ -1331,10 +1331,12 @@ g to that .lyx file.
 \end_layout
 
 \begin_layout Itemize
-When making non-trivial changes to LyX's LaTeX export code (e.g.
+When making non-trivial changes to LyX's \SpecialChar LaTeX
+ export code (e.g.
  touching the encoding code or package handling code that you expect will
- change the exported LaTeX in some way), consider running all of the export
- tests before and after your change.
+ change the exported \SpecialChar LaTeX
+ in some way), consider running all of the export tests
+ before and after your change.
  If there are differences, please reconcile these (i.e.
  fix the bug or fix the tests) 
 \emph on
@@ -1608,9 +1610,10 @@ timeout <seconds>
 \end_inset
 
  is useful.
- There have been bugs in LyX and in LaTeX which cause compilation to hang,
- and without a timeout a test might never stop (in one case there was even
- a memory leak).
+ There have been bugs in LyX and in \SpecialChar LaTeX
+ which cause compilation to hang, and
+ without a timeout a test might never stop (in one case there was even a
+ memory leak).
  If a test times out, the 
 \begin_inset Flex Code
 status collapsed
@@ -1670,7 +1673,8 @@ The .lyx file could have been added recently and some formats are not expected
 
 \begin_layout Enumerate
 A dependency is not met (e.g.
- the LaTeX class file).
+ the \SpecialChar LaTeX
+ class file).
  One hint that this is the case is that the corresponding 
 \begin_inset Flex Code
 status open
@@ -1691,7 +1695,8 @@ An inverted test fails to fail (i.e.
 
 \begin_layout Enumerate
 An external dependency was updated (e.g.
- TeX Live).
+ \SpecialChar TeX
+ Live).
 \end_layout
 
 \begin_layout Enumerate
@@ -1707,7 +1712,8 @@ name "enu:exposed"
 
 A change in a document exposed a previously unknown bug or an incompatibility
  with an export format (e.g.
- LuaTeX).
+ Lua\SpecialChar LaTeX
+).
 \end_layout
 
 \begin_layout Standard
@@ -1970,8 +1976,9 @@ Unreliable tests
 \end_layout
 
 \begin_layout Description
-nonstandard Requires non-standard ressources (LaTeX packages and document
- classes, fonts, ...) that are not a requirement for running this test suite.
+nonstandard Requires non-standard ressources (\SpecialChar LaTeX
+ packages and document classes,
+ fonts, ...) that are not a requirement for running this test suite.
 \end_layout
 
 \begin_deeper
@@ -1991,8 +1998,9 @@ arbitrary
 \begin_inset Quotes erd
 \end_inset
 
- result, depending on local configuration, OS, TeX distribution, package
- versions, or the phase of the moon.
+ result, depending on local configuration, OS, \SpecialChar TeX
+ distribution, package versions,
+ or the phase of the moon.
 \end_layout
 
 \begin_deeper
@@ -3030,7 +3038,7 @@ L
 \begin_inset space ~
 \end_inset
 
-labelname executes all tests to which this label is asigned to.
+labelname executes all tests to which this label is assigned to.
  A test may have more that one label.
 \end_layout
 
