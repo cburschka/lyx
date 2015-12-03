@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/he/
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -13,12 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 % XeTeX with Hebrew does not like this bookmark code
 % so it is in the conditional.
@@ -198,12 +192,14 @@ http://www.cs.haifa.ac.il/~dekelts/lyx/
 \begin_layout Standard
 הקובץ הזה מיועד לכל מי שלא שמעו אף פעם על 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , או שלא מכירים אותה טוב במיוחד.
  בלי פניקה! אתה לא צריך ללמוד את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כדי להשתמש בליקס.
  זו בסופו של דבר הנקודה בליקס: לתת ממשק כמעט 
@@ -212,7 +208,8 @@ WYSIWYG
 \lang hebrew
  ל- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  עם זאת, יש מה ללמוד אם רוצים להשתמש בליקס בצורה יעילה.
@@ -280,11 +277,13 @@ status collapsed
 \begin_layout Standard
 אם אתה כבר מכיר את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , תוכל לקרוא את המסמך מהר יותר כי הרבה מהרעיונות של ליקס הם רעיונות של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  במסווה.
  עם זאת, לליקס יש את המוזרויות שלה שאתה צריך להכיר.
@@ -297,7 +296,8 @@ reference "sec:latexusers"
 
  שנכתב במיוחד עבור משתמשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  מנוסים.
 \end_layout
@@ -310,6 +310,7 @@ reference "sec:latexusers"
 האכלה בכפית.
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -343,6 +344,7 @@ do it yourself
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -367,6 +369,7 @@ status collapsed
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -387,11 +390,13 @@ status collapsed
 \begin_layout Itemize
 הסברים מפורטים על 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -400,7 +405,8 @@ status collapsed
 זה פשוט מיותר.
  אם מה שאתה מחפש זה כל הדברים המגניבים שאפשר לעשות ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , קח ספר.
  יש כמה ספרים מצוינים בשוק.
@@ -487,7 +493,8 @@ ocuments
 \begin_layout Standard
 במסמך הזה אנחנו מניחים שיש לך התקנה מלאה של ליקס, 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , 
 \family typewriter
@@ -527,7 +534,7 @@ status collapsed
  של המדריך למשתמש, "התקנת ליקס ותוכנות עזר" )
 \emph on
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  Setup and Supporting Applications
 \emph default
 \lang hebrew
@@ -775,7 +782,7 @@ ew
 הקלד משפט כמו 
 \family typewriter
 \lang english
-This is my first \SpecialCharNoPassThru LyX
+This is my first \SpecialChar LyX
  document!
 \lang hebrew
 
@@ -823,7 +830,8 @@ s
 \begin_layout Itemize
 הרץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כדי ליצר קובץ 
 \lang english
@@ -853,7 +861,8 @@ iew
  סביר שתראה הדפסות בחלון שממנו הרצת את ליקס.
  אלה הודעות מ- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ואתה מוזמן להתעלם מהן לעת עתה.
  ליקס יריץ את 
@@ -1028,10 +1037,9 @@ edo
 \family default
 \lang hebrew
 ( להחזיר את מה שביטלת.
-\bar default
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1247,7 +1255,8 @@ status collapsed
 \begin_layout Plain Layout
 אף אחד מאלה לא עובד כמו שצריך בעברית, בהתקנה הבסיסית של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  עברי.
  הוראות כיצד לטפל בבעיה תמצא ב-
@@ -1536,7 +1545,8 @@ status collapsed
 \family default
  אומר ל- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  לא לשבור את השורה בין שתי המילים האלה.
  מקובל, למשל, להשתמש בו כדי לכתוב משהו כמו "ראה פרק
@@ -1740,7 +1750,7 @@ Return
 \begin_layout LyX-Code
 
 \lang english
-This is an introduction to my first \SpecialCharNoPassThru LyX
+This is an introduction to my first \SpecialChar LyX
  
 \end_layout
 
@@ -1786,7 +1796,7 @@ More Stuff
 \numeric off
  )אחרי 
 \lang english
-my first \SpecialCharNoPassThru LyX
+my first \SpecialChar LyX
  document
 \lang hebrew
 (, הקש 
@@ -2116,7 +2126,8 @@ List
 \lang hebrew
 , שאיננה קיימת ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  רגיל אלא היא תוספת של ליקס, היא וריאציה על 
 \family sans
@@ -2135,7 +2146,7 @@ Description
 \begin_layout LyX-Code
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is better than other word processors because:
 \end_layout
 
@@ -2227,7 +2238,8 @@ M-p s
 \begin_layout Standard
 יש לך רשימה יפיפיה, אתה יכול גם להריץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כדי לראות איך היא תופיעה בהדפסה.
  אבל מה אם אתה רוצה למספר את הסיבות? בחר את כל הרשימה
@@ -2483,7 +2495,7 @@ Quote
 , 
 \family sans
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -Code
 \family default
 \lang hebrew
@@ -2571,7 +2583,8 @@ status collapsed
 \begin_layout Plain Layout
 משתמשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 : זו המקבילה ל- 
 \family typewriter
@@ -2581,7 +2594,8 @@ documentclass
 \lang hebrew
  ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -2689,7 +2703,8 @@ Chapter
  ככל שעידן המחשבים מתקדם, כתבי עת מתחילים לאפשר הגשה אלקטרונית, ויוצרים
  קבצי סגנון 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כדי שכותבים יוכלו להגיש להם מאמרים בפורמט הרצוי.
  ליקס ערוכה לתמוך בתהליך זה.
@@ -2744,7 +2759,7 @@ Special Document Classes
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2885,7 +2900,8 @@ book
 שקפים )עם תמיכה ב- 
 \family typewriter
 \lang english
-Foil\SpecialCharNoPassThru TeX
+Foil\SpecialChar TeX
+
 \family default
 \lang hebrew
 (
@@ -3168,7 +3184,8 @@ Address
 \begin_layout Standard
 ליקס )כמו 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 (, מתייחסת לשער 
 \lang english
@@ -3281,7 +3298,8 @@ cross references
  כמו עם הסעיפים והערות השוליים, ליקס דואגת למספור ולעריכה בשבילך.
  האוטומטיזציה של תויות והפניות היא אחד היתרונות הגדולים של ליקס )ו-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 ( על פני מעבדי תמלילים רגילים.
 \end_layout
@@ -3364,7 +3382,8 @@ sec:
 ( מציעה את זה אוטומטית.
  שורשי מוסכמה זו הם בעולם ה-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -3670,7 +3689,8 @@ C-<
 .
  הרץ שוב את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  והפלא ופלא, ההפניה השתנתה יחד עם מספר הסעיף ל-
 \numeric on
@@ -3899,7 +3919,8 @@ dvi
  חדשות וישנות.
  מכיוון שליקס )למעשה 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 ( דואג למספור הזה, אין סיבה לשמור את מספר ההערה בקובץ הליקס.
 \end_layout
@@ -4036,7 +4057,8 @@ foot
 שנה הערת שוליים אחת לטקסט רגיל, בחר את הטקסט והפוך אותו להערת צד.
  הרץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כדי לראות איך נראת הערת צד בפלט.
 \end_layout
@@ -4085,7 +4107,8 @@ status collapsed
  הטקסט.
  כמו מספרי סעיפים, ליקס ו-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  חוסכים לך את הצורך למספר ידנית את הביבליוגרפיה עצמה ואת ההתייחסויות אליה
  בתוך הטקסט.
@@ -4112,8 +4135,8 @@ Return
 \begin_layout LyX-Code
 
 \lang english
-The \SpecialCharNoPassThru LyX
- Tutorial, by the \SpecialCharNoPassThru LyX
+The \SpecialChar LyX
+ Tutorial, by the \SpecialChar LyX
  DocTeam
 \end_layout
 
@@ -4223,7 +4246,8 @@ keys
  צורה(.
  עכשיו הרץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ותראה בתוך סוגריים מרובעים את המספר שמתאים למקור שסימנת ברשימה הביבליוגרפית
  בסוף המסמך.
@@ -4477,13 +4501,15 @@ example_raw.lyx
 \begin_layout Standard
 מדענים מעדיפים להשתמש ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בגלל הטיפול המעולה שלו בנוסחאות, שעולה באיכות הפלט על כל מעבד תמלילים אחר
  בשוק.
  מאידך, מדובר במלאכה מתסכלת כי כתיבת נוסחאות ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  דומה הרבה יותר לתכנות מאשר לכתיבה ברמת המורכבות שלה.
  למרבה השמחה, לליקס יש תמיכה 
@@ -4493,13 +4519,15 @@ WYSIWYM
  בנוסחאות.
  אם אתה רגיל ל-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , תגלה שכל הפקודות שאתה רגיל להקליד עובדות גם בליקס, אבל מופיעות בצורה גרפית
  קרובה לפלט הסופי.
  מאידך, אם אף פעם לא כתבת ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , פאנל הנוסחאות )
 \lang english
@@ -4593,7 +4621,8 @@ Esc
 \begin_layout Standard
 הרץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  והסתכל בקובץ ה-
 \lang english
@@ -4614,7 +4643,8 @@ WYSIWYM
  של ליקס.
  ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  אתה מקליד נוסחאות מתמטיות בעזרת פקודות טקסטואליות כמו 
 \family typewriter
@@ -4627,7 +4657,8 @@ sqrt
 .
  זה יכול להיות מתסכל כי אין לך מושג איך זה יראה עד שאתה מריץ את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  על הקובץ, ואתה עלול לבזבז את זמנך בחיפוש של סוגריים ששכחת ו"באגים" אחרים.
  מאידך, ליקס לא מנסה להציג את הנוסחא על המסך בצורה מדויקת )
@@ -4636,7 +4667,8 @@ WYSIWYG
 \lang hebrew
 (, אבל נותנת לך רעיון די מדויק איך היא תראה, ו-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כבר דואג לעריכה מקצועית.
  ב-%
@@ -4645,7 +4677,8 @@ WYSIWYG
 \numeric off
  מהמקרים אתה לא צריך לעשות שום שינוי בפונטים ובגדלים ש-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בוחרת בשבילך.
  כך )סליחה שאני חוזר על עצמי( אתה יכול להתרכז בתוכן של המתמטיקה שלך, ולא
@@ -4812,7 +4845,8 @@ Tab
  כדי לעשות רווחים במצב מתמטיקה.
  מרווח במצב מתמטיקה הוא בתחום הדפוס, ואתה צריך לתת לליקס )
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 ( לטפל בו )ראה סעיף 
 \begin_inset CommandInset ref
@@ -5017,7 +5051,8 @@ status collapsed
 \begin_layout Plain Layout
 הכפתורים השחורים נותנים לך את הסימנים הרגילים של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  הכפתורים הכחולים נותנים לך סימונים נוספים, באדיבות האגודה המתמטית האמריקאית.
@@ -5232,7 +5267,8 @@ example_raw.lyx
 \begin_layout Subsection
 מצב 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 : גבולות, לוג, סינוס וחברים
 \end_layout
@@ -5297,7 +5333,8 @@ log
  נכתבת בשחור, באותיות ישרות.
  למעשה היא הוכנסה במוד שנקרא מוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 : במוד זה הכלל הוא דווקא שהטקסט מופיע באדום, ופונקציות אלה הן היוצא מהכלל.
  כל המילה נחשבת תו אחד, ואם תלחץ על 
@@ -5323,7 +5360,8 @@ dvi
 \begin_layout Standard
 פונקציות נוספות שאפשר להכניס במוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  בעזרת רשימת הפונקציות, כוללות פונקציות טריגונומטריות והפוכות, היפרבוליות,
  לוגריתמים, גבולות וכו'.
@@ -5826,7 +5864,8 @@ status collapsed
 שימי לב שהרווח אחרי הפלוס הראשון בשורה השני קצר מדי.
  זה אחד מהמקרים הנדירים ש-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  טועה במרווח האוטומטי, וצריך לתקן אותה.
  יותר פרטים תמצאי במדריך למשתמש.
@@ -6070,7 +6109,8 @@ table
 \lang hebrew
  מונחים מבלבלים משהו אלה לקוחים מעולם ה-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 (.
  לחץ על הטבלה עם כפתור העכבר הימני כדי לקבל את תיבת הדיאלוג 
@@ -6095,7 +6135,8 @@ gif
 \lang hebrew
  ותמונות 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 (.
  ניחשת נכון: 
@@ -6203,7 +6244,8 @@ ustomization
  ]למעשה, הבעיות שציינתי במקומות שונים עם תמיכה בעברית, רובן ככולן אינן בעיות
  ליקס אלא בעיות 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , שהתמיכה שלו ככלל בשפות "קשות" אינה כה מפותחת 
 \lang english
@@ -6281,7 +6323,8 @@ status collapsed
 \begin_layout Itemize
 ליקס יכול לקרוא קבצי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  ראה סעיף 
@@ -6353,7 +6396,8 @@ status collapsed
 \begin_layout Section
 ליקס למשתמשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -6365,32 +6409,38 @@ name "sec:latexusers"
 
 אם אתה לא יודע כלום על 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , אתה לא חייב לקרוא את הסעיף הזה.
  או לחילופין, יש גם הגיון ללכת ללמוד קצת על 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ואז לקרוא אותו.
  עם זאת, ללא מעט משתמשים של ליקס יש רקע ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  אם אתה אחד מאלה, אתה אולי תוהה אם ליקס באמת מסוגלת לעשות כל מה ש-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  יכולה לעשות.
  בקיצור: כן, כך או אחרת, והיא בהחלט מפשטת את רוב הצעדים בכתיבת מסמך 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  יכולות להיות בעיות בתרגום של מסמכי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ישנים, ובמספר תחומים אחרים, אבל המצב משתפר מגירסה לגירסה של ליקס.
 \end_layout
@@ -6400,11 +6450,13 @@ name "sec:latexusers"
  רק מידע מינימלי, מכוון בעיקר למה שמשתמשים חדשים יכולים לרצות.
  המדריך למשתמש והקובץ "תכונות נוספות" מלאים במידע על ההבדלים בין ליקס ו-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ועל איך להשתמש בתכונות שונות של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בליקס.
 \end_layout
@@ -6412,13 +6464,15 @@ name "sec:latexusers"
 \begin_layout Subsection
 מוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
 כל מה שאתה מקליד ב"מוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 
 \begin_inset Quotes erd
@@ -6426,7 +6480,8 @@ name "sec:latexusers"
 
  יועבר ל- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בלי שום עיבוד מצד ליקס.
  בחר 
@@ -6457,7 +6512,8 @@ ERT
 .
  כל מה שאתה מקליד במסגרת הזאת עובר ישירות ל-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -6465,12 +6521,14 @@ ERT
 \begin_layout Standard
 במצב מתמטיקה, מוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  מטופל קצת אחרת.
  הכנס למוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  ע"י הקשה על 
 \lang english
@@ -6484,7 +6542,8 @@ backslash
  לא יופיע, אבל כל מה שתקליד אחריו יופיע באדום.
  אתה יוצא ממוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  ע"י הקשת 
 \family sans
@@ -6533,7 +6592,8 @@ sin
 \family default
 , ומשתמשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ותיקים לא צריכים ללמוד שום דבר חדש.
 \end_layout
@@ -6541,11 +6601,13 @@ sin
 \begin_layout Standard
 עוד מקרה מיוחד הוא הסוגריים המסולסלים: אם תקליד אחד מהם במוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  מתמטי, תקבל את הסוגריים הפותחים והסוגרים באדום, תוצא ממוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  והסמן יהיה בין הסוגריים.
  כך נוח להקליד פקודות שליקס לא מכירה עדיין ומקבלות משתנה.
@@ -6554,7 +6616,8 @@ sin
 \begin_layout Standard
 ליקס לא תומכת )עדיין( בכל פקודה של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בסיסי, ואין סיכוי שתתמוך בכל חבילת תוספת אפשרית.
  אופציות מסוימות נתמכות חלקית, או לא 
@@ -6564,11 +6627,13 @@ WYSIWYM
 -ית.
  מוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  מאפשר לקבל את מלוא הגמישות של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , ומאידך להמשיך להשתמש במה שליקס כן מספקת: טבלאות ומתמטיקה 
 \lang english
@@ -6577,7 +6642,8 @@ WYSIWYM
 -יות וכו'.
  אם אתה צריך חבילת 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  שאינה נתמכת ע"י ליקס, שים את הפקודה 
 \family typewriter
@@ -6609,7 +6675,8 @@ WYSIWYM
 \begin_layout Subsection
 יבוא מסמכי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 : 
 \family typewriter
@@ -6629,8 +6696,8 @@ name "subsec:tex2lyx"
 \begin_layout Standard
 
 \lang english
-You can import a \SpecialCharNoPassThru LaTeX
- file into \SpecialCharNoPassThru LyX
+You can import a \SpecialChar LaTeX
+ file into \SpecialChar LyX
  by using the 
 \family sans
 \bar under
@@ -6646,9 +6713,10 @@ mport\SpecialChar menuseparator
 \bar under
 L
 \bar default
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
+
 \family default
- command in \SpecialCharNoPassThru LyX
+ command in \SpecialChar LyX
 .
  This will call 
 \family typewriter
@@ -6676,9 +6744,9 @@ tex2lyx
 \lang english
 tex2lyx
 \family default
- will translate most legal \SpecialCharNoPassThru LaTeX
+ will translate most legal \SpecialChar LaTeX
 , but not everything.
- It will leave things it doesn't understand in \SpecialCharNoPassThru TeX
+ It will leave things it doesn't understand in \SpecialChar TeX
  mode, so after translating
  a file with 
 \family typewriter
@@ -6694,22 +6762,23 @@ tex2lyx
 tex2lyx
 \family default
  has its own manpage.
- Read it to find out about which \SpecialCharNoPassThru LaTeX
- commands and environments aren't
- supported, bugs (and how to get around them), and how to use the various
- options.
+ Read it to find out about which \SpecialChar LaTeX
+ commands and environments aren't supported,
+ bugs (and how to get around them), and how to use the various options.
 \end_layout
 
 \begin_layout Subsection
 תרגום מסמכי ליקס ל-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
 במקרים רבים תרצה לתרגם את קובץ הליקס שלך לקובץ 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  לדוגמא, אם לשותף לעבודה או למחקר אין ליקס ורוצה לקרוא אותו.
@@ -6721,7 +6790,8 @@ tex2lyx
 \lang english
 L
 \bar default
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
+
 \family default
 \lang hebrew
  )
@@ -6755,7 +6825,8 @@ whatever.tex
 .
  מכיוון שליקס משתמשת ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  באופן קבוע כדי להציג ולהדפיס, מן הסתם פעולת התרגום עולה לה בקלות.
 \end_layout
@@ -6763,13 +6834,15 @@ whatever.tex
 \begin_layout Subsection
 הקדמת 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
 החלק של קובץ 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  שבא לפני גוף הטקסט נקרא ההקדמה, 
 \lang english
@@ -6856,7 +6929,8 @@ name "sec:preamble"
 
 אם יש פקודות נוספות שהיית שם בקובץ 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , אתה יכול להשתמש בהן גם בקובץ ליקס.
  בחר 
@@ -6880,11 +6954,13 @@ eamble
 ( והקלד.
  כל מה שתרשום, כמו במוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 , עובר ל-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ישירות ללא עיבוד.
 \end_layout
@@ -6901,17 +6977,20 @@ status collapsed
 
 
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
 ליקס תומכת ב-
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \lang hebrew
 , הרחבה ל-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  שמאפשרת לך לבנות בסיס נתונים עבור ההפניות הביבליוגרפיות, ולהשתמש באותו
  בסיס נתונים עבור מסמכים שונים.
@@ -6927,7 +7006,8 @@ Bib\SpecialCharNoPassThru TeX
 
 
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
 \lang hebrew
  )
@@ -6970,7 +7050,8 @@ bib
 .
  לחץ על המסגרת 
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -6982,7 +7063,8 @@ Reference
 \lang hebrew
  שנוצרה ותקבל את תיבת הדיאלוג 
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \lang hebrew
 .
  בשדה 
@@ -7005,7 +7087,8 @@ status collapsed
 \begin_layout Plain Layout
 כמו ב-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  רגיל, יש להפריד הפניות שונות עם פסיקים, בלי רווחים.
 \end_layout
@@ -7069,7 +7152,8 @@ reference "sec:bibliographies"
 .
  ליקס תדאג להריץ את 
 \lang english
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \lang hebrew
 .
  הרשימה בתיבת הדיאלוג 
@@ -7130,7 +7214,8 @@ hyphenation
 \begin_layout Standard
 יקרה שהרצת 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  תגלה שגיאות 
 \lang english
@@ -7138,7 +7223,8 @@ hyphenation
 \lang hebrew
  דברים שליקס או 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  לא הבינו.
  במקרים כאלה, ליקס תיצר קובית שגיאה )קוביה עם המילה "שגיאה" בתוכה(.
@@ -7146,15 +7232,18 @@ hyphenation
  ההודעה יכולה לבוא מליקס עצמו, אבל זה נדיר מאוד.
  בדרך כלל, השגיאה תבוא מ-
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , בדרך כלל מטעויות בפקודות שהקלדת במוד 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 , ואז החלון יכיל את הודעת השגיאה של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כלשונה.
 \end_layout

@@ -13,15 +13,6 @@
 % an das LyX-Dokumentationsteam wenden.
 % EMail: lyx-docs@lists.lyx.org
 
-% wenn pdflatex benutzt wird:
-\usepackage{ifpdf}
-\ifpdf
-
-% Fonts fuer huebschere PDF-Ansichten
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % Ende von: wenn pdflatex benutzt wird
-
 % Setzt den Link fuer Spruenge zu Gleitabbildungen
 % auf den Anfang des Gelitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
@@ -75,9 +66,9 @@ enumitem
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -8674,12 +8665,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8692,7 +8681,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8716,7 +8704,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 

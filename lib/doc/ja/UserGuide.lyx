@@ -5,14 +5,6 @@
 \origin unavailable
 \textclass scrbook
 \begin_preamble
-% Commands inserted by lyx2lyx for proper underlining
-\PassOptionsToPackage{normalem}{ulem}
-\usepackage{ulem}
-\let\cite@rig\cite
-\newcommand{\b@xcite}[2][\%]{\def\def@pt{\%}\def\pas@pt{#1}
-  \mbox{\ifx\def@pt\pas@pt\cite@rig{#2}\else\cite@rig[#1]{#2}\fi}}
-\renewcommand{\underbar}[1]{{\let\cite\b@xcite\uline{#1}}}
-
 % DO NOT ALTER THIS PREAMBLE!!!
 %
 % This preamble is designed to ensure that the User's Guide prints
@@ -21,14 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % for correct jump positions whe clicking on a link to a float
 %\usepackage[figure]{hypcap}
@@ -7180,14 +7164,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です。
 \end_layout
 
@@ -7200,7 +7182,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7226,7 +7207,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 

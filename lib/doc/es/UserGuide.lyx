@@ -14,14 +14,6 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
-
 % for correct jump positions whe clicking on a link to a float
 \usepackage[figure]{hypcap}
 
@@ -65,9 +57,9 @@ enumitem
 \language_package babel
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -8555,14 +8547,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8575,7 +8565,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8605,7 +8594,6 @@ with the difference that spaces appear in the output as the character '
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal*.
 \end_layout
 
