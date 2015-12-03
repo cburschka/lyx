@@ -56,7 +56,7 @@ def parse_msg(lines):
         if j < 0:
             return ''
         msg = msg + lines[i][j:].strip('"')
-    return msg
+    return polib.unescape(msg)
 
 
 def translate(msgid, msgstr_lines, po2):
@@ -72,7 +72,7 @@ def translate(msgid, msgstr_lines, po2):
     obsolete = (msgstr_lines[0].find('#~') == 0)
     j = msgstr_lines[0].find('"')
     # must not assign to msgstr_lines, because that would not be seen by our caller
-    new_lines = polib.wrap(msgstr_lines[0][0:j+1] + msgstr, 76, drop_whitespace = False)
+    new_lines = polib.wrap(msgstr_lines[0][0:j+1] + polib.escape(msgstr), 76, drop_whitespace = False)
     del msgstr_lines[:]
     for i in range(0, len(new_lines)):
         if i == 0:
