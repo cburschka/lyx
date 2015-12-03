@@ -14,22 +14,10 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-% if pdflatex is used
-\usepackage{ifpdf}
-\ifpdf
-
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}
- {\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
-
-% Folgendes Problem lösen:
-% Besteht die Kapitelnummer aus zu vielen Ziffern, wird  die
-% Kapitelüberschrift im Inhaltsverzeichnis direkt an oder über
-% die Kapitelnummer geschrieben.
-% Als Lösung wird mehr Platz zwischen Nummer und
-% Überschrift eingefügt.
+% solves the following problem:
+% If the dection number consits of too many numerals the section heading
+% will be printed in the TOC without a space between it and the section number.
+% As solution more space between the number and the heading is inserted:
 \renewcommand{\l@subsection}{\@dottedtocline{2}{1.5em}{2.8em}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{4.3em}{3.6em}}
 
@@ -149,9 +137,9 @@
 \language_package babel
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
