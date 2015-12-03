@@ -14,15 +14,6 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}
-  {\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
-
 % the pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
 \let\myTOC\tableofcontents
