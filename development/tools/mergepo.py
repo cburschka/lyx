@@ -52,7 +52,10 @@ def parse_msg(lines):
         return ''
     msg = lines[0][i:].strip('"')
     for i in range(1, len(lines)):
-        msg = msg + lines[i].strip('"')
+        j = lines[i].find('"')
+        if j < 0:
+            return ''
+        msg = msg + lines[i][j:].strip('"')
     return msg
 
 
