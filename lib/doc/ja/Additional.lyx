@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -16,16 +16,6 @@
 
 \IfFileExists{pxjahyper.sty}
 {\usepackage{pxjahyper}}
-
-% if pdflatex is used
-\usepackage{ifpdf}
-\ifpdf
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}
-  {\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
