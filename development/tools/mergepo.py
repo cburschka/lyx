@@ -15,6 +15,7 @@
 
 import os, re, string, sys
 import polib
+from optparse import OptionParser
 
 
 # we do unix/windows line trimming ourselves since it can happen that we
@@ -175,16 +176,29 @@ def mergepo(target, source):
 
 def main(argv):
 
-    toolsdir = os.path.dirname(argv[0])
-    podir1 = os.path.normpath(os.path.join(toolsdir, '../../po'))
-    if len(argv) <= 1:
-        sys.stderr.write('''Usage: %s <dir> [lang] where dir is a directory containing the .po
-       files you want to take missing translations from. If lang is not given, all languages
-       are translated, otherwise only lang.\n''' % (argv[0]))
-    podir2 = os.path.abspath(argv[1])
+    parser = OptionParser(description = """This script reads translations from .po files in the given source directory
+and adds all translations that do not already exist to the corresponding .po
+files in the target directory. It is recommended to remerge strings from the
+source code before running this script. Otherwise translations that are not
+yet in the target .po files are not updated.""", usage = "Usage: %prog [options] sourcedir")
+    parser.add_option("-t", "--target", dest="target",
+                      help="target directory containing .po files. If missing, it is determined from the script location.")
+    parser.add_option("-l", "--language", dest="language",
+                      help="language for which translations are merged (if missing, all languages are merged)")
+    (options, args) = parser.parse_args(argv)
+    if len(args) <= 1:
+        parser.print_help()
+        return 0
 
-    if len(argv) > 2:
-        name = argv[2] + '.po'
+    toolsdir = os.path.dirname(args[0])
+    if options.target:
+        podir1 = os.path.abspath(options.target)
+    else:
+        podir1 = os.path.normpath(os.path.join(toolsdir, '../../po'))
+    podir2 = os.path.abspath(args[1])
+
+    if options.language:
+        name = options.language + '.po'
         mergepo(os.path.join(podir1, name), os.path.join(podir2, name))
     else:
         for i in os.listdir(podir1):
