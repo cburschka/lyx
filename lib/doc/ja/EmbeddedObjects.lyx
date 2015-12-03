@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/ja/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 %% Added by the translator
@@ -10,16 +10,6 @@
 %\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
 \ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
 \AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
-
-% if pdflatex is used
-\usepackage{ifpdf}
-\ifpdf
-
-% set fonts for nicer pdf view
-\IfFileExists{lmodern.sty}
- {\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % that links to image floats jumps
 % to the beginning of the float and 
