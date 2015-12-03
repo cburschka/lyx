@@ -68,8 +68,6 @@ export/examples/instant_preview_pdf[25].*
 export/examples/listerrors_(pdf[245]).*
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 export/examples/fr/exemple-powerdot_pdf[25].*
-export/examples/fr/exemple-powerdot_pdf
-export/examples/powerdot-example_pdf
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 export/examples/ko/splash_(dvi||pdf[23]?)
 export/templates/DocBook_article_(dvi3_|pdf2|pdf[45]_).*
@@ -95,14 +93,6 @@ export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #  ! Package polyglossia Error: The current roman font does not contain the
 #  Hebrew script!
 export/examples/he/splash_pdf5_systemF
-#
-# These exports correctly fail now that we've switched to polyglossia. Although
-# they compiled without error with babel, the resulting PDFs had gibberish.
-# Note that there is a problem with the LyX-generated preamble in the Russian
-# docs:
-# https://www.mail-archive.com/search?l=mid&q=n0j157%246a1%241%40ger.gmane.org
-export/doc/ru/Intro_pdf5_systemF
-export/doc/ru/Tutorial_pdf5_systemF
 #
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
@@ -184,7 +174,7 @@ export/doc/fr/Additional_pdf4_texF
 export/doc/fr/UserGuide_pdf4_texF
 #
 # GM: lmodern.sty? + maybe more
-export/doc/fr/(Additional_pdf5|Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+export/doc/fr/(Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
 #
 # GM: language nesting error (polyglossia) (known bug)
 export/doc/nb/Intro_pdf5_systemF
