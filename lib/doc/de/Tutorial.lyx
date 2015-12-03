@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/de/
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -13,14 +13,6 @@
 % have problems LaTeXing this file, please contact 
 % the documentation team
 % email: lyx-docs@lists.lyx.org
-
-\usepackage{ifpdf} % part of the hyperref bundle
-\ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
-
-\fi % end if pdflatex is used
 
 % Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
 % ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
@@ -37,9 +29,9 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -1048,113 +1040,6 @@ Benutzerhandbuch
  nicht alles genau nach Ihren Wünschen gemacht hat).
  Im Gegensatz dazu sind Sie bei einer gewöhnlichen Textverarbeitung bereits
  während des gesamten Schreibens mit den Problemen der Formatierung beschäftigt.
-\end_layout
-
-\begin_layout Standard
-Ein weiterer Typ von besonderem Leerraum ist das 
-\family sans
-Geschützte
-\begin_inset space ~
-\end_inset
-
-Leerzeichen
-\family default
-, das Sie mit 
-\family sans
-Strg+Leer\SpecialChar softhyphen
-taste
-\family default
- (oder 
-\family sans
-Einfügen\SpecialChar menuseparator
-Formatierung\SpecialChar menuseparator
-Geschütztes
-\begin_inset space \space{}
-\end_inset
-
-Leerzeichen
-\family default
-) erzeugen, und das am Bildschirm etwa so 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 70
-	scaleBeforeRotation
-
-\end_inset
-
- erscheint.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wenn Sie das 
-\emph on
-Tutorium
-\emph default
- in \SpecialChar LyX
- lesen, ist es Ihnen vielleicht bereits aufgefallen, und Sie haben sich
- gefragt, was es bedeutet.
-\end_layout
-
-\end_inset
-
- Wenn Sie zwischen zwei Worten ein geschütztes Leerzeichen einfügen, erscheint
- es im Ausdruck wie jedes andere Leerzeichen auch.
- Aber ein solches geschütztes Leerzeichen teilt darüber hinaus \SpecialChar LaTeX
- mit, dass
- es zwischen diesen beiden Worten keinen Zeilenumbruch einfügen darf.
- Sehr verbreitet ist die Verwendung deshalb in Fällen wie 
-\begin_inset Quotes gld
-\end_inset
-
-Abschnitt
-\begin_inset space ~
-\end_inset
-
-1
-\begin_inset Quotes grd
-\end_inset
-
-, in denen Sie sicherstellen wollen, dass 
-\begin_inset Quotes gld
-\end_inset
-
-Abschnitt
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-1
-\begin_inset Quotes grd
-\end_inset
-
- in derselben Zeile stehen.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Im 
-\emph on
-Tutorium
-\emph default
- werden Sie außerdem in Namen von Menüs und Sonderzeichen verwendet – wie
- eben das 
-\family sans
-Geschützte
-\begin_inset space ~
-\end_inset
-
-Leerzeichen
-\family default
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

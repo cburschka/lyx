@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/he/
+\origin unavailable
 \textclass article
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -16,9 +16,6 @@
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
-
- % set fonts for nicer pdf view
- \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
 % XeTeX with Hebrew does not like this bookmark code
 % so it is in the conditional.
@@ -118,7 +115,8 @@
 \begin_layout Title
 מבוא ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 
 \begin_inset Foot
@@ -153,7 +151,8 @@ status collapsed
 \noun default
 \color inherit
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 
 \begin_inset Foot
@@ -214,7 +213,8 @@ LatexCommand tableofcontents
 \begin_layout Section
 הפילוסופיה של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \end_layout
 
 \begin_layout Quote
@@ -258,8 +258,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/\SpecialCharNoPassThru LyX
-/HebrewOnLinux
+http://wiki.lyx.org/LyX/HebrewOnLinux
 \end_layout
 
 \end_inset
@@ -270,7 +269,8 @@ http://wiki.lyx.org/\SpecialCharNoPassThru LyX
 \begin_layout Subsection
 מה זה 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 ?
 \end_layout
@@ -287,14 +287,16 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  )ליקס( הוא מערכת להכנת מסמכים.
  הוא מצטיין בכתיבת מאמרים טכניים ומדעיים מורכבים המכילים נוסחאות מתמטיות,
  הפניות, ביבליוגרפיות, אינדקסים וכו'.
  
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מתאים היטב למסמכים בכל אורך, אשר בהם נדרשת יכולת עיבוד התמלילים הרגילות:
  עימוד וחלוקה לקטעים אוטומטיים, בדיקת איות וכדומה.
@@ -302,7 +304,8 @@ status collapsed
  יותר לביצוע מטלה זו.
  אף על פי כן, 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  הוא בהחלט לא התוכנה ליצירת כרזות, עלונים ופרסומות )ההסבר לכך יבוא בהמשך(,
  למרות שעם מאמץ מסויים ניתן להכין גם את כל אלה.
@@ -329,7 +332,8 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מספק גישה מודרנית לכתיבת מסמכים בעזרת מחשב על ידי שימוש במערכת של שפת סימני
  עריכה 
@@ -339,13 +343,15 @@ status collapsed
 , גישה שאינה תואמת למסורת המיושנת של "עקרון מכונת הכתיבה".
  
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מיועד למחברים שרוצים לקבל תוצר מקצועי במהירות, תוך השקעת מאמץ מינימלי,
  ומבלי להתמחות בסידור-דפוס.
  עבודת סידור-הדפוס נעשית ברובה על ידי המחשב, לא ע"י הכותב; עם 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  המחבר יכול להתרכז בתוכן כתיבתו.
 \end_layout
@@ -353,7 +359,8 @@ status collapsed
 \begin_layout Standard
 חלק מהאתגר הראשוני בשימוש ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  נובע מהשינוי המחשבתי שאתה, המשתמש, צריך לעבור.
  בעבר, האמצעי היחיד לכתיבת מסמכים היה מכונת הכתיבה, ולכן למדו האנשים תחבולות
@@ -452,13 +459,15 @@ What you see is what you get
 \begin_layout Standard
 בנקודה זו 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  שונה ממעבד תמלילים רגיל.
  המשתמש אינו צריך להעסיק את עצמו בזוטות כגון איפה כל תו מופיע.
  אתה, המשתמש, מציין ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  
 \emph on
@@ -466,7 +475,8 @@ What you see is what you get
 \emph default
  ו- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  יהיה אחראי לכל השאר, בהתאם למערכת של חוקים הנקראת סגנון
 \begin_inset Foot
@@ -527,7 +537,8 @@ status collapsed
 \begin_layout Standard
 ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , המשתמש פשוט ייבחר בתפריט הנגלל הממוקם בצד שמאל את האפשרות 
 \family sans
@@ -541,7 +552,8 @@ status collapsed
  אם תגזור ותדביק את החלק, הוא ימוספר אוטומטית – בכל מקום.
  אם תכניס במסמך הפניות לחלק זה בצורה נכונה )ע"י הכנסת תגיות הפנייה(, 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  יעדכן אותן כך שלעולם לא תצטרך להקיש את מספר החלק.
 \end_layout
@@ -573,7 +585,8 @@ status collapsed
 .
  בעייה זו אינה קיימת ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  המחשב דואג לשמור את כל אותן ההגדרות כמו גודל הגופן של כל דבר, ולא אתה.
@@ -587,7 +600,8 @@ status collapsed
  וכמה שורות ריקות יש להשאיר בין כל איבר ואיבר וכך הלאה.
  כשאתה משתמש ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  יש לך רק שני דברים להתייחס אליהם: איזה סוג רשימה אתה צריך, ומה אתה רוצה
  להכניס אליה.
@@ -597,7 +611,8 @@ status collapsed
 \begin_layout Standard
 אז זהו הרעיון הבסיסי המונח ביסוד של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 : לציין 
 \emph on
@@ -610,7 +625,8 @@ status collapsed
  לעשות זאת.
  במקום הדפסתו-כראיתו, המודל של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  הוא הדפסתו-ככוונתו
 \begin_inset Foot
@@ -638,7 +654,8 @@ What You See Is What You Mean
  זהו רעיון רב עוצמה, שמפשט במידה רבה את כתיבת המסמכים.
  זאת גם הסיבה מדוע 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  אינו כל-כך טוב ליצירת עלונים ופוסטרים – במקרה זה אתה 
 \emph on
@@ -648,7 +665,8 @@ What You See Is What You Mean
  וחלקים.
  זה לא אומר ש- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  חסר תכונה מגניבה כלשהי.
  זה פשוט אומר ש-
@@ -670,7 +688,8 @@ What You See Is What You Mean
 \noun default
 \color inherit
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  אינו הכלי הנכון לעבודה – אינך משתמש במברג כדי לדפוק מסמרים )אלא אם כן המברג
  בא עם אחריות לכל החיים(.
@@ -679,7 +698,8 @@ What You See Is What You Mean
 \begin_layout Subsection
 ההבדלים בין 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  ומעבדי תמלילים אחרים
 \end_layout
@@ -687,7 +707,8 @@ What You See Is What You Mean
 \begin_layout Standard
 הנה כמה דברים שלא תמצאו ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 :
 \end_layout
@@ -714,13 +735,15 @@ Enter
 טאבים, ביחד עם שורת הסרגל, המראה את מיקומם של עצמים בעמוד, הם חסרי שימוש
  ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  התוכנה דואגת למיקום של עצמים בעמוד ולא המשתמש.
  מרווחים כפולים הם דבר דומה; 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מוסיפם כאשר יש צורך, ובהתאם להקשר.
  חוסר היכולת להוסיף שורות ריקות ייתכן וירגיז קצת בהתחלה, אבל יהיה הגיוני
@@ -730,7 +753,8 @@ Enter
 \begin_layout Standard
 הנה כמה דברים שישנם ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  אבל אין משתשמשים בהם בדרך הרגילה:
 \end_layout
@@ -762,12 +786,14 @@ Enter
 \begin_layout Standard
 אף על פי שדברים אלה קיימים ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , על פי רוב אין המשתמש נזקק להם.
  
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  יטפל בהם בשבילך, בהתאם למה שאתה עושה.
  חלקים שונים של המסמך מוגדרים אוטומטית בסגנון דפוס וגודל גופן שונים.
@@ -775,7 +801,8 @@ Enter
  מעברי עמוד נעשים גם הם אוטומטית.
  באופן כללי, המרווח בין שורות, מילים ופיסקאות הוא משתנה אך נקבע על ידי 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 
 \begin_inset Foot
@@ -784,7 +811,8 @@ status collapsed
 \begin_layout Plain Layout
 המשתמש יכול לשנות את כל אלה )חלק מהשינויים דורש ידע ב- 
 \lang english
-(\SpecialCharNoPassThru LaTeX
+(\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -797,11 +825,13 @@ status collapsed
 \begin_layout Standard
 לבסוף, ישנם מספר תחומים בהם אנו מאמינים ש- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  )ו- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 ( מתעלה מעל למעבדי תמלילים רבים:
 \end_layout
@@ -831,16 +861,19 @@ status collapsed
  ורבים נעו לכיוון הגדרות סגנון ורעיון ההדפסתו-ככוונתו, אבל הם יכולים לעשות
  זאת מזה זמן לא רב, בעוד ש- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  בנוי על מערכת הכנת המסמכים 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  קיימת כבר מספר עשורים והיא 
 \emph on
@@ -852,7 +885,8 @@ status collapsed
 \begin_layout Subsection
 מה זה לעזאזל 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  ומה זה מעניין אותי?
 \end_layout
@@ -869,7 +903,8 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  היא מערכת הכנת מסמכים שתוכננה על ידי 
 \noun on
@@ -902,7 +937,7 @@ to
 \begin_inset space ~
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
 "
 \emph default
 \lang hebrew
@@ -926,11 +961,13 @@ Patrick Daly
 .
  
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  הייתה בנוייה על בסיס שפת הדפוס הנקראת 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  )טך( שנכתבה על ידי 
 \noun on
@@ -945,7 +982,8 @@ Donald Knuth
 .
  
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  לוקחת רצף של פקודות דפוס, הרשומות בתור קוד בקובץ 
 \lang english
@@ -961,12 +999,14 @@ Knuth
 \lang hebrew
  כאלגוריטמי מחשב ל- 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 , ומכאן המראה המודפס המצויין.
  בכל מקרה, הפלט של 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  הוא קובץ מסוג "
 \lang english
@@ -998,11 +1038,13 @@ PDF
 \begin_layout Standard
 אלמלא תכונה אחת, 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  לא היה שונה מכל תוכנת דפוס אחרת, אבל 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  מאפשר בנוסף לכל להגדיר מאקרו-ים )
 \lang english
@@ -1015,7 +1057,8 @@ macro
 \begin_layout Standard
 רוב האנשים שמשתמשים ב- 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  משתמשים למעשה בחבילת מאקרו-ים שפיתח 
 \noun on
@@ -1026,12 +1069,14 @@ Knuth
  במטרה להסתיר רבים מפרטי הדפוס.
  זה מה שרוב האנשים חושבים עליו כאשר הם חושבים על 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 .
  משתמשים מן השורה לא משתמשים ב- 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  גולמי שהוא למעשה אוסף של פקודות דפוס חשופות.
  עושים זאת אנשים שיוצרים חבילות מאקרו חדשות.
@@ -1051,7 +1096,8 @@ Lamport
  אחיד ועקבי, בלי שיהיה צורך להתעסק בהן יותר מידי.
  כך נולדה 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -1059,45 +1105,54 @@ Lamport
 \begin_layout Standard
 באותה עת, במקביל להתפתחות של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , אנשים אחרים החלו ליצור חבילות מאקרו משל עצמם ל- 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 , כדי ליצור מצגות או מאמרים לכתבי עט מתמטיים וכו'.
  חלק השתמשו ב- 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  גולמי כדי לעשות זאת ואחרים החלו לשנות את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  כדי לנסות ולעשות סדר בבלגן, קבוצה של אנשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  )וביניהם למפורט( החלו לעבוד בשלהי שנות השמונים על 
 \lang english
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \lang hebrew
  שהיא הגרסה העכשווית של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
  גרסה חדשה זו מכילה פקודות שמספקות ממשק משתמש קל יותר לשימוש לפקודות יצירת
  המאקרו של טך, ומספקות סיוע בשימוש בגופנים חדשים וכו'.
  למעשה, 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  היא שפה נרחבת בזכות עצמה! משתמשים מרחבי העולם יוצרים את התוספים שלהם ל-
  
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בנוסף לאלו הרגילים.
 \end_layout
@@ -1105,7 +1160,8 @@ Lamport
 \begin_layout Standard
 ישנן שתי דרכים להרחיב את 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 : מחלקות וסגנונות.
  
@@ -1114,11 +1170,13 @@ Lamport
 \emph default
  היא מערכת של מאקרו-ים של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  )ושל 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 (, המתארים סוג מסמך חדש, כמו ספר או מאמר.
  ישנן מחלקות עבור מצגות, כתבי עת פיסיקליים ומתמטיים\SpecialChar ldots
@@ -1134,12 +1192,14 @@ Lamport
  שכל מסמך יכול להשתמש בה.
  לדוגמא, 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  שולט בגודל שולי הדף והמרווח בין השורות על ידי שימוש בשני קבצי סגנון שונים
  של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  המיועדים למטרה זו.
  ישנם קבצי סגנון למגוון רחב של דברים: הדפסת תוויות או מעטפות, שינוי הזחת
@@ -1169,7 +1229,8 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  שפת דפוס עם יכולות מאקרו.
 \end_layout
@@ -1187,11 +1248,13 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  חבילת מאקרו הבנויה על 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
 .
 \end_layout
@@ -1200,7 +1263,8 @@ status collapsed
 \labelwidthstring 00.00.0000
 מחלקה תיאור של סוג מסמך חדש תוך שימוש ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -1209,7 +1273,8 @@ status collapsed
 \labelwidthstring 00.00.0000
 סגנון שינוי ההתנהגות הרגילה של 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בדרך כלשהי.
 \end_layout
@@ -1227,11 +1292,13 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מעבד תמלילים גרפי מסוג הדפסתו-ככוונתו שמשתמש ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  בכל תפארתה כדי להדפיס.
 \end_layout
@@ -1243,25 +1310,30 @@ status collapsed
 \emph default
  
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  עובד בצורה שונה ממעבדי תמלילים אחרים.
  הסיבה לכך פשוטה: 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  משתמש ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  כמנוע ההדפסה.
  בדיוק כמו 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מתמקד על ההקשר של כתביך – 
 \emph on
@@ -1274,16 +1346,19 @@ status collapsed
 \begin_layout Standard
 דבר אחד אחרון, 
 \lang english
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \lang hebrew
  מבוטא כ"טך" )האות טי"ת מנוקדת בסגול(, ולכן 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  מבוטאת כ"לאטך" )האות למ"ד בקמץ, טי"ת בסגול(.
  אבל 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מבוטא כ"ליקס" )למ"ד בחיריק, קו"ף בשווא(.
 \end_layout
@@ -1295,7 +1370,8 @@ status collapsed
 \begin_layout Standard
 כדי להקל על המשתמש למצוא תשובות לשאלותיו ולתאר את כל תכונותיו של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , התיעוד חולק למספר קבצים שונים.
  לכל אחד מהם מטרה משלו, כפי שיתואר בהמשך.
@@ -1306,7 +1382,8 @@ status collapsed
 \begin_layout Standard
 אף על פי ש- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  עבר מזמן את גרסה 
 \numeric on
@@ -1315,7 +1392,8 @@ status collapsed
  חלק מהתיעוד אינו שלם או קצת מיושן למרות שאנחנו מנסים לשמור על הקצב.
  כמו שאר חלקיו של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , גם המדריכים הם פרי עבודתם של מתנדבים בעלי "עבודות אמיתיות", בעלי משפחות,
  כלים שצריך לשטוף אחרי הארוחה, כלבים שצריך להוציא לטיול וכו'.
@@ -1365,7 +1443,8 @@ lyx-users@lists.lyx.org
 ייתכן וחלקכם הדפיס את קובץ/י ההדרכה, ואילו אחרים יכולים לקרוא באופן מקוון,
  דרך ה- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  הקוראים באופן מקוון, דעו שישנם מספר הבדלים בין הגירסה על המחשב לגירסה המודפסת.
@@ -1484,7 +1563,8 @@ status collapsed
 \begin_layout Itemize
 שמות של תוכניות וקבצים, קוד 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  ופונקציות יופיעו בגופן מסוג 
 \family typewriter
@@ -1536,7 +1616,8 @@ Noun Style
 \noun default
 \color inherit
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -1885,7 +1966,8 @@ Enter
  מתייחסים לאותו מקש.
  בחלק מהמקלדות מופיע אחד מהם, או שניהם גם יחד, אך 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מתייחס אליהם כאל אותו מקש, ולכן נשתמש בהם לסירוגין.
 \end_layout
@@ -1896,7 +1978,8 @@ Enter
  – אז בדוק גם שם.
  שים לב שישנן שתי מערכות של מקשי קיצור בשימוש קהילת 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 : סגנון ה- 
 \lang english
@@ -1981,7 +2064,8 @@ reference "tab:יחידות-מדידה"
 \noun default
 \color inherit
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
 \end_layout
@@ -2029,7 +2113,7 @@ name "tab:יחידות-מדידה"
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -2717,16 +2801,19 @@ Tutorial
 
 אם אתה חדש ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , ואף פעם לא השתמשת ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , אתה צריך להתחיל כאן.
  אם עדיין אין לך שמץ של מושג מה זה 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  וחושב שזה סוג של גומי, אז אתה חייב לחזור ולקרוא את פרק 
 \numeric on
@@ -2735,11 +2822,13 @@ Tutorial
 , ואז קרא את "השיעור המודרך".
  שים לב שאחרי שתקרא את "השיעור המודרך", ייתכן שעדיין תחשוב ש- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  זה חומר גמיש, אבל לפחות תדע להשתמש ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
 \begin_inset Newline newline
@@ -2751,15 +2840,18 @@ Tutorial
 \emph default
  השתמשת בעבר ב- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 , עדיין כדאי שתקרא את "השיעור המודרך", החל מהחלק על "
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  למשתמשי 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 " )לקרוא ברפרוף את שאר המסמך בוודאי לא יזיק(.
 \begin_inset Newline newline
@@ -2767,7 +2859,8 @@ Tutorial
 
 אם באיזשהו שלב תרגיש קצת "אבוד" בנוגע ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , נסה לבדוק את "השיעור המודרך" לפני שתשקע בשאר המדריכים.
  זהו קרש קפיצה מצויין.
@@ -2813,7 +2906,8 @@ User's
 \emph default
  הפעולות הבסיסיות והתכונות המוצעות ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  "המדריך למשתמש" יוצא מנקודת הנחה שקראת את "השיעור המודרך" קודם לכן.
@@ -2847,12 +2941,14 @@ Features
 הרחבה של "המדריך למשתמש".
  פה יש תיעוד של פקודות 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
  גולמיות, מחלקות נוספות, ואפשרויות עריכה מיוחדות.
  כמו כן, הוא מכיל חלק מה"טריקים" )קצת מוזרים, אבל מגניבים(, של אמני ה- 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 .
 \end_layout
@@ -2889,11 +2985,13 @@ Customization
 \series default
  תיאור של תכונות מתקדמות ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , כולל התאמה אישית של ההתנהגות של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  זאת אומרת שכאן יש דברים כמו מערכות של מקשי קיצור, הפיכת התוכנה לבין לאומית
@@ -2912,7 +3010,8 @@ Internationalization
 
 
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \lang hebrew
 
 \begin_inset space ~
@@ -2921,7 +3020,8 @@ Internationalization
 )
 \series bold
 \lang english
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -2949,12 +3049,14 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  בוחן את המחשב שלך בזמן ההתקנה.
  קובץ זה מכיל את מה ש- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מצא בנוגע להתקנה.
  בדוק אותו כדי לראות אם אתה מחסיר משהו שייתכן ותצטרך.
@@ -2964,7 +3066,8 @@ status collapsed
 מסמכים אלו יפנו אחד אל השני במידת הצורך.
  לדוגמא, "המדריך למשתמש" מכיל קצת מידע על ההתקנה והתאמה של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , אך יפנה את הקורא למדריך "התאמה אישית" למידע נוסף.
 \end_layout
@@ -2986,7 +3089,8 @@ status collapsed
 
 אם אתה חדש ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , קרא את "השיעור המודרך" עכשיו.
 \begin_inset space \hfill{}
@@ -3006,7 +3110,8 @@ status collapsed
 אחרת, סתם תייגע את עצמך.
  
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  עושה כל מה שאתה צריך שמעבד תמלילים יעשה, אבל משתמש לשם כך בגישה שונה.
 \end_layout
@@ -3020,13 +3125,15 @@ name "פרק:תרומה"
 
 תרומה לפרוייקט 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsection
 תרומה ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -3041,7 +3148,8 @@ status collapsed
 
 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  כתוב ברובו ב- 
 \lang english
@@ -3059,7 +3167,8 @@ C++
 \begin_layout Standard
 תוך כדי השימוש ב- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , ייתכן ותמצא התנהגות מסויימת שתחשוב שהיא לקויה.
  קריסות, למרות שהן נדירות, קורות.
@@ -3070,7 +3179,8 @@ C++
 \begin_layout Standard
 ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  יש מערכת עקיבה אחר תקלות )באגים(, אותה תוכל למצוא בכתובת 
 \begin_inset Flex URL
@@ -3101,7 +3211,8 @@ lyx-devel@lists.lyx.org
 .
  קישור לארכיון ההודעות נמצא באתר הראשי של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 : 
 \begin_inset Flex URL
@@ -3129,7 +3240,8 @@ http://www.lyx.org
  מסור את הגרסאות של הספריות השונות המותקנות על המחשב ובמידת הצורך את הגרסאות
  של תוכנות חיצוניות בשימושו של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 .
  אם הבעיה היא בעיית הידור )קומפילציה( או בעיה בהגדרות, צרף את הקובץ 
@@ -3144,7 +3256,8 @@ config.log
 \begin_layout Standard
 אם הצלחת לגרום ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  לקרוס, אנא טרח ליצר 
 \lang english
@@ -3152,7 +3265,8 @@ backtrace
 \lang hebrew
  בעזרת גרסת 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  שאינה 
 \lang english
@@ -3161,7 +3275,8 @@ stripped
 .
  כברירת מחדל, קובץ ה- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  בתיקיית המקור מכיל מידע ל- 
 \lang english
@@ -3174,7 +3289,8 @@ stripped
 , כלומר אינה כוללת מידע זה.
  לפיכך, הרץ את 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  מתוך 
 \lang english
@@ -3199,7 +3315,8 @@ run
 .
  גרום ל- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  לקרוס ואז תחזור ל- 
 \family typewriter
@@ -3265,11 +3382,13 @@ backtrace
 \begin_layout Standard
 אם ביצעת שינויים לקוד המקור של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  ואתה חושב שהם צריכים להפוך לחלק בלתי נפרד מ- 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , שלח את שינוייך בתור קובץ 
 \lang english
@@ -3294,11 +3413,13 @@ patch
 \begin_layout Standard
 התיעוד של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  הוא נרחב; אף על פי כן, 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
  הוא תחת פיתוח מתמיד, וכל מהדורה חדשה שלו מוסיפה אפשרויות נוספות.
  ייתכן ותמצא כמה מקבצי התיעוד שזקוקים לשיפור.
@@ -3333,11 +3454,13 @@ lyx-docs@lists.lyx.org
 \begin_layout Standard
 פרוייקט התיעוד של 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , כמו כל דבר אחר בפרוייקט 
 \lang english
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \lang hebrew
 , תמיד יכול להעזר בעוד משתמש עם רצון טוב! אם אתה מעוניין לתרום לפרוייקט
  התיעוד, משימתך הראשונה היא:

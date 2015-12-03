@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/zh_CN/
+\origin unavailable
 \textclass book
 \begin_preamble
 %\usepackage{fontspec}
@@ -99,12 +99,12 @@
 \begin_body
 
 \begin_layout Title
-The \SpecialCharNoPassThru LyX
+The \SpecialChar LyX
  Tutorial
 \end_layout
 
 \begin_layout Author
-by the \SpecialCharNoPassThru LyX
+by the \SpecialChar LyX
  Team
 \begin_inset Foot
 status collapsed
@@ -144,30 +144,30 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-欢迎来到 \SpecialCharNoPassThru LyX
+欢迎来到 \SpecialChar LyX
 !
 \end_layout
 
 \begin_layout Standard
-这个文档是为那些不知道 \SpecialCharNoPassThru LaTeX
- 或知之甚少的人准备的。不必担心，使用 \SpecialCharNoPassThru LyX
- 不必学习 \SpecialCharNoPassThru LaTeX
-。\SpecialCharNoPassThru LyX
- 的目标就是提供一个所见即所得的
- \SpecialCharNoPassThru LaTeX
- 应用。为了高效的使用 \SpecialCharNoPassThru LyX
-，还是需要学习一些东西的。
+这个文档是为那些不知道 \SpecialChar LaTeX
+ 或知之甚少的人准备的。不必担心，使用 \SpecialChar LyX
+ 不必学习 \SpecialChar LaTeX
+。\SpecialChar LyX
+ 的目标就是提供一个所见即所得的 \SpecialChar LaTeX
+ 应用。为了高效的使用 \SpecialChar LyX
+，还是需要学习一些东西的
+。
 \end_layout
 
 \begin_layout Standard
-你会发现在其它字处理软件中常用的排版方式在 \SpecialCharNoPassThru LyX
- 中都不能使用了，比如：在“.”后边输入两个空格，在段间输入三个空行。你以前使用的软件允许手动调整间距、字体等东
-西，所以你不得不即录入又排版。\SpecialCharNoPassThru LyX
+你会发现在其它字处理软件中常用的排版方式在 \SpecialChar LyX
+ 中都不能使用了，比如：在“.”后边输入两个空格，在段间输入三个空行。你以前使用的软件允许手动调整间距、字体等东西，所
+以你不得不即录入又排版。\SpecialChar LyX
 会做好排版的事情的，而你只需要转注于重要的东西：你正在写的内容。
 \end_layout
 
 \begin_layout Standard
-继续读下去，了解更多 \SpecialCharNoPassThru LyX
+继续读下去，了解更多 \SpecialChar LyX
 。读完这篇教程，你会觉得物有所值的。
 \end_layout
 
@@ -188,19 +188,19 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-如果对 \SpecialCharNoPassThru LaTeX
- 比较熟悉的话，你将能够较快的阅读本教程，因为 \SpecialCharNoPassThru LyX
- 的思想就是 \SpecialCharNoPassThru LaTeX
- 思想的一种包装。\SpecialCharNoPassThru LyX
- 自身也有很多特性是你想了解的。就算不想
-继续读下去，你也应该看看 
+如果对 \SpecialChar LaTeX
+ 比较熟悉的话，你将能够较快的阅读本教程，因为 \SpecialChar LyX
+ 的思想就是 \SpecialChar LaTeX
+ 思想的一种包装。\SpecialChar LyX
+ 自身也有很多特性是你想了解的。就算不想继续读下去，你也应该看看
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LaTeX-用户必读"
 
 \end_inset
 
-，它是专门写给熟练的 \SpecialCharNoPassThru LaTeX
+，它是专门写给熟练的 \SpecialChar LaTeX
  用户的。
 \end_layout
 
@@ -209,10 +209,11 @@ reference "sec:LaTeX-用户必读"
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  全部特性的详细解释。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -225,17 +226,18 @@ User's Guide。
 
 \end_deeper
 \begin_layout Itemize
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  的详细解释。
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-没必要这样做。要想知道用 \SpecialCharNoPassThru LaTeX
- 在 \SpecialCharNoPassThru LyX
+没必要这样做。要想知道用 \SpecialChar LaTeX
+ 在 \SpecialChar LyX
  中能做些什么，可以看看 the 
 \emph on
 Embedded
@@ -253,11 +255,12 @@ Objects
 \end_layout
 
 \begin_layout Chapter
-初识 \SpecialCharNoPassThru LyX
+初识 \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Section
-第一个 \SpecialCharNoPassThru LyX
+第一个 \SpecialChar LyX
  文档
 \end_layout
 
@@ -266,7 +269,7 @@ Objects
 \end_layout
 
 \begin_layout Standard
-由于本教程不会提供所有信息，所以你需要找到其它的帮助文件。这很简单：启动 \SpecialCharNoPassThru LyX
+由于本教程不会提供所有信息，所以你需要找到其它的帮助文件。这很简单：启动 \SpecialChar LyX
 ，在帮助菜单中就有 the 
 \emph on
 User's Guide。
@@ -275,9 +278,9 @@ User's Guide。
 \end_layout
 
 \begin_layout Standard
-我们假设你已经有了全功能的 \SpecialCharNoPassThru LyX
- 和 \SpecialCharNoPassThru LaTeX
-，包括 DVI、PDF 文件浏览器。一般来说，在各种操作系统上，在安装 \SpecialCharNoPassThru LyX
+我们假设你已经有了全功能的 \SpecialChar LyX
+ 和 \SpecialChar LaTeX
+，包括 DVI、PDF 文件浏览器。一般来说，在各种操作系统上，在安装 \SpecialChar LyX
  的时候就已经做好了。
 \end_layout
 
@@ -286,19 +289,19 @@ User's Guide。
 \family typewriter
 example_raw.lyx，
 \family default
-给你练习使用。假想这个文件是由一个完全不知道 \SpecialCharNoPassThru LyX
- 特性的人写的，在学习的过程中，我们会建议你修改这个文件的。example_raw.lyx 中也包含了修改的提
-示信息。为了对比，我们还提供了一份 \SpecialCharNoPassThru LyX
+给你练习使用。假想这个文件是由一个完全不知道 \SpecialChar LyX
+ 特性的人写的，在学习的过程中，我们会建议你修改这个文件的。example_raw.lyx 中也包含了修改的提示信息
+。为了对比，我们还提供了一份 \SpecialChar LyX
  高手写的同样内容的文档：example_lyxified.lyx。
 \end_layout
 
 \begin_layout Standard
-示例文档存在于 \SpecialCharNoPassThru LyX
+示例文档存在于 \SpecialChar LyX
  安装路径的 examples 目录下。打开示例文档，另存到自己的目录下，修改后输出到 DVI 文件看效果。
 \end_layout
 
 \begin_layout Standard
-另外，examples 目录中还有很多其它的示例文件，它们将向您展示 \SpecialCharNoPassThru LyX
+另外，examples 目录中还有很多其它的示例文件，它们将向您展示 \SpecialChar LyX
  的强大功能。当你忘记了某个功能怎么使用的时候，也可以回来看看这些文档。
 \end_layout
 
@@ -316,7 +319,7 @@ New 打开新文件。
 \begin_layout Itemize
 输入一个句子: 
 \family typewriter
-This is my first \SpecialCharNoPassThru LyX
+This is my first \SpecialChar LyX
  document!
 \end_layout
 
@@ -332,20 +335,19 @@ As 保存文件。
 \end_layout
 
 \begin_layout Itemize
-运行 \SpecialCharNoPassThru LaTeX
+运行 \SpecialChar LaTeX
  生成 DVI 文件，使用菜单 
 \family sans
-View\SpecialChar menuseparator
-DVI
+Document\SpecialChar menuseparator
+View
 \family default
  或 工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/buffer-view_dvi.png
-	scale 75
-
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
 \end_inset
 
-。 \SpecialCharNoPassThru LyX
+。 \SpecialChar LyX
  将打开 DVI-viewer 程序显示文档打印时的样子。 
 \begin_inset Foot
 status collapsed
@@ -353,18 +355,17 @@ status collapsed
 \begin_layout Plain Layout
 保持 DVI-viewer在后台运行会节省时间。以后可以点击 
 \family sans
-View\SpecialChar menuseparator
+Document\SpecialChar menuseparator
 Update\SpecialChar menuseparator
 DVI
 \family default
- 或工具栏按钮
-\begin_inset Graphics
-	filename ../../images/buffer-update_dvi.png
-	scale 75
-
+ 或工具栏按钮 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
 \end_inset
 
-，等 \SpecialCharNoPassThru LyX
+，等 \SpecialChar LyX
  运算完成后切换到 DVI-viewer即可。
 \end_layout
 
@@ -383,7 +384,7 @@ Export
 \end_layout
 
 \begin_layout Standard
-恭喜！你已经写出了第一个 \SpecialCharNoPassThru LyX
+恭喜！你已经写出了第一个 \SpecialChar LyX
  文档。其余的细节，你会在其它手册中读到。
 \end_layout
 
@@ -392,23 +393,21 @@ Export
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  能够做到其它软件能做的绝大部分事情，如：自动换行、段落缩进……以下是几个简单操作的使用方法。
 \end_layout
 
 \begin_layout Description
-撤消 \SpecialCharNoPassThru LyX
+撤消 \SpecialChar LyX
  有多级撤消功能，你可以使用 
 \family sans
 Edit\SpecialChar menuseparator
 Undo
 \family default
  （或工具拦按钮 
-\begin_inset Graphics
-	filename ../../images/undo.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "undo"
 \end_inset
 
 ）来撤消本次编辑会话开始以来的所有操作。如果撤消过头了，可以选择 
@@ -417,17 +416,15 @@ Edit\SpecialChar menuseparator
 Redo
 \family default
  （或工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/redo.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "redo"
 \end_inset
 
 ）恢复。 
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -444,11 +441,9 @@ Edit\SpecialChar menuseparator
 Cut
 \family default
  （工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/cut.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
 ）， 
@@ -457,11 +452,9 @@ Edit\SpecialChar menuseparator
 Copy
 \family default
  （工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/copy.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
 ），和 
@@ -470,11 +463,9 @@ Edit\SpecialChar menuseparator
 Paste
 \family default
  （工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/paste.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
 ） 来实现剪切、复制和粘贴操作。或者也可通过鼠标中键来粘贴选中的文本（包括其它程序中选定的文本）。
@@ -495,11 +486,9 @@ Find
 Replace
 \family default
  （工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/dialog-show_findreplace.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
 ） ，在出现的对话框中点击按钮“
@@ -519,7 +508,7 @@ Replace”替换搜到的字词。
 status open
 
 \begin_layout Plain Layout
-完成后关闭窗口，如果觉得方便的话也可一直开着它。\SpecialCharNoPassThru LyX
+完成后关闭窗口，如果觉得方便的话也可一直开着它。\SpecialChar LyX
  中的大部分窗口都可以这样。使用时注意焦点的切换即可。
 \end_layout
 
@@ -558,23 +547,23 @@ Style
 \end_layout
 
 \begin_layout Subsection
-所见即所想：\SpecialCharNoPassThru LyX
+所见即所想：\SpecialChar LyX
  中的空白
 \end_layout
 
 \begin_layout Standard
-对新用户来说，最难理解的是 \SpecialCharNoPassThru LyX
- 处理空白的方式。敲多次回车只能得到一个空行；敲多次空格只能得到一个空格。在空白行上，连一个空格都无法得到。按下
- Tab 键也不会移动一个 Tab 位；实际上就没有 Tab 位！在页面上方也没有标尺可供设置 Tab 位和边距。
+对新用户来说，最难理解的是 \SpecialChar LyX
+ 处理空白的方式。敲多次回车只能得到一个空行；敲多次空格只能得到一个空格。在空白行上，连一个空格都无法得到。按下 Tab
+ 键也不会移动一个 Tab 位；实际上就没有 Tab 位！在页面上方也没有标尺可供设置 Tab 位和边距。
 \end_layout
 
 \begin_layout Standard
-很多字处理软件建立在 WYSIWYG 理念之上，也就是：看到的就是得到的（所见即所得）。\SpecialCharNoPassThru LyX
- 不同，它建立在 WYSIWYM （所想即所得）的理念之上。你想什
-么就输入什么，\SpecialCharNoPassThru LyX
- 会处理排版的问题，这样保证了输出文件的美观。回车分段，空格断词，没理由在一行中输入好几次空格。Tab 根本就没有语法意义，所以
- \SpecialCharNoPassThru LyX
- 不支持它。使用 \SpecialCharNoPassThru LyX
+很多字处理软件建立在 WYSIWYG 理念之上，也就是：看到的就是得到的（所见即所得）。\SpecialChar LyX
+ 不同，它建立在 WYSIWYM （所想即所得）的理念之上。你想什么就输
+入什么，\SpecialChar LyX
+ 会处理排版的问题，这样保证了输出文件的美观。回车分段，空格断词，没理由在一行中输入好几次空格。Tab 根本就没有语法意义，所以 \SpecialChar LyX
+ 不支持它。使用
+ \SpecialChar LyX
 ，你将花费更多的时间去考虑文档的
 \series bold
 内容
@@ -589,8 +578,8 @@ Introduction。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- 的确也有不少精细调整文档格式的方法。毕竟 \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+ 的确也有不少精细调整文档格式的方法。毕竟 \SpecialChar LyX
  可能不会 100% 精确的按照你想的去排版。
 \emph on
 User's Guide 
@@ -625,9 +614,10 @@ environments
 \end_layout
 
 \begin_layout Standard
-环境是 \SpecialCharNoPassThru LyX
- 所见即所得哲学的重要部分。一个环境需要具体的定义：字体大小、样式、缩进、行间距等等。这个问题非常重要，因为一个给定环境的具体定义会随着文档类型的
-变化而变化。比如：某期刊要求标题是黑体、18pt、居中，而另一个可能要求斜体、15pt、左对齐；不同的语言也有不同的缩进标准；参考文献的格式就变化更大了。\SpecialCharNoPassThru LyX
+环境是 \SpecialChar LyX
+ 所见即所得哲学的重要部分。一个环境需要具体的定义：字体大小、样式、缩进、行间距等等。这个问题非常重要，因为一个给定环境的具体定义会随着文档类型的变化而
+变化。比如：某期刊要求标题是黑体、18pt、居中，而另一个可能要求斜体、15pt、左对齐；不同的语言也有不同的缩进标准；参考文献的格式就变化更大了。\SpecialChar LyX
+
  会把你从这些格式中间拯救出来。
 \end_layout
 
@@ -652,7 +642,7 @@ Section
 \end_layout
 
 \begin_layout Standard
-在 \SpecialCharNoPassThru LyX
+在 \SpecialChar LyX
  文档的第一行输入“
 \family typewriter
 Introduction
@@ -683,7 +673,7 @@ Section
 \family sans
 Section*
 \family default
-）。\SpecialCharNoPassThru LyX
+）。\SpecialChar LyX
  将在前边加上“1”并把字体调大。现在敲回车，环境将从“节”（
 \family sans
 Section
@@ -692,7 +682,7 @@ Section
 \end_layout
 
 \begin_layout LyX-Code
-This is an introduction to my first \SpecialCharNoPassThru LyX
+This is an introduction to my first \SpecialChar LyX
  document.
 \end_layout
 
@@ -701,12 +691,12 @@ This is an introduction to my first \SpecialCharNoPassThru LyX
 \family sans
 Section
 \family default
-）环境，\SpecialCharNoPassThru LyX
+）环境，\SpecialChar LyX
  将写上“2”并等待输入。现在输入“
 \family typewriter
 More Stuff
 \family default
-”，\SpecialCharNoPassThru LyX
+”，\SpecialChar LyX
  会把它设置成节（
 \family sans
 Section
@@ -723,7 +713,7 @@ Section
 \family sans
 Section
 \family default
-），\SpecialCharNoPassThru LyX
+），\SpecialChar LyX
  会写上“2”并等待输入。输入“
 \family typewriter
 About This Document
@@ -740,7 +730,7 @@ About This Document
 \family sans
 Section
 \family default
-）标题，\SpecialCharNoPassThru LyX
+）标题，\SpecialChar LyX
  会处理编号和排版格式的，这就是所见即所想（WYSIWYM）的风格。
 \end_layout
 
@@ -769,11 +759,11 @@ Subsections are smaller than sections.
 \end_layout
 
 \begin_layout Standard
-点击第二行，在环境下拉菜单中设为“子节”（Subsection）。\SpecialCharNoPassThru LyX
+点击第二行，在环境下拉菜单中设为“子节”（Subsection）。\SpecialChar LyX
  将会在前边加上“2.1”，并把字体调整的比正文大，比节（Section）标题小。接着把第
- 4 行也设置成为“子节”（Subsection），\SpecialCharNoPassThru LyX
- 将在它前边加上“2.2”。如果在节 2 （Section 2）前边加上了别的节，节 2
- 将会自动变为节 3（Section 3），后边的子节也会跟着变成“3.1”和“3.2”。
+ 4 行也设置成为“子节”（Subsection），\SpecialChar LyX
+ 将在它前边加上“2.2”。如果在节 2 （Section 2）前边加上了别的节，节 2 将会自动变为节
+ 3（Section 3），后边的子节也会跟着变成“3.1”和“3.2”。
 \end_layout
 
 \begin_layout Standard
@@ -782,7 +772,7 @@ Subsections are smaller than sections.
 \emph on
 User's Guide
 \emph default
- 得到更多解释以及如何改变它们。章（Chapter）是文档层级结构中最高的一级，只能在某些特定的 \SpecialCharNoPassThru LyX
+ 得到更多解释以及如何改变它们。章（Chapter）是文档层级结构中最高的一级，只能在某些特定的 \SpecialChar LyX
  文档类型中才能使用它（见 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -794,14 +784,14 @@ reference "sec:文档类"
 \end_layout
 
 \begin_layout Standard
-你可能还希望一些节和子节是不编号的，\SpecialCharNoPassThru LyX
+你可能还希望一些节和子节是不编号的，\SpecialChar LyX
  有专门的环境实现这个功能。当把节的标题环境改为“节*
 \begin_inset Quotes erd
 \end_inset
 
-（Section*）后，\SpecialCharNoPassThru LyX
- 还将对它使用相同的字体，只是不再对它进行编号。相应的也有带“星”的子节和次子节环境。试着把一些节或子节的标题环境改为带星的，同时
-看看其它的编号怎么随之改变。
+（Section*）后，\SpecialChar LyX
+ 还将对它使用相同的字体，只是不再对它进行编号。相应的也有带“星”的子节和次子节环境。试着把一些节或子节的标题环境改为带星的，同时看看其
+它的编号怎么随之改变。
 \end_layout
 
 \begin_layout Standard
@@ -813,7 +803,7 @@ reference "sec:文档类"
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  有好几种列表环境，在写提纲或者重新排序一个已有的列表时，这些列表环境会帮上大忙。不同的文档类型需要不同的列表环境：
 \end_layout
 
@@ -854,14 +844,14 @@ Description
 \end_layout
 
 \begin_layout Standard
-现在我们写一个 \SpecialCharNoPassThru LyX
+现在我们写一个 \SpecialChar LyX
  有关优点的列表。在文档中输入：
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is better than other word processors because: 
 \end_layout
 
@@ -870,7 +860,7 @@ Description
 \family sans
 Itemize
 \family default
-）。\SpecialCharNoPassThru LyX
+）。\SpecialChar LyX
  会在行首加上圆点。继续输入：
 \end_layout
 
@@ -887,7 +877,7 @@ Lists are very easy to create!
 \end_layout
 
 \begin_layout Standard
-和标题不同，列表环境在敲回车时不会终止，\SpecialCharNoPassThru LyX
+和标题不同，列表环境在敲回车时不会终止，\SpecialChar LyX
  会认为你将继续写下一个条目。所以上边的输入将会产生三个列表项。重新选择标准环境（
 \family sans
 Standard
@@ -912,7 +902,7 @@ Break
 \end_layout
 
 \begin_layout Standard
-你已经得到了一个漂亮的条目列表，你是不是已经迫不及待的想运行 \SpecialCharNoPassThru LaTeX
+你已经得到了一个漂亮的条目列表，你是不是已经迫不及待的想运行 \SpecialChar LaTeX
  看看它们打印出来的样子了？可如果您想给它们加上编号呢？你只需要选定整个列表
 \begin_inset Foot
 status collapsed
@@ -928,7 +918,7 @@ status collapsed
 \family sans
 Enumerate
 \family default
-）即可。如果你增删条目的话，\SpecialCharNoPassThru LyX
+）即可。如果你增删条目的话，\SpecialChar LyX
  会自动修改枚举编号的。
 \end_layout
 
@@ -993,14 +983,14 @@ Quotation
 \family default
 ）。计算机代码使用代码环境（
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -Code
 \family default
 ），该环境使用
 \family typewriter
 typewriter
 \family default
- 字体，而且这里是 \SpecialCharNoPassThru LyX
+ 字体，而且这里是 \SpecialChar LyX
  中唯一允许使用多个空格的地方。你还可以使用诗环境（
 \family sans
 Verse
@@ -1025,11 +1015,11 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-前边的章节讲解了 \SpecialCharNoPassThru LyX
- 的基本操作和环境的使用方法，使大家对 \SpecialCharNoPassThru LyX
- 有了一个初步的了解。而大部分人使用 \SpecialCharNoPassThru LyX
- 是为了写文档的，比如：论文、书、手册或书信。
-本章将学习编辑完整的文档，你将学到文档类、标题、脚注、交叉引用、参考文献和目录的使用方法。
+前边的章节讲解了 \SpecialChar LyX
+ 的基本操作和环境的使用方法，使大家对 \SpecialChar LyX
+ 有了一个初步的了解。而大部分人使用 \SpecialChar LyX
+ 是为了写文档的，比如：论文、书、手册或书信。本章将学习编辑完整
+的文档，你将学到文档类、标题、脚注、交叉引用、参考文献和目录的使用方法。
 \end_layout
 
 \begin_layout Section
@@ -1050,14 +1040,14 @@ X 的文档类
 status collapsed
 
 \begin_layout Plain Layout
-for \SpecialCharNoPassThru LaTeX
- users: this is equivalent to the \SpecialCharNoPassThru LaTeX
+for \SpecialChar LaTeX
+ users: this is equivalent to the \SpecialChar LaTeX
  document class
 \end_layout
 
 \end_inset
 
-会处理不同文档种类中不同的排版方式。本教程使用的就是书籍文档类。文档类是所见即所想哲学的一个重要部分，它告诉 \SpecialCharNoPassThru LyX
+会处理不同文档种类中不同的排版方式。本教程使用的就是书籍文档类。文档类是所见即所想哲学的一个重要部分，它告诉 \SpecialChar LyX
  怎样排版，所以你不需要知道太多。
 \end_layout
 
@@ -1086,9 +1076,9 @@ Settings
 \end_layout
 
 \begin_layout Standard
-各种杂志期刊排版区别主要在于字体大小、单双栏、页眉等地方。随着计算机时代的到来，期刊开始接受电子投稿，只要建立相应的 \SpecialCharNoPassThru LaTeX
- 样式文件（style
- files），作者们就可以提交正确排版的文章了。\SpecialCharNoPassThru LyX
+各种杂志期刊排版区别主要在于字体大小、单双栏、页眉等地方。随着计算机时代的到来，期刊开始接受电子投稿，只要建立相应的 \SpecialChar LaTeX
+ 样式文件（style files），作者
+们就可以提交正确排版的文章了。\SpecialChar LyX
  就可以通过 
 \family sans
 Article
@@ -1102,8 +1092,8 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-译注：别指望中国的出版社能支持 \SpecialCharNoPassThru LaTeX
- 格式的投稿，支持 \SpecialCharNoPassThru LaTeX
+译注：别指望中国的出版社能支持 \SpecialChar LaTeX
+ 格式的投稿，支持 \SpecialChar LaTeX
  的能超过一个巴掌就阿弥陀佛吧。
 \end_layout
 
@@ -1121,13 +1111,14 @@ Additional Features
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -1309,9 +1300,9 @@ presentation
 要写信，你只需要新建一个文件并从 
 \family sans
 Document\SpecialChar menuseparator
-Settings 对话框中设定书信文档类就行了。但每次写信都需要设定发信人地址、收信人地址、正文、签名等环境，\SpecialCharNoPassThru LyX
- 的书信模板可以省下不少时间
-，你只要替换模板中相应部分的文字即可。
+Settings 对话框中设定书信文档类就行了。但每次写信都需要设定发信人地址、收信人地址、正文、签名等环境，\SpecialChar LyX
+ 的书信模板可以省下不少时间，你只
+要替换模板中相应部分的文字即可。
 \end_layout
 
 \begin_layout Standard
@@ -1352,13 +1343,14 @@ Signature
 \family sans
 Signature
 \family default
-：”标签，该标签并不出现在打印出来的书信中。它就是告诉你这里有你设置的签名，它出现在哪里也不重要，\SpecialCharNoPassThru LyX
- 是所见即所想的，无论把它放在哪里，\SpecialCharNoPassThru LyX
- 都知道在打印时它应该出现在最后。
+：”标签，该标签并不出现在打印出来的书信中。它就是告诉你这里有你设置的签名，它出现在哪里也不重要，\SpecialChar LyX
+ 是所见即所想的，无论把它放在哪里，\SpecialChar LyX
+ 都知道在打印时它应该出现
+在最后。
 \end_layout
 
 \begin_layout Standard
-模板本身是一个 \SpecialCharNoPassThru LyX
+模板本身是一个 \SpecialChar LyX
  常规文件，你可以修改一下另存为一个新的模板。下次写信时，使用新模板会节省时间。这里我们没有建议的练习，你就给某人写封信吧。
 \begin_inset Foot
 status collapsed
@@ -1390,9 +1382,9 @@ Environment
 \end_layout
 
 \begin_layout Standard
-鉴于使用模板能够节省大量时间，我们强烈建议您使用它。另外它们还能够帮助人们学习其它新奇的文档类。如果您想把 \SpecialCharNoPassThru LyX
- 介绍给不太会用计算机的人使用的话，模板也能帮
-上忙。模板还能降低初学者对 \SpecialCharNoPassThru LyX
+鉴于使用模板能够节省大量时间，我们强烈建议您使用它。另外它们还能够帮助人们学习其它新奇的文档类。如果您想把 \SpecialChar LyX
+ 介绍给不太会用计算机的人使用的话，模板也能帮上忙。
+模板还能降低初学者对 \SpecialChar LyX
  的恐惧感。
 \end_layout
 
@@ -1401,12 +1393,12 @@ Environment
 \end_layout
 
 \begin_layout Standard
-标题包括题目、作者、日期、摘要。\SpecialCharNoPassThru LyX
+标题包括题目、作者、日期、摘要。\SpecialChar LyX
  把标题视为文档中单独的一部分。
 \end_layout
 
 \begin_layout Standard
-新建一个 \SpecialCharNoPassThru LyX
+新建一个 \SpecialChar LyX
  文档，令其使用文章文档类（
 \family sans
 Article
@@ -1457,8 +1449,9 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-你可以为章节标题、列表项、公式、脚注、浮动体（floats）添加标签，之后可在文档的其它部分通过交叉引用引用它们，可以引用章节编号也可以引用页码，\SpecialCharNoPassThru LyX
- 当然也会自动计算交叉引用的编号。自动标签和交叉引用是 \SpecialCharNoPassThru LyX
+你可以为章节标题、列表项、公式、脚注、浮动体（floats）添加标签，之后可在文档的其它部分通过交叉引用引用它们，可以引用章节编号也可以引用页码，\SpecialChar LyX
+
+ 当然也会自动计算交叉引用的编号。自动标签和交叉引用是 \SpecialChar LyX
  相对于其它字处理软件的显著优点。
 \end_layout
 
@@ -1473,11 +1466,9 @@ Insert\SpecialChar menuseparator
 Label 或工具栏按钮
 \family default
  
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
 。在对话框中输入标签名，点击 OK 后，标签名将会出现在行尾。
@@ -1519,11 +1510,9 @@ Cross
 Reference 或点击工具栏按钮
 \family default
  
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
  调出交叉引用对话框。你将会看到可用的标签列表，当然现在只有一个：
@@ -1559,7 +1548,7 @@ Copy as Reference
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  会将交叉引用放在光标所在位置。在打印出来的文档中，引用将会被替换成页码或节编号（这要看引用格式是怎么设置的了）。在输出的 DVI 文件中，我们会看到对节
  2（Section
 \begin_inset space ~
@@ -1593,10 +1582,9 @@ Label
 \end_layout
 
 \begin_layout Standard
-前边说过，\SpecialCharNoPassThru LyX
- 会自动计算交叉引用的编号，现在来试试这个功能。在节 2 前边添加一个新节，更新 DVI 输出文件，对节的交叉引用已经变成 3
- 了。再把“About this Document”设置成子节（subsection），引用将会从 3 变为 2.1 。当然，不在标签前边添加一整页文字的话，引用
-的页码是不会改变的。
+前边说过，\SpecialChar LyX
+ 会自动计算交叉引用的编号，现在来试试这个功能。在节 2 前边添加一个新节，更新 DVI 输出文件，对节的交叉引用已经变成 3 了。再把“About
+ this Document”设置成子节（subsection），引用将会从 3 变为 2.1 。当然，不在标签前边添加一整页文字的话，引用的页码是不会改变的。
 \end_layout
 
 \begin_layout Standard
@@ -1654,33 +1642,29 @@ example_raw.lyx
 
 \begin_layout Standard
 点击工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
  或菜单 
 \family sans
 Insert\SpecialChar menuseparator
-Footnote，将会在当前位置插入脚注。在文档中找到单词“\SpecialCharNoPassThru LyX
+Footnote，将会在当前位置插入脚注。在文档中找到单词“\SpecialChar LyX
 ”，将光标定位在它后边，点击
 \family default
 工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
-，脚注框将会出现在“\SpecialCharNoPassThru LyX
+，脚注框将会出现在“\SpecialChar LyX
 ”后边，可以在里边输入脚注文字，现在输入
 \end_layout
 
 \begin_layout LyX-Code
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is a typesetting word processor.
 \end_layout
 
@@ -1695,11 +1679,9 @@ Footnote，将会在当前位置插入脚注。在文档中找到单词“\Speci
 
 \begin_layout Standard
 脚注也可以像普通文字那样剪切、粘贴，选定脚注的灰框后就可以粘贴了。另外，选定一段文本再点击按钮 
-\begin_inset Graphics
-	filename ../../images/footnote-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
 \end_inset
 
 ，你就可以将一段文本转换为脚注了。要将从脚注变为常规文字，只需要将光标定位在脚注文字的最前边后再按下退格键（
@@ -1724,11 +1706,9 @@ Marginal
 Note 或工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/marginalnote-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
 ，可以添加旁注。旁注和脚注从功能上说是类似的，其不同之处在于：
@@ -1747,7 +1727,7 @@ Note 或工具栏按钮
 \end_layout
 
 \begin_layout Standard
-将脚注转变为常规文字，再把它们转变为旁注。运行 \SpecialCharNoPassThru LaTeX
+将脚注转变为常规文字，再把它们转变为旁注。运行 \SpecialChar LaTeX
  看看旁注是什么样的。
 \end_layout
 
@@ -1777,10 +1757,10 @@ name "sec:参考文献"
 \end_layout
 
 \begin_layout Standard
-参考文献和交叉引用有点像，它在文档末尾有一个引用列表，你可以在文档中引用它们。和章节标题一样，\SpecialCharNoPassThru LyX
- 和 \SpecialCharNoPassThru LaTeX
-也会为您自动计算参考文献的编号，当编号改变时
-，引用也会随之改变。
+参考文献和交叉引用有点像，它在文档末尾有一个引用列表，你可以在文档中引用它们。和章节标题一样，\SpecialChar LyX
+ 和 \SpecialChar LaTeX
+也会为您自动计算参考文献的编号，当编号改变时，引用也会随之改
+变。
 \end_layout
 
 \begin_layout Standard
@@ -1790,10 +1770,10 @@ Bibliography
 \family default
 ），你输入的每一个段落都将成为一个被引用对象。现在输入第一个引用项：“
 \family typewriter
-The Lyx Tutorial, by the \SpecialCharNoPassThru LyX
+The Lyx Tutorial, by the \SpecialChar LyX
  Documentation Team
 \family default
-”。\SpecialCharNoPassThru LyX
+”。\SpecialChar LyX
  将会在每个引用项前边的框加上编号，点击引用项前边的框参考文献项（
 \family sans
 Bibliography
@@ -1802,7 +1782,7 @@ Bibliography
 
 item
 \family default
-）对话框就会出现。其中“键”（key）是 \SpecialCharNoPassThru LyX
+）对话框就会出现。其中“键”（key）是 \SpecialChar LyX
  中标识该引用项用的，标签（
 \family sans
 Label
@@ -1817,11 +1797,9 @@ Insert\SpecialChar menuseparator
 Citation 或工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_citation.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
 \end_inset
 
 ，将出现引用对话框（
@@ -1871,7 +1849,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-用 \SpecialCharNoPassThru LyX
+用 \SpecialChar LyX
  在文档开始添加目录非常简单：在文档标题后敲回车，选择 
 \family sans
 Insert\SpecialChar menuseparator
@@ -1904,18 +1882,16 @@ Table of Contents
 \end_layout
 
 \begin_layout Standard
-为了保证文档的可读性，\SpecialCharNoPassThru LyX
+为了保证文档的可读性，\SpecialChar LyX
  的编辑窗口中并不显示目录内容。选择 
 \family sans
 Document\SpecialChar menuseparator
 Outline 或工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/dialog-toggle_toc.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
 \end_inset
 
 ，将在一个新开的提纲窗口（
@@ -1957,16 +1933,16 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-不少科学家使用 \SpecialCharNoPassThru LaTeX
-，这是因为它能够输出漂亮的公式，还不用使用其它字处理软件的控制字和它们的公式编辑器。但这些科学家中有不少人觉得 \SpecialCharNoPassThru LaTeX
- 很难用，因为它用起来不像是在写文章，而像是在编程。\SpecialCharNoPassThru LyX
- 能够很好的解决这个问题，它对公式能够实现所见即所想。如果熟悉 \SpecialCharNoPassThru LaTeX
- 的话，你会发现以前常用的
- \SpecialCharNoPassThru LaTeX
- 的数学命令都能被 \SpecialCharNoPassThru LyX
- 正确识别，而且能够显示成最后输出时的样子。如果不会使用 \SpecialCharNoPassThru LaTeX
-的话，你照样能通过数学面板简单快速的输入漂亮的数学公式
-。
+不少科学家使用 \SpecialChar LaTeX
+，这是因为它能够输出漂亮的公式，还不用使用其它字处理软件的控制字和它们的公式编辑器。但这些科学家中有不少人觉得 \SpecialChar LaTeX
+ 很难用，因为它用起来不像是在写
+文章，而像是在编程。\SpecialChar LyX
+ 能够很好的解决这个问题，它对公式能够实现所见即所想。如果熟悉 \SpecialChar LaTeX
+ 的话，你会发现以前常用的 \SpecialChar LaTeX
+ 的数学命令都能被 \SpecialChar LyX
+ 正确识别，而且能够显示成最
+后输出时的样子。如果不会使用 \SpecialChar LaTeX
+的话，你照样能通过数学面板简单快速的输入漂亮的数学公式。
 \end_layout
 
 \begin_layout Section
@@ -1983,17 +1959,15 @@ I like what Einstein said, E=mc^2, because it's so simple.
 \end_layout
 
 \begin_layout Standard
-现在你的公式并不能被正确显示，因为 \SpecialCharNoPassThru LyX
+现在你的公式并不能被正确显示，因为 \SpecialChar LyX
  并不知道你是在输入公式，所以它按照常规文本来处理输入的公式。
 \end_layout
 
 \begin_layout Standard
 要输入公式，只要点击工具栏上的按钮 
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
  或使用菜单 
@@ -2004,10 +1978,11 @@ Inline
 \begin_inset space ~
 \end_inset
 
-Formula，\SpecialCharNoPassThru LyX
+Formula，\SpecialChar LyX
  就会插入一个蓝色方框，这就是一个空的公式。现在再输入 
 \family typewriter
-E=mc^2 就行了。在公式中输入字符后，蓝色方框会消失。按下 Esc 退出公式输入状态，公式四角的紫色标记会消失并将光标定位在公式右边。再输入文字时，\SpecialCharNoPassThru LyX
+E=mc^2 就行了。在公式中输入字符后，蓝色方框会消失。按下 Esc 退出公式输入状态，公式四角的紫色标记会消失并将光标定位在公式右边。再输入文字时，\SpecialChar LyX
+
  会按照常规字符来处理它们的。
 \end_layout
 
@@ -2017,19 +1992,19 @@ E=mc^2 就行了。在公式中输入字符后，蓝色方框会消失。按下 
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- 的公式编辑器是所见即所得哲学的又一个例子。\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ 的公式编辑器是所见即所得哲学的又一个例子。\SpecialChar LaTeX
  中用文本和命令输入公式，如：
 \backslash
-sqrt{2}，将文档输出后才能看到公式的真正样子，在编辑状态下，一般人是很难发现所输入公式的错误的。虽然 \SpecialCharNoPassThru LyX
- 并没有试着让公式在编辑状态下就显示的非常完美
-，但它的确让人看到了所输入公式的样子。输出时 \SpecialCharNoPassThru LaTeX
+sqrt{2}，将文档输出后才能看到公式的真正样子，在编辑状态下，一般人是很难发现所输入公式的错误的。虽然 \SpecialChar LyX
+ 并没有试着让公式在编辑状态下就显示的非常完美，但它
+的确让人看到了所输入公式的样子。输出时 \SpecialChar LaTeX
  再接手对公式进行专业的排版。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-译注：如果你设置了即时预览，\SpecialCharNoPassThru LyX
+译注：如果你设置了即时预览，\SpecialChar LyX
  在公式退出编辑状态后就会将公式显示为文档输出后的样子！
 \end_layout
 
@@ -2077,9 +2052,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-输入指数时，你可以使用界面下方的工具栏或直接输入“^”，\SpecialCharNoPassThru LyX
- 会在上标位置放置一个蓝色方框，接下来输入的字符会被视为上标。上标输入完成后按空格回到公式正文编辑
-状态。类似指数的输入，输入下标只需键入“_”。
+输入指数时，你可以使用界面下方的工具栏或直接输入“^”，\SpecialChar LyX
+ 会在上标位置放置一个蓝色方框，接下来输入的字符会被视为上标。上标输入完成后按空格回到公式正文编辑状态。
+类似指数的输入，输入下标只需键入“_”。
 \end_layout
 
 \begin_layout Standard
@@ -2125,14 +2100,13 @@ Math 将其永久调出。
 
 \begin_layout Standard
 点击按钮 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
-，\SpecialCharNoPassThru LyX
- 会插入根号并将光标定位在根号下的蓝色方框中。你可以在里边输入任何公式符号，\SpecialCharNoPassThru LyX
+，\SpecialChar LyX
+ 会插入根号并将光标定位在根号下的蓝色方框中。你可以在里边输入任何公式符号，\SpecialChar LyX
  会自动缩放根号大小以适应输入的公式。
 \end_layout
 
@@ -2146,24 +2120,20 @@ Math 将其永久调出。
 \end_inset
 
 ），方法都是相同的。点击按钮 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
-，\SpecialCharNoPassThru LyX
+，\SpecialChar LyX
  将插入该修饰并附带一个输入点，在这里输入字符即可。有两种修饰类型：一个是自动缩放的；另一个是固定尺寸的。固定尺寸的适合修饰单个字符。
 \end_layout
 
 \begin_layout Standard
 定界符（小括号、中括号、大括号）的用法都差不多，点击按钮 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
  出现一个对话框，在里边选择你需要的即可。默认时，两边的定界符是匹配的，取消“keep matched”复选框后也可以把两边的定界符设置成不同的。例如：
@@ -2208,14 +2178,12 @@ Math 将其永久调出。
 
 \begin_layout Standard
 使用数学工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
- 插入分式，\SpecialCharNoPassThru LyX
+ 插入分式，\SpecialChar LyX
  将在分式上创建两个输入点，并将焦点定位在上边的输入点上，你可以使用方向键或鼠标在这两个输入点间切换
 \begin_inset Foot
 status collapsed
@@ -2238,7 +2206,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  模式：lim、log、sin与其它
 \end_layout
 
@@ -2268,25 +2236,21 @@ example_raw.lyx
 
 \begin_layout Standard
 点击数学工具栏上的按钮 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
- 并选择“sin”，\SpecialCharNoPassThru LyX
- 将输入“sin”并将其设为黑色 Roman 正体。“sin”这三个字符被视为一个整体，删除也是一起删除。然后再输入“(x)”，它们将
-被显示为蓝色斜体。在输出文件中，公式将会被正确排版。
+ 并选择“sin”，\SpecialChar LyX
+ 将输入“sin”并将其设为黑色 Roman 正体。“sin”这三个字符被视为一个整体，删除也是一起删除。然后再输入“(x)”，它们将被显示
+为蓝色斜体。在输出文件中，公式将会被正确排版。
 \end_layout
 
 \begin_layout Standard
 在按钮 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
  的函数列表中还有其它三角函数及其反函数、双曲函数、对数、极限等。这些函数都可以接受上下标，如：“
@@ -2314,14 +2278,12 @@ example_raw.lyx
 
 \begin_layout Standard
 点击数字工具栏按钮 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
-，出现的对话框将允许你设置要输入的矩阵的行数和列数，现在分别将其设为 2 和 3。\SpecialCharNoPassThru LyX
+，出现的对话框将允许你设置要输入的矩阵的行数和列数，现在分别将其设为 2 和 3。\SpecialChar LyX
  将会插入一个 
 \begin_inset Formula $2\times3$
 \end_inset
@@ -2348,38 +2310,30 @@ Rows
 Columns 或数学工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 、
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 、
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
  和 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
- 改变矩阵的维数。
+ 改变矩阵的维数。 
 \end_layout
 
 \begin_layout Standard
@@ -2387,7 +2341,7 @@ Columns 或数学工具栏按钮
 \emph on
 User's Guide。
 \shape italic
-注意：想要输入一个包含文字的表格时，请使用 \SpecialCharNoPassThru LyX
+注意：想要输入一个包含文字的表格时，请使用 \SpecialChar LyX
  强大的表格功能，而不要使用矩阵。
 \end_layout
 
@@ -2396,9 +2350,9 @@ User's Guide。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- 中公式的显示方式有两种，一种是行内公式，一种是单行公式。行内公式适合于较简短的公式，单行公式适合于较庞大的公式或是你想把它单独显示。另外，多行公式必需是
-单行公式，而且只有单行公式才能加标签和编号（参见 
+\SpecialChar LyX
+ 中公式的显示方式有两种，一种是行内公式，一种是单行公式。行内公式适合于较简短的公式，单行公式适合于较庞大的公式或是你想把它单独显示。另外，多行公式必需是单行公
+式，而且只有单行公式才能加标签和编号（参见 
 \emph on
 User's Guide
 \emph default
@@ -2407,19 +2361,15 @@ User's Guide
 
 \begin_layout Standard
 点击按钮 
-\begin_inset Graphics
-	filename ../../images/math-display.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-display"
 \end_inset
 
  会插入一个单行公式，该公式新起一行并居中显示。按钮 
-\begin_inset Graphics
-	filename ../../images/math-display.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "math-display"
 \end_inset
 
  其实是一个切换开关，点击它你会在公式的两种显示模式间切换。
@@ -2501,7 +2451,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  的公式编辑器能做很多事情，现在你只是刚刚熟悉了最基本的。继续阅读
 \emph on
  User's Guide
@@ -2538,12 +2488,12 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  的其它重要特性
 \end_layout
 
 \begin_layout Standard
-我们并没有把 \SpecialCharNoPassThru LyX
+我们并没有把 \SpecialChar LyX
  的所有都说全，也没有这样的打算。你可以查看 
 \emph on
 User's Guide
@@ -2556,49 +2506,45 @@ Embedded
 
 Objects
 \emph default
- 获得更多信息。这里我们将提到几个 \SpecialCharNoPassThru LyX
+ 获得更多信息。这里我们将提到几个 \SpecialChar LyX
  的重要特性：
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  具有所见即所想的表格支持。使用菜单 
 \family sans
 Insert\SpecialChar menuseparator
 Table 或 按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/tabular-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
 \end_inset
 
  可以插入表格。在表格上单击右键，在右键菜单中选择表格设置对话框可以编辑表格的更多属性。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  可以支持各种格式的图片。点击菜单 
 \family sans
 Insert\SpecialChar menuseparator
 Graphics 或工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
-，选择图片文件，你还可以对它旋转、缩放。你还可以对图表使用标题，\SpecialCharNoPassThru LyX
+，选择图片文件，你还可以对它旋转、缩放。你还可以对图表使用标题，\SpecialChar LyX
  还能自动产生图表的列表。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  有很强的可定制性，从界面外观到文档的输出方式都可以通过几种方式来定制。大多的定制可以通过菜单 
 \family sans
 Tools\SpecialChar menuseparator
@@ -2607,15 +2553,15 @@ Customization。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
- 开发组成员来自五大洲，所以 \SpecialCharNoPassThru LyX
- 能比其它字处理软件更好的支持非英语（如荷兰语、德语、法语、希腊语、捷克语、土耳其语）。从右到左的语言：阿拉伯语、波斯
-语、希伯来语；亚洲语言：中文、日语、韩语等都能得到支持。你可以使用其它的语言写文档，也可以将 \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+ 开发组成员来自五大洲，所以 \SpecialChar LyX
+ 能比其它字处理软件更好的支持非英语（如荷兰语、德语、法语、希腊语、捷克语、土耳其语）。从右到左的语言：阿拉伯语、波斯语、希伯来语
+；亚洲语言：中文、日语、韩语等都能得到支持。你可以使用其它的语言写文档，也可以将 \SpecialChar LyX
  的界面和错误信息定义成其它的语言。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  的菜单支持快捷键绑定。你既可以通过 
 \family sans
 Alt+F O 实现菜单 File\SpecialChar menuseparator
@@ -2625,8 +2571,8 @@ Customization。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
- 可以读取 \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ 可以读取 \SpecialChar LaTeX
  文档。参见 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2638,17 +2584,17 @@ reference "subsec:tex2lyx"
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  支持拼写检查、同义词典和字数统计。
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  支持附录和集注。
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  用户必读
 \begin_inset CommandInset label
 LatexCommand label
@@ -2660,17 +2606,17 @@ name "sec:LaTeX-用户必读"
 \end_layout
 
 \begin_layout Standard
-如果你对 \SpecialCharNoPassThru LaTeX
- 一无所知，那么你可以跳过这一节。如果你想了解一点 \SpecialCharNoPassThru LaTeX
- 相关的东西，那就继续读下去吧。很多使用 \SpecialCharNoPassThru LyX
- 的人都对 \SpecialCharNoPassThru LaTeX
- 比较熟悉，如果你也是这种人的话，你可能会有个疑问：\SpecialCharNoPassThru LyX
- 真的能做到所有 \SpecialCharNoPassThru LaTeX
- 能做的事情吗？\SpecialCharNoPassThru LyX
- 的确能够通过这样或那样的方式做到
- \SpecialCharNoPassThru LaTeX
- 能做的所有事情，而且 \SpecialCharNoPassThru LyX
- 还能大大简化编辑 \SpecialCharNoPassThru LaTeX
+如果你对 \SpecialChar LaTeX
+ 一无所知，那么你可以跳过这一节。如果你想了解一点 \SpecialChar LaTeX
+ 相关的东西，那就继续读下去吧。很多使用 \SpecialChar LyX
+ 的人都对 \SpecialChar LaTeX
+ 比较熟悉，如果你也是这种人的话，你可能会有
+个疑问：\SpecialChar LyX
+ 真的能做到所有 \SpecialChar LaTeX
+ 能做的事情吗？\SpecialChar LyX
+ 的确能够通过这样或那样的方式做到 \SpecialChar LaTeX
+ 能做的所有事情，而且 \SpecialChar LyX
+ 还能大大简化编辑 \SpecialChar LaTeX
  文档的工作量。
 \end_layout
 
@@ -2691,15 +2637,15 @@ Embedded
 
 Objects
 \emph default
- 中有 \SpecialCharNoPassThru LyX
- 和 \SpecialCharNoPassThru LaTeX
- 区别的大量信息，那里还将教你如何在 \SpecialCharNoPassThru LyX
- 中玩各种 \SpecialCharNoPassThru LaTeX
+ 中有 \SpecialChar LyX
+ 和 \SpecialChar LaTeX
+ 区别的大量信息，那里还将教你如何在 \SpecialChar LyX
+ 中玩各种 \SpecialChar LaTeX
  的花活儿。
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  模式
 \end_layout
 
@@ -2707,69 +2653,68 @@ Objects
 选择菜单 
 \family sans
 Insert\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
 Code 或工具栏按钮 
 \family default
 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 50
-	groupId In line
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
- 进入 \SpecialCharNoPassThru TeX
- 模式。在 \SpecialCharNoPassThru TeX
- 模式下输入的所有东西都会用红色显示，并直接送给 \SpecialCharNoPassThru LaTeX
+ 进入 \SpecialChar TeX
+ 模式。在 \SpecialChar TeX
+ 模式下输入的所有东西都会用红色显示，并直接送给 \SpecialChar LaTeX
  编译处理。
 \end_layout
 
 \begin_layout Standard
-数学公式中 \SpecialCharNoPassThru TeX
+数学公式中 \SpecialChar TeX
  模式处理起来稍有不同，这里键入“
 \backslash
-”进入 \SpecialCharNoPassThru TeX
- 模式，输入空格或非字母字符（如：数字、下划线、脱字号或括号）退出 \SpecialCharNoPassThru TeX
- 模式。退出 \SpecialCharNoPassThru TeX
- 模式时，如果 \SpecialCharNoPassThru LyX
- 认识你输入的
- \SpecialCharNoPassThru TeX
- 命令，它就会将之转化为编译后的样子。如果你输入了“
+”进入 \SpecialChar TeX
+ 模式，输入空格或非字母字符（如：数字、下划线、脱字号或括号）退出 \SpecialChar TeX
+ 模式。退出 \SpecialChar TeX
+ 模式时，如果 \SpecialChar LyX
+ 认识你输入的 \SpecialChar TeX
+ 命令，它就会将之转化为编译后的样子。
+如果你输入了“
 \family typewriter
 
 \backslash
 gamma
 \family default
-”并按下空格，\SpecialCharNoPassThru LyX
+”并按下空格，\SpecialChar LyX
  会把它转化为蓝色的“
 \begin_inset Formula $\gamma$
 \end_inset
 
-”。对于不复杂的数学宏命令，\SpecialCharNoPassThru LyX
- 都能转化成功的。对于熟练的 \SpecialCharNoPassThru LaTeX
- 用户来说，直接输入 \SpecialCharNoPassThru TeX
+”。对于不复杂的数学宏命令，\SpecialChar LyX
+ 都能转化成功的。对于熟练的 \SpecialChar LaTeX
+ 用户来说，直接输入 \SpecialChar TeX
  命令的方式会比使用数学工具栏速度快。
 \end_layout
 
 \begin_layout Standard
-如果在 \SpecialCharNoPassThru TeX
- 模式下输入“{”，\SpecialCharNoPassThru LyX
- 将输入左右两个括号、退出 \SpecialCharNoPassThru TeX
+如果在 \SpecialChar TeX
+ 模式下输入“{”，\SpecialChar LyX
+ 将输入左右两个括号、退出 \SpecialChar TeX
  模式并将光标定位在两个括号中间等待输入。这使输入带参数的命令非常方便。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- 不能支持所有的 \SpecialCharNoPassThru LaTeX
- 功能。有些根本就不支持，有些能够支持但不能实现所见即所想。\SpecialCharNoPassThru TeX
- 模式使用户能够得到全部 \SpecialCharNoPassThru LaTeX
- 的强大功能，而且还能使
-用 \SpecialCharNoPassThru LyX
- 的方便特性（如：所见即所想的数学公式、表格和编辑方式）。\SpecialCharNoPassThru LyX
- 永远也不会支持所有的 \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ 不能支持所有的 \SpecialChar LaTeX
+ 功能。有些根本就不支持，有些能够支持但不能实现所见即所想。\SpecialChar TeX
+ 模式使用户能够得到全部 \SpecialChar LaTeX
+ 的强大功能，而且还能使用 \SpecialChar LyX
+ 的方便特性（如：所见即所想
+的数学公式、表格和编辑方式）。\SpecialChar LyX
+ 永远也不会支持所有的 \SpecialChar LaTeX
  包，但你可以在序言加入 
 \family typewriter
 
@@ -2783,12 +2728,12 @@ reference "subsec:其它序言"
 
 \end_inset
 
-），这样你就可以使用所有 \SpecialCharNoPassThru LaTeX
+），这样你就可以使用所有 \SpecialChar LaTeX
  包了。当然这些包并没有所见即所想支持。
 \end_layout
 
 \begin_layout Subsection
-导入 \SpecialCharNoPassThru LaTeX
+导入 \SpecialChar LaTeX
  文档── tex2lyx
 \begin_inset CommandInset label
 LatexCommand label
@@ -2804,11 +2749,12 @@ name "subsec:tex2lyx"
 \family sans
 File\SpecialChar menuseparator
 Import\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
-(plain) 导入 \SpecialCharNoPassThru LaTeX
+(plain) 导入 \SpecialChar LaTeX
  文档，程序将执行 
 \family typewriter
 tex2lyx
@@ -2833,8 +2779,8 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
- 能够转换大部份 \SpecialCharNoPassThru LaTeX
- 文档，但不是所有东西都转换。它会把不懂的部分保留为 \SpecialCharNoPassThru TeX
+ 能够转换大部份 \SpecialChar LaTeX
+ 文档，但不是所有东西都转换。它会把不懂的部分保留为 \SpecialChar TeX
  形式，所以你需要再进行手动修改。
 \end_layout
 
@@ -2847,8 +2793,8 @@ tex2lyx
 \end_layout
 
 \begin_layout Subsection
-将 \SpecialCharNoPassThru LyX
- 文档转化为 \SpecialCharNoPassThru LaTeX
+将 \SpecialChar LyX
+ 文档转化为 \SpecialChar LaTeX
  文档
 \end_layout
 
@@ -2857,7 +2803,7 @@ tex2lyx
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  将你正在编辑的文档 
 \family typewriter
 whatever.lyx
@@ -2870,7 +2816,7 @@ whatever.tex
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  序言
 \end_layout
 
@@ -2905,7 +2851,7 @@ tra
 \begin_inset space ~
 \end_inset
 
-Options，在 \SpecialCharNoPassThru LyX
+Options，在 \SpecialChar LyX
  1.6.4 中没找到。
 \end_layout
 
@@ -2926,28 +2872,30 @@ name "subsec:其它序言"
 \end_layout
 
 \begin_layout Standard
-在 \SpecialCharNoPassThru LaTeX
- 文档中输入的特殊命令在 \SpecialCharNoPassThru LyX
+在 \SpecialChar LaTeX
+ 文档中输入的特殊命令在 \SpecialChar LyX
  当然也能使用。选择 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
-Preamble，在对话框中输入命令即可，输入的任何东西都会直接传给 \SpecialCharNoPassThru LaTeX
+Preamble，在对话框中输入命令即可，输入的任何东西都会直接传给 \SpecialChar LaTeX
  编译处理。
 \end_layout
 
 \begin_layout Subsection
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
-使用 Bib\SpecialCharNoPassThru TeX
- 可以创建供多文档使用的文献数据库……没错，\SpecialCharNoPassThru LyX
- 能够支持 Bib\SpecialCharNoPassThru TeX
+使用 Bib\SpecialChar TeX
+ 可以创建供多文档使用的文献数据库……没错，\SpecialChar LyX
+ 能够支持 Bib\SpecialChar TeX
 。选择 
 \family sans
 Insert\SpecialChar menuseparator
@@ -2960,18 +2908,20 @@ List
 \end_inset
 
 TOC\SpecialChar menuseparator
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
 Bibliography 加入一个 
 \family typewriter
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family sans
  文件，在数据库字段填入 
 \family default
-Bib\SpecialCharNoPassThru TeX
- 文件名，在样式字段填入 Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+ 文件名，在样式字段填入 Bib\SpecialChar TeX
  样式文件名。
 \end_layout
 
@@ -2983,11 +2933,12 @@ reference "sec:参考文献"
 
 \end_inset
 
-）。\SpecialCharNoPassThru LyX
- 会自动管理 Bib\SpecialCharNoPassThru TeX
+）。\SpecialChar LyX
+ 会自动管理 Bib\SpecialChar TeX
  的运行。引用对话框中将会显示你 
 \family typewriter
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
  文件中所有可用的引用项列表。
 \end_layout
@@ -2997,12 +2948,13 @@ Bib\SpecialCharNoPassThru TeX
 \end_layout
 
 \begin_layout Standard
-编译文档时，如果有 \SpecialCharNoPassThru LyX
- 或 \SpecialCharNoPassThru LaTeX
- 不能识别的东西，\SpecialCharNoPassThru LyX
- 将会报错。这时会出现 \SpecialCharNoPassThru LaTeX
- 错误对话框，点击某个错误将会定位到 \SpecialCharNoPassThru LyX
- 文档中发生错误的地方，并显示详细 \SpecialCharNoPassThru LaTeX
+编译文档时，如果有 \SpecialChar LyX
+ 或 \SpecialChar LaTeX
+ 不能识别的东西，\SpecialChar LyX
+ 将会报错。这时会出现 \SpecialChar LaTeX
+ 错误对话框，点击某个错误将会定位到 \SpecialChar LyX
+ 文档中发生错误的地方，并显示详细 \SpecialChar LaTeX
+
  错误信息。
 \end_layout
 
