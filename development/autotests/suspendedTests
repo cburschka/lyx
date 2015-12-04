@@ -1,2 +1,4 @@
-.*(dvi3|pdf4|pdf5)_texF
+# Languages cannot be in regex as .*, therefore they have to be explicitly named
+# This is due to our implementation in creating different lists for different languages
+.*(|de|es|fr|he|hu|id|ko|ru|uk|zh_CN)/.*(dvi3|pdf4|pdf5)_texF
 .*/attic/.*F

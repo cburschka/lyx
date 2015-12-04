@@ -24,7 +24,7 @@ export/.*/hu/.*(pdf5)_texF
 export/.*/es/europeCV_pdf_texF
 #
 # somehow lualatex is not able to compile with non-tex fonts
-export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
+export/.*/es/(Math|UserGuide|ejemplo_con_lyx)_dvi3_systemF
 
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
