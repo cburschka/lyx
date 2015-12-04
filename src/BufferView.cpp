@@ -433,7 +433,7 @@ bool BufferView::needsFitCursor() const
 void BufferView::processUpdateFlags(Update::flags flags)
 {
 	// This is close to a hot-path.
-	LYXERR(Debug::DEBUG, "BufferView::processUpdateFlags()"
+	LYXERR(Debug::PAINTING, "BufferView::processUpdateFlags()"
 		<< "[fitcursor = " << (flags & Update::FitCursor)
 		<< ", forceupdate = " << (flags & Update::Force)
 		<< ", singlepar = " << (flags & Update::SinglePar)
@@ -2949,13 +2949,9 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 	// Set the row on which the cursor lives.
 	setCurrentRowSlice(rowSlice);
 
-	// Current x position of the cursor in pixels
-	int cur_x = getPos(d->cursor_).x_;
-
-	// If cursor offset is left margin and offset is not the leftmost
-	// position of the row, there is a cache problem.
-	if (cur_x == row.left_margin && !row.empty()
-	    && d->cursor_.pos() != row.front().left_pos()) {
+	// If insets referred to by cursor are not all in the cache, the positions
+	// need to be recomputed.
+	if (!d->cursor_.inCoordCache()) {
 		/** FIXME: the code below adds an extraneous computation of
 		 * inset positions, and can therefore be bad for performance
 		 * (think for example about a very large tabular inset.
@@ -2970,7 +2966,8 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		 * cache. This would not happen if we did not have two-stage
 		 * drawing.
 		 *
-		 * A proper fix should be found and this code should be removed.
+		 * A proper fix would be to always have proper inset positions
+		 * at this point.
 		 */
 		// Force the recomputation of inset positions
 		bool const drawing = pi.pain.isDrawingEnabled();
@@ -2980,10 +2977,10 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		              -d->horiz_scroll_offset_, 0);
 		rp.paintText();
 		pi.pain.setDrawingEnabled(drawing);
-
-		// Recompute current Current x position of the cursor in pixels
-		cur_x = getPos(d->cursor_).x_;
 	}
+
+	// Current x position of the cursor in pixels
+	int cur_x = getPos(d->cursor_).x_;
 
 	// Horizontal scroll offset of the cursor row in pixels
 	int offset = d->horiz_scroll_offset_;

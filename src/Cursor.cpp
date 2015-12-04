@@ -548,6 +548,16 @@ int Cursor::currentMode()
 }
 
 
+bool Cursor::inCoordCache() const
+{
+	CoordCache::Insets const & icache = bv_->coordCache().getInsets();
+	for (size_t i = 0 ; i < depth() ; ++i)
+		if (!icache.has(&(*this)[i].inset()))
+			return false;
+	return true;
+}
+
+
 void Cursor::getPos(int & x, int & y) const
 {
 	Point p = bv().getPos(*this);
