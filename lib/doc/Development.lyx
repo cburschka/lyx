@@ -1781,7 +1781,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-development/autotests/revertedTests
+development/autotests/suspiciousTests
 \end_layout
 
 \end_inset
@@ -1831,7 +1831,7 @@ Sometimes a test is fixed as side-effect of some change.
 status collapsed
 
 \begin_layout Plain Layout
-revertedTests
+suspiciousTests
 \end_layout
 
 \end_inset
@@ -1904,9 +1904,9 @@ These tests are expected to always fail.
 \end_layout
 
 \begin_layout Description
-reverted These tests are expected to fail, but are subject to be examined.
+inverted These tests are expected to fail, but are subject to be examined.
  It is expected that they will pass in a foreseeable future.
- They are labeled 'reverted'.
+ They are labeled 'inverted'.
 \end_layout
 
 \begin_layout Description
@@ -1926,7 +1926,7 @@ ctest -L export
 status collapsed
 
 \begin_layout Plain Layout
-ctest -L reverted
+ctest -L inverted
 \end_layout
 
 \end_inset
@@ -2078,13 +2078,13 @@ Output Stop if not selected.
 
 \begin_layout Standard
 The following file is meant as subselections of 'suspiciousTests'.
- If neither subselection applies, test gains labels 'export' and 'reverted'
+ If neither subselection applies, test gains labels 'export' and 'inverted'
 \end_layout
 
 \begin_layout Description
 suspendedTests Tests selected here gain the label 'suspended' but _not_
- 'export' or 'reverted', although in ctest they remain reverted.
- ('ctest' knows only 'reverted' or not, labels are used only for test selection)
+ 'export' or 'inverted', although in ctest they remain inverted.
+ ('ctest' knows only 'inverted' or not, labels are used only for test selection)
 \end_layout
 
 \begin_deeper
@@ -2308,7 +2308,7 @@ unreliable
 \begin_inset Text
 
 \begin_layout Plain Layout
-reverted
+inverted
 \end_layout
 
 \end_inset
