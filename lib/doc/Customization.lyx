@@ -120,6 +120,10 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
+\author -195340706 "Georg Baum"
+\author 274215730 "scott"
+\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -9076,6 +9080,8 @@ reference "subsec:Counters"
 \end_layout
 
 \begin_layout Description
+
+\change_deleted 1414654397 1449175404
 \begin_inset Flex Code
 status collapsed
 
@@ -9258,6 +9264,57 @@ MMMMM
 \end_inset
 
 .)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1414654397 1449175421
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175415
+ModifyStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175410
+<style>
+\end_layout
+
+\end_inset
+
+] Modifies the properties of the given paragraph style.
+ If the style does not exist, this section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175410
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -9860,6 +9917,57 @@ DefaultModule
  tag to indicate that it ought to be used.
  It could also be used in a module that provided an alternate implementation
  of the same functionality.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 1414654397 1449175396
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175389
+ProvideStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175384
+<style>
+\end_layout
+
+\end_inset
+
+] Creates a new paragraph style if it does not already exist.
+ If the style does exist, this section is ignored.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 1414654397 1449175384
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
