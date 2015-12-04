@@ -110,7 +110,7 @@ macro(maketestname testname inverted listsuspicious listignored listunreliable l
     set(listsuspiciousx ${listsuspicious}_${_v})
     set(listignoredx ${listignored}_${_v})
     set(listunreliablex ${listunreliable}_${_v})
-    set(listsuspendedx suspendedTests_${v})
+    set(listsuspendedx suspendedTests_${_v})
   else()
     set(listsuspiciousx ${listsuspicious})
     set(listignoredx ${listignored})
