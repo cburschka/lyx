@@ -189,6 +189,10 @@ import os, re, string, sys
 # Incremented to format 57, 30 May 2015 by spitz
 # New Layout tag "ParagraphGroup"
 
+# Incremented to format 58, 5 December 2015, by rgh
+# New Layout tag "ProvideStyle"
+# Change "IfStyle" to "ModifyStyle"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -196,7 +200,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 57
+currentFormat = 58
 
 
 def usage(prog_name):
@@ -265,6 +269,7 @@ def convert(lines):
     re_LabelStringAppendix = re.compile(r'^(\s*)(LabelStringAppendix)(\s+)(("[^"]+")|(\S+))', re.IGNORECASE)
     re_LatexType = re.compile(r'^(\s*)(LatexType)(\s+)(\S+)', re.IGNORECASE)
     re_Style = re.compile(r'^(\s*)(Style)(\s+)(\S+)', re.IGNORECASE)
+    re_IfStyle = re.compile(r'^(\s*)IfStyle(\s+\S+)', re.IGNORECASE)
     re_CopyStyle = re.compile(r'^(\s*)(CopyStyle)(\s+)(\S+)', re.IGNORECASE)
     re_NoStyle = re.compile(r'^(\s*)(NoStyle)(\s+)(\S+)', re.IGNORECASE)
     re_End = re.compile(r'^(\s*)(End)(\s*)$', re.IGNORECASE)
@@ -418,6 +423,19 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+
+        if format == 57:
+            match = re_IfStyle.match(lines[i])
+            if not match:
+                i += 1
+                continue
+            # r'^(\s*)IfStyle(\s+\S+)
+            lead  = match.group(1)
+            trail = match.group(2)
+            lines[i] = lead + "ModifyStyle" + trail
+            i += 1
             continue
 
         if format >= 50 and format <= 56:

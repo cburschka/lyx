@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 57; //spitz: New Layout tag ParagraphGroup
+int const LAYOUT_FORMAT = 58; // rgh: ProvideStyle
 
 namespace {
 
@@ -173,7 +173,8 @@ enum TextClassTags {
 	TC_OUTPUTFORMAT,
 	TC_INPUT,
 	TC_STYLE,
-	TC_IFSTYLE,
+	TC_MODIFYSTYLE,
+	TC_PROVIDESTYLE,
 	TC_DEFAULTSTYLE,
 	TC_INSETLAYOUT,
 	TC_NOINSETLAYOUT,
@@ -240,10 +241,10 @@ LexerKeyword textClassTags[] = {
 	{ "htmlstyles",        TC_HTMLSTYLES },
 	{ "htmltocsection",    TC_HTMLTOCSECTION },
 	{ "ifcounter",         TC_IFCOUNTER },
-	{ "ifstyle",           TC_IFSTYLE },
 	{ "input",             TC_INPUT },
 	{ "insetlayout",       TC_INSETLAYOUT },
 	{ "leftmargin",        TC_LEFTMARGIN },
+	{ "modifystyle",       TC_MODIFYSTYLE },
 	{ "nocounter",         TC_NOCOUNTER },
 	{ "nofloat",           TC_NOFLOAT },
 	{ "noinsetlayout",     TC_NOINSETLAYOUT },
@@ -255,6 +256,7 @@ LexerKeyword textClassTags[] = {
 	{ "preamble",          TC_PREAMBLE },
 	{ "provides",          TC_PROVIDES },
 	{ "providesmodule",    TC_PROVIDESMODULE },
+	{ "providestyle",      TC_PROVIDESTYLE },
 	{ "requires",          TC_REQUIRES },
 	{ "rightmargin",       TC_RIGHTMARGIN },
 	{ "secnumdepth",       TC_SECNUMDEPTH },
@@ -413,8 +415,9 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		}
 
 		// used below to track whether we are in an IfStyle or IfCounter tag.
-		bool ifstyle   = false;
-		bool ifcounter = false;
+		bool modifystyle  = false;
+		bool providestyle = false;
+		bool ifcounter    = false;
 
 		switch (static_cast<TextClassTags>(le)) {
 
@@ -467,9 +470,15 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			}
 			break;
 
-		case TC_IFSTYLE:
-			ifstyle = true;
-			// fall through
+		case TC_MODIFYSTYLE:
+			modifystyle = true;
+		// fall through
+		case TC_PROVIDESTYLE:
+			// if modifystyle is true, then we got here by falling through
+			// so we are not in an ProvideStyle block
+			if (!modifystyle)
+				providestyle = true;
+		// fall through
 		case TC_STYLE: {
 			if (!lexrc.next()) {
 				lexrc.printError("No name given for style: `$$Token'.");
@@ -486,10 +495,21 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				// Since we couldn't read the name, we just scan the rest
 				// of the style and discard it.
 				error = !readStyle(lexrc, lay);
-			} else if (hasLayout(name)) {
+				break;
+			}
+			
+			bool const have_layout = hasLayout(name);
+			
+			// If the layout already exists, then we want to add it to
+			// the existing layout, as long as we are not in an ProvideStyle
+			// block.
+			if (have_layout && !providestyle) {
 				Layout & lay = operator[](name);
 				error = !readStyle(lexrc, lay);
-			} else if (!ifstyle) {
+			}
+			// If the layout does not exist, then we want to create a new
+			// one, but not if we are in a ModifyStyle block.
+			else if (!have_layout && !modifystyle) {
 				Layout layout;
 				layout.setName(name);
 				error = !readStyle(lexrc, layout);
@@ -502,9 +522,12 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 					defaultlayout_ = name;
 				}
 			}
+			// There are two ways to get here:
+			//  (i)  The layout exists but we are in an ProvideStyle block
+			//  (ii) The layout doesn't exist, but we are in an ModifyStyle
+			//       block.
+			// Either way, we just scan the rest and discard it
 			else {
-				// this was an ifstyle where we didn't have the style
-				// scan the rest and discard it
 				Layout lay;
 				readStyle(lexrc, lay);
 			}
