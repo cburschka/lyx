@@ -2,9 +2,9 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/examples/
+\origin unavailable
 \textclass scrartcl
-\options DIV=12
+\options tablecaptionabove
 \use_default_options true
 \begin_modules
 varwidth
@@ -14,7 +14,7 @@ varwidth
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "lmodern" "default"
+\font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -29,7 +29,7 @@ varwidth
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 10
+\paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
@@ -50,7 +50,7 @@ varwidth
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -75,11 +75,27 @@ varwidth
 \begin_body
 
 \begin_layout Title
-Floats Side-by-Side
-\begin_inset Newline newline
+Floats Side-by-Side using the Module 
+\emph on
+Variable-width Minipages
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+To view this file you need to have the \SpecialChar LaTeX
+ package 
+\family sans
+varwidth
+\family default
+ installed.
+\end_layout
+
 \end_inset
 
-Using the Varwidth Module
+
 \end_layout
 
 \begin_layout Section
@@ -223,10 +239,6 @@ t
 Addition
 \end_layout
 
-\end_inset
-
-
-\begin_inset VSpace defskip
 \end_inset
 
 
@@ -514,10 +526,6 @@ t
 Multiplication
 \end_layout
 
-\end_inset
-
-
-\begin_inset VSpace defskip
 \end_inset
 
 
