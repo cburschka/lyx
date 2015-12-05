@@ -129,6 +129,7 @@ ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
+      --from-code=UTF-8
       --default-domain=${_lyxname} --directory=${TOP_SRC_DIR}
       --add-comments=TRANSLATORS:
       --language=C++ --join-existing --keyword=_ --keyword=N_ --keyword=B_ --keyword=qt_
