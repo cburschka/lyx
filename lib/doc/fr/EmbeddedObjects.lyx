@@ -27407,6 +27407,36 @@ Flottant du côté droit.
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+An alternative and simpler solution is to use the module 
+\family sans
+Variable-width Minipages
+\family default
+, see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Minipages"
+
+\end_inset
+
+.
+ Variable-width minipages adapt automatically to the width of the figures
+ and tables.
+ They do not require an explicit width to be given, and they improve the
+ horizontal alignment of the figures.
+ The LyX example file 
+\emph on
+varwidth-floats-side-by-side
+\emph default
+ gives examples of how to do this.
+\end_layout
+
 \begin_layout Section
 Mise en forme de la légende
 \begin_inset Index idx
@@ -34713,6 +34743,32 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\SpecialChar LyX
+ has also basic support for minipages whose size is automatically determined
+ by the width of their contents, via the module 
+\family sans
+Variable-width Minipages
+\family default
+.
+ The \SpecialChar LyX
+ example file 
+\emph on
+varwidth-floats-side-by-side
+\emph default
+ gives examples of variable-width minipages used for placing two floats
+ side-by-side.
 \end_layout
 
 \begin_layout Section
