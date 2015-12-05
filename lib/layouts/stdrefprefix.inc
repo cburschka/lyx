@@ -7,32 +7,32 @@
 # in stdclass.inc, so any file that includes either of these will get
 # the standard RefPrefix definitions.
 
-Format 57
+Format 58
 
-IfStyle Part
+ModifyStyle Part
 	RefPrefix part
 End
 
-IfStyle Chapter
+ModifyStyle Chapter
 	RefPrefix chap
 End
 
-IfStyle Section
+ModifyStyle Section
 	RefPrefix sec
 End
 
-IfStyle Subsection
+ModifyStyle Subsection
 	RefPrefix subsec
 End
 
-IfStyle Subsubsection
+ModifyStyle Subsubsection
 	RefPrefix subsec
 End
 
-IfStyle Paragraph
+ModifyStyle Paragraph
 	RefPrefix par
 End
 
-IfStyle Subparagraph
+ModifyStyle Subparagraph
 	RefPrefix par
 End

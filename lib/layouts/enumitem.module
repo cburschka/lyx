@@ -11,7 +11,7 @@
 #	     both KOMA and non-KOMA document classes.
 # 2011-01-12 bugfix: set elabeling label font to \normalfont.
 
-Format 57
+Format 58
 
 # The package enumitem provides user control over the layout of the three
 # basic list environments: enumerate, itemize and description. It supersedes
@@ -51,7 +51,7 @@ EndPreamble
 # With enumitem, the three standard list environments take an optional
 # argument. See enumitem.pdf for possible values.
 
-IfStyle Itemize
+ModifyStyle Itemize
 	Argument 1
 		LabelString   "Itemize Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
@@ -59,7 +59,7 @@ IfStyle Itemize
 	Requires enumitem
 End
 
-IfStyle Enumerate
+ModifyStyle Enumerate
 	Argument 1
 		LabelString   "Enumerate Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
@@ -67,7 +67,7 @@ IfStyle Enumerate
 	Requires enumitem
 End
 
-IfStyle Description
+ModifyStyle Description
 	Argument 1
 		LabelString   "Description Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"

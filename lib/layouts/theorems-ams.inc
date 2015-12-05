@@ -20,7 +20,7 @@
 # - Proof
 # - Case (by inclusion)
 
-Format 57
+Format 58
 
 Style Theorem
 	Category              Reasoning

@@ -2,7 +2,7 @@
 #
 # Author: Gioele Barabucci
 
-Format 57
+Format 58
 Input stdclass.inc
 
 Columns 2

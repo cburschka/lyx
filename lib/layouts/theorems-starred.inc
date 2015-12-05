@@ -19,7 +19,7 @@
 # - Claim
 # - Proof
 
-Format 57
+Format 58
 
 Style Theorem*
 	Category              Reasoning

@@ -1,100 +1,100 @@
 # Reference prefixes for theorem environments
 
-Format 57
+Format 58
 
-IfStyle Theorem
+ModifyStyle Theorem
 	RefPrefix thm
 End
 
-IfStyle Corollary
+ModifyStyle Corollary
 	RefPrefix cor
 End
 
-IfStyle Lemma
+ModifyStyle Lemma
 	RefPrefix lem
 End
 
-IfStyle Proposition
+ModifyStyle Proposition
 	RefPrefix prop
 End
 
-IfStyle Conjecture
+ModifyStyle Conjecture
 	RefPrefix conj
 End
 
-IfStyle Definition
+ModifyStyle Definition
 	RefPrefix def
 End
 
-IfStyle Example
+ModifyStyle Example
 	RefPrefix exa
 End
 
-IfStyle Problem
+ModifyStyle Problem
 	RefPrefix prob
 End
 
-IfStyle Exercise
+ModifyStyle Exercise
 	RefPrefix exer
 End
 
-IfStyle Solution
+ModifyStyle Solution
 	RefPrefix solu
 End
 
-IfStyle Remark
+ModifyStyle Remark
 	RefPrefix rem
 End
 
-IfStyle Claim
+ModifyStyle Claim
 	RefPrefix claim
 End
 
-IfStyle Fact
+ModifyStyle Fact
 	RefPrefix fact
 End
 
-IfStyle Criterion
+ModifyStyle Criterion
 	RefPrefix cri
 End
 
-IfStyle Algorithm
+ModifyStyle Algorithm
 	RefPrefix alg
 End
 
-IfStyle Axiom
+ModifyStyle Axiom
 	RefPrefix axm
 End
 
-IfStyle Condition
+ModifyStyle Condition
 	RefPrefix cond
 End
 
-IfStyle Note
+ModifyStyle Note
 	RefPrefix note
 End
 
-IfStyle Notation
+ModifyStyle Notation
 	RefPrefix nota
 End
 
-IfStyle Summary
+ModifyStyle Summary
 	RefPrefix sum
 End
 
-IfStyle Acknowledgement
+ModifyStyle Acknowledgement
 	RefPrefix ack
 End
 
-IfStyle Conclusion
+ModifyStyle Conclusion
 	RefPrefix conc
 End
 
-IfStyle Assumption
+ModifyStyle Assumption
 	RefPrefix assu
 End
 
 
-IfStyle Question
+ModifyStyle Question
 	RefPrefix que
 End

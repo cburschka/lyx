@@ -9,7 +9,7 @@
 # Author: Georg Baum <baum@lyx.org>
 # (structuring taken from enumitem.module by Günter Milde)
 
-Format 57
+Format 58
 
 AddToPreamble
 	\usepackage{paralist}
@@ -22,14 +22,14 @@ EndPreamble
 # With paralist, the itemize and enumerate environments take an optional
 # argument. See paralist.pdf for possible values.
 
-IfStyle Itemize
+ModifyStyle Itemize
 	Argument 1
 		LabelString   "Itemize Options"
 		Tooltip       "Optional arguments for this list (see paralist manual)"
 	EndArgument
 End
 
-IfStyle Enumerate
+ModifyStyle Enumerate
 	Argument 1
 		LabelString   "Enumerate Options"
 		Tooltip       "Optional arguments for this list (see paralist manual)"
