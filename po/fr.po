@@ -3627,7 +3627,10 @@ msgid ""
 "format by default.\n"
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
-msgstr ""
+msgstr "Si cette case est cochée, les nouveaux documents seront "
+"implicitement sauvegardés sous un format binaire compressé.\nLes documents "
+"existants seront sauvegardés sous leur format actuel (compressé ou non "
+"compressé)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
@@ -14953,7 +14956,7 @@ msgstr ""
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "Début du formulaire PDF"
 
 #: lib/layouts/pdfform.module:19
 #, fuzzy
@@ -14967,7 +14970,7 @@ msgstr "Autres paramètres"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Paramètres"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
 #, fuzzy
@@ -14976,7 +14979,7 @@ msgstr "Saisir le commentaire ici"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "Fin du formulaire PDF"
 
 #: lib/layouts/pdfform.module:47
 #, fuzzy
@@ -15110,7 +15113,7 @@ msgstr "St&yle implicite :"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Style de liste déroulante"
 
 #: lib/layouts/pdfform.module:180
 #, fuzzy

@@ -1496,7 +1496,7 @@ msgstr "Le campo al qual le horizonte de cerca es limitate"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:200
 msgid "Scope"
-msgstr ""
+msgstr "Extension"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:212
 #, fuzzy
@@ -3197,11 +3197,13 @@ msgstr "s&ecundas de retardo per menu popup"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Parolas con minus que le specificate numero de characteres non "
+"essera completate."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minime numero de characteres pro parolas que deberea esser "
+"completate"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3576,15 +3578,16 @@ msgstr "Formato de exito prede&finite:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:214
 msgid "With &TeX fonts:"
-msgstr ""
+msgstr "Con fonts de &TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
 msgid "The default output format for documents (except with non-TeX fonts)"
-msgstr ""
+msgstr "Le formato de exito predefinite per documentos (excepte los con "
+"fonts de typo non-TeX)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr ""
+msgstr "Con fonts n&on de TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
 #, fuzzy
@@ -6567,31 +6570,31 @@ msgstr "Contentos"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
-msgstr ""
+msgstr "Contexto de tu travalio (optional, il pote esser lassate vacue)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
-msgstr ""
+msgstr "Propositos"
 
 #: lib/layouts/aa.layout:306
 msgid "Aims of your work"
-msgstr ""
+msgstr "Propositos de tu travalio"
 
 #: lib/layouts/aa.layout:310
 msgid "Methods"
-msgstr ""
+msgstr "Methodos"
 
 #: lib/layouts/aa.layout:311
 msgid "Methods used in your work"
-msgstr ""
+msgstr "Methodos usate in tu travalio"
 
 #: lib/layouts/aa.layout:315
 msgid "Results"
-msgstr ""
+msgstr "Resultatos"
 
 #: lib/layouts/aa.layout:316
 msgid "Results of your work"
-msgstr ""
+msgstr "Resultatos de tu travalio"
 
 #: lib/layouts/aa.layout:337
 #, fuzzy
@@ -6979,7 +6982,7 @@ msgstr "Latino"
 
 #: lib/layouts/acm-sigs-alt.layout:3
 msgid "ACM SIGS ('Alternate' Style)"
-msgstr ""
+msgstr "ACM SIGS (Stilo 'Alternate')"
 
 #: lib/layouts/acm-sigs.layout:3
 #, fuzzy
@@ -13359,7 +13362,8 @@ msgstr "Algorithmo"
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats."
-msgstr ""
+msgstr "Usa le pacco algorithm2e pro flottantes de algorithmo (algorithm "
+"floats) plus tosto que le flottantes de algorithmo proprie de LyX."
 
 #: lib/layouts/basic.module:2
 msgid "Default (basic)"
@@ -22474,11 +22478,11 @@ msgstr "bindnasrepma"
 
 #: lib/ui/stdtoolbars.inc:1265
 msgid "Voiceless bilabial plosive"
-msgstr ""
+msgstr "Obclusive bilabial surda"
 
 #: lib/ui/stdtoolbars.inc:1266
 msgid "Voiced bilabial plosive"
-msgstr ""
+msgstr "Obclusive bilabial sonor"
 
 #: lib/ui/stdtoolbars.inc:1267
 msgid "Voiceless alveolar plosive"

@@ -3197,11 +3197,12 @@ msgstr "s &de retraso para los recuadros emergentes"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Palabras con menos caracteres que el número especificado no se "
+"completarán."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Caracteres mínimos para palabras que deberían completarse"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -29566,7 +29567,8 @@ msgstr "Seleccionar archivo %1$s a importar"
 msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
-msgstr ""
+msgstr "¡El nombre de archivo '%1$s' no es válido!\nSe aborta la "
+"importación."
 
 #: src/frontends/qt4/GuiView.cpp:2334 src/frontends/qt4/GuiView.cpp:2519
 #: src/frontends/qt4/GuiView.cpp:2633

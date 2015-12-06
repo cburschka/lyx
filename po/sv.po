@@ -3387,11 +3387,12 @@ msgstr "s&ekunders fördröjning för popup"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Ord med mindre än det specificerade antalet tecken kommer inte att "
+"slutföras."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minsta antalet tecken för ord som ska slutföras"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3545,7 +3546,10 @@ msgid ""
 "format by default.\n"
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
-msgstr ""
+msgstr "Om denna är markerad kommer nya dokument att sparas i ett "
+"komprimerat binärformat som standard.\nBefintliga dokument kommer "
+"fortfarande att sparas i deras nuvarande tillstånd (komprimerade eller "
+"okomprimerade)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
@@ -6552,7 +6556,7 @@ msgstr "Postmärke"
 #: lib/layouts/sciposter.layout:128 lib/layouts/sciposter.layout:131
 #: lib/layouts/sciposter.layout:158
 msgid "Giant"
-msgstr ""
+msgstr "Jätte"
 
 #: lib/layouts/a0poster.layout:57 lib/layouts/a0poster.layout:60
 #: lib/layouts/a0poster.layout:86 lib/layouts/beamerposter.layout:69
@@ -6560,7 +6564,7 @@ msgstr ""
 #: lib/layouts/sciposter.layout:144 lib/layouts/sciposter.layout:147
 #: lib/layouts/sciposter.layout:173
 msgid "More Giant"
-msgstr ""
+msgstr "Större jätte"
 
 #: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
 #: lib/layouts/a0poster.layout:92 lib/layouts/beamerposter.layout:75
@@ -6568,22 +6572,22 @@ msgstr ""
 #: lib/layouts/sciposter.layout:150 lib/layouts/sciposter.layout:153
 #: lib/layouts/sciposter.layout:179
 msgid "Most Giant"
-msgstr ""
+msgstr "Störst jätte"
 
 #: lib/layouts/a0poster.layout:69 lib/layouts/beamerposter.layout:81
 #: lib/layouts/sciposter.layout:156
 msgid "Giant Snippet"
-msgstr ""
+msgstr "Jättesnutt"
 
 #: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:96
 #: lib/layouts/sciposter.layout:171
 msgid "More Giant Snippet"
-msgstr ""
+msgstr "Större jättesnutt"
 
 #: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:102
 #: lib/layouts/sciposter.layout:177
 msgid "Most Giant Snippet"
-msgstr ""
+msgstr "Störst jättesnutt"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
@@ -11834,7 +11838,7 @@ msgstr "Typsnittsstorlekar (grader)"
 
 #: lib/layouts/sciposter.layout:61
 msgid "Relative logo size (0 through 1)"
-msgstr ""
+msgstr "Relativ logotypstorlek (0 genom 1)"
 
 #: lib/layouts/sciposter.layout:65
 #, fuzzy
@@ -11853,7 +11857,7 @@ msgstr "Valfri bredd"
 
 #: lib/layouts/sciposter.layout:81
 msgid "The caption width relative to the column (0 through 1)"
-msgstr ""
+msgstr "Bildtextbredd relativt kolumnen (0 genom 1)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -14650,11 +14654,13 @@ msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
-msgstr ""
+msgstr "Förser olika slag av anteckningar för PDF-utmatningen. Modulen "
+"använder pdfcomment-paketet. Vänligen konsultera LyX-exempelfilen PDF-"
+"comment.lyx och paketets dokumentation för detaljer."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
-msgstr ""
+msgstr "Definiera avatar"
 
 #: lib/layouts/pdfcomment.module:20
 #, fuzzy
@@ -14663,7 +14669,7 @@ msgstr "APLcomment"
 
 #: lib/layouts/pdfcomment.module:27
 msgid "PDF-comment avatar:"
-msgstr ""
+msgstr "PDF-kommentar-avatar:"
 
 #: lib/layouts/pdfcomment.module:30
 #, fuzzy
@@ -14672,7 +14678,7 @@ msgstr "Namn på författaren"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
-msgstr ""
+msgstr "Definiera PDF-kommentarstil"
 
 #: lib/layouts/pdfcomment.module:44
 #, fuzzy
@@ -14686,11 +14692,11 @@ msgstr "Språkets namn"
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
-msgstr ""
+msgstr "Definiera PDF-kommentarliststil"
 
 #: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
-msgstr ""
+msgstr "Definition på PDF-kommentarliststil:"
 
 #: lib/layouts/pdfcomment.module:58
 #, fuzzy
@@ -14699,15 +14705,15 @@ msgstr "Namn på standardskrivaren"
 
 #: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
-msgstr ""
+msgstr "Sätt PDF-kommentarliststil"
 
 #: lib/layouts/pdfcomment.module:66
 msgid "PDF-comment list style:"
-msgstr ""
+msgstr "PDF-kommentarliststil:"
 
 #: lib/layouts/pdfcomment.module:70
 msgid "PDF-Comment-Setup"
-msgstr ""
+msgstr "PDF-kommentarinställning"
 
 #: lib/layouts/pdfcomment.module:74
 #, fuzzy
@@ -14722,11 +14728,12 @@ msgstr "Dokumentinställningar"
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
 msgid "Opts"
-msgstr ""
+msgstr "Alt"
 
 #: lib/layouts/pdfcomment.module:84
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr ""
+msgstr "Infoga PDF-kommentarinställningsalternativ här (se pdfcomment-"
+"manualen)"
 
 #: lib/layouts/pdfcomment.module:93
 #, fuzzy
@@ -14759,7 +14766,7 @@ msgstr "Sidmarginaler"
 
 #: lib/layouts/pdfcomment.module:122
 msgid "PDF-Markup"
-msgstr ""
+msgstr "PDF-märkspråk"
 
 #: lib/layouts/pdfcomment.module:124
 #, fuzzy
@@ -14768,7 +14775,7 @@ msgstr "PDF (beskuren)"
 
 #: lib/layouts/pdfcomment.module:129
 msgid "Insert the comment to the marked-up text here"
-msgstr ""
+msgstr "Infoga kommentaren till den märkta texten här"
 
 #: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
@@ -14801,7 +14808,7 @@ msgstr "Cirkel"
 
 #: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
-msgstr ""
+msgstr "PDF-Linje"
 
 #: lib/layouts/pdfcomment.module:153
 #, fuzzy
@@ -14825,7 +14832,7 @@ msgstr "Infoga antalet kolumner här"
 
 #: lib/layouts/pdfcomment.module:170
 msgid "PDF-Reply"
-msgstr ""
+msgstr "PDF-Svar"
 
 #: lib/layouts/pdfcomment.module:172
 #, fuzzy
@@ -14834,7 +14841,7 @@ msgstr "PDF (pdflatex)"
 
 #: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
-msgstr ""
+msgstr "PDF-Verktygstips"
 
 #: lib/layouts/pdfcomment.module:182
 #, fuzzy
@@ -14848,7 +14855,7 @@ msgstr "Kopiera text|o"
 
 #: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
-msgstr ""
+msgstr "Verktygstips"
 
 #: lib/layouts/pdfcomment.module:192
 #, fuzzy
@@ -14885,11 +14892,13 @@ msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
-msgstr ""
+msgstr "Förser fält och knappar för PDF-formulär. Modulen använder LaTeX-"
+"paketet hyperref. Vänligen konsultera LyX-exempelfilen PDF-form.lyx och "
+"dokumentationen för hyperref för detaljer."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "PDF-formulär (början)"
 
 #: lib/layouts/pdfform.module:19
 #, fuzzy
@@ -14903,7 +14912,7 @@ msgstr "Fler parametrar"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Parametrar"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
 #, fuzzy
@@ -14912,7 +14921,7 @@ msgstr "Infoga antalet kolumner här"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "PDF-formulär (slut)"
 
 #: lib/layouts/pdfform.module:47
 #, fuzzy
@@ -15045,7 +15054,7 @@ msgstr "Standardstil:"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Poppnedrutstil"
 
 #: lib/layouts/pdfform.module:180
 #, fuzzy
@@ -15109,7 +15118,8 @@ msgstr "Avsnitt"
 #: lib/layouts/sectionbox.module:6
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
-msgstr ""
+msgstr "Definierar rutor med avsnittshuvud. Mest avsedd för SciPoster-"
+"klassen."
 
 #: lib/layouts/sectionbox.module:11
 #, fuzzy
@@ -15299,13 +15309,14 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr ""
+msgstr "Häftigt färgade rutor"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
 "Adds custom insets that support colored boxes via the tcolorbox package. See "
 "the tcolorbox documentation for details."
-msgstr ""
+msgstr "Lägger till anpassade insättningar som stöder färgade rutor via "
+"tcolorbox-paketet. Se dokumentationen för tcolorbox för detaljer."
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
 #, fuzzy
@@ -15319,15 +15330,15 @@ msgstr "Kolumnalternativ"
 
 #: lib/layouts/tcolorbox.module:20
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr ""
+msgstr "Infoga färgrutalternativen här (se tcolorbox-manualen)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr ""
+msgstr "Dynamisk färgruta"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
-msgstr ""
+msgstr "Färgruta (dynamisk)"
 
 #: lib/layouts/tcolorbox.module:33
 #, fuzzy
@@ -15336,7 +15347,7 @@ msgstr "Typsnittsfärg"
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
-msgstr ""
+msgstr "Färgruta (passa innehåll)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
 #, fuzzy
@@ -15374,7 +15385,7 @@ msgstr "Färga länkar"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr ""
+msgstr "Färgrutinställning"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
 #, fuzzy
@@ -29688,7 +29699,7 @@ msgstr "Välj %1$s fil att importera"
 msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
-msgstr ""
+msgstr "Filnamnet '%1$s' är ogiltigt!\nAvbryter import."
 
 #: src/frontends/qt4/GuiView.cpp:2334 src/frontends/qt4/GuiView.cpp:2519
 #: src/frontends/qt4/GuiView.cpp:2633

@@ -3201,11 +3201,12 @@ msgstr "секундна за&тримка підказки"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Слова, що складаються з меншої за вказану кількість літер, не "
+"доповнюватимуться."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Мінімальна кількість символів у слові, яке слід доповнювати"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -29558,7 +29559,7 @@ msgstr "Вибрати %1$s файл для імпорту"
 msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
-msgstr ""
+msgstr "Назва файла «%1$s» є некоректною!\nПерериваємо імпортування."
 
 #: src/frontends/qt4/GuiView.cpp:2334 src/frontends/qt4/GuiView.cpp:2519
 #: src/frontends/qt4/GuiView.cpp:2633

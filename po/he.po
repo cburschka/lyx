@@ -2876,7 +2876,7 @@ msgstr "צבע קישורים"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
-msgstr ""
+msgstr "הפניות לאחור ביבליוגרפיות"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 #, fuzzy
@@ -2914,7 +2914,7 @@ msgstr "אפשרויות LaTeX נוספות"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-msgstr ""
+msgstr "לדוגמה: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:20
 msgid "Paper Format"
@@ -3042,11 +3042,11 @@ msgstr "ה&שתמש ביישור ברירת המחדל של הפסקה"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
-msgstr ""
+msgstr "ריווח אופקי ואנכי של תוכן הפאנטום"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:63
 msgid "&Phantom"
-msgstr ""
+msgstr "פאנטום"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:70
 #, fuzzy
@@ -3087,15 +3087,15 @@ msgstr "מתמטיקה"
 msgid ""
 "Show the grey inline completion behind the cursor in math mode after the "
 "delay."
-msgstr ""
+msgstr "הצג השלמה בתוך-השורה באפור מאחורי הסמן במצב מתמטיקה לאחר הפוגה"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:44
 msgid "Automatic in&line completion"
-msgstr ""
+msgstr "השלמה אוטומטית"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:51
 msgid "Show the popup in math mode after the delay."
-msgstr ""
+msgstr "הצג את הפופאפ במצב מתמטיקה לאחר ההפוגה."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:54
 #, fuzzy
@@ -3115,15 +3115,15 @@ msgstr "בטקסט:"
 msgid ""
 "Show the grey inline completion behind the cursor in text mode after the "
 "delay."
-msgstr ""
+msgstr "הצג השלמה בתוך-השורה באפור מאחורי הסמן במצב טקסט לאחר הפוגה"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:89
 msgid "Automatic &inline completion"
-msgstr ""
+msgstr "השלמה אוטומטית"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:96
 msgid "Show the popup after the set delay in text mode."
-msgstr ""
+msgstr "הצג את הפופאפ במצב טקסט לאחר ההפוגה."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:99
 #, fuzzy
@@ -3134,7 +3134,7 @@ msgstr "עדכון אוטומטי"
 msgid ""
 "Show a small triangle on the cursor if a completion is available in text "
 "mode."
-msgstr ""
+msgstr "הצג משולש קטן על הסמן במקרה והשלמה אוטומטית זמינה במצב טקסט."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:109
 msgid "Cursor i&ndicator"
@@ -3149,11 +3149,12 @@ msgstr "כללי"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
+msgstr "לאחר שהסמן לא זז לפרק זמן זה, ההשלמה האוטומטית מוצגת אם השלמה כזו "
+"קיימת."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:155
 msgid "s inline completion dela&y"
-msgstr ""
+msgstr "הפוגת השלמה אוטומטית"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:188
 msgid ""
@@ -3303,7 +3304,7 @@ msgstr "פתח מסמכים מהפעלה קודמת"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
 msgid "&Clear all session information"
-msgstr ""
+msgstr "נקה את כל המידע על סשנים"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
 #, fuzzy
@@ -3329,7 +3330,8 @@ msgid ""
 "format by default.\n"
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
-msgstr ""
+msgstr "אם מסומן, מסמכים חדשים ישמרו כברירת מחדל בפורמט בינארי דחוס.\nמסמכים"
+" קיימים עדיין ישמרו במצבם הנוכחי (דחוס או לא)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
@@ -3481,7 +3483,7 @@ msgstr "ה&גבל רוחב טקסט"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:221
 msgid "Screen used (&pixels):"
-msgstr ""
+msgstr "רוחב מסך בשימוש (פיקסלים):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:46
 msgid "&New..."
@@ -3560,7 +3562,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr ""
+msgstr "בלי פונטים של TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
 #, fuzzy
@@ -3617,13 +3619,14 @@ msgstr "עכבר"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:162
 msgid "&Wheel scrolling speed:"
-msgstr ""
+msgstr "מהירות גלילה עם הגלגלת:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:172
 msgid ""
 "1.0 is the standard scrolling speed with the mouse wheel. Higher values will "
 "speed it up, low values slow it down."
-msgstr ""
+msgstr "1.0 היא מהירות הגלילה הסטנדרטית עם גלגלת העכבר. ערכים גבוהים יותר "
+"יגבירו את המהירות, הערכים נמוכים יאטו אותה."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:194
 msgid ""
@@ -3719,7 +3722,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:177
 msgid "Set languages &globally"
-msgstr ""
+msgstr "הגדר שפות באופן גלובלי"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:184
 msgid ""
@@ -4125,11 +4128,11 @@ msgstr "סמן איות לא נכון בקו תחתי"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr ""
+msgstr "בודק איות ברציפות"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 msgid "The characters inserted here are ignored by the spellchecker."
-msgstr ""
+msgstr "בודק האיות יתעלם מתווים המוכנסים פה."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:107
 #, fuzzy
@@ -4162,11 +4165,12 @@ msgstr "עמודות:"
 msgid ""
 "The icon set to use. Warning: normal size of icons may be\n"
 "wrong until you save the preferences and restart LyX."
-msgstr ""
+msgstr "סט האייקונים לשימוש. אזהרה: הגודל הנורמלי של האייקונים עלול "
+"להיות\nשגוי עד שתשמור את ההגדרות ותאתחל את LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
-msgstr ""
+msgstr "השתמש באייקוני המערכת"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
 #, fuzzy
@@ -4177,15 +4181,16 @@ msgstr "תוכן"
 msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
-msgstr ""
+msgstr "בחירה זו מאפשרת הצגה אוטומטית של הערות מועילות עבור הבלעות במשטח "
+"העבודה העיקר של מסמך בעריכה"
 
 #: src/frontends/qt4/ui/PrefUi.ui:141
 msgid "&Enable tool tips in main work area"
-msgstr ""
+msgstr "הפעל רמזים צצים במשטח העבודה העיקרי"
 
 #: src/frontends/qt4/ui/PrefUi.ui:151
 msgid "Menus"
-msgstr ""
+msgstr "תפריטים"
 
 #: src/frontends/qt4/ui/PrefUi.ui:162
 msgid "&Maximum last files:"
@@ -4572,7 +4577,7 @@ msgstr "הגדרות תיבה"
 
 #: src/frontends/qt4/ui/TabularUi.ui:118
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "מזג תאים משורות שונות"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
@@ -4681,7 +4686,7 @@ msgstr "יישור אנכי של התיבה (בהתייחסות לבסיס הת�
 
 #: src/frontends/qt4/ui/TabularUi.ui:550
 msgid "Merge cells of different columns"
-msgstr ""
+msgstr "מזג תאים מעמודות שונות"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
 #, fuzzy
@@ -5149,7 +5154,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:179
 msgid "Body Only"
-msgstr ""
+msgstr "גוף בלבד"
 
 #: src/frontends/qt4/ui/WrapUi.ui:45
 #, fuzzy
@@ -16527,11 +16532,11 @@ msgstr "הונגרית"
 
 #: lib/languages:773
 msgid "Marathi"
-msgstr ""
+msgstr "מרטהי"
 
 #: lib/languages:783
 msgid "Mongolian"
-msgstr ""
+msgstr "מונגולית"
 
 #: lib/languages:792
 msgid "English (New Zealand)"
@@ -16539,15 +16544,15 @@ msgstr "אנגלית (ניו-זילנד)"
 
 #: lib/languages:802
 msgid "Norwegian (Bokmaal)"
-msgstr ""
+msgstr "נורווגית (Bokmaal)"
 
 #: lib/languages:812
 msgid "Norwegian (Nynorsk)"
-msgstr ""
+msgstr "נורווגית (Nynorsk)"
 
 #: lib/languages:823
 msgid "Occitan"
-msgstr ""
+msgstr "אוקסיטנית"
 
 #: lib/languages:841
 msgid "Polish"
@@ -16612,7 +16617,7 @@ msgstr "דואר"
 
 #: lib/languages:1003 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
-msgstr ""
+msgstr "טלוגו"
 
 #: lib/languages:1010 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
@@ -16628,7 +16633,7 @@ msgstr "תורכית"
 
 #: lib/languages:1046
 msgid "Turkmen"
-msgstr ""
+msgstr "טורקמנית"
 
 #: lib/languages:1056
 msgid "Ukrainian"
@@ -23553,11 +23558,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1409
 msgid "More rounded"
-msgstr ""
+msgstr "מועגל יותר"
 
 #: lib/ui/stdtoolbars.inc:1410
 msgid "Less rounded"
-msgstr ""
+msgstr "מועגל פחות"
 
 #: lib/ui/stdtoolbars.inc:1411
 msgid "Advanced"
@@ -23609,7 +23614,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1423
 msgid "Raised"
-msgstr ""
+msgstr "מוגבה"
 
 #: lib/ui/stdtoolbars.inc:1424
 msgid "Lowered"
@@ -28096,7 +28101,7 @@ msgstr "המרה נכשלה"
 
 #: src/frontends/qt4/GuiDocument.cpp:576
 msgid "Failed to convert local layout to current format."
-msgstr ""
+msgstr "ההמרה של מִתְוֶה מקומי לפורמט העדכני נכשלה."
 
 #: src/frontends/qt4/GuiDocument.cpp:591
 #, fuzzy
@@ -28140,13 +28145,14 @@ msgstr "12"
 
 #: src/frontends/qt4/GuiDocument.cpp:837
 msgid "None (no fontenc)"
-msgstr ""
+msgstr "ללא (בלי fontenct)"
 
 #: src/frontends/qt4/GuiDocument.cpp:845
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
-msgstr ""
+msgstr "השתמש בגופני OpenType ו-TrueType ישירות (דורש XeTeX או LuaTeX)תדרש "
+"להתקין את החבילה fontenc על מנת להשתמש בתכונה זו"
 
 #: src/frontends/qt4/GuiDocument.cpp:877
 msgid "empty"
@@ -28378,7 +28384,8 @@ msgstr "%1$s ו-  %2$s"
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
 "all required packages (%2$s) installed."
-msgstr ""
+msgstr "מחלקה לא נמצא ע\"י LyX. בדוק האם המחלקה %1$s המתאימה וכל החבילות "
+"הדרושות (%2$s) מותקנות."
 
 #: src/frontends/qt4/GuiDocument.cpp:1399
 #: src/frontends/qt4/GuiDocument.cpp:1503
@@ -28465,7 +28472,7 @@ msgstr "(לא מותקן)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1981
 msgid "Non-TeX Fonts Default"
-msgstr ""
+msgstr "ברירת מחדל עבור גופני Non-TeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1983
 msgid " (not available)"
@@ -28495,7 +28502,7 @@ msgstr "מסמכי LyX (*.lyx)"
 #: src/frontends/qt4/GuiDocument.cpp:2130
 #: src/frontends/qt4/GuiDocument.cpp:2139
 msgid "Local layout file"
-msgstr ""
+msgstr "קובץ תַסדִיר מקומי"
 
 #: src/frontends/qt4/GuiDocument.cpp:2140
 msgid ""
@@ -28512,11 +28519,11 @@ msgstr "הגדרות טקסט"
 
 #: src/frontends/qt4/GuiDocument.cpp:2158
 msgid "Unable to read local layout file."
-msgstr ""
+msgstr "לא ניתן לקרוא קובץ תסדיר מקומי."
 
 #: src/frontends/qt4/GuiDocument.cpp:2175
 msgid "This is a local layout file."
-msgstr ""
+msgstr "זהו קובץ תסדיר מקומי"
 
 #: src/frontends/qt4/GuiDocument.cpp:2189
 msgid "Select master document"
@@ -29165,7 +29172,7 @@ msgstr "מקלדת"
 
 #: src/frontends/qt4/GuiPrefs.cpp:634
 msgid "Input Completion"
-msgstr ""
+msgstr "השלמת אוטומטית"
 
 #: src/frontends/qt4/GuiPrefs.cpp:783 src/frontends/qt4/GuiPrefs.cpp:808
 #: src/frontends/qt4/GuiPrefs.cpp:896 src/frontends/qt4/GuiPrefs.cpp:923
@@ -29313,7 +29320,7 @@ msgstr "מסמך וחלון"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2787
 msgid "Font, Layouts and Textclasses"
-msgstr ""
+msgstr "גופן, תסדירים ו-Textclasses"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2791
 msgid "System and Miscellaneous"
@@ -29341,7 +29348,8 @@ msgstr "צירוף מקשים לא חוקי או ריק"
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
 "Are you sure you want to unbind the current shortcut and bind it to %3$s?"
-msgstr ""
+msgstr "קיצור הדרך '%1$s' כבר קיים ומקושר ל-%2$s.\nהאם אתה בטוח שאתה רוצה "
+"לבטל את הקישור והמקורי ולקשר את קיצור הדרך ל-%3$s?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3106
 msgid "Redefine shortcut?"
@@ -29468,13 +29476,13 @@ msgstr "לא ניתן לערוך את הקובץ"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "בדיקת האיות של החלק הנבחר הסתיימה, לא נמצאו שגיאות."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
 "We reached the end of the document, would you like to continue from the "
 "beginning?"
-msgstr ""
+msgstr "הגענו לסוף המסמך, תרצה להמשיך מתחילתו?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:540
 #, fuzzy
@@ -29971,7 +29979,7 @@ msgid ""
 "The directory in the given path\n"
 "%1$s\n"
 "does not exist."
-msgstr ""
+msgstr "התיקייה בנתיב\n%1$s\nלא קיימת."
 
 #: src/frontends/qt4/GuiView.cpp:2183
 #, c-format

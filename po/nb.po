@@ -1492,7 +1492,7 @@ msgstr "Avgrensing av søket"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:200
 msgid "Scope"
-msgstr ""
+msgstr "Søk i"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:212
 #, fuzzy
@@ -3169,11 +3169,11 @@ msgstr "s dialogforsinkelse"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Ord med færre bokstaver blir ikke fullført."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minimum bokstaver for å fullføre ord"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3327,7 +3327,9 @@ msgid ""
 "format by default.\n"
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
-msgstr ""
+msgstr "Hvis dette krysses av, vil nye dokumenter lagres i et komprimert "
+"binært format som standard.\nEksisterende dokumenter vil fortsatt bli lagret"
+" som de er (komprimerte eller ikke)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
@@ -6055,7 +6057,7 @@ msgstr "Venstre side"
 
 #: lib/layouts/IEEEtran.layout:229
 msgid "Left side of the header line"
-msgstr ""
+msgstr "Venstre side av header"
 
 #: lib/layouts/IEEEtran.layout:243 lib/layouts/ijmpc.layout:65
 #: lib/layouts/ijmpd.layout:70
@@ -6076,7 +6078,7 @@ msgstr "Registernøkler---"
 
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/IEEEtran.layout:291
 msgid "Paragraph Start"
-msgstr ""
+msgstr "Avsnitt start"
 
 #: lib/layouts/IEEEtran.layout:295
 msgid "First Char"
@@ -6326,7 +6328,7 @@ msgstr "Post-kommentar"
 #: lib/layouts/sciposter.layout:128 lib/layouts/sciposter.layout:131
 #: lib/layouts/sciposter.layout:158
 msgid "Giant"
-msgstr ""
+msgstr "Stor"
 
 #: lib/layouts/a0poster.layout:57 lib/layouts/a0poster.layout:60
 #: lib/layouts/a0poster.layout:86 lib/layouts/beamerposter.layout:69
@@ -6334,7 +6336,7 @@ msgstr ""
 #: lib/layouts/sciposter.layout:144 lib/layouts/sciposter.layout:147
 #: lib/layouts/sciposter.layout:173
 msgid "More Giant"
-msgstr ""
+msgstr "Større"
 
 #: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
 #: lib/layouts/a0poster.layout:92 lib/layouts/beamerposter.layout:75
@@ -6342,22 +6344,22 @@ msgstr ""
 #: lib/layouts/sciposter.layout:150 lib/layouts/sciposter.layout:153
 #: lib/layouts/sciposter.layout:179
 msgid "Most Giant"
-msgstr ""
+msgstr "Størst"
 
 #: lib/layouts/a0poster.layout:69 lib/layouts/beamerposter.layout:81
 #: lib/layouts/sciposter.layout:156
 msgid "Giant Snippet"
-msgstr ""
+msgstr "Stor bit"
 
 #: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:96
 #: lib/layouts/sciposter.layout:171
 msgid "More Giant Snippet"
-msgstr ""
+msgstr "Større bit"
 
 #: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:102
 #: lib/layouts/sciposter.layout:177
 msgid "Most Giant Snippet"
-msgstr ""
+msgstr "Størst bit"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
@@ -6500,7 +6502,7 @@ msgstr "Kontekst"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
-msgstr ""
+msgstr "Sammenheng med arbeidet ditt (valgfritt, kan være tom)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
@@ -6621,7 +6623,7 @@ msgstr "Tall"
 
 #: lib/layouts/aastex.layout:180
 msgid "Consecutive number for the alternative affiliations"
-msgstr ""
+msgstr "Rekkefølgenummer for alternative tilnytninger"
 
 #: lib/layouts/aastex.layout:184
 msgid "Alternative affiliation:"
@@ -6737,7 +6739,7 @@ msgstr "fig."
 
 #: lib/layouts/aastex.layout:536
 msgid "Filename to identify the corresponding figure file"
-msgstr ""
+msgstr "Filnavn for tilhørende figur-fil"
 
 #: lib/layouts/aastex.layout:551
 msgid "Facility"
@@ -6757,11 +6759,11 @@ msgstr "Obj:"
 
 #: lib/layouts/aastex.layout:591 lib/layouts/aastex.layout:621
 msgid "Recognized Name"
-msgstr ""
+msgstr "Kjent navn"
 
 #: lib/layouts/aastex.layout:592
 msgid "Separate the recognized name of an object from text"
-msgstr ""
+msgstr "Skille objektets kjente navn fra tekst"
 
 #: lib/layouts/aastex.layout:607
 msgid "Dataset"
@@ -6773,7 +6775,7 @@ msgstr "Datasett:"
 
 #: lib/layouts/aastex.layout:622
 msgid "Separate the dataset ID from text"
-msgstr ""
+msgstr "Skille datasettets ID fra tekst"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -6877,7 +6879,7 @@ msgstr "Tilleggsinfo"
 
 #: lib/layouts/achemso.layout:253
 msgid "Supporting Information Available"
-msgstr ""
+msgstr "Støttende informasjon tilgjengelig"
 
 #: lib/layouts/achemso.layout:256
 msgid "TOC entry"
@@ -6922,7 +6924,7 @@ msgstr "ACM SIGGRAPH"
 
 #: lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
-msgstr ""
+msgstr "TOG nettID"
 
 #: lib/layouts/acmsiggraph.layout:77
 #, fuzzy
@@ -6949,7 +6951,7 @@ msgstr "Artikkelnummer:"
 
 #: lib/layouts/acmsiggraph.layout:99
 msgid "TOG article DOI"
-msgstr ""
+msgstr "TOG-artikkel DOI"
 
 #: lib/layouts/acmsiggraph.layout:102
 #, fuzzy
@@ -6958,7 +6960,7 @@ msgstr "Artikkel"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
-msgstr ""
+msgstr "TOG prosjekt-URL"
 
 #: lib/layouts/acmsiggraph.layout:110
 msgid "Project URL:"
@@ -6966,7 +6968,7 @@ msgstr "Prosjekt-URL:"
 
 #: lib/layouts/acmsiggraph.layout:114
 msgid "TOG video URL"
-msgstr ""
+msgstr "TOG video-URL"
 
 #: lib/layouts/acmsiggraph.layout:117
 msgid "Video URL:"
@@ -6974,7 +6976,7 @@ msgstr "Video URL:"
 
 #: lib/layouts/acmsiggraph.layout:121
 msgid "TOG data URL"
-msgstr ""
+msgstr "TOG data-URL"
 
 #: lib/layouts/acmsiggraph.layout:124
 msgid "Data URL:"
@@ -6982,7 +6984,7 @@ msgstr "Data URL:"
 
 #: lib/layouts/acmsiggraph.layout:128
 msgid "TOG code URL"
-msgstr ""
+msgstr "TOG code-URL"
 
 #: lib/layouts/acmsiggraph.layout:131
 msgid "Code URL:"
@@ -7099,7 +7101,7 @@ msgstr "Tilknytningsmerke"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
-msgstr ""
+msgstr "Rekkefølgenummer for forfatterens tilknytninger"
 
 #: lib/layouts/agutex.layout:129
 msgid "Author affiliation:"
@@ -7299,7 +7301,7 @@ msgstr ""
 
 #: lib/layouts/apa.layout:405 lib/layouts/apa6.layout:506
 msgid "Seriate"
-msgstr ""
+msgstr "Serievis"
 
 #: lib/layouts/apa.layout:422 lib/layouts/apa.layout:423
 #: lib/layouts/apa6.layout:523 lib/layouts/apa6.layout:524
@@ -7375,7 +7377,7 @@ msgstr "LaTeX Preamble"
 
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
-msgstr ""
+msgstr "Kopinummer"
 
 #: lib/layouts/apa6.layout:332 lib/layouts/agu_stdclass.inc:155
 #: lib/layouts/agu_stdclass.inc:157
@@ -7438,7 +7440,7 @@ msgstr "Velg avsnitt|s"
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:121
 #: lib/layouts/beamer.layout:161
 msgid "Overlay specifications for this list"
-msgstr ""
+msgstr "Overliggerspesifikasjon for denne lista"
 
 #: lib/layouts/beamer.layout:96 lib/layouts/beamer.layout:134
 #: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:712
@@ -7587,15 +7589,15 @@ msgstr "Aksjon"
 
 #: lib/layouts/beamer.layout:443 lib/layouts/beamer.layout:502
 msgid "Overlay specifications for this frame"
-msgstr ""
+msgstr "Overliggerspesifikasjoner for dette lysarket"
 
 #: lib/layouts/beamer.layout:448 lib/layouts/beamer.layout:507
 msgid "Default Overlay Specifications"
-msgstr ""
+msgstr "Standard overliggerspesifikasjoner"
 
 #: lib/layouts/beamer.layout:449 lib/layouts/beamer.layout:508
 msgid "Default overlay specifications within this frame"
-msgstr ""
+msgstr "Standard overliggerspesifikasjoner for dette lysarket"
 
 #: lib/layouts/beamer.layout:454 lib/layouts/beamer.layout:476
 #: lib/layouts/beamer.layout:487 lib/layouts/beamer.layout:513
@@ -7671,7 +7673,7 @@ msgstr "Lysarktittel"
 #: lib/layouts/beamer.layout:1452 lib/layouts/beamer.layout:1471
 #: lib/layouts/beamer.layout:1490 lib/layouts/beamer.layout:1514
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr ""
+msgstr "Oppgi innstillinger for overliggere (se beamer-håndboka)"
 
 #: lib/layouts/beamer.layout:562
 msgid "Short Frame Title|S"
@@ -7952,7 +7954,7 @@ msgstr "Ekstra teoremtekst"
 #: lib/layouts/theorems-ams.inc:34 lib/layouts/theorems-bytype.inc:36
 #: lib/layouts/theorems-starred.inc:35 lib/layouts/theorems.inc:34
 msgid "Additional text appended to the theorem header"
-msgstr ""
+msgstr "Ekstra tekst føyd til teoremoverskriften"
 
 #: lib/layouts/beamer.layout:1209 lib/layouts/foils.layout:326
 #: lib/layouts/theorems-starred.inc:157
@@ -8705,7 +8707,7 @@ msgstr "Kopi til"
 
 #: lib/layouts/dinbrief.layout:393
 msgid "Verteiler"
-msgstr ""
+msgstr "Fordeler"
 
 #: lib/layouts/docbook-book.layout:3
 msgid "DocBook Book (SGML)"
@@ -9131,7 +9133,7 @@ msgstr "Adresseetikett"
 
 #: lib/layouts/elsarticle.layout:231
 msgid "Label of the author you refer to"
-msgstr ""
+msgstr "Etikett for forfatteren du refererer til"
 
 #: lib/layouts/elsarticle.layout:248
 msgid "Internet"
@@ -9139,7 +9141,7 @@ msgstr "Internett"
 
 #: lib/layouts/elsarticle.layout:249
 msgid "If content is 'url', email becomes an Internet address"
-msgstr ""
+msgstr "Hvis innholdet er 'url', blir epost en Internettadresse"
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -9240,7 +9242,7 @@ msgstr "Kontrollbilder"
 
 #: lib/layouts/europasscv.layout:167 lib/layouts/europecv.layout:102
 msgid "Space before picture:"
-msgstr ""
+msgstr "Tomrom før bilde:"
 
 #: lib/layouts/europasscv.layout:170 lib/layouts/europecv.layout:105
 msgid "Picture"
@@ -9261,7 +9263,7 @@ msgstr "Struktur"
 
 #: lib/layouts/europasscv.layout:183 lib/layouts/europecv.layout:118
 msgid "Space after picture:"
-msgstr ""
+msgstr "Tomrom etter bilde:"
 
 #: lib/layouts/europasscv.layout:194 lib/layouts/europasscv.layout:217
 #: lib/layouts/europasscv.layout:253 lib/layouts/europecv.layout:159
@@ -9476,7 +9478,7 @@ msgstr "Tittelen slik den vises i hodet"
 
 #: lib/layouts/europecv.layout:166
 msgid "Summary of the item, can also be the time"
-msgstr ""
+msgstr "Oppsummering av elementet, eller tidspunkt"
 
 #: lib/layouts/europecv.layout:179
 msgid "BulletedItem"
@@ -10171,7 +10173,7 @@ msgstr "Tabelltittel"
 
 #: lib/layouts/ijmpc.layout:265 lib/layouts/ijmpd.layout:268
 msgid "Refcite"
-msgstr ""
+msgstr "Sitatreferanse"
 
 #: lib/layouts/ijmpc.layout:269 lib/layouts/ijmpd.layout:272
 msgid "Cite reference"
@@ -10518,7 +10520,7 @@ msgstr "Tilknytningsprefiks"
 
 #: lib/layouts/jasatex.layout:128
 msgid "A prefix like 'Also at '"
-msgstr ""
+msgstr "Et prefiks som 'også ved '"
 
 #: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:173
 msgid "PACS numbers:"
@@ -11040,7 +11042,7 @@ msgstr "Linje 1"
 
 #: lib/layouts/moderncv.layout:143 lib/layouts/moderncv.layout:148
 msgid "Optional address line"
-msgstr ""
+msgstr "Frivillig adresselinje"
 
 #: lib/layouts/moderncv.layout:147
 msgid "Line 2"
@@ -11132,11 +11134,11 @@ msgstr "Tid"
 
 #: lib/layouts/moderncv.layout:336 lib/layouts/moderncv.layout:337
 msgid "What?"
-msgstr ""
+msgstr "Hva?"
 
 #: lib/layouts/moderncv.layout:364
 msgid "Entry:"
-msgstr ""
+msgstr "Post:"
 
 #: lib/layouts/moderncv.layout:392
 #, fuzzy
@@ -11269,7 +11271,7 @@ msgstr "Alternativt navn"
 
 #: lib/layouts/moderncv.layout:579
 msgid "Alternative instead of 'Enclosure'"
-msgstr ""
+msgstr "Alternativ i stedet for 'Vedlagt'"
 
 #: lib/layouts/moderncv.layout:583
 #, fuzzy
@@ -11400,11 +11402,11 @@ msgstr "NummereringType1"
 
 #: lib/layouts/powerdot.layout:443
 msgid "Twocolumn"
-msgstr ""
+msgstr "Doble kolonner"
 
 #: lib/layouts/powerdot.layout:458
 msgid "Twocolumn options (see powerdot manual)"
-msgstr ""
+msgstr "Dobbeltkolonneopsjoner (se 'powerdot'-manualen)"
 
 #: lib/layouts/powerdot.layout:461
 msgid "Left Column"
@@ -11437,7 +11439,7 @@ msgstr "Velg avsnitt|s"
 
 #: lib/layouts/powerdot.layout:593
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr ""
+msgstr "Instillinger for overligger (se powerdot-håndboka)"
 
 #: lib/layouts/powerdot.layout:600
 #, fuzzy
@@ -11507,7 +11509,8 @@ msgstr "Alternativ tilknytningsopsjon"
 
 #: lib/layouts/revtex4-1.layout:91 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
-msgstr ""
+msgstr "Frivillig argument til kommandoen for alternativ tilknytning "
+"(altaffiliation)"
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:165
 msgid "Affiliation (none)"
@@ -11527,7 +11530,7 @@ msgstr "Elektronisk adresseopsjon|s"
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
-msgstr ""
+msgstr "Frivillig argument til epostkommandoen"
 
 #: lib/layouts/revtex4-1.layout:134 lib/layouts/revtex4.layout:226
 #, fuzzy
@@ -11536,7 +11539,7 @@ msgstr "Forfatter URL"
 
 #: lib/layouts/revtex4-1.layout:135 lib/layouts/revtex4.layout:227
 msgid "Optional argument to the homepage command"
-msgstr ""
+msgstr "Frivillig argument til hjemmeside-kommandoen"
 
 #: lib/layouts/revtex4-1.layout:141 lib/layouts/revtex4.layout:187
 msgid "Collaboration"
@@ -11659,7 +11662,7 @@ msgstr "Skriftstørrelser"
 
 #: lib/layouts/sciposter.layout:61
 msgid "Relative logo size (0 through 1)"
-msgstr ""
+msgstr "Relativ logostørrelse (0 til 1)"
 
 #: lib/layouts/sciposter.layout:65
 #, fuzzy
@@ -11678,7 +11681,7 @@ msgstr "Valgfri bredde"
 
 #: lib/layouts/sciposter.layout:81
 msgid "The caption width relative to the column (0 through 1)"
-msgstr ""
+msgstr "Bredden på bildetekst relativt til kolonnen (0 til 1)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -11919,7 +11922,7 @@ msgstr "Tittelen slik den vises i kolumnetittel"
 
 #: lib/layouts/siamltex.layout:319 lib/layouts/amsdefs.inc:193
 msgid "Subjectclass"
-msgstr ""
+msgstr "Emneklasse"
 
 #: lib/layouts/siamltex.layout:322
 msgid "AMS subject classifications:"
@@ -12069,7 +12072,7 @@ msgstr "sluttnote"
 #: lib/layouts/svglobal.layout:81 lib/layouts/svjog.layout:85
 #: lib/layouts/svprobth.layout:115
 msgid "Headnote (optional):"
-msgstr ""
+msgstr "Hodenotat (frivillig):"
 
 #: lib/layouts/svglobal.layout:90 lib/layouts/svglobal.layout:92
 #: lib/layouts/svjog.layout:94 lib/layouts/svjog.layout:96
@@ -12189,7 +12192,7 @@ msgstr "For redaktører"
 
 #: lib/layouts/svmult.layout:107 lib/layouts/svcommon.inc:116
 msgid "PartBacktext"
-msgstr ""
+msgstr "Del baktekst"
 
 #: lib/layouts/svmult.layout:115 lib/layouts/svcommon.inc:413
 msgid "Running Chapter"
@@ -12465,11 +12468,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:159
 msgid "Cite-other"
-msgstr ""
+msgstr "Sitat-andre"
 
 #: lib/layouts/agu_stdtitle.inc:163
 msgid "Cite-other:"
-msgstr ""
+msgstr "Sitat-andre:"
 
 #: lib/layouts/agu_stdtitle.inc:210 lib/layouts/aguplus.inc:123
 msgid "Revised:"
@@ -12477,11 +12480,11 @@ msgstr "Revidert:"
 
 #: lib/layouts/agu_stdtitle.inc:223
 msgid "Ident-line"
-msgstr ""
+msgstr "Ident-linje"
 
 #: lib/layouts/agu_stdtitle.inc:226
 msgid "Ident-line:"
-msgstr ""
+msgstr "Ident-linje:"
 
 #: lib/layouts/agu_stdtitle.inc:231
 msgid "Runhead"
@@ -12815,11 +12818,11 @@ msgstr "Tittelhode"
 
 #: lib/layouts/scrclass.inc:244
 msgid "Uppertitleback"
-msgstr ""
+msgstr "Øvre baktittel"
 
 #: lib/layouts/scrclass.inc:250
 msgid "Lowertitleback"
-msgstr ""
+msgstr "Nedre baktittel"
 
 #: lib/layouts/scrclass.inc:256
 msgid "Extratitle"
@@ -12957,7 +12960,7 @@ msgstr "Argument"
 
 #: lib/layouts/stdinsets.inc:578
 msgid "LongTableNoNumber"
-msgstr ""
+msgstr "LangTabellUtenNummer"
 
 #: lib/layouts/stdinsets.inc:580
 #, fuzzy
@@ -13271,7 +13274,7 @@ msgstr "Navn/Tittel"
 
 #: lib/layouts/theorems-without-preamble.inc:42
 msgid "Alternative optional name or title"
-msgstr ""
+msgstr "Alternativt valgfritt navn eller tittel"
 
 #: lib/layouts/theorems-without-preamble.inc:127
 msgid "Prop \\theprop."
@@ -13301,7 +13304,7 @@ msgstr "Problem"
 
 #: lib/layouts/theorems-without-preamble.inc:290
 msgid "Label of the corresponding problem"
-msgstr ""
+msgstr "Etikett for det korresponderende problemet"
 
 #: lib/layouts/theorems-without-preamble.inc:365
 msgid "Property \\theproperty."
@@ -13321,7 +13324,8 @@ msgstr "Algoritme"
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats."
-msgstr ""
+msgstr "Bruk pakka 'algorithm2e' for flytende algoritmer, heller enn LyX' "
+"egne flytende algoritmer."
 
 #: lib/layouts/basic.module:2
 #, fuzzy
@@ -13502,7 +13506,7 @@ msgstr "Hode like sider"
 
 #: lib/layouts/customHeadersFooters.module:21
 msgid "Alternative text for the even header"
-msgstr ""
+msgstr "Alternativ hodetekst for like sider"
 
 #: lib/layouts/customHeadersFooters.module:33
 msgid "Center Header"
@@ -14042,7 +14046,7 @@ msgstr "Resten av forbokstaven"
 
 #: lib/layouts/initials.module:45
 msgid "Rest of initial word or text"
-msgstr ""
+msgstr "Resten av ordet med forbokstaven, eller tekst"
 
 #: lib/layouts/jurabib.module:2
 msgid "Jurabib"
@@ -14201,7 +14205,7 @@ msgstr "Legg et nytt register til listen"
 
 #: lib/layouts/linguistics.module:103 lib/layouts/linguistics.module:105
 msgid "Tri-Glosse"
-msgstr ""
+msgstr "Tri-glose"
 
 #: lib/layouts/linguistics.module:138
 #, fuzzy
@@ -14332,7 +14336,8 @@ msgstr "avstand før sideskift"
 msgid ""
 "Free space that needs to be on the page to start the multiple columns on "
 "this page"
-msgstr ""
+msgstr "Ledig plass siden må ha, for begynne med flere kolonner på denne "
+"siden"
 
 #: lib/layouts/natbib.module:2
 msgid "Natbib"
@@ -14484,11 +14489,13 @@ msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
-msgstr ""
+msgstr "Tilbyr diverse kommentarer for PDF-output. Modulen bruker pakka "
+"'pdfcomment'. Se eksempelfila PDF-comment.lyx og pakkedokumentasjonen for "
+"detaljer."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
-msgstr ""
+msgstr "Definer avatar"
 
 #: lib/layouts/pdfcomment.module:20
 #, fuzzy
@@ -14497,7 +14504,7 @@ msgstr "APLcomment"
 
 #: lib/layouts/pdfcomment.module:27
 msgid "PDF-comment avatar:"
-msgstr ""
+msgstr "PDF-kommentar-avatar:"
 
 #: lib/layouts/pdfcomment.module:30
 #, fuzzy
@@ -14506,7 +14513,7 @@ msgstr "Navn på forfatteren"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
-msgstr ""
+msgstr "Definer stil for PDF-kommentar"
 
 #: lib/layouts/pdfcomment.module:44
 #, fuzzy
@@ -14520,11 +14527,11 @@ msgstr "Navn på språket"
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
-msgstr ""
+msgstr "Definer listestil for PDF-kommentar"
 
 #: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
-msgstr ""
+msgstr "Definisjon for PDF-kommentar listestil:"
 
 #: lib/layouts/pdfcomment.module:58
 #, fuzzy
@@ -14533,15 +14540,15 @@ msgstr "Navn på standardskriver"
 
 #: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
-msgstr ""
+msgstr "Sett PDF-kommentar listestil"
 
 #: lib/layouts/pdfcomment.module:66
 msgid "PDF-comment list style:"
-msgstr ""
+msgstr "PDF-kommentar listestil:"
 
 #: lib/layouts/pdfcomment.module:70
 msgid "PDF-Comment-Setup"
-msgstr ""
+msgstr "PDF-kommentar innstillinger"
 
 #: lib/layouts/pdfcomment.module:74
 #, fuzzy
@@ -14556,11 +14563,12 @@ msgstr "Dokumentinnstillinger"
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
 msgid "Opts"
-msgstr ""
+msgstr "Alt"
 
 #: lib/layouts/pdfcomment.module:84
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr ""
+msgstr "Sett inn PDF-kommentar innstillingsopsjoner her (se pdfcomment-"
+"dokumentasjonen)"
 
 #: lib/layouts/pdfcomment.module:93
 #, fuzzy
@@ -14606,7 +14614,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
-msgstr ""
+msgstr "PDF-fritekst"
 
 #: lib/layouts/pdfcomment.module:135
 #, fuzzy
@@ -14635,7 +14643,7 @@ msgstr "Sirkel"
 
 #: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
-msgstr ""
+msgstr "PDF-linje"
 
 #: lib/layouts/pdfcomment.module:153
 #, fuzzy
@@ -14659,7 +14667,7 @@ msgstr "Skriv antall kolonner her"
 
 #: lib/layouts/pdfcomment.module:170
 msgid "PDF-Reply"
-msgstr ""
+msgstr "PDF-svar"
 
 #: lib/layouts/pdfcomment.module:172
 #, fuzzy
@@ -14668,7 +14676,7 @@ msgstr "PDF (pdflatex)"
 
 #: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
-msgstr ""
+msgstr "PDF-verktøytips"
 
 #: lib/layouts/pdfcomment.module:182
 #, fuzzy
@@ -14682,7 +14690,7 @@ msgstr "Ren tekst|t"
 
 #: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
-msgstr ""
+msgstr "Verktøytips"
 
 #: lib/layouts/pdfcomment.module:192
 #, fuzzy
@@ -14719,11 +14727,13 @@ msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
-msgstr ""
+msgstr "Tilbyr felter og knapper for PDF-skjemaer. Modulen bruker LaTeX-"
+"pakka 'hyperref'. Se eksempelfila PDF-form.lyx og hyperref-dokumentasjonen "
+"for detaljer."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "Start PDF-skjema"
 
 #: lib/layouts/pdfform.module:19
 #, fuzzy
@@ -14737,7 +14747,7 @@ msgstr "Fler parametre"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Param"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
 #, fuzzy
@@ -14746,7 +14756,7 @@ msgstr "Skriv antall kolonner her"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "Slutt PDF-skjema"
 
 #: lib/layouts/pdfform.module:47
 #, fuzzy
@@ -14928,7 +14938,8 @@ msgstr "Frasetekst"
 
 #: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
-msgstr ""
+msgstr "Argument for utsagn som krever spesifikasjon av ytterligere "
+"informasjon"
 
 #: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
@@ -14942,7 +14953,8 @@ msgstr "Seksjon"
 #: lib/layouts/sectionbox.module:6
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
-msgstr ""
+msgstr "Definerer innrammede avsnitt. Først og fremst tiltenkt SciPoster-"
+"klassen."
 
 #: lib/layouts/sectionbox.module:11
 #, fuzzy
@@ -15053,7 +15065,7 @@ msgstr "Stjerne"
 
 #: lib/layouts/shapepar.module:76
 msgid "Candle"
-msgstr ""
+msgstr "Lys"
 
 #: lib/layouts/shapepar.module:81
 #, fuzzy
@@ -15062,7 +15074,7 @@ msgstr "Skygge"
 
 #: lib/layouts/shapepar.module:86
 msgid "Drop up"
-msgstr ""
+msgstr "Dråpe opp"
 
 #: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:532
 msgid "TeX"
@@ -15086,11 +15098,11 @@ msgstr "Triangel med spiss mot høyre"
 
 #: lib/layouts/shapepar.module:117
 msgid "shapepar"
-msgstr ""
+msgstr "formet avsnitt"
 
 #: lib/layouts/shapepar.module:123
 msgid "For scaling the <Shape specification> to positions on the page"
-msgstr ""
+msgstr "For å skalere <formspesifikasjonen> til posisjoner på siden"
 
 #: lib/layouts/shapepar.module:127
 msgid "Shape specification"
@@ -15136,13 +15148,14 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr ""
+msgstr "Fancy fargede bokser"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
 "Adds custom insets that support colored boxes via the tcolorbox package. See "
 "the tcolorbox documentation for details."
-msgstr ""
+msgstr "Legger til egendefinerte objekter for fargede bokser via pakka "
+"'tcolorbox'. Se tcolorbox-dokumentasjonen for detaljer."
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
 #, fuzzy
@@ -15156,15 +15169,15 @@ msgstr "Kolonneopsjoner"
 
 #: lib/layouts/tcolorbox.module:20
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr ""
+msgstr "Skriv inn opsjoner for fargeboks her (se tcolorbox-dokumentasjonen)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr ""
+msgstr "Dynamisk fargeboks"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
-msgstr ""
+msgstr "Fargeboks (dynamisk)"
 
 #: lib/layouts/tcolorbox.module:33
 #, fuzzy
@@ -15173,7 +15186,7 @@ msgstr "Farge på skriften"
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
-msgstr ""
+msgstr "Fargeboks (tilpasset innholdet)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
 #, fuzzy
@@ -15211,7 +15224,7 @@ msgstr "&Fargede lenker"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr ""
+msgstr "Fargeboks innstillinger"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
 #, fuzzy
@@ -22522,7 +22535,7 @@ msgstr "Stemt uvular trill"
 
 #: lib/ui/stdtoolbars.inc:1289
 msgid "Voiced alveolar tap"
-msgstr ""
+msgstr "Stemt alveolar flikk"
 
 #: lib/ui/stdtoolbars.inc:1290
 msgid "Voiced retroflex flap"
@@ -26419,7 +26432,7 @@ msgstr ""
 
 #: src/Text.cpp:1046
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr ""
+msgstr "Tegnet kan ikke kodes i verbatim-avsnitt."
 
 #: src/Text.cpp:1888
 msgid "[Change Tracking] "
@@ -29516,7 +29529,7 @@ msgstr "Velg %1$s fil som skal importeres"
 msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
-msgstr ""
+msgstr "Filnavnet '%1$s' er ugyldig!\nAvbryter import."
 
 #: src/frontends/qt4/GuiView.cpp:2334 src/frontends/qt4/GuiView.cpp:2519
 #: src/frontends/qt4/GuiView.cpp:2633
@@ -29614,7 +29627,7 @@ msgstr "Velg filnavn som dokumentet skal eksporteres til"
 
 #: src/frontends/qt4/GuiView.cpp:2581
 msgid "Guess from extension (*.*)"
-msgstr ""
+msgstr "Gjett utfra endelse (*.*)"
 
 #: src/frontends/qt4/GuiView.cpp:2678
 #, c-format
@@ -30179,7 +30192,7 @@ msgstr ""
 
 #: src/insets/Inset.cpp:88
 msgid "Bibliography Entry"
-msgstr ""
+msgstr "Innslag i bibliografi"
 
 #: src/insets/Inset.cpp:94
 msgid "Float"
@@ -30329,7 +30342,7 @@ msgstr "inaktiv"
 #: src/insets/InsetBranch.cpp:75
 #, c-format
 msgid "master: %1$s, child: %2$s"
-msgstr ""
+msgstr "hoved: %1$s, underdokument: %2$s"
 
 #: src/insets/InsetBranch.cpp:78
 #, c-format
