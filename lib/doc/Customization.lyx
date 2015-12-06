@@ -120,10 +120,6 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
-\author -195340706 "Georg Baum"
-\author 274215730 "scott"
-\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -9080,51 +9076,6 @@ reference "subsec:Counters"
 \end_layout
 
 \begin_layout Description
-
-\change_deleted 1414654397 1449175404
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-IfStyle
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<style>
-\end_layout
-
-\end_inset
-
-] Modifies the properties of the given paragraph style.
- If the style does not exist, the statement is ignored.
- Must end with 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-End
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -9267,14 +9218,10 @@ MMMMM
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1414654397 1449175421
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175415
 ModifyStyle
 \end_layout
 
@@ -9285,8 +9232,6 @@ ModifyStyle
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175410
 <style>
 \end_layout
 
@@ -9303,8 +9248,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175410
 End
 \end_layout
 
@@ -9920,14 +9863,10 @@ DefaultModule
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 1414654397 1449175396
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175389
 ProvideStyle
 \end_layout
 
@@ -9938,8 +9877,6 @@ ProvideStyle
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175384
 <style>
 \end_layout
 
@@ -9956,8 +9893,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 1414654397 1449175384
 End
 \end_layout
 

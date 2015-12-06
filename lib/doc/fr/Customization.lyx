@@ -9090,57 +9090,6 @@ reference "subsec:Compteurs"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-IfStyle
-\end_layout
-
-\end_inset
-
-
-\lang french
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<style>
-\end_layout
-
-\end_inset
-
-] modifies les propriétés de style d'un paragraphe donné.
- Si le style n'existe pas, le directive est ignorée.
- Doit être fermé par 
-\begin_inset Quotes fld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-End
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -9308,6 +9257,57 @@ longueur
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ModifyStyle
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+] modifies les propriétés de style d'un paragraphe donné.
+ Si le style n'existe pas, le directive est ignorée.
+ Doit être fermé par 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -10022,6 +10022,61 @@ DefaultModule
  pour indiquer qu'il doit être utilisé.
  Il pourrait être également utilisé dans un module fournissant une implantation
  équivalente de la même fonctionnalité.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ProvideStyle
+\end_layout
+
+\end_inset
+
+
+\lang french
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<style>
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Creates a new paragraph style if it does not already exist.
+ If the style does exist, this section is ignored.
+
+\lang french
+ Doit être fermé par 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

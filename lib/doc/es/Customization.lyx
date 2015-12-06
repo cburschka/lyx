@@ -8901,49 +8901,6 @@ reference "subsec:Contadores"
 status collapsed
 
 \begin_layout Plain Layout
-IfStyle
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<estilo>
-\end_layout
-
-\end_inset
-
-] Modifica las propiedades del estilo de párrafo dado.
- Si el estilo no existe, esta sección se ignora.
- Debe acabar con 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-End
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 Input
 \end_layout
 
@@ -9080,6 +9037,49 @@ MMMMM
 
 2ex
 \begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ModifyStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<estilo>
+\end_layout
+
+\end_inset
+
+] Modifica las propiedades del estilo de párrafo dado.
+ Si el estilo no existe, esta sección se ignora.
+ Debe acabar con 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
 \end_inset
 
 .
@@ -9694,6 +9694,53 @@ DefaultModule
  para indicar que debería utilizarse.
  Podría ser empleado en un módulo que provea una implementación alternativa
  de la misma funcionalidad.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<estilo>
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Creates a new paragraph style if it does not already exist.
+ If the style does exist, this section is ignored.
+
+\lang spanish
+ Debe acabar con 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

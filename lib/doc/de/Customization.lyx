@@ -7499,49 +7499,6 @@ reference "subsec:Zähler"
 status collapsed
 
 \begin_layout Plain Layout
-IfStyle
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<Stil>
-\end_layout
-
-\end_inset
-
-] Ändert die Eigenschaften des angegebenen Paragraphstils.
- Wenn dieser nicht existiert, wird die Anweisung ignoriert.
- Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-End
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes grd
-\end_inset
-
- beendet werden.
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 Input
 \end_layout
 
@@ -7673,6 +7630,49 @@ MMMMM
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ModifyStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Stil>
+\end_layout
+
+\end_inset
+
+] Ändert die Eigenschaften des angegebenen Paragraphstils.
+ Wenn dieser nicht existiert, wird die Anweisung ignoriert.
+ Muss mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beendet werden.
 \end_layout
 
 \begin_layout Description
@@ -8290,6 +8290,59 @@ DefaultModule
  zu benutzen.
  Es könnte auch in einem Modul benutzt werden, das eine andere Implementation
  derselben Funktion liefert.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Stil>
+\end_layout
+
+\end_inset
+
+] Erstellt einen neuen Paragraphstil, falls er noch nicht existiert.
+ Existiert er bereits, wird 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideStyle
+\end_layout
+
+\end_inset
+
+ ignoriert.
+ Muss mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ beendet werden.
 \end_layout
 
 \begin_layout Description

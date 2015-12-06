@@ -8237,39 +8237,6 @@ reference "subsec:カウンタ"
 status collapsed
 
 \begin_layout Plain Layout
-IfStyle
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<様式>
-\end_layout
-
-\end_inset
-
-] 与えられた段落様式の特性を修正します。様式が存在しない場合には、この節は無視されます。「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-End
-\end_layout
-
-\end_inset
-
-」で閉じる必要があります。
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 Input
 \end_layout
 
@@ -8382,6 +8349,39 @@ MMMMM
 \end_inset
 
 」。（これは、「2ex」のような「長さ」ではないことに注意してください。）
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ModifyStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<様式>
+\end_layout
+
+\end_inset
+
+] 与えられた段落様式の特性を修正します。様式が存在しない場合には、この節は無視されます。「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+」で閉じる必要があります。
 \end_layout
 
 \begin_layout Description
@@ -8934,6 +8934,45 @@ DefaultModule
 
 タグを使用すると、モジュールを使用しなくてはならないことを示しますが、このタグは主に、このレイアウトがモジュールを直接取り込んでしまっていることを示すのに用いら
 れます。同じ機能を別に実装しているモジュール中で使用するなどすることもできます。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ProvideStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<様式>
+\end_layout
+
+\end_inset
+
+] 
+\lang english
+Creates a new paragraph style if it does not already exist.
+ If the style does exist, this section is ignored.
+ 
+\lang japanese
+「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+End
+\end_layout
+
+\end_inset
+
+」で閉じる必要があります。
 \end_layout
 
 \begin_layout Description
