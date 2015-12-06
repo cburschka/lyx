@@ -4,10 +4,54 @@
 # Facilitates the use of named theorems. The name of the theorem
 # goes into the 'Additional Theorem Text' argument.
 #DescriptionEnd
-#Requires: theorems-ams | theorems-starred
 #Original Author: John Perry
 
 Format 58
+
+ProvideStyle Theorem*
+	Category              Reasoning
+	LatexType             Environment
+	Margin                First_Dynamic
+	LatexName             thm*
+	LabelType             Static
+	LabelString           "Theorem."
+	NextNoIndent          1
+	ResetArgs             1
+	Argument 1
+		LabelString    "Additional Theorem Text"
+		Tooltip        "Additional text appended to the theorem header"
+	EndArgument
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Left
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{thm*}{\protect\theoremname}
+	EndPreamble
+	LangPreamble
+	  \providecommand{\theoremname}{_(Theorem)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\theoremname}{_(Theorem)}}
+	EndBabelPreamble
+	Requires              amsthm
+End
+
+
 Style "Named Theorem"
   CopyStyle Theorem*
   Category Reasoning
