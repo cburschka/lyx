@@ -15,5 +15,6 @@ export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
 # Tests depending on local configuration, OS, TeX distribution,
 # package versions, or the phase of the moon.
 Sublabel: erratic
-export/examples/(|fr/)seminar_(dvi|pdf|pdf[23]|pdf4_texF|pdf5_systemF)
+# for unknonwn reasons, seminar fails at some places:
+export/examples/(|fr/)seminar_(dvi|pdf|pdf[23]|pdf4_texF)
 #

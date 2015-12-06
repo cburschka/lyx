@@ -45,7 +45,7 @@ export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
 export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
-export/examples/fr/(ListesPuces|seminar)_pdf4_systemF
+export/examples/fr/ListesPuces_pdf4_systemF
 export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 # Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
@@ -193,12 +193,14 @@ export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 export/examples/achemso_(dvi3|pdf5)_texF
 Sublabel: RESET
 #
-# GM: * seminar uses Postscript specials and does not work with PDF (pdflatex).
-#     * Landscape slides do not work with DVI.
+# GM: seminar.sty uses Postscript specials and does not work with
+# PDF (pdflatex). 
+# TODO: how to tag seminar_dvi? Landscape slides do not work with DVI.
 # Export to certain formats cannot be excluded from a module currently,
 # but even if they don't report an error, other formats result in corrupt
 # output documents (missing landscape slides).
 export/examples/(|fr/)seminar_pdf(2|[45]_systemF)
+#export/examples/(|fr/)seminar_dvi #not failing but wrong output
 #
 # GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
 export/examples/ko/splash_(dvi3|pdf[45])_texF

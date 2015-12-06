@@ -1208,7 +1208,7 @@ Commit the changes to the repository, or send a patch to the development
 \end_layout
 
 \begin_layout Subsection
-automatic LyX tests (cmake only)
+ctest automatic tests (cmake only)
 \end_layout
 
 \begin_layout Standard
@@ -1284,30 +1284,6 @@ The export tests are integration tests.
  They take longer to run and are more likely to break than the tex2lyx tests.
  Nevertheless, they have caught many regressions and without a better alternativ
 e it is important to keep them up-to-date and understand how they work.
-\end_layout
-
-\begin_layout Standard
-The export tests require the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ctest
-\end_layout
-
-\end_inset
-
- command that comes with the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cmake
-\end_layout
-
-\end_inset
-
- build system
 \end_layout
 
 \begin_layout Paragraph
@@ -1677,7 +1653,7 @@ A dependency is not met (e.g.
  class file).
  One hint that this is the case is that the corresponding 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 check_load
@@ -2020,7 +1996,7 @@ There are files which control the assignment of a label to a test.
 \end_layout
 
 \begin_layout Description
-ignoredTests (smal file)
+ignoredTests (small file)
 \begin_inset Newline newline
 \end_inset
 
