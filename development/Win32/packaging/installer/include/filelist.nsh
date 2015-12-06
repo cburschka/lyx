@@ -17,28 +17,35 @@ Lists of files to include in the installer
 
 !macro FileListQtBin COMMAND DIRECTORY
 
-  ${FILE}QtCore4.dll"
-  ${FILE}QtGui4.dll"
-  ${FILE}QtSvg4.dll"
-  ${FILE}QtXml4.dll"
+  ${FILE}Qt5Core.dll"
+  ${FILE}Qt5Gui.dll"
+  ${FILE}Qt5Svg.dll"
+  ${FILE}Qt5Widgets.dll"
+  ${FILE}Qt5WinExtras.dll"
+  ${FILE}Qt5Xml.dll"
 
 !macroend
 
 !macro FileListQtImageformats COMMAND DIRECTORY
 
-  ${FILE}qgif4.dll"
-  ${FILE}qico4.dll"
-  ${FILE}qjpeg4.dll"
-  ${FILE}qmng4.dll"
-  ${FILE}qsvg4.dll"
-  ${FILE}qtga4.dll"
-  ${FILE}qtiff4.dll"
+  ${FILE}qdds.dll"
+  ${FILE}qgif.dll"
+  ${FILE}qicns.dll"
+  ${FILE}qico.dll"
+  ${FILE}qjp2.dll"
+  ${FILE}qjpeg.dll"
+  ${FILE}qmng.dll"
+  ${FILE}qsvg.dll"
+  ${FILE}qtga.dll"
+  ${FILE}qtiff.dll"
+  ${FILE}qwbmp.dll"
+  ${FILE}qwebp.dll"
 
 !macroend
 
 !macro FileListQtIconengines COMMAND DIRECTORY
 
-  ${FILE}qsvgicon4.dll"
+  ${FILE}qsvgicon.dll"
 
 !macroend
 
