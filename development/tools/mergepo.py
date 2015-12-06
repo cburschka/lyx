@@ -59,9 +59,9 @@ def parse_msg(lines):
     return polib.unescape(msg)
 
 
-def translate(msgid, msgstr_lines, po2, overwrite):
+def translate(msgid, msgstr_lines, po2, options):
     msgstr = parse_msg(msgstr_lines)
-    if overwrite:
+    if options.overwrite:
         other = po2.find(msgid)
         if not other:
             return 0
@@ -77,6 +77,8 @@ def translate(msgid, msgstr_lines, po2, overwrite):
             return 0
         if not other.translated():
             return 0
+    if options.nonnull and other.msgstr == other.msgid:
+        return 0
     msgstr = other.msgstr
     obsolete = (msgstr_lines[0].find('#~') == 0)
     j = msgstr_lines[0].find('"')
@@ -93,14 +95,16 @@ def translate(msgid, msgstr_lines, po2, overwrite):
     return 1
 
 
-def mergepo_polib(target, source, overwrite):
+def mergepo_polib(target, source, options):
     changed = 0
     po1 = polib.pofile(target)
     po2 = polib.pofile(source)
-    if overwrite:
+    if options.overwrite:
         for entry in po1.entries():
             other = po2.find(entry.msgid, include_obsolete_entries=True)
             if not other:
+                continue
+            if options.nonnull and other.msgstr == other.msgid:
                 continue
             if other.translated() and other.msgstr != entry.msgstr:
                 entry.msgstr = other.msgstr
@@ -110,6 +114,8 @@ def mergepo_polib(target, source, overwrite):
             other = po2.find(entry.msgid, include_obsolete_entries=True)
             if not other:
                 continue
+            if options.nonnull and other.msgstr == other.msgid:
+                continue
             if other.translated():
                 entry.msgstr = other.msgstr
                 changed = changed + 1
@@ -118,7 +124,7 @@ def mergepo_polib(target, source, overwrite):
     return changed
 
 
-def mergepo_minimaldiff(target, source, overwrite):
+def mergepo_minimaldiff(target, source, options):
     changed = 0
     po2 = polib.pofile(source)
     target_enc = polib.detect_encoding(target)
@@ -149,7 +155,7 @@ def mergepo_minimaldiff(target, source, overwrite):
                 msgstr_lines.append(line)
             else:
                 in_msgstr = False
-                changed = changed + translate(msgid, msgstr_lines, po2, overwrite)
+                changed = changed + translate(msgid, msgstr_lines, po2, options)
                 newlines.extend(msgstr_lines)
                 msgstr_lines = []
                 msgid = ''
@@ -167,7 +173,7 @@ def mergepo_minimaldiff(target, source, overwrite):
                 newlines.append(line)
     if msgid != '':
         # the file ended with a msgstr
-        changed = changed + translate(msgid, msgstr_lines, po2, overwrite)
+        changed = changed + translate(msgid, msgstr_lines, po2, options)
         newlines.extend(msgstr_lines)
         msgstr_lines = []
         msgid = ''
@@ -180,7 +186,7 @@ def mergepo_minimaldiff(target, source, overwrite):
     return changed
 
 
-def mergepo(target, source, overwrite):
+def mergepo(target, source, options):
     if not os.path.exists(source):
         sys.stderr.write('Skipping %s since %s does not exist.\n' % (target, source))
         return
@@ -189,10 +195,11 @@ def mergepo(target, source, overwrite):
         return
     sys.stderr.write('Merging %s into %s: ' % (source, target))
     try:
-        changed = mergepo_minimaldiff(target, source, overwrite)
+        changed = mergepo_minimaldiff(target, source, options)
+        sys.stderr.write('Updated %d translations with minimal diff.\n' % changed)
     except:
-        changed = mergepo_polib(target, source, overwrite)
-    sys.stderr.write('Updated %d translations.\n' % changed)
+        changed = mergepo_polib(target, source, options)
+        sys.stderr.write('Updated %d translations using polib.\n' % changed)
 
 
 def main(argv):
@@ -208,6 +215,8 @@ yet in the target .po files are not updated.""", usage = "Usage: %prog [options]
                       help="language for which translations are merged (if missing, all languages are merged)")
     parser.add_option("-o", "--overwrite", action="store_true", dest="overwrite", default=False,
                       help="overwrite existing target translations with source translations (if missing, only new translations are added)")
+    parser.add_option("-n", "--nonnull", action="store_true", dest="nonnull", default=False,
+                      help="do not update target translations with source translations that are identical to the untranslated text)")
     (options, args) = parser.parse_args(argv)
     if len(args) <= 1:
         parser.print_help()
@@ -222,13 +231,13 @@ yet in the target .po files are not updated.""", usage = "Usage: %prog [options]
 
     if options.language:
         name = options.language + '.po'
-        mergepo(os.path.join(podir1, name), os.path.join(podir2, name), options.overwrite)
+        mergepo(os.path.join(podir1, name), os.path.join(podir2, name), options)
     else:
         for i in os.listdir(podir1):
             (base, ext) = os.path.splitext(i)
             if ext != ".po":
                 continue
-            mergepo(os.path.join(podir1, i), os.path.join(podir2, i), options.overwrite)
+            mergepo(os.path.join(podir1, i), os.path.join(podir2, i), options)
 
     return 0
 
