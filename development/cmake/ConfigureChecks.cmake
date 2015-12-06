@@ -33,6 +33,8 @@ foreach(_h_file aspell.h aspell/aspell.h limits.h locale.h
 	check_include_files(${_h_file} HAVE_${_HF})
 	set(Include_Defines "${Include_Defines}#cmakedefine HAVE_${_HF} 1\n")
 endforeach()
+check_include_file_cxx(regex HAVE_REGEX)
+set(Include_Defines "${Include_Defines}#cmakedefine HAVE_REGEX 1\n")
 configure_file(${LYX_CMAKE_DIR}/configIncludes.cmake ${TOP_BINARY_DIR}/configIncludes.h.cmake)
 configure_file(${TOP_BINARY_DIR}/configIncludes.h.cmake ${TOP_BINARY_DIR}/configIncludes.h)
 

@@ -255,6 +255,10 @@ if(UNIX OR MINGW)
 		# <regex> in gcc is unusable in versions less than 4.9.0
 		# see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
 		set(LYX_USE_STD_REGEX 0)
+	else()
+		if (LYX_ENABLE_CXX11)
+			set(LYX_USE_STD_REGEX 1)
+		endif()
 	endif()
 	if (LYX_ENABLE_CXX11)
 		find_package(CXX11Compiler)
@@ -854,6 +858,10 @@ configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
 	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
+endif()
+
+if (NOT HAVE_REGEX)
+	set(LYX_USE_STD_REGEX 0)
 endif()
 
 
