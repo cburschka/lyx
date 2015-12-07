@@ -92,7 +92,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
-	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
+	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
 	int const em = mathed_font_em(pi.base.font);
 	if (isBinaryOp(char_))
 		x += static_cast<int>(0.25*em+0.5);
