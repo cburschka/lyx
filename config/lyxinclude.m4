@@ -319,7 +319,7 @@ if test x$GXX = xyes; then
   if test x$enable_cxx11 != xno ; then
     case $gxx_version in
       4.0*|4.1*|4.2*)
-         if x$enable_cxx11 = xyes; then
+         if test x$enable_cxx11 = xyes; then
             AC_ERROR([There is no C++11 support in gcc 4.2 or older])
          fi;;
       4.3*|4.4*|4.5*|4.6*)
