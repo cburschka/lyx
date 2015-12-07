@@ -18,3 +18,6 @@ Sublabel: erratic
 # for unknonwn reasons, seminar fails at some places:
 export/examples/(|fr/)seminar_(dvi|pdf|pdf[23]|pdf4_texF)
 #
+Sublabel: 1wrong 2dvi 3output
+export/examples/(|fr/)seminar_dvi3.*F #not failing but wrong output
+#
