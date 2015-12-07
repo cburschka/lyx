@@ -61,8 +61,7 @@ void InsetFootlike::write(ostream & os) const
 
 bool InsetFootlike::insetAllowed(InsetCode code) const
 {
-	if (code == FOOT_CODE || code == MARGIN_CODE || code == FLOAT_CODE
-		|| code == LISTINGS_CODE)
+	if (code == FOOT_CODE || code == MARGIN_CODE || code == FLOAT_CODE)
 		return false;
 	return InsetCollapsable::insetAllowed(code);
 }
