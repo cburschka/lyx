@@ -171,28 +171,44 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 namespace {
-void setTextLayout(QTextLayout & tl, docstring const & s, QFont font,
-                   bool const rtl, double const wordspacing)
+
+QTextLayout const & getTextLayout(docstring const & s, QFont font,
+                                  bool const rtl, double const wordspacing)
 {
-	tl.setText(toqstr(s));
-	font.setWordSpacing(wordspacing);
-	tl.setFont(font);
-	// Note that both setFlags and the enums are undocumented
-	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-	tl.beginLayout();
-	tl.createLine();
-	tl.endLayout();
+	static docstring old_s;
+	static QFont old_font;
+	static bool old_rtl = false;
+	// this invalid value is to make sure that it is reset on first try.
+	static double old_wordspacing = -1.0;
+	// This one is our trivial cache
+	static QTextLayout tl;
+	if (s != old_s || font != old_font || rtl != old_rtl
+	    || wordspacing != old_wordspacing) {
+		tl.setText(toqstr(s));
+		font.setWordSpacing(wordspacing);
+		tl.setFont(font);
+		// Note that both setFlags and the enums are undocumented
+		tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+		tl.beginLayout();
+		tl.createLine();
+		tl.endLayout();
+		old_s = s;
+		old_font = font;
+		old_rtl = rtl;
+		old_wordspacing = wordspacing;
+	}
+	return tl;
 }
+
 }
 
 
 int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
                           double const wordspacing) const
 {
-	QTextLayout tl;
 	QFont copy = font_;
 	copy.setWordSpacing(wordspacing);
-	setTextLayout(tl, s, font_, rtl, wordspacing);
+	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
 	return static_cast<int>(tl.lineForTextPosition(pos).cursorToX(pos));
 }
 
@@ -200,8 +216,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	QTextLayout tl;
-	setTextLayout(tl, s, font_, rtl, wordspacing);
+	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
 	int pos = tl.lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
 	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(pos));

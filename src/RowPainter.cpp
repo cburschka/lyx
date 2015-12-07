@@ -609,7 +609,7 @@ void RowPainter::paintText()
 			paintStringAndSel(e);
 
 			// Paint the spelling marks if enabled.
-			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck)
+			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck && pi_.pain.isDrawingEnabled())
 				paintMisspelledMark(orig_x, e);
 			break;
 		case Row::INSET: {
