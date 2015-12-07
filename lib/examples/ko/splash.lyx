@@ -9,7 +9,7 @@
 \language korean
 \language_package default
 \inputencoding utf8
-\fontencoding global
+\fontencoding OT1
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -71,17 +71,17 @@
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 에 오신 것을 환영합니다!
 \end_layout
 
 \begin_layout Section*
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  사용시 알아야되는 가장 중요한 것들
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 는 훌륭한 문서를 동반합니다 - 사용하세요! 문서에 대한 간략한 소개를 제공하는
 \family sans
  도움말\SpecialChar menuseparator
@@ -93,13 +93,13 @@
  도움말\SpecialChar menuseparator
 자습서
 \family default
-를 통해 \SpecialCharNoPassThru LyX
+를 통해 \SpecialChar LyX
  사용법을 익히세요.
  
 \end_layout
 
 \begin_layout Enumerate
-우리는 \SpecialCharNoPassThru LyX
+우리는 \SpecialChar LyX
 를 
 \begin_inset Quotes eld
 \end_inset
@@ -115,7 +115,7 @@
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 의 출력물은 아주 훌륭합니다! 메뉴에서 
 \family sans
 보기\SpecialChar menuseparator
@@ -139,13 +139,13 @@ arg   "buffer-view"
 \end_layout
 
 \begin_layout Enumerate
-그렇습니다, \SpecialCharNoPassThru LyX
-는 (거의) 모든 \SpecialCharNoPassThru LaTeX
+그렇습니다, \SpecialChar LyX
+는 (거의) 모든 \SpecialChar LaTeX
  기능들을 흉내낼 수 있습니다.
- 그리고 또한 \SpecialCharNoPassThru LyX
-는 \SpecialCharNoPassThru LaTeX
+ 그리고 또한 \SpecialChar LyX
+는 \SpecialChar LaTeX
  파일들을 가져올 수 있습니다.
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  사용 경험이 있는 사용자들은 나머지 
 \emph on
 자습서
@@ -154,19 +154,20 @@ arg   "buffer-view"
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
- 사용자를 위한 \SpecialCharNoPassThru LyX
+\SpecialChar LaTeX
+ 사용자를 위한 \SpecialChar LyX
+
 \begin_inset Quotes erd
 \end_inset
 
  장을 읽어주세요.
- (해당되지 않는 모든 사람들: 걱정 마시압, \SpecialCharNoPassThru LyX
- 사용을 위해 \SpecialCharNoPassThru LaTeX
+ (해당되지 않는 모든 사람들: 걱정 마시압, \SpecialChar LyX
+ 사용을 위해 \SpecialChar LaTeX
 를 꼭 알아야할 필요는 없습니다.) 
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 는 영어 이외의 언어를 읽고 쓰는 사람들을 위한 많은 기능을 가지고 있습니다.
  덧붙여, 키바인딩, 툴바, 다른 많은 특성들이 설정 변경 가능합니다.
  자세한 것은
@@ -178,7 +179,7 @@ Customization
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  홈페이지는
 \family typewriter
 
@@ -195,9 +196,9 @@ http://www.lyx.org/
 
 \family default
 입니다.
- \SpecialCharNoPassThru LyX
-에 대한 정보를 얻고, \SpecialCharNoPassThru LyX
- 메일링 리스트에 가입하고, \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
+에 대한 정보를 얻고, \SpecialChar LyX
+ 메일링 리스트에 가입하고, \SpecialChar LyX
  그림으로 배우기(Graphical Tour) 등 많은 것을 할 수 있습니다.
 \end_layout
 

@@ -10,15 +10,15 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
+\font_sf_scale 95 100
 \font_tt_scale 100 100
 \graphics default
 \default_output_format default
@@ -71,16 +71,17 @@
 \begin_body
 
 \begin_layout Title
-Selamat Datang di \SpecialCharNoPassThru LyX
+Selamat Datang di \SpecialChar LyX
 !
 \end_layout
 
 \begin_layout Section*
-Hal utama yang perlu diketahui ketika menggunakan \SpecialCharNoPassThru LyX
+Hal utama yang perlu diketahui ketika menggunakan \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  dilengkapi dengan dokumentasi yang sangat lengkap — Silakan dimanfaatkan!
  Dimulai dari 
 \family sans
@@ -89,7 +90,7 @@ Pengantar
 \family default
 , yang akan memberikan gambaran awal kepada anda tentang dokumentasi yang
  ada.
- Setelah memahaminya teruskan untuk belajar menggunakan \SpecialCharNoPassThru LyX
+ Setelah memahaminya teruskan untuk belajar menggunakan \SpecialChar LyX
  dari 
 \family sans
 Bantuan\SpecialChar menuseparator
@@ -99,7 +100,7 @@ Tutorial
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  kita sebut dengan 
 \begin_inset Quotes eld
 \end_inset
@@ -131,7 +132,7 @@ Bantuan
 \end_layout
 
 \begin_layout Enumerate
-Tampilan hasil dari \SpecialCharNoPassThru LyX
+Tampilan hasil dari \SpecialChar LyX
  akan terlihat mengagumkan! Cobalah sekarang 
 \family sans
 Tampilan\SpecialChar menuseparator
@@ -141,16 +142,16 @@ DVI
 \end_layout
 
 \begin_layout Enumerate
-Benar, \SpecialCharNoPassThru LyX
+Benar, \SpecialChar LyX
  dapat menampilkan (hampir semuanya) dari fungsi-fungsi yang ada
- pada \SpecialCharNoPassThru LaTeX
+ pada \SpecialChar LaTeX
 .
- Demikian pula, \SpecialCharNoPassThru LyX
- dapat mengenal dan mengimpor berkas \SpecialCharNoPassThru LaTeX
+ Demikian pula, \SpecialChar LyX
+ dapat mengenal dan mengimpor berkas \SpecialChar LaTeX
 .
- Bagi yang sudah mengenal dan mempunyai pengalaman menggunakan \SpecialCharNoPassThru LaTeX
- bisa
- memahami bagian awal 
+ Bagi yang sudah mengenal dan mempunyai pengalaman menggunakan \SpecialChar LaTeX
+ bisa memahami
+ bagian awal 
 \emph on
 Tutorial
 \emph default
@@ -158,22 +159,24 @@ Tutorial
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
- untuk pengguna \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ untuk pengguna \SpecialChar LaTeX
+
 \begin_inset Quotes erd
 \end_inset
 
 .
- (yang belum mengenal \SpecialCharNoPassThru LaTeX
-: jangan kawatir, anda tidak perlu memahami \SpecialCharNoPassThru LaTeX
- untuk menggunakan \SpecialCharNoPassThru LyX
+ (yang belum mengenal \SpecialChar LaTeX
+: jangan kawatir, anda tidak perlu memahami \SpecialChar LaTeX
+ untuk
+ menggunakan \SpecialChar LyX
 .) 
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
- mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa
- selain bahasa Inggris.
+\SpecialChar LyX
+ mempunyai fasilitas yang dapat mengakomodasi pengguna yang berbahasa selain
+ bahasa Inggris.
  Selain hal tersebut ada rangkaian kunci (
 \emph on
 key bindings
@@ -190,7 +193,7 @@ Perubahan dan Pengaturan.
 \end_layout
 
 \begin_layout Enumerate
-Halaman utama \SpecialCharNoPassThru LyX
+Halaman utama \SpecialChar LyX
  dapat dilihat di 
 \family typewriter
 
@@ -208,15 +211,15 @@ http://www.lyx.org/
 \family default
 .
  Pada halaman tersebut anda akan mendapatkan keterangan lebih lanjut tentang
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
 , juga bisa mendaftar ke 
 \emph on
 mailing list
 \emph default
- \SpecialCharNoPassThru LyX
- yang ada, bisa melihat gambar-gambar \SpecialCharNoPassThru LyX
- ketika digunakan, serta banyak
- hal lagi.
+ \SpecialChar LyX
+ yang ada, bisa melihat gambar-gambar \SpecialChar LyX
+ ketika digunakan, serta banyak hal
+ lagi.
 \end_layout
 
 \end_body

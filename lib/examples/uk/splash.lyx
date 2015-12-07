@@ -16,13 +16,13 @@
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_typewriter "courier" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
+\font_sf_scale 95 100
 \font_tt_scale 100 100
 \graphics default
 \default_output_format default
@@ -75,34 +75,35 @@
 \begin_body
 
 \begin_layout Title
-Ласкаво просимо до \SpecialCharNoPassThru LyX
+Ласкаво просимо до \SpecialChar LyX
 !
 \end_layout
 
 \begin_layout Section*
-Ось декілька речей, про які ви маєте знати, користуючись \SpecialCharNoPassThru LyX
+Ось декілька речей, про які ви маєте знати, користуючись \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  постачається з відмінною документацією — будь ласка, користуйтеся нею!
  Почніть з пункту меню
 \family sans
-Довідка\SpecialChar menuseparator
+ Довідка\SpecialChar menuseparator
 Вступ
 \family default
 , — програма покаже дуже короткий вступ до документації.
- Продовжіть вивчення \SpecialCharNoPassThru LyX
+ Продовжіть вивчення \SpecialChar LyX
  за допомогою пункту меню
 \family sans
-Довідка\SpecialChar menuseparator
+ Довідка\SpecialChar menuseparator
 Підручник
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  — це те, що ми називаємо «процесором документів».
  За своєю структурою програма відрізняється від звичайних текстових процесорів
  — вона спрощує написання документів.
@@ -121,56 +122,55 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-Документи, створені у \SpecialCharNoPassThru LyX
+Документи, створені у \SpecialChar LyX
  виглядають чудово! Скористайтеся пунктом меню
 \family sans
-Перегляд\SpecialChar menuseparator
+ Перегляд\SpecialChar menuseparator
 DVI
 \family default
 , щоб переконатися у цьому на власні очі.
 \end_layout
 
 \begin_layout Enumerate
-Так, у \SpecialCharNoPassThru LyX
- можна користуватися (майже) всіма функціональними можливостями
- \SpecialCharNoPassThru LaTeX
+Так, у \SpecialChar LyX
+ можна користуватися (майже) всіма функціональними можливостями \SpecialChar LaTeX
 .
- І так, \SpecialCharNoPassThru LyX
- може імпортувати файли \SpecialCharNoPassThru LaTeX
+ І так, \SpecialChar LyX
+ може імпортувати файли \SpecialChar LaTeX
 .
- Досвідчені користувачі \SpecialCharNoPassThru LaTeX
+ Досвідчені користувачі \SpecialChar LaTeX
  можуть не читати решти
 \emph on
-Підручника
+ Підручника
 \emph default
-, і одразу перейти до читання глави «\SpecialCharNoPassThru LyX
- для користувачів \SpecialCharNoPassThru LaTeX
+, і одразу перейти до читання глави «\SpecialChar LyX
+ для користувачів \SpecialChar LaTeX
 ».
- (Всім іншим: не переймайтеся, вам не потрібно знати \SpecialCharNoPassThru LaTeX
+ (Всім іншим: не переймайтеся, вам не потрібно знати \SpecialChar LaTeX
 , щоб користуватися
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
 .)
 \end_layout
 
 \begin_layout Enumerate
-У \SpecialCharNoPassThru LyX
+У \SpecialChar LyX
  передбачено багато можливостей для користувачів, які читають або пишуть
  мовою, відмінною від англійської.
  Крім того, у програмі можна налаштувати майже всі клавіатурні скорочення,
  панелі інструментів та багато інших характеристик.
  Докладніше про це можна дізнатися з розділу
 \family sans
-Довідка\SpecialChar menuseparator
+ Довідка\SpecialChar menuseparator
 Підручник з налаштування
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Домашню сторінку \SpecialCharNoPassThru LyX
+Домашню сторінку \SpecialChar LyX
  розташовано за адресою
 \family typewriter
-
+ 
 \begin_inset Flex URL
 status collapsed
 
@@ -184,12 +184,11 @@ http://www.lyx.org/
 
 \family default
 .
- Там ви можете отримати відомості про \SpecialCharNoPassThru LyX
+ Там ви можете отримати відомості про \SpecialChar LyX
 , підписатися на списки листування
- \SpecialCharNoPassThru LyX
-, здійснити візуальну подорож \SpecialCharNoPassThru LyX
-, а також знайти багато іншої корисної
- інформації.
+ \SpecialChar LyX
+, здійснити візуальну подорож \SpecialChar LyX
+, а також знайти багато іншої корисної інформації.
 \end_layout
 
 \end_body
