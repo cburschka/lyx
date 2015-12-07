@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/zh_CN/
 \textclass article
 \begin_preamble
 \usepackage{ifxetex}
@@ -1470,6 +1470,20 @@ type "mailto:"
 
 \begin_layout Standard
 无论你修改文档的想法是什么，只要它能够改善文档质量，我们都是乐于接受的。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following clearpage is required to avoid compilation errors at some
+ installations for an unknown reason.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
