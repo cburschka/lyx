@@ -249,13 +249,13 @@ vector<string> loadableImageFormats()
 
 namespace {
 
-struct PngMap {
+struct ImgMap {
 	QString key;
 	QString value;
 };
 
 
-bool operator<(PngMap const & lhs, PngMap const & rhs)
+bool operator<(ImgMap const & lhs, ImgMap const & rhs)
 {
 	return lhs.key < rhs.key;
 }
@@ -264,7 +264,7 @@ bool operator<(PngMap const & lhs, PngMap const & rhs)
 class CompareKey {
 public:
 	CompareKey(QString const & name) : name_(name) {}
-	bool operator()(PngMap const & other) const { return other.key == name_; }
+	bool operator()(ImgMap const & other) const { return other.key == name_; }
 private:
 	QString const name_;
 };
@@ -274,7 +274,7 @@ private:
 // Upper case comes before lower case
 // Please don't change the formatting, this list is parsed by
 // development/tools/generate_symbols_images.py.
-PngMap sorted_png_map[] = {
+ImgMap sorted_img_map[] = {
 	{ "Arrownot", "arrownot2"},
 	{ "Arrowvert", "arrowvert2"},
 	{ "Bowtie", "bowtie2" },
@@ -370,14 +370,14 @@ PngMap sorted_png_map[] = {
 };
 
 
-size_t const nr_sorted_png_map = sizeof(sorted_png_map) / sizeof(PngMap);
+size_t const nr_sorted_img_map = sizeof(sorted_img_map) / sizeof(ImgMap);
 
 // This list specifies which system's theme icon is related to which lyx
 // command. It was based on:
 // http://standards.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
 // this must be sorted alphabetically
 // Upper case comes before lower case
-PngMap sorted_theme_icon_map[] = {
+ImgMap sorted_theme_icon_map[] = {
 	{ "bookmark-goto 0", "go-jump" },
 	{ "buffer-new", "document-new" },
 	{ "buffer-write", "document-save" },
@@ -404,42 +404,42 @@ PngMap sorted_theme_icon_map[] = {
 	{ "window-new", "window-new" }
 };
 
-size_t const nr_sorted_theme_icon_map = sizeof(sorted_theme_icon_map) / sizeof(PngMap);
+size_t const nr_sorted_theme_icon_map = sizeof(sorted_theme_icon_map) / sizeof(ImgMap);
 
 
-QString findPng(QString const & name)
+QString findImg(QString const & name)
 {
-	PngMap const * const begin = sorted_png_map;
-	PngMap const * const end = begin + nr_sorted_png_map;
+	ImgMap const * const begin = sorted_img_map;
+	ImgMap const * const end = begin + nr_sorted_img_map;
 	LATTEST(sorted(begin, end));
 
-	PngMap const * const it = find_if(begin, end, CompareKey(name));
+	ImgMap const * const it = find_if(begin, end, CompareKey(name));
 
-	QString png_name;
+	QString img_name;
 	if (it != end) {
-		png_name = it->value;
+		img_name = it->value;
 	} else {
-		png_name = name;
-		png_name.replace('_', "underscore");
-		png_name.replace(' ', '_');
+		img_name = name;
+		img_name.replace('_', "underscore");
+		img_name.replace(' ', '_');
 
 		// This way we can have "math-delim { }" on the toolbar.
-		png_name.replace('(', "lparen");
-		png_name.replace(')', "rparen");
-		png_name.replace('[', "lbracket");
-		png_name.replace(']', "rbracket");
-		png_name.replace('{', "lbrace");
-		png_name.replace('}', "rbrace");
-		png_name.replace('|', "bars");
-		png_name.replace(',', "thinspace");
-		png_name.replace(':', "mediumspace");
-		png_name.replace(';', "thickspace");
-		png_name.replace('!', "negthinspace");
+		img_name.replace('(', "lparen");
+		img_name.replace(')', "rparen");
+		img_name.replace('[', "lbracket");
+		img_name.replace(']', "rbracket");
+		img_name.replace('{', "lbrace");
+		img_name.replace('}', "rbrace");
+		img_name.replace('|', "bars");
+		img_name.replace(',', "thinspace");
+		img_name.replace(':', "mediumspace");
+		img_name.replace(';', "thickspace");
+		img_name.replace('!', "negthinspace");
 	}
 
-	LYXERR(Debug::GUI, "findPng(" << name << ")\n"
-		<< "Looking for math PNG called \"" << png_name << '"');
-	return png_name;
+	LYXERR(Debug::GUI, "findImg(" << name << ")\n"
+		<< "Looking for math icon called \"" << img_name << '"');
+	return img_name;
 }
 
 } // namespace anon
@@ -447,11 +447,11 @@ QString findPng(QString const & name)
 
 QString themeIconName(QString const & action)
 {
-	PngMap const * const begin = sorted_theme_icon_map;
-	PngMap const * const end = begin + nr_sorted_theme_icon_map;
+	ImgMap const * const begin = sorted_theme_icon_map;
+	ImgMap const * const end = begin + nr_sorted_theme_icon_map;
 	LASSERT(sorted(begin, end), /**/);
 
-	PngMap const * const it = find_if(begin, end, CompareKey(action));
+	ImgMap const * const it = find_if(begin, end, CompareKey(action));
 
 	if (it != end)
 		return it->value;
@@ -469,13 +469,13 @@ QString iconName(FuncRequest const & f, bool unknown)
 	case LFUN_MATH_INSERT:
 		if (!f.argument().empty()) {
 			path = "math/";
-			name1 = findPng(toqstr(f.argument()).mid(1));
+			name1 = findImg(toqstr(f.argument()).mid(1));
 		}
 		break;
 	case LFUN_MATH_DELIM:
 	case LFUN_MATH_BIGDELIM:
 		path = "math/";
-		name1 = findPng(toqstr(f.argument()));
+		name1 = findImg(toqstr(f.argument()));
 		break;
 	case LFUN_CALL:
 		path = "commands/";
@@ -558,7 +558,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 		FileName fname = imageLibFileSearch(imagedir, "unknown", "svgz,png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
-		return QString(":/images/unknown.png");
+		return QString(":/images/unknown.svgz");
 	}
 
 	return QString();
@@ -1116,7 +1116,7 @@ docstring Application::iconName(FuncRequest const & f, bool unknown)
 
 docstring Application::mathIcon(docstring const & c)
 {
-	return qstring_to_ucs4(findPng(toqstr(c)));
+	return qstring_to_ucs4(findImg(toqstr(c)));
 }
 
 
