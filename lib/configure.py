@@ -1003,6 +1003,7 @@ def checkConverterEntries():
     checkProg('an OpenDocument -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
     # Only define a converter to pdf6 for graphics
+    # Prefer rsvg-convert over inkscape since it is faster (see http://www.lyx.org/trac/ticket/9891)
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
         rc_entry = [ r'\converter svg        pdf6       "%%"    ""'],
         path = ['', inkscape_path])
