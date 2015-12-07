@@ -1286,6 +1286,19 @@ The export tests are integration tests.
 e it is important to keep them up-to-date and understand how they work.
 \end_layout
 
+\begin_layout Standard
+The export tests 
+\begin_inset Quotes eld
+\end_inset
+
+reuse
+\begin_inset Quotes erd
+\end_inset
+
+ the documentation, template, and example files trying to export them to
+ all supported output formats.
+\end_layout
+
 \begin_layout Paragraph
 Expectations of LyX developers
 \end_layout
@@ -1790,11 +1803,24 @@ A good question is why do we enable the tests for non-default formats? The
 \end_layout
 
 \begin_layout Standard
-What action should you take if a test fails? First, check manually that
- when the compilation succeeded before the resulting PDF was good.
- In fact, sometimes it is an improvement when a test fails.
- If you check manually, it might be the case that the export was succeeding
- before but showing garbled text in a PDF output.
+What action should you take if a test fails? This depends:
+\end_layout
+
+\begin_layout Standard
+Generally, if a change breaks compilation for the target format (for the
+ manuals pdf2) without solving some important other issue, fix or revert
+ the commit that led to failure.
+ If a change breaks compilation for some non-target format (for the manuals
+ everything except pdf2), invert the test.
+ 
+\end_layout
+
+\begin_layout Standard
+A special case is given, if the export was succeeding before but showing
+ garbled text in the PDF output.
+ Try to establish, that when the compilation succeeded before the resulting
+ PDF was good.
+ Otherwise, it is in fact an improvement when a test fails.
  Now it might fail with a clear message of "language xyz not supported".
  It is always good to check manually why something fails and if it passes
  if the PDF output is good.
