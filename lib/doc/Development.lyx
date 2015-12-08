@@ -649,6 +649,25 @@ python development/tools/updatelayouts.py
 .
 \end_layout
 
+\begin_layout Standard
+Note that we do not update the local layout of our 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.lyx
+\end_layout
+
+\end_inset
+
+ files because users would then not be able to export to older formats.
+ For example, if a 2.2.0 user exported a template to 2.1.x format and tried
+ to open the file in LyX 2.1.x, there would be an error because the file would
+ contain a local layout whose format is too new.
+ The root reason for this is that we do support converting layouts to older
+ layout formats, as we do for the .lyx file format.
+\end_layout
+
 \begin_layout Subsection
 Updating the file format number of bind/ui files
 \end_layout
