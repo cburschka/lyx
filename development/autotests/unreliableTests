@@ -22,6 +22,6 @@ Sublabel: 1wrong 2output
 #
 # seminar.sty uses Postscript specials 
 # -> wrong output with pdflatex/LuaTeX and DVI (missing landscape slides).
-export/examples/(|fr/)seminar_pdf[25].*)
+export/examples/(|fr/)seminar_pdf[25].*
 export/examples/(|fr/)seminar_dvi.*
 #
