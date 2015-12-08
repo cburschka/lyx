@@ -116,6 +116,9 @@ What's new
 - Disable Apply button in InsetParams dialogs if there is no inset to apply
   to (bug 9386).
 
+- Allow to insert program listings to footnotes and margin notes (fixes bug
+  9785, but reintroduces bug 9321).
+
 
 * INTERNALS
 
