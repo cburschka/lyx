@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -149,7 +149,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -3399,8 +3399,9 @@ arg   "math-insert \\space"
 
  
 \begin_inset Graphics
-	filename ../images/math/phantom.png
-	scale 85
+	filename ../images/math/phantom.svgz
+	lyxscale 14
+	scale 9
 
 \end_inset
 
@@ -3605,8 +3606,9 @@ vphantom
 
 
 \begin_inset Graphics
-	filename ../images/math/vphantom.png
-	scale 85
+	filename ../images/math/vphantom.svgz
+	lyxscale 14
+	scale 9
 
 \end_inset
 
@@ -3634,8 +3636,9 @@ hphantom
 
 
 \begin_inset Graphics
-	filename ../images/math/hphantom.png
-	scale 85
+	filename ../images/math/hphantom.svgz
+	lyxscale 14
+	scale 9
 
 \end_inset
 
