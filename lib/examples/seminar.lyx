@@ -18,7 +18,7 @@
 \use_default_options true
 \maintain_unincluded_children false
 \language english
-\language_package default
+\language_package babel
 \inputencoding auto
 \fontencoding global
 \font_roman "lmodern" "default"
@@ -32,7 +32,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -289,7 +289,7 @@ Preamble commands
 \begin_layout Plain Layout
 The following options can be added to the 
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  preambel
 \family default
  in 
@@ -339,9 +339,9 @@ Slide contents
 \end_layout
 
 \begin_layout Plain Layout
-Virtually everything that can appear in normal \SpecialCharNoPassThru LaTeX
- (except floats) can
- also be on a slide.
+Virtually everything that can appear in normal \SpecialChar LaTeX
+ (except floats) can also
+ be on a slide.
 \end_layout
 
 \begin_layout Plain Layout
@@ -387,13 +387,28 @@ seminar
 \family sans
 PDF (pdflatex)
 \family default
+ or 
+\family sans
+PDF (LuaTeX)
+\family default
 .
 \end_layout
 
 \begin_layout Itemize
 Landscape slides do not work with 
 \family sans
-DVI.
+DVI
+\family default
+ or 
+\family sans
+PDF (LuaTeX)
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Compiling with XeTeX works (with both, TeX-fonts and Unicode fonts) but
+ requires Babel (not Polyglossia).
 \end_layout
 
 \begin_layout Plain Layout
@@ -553,9 +568,9 @@ Fancier formatting
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LaTeX
- preamble is the right place for many options to get fancier formatting
-, e.
+The \SpecialChar LaTeX
+ preamble is the right place for many options to get fancier formatting,
+ e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -605,9 +620,7 @@ slideframe[
 \backslash
 setlength{
 \backslash
-shadowsize}{1pt}]{shadow} 
-framecolor "black"
-backgroundcolor "none"
+shadowsize}{1pt}]{shadow} framecolor "black"backgroundcolor "none"
 \end_layout
 
 \begin_layout Standard
@@ -664,9 +677,9 @@ A4
 \begin_inset Quotes erd
 \end_inset
 
- (unless it is the default layout of your \SpecialCharNoPassThru LaTeX
- distribution), and delete
- the option 
+ (unless it is the default layout of your \SpecialChar LaTeX
+ distribution), and delete the
+ option 
 \begin_inset Quotes eld
 \end_inset
 

@@ -16,8 +16,12 @@ export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
 # package versions, or the phase of the moon.
 Sublabel: erratic
 # for unknonwn reasons, seminar fails at some places:
-export/examples/(|fr/)seminar_(dvi|pdf|pdf[23]|pdf4_texF)
+export/examples/(|fr/)seminar_.*
 #
-Sublabel: 1wrong 2dvi 3output
-export/examples/(|fr/)seminar_dvi3.*F #not failing but wrong output
+Sublabel: 1wrong 2output
+#
+# seminar.sty uses Postscript specials 
+# -> wrong output with pdflatex/LuaTeX and DVI (missing landscape slides).
+export/examples/(|fr/)seminar_pdf[25].*)
+export/examples/(|fr/)seminar_dvi.*
 #

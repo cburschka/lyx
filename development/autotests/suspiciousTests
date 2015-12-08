@@ -193,15 +193,6 @@ export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 export/examples/achemso_(dvi3|pdf5)_texF
 Sublabel: RESET
 #
-# GM: seminar.sty uses Postscript specials and does not work with
-# PDF (pdflatex). 
-# TODO: how to tag seminar_dvi? Landscape slides do not work with DVI.
-# Export to certain formats cannot be excluded from a module currently,
-# but even if they don't report an error, other formats result in corrupt
-# output documents (missing landscape slides).
-export/examples/(|fr/)seminar_pdf(2|[45]_systemF)
-#export/examples/(|fr/)seminar_dvi #not failing but wrong output
-#
 # GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
 export/examples/ko/splash_(dvi3|pdf[45])_texF
 #

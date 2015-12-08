@@ -12,7 +12,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language french
-\language_package default
+\language_package babel
 \inputencoding auto
 \fontencoding global
 \font_roman "lmodern" "default"
@@ -88,15 +88,15 @@ Note:
 \family sans
 PDF (dvipdfm)
 \family default
- fonctionne correctement sur toutes les distributions \SpecialCharNoPassThru LaTeX
- pour visionner/expor
-ter en PDF.
+ fonctionne correctement sur toutes les distributions \SpecialChar LaTeX
+ pour visionner/exporter
+ en PDF.
  Visionner et exporter en DVI ou PS les documents 
 \family typewriter
 seminar
 \family default
  peut produire des résultats incorrects, en fonction de la distribution
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  et des visionneurs DVI ou PostScript
 \end_layout
 
@@ -128,9 +128,9 @@ beamer
 \end_layout
 
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -165,17 +165,16 @@ Harry Testman
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
-
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -210,17 +209,16 @@ sem-user.dvi
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
-
 \begin_layout PortraitSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -261,17 +259,16 @@ Guide de l'utilisateur
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
-
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -281,14 +278,13 @@ Que peut-on mettre dans un transparent?
 \end_layout
 
 \begin_layout Standard
-Pratiquement tout ce qui peut apparaître en \SpecialCharNoPassThru LaTeX
+Pratiquement tout ce qui peut apparaître en \SpecialChar LaTeX
  ordinaire peut aussi figurer
  dans un transparent.
 \end_layout
 
 \begin_layout Standard
-(Enfin, sauf les flottants \threehyphens
- qui en souhaiterait dans un transparent?)
+(Enfin, sauf les flottants — qui en souhaiterait dans un transparent?)
 \end_layout
 
 \begin_layout Standard
@@ -335,12 +331,11 @@ Ceux-ci figurent dans le menu déroulant des styles.
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout LandscapeSlide
 Le texte dans l'environnement 
@@ -349,9 +344,9 @@ DiapoPaysage
 \family default
  apparaîtra en haut du transparent comme un paragraphe ordinaire.
  
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -361,7 +356,7 @@ Que se passe-t-il, si vous voulez une liste ou un titre en premier?
 \end_layout
 
 \begin_layout Standard
-Habituellement,\SpecialCharNoPassThru LyX
+Habituellement,\SpecialChar LyX
  n'apprécie pas les paragraphes vides et les fait disparaître
  avant que vous ayez le temps d'emboîter quelque chose dedans (si vous ne
  saisissez pas une commande vide ou une note).
@@ -373,7 +368,7 @@ seminar
 \family typewriter
 layout
 \family default
- instruit \SpecialCharNoPassThru LyX
+ instruit \SpecialChar LyX
  de laisser un environnement 
 \family sans
 DiapoPaysage
@@ -388,12 +383,11 @@ DiapoPortrait
 \begin_layout Standard
 Le style 
 \family sans
-\twohyphens
-Séparateur\twohyphens
+–Séparateur–
 \family default
- après un transparent est nécessaire car \SpecialCharNoPassThru LyX
- fusionne deux environnements
- identiques s'ils se succèdent immédiatement (e.
+ après un transparent est nécessaire car \SpecialChar LyX
+ fusionne deux environnements identique
+s s'ils se succèdent immédiatement (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -410,12 +404,11 @@ DiapoPaysage
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Standard
 La classe 
@@ -449,8 +442,7 @@ reference "sli:output-options"
 \begin_layout Standard
 Le style 
 \family sans
-\twohyphens
-Séparateur\twohyphens
+–Séparateur–
 \family default
  n'est pas nécessaire, si les notes suivent le transparent (ou si une 
 \family sans
@@ -559,9 +551,9 @@ SommaireProgression
 \end_layout
 
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -572,17 +564,16 @@ SommaireProgression
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
-
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -715,21 +706,20 @@ notslides{4,8,9,11}
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout SlideSubHeading
 Mise en page plus sophistiquée
 \end_layout
 
 \begin_layout Standard
-Le préambule \SpecialCharNoPassThru LaTeX
- est l'endroit adéquat pour ajouter de nombreuses options
- pour sophistiquer la présentation, e.
+Le préambule \SpecialChar LaTeX
+ est l'endroit adéquat pour ajouter de nombreuses options pour
+ sophistiquer la présentation, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -744,6 +734,7 @@ polices différentes, e.
 g.les polices Iwona: 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -761,6 +752,7 @@ usepackage{iwona}
 encadrements plus esthétiques:
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -792,24 +784,21 @@ slideframe[
 \backslash
 setlength{
 \backslash
-shadowsize}{1pt}]{shadow} 
-framecolor "black"
-backgroundcolor "none"
+shadowsize}{1pt}]{shadow} framecolor "black"backgroundcolor "none"
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
-
 \begin_layout LandscapeSlide
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -868,7 +857,7 @@ A4
 \begin_inset Quotes frd
 \end_inset
 
- (si ce n'est pas le format implicite de votre distribution \SpecialCharNoPassThru LaTeX
+ (si ce n'est pas le format implicite de votre distribution \SpecialChar LaTeX
 ), et supprimez
  l'option 
 \family sans
