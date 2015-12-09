@@ -1519,43 +1519,35 @@ reference "sec:書誌情報"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Graphics
-	filename ../../images/reload.png
-
+\begin_inset Info
+type  "icon"
+arg   "reload"
 \end_inset
 
 ボタンは、(通常必要でないはずですが)目次を再描画します。その隣のボタンは、節の文書中の位置を変えるためのボタンです。
-\begin_inset Graphics
-	filename ../../images/down.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "outline-down"
 \end_inset
 
 および
-\begin_inset Graphics
-	filename ../../images/up.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "outline-up"
 \end_inset
 
 を使うと、節の文書中の位置が、前方に移動したり後方に移動したりします。つまり、例えば第2.5節を、第2.4節の前に持っていったり第2.6節の後に移動したりすることがで
 きるわけです。それに伴い、\SpecialChar LyX
 は、節番号を自動的に新しい順序に振り直してくれます。
-\begin_inset Graphics
-	filename ../../images/outline-out.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "outline-out"
 \end_inset
 
 ないし
-\begin_inset Graphics
-	filename ../../images/outline-in.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "outline-in"
 \end_inset
 
 ボタン(または対応する
@@ -7164,12 +7156,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7182,6 +7176,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7207,6 +7202,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -14056,8 +14052,9 @@ reference "sec:出力"
 \family default
 かツールバーボタン
 \begin_inset Graphics
-	filename ../../images/view-others.png
-	scale 85
+	filename ../../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -15574,18 +15571,7 @@ status open
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -15658,11 +15644,9 @@ status collapsed
 
 \begin_layout Standard
 注釈は、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/note-insert.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "note-insert"
 \end_inset
 
 か、
@@ -26440,18 +26424,7 @@ name "subsec:TeXコード枠"
 コード枠は、
 \family sans
 挿入\SpecialChar menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xコード
+TeXコード
 \family default
 メニューかツールバーボタン
 \begin_inset Info
@@ -26663,18 +26636,7 @@ latexはつけじ@\SpecialChar LaTeX
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXプリアンブル
+LaTeXプリアンブル
 \family default
 メニュー)で
 \end_layout
@@ -27273,18 +27235,7 @@ status open
 コードで入力する必要があります(
 \family sans
 挿入\SpecialChar menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xコード
+TeXコード
 \family default
 メニュー)。
 \end_layout
@@ -27439,19 +27390,7 @@ footheight
 レビューしてみてください。それから、
 \family sans
 文書\SpecialChar menuseparator
-La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
-ログ
+LaTeXログ
 \family default
 メニューから\SpecialChar LaTeX
 ログファイルを開き、次の警告ボタンを押して、
@@ -29517,18 +29456,7 @@ arg   "note-insert"
 \family sans
 挿入\SpecialChar menuseparator
 注釈\SpecialChar menuseparator
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X注釈
+LyX注釈
 \end_layout
 
 \end_inset
@@ -30069,22 +29997,7 @@ CJK
 \begin_inset space ~
 \end_inset
 
-L
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-yX
+LyX
 \family default
  日中韓(CJK)版\SpecialChar LyX
  1.4.xの形式
@@ -30153,18 +30066,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(LuaTeX)
 \family default
  プログラム
 \family typewriter
@@ -30278,39 +30180,13 @@ MathML
 \begin_layout Description
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
 (
 \family default
-LuaT
-\family sans
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family default
-eX
+LuaTeX
 \family sans
 ) 
 \family default
@@ -30326,18 +30202,7 @@ Lua\SpecialChar TeX
 \begin_layout Description
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -30354,18 +30219,7 @@ pdflatex
 \begin_layout Description
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -30382,18 +30236,7 @@ latex
 \begin_layout Description
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -30401,22 +30244,7 @@ eX
 \family default
 (
 \family sans
-XeT
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX
+XeTeX
 \family default
 )
 \family sans
@@ -30442,22 +30270,7 @@ book
 \begin_inset space ~
 \end_inset
 
-(La
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-\SpecialChar TeX
+(La\SpecialChar TeX
 )
 \family default
  音楽記譜ソフトウェア
@@ -30471,22 +30284,7 @@ LilyPond
 \begin_layout Description
 
 \family sans
-L
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-yX書庫
+LyX書庫
 \begin_inset space ~
 \end_inset
 
@@ -30499,22 +30297,7 @@ yX書庫
 \begin_layout Description
 
 \family sans
-L
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-yX
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -30528,22 +30311,7 @@ z.y.x
 \begin_layout Description
 
 \family sans
-L
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-yXHTML
+LyXHTML
 \family default
  \SpecialChar LyX
 内蔵のXHTMLエンジンを使用したHTML形式
@@ -30718,18 +30486,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(XeTeX)
 \family default
  プログラム
 \family typewriter
@@ -32409,18 +32166,7 @@ reference "sec:変更追跡機能"
 \end_layout
 
 \begin_layout Subsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXログ
+LaTeXログ
 \end_layout
 
 \begin_layout Standard
@@ -32824,18 +32570,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Check T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Check TeX
 \begin_inset Index idx
 status collapsed
 
@@ -32860,18 +32595,7 @@ Chk\SpecialChar TeX
 \end_layout
 
 \begin_layout Subsection
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX情報
+TeX情報
 \begin_inset Index idx
 status collapsed
 
@@ -32986,8 +32710,7 @@ status collapsed
 \begin_layout Standard
 
 \family sans
-\SpecialChar LaTeX
-の設定
+LaTeXの設定
 \family default
 メニューは、\SpecialChar LyX
 が検知した\SpecialChar LaTeX
@@ -33005,18 +32728,7 @@ reference "sec:LaTeXの設定"
 \begin_layout Standard
 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xについて
+LyXについて
 \family default
 メニューは、お使いの\SpecialChar LyX
 のバージョン、著作権、著作者についての情報を表示します。
@@ -34368,22 +34080,7 @@ arg   "note-insert"
 \family sans
 挿入\SpecialChar menuseparator
 注釈\SpecialChar menuseparator
-Ly
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X注釈
+LyX注釈
 \end_layout
 
 \end_inset
@@ -34473,22 +34170,7 @@ arg   "ert-insert"
 
 \family sans
 挿入\SpecialChar menuseparator
-T
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX
+TeX
 \end_layout
 
 \end_inset
@@ -34859,8 +34541,9 @@ arg   "buffer-toggle-output-sync"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/view-others.png
-	scale 85
+	filename ../../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -34889,8 +34572,9 @@ arg   "buffer-toggle-output-sync"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/update-others.png
-	scale 85
+	filename ../../images/update-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -35370,18 +35054,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(XeTeX)
 \family default
 ・
 \family sans
@@ -35389,18 +35062,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(LuaTeX)
 \family default
 ・
 \family sans
@@ -35408,18 +35070,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(LuaTeX)
 \family default
 を通じて)これらのエンジンをサポートしています。第
 \begin_inset CommandInset ref
@@ -36791,18 +36442,7 @@ DVIとPDFの遡及検索
 \begin_layout Description
 XHTML出力オプション 書き出し形式
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XHTML
+LyXHTML
 \family default
 用の設定。
 \family sans
@@ -36828,18 +36468,7 @@ XHTMLでの数式出力
 \end_layout
 
 \begin_layout Section
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXプリアンブル
+LaTeXプリアンブル
 \end_layout
 
 \begin_layout Standard
@@ -37055,18 +36684,7 @@ Item
 \SpecialChar menuseparator
 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X関数
+LyX関数
 \family default
 に列挙してあります。
 \begin_inset VSpace medskip
@@ -37343,8 +36961,9 @@ reference "sec:パス"
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/closetab.png
-	scale 75
+	filename ../../images/closetab.svgz
+	lyxscale 30
+	height 12pt
 
 \end_inset
 
@@ -38374,18 +37993,7 @@ reference "subsec:文書のバックアップ"
 \end_layout
 
 \begin_layout Description
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xサーバーパイプ ここには、Unixパイプ名を入れることができます。このパイプは、外部プログラムから\SpecialChar LyX
+LyXサーバーパイプ ここには、Unixパイプ名を入れることができます。このパイプは、外部プログラムから\SpecialChar LyX
 にデータを送るのに使用されます。
 \begin_inset Newline newline
 \end_inset
@@ -38832,18 +38440,7 @@ DVI/PDFの逆検索
 \end_layout
 
 \begin_layout Subsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:LaTeX-設定"
@@ -38865,18 +38462,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X文字コード これは文書フォントの既定文字コードです。
+TeX文字コード これは文書フォントの既定文字コードです。
 \family sans
 T1
 \family default
@@ -38965,18 +38551,7 @@ reference "subsec:用語集プログラム"
 \end_layout
 
 \begin_layout Description
-CheckTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xコマンド 取扱説明書『
+CheckTeXコマンド 取扱説明書『
 \emph on
 高度な機能篇
 \emph default
