@@ -25,11 +25,11 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #  
 
-if(WIN32)
-
+if(NOT WIN32)
+    	set(_prog_path ~/bin)
+else()
 
 if(WINDEPS)
-
 	FIND_PROGRAM(LYX_QMAKE NAMES qmake)
 	if(NOT LYX_QMAKE)
 		message("------ qmake not found. Add YOUR_PATH\\lyx-windows-deps-msvc-qt4\\qt-4\\bin")
@@ -52,36 +52,35 @@ if(WINDEPS)
 	set(QT_MOC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/moc.exe" CACHE TYPE STRING FORCE)
 	set(QT_UIC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/uic.exe" CACHE TYPE STRING FORCE)
 	set(QT_RCC_EXECUTABLE "${WINDEPSDIR}/qt-4/bin/rcc.exe" CACHE TYPE STRING FORCE)
-
 endif()
 
-find_package(GNUWIN32 REQUIRED)
-
-file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
-
-set(_zlib_path ${_prog_path}/zlib)
-set(_iconv_path ${_prog_path}/iconv)
-
-set(_gnuwin32_dir ${GNUWIN32_DIR})
-
-set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} 
-	${_gnuwin32_dir}/include
-	${_zlib_path}/include
-	${_iconv_path}/include)
-	
-set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} 
-	${_gnuwin32_dir}/lib
-	${_zlib_path}/lib
-	${_iconv_path}/lib)
-
-#chek_include_files path
-set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${_gnuwin32_dir}/include)
-
-
+if(LYX_3RDPARTY_BUILD)
+    find_package(GNUWIN32)
+    file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
 else()
+    find_package(GNUWIN32 REQUIRED)
 
-	set(_prog_path ~/bin)
-	
+    file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" _prog_path)
+
+    set(_zlib_path ${_prog_path}/zlib)
+    set(_iconv_path ${_prog_path}/iconv)
+
+    set(_gnuwin32_dir ${GNUWIN32_DIR})
+
+    set(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} 
+            ${_gnuwin32_dir}/include
+            ${_zlib_path}/include
+            ${_iconv_path}/include)
+            
+    set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} 
+            ${_gnuwin32_dir}/lib
+            ${_zlib_path}/lib
+            ${_iconv_path}/lib)
+
+    #chek_include_files path
+    set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${_gnuwin32_dir}/include)
+endif()
+
 endif()
 
 

@@ -139,6 +139,7 @@ LYX_OPTION(ENABLE_URLTESTS  "Enable for URL tests" OFF ALL)
 LYX_OPTION(ENABLE_EXPORT_TESTS "Enable for export tests" OFF ALL)
 LYX_OPTION(ASAN             "Use address sanitizer" OFF ALL)
 LYX_COMBO(USE_QT            "Use Qt version as frontend" QT4 QT5)
+LYX_OPTION(3RDPARTY_BUILD   "Build 3rdparty libs" OFF ALL)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
