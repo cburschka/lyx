@@ -25,18 +25,20 @@ set(BROKEN_WCHAR_H 0)
 set(HAVE_WCHAR_T 0)
 
 set(BINDIR ${CMAKE_BINARY_DIR}/libiconv)
-configure_file(config.h.cmake ${BINDIR}/config.h)
-configure_file(${SRCDIR}/include/iconv.h.build.in ${BINDIR}/include/iconv.h)
+configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+configure_file(${SRCDIR}/include/iconv.h.build.in ${CMAKE_CURRENT_BINARY_DIR}/iconv.h)
+
 configure_file(${SRCDIR}/libcharset/include/libcharset.h.in ${BINDIR}/include/libcharset.h)
 configure_file(${SRCDIR}/srclib/uniwidth.in.h ${BINDIR}/srclib/uniwidth.h)
 configure_file(${SRCDIR}/srclib/unitypes.in.h ${BINDIR}/srclib/unitypes.h)
+configure_file(${SRCDIR}/include/iconv.h.in ${BINDIR}/include/iconv.h)
 
 # Dirty fix for MinGW
 if(MINGW)
   add_definitions(-DELOOP=0 -DHAVE_DECL_STRERROR_R=0)
 endif ()
 
-include_directories( ${BINDIR}/include ${SRCDIR}/include ${SRCDIR}/srclib)
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} ${BINDIR}/include ${SRCDIR}/include ${SRCDIR}/srclib)
 add_definitions(-Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -DINSTALLPREFIX=NULL -DNO_XMALLOC -DBUILDING_LIBCHARSET -DINSTALLDIR="" -DLIBDIR="" -DENABLE_RELOCATABLE=1 -DIN_LIBRARY)
 
 # libcharset
@@ -51,3 +53,5 @@ set_target_properties(iconv PROPERTIES COMPILE_FLAGS -DBUILDING_LIBICONV)
 set(ICONV_INCLUDE_DIR ${BINDIR}/include CACHE STRING "libiconv include  dir" FORCE)
 set(ICONV_LIBRARY iconv CACHE STRING "libiconv library" FORCE)
 set(ICONV_FOUND iconv CACHE STRING "libiconv found" FORCE)
+
+set_target_properties(iconv PROPERTIES FOLDER "3rd_party")

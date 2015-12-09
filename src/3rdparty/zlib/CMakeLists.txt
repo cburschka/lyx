@@ -157,3 +157,4 @@ set(ZLIB_LIBRARY zlibstatic CACHE STRING "Zlib library" FORCE)
 set(ZLIB_INCLUDE_DIR  ${SRCDIR} CACHE STRING "Zlib include dir" FORCE)
 set(ZLIB_FOUND CACHE STRING "Zlib found" FORCE )
 
+set_target_properties(zlibstatic PROPERTIES FOLDER "3rd_party")

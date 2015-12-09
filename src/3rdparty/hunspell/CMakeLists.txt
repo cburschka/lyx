@@ -7,7 +7,12 @@ set(HUNSPELL_VERSION 1.3.3)
 
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${HUNSPELL_VERSION}/src)
 
-include_directories(./ ${SRCDIR}/hunspell ${SRCDIR}/parsers ${SRCDIR}/tools ${SRCDIR}/win_api)
+include_directories(./ ${SRCDIR}/hunspell ${SRCDIR}/parsers ${SRCDIR}/tools)
+
+if(WIN32)
+    include_directories(${SRCDIR}/win_api)
+    set(HUNCONFIG ${SRCDIR}/win_api/config.h)
+endif()
 
 # LIBS
 set(SRCS
@@ -45,8 +50,11 @@ set(HEADERS
     ${SRCDIR}/hunspell/replist.hxx
     ${SRCDIR}/hunspell/hunvisapi.h)
 
-add_library(hunspell STATIC ${HEADERS} ${SRCS})
+add_definitions(-DHUNSPELL_STATIC)
+add_library(hunspell STATIC ${HEADERS} ${SRCS} ${HUNCONFIG})
 
 set(HUNSPELL_LIBRARY hunspell CACHE STRING "Hunspell library" FORCE)
 set(HUNSPELL_INCLUDE_DIR ${SRCDIR} CACHE STRING "Hunspell include dir" FORCE)
 set(HUNSPELL_FOUND CACHE STRING "Hunspell found" FORCE)
+
+set_target_properties(hunspell PROPERTIES FOLDER "3rd_party")
