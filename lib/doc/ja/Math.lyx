@@ -3433,11 +3433,9 @@ arg   "math-insert \\space"
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/math/phantom.svgz
-	lyxscale 14
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "math/phantom"
 \end_inset
 
 があります。
@@ -3639,11 +3637,9 @@ vphantom
 \end_inset
 
 (ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/vphantom.svgz
-	lyxscale 14
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "math/vphantom"
 \end_inset
 
 )および
@@ -3665,11 +3661,9 @@ hphantom
 \end_inset
 
 (ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/hphantom.svgz
-	lyxscale 14
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "math/hphantom"
 \end_inset
 
 )というコマンドもあります。
