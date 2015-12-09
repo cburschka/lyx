@@ -38,7 +38,7 @@ if(MINGW)
   add_definitions(-DELOOP=0 -DHAVE_DECL_STRERROR_R=0)
 endif ()
 
-include_directories( ${CMAKE_CURRENT_BINARY_DIR} ${BINDIR}/include ${SRCDIR}/include ${SRCDIR}/srclib)
+include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR} ${BINDIR}/include ${SRCDIR}/include ${SRCDIR}/srclib)
 add_definitions(-Dset_relocation_prefix=libcharset_set_relocation_prefix -Drelocate=libcharset_relocate -DHAVE_CONFIG_H -DINSTALLPREFIX=NULL -DNO_XMALLOC -DBUILDING_LIBCHARSET -DINSTALLDIR="" -DLIBDIR="" -DENABLE_RELOCATABLE=1 -DIN_LIBRARY)
 
 # libcharset

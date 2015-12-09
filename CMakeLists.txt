@@ -680,6 +680,7 @@ endif()
 
 if(LYX_3RDPARTY_BUILD)
     add_subdirectory(src/3rdparty/libiconv)
+    set(HAVE_ICONV_CONST 1)
     add_subdirectory(src/3rdparty/zlib)
 endif()
 
