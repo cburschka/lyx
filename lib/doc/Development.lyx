@@ -1324,8 +1324,8 @@ reuse
 \begin_inset Quotes erd
 \end_inset
 
- the documentation, template, and example files trying to export them to
- all supported output formats.
+ documentation, template, and example files trying to export them to all
+ supported output formats.
 \end_layout
 
 \begin_layout Paragraph
@@ -1353,18 +1353,37 @@ When making non-trivial changes to LyX's \SpecialChar LaTeX
  export code (e.g.
  touching the encoding code or package handling code that you expect will
  change the exported \SpecialChar LaTeX
- in some way), consider running all of the export tests
- before and after your change.
+ in some way):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\paragraph_spacing single
+Consider running all of the export tests before and after your change.
  If there are differences, please reconcile these (i.e.
  fix the bug or fix the tests) 
 \emph on
 before
 \emph default
  committing.
- Ask for help if you're not sure what to do or if you do not want to run
- the tests, post the patch on the list and others will run the tests.
+ Ask for help if you're not sure what to.
 \end_layout
 
+\begin_layout Standard
+If you do not want to run the tests,
+\end_layout
+
+\begin_layout Itemize
+post the patch on the list and others will run the tests and eventually
+ ask for fixes, or
+\end_layout
+
+\begin_layout Itemize
+commit, but be prepared to fix eventually arising problems or to revert
+ the commit if there is no easy fix.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Understand how to interpret test failures.
  If your commit is found to have broken a test, you should be able to interpret
@@ -1384,7 +1403,7 @@ Configuring the tests
 \end_layout
 
 \begin_layout Standard
-To enable these tests, add the 
+To enable the export autotests, add the 
 \begin_inset Flex Code
 status collapsed
 
@@ -1440,28 +1459,40 @@ ctest
 \end_inset
 
 .
- To run only some of the tests, use the command 
+ 
+\end_layout
+
+\begin_layout Standard
+To run only some of the tests, use command line options:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-ctest -R <pattern>
+-R <pattern>
 \end_layout
 
 \end_inset
 
-, where 
+ Run only the tests whose names match the given regular expression.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-<pattern>
+-L <pattern>
 \end_layout
 
 \end_inset
 
- is a regular expression that matches test names.
- To run only the export tests, you can use 
+ Run only the tests whose labels match the given regular expression.
+ For example, to run only the export tests, you can use 
 \begin_inset Flex Code
 status collapsed
 
@@ -1472,40 +1503,43 @@ ctest -L export
 \end_inset
 
 .
- For the list of test categories available in addition to 
-\begin_inset Quotes eld
-\end_inset
+ 
+\end_layout
 
-export
-\begin_inset Quotes erd
-\end_inset
-
-, run 
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-ctest \SpecialChar nobreakdash
-\SpecialChar nobreakdash
-print-labels
+-E <pattern>
 \end_layout
 
 \end_inset
 
-.
- It is often useful to list the tests without running them (e.g.
- if you want to know how many tests there are or whether your 
+ Exclude the tests whose names match the given regular expression.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-<pattern>
+-LE <pattern>
 \end_layout
 
 \end_inset
 
- regular expression did what you expected).
- This can be done with the 
+ Exclude the tests whose labels match the given regular expression.
+\end_layout
+
+\begin_layout Standard
+The following options help to find good selection patterns:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
@@ -1515,31 +1549,51 @@ status collapsed
 
 \end_inset
 
- or 
+ List the tests that would be run but not actually run them.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Useful in conjunction with the -R, -L, -E and -LE options, e.g., if you want
+ to know how many tests there are or whether your 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<pattern>
+\end_layout
+
+\end_inset
+
+ regular expression did what you expected.
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar nobreakdash
 \SpecialChar nobreakdash
-show-only
+print-labels
 \end_layout
 
 \end_inset
 
- argument.
- We are still working on getting the tests to run in parallel which is supported
- by the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ctest
+ print the list of all labels associated with the test set.
+ Can also be combined with -R, -L, -E, ...
+ 
 \end_layout
 
-\end_inset
+\begin_layout Standard
+Other relevant options are:
+\end_layout
 
- command with the 
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
@@ -1549,19 +1603,12 @@ status collapsed
 
 \end_inset
 
- or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar nobreakdash
-\SpecialChar nobreakdash
-parallel <jobs>
+ Run the tests in parallel using the given number of jobs.
 \end_layout
 
-\end_inset
-
- argument.
+\begin_deeper
+\begin_layout Standard
+We are still working on getting the tests to run in parallel.
  However, when running the tests in parallel, sometimes tests fail that
  pass when run sequentially.
  A reasonable approach is to first run the tests in parallel and then run
@@ -1614,8 +1661,9 @@ RUN_SERIAL ON
  CMake property.
 \end_layout
 
-\begin_layout Standard
-In some situations the option 
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring -R
 \begin_inset Flex Code
 status collapsed
 
@@ -1627,8 +1675,13 @@ timeout <seconds>
 
 \end_inset
 
- is useful.
- There have been bugs in LyX and in \SpecialChar LaTeX
+ Set a global timeout on all tests that do not already have a timeout set
+ on them.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+There have been bugs in LyX and in \SpecialChar LaTeX
  which cause compilation to hang, and
  without a timeout a test might never stop (in one case there was even a
  memory leak).
@@ -1656,6 +1709,7 @@ ctest
  command.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 See the manual (
 \begin_inset Flex Code
