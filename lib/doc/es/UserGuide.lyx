@@ -8487,12 +8487,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8505,6 +8507,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8534,6 +8537,7 @@ with the difference that spaces appear in the output as the character '
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -15923,18 +15927,7 @@ Puedes exportar el documento a \SpecialChar LaTeX
 \family sans
 Archivo\SpecialChar menuseparator
 Exportar\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 .
  Las variantes de exportación a \SpecialChar LaTeX
@@ -16026,18 +16019,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
 .
  Esta última opción usa el programa 
@@ -16348,18 +16330,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) Usa el programa 
+(LuaTeX) Usa el programa 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -16398,18 +16369,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) Usa el programa 
+(XeTeX) Usa el programa 
 \family typewriter
 Xe\SpecialChar TeX
 
@@ -16508,18 +16468,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
  o 
 \family sans
@@ -16527,18 +16476,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
 , teniendo presente que estos dos programas aún no están tan maduros como
  
@@ -16706,12 +16644,9 @@ Documento\SpecialChar menuseparator
 Ver (Otros formatos)
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 .
@@ -40833,12 +40768,9 @@ Sincronizar con salida
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 
@@ -40866,12 +40798,9 @@ Ver (Otros Formatos)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/update-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "update-others"
 \end_inset
 
 *
@@ -43817,11 +43746,9 @@ Botón único para cerrar pestañas
  se mostrará solo un botón (
 \family sans
 
-\begin_inset Graphics
-	filename ../../images/closetab.svgz
-	lyxscale 30
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "closetab"
 \end_inset
 
 

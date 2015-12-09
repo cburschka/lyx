@@ -13465,18 +13465,7 @@ status collapsed
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LaTeX
 \family default
 を使用します。その他の型の\SpecialChar LaTeX
 への書き出しは、第
@@ -13533,18 +13522,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
 を使用します。後者のオプションは、プログラム
 \family typewriter
@@ -13740,18 +13718,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
  これを選択すると、
 \family typewriter
@@ -13786,18 +13753,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
  これを選択すると、
 \family typewriter
@@ -13892,18 +13848,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
 や
 \family sans
@@ -13911,18 +13856,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
 を用いた方が良いかもしれません。
 \end_layout
@@ -14051,12 +13985,9 @@ reference "sec:出力"
 他の形式
 \family default
 かツールバーボタン
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 で選ぶことができます。
@@ -34540,14 +34471,13 @@ arg   "buffer-toggle-output-sync"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
+
+\family sans
 *
 \end_layout
 
@@ -34571,12 +34501,9 @@ arg   "buffer-toggle-output-sync"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/update-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "update-others"
 \end_inset
 
 *
@@ -36960,11 +36887,9 @@ reference "sec:パス"
 オプションが有効の場合には、タブバーの右端にタブを閉じるためのボタンがひとつだけ(
 \family sans
 
-\begin_inset Graphics
-	filename ../../images/closetab.svgz
-	lyxscale 30
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "closetab"
 \end_inset
 
 

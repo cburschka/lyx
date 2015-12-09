@@ -8474,10 +8474,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8490,6 +8492,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8513,6 +8516,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -16447,12 +16451,9 @@ Dokument\SpecialChar menuseparator
 Andere Formate ansehen
 \family default
  oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
  ausgewählt werden.
@@ -40009,12 +40010,9 @@ synchronisieren
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 
@@ -40050,12 +40048,9 @@ ansehen
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/update-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "update-others"
 \end_inset
 
 *
@@ -43097,11 +43092,9 @@ Globaler Knopf zum Schließen von Registerkarten
  gibt es nur einen Knopf (
 \family sans
 
-\begin_inset Graphics
-	filename ../../images/closetab.svgz
-	lyxscale 30
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "closetab"
 \end_inset
 
 

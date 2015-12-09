@@ -8166,12 +8166,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8184,6 +8186,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8207,6 +8210,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -15995,12 +15999,9 @@ Document\SpecialChar menuseparator
 View (Other Formats)
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 .
@@ -40040,12 +40041,9 @@ Synchronize with Output
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 
@@ -40073,12 +40071,9 @@ View (Other Formats)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../images/update-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "update-others"
 \end_inset
 
 *
@@ -43247,11 +43242,9 @@ Single close-tab button
  is checked, there will only be one close button (
 \family sans
 
-\begin_inset Graphics
-	filename ../images/closetab.svgz
-	lyxscale 30
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "closetab"
 \end_inset
 
 

@@ -16524,18 +16524,7 @@ Vous pouvez exporter votre document comme un fichier \SpecialChar LaTeX
 \family sans
 Fichier\SpecialChar menuseparator
 Exporter\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX.
+LaTeX.
 
 \family default
  Les différentes variantes d'exportation sont expliquées à la section
@@ -16627,18 +16616,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X).
+(LuaTeX).
 
 \family default
  Cette dernière option utilise l'exécutable 
@@ -16946,18 +16924,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) utilise le programme 
+(LuaTeX) utilise le programme 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -17006,18 +16973,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) utilise le programme 
+(XeTeX) utilise le programme 
 \family typewriter
 Xe\SpecialChar TeX
 
@@ -17119,18 +17075,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \end_layout
 
 \end_inset
@@ -17144,18 +17089,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \end_layout
 
 \end_inset
@@ -17320,12 +17254,9 @@ Document\SpecialChar menuseparator
 Visionner (autres formats)
 \family default
  ou le bouton de la barre d'outils 
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 .
@@ -42069,12 +42000,9 @@ Synchroniser avec le résultat imprimable
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/view-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "view-others"
 \end_inset
 
 
@@ -42102,12 +42030,9 @@ Visionner (autres formats)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/update-others.svgz
-	lyxscale 15
-	height 12pt
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "update-others"
 \end_inset
 
 *
@@ -45202,11 +45127,9 @@ Bouton unique pour fermer les onglets
  est cochée, il n'y aura qu'un bouton (
 \family sans
 
-\begin_inset Graphics
-	filename ../../images/closetab.svgz
-	lyxscale 30
-	height 12pt
-
+\begin_inset Info
+type  "icon"
+arg   "closetab"
 \end_inset
 
 
