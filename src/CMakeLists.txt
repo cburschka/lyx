@@ -70,7 +70,7 @@ if(WIN32)
 endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}
-	${ZLIB_INCLUDE_DIR} ${QT_INCLUDES})
+	${ZLIB_INCLUDE_DIR} ${ICONV_INCLUDE_DIR} ${QT_INCLUDES})
 
 lyx_add_msvc_pch(lyx)
 
