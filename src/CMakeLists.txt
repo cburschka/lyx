@@ -129,7 +129,7 @@ target_link_libraries(${_lyx}
 	graphics
 	support
 	${ICONV_LIBRARY}
-	${QT_QTMAIN_LIBRARY}
+	${LYX_QTMAIN_LIBRARY}
 	${vld_dll})
 
 qt_use_modules(${_lyx} Core Gui)
