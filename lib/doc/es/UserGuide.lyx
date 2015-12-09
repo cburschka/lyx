@@ -2720,18 +2720,7 @@ Powerdot Formato para presentaciones
 \end_layout
 
 \begin_layout Description
-REVTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Para escribir artículos publicados por: 
+REVTeX Para escribir artículos publicados por: 
 \emph on
 American Physical Society
 \emph default
@@ -31429,18 +31418,7 @@ Código
 \begin_inset space ~
 \end_inset
 
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \family default
  o con el botón 
 \begin_inset Info
@@ -31661,18 +31639,7 @@ Preámbulo
 \begin_inset space ~
 \end_inset
 
-LaT
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 ) con el comando
 \end_layout
@@ -32413,18 +32380,7 @@ Para la definición hacen falta algunos comandos \SpecialChar LaTeX
  (menú 
 \family sans
 Insertar\SpecialChar menuseparator
-Código Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+Código TeX
 \family default
 ):
 \end_layout
@@ -32617,19 +32573,7 @@ Altura es una longitud en unidades estándar.
  pie y haz una vista previa PDF del documento.
  Luego abres el 
 \family sans
-Registro de La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
-
+Registro de LaTeX
 \family default
  en el menú 
 \family sans
@@ -34048,10 +33992,10 @@ Enchant es una biblioteca envoltorio de diferentes entornos configurables.
 hunspell
 \family default
 .
+ \SpecialChar LyX
  
 \lang english
-\SpecialChar LyX
- on Mac
+on Mac
 \begin_inset space ~
 \end_inset
 
@@ -34922,18 +34866,7 @@ Nota
 \begin_inset space ~
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX
 \end_layout
 
 \end_inset
@@ -38917,8 +38850,7 @@ de
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  genera un archivo \SpecialChar LyX
  con información sobre los paquetes \SpecialChar LaTeX
@@ -43148,8 +43080,7 @@ Preámbulo
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 ).
  Por ejemplo, para el € hay que añadir la línea 
