@@ -74,7 +74,7 @@ logicalmkup
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -2178,50 +2178,24 @@ profondeur
 
 \begin_layout Standard
 Le bouton 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/reload.png
-
-\end_inset
-
-
-\begin_inset space \space{}
+\begin_inset Info
+type  "icon"
+arg   "reload"
 \end_inset
 
  remet le plan à jour (bien que ce ne soit pas normalement nécessaire).
  À côté se trouvent les boutons qui permettent de modifier la position des
  sections dans le document.
  Avec les boutons 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/down.png
-	scale 85
-
-\end_inset
-
-
-\begin_inset space \space{}
+\begin_inset Info
+type  "icon"
+arg   "outline-down"
 \end_inset
 
  et 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../images/up.png
-	scale 85
-
-\end_inset
-
-
-\begin_inset space \space{}
+\begin_inset Info
+type  "icon"
+arg   "outline-up"
 \end_inset
 
  situés en bas de la fenêtre de plan, vous pouvez déplacer des sections
@@ -2239,17 +2213,15 @@ Le bouton
  va alors renuméroter automatiquement les sections pour refléter le nouvel
  ordre.
  Avec les boutons 
-\begin_inset Graphics
-	filename ../../images/outline-out.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "outline-out"
 \end_inset
 
  et 
-\begin_inset Graphics
-	filename ../../images/outline-in.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "outline-in"
 \end_inset
 
  (ou les raccourcis clavier correspondants 
@@ -3254,18 +3226,7 @@ Powerdot sert à faire des transparents pour des présentations;
 \end_layout
 
 \begin_layout Description
-REVTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X pour écrire des articles pour les publications de l'
+REVTeX pour écrire des articles pour les publications de l'
 \lang english
 American Physical Society
 \lang french
@@ -8708,12 +8669,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8726,6 +8689,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8751,6 +8715,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -8896,15 +8861,15 @@ liste
  d'état vous dira à quel niveau d'emboîtement vous vous situez).
  A la place du menu, vous pouvez utiliser les boutons de la barre d'outils
  
-\begin_inset Graphics
-	filename ../../images/depth-increment.png
-
+\begin_inset Info
+type  "icon"
+arg   "depth-increment"
 \end_inset
 
  et 
-\begin_inset Graphics
-	filename ../../images/depth-decrement.png
-
+\begin_inset Info
+type  "icon"
+arg   "depth-decrement"
 \end_inset
 
  ou les raccourcis clavier bien pratiques 
@@ -17356,8 +17321,9 @@ Visionner (autres formats)
 \family default
  ou le bouton de la barre d'outils 
 \begin_inset Graphics
-	filename ../../images/view-others.png
-	scale 85
+	filename ../../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -32388,18 +32354,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \family default
  soit en cliquant sur le bouton 
 \begin_inset Info
@@ -32621,18 +32576,7 @@ Paramètres
 \SpecialChar menuseparator
 
 \family sans
-Préambule LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Préambule LaTeX
 \family default
 ) avec la commande
 \end_layout
@@ -33351,18 +33295,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \family default
 ):
 \end_layout
@@ -33577,19 +33510,7 @@ hauteur
  via 
 \family sans
 Document\SpecialChar menuseparator
-Fichier journal La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
-
+Fichier journal LaTeX
 \family default
  et vérifiez en appuyant sur le bouton 
 \family sans
@@ -36185,18 +36106,7 @@ Note
 \begin_inset space ~
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX
 \end_layout
 
 \end_inset
@@ -36459,10 +36369,10 @@ Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Langue
 \family default
- vous permet de choisir la langue
+ vous permet de choisir la langue, 
 \family roman
 \lang english
-, the quote style
+the quote style
 \family default
 \lang french
  et l'encodage des caractères.
@@ -36800,18 +36710,7 @@ CJK
 \begin_inset space ~
 \end_inset
 
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX format de la version spéciale de \SpecialChar LyX
+LyX format de la version spéciale de \SpecialChar LyX
  1.4.x pour le chinois, le japonais et
  le coréen (CJK).
  
@@ -36863,18 +36762,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) format DVI utilisant le processeur 
+(LuaTeX) format DVI utilisant le processeur 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -36973,33 +36861,11 @@ MathML
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) fichier texte contenant le code source \SpecialChar LaTeX
+(LuaTeX) fichier texte contenant le code source \SpecialChar LaTeX
  compilable avec le processeur
  
 \family typewriter
@@ -37010,18 +36876,7 @@ Lua\SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -37036,18 +36891,7 @@ pdflatex
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -37062,33 +36906,11 @@ latex
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) fichier texte contenant le code source \SpecialChar LaTeX
+(XeTeX) fichier texte contenant le code source \SpecialChar LaTeX
  compilable avec le processeur
  
 \family typewriter
@@ -37107,21 +36929,10 @@ LilyPond
 \begin_inset space ~
 \end_inset
 
-(La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
+(La\SpecialChar TeX
 ) fichier texte contenant le code source \SpecialChar LaTeX
- ainsi que du code écrit dans la
- syntaxe du logiciel de notation musicale
+ ainsi que du code écrit dans
+ la syntaxe du logiciel de notation musicale
 \family typewriter
  LilyPond
 \family default
@@ -37133,18 +36944,7 @@ Archive
 \begin_inset space ~
 \end_inset
 
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -37155,18 +36955,7 @@ yX
 \end_layout
 
 \begin_layout Description
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -37191,18 +36980,7 @@ y
 \end_layout
 
 \begin_layout Description
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXHTML format HTML créé par le moteur interne de \SpecialChar LyX
+LyXHTML format HTML créé par le moteur interne de \SpecialChar LyX
 ; 
 \end_layout
 
@@ -37290,18 +37068,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) format PDF en utilisant le processeur 
+(LuaTeX) format PDF en utilisant le processeur 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -37339,18 +37106,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) format PDF en utilisant le processeur 
+(XeTeX) format PDF en utilisant le processeur 
 \family typewriter
 Xe\SpecialChar TeX
 
@@ -39590,18 +39346,7 @@ reference "sec:Suivi-de-modifications"
 \end_layout
 
 \begin_layout Subsection
-Fichier journal LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Fichier journal LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -40151,18 +39896,7 @@ Compte le nombre de mots et de caractères dans le document courant ou dans
 \end_layout
 
 \begin_layout Subsection
-Check T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Check TeX
 \begin_inset Index idx
 status collapsed
 
@@ -40189,18 +39923,7 @@ Chk\SpecialChar TeX
 \end_layout
 
 \begin_layout Subsection
-Informations T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Informations TeX
 \begin_inset Index idx
 status collapsed
 
@@ -40237,7 +39960,7 @@ pour voir le chemin du fichier en entier.
 Comparer\SpecialChar ldots
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Comparer
@@ -40383,8 +40106,7 @@ Configuration
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  affiche un document \SpecialChar LyX
  avec des informations sur les paquetages et les classes
@@ -40408,22 +40130,7 @@ reference "sec:Configuration-LaTeX"
 \begin_layout Standard
 Le menu 
 \family sans
-À propos de Ly
-\lang english
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\lang french
-X
+À propos de LyX
 \family default
  donnes les information utiles sur le copyright, les remerciements et la
  version de \SpecialChar LyX
@@ -41908,18 +41615,7 @@ Note
 \begin_inset space ~
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX
 \end_layout
 
 \end_inset
@@ -42009,22 +41705,7 @@ arg   "ert-insert"
 
 \family sans
 Insertion\SpecialChar menuseparator
-Code T
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX
+Code TeX
 \end_layout
 
 \end_inset
@@ -42389,8 +42070,9 @@ Synchroniser avec le résultat imprimable
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/view-others.png
-	scale 85
+	filename ../../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -42421,8 +42103,9 @@ Visionner (autres formats)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/update-others.png
-	scale 85
+	filename ../../images/update-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -43000,18 +42683,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
 , 
 \family sans
@@ -43019,18 +42691,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
  et 
 \family sans
@@ -43924,7 +43585,7 @@ Couleurs ! fond
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Couleurs ! Boites ombrées
@@ -43934,7 +43595,7 @@ Couleurs ! Boites ombrées
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Couleurs ! Notes grisées
@@ -44765,18 +44426,7 @@ Nota:
 \series default
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
-Préambule LaT
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Préambule LaTeX
 \family default
 ).
  Par exemple, pour obtenir le symbole €, il faut ajouter la ligne 
@@ -44961,18 +44611,7 @@ export
 
 XHTML positionne les réglages pour le format d'exportation 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XHTML
+LyXHTML
 \family default
 .
  
@@ -45003,18 +44642,7 @@ Options avancées
 \end_layout
 
 \begin_layout Section
-Préambule LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Préambule LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -45261,18 +44889,7 @@ Fonctions
 \begin_inset space ~
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX
 \family default
 .
 \end_layout
@@ -45586,8 +45203,9 @@ Bouton unique pour fermer les onglets
 \family sans
 
 \begin_inset Graphics
-	filename ../../images/closetab.png
-	scale 75
+	filename ../../images/closetab.svgz
+	lyxscale 30
+	height 12pt
 
 \end_inset
 
@@ -47501,18 +47119,7 @@ dans le manuel des Options avancées.
 \end_layout
 
 \begin_layout Subsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:LaTeX-settings"
@@ -47550,18 +47157,7 @@ police
 \begin_inset space ~
 \end_inset
 
-La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
+La\SpecialChar TeX
  C'est l'encodage implicite pour la police du document.
  
 \family sans
@@ -47748,18 +47344,7 @@ Commande
 \begin_inset space ~
 \end_inset
 
-CheckT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Commande pour le programme 
+CheckTeX Commande pour le programme 
 \family sans
 Check\SpecialChar TeX
 
