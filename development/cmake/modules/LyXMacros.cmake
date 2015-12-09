@@ -104,7 +104,9 @@ macro(LYX_AUTOMOC)
 
 					set(_moc  ${CMAKE_CURRENT_BINARY_DIR}/${_current_MOC})
 					if (WIN32)
-							  set(_def -D_WIN32)
+						set(_def -D_WIN32)
+					else()
+						set(_def)
 					endif()
 					#set(_moc ${_abs_PATH}/${_current_MOC})
 					add_custom_command(OUTPUT ${_moc}

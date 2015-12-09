@@ -36,6 +36,14 @@ else()
   set(PDF_FORMATS "pdf" "pdf2" "pdf3")
 endif()
 
+set(potential_languages "ca" "cs" "da" "de" "el" "es" "eu" "fa" "fr" "gl" "he" "hu" "id" "it" "ja" "ko" "nb" "nl" "pl" "pt" "ro" "ru" "sk" "sl" "sr" "sv" "uk" "zh_CN")
+
+macro(initLangVars varname)
+  foreach(_l ${potential_languages})
+    set(${varname}_${_l})
+  endforeach()
+endmacro()
+
 macro(getoutputformats filepath varname)
   file(STRINGS "${filepath}" lines)
   # What should we test, if default_output_format is not defined?
@@ -164,6 +172,8 @@ endmacro()
 macro(loadTestList filename resList depth)
   # Create list of strings from a file without comments
   # ENCODING parameter is a new feature in cmake 3.1
+  initLangVars(${resList})
+  initLangVars("sublabel")
   if (CMAKE_VERSION VERSION_GREATER "3.1")
     file(STRINGS ${filename} tempList ENCODING "UTF-8")
   else()
