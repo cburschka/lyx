@@ -68,7 +68,7 @@ enumitem
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -15996,8 +15996,9 @@ View (Other Formats)
 \family default
  or the toolbar button 
 \begin_inset Graphics
-	filename ../images/view-others.png
-	scale 85
+	filename ../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -40052,8 +40053,9 @@ Synchronize with Output
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/view-others.png
-	scale 85
+	filename ../images/view-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -40084,8 +40086,9 @@ View (Other Formats)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/update-others.png
-	scale 85
+	filename ../images/update-others.svgz
+	lyxscale 15
+	height 12pt
 	groupId toolbarbuttons
 
 \end_inset
@@ -43257,8 +43260,9 @@ Single close-tab button
 \family sans
 
 \begin_inset Graphics
-	filename ../images/closetab.png
-	scale 75
+	filename ../images/closetab.svgz
+	lyxscale 30
+	height 12pt
 
 \end_inset
 

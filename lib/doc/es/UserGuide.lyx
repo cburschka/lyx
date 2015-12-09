@@ -68,7 +68,7 @@ enumitem
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -8498,14 +8498,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8518,7 +8516,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8548,7 +8545,6 @@ with the difference that spaces appear in the output as the character '
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal*.
 \end_layout
 
