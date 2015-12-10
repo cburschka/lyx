@@ -25,6 +25,8 @@
 
 #include "frontends/FontMetrics.h"
 
+#include <algorithm>
+
 using namespace std;
 
 namespace lyx {

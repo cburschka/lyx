@@ -24,6 +24,7 @@
 
 #include "frontends/Painter.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace lyx::support;

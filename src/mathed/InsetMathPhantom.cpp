@@ -16,6 +16,7 @@
 #include "MathStream.h"
 #include "frontends/Painter.h"
 
+#include <algorithm>
 #include <ostream>
 
 namespace lyx {

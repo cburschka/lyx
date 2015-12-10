@@ -12,6 +12,8 @@
 
 #include <config.h>
 #include <algorithm>
+#include <functional>
+
 
 #include "InsetCommandParams.h"
 

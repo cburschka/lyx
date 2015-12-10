@@ -20,6 +20,8 @@
 
 #include "LaTeXFeatures.h"
 
+#include <algorithm>
+
 using namespace std;
 
 namespace lyx {
