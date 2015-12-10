@@ -146,7 +146,7 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
  package 
 \series bold
 pdfcomment
@@ -235,7 +235,7 @@ status open
 \series bold
 Note:
 \series default
- All braces and brackets in comment options must be inserted as \SpecialCharNoPassThru TeX
+ All braces and brackets in comment options must be inserted as \SpecialChar TeX
  code!
 \end_layout
 
@@ -921,7 +921,7 @@ n of the page break will fail
 \end_layout
 
 \begin_layout Itemize
-when using Xe\SpecialCharNoPassThru TeX
+when using Xe\SpecialChar TeX
  you have to assure that the page dimensions are internally
  output, e.
 \begin_inset space \thinspace{}
@@ -939,7 +939,7 @@ pagesize
 \series bold
 pagesize
 \series default
- for the \SpecialCharNoPassThru LaTeX
+ for the \SpecialChar LaTeX
 -package 
 \series bold
 typearea
@@ -961,7 +961,7 @@ status open
 Attention:
 \series default
  Due to technical limitations PDF-Reply only works when using pdflatex.
- On some \SpecialCharNoPassThru LaTeX
+ On some \SpecialChar LaTeX
  installations it won't even work in general.
 \end_layout
 
@@ -1213,7 +1213,7 @@ the comment should not be longer than one page, otherwise the recognition
 \end_layout
 
 \begin_layout Itemize
-when using Xe\SpecialCharNoPassThru TeX
+when using Xe\SpecialChar TeX
  you have to assure that the page dimensions are internally
  output, e.
 \begin_inset space \thinspace{}
@@ -1231,7 +1231,7 @@ pagesize
 \series bold
 pagesize
 \series default
- for the \SpecialCharNoPassThru LaTeX
+ for the \SpecialChar LaTeX
 -package 
 \series bold
 typearea
@@ -1312,7 +1312,7 @@ With this you can annotate any object with a tooltip.
 status open
 
 \begin_layout Plain Layout
-All objects that can be set into a \SpecialCharNoPassThru TeX
+All objects that can be set into a \SpecialChar TeX
 -box to measure its size.
 \end_layout
 
@@ -1474,11 +1474,11 @@ By using its optional option
 \series bold
 local
 \series default
- you can keep the reset local within a group enclosed by \SpecialCharNoPassThru TeX
+ you can keep the reset local within a group enclosed by \SpecialChar TeX
 -braces.
  For example you want to reset the color only for two consecutive comments,
  then enclose the PDF comment setup inset and the two comment insets in
- \SpecialCharNoPassThru TeX
+ \SpecialChar TeX
 -braces.
  Here is an example:
 \end_layout
@@ -2019,7 +2019,7 @@ Style
 
 
 \family default
-if you know enough about the tricky \SpecialCharNoPassThru LaTeX
+if you know enough about the tricky \SpecialChar LaTeX
  internals.
  With the environment
 \begin_inset Newline newline
@@ -2106,7 +2106,7 @@ General Hints
 
 \begin_layout Itemize
 To be able to use all kinds of colors and color definitions you must load
- the \SpecialCharNoPassThru LaTeX
+ the \SpecialChar LaTeX
  package 
 \series bold
 xcolor
@@ -2215,7 +2215,7 @@ Oleg also said: I hate to repeat myself.
 \begin_layout Itemize
 You cannot use non-Latin characters in your comment or in the author name.
  The reason is that PDFs use a special character encoding that is not compatible
- with \SpecialCharNoPassThru LaTeX
+ with \SpecialChar LaTeX
 .
 \end_layout
 

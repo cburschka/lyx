@@ -39,7 +39,7 @@ pdfcomment
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -185,7 +185,7 @@ Les différentes sortes de commentaires
 \end_layout
 
 \begin_layout Standard
-Le paquetage \SpecialCharNoPassThru LaTeX
+Le paquetage \SpecialChar LaTeX
  
 \series bold
 pdfcomment
@@ -267,7 +267,7 @@ status open
 Nota:
 \series default
  toutes les accolades et crochets des options de commentaires PDF doivent
- être saisis en code \SpecialCharNoPassThru TeX
+ être saisis en code \SpecialChar TeX
 !
 \end_layout
 
@@ -903,9 +903,9 @@ l'annotation par balisage ne peut dépasser une page, sinon la reconnaissance
 \end_layout
 
 \begin_layout Itemize
-avec Xe\SpecialCharNoPassThru TeX
-, il faut vérifier que les dimensions de la page sont exportées
- de manière interne, c'est-à-dire avec l'option de classe 
+avec Xe\SpecialChar TeX
+, il faut vérifier que les dimensions de la page sont exportées de
+ manière interne, c'est-à-dire avec l'option de classe 
 \series bold
 pagesize
 \series default
@@ -913,7 +913,7 @@ pagesize
 \series bold
 pagesize
 \series default
- pour le paquetage \SpecialCharNoPassThru LaTeX
+ pour le paquetage \SpecialChar LaTeX
  
 \series bold
 typearea
@@ -937,7 +937,7 @@ Nota:
  pour des limitations techniques, la Réponse PDF ne fonctionne qu'avec pdflatex.
  
 \lang english
-On some \SpecialCharNoPassThru LaTeX
+On some \SpecialChar LaTeX
  installations it won't even work in general.
 \end_layout
 
@@ -1199,9 +1199,9 @@ l'annotation ne peut dépasser une page, sinon la reconnaissance du saut
 \end_layout
 
 \begin_layout Itemize
-avec Xe\SpecialCharNoPassThru TeX
-, il faut vérifier que les dimensions de la page sont exportées
- de manière interne, c'est-à-dire avec l'option de classe 
+avec Xe\SpecialChar TeX
+, il faut vérifier que les dimensions de la page sont exportées de
+ manière interne, c'est-à-dire avec l'option de classe 
 \series bold
 pagesize
 \series default
@@ -1209,7 +1209,7 @@ pagesize
 \series bold
 pagesize
 \series default
- pour le paquetage \SpecialCharNoPassThru LaTeX
+ pour le paquetage \SpecialChar LaTeX
  
 \series bold
 typearea
@@ -1290,9 +1290,8 @@ Avec ce type de commentaire, vous pouvez annoter n’importe quel objet
 status collapsed
 
 \begin_layout Plain Layout
-Tous les objets qui peuvent être mis dans une boîte \SpecialCharNoPassThru TeX
- pour mesurer sa
- taille.
+Tous les objets qui peuvent être mis dans une boîte \SpecialChar TeX
+ pour mesurer sa taille.
 \end_layout
 
 \end_inset
@@ -1456,11 +1455,11 @@ Avec l'option facultative
 \series bold
 local
 \series default
-, vous pouvez restreindre le réglage par groupage dans des accolades \SpecialCharNoPassThru TeX
+, vous pouvez restreindre le réglage par groupage dans des accolades \SpecialChar TeX
 .
  Si par exemple vous désirez une nouvelle couleur uniquement dans deux commentai
 res consécutifs, alors enserrez le réglage de commentaire PDF et les deux
- commentaires concernés entre des accolades \SpecialCharNoPassThru TeX
+ commentaires concernés entre des accolades \SpecialChar TeX
 .
  Voici un exemple:
 \end_layout
@@ -1578,7 +1577,6 @@ markup=Highlight
 \end_layout
 
 \begin_layout Define PDF-Comment Style
-
 \begin_inset Argument 1
 status open
 
@@ -1758,7 +1756,6 @@ author={Pierre Testeur},icon=Check,color=lime
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -1839,7 +1836,6 @@ Pierre dit également: j'ai horreur de me répéter.
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -1970,7 +1966,7 @@ Définir un style de liste pour les commentaires PDF
 
 
 \family default
-si vous êtes à l'aise avec le fonctionnement interne de \SpecialCharNoPassThru LaTeX
+si vous êtes à l'aise avec le fonctionnement interne de \SpecialChar LaTeX
 .
  Avec l’environnement
 \begin_inset Newline newline
@@ -1989,7 +1985,6 @@ vous pouvez régler un style de liste s'il a été changé avant la liste des
 \end_layout
 
 \begin_layout Define PDF-Comment List Style
-
 \begin_inset Argument 1
 status open
 
@@ -2017,7 +2012,6 @@ makeatother
 \end_layout
 
 \begin_layout Set PDF-Comment List Style
-
 AuthorCommentDeadline
 \end_layout
 
@@ -2044,7 +2038,7 @@ Indications générales
 
 \begin_layout Itemize
 Pour pouvoir utiliser toutes sortes de couleurs, vous devez charger le paquetage
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  
 \series bold
 xcolor
@@ -2150,7 +2144,7 @@ Pierre dit également: j'ai horreur de me répéter.
 \begin_layout Itemize
 Vous ne pouvez pas utiliser de caractères non latins dans vos commentaires
  ou dans les noms d'auteur, du fait que le PDF utilise un encodage des caractère
-s particulier incompatible avec \SpecialCharNoPassThru LaTeX
+s particulier incompatible avec \SpecialChar LaTeX
 .
 \end_layout
 

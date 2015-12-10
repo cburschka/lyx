@@ -39,7 +39,7 @@ pdfcomment
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -147,7 +147,7 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-Das \SpecialCharNoPassThru LaTeX
+Das \SpecialChar LaTeX
 -Paket 
 \series bold
 pdfcomment
@@ -237,7 +237,7 @@ status open
 Note:
 \series default
  Alle geschweiften und eckigen Klammern in Kommentar-Optionen müssen als
- \SpecialCharNoPassThru TeX
+ \SpecialChar TeX
 -Code eingefügt werden!
 \end_layout
 
@@ -940,9 +940,9 @@ Die PDF-Markierung darf nicht länger als eine Seite sein, sonst wird der
 \end_layout
 
 \begin_layout Itemize
-Verwendet man Xe\SpecialCharNoPassThru TeX
-, muss man sicherstellen, dass die Seitengröße intern
- ausgegeben wird, z.
+Verwendet man Xe\SpecialChar TeX
+, muss man sicherstellen, dass die Seitengröße intern ausgegeben
+ wird, z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -958,7 +958,7 @@ pagesize
 \series bold
 pagesize
 \series default
- für das \SpecialCharNoPassThru LaTeX
+ für das \SpecialChar LaTeX
 -Paket 
 \series bold
 typearea
@@ -981,7 +981,7 @@ Achtung:
 \series default
  Aufgrund technischer Limitierungen funktioniert PDF-Antwort nur, wenn man
  pdflatex verwendet.
- Bei manchen \SpecialCharNoPassThru LaTeX
+ Bei manchen \SpecialChar LaTeX
 -Installationen funktioniert es überhaupt nicht!
 \end_layout
 
@@ -1236,9 +1236,9 @@ h nicht erkannt.
 \end_layout
 
 \begin_layout Itemize
-Verwendet man Xe\SpecialCharNoPassThru TeX
-, muss man sicherstellen, dass die Seitengröße intern
- ausgegeben wird, z.
+Verwendet man Xe\SpecialChar TeX
+, muss man sicherstellen, dass die Seitengröße intern ausgegeben
+ wird, z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1254,7 +1254,7 @@ pagesize
 \series bold
 pagesize
 \series default
- für das \SpecialCharNoPassThru LaTeX
+ für das \SpecialChar LaTeX
 -Paket 
 \series bold
 typearea
@@ -1335,7 +1335,7 @@ Damit kann jedes Objekt mit einem Tooltip versehen werden.
 status open
 
 \begin_layout Plain Layout
-Jedes Objekt, dass man in eine \SpecialCharNoPassThru TeX
+Jedes Objekt, dass man in eine \SpecialChar TeX
 -Box setzen kann, um seine Größe zu messen.
 \end_layout
 
@@ -1504,7 +1504,7 @@ Verwendet man die optionale Option
 \series bold
 local
 \series default
- , kann man die Änderung lokal begrenzen, indem man es in \SpecialCharNoPassThru TeX
+ , kann man die Änderung lokal begrenzen, indem man es in \SpecialChar TeX
 -Klammern setzt.
  Will man z.
 \begin_inset space \thinspace{}
@@ -1512,7 +1512,7 @@ local
 
 B.
  die Farbe nur für zwei aufeinanderfolgende Kommentare ändern, setzt man
- die PDF-Kommentar-Einstellung und die zwei Kommentare in \SpecialCharNoPassThru TeX
+ die PDF-Kommentar-Einstellung und die zwei Kommentare in \SpecialChar TeX
 -Klammern.
  Hier ist ein Beispiel:
 \end_layout
@@ -1632,7 +1632,6 @@ markup=Highlight
 \end_layout
 
 \begin_layout Define PDF-Comment Style
-
 \begin_inset Argument 1
 status open
 
@@ -1831,7 +1830,6 @@ author={Oleg Testmann},icon=Check,color=lime
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -1914,7 +1912,6 @@ Oleg sagte auch: Ich hasse es, mich zu wiederholen.
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -2051,7 +2048,7 @@ definieren
 
 
 \family default
-definieren, wenn man genug über die komplizierte \SpecialCharNoPassThru LaTeX
+definieren, wenn man genug über die komplizierte \SpecialChar LaTeX
 -Interna kennt.
  Mit der Umgebung
 \begin_inset Newline newline
@@ -2073,7 +2070,6 @@ kann man einen Stil für Liste festlegen.
 \end_layout
 
 \begin_layout Define PDF-Comment List Style
-
 \begin_inset Argument 1
 status open
 
@@ -2101,7 +2097,6 @@ makeatother
 \end_layout
 
 \begin_layout Set PDF-Comment List Style
-
 AuthorCommentDeadline
 \end_layout
 
@@ -2127,13 +2122,13 @@ Allgemeine Hinweise
 \end_layout
 
 \begin_layout Itemize
-Um alle Farben und Farbdefinitionen verwenden zu können, muss das \SpecialCharNoPassThru LaTeX
+Um alle Farben und Farbdefinitionen verwenden zu können, muss das \SpecialChar LaTeX
 -Paket
  
 \series bold
 xcolor
 \series default
- im \SpecialCharNoPassThru LaTeX
+ im \SpecialChar LaTeX
 -Vorspann des Dokuments folgendermaßen geladen sein:
 \begin_inset Newline newline
 \end_inset
@@ -2241,7 +2236,7 @@ Oleg sagte auch: Ich hasse es, mich zu wiederholen.
 Man kann keine nicht-lateinischen Zeichen in Kommentaren und in Autorennamen
  verwenden.
  Der Grund ist, dass PDF eine spezielle Zeichenkodierung verwendet, die
- nicht mit der von \SpecialCharNoPassThru LaTeX
+ nicht mit der von \SpecialChar LaTeX
  kompatibel ist.
 \end_layout
 
