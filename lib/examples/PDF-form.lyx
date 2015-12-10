@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/examples/
 \textclass scrartcl
 \begin_preamble
 % used to check for needed LaTeX packages
@@ -82,7 +82,7 @@ pdfform
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -147,7 +147,6 @@ pdfform
 \begin_body
 
 \begin_layout Begin PDF Form
-
 \begin_inset Argument 1
 status open
 
@@ -1476,45 +1475,37 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
-
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
-
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
-
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
-
 print, borderstyle=I, radiosymbol=6
 \end_layout
 
 \begin_layout Push Button Style
-
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
-
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
-
 print, bordercolor=lime
 \end_layout
 
@@ -2420,7 +2411,6 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
-
 menubordercolor={0.1 0.9 0.5}
 \end_layout
 
@@ -2524,7 +2514,6 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 4}, menubordercolor={1 1 0}
 \end_layout
 
@@ -2590,7 +2579,6 @@ To change the background color use a colored box.
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 0}
 \end_layout
 
@@ -2648,7 +2636,6 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
@@ -3155,7 +3142,6 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
-
 \begin_inset Note Note
 status open
 
@@ -3183,8 +3169,7 @@ All braces, brackets, backslashes and quote characters in form parameters
 \end_layout
 
 \begin_layout Itemize
-It is not possible to create a PDF form using Xe\SpecialChar TeX
-.
+Creating a PDF form requires pdflatex or lualatex.
  Use either the \SpecialChar LyX
  export formats 
 \family sans
