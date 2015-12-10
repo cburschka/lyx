@@ -2202,7 +2202,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// cursor in front of the inset.
 		if (inset->hasSettings() &&
 		    cur.nextInset() != inset && cur.prevInset() == inset)
-			cur.backwardPos();
+			cur.posBackward();
 	}
 
 	// Put anchor at the same position.
