@@ -185,8 +185,7 @@ iddocdir = $(docdir)/id
 dist_iddoc_DATA = \
 	id/Intro.lyx \
 	id/Shortcuts.lyx \
-	id/Tutorial.lyx \
-	id/UserGuide.lyx
+	id/Tutorial.lyx
 
 idclipartdocdir = $(iddocdir)/clipart
 dist_idclipartdoc_DATA = \
