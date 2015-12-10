@@ -208,3 +208,11 @@ export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF)
 # But this one fails fails because of a bug in LyX
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+
+# Fails because of missing .png graphic files
+# They were replaced by .svgz, but, as this file
+# is attic, we do not convert to new lyx format
+# latex creates output (and ignores missing files)
+# while (pdf|lua|xe)latex exits with != 0
+Sublabel: missingpng
+export/doc/attic/eu_UserGuide_pdf..*
