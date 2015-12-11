@@ -140,6 +140,30 @@ def tabular_feature(line):
 	return simple_renaming(line, "tabular-feature", "inset-modify tabular")
 
 
+re_tabular_feature = re.compile(r"inset-modify\s+tabular(\s+from-dialog)?")
+def redo_tabular_feature(line):
+	# we change as follows:
+	# inset-modify tabular -> tabular-feature
+	# but:
+	# inset-modify tabular from-dialog -> inset-modify tabular
+	#
+	# "from-dialog" was never used directly but the user might do, if they
+	# followed the standard instructions to create a custom shortcut by looking
+	# at the message panel. The equivalent functionality is now provided by
+	# inset-modify tabular (without from-dialog).
+	def change(match):
+		if match.group(1):
+			return "inset-modify tabular"
+		else:
+			return "tabular-feature"
+
+	result = re_tabular_feature.subn(change, line)
+	if result[1]:
+		return (True, result[0])
+	else:
+		return no_match
+
+
 re_Bar2bar = re.compile(r'^(\\(?:bind|unbind))\s+"([^"]*)Bar"(\s+"[^"]+")')
 def Bar2bar(line):
 	m = re_Bar2bar.search(line)
@@ -197,7 +221,10 @@ conversions = [
 		view_split,
 		label_copy_as_reference
 	]],
-	[ 3, [ # list of conversions to format 3, LyX 2.2
+	[ 3, [ # list of conversions to format 3
 		remove_print_support
+	]],
+	[ 4, [ # list of conversions to format 4, LyX 2.2
+		redo_tabular_feature
 	]]
 ]
