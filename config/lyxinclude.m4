@@ -298,7 +298,7 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
-      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra -Wno-deprecated-declarations"
+      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
   fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc 4.x is required]);;
@@ -327,7 +327,7 @@ if test x$GXX = xyes; then
         dnl The source code relies on that.
         AM_CXXFLAGS="$AM_CXXFLAGS -std=c++0x";;
       clang)
-        dnl presumably all clang version support c++11.
+        dnl presumably all clang versions support c++11.
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
         AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11 -Wno-deprecated-register";;
       *)
@@ -339,6 +339,9 @@ if test x$GXX = xyes; then
 
   LYX_CXX_CXX11
   if test $lyx_use_cxx11 = yes ; then
+    dnl We still use auto_ptr, which is obsoleted. Shut off the warnings.
+    AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-declarations"
+
     AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
