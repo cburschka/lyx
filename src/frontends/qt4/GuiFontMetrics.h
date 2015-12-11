@@ -21,6 +21,7 @@
 #include <QFont>
 #include <QFontMetrics>
 #include <QHash>
+#include <QTextLayout>
 
 namespace lyx {
 namespace frontend {
@@ -63,6 +64,11 @@ public:
 	int width(QString const & str) const;
 
 private:
+
+	QTextLayout const &
+	getTextLayout(docstring const & s, QFont font,
+	              bool const rtl, double const wordspacing) const;
+
 	/// The font
 	QFont font_;
 
@@ -86,6 +92,14 @@ private:
 
 	/// Cache of char right bearings
 	mutable QHash<char_type, int> rbearing_cache_;
+
+	// A trivial QTextLayout cache
+	mutable QTextLayout tl_cache_;
+	mutable docstring tl_cache_s_;
+	mutable QFont tl_cache_font_;
+	mutable bool tl_cache_rtl_;
+	mutable double tl_cache_wordspacing_;
+
 };
 
 } // namespace frontend

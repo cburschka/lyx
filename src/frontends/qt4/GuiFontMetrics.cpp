@@ -23,8 +23,6 @@
 
 #include "support/lassert.h"
 
-#include <QTextLayout>
-
 using namespace std;
 using namespace lyx::support;
 
@@ -56,7 +54,8 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 // Limit strwidth_cache_ size to 512kB of string data
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
-	  strwidth_cache_(1 << 19)
+	  strwidth_cache_(1 << 19),
+	  tl_cache_rtl_(false), tl_cache_wordspacing_(-1.0)
 {
 }
 
@@ -170,36 +169,27 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 		return width(s);
 }
 
-namespace {
 
-QTextLayout const & getTextLayout(docstring const & s, QFont font,
-                                  bool const rtl, double const wordspacing)
+QTextLayout const &
+GuiFontMetrics::getTextLayout(docstring const & s, QFont font,
+                              bool const rtl, double const wordspacing) const
 {
-	static docstring old_s;
-	static QFont old_font;
-	static bool old_rtl = false;
-	// this invalid value is to make sure that it is reset on first try.
-	static double old_wordspacing = -1.0;
-	// This one is our trivial cache
-	static QTextLayout tl;
-	if (s != old_s || font != old_font || rtl != old_rtl
-	    || wordspacing != old_wordspacing) {
-		tl.setText(toqstr(s));
+	if (s != tl_cache_s_ || font != tl_cache_font_ || rtl != tl_cache_rtl_
+	    || wordspacing != tl_cache_wordspacing_) {
+		tl_cache_.setText(toqstr(s));
 		font.setWordSpacing(wordspacing);
-		tl.setFont(font);
+		tl_cache_.setFont(font);
 		// Note that both setFlags and the enums are undocumented
-		tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-		tl.beginLayout();
-		tl.createLine();
-		tl.endLayout();
-		old_s = s;
-		old_font = font;
-		old_rtl = rtl;
-		old_wordspacing = wordspacing;
+		tl_cache_.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+		tl_cache_.beginLayout();
+		tl_cache_.createLine();
+		tl_cache_.endLayout();
+		tl_cache_s_ = s;
+		tl_cache_font_ = font;
+		tl_cache_rtl_ = rtl;
+		tl_cache_wordspacing_ = wordspacing;
 	}
-	return tl;
-}
-
+	return tl_cache_;
 }
 
 
