@@ -447,8 +447,7 @@ void GuiTabular::setTableAlignment(string & param_str) const
 
 docstring GuiTabular::dialogToParams() const
 {
-	// FIXME: We should use Tabular directly.
-	string param_str = "tabular from-dialog";
+	string param_str = "tabular";
 
 	// table width
 	string tabwidth = widgetsToLength(tabularWidthED, tabularWidthUnitLC);
@@ -1070,8 +1069,8 @@ bool GuiTabular::checkWidgets(bool readonly) const
 
 bool GuiTabular::funcEnabled(Tabular::Feature f) const
 {
-	string cmd = "tabular " + featureAsString(f);
-	return getStatus(FuncRequest(LFUN_INSET_MODIFY, cmd)).enabled();
+	FuncRequest r(LFUN_INSET_MODIFY, "tabular for-dialog" + featureAsString(f));
+	return getStatus(r).enabled();
 }
 
 

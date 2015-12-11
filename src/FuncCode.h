@@ -464,6 +464,7 @@ enum FuncCode
 	LFUN_BUFFER_MOVE_NEXT,          // skostysh 20150408
 	// 340
 	LFUN_BUFFER_MOVE_PREVIOUS,      // skostysh 20150408
+	LFUN_TABULAR_FEATURE,           // gm, 20151210
 	LFUN_LASTACTION                 // end of the table
 };
 

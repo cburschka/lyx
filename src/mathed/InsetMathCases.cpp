@@ -71,14 +71,11 @@ void InsetMathCases::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	//lyxerr << "*** InsetMathCases: request: " << cmd << endl;
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		istringstream is(to_utf8(cmd.argument()));
-		string s;
-		is >> s;
-		if (s != "tabular")
-			break;
-		is >> s;
+	case LFUN_TABULAR_FEATURE: {
+		string s = cmd.getArg(0);
 		// vertical lines and adding/deleting columns is not allowed for \cases
+		// FIXME: "I suspect that the break after cur.undispatched() should be a
+		// return; the recordUndo seems bogus too." (lasgouttes)
 		if (s == "append-column" || s == "delete-column"
 		    || s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();
@@ -97,13 +94,8 @@ bool InsetMathCases::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		istringstream is(to_utf8(cmd.argument()));
-		string s;
-		is >> s;
-		if (s != "tabular")
-			break;
-		is >> s;
+	case LFUN_TABULAR_FEATURE: {
+		string s = cmd.getArg(0);
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.setEnabled(false);
 			flag.message(bformat(

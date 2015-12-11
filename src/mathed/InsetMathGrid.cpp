@@ -181,7 +181,7 @@ void InsetMathGrid::setDefaults()
 bool InsetMathGrid::interpretString(Cursor & cur, docstring const & str)
 {
 	if (str == "\\hline") {
-		FuncRequest fr = FuncRequest(LFUN_INSET_MODIFY, "tabular add-hline-above");
+		FuncRequest fr = FuncRequest(LFUN_TABULAR_FEATURE, "add-hline-above");
 		FuncStatus status;
 		if (getStatus(cur, fr, status)) {
 			if (status.enabled()) {
@@ -1450,16 +1450,11 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_INSET_MODIFY: {
+	case LFUN_TABULAR_FEATURE: {
 		cur.recordUndoInset();
 		//lyxerr << "handling tabular-feature " << to_utf8(cmd.argument()) << endl;
 		istringstream is(to_utf8(cmd.argument()));
 		string s;
-		is >> s;
-		if (s != "tabular") {
-			InsetMathNest::doDispatch(cur, cmd);
-			return;
-		}
 		is >> s;
 		if (s == "valign-top")
 			setVerticalAlignment('t');
@@ -1597,7 +1592,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			}
 
 		bool hline_enabled = false;
-		FuncRequest fr = FuncRequest(LFUN_INSET_MODIFY, "tabular add-hline-above");
+		FuncRequest fr = FuncRequest(LFUN_TABULAR_FEATURE, "add-hline-above");
 		FuncStatus status;
 		if (getStatus(cur, fr, status))
 			hline_enabled = status.enabled();
@@ -1727,14 +1722,8 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		istringstream is(to_utf8(cmd.argument()));
-		string s;
-		is >> s;
-		if (s != "tabular") {
-			// We only now about table actions here.
-			break;
-		}
+	case LFUN_TABULAR_FEATURE: {
+		string s = cmd.getArg(0);
 		if (&cur.inset() != this) {
 			// Table actions requires that the cursor is _inside_ the
 			// table.
@@ -1742,7 +1731,6 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.message(from_utf8(N_("Cursor not in table")));
 			return true;
 		}
-		is >> s;
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			status.setEnabled(false);
 			status.message(from_utf8(N_("Only one row")));
@@ -1797,7 +1785,8 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} else {
 			status.setEnabled(false);
 			status.message(bformat(
-				from_utf8(N_("Unknown tabular feature '%1$s'")), lyx::from_ascii(s)));
+			    from_utf8(N_("Unknown tabular feature '%1$s'")),
+			    from_utf8(s)));
 		}
 
 #if 0

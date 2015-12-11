@@ -110,6 +110,8 @@ TabularFeature tabularFeature[] =
 {
 	// the SET/UNSET actions are used by the table dialog,
 	// the TOGGLE actions by the table toolbar buttons
+	// FIXME: these values have been hardcoded in InsetMathGrid and other
+	// math insets.
 	{ Tabular::APPEND_ROW, "append-row", false },
 	{ Tabular::APPEND_COLUMN, "append-column", false },
 	{ Tabular::DELETE_ROW, "delete-row", false },
@@ -4298,16 +4300,17 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().showDialog("tabular");
 		break;
 
-	case LFUN_INSET_MODIFY: {
-		string arg;
-		if (cmd.getArg(1) == "from-dialog")
-			arg = cmd.getArg(0) + to_utf8(cmd.argument().substr(19));
+	case LFUN_INSET_MODIFY:
+		// we come from the dialog
+		if (cmd.getArg(0) == "tabular")
+			tabularFeatures(cur, cmd.getLongArg(1));
 		else
-			arg = to_utf8(cmd.argument());
-		if (!tabularFeatures(cur, arg))
 			cur.undispatched();
 		break;
-	}
+
+	case LFUN_TABULAR_FEATURE:
+		tabularFeatures(cur, to_utf8(cmd.argument()));
+		break;
 
 	// insert file functions
 	case LFUN_FILE_INSERT_PLAINTEXT_PARA:
@@ -4474,25 +4477,9 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-// function sets an object as defined in func_status.h:
-// states OK, Unknown, Disabled, On, Off.
-bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
-	FuncStatus & status) const
+bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
+                      string const & argument, FuncStatus & status) const
 {
-	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		if (&cur.inset() != this || cmd.getArg(0) != "tabular")
-			break;
-
-		// FIXME: We only check for the very first argument...
-		string const s = cmd.getArg(1);
-		// We always enable the lfun if it is coming from the dialog
-		// because the dialog makes sure all the settings are valid,
-		// even though the first argument might not be valid now.
-		if (s == "from-dialog") {
-			status.setEnabled(true);
-			return true;
-		}
 
 		int action = Tabular::LAST_ACTION;
 		int i = 0;
@@ -4507,8 +4494,6 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setUnknown(true);
 			return true;
 		}
-
-		string const argument = cmd.getLongArg(2);
 
 		row_type sel_row_start = 0;
 		row_type sel_row_end = 0;
@@ -4884,6 +4869,39 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 		}
 		return true;
+}
+
+
+// function sets an object as defined in func_status.h:
+// states OK, Unknown, Disabled, On, Off.
+bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
+                             FuncStatus & status) const
+{
+	switch (cmd.action()) {
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) != "tabular")
+			break;
+		if (cmd.getArg(1) == "for-dialog") {
+			// The dialog is asking the status of a command
+			if (&cur.inset() != this)
+				break;
+			string action = cmd.getArg(2);
+			string arg = cmd.getLongArg(3);
+			return getFeatureStatus(cur, action, arg, status);
+		} else {
+			// We always enable the lfun if it is coming from the dialog
+			// because the dialog makes sure all the settings are valid,
+			// even though the first argument might not be valid now.
+			status.setEnabled(true);
+			return true;
+		}
+
+	case LFUN_TABULAR_FEATURE: {
+		if (&cur.inset() != this)
+			break;
+		string action = cmd.getArg(0);
+		string arg = cmd.getLongArg(1);	
+		return getFeatureStatus(cur, action, arg, status);
 	}
 
 	case LFUN_CAPTION_INSERT: {
@@ -5311,23 +5329,19 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 }
 
 
-bool InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
+void InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 {
 	istringstream is(argument);
 	string s;
-	is >> s;
-	if (insetCode(s) != TABULAR_CODE)
-		return false;
-
 	// Safe guard.
 	size_t safe_guard = 0;
 	for (;;) {
 		if (is.eof())
-			break;
+			return;
 		safe_guard++;
 		if (safe_guard > 1000) {
 			LYXERR0("parameter max count reached!");
-			break;
+			return;
 		}
 		is >> s;
 		Tabular::Feature action = Tabular::LAST_ACTION;
@@ -5349,7 +5363,6 @@ bool InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 		LYXERR(Debug::DEBUG, "Feature: " << s << "\t\tvalue: " << val);
 		tabularFeatures(cur, action, val);
 	}
-	return true;
 }
 
 

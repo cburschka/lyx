@@ -391,8 +391,6 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		// FIXME: Why don't we let the insets determine whether this
 		// should be enabled or not ? Now we need this check for 
 		// the tabular features. (vfr)
-		if (cmd.getArg(0) == "tabular")
-			return false;
 		flag.setEnabled(true);
 		return true;
 

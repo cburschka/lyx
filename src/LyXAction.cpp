@@ -2167,7 +2167,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_TABULAR_INSERT
  * \li Action: Inserts table into the document.
- * \li Notion: See #LFUN_INSET_MODIFY for some more details
+ * \li Notion: See #LFUN_TABULAR_FEATURE for some more details
                about tabular modifications.
  * \li Syntax: tabular-insert [<ROWS> <COLUMNS>]
  * \li Params: In case no arguments are given show insert dialog.
@@ -2462,11 +2462,17 @@ void LyXAction::init()
                         ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Syntax: inset-modify changetype <TYPE>
- * \li Syntax: inset-modify tabular <FEATURE> [<ARG>]
+ * \li Sample: inset-modify note Note Comment \n
+	       inset-modify changetype Ovalbox
+ * \endvar
+ */
+		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_TABULAR_FEATURE
+ * \li Action: Modify properties of tabulars and table-like math environments.
+ * \li Syntax: tabular-feature <FEATURE> [<ARG>]
  * \li Params: Generally see #LFUN_INSET_INSERT for further details.\n
-               In case that <INSET> is "tabular" various math-environment features
-               are handled as well, e.g. add-vline-left/right for the Grid/Array environment.\n
-               <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|\n
+ *             <FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|\n
                        copy-column|move-column-right|move-column-left|move-row-down|move-row-up|\n
                        toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|\n
                        align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|\n
@@ -2481,13 +2487,14 @@ void LyXAction::init()
                        set-special-column|set-special-multicolumn|set-special-multirow|\n
                        toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|\n
                        set-interline-space|set-border-lines|tabular-valign-top|\n
-                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width
+                       tabular-valign-middle|tabular-valign-bottom|set-tabular-width\n
+               Various math-environment features are handled as well, e.g. add-vline-left/right for\n
+               the Grid/Array environment.\n
                <ARG>: additional argument for some commands, use debug mode to explore its values.
- * \li Sample: inset-modify note Note Comment \n
-	       inset-modify changetype Ovalbox
+ * \li Origin: gm, 10 Dec 2015
  * \endvar
  */
-		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
+		{ LFUN_TABULAR_FEATURE, "tabular-feature", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_DIALOG_UPDATE
  * \li Action: Updates the values inside the dialog from the inset.

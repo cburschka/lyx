@@ -63,27 +63,21 @@ bool InsetMathSubstack::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
-	case LFUN_INSET_MODIFY: {
-		istringstream is(to_utf8(cmd.argument()));
-		string s;
-		is >> s;
-		if (s != "tabular")
-			break;
-		is >> s;
-		string const name = "substack";
+	case LFUN_TABULAR_FEATURE: {
+		string s = cmd.getArg(0);
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
-				from_utf8(name)));
+				from_utf8("substack")));
 			flag.setEnabled(false);
 			return true;
 		}
-		// in contrary to \subaray, the columns in \substack
+		// in contrary to \subarray, the columns in \substack
 		// are always centered and this cannot be changed
 		if (s == "align-left" || s == "align-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't change horizontal alignment in '%1$s'")),
-				from_utf8(name)));
+				from_utf8("substack")));
 			flag.setEnabled(false);
 			return true;
 		}
