@@ -120,6 +120,11 @@
   where Python 3 is the default binary. See #7030 to know how to fix this
   properly, since simple shebang conversion in *.py files will not be enough.
 
+* If using LyX with Qt 4, it is possible to suddenly get keyboard keys wrong,
+  and deadlock. To work around the issue, you can disable IBus for LyX by
+  starting LyX as 'XMODIFIERS= lyx'. For further discussion and alternative
+  workarounds, see #9362.
+
 
 !!Caveats when upgrading from earlier versions to 2.2.x
 
