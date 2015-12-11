@@ -10,8 +10,9 @@ set(LYX_PROJECT LyX)
 
 enable_testing()
 
-get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/README ABSOLUTE)
+get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/README REALPATH) # Resolve symlinks
 get_filename_component(TOP_SRC_DIR ${lyx_dir_readme} PATH)
+message(STATUS "TOP_SRC_DIR = ${TOP_SRC_DIR}")
 
 set(LYX_CMAKE_DIR "development/cmake")
 set(TOP_CMAKE_PATH "${TOP_SRC_DIR}/${LYX_CMAKE_DIR}")
