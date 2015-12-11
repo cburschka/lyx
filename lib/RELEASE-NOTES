@@ -14,7 +14,7 @@
 
 * The prefix for subsections in labels and references has been changed from
   "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
-  \subref command, see bug #7550). Files are automatically converted to the new
+  \subref command, see #7550). Files are automatically converted to the new
   scheme. Please assure that you adapt external refstyle or prettyref
   definitions and your own layout files.
 
@@ -117,9 +117,8 @@
 !!Known issues in version 2.2.0
 
 * LyX needs to be run under Python 2 and will not work properly on systems
-  where Python 3 is the default binary. See bug #7030 to know how to fix
-  this properly, since simple shebang conversion in *.py files will not
-  be enough.
+  where Python 3 is the default binary. See #7030 to know how to fix this
+  properly, since simple shebang conversion in *.py files will not be enough.
 
 
 !!Caveats when upgrading from earlier versions to 2.2.x
@@ -137,7 +136,7 @@
 * Documents using Times fonts and containing Greek characters may now fail
   to compile under pdflatex for users of MikTeX due to an automatically
   half-installed "grtimes" package. A workaround in LyX was removed as it
-  stands in the way of alternative approaches (see bug #6469).
+  stands in the way of alternative approaches (see #6469).
 
 * With LuaTeX, LyX now uses polyglossia instead of babel if the language
   package option "Automatic" is selected. In order to use babel, select
