@@ -56,7 +56,8 @@ menu: argument is the name of the LFUN such as "paste". The syntax is the same
 
 icon: argument is the name of the LFUN such as "paste". The syntax is the same
     as what is used in the bind and ui files. The output is the icon use in
-    the toolbar for this LFUN.
+    the toolbar for this LFUN. Alternatively, argument can be the icon path
+    without extension specified with respect to the images directory.
 
 buffer: argument can be one of "name", "path", "class". This inset output the
     filename, path, and textclass of this buffer.

@@ -169,10 +169,18 @@ bool InsetInfo::validateModifyArgument(docstring const & arg) const
 
 	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO:
-	case MENU_INFO:
-	case ICON_INFO: {
+	case MENU_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name);
 		return func.action() != LFUN_UNKNOWN_ACTION;
+	}
+
+	case ICON_INFO: {
+		FuncCode const action = lyxaction.lookupFunc(name).action();
+		if (action == LFUN_UNKNOWN_ACTION) {
+			string dir = "images";
+			return !imageLibFileSearch(dir, name, "svgz,png").empty();
+		}
+		return true;
 	}
 
 	case LYXRC_INFO: {
