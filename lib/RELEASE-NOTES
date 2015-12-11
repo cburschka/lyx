@@ -15,8 +15,8 @@
 * The prefix for subsections in labels and references has been changed from
   "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
   \subref command, see bug #7550). Files are automatically converted to the new
-  scheme. Please assure that you adapt external refstyle or prettyref definitions
-  and your own layout files.
+  scheme. Please assure that you adapt external refstyle or prettyref
+  definitions and your own layout files.
 
 * Support for printing from within LyX (File> Print) has been removed. LyX's
   printing support was very limited, and most users will want to print after
