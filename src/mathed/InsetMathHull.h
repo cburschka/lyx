@@ -236,6 +236,8 @@ private:
 	ColorCode standardColor() const;
 	/// consistency check
 	void check() const;
+	/// does it understand tabular-feature commands?
+	bool isTable() const;
 	/// can this change its number of rows?
 	bool rowChangeOK() const;
 	/// can this change its number of cols?

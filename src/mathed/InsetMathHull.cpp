@@ -1040,6 +1040,28 @@ void InsetMathHull::footer_write(WriteStream & os) const
 }
 
 
+bool InsetMathHull::isTable() const
+{
+	switch (type_) {
+	case hullEqnArray:
+	case hullAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullFlAlign:
+	case hullMultline:
+	case hullGather:
+		return true;
+	case hullNone:
+	case hullSimple:
+	case hullEquation:
+	case hullRegexp:
+		break;
+	}
+	return false;
+}
+
+
 bool InsetMathHull::rowChangeOK() const
 {
 	return
@@ -1702,6 +1724,13 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_TABULAR_FEATURE:
+		if (!isTable())
+			cur.undispatched();
+		else
+			InsetMathGrid::doDispatch(cur, cmd);
+		break;
+
 	default:
 		InsetMathGrid::doDispatch(cur, cmd);
 		break;
@@ -1817,6 +1846,8 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetMathGrid::getStatus(cur, cmd, status);
 
 	case LFUN_TABULAR_FEATURE: {
+		if (!isTable())
+			return false;
 		string s = cmd.getArg(0);
 		if (!rowChangeOK()
 		    && (s == "append-row"
@@ -1834,16 +1865,6 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			|| s == "copy-column")) {
 			status.message(bformat(
 				from_utf8(N_("Can't change number of columns in '%1$s'")),
-				hullName(type_)));
-			status.setEnabled(false);
-			return true;
-		}
-		if ((type_ == hullSimple
-		  || type_ == hullEquation
-		  || type_ == hullNone) &&
-		    (s == "add-hline-above" || s == "add-hline-below")) {
-			status.message(bformat(
-				from_utf8(N_("Can't add horizontal grid lines in '%1$s'")),
 				hullName(type_)));
 			status.setEnabled(false);
 			return true;
