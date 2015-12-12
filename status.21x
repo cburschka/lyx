@@ -78,6 +78,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when activating "Close All" while an export process is running
+  in the background (bug 9711).
+
 - Fix crash when unfolding/copying macros containing other macros (bug 9490).
 
 - Fix automatic insertion of longtable captions (bug 9692).

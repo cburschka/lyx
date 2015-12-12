@@ -2633,7 +2633,7 @@ bool GuiView::closeWorkArea(GuiWorkArea * wa, bool close_buffer)
 
 	Buffer & buf = wa->bufferView().buffer();
 
-	if (close_buffer && GuiViewPrivate::busyBuffers.contains(&buf)) {
+	if (GuiViewPrivate::busyBuffers.contains(&buf)) {
 		Alert::warning(_("Close document"), 
 			_("Document could not be closed because it is being processed by LyX."));
 		return false;
