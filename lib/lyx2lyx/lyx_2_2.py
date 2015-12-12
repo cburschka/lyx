@@ -2010,9 +2010,12 @@ def convert_fontsettings(document):
         i = find_token(document.header, f + " ", 0)
         if i == -1:
             document.warning("Malformed LyX document: No " + f + "!")
-            j = j + 1
-            continue
-        value = document.header[i][len(f):].strip()
+            # we can fix that
+            # note that with i = -1, this will insert at the end
+            # of the header
+            value = fontdefaults[j]
+        else:
+            value = document.header[i][len(f):].strip()
         if fontquotes[j]:
             if use_non_tex_fonts == "true":
                 document.header[i:i+1] = [f + ' "' + fontdefaults[j] + '" "' + value + '"']

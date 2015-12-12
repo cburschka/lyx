@@ -1440,6 +1440,10 @@ def revert_mdnomath(document):
                 document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
 
 
+def convert_mathfonts(document):
+    document.header.insert(-1, "\\font_math auto")
+
+
 def convert_mdnomath(document):
     " Change mathdesign font name " 
 
@@ -4826,7 +4830,7 @@ convert = [
            [437, []],
            [438, []],
            [439, []],
-           [440, []],
+           [440, [convert_mathfonts]],
            [441, [convert_mdnomath]],
            [442, []],
            [443, []],

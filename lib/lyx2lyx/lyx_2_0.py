@@ -2394,13 +2394,12 @@ def revert_script(document):
 
 def convert_use_xetex(document):
     " convert \\use_xetex to \\use_non_tex_fonts "
-    i = 0
     i = find_token(document.header, "\\use_xetex", 0)
     if i == -1:
-        return
-    
-    val = get_value(document.header, "\\use_xetex", 0)
-    document.header[i] = "\\use_non_tex_fonts " + val
+        document.header.insert(-1, "\\use_non_tex_fonts 0")
+    else:
+        val = get_value(document.header, "\\use_xetex", 0)
+        document.header[i] = "\\use_non_tex_fonts " + val
 
 
 def revert_use_xetex(document):
