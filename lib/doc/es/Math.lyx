@@ -28088,7 +28088,11 @@ Ctrl+Entrar
 .
  Esto crea un 
 \series bold
-entorno eqnarray
+entorno
+\series default
+ 
+\series bold
+align
 \series default
 , que se describe en
 \begin_inset space ~
@@ -28097,11 +28101,11 @@ entorno eqnarray
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Entorno-eqnarray"
+reference "subsec:Entorno-align-estándar"
 
 \end_inset
 
- o, si se ha marcado la opción 
+ o, si no se ha marcado la opción 
 \family sans
 Usar
 \begin_inset space ~
@@ -28125,16 +28129,12 @@ ecuaciones
 
 AMS
 \family default
- en la configuración del documento
+ en la configuración del documento, un
 \family sans
-, un 
-\series bold
-entorno
-\family default
-\series default
  
+\family default
 \series bold
-align
+entorno eqnarray
 \series default
 , que se describe en
 \begin_inset space ~
@@ -28143,7 +28143,7 @@ align
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Entorno-align-estándar"
+reference "subsec:Entorno-eqnarray"
 
 \end_inset
 

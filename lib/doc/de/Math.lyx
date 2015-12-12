@@ -27586,27 +27586,27 @@ Strg+Enter
  drückt.
  Dies erzeugt entweder eine 
 \series bold
-eqnarray-Umgebung
-\series default
-, die in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Eqnarray-Umgebung"
-
-\end_inset
-
- beschrieben ist oder, wenn die Option 
-\family sans
-AMS-Mathe-Paket verwenden
-\family default
- in den Dokumenteinstellungen gewählt ist, eine 
-\series bold
 align-Umgebung
 \series default
 , die in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Standard-align-Umgebung"
+
+\end_inset
+
+ beschrieben ist, oder, wenn die Option 
+\family sans
+AMS-Mathe-Paket automatisch verwenden
+\family default
+ in den Dokumenteinstellungen nicht ausgewählt ist, eine 
+\series bold
+eqnarray-Umgebung
+\series default
+, die in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Eqnarray-Umgebung"
 
 \end_inset
 

@@ -27311,7 +27311,52 @@ type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すことで作られます。この操作によって、第
+を押すことで作られます。
+\lang english
+This creates either an 
+\series bold
+align environment
+\series default
+ that is described in 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:標準align環境"
+
+\end_inset
+
+
+\lang english
+ or, when automatically loading the package
+\family sans
+ AMS math
+\family default
+ is disabled in the document settings, an 
+\series bold
+eqnarray environment
+\series default
+ that is described in 
+\lang japanese
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:eqnarray環境"
+
+\end_inset
+
+。
+\lang english
+The align environment is recommended because it provides in any case a typograph
+ically correct output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+outdated, please remove after the translation: この操作によって、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:eqnarray環境"
@@ -27338,6 +27383,11 @@ reference "subsec:標準align環境"
 align環境
 \series default
 が作り出されることになります。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
