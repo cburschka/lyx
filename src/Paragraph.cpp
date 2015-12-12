@@ -3388,12 +3388,12 @@ void Paragraph::forToc(docstring & os, size_t maxlen) const
 		if (isDeleted(i))
 			continue;
 		char_type const c = d->text_[i];
-		if (isPrintable(c))
-			os += c;
-		else if (c == '\t' || c == '\n')
+		if (c == '\t' || c == '\n')
 			os += ' ';
 		else if (c == META_INSET)
 			getInset(i)->forToc(os, maxlen);
+		else if (isPrintable(c))
+			os += c;
 	}
 }
 
