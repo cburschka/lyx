@@ -11,9 +11,9 @@ export/examples/he/splash_pdf5_texF
 # FIXME
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/id/.*(dvi3)_.*
-export/.*/id/.*(pdf5)_texF
-export/doc/id/UserGuide_pdf5_systemF
+export/.*/id_.*(dvi3)_.*
+export/.*/id_.*(pdf5)_texF
+export/doc/attic/id_UserGuide_pdf[45]_systemF
 #
 # FIXME
 # Similar to the Indonesian support, see:
@@ -40,7 +40,7 @@ export/doc/uk/Intro_dvi3_systemF
 # XeTeX/LuaTeX with system fonts.
 export/doc/(de/|es/|fr/)Customization_pdf4_systemF
 export/doc/(es/|fr/)Math_dvi3_systemF
-export/doc/(es|fr|id)/UserGuide_pdf4_systemF
+export/doc/(es|fr)/UserGuide_pdf4_systemF
 export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
