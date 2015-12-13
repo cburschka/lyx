@@ -258,10 +258,11 @@ protected:
 	virtual docstring eocString(col_type col, col_type lastcol) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(Cursor & cur);
-	/// Column aligmment for display of cell \p idx.
+	/// Column alignment for display of cell \p idx.
 	/// Must not be written to file!
 	virtual char displayColAlign(idx_type idx) const;
-
+	/// The value of a fixed col align for a certain hull type 
+	static char colAlign(HullType type, col_type col);
 
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.
