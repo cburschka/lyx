@@ -349,28 +349,38 @@ bool InsetMathHull::idxLast(Cursor & cur) const
 }
 
 
+// FIXME: InsetMathGrid should be changed to let the real column alignment be
+// given by a virtual method like displayColAlign, because the values produced
+// by defaultColAlign can be invalidated by lfuns such as add-column. I suspect
+// that for the moment the values produced by defaultColAlign are not used,
+// notably because alignment is not implemented in the LyXHTML output.
 char InsetMathHull::defaultColAlign(col_type col)
 {
-	if (type_ == hullEqnArray)
-		return "rcl"[col];
-	if (type_ == hullMultline)
-		return 'c';
-	if (type_ == hullGather)
-		return 'c';
-	if (type_ >= hullAlign)
-		return "rl"[col & 1];
-	return 'c';
+	return colAlign(type_, col);
 }
 
 
 char InsetMathHull::displayColAlign(idx_type idx) const
 {
-	if (type_ == hullMultline) {
+	switch (type_) {
+	case hullMultline: {
 		row_type const r = row(idx);
 		if (r == 0)
 			return 'l';
 		if (r == nrows() - 1)
 			return 'r';
+		return 'c';
+	}
+	case hullEqnArray:
+	case hullGather:
+	case hullAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullFlAlign:
+		return colAlign(type_, col(idx));
+	default:
+		break;
 	}
 	return InsetMathGrid::displayColAlign(idx);
 }

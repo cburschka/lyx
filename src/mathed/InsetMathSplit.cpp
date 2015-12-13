@@ -48,17 +48,42 @@ Inset * InsetMathSplit::clone() const
 }
 
 
+// FIXME: InsetMathGrid should be changed to let the real column alignment be
+// given by a virtual method like displayColAlign, because the values produced
+// by defaultColAlign can be invalidated by lfuns such as add-column. I suspect
+// that for the moment the values produced by defaultColAlign are not used,
+// notably because alignment is not implemented in the LyXHTML output.
 char InsetMathSplit::defaultColAlign(col_type col)
 {
-	if (name_ == "split")
-		return 'l';
 	if (name_ == "gathered")
 		return 'c';
-	if (name_ == "aligned" || name_ == "align")
-		return (col & 1) ? 'l' : 'r';
-	if (name_ == "alignedat")
-		return (col & 1) ? 'l' : 'r';
+	if (name_ == "lgathered")
+		return 'l';
+	if (name_ == "rgathered")
+		return 'r';
+	if (name_ == "split"
+	    || name_ == "aligned"
+	    || name_ == "align"
+	    || name_ == "alignedat")
+		return colAlign(hullAlign, col);
 	return 'l';
+}
+
+
+char InsetMathSplit::displayColAlign(idx_type idx) const
+{
+	if (name_ == "gathered")
+		return 'c';
+	if (name_ == "lgathered")
+		return 'l';
+	if (name_ == "rgathered")
+		return 'r';
+	if (name_ == "split"
+	    || name_ == "aligned"
+	    || name_ == "align"
+	    || name_ == "alignedat")
+		return colAlign(hullAlign, col(idx));
+	return InsetMathGrid::displayColAlign(idx);
 }
 
 
@@ -79,6 +104,10 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),
 				name_));
+			flag.setEnabled(false);
+			return true;
+		}
+		if (s == "align-left" || s == "align-center" || s == "align-right") {
 			flag.setEnabled(false);
 			return true;
 		}

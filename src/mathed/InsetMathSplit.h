@@ -43,6 +43,8 @@ public:
 	///
 	char defaultColAlign(col_type);
 	///
+	char displayColAlign(idx_type idx) const;
+	///
 	InsetCode lyxCode() const { return MATH_SPLIT_CODE; }
 
 private:
