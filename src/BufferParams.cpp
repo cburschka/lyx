@@ -1016,10 +1016,15 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the document directory
-	string filepath = buf->filePath();
-	string const sysdir = package().system_support().absFileName();
-	if (prefixIs(filepath, sysdir))
+	// use realPath() instead of absFileName() for comparing
+	// so we can catch also eventually used symbolic parts of the path.
+	string filepath = buf->fileName().onlyPath().realPath();
+	string const sysdir = package().system_support().realPath();
+	if (prefixIs(filepath, sysdir)) {
 		filepath.replace(0, sysdir.length(), "/systemlyxdir/");
+		// Remove eventually added superfluous "/"
+		filepath = subst(filepath, "//", "/");
+	}
 	else if (!lyxrc.save_origin)
 		filepath = "unavailable";
 	os << "\\origin " << quoteIfNeeded(filepath) << '\n';
