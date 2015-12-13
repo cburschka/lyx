@@ -1838,4 +1838,29 @@ bool InsetMathGrid::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+// static
+char InsetMathGrid::colAlign(HullType type, col_type col)
+{
+	switch (type) {
+	case hullEqnArray:
+		return "rcl"[col % 3];
+
+	case hullMultline:
+	case hullGather:
+		return 'c';
+
+	case hullAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullFlAlign:
+		return "rl"[col & 1];
+
+	default:
+		return 'c';
+	}
+}
+
+
+
 } // namespace lyx

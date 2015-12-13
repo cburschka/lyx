@@ -349,28 +349,34 @@ bool InsetMathHull::idxLast(Cursor & cur) const
 }
 
 
+//FIXME: This has probably no effect and can be removed.
 char InsetMathHull::defaultColAlign(col_type col)
 {
-	if (type_ == hullEqnArray)
-		return "rcl"[col];
-	if (type_ == hullMultline)
-		return 'c';
-	if (type_ == hullGather)
-		return 'c';
-	if (type_ >= hullAlign)
-		return "rl"[col & 1];
-	return 'c';
+	return colAlign(type_, col);
 }
 
 
 char InsetMathHull::displayColAlign(idx_type idx) const
 {
-	if (type_ == hullMultline) {
+	switch (type_) {
+	case hullMultline: {
 		row_type const r = row(idx);
 		if (r == 0)
 			return 'l';
 		if (r == nrows() - 1)
 			return 'r';
+		return 'c';
+	}
+	case hullEqnArray:
+	case hullGather:
+	case hullAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullFlAlign:
+		return colAlign(type_, col(idx));
+	default:
+		break;
 	}
 	return InsetMathGrid::displayColAlign(idx);
 }
@@ -1238,6 +1244,27 @@ void InsetMathHull::setType(HullType type)
 {
 	type_ = type;
 	setDefaults();
+}
+
+
+bool InsetMathHull::isMutable(HullType type)
+{
+	switch (type) {
+	case hullNone:
+	case hullSimple:
+	case hullEquation:
+	case hullEqnArray:
+	case hullAlign:
+	case hullFlAlign:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullMultline:
+	case hullGather:
+		return true;
+	default:
+		return false;
+	}
 }
 
 
