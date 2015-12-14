@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-11-29 20:18+0100\n"
-"PO-Revision-Date: 2015-11-29 19:24+0000\n"
+"POT-Creation-Date: 2015-12-14 00:59+0100\n"
+"PO-Revision-Date: 2015-12-14 00:24+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -12439,6 +12439,10 @@ msgstr "RevíznaPripomienka"
 msgid "Chunk ##"
 msgstr "Odrezok ##"
 
+#: lib/layouts/litinsets.inc:15
+msgid "Literate programming"
+msgstr "Dokumentačné programovanie"
+
 #: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
 msgid "Chunk"
 msgstr "Odrezok"
@@ -12816,6 +12820,12 @@ msgstr "Petit"
 #: lib/layouts/svcommon.inc:619
 msgid "Svgraybox"
 msgstr "Sv šedý rámec"
+
+#: lib/layouts/theorems-ams-bytype.inc:53 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-without-preamble.inc:31 lib/layouts/theorems.inc:25
+msgid "Definitions & Theorems"
+msgstr "Definície & Teorémy"
 
 #: lib/layouts/theorems-ams-bytype.inc:170 lib/layouts/theorems-bytype.inc:146
 #: lib/layouts/theorems-without-preamble.inc:166
@@ -14022,7 +14032,7 @@ msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
-msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\"."
+msgstr "Dovoľuje použiť Noweb ako nástroj pre dokumentačné programovanie."
 
 #: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
@@ -14691,9 +14701,9 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Umožňuje použiť štatistický jazyk S/R ako nástroj pre \"literate programming"
-"\" cez funkciu z balíka Sweave(). Pre viac informácie pozri príkladný súbor "
-"sweave.lyx."
+"Umožňuje použiť štatistický jazyk S/R ako nástroj pre dokumentačné "
+"programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozri "
+"príkladný súbor sweave.lyx."
 
 #: lib/layouts/sweave.module:74 lib/layouts/sweave.module:75
 msgid "Sweave Input File"
@@ -23621,9 +23631,9 @@ msgstr "Žiadne informácie pre export formátu: %1$s"
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
 
-#: src/Buffer.cpp:2461
+#: src/Buffer.cpp:2585
 msgid "Error generating literate programming code."
-msgstr "Chyba pri generovaní \"Literate Programming\" kódu."
+msgstr "Chyba pri generovaní kódu dokumentačného programovania."
 
 #: src/Buffer.cpp:2540
 #, c-format
@@ -28056,9 +28066,9 @@ msgstr "LaTeX Protokol"
 msgid "LyX2LyX"
 msgstr "LyX2LyX"
 
-#: src/frontends/qt4/GuiLog.cpp:270
+#: src/frontends/qt4/GuiLog.cpp:288
 msgid "Literate Programming Build Log"
-msgstr "Protokol zostavovania pre \"Literate Programming\""
+msgstr "Protokol Vytvárania Dokumentačného Programovania"
 
 #: src/frontends/qt4/GuiLog.cpp:272
 msgid "lyx2lyx Error Log"
@@ -28072,11 +28082,10 @@ msgstr "Protokol Kontroly Verzií"
 msgid "Log file not found."
 msgstr "Protokolový súbor nenájdený."
 
-#: src/frontends/qt4/GuiLog.cpp:303
+#: src/frontends/qt4/GuiLog.cpp:321
 msgid "No literate programming build log file found."
 msgstr ""
-"Žiadny protokolový súbor zostavovania pre \"Literate Programming\" sa "
-"nenašiel."
+"Nenašiel sa žiadny protokolový súbor vytvárania dokumentačného programovania."
 
 #: src/frontends/qt4/GuiLog.cpp:306
 msgid "No lyx2lyx error log file found."
@@ -29340,9 +29349,9 @@ msgstr "LaTeX Zdroj"
 msgid "DocBook Source"
 msgstr "DocBook Zdroj"
 
-#: src/frontends/qt4/GuiViewSource.cpp:296
+#: src/frontends/qt4/GuiViewSource.cpp:447
 msgid "Literate Source"
-msgstr "Literate Zdroj"
+msgstr "Zdroj Dokumentácie"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1377
 msgid " (version control, locking)"
