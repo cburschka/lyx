@@ -1850,17 +1850,32 @@ char InsetMathGrid::colAlign(HullType type, col_type col)
 	case hullFlAlign:
 		return "rl"[col & 1];
 
-	default:
+	case hullUnknown:
+	case hullNone:
+	case hullSimple:
+	case hullEquation:
+	case hullRegexp:
 		return 'c';
 	}
+	// avoid warning
+	return 'c';
 }
 
 
 //static
 int InsetMathGrid::colSpace(HullType type, col_type col)
 {
-	int alignInterSpace;
+	int alignInterSpace = 0;
 	switch (type) {
+	case hullUnknown:
+	case hullNone:
+	case hullSimple:
+	case hullEquation:
+	case hullMultline:
+	case hullGather:
+	case hullRegexp:
+		return 0;
+
 	case hullEqnArray:
 		return 5;
 
@@ -1877,8 +1892,6 @@ int InsetMathGrid::colSpace(HullType type, col_type col)
 	case hullFlAlign:
 		alignInterSpace = 60;
 		break;
-	default:
-		return 0;
 	}
 	return (col % 2) ? alignInterSpace : 0;
 }
