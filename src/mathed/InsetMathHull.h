@@ -105,6 +105,8 @@ public:
 
 	/// get type
 	HullType getType() const;
+	/// is mutation implemented for this type?
+	static bool isMutable(HullType type);
 	/// change type
 	void mutate(HullType newtype);
 
