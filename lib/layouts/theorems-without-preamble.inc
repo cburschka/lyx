@@ -294,7 +294,7 @@ Style Sol
 	  Mandatory	1
 	  LabelString	"Label of Problem"
 	  Tooltip	"Label of the corresponding problem"
-	  InToc
+	  IsTocCaption true
 	EndArgument
 End
 
