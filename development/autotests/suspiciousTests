@@ -207,7 +207,12 @@ export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF)
 
 # But this one fails fails because of a bug in LyX
 # Probably language mess
-export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+#export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+
+# lualatex has problems
+# ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
+export/doc/id/.*_dvi3_.*F
+export/doc/id/.*_pdf5_texF
 
 # Fails because of missing .png graphic files
 # They were replaced by .svgz, but, as this file
