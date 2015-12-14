@@ -2124,6 +2124,7 @@ dist_layouts_DATA =\
 	layouts/stdlyxlist.inc \
 	layouts/stdrefprefix.inc \
 	layouts/stdsections.inc \
+	layouts/stdspecialchars.inc \
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
