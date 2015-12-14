@@ -123,7 +123,7 @@ if ($fontT eq "systemF") {
     $font{typewriter} = "FreeMono";
   }
 }
-else {
+elsif (0) { # set to '1' to enable setting of inputencoding
   # use tex font here
   my %encoding = ();
   if (defined($languageFile)) {
