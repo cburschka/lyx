@@ -25,3 +25,7 @@ Sublabel: 1wrong 2output
 export/examples/(|fr/)seminar_pdf[25].*
 export/examples/(|fr/)seminar_dvi.*
 #
+Sublabel: todo erratic 1wrong 2output
+# GM: Babel uses utf8 strings whenever Xe- or LuaTeX is detected:
+# set inputenc to utf8? In the document or in lib/languages?
+export/doc/es/.*_(pdf[45]|dvi3)_texF
