@@ -25,7 +25,12 @@ Sublabel: 1wrong 2output
 export/examples/(|fr/)seminar_pdf[25].*
 export/examples/(|fr/)seminar_dvi.*
 #
-Sublabel: todo erratic 1wrong 2output
-# GM: Babel uses utf8 strings whenever Xe- or LuaTeX is detected:
+Sublabel: todo 1wrong 2output
+#
+# Babel-Spanish uses Babel's "strings" feature to define
+# separate auto-strings using UTF-8 literals.
+# Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
+# This is wrong for Xe/Lua with 8-bit TeX-fonts.
 # set inputenc to utf8? In the document or in lib/languages?
+export/examples/es/linguistics_pdf4_texF
 export/doc/es/.*_(pdf[45]|dvi3)_texF

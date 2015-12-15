@@ -1,8 +1,5 @@
 # Comments by Günter Milde (GM)
 #
-# Some references and keys contain non-ascii chars
-export/doc/es/UserGuide_(dvi3|pdf[45])_texF
-#
 # Hebrew docs do not currently work with LuaTeX
 export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
 export/.*/he/(splash).*(dvi3)_.*
@@ -20,11 +17,6 @@ export/doc/attic/id_UserGuide_pdf[45]_systemF
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 export/.*/hu/.*(dvi3)_.*
 export/.*/hu/.*(pdf5)_texF
-#
-export/.*/es/europeCV_pdf_texF
-#
-# somehow lualatex is not able to compile with non-tex fonts
-export/.*/es/(Math|UserGuide|ejemplo_con_lyx)_dvi3_systemF
 
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
@@ -38,12 +30,16 @@ export/doc/uk/Intro_dvi3_systemF
 # it is unlikely that a user would want to use system fonts to view LyX's
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
-export/doc/(de/|es/|fr/)Customization_pdf4_systemF
-export/doc/(es/|fr/)Math_dvi3_systemF
 export/doc/(es|fr)/UserGuide_pdf4_systemF
+export/doc/es/UserGuide_dvi3_systemF
 export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
+# GM: Seems to be a case of the polyglossia + language-nesting problem
+export/doc/(de/|es/|fr/)Customization_pdf4_systemF
+export/doc/es/Customization_pdf5_systemF
+#
+export/examples/es/ejemplo_con_lyx_dvi3_systemF
 export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
 export/examples/fr/ListesPuces_pdf4_systemF
 export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
@@ -115,10 +111,6 @@ export/examples/H-P-statements_pdf[45]_systemF
 export/doc(|/de|/es|/fr)/Math.*systemF
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 #
-# GM: Example of "high bit" chars in listings. Fails with XeTeX due ot 
-# limiation to ASCII (no LICR in listings possible). Gives correct warning.
-export/doc/EmbeddedObjects_pdf4_systemF
-#
 # GM: Non-ASCII char in verbatim environment.
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/UserGuide_pdf4_texF
@@ -129,31 +121,17 @@ export/doc/UserGuide_pdf4_texF
 export/doc/de/(Additional|UserGuide)_pdf4_texF
 export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
 #
-# GM: Seems to be a case of the polyglossia + language-nesting problem
-export/doc/es/Customization_pdf[45]_systemF
-export/doc/es/Additional_pdf4_texF
-#
 # GM: Files in the attic with changed settings 
 # (i.e. could be ERT, package incompatiblity, ...)
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
-#
-# GM: Don't know what is to be expected with indices and Xe/Lua
-export/doc/es/EmbeddedObjects_(dvi3|pdf[45])_texF
 #
 # GM: Babel's Russian language definition file has the same
 # problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
 # testing the engine, it switches to "unicode modus".
 export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
 #
-# GM: Babel-Spanish uses Babel's "strings" feature to define
-# separate auto-strings using UTF-8 literals.
-# 
-# Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
-# This is wrong for Xe/Lua with 8-bit TeX-fonts.
-# (It can be overridden adding the "strings=generic" option to Babel.)
-# for now inverted
-export/examples/es/linguistics_pdf4_texF
+
 export/examples/linguistics_(dvi3|pdf[45])_systemF
 #
 # GM: Missing character: There is no 砋 (U+780B) in font
@@ -221,3 +199,10 @@ export/doc/id/.*_pdf5_texF
 # while (pdf|lua|xe)latex exits with != 0
 Sublabel: missingpng
 export/doc/attic/eu_UserGuide_pdf..*
+
+Sublabel: assert-fail
+# Exports that should fail.
+#
+# Example of "high bit" chars in listings. Fails with XeTeX due to 
+# limiation to ASCII (no LICR in listings possible). Gives correct warning.
+export/doc/EmbeddedObjects_pdf4_systemF
