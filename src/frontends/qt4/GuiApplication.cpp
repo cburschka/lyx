@@ -2160,7 +2160,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			// must not be inserted (#5704)
 			if (!isPrintable(encoded_last_key)) {
 				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
-				current_view_->restartCursor();
+				if (current_view_)
+					current_view_->restartCursor();
 				return;
 			}
 			// If a non-Shift Modifier is used we have a non-bound key sequence
@@ -2173,9 +2174,12 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 #if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 			    && !(state & AltModifier && state & ControlModifier)
 #endif
-			    ) {
-				current_view_->message(_("Unknown function."));
-				current_view_->restartCursor();
+			    )
+			{
+				if (current_view_) {
+					current_view_->message(_("Unknown function."));
+					current_view_->restartCursor();
+				}
 				return;
 			}
 			// Since all checks above were passed, we now really have text that
