@@ -2164,6 +2164,11 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 					current_view_->restartCursor();
 				return;
 			}
+			// The following modifier check is not needed on Mac.
+			// The keysym is either not text or it is different
+			// from the non-modifier keysym. See #9875 for the
+			// broken alt-modifier effect of having this code active.
+#if !defined(Q_OS_MAC)
 			// If a non-Shift Modifier is used we have a non-bound key sequence
 			// (such as Alt+j = j). This should be omitted (#5575).
 			// On Windows, AltModifier and ControlModifier are both
@@ -2182,6 +2187,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 				}
 				return;
 			}
+#endif
 			// Since all checks above were passed, we now really have text that
 			// is to be inserted (e.g., AltGr-bound symbols). Thus change the
 			// func to LFUN_SELF_INSERT and thus cause the text to be inserted
