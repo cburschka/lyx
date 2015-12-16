@@ -20,6 +20,13 @@ export/.*/hu/.*(pdf5)_texF
 
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
+
+#
+# 1.) Unknown Japaneese char in sectionin if previous
+#     paragraph ended in non-Japaneese language
+#     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
+# 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
+export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
 #
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
@@ -32,7 +39,7 @@ export/doc/uk/Intro_dvi3_systemF
 # XeTeX/LuaTeX with system fonts.
 export/doc/(es|fr)/UserGuide_pdf4_systemF
 export/doc/es/UserGuide_dvi3_systemF
-export/doc/es/Tutorial_pdf4_systemF
+#export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
 # GM: Seems to be a case of the polyglossia + language-nesting problem
@@ -185,12 +192,12 @@ export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF)
 
 # But this one fails fails because of a bug in LyX
 # Probably language mess
-#export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
 # lualatex has problems
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
-export/doc/id/.*_dvi3_.*F
-export/doc/id/.*_pdf5_texF
+export/(doc|examples)/id/.*_dvi3_.*F
+export/(doc|examples)/id/.*_pdf5_texF
 
 # Fails because of missing .png graphic files
 # They were replaced by .svgz, but, as this file
