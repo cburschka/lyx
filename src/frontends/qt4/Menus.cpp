@@ -354,7 +354,7 @@ public:
 	void expandFloatListInsert(Buffer const * buf);
 	void expandFloatInsert(Buffer const * buf);
 	void expandFlexInsert(Buffer const * buf, InsetLayout::InsetLyXType type);
-	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth);
+	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth, string toc_type);
 	void expandToc(Buffer const * buf);
 	void expandPasteRecent(Buffer const * buf);
 	void expandToolbars();
@@ -1217,10 +1217,18 @@ void MenuDefinition::expandFlexInsert(
 }
 
 
+// Threshold before we stop displaying sub-items alongside items
+// (for display purposes). Ideally this should fit on a screen.
 size_t const max_number_of_items = 30;
+// Size limit for the menu. This is for performance purposes,
+// because qt already displays a scrollable menu when necessary.
+// Ideally this should be the menu size from which scrollable
+// menus become unpractical.
+size_t const menu_size_limit = 80;
 
 void MenuDefinition::expandToc2(Toc const & toc_list,
-		size_t from, size_t to, int depth)
+                                size_t from, size_t to, int depth,
+                                string toc_type)
 {
 	int shortcut_count = 0;
 
@@ -1250,6 +1258,7 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 		}
 	} else {
 		size_t pos = from;
+		size_t size = 1;
 		while (pos < to) {
 			size_t new_pos = pos + 1;
 			while (new_pos < to && toc_list[new_pos].depth() > depth)
@@ -1264,16 +1273,22 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 						label += QString::number(++shortcut_count);
 				}
 			}
+			if (size >= menu_size_limit) {
+				FuncRequest f(LFUN_DIALOG_SHOW, "toc " + toc_type);
+				add(MenuItem(MenuItem::Command, "...", f));
+				break;
+			}
 			if (new_pos == pos + 1) {
 				add(MenuItem(MenuItem::Command,
 						    label, FuncRequest(toc_list[pos].action())));
 			} else {
 				MenuDefinition sub;
-				sub.expandToc2(toc_list, pos, new_pos, depth + 1);
+				sub.expandToc2(toc_list, pos, new_pos, depth + 1, toc_type);
 				MenuItem item(MenuItem::Submenu, label);
 				item.setSubmenu(sub);
 				add(item);
 			}
+			++size;
 			pos = new_pos;
 		}
 	}
@@ -1314,7 +1329,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		submenu.add(MenuItem(MenuItem::Command, qt_("Open Outliner..."), f));
 		submenu.add(MenuItem(MenuItem::Separator));
 		// add entries
-		submenu.expandToc2(* cit->second, 0, cit->second->size(), 0);
+		submenu.expandToc2(*cit->second, 0, cit->second->size(), 0, cit->first);
 		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
@@ -1335,7 +1350,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
 		if (!cit->second->empty())
-			expandToc2(* cit->second, 0, cit->second->size(), 0);
+			expandToc2(*cit->second, 0, cit->second->size(), 0,
+			           "tableofcontents");
 		else
 			add(MenuItem(MenuItem::Info, qt_("(Empty Table of Contents)")));
 	}
