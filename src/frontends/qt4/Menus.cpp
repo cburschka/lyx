@@ -417,8 +417,9 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 				  cit != i.submenu().end(); ++cit) {
 				// Only these kind of items affect the status of the submenu
 				if ((cit->kind() == MenuItem::Command
-					|| cit->kind() == MenuItem::Submenu
-					|| cit->kind() == MenuItem::Help)) {
+				     || cit->kind() == MenuItem::Submenu
+				     || cit->kind() == MenuItem::Help)
+				    && (!i.optional() || cit->status().enabled())) {
 					enabled = true;
 					break;
 				}
