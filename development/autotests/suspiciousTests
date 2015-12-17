@@ -1,34 +1,69 @@
-# regular expression patterns for tests that are known to fail
+# Comments by Günter Milde (GM)
 #
-# The selected tests are 'inverted', i.e. only reported if the export
-# fails to fail.
-# They get the label "inverted" or (if matching a pattern in suspendedTests)
-# "suspended".
+# Hebrew docs do not currently work with LuaTeX
+export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
+export/.*/he/(splash).*(dvi3)_.*
+export/examples/he/splash_pdf5_texF
+#
+# FIXME
+# After LyX 2.1 is released, apply the patch and remove these
+# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
+export/.*/id_.*(dvi3)_.*
+export/.*/id_.*(pdf5)_texF
+export/doc/attic/id_UserGuide_pdf[45]_systemF
+#
+# FIXME
+# Similar to the Indonesian support, see:
+# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
+export/.*/hu/.*(dvi3)_.*
+export/.*/hu/.*(pdf5)_texF
 
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
-export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 
-# TODO these .lyx files could be fixed. Although
+#
+# 1.) Unknown Japaneese char in sectionin if previous
+#     paragraph ended in non-Japaneese language
+#     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
+# 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
+export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
+#
+# There is no non-TeX support for Ukrainian with LuaTeX. See:
+# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
+export/doc/uk/Intro_dvi3_systemF
+#
+# The following documents likely fail because of excessive preamble code that
+# is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
 # it is unlikely that a user would want to use system fonts to view LyX's
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
+export/doc/(es|fr)/UserGuide_pdf4_systemF
+export/doc/es/UserGuide_dvi3_systemF
+#export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
+export/doc/(nb|sk)/Intro_pdf4_systemF
+# GM: Seems to be a case of the polyglossia + language-nesting problem
+export/doc/(de/|es/|fr/)Customization_pdf4_systemF
+export/doc/es/Customization_pdf5_systemF
+#
 export/examples/es/ejemplo_con_lyx_dvi3_systemF
 export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
 export/examples/fr/ListesPuces_pdf4_systemF
 export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
-
 # Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
 # pdf4_systemF but not others. TODO Investigate if others can be fixed?
 export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
-
+#
+# There is no Chinese LuaTeX or XeTeX TeX font support yet.
+export/.*/zh_CN/.*(pdf[45]|dvi3)_texF
+#
 # These started failing after we implemented tests for formats
 # that are in the complement set to the default format (7ecbb068).
 # TODO it might be worth it to take a look at each individually and
 # see whether they are supposed to fail or if there is something LyX
 # can do to add support for exporting them.
+export/doc/hu/Tutorial_dvi3_.*F
 export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
 export/examples/(docbook_article)_(pdf[245]|dvi3).*
 export/examples/instant_preview_(dvi3|pdf4)_systemF
@@ -36,32 +71,73 @@ export/examples/instant_preview_pdf[25].*
 export/examples/listerrors_(pdf[245]).*
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 export/examples/fr/exemple-powerdot_pdf[25].*
+export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 export/examples/ko/splash_(dvi||pdf[23]?)
 export/templates/DocBook_article_(dvi3_|pdf2|pdf[45]_).*
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
+export/templates/attic/latex8_(dvi|dvi3_.*)
 export/templates/ctex_(pdf[23]?|pdf4_texF)
-
-The following exports worked with TeX Live 2013, but not in 2014.
-For a workaround, see:
-https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html
+#
+# The following exports worked with TeX Live 2013, but not in 2014.
+# For a workaround, see:
+# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html
 export/examples/aa_sample_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
-
-# Why does this fail?
-export/examples/aas_sample_(dvi3|pdf5).*
-
+#
+# These exports correctly fail now on TeX Live 2014. Although they compiled
+# without error on TeX Live 2013, the resulting PDFs had gibberish.
+export/doc/he/(Intro|Tutorial)_pdf4_texF
+export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
+#
+# GM: False positive: if the font is e.g. set to 
+# LinuxLibertine and LinuxBiolinum, there are no missing characters but
+# polyglossia anyway throws the error:
+# 
+#  ! Package polyglossia Error: The current roman font does not contain the
+#  Hebrew script!
+export/examples/he/splash_pdf5_systemF
+#
+# Inside these two files, we state that they should only be expected
+# to work with pdflatex and possibly lualatex.
+export/examples/PDF-(form)_(dvi.*|pdf[^25]*)
+# PDF comments in DVI? No wonder we have:
+# ! Package zref Error: \pdfsavepos is not supported in DVI mode
+export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
+#
 export/templates/IUCr-article_pdf4_systemF
-
+#
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
+# 1580:export/examples/H-P-statements_pdf5_systemF
 export/examples/H-P-statements_pdf[45]_systemF
-
-# TODO: determine the correct reason for failure (most probably
-# incompatible packages)
+#
+# The math document now depends on the mhchem package which produces wrong
+# output with XeTeX/LuaTeX and both TeX fonts and non-TeX fonts:
+# https://www.mail-archive.com/search?l=mid&q=n0sne9%24iis%241%40ger.gmane.org
+export/doc(|/de|/es|/fr)/Math.*systemF
+export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
+#
+# GM: Non-ASCII char in verbatim environment.
+# Fails with ASCII (and hence also with XeTeX).
+export/doc/UserGuide_pdf4_texF
+#
+# TODO: We need to determine the correct reason for failure (most probably
+# incompatible packages, maybe also loading of lmodern.sty in the user
+# preamble) or state that we don't know it.
 export/doc/de/(Additional|UserGuide)_pdf4_texF
-export/doc/de/Customization_pdf5_systemF
-
+export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
+#
+# GM: Files in the attic with changed settings 
+# (i.e. could be ERT, package incompatiblity, ...)
+export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
+export/doc/attic/sk_UserGuide_pdf4_texF
+#
+# GM: Babel's Russian language definition file has the same
+# problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
+# testing the engine, it switches to "unicode modus".
+export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
+#
 
 export/examples/linguistics_(dvi3|pdf[45])_systemF
 #
@@ -72,142 +148,68 @@ export/examples/linguistics_(dvi3|pdf[45])_systemF
 # Explore later.
 export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
 #
-# missing commands and missing characters
-export/doc/es/UserGuide_pdf5_systemF
-
+# GM: * lmodern.sty
+#     * missing commands and missing characters
+export/doc/es/(EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+#
+# GM: Non-ASCII in ERT
+export/doc/fr/Additional_pdf4_texF
+#
+# GM: Non-ASCII in verbatim and index entries
+export/doc/fr/UserGuide_pdf4_texF
+#
+# GM: lmodern.sty? + maybe more
+export/doc/fr/(Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+#
+# GM: language nesting error (polyglossia) (known bug)
+export/doc/nb/Intro_pdf5_systemF
+#
+# GM: Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
+# This fails unless the inputencoding is set to utf-8, too.
+export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
+export/doc/(ru|uk)/splash_(dvi3|pdf[45])_texF
+#
+# GM: chemgreek incompatible with LuaTeX (cf. Math.lyx)
+# for now inverted
+Sublabel: 3chemgreek
+export/doc/sk/Intro_pdf5_systemF
+export/examples/(|de/|fr/)PDF-comment_pdf5_texF
+export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
+export/examples/achemso_(dvi3|pdf5)_texF
+Sublabel: RESET
+#
+# GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
+export/examples/ko/splash_(dvi3|pdf[45])_texF
+#
 # Following mathmacros tests fail
 export/mathmacros/testcases_master_child_.*
 export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 
-
-#Sublabel: todo
-#
-# LyX bugs and problems with the sample documents that require attention.
-
-# Fails because of a bug in LyX, probably language mess
-# Unknown Japanese char in section if previous
-# paragraph ended in non-Japanese language
-export/export/ja/wrong_auto_encoding_(dvi|pdf3?)
-# Non-ASCII char in in listings "Tschüß" fails with pLaTeX (Japanese)
-# TODO: Change example, as it fails with *all* LaTeX exports.
-#       Test whether this is also an instance of the above problem.
-export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
-
-# Language nesting -- error with polyglossia:
-export/doc/(nb|sk)/Intro_pdf[45]_systemF
-# Seems to be a case of the polyglossia + language-nesting problem, too:
-export/doc/(de/|es/|fr/)Customization_pdf4_systemF
-export/doc/(es|fr)/Customization_pdf5_systemF
-#
 # Language nesting, document is OK, fails because of a bug in LyX
 # document is still worng, did only fail because of latin language
 # (problem in my TeX installation)
 # export/export/languagenesting1_(pdf4_systemF|pdf5_systemF)
 
-# LyX index sorting fails with ASCII (and hence also with XeTeX).
-# (! >20 popup windows!)
-export/doc/(es|fr)/UserGuide_pdf4_texF
+# But this one fails fails because of a bug in LyX
+# Probably language mess
+export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
-# FIXME
-# Wrong language name for LuaTeX
-# After LyX 2.1 is released, apply the patch and remove these
-# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
+# lualatex has problems
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
-export/doc/attic/id_UserGuide_dvi3.*
-export/doc/attic/id_UserGuide_pdf5.*
-export/(doc|examples)/id/.*_dvi3.*
+export/(doc|examples)/id/.*_dvi3_.*F
 export/(doc|examples)/id/.*_pdf5_texF
-# Hungarian: Similar to the Indonesian support, see
-# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/hu/.*(dvi3)_.*
-export/.*/hu/.*(pdf5)_texF
-
-# False positive: even with fonts that have all required characters
-# (e.g. LinuxLibertine and LinuxBiolinum) polyglossia throws the error:
-#  ! Package polyglossia Error: The current roman font does not contain the
-#  Hebrew script!
-export/examples/he/splash_pdf5_systemF
-
-# Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts
-# (Babel is required for Spanish math functions like \sen)
-# add "\@ifpackageloaded{fontspec}{\unaccentedoperators}{}" to the preamble!
-export/doc/es/UserGuide_.*_systemF
-
-
-#Sublabel: ERT
-#
-# Failures due to "raw" LaTeX limitations,
-# e.g. ERT or preamble code in the manuals explaining advanced features.
-# "wontfix" if they demonstrate correct use in the default output format.
-
-# Non-ASCII in ERT
-export/doc/(fr|es)/Additional_pdf4_texF
-
-
-#Sublabel: TeXlimit
-
-# Export fails due to LaTeX limitations,
-# e.g. non-ASCII in verbatim or listings, incompatible packages, ...
-# "wontfix" if documents demonstrate correct use in the default output format.
-
-# Non-ASCII char in in listings: "Tschüß".
-# Fails with XeTeX due to limiation to ASCII (no LICR in listings possible).
-export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
-
-# Non-ASCII char in verbatim environment.
-# Fails with ASCII (and hence also with XeTeX).
-export/doc/(|es/|fr/)UserGuide_pdf4_texF
-
-# GM: chemgreek incompatible with LuaTeX and TeX fonts
-export/examples/achemso_(dvi3|pdf5)_texF
-# Math depends on the mhchem package which loads chemgreek
-export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
-
-# Missing characters (\mathbold with Greek letters) with system fonts:
-export/doc/(|de/|es/|fr/)Math.*systemF
-
-
-# Inside these two files, we state that they should only be expected
-# to work with pdflatex and possibly lualatex.
-export/examples/PDF-form_(dvi.*|pdf[^25]*)
-export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
-export/examples/(|de/|fr/)PDF-comment_pdf5_texF
-
-# Hebrew docs do not currently work with LuaTeX
-export/.*/he/.*(pdf5|dvi3).*
-# ... nor with XeTeX and 8-bit TeX fonts
-# These exports correctly fail now on TeX Live 2014. Although they compiled
-# without error on TeX Live 2013, the resulting PDFs had gibberish.
-export/.*/he/.*pdf4_texF
-
-# There is no non-TeX support for Ukrainian with LuaTeX. See:
-# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
-export/doc/uk/Intro_dvi3_systemF
-
-# GM: Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
-# This fails unless the inputencoding is set to utf-8, too.
-export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
-export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
-
-# missing commands (polyglossia?)
-# Explore! (it works with dvi5 or language_package==babel)
-export/doc/fr/UserGuide_pdf[45]_systemF
-
-
-#Sublabel: attic
-
-# Documents in the attic.
-# Kept for reference and format conversion test.
-# However, most problems here are "wontfix".
 
 # Fails because of missing .png graphic files
-# They were replaced by .svgz, but, as this file is in the attic, we do not
-# convert to new lyx format. latex creates output (and ignores missing files)
+# They were replaced by .svgz, but, as this file
+# is attic, we do not convert to new lyx format
+# latex creates output (and ignores missing files)
 # while (pdf|lua|xe)latex exits with != 0
+Sublabel: missingpng
 export/doc/attic/eu_UserGuide_pdf..*
 
-# Files in the attic with non-default output
-# (i.e. could be ERT, package incompatiblity, ...)
-export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
-export/doc/attic/sk_UserGuide_pdf4_texF
-export/doc/attic/id_UserGuide_pdf4_systemF
+Sublabel: assert-fail
+# Exports that should fail.
+#
+# Example of "high bit" chars in listings. Fails with XeTeX due to 
+# limiation to ASCII (no LICR in listings possible). Gives correct warning.
+export/doc/EmbeddedObjects_pdf4_systemF
