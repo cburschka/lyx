@@ -286,6 +286,10 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates develo
   message(STATUS "Handling export dir ${LIBSUB_SRC_DIR}")
   file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
   list(SORT lyx_files)
+  if (libsubfolderx MATCHES "development/mathmacros")
+    # This is a zipped file, removing from tests
+    list(REMOVE_ITEM lyx_files testcases_master_child.lyx)
+  endif()
   # Now create 2 lists. One for files in a language dir, one without
   set(lang_lyx_files)
   set(nolang_lyx_files)
