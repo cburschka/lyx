@@ -81,9 +81,9 @@ logicalmkup
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict true
 \end_header
 
@@ -3161,7 +3161,7 @@ ctest -L url
 \begin_inset Newline newline
 \end_inset
 
-runns all tests with label 
+runs all tests with label 
 \family typewriter
 'url'
 \end_layout
@@ -3175,7 +3175,7 @@ ctest -R 'check_.*urls'
 \begin_inset Newline newline
 \end_inset
 
-runns the tests 'check_accessible_urls'
+runs the tests 'check_accessible_urls'
 \end_layout
 
 \begin_layout Standard
