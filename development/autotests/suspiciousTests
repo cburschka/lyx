@@ -3,7 +3,7 @@
 # Patterns will be automatically enclosed with '^' and '$'.
 # Matching tests get the label "inverted"
 # or (if also matching a pattern in "suspendedTests") "suspended".
-# They get also the test-feature 'inverted', i.e. 
+# They get also the test-feature 'inverted', i.e.
 # they are reported as failing if the export works without error.
 
 # Hebrew docs do not currently work with LuaTeX
@@ -93,10 +93,10 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/doc/he/(Intro|Tutorial)_pdf4_texF
 export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #
-# GM: False positive: if the font is e.g. set to 
+# GM: False positive: if the font is e.g. set to
 # LinuxLibertine and LinuxBiolinum, there are no missing characters but
 # polyglossia anyway throws the error:
-# 
+#
 #  ! Package polyglossia Error: The current roman font does not contain the
 #  Hebrew script!
 export/examples/he/splash_pdf5_systemF
@@ -115,22 +115,12 @@ export/templates/IUCr-article_pdf4_systemF
 # # (hpstatement)                is not defined.
 # 1580:export/examples/H-P-statements_pdf5_systemF
 export/examples/H-P-statements_pdf[45]_systemF
-#
-# The math document now depends on the mhchem package which produces wrong
-# output with XeTeX/LuaTeX and both TeX fonts and non-TeX fonts:
-# https://www.mail-archive.com/search?l=mid&q=n0sne9%24iis%241%40ger.gmane.org
-export/doc(|/de|/es|/fr)/Math.*systemF
-export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
-#
-# GM: Non-ASCII char in verbatim environment.
-# Fails with ASCII (and hence also with XeTeX).
-export/doc/UserGuide_pdf4_texF
-#
+
 # TODO: We need to determine the correct reason for failure (most probably
 # incompatible packages, maybe also loading of lmodern.sty in the user
 # preamble) or state that we don't know it.
-export/doc/de/(Additional|UserGuide)_pdf4_texF
-export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
+export/doc/de/Additional_pdf4_texF
+export/doc/de/Customization_pdf5_systemF
 #
 # GM: Babel's Russian language definition file has the same
 # problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
@@ -149,16 +139,13 @@ export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
 #
 # GM: * lmodern.sty
 #     * missing commands and missing characters
-export/doc/es/(EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+export/doc/es/UserGuide_pdf5_systemF
 #
 # GM: Non-ASCII in ERT
 export/doc/fr/Additional_pdf4_texF
 #
-# GM: Non-ASCII in verbatim and index entries
-export/doc/fr/UserGuide_pdf4_texF
-#
 # GM: lmodern.sty? + maybe more
-export/doc/fr/(Customization_pdf5|EmbeddedObjects_pdf4|UserGuide_pdf5)_systemF
+export/doc/fr/(Customization_pdf5|UserGuide_pdf5)_systemF
 #
 # GM: language nesting error (polyglossia) (known bug)
 export/doc/nb/Intro_pdf5_systemF
@@ -167,15 +154,10 @@ export/doc/nb/Intro_pdf5_systemF
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/doc/(ru|uk)/splash_(dvi3|pdf[45])_texF
-#
-# GM: chemgreek incompatible with LuaTeX (cf. Math.lyx)
-# for now inverted
-Sublabel: 3chemgreek
+
 export/doc/sk/Intro_pdf5_systemF
 export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
-export/examples/achemso_(dvi3|pdf5)_texF
-Sublabel: RESET
 
 # Following mathmacros tests fail
 export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
@@ -194,12 +176,26 @@ export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 export/(doc|examples)/id/.*_dvi3_.*F
 export/(doc|examples)/id/.*_pdf5_texF
 
-Sublabel: assert-fail
-# Exports that should fail.
-#
-# Example of "high bit" chars in listings. Fails with XeTeX due to 
-# limiation to ASCII (no LICR in listings possible). Gives correct warning.
-export/doc/EmbeddedObjects_pdf4_systemF
+
+Sublabel: TeXlimit
+
+# Export fails due to LaTeX limitations,
+# e.g. non-ASCII in verbatim or listings, incompatible packages, ...
+# "wontfix" if documents demonstrate correct use in the default output format.
+
+# Non-ASCII char in in listings: "Tschüß".
+# Fails with XeTeX due to limiation to ASCII (no LICR in listings possible).
+export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
+
+# Non-ASCII char in verbatim environment.
+# Fails with ASCII (and hence also with XeTeX).
+export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
+
+# chemgreek incompatible with LuaTeX and TeX fonts
+export/examples/achemso_(dvi3|pdf5)_texF
+# Math depends on the mhchem package which loads chemgreek
+export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
+
 
 Sublabel: attic
 
