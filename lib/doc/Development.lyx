@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin /systemlyxdir/doc
 \textclass scrartcl
 \options BCOR8mm,captions=tableheading
 \use_default_options false
@@ -1492,7 +1492,13 @@ status collapsed
 \end_inset
 
  Run only the tests whose labels match the given regular expression.
- For example, to run only the export tests, you can use 
+ A test may have more that one label.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For example, to run only the export tests, you can use 
 \begin_inset Flex Code
 status collapsed
 
@@ -1506,6 +1512,7 @@ ctest -L export
  
 \end_layout
 
+\end_deeper
 \begin_layout Labeling
 \labelwidthstring -R
 \begin_inset Flex Code
@@ -1613,7 +1620,11 @@ We are still working on getting the tests to run in parallel.
  pass when run sequentially.
  A reasonable approach is to first run the tests in parallel and then run
  the failed tests sequentially.
- For example, to run 8 jobs at a time:
+ 
+\end_layout
+
+\begin_layout Standard
+For example, to run 8 jobs at a time:
 \end_layout
 
 \begin_layout Standard
@@ -2060,10 +2071,50 @@ status collapsed
 Unreliable tests
 \end_layout
 
+\begin_layout Standard
+These tests are not executed using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L export
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L inverted
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+They pass or fail for various reasons not related to LyX (nonstandard, erratic)
+ or pass but should rather fail (wrong output).
+\end_layout
+
 \begin_layout Description
-nonstandard Requires non-standard ressources (\SpecialChar LaTeX
- packages and document classes,
- fonts, ...) that are not a requirement for running this test suite.
+nonstandard Documents with additional requirements, e.g.
+ a class or package file not on CTAN.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: rename to "extra"?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2075,17 +2126,23 @@ These tests are labeled as
 
 \end_deeper
 \begin_layout Description
-erratic Tests with 
-\begin_inset Quotes eld
+erratic Tests depending on local configuration, OS, TeX distribution, package
+ versions, or the phase of the moon.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: use 
+\emph on
+erratic
+\emph default
+ only for the phase-of-moon dependency.
+\end_layout
+
 \end_inset
 
-arbitrary
-\begin_inset Quotes erd
-\end_inset
 
- result, depending on local configuration, OS, \SpecialChar TeX
- distribution, package versions,
- or the phase of the moon.
 \end_layout
 
 \begin_deeper
@@ -2093,6 +2150,29 @@ arbitrary
 These tests are labeled as 
 \family typewriter
 'erratic'.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+wrong
+\begin_inset space ~
+\end_inset
+
+output Export does not fail but the resulting document has errors.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\paragraph_spacing single
+These tests are actually not 
+\emph on
+unreliable
+\emph default
+ but 
+\emph on
+invalid
+\emph default
+ (not measuring what they should measure).
 \end_layout
 
 \end_deeper
