@@ -1,5 +1,11 @@
-# Comments by Günter Milde (GM)
+# Regular expressions for tests that are known to fail
 #
+# Patterns will be automatically enclosed with '^' and '$'.
+# Matching tests get the label "inverted"
+# or (if also matching a pattern in "suspendedTests") "suspended".
+# They get also the test-feature 'inverted', i.e. 
+# they are reported as failing if the export works without error.
+
 # Hebrew docs do not currently work with LuaTeX
 export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
 export/.*/he/(splash).*(dvi3)_.*
@@ -21,8 +27,7 @@ export/.*/hu/.*(pdf5)_texF
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
 
-#
-# 1.) Unknown Japaneese char in sectionin if previous
+# 1.) Unknown Japanese char in section if previous
 #     paragraph ended in non-Japaneese language
 #     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
 # 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
@@ -75,7 +80,6 @@ export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3)
 export/examples/ko/splash_(dvi||pdf[23]?)
 export/templates/DocBook_article_(dvi3_|pdf2|pdf[45]_).*
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
-export/templates/attic/latex8_(dvi|dvi3_.*)
 export/templates/ctex_(pdf[23]?|pdf4_texF)
 #
 # The following exports worked with TeX Live 2013, but not in 2014.
@@ -128,11 +132,6 @@ export/doc/UserGuide_pdf4_texF
 export/doc/de/(Additional|UserGuide)_pdf4_texF
 export/doc/de/(Customization_pdf5|EmbeddedObjects_pdf4)_systemF
 #
-# GM: Files in the attic with changed settings 
-# (i.e. could be ERT, package incompatiblity, ...)
-export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
-export/doc/attic/sk_UserGuide_pdf4_texF
-#
 # GM: Babel's Russian language definition file has the same
 # problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
 # testing the engine, it switches to "unicode modus".
@@ -177,10 +176,7 @@ export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 export/examples/achemso_(dvi3|pdf5)_texF
 Sublabel: RESET
-#
-# GM: Korean? I don't expect this to work with Xe/Lua and TeXfonts.
-export/examples/ko/splash_(dvi3|pdf[45])_texF
-#
+
 # Following mathmacros tests fail
 export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 
@@ -198,17 +194,27 @@ export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 export/(doc|examples)/id/.*_dvi3_.*F
 export/(doc|examples)/id/.*_pdf5_texF
 
-# Fails because of missing .png graphic files
-# They were replaced by .svgz, but, as this file
-# is attic, we do not convert to new lyx format
-# latex creates output (and ignores missing files)
-# while (pdf|lua|xe)latex exits with != 0
-Sublabel: missingpng
-export/doc/attic/eu_UserGuide_pdf..*
-
 Sublabel: assert-fail
 # Exports that should fail.
 #
 # Example of "high bit" chars in listings. Fails with XeTeX due to 
 # limiation to ASCII (no LICR in listings possible). Gives correct warning.
 export/doc/EmbeddedObjects_pdf4_systemF
+
+Sublabel: attic
+
+# Documents in the attic.
+# Kept for reference and format conversion test.
+# However, most problems here are "wontfix".
+
+# Fails because of missing .png graphic files.
+# They were replaced by .svgz, but, as this file is in the attic, we do not
+# convert to new lyx format. latex creates output (and ignores missing files)
+# while (pdf|lua|xe)latex exits with != 0
+export/doc/attic/eu_UserGuide_pdf.*
+
+# Files in the attic with non-default output
+# (i.e. could be ERT, package incompatiblity, ...)
+export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
+export/doc/attic/sk_UserGuide_pdf4_texF
+export/doc/attic/id_UserGuide_pdf4_systemF
