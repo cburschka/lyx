@@ -1,36 +1,56 @@
-# Tests using some non-standard tex class
+# Regular expressions for tests that should not be executed with
+# ctest -L export or ctest -L inverted because they are inapt
+# (either unreliable or invalid).
+#
+# Patterns will be automatically enclosed with '^' and '$'.
+# Matching tests get the label "unreliable".
+
 Sublabel: nonstandard
+# Documents with additional requirements,
+# e.g. a class or package file not on CTAN.
+# TODO: rename to "extra"?
+
 export/templates/IUCr-article_(dvi|pdf).*
 export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]_(texF|systemF))
 export/templates/es_beamer-conference-ornate-20min_(pdf2|pdf[45]_(texF|systemF))
 export/templates/kluwer_pdf[45]_systemF
 export/examples/modernCV_pdf4_(tex|system)F
 export/templates/ectaart_(dvi3|pdf5)_(tex|system)F
-export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
-#
-#
+
 # 1.) missing farsi package with lfeenc.def
 # 2.) LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
+
+
+Sublabel: erratic
 # Tests depending on local configuration, OS, TeX distribution,
 # package versions, or the phase of the moon.
-Sublabel: erratic
+# TODO: use *erratic* only for the phase-of-moon dependency.
+
 # for unknonwn reasons, seminar fails at some places:
 export/examples/(|fr/)seminar_.*
-#
+
+# Export fails the first time but works the second time. (Why?)
+export/doc/es/Customization_pdf4_texF
+
+
 Sublabel: 1wrong 2output
+# Export does not fail but the resulting document has errors.
 #
-# seminar.sty uses Postscript specials 
+# These tests are actually not "unreliable" (different result for different
+# runs) but *invalid* (not measuring what they should measure).
+
+# seminar.sty uses Postscript specials
 # -> wrong output with pdflatex/LuaTeX and DVI (missing landscape slides).
 export/examples/(|fr/)seminar_pdf[25].*
 export/examples/(|fr/)seminar_dvi.*
-#
-Sublabel: todo 1wrong 2output
-#
+
 # Babel-Spanish uses Babel's "strings" feature to define
 # separate auto-strings using UTF-8 literals.
 # Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
 # This is wrong for Xe/Lua with 8-bit TeX-fonts.
-# set inputenc to utf8? In the document or in lib/languages?
+# set inputenc to utf8?
+# (Changing the default in lib/languages requires more tests for utf8 first.)
 export/examples/es/linguistics_pdf4_texF
 export/doc/es/.*_(pdf[45]|dvi3)_texF
