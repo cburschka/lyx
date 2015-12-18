@@ -1020,11 +1020,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// so we can catch also eventually used symbolic parts of the path.
 	string filepath = buf->fileName().onlyPath().realPath();
 	string const sysdir = package().system_support().realPath();
-	if (prefixIs(filepath, sysdir)) {
-		filepath.replace(0, sysdir.length(), "/systemlyxdir/");
-		// Remove eventually added superfluous "/"
-		filepath = subst(filepath, "//", "/");
-	}
+	string const relpath =
+		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
+	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
+		filepath = addPath("/systemlyxdir", relpath);
 	else if (!lyxrc.save_origin)
 		filepath = "unavailable";
 	os << "\\origin " << quoteIfNeeded(filepath) << '\n';
