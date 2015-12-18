@@ -1,0 +1,260 @@
+#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 317
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Macro Testcases
+\end_layout
+
+\begin_layout Enumerate
+Simple macro definitions with position awareness: 
+\begin_inset FormulaMacro
+\newcommand{\bla}{42}
+\end_inset
+
+
+\begin_inset Formula \[
+\bla\mbox{ should look like }42\]
+
+\end_inset
+
+now redined as 
+\begin_inset FormulaMacro
+\renewcommand{\bla}{21}
+\end_inset
+
+, such that
+\begin_inset Formula \[
+\bla\mbox{ should look like }21.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Redefinitions of macros appearing in the definition of another macro: 
+\begin_inset FormulaMacro
+\newcommand{\fooa}{x}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\foob}[1]{(#1\fooa)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\fooa}{y}
+\end_inset
+
+ with the TeX code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout PlainLayout
+
+\backslash
+newcommand{
+\backslash
+fooa}{x} 
+\end_layout
+
+\begin_layout PlainLayout
+
+\backslash
+newcommand{
+\backslash
+foob}[1]{(#1
+\backslash
+fooa)}
+\end_layout
+
+\begin_layout PlainLayout
+
+\backslash
+renewcommand{
+\backslash
+fooa}{y}
+\end_layout
+
+\end_inset
+
+gives the following:
+\begin_inset Formula \[
+\foob{\fooa}\mbox{ should look like }(yy)\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Arity change: 
+\begin_inset FormulaMacro
+\newcommand{\foo}{-}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}[2]{(#1,#2)}
+\end_inset
+
+
+\begin_inset Formula \[
+\foo{abc}d\mbox{ should look like }(abc,d)\mbox{ if the second foo is there, otherwise like }-{abc}d\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Arity change with incomplete arguments at line end: 
+\begin_inset FormulaMacro
+\renewcommand{\foo}{-}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\foo}[2]{(#1,#2)}
+\end_inset
+
+ 
+\begin_inset Formula \[
+\frac{\foo{abc}{}}{1}\mbox{ should be }\frac{(abc,\,)}{1}\mbox{ if the second foo is defined. Otherwise }\frac{-{abc}{}}{1}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Recursion: 
+\begin_inset FormulaMacro
+\renewcommand{\foo}[1]{\foo #1{}}
+\end_inset
+
+.
+ The inner foo should not we resolved as TeX would give a infinite recursion.
+\end_layout
+
+\begin_layout Enumerate
+Recursive usage: 
+\begin_inset FormulaMacro
+\renewcommand{\foo}[3]{\frac{{\displaystyle #1}\,{\displaystyle #2}}{{\displaystyle #3}}}
+\end_inset
+
+ can be used to create tree-like structures like this one:
+\begin_inset Formula \[
+\foo{\foo{42}{\foo{asdf}{asdf}{asdf}}{21}}{\foo{asdf}{asdf}{asdf}}{asdf}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Folding/Unfolding:
+\begin_inset FormulaMacro
+\renewcommand{\foo}[2]{<#1|#2>}
+\end_inset
+
+.
+ Start using Ctrl-+ and Ctrl-- when you are inside of the macro to fold
+ and unfold, e.g.
+ here:
+\begin_inset Formula \[
+\foo{\foo{42}{12}}{\foo{21}4}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Scripts: 
+\begin_inset FormulaMacro
+\renewcommand{\foo}[3][A][B]{(#1,#2)#3}
+\end_inset
+
+
+\begin_inset Formula \[
+\foo[a]{}^{4}[b]c_{1}\mbox{ should look like }(a,B)\sqcup^{4}[b]c_{1}\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\foo[a]c^{3}\mbox{ should look like }(a,B)c^{3}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Multiple optional parameters:
+\begin_inset FormulaMacro
+\renewcommand{\foo}[3][a][b][c]{(#1,#2,#3)}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\foo[][B]123\mbox{ should be }(a,B,c)123$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\foo[][][C]123\mbox{ should be }(a,b,C)123$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

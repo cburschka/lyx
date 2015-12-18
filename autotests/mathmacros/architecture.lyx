@@ -1,0 +1,1699 @@
+#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 276
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Dynamic Macros for LyX
+\end_layout
+
+\begin_layout Author
+Stefan Schimanski 
+\newline
+
+\begin_inset LatexCommand url
+target "sts@1stein.org"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+21.10.2007
+\end_layout
+
+\begin_layout Section
+The old system
+\end_layout
+
+\begin_layout Standard
+LyX has the concept of math macros for quite some time.
+ In LyX 1.4 or 1.5 you can create one in your document by calling the 
+\family typewriter
+math-macro
+\family default
+ command in the mini buffer.
+ Visually this results in something equivalent to a TeX macro: 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+foo}{
+\backslash
+frac{1}{2}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After LyX processed this, the command is available in math environments
+ in the same documents.
+ But internally there is nothing more than 
+\series bold
+one
+\series default
+ global macro table.
+ The position inside the document does not matter.
+ The command is available even in front of the definition.
+ But even worse, this global macro table is global for all opened documents.
+ If two buffers use the same macro name with different definitions, you
+ are in trouble.
+ The behaviour is undefined.
+ If you are lucky LyX will not crash.
+ Nothing must be said about redefining a macro later in the document: the
+ behaviour of LyX will not be what you expect.
+\end_layout
+
+\begin_layout Standard
+LyX 1.4 and 1.5 do not show the support for this kind of macro very prominently.
+ In fact it is described in the 
+\begin_inset Quotes eld
+\end_inset
+
+Extended Features
+\begin_inset Quotes erd
+\end_inset
+
+ manual.
+ But there is no menu item to create macros.
+ Next to the mentioned method with the mini buffer you can use the 
+\begin_inset Quotes eld
+\end_inset
+
+Ctrl-L
+\begin_inset Quotes erd
+\end_inset
+
+ short cut to convert a raw 
+\backslash
+newcommand into a LyX math macro.
+ Hence the role of macro is more of a power user tool for users who know
+ what they are doing.
+\end_layout
+
+\begin_layout Section
+A wish list for a new macro implementation
+\end_layout
+
+\begin_layout Standard
+In the following usecases are shown which can be wished to be supported
+ if macros are reimplemented.
+ Most of them are not possible in the old implemention, or at least very
+ hard to do.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Define a 
+\series bold
+new macro
+\series default
+ with a known arity ("arity" = number of arguments).
+ Use instances later on in the document.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Redefine
+\series default
+ a macro to use the same macro name with different definitions in different
+ areas of the document.
+\end_layout
+
+\begin_layout Enumerate
+Have 
+\family typewriter
+
+\backslash
+newcommand
+\family default
+ in the preamble (i.e.
+ by importing tex code) or 
+\series bold
+not accessible
+\series default
+ as a LyX macro in another way, and then define the command as a native
+ LyX math macro later.
+ All the uses of the old command should then turn into instances of the
+ LyX math macro.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Rename
+\series default
+ a macro and also adapt all the instance of the macro in the document.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Change the arity
+\series default
+ of a macro (normaly probably increase it), maybe with a default value used
+ in instances of the macro (possibly empty).
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Removal
+\series default
+ of a macro.
+\end_layout
+
+\begin_layout Enumerate
+Insertion of a macro via the 
+\series bold
+menu
+\series default
+ like "Insert->MathMacro".
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Moving
+\series default
+ of a macro.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\begin_inset LatexCommand label
+name "sub:listedit"
+
+\end_inset
+
+
+\series default
+Editing of a macro instance as a 
+\series bold
+list
+\series default
+ of #1: __, #2: __, i.e.
+ it 
+\series bold
+unfold
+\series default
+s when the cursor goes inside.
+\end_layout
+
+\begin_layout Enumerate
+Editing of macros 
+\series bold
+inline
+\series default
+ (the macro definition will be read-only, only the arguments as holes are
+ editable).
+\end_layout
+
+\begin_layout Enumerate
+Changing of the 
+\series bold
+editing behaviour
+\series default
+ of 
+\series bold
+
+\begin_inset LatexCommand ref
+reference "sub:listedit"
+
+\end_inset
+
+
+\series default
+ for certain macros, not only globally.
+\end_layout
+
+\begin_layout Enumerate
+Defining dynamic 
+\series bold
+macros inside of macros
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Using macros with the 
+\series bold
+same name
+\series default
+, but different definitions in different open documents or parts of the
+ same document.
+\end_layout
+
+\begin_layout Enumerate
+Using macros from the 
+\series bold
+master document
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Using the same argument, e.g.
+ #1, (
+\series bold
+non-linearly
+\series default
+) more than once in the definition, like 
+\family typewriter
+
+\backslash
+newcommand{
+\backslash
+ntothen}[1]{#1^#1}
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Patterns
+\series default
+ like 
+\family typewriter
+
+\backslash
+def
+\backslash
+foo #1/#2{
+\backslash
+frac{#1}{#2}}
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Higher order
+\series default
+ substitution (or call-by-name text substition) like 
+\family typewriter
+
+\backslash
+def
+\backslash
+foo #1{#1 12}
+\family default
+, which is applicable like 
+\family typewriter
+
+\backslash
+foo
+\backslash
+frac
+\family default
+ to give 
+\family typewriter
+1/2
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Optional
+\series default
+ parameters like 
+\family typewriter
+
+\backslash
+newcommand{
+\backslash
+foo}[2][x]{#2_#1}
+\end_layout
+
+\begin_layout Standard
+The old implementation supports the following: 
+\series bold
+new macro
+\series default
+, 
+\series bold
+moving
+\series default
+, 
+\series bold
+list
+\series default
+, 
+\series bold
+master document
+\series default
+, 
+\series bold
+non-linear.
+ 
+\series default
+Though support of master documents is more or less an coincidence by the
+ global table.
+\end_layout
+
+\begin_layout Standard
+The implementation described later (short: the new implementation) supports
+ the following: 
+\series bold
+new macro
+\series default
+, 
+\series bold
+redefine
+\series default
+, 
+\series bold
+not accesible
+\series default
+, 
+\series bold
+change the arity
+\series default
+, 
+\series bold
+removal
+\series default
+, 
+\series bold
+menu
+\series default
+, 
+\series bold
+moving
+\series default
+, 
+\series bold
+unfolds
+\series default
+, 
+\series bold
+inline
+\series default
+, 
+\series bold
+same name
+\series default
+, 
+\series bold
+master documents
+\series default
+, 
+\series bold
+non-linearly
+\series default
+, 
+\series bold
+optional
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Not supported are: 
+\series bold
+patterns
+\series default
+, 
+\series bold
+higher order
+\series default
+, 
+\series bold
+macros inside of macros
+\series default
+,
+\series bold
+ editing behaviour
+\series default
+,
+\series bold
+ list
+\series default
+,
+\series bold
+ rename
+\series default
+.
+ The last 3 should be doable without much work, maybe also 
+\series bold
+patterns
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Main deficiencies of the old system
+\end_layout
+
+\begin_layout Standard
+The main problem of the old implementation is that it is not dynamic at
+ all.
+ A macro is resolved (i.e.
+ the lookup in the global table takes place) when the internal object is
+ created, e.g.
+ while parsing of the 
+\family typewriter
+.lyx
+\family default
+ document or when typing 
+\family typewriter
+
+\backslash
+foo
+\family default
+.
+ If no macro definition of the right name exists at this time, an ERT is
+ created.
+ 
+\end_layout
+
+\begin_layout Standard
+Moreover there is no position awareness of the definition, only during loading
+ of a document there is something like that because macro definitions are
+ put into the global table at the point in the document where it appears.
+ 
+\end_layout
+
+\begin_layout Section
+A new approach
+\end_layout
+
+\begin_layout Standard
+The goal of a new macro approach must be to support as many use cases subsection
+ 1.2 as possible, or at least make an implementation possible of the remaining
+ ones.
+ Moreover a proper implementation better brings most of TeX's power of math
+ command into LyX.
+\end_layout
+
+\begin_layout Standard
+In a few words the new approach could be described as follow: 
+\end_layout
+
+\begin_layout Itemize
+A macro is a dynamic inset which can 
+\begin_inset Quotes eld
+\end_inset
+
+eat up
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+spit out
+\begin_inset Quotes erd
+\end_inset
+
+ insets which follow the macro, depending on the success to resolve it and
+ the arity of the macro definition at the position in the document.
+\end_layout
+
+\begin_layout Itemize
+Macros are resolved again everytime it is redrawn on screen if the macro
+ definition changed which is valid at the position.
+\end_layout
+
+\begin_layout Standard
+This 
+\begin_inset Quotes eld
+\end_inset
+
+eat up
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+spit out
+\begin_inset Quotes erd
+\end_inset
+
+ process is the key idea.
+ Imagine a macro definition 
+\family typewriter
+
+\backslash
+newcommand{
+\backslash
+foo}[2]{a#1b#2c}
+\family default
+ which is valid when a macro
+\family typewriter
+ 
+\backslash
+foo 
+\family default
+appears in the context 
+\family typewriter
+
+\backslash
+foo ABCD
+\family default
+.
+ When the macro is drawn the definition is checked and the arity is compared
+ to the number of 
+\begin_inset Quotes eld
+\end_inset
+
+eaten
+\begin_inset Quotes erd
+\end_inset
+
+ insets.
+ At the beginning the latter will be zero.
+ Because the arity of 
+\family typewriter
+
+\backslash
+foo
+\family default
+ is 2, the macro inset will eat up 2 insets (the 
+\family typewriter
+A
+\family default
+ and the 
+\family typewriter
+B
+\family default
+), hence internally the macro 
+\family typewriter
+
+\backslash
+foo
+\family default
+ is changed to arity 2 and 
+\family typewriter
+A
+\family default
+ and 
+\family typewriter
+B
+\family default
+ are moved into it.
+ The visual representation of macro is that of the definition with the arguments
+ replaced by the eaten insets.
+ So eventually you will see 
+\family typewriter
+aAbBcCD
+\family default
+ on screen.
+\end_layout
+
+\begin_layout Standard
+When you change the macro definition at the position into a unary macro,
+ e.g.
+ 
+\family typewriter
+
+\backslash
+newcommand{
+\backslash
+foo}[1]{a#1b}
+\family default
+, the macro inset will spit out the second eaten inset, here the 
+\family typewriter
+B
+\family default
+.
+ Hence you will eventually see 
+\family typewriter
+aAbBCD
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+This process is done automatically, transparent to the user and in a fast
+ way everytime the macro is rendered and the definition has changed.
+\end_layout
+
+\begin_layout Standard
+If you look at the produced TeX code of the 
+\family typewriter
+
+\backslash
+foo ABCD
+\family default
+ you will notice that it didn't change during all this eating and spitting.
+ This is what you expect from a macro in TeX.
+ There the whole sense of command (i.e.
+ macros) is that you keep the same TeX code, independently from the macro
+ definition.
+ This approach carries this over to the LyX world.
+\end_layout
+
+\begin_layout Subsection
+The implementation
+\end_layout
+
+\begin_layout Subsubsection
+MathData
+\end_layout
+
+\begin_layout Standard
+When a MathData object is drawn, more precisely when the metrics are computed,
+ all math macros in the 
+\family typewriter
+MathData
+\family default
+ are processed in the way described in the previous section.
+ If the arity of definition of a macro is changed the spitting/eating process
+ takes place.
+ This is implemented in 
+\family typewriter
+MathData::updateMacros
+\family default
+, in a quite straight forward way.
+ 
+\end_layout
+
+\begin_layout Standard
+Some complexity comes into the game by the necessary updating of the current
+ cursor.
+ If the user unfolds a macro the arity practically changes to zero, hence
+ the arguments are spit out.
+ If the cursor was inside an argument before, it should be in the same argument
+ after the unfolding.
+ The same should be the case for folding.
+\end_layout
+
+\begin_layout Standard
+The metrics calculation is, by its typing, a const method, i.e.
+ it shouldn't change the 
+\family typewriter
+MathData
+\family default
+ object.
+ The macro updating though does changes of course.
+ Technically this is true, semantically (taking the produced TeX code as
+ semantics) it is not because nothing changes by eating/spitting or folding/unfo
+lding with the later output.
+ To still allow these changes in 
+\family typewriter
+MathData::metrics
+\family default
+ a 
+\family typewriter
+const_cast
+\family default
+ is used.
+ This is somewhat ugly and a cleaner solution should be found.
+ Maybe one day the drawing and metrics will merge, then it would make sense
+ to think about the 
+\family typewriter
+const_cast
+\family default
+ as well again.
+\end_layout
+
+\begin_layout Subsubsection
+Macro Table
+\end_layout
+
+\begin_layout Standard
+How does the 
+\family typewriter
+MathData
+\family default
+ know which macro definitions are known at its position in the buffer? During
+ the metrics call a 
+\family typewriter
+MacroContext
+\family default
+ is passed around as an element of the 
+\family typewriter
+MetricsInfo
+\family default
+ class.
+ This context can be asked to resolve a macro name.
+\end_layout
+
+\begin_layout Standard
+To make this possible it has to know about a position in the buffer.
+ In fact it knows about the paragraph in the buffer, and in addition it
+ has a 
+\begin_inset Quotes eld
+\end_inset
+
+local
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\family typewriter
+MacroTable
+\family default
+.
+ The latter is used to also resolve macros correctly which are defined in
+ the paragraph where the macro appears.
+ The inset loop in the 
+\family typewriter
+TextMetrics::redoParagraph
+\family default
+ creates and updates the 
+\family typewriter
+MacroContext
+\family default
+ and the local macros in the expected way.
+ 
+\end_layout
+
+\begin_layout Standard
+All the other macros are resolved by the 
+\family typewriter
+MacroContext
+\family default
+ by asking the buffer directly.
+ For this the 
+\family typewriter
+MacroContext
+\family default
+, as written above, knows the paragraph it belongs to.
+ It passes this information to the buffer (via 
+\family typewriter
+Buffer::hasMacro(docstring name, Paragraph par)
+\family default
+) and the buffer then uses the 
+\family typewriter
+par.macrocontextPosition()
+\family default
+ information to lookup the defined macros at the position in the map 
+\family typewriter
+Buffer::pimpl->macros
+\family default
+.
+ This maps macro names and positions to the macro definitions.
+ which are defined at the position or before.
+\end_layout
+
+\begin_layout Standard
+The missing bit is how the buffer creates this map.
+ This is done in the same way as in the old macro implementation, namely
+ by the Buffer::updateMacros method which iterates over the top-level inset
+ of the buffer.
+ It is called from 
+\family typewriter
+BufferView::processUpdateFlags
+\family default
+ very often.
+ This sounds slow, but it turned out that it is not noticable in fact.
+ In LyX 1.5 the same is done as well already.
+ Maybe some optimisation could help though, but was not investigated.
+\end_layout
+
+\begin_layout Standard
+To support master documents there will a last lookup (if the previous lookup
+ were not successfull) by asking the master buffer.
+\end_layout
+
+\begin_layout Subsection
+File Format
+\end_layout
+
+\begin_layout Standard
+The file format concerning macros in the old macro implementation is not
+ well defined.
+ As described above there is a big difference between the visual semantics
+ (what the user sees inside LyX 1.5) and the latex semantics (what LaTeX
+ will make out of the document) are not the same.
+\end_layout
+
+\begin_layout Standard
+The new approach changes this for most documents (if the user does not do
+ any dirty tricks at least) to be the same.
+ So from the file format point of view there probably should not be any
+ conversion needed to a new file format.
+\end_layout
+
+\begin_layout Standard
+One exception of this comes from the support for optional arguments in the
+ new implementation.
+ Those were not available in the old format.
+\end_layout
+
+\begin_layout Subsubsection
+Simple Macros
+\end_layout
+
+\begin_layout Standard
+Macro definitions are stored in the following way:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin_inset FormulaMacro
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+abc}[1]{
+\backslash
+sin
+\backslash
+left(
+\backslash
+frac{-3}{#1}
+\backslash
+right)} 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end_inset
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The resulting LaTeX code is as expected:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+ 
+\backslash
+newcommand{
+\backslash
+abc}[1]{
+\backslash
+sin
+\backslash
+left(
+\backslash
+frac{-3}{#1}
+\backslash
+right)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+One Optional Argument
+\end_layout
+
+\begin_layout Standard
+With one optional argument the LyX code looks like this:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin_inset FormulaMacro
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+abc}[1][42]{
+\backslash
+sin
+\backslash
+left(
+\backslash
+frac{-3}{#1}
+\backslash
+right)}
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end_inset
+\end_layout
+
+\end_inset
+
+ and the LaTeX code again is the same:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+abc}[1][42]{
+\backslash
+sin
+\backslash
+left(
+\backslash
+frac{-3}{#1}
+\backslash
+right)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Multi Optional Argument Macro 
+\end_layout
+
+\begin_layout Standard
+More than one optional argument is not supported by LaTeX.
+ There are several solutions to allow them by defining some custom 
+\family typewriter
+
+\backslash
+newcommand
+\family default
+, but this is not standarized.
+ It might make sense for LyX to also support those when importing, but this
+ is not implemented.
+ Instead the new implementation will create valid standard LaTeX code by
+ outputting what the user sees on screen in LyX:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+begin_inset FormulaMacro
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+xyz}[2][42][28]{
+\backslash
+sqrt{#1}+
+\backslash
+ln
+\backslash
+left(
+\backslash
+frac{#2}{82}
+\backslash
+right)} 
+\end_layout
+
+\begin_layout Standard
+
+
+\backslash
+end_inset
+\end_layout
+
+\end_inset
+
+ with the LaTeX code:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+newcommand{
+\backslash
+xyz}[2][42]{
+\backslash
+sqrt{#1}+
+\backslash
+ln
+\backslash
+left(
+\backslash
+frac{#2}{82}
+\backslash
+right)}
+\end_layout
+
+\end_inset
+
+When the user creates an instance of 
+\backslash
+xyz without substituting the optional argument, e.g.
+ by 
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+xyz
+\end_layout
+
+\end_inset
+
+ LyX will create the following LaTeX code when exporting to LaTeX:
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Standard
+
+
+\backslash
+xyz{28}
+\end_layout
+
+\end_inset
+
+So the optional argument is not optional anymore after export, but explicit.
+\end_layout
+
+\begin_layout Subsubsection
+
+\backslash
+def style
+\end_layout
+
+\begin_layout Standard
+Last but not least, as in the old implementation you can use 
+\family typewriter
+
+\backslash
+def
+\family default
+ macros, i.e.
+ TeX style definitions.
+ They don't support optional arguments.
+ They don't support 
+\begin_inset Quotes eld
+\end_inset
+
+patterns
+\begin_inset Quotes erd
+\end_inset
+
+ of the shape 
+\family typewriter
+
+\backslash
+def
+\backslash
+term #1+#2{#1+#2}
+\family default
+ where you can use it as in 
+\family typewriter
+
+\backslash
+term 43+12
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Redefinition
+\end_layout
+
+\begin_layout Standard
+On export LyX will correctly use 
+\family typewriter
+
+\backslash
+newcommand
+\family default
+ and 
+\family typewriter
+
+\backslash
+renewcommand
+\family default
+ if needed.
+ This is not visible in the LyX file format though.
+\end_layout
+
+\begin_layout Subsection
+How it looks to the user
+\end_layout
+
+\begin_layout Subsubsection
+Creation
+\end_layout
+
+\begin_layout Standard
+Macro definitions look more or less the same as in the old implementation.
+ I.e.
+ there is a macro definition inset showing the macro like 
+\family typewriter
+
+\backslash
+foo{#1}:={a#1b}
+\family default
+.
+ You can create i
+\family typewriter
+t
+\family default
+ via the 
+\begin_inset Quotes eld
+\end_inset
+
+math-macro foo 4
+\begin_inset Quotes erd
+\end_inset
+
+ to create a macro 
+\family typewriter
+
+\backslash
+foo
+\family default
+ with 4 parameters.
+\end_layout
+
+\begin_layout Standard
+A second way to create them is to write down the LaTeX definition like 
+\family typewriter
+
+\backslash
+newcommand
+\backslash
+foo{abc}
+\family default
+ as plain text.
+ Select it and press Ctrl-m.
+\end_layout
+
+\begin_layout Standard
+The last way, which is new with the new implementation, is to use the Insert/Mat
+h/Macro menu item.
+\end_layout
+
+\begin_layout Subsubsection
+Modification
+\end_layout
+
+\begin_layout Standard
+The are the following actions defined:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Action
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Menu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-unfold
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+View/Unfold Math Macro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-fold
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+View/Fold Math Macro
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-add-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Append Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-remove-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Remove Last Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-append-greedy-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Append Parameter Eating From the Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-make-optional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Make First Non-Optional into Optional Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-remove-greedy-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Remove Last Parameter Spitting Out To The Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-make-nonoptional
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Make Last Optional into Non-Optional Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-add-optional-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Insert Optional Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-remove-optional-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Remove Optional Parameter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+math-macro-add-greedy-optional-param
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Edit/Math/Macro/Append Optional Parameter Eating From the Right
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Greedy vs.
+ Non-Greedy
+\end_layout
+
+\begin_layout Standard
+As described above the key idea is that macros and eat up and spit out parameter
+s, depending on their arity.
+ This makes them very dynamic and powerful, but at the same time adds some
+ complexity which must be understood by the user to effectively use the
+ macros.
+\end_layout
+
+\begin_layout Standard
+Hence if the arity is increased (i.e.
+ another parameter is added to a macro) there are two ways to do that: if
+ this is done greedily the macro tries to eat up another inset from the
+ right.
+ This is the natural way if you import a document and then start to define
+ a macros with LyX's math macros.
+ Then you want that the macros take the (existing) paramenters from the
+ right.
+\end_layout
+
+\begin_layout Standard
+The second case is the non-greedy use case.
+ E.g.
+ you want to change a macro to take another parameter because you just found
+ out that your notation needs another index.
+ Then you want to insert this non-greedily.
+ All macro instances in your text should get another parameter without touching
+ the surrouindings.
+\end_layout
+
+\begin_layout Standard
+The greedy variants of the actions have the word 
+\begin_inset Quotes eld
+\end_inset
+
+greedy
+\begin_inset Quotes erd
+\end_inset
+
+ in their name.
+\end_layout
+
+\begin_layout Standard
+Some of the actions also take a paramenter to define the position to act
+ on in the parameter list.
+ E.g.
+ you can write 
+\family typewriter
+math-macro-add-param 2
+\family default
+ in the mini-buffer to add a parameter at position 2.
+\end_layout
+
+\begin_layout Subsubsection
+Folding/Unfolding
+\end_layout
+
+\begin_layout Standard
+Sometimes it is desireable to switch to the TeX code of a macro instance,
+ i.e.
+ without any substitution using the macro definition.
+ This can be done with the fold/unfold actions.
+ You can use the 
+\family typewriter
+Ctrl-+
+\family default
+ and 
+\family typewriter
+Ctrl--
+\family default
+ shortcuts for that.
+\end_layout
+
+\begin_layout Standard
+If you nest macro instances these actions will unfold from inside to the
+ outside and the same for folding.
+ This is supposed to replace the old list display when entering a macro.
+\end_layout
+
+\begin_layout Subsubsection
+Toolbar
+\end_layout
+
+\begin_layout Standard
+Currently there is no toolbar for math macros.
+ Because the menu hierarchy is very deep a toolbar would make the life a
+ lot easier.
+ It shouldn't be hard to implement that.
+\end_layout
+
+\begin_layout Subsubsection
+More natural macro definition editing
+\end_layout
+
+\begin_layout Standard
+Instead of the described actions it would desirable to add another more
+ natural way to edit macros.
+ The vision is that the user can put the cursor everywhere inside of the
+ macro definition inset which shows (already now!) the definition in the
+ way
+\family typewriter
+ 
+\backslash
+name{#1}{#2}:={definition}
+\family default
+.
+ The user should be able to use the backspace and the 
+\family typewriter
+{
+\family default
+ key to remove and add parameters when the cursor is in the parameter definition
+ part.
+ For a non-greedy macro-append one could put a small (+) button or a hungry
+ packman 
+\family typewriter
+(<
+\family default
+ behind the 
+\family typewriter
+{#2}
+\family default
+ in front of the definition.
+\end_layout
+
+\begin_layout Standard
+For implementing this one has to customize the 
+\family typewriter
+MathInsetNest
+\family default
+ a lot to handle the keypresses correctly, because it's probably not directly
+ doable with 
+\family typewriter
+MathInsetNest
+\family default
+ in a simple way with its children insets.
+\end_layout
+
+\begin_layout Subsubsection
+Keyboard navigation
+\end_layout
+
+\begin_layout Standard
+You can jump from 
+\family typewriter
+#n
+\family default
+ to
+\family typewriter
+ #n+1
+\family default
+ with the cursor key and conversely backwards.
+ This navigation is not visual.
+ I.e.
+ the user can define macros like 
+\family typewriter
+
+\backslash
+foo{#1}{#2}:={#2+#1}
+\family default
+.
+ Then the cursor jumps first to the right and then to the left where the
+ #1 is.
+ This can be confusing.
+ One could think about a visual movement mode by taking the position of
+ the macro argument insets into account to find the next inset for the cursor
+ keys.
+ This should be doable.
+\end_layout
+
+\end_body
+\end_document

@@ -270,8 +270,7 @@ loadTestList(ignoredTests ignoredTests 0)
 loadTestList(suspendedTests suspendedTests 6)
 loadTestList(unreliableTests unreliableTests 5)
 
-# preparing to add e.g. development/mathmacros to the foreach() loop
-foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates development/mathmacros)
+foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autotests/mathmacros)
   set(testlabel "export")
   if (libsubfolderx MATCHES "lib/doc")
     list(APPEND testlabel "manuals")
