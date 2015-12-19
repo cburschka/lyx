@@ -1,53 +1,93 @@
-#LyX 1.5.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 276
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 503
 \begin_document
 \begin_header
+\origin unavailable
 \textclass article
-\language english
+\use_default_options false
+\maintain_unincluded_children false
+\language british
+\language_package default
 \inputencoding auto
-\font_roman default
-\font_sans default
-\font_typewriter default
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize default
+\spacing single
+\use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\html_math_output 0
+\html_css_as_file 0
 \output_changes false
-\author "" 
-\author "" 
+\html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Dynamic Macros for LyX
+Dynamic Macros for \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
 Stefan Schimanski 
-\newline
+\begin_inset Newline newline
+\end_inset
 
-\begin_inset LatexCommand url
-target "sts@1stein.org"
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+sts@1stein.org
+\end_layout
 
 \end_inset
 
@@ -63,18 +103,21 @@ The old system
 \end_layout
 
 \begin_layout Standard
-LyX has the concept of math macros for quite some time.
- In LyX 1.4 or 1.5 you can create one in your document by calling the 
+\SpecialChar LyX
+ has the concept of math macros for quite some time.
+ In \SpecialChar LyX
+ 1.4 or 1.5 you can create one in your document by calling the 
 \family typewriter
 math-macro
 \family default
  command in the mini buffer.
- Visually this results in something equivalent to a TeX macro: 
+ Visually this results in something equivalent to a \SpecialChar TeX
+ macro: 
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -91,8 +134,9 @@ frac{1}{2}}
 \end_layout
 
 \begin_layout Standard
-After LyX processed this, the command is available in math environments
- in the same documents.
+After \SpecialChar LyX
+ processed this, the command is available in math environments in
+ the same documents.
  But internally there is nothing more than 
 \series bold
 one
@@ -104,13 +148,16 @@ one
  If two buffers use the same macro name with different definitions, you
  are in trouble.
  The behaviour is undefined.
- If you are lucky LyX will not crash.
+ If you are lucky \SpecialChar LyX
+ will not crash.
  Nothing must be said about redefining a macro later in the document: the
- behaviour of LyX will not be what you expect.
+ behaviour of \SpecialChar LyX
+ will not be what you expect.
 \end_layout
 
 \begin_layout Standard
-LyX 1.4 and 1.5 do not show the support for this kind of macro very prominently.
+\SpecialChar LyX
+ 1.4 and 1.5 do not show the support for this kind of macro very prominently.
  In fact it is described in the 
 \begin_inset Quotes eld
 \end_inset
@@ -131,7 +178,8 @@ Ctrl-L
 
  short cut to convert a raw 
 \backslash
-newcommand into a LyX math macro.
+newcommand into a \SpecialChar LyX
+ math macro.
  Hence the role of macro is more of a power user tool for users who know
  what they are doing.
 \end_layout
@@ -143,7 +191,7 @@ A wish list for a new macro implementation
 \begin_layout Standard
 In the following usecases are shown which can be wished to be supported
  if macros are reimplemented.
- Most of them are not possible in the old implemention, or at least very
+ Most of them are not possible in the old implementation, or at least very
  hard to do.
  
 \end_layout
@@ -178,10 +226,13 @@ newcommand
 \series bold
 not accessible
 \series default
- as a LyX macro in another way, and then define the command as a native
- LyX math macro later.
+ as a \SpecialChar LyX
+ macro in another way, and then define the command as a native \SpecialChar LyX
+ math
+ macro later.
  All the uses of the old command should then turn into instances of the
- LyX math macro.
+ \SpecialChar LyX
+ math macro.
  
 \end_layout
 
@@ -198,8 +249,8 @@ Rename
 \series bold
 Change the arity
 \series default
- of a macro (normaly probably increase it), maybe with a default value used
- in instances of the macro (possibly empty).
+ of a macro (normally probably increase it), maybe with a default value
+ used in instances of the macro (possibly empty).
 \end_layout
 
 \begin_layout Enumerate
@@ -229,8 +280,9 @@ Moving
 \begin_layout Enumerate
 
 \series bold
-\begin_inset LatexCommand label
-name "sub:listedit"
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:listedit"
 
 \end_inset
 
@@ -265,8 +317,9 @@ editing behaviour
  of 
 \series bold
 
-\begin_inset LatexCommand ref
-reference "sub:listedit"
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:listedit"
 
 \end_inset
 
@@ -336,7 +389,7 @@ frac{#1}{#2}}
 \series bold
 Higher order
 \series default
- substitution (or call-by-name text substition) like 
+ substitution (or call-by-name text substitution) like 
 \family typewriter
 
 \backslash
@@ -409,7 +462,7 @@ redefine
 \series default
 , 
 \series bold
-not accesible
+not accessible
 \series default
 , 
 \series bold
@@ -528,8 +581,10 @@ A new approach
 The goal of a new macro approach must be to support as many use cases subsection
  1.2 as possible, or at least make an implementation possible of the remaining
  ones.
- Moreover a proper implementation better brings most of TeX's power of math
- command into LyX.
+ Moreover a proper implementation better brings most of \SpecialChar TeX
+'s power of math
+ command into \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -558,7 +613,7 @@ spit out
 \end_layout
 
 \begin_layout Itemize
-Macros are resolved again everytime it is redrawn on screen if the macro
+Macros are resolved again every time it is redrawn on screen if the macro
  definition changed which is valid at the position.
 \end_layout
 
@@ -675,22 +730,26 @@ aAbBCD
 
 \begin_layout Standard
 This process is done automatically, transparent to the user and in a fast
- way everytime the macro is rendered and the definition has changed.
+ way every time the macro is rendered and the definition has changed.
 \end_layout
 
 \begin_layout Standard
-If you look at the produced TeX code of the 
+If you look at the produced \SpecialChar TeX
+ code of the 
 \family typewriter
 
 \backslash
 foo ABCD
 \family default
  you will notice that it didn't change during all this eating and spitting.
- This is what you expect from a macro in TeX.
+ This is what you expect from a macro in \SpecialChar TeX
+.
  There the whole sense of command (i.e.
- macros) is that you keep the same TeX code, independently from the macro
- definition.
- This approach carries this over to the LyX world.
+ macros) is that you keep the same \SpecialChar TeX
+ code, independently from the macro definitio
+n.
+ This approach carries this over to the \SpecialChar LyX
+ world.
 \end_layout
 
 \begin_layout Subsection
@@ -736,9 +795,10 @@ MathData
 \family default
  object.
  The macro updating though does changes of course.
- Technically this is true, semantically (taking the produced TeX code as
- semantics) it is not because nothing changes by eating/spitting or folding/unfo
-lding with the later output.
+ Technically this is true, semantically (taking the produced \SpecialChar TeX
+ code as semantics)
+ it is not because nothing changes by eating/spitting or folding/unfolding
+ with the later output.
  To still allow these changes in 
 \family typewriter
 MathData::metrics
@@ -848,13 +908,14 @@ BufferView::processUpdateFlags
 \family default
  very often.
  This sounds slow, but it turned out that it is not noticable in fact.
- In LyX 1.5 the same is done as well already.
+ In \SpecialChar LyX
+ 1.5 the same is done as well already.
  Maybe some optimisation could help though, but was not investigated.
 \end_layout
 
 \begin_layout Standard
 To support master documents there will a last lookup (if the previous lookup
- were not successfull) by asking the master buffer.
+ were not successful) by asking the master buffer.
 \end_layout
 
 \begin_layout Subsection
@@ -865,8 +926,10 @@ File Format
 The file format concerning macros in the old macro implementation is not
  well defined.
  As described above there is a big difference between the visual semantics
- (what the user sees inside LyX 1.5) and the latex semantics (what LaTeX
- will make out of the document) are not the same.
+ (what the user sees inside \SpecialChar LyX
+ 1.5) and the latex semantics (what \SpecialChar LaTeX
+ will make
+ out of the document) are not the same.
 \end_layout
 
 \begin_layout Standard
@@ -892,14 +955,14 @@ Macro definitions are stored in the following way:
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin_inset FormulaMacro
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -916,7 +979,7 @@ frac{-3}{#1}
 right)} 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -929,12 +992,13 @@ end_inset
 \end_layout
 
 \begin_layout Standard
-The resulting LaTeX code is as expected:
+The resulting \SpecialChar LaTeX
+ code is as expected:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
  
 \backslash
@@ -961,19 +1025,20 @@ One Optional Argument
 \end_layout
 
 \begin_layout Standard
-With one optional argument the LyX code looks like this:
+With one optional argument the \SpecialChar LyX
+ code looks like this:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin_inset FormulaMacro
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -990,7 +1055,7 @@ frac{-3}{#1}
 right)}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -999,12 +1064,13 @@ end_inset
 
 \end_inset
 
- and the LaTeX code again is the same:
+ and the \SpecialChar LaTeX
+ code again is the same:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1031,30 +1097,34 @@ Multi Optional Argument Macro
 \end_layout
 
 \begin_layout Standard
-More than one optional argument is not supported by LaTeX.
+More than one optional argument is not supported by \SpecialChar LaTeX
+.
  There are several solutions to allow them by defining some custom 
 \family typewriter
 
 \backslash
 newcommand
 \family default
-, but this is not standarized.
- It might make sense for LyX to also support those when importing, but this
+, but this is not standardized.
+ It might make sense for \SpecialChar LyX
+ to also support those when importing, but this
  is not implemented.
- Instead the new implementation will create valid standard LaTeX code by
- outputting what the user sees on screen in LyX:
+ Instead the new implementation will create valid standard \SpecialChar LaTeX
+ code by outputting
+ what the user sees on screen in \SpecialChar LyX
+:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
 begin_inset FormulaMacro
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1073,7 +1143,7 @@ frac{#2}{82}
 right)} 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1082,12 +1152,13 @@ end_inset
 
 \end_inset
 
- with the LaTeX code:
+ with the \SpecialChar LaTeX
+ code:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1116,7 +1187,7 @@ xyz without substituting the optional argument, e.g.
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1125,12 +1196,15 @@ xyz
 
 \end_inset
 
- LyX will create the following LaTeX code when exporting to LaTeX:
+ \SpecialChar LyX
+ will create the following \SpecialChar LaTeX
+ code when exporting to \SpecialChar LaTeX
+:
 \begin_inset listings
 inline false
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 
 \backslash
@@ -1139,7 +1213,7 @@ xyz{28}
 
 \end_inset
 
-So the optional argument is not optional anymore after export, but explicit.
+So the optional argument is not optional any more after export, but explicit.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1156,7 +1230,8 @@ Last but not least, as in the old implementation you can use
 def
 \family default
  macros, i.e.
- TeX style definitions.
+ \SpecialChar TeX
+ style definitions.
  They don't support optional arguments.
  They don't support 
 \begin_inset Quotes eld
@@ -1188,7 +1263,8 @@ Redefinition
 \end_layout
 
 \begin_layout Standard
-On export LyX will correctly use 
+On export \SpecialChar LyX
+ will correctly use 
 \family typewriter
 
 \backslash
@@ -1201,7 +1277,8 @@ newcommand
 renewcommand
 \family default
  if needed.
- This is not visible in the LyX file format though.
+ This is not visible in the \SpecialChar LyX
+ file format though.
 \end_layout
 
 \begin_layout Subsection
@@ -1244,7 +1321,8 @@ foo
 \end_layout
 
 \begin_layout Standard
-A second way to create them is to write down the LaTeX definition like 
+A second way to create them is to write down the \SpecialChar LaTeX
+ definition like 
 \family typewriter
 
 \backslash
@@ -1272,34 +1350,34 @@ The are the following actions defined:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features>
-<column alignment="center" valignment="top" leftline="true" width="0">
-<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Action
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Menu
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-unfold
 \end_layout
 
@@ -1308,18 +1386,18 @@ math-macro-unfold
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 View/Unfold Math Macro
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-fold
 \end_layout
 
@@ -1328,18 +1406,18 @@ math-macro-fold
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 View/Fold Math Macro
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-add-param
 \end_layout
 
@@ -1348,18 +1426,18 @@ math-macro-add-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Append Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-remove-param
 \end_layout
 
@@ -1368,18 +1446,18 @@ math-macro-remove-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Remove Last Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-append-greedy-param
 \end_layout
 
@@ -1388,18 +1466,18 @@ math-macro-append-greedy-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Append Parameter Eating From the Right
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-make-optional
 \end_layout
 
@@ -1408,18 +1486,18 @@ math-macro-make-optional
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Make First Non-Optional into Optional Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-remove-greedy-param
 \end_layout
 
@@ -1428,18 +1506,18 @@ math-macro-remove-greedy-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Remove Last Parameter Spitting Out To The Right
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-make-nonoptional
 \end_layout
 
@@ -1448,18 +1526,18 @@ math-macro-make-nonoptional
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Make Last Optional into Non-Optional Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-add-optional-param
 \end_layout
 
@@ -1468,18 +1546,18 @@ math-macro-add-optional-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Insert Optional Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true">
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-remove-optional-param
 \end_layout
 
@@ -1488,27 +1566,27 @@ math-macro-remove-optional-param
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Remove Optional Parameter
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row topline="true" bottomline="true">
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 math-macro-add-greedy-optional-param
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edit/Math/Macro/Append Optional Parameter Eating From the Right
 \end_layout
 
@@ -1541,9 +1619,9 @@ Hence if the arity is increased (i.e.
  this is done greedily the macro tries to eat up another inset from the
  right.
  This is the natural way if you import a document and then start to define
- a macros with LyX's math macros.
- Then you want that the macros take the (existing) paramenters from the
- right.
+ a macros with \SpecialChar LyX
+'s math macros.
+ Then you want that the macros take the (existing) parameters from the right.
 \end_layout
 
 \begin_layout Standard
@@ -1553,7 +1631,7 @@ The second case is the non-greedy use case.
  out that your notation needs another index.
  Then you want to insert this non-greedily.
  All macro instances in your text should get another parameter without touching
- the surrouindings.
+ the surroundings.
 \end_layout
 
 \begin_layout Standard
@@ -1569,7 +1647,7 @@ greedy
 \end_layout
 
 \begin_layout Standard
-Some of the actions also take a paramenter to define the position to act
+Some of the actions also take a parameter to define the position to act
  on in the parameter list.
  E.g.
  you can write 
@@ -1584,8 +1662,8 @@ Folding/Unfolding
 \end_layout
 
 \begin_layout Standard
-Sometimes it is desireable to switch to the TeX code of a macro instance,
- i.e.
+Sometimes it is desirable to switch to the \SpecialChar TeX
+ code of a macro instance, i.e.
  without any substitution using the macro definition.
  This can be done with the fold/unfold actions.
  You can use the 
@@ -1655,7 +1733,7 @@ For implementing this one has to customize the
 \family typewriter
 MathInsetNest
 \family default
- a lot to handle the keypresses correctly, because it's probably not directly
+ a lot to handle the key presses correctly, because it's probably not directly
  doable with 
 \family typewriter
 MathInsetNest
