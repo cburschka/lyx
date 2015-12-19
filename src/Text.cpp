@@ -1266,7 +1266,7 @@ void Text::selectWord(Cursor & cur, word_location loc)
 {
 	LBUFERR(this == cur.text());
 	CursorSlice from = cur.top();
-	CursorSlice to = cur.top();
+	CursorSlice to;
 	getWord(from, to, loc);
 	if (cur.top() != from)
 		setCursor(cur, from.pit(), from.pos());
