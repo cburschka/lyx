@@ -34,7 +34,7 @@ public:
 private Q_SLOTS:
 	void updateContents();
 	/// copy log to clipboard
-	void on_copyPB_clicked();
+	//void on_copyPB_clicked();
 	/// find content
 	void find();
 	/// jump to next error message

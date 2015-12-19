@@ -329,11 +329,12 @@ void GuiLog::getContents(ostream & ss) const
 	}
 }
 
-
+/*
 void GuiLog::on_copyPB_clicked()
 {
 	theClipboard().put(fromqstr(logTB->toPlainText()));
 }
+*/
 
 
 Dialog * createGuiLog(GuiView & lv) { return new GuiLog(lv); }
