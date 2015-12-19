@@ -5,7 +5,7 @@ ACLOCAL_AMFLAGS = -I m4 -I config
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 $(srcdir)/configure \
 	$(srcdir)/config.h.in
 
-DIST_SUBDIRS = autotests m4 config development po boost src sourcedoc lib
+DIST_SUBDIRS = 3rdparty autotests m4 config development po boost src sourcedoc lib
 
 if BUILD_CLIENT_SUBDIR
 CLIENT = src/client
