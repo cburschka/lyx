@@ -191,6 +191,7 @@ private:
 	std::string h_shortcut[99];
 	std::string h_spacing;
 	std::string h_suppress_date;
+	std::string h_save_transient_properties;
 	std::string h_textclass;
 	std::string h_tocdepth;
 	std::string h_tracking_changes;

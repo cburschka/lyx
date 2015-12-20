@@ -536,6 +536,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_secnumdepth             = "3";
 	h_shortcut[0]             = "idx";
 	h_spacing                 = "single";
+	h_save_transient_properties = "true";
 	h_suppress_date           = "false";
 	h_textclass               = "article";
 	h_tocdepth                = "3";
@@ -1102,6 +1103,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\lyxformat " << LYX_FORMAT << '\n'
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
+	   << "\\save_transient_properties " << h_save_transient_properties << "\n"
 	   << "\\origin " << origin << "\n"
 	   << "\\textclass " << h_textclass << "\n";
 	string const raw = subdoc ? empty_string() : h_preamble.str();

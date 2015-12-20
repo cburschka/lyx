@@ -381,11 +381,14 @@ public:
 	bool use_bibtopic;
 	/// Split the index?
 	bool use_indices;
-	/// revision tracking for this buffer ?
+	/// Save trensient properties?
+	bool save_transient_properties;
+	/// revision tracking for this buffer ? (this is a transient property)
 	bool track_changes;
 	/** This param decides whether change tracking marks should be used
 	 *  in output (irrespective of how these marks are actually defined;
 	 *  for instance, they may differ for DVI and PDF generation)
+	 *  This is a transient property.
 	 */
 	bool output_changes;
 	///

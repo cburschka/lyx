@@ -2765,12 +2765,14 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_CHANGES_TRACK:
-		undo().recordUndoBufferParams(CursorData());
+		if (params().save_transient_properties)
+			undo().recordUndoBufferParams(CursorData());
 		params().track_changes = !params().track_changes;
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		undo().recordUndoBufferParams(CursorData());
+		if (params().save_transient_properties)
+			undo().recordUndoBufferParams(CursorData());
 		params().output_changes = !params().output_changes;
 		if (params().output_changes) {
 			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");

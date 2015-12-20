@@ -2184,6 +2184,23 @@ def revert_verbatim_star(document):
     revert_verbatim(document, True)
 
 
+def convert_save_props(document):
+    " Add save_transient_properties parameter. "
+    i = find_token(document.header, '\\origin', 0)
+    if i == -1:
+        document.warning("Malformed lyx document: Missing '\\origin'.")
+        return
+    document.header.insert(i, '\\save_transient_properties true')
+
+
+def revert_save_props(document):
+    " Remove save_transient_properties parameter. "
+    i = find_token(document.header, "\\save_transient_properties", 0)
+    if i == -1:
+        return
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -2221,10 +2238,12 @@ convert = [
            [500, []],
            [501, [convert_fontsettings]],
            [502, []],
-           [503, []]
+           [503, []],
+           [504, [convert_save_props]]
           ]
 
 revert =  [
+           [503, [revert_save_props]],
            [502, [revert_verbatim_star]],
            [501, [revert_solution]],
            [500, [revert_fontsettings]],

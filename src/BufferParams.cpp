@@ -369,6 +369,7 @@ BufferParams::BufferParams()
 	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;
+	save_transient_properties = true;
 	track_changes = false;
 	output_changes = false;
 	use_default_options = true;
@@ -673,6 +674,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			frontend::Alert::warning(_("Document class not available"),
 				       msg, true);
 		}
+	} else if (token == "\\save_transient_properties") {
+		lex >> save_transient_properties;
 	} else if (token == "\\origin") {
 		lex.eatLine();
 		origin = lex.getString();
@@ -1015,6 +1018,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
 
+	os << "\\save_transient_properties "
+	   << convert<string>(save_transient_properties) << '\n';
+
 	// the document directory (must end with a path separator)
 	// realPath() is used to resolve symlinks, while addPath(..., "")
 	// ensures a trailing path separator.
@@ -1273,9 +1279,15 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		}
 	}
 
-	os << "\\tracking_changes " << convert<string>(track_changes) << '\n'
-	   << "\\output_changes " << convert<string>(output_changes) << '\n'
-	   << "\\html_math_output " << html_math_output << '\n'
+	os << "\\tracking_changes "
+	   << (save_transient_properties ? convert<string>(track_changes) : "false")
+	   << '\n';
+
+	os << "\\output_changes "
+	   << (save_transient_properties ? convert<string>(output_changes) : "false")
+	   << '\n';
+
+	os << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
 

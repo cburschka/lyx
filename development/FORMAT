@@ -11,6 +11,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-12-20 Guillaume Munch <gm@lyx.org>
+	* Format incremented to 504
+	  New parameter "\save_transient_properties". When set to false, various
+	  settings are no longer written to the file (only with a default
+	  value). These include for now \tracking_changes and \output_changes.
+	  Bug 9841.
+
 2015-11-24 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 503
 	  No new parameters.
