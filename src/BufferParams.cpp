@@ -1274,14 +1274,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	}
 
 	os << "\\tracking_changes " << convert<string>(track_changes) << '\n'
+	   << "\\output_changes " << convert<string>(output_changes) << '\n'
 	   << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
-		// \output_changes is output at a distance from \tracking changes as a
-		// workaround to bug #9841: both parameters can be seen as per-user
-		// preferences and therefore can cause undesirable merge conflicts, in a
-		// multi-author setting, if it were treated as a single block by the
-		// version control system.
-	   << "\\output_changes " << convert<string>(output_changes) << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
 
 	if (html_math_img_scale != 1.0)
