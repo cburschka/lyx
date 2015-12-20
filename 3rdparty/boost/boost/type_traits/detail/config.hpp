@@ -12,7 +12,7 @@
 #ifndef BOOST_CONFIG_HPP
 #include <boost/config.hpp>
 #endif
-
+#include <boost/version.hpp>
 #include <boost/detail/workaround.hpp>
 
 //
