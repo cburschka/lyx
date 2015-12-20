@@ -32,7 +32,9 @@ dnl The test for _AM_PROG_CC_C_O intends to test for automake 1.14 or newer,
 dnl which are the versions where subdir-objects can beused.
 dnl see: https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181023.html
 m4_define([LYX_OBJECTS_LAYOUT], m4_ifdef([_AM_PROG_CC_C_O],[subdir-objects],))
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8] LYX_OBJECTS_LAYOUT)
+# Automake is pulling the historical V7 format. This tar format supports
+# file names only up to 99 characters. tar-pax has no character limit.
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-pax] LYX_OBJECTS_LAYOUT)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 PACKAGE=$save_PACKAGE
 
