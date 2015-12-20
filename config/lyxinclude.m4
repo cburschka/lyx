@@ -377,8 +377,8 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
 	if test x$lyx_cv_with_included_boost = xyes ; then
-	    BOOST_INCLUDES='-I$(top_srcdir)/boost'
-	    BOOST_LIBS='$(top_builddir)/boost/liblyxboost.a'
+	    BOOST_INCLUDES='-I$(top_srcdir)/3rdparty/boost'
+	    BOOST_LIBS='$(top_builddir)/3rdparty/boost/liblyxboost.a'
 	else
 	    AC_LANG_PUSH(C++)
 	    save_LIBS=$LIBS

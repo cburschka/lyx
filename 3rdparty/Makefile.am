@@ -1,6 +1,9 @@
 include $(top_srcdir)/config/common.am
 
-DIST_SUBDIRS = hunspell libiconv zlib
+DIST_SUBDIRS = boost hunspell libiconv zlib
 
-SUBDIRS = hunspell libiconv zlib
+if USE_INCLUDED_BOOST
+BOOST = boost
+endif
 
+SUBDIRS = $(BOOST)

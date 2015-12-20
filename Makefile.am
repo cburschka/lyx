@@ -5,17 +5,14 @@ ACLOCAL_AMFLAGS = -I m4 -I config
 MAINTAINERCLEANFILES += $(srcdir)/aclocal.m4 $(srcdir)/configure \
 	$(srcdir)/config.h.in
 
-DIST_SUBDIRS = 3rdparty autotests m4 config development po boost src sourcedoc lib
+DIST_SUBDIRS = 3rdparty autotests m4 config development po src sourcedoc lib
 
 if BUILD_CLIENT_SUBDIR
 CLIENT = src/client
 endif
 
-if USE_INCLUDED_BOOST
-BOOST = boost
-endif
 
-SUBDIRS = autotests config development po $(BOOST) src sourcedoc lib \
+SUBDIRS = autotests config development po 3rdparty src sourcedoc lib \
 	$(CLIENT) src/tex2lyx
 
 
