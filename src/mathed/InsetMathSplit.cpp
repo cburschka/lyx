@@ -83,6 +83,17 @@ char InsetMathSplit::displayColAlign(idx_type idx) const
 }
 
 
+int InsetMathSplit::displayColSpace(col_type col) const
+{
+	if (name_ == "split" || name_ == "aligned" || name_ == "align")
+		return colSpace(hullAlign, col);
+	if (name_ == "alignedat")
+		return colSpace(hullAlignAt, col);
+	return 0;
+}
+
+
+
 void InsetMathSplit::draw(PainterInfo & pi, int x, int y) const
 {
 	InsetMathGrid::draw(pi, x, y);
