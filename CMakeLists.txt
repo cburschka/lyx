@@ -713,8 +713,8 @@ else()
 	endif()
 	add_definitions(-DBOOST_USER_CONFIG="<config.h>")
 	add_definitions(-DBOOST_SIGNALS_NO_DEPRECATION_WARNING=1)
-	include_directories(${TOP_SRC_DIR}/boost)
-	add_subdirectory(boost "${TOP_BINARY_DIR}/boost")
+	include_directories(${TOP_SRC_DIR}/3rdparty/boost)
+	add_subdirectory(3rdparty/boost "${TOP_BINARY_DIR}/3rdparty/boost")
 endif()
 
 

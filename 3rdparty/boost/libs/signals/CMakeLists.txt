@@ -14,7 +14,7 @@ set(boost_signals_sources
 	trackable.cpp
 )
 
-lyx_add_path(boost_signals_sources ${TOP_SRC_DIR}/boost/libs/signals/src)
+lyx_add_path(boost_signals_sources ${TOP_SRC_DIR}/3rdparty/boost/libs/signals/src)
 
 if(NOT LYX_MERGE_FILES)
 	add_library(boost_signals STATIC ${boost_signals_sources})
