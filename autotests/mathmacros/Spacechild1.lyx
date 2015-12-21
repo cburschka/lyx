@@ -1,0 +1,82 @@
+#LyX 1.6svn created this file. For more info see http://www.lyx.org/
+\lyxformat 318
+\begin_document
+\begin_header
+\textclass article
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\extra_embedded_files ""
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+This is the child document 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ It overwrites the macro 
+\begin_inset Formula $\foo$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout PlainLayout
+(should be 
+\begin_inset Formula $A$
+\end_inset
+
+ in LyX and after first inclusion in TeX).
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\foo}{A1}
+\end_inset
+
+
+\begin_inset Formula \[
+\foo\mbox{ should be }A1\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
