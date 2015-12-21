@@ -171,11 +171,6 @@ export/mathmacros/testcases_speed_(dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF)
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
-#
-# Without the Slovak text it compiles
-# No problems with inserted German text
-export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_.*F)
-
 # lualatex has problems
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
 export/(doc|examples)/id/.*_dvi3_.*F
@@ -201,6 +196,12 @@ export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 
+Sublabel: multilingual
+#
+# Without the Slovak text it compiles
+# No problem with inserted German text
+# No problem if the table is Slovak too
+export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_.*F)
 
 Sublabel: attic
 
