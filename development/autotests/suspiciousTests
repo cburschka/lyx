@@ -101,13 +101,6 @@ export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #  Hebrew script!
 export/examples/he/splash_pdf5_systemF
 #
-# Inside these two files, we state that they should only be expected
-# to work with pdflatex and possibly lualatex.
-export/examples/PDF-(form)_(dvi.*|pdf[^25]*)
-# PDF comments in DVI? No wonder we have:
-# ! Package zref Error: \pdfsavepos is not supported in DVI mode
-export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
-#
 export/templates/IUCr-article_pdf4_systemF
 #
 # Gives the following error:
@@ -196,12 +189,23 @@ export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 
+# Missing characters (Ångström sign, e with cedilla, ...) with system fonts:
+export/doc/(|de/|es/|fr/)Math.*systemF
+
+# Inside these two files, we state that they should only be expected
+# to work with pdflatex and possibly lualatex.
+export/examples/PDF-form_(dvi.*|pdf[^25]*)
+export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
+export/examples/(|de/|fr/)PDF-comment_pdf5_texF
+
+
 Sublabel: multilingual
-#
+
 # Without the Slovak text it compiles
 # No problem with inserted German text
 # No problem if the table is Slovak too
 export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_.*F)
+
 
 Sublabel: attic
 
