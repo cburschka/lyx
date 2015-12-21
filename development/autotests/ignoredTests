@@ -20,3 +20,7 @@ export/.*/zh_CN/.*texF
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
 export/.*/ja/.*_(pdf[245]|dvi3).*
+
+# These files are not expected to compile, they use math-macros
+# defined in master 'autotests/mathmacros/masterOfSpace.lyx'
+export/mathmacros/Spacechild[123].*
