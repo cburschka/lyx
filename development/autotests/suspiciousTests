@@ -189,7 +189,8 @@ export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 
-# Missing characters (\AA sign, e with cedilla, ...) with system fonts:
+# Missing characters (212B ANGSTROM SIGN, e with cedilla, ...) 
+# with system fonts:
 export/doc/(|de/|es/|fr/)Math.*systemF
 
 # Inside these two files, we state that they should only be expected
