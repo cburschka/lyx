@@ -1439,7 +1439,8 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		// split cell
 		splitCell(cur);
-		swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
+		if (ncols() > 1)
+			swap(cell(cur.idx()), cell(cur.idx() + ncols() - 1));
 		if (cur.idx() > 0)
 			--cur.idx();
 		cur.pos() = cur.lastpos();
