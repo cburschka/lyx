@@ -3,16 +3,12 @@
 \begin_document
 \begin_header
 \origin unavailable
-\textclass scrartcl
-\options BCOR8mm,captions=tableheading
+\textclass article
 \use_default_options false
-\begin_modules
-logicalmkup
-\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding iso8859-15
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -29,9 +25,9 @@ logicalmkup
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize default
 \spacing single
-\use_hyperref true
+\use_hyperref false
 \pdf_title "LyX's Development manual"
 \pdf_author "LyX Team"
 \pdf_subject "LyX's development documentation"
@@ -65,9 +61,19 @@ logicalmkup
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 0
 \notefontcolor #0000ff
+\branch slovak
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch czech
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
 \index Index
 \shortcut idx
 \color #008000
@@ -78,74 +84,56 @@ logicalmkup
 \paragraph_indentation default
 \quotes_language english
 \papercolumns 1
-\papersides 2
-\paperpagestyle headings
+\papersides 1
+\paperpagestyle plain
 \tracking_changes false
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\output_changes false
 \html_be_strict true
 \end_header
 
 \begin_body
 
-\begin_layout Title
-Developing \SpecialChar LyX
-
-\end_layout
-
-\begin_layout Subtitle
-Version 2.2.x
-\end_layout
-
-\begin_layout Author
-by the \SpecialChar LyX
- Team
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-If you have comments or error corrections, please send them to the \SpecialChar LyX
- Documentatio
-n mailing list, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-<lyx-docs@lists.lyx.org>
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Introduction
-\end_layout
-
 \begin_layout Standard
 Remove this inserted Slovak text 
+\begin_inset Branch slovak
+status open
+
+\begin_layout Standard
+
 \lang slovak
 slovenský text
 \lang english
- and this document is compilable
+ 
+\end_layout
+
+\end_inset
+
+ and this document is compilable.
+ 
+\lang ngerman
+Deutscher Text
+\lang english
+ is non-problematic.
+\begin_inset Branch czech
+status open
+
+\begin_layout Standard
+ 
+\lang czech
+Czesky text
+\lang english
+ 
+\end_layout
+
+\end_inset
+
+triggers the error, too.
+ But not Polish, Upper Sorbian, Baltic languages, Spanish ...
+ 
+\lang polish
+text.
 \end_layout
 
 \begin_layout Standard
@@ -205,6 +193,11 @@ slovenský text
 This is the minimal table example.
  Removing a line or column makes it compilable again.
  Also setting the language of the table to Slovak helps.
+\end_layout
+
+\begin_layout Standard
+Encoding switches are not to blame.
+ Rather an incompatibility of array or multirow packages with Babels slovak.ldf.
 \end_layout
 
 \end_body
