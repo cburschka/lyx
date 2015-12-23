@@ -83,6 +83,8 @@ What's new
 
 - Fix crash when unfolding/copying macros containing other macros (bug 9490).
 
+- Fix crash when inserting a line in multline math environment (bug 9902). 
+
 - Fix automatic insertion of longtable captions (bug 9692).
 
 - Fix setting of nested minipage via the dialog (bug 8716).
