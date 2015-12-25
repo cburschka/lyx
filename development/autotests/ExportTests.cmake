@@ -136,7 +136,7 @@ macro(maketestname testname inverted listsuspicious listignored listunreliable l
       set(sublabel "unreliable" ${sublabel} ${sublabel2})
       list(REMOVE_ITEM sublabel "export" "inverted" "templates" "mathmacros" "manuals" "autotests")
     else()
-      string(REGEX MATCH "_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx16|xhtml)$" _v ${${testname}})
+      string(REGEX MATCH "_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$" _v ${${testname}})
       # check if test _may_ be in listsuspicious
       set(sublabel2 "")
       if (_v)
@@ -303,26 +303,28 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
   foreach(f ${nolang_lyx_files} ${lang_lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
-    set(TestName "export/${libsubfolder}/${f}_lyx16")
-    set(mytestlabel ${testlabel})
-    maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
-    if(TestName)
-      add_test(NAME ${TestName}
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-        COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
-        -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
-        -Dlyx=$<TARGET_FILE:${_lyx}>
-        -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
-        -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
-        -Dformat=lyx16x
-        -Dextension=16.lyx
-        -Dfile=${f}
-        -Dinverted=${inverted}
-        -DTOP_SRC_DIR=${TOP_SRC_DIR}
-        -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
-        -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-      setmarkedtestlabel(${TestName} ${mytestlabel})
-    endif()
+    foreach(_lyx_format_num 16 21)
+      set(TestName "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
+      set(mytestlabel ${testlabel})
+      maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+      if(TestName)
+        add_test(NAME ${TestName}
+          WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+          COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+          -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
+          -Dlyx=$<TARGET_FILE:${_lyx}>
+          -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+          -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
+          -Dformat=lyx${_lyx_format_num}x
+          -Dextension=${_lyx_format_num}.lyx
+          -Dfile=${f}
+          -Dinverted=${inverted}
+          -DTOP_SRC_DIR=${TOP_SRC_DIR}
+          -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
+          -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+        setmarkedtestlabel(${TestName} ${mytestlabel})
+      endif()
+    endforeach()
     if(LYX_PYTHON_EXECUTABLE)
       set(lyx2lyxtestlabel "lyx2lyx")
       # For use of lyx2lyx we need the python executable

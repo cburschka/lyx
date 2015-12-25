@@ -7,8 +7,8 @@
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
-# format    = lyx16x|xhtml
-# extension = 16.lyx|xhtml
+# format    = lyx16x|lyx21x|xhtml
+# extension = 16.lyx|21.lyx|xhtml
 # file      = xxx
 #
 # Script should be called like:
@@ -68,6 +68,25 @@ if (NOT _err)
   endif()
 endif()
 
+include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
+# If no error, and extension matches '\.lyx$', try to load the created lyx file
+if (NOT _err)
+  if (result_file_name MATCHES "\\.lyx$")
+    message(STATUS "check load of ${result_file_name}")
+    set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
+    set(ENV{LANG} "en") # to get all error-messages in english
+    execute_process(
+      COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
+      RESULT_VARIABLE _err
+      ERROR_VARIABLE lyxerr)
+    if (NOT _err)
+      CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+    endif()
+  else()
+    message(STATUS "\"${result_file_name}\" is not a lyx file, do not check load")
+  endif()
+endif()
+
 if(inverted)
   string(COMPARE EQUAL  ${_err} 0 _erg)
 else()
@@ -75,6 +94,6 @@ else()
 endif()
 execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
 if(_erg)
-  message(STATUS "Exporting ${f}.lyx to ${format}")
+  message(STATUS "Exporting ${file}.lyx to ${format}")
   message(FATAL_ERROR "Export failed")
 endif()
