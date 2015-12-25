@@ -30,8 +30,8 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, lyx2latex, \
-  length_in_bp
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
+  lyx2verbatim, length_in_bp
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -842,11 +842,7 @@ def revert_forest(document):
 
         add_to_preamble(document, ["\\usepackage{forest}"])
 
-        document.body[i:j + 1] = ["\\begin_inset ERT", "status collapsed", "",
-                "\\begin_layout Plain Layout", "", "\\backslash", 
-                "begin{forest}", "\\end_layout", "", "\\begin_layout Plain Layout",
-                content, "\\end_layout", "", "\\begin_layout Plain Layout",
-                "\\backslash", "end{forest}", "", "\\end_layout", "", "\\end_inset"]
+        document.body[i:j + 1] = put_cmd_in_ert("\\begin{forest}" + content + "\\end{forest}")
         # no need to reset i
 
 
@@ -869,7 +865,7 @@ def revert_glossgroup(document):
 
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
-        content = lyx2latex(document, document.body[beginPlain : endPlain])
+        content = lyx2verbatim(document, document.body[beginPlain : endPlain])
 
         document.body[i:j + 1] = ["{", "", content, "", "}"]
         # no need to reset i
@@ -904,7 +900,7 @@ def revert_newgloss(document):
                     i += 1
                     continue
                 argendPlain = find_end_of_inset(document.body, argbeginPlain)
-                argcontent = lyx2latex(document, document.body[argbeginPlain : argendPlain - 2])
+                argcontent = lyx2verbatim(document, document.body[argbeginPlain : argendPlain - 2])
 
                 document.body[j:j] = ["", "\\begin_layout Plain Layout","\\backslash", "glt ",
                     argcontent, "\\end_layout"]
@@ -917,10 +913,26 @@ def revert_newgloss(document):
 
             beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
             endPlain = find_end_of_layout(document.body, beginPlain)
-            content = lyx2latex(document, document.body[beginPlain : endPlain])
+            content = lyx2verbatim(document, document.body[beginPlain : endPlain])
 
             document.body[beginPlain + 1:endPlain] = [content]
             i = beginPlain + 1
+
+    # Dissolve ERT insets
+    for glosse in glosses:
+        i = 0
+        while True:
+            i = find_token(document.body, "\\begin_inset ERT", i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of ERT inset")
+                i += 1
+                continue
+            ert = get_ert(document.body, i, True)
+            document.body[i:j+1] = [ert]
+            i = i + 1
 
 
 def convert_newgloss(document):

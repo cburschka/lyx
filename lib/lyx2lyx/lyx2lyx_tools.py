@@ -48,13 +48,18 @@ put_cmd_in_ert(arg):
     document.body[i:j+1] = ert
 
 lyx2latex(document, lines):
-  Here, lines is a list of lines of LyX material we want to convert 
+  Here, lines is a list of lines of LyX material we want to convert
   to LaTeX. We do the best we can and return a string containing
   the translated material.
 
+lyx2verbatim(document, lines):
+  Here, lines is a list of lines of LyX material we want to convert
+  to verbatim material (used in ERT an the like). We do the best we
+  can and return a string containing the translated material.
+
 latex_length(slen):
-    Convert lengths (in LyX form) to their LaTeX representation. Returns 
-    (bool, length), where the bool tells us if it was a percentage, and 
+    Convert lengths (in LyX form) to their LaTeX representation. Returns
+    (bool, length), where the bool tells us if it was a percentage, and
     the length is the LaTeX representation.
 
 '''
@@ -133,7 +138,7 @@ def put_cmd_in_ert(arg):
     return ret
 
 
-def get_ert(lines, i):
+def get_ert(lines, i, verbatim = False):
     'Convert an ERT inset into LaTeX.'
     if not lines[i].startswith("\\begin_inset ERT"):
         return ""
@@ -156,7 +161,7 @@ def get_ert(lines, i):
         elif lines[i] == "\\end_layout":
             while i + 1 < j and lines[i+1] == "":
                 i = i + 1
-        elif lines[i] == "\\backslash":
+        elif lines[i] == "\\backslash" and not verbatim:
             ret = ret + "\\"
         else:
             ret = ret + lines[i]
@@ -267,6 +272,15 @@ def lyx2latex(document, lines):
           line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
           line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
       content += line
+    return content
+
+
+def lyx2verbatim(document, lines):
+    'Convert some LyX stuff into corresponding verbatim stuff, as best we can.'
+
+    content = lyx2latex(document, lines)
+    content = re.sub(r'\\(?!backslash)', r'\n\\backslash\n', content)
+
     return content
 
 
