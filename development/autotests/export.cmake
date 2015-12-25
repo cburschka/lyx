@@ -45,15 +45,17 @@ if(format MATCHES "dvi|pdf")
   if(NOT _erg)
     message(FATAL_ERROR "Export failed while converting")
   endif()
+  set(result_file_name ${file}_${_ft}.${extension})
 else()
   message(STATUS "Not converting")
   set(LYX_SOURCE "${LYX_ROOT}/${file}.lyx")
+  # Font-type not relevant for lyx16/lyx21 exports
+  set(result_file_name ${file}.${extension})
 endif()
 
-set(result_file_name ${file}_${_ft}.${extension})
 message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${result_file_name})
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${result_file_name} ${result_file_name}.emergency)
 execute_process(
   COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
   RESULT_VARIABLE _err)

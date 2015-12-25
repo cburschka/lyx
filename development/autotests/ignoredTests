@@ -24,3 +24,7 @@ export/.*/ja/.*_(pdf[245]|dvi3).*
 # These files are not expected to compile, they use math-macros
 # defined in master 'autotests/mathmacros/masterOfSpace.lyx'
 export/mathmacros/Spacechild[123].*
+
+# These files are subdocuments, they are not expected to behave
+export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
+export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
