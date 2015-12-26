@@ -1418,7 +1418,6 @@ def revert_jss(document):
           h = find_token(document.body, "\\begin_inset Flex Code Chunk", h)
         if h != -1:
           endh = find_end_of_inset(document.body, h)
-          document.body[endh + 1 : endh] = ["\\end_layout"]
           document.body[endh : endh + 1] = put_cmd_in_ert("\\end{CodeChunk}")
           document.body[h : h + 3] = put_cmd_in_ert("\\begin{CodeChunk}")
           document.body[h - 1 : h] = ["\\begin_layout Standard"]
