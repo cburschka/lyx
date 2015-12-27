@@ -89,10 +89,7 @@ def revert_tabularvalign(document):
       if p != -1:
           q = document.body[fline].find("tabularvalignment")
           if q != -1:
-              # FIXME
-              # This seems wrong: It removes everything after 
-              # tabularvalignment, too.
-              document.body[fline] = document.body[fline][:q - 1] + '>'
+              document.body[fline] = re.sub(r' tabularvalignment=\"[a-z]+\"', "", document.body[fline])
           i += 1
           continue
 
@@ -108,10 +105,7 @@ def revert_tabularvalign(document):
       # delete tabularvalignment
       q = document.body[fline].find("tabularvalignment")
       if q != -1:
-          # FIXME
-          # This seems wrong: It removes everything after 
-          # tabularvalignment, too.
-          document.body[fline] = document.body[fline][:q - 1] + '>'
+          document.body[fline] = re.sub(r' tabularvalignment=\"[a-z]+\"', "", document.body[fline])
 
       # don't add a box when centered
       if tabularvalignment == 'c':
