@@ -14,6 +14,7 @@
 #       -DLYXFILE=xxx \
 #       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -DPARAMS_DIR="${TOP_SRC_DIR}/development/autotests" \
+#       -Dinverted=${inverted}
 #       -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake"
 #
 
@@ -27,14 +28,20 @@ execute_process(
   ERROR_VARIABLE lyxerr)
 
 message(STATUS "Error code of lyx = ${_err}")
-string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 
 #
 # Ignore messages between "reconfiguring user directory" and "LyX: Done!"
 # (Reconfigure-messages are not symptom of an error)
 include(${PARAMS_DIR}/CheckLoadErrors.cmake)
-CheckLoadErrors(lyxerr "${PARAMS_DIR}" _erg)
+if (NOT _err)
+  CheckLoadErrors(lyxerr "${PARAMS_DIR}" _err)
+endif()
 
+if(inverted)
+  string(COMPARE EQUAL  ${_err} 0 _erg)
+else()
+  string(COMPARE NOTEQUAL  ${_err} 0 _erg)
+endif()
 if(_erg)
   # We print here the whole error output, even the ignored part
   message(FATAL_ERROR "lyx gave warnings/errors:\n${lyxerr}")

@@ -136,7 +136,7 @@ macro(maketestname testname inverted listsuspicious listignored listunreliable l
       set(sublabel "unreliable" ${sublabel} ${sublabel2})
       list(REMOVE_ITEM sublabel "export" "inverted" "templates" "mathmacros" "manuals" "autotests")
     else()
-      string(REGEX MATCH "_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$" _v ${${testname}})
+      string(REGEX MATCH "(^check_load|_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$)" _v ${${testname}})
       # check if test _may_ be in listsuspicious
       set(sublabel2 "")
       if (_v)
@@ -355,9 +355,10 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
         -Dlyx=$<TARGET_FILE:${_lyx}>
         -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+        -Dinverted=${inverted}
         -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
       setmarkedtestlabel(${TestName} ${mytestlabel})
-      set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
+      #set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
