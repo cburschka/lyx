@@ -305,7 +305,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
     foreach(_lyx_format_num 16 21)
       set(TestName "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
-      set(mytestlabel ${testlabel})
+      set(mytestlabel ${testlabel} "lyx2lyx" "load")
       maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
         add_test(NAME ${TestName}
