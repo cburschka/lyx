@@ -1910,72 +1910,100 @@ def revert_moderncv_2(document):
     i += 1
 
 
-def convert_moderncv(document):
-  " Convert the Fax and Mobile inset of moderncv to the new phone inset "
-  
-  if document.textclass != "moderncv":
-    return
-  i = 0
-  j = 0
-  lineArg = 0
-  while True:
-    # \mobile
-    i = find_token(document.body, "\\begin_layout Mobile", i)
-    if i == -1:
-      return
-    j = find_end_of_layout(document.body, i)
-    if j == -1:
-      document.warning("Malformed LyX document: Can't find end of Mobile layout")
-      i += 1
-      return
-    document.body[i + 1 : i + 1] = ["\\begin_inset Argument 1", "status open", "",
-                        "\\begin_layout Plain Layout", "mobile", "\\end_layout", "",
-                        "\\end_inset", ""]
-    # \fax
-    i = find_token(document.body, "\\begin_layout Fax", i)
-    if i == -1:
-      return
-    j = find_end_of_layout(document.body, i)
-    if j == -1:
-      document.warning("Malformed LyX document: Can't find end of Fax layout")
-      i += 1
-      return
-    document.body[i + 1 : i + 1] = ["\\begin_inset Argument 1", "status open", "",
-                        "\\begin_layout Plain Layout", "fax", "\\end_layout", "",
-                        "\\end_inset", ""]
-    # \firstname and \familyname
-    i1 = find_token(document.body, "\\begin_layout FirstName", 0)
-    if i1 == -1:
-      return
-    j1 = find_end_of_layout(document.body, i1)
-    if j1 == -1:
-      document.warning("Malformed LyX document: Can't find end of FirstName layout")
-      i1 += 1
-      return
-    FirstName = document.body[i1 + 1 : i1 + 2]
-    i2 = find_token(document.body, "\\begin_layout FamilyName", 0)
-    if i2 == -1:
-      return
-    j2 = find_end_of_layout(document.body, i2)
-    if j2 == -1:
-      document.warning("Malformed LyX document: Can't find end of FamilyName layout")
-      i2 += 1
-      return
-    FamilyName = document.body[i2 + 1 : i2 + 2]
-    if j1 > j2:
-      k = j1
-      l = i2
-    else:
-      k = j2
-      l = i1
-    document.body[k + 1 : k + 1] = ["\\begin_layout Name", "\\begin_inset Argument 1", "status open", "",
-                        "\\begin_layout Plain Layout", FirstName[0], "\\end_layout", "",
-                        "\\end_inset", "", FamilyName[0], "\\end_layout", ""]
-    #document.body[i2 + 1 : i2 + 1] = ["hellok: ", str(k)]
-    del(document.body[l : k])
-    i += 1
-    i1 += 1
-    i2 += 1
+def convert_moderncv_phone(document):
+    " Convert the Fax and Mobile inset of moderncv to the new phone inset "
+
+    if document.textclass != "moderncv":
+        return
+    i = 0
+    j = 0
+    lineArg = 0
+
+    phone_dict = {
+        "Mobile" : "mobile",
+        "Fax" : "fax",
+        }
+
+    rx = re.compile(r'^\\begin_layout (\S+)$')
+    while True:
+        # substitute \fax and \mobile by \phone[fax] and \phone[mobile], respectively
+        i = find_token(document.body, "\\begin_layout", i)
+        if i == -1:
+            return
+
+        m = rx.match(document.body[i])
+        val = ""
+        if m:
+            val = m.group(1)
+        if val not in list(phone_dict.keys()):
+            i += 1
+            continue
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Mobile layout")
+            i += 1
+            return
+
+        document.body[i : i + 1] = ["\\begin_layout Phone", "\\begin_inset Argument 1", "status open", "",
+                            "\\begin_layout Plain Layout", phone_dict[val], "\\end_layout", "",
+                            "\\end_inset", ""]
+
+
+def convert_moderncv_name(document):
+    " Convert the FirstName and LastName layout of moderncv to the general Name layout "
+
+    if document.textclass != "moderncv":
+        return
+
+    fnb = 0 # Begin of FirstName inset
+    fne = 0 # End of FirstName inset
+    lnb = 0 # Begin of LastName (FamilyName) inset
+    lne = 0 # End of LastName (FamilyName) inset
+    nb = 0 # Begin of substituting Name inset
+    ne = 0 # End of substituting Name inset
+    FirstName = [] # FirstName content
+    FamilyName = [] # LastName content
+
+    while True:
+        # locate FirstName
+        fnb = find_token(document.body, "\\begin_layout FirstName", fnb)
+        if fnb != -1:
+            fne = find_end_of_layout(document.body, fnb)
+            if fne == -1:
+                document.warning("Malformed LyX document: Can't find end of FirstName layout")
+                return
+            FirstName = document.body[fnb + 1 : fne]
+        # locate FamilyName
+        lnb = find_token(document.body, "\\begin_layout FamilyName", lnb)
+        if lnb != -1:
+            lne = find_end_of_layout(document.body, lnb)
+            if lne == -1:
+                document.warning("Malformed LyX document: Can't find end of FamilyName layout")
+                return
+            FamilyName = document.body[lnb + 1 : lne]
+        # Determine the region for the substituting Name layout
+        if fnb == -1 and lnb == -1: # Neither FirstName nor FamilyName exists -> Do nothing
+            return
+        elif fnb == -1: # Only FamilyName exists -> New Name insets replaces that
+            nb = lnb
+            ne = lne
+        elif lnb == -1: # Only FirstName exists -> New Name insets replaces that
+            nb = fnb
+            ne = fne
+        elif fne > lne: # FirstName position before FamilyName -> New Name insets spans
+            nb = lnb #     from FamilyName begin
+            ne = fne #     to FirstName end
+        else: #           FirstName position before FamilyName -> New Name insets spans
+            nb = fnb #     from FirstName begin
+            ne = lne #     to FamilyName end
+
+        # Insert the substituting layout now. If FirstName exists, use an otpional argument.
+        if FirstName == []:
+            document.body[nb : ne + 1] = ["\\begin_layout Name"] + FamilyName + ["\\end_layout", ""]
+        else:
+            document.body[nb : ne + 1] = ["\\begin_layout Name", "\\begin_inset Argument 1", "status open", "",
+                                "\\begin_layout Plain Layout"] + FirstName + ["\\end_layout", "",
+                                "\\end_inset", ""] + FamilyName + ["\\end_layout", ""]
 
 
 def revert_achemso(document):
@@ -2180,7 +2208,7 @@ convert = [
            [496, [convert_nounzip]],
            [497, [convert_external_bbox]],
            [498, []],
-           [499, [convert_moderncv]],
+           [499, [convert_moderncv_phone, convert_moderncv_name]],
            [500, []],
            [501, [convert_fontsettings]],
            [502, []],
