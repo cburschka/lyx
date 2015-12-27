@@ -28,6 +28,7 @@
 #
 
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
+set(Structure_Script "${TOP_SRC_DIR}/development/autotests/beginEndStructureCheck.pl")
 set(LanguageFile "${TOP_SRC_DIR}/lib/languages")
 set(GetTempDir "${TOP_SRC_DIR}/development/autotests/getTempDir.pl")
 set(_ft ${fonttype})
@@ -78,9 +79,15 @@ if (NOT _err)
     set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
     set(ENV{LANG} "en") # to get all error-messages in english
     execute_process(
-      COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
+      COMMAND ${PERL_EXECUTABLE} ${Structure_Script} "${WORKDIR}/${result_file_name}"
       RESULT_VARIABLE _err
       ERROR_VARIABLE lyxerr)
+    if (NOT _err)
+      execute_process(
+        COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
+        RESULT_VARIABLE _err
+        ERROR_VARIABLE lyxerr)
+    endif()
     if (NOT _err)
       CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
     endif()
