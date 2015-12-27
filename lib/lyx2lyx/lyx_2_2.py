@@ -922,17 +922,26 @@ def revert_newgloss(document):
     for glosse in glosses:
         i = 0
         while True:
-            i = find_token(document.body, "\\begin_inset ERT", i)
+            i = find_token(document.body, glosse, i)
             if i == -1:
-                return
+                break
             j = find_end_of_inset(document.body, i)
             if j == -1:
-                document.warning("Malformed LyX document: Can't find end of ERT inset")
+                document.warning("Malformed LyX document: Can't find end of Glosse inset")
                 i += 1
                 continue
-            ert = get_ert(document.body, i, True)
-            document.body[i:j+1] = [ert]
-            i = i + 1
+            while True:
+                ert = find_token(document.body, "\\begin_inset ERT", i, j)
+                if ert == -1:
+                    break
+                ertend = find_end_of_inset(document.body, ert)
+                if ertend == -1:
+                    document.warning("Malformed LyX document: Can't find end of ERT inset")
+                    ert += 1
+                    continue
+                ertcontent = get_ert(document.body, ert, True)
+                document.body[ert : ertend + 1] = [ertcontent]
+            i += 1
 
 
 def convert_newgloss(document):
