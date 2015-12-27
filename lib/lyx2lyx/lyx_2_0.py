@@ -117,7 +117,7 @@ def revert_tabularvalign(document):
       if tabularvalignment == 'c':
           i = end
           continue
-      subst = ['\\end_layout', '\\end_inset']
+      subst = ['\\end_inset', '\\end_layout']
       document.body[end:end] = subst # just inserts those lines
       subst = ['\\begin_inset Box Frameless',
           'position "' + tabularvalignment +'"',
