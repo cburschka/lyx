@@ -52,6 +52,7 @@ else()
   set(LYX_SOURCE "${LYX_ROOT}/${file}.lyx")
   # Font-type not relevant for lyx16/lyx21 exports
   set(result_file_name ${file}.${extension})
+  set(result_file_name2 ${file}.${extension2})
 endif()
 
 message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
@@ -75,21 +76,32 @@ include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
 # If no error, and extension matches '\.lyx$', try to load the created lyx file
 if (NOT _err)
   if (result_file_name MATCHES "\\.lyx$")
-    message(STATUS "check load of ${result_file_name}")
     set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
     set(ENV{LANG} "en") # to get all error-messages in english
+    message(STATUS "check structures of ${result_file_name}")
     execute_process(
       COMMAND ${PERL_EXECUTABLE} ${Structure_Script} "${WORKDIR}/${result_file_name}"
       RESULT_VARIABLE _err
       ERROR_VARIABLE lyxerr)
     if (NOT _err)
+      message(STATUS "check load of ${result_file_name}")
       execute_process(
         COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
         RESULT_VARIABLE _err
         ERROR_VARIABLE lyxerr)
-    endif()
-    if (NOT _err)
-      CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+      if (NOT _err)
+        CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+        if (NOT _err)
+          execute_process(
+            COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name2} ${result_file_name}
+            RESULT_VARIABLE _err
+            ERROR_VARIABLE lyxerr)
+          if (NOT _err)
+            message(STATUS "check load of ${result_file_name2}")
+            CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+          endif()
+        endif()
+      endif()
     endif()
   else()
     message(STATUS "\"${result_file_name}\" is not a lyx file, do not check load")
