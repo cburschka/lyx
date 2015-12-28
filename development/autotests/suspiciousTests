@@ -6,24 +6,6 @@
 # They get also the test-feature 'inverted', i.e.
 # they are reported as failing if the export works without error.
 
-# Hebrew docs do not currently work with LuaTeX
-export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
-export/.*/he/(splash).*(dvi3)_.*
-export/examples/he/splash_pdf5_texF
-#
-# FIXME
-# After LyX 2.1 is released, apply the patch and remove these
-# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/id_.*(dvi3)_.*
-export/.*/id_.*(pdf5)_texF
-export/doc/attic/id_UserGuide_pdf[45]_systemF
-#
-# FIXME
-# Similar to the Indonesian support, see:
-# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/hu/.*(dvi3)_.*
-export/.*/hu/.*(pdf5)_texF
-
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/(lilypond|sweave|knitr)_pdf
 
@@ -33,23 +15,14 @@ export/examples/ja/(lilypond|sweave|knitr)_pdf
 # 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
 export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
 #
-# There is no non-TeX support for Ukrainian with LuaTeX. See:
-# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
-export/doc/uk/Intro_dvi3_systemF
-#
 # The following documents likely fail because of excessive preamble code that
 # is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
 # it is unlikely that a user would want to use system fonts to view LyX's
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
-export/doc/(es|fr)/UserGuide_pdf4_systemF
-export/doc/es/UserGuide_dvi3_systemF
 #export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
-# GM: Seems to be a case of the polyglossia + language-nesting problem
-export/doc/(de/|es/|fr/)Customization_pdf4_systemF
-export/doc/es/Customization_pdf5_systemF
 #
 export/examples/es/ejemplo_con_lyx_dvi3_systemF
 export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
@@ -93,14 +66,7 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/doc/he/(Intro|Tutorial)_pdf4_texF
 export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #
-# GM: False positive: if the font is e.g. set to
-# LinuxLibertine and LinuxBiolinum, there are no missing characters but
-# polyglossia anyway throws the error:
-#
-#  ! Package polyglossia Error: The current roman font does not contain the
-#  Hebrew script!
-export/examples/he/splash_pdf5_systemF
-#
+
 export/templates/IUCr-article_pdf4_systemF
 #
 # Gives the following error:
@@ -110,16 +76,8 @@ export/templates/IUCr-article_pdf4_systemF
 export/examples/H-P-statements_pdf[45]_systemF
 
 # TODO: We need to determine the correct reason for failure (most probably
-# incompatible packages, maybe also loading of lmodern.sty in the user
-# preamble) or state that we don't know it.
+# incompatible packages) or state that we don't know it.
 export/doc/de/Additional_pdf4_texF
-export/doc/de/Customization_pdf5_systemF
-#
-# GM: Babel's Russian language definition file has the same
-# problem as LyX 2.0: it does not care for the combi Xe/Lua + TeX fonts: after
-# testing the engine, it switches to "unicode modus".
-export/examples/(ru|uk)/splash_(dvi3|pdf[45])_texF
-#
 
 export/examples/linguistics_(dvi3|pdf[45])_systemF
 #
@@ -129,24 +87,12 @@ export/examples/linguistics_(dvi3|pdf[45])_systemF
 # don't know where it comes from. On first inspection, the output looks OK.
 # Explore later.
 export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
-#
-# GM: * lmodern.sty
-#     * missing commands and missing characters
-export/doc/es/UserGuide_pdf5_systemF
-#
+
 # GM: Non-ASCII in ERT
 export/doc/fr/Additional_pdf4_texF
 #
-# GM: lmodern.sty? + maybe more
-export/doc/fr/(Customization_pdf5|UserGuide_pdf5)_systemF
-#
 # GM: language nesting error (polyglossia) (known bug)
 export/doc/nb/Intro_pdf5_systemF
-#
-# GM: Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
-# This fails unless the inputencoding is set to utf-8, too.
-export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
-export/doc/(ru|uk)/splash_(dvi3|pdf[45])_texF
 
 export/doc/sk/Intro_pdf5_systemF
 export/examples/(|de/|fr/)PDF-comment_pdf5_texF
@@ -165,11 +111,54 @@ check_load/mathmacros/testcases_speed
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
-# lualatex has problems
+Sublabel: todo
+
+# LyX bugs and problems with the sample documents that require attention.
+# (LyX bugs with a ticket number go to sublabel: bug.)
+
+# LyX index sorting fails with ASCII (and hence also with XeTeX).
+# (! >20 popup windows!)
+export/doc/(es|fr)/UserGuide_pdf4_texF
+
+# the ukrainean splash has preamble code loading russian babel
+# in the preamble (Why?)
+# TODO: remove the LaTeX preamble code:
+# fixes the inverted tests below,
+# side-effects: Ukrainean instead of Russian date, different hyphenation.
+export/examples/uk/splash_(dvi3|pdf[45])_texF
+
+# missing commands (polyglossia?)
+# Explore! (works with dvi3 or language_package==babel)
+export/doc/fr/UserGuide_pdf[45]_systemF
+
+# Wrong language name for LuaTeX
+# After LyX 2.1 is released, apply the patch and remove these
+# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
-export/(doc|examples)/id/.*_dvi3_.*F
+export/doc/attic/id_UserGuide_dvi3.*
+export/doc/attic/id_UserGuide_pdf5.*
+export/(doc|examples)/id/.*_dvi3.*
 export/(doc|examples)/id/.*_pdf5_texF
 
+# Hungarian: Similar to the Indonesian support, see
+# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
+export/.*/hu/.*(dvi3)_.*
+export/.*/hu/.*(pdf5)_texF
+
+# False positive: even with fonts that have all required characters
+# (e.g. LinuxLibertine and LinuxBiolinum) polyglossia throws the error:
+#  ! Package polyglossia Error: The current roman font does not contain the
+#  Hebrew script!
+export/examples/he/splash_pdf5_systemF
+
+# Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts
+# (Babel is required for Spanish math functions like \sen)
+# add "\@ifpackageloaded{fontspec}{\unaccentedoperators}{}" to the preamble!
+export/doc/es/UserGuide_.*_systemF
+
+# Missing characters ( ͡ (U+0361), ṡ (U+1E61) in LM, use different system font?
+# + language nesting problem (may disappear after completed translation)
+export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
 
 Sublabel: TeXlimit
 
@@ -190,7 +179,7 @@ export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 
-# Missing characters (212B ANGSTROM SIGN, e with cedilla, ...) 
+# Missing characters (212B ANGSTROM SIGN, e with cedilla, ...)
 # with system fonts:
 export/doc/(|de/|es/|fr/)Math.*systemF
 
@@ -200,12 +189,31 @@ export/examples/PDF-form_(dvi.*|pdf[^25]*)
 export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
 export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 
+# Hebrew docs do not currently work with LuaTeX
+export/.*/he/.*(pdf5|dvi3).*
+# ... nor with XeTeX and 8-bit TeX fonts
+# These exports correctly fail now on TeX Live 2014. Although they compiled
+# without error on TeX Live 2013, the resulting PDFs had gibberish.
+export/.*/he/.*pdf4_texF
+
+# Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
+# This fails unless the inputencoding is set to utf-8, too.
+export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
+export/examples/ru/splash_(dvi3|pdf[45])_texF
+
+# dvi3 uses Babel. Autostrings use Cyrillic LICRs,
+# however these are missing in xunicode.sty. 2 solutions:
+#  LuX: use polyglossia also with dvi3 (LuaTeX) and non-TeX fonts,
+#  LaTeX: define Cyrillic LICRs for EU1 and EU2 (similar to greek-euenc.def)
+export/doc/uk/Intro_dvi3_systemF
+
 
 Sublabel: multilingual
 
-# Without the Slovak text it compiles
-# No problem with inserted German text
+# Without the Czech or Slovak text it compiles
+# No problem with inserted German (or other foreign language) text
 # No problem if the table is Slovak too
+# Seems to be a problem with Check and Slovak Babel support. File a bug there.
 export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_.*F)
 
 
@@ -225,4 +233,4 @@ export/doc/attic/eu_UserGuide_pdf.*
 # (i.e. could be ERT, package incompatiblity, ...)
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
-export/doc/attic/id_UserGuide_pdf4_systemF
+export/doc/attic/id_UserGuide_pdf[45]_systemF
