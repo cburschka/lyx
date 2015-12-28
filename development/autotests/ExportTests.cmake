@@ -317,7 +317,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
           -Dformat=lyx${_lyx_format_num}x
           -Dextension=${_lyx_format_num}.lyx
-          -Dextension2=${_lyx_format_num}.${_lyx_format_num}.lyx
+          -DLYX_FORMAT_NUM=${_lyx_format_num}
           -Dfile=${f}
           -Dinverted=${inverted}
           -DTOP_SRC_DIR=${TOP_SRC_DIR}

@@ -20,6 +20,7 @@
 #       -Dformat=xxx \
 #       -Dfonttype=xxx \
 #       -Dextension=xxx \
+#       -DLYX_FORMAT_NUM=${_lyx_format_num} \
 #       -Dfile=xxx \
 #       -Dinverted=[01] \
 #       -DTOP_SRC_DIR=${TOP_SRC_DIR}
@@ -51,60 +52,99 @@ else()
   message(STATUS "Not converting")
   set(LYX_SOURCE "${LYX_ROOT}/${file}.lyx")
   # Font-type not relevant for lyx16/lyx21 exports
-  set(result_file_name ${file}.${extension})
-  set(result_file_name2 ${file}.${extension2})
+  set(result_file_base ${file})
 endif()
 
-message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${result_file_name} ${result_file_name}.emergency)
-execute_process(
-  COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
-  RESULT_VARIABLE _err)
+if (extension MATCHES "\\.lyx$")
+  set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
+  set(ENV{LANG} "en") # to get all error-messages in english
 
-#check if result file created
-if (NOT _err)
-  if (NOT EXISTS "${result_file_name}")
-    message(STATUS "Expected result file \"${result_file_name}\" does not exist")
-    set(_err -1)
-  else()
-    message(STATUS "Expected result file \"${result_file_name}\" exists")
-  endif()
-endif()
-
-include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
-# If no error, and extension matches '\.lyx$', try to load the created lyx file
-if (NOT _err)
-  if (result_file_name MATCHES "\\.lyx$")
-    set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-    set(ENV{LANG} "en") # to get all error-messages in english
+  include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
+  execute_process(
+    COMMAND ${CMAKE_COMMAND} -E md5sum "${LYX_SOURCE}"
+    OUTPUT_VARIABLE source_md5sum_x
+    RESULT_VARIABLE _err
+    ERROR_VARIABLE lyxerr)
+  string(REGEX REPLACE " .*" "" source_md5sum ${source_md5sum_x})
+  message(STATUS "MD5SUM of \"${LYX_SOURCE}\" is ${source_md5sum}")
+  foreach(_lv RANGE 1 5)
+    set(result_file_base "${result_file_base}.${LYX_FORMAT_NUM}")
+    set(result_file_name "${result_file_base}.lyx")
+    file(REMOVE "${result_file_name}" "${result_file_name}.emergency" )
+    message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
+    execute_process(
+      COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
+      RESULT_VARIABLE _err
+      ERROR_VARIABLE lyxerr)
+    if(_err)
+      break()
+    else()
+      if (NOT EXISTS "${result_file_name}")
+        message(STATUS "Expected result file \"${result_file_name}\" does not exist")
+        set(_err -1)
+        break()
+      else()
+        message(STATUS "Expected result file \"${result_file_name}\" exists")
+        checkLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+        if(_err)
+          break()
+        endif()
+      endif()
+    endif()
+    execute_process(
+      COMMAND ${CMAKE_COMMAND} -E md5sum ${result_file_name}
+      OUTPUT_VARIABLE result_md5sum_x
+      RESULT_VARIABLE _err
+      ERROR_VARIABLE lyxerr)
+    string(REGEX REPLACE " .*" "" result_md5sum ${result_md5sum_x})
+    message(STATUS "MD5SUM of \"${result_file_name}\" is ${result_md5sum}")
+    if(_err)
+      break()
+    endif()
     message(STATUS "check structures of ${result_file_name}")
     execute_process(
       COMMAND ${PERL_EXECUTABLE} ${Structure_Script} "${WORKDIR}/${result_file_name}"
       RESULT_VARIABLE _err
       ERROR_VARIABLE lyxerr)
-    if (NOT _err)
-      message(STATUS "check load of ${result_file_name}")
-      execute_process(
-        COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
-        RESULT_VARIABLE _err
-        ERROR_VARIABLE lyxerr)
-      if (NOT _err)
-        CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
-        if (NOT _err)
-          execute_process(
-            COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name2} ${result_file_name}
-            RESULT_VARIABLE _err
-            ERROR_VARIABLE lyxerr)
-          if (NOT _err)
-            message(STATUS "check load of ${result_file_name2}")
-            CheckLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
-          endif()
-        endif()
-      endif()
+    if(_err)
+      break()
     endif()
-  else()
-    message(STATUS "\"${result_file_name}\" is not a lyx file, do not check load")
+    message(STATUS "check load of ${result_file_name}")
+    execute_process(
+      COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
+      RESULT_VARIABLE _err
+      ERROR_VARIABLE lyxerr)
+    if(_err)
+      break()
+    endif()
+    checkLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+    if(_err)
+      break()
+    endif()
+    # Check if result file identical to source file
+    if(result_md5sum STREQUAL ${source_md5sum})
+      message(STATUS "Source(${LYX_SOURCE}) and dest(${result_file_name}) are equal")
+      break()
+    endif()
+    set(source_md5sum ${result_md5sum})
+    set(LYX_SOURCE ${result_file_name})
+  endforeach()
+else()
+  message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
+  file(REMOVE ${result_file_name})
+  execute_process(
+    COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
+    RESULT_VARIABLE _err)
+
+  #check if result file created
+  if (NOT _err)
+    if (NOT EXISTS "${result_file_name}")
+      message(STATUS "Expected result file \"${result_file_name}\" does not exist")
+      set(_err -1)
+    else()
+      message(STATUS "Expected result file \"${result_file_name}\" exists")
+    endif()
   endif()
 endif()
 
