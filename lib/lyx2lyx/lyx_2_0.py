@@ -557,7 +557,6 @@ def revert_nomencl_cwidth(document):
       j = find_end_of_inset(document.body, i)
       l = find_token(document.body, "width", i, j)
       if l == -1:
-        document.warning("Can't find width option for nomencl_print!")
         i = j
         continue
       width = get_quoted_value(document.body, "width", i, j)
