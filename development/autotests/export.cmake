@@ -51,8 +51,12 @@ if(format MATCHES "dvi|pdf")
 else()
   message(STATUS "Not converting")
   set(LYX_SOURCE "${LYX_ROOT}/${file}.lyx")
-  # Font-type not relevant for lyx16/lyx21 exports
-  set(result_file_base ${file})
+  if(extension MATCHES "\\.lyx$")
+    # Font-type not relevant for lyx16/lyx21 exports
+    set(result_file_base ${file})
+  else()
+    set(result_file_name ${file}.${extension})
+  endif()
 endif()
 
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
