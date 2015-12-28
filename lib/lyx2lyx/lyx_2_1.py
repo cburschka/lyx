@@ -1689,46 +1689,48 @@ def revert_latexargs(document):
 
 
 def revert_IEEEtran(document):
-  '''
-  Reverts InsetArgument of
-  Page headings
-  Biography
-  Biography without photo
-  to TeX-code
-  '''
-  if document.textclass == "IEEEtran":
+    '''
+    Reverts InsetArgument of
+    Page headings
+    Biography
+    Biography without photo
+    to TeX-code
+    '''
+    if document.textclass != "IEEEtran":
+        return
+
     i = 0
     i2 = 0
     j = 0
     k = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Page headings", i)
-      if i != -1:
-        revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
-        i += 1
-      if i2 != -1:
-        i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
-      if i2 != -1:
-        revert_Argument_to_TeX_brace(document, i2, 0, 1, 1, False, False)
-        i2 = i2 + 1
-      if j != -1:
-        j = find_token(document.body, "\\begin_layout Biography without photo", j)
-      if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 0, 1, 1, True, False)
-        j += 1
-      if k != -1:
-        k = find_token(document.body, "\\begin_layout Biography", k)
-        kA = find_token(document.body, "\\begin_layout Biography without photo", k)
-        if k == kA and k != -1:
-          k += 1
-          continue
-      if k != -1:
-        # start with the second argument, therefore 2
-        revert_Argument_to_TeX_brace(document, k, 0, 2, 2, True, False)
-        k += 1
-      if i == -1 and i2 == -1 and j == -1 and k == -1:
-        return
+        if i != -1:
+            i = find_token(document.body, "\\begin_layout Page headings", i)
+        if i != -1:
+            revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
+            i += 1
+        if i2 != -1:
+            i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
+        if i2 != -1:
+            revert_Argument_to_TeX_brace(document, i2, 0, 1, 1, False, False)
+            i2 = i2 + 1
+        if j != -1:
+            j = find_token(document.body, "\\begin_layout Biography without photo", j)
+        if j != -1:
+            revert_Argument_to_TeX_brace(document, j, 0, 1, 1, True, False)
+            j += 1
+        if k != -1:
+            k = find_token(document.body, "\\begin_layout Biography", k)
+            kA = find_token(document.body, "\\begin_layout Biography without photo", k)
+            if k == kA and k != -1:
+                k += 1
+                continue
+        if k != -1:
+            # start with the second argument, therefore 2
+            revert_Argument_to_TeX_brace(document, k, 0, 2, 2, True, False)
+            k += 1
+        if i == -1 and i2 == -1 and j == -1 and k == -1:
+            return
 
 
 def revert_IEEEtran_2(document):
@@ -1748,41 +1750,43 @@ def revert_IEEEtran_2(document):
 
 
 def convert_IEEEtran(document):
-  '''
-  Converts ERT of
-  Page headings
-  Biography
-  Biography without photo
-  to InsetArgument
-  '''
-  if document.textclass == "IEEEtran":
+    '''
+    Converts ERT of
+    Page headings
+    Biography
+    Biography without photo
+    to InsetArgument
+    '''
+    if document.textclass != "IEEEtran":
+        return
+
     i = 0
     j = 0
     k = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Page headings", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
-        i += 1
-      if j != -1:
-        j = find_token(document.body, "\\begin_layout Biography without photo", j)
-      if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 1, 1, False, True, False)
-        j += 1
-      if k != -1:
-        # assure that we don't handle Biography Biography without photo
-        k = find_token(document.body, "\\begin_layout Biography", k)
-        kA = find_token(document.body, "\\begin_layout Biography without photo", k - 1)
-      if k == kA and k != -1:
-        k += 1
-        continue
-      if k != -1:
-        # the argument we want to convert is the second one
-        convert_TeX_brace_to_Argument(document, k, 2, 2, False, True, False)
-        k += 1
-      if i == -1 and j == -1 and k == -1:
-        return
+        if i != -1:
+            i = find_token(document.body, "\\begin_layout Page headings", i)
+        if i != -1:
+            convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
+            i += 1
+        if j != -1:
+            j = find_token(document.body, "\\begin_layout Biography without photo", j)
+        if j != -1:
+            convert_TeX_brace_to_Argument(document, j, 1, 1, False, True, False)
+            j += 1
+        if k != -1:
+            # assure that we don't handle Biography Biography without photo
+            k = find_token(document.body, "\\begin_layout Biography", k)
+            kA = find_token(document.body, "\\begin_layout Biography without photo", k - 1)
+        if k == kA and k != -1:
+            k += 1
+            continue
+        if k != -1:
+            # the argument we want to convert is the second one
+            convert_TeX_brace_to_Argument(document, k, 2, 2, False, True, False)
+            k += 1
+        if i == -1 and j == -1 and k == -1:
+            return
 
 
 def revert_AASTeX(document):
