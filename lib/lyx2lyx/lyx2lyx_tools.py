@@ -47,6 +47,13 @@ put_cmd_in_ert(arg):
     ert = put_cmd_in_ert(content)
     document.body[i:j+1] = ert
 
+get_ert(lines, i[, verbatim]):
+  Here, lines is a list of lines of LyX material containing an ERT inset,
+  whose content we want to convert to LaTeX. The ERT starts at index i.
+  If the optional (by default: False) bool verbatim is True, the content
+  of the ERT is returned verbatim, that is in LyX syntax (not LaTeX syntax)
+  for the use in verbatim insets.
+
 lyx2latex(document, lines):
   Here, lines is a list of lines of LyX material we want to convert
   to LaTeX. We do the best we can and return a string containing
@@ -161,8 +168,11 @@ def get_ert(lines, i, verbatim = False):
         elif lines[i] == "\\end_layout":
             while i + 1 < j and lines[i+1] == "":
                 i = i + 1
-        elif lines[i] == "\\backslash" and not verbatim:
-            ret = ret + "\\"
+        elif lines[i] == "\\backslash":
+            if verbatim:
+                ret = ret + "\n" + lines[i] + "\n"
+            else:
+                ret = ret + "\\"
         else:
             ret = ret + lines[i]
         i = i + 1
