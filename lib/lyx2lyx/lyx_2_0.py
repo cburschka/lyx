@@ -1579,10 +1579,13 @@ def convert_use_makebox(document):
 
 def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
+
   if document.textclass != "IEEEtran":
     return
+
   revert_flex_inset(document.body, "IEEE membership", "\\IEEEmembership")
   revert_flex_inset(document.body, "Lowercase", "\\MakeLowercase")
+
   layouts = ("Special Paper Notice", "After Title Text", "Publication ID",
              "Page headings", "Biography without photo")
   latexcmd = {"Special Paper Notice": "\\IEEEspecialpapernotice",
@@ -1590,6 +1593,7 @@ def revert_IEEEtran(document):
               "Publication ID":       "\\IEEEpubid"}
   obsoletedby = {"Page headings":            "MarkBoth",
                  "Biography without photo":  "BiographyNoPhoto"}
+
   for layout in layouts:
     i = 0
     while True:
@@ -1601,7 +1605,7 @@ def revert_IEEEtran(document):
           document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
           i += 1
           continue
-        if layout in obsoletedby:
+        if layout in list(obsoletedby.keys()):
           document.body[i] = "\\begin_layout " + obsoletedby[layout]
           i = j
           continue
