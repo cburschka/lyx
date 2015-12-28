@@ -181,7 +181,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
             else:
               beginBrace = find_token(document.body, "{", endBrace, end_layout)
             # assure that the ERTs are consecutive (11 or 12 depending if there is a space between the ERTs or not)
-            if beginBrace == endBrace + 11 or beginBrace == endBrace + 12:
+            if beginBrance != -1 and (beginBrace == endBrace + 11 or beginBrace == endBrace + 12):
               end = find_token(document.body, "\\end_inset", beginBrace)
               document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
               if loop == 1:
