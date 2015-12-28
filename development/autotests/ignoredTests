@@ -29,3 +29,6 @@ export/mathmacros/Spacechild[123].*
 export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|foreword|glossary|part|preface|referenc|solutions)_lyx[0-9][0-9]
 export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
 export/examples/thesis/(Acknowledgments|Appendix|Summary|chapter-[12])_lyx[0-9][0-9]
+
+# Endless loop after the third roundtrip
+export/templates/IEEEtran-Journal_lyx16
