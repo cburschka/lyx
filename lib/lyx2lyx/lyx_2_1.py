@@ -58,7 +58,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
     Reverts an InsetArgument to TeX-code
     usage:
     revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
-    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfBegin is the line  of the \\begin_layout or \\begin_inset statement
     LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
     StartArgument is the number of the first argument that needs to be converted
     EndArgument is the number of the last argument that needs to be converted or the last defined one
@@ -111,7 +111,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
     - { and } surround a mandatory argument of an environment
     usage:
     convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment, isOpt)
-    LineOfBeginLayout/Inset is the line  of the \begin_layout or \begin_inset statement
+    LineOfBeginLayout/Inset is the line  of the \\begin_layout or \\begin_inset statement
     StartArgument is the number of the first ERT that needs to be converted
     EndArgument is the number of the last ERT that needs to be converted
     isInset must be true, if braces inside an InsetLayout needs to be converted
