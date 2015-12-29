@@ -13,7 +13,9 @@ export/examples/ja/(lilypond|sweave|knitr)_pdf
 #     paragraph ended in non-Japaneese language
 #     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
 # 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
-export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
+#
+# Both reasons invalid since the commit 6b0632eea288348b912f98b79bc871830b6a3d98
+#export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
 #
 # The following documents likely fail because of excessive preamble code that
 # is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
