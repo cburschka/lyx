@@ -59,71 +59,61 @@ else()
   endif()
 endif()
 
-set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-if (extension MATCHES "\\.lyx$")
-  set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-  set(ENV{LANG} "en") # to get all error-messages in english
-
-  include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
+function(get_md5sum msource mresult mreserr)
   execute_process(
-    COMMAND ${CMAKE_COMMAND} -E md5sum "${LYX_SOURCE}"
-    OUTPUT_VARIABLE source_md5sum_x
-    RESULT_VARIABLE _err
-    ERROR_VARIABLE lyxerr)
-  string(REGEX REPLACE " .*" "" source_md5sum ${source_md5sum_x})
-  message(STATUS "MD5SUM of \"${LYX_SOURCE}\" is ${source_md5sum}")
+    COMMAND ${CMAKE_COMMAND} -E md5sum ${${msource}}
+    OUTPUT_VARIABLE msource_md5sum_x
+    RESULT_VARIABLE mres_err)
+  if (NOT mres_err)
+    string(REGEX REPLACE " .*" "" msource_md5sum ${msource_md5sum_x})
+    set(${mresult} ${msource_md5sum} PARENT_SCOPE)
+    message(STATUS "MD5SUM of \"${${msource}}\" is ${msource_md5sum}")
+  else()
+    set(${mresult} "xx" PARENT_SCOPE)
+    message(STATUS "Error getting MD5SUM of \"${${msource}}\"")
+  endif()
+  set(${mreserr} ${mres_err} PARENT_SCOPE)
+endfunction()
+
+set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
+set(ENV{LANG} "en") # to get all error-messages in english
+set(ENV{LC_ALL} "C")
+if (extension MATCHES "\\.lyx$")
+  include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
+  get_md5sum(LYX_SOURCE source_md5sum _err)
   foreach(_lv RANGE 1 5)
     set(result_file_base "${result_file_base}.${LYX_FORMAT_NUM}")
     set(result_file_name "${result_file_base}.lyx")
+    message(STATUS "check structures of ${LYX_SOURCE}")
+    execute_process(
+      COMMAND ${PERL_EXECUTABLE} ${Structure_Script} "${WORKDIR}/${result_file_name}"
+      RESULT_VARIABLE _err)
+    if(_err)
+      break()
+    endif()
     file(REMOVE "${result_file_name}" "${result_file_name}.emergency" )
     message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
+    message(STATUS "This implicitly checks load of ${LYX_SOURCE}")
     execute_process(
       COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
       RESULT_VARIABLE _err
       ERROR_VARIABLE lyxerr)
     if(_err)
       break()
+    elseif(NOT EXISTS "${result_file_name}")
+      message(STATUS "Expected result file \"${result_file_name}\" does not exist")
+      set(_err -1)
+      break()
     else()
-      if (NOT EXISTS "${result_file_name}")
-        message(STATUS "Expected result file \"${result_file_name}\" does not exist")
-        set(_err -1)
+      message(STATUS "Expected result file \"${result_file_name}\" exists")
+      checkLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
+      if(_err)
         break()
-      else()
-        message(STATUS "Expected result file \"${result_file_name}\" exists")
-        checkLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
-        if(_err)
-          break()
-        endif()
       endif()
     endif()
-    execute_process(
-      COMMAND ${CMAKE_COMMAND} -E md5sum ${result_file_name}
-      OUTPUT_VARIABLE result_md5sum_x
-      RESULT_VARIABLE _err
-      ERROR_VARIABLE lyxerr)
-    string(REGEX REPLACE " .*" "" result_md5sum ${result_md5sum_x})
-    message(STATUS "MD5SUM of \"${result_file_name}\" is ${result_md5sum}")
+    get_md5sum(result_file_name result_md5sum _err)
     if(_err)
-      break()
-    endif()
-    message(STATUS "check structures of ${result_file_name}")
-    execute_process(
-      COMMAND ${PERL_EXECUTABLE} ${Structure_Script} "${WORKDIR}/${result_file_name}"
-      RESULT_VARIABLE _err
-      ERROR_VARIABLE lyxerr)
-    if(_err)
-      break()
-    endif()
-    message(STATUS "check load of ${result_file_name}")
-    execute_process(
-      COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${result_file_name}
-      RESULT_VARIABLE _err
-      ERROR_VARIABLE lyxerr)
-    if(_err)
-      break()
-    endif()
-    checkLoadErrors(lyxerr "${TOP_SRC_DIR}/development/autotests" _err)
-    if(_err)
+      # Somehow the created file is not readable?
       break()
     endif()
     # Check if result file identical to source file
