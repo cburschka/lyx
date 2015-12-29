@@ -206,7 +206,8 @@ sub interpretedCopy($$$$)
   initLyxStack(\%font, $fontT, $inputEncoding);
 
   while (my $l = <FI>) {
-    chomp($l);
+    $l =~ s/[\n\r]+$//;
+    #chomp($l);
     my $rStatus = checkLyxLine($l);
     if ($rStatus->{found}) {
       my $rF = $rStatus->{result};
