@@ -96,7 +96,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -1025,11 +1025,7 @@ OS Xのみ
 たい場合に便利です(例えば、プログラムによっては、画像をグラフィックスと短文でクリップボードに保管しますが、後者は往々にして意味を持たないことがあります)。メニ
 ュー要素の
 \family sans
-特別な貼付け
-\lang english
-\SpecialChar menuseparator
-
-\lang japanese
+特別な貼付け\SpecialChar menuseparator
 平文（行を連結して）
 \family default
 は、
@@ -1045,20 +1041,12 @@ OS Xのみ
 の表としてコピーする場合に役立ちます。
 メニュー要素の
 \family sans
-特別な貼付け
-\lang english
-\SpecialChar menuseparator
-
-\lang japanese
+特別な貼付け\SpecialChar menuseparator
 選択（行を連結して）
 \family default
 と
 \family sans
-特別な貼付け
-\lang english
-\SpecialChar menuseparator
-
-\lang japanese
+特別な貼付け\SpecialChar menuseparator
 選択
 \family default
 は、第一次選択から貼り付けを行います。通常、これは現在選択されている文です。
@@ -1118,7 +1106,7 @@ reference "sec:詳細な検索と置換"
 \end_layout
 
 \begin_layout Standard
-差込枠と呼ばれる、注釈・フロート等々は、解体することができます。つまり、差込枠を削除して、その中身を通常の本文に戻すことができるのです。差込枠の解体は、カーソル
+差込枠と呼ばれる、註釈・フロート等々は、解体することができます。つまり、差込枠を削除して、その中身を通常の本文に戻すことができるのです。差込枠の解体は、カーソル
 を差込枠の先頭に置いて
 \family sans
 Backspace
@@ -1131,54 +1119,51 @@ Delete
 \end_layout
 
 \begin_layout Standard
+通常の本文にカーソルがあるときに、
+\begin_inset Flex Ruby
+status collapsed
 
-\lang english
-Using the shortcut 
-\lang japanese
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-
-\lang english
- while the cursor is in normal text selects the whole document.
- When the cursor is inside an inset 
-\lang japanese
-
+を押すと、全文書を選択します。カーソルが差込枠内部にあるときには、
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-
-\lang english
- selects the content of the inset.
- Using 
-\lang japanese
-
+は差込枠の内容を選択します。
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-
-\lang english
- consecutively will increase the selection to the whole inset and then to
- the whole document.
- The shortcut 
-\lang japanese
-
+を繰り返し押すと、選択範囲は、全差込枠から全文書へと拡大します。捷径
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
-
-\lang english
- selects the whole document in every case and puts the cursor to the end
- of the document.
+は、つねに全文書を選択し、カーソルを文末に移動します。
 \end_layout
 
 \begin_layout Section
@@ -1349,7 +1334,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Enumerate
-差込枠(脚注・注釈・フロート等)
+差込枠(脚註・註釈・フロート等)
 \begin_inset Separator parbreak
 \end_inset
 
@@ -1473,14 +1458,14 @@ name "subsec:文書構造"
 \end_layout
 
 \begin_layout Standard
-文書構造ウィンドウ上部のプルダウンボックスを使えば、図表一覧のような目次様オブジェクトだけでなく、脚注一覧や、ラベル・相互参照(第
+文書構造ウィンドウ上部のプルダウンボックスを使えば、図表一覧のような目次様オブジェクトだけでなく、脚註一覧や、ラベル・相互参照(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:相互参照"
 
 \end_inset
 
-節参照)・注釈・引用(第
+節参照)・註釈・引用(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:書誌情報"
@@ -4068,7 +4053,7 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LaTeX
-のタイトルページは3つの部分を持っています。タイトルそれ自身と著者の名前、それと著者の連絡先や謝辞を書いた脚注です。あるタイプの文章では、\SpecialChar LaTeX
+のタイトルページは3つの部分を持っています。タイトルそれ自身と著者の名前、それと著者の連絡先や謝辞を書いた脚註です。あるタイプの文章では、\SpecialChar LaTeX
 はこれらすべてと今日の
 日付を独立したページに印刷します。また別のタイプの文章では「タイトル」ページは文章の一番はじめのページの上の方に印刷されます。
 \end_layout
@@ -4134,7 +4119,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-また脚注を使って、謝辞や著者の連絡先を入れることができます。
+また脚註を使って、謝辞や著者の連絡先を入れることができます。
 \end_layout
 
 \begin_layout Subsection
@@ -4495,7 +4480,7 @@ name "subsec:見出しの短縮形"
 \end_layout
 
 \begin_layout Itemize
-節見出し環境では傍注は使えません。
+節見出し環境では傍註は使えません。
 \end_layout
 
 \begin_layout Itemize
@@ -5370,14 +5355,12 @@ Example: これは
 \end_layout
 
 \begin_layout Subsubsection
-\SpecialChar LyX
-リスト
+ラベル付け
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-かしようかき@箇条書き!lyxりすと@\SpecialChar LyX
-リスト
+かしようかき@箇条書き!らへるつけ@ラベル付け
 \end_layout
 
 \end_inset
@@ -5388,11 +5371,11 @@ status collapsed
 \begin_layout Standard
 
 \family sans
-リスト
+ラベル付け
 \family default
-環境は\SpecialChar LyX
-が\SpecialChar LaTeX
-を拡張したものです。
+環境は、\SpecialChar LaTeX
+の\SpecialChar LyX
+独自拡張です。
 \end_layout
 
 \begin_layout Standard
@@ -5400,111 +5383,98 @@ status collapsed
 \family sans
 箇条書き(記述)
 \family default
-環境と同じように、
+と同様、
 \family sans
-リスト
+ラベル付け
 \family default
-環境はそれぞれの項目にユーザーが決めたラベルをつけます。
-\family sans
-リスト
-\family default
-環境と他の3つの環境の違いを説明しましょう。
+箇条書きは、各箇条書き項目にユーザーが定義したラベルを付けますが、さらに高機能です。その性質を下記に記します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 項目ラベル \SpecialChar LyX
-は項目の最初の「単語」をラベルに使います。最初の行の初めての
+は、各行の最初の「単語」を項目ラベルとして使用します。項目の最初の行が始まって最初の
 \family sans
 スペース
 \family default
-がラベルと残りのテキストとの区切りになります。もし2つ以上の単語をラベルに使いたい場合は以前に説明した
+が、ラベルの終わりの印です。項目ラベルに2単語以上を必要とする場合は、上述の通り、保護スペースを使用してください。
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+余白 ご覧のとおり、\SpecialChar LyX
+のつける項目ラベルと項目本文の余白は異なります。本文部分では、左余白は、ラベルの既定幅に少し余分な空白を加えた大きさとなり、項目ラベルよりも
+大きくなっています。
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+ラベル幅 \SpecialChar LyX
+は、ラベル幅か既定幅のどちらか大きい方を使用します。ラベル幅の方が大きい場合には、ラベルは、最初の行の中に「くい込み」ます。言い換えれば、最初の行の本
+文を、他の項目本文の左余白に揃えません。
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+既定幅 
 \family sans
-保護された空白
+ラベル付け
 \family default
-を使って下さい。
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-余白 見ればわかるように、\SpecialChar LyX
-はラベルと項目の本文とでは違う余白を使います。項目の本文にはより大きな余白がつかわれ、それは既定のラベルの幅に少しスペースを追加したも
-のになっています。
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-ラベル幅 ラベルの幅には、\SpecialChar LyX
-は実際のラベルの幅と既定のラベルの幅を比べて大きい方を使います。もし実際の幅の方が大きければラベルは本文の1行目に食い込みます。つまり
-、1行目はそれ以降の行と異なる左余白になります。
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-既定の幅 
-\family sans
-リスト
-\family default
-環境のすべての項目の本文が、同じ左余白を持つように、既定のラベル幅を設定することができます。
+環境中にある全項目の本文左余白が同じになるように、既定ラベル幅を設定することができます。
 \begin_inset Newline newline
 \end_inset
 
-既定の幅を変更するには、リストのすべての項目を選択して、
+既定幅を変更するには、箇条書き中の全項目を選択して、
 \family sans
 編集\SpecialChar menuseparator
 段落設定
 \family default
-ダイアログを開いてください。
+ダイアログ(ツールバーボタン
+\begin_inset Info
+type  "icon"
+arg   "layout-paragraph"
+\end_inset
+
+)を開くと、
 \family sans
 最長のラベル
 \family default
-と書かれたボックス内の文字列が既定のラベル幅を決定します。もっとも長いラベルの文字列をそのまま入力するか、あるいは文字「M」を複数個入れてもいいでしょう。文字「
-M」はアルファベット中でもっとも幅の広い文字なので、\SpecialChar LaTeX
-では幅を表す標準単位として用いられているのです。「M」を幅の単位として用いていれば、
-\family sans
-リスト
-\family default
-環境内でラベルを変更する度に
+ボックス中のテキストが既定ラベル幅を規定します。ここには、お使いの最長のラベルの文を入れてもいいですし、代わりに文字の「M」をいくつか入れてもかまいません。Mは
+、最も幅の広いアルファベットなので、\SpecialChar LaTeX
+での幅の標準単位となっています。「M」を幅単位として使えば、ラベル付け環境のラベルを変更する度に
 \family sans
 最長のラベル
 \family default
-の内容を書き換える必要がなくなります。
+の中身を書き換える必要がありません。
 \begin_inset Newline newline
 \end_inset
 
-あらかじめ定められた既定幅は、「00.00.0000」の文字列と同じ長さ(6M相当)になっています。
+事前に設定された既定幅は、「00.00.0000」の幅になっています(6
+\begin_inset space ~
+\end_inset
+
+Mと同じ幅)。
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-リスト
+ラベル付け
 \family default
-環境は、
+箇条書きは、
 \family sans
 箇条書き(記述)
 \family default
-と同じように、ある単語をその説明文から目立つようにしたい場合に使用してください。
-\family sans
-リスト
-\family default
-環境は、
-\family sans
-箇条書き(記述)
-\family default
-と同じことを別のレイアウトで実現する方法です。
+と同じように、本文を叙述するのに一語を本文から抜き出す必要があるときに用います。ラベル付けは、この目的を達するもう一つの方法を、別のレイアウトで提供するものです
+。
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-リスト
+ラベル付け
 \family default
-環境は、それ自身や別の型の
-\family sans
-リスト
-\family default
-環境の中に入れ子にすることができます。これは、他の箇条書き環境と同様の動作をします。入れ子についての詳細は、第
+環境は、それ自身や別の型の箇条書き環境の中に入れ子にすることができます。これは、他の箇条書き環境と同様の動作をします。入れ子についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:入れ子"
@@ -5517,10 +5487,10 @@ reference "sec:入れ子"
 \begin_layout Standard
 
 \family sans
-リスト
+ラベル付け
 \family default
-環境には、もう一つ特徴があります。例でわかるように、\SpecialChar LyX
-は、既定で項目ラベルを左揃えにします。
+環境には、もう一つ特徴があります。例に見るように、\SpecialChar LyX
+は、既定で項目ラベルを左揃えにしますが、
 \family sans
 水平フィル
 \family default
@@ -6880,15 +6850,13 @@ status collapsed
 \family default
 環境と
 \family sans
-Verbatim
+原文儘(verbatim)
 \family default
-\lang english
-and
+および
 \family sans
-\lang japanese
-Verbatim
+原文儘(verbatim)*
 \family default
-*環境は、\SpecialChar LyX
+環境は、\SpecialChar LyX
 中で空白を連続して入れることのできる唯一の環境です。ただし空白行を入れたい場合には
 \begin_inset Info
 type  "shortcut"
@@ -7076,7 +7044,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsubsection
-無調整(verbatim)
+原文儘(verbatim)
 \begin_inset Index idx
 status collapsed
 
@@ -7091,7 +7059,7 @@ Verbatim
 status collapsed
 
 \begin_layout Plain Layout
-むちょうせい@無調整(verbatim)
+けんふんまま@原文儘(verbatim)
 \end_layout
 
 \end_inset
@@ -7102,7 +7070,7 @@ status collapsed
 \begin_layout Standard
 
 \family sans
-無調整(verbatim)
+原文儘(verbatim)
 \family default
 環境は、
 \family sans
@@ -7111,7 +7079,7 @@ status collapsed
 \family default
 に類似の環境ですが、中身がコンピュータのコンソールテキストのように取り扱われる点が異なります。つまり、
 \family sans
-無調整(verbatim)
+原文儘(verbatim)
 \family default
 には段落が存在しないので、
 \family sans
@@ -7133,7 +7101,7 @@ Space
 \family default
 とは違って、
 \family sans
-無調整(verbatim)
+原文儘(verbatim)
 \family default
 環境では以下のことを行うことができません。
 \end_layout
@@ -7143,27 +7111,25 @@ Space
 \end_layout
 
 \begin_layout Itemize
-ハイパーリンク・ボックス・脚注・傍注・注釈・数式・引用・目次項目・用語項目・ラベル・表・図・プログラムリスト・フロート・\SpecialChar TeX
+ハイパーリンク・ボックス・脚註・傍註・註釈・数式・引用・目次項目・用語項目・ラベル・表・図・プログラムリスト・フロート・\SpecialChar TeX
 コードを入れること
 \end_layout
 
 \begin_layout Standard
 これらの特性によって、
 \family sans
-Verbatim
+原文儘(verbatim)
 \family default
 はタイプライタのように動作します。以下がその用例です。
 \end_layout
 
 \begin_layout Verbatim
-
-これは無調整(verbatim)環境です。
+これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です。
 \end_layout
 
@@ -7176,7 +7142,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7184,25 +7149,21 @@ Verbatim
 
 \begin_layout Standard
 
-\lang english
-The 
 \family sans
-Verbatim*
+原文儘(verbatim)*
 \family default
- environment is identical to 
+環境は、
 \family sans
-Verbatim
+原文儘(verbatim)
 \family default
- with the difference that spaces appear in the output as the character '
+と同一ですが、空白が、出力中では「
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-'.
- An example:
+」文字として表記されるところが異なります。下記はその例です。
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -7475,13 +7436,13 @@ arg   "depth-decrement"
 \begin_layout Itemize
 
 \family sans
-無調整(verbatim)
+原文儘(verbatim)
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-無調整*(verbatim*)
+原文儘*(verbatim*)
 \end_layout
 
 \end_deeper
@@ -8173,10 +8134,6 @@ status collapsed
 
 \begin_layout Subsection
 使い方と一般的な性質
-\end_layout
-
-\begin_layout Subsubsection
-入れ子の上限
 \end_layout
 
 \begin_layout Standard
@@ -9331,40 +9288,31 @@ name "subsec:入れ子の分離"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To split an existing list into two lists, set the cursor at the end of a
- list item and use the menu 
+既存の箇条書きを2つの箇条書きに分けるには、カーソルを箇条書き項目の終わりに置いて、
 \family sans
-Edit\SpecialChar menuseparator
-Start New Environment
+編集\SpecialChar menuseparator
+新たな環境を開始
 \family default
-.
- This inserts a plain separator (red line in LyX) and behind it the new
- list.
- Alternatively set the cursor at the end of a list item and press 
+メニューを選択します。すると、分離記号が挿入され(\SpecialChar LyX
+中では赤線)、その後から新規の箇条書きが始まります。あるいは、カーソルを箇条書き項目の終わりに置いて、
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- three times.
- This inserts a paragraph separator (red arrow in LyX).
- The difference between both separator types is that the plain separator
- only splits the list and not the current paragraph.
- One can change the separator type by right-clicking on it.
+を3回押します。すると、段落分離記号が挿入されます(\SpecialChar LyX
+中では赤矢印)。両分離型の違いは、単なる分離記号は、箇条書きを分離するけれども、現段落を分離しないというとこ
+ろです。分離記号を右クリックすると、この分離型を変更することができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In general, you get an environment separator when you press 
+一般的に、標準でない環境の直後の標準環境で
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- in a Standard environment immediately after a non-Standard one.
+を押すと、段落分離記号が得られます。
 \end_layout
 
 \begin_layout Section
@@ -11772,7 +11720,7 @@ Roman
 基本寸法
 \emph default
 を指しています。\SpecialChar LyX
-は、この寸法を基準に、(脚注や上付き・下付き文字などの)他のすべてのフォント寸法を決めます。必要ならば、文章部分のフォント寸法は、
+は、この寸法を基準に、(脚註や上付き・下付き文字などの)他のすべてのフォント寸法を決めます。必要ならば、文章部分のフォント寸法は、
 \family sans
 文字様式
 \family default
@@ -12579,7 +12527,7 @@ This is the Small caps font shape
 \family default
 ・
 \family sans
-黄
+黄・茶・濃灰色・灰色・薄灰色・ライム・橙・オリーブ・桃・紫・ティール・青紫
 \family default
 が指定できるほか、
 \family sans
@@ -12595,54 +12543,7 @@ This is the Small caps font shape
 \family sans
 本文
 \family default
-に指定した既定色が使用されることを意味します
-\lang english
-, 
-\family sans
-Brown
-\family default
-, 
-\family sans
-Darkgray
-\family default
-, 
-\family sans
-Gray
-\family default
-, 
-\family sans
-Lightgray
-\family default
-, 
-\family sans
-Lime
-\family default
-, 
-\family sans
-Orange
-\family default
-, 
-\family sans
-Olive
-\family default
-, 
-\family sans
-Pink
-\family default
-, 
-\family sans
-Purple
-\family default
-, 
-\family sans
-Teal
-\family default
- and 
-\family sans
-Violet
-\family default
-\lang japanese
-。
+に指定した既定色が使用されることを意味します。
 \begin_inset Index idx
 status collapsed
 
@@ -13951,7 +13852,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-作成した文書の完成版—つまりすべての改頁が実際に行われ、脚注は正しく連番を振られ、その他諸々のことが完成しているもの—を画面で確認したい場合には、
+作成した文書の完成版—つまりすべての改頁が実際に行われ、脚註は正しく連番を振られ、その他諸々のことが完成しているもの—を画面で確認したい場合には、
 \family sans
 表示
 \family default
@@ -15076,16 +14977,6 @@ fest」のようになります。
 \begin_layout Subsection
 \SpecialChar LyX
 の固有名称
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:LyXの固有名称"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -15096,103 +14987,48 @@ Lyx@\SpecialChar LyX
 
 \end_inset
 
-ここまでで、「\SpecialChar LaTeX
-」という単語が、つねにばらばらの寸法と高さを持つ文字で表されていることに気づかれたはずです。\SpecialChar LaTeX
-とは、\SpecialChar LyX
-が用いるプログラムの名称で、\SpecialChar LyX
-内で「LaT
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:LyXの固有名称"
 
 \end_inset
 
-eX」
-\begin_inset Note Note
-status collapsed
 
-\begin_layout Plain Layout
-ここで\SpecialChar TeX
-コードボックス中に中括弧が入れてあるのは、この「コマンド」が固有名称として出力に現れるのを防ぐために挿入してあります(本節の最終段落を参照)。固有名称を生
-成するには、\SpecialChar TeX
-コードボックスを削除してください。
 \end_layout
 
-\end_inset
-
-と入力すれば、固有の名称として認識されます。大文字と小文字の配列順を間違えないようにしてください！\SpecialChar LyX
-は、以下の固有名称を識別します。
+\begin_layout Standard
+\SpecialChar LyX
+では、
+\family sans
+挿入\SpecialChar menuseparator
+特殊文字
+\family default
+を使って、下記のプログラムロゴを特別な組版で出力することができます．
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
- 本体の名称。生成するには、「L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX」と入力してください。
+ 本体の名称。
 \end_layout
 
 \begin_layout Description
 \SpecialChar TeX
- \SpecialChar LaTeX
-が使用するプログラム。生成するには、「T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX」と入力してください。
+ \SpecialChar LyX
+が使用する組版エンジン。
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
  \SpecialChar LyX
-が使用するプログラム。生成するには、「LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX」と入力してください。
+が使用する\SpecialChar TeX
+マクロコレクション。
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX2e
  \SpecialChar LaTeX
-の実のバージョン。生成するには、「LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX2e」と入力してください。
+の現バージョン。
 \end_layout
 
 \begin_layout Standard
@@ -15210,29 +15046,6 @@ eX2e」と入力してください。
 に収束していくようになっています。実際のバージョンは「\SpecialChar TeX
 -3.141592」であり、一つ前のバージョンは「\SpecialChar TeX
 -3.14159」です。
-\end_layout
-
-\begin_layout Standard
-例えば節見出しなどにおいて、固有名称を使用したくないときは、単語中に空の中括弧の対を\SpecialChar TeX
-コードで埋め込むとよいでしょう。これは画面上では、
-\begin_inset Graphics
-	filename ../clipart/LaTeX.png
-
-\end_inset
-
-のように見えます。
-\begin_inset Newline newline
-\end_inset
-
-\SpecialChar TeX
-コードについて詳しくは、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeXコード"
-
-\end_inset
-
-節を参照してください。
 \end_layout
 
 \begin_layout Subsection
@@ -15434,7 +15247,7 @@ key "latexguide"
 \end_layout
 
 \begin_layout Chapter
-注釈・図・表・フロート
+註釈・図・表・フロート
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:フロートと注釈"
@@ -15453,12 +15266,12 @@ name "cha:フロートと注釈"
 \end_layout
 
 \begin_layout Section
-注釈
+註釈
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@注釈
+ちゅうしゃく@註釈
 \end_layout
 
 \end_inset
@@ -15475,12 +15288,12 @@ name "sec:注釈"
 
 \begin_layout Standard
 \SpecialChar LyX
-には、文書に追加できる注釈として、複数の型が存在します。
+には、文書に追加できる註釈として、複数の型が存在します。
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-注釈 この注釈型は、内部用途の注釈で出力には現れません。
+註釈 この註釈型は、内部用途の註釈で出力には現れません。
 \begin_inset Newline newline
 \end_inset
 
@@ -15489,7 +15302,7 @@ name "sec:注釈"
 status open
 
 \begin_layout Plain Layout
-これは、出力には現れない注釈ボックスに書かれた文章です。
+これは、出力には現れない註釈ボックスに書かれた文章です。
 \end_layout
 
 \end_inset
@@ -15498,7 +15311,7 @@ status open
 \end_layout
 
 \begin_layout Description
-コメント この注釈も出力には現れませんが、
+コメント この註釈も出力には現れませんが、
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
@@ -15520,7 +15333,7 @@ status open
 
 \begin_layout Plain Layout
 これは、\SpecialChar LaTeX
-ファイルのコメントのみに現れる注釈ボックスに書かれた文章です。
+ファイルのコメントのみに現れる註釈ボックスに書かれた文章です。
 \end_layout
 
 \end_inset
@@ -15529,10 +15342,10 @@ status open
 \end_layout
 
 \begin_layout Description
-淡色表示 この注釈は、出力中では、文書設定の
+淡色表示 この註釈は、出力中では、文書設定の
 \family sans
 色\SpecialChar menuseparator
-淡色表示注釈
+淡色表示註釈
 \family default
 で設定した色で文章が表示されます。
 \begin_inset Newline newline
@@ -15552,7 +15365,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-これは、淡色表示注釈内に脚注を用いた例です。この文書では、この注釈型の色は青色に設定されています。
+これは、淡色表示註釈内に脚註を用いた例です。この文書では、この註釈型の色は青色に設定されています。
 \end_layout
 
 \end_inset
@@ -15570,11 +15383,11 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-例が示すように、淡色表示注釈には脚注を入れることができます。
+例が示すように、淡色表示註釈には脚註を入れることができます。
 \end_layout
 
 \begin_layout Standard
-注釈は、ツールバーボタン
+註釈は、ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
@@ -15583,18 +15396,18 @@ arg   "note-insert"
 か、
 \family sans
 挿入\SpecialChar menuseparator
-注釈
+註釈
 \family default
-メニューで挿入することができます。注釈型を選択するには、それで現れた注釈ボックスを右クリックしてください。
+メニューで挿入することができます。註釈型を選択するには、それで現れた註釈ボックスを右クリックしてください。
 \end_layout
 
 \begin_layout Section
-脚注
+脚註
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚注
+きゃくちゅう@脚註
 \end_layout
 
 \end_inset
@@ -15611,10 +15424,10 @@ name "sec:脚注"
 
 \begin_layout Standard
 \SpecialChar LyX
-は、脚注をボックスを使って表示します。
+は、脚註をボックスを使って表示します。
 \family sans
 挿入\SpecialChar menuseparator
-脚注
+脚註
 \family default
 メニューあるいはツールバーボタン
 \begin_inset Info
@@ -15622,7 +15435,7 @@ type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-を使用して脚注を挿入すると、
+を使用して脚註を挿入すると、
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
 	scale 80
@@ -15630,18 +15443,18 @@ arg   "footnote-insert"
 \end_inset
 
 ボックスが表示されます。このボックスが\SpecialChar LyX
-において脚注を示すものです。「脚注」と書いてあるラベルを左クリックすると、ボックスが展開されて、中に脚注の本文を入力するこ
-とができるようになります。ボックスラベルをもう一度左クリックすると、ボックスは閉じられます。既存の本文を脚注に変更したいときは、その部分を選択して脚注ツールバー
+において脚註を示すものです。「脚註」と書いてあるラベルを左クリックすると、ボックスが展開されて、中に脚註の本文を入力するこ
+とができるようになります。ボックスラベルをもう一度左クリックすると、ボックスは閉じられます。既存の本文を脚註に変更したいときは、その部分を選択して脚註ツールバー
 ボタンを押せばよいのです。
 \end_layout
 
 \begin_layout Standard
-右は脚注の例です。
+右は脚註の例です。
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-脚注を閉じるには左端のラベルボックスをクリックします。
+脚註を閉じるには左端のラベルボックスをクリックします。
 \end_layout
 
 \end_inset
@@ -15650,7 +15463,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-脚注は、出力では、本文中の脚注ボックスが配置された場所に上付きの数字として表示されます。脚注の文章は、そのページの下端に配置されます。脚注番号は、文書クラスの指
+脚註は、出力では、本文中の脚註ボックスが配置された場所に上付きの数字として表示されます。脚註の文章は、そのページの下端に配置されます。脚註番号は、文書クラスの指
 定に従って、\SpecialChar LyX
 が計算してくれます。\SpecialChar LyX
 は、まだ他の付番スキームをサポートしていませんが、特定の\SpecialChar LaTeX
@@ -15663,12 +15476,12 @@ status open
 \end_layout
 
 \begin_layout Section
-傍注
+傍註
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ぼうちゅう@傍注
+ぼうちゅう@傍註
 \end_layout
 
 \end_inset
@@ -15684,11 +15497,11 @@ name "sec:傍注"
 \end_layout
 
 \begin_layout Standard
-傍注は、\SpecialChar LyX
-の脚注と同様の外観と挙動を示します。
+傍註は、\SpecialChar LyX
+の脚註と同様の外観と挙動を示します。
 \family sans
 挿入\SpecialChar menuseparator
-傍注
+傍註
 \family default
 メニューかツールバーボタン
 \begin_inset Info
@@ -15696,17 +15509,17 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-を使って傍注を挿入すると、文中に「傍注」というラベルのついたボックスが現れます。このボックスが、\SpecialChar LyX
-においては傍注を表します。
+を使って傍註を挿入すると、文中に「傍註」というラベルのついたボックスが現れます。このボックスが、\SpecialChar LyX
+においては傍註を表します。
 \end_layout
 
 \begin_layout Standard
-この脇に傍注の例があります。
+この脇に傍註の例があります。
 \begin_inset Marginal
 status open
 
 \begin_layout Plain Layout
-これが傍注です。
+これが傍註です。
 \end_layout
 
 \end_inset
@@ -15715,17 +15528,17 @@ status open
 \end_layout
 
 \begin_layout Standard
-傍注は、片面文書では右側に印字されます。両面文書では、外側の余白、すなわち偶数ページでは左側、奇数ページでは右側に現れます。
+傍註は、片面文書では右側に印字されます。両面文書では、外側の余白、すなわち偶数ページでは左側、奇数ページでは右側に現れます。
 \end_layout
 
 \begin_layout Standard
-傍注についての詳細な情報は、取扱説明書『
+傍註についての詳細な情報は、取扱説明書『
 \emph on
 埋め込みオブジェクト篇
 \emph default
 』の「
 \emph on
-傍注
+傍註
 \emph default
 」の節をご覧ください。
 \end_layout
@@ -19114,11 +18927,11 @@ status collapsed
 
 とは、位置の固定していない、なんらかのラベルを伴った文章の塊のことで、指定した位置から一二ページ前後のあいだでもっとも良い場所へ「漂う」ことができます。
 \family sans
-脚注
+脚註
 \family default
 や
 \family sans
-傍注
+傍註
 \family default
 も、当該ページに注が多すぎるときには次のページに浮遊していくことができますから、これらもフロートと言ってよいでしょう。
 \end_layout
@@ -22647,7 +22460,7 @@ name "sec:相互参照"
 
 \begin_layout Standard
 \SpecialChar LyX
-の強みの一つは、強力な相互参照機能です。文書中のすべての節・フロート・脚注・数式・箇条書きを参照することが可能です。文書の一部を参照するには、文書にラベルを挿入
+の強みの一つは、強力な相互参照機能です。文書中のすべての節・フロート・脚註・数式・箇条書きを参照することが可能です。文書の一部を参照するには、文書にラベルを挿入
 しなくてはなりません。ラベルは、参照位置を固定するとともに、参照用の名前をつけるのに使われます。例として、以下の箇条書きの第2項目を参照したいものとしましょう。
 \end_layout
 
@@ -23080,7 +22893,7 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Standard
-節を参照したい場合には、ラベルは節見出しの中に置き、フロートを参照したいときには、ラベルをキャプションの中に置いてください。脚注の場合は、ラベルは脚注中どこにお
+節を参照したい場合には、ラベルは節見出しの中に置き、フロートを参照したいときには、ラベルをキャプションの中に置いてください。脚註の場合は、ラベルは脚註中どこにお
 いても構いません。数式の参照は、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -23708,7 +23521,7 @@ name "subsec:文献データベース"
 status collapsed
 
 \begin_layout Plain Layout
-文献データベースは、単に論文データベースとそれぞれそのメモを管理するにも便利です。以下に言及したデータベースプログラムのほとんどは、文献情報に加えて、注釈や論評
+文献データベースは、単に論文データベースとそれぞれそのメモを管理するにも便利です。以下に言及したデータベースプログラムのほとんどは、文献情報に加えて、註釈や論評
 を保管しておくことが可能です。
 \end_layout
 
@@ -24571,7 +24384,7 @@ reference "subsec:文書フォント"
 \SpecialChar LaTeX
 パッケージ ! 
 \series default
-」で始まっているにもかかわらず、これらの項目の後に印字してしまいます。そのわけは、aeguillの索引項目が脚注にあるからです。この
+」で始まっているにもかかわらず、これらの項目の後に印字してしまいます。そのわけは、aeguillの索引項目が脚註にあるからです。この
 \family sans
 makeindex
 \family default
@@ -25324,19 +25137,7 @@ emph
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To customize the appearance of all symbols add e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the command
-\lang japanese
-
+全記号の表示を調整するには、例えば
 \begin_inset Newline newline
 \end_inset
 
@@ -25356,22 +25157,16 @@ textbf{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-to the LaTeX preamble in the document settings.
- This command will make the font of all symbols 
+というコマンドを、文書設定中の\SpecialChar LaTeX
+プリアンブルに追記します。この命令は、全記号のフォントを
 \series bold
-bold
+ボールド体
 \series default
- and 
+と
 \family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
+サンセリフ体
 \family default
-.
+にするものです。
 \end_layout
 
 \begin_layout Standard
@@ -27019,7 +26814,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-ページ上の通常の本文はここに入ります。ランニングヘッダは本文の上に、(脚注を含む)ランニングフッタは本文の下に来ます。ヘッダやフッタは、多くの場合、ページ番号や
+ページ上の通常の本文はここに入ります。ランニングヘッダは本文の上に、(脚註を含む)ランニングフッタは本文の下に来ます。ヘッダやフッタは、多くの場合、ページ番号や
 章見出しや会社のロゴ等が入りますが、フロートを除き、凡そなんでも使用することができます。
 \end_layout
 
@@ -27963,7 +27758,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-検索を書式非感応にして、検索文字列を任意の文脈・様式上(標準的本文・節見出し・注釈のほか数式も)で検出することもできますし、書式感応的にして、たとえば節見出しに
+検索を書式非感応にして、検索文字列を任意の文脈・様式上(標準的本文・節見出し・註釈のほか数式も)で検出することもできますし、書式感応的にして、たとえば節見出しに
 入力された単語のみを検出することもできます。
 \end_layout
 
@@ -28655,7 +28450,7 @@ OS can also use Mac's own spellchecker and will use it by default.
 \end_layout
 
 \begin_layout Description
-注釈とコメントの綴りを検証する 有効にすると、出力されない文書内容の綴りも検証されます。
+註釈とコメントの綴りを検証する 有効にすると、出力されない文書内容の綴りも検証されます。
 \end_layout
 
 \begin_layout Section
@@ -29386,8 +29181,8 @@ arg   "note-insert"
 
 \family sans
 挿入\SpecialChar menuseparator
-注釈\SpecialChar menuseparator
-LyX注釈
+註釈\SpecialChar menuseparator
+LyX註釈
 \end_layout
 
 \end_inset
@@ -29417,7 +29212,7 @@ arg   "note-next"
 
 \family sans
 移動\SpecialChar menuseparator
-次の注釈
+次の註釈
 \end_layout
 
 \end_inset
@@ -29461,7 +29256,7 @@ arg   "note-next"
 \end_layout
 
 \begin_layout Standard
-ツールバーに注釈関連のボタンが二つあるのは、変更点を説明するのに注釈の利用が不可欠なためです。
+ツールバーに註釈関連のボタンが二つあるのは、変更点を説明するのに註釈の利用が不可欠なためです。
 \end_layout
 
 \begin_layout Standard
@@ -30072,11 +29867,7 @@ status open
 \series bold
 【註】
 \series default
- 
-\lang english
-the exported file will be stored in a subdirectory
-\lang japanese
-。
+書きだされたファイルは下位ディレクトリに補完されます。
 \end_layout
 
 \end_inset
@@ -30313,20 +30104,11 @@ dvipdfm
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(lower
-\begin_inset space ~
-\end_inset
-
-resolution)
-\family default
- the same as 
+(低解像度) 
 \family sans
 PDF
 \begin_inset space ~
@@ -30334,20 +30116,11 @@ PDF
 
 (pdflatex)
 \family default
- but with a reduced pixel resolution of 150
+と同じですが、ピクセル解像度を150
 \begin_inset space \thinspace{}
 \end_inset
 
-dpi (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-useful for E-books to be read on tablet PCs or for large documents as intermedia
-te preview).
+dpiに落とします(例：タブレットPCでE-booksを読むときや，大きな文書の作業中にプレビューしたいときに便利です)。
 \end_layout
 
 \begin_layout Description
@@ -31520,11 +31293,11 @@ reference "sec:フロート"
 \end_layout
 
 \begin_layout Subsection
-注釈
+註釈
 \end_layout
 
 \begin_layout Standard
-注釈の挿入に関しては、第
+註釈の挿入に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:注釈"
@@ -31822,7 +31595,7 @@ reference "subsec:ハイパーリンク"
 \end_layout
 
 \begin_layout Subsection
-脚注
+脚註
 \end_layout
 
 \begin_layout Standard
@@ -31833,11 +31606,11 @@ reference "sec:脚注"
 
 \end_inset
 
-節に説明されているように、脚注を挿入します。
+節に説明されているように、脚註を挿入します。
 \end_layout
 
 \begin_layout Subsection
-傍注
+傍註
 \end_layout
 
 \begin_layout Standard
@@ -31848,7 +31621,7 @@ reference "sec:傍注"
 
 \end_inset
 
-節に説明されているように、傍注を挿入します。
+節に説明されているように、傍註を挿入します。
 \end_layout
 
 \begin_layout Subsection
@@ -32030,11 +31803,11 @@ arg   "bookmark-goto 2"
 \end_layout
 
 \begin_layout Subsection
-次の注釈・変更点・相互参照
+次の註釈・変更点・相互参照
 \end_layout
 
 \begin_layout Standard
-現在のカーソル位置の次の注釈や変更点、相互参照へ移動します。
+現在のカーソル位置の次の註釈や変更点、相互参照へ移動します。
 \end_layout
 
 \begin_layout Subsection
@@ -32403,14 +32176,8 @@ name "subsec:圧縮"
 \end_layout
 
 \begin_layout Standard
-現在の文書を圧縮したり解凍したりします。
-\lang english
-For documents under version control it is strongly recommended to disable
- compression (see the 
-\emph on
-Additional Features
-\emph default
- manual for details).
+現在の文書を圧縮したり解凍したりします。バージョン管理下の文書に関しては、圧縮機能を無効にすることを強く推奨します(詳細については、取扱説明書高度な機能篇を参照
+)。
 \end_layout
 
 \begin_layout Subsection
@@ -33950,7 +33717,7 @@ arg   "footnote-insert"
 
 \family sans
 挿入\SpecialChar menuseparator
-脚注
+脚註
 \end_layout
 
 \end_inset
@@ -33980,7 +33747,7 @@ arg   "marginalnote-insert"
 
 \family sans
 挿入\SpecialChar menuseparator
-傍注
+傍註
 \end_layout
 
 \end_inset
@@ -34010,8 +33777,8 @@ arg   "note-insert"
 
 \family sans
 挿入\SpecialChar menuseparator
-注釈\SpecialChar menuseparator
-LyX注釈
+註釈\SpecialChar menuseparator
+LyX註釈
 \end_layout
 
 \end_inset
@@ -35067,16 +34834,8 @@ latexはつけじ@\SpecialChar LaTeX
 \end_inset
 
 の方が適当であれば(Xe\SpecialChar TeX
-
-\lang english
-or Lua
-\lang japanese
-\SpecialChar TeX
-
-\lang english
- and
-\lang japanese
-や非\SpecialChar TeX
+もしくはLua\SpecialChar TeX
+と非\SpecialChar TeX
 フォントを使用している場合など)、
 \series bold
 babel
@@ -35571,7 +35330,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-いろ@色 ! たんしょくひょうじちゅうしゃく@淡色表示注釈
+いろ@色 ! たんしょくひょうじちゅうしゃく@淡色表示註釈
 \end_layout
 
 \end_inset
@@ -35586,7 +35345,7 @@ status collapsed
 \family default
 および
 \family sans
-淡色表示注釈
+淡色表示註釈
 \family default
 のフォント色(既定値:それぞれ黒と灰色)と、
 \family sans
@@ -35746,7 +35505,7 @@ shadecolor
 \end_layout
 
 \begin_layout Itemize
-淡色表示注釈本文色については
+淡色表示註釈本文色については
 \begin_inset Newline newline
 \end_inset
 
@@ -36691,7 +36450,7 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \family sans
 メイン作業領域でツールチップスを有効にする
 \family default
-オプションは、索引項目や脚注などの差込枠で、閉じられているものの中身を表示するツールチップスを有効にします。
+オプションは、索引項目や脚註などの差込枠で、閉じられているものの中身を表示するツールチップスを有効にします。
 \end_layout
 
 \begin_layout Subsubsection
@@ -36817,22 +36576,14 @@ reference "sec:パス"
 ファイル\SpecialChar menuseparator
 直近のファイルを開く
 \family default
-メニューに表示する最後に開いたファイルの数です
-\lang english
-(see also
-\lang japanese
-第
+メニューに表示する最後に開いたファイルの数です(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:圧縮"
 
 \end_inset
 
-
-\lang english
-).
- This applies to newly created documents only.
- The compression status of existing documents is not changed when saving.
+節もご覧ください)。これは、新規に作成された文書にのみ適用されます。既存文書の圧縮状態は、保存時に変更されません。
 \end_layout
 
 \begin_layout Subsubsection
@@ -39134,9 +38885,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+画像の縮尺%
 \end_layout
 
 \end_inset
@@ -39165,9 +38914,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+本文幅%
 \end_layout
 
 \end_inset
@@ -39198,9 +38945,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+列幅%
 \end_layout
 
 \end_inset
@@ -39231,9 +38976,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+ページ幅%
 \end_layout
 
 \end_inset
@@ -39264,9 +39007,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+行幅%
 \end_layout
 
 \end_inset
@@ -39297,9 +39038,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+本文高%
 \end_layout
 
 \end_inset
@@ -39330,9 +39069,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+ページ高%
 \end_layout
 
 \end_inset
@@ -39928,21 +39665,18 @@ key "makeindex-man"
 
 \end_inset
 
-
-\lang english
+プログラムの
+\family sans
+makeindex
+\family default
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Options"
+name "オプション"
 target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
 
 \end_inset
 
- for the program 
-\family sans
-makeindex
-\family default
-\lang japanese
 :
 \begin_inset Newline newline
 \end_inset

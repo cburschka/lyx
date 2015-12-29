@@ -212,7 +212,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -285,7 +285,7 @@ End
 
 \begin_layout Title
 \SpecialChar LyX
-の図表・フロート・注釈・ボックス・外部素材に関する詳細説明書
+の図表・フロート・註釈・ボックス・外部素材に関する詳細説明書
 \end_layout
 
 \begin_layout Author
@@ -1798,10 +1798,7 @@ reference "subsec:連結行"
 \end_inset
 
 回転関連のチェックボックスは、現在セルや選択範囲あるいは表全体を反時計廻りに90度回転させます。回転は、\SpecialChar LyX
-内部では反映されず、出力にのみ現れます。
-\lang english
-For more information see
-\lang japanese
+内部では反映されず、出力にのみ現れます。詳細については，
 第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1809,7 +1806,7 @@ reference "sec:表セルの回転"
 
 \end_inset
 
-
+節をご覧下さい。
 \begin_inset Newline newline
 \end_inset
 
@@ -2023,7 +2020,7 @@ reference "sec:色付きの表"
 を使用すると、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:フォーマル形式の表"
+reference "sec:フォーマル様式の表"
 
 \end_inset
 
@@ -2044,27 +2041,27 @@ reference "subsec:行の余白取り"
 \begin_layout Description
 
 \family sans
-長尺表
+多頁表
 \family default
  このタブは、複数のページにわたる、いわゆる「
 \emph on
-長尺表
+多頁表
 \emph default
 」を作るためのものです。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:長尺表"
+reference "sec:多頁表"
 
 \end_inset
 
 節および第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:長尺表にまつわる諸点"
+reference "sec:多頁表にまつわる諸点"
 
 \end_inset
 
-節に、長尺表の機能に関する詳細な説明があります。
+節に、多頁表の機能に関する詳細な説明があります。
 \end_layout
 
 \begin_layout Section
@@ -2865,10 +2862,10 @@ reference "sec:フロートの参照"
 \end_layout
 
 \begin_layout Section
-長尺表
+多頁表
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:長尺表"
+name "sec:多頁表"
 
 \end_inset
 
@@ -2877,7 +2874,7 @@ name "sec:長尺表"
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表
+たへえしひよう@多頁表
 \end_layout
 
 \end_inset
@@ -2887,7 +2884,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 ! ちょうしゃくひょう@長尺表
+ひょう@表 ! たへえしひよう@多頁—
 \end_layout
 
 \end_inset
@@ -2898,18 +2895,18 @@ status collapsed
 \begin_layout Standard
 表が長すぎて1ページに収まりきらないときには、表ダイアログの
 \family sans
-長尺表
+多頁表
 \family default
 タブにある
 \family sans
-長尺表を使う
+多頁表を使う
 \family default
 オプションを使用して、複数ページに自動的に分割させることができます。このオプションを有効にすると、いくつかのチェックボックスが使えるようになり、以下のものを定義
 することができるようになります。
 \end_layout
 
 \begin_layout Description
-ヘッダ： カーソル位置の行が、長尺表の全ページに表示されるヘッダ行として定義されます。
+ヘッダ： カーソル位置の行が、多頁表の全ページに表示されるヘッダ行として定義されます。
 \family roman
 \series medium
 \shape up
@@ -2949,11 +2946,11 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-冒頭ヘッダ： カーソル位置の行が、長尺表の最初のページに表示されるヘッダ行として定義されます。
+冒頭ヘッダ： カーソル位置の行が、多頁表の最初のページに表示されるヘッダ行として定義されます。
 \end_layout
 
 \begin_layout Description
-フッタ： カーソル位置の行が、長尺表の全ページに表示されるフッタ行として定義されます。
+フッタ： カーソル位置の行が、多頁表の全ページに表示されるフッタ行として定義されます。
 \family roman
 \series medium
 \shape up
@@ -2984,14 +2981,14 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-末尾フッタ： カーソル位置の行が、長尺表の最後のページに表示されるフッタ行として定義されます。
+末尾フッタ： カーソル位置の行が、多頁表の最後のページに表示されるフッタ行として定義されます。
 \end_layout
 
 \begin_layout Description
-キャプション： カーソル位置の行を表のキャプションにします。この行は一列にリセットされ、キャプションが挿入されます。長尺表のキャプションについての詳細は、第
+キャプション： カーソル位置の行を表のキャプションにします。この行は一列にリセットされ、キャプションが挿入されます。多頁表のキャプションについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:長尺表のキャプション"
+reference "subsec:多頁表のキャプション"
 
 \end_inset
 
@@ -2999,7 +2996,7 @@ reference "subsec:長尺表のキャプション"
 \end_layout
 
 \begin_layout Standard
-加えて、表が分割される行を指定することができます。長尺表の動作を見るために以下の例を参照してください。
+加えて、表が分割される行を指定することができます。多頁表の動作を見るために以下の例を参照してください。
 \begin_inset Separator parbreak
 \end_inset
 
@@ -5172,11 +5169,11 @@ status collapsed
 本コマンドの説明については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:長尺表のキャプション"
+reference "subsec:多頁表のキャプション"
 
 \end_inset
 
-節の最初の淡色注釈をご覧下さい。
+節の最初の淡色註釈をご覧下さい。
 \end_layout
 
 \end_inset
@@ -5185,10 +5182,10 @@ reference "subsec:長尺表のキャプション"
 \end_layout
 
 \begin_layout Subsection
-長尺表での脚注
+多頁表での脚註
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:長尺表での脚注"
+name "subsec:多頁表での脚注"
 
 \end_inset
 
@@ -5197,7 +5194,7 @@ name "subsec:長尺表での脚注"
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! きゃくちゅう@脚注
+たへえしひよう@多頁表 ! きやくちゆう@脚註
 \end_layout
 
 \end_inset
@@ -5206,23 +5203,23 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-脚注は、どの長尺表セルにも入れることができます。脚注は、脚注のついた表セルのあるページの下部に表示されます。たとえば、表
+脚註は、どの多頁表セルにも入れることができます。脚註は、脚註のついた表セルのあるページの下部に表示されます。たとえば、表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:別キャプション"
 
 \end_inset
 
-には脚注が付いています。
+には脚註が付いています。
 \end_layout
 
 \begin_layout Subsection
-長尺表の縦横揃え
+多頁表の縦横揃え
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! たてよこぞろえ@縦横揃え
+たへえしひよう@多頁表 ! たてよこぞろえ@縦横揃え
 \end_layout
 
 \end_inset
@@ -5231,7 +5228,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-表設定ダイアログでは、長尺表の水平揃えを指定することができます。左揃えや右揃えでは、表は直接ページ境界に寄せられます。表と境界の間に余白を加えるには、中央揃えに
+表設定ダイアログでは、多頁表の水平揃えを指定することができます。左揃えや右揃えでは、表は直接ページ境界に寄せられます。表と境界の間に余白を加えるには、中央揃えに
 設定してから
 \end_layout
 
@@ -5246,7 +5243,7 @@ LTleft}{値}
 \end_layout
 
 \begin_layout Standard
-という行を当該長尺表の前に\SpecialChar TeX
+という行を当該多頁表の前に\SpecialChar TeX
 コードとして挿入して、長さ
 \series bold
 
@@ -5272,7 +5269,7 @@ reference "tab:単位"
 \backslash
 LTleft
 \series default
-は、左頁余白から長尺表までの水平方向の距離を制御し、
+は、左頁余白から多頁表までの水平方向の距離を制御し、
 \series bold
 
 \backslash
@@ -5289,7 +5286,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-以下の長尺表は、中央揃えの上、
+以下の多頁表は、中央揃えの上、
 \series bold
 
 \backslash
@@ -5607,11 +5604,11 @@ status collapsed
 このコマンドの説明に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:長尺表のキャプション"
+reference "subsec:多頁表のキャプション"
 
 \end_inset
 
-節の最初の淡色注釈をご覧下さい。
+節の最初の淡色註釈をご覧下さい。
 \end_layout
 
 \end_inset
@@ -5620,12 +5617,12 @@ reference "subsec:長尺表のキャプション"
 \end_layout
 
 \begin_layout Subsection
-長尺表のキャプション
+多頁表のキャプション
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! きゃぷしょん@キャプション
+たへえしひよう@多頁表 ! きやふしよん@キャプション
 \end_layout
 
 \end_inset
@@ -5633,7 +5630,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:長尺表のキャプション"
+name "subsec:多頁表のキャプション"
 
 \end_inset
 
@@ -5641,18 +5638,18 @@ name "subsec:長尺表のキャプション"
 \end_layout
 
 \begin_layout Standard
-フロートは一頁に収まらなくてはならないので、長尺表を表フロートに入れることはできません。しかし、第
+フロートは一頁に収まらなくてはならないので、多頁表を表フロートに入れることはできません。しかし、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:長尺表"
+reference "sec:多頁表"
 
 \end_inset
 
-節に述べられているように、ある行で長尺表オプションの
+節に述べられているように、ある行で多頁表オプションの
 \family sans
 キャプション
 \family default
-を使用すれば、フロートのキャプション環境を長尺表でも使用することができます。キャプションは、
+を使用すれば、フロートのキャプション環境を多頁表でも使用することができます。キャプションは、
 \family sans
 冒頭ヘッダ
 \family default
@@ -5672,7 +5669,7 @@ reference "sec:長尺表"
 \end_layout
 
 \begin_layout Standard
-以下は、動作を確認するための短い長尺表です。
+以下は、動作を確認するための短い多頁表です。
 \end_layout
 
 \begin_layout Standard
@@ -5692,12 +5689,12 @@ reference "sec:長尺表"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-キャプション付き長尺表
+キャプション付き多頁表
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-長尺表
+多頁表
 \end_layout
 
 \end_inset
@@ -6004,8 +6001,8 @@ status open
 \series bold
 【註1】
 \series default
-表番号は、長尺表にキャプションを付けなかったとしても、各長尺表毎に加番されます。このため、あいだにキャプションのない二つの長尺表が挟まっていたならば、表一覧では
-、たとえば表2.1の後に表2.4が来ることがあります。これを回避するためには、キャプションのないすべての長尺表の後に、\SpecialChar TeX
+表番号は、多頁表にキャプションを付けなかったとしても、各多頁表毎に加番されます。このため、あいだにキャプションのない二つの多頁表が挟まっていたならば、表一覧では
+、たとえば表2.1の後に表2.4が来ることがあります。これを回避するためには、キャプションのないすべての多頁表の後に、\SpecialChar TeX
 コードで
 \end_layout
 
@@ -6022,7 +6019,7 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-全長尺表にキャプションがなかったり、文書プリアンブルに以下のコードを書き加えていれば、以上のことは必要ありません。
+全多頁表にキャプションがなかったり、文書プリアンブルに以下のコードを書き加えていれば、以上のことは必要ありません。
 \end_layout
 
 \begin_layout Plain Layout
@@ -6087,7 +6084,7 @@ status collapsed
 
 \end_inset
 
-を使用している場合、長尺表キャプションへのリンクは、つねに文頭に向けられます。
+を使用している場合、多頁表キャプションへのリンクは、つねに文頭に向けられます。
 \end_layout
 
 \end_inset
@@ -6096,12 +6093,12 @@ status collapsed
 \end_layout
 
 \begin_layout Subsubsection
-長尺表への参照
+多頁表への参照
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! さんしょう@参照
+たへえしひよう@多頁表 ! さんしよう@参照
 \end_layout
 
 \end_inset
@@ -6126,7 +6123,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-参照された長尺表
+参照された多頁表
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:参照例"
@@ -6423,7 +6420,7 @@ name "tab:参照例"
 \end_layout
 
 \begin_layout Standard
-長尺表を参照するには、キャプションにラベルを挿入してください。
+多頁表を参照するには、キャプションにラベルを挿入してください。
 \end_layout
 
 \begin_layout Standard
@@ -6471,7 +6468,7 @@ reference "sec:キャプションの書式設定"
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! きゃぷしょんのはば@キャプションの幅
+たへえしひよう@多頁表 ! きやふしよんのはは@キャプションの幅
 \end_layout
 
 \end_inset
@@ -6490,7 +6487,7 @@ LTcapwidth
 \begin_inset space \thinspace{}
 \end_inset
 
-inです。これを変更するには、現文書の文書プリアンブルか、調整したい長尺表の前の文中に\SpecialChar TeX
+inです。これを変更するには、現文書の文書プリアンブルか、調整したい多頁表の前の文中に\SpecialChar TeX
 コードとして
 \end_layout
 
@@ -7273,7 +7270,7 @@ captionsetup{width=値}
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! ぺーじごとにことなるきゃぷしょん@ページごとに異なるキャプション
+たへえしひよう@多頁表 ! へえしことにことなるきやふしよん@ページごとに異なるキャプション
 \end_layout
 
 \end_inset
@@ -7285,7 +7282,7 @@ status collapsed
 次頁以降の表キャプションを、1頁めとは異なるものにしたい場合には、キャプションを入れる空行をヘッダに指定して下さい。それから、キャプションを右クリックして、文脈
 依存メニューから
 \family sans
-キャプション(無番長尺表)
+キャプション(無番多頁表)
 \family default
 を選択してください。表
 \begin_inset CommandInset ref
@@ -7294,7 +7291,7 @@ reference "tab:別キャプション"
 
 \end_inset
 
-は、異なるヘッダを持つ長尺表の一例です。2番目のキャプションには表番が現れないようにしてあります。
+は、異なるヘッダを持つ多頁表の一例です。2番目のキャプションには表番が現れないようにしてあります。
 \begin_inset Separator parbreak
 \end_inset
 
@@ -8013,7 +8010,7 @@ Rizzardi
 status collapsed
 
 \begin_layout Plain Layout
-例示用脚注
+例示用脚註
 \end_layout
 
 \end_inset
@@ -9195,10 +9192,10 @@ Roberto
 \end_layout
 
 \begin_layout Section
-長尺表にまつわる諸点
+多頁表にまつわる諸点
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:長尺表にまつわる諸点"
+name "sec:多頁表にまつわる諸点"
 
 \end_inset
 
@@ -9206,12 +9203,12 @@ name "sec:長尺表にまつわる諸点"
 \end_layout
 
 \begin_layout Subsection
-長尺表の計算
+多頁表の計算
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! けいさん@計算
+たへえしひよう@多頁表 ! けいさん@計算
 \end_layout
 
 \end_inset
@@ -9223,7 +9220,7 @@ status collapsed
 \SpecialChar LaTeX
 は、表ページの頁高と改頁をいわゆる単位塊（チャンクchunk）を使って計算します。単位塊は、一度に\SpecialChar LaTeX
 のメモリに読み込まれる表の断片です。歴史上の経緯から、既定値は
-たった表20行分に設定されています。多頁にわたる長尺表がある場合、この設定では文書の生成に時間がかかるかもしれません。この場合、
+たった表20行分に設定されています。多頁にわたる多頁表がある場合、この設定では文書の生成に時間がかかるかもしれません。この場合、
 \end_layout
 
 \begin_layout Standard
@@ -9239,12 +9236,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-フロートと長尺表
+フロートと多頁表
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! ふろーと@フロート
+たへえしひよう@多頁表 ! ふろおと@フロート
 \end_layout
 
 \end_inset
@@ -9253,13 +9250,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-長尺表が開始するのと同じページにフロートが置かれると問題が発生する可能性があります。このような状況を避けるためには、
+多頁表が開始するのと同じページにフロートが置かれると問題が発生する可能性があります。このような状況を避けるためには、
 \series bold
 
 \backslash
 clearpage
 \series default
-コマンドを長尺表の前に\SpecialChar TeX
+コマンドを多頁表の前に\SpecialChar TeX
 コードとして書き加えてください。
 \end_layout
 
@@ -9269,7 +9266,7 @@ clearpage
 status collapsed
 
 \begin_layout Plain Layout
-ちょうしゃくひょう@長尺表 ! きょうせいかいぺーじ@強制改頁
+たへえしひよう@多頁表 ! きようせいかいへえし@強制改頁
 \end_layout
 
 \end_inset
@@ -9367,7 +9364,7 @@ Castelchiodato,
 \backslash
 newpage
 \series default
-は、改行がこの場所でかならず起こるように指定したいときのみ必要です。これを書かなければ、改頁の候補として指定するに過ぎません。何らかの理由で長尺表のフッタ行に上
+は、改行がこの場所でかならず起こるように指定したいときのみ必要です。これを書かなければ、改頁の候補として指定するに過ぎません。何らかの理由で多頁表のフッタ行に上
 罫線を引いていないけれども、セルを改頁する場所で水平線を引きたい場合には、代わりに
 \end_layout
 
@@ -11739,7 +11736,7 @@ status collapsed
 \begin_layout Standard
 ご覧になって分かるように、第一列が、連結セルの幅の半分よりも少し大きくなっています。その原因は、セル幅が、指定された幅よりもつねに少しだけ大きく描かれるために、
 指定したセル幅
-\begin_inset Formula $W_{\mbox{指}}$
+\begin_inset Formula $W_{\text{指}}$
 \end_inset
 
 がセルの全幅
@@ -11762,17 +11759,17 @@ reference "cha:式の説明"
 n
 \emph default
 列を連結する際、各列の全幅が
-\begin_inset Formula $W_{\mbox{全}:\mbox{連結}}/n$
+\begin_inset Formula $W_{\text{全}:\text{連結}}/n$
 \end_inset
 
 となるために必要な指定幅
-\begin_inset Formula $W_{\mbox{指}:n}$
+\begin_inset Formula $W_{\text{指}:n}$
 \end_inset
 
 は、
 \begin_inset Formula 
 \begin{equation}
-W_{\mbox{指}:n}=(W_{\mbox{指}:\text{連結列}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+W_{\text{指}:n}=(W_{\text{指}:\text{連結列}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
 \end_inset
@@ -11786,7 +11783,7 @@ W_{\mbox{指}:n}=(W_{\mbox{指}:\text{連結列}}+(1-n)\cdot(12.4\,\mathrm{pt}))
 \end_inset
 
 かつ
-\begin_inset Formula $W_{\text{指}:\mbox{連結列}}=2.5\,$
+\begin_inset Formula $W_{\text{指}:\text{連結列}}=2.5\,$
 \end_inset
 
 cmかつ長さは既定値ですから、第
@@ -14248,10 +14245,10 @@ key "diagbox"
 \end_layout
 
 \begin_layout Section
-フォーマル形式の表
+フォーマル様式の表
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:フォーマル形式の表"
+name "sec:フォーマル様式の表"
 
 \end_inset
 
@@ -14260,7 +14257,7 @@ name "sec:フォーマル形式の表"
 status collapsed
 
 \begin_layout Plain Layout
-ひょう@表 ! ふぉーまるけいしき@フォーマル形式
+ひょう@表 ! ふぉーまるけいしき@フォーマル様式
 \end_layout
 
 \end_inset
@@ -14278,9 +14275,9 @@ reference "tab:ブックタブ表の例"
 
 のように組版されます。この種の表は、「
 \emph on
-フォーマル形式
+フォーマル様式
 \emph default
-」と呼ばれます。表をフォーマル形式にするには、表の設定ダイアログの罫線タブでフォーマル形式オプションを有効にして下さい。
+」と呼ばれます。表をフォーマル様式にするには、表の設定ダイアログの罫線タブでフォーマル様式オプションを有効にして下さい。
 \end_layout
 
 \begin_layout Standard
@@ -14708,7 +14705,7 @@ reference "subsec:行の余白取り"
 \end_layout
 
 \begin_layout Standard
-通常の表と違って、フォーマル形式の表には縦罫線がありません。表の横罫線は、通常の表と同様に指定することができますが、出力でこれらの線幅は異なります。
+通常の表と違って、フォーマル様式の表には縦罫線がありません。表の横罫線は、通常の表と同様に指定することができますが、出力でこれらの線幅は異なります。
 \begin_inset Newline newline
 \end_inset
 
@@ -19176,15 +19173,15 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-行上 これは表の行の文字上に余白を追加します。もし表がフォーマル形式の表
+行上 これは表の行の文字上に余白を追加します。もし表がフォーマル様式の表
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-フォーマル形式の表は第
+フォーマル様式の表は第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:フォーマル形式の表"
+reference "sec:フォーマル様式の表"
 
 \end_inset
 
@@ -19282,7 +19279,7 @@ mmの余白
 \end_layout
 
 \begin_layout Description
-行下 これは表の行の文字下に余白を追加します。もし表がフォーマル形式の表ならば、\SpecialChar LyX
+行下 これは表の行の文字下に余白を追加します。もし表がフォーマル様式の表ならば、\SpecialChar LyX
 は既定値として0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -19295,7 +19292,7 @@ ptを挿入します。
 \end_layout
 
 \begin_layout Description
-行間 これは表の現在行と次の行の間に余白を追加します。もし表がフォーマル形式の表ならば、\SpecialChar LyX
+行間 これは表の現在行と次の行の間に余白を追加します。もし表がフォーマル様式の表ならば、\SpecialChar LyX
 は既定値として0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -23110,11 +23107,11 @@ status collapsed
 フロートは、何かしらのラベルに関連付けられた文章の塊で、固定された居場所を持ちません。フロートはもっとも適した場所を求めて、1頁ないし2頁、前後にただよう（フロ
 ート）ことができます。
 \family sans
-脚注
+脚註
 \family default
 や
 \family sans
-傍注
+傍註
 \family default
 も、当該ページに註が多すぎる場合には次頁にただよって行きますので、フロートの一種です。
 \end_layout
@@ -25601,41 +25598,18 @@ name "fig:右側のフロート"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-An alternative and simpler solution is to use the module 
-\family sans
-Variable-width Minipages
-\family default
-, see sec.
-\lang japanese
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
+2つのフロートを横に並べるには、可変幅ミニページを使うと簡単にできます(第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:ミニページ"
+reference "sec:可変幅ミニページ"
 
 \end_inset
 
-
-\lang english
-.
- Variable-width minipages adapt automatically to the width of the figures
- and tables.
- They do not require an explicit width to be given, and they improve the
- horizontal alignment of the figures.
- The LyX example file 
-\emph on
-varwidth-floats-side-by-side
-\emph default
- gives examples of how to do this.
+節参照)。可変幅ミニページは，図の幅に自動的に調整されます。明示的に幅を指定する必要もなく、図の水平方向の配置も調整してくれます。ファイル
+\family typewriter
+examples/varwidth-floats-side-by-side.lyx
+\family default
+に、この方法の例があります。
 \end_layout
 
 \begin_layout Section
@@ -28100,17 +28074,17 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-注釈
+註釈
 \end_layout
 
 \begin_layout Section
 \SpecialChar LyX
-注釈
+註釈
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@注釈 ! \SpecialChar LyX
+ちゅうしゃく@註釈 ! \SpecialChar LyX
 のーと@\SpecialChar LyX
 ノート
 \end_layout
@@ -28121,7 +28095,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-注釈は、ツールバーボタン
+註釈は、ツールバーボタン
 \family sans
 
 \begin_inset Info
@@ -28134,14 +28108,14 @@ arg   "note-insert"
 か、
 \family sans
 挿入\SpecialChar menuseparator
-注釈
+註釈
 \family default
-メニューで挿入することができます。注釈には、以下の三つの型があります。
+メニューで挿入することができます。註釈には、以下の三つの型があります。
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
-注釈 この注釈型は、内部用途の注釈で出力には現れません。注釈ボックスは、以下のように表示されます。
+註釈 この註釈型は、内部用途の註釈で出力には現れません。註釈ボックスは、以下のように表示されます。
 \begin_inset Newline newline
 \end_inset
 
@@ -28163,7 +28137,7 @@ arg   "note-insert"
 status open
 
 \begin_layout Plain Layout
-これは、出力には現れない注釈ボックスに書かれた文章です。
+これは、出力には現れない註釈ボックスに書かれた文章です。
 \end_layout
 
 \end_inset
@@ -28172,7 +28146,7 @@ status open
 \end_layout
 
 \begin_layout Description
-コメント この注釈も出力には現れませんが、
+コメント この註釈も出力には現れませんが、
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
@@ -28191,7 +28165,7 @@ eX (pdflatex) / (平文)
 \family default
  メニューを使って文書を\SpecialChar LaTeX
 にエクスポートする際には、\SpecialChar LaTeX
-コメントとして出力されます。注釈ボックスは、以下のように表示されます。
+コメントとして出力されます。註釈ボックスは、以下のように表示されます。
 \begin_inset Newline newline
 \end_inset
 
@@ -28214,7 +28188,7 @@ status open
 
 \begin_layout Plain Layout
 これは、\SpecialChar LaTeX
-ファイルのコメントのみに現れる注釈ボックスに書かれた文章です。
+ファイルのコメントのみに現れる註釈ボックスに書かれた文章です。
 \end_layout
 
 \end_inset
@@ -28223,7 +28197,7 @@ status open
 \end_layout
 
 \begin_layout Description
-淡色表示 この注釈は、薄灰色の文章として出力に現れます。注釈ボックスは、以下のように表示されます。
+淡色表示 この註釈は、薄灰色の文章として出力に現れます。註釈ボックスは、以下のように表示されます。
 \begin_inset Newline newline
 \end_inset
 
@@ -28278,7 +28252,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-これは、淡色注釈内に脚注を用いた例です。
+これは、淡色註釈内に脚註を用いた例です。
 \end_layout
 
 \end_inset
@@ -28317,7 +28291,7 @@ egroup}
 status open
 
 \begin_layout Plain Layout
-以下に述べられているように、淡色注釈は、青文字で表示されるよう本文書のプリアンブルで再定義されているため、ここの淡色注釈は、\SpecialChar LyX
+以下に述べられているように、淡色註釈は、青文字で表示されるよう本文書のプリアンブルで再定義されているため、ここの淡色註釈は、\SpecialChar LyX
 本来の定義で表示されるように再定義さ
 れています。
 \end_layout
@@ -28332,14 +28306,14 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-この例から分かるように、淡色注釈の最初の行は少し字下げされるほか、淡色注釈には脚注を入れることができます。
+この例から分かるように、淡色註釈の最初の行は少し字下げされるほか、淡色註釈には脚註を入れることができます。
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-注釈を挿入するのにツールバーボタン
+註釈を挿入するのにツールバーボタン
 \family sans
 
 \begin_inset Info
@@ -28352,10 +28326,10 @@ arg   "note-insert"
 を使用すると、
 \family sans
 \SpecialChar LyX
-注釈
+註釈
 \family default
-が挿入されます。注釈ボックスを右クリックすれば、五つの注釈型を切り替えることができます。既存の平文を注釈に変えるには、平文を選択して、注釈ツールバーボタンをクリ
-ックしてください。注釈を平文に変更するには、カーソルを注釈の先頭に置いてBackspaceキーを押すか、カーソルを注釈の最後に置いてDeleteキーを押してくだ
+が挿入されます。註釈ボックスを右クリックすれば、五つの註釈型を切り替えることができます。既存の平文を註釈に変えるには、平文を選択して、註釈ツールバーボタンをクリ
+ックしてください。註釈を平文に変更するには、カーソルを註釈の先頭に置いてBackspaceキーを押すか、カーソルを註釈の最後に置いてDeleteキーを押してくだ
 さい。
 \end_layout
 
@@ -28363,7 +28337,7 @@ arg   "note-insert"
 \begin_inset VSpace bigskip
 \end_inset
 
-淡色注釈の文字色は、
+淡色註釈の文字色は、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -28373,7 +28347,7 @@ arg   "note-insert"
 \end_layout
 
 \begin_layout Section
-脚注
+脚註
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:脚注"
@@ -28385,7 +28359,7 @@ name "sec:脚注"
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@注釈 ! きゃくちゅう@脚注
+ちゅうしゃく@註釈 ! きゃくちゅう@脚註
 \end_layout
 
 \end_inset
@@ -28395,7 +28369,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚注
+きゃくちゅう@脚註
 \end_layout
 
 \end_inset
@@ -28404,7 +28378,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-脚注は、ツールバーボタン
+脚註は、ツールバーボタン
 \family sans
 
 \begin_inset Info
@@ -28417,9 +28391,9 @@ arg   "footnote-insert"
 か、
 \family sans
 挿入\SpecialChar menuseparator
-脚注
+脚註
 \family default
-メニューを使って挿入することができます。すると、脚注文を挿入したところに、
+メニューを使って挿入することができます。すると、脚註文を挿入したところに、
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
 	scale 80
@@ -28427,12 +28401,12 @@ arg   "footnote-insert"
 
 \end_inset
 
-のような脚注ボックスが現れます。もし既存の文章を脚注に変えたいならば、その文章を選択して、脚注ツールバーボタンをクリックしてください。脚注を平文に変えるには、カ
-ーソルが脚注の先頭にある時にBackspaceキーを押すか、カーソルが脚注の最後にある時にDeleteキーを押します。
+のような脚註ボックスが現れます。もし既存の文章を脚註に変えたいならば、その文章を選択して、脚註ツールバーボタンをクリックしてください。脚註を平文に変えるには、カ
+ーソルが脚註の先頭にある時にBackspaceキーを押すか、カーソルが脚註の最後にある時にDeleteキーを押します。
 \end_layout
 
 \begin_layout Standard
-これが脚注の例です
+これが脚註の例です
 \begin_inset Foot
 status collapsed
 
@@ -28443,7 +28417,7 @@ name "fn:これは脚注の一例"
 
 \end_inset
 
-これは脚注の一例です。
+これは脚註の一例です。
 \end_layout
 
 \end_inset
@@ -28474,13 +28448,13 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-出力に於いては、脚注は、文中の脚注ボックスを置いた位置に上付き数字として表示され、脚注文は現ページ底部に置かれます。脚注番号は\SpecialChar LaTeX
+出力に於いては、脚註は、文中の脚註ボックスを置いた位置に上付き数字として表示され、脚註文は現ページ底部に置かれます。脚註番号は\SpecialChar LaTeX
 が計算を行い、連番が付けられます。
-脚注番号が章毎にリセットされるか否かは、使用する文書クラスに依ります。
+脚註番号が章毎にリセットされるか否かは、使用する文書クラスに依ります。
 \end_layout
 
 \begin_layout Standard
-脚注もフロート同様、参照することができます。脚注にラベルを挿入し、第
+脚註もフロート同様、参照することができます。脚註にラベルを挿入し、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:フロートの参照"
@@ -28491,7 +28465,7 @@ reference "sec:フロートの参照"
 \begin_inset Newline newline
 \end_inset
 
-これは脚注
+これは脚註
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fn:これは脚注の一例"
@@ -28505,11 +28479,7 @@ reference "fn:これは脚注の一例"
 \begin_inset VSpace defskip
 \end_inset
 
-
-\lang english
-Footnotes in title environments are usually not numbered with symbols and
- they cannot contain several paragraphs.
- See for example the footnote in the titling of this document.
+表題環境における脚註は、通常、記号付きで付番はされず、複数の段落を含むことはできません。たとえば、この文書の表題の脚註をご覧ください。
 \end_layout
 
 \begin_layout Standard
@@ -28521,14 +28491,14 @@ Footnotes in title environments are usually not numbered with symbols and
 
 \begin_layout Standard
 \SpecialChar LaTeX
-では、技術的要因により、表中の脚注は印字されません。しかし、それを行うには他の方法があり、まず脚注の代わりに\SpecialChar TeX
+では、技術的要因により、表中の脚註は印字されません。しかし、それを行うには他の方法があり、まず脚註の代わりに\SpecialChar TeX
 コードで
 \series bold
 
 \backslash
 footnotemark{}
 \series default
-コマンドを入れてください。脚注の本文は、表の後で\SpecialChar TeX
+コマンドを入れてください。脚註の本文は、表の後で\SpecialChar TeX
 コード
 \series bold
 
@@ -28549,7 +28519,7 @@ footnotetext
 \backslash
 footnotetext{
 \series default
-出力される脚注の表
+出力される脚註の表
 \series bold
 }
 \series default
@@ -28575,7 +28545,7 @@ footnotetext{
 status open
 
 \begin_layout Plain Layout
-この脚注は出力されません!
+この脚註は出力されません!
 \end_layout
 
 \end_inset
@@ -28627,7 +28597,7 @@ footnotetext{
 
 \end_inset
 
-出力される脚注の表
+出力される脚註の表
 \begin_inset ERT
 status collapsed
 
@@ -28642,10 +28612,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-長尺表中の脚注は、第
+多頁表中の脚註は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:長尺表での脚注"
+reference "subsec:多頁表での脚注"
 
 \end_inset
 
@@ -28653,14 +28623,14 @@ reference "subsec:長尺表での脚注"
 \end_layout
 
 \begin_layout Standard
-ミニページ中の脚注は出力されますが、ミニボックスは頁中の頁のようなものなので、ボックス内に独立した連番として出力されます（ミニページについての詳細は、第
+ミニページ中の脚註は出力されますが、ミニボックスは頁中の頁のようなものなので、ボックス内に独立した連番として出力されます（ミニページについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ミニページ"
 
 \end_inset
 
-節を参照）。通常の脚注のように頁底部に出力されるミニページを得るには、やはり
+節を参照）。通常の脚註のように頁底部に出力されるミニページを得るには、やはり
 \series bold
 
 \backslash
@@ -28700,7 +28670,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-ミニページ中の脚注です。
+ミニページ中の脚註です。
 \end_layout
 
 \end_inset
@@ -28743,7 +28713,7 @@ footnotetext{
 
 \end_inset
 
-ミニページ外の脚注です。
+ミニページ外の脚註です。
 \begin_inset ERT
 status collapsed
 
@@ -28762,7 +28732,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-毎回脚注本文を出力せずに、同じ脚注を何度か参照したい場合には、\SpecialChar TeX
+毎回脚註本文を出力せずに、同じ脚註を何度か参照したい場合には、\SpecialChar TeX
 コードでコマンド
 \series bold
 
@@ -28773,7 +28743,7 @@ footnotemark[番号]
 \begin_inset Newline newline
 \end_inset
 
-文章を書いている途中には、繰り返す脚注の数はわからないので、その番号は保存しておかなくてはなりません。以下の脚注例では、脚注
+文章を書いている途中には、繰り返す脚註の数はわからないので、その番号は保存しておかなくてはなりません。以下の脚註例では、脚註
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fn:これは脚注の一例"
@@ -28801,7 +28771,7 @@ thefootnote}
 \end_layout
 
 \begin_layout Standard
-というコマンドを挿入しています。そして脚注マークは、
+というコマンドを挿入しています。そして脚註マークは、
 \end_layout
 
 \begin_layout Standard
@@ -28819,7 +28789,7 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-これは繰り返し脚注の例です。
+これは繰り返し脚註の例です。
 \begin_inset ERT
 status collapsed
 
@@ -28838,7 +28808,7 @@ theMyRepeatFoot]
 \end_layout
 
 \begin_layout Standard
-直前の脚注を繰り返すには、脚注番号の保存を行わないで、直ちに
+直前の脚註を繰り返すには、脚註番号の保存を行わないで、直ちに
 \end_layout
 
 \begin_layout Standard
@@ -28856,7 +28826,7 @@ thefootnote]
 \end_layout
 
 \begin_layout Standard
-これは繰り返し脚注の例です。
+これは繰り返し脚註の例です。
 \begin_inset ERT
 status collapsed
 
@@ -28875,7 +28845,7 @@ thefootnote]
 \end_layout
 
 \begin_layout Subsection
-脚注の付番
+脚註の付番
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:脚注の付番"
@@ -28887,7 +28857,7 @@ name "subsec:脚注の付番"
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚注 ! ふばん@付番
+きゃくちゅう@脚註 ! ふばん@付番
 \end_layout
 
 \end_inset
@@ -28896,7 +28866,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-各節毎に脚注番号を1にリセットするには、文書プリアンブルに
+各節毎に脚註番号を1にリセットするには、文書プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -28915,7 +28885,7 @@ status collapsed
 \begin_inset VSpace bigskip
 \end_inset
 
-以下のプリアンブルコマンドを使うと、脚注の付番様式を小文字ローマ数字に変更することができます。
+以下のプリアンブルコマンドを使うと、脚註の付番様式を小文字ローマ数字に変更することができます。
 \end_layout
 
 \begin_layout Standard
@@ -28947,12 +28917,12 @@ roman{footnote}}
 
 \end_inset
 
-これは、ローマ数字を使った脚注です
+これは、ローマ数字を使った脚註です
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは、ローマ数字を使った脚注の例です。
+これは、ローマ数字を使った脚註の例です。
 \end_layout
 
 \end_inset
@@ -28973,7 +28943,7 @@ roman
 \backslash
 Roman
 \series default
-に置き換えてください。脚注を大文字または小文字ラテン「文字」で付番するには、それぞれ
+に置き換えてください。脚註を大文字または小文字ラテン「文字」で付番するには、それぞれ
 \series bold
 
 \backslash
@@ -29003,7 +28973,7 @@ status open
 \series bold
 【註】
 \series default
-この付番方法には1文字しか使えないので、ラテン文字を使うと26個の脚注しか番号を振ることができません。
+この付番方法には1文字しか使えないので、ラテン文字を使うと26個の脚註しか番号を振ることができません。
 \end_layout
 
 \end_inset
@@ -29021,7 +28991,7 @@ status open
 \series bold
 【註】
 \series default
-記号を使うと9個の脚注しか番号を振ることができません。
+記号を使うと9個の脚註しか番号を振ることができません。
 \end_layout
 
 \end_inset
@@ -29070,7 +29040,7 @@ arabic{footnote}}
 \end_layout
 
 \begin_layout Standard
-脚注を「章番号.脚注番号」スキームで付番したいときには、使用中文書のプリアンブルに
+脚註を「章番号.脚註番号」スキームで付番したいときには、使用中文書のプリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -29116,7 +29086,7 @@ numberwithin{footnote}{chapter}
 
 \end_inset
 
-これは、脚注のもう一つの例です
+これは、脚註のもう一つの例です
 \series bold
 
 \begin_inset Foot
@@ -29127,7 +29097,7 @@ status open
 \series bold
 これは、
 \series default
-「章番号.脚注番号」スキームで番号を振られた脚注です。
+「章番号.脚註番号」スキームで番号を振られた脚註です。
 \end_layout
 
 \end_inset
@@ -29165,7 +29135,7 @@ status open
 \backslash
 numberwithin
 \series default
-は、脚注番号を常にアラビア数字で出力します。それよりも前にアラビア数字以外に再定義されたものは無効となります。
+は、脚註番号を常にアラビア数字で出力します。それよりも前にアラビア数字以外に再定義されたものは無効となります。
 \end_layout
 
 \end_inset
@@ -29200,12 +29170,12 @@ Roman{footnote}}
 \end_layout
 
 \begin_layout Subsection
-脚注の配置
+脚註の配置
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-きゃくちゅう@脚注 ! はいち@配置
+きゃくちゅう@脚註 ! はいち@配置
 \end_layout
 
 \end_inset
@@ -29214,7 +29184,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-同一ページに複数の脚注がある場合、それらはページ底部に縦方向の余白を空けることなく、並べられます。これを読みやすくするには、例えば以下のようなコマンドをプリアン
+同一ページに複数の脚註がある場合、それらはページ底部に縦方向の余白を空けることなく、並べられます。これを読みやすくするには、例えば以下のようなコマンドをプリアン
 ブルに足して、1.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -29250,7 +29220,7 @@ vspace{1.5mm}}}
 \begin_inset VSpace bigskip
 \end_inset
 
-二段組文書では、脚注は各段底部に表示されます（図
+二段組文書では、脚註は各段底部に表示されます（図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:標準的脚注配置"
@@ -29264,7 +29234,7 @@ reference "fig:ftnright脚注配置"
 
 \end_inset
 
-のように、脚注を右段底部にのみ表示するようにするには、文書プリアンブルに
+のように、脚註を右段底部にのみ表示するようにするには、文書プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -29345,7 +29315,7 @@ name "fig:標準的脚注配置"
 
 \end_inset
 
-二段組文書の標準的な脚注配置
+二段組文書の標準的な脚註配置
 \end_layout
 
 \end_inset
@@ -29415,7 +29385,7 @@ name "fig:ftnright脚注配置"
 \series bold
 ftnright
 \series default
-を使用したときの二段組文書の脚注配置
+を使用したときの二段組文書の脚註配置
 \end_layout
 
 \end_inset
@@ -29432,24 +29402,24 @@ ftnright
 \begin_inset VSpace bigskip
 \end_inset
 
-科学的文献に於いては、図
+科学的文献においては、図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:後注"
+reference "fig:後註"
 
 \end_inset
 
-のように、節の末尾に別段落を設けて、脚注をまとめて出力することも普通に行われます。これは「後注
+のように、節の末尾に別段落を設けて、脚註をまとめて出力することも普通に行われます。これは「後註
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-こちゅう@後注
+こちゆう@後註
 \end_layout
 
 \end_inset
 
-」と呼ばれるものです。文書中で脚注の代わりに後注を使用するには、
+」と呼ばれるものです。文書中で脚註の代わりに後註を使用するには、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -29457,7 +29427,7 @@ status collapsed
 \family default
 メニューで
 \family sans
-脚注から後注へ
+脚註から後註へ
 \family default
 を読み込んでください。まとめた注を出力するには、節ないし章末に\SpecialChar TeX
 コードで
@@ -29522,11 +29492,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:後注"
+name "fig:後註"
 
 \end_inset
 
-後注 – 注を節ないし章末に別段落として印字します。
+後註 – 注を節ないし章末に別段落として印字します。
 \end_layout
 
 \end_inset
@@ -29543,7 +29513,7 @@ name "fig:後注"
 \begin_inset VSpace medskip
 \end_inset
 
-後注の段落見出しは、文書言語に自動的に翻訳されることはありませんので、手動で翻訳しなくてはなりません。プリアンブルで
+後註の段落見出しは、文書言語に自動的に翻訳されることはありませんので、手動で翻訳しなくてはなりません。プリアンブルで
 \end_layout
 
 \begin_layout Standard
@@ -29571,7 +29541,7 @@ reference "subsec:脚注の付番"
 
 \end_inset
 
-節で述べた脚注の付番と同様に、後注の付番も変更することができます。
+節で述べた脚註の付番と同様に、後註の付番も変更することができます。
 \series bold
 
 \backslash
@@ -29583,7 +29553,7 @@ thefootnote
 \backslash
 theendnote
 \series default
-を用いてください。後注番号をリセットするには、第
+を用いてください。後註番号をリセットするには、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:脚注の付番"
@@ -29608,7 +29578,7 @@ endnote
 \end_layout
 
 \begin_layout Standard
-後注の印だけを作成するには、第
+後註の印だけを作成するには、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:脚注"
@@ -29634,7 +29604,7 @@ endnotemark[番号]
 \begin_inset VSpace bigskip
 \end_inset
 
-脚注はページ余白に置くこともでき、脚注文の揃えも変更することができます。詳細は、\SpecialChar LaTeX
+脚註はページ余白に置くこともでき、脚註文の揃えも変更することができます。詳細は、\SpecialChar LaTeX
 パッケージ
 \series bold
 footmisc
@@ -29662,7 +29632,7 @@ key "footmisc"
 \end_layout
 
 \begin_layout Standard
-脚注の整形にまつわるその他多くの話題が、\SpecialChar LaTeX
+脚註の整形にまつわるその他多くの話題が、\SpecialChar LaTeX
 関連書籍
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -29686,7 +29656,7 @@ status collapsed
 
 \end_inset
 
-文書クラスを使用している場合には、すべての脚注設定を、クラス固有のコマンドで調節することができます(
+文書クラスを使用している場合には、すべての脚註設定を、クラス固有のコマンドで調節することができます(
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
@@ -29697,12 +29667,12 @@ key "KOMA-Script"
 \end_layout
 
 \begin_layout Section
-傍注
+傍註
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ちゅうしゃく@注釈 ! ぼうちゅう@傍注
+ちゅうしゃく@註釈 ! ぼうちゅう@傍註
 \end_layout
 
 \end_inset
@@ -29712,10 +29682,10 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
-内において、傍注注釈は、脚注のような外見と挙動を示します。これは
+内において、傍註註釈は、脚註のような外見と挙動を示します。これは
 \family sans
 挿入\SpecialChar menuseparator
-傍注
+傍註
 \family default
 メニューかツールバーボタン
 \family sans
@@ -29727,16 +29697,16 @@ arg   "marginalnote-insert"
 
 
 \family default
-で挿入することができます。すると、紫字で「傍注」と書かれた灰色のボックスが現れて、そこに傍注文を入れることができます。
+で挿入することができます。すると、紫字で「傍註」と書かれた灰色のボックスが現れて、そこに傍註文を入れることができます。
 \end_layout
 
 \begin_layout Standard
-横にあるのが傍注です
+横にあるのが傍註です
 \begin_inset Marginal
 status open
 
 \begin_layout Plain Layout
-これは傍注文です。
+これは傍註文です。
 \end_layout
 
 \end_inset
@@ -29745,15 +29715,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-片面文書においては、傍注は右側に表示され、両面文書においては外側余白—偶数ページでは左側、奇数ページでは右側—に表示されます。傍注文は、外側余白の反対側に—注が
-左余白に現れるときには右揃えに—寄せられます。傍注文の一行目は、傍注が挿入された文書箇所と同じ行に来るように配置されます。
+片面文書においては、傍註は右側に表示され、両面文書においては外側余白—偶数ページでは左側、奇数ページでは右側—に表示されます。傍註文は、外側余白の反対側に—注が
+左余白に現れるときには右揃えに—寄せられます。傍註文の一行目は、傍註が挿入された文書箇所と同じ行に来るように配置されます。
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-傍注を内側余白に置くには、傍注の前に\SpecialChar TeX
+傍註を内側余白に置くには、傍註の前に\SpecialChar TeX
 コードで
 \end_layout
 
@@ -29766,7 +29736,7 @@ reversemarginpar
 \end_layout
 
 \begin_layout Standard
-というコマンドを書き加えてください。この新しい配置は、以後のすべての傍注に対して効力があります。
+というコマンドを書き加えてください。この新しい配置は、以後のすべての傍註に対して効力があります。
 \begin_inset ERT
 status collapsed
 
@@ -29784,7 +29754,7 @@ reversemarginpar
 status open
 
 \begin_layout Plain Layout
-これは内側余白の傍注です。
+これは内側余白の傍註です。
 \end_layout
 
 \end_inset
@@ -29806,7 +29776,7 @@ status open
 \series bold
 【註】
 \series default
-内側余白には充分な空白がないことがよくあり、出力で傍注が正しく表示されないことがあります。
+内側余白には充分な空白がないことがよくあり、出力で傍註が正しく表示されないことがあります。
 \end_layout
 
 \end_inset
@@ -29869,7 +29839,7 @@ reversemarginpar
 status open
 
 \begin_layout Plain Layout
-AVeryLongMarginParWord（とっても長い傍注段落中の単語）がハイフネートされない例。
+AVeryLongMarginParWord（とっても長い傍註段落中の単語）がハイフネートされない例。
 \end_layout
 
 \end_inset
@@ -29881,7 +29851,7 @@ reference "subsec:複数行"
 
 \end_inset
 
-節で述べられている事例と同様に、長い単語が傍注文の最初の単語として来るとハイフネートが行われません。これを回避するには、その単語の前に0
+節で述べられている事例と同様に、長い単語が傍註文の最初の単語として来るとハイフネートが行われません。これを回避するには、その単語の前に0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29894,7 +29864,7 @@ status open
 \length 0pt
 \end_inset
 
-AVeryLongMarginParWord（とっても長い傍注段落中の単語）がハイフネートされる例。
+AVeryLongMarginParWord（とっても長い傍註段落中の単語）がハイフネートされる例。
 \end_layout
 
 \end_inset
@@ -29918,7 +29888,7 @@ status open
 \series bold
 【註】
 \series default
-通常、傍注は表やフロート、脚注の中では使用することができません。
+通常、傍註は表やフロート、脚註の中では使用することができません。
 \end_layout
 
 \end_inset
@@ -29983,7 +29953,7 @@ status collapsed
 \end_inset
 
 を使用することで回避することができます。以下の二行を使用中の文書プリアンブルに書き加えると、\SpecialChar LyX
-が傍注に使うコマンドが再定義されて、
+が傍註に使うコマンドが再定義されて、
 \series bold
 marginnote
 \series default
@@ -30017,9 +29987,9 @@ marginnote
 \series bold
 marginnote
 \series default
-を使うと、傍注文に垂直オフセットを設定することができるからです。これは、あまりにもたくさんの傍注が非常に近いところに集まっていたり、もっとよいページレイアウトが
+を使うと、傍註文に垂直オフセットを設定することができるからです。これは、あまりにもたくさんの傍註が非常に近いところに集まっていたり、もっとよいページレイアウトが
 望まれるときなどに、よく必要とされます。オフセットは、\SpecialChar LyX
-中の傍注の後ろに\SpecialChar TeX
+中の傍註の後ろに\SpecialChar TeX
 コードで直接
 \end_layout
 
@@ -30037,7 +30007,7 @@ reference "tab:単位"
 
 \end_inset
 
-に挙げてある単位の一つを使用します。負の値を与えると注釈は上にずれ、正の値だと下にずれます。たとえば、この本文行の横にある傍注は、\SpecialChar TeX
+に挙げてある単位の一つを使用します。負の値を与えると註釈は上にずれ、正の値だと下にずれます。たとえば、この本文行の横にある傍註は、\SpecialChar TeX
 コードコマンド「
 \series bold
 [-1.5cm]
@@ -30051,7 +30021,7 @@ cm上にずらしてあります
 status open
 
 \begin_layout Plain Layout
-この傍注は、本来の位置よりも1.5
+この傍註は、本来の位置よりも1.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -30082,7 +30052,7 @@ status collapsed
 \series bold
 marginnote
 \series default
-を使うと、傍注の揃えを変更することもできます。たとえば、
+を使うと、傍註の揃えを変更することもできます。たとえば、
 \end_layout
 
 \begin_layout Standard
@@ -30114,7 +30084,7 @@ centering}
 \backslash
 raggedleftmarginnote
 \series default
-とは、左側に表示されている傍注のことを指します
+とは、左側に表示されている傍註のことを指します
 \begin_inset ERT
 status collapsed
 
@@ -30147,7 +30117,7 @@ centering}
 status open
 
 \begin_layout Plain Layout
-この傍注の文章は中央揃えになっています。
+この傍註の文章は中央揃えになっています。
 \end_layout
 
 \end_inset
@@ -30233,7 +30203,7 @@ key "marginnote"
 \begin_inset VSpace bigskip
 \end_inset
 
-傍注のレイアウトは、傍注の定義を変更することによって変えることができます。たとえば、すべての傍注に、下線を引いたサンセリフ体の太字で「
+傍註のレイアウトは、傍註の定義を変更することによって変えることができます。たとえば、すべての傍註に、下線を引いたサンセリフ体の太字で「
 \family sans
 \series bold
 \bar under
@@ -30373,7 +30343,7 @@ vspace{1.5mm}
 status open
 
 \begin_layout Plain Layout
-これは、定義したヘッダをつけた傍注です。
+これは、定義したヘッダをつけた傍註です。
 \end_layout
 
 \end_inset
@@ -30411,7 +30381,7 @@ myMarginpar{#1}}
 status open
 
 \begin_layout Plain Layout
-傍注書式は、この例の分だけ変更してあります。
+傍註書式は、この例の分だけ変更してあります。
 \end_layout
 
 \end_inset
@@ -30613,7 +30583,7 @@ reference "sec:ハイフネーションの回避"
 \end_layout
 
 \begin_layout Standard
-ボックスは付番されないので、フロートや脚注のように参照することはできません。
+ボックスは付番されないので、フロートや脚註のように参照することはできません。
 \end_layout
 
 \begin_layout Standard
@@ -31277,15 +31247,11 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-縁なし 枠を描きません。
+枠なし 枠を描きません。
 \end_layout
 
 \begin_layout Description
-簡素な長方形の枠 これはボックスの周りに長方形の枠を描きます。
-\lang english
-The frame line thickness can be specified
-\lang japanese
-。 
+簡素な長方形の枠 これはボックスの周りに長方形の枠を描きます。枠線の太さを指定することができます。
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -31383,11 +31349,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-影付き これはボックスの周りに影付きの長方形の枠を描きます。
-\lang english
-The frame line thickness and the shadow can be specified
-\lang japanese
-。
+影付き これはボックスの周りに影付きの長方形の枠を描きます。枠線の太さと影を指定することができます。
 \begin_inset Box Shadowbox
 position "c"
 hor_pos "c"
@@ -31463,48 +31425,12 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-二重線の長方形の枠 これはボックスの周りに二重線の長方形の枠を描きます。
-\lang english
-The line thickness of the inner frame is 0.75
+二重線の長方形の枠 これはボックスの周りに二重線の長方形の枠を描きます。内側の枠の太さは、線幅の0.75倍であり、外側の枠の太さは、線幅の1.5倍です。枠同士の間隔
+は、線幅の1.5倍＋0.5
 \begin_inset space \thinspace{}
 \end_inset
 
-line
-\begin_inset space ~
-\end_inset
-
-thickness, the thickness of the outer frame is 1.5
-\begin_inset space \thinspace{}
-\end_inset
-
-line
-\begin_inset space ~
-\end_inset
-
-thickness.
- The distance between the lines is 1.5
-\begin_inset space \thinspace{}
-\end_inset
-
-line
-\begin_inset space ~
-\end_inset
-
-thickness
-\begin_inset space \thinspace{}
-\end_inset
-
-+
-\begin_inset space \thinspace{}
-\end_inset
-
-0.5
-\begin_inset space \thinspace{}
-\end_inset
-
-pt
-\lang japanese
-。 
+ptです。
 \begin_inset Box Doublebox
 position "c"
 hor_pos "c"
@@ -31563,16 +31489,11 @@ status collapsed
 \end_inset
 
 
-\lang english
-When you use the decoration 
 \family sans
-simple rectangular frame
+簡素な長方形の枠
 \family default
- and no inner box, you can allow page breaks within a box.
- Note that then, unlike other framed boxes, the frame always uses the whole
- column width and the box is set as its own paragraph:
-\lang japanese
- 
+の装飾を使って内部ボックスを使用しないとき、ボックス内で改頁を許可することができます。その場合、他の枠付きボックスと違って、この枠は、つねに段幅の全幅を使用し、
+ボックスは独立の段落として設定されることに注意してください。
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -31760,14 +31681,11 @@ cornersize{0.5}
 
 \begin_layout Standard
 
-\lang english
-The default background color red of 
 \family sans
-shaded background
+影付き背景
 \family default
- boxes can either be changed locally with the command
+ボックスの赤色の既定背景色は、
 \series bold
-\lang japanese
 
 \backslash
 definecolor{shadebox}
@@ -31904,10 +31822,7 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-Manually changed sizes and colors are valid for all boxes following the
- commands that change them.
+手動で変更した寸法と色は、それを変更したコマンド以降のすべてのボックスに対して有効です。
 \end_layout
 
 \begin_layout Section
@@ -31933,7 +31848,7 @@ status collapsed
 
 \begin_layout Standard
 ミニページは、\SpecialChar LaTeX
-によってページの中のページとして取り扱われるので、たとえばそれ自身で脚注を持つことができます。
+によってページの中のページとして取り扱われるので、たとえばそれ自身で脚註を持つことができます。
 \end_layout
 
 \begin_layout Standard
@@ -32099,42 +32014,55 @@ status open
 \series bold
 【註】
 \series default
-ミニページ内にフロートや傍注を使用することはできませんが、ミニページを表・フロート・他のボックス内で使用することはできます。
+ミニページ内にフロートや傍註を使用することはできませんが、ミニページを表・フロート・他のボックス内で使用することはできます。
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\SpecialChar LyX
- has also basic support for minipages whose size is automatically determined
- by the width of their contents, via the module 
-\family sans
-Variable-width Minipages
-\family default
-.
- The \SpecialChar LyX
- example file 
-\emph on
-varwidth-floats-side-by-side
-\emph default
- gives examples of variable-width minipages used for placing two floats
- side-by-side.
 \end_layout
 
 \begin_layout Section
-Parbox
+可変幅ミニページ
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:可変幅ミニページ"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ほっくす@ボックス!みにへーしかへんはは@ミニページ(可変幅)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+は、
+\emph on
+可変幅ミニページ
+\emph default
+モジュールを経由して，内容の幅によって自動的に幅が調整されるミニページを一部サポートしています。ファイル
+\family typewriter
+examples/varwidth-floats-side-by-side.lyx
+\family default
+では、2つのフロートを並べて配置するのに可変幅ミニページを使用する例を取り扱っています。これには、
+\family typewriter
+Varwidth
+\family default
+ \SpecialChar LaTeX
+パッケージが必要です。
+\end_layout
+
+\begin_layout Section
+段落ボックス(parbox)
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Parboxes"
@@ -32146,7 +32074,7 @@ name "sec:Parboxes"
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス ! Parboxes
+ほっくす@ボックス ! たんらく@段落—(parbox)
 \end_layout
 
 \end_inset
@@ -32155,7 +32083,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Parboxはミニページに非常によく似ていますが、脚注を付けることができない点が違います。
+段落ボックス(parbox)はミニページに非常によく似ていますが、脚註を付けることができない点が違います。
 \begin_inset Separator parbreak
 \end_inset
 
@@ -32183,16 +32111,16 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-これはparbox内の文章です。これはparbox内の文章です。
+これは段落ボックス内の文章です。これは段落ボックス内の文章です。
 \end_layout
 
 \begin_layout Plain Layout
-右の脚注は表示されません。
+右の脚註は表示されません。
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これはparbox内の脚注であり、したがって表示はされません。
+これはparbox内の脚註であり、したがって表示はされません。
 \end_layout
 
 \end_inset
@@ -32657,7 +32585,7 @@ depth}[0pt]{
 \end_layout
 
 \begin_layout Standard
-とすると、
+とすると、以下のようになります。
 \end_layout
 
 \begin_layout Standard
@@ -32760,11 +32688,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the background of a box just select the color you like in the box
- dialog.
- This is for example a box with orange background: 
+ボックスの背景に色を付けるには、ボックスダイアログで好みの色を選択するだけです。これは，橙色の背景を持つボックスの例です：
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -32784,9 +32708,7 @@ backgroundcolor "orange"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Box with orange background
+橙色背景のボックス
 \end_layout
 
 \end_inset
@@ -32795,18 +32717,16 @@ Box with orange background
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use the decoration
+装飾を
 \family sans
-\lang japanese
 簡素な長方形の枠
 \family default
-\lang english
-you can set a frame color.
- In this case you must also specify a background color (LyX sets white as
- default).
- Here is an example: 
+にした場合には、枠の色を設定できます。この場合、背景色も指定しなくてはなりません(\SpecialChar LyX
+は白を既定色として設定します)。
+\begin_inset Newline newline
+\end_inset
+
+例：
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -32826,9 +32746,7 @@ backgroundcolor "yellow"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Box with teal frame color and yellow background color
+ティール色の枠と黄色の背景を持つボックス
 \end_layout
 
 \end_inset
@@ -32840,11 +32758,7 @@ Box with teal frame color and yellow background color
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-Of course you can also have colored text inside a colored box:
-\lang japanese
-
+もちろん、色付きボックスの中に色付きの文を入れることもできます：
 \begin_inset Newline newline
 \end_inset
 
@@ -32886,39 +32800,24 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need another color than the predefined ones, you can define your
- own color as described in section
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+事前に設定された色以外の色が欲しいときは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:色付きの表"
 
 \end_inset
 
-
-\lang english
-.
- To use your own color you must typeset the box by using TeX code:
+節に述べられているように、独自色を定義することができます。独自色を使う場合には、以下のように，TeXコードを使ってボックスを組版しなくてはなりません。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Colored boxes without frame are created with the command
+枠なしの色付きボックスは、
 \series bold
-\lang japanese
 
 \backslash
 colorbox
 \series default
-コマンドを使って作ります。これは、以下のような書式で使われます。
+コマンドで作ります。これは、以下のような書式で使われます。
 \end_layout
 
 \begin_layout Standard
@@ -32926,22 +32825,12 @@ colorbox
 \series bold
 
 \backslash
-colorbox{color}{ボックスの内容}
+colorbox{色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-ボックスの内容には、ボックスが入ることもできますし、色付きボックスを他のボックスに入れることもできます。たとえば、単語の背景を赤にするには、単語の前に\SpecialChar TeX
+ボックスの内容には、ボックスが入ることもできますし、色付きボックスを他のボックスに入れることもできます。たとえば、単語の背景を濃緑にするには、単語の前に\SpecialChar TeX
 コードで
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-@Koji: replace here red by darkgreen
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -32990,30 +32879,17 @@ status collapsed
 
 \end_inset
 
-という単語が赤い背景になっています。
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-@Koji: replace here red by darkgreen
-\end_layout
-
-\end_inset
-
-
+という単語が濃緑の背景になっています。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Framed, colored boxes are created with the command
+枠付き色付きのボックスは、下記のように
 \series bold
-\lang japanese
 
 \backslash
 fcolorbox
 \series default
-コマンドを使います。
+コマンドを使って作ります。
 \end_layout
 
 \begin_layout Standard
@@ -33029,13 +32905,11 @@ fcolorbox{枠の色}{ボックスの色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use the boxes described in this section, the module 
+本節に述べられているボックスを使うには、
 \family sans
-GraphicBoxes
+画像ボックス
 \family default
- must be loaded in the document settings.
+モジュールを文書設定で読み込んでおく必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -33117,40 +32991,30 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To rotate material, you can put it into a 
+ものを回転するならば、
 \family sans
-Rotatebox
+回転ボックス
 \family default
-.
- Such a box is inserted via the menu 
+に入れることができます。このボックスは、
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Rotatebox
+挿入\SpecialChar menuseparator
+拡張差込枠\SpecialChar menuseparator
+回転ボックス
 \family default
-.
+で挿入することができます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The rotation origin can be specified via the inset 
+回転の原点は、原点差込枠(メニュー「
 \family sans
-Origin
+挿入\SpecialChar menuseparator
+原点
 \family default
- (menu 
-\family sans
-Insert\SpecialChar menuseparator
-Origin
-\family default
-) in the form 
+」)に
 \series bold
-\lang japanese
 origin=位置
 \series default
-。位置として指定可能なのは、
+の形で指定することができます。位置として指定可能なのは、
 \emph on
 c
 \emph default
@@ -33182,25 +33046,23 @@ l
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the following example 
+下の例では、
+\family sans
+原点
+\family default
+差込枠に
 \series bold
 origin=c
 \series default
- was inserted to the 
+、
 \family sans
-Option
+回転
 \family default
- inset and 
+差込枠に
 \series bold
 60
 \series default
- was inserted to the 
-\family sans
-Angle
-\family default
- inset.
+と入れています。
 \end_layout
 
 \begin_layout Standard
@@ -33446,24 +33308,19 @@ r
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
-\series default
- If the 
+【註】
 \family sans
-Angle
+\series default
+角度
 \family default
- inset is empty or contains other characters than numbers you will get \SpecialChar LaTeX
-
- errors when viewing/exporting the document.
+差込枠が空であったり、数字以外の文字が入っていたりした場合、文書を閲覧したり書き出したりする際に、\SpecialChar LaTeX
+エラーが発生します。
 \end_layout
 
 \end_inset
@@ -33516,68 +33373,54 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To scale material put it into a 
+ものを伸縮するならば、
 \family sans
-Scalebox
+伸縮ボックス
 \family default
-.
- Such a box is inserted via the menu 
+に入れることができます。このボックスは、
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Scalebox
+挿入\SpecialChar menuseparator
+拡張差込枠\SpecialChar menuseparator
+伸縮ボックス
 \family default
-.
+で挿入することができます。
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-The 
 \family sans
-Scalebox
+伸縮ボックス
 \family default
- inset has the mandatory inset 
+には、必須差込枠「
 \family sans
-H-Factor
+水平因子
 \family default
- and the optional inset 
+」と、非必須差込枠「
 \family sans
-V-Factor
+垂直因子
 \family default
- (inserted via the menu 
+」(「
 \family sans
-Insert\SpecialChar menuseparator
-V-Factor)
+挿入\SpecialChar menuseparator
+垂直因子
 \family default
-.
- Input there there horizontal and vertical scale factor, respectively.
- If no 
+」メニューで挿入可)がありますので、そこに水平因子と垂直因子を入力してください。
 \family sans
-V-Factor
+垂直因子
 \family default
- inset is used, the horizontal factor will also be used as the vertical
- one.
+を使わない場合には、水平因子が垂直因子としても使われます。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get for example the double text size, compared to the document text size,
- insert 
+たとえば、文書の本文の大きさに比べて、文を2倍の大きさにしたい場合、
+\family sans
+水平因子
+\family default
+差込枠に
 \series bold
 2
 \series default
- into the 
-\family sans
-H-Factor
-\family default
- inset.
- An example
-\lang japanese
-: 
+と入力してください。例：
 \begin_inset Flex Scalebox
 status open
 
@@ -33601,25 +33444,22 @@ status open
 
 \begin_layout Standard
 
+\family sans
+水平因子
+\family default
+を
 \series bold
-\lang english
 2
 \series default
- as 
+、
 \family sans
-H-Factor
+垂直因子
 \family default
- and 
+を
 \series bold
 1
 \series default
- as 
-\family sans
-V-Factor
-\family default
- distorts the
-\lang japanese
- 
+にすると、このようにゆがみます：
 \begin_inset Flex Scalebox
 status open
 
@@ -33648,32 +33488,27 @@ status open
 
 \end_inset
 
-。
+
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the scaling factor is negative, the box content will be mirrored.
- Therefore 
+伸縮因子を負に設定した場合、ボックスの内容は鏡像になります。鏡文字を作りたい場合には、
+\family sans
+水平因子
+\family default
+を
 \series bold
 -1
 \series default
- as 
+、
 \family sans
-H-Factor
+垂直因子
 \family default
- and 
+を
 \series bold
 1
 \series default
- as 
-\family sans
-V-Factor
-\family default
- can be used to create mirror writing
-\lang japanese
-: 
+にします：
 \begin_inset Flex Scalebox
 status open
 
@@ -33707,25 +33542,22 @@ status open
 
 \begin_layout Standard
 
-\series bold
-\lang english
--1
-\series default
- as 
 \family sans
-H-Factor
+水平因子
 \family default
- and 
+を
 \series bold
 1
 \series default
- as 
+、
 \family sans
-V-Factor
+垂直因子
 \family default
- reflects the
-\lang japanese
- 
+を
+\series bold
+-1
+\series default
+にすると、ベースラインでひっくり返した形になります：
 \begin_inset Flex Scalebox
 status open
 
@@ -33754,65 +33586,57 @@ status open
 
 \end_inset
 
- 
-\lang english
-at the base line.
+
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-The 
 \family sans
-Reflectbox
+反転ボックス
 \family default
- (menu 
+(「
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Reflectbox
+挿入\SpecialChar menuseparator
+拡張差込枠\SpecialChar menuseparator
+反転ボックス
 \family default
-) is equivalent to 
+」メニュー)は、
+\family sans
+伸縮ボックス
+\family default
+で
+\family sans
+水平因子
+\family default
+を
 \series bold
 -1
 \series default
- as 
+、
 \family sans
-H-Factor
+垂直因子
 \family default
- and 
+を
 \series bold
 1
 \series default
- as 
-\family sans
-V-Factor 
-\family default
-for a 
-\family sans
-Scalebox
-\family default
-.
+にしたものと同じです．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
-\series default
- If the 
+【註】
 \family sans
-H-Factor
+\series default
+水平因子
 \family default
- inset is empty or contains other characters than numbers you will get LaTeX
- errors when viewing/exporting the document.
+差込枠が空であったり、数字以外の文字が入っていたりした場合、文書を閲覧したり書き出したりする際に、\SpecialChar LaTeX
+エラーが発生します。
 \end_layout
 
 \end_inset
@@ -33824,84 +33648,69 @@ H-Factor
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-The 
+中身を決まった幅と高さに伸縮したい場合には、
 \family sans
-Resizebox
+寸法変更ボックス
 \family default
- (menu 
+(「
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Resizebox
+挿入\SpecialChar menuseparator
+拡張差込枠\SpecialChar menuseparator
+寸法変更ボックス
 \family default
-) is used to scale the content to a defined width and height.
- The 
+」メニュー)を使うことができます。
 \family sans
-Resizebox
+寸法変更ボックス
 \family default
- inset has the mandatory inset 
+には、必須差込枠「
 \family sans
-Width
+幅
 \family default
- and the optional inset 
+」と、非必須差込枠「
 \family sans
-Height
+高さ
 \family default
- (inserted via the menu 
+」(「
 \family sans
-Insert\SpecialChar menuseparator
-Height)
+挿入\SpecialChar menuseparator
+高さ
 \family default
-.
- Input there there width and height, respectively, as value with a unit.
- 
-\lang japanese
-
+」メニューで挿入可)がありますので、そこに幅と高さを単位付きの値で入力してください。
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:単位"
 
 \end_inset
 
-
-\lang english
- lists the possible units.
- If there is an exclamation mark 
+に使用できる単位が列挙してあります。2つの差込枠のいずれかに感嘆符
 \series bold
 !
 \series default
- in of of the two insets, the size is set so that the aspect ratio of the
- box content is kept.
- If no 
+があると、ボックス内容のアスペクト比が保たれるように寸法が設定されます。
 \family sans
-Height
+高さ
 \family default
- inset is used an exclamation mark will internally be used for the height.
+差込枠を使わない場合には、高さには内部的に感嘆符が使用されます。
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+を
 \family sans
-Width
+幅
 \family default
- and 
+に、
 \series bold
 1cm
 \series default
- as 
+を
 \family sans
-Height
+高さ
 \family default
- produces
-\lang japanese
-: 
+に使用するとこうなります：
 \begin_inset Flex Resizebox
 status open
 
@@ -33936,28 +33745,25 @@ status open
 
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+を
 \family sans
-Width
+幅
 \family default
- and 
+に、
 \series bold
 !
 \series default
- as 
+を
 \family sans
-Height
+高さ
 \family default
- (or no 
+に使用すると(あるいは
 \family sans
-Height
+高さ
 \family default
-) produces
-\lang japanese
-: 
+なし)こうなります：
 \begin_inset Flex Resizebox
 status open
 
@@ -33990,23 +33796,19 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
-\series default
- If the 
+【註】
 \family sans
-Width
+\series default
+幅
 \family default
- inset is empty or contains an invalid unit you will get LaTeX errors when
- viewing/exporting the document.
+差込枠が空であったり、無効な単位が入っていたりした場合、文書を閲覧したり書き出したりする際に、\SpecialChar LaTeX
+エラーが発生します。
 \end_layout
 
 \end_inset
@@ -34023,20 +33825,18 @@ Width
 
 \begin_layout Standard
 ボックスは好きな順序で組み合わせることができます。
-\lang english
-As example a 
 \family sans
-Reflectbox
+回転ボックス
 \family default
- inside a 
+の中に
 \family sans
-Resizebox
+寸法変更ボックス
 \family default
- which is in turn inside a 
+が入り、さらにその中に
 \family sans
-Rotatebox
+反転ボックス
 \family default
-:
+が入っている例です：
 \end_layout
 
 \begin_layout Standard
@@ -34529,9 +34329,11 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34593,9 +34395,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34672,9 +34476,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34736,9 +34542,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34772,9 +34580,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34875,9 +34685,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -34935,9 +34747,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -35029,9 +34843,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -35122,9 +34938,11 @@ arg   "dialog-show-new-inset graphics"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Info
-type  "icon"
-arg   "dialog-show-new-inset graphics"
+\begin_inset Graphics
+	filename ../../images/dialog-show-new-inset_graphics.png
+	scale 70
+	scaleBeforeRotation
+
 \end_inset
 
 
@@ -35309,7 +35127,7 @@ footnotetext{
 
 \end_inset
 
-固定オブジェクトのある段落の脚注
+固定オブジェクトのある段落の脚註
 \begin_inset ERT
 status collapsed
 
@@ -35382,7 +35200,7 @@ end{window}
 \end_layout
 
 \begin_layout Standard
-というコマンドを挿入してください。固定オブジェクトのある段落では、通常のように脚注を挿入することはできません。第
+というコマンドを挿入してください。固定オブジェクトのある段落では、通常のように脚註を挿入することはできません。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:脚注"
@@ -36715,9 +36533,9 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Include（インクルード） \SpecialChar LyX
+内包(include) \SpecialChar LyX
 文書と\SpecialChar LaTeX
-文書は、インクルードすることができます。
+文書は、内包することができます。
 \family sans
 子文書
 \family default
@@ -36725,7 +36543,7 @@ Include（インクルード） \SpecialChar LyX
 \family sans
 編集
 \family default
-ボタンを押すと、インクルードされた文書が、\SpecialChar LyX
+ボタンを押すと、内包された文書が、\SpecialChar LyX
 中に新規ファイルタブとして開き、修正ができるようになります。
 \begin_inset Newline newline
 \end_inset
@@ -36736,7 +36554,7 @@ Include（インクルード） \SpecialChar LyX
 \begin_layout Standard
 以下は、
 \family sans
-Include
+内包(include)
 \family default
 を使用して挿入した子文書です。 
 \begin_inset CommandInset include
@@ -36776,8 +36594,8 @@ status open
 \series default
 \SpecialChar LyX
 または\SpecialChar LaTeX
-ファイルを取り込んだ際、子文書が親文書と異なる文書クラスを使用している場合には、予期せぬ出力を避けるために、文書を書き出したり閲覧する際に警告が発せられま
-す。
+ファイルを内包する際、子文書が親文書と異なる文書クラスを使用している場合には、予期せぬ出力を避けるために、文書を書き出したり閲覧する際に警告が発せられます
+。
 \end_layout
 
 \end_inset
@@ -36786,7 +36604,7 @@ status open
 \end_layout
 
 \begin_layout Description
-Input（インプット） この方法は、Includeによる方法に非常によく似ています。異なっている点は、
+入力(input) この方法は、内包による方法に非常によく似ています。異なっている点は、
 \begin_inset Separator parbreak
 \end_inset
 
@@ -36795,11 +36613,11 @@ Input（インプット） この方法は、Includeによる方法に非常に�
 
 \begin_deeper
 \begin_layout Itemize
-Inputファイルは、新規頁として始まることはなく、終わりに改頁されることもありません。
+入力ファイルは、新規頁として始まることはなく、終わりに改頁されることもありません。
 \end_layout
 
 \begin_layout Itemize
-Inputファイルは、\SpecialChar LyX
+入力ファイルは、\SpecialChar LyX
 設定の操作性
 \family sans
 \SpecialChar menuseparator
@@ -36828,7 +36646,7 @@ includeonly
 \begin_layout Standard
 右は、
 \family sans
-Input
+入力(input)
 \family default
 を使って挿入した子文書です。 
 \begin_inset CommandInset include
@@ -36841,8 +36659,8 @@ filename "DummyDocument2.lyx"
 \end_layout
 
 \begin_layout Description
-Verbatim（文字通り） この方法では、テキストファイルなら何でも取り込むことができます。出力中では、ファイルはそのソースコードの通りに表示され、テキスト中
-に用いられているコマンドは実行されません。
+原文儘(verbatim) この方法では、テキストファイルなら何でも取り込むことができます。出力中では、ファイルはそのソースコードの通りに表示され、テキスト中に
+用いられているコマンドは実行されません。
 \family sans
 出力の空白に印付けをする
 \family default
@@ -36870,7 +36688,7 @@ textvisiblespace
 \end_layout
 
 \begin_layout Standard
-以下は、verbatimとして挿入された子文書です。 
+以下は、原文儘として挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 filename "../DummyTextDocument.txt"
@@ -36885,7 +36703,7 @@ filename "../DummyTextDocument.txt"
 \family sans
 出力の空白に印付けをする
 \family default
-オプションを指定して、verbatimとして挿入された子文書です。 
+オプションを指定して、原文儘として挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 filename "../DummyTextDocument.txt"
@@ -36913,7 +36731,7 @@ status open
 \series default
 上記の例でわかるように、
 \family sans
-verbatim
+原文儘(verbatim)
 \family default
 として取り込んだ文書の文章は、文書行の終わりで改行されません。
 \end_layout
@@ -36932,7 +36750,7 @@ status open
 \series bold
 【訳註】
 \series default
-verbatimで日本語のファイルを読み込むときは、子文書のエンコーディングを文書エンコーディングに合わせてください。さもないと出力が文字化けします。
+原文儘で日本語のファイルを読み込むときは、子文書のエンコーディングを文書エンコーディングに合わせてください。さもないと出力が文字化けします。
 \end_layout
 
 \end_inset
@@ -36981,8 +36799,8 @@ status open
 \family sans
 出力に含める
 \family default
-列をダブルクリックすることによって、その子文書を排除したり取り込んだりすることができます(これは「Input」ではなく「Include」で埋めこまれた文書に対し
-てのみ機能することにご注意ください)。
+列をダブルクリックすることによって、その子文書を排除したり取り込んだりすることができます(これは「入力」ではなく「内包」で埋めこまれた文書に対してのみ機能するこ
+とにご注意ください)。
 \family sans
 カウンタと引用を維持
 \family default
@@ -37013,8 +36831,8 @@ status collapsed
 
 \end_inset
 
-。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。この方法は、Inputで取り込んだ部分文
-書についても動作するという利点があります。ただし、カウンタと参照は、この方法では維持されるとは限りません。
+。派生枝を有効化したり無効化したりすることによって、取り込んだファイルのどれを出力に表示させるかを決めることができます。この方法は、入力で取り込んだ部分文書につ
+いても動作するという利点があります。ただし、カウンタと参照は、この方法では維持されるとは限りません。
 \end_layout
 
 \begin_layout Chapter
@@ -37169,7 +36987,7 @@ h
 メニューを使えば、プログラムリストにキャプションを付けることができます。プログラムリストは、フロート同様、リスト
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lst:リストフロート"
+reference "lst:ListFloat"
 
 \end_inset
 
@@ -37203,7 +37021,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "lst:リストフロート"
+name "lst:ListFloat"
 
 \end_inset
 
@@ -37383,7 +37201,7 @@ def func(param):
 
 \begin_layout Plain Layout
 
-'This is a German word: Tschüß'
+'This is a German word: Tschuss'
 \end_layout
 
 \begin_layout Plain Layout
@@ -37667,7 +37485,7 @@ key "listings"
 
 \end_inset
 
-をご参照ください。.
+をご参照ください。
 \end_layout
 
 \begin_layout Standard
@@ -38100,9 +37918,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+画像の縮尺%
 \end_layout
 
 \end_inset
@@ -38131,9 +37947,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+本文幅%
 \end_layout
 
 \end_inset
@@ -38164,9 +37978,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+列幅%
 \end_layout
 
 \end_inset
@@ -38197,9 +38009,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+ページ幅%
 \end_layout
 
 \end_inset
@@ -38230,9 +38040,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+行幅%
 \end_layout
 
 \end_inset
@@ -38263,9 +38071,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+本文高%
 \end_layout
 
 \end_inset
@@ -38296,9 +38102,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+ページ高%
 \end_layout
 
 \end_inset
@@ -42337,13 +42141,13 @@ name "cha:式の説明"
 \end_inset
 
 個の表セルの全幅
-\begin_inset Formula $W_{\mathrm{tot\,n}}$
+\begin_inset Formula $W_{\text{全}:n}$
 \end_inset
 
 は
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+W_{\text{全}:n}=n\cdot(W_{\text{指}:n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -42353,7 +42157,7 @@ W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot
 
 \begin_layout Standard
 で計算できます。ここで
-\begin_inset Formula $W_{g\,n}$
+\begin_inset Formula $W_{\text{指}:n}$
 \end_inset
 
 は、すべてのセルが持つ固定幅です。
@@ -42389,13 +42193,13 @@ reference "eq:Wtot_n"
 \end_inset
 
 式にしたがえば、連結列の全幅
-\begin_inset Formula $W_{\mathrm{tot\,mult}}$
+\begin_inset Formula $W_{\text{全}:\text{連結列}}$
 \end_inset
 
 は
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+W_{\text{全}:\text{連結列}}=W_{\text{指}:\text{連結列}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -42409,7 +42213,7 @@ W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\c
 \end_inset
 
 列を連結する時には各列の全幅は
-\begin_inset Formula $W_{\mathrm{tot\,mult}}/n$
+\begin_inset Formula $W_{\text{全}:\text{連結列}}/n$
 \end_inset
 
 となるので、第
@@ -42427,13 +42231,13 @@ reference "eq:Wtot_mult"
 \end_inset
 
 式が等しいものと置けば、必要となる固定幅
-\begin_inset Formula $W_{g\,n}$
+\begin_inset Formula $W_{\text{指}:n}$
 \end_inset
 
 を計算することができて、
 \begin_inset Formula 
 \begin{equation}
-W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+W_{\text{指}:n}=\frac{W_{\text{指}:\text{連結列}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
