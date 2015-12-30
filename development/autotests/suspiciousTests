@@ -6,6 +6,7 @@
 # They get also the test-feature 'inverted', i.e.
 # they are reported as failing if the export works without error.
 
+
 # 1.) Unknown Japanese char in section if previous
 #     paragraph ended in non-Japaneese language
 #     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
@@ -13,11 +14,6 @@
 #
 # Both reasons invalid since the commit 6b0632eea288348b912f98b79bc871830b6a3d98
 #export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
-
-export/examples/es/ejemplo_con_lyx_dvi3_systemF
-export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
-export/examples/fr/ListesPuces_pdf4_systemF
-export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 # Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
 # pdf4_systemF but not others. TODO Investigate if others can be fixed?
@@ -29,10 +25,8 @@ export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 # see whether they are supposed to fail or if there is something LyX
 # can do to add support for exporting them.
 export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
-export/examples/(docbook_article)_(pdf[245]|dvi3).*
-export/examples/instant_preview_(dvi3|pdf4)_systemF
-export/examples/instant_preview_pdf[25].*
 export/examples/listerrors_(pdf[245]).*
+# \MakeTextLowerCase and other commands fail with non-default export formats:
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 export/examples/fr/exemple-powerdot_pdf[25].*
 export/examples/ko/splash_(dvi||pdf[23]?)
@@ -47,12 +41,6 @@ export/examples/aa_sample_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 
 export/templates/IUCr-article_pdf4_systemF
-#
-# Gives the following error:
-# # ! Package hpstatement Error: H or P statement "H251"
-# # (hpstatement)                is not defined.
-# 1580:export/examples/H-P-statements_pdf5_systemF
-export/examples/H-P-statements_pdf[45]_systemF
 
 export/examples/linguistics_(dvi3|pdf[45])_systemF
 
@@ -61,15 +49,6 @@ export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 # Following mathmacros tests fail
 export/mathmacros/testcases_speed_(lyx16|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
-
-# Language nesting, document is OK, fails because of a bug in LyX
-# document is still worng, did only fail because of latin language
-# (problem in my TeX installation)
-# export/export/languagenesting1_(pdf4_systemF|pdf5_systemF)
-
-# But this one fails fails because of a bug in LyX
-# Probably language mess
-export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
 Sublabel: todo
 
@@ -91,31 +70,40 @@ export/examples/uk/splash_(dvi3|pdf[45])_texF
 # Explore! (works with dvi3 or language_package==babel)
 export/doc/fr/UserGuide_pdf[45]_systemF
 
-# False positive: even with fonts that have all required characters
-# (e.g. LinuxLibertine and LinuxBiolinum) polyglossia throws the error:
-#  ! Package polyglossia Error: The current roman font does not contain the
-#  Hebrew script!
-export/examples/he/splash_pdf5_systemF
-
-# Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts
-# (Babel is required for Spanish math functions like \sen)
-# add "\@ifpackageloaded{fontspec}{\unaccentedoperators}{}" to the preamble!
+# Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts:
+#
+# Babel is required for es/UserGuide as it explains Babel-defined Spanish
+# mathematical functions like \sen
+# Workaround: add a line to the user-preamble
+#   \@ifpackageloaded{fontspec}{\unaccentedoperators}{}
 export/doc/es/UserGuide_.*_systemF
-# Galician uses the same code from Babel-Spanish.
-# Export with DVI uses (currently) babel instead of polyglossia.
+#
+# Export with DVI (luatex) uses Babel instead of Polyglossia.
+# Don't use the above workaround here - these documents don't require Babel
+# problem should be solved by fixing auto-selection of language package.
+export/examples/es/ejemplo_con_lyx_dvi3_systemF
+# Galician shares some code with Babel-Spanish (including the bug).
 export/doc/gl/Tutorial_dvi3_systemF
+export/examples/gl/exemplo_lyxificado_dvi3_systemF
+# document language is Spanish: changing to Basque solves the problem
+export/examples/eu/adibide_lyx-atua_dvi3_systemF
 
-# Missing characters ( ͡ (U+0361), ṡ (U+1E61) in LM,
+# Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
 # + language nesting problem (may disappear after completed translation)
 export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
 
-# Missing character: There is no 砋 (U+780B) in font
-#     "file:lmroman10-regular:script=latn;+trep;+tlig;"!
-# Character '砋' (30731, 0x780B) is not in my list of known Unicode points,
-# don't know where it comes from. On first inspection, the output looks OK.
-# Explore later.
-export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
+# Probably language mess
+export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+
+# Missing characters with Latin Modern Unicode:
+# 0000 NULL           (where does this come from?)
+# 212B ANGSTROM SIGN  (literal character in the source, replace with 00C5)
+# The following are due to ERT (commands for characters missing in LM)
+# in chapter 16.2 accents in text:
+# \t   -> 0361 COMBINING DOUBLE INVERTED BREVE
+# \c e -> 0229 LATIN SMALL LETTER E WITH CEDILLA
+export/doc/(|de/|es/|fr/)Math.*systemF
 
 
 Sublabel: LyXBug
@@ -126,6 +114,12 @@ Sublabel: LyXBug
 export/doc/(nb|sk)/Intro_pdf[45]_systemF
 # missing characters + language nesting (may disappear after completed translation)
 export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
+#
+# Language nesting, document is OK, fails because of a bug in LyX
+# document is still worng, did only fail because of latin language
+# (problem in my TeX installation)
+# export/export/languagenesting1_(pdf4_systemF|pdf5_systemF)
+
 
 # use LuaTeX-compatible language names #9910
 # Wrong language name for LuaTeX
@@ -142,6 +136,13 @@ export/.*/hu/.*(pdf5)_texF
 # documents requiring pre-processing fail with Japanese #8823
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
 
+# spurious polyglossia error #8035
+# False positive: even with fonts that have all required characters
+# (e.g. LinuxLibertine and LinuxBiolinum) polyglossia throws the error:
+#  ! Package polyglossia Error: The current roman font does not contain the
+#  Hebrew script!
+export/examples/he/splash_pdf5_systemF
+
 
 Sublabel: ERT
 #
@@ -150,6 +151,9 @@ Sublabel: ERT
 
 # Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
 export/doc/(de|es|fr)/Additional_pdf4_texF
+
+# \ding{58} and \ding{171} not supported with XeTeX and system fonts:
+export/examples/fr/ListesPuces_pdf4_systemF
 
 
 Sublabel: TeXissue
@@ -170,10 +174,6 @@ export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
-
-# Missing characters (212B ANGSTROM SIGN, e with cedilla, ...)
-# with system fonts:
-export/doc/(|de/|es/|fr/)Math.*systemF
 
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
@@ -199,6 +199,22 @@ export/examples/ru/splash_(dvi3|pdf[45])_texF
 #  LaTeX: define Cyrillic LICRs for EU1 and EU2 (similar to greek-euenc.def)
 export/doc/uk/Intro_dvi3_systemF
 
+# LuaTeX fails for an \textbackslash{}mbox in an index, e.g. $a_{\mbox{a}}$
+# This construct appears in the included bib file biblioExample.bib in
+# the entry Eisenstein2005. Error message is
+#   Missing character: There is no (U+6035) in font rm-lmr12!
+# (with system fonts: 602D and 6039)
+export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
+
+# document uses Postscript specials
+export/examples/instant_preview_(dvi3|pdf4)_systemF
+export/examples/instant_preview_pdf[25].*
+
+# Gives the following error:
+# # ! Package hpstatement Error: H or P statement "H251"
+# # (hpstatement)                is not defined.
+export/examples/H-P-statements_pdf[45]_systemF
+
 
 Sublabel: multilingual
 
@@ -210,7 +226,7 @@ export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_
 
 
 Sublabel: attic
-
+#
 # Documents in the attic.
 # Kept for reference and format conversion test.
 # However, most problems here are "wontfix".

@@ -32,3 +32,6 @@ export/examples/thesis/(Acknowledgments|Appendix|Summary|chapter-[12])_lyx[0-9][
 
 # Endless loop after the third roundtrip
 export/templates/IEEEtran-Journal_lyx16
+
+# Document class "Docbook article (SGML)" does not work with LaTeX:
+export/examples/(docbook_article)_(pdf[245]|dvi3).*
