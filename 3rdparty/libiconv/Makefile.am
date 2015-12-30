@@ -3,7 +3,8 @@ include $(top_srcdir)/config/common.am
 # This is prepared for compilation, but currently only used for packaging,
 # because configure support for compilation is still missing.
 
-noinst_LIBRARIES = liblyxiconv.a
+# We do not build right now
+#noinst_LIBRARIES = liblyxiconv.a
 
 EXTRA_DIST = \
 	CMakeLists.txt \
@@ -32,7 +33,11 @@ EXTRA_DIST = \
 	1.14/libcharset/lib/ref-add.sin \
 	1.14/libcharset/lib/ref-del.sin
 
-liblyxiconv_a_SOURCES = \
+# If/when we decide to build, this will do in liblyxiconv_a_SOURCES
+# But for now it confuses automake < 1.14, where we do not use subdir-objects.
+# The issue here is that there are two relocatable.c files, and they would
+# create the same .o file.
+EXTRA_DIST += \
 	1.14/include/export.h \
 	1.14/lib/aliases2.h \
 	1.14/lib/aliases_aix.h \
