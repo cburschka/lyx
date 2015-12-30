@@ -54,3 +54,7 @@ export/examples/(|fr/)seminar_dvi.*
 # (Changing the default in lib/languages requires more tests for utf8 first.)
 export/examples/es/linguistics_pdf4_texF
 export/doc/es/.*_(pdf[45]|dvi3)_texF
+
+# Non-ASCII char in verbatim environment is dropped (with a warning when
+# doing this interactively) with ASCII (and hence also with XeTeX).
+export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF

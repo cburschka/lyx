@@ -170,10 +170,9 @@ Sublabel: texissues
 # e.g. non-ASCII in verbatim or listings, incompatible packages, ...
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
-# Non-ASCII char in verbatim or listings environment.
+# Non-ASCII char in verbatim environment.
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
-export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF
 
 # chemgreek incompatible with LuaTeX and TeX fonts
 export/examples/achemso_(dvi3|pdf5)_texF
