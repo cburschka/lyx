@@ -1326,6 +1326,17 @@ reuse
 
  documentation, template, and example files trying to export them to all
  supported output formats.
+ In addition, there are a number of dedicated sample documents under 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+autotests/export/
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Paragraph
@@ -1399,7 +1410,13 @@ reference "subsec:Interpreting-export-tests"
 \end_layout
 
 \begin_layout Paragraph
-Configuring the tests
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Configuring-ctests"
+
+\end_inset
+
+Configuring the tests 
 \end_layout
 
 \begin_layout Standard
@@ -1509,7 +1526,6 @@ ctest -L export
 \end_inset
 
 .
- 
 \end_layout
 
 \end_deeper
@@ -1996,12 +2012,17 @@ Inverted tests
 \end_layout
 
 \begin_layout Standard
-These tests are expected to always fail.
+These tests fail if the export does 
+\emph on
+not
+\emph default
+ return an error.
+ 
 \end_layout
 
 \begin_layout Description
-inverted These tests are expected to fail, but are subject to be examined.
- It is expected that they will pass in a foreseeable future.
+inverted Export fails, but the test cases are subject to be examined.
+ It is expected that the export will work in a foreseeable future.
  They are labeled 'inverted'.
 \end_layout
 
@@ -2043,8 +2064,8 @@ ctest -L suspended
 
 \begin_deeper
 \begin_layout Standard
-These tests are suspended, because they fail for known reasons which cannot
- ATM be resolved.
+These tests are suspended, because the export fails for known reasons which
+ cannot ATM be resolved.
  But it is expected the reason might disappear in the future.
  Be it new TL or better handling in \SpecialChar LyX
 .
@@ -2181,7 +2202,8 @@ Export test filtering
 \end_layout
 
 \begin_layout Standard
-There are files which control the assignment of a label to a test.
+The assignment of a label to a test is controlled by a set of files with
+ regular expressions that are matched against the test names.
 \end_layout
 
 \begin_layout Description
@@ -2189,7 +2211,15 @@ ignoredTests (small file)
 \begin_inset Newline newline
 \end_inset
 
-Tests selected here are withdrawn
+Tests selected here are withdrawn in the configuration step (cf.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Configuring-ctests"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_deeper
