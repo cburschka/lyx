@@ -38,4 +38,5 @@ export/templates/IEEEtran-Journal_lyx16
 export/examples/(Literate|noweb2lyx)_lyx16
 
 # Document class "Docbook article (SGML)" does not work with LaTeX:
-export/examples/(docbook_article)_(pdf[245]|dvi3).*
+export/examples/docbook_article_(dvi3|pdf[245]).*
+export/templates/DocBook_article_(dvi3|pdf[245]).*
