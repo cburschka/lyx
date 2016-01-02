@@ -2,11 +2,11 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/examples/eu/
+\origin /systemlyxdir/examples/eu
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
-\language spanish
+\language basque
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -57,7 +57,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -96,25 +96,25 @@ Oinarrizko Izakera
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -en oinarrizko izakeran idatzi beharrekoan datza, eta ez itxuran.
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -ek nola lantzen duen
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
--ek \SpecialCharNoPassThru LaTeX
- erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki
- prestaketa sisteman.
- \SpecialCharNoPassThru TeX
- (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain
- eraikia izan zen.
- \SpecialCharNoPassThru LaTeX
- \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+-ek \SpecialChar LaTeX
+ erabiltzen du, Leslie Lamport-ek 1985-an diseinatu zuen idazki prestaketa
+ sisteman.
+ \SpecialChar TeX
+ (Donald Knuth-ek 1984-ean sortuta) izeneko osaketa hizkuntzaren gain eraikia
+ izan zen.
+ \SpecialChar LaTeX
+ \SpecialChar LyX
 -en antzeko izakera baten gain diseinatuta dago.
  Leslie Lamport-ek esan zuen (
 \begin_inset CommandInset citation
@@ -133,7 +133,7 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
  islada izan behar du.
  Aipamenak eta ordenagailu programek, egitura ezberdineko elementuak izaterakoan
 , bata bestearengandik begi bistara ezberdindu beharra daukate [...] Eta nola
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 -ek zuzenean ezin zaituen ulertu, zerorrek eskuz agindu berezi batzuek
  idatziz nahi duzun logika egitura esan behar diozu [...] Idazki bat idazten
  duzun bitartean, bere logikaren egituran arduratu beharra daukazu, ez bere
@@ -141,7 +141,7 @@ Tipografi diseinuaren betebeharra irakurtzaileak egilearen burutazioak ulerttu
 \end_layout
 
 \begin_layout Subsection
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  zergatik da hobeagoa
 \end_layout
 
@@ -152,13 +152,13 @@ name "atal:lyxhobeagoa"
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
- erabiltzaileentzat \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ erabiltzaileentzat \SpecialChar LaTeX
  baino erabilgarriagoa izan daiteke.
- Askoz ere erabil errazagokoa da, \SpecialCharNoPassThru LaTeX
+ Askoz ere erabil errazagokoa da, \SpecialChar LaTeX
  zer den ikasi beharrik ez bait daukazu
  (azken finean ia programaketa hizkuntza denez).
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  ia beste 
 \begin_inset Quotes eld
 \end_inset
@@ -167,7 +167,7 @@ ikusten duzuna lortzen duzu
 \begin_inset Quotes erd
 \end_inset
 
--n idazki prozesatzaileen bezalakoa da, \SpecialCharNoPassThru LyX
+-n idazki prozesatzaileen bezalakoa da, \SpecialChar LyX
  ordea 
 \begin_inset Quotes eld
 \end_inset
@@ -177,7 +177,7 @@ ikusten duzuna esan nahi duzu
 \end_inset
 
  da.
- Era honetan, idazki prozesatzaileen erreztasuna \SpecialCharNoPassThru LaTeX
+ Era honetan, idazki prozesatzaileen erreztasuna \SpecialChar LaTeX
 -en indarrarekin batzen
  da.
  Eta hau onuragarria da.
@@ -187,14 +187,13 @@ ikusten duzuna esan nahi duzu
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -en Ezaugarriak
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
--ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari
- ditu.
+\SpecialChar LyX
+-ek idazkiak idazteko erreztasun asko eskeintzen dituen ezugarri ugari ditu.
 \begin_inset Foot
 status collapsed
 
@@ -213,18 +212,17 @@ asko unkitzen
 \end_layout
 
 \begin_layout Itemize
-Margenak eta Orri Oineko Oharren zenbaketetaz \SpecialCharNoPassThru LyX
+Margenak eta Orri Oineko Oharren zenbaketetaz \SpecialChar LyX
  bera arduratzen da
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
--ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen
- du.
+\SpecialChar LyX
+-ek matematika ekuazioak idaztean izugarrizko erreztasuna eskeintzen du.
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  beste testu prozesatzaileen baino hobeago izatearen zergatia eztabaidatzeko,
  
 \begin_inset CommandInset ref
@@ -244,7 +242,7 @@ reference "atal:lyxhobeagoa"
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 -eko gauz gehiago erabiltzean saiakera hutsak
 \end_layout
 
@@ -279,7 +277,7 @@ Zientzilan ikaragarri haundi honen ondoren, artista bat nintzela sentitzen
 \end_layout
 
 \begin_layout Verse
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  idazki prozezatzaile
 \begin_inset Newline newline
 \end_inset
@@ -326,7 +324,7 @@ key "Lamport"
 \end_inset
 
 Lamport, Leslie.
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 : A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, bigarren argitaraketa, 1994.
 \end_layout
