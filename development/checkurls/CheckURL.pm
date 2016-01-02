@@ -73,9 +73,14 @@ sub check_http_url($$$$)
     print " Read from \"$protocol://$host$getp\" ";
     return 3;
   }
-  if ($buf =~ /\<title\>Error 404\<\/title\>/) {
-    print " Page reports 'Error 404' from \"$protocol://$host$getp\" ";
-    return 3;
+  if ($buf =~ /\<title\>([^\<]*404[^\<]*)\<\/title\>/i) {
+    my $title = $1;
+    $title =~ s/\n/ /g;
+    print "title = \"$title\"\n";
+    if ($title =~ /Error 404|404 Not Found/) {
+      print " Page reports 'Error 404' from \"$protocol://$host$getp\" ";
+      return 3;
+    }
   }
   return 0;
 }
