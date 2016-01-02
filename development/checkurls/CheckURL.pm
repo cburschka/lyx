@@ -70,9 +70,14 @@ sub check_http_url($$$$)
   my $buf;
   my $n = $s->read_entity_body($buf, 1024);
   if (! defined($n)) {
-    print " Read from \"$protocol://$host$getp\" failed";
+    print " Read from \"$protocol://$host$getp\" ";
     return 3;
   }
+  if ($buf =~ /\<title\>Error 404\<\/title\>/) {
+    print " Page reports 'Error 404' from \"$protocol://$host$getp\" ";
+    return 3;
+  }
+  return 0;
 }
 
 # Returns ($err, $isdir)
