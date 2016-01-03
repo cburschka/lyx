@@ -28,6 +28,7 @@ add_test(NAME "check_accessible_urls"
     "filesToScan=${LYXFILES_FILE}"
     "ignoredURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS"
     "ignoredURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS"
+    "knownToRegisterURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownToRegisterURLS"
     "summaryFile=${TOP_BINARY_DIR}/Testing/Temporary/LastFailedAccessibleURLS.log")
 
 # Test inaccessible, but revert the error marker (failed <=> passed)
@@ -39,6 +40,7 @@ add_test(NAME "check_inaccessible_urls"
     "filesToScan=${LYXFILES_FILE}"
     "selectedURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS"
     "revertedURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS"
+    "knownToRegisterURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownToRegisterURLS"
     "summaryFile=${TOP_BINARY_DIR}/Testing/Temporary/LastFailedInaccessibleURLS.log")
 
 #
@@ -50,6 +52,7 @@ add_test(NAME "check_invalid_urls"
   COMMAND ${PERL_EXECUTABLE} "${SEARCH_URL_SCRIPT}"
     "extraURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS"
     "revertedURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS"
+    "knownToRegisterURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownToRegisterURLS"
     "summaryFile=${TOP_BINARY_DIR}/Testing/Temporary/LastFailedKnownInvalidURLS.log")
 
 set(URL_TEST_NAMES "check_accessible_urls" "check_inaccessible_urls" "check_invalid_urls")

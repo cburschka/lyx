@@ -59,6 +59,7 @@ my %ignoredURLS = ();
 my %revertedURLS = ();
 my %extraURLS = ();
 my %selectedURLS = ();
+my %knownToRegisterURLS = ();
 my $summaryFile = undef;
 
 my $checkSelectedOnly = 0;
@@ -82,11 +83,14 @@ for my $arg (@ARGV) {
     readUrls($val, %revertedURLS);
   }
   elsif ($type eq "extraURLS") {
-    readUrls($val,  %extraURLS);
+    readUrls($val, %extraURLS);
   }
   elsif ($type eq "selectedURLS") {
     $checkSelectedOnly = 1;
-    readUrls($val,  %selectedURLS);
+    readUrls($val, %selectedURLS);
+  }
+  elsif ($type eq "knownToRegisterURLS") {
+    readUrls($val, %knownToRegisterURLS);
   }
   elsif ($type eq "summaryFile") {
     if (open(SFO, '>', "$val")) {
@@ -104,12 +108,13 @@ my $errorcount = 0;
 my $URLScount = 0;
 
 for my $u (@urls) {
-  if (defined($selectedURLS{$u})) {
-    ${selectedURLS}{$u}->{count} += 1;
-  }
   if (defined($ignoredURLS{$u})) {
     $ignoredURLS{$u}->{count} += 1;
     next;
+  }
+  next if (defined($knownToRegisterURLS{$u}));
+  if (defined($selectedURLS{$u})) {
+    ${selectedURLS}{$u}->{count} += 1;
   }
   next if ($checkSelectedOnly && ! defined($selectedURLS{$u}));
   $URLScount++;

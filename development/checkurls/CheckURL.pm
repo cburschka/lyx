@@ -30,26 +30,11 @@ sub check_url($);
 
 sub check_http_url($$$$)
 {
-  use Net::HTTP;
-  use Net::HTTPS;
+  require LWP::UserAgent;
 
   my ($protocol, $host, $path, $file) = @_;
 
-  my $s;
-  if ($protocol eq "http") {
-    $s = Net::HTTP->new(Host => $host, Timeout => 120);
-  }
-  elsif ($protocol eq "https") {
-    $s = Net::HTTPS->new(Host => $host, Timeout => 120);
-  }
-  else {
-    print " Unhandled http protocol \"$protocol\"";
-    return 3;
-  }
-  if (! $s) {
-    print " " . $@;
-    return 3;
-  }
+  my $ua = LWP::UserAgent->new;
   my $getp = "/";
   if ($path ne "") {
     $getp .= $path;
@@ -62,27 +47,32 @@ sub check_http_url($$$$)
       $getp .= "/$file";
     }
   }
-  #print " Trying to use GET  => \"$getp\"";
-  $s->write_request(GET => $getp, 'User-Agent' => "Mozilla/6.0");
-  my($code, $mess, %h) = $s->read_response_headers;
-
-  # Try to read something
   my $buf;
-  my $n = $s->read_entity_body($buf, 1024);
-  if (! defined($n)) {
-    print " Read from \"$protocol://$host$getp\" ";
+  $ua->agent("Firefox/43.0");
+  my $response = $ua->get("$protocol://$host$getp");
+  if ($response->is_success) {
+    $buf = $response->decoded_content;
+  }
+  else {
+    print " " . $response->status_line . ": ";
     return 3;
   }
-  if ($buf =~ /\<title\>([^\<]*404[^\<]*)\<\/title\>/i) {
+  my @title = ();
+  my $res = 0;
+  while ($buf =~ s/\<title\>([^\<]*)\<\/title\>//i) {
     my $title = $1;
-    $title =~ s/\n/ /g;
-    print "title = \"$title\"\n";
-    if ($title =~ /Error 404|404 Not Found/) {
-      print " Page reports 'Error 404' from \"$protocol://$host$getp\" ";
-      return 3;
+    $title =~ s/[\r\n]/ /g;
+    $title =~ s/  +/ /g;
+    $title =~ s/^ //;
+    $title =~ s/ $//;
+    push(@title, $title);
+    print "title = \"$title\": ";
+    if ($title =~ /Error 404|Not Found/) {
+      print " Page reports 'Not Found' from \"$protocol://$host$getp\": ";
+      $res = 3;
     }
   }
-  return 0;
+  return $res;
 }
 
 # Returns ($err, $isdir)
