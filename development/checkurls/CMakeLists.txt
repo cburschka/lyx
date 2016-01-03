@@ -53,14 +53,22 @@ add_test(NAME "check_invalid_urls"
     "summaryFile=${TOP_BINARY_DIR}/Testing/Temporary/LastFailedKnownInvalidURLS.log")
 
 set(URL_TEST_NAMES "check_accessible_urls" "check_inaccessible_urls" "check_invalid_urls")
-add_test(NAME "check_translators"
-  WORKING_DIRECTORY "${TOP_BINARY_DIR}"
-  COMMAND ${PERL_EXECUTABLE} "${GET_TRANSLATORS_SCRIPT}")
-
 set_tests_properties(${URL_TEST_NAMES}
-        PROPERTIES RESOURCE_LOCK "url.lock" LABELS "url")
-set_tests_properties("check_translators"
-        PROPERTIES RESOURCE_LOCK "url.lock")
+	PROPERTIES RESOURCE_LOCK "url.lock" LABELS "url")
+
+find_file(PHANTOMJS_EXE NAME phantomjs PATHS ENV PATH)
+message(STATUS "PHANTOMJS_EXE = ${PHANTOMJS_EXE}")
+if (PHANTOMJS_EXE)
+  add_test(NAME "check_translators"
+    WORKING_DIRECTORY "${TOP_BINARY_DIR}"
+    COMMAND ${PERL_EXECUTABLE} "${GET_TRANSLATORS_SCRIPT}")
+
+  set_tests_properties("check_translators"
+	  PROPERTIES RESOURCE_LOCK "url.lock")
+
+else()
+  message(STATUS "Cannot check translators, missing required program phantomjs")
+endif()
 
 settestlabel("check_inaccessible_urls" "inverted")
 settestlabel("check_invalid_urls" "inverted")
