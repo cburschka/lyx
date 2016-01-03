@@ -233,9 +233,9 @@ graphicboxes
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
@@ -27408,13 +27408,11 @@ Flottant du côté droit.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An alternative and simpler solution is to use the module 
+Une solution alternative plus simple consiste à utiliser le module 
 \family sans
-Variable-width Minipages
+Minipages à largeur variable
 \family default
-, see sec.
+, voir la section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -27426,15 +27424,15 @@ reference "sec:Minipages"
 \end_inset
 
 .
- Variable-width minipages adapt automatically to the width of the figures
- and tables.
- They do not require an explicit width to be given, and they improve the
- horizontal alignment of the figures.
- The LyX example file 
+ Les minipages à largeur variable s’adaptent automatiquement à la largeur
+ des figures et des tableaux.
+ Il n'est pas nécessaire de spécifier explicitement une largeur, et elles
+ améliorent l'alignement horizontal des figures.
+ Le fichier du répertoire des exemples 
 \emph on
 varwidth-floats-side-by-side
 \emph default
- gives examples of how to do this.
+ donnes des exemples d'utilisation du module.
 \end_layout
 
 \begin_layout Section
@@ -33819,11 +33817,7 @@ rectangulaire
 \end_inset
 
 simple Ceci dessine un cadre rectangulaire autour de la boîte.
- L'épaisseur du trait de ce cadre 
-\lang english
-can be specified
-\lang french
-.
+ L'épaisseur du trait de ce cadre peut être précisé.
 \begin_inset Newline newline
 \end_inset
 
@@ -33954,11 +33948,7 @@ en
 \end_inset
 
 relief Ceci dessine un cadre rectangulaire avec une ombre autour de la boîte.
- L'épaisseur du trait de ce cadre et l'ombre 
-\lang english
-can be specified
-\lang french
-.
+ L'épaisseur du trait de ce cadre et l'ombre peut être précisé.
  
 \begin_inset Box Shadowbox
 position "c"
@@ -34753,22 +34743,21 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- has also basic support for minipages whose size is automatically determined
- by the width of their contents, via the module 
+ propose également une fonctionnalité de base pour des minipages dont la
+ taille est automatiquement déterminée par la largeur de leur contenu, via
+ le module 
 \family sans
-Variable-width Minipages
+Minipages de largeur variable
 \family default
 .
- The \SpecialChar LyX
- example file 
+ Le fichier du répertoire des exemples \SpecialChar LyX
+ 
 \emph on
 varwidth-floats-side-by-side
 \emph default
- gives examples of variable-width minipages used for placing two floats
- side-by-side.
+ illustre l'utilisation de minipages de largeur variable pour placer deux
+ flottants côte à côte.
 \end_layout
 
 \begin_layout Section
@@ -35481,11 +35470,11 @@ Boîtes ! Couleur
 \end_layout
 
 \begin_layout Standard
-
+Pour mettre le fond d'une boîte en couleurs, il suffit de sélectionner la
+ couleur désirée dans la fenêtre de dialogue de la boîte.
+ Voici par exemple une boîte avec un fond orangé:
 \lang english
-To color the background of a box just select the color you like in the box
- dialog.
- This is for example a box with orange background: 
+ 
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -35505,9 +35494,7 @@ backgroundcolor "orange"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Box with orange background
+Boîte avec un fond orangé
 \end_layout
 
 \end_inset
@@ -35516,11 +35503,8 @@ Box with orange background
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use the decoration 
+Si vous utilisez la décoration 
 \family sans
-\lang french
 Cadre
 \begin_inset space ~
 \end_inset
@@ -35531,11 +35515,11 @@ rectangulaire
 
 simple
 \family default
-\lang english
- you can set a frame color.
- In this case you must also specify a background color (LyX sets white as
- default).
- Here is an example: 
+, vous pouvez colorer le cadre.
+ Dans ce cas vous devez colorer également le fond (\SpecialChar LyX
+ le met implicitement
+ en blanc).
+ voici un exemple: 
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -35555,8 +35539,6 @@ backgroundcolor "yellow"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 Box with teal frame color and yellow background color
 \end_layout
 
@@ -35569,11 +35551,8 @@ Box with teal frame color and yellow background color
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-Of course you can also have colored text inside a colored box:
-\lang french
-
+Vous pouvez bien sûr obtenir du texte coloré dans une boîte dont le fond
+ est en couleurs:
 \begin_inset Newline newline
 \end_inset
 
@@ -35615,11 +35594,8 @@ Ce texte est coloré dans une boîte colorée et encadrée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need another color than the predefined ones,
-\lang french
- vous pouvez définir vos propres couleurs comme c'est décrit dans la section
+S'il vous faut une couleur autre que celles qui sont prédéfinies, vous pouvez
+ définir vos propres couleurs comme c'est décrit dans la section
 \begin_inset space ~
 \end_inset
 
@@ -35631,17 +35607,11 @@ reference "sec:Tableaux-Colorés"
 \end_inset
 
 .
-
-\lang english
- To use your own color you must typeset the box by using TeX code:
+ Pour cela vous devez saisir la boîte ne code TeX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Colored boxes without frame
-\lang french
-sont créées par la commande 
+Les boîtes à fond coloré sont créées par la commande 
 \series bold
 
 \backslash
@@ -35662,7 +35632,11 @@ colorbox{couleur}{contenu de la boîte}
 \begin_layout Standard
 Le contenu de la boîte peut aussi être une boîte et les boîtes colorées
  peuvent être placées à l'intérieur d'autres boîtes.Par exemple, pour avoir
- un mot sur fond vertfonce, insérez la commande 
+ un mot sur fond 
+\emph on
+vertfonce
+\emph default
+, insérez la commande 
 \end_layout
 
 \begin_layout Standard
@@ -35729,11 +35703,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Framed, colored boxes are created
-\lang french
- avec la commande 
+Les boîtes avec fond et cadre colorés sont créées via la commande 
 \series bold
 
 \backslash
@@ -35751,17 +35721,15 @@ fcolorbox{couleur du cadre}{couleur de la boîte}{contenu de la boîte}
 \end_layout
 
 \begin_layout Section
-Les boîtes pivotées et redimensionnées
+Boîtes pivotées et redimensionnées
 \end_layout
 
 \begin_layout Standard
-Pour pouvoir utiliser les boîtes
-\lang english
- described in this section, the module 
+Pour pouvoir utiliser les boîtes décrites ci-après, le module 
 \family sans
-GraphicBoxes
+BoîtesGraphiques
 \family default
- must be loaded in the document settings.
+ oit être vchargé via les paramètres du document.
 \end_layout
 
 \begin_layout Standard
@@ -35777,7 +35745,7 @@ Note:
 \emph on
 pas
 \emph default
- capables d'afficher des rotations ou des redimensions.
+ capables d'afficher des rotations ou des redimensionnements.
 \end_layout
 
 \end_inset
@@ -35804,7 +35772,7 @@ Note:
 \end_layout
 
 \begin_layout Subsection
-Les Boîtes pivotées
+Boîtes pivotées
 \begin_inset Index idx
 status collapsed
 
@@ -35830,32 +35798,28 @@ Pivoter des objets
 \begin_layout Standard
 Pour faire tourner des objets, vous pouvez les mettre dans une 
 \family sans
-\lang english
-Rotatebox
+BoîtePivotée
 \family default
 .
- Such a box is inserted via the menu 
+ Une telle boîte est insérée via le menu 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Rotatebox
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+BoîtePivotée
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-La position du pivot 
-\lang english
-can be specified via the inset 
+La position du pivot peut être précisée via l'insert 
 \family sans
-Origin
+Origine
 \family default
  (menu 
 \family sans
-Insert\SpecialChar menuseparator
-Origin
+Insertion\SpecialChar menuseparator
+Origine
 \family default
-\lang french
 ) sous la forme 
 \series bold
 origin=position
@@ -35916,22 +35880,21 @@ l
 \begin_layout Standard
 Dans l'exemple qui suit, 
 \series bold
-\lang english
 origin=c
 \series default
- was inserted to the 
+ a été saisi dans l'insert 
 \family sans
-Option
+Origin
 \family default
- inset and 
+ et 
 \series bold
 60
 \series default
- was inserted to the 
+ a été saisi dans l'insert 
 \family sans
 Angle
 \family default
- inset.
+.
 \end_layout
 
 \begin_layout Standard
@@ -36205,16 +36168,15 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ si l'insert 
 \family sans
 Angle
 \family default
- inset is empty or contains other characters than numbers you will get \SpecialChar LaTeX
-
- errors when viewing/exporting the document.
+ est vide ou contient autre chose que des nombres, vous aurez des erreurs
+ \SpecialChar LaTeX
+ à l'affichage ou l'exportation du document.
 \end_layout
 
 \end_inset
@@ -36247,69 +36209,55 @@ Redimensionner des objets
 \end_layout
 
 \begin_layout Standard
-Pour redimensionner des objets on
-\lang english
- put it into a 
+Pour redimensionner des objets, il faut les insérer dans une 
 \family sans
-Scalebox
+BoîteÉchelle
 \family default
-.
- Such a box is inserted via the menu 
+, et pour cela utiliser le menu 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Scalebox
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+BoîteÉchelle
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+L'insert 
 \family sans
-Scalebox
+BoîteÉchelle
 \family default
- inset has the mandatory inset 
+ comporte un insert obligatoire 
 \family sans
-H-Factor
+Facteur-H 
 \family default
- and the optional inset 
+et un insert facultatif 
 \family sans
-V-Factor
+Facteur-V
 \family default
- (inserted via the menu 
+ (ouvert via le menu 
 \family sans
-Insert\SpecialChar menuseparator
-V-Factor)
+Insertion\SpecialChar menuseparator
+Facteur-V)
 \family default
 .
- Input there there horizontal and vertical scale factor, respectively.
- If no 
-\family sans
-V-Factor
-\family default
- inset is used
-\lang french
-, le facteur horizontal sera aussi utilisé comme facteur vertical.
+ Saisir dans ceux-ci les facteurs d'échelle respectivement horizontal et
+ vertical.
+ Si aucun facteur vertical n'est spécifié, le facteur horizontal sera utilisé
+ comme facteur vertical.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get for example the double text size, compared to the document text size,
- insert 
+Pour doubler la taille du texte par rapport à la taille de texte du document,
+ saisir 
 \series bold
 2
 \series default
- into the 
+ dans l'insert 
 \family sans
-H-Factor
+Facteur-H:
 \family default
- inset.
- An example
-\lang french
-: 
+ 
 \begin_inset Flex Scalebox
 status open
 
@@ -36334,24 +36282,21 @@ Bonjour
 \begin_layout Standard
 
 \series bold
-\lang english
 2
 \series default
- as 
+ comme 
 \family sans
-H-Factor
+Facteur-H
 \family default
- and 
+ et 
 \series bold
 1
 \series default
- as 
+ comme
 \family sans
-V-Factor
+ Facteur-V
 \family default
- distorts the
-\lang french
- 
+ déforme le texte: 
 \begin_inset Flex Scalebox
 status open
 
@@ -36384,28 +36329,24 @@ Bonjour
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the scaling factor is negative, the box content will be mirrored.
- Therefore 
+Si le facteur d'échelle est négatif, le contenu de la boîte sera en miroir.
+ par conséquent 
 \series bold
 -1
 \series default
- as 
+ comme
 \family sans
-H-Factor
+ Facteur-H
 \family default
- and 
+ et 
 \series bold
 1
 \series default
- as 
+ comme
 \family sans
-V-Factor
+ Facteur-V 
 \family default
- can be used to create mirror writing
-\lang french
-: 
+permet de créer de l'écriture en miroir: 
 \begin_inset Flex Scalebox
 status open
 
@@ -36440,24 +36381,21 @@ Bonjour
 \begin_layout Standard
 
 \series bold
-\lang english
 -1
 \series default
- as 
+ comme
 \family sans
-H-Factor
+ Facteur-H
 \family default
- and 
+ et 
 \series bold
 1
 \series default
- as 
+ comme
 \family sans
-V-Factor
+ Facteur-V
 \family default
- reflects the
-\lang french
- 
+ réfléchit le texte 
 \begin_inset Flex Scalebox
 status open
 
@@ -36486,43 +36424,39 @@ Bonjour
 
 \end_inset
 
- 
-\lang english
-at the base line.
+ sous la ligne de base.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+La 
 \family sans
-Reflectbox
+BoîteMiroir
 \family default
  (menu 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Reflectbox
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+BoîteMiroir)
 \family default
-) is equivalent to 
+ est équivalente à 
 \series bold
 -1
 \series default
- as 
+ comme
 \family sans
-H-Factor
+ Facteur-H
 \family default
- and 
+ et 
 \series bold
 1
 \series default
- as 
+ comme
 \family sans
-V-Factor 
+ Facteur-V
 \family default
-for a 
+ pour une 
 \family sans
-Scalebox
+BoîteÉchelle
 \family default
 .
 \end_layout
@@ -36536,15 +36470,15 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ si l'insert 
 \family sans
-H-Factor
+Facteur-H
 \family default
- inset is empty or contains other characters than numbers you will get LaTeX
- errors when viewing/exporting the document.
+ est vide ou contient autre chose que des nombres, vous aurez des erreurs
+ \SpecialChar LaTeX
+ à l'affichage ou l'exportation du document.
 \end_layout
 
 \end_inset
@@ -36556,40 +36490,41 @@ H-Factor
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\lang english
-The 
+La 
 \family sans
-Resizebox
+BoîteRetaillée
 \family default
  (menu 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Resizebox
+Insertion\SpecialChar menuseparator
+Inserts personnalisables\SpecialChar menuseparator
+BoîteRetaillée
 \family default
-) is used to scale the content to a defined width and height.
- The 
+) est utilisée pour redimensionner le contenu à une hauteur et largeur définie.
+ L'insert 
 \family sans
-Resizebox
+BoîteRetaillée
 \family default
- inset has the mandatory inset 
+ comporte un insert obligatoire 
 \family sans
-Width
+Largeur
 \family default
- and the optional inset 
+ et un insert facultatif 
 \family sans
-Height
+Hauteur
 \family default
- (inserted via the menu 
+ (obtenu via 
 \family sans
-Insert\SpecialChar menuseparator
-Height)
+Insertion\SpecialChar menuseparator
+Hauteur)
 \family default
 .
- Input there there width and height, respectively, as value with a unit
-\lang french
-.
+ Saisir respectivement la largeur et la hauteur comme un nombre doté d'une
+ unité.
+ Le tableau
+\begin_inset space ~
+\end_inset
+
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -36597,53 +36532,39 @@ reference "tab:Unités"
 
 \end_inset
 
- 
-\lang english
-lists the possible units.
- If there is 
-\lang french
-un point d'exclamation 
+ énumère les unités possibles.
+ S'il y a un point d'exclamation 
 \series bold
 !
 \series default
-\lang english
- in of of the two insets
-\lang french
-, la taille est ajustée pour conserver le rapport d'aspect de la boîte.
-
-\lang english
- If no 
+ dans un des deux inserts, la taille est ajustée pour conserver le rapport
+ d'aspect de la boîte.
+ S'il n'y a pas d'insert 
 \family sans
-Height
+Hauteur
 \family default
- inset is used 
-\lang french
-un point d'exclamation
-\lang english
- will internally be used for the height.
+, un point d'exclamation sera introduit de manière interne en tant que hauteur.
+ 
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+ comme 
 \family sans
-Width
+Largeur
 \family default
- and 
+ et 
 \series bold
 1cm
 \series default
- as 
+ comme 
 \family sans
-Height
+Hauteur
 \family default
- produces:
-\lang french
- 
+ produit: 
 \begin_inset Flex Resizebox
 status open
 
@@ -36678,28 +36599,25 @@ Bonjour
 
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+ comme 
 \family sans
-Width
+Largeur
 \family default
- and 
+ et 
 \series bold
 !
 \series default
- as 
+ comme 
 \family sans
-Height
+Hauteur
 \family default
- (or no 
+ (ou aucune
 \family sans
-Height
+ Hauteur
 \family default
-) produces
-\lang french
-: 
+) produit: 
 \begin_inset Flex Resizebox
 status open
 
@@ -36732,23 +36650,21 @@ Bonjour
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ si l'insert 
 \family sans
-Width
+Largeur
 \family default
- inset is empty or contains an invalid unit you will get LaTeX errors when
- viewing/exporting the document.
+ est vide ou contient autre chose que des nombres, vous aurez des erreurs
+ \SpecialChar LaTeX
+ à l'affichage ou l'exportation du document.
 \end_layout
 
 \end_inset
@@ -36765,19 +36681,17 @@ Width
 
 \begin_layout Standard
 Les boîtes peuvent être combinée dans n'importe quel ordre.
-
-\lang english
- As example a 
+ Par exemple voici une
 \family sans
-Reflectbox
+ BoîteMiroir
 \family default
- inside a 
+ 
 \family sans
-Resizebox
+dans une BoîteRetaillée 
 \family default
- which is in turn inside a 
+qui est à son tour dans une 
 \family sans
-Rotatebox
+BoîtePivotée
 \family default
 :
 \end_layout
@@ -41538,9 +41452,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+Échelle graphique %
 \end_layout
 
 \end_inset
@@ -41569,9 +41481,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+Largeur texte %
 \end_layout
 
 \end_inset
@@ -41602,9 +41512,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+Largeur colonne %
 \end_layout
 
 \end_inset
@@ -41635,9 +41543,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+Largeur page %
 \end_layout
 
 \end_inset
@@ -41668,9 +41574,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+Largeur ligne %
 \end_layout
 
 \end_inset
@@ -41701,9 +41605,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+Hauteur texte %
 \end_layout
 
 \end_inset
@@ -41734,9 +41636,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+Hauteur page %
 \end_layout
 
 \end_inset

@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin /systemlyxdir/examples/fr/
+\origin unavailable
 \textclass article
 \begin_preamble
 %% Uncomment the following for Tableaux captions on top:
@@ -79,16 +79,17 @@ linguistics
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Rédaction de documents linguistiques avec \SpecialCharNoPassThru LyX
+Rédaction de documents linguistiques avec \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -98,7 +99,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Traduction française Jean-Pierre Chrétien, <jeanpierre.chretien@free.fr>,
- novembre 2009, mise à jour octobre 2012
+ novembre 2009, mise à jour décembre 2015
 \end_layout
 
 \end_inset
@@ -119,15 +120,16 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-14/09/2008
+21/04/2015
 \end_layout
 
 \begin_layout Abstract
-Ce document décrit quelques fonctionnalités de \SpecialCharNoPassThru LyX
+Ce document décrit quelques fonctionnalités de \SpecialChar LyX
  utiles aux linguistes.
  Il montre comment utiliser ces fonctionnalités de base pour produire des
  exemples numérotés, des gloses, des tableaux résultant de la théorie de
- l'optimalité, un balisage sémantique et des symboles phonétiques (API).
+ l'optimalité, un balisage sémantique, des structures arborescentes et des
+ symboles phonétiques (API).
 \end_layout
 
 \begin_layout Section
@@ -143,7 +145,7 @@ linguistique
 \begin_inset Quotes frd
 \end_inset
 
- qui accompagne \SpecialCharNoPassThru LyX
+ qui accompagne \SpecialChar LyX
  à partir de la version 1.6.0.
  Les 
 \begin_inset Quotes fld
@@ -153,7 +155,7 @@ modules
 \begin_inset Quotes frd
 \end_inset
 
- sont des fichiers de configuration auxiliaires (introduits avec Lyx 1.6.0)
+ sont des fichiers de configuration auxiliaires (introduits avec LyX 1.6.0)
  qui peuvent être facilement sélectionnés pour n'importe quel document.
  Pour utiliser le module linguistique, aller à 
 \family sans
@@ -171,14 +173,14 @@ Linguistique
 
  dans le liste des modules disponibles, et appuyer sur le bouton 
 \family sans
-Add
+Ajouter
 \family default
  pour le sélectionner (comme c'est déjà le cas pour ce document).
 \end_layout
 
 \begin_layout Standard
-Vous devez pouvoir utiliser ce module avec n'importe quelle classe (merci
- de me prévenir sinon).
+Vous devez pouvoir utiliser ce module avec n'importe quelle classe de document
+ (merci de me prévenir sinon).
  Cependant, pour pouvoir utiliser toutes les fonctionnalités, vous devez
  disposer des paquetages suivants dans votre installation:
 \end_layout
@@ -200,9 +202,29 @@ key "covington"
 \end_inset
 
 : ceci est le paquetage de base utilisé pour les exemples numérotés et les
- gloses;
+ gloses
+\lang english
+:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -229,9 +251,41 @@ Sous-exemples
 
 .
  Il est plus généralement utile pour modifier l'apparence des listes (comme
- Énumération, ListePuces, Description);
+ 
+\emph on
+Énumération
+\emph default
+, 
+\emph on
+ListePuces
+\emph default
+, 
+\emph on
+Description
+\emph default
+)
+\lang english
+:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -254,9 +308,29 @@ signification
 \emph default
 .
  Le paquetage fournit des marques de citation contextuelles, en fonction
- du langage utilisé;
+ du langage utilisé
+\lang english
+:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -275,10 +349,68 @@ key "float"
 
 : nécessaire pour les tableaux flottants issus de la théorie de l'optimalité
  et la liste des flottants; ce paquetage doit faire partie de n'importe
- quelle distribution \SpecialCharNoPassThru LaTeX
+ quelle distribution \SpecialChar LaTeX
+
+\lang english
+:
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+\lang english
+forest.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+:
+\lang french
+ nécessaire pour créer les structures arborescentes
+\lang english
+:
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "forest"
+\end_inset
+
 .
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Exemples numérotés
 \end_layout
@@ -372,6 +504,16 @@ reference "subsec:subexample"
 .
 \end_layout
 
+\begin_layout Standard
+Si vous souhaitez modifier la numérotation d'un exemple particulier, vous
+ pouvez utiliser 
+\family sans
+Insertion\SpecialChar menuseparator
+Numérotation spécifique
+\family default
+.
+\end_layout
+
 \begin_layout Section
 Gloses
 \end_layout
@@ -388,12 +530,14 @@ Inserts personnalisables
 \emph on
 Personnalisé: glose
 \emph default
- (standard) crée une glose constituée de deux lignes et une traduction,
- 
+ (standard) crée une glose constituée de deux lignes (un couple d'éléments)
+ et une traduction, 
 \emph on
 Personnalisé: tri-glose
 \emph default
- est constituée de trois lignes et une traduction.
+ est constituée de trois lignes et une traduction (le troisième ligne est
+ généralement utilisée pour donner une information morphologique ou phonologique
+ relative au couple).
  Chaque ligne de la traduction peut s'étendre sur plusieurs lignes dans
  le résultat imprimé, c'est-à-dire que les paragraphes sont automatiquement
  justifiés s'ils excèdent la largeur du texte.
@@ -404,60 +548,66 @@ Personnalisé: tri-glose
 \backslash
 glt
 \family default
- qui doit être insérée telle quelle dans l'insert de glose (le mode \SpecialCharNoPassThru TeX
- n'est pas nécessaire, et n'est même pas possible en fait).
+ qui doit être insérée telle quelle dans l'insert de glose (le mode \SpecialChar TeX
+ n'est
+ pas nécessaire, et n'est même pas possible en fait).
 \end_layout
 
 \begin_layout Standard
-Voici un exemple simple
+Voici un exemple simple pour une glose standard:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Flex Glosse
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
+
+\lang english
+C'est     un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
 
-C'est un exemple simple
+\lang english
+This is
 \end_layout
 
 \end_inset
+
+ an example simple
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-{This is} an example simple
-\end_layout
-
-\end_inset
-\end_layout
-
-\begin_layout Plain Layout
+\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
+\lang english
+\begin_inset Quotes els
+\end_inset
 
 This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-\end_layout
 
-\end_inset
 \end_layout
 
 \end_inset
@@ -467,71 +617,98 @@ This is a simple example
 
 \begin_layout Standard
 \noindent
-Noter comment les accolades cimentent les expressions avec plusieurs mots.
+Utiliser 
+\family sans
+Édition\SpecialChar menuseparator
+Style de texte\SpecialChar menuseparator
+GrouperMotsGlosés
+\family default
+ pour cimenter les expressions comportant plusieurs mots (vous pouvez aussi
+ mettre des accolades 
+\family typewriter
+{
+\family default
+ autour des ces mots 
+\family typewriter
+}
+\family default
+).
+ Notez également que vous pouvez saisir des espaces pour aligner les gloses
+ dans la zone de travail de LyX, ceci n'affectera pas le résultat.
 \end_layout
 
 \begin_layout Standard
-Dans le même esprit, nous pouvons créer une glose de trois lignes:
+Nous pouvons aussi créer une glose de trois lignes:
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 \begin_inset Flex Tri-Glosse
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
+
+\lang english
+C'est      un exemple simple
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
 
-C'est un exemple simple
+\lang english
+Das ist
 \end_layout
 
 \end_inset
+
+ ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
+
+\lang english
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
 
-{Das ist} ein Beispiel einfach
+\lang english
+This is
 \end_layout
 
 \end_inset
+
+ an  example simple
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-{This is} an example simple
-\end_layout
-
-\end_inset
-\end_layout
-
-\begin_layout Plain Layout
+\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
+\lang english
+\begin_inset Quotes els
+\end_inset
 
 This is a simple example
+\begin_inset Quotes ers
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-\end_layout
 
-\end_inset
 \end_layout
 
 \end_inset
@@ -553,64 +730,64 @@ exemple numéroté
 , comme suit:
 \end_layout
 
-\begin_layout Numbered Examples (consecutive)
+\begin_layout Numbered Example (multiline)
+
+\lang english
 \begin_inset Flex Tri-Glosse
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
+
+\lang english
+Mein Luftkissenfahrzeug ist voller  Aale
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+My    skeertuig                   is  vol       palings
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
 
-Mein Luftkissenfahrzeug ist voller Aale
+\lang english
+full of
 \end_layout
 
 \end_inset
+
+ eels
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-My skeertuig is vol palings
-\end_layout
-
-\end_inset
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-My hovercraft is {full of} eels
-\end_layout
-
-\end_inset
-\end_layout
-
-\begin_layout Plain Layout
+\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
+\lang english
+\begin_inset Quotes els
+\end_inset
 
 Do you have matches?
+\begin_inset Quotes ers
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-\end_layout
 
-\end_inset
 \end_layout
 
 \end_inset
@@ -619,144 +796,14 @@ Do you have matches?
 \end_layout
 
 \begin_layout Subsection*
-Écueils des gloses \SpecialCharNoPassThru LyX
+Trucs et astuces
+\end_layout
+
+\begin_layout Subsubsection*
+Éviter les sauts de page dans les gloses
 \end_layout
 
 \begin_layout Standard
-L'implantation de la fonctionnalité 
-\begin_inset Quotes fld
-\end_inset
-
-gloses
-\begin_inset Quotes frd
-\end_inset
-
- dans \SpecialCharNoPassThru LyX
- est élémentaire, et de ce fait présente quelques écueils, qui
- pourront disparaître dans les publications ultérieures.
-\end_layout
-
-\begin_layout Enumerate
-Les changements de police ne sont pas autorisés dans les gloses.
- De ce fait, le menu 
-\family sans
-Style de texte
-\family default
- est inhibé.
- Comme les gloses ne connaissent pas de césure, il n'est pas nécessaire
- de préciser la langue explicitement (de fait, ceci brouillerait le résultat
- imprimé, puisque 
-\emph on
-covington
-\emph default
- ne peut le comprendre).
- Cependant, vous pourriez souhaiter positionner la langue pour les besoins
- de la correction orthographique.
- Actuellement, vous devez le faire comme suit: sélectionner le texte, et
- ensuite saisir 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- 
-\family sans
-language <lang>
-\family default
-, où 
-\family sans
-<lang>
-\family default
- doit être remplacé par la langue appropriée, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
-\family sans
-english
-\family default
-, 
-\family sans
-french
-\family default
- ou 
-\family sans
-ngerman
-\family default
-.
- Ce paramétrage sera supprimé dans le résultat imprimé.
-\end_layout
-
-\begin_layout Enumerate
-Du fait que le texte des gloses est transmis tel quel à \SpecialCharNoPassThru LaTeX
-, \SpecialCharNoPassThru LyX
- ne modifie
- pas leur encodage.
- Ceci signifie que si vous utilisez dans les gloses des caractères inconnus
- de l'encodage en cours, une erreur se produira.
- Voici les solutions possibles pour résoudre ce problème:
-\begin_inset Separator parbreak
-\end_inset
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-soit vous saisissez le texte en dehors de la glose, ouvrez 
-\family sans
-Affichage\SpecialChar menuseparator
-Afficher le code \SpecialCharNoPassThru LaTeX
-\family default
- et copiez le code \SpecialCharNoPassThru LaTeX
- dans la glose; 
-\end_layout
-
-\begin_layout Itemize
-soit vous marquez la totalité de la glose (bornes comprises) et vous positionnez
- la langue appropriée via 
-\family sans
-Édition\SpecialChar menuseparator
-Langue\SpecialChar menuseparator
-Autre langues
-\family default
-\SpecialChar ldots
-;
-\end_layout
-
-\begin_layout Itemize
-soit vous positionnez l'encodage du document à 
-\emph on
-Unicode (utf8)
-\emph default
- via 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
-Langue;
-\end_layout
-
-\begin_layout Itemize
-soit vous cochez 
-\emph on
-Utiliser des polices non-\SpecialCharNoPassThru TeX
- fonts (via Xe\SpecialCharNoPassThru TeX
-/Lua\SpecialCharNoPassThru TeX
-)
-\emph default
- dans 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
-Polices
-\family default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
 Des sauts de page peuvent apparaître dans des gloses, ce qui est bien entendu
  regrettable.
  Une solution consiste à inclure les gloses dans des boîtes (via 
@@ -775,13 +822,12 @@ Paramètres\SpecialChar ldots
 Préambule
 \family default
 :
-\family default
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
 
 \lang english
@@ -806,14 +852,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{linggloss}{}{%
+renewenvironment{linggloss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -829,11 +879,13 @@ textwidth}
 
 
 \backslash
-gll #1}{
+gll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -843,6 +895,10 @@ end{minipage}}}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout LyX-Code
 
 \end_layout
 
@@ -870,14 +926,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{lingglosss}{}{%
+renewenvironment{lingglosss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -893,11 +953,13 @@ textwidth}
 
 
 \backslash
-glll #1}{
+glll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -920,7 +982,204 @@ textwidth
  dans l'exemple) pour l'adapter à votre propre largeur de page.
 \end_layout
 
-\end_deeper
+\begin_layout Subsubsection*
+Notes de bas de page dans une glose
+\end_layout
+
+\begin_layout Standard
+Bine que vous puissiez insérer une note de bas de page dans une glose, la
+ compilation \SpecialChar LaTeX
+ échouera.
+ Si vous avez besoin de notes de bas de page, saisissez 
+\family typewriter
+
+\backslash
+footnotemark
+\family default
+ en mode TeX dans la glose là où le renvoi à la note doit apparaître, et
+ 
+\family typewriter
+
+\backslash
+footnotetext{Texte effectif de la note...}
+\family default
+, également en mode TeX , juste après l'insert de glose.
+ Pour plusieurs notes, insérez simplement plusieurs constructions de ce
+ type.
+\end_layout
+
+\begin_layout Subsubsection*
+Utilisation des gloses (et des exemples) dans une présentation Beamer
+\end_layout
+
+\begin_layout Standard
+Le paquetage 
+\emph on
+covington
+\emph default
+ et la classe 
+\emph on
+beamer
+\emph default
+ ne fonctionnent pas ensemble directement, car chacun d'eux cherche à définir
+ les commandes 
+\family typewriter
+
+\backslash
+example
+\family default
+ et 
+\family typewriter
+
+\backslash
+examples
+\family default
+, ce qui produit une erreur \SpecialChar LaTeX
+.
+ Vous pouvez contourner le problème en insérant le code qui suit dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Format local
+\family default
+:
+\end_layout
+
+\begin_layout Quote
+
+\lang english
+\begin_inset listings
+lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Fournit covington 1
+\end_layout
+
+\begin_layout Plain Layout
+
+AddToPreamble
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+example
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexample
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+examples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexamples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+usepackage{covington}
+\end_layout
+
+\begin_layout Plain Layout
+
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Appuyez sur 
+\begin_inset Quotes fld
+\end_inset
+
+Valider
+\begin_inset Quotes frd
+\end_inset
+
+ puis 
+\begin_inset Quotes fld
+\end_inset
+
+OK
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Ceci inhibe les commandes 
+\family typewriter
+
+\backslash
+example(s)
+\family default
+ de 
+\emph on
+beamer
+\emph default
+ au profit de celles de 
+\emph on
+covington
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Par ailleurs, si vous voulez utiliser des gloses en 
+\emph on
+beamer
+\emph default
+, vous devez les inclure dans un cadre 
+\begin_inset Quotes fld
+\end_inset
+
+fragile
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\end_layout
+
 \begin_layout Section
 Tableaux résultant de la théorie de l'optimalité (OT en anglais)
 \end_layout
@@ -955,9 +1214,10 @@ Le module linguistique permet de gérer les deux.
  Avec 
 \family sans
 Insertion\SpecialChar menuseparator
-Flottants
+Flottants\SpecialChar menuseparator
+Tableau
 \family default
-, vous pourrez créer un tableau (TO) flottant:
+ (seconde occurrence), vous pourrez créer un tableau linguistique flottant:
 \end_layout
 
 \begin_layout Standard
@@ -971,7 +1231,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1257,7 +1517,7 @@ Exemple de tableau utilisé dans la théorie de l'optimalité
 \begin_layout Standard
 Noter que, de manière implicite, la légende est toujours placée au-dessous
  des tableaux dans le résultat imprimé, quel que soit le positionnement
- choisi dans la fenêtre \SpecialCharNoPassThru LyX
+ choisi dans la fenêtre \SpecialChar LyX
 .
  Pour mettre les légendes des tableaux au-dessus, insérer le code suivant
  dans 
@@ -1431,15 +1691,196 @@ lingmeaning
 \end_layout
 
 \begin_layout Section
+Structures arborescentes linguistiques
+\end_layout
+
+\begin_layout Standard
+De nombreux paquetages \SpecialChar LaTeX
+ sont disponibles pour créer des arborescences.
+ \SpecialChar LyX
+ reconnaît en particulier le paquetage 
+\family sans
+forest
+\family default
+, qui comporte à la fois une grande flexibilité et une syntaxe de saisie
+ agréable.
+ Le module Linguistique fournit un insert de Structure arborescente, via
+ 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts personnalisables
+\family default
+.
+ Dans cet insert, vous pouvez utiliser la notation entre crochets définie
+ par
+\family sans
+ forest
+\family default
+ (et également par d'autres paquetages similaires comme 
+\family sans
+qtree
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Voici un exemple simple:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Si vous affichez le PDF résultant, vous verrez que la saisie
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+\size small
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]]]]
+\end_layout
+
+\begin_layout Standard
+se développe comme une structure arborescente.
+ Pour afficher ce résultat dans la fenêtre de travail de \SpecialChar LyX
+, il vous suffit
+ d'inclure la structure arborescente dans in insert d'aperçu (
+\family sans
+Insertion\SpecialChar menuseparator
+Aperçu
+\family default
+).
+ Si l'aperçu sur le vif est correctement installé et activé, vous devez
+ voir l'arborescence s'afficher (cliquer sur l'image pour la modifier):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Structure Tree
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[VP [DP[Mary]] [V' [V[sent]] [DP[John]] [DP[D[a]][NP[response]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Les toits peuvent être facilement engendrés via l'option 
+\begin_inset Quotes fld
+\end_inset
+
+triangle
+\begin_inset Quotes frd
+\end_inset
+
+ (notez que la virgule a une signification spéciale, puisqu’elle marque
+ une option):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[another letter, triangle]] ]
+ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Pour aligner les nœuds de l'arbre de manière agréable, utiliser l'option
+ 
+\begin_inset Quotes fld
+\end_inset
+
+tier
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Tous les nœuds qui utilisent le même 
+\begin_inset Quotes fld
+\end_inset
+
+tier
+\begin_inset Quotes frd
+\end_inset
+
+ sont alignés.
+ Voici un exemple:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John,tier=toto]] [V' [V[sent,tier=toto]] [DP[Mary,tier=toto]] [DP[D[a,ti
+er=toto]][NP[letter,tier=toto]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Le paquetage inclut de nombreuses  fonctionnalités, comme les flèches et
+ les décorations, qui ne seront pas documentées ici (voir la documentation
+ détaillée du paquetage 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
 Symboles phonétiques (API)
 \end_layout
 
 \begin_layout Standard
 Vous n'avez pas besoin du module linguistique pour insérer des symboles
- phonétiques, ce qui est une fonctionnalité de base de \SpecialCharNoPassThru LyX
+ phonétiques, ce qui est une fonctionnalité de base de \SpecialChar LyX
 .
- Cependant, nous décrirons (brièvement) celles-ci dans la mesure où elle
- est d'un usage fréquent chez les linguistes.
+ Cependant, nous décrirons (brièvement) cette fonctionnalité dans la mesure
+ où elle est d'un usage fréquent chez les linguistes.
 \end_layout
 
 \begin_layout Standard
@@ -1458,9 +1899,47 @@ key "tipa"
 
 \end_inset
 
- est pré-requis pour utiliser le support phonétiques de \SpecialCharNoPassThru LyX
- (conforme aux
- règles de l'Association Phonétique Internationale, API).
+ est pré-requis pour utiliser le support phonétique de \SpecialChar LyX
+ (conforme aux règles
+ de l'Association Phonétique Internationale, API) si vous utilisez \SpecialChar LaTeX
+ ou PDF\SpecialChar LaTeX
+
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si vous utilisez Xe\SpecialChar TeX
+ ou Lua\SpecialChar TeX
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., si vous avez sélectionné 
+\begin_inset Quotes fld
+\end_inset
+
+Utiliser les polices non-\SpecialChar TeX
+
+\begin_inset Quotes frd
+\end_inset
+
+ dans 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar ldots
+\SpecialChar menuseparator
+Polices
+\family default
+), aucun paquetage supplémentaire n'est requis.
+\end_layout
+
+\end_inset
+
+
+\lang french
+ .
  En outre, si vous voulez afficher un aperçu des caractères sur le vif,
  il faut que la paquetage 
 \emph on
@@ -1477,110 +1956,210 @@ key "preview"
 
 \end_inset
 
- soit installé et que 
-\begin_inset Quotes fld
-\end_inset
-
-Désélectionné
-\begin_inset Quotes frd
-\end_inset
-
- ne soit pas choisi dans le menu ad hoc de 
-\family sans
-Outils\SpecialChar menuseparator
-Préférences\SpecialChar menuseparator
-Apparence\SpecialChar menuseparator
-Affichage écran.
+ soit installé.
 \end_layout
 
 \begin_layout Standard
-Les symboles phonétiques peuvent être saisis via 
+Les symboles phonétiques peuvent être préférentiellement saisis via 
 \family sans
 Insertion\SpecialChar menuseparator
 Caractère spécial\SpecialChar menuseparator
 Symboles phonétiques.
  
 \family default
-Une mini-fenêtre s'ouvre, dans laquelle vous pouvez saisir les symboles
- en utilisant les notations abrégées décrites dans le manuel du paquetage
- 
+Une boîte des saisie s'ouvre (un 
+\begin_inset Quotes fld
+\end_inset
+
+insert
+\begin_inset Quotes frd
+\end_inset
+
+ en langage LyX), dans laquelle vous pouvez saisir les symboles.
+ Notez que celle boîte peut être utilisée à la fois pour insérer de petits
+ éléments (en ligne) ou plusieurs paragraphes en notation phonétique.
+ Lorsque le curseur est dans la boîte, une barre d'outils apparaît, qui
+ propose l'ensemble des symboles phonétiques (triés par catégories API)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Actuellement, il manque un symbole: la battue labiodentale (ajoutée à l'API
+ en 2005) .
+ Ce symbole n'est pas connu du paquetage 
 \emph on
 tipa
 \emph default
-.
- Exemple: 
-\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+ et ne peut donc être connu de LyX.
+\end_layout
+
 \end_inset
 
- (notation abrégée
-\emph on
- tipa
-\emph default
-: 
+.
+ Chacun des panneaux de la barre d’outils peut être inhibé en cliquant sur
+ la ligne pointillée qui figure au sommet.
+ De cette façon, vous pouvez insérer de manière ergonomique la plupart des
+ symboles: 
+\begin_inset IPA
+
+\begin_layout Standard
+
+\lang english
+[l
+\begin_inset IPADeco bottomtiebar
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+ai
+\end_layout
+
+\end_inset
+
+k ðɪs]
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notez que si vous souhaitez insérer des diacritiques, ils doivent être saisis
+ après le caractère de base.
+ C'est-à-dire, pour 
+\begin_inset IPA
+
+\begin_layout Standard
+
+\lang english
+[d̥]
+\end_layout
+
+\end_inset
+
+ vous devez saisir 
 \family typewriter
-[Ekspl@"neIS@n
+<d>
 \family default
-]).
+ et ensuite le sous-diacritique en anneau 
+\family typewriter
+<dévoisement>
+\family default
+ immédiatement après le 
+\family typewriter
+<d>
+\family default
+.
+ S'il vous faut un diacritique isolé, vous pouvez l’obtenir en saisissant
+ une espace suivie du diacritique, comme ici: 
+\begin_inset IPA
+
+\begin_layout Standard
+̼
+\end_layout
+
+\end_inset
+
+ (
+\family typewriter
+=
+\begin_inset space ~
+\end_inset
+
+<espace>+<Articulation linguo-labiale de la barre d'outils API>
+\family default
+).
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+.
  Si 
 \emph on
 preview-latex
 \emph default
  est installé et si l'aperçu sur le vif est actif, vous obtiendrez un aperçu
- satisfaisant dès que vous quitterez la fenêtre.
-\end_layout
+ satisfaisant dès que vous quitterez la boîte.
+ A la place de la barre d'outils, vous pouvez aussi insérer les symboles
+ directement eu utilisant la notation raccourcie décrite dans le manuel
+ 
+\emph on
+tipa
+\emph default
+: voici 
+\begin_inset IPA
 
 \begin_layout Standard
-De plus, la plupart des glyphes API peuvent être saisis (e.
-\begin_inset space \thinspace{}
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+[@n Ig"zA:mpl]
+\end_layout
+
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-via 
+ (notation raccourcie 
+\emph on
+tipa
+\emph default
+: 
+\family typewriter
+[@n Ig"zA:mpl
+\family default
+]).
+ De plus, vous pouvez saisir des symbole via 
 \family sans
 Insertion\SpecialChar menuseparator
 Caractère spécial\SpecialChar menuseparator
 Symboles\SpecialChar ldots
 
 \family default
-), voire même collés directement dans la fenêtre \SpecialCharNoPassThru LyX
- [ɛkspləˈneɪʃən].
+ (ce qui être utile pour des symboles qui ne figurent pas dans la barre
+ d'outils), et vous pouvez même simplement coller du texte encodé en Unicode
+ (par exemple en provenance d'autres applications) dans la boîte.
+ Le résultat devrait être le même quelle que soit le technique employée.
+\end_layout
+
+\begin_layout Standard
+Vous pouvez enfin saisir les glyphes API en dehors de la boîte spécifique
+ décrite dans le paragraphe précédent, directement dans la fenêtre \SpecialChar LyX
+: [ɛkspləˈneɪ
+ʃən].
  Dans le résultat imprimé, ils seront automatiquement convertis dans la
  macro-instruction 
 \emph on
 tipa 
 \emph default
 (sinon, merci de me prévenir).
- Notez cependant que la première méthode produit des résultats typographiques
- de meilleure qualité pour deux raisons:
-\end_layout
-
-\begin_layout Enumerate
-la saisie directe peut conduire à un mélange de polices (dans l'exemple
- vu plus haut, les caractères latins appartiennent à la police de base,
- les glyphes API à la police API, alors que 
+ Notez cependant que cette méthode produit des résultats typographiques
+ de moins bonne qualité, car il en résultera un mélange de polices (les
+ caractères latins appartiennent à la police de base, les glyphes API à
+ la police API), alors que 
 \family sans
 Insertion\SpecialChar menuseparator
 Caractère spécial\SpecialChar menuseparator
 Symboles phonétiques
 \family default
- utilise la police API pour tous les caractères);
-\end_layout
-
-\begin_layout Enumerate
-le contrôle de l'espacement des lettres (
-\emph on
-kerning
-\emph default
-) n'est pas conservé.
-\end_layout
-
-\begin_layout Standard
-Par conséquent, la première méthode est recommandée, sauf si vous ne saisissez
- que des caractères API, et il vaut la peine d'apprendre la notation abrégée
- API (qui est assez intuitive).
+ utilise la police API pour tous les caractères.
+ Par conséquent, cette dernière méthode est recommandée, sauf si vous ne
+ saisissez que des caractères API isolés.
 \end_layout
 
 \begin_layout Section
@@ -1589,9 +2168,10 @@ En savoir plus
 
 \begin_layout Standard
 Pour accéder à une description détaillée des possibilités spécifiques de
- \SpecialCharNoPassThru LyX
- pour la linguistique, vous pouvez vous référer à la page Linguist\SpecialCharNoPassThru LyX
- sur le wiki
+ \SpecialChar LyX
+ pour la linguistique, vous pouvez vous référer à la page Linguist\SpecialChar LyX
+ sur
+ le wiki
 \begin_inset space ~
 \end_inset
 
@@ -1692,21 +2272,43 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "forest"
+
+\end_inset
+
+Le paquetage forest: 
+\lang english
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/forest/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialCharNoPassThru LyX
- for Linguisti
-c Papers.
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialChar LyX
+ for Linguistic
+ Papers.
  
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/\SpecialCharNoPassThru LyX
-/Linguist\SpecialCharNoPassThru LyX
+http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
 \end_inset

@@ -212,9 +212,9 @@
 \bullet 2 2 35 -1
 \bullet 3 2 7 -1
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
@@ -277,6 +277,10 @@ Avril 2014 : avertissement du besoin du paquetage de langue allemande, mise
 \begin_layout Plain Layout
 Juin 2014 : relecture complète du document pour 2.1 par J.-P.
  Chrétien
+\end_layout
+
+\begin_layout Plain Layout
+Décembre 2015 : mise à jour pour LyX 2.2
 \end_layout
 
 \end_inset
@@ -23150,30 +23154,30 @@ officialeuro
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 cmidrule
 \series default
- is used here only for table borders.
- See sec.
- 
+ n'est utilisé ici que pour les bordures du tableau.
+ voir la section 
 \family sans
-Formal Tables
+Tableaux formels
 \family default
- of the 
+ du manuel des 
 \emph on
-EmbeddedObjects
+Objets
 \emph default
- manual for details.
+ 
+\emph on
+insérés
+\emph default
+ pour les détails.
 \end_layout
 
 \end_inset
@@ -38381,7 +38385,7 @@ key "Checklist"
 \begin_inset CommandInset href
 LatexCommand href
 name "Check list"
-target "http://physics.nist.gov/Document/checklist.pdf"
+target "http://physics.nist.gov/Pubs/SP811/sec11.html"
 
 \end_inset
 

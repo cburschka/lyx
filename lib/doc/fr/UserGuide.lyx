@@ -140,9 +140,9 @@ logicalmkup
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
@@ -157,7 +157,7 @@ Guide de l'utilisateur de \SpecialChar LyX
 par l'Équipe \SpecialChar LyX
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -206,7 +206,7 @@ M
 eunier-Guttin-Cluzel
 \noun default
 .
- Revue finale 1.6 et mise à jour 2.0: Jean-Pierre 
+ Revue finale 1.6 et mise à jour 2.0, 2.1 et 2.2: Jean-Pierre 
 \noun on
 Chrétien
 \noun default
@@ -247,7 +247,11 @@ Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour mineure pour 2.1.4, 3 aril 2015 (JPC)
+Mise à jour mineure pour 2.1.4, 3 avril 2015 (JPC)
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour pour LyX 2.2, 2 janvier 2016 (JPC)
 \end_layout
 
 \end_inset
@@ -908,8 +912,8 @@ arg   "lyx-quit"
 \end_layout
 
 \begin_layout Standard
-Ils font tous à peu près la même chose que dans les autres traitements de
- texte, avec quelques différences mineures.
+Elles font toutes à peu près la même chose que dans les autres traitements
+ de texte, avec quelques différences mineures.
  La commande 
 \family sans
 Fichier\SpecialChar menuseparator
@@ -1418,7 +1422,7 @@ Seulement sous OS X
  Ces éléments de menu sont utiles quand le presse-papier contient un même
  contenu en plusieurs formats, et que vous voulez en choisir un explicitement.
  (par exemple certain programmes mettent une image dans le presse-papier
- sous la forme d'un graphique et d'un texte court et souvent sans utilité).
+ sous la forme d'un graphique et d'un texte court qui est souvent sans utilité).
  L'élément de menu 
 \family sans
 Coller
@@ -8669,14 +8673,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8689,7 +8691,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8697,25 +8698,31 @@ Almost everything is allowed in Verbatim:"%&$§#~'`
 
 \begin_layout Standard
 
-\lang english
-The 
 \family sans
-Verbatim*
+L'environnement Verbatim*
 \family default
- environment is identical to 
+ est identique à l'environnement 
 \family sans
 Verbatim
 \family default
- with the difference that spaces appear in the output as the character '
+, à ceci près que les espaces apparaissent dans le résultat imprimable sous
+ la forme du caractère 
+\begin_inset Quotes fld
+\end_inset
+
+
 \begin_inset space \textvisiblespace{}
 \end_inset
 
-'.
- An example:
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Voici un exemple:
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -11161,43 +11168,42 @@ ceci est une autre
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To split an existing list into two lists,
-\lang french
- mettez le curseur à la fin du dernier élément et utilisez le menu 
+Pour diviser une liste existante en deux listes, mettez le curseur à la
+ fin du dernier élément de le première liste désirée et utilisez le menu
+ 
 \family sans
 Édition\SpecialChar menuseparator
-
-\lang english
-Start New Environment
+Début de nouvel environnement
 \family default
 .
- This inserts a plain separator (red line in LyX) and behind it the new
- list.
- Alternatively set the cursor at the end of a list item and press 
+ Ceci insère un séparateur ordinaire (une ligne rouge dans la fenêtre LyX),
+ la nouvelle liste est après.
+ D'une autre façon, positionner le curseur après l’élément de liste concerné
+ et saisir trois fois 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- three times.
- This inserts a paragraph separator (red arrow in LyX).
- The difference between both separator types is that the plain separator
- only splits the list and not the current paragraph.
- One can change the separator type by right-clicking on it.
+.
+ Ceci insère un séparateur de paragraphe (une flèche rouge en LyX).
+ La différence entre ces deux séparateurs réside dans le fait que le séparateur
+ ordinaire ne divise que la liste et non pas le paragraphe courant.
+ Il est possible de modifier le séparateur en effectuant un clic ddroit
+ sur lui.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In general, you get an environment separator when you press 
+D'une manière générale, vous obtenez un séparateur d'environnement en saisissant
+ 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- in a Standard environment immediately after a non-Standard one.
+ dans un environnement Standard situé immédiatement après un environnement
+ non Standard.
 \end_layout
 
 \begin_layout Standard
@@ -15218,24 +15224,23 @@ Jaune
 \family default
 , 
 \family sans
-\lang english
-Brown
+Brun
 \family default
 , 
 \family sans
-Darkgray
+GrisFoncé
 \family default
 , 
 \family sans
-Gray
+Gris
 \family default
 , 
 \family sans
-Lightgray
+GrisClair
 \family default
 , 
 \family sans
-Lime
+Citron
 \family default
 , 
 \family sans
@@ -15247,23 +15252,20 @@ Olive
 \family default
 , 
 \family sans
-Pink
+Rose
 \family default
 , 
 \family sans
-Purple
+Pourpre
 \family default
 , 
 \family sans
-Teal
+Turquoise
 \family default
-\lang french
  et 
 \family sans
-\lang english
 Violet
 \family default
-\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -23830,7 +23832,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -30936,19 +30938,8 @@ emph
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To customize the appearance of all symbols add e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the command
-\lang french
-
+Pour personnaliser l'apparence de tous les symboles, ajouter par exemple
+ la commande
 \begin_inset Newline newline
 \end_inset
 
@@ -30968,20 +30959,14 @@ textbf{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-to the LaTeX preamble in the document settings.
- This command will make the font of all symbols 
+au préambule LaTeX dans les paramètres du document.
+ Cette commande particulière affichera tous les symboles en 
 \series bold
-bold
+gras
 \series default
- and 
+ et 
 \family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
+sans empattements
 \family default
 .
 \end_layout
@@ -35006,14 +34991,13 @@ man-page
 hunspell
 \family default
 .
- 
-\lang english
-\SpecialChar LyX
- on Mac
+ \SpecialChar LyX
+ pour Mac
 \begin_inset space ~
 \end_inset
 
-OS can also use Mac's own spellchecker and will use it by default;
+OS peut également utiliser le correcteur orthographique natif du Mac et
+ l’utilisera implicitement.
 \end_layout
 
 \begin_layout Description
@@ -39689,14 +39673,16 @@ name "subsec:Comprimé"
 
 \begin_layout Standard
 Compresse ou décompresse le document courant.
- 
-\lang english
-For documents under version control it is strongly recommended to disable
- compression (see the 
+ Pour les documents sous contrôle de version, il est fortement recommandé
+ de désactiver la compression (voir le manuel des 
 \emph on
-Additional Features
+Options
 \emph default
- manual for details).
+ 
+\emph on
+avancées
+\emph default
+ pour les détails).
 \end_layout
 
 \begin_layout Subsection
@@ -45047,11 +45033,7 @@ Sauvegarde automatique, toutes les x minutes
 \family sans
 Enregistrer les documents sous forme compressée
 \family default
- enregistre toujours dans un format compressé (
-\lang english
-see also
-\lang french
- section
+ enregistre toujours dans un format compressé (voir également la section
 \begin_inset space ~
 \end_inset
 
@@ -45063,10 +45045,8 @@ reference "subsec:Comprimé"
 \end_inset
 
 ).
- 
-\lang english
-This applies to newly created documents only.
- The compression status of existing documents is not changed when saving.
+ Ceci ne s'applique qu'aux nouveaux documents, l'état de compression des
+ documents existants n'est pas modifié lors de l'enregistrement.
 \end_layout
 
 \begin_layout Subsubsection
@@ -48038,9 +48018,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+Échelle graphique %
 \end_layout
 
 \end_inset
@@ -48069,9 +48047,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+Largeur texte %
 \end_layout
 
 \end_inset
@@ -48102,9 +48078,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+Largeur colonne %
 \end_layout
 
 \end_inset
@@ -48135,9 +48109,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+Largeur page %
 \end_layout
 
 \end_inset
@@ -48168,9 +48140,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+Largeur ligne %
 \end_layout
 
 \end_inset
@@ -48201,9 +48171,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+Hauteur texte %
 \end_layout
 
 \end_inset
@@ -48234,9 +48202,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+Hauteur page %
 \end_layout
 
 \end_inset

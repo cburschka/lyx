@@ -300,12 +300,15 @@
 # ------------------------------------------------------------------
 # 29 décembre 2015 : mise à jour en vue de 2.2.0
 # ------------------------------------------------------------------
+# 02 janvier 2016 : résolution de conflits de raccourcis
+#                   revue du vocabulaire du module Boîtes graphiques
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2015-12-29 09:09+0000\n"
+"PO-Revision-Date: 2016-01-02 18:44+0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -5351,7 +5354,7 @@ msgstr "Montrer la source telle que le document maître la voit"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
 msgid "Master's perspective"
-msgstr "Vue du document &maître"
+msgstr "Vue du document maître"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -9576,7 +9579,7 @@ msgstr "[échiquier centré]"
 
 #: lib/layouts/chess.layout:156
 msgid "HighLight"
-msgstr "Mise_en_Valeur"
+msgstr "MiseEnValeur"
 
 #: lib/layouts/chess.layout:161
 msgid "Highlights:"
@@ -12030,7 +12033,7 @@ msgstr "Référence NDB"
 
 #: lib/layouts/iucr.layout:219
 msgid "NDB reference:"
-msgstr "Référence NDB !"
+msgstr "Référence NDB :"
 
 #: lib/layouts/iucr.layout:222
 #: lib/layouts/iucr.layout:225
@@ -12117,7 +12120,7 @@ msgstr "Titre normal :"
 
 #: lib/layouts/jss.layout:122
 msgid "Short Title:"
-msgstr "Titre court"
+msgstr "Titre court :"
 
 #: lib/layouts/jss.layout:125
 msgid "Plain Author"
@@ -12556,7 +12559,7 @@ msgstr "IconesCV"
 
 #: lib/layouts/moderncv.layout:66
 msgid "CV Icon Set:"
-msgstr "Jeu d'icônes CV"
+msgstr "Jeu d'icônes CV :"
 
 #: lib/layouts/moderncv.layout:69
 msgid "CVColumnWidth"
@@ -15486,7 +15489,7 @@ msgstr "Positionner toutes les notes de bas de pages en notes regroupées. Vous 
 
 #: lib/layouts/graphicboxes.module:2
 msgid "GraphicBoxes"
-msgstr "BoîtesGraphiques"
+msgstr "Boîtes graphiques"
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
@@ -15495,7 +15498,7 @@ msgstr "Boîtes permettant de mettre à l'échelle et faire tourner leur contenu
 #: lib/layouts/graphicboxes.module:11
 #: lib/layouts/graphicboxes.module:14
 msgid "Reflectbox"
-msgstr "BoiteReflet"
+msgstr "BoiteMiroir"
 
 #: lib/layouts/graphicboxes.module:26
 #: lib/layouts/graphicboxes.module:28
@@ -15521,7 +15524,7 @@ msgstr "Saisir le facteur d'échelle horizontal (1 = 100%)"
 #: lib/layouts/graphicboxes.module:43
 #: lib/layouts/graphicboxes.module:45
 msgid "Resizebox"
-msgstr "Boîte de changement de taille"
+msgstr "BoîteRetaillée"
 
 #: lib/layouts/graphicboxes.module:49
 msgid "Width of the box"
@@ -15534,7 +15537,7 @@ msgstr "Hauteur de la boîte, peut aussi être « ! » pour conserver l'homothé
 #: lib/layouts/graphicboxes.module:63
 #: lib/layouts/graphicboxes.module:65
 msgid "Rotatebox"
-msgstr "BoîteRotation"
+msgstr "BoîtePivotée"
 
 #: lib/layouts/graphicboxes.module:68
 msgid "Origin"
@@ -15750,7 +15753,7 @@ msgstr "Traduction"
 #: lib/layouts/linguistics.module:96
 #: lib/layouts/linguistics.module:131
 msgid "Glosse Translation|s"
-msgstr "Traduction de glose|g"
+msgstr "Traduction de glose"
 
 #: lib/layouts/linguistics.module:97
 #: lib/layouts/linguistics.module:132
@@ -16201,11 +16204,11 @@ msgstr "Saisir la liste des options ici (voir le manuel de pdfcomment)"
 
 #: lib/layouts/pdfform.module:2
 msgid "PDF Form"
-msgstr "Forme PDF"
+msgstr "Formulaire PDF"
 
 #: lib/layouts/pdfform.module:7
 msgid "Provides fields and buttons for PDF forms. The module uses the LaTeX package hyperref. Please consult the LyX example file PDF-form.lyx and the documentation of hyperref for details."
-msgstr "Fournit des champs et des boutons variés pour les formes PDF. Le module utilise le paquetage hyperref. Veuillez consulter le fichier d'exemple LyX PDF-form.lyx et la documentation du paquetage pour les détails."
+msgstr "Fournit des champs et des boutons variés pour les formulaires PDF. Le module utilise le paquetage hyperref. Veuillez consulter le fichier d'exemple LyX PDF-form.lyx et la documentation du paquetage pour les détails."
 
 #: lib/layouts/pdfform.module:15
 #: lib/layouts/pdfform.module:26
@@ -16214,12 +16217,12 @@ msgstr "Début du formulaire PDF"
 
 #: lib/layouts/pdfform.module:19
 msgid "PDF form"
-msgstr "PDF form"
+msgstr "Formulaire PDF"
 
 #: lib/layouts/pdfform.module:28
 #: lib/layouts/pdfform.module:65
 msgid "PDF Form Parameters"
-msgstr "Paramètres de forme PDF"
+msgstr "Paramètres de formulaire PDF"
 
 #: lib/layouts/pdfform.module:29
 #: lib/layouts/pdfform.module:66
@@ -16229,7 +16232,7 @@ msgstr "Paramètres"
 #: lib/layouts/pdfform.module:30
 #: lib/layouts/pdfform.module:67
 msgid "Insert PDF form parameters here"
-msgstr "Saisir les paramètres de la forme PDF ici"
+msgstr "Saisir les paramètres du formulaire PDF ici"
 
 #: lib/layouts/pdfform.module:40
 #: lib/layouts/pdfform.module:43
@@ -16321,7 +16324,7 @@ msgstr "Style de coche"
 
 #: lib/layouts/pdfform.module:156
 msgid "Default check box style"
-msgstr "Style de coche implicite :"
+msgstr "Style de coche implicite"
 
 #: lib/layouts/pdfform.module:159
 msgid "Reset Button Style"
@@ -16403,7 +16406,7 @@ msgstr "Boîtes de section"
 
 #: lib/layouts/sectionbox.module:6
 msgid "Defines Boxes with section header. Mainly intended for the SciPoster class."
-msgstr "Définit des boîtes avec en-tête de section. Essentiellement prévu pour la classe SciPoster"
+msgstr "Définit des boîtes avec en-tête de section. Essentiellement prévu pour la classe SciPoster."
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
@@ -16973,7 +16976,7 @@ msgstr "Théorèmes nommés"
 
 #: lib/layouts/theorems-named.module:7
 msgid "Facilitates the use of named theorems. The name of the theorem goes into the 'Additional Theorem Text' argument."
-msgstr "Facilite l'utilisation des théorèmes explicitement nommés. Le nom explicite est saisi dans l'argument « Texte du théorème supplémentaire »"
+msgstr "Facilite l'utilisation des théorèmes explicitement nommés. Le nom explicite est saisi dans l'argument « Texte du théorème supplémentaire »."
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -18771,7 +18774,7 @@ msgstr "Tableau multi-pages|u"
 
 #: lib/ui/stdcontext.inc:445
 msgid "Formal Style|m"
-msgstr "Style formel|m"
+msgstr "Style formel|f"
 
 #: lib/ui/stdcontext.inc:447
 msgid "Borders|d"
@@ -18783,7 +18786,7 @@ msgstr "Alignement|i"
 
 #: lib/ui/stdcontext.inc:449
 msgid "Columns/Rows|C"
-msgstr "Colonnes/lignes|C"
+msgstr "Colonnes/lignes|o"
 
 #: lib/ui/stdcontext.inc:459
 #: lib/ui/stdmenus.inc:30
@@ -18800,7 +18803,7 @@ msgstr "Classe|C"
 
 #: lib/ui/stdcontext.inc:463
 msgid "File Revision|R"
-msgstr "Révision du fichier|R"
+msgstr "Révision du fichier|é"
 
 #: lib/ui/stdcontext.inc:464
 msgid "Tree Revision|T"
@@ -18812,7 +18815,7 @@ msgstr "Auteur de la révision|A"
 
 #: lib/ui/stdcontext.inc:466
 msgid "Revision Date|D"
-msgstr "date de la révision|D"
+msgstr "Date de la révision|D"
 
 #: lib/ui/stdcontext.inc:467
 msgid "Revision Time|i"
@@ -19903,7 +19906,7 @@ msgstr "Commentaires PDF|D"
 
 #: lib/ui/stdmenus.inc:623
 msgid "PDF forms|o"
-msgstr "Formes PDF|o"
+msgstr "Formulaires PDF|o"
 
 #: lib/ui/stdmenus.inc:624
 msgid "Hazard and Precautionary Statements|H"
@@ -25153,7 +25156,7 @@ msgstr "MS Word Office Open XML"
 
 #: lib/configure.py:713
 msgid "MS Word Office Open XML|O"
-msgstr "MS Word Office Open XML|O"
+msgstr "MS Word Office Open XML|W"
 
 #: lib/configure.py:716
 msgid "date command"
@@ -25783,7 +25786,7 @@ msgstr "Un fichier de  sauvegarde a été correctement chargé, mais le fichier 
 #: src/Buffer.cpp:4753
 #: src/insets/InsetCaption.cpp:377
 msgid "Senseless!!! "
-msgstr "Inapproprié !!!"
+msgstr "Inapproprié !!! "
 
 #: src/Buffer.cpp:4972
 #, c-format
@@ -26218,7 +26221,7 @@ msgstr "cyan"
 
 #: src/Color.cpp:209
 msgid "darkgray"
-msgstr "grisfoncé"
+msgstr "grisFoncé"
 
 #: src/Color.cpp:210
 msgid "gray"
@@ -26230,7 +26233,7 @@ msgstr "vert"
 
 #: src/Color.cpp:212
 msgid "lightgray"
-msgstr "gris clair"
+msgstr "grisClair"
 
 #: src/Color.cpp:213
 msgid "lime"
@@ -26668,7 +26671,7 @@ msgstr ", insert : "
 
 #: src/Cursor.cpp:2113
 msgid ", Cell: "
-msgstr ", cellule :"
+msgstr ", cellule : "
 
 #: src/Cursor.cpp:2114
 #: src/Text.cpp:1943
@@ -31833,7 +31836,7 @@ msgstr "Fichier graphique : %1$s"
 
 #: src/insets/InsetHyperlink.cpp:59
 msgid "Hyperlink: "
-msgstr "Hyperlien :"
+msgstr "Hyperlien : "
 
 #: src/insets/InsetHyperlink.cpp:199
 #, c-format
