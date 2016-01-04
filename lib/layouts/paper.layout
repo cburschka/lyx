@@ -33,18 +33,13 @@ Input stdstruct.inc
 Input lyxmacros.inc
 Input stdlayouts.inc
 Input stdfloats.inc
-Input stdsections.inc
-Input stdstarsections.inc
 Input stdlists.inc
 Input stdcounters.inc
 Input stdciteformats.inc
 
-# There are no chapters in a paper.
-NoStyle                 Chapter
-NoCounter               chapter
-NoStyle                 Chapter*
+###### All the section headings now use sans serif
+Input stdsections.inc
 
-# All the section headings now use sans serif
 Style Part
 	Align                 Left
 	TopSep                2
@@ -107,8 +102,16 @@ Style Description
 	EndFont
 End
 
+Input stdstarsections.inc
 
-# The \maketitle stuff is by default left justified.
+# There are no chapters in a paper.
+NoStyle                 Chapter
+NoCounter               chapter
+NoStyle                 Chapter*
+
+
+
+###### The \maketitle stuff is by default left justified.
 Style Title
 	Align                 Left
 	Font

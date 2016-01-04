@@ -42,6 +42,7 @@ End
 
 
 Style Foilhead
+	Category              Sectioning
 	TocLevel              1
 	Margin                Static
 	LatexType             Command
@@ -82,6 +83,7 @@ End
 Input stdlists.inc
 
 Style TickList
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             dinglist
@@ -101,6 +103,7 @@ Style TickList
 End
 
 Style CrossList
+	Category              List
 	Margin                Static
 	LatexType             Item_Environment
 	LatexName             dinglist
@@ -160,6 +163,7 @@ End
 
 # Header definitions:
 Style My_Logo
+	Category              FrontMatter
 	Margin                Static
 	LatexType             Command
 	LatexName             MyLogo
