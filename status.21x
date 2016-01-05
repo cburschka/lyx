@@ -105,6 +105,8 @@ What's new
 
 - Reset cursor font after inset-select-all (bug 9719).
 
+- Fix one case where cursor does not enter insets correctly (bug 9913).
+
 - Correctly update previews when cursor leaves inset (bug 6173).
 
 - Fix subscripts and superscripts of \overrightarrow and related macros

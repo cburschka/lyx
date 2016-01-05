@@ -732,10 +732,7 @@ bool Cursor::posVisRight(bool skip_inset)
 
 	}
 
-	bool moved = (new_cur.pos() != pos()
-				  || new_cur.pit() != pit()
-				  || new_cur.boundary() != boundary()
-				  || &new_cur.inset() != &inset());
+	bool const moved = new_cur != *this || new_cur.boundary() != boundary();
 
 	if (moved) {
 		LYXERR(Debug::RTL, "moving to: " << new_cur.pos()
@@ -832,9 +829,7 @@ bool Cursor::posVisLeft(bool skip_inset)
 
 	}
 
-	bool moved = (new_cur.pos() != pos()
-				  || new_cur.pit() != pit()
-				  || new_cur.boundary() != boundary());
+	bool const moved = new_cur != *this || new_cur.boundary() != boundary();
 
 	if (moved) {
 		LYXERR(Debug::RTL, "moving to: " << new_cur.pos()
