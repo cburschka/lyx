@@ -789,6 +789,8 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		setCursor(dit);
 		// set the current font.
 		d->cursor_.setCurrentFont();
+		// Do not forget to reset the anchor (see #9912)
+		d->cursor_.resetAnchor();
 		// To center the screen on this new position we need the
 		// paragraph position which is computed at draw() time.
 		// So we need a redraw!
