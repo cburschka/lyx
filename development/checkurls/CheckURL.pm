@@ -25,7 +25,7 @@ sub check_http_url($$$$);
 sub check_ftp_dir_entry($$);
 sub check_ftp_url($$$$);
 sub check_unknown_url($$$$);
-sub check_url($);
+sub check_url($$);
 ################
 
 sub check_http_url($$$$)
@@ -102,6 +102,50 @@ sub check_ftp_dir_entry($$)
     #return(2,$isdir) if ($other !~ /x$/); # directory, but not executable
   }
   return(1,$isdir);
+}
+
+sub check_ftp2_url($$$$)
+{
+  my ($protocol, $host, $path, $file) = @_;
+
+  my $checkentry = 1;
+  print "\nhost $host\n";
+  print "path $path\n";
+  print "file $file\n";
+  my $url = "$protocol://$host";
+  $path =~ s/\/$//;
+  if (defined($file)) {
+    $url = "$url/$path/$file";
+  }
+  else {
+    $url = "$url/$path/.";
+  }
+  print "curl $url, file = $file\n";
+  my %listfiles = ();
+  if (open(FFTP, "curl --anyauth -l $url|")) {
+    while (my $l = <FFTP>) {
+      chomp($l);
+      $listfiles{$l} = 1;
+    }
+    close(FFTP);
+  }
+  if (%listfiles) {
+    if (! defined($file)) {
+      return(0, "OK");
+    }
+    elsif (defined($listfiles{$file})) {
+      return(0, "OK");
+    }
+    elsif (defined($listfiles{"ftpinfo.txt"})) {
+      return(0, "Probably a directory");
+    }
+    else {
+      return(1, "Not found");
+    }
+  }
+  else {
+    return(1, "Error");
+  }
 }
 
 sub check_ftp_url($$$$)
@@ -200,9 +244,9 @@ sub check_unknown_url($$$$)
 
 #
 # Main entry
-sub check_url($)
+sub check_url($$)
 {
-  my($url) = @_;
+  my($url,$use_curl) = @_;
   my $file = undef;
   my ($protocol,$host,$path);
 
@@ -232,7 +276,12 @@ sub check_url($)
   }
   elsif ($protocol eq "ftp") {
     my $message;
-    ($res, $message) = check_ftp_url($protocol, $host, $path, $file);
+    if ($use_curl) {
+      ($res, $message) = check_ftp2_url($protocol, $host, $path, $file);
+    }
+    else {
+      ($res, $message) = check_ftp_url($protocol, $host, $path, $file);
+    }
     return $res;
   }
   else {

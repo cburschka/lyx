@@ -14,4 +14,5 @@ http://www.photogrammetry.ethz.ch/tarasp_workshop/isprs.cls
 # The following ftp url is correct, but
 # ftp commands like 'dir', 'get' do not work.
 # We get a timeout. Reading with firefox is OK.
-ftp://ftp.edpsciences.org/pub/aa/readme.html
+# Read with curl works too, added a flag
+UseCurl ftp://ftp.edpsciences.org/pub/aa/readme.html

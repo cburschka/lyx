@@ -103,6 +103,8 @@ for my $arg (@ARGV) {
 }
 
 my @urls = sort keys %URLS, keys %extraURLS;
+# Tests
+#my @urls = ("ftp://ftp.edpsciences.org/pub/aa/readme.html", "ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author");
 my $errorcount = 0;
 
 my $URLScount = 0;
@@ -112,7 +114,15 @@ for my $u (@urls) {
     $ignoredURLS{$u}->{count} += 1;
     next;
   }
-  next if (defined($knownToRegisterURLS{$u}));
+  my $use_curl = 0;
+  if (defined($knownToRegisterURLS{$u})) {
+    if ($knownToRegisterURLS{$u}->{use_curl}) {
+      $use_curl = 1;
+    }
+    else {
+      next;
+    }
+  }
   if (defined($selectedURLS{$u})) {
     ${selectedURLS}{$u}->{count} += 1;
   }
@@ -121,7 +131,7 @@ for my $u (@urls) {
   print "Checking '$u': ";
   my ($res, $prnt, $outSum);
   try {
-    $res = check_url($u);
+    $res = check_url($u, $use_curl);
     if ($res) {
       print "Failed\n";
       $prnt = "";
@@ -224,8 +234,12 @@ sub readUrls($\%)
     $l =~ s/\s*\#.*$//;		# remove comment
     $l = &replaceSpecialChar($l);
     next if ($l eq "");
+    my $use_curl = 0;
+    if ($l =~ s/^\s*UseCurl\s*//) {
+      $use_curl = 1;
+    }
     if (! defined($rUrls->{$l} )) {
-      $rUrls->{$l} = {$file => $line, count => 1};
+      $rUrls->{$l} = {$file => $line, count => 1, use_curl => $use_curl};
     }
   }
   close(ULIST);
