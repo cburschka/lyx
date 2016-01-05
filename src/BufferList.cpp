@@ -267,6 +267,28 @@ bool BufferList::exists(FileName const & fname) const
 }
 
 
+bool BufferList::isOthersChild(Buffer * parent, Buffer * child)
+{
+	LASSERT(parent, return false);
+	LASSERT(child, return false);
+	LASSERT(parent->isChild(child), return false);
+	
+	// Does child document have a different parent?
+	Buffer const * parent_ = child->parent();
+	if (parent_ && parent_ != parent)
+		return true;
+	
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it) {
+		Buffer * buf = *it;
+		if (buf != parent && buf->isChild(child))
+			return true;
+	}
+	return false;
+}
+
+
 namespace {
 
 struct equivalent_to : public binary_function<FileName, FileName, bool>
@@ -361,31 +383,6 @@ int BufferList::bufferNum(FileName const & fname) const
 	if (cit == buffers.end())
 		return 0;
 	return int(cit - buffers.begin());
-}
-
-
-bool BufferList::releaseChild(Buffer * parent, Buffer * child)
-{
-	LASSERT(parent, return false);
-	LASSERT(child, return false);
-	LASSERT(parent->isChild(child), return false);
-
-	// Child document has a different parent, don't close it.
-	Buffer const * parent_ = child->parent();
-	if (parent_ && parent_ != parent)
-		return false;
-
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
-		Buffer * buf = *it;
-		if (buf != parent && buf->isChild(child)) {
-			child->setParent(0);
-			return false;
-		}
-	}
-	release(child);
-	return true;
 }
 
 

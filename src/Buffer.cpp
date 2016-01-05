@@ -517,8 +517,12 @@ Buffer::~Buffer()
 		Impl::BufferPositionMap::iterator end = d->children_positions.end();
 		for (; it != end; ++it) {
 			Buffer * child = const_cast<Buffer *>(it->first);
-			if (theBufferList().isLoaded(child))
-				theBufferList().releaseChild(this, child);
+			if (theBufferList().isLoaded(child)) { 
+			 if (theBufferList().isOthersChild(this, child))
+				 child->setParent(0);
+			 else
+				theBufferList().release(child);
+			}
 		}
 
 		if (!isClean()) {
