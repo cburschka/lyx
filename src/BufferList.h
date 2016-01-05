@@ -55,12 +55,13 @@ public:
 	/// \return 0 if the Buffer creation is not possible for whatever reason.
 	Buffer * newInternalBuffer(std::string const & s);
 
+	/// Is child a child of some Buffer other than parent?
+	/// NOTE: child must be a child of parent, and both must be non-null.
+	/// Otherwise we assert.
+	bool isOthersChild(Buffer * parent, Buffer * child);
+
 	/// delete a buffer
 	void release(Buffer * b);
-
-	/// Release \p child if it really is a child and is not used elsewhere.
-	/// \return true is the file was closed.
-	bool releaseChild(Buffer * parent, Buffer * child);
 
 	/// Close all open buffers.
 	void closeAll();
