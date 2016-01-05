@@ -2849,23 +2849,31 @@ bool GuiView::closeBuffer(Buffer & buf)
 		ListOfBuffers::const_iterator it = clist.begin();
 		ListOfBuffers::const_iterator const bend = clist.end();
 		for (; it != bend; ++it) {
-			// If a child is dirty, do not close
-			// without user intervention
-			//FIXME: should we look in other tabworkareas?
 			Buffer * child_buf = *it;
+			if (theBufferList().isOthersChild(&buf, child_buf)) {
+				child_buf->setParent(0);
+				continue;
+			}
+
+			// FIXME: should we look in other tabworkareas?
+			// ANSWER: I don't think so. I've tested, and if the child is
+			// open in some other window, it closes without a problem.
 			GuiWorkArea * child_wa = workArea(*child_buf);
 			if (child_wa) {
-				if (!closeWorkArea(child_wa, true)) {
-					success = false;
+				success = closeWorkArea(child_wa, true);
+				if (!success)
 					break;
-				}
-			} else
-				theBufferList().releaseChild(&buf, child_buf);
+			} else {
+				// In this case the child buffer is open but hidden.
+				// It therefore should not (MUST NOT) be dirty!
+				LATTEST(child_buf->isClean());
+				theBufferList().release(child_buf);
+			}
 		}
 	}
 	if (success) {
 		// goto bookmark to update bookmark pit.
-		//FIXME: we should update only the bookmarks related to this buffer!
+		// FIXME: we should update only the bookmarks related to this buffer!
 		LYXERR(Debug::DEBUG, "GuiView::closeBuffer()");
 		for (size_t i = 0; i < theSession().bookmarks().size(); ++i)
 			guiApp->gotoBookmark(i+1, false, false);
