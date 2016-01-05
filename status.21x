@@ -56,6 +56,8 @@ What's new
 
 - Improved example file for the moderncv document class.
 
+- Updated French translation of Linguistics manual.
+
 
 * BUILD/INSTALLATION
 
@@ -84,6 +86,9 @@ What's new
 - Fix crash when unfolding/copying macros containing other macros (bug 9490).
 
 - Fix crash when inserting a line in multline math environment (bug 9902). 
+
+- Fix crash when closing buffer one of whose children is also a child of
+  other master (bug 9907).
 
 - Fix automatic insertion of longtable captions (bug 9692).
 
