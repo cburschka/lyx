@@ -118,7 +118,9 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-14/09/2008
+
+\lang english
+18/02/2013
 \end_layout
 
 \begin_layout Abstract
@@ -197,13 +199,25 @@ key "covington"
 \end_inset
 
 : ceci est le paquetage de base utilisé pour les exemples numérotés et les
- gloses;
+ gloses:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
-enumitem.sty
+numitem.sty
 \emph default
 
 \begin_inset space ~
@@ -226,9 +240,21 @@ Sous-exemples
 
 .
  Il est plus généralement utile pour modifier l'apparence des listes (comme
- Énumération, ListePuces, Description);
+ Énumération, ListePuces, Description):
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -251,9 +277,21 @@ signification
 \emph default
 .
  Le paquetage fournit des marques de citation contextuelles, en fonction
- du langage utilisé;
+ du langage utilisé:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -272,9 +310,21 @@ key "float"
 
 : nécessaire pour les tableaux flottants issus de la théorie de l'optimalité
  et la liste des flottants; ce paquetage doit faire partie de n'importe
- quelle distribution LaTeX.
+ quelle distribution LaTeX:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+installé sur votre système? 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Exemples numérotés
 \end_layout
@@ -1317,153 +1367,245 @@ lingmeaning
 \end_layout
 
 \begin_layout Section
-Symboles phonétiques (API)
+7 Symboles phonétiques (API)
 \end_layout
 
 \begin_layout Standard
 Vous n'avez pas besoin du module linguistique pour insérer des symboles
  phonétiques, ce qui est une fonctionnalité de base de LyX.
- Cependant, nous décrirons (brièvement) celles-ci dans la mesure où elle
- est d'un usage fréquent chez les linguistes.
+ Cependant, nous décrirons (brièvement) cette fonctionnalité dans la mesure
+ où elle est d'un usage fréquent chez les linguistes.
 \end_layout
 
 \begin_layout Standard
-Le paquetage 
-\emph on
-tipa
-\emph default
+Le paquetage tipa [8] est pré-requis pour utiliser le support phonétique
+ de LyX (conforme aux règles de l'Association Phonétique Internationale,
+ API) si vous utilisez LaTeX ou PDFLaTeX
+\begin_inset Foot
+status collapsed
 
-\begin_inset space ~
+\begin_layout Plain Layout
+Si vous utilisez XeTeX ou LuaTeX (i. e., si vous avez sélectionné « Utiliser
+ les polices non-TeX » dans Document->Paramètres…->Polices), aucun paquetage
+ supplémentaire n'est requis.
+\end_layout
+
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tipa"
-
-\end_inset
-
- est pré-requis pour utiliser le support phonétiques de LyX (conforme aux
- règles de l'Association Phonétique Internationale, API).
+ .
  En outre, si vous voulez afficher un aperçu des caractères sur le vif,
  il faut que la paquetage 
 \emph on
 preview-latex
 \emph default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "preview"
-
-\end_inset
-
- soit installé et que 
-\begin_inset Quotes fld
-\end_inset
-
-Désélectionné
-\begin_inset Quotes frd
-\end_inset
-
- ne soit pas choisi dans le menu ad hoc de 
-\family sans
-Outils\SpecialChar \menuseparator
-Préférences\SpecialChar \menuseparator
-Apparence\SpecialChar \menuseparator
-Affichage écran.
+ [7] soit installé.
 \end_layout
 
 \begin_layout Standard
-Les symboles phonétiques peuvent être saisis via 
+Les symboles phonétiques peuvent être préférentiellement saisis via 
 \family sans
-Insertion\SpecialChar \menuseparator
-Caractère spécial\SpecialChar \menuseparator
-Symboles phonétiques.
- 
+Insertion
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
+Caractère spécial
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
+Symboles phonétiques
 \family default
-Une mini-fenêtre s'ouvre, dans laquelle vous pouvez saisir les symboles
- en utilisant les notations abrégées décrites dans le manuel du paquetage
- 
-\emph on
-tipa
-\emph default
 .
- Exemple: 
-\begin_inset Formula $\text{\textipa{[Ekspl@"neIS@n]}}$
+ Une boîte de saisie s'ouvre (un « insert » en langage LyX), dans laquelle
+ vous pouvez saisir les symboles.
+ Notez que celle boîte peut être utilisée à la fois pour insérer de petits
+ éléments (en ligne) ou plusieurs paragraphes en notation phonétique.
+ Lorsque le curseur est dans la boîte, une barre d'outils apparaît, qui
+ propose l'ensemble des symboles phonétiques (triés par catégories API)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Actuellement, il manque un symbole: la battue labiodentale (ajoutée à l'API
+ en 2005) .
+ Ce symbole n'est pas connu du paquetage tipa et ne peut donc être connu
+ de LyX.
+\end_layout
+
 \end_inset
 
- (notation abrégée
+.
+ Chacun des panneaux de la barre d’outils peut être inhibé en cliquant sur
+ la ligne pointillée qui figure au sommet.
+ De cette façon, vous pouvez insérer de manière ergonomique la plupart des
+ symboles: [laik ðɪs]
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notez que si vous souhaitez insérer des diacritiques, ils doivent être saisis
+ 
 \emph on
- tipa
+après
 \emph default
-: 
-\family typewriter
-[Ekspl@"neIS@n
+ le caractère de base.
+ C'est-à-dire, pour
+\lang english
+
+\begin_inset IPA
+
+\begin_layout Standard
+
+\lang english
+[d̥]
+\end_layout
+
+\end_inset
+
+
+\lang french
+ vous devez saisir 
+\family sans
+<d>
 \family default
-]).
+ et ensuite le sous-diacritique en anneau 
+\family sans
+<dévoisement>
+\family default
+ immédiatement après le 
+\family sans
+<d>
+\family default
+.
+ S'il vous faut un diacritique isolé, vous pouvez l’obtenir en saisissant
+ une espace suivie du diacritique, comme ici:
+\lang english
+ 
+\begin_inset IPA
+
+\begin_layout Standard
+
+\lang english
+ ̼
+\end_layout
+
+\end_inset
+
+
+\lang french
+ (
+\family sans
+= <espace>+<Articulation linguo-labiale de la barre d'outils API>
+\family default
+).
+ 
+\end_layout
+
+\end_inset
+
+ .
  Si 
 \emph on
 preview-latex
 \emph default
  est installé et si l'aperçu sur le vif est actif, vous obtiendrez un aperçu
- satisfaisant dès que vous quitterez la fenêtre.
+ satisfaisant dès que vous quitterez la boîte.
+ A la place de la barre d'outils, vous pouvez aussi insérer les symboles
+ directement eu utilisant la notation raccourcie décrite dans le manuel
+ 
+\emph on
+tipa
+\emph default
+: voici 
+\lang english
+
+\begin_inset IPA
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+[@n Ig"zA:mpl]
+\end_layout
+
+\end_inset
+
+
+\lang french
+ (notation raccourcie 
+\emph on
+tipa
+\emph default
+: 
+\family sans
+[@n Ig"zA:mpl])
+\family default
+.
+ De plus, vous pouvez saisir des symbole via 
+\family sans
+Insertion
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
+Caractère spécial
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
+Symboles…
+\family default
+ (ce qui être utile pour des symboles qui ne figurent pas dans la barre
+ d'outils), et vous pouvez même simplement coller du texte encodé en Unicode
+ (par exemple en provenance d'autres applications) dans la boîte.
+ Le résultat devrait être le même quelle que soit le technique employée.
 \end_layout
 
 \begin_layout Standard
-De plus, la plupart des glyphes API peuvent être saisis (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-via 
-\family sans
-Insertion\SpecialChar \menuseparator
-Caractère spécial\SpecialChar \menuseparator
-Symboles\SpecialChar \ldots{}
-
-\family default
-), voire même collés directement dans la fenêtre LyX [ɛkspləˈneɪʃən].
+Vous pouvez enfin saisir les glyphes API en dehors de la boîte spécifique
+ décrite dans le paragraphe précédent, directement dans la fenêtre LyX:
+ 
+\lang english
+[əz ʃəʊn hɪə]
+\lang french
+.
  Dans le résultat imprimé, ils seront automatiquement convertis dans la
  macro-instruction 
 \emph on
-tipa 
+tipa
 \emph default
-(sinon, merci de me prévenir).
- Notez cependant que la première méthode produit des résultats typographiques
- de meilleure qualité pour deux raisons:
-\end_layout
-
-\begin_layout Enumerate
-la saisie directe peut conduire à un mélange de polices (dans l'exemple
- vu plus haut, les caractères latins appartiennent à la police de base,
- les glyphes API à la police API, alors que 
+ (sinon, merci de me prévenir).
+ Notez cependant que cette méthode produit des résultats typographiques
+ de moins bonne qualité, car il en résultera un mélange de polices (les
+ caractères latins appartiennent à la police de base, les glyphes API à
+ la police API), alors que 
 \family sans
-Insertion\SpecialChar \menuseparator
-Caractère spécial\SpecialChar \menuseparator
+Insertion
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
+Caractère spécial
+\lang english
+\SpecialChar \menuseparator
+
+\lang french
 Symboles phonétiques
 \family default
- utilise la police API pour tous les caractères);
-\end_layout
-
-\begin_layout Enumerate
-le contrôle de l'espacement des lettres (
-\emph on
-kerning
-\emph default
-) n'est pas conservé.
-\end_layout
-
-\begin_layout Standard
-Par conséquent, la première méthode est recommandée, sauf si vous ne saisissez
- que des caractères API, et il vaut la peine d'apprendre la notation abrégée
- API (qui est assez intuitive).
+ utilise la police API pour tous les caractères.
+ Par conséquent, cette dernière méthode est recommandée, sauf si vous ne
+ saisissez que des caractères API isolés.
 \end_layout
 
 \begin_layout Section
