@@ -151,7 +151,9 @@ dnl the C++11 standard.
 AC_DEFUN([LYX_CXX_CXX11],
 [AC_CACHE_CHECK([whether the compiler implements C++11],
                [lyx_cv_cxx_cxx11],
- [save_CXXFLAGS=$CXXFLAGS
+ [save_CPPFLAGS=$CPPFLAGS
+  CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+  save_CXXFLAGS=$CXXFLAGS
   CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
   AC_LANG_PUSH(C++)
   AC_TRY_COMPILE([], [
@@ -161,8 +163,44 @@ AC_DEFUN([LYX_CXX_CXX11],
   ],
   [lyx_cv_cxx_cxx11=no], [lyx_cv_cxx_cxx11=yes ; lyx_flags="$lyx_flags c++11"])
  AC_LANG_POP(C++)
- CXXFLAGS=$save_CXXFLAGS])
-lyx_use_cxx11=$lyx_cv_cxx_cxx11
+ CXXFLAGS=$save_CXXFLAGS
+ CPPFLAGS=$save_CPPFLAGS])
+ lyx_use_cxx11=$lyx_cv_cxx_cxx11
+])
+
+dnl decide whether we want to use std::regex and set the
+dnl LYX_USE_STD_REGEX accordingly.
+AC_DEFUN([LYX_CXX_USE_REGEX],
+[lyx_std_regex=no
+ if test $lyx_use_cxx11 = yes; then
+   save_CPPFLAGS=$CPPFLAGS
+   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+   save_CXXFLAGS=$CXXFLAGS
+   CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
+   AC_LANG_PUSH(C++)
+   AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
+   AC_LANG_POP(C++)
+   CXXFLAGS=$save_CXXFLAGS
+   CPPFLAGS=$save_CPPFLAGS
+   if test x$GXX = xyes && test $lyx_std_regex = yes ; then
+     AC_MSG_CHECKING([for correct regex implementation])
+     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
+       dnl <regex> in gcc is unusable in versions less than 4.9.0
+       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
+       case $gxx_version in
+         4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) lyx_std_regex=no ;;
+         *) ;;
+       esac
+     fi
+   fi
+   AC_MSG_RESULT([$lyx_std_regex])
+ fi
+
+ if test $lyx_std_regex = yes ; then
+  lyx_flags="$lyx_flags std-regex"
+  AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
+ fi
+ AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
 ])
 
 
@@ -270,7 +308,6 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 # set the compiler options correctly.
-lyx_std_regex=no
 if test x$GXX = xyes; then
   dnl clang++ pretends to be g++ 4.2.1; this is not useful
   if test x$CLANG = xno; then
@@ -325,46 +362,29 @@ if test x$GXX = xyes; then
       4.3*|4.4*|4.5*|4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
-        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++0x";;
+        AM_CPPFLAGS="$AM_CPPFLAGS -std=c++0x";;
       clang)
         dnl presumably all clang versions support c++11.
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
-        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11 -Wno-deprecated-register";;
+        AM_CPPFLAGS="$AM_CPPFLAGS -std=c++11"
+        AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
       *)
         AS_CASE([$host], [*cygwin*],
-                [AM_CXXFLAGS="$AM_CXXFLAGS -std=gnu++11"],
-                [AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11"]);;
+                [AM_CPPFLAGS="$AM_CPPFLAGS -std=gnu++11"],
+                [AM_CPPFLAGS="$AM_CPPFLAGS -std=c++11"]);;
     esac
   fi
+fi
 
-  LYX_CXX_CXX11
-  if test $lyx_use_cxx11 = yes ; then
+LYX_CXX_CXX11
+if test $lyx_use_cxx11 = yes; then
+  if test x$GXX = xyes; then
     dnl We still use auto_ptr, which is obsoleted. Shut off the warnings.
     AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-declarations"
-
-    AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
-    if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
-      dnl <regex> in gcc is unusable in versions less than 4.9.0
-      dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-      case $gxx_version in
-        4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) ;;
-        *) lyx_std_regex=yes ;;
-      esac
-    else
-      lyx_std_regex=yes
-    fi
   fi
-else
-  dnl This is not gcc, not sure what setup we can do
-  AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
 fi
-
-if test $lyx_std_regex = yes ; then
-  lyx_flags="$lyx_flags stdregex"
-  AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
-fi
-AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
-])dnl
+LYX_CXX_USE_REGEX
+])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
