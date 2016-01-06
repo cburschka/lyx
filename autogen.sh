@@ -20,7 +20,7 @@ case $automake_version in
 	;;
     *)
 	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.8 to 1.14."
+	echo "LyX only supports automake 1.8 to 1.15."
 	exit 1
 	;;
 esac
