@@ -78,11 +78,11 @@ thesaurus_deployment="yes"
 qt4_deployment="yes"
 
 # auto detect Xcode location
-if [ -d "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs" ]; then
-	DEVELOPER_SDKS="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
-	XCODE_DEVELOPER="/Applications/Xcode.app/Contents/Developer"
+DEVELOPER_SDKS=$(dirname $(xcrun --show-sdk-path))
+if [ -n "${DEVELOPER_SDKS}" ]; then
+	XCODE_DEVELOPER=$(dirname $(dirname $(xcrun --show-sdk-platform-path)))
 	MACOSX_DEPLOYMENT_TARGET="10.7" # Lion support is default
-	SDKROOT="${DEVELOPER_SDKS}/MacOSX10.7.sdk" # Lion build is default
+	SDKROOT="${DEVELOPER_SDKS}/MacOSX$(xcrun --show-sdk-version).sdk" # use default SDK
 elif [ -d "/Developer/SDKs" ]; then
 	DEVELOPER_SDKS="/Developer/SDKs"
 	XCODE_DEVELOPER="/Developer"
@@ -168,11 +168,12 @@ while [ $# -gt 0 ]; do
 			export OBJC=gcc-4.0
 			export CXX=g++-4.0
 			;;
-		10.5|10.6|10.7|10.8)
-			SDKROOT="${DEVELOPER_SDKS}/MacOSX${SDKROOT}.sdk"
-			;;
 		*)
-			usage
+			SDKROOT="${DEVELOPER_SDKS}/MacOSX${SDKROOT}.sdk"
+			if [ ! -d "${SDKROOT}" ]; then
+				echo Invalid SDKROOT given: "${SDKROOT}"
+				usage --help=short
+			fi
 			;;
 		esac
 		shift
