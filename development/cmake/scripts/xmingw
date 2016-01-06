@@ -2,7 +2,7 @@
 #!/bin/sh
 #
 # Installed MinGW needed.
-# Ubuntu : sudo apt-get install gcc-mingw-w64-i686
+# Ubuntu : sudo apt-get install g++-mingw-w64-i686
 
 
 
@@ -16,8 +16,14 @@ fi
 lyxsrcdir=$1
 builddir=$PWD
 
+# ---------------------------------------------------------
+# set 'versionname' to overwrite generated one based on 'ver'
+#
+ver=2.2
 date=`date --utc '+%Y.%m.%d-%H.%M'`
-versionname=LyX$ver-$date
+if [ -z $versionname ]; then
+    versionname=LyX$ver-$date
+fi
 
 
 echo ---------------------------------------------------------
@@ -89,10 +95,11 @@ checkExitCode
 # build LyX
 #
 
-#mergefile=-DLYX_MERGE_FILE
+mergefile=-DLYX_MERGE_FILES=1
 #pch=-DLYX_PCH=1
 
-$cmakebin $lyxsrcdir \
+cmake $lyxsrcdir \
+	-DCMAKE_VERBOSE_MAKEFILE=1 \
     -DLYX_CPACK=1 \
     -DLYX_PROGRAM_SUFFIX="" \
     -DLYX_CONSOLE=FORCE \
@@ -107,10 +114,18 @@ $cmakebin $lyxsrcdir \
 checkExitCode
 
 
-#processors=2
-make -j $processors
-checkExitCode
+processors=3
+lyxmake() {
+	make -j$processors $1
+	checkExitCode
+}
 
+
+lyxmake translations
+lyxmake doc
+lyxmake LyX 
+lyxmake tex2lyx
+lyxmake all
 
 
 
