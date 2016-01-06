@@ -114,16 +114,12 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 #   -> adapt template and style (GM)
 export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 
-# \MakeTextLowerCase and other commands fail with non-default export formats:
-# -> expected or due to some construct in the document?
-export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
-
 # requires knitr, requires rjournal.sty (not on CTAN)
 # incompatible with fontspec?
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 
 # Default output format is XeTeX
-# -> only system fonts?
+# -> Only system fonts?
 #    Does (dvi|pdf3_texF|dvi3_texF) produce sensible results?
 export/templates/ctex_(pdf[23]?|pdf4_texF)
 
@@ -230,6 +226,11 @@ export/examples/H-P-statements_pdf[45]_systemF
 # requires jss.cls (not on CTAN)
 # "All documents need to be processed by pdflatex" [jss.pdf]
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
+
+# tufte (partially) incompatible with latex and xelatex:
+# \MakeTextUppercase requires microtype.
+# http://tex.stackexchange.com/questions/202142/problems-compiling-tufte-title-page-in-xelatex
+export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 
 
 Sublabel: multilingual
