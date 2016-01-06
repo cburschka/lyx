@@ -30,6 +30,10 @@
 #include <string>
 #include <vector>
 
+#ifdef ERROR
+#undef ERROR
+#endif
+
 namespace lyx {
 
 namespace support { class FileName; }
