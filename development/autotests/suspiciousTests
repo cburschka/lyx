@@ -7,24 +7,13 @@
 # they are reported as failing if the export works without error.
 
 
-export/templates/RJournal_(dvi3|pdf[45])_systemF
-# Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
-# pdf4_systemF but not others. TODO Investigate if others can be fixed?
-export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
-
 # These started failing after we implemented tests for formats
 # that are in the complement set to the default format (7ecbb068).
 # TODO it might be worth it to take a look at each individually and
 # see whether they are supposed to fail or if there is something LyX
 # can do to add support for exporting them.
-export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
 export/examples/listerrors_(pdf[245]).*
-# \MakeTextLowerCase and other commands fail with non-default export formats:
-export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
-export/examples/fr/exemple-powerdot_pdf[25].*
 export/examples/ko/splash_(dvi||pdf[23]?)
-export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
-export/templates/ctex_(pdf[23]?|pdf4_texF)
 
 # The following exports worked with TeX Live 2013, but not in 2014.
 # For a workaround, see:
@@ -116,6 +105,28 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 # TODO: set the system fonts in the lyx source
 #export/examples/he/splash_pdf5_systemF
 
+# Changes in TeX Live 2014 (see git blame for info) fixed
+# IEEEtran-CompSoc_pdf4_systemF but not others.
+# TODO Investigate if others can be fixed?
+# * IEEEtran-Journal_pdf4_systemF compiles here (GM)
+# * All IEEEtran-TransMag.* exports fail here:
+#   missing commands \IEEEtitleabstractindextext, \IEEEdisplaynontitleabstractindextext
+#   -> adapt template and style (GM)
+export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
+
+# \MakeTextLowerCase and other commands fail with non-default export formats:
+# -> expected or due to some construct in the document?
+export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
+
+# requires knitr, requires rjournal.sty (not on CTAN)
+# incompatible with fontspec?
+export/templates/RJournal_(dvi3|pdf[45])_systemF
+
+# Default output format is XeTeX
+# -> only system fonts?
+#    Does (dvi|pdf3_texF|dvi3_texF) produce sensible results?
+export/templates/ctex_(pdf[23]?|pdf4_texF)
+
 
 Sublabel: lyxbugs
 #
@@ -141,8 +152,8 @@ export/doc/attic/id_UserGuide_dvi3.*
 export/doc/attic/id_UserGuide_pdf5.*
 export/(doc|examples)/id/.*_dvi3.*
 export/(doc|examples)/id/.*_pdf5_texF
-export/.*/hu/.*(dvi3)_.*
-export/.*/hu/.*(pdf5)_texF
+export/.*/hu/.*dvi3_.*
+export/.*/hu/.*pdf5_texF
 
 # documents requiring pre-processing fail with Japanese #8823
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
@@ -197,21 +208,28 @@ export/examples/ru/splash_(dvi3|pdf[45])_texF
 #  LaTeX: define Cyrillic LICRs for EU1 and EU2 (similar to greek-euenc.def)
 export/doc/uk/Intro_dvi3_systemF
 
-# LuaTeX fails for an \textbackslash{}mbox in an index, e.g. $a_{\mbox{a}}$
+# LuaTeX fails for an \mbox in an index, e.g. $a_{\mbox{a}}$.
 # This construct appears in the included bib file biblioExample.bib in
 # the entry Eisenstein2005. Error message is
 #   Missing character: There is no (U+6035) in font rm-lmr12!
 # (with system fonts: 602D and 6039)
 export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
 
-# document uses Postscript specials
+# Document uses Postscript specials
+# Does not compile with pdflatex (see note in the document source).
 export/examples/instant_preview_(dvi3|pdf4)_systemF
 export/examples/instant_preview_pdf[25].*
+export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
+export/examples/fr/exemple-powerdot_pdf[25].*
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
 export/examples/H-P-statements_pdf[45]_systemF
+
+# requires jss.cls (not on CTAN)
+# "All documents need to be processed by pdflatex" [jss.pdf]
+export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 
 
 Sublabel: multilingual
