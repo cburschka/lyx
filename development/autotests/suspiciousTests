@@ -23,8 +23,6 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 
 export/templates/IUCr-article_pdf4_systemF
 
-export/examples/linguistics_(dvi3|pdf[45])_systemF
-
 export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 
 # Following mathmacros tests fail
@@ -68,8 +66,6 @@ export/examples/es/ejemplo_con_lyx_dvi3_systemF
 # Galician shares some code with Babel-Spanish (including the bug).
 export/doc/gl/Tutorial_dvi3_systemF
 export/examples/gl/exemplo_lyxificado_dvi3_systemF
-# document language is Spanish: changing to Basque solves the problem
-export/examples/eu/adibide_lyx-atua_dvi3_systemF
 
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
@@ -130,14 +126,9 @@ Sublabel: lyxbugs
 
 # Language nesting and polyglossia #9633
 export/doc/(nb|sk)/Intro_pdf[45]_systemF
-# missing characters + language nesting (may disappear after completed translation)
+# language nesting (may disappear after completed translation)
+export/examples/fr/linguistics_.*_systemF
 export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
-#
-# Language nesting, document is OK, fails because of a bug in LyX
-# document is still worng, did only fail because of latin language
-# (problem in my TeX installation)
-# export/export/languagenesting1_(pdf4_systemF|pdf5_systemF)
-
 
 # use LuaTeX-compatible language names #9910
 # Wrong language name for LuaTeX

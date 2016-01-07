@@ -2,7 +2,7 @@
 \lyxformat 503
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/examples/de/
 \textclass article
 \begin_preamble
 %% Kommentieren Sie das Folgende aus, um Tableaux-Überschriften zu erzeugen:
@@ -18,8 +18,8 @@ linguistics
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "lmodern" "default"
-\font_sans "default" "default"
+\font_roman "lmodern" "FreeSerif"
+\font_sans "default" "FreeSerif"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
@@ -79,9 +79,9 @@ linguistics
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
