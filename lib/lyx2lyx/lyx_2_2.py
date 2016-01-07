@@ -31,7 +31,7 @@ import sys, os
 #  del_token, check_token, get_option_value
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
-  lyx2verbatim, length_in_bp
+  lyx2verbatim, length_in_bp, convert_info_insets
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -2305,6 +2305,18 @@ def convert_ACM_siggraph(document):
     document.body[1:1] = note
 
 
+def convert_info_tabular_feature(document):
+    def f(arg):
+        return arg.replace("inset-modify tabular", "tabular-feature")
+    convert_info_insets(document, "shortcut(s)?|icon", f)
+
+
+def revert_info_tabular_feature(document):
+    def f(arg):
+        return arg.replace("tabular-feature", "inset-modify tabular")
+    convert_info_insets(document, "shortcut(s)?|icon", f)
+
+
 ##
 # Conversion hub
 #
@@ -2344,10 +2356,12 @@ convert = [
            [502, []],
            [503, []],
            [504, [convert_save_props]],
-           [505, [convert_ACM_siggraph]]
+           [505, [convert_ACM_siggraph]],
+           [506, [convert_info_tabular_feature]]
           ]
 
 revert =  [
+           [505, [revert_info_tabular_feature]],
            [504, [revert_save_props]],
            [503, [revert_save_props]],
            [502, [revert_verbatim_star]],

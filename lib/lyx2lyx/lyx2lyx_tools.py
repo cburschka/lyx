@@ -69,6 +69,11 @@ latex_length(slen):
     (bool, length), where the bool tells us if it was a percentage, and
     the length is the LaTeX representation.
 
+convert_info_insets(document, type, func):
+    Applies func to the argument of all info insets matching certain types
+    type : the type to match. This can be a regular expression.
+    func : function from string to string to apply to the "arg" field of
+           the info insets.
 '''
 
 import re
@@ -503,3 +508,21 @@ def str2bool(s):
   "'true' goes to True, case-insensitively, and we strip whitespace."
   s = s.strip().lower()
   return s == "true"
+
+
+def convert_info_insets(document, type, func):
+    "Convert info insets matching type using func."
+    i = 0
+    type_re = re.compile(r'^type\s+"(%s)"$' % type)
+    arg_re = re.compile(r'^arg\s+"(.*)"$')
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        t = type_re.match(document.body[i + 1])
+        if t:
+            arg = arg_re.match(document.body[i + 2])
+            if arg:
+                new_arg = func(arg.group(1))
+                document.body[i + 2] = 'arg   "%s"' % new_arg
+        i += 3
