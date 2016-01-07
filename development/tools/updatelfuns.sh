@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$BASH_VERSION" ]; then
+	# http://article.gmane.org/gmane.editors.lyx.devel/159697
+	echo "You must use bash to run this script";
+	exit 1;
+fi
+
 function do_convert {
 	for i in *; do 
 		if [ ! -f $i ]; then continue; fi
