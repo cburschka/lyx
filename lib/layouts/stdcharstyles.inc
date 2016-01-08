@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 58
+Format 59
 
 # Error fallback:
 InsetLayout Flex
