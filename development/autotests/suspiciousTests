@@ -7,38 +7,12 @@
 # they are reported as failing if the export works without error.
 
 
-# These started failing after we implemented tests for formats
-# that are in the complement set to the default format (7ecbb068).
-# TODO it might be worth it to take a look at each individually and
-# see whether they are supposed to fail or if there is something LyX
-# can do to add support for exporting them.
-export/examples/listerrors_(pdf[245]).*
-export/examples/ko/splash_(dvi||pdf[23]?)
-
-# The following exports worked with TeX Live 2013, but not in 2014.
-# For a workaround, see:
-# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html
-export/examples/aa_sample_(dvi3|pdf4|pdf5)_(texF|systemF)
-export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
-
-export/templates/IUCr-article_pdf4_systemF
-
-export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
-
-# Following mathmacros tests fail
-export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
-check_load/mathmacros/testcases_speed
-
 Sublabel: todo
 #
 # LyX bugs and problems with the sample documents that require attention.
 # * minor issues to explore and properly sort,
 # * easyfix issues,
 # * LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
-
-# LyX index sorting fails with ASCII (and hence also with XeTeX).
-# (! >20 popup windows!)
-export/doc/(es|fr)/UserGuide_pdf4_texF
 
 # the ukrainean splash has preamble code loading russian babel
 # in the preamble (Why?)
@@ -98,10 +72,46 @@ export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 # incompatible with fontspec?
 export/templates/RJournal_(dvi3|pdf[45])_systemF
 
-# Default output format is XeTeX
-# -> Only system fonts?
+# Requires ctex (Chinese).
+# Default output format is XeTeX. -> Only system fonts?
 #    Does (dvi|pdf3_texF|dvi3_texF) produce sensible results?
 export/templates/ctex_(pdf[23]?|pdf4_texF)
+
+# Requires aa.cls (not on CTAN).
+# Fails with XeTeX/LuaTeX
+# Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
+# Is there a new version fixing the problem?
+# Move to unreliable:nonstandard?
+export/examples/aa_sample_(dvi3|pdf[45])_.*
+export/templates/aa_(dvi3|pdf[45])_.*
+
+# Requires iucr.cls (not on CTAN)
+# Is there a new version fixing the problem?
+# Does LuaTeX produce sensible results?
+export/templates/IUCr-article_pdf4_systemF
+
+# Example for lib/scripts/listerrors
+# Requires noweb. Seems to be restricted to plain "latex".
+# Find out why and whether the script could be improved.
+export/examples/listerrors_(pdf[245]).*
+
+# "Dangerous" setting "language default (no inpuentc)
+# non-ASCII characters fail with LuaTeX
+# (work "per accident" with other routes)
+# set to "language default" to use inputenc/luainputenc!
+export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
+
+# Requires CJK.
+# Why does it fail with pdflatex and dvipdfm? CJK restriction? Workarounds?
+# (Also fails with Xe/LuaTeX and TeX-fonts -- as expected, see ignoredTests)
+export/examples/ko/splash_(dvi||pdf[23]?)
+
+# Following mathmacros tests fail
+# Why? -> sort and comment
+export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
+check_load/mathmacros/testcases_speed
+
+
 
 
 Sublabel: lyxbugs
@@ -151,9 +161,10 @@ Sublabel: texissues
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
 # chemgreek incompatible with LuaTeX and TeX fonts
-export/examples/achemso_(dvi3|pdf5)_texF
+# fixed in TeXLive 2016-01-07 (add to unreliable?)
+#export/examples/achemso_(dvi3|pdf5)_texF
 # Math depends on the mhchem package which loads chemgreek
-export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
+#export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
 
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
