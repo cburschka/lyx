@@ -27,7 +27,7 @@ logicalmkup
 \font_tt_scale 100 100
 \graphics default
 \default_output_format pdf2
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \paperfontsize 12
@@ -332,6 +332,12 @@ Implement and test the new feature, including the reading and writing of
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Describe_format"
+
+\end_inset
+
 Describe the new format in 
 \begin_inset Flex Code
 status collapsed
@@ -385,6 +391,12 @@ lib/lyx2lyx/LyX.py
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Add-an-entry"
+
+\end_inset
+
 Add an entry to both format lists (for conversion and reversion) in
 \begin_inset Newline newline
 \end_inset
@@ -684,6 +696,96 @@ Updating the file format number of bind/ui files
 \end_layout
 
 \begin_layout Standard
+A change to the functionality of existing LFUNs can require a conversion
+ of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.bind
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.ui
+\end_layout
+
+\end_inset
+
+ files, and therefore an increment of the LFUN format, as well as a conversion
+ of Info insets in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.lyx
+\end_layout
+
+\end_inset
+
+ files for manuals.
+ The latter cannot be done automatically and requires also a \SpecialChar LyX
+ format increase
+ (think of e.g.
+ someone who might have made a set of \SpecialChar LyX
+ teaching manuals for use in their
+ own group)
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/ticket/9794
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Increment the LFUN file format number in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/LyXAction.h
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Implement the LFUN conversion in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lib/scripts/prefs2prefs_lfuns.py
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
 See step 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -719,6 +821,82 @@ bash development/tools/updatelfuns.sh
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Enumerate
+Update Info insets in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+.lyx
+\end_layout
+
+\end_inset
+
+ files.
+ To do so, increment the \SpecialChar LyX
+ format and proceed as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:update_lyx_files"
+
+\end_inset
+
+, steps 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Describe_format"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:updatefiles"
+
+\end_inset
+
+.
+ In the lyx2lyx implementation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Add-an-entry"
+
+\end_inset
+
+th step), implement a conversion similar to the one in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+prefs2prefs_lfuns.py
+\end_layout
+
+\end_inset
+
+ above, as well as a corresponding reversion; for this one can use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+convert_info_insets
+\end_layout
+
+\end_inset
+
+ from 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lib/lyx2lyx/lyx2lyx_tools.py
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
