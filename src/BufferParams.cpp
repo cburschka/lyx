@@ -1399,11 +1399,8 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	}
 
 	// some languages are only available via polyglossia
-	if ((features.runparams().flavor == OutputParams::XETEX
-	     || features.runparams().flavor == OutputParams::LUATEX)
-	    && (features.hasPolyglossiaExclusiveLanguages()
-		|| useNonTeXFonts))
-		features.require("polyglossia");
+	if (features.hasPolyglossiaExclusiveLanguages())
+	   features.require("polyglossia");
 
 	if (useNonTeXFonts && fontsMath() != "auto")
 		features.require("unicode-math");

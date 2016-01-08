@@ -48,8 +48,8 @@ export/doc/(es|fr)/UserGuide_pdf4_texF
 export/examples/uk/splash_(dvi3|pdf[45])_texF
 
 # missing commands (polyglossia?)
-# Explore! (works with dvi3 or language_package==babel)
-export/doc/fr/UserGuide_pdf[45]_systemF
+# Explore! (works with language_package==babel)
+export/doc/fr/UserGuide_.*_systemF
 
 # Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts:
 #
@@ -58,19 +58,11 @@ export/doc/fr/UserGuide_pdf[45]_systemF
 # Workaround: add a line to the user-preamble
 #   \@ifpackageloaded{fontspec}{\unaccentedoperators}{}
 export/doc/es/UserGuide_.*_systemF
-#
-# Export with DVI (luatex) uses Babel instead of Polyglossia.
-# Don't use the above workaround here - these documents don't require Babel
-# problem should be solved by fixing auto-selection of language package.
-export/examples/es/ejemplo_con_lyx_dvi3_systemF
-# Galician shares some code with Babel-Spanish (including the bug).
-export/doc/gl/Tutorial_dvi3_systemF
-export/examples/gl/exemplo_lyxificado_dvi3_systemF
 
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
 # + language nesting problem (may disappear after completed translation)
-export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
+export/doc/(de/|es/|fr/)Customization_.*_systemF
 
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
@@ -83,14 +75,6 @@ export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 # \t   -> 0361 COMBINING DOUBLE INVERTED BREVE
 # \c e -> 0229 LATIN SMALL LETTER E WITH CEDILLA
 export/doc/(|de/|es/|fr/)Math.*systemF
-
-# 1.) Unknown Japanese char in section if previous
-#     paragraph ended in non-Japaneese language
-#     This is the same error as in export/export/ja/wrong_auto_encoding (unreliableTests)
-# 2.) unknown chars üß in selected encoding in 'This is a German word: Tschüß'
-#
-# Both reasons invalid since the commit 6b0632eea288348b912f98b79bc871830b6a3d98
-#export/doc/ja/EmbeddedObjects_(dvi|pdf|pdf3)
 
 # missing character: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
@@ -125,22 +109,20 @@ Sublabel: lyxbugs
 # LyX bugs with a Trac number.
 
 # Language nesting and polyglossia #9633
-export/doc/(nb|sk)/Intro_pdf[45]_systemF
+export/doc/(nb|sk)/Intro.*systemF
 # language nesting (may disappear after completed translation)
 export/examples/fr/linguistics_.*_systemF
-export/doc/(de/|es/|fr/)Customization_pdf[45]_systemF
+export/doc/(de/|es/|fr/)Customization_.*_systemF
 
 # use LuaTeX-compatible language names #9910
-# Wrong language name for LuaTeX
+# Wrong language name for LuaTeX (with Babel, no error with Polyglossia)
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
 export/doc/attic/id_UserGuide_dvi3.*
 export/doc/attic/id_UserGuide_pdf5.*
-export/(doc|examples)/id/.*_dvi3.*
-export/(doc|examples)/id/.*_pdf5_texF
-export/.*/hu/.*dvi3_.*
-export/.*/hu/.*pdf5_texF
+export/(doc|examples)/id/.*_(dvi3|pdf5)_texF
+export/.*/hu/.*(dvi3|pdf5)_texF
 
 # documents requiring pre-processing fail with Japanese #8823
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
@@ -189,12 +171,6 @@ export/.*/he/.*pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/splash_(dvi3|pdf[45])_texF
 
-# dvi3 uses Babel. Autostrings use Cyrillic LICRs,
-# however these are missing in xunicode.sty. 2 solutions:
-#  LuX: use polyglossia also with dvi3 (LuaTeX) and non-TeX fonts,
-#  LaTeX: define Cyrillic LICRs for EU1 and EU2 (similar to greek-euenc.def)
-export/doc/uk/Intro_dvi3_systemF
-
 # LuaTeX fails for an \mbox in an index, e.g. $a_{\mbox{a}}$.
 # This construct appears in the included bib file biblioExample.bib in
 # the entry Eisenstein2005. Error message is
@@ -212,7 +188,8 @@ export/examples/fr/exemple-powerdot_pdf[25].*
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
-export/examples/H-P-statements_pdf[45]_systemF
+# seems to be polyglossia-related (dvi3 worked with babel)
+export/examples/H-P-statements_.*_systemF
 
 # requires jss.cls (not on CTAN)
 # "All documents need to be processed by pdflatex" [jss.pdf]
@@ -230,7 +207,8 @@ Sublabel: multilingual
 # No problem with inserted German (or other foreign language) text
 # No problem if the table is Slovak too
 # Seems to be a problem with Check and Slovak Babel support. File a bug there.
-export/export/TableErrorIfSlovakTextInserted_(dvi|pdf|pdf[23]|pdf[45]_texF|dvi3_.*F)
+# All exports using babel fail:
+export/export/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 
 
 Sublabel: attic

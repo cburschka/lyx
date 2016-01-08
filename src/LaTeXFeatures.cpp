@@ -382,14 +382,14 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 	if (local_lp == "none")
 		return LANG_PACK_NONE;
 
-	/* If "auto" is selected, we load polyglossia if required,
+	/* If "auto" is selected, we load polyglossia with non-TeX fonts,
 	 * else we select babel.
 	 * If babel is selected (either directly or via the "auto"
 	 * mechanism), we really do only require it if we have
 	 * a language that needs it.
 	 */
 	bool const polyglossia_required =
-		isRequired("polyglossia")
+		params_.useNonTeXFonts
 		&& isAvailable("polyglossia")
 		&& !isProvided("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
