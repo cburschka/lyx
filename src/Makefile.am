@@ -289,6 +289,7 @@ HEADERFILESCORE = \
 	Text.h \
 	TextClass.h \
 	TextMetrics.h \
+	Toc.h \
 	TocBackend.h \
 	Trans.h \
 	Undo.h \

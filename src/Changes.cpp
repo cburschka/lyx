@@ -501,7 +501,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 			// ¶ U+00B6 PILCROW SIGN
 			str.push_back(0xb6);
 		docstring const & author = author_list.get(it->change.author).name();
-		Toc::iterator it = change_list->item(0, author);
+		Toc::iterator it = TocBackend::findItem(*change_list, 0, author);
 		if (it == change_list->end()) {
 			change_list->push_back(TocItem(dit, 0, author, true));
 			change_list->push_back(TocItem(dit, 1, str, output_active,

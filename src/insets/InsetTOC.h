@@ -14,11 +14,12 @@
 
 #include "InsetCommand.h"
 
+#include "Toc.h"
+
 
 namespace lyx {
 
 class Paragraph;
-class Toc;
 
 /// Used to insert table of contents and similar lists
 /// at present, supports only \tableofcontents and \listoflistings.
