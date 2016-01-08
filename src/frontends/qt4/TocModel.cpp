@@ -133,7 +133,8 @@ QModelIndex TocModel::modelIndex(DocIterator const & dit) const
 	if (toc_->empty())
 		return QModelIndex();
 
-	unsigned int const toc_index = toc_->item(dit) - toc_->begin();
+	unsigned int const toc_index = TocBackend::findItem(*toc_, dit) -
+	                               toc_->begin();
 
 	QModelIndexList list = model()->match(model()->index(0, 0), Qt::UserRole,
 		QVariant(toc_index), 1,
@@ -329,10 +330,10 @@ TocItem const TocModels::currentItem(QString const & type,
 		return TocItem();
 	}
 	LASSERT(index.model() == it.value()->model(), return TocItem());
-	
+
 	return it.value()->tocItem(index);
 }
- 
+
 
 void TocModels::updateItem(QString const & type, DocIterator const & dit)
 {
