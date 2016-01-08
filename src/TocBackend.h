@@ -127,6 +127,9 @@ private:
 class Toc : public std::vector<TocItem>
 {
 public:
+	// This is needed to work around a libc++ bug
+	// https://llvm.org/bugs/show_bug.cgi?id=24137
+	Toc() {}
 	typedef std::vector<TocItem>::const_iterator const_iterator;
 	typedef std::vector<TocItem>::iterator iterator;
 	const_iterator item(DocIterator const & dit) const;
