@@ -317,6 +317,8 @@ char_type Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
 	CharInfoMap::const_iterator it = unicodesymbols.begin();
 	for (combining = false; it != end; ++it) {
+		if (it->second.deprecated())
+			continue;
 		docstring const math = it->second.mathcommand();
 		docstring const text = it->second.textcommand();
 		if ((cmdtype & MATH_CMD) && math == cmd) {
@@ -402,6 +404,8 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 		size_t unicmd_size = 0;
 		char_type c = 0;
 		for (; it != uniend; ++it) {
+			if (it->second.deprecated())
+				continue;
 			docstring const math = mathmode ? it->second.mathcommand()
 							: docstring();
 			docstring const text = textmode ? it->second.textcommand()
@@ -722,6 +726,8 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				flags &= ~CharInfoMathNoTermination;
 			} else if (contains(flag, "tipashortcut=")) {
 				tipashortcut = split(flag, '=');
+			} else if (flag == "deprecated") {
+				flags |= CharInfoDeprecated;
 			} else {
 				lyxerr << "Ignoring unknown flag `" << flag
 				       << "' for symbol `0x"

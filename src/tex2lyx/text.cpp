@@ -521,8 +521,8 @@ docstring convert_unicodesymbols(docstring s)
 		bool termination;
 		docstring rem;
 		set<string> req;
-		docstring parsed = encodings.fromLaTeXCommand(s,
-				Encodings::TEXT_CMD, termination, rem, &req);
+		docstring parsed = normalize_c(encodings.fromLaTeXCommand(s,
+				Encodings::TEXT_CMD, termination, rem, &req));
 		set<string>::const_iterator it = req.begin();
 		set<string>::const_iterator en = req.end();
 		for (; it != en; ++it)
@@ -4824,8 +4824,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			bool termination;
 			docstring rem;
 			set<string> req;
-			docstring s = encodings.fromLaTeXCommand(from_utf8(name),
-					Encodings::TEXT_CMD, termination, rem, &req);
+			docstring s = normalize_c(encodings.fromLaTeXCommand(from_utf8(name),
+					Encodings::TEXT_CMD, termination, rem, &req));
 			if (!s.empty()) {
 				context.check_layout(os);
 				os << to_utf8(s);

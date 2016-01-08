@@ -48,6 +48,7 @@
 # - notermination=both Do not terminate this textcommand and mathcommand (by {} or space).
 # - notermination=none Always terminate this textcommand and mathcommand (by {} or space).
 # - tipashortcut=<shortcut> Shortcut notation for TIPA
+# - deprecated         Do not use this symbol for backwards conversion in LyX and tex2lyx.
 
 0x00a0 "~"                        "" "notermination=both" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
@@ -86,7 +87,7 @@
 0x00c2 "\\^{A}"                   "" "mathalpha" "\\hat{A}" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX
 0x00c3 "\\~{A}"                   "" "mathalpha" "\\tilde{A}" # LATIN CAPITAL LETTER A WITH TILDE
 0x00c4 "\\\"{A}"                  "" "mathalpha" "\\ddot{A}" # LATIN CAPITAL LETTER A WITH DIAERESIS
-0x00c5 "\\r{A}"                   "" "mathalpha" "\\mathring{A}" # LATIN CAPITAL LETTER A WITH RING ABOVE
+0x00c5 "\\AA"                     "" "mathalpha" "\\mathring{A}" "" # LATIN CAPITAL LETTER A WITH RING ABOVE
 0x00c6 "\\AE"                     "" "" # LATIN CAPITAL LETTER AE
 0x00c7 "\\c{C}"                   "" "mathalpha" "\\cedilla{C}" "accents,cedilla" # LATIN CAPITAL LETTER C WITH CEDILLA
 0x00c8 "\\`{E}"                   "" "mathalpha" "\\grave{E}" # LATIN CAPITAL LETTER E WITH GRAVE
@@ -118,7 +119,7 @@
 0x00e2 "\\^{a}"                   "" "mathalpha" "\\hat{a}" # LATIN SMALL LETTER A WITH CIRCUMFLEX
 0x00e3 "\\~{a}"                   "" "mathalpha" "\\tilde{a}" # LATIN SMALL LETTER A WITH TILDE
 0x00e4 "\\\"{a}"                  "" "mathalpha" "\\ddot{a}" # LATIN SMALL LETTER A WITH DIAERESIS
-0x00e5 "\\r{a}"                   "" "mathalpha" "\\mathring{a}" # LATIN SMALL LETTER A WITH RING ABOVE
+0x00e5 "\\aa"                     "" "mathalpha" "\\mathring{a}" "" # LATIN SMALL LETTER A WITH RING ABOVE
 0x00e6 "\\ae"                     "" "" # LATIN SMALL LETTER AE
 0x00e7 "\\c{c}"                   "" "mathalpha" "\\cedilla{c}" "accents,cedilla" # LATIN SMALL LETTER C WITH CEDILLA
 0x00e8 "\\`{e}"                   "" "mathalpha" "\\grave{e}" # LATIN SMALL LETTER E WITH GRAVE
@@ -1882,7 +1883,7 @@
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
-0x212b "\\AA"                     "" "force=utf8" "" "" # ANGSTROM SIGN
+0x212b "\\AA"                     "" "force=utf8,deprecated" "" "" # ANGSTROM SIGN
 0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
 0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL

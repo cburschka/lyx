@@ -52,6 +52,8 @@ enum CharInfoFlags {
 	CharInfoMathNoTermination = 32,
 	///
 	CharInfoForceSelected = 64,
+	///
+	CharInfoDeprecated = 128
 };
 
 
@@ -86,6 +88,8 @@ public:
 	bool force() const { return flags_ & CharInfoForce ? true : false; }
 	/// Force the LaTeX command for some encodings?
 	bool forceselected() const { return flags_ & CharInfoForceSelected ? true : false; }
+	/// Disable LaTeX command => char_type conversion for this deprecated symbol?
+	bool deprecated() const { return flags_ & CharInfoDeprecated ? true : false; }
 	/// TIPA shortcut
 	std::string const tipashortcut() const { return tipashortcut_; }
 	/// \c textcommand needs no termination (such as {} or space).
