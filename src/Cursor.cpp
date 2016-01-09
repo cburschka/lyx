@@ -1947,6 +1947,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			// Make sure that cur gets back whatever happened to dummy (Lgb)
 			operator=(dummy);
 		}
+		if (pos() && paragraph().isEnvSeparator(pos() - 1))
+			posBackward();
 	} else {
 		// if there is a selection, we stay out of any inset,
 		// and just jump to the right position:
