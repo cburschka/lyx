@@ -207,7 +207,7 @@ sub checkForHeader($)
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff \"", $rFont->{$ff}, '"']);
 	# fontentry of type '\font_roman "default" "default"'
-	my $elem2 = newMatch("search" => '^\\\\font_' . $ff . '\s+"(.*)"\s+"(.*)"\s*$',
+	my $elem2 = newMatch("search" => '^\\\\font_' . $ff . '\s+"(.*)"\s+"default"\s*$',
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", '"', "1", '" "', $rFont->{$ff}, '"']);
 	push(@rElems, $elem, $elem1, $elem2);
