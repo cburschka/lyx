@@ -55,10 +55,6 @@ export/doc/(|de/|es/|fr/)Math.*systemF
 # XeTeX artifact? works with LuaTeX, explore:
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 
-# Work with the fonts substituted "silently" by the test script.
-# TODO: set the system fonts in the lyx source
-#export/examples/he/splash_pdf5_systemF
-
 # Changes in TeX Live 2014 (see git blame for info) fixed
 # IEEEtran-CompSoc_pdf4_systemF but not others.
 # TODO Investigate if others can be fixed?
@@ -172,8 +168,10 @@ export/examples/PDF-form_(dvi.*|pdf[^25]*)
 export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
 export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 
-# Hebrew docs do not currently work with DVI (LuaTeX)
-export/.*/he/.*dvi3.*
+# Hebrew docs do not currently work with LuaTeX (will be fixed in TeXLive-16)
+# TODO: set working system fonts in the lyx sources
+export/.*/he/.*(dvi3|pdf5).*
+
 # ... nor with XeTeX and 8-bit TeX fonts (due to missing ASCII replacements)
 export/.*/he/.*pdf4_texF
 
