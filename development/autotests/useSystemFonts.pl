@@ -90,7 +90,7 @@ if ($fontT eq "systemF") {
     $font{sans} = "DejaVu Sans";
     $font{typewriter} = "DejaVu Sans Mono";
   }
-  elsif ($lang =~ /^(he|el|main)$/) {
+  elsif ($lang =~ /^(he)$/) {
     $font{roman} = "FreeSans";
     $font{sans} = "FreeSans";
     $font{typewriter} = "FreeSans";
