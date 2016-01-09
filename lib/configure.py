@@ -904,7 +904,7 @@ def checkConverterEntries():
     checkProg('a PS to EPS converter', ['ps2eps -- < $$i > $$o'],
         rc_entry = [ r'\converter eps2       eps      "%%"	""' ])
     #
-    checkProg('a PDF to PS converter', ['pdf2ps $$i $$o', 'pdftops $$i $$o'],
+    checkProg('a PDF to PS converter', ['pdftops $$i $$o', 'pdf2ps $$i $$o'],
         rc_entry = [ r'\converter pdf         ps        "%%"	""' ])
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
