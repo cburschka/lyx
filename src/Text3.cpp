@@ -1097,6 +1097,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		pit_type pit = cur.pit();
 		Paragraph const & par = pars_[pit];
+		bool lastpar = (pit == pit_type(pars_.size() - 1));
+		Paragraph const & nextpar = lastpar ? par : pars_[pit + 1];
 		pit_type prev = pit;
 		if (pit > 0) {
 			if (!pars_[pit - 1].layout().isEnvironment())
@@ -1105,10 +1107,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				prev = pit - 1;
 		}
 		if (prev < pit && cur.pos() == par.beginOfBody()
-		    && !par.isEnvSeparator(cur.pos())
+		    && !par.isEnvSeparator(par.size() ? par.size() - 1 : 0)
 		    && !par.layout().isCommand()
 		    && pars_[prev].layout() != par.layout()
-		    && pars_[prev].layout().isEnvironment()) {
+		    && pars_[prev].layout().isEnvironment()
+		    && (!nextpar.isEnvSeparator(nextpar.size() ? nextpar.size() - 1 : 0)
+			    || nextpar.layout().isCommand()
+			    || nextpar.layout().isEnvironment())) {
 			if (par.layout().isEnvironment()
 			    && pars_[prev].getDepth() == par.getDepth()) {
 				docstring const layout = par.layout().name();
@@ -1124,6 +1129,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			Font const f(inherit_font, cur.current_font.language());
 			pars_[cur.pit() - 1].resetFonts(f);
 		} else {
+			if (par.isEnvSeparator(cur.pos()))
+				cur.posForward();
 			breakParagraph(cur, cmd.argument() == "inverse");
 		}
 		cur.resetAnchor();
