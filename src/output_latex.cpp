@@ -470,9 +470,9 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 	// get the first paragraph in sequence with this layout and depth
 	pit_type offset = 0;
 	while (true) {
-		if (prev(pit, offset) == pars.begin())
+		if (lyx::prev(pit, offset) == pars.begin())
 			break;
-		ParagraphList::const_iterator priorpit = prev(pit, offset + 1);
+		ParagraphList::const_iterator priorpit = lyx::prev(pit, offset + 1);
 		if (priorpit->layout() == current_layout
 		    && priorpit->params().depth() == current_depth)
 			++offset;
@@ -480,7 +480,7 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 			break;
 	}
 
-	ParagraphList::const_iterator spit = prev(pit, offset);
+	ParagraphList::const_iterator spit = lyx::prev(pit, offset);
 
 	for (; spit != pars.end(); ++spit) {
 		if (spit->layout() != current_layout || spit->params().depth() < current_depth)
