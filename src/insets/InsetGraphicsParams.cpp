@@ -177,11 +177,15 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 }
 
 
-bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const & bufpath)
+bool InsetGraphicsParams::Read(Lexer & lex, string const & token,
+                               Buffer const & buf, bool allowOrigin)
 {
 	if (token == "filename") {
 		lex.eatLine();
-		filename.set(lex.getString(), bufpath);
+		if (allowOrigin)
+			filename = buf.getReferencedFileName(lex.getString());
+		else
+			filename.set(lex.getString(), buf.filePath());
 	} else if (token == "lyxscale") {
 		lex.next();
 		lyxscale = lex.getInteger();

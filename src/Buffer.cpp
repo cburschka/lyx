@@ -1033,7 +1033,10 @@ bool Buffer::readDocument(Lexer & lex)
 	params().indiceslist().addDefault(B_("Index"));
 
 	// read main text
-	d->old_position = originFilePath();
+	if (FileName::isAbsolute(params().origin))
+		d->old_position = params().origin;
+	else
+		d->old_position = filePath();
 	bool const res = text().read(lex, errorList, d->inset);
 	d->old_position.clear();
 
@@ -3029,12 +3032,21 @@ string Buffer::filePath() const
 }
 
 
-string Buffer::originFilePath() const
+DocFileName Buffer::getReferencedFileName(string const & fn) const
 {
-	if (FileName::isAbsolute(params().origin))
-		return params().origin;
+	DocFileName result;
+	if (FileName::isAbsolute(fn) || !FileName::isAbsolute(params().origin))
+		result.set(fn, filePath());
+	else {
+		// filePath() ends with a path separator
+		FileName const test(filePath() + fn);
+		if (test.exists())
+			result.set(fn, filePath());
+		else
+			result.set(fn, params().origin);
+	}
 
-	return filePath();
+	return result;
 }
 
 
@@ -5071,13 +5083,23 @@ void Buffer::checkMasterBuffer()
 
 string Buffer::includedFilePath(string const & name, string const & ext) const
 {
-	bool isabsolute = FileName::isAbsolute(name);
-	// old_position already contains a trailing path separator
-	string const absname = isabsolute ? name : d->old_position + name;
+	if (d->old_position.empty() ||
+	    equivalent(FileName(d->old_position), FileName(filePath())))
+		return name;
 
-	if (d->old_position.empty()
-	    || equivalent(FileName(d->old_position), FileName(filePath()))
-	    || !FileName(addExtension(absname, ext)).exists())
+	bool isabsolute = FileName::isAbsolute(name);
+	// both old_position and filePath() end with a path separator
+	string absname = isabsolute ? name : d->old_position + name;
+
+	// if old_position is set to origin, we need to do the equivalent of
+	// getReferencedFileName() (see readDocument())
+	if (!isabsolute && d->old_position == params().origin) {
+		FileName const test(addExtension(filePath() + name, ext));
+		if (test.exists())
+			absname = filePath() + name;
+	}
+
+	if (!FileName(addExtension(absname, ext)).exists())
 		return name;
 
 	if (isabsolute)

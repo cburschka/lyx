@@ -139,7 +139,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 }
 
 
-void readInsetGraphics(Lexer & lex, string const & bufpath,
+void readInsetGraphics(Lexer & lex, Buffer const & buf, bool allowOrigin,
 	InsetGraphicsParams & params)
 {
 	bool finished = false;
@@ -156,7 +156,7 @@ void readInsetGraphics(Lexer & lex, string const & bufpath,
 		if (token == "\\end_inset") {
 			finished = true;
 		} else {
-			if (!params.Read(lex, token, bufpath))
+			if (!params.Read(lex, token, buf, allowOrigin))
 				lyxerr << "Unknown token, "
 				       << token
 				       << ", skipping."
@@ -299,7 +299,7 @@ void InsetGraphics::read(Lexer & lex)
 {
 	lex.setContext("InsetGraphics::read");
 	//lex >> "Graphics";
-	readInsetGraphics(lex, buffer().originFilePath(), params_);
+	readInsetGraphics(lex, buffer(), true, params_);
 	graphic_->update(params().as_grfxParams());
 }
 
@@ -1054,7 +1054,7 @@ void InsetGraphics::string2params(string const & in, Buffer const & buffer,
 	lex.setContext("InsetGraphics::string2params");
 	lex >> "graphics";
 	params = InsetGraphicsParams();
-	readInsetGraphics(lex, buffer.filePath(), params);
+	readInsetGraphics(lex, buffer, false, params);
 }
 
 

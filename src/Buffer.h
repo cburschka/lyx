@@ -66,6 +66,7 @@ class WorkAreaManager;
 }
 
 namespace support {
+class DocFileName;
 class FileName;
 class FileNameList;
 }
@@ -405,12 +406,14 @@ public:
 	/// It is always an absolute path.
 	std::string filePath() const;
 
-	/** Returns the path where the document was last saved.
-	 *  It may be different from filePath() if the document was later
-	 *  manually moved to a different location.
-	 *  It is always an absolute path.
+	/** Contructs a file name of a referenced file (child doc, included graphics etc).
+	 *  Absolute names are returned as is. If the name is relative, it is
+	 *  interpreted relative to filePath() if the file exists, otherwise
+	 *  relative to the original path where the document was last saved.
+	 *  The original path may be different from filePath() if the document was
+	 *  later manually moved to a different location.
 	 */
-	std::string originFilePath() const;
+	support::DocFileName getReferencedFileName(std::string const & fn) const;
 
 	/** Returns the path where a local layout file lives.
 	 *  An empty string is returned for standard system and user layouts.
