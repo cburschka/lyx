@@ -1015,11 +1015,11 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
 
-	// the document directory
-	// use realPath() instead of absFileName() for comparing
-	// so we can catch also eventually used symbolic parts of the path.
-	string filepath = buf->fileName().onlyPath().realPath();
-	string const sysdir = package().system_support().realPath();
+	// the document directory (must end with a path separator)
+	// realPath() is used to resolve symlinks, while addPath(..., "")
+	// ensures a trailing path separator.
+	string filepath = addPath(buf->fileName().onlyPath().realPath(), "");
+	string const sysdir = addPath(package().system_support().realPath(), "");
 	string const relpath =
 		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
 	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
