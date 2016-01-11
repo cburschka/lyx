@@ -115,9 +115,9 @@ logicalmkup
 \papersides 2
 \paperpagestyle headings
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
@@ -10050,12 +10050,8 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Creates a new paragraph style if it does not already exist.
- If the style does exist, this section is ignored.
-
-\lang french
+] crée une nouveau style de paragraphe s'il n'existe pas déjà.
+ S'il existe, l'entrée est ignorée.
  Doit être fermé par 
 \begin_inset Quotes fld
 \end_inset
@@ -10128,23 +10124,17 @@ reference "chap:List-of-functions"
 \end_inset
 
  pour accéder à la liste des fonctionnalités).
- 
-\lang english
-If you require a package with specific options, you can additionally use
- 
+ Si vous demandez un paquetage doté d'options spécifiques, vous pouvez utiliser
+ en plus 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PackageOptions
 \end_layout
 
 \end_inset
 
-
-\lang french
 .
 \end_layout
 
@@ -11705,20 +11695,20 @@ status collapsed
 
 \end_inset
 
- If this is set to 
+ 
+\lang french
+si positionné à 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-, this argument will be inserted with a copy of the co-text (either selected
- text or the whole paragraph) as content.
+, insère l'argument avec une copie du co-texte, (soit du texte sélectionné,
+ soit tout le paragraphe) comme contenu.
 \end_layout
 
 \begin_layout Itemize
@@ -11749,15 +11739,22 @@ string of characters
 
 ]
 \family typewriter
+\lang french
  
 \family default
-Defines individual characters that should be output in raw form, meaning
- without special translations that \SpecialChar LaTeX
- would require.
- Note that, contrary to PassThru, this needs to be explicitly defined for
- arguments.
- That is, arguments do not inherit PassThruChars from their parent inset
- or layout.
+définit des caractères qui doivent être transmis tel quels à la sortie,
+ c'est-à-dire sans modifications particulières que \SpecialChar LaTeX
+ pourrait requérir.
+ Notez bien que, contrairement à 
+\family sans
+PassThru
+\family default
+, ceci nécessite une définition explicite pour les arguments, ceux-ci n’héritant
+ pas 
+\family sans
+PassThruChars
+\family default
+ de leur insert ou format parent.
 \end_layout
 
 \begin_layout Standard
@@ -15008,28 +15005,26 @@ status collapsed
 
 \end_inset
 
-] Determines whether consecutive pragraphs of the same type are treated
- as belonging together.
- This has the effect that the 
+] 
+\lang french
+détermine si les paragraphes consécutifs du même type sont traités ensemble.
+ Ceci a pour effet de déclencher une seule fois pour le groupe l'impression
+ du 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 GuiLabel
 \end_layout
 
 \end_inset
 
- is only printed once before such a group.
- By default, this is true for 
+.
+ Implicitement, ceci est vrai pour les environnements 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LaTeXType
 \end_layout
 
@@ -15040,26 +15035,22 @@ LaTeXType
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bib_Environment
 \end_layout
 
 \end_inset
 
- and false for all other types.
+ et faux pour tous les autres types.
 \end_layout
 
 \begin_layout Description
@@ -15554,36 +15545,34 @@ chaîne
 
 \end_inset
 
-] indique que le style requiert la fonctionnalité chaîne 
-\lang english
-(see
-\lang french
- 
+] indique que le style requiert la fonctionnalité chaîne (voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
 
 \end_inset
 
- 
-\lang english
-for the list of features).
- If you require a package with specific options, you can additionally use
- 
+ pour la liste des fonctionnalités).
+ Si vous demandez un paquetage doté d'options spécifiques, vous pouvez en
+ outre utiliser 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PackageOptions
 \end_layout
 
 \end_inset
 
- as a general text class parameter (see
-\lang french
- 
+ en tant que paramètre général pour la classe de texte (voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paramètres-généraux-d'une"
@@ -16044,9 +16033,11 @@ never
 
 \end_inset
 
-] This tag determines whether the first line indentation of this paragraph
- can be toggled via the Paragraph settings dialog.
- If 
+]
+\lang french
+ détermine si l'indentation de la première ligne de ce paragraphe peut être
+ réglée via le menu des réglages de paragraphe.
+ Si 
 \emph on
 
 \begin_inset Flex Code
@@ -16055,7 +16046,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph off
-\lang english
 default
 \end_layout
 
@@ -16063,40 +16053,37 @@ default
 
 
 \emph default
- is set, indentation can be toggled if the document settings use 
-\begin_inset Quotes eld
+ est choisi, l'indentation peut être réglée si les réglages de document
+ utilisent un style de paragraphe avec 
+\begin_inset Quotes fld
 \end_inset
 
-indent
-\begin_inset Quotes erd
+indentation
+\begin_inset Quotes frd
 \end_inset
 
- paragraph style, with 
+; avec 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 always
 \end_layout
 
 \end_inset
 
-, indentation can always be toggled, notwithstanding the document settings,
- with 
+, l'indentation est toujours réglable quels que soient les réglages du document;
+ avec 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 never
 \end_layout
 
 \end_inset
 
-, indentation can never be toggled.
+, l'indentation n'est jamais réglable.
 \end_layout
 
 \begin_layout Description
@@ -16729,20 +16716,22 @@ chaîne
 
 \end_inset
 
-=!htbpH] 
-\lang english
-Allowed placement options for this float type.
- The value is a string of placement characters.
- Possible characters include: 
+=!htbpH] définit les options de placement pour ce type de flottant.
+ La valeur est une chaîne de paramètres de placement, les caractères autorisés
+ sont: 
 \emph on
 h
 \emph default
  (
-\begin_inset Quotes eld
+\emph on
+here
+\emph default
+, 
+\begin_inset Quotes fld
 \end_inset
 
-here if possible
-\begin_inset Quotes erd
+ici si possible
+\begin_inset Quotes frd
 \end_inset
 
 ), 
@@ -16750,11 +16739,15 @@ here if possible
 t
 \emph default
  (
-\begin_inset Quotes eld
+\emph on
+top
+\emph default
+ 
+\begin_inset Quotes fld
 \end_inset
 
-top of page
-\begin_inset Quotes erd
+haut de page
+\begin_inset Quotes frd
 \end_inset
 
 ), 
@@ -16762,11 +16755,15 @@ top of page
 b
 \emph default
  (
-\begin_inset Quotes eld
+\emph on
+bottom
+\emph default
+, 
+\begin_inset Quotes fld
 \end_inset
 
-bottom of page
-\begin_inset Quotes erd
+bas de page
+\begin_inset Quotes frd
 \end_inset
 
 ), 
@@ -16774,11 +16771,11 @@ bottom of page
 p
 \emph default
  (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-page of floats
-\begin_inset Quotes erd
+page de flottants
+\begin_inset Quotes frd
 \end_inset
 
 ), 
@@ -16786,28 +16783,25 @@ page of floats
 H
 \emph default
  (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-here definitely
-\begin_inset Quotes erd
+forcément ici
+\begin_inset Quotes frd
 \end_inset
 
-) and 
+) et 
 \emph on
 !
 \emph default
  (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-ignore LaTeX rules
-\begin_inset Quotes erd
-\end_inset
-
+ignorer les règles \SpecialChar LaTeX
 ).
- The order of the characters in the string does not matter.
- If no placement options are allowed, use the string 
+ L'ordre des caractères est indifférent.
+ Si aucune option n'est autorisée, utiliser la chaîne de caractères 
 \emph on
 none
 \emph default
@@ -16858,27 +16852,23 @@ status collapsed
 
 
 \emph default
-] 
-\lang english
-Defines whether the float allows to be rotated via the \SpecialChar LaTeX
--package 
+] précise si le flottant peut subir une rotation grâce au paquetage \SpecialChar LaTeX
+ 
 \family typewriter
 rotfloat
 \family default
  (sidewaysfloat).
- Set to 
+ Positionner à 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
- if the float does not support this feature.
+ si le flottant ne peut pas bénéficier de cette fonctionnalité.
 \end_layout
 
 \begin_layout Description
@@ -16925,23 +16915,19 @@ status collapsed
 
 
 \emph default
-] 
-\lang english
-Defines whether the float has a starred variant that spans columns in a
- two column paragraph.
- Set to 
+] précise si le flottant possède une variante étoilée qui s'étend sur les
+ colonnes dans un paragraphe à deux colonnes.
+ Positionner à 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
- if the float does not support this feature.
+ si le flottant ne peut pas bénéficier de cette fonctionnalité.
 \end_layout
 
 \begin_layout Description
@@ -19031,51 +19017,42 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Force a fixed width encoding for the translated contents of 
+] force un encodage à taille fixe pour les éléments traduits du code des
+ préambules 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BabelPreamble
 \end_layout
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LangPreamble
 \end_layout
 
 \end_inset
 
- code generated by this layout.
- This is needed for special \SpecialChar LaTeX
--packages like 
+ engendré par ce format.
+ Ceci est nécessaire pour les paquetages \SpecialChar LaTeX
+ spéciaux comme 
 \family typewriter
 listings
 \family default
- that do not work with variable width encodings such as 
+ qui ne fonctionnent pas avec des encodages à taille variable comme 
 \family sans
 utf8
 \family default
 .
- This setting is ignored if fully Unicode aware \SpecialChar LaTeX
- backends such as 
-\lang ngerman
-Xe\SpecialChar TeX
- or Lua\SpecialChar TeX
-
-\lang english
- are used.
+ Ce réglage est ignoré lors de l'utilisation de moteurs admettant complètement
+ Unicode comme Xe\SpecialChar TeX
+ ou Lua\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Description
@@ -19272,12 +19249,10 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Force a a line break in the \SpecialChar LaTeX
- output before the inset starts and after the
- inset ends.
- This assures the inset itself is output on its own lines, for parsing purposes.
+] force un saut de ligne dans le résultat \SpecialChar LaTeX
+ avant le début de l'insert et
+ après sa fin.
+ Ceci garantit que l’insert apparaît en lignes isolées, pour la lisibilité.
 \end_layout
 
 \begin_layout Description
@@ -20405,44 +20380,40 @@ status collapsed
 
 \end_inset
 
-] Name of an 
+]
+\lang french
+ nomme un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
- that has replaced this 
+ qui remplace cet 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
 .
- This is used to rename an 
+ Ceci est utilisé pour renommer un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
-, while keeping backward compatibility.
+ en conservant la compatibilité.
 \end_layout
 
 \begin_layout Description
@@ -26676,28 +26647,37 @@ $$pngOrjpg
 
 \end_inset
 
- This will be the string 
-\begin_inset Quotes eld
+
+\lang french
+ sera la chaîne 
+\begin_inset Quotes fld
 \end_inset
 
 jpg
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- if the file is in JPEG format, otherwise it will be the string 
-\begin_inset Quotes eld
+ si le fichier est en format JPEG, sinon sera la chaîne 
+\begin_inset Quotes fld
 \end_inset
 
 png
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
- This is useful to avoid uneeded conversions for output formats that support
- both PNG and JPEG fomats.
- The predefined RasterImage template uses this macro for the pdf\SpecialChar TeX
- output
- format.
+ Ceci est utile pour éviter des conversions inutiles pour les formats de
+ sortie admettant à la fois les types PNG et JPEG.
+ Le modèle prédéfini 
+\begin_inset Quotes fld
+\end_inset
+
+Image tramée
+\begin_inset Quotes frd
+\end_inset
+
+ utilise cette macro avec le moteur pdf\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Description
