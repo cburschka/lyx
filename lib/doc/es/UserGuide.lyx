@@ -134,9 +134,9 @@ enumitem
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict true
 \end_header
 
@@ -490,7 +490,7 @@ reference "sec:Código-TeX"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Nombres-Propios-en-LyX"
+reference "subsec:Logotipos-LyX"
 
 \end_inset
 
@@ -758,7 +758,7 @@ Nota:
  No hay «archivo predeterminado» ni documento «Sin título» ni «de inicio».
  A menos que indiques a \SpecialChar LyX
  abrir un archivo o crear uno nuevo, este gran espacio
- en blanco es solo eso —un gran espacio en blanco—.
+ en blanco es solo eso: un gran espacio en blanco.
 \end_layout
 
 \end_inset
@@ -1346,46 +1346,35 @@ Suprimir
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using 
-\lang spanish
-la combinación 
+La combinación 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- 
-\lang english
-while the cursor is in normal text selects the whole document.
- When the cursor is inside an inset 
+ estando el cursor en texto normal selecciona todo el documento.
+ Si el cursor está en un recuadro insertado 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- selects the content of the inset.
- Using 
+ selecciona el contenido del recuadro.
+ Usando 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- consecutively will increase the selection to the whole inset and then to
- the whole document
-\lang spanish
-.
+ consecutivamente se extiende la selección a todo el recuadro y después
+ a todo el documento.
  La combinación 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
- 
-\lang english
-selects the whole document in every case and puts the cursor to the end
- of the document.
+ selecciona siempre todo el documento y coloca el cursor al final del documento.
 \end_layout
 
 \begin_layout Section
@@ -1698,19 +1687,7 @@ name "subsec:Panel-del-esquema"
 \end_layout
 
 \begin_layout Standard
-El panel del esquema es el equivalente actual del llamado 
-\begin_inset Quotes fld
-\end_inset
-
-Índice general
-\begin_inset Quotes frd
-\end_inset
-
- en versiones anteriores de \SpecialChar LyX
-, puesto que su propósito original era mostrar
- el índice del contenido del documento.
- Sin embargo, el actual panel del esquema es mucho más versátil.
- En el cuadro desplegable de la parte superior de la ventana del panel se
+En el cuadro desplegable de la parte superior de la ventana del panel se
  puede elegir entre varias listas e índices diferentes de una variedad de
  objetos, tales como índices de cuadros y figuras, listas de varios tipos
  de notas, etiquetas y referencias (véase la sección 
@@ -1742,8 +1719,7 @@ En ciertos casos, al hacer clic derecho sobre un elemento se abre un menú
  contextual que permite la modificación directa de dicho elemento.
  Por ejemplo, con las citas, el menú contextual permite abrir el diálogo
  de citas y modificarlas.
- Con los cambios, permite aceptarlos o rechazarlos.
- Y así con otros elementos.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1942,12 +1918,8 @@ Indicador en el cursor
  Con las opciones generales puedes definir el tiempo de retardo para la
  visualización en línea y para el recuadro emergente, establecer el número
  mínimo de caracteres que una palabra debe tener para ser tenida en cuenta
- para la terminación automática
-\lang english
- set the minimal number of characters a word must have that it will be taken
- into account for a completion
-\lang spanish
- y elegir si las finalizaciones largas deberían abreviarse.
+ para la terminación automática y elegir si las finalizaciones largas deberían
+ abreviarse.
 \end_layout
 
 \begin_layout Standard
@@ -6612,7 +6584,7 @@ Etiquetado
 \family sans
 Descripción
 \family default
-: Cuando necesites que una palabra sobresalga del texto que describe.
+: cuando necesites que una palabra sobresalga del texto que describe.
  El entorno 
 \family sans
 Etiquetado
@@ -8516,24 +8488,19 @@ Casi todo está permitido en entorno Literal:"%&$§#~'`
 \begin_layout Standard
 El entorno 
 \family sans
-Literal*
+Literal* es idéntico a
 \family default
- 
-\lang english
-is identical to
-\lang spanish
  
 \family sans
-Literal
+Literal 
 \family default
- 
-\lang english
-with the difference that spaces appear in the output as the character '
+con la diferencia de que los espacios aparecen en la salida como el carácter
+ '
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 '.
- An example:
+ Un ejemplo:
 \end_layout
 
 \begin_layout Verbatim
@@ -10758,19 +10725,11 @@ A veces es necesario tener dos entornos consecutivos del mismo tipo.
 
 \begin_layout Enumerate
 Hola
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 esto es una
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10811,43 +10770,36 @@ enumeración
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To split an existing list into two lists,
-\lang spanish
- pon el cursor al final del último ítem y usa el menú 
+Para dividir una lista existente en dos, pon el cursor al final de un ítem
+ de la lista y usa el menú 
 \family sans
 Editar\SpecialChar menuseparator
-
-\lang english
-Start New Environment
+Iniciar nuevo entorno
 \family default
 .
- This inserts a plain separator (red line in LyX) and behind it the new
- list.
- Alternatively set the cursor at the end of a list item and press 
+ Se inserta un separador simple (una línea roja en LyX) y a continuación
+ la nueva lista.
+ La alternativa es poner el cursor al final de un ítem de la lista y pulsar
+ 
 \family sans
-\lang spanish
 Entrar
 \family default
+ tres veces.
+ Se inserta un separador de párrafo (flecha roja en LyX).
+ La diferencia entre ambos tipos de separador es que el separador simple
+ solo divide la lista, no el párrafo.
+ Se puede cambiar el tipo de separador con clic derecho sobre él.
+
 \lang english
- three times.
- This inserts a paragraph separator (red arrow in LyX).
- The difference between both separator types is that the plain separator
- only splits the list and not the current paragraph.
- One can change the separator type by right-clicking on it.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In general, you get an environment separator when you press 
+En general, se obtiene un separador de entorno pulsando 
 \family sans
-\lang spanish
 Entrar
 \family default
-\lang english
- in a Standard environment immediately after a non-Standard one.
+ en un entorno Normal inmediatamente después de uno no Normal.
 \end_layout
 
 \begin_layout Section
@@ -13903,7 +13855,7 @@ reference "subsec:Tipografías-en-pantalla"
 \end_layout
 
 \begin_layout Subsection
-Tipografías para ecuaciones
+Tipografías en ecuaciones
 \end_layout
 
 \begin_layout Standard
@@ -17886,14 +17838,15 @@ fest
 \end_layout
 
 \begin_layout Subsection
-Nombres propios en \SpecialChar LyX
+Logotipos \SpecialChar LyX
+ y \SpecialChar LaTeX
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- ! Nombres propios
+ ! Logotipos
 \end_layout
 
 \end_inset
@@ -17901,7 +17854,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Nombres-Propios-en-LyX"
+name "subsec:Logotipos-LyX"
 
 \end_inset
 
@@ -17909,153 +17862,43 @@ name "subsec:Nombres-Propios-en-LyX"
 \end_layout
 
 \begin_layout Standard
-Seguramente has observado que la palabra 
-\begin_inset Quotes fld
+El menú 
+\family sans
+Insertar\SpecialChar menuseparator
+Carácter
+\begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
-\begin_inset Quotes frd
-\end_inset
-
- aparece siempre con caracteres de distinto tamaño y altura.
- \SpecialChar LaTeX
- es el nombre del programa usado por \SpecialChar LyX
- y es interpretado como un nombre
- propio cuando lo escribes en \SpecialChar LyX
- como 
-\begin_inset Quotes fld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes frd
-\end_inset
-
-.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Las llaves en código \SpecialChar TeX
- impiden que «comando» aparezca como nombre propio
- en la salida; véase el último párrafo de esta sección.
-\end_layout
-
-\end_inset
-
- ¡Observa la alternancia de mayúsculas y minúsculas! \SpecialChar LyX
- reconoce los siguientes
- nombres propios:
+especial\SpecialChar menuseparator
+Logotipos
+\family default
+ (o la barra de herramientas de documentación de \SpecialChar LyX
+) proporciona los siguientes
+ logotipos de programas: 
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
- El nombre del juego, escribe 
-\begin_inset Quotes fld
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX
-\begin_inset Quotes frd
-\end_inset
-
- para generarlo.
+ El nombre del juego.
 \end_layout
 
 \begin_layout Description
 \SpecialChar TeX
- El programa usado por \SpecialChar LaTeX
-, escribe 
-\begin_inset Quotes fld
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes frd
-\end_inset
-
- para generarlo.
+ El motor tipográfico usado por \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
- El programa usado por \SpecialChar LyX
-, escribe 
-\begin_inset Quotes fld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes frd
-\end_inset
-
- para generarlo.
+ La colección de macros \SpecialChar TeX
+ usada por \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX2e
  La versión actual de \SpecialChar LaTeX
-, escribe 
-\begin_inset Quotes fld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX2e
-\begin_inset Quotes frd
-\end_inset
-
- para generarlo.
+.
 \end_layout
 
 \begin_layout Standard
@@ -18072,9 +17915,12 @@ Quizá te preguntes por qué versión
 \end_inset
 
 .
- Es una vieja tradición en el mundillo \SpecialChar TeX
- dar a los programas números de versión
- en griego.
+ Es una vieja tradición en el mundillo
+\emph on
+ geek
+\emph default
+ de \SpecialChar TeX
+ dar a los programas números de versión de ese estilo.
  Por ejemplo, el número de versión de \SpecialChar TeX
  converge al número 
 \begin_inset Formula $\pi$
@@ -18096,42 +17942,6 @@ Quizá te preguntes por qué versión
 \SpecialChar TeX
 -3.14159
 \begin_inset Quotes frd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Si no quieres usar nombres propios, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-ej.
- en encabezados de sección, debes insertar un par de llaves vacías en código
- \SpecialChar TeX
- en la palabra.
- En \SpecialChar LyX
- lo verás como: 
-\begin_inset Graphics
-	filename ../clipart/LaTeX.png
-	scale 80
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Más sobre código \SpecialChar TeX
- en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Código-TeX"
-
 \end_inset
 
 .
@@ -18349,8 +18159,8 @@ name "cap:Notas-y-flotantes"
 \end_layout
 
 \begin_layout Standard
-Los temas tratados en este capítulo se desarrollan en profundidad en el
- manual 
+Los temas tratados en este capítulo se describen con detalle en el manual
+ 
 \emph on
 Objetos insertados.
  
@@ -18400,7 +18210,7 @@ Nota
 status open
 
 \begin_layout Plain Layout
-Esto es un texto en un cuadro de nota \SpecialChar LyX
+Esto es un texto en un recuadro de nota \SpecialChar LyX
  que no aparece en la salida.
 \end_layout
 
@@ -18410,9 +18220,9 @@ Esto es un texto en un cuadro de nota \SpecialChar LyX
 \end_layout
 
 \begin_layout Description
-Comentario Esta nota tampoco aparece en la salida pero sí como comentario
- en el documento \SpecialChar LaTeX
- cuando lo exportas mediante el menú 
+Comentario Este tipo de nota tampoco aparece en la salida pero sí como comentari
+o en el documento \SpecialChar LaTeX
+ que se obtiene al exportar mediante el menú 
 \family sans
 Archivo\SpecialChar menuseparator
 Exportar\SpecialChar menuseparator
@@ -18433,8 +18243,8 @@ Exportar\SpecialChar menuseparator
 status open
 
 \begin_layout Plain Layout
-Esto es un texto en un cuadro de nota que solo aparece como comentario en
- los archivos \SpecialChar LaTeX
+Esto es un texto en un recuadro de comentario que solo aparece en los archivos
+ \SpecialChar LaTeX
 .
 \end_layout
 
@@ -18444,19 +18254,15 @@ Esto es un texto en un cuadro de nota que solo aparece como comentario en
 \end_layout
 
 \begin_layout Description
-Resaltado
+Nota
 \begin_inset space ~
 \end_inset
 
-en
-\begin_inset space ~
-\end_inset
-
-gris El texto de esta nota aparecerá en la salida en el color elegido en
- la configuración del documento, apartado
+gris El texto de esta nota aparecerá en la salida en color gris pálido por
+ omisión, o en el color elegido en la configuración del documento, apartado
 \family sans
  Colores\SpecialChar menuseparator
-Notas en gris
+Notas grises
 \family default
 .
 \begin_inset Newline newline
@@ -18476,13 +18282,13 @@ Esto es el texto
 status collapsed
 
 \begin_layout Plain Layout
-Esto es un ejemplo de nota al pie dentro de una nota resaltada en gris.
+Esto es un ejemplo de nota al pie dentro de una nota gris.
  En este documento, el color de este tipo de notas es azul.
 \end_layout
 
 \end_inset
 
- de un comentario que se ve en la salida en color gris.
+ de un tipo de nota que sí aparece en la salida.
 \end_layout
 
 \end_inset
@@ -18495,8 +18301,8 @@ Esto es un ejemplo de nota al pie dentro de una nota resaltada en gris.
 \begin_inset Newline newline
 \end_inset
 
-Como se ve en este ejemplo, en las notas resaltadas en gris se pueden incluir
- notas al pie.
+Como se ve en este ejemplo, en las notas grises se pueden incluir notas
+ al pie.
 \end_layout
 
 \begin_layout Standard
@@ -18512,8 +18318,8 @@ Insertar\SpecialChar menuseparator
 Nota
 \family default
 .
- Haciendo clic derecho sobre el cuadro de una nota se puede seleccionar
- el tipo de nota.
+ Haciendo clic derecho sobre el recuadro de tipo de nota se puede cambiar
+ el tipo.
 \end_layout
 
 \begin_layout Section
@@ -20058,7 +19864,7 @@ Objetos insertados
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Ten en cuenta que la mayoría de visores DVI 
@@ -23697,8 +23503,8 @@ name "cap:Ecuaciones-matemáticas"
 \end_layout
 
 \begin_layout Standard
-Los temas tratados en este capítulo se desarrollan en profundidad en el
- manual 
+Los temas tratados en este capítulo se describen con detalle en el manual
+ 
 \emph on
 Ecuaciones.
  
@@ -25610,7 +25416,7 @@ arg   "math-delim ( )"
 \end_layout
 
 \begin_layout Section
-Ecuaciones con varias líneas
+Matrices y ecuaciones con varias líneas
 \begin_inset Index idx
 status collapsed
 
@@ -28682,12 +28488,12 @@ alphadin.bst
 \end_layout
 
 \begin_layout Subsection
-Formato de la Bibliografía
+Formato de cita bibliográfica
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Bibliografía ! Formato
+Bibliografía ! Formato de citas
 \end_layout
 
 \end_inset
@@ -29370,7 +29176,7 @@ OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection
-Formato de entradas del índice
+Formato de entradas de índice
 \begin_inset Index idx
 status collapsed
 
@@ -30132,19 +29938,8 @@ emph
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To customize the appearance of all symbols add e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the command
-\lang spanish
-
+Para personalizar el aspecto de todos los símbolos añade, p.
+ e., el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -30164,22 +29959,18 @@ textbf{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-to the LaTeX preamble in the document settings.
- This command will make the font of all symbols 
+al preámbulo \SpecialChar LaTeX
+ en la configuración del documento.
+ Este comando hace que todos los símbolos aparezcan en 
 \series bold
-bold
+negrita
 \series default
- and 
+ y 
 \family sans
-sans
-\begin_inset space ~
-\end_inset
-
-serif
+palo seco
 \family default
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -30204,20 +29995,11 @@ Para introducir en entradas de la nomenclatura caracteres como |
 \end_inset
 
 , es necesario que vayan precedidos por comillas como secuencia de escape.
- Para evitar que el carácter 
-\begin_inset space \space{}
-\end_inset
-
-"
-\begin_inset space \space{}
-\end_inset
-
- perturbe los caracteres siguientes, la secuencia se finaliza con un par
- de llaves: ""{}
+ 
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\"{}"
-description "El carácter comillas se obtiene escribiendo ' \"\"{}\"\"{} '"
+symbol "\"@, \"|, \"!, \"\""
+description "El carácter comillas se obtiene escribiendo ' \"\"\"\" '"
 
 \end_inset
 
@@ -30480,6 +30262,65 @@ nomnorefpage,
 
 \backslash
 nomnorefeqpage Deshabilita las opciones correspondientes
+\end_layout
+
+\begin_layout Standard
+Palabras como 
+\begin_inset Quotes fld
+\end_inset
+
+page
+\begin_inset Quotes frd
+\end_inset
+
+ se traducen automáticamente para algunos idiomas.
+ Si no es así, añade estas líneas al preámbulo \SpecialChar LaTeX
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+eqdeclaration}[1]{, see equation
+\backslash
+nobreakspace(#1)}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand{
+\backslash
+pagedeclaration}[1]{, page
+\backslash
+nobreakspace{}#1}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+reemplazando 
+\begin_inset Quotes fld
+\end_inset
+
+see equation
+\begin_inset Quotes frd
+\end_inset
+
+ y 
+\begin_inset Quotes fld
+\end_inset
+
+page
+\begin_inset Quotes frd
+\end_inset
+
+ por su traducción.
 \end_layout
 
 \begin_layout Subsection
@@ -33714,7 +33555,7 @@ Corrector ortográfico
 
 \begin_layout Standard
 \SpecialChar LyX
- no incorpora corrector ortográfico propio.
+ incorpora un corrector ortográfico.
  El menú
 \family sans
  Herramientas\SpecialChar menuseparator
@@ -33927,14 +33768,12 @@ Enchant es una biblioteca envoltorio de diferentes entornos configurables.
 hunspell
 \family default
 .
- \SpecialChar LyX
- 
-\lang english
-on Mac
+ En Mac
 \begin_inset space ~
 \end_inset
 
-OS can also use Mac's own spellchecker and will use it by default.
+OS \SpecialChar LyX
+ puede usar también el corrector propio de Mac y lo usará por omisión.
 \end_layout
 
 \begin_layout Description
@@ -34022,12 +33861,12 @@ comentarios Si se marca, se revisa también el contenido no imprimible.
 \end_layout
 
 \begin_layout Section
-Tesauro
+Diccionarios de sinónimos
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Tesauro
+Diccionarios de sinónimos
 \end_layout
 
 \end_inset
@@ -34035,7 +33874,7 @@ Tesauro
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tesauro"
+name "sec:Sinónimos"
 
 \end_inset
 
@@ -34079,16 +33918,17 @@ Esta sección describe cómo se instalan y configuran en \SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
-Configuración del tesauro
+Configuración del diccionario
 \end_layout
 
 \begin_layout Standard
-Los tesauros de 
+Los diccionarios de 
 \family typewriter
 MyThes
+\family sans
+/OpenOffice/LibreOffice
 \family default
-/OpenOffice/LibreOffice constan de dos archivos por idioma: un archivo con
- el sufijo 
+ constan de dos archivos por idioma: un archivo con el sufijo 
 \family typewriter
 *.dat
 \family default
@@ -34119,59 +33959,162 @@ th_es_ES_v2.dat
 \end_layout
 
 \begin_layout Standard
-En Linux, si están instalados LibreOffice u OpenOffice y su tesauro, esos
- archivos deberían estar ya disponibles.
-\end_layout
+Si están instalados LibreOffice u OpenOffice y sus diccionarios, esos archivos
+ deberían estar disponibles, solo debes indicar la ruta de los mismos en
+ 
+\family sans
+Herramientas\SpecialChar menuseparator
+Preferencias\SpecialChar menuseparator
+Rutas\SpecialChar menuseparator
+Directorio
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-En Windows se pueden elegir los diccionarios al instalar \SpecialChar LyX
+de
+\begin_inset space ~
+\end_inset
+
+sinónimos
+\family default
 .
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Según la distribución de Linux y el tipo de instalación de los diccionarios,
+ las ubicaciones típicas son 
+\family typewriter
+/usr/share/mythes/
+\family default
+, 
+\family typewriter
+/usr/share/myspell/dicts/
+\family default
+, 
+\family typewriter
+/usr/share/ooo/thesaurus/
+\family default
+,
+\family typewriter
+ ~/.config/libreoffice/<version>/user/
+\family default
+ o similares.
+ En Windows, los diccionarios se encuentran en 
+\family typewriter
+~
+\backslash
+Program Files
+\backslash
+LibreOffice-<Version>
+\backslash
+share
+\backslash
+extensions 
+\family default
+o similar; durante la instalación de \SpecialChar LyX
+ puedes seleccionar otros diccionarios
+ En Mac la ruta es 
+\family typewriter
+/Users\SpecialChar breakableslash
+<user name>\SpecialChar breakableslash
+Library\SpecialChar breakableslash
+Application Support\SpecialChar breakableslash
+libreoffice\SpecialChar breakableslash
+<version>\SpecialChar breakableslash
+user
+\family default
+/.
 \end_layout
 
-\begin_layout Standard
-Los diccionarios soportados por \SpecialChar LyX
- se pueden descargar de:
-\begin_inset Newline newline
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Para instalar nuevos diccionarios se pueden descargar de:
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
+http://www.lyx.org/trac/browser/lyxsvn/dictionaries/trunk/thes/
 \end_layout
 
 \end_inset
 
 
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+Para instalar un nuevo diccionario, copia los dos archivos del mismo en
+ la carpeta del tesauro (la asignada en 
+\family sans
+Herramientas\SpecialChar menuseparator
+Preferencias\SpecialChar menuseparator
+Rutas\SpecialChar menuseparator
+Directorio
+\begin_inset space ~
 \end_inset
 
-Para instalar un diccionario en Windows, copia ambos archivos en la subcarpeta
- de \SpecialChar LyX
- 
-\family sans
-~
-\backslash
-Resources
-\backslash
-thes
+de
+\begin_inset space ~
+\end_inset
+
+sinónimos
 \family default
- y reinicia \SpecialChar LyX
+) y reinicia \SpecialChar LyX
+.
+ Si esa ruta no está aún definida puedes indicar la del diccionario elegido.
+\end_layout
+
+\begin_layout Standard
+Como alternativa se pueden instalar diccionarios nuevos mediante 
+\family sans
+LibreOffice\SpecialChar breakableslash
+OpenOffice
+\family default
+ o, en Linux, mediante el administrador de paquetes (
+\emph on
+mythes-*
+\emph default
+ o 
+\emph on
+libreoffice-thesaurus-*
+\emph default
+).
+ En este caso hay que comprobar que \SpecialChar LyX
+ puede encontrarlos verificando la ruta
+ en
+\family sans
+ Herramientas\SpecialChar menuseparator
+Preferencias\SpecialChar menuseparator
+Rutas\SpecialChar menuseparator
+Directorio
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+sinónimos
+\family default
 .
 \end_layout
 
 \begin_layout Subsection
-Uso del tesauro
+Uso del diccionario
 \end_layout
 
 \begin_layout Standard
 Para iniciar el diccionario de sinónimos usa el menú 
 \family sans
 Herramientas\SpecialChar menuseparator
-Tesauro
+Sinónimos
 \family default
  o el botón 
 \begin_inset Info
@@ -34183,8 +34126,8 @@ arg   "thesaurus-entry"
  estando seleccionada.
  Se muestra una ventana con palabras relacionadas con la anterior agrupadas
  en categorías.
- Para ciertos idiomas el tesauro no solo muestra sinónimos, también términos
- genéricos (como 
+ Para ciertos idiomas el diccionario no solo muestra sinónimos, también
+ términos genéricos (como 
 \emph on
 organismo
 \emph default
@@ -34228,10 +34171,11 @@ El idioma se escoge automáticamente a partir del idioma vigente en la posición
 \end_layout
 
 \begin_layout Standard
-Hay que advertir que el tesauro no puede manejar frases (solo palabras compuesta
-s presentes en el diccionario), y hay que usar la denominada forma lema,
- esto es, la forma usada en los diccionarios (para muchos idiomas: palabras
- individuales y en masculino singular para nombres, infinitivo para verbos).
+Hay que advertir que el diccionario no puede manejar frases (solo palabras
+ compuestas presentes en el diccionario), y hay que usar la denominada forma
+ lema, esto es, la forma usada en los diccionarios (para muchos idiomas:
+ palabras individuales y en masculino singular para nombres, infinitivo
+ para verbos).
  Por ejemplo, buscar 
 \emph on
 árboles
@@ -35707,21 +35651,15 @@ dvipdfm
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(lower
+(baja
 \begin_inset space ~
 \end_inset
 
-resolution)
-\family default
-\lang spanish
- igual que 
+resolución) igual que 
 \family sans
 PDF
 \begin_inset space ~
@@ -35729,22 +35667,12 @@ PDF
 
 (pdflatex)
 \family default
- pero con 
-\lang english
-a reduced pixel resolution of 150
+ pero con una resolución reducida de 150
 \begin_inset space \thinspace{}
 \end_inset
 
-dpi (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-useful for E-books to be read on tablet PCs or for large documents as intermedia
-te preview).
+ppp (adecuada para, por ejemplo, leer libros electrónicos en tabletas o
+ vistas previas de documentos extensos).
 \end_layout
 
 \begin_layout Description
@@ -38468,14 +38396,12 @@ name "subsec:Comprimido"
 
 \begin_layout Standard
 Comprime/descomprime el documento actual.
- 
-\lang english
-For documents under version control it is strongly recommended to disable
- compression (see the 
+ Para documentos bajo control de versiones se recomienda deshabilitar la
+ compresión (véase el manual 
 \emph on
-Additional Features
+Características adicionales
 \emph default
- manual for details).
+ para detalles).
 \end_layout
 
 \begin_layout Subsection
@@ -38531,7 +38457,7 @@ reference "sec:Corrector-ortográfico"
 \end_layout
 
 \begin_layout Subsection
-Tesauro
+Sinónimos
 \end_layout
 
 \begin_layout Standard
@@ -38542,7 +38468,7 @@ Se describe en la sección
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tesauro"
+reference "sec:Sinónimos"
 
 \end_inset
 
@@ -40543,7 +40469,7 @@ arg   "thesaurus-entry"
 
 \family sans
 Herramientas\SpecialChar menuseparator
-Tesauro
+Sinónimos
 \end_layout
 
 \end_inset
@@ -42240,10 +42166,10 @@ Color ! Marcos sombreados
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Color ! Notas en gris
+Color ! Notas grises
 \end_layout
 
 \end_inset
@@ -42253,9 +42179,9 @@ Color ! Notas en gris
 
 \begin_layout Standard
 Aquí se puede cambiar el color del texto principal (por omisión: negro),
- de las notas resaltadas en gris (por omisión: gris claro), del fondo de
- las páginas (por omisión: blanco) y del fondo de los marcos sombreados
- (por omisión: rojo).
+ de las notas grises (por omisión: gris claro), del fondo de las páginas
+ (por omisión: blanco) y del fondo de los marcos sombreados (por omisión:
+ rojo).
  El botón 
 \family sans
 Reiniciar
@@ -42429,7 +42355,7 @@ shadecolor
 \end_layout
 
 \begin_layout Itemize
-Color del texto de notas Resaltado en gris:
+Color del texto de notas grises:
 \begin_inset Newline newline
 \end_inset
 
@@ -43669,11 +43595,7 @@ Hacer copias de seguridad cada
 \family sans
 Guardar los documentos comprimidos por omisión
 \family default
- guarda siempre los archivos en formato comprimido (
-\lang english
-see also
-\lang spanish
- sección
+ guarda siempre los archivos en formato comprimido (véase también la sección
 \begin_inset space ~
 \end_inset
 
@@ -43685,10 +43607,8 @@ reference "subsec:Comprimido"
 \end_inset
 
 ).
- 
-\lang english
-This applies to newly created documents only.
- The compression status of existing documents is not changed when saving.
+ Esto solo se aplica a documentos nuevos.
+ El estado de compresión de documentos existentes no cambia al guardarlos.
 \end_layout
 
 \begin_layout Subsubsection
@@ -44759,14 +44679,11 @@ Tubería
 LyXServer Aquí puedes introducir el nombre de una tubería de UNIX.
  Esta tubería se emplea para enviar datos desde programas externos a \SpecialChar LyX
 .
-\lang ngerman
-
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang spanish
 Ejemplo:
 \series default
  Añade una base de datos Bib\SpecialChar TeX
@@ -45264,7 +45181,7 @@ inicial
 \end_layout
 
 \begin_layout Description
-Auto-terminar Correspondiente a 
+Auto-terminar Equivalente a 
 \family sans
 Auto-iniciar.
  
@@ -46441,9 +46358,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+Redimensionar gráficos %
 \end_layout
 
 \end_inset
@@ -46472,9 +46387,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+Anchura de texto %
 \end_layout
 
 \end_inset
@@ -46505,9 +46418,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+Anchura de columna %
 \end_layout
 
 \end_inset
@@ -46538,9 +46449,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+Anchura de página %
 \end_layout
 
 \end_inset
@@ -46571,9 +46480,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+Anchura de línea %
 \end_layout
 
 \end_inset
@@ -46604,9 +46511,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+Altura de texto %
 \end_layout
 
 \end_inset
@@ -46637,9 +46542,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+Altura de página %
 \end_layout
 
 \end_inset
