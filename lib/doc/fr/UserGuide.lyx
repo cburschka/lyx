@@ -207,7 +207,7 @@ M
 eunier-Guttin-Cluzel
 \noun default
 .
- Revue finale 1.6 et mise à jour 2.0: Jean-Pierre 
+ Revue finale 1.6 et mise à jour 2.0 et 2.1: Jean-Pierre 
 \noun on
 Chrétien
 \noun default
@@ -34325,13 +34325,10 @@ man-page
 hunspell
 \family default
 .
- 
+ LyX pour Mac OS peut également utiliser le correcteur orthographique natif
+ du Mac et l’utilisera de fait implicitement
 \lang english
-LyX on Mac
-\begin_inset space ~
-\end_inset
-
-OS can also use Mac's own spellchecker and will use it by default;
+;
 \end_layout
 
 \begin_layout Description
@@ -47590,9 +47587,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+Échelle graphique %
 \end_layout
 
 \end_inset
@@ -47621,9 +47616,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+Largeur texte %
 \end_layout
 
 \end_inset
@@ -47654,9 +47647,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+Largeur colonne %
 \end_layout
 
 \end_inset
@@ -47687,9 +47678,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+Largeur page %
 \end_layout
 
 \end_inset
@@ -47720,9 +47709,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+Largeur ligne %
 \end_layout
 
 \end_inset
@@ -47753,9 +47740,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+Hauteur texte %
 \end_layout
 
 \end_inset
@@ -47786,9 +47771,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+Hauteur page %
 \end_layout
 
 \end_inset
@@ -48211,7 +48194,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.tex.ac.uk/faq/
+http://www.tex.ac.uk/faq
 \end_layout
 
 \end_inset
