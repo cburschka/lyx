@@ -74,12 +74,6 @@ export/templates/ctex_(pdf[23]?|pdf4_texF)
 # Find out why and whether the script could be improved.
 export/examples/listerrors_(pdf[245]).*
 
-# "Dangerous" setting "language default (no inpuentc)"
-# non-ASCII characters fail with LuaTeX
-# (work "per accident" with other routes)
-# set to "language default" to use inputenc/luainputenc!
-export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
-
 # Requires CJK.
 # Why does it fail with pdflatex and dvipdfm? CJK restriction? Workarounds?
 # (Also fails with Xe/LuaTeX and TeX-fonts -- as expected, see ignoredTests)
@@ -89,8 +83,6 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 # Why? -> sort and comment
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
-
-
 
 
 Sublabel: lyxbugs
@@ -191,6 +183,13 @@ export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 # \MakeTextUppercase requires microtype.
 # http://tex.stackexchange.com/questions/202142/problems-compiling-tufte-title-page-in-xelatex
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
+
+# Wasysym - LuaTeX incompatibility
+# Missing character reported for $_\sun$
+# (the sun-character is printed in \normalsize (i.e. not scaled)
+# with any export format -- only LuaTeX reports a missing character).
+export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
+
 
 
 Sublabel: multilingual
