@@ -1,11 +1,15 @@
 # Regular expressions for tests that should not be executed with
-# ctest -L export or ctest -L inverted because they are inapt
+# ctest -L export or ctest -L inverted because they do not work as expected
 # (either unreliable or invalid).
 #
 # Patterns will be automatically enclosed with '^' and '$'.
-# Matching tests get the label "unreliable".
+# Matching tests get the label "unreliable" and do not get the label "export".
+#
+# TODO: Name problem: *invalid* tests (wrong output) are not *unreliable*.
+#       Use "unfit" as better label and name of pattern file?
 
 Sublabel: nonstandard
+#
 # Documents with additional requirements,
 # e.g. a class or package file not on CTAN.
 # TODO: rename to "extra"?
@@ -21,6 +25,22 @@ export/templates/ectaart_(dvi3|pdf5)_(tex|system)F
 # 2.) LuaTeX does not support Farsi yet. See:
 #     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
+
+# requires knitr, requires rjournal.sty (not on CTAN)
+# incompatible with fontspec?
+export/templates/RJournal_(dvi3|pdf[45])_systemF
+
+# Requires aa.cls (not on CTAN).
+# Fails with XeTeX/LuaTeX
+# Reported upstream (https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html)
+# Is there a new version fixing the problem?
+export/examples/aa_sample_(dvi3|pdf[45])_.*
+export/templates/aa_(dvi3|pdf[45])_.*
+
+# Requires iucr.cls (not on CTAN)
+# Is there a new version fixing the problem?
+# Does LuaTeX produce sensible results?
+export/templates/IUCr-article_pdf4_systemF
 
 
 Sublabel: erratic
