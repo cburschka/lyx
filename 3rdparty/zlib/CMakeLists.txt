@@ -75,6 +75,7 @@ endif()
 
 #set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
 #configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein ${ZLIB_PC} @ONLY)
+set(Z_PREFIX 1)
 configure_file(${SRCDIR}/zconf.h.cmakein ${CMAKE_BINARY_DIR}/zconf.h @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
