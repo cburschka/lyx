@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin unavailable
+\origin /systemlyxdir/doc/es/
 \textclass scrbook
 \begin_preamble
 % that links to image floats jumps
@@ -341,7 +341,8 @@ sidecap
 \end_layout
 
 \begin_layout Plain Layout
-La última versión en PDF de este documento puede encontrarse aquí:
+La última versión en PDF de este documento (en inglés) puede encontrarse
+ aquí:
 \series bold
 
 \begin_inset Newline newline
@@ -1987,8 +1988,8 @@ reference "subsec:Multifilas"
 \begin_inset Newline newline
 \end_inset
 
-Las casillas de giro rotan la celda actual, una selección o toda el cuadro
- 90º en el sentido de las agujas del reloj.
+Las casillas de giro rotan la celda actual, una selección o todo el cuadro
+ 90º en sentido antihorario.
  La rotación no se ve en \SpecialChar LyX
 , sí en la salida.
  Para más información véase sección
@@ -2360,11 +2361,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-up"
 \end_inset
 
-
-\lang english
- 
-\lang spanish
-desplaza la fila arriba
+ desplaza la fila arriba
 \end_layout
 
 \begin_layout Labeling
@@ -10997,7 +10994,7 @@ Franz
 \end_layout
 
 \begin_layout Section
-Líneas múltiples en columnas y filas
+Líneas, columnas y filas múltiples
 \end_layout
 
 \begin_layout Subsection
@@ -17876,16 +17873,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Cuadro-filas_color"
 
 \end_inset
 
-
-\lang spanish
 Cuadro con filas alternas coloreadas en gris claro.
 \end_layout
 
@@ -19014,8 +19007,6 @@ Material rotado
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -19029,10 +19020,6 @@ Nota:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 El cuadro
 \begin_inset space ~
 \end_inset
@@ -19233,8 +19220,6 @@ cm.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
@@ -20224,7 +20209,7 @@ Enorme
 \begin_layout Plain Layout
 
 \size huge
-Más enorme
+Gigante
 \end_layout
 
 \end_inset
@@ -20404,7 +20389,7 @@ strut
 
 
 \size huge
-Más enorme
+Gigante
 \end_layout
 
 \end_inset
@@ -23397,13 +23382,9 @@ volver a predeterminado
 
 \begin_layout Standard
 La coloración de líneas y columnas funciona como se describe en la sección
-\lang english
-
 \begin_inset space ~
 \end_inset
 
-
-\lang spanish
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -23619,15 +23600,12 @@ dashgapcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Nota
 \series default
 : Si hay múltiples comandos en una celda, el comando de 
@@ -23671,15 +23649,12 @@ rowcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Nota:
 \series default
  El paquete \SpecialChar LaTeX
@@ -23692,7 +23667,6 @@ arydshln
 \series bold
 colortbl
 \series default
-\color inherit
 
 \begin_inset Index idx
 status collapsed
@@ -23704,8 +23678,6 @@ status collapsed
 
 \end_inset
 
-
-\color none
 .
 \end_layout
 
@@ -23828,8 +23800,8 @@ Flotantes ! Introducción
 \end_layout
 
 \begin_layout Standard
-Un flotante es un bloque de texto asociado con algún tipo de etiqueta que
- no tiene posición fija.
+Un flotante es un bloque que no tiene posición fija, asociado con algún
+ tipo de etiqueta.
  Puede «flotar» adelante o atrás una o dos páginas, donde encaje mejor.
  Las 
 \family sans
@@ -26704,13 +26676,19 @@ Flotante en el lado derecho.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An alternative and simpler solution is to use the module 
+Una solución alternativa más simple es usar el módulo 
 \family sans
-Variable-width Minipages
+Minipáginas
+\begin_inset space ~
+\end_inset
+
+ancho
+\begin_inset space ~
+\end_inset
+
+variable
 \family default
-, see sec.
+, véase la sección
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -26722,15 +26700,16 @@ reference "sec:Minipáginas"
 \end_inset
 
 .
- Variable-width minipages adapt automatically to the width of the figures
- and tables.
- They do not require an explicit width to be given, and they improve the
- horizontal alignment of the figures.
- The LyX example file 
+ Las minipáginas de anchura variable se adaptan automáticamente a la anchura
+ de figuras y cuadros.
+ No requieren una anchura explícita y mejoran la alineación horizontal del
+ contenido.
+ El archivo de ejemplo \SpecialChar LyX
+ 
 \emph on
 varwidth-floats-side-by-side
 \emph default
- gives examples of how to do this.
+ da ejemplos de cómo hacer esto.
 \end_layout
 
 \begin_layout Section
@@ -27378,11 +27357,7 @@ status collapsed
 
 \end_inset
 
- en el preámbulo del documento con la
-\lang english
- 
-\lang spanish
-opción
+ en el preámbulo del documento con la opción
 \begin_inset Foot
 status collapsed
 
@@ -29329,7 +29304,7 @@ Insertar\SpecialChar menuseparator
 Nota
 \family default
 .
- Hay cinco tipos de notas:
+ Hay tres tipos de notas:
 \end_layout
 
 \begin_layout Description
@@ -29377,7 +29352,7 @@ Comentario Esta nota tampoco se muestra en la salida pero aparece como un
 Archivo\SpecialChar menuseparator
 Exportar\SpecialChar menuseparator
 \SpecialChar LaTeX
- (pdflatex) / (plain)
+ (pdflatex) / (simple)
 \family default
 .
  Su recuadro se ve así:
@@ -29411,16 +29386,12 @@ Una nota comentario que sólo aparece como comentario en archivos \SpecialChar L
 \end_layout
 
 \begin_layout Description
-Resaltado
+Nota
 \begin_inset space ~
 \end_inset
 
-en
-\begin_inset space ~
-\end_inset
-
-gris Esta nota aparece en la salida como texto resaltado en gris.
- Su recuadro se parece a este:
+gris Esta nota aparece en la salida como texto en color gris pálido.
+ Su recuadro se ve así:
 \begin_inset Newline newline
 \end_inset
 
@@ -29432,7 +29403,7 @@ gris Esta nota aparece en la salida como texto resaltado en gris.
 \begin_inset Graphics
 	filename clipart/GrisNotaImagenQt4.png
 	display false
-	scale 75
+	scale 70
 
 \end_inset
 
@@ -29474,12 +29445,12 @@ Este es el texto
 status collapsed
 
 \begin_layout Plain Layout
-Esto es un ejemplo de nota al pie en una nota resaltada en gris.
+Esto es un ejemplo de nota al pie en una nota gris.
 \end_layout
 
 \end_inset
 
- de un comentario que se muestra resaltado en gris.
+ de anotación que se muestra en color gris pálido.
 \end_layout
 
 \end_inset
@@ -29529,8 +29500,8 @@ La nota resaltada en gris se ha redefinido aquí para mostrarla con la definici�
 \begin_inset Newline newline
 \end_inset
 
-Como se ve en el ejemplo, la primera línea de las notas resaltadas en gris
- está un poco sangrada, y por otra parte pueden tener notas al pie.
+Como se ve en el ejemplo, la primera línea de las notas grises tiene una
+ pequeña sangría, y por otra parte pueden tener notas al pie.
 \end_layout
 
 \begin_layout Standard
@@ -29581,7 +29552,7 @@ Supr
 \begin_inset VSpace bigskip
 \end_inset
 
-El color de las notas resaltadas en gris puede cambiarse en el menú 
+El color del texto en las notas grises puede cambiarse en el menú 
 \family sans
 Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
@@ -29774,10 +29745,13 @@ reference "pie:Esto-es-una"
 \end_inset
 
 
-\lang english
-Footnotes in title environments are usually not numbered with symbols and
- they cannot contain several paragraphs.
- See for example the footnote in the titling of this document.
+\end_layout
+
+\begin_layout Standard
+Las notas al pie en entornos de título generalmente no se numeran y no pueden
+ contener varios párrafos.
+ Véase como ejemplo la nota al pie en el título de este documento.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -32325,7 +32299,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -32377,7 +32351,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -32423,7 +32397,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -32461,7 +32435,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -32870,7 +32844,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Texto estirado horizontalmente.
@@ -32930,11 +32904,7 @@ rectangular
 \end_inset
 
 sencillo Dibuja un borde rectangular alrededor del marco.
- El grosor del borde
-\lang english
- can be specified
-\lang spanish
-.
+ El grosor del borde se puede especificar.
  
 \begin_inset Box Boxed
 position "c"
@@ -32952,7 +32922,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -32995,7 +32965,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -33038,7 +33008,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -33056,11 +33026,7 @@ Borde
 \end_inset
 
 sombreado Dibuja un borde rectangular de sombra alrededor del marco.
- El grosor de la línea y la sombra 
-\lang english
-can be specified
-\lang spanish
-.
+ El grosor de la línea y la sombra se puede especificar.
  
 \begin_inset Box Shadowbox
 position "c"
@@ -33078,7 +33044,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -33131,7 +33097,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Cuadro con fondo sombreado
@@ -33219,7 +33185,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -33260,7 +33226,7 @@ status collapsed
 
 Si usas la decoración 
 \family sans
-borde rectangular sencillo
+Borde rectangular sencillo
 \family default
  sin marco interior, puedes permitir saltos de página dentro del marco.
  Ten en cuenta que en ese caso, al contrario que otros marcos con bordes,
@@ -33846,22 +33812,27 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- has also basic support for minipages whose size is automatically determined
- by the width of their contents, via the module 
+ proporciona soporte básico para minipáginas cuyo tamaño es determinado
+ automáticamente por la anchura de su contenido, mediante el módulo 
 \family sans
-Variable-width Minipages
+Minipáginas
+\begin_inset space ~
+\end_inset
+
+ancho
+\begin_inset space ~
+\end_inset
+
+variable
 \family default
 .
- The \SpecialChar LyX
- example file 
+ El archivo de ejemplo \SpecialChar LyX
+ 
 \emph on
 varwidth-floats-side-by-side
 \emph default
- gives examples of variable-width minipages used for placing two floats
- side-by-side.
+ tiene ejemplos de estas minipáginas para colocar flotantes adosados.
 \end_layout
 
 \begin_layout Section
@@ -34404,11 +34375,12 @@ Marcos ! Colorear
 \end_layout
 
 \begin_layout Standard
+Para colorear el fondo de un marco selecciona el color deseado en el cuadro
+ de diálogo.
+ Como ejemplo, he aquí un marco con fondo naranja:
+\end_layout
 
-\lang english
-To color the background of a box just select the color you like in the box
- dialog.
- This is for example a box with orange background: 
+\begin_layout Standard
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -34428,9 +34400,7 @@ backgroundcolor "orange"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Box with orange background
+Marco con fondo naranja
 \end_layout
 
 \end_inset
@@ -34439,11 +34409,8 @@ Box with orange background
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use the decoration 
+Si usas la decoración 
 \family sans
-\lang spanish
 Borde
 \begin_inset space ~
 \end_inset
@@ -34454,11 +34421,13 @@ rectangular
 
 sencillo
 \family default
-\lang english
- you can set a frame color.
- In this case you must also specify a background color (LyX sets white as
- default).
- Here is an example: 
+ puedes determinar un borde colorido.
+ En este caso debes especificar además un color (\SpecialChar LyX
+ pone blanco por omisión).
+ Un ejemplo:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Box Boxed
 position "t"
 hor_pos "c"
@@ -34478,9 +34447,7 @@ backgroundcolor "yellow"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-Box with teal frame color and yellow background color
+Marco con borde color cerceta y fondo amarillo
 \end_layout
 
 \end_inset
@@ -34493,10 +34460,10 @@ Box with teal frame color and yellow background color
 \end_inset
 
 
-\lang english
-Of course you can also have colored text inside a colored box:
-\lang spanish
+\end_layout
 
+\begin_layout Standard
+También puedes colorear el texto, por supuesto:
 \begin_inset Newline newline
 \end_inset
 
@@ -34538,11 +34505,8 @@ Marco con texto, fondo y borde en distintos colores.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need another color than the predefined ones,
-\lang spanish
- puedes definir tus propios colores según se explica en la sección
+Si deseas un color distinto de los predefinidos, puedes definir tus propios
+ colores según se explica en la sección
 \begin_inset space ~
 \end_inset
 
@@ -34554,17 +34518,12 @@ reference "sec:Cuadros-Coloreados"
 \end_inset
 
 .
- 
-\lang english
-To use your own color you must typeset the box by using TeX code:
+ Para usar un color personal debes hay que usar código \SpecialChar TeX
+: 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Colored boxes without frame 
-\lang spanish
-se crean con el comando 
+Los marcos coloreados sin borde se crean con el comando 
 \series bold
 
 \backslash
@@ -34639,11 +34598,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Framed, colored boxes are created
-\lang spanish
- con el comando 
+Los marcos coloreados con borde se crean con el comando 
 \series bold
 
 \backslash
@@ -34665,13 +34620,12 @@ Marcos girados y a escala
 \end_layout
 
 \begin_layout Standard
-Para poder usar los marcos 
-\lang english
-described in this section, the module 
+Para poder usar los marcos descritos en esta sección debe cargarse el módulo
+ 
 \family sans
-GraphicBoxes
+Marcos gráficos
 \family default
- must be loaded in the document settings.
+ en la configuración del documento.
 \end_layout
 
 \begin_layout Standard
@@ -34733,35 +34687,42 @@ Material rotado
 \end_layout
 
 \begin_layout Standard
-Para girar material debes ponerlo
-\lang english
- into a 
+Para girar material debes ponerlo en un 
 \family sans
-Rotatebox
+Marco
+\begin_inset space ~
+\end_inset
+
+rotación
 \family default
 .
- Such a box is inserted via the menu 
+ Se inserta con el menú
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Rotatebox
+ Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
+
+personalizado\SpecialChar menuseparator
+Marco
+\begin_inset space ~
+\end_inset
+
+rotación
 \family default
 .
 \end_layout
 
 \begin_layout Standard
-El origen de rotación 
-\lang english
-can be specified via the inset 
+El origen de rotación se puede especificar en el recuadro 
 \family sans
-Origin
+Origen
 \family default
- (menu 
+ (menú 
 \family sans
-Insert\SpecialChar menuseparator
-Origin
+Insertar\SpecialChar menuseparator
+Origen
 \family default
-\lang spanish
 ) en la forma 
 \series bold
 origin=position
@@ -34771,23 +34732,43 @@ origin=position
 \emph on
 c
 \emph default
- (center), 
+ (
+\emph on
+center
+\emph default
+, centro), 
 \emph on
 l
 \emph default
- (left), 
+ (
+\emph on
+left
+\emph default
+, izquierda), 
 \emph on
 r
 \emph default
- (right), 
+ (
+\emph on
+right
+\emph default
+, derecha), 
 \emph on
 b
 \emph default
- (bottom), 
+ (
+\emph on
+bottom
+\emph default
+, abajo), 
 \emph on
 t
 \emph default
- (top), así como combinaciones adecuadas de las posiciones básicas.
+ (
+\emph on
+top
+\emph default
+, arriba), así como combinaciones adecuadas de las posiciones básicas.
  Por ejemplo, 
 \emph on
 lt
@@ -34800,28 +34781,27 @@ l
 \emph default
 .
  El ángulo de rotación es un número de grados, y puede ser negativo.
- El sentido de giro es contrario al de las agujas del reloj.
+ El sentido de giro es antihorario.
 \end_layout
 
 \begin_layout Standard
-En el siguiente ejemplo 
+En el siguiente ejemplo se ha insertado 
 \series bold
-\lang english
 origin=c
 \series default
- was inserted to the 
+ en el recuadro 
 \family sans
-Option
+Origen
 \family default
- inset and 
+ y 
 \series bold
 60
 \series default
- was inserted to the 
+ en el recuadro 
 \family sans
-Angle
+Ángulo
 \family default
- inset.
+.
 \end_layout
 
 \begin_layout Standard
@@ -35087,24 +35067,21 @@ Cuadros ! Girar
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ Si el recuadro 
 \family sans
-Angle
+Ángulo
 \family default
- inset is empty or contains other characters than numbers you will get \SpecialChar LaTeX
-
- errors when viewing/exporting the document.
+ está vacío o contiene caracteres no numéricos habrá errores \SpecialChar LaTeX
+ al ver/exportar
+ el documento.
 \end_layout
 
 \end_inset
@@ -35137,72 +35114,74 @@ Material a escala
 \end_layout
 
 \begin_layout Standard
-Para modificar las proporciones de un material
-\lang english
- put it into a 
+Para modificar las proporciones de un material se coloca en un 
 \family sans
-Scalebox
+Marco
+\begin_inset space ~
+\end_inset
+
+escala
 \family default
 .
- Such a box is inserted via the menu 
+ Se inserta con el menú
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Scalebox
+ Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
+
+personalizado\SpecialChar menuseparator
+Marco
+\begin_inset space ~
+\end_inset
+
+escala
 \family default
 .
 \end_layout
 
 \begin_layout Standard
+El 
+\family sans
+Marco
+\begin_inset space ~
+\end_inset
 
-\lang english
-The 
-\family sans
-Scalebox
+escala
 \family default
- inset has the mandatory inset 
+ contiene el recuadro obligatorio 
 \family sans
-H-Factor
+Factor-H
 \family default
- and the optional inset 
+ y el opcional 
 \family sans
-V-Factor
+Factor-V
 \family default
- (inserted via the menu 
+ (con el menú 
 \family sans
-Insert\SpecialChar menuseparator
-V-Factor)
+Insertar\SpecialChar menuseparator
+Factor-V
 \family default
-.
- Input there there horizontal and vertical scale factor, respectively.
- If no 
+).
+ En ellos se introducen los factores de escala horizontal y vertical, respectiva
+mente.
+ Si no se usa 
 \family sans
-V-Factor
+Factor-V
 \family default
- inset is used
-\lang spanish
 , su valor será el mismo que el factor de escala horizontal.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get for example 
-\lang spanish
-de doble tamaño que el texto normal del documento
-\lang english
-, insert 
+Para obtener doble tamaño que el texto normal del documento, inserta 
 \series bold
 2
 \series default
- into the 
+ en el recuadro
 \family sans
-H-Factor
+ Factor-H
 \family default
- inset.
- An example
-\lang spanish
-: 
+, por ejemplo: 
 \begin_inset Flex Scalebox
 status open
 
@@ -35227,24 +35206,21 @@ Hola
 \begin_layout Standard
 
 \series bold
-\lang english
 2
 \series default
- as 
+ en 
 \family sans
-H-Factor
+Factor-H y
 \family default
- and 
+ 
 \series bold
 1
 \series default
- as 
+ en 
 \family sans
-V-Factor
+Factor-V
 \family default
- distorts the
-\lang spanish
- 
+ distorsiona el resultado: 
 \begin_inset Flex Scalebox
 status open
 
@@ -35277,28 +35253,24 @@ Hola
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the scaling factor is negative, the box content will be mirrored.
- Therefore 
+Si el factor de escala es negativo, el contenido del marco se reflejará.
+ Por tanto, 
 \series bold
 -1
 \series default
- as 
+ para 
 \family sans
-H-Factor
+Factor-H
 \family default
- and 
+ y 
 \series bold
 1
 \series default
- as 
+ para 
 \family sans
-V-Factor
+Factor-V
 \family default
- can be used to create mirror writing
-\lang spanish
-: 
+ se puede usar para escribir en espejo: 
 \begin_inset Flex Scalebox
 status open
 
@@ -35327,117 +35299,124 @@ Hola
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\lang english
--1
-\series default
- as 
-\family sans
-H-Factor
-\family default
- and 
-\series bold
-1
-\series default
- as 
-\family sans
-V-Factor
-\family default
- reflects the
-\lang spanish
- 
-\begin_inset Flex Scalebox
-status open
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
--1
-\end_layout
-
-\end_inset
-
-Hola
-\end_layout
-
-\end_inset
-
- 
-\lang english
-at the base line.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The 
-\family sans
-Reflectbox
-\family default
- (menu 
-\family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Reflectbox
-\family default
-) is equivalent to 
-\series bold
--1
-\series default
- as 
-\family sans
-H-Factor
-\family default
- and 
-\series bold
-1
-\series default
- as 
-\family sans
-V-Factor 
-\family default
-for a 
-\family sans
-Scalebox
-\family default
 .
 \end_layout
 
 \begin_layout Standard
 
-\lang english
+\series bold
+1
+\series default
+ para 
+\family sans
+Factor-H
+\family default
+ y 
+\series bold
+-1
+\series default
+ para 
+\family sans
+Factor-V
+\family default
+ refleja respecto a la línea: 
+\begin_inset Flex Scalebox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+Hola
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+El 
+\family sans
+Marco
+\begin_inset space ~
+\end_inset
+
+reflejo
+\family default
+ (menú
+\family sans
+ Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
+
+personalizado\SpecialChar menuseparator
+Marco
+\begin_inset space ~
+\end_inset
+
+reflejo
+\family default
+) equivale a 
+\family sans
+Marco
+\begin_inset space ~
+\end_inset
+
+escala
+\family default
+ con 
+\series bold
+-1
+\series default
+ para 
+\family sans
+Factor-H
+\family default
+ y 
+\series bold
+1
+\series default
+ para 
+\family sans
+Factor-V
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ Si 
 \family sans
-H-Factor
+Factor-H
 \family default
- inset is empty or contains other characters than numbers you will get LaTeX
- errors when viewing/exporting the document.
+ está vacío o contiene caracteres no numéricos habrá errores \SpecialChar LaTeX
+ al ver/exportar
+ el documento.
 \end_layout
 
 \end_inset
@@ -35449,92 +35428,96 @@ H-Factor
 \begin_inset VSpace bigskip
 \end_inset
 
+El 
+\family sans
+Marco
+\begin_inset space ~
+\end_inset
 
-\lang english
-The 
-\family sans
-Resizebox
+tamaño
 \family default
- (menu 
+ (menú 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Insets\SpecialChar menuseparator
-Resizebox
+Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
+
+personalizado\SpecialChar menuseparator
+Marco
+\begin_inset space ~
+\end_inset
+
+tamaño
 \family default
-) is used to scale the content to a defined width and height.
- The 
+) se usa para redimensionar el contenido a una anchura y altura dadas.
+ El recuadro 
 \family sans
-Resizebox
+Marco
+\begin_inset space ~
+\end_inset
+
+tamaño
 \family default
- inset has the mandatory inset 
+ contiene el recuadro obligatorio 
 \family sans
-Width
+Ancho
 \family default
- and the optional inset 
+ y el opcional 
 \family sans
-Height
+Alto
 \family default
- (inserted via the menu 
+ (menú 
 \family sans
-Insert\SpecialChar menuseparator
-Height)
+Insertar\SpecialChar menuseparator
+Alto)
 \family default
 .
- Input there there width and height, respectively, as value with a unit.
- 
+ En ellos se introducen respectivamente la anchura y la altura como cantidad
+ y unidad.
+ La lista de unidades disponibles es
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Unidades"
 
 \end_inset
 
- lists the possible units.
- If there is an 
-\lang spanish
-signo de exclamación, 
+.
+ Si en uno de los recuadros hay un signo de exclamación, 
 \series bold
 !
 \series default
-, 
-\lang english
-in of of the two insets
-\lang spanish
-, la escala se hace de forma que se mantiene la relación de las dimensiones
- originales del contenido del marco.
-
-\lang english
- If no 
+, la escala mantiene la relación de las dimensiones originales del contenido
+ del marco.
+ Si no se usa el recuadro 
 \family sans
-Height
+Alto
 \family default
- inset is used an 
-\lang spanish
-signo de exclamación
-\lang english
- will internally be used for the height.
+, internamente se usará un signo de exclamación para la altura.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+ de 
 \family sans
-Width
+Ancho
 \family default
- and 
+ y 
 \series bold
 1cm
 \series default
- as 
+ de 
 \family sans
-Height
+Alto
 \family default
- produces:
-\lang spanish
- 
+ produce: 
 \begin_inset Flex Resizebox
 status open
 
@@ -35569,28 +35552,25 @@ Hola
 
 
 \series bold
-\lang english
 2cm
 \series default
- as 
+ de 
 \family sans
-Width
+Ancho
 \family default
- and 
+ y 
 \series bold
 !
 \series default
- as 
+ de 
 \family sans
-Height
+Alto
 \family default
- (or no 
+ (o sin 
 \family sans
-Height
+Alto
 \family default
-) produces:
-\lang spanish
- 
+) produce: 
 \begin_inset Flex Resizebox
 status open
 
@@ -35623,23 +35603,21 @@ Hola
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If the 
+ Si 
 \family sans
-Width
+Ancho
 \family default
- inset is empty or contains an invalid unit you will get LaTeX errors when
- viewing/exporting the document.
+ está vacío o contiene unidades no válidas habrá errores \SpecialChar LaTeX
+ al ver/exportar
+ el documento.
 \end_layout
 
 \end_inset
@@ -35656,19 +35634,29 @@ Width
 
 \begin_layout Standard
 Los marcos se pueden combinar en cualquier orden.
+ Un ejemplo de 
+\family sans
+Marco
+\begin_inset space ~
+\end_inset
 
-\lang english
- As example a 
-\family sans
-Reflectbox
+reflejo
 \family default
- inside a 
+ dentro de un
 \family sans
-Resizebox
+ Marco
+\begin_inset space ~
+\end_inset
+
+tamaño
 \family default
- which is in turn inside a 
+ girado en un 
 \family sans
-Rotatebox
+Marco
+\begin_inset space ~
+\end_inset
+
+rotación
 \family default
 :
 \end_layout
@@ -37255,12 +37243,12 @@ Configuración\SpecialChar menuseparator
 Módulos
 \family default
 ).
- Para insertar una letra capital, usa el estilo 
+ Para insertar una letra capital, usa el entorno 
 \family sans
 Capital
 \family default
 .
- Este estilo tiene un argumento obligatorio y dos opcionales.
+ Este entorno tiene un argumento obligatorio y dos opcionales.
  Los argumentos se insertan mediante el menú 
 \family sans
 Insertar
@@ -37268,33 +37256,25 @@ Insertar
 .
  El argumento obligatorio 
 \family sans
-\lang english
-Initial
+Capital
 \family default
-\lang spanish
- contiene 
-\lang english
-the letter(s) that is the initial, the argument 
+ contiene la(s) letra(s) capital(es), el argumento opcional 
 \family sans
-Rest
+Resto
 \begin_inset space ~
 \end_inset
 
-of
+de
 \begin_inset space ~
 \end_inset
 
-Initial
+capital
 \family default
- contains the rest of the word or text of the initial letter(s)
-\lang spanish
-.
+ contiene el resto de la palabra o del texto en capitales.
  El argumento 
 \family sans
-\lang english
-Options
+Opciones
 \family default
-\lang spanish
  contiene parámetros para modificar la letra capital.
  Véase la documentación de 
 \series bold
@@ -37318,7 +37298,7 @@ versalitas
 \end_layout
 
 \begin_layout Standard
-Aquí hay algumos ejemplos:
+Aquí hay algunos ejemplos:
 \end_layout
 
 \begin_layout Standard
@@ -40159,9 +40139,7 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+Redimensionar gráficos %
 \end_layout
 
 \end_inset
@@ -40190,9 +40168,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+Anchura de texto %
 \end_layout
 
 \end_inset
@@ -40223,9 +40199,7 @@ textwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+Anchura de columna %
 \end_layout
 
 \end_inset
@@ -40256,9 +40230,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+Anchura de página %
 \end_layout
 
 \end_inset
@@ -40289,9 +40261,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+Anchura de línea %
 \end_layout
 
 \end_inset
@@ -40322,9 +40292,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+Altura de texto %
 \end_layout
 
 \end_inset
@@ -40355,9 +40323,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+Altura de página %
 \end_layout
 
 \end_inset
@@ -45087,7 +45053,7 @@ Documentación del paquete \SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "refstyle"
-target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
 
 \end_inset
 
