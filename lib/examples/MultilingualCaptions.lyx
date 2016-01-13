@@ -142,12 +142,12 @@ Multilingual
 captions
 \family default
  allows to typeset captions in two languages.
- It requires the \SpecialCharNoPassThru LaTeX
+ It requires the \SpecialChar LaTeX
  package 
 \series bold
 bicaption
 \series default
- which is part of the \SpecialCharNoPassThru LaTeX
+ which is part of the \SpecialChar LaTeX
  package 
 \series bold
 caption
@@ -476,7 +476,7 @@ font=
 \series default
 .
  For more information about possible customizations, see the documentation
- of the \SpecialCharNoPassThru LaTeX
+ of the \SpecialChar LaTeX
  package 
 \series bold
 caption
@@ -711,7 +711,7 @@ PassOptionsToPackage{list=off}{bicaption}
 It is also possible to have two different lists, one for the document language,
  one for the second language.
  This is the case in this file.
- To split the list one needs to add these lines to the \SpecialCharNoPassThru LaTeX
+ To split the list one needs to add these lines to the \SpecialChar LaTeX
  preamble:
 \end_layout
 
@@ -775,7 +775,7 @@ listoffigureGeres
 \end_layout
 
 \begin_layout Standard
-as \SpecialCharNoPassThru TeX
+as \SpecialChar TeX
  code.
  Here is the German list of figures:
 \end_layout
@@ -839,7 +839,7 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-For more information what can be done with the \SpecialCharNoPassThru LaTeX
+For more information what can be done with the \SpecialChar LaTeX
  package 
 \series bold
 bicaption
@@ -864,7 +864,7 @@ key "bicaption"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="48" columns="2">
-<features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
 <row endfirsthead="true" caption="true">
@@ -1858,7 +1858,7 @@ key "bicaption"
 
 \end_inset
 
-Documentation of the \SpecialCharNoPassThru LaTeX
+Documentation of the \SpecialChar LaTeX
  package 
 \series bold
 
@@ -1879,7 +1879,7 @@ key "caption"
 
 \end_inset
 
-Documentation of the \SpecialCharNoPassThru LaTeX
+Documentation of the \SpecialChar LaTeX
  package 
 \series bold
 

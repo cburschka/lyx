@@ -89,7 +89,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Standard
-Test of spreadsheet external inset in \SpecialCharNoPassThru LyX
+Test of spreadsheet external inset in \SpecialChar LyX
 .
  Spreadsheets (created with Gnumeric, LibreOffice, OpenOffice.org, or Excel)
  gets converted to .tex with the 
@@ -106,9 +106,9 @@ External material
 \begin_inset Quotes erd
 \end_inset
 
-, any changes to the spreadsheet will be reflected in \SpecialCharNoPassThru LyX
+, any changes to the spreadsheet will be reflected in \SpecialChar LyX
 's output too.
- Thus, the \SpecialCharNoPassThru LyX
+ Thus, the \SpecialChar LyX
  document is always up to date.
 \end_layout
 
@@ -121,7 +121,7 @@ Make a spreadsheet.
 \end_layout
 
 \begin_layout Enumerate
-In \SpecialCharNoPassThru LyX
+In \SpecialChar LyX
  use the menu Insert\SpecialChar menuseparator
 File\SpecialChar menuseparator
 External Material.
@@ -221,7 +221,7 @@ Necessary software
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  needs the converter program 
 \family typewriter
 ssconvert

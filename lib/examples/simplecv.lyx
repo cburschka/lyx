@@ -117,9 +117,9 @@ William Shakespeare
 
 \begin_layout Standard
 Some people put a summary here.
- Note: there are many \SpecialCharNoPassThru LaTeX
- variables you can set in the preamble to change
- the look of the CV.
+ Note: there are many \SpecialChar LaTeX
+ variables you can set in the preamble to change the
+ look of the CV.
  Look there (choose 
 \family sans
 Document
@@ -139,8 +139,7 @@ Work Experience
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-1593\twohyphens
-1609 Wrote and produced plays for the Queen, and then for the King.
+1593–1609 Wrote and produced plays for the Queen, and then for the King.
  He really liked them a lot, but they reminded him of plays by this guy,
  the Earl of Oxford.
 \end_layout
@@ -152,10 +151,11 @@ Work Experience
 
  If a topic does not have a subtitle, you have to put a protected space
  there.
- This is a shortcoming of \SpecialCharNoPassThru LyX
+ This is a shortcoming of \SpecialChar LyX
 .
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -172,8 +172,7 @@ Education
 
 \begin_layout Topic
 \labelwidthstring MMMMM
-1577\twohyphens
-78 My Dad taught me stuff.
+1577–78 My Dad taught me stuff.
 \end_layout
 
 \begin_layout Topic
@@ -220,10 +219,10 @@ key "secondref"
 
 \end_inset
 
-These references could have been entered via Bib\SpecialCharNoPassThru TeX
+These references could have been entered via Bib\SpecialChar TeX
 \SpecialChar ldots
- In any case, here I
- can cite my work of 
+ In any case, here I can
+ cite my work of 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "firstref"

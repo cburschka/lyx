@@ -77,7 +77,7 @@ linguistics
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  localization test
 \end_layout
 
@@ -99,7 +99,8 @@ Note that all of them can not be used simulataneously in one file, so few
 \end_inset
 
  of layout environments and insets which can be translated automatically
- by \SpecialCharNoPassThru LyX
+ by \SpecialChar LyX
+
 \begin_inset Foot
 status collapsed
 
@@ -134,13 +135,14 @@ GUI
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-simply scroll through the whole document in \SpecialCharNoPassThru LyX
- window and check all layouts/ins
-ets inside the sections 2&3 are properly translated.
+simply scroll through the whole document in \SpecialChar LyX
+ window and check all layouts/insets
+ inside the sections 2&3 are properly translated.
 \end_layout
 
 \begin_layout Itemize
@@ -157,7 +159,7 @@ final document output - scroll through the whole document in output viewer
 
 \begin_layout Standard
 In case you are interested to improve or fix the support of your language,
- please drop an email to \SpecialCharNoPassThru LyX
+ please drop an email to \SpecialChar LyX
  development list.
 \end_layout
 

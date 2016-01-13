@@ -75,7 +75,7 @@ noweb
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  and Literate Programming
 \begin_inset Newline newline
 \end_inset
@@ -93,8 +93,7 @@ edmar-w-jr@technologist.com
 status collapsed
 
 \begin_layout Plain Layout
-Modified by Bernard Michael Hurley bernardh@westherts.ac.uk \threehyphens
-- Don't blame
+Modified by Bernard Michael Hurley bernardh@westherts.ac.uk —- Don't blame
  Edmar for any errors that have crept in!
 \end_layout
 
@@ -114,7 +113,7 @@ Note:
 \emph on
 examples/listerrors.lyx
 \emph default
- which should be installed in the \SpecialCharNoPassThru LyX
+ which should be installed in the \SpecialChar LyX
  scripts directory.
 \end_layout
 
@@ -148,18 +147,18 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-After typesetting a document, \SpecialCharNoPassThru LyX
- scans the \SpecialCharNoPassThru LaTeX
+After typesetting a document, \SpecialChar LyX
+ scans the \SpecialChar LaTeX
  log file looking for errors.
  For each error found, the line number is obtained and a error box is displayed
- in the \SpecialCharNoPassThru LyX
+ in the \SpecialChar LyX
  screen at that position.
 \end_layout
 
 \begin_layout Standard
 To use this feature to view compilation errors while working with literate
  documents, we need a program that filters the compilation errors and puts
- them in a format suitable for \SpecialCharNoPassThru LyX
+ them in a format suitable for \SpecialChar LyX
  reading it.
  
 \end_layout
@@ -173,12 +172,12 @@ In this document we present a filter that recognizes compilation error messages
 The filter is required to read from standard input, parse for error messages
  and copy the error messages to the standard output.
  During the output process, the filter must present the error messages in
- a format that \SpecialCharNoPassThru LyX
- can interpret, currently, the \SpecialCharNoPassThru LaTeX
+ a format that \SpecialChar LyX
+ can interpret, currently, the \SpecialChar LaTeX
  error message format.
- Of course, nothing will prevent future \SpecialCharNoPassThru LyX
- releases from being able to
- read other formats as well (like gcc error messages for example).
+ Of course, nothing will prevent future \SpecialChar LyX
+ releases from being able to read
+ other formats as well (like gcc error messages for example).
  This mechanism is necessary to fully explore the literate programming tool's
  capabilities.
 \end_layout
@@ -413,7 +412,7 @@ The output format
 \end_layout
 
 \begin_layout Standard
-The output format mimics the \SpecialCharNoPassThru TeX
+The output format mimics the \SpecialChar TeX
  error messages format.
  This function prints a number of lines residing in the global variable
  
@@ -427,13 +426,11 @@ status collapsed
 
 \begin_layout Plain Layout
 This function has been slightly changed from EW's original to make scanning
- a bit easier with \SpecialCharNoPassThru LaTeX
+ a bit easier with \SpecialChar LaTeX
 ::scanLogFile().
- The test has been added because \SpecialCharNoPassThru LyX
- can crash if empty lines are allowed
- here \threehyphens
- I can't figure out why! \threehyphens
- BMH
+ The test has been added because \SpecialChar LyX
+ can crash if empty lines are allowed here
+ — I can't figure out why! — BMH
 \end_layout
 
 \end_inset
@@ -1182,7 +1179,7 @@ The gcc compiler error messages are more complicated to scan.
  line number is still the same.
  At the time they differ, all the accumulated lines, except the last one,
  will belong to one single error message, which now can be output-ed to
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
 .
 \end_layout
 
@@ -1311,7 +1308,7 @@ Scan input for gcc error messages
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to \SpecialCharNoPassThru LyX
+      /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
@@ -1993,7 +1990,7 @@ Solaris and Linux systems using both noweb and gcc
 
 \begin_layout Plain Layout
 
-      /****** Completed the scan of one error message, output it to \SpecialCharNoPassThru LyX
+      /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
@@ -2162,7 +2159,7 @@ gcc -g -o listerrors listerrors.c
 \end_layout
 
 \begin_layout Standard
-This project can be tangled and compiled from \SpecialCharNoPassThru LyX
+This project can be tangled and compiled from \SpecialChar LyX
  if you set 
 \family typewriter
 

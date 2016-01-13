@@ -142,7 +142,8 @@ Xy
 
 \end_inset
 
--pic in \SpecialCharNoPassThru LyX
+-pic in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -151,12 +152,12 @@ H.
 \end_layout
 
 \begin_layout Abstract
-With the recent versions of \SpecialCharNoPassThru LyX
+With the recent versions of \SpecialChar LyX
  and with the 
 \family typewriter
 preview
 \family default
--style installed in the \SpecialCharNoPassThru LaTeX
+-style installed in the \SpecialChar LaTeX
 -System, the graph drawing package 
 \family typewriter
 
@@ -174,9 +175,9 @@ Xy
 
 
 \family default
--pic can be conveniently used inside \SpecialCharNoPassThru LyX
+-pic can be conveniently used inside \SpecialChar LyX
 .
- Diagrams can be edited and displayed inside the main \SpecialCharNoPassThru LyX
+ Diagrams can be edited and displayed inside the main \SpecialChar LyX
  editing window.
  Here, we shall describe how to use the 
 \family typewriter
@@ -188,7 +189,7 @@ xymatrix
 \family typewriter
 xypic
 \family default
- inside \SpecialCharNoPassThru LyX
+ inside \SpecialChar LyX
  in order to draw, to edit and to preview diagrams as typically
  used in category theory, algebra, and related fields.
  
@@ -213,21 +214,21 @@ The
 xypic
 \family default
 -package has long served as a convenient tool for easily constructing graphs
- and diagrams in \SpecialCharNoPassThru LaTeX
+ and diagrams in \SpecialChar LaTeX
 .
- Unfortunately, its use in \SpecialCharNoPassThru LyX
- had long been restricted to the infamous
- \SpecialCharNoPassThru TeX
- code boxes, meaning that the \SpecialCharNoPassThru LyX
- editor could only display the \SpecialCharNoPassThru LaTeX
--source
- and not the finished diagram.
+ Unfortunately, its use in \SpecialChar LyX
+ had long been restricted to the infamous \SpecialChar TeX
+ code
+ boxes, meaning that the \SpecialChar LyX
+ editor could only display the \SpecialChar LaTeX
+-source and not
+ the finished diagram.
  The new 
 \family typewriter
 preview
 \family default
--style of \SpecialCharNoPassThru LaTeX
- which is part of the AUC\SpecialCharNoPassThru TeX
+-style of \SpecialChar LaTeX
+ which is part of the AUC\SpecialChar TeX
  project
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -239,7 +240,7 @@ key "AUCTeX"
 \family typewriter
 xypic
 \family default
--diagrams, constructed, displayed and interactively edited inside \SpecialCharNoPassThru LyX
+-diagrams, constructed, displayed and interactively edited inside \SpecialChar LyX
 .
 \end_layout
 
@@ -282,9 +283,9 @@ Xy
 
 \end_inset
 
--pic can be used from inside \SpecialCharNoPassThru LyX
+-pic can be used from inside \SpecialChar LyX
 , how diagrams can be created and edited.
- We have tested the following using \SpecialCharNoPassThru LyX
+ We have tested the following using \SpecialChar LyX
  versions 1.3.7 up to 1.6, running under
  Windows
 \begin_inset space \thinspace{}
@@ -309,7 +310,7 @@ Xy
 
 \end_inset
 
--pic code inside the \SpecialCharNoPassThru LyX
+-pic code inside the \SpecialChar LyX
 -window, select it all and convert it to a graphical
  representation by pressing 
 \family sans
@@ -334,7 +335,7 @@ Xy
 \end_inset
 
 -pic more frequently, or if you want to modify your initial figure, you
- will want to assemble and modify your figures using \SpecialCharNoPassThru LyX
+ will want to assemble and modify your figures using \SpecialChar LyX
 's math editor.
  
 \end_layout
@@ -348,7 +349,8 @@ Once the cursor is moved over a diagram, this is displayed as an array of
 \end_layout
 
 \begin_layout Standard
-In the first two sections of this documentation, we explain how to use \SpecialCharNoPassThru LyX
+In the first two sections of this documentation, we explain how to use \SpecialChar LyX
+
  in the first mentioned mode and we introduce all 
 \begin_inset ERT
 status collapsed
@@ -403,7 +405,7 @@ Xy
 \end_inset
 
 -pic, rather our motivation is to give an introduction how the most important
- commands work inside \SpecialCharNoPassThru LyX
+ commands work inside \SpecialChar LyX
 , since the keystrokes as explained in the 
 \begin_inset ERT
 status collapsed
@@ -424,7 +426,7 @@ key "xypic manual"
 
 \end_inset
 
- will not always function correctly inside \SpecialCharNoPassThru LyX
+ will not always function correctly inside \SpecialChar LyX
 .
  
 \end_layout
@@ -434,7 +436,7 @@ Preparation
 \end_layout
 
 \begin_layout Standard
-The following requires that the \SpecialCharNoPassThru LaTeX
+The following requires that the \SpecialChar LaTeX
 -packages 
 \family typewriter
 xypic
@@ -443,7 +445,7 @@ xypic
 \family typewriter
 preview
 \family default
- are installed in the \SpecialCharNoPassThru LaTeX
+ are installed in the \SpecialChar LaTeX
  system.
  They are available from CTAN, see at 
 \begin_inset CommandInset citation
@@ -466,9 +468,9 @@ key "xypic"
 Tools\SpecialChar menuseparator
 Reconfigure
 \family default
- from the main \SpecialCharNoPassThru LyX
+ from the main \SpecialChar LyX
  menu.
- The steps to a first diagram output in \SpecialCharNoPassThru LyX
+ The steps to a first diagram output in \SpecialChar LyX
  are then:
 \end_layout
 
@@ -477,14 +479,16 @@ Activate and test
 \family typewriter
 preview
 \family default
+
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Open \SpecialCharNoPassThru LyX
+Open \SpecialChar LyX
 , choose 
 \family sans
 Tools\SpecialChar menuseparator
@@ -526,7 +530,7 @@ Test, if
 \family typewriter
 instant-preview
 \family default
- works by opening a \SpecialCharNoPassThru LyX
+ works by opening a \SpecialChar LyX
 -document and entering any math-formula, e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -568,14 +572,16 @@ Xy
 \family typewriter
 :
 \family default
+
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Inside your \SpecialCharNoPassThru LyX
+Inside your \SpecialChar LyX
 -Document, enter the text 
 \family typewriter
 
@@ -800,9 +806,9 @@ times_Z Y   & X
 \end_layout
 
 \begin_layout Standard
-The pattern should be familiar from \SpecialCharNoPassThru LaTeX
-: We see three rows, the first
- two being terminated by the end-of-line-marker 
+The pattern should be familiar from \SpecialChar LaTeX
+: We see three rows, the first two being
+ terminated by the end-of-line-marker 
 \family typewriter
 
 \backslash
@@ -1136,9 +1142,9 @@ g.
 (.3)
 \family default
 .
- In \SpecialCharNoPassThru LyX
- this works only for labels which are placed on top of the arrow,
- such as 
+ In \SpecialChar LyX
+ this works only for labels which are placed on top of the arrow, such
+ as 
 \family typewriter
 
 \backslash
@@ -1190,7 +1196,7 @@ ar[r]_(.3)
 \backslash
 psi
 \family default
- is not correctly interpreted by \SpecialCharNoPassThru LyX
+ is not correctly interpreted by \SpecialChar LyX
 's math editor.
  Two workarounds are suggested in the last section of this note.
 \end_layout
@@ -1282,8 +1288,10 @@ $
 \backslash
 ar@{^(->}[r].
 \family default
+
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1291,7 +1299,7 @@ ar@{^(->}[r].
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -1308,7 +1316,8 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-Source code in \SpecialCharNoPassThru LyX
+Source code in \SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -1364,8 +1373,7 @@ $
 \family typewriter
 
 \backslash
-ar@{\twohyphens
->}
+ar@{-->}
 \end_layout
 
 \end_inset
@@ -1477,8 +1485,7 @@ $
 \family typewriter
 
 \backslash
-ar@{\twohyphens
->>}
+ar@{-->>}
 \end_layout
 
 \end_inset
@@ -1612,13 +1619,14 @@ Following the @-character by either a 2, 3, _ or a ^, we can produce arrows
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1635,7 +1643,8 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-Source code for \SpecialCharNoPassThru LyX
+Source code for \SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -1833,8 +1842,7 @@ $
 \family typewriter
 
 \backslash
-ar@2{\twohyphens
-}
+ar@2{--}
 \end_layout
 
 \end_inset
@@ -1906,7 +1914,7 @@ This defines a new arrow tip, referred to as
 \backslash
 ar@{-|>}[r]
 \family default
- and which displays correctly in \SpecialCharNoPassThru LyX
+ and which displays correctly in \SpecialChar LyX
  as:
 \begin_inset Formula 
 \[
@@ -1983,7 +1991,7 @@ $
 \end_inset
 
 .
- When their code is written inside \SpecialCharNoPassThru LyX
+ When their code is written inside \SpecialChar LyX
  as above, select it and choose either
  
 \family sans
@@ -2030,7 +2038,7 @@ For bending arrows we use the modifier @/
 \end_inset
 
 / .
- The ellipsis stands for a \SpecialCharNoPassThru TeX
+ The ellipsis stands for a \SpecialChar TeX
 -measure which needs to be entered as a lower
  or upper index.
  Whereas in 
@@ -2055,7 +2063,7 @@ ar@/_1pc/
 \family typewriter
 1pc
 \family default
- downwards, this cannot directly be done in \SpecialCharNoPassThru LyX
+ downwards, this cannot directly be done in \SpecialChar LyX
 .
  It is necessary, to enclose the measure in a pair of braces, such as e.
 \begin_inset space \thinspace{}
@@ -2330,7 +2338,7 @@ ar@(ur,ul)[l]
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
  command 
 \family typewriter
 
@@ -2483,7 +2491,7 @@ restore
 \end_layout
 
 \begin_layout Section
-Using \SpecialCharNoPassThru LyX
+Using \SpecialChar LyX
 's math editor
 \begin_inset CommandInset label
 LatexCommand label
@@ -2508,9 +2516,8 @@ Ctrl-m
 \family sans
 Ctrl-M
 \family default
-, one may construct and modify the whole xypic-diagram inside \SpecialCharNoPassThru LyX
-'s math
- editor.
+, one may construct and modify the whole xypic-diagram inside \SpecialChar LyX
+'s math editor.
  We describe the editing steps for a figure just like the one above.
  
 \end_layout
@@ -2520,7 +2527,7 @@ Caveat - how to enter braces
 \end_layout
 
 \begin_layout Standard
-Recall that in \SpecialCharNoPassThru LyX
+Recall that in \SpecialChar LyX
 's math-editor any pair of braces 
 \family typewriter
 {
@@ -2569,7 +2576,7 @@ Xy
 \backslash
 {
 \family default
- and let \SpecialCharNoPassThru LyX
+ and let \SpecialChar LyX
  provide the closing brace and the box into which to enter the
  description of the arrow.
 \end_layout
@@ -2729,7 +2736,7 @@ r
 \begin_layout Standard
 Next, label the arrows by attaching a label text as upper or lower indices
  to the end of the arrow's path.
- As always in \SpecialCharNoPassThru LyX
+ As always in \SpecialChar LyX
 's math editor, an underscore 
 \family typewriter
 _
@@ -2739,7 +2746,7 @@ _
 ^
 \family default
  followed by a space opens a box for an upper index.
- You can enter any \SpecialCharNoPassThru LaTeX
+ You can enter any \SpecialChar LaTeX
 -code as a label.
 \end_layout
 
@@ -2786,7 +2793,7 @@ Finally, you can modify the appearance of the arrows by entering @-modifiers
 \backslash
 {
 \family default
- with the arrow description entered inside the \SpecialCharNoPassThru LyX
+ with the arrow description entered inside the \SpecialChar LyX
 -supplied box.
  If this box remains empty, you have specified an empty arrow.
  This is a useful construction, too, as you will see in the next section.
@@ -2852,9 +2859,9 @@ where
 \emph on
 measure
 \emph default
- is any valid \SpecialCharNoPassThru TeX
--measure that should be entered as upper or lower index
- to the first slash /.
+ is any valid \SpecialChar TeX
+-measure that should be entered as upper or lower index to
+ the first slash /.
  Make sure that the ending slash does not end up being part of the upper
  or lower index.
 \end_layout
@@ -2880,7 +2887,7 @@ A more serious reason could be a syntactical error in your input (in that
 \family sans
 Ctrl+Z
 \family default
-, or try to translate the \SpecialCharNoPassThru LyX
+, or try to translate the \SpecialChar LyX
 -file into 
 \family sans
 DVI
@@ -2904,7 +2911,7 @@ Hacks
 \end_layout
 
 \begin_layout Standard
-Certain things do not work correctly inside \SpecialCharNoPassThru LyX
+Certain things do not work correctly inside \SpecialChar LyX
 .
  The ones that we (used to) miss most are the horizontal and vertical scaling
  of diagrams, and the correct positioning of arrows.
@@ -3000,7 +3007,7 @@ xymatrix@R=1pc
 \end_inset
 
  into a formula to get the desired matrix because the @-character is interpreted
- by \SpecialCharNoPassThru LyX
+ by \SpecialChar LyX
  as ending the 
 \family typewriter
 
@@ -3145,9 +3152,9 @@ Document\SpecialChar menuseparator
 Preamble
 \family default
 ):
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -3223,7 +3230,7 @@ xyC
 \family default
  or both.
  Don't forget the backslashes and remember, that the closing brace is automatica
-lly supplied by \SpecialCharNoPassThru LyX
+lly supplied by \SpecialChar LyX
 .
  Inside the braces enter the dimensions.
 \begin_inset Newline newline
@@ -3380,7 +3387,7 @@ ar[ur]_(0.3)
 \backslash
 phi
 \family default
-, does not work from inside \SpecialCharNoPassThru LyX
+, does not work from inside \SpecialChar LyX
 .
  Instead, one has to replace the hat-symbol ^, resp.
  the underscore _ , by the macros 
@@ -3635,7 +3642,7 @@ Xy
 \family typewriter
 inset_preview.lyx
 \family default
- example shipped with \SpecialCharNoPassThru LyX
+ example shipped with \SpecialChar LyX
 , which demonstrates how to use more advanced 
 \begin_inset ERT
 status collapsed
@@ -3651,7 +3658,8 @@ Xy
 
 -commands via 
 \family typewriter
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -3827,7 +3835,7 @@ key "AUCTeX"
 
 \end_inset
 
-Homepage of AUC\SpecialCharNoPassThru TeX
+Homepage of AUC\SpecialChar TeX
 : 
 \begin_inset Flex URL
 status collapsed

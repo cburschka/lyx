@@ -76,7 +76,8 @@ THIS IS THE TITLE OF THE DOCUMENT
 \end_layout
 
 \begin_layout Author
-by Fee \SpecialCharNoPassThru LyX
+by Fee \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Date
@@ -97,26 +98,25 @@ Basic Philosophy
 \end_layout
 
 \begin_layout Standard
-The basic philosophy of \SpecialCharNoPassThru LyX
- is that you should worry about the content of
- what you're writing and not the form.
+The basic philosophy of \SpecialChar LyX
+ is that you should worry about the content of what
+ you're writing and not the form.
 \end_layout
 
 \begin_layout Subsection
-How \SpecialCharNoPassThru LyX
+How \SpecialChar LyX
  does it
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- uses \SpecialCharNoPassThru LaTeX
-, a document preparation system designed by Leslie Lamport
- in 1985.
- It, in turn, was built up from a typesetting language called \SpecialCharNoPassThru TeX
+\SpecialChar LyX
+ uses \SpecialChar LaTeX
+, a document preparation system designed by Leslie Lamport in 1985.
+ It, in turn, was built up from a typesetting language called \SpecialChar TeX
 , created
  by Donald Knuth in 1984.
- \SpecialCharNoPassThru LaTeX
- is designed around a philosophy similar to that of \SpecialCharNoPassThru LyX
+ \SpecialChar LaTeX
+ is designed around a philosophy similar to that of \SpecialChar LyX
 .
  Leslie Lamport once said (see reference 
 \begin_inset CommandInset citation
@@ -135,15 +135,15 @@ The function of typographic design is to help the reader understand the
  logical structure.
  Quotations and computer programs, being logically distinct structural elements,
  should be distinguished visually from one another....
- Since \SpecialCharNoPassThru LaTeX
- can't understand your prose, you must explicitly indicate the
- logical structure by typing special commands....
+ Since \SpecialChar LaTeX
+ can't understand your prose, you must explicitly indicate the logical
+ structure by typing special commands....
  As you are writing your document, you should be concerned with its logical
  structure, not its visual appearance.
 \end_layout
 
 \begin_layout Subsection
-Why \SpecialCharNoPassThru LyX
+Why \SpecialChar LyX
  is better
 \end_layout
 
@@ -154,12 +154,13 @@ name "sec:lyxbetter"
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
- can be useful to more people than \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ can be useful to more people than \SpecialChar LaTeX
 .
- It's considerably easier to learn, because you don't need to learn \SpecialCharNoPassThru LaTeX
- (which is practically a programming language).
- \SpecialCharNoPassThru LyX
+ It's considerably easier to learn, because you don't need to learn \SpecialChar LaTeX
+ (which
+ is practically a programming language).
+ \SpecialChar LyX
  is basically like other 
 \begin_inset Quotes eld
 \end_inset
@@ -168,7 +169,7 @@ What you see is what you get
 \begin_inset Quotes erd
 \end_inset
 
- word processors, except that \SpecialCharNoPassThru LyX
+ word processors, except that \SpecialChar LyX
  is 
 \begin_inset Quotes eld
 \end_inset
@@ -179,7 +180,7 @@ What you see is what you mean
 
 .
  In this way, it combines the ease of use of word processors with the power
- of \SpecialCharNoPassThru LaTeX
+ of \SpecialChar LaTeX
 .
  This is a Good Thing.
  Also, the file format is platform independent.
@@ -187,11 +188,12 @@ What you see is what you mean
 \end_layout
 
 \begin_layout Section
-Features of \SpecialCharNoPassThru LyX
+Features of \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  has many features which make writing documents easier.
 \begin_inset Foot
 status collapsed
@@ -211,17 +213,17 @@ very excited
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  worries about margins, and footnote numbering for you
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  makes it simple to write and edit mathematical formulae
 \end_layout
 
 \begin_layout Standard
-For a more philosophical discussion of why \SpecialCharNoPassThru LyX
+For a more philosophical discussion of why \SpecialChar LyX
  is better than lots of other
  word processors, see Section 
 \begin_inset CommandInset ref
@@ -241,7 +243,7 @@ reference "sec:lyxbetter"
 \end_layout
 
 \begin_layout Section
-Lame attempts to use other \SpecialCharNoPassThru LyX
+Lame attempts to use other \SpecialChar LyX
  stuff
 \end_layout
 
@@ -276,7 +278,7 @@ After all that scientific thinking, I started feeling more artistic, so
 \end_layout
 
 \begin_layout Verse
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is really great 
 \begin_inset Newline newline
 \end_inset
@@ -320,7 +322,7 @@ Notes
 \end_layout
 
 \begin_layout Standard
-A couple notes about \SpecialCharNoPassThru LyX
+A couple notes about \SpecialChar LyX
 ifiying this file:
 \end_layout
 
@@ -328,16 +330,16 @@ ifiying this file:
 I was able to remove the lines made with dashes.
  They were there purely to separate the title and references from the rest
  of the document.
- \SpecialCharNoPassThru LyX
- (\SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+ (\SpecialChar LaTeX
 ) knows enough to separate these parts of the document with space.
 \end_layout
 
 \begin_layout Itemize
 I didn't bother putting the math equations in display mode.
- Also, I didn't use \SpecialCharNoPassThru LyX
-' automatic equation numbering, because it's not
- described in the 
+ Also, I didn't use \SpecialChar LyX
+' automatic equation numbering, because it's not described
+ in the 
 \emph on
 Tutorial
 \emph default
@@ -354,7 +356,7 @@ References
 \end_inset
 
  below.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  automatically writes it (or the word 
 \begin_inset Quotes eld
 \end_inset
@@ -380,7 +382,7 @@ key "lamport"
 Lamport, Leslie.
  
 \emph on
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 : A Document Preparation System.
 
 \emph default

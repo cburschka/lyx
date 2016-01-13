@@ -90,19 +90,18 @@ status open
 \series bold
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+: To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
 \family default
- installed to your \SpecialCharNoPassThru LaTeX
+ installed to your \SpecialChar LaTeX
  system.
- If you are using MiK\SpecialCharNoPassThru TeX
-, you will automatically be asked to install this
- package when previewing your file, if you are using \SpecialCharNoPassThru TeX
-Live, use \SpecialCharNoPassThru TeX
-Live's
- package manager.
+ If you are using MiK\SpecialChar TeX
+, you will automatically be asked to install this package
+ when previewing your file, if you are using \SpecialChar TeX
+Live, use \SpecialChar TeX
+Live's package manager.
 \end_layout
 
 \begin_layout Plain Layout
@@ -110,10 +109,10 @@ Live's
 \series bold
 Note 2
 \series default
-: If you wish to compile to PDF with plain \SpecialCharNoPassThru LaTeX
- (instead of pdf\SpecialCharNoPassThru TeX
-), there
- is currently a bug in the Tufte class that causes errors.
+: If you wish to compile to PDF with plain \SpecialChar LaTeX
+ (instead of pdf\SpecialChar TeX
+), there is currently
+ a bug in the Tufte class that causes errors.
  You can add the class option 'nols' (put this in the 
 \begin_inset Quotes eld
 \end_inset
@@ -186,14 +185,14 @@ This document describes the
 \emph on
 Tufte handout
 \emph default
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  document style.
  It also provides examples and comments on the style's use.
  It is based on the example file shiped with 
 \emph on
 tufte-handout.cls
 \emph default
-, but adapted for the use with \SpecialCharNoPassThru LyX
+, but adapted for the use with \SpecialChar LyX
 .
 \end_layout
 
@@ -482,7 +481,8 @@ The complete list of references may also be printed automatically by using
 \family sans
 Insert\SpecialChar menuseparator
 Lists/TOC\SpecialChar menuseparator
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -491,14 +491,15 @@ Bibliography
  (see the end of this document for an example.) If you do not want to print
  a bibliography at the end of your document, place the 
 \family sans
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
 Bibliography
 \family default
- inset inside a \SpecialCharNoPassThru LyX
- note and use the \SpecialCharNoPassThru LaTeX
+ inset inside a \SpecialChar LyX
+ note and use the \SpecialChar LaTeX
  command 
 \family typewriter
 
@@ -557,7 +558,7 @@ reference "fig:marginfig"
 status collapsed
 
 \begin_layout Plain Layout
-Note: unfortunately, the counting inside the \SpecialCharNoPassThru LyX
+Note: unfortunately, the counting inside the \SpecialChar LyX
  view is wrong.
  Margin floats and normal floats are counted differently, whereas the use
  the same counter in the output.
@@ -840,8 +841,7 @@ formal
 \end_inset
 
  in the tabular dialog).
- Notice the lack of vertical rules\threehyphens
-they serve only to clutter the table's
+ Notice the lack of vertical rules—they serve only to clutter the table's
  data.
 \end_layout
 
@@ -856,7 +856,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1123,10 +1123,8 @@ small caps
 
 \end_inset
 
-, the letterspacing\threehyphens
-that is, the spacing between the letters\threehyphens
-should
- be increased slightly.
+, the letterspacing—that is, the spacing between the letters—should be increased
+ slightly.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bringhurst2005"
@@ -1392,14 +1390,15 @@ Preamble
 \backslash
 paragraph
 \family default
- in \SpecialCharNoPassThru LaTeX
+ in \SpecialChar LaTeX
  mode.
 \end_layout
 
 \begin_layout Standard
 For more details on defining section levels, see 
 \shape italic
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -1493,7 +1492,8 @@ beramono*
 \end_layout
 
 \begin_layout Subsection
-Tufte-\SpecialCharNoPassThru LaTeX
+Tufte-\SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -1501,7 +1501,8 @@ Website
 \end_layout
 
 \begin_layout Standard
-The website for the Tufte-\SpecialCharNoPassThru LaTeX
+The website for the Tufte-\SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 

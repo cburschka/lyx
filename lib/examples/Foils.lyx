@@ -123,8 +123,8 @@ November 19 1997
 \end_layout
 
 \begin_layout Abstract
-\SpecialCharNoPassThru LyX
- and Foil\SpecialCharNoPassThru TeX
+\SpecialChar LyX
+ and Foil\SpecialChar TeX
  combine to provide a powerful presentation package for creating
  
 \begin_inset Quotes eld
@@ -181,6 +181,7 @@ The new Itemize Bullet Selection popup
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -189,6 +190,7 @@ is tailor-made for use with the foils class
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -196,6 +198,7 @@ is tailor-made for use with the foils class
 allowing you to select the bullet used
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -214,15 +217,14 @@ NOTE: to get the full capabilities of the Itemize Bullet Selection popup
 \end_layout
 
 \begin_layout Itemize
-NOTE 2: To get your list spacing small like this use the Foil\SpecialCharNoPassThru TeX
- command:
- 
+NOTE 2: To get your list spacing small like this use the Foil\SpecialChar TeX
+ command: 
 \family typewriter
 
 \backslash
 zerolistvertdimens{}
 \family default
- set as \SpecialCharNoPassThru TeX
+ set as \SpecialChar TeX
  at the start of the first item.
 \end_layout
 
@@ -263,7 +265,7 @@ CrossList
 These two lists were added because the listing of do's and don'ts or good
  and bad are relatively common in foils.
  Providing a dedicated paragraph style for these occasions should allow
- faster entry and simplify interaction with \SpecialCharNoPassThru LyX
+ faster entry and simplify interaction with \SpecialChar LyX
 .
 \end_layout
 
@@ -401,19 +403,19 @@ As you can see, we are still in the same lemma.
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Lemma*
 To force this second Lemma straight after the first it's necessary to add
  some dividing text or as I've done in this case separate the two by inserting
  a 
 \emph on
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \emph default
  inset that simply contains a 
 \begin_inset Quotes eld
@@ -424,11 +426,11 @@ To force this second Lemma straight after the first it's necessary to add
 \end_inset
 
 .
- This is simply a comment character in \SpecialCharNoPassThru LaTeX
- but the insertion of the \SpecialCharNoPassThru LaTeX
- paragraph is sufficient to fool \SpecialCharNoPassThru LyX
- into correctly handling the multiple
- environments.
+ This is simply a comment character in \SpecialChar LaTeX
+ but the insertion of the \SpecialChar LaTeX
+ paragraph
+ is sufficient to fool \SpecialChar LyX
+ into correctly handling the multiple environments.
 \end_layout
 
 \begin_layout Lemma*
@@ -467,7 +469,7 @@ height "3pt"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -612,7 +614,7 @@ float
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -738,7 +740,7 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Foil\SpecialCharNoPassThru TeX
+Foil\SpecialChar TeX
  provides some powerful header and footer capabilities
 \begin_inset Foot
 status collapsed
@@ -775,7 +777,7 @@ Restriction{}
 \begin_inset Quotes eld
 \end_inset
 
--Typeset by Foil\SpecialCharNoPassThru TeX
+-Typeset by Foil\SpecialChar TeX
 -
 \begin_inset Quotes erd
 \end_inset
@@ -804,8 +806,7 @@ The remaining corners are controlled by:
 \backslash
 rightfooter{}
 \family default
- \twohyphens
- which defaults to page numbers
+ – which defaults to page numbers
 \end_layout
 
 \begin_layout Standard
@@ -841,14 +842,14 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Your \SpecialCharNoPassThru LaTeX
- distribution should include some documentation on Foil\SpecialCharNoPassThru TeX
+Your \SpecialChar LaTeX
+ distribution should include some documentation on Foil\SpecialChar TeX
 .
- There are many more features in Foil\SpecialCharNoPassThru TeX
+ There are many more features in Foil\SpecialChar TeX
  than those described here.
- For example, Foil\SpecialCharNoPassThru TeX
- can automatically place a horizontal rule between
- the headers and all foilheads, and between the body and the footers.
+ For example, Foil\SpecialChar TeX
+ can automatically place a horizontal rule between the
+ headers and all foilheads, and between the body and the footers.
 \end_layout
 
 \begin_layout Bibliography
@@ -862,7 +863,7 @@ Jim Hafner,
 \begin_inset Quotes eld
 \end_inset
 
-The Foil\SpecialCharNoPassThru TeX
+The Foil\SpecialChar TeX
  Class Package
 \begin_inset Quotes erd
 \end_inset
@@ -879,7 +880,7 @@ key "2"
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  Documentation Team, 
 \begin_inset Quotes eld
 \end_inset

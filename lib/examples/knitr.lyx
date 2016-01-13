@@ -79,7 +79,8 @@ knitr
 \begin_body
 
 \begin_layout Title
-Using knitr with \SpecialCharNoPassThru LyX
+Using knitr with \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -124,9 +125,8 @@ knitr
 \series default
  is an alternative tool to Sweave based on a different design with more
  features.
- \SpecialCharNoPassThru LyX
- has native support to Sweave since version 2.0.0, and the support to
- 
+ \SpecialChar LyX
+ has native support to Sweave since version 2.0.0, and the support to 
 \series bold
 knitr
 \series default
@@ -140,7 +140,7 @@ Sweave
 status open
 
 \begin_layout Plain Layout
-read the \SpecialCharNoPassThru LyX
+read the \SpecialChar LyX
 /Sweave manual from 
 \family sans
 Help\SpecialChar menuseparator
@@ -153,7 +153,7 @@ Specific Manuals
 \end_layout
 
 \begin_layout Enumerate
-Open a new \SpecialCharNoPassThru LyX
+Open a new \SpecialChar LyX
  document;
 \end_layout
 
@@ -175,7 +175,7 @@ Rnw (knitr)
 Then insert R code in the document with either 
 \family sans
 Insert\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Code
 \family default
  or the 
@@ -201,7 +201,7 @@ http://yihui.name/knitr
 \series bold
 knitr
 \series default
-; many of the examples have links to the \SpecialCharNoPassThru LyX
+; many of the examples have links to the \SpecialChar LyX
  source documents.
 \end_layout
 

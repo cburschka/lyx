@@ -90,19 +90,18 @@ status open
 \series bold
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+: To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
 \family default
- installed to your \SpecialCharNoPassThru LaTeX
+ installed to your \SpecialChar LaTeX
  system.
- If you are using MiK\SpecialCharNoPassThru TeX
-, you will automatically be asked to install this
- package when previewing your file, if you are using \SpecialCharNoPassThru TeX
-Live, use \SpecialCharNoPassThru TeX
-Live's
- package manager.
+ If you are using MiK\SpecialChar TeX
+, you will automatically be asked to install this package
+ when previewing your file, if you are using \SpecialChar TeX
+Live, use \SpecialChar TeX
+Live's package manager.
 \end_layout
 
 \begin_layout Plain Layout
@@ -110,10 +109,10 @@ Live's
 \series bold
 Note 2
 \series default
-: If you wish to compile to PDF with plain \SpecialCharNoPassThru LaTeX
- (instead of pdf\SpecialCharNoPassThru TeX
-), there
- is currently a bug in the Tufte class that causes errors.
+: If you wish to compile to PDF with plain \SpecialChar LaTeX
+ (instead of pdf\SpecialChar TeX
+), there is currently
+ a bug in the Tufte class that causes errors.
  You can add the class option 'nols' (put this in the 
 \begin_inset Quotes eld
 \end_inset
@@ -752,10 +751,8 @@ small caps
 
 \end_inset
 
-, the letterspacing\threehyphens
-that is, the spacing between the letters\threehyphens
-should
- be increased slightly.
+, the letterspacing—that is, the spacing between the letters—should be increased
+ slightly.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bringhurst2005"
@@ -875,7 +872,8 @@ The complete list of references may also be printed automatically by using
 \family sans
 Insert\SpecialChar menuseparator
 Lists/TOC\SpecialChar menuseparator
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -884,14 +882,15 @@ Bibliography
  (see the end of this document for an example.) If you do not want to print
  a bibliography at the end of your document, place the 
 \family sans
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
 Bibliography
 \family default
- inset inside a \SpecialCharNoPassThru LyX
- note and use the \SpecialCharNoPassThru LaTeX
+ inset inside a \SpecialChar LyX
+ note and use the \SpecialChar LaTeX
  command 
 \family typewriter
 
@@ -1078,11 +1077,11 @@ Now, suppose we wished to find the volume of the figure.
 .
  Since height multiplied by width was the area of each rectangle, we summed
  these areas and rewrote this as 
-\begin_inset Formula $\int\, f(x)\, dx$
+\begin_inset Formula $\int\,f(x)\,dx$
 \end_inset
 
 , or, in this specific case, 
-\begin_inset Formula $\int\,\sqrt{x}\, dx$
+\begin_inset Formula $\int\,\sqrt{x}\,dx$
 \end_inset
 
 .
@@ -1176,7 +1175,7 @@ To calculate the volume of one disk, we have
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V=\pi x\, dx
+V=\pi x\,dx
 \]
 
 \end_inset
@@ -1192,7 +1191,7 @@ or, in the general case
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V=\pi f^{2}(x)\, dx
+V=\pi f^{2}(x)\,dx
 \]
 
 \end_inset
@@ -1215,7 +1214,7 @@ To find the volume of the figure between points
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\int_{a}^{b}\,\pi f^{2}(x)\, dx
+\int_{a}^{b}\,\pi f^{2}(x)\,dx
 \end{equation}
 
 \end_inset
@@ -1235,7 +1234,7 @@ In the specific example, over the interval
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{4}\,\pi x\, dx & = & \pi\int_{0}^{4}\, x\, dx\\
+\int_{0}^{4}\,\pi x\,dx & = & \pi\int_{0}^{4}\,x\,dx\\
  & = & \pi\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}\\
  & = & \pi\left(\frac{4^{2}}{2}-0\right)\\
  & = & 8\pi
@@ -1375,8 +1374,8 @@ The volume of each washer would be
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-V_{washer} & = & A_{washer}\, dx\\
- & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+V_{washer} & = & A_{washer}\,dx\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\,dx
 \end{eqnarray*}
 
 \end_inset
@@ -1400,7 +1399,7 @@ Then, by summing the volumes of all the washers between points
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\,dx
 \end{equation}
 
 \end_inset
@@ -1460,8 +1459,8 @@ The cup with a quadratic hole drilled down its length
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\, dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\, dx\\
- & = & \pi\left(\int_{0}^{4}\, x\, dx-\int_{0}^{4}\,\frac{x^{4}}{256}\, dx\right)\\
+\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\,dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\,dx\\
+ & = & \pi\left(\int_{0}^{4}\,x\,dx-\int_{0}^{4}\,\frac{x^{4}}{256}\,dx\right)\\
  & = & \pi\left(\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}-\left.\left(\frac{x^{5}}{1280}\right)\right|_{0}^{4}\right)\\
  & = & \pi\left(\left(\frac{4^{2}}{2}-0\right)-\left(\frac{4^{5}}{1280}-0\right)\right)\\
  & = & \pi\left(8-0.8\right)\\

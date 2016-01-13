@@ -97,6 +97,7 @@ itemize
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -104,6 +105,7 @@ itemize
 it has its own counter that limits it to 4 levels
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -113,11 +115,12 @@ each level can have its own bullet shape
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  however displays all bullets as an `*'
 \end_layout
 
@@ -125,7 +128,7 @@ each level can have its own bullet shape
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Also note that \SpecialCharNoPassThru LyX
+Also note that \SpecialChar LyX
  does 
 \emph on
 not
@@ -134,11 +137,12 @@ not
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Other than to enforce the \SpecialCharNoPassThru LaTeX
+Other than to enforce the \SpecialChar LaTeX
  depth limit of 6 for all lists.
 \end_layout
 
@@ -197,7 +201,7 @@ Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -686,7 +690,7 @@ American Mathematical Society
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -1157,9 +1161,9 @@ Ding 1 (PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS is the New Font Selecting Scheme of \SpecialCharNoPassThru LaTeX2e
- (basically, what changed
- the font commands from 
+NFSS is the New Font Selecting Scheme of \SpecialChar LaTeX2e
+ (basically, what changed the font
+ commands from 
 \family typewriter
 {
 \backslash
@@ -1175,9 +1179,9 @@ textbf{\SpecialChar ldots
 \family default
 , although the real changes are inside the guts).
  PS stands for PostScript.
- PSNFSS is a set of \SpecialCharNoPassThru LaTeX
- files which provide NFSS support for the basic
- set of 35 PS fonts present in many postscript printers.
+ PSNFSS is a set of \SpecialChar LaTeX
+ files which provide NFSS support for the basic set
+ of 35 PS fonts present in many postscript printers.
  
 \end_layout
 
@@ -1197,7 +1201,7 @@ textbf{\SpecialChar ldots
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2001,7 +2005,7 @@ Ding 2
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2805,7 +2809,7 @@ Ding 3
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3609,7 +3613,7 @@ Ding 4
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">

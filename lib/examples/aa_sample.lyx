@@ -80,13 +80,12 @@ status open
 \family roman
 \series medium
 \size normal
-This is an example \SpecialCharNoPassThru LyX
- file for articles to be submitted to the Journal
- of Astronomy & Astrophysics (A&A).
- How to install the A&A \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained in
- 
+This is an example \SpecialChar LyX
+ file for articles to be submitted to the Journal of
+ Astronomy & Astrophysics (A&A).
+ How to install the A&A \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -344,7 +343,7 @@ This is the unstructured abstract type, an example for the structured abstract
 \family sans
 aa.lyx
 \family default
- template file that comes with \SpecialCharNoPassThru LyX
+ template file that comes with \SpecialChar LyX
 .
 \end_layout
 
@@ -354,13 +353,11 @@ aa.lyx
 \end_layout
 
 \begin_layout Keywords
-giant planet formation \twohyphens
- 
+giant planet formation – 
 \begin_inset Formula $\kappa$
 \end_inset
 
--mechanism \twohyphens
- stability of gas spheres
+-mechanism – stability of gas spheres
 \end_layout
 
 \begin_layout Section
@@ -382,7 +379,7 @@ key "Eisenstein2005"
 \end_inset
 
 ) determined the critical mass of the core to be about 
-\begin_inset Formula $12\, M_{\oplus}$
+\begin_inset Formula $12\,M_{\oplus}$
 \end_inset
 
  (
@@ -561,6 +558,7 @@ key "Abernethy2003"
  Using Baker's notation:
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -799,9 +797,7 @@ reference "tab:KapSou"
 
 ), are specified (in practice by specifying a chemical composition) the
  one-zone stability can be inferred if the thermodynamic state is specified.
- The zone \twohyphens
- or in other words the layer \twohyphens
- will be stable or unstable in
+ The zone – or in other words the layer – will be stable or unstable in
  whatever object it is imbedded as long as it satisfies the one-zone-model
  assumptions.
  Only the specific growth rates (depending upon the time scales) will be
@@ -836,7 +832,7 @@ Opacity sources
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -1003,7 +999,7 @@ reference "ZSDynSta"
  Stability of the thermodynamical equilibrium demands 
 \begin_inset Formula 
 \begin{equation}
-\chi_{\rho}^{}>0,\;\; c_{v}>0\,,
+\chi_{\rho}^{}>0,\;\;c_{v}>0\,,
 \end{equation}
 
 \end_inset
@@ -1087,7 +1083,7 @@ e relations
  These depend only on the unperturbed thermodynamical state of the layer.
  Therefore the above relations define the one-zone-stability equations of
  state 
-\begin_inset Formula $S_{\mathrm{dyn}},\, S_{\mathrm{sec}}$
+\begin_inset Formula $S_{\mathrm{dyn}},\,S_{\mathrm{sec}}$
 \end_inset
 
  and 
@@ -1176,10 +1172,8 @@ key "Abernethy2003"
 \end_layout
 
 \begin_layout Enumerate
-If the constitutive relations \twohyphens
- equations of state and Rosseland mean opacities
- \twohyphens
- are specified, the stability equations of state can be evaluated without
+If the constitutive relations – equations of state and Rosseland mean opacities
+ – are specified, the stability equations of state can be evaluated without
  specifying properties of the layer.
  
 \end_layout
@@ -1215,8 +1209,7 @@ schaft, DFG
 \begin_inset space ~
 \end_inset
 
-17/2\twohyphens
-1.
+17/2–1.
 \end_layout
 
 \begin_layout Standard
@@ -1238,12 +1231,12 @@ status open
 Note:
 \series default
  If you cannot see the bibliography in the output, assure that you have
- gievn the full path to the Bib\SpecialCharNoPassThru TeX
+ gievn the full path to the Bib\SpecialChar TeX
  style file 
 \family sans
 aa.bst
 \family default
- that is part of the A&A \SpecialCharNoPassThru LaTeX
+ that is part of the A&A \SpecialChar LaTeX
 -package.
 \end_layout
 

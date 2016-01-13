@@ -88,7 +88,8 @@ Xy
 
 \end_inset
 
--Pic figures in \SpecialCharNoPassThru LyX
+-Pic figures in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -105,14 +106,14 @@ Xy
 
 \end_inset
 
--Pic diagram inside \SpecialCharNoPassThru LyX
+-Pic diagram inside \SpecialChar LyX
  being edited and to the right you see how the diagram
  appears as soon as the cursor leaves the editing area.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xymatrix{A\ar[d]\ar[r]  &  B\ar[d]\ar@{-->}[dl] \\
-C\ar@{_{(}->}[r]  &  D\ar@/{}_{1pc}/[u] 
+\begin_inset Formula $\xymatrix{A\ar[d]\ar[r] & B\ar[d]\ar@{-->}[dl]\\
+C\ar@{_{(}->}[r] & D\ar@/{}_{1pc}/[u]
 }
 $
 \end_inset

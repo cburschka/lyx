@@ -79,7 +79,7 @@
 \begin_body
 
 \begin_layout Title
-Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AAS\SpecialCharNoPassThru TeX
+Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AAS\SpecialChar TeX
  Examples
 \end_layout
 
@@ -241,8 +241,7 @@ This is a preliminary report on surface photometry of the major fraction
 \end_layout
 
 \begin_layout Keywords
-clusters: globular, peanut\threehyphens
-bosons: bozos
+clusters: globular, peanut—bosons: bozos
 \end_layout
 
 \begin_layout Section
@@ -747,7 +746,7 @@ reference "bozomath"
 \end_inset
 
 .
- More information on the AAS\SpecialCharNoPassThru TeX
+ More information on the AAS\SpecialChar TeX
  macros package are available at 
 \begin_inset Flex URL
 status collapsed
@@ -1314,7 +1313,7 @@ name "tbl-2"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="13">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -2283,7 +2282,7 @@ reference "tbl-2"
 
 \end_inset
 
- that was generated with the \SpecialCharNoPassThru LaTeX
+ that was generated with the \SpecialChar LaTeX
  table environment
 \end_layout
 
@@ -2345,8 +2344,7 @@ We can also attach a long-ish paragraph of explanatory material to a table.
 \backslash
 tablerefs to append a list of references.
  The following references were from a different table: I've patched them
- in here to show how they look, but don't take them too seriously\threehyphens
-I certainly
+ in here to show how they look, but don't take them too seriously—I certainly
  have not.
 \end_layout
 
@@ -2375,8 +2373,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-% \SpecialCharNoPassThru LyX
- can load deluxetable files verbatim.
+% LyX can load deluxetable files verbatim.
  To see this in action, uncomment the following
 \end_layout
 
@@ -2421,8 +2418,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-) and copy the file table.tex from the AAS\SpecialCharNoPassThru TeX
- 5.0 distribution into
+) and copy the file table.tex from the AASTeX 5.0 distribution into
 \end_layout
 
 \end_inset

@@ -132,7 +132,8 @@ maxwidth}
 \end_layout
 
 \begin_layout Title
-Using Sweave with \SpecialCharNoPassThru LyX
+Using Sweave with \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -198,16 +199,16 @@ http://www.r-project.org
 \end_inset
 
 ) for dynamic report generation using the ideas of literate programming.
- R code can be mixed into a \SpecialCharNoPassThru LaTeX
- document, and will be executed in R when
- the document is compiled; the results are written into the \SpecialCharNoPassThru TeX
+ R code can be mixed into a \SpecialChar LaTeX
+ document, and will be executed in R when the
+ document is compiled; the results are written into the \SpecialChar TeX
  output.
 \end_layout
 
 \begin_layout Standard
-Since \SpecialCharNoPassThru LyX
- 2.0, Sweave can be used out of the box with any document class
- using the 
+Since \SpecialChar LyX
+ 2.0, Sweave can be used out of the box with any document class using
+ the 
 \family sans
 Sweave
 \family default
@@ -216,7 +217,7 @@ Sweave
 \family sans
 Sweave
 \family default
- module to a \SpecialCharNoPassThru LyX
+ module to a \SpecialChar LyX
  document from 
 \family sans
 Document\SpecialChar menuseparator
@@ -329,7 +330,7 @@ R.home('bin')
 \end_layout
 
 \begin_layout Standard
-After you have done these changes, you need to reconfigure \SpecialCharNoPassThru LyX
+After you have done these changes, you need to reconfigure \SpecialChar LyX
  by 
 \family sans
 Tools\SpecialChar menuseparator
@@ -351,7 +352,7 @@ Sweave
  module will be unavailable.
  It is recommended to use the latest version of R, since Sweave is still
  being updated.
- Another dependency is introduced by the \SpecialCharNoPassThru LaTeX
+ Another dependency is introduced by the \SpecialChar LaTeX
  style file 
 \family sans
 Sweave.sty
@@ -384,10 +385,10 @@ file.path(R.home('share'), 'texmf', 'tex', 'latex')
 \end_layout
 
 \begin_layout Standard
-Mik\SpecialCharNoPassThru TeX
- users may add the texmf directory to the list of root directories
- in Mik\SpecialCharNoPassThru TeX
- through Mik\SpecialCharNoPassThru TeX
+Mik\SpecialChar TeX
+ users may add the texmf directory to the list of root directories in
+ Mik\SpecialChar TeX
+ through Mik\SpecialChar TeX
  settings.
  Further note that 
 \family sans
@@ -406,7 +407,7 @@ may
 ae
 \series default
 .
- If \SpecialCharNoPassThru LyX
+ If \SpecialChar LyX
  cannot find 
 \family sans
 Sweave.sty
@@ -427,18 +428,18 @@ Before we write an Sweave document, we can set some Sweave options; the
 \backslash
 SweaveOpts{}
 \family default
- in Sweave and it can be inserted in a \SpecialCharNoPassThru LyX
+ in Sweave and it can be inserted in a \SpecialChar LyX
  document by 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets\SpecialChar menuseparator
 Sweave Options
 \family default
-, or just use \SpecialCharNoPassThru TeX
+, or just use \SpecialChar TeX
  code to write it (
 \family sans
 Insert\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
  Code
 \family default
 ).
@@ -447,21 +448,21 @@ Insert\SpecialChar menuseparator
 echo=FALSE
 \family default
  in the beginning of a document to suppress all R code (by default, both
- R code and its output will show up in the \SpecialCharNoPassThru LaTeX
+ R code and its output will show up in the \SpecialChar LaTeX
  document).
  
 \end_layout
 
 \begin_layout Standard
-To write R code in \SpecialCharNoPassThru LyX
+To write R code in \SpecialChar LyX
 , you can first switch to the 
 \family typewriter
 Chunk
 \family default
  environment in the layout styles list (droplist in the top-left corner
- in the toolbar), or you can simply open a \SpecialCharNoPassThru TeX
- code environment and write
- Sweave code chunks in it.
+ in the toolbar), or you can simply open a \SpecialChar TeX
+ code environment and write Sweave
+ code chunks in it.
  The latter approach is recommended since it is more stable.
 \end_layout
 
@@ -667,14 +668,14 @@ Note that we can easily integrate some numbers into standard text; this
 \backslash
 Sexpr{}
 \family default
-, and the corresponding \SpecialCharNoPassThru LyX
+, and the corresponding \SpecialChar LyX
  menu is 
 \family sans
 Insert\SpecialChar menuseparator
 Custom Insets\SpecialChar menuseparator
 S/R expression
 \family default
-, or alternatively just use \SpecialCharNoPassThru TeX
+, or alternatively just use \SpecialChar TeX
  code.
  For example, the third element of the vector 
 \family typewriter
@@ -878,9 +879,9 @@ xtable
 \family typewriter
 results=tex
 \family default
- makes sure that the R output is written out as raw \SpecialCharNoPassThru LaTeX
- code instead of
- being wrapped in a special environment (
+ makes sure that the R output is written out as raw \SpecialChar LaTeX
+ code instead of being
+ wrapped in a special environment (
 \family typewriter
 Soutput
 \family default
@@ -1063,11 +1064,11 @@ The
 \family sans
 Sweave
 \family default
- module declares that a \SpecialCharNoPassThru LyX
+ module declares that a \SpecialChar LyX
  document contains literate programming components
- with R, so that \SpecialCharNoPassThru LyX
- will handle such documents according to the specific
- converters (see the Customization manual).
+ with R, so that \SpecialChar LyX
+ will handle such documents according to the specific converter
+s (see the Customization manual).
  The 
 \family sans
 Sweave
@@ -1084,17 +1085,17 @@ lyxsweave.R
 \family sans
 scripts
 \family default
- directory of \SpecialCharNoPassThru LyX
+ directory of \SpecialChar LyX
 .
  This script takes an 
 \family sans
 Rnw
 \family default
- document from \SpecialCharNoPassThru LyX
- and call Sweave to process it to a \SpecialCharNoPassThru TeX
- document, then
- \SpecialCharNoPassThru LyX
- takes care of the rest of work.
+ document from \SpecialChar LyX
+ and call Sweave to process it to a \SpecialChar TeX
+ document, then \SpecialChar LyX
+ takes
+ care of the rest of work.
 \end_layout
 
 \begin_layout Standard
@@ -1102,7 +1103,7 @@ The converter from the
 \family sans
 sweave
 \family default
- format to \SpecialCharNoPassThru LaTeX
+ format to \SpecialChar LaTeX
  is a call to R via the command line as:
 \end_layout
 
@@ -1136,7 +1137,7 @@ end{verbatim}
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LyX
+The \SpecialChar LyX
  library directory 
 \family typewriter
 $$s
@@ -1144,11 +1145,12 @@ $$s
  can be found from the menu 
 \family sans
 Help\SpecialChar menuseparator
-About \SpecialCharNoPassThru LyX
+About \SpecialChar LyX
+
 \family default
 .
  All the rest of options passed to R are explained in the R script, and
- the \SpecialCharNoPassThru LyX
+ the \SpecialChar LyX
  Customization manual also has detailed explanations about 
 \family typewriter
 $$i
@@ -1171,9 +1173,9 @@ $$r
 \end_layout
 
 \begin_layout Enumerate
-the encoding string of the \SpecialCharNoPassThru LyX
- document is passed to R as an command line
- option; possible values are 
+the encoding string of the \SpecialChar LyX
+ document is passed to R as an command line option;
+ possible values are 
 \family typewriter
 ISO-8859-15
 \family default
@@ -1191,7 +1193,7 @@ Rnw
 
 \begin_layout Enumerate
 the R code chunks in the Sweave document are executed under the directory
- of the \SpecialCharNoPassThru LyX
+ of the \SpecialChar LyX
  document (if you are not sure, put 
 \family typewriter
 getwd()
@@ -1203,13 +1205,13 @@ getwd()
 \end_layout
 
 \begin_layout Enumerate
-if \SpecialCharNoPassThru LaTeX
+if \SpecialChar LaTeX
  cannot find 
 \family sans
 Sweave.sty
 \family default
 , this R script will copy it to the temporary directory automatically where
- the \SpecialCharNoPassThru LaTeX
+ the \SpecialChar LaTeX
  compilation takes place.
 \end_layout
 
@@ -1223,9 +1225,9 @@ target "http://www.lyx.org/trac/ticket/7551"
 
 \end_inset
 
-) is that if the filename (without extension) contains dots, \SpecialCharNoPassThru LaTeX
- can fail
- to deal with such files in 
+) is that if the filename (without extension) contains dots, \SpecialChar LaTeX
+ can fail to
+ deal with such files in 
 \family typewriter
 
 \backslash
@@ -1298,7 +1300,7 @@ end{verbatim}
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  can deal with the font encoding by default, so there is no need to ask
  Sweave to do this (furthermore, this may bring clashes of package options);
  besides, the users can load the 
@@ -1313,16 +1315,14 @@ Trouble Shooting
 \end_layout
 
 \begin_layout Standard
-Since \SpecialCharNoPassThru LyX
- 2.0, we can see the detailed information during compilation via
- 
+Since \SpecialChar LyX
+ 2.0, we can see the detailed information during compilation via 
 \family sans
 View\SpecialChar menuseparator
 View Messages
 \family default
 .
- This is extremely helpful for trouble shooting \twohyphens
- the process of R will
+ This is extremely helpful for trouble shooting – the process of R will
  be shown in the message panel, and we will be able to know which chunk
  goes wrong in cases of errors.
  For example, when you compile this document, you can see messages like
@@ -1409,12 +1409,12 @@ label=
 
 \begin_layout Standard
 Another known issue is the Sweave code chunk may fail when we change the
- alignment of the chunk paragraph in \SpecialCharNoPassThru LyX
+ alignment of the chunk paragraph in \SpecialChar LyX
  (using 
 \family sans
 Paragraph settings
 \family default
-), because \SpecialCharNoPassThru LyX
+), because \SpecialChar LyX
  may add a macro like 
 \family typewriter
 
@@ -1520,8 +1520,8 @@ http://cran.r-project.org/web/views/ReproducibleResearch.html
 \end_inset
 
 .
- Questions about \SpecialCharNoPassThru LyX
- and Sweave can be posted to the \SpecialCharNoPassThru LyX
+ Questions about \SpecialChar LyX
+ and Sweave can be posted to the \SpecialChar LyX
  mailing list (
 \begin_inset Flex URL
 status collapsed
@@ -1534,7 +1534,7 @@ http://www.lyx.org/MailingLists
 \end_inset
 
 ).
- More \SpecialCharNoPassThru LyX
+ More \SpecialChar LyX
  examples are provided at 
 \begin_inset Flex URL
 status collapsed
@@ -1558,9 +1558,9 @@ How to use Sweave with beamer?
 \end_layout
 
 \begin_layout Standard
-You will end up with \SpecialCharNoPassThru LaTeX
- errors if you use Sweave in normal beamer slides
- in \SpecialCharNoPassThru LyX
+You will end up with \SpecialChar LaTeX
+ errors if you use Sweave in normal beamer slides in
+ \SpecialChar LyX
 ; the reason is the beamer frame that contains verbatim R code.
  The solution is to use a 
 \emph on
@@ -1615,10 +1615,11 @@ user directory
  (again, see 
 \family sans
 Help\SpecialChar menuseparator
-About \SpecialCharNoPassThru LyX
+About \SpecialChar LyX
+
 \family default
 ).
- Note \SpecialCharNoPassThru LyX
+ Note \SpecialChar LyX
  will check the 
 \emph on
 user directory
@@ -1632,11 +1633,11 @@ library directory
 lyxsweave.R
 \family default
  is found in the user directory, it will be used.
- It is not recommended to hack the script under the \SpecialCharNoPassThru LyX
- library directory
- directly, since updating \SpecialCharNoPassThru LyX
- will override you modified script (the user
- directory will not be affected).
+ It is not recommended to hack the script under the \SpecialChar LyX
+ library directory directly,
+ since updating \SpecialChar LyX
+ will override you modified script (the user directory will
+ not be affected).
 \end_layout
 
 \begin_layout Standard

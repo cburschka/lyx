@@ -135,7 +135,7 @@ Primary: 12G34, Secondary: 09G87
 \begin_layout Abstract
 This is not very abstract.
  Note that the abstract must be part of the title stuff for AMS.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  is aware of that since version 0.12.1.
  Good.
  
@@ -146,9 +146,9 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This file, and any amsart-* \SpecialCharNoPassThru LyX
- file, can be converted to either of the
- numbering schemes by simply changing the document class in the 
+This file, and any amsart-* \SpecialChar LyX
+ file, can be converted to either of the numbering
+ schemes by simply changing the document class in the 
 \family sans
 \bar under
 L
@@ -203,7 +203,7 @@ More text.
  Note that two occurrences of the same environment, like two definitions,
  need to be separated somehow.
  For the moment, the best way is to include a paragraph with a %, in the
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  environment, if you really want two definitions (or whatever) together,
  with no intervening text of another sort.
 \end_layout
@@ -412,7 +412,7 @@ In the end, will it matter?
 
 \begin_layout Acknowledgement
 Thanks to Mattias Ettrich.
- Without him I never would have learned \SpecialCharNoPassThru LaTeX
+ Without him I never would have learned \SpecialChar LaTeX
 .
 \end_layout
 
@@ -628,7 +628,8 @@ key "2"
 
 American Mathematical Society, 
 \emph on
-Instructions for preparation of papers and monographs: AMS-\SpecialCharNoPassThru LaTeX
+Instructions for preparation of papers and monographs: AMS-\SpecialChar LaTeX
+
 \emph default
 , (1997).
 \end_layout

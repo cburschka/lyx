@@ -94,7 +94,8 @@ braille
 \begin_body
 
 \begin_layout Title
-How to write Braille with \SpecialCharNoPassThru LyX
+How to write Braille with \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -102,14 +103,14 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-First a general note: The Braille you can create with \SpecialCharNoPassThru LaTeX
+First a general note: The Braille you can create with \SpecialChar LaTeX
  is not complete!
  Braille can have 6 or 8
 \begin_inset space \thinspace{}
 \end_inset
 
-dots, while \SpecialCharNoPassThru LaTeX
- (and therefore \SpecialCharNoPassThru LyX
+dots, while \SpecialChar LaTeX
+ (and therefore \SpecialChar LyX
 ) only supports only 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -118,7 +119,7 @@ dot Braille without accented characters.
 \end_layout
 
 \begin_layout Standard
-To write Braille with \SpecialCharNoPassThru LyX
+To write Braille with \SpecialChar LyX
 , load the module 
 \family sans
 Braille
@@ -144,7 +145,7 @@ Braille
 
 (textsize)
 \family default
- from \SpecialCharNoPassThru LyX
+ from \SpecialChar LyX
 's environment selection box and write your text.
  The other Braille environments are only turn on/off some properties as
  described below; keep them empty!
@@ -200,9 +201,9 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-You can see that \SpecialCharNoPassThru LaTeX
- is not able to hyphenate words written in Braille;
- you have to do this manually.
+You can see that \SpecialChar LaTeX
+ is not able to hyphenate words written in Braille; you
+ have to do this manually.
 \end_layout
 
 \begin_layout Standard
@@ -257,13 +258,14 @@ status open
 \series bold
 Note:
 \series default
- \SpecialCharNoPassThru LyX
-'s and \SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+'s and \SpecialChar LaTeX
 's proper names 
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -271,7 +273,8 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -279,7 +282,8 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -287,11 +291,12 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset Quotes erd
 \end_inset
 
- must be inserted as \SpecialCharNoPassThru TeX
+ must be inserted as \SpecialChar TeX
  code like in the following example:
 \end_layout
 
@@ -320,7 +325,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -338,7 +343,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -595,7 +600,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-double-sized Braille use this command in \SpecialCharNoPassThru TeX
+double-sized Braille use this command in \SpecialChar TeX
  code in your document:
 \end_layout
 
