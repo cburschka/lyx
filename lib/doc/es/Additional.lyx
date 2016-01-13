@@ -408,7 +408,7 @@ status collapsed
 
 \family sans
 Documento\SpecialChar menuseparator
-Formato
+Ver
 \end_layout
 
 \end_inset
@@ -428,8 +428,7 @@ Documento\SpecialChar menuseparator
 \family default
 A
 \family sans
-ctualizar\SpecialChar menuseparator
-Formato
+ctualizar
 \end_layout
 
 \end_inset
@@ -2602,11 +2601,7 @@ quizá
 \emph on
 bug
 \emph default
- (
-\emph on
-fallo
-\emph default
-) en \SpecialChar LyX
+ (fallo) en \SpecialChar LyX
 \SpecialChar ldots
 
 \end_layout
@@ -4486,40 +4481,6 @@ código \SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Hay comandos más complejos que permiten introducir cosas en páginas impares,
- o en páginas pares, etc., que se describen en la documentación del paquete
- 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-fancyhdr
-\end_layout
-
-\end_inset
-
-
-\family default
-, a la cuál te remitimos.
- (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.ctan.org/tex-archive/help/Catalogue/entries/fancyhdr.html
-\end_layout
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Standard
 Por último, veamos cómo incluir una imagen en el encabezado o en el pie;
  por ejemplo, un logotipo en la esquina superior izquierda.
  Prueba algo como esto:
@@ -5199,7 +5160,7 @@ savelabelitemi}
 
 \begin_layout Chapter
 \SpecialChar LyX
- e internet
+ y World Wide Web
 \end_layout
 
 \begin_layout Standard
@@ -5400,7 +5361,7 @@ experimental
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 El archivo 
@@ -6074,7 +6035,27 @@ UserDir
 
 \end_inset
 
- con los nombres 
+ (no en Windows, en donde las tuberías 
+\emph on
+locales 
+\emph default
+se ubican en 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\end_layout
+
+\end_inset
+
+) con los nombres 
 \begin_inset Flex Code
 status collapsed
 
@@ -6116,8 +6097,7 @@ lyxpipe.out
 \end_inset
 
 .
- La ubicación de los nombres de las tuberías se puede definir en el diálogo
- 
+ La raíz de los nombres de las tuberías se puede definir en el diálogo 
 \family sans
 Herramientas\SpecialChar menuseparator
 Preferencias
@@ -6150,10 +6130,7 @@ lyxpipe"
 
 \end_inset
 
- en Windows 
-\lang english
-(where any working path instead of lyxpipe can be used, for example
-\lang spanish
+ en Windows (donde se puede usar cualquier ruta en vez de lyxpipe, por ejemplo
  
 \begin_inset Flex Code
 status collapsed
@@ -6176,11 +6153,7 @@ pipe"
 
 \end_inset
 
- 
-\lang english
-would also work)
-\lang spanish
-.
+ debería funcionar).
  
 \emph on
 Debes
@@ -6439,6 +6412,66 @@ read a <~/.lyxpipe.out
 \end_inset
 
 echo $a
+\end_layout
+
+\begin_layout Subsection
+AppleScript (Mac OS X)
+\end_layout
+
+\begin_layout Standard
+Desde \SpecialChar LyX
+ 2.1, \SpecialChar LyX
+ soporta interacciones básicas con AppleScript para comunicación
+ normal mediante el comando run.
+ Este comando toma un argumento directo (la 
+\series bold
+function
+\series default
+ a realizar) y un argumento opcional.
+ Devuelve la salida de la función o desencadena un error con un mensaje
+ y el código.
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+tell application "\SpecialChar LyX
+"
+\end_layout
+
+\begin_layout LyX-Code
+  try
+\end_layout
+
+\begin_layout LyX-Code
+    -- Stores the current file name into f
+\end_layout
+
+\begin_layout LyX-Code
+    set f to (run "server-get-filename" with argument "")
+\end_layout
+
+\begin_layout LyX-Code
+    on error the error_message number the error_number
+\end_layout
+
+\begin_layout LyX-Code
+      display dialog "Error: " & the error_number & ".
+ " ¬
+\end_layout
+
+\begin_layout LyX-Code
+              & the error_message buttons {"OK"} default button 1
+\end_layout
+
+\begin_layout LyX-Code
+  end try
+\end_layout
+
+\begin_layout LyX-Code
+end tell
 \end_layout
 
 \begin_layout Section
@@ -7500,49 +7533,37 @@ La búsqueda inversa se inicia con MAYÚSCULAS-clic.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 Qpdfview (Unix)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Qpdfview supports Sync\SpecialChar TeX
- since version 0.3.5.
- Go to 
-\lang spanish
-
+Qpdfview soporta Sync\SpecialChar TeX
+ desde la versión 0.3.5.
+ En 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Edit\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Behavior
+Editar\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Comportamiento
 \end_layout
 
 \end_inset
 
-
-\lang english
-, click on the input field of the 
+, clic en el campo de entrada del 
 \begin_inset Quotes eld
 \end_inset
 
-Source editor
+Editor de fuente
 \begin_inset Quotes erd
 \end_inset
 
- item and add the command 
+ y añade el comando 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient -g %1 %2
 \end_layout
 
@@ -7552,9 +7573,7 @@ lyxclient -g %1 %2
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by double-click.
+La búsqueda inversa se lanza con doble clic.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7605,7 +7624,28 @@ Nombre
 \begin_inset Quotes frd
 \end_inset
 
- y busca el archivo lyxeditor.bat, con los argumentos %f %l.
+ y busca el archivo 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+ (véase abajo).
+ Selecciona 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxeditor.bat
+\end_layout
+
+\end_inset
+
+, con los argumentos %f %l.
 \end_layout
 
 \begin_layout LyX-Code
@@ -7774,37 +7814,16 @@ PDF (pdflatex)
 \end_inset
 
  introduce 
-\family typewriter
-SumatraPDF.sh
-\family default
- en la configuración del visor, donde 
-\family typewriter
-SumatraPDF.sh
-\family default
- es el guión siguiente (para ser puesto en la ruta (PATH) de comandos, lo
- mejor 
-\family typewriter
-/usr/local/bin
-\family default
-):
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF -inverse-search "lyxeditor -g %f %l"
 \end_layout
 
-\begin_layout LyX-Code
-#!/bin/bash
-\begin_inset Newline newline
 \end_inset
 
-cd $(dirname $1)
-\begin_inset Newline newline
-\end_inset
-
-SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
-\end_layout
-
-\begin_layout Standard
-Este guión es necesario porque SumatraPDF es una aplicación nativa de Windows
- y no comprende las rutas POSIX usadas por la versión Gygwin de \SpecialChar LyX
-.
+ en la configuración del visor.
  Si SumatraPDF.exe no está en la ruta de comandos usa su ruta posix completa
  en el guión.
  La -g habilita comunicación vía 
@@ -11622,20 +11641,8 @@ Foil
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Multiple Columns
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Itemize
 
@@ -11746,17 +11753,6 @@ Encabezado
 Comentario
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -11821,20 +11817,10 @@ Foil
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\family sans
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -11902,17 +11888,6 @@ Proposición*
 Definición*
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -11958,20 +11933,8 @@ Martin Vermeer
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -12010,7 +11973,7 @@ Encabezado_Izquierdo
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
@@ -12018,17 +11981,6 @@ Encabezado_Izquierdo
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -21022,15 +20974,8 @@ Introducción
 \end_layout
 
 \begin_layout Standard
-Un amigo mío quería probar \SpecialChar LyX
- para un proyecto de grupo.
- Al no encontrar soporte para control de versiones o bloqueo de archivos,
- renunció.
- Esto me indignó un poco, así que pensé que debería dar soporte, al menos,
- para RCS (con la posibilidad de ampliar en el futuro a CVS y/o SCCS).
- Ya está hecho.
- \SpecialChar LyX
- soporta ya algunos comandos básicos de RCS/CVS/SVN.
+\SpecialChar LyX
+ soporta algunos comandos básicos de RCS/CVS/SVN/GIT.
  Si necesitas algo más sofisticado tendrás que hacerlo a mano en un terminal.
 \end_layout
 
@@ -21076,11 +21021,22 @@ man
 \end_layout
 
 \begin_layout Standard
-La implementación en \SpecialChar LyX
+Antes de usar el control de versiones en \SpecialChar LyX
+ hay que conocer el uso de RCS/CVS/SVN/
+GIT.
+ La implementación en \SpecialChar LyX
  asume el uso de versiones recientes de los paquetes
  GNU RCS o CVS/SVN —no hay garantías con versiones antiguas—.
  La mayoría de los mensajes de registro no son actualmente mostrados tras
  las operaciones —puedes comprobarlos en el panel Messages si no estás seguro.
+ Los usuarios habituales de control de versiones apreciarán las herramientas
+ VC, disponibles en 
+\family sans
+Ver\SpecialChar menuseparator
+Barras de herramientas\SpecialChar menuseparator
+Control de versiones
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -21094,18 +21050,19 @@ Funciones de \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is strongly recommended to store documents in uncompressed format if
- using version control (uncheck 
+Es muy recomendable guardar los documentos sin comprimir si se usa control
+ de versiones (desactiva 
 \family sans
-Document\SpecialChar menuseparator
-Compressed
+Documento\SpecialChar menuseparator
+Comprimido
 \family default
- if it is checked): Uncompressed LyX documents are text files and therefore
- for merging two different versions by version control systems.
- Compressed LyX documents are binary files, which cannot be merged by version
- control systems.
+ si lo está): los documentos \SpecialChar LyX
+ sin comprimir son archivos de texto y por
+ tanto factibles de ser mezclados por sistemas de control de versiones.
+ Los documentos \SpecialChar LyX
+ comprimidos son archivos binarios, no manejables por sistemas
+ de control de versiones.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -24561,8 +24518,6 @@ El problema es que todo lo que se escriba entre <<
  no debería hacer ninguna
  interpretación especial de lo que está ahí escrito.
  Esto es también manejado por el entorno 
-\lang ngerman
-
 \begin_inset Flex Noun
 status collapsed
 
@@ -24572,8 +24527,6 @@ Trozo
 
 \end_inset
 
-
-\lang spanish
 , que funciona como un párrafo normal excepto que admite espacios con libertad.
 \end_layout
 
