@@ -2186,11 +2186,11 @@ def revert_verbatim_star(document):
 
 def convert_save_props(document):
     " Add save_transient_properties parameter. "
-    i = find_token(document.header, '\\origin', 0)
+    i = find_token(document.header, '\\begin_header', 0)
     if i == -1:
-        document.warning("Malformed lyx document: Missing '\\origin'.")
+        document.warning("Malformed lyx document: Missing '\\begin_header'.")
         return
-    document.header.insert(i, '\\save_transient_properties true')
+    document.header.insert(i + 1, '\\save_transient_properties true')
 
 
 def revert_save_props(document):
