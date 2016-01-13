@@ -261,7 +261,7 @@ void LyXRC::setDefaults()
 	auto_reset_options = false;
 	plaintext_linelen = 65;
 	mouse_wheel_speed = 1.0;
-	num_lastfiles = maxlastfiles;
+	num_lastfiles = 20;
 	check_lastfiles = true;
 	use_lastfilepos = true;
 	load_session = false;
@@ -3077,8 +3077,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_MOUSE_WHEEL_SPEED:
-		str = bformat(_("The scrolling speed of the mouse wheel."),
-		      maxlastfiles);
+		str = _("The scrolling speed of the mouse wheel.");
 		break;
 
 	case RC_COMPLETION_POPUP_DELAY:
