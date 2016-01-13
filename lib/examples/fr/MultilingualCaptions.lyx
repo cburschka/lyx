@@ -168,12 +168,12 @@ Légendes
 multilingues
 \family default
  permet d'imprimer les légendes en deux langues.
- Il nécessite la paquetage \SpecialCharNoPassThru LaTeX
+ Il nécessite la paquetage \SpecialChar LaTeX
  
 \series bold
 bicaption
 \series default
- qui fait partie du paquetage \SpecialCharNoPassThru LaTeX
+ qui fait partie du paquetage \SpecialChar LaTeX
  
 \series bold
 caption
@@ -536,7 +536,7 @@ font=
 \series default
 .
  Pour plus de détails sur les modifications possibles, voir la documentation
- du paquetage \SpecialCharNoPassThru LaTeX
+ du paquetage \SpecialChar LaTeX
  
 \series bold
 caption
@@ -770,7 +770,7 @@ PassOptionsToPackage{list=off}{bicaption}
 \begin_layout Standard
 Il est également possible d’obtenir deux listes séparées pour chacune des
  deux langues, ce qui est le cas dans le présent document.
- Pour ce faire, il faut ajouter ces lignes dans le préambule \SpecialCharNoPassThru LaTeX
+ Pour ce faire, il faut ajouter ces lignes dans le préambule \SpecialChar LaTeX
 :
 \end_layout
 
@@ -834,7 +834,7 @@ listoffigureGeres
 \end_layout
 
 \begin_layout Standard
-en code \SpecialCharNoPassThru TeX
+en code \SpecialChar TeX
 .
  Voici la liste des figures en allemand:
 \end_layout
@@ -898,7 +898,7 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-Pour en savoir plus sur ce qui peut être fait avec le paquetage \SpecialCharNoPassThru LaTeX
+Pour en savoir plus sur ce qui peut être fait avec le paquetage \SpecialChar LaTeX
  
 \series bold
 bicaption
@@ -923,7 +923,7 @@ key "bicaption"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="48" columns="2">
-<features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
 <row endfirsthead="true" caption="true">
@@ -1917,7 +1917,7 @@ key "bicaption"
 
 \end_inset
 
-Documentation of the \SpecialCharNoPassThru LaTeX
+Documentation of the \SpecialChar LaTeX
 -package 
 \series bold
 
@@ -1938,7 +1938,7 @@ key "caption"
 
 \end_inset
 
-Documentation of the \SpecialCharNoPassThru LaTeX
+Documentation of the \SpecialChar LaTeX
 -package 
 \series bold
 

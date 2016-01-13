@@ -89,7 +89,7 @@ linguistics
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で言語学の論文を書く
 \end_layout
 
@@ -110,13 +110,13 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-平成20年9月14日
+平成20年9月14日 
 \end_layout
 
 \begin_layout Abstract
-この小論は、\SpecialCharNoPassThru LyX
-が言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成
-するために用意されているネイティブサポートを利用する方法を説明します。
+この小論は、\SpecialChar LyX
+が言語学者に提供している機能のいくつかを説明します。ここでは、付番用例や語句注解、OT表、セマンティックマークアップ、発音記号（IPA）を生成するた
+めに用意されているネイティブサポートを利用する方法を説明します。
 \end_layout
 
 \begin_layout Section
@@ -124,10 +124,10 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-基本的に、この小論は、第1.6.0版現在において\SpecialCharNoPassThru LyX
-に同梱されている「言語学」モジュールの機能を説明するものです。（\SpecialCharNoPassThru LyX
- 1.6.0で導入された）「モジュール」は、
-どの文書からでも簡単に選択できるようにしたサポートファイルです。言語学モジュールを使用するためには、
+基本的に、この小論は、第1.6.0版現在において\SpecialChar LyX
+に同梱されている「言語学」モジュールの機能を説明するものです。（\SpecialChar LyX
+ 1.6.0で導入された）「モジュール」は、どの文書から
+でも簡単に選択できるようにしたサポートファイルです。言語学モジュールを使用するためには、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -142,7 +142,7 @@ type "mailto:"
 
 \begin_layout Standard
 このモジュールは、どの文書クラスでも使えるようになったはずです（もしそうなっていなければ、私に知らせてください）。しかし、すべての機能を使用するには、以下の各L
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
 パッケージが導入されている必要があります。
 \end_layout
 
@@ -219,7 +219,7 @@ key "float"
 
 \end_inset
 
-：OT表とフロート一覧に必要とsれます。このパッケージは、すべての\SpecialCharNoPassThru LaTeX
+：OT表とフロート一覧に必要とsれます。このパッケージは、すべての\SpecialChar LaTeX
 頒布版に同梱されているはずです。
 \end_layout
 
@@ -329,8 +329,8 @@ reference "subsec:subexample"
 \backslash
 glt
 \family default
-コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（\SpecialCharNoPassThru TeX
-モードは必要でなく、実のところ\SpecialCharNoPassThru TeX
+コマンドを、語句注解差込枠中にそのまま入れなくてはなりません（\SpecialChar TeX
+モードは必要でなく、実のところ\SpecialChar TeX
 モードにすることはできません）。
 \end_layout
 
@@ -352,6 +352,8 @@ C'est un exemple simple
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -364,6 +366,8 @@ status open
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -381,9 +385,12 @@ This is a simple example
 
 \end_inset
 
+
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \end_inset
@@ -414,6 +421,8 @@ C'est un exemple simple
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -426,6 +435,8 @@ status open
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -438,6 +449,8 @@ status open
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -455,9 +468,12 @@ This is a simple example
 
 \end_inset
 
+
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \end_inset
@@ -484,6 +500,8 @@ Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -496,6 +514,8 @@ My skeertuig is vol palings
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -508,6 +528,8 @@ My hovercraft is {full of} eels
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -525,9 +547,12 @@ Do you have matches?
 
 \end_inset
 
+
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \end_inset
@@ -540,10 +565,10 @@ Do you have matches?
 \family sans
 文字様式
 \family default
-ダイアログは無効になっています。語句注解はハイフネートしないので、\SpecialCharNoPassThru LaTeX
-出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサ
-ポートしないため、出力が崩れてしまいます）。それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。現在のところ、これは以下のようにし
-なくてはなりません。文章を選択して、
+ダイアログは無効になっています。語句注解はハイフネートしないので、\SpecialChar LaTeX
+出力中で明示的に言語を設定することは必要とされません（むしろ、covingtonがサポートしな
+いため、出力が崩れてしまいます）。それでも、正しいスペルチェックをするために、言語を設定したいと思うかもしれません。現在のところ、これは以下のようにしなくてはな
+りません。文章を選択して、
 \begin_inset Info
 type  "shortcut"
 arg   "command-execute"
@@ -569,7 +594,7 @@ french
 \family sans
 ngerman
 \family default
-などの各言語に置き換えてください。\SpecialCharNoPassThru LaTeX
+などの各言語に置き換えてください。\SpecialChar LaTeX
 出力中では、この設定は出力されません。
 \end_layout
 
@@ -613,7 +638,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -897,13 +922,12 @@ OT表の例
 \end_layout
 
 \begin_layout Standard
-出力中のキャプションは、\SpecialCharNoPassThru LyX
-ウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには
-、
+出力中のキャプションは、\SpecialChar LyX
+ウィンドウ内での置き方にかかわらず、既定ではつねに、OT表の下に置かれることに注意してください。OT表のキャプションを上に置くには、
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  プリアンブル
 \family default
 に以下のコードを書いてください。
@@ -1045,14 +1069,14 @@ lingmeaning
 \end_layout
 
 \begin_layout Standard
-発音記号を挿入するには、言語学モジュールは必要でなく、\SpecialCharNoPassThru LyX
-の基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明
-します。
+発音記号を挿入するには、言語学モジュールは必要でなく、\SpecialChar LyX
+の基本機能となっています。しかしながら、発音記号は言語学者が頻繁に用いるので、本稿でも（手短に）説明します
+。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-のIPAサポートを利用するには、\SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+のIPAサポートを利用するには、\SpecialChar LaTeX
 パッケージ
 \emph on
 tipa
@@ -1122,7 +1146,7 @@ preview-latex
 記号\SpecialChar ldots
 
 \family default
-で）挿入したり、[ɛkspləˈneɪʃən]のように直接\SpecialCharNoPassThru LyX
+で）挿入したり、[ɛkspləˈneɪʃən]のように直接\SpecialChar LyX
 に貼り付けたりすることもできます。出力中では、これらは正しい
 \emph on
 tipa
@@ -1154,7 +1178,7 @@ tipa
 \end_layout
 
 \begin_layout Standard
-言語学者に特有の利用法について詳しくは、\SpecialCharNoPassThru LyX
+言語学者に特有の利用法について詳しくは、\SpecialChar LyX
  wiki
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1162,7 +1186,7 @@ key "linguistlyx"
 
 \end_inset
 
-のLinguist\SpecialCharNoPassThru LyX
+のLinguist\SpecialChar LyX
 ページをご参照ください（ご自身のコツもご自由に書き加えてください）。
 \end_layout
 
@@ -1257,17 +1281,16 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialCharNoPassThru LyX
- for Linguisti
-c Papers.
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialChar LyX
+ for Linguistic
+ Papers.
  
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/\SpecialCharNoPassThru LyX
-/Linguist\SpecialCharNoPassThru LyX
+http://wiki.lyx.org/LyX/LinguistLyX
 \end_layout
 
 \end_inset

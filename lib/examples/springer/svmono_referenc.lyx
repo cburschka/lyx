@@ -78,7 +78,8 @@ status open
 
 \begin_layout Plain Layout
 instead of manually inserting the references as done in this file as an
- example, it is recommended to use Bib\SpecialCharNoPassThru TeX
+ example, it is recommended to use Bib\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -111,10 +112,8 @@ www.springerlink.com
 
 \end_inset
 
- it has been decided that \twohyphens
- as a genreral rule \twohyphens
- references should be
- sorted chapter-wise and placed at the end of the individual chapters.
+ it has been decided that – as a genreral rule – references should be sorted
+ chapter-wise and placed at the end of the individual chapters.
  However, upon agreement with your contact at Springer you may list your
  references in a single seperate chapter at the end of your book.
  Deactivate the class option 
@@ -165,8 +164,7 @@ Further Reading
 \shape italic
 sorted
 \shape default
- in alphabetical order \twohyphens
- even if reference numbers are used for the their
+ in alphabetical order – even if reference numbers are used for the their
  citation in the text.
  If there are several works by the same author, the following order should
  be used: 
@@ -369,8 +367,7 @@ key "science-contrib"
 
 \end_inset
 
- Broy, M.: Software engineering \threehyphens
- from auxiliary to key technologies.
+ Broy, M.: Software engineering — from auxiliary to key technologies.
  In: Broy, M., Dener, E.
  (eds.) Software Pioneers, pp.
  10-13.
@@ -434,8 +431,7 @@ key "science-journal"
 \series bold
 169
 \series default
-, 321\twohyphens
-354 (1995)
+, 321–354 (1995)
 \end_layout
 
 \begin_layout Bibliography
@@ -457,6 +453,7 @@ key "science-DOI"
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -648,8 +645,7 @@ key "psysoc-journal"
 \shape italic
 J Film
 \shape default
- Writing, 44(3), 213\twohyphens
-245.
+ Writing, 44(3), 213–245.
 \end_layout
 
 \begin_layout Bibliography
@@ -677,8 +673,7 @@ R.
 Gender issues across the life cycle
 \shape default
  (pp.
- 107\twohyphens
-123).
+ 107–123).
  New York: Springer.
 \end_layout
 
@@ -730,8 +725,7 @@ key "humlinphil-journal"
 \shape italic
 Pragmatics
 \shape default
- 12:257\twohyphens
-271
+ 12:257–271
 \end_layout
 
 \begin_layout Bibliography
@@ -749,8 +743,7 @@ key "humlinphil-contrib"
 Gender and discourse
 \shape default
 , ed.
- Ruth Wodak, 99\twohyphens
-119.
+ Ruth Wodak, 99–119.
  London: Sage Publications.
 \end_layout
 
@@ -880,8 +873,7 @@ key "basic-journal"
 \end_inset
 
  Smith J, Jones M Jr, Houghton L et al (1999) Future of health insurance.
- N Engl J Med 965:325\twohyphens
-329
+ N Engl J Med 965:325–329
 \end_layout
 
 \begin_layout Bibliography

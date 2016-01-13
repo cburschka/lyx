@@ -81,19 +81,18 @@ status open
 \lang english
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+: To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
 \family default
- installed to your \SpecialCharNoPassThru LaTeX
+ installed to your \SpecialChar LaTeX
  system.
- If you are using MiK\SpecialCharNoPassThru TeX
-, you will automatically be asked to install this
- package when previewing your file, if you are using \SpecialCharNoPassThru TeX
-Live, use \SpecialCharNoPassThru TeX
-Live's
- package manager.
+ If you are using MiK\SpecialChar TeX
+, you will automatically be asked to install this package
+ when previewing your file, if you are using \SpecialChar TeX
+Live, use \SpecialChar TeX
+Live's package manager.
 \end_layout
 
 \end_inset
@@ -160,7 +159,7 @@ Tufte handout
 \emph on
 tufte-handout.cls
 \emph default
-, pero adaptado para su uso en \SpecialCharNoPassThru LyX
+, pero adaptado para su uso en \SpecialChar LyX
 .
 \end_layout
 
@@ -464,7 +463,8 @@ Bibliografía
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
  (véase el final del documento para un ejemplo).
  Si no quieres imprimir una bibliografía al final de un documento, inserta
@@ -474,10 +474,11 @@ Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
- dentro de una nota \SpecialCharNoPassThru LyX
- y usa el comando \SpecialCharNoPassThru LaTeX
+ dentro de una nota \SpecialChar LyX
+ y usa el comando \SpecialChar LaTeX
  
 \family typewriter
 
@@ -543,7 +544,7 @@ reference "fig:figmargen"
 status collapsed
 
 \begin_layout Plain Layout
-Nota: desafortunadamente, el cálculo en \SpecialCharNoPassThru LyX
+Nota: desafortunadamente, el cálculo en \SpecialChar LyX
  es incorrecto.
  Los flotantes al margen y los normales se cuentan de distinta manera, mientras
  que en la salida se usa el mismo contador.
@@ -808,7 +809,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1448,7 +1449,7 @@ Preámbulo
 \begin_inset space ~
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  
 \family default
 y ahora podrás usar 
@@ -1457,14 +1458,15 @@ y ahora podrás usar
 \backslash
 paragraph
 \family default
- en modo \SpecialCharNoPassThru LaTeX
+ en modo \SpecialChar LaTeX
 .
 \end_layout
 
 \begin_layout Standard
 Para más detalles sobre definición de niveles de sección, véase 
 \shape italic
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -1573,7 +1575,8 @@ beramono*
 \end_layout
 
 \begin_layout Subsection
-Sitio web de Tufte-\SpecialCharNoPassThru LaTeX
+Sitio web de Tufte-\SpecialChar LaTeX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:website"
@@ -1584,7 +1587,7 @@ name "sec:website"
 \end_layout
 
 \begin_layout Standard
-El sitio web para los paquetes Tufte-\SpecialCharNoPassThru LaTeX
+El sitio web para los paquetes Tufte-\SpecialChar LaTeX
  está ubicado en 
 \begin_inset Flex URL
 status collapsed

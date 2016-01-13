@@ -122,7 +122,8 @@ Une méthode alternative pour obtenir un alignement décimal dans les tableaux
 dcolumn
 \family default
 .
- Ajoutez ce qui suit au préambule \SpecialCharNoPassThru LaTeX
+ Ajoutez ce qui suit au préambule \SpecialChar LaTeX
+
 \begin_inset Foot
 status collapsed
 
@@ -198,7 +199,7 @@ d{4}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt" special="d{4}">
 <row>

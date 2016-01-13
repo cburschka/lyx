@@ -94,7 +94,8 @@ braille
 \begin_body
 
 \begin_layout Title
-Schreiben von Braille mit \SpecialCharNoPassThru LyX
+Schreiben von Braille mit \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -102,20 +103,20 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-Zuerst etwas Allgemeines: Die Braille, die man mit \SpecialCharNoPassThru LyX
+Zuerst etwas Allgemeines: Die Braille, die man mit \SpecialChar LyX
  schreiben kann, ist
  nicht komplett! Braille kann 6 oder 8
 \begin_inset space \space{}
 \end_inset
 
-Punkte haben, während \SpecialCharNoPassThru LaTeX
- (und damit \SpecialCharNoPassThru LyX
-) nur 6-Punkt-Braille ohne akzentuiert
-e Zeichen unterstützt.
+Punkte haben, während \SpecialChar LaTeX
+ (und damit \SpecialChar LyX
+) nur 6-Punkt-Braille ohne akzentuierte
+ Zeichen unterstützt.
 \end_layout
 
 \begin_layout Standard
-Um Braille mit \SpecialCharNoPassThru LyX
+Um Braille mit \SpecialChar LyX
  zu schreiben, laden Sie das Modul 
 \family sans
 Braille
@@ -141,7 +142,7 @@ Braille
 
 (Textgröße)
 \family default
- in \SpecialCharNoPassThru LyX
+ in \SpecialChar LyX
 ' Umgebungs-Auswahlbox und schreiben Ihren Text.
  Die anderen Braille-Umgebungen schalten nur bestimmte Eigenschaften an/aus,
  die nachfolgend beschrieben werden.
@@ -198,7 +199,7 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Man kann sehen, dass \SpecialCharNoPassThru LaTeX
+Man kann sehen, dass \SpecialChar LaTeX
  Wörter in Braille nicht trennen kann; dies müssen
  Sie manuell tun.
 \end_layout
@@ -255,13 +256,14 @@ status open
 \series bold
 Beachte:
 \series default
- \SpecialCharNoPassThru LyX
-' und \SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+' und \SpecialChar LaTeX
 s Eigennamen 
 \begin_inset Quotes gld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -269,7 +271,8 @@ s Eigennamen
 \begin_inset Quotes gld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -277,7 +280,8 @@ s Eigennamen
 \begin_inset Quotes gld
 \end_inset
 
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -285,11 +289,12 @@ s Eigennamen
 \begin_inset Quotes gld
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset Quotes grd
 \end_inset
 
- müssen, wie im folgenden Beispiel, als \SpecialCharNoPassThru TeX
+ müssen, wie im folgenden Beispiel, als \SpecialChar TeX
 -Code eingefügt werden:
 \end_layout
 
@@ -318,7 +323,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -336,7 +341,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -398,8 +403,7 @@ Braille
 
 (Textgröße)
 \family default
- \twohyphens
- die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
+ – die Zeichengröße entspricht ungefähr der Dokumenttextgröße:
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -418,8 +422,7 @@ Braille
 
 (Punkte an)
 \family default
- \twohyphens
- kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
+ – kleine Punkte können an die Stelle von leeren Positionen gesetzt werden:
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -602,7 +605,7 @@ mm.
 
 B.
  Braille in der doppelten Größe zu erhalten, benutzen Sie diesen Befehl
- im \SpecialCharNoPassThru TeX
+ im \SpecialChar TeX
 -Code in Ihrem Dokument:
 \end_layout
 

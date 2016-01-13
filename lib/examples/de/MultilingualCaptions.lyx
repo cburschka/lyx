@@ -147,12 +147,12 @@ Legenden
 
 B.
  Beschriftungen von Abbildungen) in zwei Sprachen gedruckt werden.
- Es benötigt das \SpecialCharNoPassThru LaTeX
+ Es benötigt das \SpecialChar LaTeX
 -Paket 
 \series bold
 bicaption
 \series default
-, das Teil des \SpecialCharNoPassThru LaTeX
+, das Teil des \SpecialChar LaTeX
 -Pakets 
 \series bold
 caption
@@ -326,7 +326,6 @@ reference "fig:Beispiel-Abbildung"
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -493,7 +492,7 @@ font=
 \series default
 .
  Für weitere Informationen über mögliche Anpassungen siehe die Dokumentation
- des \SpecialCharNoPassThru LaTeX
+ des \SpecialChar LaTeX
 -Pakets 
 \series bold
 caption
@@ -533,7 +532,6 @@ reference "fig:Beispiel-Abbildung-angepasst"
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Note Note
 status open
 
@@ -584,7 +582,6 @@ Die Marke soll fett sein, das Trennzeichen soll ein Zeilenumbruch statt
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -599,7 +596,6 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-
 Die Marke der ersten Sprache soll fett sein.
 \end_layout
 
@@ -609,7 +605,6 @@ Die Marke der ersten Sprache soll fett sein.
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -624,10 +619,7 @@ labelfont=bf, textfont={sf,it}, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-
-Der Text der zweiten Sprache soll 
-\lang ngerman
-sansserif, kursiv sein.
+Der Text der zweiten Sprache soll sansserif, kursiv sein.
 \end_layout
 
 \end_inset
@@ -737,7 +729,7 @@ PassOptionsToPackage{list=off}{bicaption}
 Es ist auch möglich zwei verschiedene Verzeichnisse zu haben, eine für die
  Dokumentsprache und eine für die zweite Sprache.
  Dies ist in diesem Dokument der Fall.
- Um die Liste zu Teilen, müssen diese Zeilen in den \SpecialCharNoPassThru LaTeX
+ Um die Liste zu Teilen, müssen diese Zeilen in den \SpecialChar LaTeX
 -Vorspann des Dokuments
  hinzugefügt werden:
 \end_layout
@@ -802,7 +794,7 @@ listoffigureEnges
 \end_layout
 
 \begin_layout Standard
-als \SpecialCharNoPassThru TeX
+als \SpecialChar TeX
 -Code eingefügt werden.
  Hier ist das englische Abbildungsverzeichnis:
 \end_layout
@@ -865,7 +857,7 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-Für mehr Informationen was man mit dem \SpecialCharNoPassThru LaTeX
+Für mehr Informationen was man mit dem \SpecialChar LaTeX
 -Paket 
 \series bold
 bicaption
@@ -890,7 +882,7 @@ key "bicaption"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="48" columns="2">
-<features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
 <row endfirsthead="true" caption="true">
@@ -1900,7 +1892,7 @@ key "bicaption"
 
 \end_inset
 
-Dokumentation des \SpecialCharNoPassThru LaTeX
+Dokumentation des \SpecialChar LaTeX
 -Pakets 
 \series bold
 
@@ -1921,7 +1913,7 @@ key "caption"
 
 \end_inset
 
-Dokumentation de \SpecialCharNoPassThru LaTeX
+Dokumentation de \SpecialChar LaTeX
 -Pakets 
 \series bold
 

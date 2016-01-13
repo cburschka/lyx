@@ -127,7 +127,7 @@
 \noun on
 Feynman
 \noun default
- diagram）を利用するためには、\SpecialCharNoPassThru LaTeX
+ diagram）を利用するためには、\SpecialChar LaTeX
 パッケージ
 \series bold
 feyn
@@ -146,13 +146,14 @@ Diagram
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="28col%">
 <column alignment="center" valignment="middle" width="20col%">
 <column alignment="center" valignment="middle" width="25col%">
@@ -222,7 +223,7 @@ f,g,h
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -305,7 +306,7 @@ fu,fd,fv (gu,gd,gv)
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -419,7 +420,7 @@ AおよびVは、左ないし上向きの矢印や、右ないし下向きの矢
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -533,7 +534,7 @@ fl,glB,glS,fl1,gl2など
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -702,7 +703,7 @@ p
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
@@ -786,7 +787,7 @@ key "Feyn"
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \series bold
 feyn

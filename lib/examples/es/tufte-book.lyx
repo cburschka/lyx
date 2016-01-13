@@ -85,19 +85,18 @@ status open
 \lang english
 Note
 \series default
-: To be able to view your file as PDF you must have the \SpecialCharNoPassThru LaTeX
+: To be able to view your file as PDF you must have the \SpecialChar LaTeX
 -package 
 \family sans
 fpl
 \family default
- installed to your \SpecialCharNoPassThru LaTeX
+ installed to your \SpecialChar LaTeX
  system.
- If you are using MiK\SpecialCharNoPassThru TeX
-, you will automatically be asked to install this
- package when previewing your file, if you are using \SpecialCharNoPassThru TeX
-Live, use \SpecialCharNoPassThru TeX
-Live's
- package manager.
+ If you are using MiK\SpecialChar TeX
+, you will automatically be asked to install this package
+ when previewing your file, if you are using \SpecialChar TeX
+Live, use \SpecialChar TeX
+Live's package manager.
 \end_layout
 
 \end_inset
@@ -885,7 +884,8 @@ Bibliografía
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
  (véase un ejemplo al final del documento).
  Si no quieres imprimir una bibliografía al final de un documento, inserta
@@ -895,10 +895,11 @@ Bib\SpecialCharNoPassThru TeX
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \family default
- dentro de una nota \SpecialCharNoPassThru LyX
- y usa el comando \SpecialCharNoPassThru LaTeX
+ dentro de una nota \SpecialChar LyX
+ y usa el comando \SpecialChar LaTeX
  
 \family typewriter
 
@@ -1093,11 +1094,11 @@ Ahora supongamos que queremos averigüar el volumen de la figura.
 .
  Puesto que la altura multiplicada por la anchura es el área de cada rectángulo,
  sumamos estas áreas y reescribimos esto como 
-\begin_inset Formula $\int\, f(x)\, dx$
+\begin_inset Formula $\int\,f(x)\,dx$
 \end_inset
 
 , o, en este caso concreto, 
-\begin_inset Formula $\int\,\sqrt{x}\, dx$
+\begin_inset Formula $\int\,\sqrt{x}\,dx$
 \end_inset
 
 .
@@ -1167,7 +1168,7 @@ Para calcular el volumen de un disco, tenemos
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V=\pi x\, dx
+V=\pi x\,dx
 \]
 
 \end_inset
@@ -1178,7 +1179,7 @@ o, en el caso general
 \begin_layout Standard
 \begin_inset Formula 
 \[
-V=\pi f^{2}(x)\, dx
+V=\pi f^{2}(x)\,dx
 \]
 
 \end_inset
@@ -1197,7 +1198,7 @@ Para encontrar el volumen de la figura entre los puntos
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\int_{a}^{b}\,\pi f^{2}(x)\, dx
+\int_{a}^{b}\,\pi f^{2}(x)\,dx
 \end{equation}
 
 \end_inset
@@ -1209,7 +1210,7 @@ En el ejemplo concreto, en el intervalo
 
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{4}\,\pi x\, dx & = & \pi\int_{0}^{4}\, x\, dx\\
+\int_{0}^{4}\,\pi x\,dx & = & \pi\int_{0}^{4}\,x\,dx\\
  & = & \pi\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}\\
  & = & \pi\left(\frac{4^{2}}{2}-0\right)\\
  & = & 8\pi
@@ -1332,8 +1333,8 @@ A_{arandela} & = & A_{copa}-A_{taladro}\\
 El volumen de cada arandela sería
 \begin_inset Formula 
 \begin{eqnarray*}
-V_{arandela} & = & A_{arandela}\, dx\\
- & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+V_{arandela} & = & A_{arandela}\,dx\\
+ & = & \pi\left(f^{2}(x)-g^{2}(x)\right)\,dx
 \end{eqnarray*}
 
 \end_inset
@@ -1354,7 +1355,7 @@ Después, sumando los volúmenes de todas las arandelas entre los puntos
 , se obtiene la integral:
 \begin_inset Formula 
 \begin{equation}
-\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\, dx
+\int_{a}^{b}\,\pi\left(f^{2}(x)-g^{2}(x)\right)\,dx
 \end{equation}
 
 \end_inset
@@ -1411,8 +1412,8 @@ La copa con un agujero cuadrático taladrado a lo largo.
 
 \begin_inset Formula 
 \begin{eqnarray*}
-\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\, dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\, dx\\
- & = & \pi\left(\int_{0}^{4}\, x\, dx-\int_{0}^{4}\,\frac{x^{4}}{256}\, dx\right)\\
+\int_{0}^{4}\,\pi\left(\left(\sqrt{x}\right)^{2}-\left(\frac{x^{2}}{16}\right)\right)\,dx & = & \pi\int_{0}^{4}\,\left(x-\frac{x^{4}}{256}\right)\,dx\\
+ & = & \pi\left(\int_{0}^{4}\,x\,dx-\int_{0}^{4}\,\frac{x^{4}}{256}\,dx\right)\\
  & = & \pi\left(\left.\left(\frac{x^{2}}{2}\right)\right|_{0}^{4}-\left.\left(\frac{x^{5}}{1280}\right)\right|_{0}^{4}\right)\\
  & = & \pi\left(\left(\frac{4^{2}}{2}-0\right)-\left(\frac{4^{5}}{1280}-0\right)\right)\\
  & = & \pi\left(8-0.8\right)\\

@@ -76,7 +76,8 @@ DIT IS DE TITEL VAN HET DOCUMENT
 \end_layout
 
 \begin_layout Author
-door Fee \SpecialCharNoPassThru LyX
+door Fee \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Date
@@ -97,26 +98,26 @@ Uitgangspunten
 \end_layout
 
 \begin_layout Standard
-Het uitgangspunt van \SpecialCharNoPassThru LyX
- is dat je je niet bezig houdt met de vormgeving,
- maar met de inhoud van je tekst.
+Het uitgangspunt van \SpecialChar LyX
+ is dat je je niet bezig houdt met de vormgeving, maar
+ met de inhoud van je tekst.
 \end_layout
 
 \begin_layout Subsection
-Hoe \SpecialCharNoPassThru LyX
+Hoe \SpecialChar LyX
  het fikst
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- gebruikt \SpecialCharNoPassThru LaTeX
-, een tekstverwerkingssysteem ontworpen door Leslie Lamport
- in 1985.
- Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd \SpecialCharNoPassThru TeX
-,
- door Donald Knuth gemaakt in 1984.
- \SpecialCharNoPassThru LaTeX
- is ontworpen met dezelfde uitgangspunten als \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+ gebruikt \SpecialChar LaTeX
+, een tekstverwerkingssysteem ontworpen door Leslie Lamport in
+ 1985.
+ Dit was op zich weer gebaseerd op een opmaaktaal voor tekst genaamd \SpecialChar TeX
+, door
+ Donald Knuth gemaakt in 1984.
+ \SpecialChar LaTeX
+ is ontworpen met dezelfde uitgangspunten als \SpecialChar LyX
 .
  Leslie Lamport zei eens (zie referentie 
 \begin_inset CommandInset citation
@@ -136,7 +137,7 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
  Een citaat en een computerprogramma, die als structurele elementen logisch
  van elkaar verschillen, zouden onderling visueel van elkaar te onderscheiden
  moeten zijn....
- Omdat \SpecialCharNoPassThru LaTeX
+ Omdat \SpecialChar LaTeX
  niet kan begrijpen wat je schrijft, zul je expliciet de logische
  structuur moeten aangeven door bepaalde commando's te typen....
  Als je je document aan het schrijven bent, zou je je bezig moeten houden
@@ -144,7 +145,7 @@ De functie van typografisch ontwerp is om de lezer te helpen de ideeën van
 \end_layout
 
 \begin_layout Subsection
-Waarom \SpecialCharNoPassThru LyX
+Waarom \SpecialChar LyX
  beter is
 \end_layout
 
@@ -155,13 +156,13 @@ name "sec:lyxbeter"
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
- kan voor meer mensen handig zijn dan \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ kan voor meer mensen handig zijn dan \SpecialChar LaTeX
 .
- Het is aanzienlijk eenvoudiger te leren, omdat je \SpecialCharNoPassThru LaTeX
+ Het is aanzienlijk eenvoudiger te leren, omdat je \SpecialChar LaTeX
  niet hoeft te leren
  (wat eigenlijk een programmeertaal is).
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  is in feite net als andere 
 \begin_inset Quotes eld
 \end_inset
@@ -170,7 +171,7 @@ Wat je ziet is wat je krijgt
 \begin_inset Quotes erd
 \end_inset
 
- tekstverwerkers, behalve dat \SpecialCharNoPassThru LyX
+ tekstverwerkers, behalve dat \SpecialChar LyX
  
 \begin_inset Quotes eld
 \end_inset
@@ -181,7 +182,7 @@ Wat je ziet is wat je bedoelt
 
  is.
  Op deze manier combineert het het gemak van tekstverwerkers met de kracht
- van \SpecialCharNoPassThru LaTeX
+ van \SpecialChar LaTeX
 .
  Dit is Goed.
  Ook is het bestandsformaat niet afhankelijk van het platform.
@@ -189,11 +190,12 @@ Wat je ziet is wat je bedoelt
 \end_layout
 
 \begin_layout Section
-De mogelijkheden van \SpecialCharNoPassThru LyX
+De mogelijkheden van \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  heeft vele mogelijkheden die het schrijven van documenten vergemakkelijken.
 \begin_inset Foot
 status collapsed
@@ -213,19 +215,19 @@ geweldig
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  regelt marges, en het nummeren van voetnoten voor je
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  maakt het gemakkelijk om wiskundige formules te maken en te veranderen
 \end_layout
 
 \begin_layout Standard
-Voor een meer filosofische verhandeling waarom \SpecialCharNoPassThru LyX
- beter is dan andere tekstverw
-erkers, zie Sectie 
+Voor een meer filosofische verhandeling waarom \SpecialChar LyX
+ beter is dan andere tekstverwerk
+ers, zie Sectie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:lyxbeter"
@@ -243,7 +245,7 @@ reference "sec:lyxbeter"
 \end_layout
 
 \begin_layout Section
-Slappe pogingen om andere dingen in \SpecialCharNoPassThru LyX
+Slappe pogingen om andere dingen in \SpecialChar LyX
  te gebruiken
 \end_layout
 
@@ -278,7 +280,7 @@ Na al dit wetenschappelijk denkwerk, voelde ik mij meer artistiek, dus schreef
 \end_layout
 
 \begin_layout Verse
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  is echt geweldig 
 \begin_inset Newline newline
 \end_inset
@@ -322,7 +324,7 @@ Opmerkingen
 \end_layout
 
 \begin_layout Standard
-Een paar opmerkingen over het ver\SpecialCharNoPassThru LyX
+Een paar opmerkingen over het ver\SpecialChar LyX
 en van dit bestand:
 \end_layout
 
@@ -330,16 +332,16 @@ en van dit bestand:
 Ik kon de lijnen die met streepjes gemaakt waren verwijderen.
  Deze waren daar enkel om de titel en de referenties van de rest van het
  document te scheiden.
- \SpecialCharNoPassThru LyX
- (\SpecialCharNoPassThru LaTeX
-) begrijpt genoeg om deze onderdelen van het document met witruimte
- te scheiden.
+ \SpecialChar LyX
+ (\SpecialChar LaTeX
+) begrijpt genoeg om deze onderdelen van het document met witruimte te
+ scheiden.
 \end_layout
 
 \begin_layout Itemize
 Ik heb niet de moeite genomen de wiskudige vergelijkingen in display-modus
  te zetten.
- Ik gebruikte ook niet de mogelijkheid van \SpecialCharNoPassThru LyX
+ Ik gebruikte ook niet de mogelijkheid van \SpecialChar LyX
  om de vergelijkingen automatisch
  te nummeren, omdat dit niet in de 
 \emph on
@@ -358,7 +360,7 @@ Referenties
 \end_inset
 
  niet te typen.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  schrijft dit automatisch (of het woord 
 \begin_inset Quotes eld
 \end_inset
@@ -383,7 +385,7 @@ key "lamport"
 
 Lamport, Leslie.
 \emph on
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 : A Document Preparation System.
 
 \emph default

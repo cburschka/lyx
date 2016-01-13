@@ -94,7 +94,7 @@ braille
 \begin_body
 
 \begin_layout Title
-Kako pisati Brajevo pismo u \SpecialCharNoPassThru LyX
+Kako pisati Brajevo pismo u \SpecialChar LyX
 -u
 \end_layout
 
@@ -108,14 +108,14 @@ Serbian translation: Zoran T.
 \end_layout
 
 \begin_layout Standard
-Prvo opšta napomena: Brajeva azbuka koju kreirate sa \SpecialCharNoPassThru LaTeX
+Prvo opšta napomena: Brajeva azbuka koju kreirate sa \SpecialChar LaTeX
 -om nije kompletna!
  Brajevo pismo može da ima 6 ili 8
 \begin_inset space \thinspace{}
 \end_inset
 
-tačkica, dok \SpecialCharNoPassThru LaTeX
- (i stoga \SpecialCharNoPassThru LyX
+tačkica, dok \SpecialChar LaTeX
+ (i stoga \SpecialChar LyX
 ) podržava samo Brajevo pismo od 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -124,7 +124,7 @@ tačkica bez akcentovanih znakova.
 \end_layout
 
 \begin_layout Standard
-Za pisanje Brajevom azbukom sa \SpecialCharNoPassThru LyX
+Za pisanje Brajevom azbukom sa \SpecialChar LyX
 -om, učitajte modul 
 \family sans
 Braille
@@ -150,7 +150,7 @@ Braille
 
 (textsize)
 \family default
- iz \SpecialCharNoPassThru LyX
+ iz \SpecialChar LyX
  kompleta okruženja i pišite Vaš tekst.
  Za druga Brajeva okruženja samo uključite/isključite neke osobine kao što
  je opisano u nastavku; čuvajte ih praznim!
@@ -210,9 +210,9 @@ height "1pt"
 \end_layout
 
 \begin_layout Standard
-Možete videti da \SpecialCharNoPassThru LaTeX
- nije u stanju da napiše reči sa crticom pisane na
- Brajevom pismu, što treba da uradite ručno.
+Možete videti da \SpecialChar LaTeX
+ nije u stanju da napiše reči sa crticom pisane na Brajevom
+ pismu, što treba da uradite ručno.
 \end_layout
 
 \begin_layout Standard
@@ -267,13 +267,14 @@ status open
 \series bold
 Note:
 \series default
- \SpecialCharNoPassThru LyX
- i \SpecialCharNoPassThru LaTeX
+ \SpecialChar LyX
+ i \SpecialChar LaTeX
  vlastita imena 
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -281,7 +282,8 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -289,7 +291,8 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -297,11 +300,12 @@ Note:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset Quotes erd
 \end_inset
 
- moraju da se ubace kao \SpecialCharNoPassThru TeX
+ moraju da se ubace kao \SpecialChar TeX
  kod, što je prikazano u sledećem primeru:
 \end_layout
 
@@ -330,7 +334,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -348,7 +352,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -611,7 +615,7 @@ brailleunit
 
 mm.
  Da biste dobili primer dvostruke veličine Brajevog pisma koristite sledeću
- komandu u \SpecialCharNoPassThru TeX
+ komandu u \SpecialChar TeX
  kodu u vašem dokumentu:
 \end_layout
 

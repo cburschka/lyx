@@ -94,7 +94,7 @@ braille
 \begin_body
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で点字を書く
 \end_layout
 
@@ -115,15 +115,15 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-まず一般的な注意をひとつ。\SpecialCharNoPassThru LaTeX
-で生成できる点字は、完全ではありません。点字には、6点点字と8点点字がありますが、\SpecialCharNoPassThru LaTeX
-（したがって\SpecialCharNoPassThru LyX
-も）は、アクセ
-ント文字のない6点点字のみをサポートしています。
+まず一般的な注意をひとつ。\SpecialChar LaTeX
+で生成できる点字は、完全ではありません。点字には、6点点字と8点点字がありますが、\SpecialChar LaTeX
+（したがって\SpecialChar LyX
+も）は、アクセント文字のない6点点字のみ
+をサポートしています。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 で点字を書くには、文書設定の
 \family sans
 モジュール
@@ -132,7 +132,7 @@ type "mailto:"
 \family sans
 点字
 \family default
-モジュールを読み込んでください。そうすると、\SpecialCharNoPassThru LyX
+モジュールを読み込んでください。そうすると、\SpecialChar LyX
 の環境選択ボックスから
 \family sans
 点字（既定値）
@@ -195,7 +195,7 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 は、点字で書かれた単語のハイフネーションを行うことができません。ハイフネーションは、手動で行う必要があります。
 \end_layout
 
@@ -234,13 +234,13 @@ status open
 \series bold
 （註）
 \series default
-\SpecialCharNoPassThru LyX
-や\SpecialCharNoPassThru LaTeX
-の固有名詞である「\SpecialCharNoPassThru LaTeX
-」・「\SpecialCharNoPassThru LaTeX2e
-」・「\SpecialCharNoPassThru TeX
-」・「\SpecialCharNoPassThru LyX
-」は、以下の例のように、\SpecialCharNoPassThru TeX
+\SpecialChar LyX
+や\SpecialChar LaTeX
+の固有名詞である「\SpecialChar LaTeX
+」・「\SpecialChar LaTeX2e
+」・「\SpecialChar TeX
+」・「\SpecialChar LyX
+」は、以下の例のように、\SpecialChar TeX
 コードで入れなくてはなりません。
 \end_layout
 
@@ -269,7 +269,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -287,7 +287,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -502,7 +502,7 @@ brailleunit
 \begin_inset space \thinspace{}
 \end_inset
 
-mmです。たとえば、2倍の大きさの点字を作るには、文書中に\SpecialCharNoPassThru TeX
+mmです。たとえば、2倍の大きさの点字を作るには、文書中に\SpecialChar TeX
 コードで以下のコマンドを記述してください：
 \end_layout
 

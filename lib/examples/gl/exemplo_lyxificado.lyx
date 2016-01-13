@@ -76,7 +76,8 @@ ESTE É O TÍTULO DO DOCUMENTO
 \end_layout
 
 \begin_layout Author
-por Pepe \SpecialCharNoPassThru LyX
+por Pepe \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Date
@@ -97,26 +98,27 @@ Filosofia básica
 \end_layout
 
 \begin_layout Standard
-A filosofia básica de \SpecialCharNoPassThru LyX
- é conseguir que o usuário só se deba preocupar
- do contido do documento e non do formato.
+A filosofia básica de \SpecialChar LyX
+ é conseguir que o usuário só se deba preocupar do
+ contido do documento e non do formato.
 \end_layout
 
 \begin_layout Subsection
-Como o traballa o \SpecialCharNoPassThru LyX
+Como o traballa o \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- basea-se no \SpecialCharNoPassThru LaTeX
-, un sistema de preparación de documentos deseñado
- por Leslie Lamport en 1985.
- Por sua vez o \SpecialCharNoPassThru LaTeX
- elaborou-se sobre unha linguaxe tipográfica chamada
- \SpecialCharNoPassThru TeX
-, criada por Donald Knuth en 1984.
- Por outra banda a filosofia do \SpecialCharNoPassThru LaTeX
- é similar á de \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+ basea-se no \SpecialChar LaTeX
+, un sistema de preparación de documentos deseñado por Leslie
+ Lamport en 1985.
+ Por sua vez o \SpecialChar LaTeX
+ elaborou-se sobre unha linguaxe tipográfica chamada \SpecialChar TeX
+, criada
+ por Donald Knuth en 1984.
+ Por outra banda a filosofia do \SpecialChar LaTeX
+ é similar á de \SpecialChar LyX
 .
  Leslie Lamport dixo (ver referéncia 
 \begin_inset CommandInset citation
@@ -134,14 +136,15 @@ key "Lamport"
  Para un documento ser de fácil leitura, a sua estrutura visual debe reflectir
  a sua estrutura lóxica.
  As citas e os programas de computador, sendo elementos estruturalmente
- diferentes, deberian distinguir-se visualmente un de outro [...] Como \SpecialCharNoPassThru LaTeX
- non pode entender directamente o sentido do seu texto, debe indicar-lle
- a estrutura lóxica mediante comandos especiais [...] Entanto escrebe o documento,
- deberia preocupar-se da sua estrutura lóxica, non da sua aparéncia."
+ diferentes, deberian distinguir-se visualmente un de outro [...] Como \SpecialChar LaTeX
+ non
+ pode entender directamente o sentido do seu texto, debe indicar-lle a estrutura
+ lóxica mediante comandos especiais [...] Entanto escrebe o documento, deberia
+ preocupar-se da sua estrutura lóxica, non da sua aparéncia."
 \end_layout
 
 \begin_layout Subsection
-Por que o \SpecialCharNoPassThru LyX
+Por que o \SpecialChar LyX
  é mellor
 \end_layout
 
@@ -152,19 +155,19 @@ name "subsec:LyX-mellor"
 
 \end_inset
 
-\SpecialCharNoPassThru LyX
- pode ser útil a mais xente que \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ pode ser útil a mais xente que \SpecialChar LaTeX
 .
- É considerabelmente mais doado de aprender, pois non é como \SpecialCharNoPassThru LaTeX
- unha
- linguaxe de programazón.
- \SpecialCharNoPassThru LyX
- é basicamente como outros procesadores de texto "WYSIWYG (o que vé
- é o que obtén), agás que o \SpecialCharNoPassThru LyX
+ É considerabelmente mais doado de aprender, pois non é como \SpecialChar LaTeX
+ unha linguaxe
+ de programazón.
+ \SpecialChar LyX
+ é basicamente como outros procesadores de texto "WYSIWYG (o que vé é o
+ que obtén), agás que o \SpecialChar LyX
  realmente é WYSIWYM (o que vé é o que pretende
  facer).
  De maneira que combina a facilidade de uso dos procesadores de texto coa
- poténcia do \SpecialCharNoPassThru LaTeX
+ poténcia do \SpecialChar LaTeX
 .
  O cal é unha boa cousa.
  Ademais, o formato de arquivo é independente do sistema operativo.
@@ -172,11 +175,12 @@ name "subsec:LyX-mellor"
 \end_layout
 
 \begin_layout Section
-Características do \SpecialCharNoPassThru LyX
+Características do \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  posui moitas características que facilitan a escrita de documentos
 \begin_inset Foot
 status collapsed
@@ -197,18 +201,18 @@ agrada-me
 \end_layout
 
 \begin_layout Itemize
-O \SpecialCharNoPassThru LyX
- encarrega-se sen intervención do usuário das marxes e a numeración
- das notas de rodapé.
+O \SpecialChar LyX
+ encarrega-se sen intervención do usuário das marxes e a numeración das
+ notas de rodapé.
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  facilita a escrita e edición de fórmulas matemáticas.
 \end_layout
 
 \begin_layout Standard
-Para unha discusión mais filosófica de por que \SpecialCharNoPassThru LyX
+Para unha discusión mais filosófica de por que \SpecialChar LyX
  é mellor que a competéncia
  vexa a sección 
 \begin_inset CommandInset ref
@@ -228,7 +232,8 @@ reference "subsec:LyX-mellor"
 \end_layout
 
 \begin_layout Section
-Tentivas eivadas de empregar máis facilidades do \SpecialCharNoPassThru LyX
+Tentivas eivadas de empregar máis facilidades do \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -253,7 +258,7 @@ Após desta inxente lavoura informática, arrebatou-me unha vea poética e
 \end_layout
 
 \begin_layout Verse
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 , veloz palilleira
 \begin_inset Newline newline
 \end_inset
@@ -305,14 +310,14 @@ Tres cousiñas sobre este ficheiro:
 \begin_layout Itemize
 Eliminei as liñas a trazos que separaban o título e a bibliografia do resto
  do documento.
- O \SpecialCharNoPassThru LyX
- (\SpecialCharNoPassThru LaTeX
+ O \SpecialChar LyX
+ (\SpecialChar LaTeX
 ) xa separa tais partes do documento con os espazos axeitados.
 \end_layout
 
 \begin_layout Itemize
 Non coloquei as fórmulas en liñas independentes, nen usei a numeración automátic
-a que fornece o \SpecialCharNoPassThru LyX
+a que fornece o \SpecialChar LyX
 , porque non se descreben no 
 \emph on
 Tutorial
@@ -329,7 +334,7 @@ References
 \begin_inset Quotes erd
 \end_inset
 
- que vai a seguir, xa que o \SpecialCharNoPassThru LyX
+ que vai a seguir, xa que o \SpecialChar LyX
  a escrebe automaticamente (ou ben a palabra
  
 \begin_inset Quotes eld
@@ -356,7 +361,7 @@ key "Lamport"
 Lamport, Leslie.
  
 \emph on
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 : A Document Preparation System.
 
 \emph default

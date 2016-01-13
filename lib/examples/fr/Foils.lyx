@@ -117,7 +117,8 @@ height "7pt"
 \noun on
 Allan Rae 
 \noun default
-et l'Équipe \SpecialCharNoPassThru LyX
+et l'Équipe \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Date
@@ -125,8 +126,8 @@ et l'Équipe \SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Abstract
-On peut combiner \SpecialCharNoPassThru LyX
- et Foil\SpecialCharNoPassThru TeX
+On peut combiner \SpecialChar LyX
+ et Foil\SpecialChar TeX
  en un puissant outil de préparation de 
 \begin_inset Quotes fld
 \end_inset
@@ -181,6 +182,7 @@ Puces
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -189,6 +191,7 @@ est idéale avec la classe foils
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -196,6 +199,7 @@ est idéale avec la classe foils
 vous permettant de choisir la puce
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -226,14 +230,14 @@ fr_ListesPuces.lyx
 
 \begin_layout Itemize
 NOTE 2 : Pour avoir un espacement de liste petit comme ici mettez la commande
- Foil\SpecialCharNoPassThru TeX
+ Foil\SpecialChar TeX
  
 \family typewriter
 
 \backslash
 zerolistvertdimens{}
 \family default
- dans un insert \SpecialCharNoPassThru TeX
+ dans un insert \SpecialChar TeX
  au début du premier élément.
 \end_layout
 
@@ -478,16 +482,15 @@ As you can see, we are still in the same lemma.
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Lemma*
 Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
- par du texte standard ou, comme ici, par un insert \SpecialCharNoPassThru TeX
+ par du texte standard ou, comme ici, par un insert \SpecialChar TeX
  qui contient juste
  un 
 \family typewriter
@@ -504,12 +507,12 @@ Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
 \family default
 \emph default
 .
- C'est simplement le caractère de commentaire en \SpecialCharNoPassThru LaTeX
- mais l'apparition
- d'un paragraphe contenant du \SpecialCharNoPassThru LaTeX
- suffit pour forcer \SpecialCharNoPassThru LyX
- à présenter correctem
-ent les deux environnements.
+ C'est simplement le caractère de commentaire en \SpecialChar LaTeX
+ mais l'apparition d'un
+ paragraphe contenant du \SpecialChar LaTeX
+ suffit pour forcer \SpecialChar LyX
+ à présenter correctement les
+ deux environnements.
 \end_layout
 
 \begin_layout Lemma*
@@ -548,7 +551,7 @@ height "3pt"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -692,7 +695,7 @@ Voici un tableau flottant qui ne flotte pas
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -818,9 +821,9 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Foil\SpecialCharNoPassThru TeX
- offre de nombreuses possibilités pour gérer les en-têtes et les
- pieds de page
+Foil\SpecialChar TeX
+ offre de nombreuses possibilités pour gérer les en-têtes et les pieds
+ de page
 \begin_inset Foot
 status collapsed
 
@@ -856,7 +859,7 @@ Restriction{}
 \begin_inset Quotes fld
 \end_inset
 
--Typeset by Foil\SpecialCharNoPassThru TeX
+-Typeset by Foil\SpecialChar TeX
 -
 \begin_inset Quotes frd
 \end_inset
@@ -876,8 +879,7 @@ Les autres coins sont contrôlés par :
 \backslash
 rightfooter{}
 \family default
- \twohyphens
- par défaut le numéro de page
+ – par défaut le numéro de page
 \end_layout
 
 \begin_layout Standard
@@ -913,13 +915,13 @@ height "3pt"
 \end_layout
 
 \begin_layout Standard
-Il devrait y avoir de la documentation sur Foil\SpecialCharNoPassThru TeX
+Il devrait y avoir de la documentation sur Foil\SpecialChar TeX
  dans votre distribution
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 .
- Il y a bien d'autres fonctions de Foil\SpecialCharNoPassThru TeX
+ Il y a bien d'autres fonctions de Foil\SpecialChar TeX
  qui n'ont pas été décrites ici.
- Par exemple, Foil\SpecialCharNoPassThru TeX
+ Par exemple, Foil\SpecialChar TeX
  peut automatiquement tracer un trait horizontal entre
  les en-têtes de page et ceux de diapo, et entre le corps et les pieds de
  page.
@@ -936,7 +938,7 @@ Jim Hafner,
 \begin_inset Quotes fld
 \end_inset
 
-The Foil\SpecialCharNoPassThru TeX
+The Foil\SpecialChar TeX
  Class Package
 \begin_inset Quotes frd
 \end_inset
@@ -953,7 +955,7 @@ key "2"
 
 \end_inset
 
-Équipe de Documentation \SpecialCharNoPassThru LyX
+Équipe de Documentation \SpecialChar LyX
 , manuel d'
 \emph on
 Options

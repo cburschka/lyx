@@ -117,7 +117,7 @@ William Shakespeare
 
 \begin_layout Standard
 Einige Leute schreiben hier eine Zusammenfassung.
- Bemerkung: im Vorspann kann man viele \SpecialCharNoPassThru LaTeX
+ Bemerkung: im Vorspann kann man viele \SpecialChar LaTeX
 -Variablen setzen, um das Aussehen
  des Lebenslaufes zu ändern.
  Sehen Sie sich 
@@ -143,7 +143,7 @@ status collapsed
 
 \end_inset
 
-a\SpecialCharNoPassThru TeX
+a\SpecialChar TeX
 -Vorspann
 \family default
  an.
@@ -168,10 +168,11 @@ Arbeitserfahrungen
 
  Wenn ein Thema keinen Titel hat, müssen Sie dort stattdessen ein geschütztes
  Leerzeichen einfügen.
- Dies ist ein \SpecialCharNoPassThru LyX
+ Dies ist ein \SpecialChar LyX
 -Mangel.
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -235,10 +236,10 @@ key "secondref"
 
 \end_inset
 
-Diese Referenzen könnten über Bib\SpecialCharNoPassThru TeX
+Diese Referenzen könnten über Bib\SpecialChar TeX
  eingefügt worden sein\SpecialChar ldots
- Auf jeden Fall
- kann ich hier meine Arbeiten aus 
+ Auf jeden Fall kann
+ ich hier meine Arbeiten aus 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "firstref"

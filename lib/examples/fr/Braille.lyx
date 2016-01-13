@@ -105,14 +105,15 @@ braille
 \begin_body
 
 \begin_layout Title
-Comment écrire en Braille avec \SpecialCharNoPassThru LyX
+Comment écrire en Braille avec \SpecialChar LyX
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Cette traduction met en évidence les limites du paquetage \SpecialCharNoPassThru LaTeX
- Braille
- (anglophone) pour le français...
+Cette traduction met en évidence les limites du paquetage \SpecialChar LaTeX
+ Braille (anglophone)
+ pour le français...
  En particulier, notez que le préfixe majuscule est celui du Braille anglophone,
  ce code est en français celui du préfixe numérique.
  Pour tous les caractères spécifiques au français, il faut utiliser une
@@ -150,16 +151,15 @@ Traduction Jean-Pierre Chrétien
 
 \begin_layout Standard
 Une remarque générale tout d'abord: le Braille que vous pouvez créer avec
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  est incomplet! Il est possible d'avoir 6 ou 8 point en Braille, alors
- que \SpecialCharNoPassThru LaTeX
- (et donc \SpecialCharNoPassThru LyX
-) ne connaît que le Braille à 6 points sans caractères
- accentués.
+ que \SpecialChar LaTeX
+ (et donc \SpecialChar LyX
+) ne connaît que le Braille à 6 points sans caractères accentués.
 \end_layout
 
 \begin_layout Standard
-Pour écrire en Braille avec \SpecialCharNoPassThru LyX
+Pour écrire en Braille avec \SpecialChar LyX
 , charger le module 
 \family sans
 Braille
@@ -248,9 +248,9 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Vous pouvez constater que \SpecialCharNoPassThru LaTeX
- ne sait pas placer de césure sur les mots
- en Braille; vous devez le faire à la main.
+Vous pouvez constater que \SpecialChar LaTeX
+ ne sait pas placer de césure sur les mots en
+ Braille; vous devez le faire à la main.
 \end_layout
 
 \begin_layout Standard
@@ -306,13 +306,14 @@ status open
 \series bold
 Note:
 \series default
- Les noms propres \SpecialCharNoPassThru LyX
- et \SpecialCharNoPassThru LaTeX
+ Les noms propres \SpecialChar LyX
+ et \SpecialChar LaTeX
 : 
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -320,7 +321,8 @@ Note:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -328,7 +330,8 @@ Note:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -336,11 +339,12 @@ Note:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset Quotes frd
 \end_inset
 
- doivent être insérés en code \SpecialCharNoPassThru TeX
+ doivent être insérés en code \SpecialChar TeX
  comme dans l'exemple suivant:
 \end_layout
 
@@ -369,7 +373,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -398,7 +402,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -663,8 +667,9 @@ brailleunit
 \end_inset
 
 mm.
- Pour doubler par exemple la taille, utiliser cette commande en code \SpecialCharNoPassThru TeX
- dans votre document:
+ Pour doubler par exemple la taille, utiliser cette commande en code \SpecialChar TeX
+ dans
+ votre document:
 \end_layout
 
 \begin_layout Standard

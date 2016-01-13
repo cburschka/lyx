@@ -86,12 +86,13 @@ Nápověda: Název by měl vypadat víc jako název (Titulek).
 \end_layout
 
 \begin_layout Standard
-napsal Fe \SpecialCharNoPassThru LyX
+napsal Fe \SpecialChar LyX
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Nápověda: Fe \SpecialCharNoPassThru LyX
+Nápověda: Fe \SpecialChar LyX
  je Autor.
 \end_layout
 
@@ -135,24 +136,24 @@ Nápověda: Bylo by příjemné, kdybychom nemuseli psát obsah my sami.
 \end_layout
 
 \begin_layout Standard
-1.1 Jak to dělá \SpecialCharNoPassThru LyX
+1.1 Jak to dělá \SpecialChar LyX
 ...................1
 \end_layout
 
 \begin_layout Standard
-1.2 Proč je \SpecialCharNoPassThru LyX
+1.2 Proč je \SpecialChar LyX
  lepší................1
 \end_layout
 
 \begin_layout Standard
 2.
- Vlastnosti \SpecialCharNoPassThru LyX
+ Vlastnosti \SpecialChar LyX
 u
 \end_layout
 
 \begin_layout Standard
 3.
- Chabé pokusy o využití dalších možností \SpecialCharNoPassThru LyX
+ Chabé pokusy o využití dalších možností \SpecialChar LyX
 u
 \end_layout
 
@@ -162,23 +163,7 @@ u
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+—————————————————
 \end_layout
 
 \begin_layout Standard
@@ -197,25 +182,26 @@ Nápověda: Název Sekce by měl být nejspíš výraznější.
 \end_layout
 
 \begin_layout Standard
-Základní filosofií \SpecialCharNoPassThru LyX
+Základní filosofií \SpecialChar LyX
 u je, že byste se měli starat o obsah toho, co píšete,
  a ne o formu.
 \end_layout
 
 \begin_layout Standard
-1.1 Jak to dělá \SpecialCharNoPassThru LyX
+1.1 Jak to dělá \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- používá \SpecialCharNoPassThru LaTeX
-, systém pro přípravu dokumentů, který vytvořil Leslie
- Lamport v roce 1985.
- Tento systém je zase postaven nad sázecím jazykem zvaným \SpecialCharNoPassThru TeX
-, vytvořeným
- Donaldem Knuthem roku 1984.
- \SpecialCharNoPassThru LaTeX
- je postaven na podobné filosofii jako \SpecialCharNoPassThru LyX
+\SpecialChar LyX
+ používá \SpecialChar LaTeX
+, systém pro přípravu dokumentů, který vytvořil Leslie Lamport
+ v roce 1985.
+ Tento systém je zase postaven nad sázecím jazykem zvaným \SpecialChar TeX
+, vytvořeným Donaldem
+ Knuthem roku 1984.
+ \SpecialChar LaTeX
+ je postaven na podobné filosofii jako \SpecialChar LyX
 .
  Leslie Lamport jednou řekl (viz.
  reference [1])
@@ -250,9 +236,9 @@ natvrdo
  jeho logické struktuře.
  Logicky rozdílné části textu, jako třeba citáty a počítačové programy,
  by měly být rozdílné i co se týče vzhledu...
- Protože \SpecialCharNoPassThru LaTeX
- nerozumí vašemu textu, musíte explicitně vyjádřit logickou
- strukturu napsáním speciálních příkazů.
+ Protože \SpecialChar LaTeX
+ nerozumí vašemu textu, musíte explicitně vyjádřit logickou strukturu
+ napsáním speciálních příkazů.
  Při psaní dokumentu byste se měli zabývat jeho logickou strukturou a ne
  jeho výsledným vzhledem.
 \begin_inset Quotes grd
@@ -272,18 +258,18 @@ Nápověda: Toto je Citát.
 \end_layout
 
 \begin_layout Standard
-1.2 Proč je \SpecialCharNoPassThru LyX
+1.2 Proč je \SpecialChar LyX
  lepší
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- může být užitečný pro více lidí než \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ může být užitečný pro více lidí než \SpecialChar LaTeX
 .
  Naučit se s ním pracovat je mnohem jednodušší, protože se nemusíte učit
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  (což je v podstatě programovací jazyk).
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  je podobný ostatním textovým procesorům typu 
 \begin_inset Quotes gld
 \end_inset
@@ -292,7 +278,7 @@ what you see is what you get
 \begin_inset Quotes grd
 \end_inset
 
- (vidíš to, co dostaneš) až na to, že \SpecialCharNoPassThru LyX
+ (vidíš to, co dostaneš) až na to, že \SpecialChar LyX
  je 
 \begin_inset Quotes gld
 \end_inset
@@ -302,22 +288,22 @@ what you see is what you mean
 \end_inset
 
  (vidíš to, co jsi myslel).
- Jednoduché používání textových procesorů tak kombinuje se silou \SpecialCharNoPassThru LaTeX
-u,
- což je skvělé.
+ Jednoduché používání textových procesorů tak kombinuje se silou \SpecialChar LaTeX
+u, což
+ je skvělé.
  Dále je formát souboru nezávislý na operačním systému.
- A to nejlepší nakonec: \SpecialCharNoPassThru LyX
+ A to nejlepší nakonec: \SpecialChar LyX
  je zadarmo!
 \end_layout
 
 \begin_layout Standard
 2.
- Vlastnosti \SpecialCharNoPassThru LyX
+ Vlastnosti \SpecialChar LyX
 u
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  má spoustu vlastností, které usnadňují psaní dokumentů.
  (Nakonec, proč byste ho jinak chtěli používat?
 \begin_inset Note Note
@@ -344,17 +330,17 @@ Nápověda: Zvýraznit!
 \end_layout
 
 \begin_layout Standard
-* \SpecialCharNoPassThru LyX
+* \SpecialChar LyX
  se stará o okraje stránky a číslování poznámek pod čarou za vás.
 \end_layout
 
 \begin_layout Standard
-* S \SpecialCharNoPassThru LyX
+* S \SpecialChar LyX
 em je jednoduché psát a upravovat matematické vzorce.
 \end_layout
 
 \begin_layout Standard
-Filosofičtější pojednání o tom, proč je \SpecialCharNoPassThru LyX
+Filosofičtější pojednání o tom, proč je \SpecialChar LyX
  lepší než spousta jiných textových
  procesorů, najdete v Sekci 1.2, která je na straně 1.
 \begin_inset Note Note
@@ -380,7 +366,7 @@ natvrdo
 
 \begin_layout Standard
 3.
- Chabé pokusy o využití dalších možností \SpecialCharNoPassThru LyX
+ Chabé pokusy o využití dalších možností \SpecialChar LyX
 u
 \end_layout
 
@@ -415,7 +401,7 @@ Po všem tom vědátorování jsem se začal cítit víc jako umělec, a tak jse
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  je úžasný
 \end_layout
 
@@ -467,22 +453,7 @@ Moje další oblíbená rovnice je základem diferenciálního počtu: f'(x) je
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+————————————————
 \end_layout
 
 \begin_layout Standard
@@ -491,9 +462,8 @@ Reference:
 
 \begin_layout Standard
 [1] Lamport, Leslie.
- \SpecialCharNoPassThru LaTeX
- \twohyphens
- A document preparation system.
+ \SpecialChar LaTeX
+ – A document preparation system.
  Massachusetts: Addison-Wesley, second edition, 1994.
 \end_layout
 

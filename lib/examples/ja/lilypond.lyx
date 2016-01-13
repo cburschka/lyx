@@ -91,11 +91,12 @@ lilypond
 \begin_body
 
 \begin_layout Title
-LilyPond-bookと\SpecialCharNoPassThru LyX
+LilyPond-bookと\SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 プロジェクトチーム
 \end_layout
 
@@ -104,9 +105,9 @@ LilyPond-bookと\SpecialCharNoPassThru LyX
 \end_layout
 
 \begin_layout Abstract
-この文書は、\SpecialCharNoPassThru LyX
-文書への楽譜片の取り込み方の説明と例示を行います。記譜法としては、LilyPond文法を用い、処理にはLilyPond-bookユーティリティ
-を使用します。
+この文書は、\SpecialChar LyX
+文書への楽譜片の取り込み方の説明と例示を行います。記譜法としては、LilyPond文法を用い、処理にはLilyPond-bookユーティリティを使用
+します。
 \end_layout
 
 \begin_layout Section
@@ -120,20 +121,19 @@ LilyPondは、コンピュータで生成した美しい音楽スコアを生成
 
 \begin_layout Standard
 LilyPond自身も、タイトルや作者情報、脚注、巻末注などの表示をサポートしていますが、主な目的はあくまで楽譜の組版です。文章の組版には、一般的に云って、他の
-プログラムの方が向いています。LilyPond-bookは、LilyPond記譜法を使った音楽スコアを、なかんずく\SpecialCharNoPassThru LaTeX
-文書に組み込むことを補助するための、
-LilyPondプロジェクトが提供するユーティリティです。
+プログラムの方が向いています。LilyPond-bookは、LilyPond記譜法を使った音楽スコアを、なかんずく\SpecialChar LaTeX
+文書に組み込むことを補助するための、LilyP
+ondプロジェクトが提供するユーティリティです。
 \end_layout
 
 \begin_layout Standard
-この文書は、\SpecialCharNoPassThru LaTeX
-ベースのレイアウトを用いた\SpecialCharNoPassThru LyX
-文書中で、LilyPond記譜法を用いることで、\SpecialCharNoPassThru LaTeX
-とLilyPondの両方を結びつけて実現される、
-美しく高品質な組版を得る方法を説明します。記譜のために、LiliPond文法の基本を理解していることが必要ですが、\SpecialCharNoPassThru LyX
-を使用している限りは\SpecialCharNoPassThru LaTeX
-の知識は必
-要ありません。
+この文書は、\SpecialChar LaTeX
+ベースのレイアウトを用いた\SpecialChar LyX
+文書中で、LilyPond記譜法を用いることで、\SpecialChar LaTeX
+とLilyPondの両方を結びつけて実現される、美しく高品質な組版を得る方
+法を説明します。記譜のために、LiliPond文法の基本を理解していることが必要ですが、\SpecialChar LyX
+を使用している限りは\SpecialChar LaTeX
+の知識は必要ありません。
 \end_layout
 
 \begin_layout Standard
@@ -144,7 +144,7 @@ reference "sec:LilyPondコードを使用"
 
 \end_inset
 
-節は、必要要件と使用法、\SpecialCharNoPassThru LyX
+節は、必要要件と使用法、\SpecialChar LyX
 中でLiliPond記譜法を用いることの短所を説明します。第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -156,7 +156,7 @@ reference "sec:LilyPond-examples"
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 中でLilyPondコードを使用する
 \begin_inset CommandInset label
 LatexCommand label
@@ -168,19 +168,19 @@ name "sec:LilyPondコードを使用"
 \end_layout
 
 \begin_layout Standard
-使用中の文書に、LilyPondモジュールを追加すると、\SpecialCharNoPassThru LyX
+使用中の文書に、LilyPondモジュールを追加すると、\SpecialChar LyX
 でのLilyPond記譜法(LilyPondコード)のサポートが有効になります。これは、
 \family sans
 文書\SpecialChar menuseparator
 設定
 \family default
-メニューを開いて、モジュール一覧からLilyPondを選択することで、実現できます。\SpecialCharNoPassThru LaTeX
-ベースの\SpecialCharNoPassThru LyX
-レイアウトはどれでも使うことができ、通常のプレビュー
-や書き出し機構も使用できます。\SpecialCharNoPassThru LyX
-は、\SpecialCharNoPassThru LaTeX
-/LilyPond混在コードを、LilyPond-bookを用いて処理してくれます。LilyPond-book
-は、DocBookやHTML文書も扱うことができますが、これらの文書型をLilyPond-bookと\SpecialCharNoPassThru LyX
+メニューを開いて、モジュール一覧からLilyPondを選択することで、実現できます。\SpecialChar LaTeX
+ベースの\SpecialChar LyX
+レイアウトはどれでも使うことができ、通常のプレビューや書き出し機構も
+使用できます。\SpecialChar LyX
+は、\SpecialChar LaTeX
+/LilyPond混在コードを、LilyPond-bookを用いて処理してくれます。LilyPond-bookは、DocBookやHTML文書
+も扱うことができますが、これらの文書型をLilyPond-bookと\SpecialChar LyX
 に統合することは、今のところ実現していません。
 \end_layout
 
@@ -194,19 +194,17 @@ LilyPond-book第2.13版以降。
 status collapsed
 
 \begin_layout Plain Layout
-LilyPond-bookは、第2.1版以降で、\SpecialCharNoPassThru LaTeX
-出力をサポートしていますが、PDF\SpecialCharNoPassThru LaTeX
+LilyPond-bookは、第2.1版以降で、\SpecialChar LaTeX
+出力をサポートしていますが、PDF\SpecialChar LaTeX
 サポート(第2.9版以降)や、
 \family typewriter
-\twohyphens
-lily-output-dir
+--lily-output-dir
 \family default
 フラグ(第2.11版以降)、なかんずく
 \family typewriter
-\twohyphens
-safe
+--safe
 \family default
-フラグ(第2.13版以降)など、\SpecialCharNoPassThru LyX
+フラグ(第2.13版以降)など、\SpecialChar LyX
 が使用する機能の一部は、それよりも最近の版でしか利用することができません。
 \end_layout
 
@@ -271,8 +269,8 @@ relative c'' {
 
 \begin_layout Standard
 \noindent
-上記の\SpecialCharNoPassThru LyX
-差込枠は、以下のような\SpecialCharNoPassThru LaTeX
+上記の\SpecialChar LyX
+差込枠は、以下のような\SpecialChar LaTeX
 様のコードを生成します。
 \end_layout
 
@@ -307,7 +305,7 @@ end{lilypond}
 \end_layout
 
 \begin_layout Standard
-最初の角括弧の中に書かれているのは、LilyPond-bookに渡すオプションです。これは、\SpecialCharNoPassThru LyX
+最初の角括弧の中に書かれているのは、LilyPond-bookに渡すオプションです。これは、\SpecialChar LyX
 中では、LilyPond差込枠を挿入したときと同じように、
 \family sans
 挿入
@@ -325,33 +323,34 @@ pt(ポイント)にしています。例えば、
 \end_layout
 
 \begin_layout Standard
-オプションブロックの後に来るのは、LilyPond文法で書かれた楽譜片の文字表記です。このコードは、実は\SpecialCharNoPassThru LaTeX
-が処理するのではなく、LilyPond-boo
-kが前処理を行います。LilyPond-bookは、グラフィックファイルを生成し、このコード部分を置き換えた
+オプションブロックの後に来るのは、LilyPond文法で書かれた楽譜片の文字表記です。このコードは、実は\SpecialChar LaTeX
+が処理するのではなく、LilyPond-bookが前処理
+を行います。LilyPond-bookは、グラフィックファイルを生成し、このコード部分を置き換えた
 \family typewriter
 
 \backslash
 includegraphics{\SpecialChar ldots
 }
 \family default
-コマンドが、このファイルを\SpecialCharNoPassThru LaTeX
+コマンドが、このファイルを\SpecialChar LaTeX
 文書に取り込みます。
 \end_layout
 
 \begin_layout Standard
 したがって、変換過程は、
 \family sans
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 \SpecialChar menuseparator
 LilyPond-book\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \family default
-のようになります。\SpecialCharNoPassThru LyX
-は.lytexファイルを生成し、次にLilyPond-bookが.texファイルと付随する画像ファイルを生成し、最後に\SpecialCharNoPassThru LaTeX
-が最終文書を
-生成します。ツール連鎖の各段階では、あなたが選択した配置方法に従います。つまり、楽譜片を行内に配置するか、独立した段落にするか、中央揃えか左揃えか等々、\SpecialCharNoPassThru LyX
-ウ
-ィンドウ内での表示のされ方は、出力書式でも尊重されます。行内での使用の例としては、
+のようになります。\SpecialChar LyX
+は.lytexファイルを生成し、次にLilyPond-bookが.texファイルと付随する画像ファイルを生成し、最後に\SpecialChar LaTeX
+が最終文書を生成します。ツー
+ル連鎖の各段階では、あなたが選択した配置方法に従います。つまり、楽譜片を行内に配置するか、独立した段落にするか、中央揃えか左揃えか等々、\SpecialChar LyX
+ウィンドウ内での表示のさ
+れ方は、出力書式でも尊重されます。行内での使用の例としては、
 \begin_inset Flex LilyPond
 status open
 
@@ -387,13 +386,13 @@ flat } }
 \end_layout
 
 \begin_layout Standard
-記譜がどのように見えるかについては、\SpecialCharNoPassThru LyX
+記譜がどのように見えるかについては、\SpecialChar LyX
 内で直接フィードバックを得ることができます。そのためには、LilyPond差込枠を、
 \family sans
 挿入\SpecialChar menuseparator
 プレビュー
 \family default
-メニューを使って得られるプレビュー差込枠の中に入れなくてはなりません。これは、以下のように、\SpecialCharNoPassThru LyX
+メニューを使って得られるプレビュー差込枠の中に入れなくてはなりません。これは、以下のように、\SpecialChar LyX
 内での表示に影響するだけで出力には関係しません。
 \end_layout
 
@@ -441,7 +440,7 @@ Gotchas
 \end_layout
 
 \begin_layout Standard
-ここでは、LilyPond-bookと\SpecialCharNoPassThru LyX
+ここでは、LilyPond-bookと\SpecialChar LyX
 を統合する上で経験された認識のいくつかを紹介します。
 \end_layout
 
@@ -450,7 +449,7 @@ Gotchas
 \end_layout
 
 \begin_layout Standard
-LilyPondモジュールを用いた\SpecialCharNoPassThru LyX
+LilyPondモジュールを用いた\SpecialChar LyX
 文書は、「Input」法を用いた子文書を持つことができません。
 \family sans
 挿入\SpecialChar menuseparator
@@ -648,20 +647,19 @@ LilyPond-bookは、
 lilypondfile
 \family default
 コマンドによって、外部ファイルに存在するLilyPondコードを取込むことをサポートしています。このコマンドによって、LilyPondコードは、文書内で打ち込ま
-れたかのように処理され、出力スコアは、行幅・改頁等、\SpecialCharNoPassThru LaTeX
-が定める組版に従います。これは、\SpecialCharNoPassThru LyX
-に長らく存在する、LilyPondスコアを外部素材として取り
-込む機能とは対照的です。そこでは、外部ファイルを処理するのにLilyPondを呼び出し、固定した画像を生成した上で、文書中にこの画像を取り込んでいたので、組版の
-決定はLilyPondに委ねられていました。残念ながら、\SpecialCharNoPassThru LyX
+れたかのように処理され、出力スコアは、行幅・改頁等、\SpecialChar LaTeX
+が定める組版に従います。これは、\SpecialChar LyX
+に長らく存在する、LilyPondスコアを外部素材として取り込む機能とは対照
+的です。そこでは、外部ファイルを処理するのにLilyPondを呼び出し、固定した画像を生成した上で、文書中にこの画像を取り込んでいたので、組版の決定はLilyP
+ondに委ねられていました。残念ながら、\SpecialChar LyX
 での
 \family typewriter
 
 \backslash
 lilypondfile
 \family default
-コマンドのサポートは、まだ実装されていませんが、望むファイルへの完全な絶対パスを与えるということさえ守れば、\SpecialCharNoPassThru TeX
-コードブロック中でこれを使用することは可能です
-。
+コマンドのサポートは、まだ実装されていませんが、望むファイルへの完全な絶対パスを与えるということさえ守れば、\SpecialChar TeX
+コードブロック中でこれを使用することは可能です。
 \end_layout
 
 \begin_layout Section
@@ -706,10 +704,10 @@ name "subsec:Editorial-headword"
 \end_layout
 
 \begin_layout Standard
-NR 1.7 編註 ベートーヴェン作品31-3 ピアノソナタ第18番 第2楽章 スケルツォ 第9\twohyphens
-14小節
+NR 1.7 編註 ベートーヴェン作品31-3 ピアノソナタ第18番 第2楽章 スケルツォ 第9–14小節
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 

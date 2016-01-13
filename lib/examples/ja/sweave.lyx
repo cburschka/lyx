@@ -132,7 +132,7 @@ maxwidth}
 \end_layout
 
 \begin_layout Title
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 でSweaveを使うには
 \end_layout
 
@@ -197,13 +197,13 @@ http://www.r-project.org
 
 \end_inset
 
-)ツールです。Rコードは、\SpecialCharNoPassThru LaTeX
-文書の中で混用することができ、文書がコンパイルされるときにRで実行されます。結果は、\SpecialCharNoPassThru TeX
+)ツールです。Rコードは、\SpecialChar LaTeX
+文書の中で混用することができ、文書がコンパイルされるときにRで実行されます。結果は、\SpecialChar TeX
 出力内に書きこまれます。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  2.0以降では、
 \family sans
 Sweave
@@ -325,7 +325,7 @@ R.home('bin')
 ツール\SpecialChar menuseparator
 再初期設定
 \family default
-を使って、\SpecialCharNoPassThru LyX
+を使って、\SpecialChar LyX
 の再設定を行う必要があります。
 \family typewriter
 Rscript
@@ -339,7 +339,7 @@ PATH
 Sweave
 \family default
 モジュールを使うことはできません。Sweaveの更新は続いていますので、最新版のRを使用することをお勧めします。Rに同梱され、このパス下にある(CTANにはあり
-ません)\SpecialCharNoPassThru LaTeX
+ません)\SpecialChar LaTeX
 スタイルファイル
 \family sans
 Sweave.sty
@@ -372,9 +372,9 @@ file.path(R.home('share'), 'texmf', 'tex', 'latex')
 \end_layout
 
 \begin_layout Standard
-Mik\SpecialCharNoPassThru TeX
-ユーザーは、Mik\SpecialCharNoPassThru TeX
-の設定で、Mik\SpecialCharNoPassThru TeX
+Mik\SpecialChar TeX
+ユーザーは、Mik\SpecialChar TeX
+の設定で、Mik\SpecialChar TeX
 のルートディレクトリ一覧にtexmfディレクトリも追加したほうが良いかもしれません。また、
 \family sans
 Sweave.sty
@@ -391,7 +391,7 @@ ae
 \emph on
 ことも
 \emph default
-あります。\SpecialCharNoPassThru LyX
+あります。\SpecialChar LyX
 が
 \family sans
 Sweave.sty
@@ -410,35 +410,35 @@ Sweave文書を書く前に、Sweaveオプションを設定しましょう。Sw
 \backslash
 SweaveOpts{}
 \family default
-ですが、これは、\SpecialCharNoPassThru LyX
+ですが、これは、\SpecialChar LyX
 文書中で、
 \family sans
 挿入\SpecialChar menuseparator
 任意設定差込枠\SpecialChar menuseparator
 Sweaveオプション
 \family default
-か、\SpecialCharNoPassThru TeX
+か、\SpecialChar TeX
 コードで書く(
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
 コード
 \family default
 )ことで挿入することができます。例えば、文頭で大域オプション
 \family typewriter
 echo=FALSE
 \family default
-を設定して、すべてのRコードを抑制することもできます(既定では、Rコードとその出力は、両方とも\SpecialCharNoPassThru LaTeX
+を設定して、すべてのRコードを抑制することもできます(既定では、Rコードとその出力は、両方とも\SpecialChar LaTeX
 文書中に表示されます)。
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 でRコードを書くには、まずレイアウト様式一覧(ツールバーの左上端のドロップリスト)から、
 \family sans
 コード組
 \family default
-環境に変更するか、あるいは、単に\SpecialCharNoPassThru TeX
+環境に変更するか、あるいは、単に\SpecialChar TeX
 コード環境を開いて、Sweaveのコード組を書き込んでください。後者の方法の方が安定していますので、そちらをお勧めします。
 \end_layout
 
@@ -640,14 +640,14 @@ t1 <- t.test(x)
 \backslash
 Sexpr{}
 \family default
-コマンドによって行われ、\SpecialCharNoPassThru LyX
+コマンドによって行われ、\SpecialChar LyX
 中の対応するメニューは
 \family sans
 挿入\SpecialChar menuseparator
 任意設定差込枠\SpecialChar menuseparator
 S/R表現
 \family default
-ですが、\SpecialCharNoPassThru TeX
+ですが、\SpecialChar TeX
 コードを使うこともできます。例えば、ベクトル
 \family typewriter
 x
@@ -842,7 +842,7 @@ results=tex
 \family typewriter
 Soutput
 \family default
-)で包まれるのではなく、生の\SpecialCharNoPassThru LaTeX
+)で包まれるのではなく、生の\SpecialChar LaTeX
 コードとして書き出されるように保証するためのものです。
 \end_layout
 
@@ -1014,10 +1014,10 @@ Sweave
 \family sans
 Sweave
 \family default
-モジュールは、\SpecialCharNoPassThru LyX
-文書が、Rを使った文芸的プログラミングのコンポーネントを含んでいることを宣言しますので、\SpecialCharNoPassThru LyX
-は、そのような文書を取り扱う特定の変換子を使っ
-て処理します(取扱説明書カスタマイズ篇参照)。
+モジュールは、\SpecialChar LyX
+文書が、Rを使った文芸的プログラミングのコンポーネントを含んでいることを宣言しますので、\SpecialChar LyX
+は、そのような文書を取り扱う特定の変換子を使って処理します
+(取扱説明書カスタマイズ篇参照)。
 \family sans
 Sweave
 \family default
@@ -1025,7 +1025,7 @@ Sweave
 \family sans
 sweave
 \family default
-変換子を使用しますが、これは、\SpecialCharNoPassThru LyX
+変換子を使用しますが、これは、\SpecialChar LyX
 の
 \family sans
 scripts
@@ -1034,13 +1034,13 @@ scripts
 \family sans
 lyxsweave.R
 \family default
-が本体になっています。このスクリプトは、\SpecialCharNoPassThru LyX
+が本体になっています。このスクリプトは、\SpecialChar LyX
 から
 \family sans
 Rnw
 \family default
-文書を受け取り、これを\SpecialCharNoPassThru TeX
-文書に変換するためにSweaveを呼び出します。その後の作業は、\SpecialCharNoPassThru LyX
+文書を受け取り、これを\SpecialChar TeX
+文書に変換するためにSweaveを呼び出します。その後の作業は、\SpecialChar LyX
 が面倒を見ます。
 \end_layout
 
@@ -1049,7 +1049,7 @@ Rnw
 \family sans
 sweave
 \family default
-形式から\SpecialCharNoPassThru LaTeX
+形式から\SpecialChar LaTeX
 への変換子は、下記のコマンド行でRを呼び出します。
 \end_layout
 
@@ -1083,7 +1083,7 @@ end{verbatim}
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 ライブラリディレクトリ
 \family typewriter
 $$s
@@ -1091,10 +1091,10 @@ $$s
 は、
 \family sans
 ヘルプ\SpecialChar menuseparator
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 について
 \family default
-メニューに記載があります。他にRに渡すことのできるオプションは、Rスクリプト中で説明されており、また、\SpecialCharNoPassThru LyX
+メニューに記載があります。他にRに渡すことのできるオプションは、Rスクリプト中で説明されており、また、\SpecialChar LyX
 取扱説明書カスタマイズ篇には、
 \family typewriter
 $$i
@@ -1116,7 +1116,7 @@ $$r
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 文書のエンコーディングを表す文字列は、Rにコマンドラインオプションとして渡されます。取り得る値は、
 \family typewriter
 ISO-8859-15
@@ -1133,7 +1133,7 @@ Rnw
 \end_layout
 
 \begin_layout Enumerate
-Sweave文書内のRコード組は、\SpecialCharNoPassThru LyX
+Sweave文書内のRコード組は、\SpecialChar LyX
 文書のあるディレクトリで実行されます(自信のない場合は、現在の作業ディレクトリがどこかを見るために、コード組に
 \family typewriter
 getwd()
@@ -1143,7 +1143,7 @@ getwd()
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 が
 \family sans
 Sweave.sty
@@ -1152,7 +1152,7 @@ Sweave.sty
 \family sans
 Sweave.sty
 \family default
-を一時ディレクトリにコピーし、そこで\SpecialCharNoPassThru LaTeX
+を一時ディレクトリにコピーし、そこで\SpecialChar LaTeX
 コンパイルを実行します。
 \end_layout
 
@@ -1165,7 +1165,7 @@ target "http://www.lyx.org/trac/ticket/7551"
 
 \end_inset
 
-)として、ファイル名(拡張子を除く)にピリオドが含まれている場合、\SpecialCharNoPassThru LaTeX
+)として、ファイル名(拡張子を除く)にピリオドが含まれている場合、\SpecialChar LaTeX
 がそのファイルを
 \family typewriter
 
@@ -1226,9 +1226,9 @@ end{verbatim}
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
-は、既定でフォントエンコーディングを取り扱うことができるので、Sweaveにこれをやってもらう必要はないのです(その上、これはパッケージオプションの衝突を
-もたらす可能性があります)。一方、ユーザーは、必要ならばプリアンブルで
+\SpecialChar LyX
+は、既定でフォントエンコーディングを取り扱うことができるので、Sweaveにこれをやってもらう必要はないのです(その上、これはパッケージオプションの衝突をもたら
+す可能性があります)。一方、ユーザーは、必要ならばプリアンブルで
 \series bold
 ae
 \series default
@@ -1240,7 +1240,7 @@ ae
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  2.0以降、コンパイル中の詳細な情報を、
 \family sans
 表示\SpecialChar menuseparator
@@ -1327,12 +1327,12 @@ label=
 \end_layout
 
 \begin_layout Standard
-もうひとつ知られている問題点は、\SpecialCharNoPassThru LyX
+もうひとつ知られている問題点は、\SpecialChar LyX
 中でコード組段落の配置に(
 \family sans
 段落設定
 \family default
-を使用して)手を加えた場合、\SpecialCharNoPassThru LyX
+を使用して)手を加えた場合、\SpecialChar LyX
 は、改行しないでコード組の前に
 \family typewriter
 
@@ -1424,8 +1424,8 @@ http://cran.r-project.org/web/views/ReproducibleResearch.html
 
 \end_inset
 
-をご覧ください。\SpecialCharNoPassThru LyX
-とSweaveに関する質問は、\SpecialCharNoPassThru LyX
+をご覧ください。\SpecialChar LyX
+とSweaveに関する質問は、\SpecialChar LyX
 メーリングリスト(
 \begin_inset Flex URL
 status collapsed
@@ -1437,7 +1437,7 @@ http://www.lyx.org/MailingLists
 
 \end_inset
 
-)に投稿してください。さらに多くの\SpecialCharNoPassThru LyX
+)に投稿してください。さらに多くの\SpecialChar LyX
 の用例は、
 \begin_inset Flex URL
 status collapsed
@@ -1461,10 +1461,10 @@ Sweaveをbeamerで使うにはどうすればよいでしょうか
 \end_layout
 
 \begin_layout Standard
-beamerのスライドでSweaveを使うと、\SpecialCharNoPassThru LyX
-では\SpecialCharNoPassThru LaTeX
-エラーが発生します。その原因は、生のRコードを含むbeamerフレームのせいです。これを解決す
-るには、通常のフレームの代わりに脆弱フレームを使うか、フレーム表題に
+beamerのスライドでSweaveを使うと、\SpecialChar LyX
+では\SpecialChar LaTeX
+エラーが発生します。その原因は、生のRコードを含むbeamerフレームのせいです。これを解決するには、通常のフ
+レームの代わりに脆弱フレームを使うか、フレーム表題に
 \family sans
 挿入\SpecialChar menuseparator
 フレームオプション
@@ -1501,12 +1501,12 @@ lyxsweave.R
 ユーザーディレクトリ
 \emph default
 (ヘルプ\SpecialChar menuseparator
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 についてでチェックできます)の
 \family sans
 scripts
 \family default
-ディレクトリ下に置いてください。\SpecialCharNoPassThru LyX
+ディレクトリ下に置いてください。\SpecialChar LyX
 は自身の
 \emph on
 ライブラリディレクトリ
@@ -1519,10 +1519,10 @@ scripts
 \family sans
 lyxsweave.R
 \family default
-がユーザーディレクトリで検出されれば、それが使用されます。\SpecialCharNoPassThru LyX
-ライブラリディレクトリ下にあるスクリプトを直接ハックしてしまうと、\SpecialCharNoPassThru LyX
-更新時に修正したスクリプ
-トが上書きされてしまいます(ユーザーディレクトリは影響を受けません)ので、お勧めしません。
+がユーザーディレクトリで検出されれば、それが使用されます。\SpecialChar LyX
+ライブラリディレクトリ下にあるスクリプトを直接ハックしてしまうと、\SpecialChar LyX
+更新時に修正したスクリプトが上書きさ
+れてしまいます(ユーザーディレクトリは影響を受けません)ので、お勧めしません。
 \end_layout
 
 \begin_layout Standard

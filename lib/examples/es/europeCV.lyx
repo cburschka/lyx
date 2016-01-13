@@ -112,12 +112,12 @@
 status open
 
 \begin_layout Plain Layout
-Exportar con Xe\SpecialCharNoPassThru TeX
- y Lua\SpecialCharNoPassThru TeX
- (con tipografías no \SpecialCharNoPassThru TeX
- o en modo compatible
- 8-bit) no funciona porque, por el momento, la carga de inputenc con utf8x
- está incrustada en el código fuente de europecv.cls.
+Exportar con Xe\SpecialChar TeX
+ y Lua\SpecialChar TeX
+ (con tipografías no \SpecialChar TeX
+ o en modo compatible 8-bit) no
+ funciona porque, por el momento, la carga de inputenc con utf8x está incrustada
+ en el código fuente de europecv.cls.
 \end_layout
 
 \end_inset
@@ -192,8 +192,7 @@ Títulos académicos
 status open
 
 \begin_layout Plain Layout
-2001\twohyphens
-2005
+2001–2005
 \end_layout
 
 \end_inset
@@ -206,8 +205,7 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 status open
 
 \begin_layout Plain Layout
-2005\twohyphens
-2006
+2005–2006
 \end_layout
 
 \end_inset
@@ -273,8 +271,7 @@ Experiencia
 status open
 
 \begin_layout Plain Layout
-Febrero 2006\twohyphens
-actual
+Febrero 2006–actual
 \end_layout
 
 \end_inset
@@ -287,8 +284,7 @@ Mantenedor de proyectos de software libre
 status open
 
 \begin_layout Plain Layout
-2005\twohyphens
-2006
+2005–2006
 \end_layout
 
 \end_inset
@@ -709,8 +705,8 @@ Tipograpía
 
 \end_inset
 
- \SpecialCharNoPassThru LaTeX
-, Con\SpecialCharNoPassThru TeX
+ \SpecialChar LaTeX
+, Con\SpecialChar TeX
 t, Scribus, QuarkXPress
 \end_layout
 
@@ -824,7 +820,7 @@ Referencias
 [1] Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to \SpecialCharNoPassThru LaTeX
+A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
@@ -864,7 +860,7 @@ newline%
 
 [2] Leslie Lamport: 
 \emph on
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 : A Document Preparation System.
 
 \emph default
@@ -880,7 +876,7 @@ Publicaciones
 status open
 
 \begin_layout Plain Layout
-También se pueden usar referencias Bib\SpecialCharNoPassThru TeX
+También se pueden usar referencias Bib\SpecialChar TeX
 :
 \end_layout
 

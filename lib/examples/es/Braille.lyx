@@ -93,7 +93,8 @@ braille
 \begin_body
 
 \begin_layout Title
-Cómo escribir Braille con \SpecialCharNoPassThru LyX
+Cómo escribir Braille con \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -113,13 +114,13 @@ type "mailto:"
 \end_layout
 
 \begin_layout Standard
-Nota preliminar: ¡El Braille que se puede componer con \SpecialCharNoPassThru LaTeX
+Nota preliminar: ¡El Braille que se puede componer con \SpecialChar LaTeX
  no es profesional!
  El Braille profesional puede ser de 6 u 8
 \begin_inset space \thinspace{}
 \end_inset
 
-puntos, mientras que \SpecialCharNoPassThru LaTeX
+puntos, mientras que \SpecialChar LaTeX
  sólo soporta Braille de 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -128,7 +129,7 @@ puntos sin caracteres acentuados.
 \end_layout
 
 \begin_layout Standard
-Para escribir Braille con \SpecialCharNoPassThru LyX
+Para escribir Braille con \SpecialChar LyX
 , hay que cargar antes el módulo 
 \family sans
 Braille
@@ -138,8 +139,9 @@ Braille
 Módulos
 \family default
  de la configuración del documento.
- Después, al final del cuadro desplegable de selección de entornos de \SpecialCharNoPassThru LyX
- se selecciona el entorno de párrafo 
+ Después, al final del cuadro desplegable de selección de entornos de \SpecialChar LyX
+ se
+ selecciona el entorno de párrafo 
 \family sans
 Braille
 \begin_inset space ~
@@ -210,9 +212,9 @@ height "1pt"
 \begin_inset VSpace bigskip
 \end_inset
 
-Como se puede ver, \SpecialCharNoPassThru LaTeX
- no es capaz de dividir con guiones las palabras
- escritas en Braille.
+Como se puede ver, \SpecialChar LaTeX
+ no es capaz de dividir con guiones las palabras escritas
+ en Braille.
  Hay que hacerlo manualmente.
 \end_layout
 
@@ -268,13 +270,14 @@ status open
 \series bold
 Nota:
 \series default
- Los nombres propios de \SpecialCharNoPassThru LyX
- y \SpecialCharNoPassThru LaTeX
+ Los nombres propios de \SpecialChar LyX
+ y \SpecialChar LaTeX
  
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -282,7 +285,8 @@ Nota:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LaTeX2e
+\SpecialChar LaTeX2e
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -290,7 +294,8 @@ Nota:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru TeX
+\SpecialChar TeX
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -298,11 +303,12 @@ Nota:
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
+
 \begin_inset Quotes frd
 \end_inset
 
- deben insertarse en código \SpecialCharNoPassThru TeX
+ deben insertarse en código \SpecialChar TeX
 , como en el siguiente ejemplo:
 \end_layout
 
@@ -357,7 +363,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -376,7 +382,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\SpecialCharNoPassThru LyX
+LyX
 \end_layout
 
 \end_inset
@@ -606,7 +612,7 @@ mm.
 \end_inset
 
 e., Braille de doble tamaño con los puntos diminutos también de doble tamaño,
- se emplea el siguiente comando en código \SpecialCharNoPassThru TeX
+ se emplea el siguiente comando en código \SpecialChar TeX
 : 
 \end_layout
 

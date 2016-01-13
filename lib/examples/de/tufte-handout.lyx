@@ -80,18 +80,18 @@ status open
 \series bold
 Achtung
 \series default
-: Um dieses Dokument als PDF zu betrachten, muss das \SpecialCharNoPassThru LaTeX
+: Um dieses Dokument als PDF zu betrachten, muss das \SpecialChar LaTeX
 -paket 
 \family sans
 fpl
 \family default
- in ihrem \SpecialCharNoPassThru LaTeX
+ in ihrem \SpecialChar LaTeX
 -Sytem installiert sein.
- Wenn Sie MiK\SpecialCharNoPassThru TeX
- benutzen, werden Sie automatisch danach gefragt dieses
- Paket zu installieren, wenn sie das Dokument als PDF ansehen.
- Wenn Sie \SpecialCharNoPassThru TeX
-Live benutzen,verwenden Sie \SpecialCharNoPassThru TeX
+ Wenn Sie MiK\SpecialChar TeX
+ benutzen, werden Sie automatisch danach gefragt dieses Paket
+ zu installieren, wenn sie das Dokument als PDF ansehen.
+ Wenn Sie \SpecialChar TeX
+Live benutzen,verwenden Sie \SpecialChar TeX
 Lives Paket-Manager.
 \end_layout
 
@@ -155,12 +155,12 @@ Tufte Handout
 \emph default
 .
  Es zeigt anhand von Beispielen, wie die Klasse verwendet wird.
- Das Dokument basiert auf der Beispieldatei, die mit der \SpecialCharNoPassThru LaTeX
+ Das Dokument basiert auf der Beispieldatei, die mit der \SpecialChar LaTeX
 -Klasse 
 \emph on
 tufte-handout.cls
 \emph default
- vertrieben wird, wurde aber an \SpecialCharNoPassThru LyX
+ vertrieben wird, wurde aber an \SpecialChar LyX
 -Spezifika angepasst.
 \end_layout
 
@@ -437,7 +437,7 @@ Dies ist eine nicht-nummerierte Randnotiz.
 
 \end_inset
 
- Die normale Randnotiz, die Sie aus anderen \SpecialCharNoPassThru LyX
+ Die normale Randnotiz, die Sie aus anderen \SpecialChar LyX
 -Klassen kennen (
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -462,10 +462,8 @@ Literaturverweise
 \end_layout
 
 \begin_layout Standard
-Literaturhinweise werden ebenfalls \twohyphens
- als Randnotizen neben den Literaturverweis
-en \twohyphens
- im Rand platziert.
+Literaturhinweise werden ebenfalls – als Randnotizen neben den Literaturverweise
+n – im Rand platziert.
  Verwenden Sie hierfür einfach den normalen Literaturverweis-Befehl.
 \begin_inset Foot
 status collapsed
@@ -493,21 +491,21 @@ Liste
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar menuseparator
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
 -Literaturverzeichnis
 \family default
  (am Ende dieses Dokuments sehen Sie ein Beispiel).
  Wenn Sie keine vollständige Bibliographie ausgeben möchten, platzieren
- Sie das Bib\SpecialCharNoPassThru TeX
--Literaturverzeichnis in eine \SpecialCharNoPassThru LyX
--Notiz und setzen Sie in
- den Text 
+ Sie das Bib\SpecialChar TeX
+-Literaturverzeichnis in eine \SpecialChar LyX
+-Notiz und setzen Sie in den Text
+ 
 \family typewriter
 
 \backslash
 nobibliography
 \family default
- im \SpecialCharNoPassThru TeX
+ im \SpecialChar TeX
 -Modus.
 \end_layout
 
@@ -562,7 +560,7 @@ reference "fig:Randabbildung"
 status collapsed
 
 \begin_layout Plain Layout
-Leider ist die Zählung im \SpecialCharNoPassThru LyX
+Leider ist die Zählung im \SpecialChar LyX
 -Arbeitsfenster falsch.
  Normale und Rand-Gleitabbildungen werden separat gezählt, Sie verwenden
  aber in der Ausgabe denselben Zähler.
@@ -811,8 +809,7 @@ formal
 \end_inset
 
  in den Tabellen-Einstellungen).
- Beachten Sie, dass es keine vertikalen Tabellenlinien gibt \twohyphens
- diese zerstören
+ Beachten Sie, dass es keine vertikalen Tabellenlinien gibt – diese zerstören
  ohnehin nur das Tabellenbild.
 \end_layout
 
@@ -827,7 +824,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -1403,7 +1400,7 @@ Nachdem Sie diesen Code in
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 -Vorspann
 \family default
  eingegeben haben, können Sie 
@@ -1412,7 +1409,7 @@ Einstellungen\SpecialChar menuseparator
 \backslash
 paragraph
 \family default
- im \SpecialCharNoPassThru LaTeX
+ im \SpecialChar LaTeX
 -Modus verwenden.
 \end_layout
 
@@ -1420,7 +1417,8 @@ paragraph
 Für weitere Informationen zur Definition von Abschnittsüberschriften lesen
  Sie bitte 
 \shape italic
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -1528,7 +1526,7 @@ beramono*
 \end_layout
 
 \begin_layout Subsection*
-Tufte-\SpecialCharNoPassThru LaTeX
+Tufte-\SpecialChar LaTeX
 -Website
 \begin_inset CommandInset label
 LatexCommand label
@@ -1540,7 +1538,7 @@ name "sec:Website"
 \end_layout
 
 \begin_layout Standard
-Die Website des Tufte-\SpecialCharNoPassThru LaTeX
+Die Website des Tufte-\SpecialChar LaTeX
 -Paketes finden Sie unter 
 \begin_inset Flex URL
 status collapsed

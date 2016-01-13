@@ -95,6 +95,7 @@ itemize
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -102,6 +103,7 @@ itemize
 het heeft zijn eigen teller die tot 4 niveaus diep gaat
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -111,11 +113,12 @@ elk niveau kan zijn eigen opsommingsteken hebben
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  laat echter in alle gevallen een `*' zien
 \end_layout
 
@@ -123,18 +126,19 @@ elk niveau kan zijn eigen opsommingsteken hebben
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-Merk op dat \SpecialCharNoPassThru LyX
+Merk op dat \SpecialChar LyX
  *NIET* de diepte van het niveau voor je controleert
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Behalve dan dat hij voor alle lijsten, een door \SpecialCharNoPassThru LaTeX
- opgelegde limiet van
- 6 hanteert voor de diepte van het niveau.
+Behalve dan dat hij voor alle lijsten, een door \SpecialChar LaTeX
+ opgelegde limiet van 6
+ hanteert voor de diepte van het niveau.
 \end_layout
 
 \end_deeper
@@ -212,7 +216,7 @@ Standaard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -701,7 +705,7 @@ American Mathematical Society
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -1172,7 +1176,7 @@ Ding 1 (PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS staat voor New Font Selecting Scheme dat in \SpecialCharNoPassThru LaTeX2e
+NFSS staat voor New Font Selecting Scheme dat in \SpecialChar LaTeX2e
  wordt gebruikt.
  In feite veranderde het de font commando's van {
 \backslash
@@ -1180,10 +1184,10 @@ bf ...} in
 \backslash
 textbf{...}, alhoewel de echte veranderingen inwendig waren.
  PS staat voor PostScript.
- PSNFSS is een verzameling \SpecialCharNoPassThru LaTeX
- bestanden die NFSS ondersteuning geven
- voor de basisset van 35 PostScript fonts die in veel PostScript printers
- te vinden zijn.
+ PSNFSS is een verzameling \SpecialChar LaTeX
+ bestanden die NFSS ondersteuning geven voor
+ de basisset van 35 PostScript fonts die in veel PostScript printers te
+ vinden zijn.
  Is dat duidelijk? Nog vragen?
 \end_layout
 
@@ -1203,7 +1207,7 @@ textbf{...}, alhoewel de echte veranderingen inwendig waren.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2007,7 +2011,7 @@ Ding 2
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2811,7 +2815,7 @@ Ding 3
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3615,7 +3619,7 @@ Ding 4
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">

@@ -122,7 +122,7 @@ Xy
 
 \end_inset
 
--Picを\SpecialCharNoPassThru LyX
+-Picを\SpecialChar LyX
 で使用する
 \end_layout
 
@@ -136,9 +136,9 @@ H.
 \family typewriter
 preview
 \family default
-スタイルの導入された\SpecialCharNoPassThru LaTeX
-システムと、比較的新しい版の\SpecialCharNoPassThru LyX
-があれば、\SpecialCharNoPassThru LyX
+スタイルの導入された\SpecialChar LaTeX
+システムと、比較的新しい版の\SpecialChar LyX
+があれば、\SpecialChar LyX
 内部からグラフ描画パッケージ
 \family typewriter
 
@@ -156,9 +156,9 @@ Xy
 
 
 \family default
--Picを便利に使用することができます。\SpecialCharNoPassThru LyX
-のメイン編集ウィンドウ内部で、図式を編集したり表示したりすることができるのです。ここでは、主に圏論や代数などの関連
-領域で使用される図式を描いたり、編集したり、プレビューしたりするためには、
+-Picを便利に使用することができます。\SpecialChar LyX
+のメイン編集ウィンドウ内部で、図式を編集したり表示したりすることができるのです。ここでは、主に圏論や代数などの関連領域で
+使用される図式を描いたり、編集したり、プレビューしたりするためには、
 \family typewriter
 xypic
 \family default
@@ -168,7 +168,7 @@ xypic
 \backslash
 xymatrix
 \family default
-コマンドを\SpecialCharNoPassThru LyX
+コマンドを\SpecialChar LyX
 内部からどのように使えばいいのかを説明します。
 \end_layout
 
@@ -190,14 +190,13 @@ LatexCommand tableofcontents
 \family typewriter
 xypic
 \family default
-パッケージは、\SpecialCharNoPassThru LaTeX
-においてグラフと図式を簡単に構成するための便利なツールとして、長い間使われてきています。不幸にして長い間、\SpecialCharNoPassThru LyX
-中でこのパッケージを使え
-るのは、悪名高き\SpecialCharNoPassThru TeX
-コードボックスに限定されてきたため、\SpecialCharNoPassThru LyX
-エディタでは、完成した図式ではなく\SpecialCharNoPassThru LaTeX
-ソースしか表示されませんでした。しかしついに、AUC
-\SpecialCharNoPassThru TeX
+パッケージは、\SpecialChar LaTeX
+においてグラフと図式を簡単に構成するための便利なツールとして、長い間使われてきています。不幸にして長い間、\SpecialChar LyX
+中でこのパッケージを使えるのは、悪名高き\SpecialChar TeX
+
+コードボックスに限定されてきたため、\SpecialChar LyX
+エディタでは、完成した図式ではなく\SpecialChar LaTeX
+ソースしか表示されませんでした。しかしついに、AUC\SpecialChar TeX
 プロジェクト
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -205,12 +204,12 @@ key "AUCTeX"
 
 \end_inset
 
-の一部である新しい\SpecialCharNoPassThru LaTeX
+の一部である新しい\SpecialChar LaTeX
 スタイル
 \family typewriter
 preview
 \family default
-によって、\SpecialCharNoPassThru LyX
+によって、\SpecialChar LyX
 内部から構成し、表示し、対話式に編集する形で、
 \family typewriter
 xypic
@@ -259,12 +258,12 @@ Xy
 
 \end_inset
 
--Picを\SpecialCharNoPassThru LyX
+-Picを\SpecialChar LyX
 内部からどのように使用すればよいか、図式をどのように作成し編集すればよいかを説明します。下記の手順は、Windows
 \begin_inset space \thinspace{}
 \end_inset
 
-XPおよびWindows Vistaそれぞれの環境下で、\SpecialCharNoPassThru LyX
+XPおよびWindows Vistaそれぞれの環境下で、\SpecialChar LyX
 の第1.3.7版から第1.6版までを使用して検証されています。
 \end_layout
 
@@ -282,7 +281,7 @@ Xy
 
 \end_inset
 
--Picコードを\SpecialCharNoPassThru LyX
+-Picコードを\SpecialChar LyX
 ウィンドウに入力し、その全体を選択した後、
 \family sans
 Ctrl-m
@@ -322,7 +321,7 @@ Xy
 
 \end_inset
 
--Picをもっとよく使うようであったり、最初に作った図を修正したりしたいのであれば、目的の図は、\SpecialCharNoPassThru LyX
+-Picをもっとよく使うようであったり、最初に作った図を修正したりしたいのであれば、目的の図は、\SpecialChar LyX
 数式エディタを使って組み立て、修正した方がよいでしょう。
 \end_layout
 
@@ -332,7 +331,7 @@ Xy
 \end_layout
 
 \begin_layout Standard
-この文書の最初の2節では、上述した最初のモードで\SpecialCharNoPassThru LyX
+この文書の最初の2節では、上述した最初のモードで\SpecialChar LyX
 を使うにはどうすればよいか説明し、可換図やグラフやオートマトンを描くのに便利な、すべての
 \begin_inset ERT
 status collapsed
@@ -383,7 +382,7 @@ Xy
 
 \end_inset
 
--Picの入門を書くことではなく、これらのうち最も重要なコマンドが\SpecialCharNoPassThru LyX
+-Picの入門を書くことではなく、これらのうち最も重要なコマンドが\SpecialChar LyX
 内部でどう機能するのかを紹介することにあります。というのも、
 \begin_inset ERT
 status collapsed
@@ -404,7 +403,7 @@ key "xypic manual"
 
 \end_inset
 
-で説明されているキー割り当ては、\SpecialCharNoPassThru LyX
+で説明されているキー割り当ては、\SpecialChar LyX
 内部では必ずしも正しく動作しないからです。
 \end_layout
 
@@ -413,7 +412,7 @@ key "xypic manual"
 \end_layout
 
 \begin_layout Standard
-ここからは、\SpecialCharNoPassThru LaTeX
+ここからは、\SpecialChar LaTeX
 パッケージの
 \family typewriter
 xypic
@@ -422,7 +421,7 @@ xypic
 \family typewriter
 preview
 \family default
-が、\SpecialCharNoPassThru LaTeX
+が、\SpecialChar LaTeX
 システムに導入されていることが必要です。これらはCTANから入手することができます。それぞれ
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -437,13 +436,13 @@ key "xypic"
 
 \end_inset
 
-を参照してください。これらを新しく導入した場合には、\SpecialCharNoPassThru LyX
+を参照してください。これらを新しく導入した場合には、\SpecialChar LyX
 のメインメニューから
 \family sans
 編集\SpecialChar menuseparator
 再設定
 \family default
-を実行する必要があるかもしれません。すると、\SpecialCharNoPassThru LyX
+を実行する必要があるかもしれません。すると、\SpecialChar LyX
 で最初の図式を作るための手順は以下のようになります。
 \end_layout
 
@@ -453,15 +452,15 @@ key "xypic"
 preview
 \family default
 の有効化とテスト
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 を開き、
 \family sans
 ツール\SpecialChar menuseparator
@@ -477,7 +476,7 @@ preview
 \end_layout
 
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 文書を開き、適当な数式、たとえば
 \begin_inset Formula $a+b=c$
 \end_inset
@@ -511,11 +510,12 @@ Xy
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 文書内部で
 \family typewriter
 
@@ -743,7 +743,7 @@ times_Z Y   & X
 \end_layout
 
 \begin_layout Standard
-このパターンは\SpecialCharNoPassThru LaTeX
+このパターンは\SpecialChar LaTeX
 で慣れておられると思います。ここには3つの行があり、最初の2行は行末マーカ
 \family typewriter
 
@@ -870,9 +870,9 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
- &  X \times_{Z} Y \ar[d] \ar[r]  &  X \ar[d]\\
- &  Y \ar[r]  &  Z 
+\begin_inset Formula $\xymatrix{U\ar[ddr]\ar[drr]\ar[dr]\\
+ & X\times_{Z}Y\ar[d]\ar[r] & X\ar[d]\\
+ & Y\ar[r] & Z
 }
 $
 \end_inset
@@ -1011,9 +1011,9 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula $\xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
- &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
- &  Y \ar[r]^{g}  &  Z 
+\begin_inset Formula $\xymatrix{U\ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
+ & X\times_{Z}Y\ar[d]^{q}\ar[r]_{p} & X\ar[d]_{f}\\
+ & Y\ar[r]^{g} & Z
 }
 $
 \end_inset
@@ -1038,7 +1038,7 @@ Xy
 \family typewriter
 (.3)
 \family default
-のように比率をラベルの前に付けることによって、ラベルを矢印の先の方や根本の方にずらすことができますが、これは\SpecialCharNoPassThru LyX
+のように比率をラベルの前に付けることによって、ラベルを矢印の先の方や根本の方にずらすことができますが、これは\SpecialChar LyX
 では、
 \family typewriter
 
@@ -1051,7 +1051,7 @@ phi}
 \end_layout
 
 \begin_layout Standard
-これは、矢印の右や左に置かれているラベルに対しては機能しないのです。\SpecialCharNoPassThru LyX
+これは、矢印の右や左に置かれているラベルに対しては機能しないのです。\SpecialChar LyX
 の数式エディタは、このような場合に対応する、
 \family typewriter
 
@@ -1166,7 +1166,7 @@ ar@{^(->}[r]
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1183,7 +1183,7 @@ ar@{^(->}[r]
 \begin_inset Text
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 中のソースコード
 \end_layout
 
@@ -1195,7 +1195,7 @@ ar@{^(->}[r]
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar[r] & \ }
 $
 \end_inset
 
@@ -1223,7 +1223,7 @@ ar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{-->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{-->}[r] & \ }
 $
 \end_inset
 
@@ -1240,8 +1240,7 @@ $
 \family typewriter
 
 \backslash
-ar@{\twohyphens
->}
+ar@{-->}
 \end_layout
 
 \end_inset
@@ -1252,7 +1251,7 @@ ar@{\twohyphens
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{..>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{..>}[r] & \ }
 $
 \end_inset
 
@@ -1280,7 +1279,7 @@ ar@{..>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{~>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{~>}[r] & \ }
 $
 \end_inset
 
@@ -1308,7 +1307,7 @@ ar@{~>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{->>}[r] & \ }
 $
 \end_inset
 
@@ -1336,7 +1335,7 @@ ar@{->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r] & \ }
 $
 \end_inset
 
@@ -1353,8 +1352,7 @@ $
 \family typewriter
 
 \backslash
-ar@{\twohyphens
->>}
+ar@{-->>}
 \end_layout
 
 \end_inset
@@ -1365,7 +1363,7 @@ ar@{\twohyphens
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r] & \ }
 $
 \end_inset
 
@@ -1393,7 +1391,7 @@ ar@{>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r] & \ }
 $
 \end_inset
 
@@ -1421,7 +1419,7 @@ ar@{_(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r] & \ }
 $
 \end_inset
 
@@ -1449,7 +1447,7 @@ ar@{^(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r] & \ }
 $
 \end_inset
 
@@ -1492,7 +1490,7 @@ ar@{|-|}
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1509,7 +1507,7 @@ ar@{|-|}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 中のソースコード
 \end_layout
 
@@ -1521,7 +1519,7 @@ ar@{|-|}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@2[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@2[r] & \ }
 $
 \end_inset
 
@@ -1549,7 +1547,7 @@ ar@2
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@3[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@3[r] & \ }
 $
 \end_inset
 
@@ -1577,7 +1575,7 @@ ar@3
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@_{->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@_{->}[r] & \ }
 $
 \end_inset
 
@@ -1605,7 +1603,7 @@ ar@_{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@^{->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@^{->}[r] & \ }
 $
 \end_inset
 
@@ -1633,7 +1631,7 @@ ar@^{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r] & \ }
 $
 \end_inset
 
@@ -1661,7 +1659,7 @@ ar@^{>>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r] & \ }
 $
 \end_inset
 
@@ -1689,7 +1687,7 @@ ar@{^<-_>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@2{--}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@2{--}[r] & \ }
 $
 \end_inset
 
@@ -1706,8 +1704,7 @@ $
 \family typewriter
 
 \backslash
-ar@2{\twohyphens
-}
+ar@2{--}
 \end_layout
 
 \end_inset
@@ -1773,7 +1770,7 @@ newdir{|>}{!/4.5pt/@{|}*:(1,-.2)@^{>}*:(1,+.2)@_{>}}
 \backslash
 ar@{-|>}[r]
 \family default
-とすれば、\SpecialCharNoPassThru LyX
+とすれば、\SpecialChar LyX
 中で以下のように正しく表示されます。
 \begin_inset Formula 
 \[
@@ -1845,7 +1842,7 @@ ar@<1ex>[l]}
 $
 \end_inset
 
-のように、行内で使用することができます。上記のように、このコードを\SpecialCharNoPassThru LyX
+のように、行内で使用することができます。上記のように、このコードを\SpecialChar LyX
 内で書いたならば、それを選択して、行内表示にしたければ
 \family sans
 Ctrl-m
@@ -1882,7 +1879,7 @@ Ctrl-M
 \begin_inset Formula $\ldots$
 \end_inset
 
-/を使用します。省略記号の部分には、\SpecialCharNoPassThru TeX
+/を使用します。省略記号の部分には、\SpecialChar TeX
 式の長さを下添字か上添字として入力する必要があります。たとえば、矢印を
 \family typewriter
 1pc
@@ -1897,8 +1894,8 @@ xypic
 \backslash
 ar@/_1pc/
 \family default
-と書けばいいのですが、\SpecialCharNoPassThru LyX
-では直接このように書くことはできません。\SpecialCharNoPassThru LyX
+と書けばいいのですが、\SpecialChar LyX
+では直接このように書くことはできません。\SpecialChar LyX
 では、長さを
 \family typewriter
 
@@ -2147,7 +2144,7 @@ ar@(ur,ul)[l]
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 コマンドの
 \family typewriter
 
@@ -2324,7 +2321,7 @@ Xy
 \end_layout
 
 \begin_layout Section
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 数式エディタを使う
 \begin_inset CommandInset label
 LatexCommand label
@@ -2348,9 +2345,9 @@ Ctrl-m
 \family sans
 Ctrl-M
 \family default
-を適用して数式編集環境に変換する方法以外にも、\SpecialCharNoPassThru LyX
-数式エディタ内でxypic図式を作成して編集することができます。上記のような図を編集する手順を説明することに
-しましょう。
+を適用して数式編集環境に変換する方法以外にも、\SpecialChar LyX
+数式エディタ内でxypic図式を作成して編集することができます。上記のような図を編集する手順を説明することにしまし
+ょう。
 \end_layout
 
 \begin_layout Subsection
@@ -2358,7 +2355,7 @@ Ctrl-M
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 数式エディタでは、マクロパラメータを囲む波括弧の対
 \family typewriter
 {
@@ -2401,7 +2398,7 @@ Xy
 \backslash
 {
 \family default
-とだけ入力して、\SpecialCharNoPassThru LyX
+とだけ入力して、\SpecialChar LyX
 がボックスと閉じ括弧を入れてくれるのを待ち、そこに矢印の指定を入れてください。
 \end_layout
 
@@ -2536,7 +2533,7 @@ r
 \end_layout
 
 \begin_layout Standard
-次に、矢印のパスの終わりに上添字か下添字としてラベルを書くことで、矢印にラベルを付けてください。\SpecialCharNoPassThru LyX
+次に、矢印のパスの終わりに上添字か下添字としてラベルを書くことで、矢印にラベルを付けてください。\SpecialChar LyX
 数式エディタにおいては常に、アンダースコア
 \family typewriter
 _
@@ -2545,7 +2542,7 @@ _
 \family typewriter
 ^
 \family default
-の後にスペースを押すと上添字のボックスが開きます。ラベルには、\SpecialCharNoPassThru LaTeX
+の後にスペースを押すと上添字のボックスが開きます。ラベルには、\SpecialChar LaTeX
 コードを自由に入れることができます。
 \end_layout
 
@@ -2651,9 +2648,9 @@ xypic
 \emph on
 寸法
 \emph default
-は有効な\SpecialCharNoPassThru TeX
-寸法であり、最初のスラッシュ/の後に上添字または下添字として入力します）。最後のスラッシュが、上添字や下添字の一部のままにならないように注意してく
-ださい。
+は有効な\SpecialChar TeX
+寸法であり、最初のスラッシュ/の後に上添字または下添字として入力します）。最後のスラッシュが、上添字や下添字の一部のままにならないように注意してください
+。
 \end_layout
 
 \begin_layout Subsection
@@ -2680,7 +2677,7 @@ Ctrl+D
 表示\SpecialChar menuseparator
 DVI
 \family default
-を使って、\SpecialCharNoPassThru LyX
+を使って、\SpecialChar LyX
 ファイルを
 \emph on
 DVI
@@ -2693,9 +2690,9 @@ DVI
 \end_layout
 
 \begin_layout Standard
-一部には、\SpecialCharNoPassThru LyX
-内部では正しく動作しないものがあります。私たちが（かつて）最も望んでいたものは、図式の水平・垂直伸縮であり、矢印の正確な配置でした。これにはいく
-つか回避法があり、それをここで説明します。
+一部には、\SpecialChar LyX
+内部では正しく動作しないものがあります。私たちが（かつて）最も望んでいたものは、図式の水平・垂直伸縮であり、矢印の正確な配置でした。これにはいくつか回
+避法があり、それをここで説明します。
 \end_layout
 
 \begin_layout Subsection
@@ -2756,7 +2753,7 @@ xymatrix@C=
 \family typewriter
 }
 \family default
-とすれば、列間を指定することができます。残念ながら@-文字は、\SpecialCharNoPassThru LyX
+とすれば、列間を指定することができます。残念ながら@-文字は、\SpecialChar LyX
 に
 \begin_inset ERT
 status collapsed
@@ -2770,7 +2767,7 @@ Xy
 
 \end_inset
 
--行列マクロの終わりと解釈されてしまうので、これらのコマンドは、現在のところ、\SpecialCharNoPassThru LyX
+-行列マクロの終わりと解釈されてしまうので、これらのコマンドは、現在のところ、\SpecialChar LyX
 内では動作しません。
 \end_layout
 
@@ -2803,7 +2800,7 @@ xymatrixrowsep@
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 プリアンブル
 \family default
 ）に以下のマクロを付け加えます。
@@ -2883,7 +2880,7 @@ xyC
 \backslash
 {
 \family default
-、あるいは両者を入力します。バックスラッシュを忘れないようにし、閉じ括弧は\SpecialCharNoPassThru LyX
+、あるいは両者を入力します。バックスラッシュを忘れないようにし、閉じ括弧は\SpecialChar LyX
 が自動的に供給することに注意してください。波括弧の中に寸法を入れます。既定値は、
 \family typewriter
 2pt
@@ -2968,7 +2965,7 @@ ar[ur]_(0.3)
 \backslash
 phi
 \family default
-としたとしても、\SpecialCharNoPassThru LyX
+としたとしても、\SpecialChar LyX
 の内部からではうまく動作しません。その代替策として、ハット記号^あるいはアンダースコア_を、それぞれ
 \family typewriter
 
@@ -3257,7 +3254,7 @@ Xy
 \begin_inset Newline newline
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \family typewriter
 xypic

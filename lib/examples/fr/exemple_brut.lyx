@@ -116,7 +116,7 @@ Titre
 \end_layout
 
 \begin_layout Standard
-par Fée \SpecialCharNoPassThru LyX
+par Fée \SpecialChar LyX
  
 \begin_inset Note Note
 status collapsed
@@ -203,23 +203,25 @@ Table des Matières
 \end_layout
 
 \begin_layout Standard
-1.1 Comment \SpecialCharNoPassThru LyX
+1.1 Comment \SpecialChar LyX
  procède..............1
 \end_layout
 
 \begin_layout Standard
-1.2 Pourquoi \SpecialCharNoPassThru LyX
+1.2 Pourquoi \SpecialChar LyX
  est mieux....1
 \end_layout
 
 \begin_layout Standard
 2.
- Fonctionnalités de \SpecialCharNoPassThru LyX
+ Fonctionnalités de \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
 3.
- Tentatives maladroites de mieux utiliser \SpecialCharNoPassThru LyX
+ Tentatives maladroites de mieux utiliser \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -228,23 +230,7 @@ Table des Matières
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+—————————————————
 \end_layout
 
 \begin_layout Standard
@@ -279,26 +265,26 @@ devraient pas être numérotés manuellement.
 \end_layout
 
 \begin_layout Standard
-La philosophie générale de \SpecialCharNoPassThru LyX
- est de vous laisser vous concentrer sur le
- contenu et non pas sur la forme de vos écrits.
+La philosophie générale de \SpecialChar LyX
+ est de vous laisser vous concentrer sur le contenu
+ et non pas sur la forme de vos écrits.
 \end_layout
 
 \begin_layout Standard
-1.1 Comment \SpecialCharNoPassThru LyX
+1.1 Comment \SpecialChar LyX
  procède
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- utilise \SpecialCharNoPassThru LaTeX
-, un système de préparation de documents conçu par Leslie
- Lamport en 1985.
+\SpecialChar LyX
+ utilise \SpecialChar LaTeX
+, un système de préparation de documents conçu par Leslie Lamport
+ en 1985.
  Il a été construit, à son tour, à partir d'un langage de composition typographi
-que, appelé \SpecialCharNoPassThru TeX
+que, appelé \SpecialChar TeX
 , créé par Donald Knuth en 1984.
- \SpecialCharNoPassThru LaTeX
- est conçu autour d'une philosophie similaire à celle de \SpecialCharNoPassThru LyX
+ \SpecialChar LaTeX
+ est conçu autour d'une philosophie similaire à celle de \SpecialChar LyX
 .
  Leslie Lamport disait lui-même (voir référence [1]) 
 \begin_inset Note Note
@@ -344,9 +330,9 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteu
  Les citations et les sources de programmes, étant, logiquement parlant,
  des éléments structurels différents, doivent être visuellement différents
  les uns des autres...
- Comme \SpecialCharNoPassThru LaTeX
- ne peut pas comprendre votre prose, vous devez explicitement
- définir sa structure logique en insérant des codes appropriés...
+ Comme \SpecialChar LaTeX
+ ne peut pas comprendre votre prose, vous devez explicitement définir
+ sa structure logique en insérant des codes appropriés...
  Lors de l'écriture de votre document, vous devez vous préoccuper de sa
  structure logique, et non pas de son apparence.
 \begin_inset Quotes frd
@@ -370,18 +356,18 @@ C'est une citation (QUOTE).
 \end_layout
 
 \begin_layout Standard
-1.2 Pourquoi \SpecialCharNoPassThru LyX
+1.2 Pourquoi \SpecialChar LyX
  est mieux
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
- peut être profitable à un plus grand nombre d'utilisateurs que \SpecialCharNoPassThru LaTeX
+\SpecialChar LyX
+ peut être profitable à un plus grand nombre d'utilisateurs que \SpecialChar LaTeX
 .
  Il est beaucoup plus facile à apprendre, car vous n'avez pas à connaître
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
 , qui est pratiquement un langage de programmation.
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  est en bien des points comparable à d'autres traitements de texte 
 \begin_inset Quotes fld
 \end_inset
@@ -401,7 +387,7 @@ n orthographique.
 \begin_inset Quotes frd
 \end_inset
 
- (WYSIWYG), excepté que \SpecialCharNoPassThru LyX
+ (WYSIWYG), excepté que \SpecialChar LyX
  est plutôt 
 \begin_inset Quotes fld
 \end_inset
@@ -411,9 +397,9 @@ What you see is what you mean
 \end_inset
 
  (WYSIWYM).
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  combine donc le confort des autres traitements de texte, et la puissance
- de \SpecialCharNoPassThru LaTeX
+ de \SpecialChar LaTeX
 .
  C'est une bonne chose.
  De plus, le format de fichier est indépendant du système.
@@ -422,11 +408,12 @@ What you see is what you mean
 
 \begin_layout Standard
 2.
- Fonctionnalités de \SpecialCharNoPassThru LyX
+ Fonctionnalités de \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  possède un bon nombre de fonctionnalités qui facilitent l'écriture.
  ( Après tout, quelle autre raison pourrait vous le faire utiliser ? 
 \begin_inset Note Note
@@ -485,12 +472,12 @@ Evidence
 \end_layout
 
 \begin_layout Standard
-* \SpecialCharNoPassThru LyX
+* \SpecialChar LyX
  gère les marges et la numérotation des notes de bas de page pour vous;
 \end_layout
 
 \begin_layout Standard
-* l'écriture de formules mathématiques est un jeu d'enfant avec \SpecialCharNoPassThru LyX
+* l'écriture de formules mathématiques est un jeu d'enfant avec \SpecialChar LyX
 .
 \end_layout
 
@@ -521,7 +508,7 @@ Que se passe-t-il si l'on change la numérotation des sections?
 
 \end_inset
 
- pour une discussion plus approfondie sur les avantages de \SpecialCharNoPassThru LyX
+ pour une discussion plus approfondie sur les avantages de \SpecialChar LyX
  par rapport
  aux autres traitements de texte.
  
@@ -529,7 +516,8 @@ Que se passe-t-il si l'on change la numérotation des sections?
 
 \begin_layout Standard
 3.
- Tentatives maladroites de mieux utiliser \SpecialCharNoPassThru LyX
+ Tentatives maladroites de mieux utiliser \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -584,7 +572,7 @@ Après cette pensée hautement scientifique, je me suis senti l'âme d'un poète
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
  est vraiment un extraordinaire
 \end_layout
 
@@ -671,22 +659,7 @@ x) - f(x) divisé par deltax (eq.
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+————————————————
 \end_layout
 
 \begin_layout Standard
@@ -695,7 +668,7 @@ REFERENCES
 
 \begin_layout Standard
 [1] Lamport, Leslie.
- \SpecialCharNoPassThru LaTeX
+ \SpecialChar LaTeX
  : A Document Preparation System.
  Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
 \end_layout

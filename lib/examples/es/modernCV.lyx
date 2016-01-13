@@ -138,7 +138,7 @@ status open
 \begin_layout Plain Layout
 La clase moderncv ofrece muchas posibilidades se personalización; algunas
  se explican en el preámbulo de este documento.
- Para más información echa un vistazo a la documentación del paquete \SpecialCharNoPassThru LaTeX
+ Para más información echa un vistazo a la documentación del paquete \SpecialChar LaTeX
  
 \series bold
 moderncv
@@ -187,8 +187,7 @@ Estudios.
 status open
 
 \begin_layout Plain Layout
-2001\twohyphens
-2005
+2001–2005
 \end_layout
 
 \end_inset
@@ -201,8 +200,7 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 status open
 
 \begin_layout Plain Layout
-2005\twohyphens
-2006
+2005–2006
 \end_layout
 
 \end_inset
@@ -284,7 +282,7 @@ Experiencia
 status open
 
 \begin_layout Plain Layout
-Febrero 2006\twohyphens
+Febrero 2006–
 \begin_inset Newline newline
 \end_inset
 
@@ -341,8 +339,7 @@ Mantenedor de la documentación xxx
 status open
 
 \begin_layout Plain Layout
-2005\twohyphens
-2006
+2005–2006
 \end_layout
 
 \end_inset
@@ -556,8 +553,8 @@ status collapsed
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
-, Con\SpecialCharNoPassThru TeX
+\SpecialChar LaTeX
+, Con\SpecialChar TeX
 t, Scribus, QuarkXPress
 \end_layout
 
@@ -792,12 +789,11 @@ Puedes usar bibitems:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
@@ -809,7 +805,7 @@ key "latexguide"
 Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to \SpecialCharNoPassThru LaTeX
+A Guide to \SpecialChar LaTeX
  Fourth Edition.
 
 \emph default
@@ -825,7 +821,7 @@ key "latexbook"
 
 Leslie Lamport: 
 \emph on
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 : A Document Preparation System.
 
 \emph default
@@ -833,7 +829,7 @@ Leslie Lamport:
 \end_layout
 
 \begin_layout Standard
-o referencias Bib\SpecialCharNoPassThru TeX
+o referencias Bib\SpecialChar TeX
 :
 \end_layout
 

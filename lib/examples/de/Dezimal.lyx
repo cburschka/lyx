@@ -161,7 +161,7 @@ d{4}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt" special="d{4}">
 <row>
@@ -305,9 +305,9 @@ dcolumn
 \family default
 -Paket.
  Man könnte zum Beispiel das Ausrichtungszeichen ändern oder verschiedene
- Ausrichtungszeichen für verschiedene Spalten definieren, indem man im \SpecialCharNoPassThru LaTeX
--Vor
-spann Mehrfachspalten-Typen definiert.
+ Ausrichtungszeichen für verschiedene Spalten definieren, indem man im \SpecialChar LaTeX
+-Vorspann
+ Mehrfachspalten-Typen definiert.
  Die Syntax ist die folgende: 
 \end_layout
 

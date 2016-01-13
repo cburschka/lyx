@@ -95,6 +95,7 @@ Enumeració* (itemize)
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -102,6 +103,7 @@ Enumeració* (itemize)
 Té el seu comptador propi, limitat a quatre nivells
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -111,11 +113,12 @@ Cada nivell té el seu símbols o pics com a marca
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-El \SpecialCharNoPassThru LyX
+El \SpecialChar LyX
  mostra en pantalla un pic per a cada nivell
 \end_layout
 
@@ -123,7 +126,7 @@ El \SpecialCharNoPassThru LyX
 \end_deeper
 \end_deeper
 \begin_layout Itemize
-A més heu de tenir en compte que el \SpecialCharNoPassThru LyX
+A més heu de tenir en compte que el \SpecialChar LyX
  
 \emph on
 no
@@ -132,13 +135,14 @@ no
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-excepte la limitació imposada pel \SpecialCharNoPassThru LaTeX
- de 6 nivells de profunditat pel
- conjunt de totes les llistes.
+excepte la limitació imposada pel \SpecialChar LaTeX
+ de 6 nivells de profunditat pel conjunt
+ de totes les llistes.
 \end_layout
 
 \end_deeper
@@ -212,7 +216,7 @@ Estàndard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -701,7 +705,7 @@ American Mathematical Society
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -1172,8 +1176,9 @@ Dings 1 (Tipus de lletra PSNFSS
 status collapsed
 
 \begin_layout Plain Layout
-NFSS (New Font Selecting Scheme) és un sistema de tipus de lletra de \SpecialCharNoPassThru LaTeX2e
- (bàsicament, els canvis són les ordres de lletra de 
+NFSS (New Font Selecting Scheme) és un sistema de tipus de lletra de \SpecialChar LaTeX2e
+ (bàsicamen
+t, els canvis són les ordres de lletra de 
 \family typewriter
 {
 \backslash
@@ -1189,10 +1194,10 @@ textbf{\SpecialChar ldots
 \family default
 , aunque los verdaderos cambios son internos).
  PS es refereix a PostScript®.
- PSNFSS és un conjunt de fitxers \SpecialCharNoPassThru LaTeX
- que proporcionen funcionalitats NFSS
- al conjunts bàsic de 35 pòlisses PS presents en la majoria d'impressores
- postscript.
+ PSNFSS és un conjunt de fitxers \SpecialChar LaTeX
+ que proporcionen funcionalitats NFSS al
+ conjunts bàsic de 35 pòlisses PS presents en la majoria d'impressores postscrip
+t.
  
 \end_layout
 
@@ -1212,7 +1217,7 @@ textbf{\SpecialChar ldots
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2016,7 +2021,7 @@ Dings 2
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2820,7 +2825,7 @@ Dings 3
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3624,7 +3629,7 @@ Dings 4
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">

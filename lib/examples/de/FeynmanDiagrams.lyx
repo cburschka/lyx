@@ -135,7 +135,7 @@ Um
 \noun on
 Feynman
 \noun default
--Diagramme erstellen zu können, muss das \SpecialCharNoPassThru LaTeX
+-Diagramme erstellen zu können, muss das \SpecialChar LaTeX
 -Paket 
 \series bold
 feyn
@@ -177,13 +177,14 @@ Propagatoren
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="28col%">
 <column alignment="center" valignment="middle" width="20col%">
 <column alignment="center" valignment="middle" width="25col%">
@@ -253,7 +254,7 @@ Fermion, Photon oder Ghost-Propagator
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -336,7 +337,7 @@ Fermion/Photon, nach oben/unten/vertikal
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -451,7 +452,7 @@ A und V sind Modifikatoren um einen Pfeil nach links/oben oder rechts/unten
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -565,7 +566,7 @@ Fermion/Photon-Schleife
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="middle">
@@ -734,7 +735,7 @@ p
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
@@ -837,7 +838,7 @@ Align-Umgebungen
 \begin_inset Quotes grd
 \end_inset
 
- in \SpecialCharNoPassThru LyX
+ in \SpecialChar LyX
 s Mathe-Handbuch beschrieben sind).
 \end_layout
 
@@ -861,7 +862,7 @@ target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
 
 \end_inset
 
- des \SpecialCharNoPassThru LaTeX
+ des \SpecialChar LaTeX
 -Pakets 
 \series bold
 feyn

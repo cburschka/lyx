@@ -140,12 +140,12 @@ ohr
 \family sans
 多言語キャプション
 \family default
-モジュールを用いると、キャプションを二言語で組むことができます。これを用いるには、\SpecialCharNoPassThru LaTeX
+モジュールを用いると、キャプションを二言語で組むことができます。これを用いるには、\SpecialChar LaTeX
 パッケージ
 \series bold
 caption
 \series default
-に組み込まれている\SpecialCharNoPassThru LaTeX
+に組み込まれている\SpecialChar LaTeX
 パッケージ
 \series bold
 bicaption
@@ -448,7 +448,7 @@ bicaption
 \series bold
 caption
 \series default
-と同じですので、他に行うことができる設定についての詳細は、\SpecialCharNoPassThru LaTeX
+と同じですので、他に行うことができる設定についての詳細は、\SpecialChar LaTeX
 パッケージ
 \series bold
 caption
@@ -711,7 +711,7 @@ tableGer
 \emph on
 figureGer
 \emph default
-の一覧は、\SpecialCharNoPassThru TeX
+の一覧は、\SpecialChar TeX
 コードで
 \end_layout
 
@@ -784,7 +784,7 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \series bold
 bicaption
@@ -809,7 +809,7 @@ key "bicaption"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="47" columns="2">
-<features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
 <row endfirsthead="true" caption="true">
@@ -1783,7 +1783,7 @@ key "bicaption"
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \series bold
 
@@ -1806,7 +1806,7 @@ key "caption"
 
 \end_inset
 
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
 パッケージ
 \series bold
 
