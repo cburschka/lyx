@@ -523,7 +523,7 @@ extern LyXRC lyxrc;
 extern LyXRC system_lyxrc;
 
 // used by at least frontends/qt4/GuiPref.cpp
-const long maxlastfiles = 20;
+const long maxlastfiles = 50;
 
 } // namespace lyx
 
