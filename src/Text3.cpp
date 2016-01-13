@@ -1107,13 +1107,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				prev = pit - 1;
 		}
 		if (prev < pit && cur.pos() == par.beginOfBody()
-		    && !par.isEnvSeparator(par.size() ? par.size() - 1 : 0)
+		    && !par.size() && !par.isEnvSeparator(cur.pos())
 		    && !par.layout().isCommand()
 		    && pars_[prev].layout() != par.layout()
 		    && pars_[prev].layout().isEnvironment()
-		    && (!nextpar.isEnvSeparator(nextpar.size() ? nextpar.size() - 1 : 0)
-			    || nextpar.layout().isCommand()
-			    || nextpar.layout().isEnvironment())) {
+		    && !nextpar.isEnvSeparator(nextpar.beginOfBody())) {
 			if (par.layout().isEnvironment()
 			    && pars_[prev].getDepth() == par.getDepth()) {
 				docstring const layout = par.layout().name();
