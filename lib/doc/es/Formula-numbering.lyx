@@ -297,7 +297,7 @@ height "1pt"
 
 Para escribir este ejemplo, primero hay que definir un contador para las
  fórmulas numeradas en romanos.
- Para ello se inserta lo siguiente en el preámbulo \SpecialCharNoPassThru LaTeX
+ Para ello se inserta lo siguiente en el preámbulo \SpecialChar LaTeX
 :
 \end_layout
 
@@ -433,7 +433,7 @@ Cada fórmula será numerada en arábigos por defecto.
 \backslash
 setrom
 \series default
- en modo \SpecialCharNoPassThru TeX
+ en modo \SpecialChar TeX
 .
  Con el comando 
 \series bold
