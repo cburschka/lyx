@@ -122,7 +122,7 @@ Traduction de Philippe De Sousa <philippejjg@free.fr>.
 \end_layout
 
 \begin_layout Plain Layout
-Adaptation à \SpecialCharNoPassThru LyX
+Adaptation à \SpecialChar LyX
  par Jean-Pierre Chrétien <chretien@cert.fr> 
 \end_layout
 
@@ -405,9 +405,9 @@ status collapsed
 
 \begin_layout Plain Layout
 Si vous avez un fichier nommé "université-logo-nomfichier.xxx", où xxxest
- un format graphique accepté par \SpecialCharNoPassThru LyX
- (comme par exemple .png), alors vous
- pouvez insérer votre logo ainsi :
+ un format graphique accepté par \SpecialChar LyX
+ (comme par exemple .png), alors vous pouvez
+ insérer votre logo ainsi :
 \end_layout
 
 \end_inset
@@ -587,6 +587,7 @@ Sommaire
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -685,6 +686,7 @@ Faites des titres qui informent.
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -708,6 +710,7 @@ Utilisez itemize à volonté.
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -720,6 +723,7 @@ Utilisez itemize à volonté.
 Utilisez des phrases très courtes et de courtes expressions.
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -735,12 +739,11 @@ Ces recouvrements sont créés à l'aide du style «Pause».
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -755,6 +758,7 @@ Faites des titres qui informent
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -801,12 +805,11 @@ Ceci est affiché en second.
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -821,6 +824,7 @@ Faites des titres qui informent
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -870,12 +874,11 @@ Remplacé sur le second transparent
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -890,6 +893,7 @@ Faites des titres qui informent
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -907,6 +911,7 @@ status open
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -943,6 +948,7 @@ Some Example Block Title
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -981,6 +987,7 @@ Faites des titres qui informent
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -998,12 +1005,11 @@ Sur le premier transparent
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Example
 \begin_inset Argument 1
@@ -1041,6 +1047,7 @@ Faites des titres qui informent
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1058,12 +1065,11 @@ Sur le second transparent
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1079,13 +1085,14 @@ Faites des titres qui informent
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1151,6 +1158,7 @@ Résumé
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1240,6 +1248,7 @@ Perspectives
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1294,6 +1303,7 @@ Lectures complémentaires
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1435,8 +1445,7 @@ newblock
 Journal de ceci et cela
 \emph default
 .
- 2(1):50\twohyphens
-100, 2000.
+ 2(1):50–100, 2000.
 \end_layout
 
 \end_deeper

@@ -77,13 +77,13 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to the American
- Physical Society (APS).
- APS uses the \SpecialCharNoPassThru LaTeX
- class REV\SpecialCharNoPassThru TeX
+This is a template \SpecialChar LyX
+ file for articles to be submitted to the American Physical
+ Society (APS).
+ APS uses the \SpecialChar LaTeX
+ class REV\SpecialChar TeX
  for submissions.
- For general information about REV\SpecialCharNoPassThru TeX
+ For general information about REV\SpecialChar TeX
  and the latest author guide see 
 \begin_inset Flex URL
 status open
@@ -230,14 +230,15 @@ The Affiliation layout applies to all authors since the last Affiliation
 status collapsed
 
 \begin_layout Plain Layout
-For the case that there is no affitilation use the \SpecialCharNoPassThru LaTeX
+For the case that there is no affitilation use the \SpecialChar LaTeX
  command 
 \series bold
 
 \backslash
 noaffiliation
 \series default
- as \SpecialCharNoPassThru TeX
+ as \SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -465,7 +466,7 @@ Surround tables with the Turn Page layout for landscape.
 \end_layout
 
 \begin_layout Itemize
-Use \SpecialCharNoPassThru LyX
+Use \SpecialChar LyX
 's span column option to get a full-width table or figure in two-column.
 \end_layout
 
@@ -588,7 +589,8 @@ Citations
 \end_layout
 
 \begin_layout Standard
-Because REV\SpecialCharNoPassThru TeX
+Because REV\SpecialChar TeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -663,7 +665,8 @@ compresses
 \end_inset
 
  runs of three or more consecutive numerical citations.
- REV\SpecialCharNoPassThru TeX
+ REV\SpecialChar TeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -732,11 +735,13 @@ References
 \end_layout
 
 \begin_layout Standard
-REV\SpecialCharNoPassThru TeX
+REV\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
-4.1 includes the Bib\SpecialCharNoPassThru TeX
+4.1 includes the Bib\SpecialChar TeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -780,7 +785,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-Bib\SpecialCharNoPassThru TeX
+BibTeX
 \end_layout
 
 \end_inset
@@ -798,7 +803,8 @@ Math and Equations
 \end_layout
 
 \begin_layout Standard
-In \SpecialCharNoPassThru LaTeX
+In \SpecialChar LaTeX
+
 \begin_inset space \space{}
 \end_inset
 
@@ -873,7 +879,7 @@ Only number the last line of a continued equation:
 
 \begin_layout Standard
 To obtain numbers not normally produced by the automatic numbering, use
- the \SpecialCharNoPassThru LaTeX
+ the \SpecialChar LaTeX
 -command 
 \series bold
 
@@ -889,7 +895,7 @@ tag
 \emph on
 User-defined Numbering
 \emph default
- of \SpecialCharNoPassThru LyX
+ of \SpecialChar LyX
 's 
 \emph on
 Math
@@ -907,13 +913,12 @@ tag
 \backslash
 tag
 \series default
- should only be used in exceptional cases\threehyphens
-do not use it to number many
- equations in your paper.
+ should only be used in exceptional cases—do not use it to number many equations
+ in your paper.
 \end_layout
 
 \begin_layout Standard
-Enclosing display math within the \SpecialCharNoPassThru LaTeX
+Enclosing display math within the \SpecialChar LaTeX
 -commands 
 \series bold
 
@@ -1103,7 +1108,8 @@ name "tab:table1"
 \end_inset
 
 A table that fits into a single column of a two-column layout.
- Note that REV\SpecialCharNoPassThru TeX
+ Note that REV\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -1759,9 +1765,9 @@ reference "tab:table3"
 
 \end_inset
 
-: \SpecialCharNoPassThru LaTeX
-'s float placement algorithms need to know about a full-page-width
- float earlier.
+: \SpecialChar LaTeX
+'s float placement algorithms need to know about a full-page-width float
+ earlier.
 \end_layout
 
 \begin_layout Standard
@@ -2657,7 +2663,7 @@ definitely
 \emph on
 Longtables
 \emph default
- of \SpecialCharNoPassThru LyX
+ of \SpecialChar LyX
 's 
 \emph on
 EmbeddedObjects
@@ -2674,7 +2680,7 @@ There are two methods for setting footnotes within a table (these footnotes
  However, it is sometimes necessary to have multiple entries in the table
  share the same footnote.
  In this case, there is no choice but to manually create the footnotes using
- the \SpecialCharNoPassThru LaTeX
+ the \SpecialChar LaTeX
 -command 
 \series bold
 
@@ -2689,7 +2695,7 @@ footnotemark
 \emph on
 Footnotes
 \emph default
- of \SpecialCharNoPassThru LyX
+ of \SpecialChar LyX
 's 
 \emph on
 EmbeddedObjects
@@ -2728,7 +2734,7 @@ reference "vid:PRSTPER.4.010101"
 
 \end_inset
 
- illustrates several features new with REV\SpecialCharNoPassThru TeX
+ illustrates several features new with REV\SpecialChar TeX
 4.1, starting with the 
 \family typewriter
 video
@@ -2806,7 +2812,7 @@ Students explain their initial idea about Newton's third law to a teaching
 \end_layout
 
 \begin_layout Standard
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
 -command 
 \series bold
 
@@ -2849,7 +2855,7 @@ reference "fig:epsart"
 \end_layout
 
 \begin_layout Acknowledgments
-We wish to acknowledge the support of the author community in using REV\SpecialCharNoPassThru TeX
+We wish to acknowledge the support of the author community in using REV\SpecialChar TeX
 ,
  offering suggestions and encouragement, testing new versions, ….
  
@@ -2884,9 +2890,9 @@ appendix
 \end_layout
 
 \begin_layout Standard
-This is not yet supported by \SpecialCharNoPassThru LyX
- so that you have to do that manually in
- the exported \SpecialCharNoPassThru LaTeX
+This is not yet supported by \SpecialChar LyX
+ so that you have to do that manually in the
+ exported \SpecialChar LaTeX
 -file.
 \end_layout
 
@@ -3007,7 +3013,7 @@ reference "appc"
 status open
 
 \begin_layout Plain Layout
-Click on the following inset to add your Bib\SpecialCharNoPassThru TeX
+Click on the following inset to add your Bib\SpecialChar TeX
  file (and replace 
 \begin_inset Quotes eld
 \end_inset

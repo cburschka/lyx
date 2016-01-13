@@ -95,7 +95,7 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
+This is a template \SpecialChar LyX
  file for articles to be submitted to 
 \begin_inset Quotes eld
 \end_inset
@@ -338,13 +338,11 @@ San Francisco, California 99999-9999
 \begin_inset Newline newline
 \end_inset
 
-Telephone: (800) 555\twohyphens
-5555
+Telephone: (800) 555–5555
 \begin_inset Newline newline
 \end_inset
 
-Fax: (888) 555\twohyphens
-5555
+Fax: (888) 555–5555
 \end_layout
 
 \end_inset
@@ -405,8 +403,7 @@ et al.
 \end_layout
 
 \begin_layout Publication ID
-0000\twohyphens
-0000/00$00.00
+0000–0000/00$00.00
 \begin_inset space ~
 \end_inset
 
@@ -707,7 +704,7 @@ above
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -816,7 +813,7 @@ status open
 
 \begin_layout Plain Layout
 Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the \SpecialCharNoPassThru LaTeX
+phy entries embedded in the \SpecialChar LaTeX
 -file.
  This means you eventually have to copy the .bbl file into the latex file
  and remove the bibtex lines.
@@ -894,12 +891,11 @@ Your Name
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Biography without photo
 \begin_inset Argument 1

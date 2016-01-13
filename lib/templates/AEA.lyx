@@ -86,13 +86,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to Journals of
- the American Economic Association (AEA).
- How to install the AEA \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained in
- 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to Journals of the
+ American Economic Association (AEA).
+ How to install the AEA \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -196,7 +195,7 @@ in
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  Preamble
 \family default
 .
@@ -205,7 +204,7 @@ Settings\SpecialChar menuseparator
 \begin_layout Enumerate
 Set 
 \family sans
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  font encoding
 \family default
  to 
@@ -231,13 +230,13 @@ T1
 \begin_inset Quotes erd
 \end_inset
 
- may cause font problems in \SpecialCharNoPassThru LaTeX
+ may cause font problems in \SpecialChar LaTeX
  export.)
 \end_layout
 
 \begin_layout Enumerate
 When you finalize your manuscript for submission, clean up unnecessary preambles
- in the exported \SpecialCharNoPassThru LaTeX
+ in the exported \SpecialChar LaTeX
  file.
  You need to minimize the usage of packages.
 \end_layout
@@ -598,9 +597,9 @@ An example Algorithm
 \end_layout
 
 \begin_layout Standard
-References here (manual or Bib\SpecialCharNoPassThru TeX
+References here (manual or Bib\SpecialChar TeX
 ).
- If you are using Bib\SpecialCharNoPassThru TeX
+ If you are using Bib\SpecialChar TeX
  you must use the bibliography style 
 \series bold
 aea
@@ -614,10 +613,10 @@ all cited references
 \begin_inset Quotes erd
 \end_inset
 
- is selected for the Bib\SpecialCharNoPassThru TeX
- bibliography, then Bib\SpecialCharNoPassThru TeX
- will complain if there
- is no citation in the document so let
+ is selected for the Bib\SpecialChar TeX
+ bibliography, then Bib\SpecialChar TeX
+ will complain if there is
+ no citation in the document so let
 \begin_inset Quotes ers
 \end_inset
 

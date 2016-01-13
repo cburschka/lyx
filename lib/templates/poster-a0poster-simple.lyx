@@ -154,7 +154,7 @@ This example poster is not nice, but you get an idea of what is possible
 \family sans
 a0poster
 \family default
- document class within \SpecialCharNoPassThru LyX
+ document class within \SpecialChar LyX
 , when not using additional modules (such as 
 \begin_inset Quotes eld
 \end_inset
@@ -276,7 +276,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Subsubsection*
-Available font sizes (with corresponding \SpecialCharNoPassThru LaTeX
+Available font sizes (with corresponding \SpecialChar LaTeX
  command)
 \end_layout
 
@@ -512,7 +512,7 @@ The
 a0poster
 \family default
  class and layout provide the means to create a poster in A3 through A0big
- size using \SpecialCharNoPassThru LyX
+ size using \SpecialChar LyX
 .
 \end_layout
 
@@ -547,7 +547,7 @@ The usual paragraph and text styles can be used.
 \end_layout
 
 \begin_layout Itemize
-\SpecialCharNoPassThru LyX
+\SpecialChar LyX
 's boxes, as used here, are a simple means for structuring the content,
  simple colored boxes (of one color, predefined in 
 \family sans
@@ -638,7 +638,7 @@ http://www.physik.uni-augsburg.de/theo3/Comp/hp750c/computing_hp750c_A0.de.shtml
 \end_inset
 
 ) provides additional commands for color, headings, columns, and boxes,
- but those are not natively supported by \SpecialCharNoPassThru LyX
+ but those are not natively supported by \SpecialChar LyX
 .
 \end_layout
 

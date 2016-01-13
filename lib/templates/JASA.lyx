@@ -77,7 +77,7 @@
 status open
 
 \begin_layout Plain Layout
-Update: the ASA does not recommend JASA\SpecialCharNoPassThru TeX
+Update: the ASA does not recommend JASA\SpecialChar TeX
  for submission.
  See 
 \begin_inset Flex URL
@@ -85,32 +85,30 @@ status open
 
 \begin_layout Plain Layout
 
-http://jasa.peerx-press.org/html/jasa/Using_\SpecialCharNoPassThru LaTeX
-_for_JASA.html
+http://jasa.peerx-press.org/html/jasa/Using_LaTeX_for_JASA.html
 \end_layout
 
 \end_inset
 
 .
- Note that the JASA\SpecialCharNoPassThru TeX
+ Note that the JASA\SpecialChar TeX
  .cls file has not been updated in years and that lualatex
  and xelatex might enter into infinit loops if system fonts are used.
 \end_layout
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to the Journal
- of the Acoustical Society of America (JASA).
- How to install the JASAS \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained
- in 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to the Journal of
+ the Acoustical Society of America (JASA).
+ How to install the JASAS \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Layouts/JASA\SpecialCharNoPassThru TeX
+http://wiki.lyx.org/Layouts/JASATeX
 \end_layout
 
 \end_inset
@@ -252,7 +250,7 @@ Charlie.Author
 status collapsed
 
 \begin_layout Plain Layout
-Tildes have to be inserted as \SpecialCharNoPassThru TeX
+Tildes have to be inserted as \SpecialChar TeX
  code.
 \end_layout
 
@@ -441,16 +439,11 @@ Appendix, only when needed, inserted behind the acknowledgments but before
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\twohyphens
+—————–
 \end_layout
 
 \begin_layout Standard
-You can use either Bib\SpecialCharNoPassThru TeX
+You can use either Bib\SpecialChar TeX
 :
 \begin_inset Note Note
 status open
@@ -482,13 +475,7 @@ options "jasaauthyear"
 \end_layout
 
 \begin_layout Standard
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard
@@ -505,7 +492,7 @@ key "key-1"
 
 Frank Mittelbach and Michel Goossens: 
 \emph on
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
  Companion Second Edition.
 
 \emph default
@@ -520,7 +507,7 @@ key "key-2"
 \end_inset
 
 Scott Pakin.
- The comprehensive \SpecialCharNoPassThru LaTeX
+ The comprehensive \SpecialChar LaTeX
  symbol list, 2005.
 \end_layout
 

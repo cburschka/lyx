@@ -157,7 +157,7 @@ myboxcolor
 Document\SpecialChar menuseparator
 Settings \SpecialChar ldots
  \SpecialChar menuseparator
-\SpecialCharNoPassThru LaTeX
+\SpecialChar LaTeX
  Preamble
 \family default
 ): 
@@ -213,7 +213,7 @@ This is a hand-crafted poster heading with two potential logo placeholders.
 \noindent
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="19line%">
 <column alignment="center" valignment="top" width="58.1line%">
 <column alignment="right" valignment="top" width="19line%">
@@ -585,7 +585,7 @@ Columns
 \end_inset
 
  inset this text is written in.
- The space between the columns can be adjusted via the \SpecialCharNoPassThru LaTeX
+ The space between the columns can be adjusted via the \SpecialChar LaTeX
  code 
 \family typewriter
 
@@ -594,7 +594,7 @@ setlength{
 \backslash
 columnsep}
 \family default
- (see above in the \SpecialCharNoPassThru LyX
+ (see above in the \SpecialChar LyX
  work area).
  The 
 \begin_inset Quotes eld
@@ -694,7 +694,7 @@ status collapsed
 
 
 \backslash
-\SpecialCharNoPassThru LaTeX
+LaTeX
 \backslash
 
 \end_layout
@@ -955,9 +955,9 @@ Color Box Line
 \end_inset
 
 
-\family default
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1013,7 +1013,7 @@ Large
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="12">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">

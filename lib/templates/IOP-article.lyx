@@ -88,13 +88,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to Journals of
- the Institute of Physics (IOP).
- How to install the IOP \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained in
- 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to Journals of the
+ Institute of Physics (IOP).
+ How to install the IOP \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -441,7 +440,7 @@ Abbreviations for the IOP journals.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="28" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="none" valignment="top" special="@{}l">
 <column alignment="left" valignment="top">
 <row>
@@ -1200,16 +1199,11 @@ Appendix, only when needed, inserted behind the acknowledgments but before
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\twohyphens
+—————–
 \end_layout
 
 \begin_layout Standard
-You can use either Bib\SpecialCharNoPassThru TeX
+You can use either Bib\SpecialChar TeX
 :
 \begin_inset Note Note
 status open
@@ -1223,7 +1217,7 @@ unsrt
 \family sans
 jphysicsB
 \family default
- (part of the \SpecialCharNoPassThru LaTeX
+ (part of the \SpecialChar LaTeX
 -package 
 \series bold
 harvard
@@ -1248,13 +1242,7 @@ options "bibtotoc,unsrt"
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard
@@ -1271,7 +1259,7 @@ key "key-1"
 
 Frank Mittelbach and Michel Goossens: 
 \emph on
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
  Companion Second Edition.
 
 \emph default
@@ -1286,7 +1274,7 @@ key "key-2"
 \end_inset
 
 Scott Pakin.
- The comprehensive \SpecialCharNoPassThru LaTeX
+ The comprehensive \SpecialChar LaTeX
  symbol list, 2005.
 \end_layout
 

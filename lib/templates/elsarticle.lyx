@@ -86,9 +86,9 @@ theorems-std
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to journals of
- the Elsevier publishing company.
+This is a template \SpecialChar LyX
+ file for articles to be submitted to journals of the
+ Elsevier publishing company.
  For general infos see 
 \begin_inset Flex URL
 status open
@@ -290,9 +290,7 @@ Email
 \end_layout
 
 \begin_layout Plain Layout
-\threehyphens
-\threehyphens
--
+——-
 \begin_inset space \hfill{}
 \end_inset
 
@@ -760,12 +758,11 @@ Theorem 1
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Theorem
 Theorem 2
@@ -790,7 +787,7 @@ status open
 \begin_layout Plain Layout
 To get another numbering scheme, you cannot use an option argument (a.k.a.
  short title) as described in the elsarticle manual.
- But you can use the following \SpecialCharNoPassThru TeX
+ But you can use the following \SpecialChar TeX
 -code command to achieve the same:
 \end_layout
 
@@ -875,16 +872,11 @@ Appendix, only when needed.
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\twohyphens
+—————–
 \end_layout
 
 \begin_layout Standard
-You can use either Bib\SpecialCharNoPassThru TeX
+You can use either Bib\SpecialChar TeX
 :
 \begin_inset Note Note
 status open
@@ -920,13 +912,7 @@ options "bibtotoc,elsarticle-harv"
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard
@@ -943,7 +929,7 @@ key "key-1"
 
 Frank Mittelbach and Michel Goossens: 
 \emph on
-The \SpecialCharNoPassThru LaTeX
+The \SpecialChar LaTeX
  Companion Second Edition.
 
 \emph default
@@ -958,7 +944,7 @@ key "key-2"
 \end_inset
 
 Scott Pakin.
- The comprehensive \SpecialCharNoPassThru LaTeX
+ The comprehensive \SpecialChar LaTeX
  symbol list, 2005.
 \end_layout
 

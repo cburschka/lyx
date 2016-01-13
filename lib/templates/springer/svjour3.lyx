@@ -81,13 +81,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
+This is a template \SpecialChar LyX
  file for articles for Journals of the Springer publishing
  group.
- How to install the svjour3 \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained
- in 
+ How to install the svjour3 \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -696,7 +695,7 @@ Please write your table caption here
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -862,17 +861,11 @@ If you'd like to thank anyone, place your comments here.
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard
-You can either use Bib\SpecialCharNoPassThru TeX
+You can either use Bib\SpecialChar TeX
 :
 \begin_inset Note Note
 status open
@@ -925,13 +918,7 @@ options "bibtotoc,spbasic"
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard

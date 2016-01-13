@@ -522,6 +522,7 @@ status open
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -648,6 +649,7 @@ Usar Letras Capitales
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -672,6 +674,7 @@ Usar Enumeración* a discreción.
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -684,6 +687,7 @@ Usar Enumeración* a discreción.
 Usar oraciones muy cortas o frases cortas.
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -699,12 +703,11 @@ Estos solapados se crean usando el estilo Pausa.
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -719,6 +722,7 @@ Poner títulos informativos
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -764,12 +768,11 @@ status open
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -784,6 +787,7 @@ Poner títulos informativos
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -801,6 +805,7 @@ status open
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -837,6 +842,7 @@ Título de algún Bloque de ejemplo
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -875,6 +881,7 @@ Poner títulos informativos
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -894,15 +901,14 @@ Preparar un archivo '.dict' en español para que lo use el paquete 'translator',
 \end_layout
 
 \begin_layout Itemize
-Añadir en el preámbulo \SpecialCharNoPassThru LaTeX
+Añadir en el preámbulo \SpecialChar LaTeX
  comandos como los descritos en 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/\SpecialCharNoPassThru LyX
-/I18nLabels
+http://wiki.lyx.org/LyX/I18nLabels
 \end_layout
 
 \end_inset
@@ -947,12 +953,11 @@ En la primera diapositiva.
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Example
 \begin_inset Argument 1
@@ -990,6 +995,7 @@ Poner títulos informativos
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1007,12 +1013,11 @@ En la segunda diapositiva.
 
 \end_deeper
 \begin_layout Standard
-
 \begin_inset Separator parbreak
 \end_inset
 
-\end_layout
 
+\end_layout
 
 \begin_layout Frame
 \begin_inset Argument 4
@@ -1028,13 +1033,14 @@ Poner títulos informativos
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
-
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1100,6 +1106,7 @@ Sumario
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1189,6 +1196,7 @@ Perspectiva
 \begin_inset Separator parbreak
 \end_inset
 
+
 \end_layout
 
 \begin_deeper
@@ -1243,6 +1251,7 @@ Lecturas complementarias
 
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -1383,8 +1392,7 @@ newblock
 Revista Esto y Aquello
 \emph default
 .
- 2(1):50\twohyphens
-100, 2000.
+ 2(1):50–100, 2000.
 \end_layout
 
 \end_deeper

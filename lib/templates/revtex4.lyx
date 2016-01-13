@@ -120,7 +120,7 @@ Use Thanks layout instead of inserting footnotes.
 \end_layout
 
 \begin_layout Plain Layout
-Footnotes in the title will do weird things in REV\SpecialCharNoPassThru TeX
+Footnotes in the title will do weird things in REV\SpecialChar TeX
  4!
 \end_layout
 
@@ -158,7 +158,7 @@ status collapsed
 You don't have to write 
 \backslash
 maketitle..
- \SpecialCharNoPassThru LyX
+ \SpecialChar LyX
  does this by itself.
 \end_layout
 
@@ -201,7 +201,7 @@ Layout
 Layout
 \family default
  menu).
- See the REV\SpecialCharNoPassThru TeX
+ See the REV\SpecialChar TeX
  4 manual for style options, special macros, and the like.
 \end_layout
 
@@ -210,15 +210,15 @@ methods
 \end_layout
 
 \begin_layout Standard
-Special REV\SpecialCharNoPassThru TeX
- macros must be typed in \SpecialCharNoPassThru TeX
+Special REV\SpecialChar TeX
+ macros must be typed in \SpecialChar TeX
  mode, so typing 
 \family typewriter
 
 \backslash
 openone
 \family default
- in \SpecialCharNoPassThru TeX
+ in \SpecialChar TeX
  mode yields 
 \begin_inset ERT
 status collapsed
@@ -233,13 +233,13 @@ openone{}
 \end_inset
 
 .
- REV\SpecialCharNoPassThru TeX
+ REV\SpecialChar TeX
  macros can also be used freely in the math editor, so you can type
  
 \begin_inset Formula $\sqrt{\overstar{a}}>b$
 \end_inset
 
-, for example, which uses the REV\SpecialCharNoPassThru TeX
+, for example, which uses the REV\SpecialChar TeX
  
 \family typewriter
 
@@ -251,12 +251,11 @@ overstar
 
 \begin_layout Standard
 You can do a bibliography by hand, as shown below, but it may be easier
- to erase that and use Bib\SpecialCharNoPassThru TeX
-\threehyphens
-in fact, APS encourages authors to use Bib\SpecialCharNoPassThru TeX
+ to erase that and use Bib\SpecialChar TeX
+—in fact, APS encourages authors to use Bib\SpecialChar TeX
 .
- If you do use Bib\SpecialCharNoPassThru TeX
-, use the REV\SpecialCharNoPassThru TeX
+ If you do use Bib\SpecialChar TeX
+, use the REV\SpecialChar TeX
  bibliography style file, 
 \family typewriter
 revtex.bst
@@ -289,14 +288,15 @@ Lists
 \end_inset
 
 TOC\SpecialChar menuseparator
-Bib\SpecialCharNoPassThru TeX
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
 Reference
 \family default
  popup).
- With either method, you can cite references with the \SpecialCharNoPassThru LyX
+ With either method, you can cite references with the \SpecialChar LyX
  citation commands
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -330,8 +330,7 @@ Title
 \series bold
 Volume
 \series default
-, page\twohyphens
-numbers (year).
+, page–numbers (year).
 \end_layout
 
 \end_body

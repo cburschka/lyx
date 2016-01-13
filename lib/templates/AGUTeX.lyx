@@ -114,20 +114,19 @@ theorems-std
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
- file for articles to be submitted to Journals of
- the American Geophysical Union (AGU).
- How to install the AGU\SpecialCharNoPassThru TeX
- \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained
- in 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to Journals of the
+ American Geophysical Union (AGU).
+ How to install the AGU\SpecialChar TeX
+ \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Examples/AGU\SpecialCharNoPassThru TeX
+http://wiki.lyx.org/Examples/AGUTeX
 \end_layout
 
 \end_inset
@@ -149,7 +148,7 @@ status open
 \series bold
 Note
 \series default
-: To be able to compile Agu\SpecialCharNoPassThru TeX
+: To be able to compile Agu\SpecialChar TeX
  articles, assure that in the menu 
 \family sans
 Document\SpecialChar menuseparator
@@ -489,23 +488,18 @@ status collapsed
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\twohyphens
+—————–
 \end_layout
 
 \begin_layout Standard
-You can use either Bib\SpecialCharNoPassThru TeX
+You can use either Bib\SpecialChar TeX
 .
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the \SpecialCharNoPassThru LaTeX
+phy entries embedded in the \SpecialChar LaTeX
 -file.
  This means you eventually have to copy the .bbl file into the latex file
  at this position.
@@ -513,20 +507,20 @@ phy entries embedded in the \SpecialCharNoPassThru LaTeX
 \end_layout
 
 \begin_layout Enumerate
-Run \SpecialCharNoPassThru LaTeX
- on your \SpecialCharNoPassThru LaTeX
+Run \SpecialChar LaTeX
+ on your \SpecialChar LaTeX
  file.
 \end_layout
 
 \begin_layout Enumerate
-Run BiB\SpecialCharNoPassThru TeX
- on your \SpecialCharNoPassThru LaTeX
+Run BiB\SpecialChar TeX
+ on your \SpecialChar LaTeX
  file.
 \end_layout
 
 \begin_layout Enumerate
 Open the new .bbl file containing the reference list and copy all the contents
- into your \SpecialCharNoPassThru LaTeX
+ into your \SpecialChar LaTeX
  file here.
 \end_layout
 
@@ -539,7 +533,7 @@ bibliography commands.
 \end_layout
 
 \begin_layout Enumerate
-Run \SpecialCharNoPassThru LaTeX
+Run \SpecialChar LaTeX
  on your new file before submitting.
  AGU does not want a .bib or a .bbl file, but asks that you copy in the contents
  of your .bbl file here.
@@ -562,13 +556,7 @@ options "agu"
 \end_layout
 
 \begin_layout Section*
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
-\threehyphens
+———————
 \end_layout
 
 \begin_layout Standard
@@ -595,8 +583,7 @@ IEEE Trans.
 \shape italic
 23
 \shape default
-, 648\twohyphens
-650.
+, 648–650.
 \end_layout
 
 \begin_layout Bibliography
@@ -619,8 +606,7 @@ IEEE Trans.
 \shape italic
 23
 \shape default
-, 648\twohyphens
-650.
+, 648–650.
 \end_layout
 
 \begin_layout Standard
@@ -722,7 +708,7 @@ above
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>

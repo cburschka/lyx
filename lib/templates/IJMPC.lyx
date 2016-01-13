@@ -77,13 +77,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialCharNoPassThru LyX
+This is a template \SpecialChar LyX
  file for articles to be submitted to the International
  Journal of Modern Physics section C (IJMPC).
- How to install the IJMPC \SpecialCharNoPassThru LaTeX
- class to your \SpecialCharNoPassThru LaTeX
- system is explained
- in 
+ How to install the IJMPC \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -381,6 +380,7 @@ item one
 item two
 \begin_inset Separator parbreak
 \end_inset
+
 
 \end_layout
 
@@ -687,7 +687,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
