@@ -1,7 +1,7 @@
 echo off
 
-set PATH=C:\Qt\Qt5.6.0\5.6\mingw492_32\bin;%PATH%
-set PATH=C:\Qt\Qt5.6.0\Tools\mingw492_32\bin;%PATH%
+set PATH=C:\Qt\Qt5.5.1\5.5\mingw492_32\bin;%PATH%
+set PATH=C:\Qt\Qt5.5.1\Tools\mingw492_32\bin;%PATH%
 
 set LYX_SOURCE=%~DP0..\..
 set LYX_BUILD=%LYX_SOURCE%\..\compile-mingw
