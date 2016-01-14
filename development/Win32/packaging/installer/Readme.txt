@@ -2,9 +2,9 @@
 
 1. extract the source zip-file to e.g. the path "C:\LyX-Installer"
 2. open the file settings.nsh with a text editor
-   and adapt there the following paths to the one on your PC:
+   and adapt there the following paths to the one on your PC, e.g.:
  !define FILES_LYX "C:\LyX-Installer\LyXPackage\LyX"
- !define FILES_DEPS "C:\LyX-Installer\LyX2.0x\lyx-windows-deps-msvc2008"
+ !define FILES_DEPS "C:\LyX-Installer\LyX2.1x\lyx-windows-deps-msvc2010"
  !define FILES_QT "C:\LyX-Installer\LyXPackage\LyX"
 3. install the latest version 2.x of NSIS (http://nsis.sourceforge.net/Download)
 4. install the NSIS Large Strings extension (http://nsis.sourceforge.net/Special_Builds)
