@@ -49,21 +49,20 @@ Lists of files to include in the installer
 
 !macroend
 
+!macro FileListQtPlatforms COMMAND DIRECTORY
+
+  ${FILE}qminimal.dll"
+  ${FILE}qoffscreen.dll"
+  ${FILE}qwindows.dll"
+
+!macroend
+
 !macro FileListMSVC COMMAND DIRECTORY
 
   # Manifest not needed for 2010
   ${FILE}msvcr100.dll"
   ${FILE}msvcp100.dll"
   
-!macroend
-
-!macro FileListDll COMMAND DIRECTORY
-
-  ${FILE}iconv.dll"
-  ${FILE}intl.dll"
-  ${FILE}libhunspell.dll"
-  ${FILE}zlibwapi.dll"
-
 !macroend
 
 !macro FileListNetpbmBin COMMAND DIRECTORY
@@ -105,13 +104,6 @@ Lists of files to include in the installer
   ${FILE}math.css"
   ${FILE}math2html.py"
   ${FILE}toc.css"
-  
-!macroend
-
-!macro FileListPDFToolsBin COMMAND DIRECTORY
-
-  ${FILE}pdfopen.exe"
-  ${FILE}pdfclose.exe"
   
 !macroend
 

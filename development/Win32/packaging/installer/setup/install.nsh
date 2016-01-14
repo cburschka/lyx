@@ -47,20 +47,20 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR\bin"
   !insertmacro FileListLyXBin File "${FILES_LYX}\bin\"
   !insertmacro FileListQtBin File "${FILES_QT}\bin\"
-  !insertmacro FileListDll File "${FILES_DEPS}\bin\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   !insertmacro FileListNetpbmBin File "${FILES_NETPBM}\"
   !insertmacro FileListDTLBin File "${FILES_DTL}\"
   !insertmacro FileListRsvg File "${FILES_RSVG}\"
   !insertmacro FileListDvipostBin File "${FILES_DVIPOST}\"
   !insertmacro FileListPDFViewBin File "${FILES_PDFVIEW}\"
-  !insertmacro FileListPDFToolsBin File "${FILES_PDFTOOLS}\"
   
   # Qt plugin DLLs
   SetOutPath "$INSTDIR\bin\imageformats"
   !insertmacro FileListQtImageformats File "${FILES_QT}\plugins\imageformats\"
   SetOutPath "$INSTDIR\bin\iconengines"
   !insertmacro FileListQtIconengines File "${FILES_QT}\plugins\iconengines\"
+  SetOutPath "$INSTDIR\bin\platforms"
+  !insertmacro FileListQtPlatforms File "${FILES_QT}\plugins\platforms\"
   
   # Resources
   SetOutPath "$INSTDIR"
