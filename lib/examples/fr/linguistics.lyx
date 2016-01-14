@@ -19,8 +19,8 @@ linguistics
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "lmodern" "FreeSerif"
-\font_sans "default" "FreeSans"
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
@@ -203,9 +203,7 @@ key "covington"
 \end_inset
 
 : ceci est le paquetage de base utilisé pour les exemples numérotés et les
- gloses
-\lang english
-:
+ gloses:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -214,8 +212,6 @@ key "covington"
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 installé sur votre système? 
 \begin_inset Info
 type  "package"
@@ -264,9 +260,7 @@ ListePuces
 \emph on
 Description
 \emph default
-)
-\lang english
-:
+):
 \begin_inset Separator parbreak
 \end_inset
 
@@ -275,8 +269,6 @@ Description
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 installé sur votre système? 
 \begin_inset Info
 type  "package"
@@ -309,9 +301,7 @@ signification
 \emph default
 .
  Le paquetage fournit des marques de citation contextuelles, en fonction
- du langage utilisé
-\lang english
-:
+ du langage utilisé:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -320,8 +310,6 @@ signification
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 installé sur votre système? 
 \begin_inset Info
 type  "package"
@@ -351,8 +339,6 @@ key "float"
 : nécessaire pour les tableaux flottants issus de la théorie de l'optimalité
  et la liste des flottants; ce paquetage doit faire partie de n'importe
  quelle distribution \SpecialChar LaTeX
-
-\lang english
 :
 \begin_inset Separator parbreak
 \end_inset
@@ -362,8 +348,6 @@ key "float"
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 installé sur votre système? 
 \begin_inset Info
 type  "package"
@@ -377,7 +361,6 @@ arg   "enumitem"
 \begin_layout Enumerate
 
 \emph on
-\lang english
 forest.sty
 \emph default
  
@@ -387,11 +370,7 @@ key "forest"
 
 \end_inset
 
-:
-\lang french
- nécessaire pour créer les structures arborescentes
-\lang english
-:
+: nécessaire pour créer les structures arborescentes:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -400,8 +379,6 @@ key "forest"
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 installé sur votre système? 
 \begin_inset Info
 type  "package"
@@ -559,26 +536,18 @@ Voici un exemple simple pour une glose standard:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Glosse
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 C'est     un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 This is
 \end_layout
 
@@ -588,14 +557,10 @@ This is
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes els
 \end_inset
 
@@ -643,26 +608,18 @@ Nous pouvons aussi créer une glose de trois lignes:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Tri-Glosse
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 C'est      un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 Das ist
 \end_layout
 
@@ -672,14 +629,10 @@ Das ist
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 This is
 \end_layout
 
@@ -689,14 +642,10 @@ This is
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes els
 \end_inset
 
@@ -732,33 +681,23 @@ exemple numéroté
 \end_layout
 
 \begin_layout Numbered Example (multiline)
-
-\lang english
 \begin_inset Flex Tri-Glosse
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 My    hovercraft                 is 
 \begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 full of
 \end_layout
 
@@ -768,14 +707,10 @@ full of
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Quotes els
 \end_inset
 
@@ -1905,8 +1840,6 @@ key "tipa"
  de l'Association Phonétique Internationale, API) si vous utilisez \SpecialChar LaTeX
  ou PDF\SpecialChar LaTeX
 
-\lang english
-
 \begin_inset Foot
 status collapsed
 
@@ -1938,9 +1871,7 @@ Polices
 
 \end_inset
 
-
-\lang french
- .
+.
  En outre, si vous voulez afficher un aperçu des caractères sur le vif,
  il faut que la paquetage 
 \emph on
@@ -2024,8 +1955,6 @@ k ðɪs]
 \end_inset
 
 
-\lang english
-
 \begin_inset Foot
 status collapsed
 
@@ -2079,8 +2008,6 @@ Notez que si vous souhaitez insérer des diacritiques, ils doivent être saisis
 
 \end_inset
 
- 
-\lang french
 .
  Si 
 \emph on
@@ -2278,14 +2205,12 @@ key "forest"
 \end_inset
 
 Le paquetage forest: 
-\lang english
-
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-https://www.ctan.org/tex-archive/graphics/pgf/contrib/forest/
+http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest
 \end_layout
 
 \end_inset
@@ -2300,9 +2225,12 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialChar LyX
- for Linguistic
- Papers.
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: 
+\lang english
+Using \SpecialChar LyX
+ for Linguistic Papers
+\lang french
+.
  
 \begin_inset Flex URL
 status collapsed
@@ -2345,7 +2273,7 @@ key "tipa"
 
 \end_inset
 
-Le paquetage tipa package et ses polices: 
+Le paquetage tipa et ses polices: 
 \begin_inset Flex URL
 status collapsed
 
