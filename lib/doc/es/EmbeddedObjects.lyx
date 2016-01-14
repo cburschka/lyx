@@ -154,7 +154,7 @@
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -17097,13 +17097,13 @@ white
 \end_layout
 
 \begin_layout Standard
-Si añades las opciones
+Si añades la opción
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-usenames,dvipsnames
+dvipsnames
 \end_layout
 
 \begin_layout Standard
@@ -37946,7 +37946,7 @@ Día-Mes-Año.
  A continuación hay una fecha insertada como material externo: 
 \begin_inset External
 	template Date
-	filename es
+	filename .
 
 \end_inset
 

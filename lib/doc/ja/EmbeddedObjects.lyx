@@ -164,7 +164,7 @@
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -16632,7 +16632,7 @@ white
 \begin_layout Standard
 
 \series bold
-usenames,dvipsnames
+dvipsnames
 \end_layout
 
 \begin_layout Standard
@@ -19836,11 +19836,9 @@ reference "tab:表セル"
 \end_inset
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
-	scale 85
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular align-decimal"
 \end_inset
 
 を押すか、表設定中で揃えを
@@ -34316,11 +34314,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34382,11 +34378,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34463,11 +34457,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34529,11 +34521,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34567,11 +34557,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34672,11 +34660,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34734,11 +34720,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34830,11 +34814,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -34925,11 +34907,9 @@ reference "sec:折返しフロート"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
-	scale 70
-	scaleBeforeRotation
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
 \end_inset
 
 
@@ -35795,7 +35775,7 @@ target "http://en.wikipedia.org/wiki/XBoard"
 の書式で日付を挿入します。右は、外部素材として挿入された日付です：
 \begin_inset External
 	template Date
-	filename ../../trunk/lib/trunk/lib/doc/ja
+	filename .
 
 \end_inset
 
@@ -38449,15 +38429,7 @@ Postscript
 \family sans
 表示
 \family default
-メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-を使用することでPostScriptとして表示させることができます。
+メニューかツールバーボタンを使用することでPostScriptとして表示させることができます。
 \end_layout
 
 \begin_layout Section
@@ -38594,15 +38566,7 @@ dvipdfm
 \family sans
 表示
 \family default
-メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
-	scale 85
-	scaleBeforeRotation
-
-\end_inset
-
-（これは
+メニューかツールバーボタン（これは
 \family sans
 PDF
 \begin_inset space ~

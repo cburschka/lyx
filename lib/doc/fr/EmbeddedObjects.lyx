@@ -156,7 +156,7 @@
 \frenchbsetup{StandardLayout}
 }{}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -17460,13 +17460,13 @@ white
 \end_layout
 
 \begin_layout Standard
-Si vous ajoutez les options
+Si vous ajoutez l'option
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-usenames,dvipsnames
+dvipsname
 \end_layout
 
 \begin_layout Standard
@@ -38945,7 +38945,7 @@ Date Ce modèle insère la date sous la forme
 Jour-Mois-Année
 \emph default
 .
- Voici un exemple de date insérée comme objet externe :: 
+ Voici un exemple de date insérée comme objet externe : 
 \begin_inset External
 	template Date
 	filename .
@@ -40838,6 +40838,13 @@ reference "lst:listing-fichier"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
@@ -41989,7 +41996,7 @@ langage de programmation
 \end_inset
 
  ; vous pouvez en effet faire des calculs  ou tracer des diagrammes ou des
- images
+ images.
 \begin_inset Foot
 status collapsed
 
@@ -42012,7 +42019,6 @@ key "pstricks"
 
 \end_inset
 
-.
  En partie à cause de toutes ces possibilités un fichier PostScript est
  souvent plus gros qu'un PDF.
 \end_layout

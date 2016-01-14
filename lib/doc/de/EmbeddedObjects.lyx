@@ -6,8 +6,8 @@
 \origin /systemlyxdir/doc/de/
 \textclass scrbook
 \begin_preamble
-% Setzt den Link fuer Sprünge zu Gleitabbildungen
-% auf den Anfang des Gelitobjekts und nicht aufs Ende
+% Setzt den Link für Sprünge zu Gleitabbildungen
+% auf den Anfang des Gleitobjekts und nicht aufs Ende
 \usepackage[figure]{hypcap}
 
 % Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
@@ -153,7 +153,7 @@
  \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 }{}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -17391,13 +17391,13 @@ rot, grün, gelb, blau, türkis, purpurrot, schwarz und weiß)
 \end_layout
 
 \begin_layout Standard
-Wenn Sie die Optionen
+Wenn Sie die Option
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-usenames,dvipsnames
+dvipsnames
 \end_layout
 
 \begin_layout Standard
@@ -38385,7 +38385,7 @@ Tag-Monat-Jahr
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -40143,7 +40143,7 @@ reference "lst:Datei-Listing"
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
-lstparams "breaklines=true,caption={Zeilen 10 - 15 dieser LyX-Datei},extendedchars=true,firstline=10,label={lst:Datei-Listing},language={[LaTeX]TeX},lastline=15"
+lstparams "breaklines=true,extendedchars=true,firstline=10,language={[LaTeX]TeX},lastline=15,literate={{Ã€}{{\\\"a}}1 {Ã¶}{{\\\"o}}1 {ÃŒ}{{\\\"u}}1},caption={Zeilen 10 - 15 dieser LyX-Datei},label={lst:Datei-Listing}"
 
 \end_inset
 
@@ -41236,7 +41236,7 @@ Programmiersprache
 \end_inset
 
  angesehen werden.
- Man kann mit ihr rechnen und Diagramme und Bilder zeichnen
+ Man kann mit ihr rechnen und Diagramme und Bilder zeichnen.
 \begin_inset Foot
 status collapsed
 
@@ -41265,7 +41265,6 @@ key "latex-praxisbuch"
 
 \end_inset
 
-.
  Wegen dieser Möglichkeiten sind PostScript-Dateien oft größer als PDF-Dateien.
 \end_layout
 

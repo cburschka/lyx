@@ -150,7 +150,7 @@
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -17240,13 +17240,13 @@ white
 \end_layout
 
 \begin_layout Standard
-If you add the options
+If you add the option
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-usenames,dvipsnames
+dvipsnames
 \end_layout
 
 \begin_layout Standard
@@ -38220,7 +38220,7 @@ Day-Month-Year
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Remove the protected space when bug 4398 is fixed!
@@ -41056,7 +41056,7 @@ programming language
 \begin_inset Quotes erd
 \end_inset
 
-; you can calculate with it and draw diagrams and images
+; you can calculate with it and draw diagrams and images.
 \begin_inset Foot
 status collapsed
 
@@ -41079,7 +41079,6 @@ key "pstricks"
 
 \end_inset
 
-.
  Due to this ability, the files are often bigger than PDFs.
 \end_layout
 
