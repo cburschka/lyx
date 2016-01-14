@@ -1117,11 +1117,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				docstring const layout = par.layout().name();
 				DocumentClass const & tc = bv->buffer().params().documentClass();
 				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
-				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 				lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 			} else {
-				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 				breakParagraph(cur);
 			}
 			Font const f(inherit_font, cur.current_font.language());
