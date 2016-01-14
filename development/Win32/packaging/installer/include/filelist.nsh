@@ -138,37 +138,3 @@ Lists of files to include in the installer
   ${FILE}wasy10.ttf"
   
 !macroend
-
-!macro FileListImageMagick COMMAND DIRECTORY
-
-# FIXME: simply copy the whole directory!
-
-  ${FILE}coder.xml"
-  ${FILE}colors.xml"
-  ${FILE}configure.xml"
-  ${FILE}convert.exe"
-  ${FILE}delegates.xml"
-  ${FILE}english.xml"
-  ${FILE}ImageMagick.rdf"
-  ${FILE}locale.xml"
-  ${FILE}log.xml"
-  ${FILE}magic.xml"
-  ${FILE}policy.xml"
-  ${FILE}sRGB.icm"
-  ${FILE}thresholds.xml"
-  ${FILE}type-ghostscript.xml"
-  ${FILE}type.xml"
-  ${FILE}X11.dll"
-  ${FILE}Xext.dll"
-
-!macroend
-
-!macro FileListGhostscript COMMAND DIRECTORY
-
-# FIXME: simply copy the whole directory!
-
-  ${FILE}gswin32.exe"
-  ${FILE}gswin32c.exe"
-  ${FILE}gsdll32.dll"
-
-!macroend
