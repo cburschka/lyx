@@ -8501,7 +8501,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
  Un ejemplo:
 \end_layout
 
-\begin_layout Verbatim
+\begin_layout Verbatim*
 Esto es entorno Literal*.
 \end_layout
 
@@ -10693,7 +10693,7 @@ Enumeración*
 \begin_layout Subsection
 Anidaciones separadas
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Anidación
@@ -17839,7 +17839,7 @@ Logotipos \SpecialChar LyX
  y \SpecialChar LaTeX
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
@@ -32091,8 +32091,6 @@ Diseño de página con encabezado y pie personalizados
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
