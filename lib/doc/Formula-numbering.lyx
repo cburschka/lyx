@@ -297,7 +297,7 @@ height "1pt"
 
 To create this example, first a counter must be defined for the Roman numbered
  formulas.
- To do this the following is inserted to the \SpecialCharNoPassThru LaTeX
+ To do this the following is inserted to the \SpecialChar LaTeX
 -preamble:
 \end_layout
 
@@ -433,7 +433,7 @@ Every formula will be by default numbered Arabic.
 \backslash
 setrom
 \series default
- is inserted in \SpecialCharNoPassThru TeX
+ is inserted in \SpecialChar TeX
 -mode.
  With the command 
 \series bold
