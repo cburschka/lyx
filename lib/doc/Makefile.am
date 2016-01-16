@@ -124,6 +124,7 @@ dist_esclipartdoc_DATA = \
 	es/clipart/CuadroMinipagQt4.png \
 	es/clipart/DocumentoHijoQt4.png \
 	es/clipart/es_ERT.png \
+	es/clipart/es_StandardToolbar.png \
 	es/clipart/es_ToolbarEnvBox.png \
 	es/clipart/etiquetaQt4.png \
 	es/clipart/flotanteQt4.png \

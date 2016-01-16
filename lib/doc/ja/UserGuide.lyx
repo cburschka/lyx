@@ -15438,7 +15438,7 @@ arg   "footnote-insert"
 
 を使用して脚註を挿入すると、
 \begin_inset Graphics
-	filename clipart/footnoteQt4.png
+	filename clipart/footnote.png
 	scale 80
 
 \end_inset
@@ -18974,7 +18974,7 @@ status collapsed
 文書を読みやすくするために、ボックスラベルを左クリ
 ックすれば、フロートボックスを開いたり閉じたりすることができます。閉じたフロートボックスは
 \begin_inset Graphics
-	filename clipart/floatQt4.png
+	filename clipart/float.png
 
 \end_inset
 
@@ -22492,7 +22492,7 @@ arg   "label-insert"
 
 を押して、第2項目にラベルを挿入します。
 \begin_inset Graphics
-	filename clipart/labelQt4.png
+	filename clipart/label.png
 	scale 85
 
 \end_inset
@@ -30041,6 +30041,42 @@ LyXHTML
 \end_layout
 
 \begin_layout Description
+MS
+\begin_inset space ~
+\end_inset
+
+Word
+\begin_inset space ~
+\end_inset
+
+Office
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+XML Office Open XML 
+\lang english
+file, to be opened with 
+\family sans
+Microsoft Word
+\family default
+.
+ For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used.
+ 
+\family typewriter
+Pandoc
+\family default
+ is a third-party product and may not work in all cases.
+\end_layout
+
+\begin_layout Description
 
 \family sans
 NoWeb
@@ -30053,11 +30089,11 @@ NoWeb
 \end_layout
 
 \begin_layout Description
-
-\family sans
 OpenDocument
-\family default
- OpenDocument形式のテキストファイル。
+\begin_inset space ~
+\end_inset
+
+(Pandoc) OpenDocument形式のテキストファイル。
 \family sans
 LibreOffice
 \family default
@@ -30073,7 +30109,38 @@ KOffice
 \family sans
 Abiword
 \family default
-などで開くことが可能(OpenDocument変換子は第三者製であり、すべての場合に機能するとは限りません)。
+などで開くことが可能
+\lang english
+For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used.
+ 
+\family typewriter
+Pandoc
+\family default
+ is a third-party product and may not work in all cases.
+\end_layout
+
+\begin_layout Description
+OpenDocument
+\begin_inset space ~
+\end_inset
+
+(tex4ht) OpenDocument
+\lang english
+ file.
+ For the conversion the program 
+\family typewriter
+tex4ht
+\family default
+ is used.
+ 
+\family typewriter
+tex4ht
+\family default
+ is a third-party product and may not work in all cases.
 \end_layout
 
 \begin_layout Description
@@ -31000,6 +31067,16 @@ latexはつけじ@\SpecialChar LaTeX
 用途別説明書
 \family default
 )に説明があります。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Logos Inserts the logos of the programs \SpecialChar LyX
+, \SpecialChar TeX
+, \SpecialChar LaTeX
+ and \SpecialChar LaTeX2e
+.
 \end_layout
 
 \begin_layout Subsection
@@ -32669,36 +32746,6 @@ arg   "buffer-write"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "dialog-show print"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-ファイル\SpecialChar menuseparator
-印刷
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\begin_inset Info
-type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
@@ -32715,6 +32762,33 @@ arg   "dialog-show spellchecker"
 \family sans
 ツール\SpecialChar menuseparator
 スペルチェック
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "spelling-continuously"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+連続スペルチェック
 \end_layout
 
 \end_inset

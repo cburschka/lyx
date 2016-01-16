@@ -19377,7 +19377,7 @@ pied
 
  qui ressemble à ceci : 
 \begin_inset Graphics
-	filename clipart/footnoteQt4.png
+	filename clipart/footnote.png
 	scale 80
 
 \end_inset
@@ -23572,7 +23572,7 @@ Flottants ! Légendes
  sur la boîte grise qui se trouve en haut à gauche de celui-ci.
  Une boîte de flottant fermée ressemble à ceci : 
 \begin_inset Graphics
-	filename ../clipart/floatQt4.png
+	filename ../clipart/float.png
 	scale 80
 
 \end_inset
@@ -27709,7 +27709,7 @@ arg   "label-insert"
  de la palette.
  Une boîte grise de ce genre 
 \begin_inset Graphics
-	filename ../clipart/labelQt4.png
+	filename ../clipart/label.png
 	scale 85
 
 \end_inset
@@ -36897,7 +36897,47 @@ y
 
 \begin_layout Description
 LyXHTML format HTML créé par le moteur interne de \SpecialChar LyX
-; 
+;
+\end_layout
+
+\begin_layout Description
+MS
+\begin_inset space ~
+\end_inset
+
+Word
+\begin_inset space ~
+\end_inset
+
+Office
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+XML fichier au format Office Open XML,
+\lang english
+ to be opened with 
+\family sans
+Microsoft Word
+\family default
+.
+ For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used
+\lang french
+.
+ 
+\family typewriter
+Pandoc
+\family default
+ est une application indépendante de \SpecialChar LyX
+ qui peut ne pas fonctionner dans tous
+ les cas.
 \end_layout
 
 \begin_layout Description
@@ -36910,7 +36950,11 @@ NoWeb
 \end_layout
 
 \begin_layout Description
-OpenDocument fichier au format OpenDocument compatible avec les applications
+OpenDocument
+\begin_inset space ~
+\end_inset
+
+(Pandoc) fichier au format OpenDocument compatible avec les applications
  
 \family sans
 LibreOffice, OpenOffice
@@ -36923,10 +36967,47 @@ KOffice
 \family sans
 Abiword
 \family default
-, etc.
- (le convertisseur OpenDocument est une application indépendante de \SpecialChar LyX
- qui
- peut ne pas fonctionner dans tous les cas);
+, etc..
+ 
+\lang english
+For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used
+\lang french
+.
+ 
+\family typewriter
+Pandoc
+\family default
+ est une application indépendante de \SpecialChar LyX
+ qui peut ne pas fonctionner dans tous
+ les cas.
+\end_layout
+
+\begin_layout Description
+OpenDocument
+\begin_inset space ~
+\end_inset
+
+(tex4ht) fichier au format OpenDocument.
+ 
+\lang english
+For the conversion the program 
+\family typewriter
+tex4ht
+\family default
+ is used
+\lang french
+.
+ 
+\family typewriter
+tex4ht
+\family default
+ est une application indépendante de \SpecialChar LyX
+ qui peut ne pas fonctionner dans tous
+ les cas.
 \end_layout
 
 \begin_layout Description
@@ -38049,6 +38130,16 @@ Aide\SpecialChar menuseparator
 Manuels spécifiques
 \family default
 ).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Logos Inserts the logos of the programs \SpecialChar LyX
+, \SpecialChar TeX
+, \SpecialChar LaTeX
+ and \SpecialChar LaTeX2e
+.
 \end_layout
 
 \begin_layout Subsection
@@ -39875,8 +39966,7 @@ pour voir le chemin du fichier en entier.
 \end_layout
 
 \begin_layout Subsection
-Comparer\SpecialChar ldots
-
+Comparer
 \begin_inset Index idx
 status collapsed
 
@@ -40313,36 +40403,6 @@ Enregistrer
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "dialog-show print"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Fichier\SpecialChar menuseparator
-Imprimer
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\begin_inset Info
-type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
@@ -40363,6 +40423,33 @@ Correcteur
 \end_inset
 
 orthographique
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "spelling-continuously"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Correction orthographique à la volée
 \end_layout
 
 \end_inset

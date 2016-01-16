@@ -1135,7 +1135,7 @@ especial
 
 PDF
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 OS X sólo
@@ -18361,7 +18361,7 @@ verás un recuadro como este
 \bar default
 : 
 \begin_inset Graphics
-	filename clipart/notapieQt4.png
+	filename clipart/notapie.png
 	scale 85
 	groupId botonesbh
 
@@ -22610,7 +22610,7 @@ Flotantes ! Leyenda
  del flotante haciendo clic izquierdo sobre el recuadro.
  Un recuadro se muestra así: 
 \begin_inset Graphics
-	filename clipart/flotanteQt4.png
+	filename clipart/flotante.png
 	scale 85
 	groupId botonesbh
 
@@ -26932,7 +26932,7 @@ Aceptar
 \family default
  se inserta un cuadro gris parecido a este: 
 \begin_inset Graphics
-	filename clipart/etiquetaQt4.png
+	filename clipart/etiqueta.png
 	scale 85
 	groupId botonesbh
 
@@ -33854,7 +33854,7 @@ comentarios Si se marca, se revisa también el contenido no imprimible.
 \begin_layout Section
 Diccionarios de sinónimos
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diccionarios de sinónimos
@@ -35593,6 +35593,44 @@ LyXHTML formato HTML, usando un ingenio XHTML interno de \SpecialChar LyX
 \end_layout
 
 \begin_layout Description
+MS
+\begin_inset space ~
+\end_inset
+
+Word
+\begin_inset space ~
+\end_inset
+
+Office
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+XML archivo de texto en formato Office Open XML, 
+\lang english
+to be opened with 
+\family sans
+Microsoft Word
+\family default
+.
+ For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used
+\lang spanish
+.
+ 
+\family typewriter
+Pandoc
+\family default
+ es un programa externo que no siempre funciona.
+\end_layout
+
+\begin_layout Description
 NoWeb archivo de texto con código en el formato del lenguaje de programación
  literaria
 \family typewriter
@@ -35600,13 +35638,52 @@ NoWeb archivo de texto con código en el formato del lenguaje de programación
 \end_layout
 
 \begin_layout Description
-OpenDocument archivo de texto en formato OpenDocument, que puede abrirse
- con 
+OpenDocument
+\begin_inset space ~
+\end_inset
+
+(Pandoc) archivo de texto en formato OpenDocument, que puede abrirse con
+ 
 \family sans
 LibreOffice, OpenOffice, KOffice, Abiword
 \family default
-, etc.
- (el convertidor a OpenDocument es un programa externo que no siempre funciona).
+, etc..
+ 
+\lang english
+For the conversion the program 
+\family typewriter
+Pandoc
+\family default
+ is used
+\lang spanish
+.
+ 
+\family typewriter
+Pandoc
+\family default
+ es un programa externo que no siempre funciona.
+\end_layout
+
+\begin_layout Description
+OpenDocument
+\begin_inset space ~
+\end_inset
+
+(tex4ht) archivo de texto en formato OpenDocument.
+ 
+\lang english
+For the conversion the program 
+\family typewriter
+tex4ht
+\family default
+ is used
+\lang spanish
+.
+ 
+\family typewriter
+tex4ht
+\family default
+ es un programa externo que no siempre funciona.
 \end_layout
 
 \begin_layout Description
@@ -36707,6 +36784,16 @@ específicos
 ) hay más información sobre este asunto.
 \end_layout
 
+\begin_layout Description
+
+\lang english
+Logos Inserts the logos of the programs \SpecialChar LyX
+, \SpecialChar TeX
+, \SpecialChar LaTeX
+ and \SpecialChar LaTeX2e
+.
+\end_layout
+
 \begin_layout Subsection
 Formato
 \end_layout
@@ -37487,7 +37574,7 @@ reference "sec:URL"
 \end_layout
 
 \begin_layout Subsection
-Hiperenlaces
+Hiperenlace
 \end_layout
 
 \begin_layout Standard
@@ -38790,7 +38877,7 @@ Barras de herramientas ! Normal
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/StandardToolbar.png
+	filename clipart/es_StandardToolbar.png
 	width 100col%
 
 \end_inset
@@ -38999,36 +39086,6 @@ Guardar
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "dialog-show print"
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Archivo\SpecialChar menuseparator
-Imprimir
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="2.5mm">
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-\begin_inset Info
-type  "icon"
 arg   "dialog-show spellchecker"
 \end_inset
 
@@ -39045,6 +39102,33 @@ arg   "dialog-show spellchecker"
 \family sans
 Herramientas\SpecialChar menuseparator
 Corrector ortográfico
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="2.5mm">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+\begin_inset Info
+type  "icon"
+arg   "spelling-continuously"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Revisar la ortografía continuamente
 \end_layout
 
 \end_inset
@@ -42157,7 +42241,7 @@ Color ! Marcos sombreados
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Color ! Notas grises
