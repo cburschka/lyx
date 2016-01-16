@@ -1048,22 +1048,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
-			bool was_separator = cur.paragraph().isEnvSeparator(cur.pos());
 			if (cur.pos() == cur.paragraph().size())
 				// Par boundary, force full-screen update
 				singleParUpdate = false;
 			needsUpdate |= erase(cur);
 			cur.resetAnchor();
-			if (was_separator && cur.pos() == cur.paragraph().size()
-			    && (!cur.paragraph().layout().isEnvironment()
-				|| cur.paragraph().size() > 0)) {
-				// Force full-screen update
-				singleParUpdate = false;
-				needsUpdate |= erase(cur);
-				cur.resetAnchor();
-			}
-			// It is possible to make it a lot faster still
-			// just comment out the line below...
 		} else {
 			cutSelection(cur, true, false);
 			singleParUpdate = false;
