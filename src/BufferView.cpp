@@ -2512,8 +2512,11 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!do_selection && d->cursor_.inTexted())
+	if (!do_selection && d->cursor_.inTexted()) {
 		update |= checkDepm(cur, d->cursor_);
+		if (cur.pos() && cur.paragraph().isEnvSeparator(cur.pos() - 1))
+		    cur.posBackward();
+	}
 
 	if (!do_selection)
 		d->cursor_.resetAnchor();
