@@ -87,8 +87,8 @@ declipartdocdir = $(dedocdir)/clipart
 dist_declipartdoc_DATA = \
 	de/clipart/ERT.png \
 	de/clipart/ExternesMaterialQt4.png \
-	de/clipart/FussnoteQt4.png \
-	de/clipart/GleitobjektQt4.png \
+	de/clipart/Fussnote.png \
+	de/clipart/Gleitobjekt.png \
 	de/clipart/GrauschriftNotizQt4.png \
 	de/clipart/KommentarQt4.png \
 	de/clipart/LyXNotizQt4.png \
@@ -125,12 +125,12 @@ dist_esclipartdoc_DATA = \
 	es/clipart/es_ERT.png \
 	es/clipart/es_StandardToolbar.png \
 	es/clipart/es_ToolbarEnvBox.png \
-	es/clipart/etiquetaQt4.png \
-	es/clipart/flotanteQt4.png \
+	es/clipart/etiqueta.png \
+	es/clipart/flotante.png \
 	es/clipart/GrisNotaImagenQt4.png \
 	es/clipart/MaterialExternoQt4.png \
 	es/clipart/NotaLyXImagenQt4.png \
-	es/clipart/notapieQt4.png \
+	es/clipart/notapie.png \
 	es/clipart/referenciaQt4.png \
 	es/clipart/Resumen.pdf
 
@@ -162,9 +162,9 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/ERT.png \
 	fr/clipart/GreyedOutNoteImageQt4.png \
 	fr/clipart/LyXNoteImageQt4.png \
-	fr/clipart/floatQt4.png \
-	fr/clipart/footnoteQt4.png \
-	fr/clipart/labelQt4.png
+	fr/clipart/float.png \
+	fr/clipart/footnote.png \
+	fr/clipart/label.png
 
 gldocdir = $(docdir)/gl
 dist_gldoc_DATA = \
