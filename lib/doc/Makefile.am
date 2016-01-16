@@ -40,11 +40,10 @@ dist_clipartdoc_DATA = \
 	clipart/ERT.png \
 	clipart/ExternalMaterialQt4.png \
 	clipart/ExtraToolbar.png \
-	clipart/floatQt4.png \
-	clipart/footnoteQt4.png \
+	clipart/float.png \
+	clipart/footnote.png \
 	clipart/GreyedOutNoteImageQt4.png \
-	clipart/labelQt4.png \
-	clipart/LaTeX.png \
+	clipart/label.png \
 	clipart/LyXNoteImageQt4.png \
 	clipart/macrobox.png \
 	clipart/MacroToolbar.png \
@@ -226,10 +225,10 @@ dist_jaclipartdoc_DATA = \
 	ja/clipart/CommentNoteImageQt4.png \
 	ja/clipart/ERT.png \
 	ja/clipart/ExternalMaterialQt4.png \
-	ja/clipart/floatQt4.png \
-	ja/clipart/footnoteQt4.png \
+	ja/clipart/float.png \
+	ja/clipart/footnote.png \
 	ja/clipart/GreyedOutNoteImageQt4.png \
-	ja/clipart/labelQt4.png \
+	ja/clipart/label.png \
 	ja/clipart/LyXNoteImageQt4.png \
 	ja/clipart/macrobox.png \
 	ja/clipart/referenceQt4.png \
@@ -286,7 +285,7 @@ dist_ukdoc_DATA = \
 
 ukclipartdocdir = $(ukdocdir)/clipart
 dist_ukclipartdoc_DATA = \
-	uk/clipart/FootnoteQT4.png
+	uk/clipart/Footnote.png
 
 zhCNdocdir = $(docdir)/zh_CN
 dist_zhCNdoc_DATA = \
