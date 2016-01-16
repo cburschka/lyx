@@ -8167,12 +8167,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8185,6 +8187,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8208,6 +8211,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -17234,7 +17238,8 @@ name "subsec:LyX's-Proper-Names"
 Via 
 \family sans
 Insert\SpecialChar menuseparator
-Special Characters
+Special Characters\SpecialChar menuseparator
+Logos
 \family default
 , \SpecialChar LyX
  provides the following program logos with special formatting:
@@ -17254,7 +17259,7 @@ Special Characters
 \begin_layout Description
 \SpecialChar LaTeX
  The \SpecialChar TeX
- macro colletion used by \SpecialChar LyX
+ macro collection used by \SpecialChar LyX
 .
 \end_layout
 
@@ -26039,7 +26044,7 @@ arg   "dialog-show-new-inset ref"
 .
  A gray cross-reference box like this: 
 \begin_inset Graphics
-	filename clipart/referenceQt4.png
+	filename clipart/reference.png
 	scale 85
 
 \end_inset

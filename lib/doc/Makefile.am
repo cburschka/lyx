@@ -32,23 +32,23 @@ dist_clipartdoc_DATA = \
 	clipart/mobius.eps \
 	clipart/platypus.eps \
 	clipart/Abstract.pdf \
-	clipart/BoxInsetDefaultQt4.png \
+	clipart/BoxInsetDefault.png \
 	clipart/ChangesToolbar.png \
-	clipart/ChildDocumentQt4.png \
-	clipart/CommentNoteImageQt4.png \
+	clipart/ChildDocument.png \
+	clipart/CommentNoteImage.png \
 	clipart/endnotes.pdf \
 	clipart/ERT.png \
-	clipart/ExternalMaterialQt4.png \
+	clipart/ExternalMaterial.png \
 	clipart/ExtraToolbar.png \
 	clipart/float.png \
 	clipart/footnote.png \
-	clipart/GreyedOutNoteImageQt4.png \
+	clipart/GreyedOutNoteImage.png \
 	clipart/label.png \
-	clipart/LyXNoteImageQt4.png \
+	clipart/LyXNoteImage.png \
 	clipart/macrobox.png \
 	clipart/MacroToolbar.png \
 	clipart/macrouse.png \
-	clipart/referenceQt4.png \
+	clipart/reference.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
 	clipart/ToolbarEnvBox.png \
@@ -86,7 +86,7 @@ dist_dedoc_DATA = \
 declipartdocdir = $(dedocdir)/clipart
 dist_declipartdoc_DATA = \
 	de/clipart/ERT.png \
-	de/clipart/ExternesMaterialQt4.png \
+	de/clipart/ExternesMaterial.png \
 	de/clipart/Fussnote.png \
 	de/clipart/Gleitobjekt.png \
 	de/clipart/GrauschriftNotizQt4.png \
@@ -94,7 +94,7 @@ dist_declipartdoc_DATA = \
 	de/clipart/LyXNotizQt4.png \
 	de/clipart/Marke.png \
 	de/clipart/Querverweis.png \
-	de/clipart/StandardBoxQt4.png \
+	de/clipart/StandardBox.png \
 	de/clipart/UnterdokumentQt4.png \
 	de/clipart/Zusammenfassung.pdf
 
@@ -120,18 +120,18 @@ dist_esdoc_DATA = \
 esclipartdocdir = $(esdocdir)/clipart
 dist_esclipartdoc_DATA = \
 	es/clipart/ComentNotaImagenQt4.png \
-	es/clipart/CuadroMinipagQt4.png \
-	es/clipart/DocumentoHijoQt4.png \
+	es/clipart/CuadroMinipagina.png \
+	es/clipart/DocumentoHijo.png \
 	es/clipart/es_ERT.png \
 	es/clipart/es_StandardToolbar.png \
 	es/clipart/es_ToolbarEnvBox.png \
 	es/clipart/etiqueta.png \
 	es/clipart/flotante.png \
 	es/clipart/GrisNotaImagenQt4.png \
-	es/clipart/MaterialExternoQt4.png \
+	es/clipart/MaterialExterno.png \
 	es/clipart/NotaLyXImagenQt4.png \
 	es/clipart/notapie.png \
-	es/clipart/referenciaQt4.png \
+	es/clipart/referencia.png \
 	es/clipart/Resumen.pdf
 
 eudocdir = $(docdir)/eu
@@ -156,7 +156,7 @@ dist_frdoc_DATA = \
 
 frclipartdocdir = $(frdocdir)/clipart
 dist_frclipartdoc_DATA = \
-	fr/clipart/BoxInsetDefaultQt4.png \
+	fr/clipart/BoxInsetDefault.png \
 	fr/clipart/ChildDocumentQt4.png \
 	fr/clipart/CommentNoteImageQt4.png \
 	fr/clipart/ERT.png \
@@ -220,18 +220,18 @@ dist_jadoc_DATA = \
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
-	ja/clipart/BoxInsetDefaultQt4.png \
+	ja/clipart/BoxInsetDefault.png \
 	ja/clipart/ChildDocumentQt4.png \
-	ja/clipart/CommentNoteImageQt4.png \
+	ja/clipart/CommentNoteImage.png \
 	ja/clipart/ERT.png \
-	ja/clipart/ExternalMaterialQt4.png \
+	ja/clipart/ExternalMaterial.png \
 	ja/clipart/float.png \
 	ja/clipart/footnote.png \
-	ja/clipart/GreyedOutNoteImageQt4.png \
+	ja/clipart/GreyedOutNoteImage.png \
 	ja/clipart/label.png \
-	ja/clipart/LyXNoteImageQt4.png \
+	ja/clipart/LyXNoteImage.png \
 	ja/clipart/macrobox.png \
-	ja/clipart/referenceQt4.png \
+	ja/clipart/reference.png \
 	ja/clipart/StandardToolbar.png \
 	ja/clipart/ToolbarEnvBox.png
 

@@ -7125,12 +7125,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7143,6 +7145,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7165,6 +7168,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -15005,7 +15009,15 @@ name "subsec:LyXの固有名称"
 挿入\SpecialChar menuseparator
 特殊文字
 \family default
-を使って、下記のプログラムロゴを特別な組版で出力することができます．
+を使って
+\family sans
+\SpecialChar menuseparator
+
+\lang english
+Logos
+\family default
+\lang japanese
+、下記のプログラムロゴを特別な組版で出力することができます．
 \end_layout
 
 \begin_layout Description
@@ -22529,7 +22541,7 @@ arg   "dialog-show-new-inset ref"
 
 を使用して、そのラベル名を参照してください。
 \begin_inset Graphics
-	filename clipart/referenceQt4.png
+	filename clipart/reference.png
 	scale 85
 
 \end_inset

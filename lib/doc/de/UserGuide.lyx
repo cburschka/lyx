@@ -8475,10 +8475,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8491,6 +8493,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8514,6 +8517,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -17889,9 +17893,10 @@ name "subsec:LyXs-Eigennamen"
 Unter 
 \family sans
 Einfügen\SpecialChar menuseparator
-Sonderzeichen
+Sonderzeichen\SpecialChar menuseparator
+Logos b
 \family default
- bietet \SpecialChar LyX
+ietet \SpecialChar LyX
  folgende Programmlogos mit spezifischer Formatierung:
 \end_layout
 
