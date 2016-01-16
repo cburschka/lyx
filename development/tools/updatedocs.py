@@ -14,6 +14,7 @@
 
 
 import os, re, string, sys, subprocess, shutil
+from gen_lfuns import main as genlfuns
 
 
 def convertdir(docdir, prefix, lyx2lyx, lyx, systemlyxdir):
@@ -50,6 +51,18 @@ def convertdir(docdir, prefix, lyx2lyx, lyx, systemlyxdir):
 def main(argv):
 
     toolsdir = os.path.dirname(argv[0])
+
+    # first generate LFUNs.lyx
+    lyxaction = os.path.abspath(os.path.join(toolsdir, "../../src/LyXAction.cpp"))
+    lfunspath = os.path.abspath(os.path.join(toolsdir, "../../lib/doc"))
+    lfuns = os.path.join(lfunspath, "LFUNs.lyx")
+    # genlfuns refuses to overwrite files
+    if os.path.exists(lfuns):
+        os.rename(lfuns, os.path.join(lfunspath, "LFUNs.lyx.old"))
+    # genlfuns requires a trailing slash
+    genlfuns(["genlfuns", lyxaction, lfunspath + os.sep])
+
+    # then update all docs
     lyx2lyx = os.path.abspath(os.path.join(toolsdir, "../../lib/lyx2lyx/lyx2lyx"))
     systemlyxdir = os.path.abspath(os.path.join(toolsdir, "../../lib"))
     if len(argv) > 1:
