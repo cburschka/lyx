@@ -30133,9 +30133,9 @@ Note
 
 
 \begin_inset Graphics
-	filename clipart/LyXNoteImageQt4.png
+	filename clipart/LyXNoteImage.png
 	display false
-	scale 65
+	scale 90
 	scaleBeforeRotation
 
 \end_inset
@@ -30176,9 +30176,9 @@ Exporter\SpecialChar menuseparator
 
 
 \begin_inset Graphics
-	filename clipart/CommentNoteImageQt4.png
+	filename clipart/CommentNoteImage.png
 	display false
-	scale 55
+	scale 90
 	scaleBeforeRotation
 
 \end_inset
@@ -30210,10 +30210,10 @@ Grisée Ce type de note apparaît à l'impression sous forme de texte grisé.
 
 
 \begin_inset Graphics
-	filename clipart/GreyedOutNoteImageQt4.png
+	filename clipart/GreyedOutNoteImage.png
 	lyxscale 80
 	display false
-	scale 55
+	scale 90
 	scaleBeforeRotation
 
 \end_inset
@@ -30251,19 +30251,8 @@ egroup}
 status open
 
 \begin_layout Plain Layout
-Le texte
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Ceci est un exemple de note de bas de page à l'intérieur d'une note en texte
+Le texte de ce commentaire apparaîtra à l'impression sous forme de texte
  grisé.
- 
-\end_layout
-
-\end_inset
-
- de ce commentaire apparaîtra à l'impression sous forme de texte grisé.
 \end_layout
 
 \end_inset
@@ -39611,7 +39600,7 @@ Les objets externes apparaissent dans \SpecialChar LyX
  : 
 \begin_inset Graphics
 	filename ../clipart/ExternalMaterial.png
-	scale 85
+	scale 75
 	scaleBeforeRotation
 
 \end_inset
@@ -39712,9 +39701,7 @@ Les documents inclus sont visualisés dans \SpecialChar LyX
  sous la forme d'une boîte comme
  celle-ci : 
 \begin_inset Graphics
-	filename clipart/ChildDocumentQt4.png
-	lyxscale 70
-	scale 60
+	filename clipart/SousDocument.png
 	scaleBeforeRotation
 
 \end_inset

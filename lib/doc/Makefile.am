@@ -157,14 +157,14 @@ dist_frdoc_DATA = \
 frclipartdocdir = $(frdocdir)/clipart
 dist_frclipartdoc_DATA = \
 	fr/clipart/BoxInsetDefault.png \
-	fr/clipart/ChildDocumentQt4.png \
-	fr/clipart/CommentNoteImageQt4.png \
+	fr/clipart/CommentNoteImage.png \
 	fr/clipart/ERT.png \
-	fr/clipart/GreyedOutNoteImageQt4.png \
-	fr/clipart/LyXNoteImageQt4.png \
 	fr/clipart/float.png \
 	fr/clipart/footnote.png \
-	fr/clipart/label.png
+	fr/clipart/GreyedOutNoteImage.png \
+	fr/clipart/label.png \
+	fr/clipart/LyXNoteImage.png \
+	fr/clipart/SousDocument.png
 
 gldocdir = $(docdir)/gl
 dist_gldoc_DATA = \
