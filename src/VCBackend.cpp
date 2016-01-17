@@ -495,6 +495,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
+	tmpf.refresh();
 	if (tmpf.isFileEmpty())
 		return false;
 
@@ -1119,6 +1120,7 @@ bool CVS::prepareFileRevision(string const & revis, string & f)
 	doVCCommandWithOutput("cvs update -p -r" + rev + ' '
 		+ getTarget(File),
 		FileName(owner_->filePath()), tmpf);
+	tmpf.refresh();
 	if (tmpf.isFileEmpty())
 		return false;
 
@@ -1784,6 +1786,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
+	tmpf.refresh();
 	if (tmpf.isFileEmpty())
 		return false;
 
@@ -1843,6 +1846,7 @@ FileName const GIT::findFile(FileName const & file)
 			quoteName(fname) + " > " +
 			quoteName(tmpf.toFilesystemEncoding()),
 			file.onlyPath());
+	tmpf.refresh();
 	bool found = !tmpf.isFileEmpty();
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
 	return found ? file : FileName();
@@ -2233,6 +2237,7 @@ bool GIT::prepareFileRevision(string const & revis, string & f)
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
+	tmpf.refresh();
 	if (tmpf.isFileEmpty())
 		return false;
 
