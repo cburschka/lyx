@@ -8167,14 +8167,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8187,7 +8185,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8211,7 +8208,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -12520,28 +12516,6 @@ Note:
 \series default
  In practice, some fonts might fail due to bad metrics and other font deficienci
 es; so you might have to experiment.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Xe\SpecialChar TeX
- and especially Lua\SpecialChar TeX
-, are still rather new and thus not as mature as tradition
-al \SpecialChar LaTeX
- or PDF\SpecialChar TeX
-.
 \end_layout
 
 \end_inset

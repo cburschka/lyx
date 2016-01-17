@@ -8674,14 +8674,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8694,7 +8692,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8727,7 +8724,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -13567,28 +13563,6 @@ Nota:
  en pratique, certaines polices pourront ne pas fonctionner à cause de mauvaises
  informations de métrique ou d'autres défauts; vous devez donc expérimenter
  un peu.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Xe\SpecialChar TeX
- plus particulièrement Lua\SpecialChar TeX
-, sont encore assez récents et donc pas aussi
- mûrs que le \SpecialChar LaTeX
- traditionnel ou que PDF\SpecialChar LaTeX
-.
 \end_layout
 
 \end_inset
@@ -34599,7 +34573,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Nota:
 \series default
  Le référencement arrière fonctionne à la fois dans le même expression régulière

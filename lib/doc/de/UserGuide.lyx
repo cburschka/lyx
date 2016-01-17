@@ -8475,12 +8475,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8493,7 +8491,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8517,7 +8514,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -12860,28 +12856,6 @@ Achtung:
  Es kann sein, dass einige Schriften aufgrund schlechter Zeichendefinitionen
  ein schlechtes Ergebnis in der Ausgabe bringen; daher muss man manchmal
  experimentieren.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Achtung:
-\series default
- Xe\SpecialChar TeX
- und besonders Lua\SpecialChar TeX
- sind immer noch relativ neu und daher noch nicht ganz
- so stabil wie das traditionelle \SpecialChar LaTeX
- oder PDF\SpecialChar TeX
-.
 \end_layout
 
 \end_inset
@@ -33044,7 +33018,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Achtung:
 \series default
  Referenzen funktionieren sowohl innerhalb einer Regexp als auch in mehreren

@@ -7125,14 +7125,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です。
 \end_layout
 
@@ -7145,7 +7143,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7168,7 +7165,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -11211,27 +11207,6 @@ status open
 【註】
 \series default
 実際には、粗悪なメトリックや、フォントが持つ他の欠損によって使えないフォントもあります。したがって、まずは試験してみる必要があります。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-Xe\SpecialChar TeX
-と特にLua\SpecialChar TeX
-は、比較的新しいので、伝統的な\SpecialChar LaTeX
-やPDF\SpecialChar LaTeX
-ほどは成熟していません。
 \end_layout
 
 \end_inset
