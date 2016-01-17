@@ -119,7 +119,7 @@ dist_esdoc_DATA = \
 
 esclipartdocdir = $(esdocdir)/clipart
 dist_esclipartdoc_DATA = \
-	es/clipart/ComentNotaImagenQt4.png \
+	es/clipart/ComentNotaImagen.png \
 	es/clipart/CuadroMinipagina.png \
 	es/clipart/DocumentoHijo.png \
 	es/clipart/es_ERT.png \
@@ -127,9 +127,9 @@ dist_esclipartdoc_DATA = \
 	es/clipart/es_ToolbarEnvBox.png \
 	es/clipart/etiqueta.png \
 	es/clipart/flotante.png \
-	es/clipart/GrisNotaImagenQt4.png \
+	es/clipart/GrisNotaImagen.png \
 	es/clipart/MaterialExterno.png \
-	es/clipart/NotaLyXImagenQt4.png \
+	es/clipart/NotaLyXImagen.png \
 	es/clipart/notapie.png \
 	es/clipart/referencia.png \
 	es/clipart/Resumen.pdf
