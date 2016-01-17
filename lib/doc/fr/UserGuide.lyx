@@ -8674,12 +8674,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8692,6 +8694,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8724,6 +8727,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -45877,6 +45881,14 @@ Vitesse de défilement via la molette
 .
  La vitesse standard est 1,0, une valeur plus élevée accélérera le défilement,
  une valeur plus basse le ralentira.
+ 
+\lang english
+With the option 
+\family sans
+Middle mouse button pasting
+\family default
+ you can determine if pressing the middle mouse button (or the mouse wheel)
+ inserts the content of the clipboard.
 \end_layout
 
 \begin_layout Standard
@@ -46765,6 +46777,38 @@ Général
 \end_layout
 
 \begin_layout Description
+Recherche
+\begin_inset space ~
+\end_inset
+
+directe définit les commandes à utiliser pour la rubrique de menu 
+\family sans
+Navigation\SpecialChar menuseparator
+Recherche
+\begin_inset space ~
+\end_inset
+
+directe
+\family default
+.
+ Pour les détails, voir la section 
+\emph on
+Recherche inversée DVI/PDF 
+\emph default
+dans le manuel des Options avancées.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+DVI-PS
+\begin_inset space ~
+\end_inset
+
+Options ??
+\end_layout
+
+\begin_layout Description
 
 \family sans
 Longueur
@@ -46914,28 +46958,6 @@ l'exportation fixe ce que \SpecialChar LyX
  est autorisé à écraser lors de exportations.
 \end_layout
 
-\begin_layout Description
-Recherche
-\begin_inset space ~
-\end_inset
-
-directe définit les commandes à utiliser pour la rubrique de menu 
-\family sans
-Navigation\SpecialChar menuseparator
-Recherche
-\begin_inset space ~
-\end_inset
-
-directe
-\family default
-.
- Pour les détails, voir la section 
-\emph on
-Recherche inversée DVI/PDF 
-\emph default
-dans le manuel des Options avancées.
-\end_layout
-
 \begin_layout Subsection
 LaTeX
 \begin_inset CommandInset label
@@ -47008,28 +47030,6 @@ T1, T2B
  paquetages linguistiques que \SpecialChar LyX
  mets en place en interne.
  De sorte qu'il n'y a pas de raison de changer l'encodage implicite.
-\end_layout
-
-\begin_layout Description
-Taille
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-papier
-\begin_inset space ~
-\end_inset
-
-implicite C'est la taille qui sera utilisée pour les nouveaux documents.
- La valeur 
-\family sans
-Implicite
-\family default
- dépend des paramètres de votre système \SpecialChar LaTeX
-.
 \end_layout
 
 \begin_layout Description

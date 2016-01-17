@@ -7125,12 +7125,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7143,6 +7145,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7165,6 +7168,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -37566,6 +37570,13 @@ status open
 ホイールスクロール速度
 \family default
 を指定することができます。標準の値は1.0となっており、数値を上げるとスクロール速度が上がり、数値を下げるとスクロール速度が下がります。
+\lang english
+With the option 
+\family sans
+Middle mouse button pasting
+\family default
+ you can determine if pressing the middle mouse button (or the mouse wheel)
+ inserts the content of the clipboard.
 \end_layout
 
 \begin_layout Standard
@@ -38091,6 +38102,33 @@ reference "sec:スペルチェック"
 \end_layout
 
 \begin_layout Description
+順検索 
+\family sans
+移動\SpecialChar menuseparator
+順検索
+\family default
+メニューで使用されるコマンドです。詳細については、取扱説明書『
+\emph on
+高度な機能篇
+\emph default
+』の「
+\emph on
+DVI/PDFの逆検索
+\emph default
+」という節にあります。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+DVI-PS
+\begin_inset space ~
+\end_inset
+
+Options ??
+\end_layout
+
+\begin_layout Description
 出力の行幅 これは、
 \family sans
 ファイル\SpecialChar menuseparator
@@ -38160,23 +38198,6 @@ http://man7.org/linux/man-pages/man1/date.1.html
 の書き出し時に、何を上書きして良いかを設定します。
 \end_layout
 
-\begin_layout Description
-順検索 
-\family sans
-移動\SpecialChar menuseparator
-順検索
-\family default
-メニューで使用されるコマンドです。詳細については、取扱説明書『
-\emph on
-高度な機能篇
-\emph default
-』の「
-\emph on
-DVI/PDFの逆検索
-\emph default
-」という節にあります。
-\end_layout
-
 \begin_layout Subsection
 LaTeX
 \begin_inset CommandInset label
@@ -38231,11 +38252,6 @@ T1, T2B
 」のように文字コードを組み合わせることも可能です。フォント文字コードは、通常、\SpecialChar LyX
 がバックグラウンドで設定する言語パッケージによって自動的に読み込まれます。ですから
 、既定の文字コードを変更する必要はありません。
-\end_layout
-
-\begin_layout Description
-既定の用紙寸法 これは新規文書で使用される用紙寸法です。既定値はお使いの\SpecialChar LaTeX
-システムの設定に依存します。
 \end_layout
 
 \begin_layout Description

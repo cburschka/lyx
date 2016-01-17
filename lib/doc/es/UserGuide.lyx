@@ -8460,12 +8460,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8478,6 +8480,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8502,6 +8505,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -44506,6 +44510,14 @@ Velocidad de desplazamiento de la rueda
  del ratón.
  El valor estándar es 1.0, valores mayores aumentan la velocidad y menores
  la disminuyen.
+ 
+\lang english
+With the option 
+\family sans
+Middle mouse button pasting
+\family default
+ you can determine if pressing the middle mouse button (or the mouse wheel)
+ inserts the content of the clipboard.
 \end_layout
 
 \begin_layout Standard
@@ -45322,6 +45334,38 @@ General
 \end_layout
 
 \begin_layout Description
+Búsqueda
+\begin_inset space ~
+\end_inset
+
+directa Comandos a usar para el menú 
+\family sans
+Navegar\SpecialChar menuseparator
+Búsqueda directa
+\family default
+.
+ Para una descripción detallada véase 
+\emph on
+Búsqueda inversa DVI/PDF
+\emph default
+ en el manual 
+\emph on
+Características adicionales
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+DVI-PS
+\begin_inset space ~
+\end_inset
+
+Options ??
+\end_layout
+
+\begin_layout Description
 
 \family sans
 Longitud
@@ -45418,28 +45462,6 @@ al
 exportar Establece lo que está permitido sobrescribir al exportar el documento.
 \end_layout
 
-\begin_layout Description
-Búsqueda
-\begin_inset space ~
-\end_inset
-
-directa Comandos a usar para el menú 
-\family sans
-Navegar\SpecialChar menuseparator
-Búsqueda directa
-\family default
-.
- Para una descripción detallada véase 
-\emph on
-Búsqueda inversa DVI/PDF
-\emph default
- en el manual 
-\emph on
-Características adicionales
-\emph default
-.
-\end_layout
-
 \begin_layout Subsection
 LaTeX
 \begin_inset CommandInset label
@@ -45511,28 +45533,6 @@ T1, T2B
  configura
  los paquetes de idioma.
  Por tanto no hay por qué cambiarla.
-\end_layout
-
-\begin_layout Description
-Tamaño
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-papel Este será el tamaño del papel para documentos nuevos.
- El valor 
-\family sans
-Predeterminado 
-\family default
-depende de la configuración del sistema \SpecialChar LaTeX
-.
 \end_layout
 
 \begin_layout Description

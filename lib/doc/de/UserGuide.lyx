@@ -8475,10 +8475,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8491,6 +8493,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8514,6 +8517,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -43915,6 +43919,16 @@ Mausrad-Scrollgeschwindigkeit
  einstellen.
  Der Standardwert ist 1.0, höhere Werte beschleunigen das Scrollen, niedrigere
  verlangsamen es.
+ Mit der Option 
+\family sans
+Mittlere Maustaste fügt Auswahl ein
+\family default
+ kann man festlegen, ob der Inhalt der Zwischenablage eingefügt wird, wenn
+ man die mittlere Maustaste (bzw.
+\begin_inset space \space{}
+\end_inset
+
+das Mausrad) drückt.
 \end_layout
 
 \begin_layout Standard
@@ -44634,6 +44648,32 @@ Allgemein
 \end_layout
 
 \begin_layout Description
+Vorwärtssuche Befehle, die für das Menü 
+\family sans
+Navigieren\SpecialChar menuseparator
+Vorwärtssuche
+\family default
+ verwendet werden.
+ Siehe Abschnitt 
+\emph on
+DVI/PDF Rückwärtssuche
+\emph default
+ der 
+\emph on
+Handbuchergänzungen
+\emph default
+ für eine detaillierte Beschreibung.
+\end_layout
+
+\begin_layout Description
+DVI-PS
+\begin_inset space ~
+\end_inset
+
+Optionen ??
+\end_layout
+
+\begin_layout Description
 Ausgabe
 \begin_inset space ~
 \end_inset
@@ -44719,24 +44759,6 @@ Export
  erlaubt ist zu überschreiben.
 \end_layout
 
-\begin_layout Description
-Vorwärtssuche Befehle, die für das Menü 
-\family sans
-Navigieren\SpecialChar menuseparator
-Vorwärtssuche
-\family default
- verwendet werden.
- Siehe Abschnitt 
-\emph on
-DVI/PDF Rückwärtssuche
-\emph default
- der 
-\emph on
-Handbuchergänzungen
-\emph default
- für eine detaillierte Beschreibung.
-\end_layout
-
 \begin_layout Subsection
 LaTeX
 \begin_inset CommandInset label
@@ -44808,17 +44830,6 @@ T1, T2B
  geladen, die \SpecialChar LyX
  im Hintergund verwendet.
  Man muss die Standard-Kodierung also nicht ändern.
-\end_layout
-
-\begin_layout Description
-Standard-Papiergröße Dies ist die Papiergröße die für neue Dokumente verwendet
- wird.
- Der 
-\family sans
-Standard
-\family default
- Wert hängt von den \SpecialChar LaTeX
--Systemeinstellungen ab.
 \end_layout
 
 \begin_layout Description

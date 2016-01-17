@@ -8167,12 +8167,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8185,6 +8187,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8208,6 +8211,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -44087,6 +44091,12 @@ Wheel scrolling speed
 .
  The standard value is 1.0; higher values speed up the scrolling, lower ones
  slow it down.
+ With the option 
+\family sans
+Middle mouse button pasting
+\family default
+ you can determine if pressing the middle mouse button (or the mouse wheel)
+ inserts the content of the clipboard.
 \end_layout
 
 \begin_layout Standard
@@ -44871,6 +44881,44 @@ General
 \end_layout
 
 \begin_layout Description
+Forward
+\begin_inset space ~
+\end_inset
+
+search Commands that will be used for the menu 
+\family sans
+Navigate\SpecialChar menuseparator
+Forward
+\begin_inset space ~
+\end_inset
+
+search
+\family default
+.
+ For a detailed description see section 
+\emph on
+Reverse DVI/PDF search
+\emph default
+ of the 
+\emph on
+Additional
+\begin_inset space ~
+\end_inset
+
+Features
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+DVI-PS
+\begin_inset space ~
+\end_inset
+
+Options ??
+\end_layout
+
+\begin_layout Description
 Output
 \begin_inset space ~
 \end_inset
@@ -45079,24 +45127,6 @@ T1, T2B
  \SpecialChar LyX
  sets up in the background.
  So there is no need to change the default encoding.
-\end_layout
-
-\begin_layout Description
-Default
-\begin_inset space ~
-\end_inset
-
-paper
-\begin_inset space ~
-\end_inset
-
-size This is the paper size that is used for new documents.
- The 
-\family sans
-Default
-\family default
- value depends on your \SpecialChar LaTeX
--system setup.
 \end_layout
 
 \begin_layout Description
