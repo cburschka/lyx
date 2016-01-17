@@ -8,7 +8,7 @@ REM Install Qt from qt.io
 set PATH=C:\Qt\Qt5.5.1\5.5\msvc2010\bin;%PATH%
 
 set LYX_SOURCE=%~DP0..\..
-set LYX_BUILD=%LYX_SOURCE%\..\compile-msvc2010
+set LYX_BUILD=%LYX_SOURCE%\..\build5-msvc2010
 
 echo LyX source: %LYX_SOURCE%
 echo LyX build : %LYX_BUILD%
