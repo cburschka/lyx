@@ -297,29 +297,7 @@ LatexCommand tableofcontents
 します。縦の長さがページからはみ出れば、文章は新しいページに続きますので、これゆえに垂直スクロールバーだけは必要となるのです。水平スクロールバーがないことが不便
 と感じられ得る場合が3つあります。第一は、大きな画像の場合です。画像が使用中の画面よりも大きく表示されるのを避けるためには、画像設定の
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XとLy
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xのオプション
+LaTeXとLyXのオプション
 \family default
 タブにある
 \family sans
@@ -484,18 +462,7 @@ name "sec:LaTeXの設定"
 パッケージは、メニュー
 \family sans
 ヘルプ\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXの設定
+LaTeXの設定
 \family default
 で見ることができるファイルに列挙してあります。必要なパッケージがない場合には、必要なパッケージを導入して、\SpecialChar LyX
 の環境構成を行なってください(メニュー
@@ -504,34 +471,6 @@ eXの設定
 環境構成
 \family default
 )
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar TeX
-コードボックス中の二つの中括弧は、「\SpecialChar LaTeX
-」という単語が、上付きおよび下付き文字として印字されるのを防ぐためのものです。\SpecialChar TeX
-コードに関してより詳しくは第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeXコード"
-
-\end_inset
-
-節に述べられています。\SpecialChar LaTeX
-などの固有名称の印字については、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:LyXの固有名称"
-
-\end_inset
-
-節に説明があります。
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -547,7 +486,12 @@ Lyx@\SpecialChar LyX
 \emph on
 カスタマイズ篇
 \emph default
-』の第5.1節をご覧ください。
+』の第
+\emph on
+新しい\SpecialChar LaTeX
+ファイルの導入
+\emph default
+節をご覧ください。
 \end_layout
 
 \begin_layout Chapter
@@ -1452,6 +1396,26 @@ status collapsed
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:文書構造"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+いどう@移動!文書構造
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+文書構造
+\end_layout
 
 \end_inset
 
@@ -2734,7 +2698,11 @@ IOP
 \emph on
 カスタマイズ篇
 \emph default
-』の第5章に、レイアウトファイルの作成のしかたに関する情報があります。
+』の第
+\emph on
+文書クラス・レイアウト・ひな型の新規導入
+\emph default
+章に、レイアウトファイルの作成のしかたに関する情報があります。
 \end_layout
 
 \begin_layout Subsubsection
@@ -11274,75 +11242,19 @@ status collapsed
 \begin_layout Standard
 
 \family sans
-非T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXフォントを使用
+非TeXフォントを使用
 \family default
 を有効にすると、ご使用の基本ソフトウェアに導入されているフォントにアクセスすることができるようになります。このためには、出力書式として、
 \family sans
-PDF (XeT
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX)
+PDF (XeTeX)
 \family default
 か
 \family sans
-PDF (LuaT
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX)
+PDF (LuaTeX)
 \family default
 、
 \family sans
-DVI (LuaT
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX)
+DVI (LuaTeX)
 \family default
 を使用する必要があるため、Xe\SpecialChar TeX
 かLua\SpecialChar TeX
@@ -11741,18 +11653,7 @@ reference "subsec:文字微調整"
 \begin_layout Standard
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXフォントエンコーディング
+LaTeXフォントエンコーディング
 \family default
 は、熟練者用の設定項目であり、これによって\SpecialChar LaTeX
 パッケージ
@@ -22987,6 +22888,26 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+いどう@移動!文書構造
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+文書構造
 \end_layout
 
 \end_inset
