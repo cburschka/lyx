@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-09 10:18+0100\n"
+"PO-Revision-Date: 2016-01-17 18:13+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -23252,7 +23252,7 @@ msgstr "PDF (graphics)"
 
 #: lib/configure.py:688
 msgid "PDF (cropped)"
-msgstr "EPS (recortado)"
+msgstr "PDF (recortado)"
 
 #: lib/configure.py:689
 msgid "PDF (lower resolution)"
@@ -24559,7 +24559,7 @@ msgstr "marco coloreado"
 
 #: src/Color.cpp:244
 msgid "listings background"
-msgstr "fondo de listado de código"
+msgstr "fondo listado de código"
 
 #: src/Color.cpp:245
 msgid "branch label"
@@ -24615,23 +24615,23 @@ msgstr "carácter especial"
 
 #: src/Color.cpp:258
 msgid "math"
-msgstr "ecuaciones"
+msgstr "ecuación"
 
 #: src/Color.cpp:259
 msgid "math background"
-msgstr "fondo de ecuaciones"
+msgstr "fondo de ecuación"
 
 #: src/Color.cpp:260
 msgid "graphics background"
-msgstr "fondo de gráficos"
+msgstr "fondo de gráfico"
 
 #: src/Color.cpp:261 src/Color.cpp:265
 msgid "math macro background"
-msgstr "fondo macro de ecuación"
+msgstr "macro matemática (fondo)"
 
 #: src/Color.cpp:262
 msgid "math frame"
-msgstr "marco de ecuaciones"
+msgstr "marco de ecuación"
 
 #: src/Color.cpp:263
 msgid "math corners"
@@ -24643,43 +24643,43 @@ msgstr "línea de ecuación"
 
 #: src/Color.cpp:266
 msgid "math macro hovered background"
-msgstr "fondo dinámico macro ecuación "
+msgstr "macro matemática (fondo bajo el ratón) "
 
 #: src/Color.cpp:267
 msgid "math macro label"
-msgstr "etiqueta macro de ecuación"
+msgstr "macro matemática (etiqueta)"
 
 #: src/Color.cpp:268
 msgid "math macro frame"
-msgstr "marco macro de ecuación"
+msgstr "macro matemática (marco)"
 
 #: src/Color.cpp:269
 msgid "math macro blended out"
-msgstr "macro de ecuación desactivado"
+msgstr "macro matemática (mezclada)"
 
 #: src/Color.cpp:270
 msgid "math macro old parameter"
-msgstr "parám. antiguo macro ecuación"
+msgstr "macro matemática (parám. antiguo)"
 
 #: src/Color.cpp:271
 msgid "math macro new parameter"
-msgstr "parám. nuevo macro ecuación"
+msgstr "macro matemática (parám. nuevo)"
 
 #: src/Color.cpp:272
 msgid "collapsable inset text"
-msgstr "texto de recuadro plegable"
+msgstr "texto recuadro plegable"
 
 #: src/Color.cpp:273
 msgid "collapsable inset frame"
-msgstr "marco de recuadro plegable"
+msgstr "marco recuadro plegable"
 
 #: src/Color.cpp:274
 msgid "inset background"
-msgstr "fondo de recuadro insertado"
+msgstr "fondo recuadro de inserción"
 
 #: src/Color.cpp:275
 msgid "inset frame"
-msgstr "marco de recuadro insertado"
+msgstr "marco recuadro de inserción"
 
 #: src/Color.cpp:276
 msgid "LaTeX error"
@@ -24735,7 +24735,7 @@ msgstr "marcadores espacios añadidos"
 
 #: src/Color.cpp:289
 msgid "table line"
-msgstr "línea de cuadro"
+msgstr "línea de cuadro/tabla"
 
 #: src/Color.cpp:290
 msgid "table on/off line"
