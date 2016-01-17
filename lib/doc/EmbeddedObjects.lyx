@@ -29624,8 +29624,11 @@ Comment This note also doesn't appear in the output but it appears as \SpecialCh
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator
-\SpecialChar LaTeX
- (pdflatex) / (plain)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(pdflatex) / (plain)
 \family default
 .
  Its note-box looks like this:
@@ -38912,7 +38915,6 @@ Included documents are displayed in \SpecialChar LyX
  as a box like this: 
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
-	scale 75
 	scaleBeforeRotation
 
 \end_inset

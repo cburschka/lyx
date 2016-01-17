@@ -29350,8 +29350,11 @@ Comentario Esta nota tampoco se muestra en la salida pero aparece como un
 \family sans
 Archivo\SpecialChar menuseparator
 Exportar\SpecialChar menuseparator
-\SpecialChar LaTeX
- (pdflatex) / (simple)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(pdflatex) / (simple)
 \family default
 .
  Su recuadro se ve así:

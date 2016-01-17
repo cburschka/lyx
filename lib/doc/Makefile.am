@@ -221,7 +221,7 @@ dist_jadoc_DATA = \
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
 	ja/clipart/BoxInsetDefault.png \
-	ja/clipart/ChildDocumentQt4.png \
+	ja/clipart/ChildDocument.png \
 	ja/clipart/CommentNoteImage.png \
 	ja/clipart/ERT.png \
 	ja/clipart/ExternalMaterial.png \

@@ -28124,7 +28124,7 @@ arg   "note-insert"
 
 
 \begin_inset Graphics
-	filename clipart/LyXNoteImageQt4.png
+	filename clipart/LyXNoteImage.png
 	display false
 	scale 50
 	scaleBeforeRotation
@@ -28149,18 +28149,11 @@ status open
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
+LaTeX
+\begin_inset space ~
 \end_inset
 
-eX (pdflatex) / (平文)
+(pdflatex) / (平文)
 \family default
  メニューを使って文書を\SpecialChar LaTeX
 にエクスポートする際には、\SpecialChar LaTeX
@@ -28174,7 +28167,7 @@ eX (pdflatex) / (平文)
 
 
 \begin_inset Graphics
-	filename clipart/CommentNoteImageQt4.png
+	filename clipart/CommentNoteImage.png
 	display false
 	scale 50
 	scaleBeforeRotation
@@ -28206,7 +28199,7 @@ status open
 
 
 \begin_inset Graphics
-	filename clipart/GreyedOutNoteImageQt4.png
+	filename clipart/GreyedOutNoteImage.png
 	display false
 	scale 50
 	scaleBeforeRotation
@@ -36477,7 +36470,6 @@ status collapsed
 中で
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
-	scale 85
 	scaleBeforeRotation
 
 \end_inset

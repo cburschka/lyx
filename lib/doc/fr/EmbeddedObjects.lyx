@@ -30162,8 +30162,11 @@ Commentaire Ce type de note n'apparaît pas non plus à l'impression, mais
 \family sans
 Fichier\SpecialChar menuseparator
 Exporter\SpecialChar menuseparator
-\SpecialChar LaTeX
- (pdflatex) / (plain)
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(pdflatex) / (plain)
 \family default
 .
  La boîte de cette note ressemble à ceci :
