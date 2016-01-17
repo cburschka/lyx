@@ -1996,6 +1996,176 @@ Die Gliederung erhalten Sie auch, wenn Sie am Anfang des Dokuments ein Inhalts-,
  Tabellen- oder Abbildungsverzeichnis angelegt haben und darauf klicken.
 \end_layout
 
+\begin_layout Subsection
+Horizontaler Bildlauf 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Navigieren ! Horizontaler Bildlauf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ hat keine horizontale Bildlaufleiste, denn die Standard Seitenformate der
+ Ausgabe, wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ DIN
+\begin_inset space ~
+\end_inset
+
+A4, sind schmaler als PC oder Laptop-Bildschirme.
+ Man bekommt daher Probleme in der Ausgabe, wenn Dokumentteile die Seitenbreite
+ des \SpecialChar LyX
+-Fensters überschreiten.
+\end_layout
+
+\begin_layout Standard
+Es gibt natürlich Ausnahmen, bei denen ein Horizontaler Bildlauf notwendig
+ ist.
+ Zum Beispiel:
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ wird auf einem kleinen Tabletcomputer verwendet
+\end_layout
+
+\begin_layout Itemize
+Breite Tabellen, die um 90° gedreht werden, damit sie auf eine Seite passen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Siehe Abschnitt 
+\emph on
+Gedrehte Gleitobjekte
+\emph default
+ des 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuchs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mathe-Konstrukte mit langen Befehlsnamen
+\end_layout
+
+\begin_layout Standard
+Für diese Fälle hat \SpecialChar LyX
+ einen Mechanismus, der automatisch scrollt, wenn der
+ Cursor bewegt wird.
+ Für ein Beispiel macht man das \SpecialChar LyX
+-Fenster so schmal, dass Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Horizontaler-Bildlauf"
+
+\end_inset
+
+ breiter ist.
+ Man sieht nun eine gestrichelte, rote Linie am rechten oder linken Rand
+ der Tabelle.
+ Setzt man den Cursor in die Tabelle und bewegt ihn mit der Tabulator- oder
+ den Pfeiltasten, sieht man das Scrollen der Tabelle.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Horizontaler-Bildlauf"
+
+\end_inset
+
+Horizontaler Bildlauf-Test.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="4.7cm">
+<column alignment="center" valignment="top" width="4.7cm">
+<column alignment="center" valignment="top" width="4.7cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Eingabevervollständigung
 \begin_inset CommandInset label
