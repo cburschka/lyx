@@ -29769,9 +29769,9 @@ Notiz
 
 
 \begin_inset Graphics
-	filename clipart/LyXNotizQt4.png
+	filename clipart/LyXNotiz.png
 	display false
-	scale 60
+	scale 80
 	scaleBeforeRotation
 
 \end_inset
@@ -29813,9 +29813,9 @@ LaTeX (pdflatex) / (normal)
 
 
 \begin_inset Graphics
-	filename clipart/KommentarQt4.png
+	filename clipart/Kommentar.png
 	display false
-	scale 60
+	scale 80
 	scaleBeforeRotation
 
 \end_inset
@@ -29844,9 +29844,9 @@ Grauschrift: Diese Notiz wird grau gedruckt und sieht so aus:
 
 
 \begin_inset Graphics
-	filename clipart/GrauschriftNotizQt4.png
+	filename clipart/GrauschriftNotiz.png
 	display false
-	scale 60
+	scale 80
 	scaleBeforeRotation
 
 \end_inset
@@ -29884,17 +29884,9 @@ egroup}
 status open
 
 \begin_layout Plain Layout
-Dies ist eine Grauschrift-Notiz mit einer Fußnote.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Dies ist eine Fußnote in einer Grauschrift-Notiz.
-\end_layout
-
-\end_inset
-
-
+Dies ist Text in einem Kommentar-Kästchen, der nur als Kommentar in der
+ \SpecialChar LaTeX
+-Datei erscheint.
 \end_layout
 
 \end_inset
@@ -38991,7 +38983,7 @@ Entwurf
  kann externes Material entweder als Box wie hier: 
 \begin_inset Graphics
 	filename clipart/ExternesMaterial.png
-	scale 85
+	scale 75
 	scaleBeforeRotation
 
 \end_inset
@@ -39088,8 +39080,8 @@ Dokumentklasse
 Unterdokumente werden in \SpecialChar LyX
  als Box angezeigt: 
 \begin_inset Graphics
-	filename clipart/UnterdokumentQt4.png
-	scale 85
+	filename clipart/Unterdokument.png
+	scale 75
 	scaleBeforeRotation
 
 \end_inset

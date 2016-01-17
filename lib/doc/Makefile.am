@@ -89,13 +89,13 @@ dist_declipartdoc_DATA = \
 	de/clipart/ExternesMaterial.png \
 	de/clipart/Fussnote.png \
 	de/clipart/Gleitobjekt.png \
-	de/clipart/GrauschriftNotizQt4.png \
-	de/clipart/KommentarQt4.png \
-	de/clipart/LyXNotizQt4.png \
+	de/clipart/GrauschriftNotiz.png \
+	de/clipart/Kommentar.png \
+	de/clipart/LyXNotiz.png \
 	de/clipart/Marke.png \
 	de/clipart/Querverweis.png \
 	de/clipart/StandardBox.png \
-	de/clipart/UnterdokumentQt4.png \
+	de/clipart/Unterdokument.png \
 	de/clipart/Zusammenfassung.pdf
 
 eldocdir = $(docdir)/el

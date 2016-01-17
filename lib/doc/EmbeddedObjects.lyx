@@ -29599,7 +29599,6 @@ Note This note type is for internal notes that won't appear in the output.
 \begin_inset Graphics
 	filename clipart/LyXNoteImage.png
 	display false
-	scale 85
 	scaleBeforeRotation
 
 \end_inset
@@ -29641,7 +29640,6 @@ Export\SpecialChar menuseparator
 \begin_inset Graphics
 	filename clipart/CommentNoteImage.png
 	display false
-	scale 85
 	scaleBeforeRotation
 
 \end_inset
@@ -29678,7 +29676,6 @@ Out This note will appear in the output as grey text.
 \begin_inset Graphics
 	filename clipart/GreyedOutNoteImage.png
 	display false
-	scale 85
 	scaleBeforeRotation
 
 \end_inset
@@ -29716,17 +29713,7 @@ egroup}
 status open
 
 \begin_layout Plain Layout
-This is text
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-This is an example footnote within a greyed out note.
-\end_layout
-
-\end_inset
-
- of a comment that appears in the output as grey text.
+This is text of a comment that appears grey in the output.
 \end_layout
 
 \end_inset
@@ -38825,7 +38812,7 @@ External material is displayed in \SpecialChar LyX
  either as a box like this: 
 \begin_inset Graphics
 	filename clipart/ExternalMaterial.png
-	scale 85
+	scale 75
 	scaleBeforeRotation
 
 \end_inset
@@ -38925,7 +38912,7 @@ Included documents are displayed in \SpecialChar LyX
  as a box like this: 
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
-	scale 85
+	scale 75
 	scaleBeforeRotation
 
 \end_inset
