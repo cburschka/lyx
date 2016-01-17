@@ -200,8 +200,8 @@ dist_itdoc_DATA = \
 
 itclipartdocdir = $(itdocdir)/clipart
 dist_itclipartdoc_DATA = \
-	it/clipart/it_footnoteQt4.png \
-	it/clipart/it_referenceQt4.png
+	it/clipart/it_footnote.png \
+	it/clipart/it_reference.png
 
 jadocdir = $(docdir)/ja
 dist_jadoc_DATA = \
