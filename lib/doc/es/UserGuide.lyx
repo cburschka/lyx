@@ -1179,11 +1179,8 @@ Pegado
 \end_inset
 
 especial\SpecialChar menuseparator
-Selección, líneas juntas
+Selección, líneas juntas 
 \family default
-\lang english
- 
-\lang spanish
 y 
 \family sans
 Pegado
@@ -8460,14 +8457,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8480,7 +8475,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8505,7 +8499,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -10790,9 +10783,6 @@ Entrar
  La diferencia entre ambos tipos de separador es que el separador simple
  solo divide la lista, no el párrafo.
  Se puede cambiar el tipo de separador con clic derecho sobre él.
-
-\lang english
- 
 \end_layout
 
 \begin_layout Standard
@@ -14315,7 +14305,7 @@ Ancho
 
 fijo
 \family default
-Esta es la familia de tipos de 
+ Esta es la familia de tipos de 
 \family typewriter
 Ancho fijo 
 \family default
@@ -14485,79 +14475,79 @@ Colores
 \family default
 , puedes elegir entre 
 \family sans
-amarillo
+Negro
 \family default
 , 
 \family sans
-azul
+Blanco
 \family default
 , 
 \family sans
-blanco
+Rojo
 \family default
 , 
 \family sans
-cerceta
+Verde
 \family default
 , 
 \family sans
-cien
+Azul
 \family default
 , 
 \family sans
-gris
+Cian
 \family default
 , 
 \family sans
-gris claro
+Magenta
 \family default
 , 
 \family sans
-gris oscuro
+Amarillo
 \family default
 , 
 \family sans
-lima
+Marrón
 \family default
 , 
 \family sans
-magenta
+Gris oscuro
 \family default
 , 
 \family sans
-marrón
+Gris
 \family default
 , 
 \family sans
-naranja
+Gris claro
 \family default
 , 
 \family sans
-negro
+Verde Lima
 \family default
 , 
 \family sans
-oliva
+Naranja
 \family default
 , 
 \family sans
-púrpura
+Verde Oliva
 \family default
 , 
 \family sans
-rojo
+Rosa
 \family default
 , 
 \family sans
-rosa
+Púrpura
 \family default
 , 
 \family sans
-verde 
+Cerceta (azul verde)
 \family default
-y
+ y 
 \family sans
- violeta
+Violeta
 \family default
 .
 \begin_inset Index idx
@@ -33633,11 +33623,8 @@ http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 Hay dos archivos por cada idioma.
  En Windows, para instalar un diccionario copia ambos archivos en la subcarpeta
  de \SpecialChar LyX
-
-\lang english
  
 \family sans
-\lang spanish
 ~
 \backslash
 Resources
@@ -34980,13 +34967,7 @@ Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
 Idioma
 \family default
- permite determinar el idioma, 
-\family roman
-\lang english
-the quote style
-\family default
-\lang spanish
- y la codificación
+ permite determinar el idioma, el estilo de las comillas y la codificación
 \family roman
  de caracteres.
 \end_layout
@@ -35434,11 +35415,7 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-the exported file will be stored in a subdirectory
-\lang spanish
-.
+ el archivo exportado se almacenará en un subdirectorio.
 \end_layout
 
 \end_inset
@@ -35588,19 +35565,15 @@ Open
 \begin_inset space ~
 \end_inset
 
-XML archivo de texto en formato Office Open XML, 
-\lang english
-to be opened with 
+XML archivo de texto en formato Office Open XML, para ser abierto con  
 \family sans
 Microsoft Word
 \family default
 .
- For the conversion the program 
+ Para la conversión se usa el programa 
 \family typewriter
 Pandoc
 \family default
- is used
-\lang spanish
 .
  
 \family typewriter
@@ -35626,15 +35599,11 @@ OpenDocument
 \family sans
 LibreOffice, OpenOffice, KOffice, Abiword
 \family default
-, etc..
- 
-\lang english
-For the conversion the program 
+, etc.
+ Para la conversión se usa el programa 
 \family typewriter
 Pandoc
 \family default
- is used
-\lang spanish
 .
  
 \family typewriter
@@ -35649,15 +35618,11 @@ OpenDocument
 \end_inset
 
 (tex4ht) archivo de texto en formato OpenDocument.
- 
-\lang english
-For the conversion the program 
+ Para la conversión se usa el programa 
 \family typewriter
-tex4ht
+tex4ht.
+
 \family default
- is used
-\lang spanish
-.
  
 \family typewriter
 tex4ht
@@ -35670,7 +35635,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(cropped) igual que 
+(recortado) igual que 
 \family sans
 PDF
 \begin_inset space ~
@@ -36764,12 +36729,10 @@ específicos
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Logos Inserts the logos of the programs \SpecialChar LyX
+Logotipos Inserta los logotipos de los programas \SpecialChar LyX
 , \SpecialChar TeX
 , \SpecialChar LaTeX
- and \SpecialChar LaTeX2e
+ y \SpecialChar LaTeX2e
 .
 \end_layout
 
@@ -37991,11 +37954,8 @@ reference "sec:Salidas"
 
 \end_inset
 
-) o en el menú
+) o en el menú 
 \family sans
-\lang english
- 
-\lang spanish
 Herramientas\SpecialChar menuseparator
 Preferencias\SpecialChar menuseparator
 Gestión
@@ -43302,11 +43262,8 @@ ui
 ) elegido.
  Es un archivo de texto con una lista de los menús y de las barras de herramient
 as.
- El archivo
-\lang english
- 
+ El archivo 
 \emph on
-\lang spanish
 default.ui
 \emph default
  carga tres archivos:
@@ -44510,14 +44467,15 @@ Velocidad de desplazamiento de la rueda
  del ratón.
  El valor estándar es 1.0, valores mayores aumentan la velocidad y menores
  la disminuyen.
- 
-\lang english
-With the option 
+ Con la opción 
 \family sans
-Middle mouse button pasting
+Pegar con botón central del ratón
 \family default
- you can determine if pressing the middle mouse button (or the mouse wheel)
- inserts the content of the clipboard.
+ puedes determinar si presionando ese botón (o la rueda) se inserta el contenido
+ del portapapeles.
+
+\family sans
+ 
 \end_layout
 
 \begin_layout Standard
@@ -45356,8 +45314,6 @@ Características adicionales
 \end_layout
 
 \begin_layout Description
-
-\lang english
 DVI-PS
 \begin_inset space ~
 \end_inset

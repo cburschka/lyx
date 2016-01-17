@@ -945,7 +945,7 @@ Material externo
 , véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Inserción-de-material"
+reference "cap:Inserción-de-material"
 
 \end_inset
 
@@ -978,9 +978,7 @@ latexfonts
 
 \end_inset
 
-
-\lang english
- contains information about the supported fonts.
+contiene información sobre tipografías soportadas.
 \end_layout
 
 \begin_layout Labeling
@@ -994,11 +992,7 @@ layouttranslations
 
 \end_inset
 
- 
-\lang english
-this file contains translations for internationalized paragraph styles
-\lang spanish
- (véase 
+ contiene traducciones para entornos de párrafo (véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
@@ -1019,11 +1013,8 @@ unicodesymbols
 
 \end_inset
 
-
-\lang english
- this file contains information about unicode-encoded glyphs and the way
- they are supported by \SpecialChar LyX
- via \SpecialChar LaTeX
+ contiene información sobre glifos unicode y su soporte por \SpecialChar LyX
+ vía \SpecialChar LaTeX
 .
 \end_layout
 
@@ -1549,11 +1540,7 @@ Editar externamente
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
-\lang spanish
-
+El tipo 
 \begin_inset Flex Noun
 status collapsed
 
@@ -1563,15 +1550,11 @@ MIME
 
 \end_inset
 
-
-\lang english
- type of a format is optional, but if it is specified, it must be unique
- across all formats.
- It is used to detect files of this format from the file contents.
- For some important file formats there is no MIME type officially registered
- with the 
-\lang spanish
-
+ de un formato es opcional, pero si se especifica, debe ser único para todos
+ los formatos.
+ Se usa para detectar archivos de ese formato de los contenidos de archivo.
+ Para algunos formatos de archivo importantes no hay tipo MIME oficialmente
+ registrado con 
 \begin_inset CommandInset href
 LatexCommand href
 name "IANA"
@@ -1580,12 +1563,8 @@ target "http://www.iana.org/assignments/media-types/"
 \end_inset
 
 .
- 
-\lang english
-Therefore \SpecialChar LyX
- uses the extended list of MIME types as specified by 
-\lang spanish
-
+ Por tanto \SpecialChar LyX
+ usa la lista extensa de tipos MIME especificada por 
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
@@ -1887,10 +1866,8 @@ $$b
 
 \end_inset
 
- 
-\lang english
-The base name (without filename extension) in the \SpecialChar LyX
- temporary directory
+ Nombre base (sin extensión) en el directorio temporal de \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Labeling
@@ -1904,10 +1881,8 @@ $$p
 
 \end_inset
 
- 
-\lang english
-The full directory path of the \SpecialChar LyX
- temporary directory
+ Ruta completa al directorio temporal de \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Labeling
@@ -1921,10 +1896,8 @@ $$r
 
 \end_inset
 
- 
-\lang english
-The full pathname to the original \SpecialChar LyX
- file being processed
+ Ruta completa al archivo original \SpecialChar LyX
+ que se procesa
 \end_layout
 
 \begin_layout Labeling
@@ -1938,10 +1911,8 @@ $$f
 
 \end_inset
 
- 
-\lang english
-The filename (without any directory path) of the \SpecialChar LyX
- file.
+ Nombre del archivo \SpecialChar LyX
+ (sin ruta de directorio)
 \end_layout
 
 \begin_layout Labeling
@@ -2130,7 +2101,7 @@ HTML
  el que se encuentre el archivo original de \SpecialChar LyX
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Este copiador puede adaptarse.
@@ -2444,25 +2415,21 @@ nice
 
 \end_inset
 
- 
-\lang english
-Needs a 
+ Necesita un 
 \begin_inset Quotes fld
 \end_inset
 
-nice
+bonito
 \begin_inset Quotes frd
 \end_inset
 
- file from the backend, which in practice means a \SpecialChar LaTeX
- file like the one we
- would export, without 
+ archivo del trastero, que en la práctica quiere decir un archivo \SpecialChar LaTeX
+ como
+ el que queremos exportar, sin 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 input@path
 \end_layout
 
@@ -2486,7 +2453,7 @@ xml
 \end_layout
 
 \begin_layout Standard
-Las tres siguientes no son realmente opciones porque aceptan un argumento
+Las tres siguientes no son realmente indicadores porque aceptan un argumento
  en la forma 
 \begin_inset Flex Noun
 status collapsed
@@ -2695,11 +2662,7 @@ dvipdfm
 \end_layout
 
 \begin_layout Enumerate
-directamente, usando
-\lang english
- 
-\lang spanish
-
+directamente, usando 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2753,11 +2716,7 @@ pdf
 
 \end_inset
 
- (
-\lang english
-for
-\lang spanish
- 
+ (para 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2777,11 +2736,7 @@ pdf2
 
 \end_inset
 
- (
-\lang english
-for
-\lang spanish
- 
+ (para 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2801,11 +2756,7 @@ pdf3
 
 \end_inset
 
- 
-\lang english
-(for
-\lang spanish
- 
+ (para 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2825,11 +2776,7 @@ pdf4
 
 \end_inset
 
- (
-\lang english
-for
-\lang spanish
- 
+ (para 
 \begin_inset Flex Noun
 status collapsed
 
@@ -2850,11 +2797,7 @@ pdf5
 
 \end_inset
 
- (
-\lang english
-for
-\lang spanish
- 
+ (para 
 \begin_inset Flex Noun
 status collapsed
 
@@ -4122,6 +4065,7 @@ status open
 Al revisar este documento en marzo de 2008, no examiné este asunto porque
  no lo comprendía.
  Sería bueno que alguien pudiera hacerlo.
+ (RH)
 \end_layout
 
 \end_inset
@@ -5873,7 +5817,7 @@ foiltex
 \begin_inset space \thinspace{}
 \end_inset
 
-ej.,en MiK\SpecialChar TeX
+ej., en MiK\SpecialChar TeX
 
 \begin_inset space ~
 \end_inset
@@ -5901,9 +5845,6 @@ Application Data
 status open
 
 \begin_layout Plain Layout
-
-\family sans
-\lang english
 ~:
 \backslash
 
@@ -7117,27 +7058,21 @@ layout2layout.py
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-rename the file 
+renombra el archivo 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.layout
 \end_layout
 
 \end_inset
 
- to 
+ a 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.old
 \end_layout
 
@@ -7147,11 +7082,7 @@ myclass.old
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Call the command
-\lang spanish
-
+ejecuta el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -7170,24 +7101,18 @@ Dir/scripts/layout2layout.py myclass.old myclass.layout
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-where 
+donde 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \SpecialChar LyX
 Dir
 \end_layout
 
 \end_inset
 
- is
-\lang spanish
- el nombre de tu directorio \SpecialChar LyX
+ es el nombre de tu directorio \SpecialChar LyX
  en el sistema.
 \end_layout
 
@@ -7214,11 +7139,9 @@ Ha llegado por fin el momento de ponerte manos a la obra y crear o editar
  Nuestro consejo es ir despacito, probando y guardando a menudo.
  En realidad no es para tanto, pero la multitud de opciones puede llegar
  a abrumarte si intentas hacer muchas cosas a la vez.
- 
-\lang english
-It becomes easier if you use existing layouts of \SpecialChar LyX
- as examples/reference
- or if you modify an existing layout to your needs.
+ Resulta más sencillo usar formatos existentes de \SpecialChar LyX
+ como ejemplo o referencia
+ y modificarlos según tus necesidades.
 \end_layout
 
 \begin_layout Standard
@@ -7302,9 +7225,7 @@ default
 \end_layout
 
 \begin_layout Subsection
-Declaración de la clase de documento 
-\lang english
-and classification
+Declaración de la clase de documento y clasificación
 \end_layout
 
 \begin_layout Standard
@@ -7379,11 +7300,7 @@ DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-La segunda y 
-\lang english
-third
-\lang spanish
- línea se usan en la (re)configuración de \SpecialChar LyX
+La segunda y tercera líneas se usan en la (re)configuración de \SpecialChar LyX
 .
  El archivo `layout' es leido por el guión de \SpecialChar LaTeX
  
@@ -7407,16 +7324,9 @@ status collapsed
 \end_inset
 
  se ignora.
- La primera línea es solo un comentario y la segunda contiene la declaración
- 
-\lang english
-mandatory
-\lang spanish
- de la clase de texto
-\lang english
- and the third line contains the optional classification of the class
-\lang spanish
-.
+ La primera línea es solo un comentario, la segunda contiene la declaración
+ obligatoria de la clase de texto y la tercera línea contiene la clasificación
+ opcional de la clase.
  Si estas líneas aparecen en un archivo llamado 
 \begin_inset Flex Code
 status collapsed
@@ -7470,88 +7380,84 @@ Configuración
 \end_inset
 
 .
- 
-\lang english
-The category (
-\begin_inset Quotes eld
+ La categoría (
+\begin_inset Quotes fld
 \end_inset
 
 Articles
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- in the example) is also used in the 
+ en el ejemplo) también se usa en el diálogo 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings
+Documento\SpecialChar menuseparator
+Configuración
 \end_layout
 
 \end_inset
 
- dialog: the text classes are grouped by these categories (which are usually
- genres, so typical categories are 
-\begin_inset Quotes eld
+: las clases de texto se agrupan por estas categorías (generalmente son
+ géneros, así son categorías típicas 
+\begin_inset Quotes fld
 \end_inset
 
 Articles
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Books
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Reports
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Letters
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Presentations
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Curricula Vitae
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  etc.).
- If no category has been declared, the class will be put in the 
-\begin_inset Quotes eld
+ Si no se ha declarado categoría la clase se pondrá en el grupo 
+\begin_inset Quotes fld
 \end_inset
 
-Uncategorized
-\begin_inset Quotes erd
+Sin categoría
+\begin_inset Quotes frd
 \end_inset
 
- group.
+.
 \end_layout
 
 \begin_layout Standard
@@ -7754,11 +7660,7 @@ eXClass[class,package.sty]{descripción del formato}
 \size small
 #  
 \backslash
-DeclareCategory{
-\lang english
-category
-\lang spanish
-}
+DeclareCategory{category}
 \end_layout
 
 \begin_layout Standard
@@ -8122,8 +8024,12 @@ somemodule.module
 \end_layout
 
 \begin_layout Subsection
-Número de formatoLa primera línea no comentada de cualquier archivo `layout',
- `inc' o `module' 
+Número de formato
+\end_layout
+
+\begin_layout Standard
+La primera línea no comentada de cualquier archivo `layout', `inc' o `module'
+ 
 \emph on
 debe
 \emph default
@@ -8150,7 +8056,7 @@ int
 
 \end_inset
 
-] El número de formato del archivo `layout'.
+] El número de formato del archivo de formato (`layout').
 \end_layout
 
 \begin_layout Standard
@@ -8165,7 +8071,7 @@ Esta etiqueta se introdujo en \SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-1.3.x y anteriores no tienen un número explícito y se considera de 
+1.3.x y anteriores no tienen un número explícito y se consideran como 
 \begin_inset Flex Code
 status collapsed
 
@@ -8509,7 +8415,7 @@ DefaultFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -8550,7 +8456,7 @@ DefaultModule
 status collapsed
 
 \begin_layout Plain Layout
-<módulo>
+<module>
 \end_layout
 
 \end_inset
@@ -8587,7 +8493,7 @@ DefaultStyle
 status collapsed
 
 \begin_layout Plain Layout
-<estilo>
+<style>
 \end_layout
 
 \end_inset
@@ -8622,7 +8528,7 @@ ExcludesModule
 status collapsed
 
 \begin_layout Plain Layout
-<módulo>
+<module>
 \end_layout
 
 \end_inset
@@ -8804,16 +8710,13 @@ HTMLTOCSection
 status collapsed
 
 \begin_layout Plain Layout
-<estilo>
+<style>
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-The style to use for the
-\lang spanish
- índice general, bibliografía, etc., cuando el documento se exporte a HTML.
+] El estilo a usar para el índice general, bibliografía, etc., cuando el
+ documento se exporte a HTML.
  Para article, normalmente será 
 \begin_inset Flex Code
 status collapsed
@@ -8854,7 +8757,7 @@ IfCounter
 status collapsed
 
 \begin_layout Plain Layout
-<contador>
+<counter>
 \end_layout
 
 \end_inset
@@ -8912,7 +8815,7 @@ Input
 status collapsed
 
 \begin_layout Plain Layout
-<nombre de fichero>
+<filename>
 \end_layout
 
 \end_inset
@@ -9058,7 +8961,7 @@ ModifyStyle
 status collapsed
 
 \begin_layout Plain Layout
-<estilo>
+<style>
 \end_layout
 
 \end_inset
@@ -9101,7 +9004,7 @@ NoCounter
 status collapsed
 
 \begin_layout Plain Layout
-<contador>
+<counter>
 \end_layout
 
 \end_inset
@@ -9125,7 +9028,7 @@ NoFloat
 status collapsed
 
 \begin_layout Plain Layout
-<flotante>
+<float>
 \end_layout
 
 \end_inset
@@ -9150,7 +9053,7 @@ NoStyle
 status collapsed
 
 \begin_layout Plain Layout
-<estilo>
+<style>
 \end_layout
 
 \end_inset
@@ -9173,7 +9076,7 @@ OutputFormat
 status collapsed
 
 \begin_layout Plain Layout
-<formato>
+<format>
 \end_layout
 
 \end_inset
@@ -9328,13 +9231,16 @@ string
 
 \end_inset
 
-] 
-\lang english
-Specifies options, given in the second string, for the package named by
- the first string.
- For example, 
-\lang spanish
-
+] Especifica opciones, dadas en el segundo 
+\family typewriter
+string
+\family default
+, para el paquete nombrado en el primer
+\family typewriter
+ string
+\family default
+.
+ Por ejemplo, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -9352,38 +9258,30 @@ PackageOptions natbib square
 \begin_inset Quotes frd
 \end_inset
 
- 
-\lang english
-will cause 
+ hará que 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 natbib
 \end_layout
 
 \end_inset
 
- to be loaded with the 
+ se cargue con la opción 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 square
 \end_layout
 
 \end_inset
 
- option.
- (For \SpecialChar TeX
-perts, this causes \SpecialChar LyX
- to output: 
-\lang spanish
-
+.
+ (Para \SpecialChar TeX
+pertos, esto hace que \SpecialChar LyX
+ interprete: 
 \begin_inset Flex Code
 status collapsed
 
@@ -9395,11 +9293,7 @@ PassOptionsToPackage{natbib}{square}
 
 \end_inset
 
- 
-\lang english
-prior to loading
-\lang spanish
- 
+ antes de cargar 
 \begin_inset Flex Code
 status collapsed
 
@@ -9409,7 +9303,7 @@ natbib
 
 \end_inset
 
-.)
+).
 \end_layout
 
 \begin_layout Description
@@ -9633,20 +9527,19 @@ boldsymbol
 \end_inset
 
 ,\SpecialChar ldots
-).; Véase 
-\lang english
-chapter
+).
+ Véase en el capítulo
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:List-of-functions"
+reference "cap:Lista-de-funciones"
 
 \end_inset
 
- for the list of features.
+ la lista de características.
 \end_layout
 
 \begin_layout Description
@@ -9712,17 +9605,13 @@ ProvideStyle
 status collapsed
 
 \begin_layout Plain Layout
-<estilo>
+<style>
 \end_layout
 
 \end_inset
 
-] 
-\lang english
-Creates a new paragraph style if it does not already exist.
- If the style does exist, this section is ignored.
-
-\lang spanish
+] Crea un nuevo estilo (entorno) de párrafo si no existe.
+ Si el estilo existe se ignora esta sección.
  Debe acabar con 
 \begin_inset Quotes eld
 \end_inset
@@ -9778,31 +9667,23 @@ status collapsed
  Múltiples características deben separarse con comas.
  Multiple features must be separated by commas.
  Anotar que solo se pueden demandar características soportadas.
- (Véase 
-\lang english
-chapter
+ (Véase la lista en el capítulo
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:List-of-functions"
+reference "cap:Lista-de-funciones"
 
 \end_inset
 
- for the list of features
-\lang spanish
-.) 
-\lang english
-If you require a package with specific options, you can additionally use
- 
+).
+ Si necesitas un paquete con opciones específicas puedes usar además 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PackageOptions
 \end_layout
 
@@ -9956,7 +9837,7 @@ Style
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -10520,32 +10401,27 @@ int
 
 \end_inset
 
-] 
-\lang english
-Defines argument number <int> of a command\SpecialChar breakableslash
-environment associated with the
- current style.
- This is useful for things like section headings, and only makes sense with
+] Define el número de argumento de un comando o entorno asociado al estilo
+ actual.
+ Es útil para cosas como encabezados de sección y solo tiene sentido con
  \SpecialChar LaTeX
 .
- Every (optional or required) argument of a command or environment – except
- for the required argument that is associated with the content of the paragraph
- itself – has a separate definition, where the number specifies the order
- of the arguments.
- The definition must end with 
+ Cada argumento (opcional o requerido) de un comando o entorno —excepto
+ para el argumento requerido que se asocia con el contenido del propio párrafo—
+ tiene una definición separada, en la que el número especifica el orden
+ de los argumentos.
+ La definición debe finalizar con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndArgument
 \end_layout
 
 \end_inset
 
 .
- So a command with two optional arguments has:
+ Así, un comando con dos argumentos opcionales tiene:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -10590,21 +10466,17 @@ EndArgument
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inside the 
+En la definición de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- definition, the following specifications are possible:
+ son posibles las siguientes especificaciones:
 \end_layout
 
 \begin_layout Itemize
@@ -10627,24 +10499,21 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-The string that will appear both in the menu (to insert this argument) and
- on the argument inset button (unless you also specify a separate 
+ Secuencia que aparecerá tanto en el menú (a insertar este argumento) como
+ en el botón de inserción del argumento (a menos que especifiques también
+ un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MenuString
 \end_layout
 
 \end_inset
 
-).
- For the menu, you can define an accelerator by appending the respective
- character to the string, divided by 
+ separado).
+ Para el menú puedes definir un acelerador agregando el carácter respectivo
+ a la secuencia, separado con 
 \begin_inset Quotes fld
 \end_inset
 
@@ -10652,11 +10521,11 @@ MenuString
 \begin_inset Quotes frd
 \end_inset
 
- (e.
+ (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
@@ -10669,8 +10538,6 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Short Title|S
 \end_layout
 
@@ -10703,11 +10570,8 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-A separate string for the menu.
- You can define an accelerator by appending the respective character to
- the string, divided by 
+ Secuencia separada para el menú Puedes definir un acelerador agregando
+ el carácter respectivo a la secuencia, separado con 
 \begin_inset Quotes fld
 \end_inset
 
@@ -10715,11 +10579,11 @@ A separate string for the menu.
 \begin_inset Quotes frd
 \end_inset
 
- (e.
+ (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
@@ -10732,8 +10596,6 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Short Title|S
 \end_layout
 
@@ -10744,20 +10606,18 @@ Short Title|S
 \end_inset
 
 ).
- This specification is optional.
- If it is not given the 
+ Esta especificación es opcional.
+ Si no se da se usará 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
- will be used instead for the menu.
+ para el menú.
 \end_layout
 
 \begin_layout Itemize
@@ -10780,10 +10640,8 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-A longer explanatory text that appears in the tooltip when hovering over
- the argument inset.
+ Texto explicativo que se muestra en un recuadro sugerencia al planear sobre
+ el recuadro del argumento.
 \end_layout
 
 \begin_layout Itemize
@@ -10822,30 +10680,24 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Declare if this is a mandatory (1) or an optional (0) argument.
- Mandatory arguments will be output empty if not given, while optional arguments
- will not be output at all.
- By default, mandatory arguments are delimited by 
+] Declara si es argumento obligatorio (1) u opcional (0).
+ Los argumentos obligatorios se emitirán vacíos si no se dan, mientras que
+ los opcionales no serán emitidos.
+ Por omisión, los argumentos obligatorios se delimitan con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 {...}
 \end_layout
 
 \end_inset
 
-, while optional arguments are delimited by 
+ y los opcionales con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [...]
 \end_layout
 
@@ -10874,23 +10726,19 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines another argument (by its number) which this argument requires to
- be output if it is itself output.
- E.
+ define otro argumento (por su número) que este argumento requiere para
+ emitirse si él mismo es emitido.
+ P.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in \SpecialChar LaTeX
- commands, optional arguments often require previous optional arguments
- to be output (at least empty), as in 
+e., en comandos \SpecialChar LaTeX
+, los argumentos opcionales requieren a menudo argumentos
+ opcionales previos para ser emitidos (al menos vacíos), como en 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 command[][argument]{text}
@@ -10899,21 +10747,17 @@ command[][argument]{text}
 \end_inset
 
 .
- This can be achieved by the statement 
+ Esto se puede conseguir con la declaración 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requires 1
 \end_layout
 
 \end_inset
 
- within
-\lang spanish
- 
+ dentro de 
 \begin_inset Flex Code
 status collapsed
 
@@ -10946,36 +10790,28 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines a custom left delimiter (instead of 
+ define un delimitador izquierdo personalizado (en vez de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 {
 \end_layout
 
 \end_inset
 
- or 
+ o 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [
 \end_layout
 
 \end_inset
 
 ).
- A line break in the output can be indicated by
-\lang spanish
- 
+ Un salto de línea en la salida se puede indicar con 
 \begin_inset Flex Code
 status collapsed
 
@@ -11008,36 +10844,28 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines a custom right delimiter (instead of 
+ define un delimitador derecho personalizado (en vez de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 }
 \end_layout
 
 \end_inset
 
- or 
+ o 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ]
 \end_layout
 
 \end_inset
 
 ).
- A line break in the output can be indicated by
-\lang spanish
- 
+ Un salto de línea en la salida se puede indicar con 
 \begin_inset Flex Code
 status collapsed
 
@@ -11070,20 +10898,10 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines an argument that is inserted if and only if no user-specified arguments
- were given, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-if no argument inset has been inserted (note that also an empty argument
- inset omits the DefaultArg).
- Multiple arguments need to be separated by comma.
+ define un argumento que se inserta si y solo si no se han dado argumentos
+ específicos del usuario, o sea, si no se ha insertado ningún recuadro de
+ argumento (también un recuadro de argumento vacío omite DefaultArg).
+ Múltiples argumentos deben separarse con comas.
 \end_layout
 
 \begin_layout Itemize
@@ -11106,11 +10924,9 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines an argument that is inserted in any case (alone or in addition to
- user-specified arguments).
- Multiple arguments need to be separated by comma.
+ define un argumento que se inserta en cualquier caso (solo o añadido a
+ argumentos especificados por el usuario).
+ Múltiples argumentos deben separarse con comas.
 \end_layout
 
 \begin_layout Itemize
@@ -11123,14 +10939,10 @@ Font
 
 \end_inset
 
- 
-\lang english
-The font used for the argument content, see
-\lang spanish
- 
+ Tipografía usada para el contenido del argumento, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -11147,14 +10959,10 @@ LabelFont
 
 \end_inset
 
- 
-\lang english
-The font used for the label; see
-\lang spanish
- 
+ Tipografía usada para la etiqueta, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -11185,9 +10993,8 @@ Classic
 
 \end_inset
 
-] 
-\lang english
-describes the rendering style used for the inset's frame and buttons.
+] describe el estilo de representación para los botones y el marco del recuadro
+ de inserción.
 \end_layout
 
 \begin_layout Itemize
@@ -11210,34 +11017,28 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-If this is set to 
+ Si se pone 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-, this argument is automatically inserted when the respective style is selected.
- Currently, only one argument per style\SpecialChar breakableslash
-layout can be automatically inserted.
+, este argumento se inserta automáticamente cuando se selecciona el estilo
+ respectivo.
+ Actualmente solo se puede insertar automaticamente un argumento por estilo\SpecialChar breakableslash
+forma
+to.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsertCotext
 \end_layout
 
@@ -11248,38 +11049,30 @@ InsertCotext
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [int=0]
 \end_layout
 
 \end_inset
 
- If this is set to 
+ Si se pone 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-, this argument will be inserted with a copy of the co-text (either selected
- text or the whole paragraph) as content.
+, este argumento se insertará con una copia del co-texto (texto seleccionado
+ o párrafo completo) como contenido.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThruChars
 \end_layout
 
@@ -11290,8 +11083,6 @@ PassThruChars
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string of characters
 \end_layout
 
@@ -11301,91 +11092,78 @@ string of characters
 \family typewriter
  
 \family default
-Defines individual characters that should be output in raw form, meaning
- without special translations that \SpecialChar LaTeX
- would require.
- Note that, contrary to PassThru, this needs to be explicitly defined for
- arguments.
- That is, arguments do not inherit PassThruChars from their parent inset
- or layout.
+Define caracteres individuales que deberían emitirse en bruto, es decir,
+ sin traducciones especiales que podría requerir \SpecialChar LaTeX
+.
+ Al contrario que PassThru, esto debe ser explícitamente definido para argumento
+s.
+ Esto es, los argumentos no heredan PassThruChars de su recuadro de inserción
+ o formato padre.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default, the text entered in the \SpecialChar LyX
- workarea in the respective layout is
- the last (mandatory) argument of a command if the 
+Por omisión, el texto introducido en el área de trabajo de \SpecialChar LyX
+ en el archivo
+ respectivo de formato es el último argumento (obligatorio) de un comando
+ si 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- is 
+ es 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
 \end_inset
 
 .
- However, arguments with the prefix 
+ Sin embargo, los argumentos con el prefijo 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 post:
 \end_layout
 
 \end_inset
 
- are output after this workarea argument.
- Note that post-argument numbering restarts at 1, so the first argument
- following the workarea argument is 
+ se emiten después de este argumento de área de trabajo.
+ La numeración de este post-argumento reinicia a 1, así que el primer argumento
+ siguiente al del área de trabajo es 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 post:1
 \end_layout
 
 \end_inset
 
 .
- Post-arguments are ignored in any other 
+ Los post-argumentos se ignoran en cualquier otro 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- than 
+ distinto de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
@@ -11395,15 +11173,11 @@ Command
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Arguments for list 
+Los argumentos para 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 item
@@ -11411,13 +11185,11 @@ item
 
 \end_inset
 
-s (as in 
+s de lista (como en 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 item[foo]
@@ -11425,23 +11197,21 @@ item[foo]
 
 \end_inset
 
-) have the prefix 
+) tienen el prefijo 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 item:
 \end_layout
 
 \end_inset
 
- followed by the number (e.
+ seguido por el número (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
@@ -11450,8 +11220,6 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument item:1
 \end_layout
 
@@ -11471,11 +11239,7 @@ BabelPreamble
 
 \end_inset
 
- Esto sobrescribirá completamente cualquier anterior declaración
-\begin_inset Newline newline
-\end_inset
-
-
+ Esto sobrescribirá completamente cualquier anterior declaración 
 \begin_inset Flex Code
 status collapsed
 
@@ -11635,7 +11399,7 @@ DependsOn
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -11807,7 +11571,7 @@ string=""
 
 \end_inset
 
-] La cadena usada para una etiqueta con un 
+] La secuencia usada para una etiqueta con un 
 \begin_inset Flex Code
 status collapsed
 
@@ -11901,7 +11665,7 @@ y
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -11951,57 +11715,42 @@ int=0
 
 \end_inset
 
-] 
-\lang english
-Used for backporting new styles to stable \SpecialChar LyX
- versions.
- The first stable version that supports this tag is \SpecialChar LyX
+] Se usa para compatibilizar estilos nuevos a versiones estables de \SpecialChar LyX
+.
+ La primera versión estable que soporta esta etiqueta es \SpecialChar LyX
  2.1.0.
- The argment is a number which may either be 0, -1 or any value greater
- than zero.
- If the 
+ El argumento es un número 0, -1 o cualquier valor mayor de cero.
+ Si el indicador 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
- flag of a style is greater than zero, it will always be written to the
- document header.
- If a .lyx file is read, the style definitions from the document header are
- added to the document class.
- Therefore even older \SpecialChar LyX
- versions can handle the style.
- The argument of 
+ de un estilo es mayor que cero, se escribirá siempre en la cabecera del
+ documento.
+ Si un archivo .lyx es leido, las definiciones de estilo de la cabecera del
+ documento se añaden a la clase de documento.
+ Por eso, incluso versiones anteriores de \SpecialChar LyX
+ pueden manejar el estilo.
+ El argumento de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ForceLocal
 \end_layout
 
 \end_inset
 
- is a version number: If the style is read, and the version number is less
- than the version number of the already existing style in the document class,
- the new style is ignored.
- If the version number is greater, the new style replaces the existing style.
- A value of -1 means an infinite version number, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-the style is always used.
+ es un número de versión: si el estilo es leido, y el número de versión
+ es menor que el número de versión del estilo existente en la clase de documento
+, el nuevo se ignora.
+ Si el número de versión es mayor, el estilo nuevo reemplaza al existente.
+ -1 significa un número de versión infinito, o sea, el estilo se usa siempre.
 \end_layout
 
 \begin_layout Description
@@ -12282,13 +12031,9 @@ string="item"
 
 \end_inset
 
-] 
-\lang english
-The \SpecialChar LaTeX
- command sequence declaring an item in a list.
- The command is to be defined without the preceding backslash (the default
- is
-\lang spanish
+] La secuencia de comando \SpecialChar LaTeX
+ que declara un ítem en una lista.
+ El comando es para ser definido sin la barra invertida (por omisión es
  
 \begin_inset Quotes eld
 \end_inset
@@ -12297,11 +12042,7 @@ item
 \begin_inset Quotes erd
 \end_inset
 
-, 
-\lang english
-resulting in 
-\lang spanish
-
+, que resulta en 
 \begin_inset Flex Code
 status collapsed
 
@@ -12313,10 +12054,8 @@ item
 
 \end_inset
 
- 
-\lang english
-in the \SpecialChar LaTeX
- output).
+ en la salida \SpecialChar LaTeX
+).
 \end_layout
 
 \begin_layout Description
@@ -12486,11 +12225,7 @@ LabelCounter
 
 \end_inset
 
-
-\lang english
- 
-\lang spanish
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -12501,30 +12236,23 @@ string=""
 \end_inset
 
 ] El nombre del contador para numeración automática.
- 
-\lang english
-In order to have the counter appear with your label, you will need to reference
- it in the 
+ Con el fin de que el contador aparezca con su etiqueta, deberás referenciarla
+ en 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\family typewriter
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
 .
- This will work with 
+ Esto funcionará con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
@@ -12535,8 +12263,6 @@ s,
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Static
 \end_layout
 
@@ -12547,28 +12273,22 @@ Static
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Above
 \end_layout
 
 \end_inset
 
- and 
+ y 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Centered
 \end_layout
 
 \end_inset
 
-, at least.
-\lang spanish
-
+, al menos.
 \begin_inset Newline newline
 \end_inset
 
@@ -12670,6 +12390,9 @@ reference "subsec:Contadores"
 \end_inset
 
  para detalles sobre contadores
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -12687,7 +12410,7 @@ LabelFont
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -12889,10 +12612,6 @@ LabelType
 
 \end_inset
 
-
-\lang ngerman
- 
-\lang spanish
 [
 \begin_inset Flex Code
 status collapsed
@@ -12960,45 +12679,37 @@ LabelString
 \end_inset
 
  declarado como tal.
- 
-\lang english
-This will be displayed 
+ Esto se mostrará 
 \begin_inset Quotes fld
 \end_inset
 
-inline
+en línea
 \begin_inset Quotes frd
 \end_inset
 
-, at the beginning of the paragraph.
- If the 
+ al comienzo del párrafo.
+ Si 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- is 
+ es 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
-, then it will be displayed only in the first paragraph of any sequence
- of paragraphs with the same
-\lang spanish
- 
+, entonces se mostrará solo en el primer párrafo de cualquier secuencia
+ de párrafos con el mismo 
 \begin_inset Flex Code
 status collapsed
 
@@ -13050,11 +12761,8 @@ Static
 \end_inset
 
 .
- La etiqueta se imprimirá encima del párrafo, 
-\lang english
-either at the beginning of the line or centered
-\lang spanish
-.
+ La etiqueta se imprimirá encima del párrafo, o al inicio de línea o centrado.
+ 
 \end_layout
 
 \begin_layout Description
@@ -13097,31 +12805,25 @@ Sensitive
  quiere decir que la cadena (en código) de la etiqueta depende de la clase
  de flotante: Está codificado para ser `FloatType N', donde N es el valor
  del contador asociado al flotante.
- 
-\lang english
-For the case that a caption is inserted outside of a float the 
+ En el caso en que la leyenda se inserte adosada a un flotante 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
- will appear as 
+ aparecerá como 
 \begin_inset Quotes fld
 \end_inset
 
 Senseless!
-\lang spanish
-
 \begin_inset Quotes frd
 \end_inset
 
-.
+ , (¡Sin sentido!).
 \end_layout
 
 \begin_layout Description
@@ -13243,7 +12945,7 @@ LatexName
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -13267,7 +12969,7 @@ LatexParam
 status collapsed
 
 \begin_layout Plain Layout
-<parámetro>
+<parameter>
 \end_layout
 
 \end_inset
@@ -13284,25 +12986,7 @@ LatexName
 
 .
  Este parámetro no se puede cambiar desde dentro de \SpecialChar LyX
- 
-\lang english
-(use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Argument
-\end_layout
-
-\end_inset
-
- for customizable parameters).
- This will be output as is after all \SpecialChar LaTeX
-
-\lang spanish
- 
+ (usa 
 \begin_inset Flex Code
 status collapsed
 
@@ -13312,7 +12996,19 @@ Argument
 
 \end_inset
 
-s.
+ para parámetros personalizables).
+ Se emitirá como tal tras todos los 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+ \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Description
@@ -13346,7 +13042,7 @@ List_Environment, Bib_Environment
 ] Cómo debería traducirse el estilo a \SpecialChar LaTeX
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex Code
@@ -13359,23 +13055,17 @@ LatexType
 \end_inset
 
  es un poco engañoso porque estas reglas se aplican también a clases SGML.
- Consulta los archivos de clases SGML 
-\lang english
-(filenames 
+ Consulta los archivos de clases SGML (archivos de nombre 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 db_*.inc
 \end_layout
 
 \end_inset
 
- )
-\lang spanish
- para ejemplos concretos.
+ ) para ejemplos concretos.
 \end_layout
 
 \end_inset
@@ -13477,7 +13167,7 @@ Item_Environment
 
 \end_inset
 
- eslo mismo que 
+ es lo mismo que 
 \begin_inset Flex Code
 status collapsed
 
@@ -13573,33 +13263,31 @@ párrafos
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bib_Environment
 \end_layout
 
 \end_inset
 
- is like 
+ es como 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
- but adds additionally the necessary mandatory argument (the longest label)
- to the begin statement of the bibliography environment:
+ pero añade además el argumento obligatorio necesario (la etiqueta más larga)
+ a la declaración 
+\family typewriter
+begin
+\family default
+ del entorno bibliografía:
 \begin_inset Newline newline
 \end_inset
 
@@ -13609,25 +13297,23 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 begin{thebibliography}{99}
 \end_layout
 
 \end_inset
 
- It is therefore only useful for bibliography environments.
- The default longest label 
-\begin_inset Quotes eld
+ Por tanto solo es útil para entornos de bibliografía.
+ La etiqueta más larga predeterminada 
+\begin_inset Quotes fld
 \end_inset
 
 99
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- can be changed by the user in the paragraph settings of a bibliography
- item.
+ puede cambiarla el usuario en la configuración de párrafo de un ítem bibliográf
+ico.
 \end_layout
 
 \begin_layout Standard
@@ -13681,12 +13367,8 @@ string
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the beginning of the style content.
- A line break in the output can be indicated by
-\lang spanish
- 
+] Secuencia que se pone al inicio del contenido del estilo.
+ Un salto de línea en la salida puede indicarse con 
 \begin_inset Flex Code
 status collapsed
 
@@ -14172,7 +13854,7 @@ ObsoletedBy
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -14216,30 +13898,24 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Determines whether consecutive pragraphs of the same type are treated as
- belonging together.
- This has the effect that the 
+] Determina si párrafos consecutivos del mismo tipo se tratan como si fueran
+ juntos.
+ Esto tiene el efecto de que 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 GuiLabel
 \end_layout
 
 \end_inset
 
- is only printed once before such a group.
- By default, this is true for 
+ solo se imprime una vez delante de tal grupo.
+ Por omisión, esto es así para 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LaTeXType
 \end_layout
 
@@ -14250,26 +13926,22 @@ LaTeXType
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Environment
 \end_layout
 
 \end_inset
 
- and 
+ y 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Bib_Environment
 \end_layout
 
 \end_inset
 
- and false for all other types.
+ y no lo es para los demás tipos.
 \end_layout
 
 \begin_layout Description
@@ -14480,11 +14152,7 @@ espacio vertical
 \begin_inset Quotes frd
 \end_inset
 
- para
-\lang english
- separate paragraphs
-\lang spanish
-.
+ para separar párrafos.
  Si se elige 
 \begin_inset Quotes fld
 \end_inset
@@ -14617,10 +14285,9 @@ string
 \family typewriter
  
 \family default
-\lang english
-Defines individual characters that should be output in raw form, meaning
- without special translations that \SpecialChar LaTeX
- would require.
+Define caracteres individuales que deberían emitirse en bruto, o sea, sin
+ traducciones especiales que \SpecialChar LaTeX
+ podría requerir.
 \end_layout
 
 \begin_layout Description
@@ -14717,32 +14384,25 @@ string
 
 \end_inset
 
- (véase 
+ (véase la lista en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:List-of-functions"
+reference "cap:Lista-de-funciones"
 
 \end_inset
 
- 
-\lang english
-for the list of features).
- If you require a package with specific options, you can additionally use
- 
+).
+ Si necesitas un paquete con opciones específicas puedes usar además 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PackageOptions
 \end_layout
 
 \end_inset
 
- as a general text class parameter
-\lang spanish
- (véase 
+ como un parámetro de clase de texto general (véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Parámetros-generales-clases"
@@ -14784,35 +14444,29 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Resets the \SpecialChar LaTeX
- arguments of this style (as defined via the 
+] Reinicia los argumentos de este estilo (como definido mediante la etiqueta
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- tag).
- This is useful if you have copied a style via 
+).
+ Es útil si has copiado un estilo mediante 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-, but you do not want to inherit its (required and optional) arguments.
+, pero no quieres heredar sus argumentos (requerido y opcional).
 \end_layout
 
 \begin_layout Description
@@ -14835,12 +14489,8 @@ string
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the end of the layout content.
- A line break in the output can be indicated by
-\lang spanish
- 
+] Secuencia que se pone al final del contenido del formato.
+ Un salto de línea en la salida se puede indicar con 
 \begin_inset Flex Code
 status collapsed
 
@@ -15069,7 +14719,7 @@ TextFont
  Véase la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -15144,11 +14794,9 @@ never
 
 \end_inset
 
-] 
-\lang english
-This tag determines whether the first line indentation of this paragraph
- can be toggled via the Paragraph settings dialog.
- If 
+] Esta etiqueta determina si la sangría de primera línea de este párrafo
+ puede conmutarse en el diálogo de configuración del párrafo.
+ Si se establece 
 \emph on
 
 \begin_inset Flex Code
@@ -15157,7 +14805,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph off
-\lang english
 default
 \end_layout
 
@@ -15165,40 +14812,37 @@ default
 
 
 \emph default
- is set, indentation can be toggled if the document settings use 
-\begin_inset Quotes eld
+, la sangría puede conmutarse si la configuración del documento usa estilo
+ de párrafo 
+\begin_inset Quotes fld
 \end_inset
 
-indent
-\begin_inset Quotes erd
+sangrado
+\begin_inset Quotes frd
 \end_inset
 
- paragraph style, with 
+; con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 always
 \end_layout
 
 \end_inset
 
-, indentation can always be toggled, notwithstanding the document settings,
- with 
+, la sangría se puede conmutar siempre, no importa la configuración del
+ documento; con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 never
 \end_layout
 
 \end_inset
 
-, indentation can never be toggled.
+, la sangría nunca se puede conmutar.
 \end_layout
 
 \begin_layout Description
@@ -15564,11 +15208,7 @@ babel
 \begin_layout Standard
 Un punto importante a tener en cuenta aquí es que las traducciones son proporcio
 nadas por el propio \SpecialChar LyX
-, por 
-\lang english
-the file
-\lang spanish
- 
+, por medio del archivo 
 \begin_inset Flex Code
 status collapsed
 
@@ -15604,48 +15244,40 @@ BabelPreamble
 , puesto que el texto introducido en archivos de formato creados por
  el usuario no serán tenidos en cuenta por las rutinas de internacionalización
  de \SpecialChar LyX
- 
-\lang english
-unless the 
+ a menos que el archivo 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layouttranslations
 \end_layout
 
 \end_inset
 
- file is modified accordingly
-\lang spanish
-.
+ se modifique como correponde.
  Sin embargo, cualquier formato creado con la intención de ser incluido
  en \SpecialChar LyX
  debería usar estas etiquetas en los lugares apropiados.
- 
-\lang english
-Please note that the paragraph style translations provided by \SpecialChar LyX
- will never
- change with a minor update (e.
+ Ten en cuenta que las traducciones de estilo de párrafo provistas por \SpecialChar LyX
+
+ nunca cambian en actualizaciones menores (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
-from version 2.1.x to 2.1.y).
- It is however quite likely that a major update (e.
+de versión 2.1.x a 2.1.y).
+ Sin embargo es muy probable que en actualizaciones mayores (p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
-from 2.0.x to 2.1.y) will introduce new translations or corrections.
+de 2.0.x a 2.1.y) se introduzcan nuevas traducciones o correcciones.
 \end_layout
 
 \begin_layout Subsection
@@ -15727,11 +15359,8 @@ string
 
 \end_inset
 
-=!htbpH] 
-\lang english
-Allowed placement options for this float type.
- The value is a string of placement characters.
- Possible characters include: 
+=!htbpH] Opciones de colocación permitidas para este tipo de flotante.
+ El valor es una secuencia de caracteres: 
 \emph on
 h
 \emph default
@@ -15791,7 +15420,7 @@ here definitely
 \begin_inset Quotes erd
 \end_inset
 
-) and 
+) y 
 \emph on
 !
 \emph default
@@ -15804,8 +15433,8 @@ ignore LaTeX rules
 \end_inset
 
 ).
- The order of the characters in the string does not matter.
- If no placement options are allowed, use the string 
+ El orden no importa.
+ Si las opciones de colocación no están permitidas usa string 
 \emph on
 none
 \emph default
@@ -15850,27 +15479,23 @@ status collapsed
 
 
 \emph default
-] 
-\lang english
-Defines whether the float allows to be rotated via the \SpecialChar LaTeX
--package 
+] Define si el flotante admite rotación mediante el paquete \SpecialChar LaTeX
+ 
 \family typewriter
 rotfloat
 \family default
  (sidewaysfloat).
- Set to 
+ Pon 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
- if the float does not support this feature.
+ si el flotante no soporta esta característica.
 \end_layout
 
 \begin_layout Description
@@ -15911,23 +15536,19 @@ status collapsed
 
 
 \emph default
-] 
-\lang english
-Defines whether the float has a starred variant that spans columns in a
- two column paragraph.
- Set to 
+] Define si el flotante tiene una variante asterisco que abarca columnas
+ en un párrafo de dos columnas.
+ Pon 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
- if the float does not support this feature.
+ si el flotante no soporta esta característica.
 \end_layout
 
 \begin_layout Description
@@ -16822,11 +16443,8 @@ InsetLayout
  permite personalizar los parámetros de diseño de notas al pie, notas al
  margen, notas, recuadros de código \SpecialChar TeX
  (ERT), ramas, listados de programa,
- índices, cuadros, tablas, algoritmos, URL, y 
-\lang english
-captions
-\lang spanish
-, así como para definir recuadros flexibles.
+ índices, cuadros, tablas, algoritmos, URL, y leyendas, así como para definir
+ recuadros flexibles.
 \end_layout
 
 \begin_layout Standard
@@ -16858,12 +16476,12 @@ status collapsed
 
 \end_inset
 
- indica el recuadro cuyo formato se va a definir, y hay quatros casos.
+ indica el recuadro cuyo formato se va a definir, y hay cuatro casos.
 \end_layout
 
 \begin_layout Enumerate
 Se va a modificar el formato para un tipo de recuadro preexistente.
- En este caso,
+ En este caso, 
 \begin_inset Flex Code
 status collapsed
 
@@ -17089,13 +16707,8 @@ status collapsed
 
 \end_inset
 
- puede ser cualquier identificador válido no utilizado por un recuadro preexiste
-nte.
- El identificador puede incluir espacios, pero en este caso debe ponerse
- todo entre comillas.
- Puede además incluir un identificador de nombre del espacio, precedido
- de dos puntos, como 
-\begin_inset Quotes eld
+ debe de la forma 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -17103,17 +16716,29 @@ nte.
 status collapsed
 
 \begin_layout Plain Layout
-Flex:Code
+Flex:<name>
 \end_layout
 
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-.
- Anotar que la definición de un flexible debe incluir 
+, donde 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+
+ ser cualquier identificador válido no utilizado por un recuadro preexistente.
+ El identificador puede incluir espacios, pero en este caso debe ponerse
+ todo entre comillas.
+ Ten en cuenta que la definición de un flexible debe incluir 
 \emph on
 además
 \emph default
@@ -17128,16 +16753,12 @@ Type
 
 \end_inset
 
-.
+ declarando qué tipo de recuadro define.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-The layout for user specific branch is being defined.
- In this case
-\lang spanish
-, 
+Se va a definir el formato para rama específica de usuario.
+ En este caso, 
 \begin_inset Flex Code
 status collapsed
 
@@ -17147,11 +16768,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-must be of the form
-\lang spanish
- 
+ debe ser de la forma 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17160,7 +16777,7 @@ must be of the form
 status collapsed
 
 \begin_layout Plain Layout
-Branch:<nombre>
+Branch:<name>
 \end_layout
 
 \end_inset
@@ -17169,37 +16786,28 @@ Branch:<nombre>
 \begin_inset Quotes frd
 \end_inset
 
-, 
-\lang english
-where
-\lang spanish
- 
+, donde 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-nombre
+name
 \end_layout
 
 \end_inset
 
- 
-\lang english
-may be be any valid identifier of branch defined in user's document.
- The identifier may include spaces, but in that case the whole thing must
- be wrapped in quotes.
- The main purpose of this feature is to allow \SpecialChar LaTeX
- wrapping around specific
- branches as user needs.
+ puede ser cualquier identificador válido de rama definido en el documento
+ del usuario.
+ Este identificador puede incluir espacios, pero, en ese caso todo debe
+ ir entre comillas.
+ El propósito principal de esta característica es permitir a \SpecialChar LaTeX
+ envolver ramas
+ específicas como necesite el usuario.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-The layout of a user (or class) specific caption is being defined.
- In this case
-\lang spanish
-, 
+Se va a definir el formato de una leyenda específica de usuario (o clase).
+ En este caso, 
 \begin_inset Flex Code
 status collapsed
 
@@ -17209,11 +16817,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-must be of the form
-\lang spanish
- 
+ debe ser de la forma 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17222,7 +16826,7 @@ must be of the form
 status collapsed
 
 \begin_layout Plain Layout
-Caption:<nombre>
+Caption:<name>
 \end_layout
 
 \end_inset
@@ -17231,26 +16835,18 @@ Caption:<nombre>
 \begin_inset Quotes frd
 \end_inset
 
-, 
-\lang english
-where
-\lang spanish
- 
+, donde 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-nombre
+name
 \end_layout
 
 \end_inset
 
- 
-\lang english
-specifies the name of the caption as it appears in the menu.
- Have a look at the standard caption
-\lang spanish
- (
+ especifica el nombre de la leyenda como aparece en el menú.
+ Repasa la leyenda estándar (
 \begin_inset Flex Code
 status collapsed
 
@@ -17260,15 +16856,11 @@ Caption:Standard
 
 \end_inset
 
-), 
-\lang english
-the specific captions of the KOMA-Script classes (
+), las leyendas específicas de las clases KOMA-Script (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Above
 \end_layout
 
@@ -17279,14 +16871,12 @@ Caption:Above
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Caption:Below
 \end_layout
 
 \end_inset
 
-) or the module 
+) o el módulo 
 \family sans
 Multilingual
 \begin_inset space ~
@@ -17294,7 +16884,6 @@ Multilingual
 
 Captions
 \family default
-\lang spanish
  (
 \begin_inset Flex Code
 status collapsed
@@ -17305,9 +16894,7 @@ Caption:Bicaption
 
 \end_inset
 
-) 
-\lang english
-for applications.
+) para aplicaciones.
 \end_layout
 
 \begin_layout Standard
@@ -17344,36 +16931,28 @@ int
 
 \end_inset
 
-] 
-\lang english
-Defines argument number of a command\SpecialChar breakableslash
-environment associated with the current
- layout.
- The definition must end with 
+] Define el número de argumento de un comando\SpecialChar breakableslash
+entorno asociado con el formato
+ actual.
+ La definición debe terminar con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndArgument
 \end_layout
 
 \end_inset
 
 .
- See 
-\lang spanish
-
+ Véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Estilos-de-párrafo"
 
 \end_inset
 
-
-\lang english
- for details.
+ para detalles.
 \end_layout
 
 \begin_layout Description
@@ -17386,11 +16965,7 @@ BabelPreamble
 
 \end_inset
 
- 
-\lang english
-Preamble for changing language commands
-\lang spanish
-; véase 
+ Preámbulo para comandos de cambio de idioma; véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
@@ -17415,22 +16990,20 @@ BgColor
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
 
 ] El color para el fondo del recuadro.
- Véase 
+ Véase la lista de colores en 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Names-of-colors"
+reference "cap:Nombres-de-colores"
 
 \end_inset
 
- 
-\lang english
-for a list of the available color names.
+.
 \end_layout
 
 \begin_layout Description
@@ -17456,13 +17029,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -17498,11 +17067,7 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles
-\lang spanish
-, véase 
+] Como los estilos de párrafo, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Estilos-de-párrafo"
@@ -17510,15 +17075,11 @@ reference "subsec:Estilos-de-párrafo"
 \end_inset
 
 .
- 
-\lang english
-Note that you need to specify the complete type, e.
+ Ten en cuenta que debes especificar el tipo completo, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g
-\lang spanish
-.
+e.
 \begin_inset space ~
 \end_inset
 
@@ -17527,7 +17088,7 @@ g
 status collapsed
 
 \begin_layout Plain Layout
-CopyStyle Flex:<nombre>
+CopyStyle Flex:<name>
 \end_layout
 
 \end_inset
@@ -17558,13 +17119,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -17676,13 +17233,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -17793,7 +17346,7 @@ Font
  Véase la 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -17858,51 +17411,43 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Force a fixed width encoding for the translated contents of 
+] Fuerza una codificación de ancho fijo para el contenido traducido del
+ código 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 BabelPreamble
 \end_layout
 
 \end_inset
 
- and 
+ y 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LangPreamble
 \end_layout
 
 \end_inset
 
- code generated by this layout.
- This is needed for special \SpecialChar LaTeX
--packages like 
+ generado por este formato.
+ Esto es necesario para paquetes especiales \SpecialChar LaTeX
+ como 
 \family typewriter
 listings
 \family default
- that do not work with variable width encodings such as 
+ que no trabajan con codificaciones de ancho variable como 
 \family sans
 utf8
 \family default
 .
- This setting is ignored if fully Unicode aware \SpecialChar LaTeX
- backends such as 
-\lang ngerman
-Xe\SpecialChar TeX
- or Lua\SpecialChar TeX
-
-\lang english
- are used.
+ Esta configuración se ignora si se usan soportes \SpecialChar LaTeX
+ compatibles totalmente
+ con Unicode como Xe\SpecialChar TeX
+ o Lua\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Description
@@ -17941,15 +17486,11 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-When using babel, always use a local font switch (
+] Cuando se usa babel, usar siempre un cambiador de fuente local (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 foreignlanguage
@@ -17957,9 +17498,7 @@ foreignlanguage
 
 \end_inset
 
-), never a global one (such as 
-\lang spanish
-
+), nunca uno global (como 
 \begin_inset Flex Code
 status collapsed
 
@@ -17997,13 +17536,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18071,12 +17606,11 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Force a a line break in the \SpecialChar LaTeX
- output before the inset starts and after the
- inset ends.
- This assures the inset itself is output on its own lines, for parsing purposes.
+] Fuerza un salto de línea en la salida \SpecialChar LaTeX
+ antes de iniciarse el recuadro
+ de inserción y después de finalizar.
+ Esto asegura que el recuadro mismo se ubique en sus propias líneas, con
+ fines de análisis.
 \end_layout
 
 \begin_layout Description
@@ -18102,13 +17636,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18157,13 +17687,9 @@ status collapsed
 
 \emph default
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18174,11 +17700,7 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph style
-\lang spanish
-s, véase 
+] Como en estilos de párrafo, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Estilos-de-párrafo"
@@ -18232,13 +17754,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18285,13 +17803,9 @@ status collapsed
 
 \emph default
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18302,11 +17816,7 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles
-\lang spanish
-, véase 
+] Como en estilos de párrafo, véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Estilos-de-párrafo"
@@ -18330,7 +17840,7 @@ LabelFont
  Véase la 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -18411,11 +17921,7 @@ LangPreamble
 
 \end_inset
 
- 
-\lang english
-Language dependent preamble
-\lang spanish
-; véase 
+ Preámbulo dependiente del idioma; véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:I18n"
@@ -18440,7 +17946,7 @@ LatexName
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -18465,7 +17971,7 @@ LatexParam
 status collapsed
 
 \begin_layout Plain Layout
-<parámetro>
+<parameter>
 \end_layout
 
 \end_inset
@@ -18492,25 +17998,7 @@ status collapsed
 
 .
  Este parámetro no se puede cambiar desde dentro de \SpecialChar LyX
- 
-\lang english
-(use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Argument
-\end_layout
-
-\end_inset
-
- for customizable parameters).
- It will be output as is after all \SpecialChar LaTeX
-
-\lang spanish
- 
+ (usa 
 \begin_inset Flex Code
 status collapsed
 
@@ -18520,7 +18008,19 @@ Argument
 
 \end_inset
 
-s..
+ para parámetros personalizables).
+ Se emitirá como tal después de todos los 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+ \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Description
@@ -18543,29 +18043,23 @@ Command, Environment, None
 
 \end_inset
 
-] 
-\lang english
-How the style should be translated into \SpecialChar LaTeX
+] Cómo debería traducirse el estilo en \SpecialChar LaTeX
 .
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LatexType
 \end_layout
 
 \end_inset
 
- is perhaps a bit misleading, since these rules apply to SGML classes, too.
- Visit the SGML class files for specific examples.
+ es quizás un poco confuso porque estas eglas se aplican también a clases.
+ Mira los archivos de clase SGML para ejemplos concretos.
 \end_layout
 
 \end_inset
@@ -18588,9 +18082,7 @@ None
 
 \end_inset
 
- 
-\lang english
-means nothing special
+ significa nada especial
 \end_layout
 
 \begin_layout Description
@@ -18603,15 +18095,11 @@ Command
 
 \end_inset
 
- 
-\lang english
-means 
+ significa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 
@@ -18637,15 +18125,11 @@ Environment
 
 \end_inset
 
- 
-\lang english
-means 
+ significa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 begin{
@@ -18672,10 +18156,8 @@ LatexName
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Putting the last few things together, the \SpecialChar LaTeX
- output will be either: 
+Poniendo juntas las últimas cosas, la salida \SpecialChar LaTeX
+ sería: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -18686,7 +18168,7 @@ LatexName[LatexParam]{\SpecialChar ldots
 \end_layout
 
 \begin_layout Standard
-or: 
+o: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -18699,10 +18181,8 @@ end{LatexName}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-depending upon the \SpecialChar LaTeX
- type.
+dependiendo del tipo de \SpecialChar LaTeX
+.
 \end_layout
 
 \end_deeper
@@ -18726,12 +18206,8 @@ string
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the beginning of the layout content.
- A line break in the output can be indicated by
-\lang spanish
- 
+] Secuencia que se pone al comienzo del contenido del formato.
+ Un salto de línea en la salida se indica con 
 \begin_inset Flex Code
 status collapsed
 
@@ -18891,13 +18367,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -18941,13 +18413,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -19000,21 +18468,17 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Deletes an existing 
+] Borra un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
-.
+ existente.
 \end_layout
 
 \begin_layout Description
@@ -19037,46 +18501,38 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Name of an 
+] Nombre de un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
- that has replaced this 
+ que ha recolocado este 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
 .
- This is used to rename an 
+ Se usa para renombrar un 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InsetLayout
 \end_layout
 
 \end_inset
 
-, while keeping backward compatibility.
+, mientras se mantiene compatibilidad hacia atrás.
 \end_layout
 
 \begin_layout Description
@@ -19102,13 +18558,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -19157,13 +18609,9 @@ status collapsed
 
 \emph default
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -19295,35 +18743,29 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Resets the \SpecialChar LaTeX
- arguments of this layout (as defined via the 
+] Reinicia los argumentos \SpecialChar LaTeX
+ de este formato (como se definen con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
  tag).
- This is useful if you have copied a style via 
+ Es útil si has copiado un estilo con 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CopyStyle
 \end_layout
 
 \end_inset
 
-, but you do not want to inherit its (required and optional) arguments.
+, pero no quieres heredar sus argumentos (requerido y opcional).
 \end_layout
 
 \begin_layout Description
@@ -19347,13 +18789,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -19390,12 +18828,8 @@ string
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the end of the layout content.
- A line break in the output can be indicated by
-\lang spanish
- 
+] Secuencia que se pone al final del contenido del formato.
+ Un salto de línea en la salida se indica con 
 \begin_inset Flex Code
 status collapsed
 
@@ -19429,13 +18863,9 @@ status collapsed
 \end_inset
 
 ,
-\lang ngerman
-
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\lang spanish
 
 \begin_inset Flex Code
 status collapsed
@@ -19510,7 +18940,7 @@ en el archivo de formato para que funcionen.
 \end_layout
 
 \begin_layout LyX-Code
-Counter <nombre>
+Counter <name>
 \end_layout
 
 \begin_layout Standard
@@ -19519,7 +18949,7 @@ donde
 status collapsed
 
 \begin_layout Plain Layout
-<nombre>
+<name>
 \end_layout
 
 \end_inset
@@ -19562,11 +18992,9 @@ int=1
 
 \end_inset
 
-] 
-\lang english
-Sets the initial value for the counter, to which it will be reset whenever
- that happens.
- Normally, one will want the default, 1.
+] Establece el valor inicial para el contador, al cuál se reiniciará cada
+ vez que suceda esto.
+ Normalmente será 1.
 \end_layout
 
 \begin_layout Description
@@ -19631,10 +19059,6 @@ LabelString
 
 \end_inset
 
-
-\begin_inset Newline linebreak
-\end_inset
-
  (o 
 \begin_inset Flex Code
 status collapsed
@@ -19693,7 +19117,22 @@ numbertype
 
 \end_inset
 
- puede ser: 
+ puede ser:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En realidad la cosa es un poco más compleja: cualquier 
+\emph on
+numbertype
+\emph default
+ distinto de los descritos a continuación generará números arábigos.
+ No sería sorprendenta ver este cambio en el futuro.
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -19811,7 +19250,18 @@ Roman
 
 \end_inset
 
- para romanos en mayúsculas: I, II, III.
+ para romanos en mayúsculas: I, II, III\SpecialChar ldots
+; 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+hebrew
+\end_layout
+
+\end_inset
+
+ para números hebreos.
 \end_layout
 
 \end_deeper
@@ -19952,7 +19402,7 @@ Sección
 \end_inset
 
 .
- La cadena debería contener 
+ La secuencia debería contener 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20011,10 +19461,10 @@ section
 \end_layout
 
 \begin_layout Subsection
-Descripción de las tipografías
+Descripción de la tipografía
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Tipografías"
+name "subsec:Tipografía"
 
 \end_inset
 
@@ -20022,7 +19472,7 @@ name "subsec:Tipografías"
 \end_layout
 
 \begin_layout Standard
-Una descripción de una tipografía se ve como:
+Una descripción de una tipografía se ve así:
 \end_layout
 
 \begin_layout LyX-Code
@@ -21205,7 +20655,7 @@ Contents of the paragraph.
 \end_layout
 
 \begin_layout Standard
-Por supuesto, `label tags´ se omiten si el párrafo no tiene rótulo.
+Por supuesto, `label tags´ se omiten si el párrafo no tiene etiqueta.
 \end_layout
 
 \begin_layout Standard
@@ -21253,8 +20703,8 @@ value
 \end_layout
 
 \begin_layout Standard
-El rótulo se genera solo para el primer párrafo, como debería ser, por ejemplo,
- para un teorema.
+La etiqueta se genera solo para el primer párrafo, como debería ser, por
+ ejemplo, para un teorema.
  
 \end_layout
 
@@ -21410,7 +20860,7 @@ HTMLLabelFirst
 
 \end_inset
 
-: Si 
+: si 
 \begin_inset Flex Code
 status collapsed
 
@@ -21420,9 +20870,9 @@ HTMLLabelFirst
 
 \end_inset
 
- es falso (por omisión), se obtiene el primero de ellos, con el rótulo dentro
- del ítem; si verdadero, se obtiene el segundo, con el rótulo fuera del
- ítem.
+ es falso (por omisión), se obtiene el primero de ellos, con la etiqueta
+ dentro del ítem; si verdadero, se obtiene el segundo, con la etiqueta fuera
+ del ítem.
 \end_layout
 
 \begin_layout Standard
@@ -21433,7 +20883,8 @@ Las etiquetas específicas y la salida de los atributos para cada tipo de
  usa predefinidos adecuados para muchos
  de estos valores, por lo que generalmente no necesitarás hacer nada para
  obtener una buena salida XHTML.
- Partiendo de las etiquetas ya disponibles puedes afinar lascosas a tu gusto.
+ Partiendo de las etiquetas ya disponibles puedes afinar las cosas a tu
+ gusto.
 \end_layout
 
 \begin_layout Description
@@ -21974,11 +21425,7 @@ status collapsed
 
  generado por el formato, por tanto solo es necesario incluir el propio
  CSS.
- 
-\lang english
-Must end with
-\lang spanish
- 
+ Debe acabar con 
 \begin_inset Flex Code
 status collapsed
 
@@ -22935,7 +22382,7 @@ Font
  (Véase 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tipografías"
+reference "subsec:Tipografía"
 
 \end_inset
 
@@ -23009,7 +22456,7 @@ src/FontInfo.cpp
 Inserción de material externo
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:Inserción-de-material"
+name "cap:Inserción-de-material"
 
 \end_inset
 
@@ -24199,23 +23646,20 @@ Preferencias
 
 ).
  Este comando debe aparecer exactamente una vez.
+ Si el formato del archivo resultante es PDF, debes especificar el formato
  
-\lang english
-If the resulting file format is PDF, you need to specify the format 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf6
 \end_layout
 
 \end_inset
 
 .
- This is the PDF format used for including graphics.
- The other defined PDF formats are for document export.
+ Es el formato PDF usado para incluir gráficos.
+ Los otros formatos PDF definidos son para exportación de documentos.
 \end_layout
 
 \begin_layout Description
@@ -24411,17 +23855,15 @@ $$pngOrjpg
 
 \end_inset
 
- 
-\lang english
-This will be the string 
-\begin_inset Quotes eld
+ Esto será 
+\begin_inset Quotes fld
 \end_inset
 
 jpg
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- if the file is in JPEG format, otherwise it will be the string 
+ si el archivo está en formato JPEG, si no será 
 \begin_inset Quotes eld
 \end_inset
 
@@ -24430,11 +23872,11 @@ png
 \end_inset
 
 .
- This is useful to avoid uneeded conversions for output formats that support
- both PNG and JPEG fomats.
- The predefined RasterImage template uses this macro for the pdf\SpecialChar TeX
- output
- format.
+ Esto es útil para evitar conversiones innecesarias para formatos de salida
+ que soporten tanto PNG como JPEG.
+ La plantilla predefinida RasterImage usa esta macro para el formato de
+ salida pdf\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Description
@@ -24948,14 +24390,11 @@ Incluir material externo suministra mucha potencia y has de ser cuidadoso
 
 \begin_layout Chapter
 \start_of_appendix
-
-\lang english
-List of functions to be used in layouts
-\lang spanish
-
+Lista de funciones soportadas por \SpecialChar LyX
+ en archivos de formato
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:List-of-functions"
+name "cap:Lista-de-funciones"
 
 \end_inset
 
@@ -25797,14 +25236,10 @@ verbatim
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Names of available colors to be used in layouts
-\lang spanish
-
+Nombres de colores disponibles para archivos de formato
 \begin_inset CommandInset label
 LatexCommand label
-name "chap:Names-of-colors"
+name "cap:Nombres-de-colores"
 
 \end_inset
 
@@ -25812,517 +25247,345 @@ name "chap:Names-of-colors"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The colors listed here are the standard colors and the those that you can
- adjust in the \SpecialChar LyX
- preferences.
+Los colores listados son los colores estándar y los que se pueden modificar
+ en las preferencias de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 none
 \family roman
 \series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- No particular color – clear or default
+ 
+\family default
+\series default
+Ningún color en particular, transparente o ausente
 \end_layout
 
 \begin_layout Description
-
-\lang english
 black
 \end_layout
 
 \begin_layout Description
-
-\lang english
 white
 \end_layout
 
 \begin_layout Description
-
-\lang english
 red
 \end_layout
 
 \begin_layout Description
-
-\lang english
 green
 \end_layout
 
 \begin_layout Description
-
-\lang english
 blue
 \end_layout
 
 \begin_layout Description
-
-\lang english
 cyan
 \end_layout
 
 \begin_layout Description
-
-\lang english
 magenta
 \end_layout
 
 \begin_layout Description
-
-\lang english
 yellow
 \end_layout
 
 \begin_layout Description
-
-\lang english
-added_space Added space marker color
+added_space Color marcador espacio añadido
 \end_layout
 
 \begin_layout Description
-
-\lang english
-addedtext Added text color
+addedtext Color texto añadido
 \end_layout
 
 \begin_layout Description
-
-\lang english
-appendix Appendix marker color
+appendix Color marcador de apéndice
 \end_layout
 
 \begin_layout Description
-
-\lang english
-background Background color
+background Color de fondo
 \end_layout
 
 \begin_layout Description
-
-\lang english
-bottomarea Bottom area color
+bottomarea Color área inferior
 \end_layout
 
 \begin_layout Description
-
-\lang english
-branchlabel Label color for branches
+branchlabel Color etiqueta de ramas
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonbg Color used for bottom background
+buttonbg Color fondo de botón
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonhoverbg Color used for button background under focus
+buttonhoverbg Color fondo de botón en foco
 \end_layout
 
 \begin_layout Description
-
-\lang english
-buttonframe Color for inset button frames
+buttonframe Color para marcos de botones de recuadro
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changebar Changebar color
+changebar Color barra de cambios
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor1 Changed text color author 1
+changedtextauthor1 Color autor 1 de texto cambiado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor2 Changed text color author 2
+changedtextauthor2 Color autor 2 de texto cambiado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor3 Changed text color author 3
+changedtextauthor3 Color autor 3 de texto cambiado 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor4 Changed text color author 4
+changedtextauthor4 Color autor 4 de texto cambiado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-changedtextauthor5 Changed text color author 5
+changedtextauthor5 Color autor 5 de texto cambiado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-collapsable_inset_frame Collapsable insets framecolor
+collapsable_inset_frame Color marco de recuadro plegable
 \end_layout
 
 \begin_layout Description
-
-\lang english
-collapsable_inset_text Collapsable insets text color
+collapsable_inset_text Color texto de recuadro plegable 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-command Text color for command insets
+command Color texto recuadros de comando
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commandbg Background color for command insets
+commandbg Color fondo recuadros de comando
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commandframe Frame color for command insets
+commandframe Color marco recuadros de comando
 \end_layout
 
 \begin_layout Description
-
-\lang english
-comment color for comments
+comment Color comentarios
 \end_layout
 
 \begin_layout Description
-
-\lang english
-commentbg Background color of comments
+commentbg Color fondo de comentarios
 \end_layout
 
 \begin_layout Description
-
-\lang english
-cursor Cursor color
+cursor Color cursor
 \end_layout
 
 \begin_layout Description
-
-\lang english
-deletedtext Deleted text color
+deletedtext Color texto borrado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-deletedtextmodifier Deleted text modifying color
+deletedtextmodifier Color modificación de texto borrado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-depthbar Color for the depth bars in the margin
+depthbar Color barra de anidación en margen
 \end_layout
 
 \begin_layout Description
-
-\lang english
-eolmarker End of line marker color
+eolmarker Color marcador fin de línea
 \end_layout
 
 \begin_layout Description
+error Color cuadro de error \SpecialChar LaTeX
 
-\lang english
-error Color of the \SpecialChar LaTeX
- error box
 \end_layout
 
 \begin_layout Description
-
-\lang english
-footlabel Label color for footnotes
+footlabel Color etiqueta de notas a pie de página
 \end_layout
 
 \begin_layout Description
-
-\lang english
-graphicsbg Graphics inset background color
+graphicsbg Color fondo de recuadros de inserción de gráficos
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedout Label color for greyedout insets
+greyedout Color etiqueta de recuadros de notas grises
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedoutbg Background color of greyedout inset
+greyedoutbg Color fondo de recuadros de notas grises
 \end_layout
 
 \begin_layout Description
-
-\lang english
-greyedouttext Color for greyedout inset text
+greyedouttext Color texto de recuadros de notas grises
 \end_layout
 
 \begin_layout Description
-
-\lang english
-indexlabel Label color for index insets
+indexlabel Color etiqueta de recuadros de índice
 \end_layout
 
 \begin_layout Description
-
-\lang english
-ignore The color is ignored
+ignore El color es ignorado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-inherit The color is inherited
+inherit El color es heredado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-inlinecompletion Inline completion color
+inlinecompletion Color autofinalización en línea
 \end_layout
 
 \begin_layout Description
-
-\lang english
-insetbg Inset marker background color
+insetbg Color fondo de marcador de recuadro
 \end_layout
 
 \begin_layout Description
-
-\lang english
-insetframe Inset marker frame color
+insetframe Color marco de marcador de recuadro
 \end_layout
 
 \begin_layout Description
-
-\lang english
-language Color for marking foreign language words
+language Color marcador de palabras en otros idiomas
 \end_layout
 
 \begin_layout Description
+latex Color texto en modo \SpecialChar LaTeX
 
-\lang english
-latex Text color in \SpecialChar LaTeX
- mode
 \end_layout
 
 \begin_layout Description
-
-\lang english
-listingsbg Background color of listings inset
+listingsbg Color fondo de recuadro listado de código
 \end_layout
 
 \begin_layout Description
-
-\lang english
-marginlabel Label color for margin notes
+marginlabel Color etiqueta de notas al margen
 \end_layout
 
 \begin_layout Description
-
-\lang english
-math Math inset text color
+math Color texto de recuadro de ecuación
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathbg Math inset background color
+mathbg Color fondo de recuadro de ecuación
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathcorners Math inset frame color not under focus
+mathcorners Color marco de recuadro de ecuación fuera de foco
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathframe Math inset frame color under focus
+mathframe Color marco de recuadro de ecuación en foco
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathline Math line color
+mathline Color línea de ecuación
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrobg Macro math inset background color
+mathmacrobg Color fondo de recuadro de macro matemática
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacroblend Macro math blended color
+mathmacroblend Color mezclado macro matemática
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacroframe Macro math frame color
+mathmacroframe Color marco de macro matemática
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrohoverbg Macro math inset background color hovered
+mathmacrohoverbg Color fondo de recuadro de macro matemática bajo el ratón
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrolabel Macro math label color
+mathmacrolabel Color etiqueta macro matemática
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacronewarg Macro template color for new parameters
+mathmacronewarg Color plantilla de macro para nuevos parámetros
 \end_layout
 
 \begin_layout Description
-
-\lang english
-mathmacrooldarg Macro template color for old parameters
+mathmacrooldarg Color plantilla de macro para antiguos parámetros
 \end_layout
 
 \begin_layout Description
-
-\lang english
-newpage New page color
+newpage Color página nueva
 \end_layout
 
 \begin_layout Description
-
-\lang english
-nonunique_inlinecompletion Inline completion color for the non-unique part
+nonunique_inlinecompletion Color autofinalización en línea parte no única
 \end_layout
 
 \begin_layout Description
-
-\lang english
-notebg Background color of notes
+notebg Color fondo de notas
 \end_layout
 
 \begin_layout Description
-
-\lang english
-notelabel Label color for notes
+notelabel Color etiqueta de notas
 \end_layout
 
 \begin_layout Description
-
-\lang english
-pagebreak Page break/line break color
+pagebreak Color salto de página/línea
 \end_layout
 
 \begin_layout Description
-
-\lang english
-paragraphmarker Color used for the pilcrow sign to mark the end of a paragraph
+paragraphmarker Color símbolo marcador de fin de párrafo
 \end_layout
 
 \begin_layout Description
-
-\lang english
-phantomtext Text color for phantom insets
+phantomtext Color texto de recuadro fantasma
 \end_layout
 
 \begin_layout Description
-
-\lang english
-preview The color used for previews
+preview Color vista preliminar
 \end_layout
 
 \begin_layout Description
-
-\lang english
-previewframe Preview frame color
+previewframe Color marco vista preliminar
 \end_layout
 
 \begin_layout Description
-
-\lang english
-regexpframe Color for regexp frame
+regexpframe Color marco regexp
 \end_layout
 
 \begin_layout Description
-
-\lang english
-selection Background color of selected text
+selection Color fondo de texto seleccionado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-selectiontext Foreground color of selected text
+selectiontext Color de texto seleccionado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-shadedbg Background color of shaded box
+shadedbg Color fondo de marco coloreado
 \end_layout
 
 \begin_layout Description
-
-\lang english
-special Special chars text color
+special Color texto de caracteres especiales
 \end_layout
 
 \begin_layout Description
-
-\lang english
-tabularline Table line color
+tabularline Color línea de cuadro/tabla
 \end_layout
 
 \begin_layout Description
-
-\lang english
-tabularonoffline Table line color
+tabularonoffline Color línea de cuadro/tabla on/off
 \end_layout
 
 \begin_layout Description
-
-\lang english
-urllabel Label color for URL insets
+urllabel Color etiqueta de recuadros URL
 \end_layout
 
 \begin_layout Description
-
-\lang english
-urltext Color for URL inset text
+urltext Color texto de recuadros URL
 \end_layout
 
 \end_body
