@@ -150,6 +150,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 2089657418 "Usti" 
 \end_header
 
 \begin_body
@@ -1766,7 +1767,7 @@ For example, the file may refer to other files—images, for example—using
 \end_layout
 
 \begin_layout Standard
-The definitions of the copiers may use four variables:
+The definitions of the copiers may use eight variables:
 \end_layout
 
 \begin_layout Labeling
@@ -2993,7 +2994,22 @@ po
 
 \end_inset
 
- files, as well.
+ files, as well, see
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html#PO-Mode
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3368,7 +3384,36 @@ UserDir/doc/xx/
 
 \end_inset
 
- directory.
+ directory
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note: For a complex document with external material (images, etc.), if you
+ make a copy e.g.
+ in a temp dir, beware that the links to external material may be broken
+ when the document is moved to a different place.
+ The best way is to retrieve the LyX tree from git (see
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) and to edit the doc file in place.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -5919,7 +5964,8 @@ status collapsed
 
 \end_inset
 
-.
+ or /usr/local/texlive/XXXX where XXXX is the year of the installed TeXLive
+ distribution if TeXLive was installed from the web.
  The location of the `user' TeX tree is defined by 
 \begin_inset Flex Code
 status collapsed
@@ -5940,6 +5986,12 @@ $HOME/texmf
 
 \end_inset
 
+, or 
+\family sans
+\lang french
+$HOME/.texliveXXXX
+\family default
+\lang english
 .
  (If these variables are not predefined, you have to define them.) You'll
  probably need root permissions to create or modify the `local' tree, but
@@ -11252,7 +11304,7 @@ Argument item:1
 
 \end_inset
 
-)
+).
 \end_layout
 
 \end_deeper
@@ -11695,7 +11747,7 @@ int=0
 
 ] Used for backporting new styles to stable LyX versions.
  The first stable version that supports this tag is LyX 2.1.0.
- The argment is a number which may either be 0, -1 or any value greater
+ The argument is a number which may either be 0, -1 or any value greater
  than zero.
  If the 
 \begin_inset Flex Code
@@ -11722,7 +11774,7 @@ ForceLocal
 
 \end_inset
 
- is a version number: If the style is read, and the version number is less
+ is a version number: if the style is read, and the version number is less
  than the version number of the already existing style in the document class,
  the new style is ignored.
  If the version number is greater, the new style replaces the existing style.
@@ -13201,8 +13253,12 @@ Environment
 
 \end_inset
 
- but adds additionally the necessary mandatory argument (the longest label)
- to the begin statement of the bibliography environment:
+ but adds
+\change_deleted 2089657418 1453158788
+ 
+\change_unchanged
+ the necessary mandatory argument (the longest label) to the begin statement
+ of the bibliography environment:
 \begin_inset Newline newline
 \end_inset
 
@@ -13218,6 +13274,7 @@ begin{thebibliography}{99}
 
 \end_inset
 
+.
  It is therefore only useful for bibliography environments.
  The default longest label 
 \begin_inset Quotes eld
@@ -14949,7 +15006,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-from 2.0.x to 2.1.y) will introduce new translations or corrections.
+from 2.0.x to 2.1.0) will introduce new translations or corrections.
 \end_layout
 
 \begin_layout Subsection
@@ -19320,7 +19377,7 @@ misc %author%,
 \begin_inset Quotes eld
 \end_inset
 
-%title
+%title%
 \begin_inset Quotes erd
 \end_inset
 
@@ -24316,7 +24373,7 @@ branchlabel Label color for branches
 \end_layout
 
 \begin_layout Description
-buttonbg Color used for bottom background
+buttonbg Color used for button background
 \end_layout
 
 \begin_layout Description
