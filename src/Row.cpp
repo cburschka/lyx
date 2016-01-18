@@ -128,6 +128,18 @@ bool Row::Element::breakAt(int w, bool force)
 		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
 		return true;
 	}
+
+	// Qt will not break at a leading space, and we need that sometimes, see
+	//   http://www.lyx.org/trac/ticket/9921.
+	// It would be nice to fix this properly, but for now do it by hand.
+	// FIXME: figure out what to do for RtL text.
+	if (!isRTL() && !str.empty() && str[0] == ' ') {
+		dim.wid = 0;
+		str = ' ';
+		endpos = pos + 1;
+		return true;
+	}
+
 	return false;
 }
 
@@ -466,7 +478,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 			/* after breakAt, there may be spaces at the end of the
 			 * string, but they are not counted in the string length
 			 * (QTextLayout feature, actually). We remove them, but do
-			 * not change the endo of the row, since the spaces at row
+			 * not change the end of the row, since spaces at row
 			 * break are invisible.
 			 */
 			brk.str = rtrim(brk.str);
