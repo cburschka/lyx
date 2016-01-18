@@ -1462,6 +1462,12 @@ reference "subsec:Interpreting-export-tests"
 \end_layout
 
 \begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:ctest-options"
+
+\end_inset
+
 Running the tests
 \end_layout
 
@@ -1556,6 +1562,17 @@ status collapsed
 \end_inset
 
  Exclude the tests whose labels match the given regular expression.
+ Cannot be combined with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-L
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1613,7 +1630,7 @@ print-labels
 \end_layout
 
 \begin_layout Standard
-Other relevant options are:
+Other useful options are:
 \end_layout
 
 \begin_layout Labeling
@@ -1914,45 +1931,6 @@ A good question is why do we enable the tests for non-default formats? The
 \end_layout
 
 \begin_layout Standard
-What action should you take if a test fails? This depends:
-\end_layout
-
-\begin_layout Standard
-Generally, if a change breaks compilation for the target format (for the
- manuals pdf2) without solving some important other issue, fix or revert
- the commit that led to failure.
- If a change breaks compilation for some non-target format (for the manuals
- everything except pdf2), invert the test.
- 
-\end_layout
-
-\begin_layout Standard
-A special case is given, if the export was succeeding before but showing
- garbled text in the PDF output.
- Try to establish, that when the compilation succeeded before the resulting
- PDF was good.
- Otherwise, it is in fact an improvement when a test fails.
- Now it might fail with a clear message of "language xyz not supported".
- It is always good to check manually why something fails and if it passes
- if the PDF output is good.
-\end_layout
-
-\begin_layout Standard
-Sometimes a test is fixed as side-effect of some change.
- We should uninvert a test (remove it from the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-suspiciousTests
-\end_layout
-
-\end_inset
-
- file) in order to preserve the fix.
-\end_layout
-
-\begin_layout Standard
 When a test or several tests fail, consider checking the files in the 
 \begin_inset Flex Code
 status collapsed
@@ -2009,27 +1987,258 @@ CTestCostData.txt
 \end_layout
 
 \begin_layout Paragraph
+What action should you take if a test fails?
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+It is always good to check manually why something fails and if it passes
+ if the PDF output is good.
+\end_layout
+
+\begin_layout Itemize
+Generally, if a change breaks compilation for the target format (for the
+ manuals pdf2) without solving some important other issue, 
+\emph on
+fix or revert the commit
+\emph default
+ that led to failure.
+\end_layout
+
+\begin_layout Itemize
+If it is not possible to (immediately) fix the failure but there are reasons
+ not to revert the commit (e.g.
+ it fixes another more important issue), 
+\emph on
+invert
+\emph default
+ the failing test case (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Inverted-tests"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+If an 
+\emph on
+inverted
+\emph default
+ test case fails because the export now works, 
+\emph on
+uninvert
+\emph default
+ the test by removing the labeling pattern from 
+\begin_inset Quotes eld
+\end_inset
+
+suspiciousTests
+\begin_inset Quotes erd
+\end_inset
+
+) (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Inverted-tests"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+If the export did not fail previously but led to wrong output (PDF, say),
+ it is in fact an improvement when the test now fails, label it as 
+\begin_inset Quotes eld
+\end_inset
+
+unreliable:wrong:output
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Unreliable-tests"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Inverted-tests"
+
+\end_inset
+
 Inverted tests
 \end_layout
 
 \begin_layout Standard
-These tests fail if the export does 
+Test cases whose name matches a pattern in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/suspiciousTests
+\end_layout
+
+\end_inset
+
+ get the label 
 \emph on
-not
+inverted
 \emph default
- return an error.
- 
+.
+ They get also the test property 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+WILL_FAIL
+\end_layout
+
+\end_inset
+
+, i.e.
+ they are reported as failing if the export works without error 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://cmake.org/cmake/help/v3.0/command/set_tests_properties.html
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Add failing cases to this file, if they cannot be solved 
+\begin_inset Quotes eld
+\end_inset
+
+immediately
+\begin_inset Quotes erd
+\end_inset
+
+ but it is expected that the export will work in a foreseeable future, e.g.
+ low priority issues like failures to export to a non-target format (for
+ the manuals everything except pdf2).
+\end_layout
+
+\begin_layout Standard
+The following sublabels are currently present in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+suspiciousTests
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Description
-inverted Export fails, but the test cases are subject to be examined.
- It is expected that the export will work in a foreseeable future.
- They are labeled 'inverted'.
+todo test failures that require attention:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+minor issues to explore and properly sort later, 
+\end_layout
+
+\begin_layout Itemize
+easyfix issues,
+\end_layout
+
+\begin_layout Itemize
+LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
+\end_layout
+
+\end_deeper
+\begin_layout Description
+lyxbugs LyX bugs with a Trac number.
 \end_layout
 
 \begin_layout Description
-suspended Some inverted tests are labeled 'suspended'.
- This means, they are not executed using 
+ert Export failures due to "raw" LaTeX use in ERT or preamble code.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+"Wontfix" if demonstrating correct use and OK in the default output format.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+texissues Export fails due to LaTeX limitations like non-ASCII characters
+ in verbatim or listings, incompatible packages, ...
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+"Wontfix" if documents demonstrate correct use in the default output format:
+\end_layout
+
+\begin_layout Itemize
+If the source can be made more robust without becoming "hackish", fix the
+ source,
+\end_layout
+
+\begin_layout Itemize
+if LyX could be enhanced to care for a permanent TeX limitation, file a
+ ticket at trac and add a pattern under lyxbugs,
+\end_layout
+
+\begin_layout Itemize
+otherwise, add a pattern here.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+attic Documents in the attic.
+ (Kept for reference and format conversion test.)
+\end_layout
+
+\begin_layout Subparagraph
+suspended 
+\end_layout
+
+\begin_layout Standard
+Test cases whose name additionally matches a pattern in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/suspendedTests
+\end_layout
+
+\end_inset
+
+ get the label 
+\emph on
+suspended 
+\emph default
+(instead of 
+\emph on
+export 
+\emph default
+and
+\emph on
+ inverted
+\emph default
+).
+ This means they are not executed using 
 \begin_inset Flex Code
 status collapsed
 
@@ -2050,6 +2259,18 @@ ctest -L inverted
 \end_inset
 
 .
+ However, they also get the test property 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+WILL_FAIL
+\end_layout
+
+\end_inset
+
+, i.e.
+ they are reported as failing if the export works without error.
  From time to time they still have to be checked using 
 \begin_inset Flex Code
 status collapsed
@@ -2063,7 +2284,6 @@ ctest -L suspended
 .
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 These tests are suspended, because the export fails for known reasons which
  cannot ATM be resolved.
@@ -2084,13 +2304,43 @@ status collapsed
 \end_inset
 
  parameter nothing changes.
- Suspended or not, tests will be executed depending only on the regexes
- parameters given to the ctest command.
+ Suspended or not, tests will be executed depending only on the selectiong
+ regular expression given to the ctest command (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:ctest-options"
+
+\end_inset
+
+).
 \end_layout
 
-\end_deeper
 \begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Unreliable-tests"
+
+\end_inset
+
 Unreliable tests
+\end_layout
+
+\begin_layout Standard
+Test cases whose name matches a pattern in the file 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/unreliableTests
+\end_layout
+
+\end_inset
+
+ get the label 
+\emph on
+unreliable
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -2121,11 +2371,24 @@ ctest -L inverted
 \begin_layout Standard
 They pass or fail for various reasons not related to LyX (nonstandard, erratic)
  or pass but should rather fail (wrong output).
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+*invalid* tests (wrong output) are not *unreliable*.
+ # Use "unfit" or "unapplicable" as better label and name of pattern file?
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
 nonstandard Documents with additional requirements, e.g.
- a class or package file not on CTAN.
+ a class or package file not in TeXLive.
  
 \begin_inset Note Note
 status open
@@ -2159,7 +2422,7 @@ TODO: use
 \emph on
 erratic
 \emph default
- only for the phase-of-moon dependency.
+ only for the phase-of-moon dependency?
 \end_layout
 
 \end_inset
@@ -2186,6 +2449,11 @@ output Export does not fail but the resulting document has errors.
 \begin_deeper
 \begin_layout Standard
 \paragraph_spacing single
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing single
 These tests are actually not 
 \emph on
 unreliable
@@ -2195,6 +2463,11 @@ unreliable
 invalid
 \emph default
  (not measuring what they should measure).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -3221,40 +3494,6 @@ runs the tests 'check_accessible_urls'
 \begin_layout Standard
 Associated test results can be examined in ctest-log directory in files
  of the form 'LastFailed.*URLS.log'
-\end_layout
-
-\begin_layout Subsubsection
-Test labels
-\end_layout
-
-\begin_layout Standard
-ctest label commands:
-\end_layout
-
-\begin_layout Description
-\SpecialChar nobreakdash
-\SpecialChar nobreakdash
-print-labels shows all assigned labels
-\end_layout
-
-\begin_layout Description
-\SpecialChar nobreakdash
-L
-\begin_inset space ~
-\end_inset
-
-labelname executes all tests to which this label is assigned to.
- A test may have more that one label.
-\end_layout
-
-\begin_layout Description
-\SpecialChar nobreakdash
-j
-\begin_inset space ~
-\end_inset
-
-number executes tests in parallel using 'number' simultaneously processes.
- Some tests are marked as 'sequencial', for them this parameter has no effect.
 \end_layout
 
 \begin_layout Section
