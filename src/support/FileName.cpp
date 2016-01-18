@@ -319,6 +319,9 @@ bool FileName::isSymLink() const
 }
 
 
+//QFileInfo caching info might fool this test if file was changed meanwhile.
+//refresh() helps, but we don't want to put it blindly here, because it might
+//trigger slowdown on networked file systems.
 bool FileName::isFileEmpty() const
 {
 	LASSERT(!empty(), return true);
