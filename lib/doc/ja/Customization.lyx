@@ -142,6 +142,7 @@ End
 \suppress_date false
 \justification false
 \use_refstyle 0
+\notefontcolor #0000ff
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -1744,7 +1745,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-複写子の定義においては、以下の4つの変数を用いることができます。
+複写子の定義においては、以下の8つの変数を用いることができます。
 \end_layout
 
 \begin_layout Labeling
@@ -2847,7 +2848,7 @@ gettext
 \begin_inset CommandInset href
 LatexCommand href
 name "ウェブ上の情報"
-target "http://www.lyx.org/devel/cvs.php"
+target "http://www.lyx.org/HowToUseGIT"
 
 \end_inset
 
@@ -2917,7 +2918,7 @@ xx.po
 
 \end_inset
 
-を編集します
+を編集します。
 \begin_inset Foot
 status collapsed
 
@@ -2944,12 +2945,25 @@ po
 
 \end_inset
 
-ファイルを編集するための「モード」があります。
+ファイルを編集するための「モード」があります、第
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+\backslash
+#PO-Mode
 \end_layout
 
 \end_inset
 
-。メニューラベルやウィジェットラベルのうちには、翻訳しなくてはならない
+。
+\end_layout
+
+\end_inset
+
+メニューラベルやウィジェットラベルのうちには、翻訳しなくてはならない
 \begin_inset Flex Ruby
 status collapsed
 
@@ -3278,6 +3292,50 @@ UserDir/doc/xx/
 \end_inset
 
 ディレクトリにコピーすれば、個人用の翻訳ヘルプファイルとして使用することができます。
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For a complex document with external material (images, etc.), if you make
+ a copy e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in a temp dir, beware that the links to external material may be broken
+ when the document is moved to a different place.
+ The best way is to retrieve the \SpecialChar LyX
+ tree from git (see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) and to edit the doc file in place.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5377,6 +5435,12 @@ status collapsed
 
 \end_inset
 
+
+\lang english
+or /usr/local/texlive/XXXX where XXXX is the year of the installed \SpecialChar TeX
+Live
+ distribution.
+\lang japanese
 のような場所になっています。「ユーザー」\SpecialChar TeX
 ツリーの場所は、
 \begin_inset Flex Code
@@ -5398,6 +5462,23 @@ $HOME/texmf/
 
 \end_inset
 
+
+\lang english
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+\lang french
+$HOME/.texliveXXXX
+\end_layout
+
+\end_inset
+
+.
+\lang japanese
 です（もしこれらの変数が事前定義されていなければ、定義しなくてはなりません）。「ローカル」ツリーを作成したり変更したりするには、おそらくroot権限が必要ですが
 、「ユーザー」ツリーにはこのような制限はありません。
 \begin_inset Newline newline
@@ -7374,7 +7455,7 @@ status collapsed
 \end_inset
 
 1.3.x以前のレイアウトファイルには、明示されたファイル形式がないため、書式1と解されます。\SpecialChar LyX
-現行版のファイル形式は、書式35です。しかし、\SpecialChar LyX
+現行版のファイル形式は、書式59です。しかし、\SpecialChar LyX
 の各版は、旧版の\SpecialChar LyX
 で作成さ
 れたファイルを読むことができるように、旧版のレイアウトファイルも読むことができます。しかしながら、以前の書式に変換する方法はありません。

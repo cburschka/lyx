@@ -98,6 +98,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 0
+\notefontcolor #0000ff
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -1791,7 +1792,7 @@ Por ejemplo, el archivo puede hacer referencia a otros archivos —imágenes,
 \end_layout
 
 \begin_layout Standard
-Las definiciones de los copiadores pueden usar cuatro variables:
+Las definiciones de los copiadores pueden usar ocho variables:
 \end_layout
 
 \begin_layout Labeling
@@ -2881,7 +2882,7 @@ Hay que advertir que estas traducciones funcionarán pero tienen algunos
  Otras veces, el traductor todavía no lo ha completado.
  Nuestro equipo de traducción, al que podrías unirte si quieres,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Si usas con fluidez un idioma distinto del inglés, ¡unirse a estos equipos
@@ -2973,7 +2974,7 @@ Inspecciona el código fuente de \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "información en la web"
-target "http://www.lyx.org/devel/cvs.php"
+target "http://www.lyx.org/HowToUseGIT"
 
 \end_inset
 
@@ -3086,6 +3087,19 @@ po
 
 \end_inset
 
+, veáse 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+\backslash
+#PO-Mode
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -3137,6 +3151,50 @@ msgfmt -o xx.mo < xx.po
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For a complex document with external material (images, etc.), if you make
+ a copy e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in a temp dir, beware that the links to external material may be broken
+ when the document is moved to a different place.
+ The best way is to retrieve the \SpecialChar LyX
+ tree from git (see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) and to edit the doc file in place.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5189,7 +5247,7 @@ usldead_cedilla
  y después asociando esta tecla simbólica al correspondiente comando \SpecialChar LyX
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nota de 
@@ -5746,7 +5804,12 @@ TEXMFLOCAL
 \family sans
 /usr/local/share/texmf/
 \family default
- .
+ o /usr/local/texlive/XXXX 
+\lang english
+where XXXX is the year of the installed \SpecialChar TeX
+Live distribution
+\lang spanish
+.
  La ubicación del árbol `user' de \SpecialChar TeX
  está definida por 
 \begin_inset Flex Code
@@ -5762,7 +5825,19 @@ TEXMFHOME
 \family sans
 $HOME/texmf/
 \family default
- .
+ o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+$HOME/.texliveXXXX
+\end_layout
+
+\end_inset
+
+..
  (Si estas variables no están predefinidas, debes hacerlo.) Probablemente
  necesites permiso de administrador para crear o modificar el árbol `local',
  pero no para el árbol `user'.
@@ -8066,12 +8141,8 @@ Esta etiqueta se introdujo en \SpecialChar LyX
 \end_inset
 
 1.4.0.
- Los archivos de formato de \SpecialChar LyX
-
-\begin_inset space ~
-\end_inset
-
-1.3.x y anteriores no tienen un número explícito y se consideran como 
+ Los archivos anteriores no tienen un número explícito y se consideran como
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -8087,7 +8158,7 @@ Format
 
 .
  El número para la versión actual de \SpecialChar LyX
- es formato 35.
+ es formato 59.
  Cada versión de \SpecialChar LyX
  es capaz de leer los formatos de versiones anteriores,
  de la misma forma que puede leer archivos producidos con versiones de \SpecialChar LyX
@@ -20135,7 +20206,7 @@ misc %author%,
 \begin_inset Quotes eld
 \end_inset
 
-%title
+%title%
 \begin_inset Quotes erd
 \end_inset
 

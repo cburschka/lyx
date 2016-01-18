@@ -101,6 +101,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 0
+\notefontcolor #0000ff
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -1404,15 +1405,20 @@ Wenn die Datei beispielsweise auf andere Dateien mit relativen Pfaden verweist
 \end_layout
 
 \begin_layout Standard
-Die Definitionen der Kopierer können vier Variablen benutzen:
+Die Definitionen der Kopierer können acht Variablen benutzen:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 $$s
-\family default
+\end_layout
+
+\end_inset
+
  ist das Systemverzeichnis von \SpecialChar LyX
  (zum Beispiel 
 \family typewriter
@@ -1427,19 +1433,29 @@ lyx
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 $$i
-\family default
+\end_layout
+
+\end_inset
+
  ist die Eingabedatei.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 $$o
-\family default
+\end_layout
+
+\end_inset
+
  ist die Ausgabedatei.
 \end_layout
 
@@ -1506,10 +1522,15 @@ $$f
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Flex Code
+status collapsed
 
-\family typewriter
+\begin_layout Plain Layout
 $$l
-\family default
+\end_layout
+
+\end_inset
+
  ist der 
 \emph on
 \SpecialChar LaTeX
@@ -1846,8 +1867,6 @@ schöne
 
  Datei, also eine, die so aussieht, wie die, die man über das Menü exportiert
  (ohne interne Hilfsbefehle wie 
-\lang english
-
 \begin_inset Flex Code
 status collapsed
 
@@ -1857,8 +1876,6 @@ input@path
 
 \end_inset
 
-
-\lang ngerman
 ).
 \end_layout
 
@@ -2204,290 +2221,6 @@ Wir werden versuchen, diese Dinge in einer späteren Version zu korrigieren.
 \end_layout
 
 \begin_layout Section
-Eine andere Sprache für die Schnittstelle auswählen
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Eine-andere-Sprache"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Normalerweise erfolgt die gesamte Benutzerführung in der Sprache, die in
- der Umgebungsvariablen 
-\family typewriter
-LANG
-\family default
- gesetzt wurde.
- Um eine andere Sprache auszuwählen, müssen Sie die Umgebungsvariable 
-\family typewriter
-LANG
-\family default
- ändern.
- Benutzen Sie 
-\family typewriter
-setenv LANG xx
-\family default
- in csh-kompatiblen und 
-\family typewriter
-export LANG=xx
-\family default
- in sh-kompatiblen Shells.
- Ersetzen Sie dabei 
-\family typewriter
-xx
-\family default
- durch den Zwei-Buchstaben-Code der Sprache, die Sie verwenden möchten –
- zum Beispiel 
-\family typewriter
-de
-\family default
- für deutsch.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Noch besser wäre es, 
-\family typewriter
-LANG
-\family default
- auf den Wert de_DE zu setzen, da andere Programme (zum Beispiel KDE) nach
- DE suchen, oder sogar den vollständigen Wert de_DE.iso88591
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Normalerweise werden Sie den passenden Befehl in eine der Startdateien einfügen,
- also zum Beispiel in 
-\family typewriter
-~/.Xsession
-\family default
-, 
-\family typewriter
-~/.xinitrc
-\family default
- oder 
-\family typewriter
-~/.bashrc
-\family default
-, damit die übersetzte Schnittstelle automatisch benutzt wird.
- 
-\end_layout
-
-\begin_layout Standard
-Beachten Sie, dass all dies 
-\emph on
-nicht
-\emph default
- funktioniert, wenn Sie \SpecialChar LyX
- mit der Option 
-\family typewriter
---disable\SpecialChar softhyphen
-nls
-\family default
- kompiliert haben.
-\end_layout
-
-\begin_layout Section
-Tastaturkürzel für andere Sprachen anpassen
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Tastaturkürzel-für-andere"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Ein Hauptgrund für Inkonsistenzen in übersetzten \SpecialChar LyX
--Versionen ist die Tatsache,
- dass alle Tastaturkürzel für die Menüfunktionen ursprünglich auf den englischen
- Text zugeschnitten wurden.
- Das heißt, unabhängig vom tatsächlichen Menüeintrag wird das Kürzel 
-\family sans
-Strg+Umschalt+N
-\family default
- das Popup 
-\family typewriter
-new-file-from-template
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-new-file-from-template
-\family default
- ist der \SpecialChar LyX
--interne Befehl, der das Menü 
-\family sans
-Datei\SpecialChar menuseparator
-Neu
-\begin_inset space ~
-\end_inset
-
-von
-\begin_inset space ~
-\end_inset
-
-Vorlage
-\family default
-\SpecialChar ldots
- auswählt.
-\end_layout
-
-\end_inset
-
-
-\family default
- öffnen.
-\end_layout
-
-\begin_layout Standard
-Es ist allerdings einfach, dies zu ändern, da alle Tastenkürzel für die
- Menüfunktionen in einer einzigen Datei definiert werden, in 
-\family sans
-LyX
-\family typewriter
-Dir/bind/menus.bind
-\family default
-.
- Jeder Anwender kann eine eigene Version dieser Datei in sein privates \SpecialChar LyX
--Verzeich
-nis (
-\family typewriter
-~/.lyx/bind
-\family default
-) kopieren und verändern.
- Diese wird anstelle der systemweiten Datei eingelesen.
-\end_layout
-
-\begin_layout Standard
-In diesem privaten Verzeichnis kann man die Definitionen einfach ändern,
- zum Beispiel von 
-\family sans
-Strg+Umschalt+N
-\family default
- nach 
-\family sans
-Strg+D+V
-\family default
- (für 
-\family sans
-Datei\SpecialChar menuseparator
-Neu
-\begin_inset space ~
-\end_inset
-
-von
-\begin_inset space ~
-\end_inset
-
-Vorlage
-\family default
-\SpecialChar ldots
-).
- Für einige Sprachen existieren schon angepasste Versionen 
-\family sans
-LyX
-\family typewriter
-Dir/bind/
-\series bold
-xx
-\series default
-_me\SpecialChar softhyphen
-nus.bind
-\family default
- (
-\family typewriter
-\series bold
-xx
-\family default
-\series default
- bezeichnet den Code der Sprache).
- Diese werden von \SpecialChar LyX
- automatisch benutzt, sofern sie existieren (und Ihre
- 
-\emph on
-locale
-\emph default
- auf 
-\family typewriter
-$LANG=
-\series bold
-xx
-\family default
-\series default
- gesetzt wurde).
-\end_layout
-
-\begin_layout Standard
-Sie müssen darauf achten, dass neue Definitionen nicht mit anderen, vorangehende
-n Definitionen kollidieren.
- Beispielsweise würde die oben genannte Definition von 
-\family sans
-Strg+D+V
-\family default
- für Benutzer, die 
-\family typewriter
-emacs.bind
-\family default
- verwenden, eine Fehlermeldung erzeugen, denn in 
-\family typewriter
-emacs.bind
-\family default
- wird 
-\family sans
-Strg+D
-\family default
- bereits als 
-\family typewriter
-word-delete-forward
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-word-delete-forward
-\family default
- löscht das Wort rechts vom Cursor.
-\end_layout
-
-\end_inset
-
-
-\family default
- definiert.
- 
-\end_layout
-
-\begin_layout Standard
-In \SpecialChar LyX
- Version 1.0 werden die übersetzten Namen der Hauptmenüs (die in den 
-\family typewriter
-po
-\family default
--Dateien stehen) für den Tastendefinitions-Mechanismus verwendet – deshalb
- müssen auch in 
-\family typewriter
-menus.bind
-\family default
- die 
-\emph on
-übersetzten
-\emph default
- Menünamen verwendet werden.
-\end_layout
-
-\begin_layout Section
 \SpecialChar LyX
  übersetzen
 \end_layout
@@ -2513,7 +2246,7 @@ mo
 \family default
 -Datei erzeugen und diese installieren.
  Eine umfassende Anleitung dazu finden Sie in der Dokumentation für GNU
- gettext
+ gettext.
 \begin_inset Foot
 status collapsed
 
@@ -2528,7 +2261,6 @@ po
 
 \end_inset
 
-.
  Kurz gesagt müssen folgende Veränderungen durchgeführt werden (
 \family typewriter
 \series bold
@@ -2536,6 +2268,20 @@ xx
 \family default
 \series default
  bezeichnet den Sprachencode der neuen Sprache):
+\end_layout
+
+\begin_layout Itemize
+Laden Sie den \SpecialChar LyX
+-Quellcode herunter.
+ (Siehe die 
+\begin_inset CommandInset href
+LatexCommand href
+name "Informationen im Netz"
+target "http://www.lyx.org/HowToUseGIT"
+
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Itemize
@@ -2571,6 +2317,10 @@ lyx.pot
 Editieren Sie 
 \family typewriter
 xx.po
+\family default
+.
+\family typewriter
+
 \begin_inset Foot
 status collapsed
 
@@ -2588,14 +2338,27 @@ KBabel
 \family typewriter
 Emacs
 \family default
- hat ebenfalls einen Modus, der Sie bei dieser Arbeit unterstützt.
+ hat ebenfalls einen Modus, der Sie bei dieser Arbeit unterstützt, siehe
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+\backslash
+#PO-Mode
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
 
 \family default
-.
  Für einige Menü- und Widgetfunktionen gibt es Tastenkürzel, die ebenfalls
  übersetzt werden sollten.
  Diese Tasten werden mit '
@@ -2603,24 +2366,7 @@ Emacs
 |
 \family default
 ' markiert und sollten passend mitübersetzt werden.
- Es gibt ein Prolog-Programm namens 
-\family typewriter
-scgen.pl
-\family default
-, das sich im Quellverzeichnis in 
-\family typewriter
-LYX\SpecialChar softhyphen
-SOURCE\SpecialChar softhyphen
-DIR/development/tools/
-\family default
- befindet.
- Vielleicht hilft es Ihnen bei der Bestimmung der Tastenkürzel.
- Beachten Sie, dass XForms (zumindest die Version 0.86) nur 7-Bit-Zeichen
- als Tastenkürzel verarbeiten kann.
-\begin_inset Newline newline
-\end_inset
-
-Sie sollten auch das Informationsfeld am Anfang der neuen po-Datei ausfüllen
+ Sie sollten auch das Informationsfeld am Anfang der neuen po-Datei ausfüllen
  (mit Ihrer EMail-Adresse, usw.), damit Sie für andere Leute erreichbar sind,
  die Ihnen Vorschläge oder unterhaltsame Flames schicken möchten.
 \end_layout
@@ -2718,23 +2464,7 @@ Auch die Online-Dokumentation (im
 Hilfe
 \family default
 -Menü) kann (und sollte!) übersetzt werden.
- Wenn übersetzte Versionen verfügbar sind
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Derzeit (November 2006) sind praktisch alle Texte bis auf 
-\emph on
-LaTeX-Konfiguration
-\emph default
- ins Deutsche übersetzt.
- Andere Sprachen sind in Arbeit.
- Die Bibliothek an übersetzten Texten wächst ständig.
-\end_layout
-
-\end_inset
-
- und die 
+ Wenn übersetzte Versionen verfügbar sind und die 
 \emph on
 locale
 \emph default
@@ -2837,26 +2567,53 @@ ene Konventionen eingeführt.
 
 \begin_layout Itemize
 Legen Sie eine Kopie des Originaldokumentes an.
- Von Zeit zu Zeit wird die Originalversion erneuert.
- Sie können beispielsweise CVSweb auf der \SpecialChar LyX
--Entwickler-Seite im WWW verwenden
- um zu sehen, was sich verändert hat.
-\begin_inset Foot
+ Dies wird Ihre Arbeitskopie.
+ Sie können diese als selbst-übersetzten Hilfe-Datei in \SpecialChar LyX
+ verwenden, indem
+ Sie sie in den Ordner 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Alternativ können Sie auch lokal eine Kopie des (englischen) Ausgangstextes
- aufbewahren und diese dann mit der neuen Version vergleichen (zum Beispiel
- mit dem Befehl 
-\family typewriter
-diff
-\family default
-).
+UserDir/doc/xx/
 \end_layout
 
 \end_inset
 
+ kopieren.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Für komplexe Dokumente mit externem Material (Bilder usw.) werden die Dateipfade
+ von relativ auf absolut geändert, wenn man das Dokument verschiebt.
+ Daher ist es das Beste, \SpecialChar LyX
+ mittels Git zu beziehen (siehe 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) und das Dokument im Verzeichnis zu belassen.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -4491,7 +4248,9 @@ TEXMFLOCAL
 \family sans
 /usr/local/share/texmf/
 \family default
- .
+ oder /usr/local/texlive/XXXX, wobei XXXX das Jahr der installierten \SpecialChar TeX
+Live-Distri
+bution ist.
  Der Ort des Benutzer-\SpecialChar TeX
 -Ordners ist in der Variable 
 \begin_inset Flex Code
@@ -4507,7 +4266,11 @@ TEXMFHOME
 \family sans
 $HOME/texmf/
 \family default
- .
+ oder 
+\family sans
+$HOME/.texliveXXXX
+\family default
+.
  (Wenn diese Variablen nicht vordefiniert sind, müssen Sie diese selbst
  definieren.) Sie brauchen wahrscheinlich Root-Rechte um in den lokalen \SpecialChar TeX
 -Ordner
@@ -6756,7 +6519,7 @@ Format
 
  behandelt.
  Das Format dieser \SpecialChar LyX
--Version ist 35.
+-Version ist 59.
  Aber jede \SpecialChar LyX
 -Version kann ältere Versionen von Layout-Dateien lesen, so wie
  es ältere \SpecialChar LyX
@@ -19012,7 +18775,7 @@ misc %author%,
 \begin_inset Quotes eld
 \end_inset
 
-%title
+%title%
 \begin_inset Quotes erd
 \end_inset
 

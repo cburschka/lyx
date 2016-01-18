@@ -99,6 +99,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 0
+\notefontcolor #0000ff
 \branch OutDated
 \selected 0
 \filename_suffix 0
@@ -116,7 +117,7 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -1791,7 +1792,7 @@ For example, the file may refer to other files—images, for example—using
 \end_layout
 
 \begin_layout Standard
-The definitions of the copiers may use four variables:
+The definitions of the copiers may use eight variables:
 \end_layout
 
 \begin_layout Labeling
@@ -2954,7 +2955,7 @@ Check out the \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "information on the web"
-target "http://www.lyx.org/HowToUseSVN"
+target "http://www.lyx.org/HowToUseGIT"
 
 \end_inset
 
@@ -3059,7 +3060,20 @@ po
 
 \end_inset
 
- files, as well.
+ files, as well, see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+\backslash
+#PO-Mode
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3440,6 +3454,43 @@ UserDir/doc/xx/
 \end_inset
 
  directory.
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ For a complex document with external material (images, etc.), if you make
+ a copy e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in a temp dir, beware that the links to external material may be broken
+ when the document is moved to a different place.
+ The best way is to retrieve the \SpecialChar LyX
+ tree from git (see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) and to edit the doc file in place.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -6050,7 +6101,9 @@ status collapsed
 
 \end_inset
 
-.
+ or /usr/local/texlive/XXXX where XXXX is the year of the installed \SpecialChar TeX
+Live
+ distribution.
  The location of the `user' \SpecialChar TeX
  tree is defined by 
 \begin_inset Flex Code
@@ -6068,6 +6121,19 @@ status collapsed
 
 \begin_layout Plain Layout
 $HOME/texmf
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+\lang french
+$HOME/.texliveXXXX
 \end_layout
 
 \end_inset
@@ -6125,7 +6191,7 @@ latex
 
 .)
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Note that this will be the correct path only on English installations.
@@ -8367,7 +8433,7 @@ Format
 
 .
  The format for the present version of \SpecialChar LyX
- is format 35.
+ is format 59.
  But each version of \SpecialChar LyX
  is capable of reading earlier versions' layout files,
  just as they are capable of reading files produced by earlier versions
@@ -11500,7 +11566,7 @@ Argument item:1
 
 \end_inset
 
-)
+).
 \end_layout
 
 \end_deeper
@@ -11974,7 +12040,7 @@ ForceLocal
 
 \end_inset
 
- is a version number: If the style is read, and the version number is less
+ is a version number: if the style is read, and the version number is less
  than the version number of the already existing style in the document class,
  the new style is ignored.
  If the version number is greater, the new style replaces the existing style.
@@ -13474,8 +13540,8 @@ Environment
 
 \end_inset
 
- but adds additionally the necessary mandatory argument (the longest label)
- to the begin statement of the bibliography environment:
+ but adds the necessary mandatory argument (the longest label) to the begin
+ statement of the bibliography environment:
 \begin_inset Newline newline
 \end_inset
 
@@ -13491,6 +13557,7 @@ begin{thebibliography}{99}
 
 \end_inset
 
+.
  It is therefore only useful for bibliography environments.
  The default longest label 
 \begin_inset Quotes eld
@@ -20264,7 +20331,7 @@ misc %author%,
 \begin_inset Quotes eld
 \end_inset
 
-%title
+%title%
 \begin_inset Quotes erd
 \end_inset
 
@@ -25361,7 +25428,7 @@ branchlabel Label color for branches
 \end_layout
 
 \begin_layout Description
-buttonbg Color used for bottom background
+buttonbg Color used for button background
 \end_layout
 
 \begin_layout Description

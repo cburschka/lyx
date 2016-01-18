@@ -98,6 +98,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 0
+\notefontcolor #0000ff
 \branch Obsolete
 \selected 0
 \filename_suffix 0
@@ -2894,7 +2895,7 @@ télécharger le code source de \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 name "page d'information sur le Web"
-target "http://www.lyx.org/WebFr.HowToUseSVN"
+target "http://www.lyx.org/HowToUseGIT"
 
 \end_inset
 
@@ -2994,6 +2995,10 @@ po
 xx
 \series default
 .po
+\family default
+.
+\family typewriter
+
 \begin_inset Foot
 status collapsed
 
@@ -3040,14 +3045,26 @@ status collapsed
 
 \end_inset
 
-, mais attention, les fichiers sont encodés en Unicode.
+, mais attention, les fichiers sont encodés en Unicode, voir 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+\backslash
+#PO-Mode
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
 
 
 \family default
-.
  Pour certains menus, il y a aussi des touches de raccourci qui doivent
  être traduites.
  Ces touches viennent après un 
@@ -3471,7 +3488,53 @@ MonRép/doc/xx/
 
 \end_inset
 
+
+\lang french
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ For a complex document with external material (images, etc.), if you make
+ a copy e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+in a temp dir, beware that the links to external material may be broken
+ when the document is moved to a different place.
+ The best way is to retrieve the \SpecialChar LyX
+ tree from git (see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/HowToUseGIT
+\end_layout
+
+\end_inset
+
+) and to edit the doc file in place.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5278,7 +5341,7 @@ format de sortie
  est bien entendu un format particulièrement important, mais une très petite
  quantité d'information concernant \SpecialChar LaTeX
  est réellement contenue dans \SpecialChar LyX
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -5298,7 +5361,6 @@ en dur
 
 \end_inset
 
-.
  Cette information, même pour des classes standard comme 
 \begin_inset Flex Code
 status collapsed
@@ -5619,7 +5681,7 @@ texmf.cnf
 
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -5645,7 +5707,6 @@ kpsewhich texmf.cnf
 
 \end_inset
 
-.
  L'emplacement de l'arborescence 
 \begin_inset Quotes fld
 \end_inset
@@ -5772,7 +5833,7 @@ tex
 \backslash
 latex
 \family default
-)
+).
 \begin_inset Foot
 status collapsed
 
@@ -5804,7 +5865,6 @@ latex
 
 \end_inset
 
-.
  Créer dans ce répertoire un nouveau répertoire dénommé 
 \begin_inset Flex Code
 status collapsed
@@ -8225,7 +8285,7 @@ Format
 
 \lang french
 .
- Le numéro de format du présent fichier est le numéro 48.
+ Le numéro de format du présent fichier est le numéro 59.
  mais chaque version de \SpecialChar LyX
  peut lire les fichiers de format d'une version
  plus ancienne, comme elle peut lire les documents crées avec une version
