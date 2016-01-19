@@ -619,6 +619,7 @@ Menuset
 		Item "LilyPond|P" "help-open lilypond"
 		Item "Linguistics|L" "help-open linguistics"
 		Item "Multilingual Captions|C" "help-open MultilingualCaptions"
+		Item "Paralist|t" "help-open paralist"
 		Item "PDF comments|D" "help-open PDF-comment"
 		Item "PDF forms|o" "help-open PDF-form"
 		Item "Hazard and Precautionary Statements|H" "help-open H-P-statements"
