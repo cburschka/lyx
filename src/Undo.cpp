@@ -21,6 +21,8 @@
 #include "BufferParams.h"
 #include "buffer_funcs.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
+#include "ErrorList.h"
 #include "Paragraph.h"
 #include "ParagraphList.h"
 #include "Text.h"
@@ -29,6 +31,7 @@
 #include "mathed/MathData.h"
 
 #include "insets/Inset.h"
+#include "insets/InsetText.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -453,7 +456,13 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		// This is a params undo element
 		delete otherstack.top().bparams;
 		otherstack.top().bparams = new BufferParams(buffer_.params());
+		DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
 		buffer_.params() = *undo.bparams;
+		// The error list is not supposed to be helpful here.
+		ErrorList el;
+		cap::switchBetweenClasses(olddc, buffer_.params().documentClassPtr(),
+			static_cast<InsetText &>(buffer_.inset()), el);
+		LATTEST(el.empty());
 	} else if (dit.inMathed()) {
 		// We stored the full cell here as there is not much to be
 		// gained by storing just 'a few' paragraphs (most if not
