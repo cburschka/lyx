@@ -508,7 +508,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 			int const nextoffset =
 				colinfo_[first].offset_ +
 				wid +
-				displayColSpace(last) +
+				colinfo_[last].skip_ +
 				colsep() +
 				colinfo_[last+1].lines_ * vlinesep();
 			int const dx = nextoffset - colinfo_[last+1].offset_;
@@ -741,7 +741,7 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
 			colinfo_[col - 1].width_ +
-			displayColSpace(col - 1) +
+			colinfo_[col - 1].skip_ +
 			1 ; //colsep() +
 			//colinfo_[col].lines_ * vlinesep();
 	}
@@ -953,7 +953,7 @@ int InsetMathGrid::cellWidth(idx_type idx) const
 		col_type c2 = c1 + ncellcols(idx);
 		return colinfo_[c2].offset_
 			- colinfo_[c1].offset_
-			- displayColSpace(c2)
+			- colinfo_[c2].skip_
 			- colsep()
 			- colinfo_[c2].lines_ * vlinesep();
 	}
@@ -1377,11 +1377,6 @@ char InsetMathGrid::displayColAlign(idx_type idx) const
 	return colinfo_[col(idx)].align_;
 }
 
-
-int InsetMathGrid::displayColSpace(col_type col) const
-{
-	return colinfo_[col].skip_;
-}
 
 void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
@@ -1866,33 +1861,6 @@ char InsetMathGrid::colAlign(HullType type, col_type col)
 	}
 }
 
-
-//static
-int InsetMathGrid::colSpace(HullType type, col_type col)
-{
-	int alignInterSpace;
-	switch (type) {
-	case hullEqnArray:
-		return 5;
-	
-	case hullAlign:
-		alignInterSpace = 20;
-		break;
-	case hullAlignAt:
-		alignInterSpace = 0;
-		break;
-	case hullXAlignAt:
-		alignInterSpace = 40;
-		break;
-	case hullXXAlignAt:
-	case hullFlAlign:
-		alignInterSpace = 60;
-		break;
-	default:
-		return 0;
-	}
-	return (col % 2) ? alignInterSpace : 0;
-}
 
 
 } // namespace lyx

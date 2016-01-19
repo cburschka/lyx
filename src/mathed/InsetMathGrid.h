@@ -261,16 +261,8 @@ protected:
 	/// Column alignment for display of cell \p idx.
 	/// Must not be written to file!
 	virtual char displayColAlign(idx_type idx) const;
-	/// Column spacing for display of column \p col.
-	/// Must not be written to file!
-	virtual int displayColSpace(col_type col) const;
-
-	// The following two functions are used in InsetMathHull and
-	// InsetMathSplit.
 	/// The value of a fixed col align for a certain hull type 
 	static char colAlign(HullType type, col_type col);
-	/// The value of a fixed col spacing for a certain hull type
-	static int colSpace(HullType type, col_type col);
 
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.

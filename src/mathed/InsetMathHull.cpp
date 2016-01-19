@@ -382,13 +382,6 @@ char InsetMathHull::displayColAlign(idx_type idx) const
 }
 
 
-int InsetMathHull::displayColSpace(col_type col) const
-{
-	return colSpace(type_, col);
-}
-
-
-//FIXME: This has probably no effect and can be removed.
 int InsetMathHull::defaultColSpace(col_type col)
 {
 	if (type_ == hullAlign || type_ == hullAlignAt)
