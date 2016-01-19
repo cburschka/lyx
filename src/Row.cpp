@@ -129,17 +129,6 @@ bool Row::Element::breakAt(int w, bool force)
 		return true;
 	}
 
-	// Qt will not break at a leading space, and we need that sometimes, see
-	//   http://www.lyx.org/trac/ticket/9921.
-	// It would be nice to fix this properly, but for now do it by hand.
-	// FIXME: figure out what to do for RtL text.
-	if (!isRTL() && !str.empty() && str[0] == ' ') {
-		dim.wid = 0;
-		str = ' ';
-		endpos = pos + 1;
-		return true;
-	}
-
 	return false;
 }
 

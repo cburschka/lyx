@@ -219,7 +219,16 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	if (s.empty())
 		return false;
 	QTextLayout tl;
-	tl.setText(toqstr(s));
+	/* Qt will not break at a leading or trailing space, and we need
+	 * that sometimes, see http://www.lyx.org/trac/ticket/9921.
+	 *
+	 * To work around the problem, we enclose the string between
+	 * zero-width characters so that the QTextLayout algorithm will
+	 * agree to break the text at these extremal spaces.
+	*/
+	// Unicode character ZERO WIDTH NO-BREAK SPACE
+	QChar const zerow_nbsp(0xfeff);
+	tl.setText(zerow_nbsp + toqstr(s) + zerow_nbsp);
 	tl.setFont(font_);
 	// Note that both setFlags and the enums are undocumented
 	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
@@ -234,7 +243,8 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	if (int(line.naturalTextWidth()) > x)
 		return false;
 	x = int(line.naturalTextWidth());
-	s = s.substr(0, line.textLength());
+	// The -1 is here to account for the leading zerow_nbsp.
+	s = s.substr(0, line.textLength() - 1);
 	return true;
 }
 
