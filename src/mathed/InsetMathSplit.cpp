@@ -48,38 +48,17 @@ Inset * InsetMathSplit::clone() const
 }
 
 
-//FIXME: This has probably no effect and can be removed.
 char InsetMathSplit::defaultColAlign(col_type col)
 {
+	if (name_ == "split")
+		return 'l';
 	if (name_ == "gathered")
 		return 'c';
-	if (name_ == "lgathered")
-		return 'l';
-	if (name_ == "rgathered")
-		return 'r';
-	if (name_ == "split"
-	    || name_ == "aligned"
-	    || name_ == "align"
-	    || name_ == "alignedat")
-		return colAlign(hullAlign, col);
+	if (name_ == "aligned" || name_ == "align")
+		return (col & 1) ? 'l' : 'r';
+	if (name_ == "alignedat")
+		return (col & 1) ? 'l' : 'r';
 	return 'l';
-}
-
-
-char InsetMathSplit::displayColAlign(idx_type idx) const
-{
-	if (name_ == "gathered")
-		return 'c';
-	if (name_ == "lgathered")
-		return 'l';
-	if (name_ == "rgathered")
-		return 'r';
-	if (name_ == "split"
-	    || name_ == "aligned"
-	    || name_ == "align"
-	    || name_ == "alignedat")
-		return colAlign(hullAlign, col(idx));
-	return InsetMathGrid::displayColAlign(idx);
 }
 
 
@@ -104,10 +83,6 @@ bool InsetMathSplit::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.message(bformat(
 				from_utf8(N_("Can't add vertical grid lines in '%1$s'")),	name_));
-			flag.setEnabled(false);
-			return true;
-		}
-		if (s == "align-left" || s == "align-center" || s == "align-right") {
 			flag.setEnabled(false);
 			return true;
 		}
