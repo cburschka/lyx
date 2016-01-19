@@ -486,7 +486,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
 			colinfo_[col - 1].width_ +
-			displayColSpace(col - 1) +
+			colinfo_[col - 1].skip_ +
 			colsep() +
 			colinfo_[col].lines_ * vlinesep();
 	}
