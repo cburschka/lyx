@@ -111,8 +111,6 @@ public:
 	///
 	int defaultColSpace(col_type col);
 	///
-	int displayColSpace(col_type col) const;
-	///
 	char defaultColAlign(col_type col);
 	///
 	char displayColAlign(idx_type idx) const;

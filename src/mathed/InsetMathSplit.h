@@ -41,8 +41,6 @@ public:
 	///
 	int defaultColSpace(col_type) { return 0; }
 	///
-	int displayColSpace(col_type col) const;
-	///
 	char defaultColAlign(col_type);
 	///
 	char displayColAlign(idx_type idx) const;
