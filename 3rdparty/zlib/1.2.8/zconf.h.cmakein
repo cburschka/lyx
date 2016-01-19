@@ -7,7 +7,9 @@
 
 #ifndef ZCONF_H
 #define ZCONF_H
+#ifndef Z_PREFIX
 #cmakedefine Z_PREFIX
+#endif
 #cmakedefine Z_HAVE_UNISTD_H
 
 /*
