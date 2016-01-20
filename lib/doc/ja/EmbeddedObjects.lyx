@@ -19438,11 +19438,14 @@ usepackage{array}}{}
 \backslash
 setlength{
 \backslash
-extrarowheight}{height}
-\end_layout
+extrarowheight}{高さ}
+\series default
 
-\begin_layout Standard
-しかしこの方法は、セル内の文章が縦方向に中央揃えにならないという欠点があります（自己定義の表書式を用いると、\SpecialChar LyX
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+自己定義の表書式を用いると、\SpecialChar LyX
 は自動的に
 \series bold
 array
@@ -19453,7 +19456,23 @@ array
 \backslash
 @ifundefined
 \series default
-が使用されています）。
+が使用されています。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+というコマンドを書き加えて下さい。ここで「高さ」には、付録
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:LyXで使用できる単位"
+
+\end_inset
+
+に挙げられている単位を取ることができます。しかしこの方法は、セル内の文章が縦方向に中央揃えにならないという欠点があります。
 \end_layout
 
 \begin_layout Standard
