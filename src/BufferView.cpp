@@ -2514,7 +2514,8 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	bool update = leftinset;
 	if (!do_selection && d->cursor_.inTexted()) {
 		update |= checkDepm(cur, d->cursor_);
-		if (cur.pos() && cur.paragraph().isEnvSeparator(cur.pos() - 1))
+		if (cur.inTexted() && cur.pos()
+			&& cur.paragraph().isEnvSeparator(cur.pos() - 1))
 		    cur.posBackward();
 	}
 
