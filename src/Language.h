@@ -81,7 +81,7 @@ public:
 	std::string const fontenc() const { return fontenc_; }
 	/// This language needs to be passed to babel itself (not the class)
 	bool asBabelOptions() const { return as_babel_options_; }
-	/// This language correspongs to a translation of the GUI
+	/// This language corresponds to a translation of the GUI
 	bool hasGuiSupport() const { return has_gui_support_; }
 	///
 	bool read(Lexer & lex);
