@@ -16,7 +16,6 @@ dist_pkgdata_DATA += configure.py
 
 dist_noinst_DATA = \
 	appdata.xml \
-	fonts/stmary10.sfd \
 	fonts/test/stmary10.lyx \
 	images/README \
 	images/font-smallcaps.svgz \
