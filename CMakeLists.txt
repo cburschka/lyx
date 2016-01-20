@@ -157,6 +157,7 @@ LYX_OPTION(VLD                   "Use VLD with MSVC" OFF MSVC)
 LYX_OPTION(WALL                  "Enable all warnings" OFF MSVC)
 LYX_OPTION(CONFIGURE_CHECKS      "Also run configure checks for MSVC" OFF MSVC)
 LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
+LYX_OPTION(3RDPARTY_BUILD        "Build 3rdparty libraries " OFF MSVC)
 
 # APPLE specific
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
@@ -288,6 +289,9 @@ include(LyXPaths)
 file(STRINGS "${TOP_SRC_DIR}/configure.ac" _config_lines)
 
 if(WIN32)
+	if(MSVC)
+		set(LYX_3RDPARTY_BUILD ON)
+	endif()
 	set(USE_WINDOWS_PACKAGING ON)
 elseif(APPLE)
 	set(USE_MACOSX_PACKAGING ON)
