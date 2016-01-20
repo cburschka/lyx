@@ -1,8 +1,7 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 504
+\lyxformat 503
 \begin_document
 \begin_header
-\save_transient_properties true
 \origin /systemlyxdir/examples/
 \textclass seminar
 \begin_preamble
@@ -33,7 +32,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -83,9 +82,9 @@
 \papersides 1
 \paperpagestyle empty
 \tracking_changes false
-\output_changes false
 \html_math_output 0
 \html_css_as_file 0
+\output_changes false
 \html_be_strict false
 \end_header
 
@@ -375,41 +374,29 @@ Warnings
 \end_layout
 
 \begin_layout Plain Layout
-Size and orientation of the slides show problems depending on the output
- format and viewing application:
-\end_layout
-
-\begin_layout Itemize
 
 \family sans
 seminar
 \family default
- uses Postscript specials and does not work with 
-\family sans
-PDF (pdflatex)
-\family default
- or 
-\family sans
-PDF (LuaTeX)
-\family default
-.
+ uses Postscript specials: size and orientation of the slides show problems
+ depending on the output format and viewing application:
 \end_layout
 
 \begin_layout Itemize
 Landscape slides do not work with 
 \family sans
-DVI
+DVI, DVI (luatex), PDF (pdflatex),
 \family default
- or 
+ and 
 \family sans
-PDF (LuaTeX)
+PDF (luatex)
 \family default
 .
 \end_layout
 
 \begin_layout Itemize
 Compiling with XeTeX works (with both, TeX-fonts and Unicode fonts) but
- requires Babel (not Polyglossia).
+ requires Babel (not Polyglossia) as language package.
 \end_layout
 
 \begin_layout Plain Layout
@@ -420,9 +407,9 @@ Settings,
 \begin_layout Itemize
 
 \family sans
-PDF (dvips)
+PDF (ps2pdf)
 \family default
- adapts the pager orientation → online viewing and presentation.
+ adapts the page orientation → online viewing and presentation.
 \end_layout
 
 \begin_layout Itemize
