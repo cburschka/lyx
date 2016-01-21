@@ -158,7 +158,7 @@ Guide de l'utilisateur de \SpecialChar LyX
 par l'Équipe \SpecialChar LyX
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -252,7 +252,7 @@ Mise à jour mineure pour 2.1.4, 3 avril 2015 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour LyX 2.2, 2 janvier 2016 (JPC)
+Mise à jour pour LyX 2.2, 21 janvier 2016 (JPC)
 \end_layout
 
 \end_inset
@@ -2223,11 +2223,7 @@ Maj-Tab
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Horizontal Scrolling
-\lang french
-
+Défilement horizontal
 \begin_inset Index idx
 status collapsed
 
@@ -2243,86 +2239,61 @@ Horizontal Scrolling
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- does not have a horizontal scrollbar because the standard output page formats
- like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-ISO
+ ne dispose pas d'une barre de défilement horizontale du fait que la largeur
+ standard des pages comme par exemple ISO
 \begin_inset space ~
 \end_inset
 
-A4 are less wide than PC or laptop screens.
- Therefore you will get troubles in the output of your document if document
- parts exceed the width of the \SpecialChar LyX
- main screen.
+A4 est moins large que les écrans des ordinateurs de bureau ou portables.
+ Par conséquent vous aurez des problèmes dans le résultat imprimable si
+ des parties du document sont plus larges que l'écran principal de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are of course exceptions where horizontal scrolling is necessary.
- For example
+Il y a bine sûr des exceptions pour lesquelles le défilement horizontal
+ est requis, par exemple:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-\SpecialChar LyX
- is used on a small tablet computer
+quand \SpecialChar LyX
+ est utilisé sur une petite tablette;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Wide tables that are rotated 90° to fit a whole page
+pour les tableaux larges que l'on veut faire pivoter de 90° pour les inscrire
+ dans une page entière
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-See section 
+Voir le paragraphe 
 \emph on
-Rotated Floats
+Rotation des flottants
 \emph default
- of the 
+ dans le manuel des 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objets insérés
 \emph default
- manual.
+.
 \end_layout
 
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Math constructs with long command names
+pour gérer des constructions mathématiques dotées de noms de commandes longs.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For these cases \SpecialChar LyX
- has an mechanism that scrolls automatically when the cursor
- is moved.
- As example shrink the \SpecialChar LyX
- windows so that table
+Dans ces circonstances, \SpecialChar LyX
+ est doté d'un mécanisme qui produit un défilement
+ automatique quand le curseur se déplace.
+ En tant qu'exemple, réduisez la largeur de la fenêtre jusqu'à ce que le
+ tableau
 \begin_inset space ~
 \end_inset
 
@@ -2333,11 +2304,12 @@ reference "tab:Horizontal-scrollong-test"
 
 \end_inset
 
- is wider.
- You will now see a dotted red line at the right or the left side of the
- table.
- Put the cursor into the table and move it with the Tab or the arrow keys
- to see the horizontal scrolling of the table.
+ soit plus large qu'elle.
+ Vous allez voir alors une ligne pointillée rouge du côté droit ou du côté
+ gauche du tableau..
+ Mettez le curseur dans le tableau et déplacez-le à l'aide de la touche
+ de tabulation ou des flèches de navigation pour apprécier le défilement
+ horizontal du tableau.
 \end_layout
 
 \begin_layout Standard
@@ -2357,9 +2329,7 @@ name "tab:Horizontal-scrollong-test"
 
 \end_inset
 
-
-\lang english
-Horizontal scrolling test.
+Test de défilement horizontal
 \end_layout
 
 \end_inset
@@ -18788,7 +18758,7 @@ status collapsed
 Avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
-Charactère
+Caractère
 \begin_inset space ~
 \end_inset
 
@@ -18796,27 +18766,26 @@ spécial\SpecialChar menuseparator
 Logos
 \family default
 , \SpecialChar LyX
+ fournit les logos des logiciels suivant avec une typographie particulière:
  
-\lang english
-provides the following program logos with special formatting:
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
- est le nom du jeu.
+ est le nom du jeu;
 \end_layout
 
 \begin_layout Description
 \SpecialChar TeX
  est le programme utilisé par \SpecialChar LyX
-.
+;
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
  la collection des macros \SpecialChar TeX
  utilisé par \SpecialChar LyX
-.
+;
 \end_layout
 
 \begin_layout Description
@@ -23352,14 +23321,14 @@ Et ceci pour allonger.
 \end_layout
 
 \begin_layout Standard
-Les opérations de coupé-collé entre des tableaux ou des cellules marchent
+Les opérations de coupé-collé entre des tableaux ou des cellules fonctionnent
  relativement bien.
  Vous pouvez couper et coller plus d'une ligne
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Notez que vous ne pouvez coller dans une sélection de plusieurs cellules
+Notez que vous ne pouvez pas coller dans une sélection de plusieurs cellules
  puisque dans les cas, par exemple de la copie d'un mot seul dans une sélection
  2×3, ce qu'il faut faire n'est pas clair.
 \end_layout
@@ -28251,20 +28220,16 @@ Vous pouvez modifier le nom d'une étiquette à tout moment en cliquant dessus.
 
 \begin_layout Standard
 Si une référence croisée fait référence à une étiquette qui n'existe pas,
- vous verrez 
-\lang english
-in \SpecialChar LyX
+ vous verrez dans la fenêtre \SpecialChar LyX
  
 \begin_inset Quotes fld
 \end_inset
 
-BROKEN
+CASSÉ
 \begin_inset Quotes frd
 \end_inset
 
- in the cross-reference label and
-\lang french
- et deux points d'interrogation à l'impression.
+ dans l'étiquette et à l'impression deux points d'interrogation.
 \end_layout
 
 \begin_layout Standard
@@ -35107,7 +35072,7 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 ).
  De ce fait, \SpecialChar LyX
  peut accéder directement au dictionnaire des synonymes de
- OpenOffice, qui est disponible pour ne nombreuses langues.
+ OpenOffice, qui est disponible pour de nombreuses langues.
 \end_layout
 
 \begin_layout Standard
@@ -36866,20 +36831,16 @@ Open
 \begin_inset space ~
 \end_inset
 
-XML fichier au format Office Open XML,
-\lang english
- to be opened with 
+XML fichier au format Office Open XML, to be opened with 
 \family sans
 Microsoft Word
 \family default
 .
- For the conversion the program 
+ Le programme 
 \family typewriter
 Pandoc
 \family default
- is used
-\lang french
-.
+ est utilisé pour la conversion.
  
 \family typewriter
 Pandoc
@@ -36917,15 +36878,11 @@ KOffice
 Abiword
 \family default
 , etc..
- 
-\lang english
-For the conversion the program 
+ Le programme 
 \family typewriter
 Pandoc
 \family default
- is used
-\lang french
-.
+ est utilisé pour la conversion.
  
 \family typewriter
 Pandoc
@@ -36941,15 +36898,11 @@ OpenDocument
 \end_inset
 
 (tex4ht) fichier au format OpenDocument.
- 
-\lang english
-For the conversion the program 
+ For the conversion Le programme 
 \family typewriter
 tex4ht
 \family default
- is used
-\lang french
-.
+ est utilisé pour la conversion.
  
 \family typewriter
 tex4ht
@@ -38082,12 +38035,10 @@ Manuels spécifiques
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Logos Inserts the logos of the programs \SpecialChar LyX
+Logos insère les logos des logiciels \SpecialChar LyX
 , \SpecialChar TeX
 , \SpecialChar LaTeX
- and \SpecialChar LaTeX2e
+ et \SpecialChar LaTeX2e
 .
 \end_layout
 
@@ -39702,7 +39653,7 @@ reference "sec:Formats-de-Fichiers"
 \end_layout
 
 \begin_layout Subsection
-Comprimé
+Compressé
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Comprimé"
@@ -45999,14 +45950,12 @@ Vitesse de défilement via la molette
 .
  La vitesse standard est 1,0, une valeur plus élevée accélérera le défilement,
  une valeur plus basse le ralentira.
- 
-\lang english
-With the option 
+ L'option 
 \family sans
-Middle mouse button pasting
+Coller avec le bouton central de la souris
 \family default
- you can determine if pressing the middle mouse button (or the mouse wheel)
- inserts the content of the clipboard.
+ vous permet de préciser si vous pouvez coller le contenu du presse-papiers
+ avec le bouton central de la souris.
 \end_layout
 
 \begin_layout Standard
