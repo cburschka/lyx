@@ -6,12 +6,12 @@
 # arguments to format the labels. Additionally, the LaTeX environments
 # itemize and enumerate are extended to use a similar optional argument.
 #DescriptionEnd
+#Excludes: enumitem
+
 # Author: Georg Baum <baum@lyx.org>
 # (structuring taken from enumitem.module by Günter Milde)
 
 Format 59
-
-ExcludesModule enumitem
 
 AddToPreamble
 	\usepackage{paralist}
