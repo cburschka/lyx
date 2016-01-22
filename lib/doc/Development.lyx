@@ -1238,7 +1238,7 @@ Commit the changes to the repository, or send a patch to the development
 \end_layout
 
 \begin_layout Subsection
-ctest automatic tests (cmake only)
+ctest automatic tests
 \end_layout
 
 \begin_layout Standard
@@ -1247,7 +1247,7 @@ Some tests are located in the
 status collapsed
 
 \begin_layout Plain Layout
-development/autotests
+development/autotests/
 \end_layout
 
 \end_inset
@@ -1255,24 +1255,28 @@ development/autotests
  subfolder of the \SpecialChar LyX
  source code distribution.
  
-\begin_inset Flex Code
-status collapsed
+\begin_inset Foot
+status open
 
 \begin_layout Plain Layout
-cmake
+The README document in this folder only describes the 
+\begin_inset Quotes eld
+\end_inset
+
+keytests
+\begin_inset Quotes erd
+\end_inset
+
+ subset of autotests!
 \end_layout
 
 \end_inset
 
- is required to run the automatic \SpecialChar LyX
- tests, running them is not implemented
- for autotools.
  
 \end_layout
 
 \begin_layout Standard
-The \SpecialChar LyX
- tests can be run by the commands 
+These tests can be run by the commands 
 \begin_inset Flex Code
 status collapsed
 
@@ -1282,7 +1286,12 @@ ctest
 
 \end_inset
 
- (all platforms) or 
+ in the
+\emph on
+ build directory
+\emph default
+ (all platforms) or (when using a make based build system and not MSVC)
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -1292,17 +1301,37 @@ make test
 
 \end_inset
 
- (when using a make based build system and not MSVC) in the 
+ in the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-autotests
+autotests/
 \end_layout
 
 \end_inset
 
- subfolder of the build directory.
+ subfolder of the
+\emph on
+ build directory
+\emph default
+.
+ The test logs are written to the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Testing/Temporary/
+\end_layout
+
+\end_inset
+
+ subfolder of the
+\emph on
+ 
+\emph default
+build directory.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1325,9 +1354,8 @@ reuse
 \begin_inset Quotes erd
 \end_inset
 
- documentation, template, and example files trying to export them to all
- supported output formats.
- In addition, there are a number of dedicated sample documents under 
+ documentation, template, and example documents.
+ In addition, there are a number of dedicated sample documents in the 
 \begin_inset Flex Code
 status collapsed
 
@@ -1337,7 +1365,22 @@ autotests/export/
 
 \end_inset
 
-.
+ subfolder of the \SpecialChar LyX
+ source code distribution.
+ All samples are (after copying and eventual processing by scripts) exported
+ to various output formats via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+—export-to
+\end_layout
+
+\end_inset
+
+ command line option.
+ The test checks for errors reported by LyX (However, error-free export
+ is no guarantee for an error-free output document.)
 \end_layout
 
 \begin_layout Paragraph
@@ -1410,6 +1453,219 @@ reference "subsec:Interpreting-export-tests"
 .
 \end_layout
 
+\begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:export-test-output-formats"
+
+\end_inset
+
+Output formats
+\end_layout
+
+\begin_layout Standard
+The following output formats are currently tested for each sample document
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Export-test-filtering"
+
+\end_inset
+
+ for exceptions):
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+lyx16 LyX 1.6 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+lyx21 LyX 2.1 file format (lyx2lyx)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+xhtml LyXHTML (native LyX HTML export)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+LaTeX:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+dvi DVI (8-bit latex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+dvi3_texF DVI (LuaTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+dvi3_systemF DVI (LuaTeX with Unicode fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf2 PDF (pdflatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf4_texF PDF (XeTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf4_systemF PDF (XeTeX with Unicode fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf5_texF PDF (LuaTeX with 8-bit TeX fonts)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf5_systemF PDF (LuaTeX with Unicode fonts)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LyX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+LaTeX
+\begin_inset space ~
+\end_inset
+
++
+\begin_inset space ~
+\end_inset
+
+postprocessing:
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf DVI -> PS (dvips) -> PDF (ps2pdf)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdf3 DVI -> PDF (dvipdfm)
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+not
+\begin_inset space ~
+\end_inset
+
+tested: (or only if set as default output format in the document source)
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+latex LaTeX (plain)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+luatex LaTeX (LuaTeX)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+dviluatex LaTeX (dviluatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+pdflatex LaTeX (pdflatex)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+platex LaTeX (pLaTeX)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+xetex LaTeX (XeTeX) 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+eps3 EPS (encapsulated Postscript) (cropped)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+ps DVI -> Postscript (dvips)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+odf
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+text (nor text2, ..., text4)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+textparagraph
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+word
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+word2
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring pdf5_systemFM
+wordhtml
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
@@ -1487,7 +1743,7 @@ ctest
 \end_layout
 
 \begin_layout Standard
-To run only some of the tests, use command line options:
+To run only some of the tests, use command line options (see examples below):
 \end_layout
 
 \begin_layout Labeling
@@ -1520,22 +1776,6 @@ status collapsed
  
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-For example, to run only the export tests, you can use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-ctest -L export
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
 \begin_layout Labeling
 \labelwidthstring -R
 \begin_inset Flex Code
@@ -1770,6 +2010,68 @@ man ctest
 \end_layout
 
 \begin_layout Paragraph
+Examples
+\end_layout
+
+\begin_layout Itemize
+run only the export tests: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L export
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+run inverted tests: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L "inverted|suspended"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+list all export tests which match any of the labelling patterns: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -N -R "
+\backslash
+..*_export/" 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+exclude rarely used output formats and post-processing tests 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ctest -L export -E "_(texF|dvi3|pdf3?)"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Interpreting-export-tests"
@@ -1784,8 +2086,7 @@ A test can fail for several reasons, not all of them bad.
 \end_layout
 
 \begin_layout Enumerate
-The .lyx file could have been added recently and some formats are not expected
- to work well.
+A new or edited sample document may be incompatible with some output formats.
 \end_layout
 
 \begin_layout Enumerate
@@ -1903,6 +2204,16 @@ development/autotests/suspiciousTests
 
 \end_inset
 
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests/unreliableTests
+\end_layout
+
+\end_inset
+
  and 
 \begin_inset Flex Code
 status collapsed
@@ -1914,10 +2225,7 @@ development/autotests/ignoredTests
 \end_inset
 
 .
- It is possible that an export goes from succeeding to failing just because
- the document was changed and the document was never expected to work with
- a certain export format in the first case.
- Once this is confirmed to be the situation, the test can be inverted.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2472,6 +2780,12 @@ invalid
 
 \end_deeper
 \begin_layout Paragraph
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Export-test-filtering"
+
+\end_inset
+
 Export test filtering
 \end_layout
 
@@ -3403,6 +3717,27 @@ development/autotests/filterCheckWarnings
 
 \begin_layout Standard
 Under cmake, the tests are labeled as 'load'.
+\end_layout
+
+\begin_layout Subsubsection
+Keytests
+\end_layout
+
+\begin_layout Standard
+Automated tests based on the "MonKey Testing" keytest program.
+ They are documented in the README document in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+development/autotests
+\end_layout
+
+\end_inset
+
+ subfolder of the \SpecialChar LyX
+ source code distribution.
+ T
 \end_layout
 
 \begin_layout Subsubsection
