@@ -8845,11 +8845,7 @@ Return
 カーソルを図の後ろに置いて、
 \family sans
 挿入\SpecialChar menuseparator
-整形
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+整形\SpecialChar menuseparator
 水平方向の空白
 \family default
 を選択して
@@ -8871,8 +8867,7 @@ Return
 
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialChar TeX
-コード
+TeXコード
 \family default
 を選択して、\SpecialChar TeX
 差込枠を挿入します。
@@ -8895,8 +8890,7 @@ parbox[b]{55mm}{
 カーソルをキャプション文の後ろに移動し、
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialChar TeX
-コード
+TeXコード
 \family default
 を選択して、別の\SpecialChar TeX
 差込枠を挿入し、その中に閉じ括弧を入力します 。
