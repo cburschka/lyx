@@ -529,11 +529,7 @@ If you have run \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-View
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+View\SpecialChar menuseparator
 DVI
 \end_layout
 
@@ -546,11 +542,7 @@ DVI
 status collapsed
 
 \begin_layout Plain Layout
-View
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+View\SpecialChar menuseparator
 PostScript
 \end_layout
 
@@ -1724,11 +1716,7 @@ Some folks also like to look at the log file directly: It is available from
 status collapsed
 
 \begin_layout Plain Layout
-Document
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+Document\SpecialChar menuseparator
 Latex
 \begin_inset space ~
 \end_inset
@@ -1846,11 +1834,7 @@ You can also enable the `draft' option in
 status collapsed
 
 \begin_layout Plain Layout
-Document
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -8186,10 +8170,7 @@ Figure
 \family default
 , then right click in the figure and select 
 \family sans
-\bar under
-S
-\bar default
-pan
+Span
 \begin_inset space ~
 \end_inset
 
@@ -12500,10 +12481,7 @@ New from
 \family default
  
 \family sans
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
 , then choose the 
 \family typewriter
@@ -15105,15 +15083,8 @@ KOMAold
 \family default
 , inserted via the 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-ocument\SpecialChar menuseparator
+Layout\SpecialChar menuseparator
+Document\SpecialChar menuseparator
 Extra Options
 \family default
  field.
@@ -15996,11 +15967,7 @@ aps
 
 , go in the 
 \family sans
-E
-\bar under
-x
-\bar default
-tra
+Extra
 \begin_inset space ~
 \end_inset
 
@@ -18391,10 +18358,7 @@ slides
  class.
  To use it, begin your new presentation with 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 New
 \begin_inset space ~
 \end_inset
@@ -18403,11 +18367,7 @@ from
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
 .
  Your new \SpecialChar LyX
@@ -20273,10 +20233,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -20935,10 +20892,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
 \end_layout
@@ -21529,24 +21483,13 @@ Automatic Locking Property
 The above mentioned automatic setting of write permissions of the .lyx file
  can be set through
 \family sans
-\bar under
- F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-V
-\bar default
-ersion
+ File\SpecialChar menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar menuseparator
-
-\bar under
-T
-\bar default
-oggle locking property
+Toggle locking property
 \family default
 .
  This command is active only when the file is not locked on the svn server
@@ -22518,10 +22461,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
 \end_layout
