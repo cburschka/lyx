@@ -1,0 +1,96 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 504
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{pgfplots}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "TeX Gyre Termes"
+\font_sans "default" "TeX Gyre Pagella"
+\font_typewriter "default" "TeX Gyre Cursor"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format pdf5
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Register
+\shortcut idx
+\color #008000
+\end_index
+\paperwidth 22cm
+\paperheight 11cm
+\leftmargin 1cm
+\topmargin 0cm
+\rightmargin 1cm
+\bottommargin 0cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Setting the longest label to a string containing underscore leads to uncompilabl
+e document.
+ See Paragraph Settings...Longest label
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring Longest_Label_With_Underscore
+\noindent
+Longest_Label_With_Underscore Long label with underscore
+\end_layout
+
+\end_body
+\end_document
