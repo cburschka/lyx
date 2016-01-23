@@ -378,10 +378,7 @@ Guida dell'utente
 \emph default
  dal menu 
 \family sans
-\bar under
-A
-\bar default
-iuto
+Aiuto
 \family default
 .
  Oppure potreste voler leggere proprio il 
@@ -405,10 +402,7 @@ Possono anche servire come esempi su come usare le varie proprietà di \SpecialC
  Fate attenzione al fatto che nel momento in cui avete più documenti aperti,
  potete passare dall'uno all'altro attraverso il menu 
 \family sans
-\bar under
-V
-\bar default
-ista
+Vista
 \family default
 .
  Precisiamo che il 
@@ -497,10 +491,7 @@ examples/
 \family default
 , che può essere raggiunta selezionando 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Apri
 \family default
  e quindi cliccando sul tasto 
@@ -510,10 +501,7 @@ Esempi
 .
  Aprite il documento scorretto e mediante 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Salva
 \begin_inset space ~
 \end_inset
@@ -550,10 +538,7 @@ Digitazione, Lettura e Stampa
 \begin_layout Itemize
 Crea un nuovo file con 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Nuovo
 \family default
 .
@@ -569,10 +554,7 @@ Questo è il mio primo documento scritto con \SpecialChar LyX
 \begin_layout Itemize
 Salvate il documento con 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Salva
 \begin_inset space ~
 \end_inset
@@ -590,10 +572,7 @@ dvi
 \family default
 , con 
 \family sans
-\bar under
-V
-\bar default
-ista\SpecialChar menuseparator
+Vista\SpecialChar menuseparator
 DVI
 \family default
 .
@@ -627,10 +606,7 @@ xdvi
  Quando \SpecialChar LaTeX
  avrà terminato, basterà scegliere 
 \family sans
-\bar under
-V
-\bar default
-ista\SpecialChar menuseparator
+Vista\SpecialChar menuseparator
 Aggiorna\SpecialChar menuseparator
 DVI
 \family default
@@ -649,10 +625,7 @@ xdvi
 \begin_layout Itemize
 Stampate scegliendo 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Stampa
 \family default
  e premendo 
@@ -700,21 +673,13 @@ Annulla \SpecialChar LyX
  tutte le operazioni che avete eseguito dall'inizio della vostra sessione
  di lavoro corrente, selezionando 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Annulla
 \family default
  più e più volte.
  Se avete esagerato, scegliete 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Rifai
 \family default
  per tornare indietro.
@@ -741,29 +706,17 @@ ne del documento.
 \begin_layout Description
 Taglia/Incolla/Copia Scegliete 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Taglia
 \family default
 , 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Incolla
 \family default
 , e 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Copia
 \family default
  per tagliare, incollare, e copiare, oppure incollate automaticamente il
@@ -778,11 +731,7 @@ tasto centrale del mouse
 \begin_layout Description
 Trova/Sostituisci La voce 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Trova
 \begin_inset space ~
 \end_inset
@@ -807,9 +756,9 @@ successivo
 \family sans
 Sostituisci
 \family default
- per sostituire la parola trovata
+ per sostituire la parola trovata.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Una volta finito potete chiudere la finestra oppure lasciarla aperta se
@@ -844,15 +793,11 @@ Impostazioni
 , nonché quelle relative alla matematica, operano alla stessa maniera.
  Alcune finestre di dialogo, come quella 
 \family sans
-\bar under
-F
-\bar default
-ile
-\bar under
-\SpecialChar menuseparator
-
-\bar default
-Apri
+\color inherit
+File\SpecialChar menuseparator
+Ap
+\color none
+ri
 \family default
 , non vi permettono di digitare nulla nella finestra principale di \SpecialChar LyX
  fino
@@ -865,7 +810,6 @@ Apri
 
 \end_inset
 
-.
  Se vi aggrada, potete effettuare le ricerche considerando la distinzione
  tra maiuscole e minuscole, cercando parole per intero o scorrendo il documento
  per la ricerca in senso inverso.
@@ -896,11 +840,7 @@ Maiuscoletto
  (di solito le lettere minuscole, usate per i nomi di persona) mediante
  i bottoni in rilievo presenti nella finestra 
 \family sans
-M
-\bar under
-o
-\bar default
-difica
+Modifica
 \family default
 \SpecialChar menuseparator
 
@@ -1175,10 +1115,7 @@ Ambiente
  è posto all'estrema sinistra della barra degli strumenti (proprio sotto
  il menu 
 \family sans
-\bar under
-F
-\bar default
-ile
+File
 \family default
 ) e indica l'ambiente sotto il quale state attualmente scrivendo.
  Mentre scrivevate il vostro primo documento, indicava 
@@ -1227,6 +1164,10 @@ Sezione
  dal menu 
 \family sans
 Ambiente
+\family default
+.
+\family sans
+
 \begin_inset Foot
 status collapsed
 
@@ -1247,7 +1188,6 @@ selezionare
 
 
 \family default
-.
  Assicuratevi di scegliere 
 \family sans
 Sezione
@@ -2101,10 +2041,7 @@ Di solito è la classe di testo predefinita
 .
  Provate a utilizzare le altre classi (mediante la finestra 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Impostazioni
 \family default
 ) per osservare come varia la formattazione degli uni rispetto agli altri.
@@ -2351,10 +2288,7 @@ Letter
 \family default
  nella finestra di dialogo ottenibile mediante 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Impostazioni
 \family default
 .
@@ -2376,10 +2310,7 @@ modello
 \begin_layout Standard
 Create un nuovo file con 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Nuovo
 \begin_inset space ~
 \end_inset
@@ -2615,10 +2546,7 @@ Circa questo documento
  Fermate il cursore alla fine della riga contenente il titolo della sezione,
  quindi scegliete la voce 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Etichetta
 \family default
 .
@@ -2684,10 +2612,7 @@ sezione
 
  — scegliete 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Riferimento
 \begin_inset space ~
 \end_inset
@@ -2763,10 +2688,7 @@ Riferimento
 ).
  Mediante 
 \family sans
-\bar under
-V
-\bar default
-ista\SpecialChar menuseparator
+Vista\SpecialChar menuseparator
 Aggiorna\SpecialChar menuseparator
 DVI
 \family default
@@ -2894,7 +2816,7 @@ Guida dell'utente
 \family sans
 Incolla
 \family default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -2919,7 +2841,7 @@ reference "sec:textclasses"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -2976,10 +2898,7 @@ status collapsed
 
  oppure scegliere la voce 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Nota
 \begin_inset space ~
 \end_inset
@@ -3207,10 +3126,7 @@ pagina
 , nella barra degli strumenti, mostra un testo di colore rosso, posizionato
  nel margine destro del foglio) oppure mediante il comando 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Nota
 \begin_inset space ~
 \end_inset
@@ -3342,10 +3258,7 @@ lyxtutorial
 Adesso spostate il cursore laddove desiderate inserire il riferimento e
  scegliete la voce 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Citazione
 \family default
 .
@@ -3450,10 +3363,7 @@ Invio
 \family default
  fra il titolo e la prima sezione del documento e quindi scegliere 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Elenchi/Indice
 \begin_inset space ~
 \end_inset
@@ -3497,10 +3407,7 @@ L'indice non viene riportato sullo schermo durante la digitazione in quanto
  a parte semplicemente cliccando sul tasto dell'indice oppure scegliendo
  la voce 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Indice
 \begin_inset space ~
 \end_inset
@@ -3527,10 +3434,7 @@ ente anche dei tasti contrassegnati dalle frecce per spostarvi lungo l'elenco),
  per tutta la durata della vostra sessione di scrittura.
  Potete disporre delle medesime funzionalità servendovi anche del menu 
 \family sans
-\bar under
-N
-\bar default
-aviga
+Naviga
 \family default
  dove l'indice generale è automaticamente riportato.
 \end_layout
@@ -3776,11 +3680,7 @@ Backspace
  Selezionate il testo o con i tasti cursore o con il mouse.
  La voce 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Annulla
 \family default
  funziona anche nella modalità matematica, ed in egual maniera le operazioni
@@ -3959,19 +3859,12 @@ matematico
  Molte di queste funzioni possono essere realizzate mediante la tastiera
  o i comandi da menu 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Matematica
 \family default
  o 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Matematica
 \family default
 .
@@ -3996,10 +3889,7 @@ matematico
 \family default
  mediante 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Matematica\SpecialChar menuseparator
 Pannello
 \begin_inset space ~
@@ -4505,11 +4395,7 @@ Giù
 \begin_layout Standard
 Se doveste aver bisogno di altre righe o colonne, utilizzate i comandi 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Matematica\SpecialChar menuseparator
 Aggiungi
 \begin_inset space ~
@@ -4674,7 +4560,7 @@ example_raw.lyx
 Esercizio
 \series default
 : Mediante le diverse tecniche che avete acquisito in questa sezione, dovreste
- essere in grado di scrivere una equazione del tipo
+ essere in grado di scrivere una equazione del tipo:
 \begin_inset Foot
 status collapsed
 
@@ -4682,10 +4568,7 @@ status collapsed
 Dopo aver provato la modalità più difficile, perché non provate anche con
  
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Matematica\SpecialChar menuseparator
 Contesto
 \begin_inset space ~
@@ -4699,7 +4582,7 @@ casi
 
 \end_inset
 
-:
+
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -4795,10 +4678,7 @@ Guida dell'utente
 Supporto delle tabelle in modo WYSIWYM.
  Invocate 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Tabella
 \family default
  per creare una tabella.
@@ -4824,10 +4704,7 @@ Possibilità di inserimento di figure secondo molteplici formati (compreso
  di un documento.
  (Invocate 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Grafici
 \family default
 .
@@ -4854,20 +4731,13 @@ man rcsintro
  documento finale, è configurabile in un certo numero di modi distinti.
  Molte configurazioni sono effettuabili mediante 
 \family sans
-M
-\bar under
-o
-\bar default
-difica\SpecialChar menuseparator
+Modifica\SpecialChar menuseparator
 Preferenze
 \family default
 .
  Per informazioni ad essa attinenti, consultate 
 \family sans
-\bar under
-A
-\bar default
-iuto\SpecialChar menuseparator
+Aiuto\SpecialChar menuseparator
 Personalizzazione
 \family default
 .
@@ -4893,10 +4763,7 @@ Personalizzazione
 La possibilità di invocazione dei comandi dei menu mediante i tasti.
  Ciò significa che potete impartire 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Nuovo
 \family default
  digitando 
@@ -4915,10 +4782,7 @@ C-N
  Le scorciatoie da tastiera sono comunque configurabili.
  Per informazioni al riguardo, consultate 
 \family sans
-\bar under
-A
-\bar default
-iuto\SpecialChar menuseparator
+Aiuto\SpecialChar menuseparator
 Personalizzazione
 \family default
 .
@@ -5047,16 +4911,12 @@ Qualunque cosa scriviate in modalità \SpecialChar TeX
  potete utilizzare comandi \SpecialChar TeX
  mediante il comando 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Codice
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
 .
  Verrà creato un rettangolo dove inserire del testo e tutto ciò che viene
@@ -5196,13 +5056,9 @@ Per importare un file \SpecialChar LaTeX
  in \SpecialChar LyX
 , è sufficiente invocare il comando 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Importa\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 .
  Questi lancerà 
@@ -5269,13 +5125,9 @@ Potreste voler convertire un Documento scritto in \SpecialChar LyX
  Questo fine è facilmente raggiungibile in \SpecialChar LyX
 , vi basterà scegliere 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Esporta\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  e a seguito di ciò verrà creato un file 
 \family typewriter
@@ -5305,10 +5157,7 @@ Classe di Documento
 \begin_layout Standard
 La finestra 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Impostazioni
 \family default
  consente di fissare molte delle opzioni che andrebbero introdotte attraverso
@@ -5355,8 +5204,7 @@ Preambolo
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  e introdurre i comandi desiderati nella finestra corrispondente (o dalla
  finestra delle impostazioni del documento, in dipendenza dell'interfaccia).
@@ -5378,10 +5226,7 @@ Bib\SpecialChar TeX
  bibliografici dei quali poter fare uso in documenti differenti.
  Selezionate 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Elenchi/Indice
 \begin_inset space ~
 \end_inset
@@ -5391,8 +5236,7 @@ Bibliografia
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialChar TeX
-
+BibTeX
 \family default
  per includere un 
 \family typewriter
@@ -5453,10 +5297,7 @@ bibliographystyle{}
 Dopo questa operazione, sarete in grado di fare riferimento ad un qualunque
  elemento appartenente alle bibliografie che avete incluso con 
 \family sans
-\bar under
-I
-\bar default
-nserisci\SpecialChar menuseparator
+Inserisci\SpecialChar menuseparator
 Citazione
 \family default
  (leggete la Sezione
