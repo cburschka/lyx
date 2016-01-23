@@ -10610,21 +10610,17 @@ Ein Papier schreiben
 \end_layout
 
 \begin_layout Standard
+
+\lang english
 As usual, the easiest way to write a paper is to start with a template.
  Click on 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 New from
 \family default
  
 \family sans
-\bar under
-T
-\bar default
-emplate
+Template
 \family default
 , then choose the 
 \family typewriter
@@ -10646,25 +10642,22 @@ ijmpd.lyx
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 \SpecialChar LyX
  won't let you change the font size and the page style of the document,
  because such modifications are not allowed by both packages.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
  To do this, click on 
 \family sans
-\bar under
-T
-\bar default
-ools\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-references
+Tools\SpecialChar menuseparator
+Preferences
 \family default
 , select the 
 \family sans
@@ -10672,17 +10665,11 @@ Lang Opts
 \family default
  tab, deselect the 
 \family sans
-\bar under
-U
-\bar default
-se babel
+Use babel
 \family default
  checkbox in the language settings, and click on 
 \family sans
-\bar under
-A
-\bar default
-pply
+Apply
 \family default
  (or 
 \family sans
@@ -10692,6 +10679,8 @@ Save
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 The 
 \begin_inset Quotes eld
 \end_inset
@@ -10704,6 +10693,8 @@ Keywords
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 The ijmpc package provides a style named 
 \begin_inset Quotes eld
 \end_inset
@@ -10717,6 +10708,8 @@ Classification Codes
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 Several new environments are available: 
 \begin_inset Quotes eld
 \end_inset
@@ -10837,6 +10830,8 @@ Conjecture
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 Both packages use basic citations; the natbib package should not be used.
  In \SpecialChar LyX
 , citation references are shown as usual; in the output, citations are
@@ -10871,6 +10866,8 @@ refcite{key}
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 There is no 
 \begin_inset Quotes eld
 \end_inset
@@ -10892,6 +10889,8 @@ Section*
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 Appendices may be added to the paper, 
 \emph on
 after
@@ -10953,6 +10952,8 @@ must
 \end_layout
 
 \begin_layout Enumerate
+
+\lang english
 The ijmpc and the ijmpd packages use the 
 \family typewriter
 tbl
@@ -10992,20 +10993,9 @@ your table caption
  file, then include this file to the \SpecialChar LyX
  document (
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-Fil
-\bar under
-e
-\bar default
-\SpecialChar menuseparator
-Chil
-\bar under
-d
-\bar default
-
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
+Child
 \begin_inset space ~
 \end_inset
 
@@ -11021,121 +11011,6 @@ ws-ijmpc.tex
 ws-ijmpd.tex
 \family default
 , included in the corresponding packages.
-\end_layout
-
-\begin_layout Standard
-Der einfachste Weg, ein Papier zu schreiben, ist mit einer Vorlagendatei
- anzufangen.
- Klicken Sie auf 
-\family sans
-Datei
-\family default
-\SpecialChar menuseparator
-
-\family sans
-Neu
-\begin_inset space ~
-\end_inset
-
-von
-\begin_inset space ~
-\end_inset
-
-Vorlage
-\family default
-\SpecialChar ldots
-
-\begin_inset space ~
-\end_inset
-
-und wählen die Datei 
-\family typewriter
-ijmpd.lyx
-\family default
- aus.
- Sie erhalten ein (fast) leeres Dokument, das die meisten Felder enthält,
- die in einem Manuskript vorkommen und eine kleine Beschreibung für ihre
- Benutzung.
- Überschreiben Sie wie in den meisten Vorlagen den vorhandenen Text (einschließl
-ich der Klammern <>) mit Ihrem Text.
- Sie sollten die folgenden Bemerkungen beachten:
-\end_layout
-
-\begin_layout Enumerate
-\SpecialChar LyX
- erlaubt Ihnen nicht, die Fontgröße und den Seitenstil des Dokuments zu
- ändern, weil das ijmpd-Paket diese Änderungen nicht erlaubt.
-\end_layout
-
-\begin_layout Enumerate
-Das ijmpd-Paket verlangt, dass die Dokumentsprache nicht geändert wird.
- Bevor Sie Ihr Papier in der Druckansicht ansehen, überzeugen Sie sich,
- dass das Babel-Paket nicht benutzt wird: deaktivieren Sie 
-\family sans
-Werkzeuge\SpecialChar menuseparator
-Einstellungen\SpecialChar menuseparator
-Sprach-Einstellungen\SpecialChar menuseparator
-Sprache\SpecialChar menuseparator
-Babel
-\begin_inset space ~
-\end_inset
-
-verwenden.
-\end_layout
-
-\begin_layout Enumerate
-Es gibt zwei neue Umgebungen 
-\family sans
-Theorem
-\family default
- und 
-\family sans
-Beweis
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Anhänge können ans Papier hinzugefügt werden.
- \SpecialChar LyX
- bietet dafür eine besondere Umgebung 
-\emph on
-Appendix
-\emph default
-, die den Anfang des Anhangs markiert.
- Ein Anhang kann normale Abschnitte, Unterabschnitte und Unterunterabschnitte
- enthalten.
-\end_layout
-
-\begin_layout Enumerate
-Das ijmpd-Paket behandelt Tabellenbeschriftungen ganz anders als \SpecialChar LyX
-.
- Deswegen wird eine von \SpecialChar LyX
- erstellte Tabelle zwar richtig gedruckt, aber ihre
- Beschriftung wird ignoriert.
- Wenn Sie Tabellenbeschriftungen brauchen, sollten Sie die ganze gleitende
- Tabelle in eine 
-\family typewriter
-.tex
-\family default
--Datei einbauen und dann diese Datei in das \SpecialChar LyX
--Dokument importieren (
-\family sans
-Einfügen\SpecialChar menuseparator
-Datei
-\begin_inset space \space{}
-\end_inset
-
-einbinden
-\family default
-\SpecialChar ldots
- ).
- Wie Sie eine gleitende Tabelle für ijmpd erstellen, steht in der Datei
- 
-\family typewriter
-ws-ijmpd.tex
-\family default
-, die zum ijmpd-Paket dazugehört.
 \end_layout
 
 \begin_layout Subsection
@@ -21242,10 +21117,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -21727,10 +21599,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -22242,24 +22111,13 @@ Automatic Locking Property
 The above mentioned automatic setting of write permissions of the .lyx file
  can be set through
 \family sans
-\bar under
- F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-V
-\bar default
-ersion
+ File\SpecialChar menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar menuseparator
-
-\bar under
-T
-\bar default
-oggle locking property
+Toggle locking property
 \family default
 .
  This command is active only when the file is not locked on the svn server
