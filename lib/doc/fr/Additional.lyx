@@ -2641,10 +2641,7 @@ end{document}
 \SpecialChar LyX
  permet l'inclusion de fichiers en sélectionnant 
 \family sans
-\bar under
-Insertion
-\bar default
-\SpecialChar menuseparator
+Insertion\SpecialChar menuseparator
 Fichier\SpecialChar menuseparator
 Sous-document
 \family default
@@ -2781,8 +2778,6 @@ Références croisées entre fichiers
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Box Shadowbox
 position "t"
 hor_pos "c"
@@ -2810,8 +2805,6 @@ nts s'ouvrent en même temps que le document maître.
 
 \end_inset
 
-
-\lang french
 Il est possible de faire des références croisées entre différents fichiers.
  D'abord, il faut ouvrir tous les fichiers concernés : appelons-les A et
  B pour un exemple avec deux fichiers, avec B inclus dans A.
@@ -15643,21 +15636,9 @@ Exportez votre papier comme fichier \SpecialChar LaTeX
 .
  Pour cela, faites 
 \family sans
-\bar under
-F
-\bar default
-ichier\SpecialChar menuseparator
-E
-\bar under
-x
-\bar default
-porter\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a\SpecialChar TeX
-
+Fichier\SpecialChar menuseparator
+Exporter\SpecialChar menuseparator
+LaTeX
 \family default
 .
 \end_layout
@@ -21644,10 +21625,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -22129,10 +22107,7 @@ If your document is not under revision control, this is the only item shown
  in the menu.
  And if it is under revision control, the 
 \family sans
-\bar under
-R
-\bar default
-egister
+Register
 \family default
  item is not visible.
  
@@ -22644,24 +22619,13 @@ Automatic Locking Property
 The above mentioned automatic setting of write permissions of the .lyx file
  can be set through
 \family sans
-\bar under
- F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-V
-\bar default
-ersion
+ File\SpecialChar menuseparator
+Version
 \begin_inset space ~
 \end_inset
 
 Control\SpecialChar menuseparator
-
-\bar under
-T
-\bar default
-oggle locking property
+Toggle locking property
 \family default
 .
  This command is active only when the file is not locked on the svn server
