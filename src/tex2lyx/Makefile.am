@@ -128,7 +128,9 @@ tex2lyx_LDADD = \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
-tex2lyx_LDFLAGS = -framework AppKit
+tex2lyx_LDFLAGS = -framework AppKit \
+	-Wl,-rpath,@loader_path/../Frameworks \
+	-Wl,-rpath,@executable_path/../Frameworks
 endif
 
 .PHONY: alltests alltests-recursive updatetests
