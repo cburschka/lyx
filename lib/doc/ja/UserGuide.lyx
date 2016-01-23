@@ -7287,12 +7287,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7305,6 +7307,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7327,6 +7330,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -32354,6 +32358,18 @@ name "subsec:圧縮"
 \begin_layout Standard
 現在の文書を圧縮したり解凍したりします。バージョン管理下の文書に関しては、圧縮機能を無効にすることを強く推奨します(詳細については、取扱説明書高度な機能篇を参照
 )。
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Disable Editing
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Toggles the read-only state for the document.
 \end_layout
 
 \begin_layout Subsection
