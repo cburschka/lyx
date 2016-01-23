@@ -4567,21 +4567,12 @@ Cómo se ve
 \begin_layout Standard
 Abre el diálogo siguiendo el camino de menú 
 \family sans
-\bar under
-D
-\bar default
-ocument
+Document
 \family default
 o
 \family sans
 \SpecialChar menuseparator
-C
-\family default
-\bar under
-o
-\family sans
-\bar default
-nfiguración\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Marcas
 \family default
 .
@@ -8195,15 +8186,8 @@ article (A&A)
 \family default
  en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar menuseparator
+Configuración
 \family default
  (vale, esto era obvio).
 \end_layout
@@ -8315,10 +8299,7 @@ e.
 
 para consignar tu actual dirección, usa la nota al pie estándar con 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
+Insertar\SpecialChar menuseparator
 Nota
 \begin_inset space ~
 \end_inset
@@ -8610,10 +8591,7 @@ Guía del Usuario
  Solo recordaremos que los cuadros deben alinearse a la izquierda.
  Para eso selecciona el cuadro y cambia la alineación en 
 \family sans
-\bar under
-E
-\bar default
-ditar\SpecialChar menuseparator
+Editar\SpecialChar menuseparator
 Configuración
 \begin_inset space ~
 \end_inset
@@ -8638,23 +8616,13 @@ Crea un flotante de figura ancha:
 \family default
 selecciona 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
-
-\bar under
-F
-\bar default
-lotante\SpecialChar menuseparator
+Insertar\SpecialChar menuseparator
+Flotante\SpecialChar menuseparator
 Figura
 \family default
 , después haz clic derecho en la figura y selecciona 
 \family sans
-\bar under
-E
-\bar default
-xtender
+Extender
 \begin_inset space ~
 \end_inset
 
@@ -8682,19 +8650,12 @@ Inserta la figura.
 \begin_layout Enumerate
 Coloca el cursor tras la figura e inserta un relleno horizontal: 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
+Insertar\SpecialChar menuseparator
 Formato
 \begin_inset space ~
 \end_inset
 
-especial
-\bar under
-\SpecialChar menuseparator
-
-\bar default
+especial\SpecialChar menuseparator
 Relleno
 \begin_inset space ~
 \end_inset
@@ -8784,10 +8745,7 @@ clase
 \family default
 , submenú 
 \family sans
-\bar under
-D
-\bar default
-ocumento
+Documento
 \family default
 \SpecialChar menuseparator
 
@@ -8922,10 +8880,7 @@ Recomiendo encarecidamente que comiences con el archivo de plantilla modelo
 .
  Clic en 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
+Archivo\SpecialChar menuseparator
 Nuevo
 \begin_inset space ~
 \end_inset
@@ -8998,21 +8953,9 @@ posprocesamiento
 Exporta el documento a archivo \SpecialChar LaTeX
  (
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a\SpecialChar TeX
-
+Archivo\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+LaTeX
 \family default
  (
 \family sans
@@ -9710,10 +9653,7 @@ deluxetable
  en el documento \SpecialChar LyX
  con 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
+Insertar\SpecialChar menuseparator
 Documento
 \family default
 
@@ -9796,15 +9736,8 @@ aastex.layout
 \begin_layout Enumerate
 Ejecuta 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar menuseparator
-
-\bar under
-R
-\bar default
-econfigurar
+Herramientas\SpecialChar menuseparator
+Reconfigurar
 \family default
  en \SpecialChar LyX
 , y reinicia \SpecialChar LyX
@@ -9816,15 +9749,8 @@ Abre un archivo nuevo normal, no desde plantilla.
  ¿Aparece AAS\SpecialChar TeX
  en la lista desplegable de clases en 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar menuseparator
+Configuración
 \family default
 ?
 \end_layout
@@ -10022,11 +9948,18 @@ Advertencia final
 
 \begin_layout Standard
 Tu recorrido puede variar.
- He escrito artículos publicados por ApJ y AJ en los que el 98% de la tarea
- ha corrido a cuenta de \SpecialChar LyX
-; el 2% restante ha correspondido a postprocesamiento
- con \SpecialChar LaTeX
- y un poco de limpieza final.
+ He escrito artículos publicados por ApJ y AJ en los que el 98
+\begin_inset space \thinspace{}
+\end_inset
+
+% de la tarea ha corrido a cuenta de \SpecialChar LyX
+; el 2
+\begin_inset space \thinspace{}
+\end_inset
+
+% restante ha correspondido a postprocesamiento con \SpecialChar LaTeX
+ y un poco de limpieza
+ final.
  No he tenido problemas con el procedimiento de envío, y estoy seguro de
  que los editores no notaron diferencias.
  Así pues, ¡adelante, a publicar!
@@ -12029,16 +11962,8 @@ Ejemplos
 \family default
  del diálogo 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
-
-\bar under
-A
-\bar default
-brir\SpecialChar ldots
-
+Archivo\SpecialChar menuseparator
+Abrir
 \end_layout
 
 \begin_layout Subsubsection
@@ -13160,10 +13085,7 @@ Como es habitual, la forma más fácil de escribir un artículo es partiendo
  de una plantilla.
  Clic en 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
+Archivo\SpecialChar menuseparator
 Nuevo desde plantilla
 \family default
 , y elige una plantilla 
@@ -13581,20 +13503,9 @@ Preparar un artículo para su remisión
 Antes de remitir un artículo debes exportarlo a \SpecialChar LaTeX
  (
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a
+Archivo\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+La
 \family default
 T
 \family sans
@@ -14018,21 +13929,9 @@ Como en el paquete AAS\SpecialChar TeX
 Exporta tu documento a \SpecialChar LaTeX
 , 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
-
-\bar under
-E
-\bar default
-xportar\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a\SpecialChar TeX
-
+Archivo\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+LaTeX
 \family default
 .
  
@@ -14476,10 +14375,7 @@ DIV
  (en \SpecialChar LyX
  se introducen en el campo de opciones de clase del diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Configuración
 \family default
 ).
@@ -14744,10 +14640,7 @@ Sentencia
  un capítulo.
  Si utilizas el parámetro opcional 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
+Insertar\SpecialChar menuseparator
 Título
 \begin_inset space ~
 \end_inset
@@ -15789,15 +15682,8 @@ Logotipo
 \family default
  (vía 
 \family sans
-\bar under
-I
-\bar default
-nsertar\SpecialChar menuseparator
-Ima
-\bar under
-g
-\bar default
-en
+Insertar\SpecialChar menuseparator
+Imagen
 \family default
 ) en el encabezado.
 \end_layout
@@ -15843,15 +15729,8 @@ Opciones
 \family default
 de 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
 Clase
 \begin_inset space ~
 \end_inset
@@ -15919,20 +15798,14 @@ Añadir_Sec
 , no en el índice de \SpecialChar LyX
  (
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Índice
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-g
+general
 \family default
-\bar default
-eneral).
+).
 \end_layout
 
 \begin_layout Itemize
@@ -15945,22 +15818,12 @@ letter
  para eso.
  Sin embargo, en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
-C
-\bar under
-o
-\bar default
-nfiguración
+Documento\SpecialChar menuseparator
+Configuración
 \family default
  el botón que aparece marcado es 
 \family sans
-\bar under
-S
-\bar default
-angrado
+Sangrado
 \family default
 .
  Si se introduce un valor de 
@@ -16016,7 +15879,7 @@ Peter Wilson, el desarrollador de Memoir, es conocido como autor de muchos
 , no obstante, no soporta por sí mismo todas sus características.
  Algunas se podrán añadir en futuras versiones
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Estás invitado a enviar sugerencias a 
@@ -16042,7 +15905,7 @@ lyx-devel@lists.lyx.org
  (código \SpecialChar TeX
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Consulta la sección
@@ -16971,7 +16834,7 @@ Afiliación
 \family default
  son exactamente equivalentes, por lo que no tendrías que usar ambos.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Si tienes curiosidad, se incluyeron ambos para que 
@@ -17597,10 +17460,7 @@ slides (default)
 
  en el diálogo 
 \family sans
-\bar under
-D
-\bar default
-ocumento\SpecialChar menuseparator
+Documento\SpecialChar menuseparator
 Configuración
 \family default
 .
@@ -17730,22 +17590,15 @@ slides.lyx
 
  para preparar un nuevo documento de esta clase, con 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
+Archivo\SpecialChar menuseparator
 Nuevo
 \begin_inset space ~
 \end_inset
 
 desde
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 plantilla
 \family default
 .
@@ -19284,10 +19137,7 @@ slides
 .
  Para empezar tu presentación con él abrelo con 
 \family sans
-\bar under
-A
-\bar default
-rchivo\SpecialChar menuseparator
+Archivo\SpecialChar menuseparator
 Nuevo
 \begin_inset space ~
 \end_inset
@@ -19470,7 +19320,7 @@ seminar
  Este último aún no es soportado por \SpecialChar LyX
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Quizá quieras abordar tú la tarea\SpecialChar ldots
@@ -19520,7 +19370,7 @@ chktex
 \family default
 ,
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Aún no disponible en la distribución Mik\SpecialChar TeX
@@ -19531,22 +19381,15 @@ Aún no disponible en la distribución Mik\SpecialChar TeX
 
  bajo el menú 
 \family sans
-\bar under
-H
-\bar default
-erramientas
+Herramientas
 \family default
  encontrarás la opción 
 \family sans
-\bar under
-C
-\bar default
-omprobar
+Comprobar
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
 .
  Para que esté disponible necesitas instalar el programa 
@@ -19749,20 +19592,12 @@ Modo de empleo
 \begin_layout Standard
 Si el programa está instalado, se ejecuta con 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar menuseparator
-
-\bar under
-C
-\bar default
-omprobar
+Herramientas\SpecialChar menuseparator
+Comprobar
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
 .
  \SpecialChar LyX
@@ -19789,15 +19624,8 @@ Chk\SpecialChar TeX
  Las advertencias se situarán cerca del error, y puedes navegar entre ellas
  con la opción de menú 
 \family sans
-\bar under
-N
-\bar default
-avegar\SpecialChar menuseparator
-
-\bar under
-E
-\bar default
-rror
+Navegar\SpecialChar menuseparator
+Error
 \family default
 , o con el atajo de teclado 
 \family sans
@@ -19963,12 +19791,11 @@ Chk\SpecialChar TeX
 Exporta tu documento a un archivo \SpecialChar LaTeX
  simple con
 \family typewriter
- Archivo\SpecialChar menuseparator
-Exportar\SpecialChar menuseparator
-La
+ 
 \family sans
-\SpecialChar TeX
-
+Archivo\SpecialChar menuseparator
+Exportar\SpecialChar menuseparator
+LaTeX
 \family default
  y ejecuta 
 \family typewriter
@@ -21077,21 +20904,13 @@ Las secciones siguientes describen los comandos RCS soportados por \SpecialChar 
 \family sans
 Archivo\SpecialChar menuseparator
 Control
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 de
-\bar under
-
 \begin_inset space ~
 \end_inset
 
-
-\bar default
 versiones
 \family default
 .
@@ -24612,15 +24431,8 @@ Para aclarar las cosas explicaré lo que sucede en el interior de \SpecialChar L
 \begin_layout Enumerate
 Al escoger la opción 
 \family sans
-\bar under
-V
-\bar default
-er\SpecialChar menuseparator
-
-\bar under
-A
-\bar default
-ctualizar\SpecialChar menuseparator
+Ver\SpecialChar menuseparator
+Actualizar\SpecialChar menuseparator
 DVI
 \family default
 , se genera un archivo \SpecialChar LaTeX
@@ -24668,8 +24480,6 @@ La única diferencia está en la extensión del archivo, no hace falta ninguna
  acción especial por parte de \SpecialChar LyX
 , puesto que has formateado el código con
  el entorno 
-\lang english
-
 \begin_inset Flex Noun
 status collapsed
 
@@ -24679,8 +24489,6 @@ Trozo
 
 \end_inset
 
-
-\lang spanish
 , que ya se cuida de ese aspecto.
 \end_layout
 
@@ -24702,15 +24510,8 @@ status collapsed
 \begin_layout Plain Layout
 Definido en 
 \family sans
-\bar under
-H
-\bar default
-erramientas\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-referencias
+Herramientas\SpecialChar menuseparator
+Preferencias
 \family default
 , apartado
 \family sans
