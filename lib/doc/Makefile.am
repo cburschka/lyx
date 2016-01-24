@@ -28,9 +28,6 @@ dist_bibliodoc_DATA = \
 
 clipartdocdir = $(docdir)/clipart
 dist_clipartdoc_DATA = \
-	clipart/escher-lsd.eps \
-	clipart/mobius.eps \
-	clipart/platypus.eps \
 	clipart/Abstract.pdf \
 	clipart/BoxInsetDefault.png \
 	clipart/ChangesToolbar.png \
@@ -38,6 +35,7 @@ dist_clipartdoc_DATA = \
 	clipart/CommentNoteImage.png \
 	clipart/endnotes.pdf \
 	clipart/ERT.png \
+	clipart/escher-lsd.eps \
 	clipart/ExternalMaterial.png \
 	clipart/ExtraToolbar.png \
 	clipart/float.png \
@@ -48,9 +46,12 @@ dist_clipartdoc_DATA = \
 	clipart/macrobox.png \
 	clipart/MacroToolbar.png \
 	clipart/macrouse.png \
+	clipart/mobius.eps \
+	clipart/platypus.eps \
 	clipart/reference.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
+	clipart/SVG-Drawing.svgz \
 	clipart/ToolbarEnvBox.png \
 	clipart/ViewToolbar.png \
 	clipart/without_fntright.pdf \
