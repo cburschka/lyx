@@ -1961,11 +1961,7 @@ Der Tabellen-Dialog hat folgende Karteikarten:
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Tabellen-Einstellungen
-\family default
- Hier können Sie die Horizontale
+Tabellen-Einstellungen Hier können Sie die Horizontale
 \begin_inset space ~
 \end_inset
 
@@ -2003,7 +1999,7 @@ Ausrichtung der momentanen Zeile wählen.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -2250,12 +2246,8 @@ reference "abs:Farbige-Tabellen"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Rahmen
-\family default
- Hier können Sie Begrenzungslinien für die momentane(n) Zeile(n) und Spalte(n)
- hinzufügen und löschen.
+Rahmen Hier können Sie Begrenzungslinien für die momentane(n) Zeile(n) und
+ Spalte(n) hinzufügen und löschen.
 \begin_inset Newline newline
 \end_inset
 
@@ -2293,15 +2285,11 @@ reference "uab:Zeilenabstand"
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Lange
 \begin_inset space ~
 \end_inset
 
-Tabelle
-\family default
- Hier kann eine Tabelle als 
+Tabelle Hier kann eine Tabelle als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -2328,7 +2316,7 @@ reference "abs:Lange-Tabellen"
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Special-Longtable-Issues"
+reference "sec:Weitere-Möglichkeiten-für"
 
 \end_inset
 
@@ -2739,7 +2727,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:a table float"
+name "tab:Eine-gleitende-Tabelle"
 
 \end_inset
 
@@ -2994,7 +2982,7 @@ Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:a table float"
+reference "tab:Eine-gleitende-Tabelle"
 
 \end_inset
 
@@ -5475,7 +5463,7 @@ Fußnoten kann man in jede Zelle einer langen Tabelle einfügen.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:DiffCaptions"
+reference "tab:Telefonliste"
 
 \end_inset
 
@@ -5540,7 +5528,7 @@ reference "tab:Maßeinheiten"
 
 \end_inset
 
- aufgelisteten Einheiten kann.
+ aufgelisteten Einheiten haben.
  
 \series bold
 
@@ -7618,7 +7606,7 @@ Legende
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:DiffCaptions"
+reference "tab:Telefonliste"
 
 \end_inset
 
@@ -7645,7 +7633,7 @@ reference "tab:DiffCaptions"
 Telefonliste
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:DiffCaptions"
+name "tab:Telefonliste"
 
 \end_inset
 
@@ -9520,7 +9508,7 @@ lange Tabelle
 n
 \begin_inset CommandInset label
 LatexCommand label
-name "abs:Special-Longtable-Issues"
+name "sec:Weitere-Möglichkeiten-für"
 
 \end_inset
 
@@ -9528,11 +9516,7 @@ name "abs:Special-Longtable-Issues"
 \end_layout
 
 \begin_layout Subsection
-L
-\family sans
-ange Tabelle
-\family default
-n: Berechnung
+Berechnung langer Tabellen
 \begin_inset Index idx
 status collapsed
 
@@ -9570,11 +9554,7 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Gleitobjekte und L
-\family sans
-ange Tabelle
-\family default
-n
+Gleitobjekte und lange Tabellen
 \begin_inset Index idx
 status collapsed
 
@@ -9752,7 +9732,7 @@ Hinter dem
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:ForcedPagebreak"
+reference "tab:Tabelle-mit-manuellem"
 
 \end_inset
 
@@ -9851,8 +9831,8 @@ Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features rotate="0" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0cm">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="right" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
@@ -9866,7 +9846,7 @@ Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
 Tabelle mit manuellem Seitenumbruch in einer Zelle
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:ForcedPagebreak"
+name "tab:Tabelle-mit-manuellem"
 
 \end_inset
 
@@ -9973,23 +9953,15 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true">
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<row endhead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
-
-
-\backslash
-caption*{Fortsetzung der Tabelle}
-\backslash
-
-\backslash
-%
+Fortsetzung der Tabelle
 \end_layout
 
 \end_inset
@@ -9999,7 +9971,7 @@ caption*{Fortsetzung der Tabelle}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10008,7 +9980,7 @@ caption*{Fortsetzung der Tabelle}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10113,7 +10085,7 @@ wird fortgesetzt\SpecialChar \ldots{}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10144,7 +10116,7 @@ Silvia
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10175,7 +10147,7 @@ Stefano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10206,7 +10178,7 @@ Walter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10237,7 +10209,7 @@ Maria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10268,7 +10240,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10299,7 +10271,7 @@ Giusi
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10330,7 +10302,7 @@ Bernard
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10361,7 +10333,7 @@ Gianfranco
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10392,7 +10364,7 @@ Carolina
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10423,7 +10395,7 @@ Annamaria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10454,7 +10426,7 @@ Domenico
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10485,7 +10457,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10516,7 +10488,7 @@ Oreste
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10547,7 +10519,7 @@ Franca
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10578,7 +10550,7 @@ Giancarlo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10609,7 +10581,7 @@ Luciano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10640,7 +10612,7 @@ Valeriano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10671,7 +10643,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10702,7 +10674,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10733,7 +10705,7 @@ Erich
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10764,7 +10736,7 @@ Paolo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10795,7 +10767,7 @@ Claudio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10861,7 +10833,7 @@ newpage
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10892,7 +10864,7 @@ Oskar
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10923,7 +10895,7 @@ Ugo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10954,7 +10926,7 @@ Margit
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10985,7 +10957,7 @@ Frieda
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11016,7 +10988,7 @@ Hilde
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11047,7 +11019,7 @@ Jürgen
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11078,7 +11050,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11116,14 +11088,14 @@ Franz
 \end_layout
 
 \begin_layout Section
-Mehrfache Zeilen, Spalten und Zeilen in Zellen
+Mehrere Zeilen, Spalten und Zeilen
 \end_layout
 
 \begin_layout Subsection
-Mehrfache Zeilen in Zellen
+Mehrere Zeilen in Tabellenzellen
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Mehrfache-Zeilen-in"
+name "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -11132,7 +11104,7 @@ name "uab:Mehrfache-Zeilen-in"
 status collapsed
 
 \begin_layout Plain Layout
-Mehrfache ! Zeilen in Zellen
+Mehrere Zeilen in Tabellenzellen
 \end_layout
 
 \end_inset
@@ -11164,11 +11136,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-multiple"
+name "tab:Tabelle-mit-mehreren"
 
 \end_inset
 
-Tabelle mit mehrfachen Zeilen in einer Zelle
+Tabelle mit mehreren Zeilen in einer Zelle
 \end_layout
 
 \end_inset
@@ -11297,7 +11269,7 @@ Wenn Sie für eine Spalte eine feste Breite definieren, können Sie Text als
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-multiple"
+reference "tab:Tabelle-mit-mehreren"
 
 \end_inset
 
@@ -11355,7 +11327,7 @@ pt horizontalen Abstand vor dem Wort ein.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-and"
+reference "tab:Tabelle-ohne-und"
 
 \end_inset
 
@@ -11375,7 +11347,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-and"
+name "tab:Tabelle-ohne-und"
 
 \end_inset
 
@@ -11859,7 +11831,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-centered"
+name "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -11998,7 +11970,7 @@ Um Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-centered"
+reference "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -12058,7 +12030,7 @@ Mehrfachspalte
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-without-half"
+reference "tab:Tabelle,-in-der-die"
 
 \end_inset
 
@@ -12077,7 +12049,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-without-half"
+name "tab:Tabelle,-in-der-die"
 
 \end_inset
 
@@ -12428,7 +12400,7 @@ d
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-centered"
+reference "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -21413,7 +21385,7 @@ hspace{0pt}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -31463,7 +31435,7 @@ EinSehrLangesWort am Anfang, das umgebrochen wird.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
