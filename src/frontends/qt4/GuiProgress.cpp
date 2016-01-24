@@ -56,11 +56,7 @@ GuiProgress::GuiProgress()
 		SLOT(doWarning(QString const &, QString const &)));
 	connect(this, SIGNAL(toggleWarning(QString const &, QString const &, QString const &)),
 		SLOT(doToggleWarning(QString const &, QString const &, QString const &)));
-#if QT_VERSION >= 0x050600
-	connect(this, SIGNAL(errorOccurred(QString const &, QString const &, QString const &)),
-#else
 	connect(this, SIGNAL(error(QString const &, QString const &, QString const &)),
-#endif
 		SLOT(doError(QString const &, QString const &, QString const &)));
 	connect(this, SIGNAL(information(QString const &, QString const &)),
 		SLOT(doInformation(QString const &, QString const &)));
