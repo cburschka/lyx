@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-12-14 00:59+0100\n"
-"PO-Revision-Date: 2015-12-14 00:24+0000\n"
+"POT-Creation-Date: 2016-01-24 00:09+0100\n"
+"PO-Revision-Date: 2016-01-24 08:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4330,7 +4330,7 @@ msgstr "Zmazať posledný záznam z sekvencie skratky"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
 msgid "&Delete Key"
-msgstr "Z&mazať skratku"
+msgstr "Z&mazať znak"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
@@ -4339,7 +4339,7 @@ msgstr "Zmazať súčasnú skratku"
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:1118
 msgid "C&lear"
-msgstr "&Zmazať"
+msgstr "&Vyčistiť"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:107
 msgid "&Shortcut:"
@@ -18002,6 +18002,10 @@ msgstr "Lingvistika|L"
 #: lib/ui/stdmenus.inc:609
 msgid "Multilingual Captions|C"
 msgstr "Viac-Jazykové popisy|J"
+
+#: lib/ui/stdmenus.inc:622
+msgid "Paralist|t"
+msgstr "Paralist"
 
 #: lib/ui/stdmenus.inc:614
 msgid "PDF comments|D"
