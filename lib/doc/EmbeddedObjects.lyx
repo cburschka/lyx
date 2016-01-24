@@ -1978,15 +1978,11 @@ You can alter tables with the following tabs of the table dialog:
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Table
 \begin_inset space ~
 \end_inset
 
-Settings
-\family default
- Here you can set the table width
+Settings Here you can set the table width
 \begin_inset Index idx
 status collapsed
 
@@ -2345,11 +2341,8 @@ reference "sec:Colored-Tables"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Borders
-\family default
- In this tab you can add and delete border lines for the current row/column.
+Borders In this tab you can add and delete border lines for the current
+ row/column.
 \begin_inset Newline newline
 \end_inset
 
@@ -2387,23 +2380,12 @@ reference "subsec:Row-Spacing"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Longtable
-\family default
- This tab is to make a table a so called 
-\begin_inset Quotes eld
+Multi-page
+\begin_inset space ~
 \end_inset
 
-
-\emph on
-longtable
-\emph default
-
-\begin_inset Quotes erd
-\end_inset
-
- that can run over several pages.
+table This tab is to make a table a multi-page table that can run over several
+ pages.
  Sections
 \begin_inset space ~
 \end_inset
@@ -2411,7 +2393,7 @@ longtable
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Longtables"
+reference "sec:Multi-page-Tables"
 
 \end_inset
 
@@ -2422,7 +2404,7 @@ reference "sec:Special-Longtable-Issues"
 
 \end_inset
 
- describe the longtable features in detail.
+ describe the multi-page table features in detail.
 \end_layout
 
 \begin_layout Section
@@ -3107,7 +3089,7 @@ status collapsed
 
 \end_inset
 
- in your document preamble
+ in your document preamble:
 \begin_inset Foot
 status collapsed
 
@@ -3128,7 +3110,7 @@ reference "sec:Caption-Placement"
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout Standard
@@ -3213,10 +3195,14 @@ reference "sec:Referencing-Floats"
 \end_layout
 
 \begin_layout Section
-Longtables
+
+\family sans
+Multi-page Table
+\family default
+s
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Longtables"
+name "sec:Multi-page-Tables"
 
 \end_inset
 
@@ -3225,7 +3211,7 @@ name "sec:Longtables"
 status collapsed
 
 \begin_layout Plain Layout
-Longtables
+Multi-page Table
 \end_layout
 
 \end_inset
@@ -3235,7 +3221,7 @@ Longtables
 status collapsed
 
 \begin_layout Plain Layout
-Table ! Longtables
+Table ! Multi-page Table
 \end_layout
 
 \end_inset
@@ -3250,15 +3236,15 @@ Use
 \begin_inset space ~
 \end_inset
 
-long
+multi-page
+\family default
+ table in the tab 
+\family sans
+Multi-page
 \begin_inset space ~
 \end_inset
 
 table
-\family default
- in the tab 
-\family sans
-Longtable
 \family default
  of the table dialog to split the table automatically over more pages.
  Doing this enables the following options:
@@ -3266,7 +3252,7 @@ Longtable
 
 \begin_layout Description
 Header: The current row is defined to be a header row that appears on all
- pages of the longtable; except for the first page, if 
+ pages of the multi-page table; except for the first page, if 
 \family sans
 First
 \begin_inset space ~
@@ -3284,12 +3270,12 @@ First
 \end_inset
 
 header: The current row is defined to be a header row that appears on the
- first page of the longtable.
+ first page of the multi-page table.
 \end_layout
 
 \begin_layout Description
 Footer: The current row is defined to be a footer row that appears on all
- pages of the longtable; except for the last page, if 
+ pages of the multi-page table; except for the last page, if 
 \family sans
 Last
 \begin_inset space ~
@@ -3306,20 +3292,20 @@ Last
 \end_inset
 
 footer: The current row is defined to be a footer row that appears on the
- last page of the longtable.
+ last page of the multi-page table.
 \end_layout
 
 \begin_layout Description
 Caption: The current row contains the table caption.
  The row is reset as single column and a caption is inserted.
- More about longtable captions is explained in sec.
+ More about multi-page table captions is explained in sec.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Longtable-Captions"
+reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
 
@@ -3328,7 +3314,7 @@ reference "subsec:Longtable-Captions"
 
 \begin_layout Standard
 You can also specify a row where the table is split.
- See the following longtable to see how it works:
+ See the following multi-page table to see how it works:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -5509,7 +5495,7 @@ See the first greyed-out note in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Longtable-Captions"
+reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
 
@@ -5522,10 +5508,10 @@ reference "subsec:Longtable-Captions"
 \end_layout
 
 \begin_layout Subsection
-Footnotes in Longtables
+Footnotes in Multi-page tables
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Footnotes-in-Longtables"
+name "subsec:Footnotes-in-Multi-page"
 
 \end_inset
 
@@ -5534,7 +5520,7 @@ name "subsec:Footnotes-in-Longtables"
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Footnotes
+Table ! Multi-page Table ! Footnotes
 \end_layout
 
 \end_inset
@@ -5543,7 +5529,7 @@ Longtables ! Footnotes
 \end_layout
 
 \begin_layout Standard
-Footnotes can be inserted to every longtable cell.
+Footnotes can be inserted to every Multi-page table cell.
  They appear at the bottom of the page where the table cell with the footnote
  appears.
  Table
@@ -5561,12 +5547,12 @@ reference "tab:DiffCaptions"
 \end_layout
 
 \begin_layout Subsection
-Longtable Alignment
+Multi-page Table Alignment
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Alignment
+Table ! Multi-page Table ! Alignment
 \end_layout
 
 \end_inset
@@ -5575,7 +5561,7 @@ Longtables ! Alignment
 \end_layout
 
 \begin_layout Standard
-The horizontal alignment of longtables can be set in the table settings
+The horizontal alignment of multi-page tables can be set in the table settings
  dialog.
  For left- and right-alignment the table will be directly at the page border.
  To add space between the table and the border one has to set the alignment
@@ -5593,7 +5579,7 @@ or
 LTright
 \series default
  by inserting this line as \SpecialChar TeX
- Code before the longtable:
+ Code before the multi-page table:
 \end_layout
 
 \begin_layout Standard
@@ -5625,8 +5611,8 @@ reference "tab:Units"
 \backslash
 LTleft
 \series default
- controls the horizontal distance from the left page border to the longtable,
- 
+ controls the horizontal distance from the left page border to the multi-page
+ table, 
 \series bold
 
 \backslash
@@ -5644,7 +5630,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-The following longtable was centered and 
+The following multi-page table was centered and 
 \series bold
 
 \backslash
@@ -5966,7 +5952,7 @@ See the first greyed-out note in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Longtable-Captions"
+reference "subsec:Multi-page-Table-Captions"
 
 \end_inset
 
@@ -5979,12 +5965,12 @@ reference "subsec:Longtable-Captions"
 \end_layout
 
 \begin_layout Subsection
-Longtable Captions
+Multi-page Table Captions
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Captions
+Table ! Multi-page Table ! Captions
 \end_layout
 
 \end_inset
@@ -5992,7 +5978,7 @@ Longtables ! Captions
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Longtable-Captions"
+name "subsec:Multi-page-Table-Captions"
 
 \end_inset
 
@@ -6000,10 +5986,10 @@ name "subsec:Longtable-Captions"
 \end_layout
 
 \begin_layout Standard
-A longtable cannot be put into a table float because floats can only be
- on one page.
- But the caption environment of floats can also be used for longtables when
- you use the longtable option 
+A multi-page table cannot be put into a table float because floats can only
+ be on one page.
+ But the caption environment of floats can also be used for multi-page tables
+ when you use the multi-page table option 
 \family sans
 Caption
 \family default
@@ -6014,7 +6000,7 @@ Caption
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Longtables"
+reference "sec:Multi-page-Tables"
 
 \end_inset
 
@@ -6024,7 +6010,7 @@ reference "sec:Longtables"
 \end_layout
 
 \begin_layout Standard
-Here is a short longtable to see how it works:
+Here is a short multi-page table to see how it works:
 \end_layout
 
 \begin_layout Standard
@@ -6044,12 +6030,12 @@ Here is a short longtable to see how it works:
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Longtable with caption
+Multi-page table with caption
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Longtable
+Multi-page table
 \end_layout
 
 \end_inset
@@ -6360,8 +6346,8 @@ Note
 
 1:
 \series default
- The table number is increased for every longtable, even if you did not
- set a caption for it.
+ The table number is increased for every multi-page table, even if you did
+ not set a caption for it.
  For this reason you could have the case that e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -6378,10 +6364,10 @@ Table
 \begin_inset space ~
 \end_inset
 
-2.1 in the list of tables if there are two longtables without captions.
+2.1 in the list of tables if there are two multi-page tables without captions.
  To avoid this you can add the following command in \SpecialChar TeX
- Code after every longtable
- without a caption:
+ Code after every multi-page
+ table without a caption:
 \end_layout
 
 \begin_layout Plain Layout
@@ -6393,8 +6379,8 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-This is not needed when none of your longtables has a caption and you add
- the following code to the document preamble:
+This is not needed when none of your multi-page tables has a caption and
+ you add the following code to the document preamble:
 \end_layout
 
 \begin_layout Plain Layout
@@ -6462,8 +6448,8 @@ PDF Properties
 \family sans
 Document Settings
 \family default
- dialog to link cross-references, the link to a longtable caption will always
- point to the beginning of the document.
+ dialog to link cross-references, the link to a multi-page table caption
+ will always point to the beginning of the document.
 \end_layout
 
 \end_inset
@@ -6472,12 +6458,12 @@ Document Settings
 \end_layout
 
 \begin_layout Subsubsection
-References to Longtables
+References to multi-page tables
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! References
+Table ! Multi-page Table ! References
 \end_layout
 
 \end_inset
@@ -6502,10 +6488,10 @@ Longtables ! References
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Referenced longtable
+Referenced multi-page table
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:RefExample"
+name "tab:Referenced-multi-page-table"
 
 \end_inset
 
@@ -6799,7 +6785,7 @@ asd
 \end_layout
 
 \begin_layout Standard
-To reference a longtable, insert a label into the caption.
+To reference a multi-page table, insert a label into the caption.
 \end_layout
 
 \begin_layout Standard
@@ -6810,7 +6796,7 @@ This is a reference to Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:RefExample"
+reference "tab:Referenced-multi-page-table"
 
 \end_inset
 
@@ -6855,7 +6841,7 @@ Caption Width
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Caption Width
+Table ! Multi-page Table ! Caption Width
 \end_layout
 
 \end_inset
@@ -6878,7 +6864,7 @@ LTcapwidth
 in.
  To change it add the following command to your document preamble or as
  \SpecialChar TeX
- Code into your document before the longtable that should be affected
+ Code into your document before the multi-page table that should be affected
 \end_layout
 
 \begin_layout Standard
@@ -6931,7 +6917,7 @@ The following tables show the difference:
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-long full title with default width long full title with default width long
+Long full title with default width long full title with default width long
  full title with default width
 \begin_inset Argument 1
 status collapsed
@@ -7263,7 +7249,7 @@ LTcapwidth}{5cm}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-long full title with width set to 5
+Long full title with width set to 5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -7686,7 +7672,7 @@ Different Captions for Table Pages
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Different Captions for Pages
+Table ! Multi-page Table ! Different Captions for Pages
 \end_layout
 
 \end_inset
@@ -7717,8 +7703,8 @@ reference "tab:DiffCaptions"
 
 \end_inset
 
- is an example of a longtable with different heading where the second caption
- does not include the table number.
+ is an example of a multi-page table with different heading where the second
+ caption does not include the table number.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -9611,7 +9597,7 @@ Roberto
 \end_layout
 
 \begin_layout Section
-Special Longtable Issues
+Special Multi-page Table Issues
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Special-Longtable-Issues"
@@ -9622,12 +9608,12 @@ name "sec:Special-Longtable-Issues"
 \end_layout
 
 \begin_layout Subsection
-Longtable Calculation
+Multi-page Table Calculation
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Calculation
+Table ! Multi-page Table ! Calculation
 \end_layout
 
 \end_inset
@@ -9641,11 +9627,22 @@ Longtables ! Calculation
  chunks.
  Chunks are parts of tables that held at the same time in \SpecialChar LaTeX
 's memory.
- The default value was historically set to only 20 table rows.
- If you are using longtables with many pages this may slow down the creation
- of your document.
- You can safely increase the chunk size to values of 100-1000 by adding
- this command line to your document preamble:
+ The default value was historically set to only 20
+\begin_inset space ~
+\end_inset
+
+table rows.
+ If you are using multi-page tables with many pages this may slow down the
+ creation of your document.
+ You can safely increase the chunk size to values of 100
+\begin_inset space \thinspace{}
+\end_inset
+
+--
+\begin_inset space \thinspace{}
+\end_inset
+
+1000 by adding this command line to your document preamble:
 \end_layout
 
 \begin_layout Standard
@@ -9657,12 +9654,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Floats and Longtables
+Floats and Multi-page Tables
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Floats
+Table ! Multi-page Table ! Floats
 \end_layout
 
 \end_inset
@@ -9671,8 +9668,8 @@ Longtables ! Floats
 \end_layout
 
 \begin_layout Standard
-There might be problems when a float appears on the same page where a longtable
- starts.
+There might be problems when a float appears on the same page where a multi-page
+ table starts.
  To avoid such a situation, insert a 
 \begin_inset Quotes eld
 \end_inset
@@ -9691,7 +9688,7 @@ Clear
 
 Page
 \family default
-) before your longtable.
+) before your multi-page table.
 \end_layout
 
 \begin_layout Subsection
@@ -9700,7 +9697,7 @@ Forced Page Breaks
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Forced Page Breaks
+Table ! Multi-page Table ! Forced Page Breaks
 \end_layout
 
 \end_inset
@@ -9843,9 +9840,9 @@ newpage
 \series default
  is only needed when a page break should definitely occur at this position,
  otherwise it would be a conditional break.
- If your footer row of the longtable has for a certain reason no upper line
- but you would have a horizontal line where the cell is broken, use this
- command instead:
+ If your footer row of the multi-page table has for a certain reason no
+ upper line but you would have a horizontal line where the cell is broken,
+ use this command instead:
 \end_layout
 
 \begin_layout Standard
@@ -9893,7 +9890,7 @@ must be inserted as \SpecialChar TeX
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -10015,23 +10012,15 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true">
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<row endhead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
-
-
-\backslash
-caption*{Continued Example Phone List}
-\backslash
-
-\backslash
-%
+Continued Example Phone List
 \end_layout
 
 \end_inset
@@ -10041,7 +10030,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10050,7 +10039,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10165,7 +10154,7 @@ Annovi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10196,7 +10185,7 @@ Bertoli
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10227,7 +10216,7 @@ Bozzi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10258,7 +10247,7 @@ Cachia
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10289,7 +10278,7 @@ Cachia
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10320,7 +10309,7 @@ Cinquemani
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10351,7 +10340,7 @@ Colin
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10382,7 +10371,7 @@ Concli
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10413,7 +10402,7 @@ Dal Bosco
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10444,7 +10433,7 @@ Dalpiaz
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10475,7 +10464,7 @@ Feliciello
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10506,7 +10495,7 @@ Focarelli
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10537,7 +10526,7 @@ Galletti
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10568,7 +10557,7 @@ Gasparini
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10599,7 +10588,7 @@ Lassini
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10630,7 +10619,7 @@ Malfatti
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10661,7 +10650,7 @@ Malfatti
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10692,7 +10681,7 @@ Meneguzzo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10723,7 +10712,7 @@ Mezzadra
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10754,7 +10743,7 @@ Pirpamer
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10785,7 +10774,7 @@ Pochiesa
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10816,7 +10805,7 @@ Radina
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10847,7 +10836,7 @@ Rizzardi
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10911,7 +10900,7 @@ Stuffer
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10942,7 +10931,7 @@ Tacchelli
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10973,7 +10962,7 @@ Tezzele
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11004,7 +10993,7 @@ Unterkalmsteiner
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11035,7 +11024,7 @@ Vieider
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11066,7 +11055,7 @@ Vigna
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11097,7 +11086,7 @@ Weber
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11128,7 +11117,7 @@ Winkler
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -30188,14 +30177,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Footnotes in longtables are described in section
+Footnotes in multi-page tables are described in section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Footnotes-in-Longtables"
+reference "subsec:Footnotes-in-Multi-page"
 
 \end_inset
 
@@ -39227,7 +39216,7 @@ Text
 Here is a child document inserted as Verbatim: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "DummyTextDocument.txt"
+filename "DUMMYT~1.TXT"
 
 \end_inset
 
@@ -39242,7 +39231,7 @@ Mark spaces in output
  option: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "DummyTextDocument.txt"
+filename "DUMMYT~1.TXT"
 
 \end_inset
 

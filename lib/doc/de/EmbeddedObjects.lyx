@@ -1909,11 +1909,7 @@ Der Tabellen-Dialog hat folgende Karteikarten:
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Tabellen-Einstellungen
-\family default
- Hier können Sie die Horizontale
+Tabellen-Einstellungen Hier können Sie die Horizontale
 \begin_inset space ~
 \end_inset
 
@@ -1951,7 +1947,7 @@ Ausrichtung der momentanen Zeile wählen.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -2200,12 +2196,8 @@ reference "abs:Farbige-Tabellen"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Rahmen
-\family default
- Hier können Sie Begrenzungslinien für die momentane(n) Zeile(n) und Spalte(n)
- hinzufügen und löschen.
+Rahmen Hier können Sie Begrenzungslinien für die momentane(n) Zeile(n) und
+ Spalte(n) hinzufügen und löschen.
 \begin_inset Newline newline
 \end_inset
 
@@ -2243,27 +2235,12 @@ reference "uab:Zeilenabstand"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Lange
+Mehrseitige
 \begin_inset space ~
 \end_inset
 
-Tabelle
-\family default
- Hier kann eine Tabelle als 
-\begin_inset Quotes gld
-\end_inset
-
-Lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\begin_inset Quotes grd
-\end_inset
-
- definiert werden, die über mehrere Seiten reicht.
+Tabelle Hier kann eine Tabelle definiert werden, die über mehrere Seiten
+ reicht.
  Die Abschnitte
 \begin_inset space ~
 \end_inset
@@ -2271,14 +2248,14 @@ Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Lange-Tabellen"
+reference "abs:Mehrseitige-Tabellen"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Special-Longtable-Issues"
+reference "sec:Weitere-Möglichkeiten-für"
 
 \end_inset
 
@@ -2690,7 +2667,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:a table float"
+name "tab:Eine-gleitende-Tabelle"
 
 \end_inset
 
@@ -2945,7 +2922,7 @@ Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:a table float"
+reference "tab:Eine-gleitende-Tabelle"
 
 \end_inset
 
@@ -3089,10 +3066,10 @@ reference "abs:Auf-Gleitobjekte-verweisen"
 \end_layout
 
 \begin_layout Section
-Lange Tabellen
+Mehrseitige Tabellen
 \begin_inset CommandInset label
 LatexCommand label
-name "abs:Lange-Tabellen"
+name "abs:Mehrseitige-Tabellen"
 
 \end_inset
 
@@ -3101,7 +3078,7 @@ name "abs:Lange-Tabellen"
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange
+Tabellen ! mehrseitige
 \end_layout
 
 \end_inset
@@ -3110,14 +3087,10 @@ Tabellen ! lange
 \end_layout
 
 \begin_layout Standard
-Wenn eine Tabelle zu lang ist, um auf eine Seite zu passen, können Sie im
- Dialogfenster 
+Wenn eine Tabelle zu lang ist, um auf eine Seite zu passen, können Sie in
+ den Tabellen-Einstellungen auf der Karteikarte  
 \family sans
-Tabellen-Einstellungen
-\family default
- auf der Karteikarte  
-\family sans
-Lange
+Mehrseitige
 \begin_inset space ~
 \end_inset
 
@@ -3125,7 +3098,7 @@ Tabelle
 \family default
  die Option 
 \family sans
-Lange
+Mehrseitige
 \begin_inset space ~
 \end_inset
 
@@ -3135,7 +3108,7 @@ Tabelle
 
 verwenden
 \family default
- ankreuzen, damit die Tabelle automatisch auf mehrere Seiten verteilt wird.
+ auswählen, damit die Tabelle automatisch auf mehrere Seiten verteilt wird.
  Wird dies gemacht, werden folgende Optionen freigeschaltet:
 \end_layout
 
@@ -3190,14 +3163,14 @@ Fußzeile: Die aktuelle Zeile wird als eine die Fußzeile der letzten Seite
 \begin_layout Description
 Legende: Die aktuelle Zeile enthält die Legende.
  Sie wird als einzelne Spalte zurückgesetzt und eine Beschriftung wird eingefügt.
- Mehr über Beschriftungen langer Tabellen ist in Abschnitt
+ Mehr über Beschriftungen mehrseitiger Tabellen ist in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Beschriftungen-langer-Tabellen"
+reference "uab:Beschriftungen-mehrseitiger-Tabellen"
 
 \end_inset
 
@@ -3205,7 +3178,7 @@ reference "uab:Beschriftungen-langer-Tabellen"
 \end_layout
 
 \begin_layout Standard
-Hier ist ein Beispiel einer langen Tabelle:
+Hier ist ein Beispiel einer mehrseitigen Tabelle:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -5391,7 +5364,7 @@ Die Bedeutung dieses Befehls finden Sie in der Bemerkung 1 von Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Beschriftungen-langer-Tabellen"
+reference "uab:Beschriftungen-mehrseitiger-Tabellen"
 
 \end_inset
 
@@ -5404,10 +5377,10 @@ reference "uab:Beschriftungen-langer-Tabellen"
 \end_layout
 
 \begin_layout Subsection
-Fußnoten in langen Tabellen
+Fußnoten in mehrseitigen Tabellen
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Fußnoten-in-langen"
+name "uab:Fußnoten-in-mehrseitigen"
 
 \end_inset
 
@@ -5416,7 +5389,7 @@ name "uab:Fußnoten-in-langen"
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Fußnoten
+Tabellen ! mehrseitige ! Fußnoten
 \end_layout
 
 \end_inset
@@ -5425,7 +5398,7 @@ Tabellen ! lange ! Fußnoten
 \end_layout
 
 \begin_layout Standard
-Fußnoten kann man in jede Zelle einer langen Tabelle einfügen.
+Fußnoten kann man in jede Zelle einer mehrseitigen Tabelle einfügen.
  Sie werden auf der Seite erscheinen, auf der auch die Zelle gedruckt wird.
  Tabelle
 \begin_inset space ~
@@ -5434,7 +5407,7 @@ Fußnoten kann man in jede Zelle einer langen Tabelle einfügen.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:DiffCaptions"
+reference "tab:Telefonliste"
 
 \end_inset
 
@@ -5442,12 +5415,12 @@ reference "tab:DiffCaptions"
 \end_layout
 
 \begin_layout Subsection
-Ausrichtung langer Tabellen
+Ausrichtung mehrseitiger Tabellen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Ausrichtung
+Tabellen ! mehrseitige ! Ausrichtung
 \end_layout
 
 \end_inset
@@ -5456,8 +5429,8 @@ Tabellen ! lange ! Ausrichtung
 \end_layout
 
 \begin_layout Standard
-Die horizontale Ausrichtung von langen Tabellen kann in den Tabelleneinstellunge
-n festgelegt werden.
+Die horizontale Ausrichtung von mehrseitigen Tabellen kann in den Tabelleneinste
+llungen festgelegt werden.
  Bei linker und rechter Ausrichtung befindet sich die Tabelle direkt am
  Seitenrand.
  Um Platz zwischen Seitenrand und Tabelle einzufügen, muss die Tabelle zentriert
@@ -5474,8 +5447,8 @@ und
 LTright
 \series default
  geändert werden, indem diese Zeile als \SpecialChar TeX
--Code vor die lange Tabelle eingefügt
- wird:
+-Code vor die mehrseitige Tabelle
+ eingefügt wird:
 \end_layout
 
 \begin_layout Standard
@@ -5500,7 +5473,7 @@ reference "tab:Maßeinheiten"
 
 \end_inset
 
- aufgelisteten Einheiten kann.
+ aufgelisteten Einheiten haben.
  
 \series bold
 
@@ -5527,7 +5500,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-Die folgende lange Tabelle wurde zentriert und 
+Die folgende mehrseitige Tabelle wurde zentriert und 
 \series bold
 
 \backslash
@@ -5849,7 +5822,7 @@ Die Bedeutung dieses Befehls finden Sie in der Bemerkung 1 von Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Beschriftungen-langer-Tabellen"
+reference "uab:Beschriftungen-mehrseitiger-Tabellen"
 
 \end_inset
 
@@ -5862,10 +5835,10 @@ reference "uab:Beschriftungen-langer-Tabellen"
 \end_layout
 
 \begin_layout Subsection
-Beschriftungen langer Tabellen
+Beschriftungen mehrseitiger Tabellen
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Beschriftungen-langer-Tabellen"
+name "uab:Beschriftungen-mehrseitiger-Tabellen"
 
 \end_inset
 
@@ -5874,7 +5847,17 @@ name "uab:Beschriftungen-langer-Tabellen"
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Titel
+Mehrseitige Tabellen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Tabellen ! mehrseitige ! Titel
 \end_layout
 
 \end_inset
@@ -5883,8 +5866,8 @@ Tabellen ! lange ! Titel
 \end_layout
 
 \begin_layout Standard
-Eine lange Tabelle kann man nicht in ein Gleitobjekt packen, weil Gleitobjekte
- nur auf eine Seite gedruckt werden können.
+Eine mehrseitige Tabelle kann man nicht in ein Gleitobjekt packen, weil
+ Gleitobjekte nur auf eine Seite gedruckt werden können.
  Daher wird die Beschriftung in eine Tabellenzeile eingegeben, wie in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -5892,7 +5875,7 @@ Eine lange Tabelle kann man nicht in ein Gleitobjekt packen, weil Gleitobjekte
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abs:Lange-Tabellen"
+reference "abs:Mehrseitige-Tabellen"
 
 \end_inset
 
@@ -5902,7 +5885,7 @@ reference "abs:Lange-Tabellen"
 \end_layout
 
 \begin_layout Standard
-Hier ist eine kurze lange Tabelle, die zeigt, wie das funktioniert:
+Hier ist eine kurze mehrseitige Tabelle, die zeigt, wie das funktioniert:
 \end_layout
 
 \begin_layout Standard
@@ -5922,12 +5905,12 @@ Hier ist eine kurze lange Tabelle, die zeigt, wie das funktioniert:
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Eine lange Tabelle mit Titel
+Eine mehrseitige Tabelle mit Titel
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Lange Tabelle
+MehrseitigeTabelle
 \end_layout
 
 \end_inset
@@ -6238,8 +6221,8 @@ Bemerkung
 
 1:
 \series default
- Die Tabellennummer wird für jede lange Tabelle erhöht, auch wenn Sie keinen
- Titel vergeben.
+ Die Tabellennummer wird für jede mehrseitige Tabelle erhöht, auch wenn
+ Sie keinen Titel vergeben.
  Deshalb könnte es passieren, dass zum Beispiel Tabelle
 \begin_inset space ~
 \end_inset
@@ -6248,10 +6231,10 @@ Bemerkung
 \begin_inset space ~
 \end_inset
 
-2.1 im Tabellenverzeichnis folgt, wenn dazwischen zwei lange Tabellen ohne
- Beschriftung sind.
- Um das zu vermeiden, können Sie hinter jede lange Tabelle ohne Titel folgenden
- \SpecialChar LaTeX
+2.1 im Tabellenverzeichnis folgt, wenn dazwischen zwei mehrseitige Tabellen
+ ohne Beschriftung sind.
+ Um das zu vermeiden, können Sie hinter jede mehrseitige Tabelle ohne Titel
+ folgenden \SpecialChar LaTeX
 -Befehl als \SpecialChar TeX
 -Code einfügen:
 \end_layout
@@ -6265,8 +6248,8 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-Das ist nicht notwendig, wenn keine der langen Tabellen im Dokument eine
- Beschriftung hat und Sie diesen Code zum \SpecialChar LaTeX
+Das ist nicht notwendig, wenn keine der mehrseitigen Tabellen im Dokument
+ eine Beschriftung hat und Sie diesen Code zum \SpecialChar LaTeX
 -Vorspann hinzufügen:
 \end_layout
 
@@ -6335,8 +6318,8 @@ status collapsed
 \family sans
 Dokument-Einstellungen
 \family default
- Dialog für Querverweise benutzen, wird der Verweis auf eine lange Tabelle
- immer auf den Anfang des Dokuments zeigen.
+ Dialog für Querverweise benutzen, wird der Verweis auf eine mehrseitige
+ Tabelle immer auf den Anfang des Dokuments zeigen.
 \end_layout
 
 \end_inset
@@ -6345,16 +6328,16 @@ Dokument-Einstellungen
 \end_layout
 
 \begin_layout Subsubsection
-Querverweise auf 
+Querverweise auf mehrseitige
 \family sans
-lange Tabelle
+ Tabelle
 \family default
 n
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Querverweis
+Tabellen ! mehrseitige ! Querverweis
 \end_layout
 
 \end_inset
@@ -6379,10 +6362,10 @@ Tabellen ! lange ! Querverweis
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Lange Tabelle mit Marke
+Mehrseitige Tabelle mit Marke
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:LangeTabelle-mit-Marke"
+name "tab:Mehrseitige-Tabelle-mit-Marke"
 
 \end_inset
 
@@ -6676,8 +6659,8 @@ asd
 \end_layout
 
 \begin_layout Standard
-Damit auf eine lange Tabelle verwiesen werden kann, müssen Sie eine Marke
- im Titel einfügen.
+Damit auf eine mehrseitige Tabelle verwiesen werden kann, müssen Sie eine
+ Marke im Titel einfügen.
 \end_layout
 
 \begin_layout Standard
@@ -6688,7 +6671,7 @@ Dies ist ein Verweis auf Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:LangeTabelle-mit-Marke"
+reference "tab:Mehrseitige-Tabelle-mit-Marke"
 
 \end_inset
 
@@ -6732,7 +6715,7 @@ Titelbreite
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Beschriftungsbreite
+Tabellen ! mehrseitige ! Beschriftungsbreite
 \end_layout
 
 \end_inset
@@ -6764,7 +6747,7 @@ cm).
  Um das zu ändern, können Sie entweder im \SpecialChar LaTeX
 -Vorspann oder als \SpecialChar TeX
 -Code vor der
- betreffenden Tabelle folgenden Befehl einsetzen:
+ betreffenden mehrseitigen Tabelle folgenden Befehl einsetzen:
 \end_layout
 
 \begin_layout Standard
@@ -7565,7 +7548,7 @@ Unterschiedliche Beschriftung für Tabellenseiten
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! mehrere Beschriftungen
+Tabellen ! mehrseitige ! mehrere Beschriftungen
 \end_layout
 
 \end_inset
@@ -7594,12 +7577,12 @@ Legende
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:DiffCaptions"
+reference "tab:Telefonliste"
 
 \end_inset
 
- ist ein Beispiel für eine lange Tabelle mit unterschiedlichen Titeln und
- ohne Tabellennummer auf der zweiten Seite.
+ ist ein Beispiel für eine mehrseitige Tabelle mit unterschiedlichen Titeln
+ und ohne Tabellennummer auf der zweiten Seite.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -7625,7 +7608,7 @@ reference "tab:DiffCaptions"
 Telefonliste
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:DiffCaptions"
+name "tab:Telefonliste"
 
 \end_inset
 
@@ -9493,14 +9476,14 @@ Roberto
 \end_layout
 
 \begin_layout Section
-Weitere Möglichkeiten für 
+Weitere Möglichkeiten für mehrseitige
 \family sans
-lange Tabelle
+ Tabelle
 \family default
 n
 \begin_inset CommandInset label
 LatexCommand label
-name "abs:Special-Longtable-Issues"
+name "sec:Weitere-Möglichkeiten-für"
 
 \end_inset
 
@@ -9508,16 +9491,12 @@ name "abs:Special-Longtable-Issues"
 \end_layout
 
 \begin_layout Subsection
-L
-\family sans
-ange Tabelle
-\family default
-n: Berechnung
+Berechnung mehrseitiger Tabellen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! Berechnung
+Tabellen ! mehrseitige ! Berechnung
 \end_layout
 
 \end_inset
@@ -9535,12 +9514,24 @@ chunks
  (Brocken).
  Chunks sind Tabellenteile, die \SpecialChar LaTeX
  gleichzeitig im Speicher hält.
- Aus historischen Gründen wurde der Standardwert auf 20 Tabellenzeilen gesetzt.
+ Aus historischen Gründen wurde der Standardwert auf 20
+\begin_inset space ~
+\end_inset
+
+Tabellenzeilen gesetzt.
  Wenn Sie Tabellen benutzen, die über mehrere Seiten gehen, verlangsamt
  das die Druckausgabe.
- Sie können also die Chunkgröße ohne Gefahr auf Werte zwischen 100-1000
- setzen, indem Sie in den \SpecialChar LaTeX
--Vorspann Ihres Dokumentes folgende Zeile einfügen:
+ Sie können also die Chunkgröße ohne Gefahr auf Werte zwischen 100
+\begin_inset space \thinspace{}
+\end_inset
+
+--
+\begin_inset space \thinspace{}
+\end_inset
+
+1000 setzen, indem Sie in den \SpecialChar LaTeX
+-Vorspann Ihres Dokumentes folgende Zeile
+ einfügen:
 \end_layout
 
 \begin_layout Standard
@@ -9552,16 +9543,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Gleitobjekte und L
-\family sans
-ange Tabelle
-\family default
-n
+Gleitobjekte und mehrseitige Tabellen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! und Gleitobjekte
+Tabellen ! mehrseitige ! Gleitobjekte
 \end_layout
 
 \end_inset
@@ -9570,24 +9557,10 @@ Tabellen ! lange ! und Gleitobjekte
 \end_layout
 
 \begin_layout Standard
-Es kann Probleme geben, wenn sich auf derselben Seite, auf der eine 
-\family sans
-lange
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- beginnt, ein Gleitobjekt befindet.
- Um das zu vermeiden, können Sie vor der 
-\family sans
-langen
-\begin_inset space ~
-\end_inset
-
-Tabellen
-\family default
- einen manuellen Seitenumbruch
+Es kann Probleme geben, wenn sich auf derselben Seite, auf der eine mehrseitige
+ Tabelle beginnt, ein Gleitobjekt befindet.
+ Um das zu vermeiden, können Sie vor der mehrseitigen Tabelle einen manuellen
+ Seitenumbruch
 \family sans
  Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
@@ -9610,7 +9583,7 @@ Manuelle Seitenumbrüche
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! manueller Seitenumbruch
+Tabellen ! mehrseitige ! manueller Seitenumbruch
 \end_layout
 
 \end_inset
@@ -9739,7 +9712,7 @@ Hinter dem
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:ForcedPagebreak"
+reference "tab:Tabelle-mit-manuellem"
 
 \end_inset
 
@@ -9786,16 +9759,8 @@ newpage
 \series default
  ist nur erforderlich, wenn ein Seitenumbruch an der Stelle unbedingt erfolgen
  soll, ansonsten ist es nur eine Möglichkeit zum Umbruch.
- Wenn die Fußzeile Ihrer 
-\family sans
-langen
-\begin_inset space ~
-\end_inset
-
-Tabelle
-\family default
- keine obere Linie besitzt, Sie aber eine wünschen, sollten Sie folgende
- Befehle benutzen:
+ Wenn die Fußzeile Ihrer mehrseitigen Tabelle keine obere Linie besitzt,
+ Sie aber eine wünschen, sollten Sie folgende Befehle benutzen:
 \end_layout
 
 \begin_layout Standard
@@ -9843,8 +9808,8 @@ Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0cm">
+<features islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="right" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
@@ -9858,7 +9823,7 @@ Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
 Tabelle mit manuellem Seitenumbruch in einer Zelle
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:ForcedPagebreak"
+name "tab:Tabelle-mit-manuellem"
 
 \end_inset
 
@@ -9965,23 +9930,15 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true">
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<row endhead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
-
-
-\backslash
-caption*{Fortsetzung der Tabelle}
-\backslash
-
-\backslash
-%
+Fortsetzung der Tabelle
 \end_layout
 
 \end_inset
@@ -9991,7 +9948,7 @@ caption*{Fortsetzung der Tabelle}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10000,7 +9957,7 @@ caption*{Fortsetzung der Tabelle}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10105,7 +10062,7 @@ wird fortgesetzt\SpecialChar ldots
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10136,7 +10093,7 @@ Silvia
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10167,7 +10124,7 @@ Stefano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10198,7 +10155,7 @@ Walter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10229,7 +10186,7 @@ Maria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10260,7 +10217,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10291,7 +10248,7 @@ Giusi
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10322,7 +10279,7 @@ Bernard
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10353,7 +10310,7 @@ Gianfranco
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10384,7 +10341,7 @@ Carolina
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10415,7 +10372,7 @@ Annamaria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10446,7 +10403,7 @@ Domenico
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10477,7 +10434,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10508,7 +10465,7 @@ Oreste
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10539,7 +10496,7 @@ Franca
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10570,7 +10527,7 @@ Giancarlo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10601,7 +10558,7 @@ Luciano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10632,7 +10589,7 @@ Valeriano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10663,7 +10620,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10694,7 +10651,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10725,7 +10682,7 @@ Erich
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10756,7 +10713,7 @@ Paolo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10787,7 +10744,7 @@ Claudio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10853,7 +10810,7 @@ newpage
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10884,7 +10841,7 @@ Oskar
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10915,7 +10872,7 @@ Ugo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10946,7 +10903,7 @@ Margit
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10977,7 +10934,7 @@ Frieda
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11008,7 +10965,7 @@ Hilde
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11039,7 +10996,7 @@ Jürgen
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11070,7 +11027,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11108,14 +11065,14 @@ Franz
 \end_layout
 
 \begin_layout Section
-Mehrfache Zeilen, Spalten und Zeilen in Zellen
+Mehrere Zeilen, Spalten und Zeilen
 \end_layout
 
 \begin_layout Subsection
-Mehrfache Zeilen in Zellen
+Mehrere Zeilen in Tabellenzellen
 \begin_inset CommandInset label
 LatexCommand label
-name "uab:Mehrfache-Zeilen-in"
+name "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -11124,7 +11081,7 @@ name "uab:Mehrfache-Zeilen-in"
 status collapsed
 
 \begin_layout Plain Layout
-Mehrfache ! Zeilen in Zellen
+Mehrere Zeilen in Tabellenzellen
 \end_layout
 
 \end_inset
@@ -11156,7 +11113,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-multiple"
+name "tab:Tabelle-mit-mehrfachen"
 
 \end_inset
 
@@ -11289,7 +11246,7 @@ Wenn Sie für eine Spalte eine feste Breite definieren, können Sie Text als
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-multiple"
+reference "tab:Tabelle-mit-mehrfachen"
 
 \end_inset
 
@@ -11349,7 +11306,7 @@ pt horizontalen Abstand vor dem Wort ein.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-and"
+reference "tab:Tabelle-ohne-und"
 
 \end_inset
 
@@ -11369,7 +11326,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-and"
+name "tab:Tabelle-ohne-und"
 
 \end_inset
 
@@ -11858,7 +11815,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-centered"
+name "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -11997,7 +11954,7 @@ Um Tabelle
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-centered"
+reference "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -12057,7 +12014,7 @@ Mehrfachspalte
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-without-half"
+reference "tab:Tabelle,-in-der-die"
 
 \end_inset
 
@@ -12076,7 +12033,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-without-half"
+name "tab:Tabelle,-in-der-die"
 
 \end_inset
 
@@ -12421,7 +12378,7 @@ d
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-centered"
+reference "tab:Tabelle-mit-zentriertem"
 
 \end_inset
 
@@ -21555,7 +21512,7 @@ hspace{0pt}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
@@ -30297,7 +30254,7 @@ Fußnoten in langen Tabellen sind in Abschnitt
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Fußnoten-in-langen"
+reference "uab:Fußnoten-in-mehrseitigen"
 
 \end_inset
 
@@ -31745,7 +31702,7 @@ EinSehrLangesWort am Anfang, das umgebrochen wird.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "uab:Mehrfache-Zeilen-in"
+reference "uab:Mehrere-Zeilen-in"
 
 \end_inset
 
