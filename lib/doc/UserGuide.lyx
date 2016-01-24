@@ -10536,7 +10536,11 @@ type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- in a Standard environment immediately after a non-Standard one.
+ in a 
+\family sans
+Standard
+\family default
+ environment immediately after a non-Standard one.
 \end_layout
 
 \begin_layout Section
@@ -37477,8 +37481,29 @@ After running \SpecialChar LaTeX
 -program used.
  You can go to the next error or the next warning, search, copy something
  to the clipboard or update the view.
- With the help of the logfile experts can find in it reasons for \SpecialChar LaTeX
+\begin_inset Newline newline
+\end_inset
+
+With the help of the logfile, experts can find reasons for \SpecialChar LaTeX
 -errors.
+\end_layout
+
+\begin_layout Standard
+With the button 
+\family sans
+Open Containing Directory
+\family default
+ one can open \SpecialChar LyX
+'s temporary folder for the document.
+ This folder contains all converted and created files to generate the output.
+ Some of these files might be of interest for experts to solve problems
+ or for writers who need to supply intermediate files.
+ For example some journals require to send the 
+\family sans
+*.bbl
+\family default
+ file (a text file with the used Bib\SpecialChar TeX
+ references).
 \end_layout
 
 \begin_layout Subsection

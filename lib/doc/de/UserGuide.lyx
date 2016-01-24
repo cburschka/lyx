@@ -10915,8 +10915,11 @@ Allgemein erhält man einen Trenner wenn man
 \family sans
 Enter
 \family default
- in einer leeren Standard-Umgebung drückt, die auf eine Nicht-Standard-Umgebung
- folgt.
+ in einer leeren 
+\family sans
+Standard
+\family default
+-Umgebung drückt, die auf eine Nicht-Standard-Umgebung folgt.
 \end_layout
 
 \begin_layout Section
@@ -37593,8 +37596,30 @@ Nachdem \SpecialChar LaTeX
 -Programms an.
  Man kann zum nächsten Fehler oder der nächsten Warnung gehen, suchen, etwas
  in die Zwischenablage kopieren oder die Ansicht aktualisieren.
- Mit Hilfe der Logdatei können Experten die Ursachen für \SpecialChar LaTeX
+\begin_inset Newline newline
+\end_inset
+
+Mit Hilfe der Logdatei können Experten die Ursachen für \SpecialChar LaTeX
 -Fehler finden.
+\end_layout
+
+\begin_layout Standard
+Mit dem Knopf 
+\family sans
+Beinhaltendes Verzeichnis öffnen
+\family default
+ kann man \SpecialChar LyX
+s temporäres Verzeichnis für das Dokument öffnen.
+ Dieses Verzeichnis enthält alle konvertierten und erzeugten Dateien, um
+ die Ausgabe zu erzeugen.
+ Einige dieser Dateien können für Experten oder für Schreiber interessant
+ sein, die solche Dateien mitliefern müssen.
+ Zum Beispiel verlangen einige Journale, dass man die 
+\family sans
+*.bbl
+\family default
+-Datei (eine Textdatei mit den verwendeten Bib\SpecialChar TeX
+-Referenzen) mit einschickt.
 \end_layout
 
 \begin_layout Subsection

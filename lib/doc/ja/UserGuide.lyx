@@ -32067,9 +32067,32 @@ LaTeXログ
 文書を閲覧したり書き出すことによって\SpecialChar LaTeX
 が実行されると、このメニューは有効になります。これは、使用した\SpecialChar LaTeX
 プログラムのログファイルを表示します。次のエラーや次の警告に飛
-んだり、検索したり、クリップボードにコピーしたり、表示を更新したりすることができます。ログファイルを見ることで、熟練者には、\SpecialChar LaTeX
-エラーの原因を発見する手助けとなるで
-しょう。
+んだり、検索したり、クリップボードにコピーしたり、表示を更新したりすることができます。
+\begin_inset Newline newline
+\end_inset
+
+ログファイルを見ることで、熟練者には、\SpecialChar LaTeX
+エラーの原因を発見する手助けとなるでしょう。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the button 
+\family sans
+Open Containing Directory
+\family default
+ one can open \SpecialChar LyX
+'s temporary folder for the document.
+ This folder contains all converted and created files to generate the output.
+ Some of these files might be of interest for experts to solve problems
+ or for writers who need to supply intermediate files.
+ For example some journals require to send the 
+\family sans
+*.bbl
+\family default
+ file (a text file with the used Bib\SpecialChar TeX
+ references).
 \end_layout
 
 \begin_layout Subsection

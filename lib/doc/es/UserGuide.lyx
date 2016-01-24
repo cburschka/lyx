@@ -10985,7 +10985,11 @@ En general, se obtiene un separador de entorno pulsando
 \family sans
 Entrar
 \family default
- en un entorno Normal inmediatamente después de uno no Normal.
+ en un entorno 
+\family sans
+Normal
+\family default
+ inmediatamente después de uno no Normal.
 \end_layout
 
 \begin_layout Section
@@ -38027,9 +38031,32 @@ de
  al generar la salida.
  Se puede ir al siguiente error o aviso, buscar, copiar al portapapeles
  o actualizar el registro.
- Con ayuda del archivo de registro, los expertos encontrarán posibles causas
+\begin_inset Newline newline
+\end_inset
+
+Con ayuda del archivo de registro, los expertos encontrarán posibles causas
  de los errores de \SpecialChar LaTeX
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the button 
+\family sans
+Open Containing Directory
+\family default
+ one can open \SpecialChar LyX
+'s temporary folder for the document.
+ This folder contains all converted and created files to generate the output.
+ Some of these files might be of interest for experts to solve problems
+ or for writers who need to supply intermediate files.
+ For example some journals require to send the 
+\family sans
+*.bbl
+\family default
+ file (a text file with the used Bib\SpecialChar TeX
+ references).
 \end_layout
 
 \begin_layout Subsection

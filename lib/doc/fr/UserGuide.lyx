@@ -11355,8 +11355,11 @@ type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- dans un environnement Standard situé immédiatement après un environnement
- non Standard.
+ dans un environnement 
+\family sans
+Standard
+\family default
+ situé immédiatement après un environnement non Standard.
 \end_layout
 
 \begin_layout Standard
@@ -39268,12 +39271,35 @@ Après avoir utilisé \SpecialChar LaTeX
 .
  Vous pouvez aller à l'erreur ou à l'avertissement suivant, rechercher,
  copier quelque chose dans le presse-papiers ou mettre la vue à jour.
- À l'aide du fichier journal, des experts
+\begin_inset Newline newline
+\end_inset
+
+À l'aide du fichier journal, des experts
 \emph on
  
 \emph default
 pourront y trouver la raison de certaines erreurs \SpecialChar LaTeX
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the button 
+\family sans
+Open Containing Directory
+\family default
+ one can open \SpecialChar LyX
+'s temporary folder for the document.
+ This folder contains all converted and created files to generate the output.
+ Some of these files might be of interest for experts to solve problems
+ or for writers who need to supply intermediate files.
+ For example some journals require to send the 
+\family sans
+*.bbl
+\family default
+ file (a text file with the used Bib\SpecialChar TeX
+ references).
 \end_layout
 
 \begin_layout Subsection
