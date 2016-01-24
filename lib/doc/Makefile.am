@@ -51,7 +51,7 @@ dist_clipartdoc_DATA = \
 	clipart/reference.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
-	clipart/SVG-Drawing.svgz \
+	clipart/SVG-Drawing.svg \
 	clipart/ToolbarEnvBox.png \
 	clipart/ViewToolbar.png \
 	clipart/without_fntright.pdf \
