@@ -2057,15 +2057,11 @@ You can alter tables with the following tabs of the table dialog:
 \end_layout
 
 \begin_layout Description
-
-\family sans
 Table
 \begin_inset space ~
 \end_inset
 
-Settings
-\family default
- Here you can set the table width
+Settings Here you can set the table width
 \begin_inset Index idx
 status collapsed
 
@@ -2422,11 +2418,8 @@ reference "sec:Colored-Tables"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Borders
-\family default
- In this tab you can add and delete border lines for the current row/column.
+Borders In this tab you can add and delete border lines for the current
+ row/column.
 \begin_inset Newline newline
 \end_inset
 
@@ -2464,11 +2457,7 @@ reference "sub:Row-Spacing"
 \end_layout
 
 \begin_layout Description
-
-\family sans
-Longtable
-\family default
- This tab is to make a table a so called 
+Longtable This tab is to make a table a so called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -9931,8 +9920,8 @@ must be inserted as TeX-Code at the beginning of the cell.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features rotate="0" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0cm">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
@@ -10053,23 +10042,15 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true">
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<row endhead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
-
-
-\backslash
-caption*{Continued Example Phone List}
-\backslash
-
-\backslash
-%
+Continued Example Phone List
 \end_layout
 
 \end_inset
@@ -10079,7 +10060,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10088,7 +10069,7 @@ caption*{Continued Example Phone List}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10192,7 +10173,7 @@ continued on next page
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10223,7 +10204,7 @@ Silvia
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10254,7 +10235,7 @@ Stefano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10285,7 +10266,7 @@ Walter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10316,7 +10297,7 @@ Maria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10347,7 +10328,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10378,7 +10359,7 @@ Giusi
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10409,7 +10390,7 @@ Bernard
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10440,7 +10421,7 @@ Gianfranco
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10471,7 +10452,7 @@ Carolina
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10502,7 +10483,7 @@ Annamaria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10533,7 +10514,7 @@ Domenico
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10564,7 +10545,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10595,7 +10576,7 @@ Oreste
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10626,7 +10607,7 @@ Franca
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10657,7 +10638,7 @@ Giancarlo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10688,7 +10669,7 @@ Luciano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10719,7 +10700,7 @@ Valeriano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10750,7 +10731,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10781,7 +10762,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10812,7 +10793,7 @@ Erich
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10843,7 +10824,7 @@ Paolo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10874,7 +10855,7 @@ Claudio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10938,7 +10919,7 @@ newpage
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -10969,7 +10950,7 @@ Oskar
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11000,7 +10981,7 @@ Ugo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11031,7 +11012,7 @@ Margit
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11062,7 +11043,7 @@ Frieda
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11093,7 +11074,7 @@ Hilde
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11124,7 +11105,7 @@ Jürgen
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11155,7 +11136,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
