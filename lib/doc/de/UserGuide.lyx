@@ -10850,7 +10850,7 @@ Aufzählung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -10882,45 +10882,32 @@ Aufzählung
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-sd
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Um \SpecialChar LyX
- zu sagen, dass es zwei Listen sind und nicht eine, setzt man den Cursor
- ans Ende des letzten Listeneintrags und verwendet das Menü 
+Um eine Liste zu teilen, setzt man den Cursor ans Ende des letzten Listeneintrag
+s und verwendet das Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
 Neue Umgebung
 \family default
 .
- Dies fügt einen einfachen Trenner (rote Linie in LyX) und dahinter eine
- neue Liste ein.
- Alternativ setzt man den Cursor ans Ende des letzten Listeneintrags und
- drückt dreimal 
+ Dies fügt einen einfachen Trenner (rote Linie in \SpecialChar LyX
+) und dahinter eine neue
+ Liste ein.
+ Das Menü 
 \family sans
-Enter
+Bearbeiten\SpecialChar menuseparator
+Neue äußere Umgebung
 \family default
-.
- Es wird dann ein Absatzumbruch eingefügt (roter Pfeil in LyX).
+ erscheint nur, wenn der Listeneintrag geschachtelt ist.
+ Es trennt nicht nur die Liste, sondern erstellt auch eine neue Liste außerhalb
+ der Schachtelung.
+\end_layout
+
+\begin_layout Standard
+Klickt man mit der rechten Maustaste auf einen Trenner, kann man ihn in
+ einen Absatzumbruch ändern (erscheint als roter Pfeil in \SpecialChar LyX
+).
  Der Unterschied zwischen beiden Trennern ist, dass der einfache Trenner
  nur die Listen, nicht aber den aktuellen Absatz trennt.
- Klickt man mit der rechten Maustaste auf einen Trenner, kann man zwischen
- beiden Typen umschalten.
 \end_layout
 
 \begin_layout Standard

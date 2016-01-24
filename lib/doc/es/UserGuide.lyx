@@ -10915,7 +10915,7 @@ enumeración (lista numerada)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -10954,18 +10954,30 @@ Editar\SpecialChar menuseparator
 Iniciar nuevo entorno
 \family default
 .
- Se inserta un separador simple (una línea roja en LyX) y a continuación
- la nueva lista.
- La alternativa es poner el cursor al final de un ítem de la lista y pulsar
- 
+ Se inserta un separador simple (una línea roja en \SpecialChar LyX
+) y a continuación la
+ nueva lista.
+ El menú 
 \family sans
-Entrar
+Editar\SpecialChar menuseparator
+
+\lang english
+Start New Parent Environment
 \family default
- tres veces.
- Se inserta un separador de párrafo (flecha roja en LyX).
+ only appears if the item is nested.
+ It does not only separate the list but also creates a new one outside the
+ nesting.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By right-clicking on a separator one can change it into
+\lang spanish
+ un separador de párrafo (flecha roja en \SpecialChar LyX
+).
  La diferencia entre ambos tipos de separador es que el separador simple
  solo divide la lista, no el párrafo.
- Se puede cambiar el tipo de separador con clic derecho sobre él.
 \end_layout
 
 \begin_layout Standard

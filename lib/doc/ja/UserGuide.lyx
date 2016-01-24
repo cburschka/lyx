@@ -9423,7 +9423,7 @@ name "subsec:入れ子の分離"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -9461,15 +9461,25 @@ name "subsec:入れ子の分離"
 新たな環境を開始
 \family default
 メニューを選択します。すると、分離記号が挿入され(\SpecialChar LyX
-中では赤線)、その後から新規の箇条書きが始まります。あるいは、カーソルを箇条書き項目の終わりに置いて、
-\begin_inset Info
-type  "shortcut"
-arg   "paragraph-break"
-\end_inset
+中では赤線)、その後から新規の箇条書きが始まります。
+\lang english
+The menu 
+\family sans
+Edit\SpecialChar menuseparator
+Start New Parent Environment
+\family default
+ only appears if the item is nested.
+ It does not only separate the list but also creates a new one outside the
+ nesting.
+\end_layout
 
-を3回押します。すると、段落分離記号が挿入されます(\SpecialChar LyX
-中では赤矢印)。両分離型の違いは、単なる分離記号は、箇条書きを分離するけれども、現段落を分離しないというとこ
-ろです。分離記号を右クリックすると、この分離型を変更することができます。
+\begin_layout Standard
+
+\lang english
+By right-clicking on a separator one can change it into a paragraph separator
+\lang japanese
+(\SpecialChar LyX
+中では赤矢印)。両分離型の違いは、単なる分離記号は、箇条書きを分離するけれども、現段落を分離しないというところです。
 \end_layout
 
 \begin_layout Standard

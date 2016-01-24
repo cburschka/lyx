@@ -11278,7 +11278,7 @@ liste numérotée
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -11318,17 +11318,28 @@ Pour diviser une liste existante en deux listes, mettez le curseur à la
 Début de nouvel environnement
 \family default
 .
- Ceci insère un séparateur ordinaire (une ligne rouge dans la fenêtre LyX),
+ Ceci insère un séparateur ordinaire (une ligne rouge dans la fenêtre \SpecialChar LyX
+),
  la nouvelle liste est après.
- D'une autre façon, positionner le curseur après l’élément de liste concerné
- et saisir trois fois 
-\begin_inset Info
-type  "shortcut"
-arg   "paragraph-break"
-\end_inset
+ Le menu 
+\family sans
+Édition\SpecialChar menuseparator
 
-.
- Ceci insère un séparateur de paragraphe (une flèche rouge en LyX).
+\lang english
+Start New Parent Environment
+\family default
+ only appears if the item is nested.
+ It does not only separate the list but also creates a new one outside the
+ nesting.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By right-clicking on a separator one can change it into
+\lang french
+ un séparateur de paragraphe (une flèche rouge en \SpecialChar LyX
+).
  La différence entre ces deux séparateurs réside dans le fait que le séparateur
  ordinaire ne divise que la liste et non pas le paragraphe courant.
  Il est possible de modifier le séparateur en effectuant un clic ddroit

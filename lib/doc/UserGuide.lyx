@@ -8310,12 +8310,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8328,6 +8330,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8351,6 +8354,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -10467,7 +10471,7 @@ enumeration
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -10506,19 +10510,23 @@ Edit\SpecialChar menuseparator
 Start New Environment
 \family default
 .
- This inserts a plain separator (red line in LyX) and behind it the new
- list.
- Alternatively set the cursor at the end of a list item and press 
-\begin_inset Info
-type  "shortcut"
-arg   "paragraph-break"
-\end_inset
+ This inserts a plain separator (red line in \SpecialChar LyX
+) and behind it the new list.
+ The menu 
+\family sans
+Edit\SpecialChar menuseparator
+Start New Parent Environment
+\family default
+ only appears if the item is nested.
+ It does not only separate the list but also creates a new one outside the
+ nesting.
+\end_layout
 
- three times.
- This inserts a paragraph separator (red arrow in LyX).
+\begin_layout Standard
+By right-clicking on a separator one can change it into a paragraph separator
+ (red arrow in LyX).
  The difference between both separator types is that the plain separator
  only splits the list and not the current paragraph.
- One can change the separator type by right-clicking on it.
 \end_layout
 
 \begin_layout Standard
