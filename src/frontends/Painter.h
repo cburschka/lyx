@@ -95,6 +95,23 @@ public:
 		fill_style = fill_none, line_style = line_solid,
 		int line_width = thin_line) = 0;
 
+	/**
+	 * path -  draw a path with bezier curves
+	 * @param xp array of points' x co-ords
+	 * @param yp array of points' y co-ords
+	 * @param c1x array of first control points' x co-ords
+	 * @param c1y array of first control points' y co-ords
+	 * @param c2x array of second control points' x co-ords
+	 * @param c2y array of second control points' y co-ords
+	 * @param np size of the points array
+	 */
+	virtual void path(int const * xp, int const * yp,
+		int const * c1x, int const * c1y,
+		int const * c2x, int const * c2y,
+		int np, Color,
+		fill_style = fill_none, line_style = line_solid,
+		int line_width = thin_line) = 0;
+
 	/// draw a rectangle
 	virtual void rectangle(int x, int y, int w, int h, Color,
 		line_style = line_solid, int line_width = thin_line) = 0;

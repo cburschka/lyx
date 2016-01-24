@@ -229,6 +229,41 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 }
 
 
+void GuiPainter::path(int const * xp, int const * yp,
+	int const * c1x, int const * c1y,
+	int const * c2x, int const * c2y,
+	int np,
+	Color col,
+	fill_style fs,
+	line_style ls,
+	int lw)
+{
+	if (!isDrawingEnabled())
+		return;
+
+	QPainterPath bpath;
+	// This is the starting point, so its control points are meaningless
+	bpath.moveTo(xp[0], yp[0]);
+
+	for (int i = 1; i < np; ++i) {
+		bool line = c1x[i] == xp[i - 1] && c1y[i] == yp[i - 1] &&
+			    c2x[i] == xp[i] && c2y[i] == yp[i];
+		if (line)
+			bpath.lineTo(xp[i], yp[i]);
+		else
+			bpath.cubicTo(c1x[i], c1y[i],  c2x[i], c2y[i], xp[i], yp[i]);
+	}
+	QColor const color = computeColor(col);
+	setQPainterPen(color, ls, lw);
+	bool const text_is_antialiased = renderHints() & TextAntialiasing;
+	setRenderHint(Antialiasing, text_is_antialiased);
+	drawPath(bpath);
+	if (fs != fill_none)
+		fillPath(bpath, QBrush(color));
+	setRenderHint(Antialiasing, false);
+}
+
+
 void GuiPainter::rectangle(int x, int y, int w, int h,
 	Color col,
 	line_style ls,
