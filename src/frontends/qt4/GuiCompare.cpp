@@ -310,7 +310,11 @@ int GuiCompare::run()
 
 	// init the compare object and start it
 	compare_ = new Compare(new_buffer_, old_buffer_, dest_buffer_, options);
+#if QT_VERSION >= 0x050600
+	connect(compare_, SIGNAL(errorOccurred()), this, SLOT(error()));
+#else
 	connect(compare_, SIGNAL(error()), this, SLOT(error()));
+#endif
 	connect(compare_, SIGNAL(finished(bool)), this, SLOT(finished(bool)));
 	connect(compare_, SIGNAL(progress(int)), this, SLOT(progress(int)));
 	connect(compare_, SIGNAL(progressMax(int)), this, SLOT(progressMax(int)));

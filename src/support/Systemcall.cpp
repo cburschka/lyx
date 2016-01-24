@@ -357,7 +357,11 @@ SystemcallPrivate::SystemcallPrivate(std::string const & sf,
 
 	connect(process_, SIGNAL(readyReadStandardOutput()), SLOT(stdOut()));
 	connect(process_, SIGNAL(readyReadStandardError()), SLOT(stdErr()));
+#if QT_VERSION >= 0x050600
+	connect(process_, SIGNAL(errorOccurred(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+#else
 	connect(process_, SIGNAL(error(QProcess::ProcessError)), SLOT(processError(QProcess::ProcessError)));
+#endif
 	connect(process_, SIGNAL(started()), this, SLOT(processStarted()));
 	connect(process_, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(processFinished(int, QProcess::ExitStatus)));
 }
