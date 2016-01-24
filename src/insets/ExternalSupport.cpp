@@ -260,10 +260,11 @@ void updateExternal(InsetExternalParams const & params,
 
 	// We copy the source file to the temp dir and do the conversion
 	// there if necessary
+	bool const isDir = params.filename.isDirectory();
 	FileName const temp_file(
 		makeAbsPath(params.filename.mangledFileName(),
 				     masterBuffer->temppath()));
-	if (!params.filename.empty() && !params.filename.isDirectory()) {
+	if (!params.filename.empty() && !isDir) {
 		unsigned long const from_checksum = params.filename.checksum();
 		unsigned long const temp_checksum = temp_file.checksum();
 
@@ -320,7 +321,8 @@ void updateExternal(InsetExternalParams const & params,
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
-	if (compare_timestamps(temp_file, abs_to_file) < 0)
+	// or if from_file is a directory (bug 9925)
+	if (!isDir && compare_timestamps(temp_file, abs_to_file) < 0)
 		return; // SUCCESS
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
