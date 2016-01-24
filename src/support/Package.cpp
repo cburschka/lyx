@@ -691,7 +691,7 @@ FileName const get_default_user_support_dir(FileName const & home_dir)
 
 #elif defined (USE_MACOSX_PACKAGING) && (QT_VERSION >= 0x050000)
 	(void)home_dir; // Silence warning about unused variable.
-	return FileName(addPath(fromqstr(QStandardPaths::writableLocation(QStandardPaths::DataLocation)), PACKAGE));
+	return FileName(addPath(fromqstr(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)), PACKAGE));
 
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
