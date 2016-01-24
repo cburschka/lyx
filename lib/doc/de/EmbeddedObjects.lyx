@@ -38457,7 +38457,7 @@ reference "tab:Vergleich-der-Datums-Eingaben"
 \end_layout
 
 \begin_layout Description
-Dia unterstützt Diagramme, die mit dem Programm 
+Dia-Diagramm unterstützt Diagramme, die mit dem Programm 
 \series bold
 
 \begin_inset CommandInset href
@@ -38473,7 +38473,7 @@ target "http://de.wikipedia.org/wiki/Dia_(Software)"
 \end_layout
 
 \begin_layout Description
-GnumericTabelle Mit dieser Vorlage können Sie Tabellen im Format von 
+Tabelle Mit dieser Vorlage können Sie Tabellen im Format von 
 \series bold
 
 \begin_inset CommandInset href
@@ -38527,8 +38527,8 @@ spreadsheet.lyx
 \end_layout
 
 \begin_layout Description
-LilyPond Mit dieser Vorlage können Sie Musik-Notationen einfügen, die mit
- dem Notensatzprogramm 
+LilyPond-Notenblatt Mit dieser Vorlage können Sie Musik-Notationen einfügen,
+ die mit dem Notensatzprogramm 
 \series bold
 
 \begin_inset CommandInset href
@@ -38754,8 +38754,6 @@ reference "abs:Grafik-Dialog"
 \end_inset
 
 .
- Der Unterschied zum normalen Einfügen eines Bildes ist, dass nur Rasterbilder
- erlaubt sind, das heißt PDF- und EPS-Bilder werden nicht unterstützt.
  Hier ist ein eingefügtes Rasterbild: 
 \begin_inset External
 	template RasterImage
@@ -38767,7 +38765,44 @@ reference "abs:Grafik-Dialog"
 \end_layout
 
 \begin_layout Description
-XFig Diese Vorlage unterstützt Bilder, die mit dem Programm 
+Vektorgrafik Diese Vorlage kann für Vektorgrafiken benutzt werden.
+ Die Bilddateien können im Dialogfenster 
+\family sans
+Externes
+\begin_inset space ~
+\end_inset
+
+Material
+\family default
+ genauso behandelt werden, wie die mit dem normalen 
+\family sans
+Grafik
+\family default
+-Dialog eingefügten, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Grafik-Dialog"
+
+\end_inset
+
+.
+ Hier ist eine eingefügte Vektorgrafik: 
+\begin_inset External
+	template VectorGraphics
+	filename D:/LyXGit/Master/lib/doc/clipart/banner.svgz
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Xfig-Abbildung Diese Vorlage unterstützt Bilder, die mit dem Programm 
 \series bold
 
 \begin_inset CommandInset href

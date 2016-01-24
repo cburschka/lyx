@@ -36121,6 +36121,45 @@ EPS画像はサポートされていません。右記は、ラスター画像�
 \end_layout
 
 \begin_layout Description
+
+\lang english
+Vector
+\begin_inset space ~
+\end_inset
+
+graphics This can be used for vector graphics.
+ 
+\family sans
+\lang japanese
+外部素材
+\family default
+ダイアログを使って入れる画像は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:画像ダイアログ"
+
+\end_inset
+
+節にあるように
+\family sans
+画像
+\family default
+ダイアログを使って挿入される画像と同じように取り扱うことができます。
+\lang english
+ Here is an inserted vector graphics:
+\lang japanese
+ 
+\begin_inset External
+	template VectorGraphics
+	filename ../clipart/banner.svgz
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
 XFig このひな型は、
 \series bold
 

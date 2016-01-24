@@ -38206,8 +38206,12 @@ Templates
 \end_layout
 
 \begin_layout Description
-ChessDiagram This template supports chess position diagrams made with the
- program 
+Chess
+\begin_inset space ~
+\end_inset
+
+diagram This template supports chess position diagrams made with the program
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -38284,7 +38288,11 @@ reference "tab:Comparison-of-the"
 \end_layout
 
 \begin_layout Description
-Dia This template supports diagrams created with the program 
+Dia
+\begin_inset space ~
+\end_inset
+
+diagram This template supports diagrams created with the program 
 \series bold
 
 \begin_inset CommandInset href
@@ -38300,7 +38308,7 @@ target "http://en.wikipedia.org/wiki/Dia_(software)"
 \end_layout
 
 \begin_layout Description
-GnumericSpreadsheet With this template you can insert spreadsheets
+Spreadsheet With this template you can insert spreadsheets
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -38362,7 +38370,15 @@ spreadsheet.lyx
 \end_layout
 
 \begin_layout Description
-LilyPond This template is used for music notation typeset with the program
+Lilypond
+\begin_inset space ~
+\end_inset
+
+typeset
+\begin_inset space ~
+\end_inset
+
+music This template is used for music notation typeset with the program
 \begin_inset Newline linebreak
 \end_inset
 
@@ -38389,7 +38405,11 @@ lilypond.lyx
 \end_layout
 
 \begin_layout Description
-PDFPages With this template you can insert PDF documents to your document.
+PDF
+\begin_inset space ~
+\end_inset
+
+pages With this template you can insert PDF documents to your document.
  To specify the range of pages that should be included, use the option 
 \series bold
 pages
@@ -38565,7 +38585,11 @@ Here is an included PDF which is rotated by -5°:
 \end_layout
 
 \begin_layout Description
-RasterImage This can be used for bitmap images.
+Raster
+\begin_inset space ~
+\end_inset
+
+image This can be used for bitmap images.
  The image can be treated in the 
 \family sans
 External material
@@ -38586,8 +38610,6 @@ reference "sec:Graphics-Dialog"
 \end_inset
 
 .
- The difference to the normal image input is that only raster images are
- allowed; that means that PDF and EPS-images are not supported.
  Here is an inserted raster image: 
 \begin_inset External
 	template RasterImage
@@ -38599,7 +38621,48 @@ reference "sec:Graphics-Dialog"
 \end_layout
 
 \begin_layout Description
-XFig This template supports images created with the program 
+Vector
+\begin_inset space ~
+\end_inset
+
+graphics This can be used for vector graphics.
+ The image can be treated in the 
+\family sans
+External material
+\family default
+ dialog like the images that are usually included via the 
+\family sans
+Graphics
+\family default
+ dialog as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Graphics-Dialog"
+
+\end_inset
+
+.
+ Here is an inserted vector graphics: 
+\begin_inset External
+	template VectorGraphics
+	filename clipart/banner.svgz
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Xfig
+\begin_inset space ~
+\end_inset
+
+figure This template supports images created with the program 
 \series bold
 
 \begin_inset CommandInset href
