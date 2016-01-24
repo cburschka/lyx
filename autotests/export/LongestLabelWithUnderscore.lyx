@@ -6,7 +6,7 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-\usepackage{pgfplots}
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -14,9 +14,9 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "TeX Gyre Termes"
-\font_sans "default" "TeX Gyre Pagella"
-\font_typewriter "default" "TeX Gyre Cursor"
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts true
@@ -51,7 +51,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 0
 \index Register
 \shortcut idx
@@ -81,15 +81,67 @@
 \begin_body
 
 \begin_layout Standard
-Setting the longest label to a string containing underscore leads to uncompilabl
-e document.
- See Paragraph Settings...Longest label
+The 
+\begin_inset Quotes eld
+\end_inset
+
+longest label
+\begin_inset Quotes erd
+\end_inset
+
+ marker in a labeling environment must be valid LaTeX (just like ERT).
+\end_layout
+
+\begin_layout Standard
+Setting the longest label to a string containing underscore (or another
+ special character like 
+\family typewriter
+
+\backslash
+]$%#^
+\family default
+...) may lead to an uncompilable document (while in valid constructs like 
+\family typewriter
+$
+\backslash
+sin^2 x_i$
+\family default
+ they are OK).
+ 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring Longest_Label_With_Underscore
 \noindent
-Longest_Label_With_Underscore Long label with underscore
+Label content.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring Longest_Label_With_Underscore
+\noindent
+This labeling list has the longest label set to 
+\begin_inset Quotes eld
+\end_inset
+
+Longest_Label_With_Underscore
+\begin_inset Quotes erd
+\end_inset
+
+.
+ (See Edit>Paragraph>Settings...Longest label)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring Longest_Label_With_Underscore
+It fails with 
+\begin_inset Quotes eld
+\end_inset
+
+Missing $ inserted.
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \end_body
