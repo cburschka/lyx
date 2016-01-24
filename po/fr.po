@@ -308,7 +308,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-02 18:44+0000\n"
+"PO-Revision-Date: 2016-01-24 11:38-0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1815,7 +1815,7 @@ msgstr "TabWidget"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:27
 msgid "Sear&ch"
-msgstr "&Rechercher"
+msgstr "Rechercher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:35
 #: src/frontends/qt4/ui/LogUi.ui:29
@@ -1843,7 +1843,7 @@ msgstr "Rechercher l'occurrence suivante [Entrée]"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:105
 #: src/frontends/qt4/ui/SearchUi.ui:166
 msgid "Find &Next"
-msgstr "&Recherche suivante"
+msgstr "Recherche &suivante"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:118
 msgid "Restrict search to whole words only"
@@ -1851,7 +1851,7 @@ msgstr "Restreindre la recherche aux mots complets seulement"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:121
 msgid "W&hole words"
-msgstr "Mots &complets"
+msgstr "Mots comp&lets"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:137
 msgid "Replace and find next occurrence [Enter]"
@@ -1885,7 +1885,7 @@ msgstr "Remplacer &tout"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:179
 msgid "S&ettings"
-msgstr "P&aramètres"
+msgstr "Paramètres"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
 msgid "The scope to which the search horizon is restricted"
@@ -4742,7 +4742,7 @@ msgstr "Mot actuel"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 msgid "&Find Next"
-msgstr "&Recherche suivante"
+msgstr "Recherche &suivante"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 msgid "Re&placement:"
@@ -5226,7 +5226,7 @@ msgstr "Mot à chercher"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:65
 msgid "L&ookup"
-msgstr "&Recherche"
+msgstr "Rec&herche"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:72
 #: src/frontends/qt4/ui/ThesaurusUi.ui:85
@@ -16009,7 +16009,7 @@ msgstr "Fournit des annotations variées pour le résultat PDF. Le module utilis
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
-msgstr "Définit un avatar"
+msgstr "Définir un avatar"
 
 #: lib/layouts/pdfcomment.module:20
 msgid "PDF-comment"
@@ -16025,7 +16025,7 @@ msgstr "Nom de l'avatar"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
-msgstr "Définit un style de commentaire PDF"
+msgstr "Définir un style de commentaire PDF"
 
 #: lib/layouts/pdfcomment.module:44
 msgid "PDF-comment style:"
@@ -16037,7 +16037,7 @@ msgstr "Nom du style"
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
-msgstr "Définit un style de liste pour les commentaires PDF"
+msgstr "Définir un style de liste pour les commentaires PDF"
 
 #: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
@@ -16079,7 +16079,7 @@ msgstr "Insérer les options de réglage des commentaires PDF ici (voir le manue
 
 #: lib/layouts/pdfcomment.module:93
 msgid "PDF-Annotation"
-msgstr "Annotation PDF"
+msgstr "Note PDF"
 
 #: lib/layouts/pdfcomment.module:97
 #: src/frontends/qt4/GuiClipboard.cpp:174
@@ -16116,11 +16116,11 @@ msgstr "Saisir le commentaire du texte balisé ici"
 
 #: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
-msgstr "Texte libre PDF"
+msgstr "Texte PDF"
 
 #: lib/layouts/pdfcomment.module:135
 msgid "PDF (Freetext)"
-msgstr "PDF (texte libre)"
+msgstr "PDF (texte)"
 
 #: lib/layouts/pdfcomment.module:139
 msgid "PDF-Square"
@@ -16250,17 +16250,17 @@ msgstr "Réglage du lien PDF"
 #: lib/layouts/pdfform.module:58
 #: lib/layouts/pdfform.module:63
 msgid "TextField"
-msgstr "ChampTextuel"
+msgstr "ChampTexte"
 
 #: lib/layouts/pdfform.module:78
 #: lib/layouts/pdfform.module:81
 msgid "CheckBox"
-msgstr "Coche"
+msgstr "CaseÀCocher"
 
 #: lib/layouts/pdfform.module:84
 #: lib/layouts/pdfform.module:87
 msgid "ChoiceMenu"
-msgstr "MenuDeChoix"
+msgstr "Menu"
 
 #: lib/layouts/pdfform.module:89
 msgid "Label"
@@ -16278,7 +16278,7 @@ msgstr "BoutonPoussoir"
 #: lib/layouts/pdfform.module:102
 #: lib/layouts/pdfform.module:105
 msgid "SubmitButton"
-msgstr "BoutonDEnvoi"
+msgstr "BoutonEnvoyer"
 
 #: lib/layouts/pdfform.module:108
 #: lib/layouts/pdfform.module:111
@@ -16320,11 +16320,11 @@ msgstr "Style de bouton poussoir implicite"
 
 #: lib/layouts/pdfform.module:153
 msgid "Check Box Style"
-msgstr "Style de coche"
+msgstr "Style de case à cocher"
 
 #: lib/layouts/pdfform.module:156
 msgid "Default check box style"
-msgstr "Style de coche implicite"
+msgstr "Style de case à cocher implicite"
 
 #: lib/layouts/pdfform.module:159
 msgid "Reset Button Style"
@@ -16356,7 +16356,7 @@ msgstr "Style de liste déroulante"
 
 #: lib/layouts/pdfform.module:180
 msgid "Default popdown box style"
-msgstr "Style de boîte déroulante implicite"
+msgstr "Style de liste déroulante implicite"
 
 #: lib/layouts/pdfform.module:183
 msgid "Radio Box Style"
