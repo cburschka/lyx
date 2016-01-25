@@ -7272,14 +7272,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です。
 \end_layout
 
@@ -7292,7 +7290,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7315,7 +7312,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -38255,7 +38251,9 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.tug.org/texinfohtml/dvips.html#Option-details
+https://www.tug.org/texinfohtml/dvips.html
+\backslash
+#Option-details
 \end_layout
 
 \end_inset

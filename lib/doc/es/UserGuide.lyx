@@ -8636,14 +8636,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8656,7 +8654,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8681,7 +8678,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -45521,7 +45517,9 @@ status collapsed
 
 \begin_layout Plain Layout
 
-https://www.tug.org/texinfohtml/dvips.html#Option-details
+https://www.tug.org/texinfohtml/dvips.html
+\backslash
+#Option-details
 \end_layout
 
 \end_inset
