@@ -872,11 +872,15 @@ Or Bib\SpecialChar TeX
 status open
 
 \begin_layout Plain Layout
-You must use the bibliography style 
+You must either use the bibliography style 
 \family sans
 iucr
 \family default
- (part of the 
+ or 
+\family sans
+iucrit
+\family default
+ (both are part of the 
 \series bold
 iucr
 \series default
