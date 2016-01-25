@@ -92,19 +92,12 @@
 status open
 
 \begin_layout Plain Layout
-This template relies on the 
-\begin_inset Quotes els
-\end_inset
-
+This template relies on the \SpecialChar LaTeX
+ package 
+\family sans
 europasscv
-\begin_inset Quotes ers
-\end_inset
-
--package, 
-\end_layout
-
-\begin_layout Plain Layout
-see 
+\family default
+, see 
 \begin_inset Flex URL
 status open
 
@@ -115,11 +108,7 @@ http://www.ctan.org/pkg/europasscv
 
 \end_inset
 
- (last accessed: 14.03.2015), 
-\end_layout
-
-\begin_layout Plain Layout
-to create a CV according to the guidelines at 
+, to create a CV according to the guidelines at 
 \begin_inset Flex URL
 status open
 
@@ -412,7 +401,7 @@ Summary
 \begin_layout Item
 Soprano Family
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
