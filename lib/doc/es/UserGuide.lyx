@@ -19330,29 +19330,7 @@ nuevo
 \family default
  que hay en la pestaña
 \family sans
- Opciones de LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX y Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+ Opciones de LaTeX y LyX
 \family default
  del diálogo 
 \family sans
@@ -28382,18 +28360,7 @@ Bibliografía
 \begin_inset space ~
 \end_inset
 
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+BibTeX
 \family default
 .
  Surge una ventana en la que puedes añadir una o más bases de datos y selecciona
@@ -28480,18 +28447,7 @@ Bibliografía
 Herramientas\SpecialChar menuseparator
 Preferencias\SpecialChar menuseparator
 Salidas\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 .
  Son posibles las siguientes variantes:
@@ -28599,7 +28555,7 @@ alphadin.bst
 \begin_layout Subsection
 Formato de cita bibliográfica
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bibliografía ! Formato de citas
@@ -35926,7 +35882,29 @@ Postscript
 \family default
  formato PostScript usando el programa 
 \family typewriter
-dvips.
+dvips
+\family default
+.
+ 
+\lang english
+For possible 
+\family typewriter
+dvips
+\family default
+ options
+\lang spanish
+ véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:General-Salidas"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -45466,6 +45444,13 @@ Salidas
 
 \begin_layout Subsection
 General
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:General-Salidas"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -45491,11 +45476,57 @@ Características adicionales
 \end_layout
 
 \begin_layout Description
-DVI-PS
+
+\lang english
+Dvips
 \begin_inset space ~
 \end_inset
 
-Options ??
+Options Options for the program 
+\family typewriter
+dvips
+\family default
+ that is used for the export format 
+\family sans
+Postscript
+\family default
+\lang spanish
+, véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Exportar"
+
+\end_inset
+
+.
+ 
+\lang english
+Possible options are listed in the 
+\family typewriter
+dvips
+\family default
+ manual
+\lang spanish
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.tug.org/texinfohtml/dvips.html#Option-details
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description

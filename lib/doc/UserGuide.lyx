@@ -718,8 +718,8 @@ Template
  Selecting a template will automatically set certain layout features for
  the document, features you would otherwise need to change manually.
  They can be of use for certain classes, especially those for writing letters
- (see sec.
-\begin_inset space \thinspace{}
+ (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -1370,8 +1370,8 @@ Find
 
 Replace
 \family default
- feature that is described in sec.
-\begin_inset space \thinspace{}
+ feature that is described in section
+\begin_inset space ~
 \end_inset
 
 
@@ -1759,8 +1759,8 @@ Outline
 In the pull-down box at the top of the outline window, you can choose between
  several different lists, including other TOC-like objects, such as lists
  of tables and figures, but also lists of footnotes, or labels and cross-referen
-ces (see sec.
-\begin_inset space \thinspace{}
+ces (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -1770,8 +1770,8 @@ reference "sec:Cross-References"
 
 \end_inset
 
-), or notes, or citations (see sec.
-\begin_inset space \thinspace{}
+), or notes, or citations (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -2376,8 +2376,8 @@ Editing\SpecialChar menuseparator
 Shortcuts
 \family default
 .
- (You can list or change any key bindings as explained in sec.
-\begin_inset space \thinspace{}
+ (You can list or change any key bindings as explained in section
+\begin_inset space ~
 \end_inset
 
 
@@ -16099,8 +16099,8 @@ arg   "buffer-view"
 
 .
  A viewing program will pop up showing the output in the defined default
- output format, which is globally set in the preferences (see sec.
-\begin_inset space \thinspace{}
+ output format, which is globally set in the preferences (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -16111,8 +16111,8 @@ reference "sec:File-Formats"
 \end_inset
 
 ) and can also be altered for single documents in the document settings
- (see sec.
-\begin_inset space \thinspace{}
+ (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -28188,8 +28188,8 @@ In some cases the index entry order is not correct when you are using the
 \family sans
 makeindex 
 \family default
-to generate the index (see sec.
-\begin_inset space \thinspace{}
+to generate the index (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -28205,8 +28205,8 @@ reference "subsec:Index-Program"
 makeindex
 \family default
  would for example print the index entry for the \SpecialChar LaTeX
--package aeguill in sec.
-\begin_inset space \thinspace{}
+-package aeguill in section
+\begin_inset space ~
 \end_inset
 
 
@@ -28374,8 +28374,8 @@ Note:
 \family sans
 makeindex 
 \family default
-to generate the index, see sec.
-\begin_inset space \thinspace{}
+to generate the index, see section
+\begin_inset space ~
 \end_inset
 
 
@@ -35236,6 +35236,23 @@ Postscript
  PostScript format using the program 
 \family typewriter
 dvips
+\family default
+; for possible 
+\family typewriter
+dvips
+\family default
+ options see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:General-output"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -36042,8 +36059,8 @@ Note:
 Symbols
 \family default
  dialog because none of the screen fonts that you can set in the preferences
- dialog (see sec.
-\begin_inset space \thinspace{}
+ dialog (see section
+\begin_inset space ~
 \end_inset
 
 
@@ -43435,8 +43452,8 @@ Server pipe
 status collapsed
 
 \begin_layout Plain Layout
-See sec.
-\begin_inset space \thinspace{}
+See section
+\begin_inset space ~
 \end_inset
 
 
@@ -44551,8 +44568,8 @@ The pipe is also used for the
 \family sans
 Single instance
 \family default
- feature, see sec.
-\begin_inset space \thinspace{}
+ feature, see section
+\begin_inset space ~
 \end_inset
 
 
@@ -45056,6 +45073,13 @@ Outputs
 
 \begin_layout Subsection
 General
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:General-output"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -45089,11 +45113,50 @@ Features
 \end_layout
 
 \begin_layout Description
-DVI-PS
+Dvips
 \begin_inset space ~
 \end_inset
 
-Options ??
+Options Options for the program 
+\family typewriter
+dvips
+\family default
+ that is used for the export format 
+\family sans
+Postscript
+\family default
+, see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Export"
+
+\end_inset
+
+.
+ Possible options are listed in the 
+\family typewriter
+dvips
+\family default
+ manual:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.tug.org/texinfohtml/dvips.html#Option-details
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description

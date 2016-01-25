@@ -2770,22 +2770,7 @@ Powerdot
 \begin_layout Description
 
 \family sans
-RevTe
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X
+RevTeX
 \family default
  アメリカ物理学会(APS)やアメリカ物理学協会(AIP)、アメリカ光学会(OSA)の学術誌に投稿する論文を執筆するのに用いられます。このクラスは、
  \SpecialChar LyX
@@ -15726,29 +15711,7 @@ reference "cha:LyXで使用できる単位"
 \begin_layout Standard
 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XとLy
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xのオプション
+LaTeXとLyXのオプション
 \family default
 タブでは、\SpecialChar LaTeX
 のエキスパート向けに\SpecialChar LaTeX
@@ -16021,29 +15984,7 @@ status collapsed
 \family default
 ダイアログ中の、
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XとLy
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xオプション
+LaTeXとLyXオプション
 \family default
 タブにある、
 \family sans
@@ -23685,18 +23626,7 @@ http://wiki.lyx.org/BibTeX/Programs
 \family sans
 挿入\SpecialChar menuseparator
 一覧／目次\SpecialChar menuseparator
-BibT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX書誌情報
+BibTeX書誌情報
 \family default
 メニューを使用します。灰色の枠が挿入されてウィンドウが表示されますので、そこで読み込む一つ以上のデータベースとスタイルファイルを指定します。
 \family sans
@@ -23762,18 +23692,7 @@ target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 で指定すれば、Bib\SpecialChar TeX
 派生版のどれを
@@ -30310,18 +30229,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+(LuaTeX)
 \family default
  プログラム
 \family typewriter
@@ -30414,6 +30322,25 @@ Postscript
 dvips
 \family default
 プログラムを使用して変換するPostScript形式
+\lang english
+; for possible 
+\family typewriter
+dvips
+\family default
+ options see section
+\lang japanese
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:一般-出力"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -38255,6 +38182,13 @@ reference "sec:スペルチェック"
 
 \begin_layout Subsection
 一般
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:一般-出力"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -38277,11 +38211,56 @@ DVI/PDFの逆検索
 \begin_layout Description
 
 \lang english
-DVI-PS
+Dvips
 \begin_inset space ~
 \end_inset
 
-Options ??
+Options Options for the program 
+\family typewriter
+dvips
+\family default
+ that is used for the export format 
+\family sans
+Postscript
+\family default
+, see section
+\lang japanese
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:書き出し"
+
+\end_inset
+
+
+\lang english
+.
+ Possible options are listed in the 
+\family typewriter
+dvips
+\family default
+ manual:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.tug.org/texinfohtml/dvips.html#Option-details
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
