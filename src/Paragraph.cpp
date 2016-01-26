@@ -1426,7 +1426,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			icit->inset->validate(features);
 			if (layout_->needprotect &&
 			    icit->inset->lyxCode() == FOOT_CODE)
-				features.require("footmisc");
+				features.require("NeedLyXFootnoteCode");
 		}
 	}
 
