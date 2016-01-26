@@ -5,6 +5,7 @@
 \save_transient_properties true
 \origin /systemlyxdir/templates/
 \textclass aa
+\options referee, bibyear
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -117,6 +118,71 @@ Note:
 latin9
 \series medium
  in the document settings.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The 
+\family roman
+\series medium
+\size normal
+A&A document class offers the following optional (custom) document class
+ options
+\family default
+\series default
+\size default
+:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In this template the options 
+\series bold
+referee
+\series default
+ and 
+\series bold
+bibyear
+\series default
+ are preset.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+referee for a referee version
+\end_layout
+
+\begin_layout Description
+onecolumn for a paper on 1 column
+\end_layout
+
+\begin_layout Description
+longauth for the long lists of affiliations
+\end_layout
+
+\begin_layout Description
+rnote for the research notes
+\end_layout
+
+\begin_layout Description
+letter for the letters
+\end_layout
+
+\begin_layout Description
+bibyear if the references are not structured according to the author-year
+ natbib style
 \end_layout
 
 \end_inset
@@ -306,11 +372,30 @@ a subsubsection
 \end_layout
 
 \begin_layout Standard
-bla
+bla.
+ A citation: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "book-full"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Acknowledgement
 Part of this work was supported by
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "xampl"
+options "aa"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
