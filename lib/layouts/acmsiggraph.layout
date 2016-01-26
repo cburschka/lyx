@@ -256,20 +256,20 @@ InsetLayout "Flex:CRcat"
 	  Size			Small
 	EndFont
 	Argument 1
-          Mandatory		1
-          LabelString		"CR-number"
-          Tooltip		"Number of the category"
-        EndArgument
-        Argument 2
-          Mandatory		1
-          LabelString		"Subcategory"
-          Tooltip		"Subcategory"
-        EndArgument
-        Argument 3
-          Mandatory		1
-          LabelString		"Third-level"
-          Tooltip		"Third-level of the category"
-        EndArgument
+		Mandatory	1
+		LabelString	"CR-number"
+		Tooltip		"Number of the category"
+	EndArgument
+	Argument 2
+		Mandatory	1
+		LabelString	"Subcategory"
+		Tooltip		"Subcategory"
+	EndArgument
+	Argument 3
+		Mandatory	1
+		LabelString	"Third-level"
+		Tooltip		"Third-level of the category"
+	EndArgument
 End
 
 
