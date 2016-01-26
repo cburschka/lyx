@@ -9,8 +9,8 @@
 % Uncomment the line below if you wish to use the mathtime package:
 %\usepackage[cmbold]{mathtime}
 
-% Uncomment the next line to use the harvard package with bibtex
-%\usepackage[abbr]{harvard}
+% The harvard package is required with bibtex
+\usepackage[abbr]{harvard}
 
 \draftSpacing{1.5}
 \end_preamble
@@ -51,8 +51,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -622,8 +622,8 @@ all cited references
 
 s put one in: 
 \begin_inset CommandInset citation
-LatexCommand citet
-key "GSM97"
+LatexCommand cite
+key "book-full"
 
 \end_inset
 
@@ -633,7 +633,7 @@ key "GSM97"
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblio"
+bibfiles "xampl"
 options "aea"
 
 \end_inset
