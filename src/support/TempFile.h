@@ -24,6 +24,13 @@ class FileName;
  * The file is created in the constructor, and deleted in the destructor.
  * You may do anything with the file (including deletion), but the instance
  * of this class must stay alive as long as the file is needed.
+ * There is only one exception to this rule:
+ * If the file is supposed to be used by a different process then you need
+ * to be aware of OS specific file locking semantics: On windows, the file
+ * is opened with exclusive rights for the process which opened it. This
+ * is not the case on other OSes. Therefore, if the file is supposed to be
+ * used by a different process you need to sometheing similar to TempName
+ * in InsetExternal.cpp.
  */
 class TempFile {
 	/// noncopyable

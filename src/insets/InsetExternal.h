@@ -24,10 +24,6 @@
 
 namespace lyx {
 
-namespace support {
-class TempFile;
-}
-
 namespace external {
 
 /** No two InsetExternalParams variables can have the same temporary file.
@@ -45,7 +41,7 @@ public:
 	TempName & operator=(TempName const &);
 	support::FileName operator()() const;
 private:
-	support::TempFile * tempfile_;
+	support::FileName tempname_;
 };
 
 } // namespace external

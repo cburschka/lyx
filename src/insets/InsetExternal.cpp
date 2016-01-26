@@ -69,13 +69,20 @@ namespace Alert = frontend::Alert;
 
 namespace external {
 
-TempName::TempName() : tempfile_(new support::TempFile("lyxextXXXXXX.tmp"))
+TempName::TempName()
 {
 	// must have an extension for the converter code to work correctly.
+	support::TempFile f("lyxextXXXXXX.tmp");
+	// Let f go out of scope here and delete the file ourselves in
+	// ~TempName(), since otherwise external processes would not be able
+	// to use the file on windows (bug 9925). This is not as safe as
+	// keeping a support::TempFile member would be, but the best we can do.
+	f.setAutoRemove(false);
+	tempname_ = f.name();
 }
 
 
-TempName::TempName(TempName const & that) : tempfile_(0)
+TempName::TempName(TempName const & that)
 {
 	*this = that;
 }
@@ -83,15 +90,17 @@ TempName::TempName(TempName const & that) : tempfile_(0)
 
 TempName::~TempName()
 {
-	delete tempfile_;
+	tempname_.removeFile();
 }
 
 
 TempName & TempName::operator=(TempName const & other)
 {
 	if (this != &other) {
-		delete tempfile_;
-		tempfile_ = new support::TempFile("lyxextXXXXXX.tmp");
+		tempname_.removeFile();
+		support::TempFile f("lyxextXXXXXX.tmp");
+		f.setAutoRemove(false);
+		tempname_ = f.name(); 
 	}
 	return *this;
 }
@@ -99,7 +108,7 @@ TempName & TempName::operator=(TempName const & other)
 
 support::FileName TempName::operator()() const
 {
-	return tempfile_->name();
+	return tempname_;
 }
 
 } // namespace external
