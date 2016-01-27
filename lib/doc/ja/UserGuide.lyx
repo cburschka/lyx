@@ -1532,18 +1532,15 @@ Shift+Tab
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Horizontal Scrolling
-\lang japanese
-
+水平スクロール
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 いどう@移動 ! 
-\lang english
-Horizontal Scrolling
+\family sans
+\series bold
+すいへいすくろる@水平スクロール
 \end_layout
 
 \end_inset
@@ -1552,65 +1549,39 @@ Horizontal Scrolling
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\SpecialChar LyX
- does not have a horizontal scrollbar because the standard output page formats
- like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
 ISO
 \begin_inset space ~
 \end_inset
 
-A4 are less wide than PC or laptop screens.
- Therefore you will get troubles in the output of your document if document
- parts exceed the width of the \SpecialChar LyX
- main screen.
+A4のような標準的な出力頁形式の幅は、PCやラップトップの画面よりも狭いので、\SpecialChar LyX
+には水平スクロールバーがありません。文書の一部がLyXのメイン画面の幅を超えてしま
+うと、けっきょく出力に問題が生じてしまうからです。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are of course exceptions where horizontal scrolling is necessary.
- For example
+もちろん水平スクロールが必要になる場面もあります。たとえば、
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
- is used on a small tablet computer
+を小さなタブレットコンピューターで使用している場合
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Wide tables that are rotated 90° to fit a whole page
+ページ全体に合うように90°回転させた幅広の表の場合
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-See section 
+取扱説明書
 \emph on
-Rotated Floats
+埋込オブジェクト篇
 \emph default
- of the 
+の
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+回転フロート
 \emph default
- manual.
+の節をご覧ください。
 \end_layout
 
 \end_inset
@@ -1619,34 +1590,21 @@ Objects
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Math constructs with long command names
+長いコマンド名を持つ数式の場合
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For these cases \SpecialChar LyX
- has an mechanism that scrolls automatically when the cursor
- is moved.
- As example shrink the \SpecialChar LyX
- windows so that table
-\begin_inset space ~
-\end_inset
-
-
+これらの場合には、カーソルを動かすと自動的にスクロールする機構が\SpecialChar LyX
+には備わっています。例として、\SpecialChar LyX
+ウィンドウを、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Horizontal-scrollong-test"
+reference "tab:水平スクロールのテスト"
 
 \end_inset
 
- is wider.
- You will now see a dotted red line at the right or the left side of the
- table.
- Put the cursor into the table and move it with the Tab or the arrow keys
- to see the horizontal scrolling of the table.
+の幅よりも狭くしてみてください。すると、表の右側ないし左側に赤い点線が表示されるようになります。カーソルを表の中に置いて、タブキーや矢印キーで動かしてみてくださ
+い。すると、表が水平にスクロールするのがわかります。
 \end_layout
 
 \begin_layout Standard
@@ -1662,13 +1620,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Horizontal-scrollong-test"
+name "tab:水平スクロールのテスト"
 
 \end_inset
 
-
-\lang english
-Horizontal scrolling test.
+水平スクロールのテスト
 \end_layout
 
 \end_inset
@@ -7272,12 +7228,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7290,6 +7248,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7312,6 +7271,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -9442,25 +9402,18 @@ name "subsec:入れ子の分離"
 新たな環境を開始
 \family default
 メニューを選択します。すると、分離記号が挿入され(\SpecialChar LyX
-中では赤線)、その後から新規の箇条書きが始まります。
-\lang english
-The menu 
+中では赤線)、その後から新規の箇条書きが始まります。また、
 \family sans
-Edit\SpecialChar menuseparator
-Start New Parent Environment
+編集\SpecialChar menuseparator
+新たな親環境を開始
 \family default
- only appears if the item is nested.
- It does not only separate the list but also creates a new one outside the
- nesting.
+メニューは、項目が入れ子になっているときにのみ表示されます。これは、箇条書きを分離するだけでなく、入れ子から出たところに新しい箇条書きを作ります。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a separator one can change it into a paragraph separator
-\lang japanese
-(\SpecialChar LyX
-中では赤矢印)。両分離型の違いは、単なる分離記号は、箇条書きを分離するけれども、現段落を分離しないというところです。
+分離線の上で右クリックをすると、これを段落区切りに帰ることができます(\SpecialChar LyX
+中では赤矢印)。両分離型の違いは、単なる分離線は、箇条書きを分離するけれども、現段落を分離
+しないというところです。
 \end_layout
 
 \begin_layout Standard
@@ -15072,17 +15025,10 @@ name "subsec:LyXの固有名称"
 では、
 \family sans
 挿入\SpecialChar menuseparator
-特殊文字
+特殊文字\SpecialChar menuseparator
+ロゴ
 \family default
-を使って
-\family sans
-\SpecialChar menuseparator
-
-\lang english
-Logos
-\family default
-\lang japanese
-、下記のプログラムロゴを特別な組版で出力することができます．
+を使って、下記のプログラムロゴを特別な組版で出力することができます．
 \end_layout
 
 \begin_layout Description
@@ -30084,31 +30030,23 @@ Open
 \begin_inset space ~
 \end_inset
 
-XML Office Open XML 
-\lang english
-file, to be opened with 
+XML 
 \family sans
 Microsoft Word
 \family default
-.
- For the conversion the program 
+で開くためのOffice Open XMLファイル。変換には、
 \family typewriter
 Pandoc
 \family default
- is used.
- 
+プログラムが用いられます。
 \family typewriter
 Pandoc
 \family default
- is a third-party product and may not work in all cases.
+はサードパーティ製品であるので、つねに動作するとは限りません。
 \end_layout
 
 \begin_layout Description
-
-\family sans
-NoWeb
-\family default
- 文芸的プログラミング言語
+NoWeb 文芸的プログラミング言語
 \family typewriter
 NoWeb
 \family default
@@ -30136,18 +30074,15 @@ KOffice
 \family sans
 Abiword
 \family default
-などで開くことが可能
-\lang english
-For the conversion the program 
+などで開くことが可能。変換には、
 \family typewriter
 Pandoc
 \family default
- is used.
- 
+プログラムが用いられます。
 \family typewriter
 Pandoc
 \family default
- is a third-party product and may not work in all cases.
+はサードパーティ製品であるので、つねに動作するとは限りません。
 \end_layout
 
 \begin_layout Description
@@ -30155,19 +30090,15 @@ OpenDocument
 \begin_inset space ~
 \end_inset
 
-(tex4ht) OpenDocument
-\lang english
- file.
- For the conversion the program 
+(tex4ht) OpenDocumentファイル。変換には、
 \family typewriter
 tex4ht
 \family default
- is used.
- 
+プログラムが用いられます。
 \family typewriter
 tex4ht
 \family default
- is a third-party product and may not work in all cases.
+はサードパーティ製品であるので、つねに動作するとは限りません。
 \end_layout
 
 \begin_layout Description
@@ -30317,26 +30248,18 @@ Postscript
 \family typewriter
 dvips
 \family default
-プログラムを使用して変換するPostScript形式
-\lang english
-; for possible 
+プログラムを使用して変換するPostScript形式。使用できる
 \family typewriter
 dvips
 \family default
- options see section
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+オプションについては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:一般-出力"
 
 \end_inset
 
-
+節を参照。
 \end_layout
 
 \begin_layout Description
@@ -31105,13 +31028,11 @@ latexはつけじ@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Logos Inserts the logos of the programs \SpecialChar LyX
-, \SpecialChar TeX
-, \SpecialChar LaTeX
- and \SpecialChar LaTeX2e
-.
+ロゴ \SpecialChar LyX
+・\SpecialChar TeX
+・\SpecialChar LaTeX
+・\SpecialChar LaTeX2e
+の各プログラムのロゴを挿入する。
 \end_layout
 
 \begin_layout Subsection
@@ -32000,22 +31921,17 @@ LaTeXログ
 
 \begin_layout Standard
 
-\lang english
-With the button 
 \family sans
-Open Containing Directory
+作業ディレクトリを開く
 \family default
- one can open \SpecialChar LyX
-'s temporary folder for the document.
- This folder contains all converted and created files to generate the output.
- Some of these files might be of interest for experts to solve problems
- or for writers who need to supply intermediate files.
- For example some journals require to send the 
+ボタンを使うと、当該文書の\SpecialChar LyX
+作業フォルダを開くことができます。このフォルダには、出力を生成するのに、変換されたファイルや作成されたファイルがすべて収められています
+。これらのファイルの一部は、問題を解決しようとする熟練者や中間ファイルを提供する必要のある筆者にとって役に立つかもしれません。たとえば、一部の学術誌では
 \family sans
 *.bbl
 \family default
- file (a text file with the used Bib\SpecialChar TeX
- references).
+ファイル(使用したBib\SpecialChar TeX
+参照を含むテキストファイル)を送付する必要があります。
 \end_layout
 
 \begin_layout Subsection
@@ -32317,15 +32233,11 @@ name "subsec:圧縮"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Disable Editing
+編集を無効化
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Toggles the read-only state for the document.
+文書の読み込み専用状態を入切します。
 \end_layout
 
 \begin_layout Subsection
@@ -37649,13 +37561,10 @@ status open
 ホイールスクロール速度
 \family default
 を指定することができます。標準の値は1.0となっており、数値を上げるとスクロール速度が上がり、数値を下げるとスクロール速度が下がります。
-\lang english
-With the option 
 \family sans
-Middle mouse button pasting
+マウス中央ボタンで貼り付け
 \family default
- you can determine if pressing the middle mouse button (or the mouse wheel)
- inserts the content of the clipboard.
+オプションを用いると、マウス中央ボタン(あるいはマウスホイール)を押すことで、クリップボードの内容を挿入するかどうか指定することができます。
 \end_layout
 
 \begin_layout Standard
@@ -38205,43 +38114,26 @@ DVI/PDFの逆検索
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Dvips
-\begin_inset space ~
-\end_inset
-
-Options Options for the program 
-\family typewriter
-dvips
-\family default
- that is used for the export format 
+Dvipsオプション 書き出し形式
 \family sans
 Postscript
 \family default
-, see section
-\lang japanese
-
-\begin_inset space ~
-\end_inset
-
-
+に使用されるプログラム
+\family typewriter
+dvips
+\family default
+のオプションです。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書き出し"
 
 \end_inset
 
-
-\lang english
-.
- Possible options are listed in the 
+節を参照。使用できるオプションは、下記の
 \family typewriter
 dvips
 \family default
- manual:
-\lang japanese
-
+取扱説明書に列挙されています。
 \begin_inset Newline newline
 \end_inset
 

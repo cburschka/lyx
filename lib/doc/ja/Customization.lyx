@@ -5435,13 +5435,18 @@ status collapsed
 
 \end_inset
 
+や
+\begin_inset Flex Code
+status collapsed
 
-\lang english
-or /usr/local/texlive/XXXX where XXXX is the year of the installed \SpecialChar TeX
-Live
- distribution.
-\lang japanese
-のような場所になっています。「ユーザー」\SpecialChar TeX
+\begin_layout Plain Layout
+/usr/local/texlive/XXXX
+\end_layout
+
+\end_inset
+
+ (XXXXは導入されている\SpecialChar TeX
+Live頒布版の年次)のような場所になっています。「ユーザー」\SpecialChar TeX
 ツリーの場所は、
 \begin_inset Flex Code
 status collapsed
@@ -5462,23 +5467,16 @@ $HOME/texmf/
 
 \end_inset
 
-
-\lang english
- or 
+や
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
-\lang french
 $HOME/.texliveXXXX
 \end_layout
 
 \end_inset
 
-.
-\lang japanese
 です（もしこれらの変数が事前定義されていなければ、定義しなくてはなりません）。「ローカル」ツリーを作成したり変更したりするには、おそらくroot権限が必要ですが
 、「ユーザー」ツリーにはこのような制限はありません。
 \begin_inset Newline newline

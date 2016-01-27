@@ -36074,7 +36074,7 @@ PDFページ
 \end_layout
 
 \begin_layout Description
-ラスターイメージ これはビットマップ画像に使用します。
+ラスター画像 これはビットマップ画像に使用します。
 \family sans
 外部素材
 \family default
@@ -36100,16 +36100,8 @@ reference "sec:画像ダイアログ"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Vector
-\begin_inset space ~
-\end_inset
-
-graphics This can be used for vector graphics.
- 
+ベクトル画像 これは、ベクトル画像に使用することができます。 
 \family sans
-\lang japanese
 外部素材
 \family default
 ダイアログを使って入れる画像は、第
@@ -36123,11 +36115,7 @@ reference "sec:画像ダイアログ"
 \family sans
 画像
 \family default
-ダイアログを使って挿入される画像と同じように取り扱うことができます。
-\lang english
- Here is an inserted vector graphics:
-\lang japanese
- 
+ダイアログを使って挿入される画像と同じように取り扱うことができます。右記は、ベクトル画像を挿入した例です。
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
