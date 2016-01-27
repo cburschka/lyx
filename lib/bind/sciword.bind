@@ -13,7 +13,7 @@
 #\bind "C-b"                    "font-bold"
 
 # Copy, paste, etc.: more familiar keys
-Format 3
+Format 4
 
 \bind "C-c"	"copy"
 
@@ -232,10 +232,10 @@ Format 3
 \bind_file greekkeys.bind
 
 
-\bind "M-Up"			"command-alternatives outline-up; paragraph-move-up; inset-modify tabular move-row-up"
-\bind "M-Down"			"command-alternatives outline-down; paragraph-move-down; inset-modify tabular move-row-down"
-\bind "M-Right"			"inset-modify tabular move-column-right"
-\bind "M-Left"			"inset-modify tabular move-column-left"
+\bind "M-Up"			"command-alternatives outline-up; paragraph-move-up; tabular-feature move-row-up"
+\bind "M-Down"			"command-alternatives outline-down; paragraph-move-down; tabular-feature move-row-down"
+\bind "M-Right"			"tabular-feature move-column-right"
+\bind "M-Left"			"tabular-feature move-column-left"
 \bind "S-KP_Right"  			"char-right-select"
 \bind "S-KP_Left"				"char-left-select"
 \bind "S-KP_Up" 				"up-select"

@@ -26,7 +26,7 @@
 
 ###
 
-Format 3
+Format 4
 
 # based on the table at http://support.apple.com/kb/HT1343
 # Note: these bindings assume the swapped Meta and Control modifiers standard of Qt
@@ -358,10 +358,10 @@ Format 3
 \bind "C-period"                     "specialchar-insert end-of-sentence"
 \bind "M-period"                     "specialchar-insert dots"
 \bind "Escape"                       "cancel"
-\bind "C-M-Up"                       "command-alternatives outline-up; paragraph-move-up; inset-modify tabular move-row-up"
-\bind "C-M-Down"                     "command-alternatives outline-down; paragraph-move-down; inset-modify tabular move-row-down"
-\bind "C-M-Right"                    "inset-modify tabular move-column-right"
-\bind "C-M-Left"                     "inset-modify tabular move-column-left"
+\bind "C-M-Up"                       "command-alternatives outline-up; paragraph-move-up; tabular-feature move-row-up"
+\bind "C-M-Down"                     "command-alternatives outline-down; paragraph-move-down; tabular-feature move-row-down"
+\bind "C-M-Right"                    "tabular-feature move-column-right"
+\bind "C-M-Left"                     "tabular-feature move-column-left"
 #\bind "F9"                          "meta-prefix"
 
 \bind "C-M-F"                        "ui-toggle fullscreen"

@@ -21,7 +21,7 @@
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
-Format 3
+Format 4
 
 Menuset
 
@@ -191,44 +191,44 @@ Menuset
 
 # not much we can do to help here
 	Menu "edit_tabular"
-		Item "Multi-page Table|g" "inset-modify tabular toggle-longtabular"
-		Item "Formal Style|F" "inset-modify tabular toggle-booktabs"
+		Item "Multi-page Table|g" "tabular-feature toggle-longtabular"
+		Item "Formal Style|F" "tabular-feature toggle-booktabs"
 		Separator
-		Item "Multicolumn|M" "inset-modify tabular multicolumn"
-		Item "Multirow|u" "inset-modify tabular multirow"
+		Item "Multicolumn|M" "tabular-feature multicolumn"
+		Item "Multirow|u" "tabular-feature multirow"
 		Separator
-		Item "Top Line|T" "inset-modify tabular toggle-line-top"
-		Item "Bottom Line|B" "inset-modify tabular toggle-line-bottom"
-		Item "Left Line|L" "inset-modify tabular toggle-line-left"
-		Item "Right Line|R" "inset-modify tabular toggle-line-right"
+		Item "Top Line|T" "tabular-feature toggle-line-top"
+		Item "Bottom Line|B" "tabular-feature toggle-line-bottom"
+		Item "Left Line|L" "tabular-feature toggle-line-left"
+		Item "Right Line|R" "tabular-feature toggle-line-right"
 		Separator
-		Item "Top|p" "inset-modify tabular tabular-valign-top"
-		Item "Middle|i" "inset-modify tabular tabular-valign-middle"
-		Item "Bottom|o" "inset-modify tabular tabular-valign-bottom"
+		Item "Top|p" "tabular-feature tabular-valign-top"
+		Item "Middle|i" "tabular-feature tabular-valign-middle"
+		Item "Bottom|o" "tabular-feature tabular-valign-bottom"
 	End
 
 	Menu "edit_tabular_features"
-		Item "Left|L" "inset-modify tabular align-left"
-		Item "Center|C" "inset-modify tabular align-center"
-		Item "Right|R" "inset-modify tabular align-right"
+		Item "Left|L" "tabular-feature align-left"
+		Item "Center|C" "tabular-feature align-center"
+		Item "Right|R" "tabular-feature align-right"
 		Separator
-		Item "Top|T" "inset-modify tabular valign-top"
-		Item "Middle|M" "inset-modify tabular valign-middle"
-		Item "Bottom|B" "inset-modify tabular valign-bottom"
+		Item "Top|T" "tabular-feature valign-top"
+		Item "Middle|M" "tabular-feature valign-middle"
+		Item "Bottom|B" "tabular-feature valign-bottom"
 		Separator
-		Item "Add Row|A" "inset-modify tabular append-row"
-		Item "Delete Row|D" "inset-modify tabular delete-row"
-		Item "Copy Row|o" "inset-modify tabular copy-row"
-		Item "Move Row Up" "inset-modify tabular move-row-up"
-		Item "Move Row Down" "inset-modify tabular move-row-down"
-		# Item "Swap Rows|S" "inset-modify tabular swap-row" # currently broken
+		Item "Add Row|A" "tabular-feature append-row"
+		Item "Delete Row|D" "tabular-feature delete-row"
+		Item "Copy Row|o" "tabular-feature copy-row"
+		Item "Move Row Up" "tabular-feature move-row-up"
+		Item "Move Row Down" "tabular-feature move-row-down"
+		# Item "Swap Rows|S" "tabular-feature swap-row" # currently broken
 		Separator
-		Item "Add Column|u" "inset-modify tabular append-column"
-		Item "Delete Column|e" "inset-modify tabular delete-column"
-		Item "Copy Column|p" "inset-modify tabular copy-column"
-		Item "Move Column Right|v" "inset-modify tabular move-column-right"
-		Item "Move Column Left" "inset-modify tabular move-column-left"
-		# Item "Swap Columns|w" "inset-modify tabular swap-column" # currently broken
+		Item "Add Column|u" "tabular-feature append-column"
+		Item "Delete Column|e" "tabular-feature delete-column"
+		Item "Copy Column|p" "tabular-feature copy-column"
+		Item "Move Column Right|v" "tabular-feature move-column-right"
+		Item "Move Column Left" "tabular-feature move-column-left"
+		# Item "Swap Columns|w" "tabular-feature swap-column" # currently broken
 	End
 
 	Menu "edit_math"
@@ -245,15 +245,15 @@ Menuset
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
-		Item "Add Line Above|A" "inset-modify tabular add-hline-above"
-		Item "Add Line Below|B" "inset-modify tabular add-hline-below"
-		Item "Delete Line Above|D" "inset-modify tabular delete-hline-above"
-		Item "Delete Line Below|e" "inset-modify tabular delete-hline-below"
+		Item "Add Line Above|A" "tabular-feature add-hline-above"
+		Item "Add Line Below|B" "tabular-feature add-hline-below"
+		Item "Delete Line Above|D" "tabular-feature delete-hline-above"
+		Item "Delete Line Below|e" "tabular-feature delete-hline-below"
 		Separator
-		Item "Add Line to Left" "inset-modify tabular add-vline-left"
-		Item "Add Line to Right" "inset-modify tabular add-vline-right"
-		Item "Delete Line to Left" "inset-modify tabular delete-vline-left"
-		Item "Delete Line to Right" "inset-modify tabular delete-vline-right"
+		Item "Add Line to Left" "tabular-feature add-vline-left"
+		Item "Add Line to Right" "tabular-feature add-vline-right"
+		Item "Delete Line to Left" "tabular-feature delete-vline-left"
+		Item "Delete Line to Right" "tabular-feature delete-vline-right"
 	End
 
 	Menu "edit_math_macro_definition"
@@ -449,10 +449,10 @@ Menuset
 # "math-matrix" and "math-insert" create an inline formula first if called from text mode
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
-		Item "Aligned Environment|l" "command-sequence math-insert \aligned; inset-modify tabular append-column"
-		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; inset-modify tabular append-column"
+		Item "Aligned Environment|l" "command-sequence math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; tabular-feature append-column"
 		Item "Gathered Environment|h" "math-insert \gathered"
-		Item "Split Environment|S" "command-sequence math-insert \split; inset-modify tabular append-column"
+		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
 		Separator
 		Item "Delimiters...|r" "dialog-show mathdelimiter"
 		Item "Matrix...|x" "dialog-show mathmatrix"

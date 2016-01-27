@@ -62,7 +62,7 @@
 #
 # This is the default toolbar:
 
-Format 3
+Format 4
 
 ToolbarSet
 
@@ -140,36 +140,36 @@ ToolbarSet
 	End
 
 	Toolbar "table" "Table"
-		Item "Add row" "inset-modify tabular append-row"
-		Item "Add column" "inset-modify tabular append-column"
-		Item "Delete row" "inset-modify tabular delete-row"
-		Item "Delete column" "inset-modify tabular delete-column"
-		Item "Move row up" "inset-modify tabular move-row-up"
-		Item "Move column left" "inset-modify tabular move-column-left"
-		Item "Move row down" "inset-modify tabular move-row-down"
-		Item "Move column right" "inset-modify tabular move-column-right"
+		Item "Add row" "tabular-feature append-row"
+		Item "Add column" "tabular-feature append-column"
+		Item "Delete row" "tabular-feature delete-row"
+		Item "Delete column" "tabular-feature delete-column"
+		Item "Move row up" "tabular-feature move-row-up"
+		Item "Move column left" "tabular-feature move-column-left"
+		Item "Move row down" "tabular-feature move-row-down"
+		Item "Move column right" "tabular-feature move-column-right"
 		Separator
-		Item "Set top line" "inset-modify tabular toggle-line-top"
-		Item "Set bottom line" "inset-modify tabular toggle-line-bottom"
-		Item "Set left line" "inset-modify tabular toggle-line-left"
-		Item "Set right line" "inset-modify tabular toggle-line-right"
-		Item "Set border lines" "inset-modify tabular set-border-lines"
-		Item "Set all lines" "inset-modify tabular set-all-lines"
-		Item "Unset all lines" "inset-modify tabular unset-all-lines"
+		Item "Set top line" "tabular-feature toggle-line-top"
+		Item "Set bottom line" "tabular-feature toggle-line-bottom"
+		Item "Set left line" "tabular-feature toggle-line-left"
+		Item "Set right line" "tabular-feature toggle-line-right"
+		Item "Set border lines" "tabular-feature set-border-lines"
+		Item "Set all lines" "tabular-feature set-all-lines"
+		Item "Unset all lines" "tabular-feature unset-all-lines"
 		Separator
-		Item "Align left" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
-		Item "Align center" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
-		Item "Align right" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
-		Item "Align on decimal" "inset-modify tabular align-decimal"
+		Item "Align left" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
+		Item "Align center" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
+		Item "Align right" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
+		Item "Align on decimal" "tabular-feature align-decimal"
 		Separator
-		Item "Align top" "command-alternatives inset-modify tabular m-valign-top;inset-modify tabular valign-top"
-		Item "Align middle" "command-alternatives inset-modify tabular m-valign-middle;inset-modify tabular valign-middle"
-		Item "Align bottom" "command-alternatives inset-modify tabular m-valign-bottom;inset-modify tabular valign-bottom"
+		Item "Align top" "command-alternatives tabular-feature m-valign-top;tabular-feature valign-top"
+		Item "Align middle" "command-alternatives tabular-feature m-valign-middle;tabular-feature valign-middle"
+		Item "Align bottom" "command-alternatives tabular-feature m-valign-bottom;tabular-feature valign-bottom"
 		Separator
-		Item "Rotate cell by 90 degrees or unset rotation" "inset-modify tabular toggle-rotate-cell"
-		Item "Rotate table by 90 degrees or unset rotation" "inset-modify tabular toggle-rotate-tabular"
-		Item "Set multi-column" "inset-modify tabular multicolumn"
-		Item "Set multi-row" "inset-modify tabular multirow"
+		Item "Rotate cell by 90 degrees or unset rotation" "tabular-feature toggle-rotate-cell"
+		Item "Rotate table by 90 degrees or unset rotation" "tabular-feature toggle-rotate-tabular"
+		Item "Set multi-column" "tabular-feature multicolumn"
+		Item "Set multi-row" "tabular-feature multirow"
 	End
 
 	Toolbar "math" "Math"
@@ -191,10 +191,10 @@ ToolbarSet
 		Separator
 		Item "Insert matrix" "dialog-show mathmatrix"
 		Item "Insert cases environment" "math-insert \cases"
-		Item "Add row" "inset-modify tabular append-row"
-		Item "Add column" "inset-modify tabular append-column"
-		Item "Delete row" "inset-modify tabular delete-row"
-		Item "Delete column" "inset-modify tabular delete-column"
+		Item "Add row" "tabular-feature append-row"
+		Item "Add column" "tabular-feature append-column"
+		Item "Delete row" "tabular-feature delete-row"
+		Item "Delete column" "tabular-feature delete-column"
 		Separator
 		Item "Toggle math panels" "toolbar-toggle math_panels"
 	End

@@ -25,7 +25,7 @@
 #
 # Happy tuning!
 
-Format 3
+Format 4
 
 \bind "C-~S-at"			"mark-on"
 \bind "C-a"			"line-begin"
@@ -154,10 +154,10 @@ Format 3
 # Motion group
 #
 
-\bind "M-Up"			"command-alternatives outline-up; paragraph-move-up; inset-modify tabular move-row-up"
-\bind "M-Down"			"command-alternatives outline-down; paragraph-move-down; inset-modify tabular move-row-down"
-\bind "M-Right"			"inset-modify tabular move-column-right"
-\bind "M-Left"			"inset-modify tabular move-column-left"
+\bind "M-Up"			"command-alternatives outline-up; paragraph-move-up; tabular-feature move-row-up"
+\bind "M-Down"			"command-alternatives outline-down; paragraph-move-down; tabular-feature move-row-down"
+\bind "M-Right"			"tabular-feature move-column-right"
+\bind "M-Left"			"tabular-feature move-column-left"
 \bind "C-Right"			"word-right"
 \bind "C-Left"			"word-left"
 \bind "C-Up"			"paragraph-up"

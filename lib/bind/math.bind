@@ -32,7 +32,7 @@
 
 # These are defined for the math menu:
 
-Format 3
+Format 4
 
 \bind "M-m f"		"math-insert \frac"
 \bind "M-m s"		"math-insert \sqrt"
@@ -75,30 +75,30 @@ Format 3
 \bind "M-m t e"		"math-mutate eqnarray"
 \bind "M-m t m"		"math-mutate multline"
 
-\bind "M-m c i"		"inset-modify tabular append-column"
-\bind "M-m c d"		"inset-modify tabular delete-column"
-\bind "M-m c c"		"inset-modify tabular copy-column"
-\bind "M-m c s"		"inset-modify tabular swap-column"
-\bind "M-m c a"		"inset-modify tabular add-vline-left"
-\bind "M-m c e"		"inset-modify tabular delete-vline-left"
-\bind "M-m c z"		"inset-modify tabular add-vline-right"
-\bind "M-m c x"		"inset-modify tabular delete-vline-right"
+\bind "M-m c i"		"tabular-feature append-column"
+\bind "M-m c d"		"tabular-feature delete-column"
+\bind "M-m c c"		"tabular-feature copy-column"
+\bind "M-m c s"		"tabular-feature swap-column"
+\bind "M-m c a"		"tabular-feature add-vline-left"
+\bind "M-m c e"		"tabular-feature delete-vline-left"
+\bind "M-m c z"		"tabular-feature add-vline-right"
+\bind "M-m c x"		"tabular-feature delete-vline-right"
 
-\bind "M-m w i"		"inset-modify tabular append-row"
-\bind "M-m w d"		"inset-modify tabular delete-row"
-\bind "M-m w c"		"inset-modify tabular copy-row"
-\bind "M-m w s"		"inset-modify tabular swap-row"
-\bind "M-m w a"		"inset-modify tabular add-hline-above"
-\bind "M-m w e"		"inset-modify tabular delete-hline-above"
-\bind "M-m w z"		"inset-modify tabular add-hline-below"
-\bind "M-m w x"		"inset-modify tabular delete-hline-below"
+\bind "M-m w i"		"tabular-feature append-row"
+\bind "M-m w d"		"tabular-feature delete-row"
+\bind "M-m w c"		"tabular-feature copy-row"
+\bind "M-m w s"		"tabular-feature swap-row"
+\bind "M-m w a"		"tabular-feature add-hline-above"
+\bind "M-m w e"		"tabular-feature delete-hline-above"
+\bind "M-m w z"		"tabular-feature add-hline-below"
+\bind "M-m w x"		"tabular-feature delete-hline-below"
 
-\bind "M-m w t"		"inset-modify tabular valign-top"
-\bind "M-m w m"		"inset-modify tabular valign-middle"
-\bind "M-m w b"		"inset-modify tabular valign-bottom"
-\bind "M-m c l"		"inset-modify tabular align-left"
-\bind "M-m c m"		"inset-modify tabular align-center"
-\bind "M-m c r"		"inset-modify tabular align-right"
+\bind "M-m w t"		"tabular-feature valign-top"
+\bind "M-m w m"		"tabular-feature valign-middle"
+\bind "M-m w b"		"tabular-feature valign-bottom"
+\bind "M-m c l"		"tabular-feature align-left"
+\bind "M-m c m"		"tabular-feature align-center"
+\bind "M-m c r"		"tabular-feature align-right"
 
 # Decoration accents
 

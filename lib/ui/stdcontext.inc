@@ -19,7 +19,7 @@
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
-Format 3
+Format 4
 
 Menuset
 
@@ -29,10 +29,10 @@ Menuset
 	Menu "insert_math_context"
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
-		Item "Aligned Environment|l" "command-sequence math-insert \aligned; inset-modify tabular append-column"
-		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; inset-modify tabular append-column"
+		Item "Aligned Environment|l" "command-sequence math-insert \aligned; tabular-feature append-column"
+		Item "AlignedAt Environment|v" "command-sequence math-insert \alignedat; tabular-feature append-column"
 		Item "Gathered Environment|h" "math-insert \gathered"
-		Item "Split Environment|S" "command-sequence math-insert \split; inset-modify tabular append-column"
+		Item "Split Environment|S" "command-sequence math-insert \split; tabular-feature append-column"
 		Separator
 		Item "Delimiters...|r" "dialog-show mathdelimiter"
 		Item "Matrix...|x" "dialog-show mathmatrix"
@@ -62,15 +62,15 @@ Menuset
 		Separator
 		Submenu "Insert|s" "insert_math_context"
 		Separator
-		OptItem "Add Line Above|o" "inset-modify tabular add-hline-above"
-		OptItem "Add Line Below|B" "inset-modify tabular add-hline-below"
-		OptItem "Delete Line Above|v" "inset-modify tabular delete-hline-above"
-		OptItem "Delete Line Below|w" "inset-modify tabular delete-hline-below"
+		OptItem "Add Line Above|o" "tabular-feature add-hline-above"
+		OptItem "Add Line Below|B" "tabular-feature add-hline-below"
+		OptItem "Delete Line Above|v" "tabular-feature delete-hline-above"
+		OptItem "Delete Line Below|w" "tabular-feature delete-hline-below"
 		Separator
-		OptItem "Add Line to Left" "inset-modify tabular add-vline-left"
-		OptItem "Add Line to Right" "inset-modify tabular add-vline-right"
-		OptItem "Delete Line to Left" "inset-modify tabular delete-vline-left"
-		OptItem "Delete Line to Right" "inset-modify tabular delete-vline-right"
+		OptItem "Add Line to Left" "tabular-feature add-vline-left"
+		OptItem "Add Line to Right" "tabular-feature add-vline-right"
+		OptItem "Delete Line to Left" "tabular-feature delete-vline-left"
+		OptItem "Delete Line to Right" "tabular-feature delete-vline-right"
 		Separator
 		Item "Show Math Toolbar" "toolbar-toggle math toggle"
 		Item "Show Math-Panels Toolbar" "toolbar-toggle math_panels toggle"
@@ -406,43 +406,43 @@ Menuset
 #
 
 	Menu "table-borders"
-		Item "Top|T" "inset-modify tabular toggle-line-top"
-		Item "Bottom|B" "inset-modify tabular toggle-line-bottom"
-		Item "Left|L" "inset-modify tabular toggle-line-left"
-		Item "Right|R" "inset-modify tabular toggle-line-right"
+		Item "Top|T" "tabular-feature toggle-line-top"
+		Item "Bottom|B" "tabular-feature toggle-line-bottom"
+		Item "Left|L" "tabular-feature toggle-line-left"
+		Item "Right|R" "tabular-feature toggle-line-right"
 	End
 
 	Menu "table-alignment"
-		Item "Left|f" "command-alternatives inset-modify tabular m-align-left;inset-modify tabular align-left"
-		Item "Center|C" "command-alternatives inset-modify tabular m-align-center;inset-modify tabular align-center"
-		Item "Right|h" "command-alternatives inset-modify tabular m-align-right;inset-modify tabular align-right"
-		Item "Decimal" "inset-modify tabular align-decimal"
+		Item "Left|f" "command-alternatives tabular-feature m-align-left;tabular-feature align-left"
+		Item "Center|C" "command-alternatives tabular-feature m-align-center;tabular-feature align-center"
+		Item "Right|h" "command-alternatives tabular-feature m-align-right;tabular-feature align-right"
+		Item "Decimal" "tabular-feature align-decimal"
 		Separator
-		Item "Top" "inset-modify tabular valign-top"
-		Item "Middle" "inset-modify tabular valign-middle"
-		Item "Bottom" "inset-modify tabular valign-bottom"
+		Item "Top" "tabular-feature valign-top"
+		Item "Middle" "tabular-feature valign-middle"
+		Item "Bottom" "tabular-feature valign-bottom"
 	End
 
 	Menu "table-cols-rows"
-		Item "Multicolumn|u" "inset-modify tabular multicolumn"
-		Item "Multirow|w" "inset-modify tabular multirow"
+		Item "Multicolumn|u" "tabular-feature multicolumn"
+		Item "Multirow|w" "tabular-feature multirow"
 		Separator
-		Item "Append Row|A" "inset-modify tabular append-row"
-		Item "Delete Row|D" "inset-modify tabular delete-row"
-		Item "Copy Row|o" "inset-modify tabular copy-row"
-		Item "Move Row Up" "inset-modify tabular move-row-up"
-		Item "Move Row Down" "inset-modify tabular move-row-down"
+		Item "Append Row|A" "tabular-feature append-row"
+		Item "Delete Row|D" "tabular-feature delete-row"
+		Item "Copy Row|o" "tabular-feature copy-row"
+		Item "Move Row Up" "tabular-feature move-row-up"
+		Item "Move Row Down" "tabular-feature move-row-down"
 		Separator
-		Item "Append Column|p" "inset-modify tabular append-column"
-		Item "Delete Column|e" "inset-modify tabular delete-column"
-		Item "Copy Column|y" "inset-modify tabular copy-column"
-		Item "Move Column Right|v" "inset-modify tabular move-column-right"
-		Item "Move Column Left" "inset-modify tabular move-column-left"
+		Item "Append Column|p" "tabular-feature append-column"
+		Item "Delete Column|e" "tabular-feature delete-column"
+		Item "Copy Column|y" "tabular-feature copy-column"
+		Item "Move Column Right|v" "tabular-feature move-column-right"
+		Item "Move Column Left" "tabular-feature move-column-left"
 	End
 
 	Menu "context-tabular"
-		Item "Multi-page Table|g" "inset-modify tabular toggle-longtabular"
-		Item "Formal Style|m" "inset-modify tabular toggle-booktabs"
+		Item "Multi-page Table|g" "tabular-feature toggle-longtabular"
+		Item "Formal Style|m" "tabular-feature toggle-booktabs"
 		Separator
 		Submenu "Borders|d" "table-borders"
 		Submenu "Alignment|i" "table-alignment"
