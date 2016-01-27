@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2574,7 +2574,7 @@ La barre d'outils contient les icônes suivantes :
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  ajoute une ligne sous la cellule ou la sélection courante
@@ -2584,7 +2584,7 @@ arg   "inset-modify tabular append-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  ajoute une colonne à la droite de la cellule ou de la sélection courante
@@ -2594,7 +2594,7 @@ arg   "inset-modify tabular append-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  supprime la ligne ou la sélection courante
@@ -2604,7 +2604,7 @@ arg   "inset-modify tabular delete-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
  supprime la colonne ou la sélection courante
@@ -2614,7 +2614,7 @@ arg   "inset-modify tabular delete-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-up"
+arg   "tabular-feature move-row-up"
 \end_inset
 
  déplace la ligne vers le haut
@@ -2624,7 +2624,7 @@ arg   "inset-modify tabular move-row-up"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-left"
+arg   "tabular-feature move-column-left"
 \end_inset
 
  déplace la colonne vers la gauche
@@ -2634,7 +2634,7 @@ arg   "inset-modify tabular move-column-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-down"
+arg   "tabular-feature move-row-down"
 \end_inset
 
  déplace la ligne vers le bas
@@ -2644,7 +2644,7 @@ arg   "inset-modify tabular move-row-down"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-right"
+arg   "tabular-feature move-column-right"
 \end_inset
 
  déplace la colonne vers la droite
@@ -2654,7 +2654,7 @@ arg   "inset-modify tabular move-column-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-top"
+arg   "tabular-feature toggle-line-top"
 \end_inset
 
  ajoute une ligne en haut de la cellule, de la ligne ou de la sélection
@@ -2665,7 +2665,7 @@ arg   "inset-modify tabular toggle-line-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-bottom"
+arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
  ajoute une ligne en bas de la cellule, de la ligne ou de la sélection courante
@@ -2675,7 +2675,7 @@ arg   "inset-modify tabular toggle-line-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-left"
+arg   "tabular-feature toggle-line-left"
 \end_inset
 
  ajoute une ligne sur le côté gauche de la cellule, de la ligne 
@@ -2695,7 +2695,7 @@ ou colonne ?
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-right"
+arg   "tabular-feature toggle-line-right"
 \end_inset
 
  ajoute une ligne sur le côté droit de la cellule, de la ligne 
@@ -2715,7 +2715,7 @@ ou colonne ?
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-all-lines"
+arg   "tabular-feature set-all-lines"
 \end_inset
 
  ajoute des lignes autour de la cellule ou de la sélection de cellules courante
@@ -2727,7 +2727,7 @@ arg   "inset-modify tabular set-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular unset-all-lines"
+arg   "tabular-feature unset-all-lines"
 \end_inset
 
  supprime toutes les lignes autour de la cellule ou de la sélection de cellules
@@ -2739,7 +2739,7 @@ arg   "inset-modify tabular unset-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-left"
+arg   "tabular-feature m-align-left"
 \end_inset
 
  aligne à gauche le contenu de la cellule ou de la colonne courante
@@ -2749,7 +2749,7 @@ arg   "inset-modify tabular m-align-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-center"
+arg   "tabular-feature m-align-center"
 \end_inset
 
  centre horizontalement le contenu de la cellule ou de la colonne courante
@@ -2759,7 +2759,7 @@ arg   "inset-modify tabular m-align-center"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-right"
+arg   "tabular-feature m-align-right"
 \end_inset
 
  aligne à droite le contenu de la cellule ou de la colonne courante
@@ -2769,7 +2769,7 @@ arg   "inset-modify tabular m-align-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  aligne le contenu de la colonne courante sur un caractère
@@ -2779,7 +2779,7 @@ arg   "inset-modify tabular align-decimal"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-top"
+arg   "tabular-feature m-valign-top"
 \end_inset
 
  aligne le contenu de la cellule courante verticalement vers le haut
@@ -2789,7 +2789,7 @@ arg   "inset-modify tabular m-valign-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-middle"
+arg   "tabular-feature m-valign-middle"
 \end_inset
 
  centre verticalement le contenu de la cellule courante
@@ -2799,7 +2799,7 @@ arg   "inset-modify tabular m-valign-middle"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-bottom"
+arg   "tabular-feature m-valign-bottom"
 \end_inset
 
  aligne le contenu de la cellule courante verticalement vers le bas
@@ -2809,7 +2809,7 @@ arg   "inset-modify tabular m-valign-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-cell"
+arg   "tabular-feature set-rotate-cell"
 \end_inset
 
  fait pivoter la cellule ou la sélection courante de 90° dans le sens anti-horai
@@ -2820,7 +2820,7 @@ re
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-tabular"
+arg   "tabular-feature set-rotate-tabular"
 \end_inset
 
  fait pivoter tout le tableau de 90° dans le sens anti-horaire
@@ -2830,7 +2830,7 @@ arg   "inset-modify tabular set-rotate-tabular"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
  transforme en multi-colonnes la cellule ou la sélection courante
@@ -2840,7 +2840,7 @@ arg   "inset-modify tabular multicolumn"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
  transforme en multi-lignes la cellule ou la sélection courante
@@ -11786,7 +11786,7 @@ Pour faire qu'une cellule couvre plusieurs colonnes, marquez les cellules
  qu'elle doit couvrir et utilisez soit le bouton 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
  de la barre d'outils tableau, ou le menu 
@@ -12579,7 +12579,7 @@ Pour faire qu'une cellule couvre plusieurs lignes, marquez les cellules
  qu'elle doit couvrir et utilisez soit le bouton 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
  de la barre d'outils tableau, ou le menu 
@@ -20901,7 +20901,7 @@ reference "tab:Tableau-centré-sur-séparateur-1"
  soit en appuyant sur le bouton 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  de la barre d'outils ou en modifiant le paramètre 

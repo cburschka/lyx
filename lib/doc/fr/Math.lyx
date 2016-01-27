@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3035,7 +3035,7 @@ Ctrl+Entrée
  ou avec le bouton 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 .
@@ -4912,13 +4912,13 @@ Pour ajouter ou supprimer des lignes ou des colonnes après coup, on peut
  utiliser les boutons 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 , 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 , etc.
@@ -27909,13 +27909,13 @@ Ctrl+Entrée
  boutons 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  ou 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  de la barre d'outils mathématique ou bien le menu 
@@ -28974,13 +28974,13 @@ Pour ajouter ou supprimer des colonnes, on peut utiliser soit les boutons
  
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  ou 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
 , respectivement, soit le menu 

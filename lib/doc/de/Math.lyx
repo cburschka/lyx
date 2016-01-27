@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3001,7 +3001,7 @@ Strg+Enter
  oder dem Tabellen-Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  neue Zeilen erstellt werden.
@@ -4813,13 +4813,13 @@ Um nachträglich Zeilen und Spalten hinzuzufügen oder zu entfernen, kann
  man die Mathe-Werkzeugleistenknöpfe 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 , 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 , usw.
@@ -27637,7 +27637,7 @@ Strg+Enter
 fe 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  bzw.
@@ -27647,7 +27647,7 @@ arg   "inset-modify tabular append-row"
 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  oder das Menü 
@@ -28651,7 +28651,7 @@ Um Spalten hinzuzufügen oder zu entfernen, können die Mathe-Werkzeugleistenkn�
 e 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  bzw.
@@ -28661,7 +28661,7 @@ arg   "inset-modify tabular append-column"
 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
  oder das Menü 

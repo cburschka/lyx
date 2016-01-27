@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2307,7 +2307,7 @@ La barra de herramientas tiene los siguientes iconos:
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  añade una fila bajo la celda actual o selección
@@ -2317,7 +2317,7 @@ arg   "inset-modify tabular append-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  añade una columna a la derecha de la celda actual o selección
@@ -2327,7 +2327,7 @@ arg   "inset-modify tabular append-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  borra la fila actual o selección
@@ -2337,7 +2337,7 @@ arg   "inset-modify tabular delete-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
  borra la columna actual o selección
@@ -2347,7 +2347,7 @@ arg   "inset-modify tabular delete-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-up"
+arg   "tabular-feature move-row-up"
 \end_inset
 
  desplaza la fila arriba
@@ -2357,7 +2357,7 @@ arg   "inset-modify tabular move-row-up"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-left"
+arg   "tabular-feature move-column-left"
 \end_inset
 
  desplaza la columna a la izquierda
@@ -2367,7 +2367,7 @@ arg   "inset-modify tabular move-column-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-down"
+arg   "tabular-feature move-row-down"
 \end_inset
 
  desplaza la fila abajo
@@ -2377,7 +2377,7 @@ arg   "inset-modify tabular move-row-down"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-right"
+arg   "tabular-feature move-column-right"
 \end_inset
 
  desplaza la columna a la derecha
@@ -2387,7 +2387,7 @@ arg   "inset-modify tabular move-column-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-top"
+arg   "tabular-feature toggle-line-top"
 \end_inset
 
  añade un borde superior en la celda/fila actual o la selección
@@ -2397,7 +2397,7 @@ arg   "inset-modify tabular toggle-line-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-bottom"
+arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
  añade un borde inferior en la celda/fila actual o la selección
@@ -2407,7 +2407,7 @@ arg   "inset-modify tabular toggle-line-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-left"
+arg   "tabular-feature toggle-line-left"
 \end_inset
 
  añade un borde a la izquierda en la celda/fila actual o la selección
@@ -2417,7 +2417,7 @@ arg   "inset-modify tabular toggle-line-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-right"
+arg   "tabular-feature toggle-line-right"
 \end_inset
 
  añade un borde a la derecha en la celda/fila actual o la selección
@@ -2427,7 +2427,7 @@ arg   "inset-modify tabular toggle-line-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-all-lines"
+arg   "tabular-feature set-all-lines"
 \end_inset
 
  añade bordes en la celda actual o en las seleccionadas (si la celda actual
@@ -2438,7 +2438,7 @@ arg   "inset-modify tabular set-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular unset-all-lines"
+arg   "tabular-feature unset-all-lines"
 \end_inset
 
  quita todos los bordes de la celda o celdas seleccionadas (si la celda
@@ -2449,7 +2449,7 @@ arg   "inset-modify tabular unset-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-left"
+arg   "tabular-feature m-align-left"
 \end_inset
 
  alinea a la izquierda el contenido de la celda/columna
@@ -2459,7 +2459,7 @@ arg   "inset-modify tabular m-align-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-center"
+arg   "tabular-feature m-align-center"
 \end_inset
 
  centra el contenido de la celda/columna horizontalmente
@@ -2469,7 +2469,7 @@ arg   "inset-modify tabular m-align-center"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-right"
+arg   "tabular-feature m-align-right"
 \end_inset
 
  alinea a la derecha el contenido de la celda/columna
@@ -2479,7 +2479,7 @@ arg   "inset-modify tabular m-align-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  alinea el contenido de la celda/columna a un carácter
@@ -2489,7 +2489,7 @@ arg   "inset-modify tabular align-decimal"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-top"
+arg   "tabular-feature m-valign-top"
 \end_inset
 
  alinea arriba el contenido de la celda
@@ -2499,7 +2499,7 @@ arg   "inset-modify tabular m-valign-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-middle"
+arg   "tabular-feature m-valign-middle"
 \end_inset
 
  centra verticalmente el contenido de la celda
@@ -2509,7 +2509,7 @@ arg   "inset-modify tabular m-valign-middle"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-bottom"
+arg   "tabular-feature m-valign-bottom"
 \end_inset
 
  alinea abajo el contenido de la celda
@@ -2519,7 +2519,7 @@ arg   "inset-modify tabular m-valign-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-cell"
+arg   "tabular-feature set-rotate-cell"
 \end_inset
 
  gira la celda o selección 90° como las agujas de reloj
@@ -2529,7 +2529,7 @@ arg   "inset-modify tabular set-rotate-cell"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-tabular"
+arg   "tabular-feature set-rotate-tabular"
 \end_inset
 
  gira todo el cuadro 90° como agujas del reloj
@@ -2539,7 +2539,7 @@ arg   "inset-modify tabular set-rotate-tabular"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
  establece la celda actual o selección como multicolumna
@@ -2549,7 +2549,7 @@ arg   "inset-modify tabular multicolumn"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
  establece la celda actual o selección como multifila
@@ -11487,7 +11487,7 @@ Para extender una celda sobre varias columnas, se marcan las celdas que
  se desee combinar y se usa el botón 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
 , el menú 
@@ -12271,7 +12271,7 @@ Para extender una celda sobre varias filas, se marcan las celdas que se
  desee combinar y se usa el botón 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
 , el menú 
@@ -20465,7 +20465,7 @@ reference "tab:Cuadro-celdas-alineadas"
  el botón 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  de la barra de herramientas o eligiendo la alineación 

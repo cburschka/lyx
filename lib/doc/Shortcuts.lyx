@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -879,7 +879,7 @@ Append Column
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
 
@@ -902,7 +902,7 @@ Append Row
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 
@@ -927,7 +927,7 @@ Delete Column
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
 
@@ -950,7 +950,7 @@ Delete Row
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 
@@ -975,7 +975,7 @@ Copy Column
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular copy-column"
+arg   "tabular-feature copy-column"
 \end_inset
 
 
@@ -998,7 +998,7 @@ Copy Row
 \begin_layout Plain Layout
 \begin_inset Info
 type  "shortcut"
-arg   "inset-modify tabular copy-row"
+arg   "tabular-feature copy-row"
 \end_inset
 
 

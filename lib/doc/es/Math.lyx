@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3012,7 +3012,7 @@ Ctrl+Entrar
 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  de la barra de cuadros.
@@ -4810,13 +4810,13 @@ Para añadir o borrar filas y columnas posteriormente, se pueden usar los
  botones 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 , 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 , etc.
@@ -28162,13 +28162,13 @@ Ctrl+Entrar
  Para añadir o quitar líneas se pueden usar los botones 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  o 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  de la barra de herramientas, respectivamente, o el menú 
@@ -29154,13 +29154,13 @@ Cambiar tipo de ecuación
 Para añadir o quitar columnas se pueden usar los botones 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  o 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
  de la barra de ecuaciones o el menú 

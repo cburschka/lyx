@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2295,7 +2295,7 @@ Die Werkzeugleiste hat folgende Knöpfe:
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
  Fügt eine Zeile unterhalb der momentanen an
@@ -2305,7 +2305,7 @@ arg   "inset-modify tabular append-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
  Fügt eine Spalte rechts von der momentanen an
@@ -2315,7 +2315,7 @@ arg   "inset-modify tabular append-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
  Löscht die ausgewählte(n) Zeile(n)
@@ -2325,7 +2325,7 @@ arg   "inset-modify tabular delete-row"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
  Löscht die ausgewählte(n) Spalte(n)
@@ -2335,7 +2335,7 @@ arg   "inset-modify tabular delete-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-up"
+arg   "tabular-feature move-row-up"
 \end_inset
 
  verschiebt die ausgewählte Zeile nach oben
@@ -2345,7 +2345,7 @@ arg   "inset-modify tabular move-row-up"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-left"
+arg   "tabular-feature move-column-left"
 \end_inset
 
  verschiebt die ausgewählte Spalte nach links
@@ -2355,7 +2355,7 @@ arg   "inset-modify tabular move-column-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-down"
+arg   "tabular-feature move-row-down"
 \end_inset
 
  verschiebt die ausgewählte Zeile nach unten
@@ -2365,7 +2365,7 @@ arg   "inset-modify tabular move-row-down"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-right"
+arg   "tabular-feature move-column-right"
 \end_inset
 
  verschiebt die ausgewählte Spalte nach rechts
@@ -2375,7 +2375,7 @@ arg   "inset-modify tabular move-column-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-top"
+arg   "tabular-feature toggle-line-top"
 \end_inset
 
  Fügt eine Linie oberhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
@@ -2386,7 +2386,7 @@ arg   "inset-modify tabular toggle-line-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-bottom"
+arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
  Fügt eine Linie unterhalb der ausgewählte(n) Zeile(n) an oder löscht sie,
@@ -2397,7 +2397,7 @@ arg   "inset-modify tabular toggle-line-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-left"
+arg   "tabular-feature toggle-line-left"
 \end_inset
 
  Fügt eine Linie links der ausgewählte(n) Spalte(n) an oder löscht sie,
@@ -2408,7 +2408,7 @@ arg   "inset-modify tabular toggle-line-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-right"
+arg   "tabular-feature toggle-line-right"
 \end_inset
 
  Fügt eine Linie rechts der ausgewählte(n) Spalte(n) an oder löscht sie,
@@ -2419,7 +2419,7 @@ arg   "inset-modify tabular toggle-line-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-all-lines"
+arg   "tabular-feature set-all-lines"
 \end_inset
 
  Setzt alle Linien um die ausgewählte(n) Zelle(n)
@@ -2429,7 +2429,7 @@ arg   "inset-modify tabular set-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular unset-all-lines"
+arg   "tabular-feature unset-all-lines"
 \end_inset
 
  Löscht alle Linien um die ausgewählte(n) Zelle(n)
@@ -2439,7 +2439,7 @@ arg   "inset-modify tabular unset-all-lines"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-left"
+arg   "tabular-feature m-align-left"
 \end_inset
 
  Richtet den Inhalt der ausgewählte(n) Spalte(n) linksbündig aus
@@ -2449,7 +2449,7 @@ arg   "inset-modify tabular m-align-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-center"
+arg   "tabular-feature m-align-center"
 \end_inset
 
  Zentriert den Inhalt der ausgewählte(n) Spalte(n)
@@ -2459,7 +2459,7 @@ arg   "inset-modify tabular m-align-center"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-right"
+arg   "tabular-feature m-align-right"
 \end_inset
 
  Richtet den Inhalt der ausgewählte(n) Spalte(n) rechtsbündig aus
@@ -2469,7 +2469,7 @@ arg   "inset-modify tabular m-align-right"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  Richtet den Inhalt der ausgewählten Spalte an einem Zeichen aus
@@ -2479,7 +2479,7 @@ arg   "inset-modify tabular align-decimal"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-top"
+arg   "tabular-feature m-valign-top"
 \end_inset
 
  Richtet den Inhalt der ausgewählte(n) Zeile(n) oben aus
@@ -2489,7 +2489,7 @@ arg   "inset-modify tabular m-valign-top"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-middle"
+arg   "tabular-feature m-valign-middle"
 \end_inset
 
  Zentriert den Inhalt der ausgewählte(n) Zeile(n) 
@@ -2499,7 +2499,7 @@ arg   "inset-modify tabular m-valign-middle"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-bottom"
+arg   "tabular-feature m-valign-bottom"
 \end_inset
 
  Richtet den Inhalt der ausgewählte(n) Zeile(n) unten aus
@@ -2509,7 +2509,7 @@ arg   "inset-modify tabular m-valign-bottom"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-cell"
+arg   "tabular-feature set-rotate-cell"
 \end_inset
 
  Dreht den Inhalt der ausgewählte(n) Zelle(n) um 90° gegen den Uhrzeigersinn
@@ -2519,7 +2519,7 @@ arg   "inset-modify tabular set-rotate-cell"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-tabular"
+arg   "tabular-feature set-rotate-tabular"
 \end_inset
 
  Dreht die Tabelle um 90° gegen den Uhrzeigersinn
@@ -2529,7 +2529,7 @@ arg   "inset-modify tabular set-rotate-tabular"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachspalte
@@ -2539,7 +2539,7 @@ arg   "inset-modify tabular multicolumn"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
  Setzt die ausgewählte(n) Zelle(n) einer Zeile als Mehrfachzeile
@@ -11598,7 +11598,7 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
  in der Werkzeugleiste, das Menü 
@@ -12485,7 +12485,7 @@ Um mehrere Zellen einer Zeile zu einer zu verbinden, markieren Sie diese
  und verwenden dann den Knopf 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
  in der Werkzeugleiste, das Menü 
@@ -20743,7 +20743,7 @@ reference "tab:Tabellenzellen-sind-auf"
  dann entweder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
  drückt oder in den Tabelleneinstellungen die Ausrichtung auf 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3025,7 +3025,7 @@ arg   "newline-insert newline"
 か表ツールバーボタン
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 を使えば、新しい行を作ることができます。
@@ -4828,13 +4828,13 @@ C & F & 10000
 つづいて行や列を追加したり削除したりするには、数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 や
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 などや
@@ -27355,13 +27355,13 @@ arg   "newline-insert newline"
 を押すことによって作られます。行を足したり削ったりするには、数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 や
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 を使うか、
@@ -28333,13 +28333,13 @@ align環境は、
 列を追加したり削除したりするには、数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
 や
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
 を使うか、

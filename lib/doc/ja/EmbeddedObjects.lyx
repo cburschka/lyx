@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 505
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2084,7 +2084,7 @@ status collapsed
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-row"
+arg   "tabular-feature append-row"
 \end_inset
 
 
@@ -2098,7 +2098,7 @@ arg   "inset-modify tabular append-row"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular append-column"
+arg   "tabular-feature append-column"
 \end_inset
 
 
@@ -2112,7 +2112,7 @@ arg   "inset-modify tabular append-column"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-row"
+arg   "tabular-feature delete-row"
 \end_inset
 
 
@@ -2126,7 +2126,7 @@ arg   "inset-modify tabular delete-row"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular delete-column"
+arg   "tabular-feature delete-column"
 \end_inset
 
 
@@ -2138,7 +2138,7 @@ arg   "inset-modify tabular delete-column"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-up"
+arg   "tabular-feature move-row-up"
 \end_inset
 
  は、行を上に移動します。
@@ -2148,7 +2148,7 @@ arg   "inset-modify tabular move-row-up"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-left"
+arg   "tabular-feature move-column-left"
 \end_inset
 
  は、列を左に移動します。
@@ -2158,7 +2158,7 @@ arg   "inset-modify tabular move-column-left"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-row-down"
+arg   "tabular-feature move-row-down"
 \end_inset
 
  は、行を下に移動します。
@@ -2168,7 +2168,7 @@ arg   "inset-modify tabular move-row-down"
 \labelwidthstring 00.00.0000
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular move-column-right"
+arg   "tabular-feature move-column-right"
 \end_inset
 
  は、列を右に移動します。
@@ -2180,7 +2180,7 @@ arg   "inset-modify tabular move-column-right"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-top"
+arg   "tabular-feature toggle-line-top"
 \end_inset
 
 
@@ -2194,7 +2194,7 @@ arg   "inset-modify tabular toggle-line-top"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-bottom"
+arg   "tabular-feature toggle-line-bottom"
 \end_inset
 
 
@@ -2208,7 +2208,7 @@ arg   "inset-modify tabular toggle-line-bottom"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-left"
+arg   "tabular-feature toggle-line-left"
 \end_inset
 
 
@@ -2222,7 +2222,7 @@ arg   "inset-modify tabular toggle-line-left"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular toggle-line-right"
+arg   "tabular-feature toggle-line-right"
 \end_inset
 
 
@@ -2236,7 +2236,7 @@ arg   "inset-modify tabular toggle-line-right"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-all-lines"
+arg   "tabular-feature set-all-lines"
 \end_inset
 
 
@@ -2250,7 +2250,7 @@ arg   "inset-modify tabular set-all-lines"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular unset-all-lines"
+arg   "tabular-feature unset-all-lines"
 \end_inset
 
 
@@ -2264,7 +2264,7 @@ arg   "inset-modify tabular unset-all-lines"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-left"
+arg   "tabular-feature m-align-left"
 \end_inset
 
 
@@ -2278,7 +2278,7 @@ arg   "inset-modify tabular m-align-left"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-center"
+arg   "tabular-feature m-align-center"
 \end_inset
 
 
@@ -2292,7 +2292,7 @@ arg   "inset-modify tabular m-align-center"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-align-right"
+arg   "tabular-feature m-align-right"
 \end_inset
 
 
@@ -2306,7 +2306,7 @@ arg   "inset-modify tabular m-align-right"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
 
@@ -2320,7 +2320,7 @@ arg   "inset-modify tabular align-decimal"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-top"
+arg   "tabular-feature m-valign-top"
 \end_inset
 
 
@@ -2334,7 +2334,7 @@ arg   "inset-modify tabular m-valign-top"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-middle"
+arg   "tabular-feature m-valign-middle"
 \end_inset
 
 
@@ -2348,7 +2348,7 @@ arg   "inset-modify tabular m-valign-middle"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular m-valign-bottom"
+arg   "tabular-feature m-valign-bottom"
 \end_inset
 
 
@@ -2362,7 +2362,7 @@ arg   "inset-modify tabular m-valign-bottom"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-cell"
+arg   "tabular-feature set-rotate-cell"
 \end_inset
 
 
@@ -2376,7 +2376,7 @@ arg   "inset-modify tabular set-rotate-cell"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular set-rotate-tabular"
+arg   "tabular-feature set-rotate-tabular"
 \end_inset
 
 
@@ -2390,7 +2390,7 @@ arg   "inset-modify tabular set-rotate-tabular"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
 
@@ -2404,7 +2404,7 @@ arg   "inset-modify tabular multicolumn"
 \family sans
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
 
@@ -11202,7 +11202,7 @@ status collapsed
 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multicolumn"
+arg   "tabular-feature multicolumn"
 \end_inset
 
 
@@ -11952,7 +11952,7 @@ status collapsed
 
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular multirow"
+arg   "tabular-feature multirow"
 \end_inset
 
 
@@ -19809,7 +19809,7 @@ reference "tab:表セル"
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
 \begin_inset Info
 type  "icon"
-arg   "inset-modify tabular align-decimal"
+arg   "tabular-feature align-decimal"
 \end_inset
 
 を押すか、表設定中で揃えを

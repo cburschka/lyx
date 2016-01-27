@@ -1,5 +1,5 @@
-# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\lyxformat 504
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -102,7 +102,7 @@ The \SpecialChar LyX
 \end_layout
 
 \begin_layout Date
-2016-01-15
+2016-01-27
 \end_layout
 
 \begin_layout Section*
@@ -2513,79 +2513,7 @@ Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats, gr
 \end_layout
 
 \begin_layout Description
-Syntax inset-modify <INSET> <ARGS>inset-modify changetype <TYPE>inset-modify tabular <FEATURE> [<ARG>]
-\end_layout
-
-\begin_layout Description
-Params Generally see LFUN_INSET_INSERT for further details.
-\begin_inset Newline newline
-\end_inset
-
-In case that <INSET> is "tabular" various math-environment features are handled as well, e.g. add-vline-left/right for the Grid/Array environment.
-\begin_inset Newline newline
-\end_inset
-
-<FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|
-\begin_inset Newline newline
-\end_inset
-
-copy-column|move-column-right|move-column-left|move-row-down|move-row-up|
-\begin_inset Newline newline
-\end_inset
-
-toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
-\begin_inset Newline newline
-\end_inset
-
-align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|
-\begin_inset Newline newline
-\end_inset
-
-valign-top|valign-bottom|valign-middle|longtabular-align-left|
-\begin_inset Newline newline
-\end_inset
-
-longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|
-\begin_inset Newline newline
-\end_inset
-
-m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
-\begin_inset Newline newline
-\end_inset
-
-set-all-lines|unset-all-lines|toggle-longtabular|set-longtabular|unset-longtabular|set-pwidth|
-\begin_inset Newline newline
-\end_inset
-
-set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
-\begin_inset Newline newline
-\end_inset
-
-set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
-\begin_inset Newline newline
-\end_inset
-
-unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
-\begin_inset Newline newline
-\end_inset
-
-set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
-\begin_inset Newline newline
-\end_inset
-
-set-special-column|set-special-multicolumn|set-special-multirow|
-\begin_inset Newline newline
-\end_inset
-
-toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
-\begin_inset Newline newline
-\end_inset
-
-set-interline-space|set-border-lines|tabular-valign-top|
-\begin_inset Newline newline
-\end_inset
-
-tabular-valign-middle|tabular-valign-bottom|set-tabular-width <ARG>: additional argument for some commands, use debug mode to explore its values.
+Syntax inset-modify <INSET> <ARGS>inset-modify changetype <TYPE>
 \end_layout
 
 \begin_layout Description
@@ -3913,6 +3841,102 @@ Origin vfr, Sep 30 2008
 \end_layout
 
 \begin_layout Subsection*
+tabular-feature
+\end_layout
+
+\begin_layout Description
+Action Modify properties of tabulars and table-like math environments.
+\end_layout
+
+\begin_layout Description
+Syntax tabular-feature <FEATURE> [<ARG>]
+\end_layout
+
+\begin_layout Description
+Params Generally see LFUN_INSET_INSERT for further details.
+\begin_inset Newline newline
+\end_inset
+
+<FEATURE>: append-row|append-column|delete-row|delete-column|copy-row|
+\begin_inset Newline newline
+\end_inset
+
+copy-column|move-column-right|move-column-left|move-row-down|move-row-up|
+\begin_inset Newline newline
+\end_inset
+
+toggle-line-top|toggle-line-bottom|toggle-line-left|toggle-line-right|
+\begin_inset Newline newline
+\end_inset
+
+align-left|align-right|align-center|align-block|align-decimal|set-decimal-point|
+\begin_inset Newline newline
+\end_inset
+
+valign-top|valign-bottom|valign-middle|longtabular-align-left|
+\begin_inset Newline newline
+\end_inset
+
+longtabular-align-center|longtabular-align-right|m-align-left|m-align-right|
+\begin_inset Newline newline
+\end_inset
+
+m-align-center|m-valign-top|m-valign-bottom|m-valign-middle|multicolumn|
+\begin_inset Newline newline
+\end_inset
+
+set-all-lines|unset-all-lines|toggle-longtabular|set-longtabular|unset-longtabular|set-pwidth|
+\begin_inset Newline newline
+\end_inset
+
+set-mpwidth|set-rotate-tabular|unset-rotate-tabular|toggle-rotate-tabular|
+\begin_inset Newline newline
+\end_inset
+
+set-rotate-cell|unset-rotate-cell|toggle-rotate-cell|set-usebox|set-lthead|
+\begin_inset Newline newline
+\end_inset
+
+unset-lthead|set-ltfirsthead|unset-ltfirsthead|set-ltfoot|unset-ltfoot|
+\begin_inset Newline newline
+\end_inset
+
+set-ltlastfoot|unset-ltlastfoot|set-ltnewpage|toggle-ltcaption|
+\begin_inset Newline newline
+\end_inset
+
+set-special-column|set-special-multicolumn|set-special-multirow|
+\begin_inset Newline newline
+\end_inset
+
+toggle-booktabs|set-booktabs|unset-booktabs|set-top-space|set-bottom-space|
+\begin_inset Newline newline
+\end_inset
+
+set-interline-space|set-border-lines|tabular-valign-top|
+\begin_inset Newline newline
+\end_inset
+
+tabular-valign-middle|tabular-valign-bottom|set-tabular-width
+\begin_inset Newline newline
+\end_inset
+
+Various math-environment features are handled as well, e.g. add-vline-left/right for
+\begin_inset Newline newline
+\end_inset
+
+the Grid/Array environment.
+\begin_inset Newline newline
+\end_inset
+
+<ARG>: additional argument for some commands, use debug mode to explore its values.
+\end_layout
+
+\begin_layout Description
+Origin gm, 10 Dec 2015
+\end_layout
+
+\begin_layout Subsection*
 tabular-insert
 \end_layout
 
@@ -3921,7 +3945,7 @@ Action Inserts table into the document.
 \end_layout
 
 \begin_layout Description
-Notion See LFUN_INSET_MODIFY for some more details about tabular modifications.
+Notion See LFUN_TABULAR_FEATURE for some more details about tabular modifications.
 \end_layout
 
 \begin_layout Description
