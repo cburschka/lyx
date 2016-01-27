@@ -96,39 +96,51 @@ Style "TOG number"
 End
 
 
-Style "TOG article DOI"
+Style "Set_copyright"
 	CopyStyle		"TOG online ID"
-	LatexName		TOGarticleDOI
+	LatexName		setcopyright
+	LabelString		"Copyright type:"
+End
+
+
+Style "Copyright_year"
+	CopyStyle		"TOG online ID"
+	LatexName		copyrightyear
+	LabelString		"Year of copyright:"
+End
+
+
+Style "Conference_info"
+	CopyStyle		"TOG online ID"
+	LatexName		conferenceinfo
+	LabelString		"Conference info:"
+	Argument 1
+		Mandatory	1
+		LabelString	"Name"
+		Tooltip		"Conference name"
+	EndArgument
+End
+	
+
+Style "ISBN"
+	CopyStyle		"TOG online ID"
+	LatexName		isbn
+	LabelString		"ISBN:"
+End
+
+
+Style "DOI"
+	CopyStyle		"TOG online ID"
+	LatexName		doi
 	LabelString		"Article DOI:"
 End
 
 
-Style "TOG project URL"
+Style "TOG article DOI"
 	CopyStyle		"TOG online ID"
-	LatexName		TOGprojectURL
-	KeepEmpty		1
-	LabelString		"Project URL:"
-End
-
-
-Style "TOG video URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGvideoURL
-	LabelString		"Video URL:"
-End
-
-
-Style "TOG data URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGdataURL
-	LabelString		"Data URL:"
-End
-
-
-Style "TOG code URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGcodeURL
-	LabelString		"Code URL:"
+	LatexName		TOGarticleDOI
+	LabelString		"Article DOI:"
+	ObsoletedBy		DOI
 End
 
 
@@ -155,20 +167,39 @@ End
 
 
 Style "PDF author"
-	CopyStyle		"TOG project URL"
+	CopyStyle		"TOG online ID"
 	LatexName		pdfauthor
 	LabelString		"PDF author:"
 End
 
 Style Keywords
-	CopyStyle		"TOG project URL"
+	CopyStyle		"TOG online ID"
 	LatexName		keywords
 	LabelType		Static
 	LabelString		"Keywords:"
-	LabelFont
-	  Series		Bold
-	  Size			Normal
-	EndFont
+End
+
+
+Style "Keyword_list"
+	CopyStyle		"TOG online ID"
+	LatexName		keywordlist
+	InPreamble		0
+	KeepEmpty		1
+	LabelString		"Keyword list"
+End
+
+
+Style "Concept_list"
+	CopyStyle		"Keyword_list"
+	LatexName		conceptlist
+	LabelString		"Concept list"
+End
+
+
+Style "Print_copyright"
+	CopyStyle		"Keyword_list"
+	LatexName		printcopyright
+	LabelString		"Print copyright"
 End
 
 
@@ -177,6 +208,7 @@ Style Teaser
 	LatexType		Command
 	LatexName		teaser
 	Category		FrontMatter
+	InTitle			1
 	ParSkip			0.4
 	BottomSep		0.5
 	Align			Left
