@@ -564,37 +564,6 @@ python development/tools/updatedocs.py
 \end_inset
 
 .
- Then, revert the change to 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-LFUNs.lyx
-\end_layout
-
-\end_inset
-
- because that file is meant to be generated separately: 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-git checkout lib/doc/LFUNs.lyx
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-TODO: this step should be done within updatedocs.py
-\end_layout
-
-\end_inset
-
-.
  Look at the resulting changes using the command 
 \begin_inset Flex Code
 status collapsed
@@ -607,6 +576,27 @@ git diff
 
 .
  If anything looks surprising, please investigate.
+ Keep in mind that the case of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LFUNs.lyx
+\end_layout
+
+\end_inset
+
+ is special, because it is first generated with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+gen_lfuns.py
+\end_layout
+
+\end_inset
+
+ before being converted to the latest format.
  Finally, commit using 
 \begin_inset Flex Code
 status collapsed
