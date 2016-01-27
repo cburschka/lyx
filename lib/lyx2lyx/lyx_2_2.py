@@ -2362,7 +2362,7 @@ convert = [
 
 revert =  [
            [505, [revert_info_tabular_feature]],
-           [504, [revert_save_props]],
+           [504, []],
            [503, [revert_save_props]],
            [502, [revert_verbatim_star]],
            [501, [revert_solution]],
