@@ -447,11 +447,17 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
 		row.setChanged(false);
-		if (row_index || row.right_boundary() || row.endpos() < par.size())
-			// If there is more than one row or the row has been
-			// broken by a display inset or a newline, expand the text
-			// to the full allowable width. This setting here is
-			// needed for the computeRowMetrics() below.
+		if (row_index || row.endpos() < par.size()
+			|| (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE))
+			/* If there is more than one row or the row has been
+			 * broken by a display inset or a newline, expand the text
+			 * to the full allowable width. This setting here is
+			 * needed for the computeRowMetrics() below. In the case
+			 * of a display inset, we do nothing when inside a table
+			 * cell, because the tabular code is not prepared for
+			 * that, and it triggers when using a caption in a
+			 * longtable (see bugs #9945 and #9757).
+			 */
 			dim_.wid = max_width_;
 		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
