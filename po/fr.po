@@ -303,12 +303,14 @@
 # 02 janvier 2016 : résolution de conflits de raccourcis
 #                   revue du vocabulaire du module Boîtes graphiques
 # ------------------------------------------------------------------
+# 26 janvier 2016 : synchronisation avec fr.po de lyx-2.1
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-24 11:38-0000\n"
+"PO-Revision-Date: 2016-01-26 18:05-0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -6324,6 +6326,7 @@ msgstr "Exercice"
 #: lib/layouts/theorems-sec-bytype.module:70
 msgid "Lemma"
 msgstr "Lemme"
+
 
 #: lib/layouts/AEA.layout:251
 #: lib/layouts/agutex.layout:164
@@ -14620,7 +14623,7 @@ msgstr "Argument"
 
 #: lib/layouts/stdinsets.inc:578
 msgid "LongTableNoNumber"
-msgstr "TableauLongSansNuméro"
+msgstr "TableauMultiPagesSansNuméro"
 
 #: lib/layouts/stdinsets.inc:580
 msgid "unlabelled"
