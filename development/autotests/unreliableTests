@@ -42,6 +42,8 @@ export/templates/aa_(dvi3|pdf[45])_.*
 # Does LuaTeX produce sensible results?
 export/templates/IUCr-article_pdf4_systemF
 
+# Requires acmsiggraph (not on CTAN)
+export/templates/ACM-siggraph_(dvi|pdf).*
 
 Sublabel: erratic
 # Tests depending on local configuration, OS, TeX distribution,
