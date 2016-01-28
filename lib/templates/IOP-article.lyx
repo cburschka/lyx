@@ -6,10 +6,6 @@
 \origin /systemlyxdir/templates/
 \textclass iopart
 \begin_preamble
-% sort and compress citations
-% the heading "Reference" is inserted by natbib
-\usepackage[numbers, sort&compress]{natbib}
-
 % define \newblock to get natbib work with ioparticle
 % (normally only needed for the "thebibliography" environment)
 \def\newblock{\hskip .11em plus .33em minus .07em}
@@ -17,6 +13,7 @@
 % define command \eqref
 \newcommand{\eqref}[1]{(\ref{#1})}
 \end_preamble
+\options sort&compress
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -53,8 +50,8 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type numerical
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
