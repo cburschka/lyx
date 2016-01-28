@@ -844,12 +844,12 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding,
 {
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
-	// For child documents use the encoding of the master, else ISO8859-1,
-	// (formerly known by its latex name latin1), since ISO8859-1 does not
+	// For child documents use the encoding of the master, else ISO-8859-1,
+	// (formerly known by its latex name latin1), since ISO-8859-1 does not
 	// cause an iconv error if the actual encoding is different (bug 7509).
 	if (encoding.empty()) {
 		if (preamble.inputencoding() == "auto")
-			encoding = "ISO8859-1";
+			encoding = "ISO-8859-1";
 		else {
 			Encoding const * const enc = encodings.fromLyXName(
 				preamble.inputencoding(), true);
