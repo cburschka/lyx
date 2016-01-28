@@ -107,39 +107,6 @@
 \begin_layout Title
 Le Manuel d'apprentissage de \SpecialChar LyX
 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Information sur l'état de la traduction:
-\end_layout
-
-\begin_layout Plain Layout
-Revue JPChrétien pour 1.6.10, mai 2005
-\end_layout
-
-\begin_layout Plain Layout
-(synchronisation avec l'interface, ajout d'un paragraphe section 3.2 mentionnant
- le modèle lettre.lyx)
-\end_layout
-
-\begin_layout Plain Layout
-Remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
-n/Navigation, JPC 31/10/2012
-\end_layout
-
-\begin_layout Plain Layout
-Revue suite à modifications de l'original avec relecture complète, JPC 28/02/201
-3
-\end_layout
-
-\begin_layout Plain Layout
-Modification section 1.2, référence à l'Intro, JPC 20/07/14
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Author
@@ -209,6 +176,43 @@ type "mailto:"
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Information sur l'état de la traduction:
+\end_layout
+
+\begin_layout Plain Layout
+Revue JPChrétien pour 1.6.10, mai 2005
+\end_layout
+
+\begin_layout Plain Layout
+(synchronisation avec l'interface, ajout d'un paragraphe section 3.2 mentionnant
+ le modèle lettre.lyx)
+\end_layout
+
+\begin_layout Plain Layout
+Remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
+n/Navigation, JPC 31/10/2012
+\end_layout
+
+\begin_layout Plain Layout
+Revue suite à modifications de l'original avec relecture complète, JPC 28/02/201
+3
+\end_layout
+
+\begin_layout Plain Layout
+Modification section 1.2, référence à l'Intro, JPC 20/07/14
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour section 5.4, JPC 28/01/16
 \end_layout
 
 \end_inset
@@ -6214,42 +6218,105 @@ Document\SpecialChar menuseparator
 Paramètres
 \family default
 .
-  Ce choix vous permet d'obtenir les règles de césure françaises, la gestion
+ Ce choix vous permet d'obtenir les règles de césure françaises, la gestion
  des espacements des ponctuations hautes, les traductions des étiquettes
  de champs prédéfinies (Chapitre pour Chapter, Auteur pour Author, etc.),
  ainsi que, pour les lettres, le placement adéquat des adresses d'expéditeur
  et de destinataire.
- Il est important de noter que ce choix n'a pour l'instant aucun effet visuel
- dans la fenêtre de \SpecialChar LyX
+ C'est 
+\family sans
+babel
+\family default
+ qui gère implicitement cette fonctionnalité, via le fichier de style 
+\family sans
+frenchb.ldf
+\family default
+ : si vous désirez en savoir plus sur les règles typographiques qu'il applique
+ et sur les modifications que vous pouvez leur apporter via la commande
+ \SpecialChar LaTeX
+ 
+\series bold
+
+\backslash
+frenchbsetup
+\series default
+ dans le préambule, voyez le manuel qui se trouve dans le fichier
+\family sans
+
+\begin_inset Newline newline
+\end_inset
+
+.../doc/generic/babel-french/frenchb.pdf
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+de votre distribution
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Pour que la commande soit prise en compte le plus tard possible dans le
+ préambule (pour éviter des conflits), il est recommandé de l’encapsuler
+ dans une commande 
+\series bold
+
+\backslash
+AtBeginDocument{}
+\series default
 .
- C'est dans la sortie PDF ou à l'impression que vous pourrez constater l'effet
- recherché.
+\end_layout
+
+\end_inset
+
+.
+ Vous pouvez également visiter le site de l'auteur de ce fichier, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Daniel Flipo"
+target "http://daniel.flipo.free.fr/frenchb"
+
+\end_inset
+
+.
+ Si vous cherchez des informations plus générales sur la typographie française,
+ au-delà des fonctionnalités de \SpecialChar LaTeX
+ et \SpecialChar LyX
+, voyez l'article de Wikipedia consacré
+ aux 
+\begin_inset CommandInset href
+LatexCommand href
+name "conventions typographiques"
+target "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Conventions_typographiques"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Vous devez également sélectionner l'encodage dans le champ 
-\family sans
-Encodage
+En ce qui concerne l'encodage, il est défini implicitement à 
+\family typewriter
+iso-8859-15 (latin9),
 \family default
- de la fenêtre 
+ qui donne accès aux ligatures 
+\family sans
+œ
+\family default
+ et 
+\family sans
+Œ
+\family default
+ et au symbole de l'euro.
+ Vous pouvez vérifier le choix d'encodage via 
 \family sans
 Document\SpecialChar menuseparator
-Paramètres\SpecialChar menuseparator
-Langue.
-
+Paramètres, 
 \family default
- 
-\family typewriter
-iso-8859-1 (latin1)
-\family default
- est l'encodage le plus couramment utilisé, qui contient tous les caractères
- accentués utilisés en français.
- 
-\family typewriter
-iso-8859-15 (latin9)
-\family default
- donne en plus accès aux ligatures œ et Œ et au symbole de l'euro (à condition
- d'avoir installé les polices euro).
+rubrique
+\family sans
+ Langue.
 \end_layout
 
 \begin_layout Standard
@@ -6269,52 +6336,89 @@ oe{}
 , c'est à dire 
 \backslash
 oe{} en mode \SpecialChar TeX
-, ou bien en utilisant l'encodage 
+, ou bien en utilisant directement l'encodage implicite avec
+ une touche ou une combinaison de touches qui appellent le bon code 
 \family typewriter
-latin9
+iso-8859-15
 \family default
  avec un clavier correctement configuré
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Sous Windows vous pouvez utiliser la touche 
+Voyez la page 
+\begin_inset CommandInset href
+LatexCommand href
+name "Œ"
+target "https://fr.wikipedia.org/wiki/%C5%92#Repr.C3.A9sentation_informatique_et_obtention"
+
+\end_inset
+
+ de Wikipedia pour les encodages avec divers logiciels et systèmes d'exploitatio
+n.
+ Par exemple avec Windows vous pouvez utiliser la touche 
 \family sans
 Alt
 \family default
- et le pavé numérique ( 
+ et le pavé numérique (
 \family sans
 Alt-0156
 \family default
- donne œ ).
+ donne œ).
+ Il est aussi possible d'associer un raccourci clavier au code \SpecialChar TeX
+, voir la
+ section 
+\emph on
+Éditer les raccourcis
+\emph default
+ du 
+\emph on
+Manuel de l'utilisateur
+\emph default
+: voici par exemple un raccourci fonctionnel pour la ligature œ 
+\end_layout
+
+\begin_layout LyX-Code
+command-sequence ert-insert; self-insert 
+\backslash
+
+\backslash
+oe{};
+\begin_inset Newline newline
+\end_inset
+
+inset-toggle;word-forward
+\end_layout
+
+\begin_layout Plain Layout
+que vous pouvez associer à une combinaison de touches non affectée.
+ A vous de trouver la meilleure solution\SpecialChar ldots
+
 \end_layout
 
 \end_inset
 
 .
- Dans ce dernier cas, pour qu'il apparaisse à l'écran, il faut aller dans
  
-\family sans
-Document\SpecialChar menuseparator
-Paramètres, 
-\family default
-rubrique
-\family sans
- Langue
-\family default
- et choisir l'encodage 
-\family typewriter
-iso8859-15
-\family default
- (et bien sûr choisir des polices disponibles dans cet encodage).
 \end_layout
 
 \begin_layout Standard
-Le choix du format de papier A4 se fait au travers de l'onglet 
+Le choix du format de papier se fait au travers de l'onglet 
 \family sans
-Papier
+Format papier
 \family default
-, toujours dans la même fenêtre.
+, via 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Format de la page
+\family default
+: le choix 
+\family sans
+Implicite
+\family default
+ donne un format A4 avec les distributions \SpecialChar LaTeX
+ en Europe.
 \end_layout
 
 \begin_layout Standard
@@ -6322,7 +6426,11 @@ Les ponctuations hautes comme les quatre suivantes
 \begin_inset Quotes fld
 \end_inset
 
+
+\family sans
 : ; ! ?
+\family default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -6340,10 +6448,19 @@ Espace
 insécable
 \family default
 , qui produira en sortie un espacement trop grand.
+ Le plus simple est de saisir ces ponctuations sans espacement comme en
+ anglais, l'espace correcte apparaîtra dans la sortie imprimable., voyez
+ le manuel de 
+\family sans
+frenchb.pdf
+\family default
+ pour les détails.
 \end_layout
 
 \begin_layout Standard
 Les guillemets français sont les suivants : 
+\family sans
+
 \begin_inset Quotes fld
 \end_inset
 
@@ -6351,8 +6468,22 @@ Les guillemets français sont les suivants :
 \begin_inset Quotes frd
 \end_inset
 
+
+\family default
  .
- Vous les obtiendrez avec la touche ".
+ Vous les obtiendrez avec la touche 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+"
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
  Il faut auparavant les avoir configurés dans 
 \family sans
 Document\SpecialChar menuseparator
@@ -6388,7 +6519,7 @@ texte
 \family default
 .
  \SpecialChar LyX
- prend en charge tout seul l'espacement autour des guillemets français,
+ prend en charge tout seul les espaces associées aux guillemets français,
  il n'est donc pas nécessaire d'ajouter une espace à l'intérieur des guillemets.
 \end_layout
 

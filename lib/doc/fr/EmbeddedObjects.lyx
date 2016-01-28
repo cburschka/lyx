@@ -299,7 +299,7 @@ Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour 2.2, 22 janvier 2016 (JPC)
+Mise à jour pour 2.2, 26 janvier 2016 (JPC)
 \end_layout
 
 \end_inset
@@ -2497,14 +2497,14 @@ Tableau
 \begin_inset space ~
 \end_inset
 
-long Cet onglet est utilisé pour transformer un tableau en ce que l'on nomme
- un 
+multi-pages Cet onglet est utilisé pour transformer un tableau en ce que
+ l'on nomme un 
 \begin_inset Quotes fld
 \end_inset
 
 
 \emph on
-tableau long
+tableau multi-pages
 \emph default
 
 \begin_inset Quotes frd
@@ -2518,18 +2518,18 @@ tableau long
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tableaux-longs"
+reference "sec:Tableaux-multi-pages"
 
 \end_inset
 
  et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Questions-sur-tableaux-longs"
+reference "sec:Questions-sur-tableaux-multi-pages"
 
 \end_inset
 
- décrivent ces tableaux longs plus en détail.
+ décrivent ces tableaux multi-pages plus en détail.
 \end_layout
 
 \begin_layout Section
@@ -3280,10 +3280,10 @@ reference "sec:Referencer-les-Flottants"
 \end_layout
 
 \begin_layout Section
-Tableaux Longs
+Tableaux multi-pages
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tableaux-longs"
+name "sec:Tableaux-multi-pages"
 
 \end_inset
 
@@ -3292,7 +3292,7 @@ name "sec:Tableaux-longs"
 status collapsed
 
 \begin_layout Plain Layout
-Tableau long
+Tableau multi-pages
 \end_layout
 
 \end_inset
@@ -3302,7 +3302,7 @@ Tableau long
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long
+Tableau ! multi-pages
 \end_layout
 
 \end_inset
@@ -3326,7 +3326,7 @@ tableaux
 \begin_inset space ~
 \end_inset
 
-longs
+multi-pages
 \family default
  de l'onglet 
 \family sans
@@ -3334,7 +3334,7 @@ Tableau
 \begin_inset space ~
 \end_inset
 
-long
+multi-pages
 \family default
  de la fenêtre 
 \family sans
@@ -3355,8 +3355,8 @@ tableau
 \begin_layout Description
 En-tête: La ligne courante et toutes celles situées au-dessus et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- d'en-tête utilisées pour toutes les pages du tableau long; sauf pour la
- première page, si 
+ d'en-tête utilisées pour toutes les pages du tableau multi-pages; sauf
+ pour la première page, si 
 \family sans
 Premier
 \begin_inset space ~
@@ -3375,14 +3375,14 @@ Premier
 
 En-tête: La ligne courante et toutes celles situées au-dessus et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- d'en-tête utilisées pour la première page du tableau long.
+ d'en-tête utilisées pour la première page du tableau multi-pages.
 \end_layout
 
 \begin_layout Description
 Pied: La ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant les pieds de toutes les pages du tableau long; sauf de la dernière
- page si 
+ constituant les pieds de toutes les pages du tableau multi-pages; sauf
+ de la dernière page si 
 \family sans
 Dernier
 \begin_inset space ~
@@ -3400,7 +3400,7 @@ Dernier
 
 pied: La ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant le pied de la dernière page du tableau long.
+ constituant le pied de la dernière page du tableau multi-pages.
 \end_layout
 
 \begin_layout Description
@@ -3408,14 +3408,14 @@ Légende La ligne courante contient la légende du tableau.
  La première ligne est transformée en une colonne unique et une légende
  est insérée.
  Vous trouverez d'autres explications sur les légendes pour les tableaux
- longs dans la section
+ multi-pages dans la section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tableaux-longs-légende"
+reference "subsec:Tableaux-multi-pages-légende"
 
 \end_inset
 
@@ -3424,7 +3424,7 @@ reference "subsec:Tableaux-longs-légende"
 
 \begin_layout Standard
 Vous pouvez aussi préciser une ligne où le tableau devra être coupé.
- Voyez le tableau long qui suit pour voir comment ça marche :
+ Voyez le tableau multi-pages qui suit pour voir comment ça marche :
 \begin_inset Separator parbreak
 \end_inset
 
@@ -5605,7 +5605,7 @@ Voyez la première note grisée de la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tableaux-longs-légende"
+reference "subsec:Tableaux-multi-pages-légende"
 
 \end_inset
 
@@ -5618,10 +5618,10 @@ reference "subsec:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Subsection
-Notes de bas de page dans les tableaux longs
+Notes de bas de page dans les tableaux multi-pages
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Notes-dans-tableau-long"
+name "subsec:Notes-dans-tableau-multi-pages"
 
 \end_inset
 
@@ -5630,7 +5630,7 @@ name "subsec:Notes-dans-tableau-long"
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Notes de bas de page
+Tableau ! multi-pages ! Notes de bas de page
 \end_layout
 
 \end_inset
@@ -5640,7 +5640,7 @@ Tableau ! long ! Notes de bas de page
 
 \begin_layout Standard
 Vous pouvez insérer des notes de bas de page dans chaque cellule d'un tableau
- long.
+ multi-pages.
  Elles apparaissent en bas de la page dans laquelle se trouve la cellule
  contenant la note.
  Par exemple le tableau
@@ -5658,12 +5658,12 @@ reference "tab:Légendes-tableau-différentes"
 \end_layout
 
 \begin_layout Subsection
-Alignement des tableaux longs
+Alignement des tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Alignement
+Tableau ! multi-pages ! Alignement
 \end_layout
 
 \end_inset
@@ -5672,8 +5672,8 @@ Tableau ! long ! Alignement
 \end_layout
 
 \begin_layout Standard
-L'alignement horizontal des tableaux longs peut être modifié dans la fenêtre
- de dialogue des paramètres de tableau.
+L'alignement horizontal des tableaux multi-pages peut être modifié dans
+ la fenêtre de dialogue des paramètres de tableau.
  Pour les alignements à droite et à gauche, le tableau sera directement
  au bord de la page.
  Pour ajouter de l'espace entre le tableau et la marge, on doit choisir
@@ -5690,7 +5690,7 @@ et
 LTright
 \series default
  en insérant la ligne suivante sous forme de code \SpecialChar TeX
- avant le tableau long
+ avant le tableau multi-pages
  concerné :
 \end_layout
 
@@ -5746,7 +5746,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-Le tableau long suivant a été centrée en mettant 
+Le tableau multi-pages suivant a été centrée en mettant 
 \series bold
 
 \backslash
@@ -6068,7 +6068,7 @@ Voyez la première note grisée de la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Tableaux-longs-légende"
+reference "subsec:Tableaux-multi-pages-légende"
 
 \end_inset
 
@@ -6081,12 +6081,12 @@ reference "subsec:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Subsection
-Légendes et tableaux longs
+Légendes et tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Legendes@Légendes
+Tableau ! multi-pages ! Legendes@Légendes
 \end_layout
 
 \end_inset
@@ -6094,7 +6094,7 @@ Tableau ! long ! Legendes@Légendes
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Tableaux-longs-légende"
+name "subsec:Tableaux-multi-pages-légende"
 
 \end_inset
 
@@ -6102,10 +6102,11 @@ name "subsec:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Standard
-Vous ne pouvez pas placer un tableau long dans un flottant de tableau puisque
- les flottants ne peuvent pas être sur plusieurs pages, mais l'environnement
- de légende des flottants de tableau peut aussi être utilisé pour les tableaux
- longs quand on utilise pour une ligne l'option de tableau long 
+Vous ne pouvez pas placer un tableau multi-pages dans un flottant de tableau
+ puisque les flottants ne peuvent pas être sur plusieurs pages, mais l'environne
+ment de légende des flottants de tableau peut aussi être utilisé pour les
+ tableaux multi-pages quand on utilise pour une ligne l'option de tableau
+ multi-pages 
 \family sans
 Légende
 \family default
@@ -6116,7 +6117,7 @@ Légende
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tableaux-longs"
+reference "sec:Tableaux-multi-pages"
 
 \end_inset
 
@@ -6124,7 +6125,7 @@ reference "sec:Tableaux-longs"
 \end_layout
 
 \begin_layout Standard
-Voici un petit Tableau long pour voir comment ça marche :
+Voici un petit Tableau multi-pages pour voir comment ça marche :
 \end_layout
 
 \begin_layout Standard
@@ -6144,12 +6145,12 @@ Voici un petit Tableau long pour voir comment ça marche :
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tableau long avec une légende
+Tableau multi-pages avec une légende
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Tableau long
+Tableau multi-pages
 \end_layout
 
 \end_inset
@@ -6460,9 +6461,9 @@ Note
 
 1:
 \series default
- Le numéro de tableau est incrémenté à chaque tableau long, même si vous
- n'avez pas prévu de légende.
- À cause de ça, vous pouvez avoir le cas où par exemple le tableau
+ Le numéro de tableau est incrémenté à chaque tableau multi-pages, même
+ si vous n'avez pas prévu de légende.
+ De ce fait, vous pouvez avoir le cas où par exemple le tableau
 \begin_inset space ~
 \end_inset
 
@@ -6470,11 +6471,11 @@ Note
 \begin_inset space ~
 \end_inset
 
-2.1 dans la liste des tableaux, si entre les deux il y a deux tableaux longs
- sans légende.
+2.1 dans la liste des tableaux, si entre les deux il y a deux tableaux multi-page
+s sans légende.
  Pour éviter ce problème, vous pouvez ajouter cette commande en code \SpecialChar TeX
  après
- chaque tableau long sans légende :
+ chaque tableau multi-pages sans légende :
 \end_layout
 
 \begin_layout Plain Layout
@@ -6486,7 +6487,7 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-Ce n'est pas nécessaire quand aucun de vos tableaux longs n'a de légende
+Ce n'est pas nécessaire quand aucun de vos tableaux multi-pages n'a de légende
  et que vous ajoutez le code suivant dans le préambule du document :
 \end_layout
 
@@ -6564,7 +6565,7 @@ du
 PDF
 \family default
 , pour transformer vos références croisées en liens cliquables, le lien
- vers un tableau long pointera toujours sur le début du document.
+ vers un tableau multi-pages pointera toujours sur le début du document.
 \end_layout
 
 \end_inset
@@ -6573,12 +6574,12 @@ PDF
 \end_layout
 
 \begin_layout Subsubsection
-Références à des tableaux longs
+Références à des tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Références
+Tableau ! multi-pages ! Références
 \end_layout
 
 \end_inset
@@ -6603,7 +6604,7 @@ Tableau ! long ! Références
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tableau long référencé
+Tableau multi-pages référencé
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:RefExemple"
@@ -6900,8 +6901,8 @@ asd
 \end_layout
 
 \begin_layout Standard
-Pour pouvoir faire référence à un tableau long, il faut insérer une étiquette
- dans sa légende.
+Pour pouvoir faire référence à un tableau multi-pages, il faut insérer une
+ étiquette dans sa légende.
 \end_layout
 
 \begin_layout Standard
@@ -6957,7 +6958,7 @@ Largeur de la légende
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Largeur de la légende
+Tableau ! multi-pages ! Largeur de la légende
 \end_layout
 
 \end_inset
@@ -7784,7 +7785,7 @@ Légendes différentes
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Legendes@Légendes différentes par page
+Tableau ! multi-pages ! Legendes@Légendes différentes par page
 \end_layout
 
 \end_inset
@@ -9707,12 +9708,12 @@ Roberto
 \end_layout
 
 \begin_layout Section
-Questions particulières concernant les tableaux longs
+Questions particulières concernant les tableaux multi-pages
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-Questions sur les tableaux longs
+Questions sur les tableaux multi-pages
 \end_layout
 
 \end_inset
@@ -9720,7 +9721,7 @@ Questions sur les tableaux longs
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Questions-sur-tableaux-longs"
+name "sec:Questions-sur-tableaux-multi-pages"
 
 \end_inset
 
@@ -9728,12 +9729,12 @@ name "sec:Questions-sur-tableaux-longs"
 \end_layout
 
 \begin_layout Subsection
-Calculs des pages des tableaux longs
+Calculs des pages des tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Calculs
+Tableau ! multi-pages ! Calculs
 \end_layout
 
 \end_inset
@@ -9754,8 +9755,8 @@ Tableau ! long ! Calculs
 \end_inset
 
 lignes de tableau.
- Si vous utilisez des tableaux longs couvrant de nombreuses pages, ceci
- peut ralentir la création de votre document.
+ Si vous utilisez des tableaux multi-pages couvrant de nombreuses pages,
+ ceci peut ralentir la création de votre document.
  Vous pouvez sans risque augmenter la taille des blocs pour atteindre des
  valeurs de 100 ou de 1000 en ajoutant une ligne comme celle-ci dans le
  préambule de votre document :
@@ -9770,12 +9771,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Les flottants et les tableaux longs
+Les flottants et les tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Flottants
+Tableau ! multi-pages ! Flottants
 \end_layout
 
 \end_inset
@@ -9785,7 +9786,7 @@ Tableau ! long ! Flottants
 
 \begin_layout Standard
 Il peut y avoir des problèmes quand un flottant apparaît sur la page où
- commence un tableau long.
+ commence un tableau multi-pages.
  Pour éviter une telle situation, insérez un saut de page (menu 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -9800,7 +9801,7 @@ Saut de page (vide le tampon)
 \begin_inset space \thinspace{}
 \end_inset
 
-) juste avant votre tableau long.
+) juste avant votre tableau multi-pages.
 \end_layout
 
 \begin_layout Subsection
@@ -9809,7 +9810,7 @@ Sauts de pages forcés
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! long ! Sauts de pages forcés
+Tableau ! multi-pages ! Sauts de pages forcés
 \end_layout
 
 \end_inset
@@ -30709,14 +30710,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Les notes de bas de page dans des tableaux longs sont décrites dans la section
+Les notes de bas de page dans des tableaux multi-pages sont décrites dans
+ la section
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Notes-dans-tableau-long"
+reference "subsec:Notes-dans-tableau-multi-pages"
 
 \end_inset
 
@@ -39373,11 +39375,7 @@ Graphiques
 \begin_inset space ~
 \end_inset
 
-vectoriels 
-\lang english
-This can be used for
-\lang french
- graphiques
+vectoriels Ce modèle peut être utilisé pour les graphiques
 \begin_inset space ~
 \end_inset
 
@@ -39408,11 +39406,7 @@ reference "sec:Graphics-Dialog"
 \end_inset
 
 .
- 
-\lang english
-Here is an inserted vector graphics
-\lang french
-: 
+ Voici un graphique vectoriel inséré en tant qu'objet externe: 
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg

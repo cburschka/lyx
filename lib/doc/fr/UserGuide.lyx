@@ -252,7 +252,7 @@ Mise à jour mineure pour 2.1.4, 3 avril 2015 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour LyX 2.2, 21 janvier 2016 (JPC)
+Mise à jour pour LyX 2.2, 26 janvier 2016 (JPC)
 \end_layout
 
 \end_inset
@@ -2252,7 +2252,7 @@ A4 est moins large que les écrans des ordinateurs de bureau ou portables.
 \end_layout
 
 \begin_layout Standard
-Il y a bine sûr des exceptions pour lesquelles le défilement horizontal
+Il y a bien sûr des exceptions pour lesquelles le défilement horizontal
  est requis, par exemple:
 \end_layout
 
@@ -2292,8 +2292,8 @@ pour gérer des constructions mathématiques dotées de noms de commandes longs.
 Dans ces circonstances, \SpecialChar LyX
  est doté d'un mécanisme qui produit un défilement
  automatique quand le curseur se déplace.
- En tant qu'exemple, réduisez la largeur de la fenêtre jusqu'à ce que le
- tableau
+ Pour voir un exemple, réduisez la largeur de la fenêtre jusqu'à ce que
+ le tableau
 \begin_inset space ~
 \end_inset
 
@@ -11320,27 +11320,19 @@ Début de nouvel environnement
  Le menu 
 \family sans
 Édition\SpecialChar menuseparator
-
-\lang english
-Start New Parent Environment
+Début de nouvel environnement parent
 \family default
- only appears if the item is nested.
- It does not only separate the list but also creates a new one outside the
- nesting.
+ n'apparaît que si l'élément est encapsulé.
+ Il ne fait pas que mettre une séparation dans la liste, il en en crée une
+ nouvelle en dehors de l'encapsulation.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a separator one can change it into
-\lang french
+Via un clic droit sur un séparateur, il est possible de le transformer en
  un séparateur de paragraphe (une flèche rouge en \SpecialChar LyX
 ).
  La différence entre ces deux séparateurs réside dans le fait que le séparateur
  ordinaire ne divise que la liste et non pas le paragraphe courant.
- Il est possible de modifier le séparateur en effectuant un clic ddroit
- sur lui.
- 
 \end_layout
 
 \begin_layout Standard
@@ -36787,7 +36779,7 @@ OpenDocument
 \end_inset
 
 (tex4ht) fichier au format OpenDocument.
- For the conversion Le programme 
+ Le programme 
 \family typewriter
 tex4ht
 \family default
@@ -39187,23 +39179,22 @@ pourront y trouver la raison de certaines erreurs \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the button 
+Le bouton 
 \family sans
-Open Containing Directory
+Ouvrir le répertoire de travail
 \family default
- one can open \SpecialChar LyX
-'s temporary folder for the document.
- This folder contains all converted and created files to generate the output.
- Some of these files might be of interest for experts to solve problems
- or for writers who need to supply intermediate files.
- For example some journals require to send the 
+ permet d'ouvrir le répertoire temporaire créé pour compiler le document.
+ Ce répertoire contient tous les fichiers crées ou convertis pour engendrer
+ la sortie imprimable.
+ Certains de ces fichiers peuvent être utiles aux experts pour résoudre
+ des problèmes ou nécessaires pour des auteurs devant fournir des fichiers
+ intermédiaires.
+ Par exemple, certaines revues demandent d'envoyer les fichiers 
 \family sans
 *.bbl
 \family default
- file (a text file with the used Bib\SpecialChar TeX
- references).
+ (fichiers textuels utilisés avec le références Bib\SpecialChar TeX
+ citées).
 \end_layout
 
 \begin_layout Subsection
@@ -39611,15 +39602,19 @@ avancées
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Disable Editing
+Modifications inhibées
 \end_layout
 
 \begin_layout Standard
+(Dés)active le mode 
+\begin_inset Quotes fld
+\end_inset
 
-\lang english
-Toggles the read-only state for the document.
+en lecture seule
+\begin_inset Quotes frd
+\end_inset
+
+ du document.
 \end_layout
 
 \begin_layout Subsection
@@ -46818,22 +46813,19 @@ dans le manuel des Options avancées.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Dvips
+Options
 \begin_inset space ~
 \end_inset
 
-Options Options for the program 
+DVIPS définit les options pour le programme 
 \family typewriter
 dvips
 \family default
- that is used for the export format 
+ utilisé pour le format d'exportation 
 \family sans
 Postscript
 \family default
-\lang french
-, voir section
+, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -46845,14 +46837,10 @@ reference "subsec:Exporter"
 \end_inset
 
 .
- 
-\lang english
-Possible options are listed in the 
+ la liste des options proposées se trouve dans le manuel 
 \family typewriter
 dvips
 \family default
- manual
-\lang french
 :
 \begin_inset Newline newline
 \end_inset
