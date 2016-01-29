@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-17 18:13+0100\n"
+"PO-Revision-Date: 2016-01-29 09:33+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -2191,7 +2191,7 @@ msgstr "&Usar refstyle (no prettyref) para referencias cruzadas"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
 msgid "&Quote style:"
-msgstr "E&stilo de cita:"
+msgstr "E&stilo de comillas:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:66
 msgid "Encoding"
@@ -10564,7 +10564,7 @@ msgstr "Latex8 Article (Obsolete)"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
-msgstr "Letter (clase estándar)"
+msgstr "Carta (clase estándar)"
 
 #: lib/layouts/lettre.layout:3
 msgid "French Letter (lettre)"
@@ -11151,7 +11151,7 @@ msgstr "Polish Report (MW Bundle)"
 
 #: lib/layouts/paper.layout:3
 msgid "Paper (Standard Class)"
-msgstr "Paper (clase estándar)"
+msgstr "Artículo académico (clase estándar)"
 
 #: lib/layouts/paper.layout:149
 msgid "SubTitle"
@@ -11343,7 +11343,7 @@ msgstr "Ingredientes:"
 
 #: lib/layouts/report.layout:3
 msgid "Report (Standard Class)"
-msgstr "Report (clase estándar)"
+msgstr "Informe (clase estándar)"
 
 #: lib/layouts/revtex.layout:3
 msgid "REVTeX (Obsolete Version)"
@@ -11544,7 +11544,7 @@ msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
-msgstr "KOMA-Script Letter (V. 1, Obsolete)"
+msgstr "KOMA-Script Carta (V. 1, obsoleta)"
 
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:30
 #: lib/layouts/scrclass.inc:51 lib/layouts/stdlyxlist.inc:6
@@ -11614,7 +11614,7 @@ msgstr "Factura núm.:"
 
 #: lib/layouts/scrlttr2.layout:3
 msgid "KOMA-Script Letter (V. 2)"
-msgstr "KOMA-Script Letter (V. 2)"
+msgstr "KOMA-Script Carta (V. 2)"
 
 #: lib/layouts/scrlttr2.layout:75
 msgid "NextAddress"
@@ -11662,7 +11662,7 @@ msgstr "Fin de carta"
 
 #: lib/layouts/scrreprt.layout:3
 msgid "KOMA-Script Report"
-msgstr "KOMA-Script Report"
+msgstr "KOMA-Script Informe"
 
 #: lib/layouts/seminar.layout:3
 msgid "Seminar"
@@ -12798,7 +12798,7 @@ msgstr "Argumento"
 
 #: lib/layouts/stdinsets.inc:578
 msgid "LongTableNoNumber"
-msgstr "CuadroLargoSinNúmero"
+msgstr "CuadroMultipáginaSinNúmero"
 
 #: lib/layouts/stdinsets.inc:580
 msgid "unlabelled"
@@ -14069,7 +14069,7 @@ msgstr "Versalitas"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
-msgstr "nombre"
+msgstr "versalitas"
 
 #: lib/layouts/logicalmkup.module:34
 msgid "emph"
@@ -19089,7 +19089,7 @@ msgstr "Ancho fijo\t\\mathtt"
 
 #: lib/ui/stdtoolbars.inc:408
 msgid "Blackboard\t\\mathbb"
-msgstr "Pizarra\t\\mathbb"
+msgstr "Negrita de pizarra\t\\mathbb"
 
 #: lib/ui/stdtoolbars.inc:409
 msgid "Fraktur\t\\mathfrak"
@@ -22681,7 +22681,7 @@ msgstr "Extra alto (acento)"
 
 #: lib/ui/stdtoolbars.inc:1435
 msgid "Extra high (tone letter)"
-msgstr "(Extra alto (tono)"
+msgstr "Extra alto (tono)"
 
 #: lib/ui/stdtoolbars.inc:1436
 msgid "High (accent)"
@@ -31340,7 +31340,7 @@ msgstr "Perfiles de RowPainter"
 
 #: src/support/debug.cpp:68
 msgid "Scrolling debugging"
-msgstr "Desplazando depuración"
+msgstr "Depuración desplazamiento"
 
 #: src/support/debug.cpp:70
 msgid "RTL/Bidi"
