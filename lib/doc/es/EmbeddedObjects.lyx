@@ -341,8 +341,7 @@ sidecap
 \end_layout
 
 \begin_layout Plain Layout
-La última versión en PDF de este documento (en inglés) puede encontrarse
- aquí:
+La última versión en PDF de este documento puede encontrarse aquí:
 \series bold
 
 \begin_inset Newline newline
@@ -2249,9 +2248,9 @@ Cuadro
 \begin_inset space ~
 \end_inset
 
-largo Para hacer 
+multipágina Para hacer 
 \emph on
-cuadros largos
+cuadros multipágina
 \emph default
  que pueden extenderse por varias páginas.
  Las secciones
@@ -2261,14 +2260,14 @@ cuadros largos
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-Largos"
+reference "sec:Cuadros-multipágina"
 
 \end_inset
 
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Particularidades-cuadros-largos"
+reference "sec:Particularidades-cuadros-multipágina"
 
 \end_inset
 
@@ -3064,10 +3063,10 @@ reference "sec:Referencias-a-Flotantes"
 \end_layout
 
 \begin_layout Section
-Cuadros largos
+Cuadros multipágina
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Cuadros-Largos"
+name "sec:Cuadros-multipágina"
 
 \end_inset
 
@@ -3076,7 +3075,7 @@ name "sec:Cuadros-Largos"
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos
+Cuadros ! Multipágina
 \end_layout
 
 \end_inset
@@ -3095,7 +3094,7 @@ cuadro
 \begin_inset space ~
 \end_inset
 
-largo
+multipágina
 \family default
  en la solapa 
 \family sans
@@ -3103,7 +3102,7 @@ Cuadro
 \begin_inset space ~
 \end_inset
 
-largo
+multipágina
 \family default
  del diálogo de cuadros, para repartir automáticamente el cuadro en varias
  páginas.
@@ -3159,7 +3158,7 @@ La fila actual se define como pie de la última página del cuadro.
 \begin_layout Description
 Leyenda: La fila actual contiene la leyenda del cuadro.
  La primera fila se reajusta como columna única y se inserta una leyenda.
- Más detalles sobre leyendas en cuadros largos en la sec.
+ Más detalles sobre leyendas en cuadros multipágina en la sec.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5371,19 +5370,19 @@ reference "subsec:Leyendas-en-Cuadros"
 \end_layout
 
 \begin_layout Subsection
-Notas al pie en cuadros largos
+Notas al pie en cuadros multipágina
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Notas-al-pie-en-Cuadros-Largos"
+name "subsec:Notas-al-pie-en-Cuadros-Multipágina"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Notas al pie
+Cuadros ! Multipágina ! Notas al pie
 \end_layout
 
 \end_inset
@@ -5392,7 +5391,7 @@ Cuadros ! Largos ! Notas al pie
 \end_layout
 
 \begin_layout Standard
-Se pueden insertar notas al pie en cada celda de un cuadro largo.
+Se pueden insertar notas al pie en cada celda de un cuadro multipágina.
  Las notas se muestran en la parte inferior de la página en la que esté
  la celda con la nota.
  El cuadro
@@ -5410,12 +5409,12 @@ reference "tab:DifLeyendas"
 \end_layout
 
 \begin_layout Subsection
-Alineación de cuadros largos
+Alineación de cuadros multipágina
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Alineación
+Cuadros ! Multipágina ! Alineación
 \end_layout
 
 \end_inset
@@ -5424,8 +5423,8 @@ Cuadros ! Largos ! Alineación
 \end_layout
 
 \begin_layout Standard
-La alineación horizontal de cuadros largos se puede establecer en el diálogo
- de configuración de cuadros.
+La alineación horizontal de cuadros multipágina se puede establecer en el
+ diálogo de configuración de cuadros.
  Para las alineaciones izquierda y derecha el cuadro irá al borde de la
  página.
  Para poner espacio entre el cuadro y el borde hay que poner la alineación
@@ -5443,7 +5442,7 @@ LTright
 \series default
 insertando la línea siguiente en código \SpecialChar TeX
  antes del correspondiente cuadro
- largo:
+ multipágina:
 \end_layout
 
 \begin_layout Standard
@@ -5494,7 +5493,7 @@ fill
 \end_layout
 
 \begin_layout Standard
-El siguiente cuadro largo se ha alineado centrado y 
+El siguiente cuadro multipágina se ha alineado centrado y 
 \series bold
 
 \backslash
@@ -5806,7 +5805,7 @@ addtocounter{table}{-1}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para comprender el uso de este comando, lee al final de la sección
@@ -5830,12 +5829,12 @@ reference "subsec:Leyendas-en-Cuadros"
 \end_layout
 
 \begin_layout Subsection
-Leyendas en cuadros largos
+Leyendas en cuadros multipágina
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Leyendas
+Cuadros ! Multipágina ! Leyendas
 \end_layout
 
 \end_inset
@@ -5851,10 +5850,10 @@ name "subsec:Leyendas-en-Cuadros"
 \end_layout
 
 \begin_layout Standard
-Un cuadro largo no se puede poner flotante porque los flotantes sólo pueden
- estar en una página.
- Pero el entorno leyenda de flotantes sí puede usarse para cuadros largos
- utilizando para una fila de un cuadro largo la opción 
+Un cuadro multipágina no se puede poner flotante porque los flotantes sólo
+ pueden estar en una página.
+ Pero el entorno leyenda de flotantes sí puede usarse para cuadros multipágina
+ utilizando para una fila de un cuadro multipágina la opción 
 \family sans
 Leyenda
 \family default
@@ -5865,7 +5864,7 @@ Leyenda
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Cuadros-Largos"
+reference "sec:Cuadros-multipágina"
 
 \end_inset
 
@@ -5874,7 +5873,7 @@ reference "sec:Cuadros-Largos"
 \end_layout
 
 \begin_layout Standard
-He aquí un pequeño cuadro largo para mostrar cómo funciona:
+He aquí un pequeño cuadro multipágina para mostrar cómo funciona:
 \end_layout
 
 \begin_layout Standard
@@ -5894,12 +5893,12 @@ He aquí un pequeño cuadro largo para mostrar cómo funciona:
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cuadro largo con leyenda
+Cuadro multipágina con leyenda
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Cuadro largo
+Cuadro multipágina
 \end_layout
 
 \end_inset
@@ -6210,8 +6209,8 @@ Nota
 
 1:
 \series default
- El número del cuadro se incrementa para cada cuadro largo, aunque no pongas
- leyenda en alguna de ellas.
+ El número del cuadro se incrementa para cada cuadro multipágina, aunque
+ no pongas leyenda en alguna de ellas.
  Por esto podría suceder que, p.
 \begin_inset space \thinspace{}
 \end_inset
@@ -6224,9 +6223,10 @@ ej., el cuadro
 \begin_inset space ~
 \end_inset
 
-2.1 en el índice de cuadros debido a que hay dos cuadros largos sin leyenda.
- Para evitarlo, añade detrás de cada cuadro largo sin leyenda este comando
- en código \SpecialChar TeX
+2.1 en el índice de cuadros debido a que hay dos cuadros multipágina sin
+ leyenda.
+ Para evitarlo, añade detrás de cada cuadro multipágina sin leyenda este
+ comando en código \SpecialChar TeX
 :
 \end_layout
 
@@ -6239,8 +6239,8 @@ addtocounter{table}{-1}
 \end_layout
 
 \begin_layout Plain Layout
-Esto no es necesario si ninguna de los cuadros largos tiene leyenda y añades
- el siguiente código en el preámbulo del documento:
+Esto no es necesario si ninguna de los cuadros multipágina tiene leyenda
+ y añades el siguiente código en el preámbulo del documento:
 \end_layout
 
 \begin_layout Plain Layout
@@ -6308,8 +6308,8 @@ del diálogo
 \family sans
 Configuración del documento 
 \family default
-para enlazar referencias cruzadas en la salida, los enlaces a cuadros largos
- llevan siempre al principio del documento.
+para enlazar referencias cruzadas en la salida, los enlaces a cuadros multipágin
+a llevan siempre al principio del documento.
 \end_layout
 
 \end_inset
@@ -6318,12 +6318,12 @@ para enlazar referencias cruzadas en la salida, los enlaces a cuadros largos
 \end_layout
 
 \begin_layout Subsubsection
-Referencias a cuadros largos
+Referencias a cuadros multipágina
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Referencias a
+Cuadros ! Multipágina ! Referencias a
 \end_layout
 
 \end_inset
@@ -6348,7 +6348,7 @@ Cuadros ! Largos ! Referencias a
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cuadro largo con referencia
+Cuadro multipágina con referencia
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:RefEjemplo"
@@ -6645,7 +6645,7 @@ asd
 \end_layout
 
 \begin_layout Standard
-Para referenciar un cuadro largo, inserta una etiqueta en la leyenda.
+Para referenciar un cuadro multipágina, inserta una etiqueta en la leyenda.
  
 \end_layout
 
@@ -6702,7 +6702,7 @@ Anchura de la leyenda
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Anchura de la leyenda
+Cuadros ! Multipágina ! Anchura de la leyenda
 \end_layout
 
 \end_inset
@@ -6729,7 +6729,7 @@ in (4
 pulgadas).
  Para cambiarla añade el siguiente comando en el preámbulo o en código \SpecialChar TeX
 
- en el propio documento antes del cuadro largo al que deba afectar
+ en el propio documento antes del cuadro multipágina al que deba afectar
 \end_layout
 
 \begin_layout Standard
@@ -7527,7 +7527,7 @@ Leyendas distintas para cada página
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Leyendas ! distintas para cada página
+Cuadros ! Multipágina ! Leyendas ! distintas para cada página
 \end_layout
 
 \end_inset
@@ -7545,7 +7545,7 @@ Leyenda
 \begin_inset space ~
 \end_inset
 
-(CuadroLargoSinNúmero)
+(CuadroMultipáginaSinNúmero)
 \family default
  en el menú contextual.
  El cuadro
@@ -7559,8 +7559,8 @@ reference "tab:DifLeyendas"
 
 \end_inset
 
- es un ejemplo de cuadro largo con encabezados distintos donde el segundo
- no incluye número de cuadro.
+ es un ejemplo de cuadro multipágina con encabezados distintos donde el
+ segundo no incluye número de cuadro.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -9453,10 +9453,10 @@ Roberto
 \end_layout
 
 \begin_layout Section
-Particularidades de los cuadros largos
+Particularidades de los cuadros multipágina
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Particularidades-cuadros-largos"
+name "sec:Particularidades-cuadros-multipágina"
 
 \end_inset
 
@@ -9469,7 +9469,7 @@ Cálculos
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Cálculos
+Cuadros ! Multipágina ! Cálculos
 \end_layout
 
 \end_inset
@@ -9488,8 +9488,8 @@ Cuadros ! Largos ! Cálculos
 \end_inset
 
 filas.
- Si estás usando cuadros largos con muchas páginas, la generación del documento
- puede hacerse muy lenta.
+ Si estás usando cuadros multipágina con muchas páginas, la generación del
+ documento puede hacerse muy lenta.
  No hay problema en aumentar el tamaño de los trozos hasta 100
 \begin_inset space \thinspace{}
 \end_inset
@@ -9510,12 +9510,12 @@ setcounter{LTchunksize}{100}
 \end_layout
 
 \begin_layout Subsection
-Flotantes y cuadros largos
+Flotantes y cuadros multipágina
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Flotantes
+Cuadros ! Multipágina ! Flotantes
 \end_layout
 
 \end_inset
@@ -9525,7 +9525,7 @@ Cuadros ! Largos ! Flotantes
 
 \begin_layout Standard
 Podría haber problemas si un flotante aparece en la misma página donde comienza
- un cuadro largo.
+ un cuadro multipágina.
  Para evitarlo, añade un 
 \begin_inset Quotes fld
 \end_inset
@@ -9553,7 +9553,7 @@ Saltos de página forzados
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! Saltos de página forzados
+Cuadros ! Multipágina ! Saltos de página forzados
 \end_layout
 
 \end_inset
@@ -9664,9 +9664,9 @@ newpage
 \series default
 es necesario solo si en esta posición debiera ir definitivamente un salto
  de página, de otro modo es sólamente una posibilidad de salto.
- Si la fila más baja de la cuadro largo no tiene, por alguna razón, línea
- superior pero quisieras una línea horizontal donde se corta la celda, usa
- este comando alternativo:
+ Si la fila más baja de la cuadro multipágina no tiene, por alguna razón,
+ línea superior pero quisieras una línea horizontal donde se corta la celda,
+ usa este comando alternativo:
 \end_layout
 
 \begin_layout Standard
@@ -29872,14 +29872,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Las notas al pie en cuadros largos se describen en la sección
+Las notas al pie en cuadros multipágina se describen en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Notas-al-pie-en-Cuadros-Largos"
+reference "subsec:Notas-al-pie-en-Cuadros-Multipágina"
 
 \end_inset
 
@@ -38272,11 +38272,7 @@ reference "sec:Diálogo-Gráficos"
 \end_inset
 
 .
- 
-\lang english
-Here is an inserted vector graphics
-\lang spanish
-: 
+ Aquí una imagen vectorial insertada: 
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
@@ -38949,7 +38945,7 @@ de
 \begin_inset space ~
 \end_inset
 
-programa Este tipo se describe en el capítulo
+código Este tipo se describe en el capítulo
 \begin_inset space ~
 \end_inset
 

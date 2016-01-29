@@ -3151,50 +3151,6 @@ msgfmt -o xx.mo < xx.po
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
-\lang english
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-Note:
-\series default
- For a complex document with external material (images, etc.), if you make
- a copy e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-in a temp dir, beware that the links to external material may be broken
- when the document is moved to a different place.
- The best way is to retrieve the \SpecialChar LyX
- tree from git (see 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/HowToUseGIT
-\end_layout
-
-\end_inset
-
-) and to edit the doc file in place.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -5804,12 +5760,9 @@ TEXMFLOCAL
 \family sans
 /usr/local/share/texmf/
 \family default
- o /usr/local/texlive/XXXX 
-\lang english
-where XXXX is the year of the installed \SpecialChar TeX
-Live distribution
-\lang spanish
-.
+ o /usr/local/texlive/XXXX donde XXXX es el año de la distribución \SpecialChar TeX
+Live
+ instalada.
  La ubicación del árbol `user' de \SpecialChar TeX
  está definida por 
 \begin_inset Flex Code

@@ -1827,18 +1827,12 @@ Mayúsculas+Tab
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Horizontal Scrolling
-\lang spanish
-
+Deslizamiento horizontal
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Navegación ! 
-\lang english
-Horizontal Scrolling
+Navegación ! Deslizamiento horizontal
 \end_layout
 
 \end_inset
@@ -1847,15 +1841,13 @@ Horizontal Scrolling
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- does not have a horizontal scrollbar because the standard output page formats
- like e.
+ no tiene barra de deslizamiento horizontal porque los formatos de página
+ de la salida estándar como p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+e.
 \begin_inset space \space{}
 \end_inset
 
@@ -1863,49 +1855,39 @@ ISO
 \begin_inset space ~
 \end_inset
 
-A4 are less wide than PC or laptop screens.
- Therefore you will get troubles in the output of your document if document
- parts exceed the width of the \SpecialChar LyX
- main screen.
+A4 son menos anchos que las pantallas de los ordenadores de sobremesa o
+ portátiles.
+ Por tanto habrá dificultades en la salida del documento si partes del mismo
+ exceden la anchura de la pantalla principal de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are of course exceptions where horizontal scrolling is necessary.
- For example
+Hay excepciones, por supuesto, en que el deslizamiento horizontal es necesario.
+ Por ejemplo:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
- is used on a small tablet computer
+ se usa en una pequeña tableta
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Wide tables that are rotated 90° to fit a whole page
+Cuadros o tablas amplias que se giran 90° para encajarlas en una página
+ completa
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-See section 
+Véase la sección 
 \emph on
-Rotated Floats
+Rotación de flotantes
 \emph default
- of the 
+ del manual 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objetos insertados
 \emph default
- manual.
+.
 \end_layout
 
 \end_inset
@@ -1914,34 +1896,31 @@ Objects
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Math constructs with long command names
+Estructuras matemáticas con largos nombres de comandos
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For these cases \SpecialChar LyX
- has an mechanism that scrolls automatically when the cursor
- is moved.
- As example shrink the \SpecialChar LyX
- windows so that table
+Para estos casos \SpecialChar LyX
+ tiene un mecanismo de deslizamiento automático cuando
+ el cursor se desplaza en horizontal.
+ A modo de ejemplo, encoge la ventana de \SpecialChar LyX
+ de modo que el cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Horizontal-scrollong-test"
+reference "tab:Prueba-deslizamiento-horizontal"
 
 \end_inset
 
- is wider.
- You will now see a dotted red line at the right or the left side of the
- table.
- Put the cursor into the table and move it with the Tab or the arrow keys
- to see the horizontal scrolling of the table.
+ quede más ancho que aquella.
+ Entonces verás una línea roja vertical punteada en los lados izquierdo
+ o derecho del cuadro.
+ Pon el cursor en una celda y muévelo con las teclas Tab o flechas para
+ ver el deslizamiento del cuadro.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1957,13 +1936,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Horizontal-scrollong-test"
+name "tab:Prueba-deslizamiento-horizontal"
 
 \end_inset
 
-
-\lang english
-Horizontal scrolling test.
+Prueba de deslizamiento horizontalHorizontal scrolling test.
 \end_layout
 
 \end_inset
@@ -2710,19 +2687,19 @@ Hay cuatro clases estándar de documentos en \SpecialChar LyX
 \end_layout
 
 \begin_layout Description
-Article para artículos sencillos
+Artículo para artículos sencillos
 \end_layout
 
 \begin_layout Description
-Report para informes sencillos
+Informe para informes sencillos
 \end_layout
 
 \begin_layout Description
-Book para escribir libros
+Libro para escribir libros
 \end_layout
 
 \begin_layout Description
-Letter para cartas estilo US
+Carta para cartas estilo US
 \end_layout
 
 \begin_layout Standard
@@ -2801,7 +2778,7 @@ Broadway Formato para escribir guiones.
 \end_layout
 
 \begin_layout Description
-Chess Formato para escribir sobre ajedrez
+Ajedrez Formato para escribir sobre ajedrez
 \end_layout
 
 \begin_layout Description
@@ -3313,7 +3290,7 @@ Nivel máx.
 \bar no
 \noun off
 \color none
-article
+artículo
 \end_layout
 
 \end_inset
@@ -3404,7 +3381,7 @@ Sección
 \bar no
 \noun off
 \color none
-report
+informe
 \end_layout
 
 \end_inset
@@ -3495,7 +3472,7 @@ Capítulo
 \bar no
 \noun off
 \color none
-book
+libro
 \end_layout
 
 \end_inset
@@ -3586,7 +3563,7 @@ Capítulo
 \bar no
 \noun off
 \color none
-letter
+carta
 \end_layout
 
 \end_inset
@@ -5731,7 +5708,7 @@ Enumeración*
 
 \begin_layout Standard
 Hemos dicho que los distintos niveles usan distintos símbolos como etiquetas.
- Aquí hay un ejemplo con las cuatro posibilidades.
+ Aquí hay un ejemplo con las cuatro posibilidades:
 \begin_inset Foot
 status collapsed
 
@@ -8048,15 +8025,15 @@ Resumen
 \begin_inset Quotes fld
 \end_inset
 
-article
+artículo
 \begin_inset Quotes frd
 \end_inset
 
- y 
+ e 
 \begin_inset Quotes fld
 \end_inset
 
-report
+informe
 \begin_inset Quotes frd
 \end_inset
 
@@ -8065,7 +8042,7 @@ report
 \begin_inset Quotes fld
 \end_inset
 
-book
+libro
 \begin_inset Quotes frd
 \end_inset
 
@@ -10956,21 +10933,15 @@ Iniciar nuevo entorno
  El menú 
 \family sans
 Editar\SpecialChar menuseparator
-
-\lang english
-Start New Parent Environment
+Iniciar nuevo entorno padre
 \family default
- only appears if the item is nested.
- It does not only separate the list but also creates a new one outside the
- nesting.
+ solo aparece si el ítem está anidado.
+ No solo separa la lista, sino que también crea un entorno nuevo sin anidar.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a separator one can change it into
-\lang spanish
- un separador de párrafo (flecha roja en \SpecialChar LyX
+Con clic derecho sobre un separador simple se puede cambiar en un separador
+ de párrafo (flecha roja en \SpecialChar LyX
 ).
  La diferencia entre ambos tipos de separador es que el separador simple
  solo divide la lista, no el párrafo.
@@ -10985,7 +10956,7 @@ Entrar
 \family sans
 Normal
 \family default
- inmediatamente después de uno no Normal.
+ situado inmediatamente detrás de uno no Normal.
 \end_layout
 
 \begin_layout Section
@@ -12339,7 +12310,7 @@ ej., 2/3 abajo.
 \family sans
 Personalizado
 \family default
- sirve para poner cualquier espacio en una de las unidades explicadas en
+ sirve para poner cualquier espacio en una de las unidades descritas en
  el apéndice
 \begin_inset space ~
 \end_inset
@@ -14497,11 +14468,7 @@ Negrita
 \family default
  
 \series bold
-Este es 
-\series default
-el grosor
-\series bold
- Negrita.
+Este es el grosor Negrita.
 
 \series default
  (combinaciones 
@@ -15087,11 +15054,7 @@ Alt+S
 \labelwidthstring 00.00.0000
 
 \family sans
-Más
-\begin_inset space ~
-\end_inset
-
-enorme
+Gigante
 \family default
  
 \size giant
@@ -15099,7 +15062,7 @@ Este es el tamaño
 \begin_inset Quotes fld
 \end_inset
 
-Más enorme
+Gigante
 \begin_inset Quotes frd
 \end_inset
 
@@ -15601,7 +15564,7 @@ sin texto en ancho fijo
 \begin_layout Itemize
 
 \family sans
-Romana
+Romanas
 \family default
  son tipografías formadas por caracteres con pequeños 
 \begin_inset Quotes fld
@@ -15649,7 +15612,11 @@ Las tipografías
 \family sans
 Palo seco
 \family default
- (Sans serif) no tienen apéndices.
+ (
+\family sans
+Sans serif
+\family default
+) no tienen apéndices.
  Por eso este tipo de letra se suele usar para encabezados y textos cortos.
  En este documento la usamos para resaltar nombres de menú.
 \end_layout
@@ -17512,7 +17479,11 @@ abrir cerrar
 "
 \family default
  las genera automáticamente.
- El tipo de comillas generado por la tecla 
+ 
+\end_layout
+
+\begin_layout Standard
+El tipo de comillas generado por la tecla 
 \family sans
 "
 \family default
@@ -17545,7 +17516,7 @@ de
 \begin_inset space ~
 \end_inset
 
-cita
+comillas
 \family default
  se pueden seleccionar comillas para distintos idiomas.
  Hay seis opciones:
@@ -17564,22 +17535,14 @@ Texto
 
 
 \family default
- Comillas como estas 
+ Comillas como 
 \begin_inset Quotes eld
 \end_inset
 
-dobles
+estas
 \begin_inset Quotes erd
 \end_inset
 
- o 
-\begin_inset Quotes els
-\end_inset
-
-sencillas
-\begin_inset Quotes ers
-\end_inset
-
 
 \end_layout
 
@@ -17602,10 +17565,6 @@ Texto
 
 estas
 \begin_inset Quotes srd
-\end_inset
-
- o 'estas
-\begin_inset Quotes ers
 \end_inset
 
 
@@ -17632,14 +17591,6 @@ estas
 \begin_inset Quotes grd
 \end_inset
 
- o 
-\begin_inset Quotes gls
-\end_inset
-
-estas
-\begin_inset Quotes grs
-\end_inset
-
 
 \end_layout
 
@@ -17664,14 +17615,6 @@ estas
 \begin_inset Quotes prd
 \end_inset
 
- o 
-\begin_inset Quotes pls
-\end_inset
-
-estas
-\begin_inset Quotes prs
-\end_inset
-
 
 \end_layout
 
@@ -17694,14 +17637,6 @@ Texto
 
 estas
 \begin_inset Quotes frd
-\end_inset
-
- o 
-\begin_inset Quotes fls
-\end_inset
-
-estas
-\begin_inset Quotes frs
 \end_inset
 
 
@@ -17713,23 +17648,7 @@ estas
 \family sans
 »Texto«
 \family default
- Comillas como »estas« o 
-\begin_inset Quotes als
-\end_inset
-
-estas
-\begin_inset Quotes ars
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Estas opciones afectan al carácter generado por la tecla 
-\family sans
-"
-\family default
-.
+ Comillas como »estas«
 \end_layout
 
 \begin_layout Standard
@@ -25185,7 +25104,7 @@ breve
 \bar no
 \noun off
 \color none
-caron
+carón
 \end_layout
 
 \end_inset
@@ -26104,7 +26023,7 @@ neles de ecuaciones
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Estilos-del-texto-y"
+reference "tab:Estilos-de-tipografía"
 
 \end_inset
 
@@ -26123,11 +26042,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Estilos-del-texto-y"
+name "tab:Estilos-de-tipografía"
 
 \end_inset
 
-Estilos del texto y comandos correspondientes.
+Estilos de tipografía y comandos correspondientes.
 \end_layout
 
 \end_inset
@@ -26173,7 +26092,7 @@ Comando
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathrm{Roman}$
+\begin_inset Formula $\mathrm{Romana}$
 \end_inset
 
 
@@ -26260,7 +26179,7 @@ mathit
 \bar no
 \noun off
 \color none
-\begin_inset Formula $\mathtt{Typewriter}$
+\begin_inset Formula $\mathtt{Ancho\,fijo}$
 \end_inset
 
 
@@ -26287,7 +26206,7 @@ mathtt
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}$
+\begin_inset Formula $\mathbf{\mathbb{NEGRITA\,DE\,PIZARRA}}$
 \end_inset
 
 
@@ -26375,7 +26294,7 @@ mathcal
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathsf{SansSerif}$
+\begin_inset Formula $\mathsf{Palo\,seco}$
 \end_inset
 
 
@@ -26420,7 +26339,15 @@ Nota:
 \series default
 Ten en cuenta que los estilos 
 \family sans
-Blackboard
+Negrita
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+pizarra
 \family default
  y 
 \family sans
@@ -26453,7 +26380,15 @@ N
 
  en estilo 
 \family sans
-Blackboard
+Negrita
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+pizarra
 \family default
  representa el conjunto de los números naturales:
 \begin_inset Formula 
@@ -31635,7 +31570,7 @@ cambia temporalmente a un estilo de página con encabezado y pie personalizados
 
 \begin_layout Left Header
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31671,7 +31606,7 @@ define el encabezado como se describe abajo
 
 \begin_layout Center Header
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31734,7 +31669,7 @@ thepage
 
 \begin_layout Center Footer
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -31760,7 +31695,7 @@ Código mágico:
 
 \begin_layout Right Footer
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -35881,14 +35816,10 @@ Postscript
 dvips
 \family default
 .
- 
-\lang english
-For possible 
+ Para opciones posibles de
 \family typewriter
-dvips
+ dvips
 \family default
- options
-\lang spanish
  véase la sección
 \begin_inset space ~
 \end_inset
@@ -36210,7 +36141,18 @@ texto
 \end_layout
 
 \begin_layout Subsection
-Configuración de cuadros y ecuaciones
+Cuadro/Tabla
+\end_layout
+
+\begin_layout Standard
+Este menú solo aparece si el cursor está en un cuadro o tabla.
+ Permite crear celdas multicolumna o multifila, añadir o quitar bordes y
+ ajustar la alineación vertical de celdas.
+ 
+\end_layout
+
+\begin_layout Subsection
+Configuración del cuadro y Ecuaciones
 \end_layout
 
 \begin_layout Standard
@@ -38014,23 +37956,22 @@ Con ayuda del archivo de registro, los expertos encontrarán posibles causas
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With the button 
+Con el botón 
 \family sans
-Open Containing Directory
+Abrir directorio
 \family default
- one can open \SpecialChar LyX
-'s temporary folder for the document.
- This folder contains all converted and created files to generate the output.
- Some of these files might be of interest for experts to solve problems
- or for writers who need to supply intermediate files.
- For example some journals require to send the 
+ se abre el directorio temporal de \SpecialChar LyX
+ para el documento.
+ Esta carpeta contiene todos los archivos creados o convertidos para generar
+ la salida.
+ Algunos de estos archivos podrían interesarle a expertos para resolver
+ problemas o a escritores que necesiten suministrar archivos intermedios.
+ Por ejemplo, algunas publicaciones requieren el envío de archivos 
 \family sans
 *.bbl
 \family default
- file (a text file with the used Bib\SpecialChar TeX
- references).
+ (archivos de texto con las referencias Bib\SpecialChar TeX
+ utilizadas).
 \end_layout
 
 \begin_layout Subsection
@@ -38561,15 +38502,11 @@ Características adicionales
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Disable Editing
+Deshabilitar edición
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Toggles the read-only state for the document.
+Alterna el estado de solo lectura del documento.
 \end_layout
 
 \begin_layout Subsection
@@ -39573,7 +39510,8 @@ del
 \begin_inset space ~
 \end_inset
 
-texto
+texto\SpecialChar menuseparator
+Personalizado
 \end_layout
 
 \end_inset
@@ -43774,7 +43712,7 @@ reference "subsec:Comprimido"
 \end_layout
 
 \begin_layout Subsubsection
-Ventanas y áreas de trabago
+Ventanas y áreas de trabajo
 \end_layout
 
 \begin_layout Standard
@@ -45472,21 +45410,18 @@ Características adicionales
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Dvips
+Opciones
 \begin_inset space ~
 \end_inset
 
-Options Options for the program 
+dvips Opciones para el programa
 \family typewriter
-dvips
+ dvips
 \family default
- that is used for the export format 
+ que se usa para exportar al formato 
 \family sans
 Postscript
 \family default
-\lang spanish
 , véase la sección
 \begin_inset space ~
 \end_inset
@@ -45499,14 +45434,10 @@ reference "subsec:Exportar"
 \end_inset
 
 .
- 
-\lang english
-Possible options are listed in the 
+ Las opciones posibles se detallan en el manual  
 \family typewriter
 dvips
 \family default
- manual
-\lang spanish
 :
 \begin_inset Newline newline
 \end_inset
