@@ -30516,26 +30516,45 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-表の設定と数式
+
+\lang english
+Table and Rows & Columns
 \end_layout
 
 \begin_layout Standard
-これら二つのメニューは、カーソルが表ないし数式の中にあるときにのみ、完全に有効化されます。ここでは、当該表ないし数式の特性を、変更することができます。表の特性は
-第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:表"
 
-\end_inset
+\lang english
+These menus only appear if the cursor is inside a table.
+ It allows you to create multicolumn and multirow cells, add or remove borders
+ of a cell and to set the alignment of the cell.
+\end_layout
 
-節に述べられており、数式の特性に関しては第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:数式"
+\begin_layout Subsection
 
-\end_inset
+\lang english
+Dissolve Inset
+\end_layout
 
-章に述べられています。
+\begin_layout Standard
+
+\lang english
+This menu only appears if the cursor is inside an inset.
+ It will dissolve this inset.
+ This means that the inset is deleted and its content is left as normal
+ text.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Settings or Math
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This menu is only active if the cursor is inside an inset or a formula.
+ Here you can change the properties of the inset or the formula.
 \end_layout
 
 \begin_layout Subsection

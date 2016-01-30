@@ -8661,10 +8661,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8677,6 +8679,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8700,6 +8703,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -35803,36 +35807,34 @@ Layout
 \end_layout
 
 \begin_layout Subsection
-Tabellen-Einstellungen und Mathe
+Tabelle und Zeilen & Spalten
 \end_layout
 
 \begin_layout Standard
-Diese zwei Menüs sind nur voll aktiv, wenn sich der Cursor in einer Tabelle
- oder Formel befindet.
- Hier kann man die Eigenschaften von Tabellen und Formeln ändern.
- Die Eigenschaften von Tabellen sind in Abschnitt
-\begin_inset space ~
-\end_inset
+Diese Menüs sind nur aktiv, wenn sich der Cursor in einer Tabelle befindet.
+ Damit kann man Mehrfachspalten und -zeilen erzeugen, Linien bearbeiten
+ und die Ausrichtung von Zellen ändern.
+\end_layout
 
+\begin_layout Subsection
+Einfügung auflösen
+\end_layout
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Tabellen"
+\begin_layout Standard
+Dieses Menü ist nur aktiv, wenn sich der Cursor in einer Einfügung befindet.
+ Es löst die Einfügung auf.
+ Das bedeutet, dass sie gelöscht wird, ihr Inhalt jedoch als normaler Text
+ erhalten bleibt.
+\end_layout
 
-\end_inset
+\begin_layout Subsection
+Einstellungen oder Mathe
+\end_layout
 
- beschrieben, die von Formeln in Kapitel
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Mathematische-Formeln"
-
-\end_inset
-
-.
+\begin_layout Standard
+Dieses Menü ist nur aktiv, wenn sich der Cursor in einer Einfügung oder
+ Formel befindet.
+ Hier kann man die Eigenschaften der Einfügung oder der Formel ändern.
 \end_layout
 
 \begin_layout Subsection

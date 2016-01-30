@@ -8310,12 +8310,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8328,6 +8330,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8351,6 +8354,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -35557,43 +35561,33 @@ Layout
 \end_layout
 
 \begin_layout Subsection
-Table
+Table and Rows & Columns
 \end_layout
 
 \begin_layout Standard
-This menu only appears if the cursor is inside a table.
+These menus only appear if the cursor is inside a table.
  It allows you to create multicolumn and multirow cells, add or remove borders
- of a cell and to set the vertical alignment of the cell.Table Settings and
- Math
+ of a cell and to set the alignment of the cell.
+\end_layout
+
+\begin_layout Subsection
+Dissolve Inset
 \end_layout
 
 \begin_layout Standard
-These two menus are only fully active if the cursor is inside a table or
- a formula.
- Here you can change the properties of tables and formulas.
- The properties of tables are described in section
-\begin_inset space ~
-\end_inset
+This menu only appears if the cursor is inside an inset.
+ It will dissolve this inset.
+ This means that the inset is deleted and its content is left as normal
+ text.
+\end_layout
 
+\begin_layout Subsection
+Settings or Math
+\end_layout
 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Tables"
-
-\end_inset
-
-, the properties of formulas in chapter
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Mathematical-Formulas"
-
-\end_inset
-
-.
+\begin_layout Standard
+This menu is only active if the cursor is inside an inset or a formula.
+ Here you can change the properties of the inset or the formula.
 \end_layout
 
 \begin_layout Subsection
@@ -45247,36 +45241,6 @@ on
 
 export Setting what \SpecialChar LyX
  is allowed to overwrite on export.
-\end_layout
-
-\begin_layout Description
-Forward
-\begin_inset space ~
-\end_inset
-
-search Commands that will be used for the menu 
-\family sans
-Navigate\SpecialChar menuseparator
-Forward
-\begin_inset space ~
-\end_inset
-
-search
-\family default
-.
- For a detailed description see section 
-\emph on
-Reverse DVI/PDF search
-\emph default
- of the 
-\emph on
-Additional
-\begin_inset space ~
-\end_inset
-
-Features
-\emph default
- manual.
 \end_layout
 
 \begin_layout Subsection
