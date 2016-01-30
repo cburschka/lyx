@@ -562,6 +562,18 @@ void Paragraph::addChangesToToc(DocIterator const & cdit,
 }
 
 
+void Paragraph::addChangesToBuffer(Buffer const & buf) const
+{
+	d->changes_.updateBuffer(buf);
+}
+
+
+bool Paragraph::isChangeUpdateRequired() const
+{
+	return d->changes_.isUpdateRequired();
+}
+
+
 bool Paragraph::isDeleted(pos_type start, pos_type end) const
 {
 	LASSERT(start >= 0 && start <= size(), return false);

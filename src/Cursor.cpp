@@ -2432,6 +2432,12 @@ void Cursor::checkBufferStructure()
 		// In case the master has no gui associated with it,
 		// the TocItem is not updated (part of bug 5699).
 		buffer()->tocBackend().updateItem(*this);
+
+	// If the last tracked change of the paragraph has just been
+	// deleted, then we need to recompute the buffer flag
+	// tracked_changes_present_.
+	if (inTexted() && paragraph().isChangeUpdateRequired())
+		disp_.forceChangesUpdate();
 }
 
 
