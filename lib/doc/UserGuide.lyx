@@ -19010,7 +19010,7 @@ C
 \end_layout
 
 \begin_layout Subsection
-The Table dialog
+Table Dialog
 \end_layout
 
 \begin_layout Standard
@@ -19289,12 +19289,12 @@ Default
 \end_layout
 
 \begin_layout Subsection
-Longtables
+Multi-page Tables
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tables ! Longtables
+Tables ! Multi-page
 \end_layout
 
 \end_inset
@@ -19304,7 +19304,7 @@ Tables ! Longtables
 status collapsed
 
 \begin_layout Plain Layout
-Longtables
+Multi-page tables
 \end_layout
 
 \end_inset
@@ -19319,7 +19319,7 @@ Use
 \begin_inset space ~
 \end_inset
 
-long
+multi-page
 \begin_inset space ~
 \end_inset
 
@@ -19327,7 +19327,11 @@ table
 \family default
  in the tab 
 \family sans
-Longtable
+Multi-page
+\begin_inset space ~
+\end_inset
+
+table
 \family default
  of the table dialog to split the table automatically over more pages.
  Doing this enables some check boxes and you can now define:
@@ -19403,7 +19407,7 @@ Insert\SpecialChar menuseparator
 Caption
 \family default
 .
- More about longtable captions can be found in the 
+ More about multi-page table captions can be found in the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -36951,7 +36955,7 @@ Captions
 status collapsed
 
 \begin_layout Plain Layout
-Longtables ! Caption
+Tables ! Multi-page ! Caption
 \end_layout
 
 \end_inset
@@ -36960,7 +36964,7 @@ Longtables ! Caption
 \end_layout
 
 \begin_layout Standard
-Inserts a caption in a float or longtable.
+Inserts a caption in a float or multi-page table.
  Floats are described in section
 \begin_inset space ~
 \end_inset
@@ -36972,9 +36976,9 @@ reference "sec:Floats"
 
 \end_inset
 
-; captions in longtables are described in the section 
+; captions in multi-page tables are described in the section 
 \emph on
-Longtable Captions
+Multi-page Captions
 \emph default
  of the 
 \emph on
