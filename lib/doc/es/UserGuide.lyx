@@ -8613,14 +8613,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8633,7 +8631,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8658,7 +8655,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -19901,12 +19897,12 @@ bordes
 \end_layout
 
 \begin_layout Subsection
-Cuadros largos
+Cuadros multipágina
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos
+Cuadros ! Multipágina
 \end_layout
 
 \end_inset
@@ -19925,7 +19921,7 @@ cuadro
 \begin_inset space ~
 \end_inset
 
-largo
+multipágina
 \family default
  en la pestaña 
 \family sans
@@ -19933,7 +19929,7 @@ Cuadro
 \begin_inset space ~
 \end_inset
 
-largo
+multipágina
 \family default
  del diálogo para repartirlo automáticamente entre varias páginas.
  Al hacer esto se habilitan diversos botones opcionales en los que puede
@@ -20008,7 +20004,7 @@ Insertar\SpecialChar menuseparator
 Leyenda
 \family default
 .
- Más detalles sobre leyendas en cuadros largos en el manual 
+ Más detalles sobre leyendas en cuadros multipágina en el manual 
 \emph on
 Objetos insertados
 \emph default
@@ -36145,55 +36141,39 @@ texto
 \end_layout
 
 \begin_layout Subsection
-Cuadro/Tabla y 
-\lang english
-Rows & Columns
+Cuadro/Tabla, Filas y columnas
 \end_layout
 
 \begin_layout Standard
-Este menú solo aparece si el cursor está en un cuadro o tabla.
+Estos dos menús solo aparecen si el cursor está en un cuadro o tabla.
  Permite crear celdas multicolumna o multifila, añadir o quitar bordes y
  ajustar la alineación de celdas.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Dissolve Inset
+Disolver recuadro
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu only appears if the cursor is inside an inset.
- It will dissolve this inset.
- This means that the inset is deleted and its content is left as normal
- text.
+Este menú solo aparece si el cursor está en un recuadro de insertar.
+ Disolver un recuadro significa que este es eliminado pero su contenido
+ permanece como texto normal.
 \end_layout
 
 \begin_layout Subsection
-Configuración o Ecuaciones
+Configuración de\SpecialChar ldots
+, Ecuaciones
 \end_layout
 
 \begin_layout Standard
-Este menú solo es activo cuando el cursor está dentro de 
-\lang english
-an inset 
-\lang spanish
-o de una ecuación.
- 
-\lang english
-Here you can change 
-\lang spanish
-las propiedades 
-\lang english
-of the inset 
-\lang spanish
-o la fórmula.
+Estos menús solo están activos cuando el cursor está dentro de determinados
+ recuadros de inserción (notas, flotantes,\SpecialChar ldots
+) o dentro de una ecuación.
+ Permiten cambiar las propiedades del recuadro o de la fórmula.
 \end_layout
 
 \begin_layout Subsection
-Aumentar o disminuir la profundidad en las listas
+Aumentar, Disminuir anidación en listas
 \end_layout
 
 \begin_layout Standard
@@ -36225,7 +36205,7 @@ reference "subsec:Profundidad-de-numeración"
 \end_layout
 
 \begin_layout Subsection
-Iniciar nuevo entorno/Iniciar nuevo entorno padre
+Iniciar nuevo entorno, Iniciar nuevo entorno padre
 \end_layout
 
 \begin_layout Standard
@@ -37439,7 +37419,7 @@ Leyenda
 status collapsed
 
 \begin_layout Plain Layout
-Cuadros ! Largos ! leyenda en
+Cuadros ! Multipágina ! leyenda en
 \end_layout
 
 \end_inset
@@ -37448,7 +37428,7 @@ Cuadros ! Largos ! leyenda en
 \end_layout
 
 \begin_layout Standard
-Inserta una leyenda sobre o bajo los flotantes o los cuadros largos.
+Inserta una leyenda sobre o bajo los flotantes o los cuadros multipágina.
  Se describen, respectivamente, en la sección
 \begin_inset space ~
 \end_inset
@@ -37462,7 +37442,7 @@ reference "sec:Flotantes"
 
  de este manual, y en la sección 
 \emph on
-Leyendas en cuadros largos
+Leyendas en cuadros multipágina
 \emph default
  del manual 
 \emph on
@@ -38945,7 +38925,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Este comando es necesario para alinear las celdas en el siguiente cuadro
- largo.
+ multipágina.
  Véase el manual 
 \emph on
 Objetos insertados
