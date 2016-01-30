@@ -1552,8 +1552,9 @@ void GuiView::updateToolbars()
 			context |= Toolbars::MATH;
 		if (lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled())
 			context |= Toolbars::TABLE;
-		if (lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled()
-			&& lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true))
+		if (currentBufferView()->buffer().areChangesPresent()
+		    || (lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled()
+		        && lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true)))
 			context |= Toolbars::REVIEW;
 		if (lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled())
 			context |= Toolbars::MATHMACROTEMPLATE;

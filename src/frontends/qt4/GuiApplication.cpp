@@ -1399,6 +1399,9 @@ void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult &
 		if (dr.needBufferUpdate()) {
 			bv->cursor().clearBufferUpdate();
 			bv->buffer().updateBuffer();
+		} else if (dr.needChangesUpdate()) {
+			// updateBuffer() already updates the change-tracking presence flag
+			bv->buffer().updateChangesPresent();
 		}
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in
