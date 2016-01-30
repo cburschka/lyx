@@ -29,7 +29,8 @@ public:
 			error_(false),
 			update_(Update::None),
 			need_buf_update_(false),
-			need_msg_update_(true)
+			need_msg_update_(true),
+			need_changes_update_(false)
 	{}
 	///
 	DispatchResult(bool dispatched, Update::flags f) :
@@ -37,7 +38,8 @@ public:
 			error_(false),
 			update_(f),
 			need_buf_update_(false),
-			need_msg_update_(true)
+			need_msg_update_(true),
+			need_changes_update_(false)
 	{}
 	///
 	bool dispatched() const { return dispatched_; }
@@ -57,18 +59,28 @@ public:
 	Update::flags screenUpdate() const { return update_; }
 	///
 	void screenUpdate(Update::flags f) { update_ = f; }
+
 	/// Does the buffer need updating?
 	bool needBufferUpdate() const { return need_buf_update_; }
 	/// Force the buffer to be updated
 	void forceBufferUpdate() { need_buf_update_ = true; }
 	/// Clear the flag indicating we need an update
 	void clearBufferUpdate() { need_buf_update_ = false; }
+
 	/// Do we need to display a message in the status bar?
 	bool needMessageUpdate() const { return need_msg_update_; }
 	/// Force the message to be displayed
 	void forceMessageUpdate() { need_msg_update_ = true; }
 	/// Clear the flag indicating we need to display the message
 	void clearMessageUpdate() { need_msg_update_ = false; }
+
+	/// Do we need to update the change tracking presence flag?
+	bool needChangesUpdate() { return need_changes_update_; }
+	/// Force the change tracking presence flag to be updated
+	void forceChangesUpdate() { need_changes_update_ = true; }
+	/// Clear the flag indicating that we need to update the change tracking
+	/// presence flag
+	void clearChangesUpdate() { need_changes_update_ = false; }
 
 private:
 	/// was the event fully dispatched?
@@ -83,6 +95,8 @@ private:
 	bool need_buf_update_;
 	///
 	bool need_msg_update_;
+	///
+	bool need_changes_update_;
 };
 
 

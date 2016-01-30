@@ -78,6 +78,8 @@ class BufferParams;
 
 class Changes {
 public:
+	Changes() : is_update_required_(false) {}
+
 	/// set the pos to the given change
 	void set(Change const & change, pos_type pos);
 	/// set the range (excluding end) to the given change
@@ -98,6 +100,8 @@ public:
 
 	/// return true if there is a change in the given range (excluding end)
 	bool isChanged(pos_type start, pos_type end) const;
+	///
+	bool isChanged() const;
 
 	/// return true if the whole range is deleted
 	bool isDeleted(pos_type start, pos_type end) const;
@@ -118,6 +122,11 @@ public:
 	///
 	void addToToc(DocIterator const & cdit, Buffer const & buffer,
 	        bool output_active) const;
+
+	///
+	void updateBuffer(Buffer const & buf);
+	///
+	bool isUpdateRequired() const { return is_update_required_; }
 
 private:
 	class Range {
@@ -161,6 +170,10 @@ private:
 
 	/// table of changes, every row a change and range descriptor
 	ChangeTable table_;
+
+	/// signals that the buffer's flag tracked_changes_present_ needs to be
+	/// recalculated
+	bool is_update_required_;
 };
 
 

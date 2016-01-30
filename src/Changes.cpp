@@ -298,8 +298,21 @@ bool Changes::isChanged(pos_type const start, pos_type const end) const
 }
 
 
+bool Changes::isChanged() const
+{
+	ChangeTable::const_iterator it = table_.begin();
+	ChangeTable::const_iterator const itend = table_.end();
+	for (; it != itend; ++it) {
+		if (it->change.changed())
+			return true;
+	}
+	return false;
+}
+
+
 void Changes::merge()
 {
+	bool merged = false;
 	ChangeTable::iterator it = table_.begin();
 
 	while (it != table_.end()) {
@@ -312,6 +325,7 @@ void Changes::merge()
 				<< it->range.start);
 
 			table_.erase(it);
+			merged = true;
 			// start again
 			it = table_.begin();
 			continue;
@@ -330,6 +344,7 @@ void Changes::merge()
 			(it + 1)->change.changetime = max(it->change.changetime,
 							  (it + 1)->change.changetime);
 			table_.erase(it);
+			merged = true;
 			// start again
 			it = table_.begin();
 			continue;
@@ -337,6 +352,8 @@ void Changes::merge()
 
 		++it;
 	}
+	if (merged && !isChanged())
+		is_update_required_ = true;
 }
 
 
@@ -516,5 +533,16 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 			support::wrapParas(str, 4)));
 	}
 }
+
+
+void Changes::updateBuffer(Buffer const & buf)
+{
+	is_update_required_ = false;
+	if (!buf.areChangesPresent() && isChanged())
+		buf.setChangesPresent(true);
+}
+
+
+
 
 } // namespace lyx
