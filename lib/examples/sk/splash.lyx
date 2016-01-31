@@ -113,7 +113,7 @@ dokument procesor.
  Ale je to len trochu iné, netreba sa znepokojovať.
  Dokumentácia to všetko vyjasní.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
@@ -126,11 +126,21 @@ Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
 
 \begin_layout Enumerate
 Výstup z \SpecialChar LyX
--u vyzerá skvele! Vyberte Názor
+-u vyzerá skvele! Vyberte 
 \family sans
-\SpecialChar menuseparator
-DVI
+\lang english
+Document\SpecialChar menuseparator
+View
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
+\lang slovak
  a presvedčte sa na vlastné oči.
 \end_layout
 
@@ -179,8 +189,6 @@ Prispôsobenie
 \begin_layout Enumerate
 Domáca stránka \SpecialChar LyX
 -u je na 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -191,14 +199,71 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 .
  Tu nájdete informácie o \SpecialChar LyX
 -e, prihlásite sa do mailing list(ov) \SpecialChar LyX
 -u, môžte
  si užiť grafickú výpravu do \SpecialChar LyX
 -u (Graphical Tour), a iné.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\lang english
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+For example on the Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ the package name for the German language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-german
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
 \end_layout
 
 \end_body

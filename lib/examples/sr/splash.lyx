@@ -125,7 +125,22 @@ Da li smo pomenuli da treba da pročitate dokumentaciju?
 
 \begin_layout Enumerate
 Izlaz iz \SpecialChar LyX
--a izgleda odlično! Izaberite Pogled DVI, da sami vidite.
+-a izgleda odlično! Izaberite 
+\family sans
+\lang english
+Document\SpecialChar menuseparator
+View
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
+\family default
+\lang serbian-latin
+, da sami vidite.
 \end_layout
 
 \begin_layout Enumerate
@@ -187,6 +202,65 @@ http://www.lyx.org/
 -ovu mailing listu,
  ići na \SpecialChar LyX
  Grafičku turu, i još mnogo toga.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\lang english
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+For example on the Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ the package name for the German language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-german
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
 \end_layout
 
 \end_body

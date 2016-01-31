@@ -182,8 +182,6 @@ Customization
 \begin_layout Enumerate
 \SpecialChar LyX
  홈페이지는
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -194,13 +192,70 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 입니다.
  \SpecialChar LyX
 에 대한 정보를 얻고, \SpecialChar LyX
  메일링 리스트에 가입하고, \SpecialChar LyX
  그림으로 배우기(Graphical Tour) 등 많은 것을 할 수 있습니다.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\lang english
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+For example on the Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ the package name for the German language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-german
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
 \end_layout
 
 \end_body
