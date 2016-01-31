@@ -388,9 +388,6 @@ bool Inset::getStatus(Cursor &, FuncRequest const & cmd,
 		// Allow modification of our data.
 		// This needs to be handled in the doDispatch method of our
 		// instantiatable children.
-		// FIXME: Why don't we let the insets determine whether this
-		// should be enabled or not ? Now we need this check for 
-		// the tabular features. (vfr)
 		flag.setEnabled(true);
 		return true;
 

@@ -4872,7 +4872,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 }
 
 
-// function sets an object as defined in func_status.h:
+// function sets an object as defined in FuncStatus.h:
 // states OK, Unknown, Disabled, On, Off.
 bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
                              FuncStatus & status) const
