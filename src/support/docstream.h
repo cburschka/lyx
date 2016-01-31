@@ -42,6 +42,8 @@ typedef std::basic_ostream<char_type> odocstream;
 
 /// File stream for reading UTF8-encoded files with automatic conversion to
 /// UCS4.
+/// Buffering must be switched off if the encoding is changed after
+/// construction by calling rdbuf()->pubsetbuf(0, 0).
 class ifdocstream : public std::basic_ifstream<char_type> {
 	typedef std::basic_ifstream<char_type> base;
 public:

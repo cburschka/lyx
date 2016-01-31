@@ -88,6 +88,7 @@ public:
 		} else
 			out_cd_ = (iconv_t)(-1);
 	}
+	string const & encoding() const { return encoding_; }
 protected:
 	virtual ~iconv_codecvt_facet()
 	{
@@ -375,37 +376,51 @@ odocstream & operator<<(odocstream & os, SetEnc e)
 	if (has_facet<iconv_codecvt_facet>(os.rdbuf()->getloc())) {
 		// This stream must be a file stream, since we never imbue
 		// any other stream with a locale having a iconv_codecvt_facet.
+		iconv_codecvt_facet const & facet =
+			use_facet<iconv_codecvt_facet>(os.rdbuf()->getloc());
+
+		// FIXME Changing the codecvt facet of an open file is allowed,
+		// but unsafe for facets that use internal state (see the thread
+		// "iostreams: Does imbue() need to be called before open()?"
+		// in comp.std.c++.
+		// Currently it seems to work with gcc and MSVC, but not with
+		// clang on OS X.
+		// Avoid imbueing with the same encoding again if possible.
+		if (facet.encoding() == e.encoding)
+			return os;
+
 		// Flush the stream so that all pending output is written
 		// with the old encoding.
 		os.flush();
+
 		locale locale(os.rdbuf()->getloc(),
 			new iconv_codecvt_facet(e.encoding, ios_base::out));
-		// FIXME Does changing the codecvt facet of an open file
-		// stream always work? It does with gcc 4.1, but I have read
-		// somewhere that it does not with MSVC.
-		// What does the standard say?
 		os.imbue(locale);
 	}
 	return os;
 }
 
 
-//CHECKME: I just copied the code above, and have no idea whether it
-//is correct... (JMarc)
 idocstream & operator<<(idocstream & is, SetEnc e)
 {
 	if (has_facet<iconv_codecvt_facet>(is.rdbuf()->getloc())) {
 		// This stream must be a file stream, since we never imbue
 		// any other stream with a locale having a iconv_codecvt_facet.
-		// Flush the stream so that all pending output is written
-		// with the old encoding.
-		//is.flush();
+		iconv_codecvt_facet const & facet =
+			use_facet<iconv_codecvt_facet>(is.rdbuf()->getloc());
+
+		// FIXME Changing the codecvt facet of an open file is allowed,
+		// but unsafe for facets that use internal state (see the thread
+		// "iostreams: Does imbue() need to be called before open()?"
+		// in comp.std.c++.
+		// Currently it seems to work with gcc and MSVC, but not with
+		// clang on OS X.
+		// Avoid imbueing with the same encoding again if possible.
+		if (facet.encoding() == e.encoding)
+			return is;
+
 		locale locale(is.rdbuf()->getloc(),
 			new iconv_codecvt_facet(e.encoding, ios_base::in));
-		// FIXME Does changing the codecvt facet of an open file
-		// stream always work? It does with gcc 4.1, but I have read
-		// somewhere that it does not with MSVC.
-		// What does the standard say?
 		is.imbue(locale);
 	}
 	return is;
