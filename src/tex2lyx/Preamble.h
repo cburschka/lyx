@@ -119,6 +119,9 @@ private:
 	/// was at least one title layout found?
 	bool title_layout_found;
 
+	/// used for the handling of \newindex
+	int index_number;
+
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;
 	std::string h_biblio_style;

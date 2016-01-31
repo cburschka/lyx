@@ -185,9 +185,6 @@ const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "rotfloat", "splitidx", "setspace", "subscript", "textcomp", "tipa", "tipx",
 "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor", "xunicode", 0};
 
-// used for the handling of \newindex
-int index_number = 0;
-
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
 const char package_beg_sep = '\001';
@@ -460,7 +457,7 @@ string remove_braces(string const & value)
 
 
 Preamble::Preamble() : one_language(true), explicit_babel(false),
-	title_layout_found(false), h_font_cjk_set(false)
+	title_layout_found(false), index_number(0), h_font_cjk_set(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -1413,9 +1410,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// check the case that a standard color is used
 			if (space.empty() && is_known(argument, known_basic_colors)) {
 				h_fontcolor = rgbcolor2code(argument);
-				preamble.registerAutomaticallyLoadedPackage("color");
+				registerAutomaticallyLoadedPackage("color");
 			} else if (space.empty() && argument == "document_fontcolor")
-				preamble.registerAutomaticallyLoadedPackage("color");
+				registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's document_fontcolor is defined
 			// but not used for \color
 			else {
@@ -1435,7 +1432,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (is_known(argument, known_basic_colors)) {
 				h_backgroundcolor = rgbcolor2code(argument);
 			} else if (argument == "page_backgroundcolor")
-				preamble.registerAutomaticallyLoadedPackage("color");
+				registerAutomaticallyLoadedPackage("color");
 			// check the case that LyX's page_backgroundcolor is defined
 			// but not used for \pagecolor
 			else {
