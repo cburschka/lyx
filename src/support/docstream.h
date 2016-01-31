@@ -40,6 +40,8 @@ typedef std::basic_istream<char_type> idocstream;
  */
 typedef std::basic_ostream<char_type> odocstream;
 
+struct SetEnc;
+
 /// File stream for reading UTF8-encoded files with automatic conversion to
 /// UCS4.
 /// Buffering must be switched off if the encoding is changed after
@@ -48,6 +50,9 @@ class ifdocstream : public std::basic_ifstream<char_type> {
 	typedef std::basic_ifstream<char_type> base;
 public:
 	ifdocstream();
+	/// Create a stream with a specific encoding \p enc.
+	/// We must not pass \p enc as string, to avoid confusing it with a file name.
+	explicit ifdocstream(SetEnc const & enc);
 	explicit ifdocstream(const char* s,
 		std::ios_base::openmode mode = std::ios_base::in,
 		std::string const & encoding = "UTF-8");
@@ -61,6 +66,9 @@ class ofdocstream : public std::basic_ofstream<char_type> {
 	typedef std::basic_ofstream<char_type> base;
 public:
 	ofdocstream();
+	/// Create a stream with a specific encoding \p enc.
+	/// We must not pass \p enc as string, to avoid confusing it with a file name.
+	explicit ofdocstream(SetEnc const & enc);
 	explicit ofdocstream(const char* s,
 		std::ios_base::openmode mode = std::ios_base::out|std::ios_base::trunc,
 		std::string const & encoding = "UTF-8");

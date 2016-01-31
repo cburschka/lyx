@@ -839,24 +839,9 @@ namespace {
  *  You must ensure that \p parentFilePathTeX is properly set before calling
  *  this function!
  */
-bool tex2lyx(idocstream & is, ostream & os, string encoding,
+bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
              string const & outfiledir)
 {
-	// Set a sensible default encoding.
-	// This is used until an encoding command is found.
-	// For child documents use the encoding of the master, else ISO-8859-1,
-	// (formerly known by its latex name latin1), since ISO-8859-1 does not
-	// cause an iconv error if the actual encoding is different (bug 7509).
-	if (encoding.empty()) {
-		if (preamble.inputencoding() == "auto")
-			encoding = "ISO-8859-1";
-		else {
-			Encoding const * const enc = encodings.fromLyXName(
-				preamble.inputencoding(), true);
-			encoding = enc->iconvName();
-		}
-	}
-
 	Parser p(is, fixed_encoding ? default_encoding : string());
 	p.setEncoding(encoding);
 	//p.dump();
@@ -925,12 +910,45 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding,
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding,
+bool tex2lyx(FileName const & infilename, ostream & os, string encoding,
              string const & outfiledir)
 {
-	ifdocstream is;
+	// Set a sensible default encoding.
+	// This is used until an encoding command is found.
+	// For child documents use the encoding of the master, else try to
+	// detect it from the preamble, since setting an encoding of an open
+	// fstream does currently not work on OS X.
+	// Always start with ISO-8859-1, (formerly known by its latex name
+	// latin1), since ISO-8859-1 does not cause an iconv error if the
+	// actual encoding is different (bug 7509).
+	if (encoding.empty()) {
+		Encoding const * enc = 0;
+		if (preamble.inputencoding() == "auto") {
+			ifdocstream is(setEncoding("ISO-8859-1"));
+			// forbid buffering on this stream
+			is.rdbuf()->pubsetbuf(0, 0);
+			is.open(infilename.toFilesystemEncoding().c_str());
+			if (is.good()) {
+				Parser ep(is, string());
+				ep.setEncoding("ISO-8859-1");
+				Preamble encodingpreamble;
+				string const e = encodingpreamble
+					.parseEncoding(ep, documentclass);
+				if (!e.empty())
+					enc = encodings.fromLyXName(e, true);
+			}
+		} else
+			enc = encodings.fromLyXName(
+					preamble.inputencoding(), true);
+		if (enc)
+			encoding = enc->iconvName();
+		else
+			encoding = "ISO-8859-1";
+	}
+
+	ifdocstream is(setEncoding(encoding));
 	// forbid buffering on this stream
-	is.rdbuf()->pubsetbuf(0,0);
+	is.rdbuf()->pubsetbuf(0, 0);
 	is.open(infilename.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open input file \"" << infilename

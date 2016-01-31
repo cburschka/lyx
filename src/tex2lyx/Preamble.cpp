@@ -672,7 +672,8 @@ void Preamble::handle_geometry(vector<string> & options)
 
 
 void Preamble::handle_package(Parser &p, string const & name,
-                              string const & opts, bool in_lyx_preamble)
+                              string const & opts, bool in_lyx_preamble,
+                              bool detectEncoding)
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
@@ -909,9 +910,11 @@ void Preamble::handle_package(Parser &p, string const & name,
 			string const encoding = options.back();
 			Encoding const * const enc = encodings.fromLaTeXName(
 				encoding, Encoding::inputenc, true);
-			if (!enc)
-				cerr << "Unknown encoding " << encoding << ". Ignoring." << std::endl;
-			else {
+			if (!enc) {
+				if (!detectEncoding)
+					cerr << "Unknown encoding " << encoding
+					     << ". Ignoring." << std::endl;
+			} else {
 				if (!enc->unsafe() && options.size() == 1 && one_language == true)
 					h_inputencoding = enc->name();
 				p.setEncoding(enc->iconvName());
@@ -1026,7 +1029,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	}
 
 	// We need to do something with the options...
-	if (!options.empty())
+	if (!options.empty() && !detectEncoding)
 		cerr << "Ignoring options '" << join(options, ",")
 		     << "' of package " << name << '.' << endl;
 
@@ -1260,6 +1263,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 {
 	// initialize fixed types
 	special_columns_['D'] = 3;
+	parse(p, forceclass, false, tc);
+}
+
+
+void Preamble::parse(Parser & p, string const & forceclass,
+                     bool detectEncoding, TeX2LyXDocClass & tc)
+{
 	bool is_full_document = false;
 	bool is_lyx_file = false;
 	bool in_lyx_preamble = false;
@@ -1275,11 +1285,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	}
 	p.reset();
 
+	if (detectEncoding && !is_full_document)
+		return;
+
 	while (is_full_document && p.good()) {
+		if (detectEncoding && h_inputencoding != "auto" &&
+		    h_inputencoding != "default")
+			return;
+
 		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
-		cerr << "t: " << t << "\n";
+		if (!detectEncoding)
+			cerr << "t: " << t << '\n';
 #endif
 
 		//
@@ -1314,7 +1332,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (comment.size() > magicXeLaTeX.size()
 				  && comment.substr(0, magicXeLaTeX.size()) == magicXeLaTeX
 				  && h_inputencoding == "auto") {
-				cerr << "XeLaTeX comment found, switching to UTF8\n";
+				if (!detectEncoding)
+					cerr << "XeLaTeX comment found, switching to UTF8\n";
 				h_inputencoding = "utf8";
 			}
 			smatch sub;
@@ -1657,16 +1676,18 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			vector<string>::const_iterator end = vecnames.end();
 			for (; it != end; ++it)
 				handle_package(p, trimSpaceAndEol(*it), options,
-					       in_lyx_preamble);
+					       in_lyx_preamble, detectEncoding);
 		}
 
 		else if (t.cs() == "inputencoding") {
 			string const encoding = p.getArg('{','}');
 			Encoding const * const enc = encodings.fromLaTeXName(
 				encoding, Encoding::inputenc, true);
-			if (!enc)
-				cerr << "Unknown encoding " << encoding << ". Ignoring." << std::endl;
-			else {
+			if (!enc) {
+				if (!detectEncoding)
+					cerr << "Unknown encoding " << encoding
+					     << ". Ignoring." << std::endl;
+			} else {
 				if (!enc->unsafe())
 					h_inputencoding = enc->name();
 				p.setEncoding(enc->iconvName());
@@ -1946,6 +1967,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_options += ',' + lyx2babel(default_language);
 		}
 	}
+}
+
+
+string Preamble::parseEncoding(Parser & p, string const & forceclass)
+{
+	TeX2LyXDocClass dummy;
+	parse(p, forceclass, true, dummy);
+	if (h_inputencoding != "auto" && h_inputencoding != "default")
+		return h_inputencoding;
+	return "";
 }
 
 

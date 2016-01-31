@@ -92,6 +92,8 @@ public:
 	/// Parses the LaTeX preamble into internal data
 	void parse(Parser & p, std::string const & forceclass,
 	           TeX2LyXDocClass & tc);
+	/// Parse the encoding from a preamble. *this is unusable afterwards.
+	std::string parseEncoding(Parser & p, std::string const & forceclass);
 	/// Writes the LyX file header from internal data
 	bool writeLyXHeader(std::ostream & os, bool subdoc,
 	                    std::string const & outfiledir);
@@ -102,6 +104,9 @@ public:
 	static const char * const coded_polyglossia_languages[];
 
 private:
+	///
+	void parse(Parser & p, std::string const & forceclass,
+	           bool detectEncoding, TeX2LyXDocClass & tc);
 	///
 	std::map<std::string, std::vector<std::string> > used_packages;
 	/// Packages that will be loaded automatically by LyX
@@ -218,7 +223,8 @@ private:
 	void handle_geometry(std::vector<std::string> & options);
 	///
 	void handle_package(Parser &p, std::string const & name,
-	                    std::string const & opts, bool in_lyx_preamble);
+	                    std::string const & opts, bool in_lyx_preamble,
+	                    bool detectEncoding);
 	///
 	void handle_if(Parser & p, bool in_lyx_preamble);
 

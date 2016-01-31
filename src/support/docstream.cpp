@@ -334,6 +334,12 @@ ifdocstream::ifdocstream() : base()
 }
 
 
+ifdocstream::ifdocstream(SetEnc const & enc) : base()
+{
+	setEncoding(*this, enc.encoding, in);
+}
+
+
 ifdocstream::ifdocstream(const char* s, ios_base::openmode mode,
 			 string const & encoding)
 	: base()
@@ -346,6 +352,12 @@ ifdocstream::ifdocstream(const char* s, ios_base::openmode mode,
 ofdocstream::ofdocstream(): base()
 {
 	setEncoding(*this, "UTF-8", out);
+}
+
+
+ofdocstream::ofdocstream(SetEnc const & enc) : base()
+{
+	setEncoding(*this, enc.encoding, out);
 }
 
 
