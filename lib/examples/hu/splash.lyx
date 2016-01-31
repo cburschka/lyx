@@ -136,9 +136,20 @@ Eléggé kihangsúlyoztuk, hogy el kellene olvasni a dokumentációt?
 A \SpecialChar LyX
  segítségével szép dokumentumokat készíthetünk! Válassza a 
 \family sans
-Nézet\SpecialChar menuseparator
-DVI
+\lang english
+Document\SpecialChar menuseparator
+View
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
+ 
+\lang magyar
  menüpontot, és ellenőrizze saját maga.
 \end_layout
 
@@ -187,8 +198,6 @@ Testreszabás
 \begin_layout Enumerate
 A \SpecialChar LyX
  honlapja a következő címen található meg: 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -199,13 +208,70 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 .
  Itt további információkat tudhat meg a \SpecialChar LyX
 -ről, feliratkozhat a levelezőlistákra,
  vagy megnézheti hogyan néz ki a \SpecialChar LyX
  menetközben stb.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\lang english
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+For example on the Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ the package name for the German language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-german
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
 \end_layout
 
 \end_body

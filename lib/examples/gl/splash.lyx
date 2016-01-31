@@ -130,13 +130,19 @@ Mencionamos xa que debe ler a documentación?
 O resultado ao imprimir os documentos no \SpecialChar LyX
  é excelente! Seleccione 
 \family sans
-Arquivo\SpecialChar menuseparator
-Ver
+\lang english
+Document\SpecialChar menuseparator
+View
 \begin_inset space ~
 \end_inset
 
-Postcript
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
+\lang galician
  para comproba-lo por si mesmo.
 \end_layout
 
@@ -189,8 +195,6 @@ Personalización
 \begin_layout Enumerate
 A páxina na internet do \SpecialChar LyX
  é 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -201,11 +205,68 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 .
  Nela pode obter mais información sobre o programa, inscreber-se na(s) lista(s)
  de discusión, ver a Turnê Gráfica etc.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\lang english
+Note for Linux users:
+\series default
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
+\begin_inset Newline newline
+\end_inset
+
+For example on the Linux distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ and 
+\family sans
+Debian
+\family default
+ the package name for the German language is 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-german
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
+
+\family sans
+Reconfigure
+\family default
+.
 \end_layout
 
 \end_body

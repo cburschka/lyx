@@ -187,8 +187,6 @@ Anpassung
 \begin_layout Enumerate
 Die Internet-Seite von \SpecialChar LyX
  ist 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -199,8 +197,6 @@ http://www.lyx.org/WebDe.Home
 
 \end_inset
 
-
-\family default
 .
  Dort bekommen Sie aktuelle Informationen zu \SpecialChar LyX
 , können Mailing-Listen abonnieren,
@@ -209,12 +205,13 @@ http://www.lyx.org/WebDe.Home
 \end_layout
 
 \begin_layout Enumerate
-Installationshinweis für \SpecialChar LyX
- unter Linux: Wenn Ihre Linux-Distribution zusammen
- mit \SpecialChar LyX
- die \SpecialChar LaTeX
+
+\series bold
+Hinweis für Linux-Benutzer:
+\series default
+ Bitte überprüfen Sie, ob die Sprachpakete für die \SpecialChar LaTeX
 -Distribution 
-\family typewriter
+\family sans
 \SpecialChar TeX
 
 \begin_inset space ~
@@ -222,34 +219,43 @@ Installationshinweis für \SpecialChar LyX
 
 Live
 \family default
- installiert hat, oder 
-\family typewriter
-\SpecialChar TeX
-
-\begin_inset space ~
+ installiert sind.
+ Ansonsten bekommen Sie \SpecialChar LaTeX
+-Fehler.
+\begin_inset Newline newline
 \end_inset
 
-Live
+Bei den Linux-Distributionen 
+\family sans
+(K,X)Ubuntu
 \family default
- bereits installiert war, prüfen Sie ob das deutsche Sprachpaket installiert
- wurde.
-\begin_inset Separator parbreak
+ und 
+\family sans
+Debian
+\family default
+ lautet z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ der Name des deutschen Sprachpakets 
+\begin_inset Quotes gld
 \end_inset
 
 
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-(K,X)Ubuntu stellt dafür das Paket 
 \family typewriter
 texlive-lang-german
 \family default
- zur Verfügung.
-\end_layout
 
-\begin_layout Standard
-Nach der Installation führen Sie das Menü
+\begin_inset Quotes grd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Nach der Installation müssen Sie das \SpecialChar LyX
+-Menü
 \family sans
  Werkzeuge
 \family default
@@ -262,9 +268,8 @@ Neu
 
 konfigurieren
 \family default
- aus.
+ ausführen.
 \end_layout
 
-\end_deeper
 \end_body
 \end_document
