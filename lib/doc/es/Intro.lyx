@@ -598,11 +598,7 @@ Por supuesto, muchos procesadores de texto modernos manejan símbolos matemátic
  está construido sobre el sistema de proceso de documentos \SpecialChar LaTeX
 .
  \SpecialChar LaTeX
- 
-\lang english
-has been around since 1985
-\lang spanish
-, y 
+ existe desde 1985, y 
 \emph on
 funciona
 \emph default
@@ -1005,7 +1001,7 @@ letra cursiva
 \begin_layout Itemize
 El tipo 
 \family typewriter
-máquina de escribir
+ancho fijo
 \family default
  se usa para programas y nombres de archivo, código y funciones de \SpecialChar LyX
 .
@@ -1014,7 +1010,7 @@ máquina de escribir
 \begin_layout Itemize
 El tipo 
 \family sans
-Sans Serif
+palo seco
 \family default
  se usa para menús, botones, o nombres de menús emergentes, y nombres de
  teclas.
@@ -1035,7 +1031,7 @@ estilo
 \begin_layout Itemize
 El tipo 
 \series bold
-Negrita
+negrita
 \series default
  se usa para código \SpecialChar LaTeX
 .
@@ -1194,7 +1190,8 @@ Abajo
 \begin_inset Quotes erd
 \end_inset
 
-: auto-explicativas (también llamadas teclas de dirección o cursores).
+: las correspondientes teclas de flecha (también llamadas teclas de dirección
+ o cursores).
 \end_layout
 
 \begin_layout Itemize
@@ -1325,7 +1322,7 @@ Siguiente
 \begin_layout Itemize
 
 \family sans
-Retorno de carro
+Retorno
 \family default
  e 
 \family sans
@@ -1352,7 +1349,7 @@ Enter,
  \SpecialChar LyX
  trata a todas como la misma tecla, así que usaremos 
 \family sans
-Retorno de carro
+Retorno
 \family default
  e 
 \family sans
