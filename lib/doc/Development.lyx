@@ -2062,7 +2062,6 @@ We are still working on getting the tests to run in parallel.
  pass when run sequentially.
  A reasonable approach is to first run the tests in parallel and then run
  the failed tests sequentially.
- 
 \end_layout
 
 \begin_layout Standard
@@ -2095,6 +2094,35 @@ rerun-failed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+When specifying a subset of the tests (e.g.
+ using 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar nobreakdash
+R <pattern>
+\end_layout
+
+\end_inset
+
+), the same subset must be specified when using the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar nobreakdash
+\SpecialChar nobreakdash
+rerun-failed
+\end_layout
+
+\end_inset
+
+ option because it is the test numbers that are used to index which tests
+ failed on the previous run.
 \end_layout
 
 \begin_layout Standard
