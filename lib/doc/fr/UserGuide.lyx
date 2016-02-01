@@ -8811,14 +8811,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8831,7 +8829,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8864,7 +8861,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -20780,12 +20776,12 @@ Implicite
 \end_layout
 
 \begin_layout Subsection
-Tableaux longs
+Tableaux multi-pages
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableaux ! Tableaux Longs
+Tableaux ! Tableaux multi-pages
 \end_layout
 
 \end_inset
@@ -20795,7 +20791,7 @@ Tableaux ! Tableaux Longs
 status collapsed
 
 \begin_layout Plain Layout
-Tableaux longs
+Tableaux multi-pages
 \end_layout
 
 \end_inset
@@ -20819,7 +20815,7 @@ tableaux
 \begin_inset space ~
 \end_inset
 
-longs
+multi-pages
 \family default
  de l'onglet 
 \family sans
@@ -20827,7 +20823,7 @@ Tableau
 \begin_inset space ~
 \end_inset
 
-long
+multi-pages
 \family default
  de la fenêtre 
 \family sans
@@ -20868,14 +20864,14 @@ Premier
 
 En-tête: la ligne courante et toutes celles situées au-dessus et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- d'en-tête utilisées pour la première page du tableau long.
+ d'en-tête utilisées pour la première page du tableau multi-pages.
 \end_layout
 
 \begin_layout Description
 Pied: la ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant les pieds de toutes les pages du tableau long ; sauf de la
- dernière page si 
+ constituant les pieds de toutes les pages du tableau multi-pages ; sauf
+ de la dernière page si 
 \family sans
 Dernier
 \begin_inset space ~
@@ -20893,7 +20889,7 @@ Dernier
 
 pied: la ligne courante et toutes celles situées au-dessous et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- constituant le pied de la dernière page du tableau long.
+ constituant le pied de la dernière page du tableau multi-pages.
 \end_layout
 
 \begin_layout Description
@@ -20907,7 +20903,7 @@ Légende
 .
  
 \series default
-Vous trouverez plus d'information sur les tableaux longs dans le manuel
+Vous trouverez plus d'information sur les tableaux multi-pages dans le manuel
  
 \emph on
 Objets Insérés
@@ -20956,7 +20952,7 @@ et
 En-tête
 \family default
 .
- Voyez le tableau long qui suit pour voir comment ça fonctionne:
+ Voyez le tableau multi-pages qui suit pour voir comment ça fonctionne:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -37300,53 +37296,35 @@ Texte.
 \end_layout
 
 \begin_layout Subsection
-Tableau et 
-\lang english
-Rows & Columns
+Tableau et Lignes & colonnes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These menus only appear if the cursor is inside a table.
- It allows you to create multicolumn and multirow cells, add or remove borders
- of a cell and to set the alignment of the cell.
+Ces menus ne sont actifs que si le curseur se trouve dans un tableau.
+ Ils vous permettent de créer des cellules multi-lignes et multi-colonnes,
+ d'ajouter ou d'enlever les bordures d'une cellule et de positionner l'alignemen
+t d'une cellule.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Dissolve Inset
+Dissoudre l'insert
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu only appears if the cursor is inside an inset.
- It will dissolve this inset.
- This means that the inset is deleted and its content is left as normal
- text.
+Ce menu n'est actif que si le curseur se trouve dans un insert.
+ Il dissout l'insert, ce qui veut dire que l'insert disparaît, mais que
+ son contenu reste en tant que texte ordinaire.
 \end_layout
 
 \begin_layout Subsection
-Paramètres ou Math
+Paramètres de \SpecialChar ldots
+ ou Maths
 \end_layout
 
 \begin_layout Standard
-Cette menu n'est actif que si le curseur se trouve dans 
-\lang english
-an inset
-\lang french
- ou une formule mathématique.
- 
-\lang english
-Here you can change the
-\lang french
- propriétés 
-\lang english
-of the inset
-\lang french
- ou de cette formule.
+Ces menus ne sont actifs que si le curseur se trouve dans un insert ou une
+ formule mathématique.
+ Vous pouvez changer ici les propriétés de l'insert ou de la formule.
 \end_layout
 
 \begin_layout Subsection
@@ -38663,7 +38641,7 @@ Legendes@Légendes
 status collapsed
 
 \begin_layout Plain Layout
-Tableaux longs ! Légende
+Tableaux multi-pages ! Légende
 \end_layout
 
 \end_inset
@@ -38672,7 +38650,7 @@ Tableaux longs ! Légende
 \end_layout
 
 \begin_layout Standard
-Insère une légende dans un flottant ou un tableau long.
+Insère une légende dans un flottant ou un tableau multi-pages.
  Les flottants sont décrits section
 \begin_inset space ~
 \end_inset
@@ -38684,9 +38662,10 @@ reference "sec:Flottants"
 
 \end_inset
 
-, les légendes pour le tableaux longs sont décrites dans la section 
+, les légendes pour le tableaux multi-pages sont décrites dans la section
+ 
 \emph on
-Légendes pour tableaux longs
+Légendes pour tableaux multi-pages
 \emph default
  du manuel 
 \emph on
@@ -40092,7 +40071,7 @@ LTleft}{0pt}
 status collapsed
 
 \begin_layout Plain Layout
-Ceci est indispensable pour aligner les tableaux longs qui suivent.
+Ceci est indispensable pour aligner les tableaux multi-pages qui suivent.
  Voyez le manuel 
 \emph on
 Objets insérés 

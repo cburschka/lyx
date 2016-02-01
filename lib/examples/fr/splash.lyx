@@ -212,11 +212,11 @@ http://www.lyx.org/WebFr.Home
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Note à l'attention des utilisateurs Linux:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ il vous faut vérifier que les paquetages de langue de la distribution \SpecialChar LaTeX
+
+ 
 \family sans
 \SpecialChar TeX
 
@@ -225,45 +225,45 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+ dont vous aurez besoin sont installés, sinon vous aurez des erreurs \SpecialChar LaTeX
+.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Par exemple avec les distributions 
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+ et 
 \family sans
 Debian
 \family default
- the package name for the German language is 
-\begin_inset Quotes eld
+, le nom du paquetage pour le français est 
+\family typewriter
+
+\begin_inset Quotes fld
 \end_inset
 
-
-\family typewriter
-texlive-lang-german
+texlive-lang-french
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+Une fois les paquetages de langue installés, il vous faut activer le menu
+ \SpecialChar LyX
+ 
 \family sans
-Tools
+Outils
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Reconfigurer
 \family default
 .
 \end_layout

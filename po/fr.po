@@ -310,7 +310,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-26 18:05-0000\n"
+"PO-Revision-Date: 2016-02-01 16:06-0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -6326,7 +6326,6 @@ msgstr "Exercice"
 #: lib/layouts/theorems-sec-bytype.module:70
 msgid "Lemma"
 msgstr "Lemme"
-
 
 #: lib/layouts/AEA.layout:251
 #: lib/layouts/agutex.layout:164
@@ -18228,7 +18227,7 @@ msgstr "Fermer l'insert|i"
 #: lib/ui/stdcontext.inc:153
 #: lib/ui/stdcontext.inc:612
 msgid "Dissolve Inset|D"
-msgstr "Supprimer l'insert|u"
+msgstr "Dissoudre l'insert|u"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Show Label|L"
@@ -19100,7 +19099,7 @@ msgstr "Réduire la profondeur de liste|u"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Dissolve Inset"
-msgstr "Supprimer l'insert"
+msgstr "Dissoudre l'insert"
 
 #: lib/ui/stdmenus.inc:137
 msgid "TeX Code Settings...|C"
@@ -19196,7 +19195,7 @@ msgstr "Sélection, lignes jointives|j"
 
 #: lib/ui/stdmenus.inc:181
 msgid "Dissolve Text Style"
-msgstr "Supprimer le style de caractère"
+msgstr "Dissoudre le style de caractère"
 
 #: lib/ui/stdmenus.inc:185
 msgid "Customized...|C"
@@ -29611,7 +29610,7 @@ msgstr "Graphique"
 #: src/frontends/qt4/GuiGraphics.cpp:263
 #: src/frontends/qt4/GuiGraphics.cpp:279
 msgid "Dissolve previous group?"
-msgstr "Supprimer le groupe précédent ?"
+msgstr "Dissoudre le groupe précédent ?"
 
 #: src/frontends/qt4/GuiGraphics.cpp:264
 #, c-format
@@ -29622,7 +29621,7 @@ msgid ""
 "How do you want to proceed?"
 msgstr ""
 "Si vous associez ce graphique au groupe '%2$s',\n"
-"le groupe précédemment associé '%1$s' sera supprimé,\n"
+"le groupe précédemment associé '%1$s' sera dissous,\n"
 "parce que ce graphique y est seul.\n"
 "Comment voulez-vous poursuivre ?"
 
@@ -29646,7 +29645,7 @@ msgid ""
 "How do you want to proceed?"
 msgstr ""
 "Si vous enlevez ce graphique du groupe '%1$s',\n"
-"le groupe  sera supprimé,\n"
+"le groupe  sera dissous,\n"
 "parce que ce graphique y est seul.\n"
 "Comment voulez-vous poursuivre ?"
 
