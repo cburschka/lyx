@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 506
+\lyxformat 504
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1547,8 +1547,8 @@ status collapsed
 \end_inset
 
  command line option.
- The test checks for errors reported by LyX (However, error-free export
- is no guarantee for an error-free output document.)
+ The tests checks for errors reported by LyX.
+ (However, error-free export is no guarantee for an error-free output document.)
 \end_layout
 
 \begin_layout Paragraph
@@ -1569,6 +1569,67 @@ When making a non-trivial change to a .layout file, run the export and layout
 \begin_layout Itemize
 When making non-trivial changes to a .lyx file, run the export tests correspondin
 g to that .lyx file.
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+This rule is due to revision.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+There is an objection from the documentation maintainer that working on
+ the documentation must not be complicated by having to consider non-standard
+ exports.
+\end_layout
+
+\begin_layout Itemize
+successful compiling/testing an edited documentation file with pdflatex
+ suffices to ensure it can be commited, not tests with other exports are
+ required.
+\end_layout
+
+\begin_layout Plain Layout
+If sudden failures with other exports due to “half-tested” documentation
+ updates are a problem for the test maintainer, the test suite should use
+ copies that are 
+\end_layout
+
+\begin_layout Itemize
+copied to a cache dir (autotests/samples/doc/, say) but not changed,
+\end_layout
+
+\begin_layout Itemize
+updated regularely (but on a time chosen by the test suite maintainer) from
+ the originals in lib/doc/
+\end_layout
+
+\begin_layout Plain Layout
+This way, 
+\end_layout
+
+\begin_layout Itemize
+no test will fail due to ongoing work on documentation,
+\end_layout
+
+\begin_layout Itemize
+the documentation is still tested in full (with some delay),
+\end_layout
+
+\begin_layout Itemize
+failures with non-default export can be examined and handled accordingly
+ in one run with the cache update,
+\end_layout
+
+\begin_layout Itemize
+“interesting failures” (like the nested-language+polyglossia problem in
+ es/Customization can be separated and moved into dedicated test samples.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1904,6 +1965,17 @@ status collapsed
 ctest
 \end_layout
 
+\end_inset
+
+.
+ A full, up-to-date TeXLive installation is recommended to run the tests.
+ Otherwise, some tests will fail.
+ Tests with additional requirements are labeled 
+\begin_inset Quotes eld
+\end_inset
+
+unreliable:nonstandard
+\begin_inset Quotes erd
 \end_inset
 
 .
@@ -2571,6 +2643,20 @@ reference "par:Unreliable-tests"
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Itemize
+In case of tests failing due to missing requirements (when only a subset
+ of TeXLive is installed or a test labeled 
+\begin_inset Quotes eld
+\end_inset
+
+unreliable:nonstandard
+\begin_inset Quotes erd
+\end_inset
+
+ fails), ignore the failure, ask for someone else to run the test, or install
+ the missing ressources and try again.
 \end_layout
 
 \begin_layout Paragraph
