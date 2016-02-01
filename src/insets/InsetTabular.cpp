@@ -3965,9 +3965,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			|| cmd.x() > xo(cur.bv()) + tabular.width()) {
 			row_type r = rowFromY(cur, cmd.y());
 			cur.idx() = tabular.getFirstCellInRow(r);
+			cur.pit() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.idx() = tabular.getLastCellInRow(r);
+			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 			cur.setSelection(true);
 			bvcur = cur; 
@@ -3980,9 +3982,11 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			|| cmd.y() > y0 + tabular.height()) {
 			col_type c = columnFromX(cur, cmd.x());
 			cur.idx() = tabular.cellIndex(0, c);
+			cur.pit() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.idx() = tabular.cellIndex(tabular.nrows() - 1, c);
+			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 			cur.setSelection(true);
 			bvcur = cur; 
