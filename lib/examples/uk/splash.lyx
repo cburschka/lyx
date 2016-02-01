@@ -126,10 +126,8 @@ status collapsed
 Документи, створені у \SpecialChar LyX
  виглядають чудово! Скористайтеся пунктом меню
 \family sans
- 
-\lang english
-Document\SpecialChar menuseparator
-View
+ Документ\SpecialChar menuseparator
+Переглянути
 \begin_inset space ~
 \end_inset
 
@@ -139,7 +137,6 @@ View
 
 (pdflatex)]
 \family default
-\lang ukrainian
 , щоб переконатися у цьому на власні очі.
 \end_layout
 
@@ -173,7 +170,7 @@ View
  Докладніше про це можна дізнатися з розділу
 \family sans
  Довідка\SpecialChar menuseparator
-Підручник з налаштування
+Підручник з налаштовування
 \family default
 .
 \end_layout
@@ -202,11 +199,11 @@ http://www.lyx.org/
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Зауваження для користувачів Linux:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ будь ласка, не забудьте встановити потрібні вам мовні пакунки дистрибутива
+ \SpecialChar LaTeX
+ 
 \family sans
 \SpecialChar TeX
 
@@ -215,45 +212,38 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+.
+ Якщо ви цього не зробите, спроби запустити \SpecialChar LaTeX
+ завершуватимуться повідомленнями
+ про помилки.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Для прикладу, у дистрибутивах Linux 
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+ та 
 \family sans
 Debian
 \family default
- the package name for the German language is 
-\begin_inset Quotes eld
-\end_inset
-
-
+ пакунок для української мови називається 
 \family typewriter
-texlive-lang-german
+«texlive-lang-cyrillic»
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
 .
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+Після встановлення мовних пакунків слід скористатися пунктом меню \SpecialChar LyX
+ 
 \family sans
-Tools
+Інструменти
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Переконфігурувати
 \family default
 .
 \end_layout
