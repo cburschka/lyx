@@ -77,19 +77,19 @@
 \end_layout
 
 \begin_layout Section*
-Las n primeras cosas que debe saber al usar \SpecialChar LyX
+Lo más importante que hay que saber para usar \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
  viene con una excelente documentación (por favor, ¡úsela!).
- Comience en el menú con 
+ Comience con el menú 
 \family sans
 Ayuda\SpecialChar menuseparator
 Introducción
 \family default
-, que le hará una introducción muy breve a los manuales.
+, que da una introducción muy breve a la documentación.
  Después aprenda a usar \SpecialChar LyX
  con 
 \family sans
@@ -119,7 +119,7 @@ procesador de documentos
 \begin_layout Enumerate
 La salida de \SpecialChar LyX
  tiene un aspecto impecable.
- Ejecute en el menú 
+ Ejecute el menú 
 \family sans
 Documento\SpecialChar menuseparator
 Ver
@@ -132,13 +132,14 @@ Ver
 
 (pdflatex)]
 \family default
- o clic el botón 
+ o pulse en la barra de herramientas el botón 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
  para comprobarlo.
+ (Véase punto 7).
 \end_layout
 
 \begin_layout Enumerate
@@ -149,7 +150,7 @@ Sí, \SpecialChar LyX
  puede importar ficheros \SpecialChar LaTeX
 .
  Los usuarios experimentados de \SpecialChar LaTeX
- deberían leerse el capítulo 
+ deberían leer el capítulo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -171,11 +172,11 @@ Tutorial
 
 \begin_layout Enumerate
 \SpecialChar LyX
- tiene montones de ventajas para aquellos que leen o escriben en un idioma
+ tiene muchas características para aquellos que leen o escriben en un idioma
  distinto del inglés.
- Además, las asociaciones de teclas, la barra de herramientas y muchas otras
- características son altamente configurables.
- Mire en 
+ Además, las asociaciones de teclas, las barras de herramientas y muchas
+ otras características son altamente configurables.
+ Véase 
 \family sans
 Ayuda\SpecialChar menuseparator
 Personalización
@@ -209,11 +210,10 @@ Tour Gráfico de \SpecialChar LyX
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Nota para usuarios de Linux:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ Comprueba, por favor, que los paquetes de idioma de la distribución \SpecialChar LaTeX
+ 
 \family sans
 \SpecialChar TeX
 
@@ -222,27 +222,26 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+ están instalados, si no, habrá errores \SpecialChar LaTeX
+.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Por ejemplo, en las distribuciones Linux 
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+ y 
 \family sans
 Debian
 \family default
- the package name for the German language is 
+ el nombre del paquete para el idioma español es 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-spanish
 \family default
 
 \begin_inset Quotes erd
@@ -252,15 +251,16 @@ texlive-lang-german
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+Después de la instalación de paquetes de idioma hay que usar en \SpecialChar LyX
+ el menú
+ 
 \family sans
-Tools
+Herramientas
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Reconfigurar
 \family default
 .
 \end_layout
