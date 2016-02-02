@@ -168,8 +168,6 @@ Anpassung
 
 \begin_layout Enumerate
 Die Internet-Seite von LyX ist 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -180,8 +178,6 @@ http://www.lyx.org/WebDe.Home
 
 \end_inset
 
-
-\family default
 .
  Dort bekommen Sie aktuelle Informationen zu LyX, können Mailing-Listen
  abonnieren, sich einen grafischen Rundgang durch LyX ansehen und vieles
@@ -189,60 +185,53 @@ http://www.lyx.org/WebDe.Home
 \end_layout
 
 \begin_layout Enumerate
-Installationshinweis für LyX unter Linux: Wenn Ihre Linux-Distribution zusammen
- mit LyX die LaTeX-Distribution 
-\family typewriter
-Te
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+\series bold
+Hinweis für Linux-Benutzer:
+\series default
+ Bitte überprüfen Sie, ob die Sprachpakete für die LaTeX-Distribution 
+\family sans
+TeX
 \begin_inset space ~
 \end_inset
 
 Live
 \family default
- installiert hat, oder 
-\family typewriter
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
+ installiert sind.
+ Ansonsten bekommen Sie LaTeX-Fehler.
+\begin_inset Newline newline
 \end_inset
 
-X
-\begin_inset space ~
-\end_inset
-
-Live
+Bei den Linux-Distributionen 
+\family sans
+(K,X)Ubuntu
 \family default
- bereits installiert war, prüfen Sie ob das deutsche Sprachpaket installiert
- wurde.
-\end_layout
+ und 
+\family sans
+Debian
+\family default
+ lautet z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_deeper
-\begin_layout Description
-(K,X)Ubuntu stellt dafür das Paket 
+B.
+ der Name des deutschen Sprachpakets 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 texlive-lang-german
 \family default
- zur Verfügung.
-\end_layout
 
-\begin_layout Standard
-Nach der Installation führen Sie das Menü
+\begin_inset Quotes grd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Nach der Installation müssen Sie das LyX-Menü
 \family sans
  Werkzeuge
 \family default
@@ -255,9 +244,8 @@ Neu
 
 konfigurieren
 \family default
- aus.
+ ausführen.
 \end_layout
 
-\end_deeper
 \end_body
 \end_document

@@ -174,8 +174,6 @@ Personnalisation
 
 \begin_layout Enumerate
 Le site web francophone de LyX est 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -186,11 +184,64 @@ http://www.lyx.org/WebFr.Home
 
 \end_inset
 
-
-\family default
 .
  Vous pouvez y piocher des informations, souscrire à l'une ou l'autre des
  listes de messagerie, faire le tour de LyX (par l'image), et plus encore.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Note à l'attention des utilisateurs Linux:
+\series default
+ il vous faut vérifier que les paquetages de langue de la distribution LaTeX
+ 
+\family sans
+TeX
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ dont vous aurez besoin sont installés, sinon vous aurez des erreurs LaTeX.
+\begin_inset Newline newline
+\end_inset
+
+Par exemple avec les distributions 
+\family sans
+(K,X)Ubuntu
+\family default
+ et 
+\family sans
+Debian
+\family default
+, le nom du paquetage pour le français est 
+\family typewriter
+
+\begin_inset Quotes fld
+\end_inset
+
+texlive-lang-french
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Une fois les paquetages de langue installés, il vous faut activer le menu
+ LyX 
+\family sans
+Outils
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Reconfigurer
+\family default
+.
 \end_layout
 
 \end_body

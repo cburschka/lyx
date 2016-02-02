@@ -85,13 +85,13 @@
 LyX постачається з відмінною документацією — будь ласка, користуйтеся нею!
  Почніть з пункту меню
 \family sans
-Довідка\SpecialChar \menuseparator
+ Довідка\SpecialChar \menuseparator
 Вступ
 \family default
 , — програма покаже дуже короткий вступ до документації.
  Продовжіть вивчення LyX за допомогою пункту меню
 \family sans
-Довідка\SpecialChar \menuseparator
+ Довідка\SpecialChar \menuseparator
 Підручник
 \family default
 .
@@ -118,8 +118,16 @@ status collapsed
 \begin_layout Enumerate
 Документи, створені у LyX виглядають чудово! Скористайтеся пунктом меню
 \family sans
-Перегляд\SpecialChar \menuseparator
-DVI
+ Документ\SpecialChar \menuseparator
+Переглянути
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
 , щоб переконатися у цьому на власні очі.
 \end_layout
@@ -130,7 +138,7 @@ DVI
  І так, LyX може імпортувати файли LaTeX.
  Досвідчені користувачі LaTeX можуть не читати решти
 \emph on
-Підручника
+ Підручника
 \emph default
 , і одразу перейти до читання глави «LyX для користувачів LaTeX».
  (Всім іншим: не переймайтеся, вам не потрібно знати LaTeX, щоб користуватися
@@ -144,16 +152,14 @@ DVI
  панелі інструментів та багато інших характеристик.
  Докладніше про це можна дізнатися з розділу
 \family sans
-Довідка\SpecialChar \menuseparator
-Підручник з налаштування
+ Довідка\SpecialChar \menuseparator
+Підручник з налаштовування
 \family default
 .
 \end_layout
 
 \begin_layout Enumerate
-Домашню сторінку LyX розташовано за адресою
-\family typewriter
-
+Домашню сторінку LyX розташовано за адресою 
 \begin_inset Flex URL
 status collapsed
 
@@ -164,12 +170,58 @@ http://www.lyx.org/
 
 \end_inset
 
-
-\family default
 .
  Там ви можете отримати відомості про LyX, підписатися на списки листування
  LyX, здійснити візуальну подорож LyX, а також знайти багато іншої корисної
  інформації.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Зауваження для користувачів Linux:
+\series default
+ будь ласка, не забудьте встановити потрібні вам мовні пакунки дистрибутива
+ LaTeX 
+\family sans
+TeX
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+.
+ Якщо ви цього не зробите, спроби запустити LaTeX завершуватимуться повідомлення
+ми про помилки.
+\begin_inset Newline newline
+\end_inset
+
+Для прикладу, у дистрибутивах Linux 
+\family sans
+(K,X)Ubuntu
+\family default
+ та 
+\family sans
+Debian
+\family default
+ пакунок для української мови називається 
+\family typewriter
+«texlive-lang-cyrillic»
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+Після встановлення мовних пакунків слід скористатися пунктом меню LyX 
+\family sans
+Інструменти
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Переконфігурувати
+\family default
+.
 \end_layout
 
 \end_body

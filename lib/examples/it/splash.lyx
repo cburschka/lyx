@@ -173,8 +173,6 @@ Personalizzazione
 
 \begin_layout Enumerate
 La home page di LyX si trova all'indirizzo 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -185,11 +183,64 @@ http://www.lyx.org
 
 \end_inset
 
-
-\family default
 .
  Consultatela per informazioni su LyX, per iscrivervi alle mailing list(s)
  sul LyX, per effettuare il Tour Grafico di LyX e per altro ancora.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Nota per utenti Linux:
+\series default
+ Per evitare errori LaTeX occorre assicurarsi che siano installati i pacchetti
+ linguistici di 
+\family sans
+TeX
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ corrispondenti alle lingue usate in un documento.
+\begin_inset Newline newline
+\end_inset
+
+Ad esempio, nelle distribuzioni Linux 
+\family sans
+(K,X)Ubuntu
+\family default
+ e 
+\family sans
+Debian
+\family default
+ il nome del pacchetto per la lingua italiana è 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-italian
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Dopo l'installazione di un pacchetto linguistico occorre riconfigurare LyX
+ tramite il menu 
+\family sans
+Strumenti
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Riconfigura
+\family default
+.
 \end_layout
 
 \end_body

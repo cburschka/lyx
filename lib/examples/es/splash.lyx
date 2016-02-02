@@ -74,17 +74,17 @@
 \end_layout
 
 \begin_layout Section*
-Las n primeras cosas que debe saber al usar LyX
+Lo más importante que hay que saber para usar LyX
 \end_layout
 
 \begin_layout Enumerate
 LyX viene con una excelente documentación (por favor, ¡úsela!).
- Comience en el menú con 
+ Comience con el menú 
 \family sans
 Ayuda\SpecialChar \menuseparator
 Introducción
 \family default
-, que le hará una introducción muy breve a los manuales.
+, que da una introducción muy breve a la documentación.
  Después aprenda a usar LyX con 
 \family sans
 Ayuda\SpecialChar \menuseparator
@@ -111,7 +111,7 @@ procesador de documentos
 
 \begin_layout Enumerate
 La salida de LyX tiene un aspecto impecable.
- Ejecute en el menú 
+ Ejecute el menú 
 \family sans
 Documento\SpecialChar \menuseparator
 Ver
@@ -124,19 +124,20 @@ Ver
 
 (pdflatex)]
 \family default
- o clic el botón 
+ o pulse en la barra de herramientas el botón 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
  para comprobarlo.
+ (Véase punto 7).
 \end_layout
 
 \begin_layout Enumerate
 Sí, LyX puede imitar casi toda la funcionalidad de LaTeX.
  Y sí, LyX puede importar ficheros LaTeX.
- Los usuarios experimentados de LaTeX deberían leerse el capítulo 
+ Los usuarios experimentados de LaTeX deberían leer el capítulo 
 \begin_inset Quotes eld
 \end_inset
 
@@ -154,11 +155,11 @@ Tutorial
 \end_layout
 
 \begin_layout Enumerate
-LyX tiene montones de ventajas para aquellos que leen o escriben en un idioma
- distinto del inglés.
- Además, las asociaciones de teclas, la barra de herramientas y muchas otras
- características son altamente configurables.
- Mire en 
+LyX tiene muchas características para aquellos que leen o escriben en un
+ idioma distinto del inglés.
+ Además, las asociaciones de teclas, las barras de herramientas y muchas
+ otras características son altamente configurables.
+ Véase 
 \family sans
 Ayuda\SpecialChar \menuseparator
 Personalización
@@ -168,8 +169,6 @@ Personalización
 
 \begin_layout Enumerate
 La página de LyX en Internet está en 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -180,8 +179,6 @@ http://www.lyx.org/WebEs.Home
 
 \end_inset
 
-
-\family default
 .
  Consiga allí información sobre el programa, subscríbase a la(s) lista(s)
  de correo, obtenga el 
@@ -189,6 +186,61 @@ http://www.lyx.org/WebEs.Home
 Tour Gráfico de LyX
 \emph default
 , y muchas más cosas.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Nota para usuarios de Linux:
+\series default
+ Comprueba, por favor, que los paquetes de idioma de la distribución LaTeX
+ 
+\family sans
+TeX
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ están instalados, si no, habrá errores LaTeX.
+\begin_inset Newline newline
+\end_inset
+
+Por ejemplo, en las distribuciones Linux 
+\family sans
+(K,X)Ubuntu
+\family default
+ y 
+\family sans
+Debian
+\family default
+ el nombre del paquete para el idioma español es 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-spanish
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Después de la instalación de paquetes de idioma hay que usar en LyX el menú
+ 
+\family sans
+Herramientas
+\family default
+\SpecialChar \menuseparator
+
+\family sans
+Reconfigurar
+\family default
+.
 \end_layout
 
 \end_body
