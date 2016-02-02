@@ -87,7 +87,7 @@ public:
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
-	bool clickable(int, int) const { return hasSettings(); }
+	bool clickable(BufferView const &, int, int) const { return hasSettings(); }
 	//@}
 
 protected:

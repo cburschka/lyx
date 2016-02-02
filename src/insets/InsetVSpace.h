@@ -32,7 +32,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool clickable(int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const { return true; }
 	///
 	std::string contextMenuName() const;
 	///

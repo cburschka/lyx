@@ -344,7 +344,7 @@ public:
 	// true for InsetTabular & InsetText
 	virtual bool isActive() const { return nargs() > 0; }
 	/// can we click at the specified position ?
-	virtual bool clickable(int, int) const { return false; }
+	virtual bool clickable(BufferView const &, int, int) const { return false; }
 	/// Move one cell backwards
 	virtual bool allowsCaptionVariation(std::string const &) const { return false; }
 

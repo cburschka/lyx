@@ -49,7 +49,7 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	bool clickable(int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const { return true; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes
