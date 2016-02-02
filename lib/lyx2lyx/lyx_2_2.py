@@ -2201,110 +2201,6 @@ def revert_save_props(document):
     del document.header[i]
 
 
-def delete_TOG_project_URL(document):
-    i = 0
-    j = 0
-    while True:
-        # delete the TOG project URL
-        i = find_token(document.body, "\\begin_layout TOG project URL", i)
-        if i != -1:
-            j = find_end_of_layout(document.body, i + 1)
-        else:
-            return
-        if j != -1:
-            del(document.body[i : j + 1])
-        else:
-            document.warning("Malformed LyX document: Can't find end of layout TOG project URL")
-            return
-        i += 1
-
-
-def delete_TOG_video_URL(document):
-    i = 0
-    j = 0
-    while True:
-        # delete the TOG video URL
-        i = find_token(document.body, "\\begin_layout TOG video URL", i)
-        if i != -1:
-            j = find_end_of_layout(document.body, i)
-        else:
-            return
-        if j != -1:
-            del(document.body[i : j + 1])
-        else:
-            document.warning("Malformed LyX document: Can't find end of layout TOG video URL")
-            return
-        i += 1
-
-
-def delete_TOG_data_URL(document):
-    i = 0
-    j = 0
-    while True:
-        # delete the TOG video URL
-        i = find_token(document.body, "\\begin_layout TOG data URL", i)
-        if i != -1:
-            j = find_end_of_layout(document.body, i)
-        else:
-            return
-        if j != -1:
-            del(document.body[i : j + 1])
-        else:
-            document.warning("Malformed LyX document: Can't find end of layout TOG data URL")
-            return
-        i += 1
-
-
-def delete_TOG_code_URL(document):
-    i = 0
-    j = 0
-    while True:
-        # delete the TOG video URL
-        i = find_token(document.body, "\\begin_layout TOG code URL", i)
-        if i != -1:
-            j = find_end_of_layout(document.body, i)
-        else:
-            return
-        if j != -1:
-            del(document.body[i : j + 1])
-        else:
-            document.warning("Malformed LyX document: Can't find end of layout TOG code URL")
-            return
-        i += 1
-
-
-def convert_ACM_siggraph(document):
-    " Convert to version 0.92 of acmsiggraph. "
-    if document.textclass != "acmsiggraph":
-        return
-    # at first delete the now nonexistent styles since their info is now
-    # not needed and even unwanted
-    delete_TOG_project_URL(document)
-    delete_TOG_video_URL(document)
-    delete_TOG_data_URL(document)
-    delete_TOG_code_URL(document)
-    # now add a note that the user knows that he still has work to do
-    note = ["\\begin_layout Standard", "\\begin_inset Note Note", "status open", "",
-              "\\begin_layout Plain Layout", "", "\\series bold",
-              "\\color red", "Important note:", "\series default",
-              " This file was converted by \\SpecialChar LyX  to the format of acmsigplan 0.92.",
-              " This conversion is incomplete because you must add new information about",
-              " your article.",
-              " To see what is required, open the \\SpecialChar LyX  template file ",
-              "\\family sans",
-              "ACM-siggraph.lyx",
-              "\\family default",
-              ".",
-              "\\end_layout",
-              "",
-              "\\end_inset",
-              "",
-              "",
-              "\\end_layout",
-              ""]
-    document.body[1:1] = note
-
-
 def convert_info_tabular_feature(document):
     def f(arg):
         return arg.replace("inset-modify tabular", "tabular-feature")
@@ -2356,7 +2252,7 @@ convert = [
            [502, []],
            [503, []],
            [504, [convert_save_props]],
-           [505, [convert_ACM_siggraph]],
+           [505, []],
            [506, [convert_info_tabular_feature]]
           ]
 
