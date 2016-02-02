@@ -14546,26 +14546,6 @@ linewidth
 
 times the frame separation and the frame thickness must be subtracted from
  the line width.
- As this is not automatically done by \SpecialChar LyX
- due to a bug
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #4483"
-target "http://www.lyx.org/trac/ticket/4483"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, \SpecialChar TeX
- mode has to be used.
  To be able to multiply and subtract in arguments, the \SpecialChar LaTeX
 -package 
 \series bold

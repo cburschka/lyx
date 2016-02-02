@@ -14164,26 +14164,8 @@ linewidth
 
 
 \series default
-は、使用中の文書に設定されている行幅です。枠は、parboxの外側にあるので、枠余白と枠幅の2倍を行幅から差し引かなくてはなりません。バグ
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #4483"
-target "http://www.lyx.org/trac/ticket/4483"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-のせいで\SpecialChar LyX
-はこれを自動的に行いませんので、\SpecialChar TeX
-モードを使用する必要があります。引数中で掛け算や引き算を行うためには、\SpecialChar LaTeX
+は、使用中の文書に設定されている行幅です。枠は、parboxの外側にあるので、枠余白と枠幅の2倍を行幅から差し引かなくてはなりません。引数中で掛け算や引き算を行
+うためには、\SpecialChar LaTeX
 パッケージの
 \series bold
 calc

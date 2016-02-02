@@ -14449,26 +14449,6 @@ linewidth
  Puisque le cadre se trouve à l'extérieur de la boîte de paragraphe, on
  doit soustraire de l'épaisseur de ligne deux fois la séparation du cadre
  et l'épaisseur du cadre.
- Comme cela n'est pas fait automatiquement par \SpecialChar LyX
-, à cause d'un bug
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #4483"
-target "http://www.lyx.org/trac/ticket/4483"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-, on doit utiliser le mode \SpecialChar TeX
-.
  Pour pouvoir effectuer des multiplications et des additions dans les arguments,
  on doit charger le paquetage \SpecialChar LaTeX
  

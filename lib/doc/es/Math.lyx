@@ -14371,26 +14371,6 @@ vspace{5mm}
  es la anchura de línea establecida para el documento.
  Como el marco está por fuera del marco de párrafo, hay que restar de dicha
  anchura dos veces la separación del marco y el grosor.
- Como \SpecialChar LyX
- no lo hace automáticamente debido a un fallo,
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #4483"
-target "http://www.lyx.org/trac/ticket/4483"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- hay que usar modo \SpecialChar TeX
-.
  Para poder multiplicar y restar en los argumentos hay que cargar en el
  preámbulo \SpecialChar LaTeX
  el paquete \SpecialChar LaTeX

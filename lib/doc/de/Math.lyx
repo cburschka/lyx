@@ -14322,26 +14322,6 @@ linewidth
  für die im Dokument eingestellte Zeilenbreite.
  Da sich der Rahmen außerhalb der Absatzbox befindet, muss man von der Zeilenbre
 ite zweimal die Rahmendicke und den Rahmenabstand abziehen.
- Da dies \SpecialChar LyX
- aufgrund eines Fehlers
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-Fehler #4483"
-target "http://www.lyx.org/trac/ticket/4483"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- nicht automatisch macht, muss der \SpecialChar TeX
--Modus verwendet werden.
  Damit man in Argumenten multiplizieren und subtrahieren kann, muss im \SpecialChar LaTeX
 -Vorspann
  das \SpecialChar LaTeX
