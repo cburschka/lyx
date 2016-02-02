@@ -118,7 +118,7 @@ public:
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
-	bool clickable(int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const { return true; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype) const;

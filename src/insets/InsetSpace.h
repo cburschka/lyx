@@ -139,7 +139,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool clickable(int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const { return true; }
 	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// does this inset try to use all available space (like \\hfill does)?
