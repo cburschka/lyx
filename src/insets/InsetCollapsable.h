@@ -69,7 +69,7 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool clickable(int x, int y) const;
+	bool clickable(BufferView const &, int x, int y) const;
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const & bv) const;
 	///

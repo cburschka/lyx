@@ -53,7 +53,7 @@ public:
 
 	InsetGraphicsParams getParams() const { return params_;}
 	///
-	bool clickable(int, int) const { return true; }
+	bool clickable(BufferView const &, int, int) const { return true; }
 
 private:
 	///

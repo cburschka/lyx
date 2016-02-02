@@ -2124,7 +2124,7 @@ void BufferView::updateHoveredInset() const
 	int const y = d->mouse_position_cache_.y_;
 	Inset const * covering_inset = getCoveringInset(buffer_.text(), x, y);
 
-	d->clickable_inset_ = covering_inset && covering_inset->clickable(x, y);
+	d->clickable_inset_ = covering_inset && covering_inset->clickable(*this, x, y);
 
 	if (covering_inset == d->last_inset_)
 		// Same inset, no need to do anything...

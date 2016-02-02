@@ -414,7 +414,7 @@ bool InsetCollapsable::hitButton(FuncRequest const & cmd) const
 }
 
 
-bool InsetCollapsable::clickable(int x, int y) const
+bool InsetCollapsable::clickable(BufferView const &, int x, int y) const
 {
 	FuncRequest cmd(LFUN_NOACTION, x, y, mouse_button::none);
 	return hitButton(cmd);
