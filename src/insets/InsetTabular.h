@@ -1004,6 +1004,13 @@ private:
 	Inset * clone() const { return new InsetTabular(*this); }
 
 	///
+	bool hitSelectRow(BufferView const & bv, int x) const;
+	///
+	bool hitSelectColumn(BufferView const & bv, int y) const;
+	/// Returns true if coordinates are on row/column selection zones
+	bool clickable(BufferView const &, int x, int y) const;
+
+	///
 	void drawCellLines(PainterInfo &, int x, int y, row_type row,
 			   idx_type cell) const;
 	///

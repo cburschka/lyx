@@ -3951,6 +3951,29 @@ void InsetTabular::addToToc(DocIterator const & cpit, bool output_active,
 }
 
 
+bool InsetTabular::hitSelectRow(BufferView const & bv, int x) const
+{
+	int const x0 = xo(bv) + ADD_TO_TABULAR_WIDTH;
+	return x < x0 || x > x0 + tabular.width();
+}
+
+
+bool InsetTabular::hitSelectColumn(BufferView const & bv, int y) const
+{
+	int const y0 = yo(bv) - tabular.rowAscent(0) + offset_valign_;
+	// FIXME: using ADD_TO_TABULAR_WIDTH is not really correct since
+	// there is no margin added vertically to tabular insets.
+	// However, it works for now.
+	return y < y0 + ADD_TO_TABULAR_WIDTH || y > y0 + tabular.height() - ADD_TO_TABULAR_WIDTH;
+}
+
+
+bool InsetTabular::clickable(BufferView const & bv, int x, int y) const
+{
+	return hitSelectRow(bv, x) || hitSelectColumn(bv, y);
+}
+
+
 void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::DEBUG, "# InsetTabular::doDispatch: cmd: " << cmd
@@ -3965,8 +3988,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_PRESS: {
 		//lyxerr << "# InsetTabular::MousePress\n" << cur.bv().cursor() << endl;
 		// select row
-		if (cmd.x() < xo(cur.bv()) + ADD_TO_TABULAR_WIDTH
-			|| cmd.x() > xo(cur.bv()) + tabular.width()) {
+		if (hitSelectRow(cur.bv(), cmd.x())) {
 			row_type r = rowFromY(cur, cmd.y());
 			cur.idx() = tabular.getFirstCellInRow(r);
 			cur.pit() = 0;
@@ -3981,9 +4003,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		// select column
-		int const y0 = yo(cur.bv()) - tabular.rowAscent(0) + offset_valign_;
-		if (cmd.y() < y0 + ADD_TO_TABULAR_WIDTH
-			|| cmd.y() > y0 + tabular.height()) {
+		if (hitSelectColumn(cur.bv(), cmd.y())) {
 			col_type c = columnFromX(cur, cmd.x());
 			cur.idx() = tabular.cellIndex(0, c);
 			cur.pit() = 0;
