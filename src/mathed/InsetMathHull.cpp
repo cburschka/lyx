@@ -315,7 +315,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active) const
 
 Inset * InsetMathHull::editXY(Cursor & cur, int x, int y)
 {
-	if (use_preview_) {
+	if (previewState(&cur.bv())) {
 		edit(cur, true);
 		return this;
 	}
@@ -524,7 +524,6 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView const * const bv = pi.base.bv;
-	use_preview_ = previewState(bv);
 
 	if (type_ == hullRegexp) {
 		Dimension const dim = dimension(*bv);
@@ -532,7 +531,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 			dim.width() - 2, dim.height() - 2, Color_regexpframe);
 	}
 
-	if (use_preview_) {
+	if (previewState(bv)) {
 		Dimension const dim = dimension(*bv);
 		if (previewTooSmall(dim)) {
 			// we have an extra frame

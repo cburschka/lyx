@@ -90,12 +90,6 @@ protected:
 
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
-	///
-	mutable bool use_preview_;
-
-private:
-	///
-	mutable Dimension dim_;
 };
 
 
