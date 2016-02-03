@@ -79,7 +79,7 @@ public:
 	///
 	virtual docstring const buttonLabel(BufferView const &) const;
 	///
-	bool isOpen(BufferView const & bv) const 
+	bool isOpen(BufferView const & bv) const
 		{ return geometry(bv) != ButtonOnly; }
 	///
 	enum CollapseStatus {
@@ -90,7 +90,7 @@ public:
 	virtual void setStatus(Cursor & cur, CollapseStatus st);
 	///
 	CollapseStatus status(BufferView const & bv) const;
-	/** Of the old CollapseStatus we only keep the values  
+	/** Of the old CollapseStatus we only keep the values
 	 *  Open and Collapsed.
 	 * We define a list of possible inset decoration
 	 * styles, and a list of possible (concrete, visual)
@@ -152,7 +152,7 @@ protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
-	void edit(Cursor & cur, bool front, 
+	void edit(Cursor & cur, bool front,
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
