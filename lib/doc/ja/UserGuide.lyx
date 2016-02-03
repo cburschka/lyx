@@ -6440,7 +6440,7 @@ key "enumitem"
 status collapsed
 
 \begin_layout Plain Layout
-訳注: ここでは英文書簡の書き方について説明しています。日本語の書簡の場合とは違いますが、英文で書簡を書く必要がある場合には便利です。
+訳註: ここでは英文書簡の書き方について説明しています。日本語の書簡の場合とは違いますが、英文で書簡を書く必要がある場合には便利です。
 \end_layout
 
 \end_inset
@@ -7228,14 +7228,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です。
 \end_layout
 
@@ -7248,7 +7246,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -7271,7 +7268,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -13214,7 +13210,7 @@ text without serifs (セリフなし文字)
 status open
 
 \begin_layout Description
-【訳注】和文の場合
+【訳註】和文の場合
 \series medium
  
 \series default
@@ -13587,7 +13583,7 @@ PDFは、その中に画像を、PDF形式かあるいは「Joint Photographic E
 status collapsed
 
 \begin_layout Plain Layout
-訳注：ISOに設置された専門家会合の名称がそのままファイル形式に使われています。
+訳註：ISOに設置された専門家会合の名称がそのままファイル形式に使われています。
 \end_layout
 
 \end_inset
@@ -18913,7 +18909,7 @@ status collapsed
 \family sans
 傍註
 \family default
-も、当該ページに注が多すぎるときには次のページに浮遊していくことができますから、これらもフロートと言ってよいでしょう。
+も、当該ページに註が多すぎるときには次のページに浮遊していくことができますから、これらもフロートと言ってよいでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -23907,7 +23903,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【訳注】
+【訳註】
 \series default
 和文の場合に、実際にこのような索引項目を作ってしまうと、索引一覧の各項目が、読みのあいうえお順ではなく、漢字コード順に並んでしまうために、索引の機能を果たさなく
 なってしまいます。索引項目が読みによって整序されるようにするためには、第
@@ -30516,45 +30512,28 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Table and Rows & Columns
+表および行と列
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These menus only appear if the cursor is inside a table.
- It allows you to create multicolumn and multirow cells, add or remove borders
- of a cell and to set the alignment of the cell.
+これらのメニューは、カーソルが表内部にあるときのみ表示されます。ここでは、連結列セルや連結行セルを作成したり、セルの罫線を追加もしくは削除したり、セル内の揃えを
+設定したりすることができます。
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Dissolve Inset
+差込枠を解体する
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu only appears if the cursor is inside an inset.
- It will dissolve this inset.
- This means that the inset is deleted and its content is left as normal
- text.
+このメニューは、カーソルが差込枠内部にあるときのみ表示されます。これは、当該差込枠を解体します。つまり、差込枠は削除され、中身は通常のテキストとして残されます。
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Settings or Math
+設定・数式
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This menu is only active if the cursor is inside an inset or a formula.
- Here you can change the properties of the inset or the formula.
+このメニューは、カーソルが差込枠か数式の内部にあるときのみ表示されます。ここでは、差込枠あるいは数式の特性を変更することができます。
 \end_layout
 
 \begin_layout Subsection
