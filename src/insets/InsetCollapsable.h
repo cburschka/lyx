@@ -58,18 +58,16 @@ public:
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
-	/// Returns true if (mouse) action is over the inset's button.
-	/// Always returns false when the inset does not have a
-	/// button.
-	bool hitButton(FuncRequest const &) const;
 	///
 	docstring const getNewLabel(docstring const & l) const;
 	///
 	bool editable() const;
 	///
 	bool hasSettings() const { return true; }
-	///
-	bool clickable(BufferView const &, int x, int y) const;
+	/// Returns true if coordinates are over the inset's button.
+	/// Always returns false when the inset does not have a
+	/// button.
+	bool clickable(BufferView const & bv, int x, int y) const;
 	/// can we go further down on mouse click?
 	bool descendable(BufferView const & bv) const;
 	///
@@ -128,8 +126,6 @@ public:
 	/// (status_), auto_open_[BufferView] and openinlined_,
 	/// and of course decoration().
 	Geometry geometry(BufferView const & bv) const;
-	/// Returns the geometry disregarding auto_open_
-	Geometry geometry() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
@@ -163,10 +159,13 @@ private:
 	Dimension dimensionCollapsed(BufferView const & bv) const;
 	///
 	docstring labelstring_;
+
+	/// FIXME: the variables below should be grouped in a View subclass (as in MVC)
+
 	///
-	mutable Box button_dim;
+	mutable std::map<BufferView const *, Box> button_dim_;
 	/// a substatus of the Open status, determined automatically in metrics
-	mutable bool openinlined_;
+	mutable std::map<BufferView const *, bool> openinlined_;
 	/// the inset will automatically open when the cursor is inside. This is
 	/// dependent on the bufferview, compare with MathMacro::editing_.
 	mutable std::map<BufferView const *, bool> auto_open_;
