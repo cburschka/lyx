@@ -34,7 +34,7 @@ BrandingText " "
 !insertmacro MUI_PAGE_WELCOME
 # Show the license.
 !insertmacro MUI_PAGE_LICENSE "${FILES_LICENSE}"
-
+# Decision if it should be installed as admin or not
 !insertmacro MULTIUSER_PAGE_INSTALLMODE
 
 #Page custom PageExternalLaTeX PageExternalLaTeXValidate

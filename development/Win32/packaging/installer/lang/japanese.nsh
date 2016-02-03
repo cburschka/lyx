@@ -84,10 +84,10 @@ ${LangFileString} RunConfigureFailed "configureƒXƒNƒŠƒvƒg‚ğÀs‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚
 ${LangFileString} NotAdmin "LyX‚ğ“±“ü‚·‚é‚É‚ÍAŠÇ—ÒŒ ŒÀ‚ğ‚Á‚Ä‚¢‚È‚­‚Ä‚Í‚È‚è‚Ü‚¹‚ñI"
 ${LangFileString} InstallRunning "“±“üƒvƒƒOƒ‰ƒ€‚ÍŠù‚É“®ì’†‚Å‚·I"
 ${LangFileString} AlreadyInstalled "LyX${APP_SERIES_KEY2}‚ÍŠù‚É“±“üÏ‚İ‚Å‚·I$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?B"
+				“±“üÏ‚İ‚Ìƒo[ƒWƒ‡ƒ“‚ªƒeƒXƒg”Å‚Å‚ ‚Á‚½‚èA“±“üÏ‚İLyX‚Å–â‘è‚ª‚ ‚éê‡‚É‚ÍA$\r$\n\
+				ã‘‚«“±“üì‹Æ‚Í„§‚³‚ê‚Ü‚¹‚ñB‚±‚ê‚ç‚Ìê‡‚É‚ÍALyX‚ğÅ‰‚©‚çÄ“±“ü‚·‚é$\r$\n\
+				‚±‚Æ‚ª„§‚³‚ê‚Ü‚·B$\r$\n\
+				‚±‚ê‚ç‚ğ³’m‚Ìã‚ÅAŠù‘¶‚ÌLyX‚ğã‘‚«‚µ‚Ü‚·‚©H"
 ${LangFileString} NewerInstalled "‚ ‚È‚½‚ÍAŠù‚É“±“üÏ‚İ‚ÌLyX‚æ‚è‚àŒÃ‚¢”Å‚ğ“±“ü‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚Ü‚·B$\r$\n\
 				  –{“–‚É‚»‚¤‚µ‚½‚¢‚Ì‚Å‚ ‚ê‚ÎAŠù‘¶‚Ì LyX $OldVersionNumber ‚ğ‚Ü‚¸“±“ü‰ğœ‚µ‚Ä‚­‚¾‚³‚¢B"
 
