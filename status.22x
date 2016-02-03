@@ -23,7 +23,7 @@ What's new
 * USER INTERFACE
 
 - Increase the maximum value for the number of last open files that LyX can
-  remember (#9924).
+  remember (bug 9924).
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -47,11 +47,13 @@ What's new
 
 * USER INTERFACE
 
-- Do not omit the first space of the selection when copying (#9995)
+- Do not omit the first space of the selection when copying (bug 9995).
 
 - Display the correct column alignment and a better column spacing in AMS
-  environments (#1861, #9908)
+  environments (bugs 1861, 9908).
 
+- Fix display of collapsable insets when the same document is shown in
+  two views with different width (bug 9756).
 
 
 * INTERNALS
