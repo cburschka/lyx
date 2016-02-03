@@ -202,9 +202,13 @@ plexamplesdir = $(pkgdatadir)/examples/pl
 dist_plexamples_DATA = \
 	examples/pl/splash.lyx
 
-ptexamplesdir = $(pkgdatadir)/examples/pt
-dist_ptexamples_DATA = \
-	examples/pt/splash.lyx
+pt_BRexamplesdir = $(pkgdatadir)/examples/pt_BR
+dist_pt_BRexamples_DATA = \
+	examples/pt_BR/splash.lyx
+	
+pt_PTexamplesdir = $(pkgdatadir)/examples/pt_PT
+dist_pt_PTexamples_DATA = \
+	examples/pt_PT/splash.lyx
 
 roexamplesdir = $(pkgdatadir)/examples/ro
 dist_roexamples_DATA = \
