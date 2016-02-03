@@ -121,18 +121,23 @@ Nos já mencionamos que você deve ler a documentação?
 \begin_layout Enumerate
 O resultado visual dos documentos no LyX é excelente! Selecione 
 \family sans
-Arquivo\SpecialChar \menuseparator
-Ver
+Documento\SpecialChar \menuseparator
+Visualizar
 \begin_inset space ~
 \end_inset
 
-dvi
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]
 \family default
  agora para ver você mesmo.
 \end_layout
 
 \begin_layout Enumerate
-Sim, LyX pode reproduzir (a maioria de) toda a funcionalidade do LaTeX.
+Sim, LyX
+ pode reproduzir (a maioria de) toda a funcionalidade do LaTeX.
  E sim, LyX pode importar arquivos do LaTeX.
  Usuários experientes do LaTeX podem pular o resto do 
 \emph on
@@ -147,8 +152,8 @@ LyX para usuários de LaTeX
 \end_inset
 
 .
- (Para os demais: não se preocupe, você não precisa conhecer LaTeX para
- usar o LyX.) 
+ (Para os demais: não se preocupe, você não precisa conhecer LaTeX para usar
+ o LyX.) 
 \end_layout
 
 \begin_layout Enumerate
@@ -170,8 +175,6 @@ Customização
 
 \begin_layout Enumerate
 A página na internet do LyX é 
-\family typewriter
-
 \begin_inset Flex URL
 status collapsed
 
@@ -182,8 +185,6 @@ http://www.lyx.org
 
 \end_inset
 
-
-\family default
 .
  Obtenha informações sobre o LyX, inscreva-se na(s) lista(s) de discussão,
  veja a  Turnê Gráfica do LyX, e mais.
