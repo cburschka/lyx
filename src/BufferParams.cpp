@@ -1030,7 +1030,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
 	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
 		filepath = addPath("/systemlyxdir", relpath);
-	else if (!lyxrc.save_origin)
+	else if (!save_transient_properties || !lyxrc.save_origin)
 		filepath = "unavailable";
 	os << "\\origin " << quoteIfNeeded(filepath) << '\n';
 
