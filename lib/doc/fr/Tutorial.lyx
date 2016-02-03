@@ -6296,30 +6296,6 @@ target "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Conventions_typographiques"
 \end_layout
 
 \begin_layout Standard
-En ce qui concerne l'encodage, il est défini implicitement à 
-\family typewriter
-iso-8859-15 (latin9),
-\family default
- qui donne accès aux ligatures 
-\family sans
-œ
-\family default
- et 
-\family sans
-Œ
-\family default
- et au symbole de l'euro.
- Vous pouvez vérifier le choix d'encodage via 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres, 
-\family default
-rubrique
-\family sans
- Langue.
-\end_layout
-
-\begin_layout Standard
 L'o e dans l'o s'obtient avec 
 \begin_inset ERT
 status collapsed
@@ -6337,13 +6313,10 @@ oe{}
 \backslash
 oe{} en mode \SpecialChar TeX
 , ou bien en utilisant directement l'encodage implicite avec
- une touche ou une combinaison de touches qui appellent le bon code 
-\family typewriter
-iso-8859-15
-\family default
- avec un clavier correctement configuré
+ une touche ou une combinaison de touches qui appellent le bon code avec
+ un clavier correctement configuré
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Voyez la page 
