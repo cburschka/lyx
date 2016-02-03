@@ -158,7 +158,7 @@ static InsetLabel * dummy_pointer = 0;
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NUMBER),
 	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-	  preview_(new RenderPreview(this)), use_preview_(false)
+	  preview_(new RenderPreview(this))
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -173,7 +173,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
 	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NUMBER),
 	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-	  preview_(new RenderPreview(this)), use_preview_(false)
+	  preview_(new RenderPreview(this))
 {
 	buffer_ = buf;
 	initMath();
@@ -316,7 +316,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 
 Inset * InsetMathHull::editXY(Cursor & cur, int x, int y)
 {
-	if (use_preview_) {
+	if (previewState(&cur.bv())) {
 		edit(cur, true);
 		return this;
 	}
@@ -526,7 +526,6 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView const * const bv = pi.base.bv;
-	use_preview_ = previewState(bv);
 
 	if (type_ == hullRegexp) {
 		Dimension const dim = dimension(*bv);
@@ -534,7 +533,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 			dim.width() - 2, dim.height() - 2, Color_regexpframe);
 	}
 
-	if (use_preview_) {
+	if (previewState(bv)) {
 		Dimension const dim = dimension(*bv);
 		if (previewTooSmall(dim)) {
 			// we have an extra frame

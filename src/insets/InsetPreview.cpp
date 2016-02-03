@@ -34,16 +34,15 @@ using namespace std;
 namespace lyx {
 
 
-InsetPreview::InsetPreview(Buffer * buf) 
-	: InsetText(buf),
-	  preview_(new RenderPreview(this)), use_preview_(true)
+InsetPreview::InsetPreview(Buffer * buf)
+	: InsetText(buf), preview_(new RenderPreview(this))
 {
 	setDrawFrame(true);
 	setFrameColor(Color_previewframe);
 }
 
 
-InsetPreview::~InsetPreview() 
+InsetPreview::~InsetPreview()
 {}
 
 
@@ -80,7 +79,7 @@ void InsetPreview::addPreview(DocIterator const & inset_pos,
 }
 
 
-void InsetPreview::preparePreview(DocIterator const & pos) const  
+void InsetPreview::preparePreview(DocIterator const & pos) const
 {
 	TexRow texrow;
 	odocstringstream str;
@@ -137,15 +136,12 @@ void InsetPreview::reloadPreview(DocIterator const & pos) const
 
 void InsetPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	use_preview_ = previewState(pi.base.bv);
-
-	if (use_preview_) {
+	if (previewState(pi.base.bv)) {
 		// one pixel gap in front
 		preview_->draw(pi, x + 1 + TEXT_TO_INSET_OFFSET, y);
 		setPosCache(pi, x, y);
-		return;
-	}
-	InsetText::draw(pi, x, y);
+	} else
+		InsetText::draw(pi, x, y);
 }
 
 
@@ -158,7 +154,7 @@ void InsetPreview::edit(Cursor & cur, bool front, EntryDirection entry_from)
 
 Inset * InsetPreview::editXY(Cursor & cur, int x, int y)
 {
-	if (use_preview_) {
+	if (previewState(&cur.bv())) {
 		edit(cur, true, ENTRY_DIRECTION_IGNORE);
 		return this;
 	}
@@ -172,14 +168,13 @@ void InsetPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
 		mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-		
+
 		dim.wid = max(dim.wid, 4);
 		dim.asc = max(dim.asc, 4);
-		
+
 		dim.asc += TEXT_TO_INSET_OFFSET;
 		dim.des += TEXT_TO_INSET_OFFSET;
 		dim.wid += TEXT_TO_INSET_OFFSET;
-		dim_ = dim;
 		dim.wid += TEXT_TO_INSET_OFFSET;
 		// insert a one pixel gap
 		dim.wid += 1;

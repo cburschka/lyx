@@ -256,8 +256,6 @@ private:
 	///
 	boost::scoped_ptr<RenderPreview> preview_;
 	///
-	mutable bool use_preview_;
-	///
 	DocIterator docit_;
 	///
 	typedef std::map<docstring, int> CounterMap;
