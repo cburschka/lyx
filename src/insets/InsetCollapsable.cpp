@@ -316,11 +316,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
 		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
-		pi.pain.line(xx1, y + desc - 4, 
-			     xx1, y + desc, 
+		pi.pain.line(xx1, y + desc - 4,
+			     xx1, y + desc,
 			Color_foreground);
 		if (status_ == Open)
-			pi.pain.line(xx1, y + desc, 
+			pi.pain.line(xx1, y + desc,
 				xx2, y + desc,
 				Color_foreground);
 		else {
@@ -332,7 +332,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				xx2, y + desc,
 				Color_foreground);
 		}
-		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3, 
+		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3,
 			y + desc - 4, Color_foreground);
 
 		// the label below the text. Can be toggled.
@@ -454,8 +454,8 @@ Inset * InsetCollapsable::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetCollapsable: edit xy" << endl;
 	if (geometry(cur.bv()) == ButtonOnly
-	 || (button_dim.contains(x, y) 
-	  && geometry(cur.bv()) != NoButton))
+		|| (button_dim.contains(x, y)
+			&& geometry(cur.bv()) != NoButton))
 		return this;
 	cur.push(*this);
 	return InsetText::editXY(cur, x, y);
@@ -508,7 +508,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			if (geometry(cur.bv()) != ButtonOnly)
 				InsetText::doDispatch(cur, cmd);
 			else
-				cur.undispatched();			
+				cur.undispatched();
 			break;
 		}
 		if (cmd.button() != mouse_button::button1) {
@@ -586,7 +586,7 @@ void InsetCollapsable::setLabel(docstring const & l)
 docstring const InsetCollapsable::buttonLabel(BufferView const & bv) const
 {
 	InsetLayout const & il = getLayout();
-	docstring const label = labelstring_.empty() ? 
+	docstring const label = labelstring_.empty() ?
 		translateIfPossible(il.labelstring()) : labelstring_;
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
 		return label;
