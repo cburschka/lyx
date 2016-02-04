@@ -264,9 +264,21 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 			return;
 		}
 		cur.recordUndoInset(this);
-		if (change_type)
+		if (change_type) {
 			params_.type = cmd.getArg(1);
-		else // if (for_box)
+			// set a makebox if there is no inner box but Frameless was exectued
+			// otherwise the result would be a non existent box (no inner AND outer box)
+			// (this was LyX bug 8712)
+			if (params_.type == "Frameless" && !params_.inner_box) {
+				params_.use_makebox = true;
+				params_.inner_box = true;
+			}
+			// handle the opposite case
+			if (params_.type == "Boxed" && params_.use_makebox) {
+				params_.use_makebox = false;
+				params_.inner_box = false;
+			}
+		} else
 			string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		break;
