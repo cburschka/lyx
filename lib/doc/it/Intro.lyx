@@ -11,7 +11,7 @@
 %This preamble is designed to ensure that the document prints
 % out as advertised. If you mess with this preamble,
 % parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
+% have problems LaTeXing this file, please contact
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
@@ -120,7 +120,7 @@ status collapsed
 \noindent
 Se avete commenti o correzioni, inviateli cortesemente alla mailing list
  della documentazione di \SpecialChar LyX
-: 
+:
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -188,7 +188,7 @@ te esistono programmi più semplici per tale scopo.
 Il programma \SpecialChar LyX
  fornisce un approccio moderno alla scrittura di documenti
  mediante un computer, utilizzando un modello di linguaggio di marcatura;
- un approccio che rompe la tradizionale concezione a 
+ un approccio che rompe la tradizionale concezione a
 \begin_inset Quotes eld
 \end_inset
 
@@ -214,7 +214,6 @@ Buona parte dell'iniziale sfida nell'apprendere \SpecialChar LyX
  scrivere; quindi abbiamo tutti imparato alcuni trucchi per sopperire alle
  loro limitazioni.
  La sottolineatura, che altro non era se non ripassare il testo col carattere
- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -240,7 +239,7 @@ bulazioni per aggiungere spazi.
  nella pagina.
  Enfatizzare il testo significa cambiare un font, analogamente alla sostituzione
  di un rullo nella vecchia macchina da scrivere.
- E' la filosofia di fondo del WYSIWYG, 
+ E' la filosofia di fondo del WYSIWYG,
 \begin_inset Quotes eld
 \end_inset
 
@@ -257,7 +256,7 @@ Quello che vedi è quello che ottieni
 \end_inset
 
 ).
- Sfortunatamente, questo modello spesso finisce per diventare 
+ Sfortunatamente, questo modello spesso finisce per diventare
 \begin_inset Quotes eld
 \end_inset
 
@@ -284,7 +283,7 @@ to carattere.
  Direte semplicemente a \SpecialChar LyX
  quello che state facendo, e lui si prenderà cura
  di tutto il resto, seguendo l'insieme di regole definite da ciò che viene
- chiamato uno 
+ chiamato uno
 \emph on
 stile
 \emph default
@@ -308,7 +307,7 @@ Per correttezza, va detto che la maggiorparte degli attuali pacchetti di
 
 \begin_layout Standard
 Immaginiamo che stiate scrivendo una relazione.
- Volete cominciarla con una sezione chiamata 
+ Volete cominciarla con una sezione chiamata
 \begin_inset Quotes eld
 \end_inset
 
@@ -320,7 +319,7 @@ Introduzione
  Quindi, nel vostro word processor, entrate in qualunque menù che vi consenta
  di cambiare la dimensione del carattere, e ne selezionate una.
  Poi attivate il grassetto.
- Quindi, scrivete 
+ Quindi, scrivete
 \begin_inset Quotes eld
 \end_inset
 
@@ -346,11 +345,11 @@ Introduzione
 \begin_layout Standard
 In \SpecialChar LyX
 , invece, fate clic sul menù a tendina posto nell'estremità sinistra
- della barra dei pulsanti, scegliete 
+ della barra dei pulsanti, scegliete
 \family sans
 Sezione
 \family default
-, e scrivete 
+, e scrivete
 \begin_inset Quotes eld
 \end_inset
 
@@ -368,8 +367,8 @@ nte ri-numerata – ovunque essa sia.
  E se inserite dei riferimenti a quella sezione in modo corretto (aggiungendo
  le etichette per i riferimenti incrociati), \SpecialChar LyX
  li aggiornerà automaticamente
- per tutto il documento, sì che voi non abbiate mai e poi a scriverli manualment
-e.
+ per tutto il documento, sì che voi non abbiate mai e poi mai a scriverli
+ manualmente.
 \end_layout
 
 \begin_layout Standard
@@ -403,21 +402,21 @@ Vediamo un altro esempio.
 
 \begin_layout Standard
 Quindi, l'idea di base dietro a \SpecialChar LyX
- è: specificate 
+ è: specificate
 \emph on
 cosa
 \emph default
- state facendo, e non 
+ state facendo, e non
 \emph on
 come
 \emph default
  farla.
  Il modello di \SpecialChar LyX
- non è WYSIWYG, ma WYSIWYM, ossia 
+ non è WYSIWYG, ma WYSIWYM, ossia
 \begin_inset Quotes eld
 \end_inset
 
-What You See Is What You 
+What You See Is What You
 \emph on
 Mean
 \emph default
@@ -439,12 +438,12 @@ Ciò che vedi è ciò che intendi
  Peraltro, questo è anche il motivo per cui \SpecialChar LyX
  non è così adatto alla creazione
  di poster e loghi: in questo caso – e dal momento che non esistono elementi
- funzionali come paragrafi, sezioni, eccetera – voi 
+ funzionali come paragrafi, sezioni, eccetera – voi
 \emph on
 volete proprio
 \emph default
  specificare dove sono posizionate tutte le cose, e in modo esatto.
- Ciò non significa \SpecialChar LyX
+ Ciò non significa che \SpecialChar LyX
  sia privo di funzionalità interessanti, ma semplicemente
  che non è lo strumento adatto per quel mestiere.
  Non si spara alle zanzare con un cannone.
@@ -503,11 +502,11 @@ Tabulazioni.
 \end_layout
 
 \begin_layout Itemize
-Spazio extra (cioè premere 
+Spazio extra (cioè premere
 \family sans
 Enter
 \family default
- o 
+ o
 \family sans
 Spazio
 \family default
@@ -581,11 +580,11 @@ Esistono sistemi per personalizzare tutti questi spazi (solo alcuni di questi
  modi richiedono una conoscenza di \SpecialChar LaTeX
 ), sia per l'intero documento, che per
  specifiche porzioni di esso.
- Per i dettagli, vedi la 
+ Per i dettagli, vedi la
 \emph on
 Guida utente
 \emph default
- e/o il manuale delle 
+ e/o il manuale delle
 \emph on
 Caratteristiche estese
 \emph default
@@ -631,9 +630,9 @@ Certo, molti word processor moderni sono in grado di maneggiare simboli
  Sono però funzionalità implementate in tempi relativamente recenti, mentre
  \SpecialChar LyX
  è costruito intorno al sistema di preparazione documentale \SpecialChar LaTeX
-, che è in
- operativo da oltre 20 anni\SpecialChar ldots
- e 
+, che è operativo
+ da oltre 20 anni\SpecialChar ldots
+ e
 \emph on
 funziona
 \emph default
@@ -653,7 +652,7 @@ Cos'è \SpecialChar LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-La fonte di queste informazioni è 
+La fonte di queste informazioni è
 \begin_inset Quotes eld
 \end_inset
 
@@ -667,7 +666,6 @@ A Guide to \SpecialChar LaTeX2e
 \end_inset
 
 , di Helmut Kopka e Patrick Daly, che ha una voce nella bibliografia della
- 
 \emph on
 Guida utente
 \emph default
@@ -683,7 +681,7 @@ Guida utente
  \SpecialChar TeX
  legge una serie di comandi di composizione tipografica, scritti come sequenza
  di codice in un file ASCII, e li esegue.
- Molti 
+ Molti
 \begin_inset Quotes eld
 \end_inset
 
@@ -702,11 +700,11 @@ li, e incorporati in \SpecialChar TeX
  \SpecialChar TeX
  hanno un aspetto così eccellente.
  L'ouput di \SpecialChar TeX
- è un documento portabile di tipo 
+ è un documento portabile di tipo
 \emph on
 pdf
 \emph default
-, o un cosiddetto 
+, o un cosiddetto
 \begin_inset Quotes eld
 \end_inset
 
@@ -714,7 +712,7 @@ file indipendente dalla periferica
 \begin_inset Quotes erd
 \end_inset
 
- in formato 
+ in formato
 \emph on
 dvi
 \emph default
@@ -769,7 +767,7 @@ o propri pacchetti macro per \SpecialChar TeX
 \begin_layout Standard
 Esistono due metodi per estendere le potenzialità di \SpecialChar LaTeX
 : classi e stili.
- Una 
+ Una
 \emph on
 classe
 \emph default
@@ -779,12 +777,11 @@ classe
  Esistono classi per presentazioni, articoli scientifici di fisica, di matematic
 a\SpecialChar ldots
  molte università posseggono classi per il proprio formato di tesi! Lo
- 
 \emph on
 stile
 \emph default
  differisce dalla classe per il fatto che non definisce un nuovo tipo di
- documento, ma un differente tipo di 
+ documento, ma un differente tipo di
 \emph on
 comportamento
 \emph default
@@ -865,7 +862,7 @@ Lo sviluppo di \SpecialChar LyX
 o essere incompleti o un po' datati, anche se cerchiamo di tenere il passo.
  I manuali (ma questo vale per tutto ciò che riguarda \SpecialChar LyX
 ) sono frutto del
- lavoro di un gruppo di volontari che hanno un 
+ lavoro di un gruppo di volontari che hanno un
 \begin_inset Quotes eld
 \end_inset
 
@@ -901,7 +898,7 @@ men\SpecialChar softhyphen
 ta\SpecialChar softhyphen
 zio\SpecialChar softhyphen
 ne,
- all'indirizzo 
+ all'indirizzo
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -912,7 +909,7 @@ type "mailto:"
 .
  Se avete domande alle quali la documentazione non è riuscita a dare risposte
  chiare, e avete bisogno di un aiuto rapido, esiste una mailing list attiva
- che potete raggiungere all'indirizzo 
+ che potete raggiungere all'indirizzo
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -937,14 +934,14 @@ Alcuni staranno leggendo i manuali dopo averli stampati.
  non formattato in una pagina a sé stante come in alcune versioni stampate.
  Poi, non è pienamente visibile alcuna nota a piè di pagina, e l'Indice
  generale.
- Per aprire una nota a piè di pagina, che si presenta così: 
+ Per aprire una nota a piè di pagina, che si presenta così:
 \begin_inset Graphics
-	filename clipart/it_footnote.png
+	filename C:/Program Files (x86)/LyX 2.2/Resources/doc/it/clipart/it_footnoteQt4.png
 	scale 75
 
 \end_inset
 
- , fate clic su di essa col tasto sinistro del mouse.
+, fate clic su di essa col tasto sinistro del mouse.
  Per l'Indice generale, cliccate sul box grigio, oppure sul menù Naviga
  (nel quale i contenuti vengono visualizzati in modo automatico).
 \end_layout
@@ -952,7 +949,7 @@ Alcuni staranno leggendo i manuali dopo averli stampati.
 \begin_layout Standard
 Nella versione stampata, tutti i riferimenti incrociati appaiono come numeri
  effettivi di capitoli, sezioni, sottosezioni, e così via.
- Nella versione 
+ Nella versione
 \begin_inset Quotes eld
 \end_inset
 
@@ -960,9 +957,9 @@ in linea
 \begin_inset Quotes erd
 \end_inset
 
-, invece, appaiono come box color grigio chiaro, analoghi a questo: 
+, invece, appaiono come box color grigio chiaro, analoghi a questo:
 \begin_inset Graphics
-	filename clipart/it_reference.png
+	filename C:/Program Files (x86)/LyX 2.2/Resources/doc/it/clipart/it_referenceQt4.png
 	scale 75
 
 \end_inset
@@ -970,11 +967,11 @@ in linea
 .
  Se fate clic col tasto sinistro del mouse sul box, apparirà una finestra
  di dialogo contenente la lista di tutti i riferimenti incrociati del documento.
- Questo Manuale, 
+ Questo Manuale,
 \emph on
 Introduzione
 \emph default
-, ne ha solo due; il primo ha nome 
+, ne ha solo due; il primo ha nome
 \begin_inset Quotes eld
 \end_inset
 
@@ -984,7 +981,7 @@ sec:Contrib
 
 .
  Per andare direttamente alla sezione referenziata, fate clic col tasto
- destro del mouse sul box, oppure sul bottone 
+ destro del mouse sul box, oppure sul bottone
 \family sans
 Vai
 \begin_inset space ~
@@ -994,7 +991,6 @@ all'etichetta
 \family default
  nella finestra di dialogo sopra citata.
  Se volete tornare al punto in cui eravate, è semplice: fate clic sul pulsante
- 
 \family sans
 Torna indietro
 \family default
@@ -1003,7 +999,6 @@ Torna indietro
 
 \begin_layout Standard
 Ora che abbiamo chiarito le differenze tra la versione stampata e quella
- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1062,11 +1057,11 @@ Grassetto
 
 \begin_layout Standard
 In merito alle scorciatoie da tastiera per comandi e menù, verrete probabilmente
- rimandati alla sezione 
+ rimandati alla sezione
 \emph on
 Scorciatoie da tastiera
 \emph default
- del manuale 
+ del manuale
 \begin_inset Quotes eld
 \end_inset
 
@@ -1078,7 +1073,7 @@ Caratteristiche estese
 \begin_inset Quotes erd
 \end_inset
 
- (il file 
+ (il file
 \family typewriter
 Additional.lyx
 \family default
@@ -1099,7 +1094,7 @@ C-
 \begin_inset Quotes erd
 \end_inset
 
- indica il tasto 
+ indica il tasto
 \family sans
 Control-.
 \end_layout
@@ -1116,7 +1111,7 @@ S-
 \begin_inset Quotes erd
 \end_inset
 
- indicata il tasto 
+ indicata il tasto
 \family sans
 Shift-.
 \end_layout
@@ -1133,11 +1128,11 @@ M-
 \begin_inset Quotes erd
 \end_inset
 
- indicata il tasto 
+ indicata il tasto
 \family sans
 Meta-
 \family default
-, che in alcune tastiere è presente come tasto 
+, che in alcune tastiere è presente come tasto
 \family sans
 Alt-.
 \end_layout
@@ -1155,7 +1150,7 @@ F1
 \end_inset
 
  \SpecialChar ldots
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1182,7 +1177,7 @@ Esc
 \begin_inset Quotes erd
 \end_inset
 
- è il tasto di 
+ è il tasto di
 \emph on
 escape
 \emph default
@@ -1201,7 +1196,7 @@ Sinistra
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1213,7 +1208,7 @@ Destra
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1225,7 +1220,7 @@ Su
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1252,7 +1247,7 @@ Insert
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1264,7 +1259,7 @@ Canc
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1276,7 +1271,7 @@ Inizio
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1288,7 +1283,7 @@ Fine
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1300,7 +1295,7 @@ PagSu
 \begin_inset Quotes erd
 \end_inset
 
- 
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -1314,7 +1309,6 @@ PagGiù
 
 : sono i sei tasti solitamente collocati al sopra dei tasti di movimentazione
  del cursore (tasti freccia).
- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1326,7 +1320,7 @@ PagSu
 \begin_inset Quotes erd
 \end_inset
 
- and 
+ and
 \begin_inset Quotes eld
 \end_inset
 
@@ -1338,7 +1332,7 @@ PagGiù
 \begin_inset Quotes erd
 \end_inset
 
- sono – in alcune tastiere – denominati 
+ sono – in alcune tastiere – denominati
 \begin_inset Quotes eld
 \end_inset
 
@@ -1350,7 +1344,7 @@ Precedente
 \begin_inset Quotes erd
 \end_inset
 
- e 
+ e
 \begin_inset Quotes eld
 \end_inset
 
@@ -1370,7 +1364,7 @@ Seguente
 \family sans
 Return
 \family default
- e 
+ e
 \family sans
 Invio
 \family default
@@ -1378,23 +1372,23 @@ Invio
  Alcune tastiere usano indifferentemente l'una o l'altra etichetta; e alcune
  hanno proprio due tasti separati.
  Siccome per \SpecialChar LyX
- sono la stessa cosa, useremo 
+ sono la stessa cosa, useremo
 \family sans
 Return
 \family default
- e 
+ e
 \family sans
-Invio 
+Invio
 \family default
 indistintamente.
 \end_layout
 
 \begin_layout Standard
-Di tanto in tanto leggerete anche qualcosa come 
+Di tanto in tanto leggerete anche qualcosa come
 \begin_inset Quotes eld
 \end_inset
 
-(Vedi 
+(Vedi
 \emph on
 Caratteristiche estese
 \emph default
@@ -1404,7 +1398,7 @@ Caratteristiche estese
 
 .
  Abbiamo fatto un elenco di tutte le possibili scorciatoie da tastiera nel
- manuale 
+ manuale
 \begin_inset Quotes eld
 \end_inset
 
@@ -1419,7 +1413,7 @@ Caratteristiche estese
 , quindi controllate anche lì.
  Occorre notare che, nella comunità \SpecialChar LyX
 , esistono due differenti modalità per
- mappare queste scorciatoie: lo stile 
+ mappare queste scorciatoie: lo stile
 \begin_inset Quotes eld
 \end_inset
 
@@ -1428,7 +1422,7 @@ CUA
 \end_inset
 
 , che è il default, ed è più familiare per coloro che provengono dal mondo
- dei personal computer; e lo stile 
+ dei personal computer; e lo stile
 \begin_inset Quotes eld
 \end_inset
 
@@ -1439,7 +1433,7 @@ emacs
 , comune per coloro che sono cresciuti nell'ambiente Unix e con l'editor
  Emacs.
  Se non diversamente specificato, la mappatura citata nella documentazione
- è quella di default, 
+ è quella di default,
 \begin_inset Quotes eld
 \end_inset
 
@@ -1726,7 +1720,7 @@ didot (72
 \begin_inset Formula $\,$
 \end_inset
 
-dd 
+dd
 \begin_inset Formula $\approx$
 \end_inset
 
@@ -1922,7 +1916,7 @@ ex
 \begin_inset Text
 
 \begin_layout Plain Layout
-altezza della letera 
+altezza della letera
 \emph on
 x
 \emph default
@@ -1946,7 +1940,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-larghezza della lettera 
+larghezza della lettera
 \emph on
 M
 \emph default
@@ -2014,11 +2008,11 @@ Tutorial Se siete nuovi utenti di \SpecialChar LyX
  prima d'ora,
  dovreste cominciare da qui.
  Quando anche aveste già usato \SpecialChar LaTeX
-, dovreste ugualmente leggere il 
+, dovreste ugualmente leggere il
 \emph on
 Tutorial
 \emph default
-, a partire dalla sezione 
+, a partire dalla sezione
 \begin_inset Quotes eld
 \end_inset
 
@@ -2040,7 +2034,7 @@ utente E' la documentazione principale.
  Qui apprenderete la maggior parte delle funzionalità e caratteristiche
  di base di \SpecialChar LyX
 .
- Si dà per scontato che voi abbiate letto il 
+ Si dà per scontato che voi abbiate letto il
 \emph on
 Tutorial
 \emph default
@@ -2058,7 +2052,7 @@ incorporati Si tratta di un'estensione della
 \emph default
 .
  Dettaglia l'uso di tabelle, figure, oggetti mobili, note, e box.
- Include anche molti trucchi, a cura dei 
+ Include anche molti trucchi, a cura dei
 \begin_inset Quotes eld
 \end_inset
 
@@ -2075,14 +2069,14 @@ Caratteristiche
 \begin_inset space ~
 \end_inset
 
-estese Altra estensione della 
+estese Altra estensione della
 \emph on
 Guida utente
 \emph default
 .
  Approfondisce l'uso di comandi in codice sorgente \SpecialChar LaTeX
 , di layout aggiuntivi,
- e di funzionalità 
+ e di funzionalità
 \begin_inset Quotes eld
 \end_inset
 
@@ -2118,12 +2112,12 @@ Configurazione
 
 \begin_layout Standard
 Questi documenti riportano l'uno all'altro, quando necessario.
- Per esempio, la 
+ Per esempio, la
 \emph on
 Guida utente
 \emph default
  contiene alcune informazioni sull'installazione e la personalizzazione,
- ma rimanda il lettore alla guida 
+ ma rimanda il lettore alla guida
 \emph on
 Personalizzazione
 \emph default
@@ -2144,7 +2138,7 @@ Ci teniamo a ribadire ancora un punto importante:
 \begin_layout Standard
 \align center
 Se usate \SpecialChar LyX
- per la prima volta, leggete il 
+ per la prima volta, leggete il
 \emph on
 Tutorial
 \emph default
@@ -2199,7 +2193,7 @@ Segnalare un errore
 \begin_layout Standard
 Usando \SpecialChar LyX
 , potreste notare un comportamento bizzarro, tale da essere considerato
- un vero e proprio 
+ un vero e proprio
 \begin_inset Quotes eld
 \end_inset
 
@@ -2208,7 +2202,7 @@ bug
 \end_inset
 
  (errore).
- I 
+ I
 \begin_inset Quotes eld
 \end_inset
 
@@ -2226,7 +2220,7 @@ a \SpecialChar LyX
 
 \begin_layout Standard
 \SpecialChar LyX
- dispone di un sistema per la segnalazione di 
+ dispone di un sistema per la segnalazione di
 \begin_inset Quotes eld
 \end_inset
 
@@ -2234,7 +2228,7 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
-, raggiungibile a 
+, raggiungibile a
 \family typewriter
 
 \begin_inset Flex URL
@@ -2250,7 +2244,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 
 \family default
 .
- Dovreste controllare il 
+ Dovreste controllare il
 \begin_inset Quotes eld
 \end_inset
 
@@ -2260,7 +2254,7 @@ bug tracker
 
  prima di segnalare qualunque errore, perché potrebbe essere già stato segnalato
  da qualcuno prima di voi.
- Alternativamente – o anche per segnalare un commento su un 
+ Alternativamente – o anche per segnalare un commento su un
 \begin_inset Quotes eld
 \end_inset
 
@@ -2268,7 +2262,7 @@ bug
 \begin_inset Quotes erd
 \end_inset
 
- esistente – potete scrivere alla mailing list degli sviluppatori, 
+ esistente – potete scrivere alla mailing list degli sviluppatori,
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
@@ -2279,7 +2273,7 @@ type "mailto:"
 .
  Gli archivi di questa lista sono raggiungibili dal link indicato sul sito
  principale di \SpecialChar LyX
-, 
+,
 \family typewriter
 
 \begin_inset Flex URL
@@ -2308,7 +2302,7 @@ ione della versione di \SpecialChar LyX
  le versioni dei programmi esterni che \SpecialChar LyX
  utilizza.
  Se è un problema relativo alla compilazione o alla configurazione, includete
- il file 
+ il file
 \family typewriter
 config.log
 \family default
@@ -2324,7 +2318,6 @@ Se avete effettuato delle modifiche al codice sorgente di \SpecialChar LyX
  che a vostro
  avviso dovrebbero diventare parte del programma distribuito, mandatele
  alla mailing list degli sviluppatori sopra citata, in formato diff (formato
- 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2340,7 +2333,7 @@ change log
 \begin_inset Quotes erd
 \end_inset
 
-), ed una descrizione di ciò che la vostra 
+), ed una descrizione di ciò che la vostra
 \begin_inset Quotes eld
 \end_inset
 
@@ -2358,7 +2351,7 @@ Contribuire alla Documentazione
 \begin_layout Standard
 La documentazione di \SpecialChar LyX
  è voluminosa; il programma però è in costante sviluppo,
- e nuove funzioni vengono aggiunte ad ogni 
+ e nuove funzioni vengono aggiunte ad ogni
 \begin_inset Quotes eld
 \end_inset
 
@@ -2378,7 +2371,7 @@ Comunicare errori nei Manuali
 
 \begin_layout Standard
 Se trovate problemi con la documentazione, mandate un messaggio alla mailing
- list 
+ list
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -2423,11 +2416,11 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \end_layout
 
 \begin_layout Enumerate
-Poi, leggete la 
+Poi, leggete la
 \emph on
 Guida Utente
 \emph default
- ed il 
+ ed il
 \emph on
 Tutorial
 \emph default
@@ -2436,11 +2429,11 @@ Tutorial
 \end_inset
 
 Lo scopo di questo esercizio è quello di fornirvi le idee giuste.
- La 
+ La
 \emph on
 Guida Utente
 \emph default
- ed il 
+ ed il
 \emph on
 Tutorial
 \emph default
