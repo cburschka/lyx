@@ -5335,6 +5335,8 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 
 void InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 {
+	cur.recordUndoInset(this);
+
 	istringstream is(argument);
 	string s;
 	// Safe guard.
@@ -5460,8 +5462,6 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	default:
 		break;
 	}
-
-	cur.recordUndoInset(this);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
 	row_type const row = tabular.cellRow(cur.idx());
