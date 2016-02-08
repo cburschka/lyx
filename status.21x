@@ -92,6 +92,8 @@ What's new
 - Fix crash when closing buffer one of whose children is also a child of
   other master (bug 9907).
 
+- Fix crash when clicking to the left of a tabular inset (bug 9955).
+
 - Fix assertion when selecting text just after loading document (bug 9912).
 
 - Fix automatic insertion of longtable captions (bug 9692).
