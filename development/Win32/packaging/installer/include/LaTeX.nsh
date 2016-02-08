@@ -208,7 +208,14 @@ FunctionEnd
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
-   ExecWait ${MiKTeXInstall}
+   MessageBox MB_OK|MB_ICONINFORMATION "${MiKTeXInstall} --shared"
+   ${if} $MultiUser.Privileges != "Admin"
+   ${andif} $MultiUser.Privileges != "Power"
+    # call the non-admin version
+    ExecWait ${MiKTeXInstall}
+   ${else}
+    ExecWait "${MiKTeXInstall} --shared"
+   ${endif}
    # test if MiKTeX is installed
    Call LaTeXActions
    ${if} ${RunningX64}

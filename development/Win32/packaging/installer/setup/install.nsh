@@ -132,8 +132,9 @@ Section -ProgramFiles SecProgramFiles
   
   !if ${SETUPTYPE} == BUNDLE
    
-   # install JabRef if not already installed and the user selected it
-   # if no BibTeX editor is installed
+   # install JabRef if not already installed, the user selected it
+   # and if no BibTeX editor is installed
+   # due to an installer bug in the installer of JabRef version 3.x, we still install JabRef 2.11.1
    ${if} $PathBibTeXEditor == ""
    ${andif} $InstallJabRef == "true"
     # launch installer
@@ -162,7 +163,7 @@ Section -ProgramFiles SecProgramFiles
      ${else}
       WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
      ${endif}
-    ${endif} 
+    ${endif}
    ${endif} # end if PathBibTeXEditor
   !endif # end if BUNDLE
   

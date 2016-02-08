@@ -7,6 +7,12 @@
 #    RevStrPointer
 #    RevStrPoint
 #
+# - PATHCheck (checks for a path in a semicolon separated path list like the PATH variable), uses:
+#    StrPointer
+#    StrPoint
+#    RevStrPointer
+#    RevStrPoint
+#
 # - un.DelAppPathSub and UnAppPreSuff,
 #    (delete the folder ~\Documents and Settings\username\Application Data\LyX for all users), uses:
 #    un.GetParentA
@@ -273,7 +279,7 @@ FunctionEnd
  Push $1
  StrCpy $0 ""
  StrCpy $1 ""
- FileOpen $0 "${Filepath}\${FileName}" r
+ FileOpen $0 "${FilePath}\${FileName}" r
  ${if} $0 = ""
   StrCpy $1 "False"
  ${Else}
@@ -290,7 +296,7 @@ FunctionEnd
 
 Function LaTeXCheck
  # searches the string "$Search" in the string "$String" and extracts the path around it
- # the extracted path is checked if the file "latex.exe" is in it
+ # it is checked if the file "latex.exe" exists in the extracted path
 
    StartCheck:
    StrLen $3 $String
@@ -330,3 +336,40 @@ Function LaTeXCheck
 
 FunctionEnd
 
+#------------------------------------------
+
+!macro PATHCheck PathResult FileName
+ # searches the string "$Search" in the string "$String" and extracts the path around it
+ # it is checked if the given filename exists
+ 
+   !define ID ${__LINE__}
+   StrLen $3 $String
+   Call StrPoint
+   ${if} $Pointer == "-1" # if nothing was found
+    StrCpy ${PathResult} "False"
+    Goto EndPATHCheck_${ID}
+   ${endif}
+   IntOp $3 $3 - $Pointer
+   StrCpy $4 $String $3 "-$3" # $4 is now the part behind the $Search string
+   StrCpy $String $String $Pointer # $String is now the part before the $Search string
+   StrCpy $Search ":" # search for the ":" after the first previous drive letter
+   Call RevStrPoint
+   IntOp $Pointer $Pointer - 1 # jump before the ":" to the drive letter
+   StrCpy $Pointer $Pointer "" 1 # cut of the "-" sign
+   StrCpy ${PathResult} $String $Pointer "-$Pointer"
+   StrCpy $String $4
+   StrCpy $Search ";" # search for the following ";" that separates the different paths
+   Call StrPoint
+   ${if} $Pointer != "-1" # if something was found
+    StrCpy $String $String $Pointer
+   ${endif}
+   StrCpy ${PathResult} "${PathResult}$String"
+   # check if the FileName exists in the ${Result} folder
+   !insertmacro FileCheck $R5 ${FileName} ${PathResult}
+   ${if} $R5 == "False"
+    StrCpy ${PathResult} "False"
+   ${endif}
+   EndPATHCheck_${ID}:
+   !undef ID
+
+!macroend

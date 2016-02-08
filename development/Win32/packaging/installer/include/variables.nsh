@@ -14,6 +14,7 @@ Var APPDATemp
 Var AppPre
 var AppSubfolder
 Var AppSuff
+Var ComputerName
 Var CreateDesktopIcon
 Var CreateFileAssociations
 Var DictCode
@@ -36,6 +37,7 @@ Var LilyPondPath
 Var MiKTeXUser
 Var MiKTeXVersion
 Var OldVersionNumber
+Var PandocPath
 Var Pointer
 Var PSVPath
 Var PythonPath
@@ -50,6 +52,7 @@ Var ThesCode
 Var ThesCodes
 Var UpdateFNDBReturn
 Var UserList
+Var UserName
 
 Var LangName
 

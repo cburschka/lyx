@@ -48,12 +48,15 @@ Section "!${APP_NAME}" SecCore
  SectionIn RO
 SectionEnd
 
+# FIXME: set this to true when LyX 2.2.0 final is released
 Section "$(SecFileAssocTitle)" SecFileAssoc
- StrCpy $CreateFileAssociations "true" 
+ SectionIn RO
+ StrCpy $CreateFileAssociations "false" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
- StrCpy $CreateDesktopIcon "true"
+ SectionIn RO
+ StrCpy $CreateDesktopIcon "false"
 SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
@@ -597,11 +600,13 @@ SectionGroupEnd
 # the selection states of the dictionary sections
 Function .onInit
 
-  ${IfNot} ${IsNT}
-  ${OrIfNot} ${AtLeastWinXP}
-    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later." /SD IDOK
+  ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion" CurrentVersion
+  ${if} $R0 == "5.0" # 2000
+  ${orif} $R0 == "5.1" # XP
+  ${orif} $R0 == "5.2" # 2003
+    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows Vista or newer." /SD IDOK
     Quit
-  ${EndIf}
+  ${endif}
   
   # check that the installer is not currently running
   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
@@ -625,6 +630,11 @@ Function .onInit
   # MessageBox MB_OK|MB_ICONSTOP "$(LyXRunning)" 
   # Abort
   #${endif}
+  
+  # read the use and computer name
+  ReadRegStr $ComputerName HKLM "System\CurrentControlSet\Control\ComputerName\ActiveComputerName" "ComputerName"
+  System::Call "advapi32::GetUserName(t .r0, *i ${NSIS_MAX_STRLEN} r1) i.r2"
+  StrCpy $UserName $0  
   
   !insertmacro MULTIUSER_INIT
   

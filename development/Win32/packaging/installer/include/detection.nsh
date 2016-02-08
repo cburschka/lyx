@@ -141,11 +141,19 @@ Function MissingPrograms
     StrCpy $ImageEditorPath $0
    ${endif}
   ${endif}
-  
+
   # test if and where the BibTeX-editor JabRef is installed
   ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
   ${if} $PathBibTeXEditor == ""
    ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
+  ${endif}
+  # since JabRef 3.x the pathes are different
+  # there is currently a bug in the Jabref installer that prevents to install it without admin permissions
+  # therefore only check the admin installation
+  ${if} $PathBibTeXEditor == ""
+   ReadRegStr $PathBibTeXEditor HKCR "JabRef\shell\open\command" ""
+   StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
+   StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
   ${endif}
 
   ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
@@ -154,13 +162,13 @@ Function MissingPrograms
   ${else}
    StrCpy $JabRefInstalled == "Yes"
   ${endif}
-  
+
   # test if and where LilyPond is installed
   ReadRegStr $LilyPondPath HKLM "Software\LilyPond" "Install_Dir"
   ${if} $LilyPondPath != ""
    StrCpy $LilyPondPath "$LilyPondPath\usr\bin" # add "\usr\bin"
   ${endif}
-  
+
   # test if Inkscape is installed
   ReadRegStr $SVGPath HKLM "SOFTWARE\Classes\inkscape.svg\DefaultIcon" ""
   ${if} $SVGPath != ""
@@ -178,6 +186,26 @@ Function MissingPrograms
    StrCpy $0 $0 -18 # remove "gnumeric.exe" "%1""
    StrCpy $0 $0 "" 1 # remove the leading quote
    StrCpy $GnumericPath $0
+  ${endif}
+
+  # test if Pandoc is installed
+  # HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\John MacFarlane\Pandoc
+  ${if} ${RunningX64}
+   SetRegView 64 # the PATH is in the 64bit registry section
+  ${endif}
+  # check for the path to the pandoc.exe in Window's PATH variable
+  StrCpy $5 ""
+  StrCpy $Search "pandoc"
+  ReadRegStr $String HKCU "Environment" "PATH"
+  !insertmacro PATHCheck $5 "pandoc.exe" # macro from LyXUtils.nsh
+  # if it is not in the user-specific PATH it might be in the global PATH
+  ${if} $5 == "False"
+   ReadRegStr $String HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" "Path"
+   !insertmacro PATHCheck $5 "pandoc.exe" # macro from LyXUtils.nsh
+  ${endif}
+  SetRegView 32
+  ${if} $5 != "False"
+   StrCpy $PandocPath $5
   ${endif}
 
 FunctionEnd

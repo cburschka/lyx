@@ -145,6 +145,9 @@ Section -Configure
   ${if} $PathBibTeXEditor != ""
     StrCpy $PathPrefix "$PathPrefix;$PathBibTeXEditor"
   ${EndIf}
+  ${if} $PandocPath != ""
+   StrCpy $PathPrefix "$PathPrefix;$PandocPath"
+  ${endif}
   ${if} $LilyPondPath != ""
    StrCpy $PathPrefix "$PathPrefix;$LilyPondPath"
   ${endif}
@@ -167,7 +170,13 @@ Section -Configure
 		 \format "pdf3" "pdf" "PDF (dvipdfm)" "m" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
 		 \format "pdf2" "pdf" "PDF (pdflatex)" "F" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
 		 \format "pdf" "pdf" "PDF (ps2pdf)" "P" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n'
-
+  
+  # use Inkscape to edit PDF and EPS images
+  ${if} $SVGPath != ""
+   FileWrite $R1 '\format "pdf6" "pdf" "PDF (graphics)" "" "auto" "inkscape" "vector" "application/pdf"$\r$\n\
+   				  \format "eps" "eps" "EPS" "" "auto" "inkscape" "vector" "image/x-eps"$\r$\n'
+  ${endif}
+  
   # if Inkscape is not available Imagemagick will be used to convert WMF/EMF files
   # We need to specify a resolution for the converter otherwise 1024 dpi are used and
   # eps2pdf takes ages. 300 dpi are a good compromise for speed and size.
