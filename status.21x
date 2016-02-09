@@ -156,6 +156,8 @@ What's new
 
 - Allow quotes in PDF text properties (bug 9830).
 
+- Avoid clogging the undo stack with useless entries when using the
+  tabular dialog (bug 9960).
 
 
 * DOCUMENTATION AND LOCALIZATION

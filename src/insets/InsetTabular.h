@@ -882,9 +882,9 @@ public:
 	/// get offset of this cursor slice relative to our upper left corner
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
-	///
+	/// Executes a space-separated sequence of tabular-features requests
 	bool tabularFeatures(Cursor & cur, std::string const & what);
-	///
+	/// Change a single tabular feature; does not handle undo.
 	void tabularFeatures(Cursor & cur, Tabular::Feature feature,
 			     std::string const & val = std::string());
 	/// number of cells
