@@ -76,6 +76,11 @@
 * buffer-move-previous
   Moves the current tab one spot to the left.
 
+* tabular-feature is reintroduced to allow more flexibility for user
+  commands, whereas "inset-modify tabular" is now reserved for the tabular
+  dialog. In particular, "inset-modify tabular" is no longer caught by math grid
+  insets. The name tabular-feature is kept to avoid renaming icons. For more
+  information, see #9794.
 
 !!!The following LyX functions have been changed in 2.2:
 
@@ -83,6 +88,9 @@
   to operate on in the emacs way (that is, starting at cursor
   position); this behaviour can be restored by using the argument
   "partial".
+
+* Functionality of "inset-modify tabular" has changed. See description of the
+  new LyX function "tabular-feature" above.
 
 !!!The following LyX key bindings have been changed in 2.2:
 
@@ -92,7 +100,6 @@
 
 * The shortcuts for "bookmark-save x" have been changed from C-M-S-x to S-Fx
   ("x" stands for the number of the bookmark.)
-
 
 !!!The following LyX documents have been moved in 2.2:
 
