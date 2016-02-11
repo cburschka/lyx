@@ -365,8 +365,8 @@ FunctionEnd
    ${endif}
    StrCpy ${PathResult} "${PathResult}$String"
    # check if the FileName exists in the ${Result} folder
-   !insertmacro FileCheck $R5 ${FileName} ${PathResult}
-   ${if} $R5 == "False"
+   !insertmacro FileCheck $Tmp ${FileName} ${PathResult}
+   ${if} $Tmp == "False"
     StrCpy ${PathResult} "False"
    ${endif}
    EndPATHCheck_${ID}:

@@ -84,18 +84,15 @@ ${LangFileString} RunConfigureFailed "Не вдалося виконати скрипт налаштування"
 ${LangFileString} NotAdmin "Для встановлення LyX вам потрібні привілеї адміністратора!"
 ${LangFileString} InstallRunning "Засіб для встановлення вже працює!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} вже встановлено!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+				Встановлення нової версії на місце вже встановлених не рекомендоване, якщо$\r$\n\
+				встановлено тестову версію або у вас виникають проблеми із уже встановленим LyX.$\r$\n\
+				У таких випадках краще перевстановити LyX.$\r$\n\
+				Чи хочете ви попри ці зауваження встановити LyX на місце наявної версії?"
 ${LangFileString} NewerInstalled "Ви намагаєтеся встановити версію LyX, яка є застарілою порівняно з вже встановленою.$\r$\n\
 				  Якщо ви хочете встановити застарілу версію, вам слід спочатку вилучити вже встановлений LyX $OldVersionNumber."
 
 ${LangFileString} MultipleIndexesNotAvailable "Ви не зможете скористатися підтримкою декількох покажчиків у документі, оскільки $\r$\n\
 						MiKTeX було встановлено від імені адміністратора, а LyX - від імені звичайного користувача."
-${LangFileString} MetafileNotAvailable "Ви не зможете скористатися підтримкою роботи з зображеннями у форматах EMF і WMF,$\r$\n\
-					оскільки для роботи з такими зображеннями потрібен програмний принтер для$\r$\n\
-					Windows, встановити який можна лише від імені адміністратора системи."
 
 ${LangFileString} FinishPageMessage "Вітаємо! LyX було успішно встановлено.$\r$\n\
 					$\r$\n\

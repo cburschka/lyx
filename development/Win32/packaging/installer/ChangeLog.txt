@@ -1,7 +1,11 @@
 ﻿Changelog for LyX.220-beta-1-1:
 - installs lyX 2.2.0 beta1
-- support for the document converter program Pandoc, see http://wiki.lyx.org/LyX/NewInLyX22#converters
-- support for JabRef 3.x
+- new support for the document converter program Pandoc (http://pandoc.org/),
+  see http://wiki.lyx.org/LyX/NewInLyX22#converters
+- new support to use Krita (https://krita.org/) as image editor from within LyX
+- updated support to use Gimp (http://www.gimp.org/) as image editor from within LyX
+- support to use JabRef 3.x as editor for BibTeX files from within LyX
+- updated detection of TeXLive 2015 as LaTeX distribution for LyX
 - updated thesaurus for Slovenian
 - updated spell-checker dictionaries for Portuguese (PT) and English (GB and US)
 - new Brazilian translation of the installer messages

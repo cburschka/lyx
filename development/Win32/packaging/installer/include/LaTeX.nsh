@@ -165,9 +165,9 @@ Function LaTeXActions
    SetRegView 32 # TeXLive is a 32bit application
   ${endif}
   ${if} $PathLaTeX == ""
-   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
+   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "UninstallString"
    ${if} $String == ""
-    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "UninstallString"
+    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "UninstallString"
    ${endif}
    ${if} $String != ""
     StrCpy $String $String -28 # remove '\tlpkg\installer\uninst.bat"'
@@ -185,9 +185,15 @@ Function LaTeXActions
   ${andif} $LaTeXName != "MiKTeX 2.8"
   ${andif} $LaTeXName != "MiKTeX 2.9"
    StrCpy $LaTeXInstalled "TeXLive"
-   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "DisplayVersion"
+   ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "DisplayVersion"
    ${if} $String == ""
-    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2012" "DisplayVersion"
+    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2015" "DisplayVersion"
+   ${endif}
+   ${if} $String == ""
+    ReadRegStr $String HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2014" "DisplayVersion"
+   ${endif}
+   ${if} $String == ""
+    ReadRegStr $String HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TeXLive2014" "DisplayVersion"
    ${endif}
    ${if} $String != ""
     StrCpy $LaTeXName "TeXLive $String"

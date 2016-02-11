@@ -25,6 +25,7 @@ Var FoundDict
 Var FoundThes
 Var GhostscriptPath
 Var GnumericPath
+Var ImageEditor
 Var ImageEditorPath
 Var Is64bit
 !if ${SETUPTYPE} == BUNDLE
@@ -48,6 +49,7 @@ Var Search
 Var SVGPath
 Var StartmenuFolder
 Var String
+Var Tmp
 Var ThesCode
 Var ThesCodes
 Var UpdateFNDBReturn

@@ -84,18 +84,15 @@ ${LangFileString} RunConfigureFailed "Fikk ikke kjørt konfigurasjonsscriptet"
 ${LangFileString} NotAdmin "Du trenger administratorrettigheter for å installere LyX!"
 ${LangFileString} InstallRunning "Installasjonsprogrammet er allerede i gang!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} er allerede installert!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+				Vi anbefaler ikke å installere over en eksisterende installasjon hvis den installere versjonen$\r$\n\
+				er en testversjon eller om du har problemer med den eksisterende installasjonen.$\r$\n\
+				I slike tilfeller er det bedre å reinstallere LyX.$\r$\n\
+				Vil du likevel installere LyX over den eksisterende versjonen?"
 ${LangFileString} NewerInstalled "Du prøver å installere en eldre versjon av Lyx enn den du har installert fra før.$\r$\n\
 				  Dersom du ønsker dette må du avinstallere LyX $OldVersionNumber først."
 
 ${LangFileString} MultipleIndexesNotAvailable "Støtte for flere indekser vil ikke være tilgjengelig fordi$\r$\n\
 						MiKTeX er installert med administratorrettigheter og du installerer LyX uten."
-${LangFileString} MetafileNotAvailable "Støtte i LyX for bilder i formatene EMF eller WMF vil ikke være$\r$\n\
-					tilgjengelig fordi man da må installere programvareskriver i $\r$\n\
-					Windows som bare er mulig med administratorrettigheter."
 
 ${LangFileString} FinishPageMessage "Gratulerer!! LyX er installert.$\r$\n\
 					$\r$\n\

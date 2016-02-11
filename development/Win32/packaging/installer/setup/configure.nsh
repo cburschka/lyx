@@ -174,7 +174,19 @@ Section -Configure
   # use Inkscape to edit PDF and EPS images
   ${if} $SVGPath != ""
    FileWrite $R1 '\format "pdf6" "pdf" "PDF (graphics)" "" "auto" "inkscape" "vector" "application/pdf"$\r$\n\
-   				  \format "eps" "eps" "EPS" "" "auto" "inkscape" "vector" "image/x-eps"$\r$\n'
+				  \format "eps" "eps" "EPS" "" "auto" "inkscape" "vector" "image/x-eps"$\r$\n'
+  ${endif}
+  
+  # set image editors
+  ${if} $ImageEditor == "Gimp"
+   FileWrite $R1 '\format "gif" "gif" "GIF" "" "auto" "gimp-2.8" "" "image/gif"$\r$\n\
+				  \format "jpg" "jpg, jpeg" "JPEG" "" "auto" "gimp-2.8" "" "image/jpeg"$\r$\n\
+				  \format "png" "png" "PNG" "" "auto" "gimp-2.8" "" "image/x-png"'
+  ${endif}
+  ${if} $ImageEditor == "Krita"
+   FileWrite $R1 '\format "gif" "gif" "GIF" "" "auto" "krita" "" "image/gif"$\r$\n\
+				  \format "jpg" "jpg, jpeg" "JPEG" "" "auto" "krita" "" "image/jpeg"$\r$\n\
+				  \format "png" "png" "PNG" "" "auto" "krita" "" "image/x-png"'
   ${endif}
   
   # if Inkscape is not available Imagemagick will be used to convert WMF/EMF files

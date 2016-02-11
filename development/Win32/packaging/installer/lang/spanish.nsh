@@ -27,7 +27,7 @@ ${LangFileString} SecFileAssocTitle "Asociar ficheros"
 ${LangFileString} SecDesktopTitle "Icono de escritorio"
 
 ${LangFileString} SecCoreDescription "Los ficheros de LyX."
-${LangFileString} SecInstJabRefDescription "Administrador de referencias bibliograficas e editor de ficheros BibTeX."
+${LangFileString} SecInstJabRefDescription "Administrador de referencias bibliográficas y editor de ficheros BibTeX."
 ${LangFileString} SecAllUsersDescription "Instalar LyX para todos los usuarios o sólo para el usuario actual."
 ${LangFileString} SecFileAssocDescription "Asociar la extensión .lyx con LyX."
 ${LangFileString} SecDesktopDescription "Crear un icono de LyX en el escritorio."
@@ -36,25 +36,25 @@ ${LangFileString} SecThesaurusDescription "Diccionarios de sinónimos que se pued
 
 ${LangFileString} EnterLaTeXHeader1 'Distribución LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Elija la distribución de LaTeX que debería emplear LyX.'
-${LangFileString} EnterLaTeXFolder 'Opcionalmente puede especificar el camino del fichero $\"latex.exe$\" y posteriormente \
+${LangFileString} EnterLaTeXFolder 'Opcionalmente puede especificar la ruta del fichero $\"latex.exe$\" y posteriormente \
 					elegir la distribución de LaTeX que va usar LyX.\r\n\
 					¡Sin LaTeX LyX no puede (pre)imprimir documentos!\r\n\
 					\r\n\
 					El instalador ha detectado la distribución de LaTeX $\"$LaTeXName$\" \
-					en su sistema, en el camino que se muestra abajo.'
-${LangFileString} EnterLaTeXFolderNone 'Especifique abajo el camino al fichero $\"latex.exe$\". Posteriormente elija \
+					en su sistema, en la ruta que se muestra abajo.'
+${LangFileString} EnterLaTeXFolderNone 'Especifique abajo la ruta al fichero $\"latex.exe$\". Posteriormente elija \
 					la distribución de LaTeX que debe usar LyX.\r\n\
 					¡Sin LaTeX LyX no puede (pre)imprimir documentos!\r\n\
 					\r\n\
-					El instalador non pudo encontrar ninguna distribución LaTeX en su sistema.'
-${LangFileString} PathName 'Camino al fichero $\"latex.exe$\"'
+					El instalador no pudo encontrar ninguna distribución LaTeX en su sistema.'
+${LangFileString} PathName 'Ruta al fichero $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "No usar LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'Imposible encontrar $\"latex.exe$\".'
 
 ${LangFileString} LatexInfo 'Ahora se lanzará el instalador de $\"MiKTeX$\", la distribución de LaTeX.$\r$\n\
 				Para instalar el programa presione el botón $\"Next$\" en la  ventana del instalador hasta que la aplicación arranque.$\r$\n\
 				$\r$\n\
-				¡¡¡ Por favor use todas las opciones por defecto del instalador de MiKTeX !!!'
+				¡¡¡ Por favor use todas las opciones por omisión del instalador de MiKTeX !!!'
 ${LangFileString} LatexError1 '¡No se ha encontrado ninguna distribución de LaTeX!$\r$\n\
 				¡LyX no funciona sin una distribución de LaTeX como $\"MiKTeX$\"!$\r$\n\
 				Por lo tanto la instalación se abortará.'
@@ -63,14 +63,14 @@ ${LangFileString} HunspellFailed 'La descarga del diccionario para el idioma $\"
 ${LangFileString} ThesaurusFailed 'La descarga del diccionario de sinónimos para el idioma $\"$R3$\" ha fallado.'
 
 ${LangFileString} JabRefInfo 'Ahora se lanzará el instalador del programa $\"JabRef$\".$\r$\n\
-				Puede utilizar todas las opciones por defecto del instaldor de JabRef.'
+				Puede utilizar todas las opciones por omisión del instalador de JabRef.'
 ${LangFileString} JabRefError '¡El programa $\"JabRef$\" no pudo instalarse con éxito!$\r$\n\
-				La instalación se continuará de toda forma.$\r$\n\
+				La instalación continuará de todas formas.$\r$\n\
 				Intente instalar otra vez JabRef más tarde.'
 
 ${LangFileString} LatexConfigInfo "La siguiente configuración de LyX va a tardar un poco."
 
-${LangFileString} MiKTeXPathInfo "Para que cada usuario pueda personalizar posteriormente MiKTeX acorde sus$\r$\n\
+${LangFileString} MiKTeXPathInfo "Para que cada usuario pueda personalizar posteriormente MiKTeX acorde a sus$\r$\n\
 					necesidades, es necesario que la carpeta donde fue instalado MiKTeX's $\r$\n\
 					$MiKTeXPath $\r$\n\
 					y sus subcarpetas tengan permiso de escritura para todos los usuarios."
@@ -82,19 +82,17 @@ ${LangFileString} MiKTeXInfo 'Junto con LyX se va usar la distribución de LaTeX 
 ${LangFileString} ModifyingConfigureFailed "Error al intentar añadir 'path_prefix' durante la ejecución del programa de configuración"
 ${LangFileString} RunConfigureFailed "Error al intentar ejecutar el programa de configuración"
 ${LangFileString} NotAdmin "Necesita privilegios de administrador para instalar LyX!"
-${LangFileString} InstallRunning "El instalador ya esta siendo ejecutado!"
-${LangFileString} AlreadyInstalled "¡LyX ${APP_SERIES_KEY2} ya esta instalado!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+${LangFileString} InstallRunning "El instalador ya está siendo ejecutado!"
+${LangFileString} AlreadyInstalled "¡LyX ${APP_SERIES_KEY2} ya está instalado!$\r$\n\
+				Se recomienda no instalar sobre una instalación existente$\r$\n\
+				si la versión instalada es de prueba o da problemas.$\r$\n\
+				En estos casos es mejor reinstalar LyX.$\r$\n\
+				Aún así, ¿quiere instalar LyX sobre la versión existente?"
 ${LangFileString} NewerInstalled "Está tratando de instalar una versión de LyX más antigua que la que tiene instalada.$\r$\n\
 				  Si realmente lo desea, debe desinstalar antes la versión de LyX instalada $OldVersionNumber."
 
 ${LangFileString} MultipleIndexesNotAvailable "El soporte para el uso de varios índices en un documento no estará disponible porque$\r$\n\
 						MiKTeX se instaló con privilegios de administrador pero LyX se está instalando ahora sin ellos."
-${LangFileString} MetafileNotAvailable "El soporte de LyX para imágenes en formato EMF o WMF no estará$\r$\n\
-					disponible, ya que requiere la instalación de un software de impresora$\r$\n\ 						para Windows que sólo es posible con privilegios de administrador."
 
 ${LangFileString} FinishPageMessage "¡Enhorabuena! LyX ha sido instalado con éxito.$\r$\n\
 					$\r$\n\
@@ -108,8 +106,8 @@ ${LangFileString} UnNotAdminLabel "Necesita privilegios de administrador para de
 ${LangFileString} UnReallyRemoveLabel "¿Está seguro de que desea eliminar completamente LyX y todos sus componentes?"
 ${LangFileString} UnLyXPreferencesTitle 'Preferencias de usuario de LyX'
 
-${LangFileString} SecUnMiKTeXDescription "Desinstala a distribución de LaTeX MiKTeX."
-${LangFileString} SecUnJabRefDescription "Desinstala el administrador de referencias bibliograficas JabRef."
+${LangFileString} SecUnMiKTeXDescription "Desinstala la distribución de LaTeX MiKTeX."
+${LangFileString} SecUnJabRefDescription "Desinstala el administrador de referencias bibliográficas JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Elimina las carpetas de configuración de LyX$\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						de todos los usuarios.'

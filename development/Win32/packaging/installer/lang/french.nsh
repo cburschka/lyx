@@ -84,18 +84,15 @@ ${LangFileString} RunConfigureFailed "Échec de la tentative de configuration ini
 ${LangFileString} NotAdmin "Vous devez avoir les droits d$\'administration pour installer LyX !"
 ${LangFileString} InstallRunning "Le programme d$\'installation est toujours en cours !"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} est déjà installé !$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version ?"
+				L'installation par dessus les installations existantes n'est pas recommandée si la version à installer$\r$\n\
+				est une version de test ou si vous avez des problèmes avec votre installation LyX existante.$\r$\n\
+				Dans ces situations il vaut mieux réinstaller LyX.$\r$\n\
+				Voulez-vous néanmoins installer LyX par dessus la version existante ?"
 ${LangFileString} NewerInstalled "Vous essayez d$\'installer une version de LyX plus ancienne que celle qui est déjà installée.$\r$\n\
 				  Si c$\'est ce qu vous voulez, vous devez d$\'abord désinstaller LyX $OldVersionNumber."
 
 ${LangFileString} MultipleIndexesNotAvailable "La possibilité d$\'utiliser plusieurs indexes dans un même document ne sera pas disponible car$\r$\n\
 						MiKTeX a été installé avec des privilèges d$\'administrateur et LyX a été istallé sans."
-${LangFileString} MetafileNotAvailable "La prise en compte par LyX d$\'images au format EMF ou WMF ne sera pas disponible$\r$\n\
-					car elle necessite l$\'installation dans Windows d$\'une imprimante logicielle, $\r$\n\
-					ce qui n$\'est possible qu$\'avec des privilèges d$\'administrateur."
 
 ${LangFileString} FinishPageMessage "Félicitations ! LyX est installé avec succès.$\r$\n\
 					$\r$\n\

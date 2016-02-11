@@ -126,6 +126,7 @@ Function MissingPrograms
   ReadRegStr $ImageEditorPath HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GIMP-2_is1" "InstallLocation"
   ${if} $ImageEditorPath != ""
    StrCpy $ImageEditorPath "$ImageEditorPathbin" # add the bin folder
+   StrCpy $ImageEditor "Gimp"
   ${endif}
   ${if} ${RunningX64}
    SetRegView 32
@@ -140,6 +141,19 @@ Function MissingPrograms
    ${else}
     StrCpy $ImageEditorPath $0
    ${endif}
+   StrCpy $ImageEditor "Photoshop"
+  ${endif}
+  # check for Krita
+  ReadRegStr $0 HKLM "SOFTWARE\Classes\Krita.Document\shell\open\command" ""
+  ${if} $0 != ""
+   StrCpy $0 "$0" -16 # delete '\krita.exe" "%1"'
+   StrCpy $0 $0 "" 1 # remove the leading quote
+   ${if} $ImageEditorPath != ""
+    StrCpy $ImageEditorPath "$ImageEditorPath;$0"
+   ${else}
+    StrCpy $ImageEditorPath $0
+   ${endif}
+   StrCpy $ImageEditor "Krita"
   ${endif}
 
   # test if and where the BibTeX-editor JabRef is installed
@@ -151,7 +165,7 @@ Function MissingPrograms
   # there is currently a bug in the Jabref installer that prevents to install it without admin permissions
   # therefore only check the admin installation
   ${if} $PathBibTeXEditor == ""
-   ReadRegStr $PathBibTeXEditor HKCR "JabRef\shell\open\command" ""
+   ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\Classes\JabRef\shell\open\command" ""
    StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
    StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
   ${endif}

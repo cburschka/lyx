@@ -86,15 +86,12 @@ ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is already installed!
 				Installing over existing installations is not recommended if the installed version$\r$\n\
 				is a test release or if you have problems with your existing LyX installation.$\r$\n\
 				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+				Do you nevertheless want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
 				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 						MiKTeX was installed with administrator privileges but you are installing LyX without them."
-${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
-					available because that requires to install a software printer to$\r$\n\
-					Windows which is only possible with administrator privileges."
 
 #${LangFileString} FinishPageMessage "Congratulations! LyX has been installed successfully.$\r$\n\
 #					$\r$\n\
