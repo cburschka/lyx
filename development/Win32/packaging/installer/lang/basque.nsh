@@ -94,9 +94,6 @@ ${LangFileString} NewerInstalled "Instalatuta dagoen LyX baino bertsio zaharrago
 ${LangFileString} MultipleIndexesNotAvailable "Dokumentu batean hainbat indize erabiltzeko euskarria ez dago erabilgarri $\r$\n\
 						MiKTeX administratzailearen pribilegioekin instalatu delako baina zuk LyX $\r$\n\
 						haiek gabe instalatzen ari zarelako."
-${LangFileString} MetafileNotAvailable "EMF edo WMF formatuko irudientzako LyX-en euskarria ez dago erabilgarri $\r$\n\
-					Windows-en software inprimagailu bat instalatu behar delako, hori egiteko ordea$\r$\n\ 
-					administratzailearen pribilegioak behar dira."
 
 #${LangFileString} FinishPageMessage "Zorionak! LyX ongi instalatu da.$\r$\n\
 #					$\r$\n\

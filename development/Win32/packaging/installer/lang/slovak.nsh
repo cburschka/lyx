@@ -1,4 +1,3 @@
-#-*-coding: windows-1250;-*-
 /*
 LyX Installer Language File
 Language: Slovak
@@ -95,9 +94,6 @@ ${LangFileString} NewerInstalled "Pokúšate sa inštalova verziu LyXu ktorá je st
 
 ${LangFileString} MultipleIndexesNotAvailable "Podpora pouívania viacerıch indexov v dokumente nebude dostupná, lebo\r$\n\
 						MiKTeX bol inštalovanı pod administrátorskımi právami a vy inštalujete LyX bez nich."
-${LangFileString} MetafileNotAvailable "Podpora obrázkov vo formáte EMF alebo WMF nebude dostupná$\r$\n\
-					lebo to vyaduje inštaláciu softvérovej tlaèiarne pre Windows$\r$\n\
-					èo je moné len pod administrátorskımi právami."
 
 ${LangFileString} FinishPageMessage "Gratulácia! LyX bol úspešne inštalovanı.$\r$\n\
 					$\r$\n\

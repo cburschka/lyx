@@ -93,9 +93,6 @@ ${LangFileString} NewerInstalled "Sie versuchen eine Vesion von LyX zu installie
 
 ${LangFileString} MultipleIndexesNotAvailable "Die Unterstützung für mehrere Indexe in einem Dokument wird nicht verfügbar sein, denn$\r$\n\
 						MiKTeX wurde mit Administratorrechten installiert aber Sie installieren LyX ohne diese."
-${LangFileString} MetafileNotAvailable "Die LyX Unterstützung für Bilder im Format EMF oder WMF wird nicht verfügbar$\r$\n\
-					sein, denn dafür müsste ein Software-Drucker für Windows installiert werden,$\r$\n\
-					was jedoch nur mit Administratorrechten möglich ist."
 
 #${LangFileString} FinishPageMessage "Glückwunsch! LyX wurde erfolgreich installiert.$\r$\n\
 #					$\r$\n\

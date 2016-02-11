@@ -87,9 +87,6 @@ ${LangFileString} NewerInstalled "Próbujesz zainstalowaæ starsz¹ wersjê LyX, ni¿
 
 ${LangFileString} MultipleIndexesNotAvailable "Wsparcie dla u¿ywania wielu indeksów w dokumencie nie bêdzie dostêpne, poniewa¿$\r$\n\
 						MiKTeX zosta³ zainstalowany z uprawnieniami administratora, natomiast instalujesz LyX bez nich."
-${LangFileString} MetafileNotAvailable "Wsparcie LyX dla formatów graficznych EMF i WMF nie bêdzie$\r$\n\
-					dostêpne, poniewa¿ wymaga to instalacji drukarki programowej dla$\r$\n\
-					Windows co jest mo¿liwe tylko z uprawnieniami administratora."
 
 ${LangFileString} FinishPageMessage "Gratulacje! LyX zosta³ pomyœlnie zainstalowany.$\r$\n\
 					$\r$\n\

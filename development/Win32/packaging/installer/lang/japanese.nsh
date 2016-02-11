@@ -93,9 +93,6 @@ ${LangFileString} NewerInstalled "‚ ‚È‚½‚ÍAŠù‚É“±“üÏ‚İ‚ÌLyX‚æ‚è‚àŒÃ‚¢”Å‚ğ“±“ü‚
 
 ${LangFileString} MultipleIndexesNotAvailable "MiKTeX‚ªŠÇ—ÒŒ ŒÀ‚Å“±“ü‚³‚ê‚Ä‚¢‚é‚Ì‚ÉALyX‚ğMiKTeX‚È‚µ‚Å“±“ü‚µ‚æ‚¤‚Æ‚µ‚Ä‚¢‚é‚½‚ßA$\r$\n\
 						“¯ˆê•¶‘“à‚Å‚Ì•¡”‚Ìõˆø‚Ìg—p‚ÍƒTƒ|[ƒg‚³‚ê‚Ü‚¹‚ñB"
-${LangFileString} MetafileNotAvailable "LyX‚É‚¨‚¢‚Ä‰æ‘œŒ`®EMF‚¨‚æ‚ÑWMF‚ğg‚¤•û–@‚ÍA$\r$\n\
-					Windows‚Éƒ\ƒtƒgƒEƒFƒAƒvƒŠƒ“ƒ^‚ğŠÇ—ÒŒ ŒÀ‚Å“±“ü‚·‚é•K—v‚ª‚ ‚é‚½‚ßA$\r$\n\
-					ƒTƒ|[ƒg‚Å‚«‚Ü‚¹‚ñB"
 
 ${LangFileString} FinishPageMessage "‚¨‚ß‚Å‚Æ‚¤‚²‚´‚¢‚Ü‚·ILyX‚ª³‚µ‚­“±“ü‚³‚ê‚Ü‚µ‚½B$\r$\n\
 					$\r$\n\

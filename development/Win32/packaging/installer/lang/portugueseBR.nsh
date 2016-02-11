@@ -4,7 +4,7 @@ Language: Brazilian Portuguese
 Author: Georger Araújo
 */
 
-!insertmacro LANGFILE_EXT "PortugueseBR"
+!insertmacro LANGFILE_EXT "Brazilian Portuguese"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Instalado para o Usuário Atual)"
 

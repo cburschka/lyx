@@ -93,9 +93,6 @@ ${LangFileString} NewerInstalled "Anda akan memasang versi LyX yang lama dari ya
 
 ${LangFileString} MultipleIndexesNotAvailable "Tidak ada dukungan menggunakan beberapa indeks dalam dokumen karena$\r$\n\
 						MiKTeX dipasang oleh administrator tetapi anda akan memasang LyX bukan sebagai administrator."
-${LangFileString} MetafileNotAvailable "Tidak ada dukungan LyX untuk gambar dengan format EMF atau WMF$\r$\n\
-					karena memerlukan memasang perangkat lunak printer agar$\r$\n\
-					pada Windows yang memerlukan pengguna administrator."
 
 ${LangFileString} FinishPageMessage "Selamat! LyX berhasil diinstal dengan sukses.$\r$\n\
 					$\r$\n\

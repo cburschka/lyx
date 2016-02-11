@@ -94,10 +94,6 @@ ${LangFileString} NewerInstalled "A jelenleg telepítettnél régebbi LyX verziót p
 ${LangFileString} MultipleIndexesNotAvailable "Bizonyos listák támogatása nem lesz elérhetõ a dokumentumokban,\r$\n\
 						mert a MiKTeX rendszergazda joggal lett telepítve, azonban a LyX-et ezen jog nélkül telepíti."
 						
-${LangFileString} MetafileNotAvailable "A LyX támogatása az EMF vagy WMF formátumú képekhez nem lesz elérhetõ,$\r$\n\
-					mert az igényeli egy szoftver nyomtató telepítését a Windows-hoz, $\r$\n\
-					ez azonban csak rendszergazda joggal lehetséges."
-
 ${LangFileString} FinishPageMessage "Gratulálok! Sikeresen telepítette a LyX-et.$\r$\n\
 					$\r$\n\
 					(A program elsõ indítása egy kis idõt vehet igénybe...)"

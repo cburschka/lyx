@@ -95,9 +95,6 @@ ${LangFileString} NewerInstalled "You are trying to install an older version of 
 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 						MiKTeX was installed with administrator privileges but you are installing LyX without them."
-${LangFileString} MetafileNotAvailable "The LyX support for images in the format EMF or WMF will not be$\r$\n\
-					available because that requires to install a software printer to$\r$\n\
-					Windows which is only possible with administrator privileges."
 
 ${LangFileString} FinishPageMessage "Congratulazioni! LyX è stato installato con successo.$\r$\n\
 					$\r$\n\
