@@ -86,10 +86,10 @@ ${LangFileString} RunConfigureFailed "Fallito tentativo di eseguire lo script di
 ${LangFileString} NotAdmin "Occorrono i privilegi da amministratore per installare LyX!"
 ${LangFileString} InstallRunning "Il programma di installazione è già in esecuzione!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} è già installato!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+				Procedere con l'installazione su quella esistente non è raccomandabile se la versione version$\r$\n\
+				è una release di test o se avete problemi con la vostra installazione corrente di Lyx.$\r$\n\
+				In questi casi è preferibile installare nuovamente LyX.$\r$\n\
+				Volete procedere comunque con l'installazione di LyX su quella esistente?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
 				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 
