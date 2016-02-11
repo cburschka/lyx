@@ -39,5 +39,5 @@ liblyxzlib_a_SOURCES = \
 	1.2.8/uncompr.c \
 	1.2.8/zlib.h \
 	1.2.8/zutil.c \
-	1.2.8/zutil.c
+	1.2.8/zutil.h
 

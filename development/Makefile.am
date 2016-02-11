@@ -120,10 +120,15 @@ cmake/LyX_description.txt \
 cmake/LyX_license.txt \
 cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
+cmake/TODO.txt \
+cmake/build4-2010.bat \
+cmake/build5-2010.bat \
+cmake/build5-2010-installer.bat \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/lyx_commit_hash.h.cmake \
 cmake/configCompiler.h.cmake \
+cmake/configCompiler.h.msvc \
 cmake/configFunctions.cmake \
 cmake/configIncludes.cmake \
 cmake/doc/CMakeLists.txt \
@@ -132,6 +137,7 @@ cmake/doc/ReplaceValues.py \
 cmake/lyx_date.h.cmake \
 cmake/lyx.rc \
 cmake/man/CMakeLists.txt \
+cmake/mingw.bat \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
 cmake/modules/FindEnchant.cmake \
@@ -161,3 +167,4 @@ cmake/scripts/LyXGetVersion.cmake \
 keystest/cache-bisect.py \
 keystest/keytest.py \
 keystest/make_screenshot_html.py
+
