@@ -142,11 +142,13 @@ What's new
 
 - Do not output returns and tabs in outliner.
 
-- Fix on-screeb font of starred sections in paper text class.
+- Fix on-screen font of starred sections in paper text class.
 
 - Fix category of several layouts of the foils text class (UI only).
 
 - Correct minimal size of the view source window (bug 4430).
+
+- Fix that changing the box type could delete the box (bug 8712).
 
 
 * INTERNALS
