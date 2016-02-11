@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-01-24 00:09+0100\n"
-"PO-Revision-Date: 2016-01-24 08:57+0000\n"
+"POT-Creation-Date: 2016-01-25 22:13+0100\n"
+"PO-Revision-Date: 2016-01-25 21:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3837,8 +3837,8 @@ msgid "&PDF command:"
 msgstr "PD&F príkaz:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:107
-msgid "DVI-PS Options"
-msgstr "DVI PS Voľby"
+msgid "Dvips Options"
+msgstr "Dvips Voľby"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:41
 msgid "&PATH prefix:"
@@ -30871,11 +30871,6 @@ msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1736
-#, c-format
-msgid "Can't add horizontal grid lines in '%1$s'"
-msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
-
 #: src/mathed/InsetMathNest.cpp:713 src/mathed/InsetMathNest.cpp:1732
 #: src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect Off ('!' to enter)"
@@ -31259,6 +31254,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Can't add horizontal grid lines in '%1$s'"
+#~ msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
+
+#~ msgid "DVI-PS Options"
+#~ msgstr "DVI PS Voľby"
 
 #~ msgid "Unknown author index for change: %1$d\n"
 #~ msgstr "Neznámy index autora pre zmenu: %1$d\n"
