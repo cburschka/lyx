@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-02-02 20:39-0300\n"
+"PO-Revision-Date: 2016-02-11 14:03-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -3316,14 +3316,13 @@ msgid ""
 "This allows moving the document elsewhere and still finding the included "
 "files."
 msgstr ""
-"Se isto estiver marcado, o caminho de pasta do documento será salvo no "
-"documento.\n"
+"Se isto estiver marcado, será salvo no documento o seu caminho de pasta.\n"
 "Isto permite mover o documento para outro lugar, e ainda assim achar os "
 "arquivos incluídos."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
-msgstr "Salvar o caminho de pasta do &documento"
+msgstr "Salvar no &documento o seu caminho de pasta"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
 msgid "Windows && Work Area"
@@ -3355,11 +3354,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:197
 msgid "Displa&y single close-tab button"
-msgstr "&Mostrar um só botão de fechamento de aba"
+msgstr "&Mostrar botão de fechamento de aba único"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:206
 msgid "Closing last &view:"
-msgstr "Fechar a última &view:"
+msgstr "Fechar a última &vista:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Closes document"
@@ -15432,7 +15431,7 @@ msgstr "[Lista de TODOs]"
 
 #: lib/layouts/todonotes.module:42
 msgid "List of TODOs Heading|s"
-msgstr "Cabeçalho de Lisat de TODOs|s"
+msgstr "Cabeçalho de Lista de TODOs|s"
 
 #: lib/layouts/todonotes.module:43
 msgid "Enter a custom header for the List of TODOs here"
@@ -23161,7 +23160,7 @@ msgstr "Texto simples"
 
 #: lib/configure.py:648
 msgid "Plain text|a"
-msgstr "Texto simples|s"
+msgstr "Texto simples"
 
 #: lib/configure.py:649
 msgid "Plain text (pstotext)"
