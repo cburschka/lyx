@@ -13,7 +13,6 @@
 # gen_lfuns.py <path/to/LyXAction.cpp> <where/to/save/LFUNs.lyx>
 
 import sys,re,os.path
-from datetime import date
 
 def error(message):
     sys.stderr.write(message + '\n')
@@ -43,7 +42,7 @@ ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID,
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
 LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\\lyxformat 504
+\\lyxformat 506
 \\begin_document
 \\begin_header
 \\save_transient_properties true
@@ -143,9 +142,6 @@ End
 \\begin_layout Author
 The \\SpecialChar LyX
  Team
-\\end_layout
-
-\\begin_layout Date""" + "\n" + str(date.today()) + """
 \\end_layout
 
 """
