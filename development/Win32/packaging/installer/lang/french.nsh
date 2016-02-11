@@ -84,7 +84,7 @@ ${LangFileString} RunConfigureFailed "Échec de la tentative de configuration ini
 ${LangFileString} NotAdmin "Vous devez avoir les droits d$\'administration pour installer LyX !"
 ${LangFileString} InstallRunning "Le programme d$\'installation est toujours en cours !"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} est déjà installé !$\r$\n\
-				L'installation par dessus les installations existantes n'est pas recommandée si la version à installer$\r$\n\
+				L'installation par dessus les installations existantes n'est pas recommandée si la version installée$\r$\n\
 				est une version de test ou si vous avez des problèmes avec votre installation LyX existante.$\r$\n\
 				Dans ces situations il vaut mieux réinstaller LyX.$\r$\n\
 				Voulez-vous néanmoins installer LyX par dessus la version existante ?"
