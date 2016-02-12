@@ -1,3 +1,4 @@
+#-*-coding: windows-1250;-*-
 /*
 LyX Installer Language File
 Language: Slovak
