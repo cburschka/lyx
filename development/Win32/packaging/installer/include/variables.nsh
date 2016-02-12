@@ -57,5 +57,3 @@ Var UserList
 Var UserName
 
 Var LangName
-
-Var PrinterConf

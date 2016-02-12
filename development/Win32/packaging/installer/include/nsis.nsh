@@ -26,14 +26,10 @@ Configuration of standard NSIS header files
 
 !include MUI2.nsh
 !include LogicLib.nsh
-!include StrFunc.nsh
-!include FileFunc.nsh
-!include WordFunc.nsh
 !include Sections.nsh
 !include WinVer.nsh
 !include LangFile.nsh
 !include MultiUser.nsh
-!include nsDialogs.nsh
 !include InstallOptions.nsh
 !include x64.nsh
 
@@ -50,9 +46,3 @@ Configuration of standard NSIS header files
 
 # Functions to download spell-checker and thesaurus dictionaries
 !include include\dictionaries.nsh
-
-#--------------------------------
-# Include standard functions
-
-!insertmacro RefreshShellIcons
-!insertmacro WordFind2X

@@ -583,19 +583,6 @@ SectionGroupEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
-#--------------------------------
-# Installer initialization
-
-!macro PRINTER_INIT
-
-  ${If} ${AtLeastWinVista}
-    StrCpy $PrinterConf "printui.exe"
-  ${Else}
-    StrCpy $PrinterConf "rundll32.exe printui.dll,PrintUIEntry"
-  ${EndIf}
-
-!macroend
-
 # .onInit must be here after the section definition because we have to set
 # the selection states of the dictionary sections
 Function .onInit
@@ -631,10 +618,10 @@ Function .onInit
   # Abort
   #${endif}
   
-  # read the use and computer name
+  # read the user and computer name
   ReadRegStr $ComputerName HKLM "System\CurrentControlSet\Control\ComputerName\ActiveComputerName" "ComputerName"
   System::Call "advapi32::GetUserName(t .r0, *i ${NSIS_MAX_STRLEN} r1) i.r2"
-  StrCpy $UserName $0  
+  StrCpy $UserName $0
   
   !insertmacro MULTIUSER_INIT
   
@@ -702,8 +689,6 @@ Function .onInit
    Abort
   ${endif}
 
-  !insertmacro PRINTER_INIT
-  
   # this can be reset to "true" in section SecDesktop
   StrCpy $CreateDesktopIcon "false"
   StrCpy $CreateFileAssociations "false"
@@ -1412,7 +1397,6 @@ FunctionEnd
 # this function is called at first after starting the uninstaller
 Function un.onInit
 
-  !insertmacro PRINTER_INIT
   !insertmacro MULTIUSER_UNINIT
 
   # Check that LyX is not currently running
