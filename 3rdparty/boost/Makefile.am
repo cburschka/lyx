@@ -4,13 +4,14 @@ noinst_LIBRARIES = liblyxboost.a
 
 EXTRA_DIST = boost \
 	CMakeLists.txt \
+	LICENSE_1_0.txt \
 	libs/CMakeLists.txt \
 	libs/regex/CMakeLists.txt \
-	libs/regex/regex.vcproj \
 	libs/regex/src/CMakeLists.txt \
 	libs/signals/CMakeLists.txt \
-	libs/signals/signals.vcproj \
-	libs/signals/src/CMakeLists.txt
+	libs/signals/src/CMakeLists.txt \
+	boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp \
+	boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp 
 
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
