@@ -14,9 +14,9 @@ ${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aggiornamento dei file del database MiKTeX in corso..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configurazione di LyX in corso ($LaTeXInstalled potrebbe installare i pacchetti mancanti, l'azione potrebbe richiedere qualche minuto) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compilazione degli script Python in corso..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Crea icona sul desktop"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visitate lyx.org per ultime novità, aiuto e suggerimenti"
@@ -33,8 +33,8 @@ ${LangFileString} SecInstJabRefDescription "Gestore dei riferimenti bibliografic
 ${LangFileString} SecAllUsersDescription "Installazione LyX per tutti gli utenti o solo per l'utente attuale."
 ${LangFileString} SecFileAssocDescription "Associa i files con estensione .lyx al programma LyX."
 ${LangFileString} SecDesktopDescription "Icona LyX sul desktop."
-${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
-${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
+${LangFileString} SecDictionariesDescription "Dizionari per il controllo ortografico che possono essere scaricati e installati."
+${LangFileString} SecThesaurusDescription "Dizionari dei sinonimi che possono essere scaricati e installati."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuzione di LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Scegliere la distribuzione di LaTeX che LyX dovrà usare.'
@@ -61,8 +61,8 @@ ${LangFileString} LatexError1 'Il programma non ha rilevato la presenza di alcun
 				LyX non può funzionare senza una distribuzione LaTeX (ad es. $\"MiKTeX$\")!$\r$\n\
 				Il processo di installazione verrà quindi terminato.'
 
-${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
-${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+${LangFileString} HunspellFailed 'Lo scaricamento del dizionario per la lingua  $\"$R3$\" non e$\' andato a buon fine.'
+${LangFileString} ThesaurusFailed 'Lo scaricamento dei sinonimi per la lingua $\"$R3$\" non e$\' andato a buon fine.'
 
 ${LangFileString} JabRefInfo 'Verrà adesso lanciato il programma di installazione di $\"JabRef$\".$\r$\n\
 				Puoi usare tutte le opzioni predefinite per il programma di installazione di JabRef.'
@@ -90,11 +90,11 @@ ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} è già installato!$\r$
 				è una release di test o se avete problemi con la vostra installazione corrente di Lyx.$\r$\n\
 				In questi casi è preferibile installare nuovamente LyX.$\r$\n\
 				Volete procedere comunque con l'installazione di LyX su quella esistente?"
-${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
+${LangFileString} NewerInstalled "Si sta procedendo ad installare una versione di LyX precedente a quella in uso.$\r$\n\
+				  Se si vuole procedere, è necessario prima disinstallare la versione LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-						MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MultipleIndexesNotAvailable "Il supporto di più indici per documento non sarà disponibile perche'$\r$\n\
+						MiKTeX è stato installato con privilegi di amministratore, ma si sta procedendo a installare LyX senza questi privilegi."
 
 ${LangFileString} FinishPageMessage "Congratulazioni! LyX è stato installato con successo.$\r$\n\
 					$\r$\n\

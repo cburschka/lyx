@@ -4,7 +4,7 @@ Language: Brazilian Portuguese
 Author: Georger Araújo
 */
 
-!insertmacro LANGFILE_EXT "Brazilian Portuguese"
+!insertmacro LANGFILE_EXT "PortugueseBR"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Instalado para o Usuário Atual)"
 
@@ -36,14 +36,14 @@ ${LangFileString} SecThesaurusDescription "Dicionários de sinônimos que podem se
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuição LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolha que distribuição LaTeX o LyX deverá usar.'
-${LangFileString} EnterLaTeXFolder 'Você pode também optar por configurar aqui o caminho para o arquivo $\"latex.exe$\" e assim escolher a\
-					distribuição LaTeX que o LyX deverá usar.\r\n\
+${LangFileString} EnterLaTeXFolder 'Você pode também optar por configurar aqui o caminho para o arquivo $\"latex.exe$\" e assim escolher \
+					a distribuição LaTeX que o LyX deverá usar.\r\n\
 					Sem uma distribuição LaTeX, o LyX não poderá gerar documentos de saída!\r\n\
 					\r\n\
 					O instalador detectou a distribuição LaTeX\
 					$\"$LaTeXName$\" no seu sistema, cujo caminho é exibido abaixo.'
-${LangFileString} EnterLaTeXFolderNone 'Configure abaixo o caminho para o arquivo $\"latex.exe$\". Ao fazê-lo você escolhe\
-					a distribuição LaTeX que o LyX deverá usar.\r\n\
+${LangFileString} EnterLaTeXFolderNone 'Configure abaixo o caminho para o arquivo $\"latex.exe$\". Ao fazê-lo, \
+					você escolhe a distribuição LaTeX que o LyX deverá usar.\r\n\
 					Sem uma distribuição LaTeX, o LyX não poderá gerar documentos de saída!\r\n\
 					\r\n\
 					O instalador não conseguiu encontrar uma distribuição LaTeX no seu sistema.'
@@ -83,8 +83,8 @@ ${LangFileString} ModifyingConfigureFailed "Não foi possível definir 'path_prefi
 #${LangFileString} RunConfigureFailed "Não foi possível executar o script de configuração"
 ${LangFileString} InstallRunning "O instalador já está em execução!"
 ${LangFileString} AlreadyInstalled "O LyX ${APP_SERIES_KEY2} já está instalado!$\r$\n\
-				Não é recomendado instalar sobre uma instalação existente se estiver instalando$\r$\n\
-				uma versão de teste ou se houver algum problema com a instalação existente do LyX.$\r$\n\
+				Não é recomendado instalar sobre uma instalação existente se a versão já instalada$\r$\n\
+				for uma versão de teste ou se houver algum problema com a instalação existente do LyX.$\r$\n\
 				Nesses casos é melhor reinstalar o LyX.$\r$\n\
 				Deseja instalar sobre a versão existente mesmo assim?"
 ${LangFileString} NewerInstalled "A versão que você está tentando instalar é mais antiga que aquela que já está instalada.$\r$\n\
@@ -112,6 +112,6 @@ ${LangFileString} SecUnMiKTeXDescription "Desinstala a distribuição LaTeX MiKTeX
 ${LangFileString} SecUnJabRefDescription "Desinstala o gerenciador de referências bibliográficas JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Exclui a configuração do LyX$\r$\n\
 						(pasta $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-						para você ou para todos os usuárois (se você for um administrador)).'
+						para você ou para todos os usuários (se você for um administrador)).'
 ${LangFileString} SecUnProgramFilesDescription "Desinstalar o LyX e todos os seus componentes."
 
