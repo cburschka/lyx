@@ -36,7 +36,7 @@
 #   COMMAND ${CMAKE_COMMAND}
 #      "-DFILE_TO_HANDLE=${fileToCheck}"
 #      "-DMD5_OUTPUT=${md5out}"
-#      -P ${TOP_SCRIPT_PATH}/CtreateMD5MD5.cmake
+#      -P ${TOP_SCRIPT_PATH}/CreateMD5.cmake
 #   DEPENDS ")
 #
 # add_custom_target(lyxmd5 DEPENDS ${md5out})
