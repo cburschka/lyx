@@ -9,9 +9,7 @@ EXTRA_DIST = boost \
 	libs/regex/CMakeLists.txt \
 	libs/regex/src/CMakeLists.txt \
 	libs/signals/CMakeLists.txt \
-	libs/signals/src/CMakeLists.txt \
-	boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_common.hpp \
-	boost/numeric/conversion/detail/preprocessed/numeric_cast_traits_long_long.hpp 
+	libs/signals/src/CMakeLists.txt
 
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
