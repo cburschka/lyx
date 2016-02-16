@@ -168,13 +168,19 @@ AC_DEFUN([LYX_CXX_CXX11],
  lyx_use_cxx11=$lyx_cv_cxx_cxx11
 ])
 
+
+dnl Usage: LYX_CXX_USE_REGEX(cxx11_flags)
 dnl decide whether we want to use std::regex and set the
 dnl LYX_USE_STD_REGEX accordingly.
+dnl the extra cxx11 flags have to be passed to the preprocessor. They are
+dnl not plainly added to AM_CPPFLAGS because then the objc compiler (mac)
+dnl would fail.
 AC_DEFUN([LYX_CXX_USE_REGEX],
 [lyx_std_regex=no
  if test $lyx_use_cxx11 = yes; then
    save_CPPFLAGS=$CPPFLAGS
-   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+   # we want to pass -std=c++11 to clang/cpp if necessary
+   CPPFLAGS="$AM_CPPFLAGS $1 $CPPFLAGS"
    save_CXXFLAGS=$CXXFLAGS
    CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
    AC_LANG_PUSH(C++)
@@ -362,17 +368,20 @@ if test x$GXX = xyes; then
       4.3*|4.4*|4.5*|4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
-        AM_CPPFLAGS="$AM_CPPFLAGS -std=c++0x";;
+        cxx11_flags="-std=c++0x";;
       clang)
         dnl presumably all clang versions support c++11.
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
-        AM_CPPFLAGS="$AM_CPPFLAGS -std=c++11"
+        cxx11_flags="-std=c++11"
         AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
       *)
         AS_CASE([$host], [*cygwin*],
-                [AM_CPPFLAGS="$AM_CPPFLAGS -std=gnu++11"],
-                [AM_CPPFLAGS="$AM_CPPFLAGS -std=c++11"]);;
+                [cxx11_flags="-std=gnu++11"],
+                [cxx11_flags="-std=c++11"]);;
     esac
+    # cxx11_flags is useful when running preprocessor alone 
+    # (see detection of regex).
+    AM_CXXFLAGS="$cxx11_flags $AM_CXXFLAGS"
   fi
 fi
 
@@ -383,7 +392,7 @@ if test $lyx_use_cxx11 = yes; then
     AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-declarations"
   fi
 fi
-LYX_CXX_USE_REGEX
+LYX_CXX_USE_REGEX([$cxx11_flags])
 ])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
