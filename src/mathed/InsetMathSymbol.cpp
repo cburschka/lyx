@@ -21,6 +21,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/lyxlib.h"
 #include "support/textutils.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -80,9 +81,9 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	// seperate things a bit
 	if (isRelOp())
-		dim.wid += static_cast<int>(0.5 * em + 0.5);
+		dim.wid += support::iround(0.5 * em);
 	else
-		dim.wid += static_cast<int>(0.1667 * em + 0.5);
+		dim.wid += support::iround(0.1667 * em);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -106,9 +107,9 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
 	int const em = mathed_font_em(pi.base.font);
 	if (isRelOp())
-		x += static_cast<int>(0.25*em+0.5);
+		x += support::iround(0.25 * em);
 	else
-		x += static_cast<int>(0.0833*em+0.5);
+		x += support::iround(0.0833 * em);
 
 	FontSetChanger dummy(pi.base, from_ascii(font));
 	pi.draw(x, y - h_, sym_->draw);

@@ -15,6 +15,20 @@
 #ifndef LYX_LIB_H
 #define LYX_LIB_H
 
+// always include <math.h> (also with MSVC), to avoid compiler specific side effects
+#include <math.h>
+
+#ifdef _MSC_VER
+/// Replacement for C99 round()
+inline double round(double x)
+{
+	if (x < 0)
+		return ceil(x - 0.5);
+	else
+		return floor(x + 0.5);
+}
+#endif
+
 namespace lyx {
 namespace support {
 
@@ -32,6 +46,12 @@ int kill(int pid, int sig);
 inline bool float_equal(double var, double number, double error)
 {
 	return (number - error <= var && var <= number + error);
+}
+
+/// round \p x to nearest integer
+inline int iround(double x)
+{
+	return static_cast<int>(round(x));
 }
 
 } // namespace support

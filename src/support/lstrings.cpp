@@ -16,13 +16,13 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
+#include "support/lyxlib.h"
 #include "support/qstring_helpers.h"
 
 #include "support/lassert.h"
 
 #include <QString>
 
-#include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -1400,18 +1400,6 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
-#ifdef _MSC_VER
-// Replacement for C99 function lround()
-double round(double x)
-{
-	if (x < 0)
-		return ceil(x - 0.5);
-	else
-		return floor(x + 0.5);
-}
-#endif
-
-
 std::string formatFPNumber(double x)
 {
 	// Need manual tweaking, QString::number(x, 'f', 16) does not work either
@@ -1420,7 +1408,7 @@ std::string formatFPNumber(double x)
 	// Prevent outputs of 23.4200000000000017 but output small numbers
 	// with at least 6 significant digits.
 	double const logarithm = log10(fabs(x));
-	os << std::setprecision(max(6 - static_cast<int>(round(logarithm)), 0)) << x;
+	os << std::setprecision(max(6 - iround(logarithm), 0)) << x;
 	string result = os.str();
 	if (result.find('.') != string::npos) {
 		result = rtrim(result, "0");

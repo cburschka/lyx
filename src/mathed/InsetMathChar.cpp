@@ -26,6 +26,7 @@
 
 #include "support/debug.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "support/textutils.h"
 
 
@@ -77,9 +78,9 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	int const em = mathed_font_em(mi.base.font);
 	if (isBinaryOp(char_))
-		dim.wid += static_cast<int>(0.5*em+0.5);
+		dim.wid += support::iround(0.5 * em);
 	else if (char_ == '\'')
-		dim.wid += static_cast<int>(0.1667*em+0.5);
+		dim.wid += support::iround(0.1667 * em);
 #else
 	whichFont(font_, code_, mi);
 	dim = theFontMetrics(font_).dimension(char_);
@@ -95,9 +96,9 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
 	int const em = mathed_font_em(pi.base.font);
 	if (isBinaryOp(char_))
-		x += static_cast<int>(0.25*em+0.5);
+		x += support::iround(0.25 * em);
 	else if (char_ == '\'')
-		x += static_cast<int>(0.0833*em+0.5);
+		x += support::iround(0.0833 * em);
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(pi.base, "cmr");

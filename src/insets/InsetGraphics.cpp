@@ -438,7 +438,7 @@ docstring InsetGraphics::createDocBookAttributes() const
 	if (!params().scale.empty() && !float_equal(scl, 0.0, 0.05)) {
 		if (!float_equal(scl, 100.0, 0.05))
 			options << " scale=\""
-				<< static_cast<int>( (scl) + 0.5 )
+				<< support::iround(scl)
 				<< "\" ";
 	} else {
 		if (!params().width.zero()) {
