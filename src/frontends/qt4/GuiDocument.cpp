@@ -453,6 +453,11 @@ PreambleModule::PreambleModule() : current_id_(0)
 	// This is not a memory leak. The object will be destroyed
 	// with this.
 	(void) new LaTeXHighlighter(preambleTE->document());
+	QFont font(guiApp->typewriterFontName());
+	font.setFixedPitch(true);
+	font.setStyleHint(QFont::TypeWriter);
+	preambleTE->setFont(font);
+	preambleTE->setWordWrapMode(QTextOption::NoWrap);
 	setFocusProxy(preambleTE);
 	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
 }
