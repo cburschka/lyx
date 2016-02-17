@@ -8,10 +8,10 @@
 # Ignacio García <ignacio.gmorales@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.2\n"
+"Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-11-26 00:10+0100\n"
-"PO-Revision-Date: 2016-01-29 09:33+0100\n"
+"PO-Revision-Date: 2016-02-15 09:44+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -7248,7 +7248,7 @@ msgstr "Subpárrafo"
 #: lib/layouts/powerdot.layout:332 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:62 lib/layouts/theorems-case.inc:53
 msgid "Custom Item|s"
-msgstr "Ítems personalizados|p"
+msgstr "Ítem personalizado|p"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa.layout:400
 #: lib/layouts/apa6.layout:476 lib/layouts/apa6.layout:501
@@ -12094,11 +12094,11 @@ msgstr "El capítulo tal como aparecerá en el IG/encabezados actuales"
 
 #: lib/layouts/tufte-book.layout:132
 msgid "Sidenote"
-msgstr "Nota al margen"
+msgstr "Nota lateral"
 
 #: lib/layouts/tufte-book.layout:137
 msgid "sidenote"
-msgstr "nota al margen"
+msgstr "nota lateral"
 
 #: lib/layouts/tufte-book.layout:152
 msgid "Marginnote"
@@ -13255,35 +13255,35 @@ msgstr "Braille (tamaño de texto)"
 
 #: lib/layouts/braille.module:68
 msgid "Braille (dots on)"
-msgstr "Braille (puntos activos)"
+msgstr "Braille (puntos sí)"
 
 #: lib/layouts/braille.module:83
 msgid "Braille_dots_on"
-msgstr "Braille_puntos_activos"
+msgstr "Braille_puntos_sí"
 
 #: lib/layouts/braille.module:92
 msgid "Braille (dots off)"
-msgstr "Braille (puntos desactivados)"
+msgstr "Braille (puntos no)"
 
 #: lib/layouts/braille.module:107
 msgid "Braille_dots_off"
-msgstr "Braille_puntos_desactivados"
+msgstr "Braille_puntos_no"
 
 #: lib/layouts/braille.module:116
 msgid "Braille (mirror on)"
-msgstr "Braille (espejo activo)"
+msgstr "Braille (espejo sí)"
 
 #: lib/layouts/braille.module:131
 msgid "Braille_mirror_on"
-msgstr "Braille_espejo_activo"
+msgstr "Braille_espejo_sí"
 
 #: lib/layouts/braille.module:140
 msgid "Braille (mirror off)"
-msgstr "Braille (espejo inactivo)"
+msgstr "Braille (espejo no)"
 
 #: lib/layouts/braille.module:155
 msgid "Braille_mirror_off"
-msgstr "Braille_espejo_inactivo"
+msgstr "Braille_espejo_no"
 
 #: lib/layouts/braille.module:163
 msgid "Braillebox"
@@ -28708,7 +28708,7 @@ msgstr "Latín extendido-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "IPA Extensions"
-msgstr "Extensiones IPA"
+msgstr "Extensiones AFI"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
