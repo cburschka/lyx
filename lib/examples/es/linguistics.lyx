@@ -10,7 +10,7 @@
 %\floatstyle{plaintop}
 %\restylefloat{tableau}
 
-%% translate the float caption label
+%% Uncomment the following to translate the float caption label
 %\floatname{tableau}{Cuadro}
 \end_preamble
 \use_default_options false
@@ -113,7 +113,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-14/09/2008
+21/04/2015
 \end_layout
 
 \begin_layout Abstract
@@ -124,7 +124,7 @@ Este artículo describe algunas características que \SpecialChar LyX
 \emph on
 Tableaux
 \emph default
-), notación semántica y símbolos fonéticos (IPA).
+), notación semántica, árboles de estructura y símbolos fonéticos (AFI).
 \end_layout
 
 \begin_layout Section
@@ -197,8 +197,24 @@ Ejemplos numerados
 Glosas
 \emph default
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Instalado en el sistema: 
+\begin_inset Info
+type  "package"
+arg   "covington"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -226,8 +242,24 @@ enumeración, enumeración*
 descripción
 \emph default
 ).
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Instalado en el sistema:
+\begin_inset Info
+type  "package"
+arg   "enumitem"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -247,8 +279,24 @@ Significado
 .
  El paquete provee comillas sensibles al contexto, dependiendo del idioma
  en uso.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Instalado en el sistema: 
+\begin_inset Info
+type  "package"
+arg   "csquotes"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 
 \emph on
@@ -272,8 +320,55 @@ key "float"
 .
  Este paquete estará incluido en cualquier distribución de \SpecialChar LaTeX
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Instalado en el sistema: 
+\begin_inset Info
+type  "package"
+arg   "csquotes"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+forest.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+: este paquete se usa para generar árboles.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Instalado en el sistema: 
+\begin_inset Info
+type  "package"
+arg   "forest"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Ejemplos numerados
 \end_layout
@@ -297,10 +392,10 @@ puede tener varios párrafos
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-Esto es un ejemplo simple
+Esto es un ejemplo sencillo
 \begin_inset CommandInset label
 LatexCommand label
-name "ej:ejemplo-simple"
+name "ej:ejemplo-sencillo"
 
 \end_inset
 
@@ -312,7 +407,7 @@ Ejemplo numerado (consecutivo)
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
-Los ejemplos simples consecutivos tienen sus propios números
+Los ejemplos sencillos consecutivos tienen sus propios números
 \end_layout
 
 \begin_layout Subexample
@@ -346,7 +441,7 @@ Referencia cruzada
  A continuación, a modo de demostración, insertamos las referencias a 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "ej:ejemplo-simple"
+reference "ej:ejemplo-sencillo"
 
 \end_inset
 
@@ -360,6 +455,16 @@ reference "subsec:subejemplo"
 .
 \end_layout
 
+\begin_layout Standard
+Si quieres modificar la numeración de un ejemplo individual, puedes usar
+ 
+\family sans
+Insertar\SpecialChar menuseparator
+Ítem personalizado
+\family default
+.
+\end_layout
+
 \begin_layout Section
 Glosas
 \end_layout
@@ -369,34 +474,43 @@ El módulo Lingüística proporciona dos tipos de glosas, que se pueden insertar
  con el menú 
 \family sans
 Insertar\SpecialChar menuseparator
-Objeto personalizado
+Recuadro personalizado
 \family default
 : el estándar 
 \emph on
-Personalizado:Glosa
+Glosa
 \emph default
- provee una glosa que consta de dos líneas y una traducción; el tipo 
+ provee una glosa que consta de dos líneas (par de glosas) y una traducción;
+ el tipo 
 \emph on
-Personalizado:Tri-Glosa
+Tri-Glosa
 \emph default
- consta de tres líneas y una traducción.
+ consta de tres líneas y una traducción (la tercera línea generalmente se
+ necesita para dar información morfológica o fonológica junto al par de
+ glosas).
  Cada línea de traducción puede abarcar múltiples líneas en la salida, es
  decir, los párrafos se quiebran automáticamente si exceden la anchura del
  texto.
- Ten en cuenta que la línea de traducción es obligatoria y debe estar precedida
- del comando 
-\family typewriter
+ La línea de traducción se inserta mediante
+\family sans
+ Insertar\SpecialChar menuseparator
+Traducción
+\begin_inset space ~
+\end_inset
 
-\backslash
-glt
+glosa
 \family default
-, que se debe insertar literal en el recuadro glosa (no hace falta código
- \SpecialChar TeX
-, y de hecho no es posible).
+.
+ No importa donde insertes la traducción, siempre se imprime como última
+ línea.
 \end_layout
 
 \begin_layout Standard
-He aquí un sencillo ejemplo:
+He aquí un sencillo ejemplo de 
+\emph on
+Glosa
+\emph default
+:
 \end_layout
 
 \begin_layout Standard
@@ -404,31 +518,20 @@ He aquí un sencillo ejemplo:
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 C'est un exemple simple
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
-\begin_inset ERT
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-{Esto es} un ejemplo sencillo
+Esto es
 \end_layout
 
 \end_inset
 
-
+ un ejemplo sencillo
 \end_layout
 
 \begin_layout Plain Layout
@@ -436,17 +539,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-Esto es un ejemplo sencillo
-\end_layout
-
-\end_inset
-
-
+'Esto es un ejemplo sencillo'
 \end_layout
 
 \end_inset
@@ -461,11 +554,64 @@ Esto es un ejemplo sencillo
 
 \begin_layout Standard
 \noindent
-Observa cómo las llaves contienen expresiones con varias palabras.
+Usa 
+\family sans
+Editar\SpecialChar menuseparator
+Estilo
+\begin_inset space ~
+\end_inset
+
+del
+\begin_inset space ~
+\end_inset
+
+texto\SpecialChar menuseparator
+Agrupar
+\begin_inset space ~
+\end_inset
+
+palabras
+\begin_inset space ~
+\end_inset
+
+glosadas 
+\family default
+para mantener juntas varias palabras de una expresión (o bien entre llaves
+ en código \SpecialChar TeX
+: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+palabras juntas
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+).
+ Ten en cuenta que puedes introducir múltiples espacios para alinear las
+ glosas en el área de trabajo de \SpecialChar LyX
+; esto no afecta a la salida.
 \end_layout
 
 \begin_layout Standard
-De igual modo podemos hacer una glosa de tres líneas:
+De igual modo podemos hacer una glosa de tres líneas (
+\emph on
+Tri-Glosa
+\emph default
+):
 \end_layout
 
 \begin_layout Standard
@@ -473,45 +619,33 @@ De igual modo podemos hacer una glosa de tres líneas:
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 C'est un exemple simple
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
-\begin_inset ERT
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-{Das ist} ein Beispiel einfach
+Das ist
 \end_layout
 
 \end_inset
 
-
+ ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset ERT
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-{Esto es} un ejemplo sencillo
+Esto es
 \end_layout
 
 \end_inset
 
-
+ un ejemplo sencillo
 \end_layout
 
 \begin_layout Plain Layout
@@ -519,17 +653,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-Esto es un ejemplo sencillo
-\end_layout
-
-\end_inset
-
-
+'Esto es un ejemplo sencillo'
 \end_layout
 
 \end_inset
@@ -553,45 +677,25 @@ Si quieres tener glosas numeradas, puedes simplemente insertar el recuadro
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 Mein Luftkissenfahrzeug ist voller Aale
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 My skeertuig is vol palings
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Plain Layout
-\begin_inset ERT
+Mi hidrodeslizador está 
+\begin_inset Flex GroupGlossedWords
 status open
 
 \begin_layout Plain Layout
-
-Mi hidrodeslizador está {lleno de} anguilas
+lleno de
 \end_layout
 
 \end_inset
 
-
+ anguilas
 \end_layout
 
 \begin_layout Plain Layout
@@ -599,11 +703,6 @@ Mi hidrodeslizador está {lleno de} anguilas
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 Do you have matches?
 \end_layout
 
@@ -617,62 +716,399 @@ Do you have matches?
 
 \end_layout
 
+\begin_layout Subsection*
+Sugerencias y trucos
+\end_layout
+
+\begin_layout Subsubsection*
+Evitar saltos de página en glosas
+\end_layout
+
+\begin_layout Standard
+En las glosas se podrían producir saltos de página, lo que es inconveniente.
+ Un método de esquivar esto es envolver las glosas en marcos (
+\family sans
+Insertar\SpecialChar menuseparator
+Marco\SpecialChar menuseparator
+Sin borde
+\family default
+).
+ Si quieres automatizarlo para todas las glosas, puedes copiar el código
+ siguiente en
+\family sans
+ Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Preámbulo
+\begin_inset space ~
+\end_inset
+
+\SpecialChar LaTeX
+
+\family default
+.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Do not break pages at two-line glosses
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{linggloss}[2][]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+gll #2}{
+\backslash
+glosstr
+\backslash
+glend
+\backslash
+end{minipage}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+% Do not break pages at three-line glosses
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewenvironment{lingglosss}[2][]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{.7
+\backslash
+textwidth}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+glll #2}{
+\backslash
+glosstr
+\backslash
+glend
+\backslash
+end{minipage}}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Ten en cuenta que los cambios de fuente no están permitidos en las glosas.
- De ahí que el diálogo 
-\family sans
-Estilo de carácter
-\family default
- esté desactivado.
- Puesto que las glosas no se separan con guión, no se requiere una configuración
- explícita de idioma en la salida \SpecialChar LaTeX
-, (de hecho, podría romper la salida,
- pues covington no lo soporta).
- No obstante, puede darse el caso de querer establecer el idioma para una
- revisión ortográfica adecuada.
- Por ahora, esto hay que hacerlo como sigue: selecciona el texto, después
- utiliza 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
+Es posible que hayas de ajustar la anchura de la minipágina
+\lang english
  
-\family sans
-language <lang>
+\lang spanish
+(
+\family typewriter
+.7
+\backslash
+textwidth
 \family default
-, donde
-\family sans
- <lang>
+ en el código ejemplo) para adaptar las glosas al ancho de la página en
+ uso.
+\end_layout
+
+\begin_layout Subsubsection*
+Notas a pie de página en glosas
+\end_layout
+
+\begin_layout Standard
+Aunque es posible insertar notas al pie en un recuadro 
+\emph on
+Glosa
+\emph default
+, \SpecialChar LaTeX
+ fallará al compilar.
+ Si necesitas notas al pie pon 
+\family typewriter
+
+\backslash
+footnotemark 
 \family default
- debe reemplazarse por el idioma respectivo, p.
-\begin_inset space \thinspace{}
+en modo \SpecialChar TeX
+ en el punto de la glosa en el que deba aparecer el número de la
+ nota, y 
+\family typewriter
+
+\backslash
+footnotetext{Actual footnote ...}
+\family default
+, en modo \SpecialChar TeX
+, justo detrás del recuadro 
+\emph on
+Glosa
+\emph default
+.
+ Si necesitas varias notas repite este procedimiento.
+\end_layout
+
+\begin_layout Subsubsection*
+Glosas (y Ejemplos) en una presentación Beamer
+\end_layout
+
+\begin_layout Standard
+El paquete 
+\emph on
+covington
+\emph default
+ y la clase 
+\emph on
+beamer
+\emph default
+ no funcionan juntos tal cual, porque ambos intentan definir los comandos
+\family typewriter
+ 
+\backslash
+example
+\family default
+ y 
+\family typewriter
+
+\backslash
+examples
+\family default
+, lo que resulta en error \SpecialChar LaTeX
+.
+ Puedes sortear el problema insertando el código siguiente en
+\family sans
+ Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Formato
+\begin_inset space ~
 \end_inset
 
-e., 
-\family sans
-english
+local
 \family default
-, 
+:
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Provides covington 1
+\end_layout
+
+\begin_layout Plain Layout
+
+AddToPreamble
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+example
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexample
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+examples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexamples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+usepackage{covington}
+\end_layout
+
+\begin_layout Plain Layout
+
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pulsa 
+\begin_inset Quotes fld
+\end_inset
+
+
 \family sans
-french
+Validar
 \family default
-, 
+
+\begin_inset Quotes frd
+\end_inset
+
+ y 
+\begin_inset Quotes fld
+\end_inset
+
+
 \family sans
-ngerman
+Aceptar
 \family default
- o 
-\family sans
-spanish
-\family default
+
+\begin_inset Quotes frd
+\end_inset
+
 .
- En la salida \SpecialChar LaTeX
- esta configuración será suprimida.
+ Esto inhibe los entornos 
+\family typewriter
+example(s)
+\family default
+ de 
+\emph on
+beamer
+\emph default
+ frente a los de 
+\emph on
+covington
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Además, si quieres usar glosas en 
+\emph on
+beamer
+\emph default
+, debes ponerlas en un marco 
+\begin_inset Quotes fld
+\end_inset
+
+frágil
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -714,23 +1150,23 @@ Flotante
 \family default
  encontrarás la entrada 
 \family sans
-Tableaux
+Tableau
 \family default
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Para cambiar la traducción de la etiqueta de la leyenda 
+Para cambiar la etiqueta 
 \begin_inset Quotes fld
 \end_inset
 
-Tableaux
+Tableau
 \begin_inset Quotes frd
 \end_inset
 
- en la salida (por ej., por Cuadro semántico, o Árbol...), inserta en el preámbulo
- \SpecialChar LaTeX
+ de la leyenda del cuadro en la salida (por ej., por Cuadro, o Cuadro semántico...),
+ inserta en el preámbulo \SpecialChar LaTeX
  el comando 
 \family typewriter
 
@@ -759,7 +1195,7 @@ del T.
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1063,6 +1499,12 @@ Preámbulo \SpecialChar LaTeX
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout LyX-Code
+
 
 \backslash
 floatstyle{plaintop}
@@ -1070,16 +1512,27 @@ floatstyle{plaintop}
 
 \begin_layout LyX-Code
 
+
 \backslash
 restylefloat{tableau}
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Si estás usando una clase KOMA, en ese caso pon el siguiente código para
- mejorar el espaciado:
+Si estás usando una clase KOMA, en ese caso pon el siguiente código:
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout LyX-Code
+
 
 \backslash
 floatstyle{komaabove}
@@ -1087,27 +1540,28 @@ floatstyle{komaabove}
 
 \begin_layout LyX-Code
 
+
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 En 
 \family sans
 Insertar\SpecialChar menuseparator
-Índice
+Índices
 \family default
  puedes encontrar un 
 \family sans
 Índice de Tableaux
 \family default
- que se incorporará como recuadro en \SpecialChar LyX
-.
- Aunque habitualmente se coloca al principio o al final del documento, lo
- insertamos aquí a modo de ejemplo:
-\end_layout
-
-\begin_layout Standard
+ que se muestra así en \SpecialChar LyX
+:
 \begin_inset FloatList tableau
 
 \end_inset
@@ -1179,6 +1633,12 @@ Estilo del texto
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 renewcommand
@@ -1186,6 +1646,11 @@ renewcommand
 lingexpr[1]{
 \backslash
 textbf{#1}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1205,7 +1670,185 @@ lingmeaning
 \end_layout
 
 \begin_layout Section
-Símbolos fonéticos (IPA)
+Estructuras lingüísticas en árbol
+\end_layout
+
+\begin_layout Standard
+Hay muchos paquetes \SpecialChar LaTeX
+ que ayudan a generar árboles estructurales.
+ \SpecialChar LyX
+ soporta el paquete 
+\family sans
+forest
+\family default
+, que combina alta flexibilidad y potencia con una entrada de sintaxis confortab
+le.
+ El módulo Lingüística permite la inserción de árboles mediante 
+\family sans
+Insertar\SpecialChar menuseparator
+Recuadro personalizado
+\family default
+.
+ En este recuadro puedes insertar la notación de corchetes usada por 
+\family sans
+forest
+\family default
+, (y por paquetes similares como
+\family sans
+ qtree
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+Un ejemplo sencillo: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status collapsed
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En la salida PDF verás que la entrada
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+\size small
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[D[a]][NP[letter]]]]]
+\end_layout
+
+\begin_layout Standard
+se expande a una estructura en árbol.
+ Para ver el resultado en \SpecialChar LyX
+ puedes incorporar el recuadro Estructura Árbol
+ en un recuadro Vista Preliminar (
+\family sans
+Insertar\SpecialChar menuseparator
+Vista preliminar
+\family default
+).
+ Si la 
+\family sans
+Vista preliminar inmediata
+\family default
+ está correctamente instalada y activada (en preferencias de \SpecialChar LyX
+) deberías
+ ver el árbol (clic en la imagen para editarla):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Mary]] [V' [V[sent]] [DP[John]] [DP[D[a]][NP[response]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las cubiertas se pueden generar fácilmente con la opción 
+\begin_inset Quotes fld
+\end_inset
+
+triangle
+\begin_inset Quotes frd
+\end_inset
+
+ (atención al significado de la coma, pues marca opciones):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status collapsed
+
+\begin_layout Plain Layout
+[VP [DP[John]] [V' [V[sent]] [DP[Mary]] [DP[another letter, triangle]] ]
+ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para alinear los nodos del árbol con elegancia usa la opción 
+\begin_inset Quotes fld
+\end_inset
+
+tier
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Todos los nodos que tienen el mismo 
+\begin_inset Quotes fld
+\end_inset
+
+nivel
+\begin_inset Quotes frd
+\end_inset
+
+ asignado se alinean.
+ Un ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[John,tier=word]] [V' [V[sent,tier=word]] [DP[Mary,tier=word]] [DP[D[a,ti
+er=word]][NP[letter,tier=word]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+El paquete soporta muchas características adicionales, tales como flechas
+ de movimiento y decoraciones, que no se pueden describir aquí (por favor,
+ consulta la detallada documentación del paquete
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Símbolos fonéticos (AFI)
 \end_layout
 
 \begin_layout Standard
@@ -1217,13 +1860,17 @@ No es necesario el módulo Lingüística para insertar símbolos fonéticos,
 \end_layout
 
 \begin_layout Standard
-Un requisito previo para usar el soporte IPA en \SpecialChar LyX
+Un requisito previo para usar el soporte AFI en \SpecialChar LyX
  es el paquete \SpecialChar LaTeX
 
 \emph on
  tipa
+\begin_inset space ~
+\end_inset
+
+
 \emph default
- 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tipa"
@@ -1231,12 +1878,42 @@ key "tipa"
 \end_inset
 
 .
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Si usas Xe\SpecialChar TeX
+ o Lua\SpecialChar TeX
+ (es decir, si has marcado 
+\begin_inset Quotes eld
+\end_inset
+
+Usar tipografías no-\SpecialChar TeX
+
+\begin_inset Quotes erd
+\end_inset
+
+ en 
+\family sans
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Tipografías
+\family default
+), no se necesita paquete adicional.
+\end_layout
+
+\end_inset
+
  Además, si quieres disponer de previsualización instantánea debes tener
  instalado el paquete
 \emph on
  preview-latex
+\begin_inset space ~
+\end_inset
+
+
 \emph default
- 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "preview"
@@ -1247,33 +1924,133 @@ key "preview"
 \end_layout
 
 \begin_layout Standard
-Los símbolos fonéticos se pueden insertar mediante 
+El método que se recomienda para insertar símbolos fonéticos es mediante
+ 
 \family sans
 Insertar\SpecialChar menuseparator
 Carácter especial\SpecialChar menuseparator
 Símbolos fonéticos
 \family default
 .
- Aparecerá un pequeño marco en el que puedes insertar los símbolos mediante
- las asociaciones de teclas que se describen en el manual de 
-\emph on
-tipa
-\emph default
-.
- Ejemplo: 
-\begin_inset Formula $\text{\textipa{[Ekspl@"nIS@n]}}$
+ Aparecerá un pequeño marco (
+\begin_inset Quotes fld
 \end_inset
 
- (secuencia de teclas 
+recuadro de inserción
+\begin_inset Quotes frd
+\end_inset
+
+ en jerga \SpecialChar LyX
+) en el que puedes insertar los símbolos.
+ Este recuadro se puede usar para la inserción tanto de pequeños fragmentos
+ (en línea) como de múltiples párrafos de notación fonética.
+ Mientras el cursor está dentro del marco se muestra una barra de herramientas
+ que proporciona el conjunto básico de símbolos fonéticos (ordenados por
+ categorías del AFI).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Por el momento falta un símbolo: vibrante labiodental (añadido al AFI en
+ 2005).
+ Este símbolo aún no es soportado por el paquete 
 \emph on
 tipa
 \emph default
-: 
+ y por tanto tampoco por \SpecialChar LyX
+).
+\end_layout
+
+\end_inset
+
+ Cada uno de los paneles de la barra de herramientas se puede separar de
+ la misma con un clic sobre la línea de trazos de la parte superior.
+ Así, puedes insertar la mayoría de símbolos con más comodidad: 
+\begin_inset IPA
+
+\begin_layout Standard
+[l
+\begin_inset IPADeco bottomtiebar
+status open
+
+\begin_layout Plain Layout
+ai
+\end_layout
+
+\end_inset
+
+k ðɪs]
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ten en cuenta que, si quieres insertar diacríticos, deben insertarse 
+\emph on
+después
+\emph default
+ del carácter base.
+ O sea, para 
+\begin_inset IPA
+
+\begin_layout Standard
+
+\lang english
+[
+\lang spanish
+d
+\lang english
+̥] 
+\end_layout
+
+\end_inset
+
+
 \family typewriter
-[Ekspl@"neIS@n]
+ 
+\family default
+debes insertar
+\family typewriter
+ <d>
+\family default
+ e inmediatamente después el subanillo 
+\family typewriter
+<ensordecida>
+\family default
+ desde la barra de herramientas.
+ Si necesitas un diacrítico solo, inserta un espacio y después el diacrítico,
+ como en 
+\begin_inset IPA
+
+\begin_layout Standard
+ ̼
+\end_layout
+
+\end_inset
+
+ (
+\family typewriter
+=
+\begin_inset space ~
+\end_inset
+
+<espacio>+<Linguolabial desde los paneles AFI>
 \family default
 ).
- Suponiendo que 
+ 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+ 
+\family default
+Suponiendo que 
 \emph on
 preview-lat
 \family sans
@@ -1288,58 +2065,77 @@ Preferencias\SpecialChar menuseparator
 Apariencia\SpecialChar menuseparator
 Visualización
 \family default
-), en cuanto el cursor abandone el marco verás el bonito aspecto final.
-\end_layout
+), en cuanto el cursor abandone el marco verás el bonito aspecto WYSIWYG
+ final.
+ Como alternativa a los paneles se pueden insertar símbolos directamente
+ mediante los atajos de teclado descritos en el manual de 
+\emph on
+tipa
+\emph default
+: 
+\begin_inset IPA
 
 \begin_layout Standard
-Por otra parte, la mayoría de caracteres IPA se pueden también insertar
- (p.
-\begin_inset space \thinspace{}
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+[@n Ig"zA:mpl]
+\end_layout
+
 \end_inset
 
-e.
- con 
+ (notación teclado 
+\emph on
+tipa
+\emph default
+: 
+\family typewriter
+[@n Ig"zA:mpl
+\family default
+]).
+ Por otra parte, se pueden también insertar símbolos con 
 \family sans
 Insertar\SpecialChar menuseparator
 Carácter especial\SpecialChar menuseparator
 Símbolos\SpecialChar ldots
 
 \family default
-) o pegar directamente en \SpecialChar LyX
-: [ɛkspləˈneɪʃən].
- En la salida, serán automáticamente transformados en la macro 
+ (podría ser útil para símbolos no incluidos en los paneles fonéticos) o
+ pegando texto (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., de otras aplicaciones), codificado en unicode, directamente en el recuadro.
+ La salida debería ser igual independientemente del método utilizado.
+\end_layout
+
+\begin_layout Standard
+Hay que señalar que la mayoría de caracteres del AFI se pueden insertar
+ o pegar fuera del recuadro específico de fonética: [əz ʃəʊn hɪə].
+ En la salida serán automáticamente transformados en la macro 
 \emph on
 tipa
 \emph default
  correcta, (si no, por favor, infórmame).
- Sin embargo, ten en cuenta que el método anterior genera una salida de
- mejor calidad, por dos razones:
-\end_layout
-
-\begin_layout Enumerate
-la entrada directa podría resultar en una mezcla de fuentes (en el ejemplo
- anterior, los caracteres latinos se toman de la fuente básica, los caracteres
- IPA de la fuente IPA, mientras que 
-\family sans
-Insertar\SpecialChar menuseparator
-Carácter especial\SpecialChar menuseparator
-Símbolos fonéticos
-\family default
- usa la fuente IPA para todos los caracteres).
-\end_layout
-
-\begin_layout Enumerate
-el 
-\emph on
-kerning
-\emph default
- de la letra no se preserva
-\end_layout
-
-\begin_layout Standard
-Así pues, a menos que solo necesites insertar caracteres IPA individuales,
- se recomienda el primer método, y vale la pena aprender la (bastante intuitiva)
- notación IPA.
+ Sin embargo, ten en cuenta que este método genera una salida de peor calidad,
+ porque podría resultar en una mezcla de fuentes ( los caracteres latinos
+ se toman de la tipografía del documento, los caracteres del AFI de la tipografí
+a AFI).
+ Por el contrario, en el marco de símbolos fonéticos se usa tipografía AFI
+ para todos los caracteres.
+ Por tanto, a menos que necesites insertar solamente caracteres del AFI
+ sueltos, es muy recomendable usar el recuadro de inserción.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1441,6 +2237,27 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/float/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "forest"
+
+\end_inset
+
+Paquete forest: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest
 \end_layout
 
 \end_inset

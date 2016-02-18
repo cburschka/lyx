@@ -32,7 +32,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_package amsmath 1
@@ -82,21 +91,51 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note
+Nota
 \series default
-: To be able to view your file as PDF you must have the \SpecialChar LaTeX
--package 
+ 1: Para ver el archivo en PDF debes tener instalado el paquete \SpecialChar LaTeX
+ 
 \family sans
 fpl
 \family default
- installed to your \SpecialChar LaTeX
- system.
- If you are using MiK\SpecialChar TeX
-, you will automatically be asked to install this package
- when previewing your file, if you are using \SpecialChar TeX
-Live, use \SpecialChar TeX
-Live's package manager.
+.
+ Si usas MiK\SpecialChar TeX
+, se te pedirá automáticamente al intentar previsualizar el
+ archivo; si usas \SpecialChar TeX
+Live, instálalo mediante el administrador de paquetes
+ de \SpecialChar TeX
+Live.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Nota 2
+\series default
+: Si deseas compilar a PDF con plain-\SpecialChar LaTeX
+ (en vez de pdf\SpecialChar TeX
+), actualmente hay un
+ fallo en la clase Tufte que genera errores.
+ Puedes añadir la opción 'nols' (en el campo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Personalizado
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ de 
+\family sans
+Documento\SpecialChar menuseparator
+Configuración \SpecialChar menuseparator
+Clase del documento
+\family default
+) para sortear los errores, aunque esto también quita el espacio entre letras,
+ una parte importante en el diseño Tufte.
 \end_layout
 
 \end_inset
@@ -109,12 +148,12 @@ Ejemplos Tufte
 \end_layout
 
 \begin_layout Author
-Autor Falso
+Autor Simulado
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-autor de este archivo de ejemplo: Jason Waskiewicz
+Autor de este archivo de ejemplo: Jason Waskiewicz
 \end_layout
 
 \end_inset
@@ -171,6 +210,10 @@ Tufte-handout
  Esto tiene como fin mejorar la legibilidad:
 \end_layout
 
+\begin_layout Standard
+Características proporcionadas por este formato:
+\end_layout
+
 \begin_layout Itemize
 Figuras en el margen
 \end_layout
@@ -207,7 +250,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://code.google.com/p/tufte-latex
+https://tufte-latex.github.io/tufte-latex/
 \end_layout
 
 \end_inset
@@ -238,9 +281,9 @@ Para obtener texto justificado se añade la opción
 justified
 \emph default
  en el campo 
-\emph on
+\family sans
 Personalizado
-\emph default
+\family default
  en 
 \family sans
 Documento\SpecialChar menuseparator
@@ -262,8 +305,8 @@ justified
 
 \begin_layout Standard
 Tufte además da un formato asimétrico a sus páginas.
- Esto quiere decir que las notas adjuntas aparecen en el lado derecho de
- cada página, tanto en las pares como en las impares.
+ Esto quiere decir que los márgenes aparecen en el lado derecho de cada
+ página, tanto en las pares como en las impares.
  Si lo prefieres, puedes cambiarlo por un formato simétrico, como es habitual
  en la tipografía tradicional de libros, usando la opción de clase 
 \emph on
@@ -271,7 +314,7 @@ symmetric
 \emph default
 .
 \begin_inset Flex Sidenote
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Para dar formato simétrico, se añade la opción 
@@ -279,9 +322,9 @@ Para dar formato simétrico, se añade la opción
 symmetric
 \emph default
  en el campo 
-\emph on
+\family sans
 Personalizado
-\emph default
+\family default
  del menú 
 \family sans
 Documento\SpecialChar menuseparator
@@ -299,14 +342,14 @@ Clase del documento
 \begin_layout Standard
 Por último, Tufte no numera los capítulos o secciones; si quieres hacer
  referencias a secciones mediante un número, mueve el deslizador 
-\emph on
+\family typewriter
 Numeración
-\emph default
+\family default
  en 
 \family sans
 Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
-Numeación e IG
+Numeración e IG
 \family default
  al extremo derecho (como se ha hecho en este documento).
 \begin_inset Flex Marginnote
@@ -391,6 +434,10 @@ reference "fig:fig-margen"
 \end_inset
 
 .
+\begin_inset VSpace 5theight%
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -426,6 +473,9 @@ Imagina tu foto favorita de una ardilla en este cuadro en vez de este soso
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -450,12 +500,36 @@ name "fig:fig-margen"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Nota
+\series default
+: Si insertas figuras o cuadros al margen debes usar la opción predeterminada
+ de colocación de flotantes en la configuración del documento, en 
+\family sans
+Posición de flotantes
+\family default
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 De igual modo, la clase 
 \family sans
 Tufte-book
 \family default
- permite la inserción de tablas, tanto en el margen como en el texto.
- Las tablas al margen están recomendadas para pequeños conjuntos de datos
+ permite la inserción de cuadros, tanto en el margen como en el texto.
+ Los cuadros al margen están recomendados para pequeños conjuntos de datos
  para ilustrar conceptos como 
 \begin_inset Quotes eld
 \end_inset
@@ -466,7 +540,7 @@ Fíjate, la relación distancia-tiempo en un movimiento de caída es cuadrática
 
 .
  Por el contrario, conjuntos de datos más detallados, como resultados de
- tests de llamas y comentarios deberían ponerse en una tabla de anchura
+ tests de llamas y comentarios deberían ponerse en un cuadro de anchura
  total.
 \end_layout
 
@@ -475,8 +549,32 @@ Finalmente,
 \family sans
 Tufte-book
 \family default
- proporciona figuras de ancho total.
+ permite figuras de ancho total.
  Estas toman todo el ancho de la página, es decir, texto y margen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+En 
+\family sans
+Configuración\SpecialChar ldots
+
+\family default
+ del flotante (clic derecho sobre el recuadro) marca 
+\family sans
+Extender columnas
+\family default
+.
+ (
+\emph on
+N.
+ del T.
+\emph default
+)
+\end_layout
+
+\end_inset
+
  Véase por ejemplo la Fig.
 \begin_inset space ~
 \end_inset
@@ -514,7 +612,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Imagina tu foto favorita de una ardilla en este cuadro en vez de este soso
@@ -534,7 +632,7 @@ Imagina tu foto favorita de una ardilla en este cuadro en vez de este soso
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Una figura de ancho total.
+Figura de ancho total.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:fig-ancho-total"
@@ -560,14 +658,14 @@ Trabajando con texto
 
 \begin_layout Standard
 Una de las características más destacadas y peculiares de este estilo es
- el uso exhaustivo de notas al margen.
- Hay un gran margen para dejar sitio a notas y pequeñas figuras.
- Las notas al pie se convertirán automáticamente a notas al margen (numeradas).
+ el uso exhaustivo de notas que se ubican en el margen de la página.
+ Hay un amplio margen para dejar sitio a notas y pequeñas figuras.
+ Las notas al pie se convertirán automáticamente a notas laterales (numeradas).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Esta nota al margen se introdujo como 
+Esta nota lateral se introdujo como 
 \family typewriter
 Nota al pie
 \family default
@@ -576,11 +674,11 @@ Nota al pie
 
 \end_inset
 
- Alternativamente se puede usar directamente la inserción como 
+ Como alternativa se puede insertar directamente la 
 \family typewriter
-nota al margen
+Nota lateral
 \family default
-; lo encontrarás en el menú
+, usando el menú
 \family sans
  Insertar\SpecialChar menuseparator
 Recuadro personalizado
@@ -590,9 +688,9 @@ Recuadro personalizado
 status collapsed
 
 \begin_layout Plain Layout
-Esto es una nota al margen insertada con el menú 
+Esto es una nota lateral insertada con el menú 
 \family typewriter
-Nota al margen
+Nota lateral
 \family default
 .
 \end_layout
@@ -604,8 +702,8 @@ Nota al margen
 
 \begin_layout Standard
 Si quieres poner información complementaria en el margen sin la marca de
- nota (el voladito), puedes usar la inserción 
-\family typewriter
+ nota (el número voladito), puedes usar la inserción 
+\family sans
 Nota marginal
 \family default
  (éstas no se numeran).
@@ -621,9 +719,14 @@ Esto es una nota marginal de Tufte.
 
 \end_inset
 
- La nota al margen normal también funciona, pero se verá un poco rara.
+ La nota al margen normal (
+\family sans
+Insertar\SpecialChar menuseparator
+Nota al margen
+\family default
+) también funciona, pero se verá un poco rara.
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Esto es una nota al margen normal.
@@ -695,9 +798,9 @@ key "Bringhurst2005"
 \end_inset
 
  El estilo de texto 
-\emph on
+\family typewriter
 Mayúsculas
-\emph default
+\family default
  (
 \family sans
 Editar\SpecialChar menuseparator
@@ -751,9 +854,9 @@ EN MAYÚSCULAS
 \end_inset
 
 , y el estilo 
-\emph on
+\family typewriter
 Versalitas Tufte
-\emph default
+\family default
  (
 \family sans
 Editar\SpecialChar menuseparator
@@ -813,9 +916,9 @@ letras versalitas
 
 \begin_layout Standard
 La forma normal de 
-\emph on
+\family typewriter
 Versalitas
-\emph default
+\family default
  también se ha redefinido para incluir espacio entre las letras.
  Su caja se deja tal cual, sin embargo.
  Esto permite usar tanto letras de caja alta como de caja baja para la misma
@@ -827,8 +930,11 @@ Las Letras Iniciales De Las Palabras En Esta Frase Son Capitales.
 \begin_layout Standard
 Por último, el entorno de párrafo
 \emph on
- Ancho total
+ 
+\family typewriter
 \emph default
+Ancho total
+\family default
  proporciona un formato de párrafo que se extiende a través del bloque de
  texto principal y del área de notas:
 \end_layout
@@ -860,7 +966,7 @@ Referencias
 \end_layout
 
 \begin_layout Standard
-Las referencias se colocan al lado de sus citas, como las notas al margen.
+Las referencias se colocan al lado de sus citas, como las notas laterales.
  Esto se puede conseguir usando el habitual comando de citas.
 \begin_inset Foot
 status open
@@ -879,7 +985,7 @@ La lista completa de referencias se puede además imprimir automáticamente
  usando 
 \family sans
 Insertar\SpecialChar menuseparator
-Lista/Índice\SpecialChar menuseparator
+Índices\SpecialChar menuseparator
 Bibliografía
 \begin_inset space ~
 \end_inset
