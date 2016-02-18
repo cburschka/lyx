@@ -99,7 +99,7 @@ Filosofía general
 \begin_layout Standard
 La filosofía básica de \SpecialChar LyX
  es que te preocupes del contenido de lo que escribes,
- no de la forma.
+ no de su aspecto.
 \end_layout
 
 \begin_layout Subsection
@@ -182,8 +182,8 @@ lo que ves es lo que quieres decir
  con la potencia de \SpecialChar LaTeX
 .
  Esto es Bueno.
- Además, el formato de fichero es independiente del ordenador/sistema que
- uses.
+ Además, el formato de archivo es independiente del ordenador o sistema
+ que uses.
  Y lo mejor de todo, ¡es LIBRE y GRATUITO!
 \end_layout
 
@@ -244,7 +244,7 @@ reference "sec:lyxbetter"
 \end_layout
 
 \begin_layout Section
-Intentos fallidos de usar más cosas de \SpecialChar LyX
+Intentos simples de usar más cosas de \SpecialChar LyX
 
 \end_layout
 
@@ -324,7 +324,7 @@ Comentarios
 
 \begin_layout Standard
 Un par de apuntes sobre la adaptación a \SpecialChar LyX
- de este fichero:
+ de este archivo:
 \end_layout
 
 \begin_layout Itemize
@@ -347,7 +347,7 @@ Tutorial
 \end_layout
 
 \begin_layout Itemize
-No he tenido que escribir la palabra 
+No tengo que escribir la palabra 
 \begin_inset Quotes eld
 \end_inset
 
@@ -355,7 +355,7 @@ Referencias
 \begin_inset Quotes erd
 \end_inset
 
-.
+ de abajo.
  \SpecialChar LyX
  la escribe automáticamente (o la palabra 
 \begin_inset Quotes eld
@@ -365,9 +365,10 @@ Bibliografía
 \begin_inset Quotes erd
 \end_inset
 
-, dependiendo de la clase de texto) cuando seleccionas el estilo 
+, dependiendo de la clase de documento) cuando seleccionas el estilo de
+ párrafo 
 \family sans
-Bibliography
+Bibliografía
 \family default
 .
 \end_layout

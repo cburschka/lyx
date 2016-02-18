@@ -6,35 +6,9 @@
 \origin /systemlyxdir/examples/es/
 \textclass europecv
 \begin_preamble
-\usepackage{graphicx}
-
-% Define personal data
-\ecvname{Prueba, Pablo}
-\ecvfootername{Pablo Prueba}
-\ecvnationality{Española}
-\ecvdateofbirth{23 de junio de 1962}
-\ecvaddress{C/ Prueba\newline 03333 Ciudad\newline España}
-\ecvemail{pprueba@testmail.xx}
-% the optional phnoe number is for the mobile
-\ecvtelephone[+43(0)777 7777]{+43(0)999 9999}
-
-% for the gender and fax number
-%\ecvgender{male}
-%\ecvfax{fax}
-
-% define text or image alignment and position:
-% in this case the image is shifted 6cm to the right
-\ecvbeforepicture{\hspace{6cm}}
-
-% image
-\ecvpicture[height=3cm]{../CV-image}
-
-% define text or space after the image
-% in this case the following shifted 2cm to the image
-\ecvafterpicture{\ecvspace{-2cm}}
-
-% if you e.g. only want the page number to be printed in the footer
-%\ecvpage{\thepage}
+% to handle the picture
+% only load the package of not already loaded
+\@ifundefined{rotatebox}{\usepackage{graphicx}}{}
 \end_preamble
 \options nologo
 \use_default_options false
@@ -94,7 +68,7 @@
 \tocdepth 1
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -107,62 +81,37 @@
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Exportar con Xe\SpecialChar TeX
- y Lua\SpecialChar TeX
- (con tipografías no \SpecialChar TeX
- o en modo compatible 8-bit) no
- funciona porque, por el momento, la carga de inputenc con utf8x está incrustada
- en el código fuente de europecv.cls.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Begin
 \begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+¡Las entradas con etiqueta verde deben dejarse vacías!
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+La clase europecv ofrece muchas posibilidades de personalización; para detalles
+ consulta la documentación:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-¡Las entradas con etiqueta verde se dejan vacías!
+
+http://mirrors.ctan.org/macros/latex/contrib/europecv/europecv.pdf
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Los datos personales, nombre, foto, dirección, etc., se ponen en el preámbulo
- del documento.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-La clase europecv-class ofrece muchas posibilidades para personalizar el
- documento; echa un vistazo a su documentación.
 \end_layout
 
 \end_inset
@@ -172,10 +121,213 @@ La clase europecv-class ofrece muchas posibilidades para personalizar el
 
 \begin_layout PersonalInfo
 \begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Inserta los datos personales a continuación:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Name
+Apellido Apellido, Nombre
+\end_layout
+
+\begin_layout FooterName
+Nombre Apellido Apellido
+\end_layout
+
+\begin_layout Nationality
+Española
+\end_layout
+
+\begin_layout Birthday
+día de mes de año
+\end_layout
+
+\begin_layout Address
+C/ Calle, nº
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Inserta los datos personales.
+
+
+\backslash
+newline 
+\end_layout
+
+\end_inset
+
+D.P.
+ Ciudad
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline 
+\end_layout
+
+\end_inset
+
+Provincia
+\end_layout
+
+\begin_layout Email
+correo@correo.es
+\end_layout
+
+\begin_layout Telephone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+número
+\end_layout
+
+\end_inset
+
+número
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El nº de móvil es opcional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Gender
+Mujer/Hombre
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Opcional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fax
+número
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Opcional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeforePicture
+\begin_inset space \hspace*{}
+\length 6cm
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Opcional, alineamiento y posición de la foto o el texto; en este caso la
+ imagen está 6
+\begin_inset space \thinspace{}
+\end_inset
+
+cm desplazada a la derecha
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Picture
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+height=3cm
+\end_layout
+
+\end_inset
+
+../CV-image
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El nombre del archivo de imagen.
+ El tamaño opcional es en este caso la altura de la foto
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AfterPicture
+\begin_inset Flex VerticalSpace
+status open
+
+\begin_layout Plain Layout
+-2cm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Opcional, en este caso el contenido siguiente se desplaza 2
+\begin_inset space \thinspace{}
+\end_inset
+
+cm hacia la imagen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Page
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+thepage
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Opcional, redefine lo que se imprime al pie, en este caso solo el número
+ de página
 \end_layout
 
 \end_inset
@@ -184,7 +336,7 @@ Inserta los datos personales.
 \end_layout
 
 \begin_layout Section
-Títulos académicos
+Titulaciones
 \end_layout
 
 \begin_layout Item
@@ -192,12 +344,14 @@ Títulos académicos
 status open
 
 \begin_layout Plain Layout
-2001–2005
+2003–2006
 \end_layout
 
 \end_inset
 
-Licenciatura en Economía, Institución, Ciudad, País, Descripción
+Master en\SpecialChar ldots
+, Institución, Ciudad, Provincia, Descripción\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Item
@@ -205,18 +359,18 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 status open
 
 \begin_layout Plain Layout
-2005–2006
+2001–2003
 \end_layout
 
 \end_inset
 
-Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar ldots
+Licenciatura\SpecialChar ldots
+, Institución, Ciudad, Provincia, Descripción\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Section
-Tesis, Tesina\SpecialChar ldots
-
+Master, Tesis
 \end_layout
 
 \begin_layout BulletedItem
@@ -244,7 +398,7 @@ Supervisores
 
 \end_inset
 
-Nombres de los supervisores
+Nombres
 \end_layout
 
 \begin_layout BulletedItem
@@ -259,7 +413,7 @@ Descripción
 
 
 \size small
-Texto descriptivo
+Texto dscriptivo
 \end_layout
 
 \begin_layout Section
@@ -271,12 +425,12 @@ Experiencia
 status open
 
 \begin_layout Plain Layout
-Febrero 2006–actual
+2006–actualidad
 \end_layout
 
 \end_inset
 
-Mantenedor de proyectos de software libre
+Mantenedor de proyectos OpenSource
 \end_layout
 
 \begin_layout Item
@@ -289,7 +443,14 @@ status open
 
 \end_inset
 
-Empresa, Corporación, Ciudad, País
+Empresa, Ciudad, Provincia
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -298,7 +459,7 @@ Idiomas
 
 \begin_layout MotherTongue
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 10pt
@@ -308,12 +469,12 @@ status collapsed
 
 Español
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-El parámetro opcional es el espacio vertical tras el ítem; están permitidos
- los valores negativos.
- Se puede usar en varios tipos de entradas.
+El parámetro opcional es el espacio vertical tras el ítem; se permiten valores
+ negativos.
+ Está disponible para toda clase de entradas.
 \end_layout
 
 \end_inset
@@ -331,8 +492,8 @@ El parámetro opcional es el espacio vertical tras el ítem; están permitidos
 status open
 
 \begin_layout Plain Layout
-Inserta una descripción del nivel en idiomas y establece el símbolo para
- la nota al pie de referencia.
+Opcional, inserta la descripción del nivel de idioma y establece el símbolo
+ para la nota al pie.
  
 \end_layout
 
@@ -353,11 +514,11 @@ Alemán
 
 
 \begin_inset Argument 3
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -457,7 +618,17 @@ ecvBOne
 status open
 
 \begin_layout Plain Layout
-Los códigos de nivel de idiomas se encuentran en la documentación del paquete
+La última info es el nivel estimado en expresión escrita.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Los códigos del nivel de idiomas se encuentra en la documentación del paquete
  europecv.
 \end_layout
 
@@ -468,7 +639,7 @@ Los códigos de nivel de idiomas se encuentran en la documentación del paquete
 
 \begin_layout LastLanguage
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Italiano
@@ -590,7 +761,7 @@ ecvAOne
 status open
 
 \begin_layout Plain Layout
-Encabezado y pie deberían ser el mismo carácter.
+El pie y el encabezado deberían ser el mismo carácter.
 \end_layout
 
 \end_inset
@@ -599,7 +770,7 @@ Encabezado y pie deberían ser el mismo carácter.
 \end_layout
 
 \begin_layout Section
-Conocimientos de informática
+Informática
 \end_layout
 
 \begin_layout Item
@@ -617,11 +788,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Sistemas
-\begin_inset space ~
-\end_inset
-
-operativos
+S.O.
 \end_layout
 
 \end_inset
@@ -656,7 +823,7 @@ Programación
 \shape smallcaps
 Java
 \shape default
-, C/C++
+, C/C++ 
 \end_layout
 
 \begin_layout Item
@@ -664,7 +831,7 @@ Java
 status open
 
 \begin_layout Plain Layout
-Scripting
+Código
 \end_layout
 
 \end_inset
@@ -687,12 +854,12 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Científicos
+Ciencias
 \end_layout
 
 \end_inset
 
-Matlab, Autocad, Abaqus
+Matlab, Abaqus
 \end_layout
 
 \begin_layout Item
@@ -700,7 +867,20 @@ Matlab, Autocad, Abaqus
 status open
 
 \begin_layout Plain Layout
-Tipograpía
+Diseño gráfico
+\end_layout
+
+\end_inset
+
+ Autocad
+\end_layout
+
+\begin_layout Item
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tipografía
 \end_layout
 
 \end_inset
@@ -715,16 +895,12 @@ t, Scribus, QuarkXPress
 status open
 
 \begin_layout Plain Layout
-Diseño
-\begin_inset space ~
-\end_inset
-
-Web
+Diseño web
 \end_layout
 
 \end_inset
 
-XHTML, CSS, AJAX
+XHTML, CSS, AJAX, 
 \end_layout
 
 \begin_layout Item
@@ -760,22 +936,14 @@ status open
 
 \begin_layout Plain Layout
 Deportes
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-aventura
 \end_layout
 
 \end_inset
 
 
 \size small
-Practico deportes como esquí, montañismo y submarinismo; he sido boy scout
- durante cinco años.
+ Me gusta practicar deportes como el esquí naútico, la escalada, el buceo
+ y he sido boy scout durante cinco años.
 \end_layout
 
 \begin_layout Item
@@ -793,14 +961,14 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-Viajes
+Viajar
 \end_layout
 
 \end_inset
 
 
 \size small
-Me gusta viajar por todo el mundo.
+ Me gusta viajar por todo el mundo.
 \end_layout
 
 \begin_layout Section
@@ -890,7 +1058,7 @@ También se pueden usar referencias Bib\SpecialChar TeX
 status open
 
 \begin_layout Plain Layout
-
+Referencias
 \end_layout
 
 \end_inset

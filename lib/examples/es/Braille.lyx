@@ -99,23 +99,11 @@ Cómo escribir Braille con \SpecialChar LyX
 
 \begin_layout Author
 Uwe Stöhr
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "uwestoehr@web.de"
-type "mailto:"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 Nota preliminar: ¡El Braille que se puede componer con \SpecialChar LaTeX
- no es profesional!
+ no es completo!
  El Braille profesional puede ser de 6 u 8
 \begin_inset space \thinspace{}
 \end_inset
@@ -333,7 +321,7 @@ height "1pt"
 \begin_layout Standard
 Latinos: !
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 El carácter 
@@ -368,7 +356,7 @@ LyX
 
 \end_inset
 
- es fresco!
+ es genial!
 \end_layout
 
 \begin_layout Standard
@@ -387,7 +375,7 @@ LyX
 
 \end_inset
 
- es fresco!
+ es genial!
 \end_layout
 
 \begin_layout Standard
@@ -423,7 +411,15 @@ Esto es Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-Predeterminado:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+:
 \end_layout
 
 \begin_layout Braille (default)
@@ -431,7 +427,15 @@ Esto es Braille.
 \end_layout
 
 \begin_layout Standard
-Tamaño que coincide aproximadamente con el tamaño del texto del documento:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(tamaño de texto)
+\family default
+ - Tamaño que coincide aproximadamente con el tamaño del texto del documento:
 \end_layout
 
 \begin_layout Braille (textsize)
@@ -442,7 +446,15 @@ Esto es Braille.
 \begin_inset VSpace bigskip
 \end_inset
 
-En las posiciones vacías se pueden mostrar puntos diminutos:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(puntos activos)
+\family default
+ - En las posiciones vacías se pueden mostrar puntos diminutos:
 \end_layout
 
 \begin_layout Braille (dots on)
@@ -477,7 +489,15 @@ Esto es Braille.
 \end_layout
 
 \begin_layout Standard
-Reflejado:
+
+\family sans
+Braille
+\begin_inset space ~
+\end_inset
+
+(espejo activo)
+\family default
+:
 \end_layout
 
 \begin_layout Braille (mirror on)
@@ -498,14 +518,14 @@ Esto es Braille.
 
 Los caracteres en Braille se pueden crear de forma alternativa escribiendo
  un número en un recuadro Braille.
- Un recuadro Braille se inserta con el menú 
+ Un marco Braille se inserta con el menú 
 \family sans
 Insertar\SpecialChar menuseparator
-Objeto personalizado
+Recuadro personalizado
 \family default
 .
- Cada cifra presente en este recuadro da lugar al correspondiente punto
- Braille, por ejemplo el número
+ Cada cifra presente en este marco da lugar al correspondiente punto Braille,
+ por ejemplo el número
 \series bold
  6145
 \series default
@@ -707,10 +727,14 @@ braille{#1}}
 \begin_inset VSpace bigskip
 \end_inset
 
-Más información sobre las dimensiones de las celdas Braille en 
+Más información sobre las dimensiones de las celdas Braille en
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "Braille cell dimensions"
+name "http://www.tiresias.org/research/reports/braille_cell.htm"
 target "http://www.tiresias.org/research/reports/braille_cell.htm"
 
 \end_inset
