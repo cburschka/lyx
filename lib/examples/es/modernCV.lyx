@@ -6,46 +6,7 @@
 \origin /systemlyxdir/examples/es/
 \textclass moderncv
 \begin_preamble
-% adjust the page margins
-\usepackage[scale=0.75]{geometry}
-
-% required
-\moderncvtheme[blue]{classic}
-% possible themes are "classic" and "casual"
-% optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
-
-% required
-\firstname{Pablo}
-% required
-\familyname{Testman}
-
-% optional, remove the line if not wanted
-\title{Curriculum Vitae}
-
-% optional
-% \address{street and number}{postcode city}
-% '\\' adds a line break
-\address{C/ Test 17}{03333 Ciudad\protect\\[0.1em] Suiza\protect\\[0.2em]}
-
-% optional
-\phone{+43(0)999 9999}
-% optional
-\mobile{+43(0)999 888}
-% optional
-\fax{+43(0)999 7777}
-% optional
-\email{testman@testmail.xx}
-% optional
-\extrainfo{www.lyx.org}
-
-% optional
-% \photo[height]{name}
-% 'height' is the height the picture is resized to
-% 'name' is the name of the picture file
-\photo[64pt]{../CV-image}
-
-% optional
-\quote{"Solo se vive una vez." (cita opcional)}
+\PassOptionsToPackage{es-lcroman}{babel}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -118,12 +79,141 @@
 status open
 
 \begin_layout Plain Layout
-
+The moderncv class offers lots of customization possibilities; for more
+ information look at the documentation of the \SpecialChar LaTeX
+-package 
 \series bold
-Nota:
+moderncv
 \series default
- Los datos personales, nombre, foto, dirección, etc., se ponen en el preámbulo
- del documento.
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/moderncv/examples/template.tex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVStyle
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+left
+\end_layout
+
+\end_inset
+
+options can only be activated if moderncv 2.0 is installed
+\end_layout
+
+\end_inset
+
+casual
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
+ requires moderncv 2.0), 'oldstyle' and 'banking'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To be able to use style options you need at least moderncv version 2.0 installed.
+ A list of possible options can be found here:
+\begin_inset Newline newline
+\end_inset
+
+http://article.gmane.org/gmane.comp.tex.ctan.announce/11898
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVColor
+blue
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+required, possible colors are 'blue' (default), 'orange', 'green', 'red',
+ 'purple', 'burgundy' ('burgundy' requires moderncv 2.0), 'grey' and 'black'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVIcons
+awesome
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, must be inserted after the 
+\family sans
+CV Style
+\family default
+, possible icon sets are 'awesome' (default for style 'casual' and 'banking'),
+ 'marvosym' (default for the other styles) and 'letters' (default for style
+ 'oldstyle')
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CVColumnWidth
+3cm
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, the width of the column with the dates, default is '3cm'
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PDF Page Mode
+UseOutlines
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, controls how the PDF will be shown; use either 'UseNone' (only
+ the document), 'UseThumbs' (show thumbnails), 'UseOutlines' (show bookmarks)
+ or 'FullScreen' (open in fullscreen mode).
 \end_layout
 
 \end_inset
@@ -136,14 +226,67 @@ Nota:
 status open
 
 \begin_layout Plain Layout
-La clase moderncv ofrece muchas posibilidades se personalización; algunas
- se explican en el preámbulo de este documento.
- Para más información echa un vistazo a la documentación del paquete \SpecialChar LaTeX
- 
-\series bold
-moderncv
-\series default
-.
+General hints:
+\end_layout
+
+\begin_layout Itemize
+To suppress the page numbering, enable the option 
+\family sans
+Suppress default date on front page
+\family default
+ in the document settings under 
+\family sans
+Document Class.
+\end_layout
+
+\begin_layout Itemize
+The default page margins are left and right 3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ To get smaller ones, use the 
+\family sans
+Page Margins
+\family default
+ section of the document settings like it is done in this example.
+\end_layout
+
+\begin_layout Itemize
+To get for example sans-serif fonts for the whole CV, set them as 
+\family sans
+Default Family
+\family default
+ in the document settings under 
+\family sans
+Fonts.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Name
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Paul
+\end_layout
+
+\end_inset
+
+Testman
+\end_layout
+
+\begin_layout Title
+Curriculum Vitae
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional
 \end_layout
 
 \end_inset
@@ -152,24 +295,223 @@ moderncv
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following personal entries are optional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Teststreet
+\begin_inset space ~
+\end_inset
+
+17
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+03333
+\begin_inset space ~
+\end_inset
+
+Nicecity
+\end_layout
+
+\end_inset
+
+Switzerland
+\begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
+the optional lines are only important for the styles 
+\emph on
+classic
+\emph default
+ and 
+\emph on
+oldstyle
+\end_layout
+
+\end_inset
 
 
-\backslash
-maketitle
+\end_layout
+
+\begin_layout Phone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+mobile
+\end_layout
+
+\end_inset
+
++43(0)999 888
+\end_layout
+
+\begin_layout Phone
++43(0)999 9999
+\end_layout
+
+\begin_layout Phone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+fax
+\end_layout
+
+\end_inset
+
++43(0)999 7777
+\end_layout
+
+\begin_layout Email
+testman@testman.xx
+\end_layout
+
+\begin_layout Homepage
+www.johndoe.com
+\end_layout
+
+\begin_layout Social
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+twitter
+\end_layout
+
+\end_inset
+
+ptestman
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+currently only 
+\series bold
+twitter
+\series default
+, 
+\series bold
+linkedin
+\series default
+ or 
+\series bold
+github
+\series default
+ is supported as name
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Social
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+linkedin
+\end_layout
+
+\end_inset
+
+ptestman
+\end_layout
+
+\begin_layout Social
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+github
+\end_layout
+
+\end_inset
+
+ptestman
+\end_layout
+
+\begin_layout ExtraInfo
+www.lyx.org
+\end_layout
+
+\begin_layout Photo
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+64pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+0.4pt
+\end_layout
+
+\end_inset
+
+../CV-image
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The name of the image file.
+ The first argument is the height the photo is resized to, the second one
+ the thickness of the surrounding frame
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+"You only live twice." (an optional quote)
+\end_layout
+
+\begin_layout MakeCVtitle
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+outputs the title part; optional
 \end_layout
 
 \end_inset
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Imprime la parte del tulo como la dirección
+¡Las entradas con etiqueta verde se dejan vacías!
 \end_layout
 
 \end_inset
@@ -714,13 +1056,71 @@ Subsección
 ítem en una subsección
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
+\begin_layout Section
+Section with a column
+\end_layout
+
+\begin_layout Columns
+\begin_inset Flex Column
 status open
 
 \begin_layout Plain Layout
-Esto acaba el entorno sección.
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+0.5
 \end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+the optional width is a number in the range 0 - 1 and specifies the fraction
+ of the line length; if no width is given all available width is used for
+ the column
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+header 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Everything can be the content
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+even a table
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -729,7 +1129,43 @@ Esto acaba el entorno sección.
 status open
 
 \begin_layout Plain Layout
-¡Las entradas con etiqueta verde se dejan vacías!
+
+\series bold
+Note:
+\series default
+ paragraph alignments are not allowed, so e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+centering the table is not possible
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Column
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+header 2
+\end_layout
+
+\end_inset
+
+the second column
 \end_layout
 
 \end_inset
