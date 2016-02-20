@@ -33,7 +33,7 @@
 \spacing single
 \use_hyperref false
 \papersize a4paper
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -57,11 +57,13 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.5cm
+\rightmargin 2.5cm
 \secnumdepth 0
 \tocdepth -1
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -79,9 +81,9 @@
 status open
 
 \begin_layout Plain Layout
-The moderncv class offers lots of customization possibilities; for more
- information look at the documentation of the \SpecialChar LaTeX
--package 
+La clase moderncv ofrece muchas posibilidades de personalización; para más
+ información echa un vistazo a la documentación del paquete \SpecialChar LaTeX
+ 
 \series bold
 moderncv
 \series default
@@ -122,7 +124,7 @@ left
 
 \end_inset
 
-options can only be activated if moderncv 2.0 is installed
+Las opciones solo se pueden activar si está instalado moderncv 2.0
 \end_layout
 
 \end_inset
@@ -132,8 +134,8 @@ casual
 status open
 
 \begin_layout Plain Layout
-required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
- requires moderncv 2.0), 'oldstyle' and 'banking'
+requerido, estilos posibles: 'casual' (predeterminado), 'classic', 'fancy'
+ ('fancy' requiere moderncv 2.0), 'oldstyle' y 'banking'
 \end_layout
 
 \end_inset
@@ -143,8 +145,9 @@ required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
 status collapsed
 
 \begin_layout Plain Layout
-To be able to use style options you need at least moderncv version 2.0 installed.
- A list of possible options can be found here:
+Para poder usar opciones de estilo debe estar instalada al menos la versión
+ 2.0 de moderncv.
+ Se puede consultar la lista de opciones disponibles en:
 \begin_inset Newline newline
 \end_inset
 
@@ -162,8 +165,9 @@ blue
 status open
 
 \begin_layout Plain Layout
-required, possible colors are 'blue' (default), 'orange', 'green', 'red',
- 'purple', 'burgundy' ('burgundy' requires moderncv 2.0), 'grey' and 'black'
+requerido, colores posibles: 'blue' (predeterminado), 'orange', 'green',
+ 'red', 'purple', 'burgundy' ('burgundy' requiere moderncv 2.0), 'grey' y
+ 'black'
 \end_layout
 
 \end_inset
@@ -177,13 +181,13 @@ awesome
 status collapsed
 
 \begin_layout Plain Layout
-optional, must be inserted after the 
+opcional, debe insertarse después de 
 \family sans
-CV Style
+Estilo CV
 \family default
-, possible icon sets are 'awesome' (default for style 'casual' and 'banking'),
- 'marvosym' (default for the other styles) and 'letters' (default for style
- 'oldstyle')
+; conjuntos de iconos posibles: 'awesome' (predeterminado para estilos 'casual'
+ y 'banking'), 'marvosym' (predeterminado para los otros estilos) y 'letters'
+ (predeterminado para estilo 'oldstyle')
 \end_layout
 
 \end_inset
@@ -197,7 +201,7 @@ CV Style
 status collapsed
 
 \begin_layout Plain Layout
-optional, the width of the column with the dates, default is '3cm'
+opcional, anchura de columna con las fechas, por omisión '3cm'
 \end_layout
 
 \end_inset
@@ -211,9 +215,9 @@ UseOutlines
 status collapsed
 
 \begin_layout Plain Layout
-optional, controls how the PDF will be shown; use either 'UseNone' (only
- the document), 'UseThumbs' (show thumbnails), 'UseOutlines' (show bookmarks)
- or 'FullScreen' (open in fullscreen mode).
+opcional, controla lo que se muestra en el PDF; 'UseNone' (solo el documento),
+ 'UseThumbs' (muestra miniaturas), 'UseOutlines' (muestra marcadores) o
+ 'FullScreen' (abre en pantalla completa).
 \end_layout
 
 \end_inset
@@ -226,40 +230,52 @@ optional, controls how the PDF will be shown; use either 'UseNone' (only
 status open
 
 \begin_layout Plain Layout
-General hints:
+Otras sugerencias:
 \end_layout
 
 \begin_layout Itemize
-To suppress the page numbering, enable the option 
+Para suprimir la numeración de páginas, marca la opción 
 \family sans
-Suppress default date on front page
+Suprimir fecha por omisión en primera página
 \family default
- in the document settings under 
+ en 
 \family sans
-Document Class.
+Clase del documento
+\family default
+ de la configuración del documento
+\family sans
+.
 \end_layout
 
 \begin_layout Itemize
-The default page margins are left and right 3.5
+Los márgenes laterales de página por omisión son de 3.5
 \begin_inset space \thinspace{}
 \end_inset
 
 cm.
- To get smaller ones, use the 
+ Para modificarlos usa 
 \family sans
-Page Margins
+Márgenes de página
 \family default
- section of the document settings like it is done in this example.
+ en la configuración del documento, como se ha hecho en este ejemplo.
 \end_layout
 
 \begin_layout Itemize
-To get for example sans-serif fonts for the whole CV, set them as 
+Para usar, por ejemplo, tipos 
 \family sans
-Default Family
+palo seco
 \family default
- in the document settings under 
+ en todo el CV, elige como 
 \family sans
-Fonts.
+Familia predeterminada 
+\family default
+en la sección 
+\family sans
+Tipografías
+\family default
+ de la configuración del documento
+\family sans
+.
 \end_layout
 
 \end_inset
@@ -269,15 +285,15 @@ Fonts.
 
 \begin_layout Name
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Paul
+Nombre
 \end_layout
 
 \end_inset
 
-Testman
+Ape Llido
 \end_layout
 
 \begin_layout Title
@@ -286,7 +302,7 @@ Curriculum Vitae
 status collapsed
 
 \begin_layout Plain Layout
-optional
+opcional
 \end_layout
 
 \end_inset
@@ -299,7 +315,7 @@ optional
 status open
 
 \begin_layout Plain Layout
-The following personal entries are optional.
+Las siguientes entradas de información personal son opcionales.
 \end_layout
 
 \end_inset
@@ -309,10 +325,10 @@ The following personal entries are optional.
 
 \begin_layout Address
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Teststreet
+C/ Micalle,
 \begin_inset space ~
 \end_inset
 
@@ -323,28 +339,28 @@ Teststreet
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 03333
 \begin_inset space ~
 \end_inset
 
-Nicecity
+Ciudad
 \end_layout
 
 \end_inset
 
-Switzerland
+País
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-the optional lines are only important for the styles 
+las líneas opcionales solo son relevantes para los estilos 
 \emph on
 classic
 \emph default
- and 
+ y 
 \emph on
 oldstyle
 \end_layout
@@ -356,7 +372,7 @@ oldstyle
 
 \begin_layout Phone
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 mobile
@@ -373,7 +389,7 @@ mobile
 
 \begin_layout Phone
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 fax
@@ -385,7 +401,7 @@ fax
 \end_layout
 
 \begin_layout Email
-testman@testman.xx
+napell@testman.xx
 \end_layout
 
 \begin_layout Homepage
@@ -394,7 +410,7 @@ www.johndoe.com
 
 \begin_layout Social
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 twitter
@@ -402,12 +418,12 @@ twitter
 
 \end_inset
 
-ptestman
+nomape
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-currently only 
+por ahora, solo 
 \series bold
 twitter
 \series default
@@ -415,11 +431,11 @@ twitter
 \series bold
 linkedin
 \series default
- or 
+ o 
 \series bold
 github
 \series default
- is supported as name
+ son nombres soportados
 \end_layout
 
 \end_inset
@@ -429,7 +445,7 @@ github
 
 \begin_layout Social
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 linkedin
@@ -437,12 +453,12 @@ linkedin
 
 \end_inset
 
-ptestman
+nomape
 \end_layout
 
 \begin_layout Social
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 github
@@ -450,7 +466,7 @@ github
 
 \end_inset
 
-ptestman
+nomape
 \end_layout
 
 \begin_layout ExtraInfo
@@ -459,7 +475,7 @@ www.lyx.org
 
 \begin_layout Photo
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 64pt
@@ -469,7 +485,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 0.4pt
@@ -482,9 +498,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-The name of the image file.
- The first argument is the height the photo is resized to, the second one
- the thickness of the surrounding frame
+Nombre del archivo de imagen.
+ El primer argumento es la dimensión de la altura de la foto, el segundo
+ el grosor del marco alrededor
 \end_layout
 
 \end_inset
@@ -493,7 +509,7 @@ The name of the image file.
 \end_layout
 
 \begin_layout Quote
-"You only live twice." (an optional quote)
+"Solo se vive dos veces." (cita opcional)
 \end_layout
 
 \begin_layout MakeCVtitle
@@ -501,7 +517,7 @@ The name of the image file.
 status collapsed
 
 \begin_layout Plain Layout
-outputs the title part; optional
+imprime la parte de título; opcional
 \end_layout
 
 \end_inset
@@ -511,7 +527,7 @@ outputs the title part; optional
 status open
 
 \begin_layout Plain Layout
-¡Las entradas con etiqueta verde se dejan vacías!
+¡Deja vacías las entradas en verde!
 \end_layout
 
 \end_inset
@@ -520,45 +536,122 @@ status open
 \end_layout
 
 \begin_layout Section
-Estudios.
- Titulos académicos
+Títulos académicos
 \end_layout
 
-\begin_layout Item
+\begin_layout Entry
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-2001–2005
+2003–2006
 \end_layout
 
 \end_inset
 
-Licenciatura en Economía, Institución, Ciudad, País, Descripción
-\end_layout
 
-\begin_layout Item
-\begin_inset Argument 1
-status open
+\begin_inset Argument 2
+status collapsed
 
 \begin_layout Plain Layout
-2005–2006
+Máster en Economía
 \end_layout
 
 \end_inset
 
-Doctorado en Economía, Institución, Ciudad, País, Descripción\SpecialChar ldots
 
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+Institución
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Ciudad
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status collapsed
+
+\begin_layout Plain Layout
+País
+\end_layout
+
+\end_inset
+
+Descripción
+\end_layout
+
+\begin_layout Entry
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+2001–2003
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Licenciatura en Económicas
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+Institución
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Ciudad
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status collapsed
+
+\begin_layout Plain Layout
+País
+\end_layout
+
+\end_inset
+
+Descripción
 \end_layout
 
 \begin_layout Section
-Tesis, Tesina\SpecialChar ldots
-
+Tesis
 \end_layout
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Título
@@ -569,9 +662,10 @@ Título
 
 \emph on
 Título de la tesis
-\emph default
+\end_layout
 
-\begin_inset VSpace -0.5cm
+\begin_layout Standard
+\begin_inset VSpace 0.5cm
 \end_inset
 
 
@@ -589,7 +683,7 @@ añade espacio negativo o positivo a voluntad
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Supervisores
@@ -602,7 +696,7 @@ Nombres de los supervisores
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Descripción
@@ -621,21 +715,21 @@ Experiencia
 
 \begin_layout Entry
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Febrero 2006–
+2006–
 \begin_inset Newline newline
 \end_inset
 
-actual
+actualidad
 \end_layout
 
 \end_inset
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mantenedor de proyectos Open Source
@@ -643,42 +737,34 @@ Mantenedor de proyectos Open Source
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 5
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 Mantenedor de la documentación xxx
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ Si usas los temas 
+\emph on
+banking
+\emph default
+ o 
+\emph on
+fancy
+\emph default
+, los saltos de línea en las entradas no están permitidos.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Entry
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2005–2006
@@ -688,7 +774,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Empleador
@@ -698,7 +784,7 @@ Empleador
 
 
 \begin_inset Argument 3
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nombre Corp.
@@ -708,7 +794,7 @@ Nombre Corp.
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ciudad
@@ -718,7 +804,7 @@ Ciudad
 
 
 \begin_inset Argument 5
-status open
+status collapsed
 
 \begin_layout Plain Layout
 País
@@ -735,7 +821,7 @@ Idiomas
 
 \begin_layout ItemWithComment
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Español
@@ -745,10 +831,10 @@ Español
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Nativo
+Materno
 \end_layout
 
 \end_inset
@@ -758,7 +844,7 @@ Nativo
 
 \begin_layout ItemWithComment
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Holandés
@@ -768,51 +854,54 @@ Holandés
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Casi nativo
+Casi materno
 \end_layout
 
 \end_inset
 
-Título en educación primaria en un colegio holandés
+Grado en educación primaria en un colegio holandés
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Conocimientos de informática
+Conocimientos en informática
 \end_layout
 
 \begin_layout DoubleItem
-Sistemas
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-}{
+SO
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
 Linux, Unix, Windows
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Administración
-\begin_inset ERT
+
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-}{
+Administración
 \end_layout
 
 \end_inset
@@ -821,39 +910,35 @@ Apache, Mailman
 \end_layout
 
 \begin_layout DoubleItem
-Programación
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-}{
+Programación
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
 
 \shape smallcaps
 Java
 \shape default
 , C/C++
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Scripting
-\begin_inset ERT
+
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-}{
+Interpretación
 \end_layout
 
 \end_inset
@@ -862,35 +947,31 @@ PHP, Shell, Ruby
 \end_layout
 
 \begin_layout DoubleItem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
 Científicos
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
 Matlab, AutoCAD, Abaqus
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Tipografía
-\begin_inset ERT
+
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
-
-}{
+Tipografía
 \end_layout
 
 \end_inset
@@ -901,39 +982,43 @@ t, Scribus, QuarkXPress
 \end_layout
 
 \begin_layout DoubleItem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
 Diseño
 \begin_inset space ~
 \end_inset
 
-Web
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
+web
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
 XHTML, CSS, AJAX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Bases de datos
-\begin_inset ERT
+
+\begin_inset Argument 3
 status collapsed
 
 \begin_layout Plain Layout
+Bases
+\begin_inset space ~
+\end_inset
 
-}{
+de
+\begin_inset space ~
+\end_inset
+
+datos
 \end_layout
 
 \end_inset
@@ -947,32 +1032,40 @@ Aficiones
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Deportes
+Deportes de
+\begin_inset Newline newline
+\end_inset
+
+aventura
 \end_layout
 
 \end_inset
 
-
-\size small
 Practico deportes como esquí, montañismo y submarinismo; he sido boy scout
  durante cinco años.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
 \end_layout
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Viajes
+Viajar
 \end_layout
 
 \end_inset
 
-
-\size small
 Me gusta viajar por todo el mundo.
 \end_layout
 
@@ -985,7 +1078,7 @@ Sección con una lista
 \end_layout
 
 \begin_layout ListItem
-Otro ítem sencillo.
+Otro ítem sencillo
 \begin_inset ERT
 status collapsed
 
@@ -1000,7 +1093,7 @@ item
 
 \end_inset
 
-Sub-ítem.
+Subítem.
 \begin_inset ERT
 status collapsed
 
@@ -1016,36 +1109,95 @@ end{itemize}
 
 \end_layout
 
-\begin_layout DoubleItem
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Doble\SpecialChar ldots
-
-\end_layout
-
-\end_inset
-
-\SpecialChar ldots
- ítem.
-\end_layout
-
-\begin_layout DoubleItem
-Otro doble\SpecialChar ldots
-
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}{
+
+\backslash
+renewcommand{
+\backslash
+listitemsymbol}{-~} 
 \end_layout
 
 \end_inset
 
-\SpecialChar ldots
- ítem.
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, cambia el símbolo para las listas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout DoubleListItem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Ítem 1
+\end_layout
+
+\end_inset
+
+Ítem 3
+\end_layout
+
+\begin_layout DoubleListItem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Ítem 2
+\end_layout
+
+\end_inset
+
+Ítem 4, véase 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jobs95"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+listitemsymbol}{
+\backslash
+labelitemi~} 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, retorna al símbolo predeterminado para las listas
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1053,11 +1205,11 @@ Subsección
 \end_layout
 
 \begin_layout ListItem
-ítem en una subsección
+Ítem en una subsección
 \end_layout
 
 \begin_layout Section
-Section with a column
+Sección con columnas
 \end_layout
 
 \begin_layout Columns
@@ -1066,7 +1218,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 0.5
@@ -1079,19 +1231,19 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-the optional width is a number in the range 0 - 1 and specifies the fraction
- of the line length; if no width is given all available width is used for
- the column
+la anchura opcional es un número entre 0 y 1, especifica la fracción de
+ longitud de línea; si no se determina anchura se usa para la columna toda
+ la anchura disponible
 \end_layout
 
 \end_inset
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
-header 1
+encabezado 1
 \end_layout
 
 \end_inset
@@ -1100,7 +1252,7 @@ header 1
 \end_layout
 
 \begin_layout Itemize
-Everything can be the content
+El contenido puede ser cualquier cosa
 \end_layout
 
 \begin_layout Plain Layout
@@ -1114,7 +1266,7 @@ Everything can be the content
 \begin_inset Text
 
 \begin_layout Plain Layout
-even a table
+incluso un cuadro
 \end_layout
 
 \end_inset
@@ -1131,17 +1283,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- paragraph alignments are not allowed, so e.
+ no está permitido el alineamiento de párrafos, así que, p.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-centering the table is not possible
+ej., no es posible centrar el cuadro
 \end_layout
 
 \end_inset
@@ -1157,15 +1305,15 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
-header 2
+encabezado 2
 \end_layout
 
 \end_inset
 
-the second column
+segunda columna
 \end_layout
 
 \end_inset
@@ -1174,11 +1322,11 @@ the second column
 \end_layout
 
 \begin_layout Section
-Sección con su propio contenido
+Sección con tu propio contenido
 \end_layout
 
 \begin_layout Standard
-Aquí va el contenido, en un entorno sin formato.
+Aquí va el contenido propio, en un entorno sin formato.
  Aquí puedes usar, por ejemplo, ecuaciones matemáticas 
 \begin_inset Formula 
 \[
@@ -1195,7 +1343,17 @@ cuadros, figuras, etc.
 status open
 
 \begin_layout Plain Layout
-Crea una sección sin encabezado.
+Crea una sección sin encabezado
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+¡Deja vacías las entradas en verde!
 \end_layout
 
 \end_inset
@@ -1205,7 +1363,7 @@ Crea una sección sin encabezado.
 
 \begin_layout Item
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Ahora
@@ -1213,19 +1371,85 @@ Ahora
 
 \end_inset
 
-Volvemos al formato moderncv, sin poner sección nueva
+Volvemos al formato moderncv, sin poner sección nueva.
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-Puedes usar bibitems:
+Puedes insertar entradas de referencias bibliográficas (entorno Bibliografía):
 \end_layout
 
 \begin_layout Standard
 \begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Para redefinir el texto del encabezado (p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej., 
+\begin_inset Quotes eld
+\end_inset
+
+Publicaciones
+\begin_inset Quotes erd
+\end_inset
+
+), elimina la marca de comentario (%):
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+renewcommand{
+\backslash
+refname}{Publicaciones}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+bibliographyitemlabel}{[
+\backslash
+arabic{enumiv}]}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+opcional, numera las entradas de bibliografía
+\end_layout
+
 \end_inset
 
 
@@ -1265,7 +1489,10 @@ Leslie Lamport:
 \end_layout
 
 \begin_layout Standard
-o referencias Bib\SpecialChar TeX
+\begin_inset Newpage newpage
+\end_inset
+
+O una bibliografía Bib\SpecialChar TeX
 :
 \end_layout
 
@@ -1275,6 +1502,161 @@ LatexCommand bibtex
 btprint "btPrintAll"
 bibfiles "../biblioExample"
 options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Recipient
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Compañía, S.A.
+\end_layout
+
+\end_inset
+
+Departamento de contratación
+\begin_inset Newline newline
+\end_inset
+
+C/ Calle, 123
+\begin_inset Newline newline
+\end_inset
+
+Ciudad
+\end_layout
+
+\begin_layout Date
+1 de enero de 2014
+\end_layout
+
+\begin_layout Opening
+Estimado Sr.
+ o Sra,
+\end_layout
+
+\begin_layout Closing
+Atentamente,
+\end_layout
+
+\begin_layout Enclosing
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Documento adjunto
+\end_layout
+
+\end_inset
+
+curriculum vitae
+\end_layout
+
+\begin_layout MakeLetterTitle
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+genera el título de la carta; debe ir detrás del 
+\emph on
+Cierre
+\family sans
+\emph default
+ y de los 
+\family default
+\emph on
+Adjuntos
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+¡Deja vacías las entradas en verde!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis.
+ Vivamus at neque arcu, sed tempor quam.
+ Curabitur pharetra tincidunt tincidunt.
+ Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat.
+ Duis tristique justo vel massa fermentum accumsan.
+ Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum.
+ Donec scelerisque lobortis ipsum eu vestibulum.
+ Pellentesque vel massa at felis accumsan rhoncus.
+\end_layout
+
+\begin_layout Standard
+Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque
+ orci, cursus tempor odio nisl euismod augue.
+ Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet.
+ Mauris a accumsan ligula.
+ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+ inceptos himenaeos.
+ Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus.
+ Phasellus et est urna, ut auctor erat.
+ Sed tincidunt odio id odio aliquam mattis.
+ Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor.
+ Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna,
+ vitae aliquet lectus orci nec velit.
+ Vivamus dapibus varius blandit.
+\end_layout
+
+\begin_layout Standard
+Duis sit amet magna ante, at sodales diam.
+ Aenean consectetur porta risus et sagittis.
+ Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor,
+ ut fermentum nunc metus a ante.
+ Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus.
+ Nunc sed orci lectus.
+ Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
+\end_layout
+
+\begin_layout Standard
+Albert Einstein descubrió esto 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ en 1905.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout MakeLetterClosing
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+¡Deja vacías las entradas en verde!
+\end_layout
 
 \end_inset
 
