@@ -328,7 +328,13 @@ string LyXVC::toggleReadOnly()
 		return log;
 	}
 	case VCS::NOLOCKING:
-		break;
+		Buffer * b = vcs->owner();
+		bool const newstate = !b->isReadonly();
+		string result = "LyXVC: toggle to ";
+		result += (newstate ? "readonly" : "readwrite");
+		LYXERR(Debug::LYXVC, result);
+		b->setReadonly(newstate);
+		return result;
 	}
 	return string();
 }

@@ -2254,7 +2254,7 @@ bool GIT::prepareFileRevisionEnabled()
 
 bool GIT::toggleReadOnlyEnabled()
 {
-	return false;
+	return true;
 }
 
 
