@@ -49,7 +49,7 @@ public:
 	/// copy a file. Return non-empty log on success, empty log on failure.
 	virtual std::string copy(support::FileName const &, std::string const &) = 0;
 	/// check in the current revision.
-        /// \p log is non-empty on success and may be empty on failure.
+	/// \p log is non-empty on success and may be empty on failure.
 	virtual LyXVC::CommandResult
 	checkIn(std::string const & msg, std::string & log) = 0;
 	/// can this operation be processed in the current VCS?
