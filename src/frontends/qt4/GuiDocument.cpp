@@ -3039,7 +3039,10 @@ void GuiDocument::paramsToDialog()
 	biblioChanged_ = false;
 
 	// indices
-	indicesModule->update(bp_, buffer().isReadonly());
+	// We may be called when there is no BufferView and so no Buffer,
+	// e.g., when the last view has just been closed.
+	bool const isReadOnly = buffer() ? buffer().isReadonly() : false;
+	indicesModule->update(bp_, isReadOnly);
 
 	// language & quotes
 	int const pos = langModule->languageCO->findData(toqstr(
