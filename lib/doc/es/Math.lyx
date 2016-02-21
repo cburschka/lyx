@@ -30386,20 +30386,7 @@ A=C-B\label{eq:a}
 
 
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addtocounter{equation}{-1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30435,7 +30422,7 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30466,21 +30453,7 @@ después de ella se inserta
 
 
 \backslash
-addtocounter{equation}{-1} 
-\backslash
 begin{subequations}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! A ! 
-\backslash
-addtocounter
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -30516,30 +30489,14 @@ end
 \series default
  se subnumera con a, b, c\SpecialChar ldots
  En ecuaciones multilínea se subnumerará cada línea.
- Todas las ecuaciones subnumeradas son tratadas como 
-\emph on
-una
-\emph default
- ecuación numerada.
- Pero como cada ecuación numerada aumenta el contador 
-\series bold
-equation
-\series default
- en uno, hay que disminuir el comando 
-\series bold
+\end_layout
 
-\backslash
-addtocounter
-\series default
-.
- De lo contrario, las ecuaciones 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
+\begin_layout Standard
 
-\end_inset
-
-, 
+\lang english
+Referencing subequations work like for normal equations
+\lang spanish
+: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
@@ -30553,28 +30510,32 @@ reference "eq:c"
 
 \end_inset
 
- se numerarían 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:d"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:f"
-
-\end_inset
-
 .
+ 
+\lang english
+If you want to reference the subequations collectively, insert a label directly
+ after
+\series bold
+\lang spanish
+ 
+\backslash
+begin{subequations}
+\series default
+ 
+\lang english
+and reference it.
+ Formula
+\lang spanish
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Un-ejemplo-de"
+
+\end_inset
+
+ 
+\lang english
+is an example.
 \end_layout
 
 \begin_layout Standard
@@ -30625,8 +30586,72 @@ mm.
 \end_layout
 
 \begin_layout Standard
-Un ejemplo de ecuación multilínea en la que se ha eliminado la numeración
- de la segunda línea:
+
+\lang english
+To get another subnumber instead of small Latin letters, insert this command
+ as TeX code after
+\lang spanish
+ 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+theparentequation
+\series default
+ 
+\lang english
+creates hereby the parent number and
+\lang spanish
+ 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+ 
+\lang english
+adds a small Roman number as subnumber.
+ For more information about the customization of the numbering
+\lang spanish
+, véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Numeración-con-números"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un ejemplo de ecuación multilínea en la que 
+\lang english
+the numbering is customized
+\lang spanish
+ y eliminado la numeración de la segunda línea:
 \begin_inset ERT
 status collapsed
 
@@ -30635,6 +30660,32 @@ status collapsed
 
 \backslash
 begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:Un-ejemplo-de"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
@@ -31354,6 +31405,13 @@ makeatother
 
 \begin_layout Subsection
 Numeración con números romanos y letras
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Numeración-con-números"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -32054,7 +32112,10 @@ ce
 \series default
  en modo matemático aparece un nuevo marco azul en el que se pueden escribir
  ecuaciones químicas de una forma intuitiva.
-\begin_inset Separator parbreak
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -32617,6 +32678,13 @@ xymatrix
 , que se explican a continuación.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Diagramas amscd
 \begin_inset Index idx
@@ -33011,11 +33079,7 @@ Diagram
 \series default
  en una ecuación.
  Después podrás añadir nuevas columnas y filas como en matrices normales,
- véase
-\begin_inset space ~
-\end_inset
-
-
+ véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -33040,13 +33104,6 @@ Manuales
 específicos
 \family default
 , hay ejemplos de diagramas de este tipo.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -33229,6 +33286,13 @@ El número de argumentos es un entero en el rango 0-9 y especifica cuántos
 primer
 \emph default
  argumento del nuevo comando es automáticamente opcional.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34569,13 +34633,6 @@ Octave
 .
  Hay que advertir que el conjunto de estructuras matemáticas soportadas
  se limita a casos muy simples.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection

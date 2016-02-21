@@ -29887,27 +29887,14 @@ end{subequations}
 Dazu ein Beispiel:
 \begin_inset Formula 
 \begin{equation}
-A=C-B\label{eq:a}
+A=C-B
 \end{equation}
 
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addtocounter{equation}{-1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -29943,7 +29930,7 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -29970,21 +29957,7 @@ erste Formel eingeben
 \series bold
 
 \backslash
-addtocounter{equation}{-1} 
-\backslash
 begin{subequations}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! A ! 
-\backslash
-addtocounter
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -30027,30 +30000,11 @@ end
  steht, wird mit a, b, c, \SpecialChar ldots
  untergliedert.
  Bei mehrzeiligen Formeln wird jede Zeile untergliedert.
- Alle untergliederten Formeln gelten als 
-\emph on
-eine
-\emph default
- nummerierte Formel.
- Da jede nummerierte Formel den Formelzähler 
-\series bold
-equation
-\series default
- um Eins erhöht, ist der Befehl 
-\series bold
+\end_layout
 
-\backslash
-addtocounter
-\series default
- notwendig um den Zähler wieder zu erniedrigen.
- Ansonsten würden die Formeln 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
+\begin_layout Standard
+Auf Unternummerierungen zu verweisen funktioniert wie bei normalen Formeln:
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
@@ -30064,28 +30018,23 @@ reference "eq:c"
 
 \end_inset
 
- als 
+.
+ Wenn man kollektiv auf die untergliederten Formeln verweisen will, fügt
+ man eine Marke direkt nach
+\series bold
+ 
+\backslash
+begin{subequations}
+\series default
+ ein und verweist darauf.
+ Formel 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:a"
+reference "eq:Hier-ist-ein"
 
 \end_inset
 
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:d"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:f"
-
-\end_inset
-
- nummeriert werden.
+ ist ein Beispiel dafür.
 \end_layout
 
 \begin_layout Standard
@@ -30132,8 +30081,57 @@ mm Leerraum ein.
 \end_layout
 
 \begin_layout Standard
+Um eine andere Unternummer als kleine lateinische Buchstaben zu erhalten,
+ fügt man diesen Befehl im TeX-Modus nach 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+ ein:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+theparentequation
+\series default
+ erzeugt hierbei die Hauptnummer und 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+ fügt eine kleine römische Zahl als Unternummer hinzu.
+ Für weitere Informationen zur benutzerdefinierten Nummerierung, siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Nummerierung-mit-römischen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 Hier ist ein Beispiel für mehrzeilige Formeln, bei dem die Nummerierung
- der zweiten Zeile abgeschaltet wurde:
+ angepasst und in der zweiten Zeile abgeschaltet wurde:
 \begin_inset ERT
 status collapsed
 
@@ -30142,6 +30140,32 @@ status collapsed
 
 \backslash
 begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:Hier-ist-ein"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
@@ -30885,6 +30909,13 @@ makeatother
 
 \begin_layout Subsection
 Nummerierung mit römischen Zahlen und Buchstaben
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Nummerierung-mit-römischen"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

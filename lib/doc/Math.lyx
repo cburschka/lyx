@@ -30050,27 +30050,14 @@ end{subequations}
 An example:
 \begin_inset Formula 
 \begin{equation}
-A=C-B\label{eq:a}
+A=C-B
 \end{equation}
 
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addtocounter{equation}{-1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30106,7 +30093,7 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30133,21 +30120,7 @@ first formula is inserted
 \series bold
 
 \backslash
-addtocounter{equation}{-1} 
-\backslash
 begin{subequations}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! A ! 
-\backslash
-addtocounter
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -30187,36 +30160,13 @@ begin
 \backslash
 end
 \series default
- is subnumbered as a, b, 
-\begin_inset Newline linebreak
-\end_inset
+ is subnumbered as a, b, c, \SpecialChar ldots
+ For multiline formulas every line will be subnumber
+ed.
+\end_layout
 
-c, \SpecialChar ldots
- For multiline formulas every line will be subnumbered.
- All subnumbered formulas are treated as 
-\emph on
-one
-\emph default
- numbered formula.
- But as every numbered formula increases the counter 
-\series bold
-equation
-\series default
- by one, the command 
-\series bold
-
-\backslash
-addtocounter
-\series default
- is needed to decrease it.
- Otherwise the formulas 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
+\begin_layout Standard
+Referencing subequations work like for normal equations: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
@@ -30230,34 +30180,29 @@ reference "eq:c"
 
 \end_inset
 
- would be numbered as 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:d"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:f"
-
-\end_inset
-
 .
+ If you want to reference the subequations collectively, insert a label
+ directly after
+\series bold
+ 
+\backslash
+begin{subequations}
+\series default
+ and reference it.
+ Formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Here-is-an"
+
+\end_inset
+
+ is an example.
 \end_layout
 
 \begin_layout Standard
-By inserting the commands in \SpecialChar TeX
- mode, a space is created between the first
- two formulas.
+By inserting commands in \SpecialChar TeX
+ mode, a space is created between the first two
+ formulas.
  To revert this -5
 \begin_inset space \thinspace{}
 \end_inset
@@ -30298,8 +30243,57 @@ mm space is inserted instead.
 \end_layout
 
 \begin_layout Standard
-Here is an example for a multiline formula where the numbering was turned
- off for the second line:
+To get another subnumber instead of small Latin letters, insert this command
+ as TeX code after 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+theparentequation
+\series default
+ creates hereby the parent number and 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+ adds a small Roman number as subnumber.
+ For more information about the customization of the numbering, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Numbering-with-Roman"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here is an example for a multiline formula where the numbering is customized
+ and turned off for the second line:
 \begin_inset ERT
 status collapsed
 
@@ -30308,6 +30302,32 @@ status collapsed
 
 \backslash
 begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:Here-is-an"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
@@ -31009,6 +31029,13 @@ makeatother
 
 \begin_layout Subsection
 Numbering with Roman Numbers and Letters
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Numbering-with-Roman"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -32511,13 +32538,6 @@ Specific
 Manuals
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

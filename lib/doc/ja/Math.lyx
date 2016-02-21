@@ -29501,27 +29501,14 @@ end{subequations}
 たとえば、
 \begin_inset Formula 
 \begin{equation}
-A=C-B\label{eq:a}
+A=C-B
 \end{equation}
 
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addtocounter{equation}{-1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -29557,7 +29544,7 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -29588,21 +29575,7 @@ end{subequations}
 \series bold
 
 \backslash
-addtocounter{equation}{-1} 
-\backslash
 begin{subequations}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! A ! 
-\backslash
-addtocounter
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
@@ -29647,63 +29620,58 @@ end
 \end_inset
 
 c\SpecialChar ldots
-のように細目番号が振られます。多行数式の場合は、すべての行に細目番号が振られます。細目番号が振られた数式はすべて、
-\emph on
-ひとつの
-\emph default
-付番数式として扱われますが、それぞれの付番数式が
-\series bold
-equation
-\series default
-カウンタを一つずつ進めてしまうので、
-\series bold
+のように細目番号が振られます。
+\end_layout
 
-\backslash
-addtocounter
-\series default
-コマンドを使ってカウンタを戻さなくてはなりません。これを怠ると、
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
+\begin_layout Standard
 
-\end_inset
+\lang english
+Referencing subequations work like for normal equations: 
+\lang japanese
 
-式・
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
 
 \end_inset
 
-式・
+
+\lang english
+, 
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:c"
 
 \end_inset
 
-式は、それぞれ
+
+\lang english
+.
+ If you want to reference the subequations collectively, insert a label
+ directly after
+\series bold
+\lang japanese
+ 
+\backslash
+begin{subequations}
+\series default
+ 
+\lang english
+and reference it.
+ Formula 
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:a"
+reference "eq:以下は、二行めのみ付番を無効にしている多行数式の例です。"
 
 \end_inset
 
-式・
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:d"
 
-\end_inset
-
-式・
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:f"
-
-\end_inset
-
-式として番号が振られてしまいます。
+\lang english
+ is an example.
 \end_layout
 
 \begin_layout Standard
@@ -29751,7 +29719,72 @@ mm空白にしてください。
 \end_layout
 
 \begin_layout Standard
-以下は、二行めのみ付番を無効にしている多行数式の例です。
+
+\lang english
+To get another subnumber instead of small Latin letters, insert this command
+ as TeX code after
+\lang japanese
+ 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+theparentequation
+\series default
+ 
+\lang english
+creates hereby the parent number and
+\lang japanese
+ 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+\lang english
+ adds a small Roman number as subnumber.
+ For more information about the customization of the numbering, see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:ローマ数字や文字を使った付番"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Here is an example for a multiline formula where the numbering is customized
+ and turned off for the second line:
+\lang japanese
+
 \begin_inset ERT
 status collapsed
 
@@ -29760,6 +29793,32 @@ status collapsed
 
 \backslash
 begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:以下は、二行めのみ付番を無効にしている多行数式の例です。"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
@@ -30416,6 +30475,13 @@ makeatother
 
 \begin_layout Subsection
 ローマ数字や文字を使った付番
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:ローマ数字や文字を使った付番"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 

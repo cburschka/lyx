@@ -30361,27 +30361,14 @@ end{subequations}
 Un exemple:
 \begin_inset Formula 
 \begin{equation}
-A=C-B\label{eq:a}
+A=C-B
 \end{equation}
 
 \end_inset
 
 
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-addtocounter{equation}{-1}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30417,7 +30404,7 @@ C=A+B\label{eq:c}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -30448,21 +30435,7 @@ après la première formule on insère
 \series bold
 
 \backslash
-addtocounter{equation}{-1} 
-\backslash
 begin{subequations}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! A ! 
-\backslash
-addtocounter
-\end_layout
-
-\end_inset
-
-
 \series default
 ;
 \end_layout
@@ -30498,40 +30471,17 @@ begin
 \backslash
 end
 \series default
- est sous-numérotée avec a, b,
-\begin_inset Newline linebreak
-\end_inset
+ est sous-numérotée avec a, b, c, \SpecialChar ldots
+ Pour les formules multi-lignes, chaque
+ ligne sera numérotée.
+\end_layout
 
-c, \SpecialChar ldots
- Pour les formules multi-lignes, chaque ligne sera numérotée.
- Toutes les formules sous-numérotées sont traitées comme 
-\emph on
-une seule 
-\emph default
-formule.
- Mais comme chaque formule numérotée incrémente le compteur 
-\series bold
-equation
-\series default
- de un, on a besoin de la commande 
-\series bold
+\begin_layout Standard
 
-\backslash
-addtocounter
-\series default
- pour le décrémenter.
- Sinon les formules
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
+\lang english
+Referencing subequations work like for normal equations:
+\lang french
+ 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
@@ -30545,32 +30495,32 @@ reference "eq:c"
 
 \end_inset
 
- seraient numérotées comme
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:a"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:d"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:f"
-
-\end_inset
-
 .
+ 
+\lang english
+If you want to reference the subequations collectively, insert a label directly
+ after
+\series bold
+\lang french
+ 
+\backslash
+begin{subequations}
+\series default
+ 
+\lang english
+and reference it.
+ Formula
+\lang french
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Voici-un-exemple"
+
+\end_inset
+
+ 
+\lang english
+is an example.
 \end_layout
 
 \begin_layout Standard
@@ -30621,11 +30571,72 @@ mm à la place.
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de formule multi-lignes où on a désactivé la numérotation
- pour la deuxième ligne:
+
+\lang english
+To get another subnumber instead of small Latin letters, insert this command
+ as TeX code after
+\lang french
+ 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+:
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+theparentequation
+\series default
+ 
+\lang english
+creates hereby the parent number and
+\lang french
+ 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+ 
+\lang english
+adds a small Roman number as subnumber.
+ For more information about the customization of the numbering
+\lang french
+, voi 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Numérotation-avec-des"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Voici un exemple de formule multi-lignes où 
+\lang english
+the numbering is customized
+\lang french
+ et désactivé la numérotation pour la deuxième ligne:
 \begin_inset ERT
 status collapsed
 
@@ -30634,6 +30645,32 @@ status collapsed
 
 \backslash
 begin{subequations}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:Voici-un-exemple"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+theparentequation -
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
@@ -31339,6 +31376,13 @@ makeatother
 
 \begin_layout Subsection
 Numérotation avec des chiffres romains ou des lettres
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Numérotation-avec-des"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -32496,6 +32540,13 @@ amscd
  qui sont décrits dans ce qui suit.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Les diagrammes amscd
 \begin_inset Index idx
@@ -32740,11 +32791,7 @@ xymatrix
 \series default
  dans une formule.
  Ensuite vous pouvez ajouter de nouvelles lignes et de nouvelles colonnes
- comme pour une matrice normale, voi
-\begin_inset space ~
-\end_inset
-
- 
+ comme pour une matrice normale, voi 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -36489,6 +36536,13 @@ reference "sec:Styles-de-formules"
 \end_inset
 
 mm à la place.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
