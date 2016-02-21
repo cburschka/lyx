@@ -26,17 +26,17 @@ ${LangFileString} SecAllUsersDescription "Installera LyX för alla användare, ell
 ${LangFileString} SecFileAssocDescription "Filer med ändelsen .lyx kommer att automatiskt öppnas i LyX."
 ${LangFileString} SecDesktopDescription "En LyX-ikon på skrivbordet."
 ${LangFileString} SecDictionariesDescription "Stavningskontrollens ordböcker som kan laddas ned och installeras."
-${LangFileString} SecThesaurusDescription "Synonymordbokens ordböcker som kan laddas ned och installeras."
+${LangFileString} SecThesaurusDescription "Synonymordböcker som kan laddas ned och installeras."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'
 ${LangFileString} EnterLaTeXHeader2 'Ställ in LaTeX-distributionen som LyX skall använda.'
-${LangFileString} EnterLaTeXFolder 'Alternativt kan du här ställa in sökvägen till filen $\"latex.exe$\" och därmed bestämma vilken \
+${LangFileString} EnterLaTeXFolder 'Alternativt kan du ställa in sökvägen till filen $\"latex.exe$\" här och därmed bestämma vilken \
 					LaTeX-distribution som skall användas av LyX.\r\n\
 					Om du inte använder LaTeX kan LyX inte mata ut dokument!\r\n\
 					\r\n\
 					Installationsprogrammet har upptäckt LaTeX-distributionen \
 					$\"$LaTeXName$\" i ditt system. Nedan visas dess sökväg.'
-${LangFileString} EnterLaTeXFolderNone 'Sätt nedan sökvägen till filen $\"latex.exe$\". Därmed väljer du vilken \
+${LangFileString} EnterLaTeXFolderNone 'Sätt sökvägen till filen $\"latex.exe$\". Därmed väljer du vilken \
 					LaTeX-distribution som skall användas av LyX.\r\n\
 					Om du inte använder LaTeX kan LyX inte mata ut dokument!\r\n\
 					\r\n\
@@ -46,7 +46,7 @@ ${LangFileString} DontUseLaTeX "Använd inte LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'Filen $\"latex.exe$\" finns inte i den angivna sökvägen.'
 
 ${LangFileString} LatexInfo 'Nu kommer installationsprogrammet för LaTeX-distribution $\"MiKTeX$\" att köras.$\r$\n\
-				För att installera programmet, klicka på knappen $\"Next$\" i installationsprogrammets fönster tills installation börjar.$\r$\n\
+				För att installera programmet, klicka på knappen $\"Next$\" i installationsprogrammets fönster tills installation börjat.$\r$\n\
 				$\r$\n\
 				!!! Vänligen använd standardinställningarna i installationsprogrammet för MiKTeX !!!'
 ${LangFileString} LatexError1 'Ingen LaTeX-distribution kunde hittas!$\r$\n\
@@ -73,15 +73,15 @@ ${LangFileString} MiKTeXInfo 'LaTeX-distributionen $\"MiKTeX$\" kommer att använ
 				innan du använder LyX för första gången.$\r$\n\
 				Vill du kontrollera om det finns uppdateringar för MiKTeX nu?'
 
-${LangFileString} ModifyingConfigureFailed "Kunde inte sätta  'path_prefix' i konfigurationsskriptet"
+${LangFileString} ModifyingConfigureFailed "Kunde inte sätta 'path_prefix' i konfigurationsskriptet"
 ${LangFileString} RunConfigureFailed "Kunde inte köra konfigurationsskriptet"
 ${LangFileString} NotAdmin "Du måste ha administratörsrättigheter för att installera LyX!"
 ${LangFileString} InstallRunning "Installationsprogrammet körs redan!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} är redan installerad!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
+				Att installera över en nuvarande installation är inte rekommenderat om den installerade$\r$\n\
+				versionen är en testutgåva eller om du har problem med din nuvarande LyX-installation.$\r$\n\
+				I dessa fall är det bättre att ominstallera LyX.$\r$\n\
+				Vill du ändå installera LyX över den nuvarande versionen?"
 ${LangFileString} NewerInstalled "Du försöker att installera en äldre version av LyX än vad du har installerad.$\r$\n\
 				  Om du verkligen vill detta måste du avinstallera den befintliga LyX $OldVersionNumber innan."
 
@@ -90,7 +90,7 @@ ${LangFileString} MultipleIndexesNotAvailable "Stödet för att använda flera inde
 
 ${LangFileString} FinishPageMessage "Gratulerar! LyX har installerats framgångsrikt.$\r$\n\
 					$\r$\n\
-					(Den första starten av LyX kan ta några sekunder.)"
+					(Den första starten av LyX kan ta en stund.)"
 ${LangFileString} FinishPageRun "Kör LyX"
 
 ${LangFileString} UnNotInRegistryLabel "Kan inte hitta LyX i registret.$\r$\n\
@@ -98,11 +98,11 @@ ${LangFileString} UnNotInRegistryLabel "Kan inte hitta LyX i registret.$\r$\n\
 ${LangFileString} UnInstallRunning "Du måste stänga LyX först!"
 ${LangFileString} UnNotAdminLabel "Du måste ha administratörsbehörighet för att avinstallera LyX!"
 ${LangFileString} UnReallyRemoveLabel "Är du säker på att du verkligen vill fullständigt ta bort LyX och alla dess komponenter?"
-${LangFileString} UnLyXPreferencesTitle 'LyX användarinställningar'
+${LangFileString} UnLyXPreferencesTitle 'LyX-användarinställningar'
 
 ${LangFileString} SecUnMiKTeXDescription "Avinstallerar LaTeX-distributionen MiKTeX."
 ${LangFileString} SecUnJabRefDescription "Avinstallerar bibliografihanteraren JabRef."
-${LangFileString} SecUnPreferencesDescription 'Raderar LyX konfiguration$\r$\n\
+${LangFileString} SecUnPreferencesDescription 'Raderar LyX-konfiguration$\r$\n\
 						(katalog $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						för dig eller för alla användare (om du är admin).'
 ${LangFileString} SecUnProgramFilesDescription "Avinstallera LyX och alla dess komponenter."
