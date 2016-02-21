@@ -151,6 +151,12 @@ InsetLayout Flex:Structure_Tree
 	Requires              forest
 	ResetsFont            true
 	PassThruChars         []
+	Preamble
+	% Load forest linguistics library, if available
+	\@ifpackagelater{forest}{2016/02/20}{%
+	\useforestlibrary*{linguistics}
+	}{}
+	EndPreamble
 End
 
 
@@ -167,7 +173,7 @@ InsetLayout Flex:Expression
 		\newcommand{\lingexpr}[1]{\emph{#1}}
 	EndPreamble
 	InToc                 true
-	ResetsFont true
+	ResetsFont            true
 End
 
 
@@ -183,7 +189,7 @@ InsetLayout Flex:Concepts
 		\newcommand{\lingconcept}[1]{\textsc{#1}}
 	EndPreamble
 	InToc                 true
-	ResetsFont true
+	ResetsFont            true
 End
 
 
@@ -197,7 +203,7 @@ InsetLayout Flex:Meaning
 		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
 	EndPreamble
 	InToc                 true
-	ResetsFont true
+	ResetsFont            true
 End
 
 
