@@ -457,7 +457,10 @@ public:
 	void updateRC(LyXRC const & rc);
 	void updateShortcutsTW();
 	void modifyShortcut();
+	/// remove selected binding, restore default value
 	void removeShortcut();
+	/// remove bindings, do not restore default values
+	void deactivateShortcuts(QList<QTreeWidgetItem*> const & items);
 	///
 	void setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag);
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
