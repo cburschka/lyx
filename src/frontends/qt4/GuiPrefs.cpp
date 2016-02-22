@@ -3095,6 +3095,38 @@ void PrefShortcuts::removeShortcut()
 }
 
 
+void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
+{
+	for (int i = 0; i < items.size(); ++i) {
+		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
+		string lfun = fromqstr(items[i]->text(0));
+		FuncRequest func = lyxaction.lookupFunc(lfun);
+		KeyMap::ItemType tag =
+			static_cast<KeyMap::ItemType>(items[i]->data(0, Qt::UserRole).toInt());
+
+		switch (tag) {
+		case KeyMap::System:
+			// for system bind, we do not touch the item
+			// but add an user unbind item
+			user_unbind_.bind(shortcut, func);
+			setItemType(items[i], KeyMap::UserUnbind);
+			break;
+
+		case KeyMap::UserBind: {
+			// for user_bind, we remove this bind
+			QTreeWidgetItem * parent = items[i]->parent();
+			int itemIdx = parent->indexOfChild(items[i]);
+			parent->takeChild(itemIdx);
+			user_bind_.unbind(shortcut, func);
+			break;
+		}
+		default:
+			break;
+		}
+	}
+}
+
+
 void PrefShortcuts::selectBind()
 {
 	QString file = form_->browsebind(internalPath(bindFileED->text()));
@@ -3192,9 +3224,12 @@ void PrefShortcuts::shortcutOkPressed()
 		return;
 	
 	// make sure this key isn't already bound---and, if so, prompt user
+	FuncCode const old_action = oldBinding.action();
 	FuncCode const unbind = user_unbind_.getBinding(k).action();
 	docstring const action_string = makeCmdString(oldBinding);
-	if (oldBinding.action() > LFUN_NOACTION && unbind == LFUN_UNKNOWN_ACTION
+	// FIXME: this logic is wrong. Some bindings in the treewidget can (still)
+	// escape from this test.
+	if (old_action > LFUN_NOACTION && unbind != old_action
 		  && save_lfun_ != toqstr(action_string)) {
 		docstring const new_action_string = makeCmdString(func);
 		docstring const text = bformat(_("Shortcut `%1$s' is already bound to "
@@ -3210,31 +3245,24 @@ void PrefShortcuts::shortcutOkPressed()
 		QString const sequence_text = toqstr(k.print(KeySequence::ForGui));
 		QList<QTreeWidgetItem*> items = shortcutsTW->findItems(sequence_text,
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 1);
-		if (items.size() > 0) {
-			// should always happen
-			bool expanded = items[0]->parent()->isExpanded();
-			shortcutsTW->setCurrentItem(items[0]);
-			removeShortcut();
-			shortcutsTW->setCurrentItem(0);
-			// make sure user doesn't see tree expansion if
-			// old binding wasn't in an expanded tree
-			if (!expanded)
-				items[0]->parent()->setExpanded(false);
-		}
+		deactivateShortcuts(items);
+	}
+
+	if (!save_lfun_.isEmpty()) {
+		// real modification of the lfun's shortcut,
+		// so remove the previous one
+		QList<QTreeWidgetItem*> to_modify = shortcutsTW->selectedItems();
+		deactivateShortcuts(to_modify);
 	}
 
 	shortcut_->accept();
-
-	if (!save_lfun_.isEmpty())
-		// real modification of the lfun's shortcut,
-		// so remove the previous one
-		removeShortcut();
 
 	QTreeWidgetItem * item = insertShortcutItem(func, k, KeyMap::UserBind);
 	if (item) {
 		user_bind_.bind(&k, func);
 		shortcutsTW->sortItems(0, Qt::AscendingOrder);
 		shortcutsTW->setItemExpanded(item->parent(), true);
+		shortcutsTW->setCurrentItem(item);
 		shortcutsTW->scrollToItem(item);
 	} else {
 		Alert::error(_("Failed to create shortcut"),
