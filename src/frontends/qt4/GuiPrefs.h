@@ -491,6 +491,12 @@ private:
 	void setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag);
 	///
 	static KeyMap::ItemType itemType(QTreeWidgetItem & item);
+	/// some items need to be always hidden, for instance empty rebound
+	/// system keys
+	static bool isAlwaysHidden(QTreeWidgetItem & item);
+	/// unhide an empty system binding that may have been hidden
+	/// returns either null or the unhidden shortcut
+	void unhideEmpty(QString const & lfun, bool select);
 	///
 	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun,
 		KeySequence const & shortcut, KeyMap::ItemType tag);

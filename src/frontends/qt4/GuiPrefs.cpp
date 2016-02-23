@@ -2813,7 +2813,7 @@ void PrefShortcuts::updateShortcutsTW()
 	KeyMap::BindingList::const_iterator it = bindinglist.begin();
 	KeyMap::BindingList::const_iterator it_end = bindinglist.end();
 	for (; it != it_end; ++it)
-		insertShortcutItem(it->request, it->sequence, KeyMap::ItemType(it->tag));
+		insertShortcutItem(it->request, it->sequence, it->tag);
 
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
 	on_shortcutsTW_itemSelectionChanged();
@@ -2826,6 +2826,14 @@ void PrefShortcuts::updateShortcutsTW()
 KeyMap::ItemType PrefShortcuts::itemType(QTreeWidgetItem & item)
 {
 	return static_cast<KeyMap::ItemType>(item.data(0, Qt::UserRole).toInt());
+}
+
+
+//static
+bool PrefShortcuts::isAlwaysHidden(QTreeWidgetItem & item)
+{
+	// Hide rebound system settings that are empty
+	return itemType(item) == KeyMap::UserUnbind && item.text(1).isEmpty();
 }
 
 
@@ -2848,7 +2856,7 @@ void PrefShortcuts::setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag)
 		font.setStrikeOut(true);
 		break;
 	}
-
+	item->setHidden(isAlwaysHidden(*item));
 	item->setFont(1, font);
 }
 
@@ -2951,6 +2959,23 @@ void PrefShortcuts::modifyShortcut()
 }
 
 
+void PrefShortcuts::unhideEmpty(QString const & lfun, bool select)
+{
+	// list of items that match lfun
+	QList<QTreeWidgetItem*> items = shortcutsTW->findItems(lfun,
+	     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
+	for (int i = 0; i < items.size(); ++i) {
+		QTreeWidgetItem * item = items[i];
+		if (isAlwaysHidden(*item)) {
+			setItemType(item, KeyMap::System);
+			if (select)
+				shortcutsTW->setCurrentItem(item);
+			return;
+		}
+	}
+}
+
+
 void PrefShortcuts::removeShortcut()
 {
 	// it seems that only one item can be selected, but I am
@@ -2980,6 +3005,9 @@ void PrefShortcuts::removeShortcut()
 			else
 				shortcutsTW->scrollToItem(parent);
 			user_bind_.unbind(shortcut, func);
+			// If this user binding hid an empty system binding, unhide the
+			// latter and select it.
+			unhideEmpty(items[i]->text(0), true);
 			break;
 		}
 		case KeyMap::UserUnbind: {
@@ -3028,6 +3056,7 @@ void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
 			int itemIdx = parent->indexOfChild(items[i]);
 			parent->takeChild(itemIdx);
 			user_bind_.unbind(shortcut, func);
+			unhideEmpty(items[i]->text(0), false);
 			break;
 		}
 		default:
@@ -3076,8 +3105,11 @@ void PrefShortcuts::on_searchLE_textEdited()
 	if (searchLE->text().isEmpty()) {
 		// show all hidden items
 		QTreeWidgetItemIterator it(shortcutsTW, QTreeWidgetItemIterator::Hidden);
-		while (*it)
-			shortcutsTW->setItemHidden(*it++, false);
+		for (; *it; ++it)
+			shortcutsTW->setItemHidden(*it, isAlwaysHidden(**it));
+		// close all categories
+		for (int i = 0; i < shortcutsTW->topLevelItemCount(); ++i)
+			shortcutsTW->collapseItem(shortcutsTW->topLevelItem(i));
 		return;
 	}
 	// search both columns
@@ -3091,10 +3123,11 @@ void PrefShortcuts::on_searchLE_textEdited()
 	while (*it)
 		shortcutsTW->setItemHidden(*it++, true);
 	// show matched items
-	for (int i = 0; i < matched.size(); ++i) {
-		shortcutsTW->setItemHidden(matched[i], false);
-		shortcutsTW->setItemExpanded(matched[i]->parent(), true);
-	}
+	for (int i = 0; i < matched.size(); ++i)
+		if (!isAlwaysHidden(*matched[i])) {
+			shortcutsTW->setItemHidden(matched[i], false);
+			shortcutsTW->setItemExpanded(matched[i]->parent(), true);
+		}
 }
 
 
