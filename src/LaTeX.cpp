@@ -148,6 +148,10 @@ void LaTeX::removeAuxiliaryFiles() const
 	FileName const aux(changeExtension(file.absFileName(), ".aux"));
 	aux.removeFile();
 
+	// Also remove the .out file (e.g. hyperref bookmarks) (#9963)
+	FileName const out(changeExtension(file.absFileName(), ".out"));
+	out.removeFile();
+
 	// Remove the output file, which is often generated even if error
 	output_file.removeFile();
 }
