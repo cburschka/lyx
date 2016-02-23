@@ -2816,10 +2816,8 @@ void PrefShortcuts::updateShortcutsTW()
 		insertShortcutItem(it->request, it->sequence, KeyMap::ItemType(it->tag));
 
 	shortcutsTW->sortItems(0, Qt::AscendingOrder);
-	QList<QTreeWidgetItem*> items = shortcutsTW->selectedItems();
-	removePB->setEnabled(!items.isEmpty() && !items[0]->text(1).isEmpty());
-	modifyPB->setEnabled(!items.isEmpty());
-
+	on_shortcutsTW_itemSelectionChanged();
+	on_searchLE_textEdited();
 	shortcutsTW->resizeColumnToContents(0);
 }
 
@@ -2984,6 +2982,11 @@ void PrefShortcuts::removeShortcut()
 		case KeyMap::UserUnbind: {
 			// for user_unbind, we remove the unbind, and the item
 			// become KeyMap::System again.
+			KeySequence seq;
+			seq.parse(shortcut);
+			// Ask the user to replace current binding
+			if (!validateNewShortcut(func, seq, QString()))
+				break;
 			user_unbind_.unbind(shortcut, func);
 			setItemType(items[i], KeyMap::System);
 			removePB->setText(qt_("Remo&ve"));
@@ -3004,8 +3007,6 @@ void PrefShortcuts::removeShortcut()
 void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
 {
 	for (int i = 0; i < items.size(); ++i) {
-		if (!items[i])
-			continue;
 		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
@@ -3105,40 +3106,46 @@ docstring makeCmdString(FuncRequest const & f)
 }
 
 
-void PrefShortcuts::shortcutOkPressed()
+FuncRequest PrefShortcuts::currentBinding(KeySequence const & k)
 {
-	QString const new_lfun = shortcut_->lfunLE->text();
-	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
+	FuncRequest res = user_bind_.getBinding(k);
+	if (res.action() != LFUN_UNKNOWN_ACTION)
+		return res;
+	res = system_bind_.getBinding(k);
+	// Check if it is unbound. Note: user_unbind_ can only unbind one
+	// FuncRequest per key sequence.
+	if (user_unbind_.getBinding(k) == res)
+		return FuncRequest::unknown;
+	return res;
+}
 
+
+bool PrefShortcuts::validateNewShortcut(FuncRequest const & func,
+                                        KeySequence const & k,
+                                        QString const & lfun_to_modify)
+{
 	if (func.action() == LFUN_UNKNOWN_ACTION) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Unknown or invalid LyX function"));
-		return;
+		return false;
 	}
 
-	KeySequence k = shortcut_->shortcutWG->getKeySequence();
 	if (k.length() == 0) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Invalid or empty key sequence"));
-		return;
+		return false;
 	}
 
-	// check to see if there's been any change
-	FuncRequest oldBinding = system_bind_.getBinding(k);
-	if (oldBinding.action() == LFUN_UNKNOWN_ACTION)
-		oldBinding = user_bind_.getBinding(k);
+	FuncRequest oldBinding = currentBinding(k);
 	if (oldBinding == func)
-		// nothing has changed
-		return;
+		// nothing to change
+		return false;
 
 	// make sure this key isn't already bound---and, if so, prompt user
-	FuncCode const old_action = oldBinding.action();
-	FuncCode const unbind = user_unbind_.getBinding(k).action();
+	// (exclude the lfun the user already wants to modify)
 	docstring const action_string = makeCmdString(oldBinding);
-	// FIXME: this logic is wrong. Some bindings in the treewidget can (still)
-	// escape from this test.
-	if (old_action > LFUN_NOACTION && unbind != old_action
-		  && save_lfun_ != toqstr(action_string)) {
+	if (oldBinding.action() != LFUN_UNKNOWN_ACTION
+	    && lfun_to_modify != toqstr(action_string)) {
 		docstring const new_action_string = makeCmdString(func);
 		docstring const text = bformat(_("Shortcut `%1$s' is already bound to "
 						 "%2$s.\n"
@@ -3149,12 +3156,26 @@ void PrefShortcuts::shortcutOkPressed()
 		int ret = Alert::prompt(_("Redefine shortcut?"),
 					text, 0, 1, _("&Redefine"), _("&Cancel"));
 		if (ret != 0)
-			return;
+			return false;
 		QString const sequence_text = toqstr(k.print(KeySequence::ForGui));
 		QList<QTreeWidgetItem*> items = shortcutsTW->findItems(sequence_text,
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 1);
 		deactivateShortcuts(items);
 	}
+	return true;
+}
+
+
+void PrefShortcuts::shortcutOkPressed()
+{
+	QString const new_lfun = shortcut_->lfunLE->text();
+	FuncRequest func = lyxaction.lookupFunc(fromqstr(new_lfun));
+	KeySequence k = shortcut_->shortcutWG->getKeySequence();
+
+	// save_lfun_ contains the text of the lfun to modify, if the user clicked
+	// "modify", or is empty if they clicked "new" (which I do not really like)
+	if (!validateNewShortcut(func, k, save_lfun_))
+		return;
 
 	if (!save_lfun_.isEmpty()) {
 		// real modification of the lfun's shortcut,
