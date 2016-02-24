@@ -1,17 +1,17 @@
 !insertmacro LANGFILE_EXT "Portuguese"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(Instalado para o Utilizador Atual)"
 
 ${LangFileString} TEXT_WELCOME "Este assistente de instalação irá guiá-lo através da instalação do LyX.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Atualizar a base de dados de ficheiros do MiKTeX..."
+${LangFileString} TEXT_CONFIGURE_LYX "Configurando o LyX ($LaTeXInstalled pode descarregar pacotes em falta, isto pode demorar algum tempo) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Compilando os scripts de Python..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
-${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
+${LangFileString} TEXT_FINISH_DESKTOP "Criar um atalho no ambiente de trabalho"
+${LangFileString} TEXT_FINISH_WEBSITE "Visite lyx.org para as últimas notícias, suporte e dicas"
 
 ${LangFileString} FileTypeTitle "Documento LyX"
 
@@ -25,8 +25,8 @@ ${LangFileString} SecInstJabRefDescription "Gestor de referências bibliográficas
 ${LangFileString} SecAllUsersDescription "Instalar o LyX para todos os utilizadores ou apenas para o presente utilizador."
 ${LangFileString} SecFileAssocDescription "Os ficheiros com a extensão .lyx irão abrir automaticamente no LyX."
 ${LangFileString} SecDesktopDescription "Um icone do LyX no ambiente de trabalho."
-${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
-${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
+${LangFileString} SecDictionariesDescription "Dicionários do corretor ortográfico que podem ser descarregados e instalados."
+${LangFileString} SecThesaurusDescription "Dicionários de sinónimos (Thesaurus) que podem ser descarregados e instalados."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuição de LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolher a distribuição de LaTeX que o LyX deverá usar.'
@@ -53,8 +53,8 @@ ${LangFileString} LatexError1 'Não foi encontrada nenhuma distribuição de LaTeX!
 				O LyX não pode ser usado sem uma distribuição de LaTeX como o $\"MiKTeX$\"!$\r$\n\
 				A instalação será por isso abortada.'
 
-${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
-${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+${LangFileString} HunspellFailed 'Falha ao descarregar o dicionário para o idioma $\"$R3$\".'
+${LangFileString} ThesaurusFailed 'Falha ao descarregar o dicionário de sinónimos (thesaurus) para o idioma $\"$R3$\".'
 
 ${LangFileString} JabRefInfo 'Agora lançar-se-á o instalador do programa $\"JabRef$\".$\r$\n\
 				Pode usar todas as opções por defeito no instalador do JabRef.'
@@ -78,15 +78,15 @@ ${LangFileString} RunConfigureFailed "Não foi possível executar o script de conf
 ${LangFileString} NotAdmin "Precisa de privilégios de administrador para instalar o LyX!"
 ${LangFileString} InstallRunning "O instalador já está a correr!"
 ${LangFileString} AlreadyInstalled "O LyX ${APP_SERIES_KEY2} já está instalado!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
-${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
+				Não é recomendado instalar sobre uma instalação já existente se a versão instalada$\r$\n\
+				é uma versão de teste ou se tiver problemas com a instalação atual.$\r$\n\
+				Nestes casos é melhor reinstalar o LyX$\r$\n\
+				Quer continuar na mesma a instalar o LyX sobre a versão existente?"
+${LangFileString} NewerInstalled "Está a tentar instalar uma versão mais antiga do que a que tem instalada.$\r$\n\
+				  Se realmente quer fazer isto deve antes desinstalar o LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-						MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MultipleIndexesNotAvailable "O suporte para usar vários indíces num documento não está disponível porque$\r$\n\
+						o MiKTeX foi instalado com privilégios de administrador mas está a instalar o LyX sem eles."
 
 ${LangFileString} FinishPageMessage "Parabéns! O LyX foi instalado com sucesso.$\r$\n\
 					$\r$\n\
