@@ -30379,7 +30379,7 @@ end{subequations}
 Ejemplo:
 \begin_inset Formula 
 \begin{equation}
-A=C-B\label{eq:a}
+A=C-B
 \end{equation}
 
 \end_inset
@@ -30487,7 +30487,12 @@ begin
 \backslash
 end
 \series default
- se subnumera con a, b, c\SpecialChar ldots
+ se subnumerará con a, b, c\SpecialChar ldots
+ 
+\lang english
+in the output
+\lang spanish
+.
  En ecuaciones multilínea se subnumerará cada línea.
 \end_layout
 
@@ -30693,9 +30698,9 @@ roman{equation}}
 
 \begin_inset Formula 
 \begin{eqnarray}
-A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
+A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
- & = & B^{2}-2BZ+Z^{2}\label{eq:f}
+ & = & B^{2}-2BZ+Z^{2}
 \end{eqnarray}
 
 \end_inset

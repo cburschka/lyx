@@ -2190,7 +2190,7 @@ reference "subsec:自己定義の分数"
 多行分数の説明は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Multiline-Fractions"
+reference "subsec:多行にわたる分数"
 
 \end_inset
 
@@ -22296,14 +22296,7 @@ diagdown
 \begin_inset VSpace medskip
 \end_inset
 
-ここにある以上の記号が、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:他の特殊文字"
 
-\end_inset
-
-節に挙げてあります。
 \end_layout
 
 \begin_layout Standard
@@ -28006,7 +27999,7 @@ name "subsec:多行にわたる分数"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ぶんすう@分数 ! たぎょうにわたる@多行にわたる
@@ -29615,12 +29608,12 @@ begin
 \backslash
 end
 \series default
-コマンドのあいだの数式はすべて、a・b・
-\begin_inset Newline linebreak
-\end_inset
+コマンドのあいだの数式はすべて、a・b・c\SpecialChar ldots
 
-c\SpecialChar ldots
-のように細目番号が振られます。
+\lang english
+in the output
+\lang japanese
+。のように細目番号が振られます。
 \end_layout
 
 \begin_layout Standard
@@ -29826,9 +29819,9 @@ roman{equation}}
 
 \begin_inset Formula 
 \begin{eqnarray}
-A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
+A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
- & = & B^{2}-2BZ+Z^{2}\label{eq:f}
+ & = & B^{2}-2BZ+Z^{2}
 \end{eqnarray}
 
 \end_inset
@@ -35830,13 +35823,6 @@ fi
 
 \begin_layout Subsection
 数式中のテキスト文字
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:数式中のテキスト文字"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 

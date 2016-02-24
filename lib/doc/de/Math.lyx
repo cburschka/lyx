@@ -29998,7 +29998,7 @@ begin
 end
 \series default
  steht, wird mit a, b, c, \SpecialChar ldots
- untergliedert.
+ in der Ausgabe untergliedert.
  Bei mehrzeiligen Formeln wird jede Zeile untergliedert.
 \end_layout
 
@@ -30173,9 +30173,9 @@ roman{equation}}
 
 \begin_inset Formula 
 \begin{eqnarray}
-A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
+A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
  & = & B^{2}-ZB-BZ+Z^{²}\nonumber \\
- & = & B^{2}-2BZ+Z^{2}\label{eq:f}
+ & = & B^{2}-2BZ+Z^{2}
 \end{eqnarray}
 
 \end_inset

@@ -30160,9 +30160,9 @@ begin
 \backslash
 end
 \series default
- is subnumbered as a, b, c, \SpecialChar ldots
- For multiline formulas every line will be subnumber
-ed.
+ will be subnumbered with a, b, c, \SpecialChar ldots
+ in the output.
+ For multiline formulas every line will be subnumbered.
 \end_layout
 
 \begin_layout Standard
@@ -30335,9 +30335,9 @@ roman{equation}}
 
 \begin_inset Formula 
 \begin{eqnarray}
-A & = & (B-Z)^{2}=(B-Z)(B-Z)\label{eq:d}\\
+A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
  & = & B^{2}-ZB-BZ+Z^{2}\nonumber \\
- & = & B^{2}-2BZ+Z^{2}\label{eq:f}
+ & = & B^{2}-2BZ+Z^{2}
 \end{eqnarray}
 
 \end_inset
