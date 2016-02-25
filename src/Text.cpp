@@ -1050,7 +1050,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 
 	pos_type pos = cur.pos();
 	if (!cur.paragraph().isPassThru() && owner_->lyxCode() != IPA_CODE &&
-	    cur.current_font.fontInfo().family() != TYPEWRITER_FAMILY &&
+	    cur.real_current_font.fontInfo().family() != TYPEWRITER_FAMILY &&
 	    c == '-' && pos > 0) {
 		if (par.getChar(pos - 1) == '-') {
 			// convert "--" to endash
