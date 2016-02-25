@@ -30472,11 +30472,7 @@ begin
 end
 \series default
  sera sous-numérotée avec a, b, c, \SpecialChar ldots
- 
-\lang english
-in the output
-\lang french
-.
+ dans la sortie imprimable.
  Pour les formules multi-lignes, chaque ligne sera numérotée.
 \end_layout
 
@@ -30618,19 +30614,6 @@ reference "subsec:Numérotation-avec-des"
 \begin_layout Standard
 Voici un exemple de formule multi-lignes où la numérotation est personnalisée
  et désactivée pour la deuxième ligne:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La fenêtre \SpecialChar LyX
- affiche des références avec des lettres minuscules, la sortie
- imprimable est conforme (numéro d'équation correct, sous-numéros en chiffres
- latins minuscules)
-\end_layout
-
-\end_inset
-
-
 \begin_inset ERT
 status collapsed
 
@@ -30688,6 +30671,22 @@ status collapsed
 
 \backslash
 end{subequations}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La fenêtre \SpecialChar LyX
+ affiche des références avec des lettres minuscules, la sortie
+ imprimable est conforme (numéro d'équation correct, sous-numéros en chiffres
+ latins minuscules).
 \end_layout
 
 \end_inset
