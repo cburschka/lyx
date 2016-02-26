@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-01-25 22:13+0100\n"
-"PO-Revision-Date: 2016-01-25 21:50+0000\n"
+"POT-Creation-Date: 2016-02-26 07:54+0100\n"
+"PO-Revision-Date: 2016-02-26 07:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1179,9 +1179,21 @@ msgstr "Otvor dialóg pre LaTeX-protokol"
 msgid "View Complete &Log..."
 msgstr "Prehliadnuť Kompletný Protoko&l…"
 
+#: src/frontends/qt4/ui/ErrorListUi.ui:93
+msgid "Attempt to show the output even if there were compilation errors"
+msgstr "Pokus ukázať výstup dokonca aj v prípade chýb v kompilácii"
+
 #: src/frontends/qt4/ui/ErrorListUi.ui:97
 msgid "Show Output &Anyway"
 msgstr "Aj tak Výstup &Ukázať"
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:103
+msgid ""
+"Selecting an error will show the error message in the panel below, and jump "
+"the cursor to the location in the document where the error occurred."
+msgstr ""
+"Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
+"kurzor na miesto v dokumente kde sa chyba stala."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -10677,7 +10689,7 @@ msgstr "Typ Telefónu"
 
 #: lib/layouts/moderncv.layout:159
 msgid "can be fixed, mobile or fax"
-msgstr "môže byť pevný, mobilný alebo fax"
+msgstr "môže byť fixed (pevný), mobile (mobilný) alebo fax"
 
 #: lib/layouts/moderncv.layout:128
 msgid "Mobile:"
