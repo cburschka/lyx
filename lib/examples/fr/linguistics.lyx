@@ -6,12 +6,12 @@
 \origin /systemlyxdir/examples/fr/
 \textclass article
 \begin_preamble
-%% Uncomment the following for Tableaux captions on top:
+%% Décommentez pour obtenir les légendes de Tableaux au-dessus :
 %\floatstyle{plaintop}
 %\restylefloat{tableau}
 
-% Backwards compatibility for forest 1.x
-% If you use forest 2.0.1 or later, you can delete this
+% Rétrocompatibilité pourfor forest 1.x
+% Si vous utilisez forest 2.0.1 ou plus, vous pouvez effacer ceci
 \@ifpackageloaded{forest}{%
   \@ifpackagelater{forest}{2016/02/20}{}{%
     \forestset{
@@ -121,7 +121,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Traduction française Jean-Pierre Chrétien, <jeanpierre.chretien@free.fr>,
- novembre 2009, mise à jour décembre 2015
+ novembre 2009, mise à jour février 2016
 \end_layout
 
 \end_inset
@@ -786,20 +786,16 @@ Préambule
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 \begin_inset listings
 lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
 inline false
 status open
 
 \begin_layout Plain Layout
-
 % Éviter les sauts de page dans les gloses de deux lignes
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 AtBeginDocument{%
@@ -807,13 +803,11 @@ AtBeginDocument{%
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewenvironment{linggloss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 def
@@ -825,7 +819,6 @@ glt #1}%
 
 \begin_layout Plain Layout
 
-
 \backslash
 begin{minipage}{.7
 \backslash
@@ -833,7 +826,6 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 gll #2}{
@@ -846,7 +838,6 @@ end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -860,20 +851,16 @@ end{minipage}}
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 \begin_inset listings
 lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
 inline false
 status open
 
 \begin_layout Plain Layout
-
 % Éviter les sauts de page dans les gloses de trois lignes
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 AtBeginDocument{%
@@ -881,13 +868,11 @@ AtBeginDocument{%
 
 \begin_layout Plain Layout
 
-
 \backslash
 renewenvironment{lingglosss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 def
@@ -899,7 +884,6 @@ glt #1}%
 
 \begin_layout Plain Layout
 
-
 \backslash
 begin{minipage}{.7
 \backslash
@@ -907,7 +891,6 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
-
 
 \backslash
 glll #2}{
@@ -920,7 +903,6 @@ end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1004,25 +986,20 @@ Format local
 \end_layout
 
 \begin_layout Quote
-
-\lang english
 \begin_inset listings
 lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
 inline false
 status open
 
 \begin_layout Plain Layout
-
 Fournit covington 1
 \end_layout
 
 \begin_layout Plain Layout
-
 AddToPreamble
 \end_layout
 
 \begin_layout Plain Layout
-
 		
 \backslash
 let
@@ -1033,7 +1010,6 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
-
 		
 \backslash
 let
@@ -1044,7 +1020,6 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
-
 		
 \backslash
 let
@@ -1055,7 +1030,6 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
-
 		
 \backslash
 let
@@ -1066,14 +1040,12 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
-
 		
 \backslash
 usepackage{covington}
 \end_layout
 
 \begin_layout Plain Layout
-
 EndPreamble
 \end_layout
 
@@ -1486,16 +1458,27 @@ Préambule
 :
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 floatstyle{plaintop}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
 
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1503,16 +1486,27 @@ Si vous utilisez une classe KOMA, insérer ce qui suit pour obtenir un meilleur
  espacement:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 floatstyle{komaabove}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
 
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1621,7 +1615,13 @@ grasse
 , insérer:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand
@@ -1629,6 +1629,11 @@ renewcommand
 lingexpr[1]{
 \backslash
 textbf{#1}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1727,14 +1732,10 @@ Aperçu
 \begin_inset Preview
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Structure Tree
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
 [VP [DP[Mary]] [V' [V[sent]] [DP[John]] [DP[D[a]][NP[response]]] ] ]
 \end_layout
 
@@ -1760,46 +1761,44 @@ roof
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
-
-\lang english
-Note that the 
-\begin_inset Quotes eld
+Notez que l'option 
+\begin_inset Quotes fld
 \end_inset
 
 roof
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- option only exists as of 
+ n'existe qu'à partir de la version 2.0 de 
 \family sans
 forest
 \family default
- version 2.0.
- We have added some code to the preamble of this manual to support previous
- versions.
- If you use a 
+.
+ Nous avons ajouté du code au préambule de ce manuel pour pouvoir accepter
+ les versions antérieures.
+ Si vous utilisez une version de 
 \family sans
 forest
 \family default
- version < 2.0, you either need to copy this code to your preamble or use
- the old option 
-\begin_inset Quotes eld
+ inférieure à 2.0, vous devez soit copier le code dans le préambule de votre
+ document, soit utiliser l'ancienne option 
+\begin_inset Quotes fld
 \end_inset
 
 triangle
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- instead of 
-\begin_inset Quotes eld
+ à la place de 
+\begin_inset Quotes fld
 \end_inset
 
 roof
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -2004,15 +2003,11 @@ tipa
 \begin_inset IPA
 
 \begin_layout Standard
-
-\lang english
 [l
 \begin_inset IPADeco bottomtiebar
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 ai
 \end_layout
 
@@ -2094,19 +2089,6 @@ tipa
 \begin_inset IPA
 
 \begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang english
 [@n Ig"zA:mpl]
 \end_layout
 
