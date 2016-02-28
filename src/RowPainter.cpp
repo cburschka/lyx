@@ -104,42 +104,40 @@ FontInfo RowPainter::labelFont() const
 // This draws green lines around each inset.
 
 
-void RowPainter::paintInset(Inset const * inset, Font const & font,
-                            Change const & change,
-                            pos_type const pos)
+void RowPainter::paintInset(Row::Element const & e)
 {
 	// Handle selection
 	bool const pi_selected = pi_.selected;
 	Cursor const & cur = pi_.base.bv->cursor();
 	if (cur.selection() && cur.text() == &text_
 		&& cur.normalAnchor().text() == &text_)
-		pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
+		pi_.selected = row_.sel_beg <= e.pos && row_.sel_end > e.pos;
 
-	LASSERT(inset, return);
+	LASSERT(e.inset, return);
 	// Backup full_repaint status because some insets (InsetTabular)
 	// requires a full repaint
 	bool const pi_full_repaint = pi_.full_repaint;
 	bool const pi_do_spellcheck = pi_.do_spellcheck;
 	Change const pi_change = pi_.change_;
 
-	pi_.base.font = inset->inheritFont() ? font.fontInfo() :
+	pi_.base.font = e.inset->inheritFont() ? e.font.fontInfo() :
 		pi_.base.bv->buffer().params().getFont().fontInfo();
-	pi_.ltr_pos = !font.isVisibleRightToLeft();
-	pi_.change_ = change_.changed() ? change_ : change;
-	pi_.do_spellcheck &= inset->allowSpellCheck();
+	pi_.ltr_pos = !e.font.isVisibleRightToLeft();
+	pi_.change_ = change_.changed() ? change_ : e.change;
+	pi_.do_spellcheck &= e.inset->allowSpellCheck();
 
 	int const x1 = int(x_);
-	pi_.base.bv->coordCache().insets().add(inset, x1, yo_);
+	pi_.base.bv->coordCache().insets().add(e.inset, x1, yo_);
 	// insets are painted completely. Recursive
 	// FIXME: it is wrong to completely paint the background
 	// if we want to do single row painting.
-	inset->drawBackground(pi_, x1, yo_);
-	inset->drawSelection(pi_, x1, yo_);
-	inset->draw(pi_, x1, yo_);
+	e.inset->drawBackground(pi_, x1, yo_);
+	e.inset->drawSelection(pi_, x1, yo_);
+	e.inset->draw(pi_, x1, yo_);
 
-	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(inset);
+	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(e.inset);
 
-	paintForeignMark(x_, font.language(), dim.descent());
+	paintForeignMark(x_, e.font.language(), dim.descent());
 
 	x_ += dim.width();
 
@@ -587,7 +585,7 @@ void RowPainter::paintOnlyInsets()
 				x_ += e.full_width();
 				continue;
 			}
-			paintInset(e.inset, e.font, e.change, e.pos);
+			paintInset(e);
 		} else
 			x_ += e.full_width();
 	}
@@ -615,7 +613,7 @@ void RowPainter::paintText()
 		case Row::INSET: {
 			// If outer row has changed, nested insets are repaint completely.
 			pi_.base.bv->coordCache().insets().add(e.inset, int(x_), yo_);
-			paintInset(e.inset, e.font, e.change, e.pos);
+			paintInset(e);
 			foreign_descent = e.dim.descent();
 		}
 			break;
