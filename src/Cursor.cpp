@@ -73,25 +73,25 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 	DocIterator result;
 
 	DocIterator it = c;
-	it.top().pos() = 0;
+	it.pos() = 0;
 	DocIterator et = c;
-	et.top().pos() = et.top().asInsetMath()->cell(et.top().idx()).size();
+	et.pos() = et.lastpos();
 	for (size_t i = 0;; ++i) {
 		int xo;
 		int yo;
 		Inset const * inset = &it.inset();
-		CoordCache const & cache = c.bv().coordCache();
+		CoordCache::Insets const & insetCache = c.bv().coordCache().getInsets();
 
 		// FIXME: in the case where the inset is not in the cache, this
 		// means that no part of it is visible on screen. In this case
 		// we don't do elaborate search and we just return the forwarded
 		// DocIterator at its beginning.
-		if (!cache.getInsets().has(inset)) {
+		if (!insetCache.has(inset)) {
 			it.top().pos() = 0;
 			return it;
 		}
 
-		Point const o = cache.getInsets().xy(inset);
+		Point const o = insetCache.xy(inset);
 		inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 		// Convert to absolute
 		xo += o.x_;
