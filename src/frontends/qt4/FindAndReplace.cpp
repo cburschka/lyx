@@ -12,23 +12,23 @@
 
 #include "FindAndReplace.h"
 
-#include "Lexer.h"
 #include "GuiApplication.h"
 #include "GuiView.h"
 #include "GuiWorkArea.h"
 #include "qt_helpers.h"
-#include "Language.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferList.h"
+#include "BufferParams.h"
 #include "BufferView.h"
-#include "Text.h"
-#include "TextClass.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "Language.h"
+#include "Lexer.h"
 #include "LyX.h"
 #include "lyxfind.h"
+#include "Text.h"
+#include "TextClass.h"
 
 #include "frontends/alert.h"
 
