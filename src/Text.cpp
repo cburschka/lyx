@@ -1455,7 +1455,7 @@ void Text::deleteWordForward(Cursor & cur)
 		cursorForward(cur);
 	else {
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cursorForwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
@@ -1471,7 +1471,7 @@ void Text::deleteWordBackward(Cursor & cur)
 		cursorBackward(cur);
 	else {
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cursorBackwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);

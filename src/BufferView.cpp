@@ -1587,7 +1587,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_MARK_TOGGLE:
-		cur.setSelection(false);
+		cur.selection(false);
 		if (cur.mark()) {
 			cur.setMark(false);
 			dr.setMessage(from_utf8(N_("Mark removed")));
@@ -1786,7 +1786,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// Select the inset from outside.
 			cur.pop();
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.posForward();
 		} else if (cells_selected) {
 			// At least one complete cell is selected and inset is a table.
@@ -1794,7 +1794,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.idx() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
@@ -1802,7 +1802,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.pit() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 		}
@@ -2187,7 +2187,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	Cursor old = cursor();
 	Cursor cur(*this);
 	cur.push(buffer_.inset());
-	cur.setSelection(d->cursor_.selection());
+	cur.selection(d->cursor_.selection());
 
 	// Either the inset under the cursor or the
 	// surrounding Text will handle this event.
@@ -2374,7 +2374,7 @@ void BufferView::setCursorFromRow(int row, TexRow const & texrow)
 	}
 	d->cursor_.reset();
 	buffer_.text().setCursor(d->cursor_, newpit, newpos);
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.resetAnchor();
 	recenter();
 }
@@ -2460,7 +2460,7 @@ void BufferView::setCursor(DocIterator const & dit)
 		dit[i].inset().edit(d->cursor_, true);
 
 	d->cursor_.setCursor(dit);
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.setCurrentFont();
 	// FIXME
 	// It seems on general grounds as if this is probably needed, but
@@ -2589,7 +2589,7 @@ bool BufferView::selectIfEmpty(DocIterator & cur)
 	d->cursor_.setCursor(cur);
 	d->cursor_.pit() = beg_pit;
 	d->cursor_.pos() = 0;
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.resetAnchor();
 	d->cursor_.pit() = end_pit;
 	d->cursor_.pos() = end_pos;

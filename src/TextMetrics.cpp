@@ -1622,7 +1622,7 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 		text_->cursorForward(cur);
 	} else {
 		cur.resetAnchor();
-		cur.setSelection(true); // to avoid deletion
+		cur.selection(true); // to avoid deletion
 		cursorEnd(cur);
 		cur.setSelection();
 		// What is this test for ??? (JMarc)

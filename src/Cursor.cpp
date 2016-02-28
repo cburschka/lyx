@@ -997,18 +997,18 @@ DocIterator Cursor::selectionEnd() const
 
 void Cursor::setSelection()
 {
-	setSelection(true);
+	selection(true);
 	if (idx() == normalAnchor().idx() &&
 	    pit() == normalAnchor().pit() &&
 	    pos() == normalAnchor().pos())
-		setSelection(false);
+		selection(false);
 }
 
 
 void Cursor::setSelection(DocIterator const & where, int n)
 {
 	setCursor(where);
-	setSelection(true);
+	selection(true);
 	anchor_ = where;
 	pos() += n;
 }
@@ -1016,7 +1016,7 @@ void Cursor::setSelection(DocIterator const & where, int n)
 
 void Cursor::clearSelection()
 {
-	setSelection(false);
+	selection(false);
 	setWordSelection(false);
 	setMark(false);
 	resetAnchor();
@@ -1079,7 +1079,7 @@ bool Cursor::selHandle(bool sel)
 		cap::saveSelection(*this);
 
 	resetAnchor();
-	setSelection(sel);
+	selection(sel);
 	return true;
 }
 } // namespace lyx
@@ -1319,7 +1319,7 @@ bool Cursor::backspace()
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
 		resetAnchor();
-		setSelection(true);
+		selection(true);
 		--pos();
 	} else {
 		--pos();
@@ -1366,7 +1366,7 @@ bool Cursor::erase()
 	// 'clever' UI hack: only erase large items if previously slected
 	if (pos() != lastpos() && nextAtom()->nargs() > 0) {
 		resetAnchor();
-		setSelection(true);
+		selection(true);
 		++pos();
 	} else {
 		plainErase();
