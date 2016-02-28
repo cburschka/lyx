@@ -1325,7 +1325,7 @@ void selClearOrDel(Cursor & cur)
 	if (lyxrc.auto_region_delete)
 		selDel(cur);
 	else
-		cur.setSelection(false);
+		cur.selection(false);
 }
 
 

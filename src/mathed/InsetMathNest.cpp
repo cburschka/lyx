@@ -740,7 +740,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_SELECT:
 		cur.pos() = 0;
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cur.pos() = cur.lastpos();
 		cur.bv().cursor() = cur;
 		break;
@@ -749,7 +749,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.idx() = 0;
 		cur.pos() = 0;
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cur.idx() = cur.lastidx();
 		cur.pos() = cur.lastpos();
 		cur.bv().cursor() = cur;
@@ -1621,7 +1621,7 @@ void InsetMathNest::lfunMouseRelease(Cursor & cur, FuncRequest & cmd)
 			cur.noScreenUpdate();
 		else {
 			Cursor & bvcur = cur.bv().cursor();
-			bvcur.setSelection(true);
+			bvcur.selection(true);
 		}
 		return;
 	}
@@ -1762,7 +1762,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 
 	// just clear selection on pressing the space bar
 	if (cur.selection() && c == ' ') {
-		cur.setSelection(false);
+		cur.selection(false);
 		return true;
 	}
 

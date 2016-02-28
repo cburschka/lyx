@@ -178,7 +178,7 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd)
 			LASSERT(cur.inMathed(), return);
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.pos() = cur.lastpos();
 			if (cmd.action() != LFUN_MATH_MODE)
 				// LFUN_MATH_MODE has a different meaning in math mode
@@ -1678,7 +1678,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// We continue with our existing selection or start a new one, so don't
 		// reset the anchor.
 		bvcur.setCursor(cur);
-		bvcur.setSelection(true);
+		bvcur.selection(true);
 		if (cur.top() == old) {
 			// We didn't move one iota, so no need to update the screen.
 			cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
@@ -2060,7 +2060,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.push(*inset);
 			cur.top().pos() = cur.top().lastpos();
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.top().pos() = 0;
 		}
 		break;
@@ -2436,7 +2436,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_ESCAPE:
 		if (cur.selection()) {
-			cur.setSelection(false);
+			cur.selection(false);
 		} else {
 			cur.undispatched();
 			// This used to be LFUN_FINISHED_RIGHT, I think FORWARD is more
