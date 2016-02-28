@@ -35,7 +35,7 @@ class TextMetrics
 {
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics() : bv_(0), text_(0), main_text_(false), max_width_(0) {}
+	TextMetrics() : bv_(0), text_(0), max_width_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
@@ -243,7 +243,6 @@ private:
 	/// \todo FIXME: this should be const.
 	Text * text_;
 
-	bool main_text_;
 	/// A map from paragraph index number to paragraph metrics
 	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
 	///

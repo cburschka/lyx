@@ -200,13 +200,13 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 
 int TextMetrics::rightMargin(ParagraphMetrics const & pm) const
 {
-	return main_text_? pm.rightMargin(*bv_) : 0;
+	return text_->isMainText() ? pm.rightMargin(*bv_) : 0;
 }
 
 
 int TextMetrics::rightMargin(pit_type const pit) const
 {
-	return main_text_? par_metrics_[pit].rightMargin(*bv_) : 0;
+	return text_->isMainText() ? par_metrics_[pit].rightMargin(*bv_) : 0;
 }
 
 
@@ -353,7 +353,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pm.reset(par);
 
 	Buffer & buffer = bv_->buffer();
-	main_text_ = (text_ == &buffer.text());
 	bool changed = false;
 
 	// Check whether there are InsetBibItems that need fixing
@@ -1087,7 +1086,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 	// following code in another method specially tailored for the
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
-	if (main_text_ && topBottomSpace) {
+	if (text_->isMainText() && topBottomSpace) {
 		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&
