@@ -951,15 +951,15 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 
 	FontInfo labelfont = text_->labelFont(par);
 
-	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
-	FontMetrics const & fontmetrics = theFontMetrics(font);
+	FontMetrics const & lfm = theFontMetrics(labelfont);
+	FontMetrics const & fm = theFontMetrics(font);
 
 	// these are minimum values
 	double const spacing_val = layout.spacing.getValue()
 		* text_->spacing(par);
 	//lyxerr << "spacing_val = " << spacing_val << endl;
-	int maxasc  = int(fontmetrics.maxAscent()  * spacing_val);
-	int maxdesc = int(fontmetrics.maxDescent() * spacing_val);
+	int maxasc  = int(fm.maxAscent()  * spacing_val);
+	int maxdesc = int(fm.maxDescent() * spacing_val);
 
 	// insets may be taller
 	CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
@@ -1018,7 +1018,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
 		    && !par.labelString().empty()) {
 			labeladdon = int(
-				  labelfont_metrics.maxHeight()
+				  lfm.maxHeight()
 					* layout.spacing.getValue()
 					* text_->spacing(par)
 				+ (layout.topsep + layout.labelbottomsep) * dh);
@@ -1669,6 +1669,7 @@ int TextMetrics::leftMargin(int max_width,
 	//lyxerr << "TextMetrics::leftMargin: pit: " << pit << " pos: " << pos << endl;
 	DocumentClass const & tclass = buffer.params().documentClass();
 	Layout const & layout = par.layout();
+	FontMetrics const & bfm = theFontMetrics(buffer.params().getFont());
 
 	docstring parindent = layout.parindent;
 
@@ -1677,8 +1678,7 @@ int TextMetrics::leftMargin(int max_width,
 	if (text_->isMainText())
 		l_margin += bv_->leftMargin();
 
-	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
-		tclass.leftmargin());
+	l_margin += bfm.signedWidth(tclass.leftmargin());
 
 	int depth = par.getDepth();
 	if (depth != 0) {
@@ -1696,8 +1696,7 @@ int TextMetrics::leftMargin(int max_width,
 				    buffer.params().paragraph_separation ==
 				    BufferParams::ParagraphIndentSeparation) {
 					docstring pi = pars[newpar].layout().parindent;
-					l_margin -= theFontMetrics(
-						buffer.params().getFont()).signedWidth(pi);
+					l_margin -= bfm.signedWidth(pi);
 				}
 			}
 			if (tclass.isDefaultLayout(par.layout())
@@ -1726,37 +1725,36 @@ int TextMetrics::leftMargin(int max_width,
 	}
 
 	FontInfo const labelfont = text_->labelFont(par);
-	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
+	FontMetrics const & lfm = theFontMetrics(labelfont);
 
 	switch (layout.margintype) {
 	case MARGIN_DYNAMIC:
 		if (!layout.leftmargin.empty()) {
-			l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
-				layout.leftmargin);
+			l_margin += bfm.signedWidth(layout.leftmargin);
 		}
 		if (!par.labelString().empty()) {
-			l_margin += labelfont_metrics.signedWidth(layout.labelindent);
-			l_margin += labelfont_metrics.width(par.labelString());
-			l_margin += labelfont_metrics.width(layout.labelsep);
+			l_margin += lfm.signedWidth(layout.labelindent);
+			l_margin += lfm.width(par.labelString());
+			l_margin += lfm.width(layout.labelsep);
 		}
 		break;
 
 	case MARGIN_MANUAL: {
-		l_margin += labelfont_metrics.signedWidth(layout.labelindent);
+		l_margin += lfm.signedWidth(layout.labelindent);
 		// The width of an empty par, even with manual label, should be 0
 		if (!par.empty() && pos >= par.beginOfBody()) {
 			if (!par.getLabelWidthString().empty()) {
 				docstring labstr = par.getLabelWidthString();
-				l_margin += labelfont_metrics.width(labstr);
-				l_margin += labelfont_metrics.width(layout.labelsep);
+				l_margin += lfm.width(labstr);
+				l_margin += lfm.width(layout.labelsep);
 			}
 		}
 		break;
 	}
 
 	case MARGIN_STATIC: {
-		l_margin += theFontMetrics(buffer.params().getFont()).
-			signedWidth(layout.leftmargin) * 4	/ (par.getDepth() + 4);
+		l_margin += bfm.signedWidth(layout.leftmargin) * 4
+		             / (par.getDepth() + 4);
 		break;
 	}
 
@@ -1764,20 +1762,20 @@ int TextMetrics::leftMargin(int max_width,
 		if (layout.labeltype == LABEL_MANUAL) {
 			// if we are at position 0, we are never in the body
 			if (pos > 0 && pos >= par.beginOfBody())
-				l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
+				l_margin += lfm.signedWidth(layout.leftmargin);
 			else
-				l_margin += labelfont_metrics.signedWidth(layout.labelindent);
+				l_margin += lfm.signedWidth(layout.labelindent);
 		} else if (pos != 0
 			   // Special case to fix problems with
 			   // theorems (JMarc)
 			   || (layout.labeltype == LABEL_STATIC
 			       && layout.latextype == LATEX_ENVIRONMENT
 			       && !text_->isFirstInSequence(pit))) {
-			l_margin += labelfont_metrics.signedWidth(layout.leftmargin);
+			l_margin += lfm.signedWidth(layout.leftmargin);
 		} else if (!layout.labelIsAbove()) {
-			l_margin += labelfont_metrics.signedWidth(layout.labelindent);
-			l_margin += labelfont_metrics.width(layout.labelsep);
-			l_margin += labelfont_metrics.width(par.labelString());
+			l_margin += lfm.signedWidth(layout.labelindent);
+			l_margin += lfm.width(layout.labelsep);
+			l_margin += lfm.width(par.labelString());
 		}
 		break;
 
@@ -1794,7 +1792,7 @@ int TextMetrics::leftMargin(int max_width,
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-		l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(layout.leftmargin);
+		l_margin += bfm.signedWidth(layout.leftmargin);
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
@@ -1804,7 +1802,7 @@ int TextMetrics::leftMargin(int max_width,
 	}
 
 	if (!par.params().leftIndent().zero())
-		l_margin += par.params().leftIndent().inPixels(max_width, labelfont_metrics.em());
+		l_margin += par.params().leftIndent().inPixels(max_width, lfm.em());
 
 	LyXAlignment align;
 
@@ -1838,8 +1836,7 @@ int TextMetrics::leftMargin(int max_width,
 			// the indentation set in the document
 			// settings
 			if (buffer.params().getIndentation().asLyXCommand() == "default")
-				l_margin += theFontMetrics(
-					buffer.params().getFont()).signedWidth(parindent);
+				l_margin += bfm.signedWidth(parindent);
 			else
 				l_margin += buffer.params().getIndentation().inPixels(*bv_);
 		}
