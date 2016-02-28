@@ -66,7 +66,7 @@ namespace {
 
 // Find position closest to (x, y) in cell given by iter.
 // Used only in mathed
-DocIterator bruteFind2(Cursor const & c, int x, int y)
+DocIterator bruteFind(Cursor const & c, int x, int y)
 {
 	double best_dist = numeric_limits<double>::max();
 
@@ -113,126 +113,6 @@ DocIterator bruteFind2(Cursor const & c, int x, int y)
 }
 
 
-/*
-/// moves position closest to (x, y) in given box
-bool bruteFind(Cursor & cursor,
-	int x, int y, int xlow, int xhigh, int ylow, int yhigh)
-{
-	LASSERT(!cursor.empty(), return false);
-	Inset & inset = cursor[0].inset();
-	BufferView & bv = cursor.bv();
-
-	CoordCache::InnerParPosCache const & cache =
-		bv.coordCache().getParPos().find(cursor.bottom().text())->second;
-	// Get an iterator on the first paragraph in the cache
-	DocIterator it(inset);
-	it.push_back(CursorSlice(inset));
-	it.pit() = cache.begin()->first;
-	// Get an iterator after the last paragraph in the cache
-	DocIterator et(inset);
-	et.push_back(CursorSlice(inset));
-	et.pit() = prev(cache.end(), 1)->first;
-	if (et.pit() >= et.lastpit())
-		et = doc_iterator_end(inset);
-	else
-		++et.pit();
-
-	double best_dist = numeric_limits<double>::max();
-	DocIterator best_cursor = et;
-
-	for ( ; it != et; it.forwardPos(true)) {
-		// avoid invalid nesting when selecting
-		if (!cursor.selection() || positionable(it, cursor.anchor_)) {
-			Point p = bv.getPos(it, false);
-			int xo = p.x_;
-			int yo = p.y_;
-			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-				double const dx = xo - x;
-				double const dy = yo - y;
-				double const d = dx * dx + dy * dy;
-				// '<=' in order to take the last possible position
-				// this is important for clicking behind \sum in e.g. '\sum_i a'
-				if (d <= best_dist) {
-					//	lyxerr << "*" << endl;
-					best_dist   = d;
-					best_cursor = it;
-				}
-			}
-		}
-	}
-
-	if (best_cursor != et) {
-		cursor.setCursor(best_cursor);
-		return true;
-	}
-
-	return false;
-}
-*/
-
-/*
-/// moves position closest to (x, y) in given box
-bool bruteFind3(Cursor & cur, int x, int y, bool up)
-{
-	BufferView & bv = cur.bv();
-	int ylow  = up ? 0 : y + 1;
-	int yhigh = up ? y - 1 : bv.workHeight();
-	int xlow = 0;
-	int xhigh = bv.workWidth();
-
-// FIXME: bit more work needed to get 'from' and 'to' right.
-	pit_type from = cur.bottom().pit();
-	//pit_type to = cur.bottom().pit();
-	//lyxerr << "Pit start: " << from << endl;
-
-	//lyxerr << "bruteFind3: x: " << x << " y: " << y
-	//	<< " xlow: " << xlow << " xhigh: " << xhigh
-	//	<< " ylow: " << ylow << " yhigh: " << yhigh
-	//	<< endl;
-	DocIterator it = doc_iterator_begin(cur.buffer());
-	it.pit() = from;
-	DocIterator et = doc_iterator_end(cur.buffer());
-
-	double best_dist = numeric_limits<double>::max();
-	DocIterator best_cursor = et;
-
-	for ( ; it != et; it.forwardPos()) {
-		// avoid invalid nesting when selecting
-		if (bv.cursorStatus(it) == CUR_INSIDE
-		    && (!cur.selection() || positionable(it, cur.realAnchor()))) {
-			// If this function is ever used again, check
-			// whether this is the same as "bv.getPos(it,
-			// false)" with boundary = false.
-			Point p = bv.getPos(it);
-			int xo = p.x_;
-			int yo = p.y_;
-			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-				double const dx = xo - x;
-				double const dy = yo - y;
-				double const d = dx * dx + dy * dy;
-				//lyxerr << "itx: " << xo << " ity: " << yo << " d: " << d
-				//	<< " dx: " << dx << " dy: " << dy
-				//	<< " idx: " << it.idx() << " pos: " << it.pos()
-				//	<< " it:\n" << it
-				//	<< endl;
-				// '<=' in order to take the last possible position
-				// this is important for clicking behind \sum in e.g. '\sum_i a'
-				if (d <= best_dist) {
-					//lyxerr << "*" << endl;
-					best_dist   = d;
-					best_cursor = it;
-				}
-			}
-		}
-	}
-
-	//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
-	if (best_cursor == et)
-		return false;
-	cur.setCursor(best_cursor);
-	return true;
-}
-*/
 } // namespace anon
 
 
@@ -1794,7 +1674,7 @@ bool Cursor::upDownInMath(bool up)
 		//lyxerr << "idxUpDown triggered" << endl;
 		// try to find best position within this inset
 		if (!selection())
-			setCursor(bruteFind2(*this, xo, yo));
+			setCursor(bruteFind(*this, xo, yo));
 		return true;
 	}
 
