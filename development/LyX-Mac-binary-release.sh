@@ -70,7 +70,9 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
 	QtConfigureOptions="${QtConfigureOptions} -skip qtconnectivity -skip qtscript"
-	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols -skip qtdeclarative"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols"
+	QtConfigureOptions="${QtConfigureOptions} -skip qttools"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtdeclarative"
 	QtMajorVersion=qt5
 	;;
 5.*)
@@ -266,6 +268,10 @@ while [ $# -gt 0 ]; do
 		hunspell_deployment="no"
 		shift
 		;;
+	--only-qt*=*)
+		QtOnlyPackage=$(echo ${1}|cut -d= -f2)
+		shift
+		;;
 	--only-package=*)
 		LyxOnlyPackage=$(echo ${1}|cut -d= -f2)
 		shift
@@ -388,7 +394,7 @@ case $SDKs in
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 
-if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${QtBuildDir}" -a -d "${QtInstallDir}" \) ]; then
+build_qt() {
 	echo Build Qt library ${QtSourceDir}
 	if [ "${QtInstallDir}" = "${QtBuildDir}" ]; then
 		echo Bad install directory for Qt.
@@ -402,17 +408,29 @@ if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${
 		"${QtSourceDir}"/configure ${QtConfigureOptions} ${QTARCHS} -prefix "${QtInstallDir}"
 		make -j1 && make -j1 install
 	)
-fi
-if [ -d "${QtInstallDir}" -a ! -f "${QtInstallDir}"/include/QtCore ]; then
-	cd "${QtInstallDir}" && (
-		mkdir -p include
-		cd include
-		for libnm in ${QtLibraries} ; do
-			test -d ${libnm} -o -L ${libnm} || \
-			( ln -s ../lib/${libnm}.framework/Headers ${libnm} && echo Link to framework ${libnm} )
-		done
-	)
-fi
+	if [ -d "${QtInstallDir}" -a ! -f "${QtInstallDir}"/include/QtCore ]; then
+		cd "${QtInstallDir}" && (
+			mkdir -p include
+			cd include
+			for libnm in ${QtLibraries} ; do
+				test -d ${libnm} -o -L ${libnm} || \
+				( ln -s ../lib/${libnm}.framework/Headers ${libnm} && echo Link to framework ${libnm} )
+			done
+		)
+	fi
+}
+
+case ${QtOnlyPackage:-"no"} in
+y*)
+	build_qt
+	exit 0
+	;;
+*)
+	if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${QtBuildDir}" -a -d "${QtInstallDir}" \) ]; then
+		build_qt
+	fi
+	;;
+esac
 
 if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
 	# we have a private libmagic (file(1)) source tree at hand...
