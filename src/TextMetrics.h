@@ -105,9 +105,6 @@ public:
 	int height() const { return dim_.height(); }
 
 	///
-	int maxWidth() const { return max_width_; }
-
-	///
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
 
