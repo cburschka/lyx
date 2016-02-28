@@ -290,7 +290,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_DISSOLVE: {
-		bool const main_inset = &buffer().inset() == this;
+		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
 		// cur.inset() is the tabular when this is a single cell (bug #9954)
@@ -323,7 +323,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE: {
-		bool const main_inset = &buffer().inset() == this;
+		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
 		// cur.inset() is the tabular when this is a single cell (bug #9954)
@@ -340,7 +340,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
-		if (&buffer().inset() == this || !cur.paragraph().layout().args().empty())
+		if (text_.isMainText() || !cur.paragraph().layout().args().empty())
 			return text_.getStatus(cur, cmd, status);
 
 		Layout::LaTeXArgMap args = getLayout().args();
