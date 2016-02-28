@@ -239,7 +239,7 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 CursorData::CursorData()
 	: DocIterator(), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
@@ -247,7 +247,7 @@ CursorData::CursorData()
 CursorData::CursorData(Buffer * buffer)
 	: DocIterator(buffer), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
@@ -255,7 +255,7 @@ CursorData::CursorData(Buffer * buffer)
 CursorData::CursorData(DocIterator const & dit)
 	: DocIterator(dit), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
