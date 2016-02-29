@@ -119,6 +119,8 @@ public:
 	Text * text() const { return inset_->getText(idx_); }
 	/// paragraph in this cell
 	Paragraph & paragraph() const;
+	///
+	void setPitPos(pit_type pit, pos_type pos);
 
 	///
 	/// mathed specific stuff

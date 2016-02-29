@@ -1601,7 +1601,7 @@ bool Text::erase(Cursor & cur)
 	if (needsUpdate) {
 		// Make sure the cursor is correct. Is this really needed?
 		// No, not really... at least not here!
-		cur.text()->setCursor(cur.top(), cur.pit(), cur.pos());
+		cur.top().setPitPos(cur.pit(), cur.pos());
 		cur.checkBufferStructure();
 	}
 
@@ -1708,7 +1708,7 @@ bool Text::backspace(Cursor & cur)
 
 	// A singlePar update is not enough in this case.
 //		cur.screenUpdateFlags(Update::Force);
-	setCursor(cur.top(), cur.pit(), cur.pos());
+	cur.top().setPitPos(cur.pit(), cur.pos());
 
 	return needsUpdate;
 }

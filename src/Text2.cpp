@@ -558,36 +558,12 @@ bool Text::setCursor(Cursor & cur, pit_type pit, pos_type pos,
 }
 
 
-void Text::setCursor(CursorSlice & cur, pit_type pit, pos_type pos)
-{
-	LASSERT(pit != int(paragraphs().size()), return);
-	cur.pit() = pit;
-	cur.pos() = pos;
-
-	// now some strict checking
-	Paragraph const & par = getPar(pit);
-
-	// None of these should happen, but we're scaredy-cats
-	if (pos < 0) {
-		LYXERR0("Don't like -1!");
-		LATTEST(false);
-	}
-
-	if (pos > par.size()) {
-		LYXERR0("Don't like 1, pos: " << pos
-		       << " size: " << par.size()
-		       << " par: " << pit);
-		LATTEST(false);
-	}
-}
-
-
 void Text::setCursorIntern(Cursor & cur, pit_type pit, pos_type pos,
                            bool setfont, bool boundary)
 {
 	LBUFERR(this == cur.text());
 	cur.boundary(boundary);
-	setCursor(cur.top(), pit, pos);
+	cur.top().setPitPos(pit, pos);
 	if (setfont)
 		cur.setCurrentFont();
 }
