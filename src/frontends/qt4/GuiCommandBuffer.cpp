@@ -225,7 +225,6 @@ void GuiCommandBuffer::itemSelected(QListWidgetItem * item)
 
 void GuiCommandBuffer::up()
 {
-	string const input = fromqstr(edit_->text());
 	string const h = historyUp();
 
 	if (!h.empty())
@@ -238,7 +237,6 @@ void GuiCommandBuffer::up()
 
 void GuiCommandBuffer::down()
 {
-	string const input = fromqstr(edit_->text());
 	string const h = historyDown();
 
 	if (!h.empty())
