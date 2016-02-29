@@ -1113,14 +1113,8 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	int const xo = origin_.x_;
 	x -= xo;
 
-	int offset = 0;
-	CursorSlice rowSlice(const_cast<InsetText &>(text_->inset()));
-	rowSlice.pit() = row.pit();
-	rowSlice.pos() = row.pos();
-
 	// Adapt to cursor row scroll offset if applicable.
-	if (bv_->currentRowSlice() == rowSlice)
-		offset = bv_->horizScrollOffset();
+	int const offset = bv_->horizScrollOffset(text_, row.pit(), row.pos());
 	x += offset;
 
 	pos_type pos = row.pos();
@@ -1908,25 +1902,17 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 	for (size_t i = 0; i != nrows; ++i) {
 
 		Row const & row = pm.rows()[i];
-		int row_x = x;
+		// Adapt to cursor row scroll offset if applicable.
+		int row_x = x - bv_->horizScrollOffset(text_, pit, row.pos());
 		if (i)
 			y += row.ascent();
 
-		CursorSlice rowSlice(const_cast<InsetText &>(text_->inset()));
-		rowSlice.pit() = pit;
-		rowSlice.pos() = row.pos();
+		RowPainter rp(pi, *text_, pit, row, row_x, y);
 
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-
-		// Adapt to cursor row scroll offset if applicable.
-		if (bv_->currentRowSlice() == rowSlice)
-			row_x -= bv_->horizScrollOffset();
-
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
-
-		RowPainter rp(pi, *text_, pit, row, row_x, y);
 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
@@ -1946,7 +1932,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (pi.pain.isDrawingEnabled())
 			row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed()
-			|| rowSlice == bv_->lastRowSlice();
+			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {

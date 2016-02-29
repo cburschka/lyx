@@ -125,12 +125,15 @@ public:
 	// Returns the amount of horizontal scrolling applied to the
 	// top-level row where the cursor lies
 	int horizScrollOffset() const;
+	// Returns the amount of horizontal scrolling applied to the
+	// row of text starting at (pit, pos)
+	int horizScrollOffset(Text const * text,
+	                      pit_type pit, pos_type pos) const;
 
-	// Points to the top-level row where the cursor lies (during draw).
-	CursorSlice const & currentRowSlice() const;
-
-	// Points to the top-level row where the cursor lied at last draw event.
-	CursorSlice const & lastRowSlice() const;
+	// Returns true if the row of text starting at (pit, pos) was scrolled
+	// at the last draw event.
+	bool hadHorizScrollOffset(Text const * text,
+                              pit_type pit, pos_type pos) const;
 
 	/// reset the scrollbar to reflect current view position.
 	void updateScrollbar();

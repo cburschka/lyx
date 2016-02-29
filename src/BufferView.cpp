@@ -2914,15 +2914,26 @@ int BufferView::horizScrollOffset() const
 }
 
 
-CursorSlice const & BufferView::currentRowSlice() const
+int BufferView::horizScrollOffset(Text const * text,
+                                  pit_type pit, pos_type pos) const
 {
-	return d->current_row_slice_;
+	// Is this a row that is currently scrolled?
+	if (!d->current_row_slice_.empty()
+	    && &text->inset() == d->current_row_slice_.inset().asInsetText()
+	    && pit ==  d->current_row_slice_.pit()
+	    && pos ==  d->current_row_slice_.pos())
+		return d->horiz_scroll_offset_;
+	return 0;
 }
 
 
-CursorSlice const & BufferView::lastRowSlice() const
+bool BufferView::hadHorizScrollOffset(Text const * text,
+                                      pit_type pit, pos_type pos) const
 {
-	return d->last_row_slice_;
+	return !d->last_row_slice_.empty()
+	       && &text->inset() == d->last_row_slice_.inset().asInsetText()
+	       && pit ==  d->last_row_slice_.pit()
+	       && pos ==  d->last_row_slice_.pos();
 }
 
 
