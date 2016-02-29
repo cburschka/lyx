@@ -182,12 +182,12 @@ public:
 	void rejectChanges();
 
 	/// returns true if par was empty and was removed
-	bool setCursor(Cursor & cur, pit_type par, pos_type pos,
+	bool setCursor(Cursor & cur, pit_type pit, pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
-	void setCursor(CursorSlice &, pit_type par, pos_type pos);
+	void setCursor(CursorSlice &, pit_type pit, pos_type pos);
 	///
-	void setCursorIntern(Cursor & cur, pit_type par,
+	void setCursorIntern(Cursor & cur, pit_type pit,
 		 pos_type pos, bool setfont = true, bool boundary = false);
 
 	/// Move cursor one position backwards
@@ -322,20 +322,20 @@ public:
 	docstring completionPrefix(Cursor const & cur) const;
 	/// find a paragraph before \p par with the given \p depth, if such
 	/// a paragraph cannot be found, \p par is returned
-	pit_type depthHook(pit_type par, depth_type depth) const;
+	pit_type depthHook(pit_type pit, depth_type depth) const;
 	/// find a paragraph before \p par with depth less than the
 	/// depth of \p par. If such paragraph cannot be found because
 	/// \p par already has depth 0, lastpar + 1 is returned. If
 	/// such paragraph cannot be found because there isn't a par
 	/// with less depth before this one, \p par is returned.
-	pit_type outerHook(pit_type par) const;
+	pit_type outerHook(pit_type pit) const;
 	/// Is it the first par with same depth and layout?
-	bool isFirstInSequence(pit_type par) const;
+	bool isFirstInSequence(pit_type pit) const;
 	/// Is this paragraph in the table of contents?
-	int getTocLevel(pit_type par) const;
+	int getTocLevel(pit_type pit) const;
 	/// Get the font of the "environment" of paragraph \p par_offset in \p pars.
 	/// All font changes of the paragraph are relative to this font.
-	Font const outerFont(pit_type par_offset) const;
+	Font const outerFont(pit_type pit_offset) const;
 
 private:
 	/// The InsetText owner shall have access to everything.
@@ -383,7 +383,7 @@ private:
 ///
 void breakParagraphConservative(BufferParams const & bparams,
 				ParagraphList & paragraphs,
-				pit_type par,
+				pit_type pit,
 				pos_type pos);
 
 /**
@@ -391,7 +391,7 @@ void breakParagraphConservative(BufferParams const & bparams,
  * Be careful, this doesent make any check at all.
  */
 void mergeParagraph(BufferParams const & bparams,
-	ParagraphList & paragraphs, pit_type par);
+	ParagraphList & paragraphs, pit_type pit);
 
 /// accept the changes within the complete ParagraphList
 void acceptChanges(ParagraphList & pars, BufferParams const & bparams);

@@ -547,25 +547,25 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 }
 
 
-bool Text::setCursor(Cursor & cur, pit_type par, pos_type pos,
+bool Text::setCursor(Cursor & cur, pit_type pit, pos_type pos,
 			bool setfont, bool boundary)
 {
 	TextMetrics const & tm = cur.bv().textMetrics(this);
-	bool const update_needed = !tm.contains(par);
+	bool const update_needed = !tm.contains(pit);
 	Cursor old = cur;
-	setCursorIntern(cur, par, pos, setfont, boundary);
+	setCursorIntern(cur, pit, pos, setfont, boundary);
 	return cur.bv().checkDepm(cur, old) || update_needed;
 }
 
 
-void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
+void Text::setCursor(CursorSlice & cur, pit_type pit, pos_type pos)
 {
-	LASSERT(par != int(paragraphs().size()), return);
-	cur.pit() = par;
+	LASSERT(pit != int(paragraphs().size()), return);
+	cur.pit() = pit;
 	cur.pos() = pos;
 
 	// now some strict checking
-	Paragraph & para = getPar(par);
+	Paragraph const & par = getPar(pit);
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos < 0) {
@@ -573,21 +573,21 @@ void Text::setCursor(CursorSlice & cur, pit_type par, pos_type pos)
 		LATTEST(false);
 	}
 
-	if (pos > para.size()) {
+	if (pos > par.size()) {
 		LYXERR0("Don't like 1, pos: " << pos
-		       << " size: " << para.size()
-		       << " par: " << par);
+		       << " size: " << par.size()
+		       << " par: " << pit);
 		LATTEST(false);
 	}
 }
 
 
-void Text::setCursorIntern(Cursor & cur,
-			      pit_type par, pos_type pos, bool setfont, bool boundary)
+void Text::setCursorIntern(Cursor & cur, pit_type pit, pos_type pos,
+                           bool setfont, bool boundary)
 {
 	LBUFERR(this == cur.text());
 	cur.boundary(boundary);
-	setCursor(cur.top(), par, pos);
+	setCursor(cur.top(), pit, pos);
 	if (setfont)
 		cur.setCurrentFont();
 }

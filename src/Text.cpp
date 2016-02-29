@@ -109,12 +109,12 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-	ParagraphList & pars, pit_type par_offset, pos_type pos)
+	ParagraphList & pars, pit_type pit, pos_type pos)
 {
 	// create a new paragraph
-	Paragraph & tmp = *pars.insert(lyx::next(pars.begin(), par_offset + 1),
+	Paragraph & tmp = *pars.insert(lyx::next(pars.begin(), pit + 1),
 				       Paragraph());
-	Paragraph & par = pars[par_offset];
+	Paragraph & par = pars[pit];
 
 	tmp.setInsetOwner(&par.inInset());
 	tmp.makeSameLayout(par);
