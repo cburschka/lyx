@@ -92,6 +92,28 @@ CursorSlice::col_type CursorSlice::col() const
 }
 
 
+void CursorSlice::setPitPos(pit_type pit, pos_type pos)
+{
+	LASSERT(pit != int(text()->paragraphs().size()), return);
+	pit_ = pit;
+	pos_ = pos;
+
+	// Now some strict checking. None of these should happen, but
+	// we're scaredy-cats
+	if (pos < 0) {
+		LYXERR0("Don't like -1!");
+		LATTEST(false);
+	}
+
+	if (pos > paragraph().size()) {
+		LYXERR0("Don't like 1, pos: " << pos
+				<< " size: " << paragraph().size()
+		       << " par: " << pit);
+		LATTEST(false);
+	}
+}
+
+
 void CursorSlice::forwardPos()
 {
 	//  move on one position if possible

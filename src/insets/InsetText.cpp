@@ -250,7 +250,7 @@ void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 		pos = temp_cur.pos();
 	}
 
-	text_.setCursor(cur.top(), pit, pos);
+	cur.top().setPitPos(pit, pos);
 	cur.finishUndo();
 }
 

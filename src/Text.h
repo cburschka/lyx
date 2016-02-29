@@ -185,8 +185,6 @@ public:
 	bool setCursor(Cursor & cur, pit_type pit, pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
-	void setCursor(CursorSlice &, pit_type pit, pos_type pos);
-	///
 	void setCursorIntern(Cursor & cur, pit_type pit,
 		 pos_type pos, bool setfont = true, bool boundary = false);
 
