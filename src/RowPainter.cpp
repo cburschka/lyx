@@ -577,7 +577,6 @@ void RowPainter::paintOnlyInsets()
 		Row::Element const & e = *cit;
 		if (e.type == Row::INSET) {
 			// If outer row has changed, nested insets are repainted completely.
-			pi_.base.bv->coordCache().insets().add(e.inset, int(x_), yo_);
 			bool const nested_inset =
 				(e.inset->asInsetMath() && !e.inset->asInsetMath()->asMacroTemplate())
 				|| e.inset->asInsetText() || e.inset->asInsetTabular();
@@ -611,8 +610,7 @@ void RowPainter::paintText()
 				paintMisspelledMark(orig_x, e);
 			break;
 		case Row::INSET: {
-			// If outer row has changed, nested insets are repaint completely.
-			pi_.base.bv->coordCache().insets().add(e.inset, int(x_), yo_);
+			// If outer row has changed, nested insets are repainted completely.
 			paintInset(e);
 			foreign_descent = e.dim.descent();
 		}
