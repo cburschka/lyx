@@ -1864,15 +1864,31 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 
 void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const x, int y) const
 {
-	BufferParams const & bparams = bv_->buffer().params();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
 		return;
-
-	bool const original_drawing_state = pi.pain.isDrawingEnabled();
-	int const ww = bv_->workHeight();
 	size_t const nrows = pm.rows().size();
 
+	// Use fast lane when drawing is disabled.
+	if (!pi.pain.isDrawingEnabled()) {
+		for (size_t i = 0; i != nrows; ++i) {
+
+			Row const & row = pm.rows()[i];
+			// Adapt to cursor row scroll offset if applicable.
+			int row_x = x - bv_->horizScrollOffset(text_, pit, row.pos());
+			if (i)
+				y += row.ascent();
+
+			RowPainter rp(pi, *text_, pit, row, row_x, y);
+
+			rp.paintOnlyInsets();
+			y += row.descent();
+		}
+		return;
+	}
+
+	BufferParams const & bparams = bv_->buffer().params();
+	int const ww = bv_->workHeight();
 	Cursor const & cur = bv_->cursor();
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
@@ -1909,10 +1925,18 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		RowPainter rp(pi, *text_, pit, row, row_x, y);
 
+		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-		// It is not needed to draw on screen if we are not inside.
-		pi.pain.setDrawingEnabled(inside && original_drawing_state);
+		pi.pain.setDrawingEnabled(inside);
+		if (!inside) {
+			// Paint only the insets to set inset cache correctly
+			// FIXME: remove paintOnlyInsets when we know that positions
+			// have already been set.
+			rp.paintOnlyInsets();
+			y += row.descent();
+			continue;
+		}
 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
@@ -1929,8 +1953,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		}
 
 		// Row signature; has row changed since last paint?
-		if (pi.pain.isDrawingEnabled())
-			row.setCrc(pm.computeRowSignature(row, bparams));
+		row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed()
 			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
 
@@ -1961,7 +1984,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
-		if (lyxerr.debugging(Debug::PAINTING) && inside
+		if (lyxerr.debugging(Debug::PAINTING)
 			&& (row.selection() || pi.full_repaint || row_has_changed)) {
 				string const foreword = text_->isMainText() ?
 					"main text redraw " : "inset text redraw: ";
@@ -1999,7 +2022,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		pi.full_repaint = tmp;
 	}
 	// Re-enable screen drawing for future use of the painter.
-	pi.pain.setDrawingEnabled(original_drawing_state);
+	pi.pain.setDrawingEnabled(true);
 
 	//LYXERR(Debug::PAINTING, ".");
 }
