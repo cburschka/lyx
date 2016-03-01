@@ -961,20 +961,11 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		LBUFERR(text);
 		// ok we have a selection. This is always between cur.selBegin()
 		// and sel_end cursor
-
-		// copy behind a space if there is one
-		ParagraphList & pars = text->paragraphs();
-		pos_type pos = cur.selBegin().pos();
-		pit_type par = cur.selBegin().pit();
-		while (pos < pars[par].size() &&
-		       pars[par].isLineSeparator(pos) &&
-		       (par != cur.selEnd().pit() || pos < cur.selEnd().pos()))
-			++pos;
-
-		copySelectionHelper(*cur.buffer(), *text, par, cur.selEnd().pit(),
-			pos, cur.selEnd().pos(), 
-			cur.buffer()->params().documentClassPtr(), cutstack);
-
+		copySelectionHelper(*cur.buffer(), *text,
+		                    cur.selBegin().pit(), cur.selEnd().pit(),
+		                    cur.selBegin().pos(), cur.selEnd().pos(), 
+		                    cur.buffer()->params().documentClassPtr(),
+		                    cutstack);
 		// Reset the dirty_tabular_stack_ flag only when something
 		// is copied to the clipboard (not to the selectionBuffer).
 		if (&cutstack == &theCuts)
