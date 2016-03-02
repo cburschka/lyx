@@ -240,7 +240,7 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	line.setLineWidth(x);
 	tl.createLine();
 	tl.endLayout();
-	if (int(line.naturalTextWidth()) > x)
+	if ((force && line.textLength() == 1) || int(line.naturalTextWidth()) > x)
 		return false;
 	x = int(line.naturalTextWidth());
 	// The -1 is here to account for the leading zerow_nbsp.

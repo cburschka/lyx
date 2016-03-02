@@ -803,7 +803,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
 
-	if (pos >= end || row.width() > width) {
+	if (pos >= end) {
 		row.endpos(end);
 		return;
 	}
@@ -828,7 +828,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, pit, pos);
-	while (i < end && row.width() <= width) {
+	do {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -893,7 +893,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 		++i;
 		++fi;
-	}
+	} while (i < end && row.width() <= width);
 	row.finalizeLast();
 	row.endpos(i);
 
