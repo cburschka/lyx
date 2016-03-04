@@ -60,13 +60,75 @@ cursor.
 
 * Proposals
 
-** set inset position during metrics phase
+* Clean-up of drawing code
 
-This implies to set inset positions relative to outer inset during
-metrics phase and then in a second loop to descend into insets and
-update positions correctly.
+The goal is to make painting with drawing disable fast enough that it
+can be used after every metrics computation. Then we can separate real
+drawing from metrics.
 
-Effect: avoid going through the painter machinery when it is not necessary.
+** DONE RowPainter
+
+Inset position is set in paintInset, paintOnlyInsets, and paintText.
+This should be done only once in paintInset
+
+** DONE TextMetrics::drawParagraph
+
+We can really simplify the code when drawing is disabled only
+paintInset needs to be called.
+ + do right at the start when drawing is already disabled
+ + do it in the loop for rows that are not visible on screen.
+
+The only thing we want to do here is to set inset positions (for
+text). The other insets still use the painter with drawing disabled.
+
+** Painter::text
+
+We cannot remove (or make private) the version that uses a
+FontInfo because it is used by PainterInfo::draw. Document this and
+remove unused arguments rtl and double spacing. This would become a specialized helper.
+Proposed solution: keep the existing function, but private and without
+optional arguments.
+
+Avoid to return (and thus compute) the width of strings?
+ + used by InsetSpecialChar (fixable)
+ + used by textDecoration() in text(): more difficult to fix
+
+Idea: add a version of text where wordspacing and textwidth (giving
+the width of strings) are required parameters and remove optional
+version.
+
+==> more versions, no optional parameters.
+
+** Set inset position during metrics phase
+
+In order to do that, a no-paint drawing will be initiated after every
+redoParagraph. This code path will need to be made as fast as possible.
+
+Effect: avoid depending on actual drawing having taken place. In turn,
+it will allow to do drawing on paint events, like any reasonable
+application would do.
+
+** Cleanup after complete metrics
+   Then the following can be done:
+   + remove hack in InsetMathNest::drawSelection
+   + remove painting when not inside in drawParagraph
+   + remove Cursor::inCoordCache?
+
+** Use Row for MathData
+
+It may not be so difficult. Implement x2pos and pos2x from
+the TM:cursorX and TM::getPosNearX, and use them for both text and
+math.
+
+Will the strings display OK if drawing string-wise?
+
+Then it would be possible to streamline drawing with disabled painter.
+
+** Paint directly to screen
+
+Instead of using an intermediary pixmap. I have no idea of how
+difficult it will prove.
+One benefit will be that subpixel aliasing will work again (#9972)
 
 ** Merging bv::updateMetrics and tm::metrics
 
@@ -75,16 +137,10 @@ paragraphs that are rebroken, the version that is used for inner inset
 does not try any such optimization. This can be very bad for very tall
 insets. We should re-use the bv::updateMetrics logic:
  + transfer all the logic of bv::updateMetrics to tm.
- +  Main InsetText should not be special.
+ + Main InsetText should not be special.
 
-** Metrics outside of visible area
-
-Currently metrics are computed for current visible paet of text, the
-page above and the page below. It should be possible to compute hidden
-rows ony on demand, although it might be a bit slow.
-
-There was a proposal to always compute _all_ rows, but this may become
-expensive for large files. This would though help scrolling.
+The difficuly for a tall table cell for example, is that it may be
+necessary to break the whole contents to know the width of the cell.
 
 
 * Description of current drawing mechanism
