@@ -478,7 +478,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
 		row.pos(first);
-		row.endpos(first);
+		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
 		row.setChanged(false);
 		int const max_row_width = max(dim_.wid, row.width());
