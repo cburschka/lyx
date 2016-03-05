@@ -131,7 +131,8 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	void breakRow(Row & row, int right_margin, pit_type const pit) const;
+	/// \return true when another row is required (after a newline)
+	bool breakRow(Row & row, int right_margin, pit_type const pit) const;
 
 	// Expand the alignment of row \param row in paragraph \param par
 	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;

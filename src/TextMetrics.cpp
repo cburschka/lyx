@@ -437,6 +437,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	par.setBeginOfBody();
 	pos_type first = 0;
 	size_t row_index = 0;
+	bool need_new_row = false;
 	// maximum pixel width of a row
 	do {
 		if (row_index == pm.rows().size())
@@ -444,7 +445,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Row & row = pm.rows()[row_index];
 		row.pit(pit);
 		row.pos(first);
-		breakRow(row, right_margin, pit);
+		need_new_row = breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
 		row.setChanged(false);
 		if (row_index || row.endpos() < par.size()
@@ -468,25 +469,10 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 		pm.dim().wid = max(pm.dim().wid, row.width());
 		pm.dim().des += row.height();
-	} while (first < par.size());
+	} while (first < par.size() || need_new_row);
 
 	if (row_index < pm.rows().size())
 		pm.rows().resize(row_index);
-
-	// Make sure that if a par ends in newline, there is one more row
-	// under it
-	if (first > 0 && par.isNewline(first - 1)) {
-		if (row_index == pm.rows().size())
-			pm.rows().push_back(Row());
-		Row & row = pm.rows()[row_index];
-		row.pos(first);
-		breakRow(row, right_margin, pit);
-		setRowHeight(row, pit);
-		row.setChanged(false);
-		int const max_row_width = max(dim_.wid, row.width());
-		computeRowMetrics(pit, row, max_row_width);
-		pm.dim().des += row.height();
-	}
 
 	pm.dim().asc += pm.rows()[0].ascent();
 	pm.dim().des -= pm.rows()[0].ascent();
@@ -786,7 +772,7 @@ private:
  * very sensitive to small changes :) Note that part of the
  * intelligence is also in Row::shortenIfNeeded.
  */
-void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
+bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
@@ -806,7 +792,10 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
 
-	ParagraphList const & pars = text_->paragraphs();
+	if (pos >= end || row.width() > width) {
+		row.endpos(end);
+		return need_new_row;
+	}
 
 #if 0
 	//FIXME: As long as leftMargin() is not correctly implemented for
@@ -900,6 +889,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.endpos(i);
 
 	// End of paragraph marker
+	ParagraphList const & pars = text_->paragraphs();
 	if (lyxrc.paragraph_markers && !need_new_row
 	    && i == end && size_type(pit + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
@@ -921,6 +911,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
 	//LYXERR0("breakrow: row is " << row);
+
+	return need_new_row;
 }
 
 
