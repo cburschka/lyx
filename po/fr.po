@@ -310,7 +310,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-02-26 15:12+0000\n"
-"PO-Revision-Date: 2016-02-26 15:25-0000\n"
+"PO-Revision-Date: 2016-03-06 11:32-0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -17753,7 +17753,6 @@ msgid "Times Roman (New TX)"
 msgstr "Times Roman (new TX)"
 
 #: lib/encodings:31
-
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
 
@@ -19040,7 +19039,7 @@ msgstr "Exportation sous...|s"
 
 #: lib/ui/stdmenus.inc:93
 msgid "More Formats & Options...|r"
-msgstr "Plus de formats et d'options...|o"
+msgstr "Plus de formats et d'options...|a"
 
 #: lib/ui/stdmenus.inc:101
 msgid "Undo|U"
@@ -25188,7 +25187,7 @@ msgstr "MS Word Office Open XML"
 
 #: lib/configure.py:713
 msgid "MS Word Office Open XML|O"
-msgstr "MS Word Office Open XML|W"
+msgstr "MS Word Office Open XML|O"
 
 #: lib/configure.py:716
 msgid "date command"
@@ -27955,6 +27954,7 @@ msgstr "Erreur de lecture du module %1$s\n"
 #: src/VCBackend.cpp:1448
 #: src/VCBackend.cpp:1454
 #: src/VCBackend.cpp:1477
+
 #: src/VCBackend.cpp:1963
 #: src/frontends/qt4/GuiView.cpp:3120
 #: src/frontends/qt4/GuiView.cpp:3164
