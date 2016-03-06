@@ -180,31 +180,6 @@ void FontList::set(pos_type pos, Font const & font)
 }
 
 
-FontSize FontList::highestInRange(pos_type startpos, pos_type endpos,
-	FontSize def_size) const
-{
-	if (list_.empty())
-		return def_size;
-
-	List::const_iterator end_it = fontIterator(endpos);
-	const_iterator const end = list_.end();
-	if (end_it != end)
-		++end_it;
-
-	List::const_iterator cit = fontIterator(startpos);
-
-	FontSize maxsize = FONT_SIZE_TINY;
-	for (; cit != end_it; ++cit) {
-		FontSize size = cit->font().fontInfo().size();
-		if (size == FONT_SIZE_INHERIT)
-			size = def_size;
-		if (size > maxsize && size <= FONT_SIZE_HUGER)
-			maxsize = size;
-	}
-	return maxsize;
-}
-
-
 void FontList::validate(LaTeXFeatures & features) const
 {
 	const_iterator fcit = list_.begin();

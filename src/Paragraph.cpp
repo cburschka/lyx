@@ -1837,14 +1837,6 @@ Font const Paragraph::getLayoutFont
 }
 
 
-/// Returns the height of the highest font in range
-FontSize Paragraph::highestFontInRange
-	(pos_type startpos, pos_type endpos, FontSize def_size) const
-{
-	return d->fontlist_.highestInRange(startpos, endpos, def_size);
-}
-
-
 char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	char_type c = d->text_[pos];

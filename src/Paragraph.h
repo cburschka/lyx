@@ -357,9 +357,6 @@ public:
 	char_type getUChar(BufferParams const &, pos_type pos) const;
 	/// pos <= size() (there is a dummy font change at the end of each par)
 	void setFont(pos_type pos, Font const & font);
-	/// Returns the height of the highest font in range
-	FontSize highestFontInRange(pos_type startpos,
-					pos_type endpos, FontSize def_size) const;
 	///
 	void insert(pos_type pos, docstring const & str,
 		    Font const & font, Change const & change);

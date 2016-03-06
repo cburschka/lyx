@@ -920,85 +920,53 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 				    bool topBottomSpace) const
 {
 	Paragraph const & par = text_->getPar(pit);
-	// get the maximum ascent and the maximum descent
-	double layoutasc = 0;
-	double layoutdesc = 0;
-	double const dh = defaultRowHeight();
-
-	// ok, let us initialize the maxasc and maxdesc value.
-	// Only the fontsize count. The other properties
-	// are taken from the layoutfont. Nicer on the screen :)
 	Layout const & layout = par.layout();
-
-	// as max get the first character of this row then it can
-	// increase but not decrease the height. Just some point to
-	// start with so we don't have to do the assignment below too
-	// often.
-	Buffer const & buffer = bv_->buffer();
-	Font font = displayFont(pit, row.pos());
-	FontSize const tmpsize = font.fontInfo().size();
-	font.fontInfo() = text_->layoutFont(pit);
-	FontSize const size = font.fontInfo().size();
-	font.fontInfo().setSize(tmpsize);
-
-	FontInfo labelfont = text_->labelFont(par);
-
-	FontMetrics const & lfm = theFontMetrics(labelfont);
-	FontMetrics const & fm = theFontMetrics(font);
-
-	// these are minimum values
 	double const spacing_val = layout.spacing.getValue()
 		* text_->spacing(par);
-	//lyxerr << "spacing_val = " << spacing_val << endl;
-	int maxasc  = int(fm.maxAscent()  * spacing_val);
-	int maxdesc = int(fm.maxDescent() * spacing_val);
 
-	// insets may be taller
-	CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
+	// Initial value for ascent (useful if row is empty).
+	Font const font = displayFont(pit, row.pos());
+	FontMetrics const & fm = theFontMetrics(font);
+	int maxasc = int(fm.maxAscent() * spacing_val);
+	int maxdes = int(fm.maxDescent() * spacing_val);
+
+	// Find the ascent/descent of the row contents
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator cend = row.end();
 	for ( ; cit != cend; ++cit) {
 		if (cit->inset) {
-			Dimension const & dim = insetCache.dim(cit->inset);
-			maxasc  = max(maxasc,  dim.ascent());
-			maxdesc = max(maxdesc, dim.descent());
+			maxasc = max(maxasc, cit->dim.ascent());
+			maxdes = max(maxdes, cit->dim.descent());
+		} else {
+			FontMetrics const & fm = theFontMetrics(cit->font);
+			maxasc = max(maxasc, int(fm.maxAscent() * spacing_val));
+			maxdes = max(maxdes, int(fm.maxDescent() * spacing_val));
 		}
 	}
 
-	// Check if any custom fonts are larger (Asger)
-	// This is not completely correct, but we can live with the small,
-	// cosmetic error for now.
-	int labeladdon = 0;
-
-	FontSize maxsize =
-		par.highestFontInRange(row.pos(), row.endpos(), size);
-	if (maxsize > font.fontInfo().size()) {
-		// use standard paragraph font with the maximal size
-		FontInfo maxfont = font.fontInfo();
-		maxfont.setSize(maxsize);
-		FontMetrics const & maxfontmetrics = theFontMetrics(maxfont);
-		maxasc  = max(maxasc,  maxfontmetrics.maxAscent());
-		maxdesc = max(maxdesc, maxfontmetrics.maxDescent());
-	}
-
-	// This is nicer with box insets:
+	// This is nicer with box insets
 	++maxasc;
-	++maxdesc;
+	++maxdes;
 
+	// Now use the layout information.
+	double layoutasc = 0;
+	double layoutdesc = 0;
+	int labeladdon = 0;
 	ParagraphList const & pars = text_->paragraphs();
 	Inset const & inset = text_->inset();
+	double const dh = defaultRowHeight();
 
 	// is it a top line?
 	if (row.pos() == 0 && topBottomSpace) {
-		BufferParams const & bufparams = buffer.params();
+		BufferParams const & bufparams = bv_->buffer().params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
 		    && !inset.getLayout().parbreakIsNewline()
 		    && !par.layout().parbreak_is_newline
 		    && pit > 0
 		    && ((layout.isParagraph() && par.getDepth() == 0)
-			|| (pars[pit - 1].layout().isParagraph()
-			    && pars[pit - 1].getDepth() == 0))) {
+			    || (pars[pit - 1].layout().isParagraph()
+				    && pars[pit - 1].getDepth() == 0))) {
 			maxasc += bufparams.getDefSkip().inPixels(*bv_);
 		}
 
@@ -1009,6 +977,8 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		if (layout.labelIsAbove()
 		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
 		    && !par.labelString().empty()) {
+			FontInfo labelfont = text_->labelFont(par);
+			FontMetrics const & lfm = theFontMetrics(labelfont);
 			labeladdon = int(
 				  lfm.maxHeight()
 					* layout.spacing.getValue()
@@ -1071,8 +1041,8 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 	}
 
 	// incalculate the layout spaces
-	maxasc  += int(layoutasc  * 2 / (2 + pars[pit].getDepth()));
-	maxdesc += int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
+	maxasc += int(layoutasc  * 2 / (2 + pars[pit].getDepth()));
+	maxdes += int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
 
 	// FIXME: the correct way is to do the following is to move the
 	// following code in another method specially tailored for the
@@ -1084,11 +1054,11 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		if (pit + 1 == pit_type(pars.size()) &&
 		    row.endpos() == par.size() &&
 				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
-			maxdesc += 20;
+			maxdes += 20;
 	}
 
 	row.dimension().asc = maxasc + labeladdon;
-	row.dimension().des = maxdesc;
+	row.dimension().des = maxdes;
 }
 
 
