@@ -1156,9 +1156,14 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	 * row is larger than the end of its last element.
 	 */
 	if (!row.empty() && pos == row.back().endpos
-	    && row.back().endpos == row.endpos())
-		boundary = true;
-
+	    && row.back().endpos == row.endpos()) {
+		Inset const * inset = row.back().inset;
+		if (inset && (inset->lyxCode() == NEWLINE_CODE
+		              || inset->lyxCode() == SEPARATOR_CODE))
+			pos = row.back().pos;
+		else
+			boundary = row.right_boundary();
+	}
 	x += xo;
 	//LYXERR0("getPosNearX ==> pos=" << pos << ", boundary=" << boundary);
 	return pos;
