@@ -413,10 +413,10 @@ void Row::pop_back()
 }
 
 
-void Row::shortenIfNeeded(pos_type const keep, int const w)
+bool Row::shortenIfNeeded(pos_type const keep, int const w)
 {
 	if (empty() || width() <= w)
-		return;
+		return false;
 
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
@@ -433,7 +433,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	if (cit == end) {
 		// This should not happen since the row is too long.
 		LYXERR0("Something is wrong cannot shorten row: " << *this);
-		return;
+		return false;
 	}
 
 	// Iterate backwards over breakable elements and try to break them
@@ -476,7 +476,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
 			elements_.erase(cit_brk + 1, end);
-			return;
+			return true;
 		}
 	}
 
@@ -493,7 +493,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		end_ = cit->pos;
 		dim_.wid = wid;
 		elements_.erase(cit, end);
-		return;
+		return true;
 	}
 
 	/* If we are here, it means that we have not found a separator to
@@ -508,7 +508,9 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
 		elements_.erase(next(cit, 1), end);
+		return true;
 	}
+	return false;
 }
 
 

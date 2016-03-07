@@ -227,8 +227,9 @@ public:
 	 * remains is a large word, cut it to \param width.
 	 * \param body_pos minimum amount of text to keep.
 	 * \param width maximum width of the row
+	 * \return true if the row has been shortened.
 	 */
-	void shortenIfNeeded(pos_type const body_pos, int const width);
+	bool shortenIfNeeded(pos_type const body_pos, int const width);
 
 	/**
 	 * If last element of the row is a string, compute its width

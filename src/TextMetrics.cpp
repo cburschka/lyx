@@ -911,8 +911,10 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
-	// if the row is too large, try to cut at last separator.
-	row.shortenIfNeeded(body_pos, width);
+	// if the row is too large, try to cut at last separator. In case
+	// of success, reset indication that the row was broken abruptly.
+	if (row.shortenIfNeeded(body_pos, width))
+		row.right_boundary(false);
 
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
