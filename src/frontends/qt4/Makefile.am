@@ -374,6 +374,6 @@ liblyxqt4_a_SOURCES = \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
 
-EXTRA_DIST = CMakeLists.txt $(UIFILES:%=ui/%)
-
 endif
+
+EXTRA_DIST = CMakeLists.txt $(UIFILES:%=ui/%)
