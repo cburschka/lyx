@@ -27,8 +27,6 @@
 #include "support/gettext.h"
 
 #include <QChar>
-#include <QPixmap>
-#include <QListWidgetItem>
 #include <QString>
 
 #include <cstdio>
@@ -168,7 +166,7 @@ QString getBlock(char_type c)
 	    && c <= unicode_blocks[lastBlock].end)
 		return qt_(unicode_blocks[lastBlock].name);
 
-	// c falls into an uncovered area, but we can guess which	
+	// c falls into an uncovered area, but we can guess which
 	if (c > unicode_blocks[lastBlock].end
 	    && c < unicode_blocks[lastBlock + 1].start)
 		return QString();
@@ -194,11 +192,11 @@ QString getBlock(char_type c)
 //
 /////////////////////////////////////////////////////////////////////
 
-class GuiSymbols::Model : public QAbstractItemModel
+class GuiSymbols::Model : public QAbstractListModel
 {
 public:
 	Model(GuiSymbols * parent)
-		: QAbstractItemModel(parent)
+		: QAbstractListModel(parent)
 	{}
 
 	QModelIndex index(int row, int column, QModelIndex const &) const
@@ -216,11 +214,6 @@ public:
 		return symbols_.count();
 	}
 
-	int columnCount(QModelIndex const &) const
-	{
-		return 1;
-	}
-
 	QVariant data(QModelIndex const & index, int role) const
 	{
 		static QString const strCharacter = qt_("Character: ");
@@ -228,29 +221,35 @@ public:
 
 		static char codeName[10];
 
-		char_type c = symbols_.at(index.row()); 
+		char_type c = symbols_.at(index.row());
 
-		if (role == Qt::TextAlignmentRole)
+		switch (role) {
+		case Qt::TextAlignmentRole:
 			return QVariant(Qt::AlignCenter);
-
-		if (role == Qt::DisplayRole)
+		case Qt::DisplayRole:
 			return toqstr(c);
-
-		if (role == Qt::ToolTipRole) {
+		case Qt::ToolTipRole: {
+			char codeName[10];
 			sprintf(codeName, "0x%04x", c);
 			return strCharacter + toqstr(c) + '\n'
 				+ strCodePoint + QLatin1String(codeName);
 		}
-
-		//LYXERR0("role: " << role << " row: " << index.row());
-		return QVariant();
+		case Qt::SizeHintRole:
+			// Fix many symbols not displaying in combination with
+			// setUniformItemSizes
+			return QSize(1000,1000);
+		default:
+			return QVariant();
+		}
 	}
 
 	void setSymbols(QList<char_type> const & symbols)
 	{
-		QAbstractItemModel::beginResetModel();
+		beginResetModel();
+		beginInsertRows(QModelIndex(), 0, symbols.size() - 1);
 		symbols_ = symbols;
-		QAbstractItemModel::endResetModel();
+		endInsertRows();
+		endResetModel();
 	}
 
 private:
@@ -275,16 +274,20 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 	setFocusProxy(symbolsLW);
 
 	symbolsLW->setViewMode(QListView::IconMode);
+	symbolsLW->setLayoutMode(QListView::Batched);
+	symbolsLW->setBatchSize(1000);
+	symbolsLW->setUniformItemSizes(true);
+
 	// increase the display size of the symbols a bit
 	QFont font = symbolsLW->font();
 	const int size = font.pointSize() + 3;
 	font.setPointSize(size);
 	symbolsLW->setFont(font);
 	QFontMetrics fm(font);
-	const int cellHeight = fm.height() + 2;
+	const int cellHeight = fm.height() + 6;
 	// FIXME: using at least cellHeight because of
 	// QFontMetrics::maxWidth() is returning 0 with Qt/Cocoa on Mac OS
-	const int cellWidth = max(cellHeight, fm.maxWidth() + 2);
+	const int cellWidth = max(cellHeight - 2, fm.maxWidth() + 4);
 	symbolsLW->setGridSize(QSize(cellWidth, cellHeight));
 	symbolsLW->setModel(model_);
 }
@@ -385,7 +388,7 @@ void GuiSymbols::on_categoryFilterCB_toggled(bool on)
 {
 	updateSymbolList(on);
 	if (on)
-		scrollToItem(categoryCO->currentText());	
+		scrollToItem(categoryCO->currentText());
 }
 
 
