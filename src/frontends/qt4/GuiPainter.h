@@ -203,7 +203,8 @@ private:
 	/// possibly apply monochrome mode
 	QColor filterColor(QColor const & col);
 	///
-	QString generateStringSignature(QString const & str, FontInfo const & f);	
+	QString generateStringSignature(QString const & str, FontInfo const & f,
+	                                double wordspacing);
 };
 
 } // namespace frontend

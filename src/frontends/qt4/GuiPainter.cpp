@@ -90,7 +90,9 @@ void GuiPainter::setQPainterPen(QColor const & col,
 }
 
 
-QString GuiPainter::generateStringSignature(QString const & str, FontInfo const & f)
+QString GuiPainter::generateStringSignature(QString const & str,
+                                            FontInfo const & f,
+                                            double wordspacing)
 {
 	QString sig = str;
 	sig.append(QChar(static_cast<short>(f.family())));
@@ -100,6 +102,7 @@ QString GuiPainter::generateStringSignature(QString const & str, FontInfo const 
 	Color const & color = f.realColor();
 	sig.append(QChar(static_cast<short>(color.baseColor)));
 	sig.append(QChar(static_cast<short>(color.mergeColor)));
+	sig.append(QString::number(wordspacing));
 	if (!monochrome_min_.empty()) {
 		QColor const & min = monochrome_min_.top();
 		QColor const & max = monochrome_max_.top();
@@ -404,7 +407,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 	if (use_pixmap_cache_) {
 		QPixmap pm;
-		QString key = generateStringSignature(str, f);
+		QString key = generateStringSignature(str, f, wordspacing);
 
 		// Warning: Left bearing is in general negative! Only the case
 		// where left bearing is negative is of interest WRT the
