@@ -173,18 +173,17 @@ unksjoner ønskes: automatisk nummerering av sider og avsnitt, stavekontroll
 , (vi kommer tilbake til hvorfor), men slikt er også mulig med litt ekstra
  arbeid.
  Eksempler på hva \SpecialChar LyX
- brukes til: brev, avhandlinger, lærebøker, forelesningsnotate
-r, seminar- og konferansemateriale, programdokumentasjon, bøker (om PostgreSQL,
- kryptologi, romaner, poesi, og til og med en barnebok eller to), artikler
- i vitenskapelige tidsskrifter, filmmanuskripter, forretningsplaner\SpecialChar ldots
- og mye
- annet.
+ brukes til: referater, brev, avhandlinger, lærebøker,
+ forelesningsnotater, seminar- og konferansemateriale, programdokumentasjon,
+ bøker, artikler i vitenskapelige tidsskrifter, filmmanuskripter, forretningspla
+ner\SpecialChar ldots
+ og mye annet.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
  gir oss en moderne måte å skrive dokumenter på datamaskinen, et markeringsparad
-igme som bryter med 
+igme som bryter med den foreldete 
 \begin_inset Quotes fld
 \end_inset
 
@@ -205,7 +204,7 @@ Noe av utfordringen med å ta i bruk \SpecialChar LyX
  er å måtte tenke på en ny måte.
  En gang i tiden var skrivemaskinen alt vi hadde, så vi lærte oss noen triks
  for å komme rundt dens begrensninger.
- Understreking med 
+ Understreking med tegnet 
 \begin_inset Quotes fld
 \end_inset
 
@@ -359,7 +358,8 @@ pt, så overskriften for seksjon
  Det problemet eksisterer ikke i \SpecialChar LyX
 .
  Datamaskinen husker på detaljer, som hvilke ting som skal ha hvilken skrifttype.
- Det er slikt maskinene er flinke til.
+ Du slipper.
+ Det er tross alt slike småting maskinene er flinke til.
 \end_layout
 
 \begin_layout Standard
@@ -412,7 +412,7 @@ mener
 What You See Is What You Mean
 \lang norsk
 , WYSIWYM).
- Den gjør det mye enklere å skrive dokumenter.
+ Det er en mektig idé, som gjør arbeidet med å skrive dokumenter mye enklere.
  Dette er også grunnen til at \SpecialChar LyX
  ikke er så godt egnet til plakater og brosjyrer
  — i slike tilfeller 
@@ -462,7 +462,7 @@ Mellomrom
 Tabulatorer er, sammen med en linjal som viser posisjonen på siden, ubrukelige
  i \SpecialChar LyX
 .
- Programmet bestemmer selv hvor på siden ting plasseres.
+ Programmet bekymrer seg om hvor på siden ting plasseres, ikke du.
  Det samme gjelder ekstra mellomrom, \SpecialChar LyX
  legger dem inn når det er nødvendig,
  avhengig av konteksten.
@@ -485,7 +485,7 @@ Sideskift
 
 \begin_layout Itemize
 Linjeavstand (f.eks.
- enkelt, dobbelt, osv.)
+ enkel, dobbel, osv.)
 \end_layout
 
 \begin_layout Itemize
@@ -526,7 +526,9 @@ Håndboka
 \emph default
  eller 
 \emph on
-Ekstra muligheter.
+Ekstra muligheter 
+\emph default
+for detaljer.
 \end_layout
 
 \end_inset
@@ -568,7 +570,7 @@ Riktig nok kan mange moderne tekstbehandlere håndtere matematiske symboler,
  bygger på dokumentutviklingssystemet \SpecialChar LaTeX
 .
  \SpecialChar LaTeX
- har eksistert i over 20 år, og 
+ har eksistert siden 1985, og 
 \emph on
 virker
 \emph default
@@ -610,8 +612,7 @@ Håndbokas
  i 1984.
  \SpecialChar TeX
  leser typesettingskommandoer fra en tekstfil, og utfører dem.
- Det er mer komplisert enn en skrivemaskin, men ikke så komplisert som en
- trykkpresse; men mange av pressens 
+ Mange av trykkerifagets 
 \begin_inset Quotes fld
 \end_inset
 
@@ -793,16 +794,9 @@ For å gjøre det lettere å svare på dine spørsmål og beskrive alle mulighet
 \end_layout
 
 \begin_layout Standard
-Selv om \SpecialChar LyX
- er godt forbi 
-\begin_inset Quotes fld
-\end_inset
-
-versjon 1.0
-\begin_inset Quotes frd
-\end_inset
-
-, kan noe av dokumentasjonen være foreldet, eller mangle stoff.
+Forhåpentligvis stopper aldri utviklingen av \SpecialChar LyX
+; så noe av dokumentasjonen
+ være litt bakpå, eller mangle stoff.
  Men vi prøver å holde følge! Som for resten av \SpecialChar LyX
  produseres bruksanvisningene
  av frivillige, som har 
@@ -813,7 +807,11 @@ virkelige jobber
 \begin_inset Quotes frd
 \end_inset
 
-, familier, oppvask, kattekasser å tømme, osv.
+, familier, oppvask, 
+\emph on
+osv
+\emph default
+.
  Hvis du vil hjelpe, les kapittel
 \begin_inset space ~
 \end_inset
@@ -825,7 +823,7 @@ reference "sec:Bidra"
 
 \end_inset
 
- i tillegg til resten av dokumentet.
+ i tillegg til resten av dette dokumentet.
 \end_layout
 
 \begin_layout Standard
@@ -880,7 +878,7 @@ N
 \bar default
 aviger
 \family default
- hvor innholdet vises automatisk.
+, hvor innholdet vises automatisk.
  
 \end_layout
 
@@ -898,7 +896,7 @@ I de trykte dokumentene opptrer alle kryssreferanser som kapittelnumre,
 .
  Hvis du klikker på firkanten med venstre museknapp får du et vindu med
  liste over alle kryssreferanser i dokumentet.
- Du kan hoppe til dette kapitlet ved å klikke på knappen 
+ Du kan hoppe til det aktuelle kapitlet ved å klikke på knappen 
 \family sans
 Gå
 \begin_inset space ~
@@ -1342,7 +1340,7 @@ Hurtigtaster.
 \end_layout
 
 \begin_layout Subsection
-Måleenheter
+Måleenheter i bruksanvisningene
 \end_layout
 
 \begin_layout Standard
@@ -1363,7 +1361,6 @@ reference "cap:Units-for-image"
 
 \begin_layout Standard
 \begin_inset Float table
-placement t
 wide false
 sideways false
 status open
@@ -1397,8 +1394,8 @@ Måleenheter
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -2030,7 +2027,7 @@ bredden av
 \emph on
 M
 \emph default
- i skriften som brukes
+ i skriften 
 \end_layout
 
 \end_inset
@@ -2300,9 +2297,14 @@ En beskrivelse av avanserte \SpecialChar LyX
 '
  generelle oppførsel til dine behov.
  Dette omfatter tastaturutlegg, språktilpasning og konfigurasjonsfiler.
- Du bør ikke engang tenke på å se her før du har lest 
-\emph on
-Håndboka.
+ Den har også informasjon om layoutfiler, som trengs for å få \SpecialChar LyX
+ til å støtte
+ nye 
+\lang british
+\SpecialChar LaTeX
+
+\lang norsk
+-klasser og pakker.
 \end_layout
 
 \end_deeper
@@ -2402,7 +2404,8 @@ Innføringen
 \begin_layout Standard
 Ellers skaffer du deg unødvendige frustrasjoner.
  \SpecialChar LyX
- kan alt en tekstbehandler trenger å kunne gjøre, men krever en annen tenkemåte.
+ kan alt en tekstbehandler trenger å kunne gjøre, men krever i blant en
+ annen tenkemåte.
 \end_layout
 
 \begin_layout Section
@@ -2447,8 +2450,7 @@ nt å få vite om deler av brukergrensesnittet du finner forvirrende eller
 \SpecialChar LyX
  har et feilrapporteringssystem, som du finner på 
 \family typewriter
-\SpecialChar LyX
- bug tracker 
+
 \begin_inset Flex URL
 status collapsed
 
@@ -2494,9 +2496,9 @@ http://www.lyx.org/
 \end_layout
 
 \begin_layout Standard
-En god (brukbar) feilrapport må som minimum fortelle hvilken versjon av
- \SpecialChar LyX
- det er du har problemer med.
+En brukbar feilrapport må som minimum fortelle hvilken versjon av \SpecialChar LyX
+ det er
+ du har problemer med.
  Nøyaktige detaljerte feilrapporter foretrekkes – jo mer tid utviklerne
  trenger på å finne ut hva som er galt, jo mindre tid får de til andre forbedrin
 ger.
