@@ -173,7 +173,7 @@ QString getBlock(char_type c)
 
 	// guessing was wrong so far. do a real search.
 	int i = 0;
-	while (c > unicode_blocks[i].end && i < no_blocks)
+	while (i < no_blocks && c > unicode_blocks[i].end)
 		++i;
 	if (i == no_blocks)
 		return QString();
@@ -218,8 +218,6 @@ public:
 	{
 		static QString const strCharacter = qt_("Character: ");
 		static QString const strCodePoint = qt_("Code Point: ");
-
-		static char codeName[10];
 
 		char_type c = symbols_.at(index.row());
 
