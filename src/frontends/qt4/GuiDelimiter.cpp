@@ -188,25 +188,12 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	for (int i = 0; i < end; ++i) {
 		string const delim = latex_delimiters[i];
 		MathSymbol const & ms =	mathSymbol(delim);
-// Due to a bug in Qt 4 on Windows, we need to use our math symbol font
-// on Windows (see #5760).
-// FIXME: Re-check after Windows has settled to Qt 5.
-//        ATM, this doesn't work also with Qt 5.4.1 because of still missing
-//        glyphs for \llbracket and \rrbracket. These last symbols are also
-//        missing when compiling on cygwin using the X11 xcb backend.
-#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
 		FontInfo lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
 		QFont font = frontend::getFont(lyxfont);
-#else
-		QString symbol(QChar(ms.unicode));
-		QListWidgetItem * lwi = new QListWidgetItem(symbol);
-		QFont font = lwi->font();
-		font.setPointSize(2 * font.pointSize());
-#endif
 		lwi->setFont(font);
 		lwi->setToolTip(toqstr(delim));
 		list_items[ms.unicode] = lwi;
@@ -222,14 +209,6 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	// The last element is the empty one.
 	QListWidgetItem * lwi = new QListWidgetItem(qt_("(None)"));
 	QListWidgetItem * rwi = new QListWidgetItem(qt_("(None)"));
-// See above comment.
-// FIXME: Re-check after Windows has settled to Qt 5.
-#if !defined(Q_OS_WIN) && !defined(Q_CYGWIN_WIN)
-	QFont font = lwi->font();
-	font.setPointSize(2 * font.pointSize());
-	lwi->setFont(font);
-	rwi->setFont(font);
-#endif
 	leftLW->addItem(lwi);
 	rightLW->addItem(rwi);
 
