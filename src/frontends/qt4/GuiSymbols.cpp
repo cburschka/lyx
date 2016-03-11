@@ -42,6 +42,7 @@ namespace {
 /// name of unicode block, start and end code point
 struct UnicodeBlocks {
 	char const * name;
+	QString qname;
 	char_type start;
 	char_type end;
 };
@@ -49,100 +50,100 @@ struct UnicodeBlocks {
 
 /// all unicode blocks with start and end code point
 UnicodeBlocks unicode_blocks[] = {
-	{ N_("Basic Latin"), 0x0000, 0x007f },
-	{ N_("Latin-1 Supplement"), 0x0080, 0x00ff },
-	{ N_("Latin Extended-A"), 0x0100, 0x017f },
-	{ N_("Latin Extended-B"), 0x0180, 0x024f },
-	{ N_("IPA Extensions"), 0x0250, 0x02af },
-	{ N_("Spacing Modifier Letters"), 0x02b0, 0x02ff },
-	{ N_("Combining Diacritical Marks"), 0x0300, 0x036f },
-	{ N_("Greek"), 0x0370, 0x03ff },
-	{ N_("Cyrillic"), 0x0400, 0x04ff },
-	{ N_("Armenian"), 0x0530, 0x058f },
-	{ N_("Hebrew"), 0x0590, 0x05ff },
-	{ N_("Arabic"), 0x0600, 0x06ff },
-	{ N_("Devanagari"), 0x0900, 0x097f },
-	{ N_("Bengali"), 0x0980, 0x09ff },
-	{ N_("Gurmukhi"), 0x0a00, 0x0a7f },
-	{ N_("Gujarati"), 0x0a80, 0x0aff },
-	{ N_("Oriya"), 0x0b00, 0x0b7f },
-	{ N_("Tamil"), 0x0b80, 0x0bff },
-	{ N_("Telugu"), 0x0c00, 0x0c7f },
-	{ N_("Kannada"), 0x0c80, 0x0cff },
-	{ N_("Malayalam"), 0x0d00, 0x0d7f },
-	{ N_("Thai"), 0x0e00, 0x0e7f },
-	{ N_("Lao"), 0x0e80, 0x0eff },
-	{ N_("Tibetan"), 0x0f00, 0x0fbf },
-	{ N_("Georgian"), 0x10a0, 0x10ff },
-	{ N_("Hangul Jamo"), 0x1100, 0x11ff },
-	{ N_("Phonetic Extensions"), 0x1d00, 0x1d7f },
-	{ N_("Latin Extended Additional"), 0x1e00, 0x1eff },
-	{ N_("Greek Extended"), 0x1f00, 0x1fff },
-	{ N_("General Punctuation"), 0x2000, 0x206f },
-	{ N_("Superscripts and Subscripts"), 0x2070, 0x209f },
-	{ N_("Currency Symbols"), 0x20a0, 0x20cf },
-	{ N_("Combining Diacritical Marks for Symbols"), 0x20d0, 0x20ff },
-	{ N_("Letterlike Symbols"), 0x2100, 0x214f },
-	{ N_("Number Forms"), 0x2150, 0x218f },
-	{ N_("Arrows"), 0x2190, 0x21ff },
-	{ N_("Mathematical Operators"), 0x2200, 0x22ff },
-	{ N_("Miscellaneous Technical"), 0x2300, 0x23ff },
-	{ N_("Control Pictures"), 0x2400, 0x243f },
-	{ N_("Optical Character Recognition"), 0x2440, 0x245f },
-	{ N_("Enclosed Alphanumerics"), 0x2460, 0x24ff },
-	{ N_("Box Drawing"), 0x2500, 0x257f },
-	{ N_("Block Elements"), 0x2580, 0x259f },
-	{ N_("Geometric Shapes"), 0x25a0, 0x25ff },
-	{ N_("Miscellaneous Symbols"), 0x2600, 0x26ff },
-	{ N_("Dingbats"), 0x2700, 0x27bf },
-	{ N_("Miscellaneous Mathematical Symbols-A"), 0x27c0, 0x27ef },
-	{ N_("CJK Symbols and Punctuation"), 0x3000, 0x303f },
-	{ N_("Hiragana"), 0x3040, 0x309f },
-	{ N_("Katakana"), 0x30a0, 0x30ff },
-	{ N_("Bopomofo"), 0x3100, 0x312f },
-	{ N_("Hangul Compatibility Jamo"), 0x3130, 0x318f },
-	{ N_("Kanbun"), 0x3190, 0x319f },
-	{ N_("Enclosed CJK Letters and Months"), 0x3200, 0x32ff },
-	{ N_("CJK Compatibility"), 0x3300, 0x33ff },
-	{ N_("CJK Unified Ideographs"), 0x4e00, 0x9fa5 },
-	{ N_("Hangul Syllables"), 0xac00, 0xd7a3 },
-	{ N_("High Surrogates"), 0xd800, 0xdb7f },
-	{ N_("Private Use High Surrogates"), 0xdb80, 0xdbff },
-	{ N_("Low Surrogates"), 0xdc00, 0xdfff },
-	{ N_("Private Use Area"), 0xe000, 0xf8ff },
-	{ N_("CJK Compatibility Ideographs"), 0xf900, 0xfaff },
-	{ N_("Alphabetic Presentation Forms"), 0xfb00, 0xfb4f },
-	{ N_("Arabic Presentation Forms-A"), 0xfb50, 0xfdff },
-	{ N_("Combining Half Marks"), 0xfe20, 0xfe2f },
-	{ N_("CJK Compatibility Forms"), 0xfe30, 0xfe4f },
-	{ N_("Small Form Variants"), 0xfe50, 0xfe6f },
-	{ N_("Arabic Presentation Forms-B"), 0xfe70, 0xfeff },
-	{ N_("Halfwidth and Fullwidth Forms"), 0xff00, 0xffef },
-	{ N_("Specials"), 0xfff0, 0xffff },
-	{ N_("Linear B Syllabary"), 0x10000, 0x1007f },
-	{ N_("Linear B Ideograms"), 0x10080, 0x100ff },
-	{ N_("Aegean Numbers"), 0x10100, 0x1013f },
-	{ N_("Ancient Greek Numbers"), 0x10140, 0x1018f },
-	{ N_("Old Italic"), 0x10300, 0x1032f },
-	{ N_("Gothic"), 0x10330, 0x1034f },
-	{ N_("Ugaritic"), 0x10380, 0x1039f },
-	{ N_("Old Persian"), 0x103a0, 0x103df },
-	{ N_("Deseret"), 0x10400, 0x1044f },
-	{ N_("Shavian"), 0x10450, 0x1047f },
-	{ N_("Osmanya"), 0x10480, 0x104af },
-	{ N_("Cypriot Syllabary"), 0x10800, 0x1083f },
-	{ N_("Kharoshthi"), 0x10a00, 0x10a5f },
-	{ N_("Byzantine Musical Symbols"), 0x1d000, 0x1d0ff },
-	{ N_("Musical Symbols"), 0x1d100, 0x1d1ff },
-	{ N_("Ancient Greek Musical Notation"), 0x1d200, 0x1d24f },
-	{ N_("Tai Xuan Jing Symbols"), 0x1d300, 0x1d35f },
-	{ N_("Mathematical Alphanumeric Symbols"), 0x1d400, 0x1d7ff },
-	{ N_("CJK Unified Ideographs Extension B"), 0x20000, 0x2a6d6 },
-	{ N_("CJK Compatibility Ideographs Supplement"), 0x2f800, 0x2fa1f },
-	{ N_("Tags"), 0xe0000, 0xe007f },
-	{ N_("Variation Selectors Supplement"), 0xe0100, 0xe01ef },
-	{ N_("Supplementary Private Use Area-A"), 0xf0000, 0xffffd },
-	{ N_("Supplementary Private Use Area-B"), 0x100000, 0x10fffd }
+	{ N_("Basic Latin"), QString(), 0x0000, 0x007f },
+	{ N_("Latin-1 Supplement"), QString(), 0x0080, 0x00ff },
+	{ N_("Latin Extended-A"), QString(), 0x0100, 0x017f },
+	{ N_("Latin Extended-B"), QString(), 0x0180, 0x024f },
+	{ N_("IPA Extensions"), QString(), 0x0250, 0x02af },
+	{ N_("Spacing Modifier Letters"), QString(), 0x02b0, 0x02ff },
+	{ N_("Combining Diacritical Marks"), QString(), 0x0300, 0x036f },
+	{ N_("Greek"), QString(), 0x0370, 0x03ff },
+	{ N_("Cyrillic"), QString(), 0x0400, 0x04ff },
+	{ N_("Armenian"), QString(), 0x0530, 0x058f },
+	{ N_("Hebrew"), QString(), 0x0590, 0x05ff },
+	{ N_("Arabic"), QString(), 0x0600, 0x06ff },
+	{ N_("Devanagari"), QString(), 0x0900, 0x097f },
+	{ N_("Bengali"), QString(), 0x0980, 0x09ff },
+	{ N_("Gurmukhi"), QString(), 0x0a00, 0x0a7f },
+	{ N_("Gujarati"), QString(), 0x0a80, 0x0aff },
+	{ N_("Oriya"), QString(), 0x0b00, 0x0b7f },
+	{ N_("Tamil"), QString(), 0x0b80, 0x0bff },
+	{ N_("Telugu"), QString(), 0x0c00, 0x0c7f },
+	{ N_("Kannada"), QString(), 0x0c80, 0x0cff },
+	{ N_("Malayalam"), QString(), 0x0d00, 0x0d7f },
+	{ N_("Thai"), QString(), 0x0e00, 0x0e7f },
+	{ N_("Lao"), QString(), 0x0e80, 0x0eff },
+	{ N_("Tibetan"), QString(), 0x0f00, 0x0fbf },
+	{ N_("Georgian"), QString(), 0x10a0, 0x10ff },
+	{ N_("Hangul Jamo"), QString(), 0x1100, 0x11ff },
+	{ N_("Phonetic Extensions"), QString(), 0x1d00, 0x1d7f },
+	{ N_("Latin Extended Additional"), QString(), 0x1e00, 0x1eff },
+	{ N_("Greek Extended"), QString(), 0x1f00, 0x1fff },
+	{ N_("General Punctuation"), QString(), 0x2000, 0x206f },
+	{ N_("Superscripts and Subscripts"), QString(), 0x2070, 0x209f },
+	{ N_("Currency Symbols"), QString(), 0x20a0, 0x20cf },
+	{ N_("Combining Diacritical Marks for Symbols"), QString(), 0x20d0, 0x20ff },
+	{ N_("Letterlike Symbols"), QString(), 0x2100, 0x214f },
+	{ N_("Number Forms"), QString(), 0x2150, 0x218f },
+	{ N_("Arrows"), QString(), 0x2190, 0x21ff },
+	{ N_("Mathematical Operators"), QString(), 0x2200, 0x22ff },
+	{ N_("Miscellaneous Technical"), QString(), 0x2300, 0x23ff },
+	{ N_("Control Pictures"), QString(), 0x2400, 0x243f },
+	{ N_("Optical Character Recognition"), QString(), 0x2440, 0x245f },
+	{ N_("Enclosed Alphanumerics"), QString(), 0x2460, 0x24ff },
+	{ N_("Box Drawing"), QString(), 0x2500, 0x257f },
+	{ N_("Block Elements"), QString(), 0x2580, 0x259f },
+	{ N_("Geometric Shapes"), QString(), 0x25a0, 0x25ff },
+	{ N_("Miscellaneous Symbols"), QString(), 0x2600, 0x26ff },
+	{ N_("Dingbats"), QString(), 0x2700, 0x27bf },
+	{ N_("Miscellaneous Mathematical Symbols-A"), QString(), 0x27c0, 0x27ef },
+	{ N_("CJK Symbols and Punctuation"), QString(), 0x3000, 0x303f },
+	{ N_("Hiragana"), QString(), 0x3040, 0x309f },
+	{ N_("Katakana"), QString(), 0x30a0, 0x30ff },
+	{ N_("Bopomofo"), QString(), 0x3100, 0x312f },
+	{ N_("Hangul Compatibility Jamo"), QString(), 0x3130, 0x318f },
+	{ N_("Kanbun"), QString(), 0x3190, 0x319f },
+	{ N_("Enclosed CJK Letters and Months"), QString(), 0x3200, 0x32ff },
+	{ N_("CJK Compatibility"), QString(), 0x3300, 0x33ff },
+	{ N_("CJK Unified Ideographs"), QString(), 0x4e00, 0x9fa5 },
+	{ N_("Hangul Syllables"), QString(), 0xac00, 0xd7a3 },
+	{ N_("High Surrogates"), QString(), 0xd800, 0xdb7f },
+	{ N_("Private Use High Surrogates"), QString(), 0xdb80, 0xdbff },
+	{ N_("Low Surrogates"), QString(), 0xdc00, 0xdfff },
+	{ N_("Private Use Area"), QString(), 0xe000, 0xf8ff },
+	{ N_("CJK Compatibility Ideographs"), QString(), 0xf900, 0xfaff },
+	{ N_("Alphabetic Presentation Forms"), QString(), 0xfb00, 0xfb4f },
+	{ N_("Arabic Presentation Forms-A"), QString(), 0xfb50, 0xfdff },
+	{ N_("Combining Half Marks"), QString(), 0xfe20, 0xfe2f },
+	{ N_("CJK Compatibility Forms"), QString(), 0xfe30, 0xfe4f },
+	{ N_("Small Form Variants"), QString(), 0xfe50, 0xfe6f },
+	{ N_("Arabic Presentation Forms-B"), QString(), 0xfe70, 0xfeff },
+	{ N_("Halfwidth and Fullwidth Forms"), QString(), 0xff00, 0xffef },
+	{ N_("Specials"), QString(), 0xfff0, 0xffff },
+	{ N_("Linear B Syllabary"), QString(), 0x10000, 0x1007f },
+	{ N_("Linear B Ideograms"), QString(), 0x10080, 0x100ff },
+	{ N_("Aegean Numbers"), QString(), 0x10100, 0x1013f },
+	{ N_("Ancient Greek Numbers"), QString(), 0x10140, 0x1018f },
+	{ N_("Old Italic"), QString(), 0x10300, 0x1032f },
+	{ N_("Gothic"), QString(), 0x10330, 0x1034f },
+	{ N_("Ugaritic"), QString(), 0x10380, 0x1039f },
+	{ N_("Old Persian"), QString(), 0x103a0, 0x103df },
+	{ N_("Deseret"), QString(), 0x10400, 0x1044f },
+	{ N_("Shavian"), QString(), 0x10450, 0x1047f },
+	{ N_("Osmanya"), QString(), 0x10480, 0x104af },
+	{ N_("Cypriot Syllabary"), QString(), 0x10800, 0x1083f },
+	{ N_("Kharoshthi"), QString(), 0x10a00, 0x10a5f },
+	{ N_("Byzantine Musical Symbols"), QString(), 0x1d000, 0x1d0ff },
+	{ N_("Musical Symbols"), QString(), 0x1d100, 0x1d1ff },
+	{ N_("Ancient Greek Musical Notation"), QString(), 0x1d200, 0x1d24f },
+	{ N_("Tai Xuan Jing Symbols"), QString(), 0x1d300, 0x1d35f },
+	{ N_("Mathematical Alphanumeric Symbols"), QString(), 0x1d400, 0x1d7ff },
+	{ N_("CJK Unified Ideographs Extension B"), QString(), 0x20000, 0x2a6d6 },
+	{ N_("CJK Compatibility Ideographs Supplement"), QString(), 0x2f800, 0x2fa1f },
+	{ N_("Tags"), QString(), 0xe0000, 0xe007f },
+	{ N_("Variation Selectors Supplement"), QString(), 0xe0100, 0xe01ef },
+	{ N_("Supplementary Private Use Area-A"), QString(), 0xf0000, 0xffffd },
+	{ N_("Supplementary Private Use Area-B"), QString(), 0x100000, 0x10fffd }
 };
 
 const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
@@ -165,7 +166,7 @@ QString getBlock(char_type c)
 	// c falls into a covered area, and we can guess which
 	if (c >= unicode_blocks[lastBlock].start
 	    && c <= unicode_blocks[lastBlock].end)
-		return qt_(unicode_blocks[lastBlock].name);
+		return unicode_blocks[lastBlock].qname;
 
 	// c falls into an uncovered area, but we can guess which
 	if (c > unicode_blocks[lastBlock].end
@@ -180,7 +181,7 @@ QString getBlock(char_type c)
 		return QString();
 	lastBlock = i;
 	//LYXERR0("fail: " << int(c) << ' ' << lastBlock);
-	return qt_(unicode_blocks[lastBlock].name);
+	return unicode_blocks[lastBlock].qname;
 }
 
 
@@ -269,6 +270,10 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 		model_(new Model(this))
 {
 	setupUi(this);
+
+	//Translate names
+	for (int i = 0 ; i < no_blocks; ++i)
+		unicode_blocks[i].qname = qt_(unicode_blocks[i].name);
 
 	setFocusProxy(symbolsLW);
 
@@ -419,7 +424,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
-			if (qt_(unicode_blocks[i].name) == category) {
+			if (unicode_blocks[i].qname == category) {
 				range_start = unicode_blocks[i].start;
 				range_end = unicode_blocks[i].end;
 				break;
