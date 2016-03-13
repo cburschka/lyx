@@ -181,6 +181,11 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 
 	initMathSymbols();
 
+	FontInfo lyxfont;
+	lyxfont.setFamily(CMR_FAMILY);
+	QFontMetrics fm(frontend::getFont(lyxfont));
+	QSize item_size(fm.maxWidth(), fm.height() + 8);
+
 	typedef map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;
 	// The last element is the empty one.
@@ -191,11 +196,12 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
-		FontInfo lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
 		QFont font = frontend::getFont(lyxfont);
 		lwi->setFont(font);
 		lwi->setToolTip(toqstr(delim));
+		lwi->setSizeHint(item_size);
+		lwi->setTextAlignment(Qt::AlignTop);
 		list_items[ms.unicode] = lwi;
 		leftLW->addItem(lwi);
 	}
