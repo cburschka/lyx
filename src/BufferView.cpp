@@ -1771,21 +1771,25 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 
-	case LFUN_INSET_SELECT_ALL:
-		if (cur.depth() > 1
+	case LFUN_INSET_SELECT_ALL: {
+		// true if all cells are selected
+		bool const all_selected = cur.depth() > 1
 		    && cur.selBegin().at_begin()
-		    && cur.selEnd().at_end()) {
-			// All the contents of the inset if selected.
+		    && cur.selEnd().at_end();
+		// true if some cells are selected
+		bool const cells_selected = cur.depth() > 1
+		    && cur.selBegin().at_cell_begin()
+			&& cur.selEnd().at_cell_end();
+		if (all_selected || (cells_selected && !cur.inset().isTable())) {
+			// All the contents of the inset if selected, or only at
+			// least one cell but inset is not a table.
 			// Select the inset from outside.
 			cur.pop();
 			cur.resetAnchor();
 			cur.setSelection(true);
 			cur.posForward();
-		} else if (cur.selBegin().idx() != cur.selEnd().idx()
-			   || (cur.depth() > 1
-				   && cur.selBegin().at_cell_begin()
-			       && cur.selEnd().at_cell_end())) {
-			// At least one complete cell is selected.
+		} else if (cells_selected) {
+			// At least one complete cell is selected and inset is a table.
 			// Select all cells
 			cur.idx() = 0;
 			cur.pos() = 0;
@@ -1805,6 +1809,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		cur.setCurrentFont();
 		dr.screenUpdate(Update::Force);
 		break;
+	}
 
 
 	// This would be in Buffer class if only Cursor did not
