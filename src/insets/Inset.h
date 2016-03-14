@@ -347,6 +347,8 @@ public:
 	virtual bool clickable(BufferView const &, int, int) const { return false; }
 	/// Move one cell backwards
 	virtual bool allowsCaptionVariation(std::string const &) const { return false; }
+	// true for insets that have a table structure (InsetMathGrid, InsetTabular)
+	virtual bool isTable() const { return false; }
 
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
