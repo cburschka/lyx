@@ -881,6 +881,8 @@ public:
 	bool inheritFont() const { return false; }
 	///
 	bool allowsCaptionVariation(std::string const &) const;
+	//
+	bool isTable() const { return true; }
 	///
 	DisplayType display() const;
 	///

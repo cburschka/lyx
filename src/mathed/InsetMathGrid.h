@@ -154,6 +154,8 @@ public:
 	InsetMathGrid * asGridInset() { return this; }
 	/// identifies GridInset
 	InsetMathGrid const * asGridInset() const { return this; }
+	//
+	bool isTable() const { return true; }
 	///
 	col_type ncols() const;
 	///
