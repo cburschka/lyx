@@ -2203,7 +2203,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// inset (depending on cmd.x(), cmd.y()). This is needed for
 		// editing to fix bug 9628, but e.g. the context menu needs a
 		// cursor in front of the inset.
-		if (inset->hasSettings() &&
+		if ((inset->hasSettings() || !inset->contextMenuName().empty()) &&
 		    cur.nextInset() != inset && cur.prevInset() == inset)
 			cur.posBackward();
 	}
