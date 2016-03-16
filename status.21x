@@ -160,6 +160,9 @@ What's new
 
 - Erase correctly math multi-cell selections (bug 9747).
 
+- Fix warning about Undo when an empty subscript is automatically deleted in mathed
+  (bug 10022).
+
 * INTERNALS
 
 - Fix parsing problems of class and category declaration line in layout files
