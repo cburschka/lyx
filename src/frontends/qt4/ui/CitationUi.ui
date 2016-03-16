@@ -16,7 +16,7 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout_4">
+  <layout class="QGridLayout" name="gridLayout_4" rowstretch="1,0,0">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
@@ -219,7 +219,10 @@
       <attribute name="label">
        <string>&amp;Search Citation</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_3">
+      <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,1,0,0,0,0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinimumSize</enum>
+       </property>
        <item row="0" column="0">
         <widget class="QLabel" name="findKeysLA">
          <property name="text">
@@ -271,6 +274,12 @@
        </item>
        <item row="1" column="1">
         <widget class="QComboBox" name="fieldsCO">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="maxVisibleItems">
           <number>16</number>
          </property>
@@ -326,6 +335,12 @@
        </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="entriesCO">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="insertPolicy">
           <enum>QComboBox::NoInsert</enum>
          </property>
@@ -374,6 +389,9 @@
        <string>For&amp;matting</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinimumSize</enum>
+       </property>
        <item row="0" column="0">
         <widget class="QLabel" name="citationStyleLA">
          <property name="text">
@@ -441,7 +459,7 @@
            <property name="sizeHint" stdset="0">
             <size>
              <width>21</width>
-             <height>20</height>
+             <height>26</height>
             </size>
            </property>
           </spacer>
