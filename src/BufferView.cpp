@@ -2225,8 +2225,6 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	if (!inset || !cur.result().dispatched())
 		cur.dispatch(cmd);
 
-	cur.endUndoGroup();
-
 	// Notify left insets
 	if (cur != old) {
 		bool badcursor = old.fixIfBroken() | cur.fixIfBroken();
@@ -2234,6 +2232,8 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		if (badcursor)
 			cursor().fixIfBroken();
 	}
+
+	cur.endUndoGroup();
 
 	// Do we have a selection?
 	theSelection().haveSelection(cursor().selection());
