@@ -114,6 +114,8 @@ function(join rvalues glue routput)
 endfunction()
 
 macro(maketestname testname inverted listsuspicious listignored listunreliable listlabels)
+  # initialize output variable
+  set(${inverted} 0)
   string(REGEX MATCH "\\/[a-z][a-z](_[A-Z][A-Z])?\\/" _v ${${testname}})
   if(_v)
     string(REGEX REPLACE "\\/" "" _v ${_v})
