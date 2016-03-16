@@ -25,14 +25,6 @@ export/examples/uk/splash_(dvi3|pdf[45])_texF
 # Explore! (works with language_package==babel)
 export/doc/fr/UserGuide_.*_systemF
 
-# Bug in Babel-Spanish with Xe/LuaTeX and Unicode fonts:
-#
-# Babel is required for es/UserGuide as it explains Babel-defined Spanish
-# mathematical functions like \sen
-# Workaround: add a line to the user-preamble
-#   \@ifpackageloaded{fontspec}{\unaccentedoperators}{}
-export/doc/es/UserGuide_.*_systemF
-
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
 # + language nesting problem (may disappear after completed translation)
