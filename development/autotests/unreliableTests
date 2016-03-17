@@ -8,8 +8,9 @@
 # TODO: Name problem: *invalid* tests (wrong output) are not *unreliable*.
 #   Use "unfit" or "unapplicable" as better label and name of pattern file?
 
+
 Sublabel: nonstandard
-#
+# ===================
 # Documents with additional requirements,
 # e.g. a class or package file not in TeXLive.
 # TODO: rename to "extra"?
@@ -46,9 +47,7 @@ export/templates/IUCr-article_pdf4_systemF
 export/templates/ACM-siggraph_(dvi|pdf).*
 
 Sublabel: erratic
-# Tests depending on local configuration, OS, TeX distribution,
-# package versions, or the phase of the moon.
-# TODO: use *erratic* only for the phase-of-moon dependency.
+# Tests depending on local configuration, or the phase of the moon.
 
 # for unknonwn reasons, seminar fails at some places:
 export/examples/(|fr/)seminar_.*
@@ -57,7 +56,19 @@ export/examples/(|fr/)seminar_.*
 export/doc/es/Customization_pdf4_texF
 
 
-Sublabel: 1wrong 2output
+Sublabel: varying_versions
+# ========================
+# Test depending on TeX distribution, package versions or OS
+
+# document class aastex.cls replaced by aastex6.cls
+# (in CTAN and TL 2015-update around march 2016)
+# New layout required, see #10027
+export/templates/aastex.*
+export/examples/aas_sample.*
+
+
+Sublabel: wrong_output
+# ====================
 # Export does not fail but the resulting document has errors.
 #
 # These tests are actually not "unreliable" (different result for different
