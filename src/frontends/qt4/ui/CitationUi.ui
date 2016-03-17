@@ -20,61 +20,35 @@
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QHBoxLayout">
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="availableKeysLA">
-         <property name="text">
-          <string>A&amp;vailable Citations:</string>
-         </property>
-         <property name="buddy">
-          <cstring>availableLV</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>71</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="selectedKeysLA">
-         <property name="text">
-          <string>S&amp;elected Citations:</string>
-         </property>
-         <property name="buddy">
-          <cstring>selectedLV</cstring>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QListView" name="availableLV">
-           <property name="editTriggers">
-            <set>QAbstractItemView::NoEditTriggers</set>
-           </property>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLabel" name="availableKeysLA">
+             <property name="text">
+              <string>A&amp;vailable Citations:</string>
+             </property>
+             <property name="buddy">
+              <cstring>availableLV</cstring>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListView" name="availableLV">
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="spacerLA"/>
+           </item>
            <item>
             <widget class="QPushButton" name="addPB">
              <property name="toolTip">
@@ -165,11 +139,25 @@
           </layout>
          </item>
          <item>
-          <widget class="QListView" name="selectedLV">
-           <property name="editTriggers">
-            <set>QAbstractItemView::NoEditTriggers</set>
-           </property>
-          </widget>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QLabel" name="selectedKeysLA">
+             <property name="text">
+              <string>S&amp;elected Citations:</string>
+             </property>
+             <property name="buddy">
+              <cstring>selectedLV</cstring>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListView" name="selectedLV">
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -432,7 +420,16 @@
          <property name="spacing">
           <number>6</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -479,7 +476,16 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -551,12 +557,10 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>availableLV</tabstop>
   <tabstop>addPB</tabstop>
   <tabstop>deletePB</tabstop>
   <tabstop>upPB</tabstop>
   <tabstop>downPB</tabstop>
-  <tabstop>selectedLV</tabstop>
   <tabstop>infoML</tabstop>
   <tabstop>fulllistCB</tabstop>
   <tabstop>forceuppercaseCB</tabstop>
