@@ -1046,8 +1046,11 @@ CursorSlice Cursor::normalAnchor() const
 	// LASSERT: There have been several bugs around this code, that seem
 	// to involve failures to reset the anchor. We can at least not crash
 	// in release mode by resetting it ourselves.
-	LASSERT(anchor_.depth() >= depth(),
-		const_cast<DocIterator &>(anchor_) = *this);
+	if (anchor_.depth() < depth()) {
+		LYXERR0("Cursor is deeper than anchor. PLEASE REPORT.\nCursor is"
+		        << *this);
+		const_cast<DocIterator &>(anchor_) = *this;
+	}
 
 	CursorSlice normal = anchor_[depth() - 1];
 	if (depth() < anchor_.depth() && top() <= normal) {
