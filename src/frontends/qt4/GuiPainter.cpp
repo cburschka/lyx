@@ -327,9 +327,9 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 }
 
 
-int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
+void GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 {
-	return text(x, y, docstring(1, c), f);
+	text(x, y, docstring(1, c), f);
 }
 
 
@@ -368,13 +368,13 @@ void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const
 }
 
 
-int GuiPainter::text(int x, int y, docstring const & s,
-                     FontInfo const & f, bool const rtl,
-                     double const wordspacing)
+void GuiPainter::text(int x, int y, docstring const & s,
+                      FontInfo const & f, bool const rtl,
+                      double const wordspacing)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
-	if (s.empty())
-		return 0;
+	if (s.empty() || !isDrawingEnabled())
+		return;
 
 	/* Caution: The following ucs4 to QString conversions work for symbol fonts
 	only because they are no real conversions but simple casts in reality.
@@ -406,9 +406,6 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Note that we have to take in account space stretching (word spacing)
 	int const textwidth = fm.width(s) + count(s.begin(), s.end(), ' ') * wordspacing;
 
-	if (!isDrawingEnabled())
-		return textwidth;
-
 	textDecoration(f, x, y, textwidth);
 
 	if (use_pixmap_cache_) {
@@ -428,7 +425,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		if (QPixmapCache::find(key, pm)) {
 			// Draw the cached pixmap.
 			drawPixmap(x + lb, y - mA, pm);
-			return textwidth;
+			return;
 		}
 
 		// Only the right bearing of the last character is
@@ -456,27 +453,26 @@ int GuiPainter::text(int x, int y, docstring const & s,
 			drawPixmap(x + lb, y - mA, pm);
 			//rectangle(x-lb, y-mA, w, h, Color_green);
 		}
-		return textwidth;
+		return;
 	}
 
 	// don't use the pixmap cache,
 	do_drawText(x, y, str, rtl, f, ff);
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
-	return textwidth;
 }
 
 
-int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
-                     double const wordspacing)
+void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
+                      double const wordspacing)
 {
-	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing);
+	text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing);
 }
 
 
-int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
-                     Color other, size_type const from, size_type const to,
-                     double const wordspacing)
+void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
+                      Color other, size_type const from, size_type const to,
+                      double const wordspacing)
 {
 	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
 	FontInfo fi = f.fontInfo();
@@ -495,7 +491,7 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(other);
 	QRegion const clip(x + xmin, y - ascent, xmax - xmin, height);
 	setClipRegion(clip);
-	int const textwidth = text(x, y, str, fi, rtl, wordspacing);
+	text(x, y, str, fi, rtl, wordspacing);
 
 	// Then the part in normal color
 	// Note that in Qt5, it is not possible to use Qt::UniteClip,
@@ -505,8 +501,6 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	setClipRegion(region - clip);
 	text(x, y, str, fi, rtl, wordspacing);
 	setClipping(false);
-
-	return textwidth;
 }
 
 

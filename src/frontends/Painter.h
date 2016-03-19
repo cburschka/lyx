@@ -133,28 +133,29 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		graphics::Image const & image) = 0;
 
+	/** draw a character at position x, y (y is the baseline)
+	 */
+	virtual void text(int x, int y, char_type c, FontInfo const & f) = 0;
+
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is given by \c rtl.
-	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, FontInfo const & f,
-                     bool rtl = false, double wordspacing = 0.0) = 0;
+	virtual void text(int x, int y, docstring const & str, FontInfo const & f,
+                      bool rtl = false, double wordspacing = 0.0) = 0;
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
-	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, Font const & f,
-                     double wordspacing = 0.0) = 0;
+	virtual void text(int x, int y, docstring const & str, Font const & f,
+                      double wordspacing = 0.0) = 0;
 
 	/** draw a string at position x, y (y is the baseline), but
 	 * make sure that the part between \c from and \c to is in
 	 * \c other color. The text direction is enforced by the \c Font.
-	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, Font const & f,
-                     Color other, size_type from, size_type to,
-                     double const wordspacing) = 0;
+	virtual void text(int x, int y, docstring const & str, Font const & f,
+	                  Color other, size_type from, size_type to,
+	                  double const wordspacing) = 0;
 
 	void setDrawingEnabled(bool drawing_enabled)
 	{ drawing_enabled_ = drawing_enabled; }
@@ -163,12 +164,6 @@ public:
 	bool isDrawingEnabled() const { return drawing_enabled_; }
 
 	double pixelRatio() const { return pixel_ratio_; }
-
-	/// draw a char at position x, y (y is the baseline)
-	/**
-	* \return the width of the drawn text.
-	*/
-	virtual int text(int x, int y, char_type c, FontInfo const & f) = 0;
 
 	/// draw the underbar, strikeout, uuline and uwave font attributes
 	virtual void textDecoration(FontInfo const & f, int x, int y, int width) = 0;
