@@ -46,7 +46,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-const int Painter::thin_line = 0;
+const int Painter::thin_line = 1;
 
 GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
 	: QPainter(device), Painter(pixel_ratio),
