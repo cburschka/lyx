@@ -135,7 +135,16 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 namespace {
 
-void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
+// helper function: draw text and update x.
+void drawChar(PainterInfo & pi, int & x, int const y, char_type ch)
+{
+	pi.pain.text(x, y, ch, pi.base.font);
+	x += theFontMetrics(pi.base.font).width(ch);
+}
+
+
+void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kind)
+{
 	FontInfo const & font = pi.base.font;
 	int const em = theFontMetrics(font).em();
 	switch (kind) {
@@ -143,11 +152,11 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		/** Reference macro:
 		 *  \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\\@};
 		 */
-		x += pi.pain.text(x, y, from_ascii("L"), font);
+		drawChar(pi, x, y, 'L');
 		x -= em / 6;
-		x += pi.pain.text(x, y + em / 4, from_ascii("Y"), font);
+		drawChar(pi, x, y + em / 4, 'Y');
 		x -= em / 8;
-		x += pi.pain.text(x, y, from_ascii("X"), font);
+		drawChar(pi, x, y, 'X');
 		break;
 
 	case InsetSpecialChar::PHRASE_TEX: {
@@ -155,11 +164,11 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		 *  \def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\@}
 		 */
 		int const ex = theFontMetrics(font).ascent('x');
-		x += pi.pain.text(x, y, from_ascii("T"), font);
+		drawChar(pi, x, y, 'T');
 		x -= em / 6;
-		x += pi.pain.text(x, y + ex / 2, from_ascii("E"), font);
+		drawChar(pi, x, y + ex / 2, 'E');
 		x -= em / 8;
-		x += pi.pain.text(x, y, from_ascii("X"), font);
+		drawChar(pi, x, y, 'X');
 		break;
 	}
 	case InsetSpecialChar::PHRASE_LATEX2E:
@@ -168,10 +177,10 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		 *    \if b\expandafter\@car\f@series\@nil\boldmath\fi
 		 *    \LaTeX\kern.15em2$_{\textstyle\varepsilon}$}}
 		 */
-		drawLogo(pi, InsetSpecialChar::PHRASE_LATEX, x, y);
+		drawLogo(pi, x, y, InsetSpecialChar::PHRASE_LATEX);
 		x += 3 * em / 20;
-		x += pi.pain.text(x, y, from_ascii("2"), font);
-		x += pi.pain.text(x, y + em / 4, char_type(0x03b5), font);
+		drawChar(pi, x, y, '2');
+		drawChar(pi, x, y + em / 4, char_type(0x03b5));
 		break;
 
 	case InsetSpecialChar::PHRASE_LATEX: {
@@ -187,13 +196,13 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		 *        \kern-.15em%
 		 *        \TeX}
 		 */
-		x += pi.pain.text(x, y, from_ascii("L"), font);
+		drawChar(pi, x, y, 'L');
 		x -= 9 * em / 25;
-		FontInfo smaller = font;
-		smaller.decSize().decSize();
-		x += pi.pain.text(x, y - em / 5, from_ascii("A"), smaller);
+		PainterInfo pi2 = pi;
+		pi2.base.font.decSize().decSize();
+		drawChar(pi2, x, y - em / 5, 'A');
 		x -= 3 * em / 20;
-		drawLogo(pi, InsetSpecialChar::PHRASE_TEX, x, y);
+		drawLogo(pi, x, y, InsetSpecialChar::PHRASE_TEX);
 		break;
 	}
 	default:
@@ -269,7 +278,7 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 	case PHRASE_TEX:
 	case PHRASE_LATEX2E:
 	case PHRASE_LATEX:
-		drawLogo(pi, kind_, x, y);
+		drawLogo(pi, x, y, kind_);
 		break;
 	}
 }
