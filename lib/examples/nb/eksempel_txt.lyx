@@ -1,0 +1,475 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language norsk
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+DETTE ER TITTELEN FOR DOKUMENTET 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: tittelen burde se mer ut som en tittel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+av Fee \SpecialChar LyX
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Fee er FORFATTEREN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+12.
+ Juni, 1972
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: dette er en DATO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Innholdsfortegnelse
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Det hadde vært fint om vi ikke trengte å skrive innholdsfortegnelsen
+ selv
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.
+ Grunntanke..................1
+\end_layout
+
+\begin_layout Standard
+1.1 Hvordan \SpecialChar LyX
+ gjør det...............1
+\end_layout
+
+\begin_layout Standard
+1.2 Hvorfor \SpecialChar LyX
+ er bedre...............1
+\end_layout
+
+\begin_layout Standard
+2.
+ Funksjonalitet i \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+3.
+ Sløve forsøk på å bruke andre \SpecialChar LyX
+-greier
+\end_layout
+
+\begin_layout Standard
+4.
+ Mattegreier
+\end_layout
+
+\begin_layout Standard
+—————————————————
+\end_layout
+
+\begin_layout Standard
+1.
+ Grunntanke
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Section titles should probably stand out more
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grunntanken bak \SpecialChar LyX
+ er at du skal tenke på innholdet i det du skriver, og ikke
+ formen.
+\end_layout
+
+\begin_layout Standard
+1.1 Hvordan \SpecialChar LyX
+ gjør det
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ bruker \SpecialChar LaTeX
+, et dokumentsystem designet av Leslie Lamport i 1985.
+ Det bygger igjen på et typesettingssystem kalt \SpecialChar TeX
+, laget av Donald Knuth
+ i 1984.
+ \SpecialChar LaTeX
+ bygger på samme tankegods som \SpecialChar LyX
+.
+ Leslie Lamport sa en gang (se referanse [1])
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Antagelig bør ikke denne LITTERATURREFERANSEN 
+\begin_inset Quotes eld
+\end_inset
+
+hardkodes
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Hva om vi gjør Lamport's bok til den andre boka i bibliografien?
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes fld
+\end_inset
+
+Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
+ For at et dokument skal være lett å lese, må den visuelle strukturen tilsvare
+ den logiske strukturen.
+ Sitater og dataprogrammer er separate elementer, og må derfor kunne skilles
+ fra hverandre visuelt....
+ Siden \SpecialChar LaTeX
+ ikke an forstå din prosa, må du indikere den logiske strukturen
+ eksplisitt med spesielle kommandoer....
+ Mens du skriver dokumentet ditt, bør du tenke på strukturen, ikke på utseendet.
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Dette er et SITAT
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1.2 Hvorfor \SpecialChar LyX
+ er bedre
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ kan nyttes av flere mennesker enn \SpecialChar LaTeX
+.
+ Det er mye lettere å lære, siden du ikke trenger å lære \SpecialChar LaTeX
+ (som praktisk
+ talt er et programmeringsspråk).
+ \SpecialChar LyX
+ er 
+\begin_inset Quotes fld
+\end_inset
+
+hva du ser er hva du får
+\begin_inset Quotes frd
+\end_inset
+
+ omtrent som andre tekstbehandlere , bortsett fra at \SpecialChar LyX
+ er 
+\begin_inset Quotes fld
+\end_inset
+
+hva du ser er hva du mener
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Slik kombineres lettheten i tekstbehandlere med kraften i \SpecialChar LaTeX
+.
+ Dette er bra.
+ Dessuten er filformatet plattformuavhengig.
+ Ikke minst er det GRATIS!
+\end_layout
+
+\begin_layout Standard
+2.
+ Funksjonalitet i \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ har mange funksjoner som gjør det lettere å skrive dokumenter.
+ (Hvorfor ville du ellers bruke det?
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Denne parantesen hadde sett bedre ut i en fotnote.
+\end_layout
+
+\end_inset
+
+) Jeg er VELDIG INTERESSERT
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Utheve!
+\end_layout
+
+\end_inset
+
+ i å snakke om dem.
+ Her er en liste med noen få av dem.
+\end_layout
+
+\begin_layout Standard
+* \SpecialChar LyX
+ holder orden på marger og nummererte fotnoter for deg
+\end_layout
+
+\begin_layout Standard
+* \SpecialChar LyX
+ gjør det enkelt å skrive og redigere matematiske formler
+\end_layout
+
+\begin_layout Standard
+For en mer filosofisk diskusjon om hvorfor \SpecialChar LyX
+ er bedre enn mange andre tekstbehand
+lere, se seksjon 1.2, som du finner på side 1.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Disse KRYSSREFERANSENE burde ikke 
+\begin_inset Quotes fld
+\end_inset
+
+hardkodes
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Hva om vi endrer seksjonsnumrene?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+3.
+ Sløve forsøk på å bruke andre \SpecialChar LyX
+-greier
+\end_layout
+
+\begin_layout Standard
+Jeg skrev et program her om dagen.
+ Det så slik ut.
+\end_layout
+
+\begin_layout Standard
+5 REMARK MITT FANTASTISKE PROGRAM
+\end_layout
+
+\begin_layout Standard
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset
+
+JEG ER FANTASTISK!
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+20 GOTO 10 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Dette er PROGRAMKODE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
+ haiku
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ er fantastisk
+\end_layout
+
+\begin_layout Standard
+Typograf, tekstbehandler
+\end_layout
+
+\begin_layout Standard
+Den sparer så mye tid 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: Ikke spesielt godt, men det er poesi, også kjent som VERS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4.
+ Mattegreier
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Hint: disse mattegreiene burde skrives i mattemodus!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Min favorittligning er løsningen for annengradsligninger.
+ Hvis ax^2+bx+c=0 (eq.1), må x= -b + eller minus kvadratroten av b^2-4ac,
+ alt delt på 2a (eq.
+ 2).
+\end_layout
+
+\begin_layout Standard
+En annen favoritt er grunnlaget for kalkulus: f'(x) er definert som grenseverdie
+n når deltax går mot 0 av f(x+deltax) - f(x) delt på deltax (eq.
+ 3).
+\end_layout
+
+\begin_layout Standard
+————————————————
+\end_layout
+
+\begin_layout Standard
+REFERANSER
+\end_layout
+
+\begin_layout Standard
+[1] Lamport, Leslie.
+ \SpecialChar LaTeX
+: A Document Preparation System.
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\end_layout
+
+\end_body
+\end_document

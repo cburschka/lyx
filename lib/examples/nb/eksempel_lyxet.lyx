@@ -1,0 +1,403 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language norsk
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+DETTE ER TITTELEN FOR DOKUMENTET 
+\end_layout
+
+\begin_layout Author
+av Fee \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Date
+12.
+ Juni, 1972
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Grunntanke
+\end_layout
+
+\begin_layout Standard
+Grunntanken bak \SpecialChar LyX
+ er at du skal tenke på innholdet i det du skriver, og ikke
+ formen.
+ 
+\end_layout
+
+\begin_layout Subsection
+Hvordan \SpecialChar LyX
+ gjør det
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ bruker \SpecialChar LaTeX
+, et dokumentsystem designet av Leslie Lamport i 1985.
+ Det bygger igjen på et typesettingssystem kalt \SpecialChar TeX
+, laget av Donald Knuth
+ i 1984.
+ \SpecialChar LaTeX
+ bygger på samme tankegods som \SpecialChar LyX
+.
+ Leslie Lamport sa en gang (se referanse 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lamport"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes fld
+\end_inset
+
+Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
+ For at et dokument skal være lett å lese, må den visuelle strukturen tilsvare
+ den logiske strukturen.
+ Sitater og dataprogrammer er separate elementer, og må derfor kunne skilles
+ fra hverandre visuelt....
+ Siden \SpecialChar LaTeX
+ ikke an forstå din prosa, må du indikere den logiske strukturen
+ eksplisitt med spesielle kommandoer....
+ Mens du skriver dokumentet ditt, bør du tenke på strukturen, ikke på utseendet.
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hvorfor \SpecialChar LyX
+ er bedre
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:lyxbedre"
+
+\end_inset
+
+\SpecialChar LyX
+ kan nyttes av flere mennesker enn \SpecialChar LaTeX
+.
+ Det er mye lettere å lære, siden du ikke trenger å lære \SpecialChar LaTeX
+ (som i praktisk
+ talt er et programmeringsspråk).
+ \SpecialChar LyX
+ er 
+\begin_inset Quotes fld
+\end_inset
+
+hva du ser er hva du får
+\begin_inset Quotes frd
+\end_inset
+
+ omtrent som andre tekstbehandlere , bortsett fra at \SpecialChar LyX
+ er 
+\begin_inset Quotes fld
+\end_inset
+
+hva du ser er hva du mener
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Slik kombineres lettheten i tekstbehandlere med kraften i \SpecialChar LaTeX
+.
+ Dette er bra.
+ Dessuten er filformatet plattformuavhengig.
+ Ikke minst er det GRATIS!
+\end_layout
+
+\begin_layout Section
+Funksjonalitet i \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ har mange funksjoner som gjør det lettere å skrive dokumenter.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Hvorfor ville du ellers bruke det?
+\end_layout
+
+\end_inset
+
+ Jeg er 
+\emph on
+veldig interessert
+\emph default
+ i å snakke om dem.
+ Her er en liste med noen få av dem.
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ holder orden på marger og nummererte fotnoter for deg
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ gjør det enkelt å skrive og redigere matematiske formler
+\end_layout
+
+\begin_layout Standard
+For en mer filosofisk diskusjon om hvorfor \SpecialChar LyX
+ er bedre enn mange andre tekstbehand
+lere, se seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:lyxbedre"
+
+\end_inset
+
+, som du finner på side
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "subsec:lyxbedre"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sløve forsøk på å bruke andre \SpecialChar LyX
+-greier
+\end_layout
+
+\begin_layout Standard
+Jeg skrev et program her om dagen.
+ Det så slik ut.
+\end_layout
+
+\begin_layout LyX-Code
+5 REMARK MITT FANTASTISKE PROGRAM
+\end_layout
+
+\begin_layout LyX-Code
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset
+
+JEG ER FANTASTISK!
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+20 GOTO 10 
+\end_layout
+
+\begin_layout Standard
+Etter så mye programmering følte jeg meg mer kunstnerisk, så jeg skrev en
+ haiku
+\end_layout
+
+\begin_layout Verse
+\SpecialChar LyX
+ er fantastisk
+\begin_inset Newline newline
+\end_inset
+
+Typograf, tekstbehandler
+\begin_inset Newline newline
+\end_inset
+
+Den sparer så mye tid 
+\end_layout
+
+\begin_layout Section
+Mattegreier
+\end_layout
+
+\begin_layout Standard
+Min favorittligning er løsningen for annengradsligninger.
+ Hvis 
+\begin_inset Formula $ax^{2}+bx+c=0$
+\end_inset
+
+ (eq.1), må 
+\begin_inset Formula $x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$
+\end_inset
+
+ (eq.
+ 2).
+\end_layout
+
+\begin_layout Standard
+En annen favoritt er grunnlaget for kalkulus: 
+\begin_inset Formula $f'(x)\equiv\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\end_inset
+
+ (eq.
+ 3).
+\end_layout
+
+\begin_layout Section
+Notater
+\end_layout
+
+\begin_layout Standard
+Noen notater om å skrive om til lyx-måten:
+\end_layout
+
+\begin_layout Itemize
+Jeg kunne fjerne linjene som var lagd med bindestreker.
+ De var der for å separere tittelen og referansene fra resten av dokumentet.
+ Men \SpecialChar LyX
+ (\SpecialChar LaTeX
+) vet å skille slikt frahverandre med avstand i stedet.
+\end_layout
+
+\begin_layout Itemize
+Jeg skrev ikke formlene i displaymodus.
+ Jeg brukte heller ikke automatisk nummerering av ligninger, fordi dette
+ ikke dekkes av 
+\emph on
+innføringen.
+\end_layout
+
+\begin_layout Itemize
+Jeg trengte ikke skrive ordet 
+\begin_inset Quotes fld
+\end_inset
+
+Referanser
+\begin_inset Quotes frd
+\end_inset
+
+ under.
+ \SpecialChar LyX
+ skriver det automatisk (eller ordet 
+\begin_inset Quotes fld
+\end_inset
+
+Bibliografi
+\begin_inset Quotes frd
+\end_inset
+
+ avhengig av dokumenttypen) når du bruker tekststilen 
+\family sans
+Referanseliste
+\family default
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lamport"
+
+\end_inset
+
+ Lamport, Leslie.
+ 
+\emph on
+\SpecialChar LaTeX
+: A Document Preparation System.
+
+\emph default
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\end_layout
+
+\end_body
+\end_document

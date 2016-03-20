@@ -1,0 +1,5246 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+\end_preamble
+\use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language norsk
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Innføring i \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Author
+av \SpecialChar LyX
+-teamet
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Bruk epostlisten for \SpecialChar LyX
+-dokumentasjon, 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+, om du har kommentarer eller forslag til rettelser.
+ Oversatt til norsk av 
+\shape smallcaps
+Helge Hafting
+\shape default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduksjon
+\end_layout
+
+\begin_layout Section
+Velkommen til \SpecialChar LyX
+!
+\end_layout
+
+\begin_layout Standard
+Denne manualen er laget for alle dere som ikke kjenner \SpecialChar LaTeX
+ særlig godt, eller
+ ikke har hørt om det i det hele tatt.
+ Det er ingen grunn til panikk, du trenger ikke lære \SpecialChar LaTeX
+ for å bruke \SpecialChar LyX
+.
+ Det er, tross alt, hele poenget med \SpecialChar LyX
+: å gi noe i nærheten av et WYSIWYG-grenses
+nitt mot \SpecialChar LaTeX
+.
+ Likevel, det er noen ting du må lære for å bruke \SpecialChar LyX
+ effektivt.
+ 
+\end_layout
+
+\begin_layout Standard
+Noen av dere har antagelig funnet veien til dette dokumentet fordi dere
+ prøvde å lage to mellomrom etter punktum, eller forsøkte å få inn tre linjeskif
+t mellom avsnittene.
+ Dere oppdaget at det ikke gikk, og dere vil finne at de fleste triksene
+ fra andre tekstbehandlere ikke virker i \SpecialChar LyX
+.
+ Dette fordi de fleste andre tekstbehandlere lar deg styre avstander og
+ skrifttyper og lignende manuelt.
+ Så du ender ikke bare opp med å skrive dokumentet, du typesetter det også.
+ \SpecialChar LyX
+ typesetter for deg, på konsistent vis, og lar deg konsentrere deg om det
+ viktige, som innholdet i det du skriver.
+\end_layout
+
+\begin_layout Standard
+Så les videre for å lære mer om \SpecialChar LyX
+.
+ Å lese innføringen, er definitivt verdt tiden.
+\end_layout
+
+\begin_layout Section
+Hva innføringen 
+\emph on
+er, 
+\emph default
+og hva den 
+\emph on
+ikke er
+\end_layout
+
+\begin_layout Standard
+Før vi begynner, må du vite at denne 
+\emph on
+innføringen 
+\emph default
+bruker notasjonen beskrevet i 
+\emph on
+introduksjonen.
+ 
+\emph default
+Hvis du startet med dette dokumentet, vennligst les 
+\emph on
+introduksjonen 
+\emph default
+før du fortsetter med 
+\emph on
+innføringen.
+\end_layout
+
+\begin_layout Standard
+Nå som du vet hva de ulike skrifttypene i dokumentasjonen betyr, vil vi
+ fortelle litt om hva 
+\emph on
+innføringen 
+\emph default
+er til for.
+\end_layout
+
+\begin_layout Subsection
+Få mest mulig ut av innføringen
+\end_layout
+
+\begin_layout Standard
+Innføringen består av eksempler og øvelser.
+ For å få det meste ut av dette dokumentet, bør du lese gjennom det, skrive
+ inn alle småting vi ber deg å skrive, og prøve øvelsene for å se at du
+ får dem til.
+ Av praktiske grunner vil du kanskje skrive ut PDF-versjonen av dette dokumentet.
+\end_layout
+
+\begin_layout Standard
+Hvis du kjenner \SpecialChar LaTeX
+, kan du antagelig lese noe raskere gjennom 
+\emph on
+innføringen, 
+\emph default
+da mange \SpecialChar LyX
+-idéer bare er \SpecialChar LaTeX
+-idéer i forkledning.
+ Men, \SpecialChar LyX
+ har funksjoner du ønsker å lære om.
+ Selv om du ikke føler for å lese resten av 
+\emph on
+innføringen, 
+\emph default
+bør du definitivt ta en titt på seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:latexusers"
+
+\end_inset
+
+, som er skrevet spesielt for de med erfaring i å bruke \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Subsection
+Hva du 
+\emph on
+ikke 
+\emph default
+finner her
+\end_layout
+
+\begin_layout Itemize
+Detaljerte forklaringer på alle \SpecialChar LyX
+ sine funksjoner
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Se i 
+\emph on
+håndboka
+\emph default
+ når du trenger slikt.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Detaljerte beskrivelser av \SpecialChar LaTeX
+.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Unødvendig.
+ Hvis du vil lære noen nyttige triks du kan gjøre med \SpecialChar LaTeX
+ i \SpecialChar LyX
+, kan du ta en
+ titt på 
+\emph on
+inkluderte objekter.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+La oss gå videre, tiden er inne for ditt første dokument \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Chapter
+Komme i gang med \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Section
+Ditt første \SpecialChar LyX
+-dokument
+\end_layout
+
+\begin_layout Standard
+OK.
+ Du er klar for å begynne å skrive.
+ Før du gjør det, er det noen ting vi vil nevne, som forhåpentligvis vil
+ gjøre innføringen mer anvendelig.
+\end_layout
+
+\begin_layout Standard
+Fordi vi ikke kan gi deg all informasjon i innføringen, er det første du
+ trenger å vite hvordan du finner de andre hjelpedokumentene.
+ Det er enkelt: Start opp \SpecialChar LyX
+, velg 
+\emph on
+håndboka 
+\emph default
+fra menyvalget 
+\family sans
+Hjelp
+\family default
+.
+ Du vil kanskje åpne 
+\emph on
+innføringen 
+\emph default
+også, (om du ikke allerede leser den i \SpecialChar LyX
+).
+ På dette viset kan du lese dem mens du skriver ditt eget dokument.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+De fungerer også som eksempler på de mange mulighetene i \SpecialChar LyX
+.
+\end_layout
+
+\end_inset
+
+ Merk at når du har flere åpne dokumenter, kan du bruke menyen 
+\family sans
+Vis
+\family default
+ eller arkfanene for å bytte mellom dem.
+\end_layout
+
+\begin_layout Standard
+I innføringen antar vi at \SpecialChar LyX
+ er installert og fungerer, i tillegg til en \SpecialChar LaTeX
+-distribu
+sjon og en PDF-fremviser.
+ Dette skulle være greit nok på alle Linux- og BSD-distribusjoner av betydning,
+ og på Windows hvor dette ordnes av \SpecialChar LyX
+ sitt installasjonsprogram.
+\end_layout
+
+\begin_layout Standard
+Til slutt har vi skrevet en fil kalt 
+\family typewriter
+eksempel_txt.lyx
+\family default
+ så du kan trene opp dine \SpecialChar LyX
+-ferdigheter.
+ Forestill deg at den var skrevet av noen som ikke kjente til noen av de
+ fine mulighetene i \SpecialChar LyX
+.
+ Etterhvert som du lærer mer, foreslår vi at du fikser disse delene av 
+\family typewriter
+eksempel_txt.lyx
+\family default
+.
+ Fila inneholder også 
+\begin_inset Quotes fld
+\end_inset
+
+små
+\begin_inset Quotes frd
+\end_inset
+
+ hint om hvordan du fikser ting.
+ 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Hintene står i gule 
+\begin_inset Quotes fld
+\end_inset
+
+Merknader
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Klikk på merknaden for å se teksten den inneholder.
+\end_layout
+
+\end_inset
+
+ Om du vil jukse, eller sjekke hva du har gjort, har vi også en fil kalt
+ 
+\family typewriter
+eksempel_lyxet.lyx
+\family default
+ som inneholder samme tekst skrevet og typesatt av en \SpecialChar LyX
+-ekspert.
+\end_layout
+
+\begin_layout Standard
+Eksempelfilene finnes i mappa 
+\family typewriter
+examples/nb
+\family default
+ i mappa hvor \SpecialChar LyX
+ er installert.
+ Åpne 
+\family typewriter
+eksempel_txt.lyx
+\family default
+ og bruk 
+\family sans
+Fil\SpecialChar menuseparator
+Lagre
+\begin_inset space ~
+\end_inset
+
+som
+\family default
+ for å lagre en arbeidskopi i din egen mappe.
+ Etter som du fikser deler av rådokumentet, sjekk hvordan endringene vises
+ i PDFen.
+\end_layout
+
+\begin_layout Standard
+Forresten, mappa 
+\family typewriter
+examples
+\family default
+ inneholder mange andre eksempelfiler.
+ De viser hvordan du gjør alskens fancy ting med \SpecialChar LyX
+.
+ Når du har lest innføringen, eller når du lurer på hvordan du gjør noe
+ spesielt, se på disse filene.
+\end_layout
+
+\begin_layout Subsection
+Skrive, forhåndsvise, eksportere
+\end_layout
+
+\begin_layout Itemize
+Lag en ny fil med 
+\family sans
+Fil\SpecialChar menuseparator
+Ny
+\end_layout
+
+\begin_layout Itemize
+Skriv en setning som: 
+\family typewriter
+Dette er mitt første \SpecialChar LyX
+-dokument!
+\end_layout
+
+\begin_layout Itemize
+Lagre dokumentet med 
+\family sans
+Fil\SpecialChar menuseparator
+Lagre
+\begin_inset space ~
+\end_inset
+
+som\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+Lag en PDF-fil, med 
+\family sans
+Dokument\SpecialChar menuseparator
+Vis
+\family default
+ eller knappen 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ på verktøylinja.
+ \SpecialChar LyX
+ vil åpne en PDF-leser og vise nøyaktig hvordan dokumentet vil se ut når
+ du skriver det ut.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Du kan spare tid på å la PDF-leseren være åpen i bakgrunnen.
+ Da kan du bruke 
+\family sans
+Dokument\SpecialChar menuseparator
+Oppdater
+\family default
+ eller knappen 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ på verktøylinja, og deretter bare klikke på PDF-vinduet (eller bringe det
+ tilbake fra minimert tilstand) etterpå.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Eksporter det trykeklare dokumentet med 
+\family sans
+Fil\SpecialChar menuseparator
+Eksport
+\family default
+ til formatet du ønsker.
+\end_layout
+
+\begin_layout Standard
+Gratulerer! Du har skrevet ditt første \SpecialChar LyX
+-dokument.
+ Resten er bare detaljer.
+\end_layout
+
+\begin_layout Subsection
+Enkle operasjoner
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ kan naturligvis gjøre det meste av det du er vant til å gjøre i tekstbehandlere.
+ Den vil brekke om linjer og lage innrykk automatisk.
+ Her er en rask beskrivelse av en del enkle operasjoner.
+\end_layout
+
+\begin_layout Description
+Angre \SpecialChar LyX
+ lar deg angre flere ganger.
+ Du kan gå tilbake på alt du har gjort helt siden du begynte å redigere,
+ ved å bruke menyvalg 
+\family sans
+Redigere\SpecialChar menuseparator
+Angre
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "undo"
+\end_inset
+
+) om og om igjen.
+ Hvis du angrer for mye, velger du bare 
+\family sans
+Rediger\SpecialChar menuseparator
+Gjør
+\begin_inset space ~
+\end_inset
+
+om
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "redo"
+\end_inset
+
+) for å få det tilbake.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+For tiden kan du angre opptil 100 steg.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Klipp/lim/kopier Bruk 
+\family sans
+Rediger\SpecialChar menuseparator
+Klipp
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "cut"
+\end_inset
+
+), 
+\family sans
+Rediger\SpecialChar menuseparator
+Kopier
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "copy"
+\end_inset
+
+), og 
+\family sans
+Rediger\SpecialChar menuseparator
+Lim
+\begin_inset space ~
+\end_inset
+
+inn
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "paste"
+\end_inset
+
+) for å klippe vekk, kopiere, og lime inn.
+ Eller lim inn tekst automatisk (inkludert tekstutvalg i andre programmer)
+ med den 
+\emph on
+midterste musknappen.
+\end_layout
+
+\begin_layout Description
+Søk/erstatt Bruk 
+\family sans
+Rediger\SpecialChar menuseparator
+Søk
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+erstatt
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
+\end_inset
+
+) for å søke.
+ I dialogboksen bruker du knappen 
+\family sans
+Finn
+\begin_inset space ~
+\end_inset
+
+Neste
+\family default
+ for å søke, og knappen 
+\family sans
+Erstatt
+\family default
+ for å bytte ut ord.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Steng vinduet når du er ferdig, eller la det stå oppe hvis det passer deg
+ bedre.
+ De fleste dialogbokser i \SpecialChar LyX
+ kan brukes slik.
+ Bare vær sikker på at det rette vinduet har fokus når du prøver å skrive
+ i hovedvinduet eller en av dialogboksene.
+\end_layout
+
+\end_inset
+
+ Om du vil, kan du oppgi om \SpecialChar LyX
+ skal skille på små/store bokstaver eller bare
+ søke etter hele ord; du kan også lete baklengs gjennom dokumentet.
+\end_layout
+
+\begin_layout Description
+Tegnformattering Du kan 
+\emph on
+utheve 
+\emph default
+tekst (knappen 
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
+\end_inset
+
+, som vanligvis setter tekst i kursiv), sette den i 
+\noun on
+Substantiv Stil
+\noun default
+ (knappen 
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
+\end_inset
+
+, vanligvis kapitéler, brukes for navn på mennesker), eller bruk din egen
+ formattering med 
+\family sans
+Rediger\SpecialChar menuseparator
+Tekststil\SpecialChar menuseparator
+Egendefinert
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+Verktøylinja Andre knapper på verktøylinja gir deg flere av de mer populære
+ funksjonene, som for eksempel sette inn formel, bilde eller tabell.
+\end_layout
+
+\begin_layout Standard
+Du har ennå ikke skrevet nok til å ha nytte av alle disse funksjonene.
+ Men etterhvert som du skriver mer, prøv angre, lime inn, osv.
+\end_layout
+
+\begin_layout Subsection
+WYSIWYM: Mellomrom og avstander i \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+En av de vanskeligste tingene for nybegynnere å venne seg til, er hvordan
+ \SpecialChar LyX
+ håndterer mellomrom.
+ Uansett hvor mange ganger du trykker 
+\family sans
+Return
+\family default
+, vil du bare få en blank linje.
+ Og samme hvor mange ganger du trykker 
+\family sans
+mellomrom
+\family default
+, får du bare ett mellomrom.
+ På en tom linje kan du ikke en gang skrive ett mellomrom.
+ 
+\family sans
+Tab
+\family default
+-tasten flytter ikke frem en tabulatorposisjon; det 
+\emph on
+er 
+\emph default
+faktisk ikke noen tabulatorposisjoner.
+ Det er ingen formatteringslinjal øverst på siden for å sette tabulatorer
+ eller marger heller.
+\end_layout
+
+\begin_layout Standard
+Mange tekstbehandlere er basert på WYSIWYG-prinsippet: 
+\begin_inset Quotes fld
+\end_inset
+
+What You See Is What You Get
+\begin_inset Quotes frd
+\end_inset
+
+, eller 
+\begin_inset Quotes fld
+\end_inset
+
+Det du ser, er det du får
+\begin_inset Quotes frd
+\end_inset
+
+.
+ \SpecialChar LyX
+ er derimot basert på prinsippet 
+\begin_inset Quotes fld
+\end_inset
+
+ What You See Is What You 
+\emph on
+Mean
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+, eller 
+\begin_inset Quotes fld
+\end_inset
+
+Det du ser, er det du 
+\emph on
+mener
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Du skriver det du mener, og \SpecialChar LyX
+ tar seg av typesettingen slik at det ser bra
+ ut.
+ Rent grammatisk skiller 
+\family sans
+Return
+\family default
+ mellom to avsnitt, og 
+\family sans
+mellomrom
+\family default
+ skiller mellom to ord; så det er ingen grunn til å ha flere av dem på rad;
+ en 
+\family sans
+Tab
+\family default
+ har ingen grammatisk funksjon – så \SpecialChar LyX
+ støtter den ikke.
+ Når du bruker \SpecialChar LyX
+, vil du bruke mer tid på 
+\emph on
+innholdet 
+\emph default
+i dokumentet ditt, og mindre tid på bekymringer om 
+\emph on
+formatet.
+
+\emph default
+ Se 
+\emph on
+introduksjonen 
+\emph default
+for mer informasjon om WYSIWYM-konseptet.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ har (mange) måter å finstille formatteringen av dokumentet.
+ For det kan jo hende at \SpecialChar LyX
+ ikke typesetter 
+\emph on
+nøyaktig 
+\emph default
+det du mener.
+ 
+\emph on
+Håndboka 
+\emph default
+har informasjon om slikt.
+ Det inkluderer vannrette utfyllinger og loddrette avstander — som er kraftigere
+ og nyttigere metoder enn å bruke ekstra mellomrom og blanke linjer.
+ Det er også mulig å endre skriftstørrelse og -stil, og justering av avsnitt.
+ Men grunnidéen er at du kan skrive hele dokumentet ditt med fokus på innhold,
+ og bare tenke på å finpusse formatteringen på slutten.
+ Med vanlige tekstbehandlere ville du blitt distrahert av formattering hele
+ veien i skriveprosessen.
+\end_layout
+
+\begin_layout Section
+Miljøer
+\end_layout
+
+\begin_layout Standard
+Ulike deler av et dokument har ulike formål; vi kaller disse delene 
+\emph on
+miljøer.
+
+\emph default
+ Mesteparten av et dokument er vanlig tekst.
+ Seksjonstitler (kapittel, underseksjon, osv.) lar leseren vite at et nytt
+ tema eller undertema vil bli diskutert.
+ Visse typer dokumenter har spesielle miljøer.
+ En journalartikkel har et sammendrag og en tittel.
+ Et brev har ingen av disse, men vil antagelig ha et miljø som spesifiserer
+ avsenderadressen.
+\end_layout
+
+\begin_layout Standard
+Miljøer er en hoveddel av 
+\begin_inset Quotes fld
+\end_inset
+
+Det du ser er det du mener
+\begin_inset Quotes frd
+\end_inset
+
+-filosofien i \SpecialChar LyX
+.
+ Et gitt miljø kan trenge en bestemt skrifttype, -størrelse, innrykk, linjeavsta
+nd og mer.
+ Problemet forverres fordi formatteringskravene kan endres: en journal kan
+ f.eks.
+ bruke fet 18-punkt sentrert tekst for seksjonsoverskrifter, mens en annen
+ journal vil ha kursiv, 15-punkt venstrejustert skrift; ulike språk kan
+ ha ulike standarder for innrykk; bibliografier kan variere veldig i utseende.
+ \SpecialChar LyX
+ lar deg slippe å lære alle de ulike formatteringsstilene.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Miljø
+\family default
+-valgboksen finner du på venstre ende av verktøylinja, den ser slik ut:
+ 
+\begin_inset Graphics
+	filename clipart/ToolbarEnvBox.png
+	scale 75
+	clip
+
+\end_inset
+
+.
+ Den indikerer hva slags miljø du skriver i for øyeblikket.
+ Når du skrev ditt første dokument stod det 
+\begin_inset Quotes fld
+\end_inset
+
+Standard
+\begin_inset Quotes frd
+\end_inset
+
+, som er standardmiljøet for tekst.
+ Nå skal du prøve noen fler miljøer i det nye dokumentet, så du kan se hvordan
+ de virker.
+\end_layout
+
+\begin_layout Subsection
+Seksjoner og underseksjoner
+\end_layout
+
+\begin_layout Standard
+Skriv ordet 
+\family typewriter
+Introduksjon
+\family default
+ på første linje i den nye \SpecialChar LyX
+-fila, og velg 
+\family sans
+Seksjon
+\family default
+ i 
+\family sans
+Miljø
+\family default
+-boksen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Du trenger ikke å 
+\emph on
+velge 
+\emph default
+linja.
+ Hvis intet er valgt, vil \SpecialChar LyX
+ endre avsnittet du holder på med til den valgte
+ typen miljø.
+ Alternativt kan du endre flere avsnitt til et annet miljø ved å velge dem
+ før du plukker et miljø.
+\end_layout
+
+\end_inset
+
+ Pass på at du bruker 
+\family sans
+Seksjon
+\family default
+ og 
+\emph on
+ikke
+\emph default
+ 
+\family sans
+Seksjon*
+\family default
+, som vi ser på nedenfor.
+ \SpecialChar LyX
+ gir seksjonen nummer 
+\begin_inset Quotes fld
+\end_inset
+
+1
+\begin_inset Quotes frd
+\end_inset
+
+ og typesetter overskriften med større skrift.
+ Trykk 
+\family sans
+Return
+\family default
+ nå.
+ Merk hvordan 
+\family sans
+Miljø
+\family default
+-boksen bytter fra 
+\begin_inset Quotes fld
+\end_inset
+
+Seksjon
+\begin_inset Quotes frd
+\end_inset
+
+ tilbake til 
+\begin_inset Quotes fld
+\end_inset
+
+Standard
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Overskrifter, og mange andre miljøer, antas å ta slutt når du trykker 
+\family sans
+Return
+\family default
+\SpecialChar endofsentence
+ Skriv denne introduksjonen: 
+\end_layout
+
+\begin_layout LyX-Code
+Dette er introduksjonen til mitt første \SpecialChar LyX
+-dokument.
+\end_layout
+
+\begin_layout Standard
+Trykk 
+\family sans
+Return
+\family default
+ igjen, og velg 
+\family sans
+Seksjon
+\family default
+ fra 
+\family sans
+miljø-
+\family default
+boksen igjen.
+ \SpecialChar LyX
+ skriver 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+ og venter på at du skal skrive en overskrift.
+ Skriv 
+\family typewriter
+
+\begin_inset Quotes fld
+\end_inset
+
+Mer
+\begin_inset space ~
+\end_inset
+
+stoff
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+, igjen vil du se at \SpecialChar LyX
+ setter dette som en seksjonsoverskrift.
+\end_layout
+
+\begin_layout Standard
+Det blir bedre.
+ Gå til slutten av seksjon
+\begin_inset space ~
+\end_inset
+
+1 igjen (etter 
+\begin_inset Quotes fld
+\end_inset
+
+mitt første \SpecialChar LyX
+-dokument.
+\begin_inset Quotes frd
+\end_inset
+
+) og trykk 
+\family sans
+Return
+\family default
+ igjen, og velg 
+\family sans
+Seksjon
+\family default
+ i 
+\family sans
+Miljø
+\family default
+-boksen igjen.
+ På nytt skriver \SpecialChar LyX
+ 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+ og venter på at du skal skrive en overskrift.
+ Skriv 
+\family typewriter
+Om dette dokumentet
+\family default
+.
+ Seksjonen
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes fld
+\end_inset
+
+Mer stoff
+\begin_inset Quotes frd
+\end_inset
+
+, som var seksjon
+\begin_inset space ~
+\end_inset
+
+2, ble automatisk omnummerert til seksjon
+\begin_inset space ~
+\end_inset
+
+3! På ekte WYSIWYM-vis, trenger du bare oppgi hvilken tekst som er seksjonsovers
+krifter, og \SpecialChar LyX
+ tar jobben med å nummerere og typesette dem.
+\end_layout
+
+\begin_layout Standard
+Trykk 
+\family sans
+Return
+\family default
+ for å komme tilbake til 
+\family sans
+Standard
+\family default
+ miljø, og skriv inn de følgende fem linjene:
+\end_layout
+
+\begin_layout LyX-Code
+Seksjoner og underseksjoner beskrives under.
+\end_layout
+
+\begin_layout LyX-Code
+Seksjonsbeskrivelse
+\end_layout
+
+\begin_layout LyX-Code
+Seksjoner er større enn underseksjoner.
+\end_layout
+
+\begin_layout LyX-Code
+Underseksjonsbeskrivelse
+\end_layout
+
+\begin_layout LyX-Code
+Underseksjoner er mindre enn seksjoner.
+\end_layout
+
+\begin_layout Standard
+Klikk på den andre linja, og velg 
+\family sans
+Underseksjon
+\family default
+ i 
+\family sans
+Miljø
+\family default
+-boksen.
+ \SpecialChar LyX
+ gir underseksjonen nummer 
+\begin_inset Quotes fld
+\end_inset
+
+2.1
+\begin_inset Quotes frd
+\end_inset
+
+, og typesetter den med en skrift som er større enn vanlig tekst men mindre
+ enn seksjonsoverskriften..
+ Gjør den fjerde linja om til 
+\family sans
+Underseksjon
+\family default
+ også.
+ Som du antagelig ventet, fikk den nummer 
+\begin_inset Quotes fld
+\end_inset
+
+2.2
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Hvis du setter ennå en seksjon foran seksjon
+\begin_inset space ~
+\end_inset
+
+2, vil seksjon
+\begin_inset space ~
+\end_inset
+
+2 omnummereres til seksjon
+\begin_inset space ~
+\end_inset
+
+3, og underseksjonene omnummereres til 
+\begin_inset Quotes fld
+\end_inset
+
+3.1
+\begin_inset Quotes frd
+\end_inset
+
+ og 
+\begin_inset Quotes fld
+\end_inset
+
+3.2
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Seksjoneringen har fler nivåer, underunderseksjon, avsnitt og underavsnitt.
+ Disse kan du se på selv.
+ Kanhende legger du merke til at avsnitt og underavsnitt ikke nummereres
+ til vanlig, og at underavsnitt settes med innrykk; se 
+\emph on
+håndboka 
+\emph default
+for en forklaring, og oppskrifter på hvordan det kan endres.
+ 
+\family sans
+Kapittel
+\family default
+-overskrifter er det høyeste nivået for seksjonering, men de kan bare brukes
+ i visse dokumenttyper.
+ Se seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Document-Classes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Til sist kan det hende du vil ha noen seksjoner eller underseksjoner som
+ ikke er nummerert.
+ Det fins miljøer for dette også.
+ Hvis du endrer en av seksjonsoverskriftene til miljøtypen 
+\family sans
+Seksjon*
+\family default
+, vil \SpecialChar LyX
+ bruke samme skrifttype som en vanlig seksjon, men den vil ikke få
+ nummer.
+ Tilsvarende 
+\begin_inset Quotes fld
+\end_inset
+
+stjerne
+\begin_inset Quotes frd
+\end_inset
+
+-former fins for 
+\family sans
+Underseksjon
+\family default
+ og 
+\family sans
+Underunderseksjon
+\family default
+.
+ Prøv å gjøre om noen seksjoner eller underseksjoner til stjernevarianter,
+ og se hvordan seksjonsnumrene oppdateres for de andre.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Fiks seksjons- og underseksjonsoverskriftene i 
+\family typewriter
+eksempel_txt.lyx
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Lister i flere nivåer
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ har flere ulike miljøer for å typesette lister.
+ Listemiljøene sparer deg for å trykke 
+\family sans
+Tab
+\family default
+ en million ganger når du lager en punktvis oppsummering, eller fra å omnummerer
+e hele lista når du legger til et punkt i midten.
+ Ulike typer dokumeter trenger ulike listemiljøer:
+\end_layout
+
+\begin_layout Itemize
+En lysarkpresentasjon bruker gjerne 
+\family sans
+Punktliste
+\family default
+-miljøet for å lage punkter.
+\end_layout
+
+\begin_layout Itemize
+En disposisjon kan bruke miljøet 
+\family sans
+Nummerert
+\begin_inset space ~
+\end_inset
+
+liste
+\family default
+ med nummerering på første nivå og bokstaver på neste nivå.
+\end_layout
+
+\begin_layout Itemize
+Et dokument som beskriver programvarepakker kan bruke miljøet 
+\family sans
+Beskrivelse
+\family default
+, hvor hvert punkt begynner med et ord i fet skrift.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Liste
+\family default
+-miljøet (også kalt 
+\family sans
+Etikettering
+\family default
+) er en variant av 
+\family sans
+Beskrivelse
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+La oss lage en liste over hvorfor \SpecialChar LyX
+ er bedre enn andre tekstbehandlere.
+ Et eller annet sted i dokumentet ditt skriver du:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\SpecialChar LyX
+ er bedre enn andre tekstbehandlere fordi:
+\end_layout
+
+\begin_layout Standard
+og trykk 
+\family sans
+Return
+\family default
+.
+ Velg 
+\family sans
+Punktliste
+\family default
+ i 
+\family sans
+Miljø
+\family default
+-boksen (
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
+\end_inset
+
+).
+ \SpecialChar LyX
+ lager et kulepunkt på linja.
+ Skriv inn grunnene dine:
+\end_layout
+
+\begin_layout LyX-Code
+Typesetting gjøres for deg.
+\end_layout
+
+\begin_layout LyX-Code
+Matte er WYSIWYG
+\end_layout
+
+\begin_layout LyX-Code
+Lists er veldig enkle å lage!
+\end_layout
+
+\begin_layout Standard
+Til forskjell fra overskrifter, avsluttes ikke listemiljøer når du trykker
+ 
+\family sans
+Return
+\family default
+.
+ I stedet antar \SpecialChar LyX
+ at du fortsetter med neste punkt på lista.
+ Oppskriften over resulterer derfor i ei liste med tre punkter.
+ Hvis du vil ha mer enn ett avsnitt inni 
+\emph on
+ett listepunkt, 
+\emph default
+er en måte å bruke 
+\family sans
+Beskyttet
+\begin_inset space ~
+\end_inset
+
+linjeskift
+\family default
+, som du får med 
+\family sans
+Ctrl+Return
+\family default
+.
+ For å komme ut av lista, må du velge 
+\family sans
+Standard
+\family default
+-miljøet (eller bruke tastekombinasjonen 
+\begin_inset Info
+type  "shortcut"
+arg   "layout Standard"
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Nå har du en flott punktliste.
+ Kanskje du vil kjøre \SpecialChar LaTeX
+ for å se en forhåndsvisning.
+ Men hva om du heller vil nummerere grunnene? Vel, bare velg hele lista
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LyX
+ lar deg ikke velge første kulepunkt (eller tallet i en nummerert seksjonstittel
+) medmindre du også velger avsnittet 
+\emph on
+foran 
+\emph default
+det, som du sannsynligvis ikke ønsker å gjøre.
+ Dette er med vilje, da punkttegnet eller tallet avhenger av henholdsvis
+ av dokumentinnstillinger eller posisjon i teksten.
+\end_layout
+
+\end_inset
+
+ og velge 
+\family sans
+Nummerert_liste
+\family default
+ i 
+\family sans
+Miljø
+\family default
+-boksen (
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
+\end_inset
+
+).
+ Vips! Som nevnt, hvis du legger til eller fjerner punkter, vil \SpecialChar LyX
+ rette nummereri
+ngen.
+\end_layout
+
+\begin_layout Standard
+Mens lista ennå er valgt, kan du prøve ut de andre listemiljøene, 
+\family sans
+Beskrivelse
+\family default
+ og 
+\family sans
+Liste
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family default
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\family sans
+Etikettering
+\family default
+ (
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
+\end_inset
+
+ og 
+\begin_inset Info
+type  "icon"
+arg   "layout List"
+\end_inset
+
+), for å se hvordan de ser ut.
+ For disse miljøene består hvert punkt av et begrep, som er det første ordet,
+ fulgt av en definisjon, som er resten av avsnittet (til du trykker 
+\family sans
+Return
+\family default
+).
+ Begrepet typesettes enten med fet skrift (
+\family sans
+Beskrivelse
+\family default
+) eller separeres med en 
+\begin_inset Quotes fld
+\end_inset
+
+Tab
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Men en typesetters tab, som tilpasses lengden av det lengste begrepet, ikke
+ en patetisk, rigid, fastlagt skrivemaskin-
+\family sans
+Tab
+\family default
+.
+\end_layout
+
+\end_inset
+
+ (
+\family sans
+List
+\family default
+) fra resten av avsnittet.
+ Hvis du vil ha mer enn ett ord i begrepet, separerer du ordene med 
+\family sans
+harde
+\begin_inset space ~
+\end_inset
+
+mellomrom
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Typesett lista i 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Standard
+Lister kan brukes inni lister på allslags interessante vis.
+ Et opplagt eksempel er et punktvis sammendrag.
+ Nummererte og punktbaserte lister har ulike opplegg for å nummerere i flere
+ nivåer.
+ Se 
+\emph on
+håndboka 
+\emph default
+for detaljer om ulike lister og eksempler på lister med fler nivåer.
+\end_layout
+
+\begin_layout Subsection
+Andre miljøer: Vers, Sitat og mer
+\end_layout
+
+\begin_layout Standard
+Det er to miljøer for å skille sitater fra annen tekst: 
+\family sans
+Sitat
+\family default
+ for korte sitater, og 
+\family sans
+Sitering
+\family default
+ for lengre.
+ Dataprogrammer (Miljøet 
+\family sans
+\SpecialChar LyX
+-Kode
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+brukes til lange eksempler i denne innføringen
+\end_layout
+
+\end_inset
+
+) settes med 
+\family typewriter
+maskinskrift
+\family default
+; dette miljøet er det eneste i \SpecialChar LyX
+ hvor du kan bruke flere mellomrom på rad
+ for å lage innrykk i programkoden.
+ Du kan til og med skrive poesi med 
+\family sans
+Vers
+\family default
+-stilen, bruk 
+\family sans
+Return
+\family default
+ for å skille ulike vers, og 
+\family sans
+Ctrl+Return
+\family default
+ for å skille mellom verselinjer inni verset.
+ Se 
+\emph on
+håndboka 
+\emph default
+for mer utfyllende beskrivelser av alle tilgjengelige \SpecialChar LyX
+-miljøer.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Bruk 
+\family sans
+Sitat, \SpecialChar LyX
+-Code,
+\family default
+ og 
+\family sans
+Verse
+\family default
+ i 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Chapter
+Skrive dokumenter
+\end_layout
+
+\begin_layout Standard
+Forrige kapittel lot deg forhåpejntligvis bli vant med å skrive i \SpecialChar LyX
+.
+ Det introduserte grunnleggende redigering i \SpecialChar LyX
+, samt en av \SpecialChar LyX
+ sine sterke sider:
+ miljøer.
+ Nå er det slik at de fleste som bruker \SpecialChar LyX
+, ønsker å skrive dokumenter: vitenskape
+lige og andre artikler, bøker, bruksanvisninger og brev.
+ Dette kapitlet er ment å ta deg fra å simpelthen skrive i \SpecialChar LyX
+, til å skrive
+ hele dokumenter.
+ Det introduserer deg til dokumentklasser, som lar deg skrive ulike typer
+ dokumenter.
+ Videre viser det deg mange av tilleggene som gjør tekst til et dokument
+ slikt som titler, fotnoter, kryssreferanser, bibliografier og innholdsfortegnel
+ser.
+\end_layout
+
+\begin_layout Section
+Dokumentklasser
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Document-Classes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Forskjellige slags dokumenter bør typesettes ulikt.
+ For eksempel trykkes bøker vanligvis tosidig, mens artikler gjerne trykkes
+ ensidig.
+ Dessuten har mange dokumenter spesielle miljøer: brev har noen miljøer
+ — som avsenderadresse og signatur — som ikke har noe i en bok eller artikkel
+ å gjøre.
+ \SpecialChar LyX
+ opererer med 
+\emph on
+dokumentklasser,
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+for \SpecialChar LaTeX
+ brukere: dette er det samme som dokumentklasser i \SpecialChar LaTeX
+
+\end_layout
+
+\end_inset
+
+
+\emph on
+ 
+\emph default
+som tar seg av hovedforskjellene mellom ulike typer dokumenter.
+ Denne innføringen er for eksempel skrevet med dokumentklassen 
+\family sans
+Book
+\family default
+.
+ Dokumentklasser er en annen viktig del av WYSIWYM-tankegangen; de forteller
+ \SpecialChar LyX
+ hvordan dokumentet skal typesettes, så du ikke trenger vite hvordan.
+\end_layout
+
+\begin_layout Standard
+Dokumentet ditt er antagelig skrevet med dokumentklassen 
+\family sans
+Article
+\family default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Vanligvis er dette standardvalget for dokumentklasser
+\end_layout
+
+\end_inset
+
+ Prøv å bytte til andre dokumentklasser (menyvalg 
+\family sans
+Dokument\SpecialChar menuseparator
+Innstillinger
+\family default
+) for å se hva som blir anderledes.
+ Hvis du bytter til dokumentklassen 
+\family sans
+Book
+\family default
+ og ser på 
+\family sans
+Miljø
+\family default
+-boksen, vil du se at de fleste miljøene er de samme.
+ Men, nå får du tilgang på 
+\family sans
+Kapittel
+\family default
+-miljøet.
+ Om du er usikker på hvilke miljøer du kan bruke i en gitt dokumentklasse,
+ bare se i 
+\family sans
+Miljø
+\family default
+-boksen.
+\end_layout
+
+\begin_layout Standard
+Skriftstørrelser, en- eller tosidig utskrift og topptekster er bare noen
+ av elementene journaler bruker for å skape ulik stil.
+ Ettersom dataalderen fortsetter og modnes, har journaler begynt å akseptere
+ artikler på elektronisk form, og laget stilfiler for \SpecialChar LaTeX
+ så forfattere kan
+ levere artikler med korrekt typesetting.
+ \SpecialChar LyX
+ støtter også dette.
+ For eksempel støtter \SpecialChar LyX
+ typesetting (og ekstra miljøer) for 
+\begin_inset Quotes fld
+\end_inset
+
+American Mathematics Society
+\begin_inset Quotes frd
+\end_inset
+
+ ved hjelp av dokumentklassen 
+\family sans
+Article
+\begin_inset space ~
+\end_inset
+
+(AMS)
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Her er en kjapp oversikt over noen av dokumentklassene.
+ Se seksjonen 
+\emph on
+Special Document Classes 
+\emph default
+i 
+\emph on
+Ekstra muligheter 
+\emph default
+for mange fler detaljer.
+\end_layout
+
+\begin_layout Standard
+Here is a very quick reference to some of the document classes.
+ See the 
+\emph on
+Special Document Classes
+\emph default
+ section of the 
+\emph on
+Additional Features
+\emph default
+ manual for many more details.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Noter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ensidig, ingen kapitler
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+article (AMS)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+layout & miljøer for 
+\begin_inset Quotes fld
+\end_inset
+
+American Math Society
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+report
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lenger enn 
+\begin_inset Quotes fld
+\end_inset
+
+article
+\begin_inset Quotes frd
+\end_inset
+
+, tosidig
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+book
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+report +fram- og baksidemateriale
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lysark
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+letter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mange ekstra miljøer, for adresse, signatur\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Maler: skrive et brev 
+\end_layout
+
+\begin_layout Standard
+En måte å skrive brev, kunne være å lage en ny fil og velge en variant av
+ dokumentklassen 
+\family sans
+Letter
+\family default
+ i dialogen bak 
+\family sans
+Dokument\SpecialChar menuseparator
+Innstillinger
+\family default
+.
+ Dette er kanhende den mest opplagte måten å skrive brev, men det er unødig
+ ekstraarbeid.
+ Hver gang du skriver et forretningsbrev, vil du ha adressen din, adressen
+ du skriver til, en signatur, osv.
+ Derfor har \SpecialChar LyX
+ en 
+\emph on
+mal 
+\emph default
+for brev, som inneholder et eksempelbrev; når du har en mal, trenger du
+ bare bytte ut noen deler av brevet hver gang du skriver et nytt et.
+\end_layout
+
+\begin_layout Standard
+Lag en ny fil med 
+\family sans
+Fil\SpecialChar menuseparator
+Ny
+\begin_inset space ~
+\end_inset
+
+med
+\begin_inset space ~
+\end_inset
+
+mal
+\family default
+.
+ Velg 
+\family typewriter
+letter.lyx
+\family default
+ som mal.
+ Lagre og skriv ut for å se hvordan de ulike miljøene typesettes.
+\end_layout
+
+\begin_layout Standard
+Når du ser i 
+\family sans
+Miljø
+\family default
+-boksen, vil du se flere miljøer, som 
+\family sans
+Min_adresse
+\family default
+, som ikke fins i andre dokumentklasser.
+ Andre, som 
+\family sans
+Beskrivelse
+\family default
+, er velkjente.
+ Du kan eksperimentere litt og finne ut hvordan de ulike miljøene virker.
+ Du vil for eksempel se at 
+\family sans
+Signatur
+\family default
+-miljøet har ordet 
+\begin_inset Quotes fld
+\end_inset
+
+Signature:
+\begin_inset Quotes frd
+\end_inset
+
+ i rødt før den egentlige signaturteksten.
+ Dette ordet dukker ikke opp i det egentlige brevet, som du vil se om du
+ forhåndsviser eller eksporterer fila.
+ Det er der bare for å vise hvor signaturen skal være.
+ Legg også merke til at det ikke har noe å si hvor i fila 
+\family sans
+Signatur
+\family default
+-miljøet er plassert.
+ Husk, \SpecialChar LyX
+ er WYSIWYM; du kan plassere 
+\family sans
+Signatur
+\family default
+-miljøet hvor du vil, men ved utskrift vet \SpecialChar LyX
+ at signaturen skal være på slutten.
+\end_layout
+
+\begin_layout Standard
+En mal er bare en vanlig \SpecialChar LyX
+-fil.
+ Det betyr at du kan fylle ut adressen og signaturen din, og lagre det som
+ en ny mal.
+ Når du heretter skriver brev, kan du spare tid ved å bruke den nye malen.
+ Vi trenger ikke foreslå en 
+\begin_inset Quotes fld
+\end_inset
+
+oppgave
+\begin_inset Quotes frd
+\end_inset
+
+ her; bare skriv et brev til noen!
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En advarsel, når du skriver fra en mal.
+ Hvis du sletter all tekst i et miljø — for eksempel hvis du sletter alt
+ i feltet 
+\family sans
+Min_adresse
+\family default
+ for å bytte det ut med din egen — og så flytter markøren uten å skrive
+ noe, så kan hele miljøet forsvinne.
+ Dette fordi mange miljøer ikke kan eksistere uten noe tekst i dem.
+ Det er bare å plukke frem miljøet fra 
+\family sans
+Miljø
+\family default
+-boksen for å få det tilbake.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Maler kan spare deg for mye tid, vi anbefaler at du bruker dem ved enhver
+ passende anledning.
+ I tillegg kan de hjelpe deg å finne ut av noen av de mer fancy dokumentklassene.
+ Til slutt kan de være nyttige når en ekspert installerer \SpecialChar LyX
+ for personer
+ med mindre greie på data.
+ Når de lærer \SpecialChar LyX
+ for første gang, blir det lettere om de f.eks.
+ har en mal som er tilpasset firmaet.
+\end_layout
+
+\begin_layout Section
+Dokumenttitler 
+\end_layout
+
+\begin_layout Standard
+Slik \SpecialChar LyX
+ ser det, er tittelen — som kan inneholde tittelteksten, forfatter,
+ dato og til og med et sammendrag — en separat del av dokumentet.
+\end_layout
+
+\begin_layout Standard
+Gå tilbake til det første \SpecialChar LyX
+-dokumentet ditt, og forsikre deg om at det bruker
+ dokumentklassen 
+\family sans
+Article
+\family default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ikke bruk dokumentklassen 
+\family sans
+Letter
+\family default
+ nå, etersom den ikke tillater titler.
+\end_layout
+
+\end_inset
+
+ Skriv en tittel på første linje, og sett miljøet til 
+\family sans
+Tittel
+\family default
+.
+ På neste linje skriver du navnet ditt, og endrer miljøet til 
+\family sans
+Forfatter
+\family default
+.
+ Deretter en linje med dagens dato, med miljøtype 
+\family sans
+Dato
+\family default
+.
+ Skriv et avsnitt eller to som oppsummerer dokumentet, med miljøet 
+\family sans
+Sammendrag
+\family default
+.
+ Legg merke til hvordan tittelmaterialet presenteres når du skriver ut.
+ Hvis du endrer dokumenttypen til 
+\begin_inset Quotes fld
+\end_inset
+
+Book
+\begin_inset Quotes frd
+\end_inset
+
+, får du en egen tittelside, akkurat som førstesiden i denne innføringen.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave:
+\series default
+ Fiks tittelen, dato, og forfatter in 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Section
+Referansemerker og kryssreferanser
+\end_layout
+
+\begin_layout Standard
+Du kan merke seksjonsoverskrifter, listepunkter, formler, fotnoter og flytende
+ elementer
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Flytende elementer forklarers i hjelpedokumentene 
+\emph on
+håndbok 
+\emph default
+og 
+\emph on
+Inkluderte objekter
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ i dokumentet ditt.
+ Når det er gjort, kan du referere til slike ting i andre deler av dokumentet
+ med kryssreferanser.
+ Du kan referere til en seksjons nummer, sidetallet seksjonen står på, eller
+ begge deler.
+ Akkurat som seksjonsnumrene, tar \SpecialChar LyX
+ seg av kryssreferansene for deg.
+ Automatisk håndtering av referansemerker og kryssreferanser er en av de
+ store fordelene Lyx (og \SpecialChar LaTeX
+) har over vanlige tekstbehandlere.
+\end_layout
+
+\begin_layout Subsection
+Ditt første referansemerke
+\end_layout
+
+\begin_layout Standard
+Gå til vår andre seksjon, hvis tittel er 
+\begin_inset Quotes fld
+\end_inset
+
+Om dette dokumentet
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Klikk på slutten av linja med seksjonsoverskriften, og velg 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Referansemerke
+\family default
+ eller verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+.
+ En dialogboks spør etter et navn på referansemerket, og gir deg et forslag.
+ Når du klikker på 
+\family sans
+OK
+\family default
+, får du merkenavnet i en boks ved siden av seksjonsoverskriften.
+\end_layout
+
+\begin_layout Standard
+Så langt har du ikke endret noe — utskriften ser helt lik ut, ettersom referanse
+merker ikke vises på trykk.
+ Men, nå som du har laget et merke, kan du referere til det med kryssreferanser.
+ Det blir det neste vi gjør.
+\end_layout
+
+\begin_layout Subsection
+Din første kryssreferanse
+\end_layout
+
+\begin_layout Standard
+Plasser markøren et eller annet sted i seksjon
+\begin_inset space ~
+\end_inset
+
+2 i dokumentet ditt.
+ Skriv
+\end_layout
+
+\begin_layout LyX-Code
+Hvis du vil vite mer om dette dokumentet, så se seksjon.
+\end_layout
+
+\begin_layout Standard
+Så, med markøren plassert etter ordet 
+\begin_inset Quotes fld
+\end_inset
+
+seksjon
+\begin_inset Quotes frd
+\end_inset
+
+, velg 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Kryssreferanse
+\family default
+ eller bruk verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+.
+ Kryssreferansedialogen dukker opp.
+ Den viser en liste over referansemerker du kan referere til.
+ For øyeblikket skulle det bare være en, 
+\begin_inset Quotes fld
+\end_inset
+
+sec:Om-dette-dokumentet
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Først bruker du nedtrekkmenyen 
+\begin_inset Quotes fld
+\end_inset
+
+Format
+\begin_inset Quotes frd
+\end_inset
+
+ og velger 
+\begin_inset Quotes fld
+\end_inset
+
+<referansenr> på side <side>
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Så velger du 
+\begin_inset Quotes fld
+\end_inset
+
+sec:Om-dette-dokumentet
+\begin_inset Quotes frd
+\end_inset
+
+ (om du er heldig, er det valgt på forhånd), og et merke dukker opp hvor
+ det står 
+\begin_inset Quotes fld
+\end_inset
+
+refnr på side:Om-dette-dokumentet
+\begin_inset Quotes frd
+\end_inset
+
+ (For å være helt korrekt, bruker du et 
+\family sans
+hardt
+\begin_inset space ~
+\end_inset
+
+mellomrom
+\family default
+ (hurtigtast 
+\family sans
+Ctrl+mellomrom
+\family default
+) mellom ordet 
+\begin_inset Quotes fld
+\end_inset
+
+Seksjon
+\begin_inset Quotes frd
+\end_inset
+
+ og referansen.) En annen måte å å referere, er å høyreklikke referansemerket
+ og velge 
+\family sans
+Kopier som kryssreferanse
+\family default
+ i menyen som spretter opp.
+ Kryssreferansen til dette merket fins nå på utklippstavla, og kan limes
+ inn der markøren står med menyvalget 
+\family sans
+Rediger\SpecialChar menuseparator
+Lim inn
+\family default
+ (hurtigtast 
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
+).
+ I det trykte dokumentet vil merket bli erstattet med seksjonsnummeret og
+ sidetallet.
+ Forhåndsvis dokumentet, og du vil se at \SpecialChar LaTeX
+ har vært enda smartere.
+ Det refereres til 
+\begin_inset Quotes fld
+\end_inset
+
+Seksjon
+\begin_inset space ~
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+, og avhengig av hvor mye tekst det er mellom starten på seksjon
+\begin_inset space ~
+\end_inset
+
+2 og kryssreferansen, kan det stå 
+\begin_inset Quotes fld
+\end_inset
+
+på denne siden
+\begin_inset Quotes frd
+\end_inset
+
+, 
+\begin_inset Quotes fld
+\end_inset
+
+på den forrige siden
+\begin_inset Quotes frd
+\end_inset
+
+, eller 
+\begin_inset Quotes fld
+\end_inset
+
+på side n
+\begin_inset Quotes frd
+\end_inset
+
+ (hvor 
+\emph on
+n
+\emph default
+ er sidetallet).
+\end_layout
+
+\begin_layout Standard
+Praktisk nok fungerer kryssreferanser som hyperlenker når du redigerer dokumente
+r i \SpecialChar LyX
+; klikker du på den får du 
+\family sans
+Kryssreferanse
+\family default
+-dialogen, og klikker du på 
+\family sans
+Gå
+\begin_inset space ~
+\end_inset
+
+til
+\begin_inset space ~
+\end_inset
+
+merket
+\family default
+ flytter \SpecialChar LyX
+ markøren til det refererte referansemerket.
+\end_layout
+
+\begin_layout Subsection
+Mer moro med kryssreferanser
+\end_layout
+
+\begin_layout Standard
+Vi fortalte deg at \SpecialChar LyX
+ tar seg av nummerering av kryssreferanser; nå kan du
+ sette \SpecialChar LyX
+ på prøve.
+ Legg til en ny seksjon foran seksjon
+\begin_inset space ~
+\end_inset
+
+2.
+ Oppdater forhåndsvisningen og se — seksjonsnummeret i kryssreferansen ble
+ endret til 
+\begin_inset Quotes fld
+\end_inset
+
+3
+\begin_inset Quotes frd
+\end_inset
+
+! Gjør seksjonen 
+\begin_inset Quotes fld
+\end_inset
+
+Om dette dokumentet
+\begin_inset Quotes frd
+\end_inset
+
+ om til en underseksjon, og kryssreferansen endrer seg til underseksjon
+\begin_inset space ~
+\end_inset
+
+2.1 i stedet for seksjon
+\begin_inset space ~
+\end_inset
+
+3.
+ Sidetallet endrer seg ikke, medmindre du legger til en hel side med tekst
+ foran referansemerket.
+\end_layout
+
+\begin_layout Standard
+Hvis du vil trene mer med referansemerker, prøv å sette et referansemerke
+ ved den første kryssreferansen, og referer til den fra et annet sted i
+ dokumentet.
+ Hvis du lager kryssreferanser ofte, kan det være praktisk å la 
+\family sans
+Kryssreferanse
+\family default
+-dialogen stå åpen.
+\end_layout
+
+\begin_layout Standard
+Om du vil se at kryssreferansene får til sidetallene også i større dokumenter,
+ kan du 
+\family sans
+Kopiere
+\family default
+ noen sider fra 
+\emph on
+Håndboka, 
+\emph default
+og 
+\family sans
+Lime inn
+\family default
+ dem i dokumentet.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Forresten, å kopiere en kapitteloverkrift kan gi felimelding, fordi dokumentklas
+sen 
+\begin_inset Quotes fld
+\end_inset
+
+article
+\begin_inset Quotes frd
+\end_inset
+
+ ikke har inndeling i kapitler.
+ Se seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Document-Classes"
+
+\end_inset
+
+.
+ Hvis det skjer, bare slett kapitteloverskriften.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you want to confirm that the cross-referencing gets the pages right even
+ for larger documents, 
+\family sans
+Copy
+\family default
+ a couple pages of text from the 
+\emph on
+User's Guide
+\emph default
+ to the clipboard, and 
+\family sans
+Paste
+\family default
+ them into your document.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Fiks referansene i 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Section
+Fotnoter og Margnoter
+\end_layout
+
+\begin_layout Standard
+Fotnoter kan legges inn med verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+ eller menyvalget 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Fotnote
+\family default
+.
+ Klikk ved slutten av ordet 
+\begin_inset Quotes fld
+\end_inset
+
+\SpecialChar LyX
+
+\begin_inset Quotes frd
+\end_inset
+
+ i dokumentet ditt, og sett inn en fotnote.
+ En fotnoteboks dukker opp, hvor du kan skrive fotnoteteksten.
+ \SpecialChar LyX
+ plasserer markøren forrest i fotnoteboksen.
+ Skriv 
+\end_layout
+
+\begin_layout LyX-Code
+\SpecialChar LyX
+ er en tekstbehandler som typesetter.
+\end_layout
+
+\begin_layout Standard
+Klikk på knappen merket 
+\begin_inset Quotes fld
+\end_inset
+
+fot
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Fotnoteboksen blir stengt, bare den lille 
+\begin_inset Quotes fld
+\end_inset
+
+fot
+\begin_inset Quotes frd
+\end_inset
+
+-knappen blir igjen, og viser hvor fotnotemarkøren vil blir trykt.
+ Dette kalles å 
+\begin_inset Quotes fld
+\end_inset
+
+folde sammen
+\begin_inset Quotes frd
+\end_inset
+
+ fotnoten.
+ Den kan brettes ut igjen for å redigere mer når som helst, ved å klikke
+ på 
+\begin_inset Quotes fld
+\end_inset
+
+fot
+\begin_inset Quotes frd
+\end_inset
+
+-knappen igjen.
+\end_layout
+
+\begin_layout Standard
+En fotnote kan klippes og limes som normal tekst.
+ Prøv! Alt du trenger er å velge fotnoteknappen,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Det kan være enklere å velge den med tastaturet.
+ Om du velger med musen, kan du komme til å åpne fotnoten i vanvare.
+\end_layout
+
+\end_inset
+
+ og 
+\family sans
+Kopiere
+\family default
+ og 
+\family sans
+Lime
+\begin_inset space ~
+\end_inset
+
+inn
+\family default
+ den.
+ I tillegg kan du gjøre vanlig tekst om til en fotnote, ved å velge den
+ og trykke 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+-knappen; du kan endre fotnoten tilbake til vanlig tekst ved å trykke rettetaste
+n når markøren er i første posisjon i fotnoten, eller 
+\family sans
+Delete
+\family default
+-tasten når markøren er på den siste plassen.
+\end_layout
+
+\begin_layout Standard
+Margnotiser kan legges til med menyvalget 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Margnotis
+\family default
+ eller verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
+\end_inset
+
+\SpecialChar endofsentence
+ Margnoter er som fotnoter, bortsett fra at:
+\end_layout
+
+\begin_layout Itemize
+knappen på skjermen har teksten 
+\begin_inset Quotes fld
+\end_inset
+
+marg
+\begin_inset Quotes frd
+\end_inset
+
+ i stedet for 
+\begin_inset Quotes fld
+\end_inset
+
+fot
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+noten vil bli trykt i margen, heller enn under teksten
+\end_layout
+
+\begin_layout Itemize
+margnotiser nummereres ikke
+\end_layout
+
+\begin_layout Standard
+Endre fotnoten din tilbake til tekst, velg teksten og gjør den om til margnotis.
+ Kjør \SpecialChar LaTeX
+ igjen for å se hvordan en margnotis ser ut.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Fiks footnoten i 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Section
+Bibliografier
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:bibliographies"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bibliografier ligner kryssreferanser i virkemåte.
+ Bibliografien består av en liste med litteraturreferanser sist i dokumentet,
+ og disse kan du referere til ellers i teksten.
+ Som med seksjonstitler, gjør \SpecialChar LyX
+ og \SpecialChar LaTeX
+ jobben enklere ved å nummerere referansene
+ automatisk, og ved å holde siteringene oppdatert når numrene endres.
+\end_layout
+
+\begin_layout Standard
+Bla til slutten av dokumentet, og bruk 
+\family sans
+Bibliografi
+\family default
+-miljøet.
+ Hvert avsnitt du skriver nå, vil være en litteraturreferanse.
+ Skriv 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family typewriter
+\SpecialChar LyX
+-Innføringen, av \SpecialChar LyX
+-teamet
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+ som din første referanse.
+ Legg merke til at \SpecialChar LyX
+ automatisk legger til et nummer i en boks foran hver
+ referanse.
+ Klikk på boksen med referansenummeret, og 
+\family sans
+bibitem
+\family default
+-dialogen vises.
+ 
+\family sans
+Nøkkelen
+\family default
+ brukes for å referere i \SpecialChar LyX
+-dokumentet, 
+\family sans
+Merket
+\family default
+ kommer på trykk.
+ Når det ikke er noe 
+\family sans
+Merke
+\family default
+ (standard), trykkes referansenummeret i stedet.
+ Gjør om 
+\family sans
+Nøkkel
+\family default
+-feltet til 
+\begin_inset Quotes fld
+\end_inset
+
+lyxinnføring
+\begin_inset Quotes frd
+\end_inset
+
+ for å gjøre det lettere å huske.
+ 
+\end_layout
+
+\begin_layout Standard
+Finn et sted i dokumentet hvor du vil sette inn en referanse.
+ Gjør det med 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Litteraturreferanse
+\family default
+ eller verktøylinjeknappen
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
+\end_inset
+
+.
+ Dialogen 
+\family sans
+Litteraturreferanse
+\family default
+ dukker opp.
+ Det venstre panelet viser all litteraturen, og der kan du velge hva du
+ vil referere til.
+ Velg 
+\begin_inset Quotes fld
+\end_inset
+
+lyxinnføring
+\begin_inset Quotes frd
+\end_inset
+
+ (Akkurat nå er det den eneste litteraturen i bibliografien), trykk så på
+ knappen 
+\family sans
+Legg
+\begin_inset space ~
+\end_inset
+
+til
+\family default
+ i midten for å sette inn referansen.
+ (Du kan referere til flere tekster på samme sted, ved å velge flere nøkler
+ på denne måten.)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Hvis man bruker nøkkelnavn som er lette å huske, er det lettere å finne
+ teksten i lista.
+\end_layout
+
+\end_inset
+
+ Klikk 
+\family sans
+OK
+\family default
+-knappen.
+ Forhåndsvis dokumentet, og du vil se at referansen står i klammeparanteser
+ i teksten, og viser til bibliografien på slutten av dokumentet.
+\end_layout
+
+\begin_layout Standard
+Feltet 
+\family sans
+Tekst
+\begin_inset space ~
+\end_inset
+
+etter
+\family default
+ i dialogen 
+\family sans
+Litteraturreferanse
+\family default
+ kan brukes for å få med ekstra informasjon, (som et sidetall eller kapittelnumm
+er i boka eller artikkelen) inni klammeparentesene etter referansen.
+ Hvis du ønsker at referansene skal ha tekst i stedet for numre (noen journaler
+ bruker 
+\begin_inset Quotes fld
+\end_inset
+
+[Smi95]
+\begin_inset Quotes frd
+\end_inset
+
+ for å referere til en artikkel av Smith i 1995), bruker du 
+\family sans
+Nøkkel
+\family default
+-feltet i 
+\family sans
+bibitem
+\family default
+-dialogen.
+ Se 
+\emph on
+Håndboka 
+\emph default
+for detaljer.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave:
+\series default
+ Fiks bibliografien og referansen in 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Section
+Innholdsfortegnelse
+\end_layout
+
+\begin_layout Standard
+Du kan få bruk for en innholdsfortegnelse i starten av dokumentet.
+ \SpecialChar LyX
+ gjør det lett.
+ Trykk 
+\family sans
+Return
+\family default
+ etter dokumenttittelen, og før første seksjonstittel, og velg 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Lister
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+innhold\SpecialChar menuseparator
+Innholdsfortegnelse
+\family default
+.
+ Ordet 
+\begin_inset Quotes fld
+\end_inset
+
+Innholdsfortegnelse
+\begin_inset Quotes frd
+\end_inset
+
+ dukker opp på en knapp på første linje i dokumentet.
+\end_layout
+
+\begin_layout Standard
+Dette virker kanskje ikke så imponerende.
+ Men hvis du ser på forhåndsvisningen, ser du at innholdsfortegnelsen er
+ laget, med lister over seksjoner og underseksjoner i dokumentet.
+ Og som vanlig, hvis du bytter om på seksjonene eller skriver noen nye,
+ oppdateres lista neste gang du forhåndsviser dokumentet.
+\end_layout
+
+\begin_layout Standard
+Innholdsfortegnelsen vises ikke i skjermversjonen av dokumentet.
+ Men du kan vise innholdslista i et separat vindu ved å klikke på innholdsforteg
+nelsesknappen, eller menyvalget 
+\family sans
+Vis\SpecialChar menuseparator
+Innholdsvindu
+\family default
+ eller verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
+\end_inset
+
+.
+ Denne menyen virker til og med når du ikke har en innholdsfortegnelse i
+ dokumentet.
+ Vinduet er et veldig nyttig verktøy for å rearrangere deler av dokumentet.
+ Klikker du på en (under)seksjon i 
+\family sans
+Innhold
+\family default
+-vinduet, vil redigeringsvinduet hoppe til den delen av dokumentet.
+ Du kan også bruke piltastene for å flytte opp og ned i innholdslista.
+ Kanskje finner du det praktisk å la dette vinduet stå oppe mens du redigerer.
+ Lignende funksjonalitet fins i menyen 
+\family sans
+Naviger
+\family default
+, hvor du også finner innholdet.
+\end_layout
+
+\begin_layout Standard
+Om du vil bli kvitt innholdslista, kan innholdsknappen slettes akkurat som
+ annen tekst.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Fiks innholdslista i 
+\family typewriter
+eksempel_txt.lyx
+\end_layout
+
+\begin_layout Chapter
+Matematiske formler
+\end_layout
+
+\begin_layout Standard
+Mange vitenskapsfolk bruke \SpecialChar LaTeX
+ fordi de får flotte formler.
+ Mange av dem blir frustrert fordi det å skrive formler i \SpecialChar LaTeX
+ er mer som programmer
+ing enn som skriving.
+ Heldigvis har \SpecialChar LyX
+ WYSIWYM-støtte for formler.
+ Hvis du er vant med \SpecialChar LaTeX
+, finner du at du kan skrive \SpecialChar LaTeX
+-mattekommandoer som vanlig.
+ Men de vil bli vist frem på WYSIWYM-måten.
+ På den andre siden, hvis du aldri har brukt \SpecialChar LaTeX
+, vil matematikkverktøylinjene
+ la deg skrive profesjonelt utseende matematikk raskt og enkelt.
+\end_layout
+
+\begin_layout Section
+Mattemodus 
+\end_layout
+
+\begin_layout Standard
+Skriv dette i \SpecialChar LyX
+-dokumentet ditt: 
+\end_layout
+
+\begin_layout LyX-Code
+Jeg liker Einsteins utsagn, E=mc^2, fordi det er så enkelt.
+\end_layout
+
+\begin_layout Standard
+Men dette ser ikke bra ut, hverken i \SpecialChar LyX
+ eller på trykk; det er ikke mellomrom
+ mellom bokstavene og likhetstegnet, og 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+-tallet burde stått med hevet skrift.
+ Vi fikk stygg typesetting fordi vi ikke fortalte \SpecialChar LyX
+ at dette var matematikk,
+ så det ble typesatt som vanlig tekst i stedet.
+\end_layout
+
+\begin_layout Standard
+Men vi kan lage en formel som typesettes bedre.
+ Merk ligningen, og trykk verktøylinjeknappen 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
+\end_inset
+
+ eller menyen 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+Matte\SpecialChar menuseparator
+Formel
+\begin_inset space ~
+\end_inset
+
+i
+\begin_inset space ~
+\end_inset
+
+teksten
+\family default
+.
+ Hvis ikke noe er merket, vil \SpecialChar LyX
+ sette inn en liten blå firkant, som er en
+ tom matematisk formel.
+ Firkanten forsvinner så snart det står noe i formelen.
+ Trykk 
+\family sans
+Esc
+\family default
+ for å komme ut av formelen.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Feil oversatt, fordi originalteksten er 
+\emph on
+feil.
+\end_layout
+
+\end_inset
+
+ Om du skriver noe mer nå, vil det bli vanlig tekst igjen.
+\end_layout
+
+\begin_layout Standard
+Om du ser på forhåndsvisningen, vil du se at formelen ble typesatt pent,
+ med mellomrom rundt likhetstegnet, og tallet 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+ hevet.
+ Bokstaver i mattemodus antas å være variabler, og settes i kursiv.
+ Tall er bare tall.
+\end_layout
+
+\begin_layout Standard
+Mattemodus er nok et eksempel på WYSIWYM-filosofien.
+ I \SpecialChar LaTeX
+ skriver du formler med tekst og kommandoer som 
+\family typewriter
+
+\backslash
+sqrt
+\family default
+; det kan være frustrerende, fordi du ikke kan se hvordan formelen blir
+ seende ut før du kjører \SpecialChar LaTeX
+-programmet, og du må kanskje bruke tid på å rette
+ feil som 
+\begin_inset Quotes fld
+\end_inset
+
+manglende krøllparenteser.
+\begin_inset Quotes frd
+\end_inset
+
+ \SpecialChar LyX
+ prøver ikke å vise formelen perfekt med en gang (WYSIWYG), men gir deg
+ et ganske godt inntrykk av hvordan den blir.
+ Deretter tar \SpecialChar LaTeX
+ seg av typesettingen på profesjonelt vis.
+\end_layout
+
+\begin_layout Section
+Navigere i formelen
+\end_layout
+
+\begin_layout Standard
+La oss endre 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ til 
+\begin_inset Formula $E=1+mc^{2}$
+\end_inset
+
+.
+ Bruk piltastene for å flytte markøren inn i formelen.
+ Legg merke til at når markøren går inn i formelen, dukker det opp lilla
+ hjørnemerker for å vise at du holder på med en formel.
+ Nå kan du bruke 
+\family sans
+Venstrepil
+\family default
+ og 
+\family sans
+Høyrepil
+\family default
+ for plassere markøren ved siden av likhetstegnet, og skrive 
+\begin_inset Quotes fld
+\end_inset
+
+1+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Igjen kan du bruke piltastene eller 
+\family sans
+Esc
+\family default
+ for å komme ut av formelen.
+\end_layout
+
+\begin_layout Standard
+Bortsett fra spesialtaster beskrevet under, skriver du på samme måte i mattemodu
+s som i vanlig tekst.
+ Bruk 
+\family sans
+Delete
+\family default
+ (eller 
+\family sans
+Rettetasten
+\family default
+) for å slette ting.
+ Velg formeltekst med piltaster eller musen.
+ 
+\family sans
+Rediger\SpecialChar menuseparator
+Angre
+\family default
+ virker i mattemodus, det gjør også klipp og lim.
+ En ting å være forsiktig med: Om markøren er til venstre eller høyre rett
+ utenfor en formel, og du bruker henholdsvis 
+\family sans
+Delete
+\family default
+ eller 
+\family sans
+Rettetasten
+\family default
+, sletter du hele formelen.
+ Heldigvis kan du enkelt og greit 
+\family sans
+Angre
+\family default
+ for å få den tilbake.
+\end_layout
+
+\begin_layout Standard
+Hva om du ville endre 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ til 
+\begin_inset Formula $E=mc^{2,5}+1$
+\end_inset
+
+ ? Igjen, du kan bruke musen og klikke på rett sted.
+ Men du kan også bruke piltastene.
+ Hvis markøren er rett etter 
+\begin_inset Quotes fld
+\end_inset
+
+c
+\begin_inset Quotes frd
+\end_inset
+
+ men før 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+, trykker du 
+\family sans
+Oppoverpila,
+\family default
+ og markøren flyttes opp til eksponentnivået rett foran 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Legg til 
+\begin_inset Quotes fld
+\end_inset
+
+,5
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Bruker du 
+\family sans
+Nedoverpila
+\family default
+, flyttes markøren ned på det vanlige nivået.
+ Hvis du bruker 
+\family sans
+Mellomrom
+\family default
+ i stedet for 
+\family sans
+Nedoverpil
+\family default
+, plasseres markøren 
+\emph on
+etter 
+\emph default
+eksponenten (så du kan skrive 
+\begin_inset Quotes fld
+\end_inset
+
++1
+\begin_inset Quotes frd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Eksponenter og indekser
+\end_layout
+
+\begin_layout Standard
+En eksponent kan legges inn fra 
+\family sans
+Matteverktøylinja
+\family default
+ (se under), men det er faktisk enklere å bare bruke cirkumfleks-tasten,
+ 
+\begin_inset Quotes fld
+\end_inset
+
+^
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Hvis cirkumfleks er en 
+\begin_inset Quotes fld
+\end_inset
+
+død tast
+\begin_inset Quotes frd
+\end_inset
+
+ på tastaturet ditt, må du trykke cirkumfleks fulgt av mellomrom.
+ 
+\end_layout
+
+\end_inset
+
+.
+ \SpecialChar LyX
+ gir deg et hevet blått rektangel, det du skriver videre vil være hevet
+ og i en mindre skriftstørrelse.
+ Alt du skriver til du trykker 
+\family sans
+Mellomrom
+\family default
+ (eller 
+\family sans
+Esc
+\family default
+ for å komme helt ut av formelen) vil være hevet.
+\end_layout
+
+\begin_layout Standard
+Å skrive en index er like enkelt; begynn med understrektasten 
+\begin_inset Quotes fld
+\end_inset
+
+_
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Du kan bruke eksponenter og indekser inni andre eksponenter og indekser,
+ som dette: 
+\begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Få ligning 1 i 
+\family typewriter
+eksempel_txt.lyx
+\family default
+ gjort om til mattemodus.
+\end_layout
+
+\begin_layout Section
+Matteverktøylinja
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Matteverktøylinja
+\family default
+ er en praktisk måte å skrive symboler og gjøre kompliserte formeloperasjoner.
+ Mange av disse kan operasjonene kan gjøres fra tastaturet, eller menyene
+ 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+Matte
+\family default
+ eller 
+\family sans
+\bar under
+R
+\bar default
+ediger\SpecialChar menuseparator
+
+\bar under
+M
+\bar default
+atte
+\family default
+ (den siste er bare tigjengelig når markøren er inni en formel).
+ Men vi vil konsentrere oss om å bruke 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+, så du kan se mulighetene; du kan lære hurtigtaster og kommandoer senere
+ fra 
+\emph on
+Matte
+\emph default
+ bruksanvisningen.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+ vises når markøren er inni en formel, og kan også skrues på manuelt i menyen
+ 
+\family sans
+\bar under
+V
+\bar default
+is\SpecialChar menuseparator
+Verkt
+\bar under
+ø
+\bar default
+ylinjer.
+
+\family default
+ Når du klikker der på 
+\begin_inset Quotes fld
+\end_inset
+
+Matte
+\begin_inset Quotes frd
+\end_inset
+
+ (
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
+\end_inset
+
+), vises verktøylinja permanent nederst; denne tilstanden vises med avkryssing
+ i menyen 
+\family sans
+Verkt
+\bar under
+ø
+\bar default
+ylinjer.
+
+\family default
+ Når du klikker omgjen på 
+\begin_inset Quotes fld
+\end_inset
+
+Matte
+\begin_inset Quotes frd
+\end_inset
+
+ i denne menyen, vises 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+ bare når amrkøren er i en formel; denne tilstanden indikeres ved at menyvalget
+ skifter navn fra 
+\begin_inset Quotes fld
+\end_inset
+
+Matte
+\begin_inset Quotes frd
+\end_inset
+
+ til 
+\begin_inset Quotes fld
+\end_inset
+
+Matte
+\begin_inset space ~
+\end_inset
+
+(auto)
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Gresk og symboler
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+ lar deg velge i et stort utvalg symboler som brukes i matematikken: operatorer,
+ piler, forhold, skilletegn, spesialtegn, summer og integraler.
+ Merk at senket og hevet tekst lar deg sette nedre og øvre grenser på summer
+ og integraler.
+\end_layout
+
+\begin_layout Subsection
+Røtter, dekorasjoner, og skilletegn
+\end_layout
+
+\begin_layout Standard
+For å lage en kvadratrot, bare klikk på knappen 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
+\end_inset
+
+.
+ Kvadratrota dukker opp, og markøren er inni rottegnet.
+ Du kan skrive inn variabler, tall, andre røtter, brøker – hva du vil.
+ \SpecialChar LyX
+ vil justere størrelsen på rottegnet så det passer til innholdet.
+\end_layout
+
+\begin_layout Standard
+Å legge en 
+\begin_inset Quotes fld
+\end_inset
+
+dekorasjon
+\begin_inset Quotes frd
+\end_inset
+
+ på et tegn (
+\begin_inset Formula $\overrightarrow{a}$
+\end_inset
+
+) eller gruppe av tegn (
+\begin_inset Formula $\overrightarrow{a+b}$
+\end_inset
+
+) fungerer på samme måte.
+ Dekorasjonene finner du på verktøylinja, via knappen 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
+\end_inset
+
+.
+ Klikk på en dekorasjon, og \SpecialChar LyX
+ setter den inn med mulighet til å skive under
+ (eller over) den.
+ Det er bare å skrive inn hva du vil.
+ Det er to slags dekorasjoner: de som strekkes for å passe til det du skriver,
+ og de som har fast størrelse og dermed passer best på enkelttegn.
+\end_layout
+
+\begin_layout Standard
+Skilletegn som parenteser, klamme- og krøllparenteser virker på lignende
+ vis, men er litt mer komplisert.
+ Trykk på knappen for skilletegn 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+ for å vise dialogen 
+\family sans
+Parenteser og klammer
+\family default
+.
+ Utvalget av skilletegn vises i en boks.
+ Standardvalget er et par parenteser, men du kan velge et par klammer, en
+ klamme og en parentes, eller (ingen) for å få slikt som 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $a=\left\langle 7\right.$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+ (det tomme skilletegnet vises som en stiplet strek i \SpecialChar LyX
+, men kommer ikke
+ på trykk).
+\end_layout
+
+\begin_layout Standard
+Om du er lat, kan du skrive vanlige parenteser i mattemodus, i stedet for
+ å bruke dialogen 
+\family sans
+Parenteser og klammer
+\family default
+.
+ Men disse parentesene har samme høyde som vanlig tekst, og vil ikke se
+ bra ut om det havner en stor brøk eller matrise inni parentesene.
+ Så det er bedre å bruke en av parentesknappene som setter dem inn direkte,
+ for eksempel 
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Du kan også legge skilletegn, røtter eller dekorasjoner utenpå eksisterende
+ formler eller deler av formler.
+ Velg den delen av formelen du vil pynte på, og klikk knappen du ønsker
+ i 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+.
+ Prøv å bruke dette for å endre Newtons andre lov fra skalar til vektorform
+ (
+\begin_inset Formula $f=ma$
+\end_inset
+
+ til 
+\begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
+\end_inset
+
+).
+ Når du tar i bruk matriser, er dette måten du får parenteser eller klammer
+ rundt dem.
+\end_layout
+
+\begin_layout Subsection
+Brøker
+\end_layout
+
+\begin_layout Standard
+For å begynne på en brøk, klikker du brøk-knappen 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
+\end_inset
+
+ på in the 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+.
+ \SpecialChar LyX
+ lager en brøk med to plasser for å skrive innhold.
+ fraction.
+ Som ventet, kan du bruke piltastene eller musa for å flytte mellom teller
+ og nevner.
+ Klikk øverst og skriv 
+\begin_inset Quotes fld
+\end_inset
+
+1
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Trykk så 
+\family sans
+Nedpil
+\family default
+ og skriv 
+\begin_inset Quotes fld
+\end_inset
+
+2
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Du har lagd en brøk! Du kan selvfølgelig skrive inn hva du vil oppe og
+ nede: variabler med eksponenter, røtter, andre brøker, hva som helst.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Få ligning 2 i 
+\family typewriter
+eksempel_txt.lyx
+\family default
+ over i mattemodus.
+\end_layout
+
+\begin_layout Subsection
+Funksjoner: lim, log, sin og andre
+\end_layout
+
+\begin_layout Standard
+Bokstaver i mattemodus antas å være variabler, så hvis du skriver 
+\begin_inset Quotes fld
+\end_inset
+
+sin
+\begin_inset Quotes frd
+\end_inset
+
+, tror \SpecialChar LyX
+ du vil ha produktet av de tre variablene 
+\begin_inset Formula $s$
+\end_inset
+
+, 
+\begin_inset Formula $i$
+\end_inset
+
+ og 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ De tre bokstavene skrives med kursiv, mens det du egentlig ville ha var
+ ordet 
+\begin_inset Quotes fld
+\end_inset
+
+sin
+\begin_inset Quotes frd
+\end_inset
+
+ med stående bokstaver.
+ Og dessuten vil ikke \SpecialChar LyX
+ lage mellomrom mellom ordet 
+\begin_inset Quotes fld
+\end_inset
+
+sin
+\begin_inset Quotes frd
+\end_inset
+
+ og 
+\begin_inset Quotes fld
+\end_inset
+
+x
+\begin_inset Quotes frd
+\end_inset
+
+ (å trykke 
+\family sans
+Mellomrom
+\family default
+ avslutter formelen).
+ Så hvordan får du 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $\sin(x)$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+ i stedet for 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $sin(x)$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+Trykk på knappen 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
+\end_inset
+
+ på 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+, og deretter på 
+\begin_inset Quotes fld
+\end_inset
+
+sin
+\begin_inset Quotes frd
+\end_inset
+
+ i funksjonslista som spretter opp.
+ Ordet 
+\begin_inset Quotes fld
+\end_inset
+
+sin
+\begin_inset Quotes frd
+\end_inset
+
+ vises med svart i \SpecialChar LyX
+, og settes med stående skrift.
+ Ordet behandles som et symbol, så om du bruker 
+\family sans
+Rettetasten
+\family default
+, fjerner den hele ordet.
+ Skriv nå 
+\begin_inset Quotes fld
+\end_inset
+
+(x)
+\begin_inset Quotes frd
+\end_inset
+
+, som vil vises med blått og kursiv, slik formler pleier å være.
+ I utskrift blir alt typesatt korrekt – prøv!
+\end_layout
+
+\begin_layout Standard
+Funksjonslista har andre trigonometriske funksjoner og deres inverse, hyperbolsk
+e funksjoner, logaritmer, grenseverdier og mye annet.
+ Hevet og senket skrift kan brukes i etterkant for å lage slikt som 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $\cos^{2}\theta$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+ eller 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $\lim_{n\rightarrow\infty}$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Få ligning 3 i 
+\family typewriter
+eksempel_txt.lyx
+\family default
+ gjort om til mattemodus.
+\end_layout
+
+\begin_layout Subsection
+Matriser
+\end_layout
+
+\begin_layout Standard
+Klikk på matriseknappen 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
+\end_inset
+
+ i 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+.
+ En sprettoppdialog lar deg velge hvor mange rader og kolonner du vil ha
+ i matrisen.
+ Velg 2 rader og 3 kolonner og klikk 
+\family sans
+OK
+\family default
+.
+ \SpecialChar LyX
+ lager 6 celler i en 
+\begin_inset Formula $2\times3$
+\end_inset
+
+ matrise.
+ Som vanlig kan du skrive en hvilken som helst formel (kvadratrot, annen
+ matrise, osv.) i hver av cellene.
+ Du kan også la noen stå tomme, om du vil.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Tab
+\family default
+ kan brukes for å flytte vannrett mellom kolonnene i matrisen.
+ Piltastene er et annet alternativ, 
+\family sans
+Høyrepil
+\family default
+ på slutten av ei celle flytter til den neste, 
+\family sans
+Nedpil
+\family default
+ flytter til neste rad, osv.
+\end_layout
+
+\begin_layout Standard
+Om du trenger å endre antall kolonner og rader, bruker du menyen 
+\family sans
+\bar under
+R
+\bar default
+ediger\SpecialChar menuseparator
+Rader og 
+\bar under
+k
+\bar default
+olonner
+\family default
+ eller verktøylinjeknappene 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature append-row"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature delete-row"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature append-column"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature delete-column"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se 
+\emph on
+Håndboka
+\emph default
+ for informasjon om vannrett justering av kolonner, og loddrett posisjonering
+ av hele amtrisen.
+ Merk at hvis du trenger en tabell med tekst, bør du bruke \SpecialChar LyX
+ sin utmerkede
+ støtte for tabeller, heller enn å prøve å skrive tekst i en matrise.
+\end_layout
+
+\begin_layout Subsection
+Fremhevet formel
+\end_layout
+
+\begin_layout Standard
+Uttrykkene vi har skrevet så langt, har vært på samme linje som teksten
+ som kommer før og etter, også kjent som 
+\begin_inset Quotes fld
+\end_inset
+
+formel i tekst
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Dette er greit for korte enkle uttrykk, men hvis du vil skrive større formler
+ eller skille dem fra teksten, trenger du en fremhevet formel.
+ Dessuten er det bare fremhevede formler som kan merkes og nummereres (se
+ 
+\emph on
+Håndboka
+\emph default
+), og ligninger med mange linjer må lages fremhevet.
+\end_layout
+
+\begin_layout Standard
+Når markøren står i en formel, klikk fremhevingsknappen 
+\begin_inset Info
+type  "icon"
+arg   "math-display"
+\end_inset
+
+ på 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+.
+ Formelen blir sentrert, og får en blank linje før og etter.
+ Skriv ett uttrykk og bruk forhåndsvisning for å se hvordan det blir.
+ Fremhevingsknappen er en av/på-knapp; bruk den både for å fremheve formler
+ og for å få dem tilbake i teksten.
+ 
+\end_layout
+
+\begin_layout Standard
+En fremhevet formel har forskjeller fra en tekstformel:
+\end_layout
+
+\begin_layout Itemize
+Noen symboler, som 
+\begin_inset Formula $\sum$
+\end_inset
+
+ og 
+\begin_inset Formula $\int$
+\end_inset
+
+ settes med større skrift
+\end_layout
+
+\begin_layout Itemize
+Nedre og øvre grense for sum (og grenseverdi, men ikke integral) skrives
+ under/over symbolet heller enn ved siden av.
+ 
+\end_layout
+
+\begin_layout Itemize
+Formelen sentreres
+\end_layout
+
+\begin_layout Standard
+Bortsett fra disse forskjellene, fungerer tekstformler og fremhevede formler
+ temmelig likt.
+\end_layout
+
+\begin_layout Standard
+En liten advarsel om hvordan fremhevede formler typesettes: tenk over om
+ du putter formelen i et eget avsnitt eller ikke.
+ Hvis formelen er midt i en setning eller et avsnitt, ikke trykk 
+\family sans
+Return
+\family default
+.
+ Om du gjør det, vil teksten 
+\emph on
+etter 
+\emph default
+formelen starte et nytt avsnitt.
+ Avhengig av dokumentinnstillinger vil dette markeres med innrykk eller
+ ekstra linjeavstand, som nepper er ønskelig.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Fremhev ligningene i 
+\family typewriter
+eksempel_txt.lyx,
+\family default
+ og se hvor anderledes det blir.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Oppgave
+\series default
+: Ved å bruke verktøy du har lært i denne seksjonen, bør du kunne skrive
+ en ligning som denne:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Når du har gjort dette på den vanskelige måten, prøv 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+
+\bar under
+M
+\bar default
+atte\SpecialChar menuseparator
+Alternativer
+\begin_inset space ~
+\end_inset
+
+(
+\bar under
+c
+\bar default
+ases)
+\family default
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+f(x)=\left\{ \begin{array}{cc}
+\log_{8}x & x>0\\
+0 & x=0\\
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mer matematikk
+\end_layout
+
+\begin_layout Standard
+Nå kjenner du til det grunnleggende.
+ Formelverktøyene i \SpecialChar LyX
+ kan mye mer.
+ Se 
+\emph on
+Matte-
+\emph default
+bruksanvisningen for tips om:
+\end_layout
+
+\begin_layout Itemize
+Referansemerker og nummerering.
+\end_layout
+
+\begin_layout Itemize
+Ligninger som går over mange linjer.
+\end_layout
+
+\begin_layout Itemize
+Å endre skrifttype, f.eks.
+ fet skrift i en formel.
+\end_layout
+
+\begin_layout Itemize
+Å finjustere skriftstørrelser og posisjonering i et formeluttrykk.
+ (Ikke noe du bekymrer deg om før siste utkast!)
+\end_layout
+
+\begin_layout Itemize
+Å skrive makroer.
+ Disse er kraftige, for du definerer dem én gang først i dokumentet, og
+ kan deretter bruke dem hele veien.
+\end_layout
+
+\begin_layout Itemize
+Å skrive omtrent all matematikk som kan skrives.
+\end_layout
+
+\begin_layout Chapter
+Diverse
+\end_layout
+
+\begin_layout Section
+Annen viktig \SpecialChar LyX
+-funksjonalitet
+\end_layout
+
+\begin_layout Standard
+Vi har ikke gått gjennom alle mulige kommandoer i \SpecialChar LyX
+, og det har vi ikke tenkt
+ heller.
+ Som vanlig, se 
+\emph on
+Håndboka 
+\emph default
+og 
+\emph on
+Inkluderte objekter 
+\emph default
+for mer informasjon.
+ Vi vil bare nevne et par andre viktige muligheter i \SpecialChar LyX
+:
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ har WYSIWYM-støtte for tabeller.
+ Bruk 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+
+\bar under
+T
+\bar default
+abell
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
+\end_inset
+
+) for å få en tabell.
+ Klikk på tabellen med 
+\emph on
+høyre musknapp 
+\emph default
+for å få dialogen 
+\family sans
+Tabellinstillinger
+\family default
+ som gir omfattende muligheter for å forme tabellen.
+ Knappen 
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
+\end_inset
+
+ åpner tabellverktøylinja permanent.
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ støtter også bilder i allslags formater i dokumentene.
+ (
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+
+\bar under
+G
+\bar default
+rafikk
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+).
+ Fyll ut med filnavn, vridning eller skalering, osv.) Tabeller og figurer
+ kan ha bildetekst, og \SpecialChar LyX
+ vil automatisk lage lister over figurer/tabeller.
+ 
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ er veldig konfigurerbart.
+ Alt fra hvordan vinduet ser ut, til hvordan utdata genereres kan konfigureres
+ på mange vis.
+ Mye av dette gjør du gjennom 
+\family sans
+Verk
+\bar under
+t
+\bar default
+øy\SpecialChar menuseparator
+O
+\bar under
+p
+\bar default
+psett
+\family default
+.
+ For mer om dette, se 
+\family sans
+\bar under
+H
+\bar default
+jelp\SpecialChar menuseparator
+
+\bar under
+T
+\bar default
+ilpassing\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ utvikles av programmerere på fem kontinenter.
+ Derfor har \SpecialChar LyX
+ bedre støtte for språk utover engelsk (som norsk, nynorsk,
+ samisk, tysk, fransk, gresk, tsjekkisk, tyrkisk, \SpecialChar ldots
+) enn mange andre tekstbehandl
+ere.
+ Selv språk som skrives fra høyre til venstre, som arabisk, farsi og hebraisk,
+ og asiatiske språk som kinesisk, japansk og koreansk støttes.
+ Du kan skrive dokumenter i disse språkene, og du kan også få \SpecialChar LyX
+ til å vise
+ sine menyer og meldinger i mange språk.
+\end_layout
+
+\begin_layout Itemize
+Menyene i \SpecialChar LyX
+ har hurtigtaster.
+ Det betyr at du kan utføre 
+\family sans
+\bar under
+F
+\bar default
+il\SpecialChar menuseparator
+Å
+\bar under
+p
+\bar default
+ne
+\family default
+ ved å trykke 
+\family sans
+Alt+F
+\family default
+ fulgt av 
+\family sans
+p,
+\family default
+ eller ved å bruke hurtigtasten som er vist ved siden av menyvalget (
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
+ er standard).
+ Også hurtigtastene kan konfigureres, for informasjon om dette, se 
+\family sans
+\bar under
+H
+\bar default
+jelp\SpecialChar menuseparator
+
+\bar under
+T
+\bar default
+ilpassing\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ kan lese \SpecialChar LaTeX
+ dokumenter.
+ Se seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:tex2lyx"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Stavekontroll, Spell-checking, synonymordbok, og telling av ord er tilgjengelig.
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ kan lage dokumenter med register og nomenklatur/glossar.
+\end_layout
+
+\begin_layout Section
+\SpecialChar LyX
+ for \SpecialChar LaTeX
+-brukere
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:latexusers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hvis du ikke vet noe om \SpecialChar LaTeX
+, trenger du ikke lese denne seksjonen.
+ Kanskje ønsker du å 
+\emph on
+lære 
+\emph default
+om \SpecialChar LaTeX
+, og så lese dette kapitlet.
+ Men noen av dere som begynner med \SpecialChar LyX
+, kjenner allerede \SpecialChar LaTeX
+.
+ Om du er en slik person, lurer du kanskje på om \SpecialChar LyX
+ virkelig kan gjøre alt
+ som \SpecialChar LaTeX
+ kan.
+ Det korte svaret er at \SpecialChar LyX
+ kan gjøre omtrent alt \SpecialChar LaTeX
+ kan på ulike vis, og forenkler
+ definitivt det meste av arbeidet med å skrive et \SpecialChar LaTeX
+ dokument.
+\end_layout
+
+\begin_layout Standard
+Fordi dette bare er en innføring, kommer vi bare til å nevne ting som nye
+ \SpecialChar LyX
+-brukere sannsynligvis er interessert i.
+ For å holde innføringen kort, tar vi bare med minimalt med informasjon
+ her.
+ 
+\emph on
+Ekstra muligheter 
+\emph default
+og 
+\emph on
+Inkluderte objekter 
+\emph default
+har mye informasjon om forskjeller mellom \SpecialChar LyX
+ og \SpecialChar LaTeX
+, og hvordan man gjør diverse
+ \SpecialChar LaTeX
+-triks i \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Subsection
+\SpecialChar TeX
+ Modus 
+\end_layout
+
+\begin_layout Standard
+Alt du skriver i \SpecialChar TeX
+-modus sendes rett til \SpecialChar LaTeX
+, og vises med rødt på skjermen.
+ Du kan bruke \SpecialChar TeX
+-kommandoer i \SpecialChar LyX
+ ved å velge 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+inn\SpecialChar menuseparator
+\SpecialChar TeX
+-kode
+\family default
+ (verktøylinjeknapp 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
+\end_inset
+
+).
+ Da får du en boks hvor alt som skrives overføres direkte til \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+I matematiske formler, håndteres \SpecialChar TeX
+-modus litt anderledes.
+ Her får du \SpecialChar TeX
+-modus ved å skrive en backslash.
+ Backslashen blir ikke skrevet ut, men alt som følger den vises med rødt.
+ Du avslutter \SpecialChar TeX
+-modus ved å skrive 
+\family sans
+Mellomrom
+\family default
+ eller et annet ikke-alfabetisk tegn, som et siffer, understrek eller parentes.
+ Hvis \SpecialChar LyX
+ kjenner \SpecialChar TeX
+-kommandoen du har skrevet, blir den straks konvertert etter
+ WYSIWYM-prinsippet\SpecialChar endofsentence
+ Så hvis du skriver 
+\family typewriter
+
+\begin_inset Quotes fld
+\end_inset
+
+
+\backslash
+gamma
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+ i en formel og trykker 
+\family sans
+Mellomrom
+\family default
+, vil \SpecialChar LyX
+ endre det røde ordet 
+\begin_inset Quotes fld
+\end_inset
+
+gamma
+\begin_inset Quotes frd
+\end_inset
+
+ til en blå 
+\begin_inset Quotes fld
+\end_inset
+
+
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Dette virker for nesten alle ukompliserte mattemakroer.
+ Det kan være raskere enn å bruke 
+\family sans
+Matte
+\begin_inset space ~
+\end_inset
+
+verktøylinja
+\family default
+, og vil være behagelig for erfarne \SpecialChar LaTeX
+-brukere.
+\end_layout
+
+\begin_layout Standard
+Et spesialtilfelle, hvis du skriver 
+\family typewriter
+
+\begin_inset Quotes fld
+\end_inset
+
+
+\backslash
+{
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+ i en formel, vil både startkrøllparentesen 
+\emph on
+og
+\emph default
+ sluttkrøllparentesen settes med rødt mens markøren plasseres mellom dem.
+ Dette gjør det enklere å skrive inn kommandoer som trenger et argument.
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ kan ikke gjøre absolutt alt som \SpecialChar LaTeX
+ kan.
+ Noen spesielle funksjoner støttes ikke, mens andre virker men uten WYSIWYM.
+ \SpecialChar TeX
+-modus gir fleksibiliteten til \SpecialChar LaTeX
+, med alle de behagelige sidene ved \SpecialChar LyX
+, som
+ WYSIWYM-matematikk, tabeller, og redigering.
+ \SpecialChar LyX
+ vil aldri kunne støtte enhver \SpecialChar LaTeX
+-pakke.
+ Men, ved å skrive 
+\family typewriter
+
+\backslash
+usepackage{pakkenavn}
+\family default
+ i 
+\begin_inset Quotes fld
+\end_inset
+
+preamble
+\begin_inset Quotes frd
+\end_inset
+
+ (se Seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:preamble"
+
+\end_inset
+
+), kan du bruke hvilke pakker du vil — men da får du ikke WYSIWYM-støtte
+ for funksjonene i den aktuelle pakka.
+\end_layout
+
+\begin_layout Subsection
+Importere \SpecialChar LaTeX
+-dokumener — 
+\family typewriter
+tex2lyx
+\family default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:tex2lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Du kan importere en \SpecialChar LaTeX
+-fil inn i \SpecialChar LyX
+ med menyen 
+\family sans
+Fil\SpecialChar menuseparator
+Importer\SpecialChar menuseparator
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+(vanlig)
+\family default
+.
+ Dette vil bruke programmet 
+\family typewriter
+tex2lyx
+\family default
+ som lager en fil kalt filnavn.lyx fra fila filnavn.tex.
+ Deretter åpner \SpecialChar LyX
+ den fila.
+ Hvis denne oversettingen ikke går bra, kan du prøve å kjøre 
+\family typewriter
+tex2lyx
+\family default
+ fra kommandolinja, muligens med mer fancy opsjoner.
+\end_layout
+
+\begin_layout Standard
+Selv når oversettingen virker, kan det hende 
+\family typewriter
+tex2lyx
+\family default
+ ikke oversetter alt.
+ Men det meste av gyldig \SpecialChar LaTeX
+ går gjennom.
+ Ting programmet ikke forstår blir stående i \SpecialChar TeX
+-modus; så etter å ha oversatt
+ en fil mend 
+\family typewriter
+tex2lyx
+\family default
+, kan du se etter det røde og redigere det videre for å få det rett.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+tex2lyx
+\family default
+ har sin egen dokumentasjon (man-side), som Unix/Linux-brukere kan lese
+ med konsollkommandoen 
+\family typewriter
+man
+\begin_inset space ~
+\end_inset
+
+tex2lyx
+\family default
+.
+ Siden beskriver hvilke \SpecialChar LaTeX
+-kommandoer og -miljøer som ikke støttes, hva slags
+ feil du risikerer å støte på (og hvordan komme seg rundt dem), og hvordan
+ opsjonene brukes.
+\end_layout
+
+\begin_layout Standard
+Det er viktig å forstå at 
+\family typewriter
+tex2lyx
+\family default
+ bare kan oversette filer hvis dokumentklasse er 
+\begin_inset Quotes fld
+\end_inset
+
+kjent
+\begin_inset Quotes frd
+\end_inset
+
+ for \SpecialChar LyX
+, altså hvor det fins en tilsvarende \SpecialChar LyX
+ 
+\family sans
+layout fil
+\family default
+.
+ Hvis det ikke fins noen korresponderende layout-fil, vil du få en feilmelding
+ om at oversettingen ikke lot seg gjennomføre.
+ Så, medmindre du ha en layoutfil for dokumentklassen til \SpecialChar LaTeX
+-fila, kan ikke
+ 
+\family typewriter
+tex2lyx
+\family default
+ oversette til ting som \SpecialChar LyX
+ forstår.
+ Du finner detaljer om layoutfiler og hvordan de lages i kapittel
+\begin_inset space ~
+\end_inset
+
+5 i bruksanvisningen 
+\emph on
+Tilpassing.
+ 
+\end_layout
+
+\begin_layout Subsection
+Konvertere \SpecialChar LyX
+-dokumenter til \SpecialChar LaTeX
+
+\end_layout
+
+\begin_layout Standard
+Du kan få bruk for å konvertere et \SpecialChar LyX
+-dokument til en \SpecialChar LaTeX
+-fil.
+ Det kan for eksempel hende at en medarbeider eller medforfatter som ikke
+ har \SpecialChar LyX
+ ønsker å lese det.
+ Velg 
+\family sans
+\bar under
+F
+\bar default
+il\SpecialChar menuseparator
+
+\bar under
+E
+\bar default
+ksporter\SpecialChar menuseparator
+\SpecialChar LaTeX
+
+\family default
+.
+ Dette vil lage en fil kalt 
+\family typewriter
+dokumentnavn.tex
+\family default
+ fra fila 
+\family typewriter
+dokumentnavn.lyx
+\family default
+ som du har åpen.
+\end_layout
+
+\begin_layout Subsection
+\SpecialChar LaTeX
+ Preamble
+\end_layout
+
+\begin_layout Subsubsection
+Dokumentklasse
+\end_layout
+
+\begin_layout Standard
+Dialogen 
+\family sans
+\bar under
+D
+\bar default
+okument\SpecialChar menuseparator
+
+\bar under
+I
+\bar default
+nnstillinger
+\family default
+ tar seg av dokumentopsjoner, som å endre dokumentklasse, standard skriftstørrel
+se og papirformat.
+ Dokumentklasseopsjoner og opsjoner for \SpecialChar LaTeX
+-pakker kan skrives i området for
+ 
+\family sans
+Klasseopsjoner
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Annet preamble-stoff
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:preamble"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hvis du trenger spesielle kommandoer i preamble for din \SpecialChar LaTeX
+-fil, kan du bruke
+ dem i \SpecialChar LyX
+-dokumenter også.
+ Velg 
+\family sans
+\bar under
+D
+\bar default
+okument\SpecialChar menuseparator
+
+\bar under
+I
+\bar default
+nnstillinger\SpecialChar menuseparator
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+Preamble
+\family default
+ og skriv det inn i dialogvinduet.
+ Alt du skriver her sendes direkte til \SpecialChar LaTeX
+, akkurat som med \SpecialChar TeX
+-modus.
+\end_layout
+
+\begin_layout Subsection
+Bib\SpecialChar TeX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ støtter Bib\SpecialChar TeX
+, som lar deg bygge opp databaser med bibliografiske referanser
+ for å bruke i mange dokumenter.
+ Velg 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+L
+\bar under
+i
+\bar default
+ster
+\begin_inset space \thinspace{}
+\end_inset
+
+og
+\begin_inset space \thinspace{}
+\end_inset
+
+innhold\SpecialChar menuseparator
+
+\bar under
+B
+\bar default
+ib\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+referanseliste
+\family default
+ for å trekke inn en 
+\family typewriter
+Bib\SpecialChar TeX
+
+\family default
+-fil.
+ I 
+\family sans
+Database-
+\family default
+feltet henter du Bib\SpecialChar TeX
+-filer, i 
+\family sans
+Stil
+\family default
+-feltet kan du hente inn Bib\SpecialChar TeX
+ stilfiler.
+\end_layout
+
+\begin_layout Standard
+Etter dette, kan du bruke siteringer fra alle bibliografier du har inkludert
+ med 
+\family sans
+Sett
+\begin_inset space ~
+\end_inset
+
+
+\bar under
+i
+\bar default
+nn\SpecialChar menuseparator
+
+\bar under
+L
+\bar default
+itteraturreferanse
+\family default
+ (se Seksjon
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bibliographies"
+
+\end_inset
+
+).
+ Boksen i 
+\family sans
+Litteraturreferanse
+\family default
+-dialogen viser alle referansenr i 
+\family typewriter
+Bib\SpecialChar TeX
+
+\family default
+-fila.
+\end_layout
+
+\begin_layout Section
+Feil!
+\end_layout
+
+\begin_layout Standard
+I blant dukker det opp feil, når du prøver å forhåndsvise et dokument.
+ Ting som \SpecialChar LyX
+ eller \SpecialChar LaTeX
+ ikke forstår.
+ Når det skjer, viser \SpecialChar LyX
+ dialogen 
+\family sans
+\SpecialChar LaTeX
+
+\begin_inset space ~
+\end_inset
+
+feil
+\family default
+.
+ Å klikke på enkeltfeil i denne dialogen, tar deg til stedene i \SpecialChar LyX
+-dokumentet
+ hvor feilen oppstod.
+ I tillegg får du en detaljert \SpecialChar LaTeX
+-feilmelding.
+\end_layout
+
+\end_body
+\end_document

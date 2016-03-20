@@ -1,0 +1,271 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 506
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language norsk
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 95 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Velkommen til \SpecialChar LyX
+!
+\end_layout
+
+\begin_layout Section*
+Viktig å vite når du bruker \SpecialChar LyX
+ 
+\end_layout
+
+\begin_layout Enumerate
+\SpecialChar LyX
+ har utmerket dokumentasjon, — bruk den! Start med menyen 
+\family sans
+Hjelp\SpecialChar menuseparator
+Introduksjon
+\family default
+, som gir deg en kort introduksjon til dokumentasjonen.
+ Lær deretter om \SpecialChar LyX
+ via 
+\family sans
+Hjelp\SpecialChar menuseparator
+Innføring
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+\SpecialChar LyX
+ er det vi kaller en 
+\begin_inset Quotes fld
+\end_inset
+
+dokumentbehandler.
+\begin_inset Quotes frd
+\end_inset
+
+ Designmessig er det forskjellig fra en vanlig tekstbehandler — på måter
+ som gjør det lettere å skrive dokumenter.
+ Men ikke vær redd, forskjellene er ikke så store.
+ Dokumentasjonen forklarer alt.
+\end_layout
+
+\begin_layout Enumerate
+Utskrift fra \SpecialChar LyX
+ ser flott ut! Bruk menyen 
+\family sans
+Dokument\SpecialChar menuseparator
+Vis
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)],
+\family default
+ eller knappen 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ på verktøylinja, og se selv.
+\end_layout
+
+\begin_layout Enumerate
+Ja, \SpecialChar LyX
+ har (nesten) all funksjonalitet som \SpecialChar LaTeX
+ har.
+ Og ja, \SpecialChar LyX
+ kan importere \SpecialChar LaTeX
+-filer.
+ Erfarne \SpecialChar LaTeX
+-brukere kan skumme gjennom resten av 
+\emph on
+innføringen, 
+\emph default
+og lese kapitlet 
+\begin_inset Quotes fld
+\end_inset
+
+\SpecialChar LyX
+ for \SpecialChar LaTeX
+-brukere
+\begin_inset Quotes frd
+\end_inset
+
+.
+ (Resten av dere trenger ikke bekymre dere, man trenger ikke kjenne \SpecialChar LaTeX
+ for
+ å bruke \SpecialChar LyX
+.)
+\end_layout
+
+\begin_layout Enumerate
+\SpecialChar LyX
+ har mange funksjoner for de som leser eller skriver andre språk enn engelsk.
+ Dessuten er hurtigtaster, verktøylinjer og mye annet veldig konfigurerbart.
+ Se 
+\family sans
+Hjelp\SpecialChar menuseparator
+Tilpassing
+\family default
+ for detaljer.
+\end_layout
+
+\begin_layout Enumerate
+\SpecialChar LyX
+-hjemmesiden er
+\family typewriter
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+ Finn informasjon om \SpecialChar LyX
+, abonner på \SpecialChar LyX
+ epostlister, ta en tur i bilder, og mer.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Merknad for Linuxbrukere:
+\series default
+ Vennligst sjekk at språkpakkene for \SpecialChar LaTeX
+ distribusjonen 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ er installert.
+ Ellers får du \SpecialChar LaTeX
+-feil.
+\begin_inset Newline newline
+\end_inset
+
+For eksempel, i Linuxdistribusjonene 
+\family sans
+(K,X)Ubuntu
+\family default
+ og 
+\family sans
+Debian
+\family default
+ heter pakken for tysk språk 
+\family typewriter
+
+\begin_inset Quotes fld
+\end_inset
+
+texlive-lang-german
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Etter å ha installert språkpakker, må du bruke \SpecialChar LyX
+-menyen 
+\family sans
+Verk
+\bar under
+t
+\bar default
+øy
+\family default
+\SpecialChar menuseparator
+
+\family sans
+\bar under
+R
+\bar default
+ekonfigurer
+\family default
+.
+\end_layout
+
+\end_body
+\end_document
