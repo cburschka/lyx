@@ -77,7 +77,7 @@
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Traduction française Jean-Pierre Chrétien, septembre 2014
@@ -140,7 +140,7 @@ V.
 \begin_deeper
 \begin_layout FrameTitle
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 presentation
@@ -167,7 +167,7 @@ Objectifs
 
 \begin_layout Frame
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 +-
@@ -177,7 +177,7 @@ status open
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Objectifs de la classe Beamer
@@ -191,7 +191,7 @@ Objectifs de la classe Beamer
 \begin_layout Frame
 Avec la classe 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beamer
@@ -261,7 +261,7 @@ et beaucoup plus \SpecialChar ldots
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Objectifs de cette présentation
@@ -284,7 +284,7 @@ Cette présentation
 \begin_layout Itemize
 décrit les fonctionnalités essentielles de 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beamer
@@ -304,7 +304,7 @@ précise en particulier comment elles peuvent être accessibles avec \SpecialCha
 \begin_layout Frame
 Pour une information plus générale et détaillée au sujet de 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beamer
@@ -329,7 +329,7 @@ key "beamer-ug"
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 La structure globale
@@ -375,7 +375,7 @@ Ces éléments sont décrits ci-après
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 La page de titre
@@ -465,7 +465,7 @@ aucun de ces styles n'est obligatoire, mais au moins un d'entre eux doit
 l’ordre d'insertion est indifférent (l'ordre effectif est imposé par la
  thème 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beamer
@@ -593,7 +593,7 @@ Titre
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Diapositives/cadres
@@ -746,7 +746,7 @@ Spécifications de recouvrement {implicites}
 
 \begin_layout Frame
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 1-2
@@ -756,7 +756,7 @@ status open
 
 
 \begin_inset Argument 3
-status open
+status collapsed
 
 \begin_layout Plain Layout
 label=myframe
@@ -766,7 +766,7 @@ label=myframe
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les cadres peuvent être répétés
@@ -855,7 +855,7 @@ recouvrement
 \begin_deeper
 \begin_layout Proof
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3
@@ -887,7 +887,7 @@ Voici la preuve!
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Contrôler le contenu des cadres
@@ -970,7 +970,7 @@ ion (sur une diapositive différente), mais ne sera pas aligné correctement
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Séparer les cadres
@@ -1005,7 +1005,7 @@ Séparateur
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Astuce
@@ -1069,7 +1069,7 @@ arg   "environment-split outer"
 \end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3
@@ -1089,7 +1089,7 @@ myframe
 
 \begin_layout PlainFrame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Types de cadres particuliers
@@ -1176,7 +1176,7 @@ fragile
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Structuration d'une présentation
@@ -1249,7 +1249,7 @@ modes
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les parties ont une signification particulière
@@ -1329,7 +1329,7 @@ Ceci signifie par exemple que, si vous utilisez des parties, une table des
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Réarranger les cadres
@@ -1347,7 +1347,7 @@ Réarranger les cadres
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Astuce
@@ -1398,7 +1398,7 @@ Navigation
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 L'annexe
@@ -1495,7 +1495,7 @@ Le concept de recouvrement
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Que sont les recouvrements?
@@ -1525,7 +1525,7 @@ Fondamentalement, les recouvrements permettent de modifier le contenu d'un
 
 \begin_layout Itemize
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 +-
@@ -1549,11 +1549,11 @@ et ils aident votre auditoire à vous suivre
 \begin_layout Itemize
 utilisez donc les recouvrements! 
 \begin_inset Flex Alert
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 6
@@ -1579,7 +1579,7 @@ Vraiment, faites-le!
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Types de recouvrements
@@ -1648,7 +1648,7 @@ Nous donnons des exemples de ces types dans ce qui suit, mais nous commencerons
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Revue des actions possibles
@@ -1746,7 +1746,7 @@ Spécifications de {recouvrement|action}
 
 \begin_layout Overprint
 \begin_inset Argument item:1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2
@@ -1818,7 +1818,7 @@ modes
 \end_deeper
 \begin_layout Overprint
 \begin_inset Argument item:1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3
@@ -1836,7 +1836,7 @@ status open
 \begin_deeper
 \begin_layout AlertBlock
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Note aux aficionados de \SpecialChar LaTeX
@@ -1929,7 +1929,7 @@ Notez que \SpecialChar LyX
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Un exemple
@@ -1982,7 +1982,7 @@ Spécifications de recouvrement
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2
@@ -2027,7 +2027,7 @@ Voilà comment fonctionne le concept, fondamentalement
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Couvrir ou cacher?
@@ -2069,7 +2069,7 @@ caché
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 only@2
@@ -2114,7 +2114,7 @@ Vous pouvez voir comment le texte bouge quand la citation est révélée.
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Degrés de couverture
@@ -2127,7 +2127,7 @@ Degrés de couverture
 
 \begin_layout Frame
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2192,7 +2192,7 @@ transparent
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2
@@ -2247,7 +2247,7 @@ Beamer
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Spécifications de recouvrement/action
@@ -2334,7 +2334,7 @@ g.,
 \begin_deeper
 \begin_layout Itemize
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 +(1)-
@@ -2355,7 +2355,7 @@ trois
 
 \begin_layout Itemize
 \begin_inset Argument item:2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 1-
@@ -2395,7 +2395,7 @@ Beamer
 
 \begin_layout Frame
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 +-
@@ -2405,7 +2405,7 @@ status open
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Spécifications de recouvrement/action
@@ -2467,7 +2467,7 @@ Ce cadre utilise une spécification de recouvrement implicite qui provoquera,
 
 \begin_layout Block
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Un bloc
@@ -2493,7 +2493,7 @@ Un bloc
 
 \begin_layout Frame
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 alert@+
@@ -2503,7 +2503,7 @@ alert@+
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Spécifications de recouvrement/action
@@ -2570,7 +2570,7 @@ Et ce cadre utilise une spécification de recouvrement implicite
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Pause
@@ -2619,7 +2619,7 @@ Après la deuxième pause
 
 \begin_layout Pause
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2
@@ -2661,7 +2661,7 @@ Numéro de pause
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Recouvrements de paragraphes
@@ -2696,7 +2696,7 @@ Beamer
 \begin_deeper
 \begin_layout Uncover
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2-
@@ -2735,7 +2735,7 @@ Découvrir
 \end_deeper
 \begin_layout Only
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3-
@@ -2772,7 +2772,7 @@ bouge
 
 \begin_layout Overprint
 \begin_inset Argument item:1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 4
@@ -2806,7 +2806,7 @@ Surimpression
 \end_deeper
 \begin_layout Overprint
 \begin_inset Argument item:1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 5
@@ -2842,7 +2842,7 @@ comme illustré ici.
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Recouvrements en ligne
@@ -2855,7 +2855,7 @@ Recouvrements en ligne
 
 \begin_layout Frame
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2918,11 +2918,11 @@ découvrir
 
  du 
 \begin_inset Flex Uncover
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2-
@@ -2941,11 +2941,11 @@ texte
 \begin_layout Itemize
 vous pouvez rendre du 
 \begin_inset Flex Visible
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3-
@@ -2990,11 +2990,11 @@ transparent
 \begin_layout Itemize
 vous pouvez montrer du 
 \begin_inset Flex Only
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 4-
@@ -3023,11 +3023,11 @@ seulement
 \begin_layout Itemize
 vous pouvez rendre du 
 \begin_inset Flex Invisible
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 5-
@@ -3056,11 +3056,11 @@ invisible
 \begin_layout Itemize
 et vous pouvez afficher du texte 
 \begin_inset Flex Alternative
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 6-
@@ -3070,7 +3070,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 différent
@@ -3121,7 +3121,7 @@ Insertion
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Commandes sensibles au recouvrement
@@ -3163,11 +3163,11 @@ Style de texte
 \begin_layout Itemize
 De ce fait, vous pouvez mettre du texte sur des diapos spécifiques 
 \begin_inset Flex Emphasize
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2
@@ -3182,11 +3182,11 @@ en évidence
 
 , 
 \begin_inset Flex Bold
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3
@@ -3201,11 +3201,11 @@ en gras
 
 , en 
 \begin_inset Flex Alert
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 4
@@ -3220,11 +3220,11 @@ alerte
 
  ou en couleur 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 5
@@ -3242,7 +3242,7 @@ structurée
 
 \begin_layout Block
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 6
@@ -3252,7 +3252,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Indice
@@ -3290,7 +3290,7 @@ Environnements spécifiques
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Environnements spécifiques
@@ -3344,7 +3344,7 @@ Ils sont brièvement décrits ci-après.
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les blocs
@@ -3384,7 +3384,7 @@ indices
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 2-
@@ -3394,7 +3394,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bloc
@@ -3411,7 +3411,7 @@ Un bloc d'usage général
 
 \begin_layout ExampleBlock
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 3-
@@ -3421,7 +3421,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bloc exemple
@@ -3446,7 +3446,7 @@ exemples
 
 \begin_layout AlertBlock
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 4-
@@ -3456,7 +3456,7 @@ status open
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Bloc alerte
@@ -3489,7 +3489,7 @@ alerte
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Gestion des blocs
@@ -3553,7 +3553,7 @@ Séparateur
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 only@2
@@ -3563,7 +3563,7 @@ only@2
 
 
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Astuce
@@ -3612,7 +3612,7 @@ Les blocs sont sensibles au recouvrement
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les environnements de théorèmes
@@ -3680,7 +3680,7 @@ Texte de théorème complémentaire
 \begin_deeper
 \begin_layout Example
 \begin_inset Argument 2
-status open
+status collapsed
 
 \begin_layout Plain Layout
 il est mauvais!
@@ -3706,7 +3706,7 @@ uement)
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les colonnes
@@ -3736,7 +3736,7 @@ Il est quelquefois utile de diviser une présentation en colonnes.
 \begin_deeper
 \begin_layout Column
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3770,7 +3770,7 @@ Colonnes
 
 \begin_layout Column
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -3887,7 +3887,7 @@ Courtes remarques au sujet des modes
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les modes
@@ -3996,7 +3996,7 @@ beamer
 
 \begin_layout Frame
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 presentation
@@ -4006,7 +4006,7 @@ presentation
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Changement de mode
@@ -4078,7 +4078,7 @@ article
 
 \begin_layout Frame
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 article
@@ -4088,7 +4088,7 @@ article
 
 
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Changement de mode
@@ -4121,7 +4121,7 @@ article
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Et alors?
@@ -4184,7 +4184,7 @@ et cetera \SpecialChar ldots
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Exemples
@@ -4209,11 +4209,11 @@ Comme on l'a vu, beaucoup d'éléments sont sensibles au mode.
 \noindent
 Vous pouvez afficher certains éléments textuels 
 \begin_inset Flex Only
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 presentation
@@ -4228,11 +4228,11 @@ seulement dans la présentation
 
 
 \begin_inset Flex Only
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 article
@@ -4270,7 +4270,7 @@ Seulement
 \end_deeper
 \begin_layout Frame
 \begin_inset Flex ArticleMode
-status open
+status collapsed
 
 \begin_layout Itemize
 Ou mettre toutes sortes de contenus compliqués dans un insert qui n'apparaîtra
@@ -4293,7 +4293,7 @@ ModeArticle
 
 
 \begin_inset Flex PresentationMode
-status open
+status collapsed
 
 \begin_layout Itemize
 Ou mettre toutes sortes de contenus compliqués dans un insert qui n'apparaîtra
@@ -4333,7 +4333,7 @@ status collapsed
 
 \lang english
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -4354,11 +4354,11 @@ mise en évidence
 \lang french
  n'apparaîtra que dans la présentation, une 
 \begin_inset Flex Bold
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 article
@@ -4411,7 +4411,7 @@ Et beaucoup plus de choses de ce style \SpecialChar ldots
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Construction d'un article
@@ -4497,7 +4497,7 @@ Modifier l'apparence
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les thèmes
@@ -4514,7 +4514,7 @@ Les thèmes
 
 \begin_deeper
 \begin_layout Itemize
-Les présentation 
+Les présentations 
 \begin_inset Flex Structure
 status collapsed
 
@@ -4611,7 +4611,7 @@ key "beamer-ug"
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Les thèmes peuvent être modifiés
@@ -4666,7 +4666,7 @@ Et plus \SpecialChar ldots
 
 \begin_layout Frame
 \begin_inset Argument 4
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar ldots
@@ -4732,7 +4732,7 @@ Annexe bibliographique
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Nous utilisons ci-après le style TitreCadre (et non pas l'insert 
@@ -4775,7 +4775,7 @@ newblock
 \begin_deeper
 \begin_layout FrameTitle
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 presentation
