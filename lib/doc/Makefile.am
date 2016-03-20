@@ -243,7 +243,8 @@ dist_nldoc_DATA = \
 
 nbdocdir = $(docdir)/nb
 dist_nbdoc_DATA = \
-	nb/Intro.lyx
+	nb/Intro.lyx \
+	nb/Tutorial.lyx
 
 pldocdir = $(docdir)/pl
 dist_pldoc_DATA = \

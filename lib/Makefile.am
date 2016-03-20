@@ -193,6 +193,12 @@ koexamplesdir = $(pkgdatadir)/examples/ko
 dist_koexamples_DATA = \
 	examples/ko/splash.lyx
 
+nbexamplesdir = $(pkgdatadir)/examples/nb
+dist_nbexamples_DATA = \
+	examples/nb/eksempel_lyxet.lyx \
+	examples/nb/eksempel_txt.lyx \
+	examples/nb/splash.lyx
+
 nlexamplesdir = $(pkgdatadir)/examples/nl
 dist_nlexamples_DATA = \
 	examples/nl/opsommingstekens.lyx \
@@ -2327,6 +2333,7 @@ exampleandtemplate_files = \
 			   $(dist_itexamples_DATA) \
 			   $(dist_jaexamples_DATA) \
 			   $(dist_koexamples_DATA) \
+			   $(dist_nbexamples_DATA) \
 			   $(dist_nlexamples_DATA) \
 			   $(dist_plexamples_DATA) \
 			   $(dist_ptexamples_DATA) \
