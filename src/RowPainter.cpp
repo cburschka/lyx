@@ -246,13 +246,14 @@ void RowPainter::paintStringAndSel(Row::Element const & e)
 		Color const col = e.change.changed() ? e.change.color()
 		                                     : Color_selectiontext;
 		copy.fontInfo().setPaintColor(col);
-		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra);
+		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra, e.full_width());
 	} else if (!some_sel) {
-		pi_.pain.text(int(x_), yo_, e.str, e.font, e.extra);
+		pi_.pain.text(int(x_), yo_, e.str, e.font, e.extra, e.full_width());
 	} else {
 		pi_.pain.text(int(x_), yo_, e.str, e.font, Color_selectiontext,
-				    max(row_.sel_beg, e.pos) - e.pos,
-                        min(row_.sel_end, e.endpos) - e.pos, e.extra);
+		              max(row_.sel_beg, e.pos) - e.pos,
+		              min(row_.sel_end, e.endpos) - e.pos,
+		              e.extra, e.full_width());
 	}
 	x_ += e.full_width();
 }

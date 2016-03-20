@@ -105,17 +105,17 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		lyx::graphics::Image const & image);
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is given by \c rtl.
-	 */
-	virtual void text(int x, int y, docstring const & str, FontInfo const & f,
-                      bool rtl = false, double wordspacing = 0.0);
+	/// draw a string at position x, y (y is the baseline).
+	virtual void text(int x, int y, docstring const & str, FontInfo const & f);
+
+	/// draw a char at position x, y (y is the baseline)
+	virtual void text(int x, int y, char_type c, FontInfo const & f);
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 */
 	virtual void text(int x, int y, docstring const & str, Font const & f,
-                      double wordspacing = 0.0);
+                      double wordspacing, double textwidth);
 
 	/** draw a string at position x, y (y is the baseline), but
 	 * make sure that the part between \c from and \c to is in
@@ -123,10 +123,7 @@ public:
 	 */
 	virtual void text(int x, int y, docstring const & str, Font const & f,
 	                  Color other, size_type from, size_type to,
-                      double const wordspacing);
-
-	/// draw a char at position x, y (y is the baseline)
-	virtual void text(int x, int y, char_type c, FontInfo const & f);
+                      double wordspacing, double textwidth);
 
 	///
 	virtual void textDecoration(FontInfo const & f, int x, int y, int width);
@@ -136,11 +133,11 @@ public:
 		FontInfo const & font, bool mouseHover);
 
 	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(Color const & min, 
+	virtual void enterMonochromeMode(Color const & min,
 		Color const & max);
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode();
-	
+
 	/**
 	 * Draw a string and enclose it inside a rectangle. If
 	 * back color is specified, the background is cleared with
@@ -185,6 +182,11 @@ private:
 
 	// Helper for text() method
 	void do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff);
+
+	// Real text() method
+	void text(int x, int y, docstring const & s,
+              FontInfo const & f, bool const rtl,
+              double const wordspacing, double tw);
 
 	QColor current_color_;
 	Painter::line_style current_ls_;

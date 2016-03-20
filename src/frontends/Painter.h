@@ -133,21 +133,17 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		graphics::Image const & image) = 0;
 
-	/** draw a character at position x, y (y is the baseline)
-	 */
-	virtual void text(int x, int y, char_type c, FontInfo const & f) = 0;
+	/// draw a string at position x, y (y is the baseline).
+	virtual void text(int x, int y, docstring const & str, FontInfo const & f) = 0;
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is given by \c rtl.
-	 */
-	virtual void text(int x, int y, docstring const & str, FontInfo const & f,
-                      bool rtl = false, double wordspacing = 0.0) = 0;
+	/// draw a char at position x, y (y is the baseline)
+	virtual void text(int x, int y, char_type c, FontInfo const & f) = 0;
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 */
 	virtual void text(int x, int y, docstring const & str, Font const & f,
-                      double wordspacing = 0.0) = 0;
+                      double wordspacing, double textwidth) = 0;
 
 	/** draw a string at position x, y (y is the baseline), but
 	 * make sure that the part between \c from and \c to is in
@@ -155,7 +151,7 @@ public:
 	 */
 	virtual void text(int x, int y, docstring const & str, Font const & f,
 	                  Color other, size_type from, size_type to,
-	                  double const wordspacing) = 0;
+                      double wordspacing, double textwidth) = 0;
 
 	void setDrawingEnabled(bool drawing_enabled)
 	{ drawing_enabled_ = drawing_enabled; }

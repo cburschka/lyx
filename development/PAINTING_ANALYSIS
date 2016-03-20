@@ -60,6 +60,7 @@ cursor.
 
 * Proposals
 
+
 * Clean-up of drawing code
 
 The goal is to make painting with drawing disable fast enough that it
@@ -81,7 +82,7 @@ paintInset needs to be called.
 The only thing we want to do here is to set inset positions (for
 text). The other insets still use the painter with drawing disabled.
 
-** Painter::text
+** DONE Painter::text
 
 We cannot remove (or make private) the version that uses a
 FontInfo because it is used by PainterInfo::draw. Document this and
@@ -98,6 +99,26 @@ the width of strings) are required parameters and remove optional
 version.
 
 ==> more versions, no optional parameters.
+
+** make Inset::display() more useful
+
+Extending the DisplayType enum would allow to remove special cases
+from the code.
+
+The enumeration could be like
+: Inline = 0
+: BreakBefore = 1 // break row before this inset
+: BreakAfter = 2 // break row after this inset
+: CanBreakAfter = 4 // optionally break row after this inset
+: AlignLeft = 8
+: AlignRight = 16
+: NoBoundary = 32 // do not allow cursor to go at the end of the row
+:                 //before display inset
+: Display = BreakBefore|BreakAfter
+
+A display equation would be Display, other could be Display|AlignLeft
+BreakAfter can be used by Newline or separator insets
+CanBreakAfter can be used by the optional hyphen InsetSpecialChar.
 
 ** Set inset position during metrics phase
 

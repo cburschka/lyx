@@ -333,6 +333,12 @@ void GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 }
 
 
+void GuiPainter::text(int x, int y, docstring const & s, FontInfo const & f)
+{
+	text(x, y, s, f, false, 0.0, 0.0);
+}
+
+
 void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff)
 {
 	setQPainterPen(computeColor(f.realColor()));
@@ -370,7 +376,7 @@ void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const
 
 void GuiPainter::text(int x, int y, docstring const & s,
                       FontInfo const & f, bool const rtl,
-                      double const wordspacing)
+                      double const wordspacing, double const tw)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
 	if (s.empty() || !isDrawingEnabled())
@@ -382,8 +388,8 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	of the symbol in the font (as given in lib/symbols) as a char_type to the
 	frontend. This is just wrong, because the symbol is no UCS4 character at
 	all. You can think of this number as the code point of the symbol in a
-	custom symbol encoding. It works because this char_type is lateron again
-	interpreted as a position in the font again.
+	custom symbol encoding. It works because this char_type is later on again
+	interpreted as a position in the font.
 	The correct solution would be to have extra functions for symbols, but that
 	would require to duplicate a lot of frontend and mathed support code.
 	*/
@@ -400,11 +406,12 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	ff.setWordSpacing(wordspacing);
 	GuiFontMetrics const & fm = getFontMetrics(f);
 
-	// Here we use the font width cache instead of
-	//   textwidth = fontMetrics().width(str);
-	// because the above is awfully expensive on MacOSX
-	// Note that we have to take in account space stretching (word spacing)
-	int const textwidth = fm.width(s) + count(s.begin(), s.end(), ' ') * wordspacing;
+	int textwidth = 0;
+	if (tw == 0.0)
+		// Note that we have to take in account space stretching (word spacing)
+		textwidth = fm.width(s) + count(s.begin(), s.end(), ' ') * wordspacing;
+	else
+		textwidth = static_cast<int>(tw);
 
 	textDecoration(f, x, y, textwidth);
 
@@ -464,15 +471,15 @@ void GuiPainter::text(int x, int y, docstring const & s,
 
 
 void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
-                      double const wordspacing)
+                      double const wordspacing, double const tw)
 {
-	text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing);
+	text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing, tw);
 }
 
 
 void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
                       Color other, size_type const from, size_type const to,
-                      double const wordspacing)
+                      double const wordspacing, double const tw)
 {
 	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
 	FontInfo fi = f.fontInfo();
@@ -491,7 +498,7 @@ void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(other);
 	QRegion const clip(x + xmin, y - ascent, xmax - xmin, height);
 	setClipRegion(clip);
-	text(x, y, str, fi, rtl, wordspacing);
+	text(x, y, str, fi, rtl, wordspacing, tw);
 
 	// Then the part in normal color
 	// Note that in Qt5, it is not possible to use Qt::UniteClip,
@@ -499,7 +506,7 @@ void GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(orig);
 	QRegion region(viewport());
 	setClipRegion(region - clip);
-	text(x, y, str, fi, rtl, wordspacing);
+	text(x, y, str, fi, rtl, wordspacing, tw);
 	setClipping(false);
 }
 
