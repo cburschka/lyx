@@ -32,7 +32,7 @@ public:
 	///
 	InsetCode lyxCode() const { return FLOAT_LIST_CODE; }
 	///
-	DisplayType display() const { return AlignCenter; }
+	DisplayType display() const { return Display; }
 	///
 	void write(std::ostream &) const;
 	///

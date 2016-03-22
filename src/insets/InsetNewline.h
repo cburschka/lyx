@@ -47,6 +47,8 @@ public:
 	InsetNewline(InsetNewlineParams par) : Inset(0)
 	{ params_.kind = par.kind; }
 	///
+	DisplayType display() const { return BreakAfter | NoBoundary; }
+	///
 	static void string2params(std::string const &, InsetNewlineParams &);
 	///
 	static std::string params2string(InsetNewlineParams const &);

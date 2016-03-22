@@ -116,12 +116,6 @@ docstring InsetNote::layoutName() const
 }
 
 
-Inset::DisplayType InsetNote::display() const
-{
-	return Inline;
-}
-
-
 void InsetNote::write(ostream & os) const
 {
 	params_.write(os);

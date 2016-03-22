@@ -119,7 +119,7 @@ public:
 	///
 	bool hasSettings() const;
 	///
-	DisplayType display() const { return AlignCenter; }
+	DisplayType display() const { return Display; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

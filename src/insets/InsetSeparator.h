@@ -64,6 +64,8 @@ public:
 		// remove warning
 		return docstring();
 	}
+	///
+	DisplayType display() const { return BreakAfter | NoBoundary; }
 private:
 	///
 	InsetSeparatorParams params() const { return params_; }

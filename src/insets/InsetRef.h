@@ -49,13 +49,11 @@ public:
 	docstring toolTip(BufferView const &, int, int) const
 		{ return tooltip_; }
 	///
-  docstring getTOCString() const;
+	docstring getTOCString() const;
 	///
 	bool hasSettings() const { return true; }
 	///
 	InsetCode lyxCode() const { return REF_CODE; }
-	///
-	DisplayType display() const { return Inline; }
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///

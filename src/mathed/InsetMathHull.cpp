@@ -540,7 +540,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			// insert a gap in front of the formula
 			// value was hardcoded to 1 pixel
 			dim.wid += mi.base.bv->zoomedPixels(1) ;
-			if (display()) {
+			if (display() != Inline) {
 				dim.asc += display_margin;
 				dim.des += display_margin;
 			}
@@ -549,13 +549,13 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	Changer dummy1 = mi.base.changeFontSet(standardFont());
-	Changer dummy2 = mi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	Changer dummy2 = mi.base.font.changeStyle(display() != Inline ? LM_ST_DISPLAY
 	                                                    : LM_ST_TEXT);
 
 	// let the cells adjust themselves
 	InsetMathGrid::metrics(mi, dim);
 
-	if (display()) {
+	if (display() != Inline) {
 		dim.asc += display_margin;
 		dim.des += display_margin;
 	}
@@ -653,7 +653,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
 		: Changer();
 	Changer dummy1 = pi.base.changeFontSet(standardFont());
-	Changer dummy2 = pi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	Changer dummy2 = pi.base.font.changeStyle(display() != Inline ? LM_ST_DISPLAY
 	                                                    : LM_ST_TEXT);
 
 	int xmath = x;
@@ -695,7 +695,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
-	if (display()) {
+	if (display() != Inline) {
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		odocstringstream os;
@@ -711,7 +711,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 
 void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 {
-	if (display()) {
+	if (display() != Inline) {
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		odocstringstream os;
@@ -1022,12 +1022,12 @@ Inset::DisplayType InsetMathHull::display() const
 	case hullMultline:
 	case hullGather:
 		if (buffer().params().is_math_indent)
-			return AlignLeft;
+			return Display | AlignLeft;
 		else
-			return AlignCenter;
+			return Display;
 	}
 	// avoid warning
-	return AlignCenter;
+	return Display;
 }
 
 
@@ -2324,7 +2324,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
         OutputParams const & op, size_t max_length) const
 {
 	// Try enabling this now that there is a flag as requested at #2275.
-	if (buffer().isExporting() && display()) {
+	if (buffer().isExporting() && display() != Inline) {
 		Dimension dim;
 		TextMetricsInfo mi;
 		metricsT(mi, dim);

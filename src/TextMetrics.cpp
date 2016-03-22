@@ -557,19 +557,13 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 
 	// Display-style insets should always be on a centered row
 	if (Inset const * inset = par.getInset(row.pos())) {
-		switch (inset->display()) {
-		case Inset::AlignLeft:
-			align = LYX_ALIGN_BLOCK;
-			break;
-		case Inset::AlignCenter:
-			align = LYX_ALIGN_CENTER;
-			break;
-		case Inset::Inline:
-			// unchanged (use align)
-			break;
-		case Inset::AlignRight:
-			align = LYX_ALIGN_RIGHT;
-			break;
+		if (inset->display() & Inset::Display) {
+			if (inset->display() & Inset::AlignLeft)
+				align = LYX_ALIGN_BLOCK;
+			else if (inset->display() & Inset::AlignRight)
+				align = LYX_ALIGN_RIGHT;
+			else
+				align = LYX_ALIGN_CENTER;
 		}
 	}
 
@@ -920,15 +914,12 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		}
 
 		// Handle some situations that abruptly terminate the row
-		// - A newline inset
-		// - Before a display inset
-		// - After a display inset
-		Inset const * inset = 0;
-		if (par.isNewline(i) || par.isEnvSeparator(i)
-		    || (i + 1 < end && (inset = par.getInset(i + 1))
-			&& inset->display())
-		    || (!row.empty() && row.back().inset
-			&& row.back().inset->display())) {
+		// - Before an inset with BreakBefore
+		// - After an inset with BreakAfter
+		Inset const * prevInset = !row.empty() ? row.back().inset : 0;
+		Inset const * nextInset = (i + 1 < end) ? par.getInset(i + 1) : 0;
+		if ((nextInset && nextInset->display() & Inset::BreakBefore)
+		    || (prevInset && prevInset->display() & Inset::BreakAfter)) {
 			row.flushed(true);
 			need_new_row = par.isNewline(i);
 			++i;
@@ -1753,7 +1744,7 @@ int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
 	         && par.isInset(pos)
-	         && par.getInset(pos)->display())
+	         && par.getInset(pos)->display() & Inset::Display)
 	    && (!(tclass.isDefaultLayout(par.layout())
 	        || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation
