@@ -194,7 +194,7 @@
     </layout>
    </item>
    <item row="1" column="0">
-    <widget class="QToolBox" name="citationTB">
+    <widget class="lyx::frontend::LyXToolBox" name="citationTB">
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
        <horstretch>0</horstretch>
@@ -208,14 +208,6 @@
       <number>1</number>
      </property>
      <widget class="QWidget" name="page">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>572</width>
-        <height>111</height>
-       </rect>
-      </property>
       <attribute name="label">
        <string>&amp;Search Citation</string>
       </attribute>
@@ -377,14 +369,6 @@
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>572</width>
-        <height>105</height>
-       </rect>
-      </property>
       <attribute name="label">
        <string>For&amp;matting</string>
       </attribute>
@@ -558,6 +542,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::LyXToolBox</class>
+   <extends>QToolBox</extends>
+   <header>LyXToolBox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>availableLV</tabstop>
   <tabstop>addPB</tabstop>
