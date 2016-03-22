@@ -144,6 +144,7 @@ SOURCEFILES = \
 	InsetParamsWidget.cpp \
 	LengthCombo.cpp \
 	LyXFileDialog.cpp \
+	LyXToolBox.cpp \
 	LaTeXHighlighter.cpp \
 	LayoutBox.cpp \
 	Menus.cpp \
@@ -253,6 +254,7 @@ MOCHEADER = \
 	LayoutBox.h \
 	LengthCombo.h \
 	LyXFileDialog.h \
+	LyXToolBox.h \
 	Menus.h \
 	PanelStack.h \
 	TocModel.h \
