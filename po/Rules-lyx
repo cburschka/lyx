@@ -31,7 +31,8 @@ layouts_l10n.pot: $(top_srcdir)/lib/layouts/*.layout \
 		$(top_srcdir)/lib/layouts/*.module
 	$(LYX_POT) -o $@ -t layouts $^
 
-#FIXME: I am not sure what this does. Why read the po files in this case?
+# Read translatable strings from layouts and translations from the po files and
+# create the layouttranslations file containing all LaTeX relevant translations
 $(top_srcdir)/lib/layouttranslations: $(POFILES) $(top_srcdir)/lib/layouts/*.layout \
                 $(top_srcdir)/lib/layouts/*.inc $(top_srcdir)/lib/layouts/*.module
 	$(LYX_POT) -o $@ -t layouttranslations ${top_srcdir}/lib/layouts/*.layout ${top_srcdir}/lib/layouts/*.inc ${top_srcdir}/lib/layouts/*.module
