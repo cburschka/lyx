@@ -1731,7 +1731,10 @@ Font const & Paragraph::getFontSettings(BufferParams const & bparams,
 
 FontSpan Paragraph::fontSpan(pos_type pos) const
 {
-	LBUFERR(pos < size());
+	LBUFERR(pos <= size());
+
+	if (pos == size())
+		return FontSpan(pos, pos);
 
 	pos_type start = 0;
 	FontList::const_iterator cit = d->fontlist_.begin();

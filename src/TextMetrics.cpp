@@ -791,6 +791,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	pos_type const pos = row.pos();
 	pos_type const body_pos = par.beginOfBody();
 	bool const is_rtl = text_->isRTL(par);
+	bool need_new_row = false;
 
 	row.clear();
 	row.left_margin = leftMargin(max_width_, pit, pos);
@@ -802,11 +803,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.dimension().wid = row.left_margin;
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
-
-	if (pos >= end) {
-		row.endpos(end);
-		return;
-	}
 
 	ParagraphList const & pars = text_->paragraphs();
 
@@ -829,6 +825,9 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, pit, pos);
 	do {
+		// this can happen for an empty row after a newline
+		if (i >= end)
+			break;
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -887,6 +886,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		    || (!row.empty() && row.back().inset
 			&& row.back().inset->display())) {
 			row.right_boundary(true);
+			need_new_row = par.isNewline(i);
 			++i;
 			break;
 		}
@@ -898,7 +898,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.endpos(i);
 
 	// End of paragraph marker
-	if (lyxrc.paragraph_markers
+	if (lyxrc.paragraph_markers && !need_new_row
 	    && i == end && size_type(pit + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
 		// marker; it is shown on screen, but does not exist
