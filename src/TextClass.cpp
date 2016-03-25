@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 59; //gm: OutlinerName, AddToToc, IsTocCaption
+int const LAYOUT_FORMAT = 60; //lasgouttes LongTableNoNumber => Unnumbered
 
 namespace {
 

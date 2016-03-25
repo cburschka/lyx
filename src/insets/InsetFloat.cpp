@@ -487,7 +487,7 @@ void InsetFloat::setNewLabel()
 
 bool InsetFloat::allowsCaptionVariation(std::string const & newtype) const
 {
-	return !params_.subfloat && newtype != "LongTableNoNumber";
+	return !params_.subfloat && newtype != "Unnumbered";
 }
 
 

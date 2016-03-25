@@ -224,7 +224,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (first_arg == "changetype") {
 			string const type = cmd.getArg(1);
 			status.setOnOff(type == type_);
-			bool varia = type != "LongTableNoNumber";
+			bool varia = type != "Unnumbered";
 			// check if the immediate parent inset allows caption variation
 			if (cur.depth() > 1) {
 				varia = cur[cur.depth() - 2].inset().allowsCaptionVariation(type);

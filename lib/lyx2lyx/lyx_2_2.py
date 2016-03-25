@@ -104,6 +104,36 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
 ###
 ###############################################################################
 
+def convert_longtable_label_internal(document, forward):
+    """
+    Convert reference to "LongTableNoNumber" into "Unnumbered" if forward is True
+    else revert it.
+    """
+    old_reference = "\\begin_inset Caption LongTableNoNumber"
+    new_reference = "\\begin_inset Caption Unnumbered"
+
+    # if the purpose is to revert swap the strings roles
+    if not forward:
+        old_reference, new_reference = new_reference, old_reference
+
+    i = 0
+    while True:
+        i = find_token(document.body, old_reference, i)
+
+        if i == -1:
+            return
+
+        document.body[i] = new_reference
+
+
+def convert_longtable_label(document):
+    convert_longtable_label_internal(document, True)
+
+
+def revert_longtable_label(document):
+    convert_longtable_label_internal(document, False)
+
+
 def convert_separator(document):
     """
     Convert layout separators to separator insets and add (LaTeX) paragraph
@@ -2253,10 +2283,12 @@ convert = [
            [503, []],
            [504, [convert_save_props]],
            [505, []],
-           [506, [convert_info_tabular_feature]]
+           [506, [convert_info_tabular_feature]],
+           [507, [convert_longtable_label]]
           ]
 
 revert =  [
+           [506, [revert_longtable_label]],
            [505, [revert_info_tabular_feature]],
            [504, []],
            [503, [revert_save_props]],

@@ -198,6 +198,9 @@ import os, re, string, sys
 # New Layout tags "AddToToc", "IsTocCaption"
 # New Layout argument tag "IsTocCaption"
 
+# Incremented to format 60, 25 March 2016 by lasgouttes
+# Rename caption subtype LongTableNoNumber to Unnumbered
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -205,7 +208,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 59
+currentFormat = 60
 
 
 def usage(prog_name):
@@ -319,6 +322,7 @@ def convert(lines):
     re_TopEnvironment = re.compile(r'^(\s*)LabelType(\s+)Top_Environment\s*$', re.IGNORECASE)
     re_CenteredEnvironment = re.compile(r'^(\s*)LabelType(\s+)Centered_Top_Environment\s*$', re.IGNORECASE)
     re_ChapterStyle = re.compile(r'^\s*Style\s+Chapter\s*$', re.IGNORECASE)
+    re_InsetLayout_CaptionLTNN = re.compile(r'^(\s*InsetLayout\s+)(Caption:LongTableNonumber)', re.IGNORECASE)
 
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -428,6 +432,17 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 59:
+            match = re_InsetLayout_CaptionLTNN.match(lines[i])
+            if not match:
+                i += 1
+                continue
+            # '^(\s*InsetLayout\s+)(Caption:LongTableNonumber)'
+            lead  = match.group(1)
+            lines[i] = lead + "Caption:Unnumbered"
+            i += 1
             continue
 
         if format == 58:

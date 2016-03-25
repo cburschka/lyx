@@ -3521,7 +3521,7 @@ bool InsetTabular::insetAllowed(InsetCode code) const
 bool InsetTabular::allowsCaptionVariation(std::string const & newtype) const
 {
 	return tabular.is_long_tabular &&
-		(newtype == "Standard" || newtype == "LongTableNoNumber");
+		(newtype == "Standard" || newtype == "Unnumbered");
 }
 
 
