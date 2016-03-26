@@ -329,7 +329,7 @@ macro(sortlabellist listout)
     list(APPEND tmplist "${depth_${_lab}}${_lab}")
   endforeach()
   list(SORT tmplist)
-  string(REGEX REPLACE ";[0-9]+" ";" ${listout} ";${tmplist}")
+  string(REGEX REPLACE ";[-0-9]+" ";" ${listout} ";${tmplist}")
 endmacro()
 
 macro(createlabel reslabel first)
