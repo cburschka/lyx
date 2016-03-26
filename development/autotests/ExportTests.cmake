@@ -39,7 +39,7 @@ endif()
 set(potential_languages "ca" "cs" "da" "de" "el" "es" "eu" "fa" "fr" "gl" "he" "hu" "id" "it" "ja" "ko" "nb" "nl" "pl" "pt" "ro" "ru" "sk" "sl" "sr" "sv" "uk" "zh_CN")
 
 # Used to select labels from .*Tests files
-set(label_chars "[a-zA-Z:]+")
+set(label_chars "[a-zA-Z:_]+")
 
 macro(initLangVars varname)
   foreach(_l ${potential_languages})
