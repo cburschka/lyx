@@ -8811,12 +8811,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8829,6 +8831,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8861,6 +8864,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -17937,6 +17941,74 @@ name "subsec:Abbreviations"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Nota: le paragraphe qui suit est traduit de l'anglais, langue dans laquelle
+ les espaces en fin de phrase après le point sont plus grandes qu'en français:
+ ces considérations ne vous concernent donc que si vous écrivez en anglais,
+ c'est pourquoi nous avons laissé les exemples dans cette langue.
+ En français, il n'y a pas de différence entre l'espace de fin de phrase
+ et l'espace entre mots, et le caractère 
+\family sans
+Insertion\SpecialChar menuseparator
+Caractère
+\begin_inset space ~
+\end_inset
+
+spécial\SpecialChar menuseparator
+Point
+\begin_inset space ~
+\end_inset
+
+final
+\family default
+ n'a donc pas besoin d'être utilisé.
+\end_layout
+
+\begin_layout Plain Layout
+Par contre, avec babel french, vous pouvez contrôler cet espacement via
+ les commandes 
+\family typewriter
+
+\backslash
+frenchspacing
+\family default
+ et 
+\family typewriter
+
+\backslash
+nonfrenchspacing
+\family default
+ en code \SpecialChar TeX
+: 
+\family typewriter
+
+\backslash
+frenchspacing
+\family default
+ (implicite au début d'un document en français) assure une typographie à
+ le française, 
+\family typewriter
+
+\backslash
+nonfrenchspacing
+\family default
+ force une typographie à l'anglaise.
+ Voyez le dernier paragraphe du 
+\emph on
+Manuel d'apprentissage
+\emph default
+ pour les détails sur la typographie française.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Quand \SpecialChar LyX
  invoque \SpecialChar LaTeX
  pour générer la version finale de votre document, \SpecialChar LaTeX
@@ -17983,13 +18055,17 @@ corrects
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 M.
- Dupont
+ Butterfly
 \end_layout
 
 \begin_layout Itemize
-Il fait beau.
- Le soleil brille.
+
+\lang english
+Don't worry.
+ Be happy.
 \end_layout
 
 \begin_layout Standard
@@ -17997,24 +18073,21 @@ Il fait beau.
 \end_layout
 
 \begin_layout Itemize
-par ex.
- il y a trop d'espace !
+
+\lang english
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ this is too much space!
 \end_layout
 
 \begin_layout Itemize
-Je monte dans ma DS.
- Je mets le contact.
-\begin_inset Foot
-status collapsed
 
-\begin_layout Plain Layout
-NdT : il m'en a fallu du temps pour trouver un exemple aussi intéressant
- !
-\end_layout
-
-\end_inset
-
-
+\lang english
+This is I.
+ It's okay.
 \end_layout
 
 \begin_layout Standard
@@ -18135,25 +18208,56 @@ NdT : le raccourci n'a pas l'air de fonctionner avec un clavier français.
 \end_layout
 
 \begin_layout Standard
-Avec les corrections, nos exemples deviennent :
+Après les corrections, nos exemples deviennent :
 \end_layout
 
-\begin_layout Itemize
-par ex.
+\begin_layout Quote
+
+\lang english
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ this is too much space!
+\lang french
+ (non corrigé)
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
 \begin_inset space \space{}
 \end_inset
 
-il y a trop d'espace !
+this is too much space!
 \end_layout
 
-\begin_layout Itemize
-Je monte dans ma DS\SpecialChar endofsentence
- Je mets le contact.
+\begin_layout Quote
+
+\lang english
+This is I.
+ It's okay.
+
+\lang french
+ (non corrigé)
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+This is I\SpecialChar endofsentence
+ It's okay.
 \end_layout
 
 \begin_layout Standard
-Certaines langues ne mettent pas plus d'espace entre les phrases qu'entre
- les mots.
+Certaines langues (comme le français, voir la note ci-dessus) ne mettent
+ pas plus d'espace entre les phrases qu'entre les mots.
  Si vous voulez écrire dans ces langues, vous n'avez pas à vous occuper
  de tout ceci, puisque \SpecialChar LaTeX
  va s'en occuper.
@@ -20582,8 +20686,8 @@ cellule, répartie sur plusieurs colonnes.
  Les cellules multi-colonnes sont traitées comme des lignes à part, ce qui
  fait que leur alignement, leur largeur et la configuration de leur bordure
  n'affectent que la cellule et elle seule.
- Voici un exemple utilisant une cellule multicolonne dans sa première ligne
- et une cellule sans bordure supérieure dans la dernière ligne
+ Voici un exemple utilisant une cellule multi-colonnes dans sa première
+ ligne et une cellule sans bordure supérieure dans la dernière ligne
 \begin_inset Separator parbreak
 \end_inset
 
@@ -20845,8 +20949,8 @@ tableau
 \begin_layout Description
 En-tête: la ligne courante et toutes celles situées au-dessus et qui n'ont
  pas d'attributs particuliers, sont définies comme faisant partie des lignes
- d'en-tête utilisées pour toutes les pages du tableau long; sauf pour la
- première page, si 
+ d'en-tête utilisées pour toutes les pages du tableau multi-pages; sauf
+ pour la première page, si 
 \family sans
 Premier
 \begin_inset space ~
