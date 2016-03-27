@@ -1321,7 +1321,7 @@ FileName Buffer::getBackupName() const {
 		fn.onlyPath().absFileName() :
 		lyxrc.backupdir_path;
 	string const fform = convert<string>(d->file_format);
-	string const backname = fname + "-" + fform;
+	string const backname = fname + "-lyxformat-" + fform;
 	FileName backup(addName(fpath, addExtension(backname, fext)));
 
 	// limit recursion, just in case
