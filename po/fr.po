@@ -305,12 +305,15 @@
 # ------------------------------------------------------------------
 # 26 janvier 2016 : synchronisation avec fr.po de lyx-2.1
 # ------------------------------------------------------------------
+# 24 mars 2016 : revue des raccourcis de la fenêtre de citation éclatée
+#                en deux nouveaux onglets
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-02-26 15:12+0000\n"
-"PO-Revision-Date: 2016-03-16 17:45-0000\n"
+"PO-Revision-Date: 2016-03-24 14:52+0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1213,11 +1216,11 @@ msgstr "Faire descendre la citation (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
 msgid "&Search Citation"
-msgstr "&Recherche citation"
+msgstr "Recherche ci&tation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:226
 msgid "Searc&h:"
-msgstr "Rec&hercher :"
+msgstr "Re&chercher :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:239
 msgid ""
@@ -1232,11 +1235,11 @@ msgstr "Cliquer ou appuyer sur Entrée pour démarrer la recherche"
 
 #: src/frontends/qt4/ui/CitationUi.ui:255
 msgid "&Search"
-msgstr "&Rechercher"
+msgstr "R&echercher"
 
 #: src/frontends/qt4/ui/CitationUi.ui:265
 msgid "Search &field:"
-msgstr "C&hamp de recherche :"
+msgstr "Cham&p de recherche :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:285
 #: src/frontends/qt4/GuiCitation.cpp:296
@@ -1245,11 +1248,11 @@ msgstr "Tous les champs"
 
 #: src/frontends/qt4/ui/CitationUi.ui:306
 msgid "Regular e&xpression"
-msgstr "E&xpression régulière"
+msgstr "Expression r&égulière"
 
 #: src/frontends/qt4/ui/CitationUi.ui:313
 msgid "Case se&nsitive"
-msgstr "Selon la &casse"
+msgstr "Se&lon la casse"
 
 #: src/frontends/qt4/ui/CitationUi.ui:320
 msgid "Entry t&ypes:"
@@ -1270,7 +1273,7 @@ msgstr "Mise en &forme"
 
 #: src/frontends/qt4/ui/CitationUi.ui:380
 msgid "Citation st&yle:"
-msgstr "&Style de citation :"
+msgstr "St&yle de citation :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:390
 msgid "Natbib citation style to use"
@@ -1278,7 +1281,7 @@ msgstr "Style de citation Natbib"
 
 #: src/frontends/qt4/ui/CitationUi.ui:397
 msgid "Text &before:"
-msgstr "Texte a&vant :"
+msgstr "Te&xte avant :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:407
 msgid "Text to place before citation"
@@ -1286,7 +1289,7 @@ msgstr "Texte à ajouter avant la citation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:414
 msgid "&Text after:"
-msgstr "Texte a&près :"
+msgstr "Texte apr&ès :"
 
 #: src/frontends/qt4/ui/CitationUi.ui:424
 msgid "Text to place after citation"
@@ -1306,7 +1309,7 @@ msgstr "Force les majuscules dans la citation"
 
 #: src/frontends/qt4/ui/CitationUi.ui:465
 msgid "Force u&pper case"
-msgstr "Forcer les &majuscules"
+msgstr "Forcer les maj&uscules"
 
 #: src/frontends/qt4/ui/CitationUi.ui:486
 #: src/frontends/qt4/ui/DocumentUi.ui:44
@@ -1319,7 +1322,7 @@ msgstr "&Restaurer"
 
 #: src/frontends/qt4/ui/CitationUi.ui:522
 msgid "App&ly"
-msgstr "&Appliquer"
+msgstr "Appli&quer"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font Colors"
