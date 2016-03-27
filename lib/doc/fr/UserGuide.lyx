@@ -49,7 +49,7 @@
 
 % use normal list environments also in French documents
 \@ifpackageloaded{babel}{%
-\frenchbsetup{StandardLayout}
+\frenchbsetup{ItemLabeli=\textendash}
 }{}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,numbers=noenddot
@@ -8811,14 +8811,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8831,7 +8829,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8864,7 +8861,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -17964,43 +17960,25 @@ Point
 
 final
 \family default
- n'a donc pas besoin d'être utilisé.
+ et le caractère 
+\family sans
+Insertion\SpecialChar menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar menuseparator
+Espace entre mots
+\family default
+ n'ont donc pas besoin d'être utilisés.
 \end_layout
 
 \begin_layout Plain Layout
-Par contre, avec babel french, vous pouvez contrôler cet espacement via
- les commandes 
-\family typewriter
-
-\backslash
-frenchspacing
-\family default
- et 
-\family typewriter
-
-\backslash
-nonfrenchspacing
-\family default
- en code \SpecialChar TeX
-: 
-\family typewriter
-
-\backslash
-frenchspacing
-\family default
- (implicite au début d'un document en français) assure une typographie à
- le française, 
-\family typewriter
-
-\backslash
-nonfrenchspacing
-\family default
- force une typographie à l'anglaise.
- Voyez le dernier paragraphe du 
+Voyez le dernier paragraphe du 
 \emph on
 Manuel d'apprentissage
 \emph default
- pour les détails sur la typographie française.
+ pour d'autres précisions sur la typographie française.
 \end_layout
 
 \end_inset
