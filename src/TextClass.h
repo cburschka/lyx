@@ -402,7 +402,7 @@ public:
 	/// happen).  -- Idea JMarc, comment MV
 	InsetLayout const & insetLayout(docstring const & name) const;
 	/// a plain inset layout for use as a default
-	static InsetLayout const & plainInsetLayout() { return plain_insetlayout_; }
+	static InsetLayout const & plainInsetLayout();
 	/// add a new layout \c name if it does not exist in layoutlist_
 	/// \return whether we had to add one.
 	bool addLayoutIfNeeded(docstring const & name) const;
@@ -498,8 +498,6 @@ private:
 	friend DocumentClassPtr
 		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
 				 bool const clone);
-	///
-	static InsetLayout plain_insetlayout_;
 };
 
 

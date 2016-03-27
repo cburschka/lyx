@@ -129,9 +129,6 @@ string translateReadType(TextClass::ReadType rt)
 docstring const TextClass::plain_layout_ = from_ascii(N_("Plain Layout"));
 
 
-InsetLayout DocumentClass::plain_insetlayout_;
-
-
 /////////////////////////////////////////////////////////////////////////
 //
 // TextClass
@@ -1509,6 +1506,12 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 		n = n.substr(0, i);
 	}
 	// Layout "name" not found.
+	return plainInsetLayout();
+}
+
+
+InsetLayout const & DocumentClass::plainInsetLayout() {
+	static InsetLayout plain_insetlayout_;
 	return plain_insetlayout_;
 }
 
