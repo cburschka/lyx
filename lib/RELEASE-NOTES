@@ -154,3 +154,13 @@
   package option "Automatic" is selected. In order to use babel, select
   "Always babel" instead. This may be needed if a document uses code that
   is specific to babel.
+
+* As usual, when opening and saving a document that was created by a previous
+  major version of LyX (in this case 2.1.x), the file format is changed to
+  the new file format (in this case 2.2.x). What is different starting with
+  2.2.0 is that when we save a file that was not originally in the current LyX
+  format, we create a backup of the original file. We put it in the backup
+  directory, if one exists, otherwise in the directory the original file is
+  in. This is the same strategy as for normal backups. This backup file can be
+  helpful in case a bug in lyx2lyx caused data loss. For more information, see
+  #9554.
