@@ -1511,7 +1511,7 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 
 
 InsetLayout const & DocumentClass::plainInsetLayout() {
-	static InsetLayout plain_insetlayout_;
+	static const InsetLayout plain_insetlayout_;
 	return plain_insetlayout_;
 }
 
