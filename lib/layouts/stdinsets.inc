@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 59
+Format 60
 
 Provides stdinsets 1
 
@@ -575,7 +575,7 @@ InsetLayout Caption:Standard
 End
 
 
-InsetLayout Caption:LongTableNoNumber
+InsetLayout Caption:Unnumbered
 	CopyStyle            Caption:Standard
 	LabelString          unlabelled
 	LatexName            caption*

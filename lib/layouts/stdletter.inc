@@ -3,7 +3,7 @@
 # Heavily modifed and enhanced by several developers.
 
 
-Format 59
+Format 60
 Columns                 1
 Sides                   1
 PageStyle               Empty

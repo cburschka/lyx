@@ -4,7 +4,7 @@
 # This include file contains all the counters that are defined as standard
 # in Docbook LyX layouts.
 
-Format 59
+Format 60
 Counter sect1
 	Within               chapter
 End
