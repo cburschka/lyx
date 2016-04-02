@@ -60,11 +60,13 @@
 #include <stdio.h>
 #endif
 
-
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+#else
 extern "C" {
 extern void __wgetmainargs(int * argc, wchar_t *** argv, wchar_t *** envp,
 			   int expand_wildcards, int * new_mode);
 }
+#endif
 
 using namespace std;
 
@@ -157,9 +159,13 @@ void init(int argc, char * argv[])
 
 
 	// Get the wide program arguments array
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+	argv_ = CommandLineToArgvW(GetCommandLineW(), &argc_);
+#else
 	wchar_t ** envp = 0;
 	int newmode = 0;
 	__wgetmainargs(&argc_, &argv_, &envp, -1, &newmode);
+#endif
 	LATTEST(argc == argc_);
 
 	// If Cygwin is detected, query the cygdrive prefix.
