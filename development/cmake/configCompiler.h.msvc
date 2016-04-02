@@ -168,6 +168,9 @@
 #define HAVE_MODE_T
 #endif
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#include "support/strfwd.h" // always first, to prevent compiler's interpretation/instantiations of some typedef
+#endif
 
 
 #endif

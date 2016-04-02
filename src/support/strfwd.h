@@ -23,8 +23,14 @@ namespace lyx { typedef wchar_t char_type; }
 
 #else
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1600)
+#include <cstdint>
+namespace lyx { typedef uint32_t char_type; }
+#include "support/numpunct_lyx_char_type.h" // implementation for our char_type needed
+#else
 #include <boost/cstdint.hpp>
 namespace lyx { typedef boost::uint32_t char_type; }
+#endif
 
 #endif
 
@@ -62,12 +68,7 @@ typedef basic_ostringstream<char, char_traits<char>, allocator<char> > ostringst
 #endif
 
 
-// Ugly workaround for MSVC10 STL bug:
-// std::numpunct has a hardcoded dllimport in definition, but we wanna it with 32 bit 
-// so we can't import it and must define it but then the compiler complains.
-#if defined(_MSC_VER) && (_MSC_VER >= 1600) 
-#include "support/numpunct_lyx_char_type.h"
-#endif
+
 
 
 namespace lyx {
