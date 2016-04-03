@@ -1,7 +1,7 @@
 /*
 NSIS Script - LyX 2.2 Installer for Windows
 Authors: Joost Verburg, Angus Leeming, Uwe Stöhr
-Compatible with NSIS 2.46
+Compatible with NSIS 2.51
 */
 
 # Do a Cyclic Redundancy Check to make sure the installer
@@ -9,7 +9,7 @@ Compatible with NSIS 2.46
 CRCCheck force
 #
 # Make the installer as small as possible.
-#SetCompressor /SOLID lzma
+SetCompressor /SOLID lzma
 
 !ifndef SETUPTYPE
  !define SETUPTYPE STANDARD
