@@ -201,7 +201,33 @@ name "sec:When-is-an"
 When you are working on a new feature you may ask yourself whether it needs
  an update of the .lyx file format number.
  Whether an update is needed or not is not always obvious.
- Below you can find a list of reasons for file format updates with explanations:
+\end_layout
+
+\begin_layout Description
+Rule
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+thumb:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Whenever there is the danger that a previous version of LyX cannot open
+ a file using the new feature, a file format update is needed.
+\end_layout
+
+\begin_layout Standard
+The file format change allows lyx2lyx rules to implement backwards compatibility.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Below you can find a list of reasons for file format updates with explanations:
 \end_layout
 
 \begin_layout Description
@@ -215,28 +241,6 @@ document
 
 setting Whenever you introduce a new setting that is stored in the document
  header, a file format update is needed.
- This is also true if you add a new valid value to an existing setting,
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-a new language that is stored in 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-language
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Description
@@ -257,11 +261,134 @@ New
 \begin_inset space ~
 \end_inset
 
-inset Of course a new inset requires a file format update.
+valid
+\begin_inset space ~
+\end_inset
+
+value
+\begin_inset space ~
+\end_inset
+
+for
+\begin_inset space ~
+\end_inset
+
+an
+\begin_inset space ~
+\end_inset
+
+existing
+\begin_inset space ~
+\end_inset
+
+setting, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\paragraph_spacing single
+Automatically
+\begin_inset space ~
+\end_inset
+
+loaded
+\begin_inset space ~
+\end_inset
+
+math
+\begin_inset space ~
+\end_inset
+
+package The reason for this is that there is no true ERT inset for math
+ formulas: Each command is parsed, and if a user happens to define a local
+ command with the same name as a command that triggers an automatic load
+ of a package, they need to be able to switch off the automatic loading
+ of that package.
+ This switch is stored by the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+use_package
+\end_layout
+
+\end_inset
+
+ header setting.
 \end_layout
 
 \begin_layout Description
 New
+\begin_inset space ~
+\end_inset
+
+language that is stored in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+language
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+TODO: Discuss if this is really required or whether new languages can be
+ treated similar to new layouts (cf.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:New-layouts"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+New
+\begin_inset space ~
+\end_inset
+
+inset Of course a new inset requires a file format update.
+\end_layout
+
+\begin_layout Description
+Modified
+\begin_inset space ~
+\end_inset
+
+layouts
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+modules with a
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+new
 \begin_inset space ~
 \end_inset
 
@@ -282,47 +409,45 @@ reference "subsec:Backporting-new-styles"
 \end_layout
 
 \begin_layout Description
-Removed
+removed
 \begin_inset space ~
 \end_inset
 
 style If a style or inset layout is removed in any layout file or module
  shipped with \SpecialChar LyX
-, then a new file format is required.
+, a new file format is required.
 \end_layout
 
-\begin_layout Description
-Automatically
-\begin_inset space ~
-\end_inset
-
-loaded
-\begin_inset space ~
-\end_inset
-
-math
-\begin_inset space ~
-\end_inset
-
-package Any new math package that is automatically loaded needs a file format
- update.
- The reason for this is that there is no true ERT inset for math formulas:
- Each command is parsed, and if a user happens to define a local command
- with the same name as a command that triggers an automatic load of a package,
- they need to be able to switch off the automatic loading of that package.
- This switch is stored by the 
-\begin_inset Flex Code
+\begin_layout Standard
+However, 
+\series bold
+new
+\series default
+ layouts and modules do 
+\series bold
+not
+\series default
+ require a file format update.
+\begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-use_package
+Changed 03/16, see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:New-layouts"
+
+\end_inset
+
+ for the rationale.
 \end_layout
 
 \end_inset
 
- header setting.
+ 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 If you are still unsure, please ask on the development list.
 \end_layout
@@ -1040,10 +1165,6 @@ Note: This section is currently only a proposal under discussion.
 \end_layout
 
 \begin_layout Plain Layout
-Summary of a recent discussion in lyx-devel by GM.
-\end_layout
-
-\begin_layout Plain Layout
 See the thread 
 \begin_inset Quotes eld
 \end_inset
@@ -1106,7 +1227,6 @@ target "https://wiki.lyx.org/Layouts/Layouts"
 In older versions of this document, it was stated that new layout files
  require a file format change.
  After some discussion it was decided that this is not needed.
- For reference, here are the arguments on each side:
 \begin_inset Foot
 status open
 
@@ -1114,7 +1234,7 @@ status open
 See 
 \begin_inset CommandInset href
 LatexCommand href
-name "this thread"
+name "the thread “Proposal for a guide on updating layouts”"
 target "http://permalink.gmane.org/gmane.editors.lyx.devel/161202"
 
 \end_inset
@@ -1124,9 +1244,14 @@ target "http://permalink.gmane.org/gmane.editors.lyx.devel/161202"
 
 \end_inset
 
-
+ 
 \end_layout
 
+\begin_layout Quote
+For reference, here are the arguments on each side
+\end_layout
+
+\begin_deeper
 \begin_layout Description
 Pro 
 \begin_inset Quotes eld
@@ -1140,8 +1265,15 @@ New layout files are a file format change
 \end_layout
 
 \begin_layout Itemize
-All documents produced by 2.2.x can always be edited and exported even if
- x is different.
+All documents produced by 2.2.
+\begin_inset Formula $x$
+\end_inset
+
+ can always be edited and exported even if 
+\begin_inset Formula $x$
+\end_inset
+
+ is different.
  This is important for people using different machines, or exchanging work
  with colleagues.
 \end_layout
@@ -1173,15 +1305,10 @@ We have the same situation already with custom layout files: If a document
 \end_layout
 
 \begin_layout Itemize
-The lyx2lyx script cannot do anything useful on backward conversion in such
- a case, and the forward conversion would be a no-op.
+The lyx2lyx script cannot do anything useful in such a case.
 \end_layout
 
-\begin_layout Standard
-As said, consensus has been reached that the reasons in favor of not requiring
- a file format change are more compelling.
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 If you have decided that you are going to add a new layout file to \SpecialChar LyX
  itself,
@@ -1201,7 +1328,7 @@ lib/layouts/
 
  and add it to Git (
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 git add lib/layouts/newlayout.layout
@@ -1246,13 +1373,11 @@ Found: [InsetInfo]
 \end_layout
 
 \begin_layout Standard
-\paragraph_spacing single
 where [InsetInfo] is obtained by entering in the minibuffer (Alt+X) 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-\paragraph_spacing single
 info-insert textclass <name>
 \end_layout
 
@@ -1280,7 +1405,9 @@ no
 
 \end_deeper
 \begin_layout Enumerate
-Add a template or example file to 
+A template or example is strongly encouraged (but not necessarily required).
+ It is also possible to provide both.
+ Add them to 
 \begin_inset Flex Code
 status collapsed
 
@@ -1452,10 +1579,9 @@ This point was also made here: http://permalink.gmane.org/gmane.editors.lyx.deve
 
 \end_layout
 
-\begin_layout Standard
-Moreover, because the layout file is completely new, it can be added both
- to the master and the stable branches, in accord with the policy discussed
- in 
+\begin_layout Itemize
+The new layout can be added both to the master and the stable branches,
+ in accord with the policy discussed in 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "subsec:New-layouts"
@@ -1467,8 +1593,8 @@ reference "subsec:New-layouts"
 \end_layout
 
 \begin_layout Standard
-The user can then move an existing document to the new version simply by
- selecting a new document class.
+The user can move an existing document to the new version simply by selecting
+ a new document class.
  This step is well supported by \SpecialChar LyX
 , with established methods for handling
  unsupported styles and other changes.
@@ -1508,7 +1634,7 @@ status collapsed
 
  file as an optional argument in the 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1542,8 +1668,8 @@ DeclareLaTeXClass[acmsiggraph]{ACM SIGGGRAPH (v.
 \end_layout
 
 \begin_layout Itemize
-Update the GUI name in the old layout file (whose name should not have been
- changed), e.g.:
+Update the GUI name in the old layout file (whose name should not be changed),
+ e.g.:
 \begin_inset Newline newline
 \end_inset
 
@@ -1581,9 +1707,9 @@ Input
 remove\SpecialChar breakableslash
 obsolete\SpecialChar breakableslash
 modify settings and styles (similar
- to inclusion of 
+ to the inclusion of 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 *.inc
