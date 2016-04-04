@@ -201,33 +201,17 @@ name "sec:When-is-an"
 When you are working on a new feature you may ask yourself whether it needs
  an update of the .lyx file format number.
  Whether an update is needed or not is not always obvious.
+ Rule of thumb: 
 \end_layout
 
-\begin_layout Description
-Rule
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-thumb:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+\begin_layout Quote
 Whenever there is the danger that a previous version of LyX cannot open
  a file using the new feature, a file format update is needed.
 \end_layout
 
 \begin_layout Standard
 The file format change allows lyx2lyx rules to implement backwards compatibility.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-Below you can find a list of reasons for file format updates with explanations:
+ Below you can find a list of reasons for file format updates with explanations:
 \end_layout
 
 \begin_layout Description
@@ -340,20 +324,11 @@ language
 
 .
  
-\begin_inset Foot
-status open
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
-TODO: Discuss if this is really required or whether new languages can be
- treated similar to new layouts (cf.
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:New-layouts"
-
-\end_inset
-
-).
+This requirement is under discussion.
 \end_layout
 
 \end_inset
@@ -371,24 +346,7 @@ inset Of course a new inset requires a file format update.
 \end_layout
 
 \begin_layout Description
-Modified
-\begin_inset space ~
-\end_inset
-
-layouts
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-modules with a
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-new
+New
 \begin_inset space ~
 \end_inset
 
@@ -409,7 +367,7 @@ reference "subsec:Backporting-new-styles"
 \end_layout
 
 \begin_layout Description
-removed
+Removed
 \begin_inset space ~
 \end_inset
 
@@ -427,27 +385,17 @@ new
 \series bold
 not
 \series default
- require a file format update.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Changed 03/16, see 
+ require a file format update (changed 03/16, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:New-layouts"
 
 \end_inset
 
- for the rationale.
-\end_layout
-
-\end_inset
-
+).
  
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 If you are still unsure, please ask on the development list.
 \end_layout
