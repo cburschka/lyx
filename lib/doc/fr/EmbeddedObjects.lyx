@@ -7799,7 +7799,11 @@ Quand la légende du tableau pour les pages suivantes doit être différente
  contenant une légende, puis effectuer un clic droit sur la légende et cocher
  dans le menu contextuel
 \family sans
- Légende (TableauLongSansNuméro)
+ Légende
+\begin_inset space ~
+\end_inset
+
+(NonNuméroté)
 \family default
 .
  Le tableau
