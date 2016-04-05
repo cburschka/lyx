@@ -163,6 +163,8 @@ What's new
 - Fix warning about Undo when an empty subscript is automatically deleted in mathed
   (bug 10022).
 
+- Fix on screen narrow box when using \width as box width unit (bug 10048).
+
 * INTERNALS
 
 - Fix parsing problems of class and category declaration line in layout files
