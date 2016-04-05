@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C) 2003, 2006
 # Zdenko Podobný <zdpo@mailbox.sk>
-# 
+#
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2015.
+# Kornel Benko <kornel@lyx.org>, 2009-2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-04-05 00:21+0200\n"
-"PO-Revision-Date: 2016-03-16 17:14+0000\n"
+"POT-Creation-Date: 2016-04-05 09:52+0200\n"
+"PO-Revision-Date: 2016-04-05 07:55+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6753,6 +6753,10 @@ msgstr "Množina dát:"
 #: lib/layouts/aastex.layout:622
 msgid "Separate the dataset ID from text"
 msgstr "Oddeliť identifikátor datasetu od textu"
+
+#: lib/layouts/aastex6.layout:3
+msgid "American Astronomical Society (AASTeX v. 6)"
+msgstr "American Astronomical Society (AASTeX v. 6)"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
