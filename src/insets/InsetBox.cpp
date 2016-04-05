@@ -169,7 +169,7 @@ void InsetBox::setButtonLabel()
 
 bool InsetBox::hasFixedWidth() const
 {
-	return !params_.width.empty();
+	return !params_.width.empty() && params_.special == "none";
 }
 
 
