@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1491,7 +1491,7 @@ arg   "math-superscript"
 \end_inset
 
  erzeugt.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1748,7 +1748,7 @@ Eine Zeile mit dem Bruch
 dfrac
 \series default
  erstellt wurde.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2286,7 +2286,7 @@ arg   "math-insert \\root"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2650,7 +2650,7 @@ brack
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3075,7 +3075,7 @@ not
 
  kann jedes beliebige Zeichen durchgestrichen dargestellt werden.
  Die Zeichen werden quasi mit einem Schrägstrich akzentuiert.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3300,7 +3300,7 @@ reference "subsec:Chemische-Symbole-und"
 \end_inset
 
  darstellen, tritt folgendes Problem auf:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3426,7 +3426,7 @@ phantom
  als Leerraum erstellt wird.
  Phantomzeichen sind dementsprechend Platzhalter mit der Größe der angegebenen
  Zeichen.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4149,7 +4149,7 @@ dots
 , entscheidet \SpecialChar LaTeX
  anhand des nachfolgenden Zeichens, welche Punktart verwendet
  wird.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6046,7 +6046,7 @@ Bigg
 
 \begin_layout Standard
 Diese Befehle werden benutzt um Klammerebenen optisch hervorzuheben:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6130,7 +6130,7 @@ C
 
 \begin_layout Standard
 Hier alle Klammergrößen in der Übersicht:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6258,7 +6258,7 @@ r
 
 \begin_layout Standard
 In der folgenden Tabelle sind die Varianten miteinander verglichen:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6521,7 +6521,7 @@ right
 \series default
  muss unmittelbar die gewünschte Klammer folgen.
  Die Klammergröße wird dann bei der Ausgabe automatisch berechnet.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7011,7 +7011,7 @@ Immer
 laden
 \family default
  einstellt, hat man Zugriff auf eckige Klammern:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7197,7 +7197,7 @@ underbracket
 \series default
  kann die Strichstärke der Klammer verändert werden, indem man die gewünschte
  Stärke in eckigen Klammern hinter dem Befehl angibt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8548,7 +8548,7 @@ Immer
 laden
 \family default
  einstellt, hat man Zugriff auf die folgenden beschriftbaren Pfeile:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8932,7 +8932,7 @@ xrightleftharpoons
 
 \begin_layout Standard
 Das Befehlsschema ist für all diese Pfeile dasselbe:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10191,7 +10191,7 @@ undertilde
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10806,7 +10806,7 @@ arg   "math-insert \\space"
  oder mit einzelnen Befehlen aufrufen.
  Unabhängig vom eingegebenen Befehl kann man durch Drücken der Leertaste
  danach wieder aus allen Größen wählen.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12552,7 +12552,7 @@ framebox
 fbox
 \series default
  die Formel eingegeben.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13052,7 +13052,7 @@ raisebox
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13437,7 +13437,7 @@ white
 yellow
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15743,7 +15743,7 @@ Grenzen werden durch Hoch- bzw.
 \end_inset
 
 Tiefstellen erzeugt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18944,7 +18944,7 @@ arg   "math-insert \\style"
 \end_inset
 
  geändert werden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20700,7 +20700,7 @@ boldsymbol
 \end_inset
 
  fett gedruckt auszugeben.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22721,7 +22721,7 @@ eurosym
 
 \begin_layout Standard
 Eine Übersicht der verschiedenen Euro-Symbole:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24413,7 +24413,7 @@ stackrel
 \end_inset
 
  erstellt werden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24546,7 +24546,7 @@ kursiv
  Aus diesem Grund gibt es vordefinierte Funktionen, die zusätzlich von Vorfaktor
 en etwas abgesetzt sind.
  Sie werden als Befehle mit einem Backslash vor dem Funktionsnamen eingefügt.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25240,7 +25240,7 @@ Selbst definierte Funktionen werden in \SpecialChar LyX
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25385,7 +25385,7 @@ liminf
 limsup
 \series default
  noch folgende Funktionen definiert:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25708,7 +25708,7 @@ Indizes.
  Um diese Zeichen zu erhalten, müssen sie mit einem 
 \backslash
  eingegeben werden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27389,7 +27389,7 @@ Formel ! Stile
 
 \begin_layout Itemize
 Für abgesetzte Formeln gibt es zwei verschiedene Anordnungsstile:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27471,7 +27471,7 @@ pt verwendet.
 \end_deeper
 \begin_layout Itemize
 Und zwei verschiedene Nummerierungsstile:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -31509,7 +31509,7 @@ ce
 \series default
  in eine Formel eingefügt wurde, erscheint eine neue blaue Box in die chemische
  Formeln in intuitiver Weise eingegeben werden können.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -32886,7 +32886,7 @@ white
 
 \begin_layout Standard
 Ein Test der neu definierten Befehle:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34189,7 +34189,7 @@ Wandelt man also das Minuszeichen in mathematischen Text um, tritt das Problem
 
 \begin_layout Standard
 Ein Beispiel zur Veranschaulichung der Problematik:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34463,7 +34463,7 @@ braket
 
 \begin_layout Standard
 Folgende Befehle sind definiert:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34768,7 +34768,7 @@ Der Ansichtsstil wird mit einer ganzen Zahl im Bereich 0
 \end_inset
 
 3 angegeben.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35044,7 +35044,7 @@ cancel
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

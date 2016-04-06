@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -635,7 +635,7 @@ reference "sec:画像形式"
 \end_inset
 
 の画像の例で、単独の中央揃えの段落に置いてあります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -656,7 +656,7 @@ reference "sec:画像形式"
 
 \begin_layout Standard
 下記は上と同じ画像ですが、下書きモードのものです。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1487,7 +1487,7 @@ arg   "tabular-insert"
 
 既定の表では、各セルの周囲に罫線が引かれ、第一行が表の他の部分から分離して表示されます。この分離が起こるのは二重線のためです。第一行のセルが下に罫線を伴っている
 のと同時に、第二行のセルも上に罫線を伴っているのです。以下は表の一例です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2986,7 +2986,7 @@ reference "subsec:多頁表のキャプション"
 
 \begin_layout Standard
 加えて、表が分割される行を指定することができます。多頁表の動作を見るために以下の例を参照してください。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7281,7 +7281,7 @@ reference "tab:別キャプション"
 \end_inset
 
 は、異なるヘッダを持つ多頁表の一例です。2番目のキャプションには表番が現れないようにしてあります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9394,7 +9394,7 @@ parfillskip}{0pt}
 \begin_layout Standard
 というコマンドを当該セルの初めに\SpecialChar TeX
 コードで挿入しなくてはなりません。こうすることで、新規頁部分に表示されるセル内の部分が、正しく全幅を使用するようにできます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11223,7 +11223,7 @@ arg   "tabular-feature multicolumn"
 \begin_layout Standard
 連結列はセル設定が独立しています。つまり、セル罫線やセルの縦横揃え、幅設定等を変更した場合には、現在の連結列のみに適用されるのです。以下は、第一行に連結行があり
 、最下行に上罫線のない連結行がある表の例です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11973,7 +11973,7 @@ arg   "tabular-feature multirow"
 
 \begin_layout Standard
 下記は一列目に連結列を適用した表の例です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12136,7 +12136,7 @@ raggedright
 
 \begin_layout Standard
 下記は、-4ミリの垂直オフセットを設定し、3センチ幅の列中にある右揃えの連結列セルがある表の例です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12336,7 +12336,7 @@ arg   "newline-insert newline"
 \end_inset
 
 )を使用できますが、この場合、下記の例に示されているようにセル行との整合を顧慮しません。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12734,7 +12734,7 @@ Crystal Clear Pro
 
 \begin_layout Standard
 3引数書式は、例えばスポーツリーグや距離を示すクロス表に便利です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12956,7 +12956,7 @@ Falcons
 
 \begin_layout Standard
 大きなクロス表では、下記のように、2つないし全部のコーナーセルに対角線を入れると良いかもしれません。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13442,7 +13442,7 @@ diagbox[dir=SW]{ホームチーム}{結果}{アウェイチーム}
 \begin_layout Standard
 対角線を引いたセルに必要な幅は、自動的に計算されます。したがって、計算された幅よりも小さい固定列幅を指定してしまうと、下記の例のように、セルの中身がはみ出てしま
 います。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13668,7 +13668,7 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 というコマンドを使用します。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13767,7 +13767,7 @@ Perfect Green
 
 \begin_layout Standard
 対角線の引いたセルは、当該列中で最も幅広くなっていなくてはなりません。さもないと、次の表のように、対角線の長さが正しく計算できなくなってしまいます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13880,7 +13880,7 @@ tabcolsepを足す必要はなくなります。下記の表では、3
 \end_inset
 
 cm幅を使用しています。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14029,7 +14029,7 @@ Ctrl+Return
 \end_inset
 
 。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -31145,7 +31145,7 @@ status collapsed
 内部ボックス
 \family default
 を設定していないときには、ボックスの内容は、ボックスダイアログの中で水平揃えの設定をすることができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -32033,7 +32033,7 @@ status collapsed
 
 \begin_layout Standard
 段落ボックス(parbox)はミニページに非常によく似ていますが、脚註を付けることができない点が違います。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34259,7 +34259,7 @@ reference "sec:折返しフロート"
 \end_inset
 
 節の折返しフロートは、段落中で、以下のような配置がされます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35336,7 +35336,7 @@ lettrine
 \end_inset
 
 の「I」。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35382,7 +35382,7 @@ t
 \end_deeper
 \begin_layout Enumerate
 頭文字に回り込む行は1行のみ。頭文字は標準フォントで2文字。スモールキャップ体で印字する文字はなし。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35476,7 +35476,7 @@ usepackage{color}}{}
 
 \series default
 というコマンドを書きこんでおかなくてはなりません。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -36561,7 +36561,7 @@ status open
 
 \begin_layout Description
 入力(input) この方法は、内包による方法に非常によく似ています。異なっている点は、
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

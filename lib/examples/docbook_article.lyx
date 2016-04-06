@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -160,7 +160,7 @@ This is an example with several nested lists.
 
 \begin_layout Itemize
 item 1
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -173,7 +173,7 @@ item 2
 
 \begin_layout Description
 new item
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -580,7 +580,7 @@ target "http://www.oasis-open.org/docbook/documentation/reference/"
 
 \begin_layout Quotation
 It is also possible to insert margin notes inside some environments.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -629,7 +629,7 @@ These environments are easily added to the docbook layout.
 \end_inset
 
  and so is the follow:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -660,7 +660,7 @@ This is a small list of the remaining tasks:
 
 \begin_layout Itemize
 Expand the number of layouts
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -694,7 +694,7 @@ important
 \end_deeper
 \begin_layout Itemize
 Compose other layout files, besides article
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -726,7 +726,7 @@ refentry
 \end_deeper
 \begin_layout Itemize
 goodies
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

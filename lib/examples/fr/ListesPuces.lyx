@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -134,7 +134,7 @@ Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
 ListePuces
 \family default
  est l'environnement standard pour les listes à puces
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -143,7 +143,7 @@ ListePuces
 \begin_deeper
 \begin_layout Itemize
 il a son propre compteur limité à 4 niveaux
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -152,7 +152,7 @@ il a son propre compteur limité à 4 niveaux
 \begin_deeper
 \begin_layout Itemize
 chaque niveau peut avoir sa propre forme de puce
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -182,7 +182,7 @@ chaque niveau peut avoir sa propre forme de puce
 ne vérifie pas
 \emph default
  tout seul la profondeur de l'environnement
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

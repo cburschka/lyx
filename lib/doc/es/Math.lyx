@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1511,7 +1511,7 @@ arg   "math-superscript"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1775,7 +1775,7 @@ Una línea con la fracción
 dfrac
 \series default
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2293,7 +2293,7 @@ arg   "math-insert \\root"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2653,7 +2653,7 @@ brack
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3069,7 +3069,7 @@ not
 
  todo carácter se puede mostrar cancelado.
  Los caracteres son casi tachados con una barra inclinada.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3294,7 +3294,7 @@ reference "subsec:Símbolos-y-ecuaciones-químicas"
 \end_inset
 
  surge el problema siguiente:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3419,7 +3419,7 @@ phantom
  Las flechas indican que se reservará un espacio equivalente a la anchura
  y altura totales del contenido del marco.
  Los espacios reservados son correspondientes al tamaño de los caracteres.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6018,7 +6018,7 @@ Bigg
 
 \begin_layout Standard
 Estos comandos se usan para resaltar niveles de delimitación:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6107,7 +6107,7 @@ C
 
 \begin_layout Standard
 He aquí una visión conjunta de todos los tamaños y delimitadores:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6235,7 +6235,7 @@ r
 
 \begin_layout Standard
 En el siguiente cuadro hay una comparación de las variantes:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6496,7 +6496,7 @@ right
 .
  El tamaño se calculará automáticamente después para la salida.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7019,7 +7019,7 @@ Paquetes ! mathtools
 \end_inset
 
 , tendrás acceso a los corchetes:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7205,7 +7205,7 @@ underbracket
 \series default
  puedes cambiar el grosor de los corchetes especificándolo entre corchetes
  tras el nombre del comando:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8431,7 +8431,7 @@ vspace{4mm}
  Cuando se inserta uno de estos comandos en una ecuación aparece una flecha
  con dos marcos azules donde se puede insertar la etiqueta.
  La longitud de la flecha se adapta a la anchura de la etiqueta.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8589,7 +8589,7 @@ Paquetes ! mathtools
 \end_inset
 
 , estarán disponibles las siguientes flechas etiquetadas:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8973,7 +8973,7 @@ xrightleftharpoons
 
 \begin_layout Standard
 La sintaxis del comando para todas estas flechas es:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10285,7 +10285,7 @@ undertilde
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10914,7 +10914,7 @@ Espacio.
  
 \family default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11387,7 +11387,7 @@ reference "subsec:Espacio-variable"
 , porque es un espacio
  negativo.
  Hay otros dos espacios negativos:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11513,7 +11513,7 @@ Resultado
 Los espacios negativos pueden llegar a solapar unos caracteres con otros.
  Así, se pueden usar para forzar ligaduras, lo que es apropiado, por ejemplo,
  para operadores suma: 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11632,7 +11632,7 @@ Relaciones como por ejemplo el signo igual siempre están rodeadas por espacios.
  Para suprimirlos, el signo igual se coloca entre llaves \SpecialChar TeX
 .
  El siguiente ejemplo lo ilustra:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13133,7 +13133,7 @@ raisebox
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13515,7 +13515,7 @@ white
 yellow
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15793,7 +15793,7 @@ Operadores ! límites de
 
 \begin_layout Standard
 Los límites se crean mediante superíndices y subíndices:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18972,7 +18972,7 @@ arg   "math-insert \\style"
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20737,7 +20737,7 @@ boldsymbol
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22756,7 +22756,7 @@ eurosym
 
 \begin_layout Standard
 Un vistazo a los diferentes símbolos del euro.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24442,7 +24442,7 @@ stackrel
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24586,7 +24586,7 @@ cursiva
  Por eso hay funciones predefinidas, que además se separan un poco del factor
  precedente.
  Se insertan como comandos con una barra inversa delante de su nombre.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25736,7 +25736,7 @@ En \SpecialChar LyX
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25884,7 +25884,7 @@ limsup
  
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -26035,7 +26035,7 @@ varinjlim
 \begin_layout Standard
 El límite se crea insertando un subíndice.
  Se imprime a la derecha junto a la función en una fórmula en línea:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -26209,7 +26209,7 @@ Las teclas ^ y _ generan normalmente un exponente y un subíndice respectivament
  Para insertar estos caracteres como tales deben ir precedidos por 
 \backslash
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27625,7 +27625,7 @@ textcircled
 
  se pueden insertar en un círculo todos los números y letras, de forma parecida
  al símbolo copyright.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27887,7 +27887,7 @@ Ecuación ! estilos de
 
 \begin_layout Itemize
 Hay dos estilos diferentes de alineación:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27966,7 +27966,7 @@ pt.
 \end_deeper
 \begin_layout Itemize
 Y dos estilos diferentes de numeración:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33492,7 +33492,7 @@ white
 
 \begin_layout Standard
 Un ensayo con los nuevos comandos definidos:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34779,7 +34779,7 @@ Así pues, el problema desaparece si se convierte el signo menos a texto
 
 \begin_layout Standard
 Un ejemplo para visualizar el problema:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35067,7 +35067,7 @@ braket
 
 \begin_layout Standard
 Están definidos los siguientes comandos:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35366,7 +35366,7 @@ El estilo es un número en el rango 0
 \end_inset
 
 3.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -35644,7 +35644,7 @@ cancel
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

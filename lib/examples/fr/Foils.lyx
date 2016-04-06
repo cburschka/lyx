@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -179,7 +179,7 @@ zerolistvertdimens{}
 La fenêtre de sélection de la forme des puces Format\SpecialChar menuseparator
 Document\SpecialChar menuseparator
 Puces
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -188,7 +188,7 @@ Puces
 \begin_deeper
 \begin_layout Itemize
 est idéale avec la classe foils
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -197,7 +197,7 @@ est idéale avec la classe foils
 \begin_deeper
 \begin_layout Itemize
 vous permettant de choisir la puce
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3637,7 +3637,7 @@ separator-insert
 \end_layout
 
 \begin_layout Description
-Action Inserts an environment separator or paragraph break.
+Action Inserts an environment separator or latex paragraph break.
 \end_layout
 
 \begin_layout Description
@@ -3645,7 +3645,7 @@ Syntax separator-insert [<ARG>]
 \end_layout
 
 \begin_layout Description
-Params <ARG>: <plain|parbreak> default: plain
+Params <ARG>: <plain|parbreak|latexpar> default: plain
 \end_layout
 
 \begin_layout Description

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -125,7 +125,7 @@ Custom
 \family default
 .
  Available options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -161,7 +161,7 @@ If one of these is not explicitly given to the class option, the default
 \begin_layout Enumerate
 Also, choose typesetting mode as the class option.
  Available options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -416,7 +416,7 @@ Figure notes without optional leadin.
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -568,7 +568,7 @@ Table notes environment without optional leadin.
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

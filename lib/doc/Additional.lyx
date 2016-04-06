@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2181,7 +2181,7 @@ Did you go overboard with the nesting? \SpecialChar LyX
 Okay, you didn't get any error messages, but your output looks awful.
  If you have a table or figure that's too wide or long for the page, you
  need to:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3936,7 +3936,7 @@ The dialog provides you with a table of bullet shapes.
 The six panels are divided up by the packages they require.
  The following table shows the mappings from button name to \SpecialChar LaTeX
  package.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4339,7 +4339,7 @@ renewcommand{}{}
  In this itemized list the following \SpecialChar LaTeX
  code was used to change the bullet
  used for the first depth.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8477,7 +8477,7 @@ Edit the resulting
 .tex
 \family default
  file with your favorite text editor
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10826,7 +10826,7 @@ always
 \emph default
  has the logo centered at the bottom of the page (if one is defined).
  The possible page style choices and what they do are as follows:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11374,7 +11374,7 @@ Left
 Header
 \family default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13038,7 +13038,7 @@ The title environment defines the kind of your paper.
  So use one of the following environments for the title:
 \size default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13308,7 +13308,7 @@ Edit the resulting
 .tex
 \family default
  file with a text editor and make the following changes
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15720,7 +15720,7 @@ Section*
 
 \begin_layout Itemize
 Additional page styles:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15758,7 +15758,7 @@ outer page number is placed on outer side of page
 \end_deeper
 \begin_layout Itemize
 Options 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -16646,7 +16646,7 @@ style
 \family default
  behaves a bit differently for this class.
  The possible choices and what they do are as follows:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -16706,7 +16706,7 @@ clock
 \end_inset
 
  in the extra class options.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -21538,7 +21538,7 @@ There are more possibilities how to activate revision information in our
 \begin_layout Itemize
 \SpecialChar LyX
  supports directly:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -21730,7 +21730,7 @@ file.lyx
 
 .
  Supported flags are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22131,7 +22131,7 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
  any password from you.
  To keep things easy we will use only keys without any additional password
  protection etc.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22896,7 +22896,7 @@ How is literate programming different from verbose commenting?
 \begin_layout Quotation
 There are three distinguishing characteristics.
  In order of importance, they are: 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -23227,7 +23227,7 @@ DVI
  menu option is chosen, a \SpecialChar LaTeX
  file is generated.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -23309,7 +23309,7 @@ Customization
 
  to generate the \SpecialChar LaTeX
  file.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -655,7 +655,7 @@ reference "abs:Bildformate"
 \end_inset
 
  in einem eigenen Absatz:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -677,7 +677,7 @@ reference "abs:Bildformate"
 \begin_layout Standard
 \noindent
 Hier ist dieselbe Abbildung, aber im Entwurfsmodus gedruckt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1596,7 +1596,7 @@ In der so erstellten Tabelle ist jede Zelle umrandet.
  Das wird dadurch erreicht, dass die erste Zeile eine Linie unterhalb und
  die zweite Zeile eine Linie oberhalb haben.
  Hier ist ein Beispiel:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3179,7 +3179,7 @@ reference "uab:Beschriftungen-mehrseitiger-Tabellen"
 
 \begin_layout Standard
 Hier ist ein Beispiel einer mehrseitigen Tabelle:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7583,7 +7583,7 @@ reference "tab:Telefonliste"
 
  ist ein Beispiel für eine mehrseitige Tabelle mit unterschiedlichen Titeln
  und ohne Tabellennummer auf der zweiten Seite.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9798,7 +9798,7 @@ parfillskip}{0pt}
 \begin_layout Standard
 Damit wird sichergestellt, dass der Teil auf der neuen Seite in voller Breite
  erscheint.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11620,7 +11620,7 @@ Mehrfachspalten haben ihre eigenen Einstellungen.
  Das bedeutet, dass sie sich nur auf die Mehrfachspalte auswirken.
  Hier ist ein Beispiel mit einer Mehrfachspalte in der ersten Zeile und
  einer in der letzten Zeile, bei der die obere Linie weggelassen wurde:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12504,7 +12504,7 @@ Mehrfachzeile
 
 \begin_layout Standard
 Hier ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12690,7 +12690,7 @@ mm vertikalen Versatz hat und sich in einer 3
 \end_inset
 
 cm breiten Spalte befindet:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12870,7 +12870,7 @@ Strg+Enter
 \family default
 ) verwenden.
  Dieser respektiert jedoch nicht die Tabellenlinien, wie diese Tabelle zeigt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13293,7 +13293,7 @@ Das 3-Argument Schema ist z.
 \end_inset
 
 B: für Kreuztabellen von Sportligen oder Entfernungen nützlich:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13516,7 +13516,7 @@ Falken
 \begin_layout Standard
 Für größere Kreuztabellen möchte man vielleicht geteilte Zellen in 2 oder
  jeder Ecke der Tabelle verwenden, wie in diesem Beispiel:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14012,7 +14012,7 @@ verwendet.
 Die benötigte Breite von geteilten Zellen wird automatisch berechnet.
  Wenn Sie eine feste Breite für die Spalte setzen, die kleiner als die berechnet
 e ist, ragt der Inhalt über die Zelle hinaus:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14243,7 +14243,7 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 in der ersten Zelle verwenden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14345,7 +14345,7 @@ Man beachte, dass die geteilte Zelle die breiteste Zelle in der Spalte sein
  muss.
  Ansonsten kann die Länge der diagonalen Linie nicht richtig berechnet werden,
  wie in in dieser Tabelle:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14461,7 +14461,7 @@ tabcolsep hinzu zu addieren, da die Zellbreite nun die Breite der Spalte
 \end_inset
 
 cm verwendet:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14614,7 +14614,7 @@ Strg+Enter
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25779,7 +25779,7 @@ topfraction
 \series default
  im \SpecialChar LaTeX
 -Vorspann überschrieben werden, zum Beispiel: 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25823,7 +25823,7 @@ bottomfraction
 \series default
  im \SpecialChar LaTeX
 -Vorspann überschrieben werden, zum Beispiel setzt 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33170,7 +33170,7 @@ Absatz-Einstellungen
 Box
 \family default
  gewählt haben.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33230,7 +33230,7 @@ Box
 Box-Einstellungen-
 \family default
 Dialog ausrichten
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34304,7 +34304,7 @@ paragraph box
 , was Absatzbox bedeutet.
  Parbox ist sehr ähnlich zu Minipage mit der Einschränkung, dass Fußnoten
  in Parboxen nicht ausgegeben werden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -36709,7 +36709,7 @@ reference "abs:Umflossene-Gleitobjekte"
 \end_inset
 
  beschriebenen umflossenen Gleitobjekte haben folgende Positionen im Absatz:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37844,7 +37844,7 @@ t
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37893,7 +37893,7 @@ Nur eine Zeile umgibt die Initiale, die aus zwei Zeichen in der Standard-Schrift
 Kapitälchen
 \shape default
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -38069,7 +38069,7 @@ white
 usepackage{color}}{}
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -39235,7 +39235,7 @@ Input Diese Methode ist
 Include
 \family default
  sehr ähnlich mit folgenden Unterschieden:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -5369,7 +5369,7 @@ latex foiltex.ins
 
 \begin_layout Enumerate
 ここで、パッケージを全ユーザーに使用可能にするか自分自身だけで使うかを決定する必要があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5664,7 +5664,7 @@ latex
 ここまで来れば、あとは\SpecialChar LaTeX
 に新しいファイルがあることを告げるだけです。これは使用している\SpecialChar LaTeX
 頒布版に依存します。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9439,7 +9439,7 @@ EndArgument
 \end_inset
 
 で閉じなくてはなりません。非必須引数が2つあるコマンドの場合は、以下のようになります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11405,7 +11405,7 @@ Itemize, Bibliography
 \end_inset
 
 ]
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11765,7 +11765,7 @@ db_*.inc
 \end_inset
 
 。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12167,7 +12167,7 @@ Static
 \end_inset
 
 このレイアウトの左余白の種類です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13424,7 +13424,7 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -16231,7 +16231,7 @@ LatexType
 \end_inset
 
 。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -17181,7 +17181,7 @@ LabelStringAppendix
 \end_inset
 
 も同じ値に設定されます。文字列中では、以下の構成要素を使用することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1455,7 +1455,7 @@ arg   "math-superscript"
 \end_inset
 
 を使って入力することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1708,7 +1708,7 @@ dfrac
 \end_inset
 
 を含む行です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2293,7 +2293,7 @@ arg   "math-insert \\root"
 \end_inset
 
 で作成することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2642,7 +2642,7 @@ brack
 \end_inset
 
 があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3081,7 +3081,7 @@ not
 \end_inset
 
 を挿入することで、すべての文字を取り消し形で表示できます。文字はスラッシュを上書きされた形になります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3332,7 +3332,7 @@ reference "subsec:化学記号と化学式"
 \end_inset
 
 を表示しようとすると、次のような問題が起こります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3453,7 +3453,7 @@ phantom
 phantom
 \series default
 の作る文字は、箱の中身の文字の大きさを持つ埋め草となります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4200,7 +4200,7 @@ dots
 
 コマンドを使うと、\SpecialChar LaTeX
 は次に来る文字がどのような種類の文字であるかによって、自動的にどの種類を使うかを選択します。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6019,7 +6019,7 @@ Bigg
 
 \begin_layout Standard
 これらのコマンドは、括弧の階層を強調するのに使われます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6103,7 +6103,7 @@ C
 
 \begin_layout Standard
 以下は、すべての括弧丈の羅列です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6238,7 +6238,7 @@ r
 
 \begin_layout Standard
 以下の表は、これらの派生型の比較です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6495,7 +6495,7 @@ left
 right
 \series default
 の直後には、必要とする括弧を挿入しなくてはなりません。すると、括弧丈は出力時に自動的に計算されます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7024,7 +7024,7 @@ status collapsed
 常に読み込み
 \family default
 オプションを設定すると、以下のような角括弧が利用可能になります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7209,7 +7209,7 @@ overbracket
 underbracket
 \series default
 に関しては、コマンドに続く角括弧中に、希望する厚みを指定すれば、以下のように、角括弧の筆跡の厚みに変更を加えることができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8526,7 +8526,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8910,7 +8910,7 @@ xrightleftharpoons
 
 \begin_layout Standard
 これらの矢印は、すべて以下のようなコマンドスキームを取ります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10159,7 +10159,7 @@ undertilde
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10802,7 +10802,7 @@ arg   "math-insert \\space"
 Space
 \family default
 を押すことによって、長さを変更することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11280,7 +11280,7 @@ reference "subsec:可変長の空白"
 節に説明されているように、可変空白となります。9回押した場合は、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、\SpecialChar LyX
 中では赤で表示さ
 れます。以下のように、他にもう二つ、負の長さの空白があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11404,7 +11404,7 @@ Space
 
 \begin_layout Standard
 負の空白を使うと、文字が重なってしまうことがあります。これを利用して、合字処理を強制することができます。これは、たとえば以下のように、和演算子に使えます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11520,7 +11520,7 @@ f_kl
 \noindent
 イコール記号などの関係子は、つねに空白を前後に伴うようになっていますが、これを抑制するには、イコール記号を\SpecialChar TeX
 括弧で囲みます。以下の例にこれを示します。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12505,7 +12505,7 @@ framebox
 fbox
 \series default
 同様、数式の断片を入れるためのものです。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12997,7 +12997,7 @@ raisebox
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13383,7 +13383,7 @@ yellow
 
 \begin_layout Standard
 があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15567,7 +15567,7 @@ status collapsed
 
 \begin_layout Standard
 範囲は、上付き文字と下付き文字とで作成することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18734,7 +18734,7 @@ arg   "math-insert \\style"
 \end_inset
 
 を使用して、寸法を変更することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20465,7 +20465,7 @@ boldsymbol
 \end_inset
 
 。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22468,7 +22468,7 @@ eurosym
 
 \begin_layout Standard
 以下は、各ユーロ通貨記号のまとめです。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24141,7 +24141,7 @@ stackrel
 \end_inset
 
 コマンドを使うと、以下のように、ラベル付きの関係子を作ることができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24272,7 +24272,7 @@ status collapsed
 
 であるかのように誤解させる恐れがあるためです。そのために、定義済み関数が存在し、これらは先行する要素よりも少し離れて配置されます。定義済み関数は、関数名の前にバ
 ックスラッシュを加えたコマンドとして挿入します。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24956,7 +24956,7 @@ status collapsed
 \end_inset
 
 。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25100,7 +25100,7 @@ liminf
 limsup
 \series default
 の他に、以下の関数があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -25446,7 +25446,7 @@ status collapsed
 ^および_の各文字は、通常、上付き文字や下付き文字を生成してしまいます。これらの文字自体を得るには、その前に
 \backslash
 を付けなくてはなりません。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27103,7 +27103,7 @@ status collapsed
 
 \begin_layout Itemize
 以下の二つの配置様式があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -27189,7 +27189,7 @@ ptが適用されます。
 \end_deeper
 \begin_layout Itemize
 また、以下の二つの連番様式があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -31045,7 +31045,7 @@ ce
 ce
 \series default
 を数式に入力すると、新しい青いボックスが現れ、直感的に化学式を入力することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -32327,7 +32327,7 @@ white
 
 \begin_layout Standard
 以下は、上で定義したコマンドの動作テストです。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33609,7 +33609,7 @@ status collapsed
 
 \begin_layout Standard
 以下は、この問題を示す例です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33950,7 +33950,7 @@ braket
 \end_inset
 
 以下のコマンドが定義されています。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34246,7 +34246,7 @@ genfrac
 \end_inset
 
 3の範囲の数字です。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34495,7 +34495,7 @@ status collapsed
 
 \begin_layout Standard
 数式の全体もしくは一部を消去するには、4つの方法があります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -110,7 +110,7 @@ Sie werden recht bald sehen, daß das Anpassen von Aufzählungszeichen recht
 Die Standardumgebung für Listen mit  Aufzählungszeichen ist 
 \emph on
 Auflistung
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -119,7 +119,7 @@ Auflistung
 \begin_deeper
 \begin_layout Itemize
 sie hat einen eigenen Zähler mit 4 Stufen
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -128,7 +128,7 @@ sie hat einen eigenen Zähler mit 4 Stufen
 \begin_deeper
 \begin_layout Itemize
 jede Stufe kann ihr eigenes Aufzählungszeichen haben
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -150,7 +150,7 @@ jede Stufe kann ihr eigenes Aufzählungszeichen haben
 nicht
 \emph default
 , ob die Stufen richtig sind
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

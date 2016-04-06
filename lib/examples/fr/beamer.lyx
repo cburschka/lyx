@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -131,7 +131,7 @@ V.
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -200,7 +200,7 @@ Beamer
 \end_inset
 
 , vous pouvez créer, en vue d'une présentation, des diapositives qui
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -274,7 +274,7 @@ Objectifs de cette présentation
 
 \begin_layout Frame
 Cette présentation
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -342,7 +342,7 @@ La structure globale
 
 \begin_layout Frame
 Une présentation comporte d'habitude
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -449,7 +449,7 @@ GraphiqueTitre
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -551,7 +551,7 @@ Date raccourcie\SpecialChar breakableslash
 
  Celles-ci sont utilisées dans le menu latéral ou les en-têtes (si le thème
  affiche de tels éléments)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -625,7 +625,7 @@ Beamer
 
 : tout ce qui est dans un cadre est affiché sur une diapositive (qui peut
  elle-même comporter plusieurs sous-diapos)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -792,7 +792,7 @@ label
 \end_inset
 
  (comme il est fait ici)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -846,7 +846,7 @@ recouvrement
 \end_inset
 
 )
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -903,7 +903,7 @@ Contrôler le contenu des cadres
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -996,7 +996,7 @@ Séparateur
 \end_inset
 
  de paragraphe
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1103,7 +1103,7 @@ Types de cadres particuliers
 \begin_layout PlainFrame
 \SpecialChar LyX
  offre deux types de cadres particuliers:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1185,7 +1185,7 @@ Structuration d'une présentation
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1261,7 +1261,7 @@ Les parties ont une signification particulière
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1338,7 +1338,7 @@ Réarranger les cadres
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1407,7 +1407,7 @@ L'annexe
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1423,7 +1423,7 @@ Les annexes peuvent être utile pour un contenu additionnel ou mis en réserve.
 \begin_layout Itemize
 Une annexe est insérée comme d'habitude dans \SpecialChar LyX
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1448,7 +1448,7 @@ Début annexe(s) ici
 \end_deeper
 \begin_layout Itemize
 Un contenu typique de l'annexe est la bibliographie
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1512,7 +1512,7 @@ Fondamentalement, les recouvrements permettent de modifier le contenu d'un
  Vous pouvez révéler des objets ou du texte par morceaux, faire s'atténuer
  du contenu, mettre des éléments en évidence, remplacer du texte, des images,
  etc.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1602,7 +1602,7 @@ Beamer
 
  fournit de nombreux types de recouvrement différents.
  Les plus importants sont:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1721,7 +1721,7 @@ article
 \end_inset
 
 , etc.)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1755,7 +1755,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1827,7 +1827,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1973,7 +1973,7 @@ Spécifications de recouvrement
 \end_inset
 
 , la citation n’apparaîtra que sur la (sous-)diapo 2:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2060,7 +2060,7 @@ caché
  est réservé).
  Si nous avions caché la citation sur la diapo précédente au lieu de la
  couvrir, elle n’aurait pris sa place qu'en apparaissant:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2183,7 +2183,7 @@ transparent
 \end_inset
 
 , le texte couvert est grisé.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2276,7 +2276,7 @@ normales
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2325,7 +2325,7 @@ g.,
 
  découvrira tous les éléments de la liste un par un (avec un décalage initial
  de 1) s'il n'y a pas de spécification particulière pour un élément:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2440,7 +2440,7 @@ normales
 \noindent
 Ce cadre utilise une spécification de recouvrement implicite qui provoquera,
  pour chaque paragraphe sensible au recouvrement
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2537,7 +2537,7 @@ normales
 \begin_layout Frame
 \noindent
 Et ce cadre utilise une spécification de recouvrement implicite 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2594,7 +2594,7 @@ Pause
 
  vous permet de marquer un endroit à partir duquel le contenu sera couvert
  (implicitement sur une diapo, par rapport au contenu précédent):
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2687,7 +2687,7 @@ Beamer
  des paragraphes entiers ou des séquences de paragraphes sur des diapos
  spécifiques.
  Ceux-ci sont:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2720,7 +2720,7 @@ Découvrir
 
  découvre la totalité du contenu dans la diapo spécifiée\SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2781,7 +2781,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2815,7 +2815,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2898,7 +2898,7 @@ status collapsed
 
  en \SpecialChar LyX
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3153,7 +3153,7 @@ Style de texte
 \end_inset
 
 ) sont sensibles au recouvrement.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3303,7 +3303,7 @@ Environnements spécifiques
 
 \begin_layout Frame
 Des environnements particulièrement adaptés aux présentations sont les suivants:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3375,7 +3375,7 @@ indices
 
 .
  La classe fournit 3 blocs pré-définis d'apparence différente:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3498,7 +3498,7 @@ Gestion des blocs
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3509,7 +3509,7 @@ Gestion des blocs
 En \SpecialChar LyX
 , l'interface des blocs est similaire à celui des cadres, ce qui signifie
  que
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3544,7 +3544,7 @@ Séparateur
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3621,7 +3621,7 @@ Les environnements de théorèmes
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3638,7 +3638,7 @@ Les environnements de théorèmes
 Les théorèmes ressemblent aux blocs lors du rendu, mais leur titre est figé
  (en fonction du type de théorème).
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3671,7 +3671,7 @@ Texte de théorème complémentaire
 \end_inset
 
 , vous pouvez compléter le titre figé
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3719,7 +3719,7 @@ Les colonnes
 
 \begin_layout Frame
 Il est quelquefois utile de diviser une présentation en colonnes.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3727,7 +3727,7 @@ Il est quelquefois utile de diviser une présentation en colonnes.
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3813,7 +3813,7 @@ Colonne
 
 \begin_layout Frame
 Note:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3920,7 +3920,7 @@ mode
  est une chemin spécifique vers un rendu.
  Il y a plusieurs modes avec des objectifs différents, nous en retiendrons
  particulièrement trois: 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4037,7 +4037,7 @@ présentation
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4046,7 +4046,7 @@ présentation
 \begin_deeper
 \begin_layout Itemize
 Qu'est-ce que cela signifie?
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4136,7 +4136,7 @@ Et alors?
 C'est très pratique! Vous pouvez construire un seul document et produire
  à la fois une présentation et – en utilisant le mode article – une version
  papier.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4198,7 +4198,7 @@ Exemples
 \begin_layout Frame
 Comme on l'a vu, beaucoup d'éléments sont sensibles au mode.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4315,7 +4315,7 @@ ModePrésentation
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4424,7 +4424,7 @@ Construction d'un article
 
 \begin_layout Frame
 Construire un article beamer est facile.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4506,7 +4506,7 @@ Les thèmes
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4625,7 +4625,7 @@ Les thèmes peuvent être modifiés
 \begin_layout Frame
 Mais vous n'êtes pas obligé de construire un thème à partir de rien si vous
  voulez modifier l'apparence
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4766,7 +4766,7 @@ newblock
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

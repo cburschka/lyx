@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -107,7 +107,7 @@ V.
 
 \begin_layout Frame
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -175,7 +175,7 @@ Beamer
 \end_inset
 
 -Klasse können Sie Präsentationsfolien erstellen, die
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -249,7 +249,7 @@ Zweck dieser Präsentation
 
 \begin_layout Frame
 Diese Präsentation
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -324,7 +324,7 @@ Die globale Struktur
 
 \begin_layout Frame
 Eine Präsentation besteht üblicherweise aus
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -434,7 +434,7 @@ Titelgrafik
 
  erstellt.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -657,7 +657,7 @@ Teilfolien
 \end_inset
 
  bestehen kann).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -892,7 +892,7 @@ small
 Rahmen können vollständig oder partiell (nur in Form einzelner Unterfolien)
  wiederholt werden, und zwar beliebig oft und jederzeit in späteren Phasen
  der Präsentation.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -909,7 +909,7 @@ label
 \end_inset
 
  (was wir für diesen Rahmen gemacht haben).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1009,7 +1009,7 @@ Rahmen zusammenhalten
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1120,7 +1120,7 @@ Trenner
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1236,7 +1236,7 @@ Spezielle Rahmentypen
 \begin_layout PlainFrame
 \SpecialCharNoPassThru LyX
  bietet zwei spezielle Rahmentypen:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1328,7 +1328,7 @@ Eine Präsentation gliedern
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1426,7 +1426,7 @@ Teile
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1497,7 +1497,7 @@ Rahmen neu anordnen
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1566,7 +1566,7 @@ Der Anhang
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1589,7 +1589,7 @@ Reserve
 \begin_layout Itemize
 Ein Anhang wird wie in \SpecialCharNoPassThru LyX
  üblich eingefügt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1613,7 +1613,7 @@ Anhang hier beginnen
 \end_deeper
 \begin_layout Itemize
 Ein typischer Bestandteil des Anhangs ist das Literaturverzeichnis
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1699,7 +1699,7 @@ Overlay
 -Konzept einen dynamischen Aufbau und Wechsel von Folieninhalten.
  Sie können Dinge oder Text Schritt für Schritt aufdecken, Inhalte ausblenden,
  hervorheben, ersetzen usw.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1787,7 +1787,7 @@ Beamer
 
  bietet viele verschiedene Overlay-Typen.
  Die wichtigsten sind:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1917,7 +1917,7 @@ article
 \end_inset
 
  etc.)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -1961,7 +1961,7 @@ status open
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2033,7 +2033,7 @@ status open
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2218,7 +2218,7 @@ Overlay-Spezifikation
 \end_inset
 
  eingeben, erscheint das Zitat nur auf der zweiten Teilfolie:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2313,7 +2313,7 @@ unsichtbar
  sind (aber trotzdem Platz beanspruchen).
  Wenn wir das Zitat auf der vorherigen Folie verborgen und nicht bloß verdeckt
  hätten, hätte es erst Platz beansprucht, nachdem es aufgedeckt wurde:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2440,7 +2440,7 @@ transparent
 \end_inset
 
  ist der verdeckte Text noch (ausgegraut) zu erkennen:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2537,7 +2537,7 @@ small
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2603,7 +2603,7 @@ Sie verwenden eine Platzhalter-Syntax.
 
  etwa deckt alle Einträge in einer Liste schrittweise auf (mit einer Verzögerung
  von 1), sofern sie keine individuelle Eintragsspezifikation haben:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2706,7 +2706,7 @@ spezifikationen
 Dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
  die bewirkt, dass jeder overlay-fähige Absatz \SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2792,7 +2792,7 @@ spezifikationen
 Und dieser Rahmen verwendet eine spezifische Standard-Overlay-Spezifikation,
  \SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2851,7 +2851,7 @@ Pause
  können Sie einen Punkt auf der Folie markieren, nach dem jeder folgende
  Inhalt verdeckt wird (standardmäßig für eine Folie in Bezug auf die Inhalte
  vor der Pause):
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2943,7 +2943,7 @@ Beamer
  bieten Absatzstile, deren einziger Zweck es ist, ganze Absätze
  oder Sequenzen von Absätzen auf bestimmten (Teil-)Folien aus- oder einzublenden.
  Dies sind vor allem:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -2979,7 +2979,7 @@ aufdeckt
 \emph default
 , \SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3041,7 +3041,7 @@ status open
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3074,7 +3074,7 @@ status open
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3158,7 +3158,7 @@ Textstil
 \end_inset
 
  zugänglich:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3413,7 +3413,7 @@ Textstil
 
  findet) sind overlayfähig.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3583,7 +3583,7 @@ präsentationsspezifische
 \end_inset
 
  Umgebungen sind:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3664,7 +3664,7 @@ Beamer
 \end_inset
 
  bietet drei vordefinierte Blocktypen mit unterschiedlichem Aussehen:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3787,7 +3787,7 @@ Umgang mit Blocks
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3797,7 +3797,7 @@ Umgang mit Blocks
 In \SpecialCharNoPassThru LyX
  verhalten sich Blocks ähnlich wie Rahmen.
  Das heißt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3829,7 +3829,7 @@ Trenner
 \end_inset
 
  getrennt werden.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3905,7 +3905,7 @@ Theoremartige Umgebungen
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3921,7 +3921,7 @@ Theoremartige Umgebungen
 Theoreme sehen ähnlich aus wie Blocks, aber sie haben einen vom Typ abhängigen
  festen Titel.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -3954,7 +3954,7 @@ Zusätzlicher Theoremtext
 \end_inset
 
  können Sie an diesen festen Titel einen Zusatztext anhängen
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4001,7 +4001,7 @@ Spalten
 
 \begin_layout Frame
 Manchmal ist es nützlich, eine Folie in Spalten aufzuteilen
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4009,7 +4009,7 @@ Manchmal ist es nützlich, eine Folie in Spalten aufzuteilen
 \begin_deeper
 \begin_layout ColumnsTopAligned
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4095,7 +4095,7 @@ neue Spalte zu beginnen
 
 \begin_layout Frame
 Achtung:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4234,7 +4234,7 @@ mode
 ) ein spezieller Ausgabeweg.
  Es gibt verschiedene Modi für verschiedene Zwecke.
  Wir heben hier nur drei heraus:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4394,7 +4394,7 @@ presentation
 \end_inset
 
 ).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4402,7 +4402,7 @@ presentation
 \begin_deeper
 \begin_layout Itemize
 Was bedeutet das nun?
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4503,7 +4503,7 @@ Das ist wirklich sehr nützlich! Sie können so ein einziges Dokument erstellen,
  über den Artikelmodus
  \twohyphens
  ein Handout generieren können.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4576,7 +4576,7 @@ Beispiele
 \begin_layout Frame
 Wie gesagt, viele Elemente sind modusfähig.
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4685,7 +4685,7 @@ Präsentationsmodus
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4786,7 +4786,7 @@ Ein Handout (via Artikelmodus) erstellen
 
 \begin_layout Frame
 Ein Handout (via Artikelmodus) zu erstellen, ist leicht.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -4874,7 +4874,7 @@ Themen
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -5008,7 +5008,7 @@ Themen kann man auch modifizieren
 \begin_layout Frame
 Aber Sie müssen nicht notwendigerweise ein komplett neues Thema erstellen,
  wenn Sie das Aussehen verändern wollen.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout
@@ -5169,7 +5169,7 @@ newblock
 
 \begin_layout Frame
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 \end_layout

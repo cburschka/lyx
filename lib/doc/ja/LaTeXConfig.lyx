@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -959,7 +959,7 @@ macros/latex/required/psnfss/
 \family default
 群を使えば、\SpecialChar LyX
 が使うフォントを、PostScriptプリンタで利用可能な35の伝統的フォントに変更することができるようになります。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1392,7 +1392,7 @@ psnfss
 で使用することを念頭にデザインされ
 ました。現在のところ、以下のフォントが利用でき、かつ\SpecialChar LyX
 によってネイティブにサポートされています。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2283,7 +2283,7 @@ jgrga
 Journal of Geophysical Research
 \emph default
 ）』への論文を執筆するのに使用することができます。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3659,7 +3659,7 @@ ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e
 \end_inset
 
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4509,7 +4509,7 @@ babel
 \size default
 ダイアログを参照）。とりわけこのパッケージは、ハイフネーションと、「章」や「目次」のようなラベル全ての自動翻訳を担当します。もし、英語だけをお書きになり、英語以
 外の引用もしないのであれば、このパッケージは必要ありません。
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -670,7 +670,7 @@ reference "sec:Formatos-de-imagen"
 \end_inset
 
  en un párrafo separado centrado horizontalmente:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -691,7 +691,7 @@ reference "sec:Formatos-de-imagen"
 
 \begin_layout Standard
 Esta es la misma imagen pero en modo borrador:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1626,7 +1626,7 @@ Por omisión, el cuadro tiene líneas que enmarcan cada celda y la primera
  fila aparece separada por una línea doble: el borde inferior de la primera
  fila y el borde superior de la segunda fila.
  Ejemplo de cuadro:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3176,7 +3176,7 @@ reference "subsec:Leyendas-en-Cuadros"
 También se puede especificar en el diálogo en qué fila se ha de cortar el
  cuadro.
  El siguiente cuadro muestra cómo funciona:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7565,7 +7565,7 @@ reference "tab:DifLeyendas"
 
  es un ejemplo de cuadro multipágina con encabezados distintos donde el
  segundo no incluye número de cuadro.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9708,7 +9708,7 @@ debe insertarse en código \SpecialChar TeX
  al principio de la celda.
  Esto garantiza que la parte de la celda que será mostrada en la nueva página
  aparecerá con toda su anchura.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11513,7 +11513,7 @@ Las multicolumnas tienen su propia configuración de celdas.
  multicolumna.
  Aquí hay un ejemplo con una multicolumna en la primera fila y otra en la
  última fila sin borde superior:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12293,7 +12293,7 @@ en el menú contextual.
 
 \begin_layout Standard
 Aquí hay un ejemplo de cuadro con una multifila en la primera columna:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12476,7 +12476,7 @@ mm y está en una columna de 3
 \end_inset
 
 cm de ancho:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12655,7 +12655,7 @@ Para iniciar una nueva línea en una multifila se puede usar un salto de
 Ctrl+Retorno
 \family default
 ) pero esto no respetará la alineación de celda, como se ve en este cuadro:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13062,7 +13062,7 @@ Crystal Clear Pro
 \begin_layout Standard
 El esquema con tres argumentos puede ser útil, por ejemplo, para cuadros
  de ligas deportivas o distancias:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13285,7 +13285,7 @@ Falcons
 \begin_layout Standard
 Para cuadros más grandes con datos cruzados se pueden usar celdas divididas
  en cada esquina del cuadro, como en el siguiente ejemplo:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13776,7 +13776,7 @@ Si no se indica dirección se usa NW.
 La anchura adecuada para las celdas divididas se calcula automáticamente.
  Si estableces una anchura fija de columna menor que la calculada, el contenido
  sobrepasará los bordes de la celda:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14000,7 +14000,7 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 en la primera celda:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14102,7 +14102,7 @@ Hay que tener en cuenta que la celda dividida ha de ser la más ancha en
  la columna.
  De otro modo, la longitud de la diagonal no puede calcularse correctamente,
  como en este caso:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14217,7 +14217,7 @@ tabcolsep porque la anchura de la celda es la anchura de la columna.
 \end_inset
 
 cm:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14364,7 +14364,7 @@ Ctrl+Retorno
 \end_inset
 
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -32815,7 +32815,7 @@ interior
 \family default
 , puedes alinear horizontalmente el contenido del marco en el diálogo de
  marcos.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33854,7 +33854,7 @@ Marcos ! de párrafo
 \begin_layout Standard
 Los marcos de párrafo son similares a las minipáginas con la diferencia
  de que no pueden contener notas al pie.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -36206,7 +36206,7 @@ reference "sec:Flotantes-envueltos"
 \end_inset
 
  , tienen estas posiciones en el párrafo:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37335,7 +37335,7 @@ Sin argumento opcional, la capital es la letra 'I' en tipografía matemática
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37386,7 +37386,7 @@ was in the spring of the year 1894 that all London was interested, and the
 \begin_layout Enumerate
 Solo una línea rodea a la capital, constituida por dos letras en tipo normal
  y no se imprime nada en versalitas:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37553,7 +37553,7 @@ white
 usepackage{color}}{}
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -38743,7 +38743,7 @@ Anexar
 \family default
 .
  Las diferencias son:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

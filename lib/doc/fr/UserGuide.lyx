@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1802,7 +1802,7 @@ Nous n'allons pas entrer dans les détails de tous les raccourcis souris
 
 \begin_layout Enumerate
 Se déplacer
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1821,7 +1821,7 @@ bouton gauche
 \end_deeper
 \begin_layout Enumerate
 Sélectionner du texte
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1859,7 +1859,7 @@ Coller
 \begin_layout Enumerate
 Inserts (notes de bas de page, notes en marge, figures et tableaux flottants,
  etc.)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2808,7 +2808,7 @@ description "Touche Contrôle"
  dans la documentation).
  Celle-ci a des utilisations différentes, selon la touche avec laquelle
  elle est utilisée :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2932,7 +2932,7 @@ raccourcis de menu
 .
  Si vous l'utilisez en combinaison avec l'une des lettres soulignées dans
  un menu ou élément de menu, elle sélectionne cet élément;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4356,7 +4356,7 @@ Taille
 \family default
  précise sur quelles dimensions de papier imprimer.
  Les choix sont :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6103,7 +6103,7 @@ ListePuces
 
 \begin_layout Itemize
 chaque élément a une puce ou un symbole particulier comme marqueur;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6143,7 +6143,7 @@ ListePuces
 ListePuces
 \family default
 , le marqueur change;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6207,7 +6207,7 @@ NdT: C'est toujours un point noir qui apparaît à l'écran, mais le résultat
 \end_inset
 
 ;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6216,7 +6216,7 @@ NdT: C'est toujours un point noir qui apparaît à l'écran, mais le résultat
 \begin_deeper
 \begin_layout Itemize
 pour le deuxième niveau, c'est un tiret,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6225,7 +6225,7 @@ pour le deuxième niveau, c'est un tiret,
 \begin_deeper
 \begin_layout Itemize
 pour le troisième, un astérisque,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6328,7 +6328,7 @@ L'environnement
 
 \begin_layout Enumerate
 chaque élément est marqué par un numéro;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6364,7 +6364,7 @@ ListePuces
 Énumération
 \family default
  :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6406,7 +6406,7 @@ vous permet jusqu'à quatre niveaux d'emboîtement.
 \begin_layout Enumerate
 le premier niveau d'une énumération utilise des chiffres arabes suivis par
  un point;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6415,7 +6415,7 @@ le premier niveau d'une énumération utilise des chiffres arabes suivis par
 \begin_deeper
 \begin_layout Enumerate
 le deuxième niveau, des lettres minuscules entre parenthèses,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6424,7 +6424,7 @@ le deuxième niveau, des lettres minuscules entre parenthèses,
 \begin_deeper
 \begin_layout Enumerate
 le troisième, des chiffres romains en minuscules suivis par un point,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7263,7 +7263,7 @@ Alph{enumi}
 \end_inset
 
 niveau 1;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7299,7 +7299,7 @@ niveau 2,
 
 \begin_layout Enumerate
 niveau 2,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7331,7 +7331,7 @@ arabic{enumiii}}
 \end_inset
 
 niveau 3,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8937,7 +8937,7 @@ un;
 
 \begin_layout Enumerate
 deux;
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9182,7 +9182,7 @@ Non
 \end_inset
 
 emboîtable on ne peut pas les emboîter, ni y emboîter quoi que ce soit.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9226,7 +9226,7 @@ Complètement
 \end_inset
 
 emboîtables vous pouvez les emboîter et y emboîter.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9309,7 +9309,7 @@ quelque
 \end_inset
 
 chose vous pouvez les emboîter dans autre chose, mais ne pouvez rien y emboîter.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9561,7 +9561,7 @@ Voici un exemple avec un tableau :
 
 \begin_layout Enumerate
 Élément Un
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9570,7 +9570,7 @@ Voici un exemple avec un tableau :
 \begin_deeper
 \begin_layout Enumerate
 C'est le (a) et il est emboîté,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9698,7 +9698,7 @@ Si nous n'avions pas du tout emboîté le tableau, la liste serait ainsi :
 
 \begin_layout Enumerate
 Élément Un
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9842,7 +9842,7 @@ Il y a un autre piège dans lequel vous pouvez tomber : emboîter le tableau,
 
 \begin_layout Enumerate
 Élément Un
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10000,7 +10000,7 @@ Emploi et propriétés générales
 
 \begin_layout Enumerate
 niveau n°1 - le plus extérieur
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10009,7 +10009,7 @@ niveau n°1 - le plus extérieur
 \begin_deeper
 \begin_layout Enumerate
 niveau n°2
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10018,7 +10018,7 @@ niveau n°2
 \begin_deeper
 \begin_layout Enumerate
 niveau n°3
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10027,7 +10027,7 @@ niveau n°3
 \begin_deeper
 \begin_layout Enumerate
 niveau n°4
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10036,7 +10036,7 @@ niveau n°4
 \begin_deeper
 \begin_layout Itemize
 niveau n°5
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10159,7 +10159,7 @@ Exemple n°1 : six niveaux et emboîtement mixte
 Liste;
 \family default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10182,7 +10182,7 @@ arg   "depth-increment"
 \end_inset
 
 ,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10224,7 +10224,7 @@ arg   "depth-increment"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10329,7 +10329,7 @@ pouvons
 \end_inset
 
 ,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10339,7 +10339,7 @@ pouvons
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 5-a Niveau n°5...
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10480,7 +10480,7 @@ arg   "depth-increment"
 Énumération
 \family default
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10566,7 +10566,7 @@ Voici le niveau n°1 d'un environnement
 \family default
 .
  Nous allons en emboîter un paquet.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10597,7 +10597,7 @@ ListePuces
 \end_inset
 
 ? Il sera au niveau n°3, mais quel marqueur aura-t-il ? Un astérisque ?
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10633,7 +10633,7 @@ arg   "depth-increment"
 ListePuces
 \family default
 );
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10655,7 +10655,7 @@ arg   "depth-increment"
 
 .
  Nous allons recommencer...
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10857,7 +10857,7 @@ Cette fois nous allons devenir complètement fous.
 Énumération
 \family default
 ).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10897,7 +10897,7 @@ Entrée
 Énumération
 \family default
  : niveau n°1) C'est l'élément suivant dans la liste.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10946,7 +10946,7 @@ arg   "paragraph-break inverse"
 
 \begin_layout Verse
 Voici un tableau :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11136,7 +11136,7 @@ Mon_Adresse
 \family default
 .
  Les voici :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11253,7 +11253,7 @@ Il est parfois nécessaire d'avoir deux environnements consécutifs du même
 
 \begin_layout Enumerate
 Bonjour
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11262,7 +11262,7 @@ Bonjour
 \begin_deeper
 \begin_layout Enumerate
 ceci est une
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11912,7 +11912,7 @@ reference "tab:Largeur-des-différents"
 \end_inset
 
  liste les tailles des différents espacements horizontaux.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12891,7 +12891,7 @@ Dans la plupart des cas le comportement implicite est l'alignement justifié,
 e remplit la région située entre la marge de gauche et la marge de droite.
  Les trois autre types d'alignements devraient être explicites.
  Il ressemblent à ceci:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14987,7 +14987,7 @@ Famille
 \family default
  L'aspect général de la police.
  Les choix possibles sont :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15026,7 +15026,7 @@ empattement
 C'est la famille de polices sans empattement.
 \family default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15059,7 +15059,7 @@ fixe
 C'est la famille de polices à chasse fixe.
 \family default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15086,7 +15086,7 @@ Série
 \family default
  Correspond à l'épaisseur du caractère.
  Choix :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15100,7 +15100,7 @@ Série
 Maigre
 \family default
  C'est la série des polices maigres,
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15123,7 +15123,7 @@ Grasse
 C'est la série des polices grasses.
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15150,7 +15150,7 @@ Forme
 \family default
  Comme son nom l'indique.
  Choix :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15164,7 +15164,7 @@ Forme
 Droite
 \family default
  C'est la forme droite.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15381,7 +15381,7 @@ Taille
  Là encore, vous ne donnez pas à \SpecialChar LyX
  les détails, mais une description générale
  de ce que vous voulez.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -15786,7 +15786,7 @@ Divers
 \family default
  Ici vous pouvez changer quelques autres propriétés des caractères.
  Les choix sont:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -19741,7 +19741,7 @@ La fenêtre de dialogue Graphique peut être rappelée à tout moment en cliquan
  dans le texte.
  Voici un exemple d'image qui se trouve dans son propre paragraphe, ce dernier
  étant centré horizontalement:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20339,7 +20339,7 @@ Tableau
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
  apparaît séparée du reste du tableau.
  Voici un exemple :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20666,7 +20666,7 @@ cellule, répartie sur plusieurs colonnes.
  n'affectent que la cellule et elle seule.
  Voici un exemple utilisant une cellule multi-colonnes dans sa première
  ligne et une cellule sans bordure supérieure dans la dernière ligne
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -21035,7 +21035,7 @@ En-tête
 \family default
 .
  Voyez le tableau multi-pages qui suit pour voir comment ça fonctionne:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -23233,7 +23233,7 @@ Pour pouvoir utiliser un texte sur plusieurs lignes dans une cellule, vous
  Votre texte sera alors automatiquement coupé en plusieurs lignes et la
  cellule grandira verticalement pour s'adapter aux nouvelles lignes.
  Voici un exemple:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -24172,7 +24172,7 @@ Boîte
 .
  En faisant un clic droit sur la boîte, vous pouvez changer la largeur de
  la minipage et sa positions dans la page.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

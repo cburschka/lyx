@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -210,7 +210,7 @@ key "covington"
 \end_inset
 
 : This is the base package used for numbered examples and glosses.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -254,7 +254,7 @@ itemize
 description
 \emph default
 ).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -291,7 +291,7 @@ Meaning
  character style.
  The package provides context sensitive quotation marks, depending on the
  language in use.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -324,7 +324,7 @@ key "float"
 : Needed for the OT tableaux floats and list of floats.
  This package should be part of any \SpecialChar LaTeX
  distribution.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -355,7 +355,7 @@ key "forest"
 \end_inset
 
 : This package is used to generate structure trees.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -745,7 +745,7 @@ Settings\SpecialChar menuseparator
 LaTeX Preamble
 \family default
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

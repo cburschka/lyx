@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -731,7 +731,7 @@ reference "sec:Image-Formats"
 
  qui se trouve dans son propre paragraphe, ce dernier étant centré horizontaleme
 nt:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -752,7 +752,7 @@ nt:
 
 \begin_layout Standard
 Et voici la même image mais en mode brouillon:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1853,7 +1853,7 @@ Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
  apparaît séparée du reste du tableau.
  Voici un exemple :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3425,7 +3425,7 @@ reference "subsec:Tableaux-multi-pages-légende"
 \begin_layout Standard
 Vous pouvez aussi préciser une ligne où le tableau devra être coupé.
  Voyez le tableau multi-pages qui suit pour voir comment ça marche :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -7819,7 +7819,7 @@ reference "tab:Légendes-tableau-différentes"
 
  est un exemple de tableau long avec des légendes différentes et où la seconde
  légende ne contient pas le numéro du tableau.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10004,7 +10004,7 @@ parfillskip}{0pt}
 au début de la cellule.
  Cela assure que la portion de la cellule qui va se trouver affichée sur
  la page suivante le sera avec toute la largeur de la cellule.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11814,7 +11814,7 @@ Les multi-colonnes ont leurs propres paramètres de cellule.
  de la cellule, cela n'affecte que la cellule multi-colonnes.
  Voici un exemple de tableau avec une cellule multi-colonnes dans la première
  ligne et une cellule sans bordure supérieure dans la dernière ligne :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12603,7 +12603,7 @@ Multi-lignes
 
 \begin_layout Standard
 Voici un exemple de tableau avec une cellule multi-lignes en première colonne:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12796,7 +12796,7 @@ cm de large
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12984,7 +12984,7 @@ Ctrl+Entrée
 
 ) mais dans ce cas les limites de cellules ne seront pas respectées comme
  on le voit dans ce tableau :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13411,7 +13411,7 @@ Pro transparent
 \begin_layout Standard
 La forme à 3 arguments est utile par exemple pour les tableaux croisés de
  sport ou les distances:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13634,7 +13634,7 @@ Faucons
 \begin_layout Standard
 Pour des tableaux croisés plus grands on peut utiliser des diagonales dans
  2 coins ou plus du tableau comme ici:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14136,7 +14136,7 @@ Si aucune direction n'est spécifiée, elle est implicitement NW.
 La largeur nécessaire pour le partage des cellules est calculée automatiquement.
  De ce fait, si vous fixez une largeur de colonne plus petite que nécessaire,
  le contenu de la cellule va déborder:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14372,7 +14372,7 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 dans la première cellule:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14473,7 +14473,7 @@ Vert parfait
 Noter que la cellule partagée doit être la plus large de la colonne, sinon
  la longueur de la diagonale ne peut pas être calculée correctement comme
  dans ce tableau:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14589,7 +14589,7 @@ diagbox
 tabcolsep puisque la largeur de cellule est maintenant la largeur de la
  colonne.
  Ici une largeur de 3cm est utilisée:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -14741,7 +14741,7 @@ Couper les lignes via Ctrl+Entrée n'est possible que pour des colonnes de
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33721,7 +33721,7 @@ Intérieure
 \family default
 , vous pouvez allonger le contenu de la boîte horizontalement avec la fenêtre
  de dialogue de boîte.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -34776,7 +34776,7 @@ Boîtes ! Parboxes
 \begin_layout Standard
 Les parboxes ressemblent beaucoup aux minipages à la différence qu'elles
  ne peuvent avoir de note de bas de page.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -37229,7 +37229,7 @@ reference "sec:Flottant-d'enrobage"
 \end_inset
 
  prennent les positions suivantes dans le paragraphe :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -38388,7 +38388,7 @@ Pas de paramètre optionnel, la lettre initiale est un 'I' dans la police
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -38437,7 +38437,7 @@ L'initiale est entourée par une seule ligne et est formée de deux lettres
 \end_inset
 
 :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -38622,7 +38622,7 @@ white
 usepackage{color}}{}
 \series default
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -39898,7 +39898,7 @@ Incorporé
 
 (input) Cette méthode est très semblable à la méthode Inclus, les différences
  sont :
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

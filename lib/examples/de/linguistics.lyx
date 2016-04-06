@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -218,7 +218,7 @@ key "covington"
 \end_inset
 
 : Dieses Paket wird benötigt, um nummerierte Beispiele und Glossen zu erzeugen.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -255,7 +255,7 @@ convington
  selbst nicht unterstützt).
  Das Paket ist darüber hinaus aber auch generell nützlich, um das Aussehen
  von Listen (Aufzählungen, Auflistungen, Beschreibungen) anzupassen.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -292,7 +292,7 @@ Bedeutung
 .
  Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -325,7 +325,7 @@ key "float"
 : Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis.
  Es sollte Bestandteil jeder \SpecialChar LaTeX
 -Distribution sein.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -356,7 +356,7 @@ key "forest"
 \end_inset
 
 : Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -744,7 +744,7 @@ Einstellungen\SpecialChar ldots
 -Vorspann
 \family default
  kopieren:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
