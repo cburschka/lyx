@@ -107,6 +107,8 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				inp.kind = InsetSeparatorParams::PLAIN;
 			else if (name == "parbreak")
 				inp.kind = InsetSeparatorParams::PARBREAK;
+			else if (name == "latexpar")
+				inp.kind = InsetSeparatorParams::LATEXPAR;
 			else {
 				lyxerr << "Wrong argument for LyX function 'separator-insert'." << endl;
 				break;

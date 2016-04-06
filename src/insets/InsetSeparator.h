@@ -22,10 +22,9 @@ class InsetSeparatorParams
 public:
 	/// The different kinds of separators we support
 	enum Kind {
-		///
 		PLAIN,
-		///
-		PARBREAK
+		PARBREAK,
+		LATEXPAR
 	};
 	///
 	InsetSeparatorParams() : kind(PLAIN) {}

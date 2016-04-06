@@ -11,6 +11,16 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-04-05 Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 508
+	  New kind of Separator inset (latexpar). The old parbreak separator
+	  used specifically to introduce a LaTeX paragraph break in the output
+	  (and thus not as a proper separator) is turned into a latexpar kind.
+	  The only difference with the parbreak kind is the representation
+	  on screen. The new latexpar kind is represented by the same symbol
+	  used previously for the parbreak one, while the latter is now
+	  represented as a double line.
+
 2016-03-25 Jean-Marc Lasgouttes <lasgouttes@lyx.org>
 	* Format incremented to 507
 	  Convert caption subtype LongTableNoNumber to Unnumbered

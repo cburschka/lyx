@@ -635,9 +635,9 @@ void LyXAction::init()
 		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_SEPARATOR_INSERT
- * \li Action: Inserts an environment separator or paragraph break.
+ * \li Action: Inserts an environment separator or latex paragraph break.
  * \li Syntax: separator-insert [<ARG>]
- * \li Params: <ARG>: <plain|parbreak> default: plain
+ * \li Params: <ARG>: <plain|parbreak|latexpar> default: plain
  * \li Origin: ef, 2 May 2014
  * \endvar
  */

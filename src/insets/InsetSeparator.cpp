@@ -52,6 +52,9 @@ void InsetSeparatorParams::write(ostream & os) const
 	case InsetSeparatorParams::PARBREAK:
 		os <<  "parbreak";
 		break;
+	case InsetSeparatorParams::LATEXPAR:
+		os <<  "latexpar";
+		break;
 	}
 }
 
@@ -65,6 +68,8 @@ void InsetSeparatorParams::read(Lexer & lex)
 		kind = InsetSeparatorParams::PLAIN;
 	else if (token == "parbreak")
 		kind = InsetSeparatorParams::PARBREAK;
+	else if (token == "latexpar")
+		kind = InsetSeparatorParams::LATEXPAR;
 	else
 		lex.printError("Unknown kind: `$$Token'");
 }
@@ -139,6 +144,7 @@ void InsetSeparator::latex(otexstream & os, OutputParams const &) const
 				os << breakln << "%\n";
 				break;
 			case InsetSeparatorParams::PARBREAK:
+			case InsetSeparatorParams::LATEXPAR:
 				os << breakln << "\n";
 				break;
 			default:
@@ -177,7 +183,7 @@ void InsetSeparator::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 	dim.wid = fm.width('n');
-	if (params_.kind == InsetSeparatorParams::PLAIN)
+	if (params_.kind != InsetSeparatorParams::LATEXPAR)
 		dim.wid *= 8;
 }
 
@@ -194,7 +200,7 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 	int xp[7];
 	int yp[7];
 
-	if (params_.kind == InsetSeparatorParams::PLAIN) {
+	if (params_.kind != InsetSeparatorParams::LATEXPAR) {
 		yp[0] = int(y - 0.500 * asc * 0.75);
 		yp[1] = yp[0];
 
@@ -202,6 +208,12 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 		xp[1] = int(x + wid * 8);
 
 		pi.pain.lines(xp, yp, 2, ColorName());
+
+		if (params_.kind == InsetSeparatorParams::PARBREAK) {
+			yp[0] += 0.25 * asc * 0.75;
+			yp[1] = yp[0];
+			pi.pain.lines(xp, yp, 2, ColorName());
+		}
 	} else {
 		yp[0] = int(y - 0.500 * asc * 0.5);
 		yp[1] = int(y - 0.250 * asc * 0.5);
@@ -266,6 +278,9 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 
 string InsetSeparator::contextMenuName() const
 {
+	if (params_.kind == InsetSeparatorParams::LATEXPAR)
+		return string();
+
 	return "context-separator";
 }
 

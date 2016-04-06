@@ -334,6 +334,46 @@ def revert_separator(document):
         i = i + 1
 
 
+def convert_parbreak(document):
+    """
+    Convert parbreak separators not specifically used to separate
+    environments to latexpar separators.
+    """
+    parbreakinset = "\\begin_inset Separator parbreak"
+    i = 0
+    while 1:
+        i = find_token(document.body, parbreakinset, i)
+        if i == -1:
+            return
+        lay = get_containing_layout(document.body, i)
+        if lay == False:
+            document.warning("Malformed LyX document: Can't convert separator inset at line " + str(i))
+            i += 1
+            continue
+        if lay[0] == "Standard":
+            # Convert only if not alone in the paragraph
+            k1 = find_nonempty_line(document.body, lay[1] + 1, i + 1)
+            k2 = find_nonempty_line(document.body, i + 1, lay[2])
+            if (k1 < i) or (k2 > i + 1) or not check_token(document.body[i], parbreakinset):
+                document.body[i] = document.body[i].replace("parbreak", "latexpar")
+        else:
+            document.body[i] = document.body[i].replace("parbreak", "latexpar")
+        i += 1
+
+
+def revert_parbreak(document):
+    """
+    Revert latexpar separators to parbreak separators.
+    """
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Separator latexpar", i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("latexpar", "parbreak")
+        i += 1
+
+
 def revert_smash(document):
     " Set amsmath to on if smash commands are used "
 
@@ -2284,10 +2324,12 @@ convert = [
            [504, [convert_save_props]],
            [505, []],
            [506, [convert_info_tabular_feature]],
-           [507, [convert_longtable_label]]
+           [507, [convert_longtable_label]],
+           [508, [convert_parbreak]]
           ]
 
 revert =  [
+           [507, [revert_parbreak]],
            [506, [revert_longtable_label]],
            [505, [revert_info_tabular_feature]],
            [504, []],
