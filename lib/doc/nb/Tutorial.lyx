@@ -960,13 +960,12 @@ Miljø
 -valgboksen finner du på venstre ende av verktøylinja, den ser slik ut:
  
 \begin_inset Graphics
-	filename clipart/ToolbarEnvBox.png
+	filename ../clipart/ToolbarEnvBox.png
 	scale 75
 	clip
 
 \end_inset
 
-.
  Den indikerer hva slags miljø du skriver i for øyeblikket.
  Når du skrev ditt første dokument stod det 
 \begin_inset Quotes fld
@@ -1357,6 +1356,10 @@ Underunderseksjon
 Oppgave
 \series default
 : Fiks seksjons- og underseksjonsoverskriftene i 
+\end_layout
+
+\begin_layout Standard
+
 \family typewriter
 eksempel_txt.lyx
 \family default
