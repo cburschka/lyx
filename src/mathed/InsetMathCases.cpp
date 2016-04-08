@@ -185,4 +185,10 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 }
 
 
+int InsetMathCases::displayColSpace(col_type) const
+{
+	return 20;
+}
+
+
 } // namespace lyx
