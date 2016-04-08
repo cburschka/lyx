@@ -100,7 +100,25 @@ version.
 
 ==> more versions, no optional parameters.
 
-** make Inset::display() more useful
+** DONE When a document ends with a newline, add the bottom margin anyway
+
+The code that tests for a newline was added at 6bb98d07 in 2007.
+
+** When a paragraph ends with a newline, compute correctly the height of the extra row.
+** Rewrite TextMetrics::completionPosAndDim using row information
+
+Currently it uses setRowHeight in a very weird way. In particular the
+topBottomSpace parameter should be removed after that.
+
+** Rewrite TextMetrics::editXY, checkInsetHit using row information (getPosNearX)?
+
+   The helper version should return a Row::Element instead of an InsetTable.
+
+** TODO make Inset::display() more useful
+
+[This has been started in the features/betterbreak branch. Time will
+tell whether it really helps. The question in particular is the
+handling of separator insets]
 
 Extending the DisplayType enum would allow to remove special cases
 from the code.

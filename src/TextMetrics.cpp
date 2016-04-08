@@ -471,6 +471,21 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		pm.dim().des += row.height();
 	} while (first < par.size() || need_new_row);
 
+	// FIXME: It might be better to move this in another method
+	// specially tailored for the main text.
+	// Top and bottom margin of the document (only at top-level)
+	if (text_->isMainText()) {
+		if (pit == 0) {
+			pm.rows().front().dimension().asc += 20;
+			pm.dim().des += 20;
+		}
+		ParagraphList const & pars = text_->paragraphs();
+		if (pit + 1 == pit_type(pars.size())) {
+			pm.rows().back().dimension().des += 20;
+			pm.dim().des += 20;
+		}
+	}
+
 	if (row_index < pm.rows().size())
 		pm.rows().resize(row_index);
 
@@ -1043,19 +1058,6 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 	// incalculate the layout spaces
 	maxasc += int(layoutasc  * 2 / (2 + pars[pit].getDepth()));
 	maxdes += int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
-
-	// FIXME: the correct way is to do the following is to move the
-	// following code in another method specially tailored for the
-	// main Text. The following test is thus bogus.
-	// Top and bottom margin of the document (only at top-level)
-	if (text_->isMainText() && topBottomSpace) {
-		if (pit == 0 && row.pos() == 0)
-			maxasc += 20;
-		if (pit + 1 == pit_type(pars.size()) &&
-		    row.endpos() == par.size() &&
-				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
-			maxdes += 20;
-	}
 
 	row.dimension().asc = maxasc + labeladdon;
 	row.dimension().des = maxdes;
