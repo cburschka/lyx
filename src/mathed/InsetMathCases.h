@@ -52,6 +52,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_CASES_CODE; }
+	///
+	int displayColSpace(col_type) const;
 private:
 	virtual Inset * clone() const;
 };
