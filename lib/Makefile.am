@@ -1966,6 +1966,7 @@ dist_layouts_DATA =\
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
 	layouts/aastex.layout \
+	layouts/aastex6.layout \
 	layouts/achemso.layout \
 	layouts/acm-sigs.layout \
 	layouts/acm-sigs-alt.layout \

@@ -2291,21 +2291,39 @@ arg   "aastex"
 \end_layout
 
 \begin_layout Description
-CTAN: N/A (available from the American Astronomical Society's ftp site 
+CTAN: N/A 
+\end_layout
+
+\begin_layout Description
+Notes: Obsoleted by aastex6.
+\end_layout
+
+\begin_layout Subsection
+aastex6
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "textclass"
+arg   "aastex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
 \family typewriter
-ftp.aas.
+/macros/latex/contrib/aastex
 \family default
-org in directory 
-\family typewriter
-/pub
-\family default
-s)
+ 
 \end_layout
 
 \begin_layout Description
 Notes: The document class 
 \family sans
-aastex
+aastex6
 \family default
  can be used to write articles for submission to the American journals 
 \emph on
@@ -2315,6 +2333,19 @@ Astrophysical Journal, Astronomical Journal
 \emph on
 Publications of the Astronomical Society of the Pacific
 \emph default
+.
+ Package and documentation are also available from the American Astronomical
+ Society 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://journals.aas.org/authors/aastex/aastex.html
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 

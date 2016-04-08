@@ -60,11 +60,12 @@ Sublabel: varying_versions
 # ========================
 # Test depending on TeX distribution, package versions or OS
 
-# document class aastex.cls replaced by aastex6.cls
-# (in CTAN and TL 2015-update around march 2016)
-# New layout required, see #10027
-export/templates/aastex.*
-export/examples/aas_sample.*
+# document class aastex.cls replaced by aastex6.cls (v.1 2016/02/16)
+# in CTAN and TeXLive in march 2016
+# Template and sample use the new version via aastex6.layout (cf. #10027)
+# -> fail if aastex6.cls is missing (TeXLive15 original)
+export/templates/aastex_(dvi|pdf).*
+export/examples/aas_sample_(dvi|pdf).*
 
 
 Sublabel: wrong_output

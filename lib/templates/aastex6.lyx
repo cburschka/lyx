@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/templates/
-\textclass aastex
+\textclass aastex6
 \begin_preamble
 \slugcomment{}
 \shorttitle{}
@@ -75,6 +75,108 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+Template for contributions to journals of the American Astronomical Society
+ (AAS).
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+Please consult the 
+\begin_inset CommandInset href
+LatexCommand href
+name "AASTeX user guide"
+target "http://journals.aas.org/authors/aastex/aasguide.html"
+
+\end_inset
+
+ for details on how to use AASTeX.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+A LyX sample document is available under 
+\family sans
+File>Open>Examples>aas_sample.lyx
+\family default
+.
+ An up-to-date sample LaTeX article using AASTeX is available under 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://journals.aas.org/authors/aastex/aastex.html#_download
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align left
+The AASTeX document class uses a different name since version 6.0 (2016/02/16).
+ Depending on the version installed on your system, set the document class
+ to American Astronomical Society (AASTeX v.
+ 6) or American Astronomical Society (AASTeX v.
+ 5).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+New features (cf.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://journals.aas.org/authors/aastex/revisionhistory.html
+\end_layout
+
+\end_inset
+
+) are only partially supported by LyX (see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/ticket/10027
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Title
 <Paper Title>

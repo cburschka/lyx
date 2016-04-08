@@ -1,6 +1,8 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[aastex,amssymb.sty,latexsym.sty,natbib.sty,verbatim.sty]{American Astronomical Society (AASTeX)}
+#  \DeclareLaTeXClass[aastex,amssymb.sty,latexsym.sty,natbib.sty,verbatim.sty]{American Astronomical Society (AASTeX v. 5)}
 #  \DeclareCategory{Articles}
+#
+# LyX support for the AAS TeX package http://www.ctan.org/pkg/aastex
 #
 # Author: Mike Ressler <mike.ressler@alum.mit.edu>
 # Author: Uwe Stöhr <uwestoehr@web.de>
@@ -35,6 +37,10 @@
 # Version 1.5   26/11/12 - added mandatory argument for \altaffiltext
 # Version 1.6   23/01/15 - fix for the optional argument of \figcaption
 
+# Note: aastex.cls was replaced by aastex6.cls (v.1 2016/02/16)
+# 	in the CTAN and TeXLive "aastex" package in march 2016.
+# 	The new "aastex6.layout" depends on aastex6.cls but inputs this
+#       file for the definitions (cf. LyX ticket #10027)
 
 Format 60
 Columns			1
