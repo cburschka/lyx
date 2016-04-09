@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/templates/
-\textclass agutex
+\textclass agutex-2015
 \begin_preamble
 % OPTIONAL: To Create numbered lines uncomment these 2 lines:
 % \usepackage{lineno}
@@ -185,14 +185,59 @@ status open
 
 \begin_layout Plain Layout
 The Journal is specified as document class option in the document settings!
- For the available document class options have a look at the agutex documentatio
-n: 
-\begin_inset Flex URL
-status open
+ The possible document class options are:
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Description
+jgrga JOURNAL OF GEOPHYSICAL RESEARCH
+\end_layout
 
-http://texnology.com/agudocs.pdf
+\begin_layout Description
+gbc GLOBAL BIOCHEMICAL CYCLES
+\end_layout
+
+\begin_layout Description
+grl GEOPHYSICAL RESEARCH LETTERS
+\end_layout
+
+\begin_layout Description
+pal PALEOCEANOGRAPHY
+\end_layout
+
+\begin_layout Description
+ras RADIO SCIENCE
+\end_layout
+
+\begin_layout Description
+rog REVIEWS OF GEOPHYSICS
+\end_layout
+
+\begin_layout Description
+tec TECTONICS
+\end_layout
+
+\begin_layout Description
+wrr WATER RESOURCES RESEARCH
+\end_layout
+
+\begin_layout Description
+gc GEOCHEMISTRY, GEOPHYSICS, GEOSYSTEMS
+\end_layout
+
+\begin_layout Description
+sw SPACE WEATHER
+\end_layout
+
+\begin_layout Description
+ms JAMES
+\end_layout
+
+\begin_layout Description
+ef EARTH'S FUTURE
+\end_layout
+
+\begin_layout Description
+ea EARTH AND SPACE SCIENCE
 \end_layout
 
 \end_inset
@@ -200,8 +245,27 @@ http://texnology.com/agudocs.pdf
 
 \end_layout
 
+\begin_layout Author running head
+BALES ET AL.
+\begin_inset Note Note
+status open
+
 \begin_layout Plain Layout
-The addresses of the authors are given in the document preamble.
+Author names in capital letters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title running head
+SHORT TITLE
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Shorter version of title entered in capital letters.
 \end_layout
 
 \end_inset
@@ -214,9 +278,9 @@ Title of article
 \end_layout
 
 \begin_layout Authors
-R.
- C.
- Bales, 
+A.
+ B.
+ Smith, 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -230,13 +294,12 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-E.
- Mosley-Thompson, 
+Eric Brown, 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
 \begin_layout Plain Layout
-2
+1,2
 \end_layout
 
 \end_inset
@@ -245,8 +308,7 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-R.
- Williams, 
+Rick Williams, 
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -260,9 +322,8 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-and J.
- R.
- McConnell
+and John B.
+ McDougall
 \begin_inset Flex Affiliation Mark
 status collapsed
 
@@ -328,6 +389,48 @@ status open
 
 Division of Hydrologic Sciences, Desert Research Institute, Reno, Nevada,
  USA.
+\end_layout
+
+\begin_layout Keypoints
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Here is the first keypoint.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+This is the second.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+And here is the third keypoint.
 \end_layout
 
 \begin_layout Abstract
@@ -488,7 +591,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section*
-—————–
+
 \end_layout
 
 \begin_layout Standard
@@ -556,7 +659,7 @@ options "agu"
 \end_layout
 
 \begin_layout Section*
-———————
+
 \end_layout
 
 \begin_layout Standard
@@ -581,9 +684,9 @@ IEEE Trans.
 \emph default
  
 \shape italic
-23
+2
 \shape default
-, 648–650.
+3
 \end_layout
 
 \begin_layout Bibliography
@@ -604,9 +707,9 @@ IEEE Trans.
 \emph default
  
 \shape italic
-23
+2
 \shape default
-, 648–650.
+3
 \end_layout
 
 \begin_layout Standard

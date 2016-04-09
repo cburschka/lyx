@@ -1972,9 +1972,10 @@ dist_layouts_DATA =\
 	layouts/acm-sigs-alt.layout \
 	layouts/acm-sigs.inc \
 	layouts/acmsiggraph.layout \
-	layouts/acmsiggraph-0-92.layout\
+	layouts/acmsiggraph-0-92.layout \
 	layouts/AEA.layout \
 	layouts/agutex.layout \
+	layouts/agutex-2015.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \

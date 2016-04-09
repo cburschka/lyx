@@ -1,8 +1,11 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[agutex]{American Geophysical Union (AGUTeX) (older than 2015, obsolete)}
+#  \DeclareLaTeXClass[agutex2015]{American Geophysical Union (AGUTeX) (version 2015)}
 #  \DeclareCategory{Articles}
-# AGUTeX textclass definition file.
+# AGUTeX2015 textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
+# 
+# Versions:
+# AGUTeX 2015:  initial layout
 
 Format 60
 
@@ -10,8 +13,8 @@ Columns			1
 Sides			1
 SecNumDepth		3
 TocDepth		3
-DefaultStyle		Standard
-Provides natbib		1
+DefaultStyle	Standard
+Provides natbib	1
 
 ClassOptions
 	FontSize	10|11|12
@@ -30,7 +33,7 @@ EndFont
 
 
 Style Standard
-	Category        MainText
+	Category	MainText
 	Margin		Static
 	LatexType	Paragraph
 	LatexName	dummy
@@ -51,6 +54,32 @@ Input stdlayouts.inc
 NoStyle Chapter
 NoCounter chapter
 NoStyle Chapter*
+
+
+Style "Author running head"
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	authorrunninghead
+	Category	FrontMatter
+	InPreamble	1
+	ParSkip		0.4
+	BottomSep	0.5
+	Align		Left
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Author running head:"
+	LabelFont
+	  Color		green
+	  Series	Bold
+	EndFont
+End
+
+
+Style "Title running head"
+	CopyStyle	"Author running head"
+	LatexName	titlerunninghead
+	LabelString	"Title running head:"
+End
 
 
 Style Title
@@ -153,6 +182,15 @@ Style Abstract
 End
 
 
+Style Keypoints
+	CopyStyle	Abstract
+	LatexType	Command
+	LatexName	keypoints
+	LabelType	Above
+	LabelString	"Key Points."
+End
+
+
 Style Paragraph
 	CopyStyle	Subsection*
 	Category	BackMatter
@@ -227,4 +265,3 @@ Style Bibliography
 	  Size		Larger
 	EndFont
 End
-
