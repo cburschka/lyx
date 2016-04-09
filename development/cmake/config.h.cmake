@@ -77,6 +77,9 @@
 #endif
 #cmakedefine Z_PREFIX 1
 
+// Defined if QT=QT5 uses X11
+#cmakedefine QPA_XCB 1
+
 ${Include_used_spellchecker}
 
 #cmakedefine AIKSAURUSLIB_FOUND 1
