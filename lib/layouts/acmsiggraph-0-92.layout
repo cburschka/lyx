@@ -1,27 +1,30 @@
 #% Do not delete he line below; configure depends on this
-#  \DeclareLaTeXClass[acmsiggraph,comment.sty,lineno.sty]{ACM SIGGRAPH (older than 0.91, obsolete)}
+#  \DeclareLaTeXClass[acmsiggraph,comment.sty,lineno.sty]{ACM SIGGGRAPH 0.92}
 #  \DeclareCategory{Articles}
-# ACM SIGGRAPH acmsiggraph textclass definition file.
+# ACM SIGGRAPH textclass definition file.
 # Author : Uwe Stöhr
 #
-# We use acmsiggraph.cls, the Sigplan class file that can be
-# downloaded from
-# http://www.siggraph.org/publications/instructions
+# The required LaTeX class file "acmsiggraph.cls", a LaTex template
+# BibTeX style and template, and the documentation is available at
+# http://www.siggraph.org/learn/instructions-authors
 #
-# ACM style files can be obtained at
-# http://www.acm.org/sigs/pubs/proceed/template.html
+# Versions:
+#  siggraph 0.9:  initial layout
+#  siggraph 0.92: Removed styles "TOG project URL", "TOG video URL", 
+#	 "TOG data URL", and "TOG code URL". The corresponding 
+#	 LaTeX commands are no longer supported.
 
-Format 60
+Format 59
 
-Columns                 1
-Sides                   1
+Columns			1
+Sides			1
 SecNumDepth		3
 TocDepth		3
-DefaultStyle            Standard
+DefaultStyle	Standard
 
 ClassOptions
   FontSize		9|10|11|12
-End  
+End
 
 DefaultFont
   Family		Roman
@@ -33,15 +36,15 @@ EndFont
 
 
 Style Standard
-  Category              MainText
+  Category		MainText
   Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
+  LatexType		Paragraph
+  LatexName		dummy
   ParIndent		MM
   ParSkip 		0.4
   Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+  AlignPossible	Block, Left, Right, Center
+  LabelType		No_Label
 End
 
 
@@ -96,39 +99,51 @@ Style "TOG number"
 End
 
 
-Style "TOG article DOI"
+Style "Set_copyright"
 	CopyStyle		"TOG online ID"
-	LatexName		TOGarticleDOI
+	LatexName		setcopyright
+	LabelString		"Copyright type:"
+End
+
+
+Style "Copyright_year"
+	CopyStyle		"TOG online ID"
+	LatexName		copyrightyear
+	LabelString		"Year of copyright:"
+End
+
+
+Style "Conference_info"
+	CopyStyle		"TOG online ID"
+	LatexName		conferenceinfo
+	LabelString		"Conference info:"
+	Argument 1
+		Mandatory	1
+		LabelString	"Name"
+		Tooltip		"Conference name"
+	EndArgument
+End
+
+
+Style "ISBN"
+	CopyStyle		"TOG online ID"
+	LatexName		isbn
+	LabelString		"ISBN:"
+End
+
+
+Style "DOI"
+	CopyStyle		"TOG online ID"
+	LatexName		doi
 	LabelString		"Article DOI:"
 End
 
 
-Style "TOG project URL"
+Style "TOG article DOI"
 	CopyStyle		"TOG online ID"
-	LatexName		TOGprojectURL
-	KeepEmpty		1
-	LabelString		"Project URL:"
-End
-
-
-Style "TOG video URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGvideoURL
-	LabelString		"Video URL:"
-End
-
-
-Style "TOG data URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGdataURL
-	LabelString		"Data URL:"
-End
-
-
-Style "TOG code URL"
-	CopyStyle		"TOG project URL"
-	LatexName		TOGcodeURL
-	LabelString		"Code URL:"
+	LatexName		TOGarticleDOI
+	LabelString		"Article DOI:"
+	ObsoletedBy		DOI
 End
 
 
@@ -155,20 +170,39 @@ End
 
 
 Style "PDF author"
-	CopyStyle		"TOG project URL"
+	CopyStyle		"TOG online ID"
 	LatexName		pdfauthor
 	LabelString		"PDF author:"
 End
 
 Style Keywords
-	CopyStyle		"TOG project URL"
+	CopyStyle		"TOG online ID"
 	LatexName		keywords
 	LabelType		Static
 	LabelString		"Keywords:"
-	LabelFont
-	  Series		Bold
-	  Size			Normal
-	EndFont
+End
+
+
+Style "Keyword_list"
+	CopyStyle		"TOG online ID"
+	LatexName		keywordlist
+	InPreamble		0
+	KeepEmpty		1
+	LabelString		"Keyword list"
+End
+
+
+Style "Concept_list"
+	CopyStyle		"Keyword_list"
+	LatexName		conceptlist
+	LabelString		"Concept list"
+End
+
+
+Style "Print_copyright"
+	CopyStyle		"Keyword_list"
+	LatexName		printcopyright
+	LabelString		"Print copyright"
 End
 
 
@@ -177,6 +211,7 @@ Style Teaser
 	LatexType		Command
 	LatexName		teaser
 	Category		FrontMatter
+	InTitle			1
 	ParSkip			0.4
 	BottomSep		0.5
 	Align			Left
@@ -196,7 +231,7 @@ Style Abstract
 	LatexType		Environment
 	LatexName		abstract
 	Category		FrontMatter
-	NextNoIndent		1
+	NextNoIndent	1
 	LeftMargin		MMM
 	RightMargin		MMM
 	ParIndent		MM
@@ -205,10 +240,10 @@ Style Abstract
 	BottomSep		0.7
 	ParSep			0
 	Align			Block
-	AlignPossible		Block
+	AlignPossible	Block
 	LabelType		Centered
 	LabelString		"Abstract"
-	LabelBottomSep		0.5
+	LabelBottomSep	0.5
 	Font
 	  Size			Small
 	EndFont
@@ -298,7 +333,7 @@ Style Acknowledgments
 	LatexName		acks
 	Category		BackMatter
 	InTitle			0
-	LabelBottomsep		0
+	LabelBottomsep	0
 	LabelType		Above
 	LabelString		"Acknowledgments"
 End
