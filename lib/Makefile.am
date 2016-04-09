@@ -2220,7 +2220,7 @@ dist_scripts_DATA += \
 templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
-	templates/aastex.lyx \
+	templates/aastex6.lyx \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/ACM-SIGS.lyx \
