@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-04-09 11:27+0200\n"
-"PO-Revision-Date: 2016-04-09 09:32+0000\n"
+"POT-Creation-Date: 2016-04-10 11:54+0200\n"
+"PO-Revision-Date: 2016-04-10 10:28+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6919,9 +6919,9 @@ msgstr "ACM SIGS  ('Alternate' štýl)"
 msgid "ACM SIG Proceedings (SP)"
 msgstr "ACM SIG rokovacie zväzky (SP)"
 
-#: lib/layouts/acmsiggraph.layout:3
-msgid "ACM SIGGRAPH"
-msgstr "ACM SIGGRAPH"
+#: lib/layouts/acmsiggraph-0-92.layout:3
+msgid "ACM SIGGGRAPH 0.92"
+msgstr "ACM SIGGRAPH 0.92"
 
 #: lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -6946,6 +6946,42 @@ msgstr "TOG číslo"
 #: lib/layouts/acmsiggraph.layout:95
 msgid "Article number:"
 msgstr "Číslo článku:"
+
+#: lib/layouts/acmsiggraph-0-92.layout:102
+msgid "Set copyright"
+msgstr "Nastaviť autorské práva"
+
+#: lib/layouts/acmsiggraph-0-92.layout:105
+msgid "Copyright type:"
+msgstr "Typ autorských práv:"
+
+#: lib/layouts/acmsiggraph-0-92.layout:109
+msgid "Copyright year"
+msgstr "Autorské práva rok"
+
+#: lib/layouts/acmsiggraph-0-92.layout:112
+msgid "Year of copyright:"
+msgstr "Rok autorských práv:"
+
+#: lib/layouts/acmsiggraph-0-92.layout:116
+msgid "Conference info"
+msgstr "Info konferencie"
+
+#: lib/layouts/acmsiggraph-0-92.layout:119
+msgid "Conference info:"
+msgstr "Info konferencie:"
+
+#: lib/layouts/acmsiggraph-0-92.layout:123
+msgid "Conference name"
+msgstr "Meno konferencie"
+
+#: lib/layouts/acmsiggraph-0-92.layout:128
+msgid "ISBN"
+msgstr "ISBN"
+
+#: lib/layouts/acmsiggraph-0-92.layout:131
+msgid "ISBN:"
+msgstr "ISBN:"
 
 #: lib/layouts/acmsiggraph.layout:99
 msgid "TOG article DOI"
@@ -6994,6 +7030,21 @@ msgstr "PDF autor"
 #: lib/layouts/acmsiggraph.layout:160
 msgid "PDF author:"
 msgstr "PDF autor:"
+
+#: lib/layouts/acmsiggraph-0-92.layout:186
+#: lib/layouts/acmsiggraph-0-92.layout:191
+msgid "Keyword list"
+msgstr "Listina hesiel"
+
+#: lib/layouts/acmsiggraph-0-92.layout:195
+#: lib/layouts/acmsiggraph-0-92.layout:198
+msgid "Concept list"
+msgstr "Listina konceptov"
+
+#: lib/layouts/acmsiggraph-0-92.layout:202
+#: lib/layouts/acmsiggraph-0-92.layout:205
+msgid "Print copyright"
+msgstr "Tlač autorských práv"
 
 #: lib/layouts/acmsiggraph.layout:175
 msgid "Teaser"
@@ -7069,6 +7120,10 @@ msgstr "E-mail"
 msgid "Acknowledgments"
 msgstr "Poďakovania"
 
+#: lib/layouts/acmsiggraph.layout:3
+msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
+msgstr "ACM SIGGRAPH (staršie ako 0.91, zastaralé)"
+
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
 msgstr "American Geophysical Union (AGU, SGML Článok)"
@@ -7081,9 +7136,25 @@ msgstr "Články (DocBook)"
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
 msgstr "American Geophysical Union (AGUPLUS Manuskript)"
 
-#: lib/layouts/agutex.layout:3
-msgid "American Geophysical Union (AGUTeX)"
-msgstr "American Geophysical Union (AGUTeX)"
+#: lib/layouts/agutex-2015.layout:3
+msgid "American Geophysical Union (AGUTeX) (version 2015)"
+msgstr "American Geophysical Union (AGUTeX) (verzia 2015)"
+
+#: lib/layouts/agutex-2015.layout:59
+msgid "Author running head"
+msgstr "Autor v hlavičke"
+
+#: lib/layouts/agutex-2015.layout:70
+msgid "Author running head:"
+msgstr "Autor v hlavičke:"
+
+#: lib/layouts/agutex-2015.layout:78
+msgid "Title running head"
+msgstr "Titul v hlavičke"
+
+#: lib/layouts/agutex-2015.layout:81
+msgid "Title running head:"
+msgstr "Titul v hlavičke:"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -7101,6 +7172,14 @@ msgstr "Postupné číslo pre autorove príslušenstvá"
 msgid "Author affiliation:"
 msgstr "Príslušenstvo autora:"
 
+#: lib/layouts/agutex-2015.layout:185
+msgid "Keypoints"
+msgstr "Klúčové body"
+
+#: lib/layouts/agutex-2015.layout:190
+msgid "Key Points."
+msgstr "Klúčové Body."
+
 #: lib/layouts/agutex.layout:156 lib/layouts/amsbook.layout:127
 #: lib/layouts/apa.layout:336 lib/layouts/apa6.layout:436
 #: lib/layouts/egs.layout:75 lib/layouts/kluwer.layout:91
@@ -7117,6 +7196,10 @@ msgstr "Odstavec"
 #: lib/layouts/agutex.layout:196
 msgid "Acknowledgments."
 msgstr "Poďakovania."
+
+#: lib/layouts/agutex.layout:3
+msgid "American Geophysical Union (AGUTeX) (older than 2015, obsolete)"
+msgstr "American Geophysical Union (AGUTeX) (staršie ako 2015, zastaralé)"
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
@@ -10598,7 +10681,7 @@ msgstr "Autor v Hlavičke:"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
-msgstr "Latex8 Článok (zastaralý)"
+msgstr "Latex8 Článok (zastaralé)"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
@@ -11578,7 +11661,7 @@ msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
-msgstr "KOMA-Script list (V. 1, zastaralý)"
+msgstr "KOMA-Script list (V. 1, zastaralé)"
 
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:30
 #: lib/layouts/scrclass.inc:51 lib/layouts/stdlyxlist.inc:6
@@ -11935,7 +12018,7 @@ msgstr "POĎAKOVANIA"
 
 #: lib/layouts/svglobal.layout:3
 msgid "Springer SV Global (Obsolete Version)"
-msgstr "Springer SV Global (zastaralá Verzia)"
+msgstr "Springer SV Global (zastaralá verzia)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
@@ -34712,3 +34795,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Change tracking error"
 #~ msgstr "Chyba pri zmene sledovania"
+
+#~ msgid "ACM SIGGRAPH"
+#~ msgstr "ACM SIGGRAPH"
+
+#~ msgid "American Geophysical Union (AGUTeX)"
+#~ msgstr "American Geophysical Union (AGUTeX)"
