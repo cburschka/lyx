@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/doc/fr/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -47,9 +47,16 @@
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 
-% use normal list environments also in French documents
+% modèle pour ajouter des arguments à \frenchbsetup
+% par exemple ItemLabels=\textendash pour raccourcir
+% les tirets des liste à puces
+% ici, et uniquementpour ce manuel, on revient à l'ancien comportement
+% de babel-french avec lequel la typographie les listes, des notes
+% de bas de page et des retraits de premiers paragraphes dépend
+% de la langue locale, voir le paragraphe 3.3.6.2 et la documentation
+% de babel-french
 \@ifpackageloaded{babel}{%
-\frenchbsetup{ItemLabeli=\textendash}
+\frenchbsetup{GlobalLayoutFrench=false}
 }{}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,numbers=noenddot
@@ -83,7 +90,7 @@ logicalmkup
 \spacing single
 \use_hyperref true
 \pdf_title "Guide de l'utilisateur de LyX"
-\pdf_author "L'équipe LyX, Traduction: Adrien Rebollo et Siegfried Meunier-Guttin-Cluzel"
+\pdf_author "L'équipe LyX, Traduction: Adrien Rebollo, Siegfried Meunier-Guttin-Cluzel et Jean-Pierre Chrétien"
 \pdf_subject "LyX"
 \pdf_keywords "LyX"
 \pdf_bookmarks true
@@ -253,6 +260,11 @@ Mise à jour mineure pour 2.1.4, 3 avril 2015 (JPC)
 
 \begin_layout Plain Layout
 Mise à jour pour LyX 2.2, 26 janvier 2016 (JPC)
+\end_layout
+
+\begin_layout Plain Layout
+Gestion des variantes typographiques entre v.o.
+ et v.f, 8 avril 2016 (JPC&Jean-Marc)
 \end_layout
 
 \end_inset
@@ -6086,6 +6098,106 @@ Listes ! ListePuces
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Note du traducteur
+\emph default
+: la typographie des listes à puces diffère entre la langue originale américaine
+ et la langue française: contrairement aux explications du manuel original
+ anglophone, les marqueurs sont tous identiques en français (implicitement
+ un tiret long, ou tiret cadratin) et les indentations sont spécifiques,
+ comme vous pouvez le voir en exportant le guide en pdf.
+ Nous avons laissé les explications originales, correctes pour un document
+ anglophone, sous la rubrique 
+\begin_inset Quotes fld
+\end_inset
+
+Typographie américaine
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Nous répétons les listes sous forme adaptée ensuite, sous la rubrique 
+\begin_inset Quotes fld
+\end_inset
+
+Typographie française
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+La traduction en français du paragraphe original anglophone souffre normalement
+ d'une incohérence entre l'affichage dans la fenêtre \SpecialChar LyX
+ et la sortie imprimable
+ puisque la langue principale du présent manuel est le français
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Avec 
+\begin_inset CommandInset href
+LatexCommand href
+name " babel-french"
+target "http://daniel.flipo.free.fr/frenchb/frenchb-doc.pdf"
+
+\end_inset
+
+, la langue principale (celle qui apparaît en dernier dans les options de
+ classe du document) fixe la typographie des listes, des notes de bas de
+ page et le retrait éventuel des premiers paragraphes, quelle que soit la
+ langue locale utilisée dans le document: un chapitre en anglais, par exemple,
+ sera normalement imprimé en typographie française.
+\end_layout
+
+\end_inset
+
+: la fenêtre \SpecialChar LyX
+ affiche la typographie américaine alors que la sortie affiche
+ la typographie française.
+ Pour éviter cette incohérence, nous avons forcé l'adaptation des conventions
+ typographiques au langage courant en insérant la commande
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\backslash
+frenchbsetup{GlobalLayoutFrench=false}
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+dans le préambule et en marquant en anglais les listes du paragraphe en
+ typographie américaine.
+ 
+\emph on
+N'utilisez pas cette commande dans vos documents francophones personnels
+\emph default
+.
+ Par contre, l'incohérence subsiste dans le paragraphe en typographie française
+ puisque la fenêtre \SpecialChar LyX
+ affiche la typographie américaine dans tous les cas.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Typographie américaine
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:ListePuces"
@@ -6102,6 +6214,8 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 chaque élément a une puce ou un symbole particulier comme marqueur;
 \begin_inset Separator latexpar
 \end_inset
@@ -6111,17 +6225,23 @@ chaque élément a une puce ou un symbole particulier comme marqueur;
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 \SpecialChar LyX
  utilise le même symbole pour tous les éléments à un niveau de profondeur
  donné.
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 le symbole apparaît au début de la ligne;
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
+
+\lang english
 les éléments peuvent être de n'importe quelle longueur.
  \SpecialChar LyX
  décale automatiquement la marge de gauche de chaque élément.
@@ -6134,6 +6254,8 @@ ListePuces
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 si vous emboîtez un environnement 
 \family sans
 ListePuces
@@ -6151,11 +6273,15 @@ ListePuces
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 il y a quatre symboles différents pour gérer jusqu'à quatre niveaux d'emboîtemen
 t.
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 voyez la section
 \begin_inset space ~
 \end_inset
@@ -6188,6 +6314,8 @@ Nous avons dit que des niveaux différents utilisent comme marqueurs des
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
 le marqueur pour le premier niveau de 
 \family sans
 ListePuces
@@ -6197,7 +6325,9 @@ ListePuces
 status collapsed
 
 \begin_layout Plain Layout
-NdT: C'est toujours un point noir qui apparaît à l'écran, mais le résultat
+
+\lang english
+NdT: c'est toujours un point noir qui apparaît à l'écran, mais le résultat
  imprimé peut différer en fonction de la langue du document, comme c'est
  le cas en français.
  Il en va de même pour les marqueurs des autres niveaux.
@@ -6215,6 +6345,8 @@ NdT: C'est toujours un point noir qui apparaît à l'écran, mais le résultat
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 pour le deuxième niveau, c'est un tiret,
 \begin_inset Separator latexpar
 \end_inset
@@ -6224,6 +6356,8 @@ pour le deuxième niveau, c'est un tiret,
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 pour le troisième, un astérisque,
 \begin_inset Separator latexpar
 \end_inset
@@ -6233,21 +6367,29 @@ pour le troisième, un astérisque,
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang english
 pour le quatrième, c'est un point centré,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
+
+\lang english
 retour au troisième niveau,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
+
+\lang english
 au deuxième,
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
+
+\lang english
 au plus extérieur.
 \end_layout
 
@@ -6297,6 +6439,179 @@ reference "sec:Emboîter-les-Environnements"
 .
 \end_layout
 
+\begin_layout Paragraph
+Typographie française
+\end_layout
+
+\begin_layout Standard
+L'environnement 
+\family sans
+ListePuces
+\family default
+ a les propriétés suivantes :
+\end_layout
+
+\begin_layout Itemize
+chaque élément a une puce ou un symbole particulier comme marqueur;
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar LyX
+ utilise le même symbole pour tous les éléments à un niveau de profondeur
+ donné.
+\end_layout
+
+\begin_layout Itemize
+le symbole apparaît au début de la ligne;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+les éléments peuvent être de n'importe quelle longueur.
+ \SpecialChar LyX
+ décale automatiquement la marge de gauche de chaque élément.
+ Le décalage est toujours relatif à l'environnement dans lequel la liste
+ 
+\family sans
+ListePuces
+\family default
+ peut se trouver;
+\end_layout
+
+\begin_layout Itemize
+si vous emboîtez un environnement 
+\family sans
+ListePuces
+\family default
+ dans un autre environnement 
+\family sans
+ListePuces
+\family default
+, le marqueur reste le même;
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+il est possible de gérer jusqu'à quatre niveaux d'emboîtement.
+\end_layout
+
+\begin_layout Itemize
+voyez la section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Emboîter-les-Environnements"
+
+\end_inset
+
+ pour des explications détaillées sur l'emboîtement.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Nous avons dit que des niveaux différents utilisent le même marqueur.
+ Voici un exemple des quatre profondeurs d'emboîtement possibles:
+\end_layout
+
+\begin_layout Itemize
+le marqueur pour le premier niveau de 
+\family sans
+ListePuces
+\family default
+ est un tiret long
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+NdT: Voir la note précédente en ce qui concerne l'affichage écran.
+\end_layout
+
+\end_inset
+
+;
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pour le deuxième niveau, c'est le même tiret,
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pour le troisième, le même tiret,
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pour le quatrième, le même tiret,
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+retour au troisième niveau,
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+au deuxième,
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+au plus extérieur.
+\end_layout
+
+\begin_layout Standard
+Les usages typographiques acceptent également un tiret plus court, ou tiret
+ demi-cadratin.
+ Si vous préférez l'esthétique de ce tiret, vous pouvez le modifier en ajoutant
+ dans le préambule la directive
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+ItemLabels=
+\backslash
+textendash
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+à la commande 
+\backslash
+
+\family typewriter
+frenchbsetup
+\family default
+ (voir le commentaire approprié dans le préambule).
+\end_layout
+
 \begin_layout Subsubsection
 Énumération
 \begin_inset Index idx
@@ -6323,7 +6638,19 @@ L'environnement
 Énumération
 \family default
  est un outil qui sert à créer des listes ordonnées et des plans.
- Il a les propriétés suivantes :
+ Il a les propriétés suivantes
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+NdT: contrairement aux listes à puces, les marqueurs des énumérations ne
+ dépendent pas de la langue, seuls les espacements sont légèrement modifiés
+ en français.
+\end_layout
+
+\end_inset
+
+ :
 \end_layout
 
 \begin_layout Enumerate
@@ -18001,8 +18328,9 @@ quantité appropriée d'espace
 \begin_inset Quotes frd
 \end_inset
 
-: les phrases ont un peu plus d'espace entre le point final et le mot suivant.
- Les abréviations ont autant d'espace après le point qu'entre deux mots.
+: en anglais, les phrases ont un peu plus d'espace entre le point final
+ et le mot suivant, et les abréviations ont autant d'espace après le point
+ qu'entre deux mots.
 \end_layout
 
 \begin_layout Standard
@@ -18249,10 +18577,9 @@ Correction
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
- pour repérer ces erreurs (fonction décrite dans le manuel de 
+ pour repérer ces erreurs (fonction décrite dans le manuel des 
 \emph on
 Options avancées
 \emph default
