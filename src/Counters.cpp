@@ -265,6 +265,19 @@ int Counters::value(docstring const & ctr) const
 }
 
 
+void Counters::resetSlaves(docstring const & ctr)
+{
+	CounterList::iterator it = counterList_.begin();
+	CounterList::iterator const end = counterList_.end();
+	for (; it != end; ++it) {
+		if (it->second.master() == ctr) {
+			it->second.reset();
+			resetSlaves(it->first);
+		}
+	}
+}
+
+
 void Counters::step(docstring const & ctr, UpdateType utype)
 {
 	CounterList::iterator it = counterList_.find(ctr);
@@ -280,13 +293,8 @@ void Counters::step(docstring const & ctr, UpdateType utype)
 		counter_stack_.pop_back();
 		counter_stack_.push_back(ctr);
 	}
-	it = counterList_.begin();
-	CounterList::iterator const end = counterList_.end();
-	for (; it != end; ++it) {
-		if (it->second.master() == ctr) {
-			it->second.reset();
-		}
-	}
+
+	resetSlaves(ctr);
 }
 
 

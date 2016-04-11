@@ -45,7 +45,6 @@ What's new
 
 
 
-
 * DOCUMENTATION AND LOCALIZATION
 
 - New German translation of the PDF-comment example file.
@@ -154,7 +153,9 @@ What's new
 
 - Fix a crash when introducing a new shortcut (bug 9869).
 
-- Fix initialization oblem with default Inset Layout.
+- Fix initialization problem with default Inset Layout.
+
+- When a counter is stepped, reset recursively all subcounters (bug #10063).
 
 
 * INTERNALS
