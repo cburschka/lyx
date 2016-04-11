@@ -68,19 +68,24 @@ InsetLayout::InsetDecoration InsetFlex::decoration() const
 void InsetFlex::write(ostream & os) const
 {
 	os << "Flex ";
-	InsetLayout const & il = getLayout();
+	string name;
 	if (name_.empty())
-		os << "undefined";
+		name = "undefined";
 	else {
-		// use il.name(), since this resolves obsoleted
-		// InsetLayout names
-		string name = to_utf8(il.name());
-		// Remove the "Flex:" prefix, if it is present
-		if (support::prefixIs(name, "Flex:"))
-			name = support::token(name, ':', 1);
-		os << name;
+		InsetLayout const & il = getLayout();
+		// use il.name(), since this resolves obsoleted InsetLayout names
+		if (il.name() == "undefined")
+			// This is the name of the plain_insetlayout_. We assume that the
+			// name resolution has failed.
+			name = name_;
+		else {
+			name = to_utf8(il.name());
+			// Remove the "Flex:" prefix, if it is present
+			if (support::prefixIs(name, "Flex:"))
+				name = support::split(name, ':');
+		}
 	}
-	os << "\n";
+	os << name << "\n";
 	InsetCollapsable::write(os);
 }
 
