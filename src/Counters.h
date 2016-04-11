@@ -128,10 +128,10 @@ public:
 	void addto(docstring const & ctr, int val);
 	///
 	int value(docstring const & ctr) const;
-	/// Increment by one counter named by arg, and zeroes slave
+	/// Reset recursively all the counters that are slaves of the one named by \c ctr.
+	void resetSlaves(docstring const & ctr);
+	/// Increment by one counter named by \c ctr, and zeroes slave
 	/// counter(s) for which it is the master.
-	/// Sub-slaves are not zeroed! That happens at slave's first 
-	/// step 0->1. Seems to be sufficient.
 	/// \param utype determines whether we track the counters.
 	void step(docstring const & ctr, UpdateType utype);
 	/// Reset all counters, and all the internal data structures
