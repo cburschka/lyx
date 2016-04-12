@@ -58,7 +58,7 @@ Section "un.LyX" un.SecUnProgramFiles
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}21"
-    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}" enable this for LyX 2.2 final!
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
     #DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
   ${endif}

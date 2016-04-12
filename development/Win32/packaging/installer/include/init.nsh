@@ -48,10 +48,9 @@ Section "!${APP_NAME}" SecCore
  SectionIn RO
 SectionEnd
 
-# FIXME: set this to true when LyX 2.2.0 final is released
 Section "$(SecFileAssocTitle)" SecFileAssoc
  SectionIn RO
- StrCpy $CreateFileAssociations "false" 
+ StrCpy $CreateFileAssociations "true" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
