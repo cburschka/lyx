@@ -106,9 +106,6 @@ V.
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -175,10 +172,6 @@ Beamer
 \end_inset
 
  class, you can produce presentation slides, which
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -228,7 +221,7 @@ and much more \SpecialChar ldots
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -249,10 +242,6 @@ Purpose of this presentation
 
 \begin_layout Frame
 This presentation
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -316,10 +305,6 @@ The global structure
 
 \begin_layout Frame
 A presentation usually consists of
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -341,7 +326,7 @@ We describe these global segments in what follows.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -424,10 +409,6 @@ TitleGraphic
 
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -555,7 +536,7 @@ Title
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -596,10 +577,6 @@ Beamer
 .
  Everything inside a frame is put on one slide (which itself might consist
  of sub-slides).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -716,7 +693,7 @@ Default Overlay Specifications
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -771,10 +748,6 @@ label
 \end_inset
 
  (as done here).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -826,10 +799,6 @@ overlays
 \end_inset
 
 ).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -859,7 +828,7 @@ Here's the proof!
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -873,10 +842,6 @@ status open
 Keeping frames together
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -934,7 +899,7 @@ So please avoid this
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -968,10 +933,6 @@ Separator
 \end_inset
 
  paragraph style.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1051,7 +1012,7 @@ myframe
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1073,10 +1034,6 @@ Special frame types
 \begin_layout PlainFrame
 \SpecialChar LyX
  provides two special frame types:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1138,7 +1095,7 @@ fragile
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1152,10 +1109,6 @@ status open
 Sectioning a presentation
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1210,7 +1163,7 @@ modes
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1224,10 +1177,6 @@ status open
 Parts have special meaning
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1293,7 +1242,7 @@ header will also only show the sections of
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1307,10 +1256,6 @@ status open
 Re-arranging frames
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1362,7 +1307,7 @@ Navigate
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1376,10 +1321,6 @@ status open
 The appendix
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1398,10 +1339,6 @@ header
 \begin_layout Itemize
 An appendix is inserted as usual in \SpecialChar LyX
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1423,10 +1360,6 @@ Start Appendix Here
 \end_deeper
 \begin_layout Itemize
 Typical content of the appendix is the bibliography
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1485,10 +1418,6 @@ What are overlays?
 Basically, the overlay concept allows to change the slide content dynamically.
  You can uncover things/text piecewise, fade out content, highlight things,
  replace text, images etc.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1542,7 +1471,7 @@ Really, use them!
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1573,10 +1502,6 @@ Beamer
 
  provides many different overlay types.
  The most important ones are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1611,7 +1536,7 @@ We give examples for these types in what follows, but begin with some general
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1692,10 +1617,6 @@ article
 \end_inset
 
  etc.)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1734,10 +1655,6 @@ status open
 2
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1807,10 +1724,6 @@ status open
 3
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1903,7 +1816,7 @@ Note that \SpecialChar LyX
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1955,10 +1868,6 @@ Overlay Specifications
 \end_inset
 
 , the quote will only appear on (sub-)slide 2:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1993,7 +1902,7 @@ This is how the concept works, basically.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2034,10 +1943,6 @@ hiding
  is just covered (and the space is reserved).
  If we would have hidden the quote on the last slide and not covered, it
  would only have taken space on appearance:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2068,11 +1973,15 @@ Home art gone, and ta’en thy wages
 
 \end_deeper
 \begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
 You can see how this text moves when the quote is un-hidden.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2153,10 +2062,6 @@ transparent
 \end_inset
 
  mode, you can see covered text greyed-out:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2201,7 +2106,7 @@ Beamer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2219,10 +2124,6 @@ Default overlay/action specifications vs.
 (normal) overlay/action specifications
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2279,10 +2180,6 @@ g.,
 
  will uncover all items in a list step by step (with a start offset of 1)
  if they have no individual item specification:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2341,7 +2238,7 @@ Beamer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2381,10 +2278,6 @@ This frame uses a specific default overlay specification
 
 \begin_layout Frame
 which causes each overlay-aware paragraph \SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -2427,7 +2320,7 @@ A block
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2464,10 +2357,6 @@ Default overlay/action specifications vs.
 \noindent
 And this frame uses a specific default overlay specification \SpecialChar ldots
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2490,7 +2379,7 @@ And this frame uses a specific default overlay specification \SpecialChar ldots
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2522,10 +2411,6 @@ Pause
 
  layout lets you mark a point where all following content will be covered
  (by default for one slide, with regard to the content preceding the pause):
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2581,7 +2466,7 @@ Pause Number
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2614,10 +2499,6 @@ Beamer
  provide you with paragraph layouts whose purpose it is to show/hide
  whole paragraphs or sequences of paragraphs on specific slides.
  These are particularly:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2646,10 +2527,6 @@ Uncovered
 \end_inset
 
  layout which uncovers all content on the specified slides \SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -2706,10 +2583,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2740,10 +2613,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2759,7 +2628,7 @@ as demonstrated here.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2823,10 +2692,6 @@ Text Style
 
  in \SpecialChar LyX
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3038,7 +2903,7 @@ Insert
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3079,10 +2944,6 @@ Text Style
 
 ) are overlay-aware.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3231,10 +3092,6 @@ Specific environments
 
 \begin_layout Frame
 Specific environments, particularly suited for presentations are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3264,7 +3121,7 @@ We sketch them briefly in what follows.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3303,10 +3160,6 @@ hints
 
 .
  The class provides 3 pre-defined blocks with different look:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3409,7 +3262,7 @@ alert
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3426,20 +3279,12 @@ Handling Blocks
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 In \SpecialChar LyX
 , blocks have a similar user interface than frames, which means that
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3470,10 +3315,6 @@ Separator
 \end_inset
 
  paragraph style
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3529,7 +3370,7 @@ Blocks are overlay-aware
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3546,10 +3387,6 @@ Theorem-style environments
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3562,10 +3399,6 @@ Theorem-style environments
 Theorems look similar to blocks in the output, but they have a fixed title
  (depending on the type).
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3595,10 +3428,6 @@ Additional Theorem Text
 \end_inset
 
 , you can add some extra text to this fixed title
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3621,7 +3450,7 @@ An example with additional text (brackets added automatically)
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3642,17 +3471,10 @@ Columns
 
 \begin_layout Frame
 Sometimes it is useful to divide a presentation into columns
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -3736,10 +3558,6 @@ Column
 
 \begin_layout Frame
 Note:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3843,10 +3661,6 @@ mode
  is a specific output route.
  There are several modes for different purposes.
  We just want to highlight three:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3911,7 +3725,7 @@ beamer
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3959,19 +3773,11 @@ presentation
 \end_inset
 
  mode.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 What does this mean?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3991,7 +3797,7 @@ article
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4034,7 +3840,7 @@ article
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4057,10 +3863,6 @@ So what?
 This is actually pretty useful! You can set up a single document and produce
  both a presentation and – using the article mode – a handout.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4095,7 +3897,7 @@ and so on \SpecialChar ldots
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4117,10 +3919,6 @@ Examples
 \begin_layout Frame
 As said, many elements are mode-aware.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4226,10 +4024,6 @@ PresentationMode
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4305,7 +4099,7 @@ And much more of this sort \SpecialChar ldots
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4327,10 +4121,6 @@ Setting up an article
 \begin_layout Frame
 Setting up a beamer article with \SpecialChar LyX
  is easy.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4402,10 +4192,6 @@ status open
 Themes
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4499,7 +4285,7 @@ key "beamer-ug"
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4521,10 +4307,6 @@ Themes can be modified
 \begin_layout Frame
 But you do not need to write a theme from scratch if you want to alter the
  look.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4656,9 +4438,6 @@ newblock
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
