@@ -57,9 +57,15 @@ Lists of files to include in the installer
 
 !macro FileListMSVC COMMAND DIRECTORY
 
-  # Manifest not needed for 2010
+  # Files needed for MSVC 2010
   ${FILE}msvcr100.dll"
   ${FILE}msvcp100.dll"
+  # Files needed for MSVC 2015
+  ${FILE}msvcp140.dll"
+  ${FILE}vcamp140.dll"
+  ${FILE}vccorlib140.dll"
+  ${FILE}vcomp140.dll"
+  ${FILE}vcruntime140.dll"
   
 !macroend
 
