@@ -323,7 +323,7 @@ BUILT_SOURCES = lyx_commit_hash.h
 CLEANFILES = lyx_commit_hash.h
 
 lyxcore.cpp:
-	@echo -e '$(SOURCEFILESCORE:%=\n#include "%")\n' > $@
+	$(AM_V_GEN)for file in $(SOURCEFILESCORE) ; do echo '#include "'$${file}'"' ; done >$@
 
 if MONOLITHIC_CORE
 
@@ -535,7 +535,7 @@ HEADERFILESMATHED = \
 	mathed/TextPainter.h
 
 lyxmathed.cpp:
-	@echo -e '$(SOURCEFILESMATHED:%=\n#include "%")\n' > $@
+	$(AM_V_GEN)for file in $(SOURCEFILESMATHED) ; do echo '#include "'$${file}'"' ; done >$@
 
 if MONOLITHIC_MATHED
 
@@ -678,7 +678,7 @@ HEADERFILESINSETS = \
 #	insets/InsetSection.cpp
 
 lyxinsets.cpp:
-	@echo -e '$(SOURCEFILESINSETS:%=\n#include "%")\n' > $@
+	$(AM_V_GEN)for file in $(SOURCEFILESINSETS) ; do echo '#include "'$${file}'"' ; done >$@
 
 if MONOLITHIC_INSETS
 

@@ -355,7 +355,7 @@ UIFILES = \
 nodist_liblyxqt4_a_SOURCES = Resources.cpp
 
 liblyxqt4.cpp:
-	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
+	$(AM_V_GEN)for file in $(SOURCEFILES) ; do echo '#include "'$${file}'"' ; done >$@
 
 if MONOLITHIC_FRONTEND_QT
 
