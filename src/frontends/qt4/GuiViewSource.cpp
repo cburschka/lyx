@@ -277,15 +277,18 @@ void ViewSourceWidget::realUpdateView()
 
 		//the real highlighting is done with an ExtraSelection
 		QTextCharFormat format;
+		{
+		// We create a new color with the lightness of AlternateBase and
+		// the hue and saturation of Highlight
 		QPalette palette = viewSourceTV->palette();
-		//Alternative:
-		//  QColor bg = palette.color(QPalette::Active,QPalette::Highlight);
-		//  bg.setAlpha(64);
-		//  format.setBackground(QBrush(bg));
-		//Other alternatives:
-		//format.setBackground(palette.light());
-		//format.setBackground(palette.alternateBase());
-		format.setBackground(palette.toolTipBase());
+		QBrush alt = palette.alternateBase();
+		QColor high = palette.highlight().color().toHsl();
+		QColor col = QColor::fromHsl(high.hue(),
+		                             high.hslSaturation(),
+		                             alt.color().lightness());
+		alt.setColor(col);
+		format.setBackground(alt);
+		}
 		format.setProperty(QTextFormat::FullWidthSelection, true);
 		QTextEdit::ExtraSelection sel;
 		sel.format = format;
