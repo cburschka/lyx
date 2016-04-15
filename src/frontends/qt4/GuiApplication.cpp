@@ -82,6 +82,7 @@
 
 #include <queue>
 
+#include <QFontDatabase>
 #include <QByteArray>
 #include <QClipboard>
 #include <QDateTime>
@@ -2557,11 +2558,41 @@ QString const GuiApplication::sansFontName()
 
 QString const GuiApplication::typewriterFontName()
 {
-	QFont font;
-	font.setStyleHint(QFont::TypeWriter);
-	font.setFamily("monospace");
+	return QFontInfo(typewriterSystemFont()).family();
+}
 
-	return QFontInfo(font).family();
+
+namespace {
+	// We cannot use QFont::fixedPitch() because it doesn't
+	// return the fact but only if it is requested.
+	static bool isFixedPitch(const QFont & font) {
+		const QFontInfo fi(font);
+		return fi.fixedPitch();
+	}
+}
+
+
+QFont const GuiApplication::typewriterSystemFont()
+{
+#if QT_VERSION >= 0x050200
+	QFont font = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+#else
+	QFont font("monospace");
+#endif
+	if (!isFixedPitch(font)) {
+		// try to enforce a real monospaced font
+		font.setStyleHint(QFont::Monospace);
+		if (!isFixedPitch(font)) {
+			font.setStyleHint(QFont::TypeWriter);
+			if (!isFixedPitch(font)) font.setFamily("courier");
+		}
+	}
+#ifdef Q_OS_MAC
+	// On a Mac the result is too small and it's not practical to
+	// rely on Qtconfig utility to change the system settings of Qt.
+	font.setPointSize(12);
+#endif
+	return font;
 }
 
 

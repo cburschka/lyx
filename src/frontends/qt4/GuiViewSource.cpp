@@ -86,10 +86,7 @@ ViewSourceWidget::ViewSourceWidget()
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
 	// this is personal. I think source code should be in fixed-size font
-	QFont font(guiApp->typewriterFontName());
-	font.setFixedPitch(true);
-	font.setStyleHint(QFont::TypeWriter);
-	viewSourceTV->setFont(font);
+	viewSourceTV->setFont(guiApp->typewriterSystemFont());
 	// again, personal taste
 	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
 }

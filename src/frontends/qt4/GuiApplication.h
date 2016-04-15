@@ -25,6 +25,7 @@
 class QAbstractItemModel;
 class QIcon;
 class QSessionManager;
+class QFont;
 
 namespace lyx {
 
@@ -145,6 +146,8 @@ public:
 
 	/// return a suitable monospaced font name.
 	QString const typewriterFontName();
+	QFont const typewriterSystemFont();
+
 	///
 	void unregisterView(GuiView * gv);
 	///

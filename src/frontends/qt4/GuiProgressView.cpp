@@ -71,10 +71,7 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	widget_->adjustSize();
 	setWidget(widget_);
 
-	QFont font(guiApp->typewriterFontName());
-	font.setFixedPitch(true);
-	font.setStyleHint(QFont::TypeWriter);
-	widget_->outTE->setFont(font);
+	widget_->outTE->setFont(guiApp->typewriterSystemFont());
 	widget_->tabWidget->widget(0)->setContentsMargins(-5, -7, 0, -7);
 
 	connect(widget_->debugNoneRB, SIGNAL(clicked()),

@@ -133,10 +133,7 @@ GuiLog::GuiLog(GuiView & lv)
 	highlighter = new LogHighlighter(logTB->document());
 
 	logTB->setReadOnly(true);
-	QFont font(guiApp->typewriterFontName());
-	font.setFixedPitch(true);
-	font.setStyleHint(QFont::TypeWriter);
-	logTB->setFont(font);
+	logTB->setFont(guiApp->typewriterSystemFont());
 }
 
 
