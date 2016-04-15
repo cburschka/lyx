@@ -54,7 +54,6 @@ SOURCEFILES = \
 	ButtonPolicy.h \
 	Dialog.cpp \
 	Dialog.h \
-	Resources.cpp \
 	Action.cpp \
 	BulletsModule.cpp \
 	ButtonController.cpp \
@@ -353,6 +352,7 @@ UIFILES = \
 	VSpaceUi.ui \
 	WrapUi.ui
 
+nodist_liblyxqt4_a_SOURCES = Resources.cpp
 
 liblyxqt4.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
