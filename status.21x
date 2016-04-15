@@ -211,4 +211,6 @@ What's new
 - Give a warning when system boost and stdlib-debug are used together
   (bug 9736).
 
-- Correct Mac OS X package build script (10.11 SDK for Xcode 7 + El Capitan)
+- Correct Mac OS X package build script (10.11 SDK for Xcode 7 + El Capitan).
+
+- Remove build file Resources.cpp from distribution (3.9M unpacked).
