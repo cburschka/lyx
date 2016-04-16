@@ -57,6 +57,8 @@ What's new
 - Fix display of collapsable insets when the same document is shown in
   two views with different width (bug 9756).
 
+- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
+
 
 * INTERNALS
 
