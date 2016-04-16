@@ -30,6 +30,12 @@ What's new
 
 - Updated German user interface localization.
 
+- Increase the maximum value for the number of last open files that LyX can
+  remember (#9924).
+
+  
+* DOCUMENTATION AND LOCALIZATION
+
 
 * BUILD/INSTALLATION
 
@@ -68,6 +74,8 @@ What's new
 
 - Fix double input of tabulations with Qt5 < Qt5.5 (bug 9218).
 
+- Do not omit the first space of the selection when copying (#9995)
+
 
 * INTERNALS
 
@@ -76,8 +84,6 @@ What's new
 * DOCUMENTATION AND LOCALIZATION
 
 - Move documentation change logs to lib/doc (they are not distributed).
-
-- Fixed some problems with the preamble in the Koma-script letter template.
 
 
 * LYXHTML
