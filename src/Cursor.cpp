@@ -1061,12 +1061,6 @@ CursorSlice Cursor::normalAnchor() const
 }
 
 
-DocIterator & Cursor::realAnchor()
-{
-	return anchor_;
-}
-
-
 CursorSlice Cursor::selBegin() const
 {
 	if (!selection())
