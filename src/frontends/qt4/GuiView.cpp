@@ -3615,7 +3615,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			for (; i != ids.size(); ++i) {
 				GuiView & gv = guiApp->view(ids[i]);
 				if (gv.workArea(*buffer)) {
+					gv.raise();
 					gv.activateWindow();
+					gv.setFocus();
 					gv.setBuffer(buffer);
 					break;
 				}
