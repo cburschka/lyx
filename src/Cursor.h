@@ -297,10 +297,9 @@ public:
 
 	/// access to normalized selection anchor
 	CursorSlice normalAnchor() const;
-	// FIXME: this can't be a const & and a const function because
-	// LFUN_TAB_* wants to move the real anchor.
 	/// access to real selection anchor
-	DocIterator & realAnchor();
+	DocIterator const & realAnchor() const { return anchor_; }
+	DocIterator & realAnchor() { return anchor_; }
 	/// sets anchor to cursor position
 	void resetAnchor();
 	/// access to owning BufferView
