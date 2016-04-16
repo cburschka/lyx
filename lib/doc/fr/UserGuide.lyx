@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/doc/fr/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -6640,7 +6640,7 @@ L'environnement
  est un outil qui sert à créer des listes ordonnées et des plans.
  Il a les propriétés suivantes
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 NdT: contrairement aux listes à puces, les marqueurs des énumérations ne
@@ -9138,12 +9138,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9156,6 +9158,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9188,6 +9191,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -18273,7 +18277,7 @@ Nota: le paragraphe qui suit est traduit de l'anglais, langue dans laquelle
  ces considérations ne vous concernent donc que si vous écrivez en anglais,
  c'est pourquoi nous avons laissé les exemples dans cette langue.
  En français, il n'y a pas de différence entre l'espace de fin de phrase
- et l'espace entre mots, et le caractère 
+ et l'espace entre mots: les caractères 
 \family sans
 Insertion\SpecialChar menuseparator
 Caractère
@@ -18287,7 +18291,7 @@ Point
 
 final
 \family default
- et le caractère 
+ et 
 \family sans
 Insertion\SpecialChar menuseparator
 Typographie
