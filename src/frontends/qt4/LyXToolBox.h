@@ -12,7 +12,7 @@
 #ifndef LYXTOOLBOX_H
 #define LYXTOOLBOX_H
 
-#include <QtGui/QToolBox>
+#include <QToolBox>
 
 namespace lyx {
 namespace frontend {
