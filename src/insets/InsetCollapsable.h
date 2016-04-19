@@ -160,17 +160,22 @@ private:
 	///
 	docstring labelstring_;
 
-	/// FIXME: the variables below should be grouped in a View subclass (as in MVC)
+	// These variables depend of the view in which the inset is displayed
+	struct View
+	{
+		/// The dimension of the inset button
+		Box button_dim_;
+		/// a substatus of the Open status, determined automatically in metrics
+		bool openinlined_;
+		/// the inset will automatically open when the cursor is inside. This is
+		/// dependent on the bufferview, compare with MathMacro::editing_.
+		bool auto_open_;
+		/// changes color when mouse enters/leaves this inset
+		bool mouse_hover_;
+	};
 
 	///
-	mutable std::map<BufferView const *, Box> button_dim_;
-	/// a substatus of the Open status, determined automatically in metrics
-	mutable std::map<BufferView const *, bool> openinlined_;
-	/// the inset will automatically open when the cursor is inside. This is
-	/// dependent on the bufferview, compare with MathMacro::editing_.
-	mutable std::map<BufferView const *, bool> auto_open_;
-	/// changes color when mouse enters/leaves this inset
-	mutable std::map<BufferView const *, bool> mouse_hover_;
+	mutable std::map<BufferView const *, View> view_;
 };
 
 } // namespace lyx
