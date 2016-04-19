@@ -3963,7 +3963,7 @@ bool InsetTabular::hitSelectColumn(BufferView const & bv, int y) const
 	int const y0 = yo(bv) - tabular.rowAscent(0) + offset_valign_;
 	// FIXME: using ADD_TO_TABULAR_WIDTH is not really correct since
 	// there is no margin added vertically to tabular insets.
-	// Howerver, it works for now.
+	// However, it works for now.
 	return y < y0 + ADD_TO_TABULAR_WIDTH || y > y0 + tabular.height() - ADD_TO_TABULAR_WIDTH;
 }
 
