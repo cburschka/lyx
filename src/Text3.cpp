@@ -1661,6 +1661,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		tm->setCursorFromCoordinates(cur, cmd.x(), y);
 		cur.setTargetX(cmd.x());
+		// Don't allow selecting a separator inset
+		if (cur.pos() && cur.paragraph().isEnvSeparator(cur.pos() - 1))
+			cur.posBackward();
 		if (cmd.y() >= wh)
 			lyx::dispatch(FuncRequest(LFUN_DOWN_SELECT));
 		else if (cmd.y() < 0)

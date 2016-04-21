@@ -1110,7 +1110,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	Paragraph const & par = cur.paragraph();
 
 	// Paragraph boundary is a word boundary
-	if (pos == lastpos) {
+	if (pos == lastpos || (pos + 1 == lastpos && par.isEnvSeparator(pos))) {
 		if (pit != cur.lastpit())
 			return setCursor(cur, pit + 1, 0);
 		else
@@ -1143,6 +1143,10 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 			     ++pos;
 	}
 
+	// Don't skip a separator inset at the end of a paragraph
+	if (pos == lastpos && pos && par.isEnvSeparator(pos - 1))
+		--pos;
+
 	return setCursor(cur, pit, pos);
 }
 
@@ -1156,8 +1160,14 @@ bool Text::cursorBackwardOneWord(Cursor & cur)
 	Paragraph & par = cur.paragraph();
 
 	// Paragraph boundary is a word boundary
-	if (pos == 0 && pit != 0)
-		return setCursor(cur, pit - 1, getPar(pit - 1).size());
+	if (pos == 0 && pit != 0) {
+		Paragraph & prevpar = getPar(pit - 1);
+		pos = prevpar.size();
+		// Don't stop after an environment separator
+		if (pos && prevpar.isEnvSeparator(pos - 1))
+			--pos;
+		return setCursor(cur, pit - 1, pos);
+	}
 
 	if (lyxrc.mac_like_cursor_movement) {
 		// Skip through punctuation and spaces.
