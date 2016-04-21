@@ -2203,9 +2203,14 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		// inset (depending on cmd.x(), cmd.y()). This is needed for
 		// editing to fix bug 9628, but e.g. the context menu needs a
 		// cursor in front of the inset.
-		if ((inset->hasSettings() || !inset->contextMenuName().empty()) &&
+		if ((inset->hasSettings() || !inset->contextMenuName().empty()
+		     || inset->lyxCode() == SEPARATOR_CODE) &&
 		    cur.nextInset() != inset && cur.prevInset() == inset)
 			cur.posBackward();
+	} else if (cur.inTexted() && cur.pos()
+			&& cur.paragraph().isEnvSeparator(cur.pos() - 1)) {
+		// Always place cursor in front of a separator inset.
+		cur.posBackward();
 	}
 
 	// Put anchor at the same position.
@@ -2512,12 +2517,8 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!do_selection && d->cursor_.inTexted()) {
+	if (!do_selection && d->cursor_.inTexted())
 		update |= checkDepm(cur, d->cursor_);
-		if (cur.inTexted() && cur.pos()
-			&& cur.paragraph().isEnvSeparator(cur.pos() - 1))
-		    cur.posBackward();
-	}
 
 	if (!do_selection)
 		d->cursor_.resetAnchor();

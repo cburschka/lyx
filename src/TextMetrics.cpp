@@ -1596,7 +1596,8 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 			boundary = true;
 		else
 			--end;
-	}
+	} else if (cur.paragraph().isEnvSeparator(end-1))
+		--end;
 	return text_->setCursor(cur, cur.pit(), end, true, boundary);
 }
 
