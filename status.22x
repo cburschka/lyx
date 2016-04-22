@@ -54,6 +54,9 @@ What's new
 - Display the correct column alignment and a better column spacing in AMS
   environments (bugs 1861, 9908).
 
+- Fix horizontal scrolling feature when inside a collapsable inset
+  with several paragraphs.
+
 - Fix display of collapsable insets when the same document is shown in
   two views with different width (bug 9756).
 
