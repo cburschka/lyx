@@ -1097,7 +1097,7 @@ void InsetMathHull::footer_write(WriteStream & os) const
 }
 
 
-bool InsetMathHull::isTable() const
+bool InsetMathHull::allowsTabularFeatures() const
 {
 	switch (type_) {
 	case hullEqnArray:
@@ -1859,7 +1859,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_FEATURE:
-		if (!isTable())
+		if (!allowsTabularFeatures())
 			cur.undispatched();
 		else
 			InsetMathGrid::doDispatch(cur, cmd);
@@ -1980,7 +1980,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetMathGrid::getStatus(cur, cmd, status);
 
 	case LFUN_TABULAR_FEATURE: {
-		if (!isTable())
+		if (!allowsTabularFeatures())
 			return false;
 		string s = cmd.getArg(0);
 		if (!rowChangeOK()
