@@ -448,7 +448,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		setRowHeight(row, pit);
 		row.setChanged(false);
 		if (row_index || row.endpos() < par.size()
-			|| (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE))
+		    || (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE)) {
 			/* If there is more than one row or the row has been
 			 * broken by a display inset or a newline, expand the text
 			 * to the full allowable width. This setting here is
@@ -458,7 +458,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			 * that, and it triggers when using a caption in a
 			 * longtable (see bugs #9945 and #9757).
 			 */
-			dim_.wid = max_width_;
+			if (dim_.wid < max_width_)
+				dim_.wid = max_width_;
+		}
 		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
 		first = row.endpos();

@@ -51,6 +51,9 @@ What's new
 
 - Fix on screen narrow box when using \width as box width unit (bug 10048).
 
+- Fix horizontal scrolling feature when inside a collapsable inset
+  with several paragraphs.
+
 - Raise GuiView on buffer switch to bring it topmost in multi-window mode.
 
 
