@@ -58,6 +58,8 @@ What's new
 - InPreamble styles should be written to the premable as many times as the
   user requests them, even if it results in duplicate commands.
 
+- Correctly protect the \pagebreak command when needed (bug 10092).
+
 
 * LYX2LYX
 
