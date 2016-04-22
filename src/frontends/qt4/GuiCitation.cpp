@@ -153,6 +153,25 @@ void GuiCitation::showEvent(QShowEvent * e)
 {
 	findLE->clear();
 	availableLV->setFocus();
+
+	// Set the minimal size of the QToolbox. Without this, the size of the
+	// QToolbox is only determined by values in the ui file (e.g. computed by
+	// qtcreator) and therefore causes portability and localisation issues. Note
+	// that the page widgets must have a layout with layoutSizeContraint =
+	// SetMinimumSize or similar.  KNOWN ISSUE: the calculations are incorrect
+	// the first time the dialog is shown. This problem is mitigated by the fact
+	// that LyX remembers the dialog sizes between sessions.
+	QSize minimum_size = QSize(0,0);
+	// Compute the max of the minimal sizes of the pages
+	QWidget * page;
+	for (int i = 0; (page = citationTB->widget(i)); ++i)
+		minimum_size = minimum_size.expandedTo(page->minimumSizeHint());
+	// Add the height of the tabs
+	if (citationTB->currentWidget())
+		minimum_size.rheight() += citationTB->height() -
+			citationTB->currentWidget()->height();
+	citationTB->setMinimumSize(minimum_size);
+
 	DialogView::showEvent(e);
 }
 
@@ -625,33 +644,6 @@ bool GuiCitation::initialiseParams(string const & data)
 	citeCmds_ = documentBuffer().params().citeCommands();
 	citeStyles_ = documentBuffer().params().citeStyles();
 	init();
-
-	// Set the minimal size of the QToolbox. Without this, the size of the
-	// QToolbox is only determined by values in the ui file (e.g. computed by
-	// qtcreator) and therefore causes portability and localisation issues. In
-	// the future, this should be integrated into a custom widget if plans are
-	// made to generalise such a use of QToolboxes. Note that the page widgets
-	// must have a layout with layoutSizeContraint = SetMinimumSize or similar.
-	if (!isVisible()) {
-		// only reliable way to get the size calculations up-to-date
-		show();
-		layout()->invalidate();
-		hide();
-		// this does not show any window since hide() is called before
-		// relinquishing control
-	}
-	QSize minimum_size = QSize(0,0);
-	// Compute the max of the minimal sizes of the pages
-	QWidget * page;
-	for (int i = 0; (page = citationTB->widget(i)); ++i)
-		minimum_size = minimum_size.expandedTo(page->minimumSizeHint());
-	// Add the height of the tabs
-	if (citationTB->currentWidget())
-		minimum_size.rheight() += citationTB->height() -
-			citationTB->currentWidget()->height();
-	citationTB->setMinimumSize(minimum_size);
-	updateGeometry();
-
 	return true;
 }
 
