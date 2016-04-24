@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-04-24 10:40+0200\n"
-"PO-Revision-Date: 2016-04-09 18:18-0300\n"
+"PO-Revision-Date: 2016-04-24 11:18-0300\n"
 "Last-Translator: Georger Araújo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -39,7 +39,7 @@ msgstr "Créditos"
 #: src/frontends/qt4/ui/AboutUi.ui:84 lib/layouts/apa.layout:205
 #: lib/layouts/apa6.layout:315 lib/layouts/agu_stdtitle.inc:81
 msgid "Copyright"
-msgstr "Copyright"
+msgstr "Direitos autorais"
 
 #: src/frontends/qt4/ui/AboutUi.ui:100
 msgid "Build Info"
@@ -2241,8 +2241,8 @@ msgstr "Selecione qual pacote de idioma o Lyx deve usar"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: "
-"\\usepackage{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -6604,9 +6604,8 @@ msgid "Thesaurus"
 msgstr "Dicionário de sinônimos"
 
 #: lib/layouts/aastex.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/apa.layout:159 lib/layouts/apa6.layout:149
@@ -6784,31 +6783,28 @@ msgid "Separate the dataset ID from text"
 msgstr "Separar do texto o ID do conjunto de dados"
 
 #: lib/layouts/aastex6.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: lib/layouts/aastex6.layout:66
 msgid "Software:"
-msgstr ""
+msgstr "Software:"
 
 #: lib/layouts/aastex6.layout:99
 msgid "APPENDIX"
-msgstr ""
+msgstr "APÊNDICE"
 
 #: lib/layouts/aastex6.layout:103
-#, fuzzy
 msgid "References-"
-msgstr "Referências"
+msgstr "Referências-"
 
 #: lib/layouts/aastex6.layout:110
-#, fuzzy
 msgid "Note-"
-msgstr "Nota"
+msgstr "Nota-"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -6952,9 +6948,8 @@ msgid "ACM SIG Proceedings (SP)"
 msgstr "ACM SIG Proceedings (SP)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92"
-msgstr "ACM SIGGRAPH"
+msgstr "ACM SIGGGRAPH 0.92"
 
 #: lib/layouts/acmsiggraph-0-92.layout:69 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -6981,47 +6976,40 @@ msgid "Article number:"
 msgstr "Número do artigo:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:102
-#, fuzzy
 msgid "Set copyright"
-msgstr "Copyright"
+msgstr "Set copyright"
 
 #: lib/layouts/acmsiggraph-0-92.layout:105
-#, fuzzy
 msgid "Copyright type:"
-msgstr "Ano de Copyright:"
+msgstr "Tipo de direitos autorais:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:109
-#, fuzzy
 msgid "Copyright year"
-msgstr "Ano de Copyright:"
+msgstr "Ano de direitos autorais"
 
 #: lib/layouts/acmsiggraph-0-92.layout:112
-#, fuzzy
 msgid "Year of copyright:"
-msgstr "varcopyright"
+msgstr "Ano de direitos autorais:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:116
-#, fuzzy
 msgid "Conference info"
-msgstr "Conferência"
+msgstr "Informação de conferência"
 
 #: lib/layouts/acmsiggraph-0-92.layout:119
-#, fuzzy
 msgid "Conference info:"
-msgstr "Conferência:"
+msgstr "Informação de conferência:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:123
-#, fuzzy
 msgid "Conference name"
-msgstr "Conferência"
+msgstr "Nome da conferência"
 
 #: lib/layouts/acmsiggraph-0-92.layout:128
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 #: lib/layouts/acmsiggraph-0-92.layout:131
 msgid "ISBN:"
-msgstr ""
+msgstr "ISBN:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:135 lib/layouts/sigplanconf.layout:123
 msgid "DOI"
@@ -7046,21 +7034,18 @@ msgstr "Autor do PDF:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:186
 #: lib/layouts/acmsiggraph-0-92.layout:191
-#, fuzzy
 msgid "Keyword list"
-msgstr "Palavras-chave"
+msgstr "Lista de palavras-chave"
 
 #: lib/layouts/acmsiggraph-0-92.layout:195
 #: lib/layouts/acmsiggraph-0-92.layout:198
-#, fuzzy
 msgid "Concept list"
-msgstr "Conceitos"
+msgstr "Lista de conceitos"
 
 #: lib/layouts/acmsiggraph-0-92.layout:202
 #: lib/layouts/acmsiggraph-0-92.layout:205
-#, fuzzy
 msgid "Print copyright"
-msgstr "varcopyright"
+msgstr "Direitos autorais de impressão"
 
 #: lib/layouts/acmsiggraph-0-92.layout:209 lib/layouts/acmsiggraph.layout:175
 msgid "Teaser"
@@ -7141,7 +7126,7 @@ msgstr "Agradecimentos"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
-msgstr ""
+msgstr "ACM SIGGRAPH (mais antiga que 0.91, obsoleta)"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
@@ -9737,7 +9722,7 @@ msgstr "Carta Francesa (frletter)"
 
 #: lib/layouts/g-brief.layout:3
 msgid "G-Brief (V. 1, Obsolete)"
-msgstr "G-Brief (V. 1, Obsoleto)"
+msgstr "G-Brief (V. 1, Obsoleta)"
 
 #: lib/layouts/g-brief.layout:27 lib/layouts/g-brief2.layout:74
 msgid "Letter:"
@@ -11923,19 +11908,19 @@ msgstr "Conferência:"
 
 #: lib/layouts/sigplanconf.layout:94
 msgid "CopyrightYear"
-msgstr "AnoCopyright"
+msgstr "AnoDireitosAutorais"
 
 #: lib/layouts/sigplanconf.layout:98
 msgid "Copyright year:"
-msgstr "Ano de Copyright:"
+msgstr "Ano de direitos autorais:"
 
 #: lib/layouts/sigplanconf.layout:102
 msgid "Copyrightdata"
-msgstr "Dadoscopyright"
+msgstr "Dadosdireitosautorais"
 
 #: lib/layouts/sigplanconf.layout:105
 msgid "Copyright data:"
-msgstr "Dados de copyright:"
+msgstr "Dados de direitos autorais:"
 
 #: lib/layouts/sigplanconf.layout:109
 msgid "TitleBanner"
@@ -12397,7 +12382,7 @@ msgstr "Edição-AGU:"
 
 #: lib/layouts/agu_stdtitle.inc:84
 msgid "Copyright:"
-msgstr "Copyright:"
+msgstr "Direitos autorais:"
 
 #: lib/layouts/agu_stdtitle.inc:89
 msgid "Index-terms"
@@ -13993,9 +13978,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install."
-"packages('knitr'). Nota: exige R >= 2.14.1. Para mais informações, consulte "
-"http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install.packages"
+"('knitr'). Nota: exige R >= 2.14.1. Para mais informações, consulte http://"
+"yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -25902,11 +25887,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3056
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3060
 msgid ""
