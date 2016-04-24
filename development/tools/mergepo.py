@@ -56,7 +56,7 @@ def parse_msg(lines):
     return polib.unescape(msg)
 
 
-def translate(msgid, msgstr_lines, po2, options):
+def translate(msgid, flags, msgstr_lines, po2, options):
     msgstr = parse_msg(msgstr_lines)
     if options.overwrite:
         other = po2.find(msgid)
@@ -77,6 +77,12 @@ def translate(msgid, msgstr_lines, po2, options):
     if options.nonnull and other.msgstr == other.msgid:
         return 0
     msgstr = other.msgstr
+    if 'fuzzy' in other.flags:
+        if not u'fuzzy' in flags:
+            flags.append(u'fuzzy')
+    else:
+        if u'fuzzy' in flags:
+            flags.remove(u'fuzzy')
     obsolete = (msgstr_lines[0].find('#~') == 0)
     j = msgstr_lines[0].find('"')
     # must not assign to msgstr_lines, because that would not be seen by our caller
@@ -105,6 +111,12 @@ def mergepo_polib(target, source, options):
                 continue
             if other.translated() and other.msgstr != entry.msgstr:
                 entry.msgstr = other.msgstr
+                if 'fuzzy' in other.flags:
+                    if not 'fuzzy' in entry.flags:
+                        entry.flags.append('fuzzy')
+                else:
+                    if 'fuzzy' in entry.flags:
+                        entry.flags.remove('fuzzy')
                 changed = changed + 1
     else:
         for entry in po1.untranslated_entries():
@@ -137,6 +149,7 @@ def mergepo_minimaldiff(target, source, options):
     newlines = []
     in_msgid = False
     in_msgstr = False
+    flags = []
     msgstr_lines = []
     msgid_lines = []
     msgid = ''
@@ -147,19 +160,25 @@ def mergepo_minimaldiff(target, source, options):
             else:
                 in_msgid = False
                 msgid = parse_msg(msgid_lines)
-                newlines.extend(msgid_lines)
-                msgid_lines = []
         elif in_msgstr:
             if line.find('"') == 0 or line.find('#~ "') == 0:
                 msgstr_lines.append(line)
             else:
                 in_msgstr = False
-                changed = changed + translate(msgid, msgstr_lines, po2, options)
+                changed = changed + translate(msgid, flags, msgstr_lines, po2, options)
+                if len(flags) > 0:
+                    flagline = u'#, ' + u', '.join(flags)
+                    newlines.append(flagline)
+                    flags = []
+                newlines.extend(msgid_lines)
                 newlines.extend(msgstr_lines)
+                msgid_lines = []
                 msgstr_lines = []
                 msgid = ''
         if not in_msgid and not in_msgstr:
-            if line.find('msgid') == 0 or line.find('#~ msgid') == 0:
+            if line.find('#,') == 0 and len(flags) == 0:
+                flags = line[2:].strip().split(u', ')
+            elif line.find('msgid') == 0 or line.find('#~ msgid') == 0:
                 msgid_lines.append(line)
                 in_msgid = True
             elif line.find('msgstr') == 0 or line.find('#~ msgstr') == 0:
@@ -172,8 +191,14 @@ def mergepo_minimaldiff(target, source, options):
                 newlines.append(line)
     if msgid != '':
         # the file ended with a msgstr
-        changed = changed + translate(msgid, msgstr_lines, po2, options)
+        changed = changed + translate(msgid, flags, msgstr_lines, po2, options)
+        if len(flags) > 0:
+            flagline = u'#, ' + u', '.join(flags)
+            newlines.append(flagline)
+            flags = []
+        newlines.extend(msgid_lines)
         newlines.extend(msgstr_lines)
+        msgid_lines = []
         msgstr_lines = []
         msgid = ''
     if changed > 0:
@@ -196,7 +221,8 @@ def mergepo(target, source, options):
     try:
         changed = mergepo_minimaldiff(target, source, options)
         sys.stderr.write('Updated %d translations with minimal diff.\n' % changed)
-    except:
+    except Exception as e:
+        sys.stderr.write('Unable to use minimal diff: %s\n' % e)
         changed = mergepo_polib(target, source, options)
         sys.stderr.write('Updated %d translations using polib.\n' % changed)
 
