@@ -130,7 +130,7 @@ def mergepo_minimaldiff(target, source, options):
     target_enc = polib.detect_encoding(target)
     # for utf8 files we can use our self written parser to minimize diffs,
     # otherwise we need to use polib
-    if target_enc != 'UTF-8':
+    if not target_enc in ['UTF-8', 'utf-8', 'utf_8']:
         raise
     po1 = open(target, 'rb')
     oldlines = read(po1)
