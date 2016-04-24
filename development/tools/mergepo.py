@@ -14,17 +14,14 @@
 
 
 import os, re, string, sys
+import io
 import polib
 from optparse import OptionParser
 
 
-# we do unix/windows line trimming ourselves since it can happen that we
-# are on unix, but the file has been written on windows or vice versa.
 def trim_eol(line):
-    " Remove end of line char(s)."
-    if line[-2:-1] == '\r':
-        return line[:-2]
-    elif line[-1:] == '\r' or line[-1:] == '\n':
+    " Remove end of line char."
+    if line[-1:] == '\n':
         return line[:-1]
     else:
         # file with no EOL in last line
@@ -39,7 +36,7 @@ def read(input):
         if not line:
             break
         line = trim_eol(line)
-        lines.append(line.decode('UTF-8'))
+        lines.append(line)
     return lines
 
 
@@ -132,7 +129,9 @@ def mergepo_minimaldiff(target, source, options):
     # otherwise we need to use polib
     if not target_enc in ['UTF-8', 'utf-8', 'utf_8']:
         raise
-    po1 = open(target, 'rb')
+    # open file with universal newlines, since it can happen that we are
+    # on unix, but the file has been written on windows or vice versa.
+    po1 = io.open(target, 'r', encoding='utf_8', newline=None)
     oldlines = read(po1)
     po1.close()
     newlines = []
@@ -180,9 +179,9 @@ def mergepo_minimaldiff(target, source, options):
     if changed > 0:
         # we store .po files with unix line ends in git,
         # so do always write them even on windows
-        po1 = open(target, 'wb')
+        po1 = io.open(target, 'w', encoding='utf_8', newline='\n')
         for line in newlines:
-            po1.write(line.encode('UTF-8') + '\n')
+            po1.write(line + '\n')
     return changed
 
 
