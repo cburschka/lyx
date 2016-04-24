@@ -1192,7 +1192,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		break;
 	case '-':
 		os << '-';
-		if (i + 1 < end_pos && text_[i+1] == '-') {
+		if (i + 1 < static_cast<pos_type>(text_.size()) &&
+		    (end_pos == -1 || i + 1 < end_pos) &&
+		    text_[i+1] == '-') {
 			// Prevent "--" becoming an endash and "---" becoming
 			// an emdash.
 			// Within \ttfamily, "--" is merged to "-" (no endash)
