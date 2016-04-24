@@ -67,7 +67,7 @@ def translate(msgid, flags, msgstr_lines, po2, options):
         if msgstr == other.msgstr:
             return 0
     else:
-        if msgstr != '':
+        if msgstr != '' and not u'fuzzy' in flags:
             return 0
         other = po2.find(msgid)
         if not other:
