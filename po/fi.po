@@ -1,5 +1,5 @@
 # Suomalainen LyX-lokalisointi / Finnish LyX-localization
-# Copyright (C) 1997-2008 The LyX Team
+# Copyright (C) 1997-2016 The LyX Team
 #       Originally modified by Martin.Vermeer@fgi.fi
 #       Pauli Virtanen <pauli.virtanen@hut.fi>
 #       Martin Vermeer <martin.vermeer@tkk.fi>
@@ -73,7 +73,7 @@ msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-04-24 10:40+0200\n"
-"PO-Revision-Date: 2015-04-24 16:34+0200\n"
+"PO-Revision-Date: 2016-04-19 22:27+0300\n"
 "Last-Translator: Jari-Matti Mäkelä <jmjm@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -104,9 +104,8 @@ msgid "Build Info"
 msgstr "Käännöstiedot"
 
 #: src/frontends/qt4/ui/AboutUi.ui:116
-#, fuzzy
 msgid "Release Notes"
-msgstr "taulukkoviiva"
+msgstr "Julkaisutiedot"
 
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
@@ -125,11 +124,11 @@ msgstr "&Sulje"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:31 src/frontends/qt4/ui/BibitemUi.ui:64
 msgid "The bibliography key"
-msgstr "Lähdeviitteen avain"
+msgstr "Kirjallisuusviitteen avain"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:44 src/frontends/qt4/ui/BibitemUi.ui:51
 msgid "The label as it appears in the document"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Nimike sellaisena kuin se näkyy asiakirjassa"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
 #: src/frontends/qt4/ui/RefUi.ui:190
@@ -177,7 +176,7 @@ msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 msgid "Bibliography Style"
-msgstr "Lähdeviitteiden tyyli"
+msgstr "Kirjallisuusviitteiden tyyli"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:121
 msgid "Default st&yle:"
@@ -189,11 +188,11 @@ msgstr "Valitse BibTeX-oletustyyli"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:140
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "Tämä valinta jakaa lähdeviitteet lukuihin"
+msgstr "Tämä valinta jakaa kirjallisuusviitteet lukuihin"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:143
 msgid "S&ectioned bibliography"
-msgstr "Jaa lähdeviitteet luvuittain"
+msgstr "Jaa kirjallisuusviitetteet luvuittain"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:153
 msgid ""
@@ -203,18 +202,17 @@ msgstr ""
 "asetukset"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:156 src/frontends/qt4/ui/PrefLatexUi.ui:73
-#, fuzzy
 msgid "Bibliography Generation"
-msgstr "Lähdeviitteiden luonti"
+msgstr "Kirjallisuusluettelon luonti"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:167 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:85
 msgid "&Processor:"
-msgstr "Käsittelijä"
+msgstr "&Käsittelijä:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:177 src/frontends/qt4/ui/IndicesUi.ui:43
 msgid "Select a processor"
-msgstr "Valitse lähdeviitteiden käsittelijä"
+msgstr "Valitse kirjallisuusviitteiden käsittelijä"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:201 src/frontends/qt4/ui/IndicesUi.ui:54
 #: src/frontends/qt4/ui/PrefLatexUi.ui:98 src/frontends/qt4/GuiPrefs.cpp:799
@@ -362,7 +360,7 @@ msgstr "Lisää BiBTeX-tietokantatiedosto"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:272
 msgid "&Add..."
-msgstr "&Lisää"
+msgstr "&Lisää..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:279
 msgid "Remove the selected database"
@@ -373,9 +371,8 @@ msgid "&Delete"
 msgstr "&Poista"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
-#, fuzzy
 msgid "Type and Size"
-msgstr "Paperikoko"
+msgstr "Tyyppi ja koko"
 
 #: src/frontends/qt4/ui/BoxUi.ui:32 src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Width value"
@@ -397,9 +394,8 @@ msgid "Inner Bo&x:"
 msgstr "S&isälaatikko:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:87
-#, fuzzy
 msgid "Inner box type"
-msgstr "Lisää laatikko"
+msgstr "Sisemmän laatikon tyyppi"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -538,47 +534,40 @@ msgid "Decoration box types"
 msgstr "Koriste"
 
 #: src/frontends/qt4/ui/BoxUi.ui:318
-#, fuzzy
 msgid "Thickness value"
-msgstr "Paksu viiva"
-
-#: src/frontends/qt4/ui/BoxUi.ui:325
-#, fuzzy
-msgid "&Line thickness:"
 msgstr "Paksuus"
 
+#: src/frontends/qt4/ui/BoxUi.ui:325
+msgid "&Line thickness:"
+msgstr "Viivan paksuus:"
+
 #: src/frontends/qt4/ui/BoxUi.ui:338
-#, fuzzy
 msgid "Separation value"
-msgstr "kääntökulma"
+msgstr "Erottelun määrä"
 
 #: src/frontends/qt4/ui/BoxUi.ui:345
-#, fuzzy
 msgid "Box s&eparation:"
-msgstr "Koriste"
+msgstr "Laatikoiden väli:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:358
 msgid "&Decoration:"
-msgstr "Koriste"
+msgstr "Koriste:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:368
-#, fuzzy
 msgid "&Shadow size:"
-msgstr "Perusk&oko:"
+msgstr "Varjon k&oko:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:402
-#, fuzzy
 msgid "Size value"
-msgstr "Leveysarvo"
+msgstr "Koko"
 
 #: src/frontends/qt4/ui/BoxUi.ui:412 src/frontends/qt4/GuiBranches.cpp:55
 msgid "Color"
 msgstr "Väri"
 
 #: src/frontends/qt4/ui/BoxUi.ui:434
-#, fuzzy
 msgid "Back&ground:"
-msgstr "tausta"
+msgstr "Tausta:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:444
 #, fuzzy
@@ -605,7 +594,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
 msgid "Filename &Suffix"
-msgstr "Tiedostonimen pääte"
+msgstr "Tiedostopääte"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
@@ -638,7 +627,7 @@ msgstr "Aseta tai muuta taustaväri"
 #: src/frontends/qt4/ui/BranchesUi.ui:126
 #: src/frontends/qt4/ui/IndicesUi.ui:185
 msgid "Alter Co&lor..."
-msgstr "&Muuta väri"
+msgstr "&Muuta väriä..."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:133
 msgid "Remove the selected branch"
@@ -656,7 +645,7 @@ msgstr "Nimeä valittu haara uudelleen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:146
 msgid "Re&name..."
-msgstr "Muuta nimeä"
+msgstr "Muuta &nimeä..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
@@ -793,9 +782,8 @@ msgid "Huger"
 msgstr "Valtavin"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
-#, fuzzy
 msgid "&Custom bullet:"
-msgstr "Räätälöyty ransk. viiva:"
+msgstr "Mukautettu listamerkki:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:336
@@ -958,11 +946,11 @@ msgstr "Sulje"
 
 #: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
-msgstr "Mahdolliset viitteet:"
+msgstr "Mahdolliset kirjallisuusviitteet:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:56
 msgid "S&elected Citations:"
-msgstr "&Valitut lähdeviitteet:"
+msgstr "&Valitut kirjallisuusviitetteet:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:81
 msgid "Click or press Enter to add the selected citation to the list"
@@ -974,20 +962,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:126
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "Siirrä valittua lähdeviitettä ylös (Ctrl-Ylös)"
+msgstr "Siirrä valittua kirjallisuusviitettä ylös (Ctrl-Ylös)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:150
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "Siirrä valittua lähdeviitettä alas (Ctrl-Alas)"
+msgstr "Siirrä valittua kirjallisuusviitettä alas (Ctrl-Alas)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
-#, fuzzy
 msgid "&Search Citation"
-msgstr "Etsi lähdeviite"
+msgstr "Etsi kirjallisuusviite"
 
 #: src/frontends/qt4/ui/CitationUi.ui:229
 msgid "Searc&h:"
-msgstr "Etsi"
+msgstr "Etsi:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:242
 msgid ""
@@ -1018,7 +1005,7 @@ msgstr "Säännöllinen lauseke"
 
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Case se&nsitive"
-msgstr "Kirjainkokoherkkä"
+msgstr "Sama kirjai&nkoko"
 
 #: src/frontends/qt4/ui/CitationUi.ui:329
 #, fuzzy
@@ -1042,11 +1029,11 @@ msgstr "Muotoilu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "Citation st&yle:"
-msgstr "Lähdeviitetyyli:"
+msgstr "kirjallisuusviitetyyli:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:408
 msgid "Natbib citation style to use"
-msgstr "Käytettävä natbib-lähdeviitetyyli"
+msgstr "Käytettävä natbib-kirjallisuusviitetyyli"
 
 #: src/frontends/qt4/ui/CitationUi.ui:415
 msgid "Text &before:"
@@ -1102,7 +1089,7 @@ msgstr "Kirjasinten värit"
 
 #: src/frontends/qt4/ui/ColorUi.ui:38
 msgid "Main text:"
-msgstr "Perusteksti"
+msgstr "Pääteksti:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:54 src/frontends/qt4/ui/ColorUi.ui:115
 #: src/frontends/qt4/ui/ColorUi.ui:192 src/frontends/qt4/ui/ColorUi.ui:253
@@ -1111,12 +1098,12 @@ msgstr "Aseta tai muuta väri"
 
 #: src/frontends/qt4/ui/ColorUi.ui:57 src/frontends/qt4/ui/ColorUi.ui:195
 msgid "Default..."
-msgstr "Oletus"
+msgstr "Oletus..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:70 src/frontends/qt4/ui/ColorUi.ui:131
 #: src/frontends/qt4/ui/ColorUi.ui:208 src/frontends/qt4/ui/ColorUi.ui:269
 msgid "Revert the color to the default"
-msgstr ""
+msgstr "Palauta oletusväri"
 
 #: src/frontends/qt4/ui/ColorUi.ui:73 src/frontends/qt4/ui/ColorUi.ui:134
 #: src/frontends/qt4/ui/ColorUi.ui:211 src/frontends/qt4/ui/ColorUi.ui:272
@@ -1131,7 +1118,7 @@ msgstr "Harmaannetut muistiinpanot:"
 #: src/frontends/qt4/GuiDocument.cpp:1645
 #: src/frontends/qt4/GuiDocument.cpp:1675
 msgid "&Change..."
-msgstr "Muuta"
+msgstr "&Muuta..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
 #, fuzzy
@@ -1166,7 +1153,7 @@ msgstr "Vanha:"
 
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:131
 msgid "New:"
-msgstr "Uu&si:"
+msgstr "Uusi:"
 
 #: src/frontends/qt4/ui/CompareUi.ui:27
 msgid "&New Document:"
@@ -1282,7 +1269,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
-msgstr "Näytä täysi loki"
+msgstr "Näytä täysi &loki..."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
@@ -1334,19 +1321,19 @@ msgstr "Mahdolliset mallit"
 #: src/frontends/qt4/ui/ExternalUi.ui:132
 #: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
-msgstr "LaTeX- ja LyX- &valinnat:"
+msgstr "LaTe&X- ja LyX-asetukset"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:144
 msgid "LaTeX Options"
-msgstr "LaTeX-&valinnat:"
+msgstr "LaTeX-asetukset"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:162
 msgid "O&ption:"
-msgstr "Valinta:"
+msgstr "&Asetus:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:175
 msgid "Forma&t:"
-msgstr "Formaatti:"
+msgstr "&Muoto:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
 msgid ""
@@ -1367,11 +1354,11 @@ msgstr "Skaalaus LyXissä"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:215
 msgid "Sca&le on Screen (%):"
-msgstr "Skaalaa näyttökuva (%):"
+msgstr "&Skaalaa näyttökuva (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
 msgid "Si&ze and Rotation"
-msgstr "Koko ja kääntö"
+msgstr "&Koko ja kääntö"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:283
 #: src/frontends/qt4/ui/TabularUi.ui:175
@@ -1394,7 +1381,7 @@ msgstr "Piste, jonka ympäri kuva kiertyy"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:341
 msgid "Ori&gin:"
-msgstr "Origo"
+msgstr "Ori&go:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:361
 msgid "A&ngle:"
@@ -1402,7 +1389,7 @@ msgstr "Ku&lma:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:376 lib/layouts/shapepar.module:122
 msgid "Scale"
-msgstr "Skaalaus%"
+msgstr "Skaalaus"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:400
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
@@ -1491,7 +1478,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:80
 msgid "Case &sensitive"
-msgstr "Sa&ma kirjainkoko"
+msgstr "&Sama kirjainkoko"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:96
 msgid "Find next occurrence [Enter]"
@@ -1716,7 +1703,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:131
 msgid "S&cale (%):"
-msgstr "Skaalaus-%"
+msgstr "Skaalaus-%:"
 
 #: src/frontends/qt4/ui/FontUi.ui:141
 msgid "Scale the Sans Serif font to match the base font's dimensions"
@@ -1732,7 +1719,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:171
 msgid "Sc&ale (%):"
-msgstr "Skaalaus-%"
+msgstr "Skaalaus-%:"
 
 #: src/frontends/qt4/ui/FontUi.ui:181
 msgid "Scale the Typewriter font to match the base font's dimensions"
@@ -1740,7 +1727,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:194
 msgid "&Math:"
-msgstr "Matematiikka"
+msgstr "Matematiikka:"
 
 #: src/frontends/qt4/ui/FontUi.ui:204
 #, fuzzy
@@ -1757,21 +1744,19 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:228
 msgid "Use a real small caps shape, if the font provides one"
-msgstr ""
+msgstr "Käytä fontin tarjoamia kapitaalimerkkejä, jos saatavilla"
 
 #: src/frontends/qt4/ui/FontUi.ui:231
-#, fuzzy
 msgid "Use true s&mall caps"
-msgstr "Aidot kapiteelit"
+msgstr "Käytä kapiteeleja"
 
 #: src/frontends/qt4/ui/FontUi.ui:238
 msgid "Use old style instead of lining figures"
 msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:241
-#, fuzzy
 msgid "Use &old style figures"
-msgstr "Käytä perinteisiä numeroita"
+msgstr "Käytä perinteisiä kuvaajia"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1795,9 +1780,8 @@ msgid "Set &height:"
 msgstr "Korkeus:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
-#, fuzzy
 msgid "&Scale graphics (%):"
-msgstr "Skaalaa Kuva (%):"
+msgstr "Skaalaa grafiikka (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
 msgid "Sets width of graphic. Leave unchecked to set automatically."
@@ -1859,7 +1843,7 @@ msgstr "LaTeX-lisäasetukset"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:491
 msgid "LaTeX &options:"
-msgstr "LaTeX-&valinnat:"
+msgstr "LaTeX-&asetukset:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:517
 msgid ""
@@ -1938,7 +1922,7 @@ msgstr "/-----^-----\\"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:70 src/frontends/qt4/ui/VSpaceUi.ui:22
 msgid "&Spacing:"
-msgstr "R&iviväli"
+msgstr "R&iviväli:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:80 src/frontends/qt4/ui/VSpaceUi.ui:78
 msgid "Supported spacing types"
@@ -1949,9 +1933,8 @@ msgid "&Value:"
 msgstr "&Arvo:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
-#, fuzzy
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Räätälöity arvo. Tarvitsee \"Custom\" -tyyppistä väliä."
+msgstr "Mukautettu arvo. Tarvitsee \"Custom\" -tyyppistä väliä."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -2001,7 +1984,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:77
 msgid "&Web"
-msgstr ""
+msgstr "&Web"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:87
 #, fuzzy
@@ -2018,7 +2001,7 @@ msgstr "Linkitä tiedostoon"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:100
 msgid "&File"
-msgstr "Tie&dosto:"
+msgstr "Tie&dosto"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -2046,7 +2029,7 @@ msgstr "&Nimike:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:109
 msgid "Mo&re parameters"
-msgstr "Lisäparametrejä"
+msgstr "Lisäparametreja"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
@@ -2138,9 +2121,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
-#, fuzzy
 msgid "Add a new index to the list"
-msgstr "Lisää uusi haara listaan"
+msgstr "Lisää uusi hakemisto listaan"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
@@ -2157,22 +2139,19 @@ msgstr "Uudelleennimeä valittu hakemisto"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
-msgstr "Muuta nimeä"
+msgstr "Muuta &nimeä..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
-#, fuzzy
 msgid "Define or change button color"
-msgstr "Aseta tai muuta taustaväri"
+msgstr "Aseta tai muuta napin väri"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
-#, fuzzy
 msgid "Information Type:"
-msgstr "TeX-tietoja"
+msgstr "Tietojen tyyppi:"
 
 #: src/frontends/qt4/ui/InfoUi.ui:34
-#, fuzzy
 msgid "Information Name:"
-msgstr "TeX-tietoja"
+msgstr "Tietojen nimi:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 #, fuzzy
@@ -2201,18 +2180,16 @@ msgid "Restore initial values in dialog"
 msgstr ""
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Lisää uusi upote asiakirjaan"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
 msgstr "Uusi upote"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
-#, fuzzy
 msgid "Document &Class"
-msgstr "Asiakirjaluokka:"
+msgstr "&Asiakirjaluokka"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
@@ -2220,12 +2197,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "Paikallinen muotoilu"
+msgstr "&Paikallinen muotoilu..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
-#, fuzzy
 msgid "Class Options"
-msgstr "Asiakirjaluokan asetukset"
+msgstr "Luokan asetukset"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
@@ -2275,18 +2251,16 @@ msgid "&Use refstyle (not prettyref) for cross-references"
 msgstr "Käytä refstyle:ä (ei prettyref:iä) ristiviittauksiin"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
-#, fuzzy
 msgid "&Quote style:"
-msgstr "Lainausmerkkien tyyli"
+msgstr "Lainausten tyyli:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:66
 msgid "Encoding"
-msgstr "&Merkistö:"
+msgstr "Merkistö"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:81
-#, fuzzy
 msgid "Language &default"
-msgstr "Kielen oletusmerkistö"
+msgstr "Kielen oletus"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:104
 msgid "&Other:"
@@ -2312,9 +2286,8 @@ msgstr ""
 
 # Now this wasn't very obvious.
 #: src/frontends/qt4/ui/LineUi.ui:22
-#, fuzzy
 msgid "Of&fset:"
-msgstr "Uusintapainosten välittäjä"
+msgstr "Väli:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
@@ -2322,15 +2295,15 @@ msgstr "Pystyvälin korkeus."
 
 #: src/frontends/qt4/ui/LineUi.ui:71
 msgid "Value of the line width."
-msgstr "Viivan leveys"
+msgstr "Viivan leveys."
 
 #: src/frontends/qt4/ui/LineUi.ui:94
 msgid "&Thickness:"
-msgstr "Paksuus"
+msgstr "&Paksuus:"
 
 #: src/frontends/qt4/ui/LineUi.ui:107
 msgid "Value of the line thickness."
-msgstr "Viivan paksuus"
+msgstr "Viivan paksuus."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 msgid "Input here the listings parameters"
@@ -2353,7 +2326,7 @@ msgstr "Pääasetukset"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:29
 msgid "Placement"
-msgstr "Si&joittelu:"
+msgstr "Sijoittelu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
@@ -2369,7 +2342,7 @@ msgstr "Tarkista onko kelluvia listauksia"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "Kelluva"
+msgstr "Kelluva upote"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2385,7 +2358,7 @@ msgstr "Rivinumerointi"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:84
 msgid "&Side:"
-msgstr "Puoli"
+msgstr "Puoli:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
@@ -2393,7 +2366,7 @@ msgstr "Millä puolella rivinumerot tulostetaan?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
-msgstr "Askel"
+msgstr "Askel:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
@@ -2401,7 +2374,7 @@ msgstr "Ero kahden numeroidun rivin välillä"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
 msgid "Font si&ze:"
-msgstr "Kirjasinkoko"
+msgstr "Kirjasinkoko:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
 msgid "Choose the font size for line numbers"
@@ -2414,7 +2387,7 @@ msgstr "Tyyli"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
 msgid "F&ont size:"
-msgstr "Kirjasinkoko"
+msgstr "Kirjasinkoko:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:215
 msgid "The content's base font size"
@@ -2422,7 +2395,7 @@ msgstr "Sisällön peruskirjasinkoko"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
-msgstr "Kirjasinperhe"
+msgstr "Kirjasinperhe:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
@@ -2454,7 +2427,7 @@ msgstr "Välilyönti merkkijonossa symbolina"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
-msgstr "Sarkaimen koko"
+msgstr "Sarkaimen koko:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
@@ -2486,7 +2459,7 @@ msgstr "Väli"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:388
 msgid "Fi&rst line:"
-msgstr "Ensimmäinen rivi"
+msgstr "Ensimmäinen rivi:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:401
 msgid "The first line to be printed"
@@ -2494,7 +2467,7 @@ msgstr "Ensimmäinen tulostettava rivi"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:414
 msgid "&Last line:"
-msgstr "Viimeinen rivi"
+msgstr "Viimeinen rivi:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "The last line to be printed"
@@ -2523,9 +2496,8 @@ msgstr "Validoi"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:45
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:68
-#, fuzzy
 msgid "Errors reported in terminal."
-msgstr "Ei tietoa, miten tuoda formaattia %1$s"
+msgstr "Komentoriville ilmoitetut virheet."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:58
 msgid "Convert"
@@ -2550,9 +2522,8 @@ msgid "&Update"
 msgstr "Päi&vitä"
 
 #: src/frontends/qt4/ui/LogUi.ui:111
-#, fuzzy
 msgid "&Open Containing Directory"
-msgstr "&Työhakemisto:"
+msgstr "Avaa sisältävä hakemisto"
 
 #: src/frontends/qt4/ui/LogUi.ui:131
 msgid "&Go!"
@@ -2612,9 +2583,8 @@ msgid "&Foot skip:"
 msgstr "Alav&iiteväli:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
-#, fuzzy
 msgid "&Column sep:"
-msgstr "Sarake-erotin:"
+msgstr "Palstojen väli:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
 msgid "Master Document Output"
@@ -2746,11 +2716,11 @@ msgstr "Lajittele seuraavasti:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:38
 msgid "&Description:"
-msgstr "Kuvausluettelo"
+msgstr "Kuvaus:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:48
 msgid "&Symbol:"
-msgstr "Symboli"
+msgstr "Symboli:"
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2793,9 +2763,8 @@ msgid "Output Format"
 msgstr "Tulosteen tiedostomuoto"
 
 #: src/frontends/qt4/ui/OutputUi.ui:43 src/frontends/qt4/ui/OutputUi.ui:56
-#, fuzzy
 msgid "Specify the default output format (for view/update)"
-msgstr "Anna oletuspaperikoko."
+msgstr "Anna oletusmuoto tulosteelle (katselua/päivitystä varten)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:46
 #, fuzzy
@@ -2862,7 +2831,7 @@ msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:187
 msgid "Math &image scaling:"
-msgstr "Matemaattisten kuvien skaalaus"
+msgstr "Matemaattisten kuvien skaalaus:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:203
 msgid "Scaling factor for images used for math output."
@@ -2943,16 +2912,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "Takaisinviittaukset"
+msgstr "Takaisinviittaukset:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
 msgstr "&Kirjanmerkit"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-#, fuzzy
 msgid "G&enerate bookmarks (toc)"
-msgstr "Luo kirjanmerkit (sisällysluettelosta)"
+msgstr "Luo kirjanmerkit (sisällysluettelo)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
@@ -2992,7 +2960,7 @@ msgstr "Valitse tietty paperikoko, tai aseta omasi: \"Määr. oma\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:126
 msgid "&Orientation:"
-msgstr "Asettelu"
+msgstr "Asettelu:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:136
 msgid "&Portrait"
@@ -3038,12 +3006,12 @@ msgstr "&Pisin nimike"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:93
 msgid "Line &spacing"
-msgstr "Rivi&väli:"
+msgstr "Rivi&väli"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1922
 #: src/frontends/qt4/GuiDocument.cpp:718
 msgid "Single"
-msgstr "Yksink."
+msgstr "Yksinkertainen"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:126
 msgid "1.5"
@@ -3052,7 +3020,7 @@ msgstr "1.5"
 #: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1928
 #: src/frontends/qt4/GuiDocument.cpp:722
 msgid "Double"
-msgstr "Kaksink."
+msgstr "Kaksinkertainen"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:136
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:66
@@ -3076,19 +3044,19 @@ msgstr "Sisennä kappale"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:169
 msgid "&Justified"
-msgstr "Tasattu"
+msgstr "&Tasattu"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:176
 msgid "&Left"
-msgstr "Vasen"
+msgstr "&Vasen"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:183
 msgid "C&enter"
-msgstr "Keskitetty"
+msgstr "&Keskellä"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:190
 msgid "Ri&ght"
-msgstr "Oikea"
+msgstr "&Oikea"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:197
 msgid "Use the default alignment for this paragraph, whatever it is."
@@ -3283,19 +3251,16 @@ msgid "&Enabled"
 msgstr "Päällä"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-#, fuzzy
 msgid "Maximum a&ge (in days):"
-msgstr "Korkein säilytysaika (päivissä):"
+msgstr "Korkein säilytysaika (päiviä):"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
-#, fuzzy
 msgid "Display &graphics"
-msgstr "Kuvien &näyttäminen:"
+msgstr "Näytä kuvat"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
-#, fuzzy
 msgid "Instant &preview:"
-msgstr "&Esikatselu heti"
+msgstr "Välitön esikatselu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:76
 #: src/frontends/qt4/GuiDocument.cpp:132
@@ -3311,9 +3276,8 @@ msgid "On"
 msgstr "Päällä"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
-#, fuzzy
 msgid "Preview si&ze:"
-msgstr "Esikatselun koko"
+msgstr "Esikatselun koko:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:96
 msgid "Factor for the preview size"
@@ -3393,9 +3357,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
-#, fuzzy
 msgid "Save the &document directory path"
-msgstr "Valitse asiakirjahakemisto"
+msgstr "Tallenna asiakirjan hakemisto"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
 #, fuzzy
@@ -3426,7 +3389,7 @@ msgstr "Näytä välilehden sulkemisvalinta, kun vain yksi aktiivinen välilehti
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:206
 msgid "Closing last &view:"
-msgstr "Viimeisen asiakirjanäkymän sulkeminen"
+msgstr "Viimeisen asiakirjanäkymän sulkeminen:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Closes document"
@@ -3492,7 +3455,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
-msgstr "Kokonäyttö"
+msgstr "Kokonäytöntila"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:174
 msgid "&Hide toolbars"
@@ -3576,9 +3539,8 @@ msgid "Co&pier:"
 msgstr "Kopiointimuunnin:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Anna oletuspaperikoko."
+msgstr "Määritä oletusformaatti tulosteelle kun käytetään (PDF)LaTeXia"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3597,13 +3559,12 @@ msgid "With n&on-TeX fonts:"
 msgstr "Ilman TeX-fontteja:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
-#, fuzzy
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "Anna oletuspaperikoko."
+msgstr "Oletusmuoto asiakirjoille, jotka eivät käytä TeX-kirjasimia"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
-msgstr "Sähköposti"
+msgstr "&Sähköposti:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:43
 msgid "Your name"
@@ -3650,7 +3611,7 @@ msgstr "Hiiri"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:162
 msgid "&Wheel scrolling speed:"
-msgstr "Hiiren vieritysnopeus"
+msgstr "Hiiren vieritysnopeus:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:172
 msgid ""
@@ -3668,9 +3629,8 @@ msgid "&Middle mouse button pasting"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:213
-#, fuzzy
 msgid "Scroll Wheel Zoom"
-msgstr "Hiiren rulla säätää kuvan suurennusta"
+msgstr "Hiiren rulla suurentaa näkymää"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:246
 msgid "Enable"
@@ -3714,16 +3674,15 @@ msgstr "Aina Babel"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
 #: src/frontends/qt4/GuiDocument.cpp:1067
 msgid "None[[language package]]"
-msgstr "Ei mitään[[language package]]"
+msgstr "Ei mikään[[language package]]"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:88
 msgid "Command s&tart:"
 msgstr "Ko&mennon alku:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:98
-#, fuzzy
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "LaTeX-komento kielen paikalliseen vaihtamiseen."
+msgstr "LaTeX-komento, joka aloittaa vaihdon vieraaseen kieleen"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:118
 msgid "Command e&nd:"
@@ -3736,11 +3695,11 @@ msgstr "LaTeX-komento kielen paikalliseen vaihtamiseen."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
 msgid "Default decimal &separator:"
-msgstr "Oletusarvoinen desimaalierotin:"
+msgstr "Oletusarvoinen &desimaalierotin:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:161
 msgid "Default length &unit:"
-msgstr "Oletusmittayksikkö:"
+msgstr "Oletus&mittayksikkö:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:174
 msgid ""
@@ -3898,9 +3857,8 @@ msgid "&PDF command:"
 msgstr "PDF-komento:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:107
-#, fuzzy
 msgid "Dvips Options"
-msgstr "Matematiikka-asetukset"
+msgstr "Dvips-asetukset"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Paper t&ype:"
@@ -3915,9 +3873,8 @@ msgid "Lan&dscape:"
 msgstr "&Vaakasuuntainen:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:162
-#, fuzzy
 msgid "Other Options"
-msgstr "Matematiikka-asetukset"
+msgstr "Muut asetukset"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:170
 msgid "Output &line length:"
@@ -4104,7 +4061,7 @@ msgstr "Käytä bittikarttavälimuistia fontin piirron nopeuttamiseksi"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:68
 msgid "&New"
-msgstr "Uu&si:"
+msgstr "&Uusi"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:90
 msgid "&Bind file:"
@@ -4120,7 +4077,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr "Oikolue muistiinpanot ja kommentit"
+msgstr "Oikolue muistiinpanot ja huomautukset"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
 msgid "&Spellchecker engine:"
@@ -4225,12 +4182,11 @@ msgstr "Listan sisennys:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
-msgstr "Räätälöity leveys:"
+msgstr "Mukautettu leveys:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "Räätälöity arvo. Tarvitsee \"Custom\" -tyyppistä väliä."
+msgstr "Mukautettu arvo. Tarvitsee \"Custom\" -tyyppistä väliä."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
@@ -4267,9 +4223,8 @@ msgid "Automatic cleanup of the window before LaTeX compilation proceeds"
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
-#, fuzzy
 msgid "&Clear automatically"
-msgstr "Ota kukin muutos käyttöön automaattisesti"
+msgstr "Tyhjennä automaattisesti"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 msgid "Debug messages"
@@ -4400,7 +4355,7 @@ msgstr "Päivitä nimikeluettelo"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
-msgstr "Kirjainkokoherkkä[[search]]"
+msgstr "&Sama kirjainkoko[[search]]"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4432,9 +4387,8 @@ msgid "Remove last key from the shortcut sequence"
 msgstr ""
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
-#, fuzzy
 msgid "&Delete Key"
-msgstr "&Poista"
+msgstr "&Poista näppäin"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
@@ -4451,9 +4405,8 @@ msgid "&Shortcut:"
 msgstr "P&ikanäppäin:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:117
-#, fuzzy
 msgid "&Function:"
-msgstr "&Funktiot"
+msgstr "&Funktio:"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:130
 msgid ""
@@ -4561,11 +4514,11 @@ msgstr "Riviasetukset"
 
 #: src/frontends/qt4/ui/TabularUi.ui:118
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "Yhdistä eri rivien solut"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr ""
+msgstr "Yhdistetyt rivit"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
@@ -4601,7 +4554,7 @@ msgstr "&Leveys:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:260
 msgid "Verti&cal alignment:"
-msgstr "Pystytasaus"
+msgstr "Pystytasaus:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:270
 msgid "Vertical alignment of the table"
@@ -4639,7 +4592,7 @@ msgstr "Desimaalierottimeen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:432
 msgid "&Decimal separator:"
-msgstr "Desimaalierotin"
+msgstr "Desimaalierotin:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:490
 msgid "Fixed width of the column"
@@ -4658,12 +4611,11 @@ msgstr "Laatikon pystytasaus (perusviivan suhteen)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:550
 msgid "Merge cells of different columns"
-msgstr "Yhdistä eri sarakkiden solut"
+msgstr "Yhdistä eri sarakkeiden solut"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
-#, fuzzy
 msgid "Mu&lticolumn"
-msgstr "&Yhdistetyt sarakkeet"
+msgstr "Yhdistetyt sarakkeet"
 
 #: src/frontends/qt4/ui/TabularUi.ui:560
 msgid "LaTe&X argument:"
@@ -4723,29 +4675,27 @@ msgstr "Lisää valkoista"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1182
 msgid "T&op of row:"
-msgstr "Rivin yläreuna"
+msgstr "Rivin yläreuna:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1242
 msgid "Botto&m of row:"
-msgstr "Rivin alareuna"
+msgstr "Rivin alareuna:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1255
 msgid "Bet&ween rows:"
-msgstr "Rivien välillä"
+msgstr "Rivien välillä:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1304
-#, fuzzy
 msgid "&Multi-page table"
-msgstr "Kierrä taulukkoa"
+msgstr "Monisivuinen taulukko"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
 msgstr "Valitse, jos taulukko on usean sivun mittainen"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
-#, fuzzy
 msgid "&Use multi-page table"
-msgstr "Käytä &pitkää taulukkoa"
+msgstr "Käytä usean sivun taulukkoa"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Row settings"
@@ -4850,9 +4800,8 @@ msgid "Horizontal alignment of the multi-page table"
 msgstr "Laatikon sisällön vaakatasaus"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1543
-#, fuzzy
 msgid "Multi-page table alignment"
-msgstr "&Vaakatasaus:"
+msgstr "Monisivuinen taulukon asettelu"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:55
 msgid "Close this dialog"
@@ -4871,7 +4820,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
-msgstr "&Katsele"
+msgstr "&Näytä"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
@@ -4902,9 +4851,8 @@ msgid "Show &path"
 msgstr "Näytä p&olku"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:20
-#, fuzzy
 msgid "Paragraph Separation"
-msgstr "Kappaleasetukset"
+msgstr "Kappaleiden erottelu"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
@@ -4912,7 +4860,7 @@ msgstr "Sisennä peräkkäisert kappaleet"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
-msgstr "Sise&nnys"
+msgstr "Sise&nnys:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
@@ -4932,7 +4880,7 @@ msgstr "Väli"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:209
 msgid "&Line spacing:"
-msgstr "&Rivivälit:"
+msgstr "&Riviväli:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:219
 msgid "Spacing type"
@@ -5142,19 +5090,16 @@ msgid "use number of lines"
 msgstr "Kopioiden määrä"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
-#, fuzzy
 msgid "&Line span:"
-msgstr "&Rivivälit:"
+msgstr "&Riviväli:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
-#, fuzzy
 msgid "Outer (default)"
-msgstr "LaTeXin oletus"
+msgstr "Ulompi (oletus)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:204
-#, fuzzy
 msgid "Inner"
-msgstr "S&isä:"
+msgstr "Sisempi"
 
 #: src/frontends/qt4/ui/WrapUi.ui:222
 msgid "use overhang"
@@ -6041,14 +5986,12 @@ msgid "IEEE membership"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:107 lib/layouts/revtex4-1.layout:296
-#, fuzzy
 msgid "Lowercase"
-msgstr "Pienet"
+msgstr "Pienet kirjaimet"
 
 #: lib/layouts/IEEEtran.layout:111
-#, fuzzy
 msgid "lowercase"
-msgstr "Pienet"
+msgstr "pienet kirjaimet"
 
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/aa.layout:216
 #: lib/layouts/aapaper.layout:84 lib/layouts/aapaper.layout:183
@@ -6077,33 +6020,28 @@ msgid "Author"
 msgstr "Tekijä"
 
 #: lib/layouts/IEEEtran.layout:124 lib/layouts/beamer.layout:961
-#, fuzzy
 msgid "Short Author|S"
-msgstr "P&ikanäppäin:"
+msgstr "Lyhyt tekijä"
 
 #: lib/layouts/IEEEtran.layout:125
 msgid "A short version of the author name"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:142
-#, fuzzy
 msgid "Author Name"
-msgstr "Tekijätiedot:"
+msgstr "Tekijän nimi"
 
 #: lib/layouts/IEEEtran.layout:148
-#, fuzzy
 msgid "Author name"
-msgstr "Tekijän sähköposti"
+msgstr "Tekijän nimi"
 
 #: lib/layouts/IEEEtran.layout:160
-#, fuzzy
 msgid "Author Affiliation"
-msgstr "Vaiht. järjestö"
+msgstr "Tekijän järjestö"
 
 #: lib/layouts/IEEEtran.layout:163 lib/layouts/agutex.layout:114
-#, fuzzy
 msgid "Author affiliation"
-msgstr "Vaiht. järjestö"
+msgstr "Tekijän järjestö"
 
 #: lib/layouts/IEEEtran.layout:174
 #, fuzzy
@@ -6345,16 +6283,15 @@ msgid "Proof."
 msgstr "Todistus."
 
 #: lib/layouts/RJournal.layout:3
-#, fuzzy
 msgid "R Journal"
-msgstr "Lehti"
+msgstr "R Journal"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/ctex-report.layout:4
 #: lib/layouts/extreport.layout:4 lib/layouts/jreport.layout:4
 #: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
 #: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
-msgstr ""
+msgstr "Raoportit"
 
 #: lib/layouts/RJournal.layout:52 lib/layouts/agutex.layout:149
 #: lib/layouts/egs.layout:519 lib/layouts/kluwer.layout:275
@@ -6579,7 +6516,7 @@ msgstr "(ei installoitu)"
 
 #: lib/layouts/aa.layout:278 lib/layouts/spie.layout:81
 msgid "ABSTRACT"
-msgstr "YHTEENVETO"
+msgstr "TIIVISTELMÄ"
 
 #: lib/layouts/aa.layout:296
 #, fuzzy
@@ -6720,9 +6657,8 @@ msgid "Consecutive number for the alternative affiliations"
 msgstr ""
 
 #: lib/layouts/aastex.layout:190
-#, fuzzy
 msgid "Alternative affiliation:"
-msgstr "&Vaihtoehtoinen kieli:"
+msgstr "&Vaihtoehtoinen järjestö:"
 
 #: lib/layouts/aastex.layout:216
 msgid "And"
@@ -6922,7 +6858,7 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:562 lib/layouts/stdsections.inc:32
 #: lib/layouts/stdsections.inc:63 lib/layouts/stdsections.inc:93
 msgid "Short Title|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt teoksen nimi"
 
 #: lib/layouts/achemso.layout:75
 msgid "Short title which will appear in the running header"
@@ -7148,9 +7084,8 @@ msgid "TOG article DOI"
 msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:172 lib/layouts/acmsiggraph.layout:157
-#, fuzzy
 msgid "PDF author"
-msgstr "SIS Tekijä:"
+msgstr "PDF:n tekijä"
 
 #: lib/layouts/acmsiggraph-0-92.layout:175 lib/layouts/acmsiggraph.layout:160
 #, fuzzy
@@ -7323,9 +7258,8 @@ msgid "Authors"
 msgstr "Tekijät"
 
 #: lib/layouts/agutex.layout:92 lib/layouts/agutex.layout:96
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "Järjestö"
+msgstr "Järjestön merkki"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
@@ -7493,9 +7427,8 @@ msgstr "Perusteksti"
 #: lib/layouts/apa.layout:258 lib/layouts/apa6.layout:358
 #: lib/layouts/scrclass.inc:287 lib/layouts/scrclass.inc:310
 #: lib/layouts/stdinsets.inc:563
-#, fuzzy
 msgid "The caption as it appears in the list of figures/tables"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Kuvateksti sellaisena kuin se näkyy kaavio- tai taulukkolistassa."
 
 #: lib/layouts/apa.layout:273 lib/layouts/apa6.layout:373
 msgid "FitFigure"
@@ -7521,9 +7454,8 @@ msgstr "Aliosakappale"
 #: lib/layouts/europasscv.layout:330 lib/layouts/powerdot.layout:280
 #: lib/layouts/powerdot.layout:332 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:62 lib/layouts/theorems-case.inc:53
-#, fuzzy
 msgid "Custom Item|s"
-msgstr "Asiakas"
+msgstr "Mukautettu lista-alkio"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa.layout:400
 #: lib/layouts/apa6.layout:476 lib/layouts/apa6.layout:501
@@ -7758,9 +7690,8 @@ msgstr ""
 #: lib/layouts/beamer.layout:287 lib/layouts/beamer.layout:315
 #: lib/layouts/beamer.layout:346 lib/layouts/beamer.layout:374
 #: lib/layouts/beamer.layout:405
-#, fuzzy
 msgid "Mode Specification|S"
-msgstr "Sulje kappale"
+msgstr "Moodin määrittely"
 
 #: lib/layouts/beamer.layout:204 lib/layouts/beamer.layout:257
 #: lib/layouts/beamer.layout:288 lib/layouts/beamer.layout:316
@@ -7772,9 +7703,9 @@ msgstr ""
 #: lib/layouts/beamer.layout:210 lib/layouts/memoir.layout:57
 #: lib/layouts/tufte-handout.layout:41 lib/layouts/scrclass.inc:127
 #: lib/layouts/stdsections.inc:33
-#, fuzzy
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Osa sellaisena kuin se näkyy sisällysluettelossa/jatkuvissa "
+"otsakkeissa"
 
 #: lib/layouts/beamer.layout:252
 msgid "Section \\arabic{section}"
@@ -7783,9 +7714,9 @@ msgstr "Kappale \\arabic{section}"
 #: lib/layouts/beamer.layout:263 lib/layouts/simplecv.layout:52
 #: lib/layouts/tufte-book.layout:109 lib/layouts/scrclass.inc:149
 #: lib/layouts/stdsections.inc:94
-#, fuzzy
 msgid "The section as it appears in the table of contents/running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Kappale sellaisena kuin se näkyy sisällysluettelossa/jatkuvissa "
+"otsakkeissa"
 
 #: lib/layouts/beamer.layout:274 lib/layouts/powerdot.layout:245
 #: lib/layouts/numarticle.inc:10
@@ -7794,7 +7725,7 @@ msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:311
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "Alialikappale \\arabic{section}.\\arabic{subsection}"
+msgstr "Alikappale \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:322
 #, fuzzy
@@ -7837,9 +7768,8 @@ msgstr "Diat"
 #: lib/layouts/beamer.layout:1431 lib/layouts/beamer.layout:1450
 #: lib/layouts/beamer.layout:1469 lib/layouts/beamer.layout:1488
 #: lib/layouts/beamer.layout:1512 lib/layouts/pdfform.module:123
-#, fuzzy
 msgid "Action"
-msgstr "Kappale"
+msgstr "Toiminto"
 
 #: lib/layouts/beamer.layout:443 lib/layouts/beamer.layout:502
 msgid "Overlay specifications for this frame"
@@ -7867,7 +7797,7 @@ msgstr "Dian valinnat"
 #: lib/layouts/lilypond.module:36 lib/layouts/todonotes.module:75
 #: lib/layouts/todonotes.module:87 lib/layouts/todonotes.module:104
 msgid "Options"
-msgstr "&Valinnat:"
+msgstr "Asetukset"
 
 #: lib/layouts/beamer.layout:456 lib/layouts/beamer.layout:478
 #: lib/layouts/beamer.layout:489 lib/layouts/beamer.layout:515
@@ -7883,24 +7813,20 @@ msgid "Enter the frame title here"
 msgstr ""
 
 #: lib/layouts/beamer.layout:472
-#, fuzzy
 msgid "PlainFrame"
-msgstr "PerusRuudunAlku"
+msgstr "Pelkistetty dia"
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "Frame (plain)"
-msgstr "LaTeX-&valinnat:"
+msgstr "Dia (pelkistetty)"
 
 #: lib/layouts/beamer.layout:483
-#, fuzzy
 msgid "FragileFrame"
-msgstr "RuudunAlku"
+msgstr "Herkkä dia"
 
 #: lib/layouts/beamer.layout:485
-#, fuzzy
 msgid "Frame (fragile)"
-msgstr "Sukunimi"
+msgstr "Dia (herkkä)"
 
 #: lib/layouts/beamer.layout:494
 msgid "AgainFrame"
@@ -7913,13 +7839,12 @@ msgid "Slide"
 msgstr "Kalvo"
 
 #: lib/layouts/beamer.layout:527
-#, fuzzy
 msgid "Repeat frame with label"
-msgstr "Toista ruutu nimikkeellä"
+msgstr "Toista dia nimikkeen kanssa"
 
 #: lib/layouts/beamer.layout:538
 msgid "FrameTitle"
-msgstr "RuudunOtsikko"
+msgstr "Dian otsikko"
 
 #: lib/layouts/beamer.layout:557 lib/layouts/beamer.layout:586
 #: lib/layouts/beamer.layout:789 lib/layouts/beamer.layout:817
@@ -7935,9 +7860,8 @@ msgid "Specify the overlay settings (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:562
-#, fuzzy
 msgid "Short Frame Title|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt dian otsikko"
 
 #: lib/layouts/beamer.layout:563
 msgid "A short form of the frame title used in some themes"
@@ -7945,7 +7869,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:568
 msgid "FrameSubtitle"
-msgstr "RuudunAlaotsikko"
+msgstr "Dian alaotsikko"
 
 #: lib/layouts/beamer.layout:597 lib/layouts/moderncv.layout:303
 #: lib/layouts/moderncv.layout:317
@@ -7956,7 +7880,7 @@ msgstr "Palsta"
 #: lib/layouts/beamer.layout:625 lib/layouts/beamer.layout:635
 #: lib/layouts/moderncv.layout:282 lib/layouts/multicol.module:14
 msgid "Columns"
-msgstr "Palstoja"
+msgstr "Palstat"
 
 #: lib/layouts/beamer.layout:610
 msgid "Start column (increase depth!), width:"
@@ -7980,19 +7904,19 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:651
 msgid "ColumnsCenterAligned"
-msgstr "PalstojaTasattuKeskellä"
+msgstr "Palstat (tasattu keskelle)"
 
 #: lib/layouts/beamer.layout:654
 msgid "Columns (center aligned)"
-msgstr ""
+msgstr "Palstat (tasattu keskelle)"
 
 #: lib/layouts/beamer.layout:659
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "Palstat (tasattu ylös)"
 
 #: lib/layouts/beamer.layout:662
 msgid "Columns (top aligned)"
-msgstr ""
+msgstr "Palstat (tasattu yös)"
 
 #: lib/layouts/beamer.layout:672 lib/layouts/powerdot.layout:471
 msgid "Pause"
@@ -8096,7 +8020,7 @@ msgstr "Lohkot"
 
 #: lib/layouts/beamer.layout:838
 msgid "Block:"
-msgstr "Lohko"
+msgstr "Lohko:"
 
 #: lib/layouts/beamer.layout:849
 #, fuzzy
@@ -8118,7 +8042,7 @@ msgstr "EsimerkkiLohko"
 
 #: lib/layouts/beamer.layout:870
 msgid "Example Block:"
-msgstr "EsimerkkiLohko:"
+msgstr "Esimerkkilohko:"
 
 #: lib/layouts/beamer.layout:876
 msgid "AlertBlock"
@@ -8141,14 +8065,12 @@ msgid "Short title which appears in the sidebar/header"
 msgstr ""
 
 #: lib/layouts/beamer.layout:915
-#, fuzzy
 msgid "Title (Plain Frame)"
-msgstr "PerusRuudunAlku"
+msgstr "Teoksen nimi (Pelkistetty dia) "
 
 #: lib/layouts/beamer.layout:937
-#, fuzzy
 msgid "Short Subtitle|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt alaotsikko"
 
 #: lib/layouts/beamer.layout:938
 msgid "Short subtitle which appears in the sidebar/header"
@@ -8159,9 +8081,8 @@ msgid "Short author which appears in the sidebar/header"
 msgstr ""
 
 #: lib/layouts/beamer.layout:984
-#, fuzzy
 msgid "Short Institute|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt laitos"
 
 #: lib/layouts/beamer.layout:985
 msgid "Short institute which appears in the sidebar/header"
@@ -8173,18 +8094,16 @@ msgid "InstituteMark"
 msgstr "Laitos"
 
 #: lib/layouts/beamer.layout:1028
-#, fuzzy
 msgid "Short Date|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt päiväys"
 
 #: lib/layouts/beamer.layout:1029
 msgid "Short date which appears in the sidebar/header"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1038 lib/layouts/beamerposter.layout:46
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Kuva"
+msgstr "Otsikkografiikka"
 
 #: lib/layouts/beamer.layout:1091 lib/layouts/egs.layout:102
 #: lib/layouts/powerdot.layout:379 lib/layouts/db_stdlayouts.inc:19
@@ -8206,7 +8125,7 @@ msgstr "Säe"
 #: lib/layouts/beamer.layout:1182 lib/layouts/foils.layout:316
 #: lib/layouts/theorems-starred.inc:76
 msgid "Corollary."
-msgstr "Seurauslause."
+msgstr "Seuraus."
 
 #: lib/layouts/beamer.layout:1195 lib/layouts/beamer.layout:1341
 #: lib/layouts/beamer.layout:1359 lib/layouts/beamer.layout:1377
@@ -8214,17 +8133,15 @@ msgstr "Seurauslause."
 #: lib/layouts/beamer.layout:1432 lib/layouts/beamer.layout:1451
 #: lib/layouts/beamer.layout:1470 lib/layouts/beamer.layout:1489
 #: lib/layouts/beamer.layout:1513
-#, fuzzy
 msgid "Action Specifications|S"
-msgstr "&Valinta"
+msgstr "Toiminnan määritykset"
 
 #: lib/layouts/beamer.layout:1201 lib/layouts/theorems-ams-bytype.inc:65
 #: lib/layouts/theorems-ams.inc:37 lib/layouts/theorems-bytype.inc:35
 #: lib/layouts/theorems-starred.inc:38 lib/layouts/theorems.inc:37
 #: lib/layouts/theorems-named.module:21
-#, fuzzy
 msgid "Additional Theorem Text"
-msgstr "LaTeX-lisäasetukset"
+msgstr "Lisäväiteteksti"
 
 #: lib/layouts/beamer.layout:1202 lib/layouts/theorems-ams-bytype.inc:66
 #: lib/layouts/theorems-ams.inc:38 lib/layouts/theorems-bytype.inc:36
@@ -8286,7 +8203,7 @@ msgstr "Lemma."
 #: lib/layouts/beamer.layout:1255 lib/layouts/foils.layout:302
 #: lib/layouts/theorems-starred.inc:32 lib/layouts/theorems-named.module:17
 msgid "Theorem."
-msgstr "Lause."
+msgstr "Väite."
 
 #: lib/layouts/beamer.layout:1263 lib/layouts/egs.layout:657
 #: lib/layouts/db_lyxmacros.inc:19 lib/layouts/lyxmacros.inc:12
@@ -8295,7 +8212,7 @@ msgstr "LyX-koodi"
 
 #: lib/layouts/beamer.layout:1297
 msgid "NoteItem"
-msgstr "Muistiinpanokohta"
+msgstr "Muistiinpano"
 
 #: lib/layouts/beamer.layout:1331 lib/layouts/beamer.layout:1333
 #: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:126
@@ -9299,7 +9216,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:289
 msgid "Theorem \\arabic{theorem}"
-msgstr "Väittämä \\arabic{theorem}"
+msgstr "Väite \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:319
 msgid "PROOF."
@@ -9315,11 +9232,11 @@ msgstr "Seurauslause \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:347
 msgid "Proposition \\arabic{theorem}"
-msgstr "Väittämä \\arabic{theorem}."
+msgstr "Propositio \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:354
 msgid "Criterion \\arabic{theorem}"
-msgstr "Kriteeri \\arabic{theorem]."
+msgstr "Kriteeri \\arabic{theorem]"
 
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
@@ -9410,9 +9327,8 @@ msgid "Label you refer to in the title"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:141 lib/layouts/revtex4-1.layout:193
-#, fuzzy
 msgid "Title footnote:"
-msgstr "alaviite"
+msgstr "Otsikon alaviite:"
 
 #: lib/layouts/elsarticle.layout:155
 #, fuzzy
@@ -9529,14 +9445,12 @@ msgstr "Rivinumerointi"
 
 #: lib/layouts/europasscv.layout:128 lib/layouts/jasatex.layout:133
 #: lib/layouts/moderncv.layout:183
-#, fuzzy
 msgid "Homepage"
-msgstr "sivulla <sivu>"
+msgstr "Kotisivu"
 
 #: lib/layouts/europasscv.layout:131 lib/layouts/moderncv.layout:186
-#, fuzzy
 msgid "Homepage:"
-msgstr "sivulla <sivu>"
+msgstr "Kotisivu:"
 
 #: lib/layouts/europasscv.layout:134
 msgid "InstantMessaging"
@@ -9566,24 +9480,20 @@ msgid "Date of birth:"
 msgstr "&Päiväysmuoto:"
 
 #: lib/layouts/europasscv.layout:152 lib/layouts/europecv.layout:53
-#, fuzzy
 msgid "Nationality"
-msgstr "Vaaka"
+msgstr "Kansallisuus"
 
 #: lib/layouts/europasscv.layout:155 lib/layouts/europecv.layout:56
-#, fuzzy
 msgid "Nationality:"
-msgstr "Merkintätapa #:"
+msgstr "Kansallisuus:"
 
 #: lib/layouts/europasscv.layout:158 lib/layouts/europecv.layout:87
-#, fuzzy
 msgid "Gender"
-msgstr "Ylätunniste:"
+msgstr "Sukupuoli"
 
 #: lib/layouts/europasscv.layout:161 lib/layouts/europecv.layout:90
-#, fuzzy
 msgid "Gender:"
-msgstr "Ylätunniste:"
+msgstr "Sukupuoli:"
 
 #: lib/layouts/europasscv.layout:164 lib/layouts/europecv.layout:99
 #, fuzzy
@@ -9595,14 +9505,12 @@ msgid "Space before picture:"
 msgstr "Väli ennen kuvaa:"
 
 #: lib/layouts/europasscv.layout:170 lib/layouts/europecv.layout:105
-#, fuzzy
 msgid "Picture"
-msgstr "Allekirjoitus"
+msgstr "Kuva"
 
 #: lib/layouts/europasscv.layout:173 lib/layouts/europecv.layout:108
-#, fuzzy
 msgid "Picture:"
-msgstr "Allekirjoitus:"
+msgstr "Kuva:"
 
 #: lib/layouts/europasscv.layout:176
 msgid "Resize photo to this width"
@@ -9799,9 +9707,8 @@ msgid "End of CV"
 msgstr "CV:n loppu"
 
 #: lib/layouts/europasscv.layout:441 lib/layouts/europasscv.layout:446
-#, fuzzy
 msgid "Highlight"
-msgstr "Korostukset:"
+msgstr "Korostus"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
@@ -9818,9 +9725,8 @@ msgid "Mobile"
 msgstr "Tie&dosto:"
 
 #: lib/layouts/europecv.layout:110
-#, fuzzy
 msgid "Size"
-msgstr "K&oko:"
+msgstr "Koko"
 
 #: lib/layouts/europecv.layout:111
 msgid "Size the photo is resized to"
@@ -9867,9 +9773,8 @@ msgid "VerticalSpace"
 msgstr "Pystyväli"
 
 #: lib/layouts/europecv.layout:308
-#, fuzzy
 msgid "Vertical space"
-msgstr "Pystyväli:|#P"
+msgstr "Pystyväli"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
@@ -10655,7 +10560,7 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:83
 msgid "Review"
-msgstr "Esikatselu"
+msgstr "Arviointi"
 
 #: lib/layouts/iopart.layout:89
 msgid "Topical"
@@ -10718,7 +10623,7 @@ msgstr ""
 
 #: lib/layouts/isprs.layout:39
 msgid "ABSTRACT:"
-msgstr "YHTEENVETO:"
+msgstr "TIIVISTELMÄ:"
 
 #: lib/layouts/isprs.layout:67
 msgid "KEY WORDS:"
@@ -10737,24 +10642,20 @@ msgid "International Union of Crystallography (IUCr)"
 msgstr ""
 
 #: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:26
-#, fuzzy
 msgid "\\thesection."
-msgstr "valinta"
+msgstr "\\thesection."
 
 #: lib/layouts/iucr.layout:48
-#, fuzzy
 msgid "\\thesection"
-msgstr "valinta"
+msgstr "\\thesection"
 
 #: lib/layouts/iucr.layout:53 lib/layouts/jss.layout:30
-#, fuzzy
 msgid "\\thesubsection."
-msgstr "\\Alph{subsection}."
+msgstr "\\thesubsection."
 
 #: lib/layouts/iucr.layout:61
-#, fuzzy
 msgid "\\thesubsubsection."
-msgstr "\\alph{subsubsection}."
+msgstr "\\thesubsubsection."
 
 #: lib/layouts/iucr.layout:75 lib/layouts/iucr.layout:80
 #: lib/layouts/moderncv.layout:352 lib/layouts/moderncv.layout:353
@@ -10777,9 +10678,8 @@ msgstr "Tekijä (jatko):"
 
 #: lib/layouts/iucr.layout:117 lib/layouts/iucr.layout:150
 #: lib/layouts/iucr.layout:181
-#, fuzzy
 msgid "Affiliation Key"
-msgstr "Järjestö"
+msgstr "Järjestön avain"
 
 #: lib/layouts/iucr.layout:118
 #, fuzzy
@@ -10808,24 +10708,20 @@ msgid "Affiliation key of the co-author"
 msgstr "Oletusarvoisen tulostimen nimi"
 
 #: lib/layouts/iucr.layout:160
-#, fuzzy
 msgid "Short Author"
-msgstr "P&ikanäppäin:"
+msgstr "Lyhyt tekijä"
 
 #: lib/layouts/iucr.layout:163
-#, fuzzy
 msgid "Short author:"
-msgstr "P&ikanäppäin:"
+msgstr "Lyhyt tekijä:"
 
 #: lib/layouts/iucr.layout:182
-#, fuzzy
 msgid "Affiliation key"
-msgstr "Järjestö"
+msgstr "Järjestön avain"
 
 #: lib/layouts/iucr.layout:197
-#, fuzzy
 msgid "Keyword:"
-msgstr "&Avainsana:"
+msgstr "Avainsana:"
 
 #: lib/layouts/iucr.layout:200
 msgid "Vita"
@@ -10873,14 +10769,12 @@ msgid "Journal of the Acoustical Society of America (JASA)"
 msgstr ""
 
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "&Vaihtoehtoinen kieli:"
+msgstr "Vaihtoehtoinen järjestö"
 
 #: lib/layouts/jasatex.layout:127
-#, fuzzy
 msgid "Affiliation Prefix"
-msgstr "Järjestö"
+msgstr "Järjestön etuliite"
 
 #: lib/layouts/jasatex.layout:128
 msgid "A prefix like 'Also at '"
@@ -10902,9 +10796,8 @@ msgid "Preprint number:"
 msgstr "Esipainos"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
-#, fuzzy
 msgid "Online citation"
-msgstr "Lisää lähdeviite"
+msgstr "Lisää kirjallisuusviite"
 
 #: lib/layouts/jbook.layout:3
 #, fuzzy
@@ -10933,29 +10826,24 @@ msgid "Journal of Statistical Software (JSS) version 2"
 msgstr ""
 
 #: lib/layouts/jss.layout:107
-#, fuzzy
 msgid "Plain Keywords"
-msgstr "Avainsanat"
+msgstr "Yksinkertaiset avainsanat"
 
 #: lib/layouts/jss.layout:110
-#, fuzzy
 msgid "Plain Keywords:"
-msgstr "Avainsanat:"
+msgstr "Yksinkertaiset avainsanat:"
 
 #: lib/layouts/jss.layout:113
-#, fuzzy
 msgid "Plain Title"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Yksinkertainen teoksen nimi"
 
 #: lib/layouts/jss.layout:116
-#, fuzzy
 msgid "Plain Title:"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Yksinkertainen teoksen nimi:"
 
 #: lib/layouts/jss.layout:122
-#, fuzzy
 msgid "Short Title:"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Lyhyt teoksen nimi:"
 
 #: lib/layouts/jss.layout:125
 #, fuzzy
@@ -11123,14 +11011,12 @@ msgid "EndOfMessage."
 msgstr ""
 
 #: lib/layouts/lettre.layout:538
-#, fuzzy
 msgid "EndOfFile."
-msgstr "LoppuKalvo"
+msgstr "TiedostonLoppu."
 
 #: lib/layouts/lettre.layout:658
-#, fuzzy
 msgid "P.S.:"
-msgstr "PS:"
+msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:3
 msgid "Lecture Notes in Comp. Science (LNCS)"
@@ -11167,11 +11053,11 @@ msgstr "Tekijä (jatko):"
 
 #: lib/layouts/llncs.layout:212 lib/layouts/svcommon.inc:394
 msgid "TOC Author"
-msgstr "SIS Tekijä"
+msgstr "Sisällysluettelon tekijä"
 
 #: lib/layouts/llncs.layout:216
 msgid "TOC Author:"
-msgstr "SIS Tekijä:"
+msgstr "Sisällysluettelon tekijä:"
 
 #: lib/layouts/llncs.layout:309
 msgid "Case #."
@@ -11196,7 +11082,7 @@ msgstr "Harjoitus #."
 
 #: lib/layouts/llncs.layout:374
 msgid "Note #."
-msgstr "Muistiinpano #"
+msgstr "Muistiinpano #."
 
 #: lib/layouts/llncs.layout:381
 msgid "Problem #."
@@ -11237,27 +11123,23 @@ msgstr ""
 #: lib/layouts/memoir.layout:119 lib/layouts/memoir.layout:134
 #: lib/layouts/memoir.layout:149 lib/layouts/memoir.layout:218
 #: lib/layouts/memoir.layout:239
-#, fuzzy
 msgid "Short Title (TOC)|S"
-msgstr "Lyhyt otsikko"
+msgstr "Lyhyt teoksen nimi (Sisällysluettelo)"
 
 #: lib/layouts/memoir.layout:66 lib/layouts/memoir.layout:81
-#, fuzzy
 msgid "The chapter as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Luku sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:94
 #: lib/layouts/memoir.layout:109 lib/layouts/memoir.layout:124
 #: lib/layouts/memoir.layout:139 lib/layouts/memoir.layout:154
 #: lib/layouts/memoir.layout:223
-#, fuzzy
 msgid "Short Title (Header)"
-msgstr "Lyhyt teoksen nimi"
+msgstr "Lyhyt teoksen nimi (otsake)"
 
 #: lib/layouts/memoir.layout:71
-#, fuzzy
 msgid "The chapter as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Luku sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/memoir.layout:78 lib/layouts/db_stdstarsections.inc:24
 #: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:250
@@ -11265,9 +11147,8 @@ msgid "Chapter*"
 msgstr "Luku*"
 
 #: lib/layouts/memoir.layout:90
-#, fuzzy
 msgid "The section as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Luku sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:95
 #, fuzzy
@@ -11275,44 +11156,36 @@ msgid "The section as it appears in the running headers"
 msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
 
 #: lib/layouts/memoir.layout:105
-#, fuzzy
 msgid "The subsection as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Nimike sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:110
-#, fuzzy
 msgid "The subsection as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Aliluku sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/memoir.layout:120
-#, fuzzy
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Alialiluku sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:125
-#, fuzzy
 msgid "The subsubsection as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Alialiluku sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/memoir.layout:135
-#, fuzzy
 msgid "The paragraph as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Luku sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:140
-#, fuzzy
 msgid "The paragraph as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Luku sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/memoir.layout:150
-#, fuzzy
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Aliluku sellaisena kuin se näkyy sisällysluettelossa"
 
 #: lib/layouts/memoir.layout:155
-#, fuzzy
 msgid "The subparagraph as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Aliluku sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/memoir.layout:162
 msgid "Chapterprecis"
@@ -11367,14 +11240,12 @@ msgid "CVStyle"
 msgstr "Tyyli"
 
 #: lib/layouts/moderncv.layout:46
-#, fuzzy
 msgid "CV Style:"
-msgstr "Kirjasinkoko"
+msgstr "CV:n tyyli:"
 
 #: lib/layouts/moderncv.layout:52
-#, fuzzy
 msgid "Style Options"
-msgstr "Matematiikka-asetukset"
+msgstr "Tyyliasetukset"
 
 #: lib/layouts/moderncv.layout:53
 #, fuzzy
@@ -11440,23 +11311,20 @@ msgid "Family Name:"
 msgstr "&Perhe:"
 
 #: lib/layouts/moderncv.layout:142
-#, fuzzy
 msgid "Line 1"
-msgstr "Viiva yllä|V"
+msgstr "Viiva 1"
 
 #: lib/layouts/moderncv.layout:143 lib/layouts/moderncv.layout:148
 msgid "Optional address line"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:147
-#, fuzzy
 msgid "Line 2"
-msgstr "Viiva yllä|V"
+msgstr "Viiva 2"
 
 #: lib/layouts/moderncv.layout:158
-#, fuzzy
 msgid "Phone Type"
-msgstr "Puhelin"
+msgstr "Puhelimen tyyppi"
 
 #: lib/layouts/moderncv.layout:159
 msgid "can be fixed, mobile or fax"
@@ -11489,16 +11357,15 @@ msgstr "Lisäli&ppu:"
 
 #: lib/layouts/moderncv.layout:208
 msgid "Photo:"
-msgstr ""
+msgstr "Valokuva:"
 
 #: lib/layouts/moderncv.layout:211
 msgid "Height the photo is resized to"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:214
-#, fuzzy
 msgid "Thickness"
-msgstr "Paksu viiva"
+msgstr "Paksuus"
 
 #: lib/layouts/moderncv.layout:215
 msgid "Thickness of the surrounding frame"
@@ -11562,9 +11429,8 @@ msgid "Item with Comment:"
 msgstr "Huomautus"
 
 #: lib/layouts/moderncv.layout:405 lib/layouts/moderncv.layout:406
-#, fuzzy
 msgid "Text"
-msgstr "Teksti:"
+msgstr "Teksti"
 
 #: lib/layouts/moderncv.layout:422
 msgid "ListItem"
@@ -11583,34 +11449,28 @@ msgid "Double Item:"
 msgstr "Kaksink. kohta:"
 
 #: lib/layouts/moderncv.layout:436
-#, fuzzy
 msgid "Left Summary"
-msgstr "Yhteenveto"
+msgstr "Vasen yhteenveto"
 
 #: lib/layouts/moderncv.layout:437
-#, fuzzy
 msgid "Left summary"
-msgstr "Yhteenveto"
+msgstr "Vasen yhteenveto"
 
 #: lib/layouts/moderncv.layout:441
-#, fuzzy
 msgid "Left Text"
-msgstr "Teksti:"
+msgstr "Vasen teksti"
 
 #: lib/layouts/moderncv.layout:442
-#, fuzzy
 msgid "Left text"
-msgstr "LaTeX-teksti"
+msgstr "Vasen teksti"
 
 #: lib/layouts/moderncv.layout:446
-#, fuzzy
 msgid "Right Summary"
-msgstr "Yhteenveto"
+msgstr "Oikea yhteenveto"
 
 #: lib/layouts/moderncv.layout:447
-#, fuzzy
 msgid "Right summary"
-msgstr "Oikea yläotsikko"
+msgstr "Oikea yhteenveto"
 
 #: lib/layouts/moderncv.layout:451
 #, fuzzy
@@ -11623,14 +11483,12 @@ msgid "Double List Item:"
 msgstr "Kaksink. kohta:"
 
 #: lib/layouts/moderncv.layout:459
-#, fuzzy
 msgid "First Item"
-msgstr "Listan kohta:"
+msgstr "Ensimmäinen kohta"
 
 #: lib/layouts/moderncv.layout:460
-#, fuzzy
 msgid "First item"
-msgstr "Ensimmäinen rivi"
+msgstr "Ensimmäinen kohta"
 
 #: lib/layouts/moderncv.layout:468
 msgid "Computer"
@@ -11642,9 +11500,8 @@ msgid "MakeCVtitle"
 msgstr "Runon otsikko"
 
 #: lib/layouts/moderncv.layout:475
-#, fuzzy
 msgid "Make CV Title"
-msgstr "SIS Otsikko:"
+msgstr "Tee CV:n otsikko"
 
 #: lib/layouts/moderncv.layout:482
 #, fuzzy
@@ -11667,19 +11524,16 @@ msgid "Close Letter"
 msgstr "Kirje"
 
 #: lib/layouts/moderncv.layout:521
-#, fuzzy
 msgid "Recipient"
-msgstr "Vastaanotettu"
+msgstr "Vastaanottaja"
 
 #: lib/layouts/moderncv.layout:529
-#, fuzzy
 msgid "Company Name"
-msgstr "TeX-tietoja"
+msgstr "Yrityksen nimi"
 
 #: lib/layouts/moderncv.layout:530
-#, fuzzy
 msgid "Company name"
-msgstr "Haarat"
+msgstr "Yrityksen nimi"
 
 #: lib/layouts/moderncv.layout:573
 #, fuzzy
@@ -11687,9 +11541,8 @@ msgid "Enclosing"
 msgstr "Lopuksi"
 
 #: lib/layouts/moderncv.layout:578 lib/layouts/svcommon.inc:519
-#, fuzzy
 msgid "Alternative Name"
-msgstr "&Vaihtoehtoinen kieli:"
+msgstr "&Vaihtoehtoinen nimi"
 
 #: lib/layouts/moderncv.layout:579
 msgid "Alternative instead of 'Enclosure'"
@@ -11950,14 +11803,12 @@ msgid "Optional argument to the altaffiliation command"
 msgstr ""
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:165
-#, fuzzy
 msgid "Affiliation (none)"
-msgstr "Järjestö"
+msgstr "Järjestö (ei mitään)"
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:168
-#, fuzzy
 msgid "No affiliation"
-msgstr "Vaiht. järjestö"
+msgstr "Ei järjestöä"
 
 #: lib/layouts/revtex4-1.layout:117 lib/layouts/revtex4.layout:210
 msgid "Electronic Address:"
@@ -11996,9 +11847,8 @@ msgid "Preprint"
 msgstr "Esipainos"
 
 #: lib/layouts/revtex4-1.layout:200
-#, fuzzy
 msgid "Short title as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Lyhyt otsikko sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/revtex4-1.layout:218
 msgid "acknowledgments"
@@ -12025,37 +11875,31 @@ msgstr "Leveä teksti"
 
 #: lib/layouts/revtex4-1.layout:274
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: lib/layouts/revtex4-1.layout:277
-#, fuzzy
 msgid "List of Videos"
-msgstr "Kalvoluettelo"
+msgstr "Videoluettelo"
 
 #: lib/layouts/revtex4-1.layout:287
-#, fuzzy
 msgid "Float Link"
-msgstr "Kelluvien asetukset"
+msgstr "Kelluva linkki"
 
 #: lib/layouts/revtex4-1.layout:289
-#, fuzzy
 msgid "Float link"
-msgstr "Kelluvien asetukset"
+msgstr "Kelluva linkki"
 
 #: lib/layouts/revtex4-1.layout:300
-#, fuzzy
 msgid "lowercase text"
-msgstr "Pienet"
+msgstr "pienikirjaiminen teksti"
 
 #: lib/layouts/revtex4-1.layout:312
-#, fuzzy
 msgid "Online cite"
-msgstr "Lisää lähdeviite"
+msgstr "Lisää kirjallisuusviite"
 
 #: lib/layouts/revtex4-1.layout:316
-#, fuzzy
 msgid "online cite"
-msgstr "Lisää lähdeviite"
+msgstr "Lisää kirjallisuusviite"
 
 #: lib/layouts/revtex4-1.layout:318
 #, fuzzy
@@ -12369,9 +12213,8 @@ msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:206
-#, fuzzy
 msgid "The title as it appears in the running headers"
-msgstr "Nimike sellaisena kuin se näkyy asiakirjassa."
+msgstr "Teoksen nimi sellaisena kuin se näkyy jatkuvissa otsakkeissa"
 
 #: lib/layouts/siamltex.layout:319 lib/layouts/amsdefs.inc:193
 msgid "Subjectclass"
@@ -12471,7 +12314,7 @@ msgstr ""
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
-msgstr "Uusi kalvo"
+msgstr "Uusi kalvo:"
 
 #: lib/layouts/slides.layout:129
 msgid "Overlay"
@@ -12479,7 +12322,7 @@ msgstr "Kalvokerros"
 
 #: lib/layouts/slides.layout:144
 msgid "New Overlay:"
-msgstr "uusi kalvokerros"
+msgstr "uusi kalvokerros:"
 
 #: lib/layouts/slides.layout:184
 msgid "New Note:"
@@ -12599,9 +12442,8 @@ msgid "CR Subject Classification"
 msgstr "AMS aihekategoriat."
 
 #: lib/layouts/svglobal3.layout:87
-#, fuzzy
 msgid "Solution \\thesolution"
-msgstr "Päätelmä."
+msgstr "Ratkaisu \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Springer SV Jour/Jog"
@@ -12802,7 +12644,7 @@ msgstr ""
 
 #: lib/layouts/aapaper.inc:54
 msgid "email:"
-msgstr "Sähköposti:"
+msgstr "sähköposti:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
@@ -12842,7 +12684,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:143 lib/layouts/agu_stdclass.inc:145
 #: lib/layouts/agu_stdtitle.inc:56
 msgid "Citation-number"
-msgstr "Lähdeviitteen nro"
+msgstr "kirjallisuusviitteen nro"
 
 #: lib/layouts/agu_stdclass.inc:167 lib/layouts/agu_stdclass.inc:169
 msgid "Day"
@@ -12895,7 +12737,7 @@ msgstr "AGU-lehti:"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr "Lähdeviitteen nro:"
+msgstr "Kirjallisuusviitteen nro:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
@@ -13000,11 +12842,11 @@ msgstr "Julkaistu-verkkoon:"
 
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:90
 msgid "Citation"
-msgstr "Lähdeviite"
+msgstr "Kirjallisuusviite"
 
 #: lib/layouts/agu_stdtitle.inc:267
 msgid "Citation:"
-msgstr "Lähdeviite:"
+msgstr "Kirjallisuusviite:"
 
 #: lib/layouts/agu_stdtitle.inc:272
 msgid "Posting-order"
@@ -13161,7 +13003,7 @@ msgstr "Nykyinen osoite:"
 
 #: lib/layouts/amsdefs.inc:153
 msgid "E-mail address:"
-msgstr "Palautusosoite:"
+msgstr "Sähköpostiosoite:"
 
 #: lib/layouts/amsdefs.inc:168
 msgid "Key words and phrases:"
@@ -13433,11 +13275,11 @@ msgstr "\\Alph{enumiv}."
 
 #: lib/layouts/stdcounters.inc:68
 msgid "Equation ##"
-msgstr "Kaava # #"
+msgstr "Kaava ##"
 
 #: lib/layouts/stdcounters.inc:72 lib/layouts/stdcounters.inc:76
 msgid "Footnote ##"
-msgstr "Alaviite # #"
+msgstr "Alaviite ##"
 
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
@@ -13463,7 +13305,7 @@ msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:262 lib/layouts/stdinsets.inc:268
 msgid "Listings[[List of Listings]]"
-msgstr "Ohjelmalistausten luettelo"
+msgstr "Listaukset[[Luettelo listauksia]]"
 
 #: lib/layouts/stdinsets.inc:296 src/frontends/qt4/GuiDocument.cpp:1421
 msgid "Listings[[inset]]"
@@ -13502,9 +13344,8 @@ msgid "Chapter \\thechapter"
 msgstr "Luku \\thechapter"
 
 #: lib/layouts/stdsections.inc:48
-#, fuzzy
 msgid "Appendix \\thechapter"
-msgstr "Liite \\Alph{chapter}"
+msgstr "Liite \\thechapter"
 
 #: lib/layouts/svcommon.inc:68
 #, fuzzy
@@ -13559,37 +13400,31 @@ msgstr "Tekijätiedot:"
 
 #: lib/layouts/svcommon.inc:387
 msgid "TOC title:"
-msgstr "SIS Otsikko:"
+msgstr "Sisällysluettelon otsikko:"
 
 #: lib/layouts/svcommon.inc:397
-#, fuzzy
 msgid "TOC author:"
-msgstr "SIS Tekijä:"
+msgstr "Sisällysluettelon tekijä:"
 
 #: lib/layouts/svcommon.inc:400
-#, fuzzy
 msgid "Running Title"
-msgstr "Teoksen nimi (jatko):"
+msgstr "Teoksen nimi (jatko)"
 
 #: lib/layouts/svcommon.inc:407
-#, fuzzy
 msgid "Running Author"
-msgstr "Tekijä (jatko):"
+msgstr "Tekijä (jatko)"
 
 #: lib/layouts/svcommon.inc:418
-#, fuzzy
 msgid "Running chapter:"
-msgstr "Tekijä (jatko):"
+msgstr "Kappale (jatko):"
 
 #: lib/layouts/svcommon.inc:421
-#, fuzzy
 msgid "Running Section"
-msgstr "Teoksen nimi (jatko):"
+msgstr "Luku (jatko)"
 
 #: lib/layouts/svcommon.inc:424
-#, fuzzy
 msgid "Running section:"
-msgstr "Teoksen nimi (jatko):"
+msgstr "Luku (jatko):"
 
 #: lib/layouts/svcommon.inc:448
 msgid "Abstract*"
@@ -13658,57 +13493,48 @@ msgid "Exercise \\theexercise."
 msgstr "Harjoitus @Section@.\\arabic{theorem}."
 
 #: lib/layouts/theorems-ams.inc:79 lib/layouts/theorems.inc:79
-#, fuzzy
 msgid "Corollary \\thetheorem."
-msgstr "Seurauslause \\arabic{theorem}"
+msgstr "Seuraus \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:97 lib/layouts/theorems.inc:97
 msgid "Lemma \\thetheorem."
 msgstr ""
 
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems.inc:115
-#, fuzzy
 msgid "Proposition \\thetheorem."
-msgstr "Väittämä \\arabic{theorem}."
+msgstr "Väite \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:133 lib/layouts/theorems.inc:133
-#, fuzzy
 msgid "Conjecture \\thetheorem."
-msgstr "Otaksuma \\arabic{theorem}"
+msgstr "Otaksuma \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:151 lib/layouts/theorems.inc:151
 msgid "Fact \\thetheorem."
 msgstr ""
 
 #: lib/layouts/theorems-ams.inc:169 lib/layouts/theorems.inc:169
-#, fuzzy
 msgid "Definition \\thetheorem."
-msgstr "Määritelmä \\arabic{theorem}"
+msgstr "Määritelmä \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:193 lib/layouts/theorems.inc:193
-#, fuzzy
 msgid "Example \\thetheorem."
-msgstr "Esimerkki \\arabic{theorem}"
+msgstr "Esimerkki \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:210 lib/layouts/theorems.inc:210
-#, fuzzy
 msgid "Problem \\thetheorem."
-msgstr "Ongelma \\arabic{theorem}"
+msgstr "Ongelma \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:227 lib/layouts/theorems.inc:227
-#, fuzzy
 msgid "Exercise \\thetheorem."
-msgstr "Harjoitus @Section@.\\arabic{theorem}."
+msgstr "Harjoitus \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:244 lib/layouts/theorems.inc:244
-#, fuzzy
 msgid "Solution \\thetheorem."
-msgstr "Johtopäätös \\thetheorem."
+msgstr "Ratkaisu \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:262 lib/layouts/theorems.inc:262
-#, fuzzy
 msgid "Remark \\thetheorem."
-msgstr "Huomautus \\arabic{theorem}"
+msgstr "Huomio \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:287 lib/layouts/theorems.inc:287
 msgid "Claim \\thetheorem."
@@ -13858,7 +13684,7 @@ msgstr "Oletuskappaleväli"
 #: lib/layouts/basic.module:6 lib/layouts/jurabib.module:8
 #: lib/layouts/natbib.module:9
 msgid "Citation engine"
-msgstr "Lähdeviitemoottori"
+msgstr "Kirjallisuusviitemoottori"
 
 #: lib/layouts/basic.module:22 lib/layouts/jurabib.module:49
 #: lib/layouts/natbib.module:44
@@ -14024,9 +13850,8 @@ msgid "Header/Footer"
 msgstr "Ylä/alatunniste"
 
 #: lib/layouts/customHeadersFooters.module:20
-#, fuzzy
 msgid "Even Header"
-msgstr "Vasen yläotsikko"
+msgstr "Parillinen ylätunniste"
 
 #: lib/layouts/customHeadersFooters.module:21
 msgid "Alternative text for the even header"
@@ -14135,9 +13960,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "LaTeX"
+msgstr "Korjaa LaTeX"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -14468,7 +14292,7 @@ msgstr ""
 
 #: lib/layouts/graphicboxes.module:72
 msgid "Angle"
-msgstr "Ku&lma:"
+msgstr "Kulma"
 
 #: lib/layouts/graphicboxes.module:73
 msgid "Rotation angle in degrees (counterclockwise)"
@@ -14569,9 +14393,8 @@ msgid "before"
 msgstr "edeltävä teksti"
 
 #: lib/layouts/jurabib.module:54
-#, fuzzy
 msgid "short title"
-msgstr "Lyhyt teoksen nimi:"
+msgstr "lyhyt teoksen nimi"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:640
 msgid "Rnw (knitr)"
@@ -14637,9 +14460,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
-#, fuzzy
 msgid "Linguistics"
-msgstr "Lista"
+msgstr "Lingvistiikka"
 
 #: lib/layouts/linguistics.module:7
 msgid ""
@@ -14729,9 +14551,8 @@ msgid "Concepts"
 msgstr "Hyväksy"
 
 #: lib/layouts/linguistics.module:182
-#, fuzzy
 msgid "concept"
-msgstr "Hyväksy"
+msgstr "konsepti"
 
 #: lib/layouts/linguistics.module:196
 msgid "Meaning"
@@ -14820,9 +14641,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/multicol.module:19
-#, fuzzy
 msgid "Number of Columns"
-msgstr "Sarakkeiden määrä"
+msgstr "Palstojen määrä"
 
 #: lib/layouts/multicol.module:20
 #, fuzzy
@@ -14851,9 +14671,8 @@ msgid "Natbib"
 msgstr "Natbib"
 
 #: lib/layouts/natbibapa.module:2
-#, fuzzy
 msgid "Natbibapa"
-msgstr "Natbib"
+msgstr "Natbibapa"
 
 #: lib/layouts/natbibapa.module:9
 msgid ""
@@ -14863,9 +14682,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/noweb.module:2
-#, fuzzy
 msgid "Noweb"
-msgstr "NoWeb"
+msgstr "Noweb"
 
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
@@ -14986,9 +14804,8 @@ msgid "Compact Description Options"
 msgstr "Kuvausluettelo"
 
 #: lib/layouts/pdfcomment.module:2
-#, fuzzy
 msgid "PDF Comments"
-msgstr "Huomautus"
+msgstr "PDF-huomautukset"
 
 #: lib/layouts/pdfcomment.module:7
 msgid ""
@@ -15201,14 +15018,12 @@ msgid "Insert the tooltip text here"
 msgstr "Oletusarvoisen tulostimen nimi"
 
 #: lib/layouts/pdfcomment.module:200
-#, fuzzy
 msgid "List of PDF Comments"
-msgstr "Kuvien luettelo"
+msgstr "PDF-huomautusten lista"
 
 #: lib/layouts/pdfcomment.module:214
-#, fuzzy
 msgid "[List of PDF Comments]"
-msgstr "Kuvien luettelo"
+msgstr "[PDF-huomautusten lista]"
 
 #: lib/layouts/pdfcomment.module:223
 #, fuzzy
@@ -15220,9 +15035,8 @@ msgid "Insert list options here (see pdfcomment manual)"
 msgstr ""
 
 #: lib/layouts/pdfform.module:2
-#, fuzzy
 msgid "PDF Form"
-msgstr "Muoto"
+msgstr "PDF-lomake"
 
 #: lib/layouts/pdfform.module:7
 msgid ""
@@ -15236,9 +15050,8 @@ msgid "Begin PDF Form"
 msgstr ""
 
 #: lib/layouts/pdfform.module:19
-#, fuzzy
 msgid "PDF form"
-msgstr "SIS Tekijä:"
+msgstr "PDF-lomake"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
 #, fuzzy
@@ -15753,9 +15566,8 @@ msgid "Default value for argument (keep empty!)"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:153 lib/layouts/tcolorbox.module:155
-#, fuzzy
 msgid "Custom Color Box 1"
-msgstr "Kirjasimen väri"
+msgstr "Mukautettu värilaatikko 1"
 
 #: lib/layouts/tcolorbox.module:158
 #, fuzzy
@@ -15768,24 +15580,20 @@ msgid "Insert more color box options here"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
 #: lib/layouts/tcolorbox.module:164 lib/layouts/tcolorbox.module:166
-#, fuzzy
 msgid "Custom Color Box 2"
-msgstr "Kirjasimen väri"
+msgstr "Mukautettu värilaatikko 2"
 
 #: lib/layouts/tcolorbox.module:170 lib/layouts/tcolorbox.module:172
-#, fuzzy
 msgid "Custom Color Box 3"
-msgstr "Kirjasimen väri"
+msgstr "Mukautettu värilaatikko 3"
 
 #: lib/layouts/tcolorbox.module:176 lib/layouts/tcolorbox.module:178
-#, fuzzy
 msgid "Custom Color Box 4"
-msgstr "Kirjasimen väri"
+msgstr "Mukautettu värilaatikko 4"
 
 #: lib/layouts/tcolorbox.module:182 lib/layouts/tcolorbox.module:184
-#, fuzzy
 msgid "Custom Color Box 5"
-msgstr "Kirjasimen väri"
+msgstr "Mukautettu värilaatikko 5"
 
 #: lib/layouts/theorems-ams-bytype.module:2
 #, fuzzy
@@ -16318,9 +16126,8 @@ msgid "Armenian"
 msgstr "armenia"
 
 #: lib/languages:184
-#, fuzzy
 msgid "English (Australia)"
-msgstr "englanti"
+msgstr "englanti (Australia)"
 
 #: lib/languages:196
 #, fuzzy
@@ -16329,7 +16136,7 @@ msgstr "saksa (uusi oikeinkirjoitus)"
 
 #: lib/languages:208
 msgid "German (Austria)"
-msgstr ""
+msgstr "Saksa (Itävalta)"
 
 #: lib/languages:218
 msgid "Indonesian"
@@ -16366,7 +16173,7 @@ msgstr "bulgaria"
 
 #: lib/languages:300
 msgid "English (Canada)"
-msgstr "englanti (kanada)"
+msgstr "englanti (Kanada)"
 
 #: lib/languages:311
 msgid "French (Canada)"
@@ -16386,7 +16193,7 @@ msgstr "kiina (perinteinen)"
 
 #: lib/languages:353
 msgid "Coptic"
-msgstr ""
+msgstr "kopti"
 
 #: lib/languages:360
 msgid "Croatian"
@@ -16442,9 +16249,8 @@ msgid "Georgian"
 msgstr "saksa"
 
 #: lib/languages:507
-#, fuzzy
 msgid "German (old spelling)"
-msgstr "saksa (uusi oikeinkirjoitus)"
+msgstr "saksa (vanha oikeinkirjoitus)"
 
 #: lib/languages:518
 msgid "German"
@@ -16452,12 +16258,11 @@ msgstr "saksa"
 
 #: lib/languages:533
 msgid "German (Switzerland)"
-msgstr ""
+msgstr "saksa (Sveitsi)"
 
 #: lib/languages:547
-#, fuzzy
 msgid "German (Switzerland, old spelling)"
-msgstr "saksa (uusi oikeinkirjoitus)"
+msgstr "saksa (Sveitsi, vanha oikeinkirjoitus)"
 
 #: lib/languages:558 lib/ui/stdtoolbars.inc:305 lib/ui/stdtoolbars.inc:594
 #: src/frontends/qt4/GuiSymbols.cpp:60
@@ -16515,9 +16320,8 @@ msgid "Kurmanji"
 msgstr "Vastaanottajan osoite"
 
 #: lib/languages:710 src/frontends/qt4/GuiSymbols.cpp:75
-#, fuzzy
 msgid "Lao"
-msgstr "Muotoilu "
+msgstr "Lao"
 
 #: lib/languages:729
 msgid "Latvian"
@@ -16533,9 +16337,8 @@ msgid "Lower Sorbian"
 msgstr "ylisorbia"
 
 #: lib/languages:762
-#, fuzzy
 msgid "Hungarian"
-msgstr "bulgaria"
+msgstr "unkari"
 
 #: lib/languages:773
 #, fuzzy
@@ -16547,9 +16350,8 @@ msgid "Mongolian"
 msgstr ""
 
 #: lib/languages:792
-#, fuzzy
 msgid "English (New Zealand)"
-msgstr "englanti"
+msgstr "englanti (Uusi Seelanti)"
 
 #: lib/languages:802
 msgid "Norwegian (Bokmaal)"
@@ -16614,9 +16416,8 @@ msgid "Spanish"
 msgstr "espanja"
 
 #: lib/languages:963
-#, fuzzy
 msgid "Spanish (Mexico)"
-msgstr "espanja"
+msgstr "espanja (Meksiko)"
 
 #: lib/languages:975
 msgid "Swedish"
@@ -16656,9 +16457,8 @@ msgid "Upper Sorbian"
 msgstr "ylisorbia"
 
 #: lib/languages:1088
-#, fuzzy
 msgid "Vietnamese"
-msgstr "Tiedostonimi"
+msgstr "vietnam"
 
 #: lib/languages:1099
 msgid "Welsh"
@@ -17145,7 +16945,7 @@ msgstr "AlignedAt-ympäristö"
 
 #: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:454
 msgid "Gathered Environment|h"
-msgstr "Gatheredympäristö"
+msgstr "Gathered-ympäristö"
 
 #: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:455
 msgid "Split Environment|S"
@@ -17206,14 +17006,12 @@ msgid "Number Whole Formula|N"
 msgstr "Numeroitu kaava"
 
 #: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:236
-#, fuzzy
 msgid "Number This Line|u"
-msgstr "Rivin numerointi pois/päälle|r"
+msgstr "Numeroi tämä rivi"
 
 #: lib/ui/stdcontext.inc:58
-#, fuzzy
 msgid "Equation Label|L"
-msgstr "Siirry nimikkeeseen"
+msgstr "Kaavan nimike"
 
 #: lib/ui/stdcontext.inc:59
 #, fuzzy
@@ -17246,19 +17044,19 @@ msgstr "Poista viiva alta"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:253
 msgid "Add Line to Left"
-msgstr "Viiva vasemmalla|i"
+msgstr "Lisää viiva vasemmalle"
 
 #: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:254
 msgid "Add Line to Right"
-msgstr "Viiva oikealla|o"
+msgstr "Lisää viiva oikealle"
 
 #: lib/ui/stdcontext.inc:72 lib/ui/stdmenus.inc:255
 msgid "Delete Line to Left"
-msgstr "Poista viiva vasemmalla"
+msgstr "Poista viiva vasemmalta"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdmenus.inc:256
 msgid "Delete Line to Right"
-msgstr "Poista viiva oikealla"
+msgstr "Poista viiva oikealta"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
@@ -17314,9 +17112,8 @@ msgid "Formatted Reference|t"
 msgstr "Muotoiltu viittaus"
 
 #: lib/ui/stdcontext.inc:96
-#, fuzzy
 msgid "Textual Reference|x"
-msgstr "Seuraava viite"
+msgstr "Tekstuaalinen viite"
 
 #: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
 #: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
@@ -17374,17 +17171,16 @@ msgid "Simple Frame|F"
 msgstr "Yksinkertainen kehys"
 
 #: lib/ui/stdcontext.inc:173
-#, fuzzy
 msgid "Simple Frame, Page Breaks|P"
-msgstr "upotteen kehys"
+msgstr "Yksinkertainen kehys, ei sido sivurajojen yli"
 
 #: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:490
 msgid "Oval, Thin|a"
-msgstr "Ovaalilaatikko, ohutreunainen"
+msgstr "Ovaali, ohut"
 
 #: lib/ui/stdcontext.inc:175 lib/ui/stdmenus.inc:491
 msgid "Oval, Thick|v"
-msgstr "Ovaalilaatikko, paksureunainen"
+msgstr "Ovaali, paksu"
 
 #: lib/ui/stdcontext.inc:176 lib/ui/stdmenus.inc:492
 msgid "Drop Shadow|w"
@@ -17404,7 +17200,7 @@ msgstr "Muistiinpano|i"
 
 #: lib/ui/stdcontext.inc:196
 msgid "Comment|m"
-msgstr "Kommentti"
+msgstr "Huomautus"
 
 #: lib/ui/stdcontext.inc:197 lib/ui/stdmenus.inc:500
 msgid "Greyed Out|G"
@@ -17460,43 +17256,36 @@ msgid "Protected Half Quad Space (Enspace)|E"
 msgstr "Kova välilyönti|K"
 
 #: lib/ui/stdcontext.inc:224 lib/ui/stdcontext.inc:250
-#, fuzzy
 msgid "Quad Space|Q"
-msgstr "Väli"
+msgstr "Nelinkertainen väli"
 
 #: lib/ui/stdcontext.inc:225 lib/ui/stdcontext.inc:251
-#, fuzzy
 msgid "Double Quad Space|u"
-msgstr "Väli"
+msgstr "Kahdeksankertainen väli"
 
 #: lib/ui/stdcontext.inc:226
 msgid "Horizontal Fill|F"
-msgstr "Vaakatäyte:|#V"
+msgstr "Vaakatäyte|V"
 
 #: lib/ui/stdcontext.inc:227
-#, fuzzy
 msgid "Protected Horizontal Fill|i"
-msgstr "Vaakakumi"
+msgstr "Suojattu vaakatäyte"
 
 #: lib/ui/stdcontext.inc:228
-#, fuzzy
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (pisteet)"
 
 #: lib/ui/stdcontext.inc:229
-#, fuzzy
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (viiva)"
 
 #: lib/ui/stdcontext.inc:230
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (nuoli vasemmalle)"
 
 #: lib/ui/stdcontext.inc:231
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (nuoli oikealle)"
 
 #: lib/ui/stdcontext.inc:232
 #, fuzzy
@@ -17514,24 +17303,20 @@ msgid "Custom Length|C"
 msgstr "Huomautus"
 
 #: lib/ui/stdcontext.inc:244
-#, fuzzy
 msgid "Medium Space|M"
-msgstr "Keskileveä väli\t\\:"
+msgstr "Keskisuuri väli"
 
 #: lib/ui/stdcontext.inc:245
-#, fuzzy
 msgid "Thick Space|h"
-msgstr "Ohut väli"
+msgstr "Paksu väli"
 
 #: lib/ui/stdcontext.inc:247
-#, fuzzy
 msgid "Negative Medium Space|u"
-msgstr "Negatiivinen väli\t\\!"
+msgstr "Keskisuuri negatiivinen väli"
 
 #: lib/ui/stdcontext.inc:248
-#, fuzzy
 msgid "Negative Thick Space|i"
-msgstr "Negatiivinen väli\t\\!"
+msgstr "Paksu negatiivinen väli"
 
 #: lib/ui/stdcontext.inc:261
 #, fuzzy
@@ -17569,11 +17354,11 @@ msgstr "Asetukset..."
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdcontext.inc:559
 msgid "Include|c"
-msgstr "Sisällytä (include)"
+msgstr "Sisällytä"
 
 #: lib/ui/stdcontext.inc:276 lib/ui/stdcontext.inc:560
 msgid "Input|p"
-msgstr "Sisällytä (input)"
+msgstr "Syötä"
 
 #: lib/ui/stdcontext.inc:277 lib/ui/stdcontext.inc:561
 #, fuzzy
@@ -17663,19 +17448,19 @@ msgstr "Siirrä kappale alaspäin"
 
 #: lib/ui/stdcontext.inc:331
 msgid "Promote Section|r"
-msgstr "Korota otsikkotaso"
+msgstr "Korota luku"
 
 #: lib/ui/stdcontext.inc:332
 msgid "Demote Section|m"
-msgstr "Laske otsikkotaso"
+msgstr "Laske luku"
 
 #: lib/ui/stdcontext.inc:333
 msgid "Move Section Down|D"
-msgstr "Siirrä kappale alaspäin"
+msgstr "Siirrä luku alas"
 
 #: lib/ui/stdcontext.inc:334 lib/ui/stdcontext.inc:632
 msgid "Move Section Up|U"
-msgstr "Siirrä kappale ylöspäin"
+msgstr "Siirrä luku ylös"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:371
 msgid "Insert Regular Expression"
@@ -17719,19 +17504,16 @@ msgid "Anything Non-Empty|o"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:357
-#, fuzzy
 msgid "Any Word|W"
-msgstr "MS Word|W"
+msgstr "Mikä tahansa sana"
 
 #: lib/ui/stdcontext.inc:358
-#, fuzzy
 msgid "Any Number|N"
-msgstr "Ei numeroa"
+msgstr "Mikä tahansa numero"
 
 #: lib/ui/stdcontext.inc:359
-#, fuzzy
 msgid "User Defined|U"
-msgstr "T&ulostin:"
+msgstr "Käyttäjän määrittämä"
 
 #: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:260
 #, fuzzy
@@ -17869,9 +17651,8 @@ msgid "Move Column Left"
 msgstr "Siirrä sarake vasemmalle"
 
 #: lib/ui/stdcontext.inc:444 lib/ui/stdmenus.inc:194
-#, fuzzy
 msgid "Multi-page Table|g"
-msgstr "Taulukon paikka"
+msgstr "Monisivuinen taulukko"
 
 #: lib/ui/stdcontext.inc:445
 #, fuzzy
@@ -17905,38 +17686,32 @@ msgid "Class|C"
 msgstr "Luokka"
 
 #: lib/ui/stdcontext.inc:463
-#, fuzzy
 msgid "File Revision|R"
-msgstr "Versio"
+msgstr "Tiedostoversio"
 
 #: lib/ui/stdcontext.inc:464
-#, fuzzy
 msgid "Tree Revision|T"
-msgstr "Versio"
+msgstr "Puuversio"
 
 #: lib/ui/stdcontext.inc:465
-#, fuzzy
 msgid "Revision Author|A"
-msgstr "Versiohistoriikki"
+msgstr "Version tekijä"
 
 #: lib/ui/stdcontext.inc:466
-#, fuzzy
 msgid "Revision Date|D"
-msgstr "Versio"
+msgstr "Version päiväys"
 
 #: lib/ui/stdcontext.inc:467
-#, fuzzy
 msgid "Revision Time|i"
-msgstr "Versio"
+msgstr "Version aika"
 
 #: lib/ui/stdcontext.inc:469
 msgid "LyX Version|X"
 msgstr "LyX-versio"
 
 #: lib/ui/stdcontext.inc:473
-#, fuzzy
 msgid "Document Info|D"
-msgstr "Asiakirja"
+msgstr "Asiakirjan tietoja"
 
 #: lib/ui/stdcontext.inc:475
 msgid "Copy Text|o"
@@ -17944,12 +17719,11 @@ msgstr "Kopioi teksti"
 
 #: lib/ui/stdcontext.inc:484 lib/ui/stdcontext.inc:507
 msgid "Activate Branch|A"
-msgstr "Aktivoi haara"
+msgstr "Kytke päälle haara"
 
 #: lib/ui/stdcontext.inc:485 lib/ui/stdcontext.inc:508
-#, fuzzy
 msgid "Deactivate Branch|e"
-msgstr "Kytke pois/päälle"
+msgstr "Kytke pois haara"
 
 #: lib/ui/stdcontext.inc:486
 #, fuzzy
@@ -17971,37 +17745,32 @@ msgid "Insert Reference at Cursor Position|I"
 msgstr ""
 
 #: lib/ui/stdcontext.inc:591
-#, fuzzy
 msgid "All Indexes|A"
-msgstr "Avaa kaikki upotteet"
+msgstr "Kaikki hakemistot"
 
 #: lib/ui/stdcontext.inc:594
 msgid "Subindex|b"
-msgstr ""
+msgstr "Alihakemisto"
 
 #: lib/ui/stdcontext.inc:622 lib/ui/stdmenus.inc:543
 msgid "Reject Change|R"
 msgstr "Hylkää muutos"
 
 #: lib/ui/stdcontext.inc:630
-#, fuzzy
 msgid "Promote Section|P"
-msgstr "Tyhjä Kappale"
+msgstr "Korota luku"
 
 #: lib/ui/stdcontext.inc:631
-#, fuzzy
 msgid "Demote Section|D"
-msgstr "Tyhjä Kappale"
+msgstr "Laske luku"
 
 #: lib/ui/stdcontext.inc:633
-#, fuzzy
 msgid "Move Section Down|w"
-msgstr "Sulje kappale"
+msgstr "Siirrä luku alas"
 
 #: lib/ui/stdcontext.inc:635
-#, fuzzy
 msgid "Select Section|S"
-msgstr "&Valinta"
+msgstr "Valitse luku"
 
 #: lib/ui/stdcontext.inc:643
 #, fuzzy
@@ -18242,14 +18011,12 @@ msgid "Box Settings...|x"
 msgstr "Laatikoiden asetukset..."
 
 #: lib/ui/stdmenus.inc:145
-#, fuzzy
 msgid "Index Entry Settings...|y"
-msgstr "Tyköupotteiden asetukset..."
+msgstr "Hakemistoalkioiden asetukset..."
 
 #: lib/ui/stdmenus.inc:146
-#, fuzzy
 msgid "Index Settings...|x"
-msgstr "Laatikoiden asetukset..."
+msgstr "Hakemiston asetukset..."
 
 #: lib/ui/stdmenus.inc:147
 #, fuzzy
@@ -18266,7 +18033,7 @@ msgstr "Taulukkoasetukset..."
 
 #: lib/ui/stdmenus.inc:156
 msgid "Paste from HTML|H"
-msgstr ""
+msgstr "Liitä HTML:stä"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Paste from LaTeX|L"
@@ -18298,7 +18065,7 @@ msgstr "Perusteksti"
 
 #: lib/ui/stdmenus.inc:165
 msgid "Plain Text, Join Lines|J"
-msgstr "Perusteksti, yhd. rivejä"
+msgstr "Perusteksti, yhdistä rivit"
 
 #: lib/ui/stdmenus.inc:167
 msgid "Selection|S"
@@ -18314,7 +18081,7 @@ msgstr "Poista tekstityyli"
 
 #: lib/ui/stdmenus.inc:185
 msgid "Customized...|C"
-msgstr "Räätälöity...|M"
+msgstr "Mukautettu...|M"
 
 #: lib/ui/stdmenus.inc:187
 msgid "Capitalize|a"
@@ -18326,7 +18093,7 @@ msgstr "Versaalit"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Lowercase|L"
-msgstr "Pienet"
+msgstr "Pienet kirjaimet"
 
 #: lib/ui/stdmenus.inc:195
 #, fuzzy
@@ -18407,15 +18174,15 @@ msgstr "Käytä matematiikkaohjelmaa|m"
 
 #: lib/ui/stdmenus.inc:248
 msgid "Add Line Above|A"
-msgstr "Viiva yllä"
+msgstr "Lisää viiva ylle"
 
 #: lib/ui/stdmenus.inc:250
 msgid "Delete Line Above|D"
-msgstr "Poista viiva yllä"
+msgstr "Poista viiva yltä"
 
 #: lib/ui/stdmenus.inc:251
 msgid "Delete Line Below|e"
-msgstr "Poista viiva alla"
+msgstr "Poista viiva alta"
 
 #: lib/ui/stdmenus.inc:263
 #, fuzzy
@@ -18626,7 +18393,7 @@ msgstr "Laatikko[[Menu]]|x"
 
 #: lib/ui/stdmenus.inc:373
 msgid "Citation...|C"
-msgstr "Lähdeviite...|L"
+msgstr "Kirjallisuusviite...|L"
 
 #: lib/ui/stdmenus.inc:374
 msgid "Cross-Reference...|R"
@@ -18670,7 +18437,7 @@ msgstr "TeX-koodi"
 
 #: lib/ui/stdmenus.inc:388
 msgid "Program Listing[[Menu]]"
-msgstr "Ohjelmalistaus[[Valikko]]"
+msgstr "Ohjelmalistaus[[Menu]]"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Preview|w"
@@ -18678,11 +18445,11 @@ msgstr "Esikatselu|E"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Symbols...|b"
-msgstr "Symboli|S"
+msgstr "Symbolit..."
 
 #: lib/ui/stdmenus.inc:395
 msgid "Ellipsis|i"
-msgstr "Ellipsis (...)|E"
+msgstr "Ellipsis|E"
 
 #: lib/ui/stdmenus.inc:396
 msgid "End of Sentence|E"
@@ -18717,29 +18484,24 @@ msgid "Phonetic Symbols|P"
 msgstr "Foneettiset merkit"
 
 #: lib/ui/stdmenus.inc:404
-#, fuzzy
 msgid "Logos|L"
-msgstr "Logo"
+msgstr "Logot"
 
 #: lib/ui/stdmenus.inc:408
-#, fuzzy
 msgid "LyX Logo|L"
-msgstr "Logoni"
+msgstr "LyX-logo"
 
 #: lib/ui/stdmenus.inc:409
-#, fuzzy
 msgid "TeX Logo|T"
-msgstr "LaTeX-lokitiedosto"
+msgstr "TeX-logo"
 
 #: lib/ui/stdmenus.inc:410
-#, fuzzy
 msgid "LaTeX Logo|a"
-msgstr "LaTeX-lokitiedosto"
+msgstr "LaTeX-logo"
 
 #: lib/ui/stdmenus.inc:411
-#, fuzzy
 msgid "LaTeX2e Logo|e"
-msgstr "LaTeX-lokitiedosto"
+msgstr "LaTeX2e-logo"
 
 #: lib/ui/stdmenus.inc:415
 msgid "Superscript|S"
@@ -18767,7 +18529,7 @@ msgstr "Pystyväli..."
 
 #: lib/ui/stdmenus.inc:424
 msgid "Phantom|m"
-msgstr "Paikkamerkit"
+msgstr "Paikkamerkki"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Hyphenation Point|H"
@@ -18807,7 +18569,7 @@ msgstr "Termistö"
 
 #: lib/ui/stdmenus.inc:475
 msgid "BibTeX Bibliography...|B"
-msgstr "BibTeX-lähdeviitteet...|B"
+msgstr "BibTeX-kirjallisuusviitteet...|B"
 
 #: lib/ui/stdmenus.inc:479
 msgid "LyX Document...|X"
@@ -18869,7 +18631,7 @@ msgstr "Tiivistetty"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Disable Editing|E"
-msgstr ""
+msgstr "Estä muokkaus"
 
 #: lib/ui/stdmenus.inc:540
 msgid "Track Changes|T"
@@ -18909,7 +18671,7 @@ msgstr "Seuraava muutos"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Next Cross-Reference|R"
-msgstr "Seuraava viite"
+msgstr "Seuraava ristiviite"
 
 #: lib/ui/stdmenus.inc:557
 msgid "Go to Label|L"
@@ -19028,9 +18790,8 @@ msgid "Braille|a"
 msgstr "Braille|a"
 
 #: lib/ui/stdmenus.inc:616
-#, fuzzy
 msgid "Colored boxes|r"
-msgstr "Värit"
+msgstr "Väritetyt laatikot"
 
 #: lib/ui/stdmenus.inc:617
 msgid "Feynman-diagram|F"
@@ -19057,14 +18818,12 @@ msgid "Paralist|t"
 msgstr ""
 
 #: lib/ui/stdmenus.inc:623
-#, fuzzy
 msgid "PDF comments|D"
-msgstr "Huomautus"
+msgstr "PDF-huomautukset"
 
 #: lib/ui/stdmenus.inc:624
-#, fuzzy
 msgid "PDF forms|o"
-msgstr "Huomautus"
+msgstr "PDF-lomakkeet"
 
 #: lib/ui/stdmenus.inc:625
 #, fuzzy
@@ -19159,11 +18918,11 @@ msgstr "Taulukkopalkki pois/päälle"
 
 #: lib/ui/stdtoolbars.inc:100
 msgid "View/Update"
-msgstr "Katsele/Päivitä"
+msgstr "Näytä/Päivitä"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View"
-msgstr "&Katsele"
+msgstr "Näytä"
 
 #: lib/ui/stdtoolbars.inc:102
 msgid "Update"
@@ -19227,7 +18986,7 @@ msgstr "Lisää viittaus"
 
 #: lib/ui/stdtoolbars.inc:124
 msgid "Insert citation"
-msgstr "Lisää lähdeviite"
+msgstr "Lisää kirjallisuusviite"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert index entry"
@@ -19375,11 +19134,11 @@ msgstr "Kierrä taulukkoa 90 astetta tai poista kierto"
 
 #: lib/ui/stdtoolbars.inc:171
 msgid "Set multi-column"
-msgstr "Monisarake päälle"
+msgstr "Yhdistetyt sarakkeet päälle"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Set multi-row"
-msgstr "Monirivi päälle"
+msgstr "Yhdistetyt rivit päälle"
 
 #: lib/ui/stdtoolbars.inc:175
 msgid "Math"
@@ -19542,7 +19301,7 @@ msgstr "Kirjaa muutokset..."
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Show changes in output"
-msgstr "Näytä muutosmerkinnät tulosteessa"
+msgstr "Näytä muutokset tulosteessa"
 
 #: lib/ui/stdtoolbars.inc:235
 msgid "Next change"
@@ -19568,7 +19327,7 @@ msgstr "Hyväksy kaikki muutokset"
 
 #: lib/ui/stdtoolbars.inc:241
 msgid "Reject all changes"
-msgstr "Kumoa kaikki muutokset"
+msgstr "Hylkää kaikki muutokset"
 
 #: lib/ui/stdtoolbars.inc:243
 msgid "Insert note"
@@ -19579,9 +19338,8 @@ msgid "Next note"
 msgstr "Seuraava muistiinpano"
 
 #: lib/ui/stdtoolbars.inc:247
-#, fuzzy
 msgid "LyX Documentation Tools"
-msgstr "LyX-asiakirjat (*.lyx)"
+msgstr "LyX-dokumentointityökalut"
 
 #: lib/ui/stdtoolbars.inc:248 src/insets/Inset.cpp:118
 #, fuzzy
@@ -19594,32 +19352,28 @@ msgid "Menu Separator"
 msgstr "Valikkoerotinmerkki|m"
 
 #: lib/ui/stdtoolbars.inc:251
-#, fuzzy
 msgid "LyX Logo"
-msgstr "Logoni"
+msgstr "LyX-logo"
 
 #: lib/ui/stdtoolbars.inc:252
-#, fuzzy
 msgid "TeX Logo"
-msgstr "LaTeX-lokitiedosto"
+msgstr "TeX-logo"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "LaTeX Logo"
-msgstr "LaTeX-lokitiedosto"
+msgstr "LaTeX-logo"
 
 #: lib/ui/stdtoolbars.inc:254
-#, fuzzy
 msgid "LaTeX2e Logo"
-msgstr "LaTeX-lokitiedosto"
+msgstr "LaTeX2e-logo"
 
 #: lib/ui/stdtoolbars.inc:257
 msgid "View Other Formats"
-msgstr "Näytä muissa muodoissa"
+msgstr "Näytä muissa tiedostomuodoissa"
 
 #: lib/ui/stdtoolbars.inc:261
 msgid "Update Other Formats"
-msgstr "Päivitä muihin muotoihin"
+msgstr "Päivitä muihin tiedostomuotoihin"
 
 #: lib/ui/stdtoolbars.inc:281 src/frontends/qt4/GuiLog.cpp:261
 msgid "Version Control"
@@ -19627,7 +19381,7 @@ msgstr "Versiohallinta|r"
 
 #: lib/ui/stdtoolbars.inc:282
 msgid "Register"
-msgstr "Rekisteröi...|R"
+msgstr "Rekisteröi"
 
 #: lib/ui/stdtoolbars.inc:283
 msgid "Check-out for edit"
@@ -19885,7 +19639,7 @@ msgstr "Ohut väli\t\\,"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "Medium space\t\\:"
-msgstr "Keskileveä väli\t\\:"
+msgstr "Keskisuuri väli\t\\:"
 
 #: lib/ui/stdtoolbars.inc:357
 msgid "Thick space\t\\;"
@@ -19904,9 +19658,8 @@ msgid "Negative space\t\\!"
 msgstr "Negatiivinen väli\t\\!"
 
 #: lib/ui/stdtoolbars.inc:361
-#, fuzzy
 msgid "Phantom\t\\phantom"
-msgstr "hom"
+msgstr "Paikkamerkki\t\\phantom"
 
 #: lib/ui/stdtoolbars.inc:362
 #, fuzzy
@@ -20136,9 +19889,8 @@ msgid "widetilde"
 msgstr "widetilde"
 
 #: lib/ui/stdtoolbars.inc:439
-#, fuzzy
 msgid "utilde"
-msgstr "tilde"
+msgstr "utilde"
 
 #: lib/ui/stdtoolbars.inc:440
 msgid "vec"
@@ -20165,9 +19917,8 @@ msgid "breve"
 msgstr "breve"
 
 #: lib/ui/stdtoolbars.inc:446
-#, fuzzy
 msgid "mathring"
-msgstr "matematiikkarivi"
+msgstr "mathring"
 
 #: lib/ui/stdtoolbars.inc:447
 msgid "overline"
@@ -20210,9 +19961,8 @@ msgid "underleftrightarrow"
 msgstr "underleftrightarrow"
 
 #: lib/ui/stdtoolbars.inc:459
-#, fuzzy
 msgid "cancel"
-msgstr "Peru"
+msgstr "peru"
 
 #: lib/ui/stdtoolbars.inc:460
 #, fuzzy
@@ -22473,9 +22223,8 @@ msgid "moo"
 msgstr "mho"
 
 #: lib/ui/stdtoolbars.inc:1071
-#, fuzzy
 msgid "merge"
-msgstr "Suuri:"
+msgstr "yhdistä"
 
 #: lib/ui/stdtoolbars.inc:1072
 msgid "invneg"
@@ -22619,9 +22368,8 @@ msgid "Join"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1105
-#, fuzzy
 msgid "Negative Relations (extended)"
-msgstr "AMS-negaatiorelaatiot"
+msgstr "Negatiiviset relaatiot (laajennettu)"
 
 #: lib/ui/stdtoolbars.inc:1106
 msgid "nless"
@@ -23979,14 +23727,12 @@ msgid ""
 msgstr ""
 
 #: lib/external_templates:152
-#, fuzzy
 msgid "VectorGraphics"
-msgstr "Kuva"
+msgstr "Vektorigrafiikka"
 
 #: lib/external_templates:153 lib/external_templates:162
-#, fuzzy
 msgid "Vector graphics"
-msgstr "Vektorigrafiikkamuoto"
+msgstr "Vektorigrafiikka"
 
 #: lib/external_templates:155
 msgid ""
@@ -24004,9 +23750,8 @@ msgid "XFig"
 msgstr "XFig"
 
 #: lib/external_templates:218 lib/external_templates:221
-#, fuzzy
 msgid "Xfig figure"
-msgstr "Xfig-kuva.\n"
+msgstr "Xfig-kuva"
 
 #: lib/external_templates:220
 msgid "An Xfig figure.\n"
@@ -24014,12 +23759,11 @@ msgstr "Xfig-kuva.\n"
 
 #: lib/external_templates:270
 msgid "ChessDiagram"
-msgstr "Shakkilauta"
+msgstr "Shakkilautakuva"
 
 #: lib/external_templates:271 lib/external_templates:290
-#, fuzzy
 msgid "Chess diagram"
-msgstr "Shakkilauta"
+msgstr "Shakkilautakuva"
 
 #: lib/external_templates:273
 msgid ""
@@ -24113,7 +23857,7 @@ msgstr "Dia-diagrammi"
 
 #: lib/external_templates:447
 msgid "Dia diagram.\n"
-msgstr ""
+msgstr "Dia-diagrammi.\n"
 
 #: lib/configure.py:590
 msgid "tgo"
@@ -24136,9 +23880,8 @@ msgid "sxd"
 msgstr "sxd"
 
 #: lib/configure.py:599
-#, fuzzy
 msgid "sxd|OpenDocument"
-msgstr "OpenDocument"
+msgstr "sxd|OpenDocument"
 
 #: lib/configure.py:602
 msgid "Grace"
@@ -24150,11 +23893,11 @@ msgstr "FEN"
 
 #: lib/configure.py:608
 msgid "svgz"
-msgstr ""
+msgstr "svgz"
 
 #: lib/configure.py:608
 msgid "svgz|SVG"
-msgstr ""
+msgstr "svgz|SVG"
 
 #: lib/configure.py:611
 msgid "BMP"
@@ -24166,7 +23909,7 @@ msgstr "GIF"
 
 #: lib/configure.py:613
 msgid "jpeg"
-msgstr "JPEG"
+msgstr "jpeg"
 
 #: lib/configure.py:613
 msgid "jpeg|JPEG"
@@ -24202,15 +23945,15 @@ msgstr "XPM"
 
 #: lib/configure.py:628
 msgid "Plain text (chess output)"
-msgstr ""
+msgstr "Muotoilematon teksti (shakkilautatuloste)"
 
 #: lib/configure.py:629
 msgid "Plain text (image)"
-msgstr "Perusteksti (kuva)"
+msgstr "Muotoilematon teksti (kuva)"
 
 #: lib/configure.py:630
 msgid "Plain text (Xfig output)"
-msgstr ""
+msgstr "Muotoilematon teksti (Xfig-tuloste)"
 
 #: lib/configure.py:631
 #, fuzzy
@@ -24251,9 +23994,8 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:639
-#, fuzzy
 msgid "R/S code"
-msgstr "Koodi"
+msgstr "R/S-Koodi"
 
 #: lib/configure.py:641
 #, fuzzy
@@ -24310,7 +24052,7 @@ msgstr "Perusteksti (catdvi)"
 
 #: lib/configure.py:652
 msgid "Plain Text, Join Lines"
-msgstr "Perusteksti riveinä"
+msgstr "Perusteksti, yhdistä rivit"
 
 #: lib/configure.py:653
 msgid "Info (Beamer)"
@@ -24410,9 +24152,8 @@ msgid "PDF (cropped)"
 msgstr "PDF (rajattu)"
 
 #: lib/configure.py:689
-#, fuzzy
 msgid "PDF (lower resolution)"
-msgstr "PDF (dvipdfm)"
+msgstr "PDF (matala erottelutarkkuus)"
 
 #: lib/configure.py:692
 msgid "DVI"
@@ -24440,7 +24181,7 @@ msgstr "htm"
 
 #: lib/configure.py:699 lib/configure.py:735
 msgid "htm|HTML"
-msgstr "HTML"
+msgstr "htm|HTML"
 
 #: lib/configure.py:702
 #, fuzzy
@@ -24448,19 +24189,16 @@ msgid "Noteedit"
 msgstr "Huomautus toimittajalle"
 
 #: lib/configure.py:705
-#, fuzzy
 msgid "OpenDocument (tex4ht)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (tex4ht)"
 
 #: lib/configure.py:706
-#, fuzzy
 msgid "OpenDocument (eLyXer)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (eLyXer)"
 
 #: lib/configure.py:707
-#, fuzzy
 msgid "OpenDocument (Pandoc)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (Pandoc)"
 
 #: lib/configure.py:708
 msgid "OpenOffice.Org (sxw)"
@@ -24480,11 +24218,11 @@ msgstr "MS Word|W"
 
 #: lib/configure.py:713
 msgid "MS Word Office Open XML"
-msgstr ""
+msgstr "MS Word Office Open XML"
 
 #: lib/configure.py:713
 msgid "MS Word Office Open XML|O"
-msgstr ""
+msgstr "MS Word Office Open XML|O"
 
 #: lib/configure.py:716
 #, fuzzy
@@ -24562,7 +24300,7 @@ msgstr "EMF-muoto"
 
 #: lib/configure.py:847
 msgid "LyXBlogger"
-msgstr ""
+msgstr "LyXBlogger"
 
 #: lib/configure.py:1082
 msgid "LyX Archive (zip)"
@@ -24814,9 +24552,8 @@ msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
 #: src/Buffer.cpp:1517
-#, fuzzy
 msgid " could not write file!"
-msgstr "Ei voitu lukea tiedostoa"
+msgstr "ei voitu kirjoittaa tiedostoa!"
 
 #: src/Buffer.cpp:1525
 msgid " done."
@@ -24833,14 +24570,12 @@ msgid "Saved to %1$s. Phew.\n"
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
 #: src/Buffer.cpp:1553
-#, fuzzy
 msgid "Save failed! Trying again...\n"
-msgstr "  Tallennus epäonnistui! Yritän..."
+msgstr "Tallennus epäonnistui! Yritetään uudelleen...\n"
 
 #: src/Buffer.cpp:1567
-#, fuzzy
 msgid "Save failed! Trying yet again...\n"
-msgstr "  Tallennus epäonnistui! Yritän..."
+msgstr "Tallennus epäonnistui! Yritetään yhä uudelleen...\n"
 
 #: src/Buffer.cpp:1581
 #, fuzzy
@@ -25118,9 +24853,9 @@ msgid "Senseless!!! "
 msgstr "Järjetöntä!!! "
 
 #: src/Buffer.cpp:4987
-#, fuzzy, c-format
+#, c-format
 msgid "Document %1$s reloaded."
-msgstr "Asiakirja %1$s avautui."
+msgstr "Asiakirja %1$s ladattu uudelleen."
 
 #: src/Buffer.cpp:4990
 #, fuzzy, c-format
@@ -25223,9 +24958,8 @@ msgstr ""
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
 #: src/mathed/MathExtern.cpp:1472
-#, fuzzy
 msgid "LyX Warning: "
-msgstr "LyX-versio "
+msgstr "LyX-varoitus: "
 
 #: src/BufferParams.cpp:2004 src/Encoding.cpp:246 src/Paragraph.cpp:2519
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
@@ -25276,9 +25010,8 @@ msgid ""
 msgstr ""
 
 #: src/BufferParams.cpp:2243 src/BufferView.cpp:1302 src/BufferView.cpp:1334
-#, fuzzy
 msgid "Could not load class"
-msgstr "En voinut muuntaa tekstiluokka"
+msgstr "En voitu ladata asiakirjaluokkaa"
 
 #: src/BufferParams.cpp:2293
 #, fuzzy
@@ -25514,9 +25247,8 @@ msgid "blue"
 msgstr "sininen"
 
 #: src/Color.cpp:207
-#, fuzzy
 msgid "brown"
-msgstr "kurtistus"
+msgstr "ruskea"
 
 #: src/Color.cpp:208
 msgid "cyan"
@@ -25524,24 +25256,23 @@ msgstr "syaani"
 
 #: src/Color.cpp:209
 msgid "darkgray"
-msgstr ""
+msgstr "tummanharmaa"
 
 #: src/Color.cpp:210
 msgid "gray"
-msgstr ""
+msgstr "harmaa"
 
 #: src/Color.cpp:211
 msgid "green"
 msgstr "vihreä"
 
 #: src/Color.cpp:212
-#, fuzzy
 msgid "lightgray"
-msgstr "Tasaa oikealle"
+msgstr "vaaleanharmaa"
 
 #: src/Color.cpp:213
 msgid "lime"
-msgstr ""
+msgstr "lime"
 
 #: src/Color.cpp:214
 msgid "magenta"
@@ -25549,20 +25280,19 @@ msgstr "magenta"
 
 #: src/Color.cpp:215
 msgid "olive"
-msgstr ""
+msgstr "oliivinvihreä"
 
 #: src/Color.cpp:216
-#, fuzzy
 msgid "orange"
-msgstr "Väli"
+msgstr "oranssi"
 
 #: src/Color.cpp:217
 msgid "pink"
-msgstr ""
+msgstr "vaaleanpunainen"
 
 #: src/Color.cpp:218
 msgid "purple"
-msgstr ""
+msgstr "purppura"
 
 #: src/Color.cpp:219
 msgid "red"
@@ -25570,11 +25300,11 @@ msgstr "punainen"
 
 #: src/Color.cpp:220
 msgid "teal"
-msgstr ""
+msgstr "sinivihreä"
 
 #: src/Color.cpp:221
 msgid "violet"
-msgstr ""
+msgstr "violetti"
 
 #: src/Color.cpp:222
 msgid "yellow"
@@ -25597,9 +25327,8 @@ msgid "selection"
 msgstr "valinta"
 
 #: src/Color.cpp:227
-#, fuzzy
 msgid "selected text"
-msgstr "Poistettu teksti"
+msgstr "valittu teksti"
 
 #: src/Color.cpp:229
 msgid "LaTeX text"
@@ -25686,14 +25415,12 @@ msgid "margin note label"
 msgstr "Siirry nimikkeeseen"
 
 #: src/Color.cpp:249
-#, fuzzy
 msgid "URL label"
-msgstr "Nimike"
+msgstr "Osoitteen nimike"
 
 #: src/Color.cpp:250
-#, fuzzy
 msgid "URL text"
-msgstr "teksti"
+msgstr "Osoitteen teksti"
 
 #: src/Color.cpp:251
 msgid "depth bar"
@@ -25737,9 +25464,8 @@ msgid "graphics background"
 msgstr "grafiikan tausta"
 
 #: src/Color.cpp:261 src/Color.cpp:265
-#, fuzzy
 msgid "math macro background"
-msgstr "Matematiikkamakron tausta"
+msgstr "matematiikkamakron tausta"
 
 #: src/Color.cpp:262
 msgid "math frame"
@@ -25816,14 +25542,12 @@ msgid "change bar"
 msgstr "Muutoksen merkintäviiva"
 
 #: src/Color.cpp:280
-#, fuzzy
 msgid "deleted text"
-msgstr "Poistettu teksti"
+msgstr "poistettu teksti"
 
 #: src/Color.cpp:281
-#, fuzzy
 msgid "added text"
-msgstr "Lisätty teksti"
+msgstr "lisätty teksti"
 
 #: src/Color.cpp:282
 msgid "changed text 1st author"
@@ -25867,14 +25591,12 @@ msgid "bottom area"
 msgstr "alaosa"
 
 #: src/Color.cpp:293
-#, fuzzy
 msgid "new page"
-msgstr "sivulla <sivu>"
+msgstr "uusi sivu"
 
 #: src/Color.cpp:294
-#, fuzzy
 msgid "page break / line break"
-msgstr "sivunvaihto"
+msgstr "sivunvaihto / rivinvaihto"
 
 #: src/Color.cpp:295
 msgid "frame of button"
@@ -25889,14 +25611,12 @@ msgid "button background under focus"
 msgstr "painikkeen tausta huomiotilassa"
 
 #: src/Color.cpp:298
-#, fuzzy
 msgid "paragraph marker"
-msgstr "Aliosakappale"
+msgstr "kappaleen merkki"
 
 #: src/Color.cpp:299
-#, fuzzy
 msgid "preview frame"
-msgstr "Esikatselu epäonnistui"
+msgstr "esikatselukehys"
 
 #: src/Color.cpp:300
 msgid "inherit"
@@ -26072,14 +25792,12 @@ msgid "Overwrite file?"
 msgstr "Kirjoitetaanko tiedoston päälle?"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "&Säilytä vastaavat"
+msgstr "&Säilytä tiedosto"
 
 #: src/Exporter.cpp:51
-#, fuzzy
 msgid "Overwrite &all"
-msgstr "Kirjoita kaiken päälle"
+msgstr "Kirjoita kaikkien päälle"
 
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
@@ -26379,14 +26097,12 @@ msgid "&Reconfigure"
 msgstr "Konfiguroi uudelleen"
 
 #: src/LyX.cpp:556
-#, fuzzy
 msgid "&Without LaTeX"
-msgstr "LaTeX"
+msgstr "Ilman LaTeXia"
 
 #: src/LyX.cpp:557 src/VCBackend.cpp:960 src/VCBackend.cpp:964
-#, fuzzy
 msgid "&Continue"
-msgstr "Jatkoa"
+msgstr "Jatka"
 
 #: src/LyX.cpp:660
 msgid ""
@@ -27201,7 +26917,7 @@ msgstr ", Välit: "
 
 #: src/Text.cpp:1925 src/frontends/qt4/GuiDocument.cpp:720
 msgid "OneHalf"
-msgstr "Puolikas"
+msgstr "Puolitoista"
 
 #: src/Text.cpp:1931
 msgid "Other ("
@@ -27241,7 +26957,7 @@ msgstr "Matematiikkaeditoritila"
 
 #: src/Text3.cpp:193
 msgid "No valid math formula"
-msgstr ""
+msgstr "Ei validi matematiikkalauseke"
 
 #: src/Text3.cpp:201 src/mathed/InsetMathNest.cpp:1051
 #, fuzzy
@@ -27539,9 +27255,8 @@ msgid "Vertical fill"
 msgstr "Pystytäyttö"
 
 #: src/VSpace.cpp:181
-#, fuzzy
 msgid "protected"
-msgstr "Kova välilyönti|K"
+msgstr "suojattu"
 
 #: src/buffer_funcs.cpp:75
 #, c-format
@@ -27804,12 +27519,12 @@ msgstr "Käyttäjän hakemisto: "
 #: src/frontends/qt4/GuiAbout.cpp:233
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr ""
+msgstr "Qt-version (ajonaikainen): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:234
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr ""
+msgstr "Qt-version (käännösaikainen): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:261
 msgid "About LyX"
@@ -27995,7 +27710,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
-msgstr "BibTeX-lähdeviitteet"
+msgstr "BibTeX-kirjallisuusviitteet"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
@@ -28123,9 +27838,8 @@ msgid "The branch could not be renamed."
 msgstr "%1$s ei voitu lukea"
 
 #: src/frontends/qt4/GuiChanges.cpp:40
-#, fuzzy
 msgid "Merge Changes"
-msgstr "Yhdistä sarakkeet"
+msgstr "Yhdistä muutokset"
 
 #: src/frontends/qt4/GuiChanges.cpp:64
 #, c-format
@@ -28183,12 +27897,11 @@ msgstr "Ei väriä"
 
 #: src/frontends/qt4/GuiCharacter.cpp:198
 msgid "Text Style"
-msgstr "Tekstin tyyli"
+msgstr "Tekstityyli"
 
 #: src/frontends/qt4/GuiCitation.cpp:297
-#, fuzzy
 msgid "Keys"
-msgstr "&Avain:"
+msgstr "Avaimet"
 
 #: src/frontends/qt4/GuiClipboard.cpp:173
 msgid "LinkBack PDF"
@@ -28220,9 +27933,8 @@ msgid "Canceled."
 msgstr "Peruttu."
 
 #: src/frontends/qt4/GuiClipboard.cpp:244
-#, fuzzy
 msgid "Overwrite external file?"
-msgstr "Kirjoitetaanko tiedoston päälle?"
+msgstr "Kirjoitetaanko ulkopuolisen tiedoston päälle?"
 
 #: src/frontends/qt4/GuiClipboard.cpp:245
 #, fuzzy, c-format
@@ -28565,7 +28277,7 @@ msgstr "Paketti"
 
 #: src/frontends/qt4/GuiDocument.cpp:1161
 msgid "Load automatically"
-msgstr "Lataa automaat."
+msgstr "Lataa automaattisesti"
 
 #: src/frontends/qt4/GuiDocument.cpp:1162
 msgid "Load always"
@@ -28614,7 +28326,7 @@ msgstr "Syötä listauksen parametrit. Syötä ? jos haluat niiden lista."
 
 #: src/frontends/qt4/GuiDocument.cpp:1405
 msgid "Document Class"
-msgstr "Asiakirjaluokka:"
+msgstr "Asiakirjaluokka"
 
 #: src/frontends/qt4/GuiDocument.cpp:1406 src/frontends/qt4/qt_helpers.cpp:611
 msgid "Child Documents"
@@ -28658,7 +28370,7 @@ msgstr "Matematiikka-asetukset"
 
 #: src/frontends/qt4/GuiDocument.cpp:1420
 msgid "Float Placement"
-msgstr "Kelluvien sijoitus"
+msgstr "Kelluvien upotteiden sijoitus"
 
 #: src/frontends/qt4/GuiDocument.cpp:1422
 msgid "Bullets"
@@ -28675,7 +28387,7 @@ msgstr "LaTeX-aloitusosa"
 #: src/frontends/qt4/GuiDocument.cpp:1658
 #: src/frontends/qt4/GuiDocument.cpp:1688
 msgid "&Default..."
-msgstr "Oletus"
+msgstr "&Oletus..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1958
 #: src/frontends/qt4/GuiDocument.cpp:3321
@@ -28695,15 +28407,13 @@ msgid " (not available)"
 msgstr "Asiakirjaluokka puuttuu"
 
 #: src/frontends/qt4/GuiDocument.cpp:1986
-#, fuzzy
 msgid "Class Default (TeX Fonts)"
-msgstr "Käytä luokan oletuksia"
+msgstr "Luokan oletus (TeX-fontit)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2024
 #: src/frontends/qt4/GuiDocument.cpp:2051
-#, fuzzy
 msgid "Class Default"
-msgstr "Käytä luokan oletuksia"
+msgstr "Luokan oletus"
 
 #: src/frontends/qt4/GuiDocument.cpp:2128
 msgid "Layouts|#o#O"
@@ -28792,12 +28502,11 @@ msgstr "%1$s ja %2$s"
 #: src/frontends/qt4/GuiDocument.cpp:2365
 #, c-format
 msgid "%1$s (unavailable)"
-msgstr ""
+msgstr "%1$s (ei saatavilla)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2451
-#, fuzzy
 msgid "Module provided by document class."
-msgstr "En voinut tallentaa asiakirjan oletukset"
+msgstr "Asiakirjaluokka tarjoaa modulin."
 
 #: src/frontends/qt4/GuiDocument.cpp:2458
 #, fuzzy, c-format
@@ -28810,9 +28519,8 @@ msgid "Package(s) required: %1$s."
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2472
-#, fuzzy
 msgid "or"
-msgstr "Muoto"
+msgstr "tai"
 
 #: src/frontends/qt4/GuiDocument.cpp:2475
 #, c-format
@@ -28826,7 +28534,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2490
 msgid "WARNING: Some required packages are unavailable!"
-msgstr ""
+msgstr "VAROITUS: Jotkin vaaditut paketit eivät ole saatavilla!"
 
 #: src/frontends/qt4/GuiDocument.cpp:3257
 #, fuzzy
@@ -28839,7 +28547,7 @@ msgstr "Mukauta Hyperref-asetukset"
 
 #: src/frontends/qt4/GuiDocument.cpp:3474
 msgid "&Use Hyperref Support"
-msgstr ""
+msgstr "Käytä Hyperref-tukea"
 
 #: src/frontends/qt4/GuiDocument.cpp:3624
 #, fuzzy
@@ -29067,7 +28775,7 @@ msgstr "Ohut väli"
 
 #: src/frontends/qt4/GuiHSpace.cpp:47 src/insets/InsetSpace.cpp:80
 msgid "Medium Space"
-msgstr "Keskileveä väli"
+msgstr "Keskisuuri väli"
 
 #: src/frontends/qt4/GuiHSpace.cpp:48 src/insets/InsetSpace.cpp:83
 msgid "Thick Space"
@@ -29076,17 +28784,17 @@ msgstr "Paksu väli"
 #: src/frontends/qt4/GuiHSpace.cpp:49 src/frontends/qt4/GuiHSpace.cpp:60
 #: src/insets/InsetSpace.cpp:98
 msgid "Negative Thin Space"
-msgstr "Negatiivinen ohut väli"
+msgstr "Ohut negatiivinen väli"
 
 #: src/frontends/qt4/GuiHSpace.cpp:50 src/frontends/qt4/GuiHSpace.cpp:61
 #: src/insets/InsetSpace.cpp:101
 msgid "Negative Medium Space"
-msgstr "Negatiivinen keskileveä väli"
+msgstr "Keskisuuri negatiivinen väli"
 
 #: src/frontends/qt4/GuiHSpace.cpp:51 src/frontends/qt4/GuiHSpace.cpp:62
 #: src/insets/InsetSpace.cpp:104
 msgid "Negative Thick Space"
-msgstr "Negatiivinen paksu väli"
+msgstr "Paksu negatiivinen väli"
 
 #: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:63
 msgid "Half Quad (0.5 em)"
@@ -29094,17 +28802,16 @@ msgstr ""
 
 #: src/frontends/qt4/GuiHSpace.cpp:53 src/frontends/qt4/GuiHSpace.cpp:64
 msgid "Quad (1 em)"
-msgstr ""
+msgstr "Nelinkertainen väli (1 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:54 src/frontends/qt4/GuiHSpace.cpp:65
-#, fuzzy
 msgid "Double Quad (2 em)"
-msgstr "Kaksink. kohta:"
+msgstr "Kahdeksankertainen väli (2 em)"
 
 #: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:66
 #: src/insets/InsetSpace.cpp:107
 msgid "Horizontal Fill"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:74
 msgid "Visible Space"
@@ -29144,19 +28851,16 @@ msgid "Label Color"
 msgstr "Otsakkeen väri"
 
 #: src/frontends/qt4/GuiIndices.cpp:216
-#, fuzzy
 msgid "Cannot remove standard index"
-msgstr "Väliaikaisen hakemiston poistaminen epäonnistui"
+msgstr "Ei voida poistaa standardia hakemistoa"
 
 #: src/frontends/qt4/GuiIndices.cpp:217
-#, fuzzy
 msgid "The default index cannot be removed."
-msgstr "Viimeinen tulostettava rivi"
+msgstr "Oletushakemistoa ei voida poistaa."
 
 #: src/frontends/qt4/GuiIndices.cpp:236
-#, fuzzy
 msgid "Enter new index name"
-msgstr "Käytettävä BiBTeX-tietokanta"
+msgstr "Anna uuden hakemiston nimi"
 
 #: src/frontends/qt4/GuiIndices.cpp:244
 msgid "The index could not be renamed. Check if the new name already exists."
@@ -29167,23 +28871,20 @@ msgid "unknown"
 msgstr "tuntematon"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcut"
-msgstr "P&ikanäppäin:"
+msgstr "pikanäppäin"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "shortcuts"
-msgstr "P&ikanäppäin:"
+msgstr "pikanäppäimet"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
 msgstr "lyxrc"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "package"
-msgstr "Väli"
+msgstr "paketti"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 #, fuzzy
@@ -29199,9 +28900,8 @@ msgid "icon"
 msgstr "kuvake"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
-#, fuzzy
 msgid "buffer"
-msgstr "sininen"
+msgstr "puskuri"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 #, fuzzy
@@ -29260,9 +28960,8 @@ msgid "Version Control Log"
 msgstr "Versiohallintaloki"
 
 #: src/frontends/qt4/GuiLog.cpp:315
-#, fuzzy
 msgid "Log file not found."
-msgstr "Tiedostoa ei löydy"
+msgstr "Lokitiedostoa ei löytynyt."
 
 #: src/frontends/qt4/GuiLog.cpp:318
 #, fuzzy
@@ -29271,7 +28970,7 @@ msgstr "Literate-ohjelmoinnin käännöslokitiedostoa ei löydy."
 
 #: src/frontends/qt4/GuiLog.cpp:321
 msgid "No lyx2lyx error log file found."
-msgstr "lyx2lyx -käännöslokitiedostoa ei ole."
+msgstr "lyx2lyx -käännöslokitiedostoa ei löytynyt."
 
 #: src/frontends/qt4/GuiLog.cpp:324
 msgid "No version control log file found."
@@ -29475,7 +29174,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:2358
 msgid "LyX needs to be restarted!"
-msgstr ""
+msgstr "LyX pitää käynnistää uudelleen!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2359
 msgid ""
@@ -29544,14 +29243,12 @@ msgstr "Pala&uta"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3114 src/frontends/qt4/GuiPrefs.cpp:3121
 #: src/frontends/qt4/GuiPrefs.cpp:3176
-#, fuzzy
 msgid "Failed to create shortcut"
-msgstr "Hakemiston luominen epäonnistui. Sulkeutuu."
+msgstr "Oikopolun luominen epäonnistui"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3115
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "Tuntematon funktio."
+msgstr "Tuntematon tai virheellinen LyX-funktio"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3122
 msgid "Invalid or empty key sequence"
@@ -29565,9 +29262,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiPrefs.cpp:3149
-#, fuzzy
 msgid "Redefine shortcut?"
-msgstr "P&ikanäppäin:"
+msgstr "Määrittele pikanäppäin uudelleen?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3150
 #, fuzzy
@@ -29581,7 +29277,7 @@ msgstr "Lisää uusi haara listaan"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3208
 msgid "Identity"
-msgstr "Käyttäjäasetukset"
+msgstr "Identiteetti"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3432
 msgid "Choose bind file"
@@ -29613,22 +29309,20 @@ msgid "Longest label width"
 msgstr "Pisin nimikkeen leveys"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
-#, fuzzy
 msgid "Index Settings"
-msgstr "Laatikoiden asetukset"
+msgstr "Hakemiston asetukset"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:69
-#, fuzzy
 msgid "<All indexes>"
-msgstr "Kaikki tiedostot (*)"
+msgstr "<Kaikki hakemistot>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:64
 msgid "Progress/Debug Messages"
-msgstr ""
+msgstr "Edistymis- ja virheenjäljitysviestit"
 
 #: src/frontends/qt4/GuiProgressView.cpp:97
 msgid "Debug Level"
-msgstr ""
+msgstr "Virheenjäljitystaso"
 
 #: src/frontends/qt4/GuiProgressView.cpp:98
 #, fuzzy
@@ -29641,11 +29335,11 @@ msgstr "Viittaus"
 
 #: src/frontends/qt4/GuiRef.cpp:305
 msgid "&Go Back"
-msgstr "&Palaa"
+msgstr "&Palaa takaisin"
 
 #: src/frontends/qt4/GuiRef.cpp:307
 msgid "Jump back"
-msgstr "Palaa"
+msgstr "Hyppää takaisin"
 
 #: src/frontends/qt4/GuiRef.cpp:315
 msgid "Jump to label"
@@ -29673,7 +29367,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:368 src/lyxfind.cpp:386
 msgid "String not found."
-msgstr "Merkkijonoa ei löydy!"
+msgstr "Merkkijonoa ei löytynyt."
 
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
@@ -29684,9 +29378,8 @@ msgid "Show File"
 msgstr "Näytä tiedosto"
 
 #: src/frontends/qt4/GuiShowFile.cpp:47
-#, fuzzy
 msgid "Error -> Cannot load file!"
-msgstr "Tiedostoa ei voi editoida"
+msgstr "Virhe -> Tiedostoa ei voida lukea!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
@@ -30074,7 +29767,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:221
 msgid "Character: "
-msgstr "Merkki:"
+msgstr "Merkki: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:222
 msgid "Code Point: "
@@ -30115,7 +29808,7 @@ msgstr "Työkalupalkin \"%1$s\" tila asetettiin %2$s:ksi"
 
 #: src/frontends/qt4/GuiView.cpp:164
 msgid "version "
-msgstr "versio"
+msgstr "versio "
 
 #: src/frontends/qt4/GuiView.cpp:164
 msgid "unknown version"
@@ -30202,7 +29895,7 @@ msgstr "Mallipohjat|#o#O"
 
 #: src/frontends/qt4/GuiView.cpp:2107
 msgid "Document not loaded."
-msgstr "Asiakirjan lataaminen epäonnistui!"
+msgstr "Asiakirjaa ei ladattu."
 
 #: src/frontends/qt4/GuiView.cpp:2135
 msgid "Select document to open"
@@ -30253,7 +29946,7 @@ msgstr "Ei voi tuoda tiedostoa"
 #: src/frontends/qt4/GuiView.cpp:2224
 #, c-format
 msgid "No information for importing the format %1$s."
-msgstr "Ei tietoa, miten tuoda muodosta %1$s"
+msgstr "Ei tietoa, miten tuoda tiedostomuodosta %1$s."
 
 #: src/frontends/qt4/GuiView.cpp:2271
 #, c-format
@@ -30308,7 +30001,7 @@ msgstr "Valitse lisättävä LyX-asiakirja"
 
 #: src/frontends/qt4/GuiView.cpp:2450
 msgid "Choose a filename to save document as"
-msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
+msgstr "Valitse talletettavan asiakirjan tiedostonimi"
 
 #: src/frontends/qt4/GuiView.cpp:2482
 #, c-format
@@ -30341,14 +30034,12 @@ msgstr ""
 "Haluatko kirjoittaa sen päälle?"
 
 #: src/frontends/qt4/GuiView.cpp:2507
-#, fuzzy
 msgid "Rename document?"
-msgstr "Tallennetaanko muutunut asiakirja?"
+msgstr "Nimetäänkö asiakirja uudelleen?"
 
 #: src/frontends/qt4/GuiView.cpp:2507
-#, fuzzy
 msgid "Copy document?"
-msgstr "Uusi asiakirja"
+msgstr "Kopioidaanko asiakirja?"
 
 #: src/frontends/qt4/GuiView.cpp:2509
 msgid "&Copy"
@@ -30361,7 +30052,7 @@ msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
 #: src/frontends/qt4/GuiView.cpp:2581
 msgid "Guess from extension (*.*)"
-msgstr ""
+msgstr "Arvaa tiedostopäätteestä (*.*)"
 
 #: src/frontends/qt4/GuiView.cpp:2678
 #, fuzzy, c-format
@@ -30396,14 +30087,12 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2736
-#, fuzzy
 msgid "Close or hide document?"
-msgstr "Uusi asiakirja"
+msgstr "Sulje tai piilota asiakirja?"
 
 #: src/frontends/qt4/GuiView.cpp:2737
-#, fuzzy
 msgid "&Hide"
-msgstr "Taulukkopalkki pois/päälle"
+msgstr "Piilota"
 
 #: src/frontends/qt4/GuiView.cpp:2823
 msgid "Close document"
@@ -30468,18 +30157,16 @@ msgstr ""
 "sen tiedoston päälle?"
 
 #: src/frontends/qt4/GuiView.cpp:3076
-#, fuzzy
 msgid "Reload externally changed document?"
-msgstr "Tallennetaanko muutunut asiakirja?"
+msgstr "Tallennetaanko ohjelman ulkopuolella muutettu asiakirja?"
 
 #: src/frontends/qt4/GuiView.cpp:3077
 msgid "&Reload"
 msgstr "Lataa uudelleen"
 
 #: src/frontends/qt4/GuiView.cpp:3121
-#, fuzzy
 msgid "Document could not be checked in."
-msgstr "Asiakirjaa ei voitu lukea"
+msgstr "Asiakirjaa ei voitu tallettaa."
 
 #: src/frontends/qt4/GuiView.cpp:3165
 msgid "Error when setting the locking property."
@@ -30504,9 +30191,8 @@ msgid "Export Error"
 msgstr "Vientivirhe"
 
 #: src/frontends/qt4/GuiView.cpp:3421
-#, fuzzy
 msgid "Error cloning the Buffer."
-msgstr "Virhe luettaessa "
+msgstr "Virhe kloonatessa puskuria."
 
 #: src/frontends/qt4/GuiView.cpp:3538 src/frontends/qt4/GuiView.cpp:3558
 msgid "Exporting ..."
@@ -30545,22 +30231,20 @@ msgstr "Talennan kaikki asiakirjat..."
 
 #: src/frontends/qt4/GuiView.cpp:3741
 msgid "All documents saved."
-msgstr "Kaikki asiakirjat tallennettu"
+msgstr "Kaikki asiakirjat tallennettu."
 
 #: src/frontends/qt4/GuiView.cpp:3841
 #, c-format
 msgid "%1$s unknown command!"
-msgstr ""
+msgstr "%1$s on tuntematon komento!"
 
 #: src/frontends/qt4/GuiView.cpp:3976
-#, fuzzy
 msgid "Please, preview the document first."
-msgstr "Asiakirjan tulostus epäonnistui"
+msgstr "Esikatsele asiakirja ensin."
 
 #: src/frontends/qt4/GuiView.cpp:3992
-#, fuzzy
 msgid "Couldn't proceed."
-msgstr "Ei voitu viedä tiedostoa"
+msgstr "Ei voitu jatkaa."
 
 #: src/frontends/qt4/GuiViewSource.cpp:398
 #: src/frontends/qt4/GuiViewSource.cpp:443
@@ -30648,18 +30332,16 @@ msgid "More Spelling Suggestions"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:842
-#, fuzzy
 msgid "Add to personal dictionary|n"
-msgstr "Valitse oma sanasto"
+msgstr "Lisää omaan sanastoon"
 
 #: src/frontends/qt4/Menus.cpp:844
 msgid "Ignore all|I"
 msgstr "Ohita k&aikki"
 
 #: src/frontends/qt4/Menus.cpp:852
-#, fuzzy
 msgid "Remove from personal dictionary|r"
-msgstr "Valitse oma sanasto"
+msgstr "Poista omasta sanastosta"
 
 #: src/frontends/qt4/Menus.cpp:893
 msgid "Language|L"
@@ -30701,7 +30383,7 @@ msgstr "Päivitä [%1$s]|U"
 
 #: src/frontends/qt4/Menus.cpp:1217
 msgid "No Custom Insets Defined!"
-msgstr "Räätälöityjä upotteita ei ole määritetty!"
+msgstr "Mukautettuja upotteita ei ole määritetty!"
 
 #: src/frontends/qt4/Menus.cpp:1306
 #, fuzzy
@@ -30753,15 +30435,13 @@ msgid "Index Entry (%1$s)"
 msgstr "Hakemistomerkintä (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1534
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "Ei kirjasinvuorottelua tarjolla."
+msgstr "Viittausta ei ole näkyvyysalueella!"
 
 #: src/frontends/qt4/Menus.cpp:1547 src/insets/InsetCitation.cpp:165
 #: src/insets/InsetCitation.cpp:257
-#, fuzzy
 msgid "No citations selected!"
-msgstr "Ei kirjasinvuorottelua tarjolla."
+msgstr "Viittauksia ei valittu!"
 
 #: src/frontends/qt4/Menus.cpp:1648
 #, c-format
@@ -30834,7 +30514,7 @@ msgstr "Skriptin '%1$s' ajo epäonnistui."
 
 #: src/frontends/qt4/qt_helpers.cpp:536
 msgid "All Files "
-msgstr "Kaikki tiedostot"
+msgstr "Kaikki tiedostot "
 
 #: src/frontends/qt4/qt_helpers.cpp:609 src/insets/InsetTOC.cpp:75
 msgid "Table of Contents"
@@ -30881,7 +30561,7 @@ msgstr "Muistiinpanot"
 
 #: src/frontends/qt4/qt_helpers.cpp:633
 msgid "Citations"
-msgstr "Lähdeviitteet"
+msgstr "Kirjallisuusviitteet"
 
 #: src/frontends/qt4/qt_helpers.cpp:635
 #, fuzzy
@@ -30893,9 +30573,8 @@ msgid "Changes"
 msgstr "Muutokset"
 
 #: src/frontends/qt4/qt_helpers.cpp:641
-#, fuzzy
 msgid "Senseless"
-msgstr "Järjetöntä!"
+msgstr "Järjetöntä"
 
 #: src/frontends/qt4/qt_helpers.cpp:646 src/insets/InsetIndex.cpp:279
 #: src/insets/InsetIndex.cpp:300
@@ -30932,7 +30611,7 @@ msgstr "Kirjallisuusviite"
 
 #: src/insets/Inset.cpp:94
 msgid "Float"
-msgstr "Float"
+msgstr "Kelluva upote"
 
 #: src/insets/Inset.cpp:112 src/insets/InsetBox.cpp:132
 msgid "Box"
@@ -30978,11 +30657,11 @@ msgstr "Avaa tietokannat?"
 
 #: src/insets/InsetBibtex.cpp:152
 msgid "&Proceed"
-msgstr ""
+msgstr "Jatka"
 
 #: src/insets/InsetBibtex.cpp:170
 msgid "BibTeX Generated Bibliography"
-msgstr "BibTeXin luomat lähdeviitteet"
+msgstr "BibTeXin luomat kirjallisuusviitteet"
 
 #: src/insets/InsetBibtex.cpp:177
 msgid "Databases:"
@@ -31095,7 +30774,7 @@ msgstr ""
 
 #: src/insets/InsetBranch.cpp:104
 msgid "Undef: "
-msgstr "Ei määr.:"
+msgstr "Ei määr.: "
 
 #: src/insets/InsetBranch.cpp:170
 #, fuzzy
@@ -31116,7 +30795,7 @@ msgstr ""
 
 #: src/insets/InsetCitation.cpp:161
 msgid "No bibliography defined!"
-msgstr "Lähdeviitekantaa ei ole asetettu!"
+msgstr "Kirjallisuusviitekantaa ei ole asetettu!"
 
 #: src/insets/InsetCommand.cpp:146
 msgid "LaTeX Command: "
@@ -31128,9 +30807,8 @@ msgid "InsetCommand Error: "
 msgstr "Upotteen komento:"
 
 #: src/insets/InsetCommandParams.cpp:272 src/insets/InsetCommandParams.cpp:295
-#, fuzzy
 msgid "Incompatible command name."
-msgstr "Epätäydellinen komento"
+msgstr "Epätäydellinen komennon nimi."
 
 #: src/insets/InsetCommandParams.cpp:294 src/insets/InsetCommandParams.cpp:343
 #, fuzzy
@@ -31147,9 +30825,8 @@ msgid "Unknown parameter name: "
 msgstr "Tuntematon parametrin nimi: "
 
 #: src/insets/InsetCommandParams.cpp:344
-#, fuzzy
 msgid "Missing \\end_inset at this point: "
-msgstr "Tässä puuttuu \\end_inset."
+msgstr "Tästä kohtaa puuttuu \\end_inset: "
 
 #: src/insets/InsetCommandParams.cpp:435
 #, c-format
@@ -31166,7 +30843,7 @@ msgstr "Erilliset ohjelmat"
 
 #: src/insets/InsetFloat.cpp:130 src/insets/InsetFloat.cpp:469
 msgid "float: "
-msgstr "kelluva: "
+msgstr "kelluva upote: "
 
 #: src/insets/InsetFloat.cpp:132
 #, fuzzy, c-format
@@ -31175,16 +30852,15 @@ msgstr "VIRHE: Olematon kelluvatyyppi!"
 
 #: src/insets/InsetFloat.cpp:401
 msgid "float"
-msgstr "kelluva"
+msgstr "kelluva upote"
 
 #: src/insets/InsetFloat.cpp:472
-#, fuzzy
 msgid "subfloat: "
-msgstr "kelluva: "
+msgstr "kelluva aliupote: "
 
 #: src/insets/InsetFloat.cpp:482
 msgid " (sideways)"
-msgstr "(käännettynä)"
+msgstr "(sivuttain)"
 
 #: src/insets/InsetFloatList.cpp:81
 msgid "ERROR: Nonexistent float type!"
@@ -31222,9 +30898,8 @@ msgid "Graphics file: %1$s"
 msgstr "Kuvatiedosto: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:59
-#, fuzzy
 msgid "Hyperlink: "
-msgstr "&Luo hyperlinkki"
+msgstr "Hyperlinkki: "
 
 #: src/insets/InsetHyperlink.cpp:199
 #, c-format
@@ -31363,14 +31038,12 @@ msgid "Unknown index type!"
 msgstr "Tuntematon sisällysluettelotyyppi!"
 
 #: src/insets/InsetIndex.cpp:455
-#, fuzzy
 msgid "All indexes"
-msgstr "Kaikki tiedostot (*)"
+msgstr "Kaikki hakemistot"
 
 #: src/insets/InsetIndex.cpp:459
-#, fuzzy
 msgid "subindex"
-msgstr "Hakusana"
+msgstr "alihakemisto"
 
 #: src/insets/InsetInfo.cpp:123
 #, fuzzy, c-format
@@ -31615,11 +31288,11 @@ msgstr "Sivunvaihto"
 
 #: src/insets/InsetNewpage.cpp:186
 msgid "Clear Page"
-msgstr "Uusi sivu"
+msgstr "Tyhjä sivu"
 
 #: src/insets/InsetNewpage.cpp:189
 msgid "Clear Double Page"
-msgstr "Uusi tuplasivu"
+msgstr "Uusi sivupari"
 
 #: src/insets/InsetNomencl.cpp:78
 #, fuzzy
@@ -31644,9 +31317,8 @@ msgid "note"
 msgstr "muistiinpano"
 
 #: src/insets/InsetPhantom.cpp:65
-#, fuzzy
 msgid "Phantom"
-msgstr "hom"
+msgstr "Paikkamerkki"
 
 #: src/insets/InsetPhantom.cpp:66
 msgid "HPhantom"
@@ -31657,9 +31329,8 @@ msgid "VPhantom"
 msgstr ""
 
 #: src/insets/InsetPhantom.cpp:341 src/insets/InsetPhantom.cpp:350
-#, fuzzy
 msgid "phantom"
-msgstr "esperanto"
+msgstr "paikkamerkki"
 
 #: src/insets/InsetPhantom.cpp:344
 msgid "hphantom"
@@ -31757,29 +31428,24 @@ msgid "Enskip"
 msgstr "Väli"
 
 #: src/insets/InsetSpace.cpp:110
-#, fuzzy
 msgid "Protected Horizontal Fill"
-msgstr "Vaakakumi"
+msgstr "Suojattu vaakatäyte"
 
 #: src/insets/InsetSpace.cpp:113
-#, fuzzy
 msgid "Horizontal Fill (Dots)"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (pisteet)"
 
 #: src/insets/InsetSpace.cpp:116
-#, fuzzy
 msgid "Horizontal Fill (Rule)"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (viiva)"
 
 #: src/insets/InsetSpace.cpp:119
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (nuoli vasemmalle)"
 
 #: src/insets/InsetSpace.cpp:122
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)"
-msgstr "Vaakakumi"
+msgstr "Vaakatäyte (nuoli oikealle)"
 
 #: src/insets/InsetSpace.cpp:125
 #, fuzzy
@@ -31867,7 +31533,7 @@ msgstr "Virhe muuntaessa ladattavaan muotoon"
 
 #: src/insets/RenderGraphic.cpp:111
 msgid "Error loading file into memory"
-msgstr "Virhe ladatessa tiedostoa muistiin."
+msgstr "Virhe ladatessa tiedostoa muistiin"
 
 #: src/insets/RenderGraphic.cpp:114
 msgid "Error generating the pixmap"
@@ -31891,7 +31557,7 @@ msgstr "Esikatselu epäonnistui"
 
 #: src/lengthcommon.cpp:41
 msgid "cc[[unit of measure]]"
-msgstr ""
+msgstr "cc[[mittayksikkö]]"
 
 #: src/lengthcommon.cpp:41
 msgid "dd"
@@ -31907,7 +31573,7 @@ msgstr "ex"
 
 #: src/lengthcommon.cpp:42
 msgid "mu[[unit of measure]]"
-msgstr ""
+msgstr "mu[[mittayksikkö]]"
 
 #: src/lengthcommon.cpp:42
 msgid "pc"
@@ -32000,19 +31666,19 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 
 #: src/mathed/InsetMathColor.cpp:102
-#, fuzzy, c-format
+#, c-format
 msgid "Color: %1$s"
-msgstr "Värit"
+msgstr "Väri: %1$s"
 
 #: src/mathed/InsetMathDecoration.cpp:166
-#, fuzzy, c-format
+#, c-format
 msgid "Decoration: %1$s"
-msgstr "Koriste"
+msgstr "Koristelu: %1$s"
 
 #: src/mathed/InsetMathEnv.cpp:68
-#, fuzzy, c-format
+#, c-format
 msgid "Environment: %1$s"
-msgstr "Aloita uusi ympäristö (%1$s)"
+msgstr "Ympäristö: %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1731
 msgid "Cursor not in table"
@@ -32040,9 +31706,9 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Tuntematon taulukon ominaisuus '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1435
-#, fuzzy, c-format
+#, c-format
 msgid "Type: %1$s"
-msgstr "LyX: %1$s"
+msgstr "Tyyppi: %1$s"
 
 #: src/mathed/InsetMathHull.cpp:1468
 msgid "Bad math environment"
@@ -32104,9 +31770,9 @@ msgid "FormatRef: "
 msgstr "Formaatti:"
 
 #: src/mathed/InsetMathSize.cpp:107
-#, fuzzy, c-format
+#, c-format
 msgid "Size: %1$s"
-msgstr "Näytä %1$s"
+msgstr "Koko: %1$s"
 
 #: src/mathed/InsetMathSubstack.cpp:79
 #, fuzzy, c-format
@@ -32114,9 +31780,9 @@ msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
 #: src/mathed/MathMacro.cpp:1051 src/mathed/MathMacro.cpp:1057
-#, fuzzy, c-format
+#, c-format
 msgid "Macro: %1$s"
-msgstr " Makro: %1$s: "
+msgstr "Makro: %1$s"
 
 #: src/mathed/MathMacroTemplate.cpp:489
 msgid "optional"
@@ -32127,14 +31793,14 @@ msgid "math macro"
 msgstr "matematiikamakro"
 
 #: src/mathed/MathMacroTemplate.cpp:1380
-#, fuzzy, c-format
+#, c-format
 msgid "Math Macro: \\%1$s"
-msgstr "Matematiikkamakrot"
+msgstr "Matematiikkamakro: \\%1$s"
 
 #: src/mathed/MathMacroTemplate.cpp:1395
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid macro! \\%1$s"
-msgstr "Matematiikkamakrot"
+msgstr "Virheellinen makro! \\%1$s"
 
 #: src/output.cpp:37
 #, c-format
@@ -32333,9 +31999,8 @@ msgid "Workarea events"
 msgstr "Työalueen tapahtumat"
 
 #: src/support/debug.cpp:63
-#, fuzzy
 msgid "Clipboard handling"
-msgstr "Näppäimistötapahtumien käsittely"
+msgstr "Leikepöydän käsittely"
 
 #: src/support/debug.cpp:64
 msgid "Graphics conversion and loading"
