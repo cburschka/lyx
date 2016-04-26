@@ -118,6 +118,9 @@
   several regressions with respect to Qt 4.x. See #9215 for a list of bugs
   related to compiling LyX with different versions of Qt.
 
+* If compiling LyX on Windows with Qt 5.6, it is recommended to use MSVC 2015
+  update 2 to avoid #9892.
+
 * LyX now gives an error if the underlying LaTeX command exited with error.
 
 
