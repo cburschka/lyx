@@ -1855,9 +1855,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (!cur.nextInset() || cur.nextInset() == ins)
 				cur.forwardInset();
 		}
-		cur.endUndoGroup();
 		cur = savecur;
 		cur.fixIfBroken();
+		/** This is a dummy undo record only to remember the cursor
+		 * that has just been set; this will be used on a redo action
+		 * (see ticket #10097)
+
+		 * FIXME: a better fix would be to have a way to set the
+		 * cursor value directly, but I am not sure it is worth it.
+		 */
+		cur.recordUndo();
+		cur.endUndoGroup();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 
