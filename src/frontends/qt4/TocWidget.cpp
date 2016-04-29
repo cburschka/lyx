@@ -86,7 +86,7 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(tocTV, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-	connect(filterLE, SIGNAL(textEdited(QString)), 
+	connect(filterLE, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
 
 	init(QString());
@@ -98,7 +98,7 @@ void TocWidget::showContextMenu(const QPoint & pos)
 	std::string name = "context-toc-" + fromqstr(current_type_);
 	QMenu * menu = guiApp->menus().menu(toqstr(name), gui_view_);
 	if (!menu)
-		return;	
+		return;
 	menu->exec(mapToGlobal(pos));
 }
 
@@ -109,9 +109,9 @@ Inset * TocWidget::itemInset() const
 	TocItem const & item =
 		gui_view_.tocModels().currentItem(current_type_, index);
 	DocIterator const & dit = item.dit();
-	
+
 	Inset * inset = 0;
-	if (current_type_ == "label" 
+	if (current_type_ == "label"
 		  || current_type_ == "graphics"
 		  || current_type_ == "citation"
 		  || current_type_ == "child")
@@ -120,7 +120,7 @@ Inset * TocWidget::itemInset() const
 	else if (current_type_ == "branch"
 			 || current_type_ == "index"
 			 || current_type_ == "change"
-			 || current_type_ == "table" 
+			 || current_type_ == "table"
 		     || current_type_ == "listing"
 		     || current_type_ == "figure")
 		inset = &dit.inset();
@@ -415,7 +415,7 @@ void TocWidget::updateViewForce()
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
 
-	QAbstractItemModel * toc_model = 
+	QAbstractItemModel * toc_model =
 			gui_view_.tocModels().model(current_type_);
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
@@ -470,7 +470,7 @@ void TocWidget::filterContents()
 				filterLE->text(), Qt::CaseInsensitive);
 		tocTV->setRowHidden(index.row(), index.parent(), !matches);
 	}
-	// recursively unhide parents of unhidden children 
+	// recursively unhide parents of unhidden children
 	for (int i = size - 1; i >= 0; i--) {
 		QModelIndex index = indices[i];
 		if (!tocTV->isRowHidden(index.row(), index.parent())
