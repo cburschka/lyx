@@ -50,7 +50,6 @@ GuiToc::~GuiToc()
 void GuiToc::updateView()
 {
 	widget_->updateView();
-	return;
 }
 
 
@@ -71,7 +70,7 @@ void GuiToc::enableView(bool enable)
 	widget_->checkModelChanged();
 	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
-		widget_->updateViewForce();
+		widget_->updateViewNow();
 }
 
 
