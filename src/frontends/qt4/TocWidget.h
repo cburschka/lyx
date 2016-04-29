@@ -42,6 +42,8 @@ public:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & status)
 		const;
+	// update the view when the model has changed
+	void checkModelChanged();
 
 public Q_SLOTS:
 	/// Schedule new update of the display unless already scheduled.
