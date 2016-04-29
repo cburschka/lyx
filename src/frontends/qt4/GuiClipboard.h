@@ -84,6 +84,7 @@ public:
 
 private Q_SLOTS:
 	void on_dataChanged();
+	void update();
 
 private:
 	bool plaintext_clipboard_empty_;

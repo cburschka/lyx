@@ -112,7 +112,7 @@ GuiClipboard::GuiClipboard()
 	connect(qApp->clipboard(), SIGNAL(dataChanged()),
 		this, SLOT(on_dataChanged()));
 	// initialize clipboard status.
-	on_dataChanged();
+	update();
 }
 
 
@@ -550,6 +550,17 @@ bool GuiClipboard::hasInternal() const
 
 
 void GuiClipboard::on_dataChanged()
+{
+	update();
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+	// Retry on Windows (#10109)
+	if (cache_.formats().count() == 0) {
+		QTimer::singleShot(100, this, SLOT(update()));
+	}
+#endif
+}
+
+void GuiClipboard::update()
 {
 	//Note: we do not really need to run cache_.update() unless the
 	//data has been changed *and* the GuiClipboard has been queried.
