@@ -6,7 +6,7 @@ DIST_SUBDIRS = qt4 .
 
 noinst_LIBRARIES = liblyxfrontends.a
 
-AM_CPPFLAGS += -I$(srcdir)/..  $(BOOST_INCLUDES)
+AM_CPPFLAGS += -I$(srcdir)/..  $(BOOST_INCLUDES) $(ZLIB_INCLUDES)
 
 liblyxfrontends_a_SOURCES = \
 	alert.h \
@@ -39,7 +39,7 @@ TESTS = \
 check_PROGRAMS = \
 	biblio
 
-biblio_LDADD = $(BOOST_LIBS)
+biblio_LDADD = $(BOOST_LIBS) $(ZLIB_LIBS)
 biblio_SOURCES = \
 	tests/biblio.cpp \
 	tests/boost.cpp

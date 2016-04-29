@@ -6,4 +6,8 @@ if USE_INCLUDED_BOOST
 BOOST = boost
 endif
 
-SUBDIRS = $(BOOST)
+if USE_INCLUDED_ZLIB
+ZLIB = zlib
+endif
+
+SUBDIRS = $(BOOST) $(ZLIB)
