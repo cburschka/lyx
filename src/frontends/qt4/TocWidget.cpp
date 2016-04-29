@@ -452,6 +452,14 @@ void TocWidget::updateViewForce()
 }
 
 
+void TocWidget::checkModelChanged()
+{
+	if (!gui_view_.documentBufferView() ||
+	    gui_view_.tocModels().model(current_type_) != tocTV->model())
+		updateViewForce();
+}
+
+
 void TocWidget::filterContents()
 {
 	if (!tocTV->model())
