@@ -61,7 +61,7 @@ namespace lyx {
 
 namespace frontend {
 
-static QMimeData const * read_clipboard() 
+static QMimeData const * read_clipboard()
 {
 	LYXERR(Debug::CLIPBOARD, "Getting Clipboard");
 	QMimeData const * source =
@@ -93,7 +93,7 @@ void CacheMimeData::update()
 }
 
 
-QByteArray CacheMimeData::data(QString const & mimeType) const 
+QByteArray CacheMimeData::data(QString const & mimeType) const
 {
 	return read_clipboard()->data(mimeType);
 }
@@ -281,10 +281,10 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 			image.save(toqstr(filename.absFileName()), "JPEG");
 		else
 			LATTEST(false);
-		
+
 		return filename;
 	}
-	
+
 	// get mime for type
 	QString mime;
 	switch (type) {
@@ -294,7 +294,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	case WmfGraphicsType: mime = wmfMimeType(); break;
 	default: LASSERT(false, return FileName());
 	}
-	
+
 	// get data
 	if (!cache_.hasFormat(mime))
 		return FileName();
@@ -309,7 +309,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		       << filename.absFileName() << " for writing");
 		return FileName();
 	}
-	
+
 	// write the (LinkBack) PDF data
 	f.write(ar);
 	if (type == LinkBackGraphicsType) {
@@ -459,7 +459,7 @@ bool GuiClipboard::hasTextContents(Clipboard::TextType type) const
 	case LyXTextType:
 		return cache_.hasFormat(lyxMimeType());
 	case PlainTextType:
-		return cache_.hasText();       
+		return cache_.hasText();
 	case HtmlTextType:
 		return cache_.hasHtml();
 	case LaTeXTextType:
@@ -493,7 +493,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 #else
 		return false;
 #endif // Q_OS_MAC
-	
+
 	// get mime data
 	QStringList const & formats = cache_.formats();
 	LYXERR(Debug::CLIPBOARD, "We found " << formats.size() << " formats");
@@ -508,7 +508,7 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	case PdfGraphicsType: mime = pdfMimeType(); break;
 	default: LASSERT(false, return false);
 	}
-	
+
 	return cache_.hasFormat(mime);
 }
 
@@ -537,7 +537,7 @@ bool GuiClipboard::isInternal() const
 bool GuiClipboard::hasInternal() const
 {
 	// Windows and Mac OS X does not have the concept of ownership;
-	// the clipboard is a fully global resource so all applications 
+	// the clipboard is a fully global resource so all applications
 	// are notified of changes. However, on Windows ownership is
 	// emulated by Qt through the OleIsCurrentClipboard() API, while
 	// on Mac OS X we deal with this issue by ourself.
