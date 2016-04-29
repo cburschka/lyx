@@ -35,11 +35,8 @@
 
 #include <QHeaderView>
 #include <QMenu>
-#include <QTimer>
 
 #include <vector>
-
-#define DELAY_UPDATE_VIEW
 
 using namespace std;
 
@@ -47,7 +44,9 @@ namespace lyx {
 namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
-	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view), update_delay_(0)
+	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view),
+	  update_timer_short_(new QTimer(this)),
+	  update_timer_long_(new QTimer(this))
 
 {
 	setupUi(this);
@@ -88,6 +87,16 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(filterLE, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
+
+	// setting the update timer
+	update_timer_short_->setSingleShot(true);
+	update_timer_long_->setSingleShot(true);
+	update_timer_short_->setInterval(0);
+	update_timer_long_->setInterval(2000);
+	connect(update_timer_short_, SIGNAL(timeout()),
+	        this, SLOT(realUpdateView()));
+	connect(update_timer_long_, SIGNAL(timeout()),
+	        this, SLOT(realUpdateView()));
 
 	init(QString());
 }
@@ -256,7 +265,7 @@ void TocWidget::on_updateTB_clicked()
 void TocWidget::on_sortCB_stateChanged(int state)
 {
 	gui_view_.tocModels().sort(current_type_, state == Qt::Checked);
-	updateViewForce();
+	updateViewNow();
 }
 
 
@@ -308,7 +317,7 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 	if (index == -1)
 		return;
 	current_type_ = typeCO->itemData(index).toString();
-	updateViewForce();
+	updateViewNow();
 	if (typeCO->hasFocus())
 		gui_view_.setFocus();
 }
@@ -380,27 +389,24 @@ void TocWidget::enableControls(bool enable)
 
 void TocWidget::updateView()
 {
-// Enable if you dont want the delaying business, cf #7138.
-#ifndef DELAY_UPDATE_VIEW
-	updateViewForce();
-	return;
-#endif
-	// already scheduled?
-	if (update_delay_ == -1)
-		return;
-	QTimer::singleShot(update_delay_, this, SLOT(updateViewForce()));
 	// Subtler optimization for having the delay more UI invisible.
 	// We trigger update immediately for sparse editation actions,
 	// i.e. there was no editation/cursor movement in last 2 sec.
 	// At worst there will be +1 redraw after 2s in a such "calm" mode.
-	if (update_delay_ != 0)
-		updateViewForce();
-	update_delay_ = -1;
+	if (!update_timer_long_->isActive())
+		update_timer_short_->start();
+	// resets the timer to trigger after 2s
+	update_timer_long_->start();
 }
 
-void TocWidget::updateViewForce()
+void TocWidget::updateViewNow()
 {
-	update_delay_ = 2000;
+	update_timer_long_->stop();
+	update_timer_short_->start();
+}
+
+void TocWidget::realUpdateView()
+{
 	if (!gui_view_.documentBufferView()) {
 		tocTV->setModel(0);
 		depthSL->setMaximum(0);
@@ -456,7 +462,7 @@ void TocWidget::checkModelChanged()
 {
 	if (!gui_view_.documentBufferView() ||
 	    gui_view_.tocModels().model(current_type_) != tocTV->model())
-		updateViewForce();
+		realUpdateView();
 }
 
 
@@ -528,9 +534,6 @@ void TocWidget::init(QString const & str)
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
-
-	// no delay when the whole outliner is reseted.
-	update_delay_ = 0;
 }
 
 } // namespace frontend
