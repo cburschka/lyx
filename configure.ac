@@ -138,9 +138,7 @@ else
 fi
 
 ### check for compression support
-AC_CHECK_HEADERS(zlib.h,
- [AC_CHECK_LIB(z, gzopen, [LIBS="$LIBS -lz"], LYX_LIB_ERROR(libz,zlib))],
- [LYX_LIB_ERROR(zlib.h,zlib)])
+LYX_USE_INCLUDED_ZLIB
 
 ### check for file magic support (currently optional)
 AC_CHECK_HEADERS(magic.h,

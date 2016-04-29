@@ -19,7 +19,7 @@ DEFAULT_INCLUDES =
 
 AM_CPPFLAGS += -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) -I$(top_builddir)/src \
-	$(BOOST_INCLUDES)
+	$(BOOST_INCLUDES) $(ZLIB_INCLUDES)
 
 TEST_FILES = \
 	test/runtests.cmake \
@@ -125,7 +125,7 @@ tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
 	$(LIBICONV) $(BOOST_LIBS) \
 	$(QT_LIB) $(QT_LDFLAGS) \
-	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
+	@LIBS@ $(ZLIB_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
 tex2lyx_LDFLAGS = -framework AppKit \

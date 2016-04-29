@@ -454,6 +454,36 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 ])
 
 
+dnl Usage: LYX_USE_INCLUDED_ZLIB : select if the included zlib should
+dnl        be used.
+AC_DEFUN([LYX_USE_INCLUDED_ZLIB],[
+  AC_MSG_CHECKING([whether to use included zlib library])
+  AC_ARG_WITH(included-zlib,
+    [AC_HELP_STRING([--without-included-zlib], [do not use the zlib lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+    [lyx_cv_with_included_zlib=$withval],
+    [lyx_cv_with_included_zlib=no])
+  AM_CONDITIONAL(USE_INCLUDED_ZLIB, test x$lyx_cv_with_included_zlib = xyes)
+  AC_MSG_RESULT([$lyx_cv_with_included_zlib])
+  if test x$lyx_cv_with_included_zlib = xyes ; then
+    ZLIB_INCLUDES='-I$(top_srcdir)/3rdparty/zlib/1.2.8'
+    ZLIB_LIBS='$(top_builddir)/3rdparty/zlib/liblyxzlib.a'
+    mkdir -p 3rdparty/zlib
+dnl include standard config.h for HAVE_UNISTD_H
+    echo "#include <../../config.h>" > 3rdparty/zlib/zconf.h
+dnl prevent clash with system zlib that might be dragged in by other libs
+    echo "#define Z_PREFIX 1" >> 3rdparty/zlib/zconf.h
+    cat "${srcdir}/3rdparty/zlib/1.2.8/zconf.h.in" >> 3rdparty/zlib/zconf.h
+  else
+    ZLIB_INCLUDES=
+    AC_CHECK_HEADERS(zlib.h,
+      [AC_CHECK_LIB(z, gzopen, [ZLIB_LIBS="-lz"], LYX_LIB_ERROR(libz,zlib))],
+      [LYX_LIB_ERROR(zlib.h,zlib)])
+  fi
+  AC_SUBST(ZLIB_INCLUDES)
+  AC_SUBST(ZLIB_LIBS)
+])
+
+
 dnl Usage: LYX_CHECK_CALLSTACK_PRINTING: define LYX_CALLSTACK_PRINTING if the
 dnl        necessary APIs are available to print callstacks.
 AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],

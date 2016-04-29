@@ -9,6 +9,7 @@ EXTRA_DIST = \
 	CMakeLists.txt \
 	1.2.8/README \
 	1.2.8/treebuild.xml \
+	1.2.8/zconf.h.in \
 	1.2.8/zconf.h.cmakein \
 	1.2.8/zlib.3 \
 	1.2.8/zlib.map \
