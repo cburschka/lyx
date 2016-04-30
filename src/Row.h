@@ -145,6 +145,10 @@ public:
 		DocIterator const & end) const;
 
 	///
+	void pit(pit_type p) { pit_ = p; }
+	///
+	pit_type pit() const { return pit_; }
+	///
 	void pos(pos_type p) { pos_ = p; }
 	///
 	pos_type pos() const { return pos_; }
@@ -286,6 +290,8 @@ private:
 	mutable bool changed_;
 	/// CRC of row contents.
 	mutable size_type crc_;
+	/// Index of the paragraph that contains this row
+	pit_type pit_;
 	/// first pos covered by this row
 	pos_type pos_;
 	/// one behind last pos covered by this row
