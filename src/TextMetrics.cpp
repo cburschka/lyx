@@ -443,6 +443,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
+		row.pit(pit);
 		row.pos(first);
 		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
@@ -1113,6 +1114,16 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	int const xo = origin_.x_;
 	x -= xo;
 
+	int offset = 0;
+	CursorSlice rowSlice(const_cast<InsetText &>(text_->inset()));
+	rowSlice.pit() = row.pit();
+	rowSlice.pos() = row.pos();
+
+	// Adapt to cursor row scroll offset if applicable.
+	if (bv_->currentRowSlice() == rowSlice)
+		offset = bv_->horizScrollOffset();
+	x += offset;
+
 	pos_type pos = row.pos();
 	boundary = false;
 	if (row.empty())
@@ -1166,8 +1177,10 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		else
 			boundary = row.right_boundary();
 	}
-	x += xo;
+
+	x += xo - offset;
 	//LYXERR0("getPosNearX ==> pos=" << pos << ", boundary=" << boundary);
+
 	return pos;
 }
 

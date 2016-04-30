@@ -150,7 +150,7 @@ private:
 public:
 	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
-	/// of this column.
+	/// of this column. This takes in account horizontal cursor row scrolling.
 	pos_type getPosNearX(Row const & row, int & x, bool & boundary) const;
 
 	/// returns pos in given par at given x coord.
