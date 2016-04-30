@@ -317,7 +317,13 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 	QImage const image = qlimage.image();
 	QRectF const drect = QRectF(x, y, w, h);
 	QRectF const srect = QRectF(0, 0, image.width(), image.height());
+	// Bilinear filtering is needed on a rare occasion for instant previews when
+	// the user's configuration mixes low-dpi and high-dpi monitors (#10114).
+	// This filter is optimised by qt on pixel-aligned images, so this does not
+	// affect performances in other cases.
+	setRenderHint(SmoothPixmapTransform);
 	drawImage(drect, image, srect);
+	setRenderHint(SmoothPixmapTransform, false);
 }
 
 

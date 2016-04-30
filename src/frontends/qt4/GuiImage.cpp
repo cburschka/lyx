@@ -207,7 +207,8 @@ bool GuiImage::scale(Params const & params)
 
 	QMatrix m;
 	m.scale(scale, scale);
-	transformed_ = image.transformed(m);
+	// Bilinear filtering is used to scale graphics preview
+	transformed_ = image.transformed(m, Qt::SmoothTransformation);
 	return true;
 }
 
