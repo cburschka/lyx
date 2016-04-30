@@ -57,6 +57,9 @@ What's new
 - Fix horizontal scrolling feature when inside a collapsable inset
   with several paragraphs.
 
+- Fix selection of large formula with the mouse when horizontal
+  scrolling kicks in (but 10094).
+
 - Fix display of collapsable insets when the same document is shown in
   two views with different width (bug 9756).
 
