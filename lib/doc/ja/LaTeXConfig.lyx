@@ -22,7 +22,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -92,36 +92,36 @@
 \end_layout
 
 \begin_layout Standard
-このファイルは、\SpecialChar LyX
+このファイルは，\SpecialChar LyX
 が取り扱うことができる\SpecialChar LaTeX
-の各追加機能について説明しています。以下に6つの節があります。
+の各追加機能について説明しています．以下に6つの節があります．
 \end_layout
 
 \begin_layout Enumerate
 現在の\SpecialChar LaTeX
-装備の基本情報。特に、現在の\SpecialChar LaTeX
-のバージョンが充分新しいかどうか確認してください。
+装備の基本情報．特に，現在の\SpecialChar LaTeX
+のバージョンが充分新しいかどうか確認してください．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-が認識する標準フォント。いまのところ、少しのエントリしかありません。
+が認識する標準フォント．いまのところ，少しのエントリしかありません．
 \end_layout
 
 \begin_layout Enumerate
 どの\SpecialChar LaTeX
-の実装においても標準とみなされる文書クラス。この節は、完備性のためにのみ存在します。
+の実装においても標準とみなされる文書クラス．この節は，完備性のためにのみ存在します．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-が認識する非必須の文書クラス。これらのうち、いくつかがなく（「検出」項目が「いいえ」になっている）、その機能を必要とする場合には、最寄りのCTANのFTPサイト
+が認識する非必須の文書クラス．これらのうち，いくつかがなく（「検出」項目が「いいえ」になっている），その機能を必要とする場合には，最寄りのCTANのFTPサイト
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Comprehensive \SpecialChar TeX
- Archive Networkに参加しているホストには、
+ Archive Networkに参加しているホストには，
 \end_layout
 
 \begin_layout LyX-Code
@@ -137,52 +137,52 @@ ftp://ftp.tex.ac.uk/tex-archive
 \end_layout
 
 \begin_layout Plain Layout
-があります。これら3つの主要サイトにも列挙してあるように、これ以外に膨大な量のミラーサイトが存在します。
+があります．これら3つの主要サイトにも列挙してあるように，これ以外に膨大な量のミラーサイトが存在します．
 \end_layout
 
 \end_inset
 
-から入手することができます。サイト内の場所は「CTAN」項目に示されています。検出された文書クラスのみが、\SpecialChar LyX
+から入手することができます．サイト内の場所は「CTAN」項目に示されています．検出された文書クラスのみが，\SpecialChar LyX
 の文書レイアウトとして使うことができる点に留意してくだ
-さい。
+さい．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LaTeX
-開発者が「必須」と太鼓判を押したパッケージ。これらは必ずなくてはなりませんが、使用中の\SpecialChar LaTeX
-頒布版が少し古い場合には、存在しないものもあるかもしれません。
+開発者が「必須」と太鼓判を押したパッケージ．これらは必ずなくてはなりませんが，使用中の\SpecialChar LaTeX
+頒布版が少し古い場合には，存在しないものもあるかもしれません．
 \end_layout
 
 \begin_layout Enumerate
 作成中の文書のマージンを変更しようとするときに\SpecialChar LyX
-が使用するパッケージ。いまのところ、これらが見つかるかどうかは、\SpecialChar LyX
-内部で利用できる選択肢には影響しません。
+が使用するパッケージ．いまのところ，これらが見つかるかどうかは，\SpecialChar LyX
+内部で利用できる選択肢には影響しません．
 \end_layout
 
 \begin_layout Enumerate
 \SpecialChar LyX
-に欲しい機能であり、\SpecialChar LaTeX
+に欲しい機能であり，\SpecialChar LaTeX
 装備にも追加したいと思うような標準的な\SpecialChar LaTeX
-パッケージ。いまのところ、これらが見つかるかどうかは、\SpecialChar LyX
-内部で利用できる選択肢には影響しません。
+パッケージ．いまのところ，これらが見つかるかどうかは，\SpecialChar LyX
+内部で利用できる選択肢には影響しません．
 \end_layout
 
 \begin_layout Standard
-これらのパッケージのほとんどは、\SpecialChar TeX
+これらのパッケージのほとんどは，\SpecialChar TeX
 LiveやMiK\SpecialChar TeX
 のような新しい\SpecialChar TeX
-頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めたら、\SpecialChar LyX
+頒布版を使っていれば，利用可能です．もし，存在しないアイテムを装備しようと決めたら，\SpecialChar LyX
 にそのことを教
-えなくてはなりません。導入し終えたら、メニュー項目
+えなくてはなりません．導入し終えたら，メニュー項目
 \family sans
 ツール\SpecialChar menuseparator
 環境構成
 \family default
-を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「いいえ」となっているときは、何らかの理由
+を使ったあと，このファイルを再度読み込んで，新しいパッケージが認識されたかどうかを確認してください．もし「検出」項目が「いいえ」となっているときは，何らかの理由
 で現在の\SpecialChar LaTeX
-設定の一覧を取得できなかったことを示しています。ほとんどの場合、ファイル名データベース(texhash)を更新し忘れただけでしょう。これを行う正しい方法
-については、お使いの\SpecialChar LaTeX
-頒布版の説明書をお読みください。
+設定の一覧を取得できなかったことを示しています．ほとんどの場合，ファイル名データベース(texhash)を更新し忘れただけでしょう．これを行う正しい方法
+については，お使いの\SpecialChar LaTeX
+頒布版の説明書をお読みください．
 \end_layout
 
 \begin_layout Section
@@ -214,12 +214,12 @@ fonts/ae/
 \family sans
 AE
 \family default
-パッケージは、\SpecialChar LaTeX
-の標準フォント（Computer Modern）の擬似的なPostScript®版を提供します。特別な事情がなければ、このフォントではなく、
+パッケージは，\SpecialChar LaTeX
+の標準フォント（Computer Modern）の擬似的なPostScript®版を提供します．特別な事情がなければ，このフォントではなく，
 \family sans
 Latin Modern
 \family default
-を使用することを推奨します。
+を使用することを推奨します．
 \end_layout
 
 \begin_layout Subsection
@@ -243,8 +243,8 @@ fonts/bera
 \end_layout
 
 \begin_layout Description
-備考： beraフォントは、Bitstream Veraのクローンであり、Bera Serif（slab-serifのローマン体）、Bera Sans（Frut
-igerの後継）、およびBera Mono（等間隔／タイプライタ）を含みます。
+備考： beraフォントは，Bitstream Veraのクローンであり，Bera Serif（slab-serifのローマン体），Bera Sans（Frut
+igerの後継），およびBera Mono（等間隔／タイプライタ）を含みます．
 \end_layout
 
 \begin_layout Subsection
@@ -272,20 +272,20 @@ fonts/libertine/
 \family sans
 biolinum-type1
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Biolinum
 \emph default
-サンセリフフォント族のサポートを提供します。これは、
+サンセリフフォント族のサポートを提供します．これは，
 \emph on
 Libertine
 \emph default
-ローマンフォントと共に用いるべくデザインされたものです。
+ローマンフォントと共に用いるべくデザインされたものです．
 \emph on
 Biolinum
 \emph default
-はOld Style Figuresをサポートします。これらの図が利用可能でローマンフォントに要求された場合には、自動的に有効化されます。新しい版では、伸縮も可
-能です。このフォントの旧版は、
+はOld Style Figuresをサポートします．これらの図が利用可能でローマンフォントに要求された場合には，自動的に有効化されます．新しい版では，伸縮も可
+能です．このフォントの旧版は，
 \family sans
 libertine-legacy
 \family default
@@ -295,7 +295,7 @@ type  "package"
 arg   "libertine"
 \end_inset
 
-)で提供されています。後者のパッケージのみをお持ちの場合には、Biolinumを得るためには、ローマンフォントを
+)で提供されています．後者のパッケージのみをお持ちの場合には，Biolinumを得るためには，ローマンフォントを
 \emph on
 Libertine
 \emph default
@@ -303,7 +303,7 @@ Libertine
 \emph on
 Standard
 \emph default
-に設定する必要があります。
+に設定する必要があります．
 \end_layout
 
 \begin_layout Subsection
@@ -327,7 +327,7 @@ fonts/cmbright
 \end_layout
 
 \begin_layout Description
-備考： CM brightは、すばらしいサンセリフ数式フォントも同時に提供する、サンセリフフォントです。
+備考： CM brightは，すばらしいサンセリフ数式フォントも同時に提供する，サンセリフフォントです．
 \end_layout
 
 \begin_layout Subsection
@@ -355,11 +355,11 @@ macros/latex/contrib/ccfonts/
 \family sans
 ccfonts
 \family default
-パッケージは、Donald Knuthが書籍『
+パッケージは，Donald Knuthが書籍『
 \emph on
 Concrete Mathematics
 \emph default
-』ためにデザインしたフォントのサポートを提供します。本の題名からconcreteフォントと呼ばれています。
+』ためにデザインしたフォントのサポートを提供します．本の題名からconcreteフォントと呼ばれています．
 \end_layout
 
 \begin_layout Subsection
@@ -388,24 +388,24 @@ fonts/ec
 \family sans
 ec
 \family default
-フォントを使うことは必須ではありませんが、これを使うことを強く推奨します。
+フォントを使うことは必須ではありませんが，これを使うことを強く推奨します．
 \family sans
 ec
 \family default
-フォントは、より自然な範囲のフォント寸法を揃えており、
+フォントは，より自然な範囲のフォント寸法を揃えており，
 \family sans
 cmr10
 \family default
-のような古いフォントよりも優れたハイフネーションやカーニングを実現します。もし
+のような古いフォントよりも優れたハイフネーションやカーニングを実現します．もし
 \family sans
 dc
 \family default
-フォントと呼ばれるフォントを装備しているのであれば、その後継である
+フォントと呼ばれるフォントを装備しているのであれば，その後継である
 \family sans
 ec
 \family default
-フォントにアップグレードしてください。\SpecialChar LyX
-は、このフォントが装備されていることを検知すれば、自動的に使用します。
+フォントにアップグレードしてください．\SpecialChar LyX
+は，このフォントが装備されていることを検知すれば，自動的に使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -433,12 +433,12 @@ fonts/eco/
 \family sans
 eco
 \family default
-パッケージは、\SpecialChar LyX
+パッケージは，\SpecialChar LyX
 が
 \family sans
 Computer Modern
 \family default
-フォント族の旧式の数字にアクセスするのに使用します。
+フォント族の旧式の数字にアクセスするのに使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -466,11 +466,11 @@ fonts/eulervm/
 \family sans
 eulervm
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Euler
 \emph default
-数式フォントへのアクセスを提供します。
+数式フォントへのアクセスを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -498,7 +498,7 @@ fonts/feyn/
 \family sans
 feyn
 \family default
-パッケージは、数式中で
+パッケージは，数式中で
 \family sans
 ファインマン
 \family default
@@ -509,7 +509,7 @@ feyn
 \backslash
 Diagram
 \series default
-）に使用されます。
+）に使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -537,11 +537,11 @@ macros/latex/contrib/fontspec
 \family sans
 fontspec
 \family default
-パッケージは、お使いのオペレーティング・システムのOpenType、TrueTypeおよびPostScriptフォントへのアクセスを提供します。そのためには、パ
-ッケージは、Xe\SpecialChar TeX
+パッケージは，お使いのオペレーティング・システムのOpenType，TrueTypeおよびPostScriptフォントへのアクセスを提供します．そのためには，パ
+ッケージは，Xe\SpecialChar TeX
 若しくはLua\SpecialChar TeX
-エンジンを必要とします。Lua\SpecialChar TeX
-は、fontspec第2.0版(2010/07/11)以降でのみサポートされています。
+エンジンを必要とします．Lua\SpecialChar TeX
+は，fontspec第2.0版(2010/07/11)以降でのみサポートされています．
 \end_layout
 
 \begin_layout Subsection
@@ -569,7 +569,7 @@ fonts/fourier-GUT
 \family sans
 fourier
 \family default
-パッケージは、Utopia PostScript®フォントのサポートを提供します。
+パッケージは，Utopia PostScript®フォントのサポートを提供します．
 \family sans
 PSNFSS
 \family default
@@ -577,11 +577,11 @@ PSNFSS
 \family sans
 utopia
 \family default
-パッケージとは異なり、これは適当な数学フォントも提供します。もしこのパッケージが装備されていれば、Utopiaフォントを選択した際に、
+パッケージとは異なり，これは適当な数学フォントも提供します．もしこのパッケージが装備されていれば，Utopiaフォントを選択した際に，
 \family sans
 utopia
 \family default
-の代わりにこれが使われるようになります。
+の代わりにこれが使われるようになります．
 \end_layout
 
 \begin_layout Subsection
@@ -609,14 +609,14 @@ fonts/lm/
 \family sans
 Latin Modern
 \family default
-フォントは、\SpecialChar LaTeX
-標準フォント（Computer Modern）のPostScript®版です。このフォントを最終的に\SpecialChar LaTeX
-の既定フォントとすることが企図されています。AE
-のような、他のComputer ModernのPostScript®版を使うよりも、この
+フォントは，\SpecialChar LaTeX
+標準フォント（Computer Modern）のPostScript®版です．このフォントを最終的に\SpecialChar LaTeX
+の既定フォントとすることが企図されています．AE
+のような，他のComputer ModernのPostScript®版を使うよりも，この
 \family sans
 Latin Modern
 \family default
-フォントを使用することを推奨します。
+フォントを使用することを推奨します．
 \end_layout
 
 \begin_layout Subsection
@@ -644,7 +644,7 @@ fonts/LuxiMono/
 \family sans
 luximono
 \family default
-パッケージは、等間隔フォントであるLuxida Monoフォントのサポートを提供します。
+パッケージは，等間隔フォントであるLuxida Monoフォントのサポートを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -672,11 +672,11 @@ fonts/libertine/
 \family sans
 libertine-type1
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Libertine
 \emph default
-ローマンフォント族へのサポートを提供します。このパッケージの旧版
+ローマンフォント族へのサポートを提供します．このパッケージの旧版
 \family sans
 libertine-legacy
 \family default
@@ -686,7 +686,7 @@ type  "package"
 arg   "libertine"
 \end_inset
 
-)もサポートされており、予備として使用されます。
+)もサポートされており，予備として使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -714,11 +714,11 @@ fonts/libertine/
 \family sans
 libertineMono-type1
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Libertine Mono
 \emph default
- タイプライタフォントへのサポートを提供します。このフォントは、2013年2月現在、libertineフォントパッケージに同梱して提供されています。
+ タイプライタフォントへのサポートを提供します．このフォントは，2013年2月現在，libertineフォントパッケージに同梱して提供されています．
 \end_layout
 
 \begin_layout Subsection
@@ -746,18 +746,18 @@ fonts/mathdesign/
 \family sans
 mathdesign
 \family default
-パッケージは、3つのポピュラーなローマンフォントを提供し、一致する数式フォントへ拡張します。以下のローマンフォントの1つを、\SpecialChar LyX
+パッケージは，3つのポピュラーなローマンフォントを提供し，一致する数式フォントへ拡張します．以下のローマンフォントの1つを，\SpecialChar LyX
 の
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 フォント
 \family default
-で選択すると、
+で選択すると，
 \family sans
 mathdesign
 \family default
-パッケージとその対応する数式フォントが自動的に読み込まれます。
+パッケージとその対応する数式フォントが自動的に読み込まれます．
 \end_layout
 
 \begin_layout Itemize
@@ -819,7 +819,7 @@ arg   "mdput"
 
 \begin_layout Standard
 \SpecialChar LaTeX
-の既定数式フォントは維持して、本文用フォントのみが欲しい場合、各フォントの非数式デザイン版を選択するか、
+の既定数式フォントは維持して，本文用フォントのみが欲しい場合，各フォントの非数式デザイン版を選択するか，
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -830,7 +830,7 @@ arg   "mdput"
 \emph on
 クラス既定値
 \emph default
-を選択してください。
+を選択してください．
 \end_layout
 
 \begin_layout Subsection
@@ -858,12 +858,12 @@ fonts/minionpro
 \family sans
 MinionPro
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Minion Pro
 \emph default
-フォントのサポートを提供します。フォント自体はパッケージの一部ではなく、別に導入しなくてはなりません(詳細はMinionProパッケージ説明書をお読みください)
-。
+フォントのサポートを提供します．フォント自体はパッケージの一部ではなく，別に導入しなくてはなりません(詳細はMinionProパッケージ説明書をお読みください)
+．
 \end_layout
 
 \begin_layout Subsection
@@ -891,7 +891,7 @@ fonts/newtx
 \family sans
 newtxmath
 \family default
-パッケージは、
+パッケージは，
 \emph on
 URW Garamond
 \emph default
@@ -911,11 +911,11 @@ Libertine
 \emph on
 MinionPro
 \emph default
-の一致する数式フォントへのサポートを提供します。
+の一致する数式フォントへのサポートを提供します．
 \emph on
 MinionPro
 \emph default
-サポートは、外部フォントと共に、補完的役割を果たす
+サポートは，外部フォントと共に，補完的役割を果たす
 \family sans
 minion2newtx
 \family default
@@ -925,11 +925,11 @@ type  "package"
 arg   "minion2newtx"
 \end_inset
 
-)が必要です(詳細については、
+)が必要です(詳細については，
 \family sans
 minion2newtx
 \family default
-の説明書をお読みください)。
+の説明書をお読みください)．
 \end_layout
 
 \begin_layout Subsection
@@ -957,8 +957,8 @@ macros/latex/required/psnfss/
 \family sans
  psnfss
 \family default
-群を使えば、\SpecialChar LyX
-が使うフォントを、PostScriptプリンタで利用可能な35の伝統的フォントに変更することができるようになります。
+群を使えば，\SpecialChar LyX
+が使うフォントを，PostScriptプリンタで利用可能な35の伝統的フォントに変更することができるようになります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -971,14 +971,14 @@ macros/latex/required/psnfss/
 \family sans
 psnfss
 \family default
-のバージョンによって、提供するフォントパッケージは異なります。パッケージによっては、廃止が宣言され、新しいものに置き換わったものもあります。\SpecialChar LyX
+のバージョンによって，提供するフォントパッケージは異なります．パッケージによっては，廃止が宣言され，新しいものに置き換わったものもあります．\SpecialChar LyX
 は古くなったパッケー
-ジもサポートしますが、つねに最新版が装備されているように留意されることを強くおすすめします(\SpecialChar LyX
-もそれを好みます)。最近の
+ジもサポートしますが，つねに最新版が装備されているように留意されることを強くおすすめします(\SpecialChar LyX
+もそれを好みます)．最近の
 \family sans
 psnfss
 \family default
-群は少なくとも次のものを含んでいます。
+群は少なくとも次のものを含んでいます．
 \end_layout
 
 \begin_layout Itemize
@@ -1351,9 +1351,9 @@ arg   "utopia"
 \end_layout
 
 \begin_layout Standard
-これらのフォントの一部は、一致する数式フォントを自動的に選択することに注意してください。\SpecialChar LaTeX
-の既定数式フォントは維持して、本文用フォントのみが欲しい場合、各フォント
-の非数式デザイン版を選択するか、
+これらのフォントの一部は，一致する数式フォントを自動的に選択することに注意してください．\SpecialChar LaTeX
+の既定数式フォントは維持して，本文用フォントのみが欲しい場合，各フォント
+の非数式デザイン版を選択するか，
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -1364,7 +1364,7 @@ arg   "utopia"
 \emph on
 クラス既定値
 \emph default
-を選択してください。
+を選択してください．
 \end_layout
 
 \end_deeper
@@ -1384,14 +1384,14 @@ fonts/tex-gyre
 \family sans
 tex-gyre
 \family default
-コレクションは、
+コレクションは，
 \family sans
 psnfss
 \family default
-フォントの代替として使用することのできる、35に及ぶ基本PostScriptフォントのリメークと拡張を提供します。フォントは、\SpecialChar LaTeX
+フォントの代替として使用することのできる，35に及ぶ基本PostScriptフォントのリメークと拡張を提供します．フォントは，\SpecialChar LaTeX
 で使用することを念頭にデザインされ
-ました。現在のところ、以下のフォントが利用でき、かつ\SpecialChar LyX
-によってネイティブにサポートされています。
+ました．現在のところ，以下のフォントが利用でき，かつ\SpecialChar LyX
+によってネイティブにサポートされています．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1705,20 +1705,20 @@ tipa
 \family sans
 tipx
 \family default
-パッケージは、『国際音声字母(IPA)』で定義されている発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、
+パッケージは，『国際音声字母(IPA)』で定義されている発音記号を植字するのに必要な包括的なサポートとフォントを提供します．これらの記号は，
 \family sans
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 発音記号
 \family default
 あるいは\SpecialChar LyX
-の数式エディタ、または
+の数式エディタ，または
 \family sans
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号
 \family default
-ダイアログから入力することができます。
+ダイアログから入力することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -1746,16 +1746,16 @@ fonts/txfonts/
 \family sans
 txfonts
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Times Roman
 \emph default
- に基づいたフォントとその数式サポートを提供します。\SpecialChar LyX
-では、現在のところ、等間隔体(
+ に基づいたフォントとその数式サポートを提供します．\SpecialChar LyX
+では，現在のところ，等間隔体(
 \emph on
 TXTT
 \emph default
-)のみが、ネイティブにサポートされています。
+)のみが，ネイティブにサポートされています．
 \end_layout
 
 \begin_layout Subsection
@@ -1779,10 +1779,10 @@ CTAN:
 \end_layout
 
 \begin_layout Description
-備考: URW Classicoは、Hermann Zapfによってデザインされた、非常によく知られたサンセリフ体であるOptima書体のクローンです。このフォ
-ントは、Aladdin Free Public Licenseの下で非商用に使用ができます。\SpecialChar TeX
- Liveの下では、このフォントは「getnonfreefonts-
-sys」ユーティリティ経由で導入する必要があります。
+備考: URW Classicoは，Hermann Zapfによってデザインされた，非常によく知られたサンセリフ体であるOptima書体のクローンです．このフォ
+ントは，Aladdin Free Public Licenseの下で非商用に使用ができます．\SpecialChar TeX
+ Liveの下では，このフォントは「getnonfreefonts-
+sys」ユーティリティ経由で導入する必要があります．
 \end_layout
 
 \begin_layout Subsection
@@ -1810,24 +1810,24 @@ CTAN:
 \family sans
 garamondx
 \family default
-パッケージは、URW Garamondフォントへのアクセスを提供します。このフォントは、Aladdin Free Public Licenseの下で非商用に使用
-ができます。\SpecialChar TeX
- Liveの下では、フォントは、パッケージとは別に「getnonfreefonts-sys」ユーティリティ経由で導入する必要があります(導入済:
+パッケージは，URW Garamondフォントへのアクセスを提供します．このフォントは，Aladdin Free Public Licenseの下で非商用に使用
+ができます．\SpecialChar TeX
+ Liveの下では，フォントは，パッケージとは別に「getnonfreefonts-sys」ユーティリティ経由で導入する必要があります(導入済:
  
 \begin_inset Info
 type  "package"
 arg   "garamondx-fonts"
 \end_inset
 
-)。
+)．
 \family sans
 garamondx
 \family default
-パッケージは、オールドスタイルの形を提供します。一致する数式フォントは
+パッケージは，オールドスタイルの形を提供します．一致する数式フォントは
 \emph on
 URW Garamond (NewTX)
 \emph default
-で提供されます。予備として、
+で提供されます．予備として，
 \family sans
 ugm
 \family default
@@ -1837,7 +1837,7 @@ type  "package"
 arg   "ugm"
 \end_inset
 
-)パッケージが使用されますが、これにはオールドスタイル形は含まれていません。
+)パッケージが使用されますが，これにはオールドスタイル形は含まれていません．
 \end_layout
 
 \begin_layout Section
@@ -1846,10 +1846,10 @@ arg   "ugm"
 \end_layout
 
 \begin_layout Standard
-本節で取り扱われている文書クラスは、\SpecialChar LaTeX
-が提供している基本文書クラスです。特に、\SpecialChar LaTeX2e
-が装備されている限り、これらはすべてお使いのシステム上に存在するはずです。したがって
-、あるクラスが検出されないと表示されている場合は、そのクラスをサポートするレイアウトファイルが見つからなかったことを意味します。
+本節で取り扱われている文書クラスは，\SpecialChar LaTeX
+が提供している基本文書クラスです．特に，\SpecialChar LaTeX2e
+が装備されている限り，これらはすべてお使いのシステム上に存在するはずです．したがって
+，あるクラスが検出されないと表示されている場合は，そのクラスをサポートするレイアウトファイルが見つからなかったことを意味します．
 \end_layout
 
 \begin_layout Subsection
@@ -1875,8 +1875,8 @@ CTAN： 該当なし
 \family sans
 article
 \family default
-は、論文や短い文章を植字するのに使われます。\SpecialChar LaTeX
-の基本となる文書クラスです。
+は，論文や短い文章を植字するのに使われます．\SpecialChar LaTeX
+の基本となる文書クラスです．
 \end_layout
 
 \begin_layout Subsection
@@ -1902,11 +1902,11 @@ CTAN： 該当なし
 \family sans
 report
 \family default
-は、
+は，
 \family sans
 article
 \family default
-に似ていますが、もう少し構造的です（各部をサポートしています）。
+に似ていますが，もう少し構造的です（各部をサポートしています）．
 \end_layout
 
 \begin_layout Subsection
@@ -1932,7 +1932,7 @@ CTAN： 該当なし
 \family sans
 book
 \family default
-は、名前の示すように、書籍を作ることを目的としています。特に章割りをサポートしています。
+は，名前の示すように，書籍を作ることを目的としています．特に章割りをサポートしています．
 \end_layout
 
 \begin_layout Subsection
@@ -1958,7 +1958,7 @@ CTAN： 該当なし
 \family sans
 letter
 \family default
-は、おもに英語で手紙を書くための基本クラスです。
+は，おもに英語で手紙を書くための基本クラスです．
 \end_layout
 
 \begin_layout Subsection
@@ -1984,8 +1984,8 @@ CTAN： 該当なし
 \family sans
 slides
 \family default
-は、OHPを作成するためのものです。\SpecialChar LyX
-によるサポートは充分とは言えません。可能ならば、代わりに
+は，OHPを作成するためのものです．\SpecialChar LyX
+によるサポートは充分とは言えません．可能ならば，代わりに
 \family sans
 foils
 \family default
@@ -1996,7 +1996,7 @@ reference "ssec:foils"
 
 \end_inset
 
-参照）。
+参照）．
 \end_layout
 
 \begin_layout Subsection
@@ -2024,16 +2024,16 @@ macros/latex/required/amslatex/classes/
 \family sans
 amsart
 \family default
-は、
+は，
 \family sans
 article
 \family default
-クラスの同等品です。これは、AMS-\SpecialChar LaTeX
-パッケージの一部であり、アメリカ数学会が開発した外観を持つ、数式の植字のために使われます。当学会の書籍や学術雑誌だけでなく、
-他の数学文献での出版のための原稿を準備するために使うことが推奨されています。アメリカ数学会は、投稿文書をAMS-\SpecialChar LaTeX
-で準備し、それを使っていることを謝辞に書くことを
-要請しています。\SpecialChar LyX
-によるサポートはまだ制限されています。
+クラスの同等品です．これは，AMS-\SpecialChar LaTeX
+パッケージの一部であり，アメリカ数学会が開発した外観を持つ，数式の植字のために使われます．当学会の書籍や学術雑誌だけでなく，
+他の数学文献での出版のための原稿を準備するために使うことが推奨されています．アメリカ数学会は，投稿文書をAMS-\SpecialChar LaTeX
+で準備し，それを使っていることを謝辞に書くことを
+要請しています．\SpecialChar LyX
+によるサポートはまだ制限されています．
 \end_layout
 
 \begin_layout Section
@@ -2061,13 +2061,11 @@ CTAN:
 \end_layout
 
 \begin_layout Description
-備考: 
-\lang english
-The document class 
+備考: 文書クラス
 \family sans
 a0poster
 \family default
- provides support for conference posters on large paper.
+は，大きな用紙の学会ポスターのサポートを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -2101,11 +2099,11 @@ ftp.edpsciences.org
 \family sans
 aa
 \family default
-（バージョン5.01）は、EDPサイエンス社発行の科学専門誌『
+（バージョン5.01）は，EDPサイエンス社発行の科学専門誌『
 \emph on
 Astronomy and Astrophysics
 \emph default
-（天文学と天体物理学）』に論文を投稿するのに使うことができます。
+（天文学と天体物理学）』に論文を投稿するのに使うことができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2139,19 +2137,19 @@ orgのディレクトリ
 \family sans
 aastex
 \family default
-は、アメリカの学術誌『
+は，アメリカの学術誌『
 \emph on
 Astrophysical Journal
 \emph default
-（天体物理学ジャーナル）』、『天文学ジャーナル（
+（天体物理学ジャーナル）』，『天文学ジャーナル（
 \emph on
 Astronomical Journal
 \emph default
-）』、『
+）』，『
 \emph on
 Publications of the Astronomical Society of the Pacific
 \emph default
-（太平洋天文学会誌）』へ投稿する論文を執筆するのに使用することができます。
+（太平洋天文学会誌）』へ投稿する論文を執筆するのに使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2192,7 +2190,7 @@ http://www.aeaweb.org/templates/latex_templates.zip
 \family sans
 AEA
 \family default
-は、アメリカ経済学会（AEA）が発行する、
+は，アメリカ経済学会（AEA）が発行する，
 \emph on
 American Economic Review
 \emph default
@@ -2212,7 +2210,7 @@ Journal of Economic Perspectives
 \emph on
 American Economics Journal
 \emph default
-の各誌への投稿に使用することができます。パッケージの使用は、
+の各誌への投稿に使用することができます．パッケージの使用は，
 \family sans
 amsmath
 \family default
@@ -2224,7 +2222,7 @@ graphicx
 \family sans
 harvard
 \family default
-などの基本機能を提供するものに限定しなくてはなりません。
+などの基本機能を提供するものに限定しなくてはなりません．
 \family typewriter
 AEA-\SpecialChar LaTeX
 -AuthorGuide.pdf
@@ -2240,11 +2238,11 @@ http://www.aeaweb.org/aer/authref.php
 
 \end_inset
 
-にあるInformation for Authorsをよくお読みください。ひな型
+にあるInformation for Authorsをよくお読みください．ひな型
 \family typewriter
 AEA.lyx
 \family default
-を用いて執筆を始め、そこにある説明もお読みください。
+を用いて執筆を始め，そこにある説明もお読みください．
 \end_layout
 
 \begin_layout Subsection
@@ -2278,11 +2276,11 @@ macros/latex/contrib/aguplus
 \family sans
 jgrga
 \family default
-は、アメリカ地球物理学会（AGU）が発行する『地球物理学研究誌（
+は，アメリカ地球物理学会（AGU）が発行する『地球物理学研究誌（
 \emph on
 Journal of Geophysical Research
 \emph default
-）』への論文を執筆するのに使用することができます。
+）』への論文を執筆するのに使用することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -2291,15 +2289,15 @@ Journal of Geophysical Research
 
 \begin_deeper
 \begin_layout Standard
-このレイアウトは二つの部分からなります。一つは一般的に用いられる部分
+このレイアウトは二つの部分からなります．一つは一般的に用いられる部分
 \family typewriter
 aguplus.inc
 \family default
-で、もう一つはこの研究誌向けの部分
+で，もう一つはこの研究誌向けの部分
 \family typewriter
 jgrga.layout
 \family default
-です。このレイアウトはまだ完全にはテストされていません。これをアメリカ地球物理学会が発行する他の出版物に拡張することは、比較的容易だと思われます。
+です．このレイアウトはまだ完全にはテストされていません．これをアメリカ地球物理学会が発行する他の出版物に拡張することは，比較的容易だと思われます．
 \end_layout
 
 \begin_layout Standard
@@ -2311,7 +2309,7 @@ agums
 \family typewriter
 agums.layout
 \family default
-）は、アメリカ地球物理学会の編集者への最初の投稿を執筆する（例えば、審査用やコピーエディット用）のに使用することができます。
+）は，アメリカ地球物理学会の編集者への最初の投稿を執筆する（例えば，審査用やコピーエディット用）のに使用することができます．
 \end_layout
 
 \end_deeper
@@ -2337,7 +2335,7 @@ macros/latex/contrib/beamer
 
 \begin_layout Description
 備考： プレゼンテーションとスライドを作成するための\SpecialChar LaTeX
-クラス。
+クラス．
 \end_layout
 
 \begin_layout Subsection
@@ -2361,18 +2359,15 @@ CTAN:
 \end_layout
 
 \begin_layout Description
-備考: 
-\lang english
-The document class 
+備考: 文書クラス
 \family sans
 beamerposter
 \family default
- provides support for conference posters on large paper, thereby using the
- boxes and design features provided by the 
+は，大きな用紙の学会用ポスターをサポートし，
 \family sans
 beamer
 \family default
- presentation class.
+プレゼンテーションクラスが提供するポックスとデザイン機能を使えるようにします．
 \end_layout
 
 \begin_layout Subsection
@@ -2403,9 +2398,9 @@ tex/
 \family sans
 broadway
 \family default
-は、戯曲を書くためのものです。既存の\SpecialChar LaTeX
-の文書クラスではなく、\SpecialChar LyX
-とともに新たに頒布されているものです。
+は，戯曲を書くためのものです．既存の\SpecialChar LaTeX
+の文書クラスではなく，\SpecialChar LyX
+とともに新たに頒布されているものです．
 \end_layout
 
 \begin_layout Subsection
@@ -2446,7 +2441,7 @@ ftp://ftp.springer.de/pub/tex/latex/compsc/proc/author
 \family sans
 cl2emult
 \family default
-は、Springer社の書籍を共著で執筆するためのものです。
+は，Springer社の書籍を共著で執筆するためのものです．
 \end_layout
 
 \begin_layout Subsection
@@ -2474,7 +2469,7 @@ macros/latex/contrib/dinbrief/
 \family sans
 dinbrief
 \family default
-は、ドイツ語の慣習に則って書簡を書くのに使うことができます。
+は，ドイツ語の慣習に則って書簡を書くのに使うことができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2515,13 +2510,13 @@ http://sgmltools-lite.sourceforge.net/
 \family sans
 docbook
 \family default
-は、\SpecialChar LaTeX
-の文書クラスではありません。Docbook SGMLの文書を生成するためにデザインされたものであり、そこから（
+は，\SpecialChar LaTeX
+の文書クラスではありません．Docbook SGMLの文書を生成するためにデザインされたものであり，そこから（
 \family typewriter
 jadetex
 \family default
-を通じて）HTMLやRTF、テキスト、あるいはdviをエクスポートすることができます。これを使うには、sgmltools v2.0パッケージが導入されていることが
-必要です。
+を通じて）HTMLやRTF，テキスト，あるいはdviをエクスポートすることができます．これを使うには，sgmltools v2.0パッケージが導入されていることが
+必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -2549,9 +2544,9 @@ usergrps/dante/dtk/
 \family sans
 dtk
 \family default
-は、ドイツ\SpecialChar TeX
+は，ドイツ\SpecialChar TeX
 ユーザーグループ誌「Die \SpecialChar TeX
-nische Komödie」への論文を執筆するのに使うことができます。
+nische Komödie」への論文を執筆するのに使うことができます．
 \end_layout
 
 \begin_layout Description
@@ -2592,7 +2587,7 @@ CTAN： 該当なし
 \family sans
 egs
 \family default
-は、欧州地球物理学科李への論文を執筆するのに使用することができます。
+は，欧州地球物理学科李への論文を執筆するのに使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2622,7 +2617,7 @@ http://authors.elsevier.com/
 \end_layout
 
 \begin_layout Description
-備考： このパッケージは、Elsevier Science発行の各学術誌への論文を作成するために作られたものです。
+備考： このパッケージは，Elsevier Science発行の各学術誌への論文を作成するために作られたものです．
 \end_layout
 
 \begin_layout Subsection
@@ -2663,8 +2658,8 @@ http://www.entcs.org/generic.zip
 \family sans
 entcs
 \family default
-は、ENTCSシリーズや多くの学会報でも用いられる、Elsevier Science社発行『Electronic Notes in Theoretical
- Computer Science』用の論文スタイルです。
+は，ENTCSシリーズや多くの学会報でも用いられる，Elsevier Science社発行『Electronic Notes in Theoretical
+ Computer Science』用の論文スタイルです．
 \end_layout
 
 \begin_layout Subsection
@@ -2692,15 +2687,12 @@ macros/latex/contrib/europecv
 \family sans
 europecv
 \family default
-は、欧州連合の公式ガイドライン（Europass）に則った履歴書を作成するために作られたものです。したがって、欧州言語能力の自己評価も含まれています。この文書ク
-ラスを用いた履歴書の例が、用例文書として提供されています。
-\lang english
-This class follows the 2002 version of the guidelines (see 
+は，欧州連合の公式ガイドライン（Europass）に則った履歴書を作成するために作られたものです．したがって，欧州言語能力の自己評価も含まれています．この文書ク
+ラスを用いた履歴書の例が，用例文書として提供されています．このクラスは，2002年版ガイドラインに適合しています(2013年版の実装については，
 \family sans
 europasscv
 \family default
- for an implementation of the 2013 version).
- 
+を参照)．
 \end_layout
 
 \begin_layout Subsection
@@ -2724,22 +2716,15 @@ macros/latex/contrib/europasscv
 \end_layout
 
 \begin_layout Description
-備考: 
-\lang english
-The 
+備考: 文書クラス
 \family sans
 europasscv
 \family default
- document class is another unofficial \SpecialChar LaTeX
- implementation of the Europass CV,
- the standard model for curriculum vitae as recommended by the European
- Commission.
- As opposed to the 
+は，欧州委員会が推奨する履歴書の標準モデルであるEuropass CVの非公式実装です．
 \family sans
 europecv
 \family default
- document class, it includes the major style updates that came out in 2013,
- featuring a neater, more compact and somewhat fancier layout.
+文書クラスと違って，2013年に加わったスタイル改訂を取り込んでおり，すっきりコンパクトで素敵なレイアウトを提供します
 \end_layout
 
 \begin_layout Subsection
@@ -2797,7 +2782,7 @@ macros/latex/contrib/extsizes/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、対応する標準クラス（
+備考： これらの文書クラスは，対応する標準クラス（
 \family sans
 article
 \family default
@@ -2806,7 +2791,7 @@ article
 book
 \family default
 , \SpecialChar ldots
-）を基に、文書内で使えるフォント寸法の数を増やしたものです。
+）を基に，文書内で使えるフォント寸法の数を増やしたものです．
 \end_layout
 
 \begin_layout Subsection
@@ -2841,23 +2826,23 @@ macros/latex/contrib/foiltex/
 foils
 \family default
 （Foil\SpecialChar TeX
-とも呼ばれます）は、スライドを作成する標準クラス
+とも呼ばれます）は，スライドを作成する標準クラス
 \family sans
 slides
 \family default
-の代替物です。相互参照が可能となっており、少し綺麗なフォントを使用するなど、全般的に
+の代替物です．相互参照が可能となっており，少し綺麗なフォントを使用するなど，全般的に
 \family sans
 slides
 \family default
-を使用するよりは大きく改善されています。しかしながら、
+を使用するよりは大きく改善されています．しかしながら，
 \family sans
 seminar
 \family default
 クラス（\SpecialChar LyX
-は今のところサポートしていません）が持っているような、進んだ機能の一部は備えていません。ライセンスの制約の関係で、te\SpecialChar TeX
+は今のところサポートしていません）が持っているような，進んだ機能の一部は備えていません．ライセンスの制約の関係で，te\SpecialChar TeX
 のような無料の\SpecialChar TeX
 頒布版には含まれてい
-ないことに注意してください。
+ないことに注意してください．
 \end_layout
 
 \begin_layout Subsection
@@ -2885,7 +2870,7 @@ macros/latex/contrib/g-brief/
 \family sans
 g-brief-en
 \family default
-は、素敵な装いのビジネスレターを書くのに使うことができます。
+は，素敵な装いのビジネスレターを書くのに使うことができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2913,11 +2898,11 @@ macros/latex/contrib/g-brief/
 \family sans
 g-brief-de
 \family default
-は、ドイツ語のラベルを用いていること以外は、上記の
+は，ドイツ語のラベルを用いていること以外は，上記の
 \family sans
 g-brief-en
 \family default
-と同じです。
+と同じです．
 \end_layout
 
 \begin_layout Subsection
@@ -2945,16 +2930,16 @@ macros/latex/contrib/g-brief/
 \family sans
 g-brief2
 \family default
-は、素敵な装いのビジネスレターを書くのに使うことができます。
+は，素敵な装いのビジネスレターを書くのに使うことができます．
 \family sans
 g-brief
 \family default
-の後継として、より自由度が高くなっていますが、
+の後継として，より自由度が高くなっていますが，
 \family sans
 g-brief
 \family default
-との後方互換性はありません。この文書クラスのひな型文書が\SpecialChar LyX
-に付属しています。
+との後方互換性はありません．この文書クラスのひな型文書が\SpecialChar LyX
+に付属しています．
 \end_layout
 
 \begin_layout Subsection
@@ -2985,10 +2970,10 @@ tex/
 \family sans
 hollywood
 \family default
-はアメリカ映画産業向けのスペック・スクリプト（持ち込み原稿−依頼主なしに書かれた「投機的」脚本）を書くのに使うことができます。既存の\SpecialChar LaTeX
-の文書クラスではなく、\SpecialChar LyX
+はアメリカ映画産業向けのスペック・スクリプト（持ち込み原稿−依頼主なしに書かれた「投機的」脚本）を書くのに使うことができます．既存の\SpecialChar LaTeX
+の文書クラスではなく，\SpecialChar LyX
 ととも
-に新たに頒布されているものです。
+に新たに頒布されているものです．
 \end_layout
 
 \begin_layout Subsection
@@ -3016,7 +3001,7 @@ macros/latex/contrib/IEEEtran/
 \family sans
 IEEEtran
 \family default
-クラスは、大半のIEEE（電気電子学会）会誌への投稿に適した文書を生成します。このクラスを使おうとお考えならば、
+クラスは，大半のIEEE（電気電子学会）会誌への投稿に適した文書を生成します．このクラスを使おうとお考えならば，
 \begin_inset Flex URL
 status collapsed
 
@@ -3027,7 +3012,7 @@ http://www.ieee.org
 
 \end_inset
 
-のIEEE Author Informationのページをご参照ください。
+のIEEE Author Informationのページをご参照ください．
 \family sans
 IEEEtran.cls
 \family default
@@ -3035,25 +3020,25 @@ IEEEtran.cls
 \family sans
 IEEEtran.sty
 \family default
-の二種類のファイルがあることに注意してください。
+の二種類のファイルがあることに注意してください．
 \family sans
 .sty
 \family default
 ファイルは\SpecialChar LaTeX
- 2.09向けなので、\SpecialChar LyX
-で使うには、
+ 2.09向けなので，\SpecialChar LyX
+で使うには，
 \emph on
 必ず
 \family sans
 \emph default
 .cls
 \family default
-ファイルの方を入手しなくてはなりません。また、もし入手したファイルが
+ファイルの方を入手しなくてはなりません．また，もし入手したファイルが
 \family sans
 ieeetran.cls
 \family default
-のように小文字になっている場合には、\SpecialChar LyX
-が検知することができませんので、IEEEが大文字になっている新しいバージョンにアップグレードしてください。
+のように小文字になっている場合には，\SpecialChar LyX
+が検知することができませんので，IEEEが大文字になっている新しいバージョンにアップグレードしてください．
 \end_layout
 
 \begin_layout Subsection
@@ -3094,8 +3079,8 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 \family sans
 ijmpc
 \family default
-は、World Scientific社が発行する『International Journal of Modern Physics C』（通常IJMPCと略称され
-る）へ投稿する論文を執筆するために用いることができます。
+は，World Scientific社が発行する『International Journal of Modern Physics C』（通常IJMPCと略称され
+る）へ投稿する論文を執筆するために用いることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -3136,8 +3121,8 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \family sans
 ijmpd
 \family default
-は、World Scientific社が発行する『International Journal of Modern Physics D』（通常IJMPDと略称され
-る）へ投稿する論文を執筆するために用いることができます。
+は，World Scientific社が発行する『International Journal of Modern Physics D』（通常IJMPDと略称され
+る）へ投稿する論文を執筆するために用いることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -3178,7 +3163,7 @@ ftp://ftp.iop.org/pub/journals/latex2e
 \family sans
 iopart
 \family default
-は、イギリス物理学会(IOP)が発行する学術誌への論文を執筆するために用いることができます。
+は，イギリス物理学会(IOP)が発行する学術誌への論文を執筆するために用いることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -3246,7 +3231,7 @@ install/language/japanese/ptex.tds.zip
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialChar LaTeX
+備考： これらの文書クラスは，\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3259,7 +3244,7 @@ report
 \family sans
 book
 \family default
-の別バージョンを提供します。これらは日本語を書くのに適したように修正されています。「t-」で始まるクラスは、伝統的な縦書きをするのに使用します。
+の別バージョンを提供します．これらは日本語を書くのに適したように修正されています．「t-」で始まるクラスは，伝統的な縦書きをするのに使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -3297,7 +3282,7 @@ macros/latex/contrib/jsclasses/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、日本語を植字するのにより見栄えの良い、\SpecialChar LaTeX
+備考： これらの文書クラスは，日本語を植字するのにより見栄えの良い，\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3310,15 +3295,15 @@ report
 \family sans
 book
 \family default
-の別バージョンを提供します。
+の別バージョンを提供します．
 \family sans
 report
 \family default
-クラスと同等のものは、
+クラスと同等のものは，
 \family sans
 jsbook
 \family default
-クラスに「report」オプションを与えることで得ることができます。
+クラスに「report」オプションを与えることで得ることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -3359,7 +3344,7 @@ http://www.jstatsoft.org/public/journals/1/jss-style.zip
 \family sans
 jss
 \family default
-は、『Journal of Statistical Software (JSS)』への論文を執筆するのに用いることができます。
+は，『Journal of Statistical Software (JSS)』への論文を執筆するのに用いることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -3400,7 +3385,7 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \family sans
 kluwer
 \family default
-は、『
+は，『
 \emph on
 Astrophysics and Space Science
 \emph default
@@ -3408,7 +3393,7 @@ Astrophysics and Space Science
 \emph on
 Solar Physics
 \emph default
-（太陽系物理学）』等、多くのKluwer Academic Publishers社発行の学術誌への論文を執筆するのに用いることができます（完全なリストについては
+（太陽系物理学）』等，多くのKluwer Academic Publishers社発行の学術誌への論文を執筆するのに用いることができます（完全なリストについては
 \begin_inset Flex URL
 status collapsed
 
@@ -3419,7 +3404,7 @@ http://www.wkap.nl/jrnllist.htm/JRNLHOME
 
 \end_inset
 
-をご参照ください）。
+をご参照ください）．
 \end_layout
 
 \begin_layout Description
@@ -3478,7 +3463,7 @@ macros/latex/contrib/koma-script/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialChar LaTeX
+備考： これらの文書クラスは，\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3491,7 +3476,7 @@ report
 \family sans
 book
 \family default
-の別バージョンを提供します。これらの出力は多少なりとも改善され、ヨーロッパの植字標準に適合するように修正されています。
+の別バージョンを提供します．これらの出力は多少なりとも改善され，ヨーロッパの植字標準に適合するように修正されています．
 \end_layout
 
 \begin_layout Subsection
@@ -3529,23 +3514,23 @@ macros/latex/contrib/koma-script/
 \end_layout
 
 \begin_layout Description
-備考： これらのletterクラスは、Koma-Scriptクラスに同梱されているものです（
+備考： これらのletterクラスは，Koma-Scriptクラスに同梱されているものです（
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Koma-Script"
 
 \end_inset
 
-参照）。\SpecialChar LyX
-は、古い（サポートの打ち切られた）
+参照）．\SpecialChar LyX
+は，古い（サポートの打ち切られた）
 \family sans
 scrlettr
 \family default
-クラスと、Koma-Script第2.9版（2002年6月21日リリース）で導入された、新しくはるかに自由度の高い
+クラスと，Koma-Script第2.9版（2002年6月21日リリース）で導入された，新しくはるかに自由度の高い
 \family sans
 scrlttr2
 \family default
-クラスの両方のレイアウトを提供しています。
+クラスの両方のレイアウトを提供しています．
 \end_layout
 
 \begin_layout Subsection
@@ -3571,15 +3556,15 @@ CTAN： 該当なし
 \family sans
 latex8
 \family default
-は、実体は、文書クラス
+は，実体は，文書クラス
 \family sans
 article
 \family default
 にいくらかの追加機能を盛り込んだ\SpecialChar LaTeX
-スタイルファイルです。IEEEの学会へ提出するのに適した文書を作成します。各\SpecialChar LaTeX
+スタイルファイルです．IEEEの学会へ提出するのに適した文書を作成します．各\SpecialChar LaTeX
 ファイル（Bib\SpecialChar TeX
-スタイルファイルを含む）は、IEEE
-主催学会向けのAuthor Kitとともに頒布されています。
+スタイルファイルを含む）は，IEEE
+主催学会向けのAuthor Kitとともに頒布されています．
 \end_layout
 
 \begin_layout Subsection
@@ -3605,9 +3590,9 @@ CTAN： 該当なし
 \family sans
 linuxdoc
 \family default
-クラスは、LaTexの文書クラスではありません。これは、LinuxDoc-SGML文書を作成するためにデザインされたものであり、その文書からは、HTMLやRTF
-、テキストファイル、\SpecialChar LaTeX
-ファイル等にエクスポートをすることができます。これを使うためには、一連の
+クラスは，LaTexの文書クラスではありません．これは，LinuxDoc-SGML文書を作成するためにデザインされたものであり，その文書からは，HTMLやRTF
+，テキストファイル，\SpecialChar LaTeX
+ファイル等にエクスポートをすることができます．これを使うためには，一連の
 \family sans
 sgml-tools
 \family default
@@ -3615,7 +3600,7 @@ sgml-tools
 \family sans
 LinuxDoc
 \family default
-とも呼ばれます）プログラムを装備している必要があります。 
+とも呼ばれます）プログラムを装備している必要があります． 
 \end_layout
 
 \begin_layout Subsection
@@ -3641,9 +3626,9 @@ CTAN： 該当なし
 \family sans
 llncs
 \family default
-は、Springer社の学術誌『Lecture Notes in Computer Science（計算科学講義ノート）』へ提出する論文を執筆するのに用いること
-ができます。\SpecialChar LaTeX
-文書は、以下のアドレスの、SpringerのFTPサイトから入手することができます。
+は，Springer社の学術誌『Lecture Notes in Computer Science（計算科学講義ノート）』へ提出する論文を執筆するのに用いること
+ができます．\SpecialChar LaTeX
+文書は，以下のアドレスの，SpringerのFTPサイトから入手することができます．
 \begin_inset Newline newline
 \end_inset
 
@@ -3668,7 +3653,7 @@ ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e
 \begin_deeper
 \begin_layout Standard
 この文書クラスの\SpecialChar LyX
-レイアウトファイルは、まだ不十分にしか検証されていません。
+レイアウトファイルは，まだ不十分にしか検証されていません．
 \end_layout
 
 \end_deeper
@@ -3697,8 +3682,8 @@ macros/latex/contrib/memoir/
 \family sans
 memoir
 \family default
-は、一般的なフィクションやノンフィクション、書籍・レポート・論文・草稿などの各形態の数学著作の植字に用いることができる柔軟性の高いクラスです。文書は、9・10・
-11・12・14・17ポイントを標準のフォント寸法として用いることができます。ご自身のデザインを作り出すことを可能にする多くの方法が提供されています。
+は，一般的なフィクションやノンフィクション，書籍・レポート・論文・草稿などの各形態の数学著作の植字に用いることができる柔軟性の高いクラスです．文書は，9・10・
+11・12・14・17ポイントを標準のフォント寸法として用いることができます．ご自身のデザインを作り出すことを可能にする多くの方法が提供されています．
 \end_layout
 
 \begin_layout Subsection
@@ -3726,8 +3711,8 @@ macros/latex/contrib/moderncv
 \family sans
 moderncv
 \family default
-は、素敵な履歴書を作成することを目的に作られたものです。これは、参考文献機能をサポートするので、学術分野の方には便利です。この文書クラスを用いた履歴書の例が、用
-例ファイルとして含まれています。
+は，素敵な履歴書を作成することを目的に作られたものです．これは，参考文献機能をサポートするので，学術分野の方には便利です．この文書クラスを用いた履歴書の例が，用
+例ファイルとして含まれています．
 \end_layout
 
 \begin_layout Subsection
@@ -3751,7 +3736,7 @@ macros/latex/contrib/mwcls/
 \end_layout
 
 \begin_layout Description
-備考： これらの文書クラスは、\SpecialChar LaTeX
+備考： これらの文書クラスは，\SpecialChar LaTeX
 の基本文書クラス
 \family sans
 article
@@ -3764,7 +3749,7 @@ report
 \family sans
 book
 \family default
-の別バージョンを提供します。これらは、ポーランド語植字標準に適合するようにMarcin Woliñskiによって修正されたものです。
+の別バージョンを提供します．これらは，ポーランド語植字標準に適合するようにMarcin Woliñskiによって修正されたものです．
 \end_layout
 
 \begin_layout Subsection
@@ -3792,11 +3777,11 @@ macros/latex/contrib/paper/
 \family sans
 paper
 \family default
-は、標準クラス
+は，標準クラス
 \family sans
 article
 \family default
-の代替物です。同様の機能を提供しますが、サンサリフ体の節見出しやヘディングなど、こちらのレイアウトの方を気に入られることでしょう。
+の代替物です．同様の機能を提供しますが，サンサリフ体の節見出しやヘディングなど，こちらのレイアウトの方を気に入られることでしょう．
 \end_layout
 
 \begin_layout Subsection
@@ -3821,7 +3806,7 @@ macros/latex/contrib/powerdot
 
 \begin_layout Description
 備考： プレゼンテーションやスライドを作成するための\SpecialChar LaTeX
-クラスです。
+クラスです．
 \end_layout
 
 \begin_layout Subsection
@@ -3845,13 +3830,11 @@ CTAN:
 \end_layout
 
 \begin_layout Description
-備考: 
-\lang english
-The document class 
+備考: 文書クラス
 \family sans
 sciposter
 \family default
- provides support for conference posters on of ISO A3 size and larger.
+は，ISO A3寸法以上の学会ポスターのサボートを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -3892,7 +3875,7 @@ http://public.lanl.gov/kmh/spie/
 \family sans
 spie.cls
 \family default
-は、SPIE（国際光工学会）の学会報への投稿用のクラスです。草稿投稿についての詳しい情報は、SPIEウェブサイト
+は，SPIE（国際光工学会）の学会報への投稿用のクラスです．草稿投稿についての詳しい情報は，SPIEウェブサイト
 \begin_inset Flex URL
 status collapsed
 
@@ -3903,7 +3886,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/spie
 
 \end_inset
 
-にあります。
+にあります．
 \end_layout
 
 \begin_layout Subsection
@@ -3929,15 +3912,15 @@ macros/latex209/contrib/revtex/
 
 \begin_layout Description
 備考： REV\SpecialChar TeX
- 3クラスを用いるこのクラスは、
+ 3クラスを用いるこのクラスは，
 \family sans
 revtex4
 \family default
-クラスに引き継がれたので、代わりにそちらをお使いください（古い
+クラスに引き継がれたので，代わりにそちらをお使いください（古い
 \family sans
 revtex
 \family default
-クラス文書は、たいへん容易に新しいクラスに切り替えることができます）。何らかの理由でこのクラスを使わなくてはならない場合には、\SpecialChar LyX
+クラス文書は，たいへん容易に新しいクラスに切り替えることができます）．何らかの理由でこのクラスを使わなくてはならない場合には，\SpecialChar LyX
 ソース頒布版の
 \family typewriter
 tex/
@@ -3946,7 +3929,7 @@ tex/
 \family typewriter
 revtex.cls
 \family default
-を使用してください。
+を使用してください．
 \end_layout
 
 \begin_layout Subsection
@@ -3972,9 +3955,9 @@ macros/latex/contrib/revtex/
 
 \begin_layout Description
 備考： REV\SpecialChar TeX
- 4は、アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『Phys
-ical Review Special Topics—Accelerators and Beams』）やアメリカ物理学協会、アメリカ光学会、アメリカ物理探査学会
-等の学術誌への草稿を提出するのに用いることができるクラスです。
+ 4は，アメリカ物理学会（APS）（『Physical Review A〜E』・『Reviews in Modern Physics』・『Phys
+ical Review Special Topics—Accelerators and Beams』）やアメリカ物理学協会，アメリカ光学会，アメリカ物理探査学会
+等の学術誌への草稿を提出するのに用いることができるクラスです．
 \begin_inset Flex URL
 status collapsed
 
@@ -3985,7 +3968,7 @@ http://publish.aps.org/revtex4/
 
 \end_inset
 
-もご参照ください。
+もご参照ください．
 \end_layout
 
 \begin_layout Subsection
@@ -4010,9 +3993,9 @@ macros/latex/contrib/siam/siamltex.tar
 \end_layout
 
 \begin_layout Description
-備考： アメリカ応用数理学会（ペンシルバニア州フィラデルフィア、SIAM）は、この\SpecialChar LaTeX
-スタイルを提供することによって、SIAMスタイル標準にしたがった高品質な植字が
-なされることを望んでいます。
+備考： アメリカ応用数理学会（ペンシルバニア州フィラデルフィア，SIAM）は，この\SpecialChar LaTeX
+スタイルを提供することによって，SIAMスタイル標準にしたがった高品質な植字が
+なされることを望んでいます．
 \end_layout
 
 \begin_layout Subsection
@@ -4040,17 +4023,17 @@ macros/latex/contrib/simplecv
 \family sans
 simplecv
 \family default
-は、簡素ながらエレガントな履歴書を書く方法を提供せんとするものです。比較的簡潔なスタイルではありますが、学術関係者に便利な参考文献のサポートなど優れた機能を持っ
-ています。これは、長い間\SpecialChar LyX
+は，簡素ながらエレガントな履歴書を書く方法を提供せんとするものです．比較的簡潔なスタイルではありますが，学術関係者に便利な参考文献のサポートなど優れた機能を持っ
+ています．これは，長い間\SpecialChar LyX
 とともに提供されてきた
 \family sans
 cv
 \family default
-クラスを再編したものです。名称変更が必要となったのは、CTANに別の
+クラスを再編したものです．名称変更が必要となったのは，CTANに別の
 \family sans
 cv
 \family default
-クラスが存在したためです。この文書クラスを用いた履歴書の例が、用例ファイルとして含まれています。
+クラスが存在したためです．この文書クラスを用いた履歴書の例が，用例ファイルとして含まれています．
 \end_layout
 
 \begin_layout Subsection
@@ -4099,32 +4082,32 @@ http://www.springeronline.com
 \family sans
 Svglobal
 \family default
-は、特定のスタイルが提供されていない、すなわち上記Springer社のサイトにあるjournal author guidelinesが
+は，特定のスタイルが提供されていない，すなわち上記Springer社のサイトにあるjournal author guidelinesが
 \family sans
 svglobal
 \family default
-スタイルを使うように指示している、Springer社発行の学術誌での出版に適したフォーマットです。対応する文書クラスファイルと関連したマテリアルは、Spring
-erのサイトにあります。レイアウトは二つの部分からなり、全てのSpringer発行誌に共通の
+スタイルを使うように指示している，Springer社発行の学術誌での出版に適したフォーマットです．対応する文書クラスファイルと関連したマテリアルは，Spring
+erのサイトにあります．レイアウトは二つの部分からなり，全てのSpringer発行誌に共通の
 \family typewriter
 svjour.inc
 \family default
-と、
+と，
 \family typewriter
 svjour.inc
 \family default
-を含み、特定のスタイルがない全てのSpringer発行誌に既定のスタイルである
+を含み，特定のスタイルがない全てのSpringer発行誌に既定のスタイルである
 \family typewriter
 svglobal.layout
 \family default
-からなります。他のSpringer誌をサポートする自家製の
+からなります．他のSpringer誌をサポートする自家製の
 \family typewriter
 sv<学術誌名>
 \family default
-をお作りになることもできます（え〜、ただのヒントです）。クラスの既定として含まれている
+をお作りになることもできます（え〜，ただのヒントです）．クラスの既定として含まれている
 \family typewriter
 global
 \family default
-追加文書クラスオプションを指定する必要があることに注意してください。
+追加文書クラスオプションを指定する必要があることに注意してください．
 \end_layout
 
 \begin_layout Subsection
@@ -4167,15 +4150,15 @@ http://www.springeronline.com
 \family sans
 svjog
 \family default
-は、Springer Verlag社、特に『Journal of Geodesy（測地学誌）』で使われている組版形式のためのものです。まだ十分には検証されていま
-せん。詳しい情報については、第
+は，Springer Verlag社，特に『Journal of Geodesy（測地学誌）』で使われている組版形式のためのものです．まだ十分には検証されていま
+せん．詳しい情報については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "svglobal"
 
 \end_inset
 
-節を参照してください。
+節を参照してください．
 \end_layout
 
 \begin_layout Subsection
@@ -4218,14 +4201,14 @@ http://www.springeronline.com
 \family sans
 svprobth
 \family default
-は、学術誌『Probability Theory and Related Fields（確率論と関連領域）』での出版に適したフォーマットです。詳細は、第
+は，学術誌『Probability Theory and Related Fields（確率論と関連領域）』での出版に適したフォーマットです．詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "svglobal"
 
 \end_inset
 
-節をご参照ください。
+節をご参照ください．
 \end_layout
 
 \begin_layout Subsection
@@ -4268,7 +4251,7 @@ http://www.springeronline.com
 \family sans
 svmono
 \family default
-は、Springer Verlag社発行のモノグラフ用です。モノグラフの章立てについては、添付ひな型をご覧ください。
+は，Springer Verlag社発行のモノグラフ用です．モノグラフの章立てについては，添付ひな型をご覧ください．
 \end_layout
 
 \begin_layout Subsection
@@ -4311,7 +4294,7 @@ http://www.springeronline.com
 \family sans
 svmult
 \family default
-は、Springer Verlag社発行の編著書用です。書籍の章立てについては、添付ひな型をご覧ください。
+は，Springer Verlag社発行の編著書用です．書籍の章立てについては，添付ひな型をご覧ください．
 \end_layout
 
 \begin_layout Subsection
@@ -4339,8 +4322,8 @@ plain/contrib/tugboat.tar
 \family sans
 ltugboat
 \family default
-は、\SpecialChar TeX
-ユーザーグループの『TUGboat』誌への論文を執筆するのに用いることができます。
+は，\SpecialChar TeX
+ユーザーグループの『TUGboat』誌への論文を執筆するのに用いることができます．
 \end_layout
 
 \begin_layout Description
@@ -4381,7 +4364,7 @@ CTAN： 該当なし
 \family sans
 isprs
 \family default
-は、この学会の学術誌に論文を執筆するのに用いることができます。
+は，この学会の学術誌に論文を執筆するのに用いることができます．
 \end_layout
 
 \begin_layout Description
@@ -4404,10 +4387,10 @@ http://www.isprs.org/documents/orangebook/LATEX/ISPRSguidelines_authors_latex.zi
 \end_layout
 
 \begin_layout Standard
-本節には、\SpecialChar LaTeX
-メンテナたちが「必須」と宣言しているパッケージが列挙されています。もし一つでも検出されなかった場合には、お使いの\SpecialChar LaTeX
+本節には，\SpecialChar LaTeX
+メンテナたちが「必須」と宣言しているパッケージが列挙されています．もし一つでも検出されなかった場合には，お使いの\SpecialChar LaTeX
 システムをアップグレードすることを真剣
-に考えるべきです。
+に考えるべきです．
 \end_layout
 
 \begin_layout Subsection
@@ -4435,8 +4418,8 @@ macros/latex/required/amslatex/math/
 \family sans
 amstext
 \family default
-パッケージは、unicodeシンボルを数式内で上付きや下付き文字にする際、\SpecialChar LyX
-が正しい寸法に調整するのに必要とします。
+パッケージは，unicodeシンボルを数式内で上付きや下付き文字にする際，\SpecialChar LyX
+が正しい寸法に調整するのに必要とします．
 \end_layout
 
 \begin_layout Subsection
@@ -4464,8 +4447,8 @@ macros/latex/required/tools/
 \family sans
 array
 \family default
-パッケージは、\SpecialChar LyX
-が表の中で「上揃え」以外の垂直揃えをできるようにするために必要です。
+パッケージは，\SpecialChar LyX
+が表の中で「上揃え」以外の垂直揃えをできるようにするために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -4493,7 +4476,7 @@ macros/latex/required/babel/
 \family sans
 babel
 \family default
-パッケージは、現在の文書をお好みの言語向けにカスタマイズすることを可能にします（
+パッケージは，現在の文書をお好みの言語向けにカスタマイズすることを可能にします（
 \family sans
 文書
 \size normal
@@ -4507,8 +4490,8 @@ babel
 言語
 \family default
 \size default
-ダイアログを参照）。とりわけこのパッケージは、ハイフネーションと、「章」や「目次」のようなラベル全ての自動翻訳を担当します。もし、英語だけをお書きになり、英語以
-外の引用もしないのであれば、このパッケージは必要ありません。
+ダイアログを参照）．とりわけこのパッケージは，ハイフネーションと，「章」や「目次」のようなラベル全ての自動翻訳を担当します．もし，英語だけをお書きになり，英語以
+外の引用もしないのであれば，このパッケージは必要ありません．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -4518,7 +4501,7 @@ babel
 \begin_deeper
 \begin_layout Standard
 お使いの\SpecialChar LaTeX
-装備には、以下の言語のハイフネーションパターンが入っています：
+装備には，以下の言語のハイフネーションパターンが入っています：
 \begin_inset Info
 type  "package"
 arg   "languages"
@@ -4528,13 +4511,13 @@ arg   "languages"
 \end_layout
 
 \begin_layout Standard
-もしご利用になる言語がこのリストにない場合には、それが入るように\SpecialChar LaTeX
-の装備を再設定しなくてはなりません。te\SpecialChar TeX
-の場合には、
+もしご利用になる言語がこのリストにない場合には，それが入るように\SpecialChar LaTeX
+の装備を再設定しなくてはなりません．te\SpecialChar TeX
+の場合には，
 \family typewriter
 texconfig
 \family default
-を実行することになります。
+を実行することになります．
 \end_layout
 
 \end_deeper
@@ -4563,13 +4546,13 @@ macros/latex/required/tools/
 \family sans
 bm
 \family default
-パッケージは、ボールド体の数学記号にアクセスするコマンドを定義しています。基本となるコマンドは、引数をボールド体にする
+パッケージは，ボールド体の数学記号にアクセスするコマンドを定義しています．基本となるコマンドは，引数をボールド体にする
 \family typewriter
 
 \backslash
 bm
 \family default
-コマンドです。引数は、一つの記号から数式表現まで、任意の数式オブジェクトをとることができます。使用可能なときには、
+コマンドです．引数は，一つの記号から数式表現まで，任意の数式オブジェクトをとることができます．使用可能なときには，
 \family typewriter
 
 \backslash
@@ -4581,13 +4564,13 @@ hm
 \backslash
 heavysymbol
 \family default
-へのエイリアス）を使用すれば、極太フォントにアクセスすることができます。
+へのエイリアス）を使用すれば，極太フォントにアクセスすることができます．
 \family typewriter
 
 \backslash
 bm
 \family default
-コマンドは、
+コマンドは，
 \family sans
 amsmath
 \family default
@@ -4597,18 +4580,18 @@ amsmath
 \backslash
 boldsymbol
 \family default
-コマンドに似ていますが、
+コマンドに似ていますが，
 \family sans
 bm
 \family default
-の方が処理のしかたが慎重です。このパッケージは、ボールド体用のシンボルフォントを通常の数式フォントに割り当ててしまうため、多くのシンボルフォントを割り当てる他の
-パッケージを使ってしまうと、シンボルフォントが枯渇してしまうことがあります。この場合には、
+の方が処理のしかたが慎重です．このパッケージは，ボールド体用のシンボルフォントを通常の数式フォントに割り当ててしまうため，多くのシンボルフォントを割り当てる他の
+パッケージを使ってしまうと，シンボルフォントが枯渇してしまうことがあります．この場合には，
 \family typewriter
 
 \backslash
 boldsymbol
 \family default
-コマンドを使うとうまく行きます。
+コマンドを使うとうまく行きます．
 \end_layout
 
 \begin_layout Subsection
@@ -4636,8 +4619,8 @@ macros/latex/contrib/booktabs/
 \family sans
 booktabs
 \family default
-パッケージは、\SpecialChar LyX
-が正しくフォーマルな表を出力できるようにするために必要です。
+パッケージは，\SpecialChar LyX
+が正しくフォーマルな表を出力できるようにするために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -4665,8 +4648,8 @@ macros/latex/required/tools/
 \family sans
 calc
 \family default
-パッケージは、\SpecialChar LyX
-が長さやカウンタを処理する際に必要です。
+パッケージは，\SpecialChar LyX
+が長さやカウンタを処理する際に必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -4694,13 +4677,13 @@ macros/latex/required/graphics/
 \family sans
 color
 \family default
-パッケージは、\SpecialChar LyX
-が色付き文字を取り扱うのに必要です。これらの色は、DVIプレビューウィンドウには表示されませんが、印刷出力やPostScript®プレビューアでは
-、正しく出力されます。このパッケージは、
+パッケージは，\SpecialChar LyX
+が色付き文字を取り扱うのに必要です．これらの色は，DVIプレビューウィンドウには表示されませんが，印刷出力やPostScript®プレビューアでは
+，正しく出力されます．このパッケージは，
 \family sans
 graphics
 \family default
-パッケージに同梱されています。
+パッケージに同梱されています．
 \end_layout
 
 \begin_layout Subsection
@@ -4728,8 +4711,8 @@ macros/latex/contrib/float/
 \family sans
 float
 \family default
-パッケージは、\SpecialChar LyX
-が非標準のフロートオブジェクトを作成するのに使用されます。また、フロート配置で「なんとしても現在位置に置く」という設定を利用できるようにします。
+パッケージは，\SpecialChar LyX
+が非標準のフロートオブジェクトを作成するのに使用されます．また，フロート配置で「なんとしても現在位置に置く」という設定を利用できるようにします．
 \end_layout
 
 \begin_layout Subsection
@@ -4757,15 +4740,15 @@ macros/latex/required/graphics/
 \family sans
 graphicx
 \family default
-パッケージは、\SpecialChar LyX
-が（新しく導入された図挿入枠を使用して）PostScript®の図を挿入するのに必要です。図をスクリーンに表示するには、
+パッケージは，\SpecialChar LyX
+が（新しく導入された図挿入枠を使用して）PostScript®の図を挿入するのに必要です．図をスクリーンに表示するには，
 \family typewriter
 \size normal
 ghost
 \size default
 script
 \family default
-が必要です。設定スクリプトは、このパッケージが使用するべきグラフィックドライバは「
+が必要です．設定スクリプトは，このパッケージが使用するべきグラフィックドライバは「
 \family sans
 
 \begin_inset Info
@@ -4780,13 +4763,13 @@ arg   "graphicsdriver"
 status collapsed
 
 \begin_layout Plain Layout
-ここで、「既定」と表示されているときは、お使いの\SpecialChar LaTeX
-装備が、このパラメータに適した値を与えていることを示します。
+ここで，「既定」と表示されているときは，お使いの\SpecialChar LaTeX
+装備が，このパラメータに適した値を与えていることを示します．
 \end_layout
 
 \end_inset
 
-であると決定しました。
+であると決定しました．
 \end_layout
 
 \begin_layout Subsection
@@ -4814,7 +4797,7 @@ macros/latex/required/tools/
 \family sans
 hhline
 \family default
-パッケージは、表や行列における水平線の質を改善します。これは、表計算外部差込枠が使用できるようになるために必要です。
+パッケージは，表や行列における水平線の質を改善します．これは，表計算外部差込枠が使用できるようになるために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -4842,8 +4825,8 @@ macros/latex/contrib/hyperref/
 \family sans
 hyperref
 \family default
-パッケージは、\SpecialChar LyX
-が、お使いの文書のPDF特性を設定し、ハイパーリンクを作成することができるようになるために必要です。
+パッケージは，\SpecialChar LyX
+が，お使いの文書のPDF特性を設定し，ハイパーリンクを作成することができるようになるために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -4871,8 +4854,8 @@ macros/latex/required/tools/
 \family sans
 longtable
 \family default
-パッケージは、 \SpecialChar LyX
-が複数ページにわたる表を正しく出力することができるようになるために必要です。
+パッケージは， \SpecialChar LyX
+が複数ページにわたる表を正しく出力することができるようになるために必要です．
 \end_layout
 
 \begin_layout Description
@@ -4904,9 +4887,9 @@ macros/latex/unpacked/textcomp.sty
 \family sans
 textcomp
 \family default
-パッケージは、\SpecialChar LyX
-がユーロ通貨記号のような特別な記号を出力するのに必要です。このパッケージは、\SpecialChar LaTeX
-基本頒布の一部であり、お使いのシステムに既に装備されているはずです。
+パッケージは，\SpecialChar LyX
+がユーロ通貨記号のような特別な記号を出力するのに必要です．このパッケージは，\SpecialChar LaTeX
+基本頒布の一部であり，お使いのシステムに既に装備されているはずです．
 \end_layout
 
 \begin_layout Subsection
@@ -4934,7 +4917,7 @@ macros/latex/required/tools/
 \family sans
 varioref
 \family default
-パッケージは、参照先ラベルのページ情報を伴った参照を生成するのに必要なコマンドを導入します。
+パッケージは，参照先ラベルのページ情報を伴った参照を生成するのに必要なコマンドを導入します．
 \end_layout
 
 \begin_layout Section
@@ -4942,13 +4925,13 @@ varioref
 \end_layout
 
 \begin_layout Standard
-文書の余白を変更したいと、多くの人々が思います。\SpecialChar LaTeX
-には、文書の余白を設定する組込みオプションがありますが、一部の人たちは、これらのオプションが提供する余白は大きす
-ぎると感じて変更したいと思うようです。この目的のためには、
+文書の余白を変更したいと，多くの人々が思います．\SpecialChar LaTeX
+には，文書の余白を設定する組込みオプションがありますが，一部の人たちは，これらのオプションが提供する余白は大きす
+ぎると感じて変更したいと思うようです．この目的のためには，
 \family sans
 geometry
 \family default
-パッケージを使うことができます。ただし、読みやすさのためには、一行が60文字から70文字以上にならないようにするべきです。
+パッケージを使うことができます．ただし，読みやすさのためには，一行が60文字から70文字以上にならないようにするべきです．
 \end_layout
 
 \begin_layout Subsection
@@ -4976,11 +4959,11 @@ macros/latex/contrib/geometry/
 \family sans
 geometry
 \family default
-パッケージは、お使いの文書の用紙寸法や余白を任意に変えることを可能にします。しかしながら、このパッケージは
+パッケージは，お使いの文書の用紙寸法や余白を任意に変えることを可能にします．しかしながら，このパッケージは
 \family sans
 a4
 \family default
-などの標準オプションのように、植字上正しいページレイアウトを提供するわけではありません。
+などの標準オプションのように，植字上正しいページレイアウトを提供するわけではありません．
 \end_layout
 
 \begin_layout Section
@@ -5015,16 +4998,16 @@ macros/latex/contrib/frankenstein/
 \family sans
 achicago
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+の推奨に従った引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができますが、著者完全列挙はサポートしていません。
+と共に使用することができますが，著者完全列挙はサポートしていません．
 \end_layout
 
 \begin_layout Subsection
@@ -5055,13 +5038,13 @@ CTAN:
 \family sans
 apacite
 \family default
-パッケージは、アメリカ心理学会(American Psychological Association)の推奨に忠実に従った引用様式を提供します。これは、基本La\SpecialChar TeX
+パッケージは，アメリカ心理学会(American Psychological Association)の推奨に忠実に従った引用様式を提供します．これは，基本La\SpecialChar TeX
 
-のみ、または
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができます。最初の引用での著者完全列挙をサポートしており、2回目以降の引用では、引用を自動的に第1著者に短縮します(
+と共に使用することができます．最初の引用での著者完全列挙をサポートしており，2回目以降の引用では，引用を自動的に第1著者に短縮します(
 \family sans
 natbib
 \family default
@@ -5069,7 +5052,7 @@ natbib
 \family sans
 longnamesfirst
 \family default
-オプションと同様です)。
+オプションと同様です)．
 \end_layout
 
 \begin_layout Subsection
@@ -5100,13 +5083,13 @@ biblio/bibtex/base/
 \family sans
 apalike
 \family default
-パッケージは、アメリカ心理学会(American Psychological Association)の推奨に緩やかに従った引用様式を提供します。これは、基本L
+パッケージは，アメリカ心理学会(American Psychological Association)の推奨に緩やかに従った引用様式を提供します．これは，基本L
 a\SpecialChar TeX
-のみ、または
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができますが、著者完全列挙はサポートしていません。
+と共に使用することができますが，著者完全列挙はサポートしていません．
 \end_layout
 
 \begin_layout Subsection
@@ -5137,12 +5120,12 @@ biblio/bibtex/contrib/astron/
 \family sans
 astron
 \family default
-パッケージは、学術誌『Astronomy and Astrophysics』のガイドラインに従った引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+パッケージは，学術誌『Astronomy and Astrophysics』のガイドラインに従った引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができますが、著者完全列挙はサポートしていません。
+と共に使用することができますが，著者完全列挙はサポートしていません．
 \end_layout
 
 \begin_layout Subsection
@@ -5173,7 +5156,7 @@ biblio/bibtex/contrib/authordate/
 \family sans
 authordate1-4
 \family default
-パッケージは、
+パッケージは，
 \emph on
 British Standard
 \emph default
@@ -5185,12 +5168,12 @@ Copy-editing
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に緩やかに従った引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+の推奨に緩やかに従った引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができますが、著者完全列挙はサポートしていません。
+と共に使用することができますが，著者完全列挙はサポートしていません．
 \end_layout
 
 \begin_layout Subsection
@@ -5218,8 +5201,8 @@ macros/latex/contrib/bibtopic/
 \family sans
 bibtopic
 \family default
-パッケージは、Bib\SpecialChar TeX
-が生成する書誌情報を節分けするのに使用されます。
+パッケージは，Bib\SpecialChar TeX
+が生成する書誌情報を節分けするのに使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -5250,16 +5233,16 @@ biblio/bibtex/contrib/chicago/
 \family sans
 chicago
 \family default
-パッケージは、
+パッケージは，
 \emph on
 Chicago Manual of Style
 \emph default
-の推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+の推奨に従った引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができます。
+と共に使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -5290,17 +5273,17 @@ macros/latex/contrib/harvard/
 \family sans
 harvard
 \family default
-パッケージは、Pitson著
+パッケージは，Pitson著
 \emph on
 Style Manual for Authorsや Editors and Printers of Australian Government
  Publications
 \emph default
-を中心に様々な推奨に従った引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+を中心に様々な推奨に従った引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができます。最初の引用での著者完全列挙をサポートしており、2回目以降の引用では、引用を自動的に第1著者に短縮します(
+と共に使用することができます．最初の引用での著者完全列挙をサポートしており，2回目以降の引用では，引用を自動的に第1著者に短縮します(
 \family sans
 natbib
 \family default
@@ -5308,7 +5291,7 @@ natbib
 \family sans
 longnamesfirst
 \family default
-オプションと同様です)。
+オプションと同様です)．
 \end_layout
 
 \begin_layout Subsection
@@ -5347,13 +5330,13 @@ http://sourceforge.net/projects/jurabib/
 
 \end_inset
 
-)は、
+)は，
 \family sans
 natbib
 \family default
-の代替として、\SpecialChar LyX
-に柔軟な参考文献様式を与えます。人文科学や法学でよく用いられる引用様式や脚注引用、ibidemなどをサポートします。少なくとも第0.6版以降のjur
-abibが必要です。
+の代替として，\SpecialChar LyX
+に柔軟な参考文献様式を与えます．人文科学や法学でよく用いられる引用様式や脚注引用，ibidemなどをサポートします．少なくとも第0.6版以降のjur
+abibが必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -5384,13 +5367,13 @@ macros/latex/contrib/mslapa/
 \family sans
 mslapa
 \family default
-パッケージは、アメリカ心理学会(American Psychological Association)の推奨におおよそ従った引用様式を提供します。これは、基本L
+パッケージは，アメリカ心理学会(American Psychological Association)の推奨におおよそ従った引用様式を提供します．これは，基本L
 a\SpecialChar TeX
-のみ、または
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができます。
+と共に使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -5421,12 +5404,12 @@ biblio/bibtex/contrib/named/
 \family sans
 named
 \family default
-パッケージは、文書化されていないガイドラインに従った著者-年引用様式を提供します。これは、基本\SpecialChar LaTeX
-のみ、または
+パッケージは，文書化されていないガイドラインに従った著者-年引用様式を提供します．これは，基本\SpecialChar LaTeX
+のみ，または
 \family sans
 natbib
 \family default
-と共に使用することができますが、著者完全列挙はサポートしていません。
+と共に使用することができますが，著者完全列挙はサポートしていません．
 \end_layout
 
 \begin_layout Subsection
@@ -5454,12 +5437,12 @@ macros/latex/contrib/natbib/
 \family sans
 natbib
 \family default
-パッケージは、\SpecialChar LyX
-が、利用可能な書誌情報様式の大半への柔軟なインタフェースとして必要とします(代わりに
+パッケージは，\SpecialChar LyX
+が，利用可能な書誌情報様式の大半への柔軟なインタフェースとして必要とします(代わりに
 \family sans
 jurabib
 \family default
-を使用することもできます)。
+を使用することもできます)．
 \end_layout
 
 \begin_layout Section
@@ -5491,7 +5474,7 @@ macros/latex/contrib/misc/endnotes.sty
 \family sans
 endnotes
 \family default
-パッケージは、脚注を節の後ろに配置するのに、いくつかのモジュールが使用します（それゆえendnotesと呼ばれます）。
+パッケージは，脚注を節の後ろに配置するのに，いくつかのモジュールが使用します（それゆえendnotesと呼ばれます）．
 \end_layout
 
 \begin_layout Subsection
@@ -5523,13 +5506,11 @@ macros/latex/contrib/braille/
 \family sans
 braille
 \family default
-パッケージは、視覚障害者のための点字を組版することを可能にします。
+パッケージは，視覚障害者のための点字を組版することを可能にします．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-FIXME module
+FIXMEモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5554,27 +5535,14 @@ macros/latex/contrib/fixme/
 
 \begin_layout Description
 脚注: 
-\lang english
-The package 
 \family sans
 fixme
 \family default
-\color none
- is used to insert 
-\begin_inset Quotes eld
-\end_inset
-
-FIXME
-\begin_inset Quotes erd
-\end_inset
-
- notes into documents.
+ バッケージは文書に「FIXME」注釈を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Hazard and Precautionary Statements module
+危険有害性情報・注意書きモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5599,17 +5567,10 @@ macros/latex/contrib/mhchem/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 hpstatement
 \family default
-\color none
- is used to insert the official chemical 
-\color inherit
-risk and safety statements
-\color none
-.
+パッケージは，公式の化学リスク安全性情報を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
@@ -5641,7 +5602,7 @@ macros/latex/contrib/lettrine/
 \family sans
 lettrine
 \family default
-パッケージは、
+パッケージは，
 \begin_inset CommandInset href
 LatexCommand href
 name "頭文字"
@@ -5649,7 +5610,7 @@ target "http://en.wikipedia.org/wiki/Initial"
 
 \end_inset
 
-を作成するのに使用されます。
+を作成するのに使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -5681,7 +5642,7 @@ macros/latex/contrib/covington/
 \family sans
 covington
 \family default
-パッケージは、連番用例や語句注解のような、言語学に便利な環境とコマンドを提供します。
+パッケージは，連番用例や語句注解のような，言語学に便利な環境とコマンドを提供します．
 \end_layout
 
 \begin_layout Subsubsection
@@ -5709,7 +5670,7 @@ macros/latex/contrib/csquotes/
 \family sans
 csquotes
 \family default
-パッケージは、実際の文書言語の慣習に適合した、文脈依存の引用符を提供します。言語学モジュールが文字様式Meaningのために使用します。
+パッケージは，実際の文書言語の慣習に適合した，文脈依存の引用符を提供します．言語学モジュールが文字様式Meaningのために使用します．
 \end_layout
 
 \begin_layout Subsubsection
@@ -5737,10 +5698,8 @@ macros/latex/contrib/enumitem/
 \family sans
 enumitem
 \family default
-パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
-\lang english
-The customization options are also supported directly by the Customisable
- Lists (enumitem) module.
+パッケージは，リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します．言語学モジュールが，下位連番用例の外観を微調整するのに使用します．微調整オ
+プションは，調整可能な箇条書き(enumitem)モジュールでも直接サポートされます．
 \end_layout
 
 \begin_layout Subsubsection
@@ -5765,18 +5724,14 @@ macros/latex/contrib/forest/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 forest
 \family default
- provides support for generating linguistic structure trees.
+パッケージは，言語構造ツリーの生成を提供します．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Multilingual Captions module
+多言語キャプションモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5801,29 +5756,22 @@ macros/latex/contrib/caption/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 bicaption
 \family default
- enables pairs of captions (in different languages), with control of other
- options similar to that provided by the caption package.
- Languages to be used are selected using 
+パッケージは，captionパッケージが提供するオプション制御に加えて，(異なる言語での)キャプション対を可能にします．使用する言語は
 \family sans
 babel
 \family default
-.
- This package is part of the 
+を使って選択します．本パッケージは，
 \family sans
 caption
 \family default
- bundle.
+バンドルの一部です．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Paragraph Lists (paralist) module
+段落箇条書き(paralist)モジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5848,19 +5796,14 @@ macros/latex/contrib/paralist/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 paralist
 \family default
- extends the standard list environments by versions that are typeset as
- paragraphs, in paragraphs and as a more compact version.
+パッケージは，標準的な箇条書き環境を拡張して，個別段落として組版したり，段落内やもっとコンパクトな形で組版できるようにします．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-PDF Comments module
+PDFコメントモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5885,13 +5828,10 @@ macros/latex/contrib/pdfcomment/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 pdfcomment
 \family default
-\color none
- is used to insert annotations into PDF documents via pdflatex.
+ パッケージは，pdflatex経由でPDFに注釈を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
@@ -5923,13 +5863,11 @@ macros/latex/contrib/mhchem/
 \family sans
 rsphrase
 \family default
-パッケージは、化学物質の公式なリスクと安全性に関する表示を挿入するのに用いられます。
+パッケージは，化学物質の公式なリスクと安全性に関する表示を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Sectionbox module
+Sectionboxモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -5954,28 +5892,19 @@ macros/latex/contrib/sectionbox/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 sectionbox
 \family default
-\color none
- is a \SpecialChar LaTeX
- package for putting fancy colored boxes around sections, subsections,
- and subsubsections, especially for use in posters, etc.
- It was designed with the 
+パッケージは，ポスター用などに，節・小節・小々節の周囲に素敵な色付きボックスを描く\SpecialChar LaTeX
+パッケージです．これは
 \family sans
-\color inherit
 sciposter
 \family default
-\color none
- class in mind, and certainly works with that class and with derived classes.
+クラスを念頭にデザインされており，当該クラスとその派生クラスでは確実に動作します．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-TColorbox module
+TColorboxモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -6000,19 +5929,14 @@ macros/latex/contrib/tcolorbox/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 tcolorbox
 \family default
-\color none
- is used to produce fancy boxes.
+パッケージは，素敵なボックスを生成するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-TODO Notes module
+TODO注釈モジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -6037,27 +5961,14 @@ macros/latex/contrib/todonotes/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 todonotes
 \family default
-\color none
- is used to insert 
-\begin_inset Quotes eld
-\end_inset
-
-TODO
-\begin_inset Quotes erd
-\end_inset
-
- notes into documents.
+パッケージは，文書に「TODO」注釈を挿入するのに用いられます．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Variable-width Minipages module
+可変幅ミニページモジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -6082,17 +5993,10 @@ macros/latex/contrib/varwidth/
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
 varwidth
 \family default
-\color none
- is used to produce minipages variable (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., content-dependent) width.
+パッケージは，可変幅の(すなわち文脈依存の)ミニページを生成するのに用いられます．
 \end_layout
 
 \begin_layout Section
@@ -6127,8 +6031,8 @@ language/arabic/arabi/
 \family sans
 arabi
 \family default
-パッケージは、文書言語がアラビア語やペルシア語の文書を、\SpecialChar LyX
-が出力するために必要です。
+パッケージは，文書言語がアラビア語やペルシア語の文書を，\SpecialChar LyX
+が出力するために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6156,8 +6060,8 @@ macros/latex/contrib/bidi/
 \family sans
 bidi
 \family default
-パッケージは、アラビア語・ウルドゥー語・シリア語・ディベヒ語・ヘブライ語・ペルシャ語など、右から左に書かれる文書を出力するために、\SpecialChar LyX
-が使用します。
+パッケージは，アラビア語・ウルドゥー語・シリア語・ディベヒ語・ヘブライ語・ペルシャ語など，右から左に書かれる文書を出力するために，\SpecialChar LyX
+が使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -6185,13 +6089,13 @@ language/japanese/japanese
 \family sans
 babel japanese
 \family default
-オプションは、文書言語が「日本語」の時に、\SpecialChar LyX
-が節見出しと日付を日本語で出力するために必要です。このオプションを使用するためには、日本語\SpecialChar TeX
+オプションは，文書言語が「日本語」の時に，\SpecialChar LyX
+が節見出しと日付を日本語で出力するために必要です．このオプションを使用するためには，日本語\SpecialChar TeX
 システムのpTeX（CTAN
 \family typewriter
 ：language/japanese/ptex
 \family default
-）が必要です。
+）が必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6219,8 +6123,8 @@ language/lithuanian/
 \family sans
 lithuanian
 \family default
-パッケージは、文書言語がリトアニア語の文書を、\SpecialChar LyX
-が出力するために必要です。
+パッケージは，文書言語がリトアニア語の文書を，\SpecialChar LyX
+が出力するために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6248,8 +6152,8 @@ language/mongolian/babel/
 \family sans
 mongolian-babel
 \family default
-パッケージは、文書言語がモンゴル語の文書を、\SpecialChar LyX
-が出力するために必要です。
+パッケージは，文書言語がモンゴル語の文書を，\SpecialChar LyX
+が出力するために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6277,29 +6181,17 @@ macros/xetex/latex/polyglossia/
 \family sans
 polyglossia
 \family default
-パッケージは、Xe\SpecialChar TeX
-
-\lang english
-andLua\SpecialChar TeX
-
-\lang japanese
-用の言語インタフェースを提供します。これは、
+パッケージは，Xe\SpecialChar TeX
+およびLua\SpecialChar TeX
+用の言語インタフェースを提供します．これは，
 \family sans
 babel
 \family default
-パッケージに取り代わって、Xe\SpecialChar TeX
-
-\lang english
-andLua\SpecialChar TeX
-
-\lang japanese
-の多言語機能と多スクリプト機能を利用するようにします。導入されていれば、Xe\SpecialChar TeX
-
-\lang english
-orLua\SpecialChar TeX
-
-\lang japanese
-を出力書式に指定したとき、
+パッケージに取り代わって，Xe\SpecialChar TeX
+およびLua\SpecialChar TeX
+の多言語機能と多スクリプト機能を利用するようにします．導入されていれば，Xe\SpecialChar TeX
+またはLua\SpecialChar TeX
+を出力書式に指定したとき，
 \family sans
 babel
 \family default
@@ -6307,7 +6199,7 @@ babel
 \family sans
 polyglossia
 \family default
-が言語処理に使用されます。
+が言語処理に使用されます．
 \end_layout
 
 \begin_layout Subsection
@@ -6335,8 +6227,8 @@ language/turkmen/
 \family sans
 turkmen
 \family default
-パッケージは、文書言語がトルクメン語の文書を、\SpecialChar LyX
-が出力するために必要です。
+パッケージは，文書言語がトルクメン語の文書を，\SpecialChar LyX
+が出力するために必要です．
 \end_layout
 
 \begin_layout Section
@@ -6371,8 +6263,8 @@ macros/latex/contrib/bezos/
 \family sans
 accents
 \family default
-パッケージは、\SpecialChar LyX
-が下にアクセントのついたunicode記号を正しく組版するのに必要です。
+パッケージは，\SpecialChar LyX
+が下にアクセントのついたunicode記号を正しく組版するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6400,9 +6292,9 @@ macros/latex/contrib/algorithms/
 \family sans
 algorithm
 \family default
-パッケージは、\SpecialChar LyX
-が「アルゴリズム」フロートを出力できるようにするために必要です。このパッケージは、短いアルゴリズムを複数ページにわたって配置したり、「アルゴリズム
-目次」をサポートするために使われます。
+パッケージは，\SpecialChar LyX
+が「アルゴリズム」フロートを出力できるようにするために必要です．このパッケージは，短いアルゴリズムを複数ページにわたって配置したり，「アルゴリズム
+目次」をサポートするために使われます．
 \end_layout
 
 \begin_layout Subsection
@@ -6430,17 +6322,17 @@ macros/latex/contrib/algorithm2e/
 \family sans
 algorithm2e
 \family default
-パッケージは、「アルゴリズム」フロートを出力するための、もう一つの、少し強力なパッケージです。これを標準の
+パッケージは，「アルゴリズム」フロートを出力するための，もう一つの，少し強力なパッケージです．これを標準の
 \family sans
 algorithm
 \family default
-パッケージの代わりに用いたい場合には、
+パッケージの代わりに用いたい場合には，
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 モジュール
 \family default
-で「Algorithm2e」モジュールを選択してください。
+で「Algorithm2e」モジュールを選択してください．
 \end_layout
 
 \begin_layout Subsection
@@ -6468,7 +6360,7 @@ macros/latex/contrib/breakurl/
 \family sans
 breakurl
 \family default
-パッケージは、hyperrefが使用されているときに、DVI出力中のURLが行末で正しく改行されるようにします。
+パッケージは，hyperrefが使用されているときに，DVI出力中のURLが行末で正しく改行されるようにします．
 \end_layout
 
 \begin_layout Subsection
@@ -6496,7 +6388,7 @@ macros/latex/contrib/cancel/
 \family sans
 cancel
 \family default
-パッケージは、数式の消去を組むのに使用されます。これは、コマンド
+パッケージは，数式の消去を組むのに使用されます．これは，コマンド
 \family sans
 
 \backslash
@@ -6520,7 +6412,7 @@ xcancel
 \backslash
 cancelto
 \family default
-を入力することで可能です。
+を入力することで可能です．
 \end_layout
 
 \begin_layout Subsection
@@ -6552,9 +6444,9 @@ CJKutf8
 \family sans
 CJK
 \family default
-バンドルの一部）は、\SpecialChar LaTeX
-本体とCJKのUTF-8サポートとを統合します。これは、CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったときに正しい
-出力を得るために必要です。
+バンドルの一部）は，\SpecialChar LaTeX
+本体とCJKのUTF-8サポートとを統合します．これは，CJKとUTF-8エンコーディングおよびhyperrefとを同時に使ったときに正しい
+出力を得るために必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6584,13 +6476,13 @@ dvipost
 \family default
 は\SpecialChar LaTeX
 や\SpecialChar TeX
-が生成したDVIファイルの後処理器です。\SpecialChar LyX
-が、変更追尾記号のDVI出力あるいはPostscript出力を生成するのに必要です。
+が生成したDVIファイルの後処理器です．\SpecialChar LyX
+が，変更追尾記号のDVI出力あるいはPostscript出力を生成するのに必要です．
 \family sans
 dvipost
 \family default
-が正しく動作するためには、te\SpecialChar TeX
-第2版以降が必要です。
+が正しく動作するためには，te\SpecialChar TeX
+第2版以降が必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6618,18 +6510,18 @@ macros/latex/contrib/esint/
 \family sans
 esint
 \family default
-パッケージは、数学の積分記号を植字するのに用いられます。もっとも普通に使われる積分記号群は、このパッケージなしでも植字できますが、各々が別フォント由来なので、つ
-ねに整合的な外観を持つわけではありません。
+パッケージは，数学の積分記号を植字するのに用いられます．もっとも普通に使われる積分記号群は，このパッケージなしでも植字できますが，各々が別フォント由来なので，つ
+ねに整合的な外観を持つわけではありません．
 \family sans
 esint
 \family default
-パッケージは、全ての積分記号にわたる整合的な外観を提供するだけでなく、三重積分
+パッケージは，全ての積分記号にわたる整合的な外観を提供するだけでなく，三重積分
 \family typewriter
 
 \backslash
 iiint
 \family default
-のようなより進んだ積分記号も提供します。
+のようなより進んだ積分記号も提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -6657,12 +6549,12 @@ macros/latex/contrib/fancybox/
 \family sans
 fancybox
 \family default
-パッケージは、ボックスの周りに枠を描くのに必要です（
+パッケージは，ボックスの周りに枠を描くのに必要です（
 \family sans
 挿入\SpecialChar menuseparator
 ボックス
 \family default
-メニュー）。
+メニュー）．
 \end_layout
 
 \begin_layout Subsection
@@ -6694,7 +6586,7 @@ fancyhdr
 \family sans
 fancyheadings
 \family default
-という名称でした）は、文書レイアウトポップアップで「装飾的（fancy）」を選択した時に用いられます。これは、2ページごとに交代するヘッダとフッタを提供します。
+という名称でした）は，文書レイアウトポップアップで「装飾的（fancy）」を選択した時に用いられます．これは，2ページごとに交代するヘッダとフッタを提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -6718,14 +6610,14 @@ macros/latex/unpacked/fix-cm.sty
 \end_layout
 
 \begin_layout Description
-備考: T1及びTS1エンコードされたCMフォント(別名`EC')の外観を、伝統的な(OT1エンコードされた)フォントにできる限り近付けるために、Compute
-r Modernフォントのフォント定義を変更します。特に、壊れたり醜いデザインの寸法は用いられず、大寸でのボールドサンセリフ体の見栄えはかなり向上し、さらに本文
-用フォントと対応する数式フォントの間のミスマッチは回避されています。Computer Modernフォントは任意寸で使用できます。Type1形式でも通常は使用で
-きるフォントデザイン寸のみが使用されます。これは、
+備考: T1及びTS1エンコードされたCMフォント(別名`EC')の外観を，伝統的な(OT1エンコードされた)フォントにできる限り近付けるために，Compute
+r Modernフォントのフォント定義を変更します．特に，壊れたり醜いデザインの寸法は用いられず，大寸でのボールドサンセリフ体の見栄えはかなり向上し，さらに本文
+用フォントと対応する数式フォントの間のミスマッチは回避されています．Computer Modernフォントは任意寸で使用できます．Type1形式でも通常は使用で
+きるフォントデザイン寸のみが使用されます．これは，
 \family sans
 fix-cm
 \family default
-モジュールを読み込むことで使用できるようになります。
+モジュールを読み込むことで使用できるようになります．
 \end_layout
 
 \begin_layout Subsection
@@ -6753,12 +6645,12 @@ macros/latex/unpacked/fixltx2e.sty
 \family sans
 fixltx2e
 \family default
-パッケージは、\SpecialChar LaTeX
-カーネル中のバグを修正します。これは、
+パッケージは，\SpecialChar LaTeX
+カーネル中のバグを修正します．これは，
 \family sans
 fixltx2e
 \family default
-モジュールを取り込むことで使用することができます。
+モジュールを取り込むことで使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -6783,12 +6675,10 @@ macros/latex/contrib/supported/footmisc/footmisc.sty
 
 \begin_layout Description
 備考: 
-\lang english
-The package 
 \family sans
-footmisc 
+footmisc
 \family default
-is needed to support stable footnotes in chapter titles.
+パッケージは，章題に安定的な脚註をつけるのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6816,7 +6706,7 @@ macros/latex/contrib/hyphenat/
 \family sans
 hyphenat
 \family default
-パッケージは、いくつかの文書クラスと文書言語において、ハイフネーションを無効にするのに必要です。
+パッケージは，いくつかの文書クラスと文書言語において，ハイフネーションを無効にするのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -6844,7 +6734,7 @@ macros/latex/base/ifthen/
 \family sans
 ifthen
 \family default
-パッケージは、\SpecialChar LaTeX
+パッケージは，\SpecialChar LaTeX
 文書用の条件分岐コマンド（
 \emph on
 if
@@ -6855,7 +6745,7 @@ if
  then \SpecialChar ldots
  else
 \emph default
-）を提供します。この機能は、いくつかのクラスやモジュールが必要とします。
+）を提供します．この機能は，いくつかのクラスやモジュールが必要とします．
 \end_layout
 
 \begin_layout Subsection
@@ -6883,8 +6773,8 @@ macros/latex/contrib/listings/
 \family sans
 listings
 \family default
-パッケージは、\SpecialChar LyX
-がプログラムリスト（ソースコードの断片）を表示するのに使われます。本パッケージは、多くのプログラム言語、文法強調表示、行番号等をサポートします。
+パッケージは，\SpecialChar LyX
+がプログラムリスト（ソースコードの断片）を表示するのに使われます．本パッケージは，多くのプログラム言語，文法強調表示，行番号等をサポートします．
 \end_layout
 
 \begin_layout Subsection
@@ -6912,10 +6802,10 @@ macros/luatex/latex/luainputenc/
 \family sans
 luainputenc
 \family default
-パッケージは、Lua\SpecialChar TeX
-用に入力エンコーディング機能を再実装します。\SpecialChar TeX
-フォントを使用し、かつLua\SpecialChar TeX
-が出力書式に指定されてするときに必要とされます。
+パッケージは，Lua\SpecialChar TeX
+用に入力エンコーディング機能を再実装します．\SpecialChar TeX
+フォントを使用し，かつLua\SpecialChar TeX
+が出力書式に指定されてするときに必要とされます．
 \end_layout
 
 \begin_layout Subsection
@@ -6943,8 +6833,8 @@ macros/latex/contrib/jknappen/
 \family sans
 mathrsfs
 \family default
-パッケージは、数式様式「フォーマルスクリプト体」を出力する際、\SpecialChar LyX
-が使用します。
+パッケージは，数式様式「フォーマルスクリプト体」を出力する際，\SpecialChar LyX
+が使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -6972,18 +6862,18 @@ macros/generic/mathdots/
 \family sans
 mathdots
 \family default
-パッケージは、\SpecialChar LyX
+パッケージは，\SpecialChar LyX
 が数式コマンド
 \family sans
 
 \backslash
 iddots
 \family default
-を解析する際に使用されます。これは、文書設定の
+を解析する際に使用されます．これは，文書設定の
 \family sans
 数式オプション
 \family default
-タブで読み込ませることができ、文書中すべての数式ドットの外観を変更することもできます。
+タブで読み込ませることができ，文書中すべての数式ドットの外観を変更することもできます．
 \end_layout
 
 \begin_layout Subsection
@@ -7011,8 +6901,8 @@ macros/latex/contrib/mh/
 \family sans
 mathtools
 \family default
-パッケージは、一部unicode記号のために\SpecialChar LyX
-が使用します。
+パッケージは，一部unicode記号のために\SpecialChar LyX
+が使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -7040,8 +6930,8 @@ macros/latex/contrib/mhchem/
 \family sans
 mhchem
 \family default
-パッケージは、\SpecialChar LyX
-が、化学式と反応式を数式中で生成するのに必要です。
+パッケージは，\SpecialChar LyX
+が，化学式と反応式を数式中で生成するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7069,8 +6959,8 @@ macros/latex/contrib/multirow/
 \family sans
 multirow
 \family default
-パッケージは、\SpecialChar LyX
-が複数行の表セルを連結するのに使用され、同時に表計算外部差込枠のサポートも提供します。
+パッケージは，\SpecialChar LyX
+が複数行の表セルを連結するのに使用され，同時に表計算外部差込枠のサポートも提供します．
 \end_layout
 
 \begin_layout Subsection
@@ -7098,8 +6988,8 @@ macros/latex/contrib/units/
 \family sans
 nicefrac
 \family default
-パッケージは、\SpecialChar LyX
-が本文サイズの分数（「3/5」など）を生成するのに必要です。
+パッケージは，\SpecialChar LyX
+が本文サイズの分数（「3/5」など）を生成するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7127,8 +7017,8 @@ macros/latex/contrib/nomencl/
 \family sans
 nomencl
 \family default
-パッケージは、\SpecialChar LyX
-が用語定義（nomenclature）を生成するのに必要です。
+パッケージは，\SpecialChar LyX
+が用語定義（nomenclature）を生成するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7156,14 +7046,14 @@ macros/latex/contrib/pdfpages
 \family typewriter
 pdfpages
 \family default
-パッケージは、\SpecialChar LyX
-が、
+パッケージは，\SpecialChar LyX
+が，
 \family sans
 挿入\SpecialChar menuseparator
 ファイル\SpecialChar menuseparator
 外部マテリアル
 \family default
-で複数ページのPDFファイルをインクルードするのに使用します。
+で複数ページのPDFファイルをインクルードするのに使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -7191,12 +7081,12 @@ macros/latex/contrib/prettyref
 \family typewriter
 prettyref
 \family default
-パッケージは、参照ラベルを前置詞によって認識するコマンドを提供します。\SpecialChar LyX
-は、「sec:mysection」の形式でラベルをつけますが、
+パッケージは，参照ラベルを前置詞によって認識するコマンドを提供します．\SpecialChar LyX
+は，「sec:mysection」の形式でラベルをつけますが，
 \family typewriter
 prettyref
 \family default
-は「sec:」の部分を解釈します。
+は「sec:」の部分を解釈します．
 \end_layout
 
 \begin_layout Subsection
@@ -7224,9 +7114,9 @@ macros/latex/contrib/preview
 \family typewriter
 preview
 \family default
-パッケージは、\SpecialChar LyX
+パッケージは，\SpecialChar LyX
 が\SpecialChar LaTeX
-出力の一部をプレビューするのに必要です。特に、
+出力の一部をプレビューするのに必要です．特に，
 \family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -7237,7 +7127,7 @@ preview
 \family sans
 自動プレビュー
 \family default
-」を有効にしているときに数式表示で使われます。
+」を有効にしているときに数式表示で使われます．
 \end_layout
 
 \begin_layout Subsection
@@ -7265,8 +7155,8 @@ macros/latex/contrib/rotating
 \family sans
 rotating
 \family default
-パッケージは、\SpecialChar LyX
-が、お使いの文書の一部の向きを変えるときに必要とします。これは、PostScript®互換プリンタでのみ正しく動作することに注意してください。
+パッケージは，\SpecialChar LyX
+が，お使いの文書の一部の向きを変えるときに必要とします．これは，PostScript®互換プリンタでのみ正しく動作することに注意してください．
 \end_layout
 
 \begin_layout Subsection
@@ -7294,8 +7184,8 @@ macros/latex/contrib/rotfloat
 \family sans
 rotfloat
 \family default
-パッケージは、\SpecialChar LyX
-がフロートを横向きに回転するのに使用します。この機能が真に機能するのは、PostScript®互換プリンタだけであることに注意してください。
+パッケージは，\SpecialChar LyX
+がフロートを横向きに回転するのに使用します．この機能が真に機能するのは，PostScript®互換プリンタだけであることに注意してください．
 \end_layout
 
 \begin_layout Subsection
@@ -7323,8 +7213,8 @@ macros/latex/contrib/carlisle/
 \family sans
 slashed
 \family default
-パッケージは、\SpecialChar LyX
-がスラッシュのついた記号を数式中で正しく組版するのに必要です。
+パッケージは，\SpecialChar LyX
+がスラッシュのついた記号を数式中で正しく組版するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7352,12 +7242,12 @@ macros/latex/contrib/splitindex/
 \family sans
 splitidx
 \family default
-パッケージは、\SpecialChar LyX
-が複数の分割された索引を生成するのに使用されます。同梱の
+パッケージは，\SpecialChar LyX
+が複数の分割された索引を生成するのに使用されます．同梱の
 \family sans
 splitindex
 \family default
-変換プログラムのうち、一つを導入する必要があることに注意してください。
+変換プログラムのうち，一つを導入する必要があることに注意してください．
 \end_layout
 
 \begin_layout Subsection
@@ -7385,10 +7275,10 @@ macros/latex/contrib/oberdiek
 \family sans
 stackrel
 \family default
-パッケージは、下付き文字に
+パッケージは，下付き文字に
 \backslash
-stackrelコマンドを使用して数式を出力するのに、\SpecialChar LyX
-が必要とします。
+stackrelコマンドを使用して数式を出力するのに，\SpecialChar LyX
+が必要とします．
 \end_layout
 
 \begin_layout Subsection
@@ -7416,8 +7306,8 @@ fonts/stmaryrd/
 \family sans
 stmaryrd
 \family default
-パッケージは、St Mary's Roadシンボルフォント由来の拡張文字を出力するのに、\SpecialChar LyX
-が必要とします。
+パッケージは，St Mary's Roadシンボルフォント由来の拡張文字を出力するのに，\SpecialChar LyX
+が必要とします．
 \end_layout
 
 \begin_layout Subsection
@@ -7445,9 +7335,9 @@ macros/latex/contrib/subfig
 \family sans
 subfig
 \family default
-パッケージは、\SpecialChar LyX
-がサブフロート（subfigure・subtable等）を生成するのに使用されます。サブフロートは、それぞれにサブキャプションを付けて、他のフロー
-ト内に埋め込むことができるフロートです。
+パッケージは，\SpecialChar LyX
+がサブフロート（subfigure・subtable等）を生成するのに使用されます．サブフロートは，それぞれにサブキャプションを付けて，他のフロー
+ト内に埋め込むことができるフロートです．
 \end_layout
 
 \begin_layout Subsection
@@ -7475,13 +7365,13 @@ macros/latex/contrib/fragments/subscript.sty
 \family sans
 subscript
 \family default
-パッケージは、\SpecialChar LyX
-が、一部の文書クラスにおいて下付き文字を出力するのに使用されます。\SpecialChar TeX
-頒布版においては、通常
+パッケージは，\SpecialChar LyX
+が，一部の文書クラスにおいて下付き文字を出力するのに使用されます．\SpecialChar TeX
+頒布版においては，通常
 \family sans
 fragments
 \family default
-パッケージの一部となっています。
+パッケージの一部となっています．
 \end_layout
 
 \begin_layout Subsection
@@ -7509,8 +7399,8 @@ macros/latex/contrib/setspace/
 \family sans
 setspace
 \family default
-パッケージは、\SpecialChar LyX
-が使用中の文書の行間を変更するのに使用します。
+パッケージは，\SpecialChar LyX
+が使用中の文書の行間を変更するのに使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -7538,9 +7428,9 @@ macros/latex/contrib/misc/
 \family sans
 ulem
 \family default
-パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、\SpecialChar LyX
-が、変更追跡が有効になっている文書で、取消線
-を引いた文章をPDFに出力するのに必要です。
+パッケージは，複数の単語や行を越えることも可能な，様々な型の下線引きや取消線および強調を提供します．本パッケージは，\SpecialChar LyX
+が，変更追跡が有効になっている文書で，取消線
+を引いた文章をPDFに出力するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7568,14 +7458,14 @@ macros/latex/contrib/undertilde/
 \family sans
 undertilde
 \family default
-パッケージは、
+パッケージは，
 \family sans
 
 \backslash
 utilde
 \family default
-コマンドを提供します。数式中でチルダの付いた記号に下線を引くのに、\SpecialChar LyX
-が使用します。
+コマンドを提供します．数式中でチルダの付いた記号に下線を引くのに，\SpecialChar LyX
+が使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -7603,8 +7493,8 @@ macros/latex/contrib/units/
 \family sans
 units
 \family default
-パッケージは、\SpecialChar LyX
-が数式内で単位を適切に組版するのに必要です。
+パッケージは，\SpecialChar LyX
+が数式内で単位を適切に組版するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7632,8 +7522,8 @@ macros/latex/contrib/misc/url.sty
 \family sans
 url
 \family default
-パッケージは、\SpecialChar LyX
-がURLを正しく出力するのに必要です。
+パッケージは，\SpecialChar LyX
+がURLを正しく出力するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7661,8 +7551,8 @@ macros/latex/contrib/wasysym/
 \family sans
 wasysym
 \family default
-パッケージは、\SpecialChar LyX
-がwasyフォント由来の追加文字を出力するのに必要です。
+パッケージは，\SpecialChar LyX
+がwasyフォント由来の追加文字を出力するのに必要です．
 \end_layout
 
 \begin_layout Subsection
@@ -7690,13 +7580,13 @@ macros/latex/contrib/wrapfig/
 \family sans
 wrapfig
 \family default
-パッケージは、折返しフロートが挿入（
+パッケージは，折返しフロートが挿入（
 \family sans
 挿入\SpecialChar menuseparator
 フロート
 \family default
-メニュー）された時に、\SpecialChar LyX
-が使用します。このパッケージによって、全ページ幅よりも狭い図フロートを生成して、本文がその周りで折り返すようにすることができます。
+メニュー）された時に，\SpecialChar LyX
+が使用します．このパッケージによって，全ページ幅よりも狭い図フロートを生成して，本文がその周りで折り返すようにすることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -7724,8 +7614,8 @@ macros/latex/contrib/xargs/
 \family typewriter
 xargs
 \family default
-パッケージは、非必須引数付きの数式マクロを挿入したとき、\SpecialChar LyX
-が使用します。
+パッケージは，非必須引数付きの数式マクロを挿入したとき，\SpecialChar LyX
+が使用します．
 \end_layout
 
 \begin_layout Subsection
@@ -7753,13 +7643,13 @@ macros/latex/contrib/xcolor
 \family sans
 xcolor
 \family default
-パッケージは、\SpecialChar LaTeX
+パッケージは，\SpecialChar LaTeX
 の標準
 \family sans
 color
 \family default
-パッケージではカバーされていない詳細なカラー機能を提供します。\SpecialChar LyX
-は、カラーの変更追尾マークをつけるのにこのパッケージを使用します。
+パッケージではカバーされていない詳細なカラー機能を提供します．\SpecialChar LyX
+は，カラーの変更追尾マークをつけるのにこのパッケージを使用します．
 \end_layout
 
 \end_body
