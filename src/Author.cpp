@@ -13,6 +13,7 @@
 #include "Author.h"
 
 #include "support/convert.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
@@ -46,6 +47,15 @@ Author::Author(int buffer_id)
 	: name_(convert<docstring>(buffer_id)), email_(docstring()), used_(false),
 	  buffer_id_(buffer_id)
 {}
+
+
+docstring Author::nameAndEmail() const
+{
+	if (email().empty())
+		return name();
+	else
+		return bformat(_("%1$s[[name]] (%2$s[[email]])"), name(), email());
+}
 
 
 bool Author::valid() const
