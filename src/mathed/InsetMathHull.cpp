@@ -750,9 +750,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		macro_preamble.append(*it);
 
 	// set the font series and size for this snippet
-	DocIterator dit = pos;
-	while (dit.inMathed())
-		dit.pop_back();
+	DocIterator dit = pos.getInnerText();
 	Paragraph const & par = dit.paragraph();
 	Font font = par.getFontSettings(buffer->params(), dit.pos());
 	font.fontInfo().realize(par.layout().font);
