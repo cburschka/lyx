@@ -138,6 +138,8 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 			<< ", author: " << change.author 
 			<< ", time: " << long(change.changetime)
 			<< ") in range (" << start << ", " << end << ")");
+		if (!isChanged())
+			is_update_required_ = true;
 	}
 
 	Range const newRange(start, end);
