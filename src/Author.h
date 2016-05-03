@@ -32,6 +32,8 @@ public:
 	///
 	docstring email() const { return email_; }
 	///
+	docstring nameAndEmail() const;
+	///
 	int bufferId() const { return buffer_id_; }
 	///
 	void setBufferId(int buffer_id) const { buffer_id_ = buffer_id; }

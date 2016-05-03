@@ -15,6 +15,8 @@
 
 #include "GuiDialog.h"
 #include "ui_ChangesUi.h"
+
+#include "support/debug.h"
 #include "support/docstring.h"
 
 
@@ -52,11 +54,6 @@ private:
 	bool isBufferDependent() const { return true; }
 	/// always true since dispatchParams() is empty
 	bool canApply() const { return true; }
-
-	/// return date of change
-	docstring changeDate() const;
-	/// return author of change
-	docstring changeAuthor() const;
 };
 
 } // namespace frontend

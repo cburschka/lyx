@@ -67,6 +67,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/lyxtime.h"
 #include "support/textutils.h"
 
 #include <sstream>
@@ -1900,13 +1901,11 @@ docstring Text::currentState(Cursor const & cur) const
 	Change change = par.lookupChange(cur.pos());
 
 	if (change.changed()) {
-		Author const & a = buf.params().authors().get(change.author);
-		os << _("Change: ") << a.name();
-		if (!a.email().empty())
-			os << " (" << a.email() << ")";
-		// FIXME ctime is english, we should translate that
-		os << _(" at ") << ctime(&change.changetime);
-		os << " : ";
+		docstring const author =
+			buf.params().authors().get(change.author).nameAndEmail();
+		docstring const date = formatted_datetime(change.changetime);
+		os << bformat(_("Changed by %1$s[[author]] on %2$s[[date]]. "),
+		              author, date);
 	}
 
 	// I think we should only show changes from the default
