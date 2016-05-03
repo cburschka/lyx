@@ -707,9 +707,7 @@ Change const BufferView::getCurrentChange() const
 
 	DocIterator dit = d->cursor_.selectionBegin();
 	// The selected content might have been changed (see #7685)
-	while (dit.inMathed())
-		// Find enclosing text cursor
-		dit.pop_back();
+	dit = dit.getInnerText();
 	return dit.paragraph().lookupChange(dit.pos());
 }
 
