@@ -40,6 +40,18 @@ string const formatted_time(time_t t, string const & fmt)
 }
 
 
+docstring formatted_datetime(time_t t, string const & fmt)
+{
+	QString qres;
+	if (fmt.empty())
+		qres = QLocale().toString(QDateTime::fromTime_t(t),
+		                          QLocale::ShortFormat);
+	else
+		qres = QLocale().toString(QDateTime::fromTime_t(t), toqstr(fmt));
+	return qstring_to_ucs4(qres);
+}
+
+
 time_t from_asctime_utc(string t)
 {
 	// Example for the format: "Sun Nov  6 10:39:39 2011\n"
