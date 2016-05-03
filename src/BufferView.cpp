@@ -1130,11 +1130,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_CHANGE_PREVIOUS:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
-		// TODO: context-sensitive enabling of LFUNs
-		// In principle, these command should only be enabled if there
-		// is a change in the document. However, without proper
-		// optimizations, this will inevitably result in poor performance.
-		flag.setEnabled(true);
+		flag.setEnabled(buffer_.areChangesPresent());
 		break;
 
 	case LFUN_SCREEN_UP:
