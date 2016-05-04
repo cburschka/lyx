@@ -370,8 +370,8 @@ public:
 		+ (with_blanks ? blank_count_ : 0);
 	}
 
-	// does the buffer contains tracked changes? (if so, we automatically
-	// display the review toolbar)
+	// does the buffer contain tracked changes? (if so, we automatically
+	// display the review toolbar, for instance)
 	mutable bool tracked_changes_present_;
 
 private:
