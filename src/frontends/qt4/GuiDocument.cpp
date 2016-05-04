@@ -703,9 +703,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
-	textLayoutModule->indentLE->setValidator(unsignedLengthValidator(
+	textLayoutModule->indentLE->setValidator(new LengthValidator(
 		textLayoutModule->indentLE));
-	textLayoutModule->skipLE->setValidator(unsignedGlueLengthValidator(
+	textLayoutModule->skipLE->setValidator(new LengthValidator(
 		textLayoutModule->skipLE));
 
 	textLayoutModule->indentCO->addItem(qt_("Default"));
@@ -966,21 +966,21 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(marginsModule->columnsepUnit, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	marginsModule->topLE->setValidator(unsignedLengthValidator(
+	marginsModule->topLE->setValidator(new LengthValidator(
 		marginsModule->topLE));
-	marginsModule->bottomLE->setValidator(unsignedLengthValidator(
+	marginsModule->bottomLE->setValidator(new LengthValidator(
 		marginsModule->bottomLE));
-	marginsModule->innerLE->setValidator(unsignedLengthValidator(
+	marginsModule->innerLE->setValidator(new LengthValidator(
 		marginsModule->innerLE));
-	marginsModule->outerLE->setValidator(unsignedLengthValidator(
+	marginsModule->outerLE->setValidator(new LengthValidator(
 		marginsModule->outerLE));
-	marginsModule->headsepLE->setValidator(unsignedLengthValidator(
+	marginsModule->headsepLE->setValidator(new LengthValidator(
 		marginsModule->headsepLE));
-	marginsModule->headheightLE->setValidator(unsignedLengthValidator(
+	marginsModule->headheightLE->setValidator(new LengthValidator(
 		marginsModule->headheightLE));
-	marginsModule->footskipLE->setValidator(unsignedLengthValidator(
+	marginsModule->footskipLE->setValidator(new LengthValidator(
 		marginsModule->footskipLE));
-	marginsModule->columnsepLE->setValidator(unsignedLengthValidator(
+	marginsModule->columnsepLE->setValidator(new LengthValidator(
 		marginsModule->columnsepLE));
 
 	bc().addCheckedLineEdit(marginsModule->topLE,
