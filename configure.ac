@@ -118,7 +118,7 @@ AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 AC_CHECK_LIB(ole32, main)
 test x"$WINDRES" = x && WINDRES=windres
-AC_SUBST(WINDRES)
+AC_ARG_VAR(WINDRES, [windows resource compiler command])
 
 LYX_USE_INCLUDED_BOOST
 LYX_USE_INCLUDED_MYTHES
