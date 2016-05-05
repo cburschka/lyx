@@ -202,6 +202,10 @@ LyXErr & operator<<(LyXErr &, int);
 LyXErr & operator<<(LyXErr &, unsigned int);
 LyXErr & operator<<(LyXErr &, long);
 LyXErr & operator<<(LyXErr &, unsigned long);
+#ifdef LYX_USE_LONG_LONG
+LyXErr & operator<<(LyXErr &, long long);
+LyXErr & operator<<(LyXErr &, unsigned long long);
+#endif
 LyXErr & operator<<(LyXErr &, double);
 LyXErr & operator<<(LyXErr &, std::string const &);
 LyXErr & operator<<(LyXErr &, docstring const &);

@@ -90,6 +90,22 @@ docstring convert<docstring>(unsigned long ul)
 }
 
 
+#ifdef LYX_USE_LONG_LONG
+template<>
+string convert<string>(unsigned long long ull)
+{
+	return lexical_cast<string>(ull);
+}
+
+
+template<>
+docstring convert<docstring>(unsigned long long ull)
+{
+	return from_ascii(lexical_cast<string>(ull));
+}
+#endif
+
+
 template<>
 string convert<string>(long l)
 {
@@ -102,6 +118,22 @@ docstring convert<docstring>(long l)
 {
 	return from_ascii(lexical_cast<string>(l));
 }
+
+
+#ifdef LYX_USE_LONG_LONG
+template<>
+string convert<string>(long long ll)
+{
+	return lexical_cast<string>(ll);
+}
+
+
+template<>
+docstring convert<docstring>(long long ll)
+{
+	return from_ascii(lexical_cast<string>(ll));
+}
+#endif
 
 
 template<>

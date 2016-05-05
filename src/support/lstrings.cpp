@@ -1437,6 +1437,17 @@ docstring bformat(docstring const & fmt, long arg1)
 }
 
 
+#ifdef LYX_USE_LONG_LONG
+template<>
+docstring bformat(docstring const & fmt, long long arg1)
+{
+	LATTEST(contains(fmt, from_ascii("%1$d")));
+	docstring const str = subst(fmt, from_ascii("%1$d"), convert<docstring>(arg1));
+	return subst(str, from_ascii("%%"), from_ascii("%"));
+}
+#endif
+
+
 template<>
 docstring bformat(docstring const & fmt, unsigned int arg1)
 {

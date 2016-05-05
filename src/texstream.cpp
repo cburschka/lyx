@@ -215,6 +215,11 @@ template otexrowstream & operator<< <unsigned int>(otexrowstream &,
 template otexrowstream & operator<< <unsigned long>(otexrowstream &,
 													unsigned long);
 
+#ifdef LYX_USE_LONG_LONG
+template otexrowstream & operator<< <unsigned long long>(otexrowstream &,
+                                                         unsigned long long);
+#endif
+
 
 template <typename Type>
 otexstream & operator<<(otexstream & ots, Type value)
@@ -230,5 +235,8 @@ template otexstream & operator<< <double>(otexstream &, double);
 template otexstream & operator<< <int>(otexstream &, int);
 template otexstream & operator<< <unsigned int>(otexstream &, unsigned int);
 template otexstream & operator<< <unsigned long>(otexstream &, unsigned long);
+#ifdef LYX_USE_LONG_LONG
+template otexstream & operator<< <unsigned long long>(otexstream &, unsigned long long);
+#endif
 
 }

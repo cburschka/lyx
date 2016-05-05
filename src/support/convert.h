@@ -33,8 +33,16 @@ template<> std::string convert<std::string>(unsigned int ui);
 template<> docstring convert<docstring>(unsigned int ui);
 template<> std::string convert<std::string>(unsigned long ul);
 template<> docstring convert<docstring>(unsigned long ul);
+#ifdef LYX_USE_LONG_LONG
+template<> std::string convert<std::string>(unsigned long long ull);
+template<> docstring convert<docstring>(unsigned long long ull);
+#endif
 template<> std::string convert<std::string>(long l);
 template<> docstring convert<docstring>(long l);
+#ifdef LYX_USE_LONG_LONG
+template<> std::string convert<std::string>(long long ll);
+template<> docstring convert<docstring>(long long ll);
+#endif
 template<> std::string convert<std::string>(float f);
 template<> std::string convert<std::string>(double d);
 template<> int convert<int>(std::string const & s);

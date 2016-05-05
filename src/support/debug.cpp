@@ -243,6 +243,12 @@ LyXErr & operator<<(LyXErr & l, long t)
 { return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, unsigned long t)
 { return toStream(l, t); }
+#ifdef LYX_USE_LONG_LONG
+LyXErr & operator<<(LyXErr & l, long long t)
+{ return toStream(l, t); }
+LyXErr & operator<<(LyXErr & l, unsigned long long t)
+{ return toStream(l, t); }
+#endif
 LyXErr & operator<<(LyXErr & l, double t)
 { return toStream(l, t); }
 LyXErr & operator<<(LyXErr & l, string const & t)

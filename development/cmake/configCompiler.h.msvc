@@ -152,6 +152,12 @@
 #  define USE_WCHAR_T
 #endif
 
+#ifdef HAVE_LONG_LONG
+#ifdef SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG
+#define LYX_USE_LONG_LONG
+#endif
+#endif
+
 #if defined(MAKE_INTL_LIB) && defined(_MSC_VER)
 #define __attribute__(x)
 #define inline
