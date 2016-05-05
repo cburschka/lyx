@@ -630,7 +630,7 @@ AC_ARG_WITH(packaging,
   [lyx_use_packaging="$withval"], [
   case $host in
     *-apple-darwin*) lyx_use_packaging=macosx ;;
-    *-pc-mingw32*) lyx_use_packaging=windows ;;
+    *-pc-mingw*) lyx_use_packaging=windows ;;
     *haiku*) lyx_use_packaging=haiku ;;
     *) lyx_use_packaging=posix ;;
   esac])
