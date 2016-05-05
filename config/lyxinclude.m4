@@ -454,6 +454,70 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 ])
 
 
+dnl Usage: LYX_USE_INCLUDED_ICONV : select if the included iconv should
+dnl        be used.
+AC_DEFUN([LYX_USE_INCLUDED_ICONV],[
+  AC_MSG_CHECKING([whether to use included iconv library])
+  AC_ARG_WITH(included-iconv,
+    [AC_HELP_STRING([--without-included-iconv], [do not use the iconv lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+    [lyx_cv_with_included_iconv=$withval],
+    [lyx_cv_with_included_iconv=no])
+  AM_CONDITIONAL(USE_INCLUDED_ICONV, test x$lyx_cv_with_included_iconv = xyes)
+  AC_MSG_RESULT([$lyx_cv_with_included_iconv])
+  if test x$lyx_cv_with_included_iconv = xyes ; then
+dnl Some bits from libiconv configure.ac to avoid a nested configure call:
+    AC_EILSEQ
+    AC_TYPE_MBSTATE_T
+    AC_CHECK_FUNCS([getc_unlocked mbrtowc wcrtomb mbsinit setlocale])
+dnl Ymbstate_t is used if HAVE_WCRTOMB || HAVE_MBRTOWC, see 3rdparty/libiconv/1.14/lib/loop_wchar.h.
+    if test $ac_cv_func_wcrtomb = yes || test $ac_cv_func_mbrtowc = yes; then
+      USE_MBSTATE_T=1
+    else
+      USE_MBSTATE_T=0
+    fi
+    AC_SUBST([USE_MBSTATE_T])
+    AC_CACHE_CHECK([whether <wchar.h> is standalone],
+      [gl_cv_header_wchar_h_standalone],
+      [AC_COMPILE_IFELSE(
+        [AC_LANG_PROGRAM(
+          [[#include <wchar.h>
+            wchar_t w;]],
+          [[]])],
+        [gl_cv_header_wchar_h_standalone=yes],
+        [gl_cv_header_wchar_h_standalone=no])])
+    if test $gl_cv_header_wchar_h_standalone = yes; then
+      BROKEN_WCHAR_H=0
+    else
+      BROKEN_WCHAR_H=1
+    fi
+    AC_SUBST([BROKEN_WCHAR_H])
+dnl we want const correctness
+    AC_DEFINE_UNQUOTED([ICONV_CONST], [const],
+      [Define as const if the declaration of iconv() needs const.])
+    ICONV_CONST=const
+    AC_SUBST([ICONV_CONST])
+dnl we build a static lib
+    DLL_VARIABLE=
+    AC_SUBST([DLL_VARIABLE])
+    ICONV_INCLUDES='-I$(top_srcdir)/3rdparty/libiconv/1.14 -I$(top_builddir)/3rdparty/libiconv'
+    ICONV_LIBS='\$(top_builddir)/3rdparty/libiconv/liblyxiconv.a'
+    ICONV_ICONV_H_IN=3rdparty/libiconv/iconv.h:3rdparty/libiconv/1.14/include/iconv.h.in
+  else
+    ICONV_INCLUDES=
+    AM_ICONV
+    if test "$am_cv_func_iconv" = no; then
+      AC_MSG_ERROR([cannot find required library iconv.])
+    else
+      ICONV_LIBS="$LIBICONV"
+    fi
+    ICONV_ICONV_H_IN=
+  fi
+  AC_SUBST(ICONV_INCLUDES)
+  AC_SUBST(ICONV_LIBS)
+  AC_SUBST(ICONV_ICONV_H_IN)
+])
+
+
 dnl Usage: LYX_USE_INCLUDED_ZLIB : select if the included zlib should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_ZLIB],[
