@@ -8,11 +8,12 @@ bin_PROGRAMS = lyxclient
 
 EXTRA_DIST = lyxclient.1in CMakeLists.txt
 
-AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES) $(ZLIB_INCLUDES)
+AM_CPPFLAGS += -I$(srcdir)/.. \
+	$(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
 
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
-	$(BOOST_LIBS) @LIBS@ $(ZLIB_LIBS) $(SOCKET_LIBS) \
+	$(BOOST_LIBS) @LIBS@ $(ICONV_LIBS) $(ZLIB_LIBS) $(SOCKET_LIBS) \
 	$(QT_LIB) $(QT_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
