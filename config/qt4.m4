@@ -253,8 +253,13 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 AC_DEFUN([QT_DO_MANUAL_CONFIG],
 [
 	dnl Check for X libraries
-	AC_PATH_X
-	AC_PATH_XTRA
+	case ${host} in
+	*mingw*) ;;
+	*) \
+	  AC_PATH_X \
+	  AC_PATH_XTRA \
+	;;
+	esac
 	case $have_x in
 	    yes) LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
 	         CPPFLAGS="$CPPFLAGS $X_CFLAGS";;
