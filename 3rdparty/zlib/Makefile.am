@@ -1,8 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-# This is prepared for compilation, but currently only used for packaging,
-# because configure support for compilation is still missing.
-
 noinst_LIBRARIES = liblyxzlib.a
 
 EXTRA_DIST = \
