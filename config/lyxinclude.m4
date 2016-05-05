@@ -465,7 +465,7 @@ AC_DEFUN([LYX_USE_INCLUDED_ZLIB],[
   AM_CONDITIONAL(USE_INCLUDED_ZLIB, test x$lyx_cv_with_included_zlib = xyes)
   AC_MSG_RESULT([$lyx_cv_with_included_zlib])
   if test x$lyx_cv_with_included_zlib = xyes ; then
-    ZLIB_INCLUDES='-I$(top_srcdir)/3rdparty/zlib/1.2.8'
+    ZLIB_INCLUDES='-I$(top_srcdir)/3rdparty/zlib/1.2.8 -I$(top_builddir)/3rdparty/zlib'
     ZLIB_LIBS='$(top_builddir)/3rdparty/zlib/liblyxzlib.a'
     mkdir -p 3rdparty/zlib
 dnl include standard config.h for HAVE_UNISTD_H
