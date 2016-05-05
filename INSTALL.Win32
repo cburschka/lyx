@@ -107,3 +107,17 @@ Creating the Installer
 	- Copy the 3 dll-files from there to the DLL folder of the NSIS installation
 	- Check whether the file locations/paths in settings.nsh match your setup.
 	- Right-click on lyx.nsi and click "Compile NSIS Script".
+
+
+Compiling with GCC with MinGW64 + MSYS2 Environment using autotools
+===================================================================
+1	Install MSYS2, MINGW64, Qt5+
+	https://wiki.qt.io/MSYS2
+2	Install bc (Bench calculater), which autotools uses for some reason to compile LyX
+	pacman -S bc
+3	Run the standard autotools install (Adapt paths and arguments accordingly)
+	./autogen.sh
+	 ./configure --without-x --enable-qt5 --disable-debug --enable-optimization --prefix=/mingw64
+	make
+	make install
+
