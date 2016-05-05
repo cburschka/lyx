@@ -771,6 +771,14 @@ contributors = [
                  "28 February 2005",
                  u"Improvements to lyxserver"),
 
+     contributor(u"Shankar Giri Venkita Giri",
+                 "girivs () gmx ! com",
+                 "GPL",
+                 "Blanket permission",
+                 "m=146162343015182",
+                 "25 April 2016",
+                 u"Mingw-w64 build fixes"),
+
      contributor(u"Hartmut Goebel",
                  "h.goebel () crazy-compilers ! com",
                  "GPL",
