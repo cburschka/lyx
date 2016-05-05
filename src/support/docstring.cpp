@@ -514,7 +514,7 @@ protected:
 		return do_put_helper(oit, b, fill, v);
 	}
 
-#ifdef _GLIBCXX_USE_LONG_LONG
+#ifdef LYX_USE_LONG_LONG
 	iter_type
 	do_put(iter_type oit, ios_base & b, char_type fill, long long v) const
 	{
@@ -675,7 +675,7 @@ protected:
 		return do_get_integer(iit, eit, b, err, v);
 	}
 
-#ifdef _GLIBCXX_USE_LONG_LONG
+#ifdef LYX_USE_LONG_LONG
 	iter_type
 	do_get(iter_type iit, iter_type eit, ios_base & b,
 		ios_base::iostate & err, long long & v) const

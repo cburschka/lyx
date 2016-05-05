@@ -116,6 +116,13 @@ SIZEOF_WCHAR_T_IS_4)
 
 check_cxx_source_compiles(
 	"
+	int i[ ( sizeof(long long)>sizeof(long) ? 1 : -1 ) ];
+	int main(){return 0;}
+	"
+SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG)
+
+check_cxx_source_compiles(
+	"
 	#include <execinfo.h>
 	#include <cxxabi.h>
 	int main() {
