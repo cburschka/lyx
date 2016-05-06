@@ -48,12 +48,12 @@ These typically need to be modified for each LyX release
 # Sizes in KB
 
 # it seems that some companies block ftp access by default, therefore http access is preferred here
-!define MiKTeXRepo "http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
+!define MiKTeXRepo "http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/systems/win32/miktex/tm/packages/"
 #!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
 !define JabRefVersion "2.11.1"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.9.3"
+!define ImageMagickVersion "7.0.1"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
