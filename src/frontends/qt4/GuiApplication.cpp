@@ -553,18 +553,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 
 bool getPixmap(QPixmap & pixmap, QString const & path)
 {
-	if (pixmap.load(path)) {
-#if QT_VERSION >= 0x050000
-		if (path.endsWith(".svgz") || path.endsWith(".svg") ) {
-			GuiApplication const * guiApp = theGuiApp();
-			if (guiApp != 0) {
-				pixmap.setDevicePixelRatio(guiApp->pixelRatio());
-			}
-		}
-#endif
-		return true;
-	}
-	return false;
+	return pixmap.load(path);
 }
 
 
