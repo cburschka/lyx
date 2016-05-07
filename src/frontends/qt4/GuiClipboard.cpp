@@ -46,6 +46,7 @@
 #include <QString>
 #include <QStringList>
 #include <QTextDocument>
+#include <QTimer>
 
 #include <boost/crc.hpp>
 
