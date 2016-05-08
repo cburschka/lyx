@@ -160,7 +160,7 @@ Welcome to \SpecialChar LyX
 This manual is designed for all of you who have never heard of \SpecialChar LaTeX
 , or do not
  know it very well.
- Now, do not panic - you will not need to learn \SpecialChar LaTeX
+ Now, do not panic – you will not need to learn \SpecialChar LaTeX
  to use \SpecialChar LyX
 .
  That is, after all, the whole point of \SpecialChar LyX
@@ -889,7 +889,7 @@ Space
 \family sans
 Tab
 \family default
- has no grammatical function at all - so \SpecialChar LyX
+ has no grammatical function at all – so \SpecialChar LyX
  does not support it.
  Using \SpecialChar LyX
 , you will spend more of your time worrying about the 
@@ -1780,7 +1780,11 @@ Quote, \SpecialChar LyX
 \family sans
 Verse
 \family default
- in 
+ in
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3226,7 +3230,6 @@ Somewhere in your \SpecialChar LyX
 
 \begin_layout LyX-Code
 I like what Einstein said, E=mc^2, because it is so simple.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3519,7 +3522,7 @@ _
 \begin_inset Quotes erd
 \end_inset
 
- .
+.
  You can subscript and superscript both subscripts and superscripts like
  this: 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
