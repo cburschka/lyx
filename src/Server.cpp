@@ -136,7 +136,7 @@ DWORD WINAPI pipeServerWrapper(void * arg)
 
 
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
-	: pipename_(pip), client_(cli), clientcb_(ccb), stopserver_(0)
+	: stopserver_(0), pipename_(pip), client_(cli), clientcb_(ccb)
 {
 	for (int i = 0; i < MAX_PIPES; ++i) {
 		event_[i] = 0;
@@ -209,7 +209,7 @@ bool LyXComm::pipeServer()
 
 		// Determine which pipe instance completed the operation.
 		i = wait - WAIT_OBJECT_0;
-		LASSERT(i >= 0 && i <= MAX_PIPES, /**/);
+		LASSERT(i <= MAX_PIPES, /**/);
 
 		// Check whether we were waked up for stopping the pipe server.
 		if (i == MAX_PIPES)
