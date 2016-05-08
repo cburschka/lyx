@@ -117,8 +117,6 @@ AC_CHECK_LIB(psapi, main, [LIBPSAPI=-lpsapi])
 AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
 AC_CHECK_LIB(ole32, main)
-test x"$WINDRES" = x && WINDRES=windres
-AC_ARG_VAR(WINDRES, [windows resource compiler command])
 
 LYX_USE_INCLUDED_BOOST
 LYX_USE_INCLUDED_MYTHES
@@ -237,6 +235,12 @@ lyx_win_res=false;
 case ${host} in
     *mingw*|*cygwin*) lyx_win_res=true;;
 esac
+if test "x$lyx_win_res" = "xtrue"; then
+    AC_CHECK_TOOL(RC, windres,)
+    if test -z "$RC"; then
+      AC_ERROR([Could not find a resource compiler])
+    fi
+fi
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)
 LYX_SET_VERSION_INFO
 
