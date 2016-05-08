@@ -68,16 +68,43 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
     fi
     ])
 
+dnl Usage: LYX_USE_INCLUDED_HUNSPELL : select if the included hunspell should
+dnl        be used.
+AC_DEFUN([LYX_USE_INCLUDED_HUNSPELL],[
+	AC_MSG_CHECKING([whether to use included hunspell library])
+	AC_ARG_WITH(included-hunspell,
+		[AC_HELP_STRING([--without-included-hunspell], [do not use the hunspell lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+		[lyx_cv_with_included_hunspell=$withval],
+		[lyx_cv_with_included_hunspell=no])
+	AM_CONDITIONAL(USE_INCLUDED_HUNSPELL, test x$lyx_cv_with_included_hunspell = xyes)
+	AC_MSG_RESULT([$lyx_cv_with_included_hunspell])
+	if test x$lyx_cv_with_included_hunspell = xyes ; then
+		HUNSPELL_CFLAGS='-I$(top_srcdir)/3rdparty/hunspell/1.3.3/src'
+		HUNSPELL_LIBS='$(top_builddir)/3rdparty/hunspell/liblyxhunspell.a'
+		AC_SUBST(HUNSPELL_CFLAGS)
+		AC_SUBST(HUNSPELL_LIBS)
+	fi
+	])
+
 
 ### Check if we want spell libraries, prefer new aspell or hunspell
 AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 [
-	CHECK_WITH_ASPELL
+	LYX_USE_INCLUDED_HUNSPELL
+	if test x$lyx_cv_with_included_hunspell = xyes ; then
+dnl the user wanted to use the included hunspell, so do not check for the other spell checkers
+		lyx_use_aspell=false
+		lyx_use_enchant=false
+		lyx_use_hunspell=true
+		lyx_flags="$lyx_flags use-hunspell"
+	else
+		CHECK_WITH_ASPELL
+		CHECK_WITH_ENCHANT
+		CHECK_WITH_HUNSPELL
+	fi
+
 	AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
-
-	CHECK_WITH_ENCHANT
 	AM_CONDITIONAL(USE_ENCHANT, $lyx_use_enchant)
-
-	CHECK_WITH_HUNSPELL
 	AM_CONDITIONAL(USE_HUNSPELL, $lyx_use_hunspell)
 	])
+
