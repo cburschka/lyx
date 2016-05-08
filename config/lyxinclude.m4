@@ -695,6 +695,7 @@ AC_ARG_WITH(packaging,
   case $host in
     *-apple-darwin*) lyx_use_packaging=macosx ;;
     *-pc-mingw*) lyx_use_packaging=windows ;;
+    *-mingw32*) lyx_use_packaging=windows ;;
     *haiku*) lyx_use_packaging=haiku ;;
     *) lyx_use_packaging=posix ;;
   esac])
