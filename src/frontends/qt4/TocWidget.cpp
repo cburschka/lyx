@@ -45,9 +45,7 @@ namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view),
-	  update_timer_short_(new QTimer(this)),
-	  update_timer_long_(new QTimer(this))
-
+	  timer_(new QTimer(this))
 {
 	setupUi(this);
 
@@ -89,14 +87,8 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(filterContents()));
 
 	// setting the update timer
-	update_timer_short_->setSingleShot(true);
-	update_timer_long_->setSingleShot(true);
-	update_timer_short_->setInterval(0);
-	update_timer_long_->setInterval(2000);
-	connect(update_timer_short_, SIGNAL(timeout()),
-	        this, SLOT(realUpdateView()));
-	connect(update_timer_long_, SIGNAL(timeout()),
-	        this, SLOT(realUpdateView()));
+	timer_->setSingleShot(true);
+	connect(timer_, SIGNAL(timeout()), this, SLOT(finishUpdateView()));
 
 	init(QString());
 }
@@ -389,24 +381,6 @@ void TocWidget::enableControls(bool enable)
 
 void TocWidget::updateView()
 {
-	// Subtler optimization for having the delay more UI invisible.
-	// We trigger update immediately for sparse editation actions,
-	// i.e. there was no editation/cursor movement in last 2 sec.
-	// At worst there will be +1 redraw after 2s in a such "calm" mode.
-	if (!update_timer_long_->isActive())
-		update_timer_short_->start();
-	// resets the timer to trigger after 2s
-	update_timer_long_->start();
-}
-
-void TocWidget::updateViewNow()
-{
-	update_timer_long_->stop();
-	update_timer_short_->start();
-}
-
-void TocWidget::realUpdateView()
-{
 	if (!gui_view_.documentBufferView()) {
 		tocTV->setModel(0);
 		depthSL->setMaximum(0);
@@ -417,7 +391,7 @@ void TocWidget::realUpdateView()
 	setEnabled(true);
 	bool const is_sortable = isSortable();
 	sortCB->setEnabled(is_sortable);
-	bool focus_ = tocTV->hasFocus();
+	bool focus = tocTV->hasFocus();
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
 
@@ -435,8 +409,7 @@ void TocWidget::realUpdateView()
 		&& gui_view_.tocModels().isSorted(current_type_));
 	sortCB->blockSignals(false);
 
-	bool const can_navigate_ = canNavigate();
-	persistentCB->setEnabled(can_navigate_);
+	persistentCB->setEnabled(canNavigate());
 
 	bool controls_enabled = toc_model && toc_model->rowCount() > 0
 		&& !gui_view_.documentBufferView()->buffer().isReadonly();
@@ -444,25 +417,42 @@ void TocWidget::realUpdateView()
 
 	depthSL->setMaximum(gui_view_.tocModels().depth(current_type_));
 	depthSL->setValue(depth_);
-	if (!persistent_ && can_navigate_)
-		setTreeDepth(depth_);
-	if (can_navigate_) {
+	tocTV->setEnabled(true);
+	tocTV->setUpdatesEnabled(true);
+	if (focus)
+		tocTV->setFocus();
+
+	// Expensive operations are on a timer.  We finish the update immediately
+	// for sparse edition actions, i.e. there was no edition/cursor movement
+	// recently, then every 300ms.
+	if (!timer_->isActive()) {
+		finishUpdateView();
+		timer_->start(300);
+	}
+}
+
+
+void TocWidget::updateViewNow()
+{
+	timer_->stop();
+	updateView();
+}
+
+
+void TocWidget::finishUpdateView()
+{
+	// Profiling shows that this is the expensive stuff in the context of typing
+	// text and moving with arrows (still five times less than updateToolbars in
+	// my tests with a medium-sized document, however this grows linearly in the
+	// size of the document). For bigger operations, this is negligible, and
+	// outweighted by TocModels::reset() anyway.
+	if (canNavigate()) {
+		if (!persistent_)
+			setTreeDepth(depth_);
 		persistentCB->setChecked(persistent_);
 		select(gui_view_.tocModels().currentIndex(current_type_));
 	}
 	filterContents();
-	tocTV->setEnabled(true);
-	tocTV->setUpdatesEnabled(true);
-	if (focus_)
-		tocTV->setFocus();
-}
-
-
-void TocWidget::checkModelChanged()
-{
-	if (!gui_view_.documentBufferView() ||
-	    gui_view_.tocModels().model(current_type_) != tocTV->model())
-		realUpdateView();
 }
 
 
@@ -534,6 +524,7 @@ void TocWidget::init(QString const & str)
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
+	updateViewNow();
 }
 
 } // namespace frontend
