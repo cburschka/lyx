@@ -121,3 +121,31 @@ Compiling with GCC with MinGW64 + MSYS2 Environment using autotools
 	make
 	make install
 
+
+Cross-Compiling on unix with MXE using autotools
+=================================================
+1	Install MXE: http://mxe.cc
+	You can either install from sources, the generic .tar binaries or debian .deb packages.
+	Installing the following .deb packages will drag in all needed dependencies:
+		mxe-x86-64-w64-mingw32.shared-file
+		mxe-x86-64-w64-mingw32.shared-gcc
+		mxe-x86-64-w64-mingw32.shared-libiconv
+		mxe-x86-64-w64-mingw32.shared-qtimageformats
+		mxe-x86-64-w64-mingw32.shared-qtsvg
+		mxe-x86-64-w64-mingw32.shared-qtwinextras
+	Of course you can also use the static and/or 32bit versions.
+2	Run the standard autotools install (Adapt paths and arguments accordingly)
+	./autogen.sh
+	mkdir builddir-mingw
+	cd builddir-mingw
+	PATH="/usr/lib/mxe/usr/bin:$PATH" ../configure --host=x86-64-w64-mingw32.shared --with-qt-dir=/usr/lib/mxe/usr/x86_64-w64-mingw32.shared/qt5 --enable-qt5 --with-included-boost --with-included-hunspell --with-included-mythes --disable-debug --enable-optimization --prefix=/mingw64
+	PATH="/usr/lib/mxe/usr/bin:$PATH" make
+	PATH="/usr/lib/mxe/usr/bin:$PATH" DESTDIR=/tmp/lyxinstall make install
+	This uses the paths from the 64bit shared MXE version installed from .deb packages.
+3	If you want to run the resulting lyx.exe from the build directory using wine,
+	create symlinks for all needed .dlls:
+	cd builddir-mingw/src
+	ln -s /usr/lib/mxe/usr/x86_64-w64-mingw32.shared/bin/*.dll .
+	ln -s /usr/lib/mxe/usr/x86_64-w64-mingw32.shared/qt5/bin/*.dll .
+	wine64 lyx.exe
+
