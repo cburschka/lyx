@@ -43,13 +43,11 @@ public:
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & status)
 		const;
-	// update the view when the model has changed
-	void checkModelChanged();
 
 public Q_SLOTS:
-	/// Schedule an update of the dialog after a delay
+	/// Schedule an update of the dialog, delaying expensive operations
 	void updateView();
-	/// Schedule an update of the dialog immediately
+	/// Update completely without delay
 	void updateViewNow();
 
 protected Q_SLOTS:
@@ -74,8 +72,8 @@ protected Q_SLOTS:
 	void showContextMenu(const QPoint & pos);
 
 private Q_SLOTS:
-	/// Update the display of the dialog
-	void realUpdateView();
+	/// Perform the expensive update operations
+	void finishUpdateView();
 
 private:
 	///
@@ -108,12 +106,8 @@ private:
 	bool persistent_;
 	///
 	GuiView & gui_view_;
-	// Timers for scheduling updates: one immediately and one after a delay.
-	// This is according to the logic of the previous code: when at rest, the
-	// update is carried out immediately, and when an update was done recently,
-	// we schedule an update to occur 2s after resting.
-	QTimer * update_timer_short_;
-	QTimer * update_timer_long_;
+	// Timer for scheduling expensive update operations
+	QTimer * timer_;
 };
 
 } // namespace frontend

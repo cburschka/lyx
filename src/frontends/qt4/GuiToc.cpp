@@ -67,7 +67,6 @@ void GuiToc::dispatchParams()
 
 void GuiToc::enableView(bool enable)
 {
-	widget_->checkModelChanged();
 	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
 		widget_->updateViewNow();
