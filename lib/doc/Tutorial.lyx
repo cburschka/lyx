@@ -161,7 +161,7 @@ Welcome to LyX!
 \begin_layout Standard
 This manual is designed for all of you who have never heard of LaTeX, or
  do not know it very well.
- Now, do not panic - you will not need to learn LaTeX to use LyX.
+ Now, do not panic – you will not need to learn LaTeX to use LyX.
  That is, after all, the whole point of LyX: to provide an almost-WYSIWYG
  interface to LaTeX.
  There are some things you will need to learn, however, in order to use
@@ -835,7 +835,7 @@ Space
 \family sans
 Tab
 \family default
- has no grammatical function at all - so LyX does not support it.
+ has no grammatical function at all – so LyX does not support it.
  Using LyX, you will spend more of your time worrying about the 
 \emph on
 content
@@ -1696,7 +1696,11 @@ Quote, LyX-Code,
 \family sans
 Verse
 \family default
- in 
+ in
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -3094,7 +3098,6 @@ Somewhere in your LyX document, type:
 
 \begin_layout LyX-Code
 I like what Einstein said, E=mc^2, because it is so simple.
- 
 \end_layout
 
 \begin_layout Standard
@@ -3380,7 +3383,7 @@ _
 \begin_inset Quotes erd
 \end_inset
 
- .
+.
  You can subscript and superscript both subscripts and superscripts like
  this: 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
