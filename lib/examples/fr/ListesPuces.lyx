@@ -134,28 +134,16 @@ Vous verrez vite que vous pouvez rendre le réglage des puces assez complexe.
 ListePuces
 \family default
  est l'environnement standard pour les listes à puces
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 il a son propre compteur limité à 4 niveaux
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 chaque niveau peut avoir sa propre forme de puce
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -182,10 +170,6 @@ chaque niveau peut avoir sa propre forme de puce
 ne vérifie pas
 \emph default
  tout seul la profondeur de l'environnement
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper

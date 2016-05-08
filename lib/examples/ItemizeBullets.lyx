@@ -94,28 +94,16 @@ You'll see pretty quickly that bullet settings can be quite complex if you
 itemize
 \emph default
  is the standard environment for bullet lists
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 it has its own counter that limits it to 4 levels
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 each level can have its own bullet shape
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -134,10 +122,6 @@ Also note that \SpecialChar LyX
 not
 \emph default
  check the environment depths for you
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
