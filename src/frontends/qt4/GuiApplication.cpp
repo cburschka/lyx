@@ -750,8 +750,8 @@ class QWindowsMimeMetafile : public QWINDOWSMIME {
 public:
 	QWindowsMimeMetafile() {}
 
-	bool canConvertFromMime(FORMATETC const & formatetc,
-		QMimeData const * mimedata) const
+	bool canConvertFromMime(FORMATETC const & /*formatetc*/,
+		QMimeData const * /*mimedata*/) const
 	{
 		return false;
 	}
@@ -765,14 +765,14 @@ public:
 		return pDataObj->QueryGetData(&formatetc) == S_OK;
 	}
 
-	bool convertFromMime(FORMATETC const & formatetc,
-		const QMimeData * mimedata, STGMEDIUM * pmedium) const
+	bool convertFromMime(FORMATETC const & /*formatetc*/,
+		const QMimeData * /*mimedata*/, STGMEDIUM * /*pmedium*/) const
 	{
 		return false;
 	}
 
 	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj,
-		QVariant::Type preferredType) const
+		QVariant::Type /*preferredType*/) const
 	{
 		QByteArray data;
 		if (!canConvertToMime(mimetype, pDataObj))
@@ -803,7 +803,7 @@ public:
 
 
 	QVector<FORMATETC> formatsForMime(QString const & mimetype,
-		QMimeData const * mimedata) const
+		QMimeData const * /*mimedata*/) const
 	{
 		QVector<FORMATETC> formats;
 		if (mimetype == emfMimeType() || mimetype == wmfMimeType())
