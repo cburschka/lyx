@@ -1396,7 +1396,11 @@ Subsubsection
 \series bold
 Exercise
 \series default
-: Fix the section and subsection headings in 
+: Fix the section and subsection headings in
+\end_layout
+
+\begin_layout Standard
+
 \family typewriter
 example_raw.lyx
 \family default
@@ -2265,6 +2269,13 @@ Templates can be a huge time-saver, and we urge you to use them whenever
  a letter template customized for their company, for example.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Document Titles
 \end_layout
@@ -2425,7 +2436,11 @@ Place the cursor somewhere in Section
 \end_layout
 
 \begin_layout LyX-Code
-If you want to know more about this document, then see Section .
+If you want to know more about this document,
+\begin_inset Newline newline
+\end_inset
+
+then see Section .
 \end_layout
 
 \begin_layout Standard
