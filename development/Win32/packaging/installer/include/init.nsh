@@ -49,17 +49,15 @@ Section "!${APP_NAME}" SecCore
 SectionEnd
 
 Section "$(SecFileAssocTitle)" SecFileAssoc
- SectionIn RO
  StrCpy $CreateFileAssociations "true" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
- SectionIn RO
- StrCpy $CreateDesktopIcon "false"
+ StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
- Section /o "$(SecInstJabRefTitle)" SecInstJabRef
+ Section "$(SecInstJabRefTitle)" SecInstJabRef
   AddSize ${SIZE_JABREF}
   StrCpy $InstallJabRef "true"
  SectionEnd
@@ -1443,7 +1441,7 @@ Function un.onInit
   ${endif}
   
   # test if JabRef was installed together with LyX
-  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX"
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    SectionSetText 3 "JabRef" # names the corersponding uninstaller section
    StrCpy $JabRefInstalled "Yes"

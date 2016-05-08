@@ -91,7 +91,6 @@ Section "un.LyX" un.SecUnProgramFiles
   DeleteRegKey SHCTX "SOFTWARE\${APP_REGKEY}"
   
   # delete info that programs were installed together with LyX
-  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   
   # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
@@ -134,15 +133,18 @@ Section "un.JabRef" un.SecUnJabRef
  ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX
   ${If} $MultiUser.Privileges == "Admin"
   ${OrIf} $MultiUser.Privileges == "Power"
-   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
    IfSilent 0 +2
    ExecWait "$1 /S" # run JabRef's uninstaller
    ExecWait "$1" # run JabRef's uninstaller
+   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
   ${else}
-   # in this case we can only read the start menu location and then start the linked uninstaller
-   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
-   StrCpy $1 "$1\Uninstall JabRef "${JabRefVersion}".lnk"
-   ExecShell "" "$1" # run JabRef's uninstaller
+   # in this case we cannot do anything due to a bug in the installer of jabRef 3.x
+   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
+   IfSilent 0 +2
+   ExecWait "$1 /S" # run JabRef's uninstaller
+   ExecWait "$1" # run JabRef's uninstaller
+   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
   ${endif}
  ${endif}
 

@@ -134,7 +134,6 @@ Section -ProgramFiles SecProgramFiles
    
    # install JabRef if not already installed, the user selected it
    # and if no BibTeX editor is installed
-   # due to an installer bug in the installer of JabRef version 3.x, we still install JabRef 2.11.1
    ${if} $PathBibTeXEditor == ""
    ${andif} $InstallJabRef == "true"
     # launch installer
@@ -146,11 +145,16 @@ Section -ProgramFiles SecProgramFiles
     StrCpy $PathBibTeXEditor ""
     ${if} $MultiUser.Privileges == "Admin"
      ${orif} $MultiUser.Privileges == "Power"
-     ReadRegStr $PathBibTeXEditor HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
-     StrCpy $PathBibTeXEditor $PathBibTeXEditor -14 # remove "\uninstall.exe"
+     ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\Classes\JabRef\shell\open\command" ""
+     StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
+     StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
     ${else}
-     # for non-admin users we can only check if it is in the start menu
-     ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
+     # $Documents is the path to the documents folder of the current user (contains the user name)
+     StrCpy $PathBibTeXEditor $Documents -10 # remove '\Documents'
+     StrCpy $PathBibTeXEditor "$PathBibTeXEditor\JabRef"
+     ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
+      StrCpy $PathBibTeXEditor ""
+     ${endif}
     ${endif}
     ${if} $PathBibTeXEditor == ""
      MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)" /SD IDOK
@@ -159,9 +163,11 @@ Section -ProgramFiles SecProgramFiles
      # so that we can later uninstall it together with LyX
      ${if} $MultiUser.Privileges == "Admin"
      ${orif} $MultiUser.Privileges == "Power"
-      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString" "$PathBibTeXEditor\uninstall.exe"
      ${else}
-      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
+      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString" "$PathBibTeXEditor\uninstall.exe"
      ${endif}
     ${endif}
    ${endif} # end if PathBibTeXEditor

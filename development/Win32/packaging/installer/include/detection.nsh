@@ -156,7 +156,7 @@ Function MissingPrograms
    StrCpy $ImageEditor "Krita"
   ${endif}
 
-  # test if and where the BibTeX-editor JabRef is installed
+  # test if and where the BibTeX-editor JabRef 2.x is installed
   ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
   ${if} $PathBibTeXEditor == ""
    ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
@@ -168,6 +168,11 @@ Function MissingPrograms
    ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\Classes\JabRef\shell\open\command" ""
    StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
    StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
+  ${endif}
+  ${if} $PathBibTeXEditor == ""
+   # $Documents is the path to the documents folder of the current user (contains the user name)
+   StrCpy $PathBibTeXEditor $Documents -10 # remove '\Documents'
+   StrCpy $PathBibTeXEditor "$PathBibTeXEditor\JabRef"
   ${endif}
 
   ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
