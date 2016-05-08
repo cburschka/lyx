@@ -139,7 +139,6 @@ Section "un.JabRef" un.SecUnJabRef
    ExecWait "$1" # run JabRef's uninstaller
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
   ${else}
-   # in this case we cannot do anything due to a bug in the installer of jabRef 3.x
    ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
    IfSilent 0 +2
    ExecWait "$1 /S" # run JabRef's uninstaller
