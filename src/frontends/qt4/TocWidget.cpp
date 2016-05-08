@@ -47,7 +47,6 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view),
 	  update_timer_short_(new QTimer(this)),
 	  update_timer_long_(new QTimer(this))
-
 {
 	setupUi(this);
 
@@ -97,6 +96,13 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	        this, SLOT(realUpdateView()));
 	connect(update_timer_long_, SIGNAL(timeout()),
 	        this, SLOT(realUpdateView()));
+
+	// fix #9826: Outline disclosure of subsection content disappears one second
+	// after doubleclicking content item.
+	// This is only meant as a workaround. See #6675 for more general issues
+	// regarding unwanted collapse of the tree view.
+	connect(tocTV, SIGNAL(expanded(const QModelIndex &)),
+	        update_timer_long_, SLOT(stop()));
 
 	init(QString());
 }
@@ -399,11 +405,13 @@ void TocWidget::updateView()
 	update_timer_long_->start();
 }
 
+
 void TocWidget::updateViewNow()
 {
 	update_timer_long_->stop();
 	update_timer_short_->start();
 }
+
 
 void TocWidget::realUpdateView()
 {
