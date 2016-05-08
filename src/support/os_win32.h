@@ -35,10 +35,13 @@
  * Note: __CYGWIN__ can be defined here if building in _WIN32 mode.
  */
 #if defined(__MINGW32__)  || defined(__CYGWIN__) || defined(__CYGWIN32__)
-# if defined(WINVER) && WINVER < 0x0500
-#  error WINVER must be >= 0x0500
+# if defined(WINVER)
+#  if WINVER < 0x0500
+#   error WINVER must be >= 0x0500
+#  endif
+# else
+#  define WINVER 0x0500
 # endif
-# define WINVER 0x0500
 # define _WIN32_IE 0x0500
 #endif
 
