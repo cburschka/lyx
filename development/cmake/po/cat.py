@@ -25,11 +25,17 @@ for (opt, param) in options:
 
 out = sys.stdout
 if outfile:
-	out = open(outfile, "w")
+	# always write unix line endings, even on windows
+	out = open(outfile, "wb")
 
 for f in args:
-	fil = open(f, "r")
+	# accept both windows and unix line endings, since it can happen that we
+	# are on unix, but the file has been written on windows or vice versa.
+	fil = open(f, "rU")
 	for l in fil:
+		# this does always write unix line endings since the file has
+		# been opened in binary mode. This is needed since both gettext
+		# and our .pot file manipulation scripts assume unix line ends.
 		out.write(l)
 	fil.close()
 
