@@ -98,7 +98,10 @@ What's new
 
 - Raise GuiView on buffer switch to bring it topmost in multi-window mode.
 
-- Fix cursor position after Redo of a document settings change (bug 10097).
+- Fix cursor position after Redo of a document settings change (bug
+  10097).
+
+- Disable Edit>Dissolve Inset in tabulars (bug 9954).
 
 - Shortcut preferences: ask the user for removing bindings when using the
   "restore" button (#9174).
