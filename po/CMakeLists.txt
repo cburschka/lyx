@@ -90,8 +90,6 @@ ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
     ARGS   "${TOP_CMAKE_PATH}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot"
-    COMMAND ${LYX_PYTHON_EXECUTABLE}
-      ARGS   "${TOP_CMAKE_PATH}/po/dos2unix.py" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
       "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
