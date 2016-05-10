@@ -188,6 +188,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	QFontMetrics fm(frontend::getFont(lyxfont));
 	QSize item_size(fm.maxWidth(), fm.height() + 8);
 
+	leftLW->setMinimumWidth(5 * item_size.width());
+	rightLW->setMinimumWidth(5 * item_size.width());
+
 	typedef map<char_type, QListWidgetItem *> ListItems;
 	ListItems list_items;
 	// The last element is the empty one.
