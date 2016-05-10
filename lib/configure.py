@@ -972,7 +972,7 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
-    checkProg('an EPS -> PNG converter', ['convert $$i $$o'],
+    checkProg('an EPS -> PNG converter', ['magick $$i $$o', 'convert $$i $$o'],
         rc_entry = [ r'\converter eps        png        "%%"	""'])
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
