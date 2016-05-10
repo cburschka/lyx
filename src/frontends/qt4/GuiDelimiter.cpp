@@ -28,6 +28,7 @@
 #include <QPixmap>
 #include <QCheckBox>
 #include <QListWidgetItem>
+#include <QScrollBar>
 
 #include <map>
 #include <string>
@@ -234,6 +235,8 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		sizeCO->addItem(qt_(biggui[i]));
 
 	on_leftLW_currentRowChanged(0);
+	// synchronise the scroll bars
+	on_matchCB_stateChanged(matchCB->checkState());
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 }
 
@@ -361,8 +364,22 @@ void GuiDelimiter::on_rightLW_currentRowChanged(int item)
 
 void GuiDelimiter::on_matchCB_stateChanged(int state)
 {
-	if (state == Qt::Checked)
+	// Synchronise the vertical scroll bars when checked
+	QScrollBar * ls = leftLW->verticalScrollBar();
+	QScrollBar * rs = rightLW->verticalScrollBar();
+
+	if (state == Qt::Checked) {
 		on_leftLW_currentRowChanged(leftLW->currentRow());
+
+		connect(ls, SIGNAL(valueChanged(int)), rs, SLOT(setValue(int)),
+		        Qt::UniqueConnection);
+		connect(rs, SIGNAL(valueChanged(int)), ls, SLOT(setValue(int)),
+		        Qt::UniqueConnection);
+		rs->setValue(ls->value());
+	} else {
+		ls->disconnect(rs);
+		rs->disconnect(ls);
+	}
 
 	updateTeXCode(sizeCO->currentIndex());
 }
