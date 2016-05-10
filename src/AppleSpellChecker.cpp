@@ -13,7 +13,6 @@
 #include "AppleSpellChecker.h"
 #include "WordLangTuple.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/AppleSpeller.h"
