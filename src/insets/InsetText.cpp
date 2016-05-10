@@ -293,7 +293,8 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool const main_inset = &buffer().inset() == this;
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
-		bool const one_cell = nargs() == 1;
+		// cur.inset() is the tabular when this is a single cell (bug #9954)
+		bool const one_cell = cur.inset().nargs() == 1;
 
 		if (!main_inset && target_inset && one_cell) {
 			// Text::dissolveInset assumes that the cursor
@@ -325,7 +326,8 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		bool const main_inset = &buffer().inset() == this;
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
-		bool const one_cell = nargs() == 1;
+		// cur.inset() is the tabular when this is a single cell (bug #9954)
+		bool const one_cell = cur.inset().nargs() == 1;
 
 		if (target_inset)
 			status.setEnabled(!main_inset && one_cell);
