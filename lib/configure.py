@@ -1522,7 +1522,10 @@ def rescanTeXFiles():
     if not os.path.isfile( os.path.join(srcdir, 'scripts', 'TeXFiles.py') ):
         logger.error("configure: error: cannot find TeXFiles.py script")
         sys.exit(1)
-    tfp = cmdOutput("python -tt " + '"' + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
+    interpreter = sys.executable
+    if interpreter == '':
+        interpreter = "python"
+    tfp = cmdOutput(interpreter + " -tt " + '"' + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
     logger.info(tfp)
     logger.info("\tdone")
 
