@@ -141,3 +141,5 @@ What's new
 - Building against Qt < 4.7 no longer fails.
 
 - Fix monolithic builds with autotools on Mac OS X.
+
+- Avoid 'ar' warning with recent binutils versions.
