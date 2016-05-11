@@ -58,14 +58,13 @@ The global idea would be to extend FitCursor to cover also horizontal
 cursor.
 
 
-* Proposals
-
-
 * Clean-up of drawing code
 
 The goal is to make painting with drawing disable fast enough that it
 can be used after every metrics computation. Then we can separate real
 drawing from metrics.
+
+Other changes are only clean-ups.
 
 ** DONE RowPainter
 
@@ -114,29 +113,14 @@ topBottomSpace parameter should be removed after that.
 
    The helper version should return a Row::Element instead of an InsetTable.
 
-** TODO make Inset::display() more useful
+** Do not make RowPainter operations update x_
 
-[This has been started in the features/betterbreak branch. Time will
-tell whether it really helps. The question in particular is the
-handling of separator insets]
+It is better to make them const and update x_ separately.
 
-Extending the DisplayType enum would allow to remove special cases
-from the code.
-
-The enumeration could be like
-: Inline = 0
-: BreakBefore = 1 // break row before this inset
-: BreakAfter = 2 // break row after this inset
-: CanBreakAfter = 4 // optionally break row after this inset
-: AlignLeft = 8
-: AlignRight = 16
-: NoBoundary = 32 // do not allow cursor to go at the end of the row
-:                 //before display inset
-: Display = BreakBefore|BreakAfter
-
-A display equation would be Display, other could be Display|AlignLeft
-BreakAfter can be used by Newline or separator insets
-CanBreakAfter can be used by the optional hyphen InsetSpecialChar.
+Then it will be possible to reorder the painting of the different
+elements. In particular, if text is painted last, it will be more
+visible in the presence of underlines (foreign language, change
+tracking, spell check).
 
 ** Set inset position during metrics phase
 
@@ -222,12 +206,8 @@ update flag is Update::None.
 ** Metrics computation
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
-  + all visible paragraphs
-  + paragraph above the screen (up to one page)
-  + paragraphs below the screen (up to one page again)
-
-The paragraphs outside of the screen are required to make PageUp/Down
-work.
+all visible paragraphs. Paragraphs above or below the screen (needed
+for page up/down) and computed as needed.
 
 tm::redoParagraph will call Inset::metrics for each inset. In the case
 of text insets, this will invoke recursively tm::metrics, which redoes
