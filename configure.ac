@@ -74,6 +74,9 @@ AM_PATH_PYTHON
 # Tools for creating libraries (note that we do not use libtool)
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR]) dnl AM_PROG_AR requires automake 1.12
 AC_PROG_RANLIB
+dnl Recent debian/ubuntu (at least) have built 'ar' so that deterministic mode is the default.
+dnl This means that it does not make sense to use the 'u' flag (default ARFLAGS is 'cru').
+AC_SUBST([ARFLAGS], [cr])
 
 ### Check for a C++ compiler
 dnl We have to do weird tricks so that autoconf does not touch CXXFLAGS even
