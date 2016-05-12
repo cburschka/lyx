@@ -1870,6 +1870,20 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
+namespace {
+
+bool allowDisplayMath(Cursor cur)
+{
+	LATTEST(cur.depth() > 1);
+	cur.pop();
+	FuncStatus status;
+	FuncRequest cmd(LFUN_MATH_DISPLAY);
+	return cur.getStatus(cmd, status) && status.enabled();
+}
+
+}
+
+
 bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const
 {
@@ -1896,30 +1910,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setOnOff(type_ == ht);
 		status.setEnabled(isMutable(ht) && isMutable(type_));
 
-		if (ht != hullSimple && status.enabled()) {
-			Cursor tmpcur = cur;
-			while (!tmpcur.empty()) {
-				InsetCode code = tmpcur.inset().lyxCode();
-				if (code == BOX_CODE) {
-					return true;
-				} else if (code == TABULAR_CODE) {
-					FuncRequest tmpcmd(LFUN_MATH_DISPLAY);
-					if (tmpcur.getStatus(tmpcmd, status) && !status.enabled())
-						return true;
-				}
-				tmpcur.pop_back();
-			}
-		}
+		if (ht != hullSimple && status.enabled())
+			status.setEnabled(allowDisplayMath(cur));
 		return true;
 	}
 	case LFUN_MATH_DISPLAY: {
-		bool enable = true;
-		if (cur.depth() > 1) {
-			Inset const & in = cur[cur.depth()-2].inset();
-			if (in.lyxCode() == SCRIPT_CODE)
-				enable = display() != Inline;
-		}
-		status.setEnabled(enable);
+		status.setEnabled(display() != Inline || allowDisplayMath(cur));
 		status.setOnOff(display() != Inline);
 		return true;
 	}
