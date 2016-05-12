@@ -3413,9 +3413,6 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	bool enabled = true;
 	switch (cmd.action()) {
-	case LFUN_LAYOUT:
-		enabled = !forcePlainLayout();
-		break;
 	case LFUN_LAYOUT_PARAGRAPH:
 		enabled = allowParagraphCustomization();
 		break;

@@ -3109,7 +3109,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		docstring layout = cmd.argument();
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
-		enable = !cur.inset().forcePlainLayout() && tclass.hasLayout(layout);
+		enable = !owner_->forcePlainLayout() && tclass.hasLayout(layout);
 
 		flag.setOnOff(layout == cur.paragraph().layout().name());
 		break;
