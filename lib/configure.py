@@ -539,37 +539,13 @@ def checkLatex(dtl_tools):
 
 
 def checkLuatex():
-    ''' Check if luatex is there and usable '''
+    ''' Check if luatex is there '''
     path, LUATEX = checkProg('LuaTeX', ['lualatex $$i'])
     path, DVILUATEX = checkProg('LuaTeX (DVI)', ['dvilualatex $$i'])
     if LUATEX != '':
-    # luatex binary is there
-        msg = "checking if LuaTeX is usable ..."
-        # Check if luatex is usable
-        writeToFile('luatest.tex', r'''
-\nonstopmode
-\documentclass{minimal}
-\usepackage{fontspec}
-\begin{document}
-.
-\end{document}
-''')
-        # run lualatex on luatest.tex and check result
-        luatest = cmdOutput(LUATEX + ' luatest.tex')
-        if luatest.find('XeTeX is required to compile this document') != -1:
-            # fontspec/luatex too old! We do not support this version.
-            logger.info(msg + ' no (probably not recent enough)')
-        elif luatest.find('! LaTeX Error: File `fontspec.sty\' not found') != -1:
-            # fontspec missing
-            logger.info(msg + ' no (missing fontspec)')
-        else:
-            # working luatex
-            logger.info(msg + ' yes')
-            addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
-            if DVILUATEX != '':
-                addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
-        # remove temporary files
-        removeFiles(['luatest.tex', 'luatest.log', 'luatest.aux', 'luatest.pdf'])
+        addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
+    if DVILUATEX != '':
+        addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
 
 
 def checkModule(module):
