@@ -263,7 +263,6 @@ bool InsetScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
-	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_MATH_DISPLAY:
 	case LFUN_BOX_INSERT:
