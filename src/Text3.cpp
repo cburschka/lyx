@@ -3145,7 +3145,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PARAGRAPH_PARAMS:
 	case LFUN_PARAGRAPH_PARAMS_APPLY:
 	case LFUN_PARAGRAPH_UPDATE:
-		enable = cur.inset().allowParagraphCustomization();
+		enable = owner_->allowParagraphCustomization();
 		break;
 
 	// FIXME: why are accent lfuns forbidden with pass_thru layouts?
