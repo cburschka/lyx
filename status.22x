@@ -87,6 +87,9 @@ What's new
 - Display the correct column alignment and a better column spacing in AMS
   environments (bugs 1861, 9908).
 
+- Disable properly toggling math diplay in places where it is not
+  possible (bug 10033).
+
 - Fix horizontal scrolling feature when inside a collapsable inset
   with several paragraphs.
 
