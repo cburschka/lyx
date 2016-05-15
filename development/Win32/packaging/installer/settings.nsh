@@ -11,10 +11,10 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 1
-!define APP_VERSION_REVISION 3
+!define APP_VERSION_REVISION 4
 !define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 6 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -39,7 +39,7 @@ These typically need to be modified for each LyX release
 
 !define FILES_LYX "D:\LyXPackage2.1\LyX"
 !define FILES_DEPS "D:\LyXGit\Master\lyx-windows-deps-msvc2010"
-!define FILES_QT "C:\Qt\4.8.6"
+!define FILES_QT "C:\Qt\4.8.7"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
@@ -48,17 +48,17 @@ These typically need to be modified for each LyX release
 # Sizes in KB
 
 # it seems that some companies block ftp access by default, therefore http access is preferred here
-!define MiKTeXRepo "http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
+!define MiKTeXRepo "http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/systems/win32/miktex/tm/packages/"
 #!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
-!define JabRefVersion "2.10"
+!define JabRefVersion "2.11"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.8.0"
+!define ImageMagickVersion "6.9.4"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define JabRefInstall "external\JabRef-2.10-setup.exe"
+ !define JabRefInstall "external\JabRef-2.11-setup.exe"
  !define SIZE_JABREF 14100
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5105.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5872.exe"
 !endif
 

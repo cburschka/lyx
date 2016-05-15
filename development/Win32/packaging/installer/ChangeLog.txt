@@ -1,4 +1,60 @@
-﻿Changelog for LyX-213-1:
+﻿Changelog for LyX-214-6:
+- use a new default download server for missing LaTeX packages
+- updated to MiKTeX 2.9 build 5872
+- updated to Imagemagick 6.9.4-1
+
+
+Changelog for LyX-214-5:
+- enable the usage of 'texindy' as index generation program in LyX
+- updated to JabRef 2.11
+- updated to Perl 5.22
+- updated to Imagemagick 6.9.2-6
+
+
+Changelog for LyX-214-4:
+- fixed broken US English spell-checker.
+  (To benefit from it you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+
+
+Changelog for LyX-214-3:
+- updated to MiKTeX 2.9 build 5721
+- updated to Imagemagick 6.9.2-3
+- updated spell-checker dictionaries for English (GB and US)
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+
+
+Changelog for LyX-214-2:
+- fix bug that viewing/exporting of some file formats failed because of
+  unknown executable for .py files
+- updated to Python 2.7.10 (fixes problems that LyX got erroneous if
+  Python 2.7.10 was installed before LyX)
+- updated spell-checker dictionary for English (GB)
+  (To benefit from it you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+- updated thesaurus for Slovenian
+  (you need to reinstall LyX to benefit from this)
+
+
+Changelog for LyX-214-1:
+- installs LyX 2.1.4
+- fixes problems with viewing PDF files
+  NOTE: If you use Adobe Reader as PDF viewer the view is updated by pressing
+        again the view button in LyX while the update button does nothing
+- new method to view/export LyX files to OpenDocument and MS Word
+- updated Slovak translation of the installer
+- updated to Ghostscript 9.16
+- updated to Qt 4.8.7
+- updated spell-checker dictionaries for Catalan, English (GB), English (US),
+  Portuguese, Scottish Gaelic, Spanish, Spanish (MX) and Turkish
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+- updated thesaurus for English (US), Portuguese and Spanish
+  (you need to reinstall LyX to benefit from this)
+
+
+Changelog for LyX-213-1:
 - installs LyX 2.1.3
 
 
