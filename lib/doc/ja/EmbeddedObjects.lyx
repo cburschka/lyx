@@ -644,7 +644,7 @@ reference "sec:画像形式"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	scale 70
 	scaleBeforeRotation
 	rotateOrigin center
@@ -665,7 +665,7 @@ reference "sec:画像形式"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	scale 70
 	draft
 	scaleBeforeRotation
@@ -775,7 +775,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -835,7 +835,7 @@ name "fig:エッシャー"
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -982,7 +982,7 @@ name "fig:何かわからない構造"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -1024,7 +1024,7 @@ name "fig:カモノハシ"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -25473,7 +25473,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	lyxscale 50
 	width 100col%
 	scaleBeforeRotation
@@ -25529,7 +25529,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 50
 	width 100col%
 	scaleBeforeRotation
@@ -25955,7 +25955,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	lyxscale 50
 	scale 50
 	scaleBeforeRotation
@@ -27257,10 +27257,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -27276,7 +27272,7 @@ FigBesBeg
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -27284,7 +27280,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	scale 75
 	scaleBeforeRotation
 
@@ -27316,7 +27312,7 @@ name "fig:図横キャプション"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27332,7 +27328,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27348,7 +27344,7 @@ TabBesBeg
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -27581,7 +27577,7 @@ name "tab:表横キャプション"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27597,7 +27593,7 @@ TabBesEnd
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27631,7 +27627,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/escher-lsd.eps
+	filename ../clipart/escher-lsd.eps
 	scale 75
 	scaleBeforeRotation
 
@@ -27663,7 +27659,7 @@ name "fig:図横キャプション-2"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27679,7 +27675,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27695,7 +27691,7 @@ TabBesBeg[5]
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -27935,7 +27931,7 @@ j
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -27944,11 +27940,6 @@ status collapsed
 
 \backslash
 TabBesEnd
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -29248,7 +29239,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/without_fntright.pdf
+	filename ../clipart/without_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -29313,7 +29304,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/with_fntright.pdf
+	filename ../clipart/with_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -29430,7 +29421,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/endnotes.pdf
+	filename ../clipart/endnotes.pdf
 	scaleBeforeRotation
 
 \end_inset
@@ -33173,7 +33164,7 @@ status open
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -33878,7 +33869,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/platypus.eps
+	filename ../clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -34080,7 +34071,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -34977,7 +34968,7 @@ begin{window}[2,c,{
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/mobius.eps
+	filename ../clipart/mobius.eps
 	lyxscale 60
 	width 40col%
 	scaleBeforeRotation
@@ -36008,7 +35999,7 @@ setbeamertemplate{background canvas}{}
 
 
 \begin_inset Graphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/Abstract.pdf
+	filename ../clipart/Abstract.pdf
 	rotateAngle -5
 	rotateOrigin leftBottom
 
@@ -36118,7 +36109,7 @@ reference "sec:画像ダイアログ"
 ダイアログを使って挿入される画像と同じように取り扱うことができます．右記は，ベクトル画像を挿入した例です．
 \begin_inset External
 	template VectorGraphics
-	filename /Applications/LyX-2.2.0dev.app/Contents/Resources/doc/clipart/SVG-Drawing.svg
+	filename ../clipart/SVG-Drawing.svg
 	scale 33
 
 \end_inset
@@ -36647,7 +36638,7 @@ textvisiblespace
 以下は，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "../DUMMYT~1.TXT"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 
@@ -36662,7 +36653,7 @@ filename "../DUMMYT~1.TXT"
 オプションを指定して，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "../DUMMYT~1.TXT"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 
