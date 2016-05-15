@@ -36,7 +36,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -56,7 +56,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -1004,7 +1004,7 @@ de
 \end_inset
 
 texte\SpecialChar menuseparator
-Personnalisé...
+Personnalisé 
 \family default
 (bouton 
 \begin_inset Info
@@ -1357,7 +1357,11 @@ Entrée
 \end_layout
 
 \begin_layout LyX-Code
-Ceci est une introduction pour mon premier document \SpecialChar LyX
+Ceci est une introduction pour mon premier
+\begin_inset Newline newline
+\end_inset
+
+document \SpecialChar LyX
 .
  
 \end_layout
@@ -1371,24 +1375,7 @@ Entrée
 \family sans
 Section
 \family default
- dans la boîte d'
-\family sans
-Environ
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
--
-\end_layout
-
-\end_inset
-
-nement
-\family default
-.
+ dans la boîte d'Environnement.
  \SpecialChar LyX
  affiche un 
 \begin_inset Quotes fld
@@ -1498,24 +1485,7 @@ Cliquez sur la deuxième ligne et choisissez
 \family sans
 SousSection
 \family default
- dans la boîte d'
-\family sans
-Environ
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
--
-\end_layout
-
-\end_inset
-
-nement
-\family default
-.
+ dans la boîte d'Environnement.
  \SpecialChar LyX
  numérote la sous-section 
 \begin_inset Quotes fld
@@ -1677,12 +1647,17 @@ SousSousSection
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Dans le fichier 
+: Dans le fichier 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -1775,11 +1750,7 @@ Entrée
 \family sans
 ListePuces
 \family default
- dans la boîte d'
-\family sans
-Environnement
-\family default
- (
+ dans la boîte d'Environnement (
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
@@ -2003,12 +1974,17 @@ Insécables
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Typographier la liste dans 
+: Typographier la liste dans 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -2061,7 +2037,7 @@ Citation
 \SpecialChar LyX
 -Code
 \family default
-
+;
 \begin_inset Foot
 status collapsed
 
@@ -2079,8 +2055,8 @@ d'apprentissage
 
 \end_inset
 
-; cet environnement est le seul qui permette d'entrer plusieurs espaces
- consécutives, pour pouvoir indenter le code.
+ cet environnement est le seul qui permette d'entrer plusieurs espaces consécuti
+ves, pour pouvoir indenter le code.
  Vous pouvez écrire de la poésie avec l'environnement 
 \family sans
 Vers
@@ -2111,12 +2087,17 @@ l'Utilisateur
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Corrigez la typographie de la citation (
+: Corrigez la typographie de la citation (
 \family sans
 Cite
 \family default
@@ -2242,7 +2223,7 @@ Votre document est sans doute écrit en classe de document
 \family sans
 Article
 \family default
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -2252,7 +2233,6 @@ C'est habituellement la classe de document implicite.
 
 \end_inset
 
-.
  Essayez de basculer vers d'autres classes (dans la fenêtre 
 \family sans
 Document\SpecialChar menuseparator
@@ -2575,7 +2555,7 @@ Description
 \family default
  vous sont déjà familiers.
  Vous pouvez vous entraîner un moment pour vous rendre compte du comportement
- des nouveaux environnements
+ des nouveaux environnements.
 \begin_inset Foot
 status collapsed
 
@@ -2585,7 +2565,8 @@ NdT : il est intéressant de noter ici que les environnements ont parfois
  \SpecialChar LyX
  et le document sont configurés pour travailler en Français.
  (ex : adresse de l'expéditeur affichée à droite mais comme il se doit imprimée
- à gauche ...)
+ à gauche \SpecialChar ldots
+)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2599,7 +2580,6 @@ PDF
 
 \end_inset
 
-.
  L'environnement 
 \family sans
 Signature
@@ -2796,12 +2776,21 @@ Résumé
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Corrigez le titre, la date, et l'auteur dans le fichier 
+: Corrigez le titre, la date, et l'auteur dans le fichier
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -3148,7 +3137,7 @@ Nous disions que \SpecialChar LyX
 
 2.
  Relancez \SpecialChar LaTeX
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -3176,7 +3165,7 @@ PDF
 
 \end_inset
 
-, et – voilà !
+ et – voilà !
 \begin_inset Foot
 status collapsed
 
@@ -3250,7 +3239,7 @@ l'Utilisateur
 \family sans
 Coller
 \family default
- dans votre document
+ dans votre document.
 \begin_inset Foot
 status collapsed
 
@@ -3276,15 +3265,20 @@ reference "sec:classes-de-documents"
 
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Corrigez les références à l'intérieur de 
+: Corrigez les références à l'intérieur de 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -3509,12 +3503,17 @@ ez-le à son tour en note en marge.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Corrigez la note de bas de page dans 
+: Corrigez la note de bas de page dans 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -3558,7 +3557,11 @@ Le Manuel d'apprentissage de \SpecialChar LyX
 \begin_inset Quotes fld
 \end_inset
 
-L'Équipe de Documentation de \SpecialChar LyX
+L'Équipe de
+\begin_inset Newline newline
+\end_inset
+
+Documentation de \SpecialChar LyX
 
 \begin_inset Quotes frd
 \end_inset
@@ -3736,12 +3739,21 @@ l'Utilisateur
  pour de plus amples informations sur le sujet.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
-Exercice :
+Exercice
+\begin_inset space ~
+\end_inset
+
+:
 \series default
- Corrigez la bibliographie et la citation dans 
+ Corrigez la bibliographie et la citation dans
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -3872,12 +3884,17 @@ Pour supprimer la table des matières de votre document, il vous suffit d'efface
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Corrigez la table des matières du fichier 
+: Corrigez la table des matières du fichier 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -3913,7 +3930,7 @@ Palette
 Mathématique
 \family default
  vous permettra d'obtenir, facilement et rapidement, des écrits mathématiques
- d'aspect professionnel
+ d'aspect professionnel.
 \begin_inset Foot
 status collapsed
 
@@ -3930,7 +3947,7 @@ s.
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
@@ -4348,12 +4365,17 @@ _
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Mettez l'équation n°1 du fichier 
+: Mettez l'équation n°1 du fichier 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -4686,12 +4708,17 @@ Bas
  autres fractions, ou tout autre chose.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Mettez l'équation n° 2 de 
+: Mettez l'équation n° 2 de 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -4879,12 +4906,17 @@ Fonctions
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Mettez l'équation n° 3 de 
+: Mettez l'équation n° 3 de 
 \family typewriter
 exemple_brut.lyx
 \family default
@@ -5196,25 +5228,35 @@ e, ce que vous ne souhaitez probablement pas.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : Mettez les différentes formules du fichier 
+: Mettez les différentes formules du fichier 
 \family typewriter
 exemple_brut.lyx
 \family default
  en mode hors ligne, et constatez les différences de typographie.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercice
+\begin_inset space ~
+\end_inset
+
+
 \series default
- : En utilisant les différents outils dont vous avez appris le maniement
- dans cette section, vous devriez pouvoir écrire une équation comme celle-ci
+: En utilisant les différents outils dont vous avez appris le maniement
+ dans cette section, vous devriez pouvoir écrire une équation comme celle-ci:
 \begin_inset Foot
 status collapsed
 
@@ -5232,7 +5274,7 @@ cas.
 
 \end_inset
 
-:
+
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -5360,7 +5402,7 @@ type  "icon"
 arg   "tabular-insert"
 \end_inset
 
- de la barre d'outils) pour obtenir un tableau
+ de la barre d'outils) pour obtenir un tableau.
 \begin_inset Foot
 status collapsed
 
@@ -5388,7 +5430,6 @@ table
 
 \end_inset
 
-.
  Cliquez sur le tableau avec le 
 \emph on
 bouton droit
@@ -5663,8 +5704,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
  (bouton 
 \begin_inset Info
@@ -5850,8 +5890,7 @@ Vous pouvez importer des fichiers \SpecialChar LaTeX
 \family sans
 Fichier\SpecialChar menuseparator
 Importer\SpecialChar menuseparator
-\SpecialChar LaTeX
-.
+LaTeX.
 
 \family default
  Celle-ci appelle le programme 
@@ -5963,8 +6002,7 @@ Vous voudrez peut-être convertir un document \SpecialChar LyX
 \family sans
 Fichier\SpecialChar menuseparator
 Exporter\SpecialChar menuseparator
-\SpecialChar LaTeX
-.
+LaTeX.
 
 \family default
  Vous obtiendrez un fichier 
@@ -6024,16 +6062,12 @@ Si vous avez des commandes spéciales à mettre dans le préambule d'un fichier
  
 \family sans
 Document\SpecialChar menuseparator
-Paramètres
-\family default
-, rubrique 
-\family sans
+Paramètres\SpecialChar menuseparator
 Préambule
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  fait apparaître une fenêtre dans laquelle vous pouvez taper ces commandes
  (ou une simple zone de texte, cela dépend de l'interface utilisée).
@@ -6069,11 +6103,10 @@ Bibliographie
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialChar TeX
-
+BibTeX
 \family default
  pour inclure un fichier Bib\SpecialChar TeX
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -6096,7 +6129,6 @@ Ne vous étonnez pas si l'ouverture de la fenêtre prend un peu de temps:
 
 \end_inset
 
-.
  Dans le champ 
 \family sans
 Base
@@ -6252,7 +6284,7 @@ frenchbsetup
 \begin_inset Newline newline
 \end_inset
 
-de votre distribution
+de votre distribution.
 \begin_inset Foot
 status collapsed
 
@@ -6270,7 +6302,6 @@ AtBeginDocument{}
 
 \end_inset
 
-.
  Vous pouvez également visiter le site de l'auteur de ce fichier, 
 \begin_inset CommandInset href
 LatexCommand href
@@ -6314,7 +6345,7 @@ oe{}
 oe{} en mode \SpecialChar TeX
 , ou bien en utilisant directement l'encodage implicite avec
  une touche ou une combinaison de touches qui appellent le bon code avec
- un clavier correctement configuré
+ un clavier correctement configuré.
 \begin_inset Foot
 status collapsed
 
@@ -6371,7 +6402,6 @@ que vous pouvez associer à une combinaison de touches non affectée.
 
 \end_inset
 
-.
  
 \end_layout
 
