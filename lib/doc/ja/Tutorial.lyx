@@ -519,28 +519,6 @@ arg   "buffer-view"
 を押して，\SpecialChar LaTeX
 を実行させ，PDFファイルを作ります．\SpecialChar LyX
 は，PDFビューアを開いて，印刷したときにあなたの文書がどのように見えるかを表示します．
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-PDFビューアをバックグラウンドで起動したままにしておけば，時間を節約することができます．
-\family sans
-表示\SpecialChar menuseparator
-更新
-\family default
-を選ぶか，ツールバーボタン
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
-を押して，\SpecialChar LaTeX
-を走らせた後，単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです．
-\end_layout
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Itemize
@@ -563,6 +541,59 @@ arg   "buffer-update"
 \begin_layout Standard
 おめでとうございます！最初の\SpecialChar LyX
 文書を書くことができました．後は，すべて詳細にすぎません．
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+A hint
+\lang japanese
+:
+\series default
+ PDFビューアをバックグラウンドで起動したままにしておけば，時間を節約することができます．
+\family sans
+表示\SpecialChar menuseparator
+更新
+\family default
+を選ぶか，ツールバーボタン
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+を押して，\SpecialChar LaTeX
+を走らせた後，単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです．
+\lang english
+Under Windows still use 
+\family sans
+\lang japanese
+文書
+\family default
+\SpecialChar menuseparator
+
+\family sans
+表示
+\family default
+を選ぶか
+\lang english
+or
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+
+\lang english
+respectively
+\lang japanese
+．
 \end_layout
 
 \begin_layout Subsection

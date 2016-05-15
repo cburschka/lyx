@@ -553,28 +553,6 @@ arg   "buffer-view"
  \SpecialChar LyX
  will open a PDF-viewer program displaying your document as it will look
  when printed.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-You can save time by leaving the PDF-viewer running in the background.
- Then, you can use 
-\family sans
-Document\SpecialChar menuseparator
-Update
-\family default
- or the toolbar button 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- and just click on the PDF-viewer window (or unminimize it) afterwards.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -592,6 +570,42 @@ Export
 Congratulations! You have written your first \SpecialChar LyX
  document.
  All of the rest is just details.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A hint:
+\series default
+ You can save time by leaving the PDF viewer running in the background.
+ Under MacOS and Linux you can use 
+\family sans
+Document\SpecialChar menuseparator
+Update
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ and just click on the PDF viewer window afterwards.
+ Under Windows still use 
+\family sans
+Document\SpecialChar menuseparator
+View
+\family default
+ or 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ respectively.
 \end_layout
 
 \begin_layout Subsection

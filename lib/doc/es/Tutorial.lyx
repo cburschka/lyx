@@ -557,7 +557,7 @@ como\SpecialChar endofsentence
 Comprueba el resultado final en PDF con 
 \family sans
 Documento\SpecialChar menuseparator
-Ver [PDF (pdflatex)]
+Ver
 \family default
  o con el botón 
 \begin_inset Info
@@ -569,29 +569,6 @@ arg   "buffer-view"
  \SpecialChar LyX
  lanzará un programa visor de PDF que abrirá una nueva ventana mostrándote
  el aspecto de tu documento cuando esté impreso.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Puedes ahorrar tiempo dejando que el visor de PDF se siga ejecutando en
- segundo plano.
- De esta forma, puedes usar 
-\family sans
-Ver\SpecialChar menuseparator
-Actualizar
-\family default
- o el botón 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- y simplemente pulsar sobre la ventana del visor (o restaurarla) después.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -607,6 +584,52 @@ al formato que quieras.
 ¡Enhorabuena! Has escrito e impreso tu primer documento \SpecialChar LyX
 .
  Todo lo demás son detalles.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+A hint
+\lang spanish
+:
+\series default
+ Puedes ahorrar tiempo dejando que el visor de PDF se siga ejecutando en
+ segundo plano.
+ De esta forma, puedes usar 
+\family sans
+Ver\SpecialChar menuseparator
+Actualizar
+\family default
+ o el botón 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ y simplemente pulsar sobre la ventana del visor después.
+ 
+\lang english
+Under Windows still use
+\lang spanish
+ 
+\family sans
+Documento\SpecialChar menuseparator
+Ver
+\family default
+ o 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+
+\lang english
+ respectively.
 \end_layout
 
 \begin_layout Subsection

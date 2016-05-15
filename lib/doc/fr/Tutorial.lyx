@@ -749,46 +749,7 @@ arg   "buffer-view"
  de la barre d'outils\SpecialChar endofsentence
  \SpecialChar LyX
  lancera une visionneuse PDF qui affichera l'aspect
- de votre document une fois imprimé
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche
- de fond.
- Vous pourrez alors utiliser 
-\family sans
-Visualiser\SpecialChar menuseparator
-Mise
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-Jour
-\family default
- ou le bouton 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- et simplement cliquer sur la fenêtre de la visionneuse PDF (ou la 
-\begin_inset Quotes fld
-\end_inset
-
-désiconifier
-\begin_inset Quotes frd
-\end_inset
-
-) ensuite.
-\end_layout
-
-\end_inset
-
-;
+ de votre document une fois imprimé;
 \end_layout
 
 \begin_layout Itemize
@@ -814,6 +775,60 @@ Magnifique ! Vous venez d'écrire votre premier document \SpecialChar LyX
 \shape slanted
 \SpecialChar endofsentence
 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+A hint
+\lang french
+:
+\series default
+ Vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche
+ de fond.
+ Vous pourrez alors utiliser 
+\family sans
+Visualiser\SpecialChar menuseparator
+Mise
+\begin_inset space ~
+\end_inset
+
+à
+\begin_inset space ~
+\end_inset
+
+Jour
+\family default
+ ou le bouton 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ et simplement cliquer sur la fenêtre de la visionneuse PDF ensuite.
+ 
+\lang english
+Under Windows still use
+\lang french
+ 
+\family sans
+Document\SpecialChar menuseparator
+Visionner
+\family default
+ ou 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ 
+\lang english
+respectively.
 \end_layout
 
 \begin_layout Subsection
