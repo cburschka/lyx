@@ -3148,7 +3148,7 @@ IOP
 
 \begin_layout Standard
 If there is a document class you would like to use that is marked as 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 Unavailable
@@ -4157,19 +4157,19 @@ Default
 \begin_layout Itemize
 
 \family sans
-A0 - A6
+A0 – A6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-B0 - B6
+B0 – B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-C0 - C6
+C0 – C6
 \end_layout
 
 \begin_layout Itemize
@@ -4181,7 +4181,7 @@ US letter, US legal, US executive
 \begin_layout Itemize
 
 \family sans
-JIS B0 - JIS B6
+JIS B0 – JIS B6
 \end_layout
 
 \begin_layout Itemize
@@ -4625,7 +4625,7 @@ begin{
 \emph on
 environment
 \emph default
-} ...
+} \SpecialChar ldots
  
 \backslash
 end{
@@ -12276,8 +12276,8 @@ You shouldn't use forced line breaks to correct \SpecialChar LaTeX
 's line breaking, as \SpecialChar LaTeX
  is
  very good at line breaking.
- There are, however, a number of situations where it is necessaryactively
- to set a line break, for example, in a poem or for an address (see sections
+ There are, however, a number of situations where it is necessary to set
+ a line break actively, for example, in a poem or for an address (see sections
 \begin_inset space ~
 \end_inset
 
@@ -17053,15 +17053,7 @@ Text
 
 
 \family default
- Use quotes like 
-\begin_inset Quotes sld
-\end_inset
-
-this
-\begin_inset Quotes srd
-\end_inset
-
-
+ Use quotes like ”this”
 \end_layout
 
 \begin_layout Labeling
@@ -32486,10 +32478,10 @@ Find
  When searching for a formula, it is found both when it is alone and when
  it occurs in sub-formulas and nested parts of sub-formulas.
  For example the mentioned segments would be found in something like 
-\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -44682,7 +44674,7 @@ prefix The TEXINPUTS environment variable allows you to use external files
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your \SpecialChar LyX
  file.
- It is recommended that you always include ‘.' as one of the paths; otherwise
+ It is recommended that you always include '.' as one of the paths; otherwise
  compilation may fail for some documents.
 \end_layout
 
