@@ -30934,19 +30934,27 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\noindent
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename clipart/without_fntright.pdf
 	width 100col%
@@ -30955,12 +30963,6 @@ framebox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -30999,19 +31001,27 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\noindent
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename clipart/with_fntright.pdf
 	width 100col%
@@ -31020,12 +31030,6 @@ framebox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -31139,33 +31143,35 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename clipart/endnotes.pdf
+	width 100col%
 	scaleBeforeRotation
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -39216,7 +39222,7 @@ Text
 Here is a child document inserted as Verbatim: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "DUMMYT~1.TXT"
+filename "DummyTextDocument.txt"
 
 \end_inset
 
@@ -39231,7 +39237,7 @@ Mark spaces in output
  option: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "DUMMYT~1.TXT"
+filename "DummyTextDocument.txt"
 
 \end_inset
 
