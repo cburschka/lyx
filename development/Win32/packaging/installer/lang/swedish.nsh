@@ -77,7 +77,11 @@ ${LangFileString} ModifyingConfigureFailed "Kunde inte sätta  'path_prefix' i ko
 ${LangFileString} RunConfigureFailed "Kunde inte köra konfigurationsskriptet"
 ${LangFileString} NotAdmin "Du måste ha administratörsrättigheter för att installera LyX!"
 ${LangFileString} InstallRunning "Installationsprogrammet körs redan!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} är redan installerad! Avinstallera LyX först."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} är redan installerad!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Du försöker att installera en äldre version av LyX än vad du har installerad.$\r$\n\
 				  Om du verkligen vill detta måste du avinstallera den befintliga LyX $OldVersionNumber innan."
 

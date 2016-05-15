@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Не вдалося встановити 'path_prefix' 
 ${LangFileString} RunConfigureFailed "Не вдалося виконати скрипт налаштування"
 ${LangFileString} NotAdmin "Для встановлення LyX вам потрібні привілеї адміністратора!"
 ${LangFileString} InstallRunning "Засіб для встановлення вже працює!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} вже встановлено! Спочатку вилучіть його LyX."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} вже встановлено!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Ви намагаєтеся встановити версію LyX, яка є застарілою порівняно з вже встановленою.$\r$\n\
 				  Якщо ви хочете встановити застарілу версію, вам слід спочатку вилучити вже встановлений LyX $OldVersionNumber."
 

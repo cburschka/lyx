@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Tidak bisa menyatakan 'path_prefix' 
 ${LangFileString} RunConfigureFailed "Tidak bisa menjalankan skrip konfigurasi"
 ${LangFileString} NotAdmin "Anda harus berlaku dan mempunyai hak sebagai administrator untuk instalasi LyX!"
 ${LangFileString} InstallRunning "Program instalasi sedang berjalan!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} sudah pernah diinstal! Perlu menghapus LyX yang ada terlebih dahulu."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} sudah pernah diinstal!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Anda akan memasang versi LyX yang lama dari yang sudah terpasang.$\r$\n\
 				  Jika memang dikehendaki, anda harus menghapus dulu LyX yang ada, LyX $OldVersionNumber."
 

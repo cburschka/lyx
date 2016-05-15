@@ -23,10 +23,10 @@
 !insertmacro LANG "norwegian"
 !insertmacro LANG "polish"
 !insertmacro LANG "portuguese"
+!insertmacro LANG "portugueseBR"
 !insertmacro LANG "romanian"
 !insertmacro LANG "slovak"
 !insertmacro LANG "spanish"
 !insertmacro LANG "swedish"
 !insertmacro LANG "turkish"
 !insertmacro LANG "ukrainian"
-

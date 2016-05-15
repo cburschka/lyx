@@ -82,7 +82,11 @@ ${LangFileString} MiKTeXInfo 'The LaTeX-distribution $\"MiKTeX$\" will be used t
 ${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
 #${LangFileString} RunConfigureFailed "Could not execute the configure script"
 ${LangFileString} InstallRunning "The installer is already running!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} is already installed! Deinstall LyX first."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is already installed!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
 				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 

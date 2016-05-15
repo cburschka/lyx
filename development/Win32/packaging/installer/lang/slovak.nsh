@@ -84,7 +84,11 @@ ${LangFileString} ModifyingConfigureFailed "Nedal sa nastavi 'path_prefix' v ko
 #${LangFileString} RunConfigureFailed "Nedal sa spusti konfiguraènı skript"
 ${LangFileString} NotAdmin "Pre inštaláciu LyXu potrebujete administrátorské práva!"
 ${LangFileString} InstallRunning "Inštalaènı program u beí!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} je u inštalovanı! LyX treba najprv odinštalova."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} je u inštalovanı!$\r$\n\
+				Inštalova ponad existujúce inštalácie sa nedoporuèuje keï inštalovaná verzia$\r$\n\
+				je testovné vydanie alebo keï máte problémy s existujúcou inštaláciou.$\r$\n\
+				V takıchto prípadoch je lepšie reinštalova LyX.$\r$\n\
+				Napriek tomu chcete inštalova LyX ponad existujúcu verziu?"
 ${LangFileString} NewerInstalled "Pokúšate sa inštalova verziu LyXu ktorá je staršia ako tá ktorá je inštalovaná.$\r$\n\
 				  Keï to naozaj chcete, odinštalujte najprv existujúci LyX $OldVersionNumber."
 
