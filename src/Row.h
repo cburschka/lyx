@@ -62,6 +62,7 @@ public:
 			  extra(0), font(f), change(ch), final(false) {}
 
 		// Return total width of element, including separator overhead
+		// FIXME: Cache this value or the number of separators?
 		double full_width() const { return dim.wid + extra * countSeparators(); }
 		// Return the number of separator in the element (only STRING type)
 		int countSeparators() const;

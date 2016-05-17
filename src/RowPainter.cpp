@@ -104,7 +104,7 @@ FontInfo RowPainter::labelFont() const
 // This draws green lines around each inset.
 
 
-void RowPainter::paintInset(Row::Element const & e)
+void RowPainter::paintInset(Row::Element const & e) const
 {
 	// Handle selection
 	bool const pi_selected = pi_.selected;
@@ -135,12 +135,6 @@ void RowPainter::paintInset(Row::Element const & e)
 	e.inset->drawSelection(pi_, x1, yo_);
 	e.inset->draw(pi_, x1, yo_);
 
-	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(e.inset);
-
-	paintForeignMark(x_, e.font.language(), dim.descent());
-
-	x_ += dim.width();
-
 	// Restore full_repaint status.
 	pi_.full_repaint = pi_full_repaint;
 	pi_.change_ = pi_change;
@@ -148,6 +142,7 @@ void RowPainter::paintInset(Row::Element const & e)
 	pi_.selected = pi_selected;
 
 #ifdef DEBUG_METRICS
+	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(e.inset);
 	int const x2 = x1 + dim.wid;
 	int const y1 = yo_ + dim.des;
 	int const y2 = yo_ - dim.asc;
@@ -159,8 +154,9 @@ void RowPainter::paintInset(Row::Element const & e)
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc) const
+void RowPainter::paintForeignMark(Row::Element const & e) const
 {
+	Language const * lang = e.font.language();
 	if (!lyxrc.mark_foreign_language)
 		return;
 	if (lang == latex_language)
@@ -168,14 +164,14 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc
 	if (lang == pi_.base.bv->buffer().params().language)
 		return;
 
+	int const desc = e.inset ? e.dim.descent() : 0;
 	int const y = yo_ + solid_line_offset_ + desc + solid_line_thickness_ / 2;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language,
+	pi_.pain.line(int(x_), y, int(x_ + e.full_width()), y, Color_language,
 		Painter::line_solid, solid_line_thickness_);
 }
 
 
-void RowPainter::paintMisspelledMark(double const orig_x,
-                                     Row::Element const & e) const
+void RowPainter::paintMisspelledMark(Row::Element const & e) const
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
@@ -224,15 +220,14 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 		if (x1 > x2)
 			swap(x1, x2);
 
-		pi_.pain.line(int(orig_x) + x1, y, int(orig_x) + x2, y,
-		              Color_error,
+		pi_.pain.line(x_ + x1, y, x_ + x2, y, Color_error,
 		              Painter::line_onoffdash, thickness);
 		pos = range.last + 1;
 	}
 }
 
 
-void RowPainter::paintStringAndSel(Row::Element const & e)
+void RowPainter::paintStringAndSel(Row::Element const & e) const
 {
 	// at least part of text selected?
 	bool const some_sel = (e.endpos >= row_.sel_beg && e.pos < row_.sel_end)
@@ -255,21 +250,19 @@ void RowPainter::paintStringAndSel(Row::Element const & e)
 		              min(row_.sel_end, e.endpos) - e.pos,
 		              e.extra, e.full_width());
 	}
-	x_ += e.full_width();
 }
 
 
-void RowPainter::paintChange(double orig_x, Font const & font,
-                             Change const & change) const
+void RowPainter::paintChange(Row::Element const & e) const
 {
-	if (!change.changed())
+	if (!e.change.changed())
 		return;
 	// Calculate 1/3 height of font
-	FontMetrics const & fm = theFontMetrics(font);
-	int const y_bar = change.deleted() ? yo_ - fm.maxAscent() / 3
+	FontMetrics const & fm = theFontMetrics(e.font);
+	int const y_bar = e.change.deleted() ? yo_ - fm.maxAscent() / 3
 		: yo_ + 2 * solid_line_offset_ + solid_line_thickness_;
-	pi_.pain.line(int(orig_x), y_bar, int(x_), y_bar,
-	              change.color(), Painter::line_solid, solid_line_thickness_);
+	pi_.pain.line(int(x_), y_bar, int(x_ + e.full_width()), y_bar,
+	              e.change.color(), Painter::line_solid, solid_line_thickness_);
 }
 
 
@@ -504,7 +497,7 @@ static int getEndLabel(pit_type p, Text const & text)
 }
 
 
-void RowPainter::paintLast()
+void RowPainter::paintLast() const
 {
 	bool const is_rtl = text_.isRTL(par_);
 	int const endlabel = getEndLabel(pit_, text_);
@@ -578,16 +571,14 @@ void RowPainter::paintOnlyInsets()
 		Row::Element const & e = *cit;
 		if (e.type == Row::INSET) {
 			// If outer row has changed, nested insets are repainted completely.
+			// FIXME: check what this really does. The test is weird.
 			bool const nested_inset =
 				(e.inset->asInsetMath() && !e.inset->asInsetMath()->asMacroTemplate())
 				|| e.inset->asInsetText() || e.inset->asInsetTabular();
-			if (!nested_inset) {
-				x_ += e.full_width();
-				continue;
-			}
-			paintInset(e);
-		} else
-			x_ += e.full_width();
+			if (nested_inset)
+				paintInset(e);
+		}
+		x_ += e.full_width();
 	}
 }
 
@@ -597,9 +588,7 @@ void RowPainter::paintText()
 	Row::const_iterator cit = row_.begin();
 	Row::const_iterator const & end = row_.end();
 	for ( ; cit != end ; ++cit) {
-		double const orig_x = x_;
 		Row::Element const & e = *cit;
-		int foreign_descent = 0;
 
 		switch (e.type) {
 		case Row::STRING:
@@ -608,25 +597,25 @@ void RowPainter::paintText()
 
 			// Paint the spelling marks if enabled.
 			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck && pi_.pain.isDrawingEnabled())
-				paintMisspelledMark(orig_x, e);
+				paintMisspelledMark(e);
 			break;
-		case Row::INSET: {
-			// If outer row has changed, nested insets are repainted completely.
+
+		case Row::INSET:
 			paintInset(e);
-			foreign_descent = e.dim.descent();
-		}
 			break;
+
 		case Row::SPACE:
 			pi_.pain.textDecoration(e.font.fontInfo(), int(x_), yo_, int(e.full_width()));
-			x_ += e.full_width();
 		}
 
 		// The line that indicates word in a different language
-		paintForeignMark(orig_x, e.font.language(), foreign_descent);
+		paintForeignMark(e);
 
 		// change tracking (not for insets that track their own changes)
 		if (e.type != Row::INSET || ! e.inset->canTrackChanges())
-			paintChange(orig_x, e.font, e.change);
+			paintChange(e);
+
+		x_ += e.full_width();
 	}
 }
 

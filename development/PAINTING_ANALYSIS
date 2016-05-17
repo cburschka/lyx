@@ -113,14 +113,24 @@ topBottomSpace parameter should be removed after that.
 
    The helper version should return a Row::Element instead of an InsetTable.
 
-** Do not make RowPainter operations update x_
+** DONE Do not make RowPainter operations update x_
 
 It is better to make them const and update x_ separately.
 
-Then it will be possible to reorder the painting of the different
-elements. In particular, if text is painted last, it will be more
-visible in the presence of underlines (foreign language, change
-tracking, spell check).
+** reorder the painting of the different elements.
+
+In particular, if text is painted last, it will be more visible in the
+presence of underlines (foreign language, change tracking, spell
+check).
+
+** Remember rtl status in the row object
+
+This will avoid to pass a Paragraph object to methods that do not need it.
+
+** Rewrite RowPainter::paintSelection using row information
+
+Currently it uses some very complicated code. It should be possible to
+reuse the logic of paintStringAndSel.
 
 ** Set inset position during metrics phase
 

@@ -52,19 +52,18 @@ public:
 	void paintChangeBar() const;
 	void paintTooLargeMarks(bool const left, bool const right) const;
 	void paintFirst() const;
-	void paintLast();
+	void paintLast() const;
 	void paintText();
 	void paintOnlyInsets();
 	void paintSelection() const;
 
 private:
-	void paintSeparator(double width, Font const & font);
-	void paintForeignMark(double orig_x, Language const * lang, int desc = 0) const;
-	void paintStringAndSel(Row::Element const & e);
-	void paintMisspelledMark(double orig_x, Row::Element const & e) const;
-	void paintChange(double orig_x , Font const & font, Change const & change) const;
+	void paintForeignMark(Row::Element const & e) const;
+	void paintStringAndSel(Row::Element const & e) const;
+	void paintMisspelledMark(Row::Element const & e) const;
+	void paintChange(Row::Element const & e) const;
 	void paintAppendixStart(int y) const;
-	void paintInset(Row::Element const & e);
+	void paintInset(Row::Element const & e) const;
 
 	/// return the label font for this row
 	FontInfo labelFont() const;
