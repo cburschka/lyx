@@ -68,7 +68,7 @@ shapepar
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
@@ -15601,7 +15601,8 @@ s
  anlegen.
  Diese Option sagt 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , den dvips-Treiber zu verwenden, um Seiten, die im Querformat gesetzt werden
  sollen, zu drehen.
@@ -15647,7 +15648,8 @@ foils
 -Klasse unterstützt.
  Außerdem bietet 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
  eine Reihe zusätzlicher Typen, und ein paar weitere werden von \SpecialChar LyX
  hinzugefügt.
@@ -15655,8 +15657,6 @@ FoilTeX
 \end_layout
 
 \begin_layout Standard
-
-\family sans
 \begin_inset Flex Multiple Columns
 status open
 
@@ -15813,7 +15813,8 @@ gebungen.
  und Inhalt darstellen, gibt es für derartige Aufteilungen spezielle Befehle
  in 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , die neue Folien beginnen:
 \end_layout
@@ -15864,8 +15865,6 @@ FoilTeX
 \end_layout
 
 \begin_layout Standard
-
-\family sans
 \begin_inset Flex Multiple Columns
 status open
 
@@ -15963,7 +15962,8 @@ CrossList
 \noindent
 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
  bietet einige sehr mächtige Befehle, um Kopf- und Fußzeilen für die Folien
  zu erzeugen, die Sie am besten im \SpecialChar LaTeX
@@ -15977,16 +15977,10 @@ Foilhead
 \end_layout
 
 \begin_layout Standard
-Hierfür gibt es die folgende Befehle [
-\shape smallcaps
-Martin Vermeer
-\shape default
-]:
+Hierfür gibt es die folgende Befehle:
 \end_layout
 
 \begin_layout Standard
-
-\family sans
 \begin_inset Flex Multiple Columns
 status open
 
@@ -16060,7 +16054,8 @@ Header
 \noindent
 Außerdem gibt es noch eine Reihe von Befehlen in 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , die von \SpecialChar LyX
  nicht direkt unterstützt werden.
