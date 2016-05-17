@@ -333,8 +333,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Export\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -408,34 +407,6 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Update
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-File\SpecialChar menuseparator
-Print
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-File\SpecialChar menuseparator
-Fax
 \end_layout
 
 \end_inset
@@ -601,8 +572,7 @@ status collapsed
 \begin_layout Plain Layout
 File\SpecialChar menuseparator
 Import\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -1717,7 +1687,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
-Latex
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -1738,8 +1708,7 @@ Log
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
- Warning
+LaTeX Warning
 \end_layout
 
 \end_inset
@@ -1771,8 +1740,7 @@ debugging
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
- Font Warning
+LaTeX Font Warning
 \end_layout
 
 \end_inset
@@ -1910,8 +1878,7 @@ Warnings about troubles breaking the page.
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
- Error: File 
+LaTeX Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -2003,8 +1970,7 @@ usepackage{}
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LaTeX
- Error: Unknown option
+LaTeX Error: Unknown option
 \end_layout
 
 \end_inset
@@ -10586,7 +10552,7 @@ This section documents the class
 
 
 \family sans
-slides (FoilTeX)
+FoilTeX
 \family default
 
 \begin_inset Quotes erd
@@ -10633,19 +10599,11 @@ reference "sec:slitex"
 \family sans
 foils
 \family default
- class [
-\begin_inset Quotes eld
-\end_inset
-
-
+ class 
 \family sans
-slides (FoilTeX)
+FoilTeX
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-] installed, you'll probably have to use the default 
+ installed, you'll probably have to use the default 
 \family sans
 slides
 \family default
@@ -10659,7 +10617,11 @@ The
 \family sans
 foils
 \family default
- class is designed for use with version 2.1 of the 
+ class is designed for use with version
+\begin_inset space ~
+\end_inset
+
+2.1 of the 
 \family sans
 foils.cls
 \family default
@@ -10674,17 +10636,9 @@ Getting Started
 
 \begin_layout Standard
 Obviously, to use this document class, you need to select 
-\begin_inset Quotes eld
-\end_inset
-
-
 \family sans
-slides (FoilTeX)
+FoilTeX
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
  from the 
 \family sans
 Class

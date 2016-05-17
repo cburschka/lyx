@@ -438,8 +438,7 @@ status collapsed
 
 \family sans
 エクスポート\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -551,38 +550,6 @@ status collapsed
 
 \bar default
 書式
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-ファイル\SpecialChar menuseparator
-印刷
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-ファイル\SpecialChar menuseparator
-ファックス
 \end_layout
 
 \end_inset
@@ -864,7 +831,7 @@ DVI
 \bar no
 \noun off
 \color none
-ファイルをPostScript®
+ファイルをPostScript
 \family default
 \series default
 \shape default
@@ -897,7 +864,7 @@ ghostview
 
 \end_inset
 
-などのPostScript®ビューアを実行して，PostScript®
+などのPostScriptビューアを実行して，PostScript
 \family default
 \series default
 \shape default
@@ -933,8 +900,7 @@ status collapsed
 \family sans
 ファイル\SpecialChar menuseparator
 インポート\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -1226,8 +1192,7 @@ status collapsed
 
 \family sans
 挿入\SpecialChar menuseparator
-\SpecialChar TeX
-コード
+TeXコード
 \end_layout
 
 \end_inset
@@ -2596,7 +2561,7 @@ BottomBorder=2mm
 \bar default
 \noun default
 \color inherit
-Avery®ラベルシートのストック5360
+Averyラベルシートのストック5360
 \family roman
 \series medium
 \shape up
@@ -2925,8 +2890,7 @@ status collapsed
 \noun off
 \color none
 文書\SpecialChar menuseparator
-\SpecialChar LaTeX
-ログ
+LaTeXログ
 \end_layout
 
 \end_inset
@@ -2945,18 +2909,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Warning
+LaTeX Warning
 \end_layout
 
 \end_inset
@@ -2989,18 +2942,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Font Warning
+LaTeX Font Warning
 \end_layout
 
 \end_inset
@@ -3191,18 +3133,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Error: File 
+LaTeX Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -3345,18 +3276,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Error: Unknown option
+LaTeX Error: Unknown option
 \end_layout
 
 \end_inset
@@ -11041,11 +10961,11 @@ reference "sec:slitex"
 \family sans
 foils
 \family default
-クラス(
+クラス
 \family sans
 FoilTeX
 \family default
-)が導入されていなければ，
+が導入されていなければ，
 \family sans
 foils
 \family default
@@ -24343,7 +24263,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "../SPECIA~1.TEX"
 
 \end_inset
 

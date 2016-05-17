@@ -436,42 +436,6 @@ ctualizar
 
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-Archivo\SpecialChar menuseparator
-I
-\family default
-m
-\family sans
-primir
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-Archivo\SpecialChar menuseparator
-Fax
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 Solo llaman a \SpecialChar LaTeX
  si el archivo ha cambiado desde la última vez que se ejecutó.
@@ -656,8 +620,7 @@ status collapsed
 \family sans
 Archivo\SpecialChar menuseparator
 Importar\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -796,8 +759,7 @@ status collapsed
 
 \family sans
 Insertar\SpecialChar menuseparator
-Código \SpecialChar TeX
-
+Código TeX
 \end_layout
 
 \end_inset
@@ -1733,7 +1695,7 @@ BottomBorder=2mm
 \end_layout
 
 \begin_layout Standard
-Esta es la configuración para hojas de etiquetas Avery®, stock #5360.
+Esta es la configuración para hojas de etiquetas Avery, stock #5360.
  Ahora estás preparado para imprimirlas, pero necesitarás insertar código
  \SpecialChar LaTeX
 , poniendo los comandos 
@@ -1980,8 +1942,7 @@ de
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \end_layout
 
 \end_inset
@@ -2005,8 +1966,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar LaTeX
- Warning
+LaTeX Warning
 \end_layout
 
 \end_inset
@@ -2044,8 +2004,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar LaTeX
- Font Warning
+LaTeX Font Warning
 \end_layout
 
 \end_inset
@@ -2208,8 +2167,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
-\SpecialChar LaTeX
- Error: File 
+LaTeX Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -11178,8 +11136,7 @@ solo
 
  la clase 
 \family sans
-slides (Foil\SpecialChar TeX
-)
+FoilTeX
 \family default
 \emph on
 .
@@ -11211,14 +11168,9 @@ reference "sec:slitex"
 .
  Si tu sistema no dispone de la clase 
 \family sans
-foils
+FoilTeX
 \family default
- [
-\family sans
-slides (Foil\SpecialChar TeX
-)
-\family default
-], tendrás que usar la clase 
+, tendrás que usar la clase 
 \family sans
 slides
 \family default
@@ -11232,7 +11184,11 @@ La clase
 \family sans
 foils
 \family default
- está diseñada para usar con la versión 2.1 de la clase \SpecialChar LaTeX
+ está diseñada para usar con la versión
+\begin_inset space ~
+\end_inset
+
+2.1 de la clase \SpecialChar LaTeX
  
 \family sans
 foils.cls
@@ -11248,8 +11204,7 @@ Para empezar
 \begin_layout Standard
 Obviamente, para usar esta clase, debes seleccionar 
 \family sans
-slides (Foil\SpecialChar TeX
-)
+FoilTeX
 \family default
  en el diálogo 
 \family sans
@@ -11575,7 +11530,7 @@ Foil
 
 \begin_layout Standard
 \begin_inset Flex Multiple Columns
-status collapsed
+status open
 
 \begin_layout Itemize
 
@@ -25549,7 +25504,7 @@ multicol
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -25830,7 +25785,7 @@ multicol
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -27699,29 +27654,7 @@ Jpgfdraw
 \family default
  ve al menú 
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Set Normal Size
 \family default
@@ -27740,29 +27673,7 @@ Dibuja una forma.
 \begin_layout Enumerate
 Usa el menú 
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Shapepar
 \family default
  para exportar la forma a coordenadas.
@@ -27876,7 +27787,7 @@ Un ejemplo:
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "../SPECIA~1.TEX"
 
 \end_inset
 

@@ -465,14 +465,12 @@ fasse tourner
 \family sans
 Fichier\SpecialChar menuseparator
 Exporter\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 , (ou bien 
 \family sans
 Affichage\SpecialChar menuseparator
-Afficher le code \SpecialChar LaTeX
-
+Afficher le code LaTeX
 \family default
 ) puis regardez le préambule du fichier 
 \family typewriter
@@ -517,22 +515,6 @@ jour\SpecialChar menuseparator
 
 \emph on
 Format
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Fichier\SpecialChar menuseparator
-Imprimer\SpecialChar ldots
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Fichier\SpecialChar menuseparator
-Fax\SpecialChar ldots
-
 \end_layout
 
 \begin_layout Standard
@@ -643,9 +625,8 @@ Vous pouvez importer un fichier \SpecialChar LaTeX
  dans \SpecialChar LyX
  en utilisant le menu Fichier \SpecialChar menuseparator
 Importer\SpecialChar menuseparator
-\SpecialChar LaTeX
-
- de \SpecialChar LyX
+LaTe
+X de \SpecialChar LyX
 .
  Cela va appeler un programme nommé 
 \family typewriter
@@ -722,8 +703,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-\SpecialChar TeX
-
+TeX
 \family default
 .
  
@@ -1438,7 +1418,7 @@ BottomBorder=2mm
 \end_layout
 
 \begin_layout Standard
-Ceci est la configuration pour des feuilles d'étiquette Avery®, référence
+Ceci est la configuration pour des feuilles d'étiquette Avery, référence
  #5360.
  Vous êtes maintenant prêt à imprimer des étiquettes, mais si vous devez
  insérer du code \SpecialChar LaTeX
@@ -1586,8 +1566,7 @@ log
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 .
  Il y a quelques erreurs et avertissements assez fréquents.
@@ -1602,8 +1581,7 @@ log
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialChar LaTeX
- Warning
+LaTeX Warning
 \begin_inset Quotes frd
 \end_inset
 
@@ -1646,8 +1624,7 @@ Vous pouvez en général les ignorer.
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialChar LaTeX
- Font Warning
+LaTeX Font Warning
 \begin_inset Quotes frd
 \end_inset
 
@@ -1804,8 +1781,7 @@ Des avertissements sur des problèmes de saut de page.
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialChar LaTeX
- Error: File 'Xxxx' not found
+LaTeX Error: File 'Xxxx' not found
 \begin_inset Quotes frd
 \end_inset
 
@@ -1887,8 +1863,7 @@ usepackage{}
 \begin_inset Quotes fld
 \end_inset
 
-\SpecialChar LaTeX
- Error: Unknown option
+LaTeX Error: Unknown option
 \begin_inset Quotes frd
 \end_inset
 
@@ -10273,11 +10248,8 @@ Diapos Foils (alias
 Foil
 \family default
 \noun on
-T
-\noun default
-e
-\noun on
-X
+\SpecialChar TeX
+
 \noun default
 )
 \begin_inset CommandInset label
@@ -10339,18 +10311,9 @@ Cette section concerne la classe
 \begin_inset Quotes fld
 \end_inset
 
-slides
+FoilTeX
 \family default
 
-\begin_inset space ~
-\end_inset
-
-(
-\family sans
-Foil\SpecialChar TeX
-
-\family default
-)
 \begin_inset Quotes frd
 \end_inset
 
@@ -10397,23 +10360,10 @@ reference "sec:slitex"
 \family sans
 foils
 \family default
- installée
-\lang english
- [
+ installée 
 \family sans
-
-\begin_inset Quotes fld
-\end_inset
-
-slides (Foil\SpecialChar TeX
-)
+FoilTeX
 \family default
-
-\begin_inset Quotes frd
-\end_inset
-
-]
-\lang french
 , il vous faudra sûrement utiliser la classe 
 \family sans
 slides
@@ -10426,8 +10376,11 @@ La classe
 \family sans
 foils
 \family default
- est conçue pour être utilisée avec la version 2.1 du fichier de classe \SpecialChar LaTeX
+ est conçue pour être utilisée avec la version
+\begin_inset space ~
+\end_inset
 
+2.1 du fichier de classe \SpecialChar LaTeX
  
 \family sans
 foils.cls
@@ -10444,26 +10397,10 @@ Pour commencer
 \begin_layout Standard
 Bien entendu, pour utiliser cette classe de document, il vous faut sélectionner
  
-\begin_inset Quotes fld
-\end_inset
-
-
 \family sans
-slides
-\begin_inset space ~
-\end_inset
-
-(FoilTe
+FoilTe
 \family default
-X
-\family sans
-)
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- dans le champ 
+X dans le champ 
 \family sans
 Classe
 \family default
@@ -10514,19 +10451,19 @@ foils
 
 \begin_layout Itemize
 La taille par défaut est de 20
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 pt, les autres choix étant respectivement 17
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 pt, 25
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 pt et 30
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 pt.
@@ -10552,11 +10489,9 @@ Romain
 \begin_layout Itemize
 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  accepte les formats de papier A4 et Letter, ainsi qu'un format particulier
  pour travailler avec des diapos 35mm.
  Les tailles A5, B5, 
@@ -10609,11 +10544,9 @@ page
  se comportent un peu différemment avec cette classe.
  
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  propose en effet des possibilités plus étendues pour les en-têtes et pieds
  de page, comme l'insertion d'un logo défini par l'utilisateur.
  Voyez la section
@@ -10700,11 +10633,9 @@ fancyheadings
 \family default
 , et ce même si son utilisation est déconseillée par l'auteur de 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  car certaines incompatibilités apparaissent.
 \end_layout
 
@@ -10754,7 +10685,7 @@ pouces sur 11
 \end_inset
 
 pouces, ce qui donne le même rapport largeur/hauteur qu'une diapo 35
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 mm, facilitant ainsi le travail avec ce support.
@@ -10788,11 +10719,9 @@ dvips
 \series default
  Cette option indique à 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  d'utiliser le pilote dvips pour effectuer les rotations des pages en format
  paysage.
  (Elle est automatiquement activée à la création d'un nouveau document 
@@ -10856,31 +10785,17 @@ foils
 .
  Il y a des environnements supplémentaires fournis par 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  ainsi que deux apportés par \SpecialChar LyX
 .
  Les environnements suivants sont partagés avec d'autres classes :
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -10991,17 +10906,6 @@ Légende
 Commentaire
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -11012,11 +10916,9 @@ En gros, il s'agit de tous les environnements, mis à part ceux de section.
  En effet, dans un diaporama, les sections sont en fait les diapos elles-mêmes.
  
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  propose des commandes pour commencer de nouvelles diapos :
 \end_layout
 
@@ -11064,29 +10966,15 @@ De plus, les diapos sont souvent utilisées pour exposer des idées, ou de
  nouveaux théorèmes.
  De ce fait, 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  fournit aussi un ensemble d'outils pour les présenter :
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -11154,17 +11042,6 @@ Proposition*
 Définition*
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -11196,11 +11073,9 @@ ListeCroix
 \begin_layout Standard
 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
 offre aussi de nombreuses possibilités pour les en-têtes et pieds de pages,
  qu'il vaut mieux définir dans le préambule, bien que vous puissiez le faire
  à tout moment dans le document.
@@ -11221,20 +11096,8 @@ Martin Vermeer
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{2}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -11279,7 +11142,7 @@ En-tête_Gauche
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
@@ -11287,17 +11150,6 @@ En-tête_Gauche
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -11613,11 +11465,9 @@ Figures et tableaux
 \begin_layout Standard
 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
  redéfinit la notion de figures et tables flottantes afin qu'elles apparaissent
  exactement là où elles sont dans le texte plutôt qu'en haut des pages où
  en une quelconque autre position prédéfinie.
@@ -11653,11 +11503,9 @@ Restriction
 
 -Typeset by 
 \family sans
-\lang english
 Foil\SpecialChar TeX
 
 \family default
-\lang french
 -
 \begin_inset Quotes frd
 \end_inset
@@ -12096,11 +11944,8 @@ Diapos Slides (alias S
 \noun on
 li
 \noun default
-T
-\noun on
-e
-\noun default
-X)
+\SpecialChar TeX
+)
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:slitex"
@@ -27538,29 +27383,7 @@ Jpgfdraw
 \family default
  , aller au menu 
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Set Normal Size
 \family default
@@ -27575,29 +27398,7 @@ Tracer une forme.
 \begin_layout Enumerate
 Utiliser le menu 
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Shapepar
 \family default
  pour exporter la forme en coordonnées.
@@ -27699,7 +27500,7 @@ Voici un exemple:
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "../SpecialParagraphShape.tex"
+filename "../SPECIA~1.TEX"
 
 \end_inset
 
