@@ -11009,22 +11009,7 @@ eamer・powerdotといったクラスがありますが，本節では，その�
 \size large
 本節は「
 \family sans
-presentation (FoilT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size large
-eX)
+FoilTeX
 \family default
 」クラス
 \emph on
@@ -11058,18 +11043,7 @@ foils
 \family default
 クラス(
 \family sans
-presentation (FoilT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+FoilTeX
 \family default
 )が導入されていなければ，
 \family sans
@@ -11113,18 +11087,7 @@ foils.cls
 \family default
 ドロップダウンで「
 \family sans
-presentation (FoilT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+FoilTeX
 \family default
 」を選択する必要があります．また，
 \family sans
@@ -11154,7 +11117,19 @@ foils
 \end_layout
 
 \begin_layout Itemize
-既定のフォント寸法は20ptであり，17pt・25pt・30ptを選択することも可能です．
+既定のフォント寸法は20ptであり，17
+\begin_inset space \thinspace{}
+\end_inset
+
+pt・25
+\begin_inset space \thinspace{}
+\end_inset
+
+pt・30
+\begin_inset space \thinspace{}
+\end_inset
+
+ptを選択することも可能です．
 \end_layout
 
 \begin_layout Itemize
@@ -19647,7 +19622,7 @@ reference "subsec:自動ロック特性"
 
 節を参照)です
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
@@ -24253,29 +24228,7 @@ Jpgfdraw
 \family default
 内で，メニュー
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Set Normal Size
 \family default
@@ -24293,29 +24246,7 @@ pt寸を使用しています．
 \begin_layout Enumerate
 メニュー
 \family sans
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX\SpecialChar menuseparator
+TeX/LaTeX\SpecialChar menuseparator
 Shapepar
 \family default
 を使用して，形の座標をエクスポートします．現れるダイアログで，形の外枠を座標に使うか，パス自体を使うかを指定します．
@@ -24412,7 +24343,7 @@ status open
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "/Applications/LyX-2.2.0dev.app/Contents/Resources/doc/SpecialParagraphShape.tex"
+filename "../SpecialParagraphShape.tex"
 
 \end_inset
 
