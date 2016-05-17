@@ -2365,8 +2365,8 @@ Eine Vorlage ist eine ganz normale \SpecialChar LyX
  indem Sie die von Ihnen gewünschten Änderungen an der Vorlage durchführen
  und die Datei dann als Ihre Vorlage abspeichern.
  Für alle folgenden Briefe können Sie dann diese Version als Vorlage verwenden.
- Sie sollten das alles jetzt vielleicht einfach mal ausprobieren – schreiben
- Sie doch als Übung einen kleinen Brief an jemanden!
+ Sie sollten das alles jetzt vielleicht einfach mal ausprobieren.
+ Schreiben Sie doch als Übung einen kleinen Brief an jemanden!
 \end_layout
 
 \begin_layout Standard
@@ -5036,7 +5036,7 @@ zwischen
  WYSIWYG-Tabellen und -Abbildungen bieten.
  \SpecialChar LyX
  wird niemals alle \SpecialChar LaTeX
--Pakete unterstützen.
+-Pakete direkt unterstützen.
  Indem Sie im \SpecialChar LaTeX
 -Vorspann (siehe Abschnitt 
 \begin_inset CommandInset ref
@@ -5051,8 +5051,8 @@ reference "subsec:LaTeX-Vorspann"
 \backslash
 usepackage{foo}
 \family default
- eingeben, können Sie aber auch solche Pakete verwenden – wenn auch nicht
- mit Unterstützung von WYSIWYM.
+ eingeben, können Sie aber auch noch nicht unterstützten Pakete verwenden
+ – wenn auch nicht mit Unterstützung von WYSIWYM.
 \end_layout
 
 \begin_layout Subsection
@@ -5171,8 +5171,8 @@ bekannt
 -Layout-Datei
 \family default
  für die Dokumentklasse vorhanden sein.
- Gibt es keine Layout-Datei, erhalten Sie eine Fehlermeldung, dass die Konvertie
-rung fehlgeschlagen ist.
+ Wenn keine Layout-Datei gefunden wird, erhalten Sie eine Fehlermeldung,
+ dass die Konvertierung fehlgeschlagen ist.
  Ohne Layout-Datei weiß 
 \family typewriter
 tex2lyx
