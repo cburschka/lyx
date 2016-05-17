@@ -45,7 +45,6 @@ namespace frontend {
 ShortcutWidget::ShortcutWidget(QWidget * parent)
 	: QLabel(parent), keysequence_()
 {
-	QApplication::instance()->installEventFilter(this);
 	has_cursor_ = false;
 	setFrameShape(QFrame::Panel);
 	setFrameShadow(QFrame::Raised);
@@ -59,24 +58,6 @@ void ShortcutWidget::reset()
 {
 	clear();
 	keysequence_ = KeySequence();
-}
-
-
-bool ShortcutWidget::eventFilter(QObject * obj, QEvent * e)
-{
-	if (!has_cursor_)
-		return false;
-
-	switch (e->type()) {
-		// swallow these if we have focus and they come from elsewhere
-		case QEvent::Shortcut:
-		case QEvent::ShortcutOverride:
-			if (obj != this)
-				return true;
-		default: 
-			break;
-	}
-	return false;
 }
 
 
@@ -124,13 +105,17 @@ bool ShortcutWidget::event(QEvent * e)
 			setFrameShadow(QFrame::Sunken);
 			break;
 		case QEvent::ShortcutOverride:
+			// accepting the ShortcutOverride event lets us override shortcuts
+			// and capture them as keypress events instead
+			e->accept();
+			return true;
+		case QEvent::KeyPress:
 			keyPressEvent(static_cast<QKeyEvent *>(e));
 			return true;
 		case QEvent::KeyRelease:
 		case QEvent::Shortcut:
-		case QEvent::KeyPress:
 			return true;
-		default: 
+		default:
 			break;
 	}
 	return QLabel::event(e);
@@ -141,7 +126,7 @@ void ShortcutWidget::appendToSequence(QKeyEvent * e)
 {
 	KeySymbol sym;
 	setKeySymbol(&sym, e);
-	
+
 	if (sym.isOK()) {
 		KeyModifier mod = lyx::q_key_state(e->modifiers());
 		keysequence_.addkey(sym, mod, lyx::NoModifier);
