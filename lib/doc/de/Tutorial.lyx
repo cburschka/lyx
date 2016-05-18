@@ -5,25 +5,6 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/de/
 \textclass book
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
-% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
