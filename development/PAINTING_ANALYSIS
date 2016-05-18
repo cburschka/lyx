@@ -123,6 +123,11 @@ In particular, if text is painted last, it will be more visible in the
 presence of underlines (foreign language, change tracking, spell
 check).
 
+** DONE remove pit argument to breakRow
+
+There are probably other places where the pit is not needed anymore:
+computeRowMetrics, labelFill, setRowHeight, isLastRow, isFirstRow
+
 ** Remember rtl status in the row object
 
 This will avoid to pass a Paragraph object to methods that do not need it.

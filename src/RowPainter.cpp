@@ -54,12 +54,12 @@ using frontend::FontMetrics;
 
 
 RowPainter::RowPainter(PainterInfo & pi,
-	Text const & text, pit_type pit, Row const & row, int x, int y)
+	Text const & text, Row const & row, int x, int y)
 	: pi_(pi), text_(text),
 	  text_metrics_(pi_.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
-	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
-	  pm_(text_metrics_.parMetrics(pit)), change_(pi_.change_),
+	  row_(row), par_(text.paragraphs()[row.pit()]),
+	  pm_(text_metrics_.parMetrics(row.pit())), change_(pi_.change_),
 	  xo_(x), yo_(y), width_(text_metrics_.width()),
 	  solid_line_thickness_(1), solid_line_offset_(1),
 	  dotted_line_thickness_(1)
@@ -84,8 +84,8 @@ RowPainter::RowPainter(PainterInfo & pi,
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
 
-	LBUFERR(pit >= 0);
-	LBUFERR(pit < int(text.paragraphs().size()));
+	LBUFERR(row.pit() >= 0);
+	LBUFERR(row.pit() < int(text.paragraphs().size()));
 }
 
 
@@ -280,7 +280,7 @@ void RowPainter::paintChangeBar() const
 	if (start == end || !par_.isChanged(start, end))
 		return;
 
-	int const height = text_metrics_.isLastRow(pit_, row_)
+	int const height = text_metrics_.isLastRow(row_)
 		? row_.ascent()
 		: row_.height();
 
@@ -312,16 +312,16 @@ void RowPainter::paintDepthBar() const
 		return;
 
 	depth_type prev_depth = 0;
-	if (!text_metrics_.isFirstRow(pit_, row_)) {
-		pit_type pit2 = pit_;
+	if (!text_metrics_.isFirstRow(row_)) {
+		pit_type pit2 = row_.pit();
 		if (row_.pos() == 0)
 			--pit2;
 		prev_depth = pars_[pit2].getDepth();
 	}
 
 	depth_type next_depth = 0;
-	if (!text_metrics_.isLastRow(pit_, row_)) {
-		pit_type pit2 = pit_;
+	if (!text_metrics_.isLastRow(row_)) {
+		pit_type pit2 = row_.pit();
 		if (row_.endpos() >= pars_[pit2].size())
 			++pit2;
 		next_depth = pars_[pit2].getDepth();
@@ -396,7 +396,7 @@ void RowPainter::paintFirst() const
 	    paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
 	bool const is_first =
-		text_.isFirstInSequence(pit_) || !layout.isParagraphGroup();
+		text_.isFirstInSequence(row_.pit()) || !layout.isParagraphGroup();
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
 	if (layout.labelIsInline()
@@ -500,7 +500,7 @@ static int getEndLabel(pit_type p, Text const & text)
 void RowPainter::paintLast() const
 {
 	bool const is_rtl = text_.isRTL(par_);
-	int const endlabel = getEndLabel(pit_, text_);
+	int const endlabel = getEndLabel(row_.pit(), text_);
 
 	// paint imaginary end-of-paragraph character
 
@@ -626,11 +626,11 @@ void RowPainter::paintSelection() const
 		return;
 	Cursor const & curs = pi_.base.bv->cursor();
 	DocIterator beg = curs.selectionBegin();
-	beg.pit() = pit_;
+	beg.pit() = row_.pit();
 	beg.pos() = row_.sel_beg;
 
 	DocIterator end = curs.selectionEnd();
-	end.pit() = pit_;
+	end.pit() = row_.pit();
 	end.pos() = row_.sel_end;
 
 	bool const begin_boundary = beg.pos() >= row_.endpos();

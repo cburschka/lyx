@@ -2999,8 +2999,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		bool const drawing = pi.pain.isDrawingEnabled();
 		pi.pain.setDrawingEnabled(false);
 		// No need to care about vertical position.
-		RowPainter rp(pi, buffer().text(), d->cursor_.bottom().pit(), row,
-		              -d->horiz_scroll_offset_, 0);
+		RowPainter rp(pi, buffer().text(), row, -d->horiz_scroll_offset_, 0);
 		rp.paintText();
 		pi.pain.setDrawingEnabled(drawing);
 	}

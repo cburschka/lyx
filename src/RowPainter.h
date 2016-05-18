@@ -43,7 +43,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(PainterInfo & pi, Text const & text,
-		pit_type pit, Row const & row, int x, int y);
+	           Row const & row, int x, int y);
 
 	/// paint various parts
 	/// FIXME: transfer to TextMetrics
@@ -86,7 +86,6 @@ private:
 	Row const & row_;
 
 	/// Row's paragraph
-	pit_type const pit_;
 	Paragraph const & par_;
 	ParagraphMetrics const & pm_;
 

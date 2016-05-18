@@ -445,8 +445,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Row & row = pm.rows()[row_index];
 		row.pit(pit);
 		row.pos(first);
-		need_new_row = breakRow(row, right_margin, pit);
-		setRowHeight(row, pit);
+		row.pit(pit);
+		need_new_row = breakRow(row, right_margin);
+		setRowHeight(row);
 		row.setChanged(false);
 		if (row_index || row.endpos() < par.size()
 		    || (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE)) {
@@ -463,7 +464,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 				dim_.wid = max_width_;
 		}
 		int const max_row_width = max(dim_.wid, row.width());
-		computeRowMetrics(pit, row, max_row_width);
+		computeRowMetrics(row, max_row_width);
 		first = row.endpos();
 		++row_index;
 
@@ -563,13 +564,12 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 }
 
 
-void TextMetrics::computeRowMetrics(pit_type const pit,
-		Row & row, int width) const
+void TextMetrics::computeRowMetrics(Row & row, int width) const
 {
 	row.label_hfill = 0;
 	row.separator = 0;
 
-	Paragraph const & par = text_->getPar(pit);
+	Paragraph const & par = text_->getPar(row.pit());
 
 	int const w = width - row.right_margin - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
@@ -593,11 +593,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			++nlh;
 
 		if (nlh && !par.getLabelWidthString().empty())
-			row.label_hfill = labelFill(pit, row) / double(nlh);
+			row.label_hfill = labelFill(row) / double(nlh);
 	}
 
 	// are there any hfills in the row?
-	ParagraphMetrics & pm = par_metrics_[pit];
+	ParagraphMetrics & pm = par_metrics_[row.pit()];
 	int nh = numberOfHfills(row, pm, par.beginOfBody());
 	int hfill = 0;
 	int hfill_rem = 0;
@@ -674,9 +674,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 }
 
 
-int TextMetrics::labelFill(pit_type const pit, Row const & row) const
+int TextMetrics::labelFill(Row const & row) const
 {
-	Paragraph const & par = text_->getPar(pit);
+	Paragraph const & par = text_->getPar(row.pit());
 	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
 	int w = 0;
@@ -787,9 +787,9 @@ private:
  * very sensitive to small changes :) Note that part of the
  * intelligence is also in Row::shortenIfNeeded.
  */
-bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
+bool TextMetrics::breakRow(Row & row, int const right_margin) const
 {
-	Paragraph const & par = text_->getPar(pit);
+	Paragraph const & par = text_->getPar(row.pit());
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
 	pos_type const body_pos = par.beginOfBody();
@@ -797,7 +797,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	bool need_new_row = false;
 
 	row.clear();
-	row.left_margin = leftMargin(max_width_, pit, pos);
+	row.left_margin = leftMargin(max_width_, row.pit(), pos);
 	row.right_margin = right_margin;
 	if (is_rtl)
 		swap(row.left_margin, row.right_margin);
@@ -823,13 +823,13 @@ bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// check for possible inline completion
 	DocIterator const & ic_it = bv_->inlineCompletionPos();
 	pos_type ic_pos = -1;
-	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == pit)
+	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == row.pit())
 		ic_pos = ic_it.pos();
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
-	FontIterator fi = FontIterator(*this, par, pit, pos);
+	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
 	do {
 		// this can happen for an empty row after a newline
 		if (i >= end)
@@ -849,7 +849,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			// this is needed to make sure that the row width is correct
 			row.finalizeLast();
 			int const add = max(fm.width(par.layout().labelsep),
-					    labelEnd(pit) - row.width());
+			                    labelEnd(row.pit()) - row.width());
 			row.addSpace(i, add, *fi, par.lookupChange(i));
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
@@ -906,11 +906,11 @@ bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// End of paragraph marker
 	ParagraphList const & pars = text_->paragraphs();
 	if (lyxrc.paragraph_markers && !need_new_row
-	    && i == end && size_type(pit + 1) < pars.size()) {
+	    && i == end && size_type(row.pit() + 1) < pars.size()) {
 		// add a virtual element for the end-of-paragraph
 		// marker; it is shown on screen, but does not exist
 		// in the paragraph.
-		Font f(text_->layoutFont(pit));
+		Font f(text_->layoutFont(row.pit()));
 		f.fontInfo().setColor(Color_paragraphmarker);
 		BufferParams const & bparams
 			= text_->inset().buffer().params();
@@ -931,16 +931,15 @@ bool TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 }
 
 
-void TextMetrics::setRowHeight(Row & row, pit_type const pit,
-				    bool topBottomSpace) const
+void TextMetrics::setRowHeight(Row & row, bool topBottomSpace) const
 {
-	Paragraph const & par = text_->getPar(pit);
+	Paragraph const & par = text_->getPar(row.pit());
 	Layout const & layout = par.layout();
 	double const spacing_val = layout.spacing.getValue()
 		* text_->spacing(par);
 
 	// Initial value for ascent (useful if row is empty).
-	Font const font = displayFont(pit, row.pos());
+	Font const font = displayFont(row.pit(), row.pos());
 	FontMetrics const & fm = theFontMetrics(font);
 	int maxasc = int(fm.maxAscent() * spacing_val);
 	int maxdes = int(fm.maxDescent() * spacing_val);
@@ -978,10 +977,10 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
 		    && !inset.getLayout().parbreakIsNewline()
 		    && !par.layout().parbreak_is_newline
-		    && pit > 0
+		    && row.pit() > 0
 		    && ((layout.isParagraph() && par.getDepth() == 0)
-			    || (pars[pit - 1].layout().isParagraph()
-				    && pars[pit - 1].getDepth() == 0))) {
+			    || (pars[row.pit() - 1].layout().isParagraph()
+				    && pars[row.pit() - 1].getDepth() == 0))) {
 			maxasc += bufparams.getDefSkip().inPixels(*bv_);
 		}
 
@@ -990,7 +989,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 
 		// special code for the top label
 		if (layout.labelIsAbove()
-		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
+		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(row.pit()))
 		    && !par.labelString().empty()) {
 			FontInfo labelfont = text_->labelFont(par);
 			FontMetrics const & lfm = theFontMetrics(labelfont);
@@ -1005,24 +1004,24 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		// a section, or between the items of a itemize or enumerate
 		// environment.
 
-		pit_type prev = text_->depthHook(pit, par.getDepth());
+		pit_type prev = text_->depthHook(row.pit(), par.getDepth());
 		Paragraph const & prevpar = pars[prev];
-		if (prev != pit
+		if (prev != row.pit()
 		    && prevpar.layout() == layout
 		    && prevpar.getDepth() == par.getDepth()
 		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
 			layoutasc = layout.itemsep * dh;
-		} else if (pit != 0 || row.pos() != 0) {
+		} else if (row.pit() != 0 || row.pos() != 0) {
 			if (layout.topsep > 0)
 				layoutasc = layout.topsep * dh;
 		}
 
-		prev = text_->outerHook(pit);
+		prev = text_->outerHook(row.pit());
 		if (prev != pit_type(pars.size())) {
 			maxasc += int(pars[prev].layout().parsep * dh);
-		} else if (pit != 0) {
-			Paragraph const & prevpar = pars[pit - 1];
+		} else if (row.pit() != 0) {
+			Paragraph const & prevpar = pars[row.pit() - 1];
 			if (prevpar.getDepth() != 0 ||
 					prevpar.layout() == layout) {
 				maxasc += int(layout.parsep * dh);
@@ -1035,9 +1034,9 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
-		pit_type nextpit = pit + 1;
+		pit_type nextpit = row.pit() + 1;
 		if (nextpit != pit_type(pars.size())) {
-			pit_type cpit = pit;
+			pit_type cpit = row.pit();
 
 			if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
 				double usual = pars[cpit].layout().bottomsep * dh;
@@ -1056,8 +1055,8 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 	}
 
 	// incalculate the layout spaces
-	maxasc += int(layoutasc  * 2 / (2 + pars[pit].getDepth()));
-	maxdes += int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
+	maxasc += int(layoutasc  * 2 / (2 + pars[row.pit()].getDepth()));
+	maxdes += int(layoutdesc * 2 / (2 + pars[row.pit()].getDepth()));
 
 	row.dimension().asc = maxasc + labeladdon;
 	row.dimension().des = maxdes;
@@ -1593,17 +1592,17 @@ void TextMetrics::deleteLineForward(Cursor & cur)
 }
 
 
-bool TextMetrics::isLastRow(pit_type pit, Row const & row) const
+bool TextMetrics::isLastRow(Row const & row) const
 {
 	ParagraphList const & pars = text_->paragraphs();
-	return row.endpos() >= pars[pit].size()
-		&& pit + 1 == pit_type(pars.size());
+	return row.endpos() >= pars[row.pit()].size()
+		&& row.pit() + 1 == pit_type(pars.size());
 }
 
 
-bool TextMetrics::isFirstRow(pit_type pit, Row const & row) const
+bool TextMetrics::isFirstRow(Row const & row) const
 {
-	return row.pos() == 0 && pit == 0;
+	return row.pos() == 0 && row.pit() == 0;
 }
 
 
@@ -1843,7 +1842,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			if (i)
 				y += row.ascent();
 
-			RowPainter rp(pi, *text_, pit, row, row_x, y);
+			RowPainter rp(pi, *text_, row, row_x, y);
 
 			rp.paintOnlyInsets();
 			y += row.descent();
@@ -1887,7 +1886,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (i)
 			y += row.ascent();
 
-		RowPainter rp(pi, *text_, pit, row, row_x, y);
+		RowPainter rp(pi, *text_, row, row_x, y);
 
 		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
@@ -2012,7 +2011,7 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Row row;
 	row.pos(wordStart.pos());
 	row.endpos(bvcur.pos());
-	setRowHeight(row, bvcur.pit(), false);
+	setRowHeight(row, false);
 	dim = row.dimension();
 	dim.wid = abs(rxy.x_ - lxy.x_);
 

@@ -116,15 +116,14 @@ public:
 	/// Returns the height of the row (width member is set to 0).
 	/// If \c topBottomSpace is true, extra space is added for the
 	/// top and bottom row.
-	void setRowHeight(Row & row, pit_type const pit,
-			  bool topBottomSpace = true) const;
+	void setRowHeight(Row & row, bool topBottomSpace = true) const;
 
 private:
 	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
 
 	/// the minimum space a manual label needs on the screen in pixels
-	int labelFill(pit_type const pit, Row const & row) const;
+	int labelFill(Row const & row) const;
 
 	/// FIXME??
 	int labelEnd(pit_type const pit) const;
@@ -132,13 +131,13 @@ private:
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
 	/// \return true when another row is required (after a newline)
-	bool breakRow(Row & row, int right_margin, pit_type const pit) const;
+	bool breakRow(Row & row, int right_margin) const;
 
 	// Expand the alignment of row \param row in paragraph \param par
 	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void computeRowMetrics(pit_type pit, Row & row, int width) const;
+	void computeRowMetrics(Row & row, int width) const;
 
 	// Helper function for the other checkInsetHit method.
 	InsetList::InsetTable * checkInsetHit(pit_type pit, int x, int y);
@@ -208,9 +207,9 @@ public:
 	void deleteLineForward(Cursor & cur);
 
 	/// is this row the last in the text?
-	bool isLastRow(pit_type pit, Row const & row) const;
+	bool isLastRow(Row const & row) const;
 	/// is this row the first in the text?
-	bool isFirstRow(pit_type pit, Row const & row) const;
+	bool isFirstRow(Row const & row) const;
 
 	/// Returns an inset if inset was hit, or 0 if not.
 	/// \warning This method is not recursive! It will return the
