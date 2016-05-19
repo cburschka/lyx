@@ -85,11 +85,9 @@ class MaximaStream;
 class MathematicaStream;
 class MathStream;
 class WriteStream;
-class InfoStream;
 
 class MathMacroTemplate;
 class MathMacro;
-class MathPosFinder;
 class Cursor;
 class TextPainter;
 class TextMetricsInfo;

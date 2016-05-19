@@ -42,7 +42,6 @@ class Font;
 class HSpace;
 class IndicesList;
 class Language;
-class LatexFeatures;
 class LayoutFile;
 class LayoutFileIndex;
 class Lexer;

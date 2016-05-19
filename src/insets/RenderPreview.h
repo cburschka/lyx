@@ -28,7 +28,6 @@
 namespace lyx {
 
 class Buffer;
-class LyXRC_PreviewStatus;
 class MetricsInfo;
 class PainterInfo;
 
