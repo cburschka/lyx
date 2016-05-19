@@ -73,30 +73,6 @@
 #include <sstream>
 
 
-// TODO: replace if in Text::readParToken() with compile time switch
-#if 0
-
-#include "support/metahash.h"
-
-typedef boost::mpl::string<'\\end','_lay','out'> end_layout;
-typedef boost::mpl::string<'\\end','in','set'>   end_inset;
-
-void foo()
-{
-	std::string token = "\\end_layout";
-
-	switch (boost::hash_value(token)) {
-		case lyx::support::hash_string<end_layout>::value:
-			return;
-		case lyx::support::hash_string<end_inset>::value:
-			return;
-		default: ;
-	};
-
-}
-#endif
-
-
 using namespace std;
 using namespace lyx::support;
 
