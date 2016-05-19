@@ -36,7 +36,6 @@ bcp --boost=$1 \
 	boost/signal.hpp \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \
-	boost/tokenizer.hpp \
 	boost/tuple/tuple.hpp \
     boost/mpl/string.hpp \
     boost/mpl/fold.hpp \
