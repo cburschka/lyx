@@ -15,10 +15,10 @@
 #include "support/environment.h"
 
 #include "support/docstring.h"
+#include "support/lstrings.h"
 #include "support/os.h"
 
-#include <boost/tokenizer.hpp>
-
+#include <algorithm> // for remove
 #include <cstdlib>
 #include <map>
 #include <sstream>
@@ -45,20 +45,10 @@ string const getEnv(string const & name)
 
 vector<string> const getEnvPath(string const & name)
 {
-	typedef boost::char_separator<char> Separator;
-	typedef boost::tokenizer<Separator> Tokenizer;
-
 	string const env_var = getEnv(name);
-	Separator const separator(string(1, os::path_separator()).c_str());
-	Tokenizer const tokens(env_var, separator);
-	Tokenizer::const_iterator it = tokens.begin();
-	Tokenizer::const_iterator const end = tokens.end();
+	string const separator(1, os::path_separator());
 
-	vector<string> vars;
-	for (; it != end; ++it)
-		vars.push_back(os::internal_path(*it));
-
-	return vars;
+	return getVectorFromString(env_var, separator);
 }
 
 
@@ -104,18 +94,13 @@ void setEnvPath(string const & name, vector<string> const & env)
 
 void prependEnvPath(string const & name, string const & prefix)
 {
+	string const separator(1, os::path_separator());
+	vector<string> reversed_tokens
+		= getVectorFromString(prefix, separator);
 	vector<string> env_var = getEnvPath(name);
-
-	typedef boost::char_separator<char> Separator;
-	typedef boost::tokenizer<Separator> Tokenizer;
-
-	Separator const separator(string(1, os::path_separator()).c_str());
 
 	// Prepend each new element to the list, removing identical elements
 	// that occur later in the list.
-	Tokenizer const tokens(prefix, separator);
-	vector<string> reversed_tokens(tokens.begin(), tokens.end());
-
 	typedef vector<string>::const_reverse_iterator token_iterator;
 	token_iterator it = reversed_tokens.rbegin();
 	token_iterator const end = reversed_tokens.rend();

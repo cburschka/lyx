@@ -51,7 +51,6 @@
 // for FileFilter.
 // FIXME: Remove
 #include "support/regex.h"
-#include <boost/tokenizer.hpp>
 
 
 using namespace std;
@@ -464,16 +463,12 @@ struct Filter
 Filter::Filter(docstring const & description, string const & globs)
 	: desc_(description)
 {
-	typedef boost::tokenizer<boost::char_separator<char> > Tokenizer;
-	boost::char_separator<char> const separator(" ");
-
 	// Given "<glob> <glob> ... *.{abc,def} <glob>", expand to
 	//       "<glob> <glob> ... *.abc *.def <glob>"
 	string const expanded_globs = convert_brace_glob(globs);
 
 	// Split into individual globs.
-	Tokenizer const tokens(expanded_globs, separator);
-	globs_ = vector<string>(tokens.begin(), tokens.end());
+	globs_ = getVectorFromString(expanded_globs, " ");
 }
 
 
@@ -488,11 +483,7 @@ QString Filter::toString() const
 		s += " (";
 	}
 
-	for (size_t i = 0; i != globs_.size(); ++i) {
-		if (i > 0)
-			s += ' ';
-		s += toqstr(globs_[i]);
-	}
+	s += toqstr(getStringFromVector(globs_, " "));
 
 	if (has_description)
 		s += ')';
