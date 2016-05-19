@@ -305,12 +305,6 @@ extern "C"
 char * strerror(int n);
 #endif
 
-#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
-#  define USE_BOOST_FORMAT 1
-#else
-#  define USE_BOOST_FORMAT 0
-#endif
-
 #define BOOST_USER_CONFIG <config.h>
 
 #if !defined(ENABLE_ASSERTIONS)
