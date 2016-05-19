@@ -37,10 +37,6 @@ bcp --boost=$1 \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \
 	boost/tuple/tuple.hpp \
-    boost/mpl/string.hpp \
-    boost/mpl/fold.hpp \
-    boost/mpl/size_t.hpp \
-    boost/functional/hash.hpp \
 	\
 	needed
 
