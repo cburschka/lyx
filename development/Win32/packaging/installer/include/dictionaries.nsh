@@ -43,8 +43,8 @@ Function FindDictionaries
   
   # read out the possible thesaurus filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
-  ${for} $5 1 25
-   # the file has 50 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 26
+   # the file has 52 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
    FileRead $R5 $String   # $String is now the dictionary name
    FileRead $R5 $String   # $String is now the dictionary name
@@ -112,7 +112,7 @@ Function DownloadThesaurusDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
- ${For} $5 1 50          # the file has 50 lines
+ ${For} $5 1 52          # the file has 52 lines
  
   FileRead $R5 $String   # $String is now the dictionary name
   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code

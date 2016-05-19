@@ -44,12 +44,10 @@ These typically need to be modified for each LyX release
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
 #--------------------------------
-# MiKTeX
+# MiKTeX and JabRef
 # Sizes in KB
 
-# it seems that some companies block ftp access by default, therefore http access is preferred here
-!define MiKTeXRepo "http://sunsite.informatik.rwth-aachen.de/ftp/pub/mirror/ctan/systems/win32/miktex/tm/packages/"
-#!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
+"ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
 !define JabRefVersion "2.11"
 !define MiKTeXDeliveredVersion "2.9"
