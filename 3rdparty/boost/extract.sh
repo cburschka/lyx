@@ -25,7 +25,6 @@ bcp --boost=$1 \
 	boost/bind.hpp \
 	boost/crc.hpp \
 	boost/cstdint.hpp \
-	boost/format.hpp \
 	boost/function.hpp \
 	boost/functional.hpp \
 	boost/lexical_cast.hpp \

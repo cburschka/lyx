@@ -21,8 +21,6 @@
 #include "support/lstrings.h"
 #include "support/Systemcall.h"
 
-#include <boost/format.hpp>
-
 using namespace std;
 using namespace lyx::support;
 
@@ -58,11 +56,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 	// or whether makeAbsPath(onlyFileName()) is a noop here
 	FileName const tmp(makeAbsPath(onlyFileName(changeExtension(file, ".log"))));
 
-#if USE_BOOST_FORMAT
-	boost::basic_format<char_type> msg(_("ChkTeX warning id # %1$d"));
-#else
-	docstring const msg(_("ChkTeX warning id # "));
-#endif
+	docstring const msg(_("ChkTeX warning id # %1$s"));
 	docstring token;
 	// FIXME UNICODE
 	// We have no idea what the encoding of the error file is
@@ -81,13 +75,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 
 		int const lineno = convert<int>(line);
 
-#if USE_BOOST_FORMAT
-		msg % warno;
-		terr.insertError(lineno, msg.str(), warning);
-		msg.clear();
-#else
-		terr.insertError(lineno, msg + warno, warning);
-#endif
+		terr.insertError(lineno, bformat(msg, warno), warning);
 
 		++retval;
 	}

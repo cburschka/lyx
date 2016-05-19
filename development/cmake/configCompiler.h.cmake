@@ -85,12 +85,6 @@
 
 #define BOOST_ALL_NO_LIB 1
 
-#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
-#  define USE_BOOST_FORMAT 1
-#else
-#  define USE_BOOST_FORMAT 0
-#endif
-
 #ifdef _DEBUG
 #  define ENABLE_ASSERTIONS 1
 #endif
