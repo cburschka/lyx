@@ -31,7 +31,6 @@
 #include <QTime>
 
 #include <boost/crc.hpp>
-#include <boost/scoped_array.hpp>
 
 #include <algorithm>
 #include <iterator>

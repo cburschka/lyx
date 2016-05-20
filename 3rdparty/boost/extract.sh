@@ -30,7 +30,6 @@ bcp --boost=$1 \
 	boost/lexical_cast.hpp \
 	boost/noncopyable.hpp \
 	boost/regex.hpp \
-	boost/scoped_array.hpp \
 	boost/scoped_ptr.hpp \
 	boost/shared_ptr.hpp \
 	boost/signal.hpp \
