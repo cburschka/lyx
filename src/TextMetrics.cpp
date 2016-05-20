@@ -472,6 +472,9 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		pm.dim().des += row.height();
 	} while (first < par.size() || need_new_row);
 
+	if (row_index < pm.rows().size())
+		pm.rows().resize(row_index);
+
 	// FIXME: It might be better to move this in another method
 	// specially tailored for the main text.
 	// Top and bottom margin of the document (only at top-level)
@@ -487,8 +490,12 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		}
 	}
 
-	if (row_index < pm.rows().size())
-		pm.rows().resize(row_index);
+	// The space above and below the paragraph.
+	int const top = parTopSpacing(pit);
+	pm.rows().front().dimension().asc += top;
+	int const bottom = parBottomSpacing(pit);
+	pm.rows().back().dimension().des += bottom;
+	pm.dim().des += top + bottom;
 
 	pm.dim().asc += pm.rows()[0].ascent();
 	pm.dim().des -= pm.rows()[0].ascent();
@@ -930,13 +937,109 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	return need_new_row;
 }
 
+int TextMetrics::parTopSpacing(pit_type const pit) const
+{
+	Paragraph const & par = text_->getPar(pit);
+	Layout const & layout = par.layout();
 
-void TextMetrics::setRowHeight(Row & row, bool topBottomSpace) const
+	int asc = 0;
+	ParagraphList const & pars = text_->paragraphs();
+	double const dh = defaultRowHeight();
+
+	BufferParams const & bparams = bv_->buffer().params();
+	Inset const & inset = text_->inset();
+	// some parskips VERY EASY IMPLEMENTATION
+	if (bparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
+		&& !inset.getLayout().parbreakIsNewline()
+		&& !par.layout().parbreak_is_newline
+		&& pit > 0
+		&& ((layout.isParagraph() && par.getDepth() == 0)
+		    || (pars[pit - 1].layout().isParagraph()
+		        && pars[pit - 1].getDepth() == 0))) {
+		asc += bparams.getDefSkip().inPixels(*bv_);
+	}
+
+	if (par.params().startOfAppendix())
+		asc += int(3 * dh);
+
+	// special code for the top label
+	if (layout.labelIsAbove()
+	    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
+	    && !par.labelString().empty()) {
+		FontInfo labelfont = text_->labelFont(par);
+		FontMetrics const & lfm = theFontMetrics(labelfont);
+		asc += int(lfm.maxHeight() * layout.spacing.getValue()
+		                           * text_->spacing(par)
+		           + (layout.topsep + layout.labelbottomsep) * dh);
+	}
+
+	// Add the layout spaces, for example before and after
+	// a section, or between the items of a itemize or enumerate
+	// environment.
+
+	pit_type prev = text_->depthHook(pit, par.getDepth());
+	Paragraph const & prevpar = pars[prev];
+	double layoutasc = 0;
+	if (prev != pit
+	    && prevpar.layout() == layout
+	    && prevpar.getDepth() == par.getDepth()
+	    && prevpar.getLabelWidthString() == par.getLabelWidthString()) {
+		layoutasc = layout.itemsep * dh;
+	} else if (pit != 0 && layout.topsep > 0)
+		layoutasc = layout.topsep * dh;
+
+	asc += int(layoutasc * 2 / (2 + pars[pit].getDepth()));
+
+	prev = text_->outerHook(pit);
+	if (prev != pit_type(pars.size())) {
+		asc += int(pars[prev].layout().parsep * dh);
+	} else if (pit != 0) {
+		Paragraph const & prevpar = pars[pit - 1];
+		if (prevpar.getDepth() != 0 || prevpar.layout() == layout)
+			asc += int(layout.parsep * dh);
+	}
+
+	return asc;
+}
+
+
+int TextMetrics::parBottomSpacing(pit_type const pit) const
+{
+	double layoutdesc = 0;
+	ParagraphList const & pars = text_->paragraphs();
+	double const dh = defaultRowHeight();
+
+	// add the layout spaces, for example before and after
+	// a section, or between the items of a itemize or enumerate
+	// environment
+	pit_type nextpit = pit + 1;
+	if (nextpit != pit_type(pars.size())) {
+		pit_type cpit = pit;
+
+		if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
+			double usual = pars[cpit].layout().bottomsep * dh;
+			double unusual = 0;
+			cpit = text_->depthHook(cpit, pars[nextpit].getDepth());
+			if (pars[cpit].layout() != pars[nextpit].layout()
+				|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
+				unusual = pars[cpit].layout().bottomsep * dh;
+			layoutdesc = max(unusual, usual);
+		} else if (pars[cpit].getDepth() == pars[nextpit].getDepth()) {
+			if (pars[cpit].layout() != pars[nextpit].layout()
+				|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
+				layoutdesc = int(pars[cpit].layout().bottomsep * dh);
+		}
+	}
+
+	return int(layoutdesc * 2 / (2 + pars[pit].getDepth()));
+}
+
+
+void TextMetrics::setRowHeight(Row & row) const
 {
 	Paragraph const & par = text_->getPar(row.pit());
 	Layout const & layout = par.layout();
-	double const spacing_val = layout.spacing.getValue()
-		* text_->spacing(par);
+	double const spacing_val = layout.spacing.getValue() * text_->spacing(par);
 
 	// Initial value for ascent (useful if row is empty).
 	Font const font = displayFont(row.pit(), row.pos());
@@ -962,103 +1065,7 @@ void TextMetrics::setRowHeight(Row & row, bool topBottomSpace) const
 	++maxasc;
 	++maxdes;
 
-	// Now use the layout information.
-	double layoutasc = 0;
-	double layoutdesc = 0;
-	int labeladdon = 0;
-	ParagraphList const & pars = text_->paragraphs();
-	Inset const & inset = text_->inset();
-	double const dh = defaultRowHeight();
-
-	// is it a top line?
-	if (row.pos() == 0 && topBottomSpace) {
-		BufferParams const & bufparams = bv_->buffer().params();
-		// some parskips VERY EASY IMPLEMENTATION
-		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
-		    && !inset.getLayout().parbreakIsNewline()
-		    && !par.layout().parbreak_is_newline
-		    && row.pit() > 0
-		    && ((layout.isParagraph() && par.getDepth() == 0)
-			    || (pars[row.pit() - 1].layout().isParagraph()
-				    && pars[row.pit() - 1].getDepth() == 0))) {
-			maxasc += bufparams.getDefSkip().inPixels(*bv_);
-		}
-
-		if (par.params().startOfAppendix())
-			maxasc += int(3 * dh);
-
-		// special code for the top label
-		if (layout.labelIsAbove()
-		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(row.pit()))
-		    && !par.labelString().empty()) {
-			FontInfo labelfont = text_->labelFont(par);
-			FontMetrics const & lfm = theFontMetrics(labelfont);
-			labeladdon = int(
-				  lfm.maxHeight()
-					* layout.spacing.getValue()
-					* text_->spacing(par)
-				+ (layout.topsep + layout.labelbottomsep) * dh);
-		}
-
-		// Add the layout spaces, for example before and after
-		// a section, or between the items of a itemize or enumerate
-		// environment.
-
-		pit_type prev = text_->depthHook(row.pit(), par.getDepth());
-		Paragraph const & prevpar = pars[prev];
-		if (prev != row.pit()
-		    && prevpar.layout() == layout
-		    && prevpar.getDepth() == par.getDepth()
-		    && prevpar.getLabelWidthString()
-					== par.getLabelWidthString()) {
-			layoutasc = layout.itemsep * dh;
-		} else if (row.pit() != 0 || row.pos() != 0) {
-			if (layout.topsep > 0)
-				layoutasc = layout.topsep * dh;
-		}
-
-		prev = text_->outerHook(row.pit());
-		if (prev != pit_type(pars.size())) {
-			maxasc += int(pars[prev].layout().parsep * dh);
-		} else if (row.pit() != 0) {
-			Paragraph const & prevpar = pars[row.pit() - 1];
-			if (prevpar.getDepth() != 0 ||
-					prevpar.layout() == layout) {
-				maxasc += int(layout.parsep * dh);
-			}
-		}
-	}
-
-	// is it a bottom line?
-	if (row.endpos() >= par.size() && topBottomSpace) {
-		// add the layout spaces, for example before and after
-		// a section, or between the items of a itemize or enumerate
-		// environment
-		pit_type nextpit = row.pit() + 1;
-		if (nextpit != pit_type(pars.size())) {
-			pit_type cpit = row.pit();
-
-			if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
-				double usual = pars[cpit].layout().bottomsep * dh;
-				double unusual = 0;
-				cpit = text_->depthHook(cpit, pars[nextpit].getDepth());
-				if (pars[cpit].layout() != pars[nextpit].layout()
-				    || pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
-					unusual = pars[cpit].layout().bottomsep * dh;
-				layoutdesc = max(unusual, usual);
-			} else if (pars[cpit].getDepth() == pars[nextpit].getDepth()) {
-				if (pars[cpit].layout() != pars[nextpit].layout()
-					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
-					layoutdesc = int(pars[cpit].layout().bottomsep * dh);
-			}
-		}
-	}
-
-	// incalculate the layout spaces
-	maxasc += int(layoutasc  * 2 / (2 + pars[row.pit()].getDepth()));
-	maxdes += int(layoutdesc * 2 / (2 + pars[row.pit()].getDepth()));
-
-	row.dimension().asc = maxasc + labeladdon;
+	row.dimension().asc = maxasc;
 	row.dimension().des = maxdes;
 }
 
@@ -2001,18 +2008,19 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	DocIterator wordStart = bvcur;
 	wordStart.pos() -= word.length();
 
+	// calculate dimensions of the word
+	Row row;
+	row.pit(bvcur.pit());
+	row.pos(wordStart.pos());
+	row.endpos(bvcur.pos());
+	setRowHeight(row);
+	dim = row.dimension();
+
 	// get position on screen of the word start and end
 	//FIXME: Is it necessary to explicitly set this to false?
 	wordStart.boundary(false);
 	Point lxy = cur.bv().getPos(wordStart);
 	Point rxy = cur.bv().getPos(bvcur);
-
-	// calculate dimensions of the word
-	Row row;
-	row.pos(wordStart.pos());
-	row.endpos(bvcur.pos());
-	setRowHeight(row, false);
-	dim = row.dimension();
 	dim.wid = abs(rxy.x_ - lxy.x_);
 
 	// calculate position of word

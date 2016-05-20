@@ -113,11 +113,6 @@ public:
 
 	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
-	/// Returns the height of the row (width member is set to 0).
-	/// If \c topBottomSpace is true, extra space is added for the
-	/// top and bottom row.
-	void setRowHeight(Row & row, bool topBottomSpace = true) const;
-
 private:
 	///
 	ParagraphMetrics & parMetrics(pit_type, bool redo_paragraph);
@@ -138,6 +133,13 @@ private:
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
 	void computeRowMetrics(Row & row, int width) const;
+
+	/// Set the height of the row (without space above/below paragraph)
+	void setRowHeight(Row & row) const;
+	// Compute the space on top of a paragraph
+	int parTopSpacing(pit_type pit) const;
+	// Compute the space below a a paragraph
+	int parBottomSpacing(pit_type pit) const;
 
 	// Helper function for the other checkInsetHit method.
 	InsetList::InsetTable * checkInsetHit(pit_type pit, int x, int y);
