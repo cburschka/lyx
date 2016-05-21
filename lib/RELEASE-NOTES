@@ -126,9 +126,12 @@
 
 !!Known issues in version 2.2.0
 
-* LyX needs to be run under Python 2 and will not work properly on systems
-  where Python 3 is the default binary. See #7030 to know how to fix this
-  properly, since simple shebang conversion in *.py files will not be enough.
+* LyX needs Python 2.7 at runtime. The python 2 interpreter needs to be named
+  either 'python' or 'python2'.
+  Building LyX usually works with Python 3 as well, but there might be cases
+  where it does not work properly on systems where Python 3 is the default
+  binary. See #7030 to know how to fix this properly, since simple shebang
+  conversion in *.py files will not be enough.
 
 * If using LyX with Qt 4, it is possible to suddenly get keyboard keys wrong,
   and deadlock. To work around the issue, you can disable IBus for LyX by
