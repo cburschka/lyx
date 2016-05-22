@@ -138,6 +138,13 @@
   starting LyX as 'XMODIFIERS= lyx'. For further discussion and alternative
   workarounds, see #9362.
 
+* LyX can produce LuaTeX output that is not compatible with the newest versions
+  of the engine (e.g. 0.95.0, the version in TeX Live 2016). In a later 2.2.x
+  version we plan to implement exporting of LuaTeX code that is compatible
+  with the LuaTeX versions shipped with both TeX Live 2015 and TeX Live 2016.
+  For more information, see the following mailing list thread:
+  https://www.mail-archive.com/search?l=mid&q=20160520075810.yi3uspufehev5aln%40cotopaxi
+
 
 !!Caveats when upgrading from earlier versions to 2.2.x
 
