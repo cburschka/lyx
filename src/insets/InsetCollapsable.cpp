@@ -615,4 +615,21 @@ string InsetCollapsable::contextMenuName() const
 		return "context-collapsable";
 }
 
+
+bool InsetCollapsable::canPaintChange(BufferView const & bv) const
+{
+	switch (geometry(bv)) {
+	case Corners:
+	case SubLabel:
+	case ButtonOnly:
+		// these cases are handled by RowPainter since the inset is inline.
+		return false;
+	default:
+		break;
+	}
+	// TODO: implement the drawing in the remaining cases
+	return true;
+}
+
+
 } // namespace lyx

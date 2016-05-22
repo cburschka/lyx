@@ -60,25 +60,8 @@ RowPainter::RowPainter(PainterInfo & pi,
 	  pars_(text.paragraphs()),
 	  row_(row), par_(text.paragraphs()[row.pit()]),
 	  pm_(text_metrics_.parMetrics(row.pit())), change_(pi_.change_),
-	  xo_(x), yo_(y), width_(text_metrics_.width()),
-	  solid_line_thickness_(1), solid_line_offset_(1),
-	  dotted_line_thickness_(1)
+	  xo_(x), yo_(y), width_(text_metrics_.width())
 {
-	if (lyxrc.zoom >= 200) {
-		// derive the line thickness from zoom factor
-		// the zoom is given in percent
-		// (increase thickness at 250%, 450% etc.)
-		solid_line_thickness_ = (lyxrc.zoom + 50) / 200;
-		// adjust line_offset_ too
-		solid_line_offset_ = 1 + solid_line_thickness_ / 2;
-	}
-	if (lyxrc.zoom >= 100) {
-		// derive the line thickness from zoom factor
-		// the zoom is given in percent
-		// (increase thickness at 150%, 250% etc.)
-		dotted_line_thickness_ = (lyxrc.zoom + 50) / 100;
-	}
-
 	x_ = row_.left_margin + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
@@ -165,9 +148,10 @@ void RowPainter::paintForeignMark(Row::Element const & e) const
 		return;
 
 	int const desc = e.inset ? e.dim.descent() : 0;
-	int const y = yo_ + solid_line_offset_ + desc + solid_line_thickness_ / 2;
+	int const y = yo_ + pi_.base.solidLineOffset()
+		+ desc + pi_.base.solidLineThickness() / 2;
 	pi_.pain.line(int(x_), y, int(x_ + e.full_width()), y, Color_language,
-		Painter::line_solid, solid_line_thickness_);
+	              Painter::line_solid, pi_.base.solidLineThickness());
 }
 
 
@@ -177,8 +161,8 @@ void RowPainter::paintMisspelledMark(Row::Element const & e) const
 	// to avoid drawing at the same vertical offset
 	FontMetrics const & fm = theFontMetrics(e.font);
 	int const thickness = max(fm.lineWidth(), 2);
-	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
-		+ (e.change.changed() ? solid_line_thickness_ + 1 : 0)
+	int const y = yo_ + pi_.base.solidLineOffset() + pi_.base.solidLineThickness()
+		+ (e.change.changed() ? pi_.base.solidLineThickness() + 1 : 0)
 		+ 1 + thickness / 2;
 
 	//FIXME: this could be computed only once, it is probably not costly.
@@ -255,14 +239,7 @@ void RowPainter::paintStringAndSel(Row::Element const & e) const
 
 void RowPainter::paintChange(Row::Element const & e) const
 {
-	if (!e.change.changed())
-		return;
-	// Calculate 1/3 height of font
-	FontMetrics const & fm = theFontMetrics(e.font);
-	int const y_bar = e.change.deleted() ? yo_ - fm.maxAscent() / 3
-		: yo_ + 2 * solid_line_offset_ + solid_line_thickness_;
-	pi_.pain.line(int(x_), y_bar, int(x_ + e.full_width()), y_bar,
-	              e.change.color(), Painter::line_solid, solid_line_thickness_);
+	e.change.paintCue(pi_, x_, yo_, x_ + e.full_width(), e.font.fontInfo());
 }
 
 
@@ -373,16 +350,17 @@ void RowPainter::paintAppendixStart(int y) const
 void RowPainter::paintTooLargeMarks(bool const left, bool const right) const
 {
 	if (left)
-		pi_.pain.line(dotted_line_thickness_, yo_ - row_.ascent(),
-					  dotted_line_thickness_, yo_ + row_.descent(),
-					  Color_scroll,
-					  Painter::line_onoffdash, dotted_line_thickness_);
+		pi_.pain.line(pi_.base.dottedLineThickness(), yo_ - row_.ascent(),
+					  pi_.base.dottedLineThickness(), yo_ + row_.descent(),
+					  Color_scroll, Painter::line_onoffdash,
+		              pi_.base.dottedLineThickness());
 	if (right) {
-		int const wwidth = pi_.base.bv->workWidth() - dotted_line_thickness_;
+		int const wwidth =
+			pi_.base.bv->workWidth() - pi_.base.dottedLineThickness();
 		pi_.pain.line(wwidth, yo_ - row_.ascent(),
 					  wwidth, yo_ + row_.descent(),
-					  Color_scroll,
-					  Painter::line_onoffdash, dotted_line_thickness_);
+					  Color_scroll, Painter::line_onoffdash,
+		              pi_.base.dottedLineThickness());
 	}
 }
 
@@ -611,8 +589,8 @@ void RowPainter::paintText()
 		// The line that indicates word in a different language
 		paintForeignMark(e);
 
-		// change tracking (not for insets that track their own changes)
-		if (e.type != Row::INSET || ! e.inset->canTrackChanges())
+		// change tracking (not for insets that handle it themselves)
+		if (e.type != Row::INSET || ! e.inset->canPaintChange(*pi_.base.bv))
 			paintChange(e);
 
 		x_ += e.full_width();

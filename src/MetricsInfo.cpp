@@ -12,6 +12,7 @@
 
 #include "BufferView.h"
 #include "ColorSet.h"
+#include "LyXRC.h"
 #include "MetricsInfo.h"
 
 #include "insets/Inset.h"
@@ -36,15 +37,33 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////////
 
 MetricsBase::MetricsBase()
-	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"),
-	  textwidth(0)
-{}
+	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"), textwidth(0),
+	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
+{
+	if (lyxrc.zoom >= 200) {
+		// derive the line thickness from zoom factor
+		// the zoom is given in percent
+		// (increase thickness at 250%, 450% etc.)
+		solid_line_thickness_ = (lyxrc.zoom + 50) / 200;
+		// adjust line_offset_ too
+		solid_line_offset_ = 1 + solid_line_thickness_ / 2;
+	}
+	if (lyxrc.zoom >= 100) {
+		// derive the line thickness from zoom factor
+		// the zoom is given in percent
+		// (increase thickness at 150%, 250% etc.)
+		dotted_line_thickness_ = (lyxrc.zoom + 50) / 100;
+	}
+}
 
 
-MetricsBase::MetricsBase(BufferView * b, FontInfo const & f, int w)
-	: bv(b), font(f), style(LM_ST_TEXT), fontname("mathnormal"),
-	  textwidth(w)
-{}
+MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
+	: MetricsBase()
+{
+	bv = b;
+	font = f;
+	textwidth = w;
+}
 
 
 Changer MetricsBase::changeFontSet(docstring const & name, bool cond)
@@ -80,8 +99,8 @@ Changer MetricsBase::changeFontSet(char const * name, bool cond)
 //
 /////////////////////////////////////////////////////////////////////////
 
-MetricsInfo::MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth, 
-	MacroContext const & mc)
+MetricsInfo::MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
+                         MacroContext const & mc)
 	: base(bv, font, textwidth), macrocontext(mc)
 {}
 

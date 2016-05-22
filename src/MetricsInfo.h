@@ -54,7 +54,7 @@ public:
 	///
 	MetricsBase();
 	///
-	MetricsBase(BufferView * bv, FontInfo const & font, int textwidth);
+	MetricsBase(BufferView * bv, FontInfo font, int textwidth);
 
 	/// the current view
 	BufferView * bv;
@@ -76,6 +76,16 @@ public:
 	Changer changeFrac(bool cond = true);
 	// Temporarily change the style to (script)script style
 	Changer changeScript(bool cond = true);
+	///
+	int solidLineThickness() const { return solid_line_thickness_; }
+	///
+	int solidLineOffset() const { return solid_line_offset_; }
+	///
+	int dottedLineThickness() const { return dotted_line_thickness_; }
+private:
+	int solid_line_thickness_;
+	int solid_line_offset_;
+	int dotted_line_thickness_;
 };
 
 
@@ -88,7 +98,8 @@ public:
 	///
 	MetricsInfo();
 	///
-	MetricsInfo(BufferView * bv, FontInfo const & font, int textwidth, MacroContext const & mc);
+	MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
+	            MacroContext const & mc);
 
 	///
 	MetricsBase base;

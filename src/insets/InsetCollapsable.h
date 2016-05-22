@@ -127,6 +127,8 @@ public:
 	/// and of course decoration().
 	Geometry geometry(BufferView const & bv) const;
 	///
+	bool canPaintChange(BufferView const & bv) const;
+	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;

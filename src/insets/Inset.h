@@ -352,6 +352,9 @@ public:
 
 	/// does this contain text that can be change track marked in DVI?
 	virtual bool canTrackChanges() const { return false; }
+	/// Will this inset paint its own change tracking status (in the parent
+	/// paragraph) or will it let RowPainter handle it?
+	virtual bool canPaintChange(BufferView const &) const { return false; }
 	/// return true if the inset should be removed automatically
 	virtual bool autoDelete() const;
 

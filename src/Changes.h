@@ -32,6 +32,8 @@ class AuthorList;
 class Buffer;
 class DocIterator;
 class OutputParams;
+class PainterInfo;
+class FontInfo;
 
 class Change {
 public:
@@ -63,6 +65,20 @@ public:
 	void setDeleted() { type = DELETED; }
 	/// Is this change made by the current author ?
 	bool currentAuthor() const { return author == 0; }
+
+	/// Paint under- or strike-through line
+	///
+	/// Text : underline or strike through
+	/// \param x1 begin
+	/// \param x2 end
+	/// \param y baseline
+	void paintCue(PainterInfo & pi, double const x1, double const y,
+	               double const x2, FontInfo const & font) const;
+	/// Box : line below or diagonal
+	/// \param x1,y1 top-left corner
+	/// \param x2,y2 bottom-right corner
+	void paintCue(PainterInfo & pi, double const x1, double const y1,
+	               double const x2, double const y2) const;
 
 	Type type;
 

@@ -64,6 +64,8 @@ public:
 	///
 	bool canTrackChanges() const { return true; }
 	///
+	bool canPaintChange(BufferView const &) const { return false; }
+	///
 	InsetText * asInsetText() { return this; }
 	///
 	InsetText const * asInsetText() const { return this; }

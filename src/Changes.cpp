@@ -19,6 +19,7 @@
 #include "BufferParams.h"
 #include "Encoding.h"
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "TocBackend.h"
@@ -30,12 +31,17 @@
 #include "support/mutex.h"
 
 #include "frontends/alert.h"
+#include "frontends/FontMetrics.h"
+#include "frontends/Painter.h"
 
 #include <ostream>
 
 using namespace std;
 
 namespace lyx {
+
+using frontend::Painter;
+using frontend::FontMetrics;
 
 /*
  * Class Change has a changetime field that specifies the exact time at which
@@ -545,6 +551,46 @@ void Changes::updateBuffer(Buffer const & buf)
 }
 
 
+void Change::paintCue(PainterInfo & pi, double const x1, double const y,
+                      double const x2, FontInfo const & font) const
+{
+	if (!changed())
+		return;
+	// Calculate 1/3 height of font
+	FontMetrics const & fm = theFontMetrics(font);
+	int const y_bar = deleted() ? y - fm.maxAscent() / 3
+		: y + 2 * pi.base.solidLineOffset() + pi.base.solidLineThickness();
+	pi.pain.line(int(x1), y_bar, int(x2), y_bar, color(),
+	             Painter::line_solid, pi.base.solidLineThickness());
+}
+
+
+void Change::paintCue(PainterInfo & pi, double const x1, double const y1,
+                      double const x2, double const y2) const
+{
+	/*
+	 * y1      /
+	 *        /
+	 *       /
+	 *      /
+	 *     /
+	 * y2 /_____
+	 *    x1  x2
+	 */
+	double y = 0;
+	switch(type) {
+	case UNCHANGED:
+		return;
+	case INSERTED:
+		y = y2;
+		break;
+	case DELETED:
+		y = y1;
+		break;
+	}
+	pi.pain.line(x1, y2, x2, y, color(), Painter::line_solid,
+	             pi.base.solidLineThickness());
+}
 
 
 } // namespace lyx
