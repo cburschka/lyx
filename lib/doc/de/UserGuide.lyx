@@ -148,6 +148,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 986154928 "Gnter Milde"
 \end_header
 
 \begin_body
@@ -349,7 +350,7 @@ Skalierung auf Bildschirm
  verwenden.
  Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
  \SpecialChar LyX
-' Hauptarbeitsbereich sind.
+’ Hauptarbeitsbereich sind.
  Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
  Dies funktioniert leider noch nicht für Gleichungen.
 \end_layout
@@ -8487,7 +8488,22 @@ Ein Schreibmaschinen-Anführungszeichen erreichen Sie nicht durch Eingabe
 \family sans
 ",
 \family default
- weil das ein reales Anführungszeichen erzeugt.
+ weil das ein reales Anführungszeichen erzeugt
+\change_inserted 986154928 1464017746
+ (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Anführungszeichen"
+
+\end_inset
+
+
+\change_unchanged
+.
  Sie erhalten es stattdessen über das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -17593,14 +17609,64 @@ status collapsed
 \end_inset
 
 
+\change_inserted 986154928 1464017699
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Anführungszeichen"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
  setzt Anführungszeichen normalerweise richtig.
- Insbesondere wird es unterschiedliche Anführungszeichen für den Beginn
- und das Ende des eingeschlossenen Textes benutzen.
- Zum Beispiel 
+ Insbesondere 
+\change_deleted 986154928 1464016816
+wird es
+\change_inserted 986154928 1464017342
+werden bei der Eingabe von 
+\family sans
+
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert"
+\end_inset
+
+
+\change_unchanged
+
+\family default
+ unterschiedliche Anführungszeichen für den Beginn und das Ende des eingeschloss
+enen Textes benutz
+\change_inserted 986154928 1464017341
+t
+\change_deleted 986154928 1464016841
+en.
+\change_inserted 986154928 1464017341
+,
+\change_unchanged
+ 
+\change_deleted 986154928 1464016846
+Z
+\change_inserted 986154928 1464017341
+z
+\change_unchanged
+um
+\change_inserted 986154928 1464017341
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_deleted 986154928 1464016866
+ 
+\change_unchanged
+Beispiel 
 \begin_inset Quotes gld
 \end_inset
 
@@ -17609,7 +17675,9 @@ Anfang Ende
 \end_inset
 
 .
- Das Tastaturzeichen 
+ 
+\change_deleted 986154928 1464017364
+Das Tastaturzeichen 
 \family sans
 "
 \family default
@@ -17618,12 +17686,61 @@ Anfang Ende
 Umschalt+2)
 \family default
  wird sie automatisch erzeugen.
+\change_inserted 986154928 1464017500
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 986154928 1464017594
+Natürlich kann diese 
+\begin_inset Quotes gld
+\end_inset
+
+smart-quotes
+\begin_inset Quotes grd
+\end_inset
+
+ Tastenbindung auch entfernt werden (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Tastenkürzel-bearbeiten"
+
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Sie können das Verhalten der 
+\change_inserted 986154928 1464017416
+
 \family sans
+
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert"
+\end_inset
+
+
+\change_deleted 986154928 1464017416
 "
+\change_unchanged
+
 \family default
 -Taste im Dialogfenster 
 \family sans
@@ -17654,14 +17771,28 @@ Anführungszeichen
 \family default
  einstellen.
  
+\change_deleted 986154928 1464017018
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 986154928 1464017023
 Über 
 \family sans
 Anführungszeichen
 \family default
- können Sie sechs verschiedene Anführungszeichen auswählen:
+ können 
+\change_unchanged
+Sie 
+\change_inserted 986154928 1464017026
+können 
+\change_unchanged
+sechs verschiedene Anführungszeichen
+\change_inserted 986154928 1464017048
+stile
+\change_unchanged
+ auswählen:
 \end_layout
 
 \begin_layout Labeling
@@ -17809,14 +17940,30 @@ doppelt
 \end_layout
 
 \begin_layout Standard
-Um ein einfaches Anführungszeichens zu schreiben wollen, benutzen Sie 
+Um ein einfaches Anführungszeichens zu schreiben
+\change_deleted 986154928 1464016748
+ wollen
+\change_unchanged
+, benutzen Sie 
+\change_deleted 986154928 1464016754
+
 \family sans
 Alt+
 \begin_inset Quotes grd
 \end_inset
 
 
+\change_inserted 986154928 1464016770
+
 \family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert single"
+\end_inset
+
+
+\change_unchanged
 .
 \end_layout
 
