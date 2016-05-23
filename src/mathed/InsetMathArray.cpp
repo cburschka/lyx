@@ -74,7 +74,8 @@ Inset * InsetMathArray::clone() const
 
 void InsetMathArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	ArrayChanger dummy(mi.base);
+	Changer dummy =
+		mi.base.changeStyle(LM_ST_TEXT, mi.base.style == LM_ST_DISPLAY);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 6;
 }
@@ -91,7 +92,8 @@ Dimension const InsetMathArray::dimension(BufferView const & bv) const
 void InsetMathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
-	ArrayChanger dummy(pi.base);
+	Changer dummy =
+		pi.base.changeStyle(LM_ST_TEXT, pi.base.style == LM_ST_DISPLAY);
 	InsetMathGrid::drawWithMargin(pi, x, y, 4, 2);
 }
 

@@ -49,7 +49,7 @@ docstring InsetMathBoldSymbol::name() const
 
 void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//FontSetChanger dummy(mi.base, "mathbf");
+	//Changer dummy = mi.base.changeFontSet("mathbf");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 	++dim.wid;  // for 'double stroke'
@@ -58,7 +58,7 @@ void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBoldSymbol::draw(PainterInfo & pi, int x, int y) const
 {
-	//FontSetChanger dummy(pi.base, "mathbf");
+	//Changer dummy = pi.base.changeFontSet("mathbf");
 	cell(0).draw(pi, x + 1, y);
 	cell(0).draw(pi, x + 2, y);
 	drawMarkers(pi, x, y);

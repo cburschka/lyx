@@ -21,6 +21,7 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
+#include "support/RefChanger.h"
 
 #include <ostream>
 #include <sstream>
@@ -242,6 +243,26 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 		background_ = tmplt.background_;
 
 	return *this;
+}
+
+
+Changer FontInfo::changeColor(ColorCode const color, bool cond)
+{
+	return make_change(color_, color, cond);
+}
+
+
+Changer FontInfo::changeShape(FontShape const shape, bool cond)
+{
+	return make_change(shape_, shape, cond);
+}
+
+
+Changer FontInfo::change(FontInfo font, bool realiz, bool cond)
+{
+	if (realiz)
+		font.realize(*this);
+	return make_change(*this, font, cond);
 }
 
 

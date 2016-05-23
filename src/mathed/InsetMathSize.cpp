@@ -43,7 +43,7 @@ Inset * InsetMathSize::clone() const
 
 void InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	StyleChanger dummy(mi.base, style_);
+	Changer dummy = mi.base.changeStyle(style_);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -51,7 +51,7 @@ void InsetMathSize::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSize::draw(PainterInfo & pi, int x, int y) const
 {
-	StyleChanger dummy(pi.base, style_);
+	Changer dummy = pi.base.changeStyle(style_);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

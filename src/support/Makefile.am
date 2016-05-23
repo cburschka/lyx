@@ -35,6 +35,7 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.cpp \
 	RandomAccessList.h \
 	bind.h \
+	Change.h \
 	ConsoleApplication.cpp \
 	ConsoleApplication.h \
 	ConsoleApplicationPrivate.h \
@@ -90,6 +91,7 @@ liblyxsupport_a_SOURCES = \
 	qstring_helpers.cpp \
 	qstring_helpers.h \
 	regex.h \
+	RefChanger.h \
 	socktools.cpp \
 	socktools.h \
 	strfwd.h \

@@ -18,7 +18,10 @@
 #include "Color.h"
 #include "ColorCode.h"
 #include "FontEnums.h"
+
+#include "support/Changer.h"
 #include "support/strfwd.h"
+
 
 namespace lyx {
 
@@ -135,6 +138,14 @@ public:
 			return false;
 		}
 	}
+
+	/// Temporarily replace the color with \param color.
+	Changer changeColor(ColorCode const color, bool cond = true);
+	/// Temporarily replace the shape with \param shape.
+	Changer changeShape(FontShape const shape, bool cond = true);
+	/// Temporarily replace the FontInfo with \param font, and optionally
+	/// \param realize the \param font against the current FontInfo.
+	Changer change(FontInfo font, bool realize = false, bool cond = true);
 
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);

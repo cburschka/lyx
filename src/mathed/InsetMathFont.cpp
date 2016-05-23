@@ -58,7 +58,7 @@ bool InsetMathFont::lockedMode() const
 
 void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontSetChanger dummy(mi.base, key_->name);
+	Changer dummy = mi.base.changeFontSet(key_->name);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -66,7 +66,7 @@ void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, key_->name);
+	Changer dummy = pi.base.changeFontSet(key_->name);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 	setPosCache(pi, x, y);

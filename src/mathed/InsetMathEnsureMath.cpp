@@ -37,7 +37,7 @@ Inset * InsetMathEnsureMath::clone() const
 void InsetMathEnsureMath::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool really_change_font = isTextFont(from_ascii(mi.base.fontname));
-	FontSetChanger dummy(mi.base, "mathnormal", really_change_font);
+	Changer dummy = mi.base.changeFontSet("mathnormal", really_change_font);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -46,7 +46,7 @@ void InsetMathEnsureMath::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathEnsureMath::draw(PainterInfo & pi, int x, int y) const
 {
 	bool really_change_font = isTextFont(from_ascii(pi.base.fontname));
-	FontSetChanger dummy(pi.base, "mathnormal", really_change_font);
+	Changer dummy = pi.base.changeFontSet("mathnormal", really_change_font);
 	cell(0).draw(pi, x, y);
 	drawMarkers(pi, x, y);
 }

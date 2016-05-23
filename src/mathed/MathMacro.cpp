@@ -551,10 +551,10 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	int expy = y;
 
 	if (d->displayMode_ == DISPLAY_INIT || d->displayMode_ == DISPLAY_INTERACTIVE_INIT) {
-		FontSetChanger dummy(pi.base, "lyxtex");
+		Changer dummy = pi.base.changeFontSet("lyxtex");
 		pi.pain.text(x, y, from_ascii("\\") + name(), pi.base.font);
 	} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
-		FontSetChanger dummy(pi.base, "lyxtex");
+		Changer dummy = pi.base.changeFontSet("lyxtex");
 		pi.pain.text(x, y, from_ascii("\\"), pi.base.font);
 		x += mathed_string_width(pi.base.font, from_ascii("\\")) + 1;
 		cell(0).draw(pi, x, y);

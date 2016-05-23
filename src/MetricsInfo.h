@@ -18,6 +18,8 @@
 #include "FontInfo.h"
 
 #include "support/strfwd.h"
+#include "support/Changer.h"
+
 
 #include <string>
 
@@ -31,6 +33,7 @@ class MacroContext;
 
 
 /// Standard Sizes (mode styles)
+/// note: These values are hard-coded in changeStyle
 enum Styles {
 	///
 	LM_ST_DISPLAY = 0,
@@ -63,6 +66,16 @@ public:
 	std::string fontname;
 	/// This is the width available in pixels
 	int textwidth;
+
+	/// Temporarily change a full font.
+	Changer changeFontSet(docstring const & font, bool cond = true);
+	Changer changeFontSet(char const * font, bool cond = true);
+	/// Temporarily change the font size and the math style.
+	Changer changeStyle(Styles style, bool cond = true);
+	// Temporarily change to the style suitable for use in fractions
+	Changer changeFrac(bool cond = true);
+	// Temporarily change the style to (script)script style
+	Changer changeScript(bool cond = true);
 };
 
 
@@ -126,121 +139,6 @@ public:
 };
 
 class TextMetricsInfo {};
-
-
-/// Generic base for temporarily changing things. The derived class is
-/// responsible for restoring the original state when the Changer is
-/// destructed.
-template <class Struct, class Temp = Struct>
-class Changer {
-protected:
-	///
-	Changer(Struct & orig, Temp const & save) : orig_(orig), save_(save) {}
-	///
-	Changer(Struct & orig) : orig_(orig), save_(orig) {}
-	///
-	Struct & orig_;
-	///
-	Temp save_;
-};
-
-
-
-// temporarily change some aspect of a font
-class FontChanger : public Changer<FontInfo> {
-public:
-	///
-	FontChanger(FontInfo & orig, docstring const & font);
-	FontChanger(MetricsBase & mb, char const * const font);
-	///
-	~FontChanger();
-};
-
-
-// temporarily change a full font
-class FontSetChanger : public Changer<MetricsBase> {
-public:
-	///
-	FontSetChanger(MetricsBase & mb, docstring const & font,
-			bool really_change_font = true);
-	FontSetChanger(MetricsBase & mb, char const * const font,
-			bool really_change_font = true);
-	///
-	~FontSetChanger();
-private:
-	///
-	bool change_;
-};
-
-
-// temporarily change the style
-class StyleChanger : public Changer<MetricsBase> {
-public:
-	///
-	StyleChanger(MetricsBase & mb, Styles style);
-	///
-	~StyleChanger();
-};
-
-
-// temporarily change the style to script style
-class ScriptChanger : public StyleChanger {
-public:
-	///
-	ScriptChanger(MetricsBase & mb);
-};
-
-
-// temporarily change the style suitable for use in fractions
-class FracChanger : public StyleChanger {
-public:
-	///
-	FracChanger(MetricsBase & mb);
-};
-
-
-// temporarily change the style suitable for use in tabulars and arrays
-class ArrayChanger : public StyleChanger {
-public:
-	///
-	ArrayChanger(MetricsBase & mb);
-};
-
-
-
-// temporarily change the shape of a font
-class ShapeChanger : public Changer<FontInfo, FontShape> {
-public:
-	///
-	ShapeChanger(FontInfo & font, FontShape shape);
-	///
-	~ShapeChanger();
-};
-
-
-// temporarily change the available text width
-class WidthChanger : public Changer<MetricsBase>
-{
-public:
-	///
-	WidthChanger(MetricsBase & mb, int width);
-	///
-	~WidthChanger();
-};
-
-
-// temporarily change the used color
-class ColorChanger : public Changer<FontInfo, ColorCode> {
-public:
-	///
-	ColorChanger(FontInfo & font, ColorCode color,
-		     bool really_change_color = true);
-	///
-	~ColorChanger();
-private:
-	///
-	bool change_;
-};
 
 } // namespace lyx
 

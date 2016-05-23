@@ -22,10 +22,12 @@
 #include "MetricsInfo.h"
 #include "TextPainter.h"
 
-#include "support/lassert.h"
 #include "frontends/Painter.h"
 
+#include "support/lassert.h"
+
 using namespace std;
+
 
 namespace lyx {
 
@@ -125,24 +127,26 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1, dim2;
 
+	// This could be simplified, including avoiding useless recalculation of
+	// cell metrics
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
-			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
+			Changer dummy = mi.base.font.changeShape(UP_SHAPE);
 			cell(0).metrics(mi, dim0);
 			dim.wid = dim0.width()+ 3;
 			dim.asc = dim0.asc;
 			dim.des = dim0.des;
 		} else if (nargs() == 2) {
 			cell(0).metrics(mi, dim0);
-			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
+			Changer dummy = mi.base.font.changeShape(UP_SHAPE);
 			cell(1).metrics(mi, dim1);
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = max(dim0.asc, dim1.asc);
 			dim.des = max(dim0.des, dim1.des);
 		} else {
 			cell(2).metrics(mi, dim2);
-			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
-			FracChanger dummy(mi.base);
+			Changer dummy = mi.base.font.changeShape(UP_SHAPE);
+			Changer dummy2 = mi.base.changeFrac();
 			cell(0).metrics(mi, dim0);
 			cell(1).metrics(mi, dim1);
 			dim.wid = dim0.width() + dim1.wid + dim2.wid + 10;
@@ -151,31 +155,25 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 	} else {
 		// general cell metrics used for \frac
-		FracChanger dummy(mi.base);
+		Changer dummy = mi.base.changeFrac();
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		if (nargs() == 3)
 			cell(2).metrics(mi, dim2);
 		// metrics for special fraction types
-		if (kind_ == NICEFRAC) {
-			dim.wid = dim0.width() + dim1.wid + 5;
-			dim.asc = dim0.height() + 5;
-			dim.des = dim1.height() - 5;
-		} else if (kind_ == UNITFRAC) {
-			ShapeChanger dummy2(mi.base.font, UP_SHAPE);
+		if (kind_ == NICEFRAC || kind_ == UNITFRAC) {
+			Changer dummy2 = mi.base.font.changeShape(UP_SHAPE, kind_ == UNITFRAC);
 			dim.wid = dim0.width() + dim1.wid + 5;
 			dim.asc = dim0.height() + 5;
 			dim.des = dim1.height() - 5;
 		} else {
-			if (kind_ == CFRAC || kind_ == CFRACLEFT
-				  || kind_ == CFRACRIGHT || kind_ == DFRAC) {
+			if (kind_ == CFRAC || kind_ == CFRACLEFT || kind_ == CFRACRIGHT
+			    || kind_ == DFRAC || kind_ == TFRAC) {
 				// \cfrac and \dfrac are always in display size
-				StyleChanger dummy2(mi.base, LM_ST_DISPLAY);
-				cell(0).metrics(mi, dim0);
-				cell(1).metrics(mi, dim1);
-			} else if (kind_ == TFRAC) {
-				// tfrac is in always in text size
-				StyleChanger dummy2(mi.base, LM_ST_SCRIPT);
+				// \tfrac is in always in text size
+				Changer dummy2 = mi.base.changeStyle((kind_ == TFRAC)
+				                                     ? LM_ST_SCRIPT
+				                                     : LM_ST_DISPLAY);
 				cell(0).metrics(mi, dim0);
 				cell(1).metrics(mi, dim1);
 			}
@@ -195,16 +193,16 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);
 	if (kind_ == UNIT || (kind_ == UNITFRAC && nargs() == 3)) {
 		if (nargs() == 1) {
-			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
+			Changer dummy = pi.base.font.changeShape(UP_SHAPE);
 			cell(0).draw(pi, x + 1, y);
 		} else if (nargs() == 2) {
 			cell(0).draw(pi, x + 1, y);
-			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
+			Changer dummy = pi.base.font.changeShape(UP_SHAPE);
 			cell(1).draw(pi, x + dim0.width() + 5, y);
 		} else {
 			cell(2).draw(pi, x + 1, y);
-			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
-			FracChanger dummy(pi.base);
+			Changer dummy = pi.base.font.changeShape(UP_SHAPE);
+			Changer dummy2 = pi.base.changeFrac();
 			Dimension const dim1 = cell(1).dimension(*pi.base.bv);
 			Dimension const dim2 = cell(2).dimension(*pi.base.bv);
 			int xx = x + dim2.wid + 5;
@@ -214,7 +212,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 					 y + dim1.asc / 2);
 		}
 	} else {
-		FracChanger dummy(pi.base);
+		Changer dummy = pi.base.changeFrac();
 		Dimension const dim1 = cell(1).dimension(*pi.base.bv);
 		int m = x + dim.wid / 2;
 		if (kind_ == NICEFRAC) {
@@ -223,20 +221,18 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			cell(1).draw(pi, x + dim0.width() + 5,
 					y + dim1.asc / 2);
 		} else if (kind_ == UNITFRAC) {
-			ShapeChanger dummy2(pi.base.font, UP_SHAPE);
+			Changer dummy2 = pi.base.font.changeShape(UP_SHAPE);
 			cell(0).draw(pi, x + 2,	y - dim0.des - 5);
 			cell(1).draw(pi, x + dim0.width() + 5, y + dim1.asc / 2);
-		} else if (kind_ == FRAC || kind_ == ATOP || kind_ == OVER) {
-			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
-			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
-		} else if (kind_ == TFRAC) {
+		} else if (kind_ == FRAC || kind_ == ATOP || kind_ == OVER
+		           || kind_ == TFRAC) {
 			// tfrac is in always in text size
-			StyleChanger dummy2(pi.base, LM_ST_SCRIPT);
+			Changer dummy2 = pi.base.changeStyle(LM_ST_SCRIPT, kind_ == TFRAC);
 			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else {
 			// \cfrac and \dfrac are always in display size
-			StyleChanger dummy2(pi.base, LM_ST_DISPLAY);
+			Changer dummy2 = pi.base.changeStyle(LM_ST_DISPLAY);
 			if (kind_ == CFRAC || kind_ == DFRAC)
 				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			else if (kind_ == CFRACLEFT)
@@ -552,22 +548,12 @@ int InsetMathBinom::dw(int height) const
 void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1;
-
-	// The cells must be set while the RAII objects (StyleChanger,
-	// FracChanger) do still exist and cannot be set after the if case.
-	if (kind_ == DBINOM) {
-		StyleChanger dummy(mi.base, LM_ST_DISPLAY);
-		cell(0).metrics(mi, dim0);
-		cell(1).metrics(mi, dim1);
-	} else if (kind_ == TBINOM) {
-		StyleChanger dummy(mi.base, LM_ST_SCRIPT);
-		cell(0).metrics(mi, dim0);
-		cell(1).metrics(mi, dim1);
-	} else {
-		FracChanger dummy(mi.base);
-		cell(0).metrics(mi, dim0);
-		cell(1).metrics(mi, dim1);
-	}
+	Changer dummy =
+		(kind_ == DBINOM) ? mi.base.changeStyle(LM_ST_DISPLAY) :
+		(kind_ == TBINOM) ? mi.base.changeStyle(LM_ST_SCRIPT) :
+		                    mi.base.changeFrac();
+	cell(0).metrics(mi, dim0);
+	cell(1).metrics(mi, dim1);
 	dim.asc = dim0.height() + 4 + 5;
 	dim.des = dim1.height() + 4 - 5;
 	dim.wid = max(dim0.wid, dim1.wid) + 2 * dw(dim.height()) + 4;
@@ -587,18 +573,11 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 		kind_ == BRACK ? from_ascii("]") : from_ascii(")");
 
 	int m = x + dim.width() / 2;
-	// The cells must be drawn while the RAII objects (StyleChanger,
-	// FracChanger) do still exist and cannot be drawn after the if case.
-	if (kind_ == DBINOM) {
-		StyleChanger dummy(pi.base, LM_ST_DISPLAY);
-		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - 5);
-	} else if (kind_ == TBINOM) {
-		StyleChanger dummy(pi.base, LM_ST_SCRIPT);
-		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - 5);
-	} else {
-		FracChanger dummy2(pi.base);
+	{
+		Changer dummy =
+			(kind_ == DBINOM) ? pi.base.changeStyle(LM_ST_DISPLAY) :
+			(kind_ == TBINOM) ? pi.base.changeStyle(LM_ST_SCRIPT) :
+			                    pi.base.changeFrac();
 		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
 		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - 5);
 	}

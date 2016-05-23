@@ -56,7 +56,7 @@ Inset * InsetMathSpecialChar::clone() const
 void InsetMathSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (mi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(mi.base.font, UP_SHAPE);
+		Changer dummy = mi.base.font.changeShape(UP_SHAPE);;
 		dim = theFontMetrics(mi.base.font).dimension(char_);
 	} else {
 		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
@@ -69,7 +69,7 @@ void InsetMathSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
 	if (pi.base.fontname == "mathnormal") {
-		ShapeChanger dummy(pi.base.font, UP_SHAPE);
+		Changer dummy = pi.base.font.changeShape(UP_SHAPE);
 		pi.draw(x, y, char_);
 	} else {
 		pi.draw(x, y, char_);

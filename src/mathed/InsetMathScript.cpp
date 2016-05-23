@@ -277,7 +277,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 	Dimension dim1;
 	Dimension dim2;
 	cell(0).metrics(mi, dim0);
-	ScriptChanger dummy(mi.base);
+	Changer dummy = mi.base.changeScript();
 	if (nargs() > 1)
 		cell(1).metrics(mi, dim1);
 	if (nargs() > 2)
@@ -332,7 +332,7 @@ void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 		if (editing(&bv))
 			pi.draw(x + dxx(bv), y, char_type('.'));
 	}
-	ScriptChanger dummy(pi.base);
+	Changer dummy = pi.base.changeScript();
 	if (hasUp())
 		up().draw(pi, x + dx1(bv), y - dy1(bv));
 	if (hasDown())

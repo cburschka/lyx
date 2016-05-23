@@ -54,7 +54,7 @@ void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim1;
 	cell(1).metrics(mi, dim1);
-	FracChanger dummy(mi.base);
+	Changer dummy = mi.base.changeFrac();
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
 	if (nargs() > 2) {
@@ -80,7 +80,7 @@ void InsetMathStackrel::draw(PainterInfo & pi, int x, int y) const
 	int m  = x + dim.width() / 2;
 	int yo = y - dim1.ascent() - dim0.descent() - 1;
 	cell(1).draw(pi, m - dim1.width() / 2, y);
-	FracChanger dummy(pi.base);
+	Changer dummy = pi.base.changeFrac();
 	cell(0).draw(pi, m - dim0.width() / 2, yo);
 	if (nargs() > 2) {
 		Dimension const & dim2 = cell(2).dimension(*pi.base.bv);

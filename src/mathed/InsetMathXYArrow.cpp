@@ -82,8 +82,8 @@ MathData const & InsetMathXYArrow::sourceCell() const
 bool InsetMathXYArrow::metrics(MetricsInfo & mi) const
 {
 	InsetMathNest::metrics(mi);
-	mi_   = mi;
-	FontSetChanger dummy(mi.base, "textrm");
+	mi_ = mi;
+	Changer dummy = mi.base.changeFontSet(mi.base, "textrm");
 #if 0
 	target_ = mi.inset ? mi.inset->asXYMatrixInset() : 0;
 
@@ -105,7 +105,7 @@ bool InsetMathXYArrow::metrics(MetricsInfo & mi) const
 void InsetMathXYArrow::draw(PainterInfo & pi, int x, int y) const
 {
 	metrics(mi_);
-	FontSetChanger dummy(pi.base, "textrm");
+	Changer dummy = pi.base.changeFontSet(pi.base, "textrm");
 
 	if (editing()) {
 

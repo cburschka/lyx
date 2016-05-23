@@ -20,8 +20,8 @@
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <sstream>
@@ -85,7 +85,8 @@ char const * InsetMathAMSArray::name_right() const
 
 void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	ArrayChanger dummy(mi.base);
+	Changer dummy =
+		mi.base.changeStyle(LM_ST_TEXT, mi.base.style == LM_ST_DISPLAY);
 	InsetMathGrid::metrics(mi, dim);
 	dim.wid += 14;
 }
@@ -95,10 +96,11 @@ void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	int const yy = y - dim.ascent();
-	// Drawing the deco after an ArrayChanger does not work
+	// Drawing the deco after changeStyle does not work
 	mathed_draw_deco(pi, x + 1, yy, 5, dim.height(), from_ascii(name_left()));
 	mathed_draw_deco(pi, x + dim.width() - 8, yy, 5, dim.height(), from_ascii(name_right()));
-	ArrayChanger dummy(pi.base);
+	Changer dummy =
+		pi.base.changeStyle(LM_ST_TEXT, pi.base.style == LM_ST_DISPLAY);
 	InsetMathGrid::drawWithMargin(pi, x, y, 6, 8);
 }
 

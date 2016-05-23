@@ -160,7 +160,7 @@ Inset::DisplayType InsetScript::display() const
 void InsetScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	int const shift = params_.shift(mi.base.font);
-	ScriptChanger dummy(mi.base);
+	Changer dummy = mi.base.changeScript();
 	InsetText::metrics(mi, dim);
 	dim.asc -= shift;
 	dim.des += shift;
@@ -170,7 +170,7 @@ void InsetScript::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetScript::draw(PainterInfo & pi, int x, int y) const
 {
 	int const shift = params_.shift(pi.base.font);
-	ScriptChanger dummy(pi.base);
+	Changer dummy = pi.base.changeScript();
 	InsetText::draw(pi, x, y + shift);
 }
 
