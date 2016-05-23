@@ -54,6 +54,8 @@ public:
 	InsetGraphicsParams getParams() const { return params_;}
 	///
 	bool clickable(BufferView const &, int, int) const { return true; }
+	///
+	bool canPaintChange(BufferView const &) const { return true; };
 
 private:
 	///

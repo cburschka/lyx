@@ -182,41 +182,38 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
 	// This will draw the graphics. If the graphics has not been
 	// loaded yet, we draw just a rectangle.
+	int const x1 = x + Inset::TEXT_TO_INSET_OFFSET;
+	int const y1 = y - dim_.asc;
+	int const w = dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET;
+	int const h = dim_.height();
 
-	if (displayGraphic(params_) && readyToDisplay(loader_)) {
-		pi.pain.image(x + Inset::TEXT_TO_INSET_OFFSET,
-			      y - dim_.asc,
-			      dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET,
-			      dim_.asc + dim_.des,
-			      *loader_.image());
+	if (displayGraphic(params_) && readyToDisplay(loader_))
+		pi.pain.image(x1, y1, w, h, *loader_.image());
 
-	} else {
-		pi.pain.rectangle(x + Inset::TEXT_TO_INSET_OFFSET,
-				  y - dim_.asc,
-				  dim_.wid - 2 * Inset::TEXT_TO_INSET_OFFSET,
-				  dim_.asc + dim_.des,
-				  Color_foreground);
+	else {
+		Color c = pi.change_.changed() ? pi.change_.color() : Color_foreground;
+		pi.pain.rectangle(x1, y1, w, h, c);
 
 		// Print the file name.
 		FontInfo msgFont = pi.base.font;
+		msgFont.setPaintColor(c);
 		msgFont.setFamily(SANS_FAMILY);
 		string const justname = params_.filename.onlyFileName();
 
 		if (!justname.empty()) {
 			msgFont.setSize(FONT_SIZE_FOOTNOTE);
-			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
-				   y - theFontMetrics(msgFont).maxAscent() - 4,
-				   from_utf8(justname), msgFont);
+			pi.pain.text(x1 + 6, y - theFontMetrics(msgFont).maxAscent() - 4,
+			             from_utf8(justname), msgFont);
 		}
 
 		// Print the message.
 		docstring const msg = statusMessage(params_, loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(FONT_SIZE_TINY);
-			pi.pain.text(x + Inset::TEXT_TO_INSET_OFFSET + 6,
-				     y - 4, msg, msgFont);
+			pi.pain.text(x1 + 6, y - 4, msg, msgFont);
 		}
 	}
+	pi.change_.paintCue(pi, x1, y1, x1 + w, y1 + h);
 }
 
 
