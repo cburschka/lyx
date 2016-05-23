@@ -134,11 +134,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 986154928 "Gnter Milde"
 \end_header
 
 \begin_body
@@ -8310,14 +8311,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8330,7 +8329,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8354,7 +8352,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -16982,6 +16979,42 @@ open close
 "
 \family default
 , generates this automatically.
+\change_inserted 986154928 1464030688
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 986154928 1464016381
+You can, of course, remove this 
+\begin_inset Quotes eld
+\end_inset
+
+smart quotes
+\begin_inset Quotes erd
+\end_inset
+
+ keybinding if you prefer.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Editing-Shortcuts"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -17153,7 +17186,23 @@ this
 \end_layout
 
 \begin_layout Standard
-For single quotes you have to use the shortcut 
+For 
+\change_inserted 986154928 1464016392
+
+\begin_inset Quotes eld
+\end_inset
+
+smart
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\change_unchanged
+single quotes 
+\change_deleted 986154928 1464016400
+you have to 
+\change_unchanged
+use the shortcut 
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert single"
