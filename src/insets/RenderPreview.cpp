@@ -193,6 +193,8 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 			     y - theFontMetrics(font).maxAscent() - 4,
 			     stat, font);
 	}
+	pi.change_.paintCue(pi, x, y - dim_.asc,
+	                    x + dim_.width(), y - dim_.asc + dim_.height());
 }
 
 

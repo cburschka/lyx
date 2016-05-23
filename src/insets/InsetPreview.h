@@ -29,7 +29,7 @@ namespace graphics {
 
 /// An inset with an instant preview
 class InsetPreview : public InsetText {
-	
+
 public:
 	///
 	InsetPreview(Buffer *);
@@ -45,11 +45,11 @@ public:
 	Inset * clone() const { return new InsetPreview(*this); }
 
 	bool neverIndent() const { return true; }
-	
+
 	InsetCode lyxCode() const { return PREVIEW_CODE; }
-	
+
 	docstring layoutName() const { return from_ascii("Preview"); }
-	
+
 	bool descendable(BufferView const & /*bv*/) const { return true; }
 
 	std::string contextMenuName() const
@@ -69,8 +69,10 @@ public:
 	void write(std::ostream & os) const;
 
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
+
+	bool canPaintChange(BufferView const &) const { return true; };
 	//@}
-	
+
 protected:
 	/// Retrieves the preview state. Returns true if preview
 	/// is enabled and the preview image is availabled.

@@ -59,11 +59,12 @@
 #include "frontends/Painter.h"
 
 #include "support/convert.h"
-#include "support/lassert.h"
 #include "support/debug.h"
-#include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/filetools.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/RefChanger.h"
 
 #include <sstream>
 
@@ -567,7 +568,9 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	if (previewState(bv)) {
-		// FIXME CT this
+		// Do not draw change tracking cue if taken care of by RowPainter
+		// already.
+		Changer dummy = make_change(pi.change_, Change(), !canPaintChange(*bv));
 		if (previewTooSmall(dim)) {
 			// we have an extra frame
 			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
