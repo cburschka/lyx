@@ -82,8 +82,11 @@ void GuiPainter::setQPainterPen(QColor const & col,
 	pen.setColor(col);
 
 	switch (ls) {
-		case line_solid: pen.setStyle(Qt::SolidLine); break;
-		case line_onoffdash: pen.setStyle(Qt::DotLine); break;
+	case line_solid:
+	case line_solid_aliased:
+		pen.setStyle(Qt::SolidLine); break;
+	case line_onoffdash:
+		pen.setStyle(Qt::DotLine); break;
 	}
 
 	pen.setWidth(lw);
@@ -188,7 +191,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 
 	setQPainterPen(computeColor(col), ls, lw);
 	bool const do_antialiasing = renderHints() & TextAntialiasing
-		&& x1 != x2 && y1 != y2;
+		&& x1 != x2 && y1 != y2 && ls != line_solid_aliased;
 	setRenderHint(Antialiasing, do_antialiasing);
 	drawLine(x1, y1, x2, y2);
 	setRenderHint(Antialiasing, false);
@@ -210,7 +213,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 	if (np > points.size())
 		points.resize(2 * np);
 
-	bool antialias = false;
+	bool antialias = ls != line_solid_aliased;
 	for (int i = 0; i < np; ++i) {
 		points[i].setX(xp[i]);
 		points[i].setY(yp[i]);
@@ -261,7 +264,7 @@ void GuiPainter::path(int const * xp, int const * yp,
 	QColor const color = computeColor(col);
 	setQPainterPen(color, ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
-	setRenderHint(Antialiasing, text_is_antialiased);
+	setRenderHint(Antialiasing, text_is_antialiased && ls != line_solid_aliased);
 	drawPath(bpath);
 	if (fs != fill_none)
 		fillPath(bpath, QBrush(color));

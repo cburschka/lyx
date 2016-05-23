@@ -61,6 +61,8 @@ public:
 	/// possible line styles
 	enum line_style {
 		line_solid, //< solid line
+		line_solid_aliased, //< solid line, no anti-aliasing (used as a
+		                    // workaround to painting issues)
 		line_onoffdash //< dashes with spaces
 	};
 
