@@ -33,6 +33,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/RefChanger.h"
 
 using namespace std;
 
@@ -228,9 +229,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 
 	view_[&bv].auto_open_ = bv.cursor().isInside(this);
 
-	FontInfo tmpfont = pi.base.font;
-	pi.base.font = getFont();
-	pi.base.font.realize(tmpfont);
+	Changer dummy = pi.base.font.change(getFont(), true);
 
 	// Draw button first -- top, left or only
 	Dimension dimc = dimensionCollapsed(bv);
@@ -246,7 +245,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		FontInfo labelfont = getLabelfont();
 		labelfont.setColor(labelColor());
 		pi.pain.buttonText(x, y, buttonLabel(bv), labelfont,
-			view_[&bv].mouse_hover_);
+		                   view_[&bv].mouse_hover_);
+		// Draw the change tracking cue on the label, unless RowPainter already
+		// takes care of it.
+		if (canPaintChange(bv))
+			pi.change_.paintCue(pi, x, y, x + dimc.width(), labelfont);
 	} else {
 		view_[&bv].button_dim_.x1 = 0;
 		view_[&bv].button_dim_.y1 = 0;
@@ -257,17 +260,24 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	Dimension const textdim = InsetText::dimension(bv);
 	int const baseline = y;
 	int textx, texty;
-	switch (geometry(bv)) {
+	Geometry g = geometry(bv);
+	switch (g) {
 	case LeftButton:
-		textx = x + dimc.width();
-		texty = baseline;
+	case TopButton: {
+		if (g == LeftButton) {
+			textx = x + dimc.width();
+			texty = baseline;
+		} else {
+			textx = x;
+			texty = baseline + dimc.des + textdim.asc;
+		}
+		// Do not draw the cue for INSERTED -- it is already in the button and
+		// that's enough.
+		Changer dummy = make_change(pi.change_, Change(),
+		                            pi.change_.type == Change::INSERTED);
 		InsetText::draw(pi, textx, texty);
 		break;
-	case TopButton:
-		textx = x;
-		texty = baseline + dimc.des + textdim.asc;
-		InsetText::draw(pi, textx, texty);
-		break;
+	}
 	case ButtonOnly:
 		break;
 	case NoButton:
@@ -279,38 +289,43 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 	case Corners:
 		textx = x;
 		texty = baseline;
-		const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
-		InsetText::draw(pi, textx, texty);
-		const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
+		{	// We will take care of the frame and the change tracking cue
+			// ourselves, below.
+			Changer dummy = make_change(pi.change_, Change());
+			const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
+			InsetText::draw(pi, textx, texty);
+			const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
+		}
 
 		int desc = textdim.descent();
-		if (geometry(bv) == Corners)
+		if (g == Corners)
 			desc -= 3;
 
+		// Colour the frame according to the change type. (Like for tables.)
+		Color colour = pi.change_.changed() ? pi.change_.color()
+		                                    : Color_foreground;
 		const int xx1 = x + TEXT_TO_INSET_OFFSET - 1;
 		const int xx2 = x + textdim.wid - TEXT_TO_INSET_OFFSET + 1;
 		pi.pain.line(xx1, y + desc - 4,
-			     xx1, y + desc,
-			Color_foreground);
+		             xx1, y + desc, colour);
 		if (status_ == Open)
 			pi.pain.line(xx1, y + desc,
-				xx2, y + desc,
-				Color_foreground);
+			             xx2, y + desc, colour);
 		else {
 			// Make status_ value visible:
 			pi.pain.line(xx1, y + desc,
-				xx1 + 4, y + desc,
-				Color_foreground);
+			             xx1 + 4, y + desc, colour);
 			pi.pain.line(xx2 - 4, y + desc,
-				xx2, y + desc,
-				Color_foreground);
+			             xx2, y + desc, colour);
 		}
 		pi.pain.line(x + textdim.wid - 3, y + desc, x + textdim.wid - 3,
-			y + desc - 4, Color_foreground);
+		             y + desc - 4, colour);
 
 		// the label below the text. Can be toggled.
-		if (geometry(bv) == SubLabel) {
+		if (g == SubLabel) {
 			FontInfo font(getLabelfont());
+			if (pi.change_.changed())
+				font.setPaintColor(colour);
 			font.realize(sane_font);
 			font.decSize();
 			font.decSize();
@@ -323,20 +338,21 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 				buttonLabel(bv), font, Color_none, Color_none);
 		}
 
+		int const y1 = y - textdim.asc + 3;
 		// a visual cue when the cursor is inside the inset
 		Cursor const & cur = bv.cursor();
 		if (cur.isInside(this)) {
-			y -= textdim.asc;
-			y += 3;
-			pi.pain.line(xx1, y + 4, xx1, y, Color_foreground);
-			pi.pain.line(xx1 + 4, y, xx1, y, Color_foreground);
-			pi.pain.line(xx2, y + 4, xx2, y, Color_foreground);
-			pi.pain.line(xx2 - 4, y, xx2, y, Color_foreground);
+			pi.pain.line(xx1, y1 + 4, xx1, y1, colour);
+			pi.pain.line(xx1 + 4, y1, xx1, y1, colour);
+			pi.pain.line(xx2, y1 + 4, xx2, y1, colour);
+			pi.pain.line(xx2 - 4, y1, xx2, y1, colour);
 		}
+		// Strike through the inset if deleted and not already handled by
+		// RowPainter.
+		if (pi.change_.deleted() && canPaintChange(bv))
+			pi.change_.paintCue(pi, xx1, y1, xx2, y + desc);
 		break;
 	}
-
-	pi.base.font = tmpfont;
 }
 
 
@@ -618,16 +634,18 @@ string InsetCollapsable::contextMenuName() const
 
 bool InsetCollapsable::canPaintChange(BufferView const & bv) const
 {
+	// return false to let RowPainter draw the change tracking cue consistently
+	// with the surrounding text, when the inset is inline: for buttons, for
+	// non-allowMultiPar insets.
 	switch (geometry(bv)) {
 	case Corners:
 	case SubLabel:
+		return allowMultiPar();
 	case ButtonOnly:
-		// these cases are handled by RowPainter since the inset is inline.
 		return false;
 	default:
 		break;
 	}
-	// TODO: implement the drawing in the remaining cases
 	return true;
 }
 

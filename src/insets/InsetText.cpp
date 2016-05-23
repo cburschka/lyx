@@ -56,13 +56,13 @@
 #include "frontends/alert.h"
 #include "frontends/Painter.h"
 
+#include "support/bind.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/lstrings.h"
-
-#include "support/bind.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
+#include "support/RefChanger.h"
 
 #include <algorithm>
 
@@ -215,24 +215,48 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 {
 	TextMetrics & tm = pi.base.bv->textMetrics(&text_);
 
+	int const w = tm.width() + TEXT_TO_INSET_OFFSET;
+	int const yframe = y - TEXT_TO_INSET_OFFSET - tm.ascent();
+	int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
+	int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
+	bool change_drawn = false;
 	if (drawFrame_ || pi.full_repaint) {
-		int const w = tm.width() + TEXT_TO_INSET_OFFSET;
-		int const yframe = y - TEXT_TO_INSET_OFFSET - tm.ascent();
-		int const h = tm.height() + 2 * TEXT_TO_INSET_OFFSET;
-		int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
 		if (pi.full_repaint)
 			pi.pain.fillRectangle(xframe, yframe, w, h,
 				pi.backgroundColor(this));
 
+		// Change color of the frame in tracked changes, like for tabulars.
+        // Only do so if the color is not custom. But do so even if RowPainter
+        // handles the strike-through already.
+		Color c;
+		if (pi.change_.changed()
+		    // Originally, these are the colors with role Text, from role() in
+		    // ColorCache.cpp.  The code is duplicated to avoid depending on Qt
+		    // types, and also maybe it need not match in the future.
+		    && (frameColor() == Color_foreground
+		        || frameColor() == Color_cursor
+		        || frameColor() == Color_preview
+		        || frameColor() == Color_tabularline
+		        || frameColor() == Color_previewframe)) {
+			c = pi.change_.color();
+			change_drawn = true;
+		} else
+			c = frameColor();
 		if (drawFrame_)
-			pi.pain.rectangle(xframe, yframe, w, h, frameColor());
+			pi.pain.rectangle(xframe, yframe, w, h, c);
 	}
-	ColorCode const old_color = pi.background_color;
-	pi.background_color = pi.backgroundColor(this, false);
-
-	tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
-
-	pi.background_color = old_color;
+	{
+		Changer dummy = make_change(pi.background_color,
+		                            pi.backgroundColor(this, false));
+		// The change tracking cue must not be inherited
+		Changer dummy2 = make_change(pi.change_, Change());
+		tm.draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+	}
+	if (canPaintChange(*pi.base.bv) && (!change_drawn || pi.change_.deleted()))
+		// Do not draw the change tracking cue if already done by RowPainter and
+		// do not draw the cue for INSERTED if the information is already in the
+		// color of the frame
+		pi.change_.paintCue(pi, xframe, yframe, xframe + w, yframe + h);
 }
 
 

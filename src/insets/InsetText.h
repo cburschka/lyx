@@ -63,8 +63,8 @@ public:
 	bool editable() const { return true; }
 	///
 	bool canTrackChanges() const { return true; }
-	///
-	bool canPaintChange(BufferView const &) const { return false; }
+	/// Rely on RowPainter to draw the cue of inline insets.
+	bool canPaintChange(BufferView const &) const { return allowMultiPar(); }
 	///
 	InsetText * asInsetText() { return this; }
 	///
