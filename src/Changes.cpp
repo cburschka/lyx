@@ -575,21 +575,22 @@ void Change::paintCue(PainterInfo & pi, double const x1, double const y1,
 	 * y2 /_____
 	 *    x1  x2
 	 */
-	double y = 0;
 	switch(type) {
 	case UNCHANGED:
 		return;
 	case INSERTED:
-		y = y2;
-		break;
+		pi.pain.line(int(x1), int(y2) + 1, int(x2), int(y2) + 1,
+		             color(), Painter::line_solid,
+		             pi.base.solidLineThickness());
+		return;
 	case DELETED:
-		y = y1;
-		break;
+		// FIXME: we cannot use antialias since we keep drawing on the same
+		// background with the current painting mechanism.
+		pi.pain.line(int(x1), int(y2), int(x2), int(y1),
+		             color(), Painter::line_solid_aliased,
+		             pi.base.solidLineThickness());
+		return;
 	}
-	// we cannot use antialias since we keep drawing on the same background
-	pi.pain.line(int(x1), int(y2), int(x2), int(y),
-	             color(), Painter::line_solid_aliased,
-	             pi.base.solidLineThickness());
 }
 
 

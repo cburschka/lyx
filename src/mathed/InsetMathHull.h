@@ -185,6 +185,8 @@ public:
 	std::string contextMenuName() const;
 	///
 	InsetCode lyxCode() const { return MATH_HULL_CODE; }
+	///
+	bool canPaintChange(BufferView const &) const;
 
 protected:
 	InsetMathHull(InsetMathHull const &);

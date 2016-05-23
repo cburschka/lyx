@@ -559,15 +559,15 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView const * const bv = pi.base.bv;
+	Dimension const dim = dimension(*bv);
 
 	if (type_ == hullRegexp) {
-		Dimension const dim = dimension(*bv);
 		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
 			dim.width() - 2, dim.height() - 2, Color_regexpframe);
 	}
 
 	if (previewState(bv)) {
-		Dimension const dim = dimension(*bv);
+		// FIXME CT this
 		if (previewTooSmall(dim)) {
 			// we have an extra frame
 			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
@@ -597,6 +597,10 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 			pi.draw(xx, yy, nl);
 		}
 	}
+	// drawing change line
+	if (canPaintChange(*bv))
+		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc,
+		                    x + dim.wid, y + dim.des);
 	setPosCache(pi, x, y);
 }
 
@@ -2581,5 +2585,13 @@ void InsetMathHull::recordLocation(DocIterator const & di)
 {
 	docit_ = di;
 }
+
+
+bool InsetMathHull::canPaintChange(BufferView const &) const
+{
+	// We let RowPainter do it seamlessly for inline insets
+	return display() != Inline;
+}
+
 
 } // namespace lyx
