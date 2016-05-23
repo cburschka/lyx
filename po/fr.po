@@ -310,12 +310,15 @@
 # ------------------------------------------------------------------
 # 22 avril 2016 : dernière revue avant 2.2.0
 # ------------------------------------------------------------------
+# 23 mai 2016 : correction d'une erreur de traduction (tailles d'icônes)
+#               et d'un conflit de raccourcis
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-04-22 18:34+0100\n"
-"PO-Revision-Date: 2016-04-22 18:46+0100\n"
+"PO-Revision-Date: 2016-05-23 22:37+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -29621,11 +29624,11 @@ msgstr "Icônes de grande taille"
 
 #: src/frontends/qt4/GuiView.cpp:361
 msgid "Huge-sized icons"
-msgstr "Icônes de grande taille"
+msgstr "Icônes de taille énorme"
 
 #: src/frontends/qt4/GuiView.cpp:368
 msgid "Giant-sized icons"
-msgstr "Icônes de très grande taille"
+msgstr "Icônes de taille gigantesque"
 
 #: src/frontends/qt4/GuiView.cpp:639
 #, c-format
@@ -30140,7 +30143,7 @@ msgstr "Autres suggestions orthographiques"
 
 #: src/frontends/qt4/Menus.cpp:842
 msgid "Add to personal dictionary|n"
-msgstr "Ajouter au dictionnaire personnel|A"
+msgstr "Ajouter au dictionnaire personnel|j"
 
 #: src/frontends/qt4/Menus.cpp:844
 msgid "Ignore all|I"
