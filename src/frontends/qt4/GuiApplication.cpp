@@ -600,12 +600,16 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 {
 #if (QT_VERSION >= 0x040600)
 	if (lyxrc.use_system_theme_icons) {
+		// use the icons from system theme that are available
 		QString action = toqstr(lyxaction.getActionName(f.action()));
 		if (!f.argument().empty())
 			action += " " + toqstr(f.argument());
 		QString const theme_icon = themeIconName(action);
-		if (QIcon::hasThemeIcon(theme_icon))
-			return QIcon::fromTheme(theme_icon);
+		if (QIcon::hasThemeIcon(theme_icon)) {
+			QIcon const thmicn = QIcon::fromTheme(theme_icon);
+			if (!thmicn.isNull())
+				return thmicn;
+		}
 	}
 #endif
 
