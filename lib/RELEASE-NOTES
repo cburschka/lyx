@@ -118,6 +118,9 @@
   several regressions with respect to Qt 4.x. See #9215 for a list of bugs
   related to compiling LyX with different versions of Qt.
 
+* The Qt libraries must have support for the SVG graphic format, because
+  LyX now uses svg icons. If this support is lacking, icons cannot be shown.
+
 * If compiling LyX on Windows with Qt 5.6, it is recommended to use MSVC 2015
   update 2 to avoid #9892.
 
