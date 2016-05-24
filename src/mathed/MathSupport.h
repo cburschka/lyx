@@ -29,6 +29,12 @@ class InsetMath;
 
 int mathed_font_em(FontInfo const &);
 
+int mathed_thinmuskip(FontInfo font);
+
+int mathed_medmuskip(FontInfo font);
+
+int mathed_thickmuskip(FontInfo font);
+
 int mathed_char_width(FontInfo const &, char_type c);
 
 int mathed_char_kerning(FontInfo const &, char_type c);
