@@ -106,6 +106,7 @@ liblyxsupport_a_SOURCES = \
 	trivstring.cpp \
 	trivstring.h \
 	types.h \
+	unique_ptr.h \
 	userinfo.cpp \
 	userinfo.h \
 	unicode.cpp \

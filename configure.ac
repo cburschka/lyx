@@ -130,6 +130,9 @@ AC_C_BIGENDIAN
 # Nice to have when an assertion triggers
 LYX_CHECK_CALLSTACK_PRINTING
 
+# C++14 only
+LYX_CHECK_DEF(make_unique, memory, [using std::make_unique;])
+
 # Needed for our char_type
 AC_CHECK_SIZEOF(wchar_t)
 
