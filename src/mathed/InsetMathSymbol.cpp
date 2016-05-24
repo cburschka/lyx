@@ -21,7 +21,6 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
-#include "support/lyxlib.h"
 #include "support/textutils.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -68,7 +67,6 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 					 sym_->extra == "mathalpha" &&
 					 mi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
-	int const em = mathed_font_em(mi.base.font);
 	FontSetChanger dummy(mi.base, from_ascii(font));
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
@@ -80,10 +78,15 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des -= h_;
 	}
 	// seperate things a bit
-	if (isRelOp())
-		dim.wid += support::iround(0.5 * em);
-	else
-		dim.wid += support::iround(0.1667 * em);
+	if (isMathBin())
+		dim.wid += 2 * mathed_medmuskip(mi.base.font);
+	else if (isMathRel())
+		dim.wid += 2 * mathed_thickmuskip(mi.base.font);
+	else if (isMathPunct())
+		dim.wid += mathed_thinmuskip(mi.base.font);
+	// FIXME: I see no reason for this
+	//else
+	//	dim.wid += support::iround(0.1667 * em);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -105,11 +108,13 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 					 sym_->extra == "mathalpha" &&
 					 pi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
-	int const em = mathed_font_em(pi.base.font);
-	if (isRelOp())
-		x += support::iround(0.25 * em);
-	else
-		x += support::iround(0.0833 * em);
+	if (isMathBin())
+		x += mathed_medmuskip(pi.base.font);
+	else if (isMathRel())
+		x += mathed_thickmuskip(pi.base.font);
+	// FIXME: I see no reason for this
+	//else
+	//	x += support::iround(0.0833 * em);
 
 	FontSetChanger dummy(pi.base, from_ascii(font));
 	pi.draw(x, y - h_, sym_->draw);
@@ -122,9 +127,21 @@ InsetMath::mode_type InsetMathSymbol::currentMode() const
 }
 
 
-bool InsetMathSymbol::isRelOp() const
+bool InsetMathSymbol::isMathBin() const
+{
+	return sym_->extra == "mathbin";
+}
+
+
+bool InsetMathSymbol::isMathRel() const
 {
 	return sym_->extra == "mathrel";
+}
+
+
+bool InsetMathSymbol::isMathPunct() const
+{
+	return sym_->extra == "mathpunct";
 }
 
 

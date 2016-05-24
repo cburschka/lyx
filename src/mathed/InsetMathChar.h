@@ -49,7 +49,11 @@ public:
 	///
 	char_type getChar() const { return char_; }
 	///
-	bool isRelOp() const;
+	bool isMathBin() const;
+	///
+	bool isMathRel() const;
+	///
+	bool isMathPunct() const;
 	///
 	InsetCode lyxCode() const { return MATH_CHAR_CODE; }
 

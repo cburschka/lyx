@@ -106,7 +106,7 @@ namespace {
 	size_t firstRelOp(MathData const & ar)
 	{
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			if ((*it)->isRelOp())
+			if ((*it)->isMathRel())
 				return it - ar.begin();
 		return ar.size();
 	}

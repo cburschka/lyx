@@ -26,19 +26,12 @@
 
 #include "support/debug.h"
 #include "support/lstrings.h"
-#include "support/lyxlib.h"
 #include "support/textutils.h"
 
 
 namespace lyx {
 
 extern bool has_math_fonts;
-
-
-static bool isBinaryOp(char_type c)
-{
-	return support::contains("+-<>=/*", static_cast<char>(c));
-}
 
 
 static bool slanted(char_type c)
@@ -76,11 +69,15 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = fm.dimension(char_);
 		kerning_ = fm.rbearing(char_) - dim.wid;
 	}
-	int const em = mathed_font_em(mi.base.font);
-	if (isBinaryOp(char_))
-		dim.wid += support::iround(0.5 * em);
+	if (isMathBin())
+		dim.wid += 2 * mathed_medmuskip(mi.base.font);
+	else if (isMathRel())
+		dim.wid += 2 * mathed_thickmuskip(mi.base.font);
+	else if (isMathPunct())
+		dim.wid += mathed_thinmuskip(mi.base.font);
 	else if (char_ == '\'')
-		dim.wid += support::iround(0.1667 * em);
+		// FIXME: don't know where this is coming from
+		dim.wid += mathed_thinmuskip(mi.base.font);
 #else
 	whichFont(font_, code_, mi);
 	dim = theFontMetrics(font_).dimension(char_);
@@ -94,11 +91,12 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
-	int const em = mathed_font_em(pi.base.font);
-	if (isBinaryOp(char_))
-		x += support::iround(0.25 * em);
+	if (isMathBin())
+		x += mathed_medmuskip(pi.base.font);
+	else if (isMathRel())
+		x += mathed_thickmuskip(pi.base.font);
 	else if (char_ == '\'')
-		x += support::iround(0.0833 * em);
+		x += mathed_thinmuskip(pi.base.font) / 2;
 #if 1
 	if (char_ == '=' && has_math_fonts) {
 		FontSetChanger dummy(pi.base, "cmr");
@@ -237,9 +235,21 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 }
 
 
-bool InsetMathChar::isRelOp() const
+bool InsetMathChar::isMathBin() const
 {
-	return char_ == '=' || char_ == '<' || char_ == '>';
+	return support::contains("+-*", static_cast<char>(char_));
+}
+
+
+bool InsetMathChar::isMathRel() const
+{
+	return support::contains("<>=:", static_cast<char>(char_));
+}
+
+
+bool InsetMathChar::isMathPunct() const
+{
+	return support::contains(",;", static_cast<char>(char_));
 }
 
 
