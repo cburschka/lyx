@@ -47,7 +47,7 @@ These typically need to be modified for each LyX release
 # MiKTeX and JabRef
 # Sizes in KB
 
-"ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
+!define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
 !define JabRefVersion "2.11"
 !define MiKTeXDeliveredVersion "2.9"
@@ -57,6 +57,6 @@ These typically need to be modified for each LyX release
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.11-setup.exe"
  !define SIZE_JABREF 14100
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5872.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5987.exe"
 !endif
 
