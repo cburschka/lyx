@@ -13,6 +13,7 @@
 
 #include "InsetMathChar.h"
 
+#include "MathParser.h"
 #include "MathSupport.h"
 #include "MathStream.h"
 #include "MetricsInfo.h"
@@ -34,6 +35,57 @@ namespace lyx {
 extern bool has_math_fonts;
 
 
+namespace {
+
+latexkeys const * makeSubstitute(char_type c)
+{
+	std::string name;
+	switch (c) {
+	// Latex replaces ', *, -, and : with specific symbols. With unicode-math,
+	// these symbols are replaced respectively by ^U+2032, U+2217, U+2212 and
+	// U+2236 (the latter substitution can be turned off with a package
+	// option). Unicode-math also replaces ` with \backprime.
+		// prime needs to be placed in superscript unless an opentype font is used.
+		//case '\'':
+		//name = "prime";
+		//break;
+	case '*':
+		name = "ast";
+		break;
+	case '-':
+		name = "lyxminus";// unicode-math: "minus"
+		break;
+	case ':':
+		name = "ordinarycolon";// unicode-math: "mathratio"
+		break;
+	// The remaining replacements are not real character substitutions (from a
+	// unicode point of view) but are done here: 1. for cosmetic reasons, in the
+	// context of being stuck with CM fonts at the moment, to ensure consistency
+	// with related symbols: -, \leq, \geq, etc.  2. to get the proper spacing
+	// as defined in lib/symbols.
+	case '+':
+		name = "lyxplus";//unicode-math: "mathplus"
+		break;
+	case '>':
+		name = "lyxgt";//unicode-math: "greater"
+		break;
+	case '<':
+		name = "lyxlt";//unicode-math: "less"
+		break;
+	case '=':
+		name = "lyxeqrel";//unicode-math: "equal"
+		break;
+	//case ','://unicode-math: "mathcomma"
+	//case ';'://unicode-math: "mathsemicolon"
+	default:
+		return nullptr;
+	}
+	return in_word_set(from_ascii(name));
+}
+
+} //anonymous namespace
+
+
 static bool slanted(char_type c)
 {
 	return isAlphaASCII(c) || Encodings::isMathAlpha(c);
@@ -41,7 +93,7 @@ static bool slanted(char_type c)
 
 
 InsetMathChar::InsetMathChar(char_type c)
-	: char_(c), kerning_(0)
+	: char_(c), kerning_(0), subst_(makeSubstitute(c))
 {}
 
 
@@ -54,13 +106,13 @@ Inset * InsetMathChar::clone() const
 
 void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-#if 1
-	if (char_ == '=' && has_math_fonts) {
-		Changer dummy = mi.base.changeFontSet("cmr");
-		dim = theFontMetrics(mi.base.font).dimension(char_);
-	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
-		Changer dummy = mi.base.changeFontSet("cmm");
-		dim = theFontMetrics(mi.base.font).dimension(char_);
+	bool const mathfont = isMathFont(mi.base.fontname);
+	if (mathfont && subst_) {
+		// If the char has a substitute, draw the replacement symbol
+		// instead, but only in math mode.
+		mathedSymbolDim(mi, dim, subst_);
+		kerning_ = mathed_char_kerning(mi.base.font, *subst_->draw.rbegin());
+		return;
 	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {
 		Changer dummy = mi.base.font.changeShape(UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
@@ -69,50 +121,27 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = fm.dimension(char_);
 		kerning_ = fm.rbearing(char_) - dim.wid;
 	}
-	if (isMathBin())
-		dim.wid += 2 * mathed_medmuskip(mi.base.font);
-	else if (isMathRel())
-		dim.wid += 2 * mathed_thickmuskip(mi.base.font);
-	else if (isMathPunct())
+	if (mathfont && isMathPunct())
 		dim.wid += mathed_thinmuskip(mi.base.font);
-	else if (char_ == '\'')
-		// FIXME: don't know where this is coming from
-		dim.wid += mathed_thinmuskip(mi.base.font);
-#else
-	whichFont(font_, code_, mi);
-	dim = theFontMetrics(font_).dimension(char_);
-	if (isBinaryOp(char_, code_))
-		dim.wid += 2 * theFontMetrics(font_).width(' ');
-	lyxerr << "InsetMathChar::metrics: " << dim << endl;
-#endif
 }
 
 
 void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << std::endl;
-	if (isMathBin())
-		x += mathed_medmuskip(pi.base.font);
-	else if (isMathRel())
-		x += mathed_thickmuskip(pi.base.font);
-	else if (char_ == '\'')
-		x += mathed_thinmuskip(pi.base.font) / 2;
-#if 1
-	if (char_ == '=' && has_math_fonts) {
-		Changer dummy = pi.base.changeFontSet("cmr");
-		pi.draw(x, y, char_);
-	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
-		Changer dummy = pi.base.changeFontSet("cmm");
-		pi.draw(x, y, char_);
-	} else if (!slanted(char_) && pi.base.fontname == "mathnormal") {
-		Changer dummy = pi.base.font.changeShape(UP_SHAPE);
-		pi.draw(x, y, char_);
-	} else {
-		pi.draw(x, y, char_);
+	if (isMathFont(pi.base.fontname)) {
+		if (subst_) {
+			// If the char has a substitute, draw the replacement symbol
+			// instead, but only in math mode.
+			mathedSymbolDraw(pi, x, y, subst_);
+			return;
+		} else if (!slanted(char_) && pi.base.fontname == "mathnormal") {
+			Changer dummy = pi.base.font.changeShape(UP_SHAPE);
+			pi.draw(x, y, char_);
+			return;
+		}
 	}
-#else
-	drawChar(pain, font_, x, y, char_);
-#endif
+	pi.draw(x, y, char_);
 }
 
 
@@ -202,6 +231,8 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 void InsetMathChar::htmlize(HtmlStream & ms) const
 {
 	std::string entity;
+	// Not taking subst_ into account here because the MathML output of
+	// <>=+-* looks correct as it is. FIXME: ' is not output as ^\prime
 	switch (char_) {
 		case '<': entity = "&lt;"; break;
 		case '>': entity = "&gt;"; break;
@@ -237,19 +268,20 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 
 bool InsetMathChar::isMathBin() const
 {
-	return support::contains("+-*", static_cast<char>(char_));
+	return subst_ && subst_->extra == "mathbin";
 }
 
 
 bool InsetMathChar::isMathRel() const
 {
-	return support::contains("<>=:", static_cast<char>(char_));
+	return subst_ && subst_->extra == "mathrel";
 }
 
 
 bool InsetMathChar::isMathPunct() const
 {
-	return support::contains(",;", static_cast<char>(char_));
+	return support::contains(",;", static_cast<char>(char_))
+		|| (subst_ && subst_->extra == "mathpunct");
 }
 
 

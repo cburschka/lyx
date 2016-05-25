@@ -25,6 +25,7 @@ class Dimension;
 class MathData;
 class MathAtom;
 class InsetMath;
+class latexkeys;
 
 
 int mathed_font_em(FontInfo const &);
@@ -47,6 +48,10 @@ void mathed_string_dim(FontInfo const & font,
 		       Dimension & dim);
 
 int mathed_string_width(FontInfo const &, docstring const & s);
+
+void mathedSymbolDim(MetricsInfo & mi, Dimension & dim, latexkeys const * sym);
+
+void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym);
 
 void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & s);
 

@@ -16,6 +16,8 @@
 
 namespace lyx {
 
+class latexkeys;
+
 /// The base character inset.
 class InsetMathChar : public InsetMath {
 public:
@@ -60,9 +62,22 @@ public:
 private:
 	virtual Inset * clone() const;
 	/// the character
-	char_type char_;
+	char_type const char_;
 	/// cached kerning for superscript
 	mutable int kerning_;
+	/// Inset to substitute char for, for on-screen display in math mode, as
+	/// performed by LaTeX (#9893):
+	/// * -> \ast (U+2217)
+	/// - -> \lyxminus (U+2212)
+	/// : -> \ordinarycolon (U+2236)
+	///
+	/// For cosmetic reasons, +, >, <, and = are also substituted to force the
+	/// use of CM fonts for uniformity. If CM fonts are replaced with unicode
+	/// math fonts, this should be removed, and substitutions of "'", ",", and
+	/// ";" added.
+	///
+	/// Null if there is no substitute.
+	latexkeys const * const subst_;
 };
 
 } // namespace lyx

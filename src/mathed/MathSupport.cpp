@@ -27,6 +27,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/lassert.h"
 #include "support/lyxlib.h"
 
 #include <map>
@@ -656,6 +657,52 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 }
 
 
+void mathedSymbolDim(MetricsInfo & mi, Dimension & dim, latexkeys const * sym)
+{
+	LASSERT((bool)sym, return);
+	//lyxerr << "metrics: symbol: '" << sym->name
+	//	<< "' in font: '" << sym->inset
+	//	<< "' drawn as: '" << sym->draw
+	//	<< "'" << endl;
+
+	bool const italic_upcase_greek = sym->inset == "cmr" &&
+		sym->extra == "mathalpha" &&
+		mi.base.fontname == "mathit";
+	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
+	Changer dummy = mi.base.changeFontSet(font);
+	mathed_string_dim(mi.base.font, sym->draw, dim);
+	// seperate things a bit
+	if (sym->extra == "mathbin")
+		dim.wid += 2 * mathed_medmuskip(mi.base.font);
+	else if (sym->extra == "mathrel")
+		dim.wid += 2 * mathed_thickmuskip(mi.base.font);
+	else if (sym->extra == "mathpunct")
+		dim.wid += mathed_thinmuskip(mi.base.font);
+}
+
+
+void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
+{
+	LASSERT((bool)sym, return);
+	//lyxerr << "drawing: symbol: '" << sym->name
+	//	<< "' in font: '" << sym->inset
+	//	<< "' drawn as: '" << sym->draw
+	//	<< "'" << endl;
+
+	bool const italic_upcase_greek = sym->inset == "cmr" &&
+		sym->extra == "mathalpha" &&
+		pi.base.fontname == "mathit";
+	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
+	if (sym->extra == "mathbin")
+		x += mathed_medmuskip(pi.base.font);
+	else if (sym->extra == "mathrel")
+		x += mathed_thickmuskip(pi.base.font);
+
+	Changer dummy = pi.base.changeFontSet(font);
+	pi.draw(x, y, sym->draw);
+}
+
+
 void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & str)
 {
 	FontInfo font = mi.base.font;
@@ -708,6 +755,7 @@ FontShape  const inh_shape  = INHERIT_SHAPE;
 // does not work
 fontinfo fontinfos[] = {
 	// math fonts
+	// Color_math determines which fonts are math (see isMathFont)
 	{"mathnormal",    ROMAN_FAMILY, MEDIUM_SERIES,
 			  ITALIC_SHAPE, Color_math},
 	{"mathbf",        inh_family, BOLD_SERIES,

@@ -298,7 +298,7 @@ diamondsuit        cmsy        125 168 mathord  &#x2662;
 heartsuit          cmsy        126 169 mathord  &#x2661;
 spadesuit          cmsy        127 170 mathord  &spades;
 # We define lyxnot as mathrel in order to have proper alignment
-lyxnot             cmsy         54  47 mathrel  /
+lyxnot             cmsy         54  47 mathrel  /           hiddensymbol
 iffont cmsy
 # 10mu is the extra space added to relation operators
 \def\not{\lyxnot\kern-20mu}
@@ -669,11 +669,16 @@ hslash             msb         125   0 mathord  &plankv;
 hbar               msb         126   0 mathord  &planck;
 backepsilon        msb         127   0 mathrel  &bepsi;
 
-lyxbar             cmsy        161   0 mathord  &mdash;
-lyxeq              cmr          61   0 mathord  =
-lyxdabar           msa          57   0 mathord  &ndash;
-lyxright           msa          75   0 mathord  &rarr;
-lyxleft            msa          76   0 mathord  &larr;
+lyxbar             cmsy        161   0 mathord   &mdash;  hiddensymbol
+lyxminus           cmsy        161   0 mathbin   &mdash;  hiddensymbol
+lyxplus            cmr          43  43 mathbin   +        hiddensymbol
+lyxeq              cmr          61  61 mathord   =        hiddensymbol
+lyxeqrel           cmr          61  61 mathrel   =        hiddensymbol
+lyxlt              cmm          60  60 mathrel   &lt;     hiddensymbol
+lyxgt              cmm          62  62 mathrel   &gt;     hiddensymbol
+lyxdabar           msa          57   0 mathord   &ndash;  hiddensymbol
+lyxright           msa          75   0 mathord   &rarr;   hiddensymbol
+lyxleft            msa          76   0 mathord   &larr;   hiddensymbol
 
 male               wasy          26  0 x        &male;
 female             wasy          25  0 x        &female;
