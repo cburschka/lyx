@@ -97,7 +97,7 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	: cmd(latex), file(f), path(p), lpath(lp), runparams(rp), biber(false)
 {
 	num_errors = 0;
-	if (prefixIs(cmd, "pdf")) { // Do we use pdflatex ?
+	if (prefixIs(cmd, "pdf") || prefixIs(cmd, "lualatex") || prefixIs(cmd, "xelatex")) {
 		depfile = FileName(file.absFileName() + ".dep-pdf");
 		output_file =
 			FileName(changeExtension(file.absFileName(), ".pdf"));
