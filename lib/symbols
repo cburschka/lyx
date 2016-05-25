@@ -1103,7 +1103,7 @@ pod                lyxblacktext  0   0 func     x     amsmath
 
 
 # mathtools.sty
-\def\vcentcolon{\kern4mu:\kern3mu}             mathtools
+\def\vcentcolon{:}                             mathtools
 \def\dblcolon{\vcentcolon\kern-8mu\vcentcolon} mathtools
 \def\coloneqq{\vcentcolon\kern-7mu=}           mathtools
 \def\Coloneqq{\dblcolon\kern-7mu=}             mathtools
