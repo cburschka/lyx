@@ -879,7 +879,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				// Natbib seems to use this.
 				retval |= UNDEF_CIT;
 			} else if (contains(token, "No pages of output")) {
-				// A dvi file was not created
+				// No output file (e.g. the DVI or PDF) was created
 				retval |= NO_OUTPUT;
 			} else if (contains(token, "That makes 100 errors")) {
 				// More than 100 errors were reprted
