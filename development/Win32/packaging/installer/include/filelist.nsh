@@ -19,6 +19,7 @@ Lists of files to include in the installer
 
   ${FILE}QtCore4.dll"
   ${FILE}QtGui4.dll"
+  ${FILE}QtSvg4.dll"
 
 !macroend
 
@@ -62,6 +63,12 @@ Lists of files to include in the installer
 
   ${FILE}dt2dv.exe"
   ${FILE}dv2dt.exe"
+  
+!macroend
+
+!macro FileListRsvg COMMAND DIRECTORY
+
+  ${FILE}rsvg-convert.exe"
   
 !macroend
 
