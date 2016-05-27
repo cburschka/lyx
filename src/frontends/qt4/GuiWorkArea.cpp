@@ -937,8 +937,10 @@ void GuiWorkArea::wheelEvent(QWheelEvent * ev)
 	int const lines = qApp->wheelScrollLines();
 	int const page_step = verticalScrollBar()->pageStep();
 	// Test if the wheel mouse is set to one screen at a time.
-	int scroll_value = lines > page_step
-		? page_step : lines * verticalScrollBar()->singleStep();
+	// This is according to
+	// https://doc.qt.io/qt-5/qapplication.html#wheelScrollLines-prop
+	int scroll_value =
+		min(lines * verticalScrollBar()->singleStep(), page_step);
 
 	// Take into account the rotation and the user preferences.
 	scroll_value = int(scroll_value * delta * lyxrc.mouse_wheel_speed);
