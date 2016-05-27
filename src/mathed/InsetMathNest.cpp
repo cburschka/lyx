@@ -642,21 +642,42 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
+	case LFUN_WORD_RIGHT:
+	case LFUN_WORD_LEFT:
+	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_FORWARD:
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_FORWARD:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
+	case LFUN_WORD_RIGHT_SELECT:
+	case LFUN_WORD_LEFT_SELECT:
+	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_LEFT_SELECT:
 	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_FORWARD_SELECT: {
 		// are we in a selection?
-		bool select = (act == LFUN_CHAR_RIGHT_SELECT
+		bool select = (act == LFUN_WORD_RIGHT_SELECT
+					   || act == LFUN_WORD_LEFT_SELECT
+					   || act == LFUN_WORD_BACKWARD_SELECT
+					   || act == LFUN_WORD_FORWARD_SELECT
+		               || act == LFUN_CHAR_RIGHT_SELECT
 					   || act == LFUN_CHAR_LEFT_SELECT
 					   || act == LFUN_CHAR_BACKWARD_SELECT
 					   || act == LFUN_CHAR_FORWARD_SELECT);
+		// select words
+		bool word = (act == LFUN_WORD_RIGHT_SELECT
+		             || act == LFUN_WORD_LEFT_SELECT
+		             || act == LFUN_WORD_BACKWARD_SELECT
+		             || act == LFUN_WORD_FORWARD_SELECT
+		             || act == LFUN_WORD_RIGHT
+		             || act == LFUN_WORD_LEFT
+		             || act == LFUN_WORD_BACKWARD
+		             || act == LFUN_WORD_FORWARD);
 		// are we moving forward or backwards?
 		// If the command was RIGHT or LEFT, then whether we're moving forward
 		// or backwards depends on the cursor movement mode (logical or visual):
@@ -669,18 +690,24 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		FuncCode finish_lfun;
 
 		if (act == LFUN_CHAR_FORWARD
-				|| act == LFUN_CHAR_FORWARD_SELECT) {
+		    || act == LFUN_CHAR_FORWARD_SELECT
+		    || act == LFUN_WORD_FORWARD
+		    || act == LFUN_WORD_FORWARD_SELECT) {
 			forward = true;
 			finish_lfun = LFUN_FINISHED_FORWARD;
 		}
 		else if (act == LFUN_CHAR_BACKWARD
-				|| act == LFUN_CHAR_BACKWARD_SELECT) {
+		         || act == LFUN_CHAR_BACKWARD_SELECT
+		         || act == LFUN_WORD_BACKWARD
+		         || act == LFUN_WORD_BACKWARD_SELECT) {
 			forward = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
 		else {
 			bool right = (act == LFUN_CHAR_RIGHT_SELECT
-						  || act == LFUN_CHAR_RIGHT);
+						  || act == LFUN_CHAR_RIGHT
+			              || act == LFUN_WORD_RIGHT_SELECT
+			              || act == LFUN_WORD_RIGHT);
 			if (lyxrc.visual_cursor || !cur.reverseDirectionNeeded())
 				forward = right;
 			else
@@ -696,7 +723,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		// try moving forward or backwards as necessary...
-		if (!(forward ? cursorMathForward(cur) : cursorMathBackward(cur))) {
+		if (!(forward ? cur.mathForward(word) : cur.mathBackward(word))) {
 			// ... and if movement failed, then finish forward or backwards
 			// as necessary
 			cmd = FuncRequest(finish_lfun);
@@ -707,10 +734,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWN:
 	case LFUN_UP:
+	case LFUN_PARAGRAPH_UP:
+	case LFUN_PARAGRAPH_DOWN:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
 	case LFUN_DOWN_SELECT:
-	case LFUN_UP_SELECT: {
+	case LFUN_UP_SELECT:
+	case LFUN_PARAGRAPH_UP_SELECT:
+	case LFUN_PARAGRAPH_DOWN_SELECT: {
 		// close active macro
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
@@ -718,8 +749,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// stop/start the selection
-		bool select = act == LFUN_DOWN_SELECT ||
-			act == LFUN_UP_SELECT;
+		bool select = act == LFUN_DOWN_SELECT
+			|| act == LFUN_UP_SELECT
+			|| act == LFUN_PARAGRAPH_DOWN_SELECT
+			|| act == LFUN_PARAGRAPH_UP_SELECT;
 		cur.selHandle(select);
 
 		// handle autocorrect:
@@ -729,7 +762,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// go up/down
-		bool up = act == LFUN_UP || act == LFUN_UP_SELECT;
+		bool up = act == LFUN_UP || act == LFUN_UP_SELECT
+			|| act == LFUN_PARAGRAPH_UP || act == LFUN_PARAGRAPH_UP_SELECT;
 		bool successful = cur.upDownInMath(up);
 		if (successful)
 			break;
@@ -763,22 +797,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_PARAGRAPH_UP:
-	case LFUN_PARAGRAPH_DOWN:
-		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
-		// fall through
-	case LFUN_PARAGRAPH_UP_SELECT:
-	case LFUN_PARAGRAPH_DOWN_SELECT:
-		break;
-
 	case LFUN_LINE_BEGIN:
-	case LFUN_WORD_BACKWARD:
-	case LFUN_WORD_LEFT:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
 	case LFUN_LINE_BEGIN_SELECT:
-	case LFUN_WORD_BACKWARD_SELECT:
-	case LFUN_WORD_LEFT_SELECT:
 		cur.selHandle(act == LFUN_WORD_BACKWARD_SELECT ||
 				act == LFUN_WORD_LEFT_SELECT ||
 				act == LFUN_LINE_BEGIN_SELECT);
@@ -797,13 +819,9 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORD_FORWARD:
-	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
-	case LFUN_WORD_FORWARD_SELECT:
-	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
 		cur.selHandle(act == LFUN_WORD_FORWARD_SELECT ||
 				act == LFUN_WORD_RIGHT_SELECT ||
@@ -2080,43 +2098,6 @@ void InsetMathNest::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Point xy = cur.bv().coordCache().insets().xy(inset);
 	x = xy.x_;
 	y = xy.y_;
-}
-
-
-bool InsetMathNest::cursorMathForward(Cursor & cur)
-{
-	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
-		cur.pushBackward(*cur.nextAtom().nucleus());
-		cur.inset().idxFirst(cur);
-		return true;
-	}
-	if (cur.posForward() || idxForward(cur))
-		return true;
-	// try to pop forwards --- but don't pop out of math! leave that to
-	// the FINISH lfuns
-	int s = cur.depth() - 2;
-	if (s >= 0 && cur[s].inset().asInsetMath())
-		return cur.popForward();
-	return false;
-}
-
-
-bool InsetMathNest::cursorMathBackward(Cursor & cur)
-{
-	if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
-		cur.posBackward();
-		cur.push(*cur.nextAtom().nucleus());
-		cur.inset().idxLast(cur);
-		return true;
-	}
-	if (cur.posBackward() || idxBackward(cur))
-		return true;
-	// try to pop backwards --- but don't pop out of math! leave that to
-	// the FINISH lfuns
-	int s = cur.depth() - 2;
-	if (s >= 0 && cur[s].inset().asInsetMath())
-		return cur.popBackward();
-	return false;
 }
 
 

@@ -473,6 +473,15 @@ public:
 	/// return true if successful
 	bool upDownInMath(bool up);
 	///
+	InsetMath & nextMath();
+	///
+	InsetMath & prevMath();
+	/// move forward in math. word: whether to skip a whole "word" (insets with
+	/// the same mathclass)
+	bool mathForward(bool word);
+	///
+	bool mathBackward(bool word);
+	///
 	void plainErase();
 	///
 	void plainInsert(MathAtom const & at);
