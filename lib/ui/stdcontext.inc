@@ -158,10 +158,19 @@ Menuset
 #
 # InsetArgument context menu
 #
+
 	Menu "context-argument"
+		Item "Dissolve Inset|D" "inset-dissolve"
+		Separator
 		SwitchArguments
 	End
 
+	Menu "context-argument-conglomerate"
+		Item "Show Label|L" "inset-toggle"
+		Item "Dissolve Inset|D" "inset-dissolve"
+		Separator
+		SwitchArguments
+	End
 
 #
 # InsetBox context menu
