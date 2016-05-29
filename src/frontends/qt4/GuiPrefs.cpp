@@ -2822,6 +2822,13 @@ void PrefShortcuts::updateShortcutsTW()
 }
 
 
+//static
+KeyMap::ItemType PrefShortcuts::itemType(QTreeWidgetItem & item)
+{
+	return static_cast<KeyMap::ItemType>(item.data(0, Qt::UserRole).toInt());
+}
+
+
 void PrefShortcuts::setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag)
 {
 	item->setData(0, Qt::UserRole, QVariant(tag));
@@ -2915,9 +2922,7 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	if (items.isEmpty())
 		return;
 
-	KeyMap::ItemType tag =
-		static_cast<KeyMap::ItemType>(items[0]->data(0, Qt::UserRole).toInt());
-	if (tag == KeyMap::UserUnbind)
+	if (itemType(*items[0]) == KeyMap::UserUnbind)
 		removePB->setText(qt_("Res&tore"));
 	else
 		removePB->setText(qt_("Remo&ve"));
@@ -2955,10 +2960,8 @@ void PrefShortcuts::removeShortcut()
 		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
-		KeyMap::ItemType tag =
-			static_cast<KeyMap::ItemType>(items[i]->data(0, Qt::UserRole).toInt());
 
-		switch (tag) {
+		switch (itemType(*items[i])) {
 		case KeyMap::System: {
 			// for system bind, we do not touch the item
 			// but add an user unbind item
@@ -3010,10 +3013,8 @@ void PrefShortcuts::deactivateShortcuts(QList<QTreeWidgetItem*> const & items)
 		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
-		KeyMap::ItemType tag =
-			static_cast<KeyMap::ItemType>(items[i]->data(0, Qt::UserRole).toInt());
 
-		switch (tag) {
+		switch (itemType(*items[i])) {
 		case KeyMap::System:
 			// for system bind, we do not touch the item
 			// but add an user unbind item

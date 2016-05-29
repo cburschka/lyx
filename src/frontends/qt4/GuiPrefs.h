@@ -456,24 +456,6 @@ public:
 	void applyRC(LyXRC & rc) const;
 	void updateRC(LyXRC const & rc);
 	void updateShortcutsTW();
-	void modifyShortcut();
-	/// remove selected binding, restore default value
-	void removeShortcut();
-	/// remove bindings, do not restore default values
-	void deactivateShortcuts(QList<QTreeWidgetItem*> const & items);
-	/// check the new binding k->func, and remove existing bindings to k after
-	/// asking the user. We exclude lfun_to_modify from this test: we assume
-	/// that if the user clicked "modify" then they agreed to modify the
-	/// binding. Returns false if the shortcut is invalid or the user cancels.
-	bool validateNewShortcut(FuncRequest const & func,
-	                         KeySequence const & k,
-	                         QString const & lfun_to_modify);
-	/// compute current active shortcut
-	FuncRequest currentBinding(KeySequence const & k);
-	///
-	void setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag);
-	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun, 
-		KeySequence const & shortcut, KeyMap::ItemType tag);
 
 public Q_SLOTS:
 	void selectBind();
@@ -491,6 +473,27 @@ public Q_SLOTS:
 	void shortcutRemovePressed();
 
 private:
+	void modifyShortcut();
+	/// remove selected binding, restore default value
+	void removeShortcut();
+	/// remove bindings, do not restore default values
+	void deactivateShortcuts(QList<QTreeWidgetItem*> const & items);
+	/// check the new binding k->func, and remove existing bindings to k after
+	/// asking the user. We exclude lfun_to_modify from this test: we assume
+	/// that if the user clicked "modify" then they agreed to modify the
+	/// binding. Returns false if the shortcut is invalid or the user cancels.
+	bool validateNewShortcut(FuncRequest const & func,
+	                         KeySequence const & k,
+	                         QString const & lfun_to_modify);
+	/// compute current active shortcut
+	FuncRequest currentBinding(KeySequence const & k);
+	///
+	void setItemType(QTreeWidgetItem * item, KeyMap::ItemType tag);
+	///
+	static KeyMap::ItemType itemType(QTreeWidgetItem & item);
+	///
+	QTreeWidgetItem * insertShortcutItem(FuncRequest const & lfun,
+		KeySequence const & shortcut, KeyMap::ItemType tag);
 	///
 	GuiShortcutDialog * shortcut_;
 	///
