@@ -12,6 +12,8 @@
 #ifndef TOCMODEL_H
 #define TOCMODEL_H
 
+#include "Toc.h"
+
 #include "support/shared_ptr.h"
 
 #include <QHash>
@@ -22,8 +24,6 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class DocIterator;
-class Toc;
-class TocItem;
 
 namespace frontend {
 

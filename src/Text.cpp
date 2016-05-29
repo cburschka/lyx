@@ -67,33 +67,10 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/lyxtime.h"
 #include "support/textutils.h"
 
 #include <sstream>
-
-
-// TODO: replace if in Text::readParToken() with compile time switch
-#if 0
-
-#include "support/metahash.h"
-
-typedef boost::mpl::string<'\\end','_lay','out'> end_layout;
-typedef boost::mpl::string<'\\end','in','set'>   end_inset;
-
-void foo()
-{
-	std::string token = "\\end_layout";
-
-	switch (boost::hash_value(token)) {
-		case lyx::support::hash_string<end_layout>::value:
-			return;
-		case lyx::support::hash_string<end_inset>::value:
-			return;
-		default: ;
-	};
-
-}
-#endif
 
 
 using namespace std;
@@ -132,12 +109,12 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 
 
 void breakParagraphConservative(BufferParams const & bparams,
-	ParagraphList & pars, pit_type par_offset, pos_type pos)
+	ParagraphList & pars, pit_type pit, pos_type pos)
 {
 	// create a new paragraph
-	Paragraph & tmp = *pars.insert(lyx::next(pars.begin(), par_offset + 1),
+	Paragraph & tmp = *pars.insert(lyx::next(pars.begin(), pit + 1),
 				       Paragraph());
-	Paragraph & par = pars[par_offset];
+	Paragraph & par = pars[pit];
 
 	tmp.setInsetOwner(&par.inInset());
 	tmp.makeSameLayout(par);
@@ -930,11 +907,11 @@ void Text::insertChar(Cursor & cur, char_type c)
 	if (lyxrc.auto_number) {
 		static docstring const number_operators = from_ascii("+-/*");
 		static docstring const number_unary_operators = from_ascii("+-");
-		static docstring const number_seperators = from_ascii(".,:");
+		static docstring const number_separators = from_ascii(".,:");
 
 		if (cur.current_font.fontInfo().number() == FONT_ON) {
 			if (!isDigitASCII(c) && !contains(number_operators, c) &&
-			    !(contains(number_seperators, c) &&
+			    !(contains(number_separators, c) &&
 			      cur.pos() != 0 &&
 			      cur.pos() != cur.lastpos() &&
 			      tm.displayFont(pit, cur.pos()).fontInfo().number() == FONT_ON &&
@@ -955,7 +932,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 				  ) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
-				} else if (contains(number_seperators, c)
+				} else if (contains(number_separators, c)
 				     && cur.pos() >= 2
 				     && tm.displayFont(pit, cur.pos() - 2).fontInfo().number() == FONT_ON) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
@@ -1478,7 +1455,7 @@ void Text::deleteWordForward(Cursor & cur)
 		cursorForward(cur);
 	else {
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cursorForwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
@@ -1494,7 +1471,7 @@ void Text::deleteWordBackward(Cursor & cur)
 		cursorBackward(cur);
 	else {
 		cur.resetAnchor();
-		cur.setSelection(true);
+		cur.selection(true);
 		cursorBackwardOneWord(cur);
 		cur.setSelection();
 		cutSelection(cur, true, false);
@@ -1624,7 +1601,7 @@ bool Text::erase(Cursor & cur)
 	if (needsUpdate) {
 		// Make sure the cursor is correct. Is this really needed?
 		// No, not really... at least not here!
-		cur.text()->setCursor(cur.top(), cur.pit(), cur.pos());
+		cur.top().setPitPos(cur.pit(), cur.pos());
 		cur.checkBufferStructure();
 	}
 
@@ -1731,7 +1708,7 @@ bool Text::backspace(Cursor & cur)
 
 	// A singlePar update is not enough in this case.
 //		cur.screenUpdateFlags(Update::Force);
-	setCursor(cur.top(), cur.pit(), cur.pos());
+	cur.top().setPitPos(cur.pit(), cur.pos());
 
 	return needsUpdate;
 }
@@ -1900,13 +1877,11 @@ docstring Text::currentState(Cursor const & cur) const
 	Change change = par.lookupChange(cur.pos());
 
 	if (change.changed()) {
-		Author const & a = buf.params().authors().get(change.author);
-		os << _("Change: ") << a.name();
-		if (!a.email().empty())
-			os << " (" << a.email() << ")";
-		// FIXME ctime is english, we should translate that
-		os << _(" at ") << ctime(&change.changetime);
-		os << " : ";
+		docstring const author =
+			buf.params().authors().get(change.author).nameAndEmail();
+		docstring const date = formatted_datetime(change.changetime);
+		os << bformat(_("Changed by %1$s[[author]] on %2$s[[date]]. "),
+		              author, date);
 	}
 
 	// I think we should only show changes from the default

@@ -370,6 +370,10 @@ public:
 		+ (with_blanks ? blank_count_ : 0);
 	}
 
+	// does the buffer contain tracked changes? (if so, we automatically
+	// display the review toolbar, for instance)
+	mutable bool tracked_changes_present_;
+
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
@@ -442,6 +446,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	preview_file_ = cloned_buffer_->d->preview_file_;
 	preview_format_ = cloned_buffer_->d->preview_format_;
 	preview_error_ = cloned_buffer_->d->preview_error_;
+	tracked_changes_present_ = cloned_buffer_->d->tracked_changes_present_;
 }
 
 
@@ -2229,8 +2234,8 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 	list.clear();
 	shared_ptr<Toc> toc = d->toc_backend.toc("label");
-	TocIterator toc_it = toc->begin();
-	TocIterator end = toc->end();
+	Toc::const_iterator toc_it = toc->begin();
+	Toc::const_iterator end = toc->end();
 	for (; toc_it != end; ++toc_it) {
 		if (toc_it->depth() == 0)
 			list.push_back(toc_it->str());
@@ -2768,6 +2773,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		if (params().save_transient_properties)
 			undo().recordUndoBufferParams(CursorData());
 		params().track_changes = !params().track_changes;
+		if (!params().track_changes)
+			dr.forceChangesUpdate();
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
@@ -4584,6 +4591,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	// update all caches
 	clearReferenceCache();
 	updateMacros();
+	setChangesPresent(false);
 
 	Buffer & cbuf = const_cast<Buffer &>(*this);
 
@@ -4846,6 +4854,9 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 
 		// set the counter for this paragraph
 		d->setLabel(parit, utype);
+
+		// update change-tracking flag 
+		parit->addChangesToBuffer(*this);
 
 		// now the insets
 		InsetList::const_iterator iit = parit->insetList().begin();
@@ -5110,5 +5121,30 @@ string Buffer::includedFilePath(string const & name, string const & ext) const
 	return to_utf8(makeRelPath(from_utf8(FileName(absname).realPath()),
 	                           from_utf8(filePath())));
 }
+
+
+void Buffer::setChangesPresent(bool b) const
+{
+	d->tracked_changes_present_ = b;
+}
+
+
+bool Buffer::areChangesPresent() const
+{
+	return d->tracked_changes_present_;
+}
+
+
+void Buffer::updateChangesPresent() const
+{
+	LYXERR(Debug::CHANGES, "Buffer::updateChangesPresent");
+	setChangesPresent(false);
+	ParConstIterator it = par_iterator_begin();
+	ParConstIterator const end = par_iterator_end();
+	for (; !areChangesPresent() && it != end; ++it)
+		it->addChangesToBuffer(*this);
+}
+
+
 
 } // namespace lyx

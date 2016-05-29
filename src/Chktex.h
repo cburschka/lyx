@@ -17,7 +17,6 @@
 
 namespace lyx {
 
-class Lexer;
 class TeXErrors;
 
 

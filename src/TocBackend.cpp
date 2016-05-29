@@ -107,21 +107,15 @@ FuncRequest TocItem::action() const
 //
 ///////////////////////////////////////////////////////////////////////////
 
-TocIterator Toc::item(DocIterator const & dit) const
+Toc::const_iterator TocBackend::findItem(Toc const & toc,
+                                         DocIterator const & dit)
 {
-	TocIterator last = begin();
-	TocIterator it = end();
+	Toc::const_iterator last = toc.begin();
+	Toc::const_iterator it = toc.end();
 	if (it == last)
 		return it;
-
 	--it;
-
-	DocIterator dit_text = dit;
-	if (dit_text.inMathed()) {
-		// We are only interested in text so remove the math CursorSlice.
-		while (dit_text.inMathed())
-			dit_text.pop_back();
-	}
+	DocIterator dit_text = dit.getInnerText();
 
 	for (; it != last; --it) {
 		// We verify that we don't compare contents of two
@@ -138,12 +132,12 @@ TocIterator Toc::item(DocIterator const & dit) const
 }
 
 
-Toc::iterator Toc::item(int depth, docstring const & str)
+Toc::iterator TocBackend::findItem(Toc & toc, int depth, docstring const & str)
 {
-	if (empty())
-		return end();
-	iterator it = begin();
-	iterator itend = end();
+	if (toc.empty())
+		return toc.end();
+	Toc::iterator it = toc.begin();
+	Toc::iterator itend = toc.end();
 	for (; it != itend; ++it) {
 		if (it->depth() == depth && it->str() == str)
 			break;
@@ -185,7 +179,7 @@ void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
 		arg = "paragraph-goto " +
 			paragraph_goto_arg((*toc_)[stack_.top().pos].dit_) + ";" + arg;
 	FuncRequest func(LFUN_COMMAND_SEQUENCE, arg);
-	
+
 	if (!stack_.empty() && !stack_.top().is_captioned) {
 		// The float we entered has not yet been assigned a caption.
 		// Assign the caption string to it.
@@ -286,7 +280,7 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 	BufferParams const & bufparams = buffer_->params();
 	const int min_toclevel = bufparams.documentClass().min_toclevel();
 
-	TocIterator toc_item = item("tableofcontents", dit);
+	Toc::const_iterator toc_item = item("tableofcontents", dit);
 
 	docstring tocstring;
 
@@ -336,14 +330,14 @@ void TocBackend::update(bool output_active, UpdateType utype)
 }
 
 
-TocIterator TocBackend::item(string const & type,
-		DocIterator const & dit) const
+Toc::const_iterator TocBackend::item(string const & type,
+                                     DocIterator const & dit) const
 {
 	TocList::const_iterator toclist_it = tocs_.find(type);
 	// Is the type supported?
 	// We will try to make the best of it in release mode
 	LASSERT(toclist_it != tocs_.end(), toclist_it = tocs_.begin());
-	return toclist_it->second->item(dit);
+	return findItem(*toclist_it->second, dit);
 }
 
 
@@ -352,8 +346,8 @@ void TocBackend::writePlaintextTocList(string const & type,
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {
-		TocIterator ccit = cit->second->begin();
-		TocIterator end = cit->second->end();
+		Toc::const_iterator ccit = cit->second->begin();
+		Toc::const_iterator end = cit->second->end();
 		for (; ccit != end; ++ccit) {
 			os << ccit->asString() << from_utf8("\n");
 			if (os.str().size() > max_length)

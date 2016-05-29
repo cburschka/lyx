@@ -3413,13 +3413,6 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	bool enabled = true;
 	switch (cmd.action()) {
-	case LFUN_LAYOUT:
-		enabled = !forcePlainLayout();
-		break;
-	case LFUN_LAYOUT_PARAGRAPH:
-		enabled = allowParagraphCustomization();
-		break;
-
 	case LFUN_MATH_DISPLAY:
 		if (!hasFixedWidth()) {
 			enabled = false;
@@ -3997,7 +3990,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = tabular.getLastCellInRow(r);
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
-			cur.setSelection(true);
+			cur.selection(true);
 			bvcur = cur;
 			rowselect_ = true;
 			break;
@@ -4012,7 +4005,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = tabular.cellIndex(tabular.nrows() - 1, c);
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
-			cur.setSelection(true);
+			cur.selection(true);
 			bvcur = cur;
 			colselect_ = true;
 			break;
@@ -4045,7 +4038,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.pit() = 0;
 				cur.pos() = 0;
 				bvcur.setCursor(cur);
-				bvcur.setSelection(true);
+				bvcur.selection(true);
 				break;
 			}
 			// select (additional) column
@@ -4057,7 +4050,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.pit() = 0;
 				cur.pos() = 0;
 				bvcur.setCursor(cur);
-				bvcur.setSelection(true);
+				bvcur.selection(true);
 				break;
 			}
 			// only update if selection changes
@@ -4066,7 +4059,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				cur.noScreenUpdate();
 			setCursorFromCoordinates(cur, cmd.x(), cmd.y());
 			bvcur.setCursor(cur);
-			bvcur.setSelection(true);
+			bvcur.selection(true);
 			// if this is a multicell selection, we just set the cursor to
 			// the beginning of the cell's text.
 			if (bvcur.selIsMultiCell()) {
@@ -4083,12 +4076,12 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CELL_BACKWARD:
 		movePrevCell(cur);
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 
 	case LFUN_CELL_FORWARD:
 		moveNextCell(cur);
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 
 	case LFUN_CHAR_FORWARD_SELECT:
@@ -5186,7 +5179,7 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
-	cur.setSelection(false);
+	cur.selection(false);
 	cur.push(*this);
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	return cur.bv().textMetrics(&cell(cur.idx())->text()).editXY(cur, x, y);
@@ -5545,7 +5538,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(sel_row_start, column);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 
 	case Tabular::DELETE_COLUMN:
@@ -5568,7 +5561,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.cellIndex(row, sel_col_start);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 
 	case Tabular::COPY_ROW:
@@ -5684,7 +5677,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 						   tabular.rightLine(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 	}
 
@@ -5741,7 +5734,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 						tabular.getAlignment(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		break;
 	}
 
@@ -5946,7 +5939,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.setLTCaption(row, true);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		// If a row is set as caption, then also insert
 		// a caption. Otherwise the LaTeX output is broken.
 		// Select cell if it is non-empty
@@ -5962,7 +5955,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		cur.idx() = tabular.setLTCaption(row, false);
 		cur.pit() = 0;
 		cur.pos() = 0;
-		cur.setSelection(false);
+		cur.selection(false);
 		FuncRequest fr(LFUN_INSET_DISSOLVE, "caption");
 		if (lyx::getStatus(fr).enabled())
 			lyx::dispatch(fr);

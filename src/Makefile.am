@@ -2,7 +2,9 @@ include $(top_srcdir)/config/common.am
 
 ############################### Core  ##############################
 
-AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
+AM_CPPFLAGS += -I$(top_srcdir)/src
+AM_CPPFLAGS += $(BOOST_INCLUDES) $(ICONV_INCLUDES) $(ZLIB_INCLUDES)
+AM_CPPFLAGS += $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
 AM_CPPFLAGS += $(QT_CPPFLAGS) $(QT_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
@@ -19,7 +21,8 @@ EXTRA_DIST = lyx_commit_hash.h.in \
 	tests/CMakeLists.txt
 
 OTHERLIBS = $(BOOST_LIBS) $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
-            @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
+            @LIBS@ $(ICONV_LIBS) $(ZLIB_LIBS) $(SOCKET_LIBS) \
+	    $(LIBSHLWAPI) $(LIBPSAPI)
 
 noinst_LIBRARIES = liblyxcore.a
 bin_PROGRAMS = lyx
@@ -39,7 +42,7 @@ lyx_LDADD = \
 if LYX_WIN_RESOURCE
 .rc.o:
 	cp $(top_srcdir)/development/Win32/packaging/icons/lyx_*32x32.ico .
-	windres -I$(top_builddir) --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
+	$(RC) -I$(top_builddir) --preprocessor "$(CPP) -xc-header -DRC_INVOKED" $< -o $@
 endif
 
 if INSTALL_MACOSX
@@ -289,6 +292,7 @@ HEADERFILESCORE = \
 	Text.h \
 	TextClass.h \
 	TextMetrics.h \
+	Toc.h \
 	TocBackend.h \
 	Trans.h \
 	Undo.h \
@@ -732,7 +736,8 @@ ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework
 endif
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS)
-check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
 	insets/InsetLayout.cpp \
@@ -752,7 +757,8 @@ check_layout_SOURCES = \
 	tests/dummy_functions.cpp
 
 check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
-check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
 	graphics/GraphicsParams.cpp \
@@ -764,7 +770,8 @@ check_ExternalTransforms_SOURCES = \
 	tests/dummy_functions.cpp
 
 check_Length_CPPFLAGS = $(AM_CPPFLAGS)
-check_Length_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_Length_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
 	Length.cpp \
@@ -774,7 +781,8 @@ check_Length_SOURCES = \
 	tests/dummy_functions.cpp
 
 check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
-check_ListingsCaption_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_ListingsCaption_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
 	tests/check_ListingsCaption.cpp \

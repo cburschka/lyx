@@ -250,7 +250,7 @@ void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 		pos = temp_cur.pos();
 	}
 
-	text_.setCursor(cur.top(), pit, pos);
+	cur.top().setPitPos(pit, pos);
 	cur.finishUndo();
 }
 
@@ -290,10 +290,11 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_INSET_DISSOLVE: {
-		bool const main_inset = &buffer().inset() == this;
+		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
-		bool const one_cell = nargs() == 1;
+		// cur.inset() is the tabular when this is a single cell (bug #9954)
+		bool const one_cell = cur.inset().nargs() == 1;
 
 		if (!main_inset && target_inset && one_cell) {
 			// Text::dissolveInset assumes that the cursor
@@ -322,10 +323,11 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE: {
-		bool const main_inset = &buffer().inset() == this;
+		bool const main_inset = text_.isMainText();
 		bool const target_inset = cmd.argument().empty() 
 			|| cmd.getArg(0) == insetName(lyxCode());
-		bool const one_cell = nargs() == 1;
+		// cur.inset() is the tabular when this is a single cell (bug #9954)
+		bool const one_cell = cur.inset().nargs() == 1;
 
 		if (target_inset)
 			status.setEnabled(!main_inset && one_cell);
@@ -338,7 +340,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
-		if (&buffer().inset() == this || !cur.paragraph().layout().args().empty())
+		if (text_.isMainText() || !cur.paragraph().layout().args().empty())
 			return text_.getStatus(cur, cmd, status);
 
 		Layout::LaTeXArgMap args = getLayout().args();

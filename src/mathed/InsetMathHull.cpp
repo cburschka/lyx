@@ -106,7 +106,7 @@ namespace {
 	size_t firstRelOp(MathData const & ar)
 	{
 		for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it)
-			if ((*it)->isRelOp())
+			if ((*it)->isMathRel())
 				return it - ar.begin();
 		return ar.size();
 	}
@@ -750,9 +750,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		macro_preamble.append(*it);
 
 	// set the font series and size for this snippet
-	DocIterator dit = pos;
-	while (dit.inMathed())
-		dit.pop_back();
+	DocIterator dit = pos.getInnerText();
 	Paragraph const & par = dit.paragraph();
 	Font font = par.getFontSettings(buffer->params(), dit.pos());
 	font.fontInfo().realize(par.layout().font);
@@ -1097,7 +1095,7 @@ void InsetMathHull::footer_write(WriteStream & os) const
 }
 
 
-bool InsetMathHull::isTable() const
+bool InsetMathHull::allowsTabularFeatures() const
 {
 	switch (type_) {
 	case hullEqnArray:
@@ -1859,7 +1857,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TABULAR_FEATURE:
-		if (!isTable())
+		if (!allowsTabularFeatures())
 			cur.undispatched();
 		else
 			InsetMathGrid::doDispatch(cur, cmd);
@@ -1869,6 +1867,20 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		InsetMathGrid::doDispatch(cur, cmd);
 		break;
 	}
+}
+
+
+namespace {
+
+bool allowDisplayMath(Cursor cur)
+{
+	LATTEST(cur.depth() > 1);
+	cur.pop();
+	FuncStatus status;
+	FuncRequest cmd(LFUN_MATH_DISPLAY);
+	return cur.getStatus(cmd, status) && status.enabled();
+}
+
 }
 
 
@@ -1898,30 +1910,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setOnOff(type_ == ht);
 		status.setEnabled(isMutable(ht) && isMutable(type_));
 
-		if (ht != hullSimple && status.enabled()) {
-			Cursor tmpcur = cur;
-			while (!tmpcur.empty()) {
-				InsetCode code = tmpcur.inset().lyxCode();
-				if (code == BOX_CODE) {
-					return true;
-				} else if (code == TABULAR_CODE) {
-					FuncRequest tmpcmd(LFUN_MATH_DISPLAY);
-					if (tmpcur.getStatus(tmpcmd, status) && !status.enabled())
-						return true;
-				}
-				tmpcur.pop_back();
-			}
-		}
+		if (ht != hullSimple && status.enabled())
+			status.setEnabled(allowDisplayMath(cur));
 		return true;
 	}
 	case LFUN_MATH_DISPLAY: {
-		bool enable = true;
-		if (cur.depth() > 1) {
-			Inset const & in = cur[cur.depth()-2].inset();
-			if (in.lyxCode() == SCRIPT_CODE)
-				enable = display() != Inline;
-		}
-		status.setEnabled(enable);
+		status.setEnabled(display() != Inline || allowDisplayMath(cur));
 		status.setOnOff(display() != Inline);
 		return true;
 	}
@@ -1980,7 +1974,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetMathGrid::getStatus(cur, cmd, status);
 
 	case LFUN_TABULAR_FEATURE: {
-		if (!isTable())
+		if (!allowsTabularFeatures())
 			return false;
 		string s = cmd.getArg(0);
 		if (!rowChangeOK()

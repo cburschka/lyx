@@ -357,6 +357,9 @@ docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
 
 template<> docstring bformat(docstring const & fmt, int arg1);
 template<> docstring bformat(docstring const & fmt, long arg1);
+#ifdef LYX_USE_LONG_LONG
+template<> docstring bformat(docstring const & fmt, long long arg1);
+#endif
 template<> docstring bformat(docstring const & fmt, unsigned int arg1);
 template<> docstring bformat(docstring const & fmt, docstring arg1);
 template<> docstring bformat(docstring const & fmt, char * arg1);

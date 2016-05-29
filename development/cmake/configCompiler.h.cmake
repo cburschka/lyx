@@ -42,6 +42,7 @@
 #cmakedefine HAVE_MAGIC_H 1
 #cmakedefine SIZEOF_WCHAR_T_IS_2 1
 #cmakedefine SIZEOF_WCHAR_T_IS_4 1
+#cmakedefine SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG 1
 
 #ifdef SIZEOF_WCHAR_T_IS_2
 #  define SIZEOF_WCHAR_T 2
@@ -49,6 +50,12 @@
 #  ifdef SIZEOF_WCHAR_T_IS_4
 #    define SIZEOF_WCHAR_T 4
 #  endif
+#endif
+
+#ifdef HAVE_LONG_LONG
+#ifdef SIZEOF_LONG_LONG_GREATER_THAN_SIZEOF_LONG
+#define LYX_USE_LONG_LONG
+#endif
 #endif
 
 #cmakedefine GETTEXT_FOUND 1
@@ -77,12 +84,6 @@
 #endif
 
 #define BOOST_ALL_NO_LIB 1
-
-#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
-#  define USE_BOOST_FORMAT 1
-#else
-#  define USE_BOOST_FORMAT 0
-#endif
 
 #ifdef _DEBUG
 #  define ENABLE_ASSERTIONS 1

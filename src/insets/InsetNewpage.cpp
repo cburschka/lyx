@@ -212,13 +212,15 @@ ColorCode InsetNewpage::ColorName() const
 }
 
 
-void InsetNewpage::latex(otexstream & os, OutputParams const &) const
+void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:
 			os << "\\newpage{}";
 			break;
 		case InsetNewpageParams::PAGEBREAK:
+			if (runparams.moving_arg)
+				os << "\\protect";
 			os << "\\pagebreak{}";
 			break;
 		case InsetNewpageParams::CLEARPAGE:

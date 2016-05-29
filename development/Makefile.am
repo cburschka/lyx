@@ -159,7 +159,6 @@ cmake/modules/PCHSupport_26.cmake \
 cmake/modules/ProjectSourceGroup.cmake \
 cmake/pcheaders.h \
 cmake/po/cat.py \
-cmake/po/dos2unix.py \
 cmake/po/unix2dos.py \
 cmake/post_install/CMakeLists.txt \
 cmake/scripts/LyXCreateImagesResource.cmake \

@@ -35,7 +35,7 @@ class TextMetrics
 {
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics() : bv_(0), text_(0), main_text_(false), max_width_(0) {}
+	TextMetrics() : bv_(0), text_(0), max_width_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
@@ -105,9 +105,6 @@ public:
 	int height() const { return dim_.height(); }
 
 	///
-	int maxWidth() const { return max_width_; }
-
-	///
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
 
@@ -150,7 +147,7 @@ private:
 public:
 	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
-	/// of this column.
+	/// of this column. This takes in account horizontal cursor row scrolling.
 	pos_type getPosNearX(Row const & row, int & x, bool & boundary) const;
 
 	/// returns pos in given par at given x coord.
@@ -243,7 +240,6 @@ private:
 	/// \todo FIXME: this should be const.
 	Text * text_;
 
-	bool main_text_;
 	/// A map from paragraph index number to paragraph metrics
 	typedef std::map<pit_type, ParagraphMetrics> ParMetricsCache;
 	///

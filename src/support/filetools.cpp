@@ -1065,7 +1065,7 @@ cmd_ret const runCommand(string const & cmd)
 				0, 0, &startup, &process)) {
 
 			CloseHandle(process.hThread);
-			int fno = _open_osfhandle((long)in, _O_RDONLY);
+			int fno = _open_osfhandle((intptr_t)in, _O_RDONLY);
 			CloseHandle(out);
 			inf = _fdopen(fno, "r");
 		}

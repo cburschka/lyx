@@ -80,6 +80,10 @@ public:
 	///
 	void read(Lexer & lex);
 	///
+	bool forcePlainLayout(idx_type = 0) const { return true; }
+	///
+	bool allowParagraphCustomization(idx_type = 0) const { return false; }
+	///
 	bool neverIndent() const { return true; }
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,

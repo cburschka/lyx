@@ -18,14 +18,11 @@
 #include "DocIterator.h"
 #include "FuncRequest.h"
 #include "OutputEnums.h"
+#include "Toc.h"
 
-#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 
-#include <map>
-#include <vector>
 #include <stack>
-#include <string>
 
 
 namespace lyx {
@@ -67,7 +64,6 @@ enum TocType {
 */
 class TocItem
 {
-	friend class Toc;
 	friend class TocBackend;
 	friend class TocBuilder;
 
@@ -123,25 +119,6 @@ private:
 };
 
 
-///
-class Toc : public std::vector<TocItem>
-{
-public:
-	// This is needed to work around a libc++ bug
-	// https://llvm.org/bugs/show_bug.cgi?id=24137
-	Toc() {}
-	typedef std::vector<TocItem>::const_iterator const_iterator;
-	typedef std::vector<TocItem>::iterator iterator;
-	const_iterator item(DocIterator const & dit) const;
-	/// Look for a TocItem given its depth and string.
-	/// \return The first matching item.
-	/// \retval end() if no item was found.
-	iterator item(int depth, docstring const & str);
-};
-
-typedef Toc::const_iterator TocIterator;
-
-
 /// Caption-enabled TOC builders
 class TocBuilder
 {
@@ -169,16 +146,6 @@ private:
 };
 
 
-/// The ToC list.
-/// A class and no typedef because we want to forward declare it.
-class TocList : public std::map<std::string, shared_ptr<Toc> >
-{
-private:
-	// this can create null pointers
-	using std::map<std::string, shared_ptr<Toc> >::operator[];
-};
-
-
 ///
 class TocBuilderStore
 {
@@ -200,6 +167,12 @@ private:
 class TocBackend
 {
 public:
+	static Toc::const_iterator findItem(Toc const & toc,
+	                                    DocIterator const & dit);
+	/// Look for a TocItem given its depth and string.
+	/// \return The first matching item.
+	/// \retval end() if no item was found.
+	static Toc::iterator findItem(Toc & toc, int depth, docstring const & str);
 	///
 	TocBackend(Buffer const * buffer) : buffer_(buffer) {}
 	///
@@ -216,7 +189,7 @@ public:
 	/// nevel null
 	shared_ptr<TocBuilder> builder(std::string const & type);
 	/// Return the first Toc Item before the cursor
-	TocIterator item(
+	Toc::const_iterator item(
 		std::string const & type, ///< Type of Toc.
 		DocIterator const & dit ///< The cursor location in the document.
 	) const;

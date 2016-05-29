@@ -955,8 +955,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 					return true;
 				// strip off part after last space and try again
 				string tmp = strippedfile;
-				string const stripoff =
-					rsplit(tmp, strippedfile, ' ');
+				rsplit(tmp, strippedfile, ' ');
 				absname.set(strippedfile);
 				if (insertIfExists(absname, head))
 					return true;
@@ -981,8 +980,7 @@ bool handleFoundFile(string const & ff, DepTable & head)
 				break;
 			// strip off part after last space and try again
 			string strippedfile;
-			string const stripoff =
-				rsplit(foundfile, strippedfile, ' ');
+			rsplit(foundfile, strippedfile, ' ');
 			foundfile = strippedfile;
 			onlyfile = onlyFileName(strippedfile);
 			absname = makeAbsPath(onlyfile);

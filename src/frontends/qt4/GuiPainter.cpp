@@ -579,7 +579,7 @@ void GuiPainter::buttonText(int x, int y, docstring const & str,
 
 	static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
 
-	button(x + d, y - ascent, width - d, descent + ascent, mouseHover);
+	button(x + d, y - ascent, width - Inset::TEXT_TO_INSET_OFFSET, descent + ascent, mouseHover);
 	text(x + Inset::TEXT_TO_INSET_OFFSET, y, str, font);
 }
 

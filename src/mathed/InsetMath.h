@@ -85,11 +85,9 @@ class MaximaStream;
 class MathematicaStream;
 class MathStream;
 class WriteStream;
-class InfoStream;
 
 class MathMacroTemplate;
 class MathMacro;
-class MathPosFinder;
 class Cursor;
 class TextPainter;
 class TextMetricsInfo;
@@ -164,8 +162,12 @@ public:
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
-	/// is the a relational operator (used for splitting equations)
-	virtual bool isRelOp() const { return false; }
+	/// identifies a binary operators (used for spacing)
+	virtual bool isMathBin() const { return false; }
+	/// identifies relational operators (used for spacing and splitting equations)
+	virtual bool isMathRel() const { return false; }
+	/// identifies punctuation (used for spacing)
+	virtual bool isMathPunct() const { return false; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
 

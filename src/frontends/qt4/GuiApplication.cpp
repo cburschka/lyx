@@ -553,18 +553,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 
 bool getPixmap(QPixmap & pixmap, QString const & path)
 {
-	if (pixmap.load(path)) {
-#if QT_VERSION >= 0x050000
-		if (path.endsWith(".svgz") || path.endsWith(".svg") ) {
-			GuiApplication const * guiApp = theGuiApp();
-			if (guiApp != 0) {
-				pixmap.setDevicePixelRatio(guiApp->pixelRatio());
-			}
-		}
-#endif
-		return true;
-	}
-	return false;
+	return pixmap.load(path);
 }
 
 
@@ -765,8 +754,8 @@ class QWindowsMimeMetafile : public QWINDOWSMIME {
 public:
 	QWindowsMimeMetafile() {}
 
-	bool canConvertFromMime(FORMATETC const & formatetc,
-		QMimeData const * mimedata) const
+	bool canConvertFromMime(FORMATETC const & /*formatetc*/,
+		QMimeData const * /*mimedata*/) const
 	{
 		return false;
 	}
@@ -780,14 +769,14 @@ public:
 		return pDataObj->QueryGetData(&formatetc) == S_OK;
 	}
 
-	bool convertFromMime(FORMATETC const & formatetc,
-		const QMimeData * mimedata, STGMEDIUM * pmedium) const
+	bool convertFromMime(FORMATETC const & /*formatetc*/,
+		const QMimeData * /*mimedata*/, STGMEDIUM * /*pmedium*/) const
 	{
 		return false;
 	}
 
 	QVariant convertToMime(QString const & mimetype, IDataObject * pDataObj,
-		QVariant::Type preferredType) const
+		QVariant::Type /*preferredType*/) const
 	{
 		QByteArray data;
 		if (!canConvertToMime(mimetype, pDataObj))
@@ -818,7 +807,7 @@ public:
 
 
 	QVector<FORMATETC> formatsForMime(QString const & mimetype,
-		QMimeData const * mimedata) const
+		QMimeData const * /*mimedata*/) const
 	{
 		QVector<FORMATETC> formats;
 		if (mimetype == emfMimeType() || mimetype == wmfMimeType())
@@ -1399,6 +1388,9 @@ void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult &
 		if (dr.needBufferUpdate()) {
 			bv->cursor().clearBufferUpdate();
 			bv->buffer().updateBuffer();
+		} else if (dr.needChangesUpdate()) {
+			// updateBuffer() already updates the change-tracking presence flag
+			bv->buffer().updateChangesPresent();
 		}
 		// BufferView::update() updates the ViewMetricsInfo and
 		// also initializes the position cache for all insets in

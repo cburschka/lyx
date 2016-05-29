@@ -27,14 +27,13 @@
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
+#include <QDateTime>
 #include <QTextBrowser>
 
 
 namespace lyx {
 namespace frontend {
 
-using support::bformat;
-using support::formatted_time;
 
 GuiChanges::GuiChanges(GuiView & lv)
 	: GuiDialog(lv, "changes", qt_("Merge Changes"))
@@ -56,16 +55,29 @@ GuiChanges::GuiChanges(GuiView & lv)
 
 void GuiChanges::updateContents()
 {
-	docstring text;
-	docstring author = changeAuthor();
-	docstring date = changeDate();
+	bool const changesPresent = buffer().areChangesPresent();
+	nextPB->setEnabled(changesPresent);
+	previousPB->setEnabled(changesPresent);
+	changeTB->setEnabled(changesPresent);
 
-	if (!author.empty())
-		text += bformat(_("Change by %1$s\n\n"), author);
-	if (!date.empty())
-		text += bformat(_("Change made at %1$s\n"), date);
+	Change const & c = bufferview()->getCurrentChange();
+	bool const changePresent = c.type != Change::UNCHANGED;
+	rejectPB->setEnabled(changePresent);
+	acceptPB->setEnabled(changePresent);
 
-	changeTB->setPlainText(toqstr(text));
+	QString text;
+	if (changePresent) {
+		QString const author =
+			toqstr(buffer().params().authors().get(c.author).nameAndEmail());
+		if (!author.isEmpty())
+			text += qt_("Changed by %1\n\n").arg(author);
+
+		QString const date = QDateTime::fromTime_t(c.changetime)
+			                 .toString(Qt::DefaultLocaleLongDate);
+		if (!date.isEmpty())
+			text += qt_("Change made on %1\n").arg(date);
+	}
+	changeTB->setPlainText(text);
 }
 
 
@@ -78,34 +90,6 @@ void GuiChanges::nextChange()
 void GuiChanges::previousChange()
 {
 	dispatch(FuncRequest(LFUN_CHANGE_PREVIOUS));
-}
-
-
-docstring GuiChanges::changeDate() const
-{
-	Change const & c = bufferview()->getCurrentChange();
-	if (c.type == Change::UNCHANGED)
-		return docstring();
-
-	// FIXME UNICODE
-	return from_utf8(formatted_time(c.changetime, lyxrc.date_insert_format));
-}
-
-
-docstring GuiChanges::changeAuthor() const
-{
-	Change const & c = bufferview()->getCurrentChange();
-	if (c.type == Change::UNCHANGED)
-		return docstring();
-
-	Author const & a = buffer().params().authors().get(c.author);
-
-	docstring author = a.name();
-
-	if (!a.email().empty())
-		author += " (" + a.email() + ")";
-
-	return author;
 }
 
 

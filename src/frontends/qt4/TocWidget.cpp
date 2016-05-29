@@ -35,11 +35,8 @@
 
 #include <QHeaderView>
 #include <QMenu>
-#include <QTimer>
 
 #include <vector>
-
-#define DELAY_UPDATE_VIEW
 
 using namespace std;
 
@@ -47,8 +44,9 @@ namespace lyx {
 namespace frontend {
 
 TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
-	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view), update_delay_(0)
-
+	: QWidget(parent), depth_(0), persistent_(false), gui_view_(gui_view),
+	  update_timer_short_(new QTimer(this)),
+	  update_timer_long_(new QTimer(this))
 {
 	setupUi(this);
 
@@ -86,8 +84,25 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 		this, SLOT(showContextMenu(const QPoint &)));
 	connect(tocTV, SIGNAL(customContextMenuRequested(const QPoint &)),
 		this, SLOT(showContextMenu(const QPoint &)));
-	connect(filterLE, SIGNAL(textEdited(QString)), 
+	connect(filterLE, SIGNAL(textEdited(QString)),
 		this, SLOT(filterContents()));
+
+	// setting the update timer
+	update_timer_short_->setSingleShot(true);
+	update_timer_long_->setSingleShot(true);
+	update_timer_short_->setInterval(0);
+	update_timer_long_->setInterval(2000);
+	connect(update_timer_short_, SIGNAL(timeout()),
+	        this, SLOT(realUpdateView()));
+	connect(update_timer_long_, SIGNAL(timeout()),
+	        this, SLOT(realUpdateView()));
+
+	// fix #9826: Outline disclosure of subsection content disappears one second
+	// after doubleclicking content item.
+	// This is only meant as a workaround. See #6675 for more general issues
+	// regarding unwanted collapse of the tree view.
+	connect(tocTV, SIGNAL(expanded(const QModelIndex &)),
+	        update_timer_long_, SLOT(stop()));
 
 	init(QString());
 }
@@ -98,7 +113,7 @@ void TocWidget::showContextMenu(const QPoint & pos)
 	std::string name = "context-toc-" + fromqstr(current_type_);
 	QMenu * menu = guiApp->menus().menu(toqstr(name), gui_view_);
 	if (!menu)
-		return;	
+		return;
 	menu->exec(mapToGlobal(pos));
 }
 
@@ -109,9 +124,9 @@ Inset * TocWidget::itemInset() const
 	TocItem const & item =
 		gui_view_.tocModels().currentItem(current_type_, index);
 	DocIterator const & dit = item.dit();
-	
+
 	Inset * inset = 0;
-	if (current_type_ == "label" 
+	if (current_type_ == "label"
 		  || current_type_ == "graphics"
 		  || current_type_ == "citation"
 		  || current_type_ == "child")
@@ -120,7 +135,7 @@ Inset * TocWidget::itemInset() const
 	else if (current_type_ == "branch"
 			 || current_type_ == "index"
 			 || current_type_ == "change"
-			 || current_type_ == "table" 
+			 || current_type_ == "table"
 		     || current_type_ == "listing"
 		     || current_type_ == "figure")
 		inset = &dit.inset();
@@ -256,7 +271,7 @@ void TocWidget::on_updateTB_clicked()
 void TocWidget::on_sortCB_stateChanged(int state)
 {
 	gui_view_.tocModels().sort(current_type_, state == Qt::Checked);
-	updateViewForce();
+	updateViewNow();
 }
 
 
@@ -308,7 +323,7 @@ void TocWidget::on_typeCO_currentIndexChanged(int index)
 	if (index == -1)
 		return;
 	current_type_ = typeCO->itemData(index).toString();
-	updateViewForce();
+	updateViewNow();
 	if (typeCO->hasFocus())
 		gui_view_.setFocus();
 }
@@ -380,27 +395,26 @@ void TocWidget::enableControls(bool enable)
 
 void TocWidget::updateView()
 {
-// Enable if you dont want the delaying business, cf #7138.
-#ifndef DELAY_UPDATE_VIEW
-	updateViewForce();
-	return;
-#endif
-	// already scheduled?
-	if (update_delay_ == -1)
-		return;
-	QTimer::singleShot(update_delay_, this, SLOT(updateViewForce()));
 	// Subtler optimization for having the delay more UI invisible.
 	// We trigger update immediately for sparse editation actions,
 	// i.e. there was no editation/cursor movement in last 2 sec.
 	// At worst there will be +1 redraw after 2s in a such "calm" mode.
-	if (update_delay_ != 0)
-		updateViewForce();
-	update_delay_ = -1;
+	if (!update_timer_long_->isActive())
+		update_timer_short_->start();
+	// resets the timer to trigger after 2s
+	update_timer_long_->start();
 }
 
-void TocWidget::updateViewForce()
+
+void TocWidget::updateViewNow()
 {
-	update_delay_ = 2000;
+	update_timer_long_->stop();
+	update_timer_short_->start();
+}
+
+
+void TocWidget::realUpdateView()
+{
 	if (!gui_view_.documentBufferView()) {
 		tocTV->setModel(0);
 		depthSL->setMaximum(0);
@@ -415,7 +429,7 @@ void TocWidget::updateViewForce()
 	tocTV->setEnabled(false);
 	tocTV->setUpdatesEnabled(false);
 
-	QAbstractItemModel * toc_model = 
+	QAbstractItemModel * toc_model =
 			gui_view_.tocModels().model(current_type_);
 	if (tocTV->model() != toc_model) {
 		tocTV->setModel(toc_model);
@@ -452,6 +466,14 @@ void TocWidget::updateViewForce()
 }
 
 
+void TocWidget::checkModelChanged()
+{
+	if (!gui_view_.documentBufferView() ||
+	    gui_view_.tocModels().model(current_type_) != tocTV->model())
+		realUpdateView();
+}
+
+
 void TocWidget::filterContents()
 {
 	if (!tocTV->model())
@@ -470,7 +492,7 @@ void TocWidget::filterContents()
 				filterLE->text(), Qt::CaseInsensitive);
 		tocTV->setRowHidden(index.row(), index.parent(), !matches);
 	}
-	// recursively unhide parents of unhidden children 
+	// recursively unhide parents of unhidden children
 	for (int i = size - 1; i >= 0; i--) {
 		QModelIndex index = indices[i];
 		if (!tocTV->isRowHidden(index.row(), index.parent())
@@ -520,9 +542,6 @@ void TocWidget::init(QString const & str)
 	typeCO->blockSignals(true);
 	typeCO->setCurrentIndex(new_index);
 	typeCO->blockSignals(false);
-
-	// no delay when the whole outliner is reseted.
-	update_delay_ = 0;
 }
 
 } // namespace frontend

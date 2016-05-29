@@ -760,6 +760,12 @@ public:
 	int wordCount() const;
 	int charCount(bool with_blanks) const;
 
+	// this is const because it does not modify the buffer's real contents,
+	// only the mutable flag.
+	void setChangesPresent(bool) const;
+	bool areChangesPresent() const;
+	void updateChangesPresent() const;
+
 private:
 	friend class MarkAsExporting;
 	/// mark the buffer as busy exporting something, or not

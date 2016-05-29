@@ -100,11 +100,11 @@ bool checkPastePossible(int index)
 
 
 struct PasteReturnValue {
-	PasteReturnValue(pit_type r_par, pos_type r_pos, bool r_nu) :
-	  par(r_par), pos(r_pos), needupdate(r_nu)
+	PasteReturnValue(pit_type r_pit, pos_type r_pos, bool r_nu) :
+	  pit(r_pit), pos(r_pos), needupdate(r_nu)
 	{}
 
-	pit_type par;
+	pit_type pit;
 	pos_type pos;
 	bool needupdate;
 };
@@ -1074,7 +1074,7 @@ void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
 			pasteSelectionHelper(cur, parlist, docclass, 0, errorList);
 		cur.forceBufferUpdate();
 		cur.clearSelection();
-		text->setCursor(cur, prv.par, prv.pos);
+		text->setCursor(cur, prv.pit, prv.pos);
 	}
 
 	// mathed is handled in InsetMathNest/InsetMathGrid
@@ -1325,7 +1325,7 @@ void selClearOrDel(Cursor & cur)
 	if (lyxrc.auto_region_delete)
 		selDel(cur);
 	else
-		cur.setSelection(false);
+		cur.selection(false);
 }
 
 

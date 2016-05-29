@@ -1,8 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-# This is prepared for compilation, but currently only used for packaging,
-# because configure support for compilation is still missing.
-
 noinst_LIBRARIES = liblyxhunspell.a
 
 EXTRA_DIST = \
@@ -20,7 +17,10 @@ EXTRA_DIST = \
 	1.3.3/src/hunspell/license.hunspell \
 	1.3.3/src/hunspell/license.myspell \
 	1.3.3/src/hunspell/makefile.mk \
-	1.3.3/src/hunspell/README
+	1.3.3/src/hunspell/README \
+	1.3.3/src/hunspell/utf_info.cxx
+
+AM_CPPFLAGS += -DHUNSPELL_STATIC
 
 liblyxhunspell_a_SOURCES = \
 	1.3.3/src/hunspell/affentry.cxx \
@@ -51,7 +51,6 @@ liblyxhunspell_a_SOURCES = \
 	1.3.3/src/hunspell/replist.hxx \
 	1.3.3/src/hunspell/suggestmgr.cxx \
 	1.3.3/src/hunspell/suggestmgr.hxx \
-	1.3.3/src/hunspell/utf_info.cxx \
 	1.3.3/src/hunspell/w_char.hxx \
 	1.3.3/src/parsers/firstparser.cxx \
 	1.3.3/src/parsers/firstparser.hxx \

@@ -10,7 +10,6 @@
  */
 
 #include <config.h>
-
 #include "LyXToolBox.h"
 
 #include <QApplication>

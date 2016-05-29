@@ -337,9 +337,9 @@ void SpellcheckerWidget::Private::setSelection(
 		Cursor & bvcur = bv->cursor();
 		bvcur.setCursor(from);
 		bvcur.clearSelection();
-		bvcur.setSelection(true);
+		bvcur.selection(true);
 		bvcur.setCursor(end);
-		bvcur.setSelection(true);
+		bvcur.selection(true);
 	} else {
 		// FIXME LFUN
 		// If we used a LFUN, dispatch would do all of this for us

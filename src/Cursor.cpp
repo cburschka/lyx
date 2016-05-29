@@ -66,32 +66,32 @@ namespace {
 
 // Find position closest to (x, y) in cell given by iter.
 // Used only in mathed
-DocIterator bruteFind2(Cursor const & c, int x, int y)
+DocIterator bruteFind(Cursor const & c, int x, int y)
 {
 	double best_dist = numeric_limits<double>::max();
 
 	DocIterator result;
 
 	DocIterator it = c;
-	it.top().pos() = 0;
+	it.pos() = 0;
 	DocIterator et = c;
-	et.top().pos() = et.top().asInsetMath()->cell(et.top().idx()).size();
+	et.pos() = et.lastpos();
 	for (size_t i = 0;; ++i) {
 		int xo;
 		int yo;
 		Inset const * inset = &it.inset();
-		CoordCache const & cache = c.bv().coordCache();
+		CoordCache::Insets const & insetCache = c.bv().coordCache().getInsets();
 
 		// FIXME: in the case where the inset is not in the cache, this
 		// means that no part of it is visible on screen. In this case
 		// we don't do elaborate search and we just return the forwarded
 		// DocIterator at its beginning.
-		if (!cache.getInsets().has(inset)) {
+		if (!insetCache.has(inset)) {
 			it.top().pos() = 0;
 			return it;
 		}
 
-		Point const o = cache.getInsets().xy(inset);
+		Point const o = insetCache.xy(inset);
 		inset->cursorPos(c.bv(), it.top(), c.boundary(), xo, yo);
 		// Convert to absolute
 		xo += o.x_;
@@ -113,133 +113,13 @@ DocIterator bruteFind2(Cursor const & c, int x, int y)
 }
 
 
-/*
-/// moves position closest to (x, y) in given box
-bool bruteFind(Cursor & cursor,
-	int x, int y, int xlow, int xhigh, int ylow, int yhigh)
-{
-	LASSERT(!cursor.empty(), return false);
-	Inset & inset = cursor[0].inset();
-	BufferView & bv = cursor.bv();
-
-	CoordCache::InnerParPosCache const & cache =
-		bv.coordCache().getParPos().find(cursor.bottom().text())->second;
-	// Get an iterator on the first paragraph in the cache
-	DocIterator it(inset);
-	it.push_back(CursorSlice(inset));
-	it.pit() = cache.begin()->first;
-	// Get an iterator after the last paragraph in the cache
-	DocIterator et(inset);
-	et.push_back(CursorSlice(inset));
-	et.pit() = prev(cache.end(), 1)->first;
-	if (et.pit() >= et.lastpit())
-		et = doc_iterator_end(inset);
-	else
-		++et.pit();
-
-	double best_dist = numeric_limits<double>::max();
-	DocIterator best_cursor = et;
-
-	for ( ; it != et; it.forwardPos(true)) {
-		// avoid invalid nesting when selecting
-		if (!cursor.selection() || positionable(it, cursor.anchor_)) {
-			Point p = bv.getPos(it, false);
-			int xo = p.x_;
-			int yo = p.y_;
-			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-				double const dx = xo - x;
-				double const dy = yo - y;
-				double const d = dx * dx + dy * dy;
-				// '<=' in order to take the last possible position
-				// this is important for clicking behind \sum in e.g. '\sum_i a'
-				if (d <= best_dist) {
-					//	lyxerr << "*" << endl;
-					best_dist   = d;
-					best_cursor = it;
-				}
-			}
-		}
-	}
-
-	if (best_cursor != et) {
-		cursor.setCursor(best_cursor);
-		return true;
-	}
-
-	return false;
-}
-*/
-
-/*
-/// moves position closest to (x, y) in given box
-bool bruteFind3(Cursor & cur, int x, int y, bool up)
-{
-	BufferView & bv = cur.bv();
-	int ylow  = up ? 0 : y + 1;
-	int yhigh = up ? y - 1 : bv.workHeight();
-	int xlow = 0;
-	int xhigh = bv.workWidth();
-
-// FIXME: bit more work needed to get 'from' and 'to' right.
-	pit_type from = cur.bottom().pit();
-	//pit_type to = cur.bottom().pit();
-	//lyxerr << "Pit start: " << from << endl;
-
-	//lyxerr << "bruteFind3: x: " << x << " y: " << y
-	//	<< " xlow: " << xlow << " xhigh: " << xhigh
-	//	<< " ylow: " << ylow << " yhigh: " << yhigh
-	//	<< endl;
-	DocIterator it = doc_iterator_begin(cur.buffer());
-	it.pit() = from;
-	DocIterator et = doc_iterator_end(cur.buffer());
-
-	double best_dist = numeric_limits<double>::max();
-	DocIterator best_cursor = et;
-
-	for ( ; it != et; it.forwardPos()) {
-		// avoid invalid nesting when selecting
-		if (bv.cursorStatus(it) == CUR_INSIDE
-		    && (!cur.selection() || positionable(it, cur.realAnchor()))) {
-			// If this function is ever used again, check
-			// whether this is the same as "bv.getPos(it,
-			// false)" with boundary = false.
-			Point p = bv.getPos(it);
-			int xo = p.x_;
-			int yo = p.y_;
-			if (xlow <= xo && xo <= xhigh && ylow <= yo && yo <= yhigh) {
-				double const dx = xo - x;
-				double const dy = yo - y;
-				double const d = dx * dx + dy * dy;
-				//lyxerr << "itx: " << xo << " ity: " << yo << " d: " << d
-				//	<< " dx: " << dx << " dy: " << dy
-				//	<< " idx: " << it.idx() << " pos: " << it.pos()
-				//	<< " it:\n" << it
-				//	<< endl;
-				// '<=' in order to take the last possible position
-				// this is important for clicking behind \sum in e.g. '\sum_i a'
-				if (d <= best_dist) {
-					//lyxerr << "*" << endl;
-					best_dist   = d;
-					best_cursor = it;
-				}
-			}
-		}
-	}
-
-	//lyxerr << "best_dist: " << best_dist << " cur:\n" << best_cursor << endl;
-	if (best_cursor == et)
-		return false;
-	cur.setCursor(best_cursor);
-	return true;
-}
-*/
 } // namespace anon
 
 
 CursorData::CursorData()
 	: DocIterator(), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
@@ -247,7 +127,7 @@ CursorData::CursorData()
 CursorData::CursorData(Buffer * buffer)
 	: DocIterator(buffer), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
@@ -255,7 +135,7 @@ CursorData::CursorData(Buffer * buffer)
 CursorData::CursorData(DocIterator const & dit)
 	: DocIterator(dit), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font),
+	  current_font(inherit_font),
 	  autocorrect_(false), macromode_(false)
 {}
 
@@ -1117,18 +997,18 @@ DocIterator Cursor::selectionEnd() const
 
 void Cursor::setSelection()
 {
-	setSelection(true);
+	selection(true);
 	if (idx() == normalAnchor().idx() &&
 	    pit() == normalAnchor().pit() &&
 	    pos() == normalAnchor().pos())
-		setSelection(false);
+		selection(false);
 }
 
 
 void Cursor::setSelection(DocIterator const & where, int n)
 {
 	setCursor(where);
-	setSelection(true);
+	selection(true);
 	anchor_ = where;
 	pos() += n;
 }
@@ -1136,7 +1016,7 @@ void Cursor::setSelection(DocIterator const & where, int n)
 
 void Cursor::clearSelection()
 {
-	setSelection(false);
+	selection(false);
 	setWordSelection(false);
 	setMark(false);
 	resetAnchor();
@@ -1199,7 +1079,7 @@ bool Cursor::selHandle(bool sel)
 		cap::saveSelection(*this);
 
 	resetAnchor();
-	setSelection(sel);
+	selection(sel);
 	return true;
 }
 } // namespace lyx
@@ -1439,7 +1319,7 @@ bool Cursor::backspace()
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
 		resetAnchor();
-		setSelection(true);
+		selection(true);
 		--pos();
 	} else {
 		--pos();
@@ -1486,7 +1366,7 @@ bool Cursor::erase()
 	// 'clever' UI hack: only erase large items if previously slected
 	if (pos() != lastpos() && nextAtom()->nargs() > 0) {
 		resetAnchor();
-		setSelection(true);
+		selection(true);
 		++pos();
 	} else {
 		plainErase();
@@ -1794,7 +1674,7 @@ bool Cursor::upDownInMath(bool up)
 		//lyxerr << "idxUpDown triggered" << endl;
 		// try to find best position within this inset
 		if (!selection())
-			setCursor(bruteFind2(*this, xo, yo));
+			setCursor(bruteFind(*this, xo, yo));
 		return true;
 	}
 
@@ -2426,6 +2306,12 @@ void Cursor::checkBufferStructure()
 		// In case the master has no gui associated with it,
 		// the TocItem is not updated (part of bug 5699).
 		buffer()->tocBackend().updateItem(*this);
+
+	// If the last tracked change of the paragraph has just been
+	// deleted, then we need to recompute the buffer flag
+	// tracked_changes_present_.
+	if (inTexted() && paragraph().isChangeUpdateRequired())
+		disp_.forceChangesUpdate();
 }
 
 

@@ -25,6 +25,7 @@
 
 #include "support/debug.h"
 #include "support/docstream.h"
+#include "support/lyxlib.h"
 
 #include <map>
 #include <algorithm>
@@ -504,6 +505,46 @@ deco_struct const * search_deco(docstring const & name)
 int mathed_font_em(FontInfo const & font)
 {
 	return theFontMetrics(font).em();
+}
+
+/* The math units. Quoting TeX by Topic, p.205:
+ *
+ * Spacing around mathematical objects is measured in mu units. A mu
+ * is 1/18th part of \fontdimen6 of the font in family 2 in the
+ * current style, the ‘quad’ value of the symbol font.
+ *
+ * A \thickmuskip (default value in plain TeX: 5mu plus 5mu) is
+ * inserted around (binary) relations, except where these are preceded
+ * or followed by other relations or punctuation, and except if they
+ * follow an open, or precede a close symbol.
+ *
+ * A \medmuskip (default value in plain TeX: 4mu plus 2mu minus 4mu)
+ * is put around binary operators.
+ *
+ * A \thinmuskip (default value in plain TeX: 3mu) follows after
+ * punctuation, and is put around inner objects, except where these
+ * are followed by a close or preceded by an open symbol, and except
+ * if the other object is a large operator or a binary relation.
+ */
+
+int mathed_thinmuskip(FontInfo font)
+{
+	font.setFamily(SYMBOL_FAMILY);
+	return support::iround(3.0 / 18 * theFontMetrics(font).em());
+}
+
+
+int mathed_medmuskip(FontInfo font)
+{
+	font.setFamily(SYMBOL_FAMILY);
+	return support::iround(4.0 / 18 * theFontMetrics(font).em());
+}
+
+
+int mathed_thickmuskip(FontInfo font)
+{
+	font.setFamily(SYMBOL_FAMILY);
+	return support::iround(5.0 / 18 * theFontMetrics(font).em());
 }
 
 

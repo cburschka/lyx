@@ -74,6 +74,9 @@ AM_PATH_PYTHON
 # Tools for creating libraries (note that we do not use libtool)
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR]) dnl AM_PROG_AR requires automake 1.12
 AC_PROG_RANLIB
+dnl Recent debian/ubuntu (at least) have built 'ar' so that deterministic mode is the default.
+dnl This means that it does not make sense to use the 'u' flag (default ARFLAGS is 'cru').
+AC_SUBST([ARFLAGS], [cr])
 
 ### Check for a C++ compiler
 dnl We have to do weird tricks so that autoconf does not touch CXXFLAGS even
@@ -116,6 +119,7 @@ AC_SUBST(LIBSHLWAPI)
 AC_CHECK_LIB(psapi, main, [LIBPSAPI=-lpsapi])
 AC_SUBST(LIBPSAPI)
 AC_CHECK_LIB(gdi32, main)
+AC_CHECK_LIB(ole32, main)
 
 LYX_USE_INCLUDED_BOOST
 LYX_USE_INCLUDED_MYTHES
@@ -129,18 +133,31 @@ LYX_CHECK_CALLSTACK_PRINTING
 # Needed for our char_type
 AC_CHECK_SIZEOF(wchar_t)
 
-### We need iconv for unicode support (Qt4 frontend requires it too)
-AM_ICONV
-if test "$am_cv_func_iconv" = no; then
-  AC_MSG_ERROR([cannot find required library iconv.])
+# Taken from gettext, needed for libiconv
+AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
+   [AC_TRY_COMPILE([#include <stddef.h>
+      wchar_t foo = (wchar_t)'\0';], ,
+      [gt_cv_c_wchar_t=yes], [gt_cv_c_wchar_t=no])])
+if test $gt_cv_c_wchar_t = yes; then
+  AC_DEFINE([HAVE_WCHAR_T], [1], [Define if you have the 'wchar_t' type.])
+  HAVE_WCHAR_T=1
 else
-  LIBS="$LIBS $LIBICONV"
+  HAVE_WCHAR_T=0
+fi
+AC_SUBST([HAVE_WCHAR_T])
+
+# Needed for Mingw-w64
+AC_TYPE_LONG_LONG_INT
+if test "$ac_cv_type_long_long_int" = yes; then
+  AC_CHECK_SIZEOF(long)
+  AC_CHECK_SIZEOF(long long)
 fi
 
+### We need iconv for unicode support (Qt4 frontend requires it too)
+LYX_USE_INCLUDED_ICONV
+
 ### check for compression support
-AC_CHECK_HEADERS(zlib.h,
- [AC_CHECK_LIB(z, gzopen, [LIBS="$LIBS -lz"], LYX_LIB_ERROR(libz,zlib))],
- [LYX_LIB_ERROR(zlib.h,zlib)])
+LYX_USE_INCLUDED_ZLIB
 
 ### check for file magic support (currently optional)
 AC_CHECK_HEADERS(magic.h,
@@ -191,14 +208,6 @@ AC_TYPE_OFF_T
 AC_TYPE_PID_T
 AC_TYPE_SIZE_T
 AC_TYPE_UID_T
-# Taken from gettext
-AC_CACHE_CHECK([for wchar_t], [gt_cv_c_wchar_t],
-   [AC_TRY_COMPILE([#include <stddef.h>
-      wchar_t foo = (wchar_t)'\0';], ,
-      [gt_cv_c_wchar_t=yes], [gt_cv_c_wchar_t=no])])
-if test $gt_cv_c_wchar_t = yes; then
-  AC_DEFINE([HAVE_WCHAR_T], [1], [Define if you have the 'wchar_t' type.])
-fi
 
 LYX_CHECK_DEF(PATH_MAX, limits.h, [int n = PATH_MAX;])
 
@@ -229,6 +238,12 @@ lyx_win_res=false;
 case ${host} in
     *mingw*|*cygwin*) lyx_win_res=true;;
 esac
+if test "x$lyx_win_res" = "xtrue"; then
+    AC_CHECK_TOOL(RC, windres,)
+    if test -z "$RC"; then
+      AC_ERROR([Could not find a resource compiler])
+    fi
+fi
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)
 LYX_SET_VERSION_INFO
 
@@ -290,12 +305,6 @@ extern "C"
 char * strerror(int n);
 #endif
 
-#if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
-#  define USE_BOOST_FORMAT 1
-#else
-#  define USE_BOOST_FORMAT 0
-#endif
-
 #define BOOST_USER_CONFIG <config.h>
 
 #if !defined(ENABLE_ASSERTIONS)
@@ -323,6 +332,12 @@ char * strerror(int n);
 
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
 #  define USE_WCHAR_T
+#endif
+
+#ifdef HAVE_LONG_LONG_INT
+#if SIZEOF_LONG_LONG > SIZEOF_LONG
+#define LYX_USE_LONG_LONG
+#endif
 #endif
 
 #endif
@@ -356,6 +371,7 @@ AC_CONFIG_FILES([Makefile \
       3rdparty/boost/Makefile \
       3rdparty/hunspell/Makefile \
       3rdparty/libiconv/Makefile \
+      $ICONV_ICONV_H_IN \
       3rdparty/zlib/Makefile \
       autotests/Makefile \
       config/Makefile \

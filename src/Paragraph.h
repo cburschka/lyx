@@ -39,17 +39,14 @@ class DocumentClass;
 class Inset;
 class InsetBibitem;
 class LaTeXFeatures;
-class Inset_code;
 class InsetList;
 class Language;
 class Layout;
 class Font;
-class Font_size;
 class MetricsInfo;
 class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
-class Toc;
 class WordLangTuple;
 class XHTMLStream;
 class otexstream;
@@ -154,6 +151,10 @@ public:
 	///
 	void addChangesToToc(DocIterator const & cdit, Buffer const & buf,
 	        bool output_active) const;
+	/// set the buffer flag if there are changes in the paragraph
+	void addChangesToBuffer(Buffer const & buf) const;
+	///
+	bool isChangeUpdateRequired() const;
 	///
 	Language const * getParLanguage(BufferParams const &) const;
 	///

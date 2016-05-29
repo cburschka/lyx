@@ -1,10 +1,7 @@
 include $(top_srcdir)/config/common.am
 
-# This is prepared for compilation, but currently only used for packaging,
-# because configure support for compilation is still missing.
-
 # We do not build right now
-#noinst_LIBRARIES = liblyxiconv.a
+noinst_LIBRARIES = liblyxiconv.a
 
 EXTRA_DIST = \
 	CMakeLists.txt \
@@ -33,11 +30,15 @@ EXTRA_DIST = \
 	1.14/libcharset/lib/ref-add.sin \
 	1.14/libcharset/lib/ref-del.sin
 
-# If/when we decide to build, this will do in liblyxiconv_a_SOURCES
-# But for now it confuses automake < 1.14, where we do not use subdir-objects.
-# The issue here is that there are two relocatable.c files, and they would
-# create the same .o file.
-EXTRA_DIST += \
+AM_CPPFLAGS += -I$(srcdir)/1.14/srclib -DLIBDIR=""
+
+# The two relocatable.c files confuse automake < 1.14, where we do not use
+# subdir-objects. Therefore we cannot put both in liblyxiconv_a_SOURCES
+# (they would both create the same .o file). Fortunately their contents is
+# identical, so it is enough to build only one.
+EXTRA_DIST += 1.14/libcharset/lib/relocatable.c
+
+liblyxiconv_a_SOURCES = \
 	1.14/include/export.h \
 	1.14/lib/aliases2.h \
 	1.14/lib/aliases_aix.h \
@@ -263,7 +264,6 @@ EXTRA_DIST += \
 	1.14/lib/viscii.h \
 	1.14/libcharset/include/export.h \
 	1.14/libcharset/lib/localcharset.c \
-	1.14/libcharset/lib/relocatable.c \
 	1.14/libcharset/lib/relocatable.h \
 	1.14/srclib/localcharset.h \
 	1.14/srclib/unitypes.in.h \

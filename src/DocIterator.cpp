@@ -229,7 +229,7 @@ CursorSlice const & DocIterator::innerTextSlice() const
 DocIterator DocIterator::getInnerText() const
 {
 	DocIterator texted = *this;
-	while (!texted.inTexted()) 
+	while (!texted.inTexted())
 		texted.pop_back();
 	return texted;
 }

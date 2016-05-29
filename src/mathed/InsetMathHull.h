@@ -241,7 +241,7 @@ private:
 	/// consistency check
 	void check() const;
 	/// does it understand tabular-feature commands?
-	bool isTable() const;
+	bool allowsTabularFeatures() const;
 	/// can this change its number of rows?
 	bool rowChangeOK() const;
 	/// can this change its number of cols?

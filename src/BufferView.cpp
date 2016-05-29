@@ -707,9 +707,7 @@ Change const BufferView::getCurrentChange() const
 
 	DocIterator dit = d->cursor_.selectionBegin();
 	// The selected content might have been changed (see #7685)
-	while (dit.inMathed())
-		// Find enclosing text cursor
-		dit.pop_back();
+	dit = dit.getInnerText();
 	return dit.paragraph().lookupChange(dit.pos());
 }
 
@@ -1132,11 +1130,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_CHANGE_PREVIOUS:
 	case LFUN_ALL_CHANGES_ACCEPT:
 	case LFUN_ALL_CHANGES_REJECT:
-		// TODO: context-sensitive enabling of LFUNs
-		// In principle, these command should only be enabled if there
-		// is a change in the document. However, without proper
-		// optimizations, this will inevitably result in poor performance.
-		flag.setEnabled(true);
+		flag.setEnabled(buffer_.areChangesPresent());
 		break;
 
 	case LFUN_SCREEN_UP:
@@ -1593,7 +1587,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_MARK_TOGGLE:
-		cur.setSelection(false);
+		cur.selection(false);
 		if (cur.mark()) {
 			cur.setMark(false);
 			dr.setMessage(from_utf8(N_("Mark removed")));
@@ -1792,7 +1786,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// Select the inset from outside.
 			cur.pop();
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.posForward();
 		} else if (cells_selected) {
 			// At least one complete cell is selected and inset is a table.
@@ -1800,7 +1794,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.idx() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
@@ -1808,7 +1802,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.pit() = 0;
 			cur.pos() = 0;
 			cur.resetAnchor();
-			cur.setSelection(true);
+			cur.selection(true);
 			cur.pit() = cur.lastpit();
 			cur.pos() = cur.lastpos();
 		}
@@ -1855,9 +1849,17 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (!cur.nextInset() || cur.nextInset() == ins)
 				cur.forwardInset();
 		}
-		cur.endUndoGroup();
 		cur = savecur;
 		cur.fixIfBroken();
+		/** This is a dummy undo record only to remember the cursor
+		 * that has just been set; this will be used on a redo action
+		 * (see ticket #10097)
+
+		 * FIXME: a better fix would be to have a way to set the
+		 * cursor value directly, but I am not sure it is worth it.
+		 */
+		cur.recordUndo();
+		cur.endUndoGroup();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 
@@ -2185,7 +2187,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 	Cursor old = cursor();
 	Cursor cur(*this);
 	cur.push(buffer_.inset());
-	cur.setSelection(d->cursor_.selection());
+	cur.selection(d->cursor_.selection());
 
 	// Either the inset under the cursor or the
 	// surrounding Text will handle this event.
@@ -2372,7 +2374,7 @@ void BufferView::setCursorFromRow(int row, TexRow const & texrow)
 	}
 	d->cursor_.reset();
 	buffer_.text().setCursor(d->cursor_, newpit, newpos);
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.resetAnchor();
 	recenter();
 }
@@ -2407,8 +2409,8 @@ void BufferView::gotoLabel(docstring const & label)
 
 		// find label
 		shared_ptr<Toc> toc = buf->tocBackend().toc("label");
-		TocIterator toc_it = toc->begin();
-		TocIterator end = toc->end();
+		Toc::const_iterator toc_it = toc->begin();
+		Toc::const_iterator end = toc->end();
 		for (; toc_it != end; ++toc_it) {
 			if (label == toc_it->str()) {
 				lyx::dispatch(toc_it->action());
@@ -2458,7 +2460,7 @@ void BufferView::setCursor(DocIterator const & dit)
 		dit[i].inset().edit(d->cursor_, true);
 
 	d->cursor_.setCursor(dit);
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.setCurrentFont();
 	// FIXME
 	// It seems on general grounds as if this is probably needed, but
@@ -2587,7 +2589,7 @@ bool BufferView::selectIfEmpty(DocIterator & cur)
 	d->cursor_.setCursor(cur);
 	d->cursor_.pit() = beg_pit;
 	d->cursor_.pos() = 0;
-	d->cursor_.setSelection(false);
+	d->cursor_.selection(false);
 	d->cursor_.resetAnchor();
 	d->cursor_.pit() = end_pit;
 	d->cursor_.pos() = end_pos;

@@ -50,7 +50,6 @@ GuiToc::~GuiToc()
 void GuiToc::updateView()
 {
 	widget_->updateView();
-	return;
 }
 
 
@@ -66,9 +65,12 @@ void GuiToc::dispatchParams()
 }
 
 
-void GuiToc::enableView(bool /*enable*/)
+void GuiToc::enableView(bool enable)
 {
-	widget_->updateViewForce();
+	widget_->checkModelChanged();
+	if (!enable)
+		// In the opposite case, updateView() will be called anyway.
+		widget_->updateViewNow();
 }
 
 

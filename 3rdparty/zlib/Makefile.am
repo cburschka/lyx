@@ -1,14 +1,12 @@
 include $(top_srcdir)/config/common.am
 
-# This is prepared for compilation, but currently only used for packaging,
-# because configure support for compilation is still missing.
-
 noinst_LIBRARIES = liblyxzlib.a
 
 EXTRA_DIST = \
 	CMakeLists.txt \
 	1.2.8/README \
 	1.2.8/treebuild.xml \
+	1.2.8/zconf.h.in \
 	1.2.8/zconf.h.cmakein \
 	1.2.8/zlib.3 \
 	1.2.8/zlib.map \

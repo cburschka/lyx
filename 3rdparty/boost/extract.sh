@@ -25,24 +25,17 @@ bcp --boost=$1 \
 	boost/bind.hpp \
 	boost/crc.hpp \
 	boost/cstdint.hpp \
-	boost/format.hpp \
 	boost/function.hpp \
 	boost/functional.hpp \
 	boost/lexical_cast.hpp \
 	boost/noncopyable.hpp \
 	boost/regex.hpp \
-	boost/scoped_array.hpp \
 	boost/scoped_ptr.hpp \
 	boost/shared_ptr.hpp \
 	boost/signal.hpp \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \
-	boost/tokenizer.hpp \
 	boost/tuple/tuple.hpp \
-    boost/mpl/string.hpp \
-    boost/mpl/fold.hpp \
-    boost/mpl/size_t.hpp \
-    boost/functional/hash.hpp \
 	\
 	needed
 

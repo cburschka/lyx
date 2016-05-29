@@ -44,7 +44,7 @@ def writeString(outfile, infile, basefile, lineno, string):
 
 def ui_l10n(input_files, output, base):
     '''Generate pot file from lib/ui/*'''
-    output = io.open(output, 'w', encoding='utf_8')
+    output = io.open(output, 'w', encoding='utf_8', newline='\n')
     Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"', re.IGNORECASE)
     Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
     IconPalette = re.compile(r'^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
@@ -166,7 +166,10 @@ def layouts_l10n(input_files, output, base, layouttranslations):
         if 'wa' in languages:
             languages.remove('wa')
 
-    out = io.open(output, 'w', encoding='utf_8')
+    if layouttranslations:
+        out = io.open(output, 'w', encoding='utf_8')
+    else:
+        out = io.open(output, 'w', encoding='utf_8', newline='\n')
     for src in input_files:
         readingDescription = False
         readingI18nPreamble = False
@@ -433,7 +436,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
 
 def qt4_l10n(input_files, output, base):
     '''Generate pot file from src/frontends/qt4/ui/*.ui'''
-    output = io.open(output, 'w', encoding='utf_8')
+    output = io.open(output, 'w', encoding='utf_8', newline='\n')
     pat = re.compile(r'\s*<string>(.*)</string>')
     prop = re.compile(r'\s*<property.*name.*=.*shortcut')
     for src in input_files:
@@ -462,7 +465,7 @@ def qt4_l10n(input_files, output, base):
 
 def languages_l10n(input_files, output, base):
     '''Generate pot file from lib/languages'''
-    out = io.open(output, 'w', encoding='utf_8')
+    out = io.open(output, 'w', encoding='utf_8', newline='\n')
     GuiName = re.compile(r'^[^#]*GuiName\s+(.*)', re.IGNORECASE)
 
     for src in input_files:
@@ -482,7 +485,7 @@ def languages_l10n(input_files, output, base):
 
 def latexfonts_l10n(input_files, output, base):
     '''Generate pot file from lib/latexfonts'''
-    out = io.open(output, 'w', encoding='utf_8')
+    out = io.open(output, 'w', encoding='utf_8', newline='\n')
     GuiName = re.compile(r'^[^#]*GuiName\s+(.*)', re.IGNORECASE)
 
     for src in input_files:
@@ -502,7 +505,7 @@ def latexfonts_l10n(input_files, output, base):
 
 def external_l10n(input_files, output, base):
     '''Generate pot file from lib/external_templates'''
-    output = io.open(output, 'w', encoding='utf_8')
+    output = io.open(output, 'w', encoding='utf_8', newline='\n')
     Template = re.compile(r'^Template\s+(.*)', re.IGNORECASE)
     GuiName = re.compile(r'\s*GuiName\s+(.*)', re.IGNORECASE)
     HelpTextStart = re.compile(r'\s*HelpText\s', re.IGNORECASE)
@@ -551,7 +554,7 @@ def external_l10n(input_files, output, base):
 
 def formats_l10n(input_files, output, base):
     '''Generate pot file from configure.py'''
-    output = io.open(output, 'w', encoding='utf_8')
+    output = io.open(output, 'w', encoding='utf_8', newline='\n')
     GuiName = re.compile(r'.*\\Format\s+\S+\s+\S+\s+"([^"]*)"\s+(\S*)\s+.*', re.IGNORECASE)
     GuiName2 = re.compile(r'.*\\Format\s+\S+\s+\S+\s+([^"]\S+)\s+(\S*)\s+.*', re.IGNORECASE)
     input = io.open(input_files[0], encoding='utf_8')
@@ -581,7 +584,7 @@ def formats_l10n(input_files, output, base):
 
 def encodings_l10n(input_files, output, base):
     '''Generate pot file from lib/encodings'''
-    output = io.open(output, 'w', encoding='utf_8')
+    output = io.open(output, 'w', encoding='utf_8', newline='\n')
     # assuming only one encodings file
     #                 Encoding utf8      utf8    "Unicode (utf8)" UTF-8    variable inputenc
     reg = re.compile('Encoding [\w-]+\s+[\w-]+\s+"([\w \-\(\)]+)"\s+[\w-]+\s+(fixed|variable|variableunsafe)\s+\w+.*')
