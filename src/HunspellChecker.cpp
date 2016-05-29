@@ -65,6 +65,7 @@ struct HunspellChecker::Private
 	Hunspell * addSpeller(Language const * lang, string & hpath);
 	Hunspell * addSpeller(Language const * lang);
 	Hunspell * speller(Language const * lang);
+	Hunspell * lookup(Language const * lang);
 	/// ignored words
 	bool isIgnored(WordLangTuple const & wl) const;
 	/// personal word list interface
@@ -169,13 +170,17 @@ const string HunspellChecker::Private::dictPath(int selector)
 
 bool HunspellChecker::Private::haveDictionary(Language const * lang, string & hpath)
 {
-	if (hpath.empty())
+	if (hpath.empty() || !lang)
 		return false;
 
-	LYXERR(Debug::FILES, "check hunspell path: " << hpath
-				<< " for language " << (lang ? lang->lang() : "NULL" ));
+	if (lookup(lang)) return true;
 
-	string h_path = addName(hpath, HunspellDictionaryName(lang));
+	string d_name = HunspellDictionaryName(lang);
+
+	LYXERR(Debug::FILES, "check hunspell path: " << hpath
+		<< " for language " << lang->lang() << " with name " << d_name);
+
+	string h_path = addName(hpath, d_name);
 	// first we try lang code+variety
 	if (haveLanguageFiles(h_path)) {
 		LYXERR(Debug::FILES, "  found " << h_path);
@@ -201,21 +206,24 @@ bool HunspellChecker::Private::haveDictionary(Language const * lang)
 		string lpath = dictPath(p);
 		result = haveDictionary(lang, lpath);
 	}
-	// FIXME: if result is false... 
-	// we should indicate somehow that this language is not
-	// supported, probably by popping a warning. But we'll need to
-	// remember which warnings we've issued.
 	return result;
 }
 
 
 Hunspell * HunspellChecker::Private::speller(Language const * lang)
 {
+	Hunspell * h = lookup(lang);
+	if (h) return h;
+
 	setUserPath(lyxrc.hunspelldir_path);
-	Spellers::iterator it = spellers_.find(lang->lang());
-	if (it != spellers_.end())
-		return it->second;
 	return addSpeller(lang);
+}
+
+
+Hunspell * HunspellChecker::Private::lookup(Language const * lang)
+{
+	Spellers::iterator it = spellers_.find(lang->lang());
+	return it != spellers_.end() ? it->second : 0;
 }
 
 
@@ -229,7 +237,7 @@ Hunspell * HunspellChecker::Private::addSpeller(Language const * lang,string & p
 	FileName const affix(path + ".aff");
 	FileName const dict(path + ".dic");
 	Hunspell * h = new Hunspell(affix.absFileName().c_str(), dict.absFileName().c_str());
-	LYXERR(Debug::FILES, "Hunspell speller for langage " << lang << " at " << dict << " found");
+	LYXERR(Debug::FILES, "Hunspell speller for langage " << lang << " at " << dict << " added.");
 	spellers_[lang->lang()] = h;
 	return h;
 }
