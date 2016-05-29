@@ -14,7 +14,7 @@ Var LyXLangName
 !macro EXTERNAL_INIT COMPONENT
 
   # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
-  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX16
+  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX22
   ReadRegStr $ComponentPath SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
   # BIN_LATEX etc are defined in settings.nsh

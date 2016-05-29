@@ -214,7 +214,6 @@ FunctionEnd
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
-   MessageBox MB_OK|MB_ICONINFORMATION "${MiKTeXInstall} --shared"
    ${if} $MultiUser.Privileges != "Admin"
    ${andif} $MultiUser.Privileges != "Power"
     # call the non-admin version
