@@ -232,7 +232,10 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 string InsetArgument::contextMenuName() const
 {
-	return "context-argument";
+	if (decoration() == InsetLayout::CONGLOMERATE)
+		return "context-argument-conglomerate";
+	else
+		return "context-argument";
 }
 
 
