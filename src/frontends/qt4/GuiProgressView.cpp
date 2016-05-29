@@ -88,7 +88,9 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 	DebugVector dmap;
 	for (int i = 1 ; i < level_count; i++) {
 		Debug::Type const level = Debug::value(i);
-		QString const desc = qt_(Debug::description(level));
+		QString const desc =
+			toqstr(from_ascii(Debug::name(level) + " - "))
+			+ qt_(Debug::description(level));
 		dmap.push_back(DebugMap(level, desc));
 	}
 	sort(dmap.begin(), dmap.end(), DebugSorter);
