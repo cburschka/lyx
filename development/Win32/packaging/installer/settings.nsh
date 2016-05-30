@@ -56,7 +56,7 @@ These typically need to be modified for each LyX release
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef_windows_3_3.exe"
- !define SIZE_JABREF "25730" # size in KB
+ !define SIZE_JABREF 25730 # size in KB
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5987.exe"
 !endif
 
