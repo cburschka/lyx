@@ -1,4 +1,8 @@
-﻿Todo: add lyx.de to mirror list
+﻿Changelog for LyX-220-2:
+- remove also the user dependent LyX settings from the registry if the user
+  preferences should be uninstalled
+- calculate the required installation size correctly
+
 
 Changelog for LyX.220-1:
 - installs LyX 2.2.0

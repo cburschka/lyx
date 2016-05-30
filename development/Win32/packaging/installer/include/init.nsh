@@ -46,6 +46,12 @@ FunctionEnd
 
 Section "!${APP_NAME}" SecCore
  SectionIn RO
+ !if ${SETUPTYPE} == BUNDLE
+  # if no TeX was found MiKTeX will be installed which requires space
+  !if $PathLaTeX == ""
+   AddSize 1020000 # size in KB
+  !endif
+ !endif
 SectionEnd
 
 Section "$(SecFileAssocTitle)" SecFileAssoc

@@ -114,6 +114,8 @@ Section /o "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
  # remove LyX's config files
  StrCpy $AppSubfolder ${APP_DIR_USERDATA}
  Call un.DelAppPathSub # function from LyXUtils.nsh
+ # remove registry settings
+ DeleteRegKey HKCU "Software\LyX\LyX${APP_SERIES_NAME}"
   
 SectionEnd
 
