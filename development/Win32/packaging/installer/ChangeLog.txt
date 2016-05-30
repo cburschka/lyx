@@ -1,4 +1,11 @@
-﻿Changelog for LyX-214-7:
+﻿Changelog for LyX-215-1:
+- installs LyX 2.1.5
+- remove also the user dependent LyX settings from the registry if the user
+  preferences should be uninstalled
+- calculate the required installation size correctly
+
+
+Changelog for LyX-214-7:
 - use a new default download server for missing LaTeX packages
 - updated to MiKTeX 2.9 build 5987
 - updated to Imagemagick 6.9.4-1

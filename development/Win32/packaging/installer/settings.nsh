@@ -11,17 +11,19 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 1
-!define APP_VERSION_REVISION 4
+!define APP_VERSION_REVISION 5
 !define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 7 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
+
+!define COPYRIGHT_YEAR 2016
 
 #--------------------------------
 # Installer file name
 
-# Typical names for the release are "LyX-201-Installer-1.exe" etc.
+# Typical names for the release are "LyX-211-Installer-1.exe" etc.
 
 !ifndef ExeFile
   !define ExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}-Installer-${APP_VERSION_BUILD}.exe"
@@ -45,7 +47,6 @@ These typically need to be modified for each LyX release
 
 #--------------------------------
 # MiKTeX and JabRef
-# Sizes in KB
 
 !define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
@@ -56,7 +57,7 @@ These typically need to be modified for each LyX release
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef-2.11-setup.exe"
- !define SIZE_JABREF 14100
+ !define SIZE_JABREF 14100 # size in KB
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5987.exe"
 !endif
 

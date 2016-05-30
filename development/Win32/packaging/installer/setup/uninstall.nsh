@@ -68,11 +68,13 @@ Section "un.LyX" un.SecUnProgramFiles
   SetOutPath "$TEMP"
   RMDir /r "$INSTDIR"
   
-  # Registry keys
+  # Registry keys and values
   DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"
   DeleteRegKey SHCTX "${APP_REGKEY}"
   DeleteRegKey SHCTX "${APP_UNINST_KEY}"
   DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegValue HKCR "LyX.Document\Shell\open\command" ""
+  DeleteRegValue HKCR "LyX.Document\DefaultIcon" ""
   
   # File associations
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
@@ -104,6 +106,8 @@ Section /o "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
  # remove LyX's config files
  StrCpy $AppSubfolder ${APP_DIR_USERDATA}
  Call un.DelAppPathSub # function from LyXUtils.nsh
+ # remove registry settings
+ DeleteRegKey HKCU "Software\LyX\LyX${APP_SERIES_NAME}"
   
 SectionEnd
 

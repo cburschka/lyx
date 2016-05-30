@@ -57,7 +57,7 @@ Configuration of LyX installer
 !define APP_WEBPAGE_INFO "${APP_NAME} Website"
 !define APP_WIKI "http://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2016 by the LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
 !define BIN_LYX "lyx.exe"
