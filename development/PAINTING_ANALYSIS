@@ -66,61 +66,10 @@ drawing from metrics.
 
 Other changes are only clean-ups.
 
-** DONE RowPainter
-
-Inset position is set in paintInset, paintOnlyInsets, and paintText.
-This should be done only once in paintInset
-
-** DONE TextMetrics::drawParagraph
-
-We can really simplify the code when drawing is disabled only
-paintInset needs to be called.
- + do right at the start when drawing is already disabled
- + do it in the loop for rows that are not visible on screen.
-
-The only thing we want to do here is to set inset positions (for
-text). The other insets still use the painter with drawing disabled.
-
-** DONE Painter::text
-
-We cannot remove (or make private) the version that uses a
-FontInfo because it is used by PainterInfo::draw. Document this and
-remove unused arguments rtl and double spacing. This would become a specialized helper.
-Proposed solution: keep the existing function, but private and without
-optional arguments.
-
-Avoid to return (and thus compute) the width of strings?
- + used by InsetSpecialChar (fixable)
- + used by textDecoration() in text(): more difficult to fix
-
-Idea: add a version of text where wordspacing and textwidth (giving
-the width of strings) are required parameters and remove optional
-version.
-
-==> more versions, no optional parameters.
-
-** DONE When a document ends with a newline, add the bottom margin anyway
-
-The code that tests for a newline was added at 6bb98d07 in 2007.
-
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
 ** Rewrite TextMetrics::editXY, checkInsetHit using row information (getPosNearX)?
 
    The helper version should return a Row::Element instead of an InsetTable.
-
-** DONE Do not make RowPainter operations update x_
-
-It is better to make them const and update x_ separately.
-
-** DONE remove pit argument to breakRow
-
-There are probably other places where the pit is not needed anymore:
-computeRowMetrics, labelFill, setRowHeight, isLastRow, isFirstRow
-
-** DONE Split setRowHeight to separate the computation of space above/below paragraph
-
-This allows to remove the topBottomSpace parameter. The spacing is
-computed in redoParagraph, where it feels more natural.
 
 ** Remember rtl status in the row object
 
