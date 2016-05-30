@@ -267,7 +267,11 @@ Abschnitt
 \begin_inset Quotes gld
 \end_inset
 
-Fett, Schriftgröße 17, linksbündig, 5
+Fett, Schriftgröße
+\begin_inset space ~
+\end_inset
+
+17, linksbündig, 5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25312,7 +25316,6 @@ arg   "label-insert"
  Ein Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Marke.png
-	scale 85
 
 \end_inset
 
@@ -25376,7 +25379,6 @@ arg   "dialog-show-new-inset ref"
  Ein graues Querverweis-Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Querverweis.png
-	scale 85
 
 \end_inset
 
