@@ -14,7 +14,7 @@ Var LyXLangName
 !macro EXTERNAL_INIT COMPONENT
 
   # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
-  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX16
+  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX22
   ReadRegStr $ComponentPath SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
   # BIN_LATEX etc are defined in settings.nsh
@@ -46,6 +46,12 @@ FunctionEnd
 
 Section "!${APP_NAME}" SecCore
  SectionIn RO
+ !if ${SETUPTYPE} == BUNDLE
+  # if no TeX was found MiKTeX will be installed which requires space
+  !if $PathLaTeX == ""
+   AddSize 1020000 # size in KB
+  !endif
+ !endif
 SectionEnd
 
 Section "$(SecFileAssocTitle)" SecFileAssoc
