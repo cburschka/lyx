@@ -27,6 +27,7 @@
 #
 
 find_package(Perl)
+find_program(XMLLINT_EXECUTABLE xmllint)
 
 if(PERL_FOUND)
   set(DVI_FORMATS "dvi" "dvi3")
@@ -401,6 +402,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
             -Dinverted=${inverted}
             -DTOP_SRC_DIR=${TOP_SRC_DIR}
             -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
+            -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
           setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
         endif()

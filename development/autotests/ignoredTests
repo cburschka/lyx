@@ -40,3 +40,7 @@ export/examples/(Literate|noweb2lyx)_lyx16
 # Document class "Docbook article (SGML)" does not work with LaTeX:
 export/examples/docbook_article_(dvi3|pdf[245]).*
 export/templates/DocBook_article_(dvi3|pdf[245]).*
+
+# Ignore MergedManuals_xhtml because the test is very time-consuming
+# and the underlying subdocuments are already tested
+export/doc/(ja/|)MergedManuals_xhtml
