@@ -136,10 +136,6 @@ public:
 	TocItem const currentItem(QString const & type,
 		QModelIndex const & index) const;
 
-Q_SIGNALS:
-	/// Signal that the internal toc_models_ has been reset.
-	void modelReset();
-
 private:
 	typedef QHash<QString, TocModel *>::const_iterator const_iterator;
 	typedef QHash<QString, TocModel *>::iterator iterator;

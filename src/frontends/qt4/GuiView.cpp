@@ -1664,6 +1664,8 @@ void GuiView::updateTocItem(string const & type, DocIterator const & dit)
 
 void GuiView::structureChanged()
 {
+	// FIXME: This is slightly expensive, though less than the tocBackend update
+	// (#9880). This also resets the view in the Toc Widget (#6675).
 	d.toc_models_.reset(documentBufferView());
 	// Navigator needs more than a simple update in this case. It needs to be
 	// rebuilt.

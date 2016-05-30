@@ -38,6 +38,8 @@ namespace frontend {
 
 /// A QStandardItemModel that gives access to the reset methods.
 /// This is needed in order to fix http://www.lyx.org/trac/ticket/3740
+// FIXME: Better appropriately subclass QStandardItemModel and implement
+// the toc-specific reset methods there.
 class TocTypeModel : public QStandardItemModel
 {
 public:
@@ -47,27 +49,18 @@ public:
 	///
 	void reset()
 	{
-#if (QT_VERSION < 0x050000)
-		QStandardItemModel::reset();
-#else
+		QStandardItemModel::beginResetModel();
 		QStandardItemModel::endResetModel();
-#endif
 	}
 	///
 	void beginResetModel()
-	{ 
-	#if QT_VERSION >= 0x040600
-		QStandardItemModel::beginResetModel(); 
-	#endif
+	{
+		QStandardItemModel::beginResetModel();
 	}
 	///
 	void endResetModel()
-	{ 
-	#if QT_VERSION >= 0x040600
-		QStandardItemModel::endResetModel(); 
-	#else
-		QStandardItemModel::reset();
-	#endif
+	{
+		QStandardItemModel::endResetModel();
 	}
 };
 
