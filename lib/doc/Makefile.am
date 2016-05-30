@@ -165,6 +165,7 @@ dist_frclipartdoc_DATA = \
 	fr/clipart/GreyedOutNoteImage.png \
 	fr/clipart/label.png \
 	fr/clipart/LyXNoteImage.png \
+	fr/clipart/reference.png \
 	fr/clipart/SousDocument.png
 
 gldocdir = $(docdir)/gl

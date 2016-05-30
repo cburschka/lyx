@@ -268,7 +268,11 @@ Abschnitt
 \begin_inset Quotes gld
 \end_inset
 
-Fett, Schriftgröße 17, linksbündig, 5
+Fett, Schriftgröße
+\begin_inset space ~
+\end_inset
+
+17, linksbündig, 5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -8677,12 +8681,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8695,7 +8697,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8719,7 +8720,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -26384,7 +26384,6 @@ arg   "label-insert"
  Ein Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Marke.png
-	scale 85
 
 \end_inset
 
@@ -26472,7 +26471,6 @@ arg   "dialog-show-new-inset ref"
  Ein graues Querverweis-Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Querverweis.png
-	scale 85
 
 \end_inset
 
