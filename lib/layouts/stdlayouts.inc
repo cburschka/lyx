@@ -91,7 +91,7 @@ Style Verbatim
 	Font
 	  Family              Typewriter
 	EndFont
-	HTMLTag               <pre></pre>
+	HTMLTag               pre
 	HTMLItem              p
 End
 
