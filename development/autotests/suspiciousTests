@@ -82,7 +82,7 @@ check_load/mathmacros/testcases_speed
 # - escape special characters,
 # - convert to LaTeXString,
 # or just report this at Trac for now?
-export/export/LongestLabelWithUnderscore.*
+export/export/LongestLabelWithUnderscore_[^x].*
 
 
 Sublabel: lyxbugs
