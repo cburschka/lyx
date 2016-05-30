@@ -232,6 +232,7 @@ void TocWidget::on_tocTV_pressed(QModelIndex const & index)
 	if (button & Qt::LeftButton) {
 		goTo(index);
 		gui_view_.setFocus();
+		gui_view_.activateWindow();
 	}
 }
 
