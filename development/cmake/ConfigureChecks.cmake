@@ -192,7 +192,10 @@ if(LYX_USE_QT MATCHES "QT5")
     get_target_property(_x11extra_link_libraries Qt5::X11Extras IMPORTED_LOCATION_${_x11extra_prop})
     set(CMAKE_REQUIRED_LIBRARIES ${_x11extra_link_libraries})
     set(CMAKE_REQUIRED_INCLUDES ${Qt5X11Extras_INCLUDE_DIRS})
-    set(CMAKE_REQUIRED_FLAGS ${Qt5X11Extras_EXECUTABLE_COMPILE_FLAGS})
+    set(CMAKE_REQUIRED_FLAGS "${Qt5X11Extras_EXECUTABLE_COMPILE_FLAGS} -fPIC -DQT_NO_VERSION_TAGGING")
+    #message(STATUS "CMAKE_REQUIRED_LIBRARIES = ${_x11extra_link_libraries}")
+    #message(STATUS "CMAKE_REQUIRED_INCLUDES = ${Qt5X11Extras_INCLUDE_DIRS}")
+    #message(STATUS "CMAKE_REQUIRED_FLAGS = ${CMAKE_REQUIRED_FLAGS}")
     check_cxx_source_compiles(
             "
             #include <QtX11Extras/QX11Info>
