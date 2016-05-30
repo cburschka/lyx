@@ -30,6 +30,8 @@ public:
 	InsetMathDelim * asDelimInset() { return this; }
 	///
 	InsetMathDelim const * asDelimInset() const { return this; }
+	///
+	MathClass mathClass() const { return MC_INNER; }
 	/// is it (...)?
 	bool isParenthesis() const;
 	/// is it [...]?

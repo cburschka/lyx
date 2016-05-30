@@ -123,6 +123,31 @@ bool InsetMathFrac::idxBackward(Cursor & cur) const
 }
 
 
+MathClass InsetMathFrac::mathClass() const
+{
+	// Generalized fractions are of inner class (see The TeXbook, p. 292)
+	// But stuff from the unit/nicefrac packages are not real fractions.
+	MathClass mc = MC_ORD;
+	switch (kind_) {
+	case ATOP:
+	case OVER:
+	case FRAC:
+	case DFRAC:
+	case TFRAC:
+	case CFRAC:
+	case CFRACLEFT:
+	case CFRACRIGHT:
+		mc = MC_INNER;
+		break;
+	case NICEFRAC:
+	case UNITFRAC:
+	case UNIT:
+		break;
+	}
+	return mc;
+}
+
+
 void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1, dim2;

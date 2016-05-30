@@ -49,6 +49,12 @@ MathData const & InsetMath::cell(idx_type) const
 }
 
 
+MathClass InsetMath::mathClass() const
+{
+	return MC_ORD;
+}
+
+
 void InsetMath::dump() const
 {
 	lyxerr << "---------------------------------------------" << endl;

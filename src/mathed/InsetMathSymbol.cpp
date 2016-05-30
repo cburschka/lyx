@@ -70,7 +70,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += h_;
 		dim.des -= h_;
 	}
-	// set striptable_
+	// set scriptable_
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
@@ -92,27 +92,18 @@ InsetMath::mode_type InsetMathSymbol::currentMode() const
 }
 
 
-bool InsetMathSymbol::isMathBin() const
-{
-	return sym_->extra == "mathbin";
-}
-
-
-bool InsetMathSymbol::isMathRel() const
-{
-	return sym_->extra == "mathrel";
-}
-
-
-bool InsetMathSymbol::isMathPunct() const
-{
-	return sym_->extra == "mathpunct";
-}
-
-
 bool InsetMathSymbol::isOrdAlpha() const
 {
 	return sym_->extra == "mathord" || sym_->extra == "mathalpha";
+}
+
+
+MathClass InsetMathSymbol::mathClass() const
+{
+	if (sym_->extra == "func" || sym_->extra == "funclim")
+		return MC_OP;
+	MathClass const mc = string_to_class(sym_->extra);
+	return (mc == MC_UNKNOWN) ? MC_ORD : mc;
 }
 
 

@@ -40,11 +40,7 @@ public:
 	///
 	mode_type currentMode() const;
 	///
-	bool isMathRel() const;
-	///
-	bool isMathBin() const;
-	///
-	bool isMathPunct() const;
+	MathClass mathClass() const;
 	///
 	bool isOrdAlpha() const;
 	/// do we take scripts?

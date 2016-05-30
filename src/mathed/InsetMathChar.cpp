@@ -121,8 +121,6 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = fm.dimension(char_);
 		kerning_ = fm.rbearing(char_) - dim.wid;
 	}
-	if (mathfont && isMathPunct())
-		dim.wid += mathed_thinmuskip(mi.base.font);
 }
 
 
@@ -266,22 +264,19 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 }
 
 
-bool InsetMathChar::isMathBin() const
+MathClass InsetMathChar::mathClass() const
 {
-	return subst_ && subst_->extra == "mathbin";
-}
-
-
-bool InsetMathChar::isMathRel() const
-{
-	return subst_ && subst_->extra == "mathrel";
-}
-
-
-bool InsetMathChar::isMathPunct() const
-{
-	return support::contains(",;", static_cast<char>(char_))
-		|| (subst_ && subst_->extra == "mathpunct");
+	// this information comes from fontmath.ltx in LaTeX source.
+	char const ch = static_cast<char>(char_);
+	if (subst_)
+		return string_to_class(subst_->extra);
+	else if (support::contains(",;", ch))
+		return MC_PUNCT;
+	else if (support::contains("([", ch))
+		return MC_OPEN;
+	else if (support::contains(")]!?", ch))
+		return MC_CLOSE;
+	else return MC_ORD;
 }
 
 

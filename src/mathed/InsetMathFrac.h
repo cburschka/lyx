@@ -62,6 +62,8 @@ public:
 	///
 	bool idxBackward(Cursor &) const;
 	///
+	MathClass mathClass() const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -117,6 +119,8 @@ public:
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
+	/// Generalized fractions are of inner class (see The TeXbook, p.292)
+	MathClass mathClass() const { return MC_INNER; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

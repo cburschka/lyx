@@ -671,13 +671,6 @@ void mathedSymbolDim(MetricsInfo & mi, Dimension & dim, latexkeys const * sym)
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
 	Changer dummy = mi.base.changeFontSet(font);
 	mathed_string_dim(mi.base.font, sym->draw, dim);
-	// seperate things a bit
-	if (sym->extra == "mathbin")
-		dim.wid += 2 * mathed_medmuskip(mi.base.font);
-	else if (sym->extra == "mathrel")
-		dim.wid += 2 * mathed_thickmuskip(mi.base.font);
-	else if (sym->extra == "mathpunct")
-		dim.wid += mathed_thinmuskip(mi.base.font);
 }
 
 
@@ -693,10 +686,6 @@ void mathedSymbolDraw(PainterInfo & pi, int x, int y, latexkeys const * sym)
 		sym->extra == "mathalpha" &&
 		pi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym->inset;
-	if (sym->extra == "mathbin")
-		x += mathed_medmuskip(pi.base.font);
-	else if (sym->extra == "mathrel")
-		x += mathed_thickmuskip(pi.base.font);
 
 	Changer dummy = pi.base.changeFontSet(font);
 	pi.draw(x, y, sym->draw);

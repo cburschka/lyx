@@ -447,14 +447,15 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathXArrow.cpp \
 	mathed/InsetMathXYMatrix.cpp \
 	mathed/InsetMathDiagram.cpp \
+	mathed/MacroTable.cpp \
 	mathed/MathAtom.cpp \
 	mathed/MathAutoCorrect.cpp \
+	mathed/MathClass.cpp \
 	mathed/MathData.cpp \
 	mathed/MathExtern.cpp \
 	mathed/MathFactory.cpp \
 	mathed/MathMacro.cpp \
 	mathed/MathMacroArgument.cpp \
-	mathed/MacroTable.cpp \
 	mathed/MathMacroTemplate.cpp \
 	mathed/MathParser.cpp \
 	mathed/MathStream.cpp \
@@ -518,6 +519,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathDiagram.h \
 	mathed/MathAtom.h \
 	mathed/MathAutoCorrect.h \
+	mathed/MathClass.h \
 	mathed/MathData.h \
 	mathed/MathCompletionList.h \
 	mathed/MathExtern.h \
