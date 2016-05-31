@@ -1,3 +1,9 @@
 # configure.ac needs to have unix line ends on windows, see #10053
 configure.ac eol=lf
 
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Our .po file update scripts produce native line endings
+*.po text
+
