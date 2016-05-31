@@ -333,7 +333,14 @@ int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 }
 
 
-void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff)
+int GuiPainter::text(int x, int y, docstring const & s, FontInfo const & f)
+{
+	return text(x, y, s, f, Auto, 0.0);
+}
+
+
+void GuiPainter::do_drawText(int x, int y, QString str, Direction const dir,
+                             FontInfo const & f, QFont ff)
 {
 	setQPainterPen(computeColor(f.realColor()));
 	if (font() != ff)
@@ -346,10 +353,10 @@ void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const
 	/* Use unicode override characters to enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 */
-	if (rtl)
+	if (dir == RtL)
 		// Right-to-left override: forces to draw text right-to-left
 		str = QChar(0x202E) + str;
-	else
+	else if (dir == LtR)
 		// Left-to-right override: forces to draw text left-to-right
 		str =  QChar(0x202D) + str;
 	drawText(x, y, str);
@@ -360,8 +367,12 @@ void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const
 	 * Keep it here for now, in case it can be helpful
 	 */
 	//This is much stronger than setLayoutDirection.
-	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
-	drawText(x + (rtl ? textwidth : 0), y - fm.maxAscent(), 0, 0,
+	int flag = 0;
+	if (dir == RtL)
+		flag = Qt::TextForceRightToLeft;
+	else if (dir == LtR)
+		flag = Qt::TextForceLeftToRight;
+	drawText(x + ((dir == RtL) ? textwidth : 0), y - fm.maxAscent(), 0, 0,
 		 flag | Qt::TextDontClip,
 		 str);
 #endif
@@ -369,7 +380,7 @@ void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
-                     FontInfo const & f, bool const rtl,
+                     FontInfo const & f, Direction const dir,
                      double const wordspacing)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
@@ -421,7 +432,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		// Only the left bearing of the first character is important
 		// as we always write from left to right, even for
 		// right-to-left languages.
-		// FIXME: this is probably broken for RTL now that we draw full strings.
+		// FIXME: this is probably broken for RtL now that we draw full strings.
 		// Morover the first/last element is possibly not the right one since the glyph may have changed.
 		int const lb = min(fm.lbearing(s[0]), 0);
 		int const mA = fm.maxAscent();
@@ -446,7 +457,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 #endif
 			pm.fill(Qt::transparent);
 			GuiPainter p(&pm, pixelRatio());
-			p.do_drawText(-lb, mA, str, rtl, f, ff);
+			p.do_drawText(-lb, mA, str, dir, f, ff);
 			QPixmapCache::insert(key, pm);
 			//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
 			//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
@@ -460,7 +471,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	}
 
 	// don't use the pixmap cache,
-	do_drawText(x, y, str, rtl, f, ff);
+	do_drawText(x, y, str, dir, f, ff);
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
 	return textwidth;
@@ -470,7 +481,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
                      double const wordspacing)
 {
-	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing);
+	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft() ? RtL : LtR, wordspacing);
 }
 
 
@@ -480,13 +491,13 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 {
 	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
 	FontInfo fi = f.fontInfo();
-	bool const rtl = f.isVisibleRightToLeft();
+	Direction const dir = f.isVisibleRightToLeft() ? RtL : LtR;
 
 	// dimensions
 	int const ascent = fm.maxAscent();
 	int const height = fm.maxAscent() + fm.maxDescent();
-	int xmin = fm.pos2x(str, from, rtl, wordspacing);
-	int xmax = fm.pos2x(str, to, rtl, wordspacing);
+	int xmin = fm.pos2x(str, from, dir == RtL, wordspacing);
+	int xmax = fm.pos2x(str, to, dir == RtL, wordspacing);
 	if (xmin > xmax)
 		swap(xmin, xmax);
 
@@ -495,7 +506,7 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(other);
 	QRegion const clip(x + xmin, y - ascent, xmax - xmin, height);
 	setClipRegion(clip);
-	int const textwidth = text(x, y, str, fi, rtl, wordspacing);
+	int const textwidth = text(x, y, str, fi, dir, wordspacing);
 
 	// Then the part in normal color
 	// Note that in Qt5, it is not possible to use Qt::UniteClip,
@@ -503,7 +514,7 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(orig);
 	QRegion region(viewport());
 	setClipRegion(region - clip);
-	text(x, y, str, fi, rtl, wordspacing);
+	text(x, y, str, fi, dir, wordspacing);
 	setClipping(false);
 
 	return textwidth;

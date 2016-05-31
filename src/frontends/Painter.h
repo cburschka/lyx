@@ -133,15 +133,14 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		graphics::Image const & image) = 0;
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is given by \c rtl.
+	/** draw a string at position x, y (y is the baseline). The text
+	 * direction depends on the string itself.
 	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, FontInfo const & f,
-                     bool rtl = false, double wordspacing = 0.0) = 0;
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f) = 0;
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is enforced by the \c Font.
+	/** draw a string at position x, y (y is the baseline). The text
+	 * direction is enforced by the \c Font.
 	 * \return the width of the drawn text.
 	 */
 	virtual int text(int x, int y, docstring const & str, Font const & f,

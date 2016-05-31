@@ -45,6 +45,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix display of labels in right-to-left languages (bug 10169).
+
 - When a counter is stepped, reset recursively all subcounters (bug #10063).
 
 - Fix on screen narrow box when using \width as box width unit (bug 10048).
