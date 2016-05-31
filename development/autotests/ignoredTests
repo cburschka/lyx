@@ -44,3 +44,6 @@ export/templates/DocBook_article_(dvi3|pdf[245]).*
 # Ignore MergedManuals_xhtml because the test is very time-consuming
 # and the underlying subdocuments are already tested
 export/doc/(ja/|)MergedManuals_xhtml
+
+# Used only as include file for some tests
+.*/export/IncludeMissingEndTagDiv.*
