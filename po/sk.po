@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-04-24 10:40+0200\n"
-"PO-Revision-Date: 2016-04-10 10:28+0000\n"
+"POT-Creation-Date: 2016-05-30 19:00+0200\n"
+"PO-Revision-Date: 2016-05-30 17:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -23479,6 +23479,11 @@ msgstr "LyX Archív (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
+#: src/Author.cpp:57
+#, c-format
+msgid "%1$s[[name]] (%2$s[[email]])"
+msgstr "%1$s (%2$s)"
+
 #: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2339
 #, c-format
 msgid "%1$s and %2$s"
@@ -24452,14 +24457,10 @@ msgstr ""
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte písanie mena autora."
 
-#: src/Chktex.cpp:62
+#: src/Chktex.cpp:59
 #, c-format
-msgid "ChkTeX warning id # %1$d"
-msgstr "Varovanie ChkTeXu id # %1$d"
-
-#: src/Chktex.cpp:64
-msgid "ChkTeX warning id # "
-msgstr "Varovanie ChkTeXu id # "
+msgid "ChkTeX warning id # %1$s"
+msgstr "Varovanie ChkTeXu id # %1$s"
 
 #: src/Color.cpp:203 src/insets/InsetBibtex.cpp:182
 #: src/insets/InsetBibtex.cpp:207
@@ -26141,13 +26142,10 @@ msgstr "Znak je v doslovných(verbatim) odstavcoch nekódovateľný."
 msgid "[Change Tracking] "
 msgstr "[Zmeniť Sledovanie] "
 
-#: src/Text.cpp:1894
-msgid "Change: "
-msgstr "Zmena: "
-
-#: src/Text.cpp:1898
-msgid " at "
-msgstr " na "
+#: src/Text.cpp:1883
+#, c-format
+msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
+msgstr "Zmenené %2$s od %1$s."
 
 #: src/Text.cpp:1908 src/mathed/InsetMathFont.cpp:207
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -27167,19 +27165,16 @@ msgstr "Vetvu nebolo možné premenovať."
 msgid "Merge Changes"
 msgstr "Zlúčiť Zmeny"
 
-#: src/frontends/qt4/GuiChanges.cpp:64
-#, c-format
+#: src/frontends/qt4/GuiChanges.cpp:73
 msgid ""
-"Change by %1$s\n"
+"Changed by %1\n"
 "\n"
-msgstr ""
-"Zmenil %1$s\n"
+msgstr "Zmenené od %1\n"
 "\n"
 
-#: src/frontends/qt4/GuiChanges.cpp:66
-#, c-format
-msgid "Change made at %1$s\n"
-msgstr "Zmena zrobená %1$s\n"
+#: src/frontends/qt4/GuiChanges.cpp:78
+msgid "Change made on %1\n"
+msgstr "Zmeny zrobené %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83
@@ -31439,6 +31434,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Change: "
+#~ msgstr "Zmena: "
+
+#~ msgid " at "
+#~ msgstr " na "
+
 #~ msgid "American Geophysical Union (AGUTeX) (version 2015)"
 #~ msgstr "American Geophysical Union (AGUTeX) (verzia 2015)"
 
@@ -34762,5 +34763,12 @@ msgstr "Neznámy používateľ"
 #~ msgid "Change tracking error"
 #~ msgstr "Chyba pri zmene sledovania"
 
-#~ msgid "ACM SIGGRAPH"
-#~ msgstr "ACM SIGGRAPH"
+#~ msgid ""
+#~ "Change by %1\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Zmenil %1\n"
+#~ "\n"
+
+#~ msgid "Change made at %1\n"
+#~ msgstr "Zmena zrobená %1\n"
