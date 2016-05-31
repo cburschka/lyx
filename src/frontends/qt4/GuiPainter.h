@@ -180,12 +180,15 @@ private:
 	void setQPainterPen(QColor const & col,
 		line_style ls = line_solid, int lw = thin_line);
 
+	// Direction for painting text
+	enum Direction { LtR, RtL, Auto };
+
 	// Helper for text() method
-	void do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff);
+	void do_drawText(int x, int y, QString str, Direction dir, FontInfo const & f, QFont ff);
 
 	// Real text() method
 	void text(int x, int y, docstring const & s,
-              FontInfo const & f, bool const rtl,
+              FontInfo const & f, Direction const dir,
               double const wordspacing, double tw);
 
 	QColor current_color_;
