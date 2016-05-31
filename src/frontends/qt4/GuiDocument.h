@@ -41,6 +41,7 @@ namespace lyx {
 
 class BufferParams;
 class LayoutModuleList;
+class LyXModule;
 class TextClass;
 
 namespace frontend {
@@ -217,6 +218,8 @@ private:
 		std::string id;
 		QString description;
 	};
+	///
+	static modInfoStruct modInfo(LyXModule const & mod);
 	/// List of available modules
 	std::list<modInfoStruct> const & getModuleInfo();
 	/// Modules in use in current buffer
