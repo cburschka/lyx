@@ -100,7 +100,7 @@
    <item row="1" column="0" colspan="4" >
     <widget class="QListWidget" name="errorsLW" >
      <property name="toolTip" >
-      <string>Selecting an error will show the error message in the panel below, and jump the cursor to the location in the document where the error occurred.</string>
+      <string>Selecting an error will show the error message in the panel below and the cursor will jump to the location in the document where the error occurred.</string>
      </property>
     </widget>
    </item>
