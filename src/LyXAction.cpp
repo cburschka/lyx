@@ -2460,8 +2460,8 @@ void LyXAction::init()
                         floats, graphics, include, index, info, label,
                         listings, newline, newpage, nomencl, note, phantom,
                         ref, space, tabular, vspace, wrap insets.
- * \li Syntax: inset-modify <INSET> <ARGS>
- * \li Syntax: inset-modify changetype <TYPE>
+ * \li Syntax: inset-modify <INSET> <ARGS> \n
+               inset-modify changetype <TYPE>
  * \li Sample: inset-modify note Note Comment \n
 	       inset-modify changetype Ovalbox
  * \endvar
