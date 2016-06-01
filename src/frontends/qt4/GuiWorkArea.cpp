@@ -733,7 +733,7 @@ bool GuiWorkArea::event(QEvent * e)
 			|| (ke->key() == Qt::Key_Backtab && (
 				ke->modifiers() == Qt::ShiftModifier
 				|| ke->modifiers() == Qt::NoModifier))) {
-			keyPressEvent(ke);
+			e->accept();
 			return true;
 		}
 		return QAbstractScrollArea::event(e);
