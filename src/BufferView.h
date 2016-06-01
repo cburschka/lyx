@@ -57,15 +57,15 @@ enum CursorStatus {
 /// Scrollbar Parameters.
 struct ScrollbarParameters
 {
+	// These parameters are normalized against the screen geometry and pixel
+	// coordinates. Position 0 corresponds to the top the the screen.
 	ScrollbarParameters()
-		: min(0), max(0), position(0), single_step(1), page_step(1)
+		: min(0), max(0), single_step(1), page_step(1)
 	{}
 	/// Minimum scrollbar position in pixels.
 	int min;
 	/// Maximum scrollbar position in pixels.
 	int max;
-	/// Current position in the document in pixels.
-	int position;
 	/// Line-scroll amount in pixels.
 	int single_step;
 	/// Page-scroll amount in pixels.

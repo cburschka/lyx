@@ -682,7 +682,7 @@ void GuiWorkArea::Private::updateScrollbar()
 	p->verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	p->verticalScrollBar()->setPageStep(scroll_.page_step);
 	p->verticalScrollBar()->setSingleStep(scroll_.single_step);
-	p->verticalScrollBar()->setSliderPosition(scroll_.position);
+	p->verticalScrollBar()->setSliderPosition(0);
 }
 
 

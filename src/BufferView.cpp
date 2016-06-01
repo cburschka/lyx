@@ -370,13 +370,13 @@ int BufferView::leftMargin() const
 
 bool BufferView::isTopScreen() const
 {
-	return d->scrollbarParameters_.position == d->scrollbarParameters_.min;
+	return 0 == d->scrollbarParameters_.min;
 }
 
 
 bool BufferView::isBottomScreen() const
 {
-	return d->scrollbarParameters_.position == d->scrollbarParameters_.max;
+	return 0 == d->scrollbarParameters_.max;
 }
 
 
@@ -559,7 +559,6 @@ void BufferView::updateScrollbar()
 	for (size_t i = last.first + 1; i != parsize; ++i)
 		d->scrollbarParameters_.max += d->par_height_[i];
 
-	d->scrollbarParameters_.position = 0;
 	// The reference is the top position so we remove one page.
 	if (lyxrc.scroll_below_document)
 		d->scrollbarParameters_.max -= minVisiblePart();
@@ -600,17 +599,19 @@ string BufferView::contextMenu(int x, int y) const
 }
 
 
-void BufferView::scrollDocView(int value, bool update)
+
+void BufferView::scrollDocView(int const value, bool update)
 {
-	int const offset = value - d->scrollbarParameters_.position;
+	// The scrollbar values are relative to the top of the screen, therefore the
+	// offset is equal to the target value.
 
 	// No scrolling at all? No need to redraw anything
-	if (offset == 0)
+	if (value == 0)
 		return;
 
 	// If the offset is less than 2 screen height, prefer to scroll instead.
-	if (abs(offset) <= 2 * height_) {
-		d->anchor_ypos_ -= offset;
+	if (abs(value) <= 2 * height_) {
+		d->anchor_ypos_ -= value;
 		buffer_.changed(true);
 		updateHoveredInset();
 		return;
