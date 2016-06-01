@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 '''
-This modules offer several free functions to help with lyx2lyx'ing. 
+This module offers several free functions to help with lyx2lyx'ing. 
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
@@ -47,18 +47,36 @@ put_cmd_in_ert(arg):
     ert = put_cmd_in_ert(content)
     document.body[i:j+1] = ert
 
+get_ert(lines, i[, verbatim]):
+  Here, lines is a list of lines of LyX material containing an ERT inset,
+  whose content we want to convert to LaTeX. The ERT starts at index i.
+  If the optional (by default: False) bool verbatim is True, the content
+  of the ERT is returned verbatim, that is in LyX syntax (not LaTeX syntax)
+  for the use in verbatim insets.
+
 lyx2latex(document, lines):
-  Here, lines is a list of lines of LyX material we want to convert 
+  Here, lines is a list of lines of LyX material we want to convert
   to LaTeX. We do the best we can and return a string containing
   the translated material.
 
+lyx2verbatim(document, lines):
+  Here, lines is a list of lines of LyX material we want to convert
+  to verbatim material (used in ERT an the like). We do the best we
+  can and return a string containing the translated material.
+
 latex_length(slen):
-    Convert lengths (in LyX form) to their LaTeX representation. Returns 
-    (bool, length), where the bool tells us if it was a percentage, and 
+    Convert lengths (in LyX form) to their LaTeX representation. Returns
+    (bool, length), where the bool tells us if it was a percentage, and
     the length is the LaTeX representation.
 
+convert_info_insets(document, type, func):
+    Applies func to the argument of all info insets matching certain types
+    type : the type to match. This can be a regular expression.
+    func : function from string to string to apply to the "arg" field of
+           the info insets.
 '''
 
+import re
 import string
 from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
@@ -125,14 +143,14 @@ def put_cmd_in_ert(arg):
     else:
       s = arg
     for rep in unicode_reps:
-      s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
+      s = s.replace(rep[1], rep[0])
     s = s.replace('\\', "\\backslash\n")
     ret += s.splitlines()
     ret += ["\\end_layout", "", "\\end_inset"]
     return ret
 
 
-def get_ert(lines, i):
+def get_ert(lines, i, verbatim = False):
     'Convert an ERT inset into LaTeX.'
     if not lines[i].startswith("\\begin_inset ERT"):
         return ""
@@ -156,7 +174,10 @@ def get_ert(lines, i):
             while i + 1 < j and lines[i+1] == "":
                 i = i + 1
         elif lines[i] == "\\backslash":
-            ret = ret + "\\"
+            if verbatim:
+                ret = ret + "\n" + lines[i] + "\n"
+            else:
+                ret = ret + "\\"
         else:
             ret = ret + lines[i]
         i = i + 1
@@ -204,6 +225,10 @@ def lyx2latex(document, lines):
                   line = "''"
               else:
                   line = "'"
+      elif line.startswith("\\begin_inset Newline newline"):
+          line = "\\\\ "
+      elif line.startswith("\\noindent"):
+          line = "\\noindent " # we need the space behind the command
       elif line.startswith("\\begin_inset space"):
           line = line[18:].strip()
           if line.startswith("\\hspace"):
@@ -250,7 +275,7 @@ def lyx2latex(document, lines):
 
           # Do the LyX text --> LaTeX conversion
           for rep in unicode_reps:
-            line = line.replace(rep[1], rep[0] + "{}")
+              line = line.replace(rep[1], rep[0])
           line = line.replace(r'\backslash', r'\textbackslash{}')
           line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
           line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')
@@ -262,6 +287,15 @@ def lyx2latex(document, lines):
           line = line.replace(r'\family typewriter', r'\ttfamily{}').replace(r'\family roman', r'\rmfamily{}')
           line = line.replace(r'\InsetSpace ', r'').replace(r'\SpecialChar ', r'')
       content += line
+    return content
+
+
+def lyx2verbatim(document, lines):
+    'Convert some LyX stuff into corresponding verbatim stuff, as best we can.'
+
+    content = lyx2latex(document, lines)
+    content = re.sub(r'\\(?!backslash)', r'\n\\backslash\n', content)
+
     return content
 
 
@@ -283,7 +317,7 @@ def latex_length(slen):
     units = {"text%":"\\textwidth", "col%":"\\columnwidth",
              "page%":"\\paperwidth", "line%":"\\linewidth",
              "theight%":"\\textheight", "pheight%":"\\paperheight"}
-    for unit in units.keys():
+    for unit in list(units.keys()):
         i = slen.find(unit)
         if i == -1:
             continue
@@ -317,6 +351,44 @@ def latex_length(slen):
         lastvalue = slen[lastvaluepos:]
         slen = slen.replace("  ", lastvalue + " ")
     return (percent, slen)
+
+
+def length_in_bp(length):
+    " Convert a length in LyX format to its value in bp units "
+
+    em_width = 10.0 / 72.27 # assume 10pt font size
+    text_width = 8.27 / 1.7 # assume A4 with default margins
+    # scale factors are taken from Length::inInch()
+    scales = {"bp"       : 1.0,
+              "cc"       : (72.0 / (72.27 / (12.0 * 0.376 * 2.845))),
+              "cm"       : (72.0 / 2.54),
+              "dd"       : (72.0 / (72.27 / (0.376 * 2.845))),
+              "em"       : (72.0 * em_width),
+              "ex"       : (72.0 * em_width * 0.4305),
+              "in"       : 72.0,
+              "mm"       : (72.0 / 25.4),
+              "mu"       : (72.0 * em_width / 18.0),
+              "pc"       : (72.0 / (72.27 / 12.0)),
+              "pt"       : (72.0 / (72.27)),
+              "sp"       : (72.0 / (72.27 * 65536.0)),
+              "text%"    : (72.0 * text_width / 100.0),
+              "col%"     : (72.0 * text_width / 100.0), # assume 1 column
+              "page%"    : (72.0 * text_width * 1.7 / 100.0),
+              "line%"    : (72.0 * text_width / 100.0),
+              "theight%" : (72.0 * text_width * 1.787 / 100.0),
+              "pheight%" : (72.0 * text_width * 2.2 / 100.0)}
+
+    rx = re.compile(r'^\s*([^a-zA-Z%]+)([a-zA-Z%]+)\s*$')
+    m = rx.match(length)
+    if not m:
+        document.warning("Invalid length value: " + length + ".")
+        return 0
+    value = m.group(1)
+    unit = m.group(2)
+    if not unit in scales.keys():
+        document.warning("Unknown length unit: " + unit + ".")
+        return value
+    return "%g" % (float(value) * scales[unit])
 
 
 def revert_flex_inset(lines, name, LaTeXname):
@@ -436,3 +508,21 @@ def str2bool(s):
   "'true' goes to True, case-insensitively, and we strip whitespace."
   s = s.strip().lower()
   return s == "true"
+
+
+def convert_info_insets(document, type, func):
+    "Convert info insets matching type using func."
+    i = 0
+    type_re = re.compile(r'^type\s+"(%s)"$' % type)
+    arg_re = re.compile(r'^arg\s+"(.*)"$')
+    while True:
+        i = find_token(document.body, "\\begin_inset Info", i)
+        if i == -1:
+            return
+        t = type_re.match(document.body[i + 1])
+        if t:
+            arg = arg_re.match(document.body[i + 2])
+            if arg:
+                new_arg = func(arg.group(1))
+                document.body[i + 2] = 'arg   "%s"' % new_arg
+        i += 3

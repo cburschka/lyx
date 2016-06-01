@@ -89,10 +89,7 @@ def revert_tabularvalign(document):
       if p != -1:
           q = document.body[fline].find("tabularvalignment")
           if q != -1:
-              # FIXME
-              # This seems wrong: It removes everything after 
-              # tabularvalignment, too.
-              document.body[fline] = document.body[fline][:q - 1] + '>'
+              document.body[fline] = re.sub(r' tabularvalignment=\"[a-z]+\"', "", document.body[fline])
           i += 1
           continue
 
@@ -108,16 +105,13 @@ def revert_tabularvalign(document):
       # delete tabularvalignment
       q = document.body[fline].find("tabularvalignment")
       if q != -1:
-          # FIXME
-          # This seems wrong: It removes everything after 
-          # tabularvalignment, too.
-          document.body[fline] = document.body[fline][:q - 1] + '>'
+          document.body[fline] = re.sub(r' tabularvalignment=\"[a-z]+\"', "", document.body[fline])
 
       # don't add a box when centered
       if tabularvalignment == 'c':
           i = end
           continue
-      subst = ['\\end_layout', '\\end_inset']
+      subst = ['\\end_inset', '\\end_layout']
       document.body[end:end] = subst # just inserts those lines
       subst = ['\\begin_inset Box Frameless',
           'position "' + tabularvalignment +'"',
@@ -563,7 +557,6 @@ def revert_nomencl_cwidth(document):
       j = find_end_of_inset(document.body, i)
       l = find_token(document.body, "width", i, j)
       if l == -1:
-        document.warning("Can't find width option for nomencl_print!")
         i = j
         continue
       width = get_quoted_value(document.body, "width", i, j)
@@ -1585,10 +1578,13 @@ def convert_use_makebox(document):
 
 def revert_IEEEtran(document):
   " Convert IEEEtran layouts and styles to TeX code "
+
   if document.textclass != "IEEEtran":
     return
+
   revert_flex_inset(document.body, "IEEE membership", "\\IEEEmembership")
   revert_flex_inset(document.body, "Lowercase", "\\MakeLowercase")
+
   layouts = ("Special Paper Notice", "After Title Text", "Publication ID",
              "Page headings", "Biography without photo")
   latexcmd = {"Special Paper Notice": "\\IEEEspecialpapernotice",
@@ -1596,6 +1592,7 @@ def revert_IEEEtran(document):
               "Publication ID":       "\\IEEEpubid"}
   obsoletedby = {"Page headings":            "MarkBoth",
                  "Biography without photo":  "BiographyNoPhoto"}
+
   for layout in layouts:
     i = 0
     while True:
@@ -1607,7 +1604,7 @@ def revert_IEEEtran(document):
           document.warning("Malformed LyX document: Can't find end of " + layout + " layout.")
           i += 1
           continue
-        if layout in obsoletedby:
+        if layout in list(obsoletedby.keys()):
           document.body[i] = "\\begin_layout " + obsoletedby[layout]
           i = j
           continue
@@ -2394,13 +2391,12 @@ def revert_script(document):
 
 def convert_use_xetex(document):
     " convert \\use_xetex to \\use_non_tex_fonts "
-    i = 0
     i = find_token(document.header, "\\use_xetex", 0)
     if i == -1:
-        return
-    
-    val = get_value(document.header, "\\use_xetex", 0)
-    document.header[i] = "\\use_non_tex_fonts " + val
+        document.header.insert(-1, "\\use_non_tex_fonts 0")
+    else:
+        val = get_value(document.header, "\\use_xetex", 0)
+        document.header[i] = "\\use_non_tex_fonts " + val
 
 
 def revert_use_xetex(document):

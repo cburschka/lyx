@@ -154,7 +154,7 @@ def remove_oldfloat(document):
         j = find_token(lines, "\\end_float", i+1)
 
         floattype = lines[i].split()[1]
-        if not floats.has_key(floattype):
+        if floattype not in floats:
             document.warning("Error! Unknown float type " + floattype)
             floattype = "fig"
 
@@ -284,7 +284,7 @@ def remove_pextra(document):
 
 def is_empty(lines):
     " Are all the lines empty?"
-    return filter(is_nonempty_line, lines) == []
+    return list(filter(is_nonempty_line, lines)) == []
 
 
 move_rexp =  re.compile(r"\\(family|series|shape|size|emph|numeric|bar|noun|end_deeper)")
@@ -358,7 +358,7 @@ def remove_oldert(document):
                     tmp.append(line)
 
             if is_empty(tmp):
-                if filter(lambda x:x != "", tmp) != []:
+                if [x for x in tmp if x != ""] != []:
                     if new == []:
                         # This is not necessary, but we want the output to be
                         # as similar as posible to the lyx format

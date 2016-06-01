@@ -20,35 +20,47 @@
 
 import sys, os, re
 
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+if not PY2:
+    unichr = chr
+# End of code to support for both python 2 and 3
+
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
     fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
     spec_chars = []
-    # Two backslashes, followed by some non-word character, and then a character
+    # A backslash, followed by some non-word character, and then a character
     # in brackets. The idea is to check for constructs like: \"{u}, which is how
     # they are written in the unicodesymbols file; but they can also be written
     # as: \"u or even \" u.
-    r = re.compile(r'\\\\(\W)\{(\w)\}')
+    # The two backslashes in the string literal are needed to specify a literal
+    # backslash in the regex. Without r prefix, these would be four backslashes.
+    r = re.compile(r'\\(\W)\{(\w)\}')
     for line in fp.readlines():
         if line[0] != '#' and line.strip() != "":
+            # Note: backslashes in the string literals with r prefix are not escaped,
+            #       so one backslash in the source file equals one backslash in memory.
+            #       Without r prefix backslahses are escaped, so two backslashes in the
+            #       source file equal one backslash in memory.
             line=line.replace(' "',' ') # remove all quotation marks with spaces before
             line=line.replace('" ',' ') # remove all quotation marks with spaces after
-            line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
+            line=line.replace(r'\"','"') # unescape "
+            line=line.replace(r'\\','\\') # unescape \
             try:
                 [ucs4,command,dead] = line.split(None,2)
                 if command[0:1] != "\\":
                     continue
+                if (line.find("notermination=text") < 0 and
+                    line.find("notermination=both") < 0 and command[-1] != "}"):
+                    command = command + "{}"
                 spec_chars.append([command, unichr(eval(ucs4))])
             except:
                 continue
             m = r.match(command)
             if m != None:
-                command = "\\\\"
-                # If the character is a double-quote, then we need to escape it, too,
-                # since it is done that way in the LyX file.
-                if m.group(1) == "\"":
-                    command += "\\"
+                command = "\\"
                 commandbl = command
                 command += m.group(1) + m.group(2)
                 commandbl += m.group(1) + ' ' + m.group(2)

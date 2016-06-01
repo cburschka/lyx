@@ -56,9 +56,9 @@ find_re(lines, rexp, start[, end]):
 get_value(lines, token, start[, end[, default]):
   Similar to find_token, but it returns what follows the 
   token on the found line. Example:
-    get_value(document.header, "\use_xetex", 0)
+    get_value(document.header, "\\use_xetex", 0)
   will find a line like:
-    \use_xetex true
+    \\use_xetex true
   and, in that case, return "true". (Note that whitespace
   is stripped.) The final argument, default, defaults to "", 
   and is what is returned if we do not find anything. So you
@@ -80,10 +80,10 @@ del_token(lines, token, start[, end]):
 
 find_beginning_of(lines, i, start_token, end_token):
   Here, start_token and end_token are meant to be a matching 
-  pair, like "\begin_layout" and "\end_layout". We look for 
+  pair, like "\\begin_layout" and "\\end_layout". We look for 
   the start_token that pairs with the end_token that occurs
   on or after line i. Returns -1 if not found.
-  So, in the layout case, this would find the \begin_layout 
+  So, in the layout case, this would find the \\begin_layout 
   for the layout line i is in. 
   Example:
     ec = find_token(document.body, "</cell", i)
@@ -187,7 +187,7 @@ def find_token(lines, token, start, end = 0, ignorews = False):
     if end == 0 or end > len(lines):
         end = len(lines)
     m = len(token)
-    for i in xrange(start, end):
+    for i in range(start, end):
         if ignorews:
             x = lines[i].split()
             y = token.split()
@@ -215,7 +215,7 @@ def find_tokens(lines, tokens, start, end = 0, ignorews = False):
     if end == 0 or end > len(lines):
         end = len(lines)
 
-    for i in xrange(start, end):
+    for i in range(start, end):
         for token in tokens:
             if ignorews:
                 x = lines[i].split()
@@ -244,7 +244,7 @@ def find_re(lines, rexp, start, end = 0):
 
     if end == 0 or end > len(lines):
         end = len(lines)
-    for i in xrange(start, end):
+    for i in range(start, end):
         if rexp.match(lines[i]):
                 return i
     return -1
@@ -258,7 +258,7 @@ def find_token_backwards(lines, token, start):
 
     Return -1 on failure."""
     m = len(token)
-    for i in xrange(start, -1, -1):
+    for i in range(start, -1, -1):
         line = lines[i]
         if line[:m] == token:
             return i
@@ -272,7 +272,7 @@ def find_tokens_backwards(lines, tokens, start):
     element, in lines[end, start].
 
     Return -1 on failure."""
-    for i in xrange(start, -1, -1):
+    for i in range(start, -1, -1):
         line = lines[i]
         for token in tokens:
             if line[:len(token)] == token:
@@ -381,7 +381,7 @@ def find_end_of(lines, i, start_token, end_token):
 def find_nonempty_line(lines, start, end = 0):
     if end == 0:
         end = len(lines)
-    for i in xrange(start, end):
+    for i in range(start, end):
         if is_nonempty_line(lines[i]):
             return i
     return -1
@@ -425,7 +425,7 @@ def is_in_inset(lines, i, inset):
 def get_containing_inset(lines, i):
   ''' 
   Finds out what kind of inset line i is within. Returns a 
-  list containing (i) what follows \begin_inset on the line 
+  list containing (i) what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''
@@ -452,7 +452,7 @@ def get_containing_inset(lines, i):
 def get_containing_layout(lines, i):
   ''' 
   Finds out what kind of layout line i is within. Returns a 
-  list containing what follows \begin_layout on the line 
+  list containing what follows \begin_layout on the line
   on which the layout begins, plus the starting and ending line
   and the start of the paragraph (after all params). I.e, returns:
     (layoutname, layoutstart, layoutend, startofcontent)
@@ -487,7 +487,7 @@ def get_containing_layout(lines, i):
 
 
 def count_pars_in_inset(lines, i):
-  ''' 
+  '''
   Counts the paragraphs within this inset
   '''
   ins = get_containing_inset(lines, i)
@@ -498,12 +498,12 @@ def count_pars_in_inset(lines, i):
       m = re.match(r'\\begin_layout (.*)', lines[j])
       if m and get_containing_inset(lines, j)[0] == ins[0]:
           pars += 1
-  
+
   return pars
 
 
 def find_end_of_sequence(lines, i):
-  ''' 
+  '''
   Returns the end of a sequence of identical layouts.
   '''
   lay = get_containing_layout(lines, i)

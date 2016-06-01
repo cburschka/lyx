@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2011 The LyX Team
+# Copyright (C) 2002-2015 The LyX Team
 # Copyright (C) 2002-2004 Dekel Tsur <dekel@lyx.org>
 # Copyright (C) 2002-2006 José Matos <jamatos@lyx.org>
 #
@@ -33,7 +33,7 @@ try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
 except: # we are running from build directory so assume the last version
-    version__ = '2.1'
+    version__ = '2.2'
 
 default_debug__ = 2
 
@@ -64,6 +64,7 @@ def minor_versions(major, last_minor_version):
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 original_version = re.compile(r".*?LyX ([\d.]*)")
+original_tex2lyx_version = re.compile(r".*?tex2lyx ([\d.]*)")
 
 ##
 # file format information:
@@ -79,11 +80,13 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_1_6_3", [218], ["1.1", "1.1.6.3","1.1.6.4"]),
                    ("1_2",     [220], minor_versions("1.2" , 4)),
                    ("1_3",     [221], minor_versions("1.3" , 7)),
-                   ("1_4", range(222,246), minor_versions("1.4" , 5)),
-                   ("1_5", range(246,277), minor_versions("1.5" , 7)),
-                   ("1_6", range(277,346), minor_versions("1.6" , 10)),
-                   ("2_0", range(346,414), minor_versions("2.0", 8)),
-                   ("2_1", range(414,475), minor_versions("2.1", 0))
+                   # Note that range(i,j) is up to j *excluded*.
+                   ("1_4", list(range(222,246)), minor_versions("1.4" , 5)),
+                   ("1_5", list(range(246,277)), minor_versions("1.5" , 7)),
+                   ("1_6", list(range(277,346)), minor_versions("1.6" , 10)),
+                   ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
+                   ("2_1", list(range(414,475)), minor_versions("2.1" , 5)),
+                   ("2_2", list(range(475,509)), minor_versions("2.2" , 0))
                   ]
 
 ####################################################################
@@ -186,7 +189,8 @@ class LyX_base:
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
                  debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = "", language = "english", encoding = "auto"):
+                 final_version = "", systemlyxdir = '', language = "english",
+                 encoding = "auto"):
 
         """Arguments:
         end_format: final format that the file should be converted. (integer)
@@ -251,6 +255,7 @@ class LyX_base:
         self.status = 0
         self.encoding = encoding
         self.language = language
+        self.systemlyxdir = systemlyxdir
 
 
     def warning(self, message, debug_level= default_debug__):
@@ -415,12 +420,16 @@ class LyX_base:
                 return None
 
             line = line.replace("fix",".")
-            result = original_version.match(line)
+            # need to test original_tex2lyx_version first because tex2lyx
+            # writes "#LyX file created by tex2lyx 2.2"
+            result = original_tex2lyx_version.match(line)
+            if not result:
+                result = original_version.match(line)
+                if result:
+                    # Special know cases: reLyX and KLyX
+                    if line.find("reLyX") != -1 or line.find("KLyX") != -1:
+                        return "0.12"
             if result:
-                # Special know cases: reLyX and KLyX
-                if line.find("reLyX") != -1 or line.find("KLyX") != -1:
-                    return "0.12"
-
                 res = result.group(1)
                 if not res:
                     self.warning(line)
@@ -547,6 +556,11 @@ class LyX_base:
 
     def convert(self):
         "Convert from current (self.format) to self.end_format."
+        if self.format == self.end_format:
+            self.warning("No conversion needed: Target format %s "
+                "same as current format!" % self.format, default_debug__)
+            return
+
         mode, conversion_chain = self.chain()
         self.warning("conversion chain: " + str(conversion_chain), 3)
 
@@ -722,9 +736,10 @@ class File(LyX_base):
 
     def __init__(self, end_format = 0, input = "", output = "", error = "",
                  debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = ''):
+                 final_version = '', systemlyxdir = ''):
         LyX_base.__init__(self, end_format, input, output, error,
-                          debug, try_hard, cjk_encoding, final_version)
+                          debug, try_hard, cjk_encoding, final_version,
+                          systemlyxdir)
         self.read()
 
 

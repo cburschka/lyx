@@ -26,6 +26,15 @@ import sys, os
 from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value, find_beginning_of, find_nonempty_line
 from LyX import get_encoding
 
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+if not PY2:
+    text_type = str
+    unichr = chr
+else:
+    text_type = unicode
+    unichr = unichr
+# End of code to support for both python 2 and 3
 
 ####################################################################
 # Private helper functions
@@ -93,7 +102,7 @@ def convert_font_settings(document):
     if font_scheme == '':
         document.warning("Malformed LyX document: Empty `\\fontscheme'.")
         font_scheme = 'default'
-    if not font_scheme in roman_fonts.keys():
+    if not font_scheme in list(roman_fonts.keys()):
         document.warning("Malformed LyX document: Unknown `\\fontscheme' `%s'." % font_scheme)
         font_scheme = 'default'
     document.header[i:i+1] = ['\\font_roman %s' % roman_fonts[font_scheme],
@@ -163,7 +172,7 @@ def revert_font_settings(document):
         del document.header[i]
     if font_tt_scale != '100':
         document.warning("Conversion of '\\font_tt_scale' not yet implemented.")
-    for font_scheme in roman_fonts.keys():
+    for font_scheme in list(roman_fonts.keys()):
         if (roman_fonts[font_scheme] == fonts['roman'] and
             sans_fonts[font_scheme] == fonts['sans'] and
             typewriter_fonts[font_scheme] == fonts['typewriter']):
@@ -334,6 +343,7 @@ def revert_utf8(document):
     convert_multiencoding(document, False)
 
 
+# FIXME: Use the version in unicode_symbols.py which has some bug fixes
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -376,7 +386,7 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character =
             last_char = character
         except:
             # Try to replace with ERT/math inset
-            if spec_chars.has_key(character):
+            if character in spec_chars:
                 command = spec_chars[character][0] # the command to replace unicode
                 flag1 = spec_chars[character][1]
                 flag2 = spec_chars[character][2]
@@ -1211,7 +1221,7 @@ def revert_accent(document):
         try:
             document.body[i] = normalize("NFD", document.body[i])
         except TypeError:
-            document.body[i] = normalize("NFD", unicode(document.body[i], 'utf-8'))
+            document.body[i] = normalize("NFD", text_type(document.body[i], 'utf-8'))
 
     # Replace accented characters with InsetLaTeXAccent
     # Do not convert characters that can be represented in the chosen
@@ -1346,15 +1356,15 @@ def normalize_font_whitespace(document, char_properties):
             # a new paragraph resets all font changes
             changes.clear()
             # also reset the default language to be the paragraph's language
-            if "\\lang" in char_properties.keys():
+            if "\\lang" in list(char_properties.keys()):
                 char_properties["\\lang"] = \
                     get_paragraph_language(document, i + 1)
 
-        elif len(words) > 1 and words[0] in char_properties.keys():
+        elif len(words) > 1 and words[0] in list(char_properties.keys()):
             # we have a font change
             if char_properties[words[0]] == words[1]:
                 # property gets reset
-                if words[0] in changes.keys():
+                if words[0] in list(changes.keys()):
                     del changes[words[0]]
                 defaultproperty = True
             else:
@@ -1372,11 +1382,11 @@ def normalize_font_whitespace(document, char_properties):
                 lines[i-1] = lines[i-1][:-1]
                 # a space before the font change
                 added_lines = [" "]
-                for k in changes.keys():
+                for k in list(changes.keys()):
                     # exclude property k because that is already in lines[i]
                     if k != words[0]:
                         added_lines[1:1] = ["%s %s" % (k, changes[k])]
-                for k in changes.keys():
+                for k in list(changes.keys()):
                     # exclude property k because that must be added below anyway
                     if k != words[0]:
                         added_lines[0:0] = ["%s %s" % (k, char_properties[k])]
@@ -1400,11 +1410,11 @@ def normalize_font_whitespace(document, char_properties):
                         continue
                 lines[i+1] = lines[i+1][1:]
                 added_lines = [" "]
-                for k in changes.keys():
+                for k in list(changes.keys()):
                     # exclude property k because that is already in lines[i]
                     if k != words[0]:
                         added_lines[1:1] = ["%s %s" % (k, changes[k])]
-                for k in changes.keys():
+                for k in list(changes.keys()):
                     # exclude property k because that must be added below anyway
                     if k != words[0]:
                         added_lines[0:0] = ["%s %s" % (k, char_properties[k])]

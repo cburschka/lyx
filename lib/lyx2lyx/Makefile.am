@@ -1,8 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES += *.pyc *.pyo
+CLEANFILES = *.pyc *.pyo
 
-EXTRA_DIST = lyx2lyx_version.py.in
+EXTRA_DIST = lyx2lyx_version.py.in test_parser_tools.py CMakeLists.txt
 
 CHMOD = chmod
 
@@ -32,8 +32,20 @@ dist_lyx2lyx_PYTHON = \
 	lyx_1_6.py \
 	lyx_2_0.py \
 	lyx_2_1.py \
+	lyx_2_2.py \
 	profiling.py \
 	test_parser_tools.py
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(lyx2lyxdir)/lyx2lyx
+
+alltests: check alltests-recursive
+
+alltests-recursive:
+	@$(PYTHON) "$(srcdir)/test_parser_tools.py"; \
+	if test $$? -eq 0; then \
+		echo -e "=====================\nlyx2lyx tests passed.\n====================="; \
+	else \
+		echo -e "=====================\nlyx2lyx tests failed.\n====================="; \
+	fi
+

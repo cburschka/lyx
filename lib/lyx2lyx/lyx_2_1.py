@@ -58,7 +58,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
     Reverts an InsetArgument to TeX-code
     usage:
     revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
-    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfBegin is the line  of the \\begin_layout or \\begin_inset statement
     LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
     StartArgument is the number of the first argument that needs to be converted
     EndArgument is the number of the last argument that needs to be converted or the last defined one
@@ -111,7 +111,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
     - { and } surround a mandatory argument of an environment
     usage:
     convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment, isOpt)
-    LineOfBeginLayout/Inset is the line  of the \begin_layout or \begin_inset statement
+    LineOfBeginLayout/Inset is the line  of the \\begin_layout or \\begin_inset statement
     StartArgument is the number of the first ERT that needs to be converted
     EndArgument is the number of the last ERT that needs to be converted
     isInset must be true, if braces inside an InsetLayout needs to be converted
@@ -181,7 +181,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
             else:
               beginBrace = find_token(document.body, "{", endBrace, end_layout)
             # assure that the ERTs are consecutive (11 or 12 depending if there is a space between the ERTs or not)
-            if beginBrace == endBrace + 11 or beginBrace == endBrace + 12:
+            if beginBrance != -1 and (beginBrace == endBrace + 11 or beginBrace == endBrace + 12):
               end = find_token(document.body, "\\end_inset", beginBrace)
               document.body[lineERT : end + 1] = ["\\end_layout", "", "\\end_inset"]
               if loop == 1:
@@ -398,7 +398,7 @@ def convert_japanese_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in jap_enc_dict.keys():
+    if val in list(jap_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
@@ -413,7 +413,7 @@ def revert_japanese_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in jap_enc_dict.keys():
+    if val in list(jap_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
@@ -814,30 +814,38 @@ def revert_cancel(document):
     revert_use_package(document, "cancel", cancel_commands, False)
 
 
-def revert_verbatim(document):
-    " Revert verbatim einvironments completely to TeX-code. "
+def revert_verbatim(document, starred = False):
+    " Revert verbatim environments completely to TeX-code. "
     i = 0
     consecutive = False
-    subst_end = ['\end_layout', '', '\\begin_layout Plain Layout',
-    	         '\end_layout', '',
+
+    layout_name = "Verbatim"
+    latex_name  = "verbatim"
+    if starred:
+        layout_name = "Verbatim*"
+        latex_name  = "verbatim*"
+
+    subst_end = ['\\end_layout', '', '\\begin_layout Plain Layout',
+                 '\\end_layout', '',
                  '\\begin_layout Plain Layout', '', '',
                  '\\backslash', '',
-                 'end{verbatim}',
+                 'end{%s}' % (latex_name),
                  '\\end_layout', '', '\\end_inset',
                  '', '', '\\end_layout']
     subst_begin = ['\\begin_layout Standard', '\\noindent',
                    '\\begin_inset ERT', 'status open', '',
                    '\\begin_layout Plain Layout', '', '', '\\backslash',
-                   'begin{verbatim}',
+                   'begin{%s}' % (latex_name),
                    '\\end_layout', '', '\\begin_layout Plain Layout', '']
 
     while 1:
-        i = find_token(document.body, "\\begin_layout Verbatim", i)
+        i = find_token(document.body, "\\begin_layout %s" % (layout_name), i)
         if i == -1:
             return
         j = find_end_of_layout(document.body, i)
         if j == -1:
-            document.warning("Malformed LyX document: Can't find end of Verbatim layout")
+            document.warning("Malformed LyX document: Can't find end of %s layout" \
+              % (layout_name))
             i += 1
             continue
         # delete all line breaks insets (there are no other insets)
@@ -850,24 +858,29 @@ def revert_verbatim(document):
                     break
             m = find_end_of_inset(document.body, n)
             del(document.body[m:m+1])
-            document.body[n:n+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[n:n+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             l += 1
             # we deleted a line, so the end of the inset moved forward.
+            # FIXME But we also added some lines, didn't we? I think this
+            # should be j += 1.
             j -= 1
         # consecutive verbatim environments need to be connected
-        k = find_token(document.body, "\\begin_layout Verbatim", j)
+        k = find_token(document.body, "\\begin_layout %s" % (layout_name), j)
         if k == j + 2 and consecutive == False:
             consecutive = True
-            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[j:j+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             document.body[i:i+1] = subst_begin
             continue
         if k == j + 2 and consecutive == True:
-            document.body[j:j+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
+            document.body[j:j+1] = ['\\end_layout', '', '\\begin_layout Plain Layout']
             del(document.body[i:i+1])
             continue
         if k != j + 2 and consecutive == True:
             document.body[j:j+1] = subst_end
             # the next paragraph must not be indented
+            # FIXME This seems to be causing problems, because of the
+            # hardcoded use of 19. We should figure out exactly where
+            # this needs to go by searching for the right tag.
             document.body[j+19:j+19] = ['\\noindent']
             del(document.body[i:i+1])
             consecutive = False
@@ -875,6 +888,9 @@ def revert_verbatim(document):
         else:
             document.body[j:j+1] = subst_end
             # the next paragraph must not be indented
+            # FIXME This seems to be causing problems, because of the
+            # hardcoded use of 19. We should figure out exactly where
+            # this needs to go by searching for the right tag.
             document.body[j+19:j+19] = ['\\noindent']
             document.body[i:i+1] = subst_begin
 
@@ -1227,7 +1243,7 @@ def revert_mathdesign(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
             preamble = "\\usepackage[%s" % mathdesign_dict[val]
             expert = False
             j = find_token(document.header, "\\font_osf true", 0)
@@ -1391,7 +1407,7 @@ def revert_mathfonts(document):
                 k = find_token(document.header, "\\font_osf true", 0)
                 if k != -1:
                     rm += "-osf"
-                if rm in mathfont_dict.keys():
+                if rm in list(mathfont_dict.keys()):
                     add_to_preamble(document, mathfont_dict[rm])
                     document.header[j] = "\\font_roman default"
                     if k != -1:
@@ -1412,7 +1428,7 @@ def revert_mdnomath(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
             j = find_token(document.header, "\\font_math", 0)
             if j == -1:
                 document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
@@ -1422,6 +1438,10 @@ def revert_mdnomath(document):
                 add_to_preamble(document, "\\renewcommand{\\rmdefault}{%s}" % mathdesign_dict[val])
             else:
                 document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
+
+
+def convert_mathfonts(document):
+    document.header.insert(-1, "\\font_math auto")
 
 
 def convert_mdnomath(document):
@@ -1437,7 +1457,7 @@ def convert_mdnomath(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
              document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
 
 
@@ -1454,7 +1474,7 @@ def revert_newtxmath(document):
         "minion-ntxm":  "\\usepackage[minion]{newtxmath}",
         "newtxmath":  "\\usepackage{newtxmath}",
         }
-        if val in mathfont_dict.keys():
+        if val in list(mathfont_dict.keys()):
             add_to_preamble(document, mathfont_dict[val])
             document.header[i] = "\\font_math auto"
 
@@ -1669,46 +1689,49 @@ def revert_latexargs(document):
 
 
 def revert_IEEEtran(document):
-  '''
-  Reverts InsetArgument of
-  Page headings
-  Biography
-  Biography without photo
-  to TeX-code
-  '''
-  if document.textclass == "IEEEtran":
+    '''
+    Reverts InsetArgument of
+    Page headings
+    Biography
+    Biography without photo
+    to TeX-code
+    '''
+    if document.textclass != "IEEEtran":
+        return
+
+    layouts = {"Page headings": False,
+               "Biography without photo": True}
+
+    for layout in list(layouts.keys()):
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_layout ' + layout, i)
+            if i == -1:
+                break
+            revert_Argument_to_TeX_brace(document, i, 0, 1, 1, layouts[layout], False)
+            i += 1
+
     i = 0
-    i2 = 0
-    j = 0
-    k = 0
     while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Page headings", i)
-      if i != -1:
+        i = find_token(document.body, '\\begin_inset Flex Paragraph Start', i)
+        if i == -1:
+            break
         revert_Argument_to_TeX_brace(document, i, 0, 1, 1, False, False)
         i += 1
-      if i2 != -1:
-        i2 = find_token(document.body, "\\begin_inset Flex Paragraph Start", i2)
-      if i2 != -1:
-        revert_Argument_to_TeX_brace(document, i2, 0, 1, 1, False, False)
-        i2 = i2 + 1
-      if j != -1:
-        j = find_token(document.body, "\\begin_layout Biography without photo", j)
-      if j != -1:
-        revert_Argument_to_TeX_brace(document, j, 0, 1, 1, True, False)
-        j += 1
-      if k != -1:
-        k = find_token(document.body, "\\begin_layout Biography", k)
-        kA = find_token(document.body, "\\begin_layout Biography without photo", k)
-        if k == kA and k != -1:
-          k += 1
-          continue
-      if k != -1:
+
+    i = 0
+    while True:
+        i = find_token_exact(document.body, "\\begin_layout Biography", i)
+        if i == -1:
+                break
+
+        if document.body[i] == "\\begin_layout Biography without photo":
+            i += 1
+            continue
+
         # start with the second argument, therefore 2
-        revert_Argument_to_TeX_brace(document, k, 0, 2, 2, True, False)
-        k += 1
-      if i == -1 and i2 == -1 and j == -1 and k == -1:
-        return
+        revert_Argument_to_TeX_brace(document, i, 0, 2, 2, True, False)
+        i += 1
 
 
 def revert_IEEEtran_2(document):
@@ -1728,41 +1751,41 @@ def revert_IEEEtran_2(document):
 
 
 def convert_IEEEtran(document):
-  '''
-  Converts ERT of
-  Page headings
-  Biography
-  Biography without photo
-  to InsetArgument
-  '''
-  if document.textclass == "IEEEtran":
-    i = 0
-    j = 0
-    k = 0
-    while True:
-      if i != -1:
-        i = find_token(document.body, "\\begin_layout Page headings", i)
-      if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
-        i += 1
-      if j != -1:
-        j = find_token(document.body, "\\begin_layout Biography without photo", j)
-      if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 1, 1, False, True, False)
-        j += 1
-      if k != -1:
-        # assure that we don't handle Biography Biography without photo
-        k = find_token(document.body, "\\begin_layout Biography", k)
-        kA = find_token(document.body, "\\begin_layout Biography without photo", k - 1)
-      if k == kA and k != -1:
-        k += 1
-        continue
-      if k != -1:
-        # the argument we want to convert is the second one
-        convert_TeX_brace_to_Argument(document, k, 2, 2, False, True, False)
-        k += 1
-      if i == -1 and j == -1 and k == -1:
+    '''
+    Converts ERT of
+    Page headings
+    Biography
+    Biography without photo
+    to InsetArgument
+    '''
+    if document.textclass != "IEEEtran":
         return
+
+    layouts = {"Page headings": False,
+               "Biography without photo": True}
+
+    for layout in list(layouts.keys()):
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_layout ' + layout, i)
+            if i == -1:
+                break
+            convert_TeX_brace_to_Argument(document, i, 1, 1, False, layouts[layout], False)
+            i += 1
+
+    i = 0
+    while True:
+        i = find_token_exact(document.body, "\\begin_layout Biography", i)
+        if i == -1:
+                break
+
+        if document.body[i] == "\\begin_layout Biography without photo":
+            i += 1
+            continue
+
+        # the argument we want to convert is the second one
+        convert_TeX_brace_to_Argument(document, i, 2, 2, False, True, False)
+        i += 1
 
 
 def revert_AASTeX(document):
@@ -3630,7 +3653,7 @@ def convert_captionlayouts(document):
         if i == -1:
             return
         val = get_value(document.body, "\\begin_layout", i)
-        if val in caption_dict.keys():
+        if val in list(caption_dict.keys()):
             j = find_end_of_layout(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Missing `\\end_layout'.")
@@ -3666,7 +3689,7 @@ def revert_captionlayouts(document):
         val = ""
         if m:
             val = m.group(1)
-        if val not in caption_dict.keys():
+        if val not in list(caption_dict.keys()):
             i += 1
             continue
         
@@ -3847,7 +3870,7 @@ def revert_newframes(document):
         val = ""
         if m:
             val = m.group(1)
-        if val not in frame_dict.keys():
+        if val not in list(frame_dict.keys()):
             i += 1
             continue
         # Find end of sequence
@@ -3963,7 +3986,7 @@ def convert_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in LaTeX2LyX_enc_dict.keys():
+    if val in list(LaTeX2LyX_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % LaTeX2LyX_enc_dict[val]
     elif val not in known_enc_tuple:
         document.warning("Ignoring unknown input encoding: `%s'" % val)
@@ -4004,7 +4027,7 @@ def revert_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in LyX2LaTeX_enc_dict.keys():
+    if val in list(LyX2LaTeX_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % LyX2LaTeX_enc_dict[val]
     elif val not in known_enc_tuple:
         document.warning("Ignoring unknown input encoding: `%s'" % val)
@@ -4810,7 +4833,7 @@ convert = [
            [437, []],
            [438, []],
            [439, []],
-           [440, []],
+           [440, [convert_mathfonts]],
            [441, [convert_mdnomath]],
            [442, []],
            [443, []],
