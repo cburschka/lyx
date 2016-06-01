@@ -32,8 +32,8 @@ import time
 try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
-except: # we are running from build directory so assume the last version
-    version__ = '2.2'
+except: # we are running from build directory so assume the current version
+    version__ = '2.1'
 
 default_debug__ = 2
 
