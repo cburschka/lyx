@@ -2205,7 +2205,7 @@ bool BufferParams::hasClassDefaults() const
 
 DocumentClass const & BufferParams::documentClass() const
 {
-	return *doc_class_.get();
+	return *doc_class_;
 }
 
 

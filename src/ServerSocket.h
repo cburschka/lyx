@@ -16,10 +16,9 @@
 
 #include "support/FileName.h"
 
-#include "support/shared_ptr.h"
-
 #include <string>
 #include <map>
+#include <memory>
 
 
 namespace lyx {
@@ -60,7 +59,7 @@ private:
 		MAX_CLIENTS = 10
 	};
 	/// All connections
-	std::map<int, shared_ptr<LyXDataSocket> > clients;
+	std::map<int, std::shared_ptr<LyXDataSocket>> clients;
 };
 
 

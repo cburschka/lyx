@@ -107,12 +107,12 @@
 #include "support/types.h"
 
 #include "support/bind.h"
-#include "support/shared_ptr.h"
 
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
 #include <map>
+#include <memory>
 #include <set>
 #include <sstream>
 #include <vector>
@@ -3847,7 +3847,7 @@ public:
 	///
 	virtual shared_ptr<ForkedProcess> clone() const
 	{
-		return shared_ptr<ForkedProcess>(new AutoSaveBuffer(*this));
+		return make_shared<AutoSaveBuffer>(*this);
 	}
 	///
 	int start()

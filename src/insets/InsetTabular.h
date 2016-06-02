@@ -28,11 +28,13 @@
 #include "InsetText.h"
 #include "Length.h"
 
-#include "support/shared_ptr.h"
-
 #include <climits>
 #include <iosfwd>
+#include <memory>
 #include <vector>
+
+
+using std::shared_ptr;
 
 namespace lyx {
 

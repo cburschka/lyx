@@ -14,8 +14,6 @@
 
 #include "Toc.h"
 
-#include "support/shared_ptr.h"
-
 #include <QHash>
 #include <QSortFilterProxyModel>
 
@@ -41,7 +39,7 @@ public:
 	///
 	TocModel(QObject * parent);
 	///
-	void reset(shared_ptr<Toc const>);
+	void reset(std::shared_ptr<Toc const>);
 	///
 	void reset();
 	///
@@ -73,7 +71,7 @@ private:
 	///
 	bool is_sorted_;
 	///
-	shared_ptr<Toc const> toc_;
+	std::shared_ptr<Toc const> toc_;
 	///
 	int maxdepth_;
 	///

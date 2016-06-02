@@ -20,10 +20,9 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#include "support/shared_ptr.h"
-
-#include <vector>
+#include <memory>
 #include <string>
+#include <vector>
 
 
 namespace lyx {
@@ -65,7 +64,7 @@ public:
 	 *
 	 *  You have been warned!
 	 */
-	typedef shared_ptr<CacheItem> ItemPtr;
+	typedef std::shared_ptr<CacheItem> ItemPtr;
 	///
 	ItemPtr const item(support::FileName const & file) const;
 

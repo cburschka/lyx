@@ -14,13 +14,17 @@
 #ifndef FORKEDCALLS_H
 #define FORKEDCALLS_H
 
-#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 #include <boost/signal.hpp>
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
 #endif
+
+#include <memory>
+
+
+using std::shared_ptr;
 
 namespace lyx {
 namespace support {
@@ -154,7 +158,7 @@ public:
 	           std::string const & lpath = empty_string());
 	///
 	virtual shared_ptr<ForkedProcess> clone() const {
-		return shared_ptr<ForkedProcess>(new ForkedCall(*this));
+		return std::make_shared<ForkedCall>(*this);
 	}
 
 	/** Start the child process.

@@ -109,7 +109,7 @@ public:
 	bool remove_loaded_file_;
 
 	/// The image and its loading status.
-	shared_ptr<Image> image_;
+	std::shared_ptr<Image> image_;
 	///
 	ImageStatus status_;
 
@@ -244,7 +244,7 @@ void CacheItem::Impl::reset()
 	if (cc_.connected())
 		cc_.disconnect();
 
-	if (converter_.get())
+	if (converter_)
 		converter_.reset();
 }
 
@@ -264,8 +264,8 @@ void CacheItem::Impl::imageConverted(bool success)
 	string const text = success ? "succeeded" : "failed";
 	LYXERR(Debug::GRAPHICS, "Image conversion " << text << '.');
 
-	file_to_load_ = converter_.get() ?
-		FileName(converter_->convertedFile()) : FileName();
+	file_to_load_ = converter_ ? FileName(converter_->convertedFile())
+		                       : FileName();
 	converter_.reset();
 	cc_.disconnect();
 

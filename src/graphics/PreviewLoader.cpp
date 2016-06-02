@@ -40,9 +40,10 @@
 #include "support/bind.h"
 #include "support/TempFile.h"
 
-#include <sstream>
 #include <fstream>
 #include <iomanip>
+#include <memory>
+#include <sstream>
 
 #include <QTimer>
 
@@ -229,7 +230,7 @@ private:
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
 	 */
-	typedef shared_ptr<PreviewImage> PreviewImagePtr;
+	typedef std::shared_ptr<PreviewImage> PreviewImagePtr;
 	///
 	typedef map<string, PreviewImagePtr> Cache;
 	///

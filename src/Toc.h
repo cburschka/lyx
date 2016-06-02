@@ -15,9 +15,8 @@
 #ifndef TOC_H
 #define TOC_H
 
-#include "support/shared_ptr.h"
-
 #include <map>
+#include <memory>
 #include <vector>
 #include <string>
 
@@ -29,12 +28,12 @@ class TocItem;
 
 typedef std::vector<TocItem> Toc;
 
-class TocList : public std::map<std::string, shared_ptr<Toc> >
+class TocList : public std::map<std::string, std::shared_ptr<Toc>>
 {
 private:
 	// TocList should never map to null pointers.
-	// We forbid the following method which creates null pointers.
-	using std::map<std::string, shared_ptr<Toc> >::operator[];
+	// We hide the following methods which create null pointers.
+	using std::map<std::string, std::shared_ptr<Toc>>::operator[];
 };
 
 

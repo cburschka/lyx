@@ -1102,7 +1102,7 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 			dpoint = from_utf8(lyxrc.default_decimal_point);
 	} else {
 		cellInfo(cell).alignment = align;
-		cellInset(cell).get()->setContentAlignment(align);
+		cellInset(cell)->setContentAlignment(align);
 	}
 }
 
@@ -2605,7 +2605,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 		if (getAlignment(cell) == LYX_ALIGN_DECIMAL) {
 			// copy cell and split in 2
-			InsetTableCell head = InsetTableCell(*cellInset(cell).get());
+			InsetTableCell head = InsetTableCell(*cellInset(cell));
 			head.setBuffer(buffer());
 			DocIterator dit = cellInset(cell)->getText(0)->macrocontextPosition();
 			dit.pop_back();
@@ -3615,7 +3615,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			// determine horizontal offset because of decimal align (if necessary)
 			int decimal_width = 0;
 			if (tabular.getAlignment(cell) == LYX_ALIGN_DECIMAL) {
-				InsetTableCell tail = InsetTableCell(*tabular.cellInset(cell).get());
+				InsetTableCell tail = InsetTableCell(*tabular.cellInset(cell));
 				tail.setBuffer(tabular.buffer());
 				// we need to set macrocontext position everywhere
 				// otherwise we crash with nested insets (e.g. footnotes)
@@ -4934,7 +4934,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		// check if there is already a caption
 		bool have_caption = false;
-		InsetTableCell itc = InsetTableCell(*tabular.cellInset(cur.idx()).get());
+		InsetTableCell itc = InsetTableCell(*tabular.cellInset(cur.idx()));
 		ParagraphList::const_iterator pit = itc.paragraphs().begin();
 		ParagraphList::const_iterator pend = itc.paragraphs().end();
 		for (; pit != pend; ++pit) {

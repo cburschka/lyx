@@ -13,8 +13,9 @@
 #define OUTPUTPARAMS_H
 
 
-#include "support/shared_ptr.h"
 #include "Changes.h"
+
+#include <memory>
 
 
 namespace lyx {
@@ -182,7 +183,7 @@ public:
 	    This is a hack: Make it possible to add stuff to constant
 	    OutputParams instances.
 	*/
-	shared_ptr<ExportData> exportdata;
+	std::shared_ptr<ExportData> exportdata;
 
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal

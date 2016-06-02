@@ -110,8 +110,7 @@ void ServerSocket::serverCallback()
 	}
 
 	// Register the new client.
-	clients[client_fd] =
-		shared_ptr<LyXDataSocket>(new LyXDataSocket(client_fd));
+	clients[client_fd] = make_shared<LyXDataSocket>(client_fd);
 	theApp()->registerSocketCallback(
 		client_fd,
 		bind(&ServerSocket::dataCallback,

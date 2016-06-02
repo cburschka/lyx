@@ -78,9 +78,8 @@
 #include <QProxyStyle>
 #endif
 
-#include "support/shared_ptr.h"
-
 #include <algorithm>
+#include <memory>
 #include <vector>
 
 using namespace std;
@@ -216,9 +215,6 @@ public:
 	{
 		func_.setOrigin(origin);
 	}
-
-	// shared_ptr<MenuDefinition> needs this apprently...
-	~MenuItem() {}
 
 	/// The label of a given menuitem
 	QString label() const

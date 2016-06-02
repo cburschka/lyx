@@ -22,8 +22,9 @@
 
 #include "support/bind.h"
 
-#include <set>
 #include <queue>
+#include <memory>
+#include <set>
 
 using namespace std;
 using namespace lyx::support;
@@ -159,7 +160,7 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 //
 /////////////////////////////////////////////////////////////////////
 
-typedef shared_ptr<Image> ImagePtr;
+typedef std::shared_ptr<Image> ImagePtr;
 
 class Loader::Impl : public boost::signals::trackable {
 public:

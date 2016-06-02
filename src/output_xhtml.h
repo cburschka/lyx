@@ -15,10 +15,11 @@
 #include "LayoutEnums.h"
 
 #include "support/docstream.h"
-#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 
 #include <deque>
+#include <memory>
+
 
 namespace lyx {
 
@@ -275,12 +276,11 @@ private:
 	// own these pointers and how they will be deleted, so we use shared
 	// pointers.
 	///
-	typedef shared_ptr<html::StartTag> TagPtr;
+	typedef std::shared_ptr<html::StartTag> TagPtr;
 	typedef std::deque<TagPtr> TagDeque;
 	///
 	template <typename T>
-	shared_ptr<T> makeTagPtr(T const & tag)
-		{ return shared_ptr<T>(new T(tag)); }
+	TagPtr makeTagPtr(T const & tag) { return std::make_shared<T>(tag); }
 	///
 	TagDeque pending_tags_;
 	///

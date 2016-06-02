@@ -19,8 +19,7 @@
 
 #include "support/strfwd.h"
 
-#include "support/shared_ptr.h"
-
+#include <memory>
 #include <vector>
 
 
@@ -163,7 +162,7 @@ private:
 		/// Modifier masks
 		ModifierPair mod;
 		/// Keymap for prefix keys
-		shared_ptr<KeyMap> prefixes;
+		std::shared_ptr<KeyMap> prefixes;
 		/// Action for !prefix keys
 		FuncRequest func;
 	};

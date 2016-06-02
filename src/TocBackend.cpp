@@ -153,7 +153,7 @@ Toc::iterator TocBackend::findItem(Toc & toc, int depth, docstring const & str)
 ///////////////////////////////////////////////////////////////////////////
 
 TocBuilder::TocBuilder(shared_ptr<Toc> toc)
-	: toc_(toc ? toc : lyx::make_shared<Toc>()),
+	: toc_(toc ? toc : make_shared<Toc>()),
 	  stack_()
 {
 	LATTEST(toc);
@@ -214,13 +214,11 @@ void TocBuilder::pop()
 ///////////////////////////////////////////////////////////////////////////
 
 shared_ptr<TocBuilder> TocBuilderStore::get(string const & type,
-											shared_ptr<Toc> toc)
+                                            shared_ptr<Toc> toc)
 {
 	map_t::const_iterator it = map_.find(type);
-	if (it == map_.end()) {
-		it = map_.insert(std::make_pair(type,
-									lyx::make_shared<TocBuilder>(toc))).first;
-	}
+	if (it == map_.end())
+		it = map_.insert(make_pair(type, make_shared<TocBuilder>(toc))).first;
 	return it->second;
 }
 
@@ -236,7 +234,7 @@ shared_ptr<Toc const> TocBackend::toc(string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
-	LASSERT(it != tocs_.end(), { return lyx::make_shared<Toc>(); });
+	LASSERT(it != tocs_.end(), { return make_shared<Toc>(); });
 	return it->second;
 }
 
@@ -244,9 +242,8 @@ shared_ptr<Toc const> TocBackend::toc(string const & type) const
 shared_ptr<Toc> TocBackend::toc(string const & type)
 {
 	TocList::const_iterator it = tocs_.find(type);
-	if (it == tocs_.end()) {
-		it = tocs_.insert(std::make_pair(type, lyx::make_shared<Toc>())).first;
-	}
+	if (it == tocs_.end())
+		it = tocs_.insert(make_pair(type, make_shared<Toc>())).first;
 	return it->second;
 }
 
@@ -357,7 +354,7 @@ void TocBackend::writePlaintextTocList(string const & type,
 }
 
 
-docstring TocBackend::outlinerName(std::string const & type) const
+docstring TocBackend::outlinerName(string const & type) const
 {
 	return translateIfPossible(
 	    buffer_->params().documentClass().outlinerName(type));

@@ -96,7 +96,6 @@ liblyxsupport_a_SOURCES = \
 	Systemcall.cpp \
 	Systemcall.h \
 	SystemcallPrivate.h \
-	shared_ptr.h \
 	TempFile.cpp \
 	TempFile.h \
 	textutils.h \

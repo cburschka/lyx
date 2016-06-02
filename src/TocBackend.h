@@ -25,6 +25,8 @@
 #include <stack>
 
 
+using std::shared_ptr;
+
 namespace lyx {
 
 class Buffer;
@@ -156,7 +158,7 @@ public:
 	///
 	void clear() { map_.clear(); };
 private:
-	typedef std::map<std::string, shared_ptr<TocBuilder> > map_t;
+	typedef std::map<std::string, shared_ptr<TocBuilder>> map_t;
 	map_t map_;
 };
 
