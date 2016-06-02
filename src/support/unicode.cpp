@@ -49,106 +49,66 @@ namespace lyx {
 	char const * ucs4_codeset = "UCS-4LE";
 #endif
 
-static const iconv_t invalid_cd = (iconv_t)(-1);
 
-
-class IconvProcessor::Impl
-{
-public:
-	// noncopyable because iconv_close() is called in destructor
-	Impl(Impl const &) = delete;
-	Impl & operator=(Impl const &) = delete;
-
-	Impl(string const & to, string const & from)
-		: cd(invalid_cd), tocode_(to), fromcode_(from)
-	{}
-
-	~Impl()
-	{
-		if (cd != invalid_cd && iconv_close(cd) == -1)
+struct IconvProcessor::Handler {
+	// assumes cd is valid
+	Handler(iconv_t const cd) : cd(cd) {}
+	~Handler() {
+		if (iconv_close(cd) == -1)
 			LYXERR0("Error returned from iconv_close(" << errno << ')');
 	}
-
-	iconv_t cd;
-	string tocode_;
-	string fromcode_;
+	iconv_t const cd;
 };
 
 
-IconvProcessor::IconvProcessor(char const * tocode, char const * fromcode)
-	: pimpl_(new IconvProcessor::Impl(tocode, fromcode))
-{
-}
-
-
-IconvProcessor::IconvProcessor(IconvProcessor const & other)
-	: pimpl_(new IconvProcessor::Impl(other.pimpl_->tocode_, other.pimpl_->fromcode_))
-{
-}
-
-
-IconvProcessor::~IconvProcessor()
-{
-	delete pimpl_;
-}
-
-
-IconvProcessor & IconvProcessor::operator=(IconvProcessor const & other)
-{
-	if (&other != this) {
-		delete pimpl_;
-		pimpl_ = new Impl(other.pimpl_->tocode_, other.pimpl_->fromcode_);
-	}
-	return *this;
-}
+IconvProcessor::IconvProcessor(string tocode, string fromcode)
+	: tocode_(tocode), fromcode_(fromcode)
+{}
 
 
 bool IconvProcessor::init()
 {
-	if (pimpl_->cd != invalid_cd)
+	if (h_)
 		return true;
-
-	pimpl_->cd = iconv_open(pimpl_->tocode_.c_str(), pimpl_->fromcode_.c_str());
-	if (pimpl_->cd != invalid_cd)
+	iconv_t cd = iconv_open(tocode_.c_str(), fromcode_.c_str());
+	if (cd != (iconv_t)(-1)) {
+		h_ = make_unique<Handler>(cd);
 		return true;
-
+	}
 	lyxerr << "Error returned from iconv_open" << endl;
 	switch (errno) {
-		case EINVAL:
-			lyxerr << "EINVAL The conversion from " << pimpl_->fromcode_
-				<< " to " << pimpl_->tocode_
-				<< " is not supported by the implementation."
-				<< endl;
-			break;
-		default:
-			lyxerr << "\tSome other error: " << errno << endl;
-			break;
+	case EINVAL:
+		lyxerr << "EINVAL The conversion from " << fromcode_ << " to "
+		       << tocode_ << " is not supported by the implementation."
+		       << endl;
+		break;
+	default:
+		lyxerr << "\tSome other error: " << errno << endl;
+		break;
 	}
 	return false;
 }
 
 
 int IconvProcessor::convert(char const * buf, size_t buflen,
-		char * outbuf, size_t maxoutsize)
+                            char * outbuf, size_t maxoutsize)
 {
 	if (buflen == 0)
 		return 0;
 
-	if (pimpl_->cd == invalid_cd) {
-		if (!init())
-			return -1;
-	}
+	if (!h_ && !init())
+		return -1;
 
 	char ICONV_CONST * inbuf = const_cast<char ICONV_CONST *>(buf);
 	size_t inbytesleft = buflen;
 	size_t outbytesleft = maxoutsize;
 
-	int res = iconv(pimpl_->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
+	int res = iconv(h_->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);
 
 	// flush out remaining data. This is needed because iconv sometimes
 	// holds back chars in the stream, waiting for a combination character
 	// (see e.g. http://sources.redhat.com/bugzilla/show_bug.cgi?id=1124)
-	iconv(pimpl_->cd, NULL, NULL, &outbuf, &outbytesleft);
+	iconv(h_->cd, NULL, NULL, &outbuf, &outbytesleft);
 
 	//lyxerr << dec;
 	//lyxerr << "Inbytesleft: " << inbytesleft << endl;
@@ -167,8 +127,8 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 		case EILSEQ:
 			lyxerr << "EILSEQ An invalid multibyte sequence"
 				<< " has been encountered in the input.\n"
-				<< "When converting from " << pimpl_->fromcode_
-				<< " to " << pimpl_->tocode_ << ".\n";
+				<< "When converting from " << fromcode_
+				<< " to " << tocode_ << ".\n";
 			lyxerr << "Input:" << hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
@@ -182,8 +142,8 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 		case EINVAL:
 			lyxerr << "EINVAL An incomplete multibyte sequence"
 				<< " has been encountered in the input.\n"
-				<< "When converting from " << pimpl_->fromcode_
-				<< " to " << pimpl_->tocode_ << ".\n";
+				<< "When converting from " << fromcode_
+				<< " to " << tocode_ << ".\n";
 			lyxerr << "Input:" << hex;
 			for (size_t i = 0; i < buflen; ++i) {
 				// char may be signed, avoid output of
@@ -199,24 +159,8 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 			break;
 	}
 	// We got an error so we close down the conversion engine
-	if (iconv_close(pimpl_->cd) == -1) {
-		lyxerr << "Error returned from iconv_close("
-			<< errno << ")" << endl;
-	}
-	pimpl_->cd = invalid_cd;
+	h_.reset();
 	return -1;
-}
-
-
-std::string IconvProcessor::from() const
-{
-	return pimpl_->fromcode_;
-}
-
-
-std::string IconvProcessor::to() const
-{
-	return pimpl_->tocode_;
 }
 
 
@@ -310,6 +254,23 @@ IconvProcessor & ucs4ToUtf8()
 	return *processor.localData();
 }
 
+namespace {
+
+IconvProcessor & getProc(map<string, IconvProcessor> & processors,
+                         string const & encoding, bool to)
+{
+	string const & fromcode = to ? ucs4_codeset : encoding;
+	string const & tocode = to ? encoding : ucs4_codeset;
+	map<string, IconvProcessor>::iterator const it = processors.find(encoding);
+	if (it == processors.end()) {
+		IconvProcessor p(fromcode, tocode);
+		return processors.insert(make_pair(encoding, move(p))).first->second;
+	} else
+		return it->second;
+}
+
+} //anon namespace
+
 
 vector<char>
 ucs4_to_utf8(char_type c)
@@ -342,11 +303,8 @@ eightbit_to_ucs4(char const * s, size_t ls, string const & encoding)
 	if (!static_processors.hasLocalData())
 		static_processors.setLocalData(new map<string, IconvProcessor>);
 	map<string, IconvProcessor> & processors = *static_processors.localData();
-	if (processors.find(encoding) == processors.end()) {
-		IconvProcessor processor(ucs4_codeset, encoding.c_str());
-		processors.insert(make_pair(encoding, processor));
-	}
-	return iconv_convert<char_type>(processors[encoding], s, ls);
+	IconvProcessor & processor = getProc(processors, encoding, true);
+	return iconv_convert<char_type>(processor, s, ls);
 }
 
 
@@ -362,30 +320,21 @@ map<string, IconvProcessor> & ucs4To8bitProcessors()
 
 }
 
-
 vector<char>
 ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)
 {
 	map<string, IconvProcessor> & processors(ucs4To8bitProcessors());
-	if (processors.find(encoding) == processors.end()) {
-		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
-		processors.insert(make_pair(encoding, processor));
-	}
-	return iconv_convert<char>(processors[encoding], ucs4str, ls);
+	IconvProcessor & processor = getProc(processors, encoding, false);
+	return iconv_convert<char>(processor, ucs4str, ls);
 }
 
 
 char ucs4_to_eightbit(char_type ucs4, string const & encoding)
 {
 	map<string, IconvProcessor> & processors(ucs4To8bitProcessors());
-	map<string, IconvProcessor>::iterator it = processors.find(encoding);
-	if (it == processors.end()) {
-		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
-		it = processors.insert(make_pair(encoding, processor)).first;
-	}
-
+	IconvProcessor & processor = getProc(processors, encoding, false);
 	char out;
-	int const bytes = it->second.convert((char *)(&ucs4), 4, &out, 1);
+	int const bytes = processor.convert((char *)(&ucs4), 4, &out, 1);
 	if (bytes > 0)
 		return out;
 	return 0;
@@ -399,14 +348,9 @@ void ucs4_to_multibytes(char_type ucs4, vector<char> & out,
 	if (!static_processors.hasLocalData())
 		static_processors.setLocalData(new map<string, IconvProcessor>);
 	map<string, IconvProcessor> & processors = *static_processors.localData();
-	map<string, IconvProcessor>::iterator it = processors.find(encoding);
-	if (it == processors.end()) {
-		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
-		it = processors.insert(make_pair(encoding, processor)).first;
-	}
-
+	IconvProcessor & processor = getProc(processors, encoding, false);
 	out.resize(4);
-	int bytes = it->second.convert((char *)(&ucs4), 4, &out[0], 4);
+	int bytes = processor.convert((char *)(&ucs4), 4, &out[0], 4);
 	if (bytes > 0)
 		out.resize(bytes);
 	else

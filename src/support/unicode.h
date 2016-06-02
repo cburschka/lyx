@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /**
  * \file unicode.h
  * This file is part of LyX, the document processor.
@@ -14,8 +15,10 @@
 #define LYX_SUPPORT_UNICODE_H
 
 #include "support/strfwd.h"
+#include "support/unique_ptr.h"
 
 #include <cstddef>
+#include <string>
 #include <vector>
 
 
@@ -44,32 +47,23 @@ namespace lyx {
  */
 class IconvProcessor
 {
+	/// open iconv.
+	/// \return true if the processor is ready to use.
+	bool init();
+	std::string const tocode_;
+	std::string const fromcode_;
+	struct Handler;
+	unique_ptr<Handler> h_;
 public:
-	IconvProcessor(char const * tocode = "", char const * fromcode = "");
-	/// copy constructor needed because of pimpl_
-	IconvProcessor(IconvProcessor const &);
-	/// assignment operator needed because of pimpl_
-	IconvProcessor & operator=(IconvProcessor const &);
-	/// destructor
-	~IconvProcessor();
-
+	IconvProcessor(std::string tocode, std::string fromcode);
 	/// convert any data from \c fromcode to \c tocode unicode format.
 	/// \return the number of bytes of the converted output buffer.
 	int convert(char const * in_buffer, size_t in_size,
 		char * out_buffer, size_t max_out_size);
-
-	/// source encoding
-	std::string from() const;
 	/// target encoding
-	std::string to() const;
-
-private:
-	/// open iconv.
-	/// \return true if the processor is ready to use.
-	bool init();
-	/// hide internals
-	class Impl;
-	Impl * pimpl_;
+	std::string to() const { return tocode_; }
+	// required by g++ 4.7
+	IconvProcessor(IconvProcessor &&) = default;
 };
 
 /// Get the global IconvProcessor instance of the current thread for
