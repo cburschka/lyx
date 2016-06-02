@@ -61,8 +61,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 #include <cstring>
 #include <iostream>
@@ -96,7 +95,7 @@ int const WIDTH_OF_LINE = 5; // space between double lines
 
 
 ///
-boost::scoped_ptr<Tabular> paste_tabular;
+unique_ptr<Tabular> paste_tabular;
 
 
 struct TabularFeature {

@@ -1067,7 +1067,7 @@ void InsetInclude::fileChanged() const
 		return;
 
 	preview_->removePreview(*buffer);
-	add_preview(*preview_.get(), *this, *buffer);
+	add_preview(*preview_, *this, *buffer);
 	preview_->startLoading(*buffer);
 }
 

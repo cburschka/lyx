@@ -19,8 +19,7 @@
 #include "support/lstrings.h"
 #include "support/Messages.h"
 #include "support/unicode.h"
-
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 // getpid(), getppid()
 #ifdef HAVE_SYS_TYPES_H
@@ -61,10 +60,9 @@
 #include <map>
 #include <iostream>
 
+
 using namespace std;
 using namespace lyx::support;
-
-using ::boost::scoped_ptr;
 
 namespace lyx {
 
@@ -618,7 +616,7 @@ int LyXClientApp::run()
 		return EXIT_FAILURE;
 	}
 
-	scoped_ptr<LyXDataSocket> server;
+	unique_ptr<LyXDataSocket> server;
 
 	if (!cmdline::serverAddress.empty()) {
 		server.reset(new LyXDataSocket(FileName(to_utf8(cmdline::serverAddress))));

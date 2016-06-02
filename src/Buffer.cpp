@@ -1397,9 +1397,8 @@ bool Buffer::save() const
 	// proper location once that has been done successfully. that
 	// way we preserve the original file if something goes wrong.
 	string const justname = fileName().onlyFileNameWithoutExt();
-	boost::scoped_ptr<TempFile>
-		tempfile(new TempFile(fileName().onlyPath(),
-	           justname + "-XXXXXX.lyx"));
+	auto tempfile = make_unique<TempFile>(fileName().onlyPath(),
+	                                      justname + "-XXXXXX.lyx");
 	bool const symlink = fileName().isSymLink();
 	if (!symlink)
 		tempfile->setAutoRemove(false);

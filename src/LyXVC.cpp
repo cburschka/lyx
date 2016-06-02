@@ -41,11 +41,6 @@ LyXVC::LyXVC()
 }
 
 
-// for the sake of boost::scoped_ptr
-LyXVC::~LyXVC()
-{}
-
-
 bool LyXVC::fileInVC(FileName const & fn)
 {
 	if (!RCS::findFile(fn).empty())

@@ -50,6 +50,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "support/bind.h"
 #include "support/ConsoleApplication.h"
 #include "support/lassert.h"
 #include "support/debug.h"
@@ -61,9 +62,7 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
-
-#include "support/bind.h"
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 #include <algorithm>
 #include <iostream>
@@ -150,13 +149,13 @@ struct LyX::Impl {
 	///
 	CmdDef toplevel_cmddef_;
 	///
-	boost::scoped_ptr<Server> lyx_server_;
+	unique_ptr<Server> lyx_server_;
 	///
-	boost::scoped_ptr<ServerSocket> lyx_socket_;
+	unique_ptr<ServerSocket> lyx_socket_;
 	///
-	boost::scoped_ptr<frontend::Application> application_;
+	unique_ptr<frontend::Application> application_;
 	/// lyx session, containing lastfiles, lastfilepos, and lastopened
-	boost::scoped_ptr<Session> session_;
+	unique_ptr<Session> session_;
 
 	/// Files to load at start.
 	vector<string> files_to_load_;
@@ -1415,7 +1414,7 @@ Server & theServer()
 	// FIXME: this should not be use_gui dependent
 	LWARNIF(use_gui);
 	LAPPERR(singleton_);
-	return *singleton_->pimpl_->lyx_server_.get();
+	return *singleton_->pimpl_->lyx_server_;
 }
 
 
@@ -1424,7 +1423,7 @@ ServerSocket & theServerSocket()
 	// FIXME: this should not be use_gui dependent
 	LWARNIF(use_gui);
 	LAPPERR(singleton_);
-	return *singleton_->pimpl_->lyx_socket_.get();
+	return *singleton_->pimpl_->lyx_socket_;
 }
 
 

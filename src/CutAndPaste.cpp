@@ -62,6 +62,7 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/TempFile.h"
+#include "support/unique_ptr.h"
 
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
@@ -1055,7 +1056,8 @@ docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
 	if (sel_index >= theCuts.size())
 		return docstring();
 
-	boost::scoped_ptr<Buffer> buffer(copyToTempBuffer(theCuts[sel_index].first, docclass));
+	unique_ptr<Buffer> buffer(copyToTempBuffer(theCuts[sel_index].first,
+	                                           docclass));
 	if (!buffer)
 		return docstring();
 

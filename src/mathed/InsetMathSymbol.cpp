@@ -22,8 +22,7 @@
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/textutils.h"
-
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -255,9 +254,9 @@ void InsetMathSymbol::octave(OctaveStream & os) const
 
 void InsetMathSymbol::write(WriteStream & os) const
 {
-	boost::scoped_ptr<MathEnsurer> ensurer;
+	unique_ptr<MathEnsurer> ensurer;
 	if (currentMode() != TEXT_MODE)
-		ensurer.reset(new MathEnsurer(os));
+		ensurer = make_unique<MathEnsurer>(os);
 	os << '\\' << name();
 
 	// $,#, etc. In theory the restriction based on catcodes, but then

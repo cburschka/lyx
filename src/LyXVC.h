@@ -12,7 +12,7 @@
 #ifndef LYX_VC_H
 #define LYX_VC_H
 
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 #include <string>
 
@@ -48,8 +48,6 @@ public:
 	};
 	///
 	LyXVC();
-	///
-	~LyXVC();
 	/// Is \p fn under version control?
 	static bool fileInVC(support::FileName const & fn);
 	/** Not a good name perhaps. This function should be called whenever
@@ -190,7 +188,7 @@ private:
 	Buffer * owner_;
 
 	///
-	boost::scoped_ptr<VCS> vcs;
+	unique_ptr<VCS> vcs;
 };
 
 

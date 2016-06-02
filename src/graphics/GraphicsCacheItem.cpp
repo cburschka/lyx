@@ -120,7 +120,7 @@ public:
 	boost::signals::connection cc_;
 
 	///
-	boost::scoped_ptr<Converter> converter_;
+	unique_ptr<Converter> converter_;
 };
 
 

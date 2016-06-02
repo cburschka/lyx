@@ -17,7 +17,7 @@
 #include "DocIterator.h"
 #include "OutputEnums.h"
 
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -258,7 +258,7 @@ private:
 	///
 	std::vector<InsetLabel *> label_;
 	///
-	boost::scoped_ptr<RenderPreview> preview_;
+	unique_ptr<RenderPreview> preview_;
 	///
 	DocIterator docit_;
 	///

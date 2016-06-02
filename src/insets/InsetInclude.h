@@ -17,7 +17,8 @@
 
 #include "RenderButton.h"
 
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
+
 
 namespace lyx {
 
@@ -164,7 +165,7 @@ private:
 	docstring const include_label;
 
 	/// The pointer never changes although *preview_'s contents may.
-	boost::scoped_ptr<RenderMonitoredPreview> const preview_;
+	unique_ptr<RenderMonitoredPreview> const preview_;
 
 	/// 
 	mutable bool failedtoload_;

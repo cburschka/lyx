@@ -26,7 +26,6 @@ bcp --boost=$1 \
 	boost/cstdint.hpp \
 	boost/lexical_cast.hpp \
 	boost/regex.hpp \
-	boost/scoped_ptr.hpp \
 	boost/signal.hpp \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \

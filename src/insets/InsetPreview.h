@@ -16,7 +16,8 @@
 
 #include "Dimension.h"
 
-#include <boost/scoped_ptr.hpp>
+#include "support/unique_ptr.h"
+
 
 namespace lyx {
 
@@ -80,7 +81,7 @@ protected:
 	void preparePreview(DocIterator const & pos) const;
 
 	///
-	boost::scoped_ptr<RenderPreview> preview_;
+	unique_ptr<RenderPreview> preview_;
 
 };
 
