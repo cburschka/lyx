@@ -227,14 +227,25 @@ vector<string> loadableImageFormats()
 	if (qt_formats.empty())
 		LYXERR(Debug::GRAPHICS, "\nQt4 Problem: No Format available!");
 
+	bool jpeg_found = false;
+	bool jpg_found = false;
 	for (QList<QByteArray>::const_iterator it = qt_formats.begin(); it != qt_formats.end(); ++it) {
 
 		LYXERR(Debug::GRAPHICS, (const char *) *it << ", ");
 
 		string ext = ascii_lowercase((const char *) *it);
 		// special case
-		if (ext == "jpeg")
+		if (ext == "jpeg") {
+			jpeg_found = true;
+			if (jpg_found)
+				continue;
 			ext = "jpg";
+		}
+		else if (ext == "jpg") {
+			jpg_found = true;
+			if (jpeg_found)
+				continue;
+		}
 		fmts.push_back(ext);
 	}
 
