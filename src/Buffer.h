@@ -15,6 +15,7 @@
 #include "OutputEnums.h"
 #include "OutputParams.h"
 
+#include "support/unique_ptr.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 
@@ -623,8 +624,8 @@ public:
 
 	/// get source code (latex/docbook) for some paragraphs, or all paragraphs
 	/// including preamble
-	/// returns NULL if Id to Row conversion is unsupported
-	std::auto_ptr<TexRow> getSourceCode(odocstream & os,
+	/// returns nullptr if Id to Row conversion is unsupported
+	unique_ptr<TexRow> getSourceCode(odocstream & os,
 			std::string const & format, pit_type par_begin,
 			pit_type par_end, OutputWhat output, bool master) const;
 

@@ -85,7 +85,7 @@ private:
 	QTimer * update_timer_;
 	/// TexRow information from the last source view. If TexRow is unavailable
 	/// for the last format then texrow_ is null.
-	std::auto_ptr<TexRow> texrow_;
+	unique_ptr<TexRow> texrow_;
 };
 
 

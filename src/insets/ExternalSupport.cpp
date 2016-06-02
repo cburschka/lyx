@@ -434,7 +434,7 @@ string const substituteIt<TransformCommand>(string const & input,
 	else if (id == Resize)
 		ptr = store.getCommandTransformer(params.resizedata);
 
-	if (!ptr.get())
+	if (!ptr)
 		return input;
 
 	string result =
@@ -473,7 +473,7 @@ string const substituteIt<TransformOption>(string const & input,
 		break;
 	}
 
-	if (!ptr.get())
+	if (!ptr)
 		return input;
 
 	return subst(input, ptr->placeholder(), ptr->option());

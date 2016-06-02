@@ -65,12 +65,13 @@
 #include "frontends/alert.h"
 
 #include "support/debug.h"
-#include "support/lstrings.h"
 #include "support/ExceptionMessage.h"
-
 #include "support/lassert.h"
+#include "support/lstrings.h"
+#include "support/unique_ptr.h"
 
 #include <sstream>
+
 
 using namespace std;
 using namespace lyx::support;
@@ -309,7 +310,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
 				InsetExternal::string2params(to_utf8(cmd.argument()), *buf, iep);
-				auto_ptr<InsetExternal> inset(new InsetExternal(buf));
+				auto inset = make_unique<InsetExternal>(buf);
 				inset->setBuffer(*buf);
 				inset->setParams(iep);
 				return inset.release();
@@ -318,7 +319,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams igp;
 				InsetGraphics::string2params(to_utf8(cmd.argument()), *buf, igp);
-				auto_ptr<InsetGraphics> inset(new InsetGraphics(buf));
+				auto inset = make_unique<InsetGraphics>(buf);
 				inset->setParams(igp);
 				return inset.release();
 			}
@@ -514,7 +515,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 	if (lex.getString() != "\\begin_inset")
 		LYXERR0("Buffer::readInset: Consistency check failed.");
 
-	auto_ptr<Inset> inset;
+	unique_ptr<Inset> inset;
 
 	string tmptok;
 	lex >> tmptok;

@@ -3654,11 +3654,11 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 }
 
 // returns NULL if id-to-row conversion is unsupported
-auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
-			   pit_type par_begin, pit_type par_end,
-			   OutputWhat output, bool master) const
+unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
+                                         pit_type par_begin, pit_type par_end,
+                                         OutputWhat output, bool master) const
 {
-	auto_ptr<TexRow> texrow(NULL);
+	unique_ptr<TexRow> texrow;
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
 	runparams.flavor = params().getOutputFlavor(format);
@@ -3712,7 +3712,7 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			LaTeXFeatures features(*this, params(), runparams);
 			params().validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
-			texrow.reset(new TexRow());
+			texrow = make_unique<TexRow>();
 			texrow->newline();
 			texrow->newline();
 			// latex or literate
@@ -3755,7 +3755,7 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 				writeDocBookSource(os, absFileName(), runparams, output);
 		} else {
 			// latex or literate
-			texrow.reset(new TexRow());
+			texrow = make_unique<TexRow>();
 			texrow->newline();
 			texrow->newline();
 			otexstream ots(os, *texrow);

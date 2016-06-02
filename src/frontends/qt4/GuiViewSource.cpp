@@ -111,8 +111,8 @@ void ViewSourceWidget::getContent(BufferView const * view,
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	texrow_ = view->buffer().getSourceCode(ostr, format,
-										par_begin, par_end + 1, output, master);
+	texrow_ = view->buffer()
+		.getSourceCode(ostr, format, par_begin, par_end + 1, output, master);
 	//ensure that the last line can always be selected in its full width
 	str = ostr.str() + "\n";
 }
@@ -201,7 +201,7 @@ void ViewSourceWidget::realUpdateView()
 #ifdef DEVEL_VERSION
 	// output tex<->row correspondences in the source panel if the "-dbg latex"
 	// option is given.
-	if (texrow_.get() && lyx::lyxerr.debugging(Debug::LATEX)) {
+	if (texrow_ && lyx::lyxerr.debugging(Debug::LATEX)) {
 		QStringList list = qcontent.split(QChar('\n'));
 		docstring_list dlist;
 		for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
@@ -216,7 +216,7 @@ void ViewSourceWidget::realUpdateView()
 	viewSourceTV->blockSignals(true);
 	bool const changed = setText(qcontent);
 
-	if (changed && !texrow_.get()) {
+	if (changed && !texrow_) {
 		// position-to-row is unavailable
 		// we jump to the first modification
 		const QChar * oc = old.constData();
@@ -246,7 +246,7 @@ void ViewSourceWidget::realUpdateView()
 		//c.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor,1);
 		viewSourceTV->setTextCursor(c);
 
-	} else if (texrow_.get()) {
+	} else if (texrow_) {
 		// Use the available position-to-row conversion to highlight
 		// the current selection in the source
 		std::pair<int,int> rows = texrow_->rowFromCursor(bv_->cursor());
@@ -309,7 +309,7 @@ void ViewSourceWidget::realUpdateView()
 // need a proper LFUN if we want to implement it in release mode
 void ViewSourceWidget::gotoCursor()
 {
-	if (!bv_ || !texrow_.get())
+	if (!bv_ || !texrow_)
 		return;
 	int row = viewSourceTV->textCursor().blockNumber() + 1;
 	const_cast<BufferView *>(bv_)->setCursorFromRow(row, *texrow_);

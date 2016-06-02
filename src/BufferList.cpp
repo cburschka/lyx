@@ -130,9 +130,9 @@ Buffer * BufferList::newBuffer(string const & s)
 
 Buffer * BufferList::createNewBuffer(string const & s)
 {
-	auto_ptr<Buffer> tmpbuf;
+	unique_ptr<Buffer> tmpbuf;
 	try {
-		tmpbuf.reset(new Buffer(s));
+		tmpbuf = make_unique<Buffer>(s);
 	} catch (ExceptionMessage const & message) {
 		if (message.type_ == ErrorException) {
 			Alert::error(message.title_, message.details_);

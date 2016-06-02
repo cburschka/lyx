@@ -74,9 +74,10 @@ following hack as starting point to write some macros:
 #include "Encoding.h"
 #include "Lexer.h"
 
-#include "support/debug.h"
 #include "support/convert.h"
+#include "support/debug.h"
 #include "support/docstream.h"
+#include "support/unique_ptr.h"
 
 #include <sstream>
 
@@ -1945,7 +1946,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		// Disabled
 		else if (1 && t.cs() == "ar") {
-			auto_ptr<InsetMathXYArrow> p(new InsetMathXYArrow);
+			auto p = make_unique<InsetMathXYArrow>();
 			// try to read target
 			parse(p->cell(0), FLAG_OTPTION, mode);
 			// try to read label
