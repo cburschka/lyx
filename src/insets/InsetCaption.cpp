@@ -107,7 +107,7 @@ void InsetCaption::addToToc(DocIterator const & cpit, bool output_active,
 		str = full_label_;
 		text().forOutliner(str, length);
 	}
-	buffer().tocBackend().builder(type)->captionItem(pit, str, output_active);
+	buffer().tocBackend().builder(type).captionItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
 	InsetText::addToToc(cpit, output_active, utype);
 }

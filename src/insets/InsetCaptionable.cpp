@@ -55,11 +55,11 @@ void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
 	// non-empty.
 	if (utype != OutputUpdate)
 		text().forOutliner(str, TOC_ENTRY_LENGTH);
-	shared_ptr<TocBuilder> b = buffer().tocBackend().builder(caption_type_);
-	b->pushItem(pit, str, output_active);
+	TocBuilder & b = buffer().tocBackend().builder(caption_type_);
+	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit, output_active, utype);
-	b->pop();
+	b.pop();
 }
 
 void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype)

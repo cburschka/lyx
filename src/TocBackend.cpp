@@ -49,9 +49,9 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
-			bool output_active, docstring const & t, FuncRequest action) :
-	dit_(dit), depth_(d), str_(s), tooltip_(t), output_(output_active),
-	action_(action)
+                 bool output_active, docstring const & t, FuncRequest action)
+	: dit_(dit), depth_(d), str_(s), tooltip_(t), output_(output_active),
+	  action_(action)
 {
 }
 
@@ -160,7 +160,7 @@ TocBuilder::TocBuilder(shared_ptr<Toc> toc)
 }
 
 void TocBuilder::pushItem(DocIterator const & dit, docstring const & s,
-						  bool output_active, bool is_captioned)
+                          bool output_active, bool is_captioned)
 {
 	toc_->push_back(TocItem(dit, stack_.size(), s, output_active));
 	frame f = {
@@ -171,7 +171,7 @@ void TocBuilder::pushItem(DocIterator const & dit, docstring const & s,
 }
 
 void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
-							 bool output_active)
+                             bool output_active)
 {
 	// first show the float before moving to the caption
 	docstring arg = "paragraph-goto " + paragraph_goto_arg(dit);
@@ -209,23 +209,6 @@ void TocBuilder::pop()
 
 ///////////////////////////////////////////////////////////////////////////
 //
-// TocBuilderStore implementation
-//
-///////////////////////////////////////////////////////////////////////////
-
-shared_ptr<TocBuilder> TocBuilderStore::get(string const & type,
-                                            shared_ptr<Toc> toc)
-{
-	map_t::const_iterator it = map_.find(type);
-	if (it == map_.end())
-		it = map_.insert(make_pair(type, make_shared<TocBuilder>(toc))).first;
-	return it->second;
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////
-//
 // TocBackend implementation
 //
 ///////////////////////////////////////////////////////////////////////////
@@ -241,16 +224,17 @@ shared_ptr<Toc const> TocBackend::toc(string const & type) const
 
 shared_ptr<Toc> TocBackend::toc(string const & type)
 {
-	TocList::const_iterator it = tocs_.find(type);
-	if (it == tocs_.end())
-		it = tocs_.insert(make_pair(type, make_shared<Toc>())).first;
-	return it->second;
+	// std::map::insert only really performs the insertion if the key is not
+	// already bound, and otherwise returns an iterator to the element already
+	// there, see manual.
+	return tocs_.insert({type, make_shared<Toc>()}).first->second;
 }
 
 
-shared_ptr<TocBuilder> TocBackend::builder(string const & type)
+TocBuilder & TocBackend::builder(string const & type)
 {
-	return builders_.get(type, toc(type));
+	auto p = make_unique<TocBuilder>(toc(type));
+	return * builders_.insert(make_pair(type, move(p))).first->second;
 }
 
 
