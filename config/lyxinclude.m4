@@ -373,12 +373,7 @@ if test x$GXX = xyes; then
 fi
 
 LYX_CXX_CXX11
-if test $lyx_use_cxx11 = yes; then
-  if test x$GXX = xyes; then
-    dnl We still use auto_ptr, which is obsoleted. Shut off the warnings.
-    AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-declarations"
-  fi
-else
+if test $lyx_use_cxx11 = no; then
   AC_ERROR([A C++11 compatible compiler is required])
 fi
 LYX_CXX_USE_REGEX([$cxx11_flags])
