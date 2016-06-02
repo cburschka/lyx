@@ -84,10 +84,9 @@ TODO
 #include "support/os.h"
 #include "support/Systemcall.h"
 
-#include <boost/tuple/tuple.hpp>
-
 #include <algorithm>
 #include <sstream>
+#include <tuple>
 
 using namespace std;
 using namespace lyx::support;
@@ -595,8 +594,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// we move it to a temp dir or uncompress it.
 	FileName temp_file;
 	GraphicsCopyStatus status;
-	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(params().filename, temp_path);
+	tie(status, temp_file) = copyToDirIfNeeded(params().filename, temp_path);
 
 	if (status == FAILURE)
 		return orig_file;
@@ -891,8 +889,7 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	// Copy to temporary directory.
 	FileName temp_file;
 	GraphicsCopyStatus status;
-	boost::tie(status, temp_file) =
-			copyToDirIfNeeded(params().filename, temp_path);
+	tie(status, temp_file) = copyToDirIfNeeded(params().filename, temp_path);
 
 	if (status == FAILURE)
 		return string();

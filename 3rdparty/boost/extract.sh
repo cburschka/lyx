@@ -29,7 +29,6 @@ bcp --boost=$1 \
 	boost/signal.hpp \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \
-	boost/tuple/tuple.hpp \
 	\
 	needed
 

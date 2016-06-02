@@ -68,9 +68,8 @@
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
 
-#include <boost/tuple/tuple.hpp>
-
 #include <string>
+#include <tuple>
 
 using namespace std;
 using namespace lyx::support;
@@ -876,11 +875,9 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 		if (begpit != endpit)
 			cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 
-		boost::tie(endpit, endpos) =
-			eraseSelectionHelper(bp,
-				text->paragraphs(),
-				begpit, endpit,
-				cur.selBegin().pos(), endpos);
+		tie(endpit, endpos) =
+			eraseSelectionHelper(bp, text->paragraphs(), begpit, endpit,
+			                     cur.selBegin().pos(), endpos);
 
 		// cutSelection can invalidate the cursor so we need to set
 		// it anew. (Lgb)
