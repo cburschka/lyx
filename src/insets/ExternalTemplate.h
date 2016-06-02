@@ -125,11 +125,11 @@ public:
 	 *  If it isn't found, return an empty std::string.
 	 */
 	std::string const getPreambleDefByName(std::string const & name) const;
+	/// noncopyable
+	TemplateManager(TemplateManager const &) = delete;
+	void operator=(TemplateManager const &) = delete;
 private:
 	TemplateManager();
-	/// noncopyable
-	TemplateManager(TemplateManager const &);
-	void operator=(TemplateManager const &);
 
 	void readTemplates(support::FileName const & path);
 	void dumpTemplates(std::ostream &) const;

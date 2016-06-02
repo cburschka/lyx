@@ -54,10 +54,11 @@ static const iconv_t invalid_cd = (iconv_t)(-1);
 
 class IconvProcessor::Impl
 {
-	// noncopyable because iconv_close() is called in destructor
-	Impl(Impl const &);
-	Impl & operator=(Impl const &);
 public:
+	// noncopyable because iconv_close() is called in destructor
+	Impl(Impl const &) = delete;
+	Impl & operator=(Impl const &) = delete;
+
 	Impl(string const & to, string const & from)
 		: cd(invalid_cd), tocode_(to), fromcode_(from)
 	{}

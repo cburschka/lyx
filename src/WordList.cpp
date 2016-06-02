@@ -73,9 +73,8 @@ struct WordList::Impl {
 };
 
 
-WordList::WordList()
+WordList::WordList() : d(new Impl)
 {
-	d = new Impl;
 	d->c_ = 0;
 
 #if 0
@@ -83,12 +82,6 @@ WordList::WordList()
 		d->words_.insert("a" + convert<docstring>(i), size_t(1), stx::Void());
 	}
 #endif
-}
-
-
-WordList::~WordList()
-{
-	delete d;
 }
 
 

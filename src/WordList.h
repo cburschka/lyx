@@ -14,18 +14,14 @@
 
 #include "support/docstring.h"
 
+#include <memory>
+
 namespace lyx {
 
 class WordList {
-	// noncopyable because of pimpl
-	WordList(WordList const &);
-	WordList & operator=(WordList const &);
 public:
 	///
 	WordList();
-	///
-	~WordList();
-
 	///
 	docstring const & word(size_t idx) const;
 	///
@@ -39,7 +35,7 @@ public:
 
 private:
 	struct Impl;
-	Impl * d;
+	std::unique_ptr<Impl> d;
 };
 
 WordList * theWordList(std::string const & lang);
