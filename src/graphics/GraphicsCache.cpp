@@ -94,11 +94,8 @@ vector<string> const & Cache::loadableFormats() const
 		vector<string>::const_iterator fbegin = fmts.begin();
 		vector<string>::const_iterator fend = fmts.end();
 		for (vector<string>::const_iterator fit = fbegin; fit != fend; ++fit) {
-			if (fit != fbegin)
-				LYXERR(Debug::GRAPHICS, ", ");
-			LYXERR(Debug::GRAPHICS, *fit);
+			LYXERR(Debug::GRAPHICS, *fit << ',');
 		}
-		LYXERR(Debug::GRAPHICS, '\n');
 	}
 
 	return fmts;
