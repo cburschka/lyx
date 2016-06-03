@@ -811,7 +811,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
 		||	is_known(name, known_typewriter_fonts) || is_known(name, known_math_fonts))
 		;
-
+	//"On". See the enum Package in BufferParams.h if you thought that "2" should have been "42"
 	else if (name == "amsmath" || name == "amssymb" || name == "cancel" ||
 	         name == "esint" || name == "mhchem" || name == "mathdots" ||
 	         name == "mathtools" || name == "stackrel" ||

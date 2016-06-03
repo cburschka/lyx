@@ -85,6 +85,7 @@ std::string join(std::vector<std::string> const & input,
 
 bool is_math_env(std::string const & name);
 bool is_display_math_env(std::string const & name);
+/// Is first string in the array of strings (second parameter)
 char const * const * is_known(std::string const &, char const * const *);
 
 /*!
