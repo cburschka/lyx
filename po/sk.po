@@ -6,10 +6,10 @@
 # Kornel Benko <kornel@lyx.org>, 2009-2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-2.2\n"
+"Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-05-30 19:00+0200\n"
-"PO-Revision-Date: 2016-05-30 17:05+0000\n"
+"POT-Creation-Date: 2016-06-03 21:39+0200\n"
+"PO-Revision-Date: 2016-06-03 19:39+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1214,10 +1214,10 @@ msgstr "Aj tak Výstup &Ukázať"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
 msgid ""
-"Selecting an error will show the error message in the panel below, and jump "
-"the cursor to the location in the document where the error occurred."
+"Selecting an error will show the error message in the panel below and the "
+"cursor will jump to the location in the document where the error occurred."
 msgstr ""
-"Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
+"Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli a položí "
 "kurzor na miesto v dokumente kde sa chyba stala."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
@@ -1598,9 +1598,9 @@ msgstr ""
 "Použiť OpenType a TrueType fonty spolu s balíkom fontspec (vyžaduje XeTeX "
 "alebo LuaTeX)"
 
-#: src/frontends/qt4/ui/FontUi.ui:23
+#: src/frontends/qt4/ui/FontUi.ui:77
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr "Použiť fonty mimo TeXu(cez &XeTeX/LuaTeX)"
+msgstr "Použiť &fonty mimo TeXu(cez XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:43
 msgid "&Default family:"
@@ -1703,6 +1703,18 @@ msgstr "Použiť číslice minuskové, nie verzálové"
 #: src/frontends/qt4/ui/FontUi.ui:241
 msgid "Use &old style figures"
 msgstr "Použiť &minuskové číslice (old style figures)"
+
+#: src/frontends/qt4/ui/FontUi.ui:261
+msgid ""
+"Activate extensions such as character protrusion and font expansion via the "
+"microtype package"
+msgstr ""
+"Aktivovať rozšírenia ako napr. vysunutie znakov a roztiahnutie fontu pomocou "
+"balíka microtype"
+
+#: src/frontends/qt4/ui/FontUi.ui:264
+msgid "Enable micr&o-typographic extensions"
+msgstr "Povoliť mikr&o-typografické rozšírenia"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -23065,13 +23077,13 @@ msgstr "Grace"
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:608
-msgid "svgz"
-msgstr "svgz"
+#: lib/configure.py:584
+msgid "SVG"
+msgstr "SVG"
 
-#: lib/configure.py:608
-msgid "svgz|SVG"
-msgstr "svgz|SVG"
+#: lib/configure.py:585
+msgid "SVG (compressed)"
+msgstr "SVG (komprimované)"
 
 #: lib/configure.py:611
 msgid "BMP"
@@ -34772,3 +34784,10 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Change made at %1\n"
 #~ msgstr "Zmena zrobená %1\n"
+
+#~ msgid ""
+#~ "Selecting an error will show the error message in the panel below, and jump "
+#~ "the cursor to the location in the document where the error occurred."
+#~ msgstr ""
+#~ "Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
+#~ "kurzor na miesto v dokumente kde sa chyba stala."
