@@ -878,7 +878,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "Rerun to get citations")) {
 				// Natbib seems to use this.
 				retval |= UNDEF_CIT;
-			} else if (contains(token, "No pages of output")) {
+			} else if (contains(token, "No pages of output")
+				|| contains(token, "no pages of output")) {
 				// No output file (e.g. the DVI or PDF) was created
 				retval |= NO_OUTPUT;
 			} else if (contains(token, "That makes 100 errors")) {
