@@ -85,8 +85,8 @@ public:
 	///
 	bool hfillExpansion(Row const & row, pos_type pos) const;
 
-	/// 
-	size_t computeRowSignature(Row const &, BufferParams const & bparams) const;
+	///
+	size_t computeRowSignature(Row const &, BufferView const & bv) const;
 
 	///
 	int position() const { return position_; }

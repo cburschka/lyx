@@ -1857,7 +1857,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		return;
 	}
 
-	BufferParams const & bparams = bv_->buffer().params();
 	int const ww = bv_->workHeight();
 	Cursor const & cur = bv_->cursor();
 	DocIterator sel_beg = cur.selectionBegin();
@@ -1923,7 +1922,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		}
 
 		// Row signature; has row changed since last paint?
-		row.setCrc(pm.computeRowSignature(row, bparams));
+		row.setCrc(pm.computeRowSignature(row, *bv_));
 		bool row_has_changed = row.changed()
 			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
 
