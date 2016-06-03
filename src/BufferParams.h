@@ -278,6 +278,8 @@ public:
 	int fontsTypewriterScale() const { return fonts_typewriter_scale[useNonTeXFonts]; }
 	/// the font used by the CJK command
 	std::string fonts_cjk;
+	/// use LaTeX microtype package
+	bool use_microtype;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;

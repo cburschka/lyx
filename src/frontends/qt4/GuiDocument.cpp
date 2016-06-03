@@ -809,6 +809,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->cjkFontLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->microtypeCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)),
@@ -2889,6 +2891,8 @@ void GuiDocument::applyView()
 	bp_.fonts_cjk =
 		fromqstr(fontModule->cjkFontLE->text());
 
+	bp_.use_microtype = fontModule->microtypeCB->isChecked();
+
 	bp_.fonts_sans_scale[nontexfonts] = fontModule->scaleSansSB->value();
 	bp_.fonts_sans_scale[!nontexfonts] = fontModule->font_sf_scale;
 
@@ -3368,6 +3372,8 @@ void GuiDocument::paramsToDialog()
 			toqstr(bp_.fonts_cjk));
 	else
 		fontModule->cjkFontLE->setText(QString());
+	
+	fontModule->microtypeCB->setChecked(bp_.use_microtype);
 
 	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
 	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);

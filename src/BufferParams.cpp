@@ -388,6 +388,7 @@ BufferParams::BufferParams()
 	fonts_math[1] = "auto";
 	fonts_default_family = "default";
 	useNonTeXFonts = false;
+	use_microtype = false;
 	fonts_expert_sc = false;
 	fonts_old_figures = false;
 	fonts_sans_scale[0] = 100;
@@ -771,6 +772,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> fonts_typewriter_scale[1];
 	} else if (token == "\\font_cjk") {
 		lex >> fonts_cjk;
+	} else if (token == "\\use_microtype") {
+		lex >> use_microtype;
 	} else if (token == "\\paragraph_separation") {
 		string parsep;
 		lex >> parsep;
@@ -1139,6 +1142,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	if (!fonts_cjk.empty()) {
 		os << "\\font_cjk " << fonts_cjk << '\n';
 	}
+	os << "\\use_microtype " << convert<string>(use_microtype) << '\n';
 	os << "\\graphics " << graphics_driver << '\n';
 	os << "\\default_output_format " << default_output_format << '\n';
 	os << "\\output_sync " << output_sync << '\n';
@@ -1411,6 +1415,9 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	if (useNonTeXFonts && fontsMath() != "auto")
 		features.require("unicode-math");
+	
+	if (use_microtype)
+		features.require("microtype");
 
 	if (!language->requires().empty())
 		features.require(language->requires());

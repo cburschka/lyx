@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-06-16 Pavel Sanda <sanda@lyx.org>
+	* Format incremented to 509.
+	New parameter "\use_microtype bool" for including microtype LaTeX
+	package into preamble.
+
 2016-04-05 Enrico Forestieri <forenr@lyx.org>
 	* Format incremented to 508
 	  New kind of Separator inset (latexpar). The old parbreak separator

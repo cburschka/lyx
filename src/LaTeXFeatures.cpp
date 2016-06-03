@@ -1132,6 +1132,10 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("footmisc"))
 		packages << "\\PassOptionsToPackage{stable}{footmisc}\n";
 
+	if (mustProvide("microtype")){
+		packages << "\\usepackage{microtype}\n";
+	}
+
 	return packages.str();
 }
 

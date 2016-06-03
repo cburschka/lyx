@@ -457,7 +457,8 @@ string remove_braces(string const & value)
 
 
 Preamble::Preamble() : one_language(true), explicit_babel(false),
-	title_layout_found(false), index_number(0), h_font_cjk_set(false)
+	title_layout_found(false), index_number(0), h_font_cjk_set(false),
+	h_use_microtype(false)
 {
 	//h_backgroundcolor;
 	//h_boxbgcolor;
@@ -543,6 +544,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "false";
+	h_use_microtype	          = false;
 	h_use_refstyle            = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
@@ -1013,6 +1015,13 @@ void Preamble::handle_package(Parser &p, string const & name,
 				h_options += ',' + join(options, ",");
 		}
 	}
+	else if (name == "microtype") {
+		//we internally support only microtype without params
+		if (options.empty())
+			h_use_microtype = true;
+		else
+			h_preamble << "\\usepackage[" << opts << "]{microtype}";
+	}
 
 	else if (!in_lyx_preamble) {
 		if (options.empty())
@@ -1162,7 +1171,8 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << ' ' << h_font_tt_scale[1] << '\n';
 	if (!h_font_cjk.empty())
 		os << "\\font_cjk " << h_font_cjk << '\n';
-	os << "\\graphics " << h_graphics << '\n'
+	os << "\\use_microtype " << h_use_microtype << '\n'
+	   << "\\graphics " << h_graphics << '\n'
 	   << "\\default_output_format " << h_default_output_format << "\n"
 	   << "\\output_sync " << h_output_sync << "\n";
 	if (h_output_sync == "1")
