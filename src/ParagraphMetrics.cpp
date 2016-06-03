@@ -86,13 +86,20 @@ void ParagraphMetrics::reset(Paragraph const & par)
 
 
 size_t ParagraphMetrics::computeRowSignature(Row const & row,
-		BufferParams const & bparams) const
+		BufferView const & bv) const
 {
 	boost::crc_32_type crc;
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
-		char_type const b[] = { par_->getChar(i) };
-		crc.process_bytes(b, sizeof(char_type));
-		if (bparams.track_changes) {
+		if (par_->isInset(i)) {
+			Inset const * in = par_->getInset(i);
+			Dimension const d = in->dimension(bv);
+			int const b[] = { d.wid, d.asc, d.des };
+			crc.process_bytes(b, sizeof(b));
+		} else {
+			char_type const b[] = { par_->getChar(i) };
+			crc.process_bytes(b, sizeof(char_type));
+		}
+		if (bv.buffer().params().track_changes) {
 			Change change = par_->lookupChange(i);
 			char_type const b[] = { static_cast<char_type>(change.type) };
 			// 1 byte is enough to encode Change::Type

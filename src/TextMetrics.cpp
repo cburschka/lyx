@@ -1874,7 +1874,6 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 
 void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const x, int y) const
 {
-	BufferParams const & bparams = bv_->buffer().params();
 	ParagraphMetrics const & pm = par_metrics_[pit];
 	if (pm.rows().empty())
 		return;
@@ -1948,7 +1947,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// Row signature; has row changed since last paint?
 		if (pi.pain.isDrawingEnabled())
-			row.setCrc(pm.computeRowSignature(row, bparams));
+			row.setCrc(pm.computeRowSignature(row, *bv_));
 		bool row_has_changed = row.changed()
 			|| rowSlice == bv_->lastRowSlice();
 
