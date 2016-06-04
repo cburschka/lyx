@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
+\lyxformat 509
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,6 +37,7 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype 0
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -2509,7 +2510,11 @@ Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats, gr
 \end_layout
 
 \begin_layout Description
-Syntax inset-modify <INSET> <ARGS>inset-modify changetype <TYPE>
+Syntax inset-modify <INSET> <ARGS>
+\begin_inset Newline newline
+\end_inset
+
+inset-modify changetype <TYPE>
 \end_layout
 
 \begin_layout Description

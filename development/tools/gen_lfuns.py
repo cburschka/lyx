@@ -43,7 +43,7 @@ ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID,
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
 LFUNS_HEADER = u"""# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\\lyxformat 506
+\\lyxformat 509
 \\begin_document
 \\begin_header
 \\save_transient_properties true
@@ -81,6 +81,7 @@ End
 \\font_osf false
 \\font_sf_scale 100 100
 \\font_tt_scale 100 100
+\\use_microtype 0
 \\graphics default
 \\default_output_format default
 \\output_sync 0
