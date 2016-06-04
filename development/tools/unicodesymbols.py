@@ -13,6 +13,7 @@
 
 
 import os, re, string, sys, unicodedata
+import io
 
 def usage(prog_name):
     return ("Usage: %s start stop inputfile outputfile\n" % prog_name +
@@ -26,9 +27,7 @@ def error(message):
 
 def trim_eol(line):
     " Remove end of line char(s)."
-    if line[-2:-1] == '\r':
-        return line[:-2]
-    elif line[-1:] == '\r' or line[-1:] == '\n':
+    if line[-1:] == '\n':
         return line[:-1]
     else:
         # file with no EOL in last line
@@ -55,9 +54,9 @@ def read(input):
 
 
 def write(output, lines):
-    " Write output file with native lineendings."
+    " Write output file."
     for line in lines:
-        output.write(line[1] + os.linesep)
+        output.write(line[1] + '\n')
 
 
 def complete(lines, start, stop):
@@ -69,7 +68,10 @@ def complete(lines, start, stop):
             l = l + 1
             continue
         if l >= len(lines) or lines[l][0] != i:
-            c = unichr(i)
+            if sys.version_info[0] < 3:
+                c = unichr(i)
+            else:
+                c = chr(i)
             name = unicodedata.name(c, "")
             if name != "":
                 if unicodedata.combining(c):
@@ -89,8 +91,8 @@ def main(argv):
         input = sys.stdin
         output = sys.stdout
     elif len(argv) == 5:
-        input = open(argv[3], 'rb')
-        output = open(argv[4], 'wb')
+        input = io.open(argv[3], 'r', encoding='utf_8')
+        output = io.open(argv[4], 'w', encoding='utf_8')
     else:
         error(usage(argv[0]))
     if argv[1][:2] == "0x":
