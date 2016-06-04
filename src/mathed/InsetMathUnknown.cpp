@@ -11,10 +11,12 @@
 #include <config.h>
 
 #include "InsetMathUnknown.h"
+
 #include "MathSupport.h"
 #include "MathAtom.h"
 #include "MathStream.h"
-#include "MathStream.h"
+
+#include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
 

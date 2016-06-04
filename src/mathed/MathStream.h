@@ -15,8 +15,6 @@
 #include "support/strfwd.h"
 
 #include "InsetMath.h"
-// FIXME: Move to individual insets
-#include "MetricsInfo.h"
 #include "texstream.h"
 
 

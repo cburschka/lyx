@@ -21,6 +21,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include "insets/InsetSpace.h"
 

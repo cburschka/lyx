@@ -15,6 +15,8 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
+#include "MetricsInfo.h"
+
 using namespace std;
 
 

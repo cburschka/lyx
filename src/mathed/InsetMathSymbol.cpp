@@ -12,12 +12,14 @@
 
 #include "InsetMathSymbol.h"
 
-#include "Dimension.h"
-#include "LaTeXFeatures.h"
 #include "MathAtom.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+
+#include "Dimension.h"
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"

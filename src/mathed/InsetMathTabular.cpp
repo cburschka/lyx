@@ -16,6 +16,8 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
+#include "MetricsInfo.h"
+
 #include "support/lstrings.h"
 
 #include <ostream>

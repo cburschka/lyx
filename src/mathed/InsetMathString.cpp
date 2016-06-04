@@ -18,6 +18,7 @@
 #include "MathSupport.h"
 
 #include "Encoding.h"
+#include "MetricsInfo.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"

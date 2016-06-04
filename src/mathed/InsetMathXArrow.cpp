@@ -13,12 +13,15 @@
 #include "support/lassert.h"
 
 #include "InsetMathXArrow.h"
+
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
+
 
 #include <algorithm>
 

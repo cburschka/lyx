@@ -50,6 +50,7 @@
 #include "FuncStatus.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Text.h"
 

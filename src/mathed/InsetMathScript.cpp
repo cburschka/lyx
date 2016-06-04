@@ -10,22 +10,24 @@
 
 #include <config.h>
 
+#include "InsetMathScript.h"
+
+#include "InsetMathBrace.h"
+#include "InsetMathSymbol.h"
+#include "MathData.h"
+#include "MathStream.h"
+#include "MathSupport.h"
+
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetMathBrace.h"
-#include "InsetMathScript.h"
-#include "InsetMathSymbol.h"
 #include "LaTeXFeatures.h"
-#include "MathData.h"
-#include "MathStream.h"
-#include "MathSupport.h"
+#include "MetricsInfo.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
-
 #include "support/lassert.h"
 
 

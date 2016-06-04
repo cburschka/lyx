@@ -13,10 +13,12 @@
 
 #include "InsetMathEnsureMath.h"
 
-#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include <ostream>
 

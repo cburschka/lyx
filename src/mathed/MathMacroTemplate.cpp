@@ -13,8 +13,6 @@
 
 #include "MathMacroTemplate.h"
 
-#include "DocIterator.h"
-#include "LaTeXFeatures.h"
 #include "InsetMathBrace.h"
 #include "InsetMathChar.h"
 #include "InsetMathHull.h"
@@ -31,9 +29,12 @@
 #include "Color.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "DocIterator.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LaTeXFeatures.h"
 #include "Lexer.h"
+#include "MetricsInfo.h"
 #include "TocBackend.h"
 
 #include "frontends/Painter.h"

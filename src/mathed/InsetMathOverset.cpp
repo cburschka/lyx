@@ -11,11 +11,13 @@
 #include <config.h>
 
 #include "InsetMathOverset.h"
+
 #include "MathData.h"
 #include "MathStream.h"
 
 #include "Cursor.h"
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 using namespace std;
 

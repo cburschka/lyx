@@ -12,10 +12,13 @@
 
 #include "InsetMathSqrt.h"
 
-#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
+
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 #include "TextPainter.h"
+
 #include "frontends/Painter.h"
 
 

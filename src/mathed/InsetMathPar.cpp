@@ -15,6 +15,8 @@
 #include "MathData.h"
 #include "MathStream.h"
 
+#include "MetricsInfo.h"
+
 #include <ostream>
 
 namespace lyx {

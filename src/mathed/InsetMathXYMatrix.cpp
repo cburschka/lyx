@@ -12,8 +12,10 @@
 
 #include "InsetMathXYMatrix.h"
 
-#include "LaTeXFeatures.h"
 #include "MathStream.h"
+
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include <ostream>
 

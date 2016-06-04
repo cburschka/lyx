@@ -12,14 +12,15 @@
 
 #include "InsetMathSubstack.h"
 
-#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "support/gettext.h"
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
+#include "support/gettext.h"
 #include "support/lstrings.h"
 
 #include <ostream>

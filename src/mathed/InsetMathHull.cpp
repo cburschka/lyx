@@ -38,6 +38,7 @@
 #include "MacroTable.h"
 #include "MathMacro.h"
 #include "MathMacroTemplate.h"
+#include "MetricsInfo.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"

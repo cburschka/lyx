@@ -12,10 +12,12 @@
 
 #include "InsetMathCancelto.h"
 
-#include "Cursor.h"
-#include "LaTeXFeatures.h"
 #include "MathData.h"
 #include "MathStream.h"
+
+#include "Cursor.h"
+#include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
 

@@ -30,6 +30,7 @@
 #include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "MetricsInfo.h"
 
 #include "frontends/Painter.h"
 

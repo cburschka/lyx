@@ -19,6 +19,8 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "MetricsInfo.h"
+
 #include "frontends/FontLoader.h"
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
