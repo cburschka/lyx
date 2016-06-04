@@ -59,12 +59,12 @@
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
-#include "support/docstream.h"
 
 #include <algorithm>
 #include <sstream>
@@ -380,9 +380,8 @@ void InsetMathNest::write(WriteStream & os) const
 	docstring const latex_name = name();
 	os << '\\' << latex_name;
 	for (size_t i = 0; i < nargs(); ++i) {
-		os.pushRowEntry(TexRow::mathEntry(id(),i));
+		Changer dummy = os.changeRowEntry(TexRow::mathEntry(id(),i));
 		os << '{' << cell(i) << '}';
-		os.popRowEntry();
 	}
 	if (nargs() == 0)
 		os.pendingSpace(true);
@@ -408,13 +407,9 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
 			runparams.encoding);
 	wi.canBreakLine(os.canBreakLine());
-	if (runparams.lastid != -1) {
-		wi.pushRowEntry(os.texrow().textEntry(runparams.lastid,
-											  runparams.lastpos));
-		write(wi);
-		wi.popRowEntry();
-	} else
-		write(wi);
+	Changer dummy = wi.changeRowEntry(os.texrow().textEntry(runparams.lastid,
+	                                                        runparams.lastpos));
+	write(wi);
 	// Reset parbreak status after a math inset.
 	os.lastChar(0);
 	os.canBreakLine(wi.canBreakLine());

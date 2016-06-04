@@ -34,7 +34,6 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
-
 #include "support/lassert.h"
 
 #include <sstream>
@@ -1275,7 +1274,7 @@ void InsetMathGrid::write(WriteStream & os,
 				++col;
 				continue;
 			}
-			os.pushRowEntry(entry);
+			Changer dummy = os.changeRowEntry(entry);
 			if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN) {
 				size_t s = col + 1;
 				while (s < ncols() &&
@@ -1293,7 +1292,6 @@ void InsetMathGrid::write(WriteStream & os,
 				os << '}';
 			os << eocString(col + nccols - 1, lastcol);
 			col += nccols;
-			os.popRowEntry();
 		}
 		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
 		os << eol;

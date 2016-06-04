@@ -15,8 +15,9 @@
 #include "MathData.h"
 #include "MathExtern.h"
 
-#include "support/textutils.h"
 #include "support/docstring.h"
+#include "support/RefChanger.h"
+#include "support/textutils.h"
 
 #include <algorithm>
 #include <cstring>
@@ -123,18 +124,20 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 
 WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
 						 OutputType output, Encoding const * encoding)
-	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
-	  output_(output), pendingspace_(false), pendingbrace_(false),
-	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
-	  line_(0), encoding_(encoding)
-{}
+	: WriteStream(os)
+{
+	fragile_ = fragile;
+	latex_ = latex;
+	output_ = output;
+	encoding_ = encoding;
+}
 
 
 WriteStream::WriteStream(otexrowstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  output_(wsDefault), pendingspace_(false), pendingbrace_(false),
 	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
-	  line_(0), encoding_(0) 
+	  line_(0), encoding_(0), row_entry_(TexRow::row_none)
 {}
 
 
@@ -183,26 +186,17 @@ void WriteStream::asciiOnly(bool ascii)
 }
 
 
-void WriteStream::pushRowEntry(TexRow::RowEntry entry)
+Changer WriteStream::changeRowEntry(TexRow::RowEntry entry)
 {
-	outer_row_entries_.push_back(entry);
-}
-
-
-void WriteStream::popRowEntry()
-{
-	if (!outer_row_entries_.empty())
-		outer_row_entries_.pop_back();
+	return make_change(row_entry_, entry);
 }
 
 
 bool WriteStream::startOuterRow()
 {
-	size_t n = outer_row_entries_.size();
-	if (n > 0)
-		return texrow().start(outer_row_entries_[n - 1]);
-	else
+	if (TexRow::isNone(row_entry_))
 		return false;
+	return texrow().start(row_entry_);
 }
 
 
