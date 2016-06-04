@@ -651,6 +651,13 @@ if __name__ == '__main__':
 
     input_files += args
 
+    # Ensure a unique sorting of input files and ignore the order in which they
+    # are given on the command line. This is important to avoid huge
+    # pseudo-diffs in the generated .pot file which would then end up in the
+    # .po files as well. We had this situation for years with people using
+    # different build systems to remerge .po files.
+    input_files.sort()
+
     if input_type == 'ui':
         ui_l10n(input_files, output, base)
     elif input_type == 'latexfonts':
