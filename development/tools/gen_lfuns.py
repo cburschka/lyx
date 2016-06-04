@@ -13,6 +13,7 @@
 # gen_lfuns.py <path/to/LyXAction.cpp> <where/to/save/LFUNs.lyx>
 
 import sys,re,os.path
+import io
 
 def error(message):
     sys.stderr.write(message + '\n')
@@ -24,24 +25,24 @@ def usage(prog_name):
 DOXYGEN_START = "/*!"
 DOXYGEN_END = "},"
 
-LYX_NEWLINE = "\n\\begin_inset Newline newline\n\\end_inset\n\n"
-LYX_BACKSLASH = "\n\\backslash\n"
+LYX_NEWLINE = u"\n\\begin_inset Newline newline\n\\end_inset\n\n"
+LYX_BACKSLASH = u"\n\\backslash\n"
 
-HTMLONLY_START = "\\htmlonly"
-HTMLONLY_END = "\\endhtmlonly"
-LFUN_NAME_ID = "\\var lyx::FuncCode lyx::"
-LFUN_ACTION_ID = "\\li Action: "
-LFUN_NOTION_ID = "\\li Notion: "
-LFUN_SYNTAX_ID = "\\li Syntax: "
-LFUN_PARAMS_ID = "\\li Params: "
-LFUN_SAMPLE_ID = "\\li Sample: "
-LFUN_ORIGIN_ID = "\\li Origin: "
-LFUN_ENDVAR = "\\endvar"
+HTMLONLY_START = u"\\htmlonly"
+HTMLONLY_END = u"\\endhtmlonly"
+LFUN_NAME_ID = u"\\var lyx::FuncCode lyx::"
+LFUN_ACTION_ID = u"\\li Action: "
+LFUN_NOTION_ID = u"\\li Notion: "
+LFUN_SYNTAX_ID = u"\\li Syntax: "
+LFUN_PARAMS_ID = u"\\li Params: "
+LFUN_SAMPLE_ID = u"\\li Sample: "
+LFUN_ORIGIN_ID = u"\\li Origin: "
+LFUN_ENDVAR = u"\\endvar"
 
 ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID, 
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
-LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
+LFUNS_HEADER = u"""# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
 \\lyxformat 506
 \\begin_document
 \\begin_header
@@ -146,7 +147,7 @@ The \\SpecialChar LyX
 
 """
 
-LFUNS_INTRO ="""\\begin_layout Section*
+LFUNS_INTRO = u"""\\begin_layout Section*
 About this manual
 \\end_layout
 
@@ -200,7 +201,7 @@ In the following, all LFUNs are listed, categorized by function.
 """
 
 
-LFUNS_FOOTER = """\\end_body
+LFUNS_FOOTER = u"""\\end_body
 \\end_document
 """
 
@@ -322,58 +323,58 @@ def parse_lfun(str):
 def write_fields(file, lfun):
     """Writes the LFUN contained in the dict lfun to the file. Does not write a the file header or footer"""
     # add lfun to LFUNs.lyx
-    file.write("\\begin_layout Subsection*\n")
+    file.write(u"\\begin_layout Subsection*\n")
     file.write(lfun["name"] + "\n")
-    file.write("\\end_layout\n")
-    file.write("\n")
+    file.write(u"\\end_layout\n")
+    file.write(u"\n")
     if lfun["action"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Action " + lfun["action"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
     if lfun["notion"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Notion " + lfun["notion"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
     if lfun["syntax"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Syntax " + lfun["syntax"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
     if lfun["params"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Params " + lfun["params"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
     if lfun["sample"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Sample " + lfun["sample"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
     if lfun["origin"] != "":
-        file.write("\\begin_layout Description\n")
+        file.write(u"\\begin_layout Description\n")
         file.write("Origin " + lfun["origin"] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
 
 def write_sections(file,lfuns):
     """Write sections of LFUNs"""
     sections = ["Layout", "Edit", "Math", "Buffer", "System", "Hidden"]
     section_headings = {
-        "Layout":  "Layout Functions (Font, Layout and Textclass related)",
-        "Edit":  "Editing Functions (Cursor and Mouse Movement, Copy/Paste etc.)",
-        "Math":  "Math Editor Functions",
-        "Buffer":  "Buffer Fuctions (File and Window related)",
-        "System":  "System Functions (Preferences, LyX Server etc.)",
-        "Hidden":  "Hidden Functions (not listed for configuration)"
+        "Layout":  u"Layout Functions (Font, Layout and Textclass related)",
+        "Edit":    u"Editing Functions (Cursor and Mouse Movement, Copy/Paste etc.)",
+        "Math":    u"Math Editor Functions",
+        "Buffer":  u"Buffer Fuctions (File and Window related)",
+        "System":  u"System Functions (Preferences, LyX Server etc.)",
+        "Hidden":  u"Hidden Functions (not listed for configuration)"
         }
         # write the lfuns to the file
     for val in sections:
-        file.write("\\begin_layout Section\n")
+        file.write(u"\\begin_layout Section\n")
         file.write(section_headings[val] + "\n")
-        file.write("\\end_layout\n")
-        file.write("\n")
+        file.write(u"\\end_layout\n")
+        file.write(u"\n")
         for lf in lfuns:
             if lf["type"] == val:
                 write_fields(file, lf)
@@ -395,13 +396,13 @@ def main(argv):
             lfuns_path = lfuns_path + "LFUNs.lyx"
         elif os.path.exists(lfuns_path):
             error(script_name + ": %s already exists, delete it and rerun the script" % lfuns_path)
-        lfuns_file = open(lfuns_path, 'wb')
+        lfuns_file = io.open(lfuns_path, 'w', encoding='utf_8')
     else:
         lfuns_file = sys.stdout
 
     sys.stderr.write(script_name + ": Start processing " + argv[1] + '\n')
     # Read the input file and write the output file
-    lyxaction_file = open(lyxaction_path, 'rb')
+    lyxaction_file = io.open(lyxaction_path, 'r', encoding='utf_8')
 
     lyxaction_text = lyxaction_file.read()
 
