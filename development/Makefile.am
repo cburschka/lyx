@@ -12,7 +12,6 @@ EXTRA_DIST = coding/Rules coding/Recommendations \
 	FORMAT lyx.rpm.README \
 	lyxserver lyx.spec.in lyx.spec \
 	LyX-Mac-binary-release.sh \
-tools/convert_kmap.py \
 tools/gen_lfuns.py \
 tools/generate_symbols_images.lyx \
 tools/generate_symbols_images.py \
