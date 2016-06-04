@@ -76,7 +76,7 @@ def getreplacements(filename):
                 replacements[m.group(1)] = m.group(2)
             else:
                 return replacements
-        elif line.find('PngMap sorted_png_map') == 0:
+        elif line.find('ImgMap sorted_img_map') == 0:
             found = True
 
 
