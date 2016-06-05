@@ -56,7 +56,7 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
          DEPENDS ${_absPotFile} ${_absFile}
       )
 
-      INSTALL(FILES ${_gmoFile} DESTINATION ${LYX_DATA_SUBDIR}${LYX_LOCALEDIR}/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
+      INSTALL(FILES ${_gmoFile} DESTINATION ${LYX_LOCALEDIR}/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
       SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
 
    ENDFOREACH (_currentPoFile )

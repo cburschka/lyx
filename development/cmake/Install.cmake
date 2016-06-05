@@ -1,6 +1,6 @@
 
 # TODO: set correct path in call to cmake
-# e.g. cmake /usr/src/lyx/lyx-devel/development/cmake -DCMAKE_INSTALL_PREFIX=/usr/local/share/lyx2.0 -Dnls=1
+# e.g. cmake /usr/src/lyx/lyx-devel/development/cmake -DCMAKE_INSTALL_PREFIX=/usr/local -Dnls=1
 
 if(NOT(LYX_BUNDLE) AND APPLE)
         message(STATUS "Installing to ${CMAKE_INSTALL_PREFIX}, defined by CMAKE_INSTALL_PREFIX")
@@ -12,13 +12,31 @@ endif()
 #
 # Special handling for ${_file_type} == "*"
 #     Here we try to exclude files which we do not want to install
-macro(lyx_install _parent_src_dir _gl_dir _file_type)
+# Depending on _what, installation goes to
+# data -> ${LYX_DATA_SUBDIR}
+# font -> fonts/truetype/${_lyx}/
+# bin -> bin
+# tex -> texmf/tex/latex/${_lyx}/
+macro(lyx_install _what _parent_src_dir _gl_dir _file_type)
   #message("checking parents ${_parent_src_dir}")
   file(GLOB _dirs RELATIVE "${_parent_src_dir}" ${_parent_src_dir}/${_gl_dir})
   #cmake bug on Windows: if _gl_dir==. _dirs is empty but on linux _dirs==.
   if(NOT _dirs)
     set(_dirs .)
-  endif() 
+  endif()
+  # Select installation dir
+  if ("${_what}" STREQUAL "data")
+    set(_dest_subdir "${LYX_DATA_SUBDIR}")
+  elseif ("${_what}" STREQUAL "font")
+    set(_dest_subdir "fonts/truetype/${_lyx}/")
+  elseif ("${_what}" STREQUAL "bin")
+    set(_dest_subdir "bin/")
+  elseif ("${_what}" STREQUAL "tex")
+    set(_dest_subdir "texmf/tex/latex/${_lyx}/")
+  else()
+    message(FATAL_ERROR "Undefined parameter _what = ${_what} in call to lyx_install")
+  endif()
+  #message(STATUS "_dest_subdir = ${_dest_subdir}")
   foreach(_dir ${_dirs})
     foreach(_glob_dir ${ARGN})
       file(GLOB _dir_list ${_parent_src_dir}/${_dir}/${_glob_dir})
@@ -59,13 +77,14 @@ macro(lyx_install _parent_src_dir _gl_dir _file_type)
             set(_base_dir .)
           endif()
 
-          install(FILES ${files_list} DESTINATION "${LYX_DATA_SUBDIR}${_dir}/${_base_dir}")
+          install(FILES ${files_list} DESTINATION "${_dest_subdir}${_dir}/${_base_dir}")
+          #message(STATUS "Installing  ${files_list} to ${_dest_subdir}${_dir}/${_base_dir}")
         endif()
 	if(program_list)
 	  if(_glob_dir STREQUAL ".")
 	    set(_base_dir .)
 	  endif()
-    install(FILES ${program_list} DESTINATION "${LYX_DATA_SUBDIR}${_dir}/${_base_dir}")
+          install(FILES ${program_list} DESTINATION "${_dest_subdir}${_dir}/${_base_dir}")
 	endif()
       endforeach(_current_dir)
     endforeach(_glob_dir)
@@ -76,32 +95,32 @@ endmacro(lyx_install)
 # language-specific-directories (like ca, de, es ...) are now globbed as "[a-z][a-z]"
 set(_all_languages "[a-z][a-z]")
 
-lyx_install(${TOP_SRC_DIR}/lib bind         *.bind   . ${_all_languages})
-lyx_install(${TOP_SRC_DIR}/lib commands     *.def    .)
+lyx_install("data" ${TOP_SRC_DIR}/lib bind         *.bind   . ${_all_languages})
+lyx_install("data" ${TOP_SRC_DIR}/lib commands     *.def    .)
 
 # this is handled in doc/CMakeLists.txt
-#lyx_install(${TOP_SRC_DIR}/lib doc          *.lyx    . ${_all_languages})
-#lyx_install(${TOP_SRC_DIR}/lib doc          *.txt    . ${_all_languages})
-lyx_install(${TOP_SRC_DIR}/lib doc          *      biblio clipart)
+#lyx_install("data" ${TOP_SRC_DIR}/lib doc          *.lyx    . ${_all_languages})
+#lyx_install("data" ${TOP_SRC_DIR}/lib doc          *.txt    . ${_all_languages})
+lyx_install("data" ${TOP_SRC_DIR}/lib doc          *      biblio clipart)
 
-lyx_install(${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
+lyx_install("data" ${TOP_SRC_DIR}/lib doc/${_all_languages} *    clipart)
 
-lyx_install(${TOP_SRC_DIR}/lib examples     *      . ${_all_languages} springer thesis)
-lyx_install(${TOP_SRC_DIR}/lib fonts        *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib examples     *      . ${_all_languages} springer thesis)
+lyx_install("font" ${TOP_SRC_DIR}/lib/fonts .      *      .)
 foreach(_imgext "png" "svgz" "gif" "xpm")
-  lyx_install(${TOP_SRC_DIR}/lib images       "*.${_imgext}"      . ipa commands attic classic oxygen)
-  lyx_install(${TOP_SRC_DIR}/lib images/math  "*.${_imgext}"      . oxygen)
+  lyx_install("data" ${TOP_SRC_DIR}/lib images       "*.${_imgext}"      . ipa commands attic classic oxygen)
+  lyx_install("data" ${TOP_SRC_DIR}/lib images/math  "*.${_imgext}"      . oxygen)
 endforeach()
-lyx_install(${TOP_SRC_DIR}/lib kbd          *      .)
-lyx_install(${TOP_SRC_DIR}/lib layouts      *      .)
-lyx_install(${TOP_SRC_DIR}/lib lyx2lyx      *.py   .)
-lyx_install(${TOP_SRC_DIR}/lib scripts      *.py   .)
-lyx_install(${TOP_SRC_DIR}/lib .            *.py   .)
-lyx_install(${TOP_SRC_DIR}/lib scripts      *.R    .)
-lyx_install(${TOP_SRC_DIR}/lib templates    *      . springer)
-lyx_install(${TOP_SRC_DIR}/lib tex          *      .)
-lyx_install(${TOP_SRC_DIR}/lib ui           *      .)
-lyx_install(${TOP_SRC_DIR}/lib .            *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib kbd          *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib layouts      *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib lyx2lyx      *.py   .)
+lyx_install("data" ${TOP_SRC_DIR}/lib scripts      *.py   .)
+lyx_install("data" ${TOP_SRC_DIR}/lib .            *.py   .)
+lyx_install("data" ${TOP_SRC_DIR}/lib scripts      *.R    .)
+lyx_install("data" ${TOP_SRC_DIR}/lib templates    *      . springer)
+lyx_install("tex"  ${TOP_SRC_DIR}/lib/tex .        *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib ui           *      .)
+lyx_install("data" ${TOP_SRC_DIR}/lib .            *      .)
 
 # Install
 if(APPLE)
