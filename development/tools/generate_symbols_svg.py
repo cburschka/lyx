@@ -95,7 +95,7 @@ def gettoolbaritems(filename):
 def getmakefileentries(filename):
     items = []
     makefile = open(filename, 'rt')
-    regexp = re.compile(r'.*images/math/(.+)\.png')
+    regexp = re.compile(r'.*images/math/(.+)\.(png|svgz)')
     for line in makefile.readlines():
         m = regexp.match(line)
         if m:
