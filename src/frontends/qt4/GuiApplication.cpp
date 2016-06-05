@@ -14,6 +14,7 @@
 
 #include "GuiApplication.h"
 
+#include "ToolTipFormatter.h"
 #include "ColorCache.h"
 #include "ColorSet.h"
 #include "GuiClipboard.h"
@@ -1081,6 +1082,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	// This is clearly not enough in a time where we use threads for
 	// document preview and/or export. 20 should be OK.
 	QThreadPool::globalInstance()->setMaxThreadCount(20);
+
+	// make sure tooltips are formatted
+	installEventFilter(new ToolTipFormatter(this));
 }
 
 

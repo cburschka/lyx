@@ -195,6 +195,24 @@ QString changeExtension(QString const & oldname, QString const & ext);
 /// parameter.
 QString guiName(std::string const & type, BufferParams const & bp);
 
+/// Format \param text for display as a ToolTip, breaking at lines of \param
+/// width ems. Note: this function is expensive. Better call it in a delayed
+/// manner, i.e. not to fill in a model (see for instance the function
+/// ToolTipFormatter::eventFilter).
+///
+/// When is it called automatically? Whenever the tooltip is not already rich
+/// text beginning with <html>, and is defined by the following functions:
+///  - QWidget::setToolTip(),
+///  - QAbstractItemModel::setData(..., Qt::ToolTipRole),
+///  - Inset::toolTip()
+///
+/// In other words, tooltips can use Qt html, and the tooltip will still be
+/// correctly broken. Moreover, it is possible to specify an entirely custom
+/// tooltip (not subject to automatic formatting) by giving it in its entirety,
+/// i.e. starting with <html>.
+QString formatToolTip(QString text, int width = 30);
+
+
 } // namespace lyx
 
 #endif // QTHELPERS_H

@@ -153,6 +153,7 @@ SOURCEFILES = \
 	TocModel.cpp \
 	TocWidget.cpp \
 	Toolbars.cpp \
+	ToolTipFormatter.cpp \
 	Validator.cpp 
 
 NOMOCHEADER = \
@@ -259,6 +260,7 @@ MOCHEADER = \
 	PanelStack.h \
 	TocModel.h \
 	TocWidget.h \
+	ToolTipFormatter.h \
 	Validator.h
 
 UIFILES = \

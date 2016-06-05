@@ -42,6 +42,9 @@
 #include <QLocale>
 #include <QPalette>
 #include <QSet>
+#include <QTextLayout>
+#include <QTextDocument>
+#include <QToolTip>
 
 #include <algorithm>
 #include <fstream>
@@ -644,6 +647,39 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_(floats.getType(type).listName());
 
 	return qt_(type);
+}
+
+
+QString formatToolTip(QString text, int em)
+{
+	// 1. QTooltip activates word wrapping only if mightBeRichText()
+	//    is true. So we convert the text to rich text.
+	//
+	// 2. The default width is way too small. Setting the width is tricky; first
+	//    one has to compute the ideal width, and then force it with special
+	//    html markup.
+
+	// do nothing if empty or already formatted
+	if (text.isEmpty() || text.startsWith(QString("<html>")))
+		return text;
+	// Convert to rich text if it is not already
+	if (!Qt::mightBeRichText(text))
+		text = Qt::convertFromPlainText(text, Qt::WhiteSpaceNormal);
+	// Compute desired width in pixels
+	QFont const font = QToolTip::font();
+	int const px_width = em * QFontMetrics(font).width("M");
+	// Determine the ideal width of the tooltip
+    QTextDocument td("");
+    td.setHtml(text);
+    td.setDefaultFont(QToolTip::font());
+    td.setTextWidth(px_width);
+    double best_width = td.idealWidth();
+	// Set the line wrapping with appropriate width
+	return QString("<html><body><table><tr>"
+	               "<td align=justify width=%1>%2</td>"
+	               "</tr></table></body></html>")
+		.arg(QString::number(int(best_width) + 1), text);
+	return text;
 }
 
 
