@@ -12,11 +12,15 @@ import sys,string,re,os,os.path
 import io
 
 def get_code(code, font):
-    if font != "dontknowwhichfontusesthisstrangeencoding":
+    # computer modern fonts use a strange encoding
+    cmfonts = ["cmex", "cmr", "cmm", "cmsy"]
+    if font not in cmfonts:
         return code
     if code < 10:
         return code+161
-    elif code < 32:
+    if code < 11:
+        return code+162
+    elif code <= 32:
         return code+163
     else:
         return code
