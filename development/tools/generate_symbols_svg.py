@@ -18,8 +18,10 @@
 # created images should never be replaced by automatically created ones.
 
 
+from __future__ import print_function
 import os, re, string, sys, subprocess, tempfile, shutil
 import Image
+import io
 
 def usage(prog_name):
     return ("Usage: %s lyxexe outputpath\n" % prog_name)
@@ -66,7 +68,7 @@ def getreplacements(filename):
     replacements['*'] = 'ast'
     replacements['AA'] = 'textrm_AA'
     replacements['O'] = 'textrm_O'
-    cppfile = open(filename, 'rt')
+    cppfile = io.open(filename, 'r', encoding='utf_8')
     regexp = re.compile(r'.*"([^"]+)",\s*"([^"]+)"')
     found = False
     for line in cppfile.readlines():
@@ -82,7 +84,7 @@ def getreplacements(filename):
 
 def gettoolbaritems(filename):
     items = []
-    uifile = open(filename, 'rt')
+    uifile = io.open(filename, 'r', encoding='utf_8')
     regexp = re.compile(r'.*Item "([^"\[]+)(\[\[[^\]]+\]\])?"\s*"math-insert\s+([^"]+)"')
     for line in uifile.readlines():
         m = regexp.match(line)
@@ -94,7 +96,7 @@ def gettoolbaritems(filename):
 
 def getmakefileentries(filename):
     items = []
-    makefile = open(filename, 'rt')
+    makefile = io.open(filename, 'r', encoding='utf_8')
     regexp = re.compile(r'.*images/math/(.+)\.(png|svgz)')
     for line in makefile.readlines():
         m = regexp.match(line)
@@ -109,13 +111,13 @@ def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolb
     if name in replacements.keys():
         filename = replacements[name]
     elif name.startswith('lyx'):
-        print 'Skipping ' + name
+        print('Skipping ' + name)
         return
     else:
         skipchars = ['|', '/', '\\', '*', '!', '?', ':', ';', '^', '<', '>']
         for i in skipchars:
             if name.find(i) >= 0:
-                print 'Skipping ' + name
+                print('Skipping ' + name)
                 return
         filename = name
     svgname = os.path.join(path, filename + '.svgz')
@@ -130,11 +132,11 @@ def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolb
         else:
             suffix = ' (not found)'
     if os.path.exists(svgname):
-        print 'Skipping ' + name + suffix
+        print('Skipping ' + name + suffix)
         return
-    print 'Generating ' + name + suffix
+    print('Generating ' + name + suffix)
     lyxname = os.path.join(tempdir, filename)
-    lyxfile = open(lyxname + '.lyx', 'wt')
+    lyxfile = io.open(lyxname + '.lyx', 'w', encoding='utf_8')
     if math:
         lyxfile.write(template.replace('$a$', '$\\' + name + '$'))
     else:
@@ -144,7 +146,7 @@ def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolb
     proc = subprocess.Popen(cmd, shell=True)
     proc.wait()
     if proc.returncode != 0:
-        print 'Error in DVI creation for ' + name
+        print('Error in DVI creation for ' + name)
         return
     # The magnifaction factor is calculated such that we get an image of
     # height 18 px for most symbols and document font size 11. Then we can
@@ -153,7 +155,7 @@ def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolb
     proc = subprocess.Popen(cmd, shell=True)
     proc.wait()
     if proc.returncode != 0:
-        print 'Error in SVG creation for ' + name
+        print('Error in SVG creation for ' + name)
         return
 
 
@@ -169,7 +171,7 @@ def main(argv):
         makefile = os.path.join(os.path.dirname(base), '../../lib/Makefile.am')
         makefileentries = getmakefileentries(makefile)
         lyxtemplate = base + '.lyx'
-        templatefile = open(base + '.lyx', 'rt')
+        templatefile = io.open(base + '.lyx', 'r', encoding='utf_8')
         template = templatefile.read()
         templatefile.close()
         tempdir = tempfile.mkdtemp()
