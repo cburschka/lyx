@@ -158,7 +158,7 @@ def createimage(name, path, template, lyxexe, tempdir, math, replacements, toolb
     if usepng:
         cmd = "dvipng %s.dvi -bg Transparent -D 115 -o %s" % (lyxname, imgname)
     else:
-        cmd = "dvisvgm -z --no-fonts --exact --output=%%f %s.dvi %s" % (lyxname, imgname)
+        cmd = "dvisvgm -z --no-fonts --exact --output=%s%s%%f %s.dvi" % (path, os.path.sep, lyxname)
     proc = subprocess.Popen(cmd, shell=True)
     proc.wait()
     if proc.returncode != 0:
