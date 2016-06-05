@@ -194,7 +194,7 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
        dnl <regex> in gcc is unusable in versions less than 4.9.0
        dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
        case $gxx_version in
-         4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) lyx_std_regex=no ;;
+         4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) lyx_std_regex=no ;;
          *) ;;
        esac
      fi
@@ -344,7 +344,8 @@ if test x$GXX = xyes; then
       AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
   fi
   case $gxx_version in
-      2.*|3.*) AC_ERROR([gcc 4.x is required]);;
+      2.*|3.*) AC_ERROR([gcc >= 4.3 is required]);;
+      4.0*|4.1*|4.2*) AC_ERROR([gcc >= 4.3 is required]);;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
@@ -361,10 +362,6 @@ if test x$GXX = xyes; then
   dnl By default, it is auto and we enable C++11 when possible
   if test x$enable_cxx11 != xno ; then
     case $gxx_version in
-      4.0*|4.1*|4.2*)
-         if test x$enable_cxx11 = xyes; then
-            AC_ERROR([There is no C++11 support in gcc 4.2 or older])
-         fi;;
       4.3*|4.4*|4.5*|4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
