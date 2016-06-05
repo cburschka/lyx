@@ -607,9 +607,6 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "insertcotext") {
 			lex.next();
 			arg.insertcotext = lex.getBool();
-		} else if (tok == "insertcotext") {
-			lex.next();
-			arg.insertcotext = lex.getBool();
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
