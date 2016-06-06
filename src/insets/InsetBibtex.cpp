@@ -103,7 +103,7 @@ void InsetBibtex::doDispatch(Cursor & cur, FuncRequest & cmd)
 				Alert::warning(message.title_, message.details_);
 				cur.noScreenUpdate();
 			} else
-				throw message;
+				throw;
 			break;
 		}
 
