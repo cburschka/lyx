@@ -529,16 +529,14 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 		Toc::iterator it = TocBackend::findItem(*change_list, 0, author);
 		if (it == change_list->end()) {
 			change_list->push_back(TocItem(dit, 0, author, true));
-			change_list->push_back(TocItem(dit, 1, str, output_active,
-				support::wrapParas(str, 4)));
+			change_list->push_back(TocItem(dit, 1, str, output_active));
 			continue;
 		}
 		for (++it; it != change_list->end(); ++it) {
 			if (it->depth() == 0 && it->str() != author)
 				break;
 		}
-		change_list->insert(it, TocItem(dit, 1, str, output_active,
-			support::wrapParas(str, 4)));
+		change_list->insert(it, TocItem(dit, 1, str, output_active));
 	}
 }
 

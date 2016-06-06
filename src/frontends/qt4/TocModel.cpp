@@ -144,12 +144,19 @@ void TocModel::reset()
 }
 
 
+void TocModel::setString(TocItem const & item, QModelIndex index)
+{
+	// Use implicit sharing of QStrings
+	QString str = toqstr(item.asString());
+	model_->setData(index, str, Qt::DisplayRole);
+	model_->setData(index, str, Qt::ToolTipRole);
+}
+
+
 void TocModel::updateItem(DocIterator const & dit)
 {
-	QModelIndex index = modelIndex(dit);
-	TocItem const & toc_item = tocItem(index);
-	model_->setData(index, toqstr(toc_item.asString()), Qt::DisplayRole);
-	model_->setData(index, toqstr(toc_item.tooltip()), Qt::ToolTipRole);
+	QModelIndex const index = modelIndex(dit);
+	setString(tocItem(index), index);
 }
 
 
@@ -177,9 +184,8 @@ void TocModel::reset(shared_ptr<Toc const> toc)
 		int current_row = model_->rowCount();
 		model_->insertRows(current_row, 1);
 		QModelIndex top_level_item = model_->index(current_row, 0);
-		model_->setData(top_level_item, toqstr(item.asString()), Qt::DisplayRole);
+		setString(item, top_level_item);
 		model_->setData(top_level_item, index, Qt::UserRole);
-		model_->setData(top_level_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 
 		LYXERR(Debug::GUI, "Toc: at depth " << item.depth()
 			<< ", added item " << item.asString());
@@ -218,9 +224,8 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 		int current_row = model_->rowCount(parent);
 		model_->insertRows(current_row, 1, parent);
 		child_item = model_->index(current_row, 0, parent);
-		model_->setData(child_item, toqstr(item.asString()), Qt::DisplayRole);
+		setString(item, child_item);
 		model_->setData(child_item, index, Qt::UserRole);
-		model_->setData(child_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 		populate(index, child_item);
 		if (index >= end)
 			break;

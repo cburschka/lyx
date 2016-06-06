@@ -73,11 +73,11 @@ public:
 	TocItem() : dit_(0), depth_(0), output_(false) {}
 	///
 	TocItem(DocIterator const & dit,
-	        int depth,
-	        docstring const & s,
-	        bool output_active,
-	        docstring const & t = docstring(),
-	        FuncRequest action = FuncRequest(LFUN_UNKNOWN_ACTION));
+		int depth,
+		docstring const & s,
+		bool output_active,
+		FuncRequest action = FuncRequest(LFUN_UNKNOWN_ACTION)
+		);
 	///
 	~TocItem() {}
 	///
@@ -88,8 +88,6 @@ public:
 	docstring const & str() const { return str_; }
 	///
 	void str(docstring const & s) { str_ = s; }
-	///
-	docstring const & tooltip() const;
 	/// String for display, e.g. it has a mark if output is inactive
 	docstring const asString() const;
 	///
@@ -110,8 +108,6 @@ private:
 	int depth_;
 	/// Full item string
 	docstring str_;
-	/// The tooltip string
-	docstring tooltip_;
 	/// Is this item in a note, inactive branch, etc?
 	bool output_;
 	/// Custom action

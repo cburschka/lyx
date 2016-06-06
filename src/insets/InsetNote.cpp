@@ -213,15 +213,14 @@ void InsetNote::addToToc(DocIterator const & cpit, bool output_active,
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
-	
+
 	InsetLayout const & il = getLayout();
-	docstring tooltip;
-	text().forOutliner(tooltip, TOC_ENTRY_LENGTH);
-	docstring str = translateIfPossible(il.labelstring()) + ": " + tooltip;
-	tooltip = support::wrapParas(tooltip, 0, 60, 2);
-	
+	docstring str;
+	text().forOutliner(str, TOC_ENTRY_LENGTH);
+	str = translateIfPossible(il.labelstring()) + ": " + str;
+
 	shared_ptr<Toc> toc = buffer().tocBackend().toc("note");
-	toc->push_back(TocItem(pit, 0, str, output_active, tooltip));
+	toc->push_back(TocItem(pit, 0, str, output_active));
 
 	// Proceed with the rest of the inset.
 	bool doing_output = output_active && producesOutput();

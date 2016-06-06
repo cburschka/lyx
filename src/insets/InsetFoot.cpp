@@ -81,13 +81,12 @@ void InsetFoot::addToToc(DocIterator const & cpit, bool output_active,
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetFoot &>(*this)));
 	
-	docstring tooltip;
-	text().forOutliner(tooltip, TOC_ENTRY_LENGTH);
-	docstring str = custom_label_ + ": " + tooltip;
-	tooltip = support::wrapParas(tooltip, 0, 60, 2);
+	docstring str;
+	text().forOutliner(str, TOC_ENTRY_LENGTH);
+	str = custom_label_ + ": " + str;
 	
 	shared_ptr<Toc> toc = buffer().tocBackend().toc("footnote");
-	toc->push_back(TocItem(pit, 0, str, output_active, tooltip));
+	toc->push_back(TocItem(pit, 0, str, output_active));
 	
 	// Proceed with the rest of the inset.
 	InsetFootlike::addToToc(cpit, output_active, utype);

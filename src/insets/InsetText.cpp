@@ -857,9 +857,9 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 				par.forOutliner(tocstring, length);
 			dit.pos() = 0;
 			toc->push_back(TocItem(dit, toclevel - min_toclevel,
-								  tocstring, doing_output, tocstring));
+			                       tocstring, doing_output));
 		}
-		
+
 		// And now the list of changes.
 		par.addChangesToToc(dit, buffer(), doing_output);
 	}

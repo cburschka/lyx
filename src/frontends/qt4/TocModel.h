@@ -65,6 +65,8 @@ private:
 	///
 	void populate(unsigned int & index, QModelIndex const & parent);
 	///
+	void setString(TocItem const & item, QModelIndex index);
+	///
 	TocTypeModel * model_;
 	///
 	QSortFilterProxyModel * sorted_model_;
