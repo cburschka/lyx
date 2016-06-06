@@ -114,7 +114,13 @@ void GuiRef::changed_adaptor()
 
 void GuiRef::gotoClicked()
 {
+	// By setting last_reference_, we ensure that the reference
+	// to which we are going (or from which we are returning) is
+	// restored in the dialog. It's a bit of a hack, but it works,
+	// and no-one seems to have any better idea.
+	last_reference_ = referenceED->text();
 	gotoRef();
+	last_reference_.clear();
 }
 
 
@@ -417,19 +423,18 @@ void GuiRef::redoRefs()
 		refsTW->addTopLevelItems(refsItems);
 	}
 
-	referenceED->setText(oldSelection);
-
 	// restore the last selection or, for new insets, highlight
 	// the previous selection
 	if (!oldSelection.isEmpty() || !last_reference_.isEmpty()) {
 		bool const newInset = oldSelection.isEmpty();
 		QString textToFind = newInset ? last_reference_ : oldSelection;
+		referenceED->setText(textToFind);
 		last_reference_.clear();
 		QTreeWidgetItemIterator it(refsTW);
 		while (*it) {
 			if ((*it)->text(0) == textToFind) {
 				refsTW->setCurrentItem(*it);
-				refsTW->setItemSelected(*it, !newInset);
+				refsTW->setItemSelected(*it, true);
 				//Make sure selected item is visible
 				refsTW->scrollToItem(*it);
 				last_reference_ = textToFind;
