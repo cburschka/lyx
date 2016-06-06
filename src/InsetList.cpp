@@ -42,9 +42,8 @@ struct InsetTablePosLess
 } // namespace anon
 
 
-InsetList::InsetList(InsetList const & il)
+InsetList::InsetList(InsetList const & il) : list_(il.list_)
 {
-	list_ = il.list_;
 	List::iterator it = list_.begin();
 	List::iterator end = list_.end();
 	for (; it != end; ++it)

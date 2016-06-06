@@ -671,9 +671,9 @@ ostream & operator<<(ostream & os, DocIterator const & dit)
 
 ///////////////////////////////////////////////////////
 
-StableDocIterator::StableDocIterator(DocIterator const & dit)
+StableDocIterator::StableDocIterator(DocIterator const & dit) :
+	data_(dit.internalData())
 {
-	data_ = dit.internalData();
 	for (size_t i = 0, n = data_.size(); i != n; ++i)
 		data_[i].inset_ = 0;
 }

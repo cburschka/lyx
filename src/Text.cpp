@@ -187,9 +187,8 @@ Text::Text(InsetText * owner, bool use_default_layout)
 
 
 Text::Text(InsetText * owner, Text const & text)
-	: owner_(owner)
+	: owner_(owner), pars_(text.pars_)
 {
-	pars_ = text.pars_;
 	ParagraphList::iterator const end = pars_.end();
 	ParagraphList::iterator it = pars_.begin();
 	for (; it != end; ++it)

@@ -47,6 +47,8 @@ public:
 		NO_DICTIONARY
 	};
 
+	SpellChecker() : change_number_(0) {}
+
 	virtual ~SpellChecker() {}
 
 	/// does the spell check failed

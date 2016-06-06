@@ -61,10 +61,10 @@ public:
 		: from(from_), to(to_)
 	{}
 
-	DocRange(Buffer const * buf)
+	DocRange(Buffer const * buf) :
+		from(doc_iterator_begin(buf)),
+		to(doc_iterator_end(buf))
 	{
-		from = doc_iterator_begin(buf);
-		to = doc_iterator_end(buf);
 		to.backwardPos();
 	}
 
