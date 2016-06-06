@@ -42,6 +42,7 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
       set(_firstArg ${_firstPoFile})
    ENDIF(${_firstPoFile} STREQUAL "ALL")
 
+   get_locale_destination(LYX_LOCALEDIR)
    FOREACH (_currentPoFile ${_firstArg} ${ARGN})
       GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
       GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)

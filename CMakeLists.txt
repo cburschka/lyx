@@ -100,6 +100,7 @@ else()
 endif()
 
 include(LyXMacros)
+include(LyXDestinations)
 
 # Usage LYX_OPTION
 # 1. parameter: option name without prefix 'LYX_'
@@ -463,13 +464,9 @@ endif()
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 	# see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
 	if (UNIX)
-		# don't use the default "/usr/local"
+		# use the default "/usr/local"
 		# but respect the user-choice on the command-line
-		if(LYX_INSTALL_SUFFIX)
-			set(CMAKE_INSTALL_PREFIX "/usr/local/lyx${LYX_INSTALL_SUFFIX}" CACHE PATH "LyX default install prefix" FORCE)
-		else()
-			set(CMAKE_INSTALL_PREFIX "/usr/local/${LYX_PROJECT}" CACHE PATH "LyX default install prefix" FORCE)
-		endif()
+		set(CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "LyX default install prefix" FORCE)
 	endif()
 endif()
 if(WIN32)
@@ -492,7 +489,7 @@ if(NOT LYX_DATA_SUBDIR)
 endif()
 
 set(LYX_ABS_INSTALLED_DATADIR "${CMAKE_INSTALL_PREFIX}")
-set(LYX_LOCALEDIR "${locale_dir}")
+get_locale_destination(LYX_LOCALEDIR)
 set(LYX_ABS_INSTALLED_LOCALEDIR "${CMAKE_INSTALL_PREFIX}/${LYX_LOCALEDIR}")
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
@@ -502,7 +499,7 @@ else()
 	if(WIN32)
 		set(LYX_MAN_DIR "${CMAKE_BINARY_DIR}/usr/local/man/man1" CACHE STRING "Install location for man pages.")
 	else()
-		set(LYX_MAN_DIR "/usr/local/man/man1" CACHE STRING "Install location for man pages.")
+		set(LYX_MAN_DIR "${CMAKE_INSTALL_PREFIX}/man/man1" CACHE STRING "Install location for man pages.")
 	endif()
 endif()
 mark_as_advanced(LYX_MAN_DIR)
