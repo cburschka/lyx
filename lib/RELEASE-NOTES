@@ -1,182 +1,35 @@
-!Important Changes in LyX 2.2.0
-
-(: This file lists interface changes that might affect users in 2.2.0, some
-   known problems in LyX 2.2.0 and some things you have to take into account
-   when upgrading from earlier versions to a version of the 2.2.x series. :)
+!Important Changes in LyX 2.3.0
 
 
 !!Interface changes
 
-* The --Separator-- layout has been removed in favor of an environment
-  separator inset. There is no provision for inserting this inset from
-  the GUI (though some menu entries use it) as it is automatically inserted
-  when needed. See Section 3.4.6 of the User Guide for details.
 
-* The prefix for subsections in labels and references has been changed from
-  "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
-  \subref command, see #7550). Files are automatically converted to the new
-  scheme. Please assure that you adapt external refstyle or prettyref
-  definitions and your own layout files.
-
-* Support for printing from within LyX (File> Print) has been removed. LyX's
-  printing support was very limited, and most users will want to print after
-  reviewing an output document (e.g., a PDF), anyway, which can be done from the
-  PDF viewer.
-  Users who would like to restore this functionality can create a
-  "printer" format from within LyX and then define, say, a
-  pdf->printer converter that does nothing but call lpd, or a2ps, or
-  whatever. The "printer" will then be available as an export option.
+!!!The following pref variables were added in 2.3:
 
 
-!!!The following pref variables were added in 2.2:
-
-* \save_origin
-  This variable was introduced to allow saving the document directory
-  path in the document. If allowed, LyX will be able to locate all
-  included files even when the document is manually moved/copied to
-  a different location. If a valid \origin tag is present and the
-  document was actually moved, the path of all included files is
-  updated relative to the new location and the new origin will be
-  recorded when saving again the document.
-
-!!!The following pref variables were changed in 2.2:
+!!!The following pref variables were changed in 2.3:
 
 
-
-!!!The following pref variables are obsoleted in 2.2:
-
-* \rtl
-  This variable was introduced to guard against any bad consequence of
-  the then-new right-to-left languages support. It is no longer needed
-  because of improvements. Now right-to-left support is always enabled.
-
-* \printer
-* \print_adapt_output
-* \print_command
-* \print_evenpage_flag
-* \print_oddpage_flag
-* \print_pagerange_flag
-* \print_copies_flag
-* \print_collcopies_flag
-* \print_reverse_flag
-* \print_to_printer
-* \print_to_file
-* \print_file_extension:
-  These were used for print support, which has been removed.
+!!!The following pref variables are obsoleted in 2.3:
 
 
-!!!The following new LyX functions have been introduced in 2.2:
-
-* buffer-view-cache
-  Opens the last previewed output of the buffer, if it exists.
-
-* buffer-move-next
-  Moves the current tab one spot to the right.
-
-* buffer-move-previous
-  Moves the current tab one spot to the left.
-
-* tabular-feature is reintroduced to allow more flexibility for user
-  commands, whereas "inset-modify tabular" is now reserved for the tabular
-  dialog. In particular, "inset-modify tabular" is no longer caught by math grid
-  insets. The name tabular-feature is kept to avoid renaming icons. For more
-  information, see #9794.
-
-!!!The following LyX functions have been changed in 2.2:
-
-* word-upcase, word-lowcase and word-capitalize do not select the word
-  to operate on in the emacs way (that is, starting at cursor
-  position); this behaviour can be restored by using the argument
-  "partial".
-
-* Functionality of "inset-modify tabular" has changed. See description of the
-  new LyX function "tabular-feature" above.
-
-!!!The following LyX key bindings have been changed in 2.2:
-
-* For bindings where Control + {PgDn, PgUp} switches to the
-  {next, previous} tab, Control + Shift + {PgDn, PgUp} moves the current
-  tab to the {next, previous} tab.
-
-* The shortcuts for "bookmark-save x" have been changed from C-M-S-x to S-Fx
-  ("x" stands for the number of the bookmark.)
-
-!!!The following LyX documents have been moved in 2.2:
+!!!The following new LyX functions have been introduced in 2.3:
 
 
-
-!!!The following metadata files have been added to the tarball in 2.2:
-
+!!!The following LyX functions have been changed in 2.3:
 
 
-!!Changes with respect to external programs and libraries in 2.2:
-
-* LyX 2.2.0 and the following 2.2.x releases will continue to work well with
-  Qt 4.5 (and later Qt 4.x) but will also support Qt 5.6, which brings some
-  advantages most notably for users with HiDPI displays. Note that if you
-  compile LyX with a Qt 5 release before 5.6 you are likely to run into
-  several regressions with respect to Qt 4.x. See #9215 for a list of bugs
-  related to compiling LyX with different versions of Qt.
-
-* The Qt libraries must have support for the SVG graphic format, because
-  LyX now uses svg icons. If this support is lacking, icons cannot be shown.
-
-* If compiling LyX on Windows with Qt 5.6, it is recommended to use MSVC 2015
-  update 2 to avoid #9892.
-
-* LyX now gives an error if the underlying LaTeX command exited with error.
+!!!The following LyX documents have been moved in 2.3:
 
 
-!!Known issues in version 2.2.0
-
-* LyX needs Python 2.7 at runtime. The python 2 interpreter needs to be named
-  either 'python' or 'python2'.
-  Building LyX usually works with Python 3 as well, but there might be cases
-  where it does not work properly on systems where Python 3 is the default
-  binary. See #7030 to know how to fix this properly, since simple shebang
-  conversion in *.py files will not be enough.
-
-* If using LyX with Qt 4, it is possible to suddenly get keyboard keys wrong,
-  and deadlock. To work around the issue, you can disable IBus for LyX by
-  starting LyX as 'XMODIFIERS= lyx'. For further discussion and alternative
-  workarounds, see #9362.
-
-* LyX can produce LuaTeX output that is not compatible with the newest versions
-  of the engine (e.g. 0.95.0, the version in TeX Live 2016). In a later 2.2.x
-  version we plan to implement exporting of LuaTeX code that is compatible
-  with the LuaTeX versions shipped with both TeX Live 2015 and TeX Live 2016.
-  For more information, see the following mailing list thread:
-  https://www.mail-archive.com/search?l=mid&q=20160520075810.yi3uspufehev5aln%40cotopaxi
+!!!The following metadata files have been added to the tarball in 2.3:
 
 
-!!Caveats when upgrading from earlier versions to 2.2.x
+!!Changes with respect to external programs and libraries in 2.3:
 
-* BibTeX errors are now processed and cause LyX to show the errors dialog.
-  Before, these errors were ignored, which means that it may happen that
-  documents that compiled without error with a previous version now
-  compile with error. However, because now in 2.2.x users can click on
-  the "Show Output Anyway" button, the document can still be viewed.
 
-* Missing characters in the output are now reported as errors. This leads
-  to error reports for documents that compiled without error before.
-  However, the error was always present but went undetected!
+!!Known issues in version 2.3.0
 
-* Documents using Times fonts and containing Greek characters may now fail
-  to compile under pdflatex for users of MikTeX due to an automatically
-  half-installed "grtimes" package. A workaround in LyX was removed as it
-  stands in the way of alternative approaches (see #6469).
 
-* With LuaTeX, LyX now uses polyglossia instead of babel if the language
-  package option "Automatic" is selected. In order to use babel, select
-  "Always babel" instead. This may be needed if a document uses code that
-  is specific to babel.
+!!Caveats when upgrading from earlier versions to 2.3.x
 
-* As usual, when opening and saving a document that was created by a previous
-  major version of LyX (in this case 2.1.x), the file format is changed to
-  the new file format (in this case 2.2.x). What is different starting with
-  2.2.0 is that when we save a file that was not originally in the current LyX
-  format, we create a backup of the original file. We put it in the backup
-  directory, if one exists, otherwise in the directory the original file is
-  in. This is the same strategy as for normal backups. This backup file can be
-  helpful in case a bug in lyx2lyx caused data loss. For more information, see
-  #9554.
