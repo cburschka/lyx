@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+\lyxformat 509
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -19,24 +19,24 @@
 %% THE CLASS OPTIONS
 %% Remove preceeding '%' to uncomment an item
 \KOMAoptions{%
-%,headsepline=true%            separate the header with a line on page >1
-%,footsepline=true%             separate the footer with a line on page >1
-%pagenumber=botcenter%   position of the page number (see docu)
-%,parskip=false%          Use indent instead of skip (more options cf. docu)
-fromalign=center%        alignment of the address
+parskip=false%          Change to true to use indent instead of skip (more options cf. docu)
+%,headsepline=true%     separate the header with a line on page >1
+%,footsepline=true%     separate the footer with a line on page >1
+%,pagenumber=botcenter% position of the page number (see docu)
+,fromalign=center%      alignment of the address
 ,fromrule=aftername%    separate the address with a line?
-,fromphone=true%         print sender phone number
-%,fromfax=true%          print sender fax number
-,fromemail=true%           print sender e-mail address
-,fromurl=true%               print sender URL
-%,fromlogo=true%         print a logo (position depends on fromalign)
-%,addrfield=false%        print an address field?
-%,backaddress=false%  print the back address?
+,fromphone=true%        print sender phone number
+%,fromfax=true%         print sender fax number
+,fromemail=true%        print sender e-mail address
+,fromurl=true%          print sender URL
+%,fromlogo=true%        print a logo (position depends on fromalign)
+%,addrfield=false%      print an address field?
+%,backaddress=false%    print the back address?
 %,subject=afteropening,titled% alternative subject layout and position
 %,locfield=narrow%      width of the (extra) location field
 %,foldmarks=false%      print foldmarks?
-%,numericaldate=true%  date layout
-%,refline=wide%             layout of the refline
+%,numericaldate=true%   date layout
+%,refline=wide%         layout of the refline
 }
 
 %% Customize Separators
@@ -78,6 +78,7 @@ fromalign=center%        alignment of the address
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format default
 \output_sync 0
