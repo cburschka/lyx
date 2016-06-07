@@ -84,30 +84,10 @@ void eliminate_duplicates(C & c)
 }
 
 
-#ifdef LYX_USE_CXX11
 using std::next;
-#else
-/// Replacement of std::next for older compilers
-template <typename It, typename Diff>
-inline It next(It i, Diff n = 1)
-{
-	std::advance(i, n);
-	return i;
-}
-#endif
 
 
-#ifdef LYX_USE_CXX11
 using std::prev;
-#else
-/// Replacement of std::prev for older compilers
-template <typename It, typename Diff>
-inline It prev(It i, Diff n = 1)
-{
-	std::advance(i, -n);
-	return i;
-}
-#endif
 
 } // namespace lyx
 

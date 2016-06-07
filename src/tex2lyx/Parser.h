@@ -125,15 +125,9 @@ public:
 
 	iparserdocstream(idocstream & is) : is_(is) {}
 
-#ifdef LYX_USE_CXX11
 	/// Like std::istream::operator bool()
 	/// Do not convert is_ implicitly to bool, since that is forbidden in C++11.
 	explicit operator bool() const { return s_.empty() ? !is_.fail() : true; }
-#else
-	/// Like std::istream::operator void*()
-	operator void*() const { return (s_.empty() && is_.fail()) ?
-			0 : const_cast<iparserdocstream *>(this); }
-#endif
 
 	/// change the encoding of the input stream to \p e (iconv name)
 	void setEncoding(std::string const & e);

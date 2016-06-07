@@ -177,7 +177,6 @@ dnl not plainly added to AM_CPPFLAGS because then the objc compiler (mac)
 dnl would fail.
 AC_DEFUN([LYX_CXX_USE_REGEX],
 [lyx_std_regex=no
- if test $lyx_use_cxx11 = yes; then
    save_CPPFLAGS=$CPPFLAGS
    # we want to pass -std=c++11 to clang/cpp if necessary
    CPPFLAGS="$AM_CPPFLAGS $1 $CPPFLAGS"
@@ -200,7 +199,6 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
      fi
    fi
    AC_MSG_RESULT([$lyx_std_regex])
- fi
 
  if test $lyx_std_regex = yes ; then
   lyx_flags="$lyx_flags std-regex"
@@ -298,10 +296,6 @@ case $enable_optimization in
     *) lyx_optim=${enable_optimization};;
 esac
 
-AC_ARG_ENABLE(cxx11,
-  AC_HELP_STRING([--disable-cxx11],[disable C++11 mode (default: enabled for known good compilers)]),,
-  enable_cxx11=auto;)
-
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
   [AS_CASE([$build_type], [dev*|pre*], [enable_assertions=yes],
@@ -358,9 +352,6 @@ if test x$GXX = xyes; then
         ;;
     esac
   fi
-  dnl enable_cxx11 can be yes/no/auto.
-  dnl By default, it is auto and we enable C++11 when possible
-  if test x$enable_cxx11 != xno ; then
     case $gxx_version in
       4.3*|4.4*|4.5*|4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
@@ -379,7 +370,6 @@ if test x$GXX = xyes; then
     # cxx11_flags is useful when running preprocessor alone 
     # (see detection of regex).
     AM_CXXFLAGS="$cxx11_flags $AM_CXXFLAGS"
-  fi
 fi
 
 LYX_CXX_CXX11
@@ -388,6 +378,8 @@ if test $lyx_use_cxx11 = yes; then
     dnl We still use auto_ptr, which is obsoleted. Shut off the warnings.
     AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-declarations"
   fi
+else
+  AC_ERROR([A C++11 compatible compiler is required])
 fi
 LYX_CXX_USE_REGEX([$cxx11_flags])
 ])

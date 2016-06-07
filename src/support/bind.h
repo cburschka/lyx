@@ -14,30 +14,13 @@
 
 #include "support/functional.h"
 
-#ifdef LYX_USE_CXX11
-
-#define LYX_BIND_NS std
-
 namespace lyx
 {
 	using std::placeholders::_1;
 	using std::placeholders::_2;
+	using std::bind;
+	using std::ref;
 }
-
-#else
-
-#include <boost/bind.hpp>
-#define LYX_BIND_NS boost
-
-#endif
-
-namespace lyx
-{
-	using LYX_BIND_NS::bind;
-	using LYX_BIND_NS::ref;
-}
-
-#undef LYX_BIND_NS
 
 
 #endif

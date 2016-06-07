@@ -68,13 +68,6 @@
 // use GNU libstdc++ with C++11 ABI
 #cmakedefine USE_GLIBCXX_CXX11_ABI 1
 
-// use GNU c++11 extensions
-#cmakedefine LYX_USE_CXX11 1
-#ifndef LYX_USE_CXX11
-  #if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
-    #error "Conflicting defines of LYX_USE_CXX11"
-  #endif
-#endif
 #cmakedefine Z_PREFIX 1
 
 // Defined if QT=QT5 uses X11

@@ -294,10 +294,6 @@ AH_BOTTOM([
 /************************************************************
  ** You should not need to change anything beyond this point */
 
-#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
-#define LYX_USE_CXX11
-#endif
-
 #ifndef HAVE_STRERROR
 #if defined(__cplusplus)
 extern "C"

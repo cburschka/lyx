@@ -12,7 +12,7 @@
 #ifndef LYX_REGEXP_H
 #define LYX_REGEXP_H
 
-#if defined(LYX_USE_CXX11) && defined(LYX_USE_STD_REGEX)
+#ifdef LYX_USE_STD_REGEX
 #  include <regex>
 // <regex> in gcc is unusable in versions less than 4.9.0
 // see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631

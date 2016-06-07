@@ -12,25 +12,12 @@
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
 
-#ifdef LYX_USE_CXX11
-
 #include <functional>
-#define LYX_FUNCTIONAL_NS std
-
-#else
-
-#include <boost/function.hpp>
-#include <boost/functional.hpp>
-#define LYX_FUNCTIONAL_NS boost
-
-#endif
 
 namespace lyx
 {
-	using LYX_FUNCTIONAL_NS::function;
+	using std::function;
 }
-
-#undef LYX_FUNCTIONAL_NS
 
 
 #endif

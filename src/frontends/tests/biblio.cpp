@@ -20,7 +20,7 @@ string const escape_special_chars(string const & expr)
 
 	// $& is a ECMAScript format expression that expands to all
 	// of the current match
-#if defined(LYX_USE_CXX11) && defined(LYX_USE_STD_REGEX)
+#ifdef LYX_USE_STD_REGEX
 	// To prefix a matched expression with a single literal backslash, we
 	// need to escape it for the C++ compiler and use:
 	return lyx::regex_replace(expr, reg, "\\$&");
