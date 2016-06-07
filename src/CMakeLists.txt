@@ -157,7 +157,7 @@ project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 install(TARGETS ${_lyx} 
     BUNDLE DESTINATION . COMPONENT Runtime
-    RUNTIME DESTINATION bin COMPONENT Runtime)
+    RUNTIME DESTINATION ${LYX_UTILITIES_INSTALL_PATH} COMPONENT Runtime)
 
 if(LYX_BUNDLE)
 	if(APPLE)
