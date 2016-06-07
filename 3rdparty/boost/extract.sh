@@ -22,16 +22,11 @@ mkdir needed
 bcp --boost=$1 \
 	boost/any.hpp \
 	boost/assert.hpp \
-	boost/bind.hpp \
 	boost/crc.hpp \
 	boost/cstdint.hpp \
-	boost/function.hpp \
-	boost/functional.hpp \
 	boost/lexical_cast.hpp \
-	boost/noncopyable.hpp \
 	boost/regex.hpp \
 	boost/scoped_ptr.hpp \
-	boost/shared_ptr.hpp \
 	boost/signal.hpp \
 	boost/signals/connection.hpp \
 	boost/signals/trackable.hpp \
