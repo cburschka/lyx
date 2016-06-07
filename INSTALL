@@ -48,9 +48,8 @@ Requirements
 ------------
 
 First of all, you will need a recent C++ compiler, where recent means
-that the compilers are close to C++ standard conforming like gcc (at
-least 4.3) or clang. Note that the compiler will be used in C++11 mode
-when possible.
+that the compilers are close to C++11 standard conforming like gcc (at
+least 4.3) or clang.
 
 LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
