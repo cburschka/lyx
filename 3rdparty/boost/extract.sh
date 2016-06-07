@@ -35,6 +35,9 @@ bcp --boost=$1 \
 	needed
 
 
+# work around bcp pulling in too much:
+rm -rf needed/boost/typeof
+
 find boost -name \*.hpp | xargs rm
 find libs  -name \*.cpp | xargs rm
 
