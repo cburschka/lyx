@@ -19,6 +19,7 @@
 #include "MetricsInfo.h"
 
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <ostream>
@@ -35,6 +36,13 @@ InsetMathFont::InsetMathFont(Buffer * buf, latexkeys const * key)
 Inset * InsetMathFont::clone() const
 {
 	return new InsetMathFont(*this);
+}
+
+
+std::string InsetMathFont::font() const
+{
+	LASSERT(isAscii(key_->name), return "mathnormal");
+	return to_ascii(key_->name);
 }
 
 
@@ -58,7 +66,7 @@ bool InsetMathFont::lockedMode() const
 
 void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Changer dummy = mi.base.changeFontSet(key_->name);
+	Changer dummy = mi.base.changeFontSet(font());
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -66,7 +74,7 @@ void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 {
-	Changer dummy = pi.base.changeFontSet(key_->name);
+	Changer dummy = pi.base.changeFontSet(font());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 	setPosCache(pi, x, y);
@@ -96,19 +104,20 @@ docstring InsetMathFont::name() const
 void InsetMathFont::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
+	std::string fontname = font();
 	if (features.runparams().isLaTeX()) {
 		// Make sure amssymb is put in preamble if Blackboard Bold or
 		// Fraktur used:
-		if (key_->name == "mathfrak" || key_->name == "mathbb")
+		if (fontname == "mathfrak" || fontname == "mathbb")
 			features.require("amssymb");
-		if (key_->name == "text" || key_->name == "textnormal"
-				|| (key_->name.length() == 6 && key_->name.substr(0, 4) == "text"))
+		if (fontname == "text" || fontname == "textnormal"
+		    || (fontname.length() == 6 && fontname.substr(0, 4) == "text"))
 			features.require("amstext");
-		if (key_->name == "mathscr")
+		if (fontname == "mathscr")
 			features.require("mathrsfs");
-		if (key_->name == "textipa")
+		if (fontname == "textipa")
 			features.require("tipa");
-		if (key_->name == "ce" || key_->name == "cf")
+		if (fontname == "ce" || fontname == "cf")
 			features.require("mhchem");
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		features.addCSSSnippet(

@@ -19,6 +19,7 @@
 #include "MetricsInfo.h"
 
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 
 #include <ostream>
@@ -34,6 +35,13 @@ InsetMathFontOld::InsetMathFontOld(Buffer * buf, latexkeys const * key)
 }
 
 
+std::string InsetMathFontOld::font() const
+{
+	LASSERT(isAscii(key_->name), return "mathnormal");
+	return to_ascii(key_->name);
+}
+
+
 Inset * InsetMathFontOld::clone() const
 {
 	return new InsetMathFontOld(*this);
@@ -42,16 +50,16 @@ Inset * InsetMathFontOld::clone() const
 
 void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	current_mode_ = isTextFont(from_ascii(mi.base.fontname))
+	current_mode_ = isTextFont(mi.base.fontname)
 				? TEXT_MODE : MATH_MODE;
 
-	docstring const font = current_mode_ == MATH_MODE
-				? "math" + key_->name : "text" + key_->name;
+	std::string const fontname = current_mode_ == MATH_MODE
+		? "math" + font() : "text" + font();// I doubt that this still works
 
 	// When \cal is used in text mode, the font is not changed
-	bool really_change_font = font != "textcal";
+	bool really_change_font = fontname != "textcal";
 
-	Changer dummy = mi.base.changeFontSet(font, really_change_font);
+	Changer dummy = mi.base.changeFontSet(fontname, really_change_font);
 	cell(0).metrics(mi, dim);
 	metricsMarkers(dim);
 }
@@ -59,16 +67,16 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 {
-	current_mode_ = isTextFont(from_ascii(pi.base.fontname))
+	current_mode_ = isTextFont(pi.base.fontname)
 				? TEXT_MODE : MATH_MODE;
 
-	docstring const font = current_mode_ == MATH_MODE
-				? "math" + key_->name : "text" + key_->name;
+	std::string const fontname = current_mode_ == MATH_MODE
+		? "math" + font() : "text" + font();// I doubt that this still works
 
 	// When \cal is used in text mode, the font is not changed
-	bool really_change_font = font != "textcal";
+	bool really_change_font = fontname != "textcal";
 
-	Changer dummy = pi.base.changeFontSet(font, really_change_font);
+	Changer dummy = pi.base.changeFontSet(fontname, really_change_font);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

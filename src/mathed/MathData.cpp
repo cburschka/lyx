@@ -285,7 +285,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 			continue;
 
 		FontInfo font = mi.base.font;
-		augmentFont(font, from_ascii("mathnormal"));
+		augmentFont(font, "mathnormal");
 		dim.wid += mathed_string_width(font, completion);
 	}
 	// Cache the dimension.
@@ -334,7 +334,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		if (completion.length() == 0)
 			continue;
 		FontInfo f = pi.base.font;
-		augmentFont(f, from_ascii("mathnormal"));
+		augmentFont(f, "mathnormal");
 
 		// draw the unique and the non-unique completion part
 		// Note: this is not time-critical as it is

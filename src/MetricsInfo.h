@@ -68,8 +68,7 @@ public:
 	int textwidth;
 
 	/// Temporarily change a full font.
-	Changer changeFontSet(docstring const & font, bool cond = true);
-	Changer changeFontSet(char const * font, bool cond = true);
+	Changer changeFontSet(std::string const & font, bool cond = true);
 	/// Temporarily change the font size and the math style.
 	Changer changeStyle(Styles style, bool cond = true);
 	// Temporarily change to the style suitable for use in fractions

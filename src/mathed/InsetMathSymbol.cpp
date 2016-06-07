@@ -69,7 +69,7 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 					 sym_->extra == "mathalpha" &&
 					 mi.base.fontname == "mathit";
 	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
-	Changer dummy = mi.base.changeFontSet(from_ascii(font));
+	Changer dummy = mi.base.changeFontSet(font);
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
 	kerning_ = mathed_char_kerning(mi.base.font, *rit);
@@ -118,7 +118,7 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 	//else
 	//	x += support::iround(0.0833 * em);
 
-	Changer dummy = pi.base.changeFontSet(from_ascii(font));
+	Changer dummy = pi.base.changeFontSet(font);
 	pi.draw(x, y - h_, sym_->draw);
 }
 

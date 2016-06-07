@@ -49,6 +49,8 @@ public:
 	InsetCode lyxCode() const { return MATH_FONTOLD_CODE; }
 
 private:
+	std::string font() const;
+	///
 	virtual Inset * clone() const;
 	/// the font to be used on screen
 	latexkeys const * key_;

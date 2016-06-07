@@ -426,15 +426,15 @@ int InsetMathHull::defaultColSpace(col_type col)
 }
 
 
-docstring InsetMathHull::standardFont() const
+string InsetMathHull::standardFont() const
 {
 	switch (type_) {
 	case hullRegexp:
-		return from_ascii("texttt");
+		return "texttt";
 	case hullNone:
-		return from_ascii("lyxnochange");
+		return "lyxnochange";
 	default:
-		return from_ascii("mathnormal");
+		return "mathnormal";
 	}
 }
 
@@ -501,7 +501,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	if (numberedType()) {
-		Changer dummy = mi.base.changeFontSet(from_ascii("mathbf"));
+		Changer dummy = mi.base.changeFontSet("mathbf");
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
@@ -592,7 +592,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			Changer dummy = pi.base.changeFontSet(from_ascii("mathrm"));
+			Changer dummy = pi.base.changeFontSet("mathrm");
 			docstring const nl = nicelabel(row);
 			pi.draw(xx, yy, nl);
 		}

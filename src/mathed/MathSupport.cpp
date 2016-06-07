@@ -659,7 +659,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & str)
 {
 	FontInfo font = mi.base.font;
-	augmentFont(font, from_ascii("mathnormal"));
+	augmentFont(font, "mathnormal");
 	mathed_string_dim(font, str, dim);
 }
 
@@ -667,7 +667,7 @@ void metricsStrRedBlack(MetricsInfo & mi, Dimension & dim, docstring const & str
 void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	FontInfo f = pi.base.font;
-	augmentFont(f, from_ascii("mathnormal"));
+	augmentFont(f, "mathnormal");
 	f.setColor(Color_latex);
 	pi.pain.text(x, y, str, f);
 }
@@ -676,7 +676,7 @@ void drawStrRed(PainterInfo & pi, int x, int y, docstring const & str)
 void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & str)
 {
 	FontInfo f = pi.base.font;
-	augmentFont(f, from_ascii("mathnormal"));
+	augmentFont(f, "mathnormal");
 	f.setColor(Color_foreground);
 	pi.pain.text(x, y, str, f);
 }
@@ -806,11 +806,10 @@ fontinfo fontinfos[] = {
 };
 
 
-fontinfo * lookupFont(docstring const & name0)
+fontinfo * lookupFont(string const & name)
 {
 	//lyxerr << "searching font '" << name << "'" << endl;
 	int const n = sizeof(fontinfos) / sizeof(fontinfo);
-	string name = to_utf8(name0);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
 			//lyxerr << "found '" << i << "'" << endl;
@@ -820,7 +819,7 @@ fontinfo * lookupFont(docstring const & name0)
 }
 
 
-fontinfo * searchFont(docstring const & name)
+fontinfo * searchFont(string const & name)
 {
 	fontinfo * f = lookupFont(name);
 	return f ? f : fontinfos;
@@ -829,27 +828,27 @@ fontinfo * searchFont(docstring const & name)
 }
 
 
-bool isFontName(docstring const & name)
+bool isFontName(string const & name)
 {
 	return lookupFont(name);
 }
 
 
-bool isMathFont(docstring const & name)
+bool isMathFont(string const & name)
 {
 	fontinfo * f = lookupFont(name);
 	return f && f->color_ == Color_math;
 }
 
 
-bool isTextFont(docstring const & name)
+bool isTextFont(string const & name)
 {
 	fontinfo * f = lookupFont(name);
 	return f && f->color_ == Color_foreground;
 }
 
 
-FontInfo getFont(docstring const & name)
+FontInfo getFont(string const & name)
 {
 	FontInfo font;
 	augmentFont(font, name);
@@ -857,7 +856,7 @@ FontInfo getFont(docstring const & name)
 }
 
 
-void fakeFont(docstring const & orig, docstring const & fake)
+void fakeFont(string const & orig, string const & fake)
 {
 	fontinfo * forig = searchFont(orig);
 	fontinfo * ffake = searchFont(fake);
@@ -867,22 +866,22 @@ void fakeFont(docstring const & orig, docstring const & fake)
 		forig->shape_  = ffake->shape_;
 		forig->color_  = ffake->color_;
 	} else {
-		lyxerr << "Can't fake font '" << to_utf8(orig) << "' with '"
-		       << to_utf8(fake) << "'" << endl;
+		lyxerr << "Can't fake font '" << orig << "' with '"
+		       << fake << "'" << endl;
 	}
 }
 
 
-void augmentFont(FontInfo & font, docstring const & name)
+void augmentFont(FontInfo & font, string const & name)
 {
 	static bool initialized = false;
 	if (!initialized) {
 		initialized = true;
 		// fake fonts if necessary
-		if (!theFontLoader().available(getFont(from_ascii("mathfrak"))))
-			fakeFont(from_ascii("mathfrak"), from_ascii("lyxfakefrak"));
-		if (!theFontLoader().available(getFont(from_ascii("mathcal"))))
-			fakeFont(from_ascii("mathcal"), from_ascii("lyxfakecal"));
+		if (!theFontLoader().available(getFont("mathfrak")))
+			fakeFont("mathfrak", "lyxfakefrak");
+		if (!theFontLoader().available(getFont("mathcal")))
+			fakeFont("mathcal", "lyxfakecal");
 	}
 	fontinfo * info = searchFont(name);
 	if (info->family_ != inh_family)

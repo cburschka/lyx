@@ -55,13 +55,13 @@ void drawStrBlack(PainterInfo & pi, int x, int y, docstring const & s);
 
 void math_font_max_dim(FontInfo const &, int & asc, int & desc);
 
-void augmentFont(FontInfo & f, docstring const & cmd);
+void augmentFont(FontInfo & f, std::string const & cmd);
 
-bool isFontName(docstring const & name);
+bool isFontName(std::string const & name);
 
-bool isMathFont(docstring const & name);
+bool isMathFont(std::string const & name);
 
-bool isTextFont(docstring const & name);
+bool isTextFont(std::string const & name);
 
 bool isAlphaSymbol(MathAtom const & at);
 

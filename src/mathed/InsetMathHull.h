@@ -235,7 +235,7 @@ private:
 	/// change number of columns, split or combine columns if necessary.
 	void changeCols(col_type);
 	///
-	docstring standardFont() const;
+	std::string standardFont() const;
 	///
 	ColorCode standardColor() const;
 	/// consistency check

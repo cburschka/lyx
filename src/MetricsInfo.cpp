@@ -66,15 +66,15 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
 }
 
 
-Changer MetricsBase::changeFontSet(docstring const & name, bool cond)
+Changer MetricsBase::changeFontSet(string const & name, bool cond)
 {
 	RefChanger<MetricsBase> rc = make_save(*this);
 	if (!cond)
 		rc->keep();
 	else {
 		ColorCode oldcolor = font.color();
-		docstring const oldname = from_ascii(fontname);
-		fontname = to_utf8(name);
+		string const oldname = fontname;
+		fontname = name;
 		font = sane_font;
 		augmentFont(font, name);
 		font.setSize(rc->old.font.size());
@@ -84,12 +84,6 @@ Changer MetricsBase::changeFontSet(docstring const & name, bool cond)
 			font.setColor(oldcolor);
 	}
 	return move(rc);
-}
-
-
-Changer MetricsBase::changeFontSet(char const * name, bool cond)
-{
-	return changeFontSet(from_ascii(name), cond);
 }
 
 

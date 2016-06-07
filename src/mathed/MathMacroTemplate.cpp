@@ -543,7 +543,7 @@ void MathMacroTemplate::createLook(int args) const
 
 void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Changer dummy1 = mi.base.changeFontSet(from_ascii("mathnormal"));
+	Changer dummy1 = mi.base.changeFontSet("mathnormal");
 	Changer dummy2 = mi.base.changeStyle(LM_ST_TEXT);
 
 	// valid macro?
@@ -587,7 +587,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME: Calling Changer on the same object repeatedly is inefficient.
 	Changer dummy0 = pi.base.font.changeColor(Color_math);
-	Changer dummy1 = pi.base.changeFontSet(from_ascii("mathnormal"));
+	Changer dummy1 = pi.base.changeFontSet("mathnormal");
 	Changer dummy2 = pi.base.changeStyle(LM_ST_TEXT);
 
 	setPosCache(pi, x, y);

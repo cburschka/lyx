@@ -92,7 +92,7 @@ bool isMathFontAvailable(string & name)
 		return false;
 
 	FontInfo f;
-	augmentFont(f, from_ascii(name));
+	augmentFont(f, name);
 
 	// Do we have the font proper?
 	if (theFontLoader().available(f))
@@ -233,7 +233,7 @@ void initSymbols()
 		docstring help;
 		is >> tmp.name >> help;
 		tmp.inset = to_ascii(help);
-		if (isFontName(help))
+		if (isFontName(tmp.inset))
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
 		else
 			is >> tmp.extra;
@@ -253,7 +253,7 @@ void initSymbols()
 			continue;
 		}
 
-		if (isFontName(from_ascii(tmp.inset))) {
+		if (isFontName(tmp.inset)) {
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
 
