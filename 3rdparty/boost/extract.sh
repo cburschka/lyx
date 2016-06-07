@@ -38,6 +38,9 @@ bcp --boost=$1 \
 # work around bcp pulling in too much:
 rm -rf needed/boost/typeof
 
+# we do not use the provided MSVC project files
+find needed -name '*.vcpro*' | xargs rm
+
 find boost -name \*.hpp | xargs rm
 find libs  -name \*.cpp | xargs rm
 
