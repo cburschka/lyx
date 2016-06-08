@@ -279,8 +279,8 @@ def revert_xetex(document):
         pretext.append(tw)
     if osf:
         pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
-    pretext.append('\usepackage{xunicode}')
-    pretext.append('\usepackage{xltxtra}')
+    pretext.append('\\usepackage{xunicode}')
+    pretext.append('\\usepackage{xltxtra}')
     insert_to_preamble(document, pretext)
 
 
@@ -1699,7 +1699,7 @@ def revert_nameref(document):
       document.body[stins:endins + 1] = newcontent
 
   if foundone:
-    add_to_preamble(document, ["\usepackage{nameref}"])
+    add_to_preamble(document, ["\\usepackage{nameref}"])
 
 
 def remove_Nameref(document):

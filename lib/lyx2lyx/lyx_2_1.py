@@ -970,7 +970,7 @@ def revert_cell_rotation(document):
         
   finally:
     if load_rotating:
-      add_to_preamble(document, ["\\@ifundefined{turnbox}{\usepackage{rotating}}{}"])
+      add_to_preamble(document, ["\\@ifundefined{turnbox}{\\usepackage{rotating}}{}"])
 
 
 def convert_cell_rotation(document):
@@ -1029,7 +1029,7 @@ def revert_table_rotation(document):
         
   finally:
     if load_rotating:
-      add_to_preamble(document, ["\\@ifundefined{turnbox}{\usepackage{rotating}}{}"])
+      add_to_preamble(document, ["\\@ifundefined{turnbox}{\\usepackage{rotating}}{}"])
 
 
 def convert_table_rotation(document):

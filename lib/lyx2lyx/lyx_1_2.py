@@ -824,7 +824,7 @@ def change_header(document):
     if i == -1:
         return
     lines[i+1:i+1] = ["\\use_natbib 0",
-                      "\use_numerical_citations 0"]
+                      "\\use_numerical_citations 0"]
 
 
 supported_versions = ["1.2.%d" % i for i in range(5)] + ["1.2"]

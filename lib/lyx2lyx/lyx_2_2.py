@@ -1189,7 +1189,7 @@ def revert_textcolor(document):
                     # register that xcolor must be loaded in the preamble
                     if xcolor == False:
                         xcolor = True
-                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
+                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
                     # find the next \\color and/or the next \\end_layout
                     j = find_token(document.body, "\\color", i + 1)
                     k = find_token(document.body, "\\end_layout", i + 1)
@@ -1273,7 +1273,7 @@ def revert_colorbox(document):
             pass
         else:
             # we also neeed to load xcolor in the preamble but only once
-            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
+            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
             document.body[einset + 1 : einset + 1] = put_cmd_in_ert("}")
             if framecolor != defaultframecolor:
                 document.body[binset:binset] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
