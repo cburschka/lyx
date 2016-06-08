@@ -146,7 +146,7 @@ def legacy_extract_metrics_info(log_file):
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
         warning('Warning in legacy_extract_metrics_info! Unable to open "%s"' % log_file)
-        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+        warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
     if success == 0:
         error("Failed to extract metrics info from %s" % log_file)
@@ -193,7 +193,7 @@ def extract_resolution(log_file, dpi):
 
     except:
         warning('Warning in extract_resolution! Unable to open "%s"' % log_file)
-        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+        warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
     # This is safe because both fontsize and magnification have
     # non-zero default values.
@@ -214,7 +214,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
         warning('Warning in legacy_latex_file! Unable to open "%s"' % latex_file)
-        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+        warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
     for line in f.readlines():
         if success:

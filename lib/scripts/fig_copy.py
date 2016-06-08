@@ -58,7 +58,7 @@ output = open(sys.argv[2], 'w')
 os.chdir(from_dir)
 
 found = False
-for line in input.xreadlines():
+for line in input:
     if found and not emptyline.match(line) and not commentline.match(line):
         # The contents of the final line containing the file name
         # are ' X <file name>', where X = 0 or 1.

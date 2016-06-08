@@ -168,7 +168,7 @@ def run_command_win32(cmd):
             if hr != winerror.ERROR_IO_PENDING:
                 data = data + buffer
 
-        except pywintypes.error, e:
+        except pywintypes.error as e:
             if e.args[0] != winerror.ERROR_BROKEN_PIPE:
                 error = 1
             break
@@ -406,6 +406,6 @@ def check_latex_log(log_file):
 
     except:
         warning('check_latex_log: Unable to open "%s"' % log_file)
-        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+        warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
     return error_pages
