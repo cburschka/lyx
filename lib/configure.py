@@ -8,6 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
+from __future__ import print_function
 import glob, logging, os, re, shutil, subprocess, sys, stat
 
 # set up logging
@@ -65,7 +66,10 @@ def cmdOutput(cmd, async = False):
     '''
     if os.name == 'nt':
         b = False
-        cmd = 'cmd /d /c pushd ' + shortPath(os.getcwdu()) + '&' + cmd
+        if sys.version_info[0] < 3:
+            cmd = 'cmd /d /c pushd ' + shortPath(os.getcwdu()) + '&' + cmd
+        else:
+            cmd = 'cmd /d /c pushd ' + shortPath(os.getcwd()) + '&' + cmd
     else:
         b = True
     pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
@@ -117,13 +121,12 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
     '''
  
     if not os.path.isdir(src):
-        raise FileError, \
-              "cannot copy tree '%s': not a directory" % src
+        raise FileError("cannot copy tree '%s': not a directory" % src)
     try:
         names = os.listdir(src)
-    except os.error, (errno, errstr):
-        raise FileError, \
-              "error listing files in '%s': %s" % (src, errstr)
+    except os.error as oserror:
+        (errno, errstr) = oserror.args
+        raise FileError("error listing files in '%s': %s" % (src, errstr))
  
     if not os.path.isdir(dst):
         os.makedirs(dst)
@@ -197,7 +200,10 @@ def checkTeXPaths():
             language, encoding = getdefaultlocale()
             if encoding == None:
                 encoding = 'latin1'
-            inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
+            if sys.version_info[0] < 3:
+                inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
+            else:
+                inpname = shortPath(str(tmpfname, encoding)).replace('\\', '/')
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
@@ -393,7 +399,7 @@ def addAlternatives(rcs, alt_type):
     if isinstance(alt_type, str):
         alt_tokens = [alt_token % alt_type]
     else:
-        alt_tokens = map(lambda s: alt_token % s, alt_type)
+        alt_tokens = [alt_token % s for s in alt_type]
     for idxx in range(len(rcs)):
         if len(rcs) == 1:
             m = r.match(rcs[0])
@@ -476,16 +482,19 @@ def checkInkscape():
     ''' Check whether Inkscape is available and return the full path (Windows only) '''
     if os.name != 'nt':
         return 'inkscape'
-    import _winreg
-    aReg = _winreg.ConnectRegistry(None, _winreg.HKEY_CLASSES_ROOT)
+    if sys.version_info[0] < 3:
+        import _winreg as winreg
+    else:
+        import winreg
+    aReg = winreg.ConnectRegistry(None, winreg.HKEY_CLASSES_ROOT)
     try:
-        aKey = _winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
-        val = _winreg.QueryValueEx(aKey, "")
+        aKey = winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
+        val = winreg.QueryValueEx(aKey, "")
         return str(val[0]).split('"')[1].replace('.exe', '')
     except EnvironmentError:
         try:
-            aKey = _winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
-            val = _winreg.QueryValueEx(aKey, "")
+            aKey = winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
+            val = winreg.QueryValueEx(aKey, "")
             return str(val[0]).split('"')[1].replace('.exe', '')
         except EnvironmentError:
             return 'inkscape'
@@ -1201,7 +1210,7 @@ def processLayoutFile(file, bool_docbook):
                 prereq_latex = checkForClassExtension(classname)
             else:
                 prereq_list = optAll[1:-1].split(',')
-                prereq_list = map(checkForClassExtension, prereq_list)
+                prereq_list = list(map(checkForClassExtension, prereq_list))
                 prereq_latex = ','.join(prereq_list)
             prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
             prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
@@ -1538,7 +1547,7 @@ if __name__ == '__main__':
     ## Parse the command line
     for op in sys.argv[1:]:   # default shell/for list is $*, the options
         if op in [ '-help', '--help', '-h' ]:
-            print '''Usage: configure [options]
+            print('''Usage: configure [options]
 Options:
     --help                   show this help lines
     --keep-temps             keep temporary files (for debug. purposes)
@@ -1546,7 +1555,7 @@ Options:
     --without-latex-config   do not run LaTeX to determine configuration
     --with-version-suffix=suffix suffix of binary installed files
     --binary-dir=directory   directory of binary installed files
-'''
+''')
             sys.exit(0)
         elif op == '--without-kpsewhich':
             lyx_kpsewhich = False
@@ -1559,7 +1568,7 @@ Options:
         elif op[0:13] == '--binary-dir=':
             lyx_binary_dir = op[13:]
         else:
-            print "Unknown option", op
+            print("Unknown option %s" % op)
             sys.exit(1)
     #
     # check if we run from the right directory
