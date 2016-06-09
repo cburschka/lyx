@@ -40,7 +40,7 @@ LyXModule::LyXModule(string const & n, string const & i,
 	                   string const & c):
 	name_(n), id_(i), description_(d), package_list_(p),
 	required_modules_(r), excluded_modules_(e), category_(c),
-	checked_(false)
+	checked_(false), available_(false)
 {
 	filename_ = id_ + ".module";
 }
