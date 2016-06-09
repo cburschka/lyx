@@ -101,7 +101,8 @@ public:
 		SearchScope scope = S_BUFFER,
 		SearchRestriction restr = R_EVERYTHING
 	);
-	FindAndReplaceOptions() {}
+	FindAndReplaceOptions() : casesensitive(false), matchword(false), forward(false),
+	                          expandmacros(false), ignoreformat(false) {}
 	docstring find_buf_name;
 	bool casesensitive;
 	bool matchword;
