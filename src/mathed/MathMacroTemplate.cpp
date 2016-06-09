@@ -396,7 +396,8 @@ void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 
 MathMacroTemplate::MathMacroTemplate(Buffer * buf)
 	: InsetMathNest(buf, 3), numargs_(0), argsInLook_(0), optionals_(0),
-	  type_(MacroTypeNewcommand), lookOutdated_(true)
+	  type_(MacroTypeNewcommand), redefinition_(false), lookOutdated_(true),
+	  premetrics_(false), labelBoxAscent_(0), labelBoxDescent_(0)
 {
 	initMath();
 }
@@ -407,7 +408,8 @@ MathMacroTemplate::MathMacroTemplate(Buffer * buf, docstring const & name, int n
 	MathData const & def, MathData const & display)
 	: InsetMathNest(buf, optionals + 3), numargs_(numargs), argsInLook_(numargs),
 	  optionals_(optionals), optionalValues_(optionalValues),
-	  type_(type), lookOutdated_(true)
+	  type_(type), redefinition_(false), lookOutdated_(true),
+	  premetrics_(false), labelBoxAscent_(0), labelBoxDescent_(0)
 {
 	initMath();
 
