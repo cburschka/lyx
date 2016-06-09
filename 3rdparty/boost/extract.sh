@@ -26,15 +26,12 @@ bcp --boost=$1 \
 	boost/cstdint.hpp \
 	boost/lexical_cast.hpp \
 	boost/regex.hpp \
-	boost/signal.hpp \
-	boost/signals/connection.hpp \
-	boost/signals/trackable.hpp \
+	boost/signals2.hpp \
+	boost/signals2/connection.hpp \
+	boost/signals2/trackable.hpp \
 	\
 	needed
 
-
-# work around bcp pulling in too much:
-rm -rf needed/boost/typeof
 
 # we do not use the provided MSVC project files
 find needed -name '*.vcpro*' | xargs rm
@@ -48,9 +45,9 @@ cp -vR needed/libs .
 rm -rf needed
 
 # found by bcp but not needed by us
+rm -rf boost/typeof
 rm -rf libs/config
 rm -rf libs/smart_ptr
-rm -rf libs/signals/build
 rm -rf libs/regex/build
 rm -rf libs/regex/test
 

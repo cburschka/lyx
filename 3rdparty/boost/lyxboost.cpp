@@ -11,5 +11,3 @@
 #include "libs/regex/src/wide_posix_api.cpp"
 #include "libs/regex/src/regex_debug.cpp"
 #include "libs/regex/src/winstances.cpp"
-
-#include "lyxboostsignals.cpp"

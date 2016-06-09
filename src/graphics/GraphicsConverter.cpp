@@ -37,7 +37,7 @@ namespace lyx {
 
 namespace graphics {
 
-class Converter::Impl : public boost::signals::trackable {
+class Converter::Impl : public boost::signals2::trackable {
 public:
 	///
 	Impl(FileName const &, string const &, string const &, string const &);
@@ -55,7 +55,7 @@ public:
 	/** At the end of the conversion process inform the outside world
 	 *  by emitting a signal.
 	 */
-	typedef boost::signal<void(bool)> SignalType;
+	typedef boost::signals2::signal<void(bool)> SignalType;
 	///
 	SignalType finishedConversion;
 
@@ -97,7 +97,7 @@ void Converter::startConversion() const
 }
 
 
-boost::signals::connection Converter::connect(slot_type const & slot) const
+boost::signals2::connection Converter::connect(slot_type const & slot) const
 {
 	return pimpl_->finishedConversion.connect(slot);
 }

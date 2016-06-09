@@ -396,6 +396,7 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    AC_LANG_PUSH(C++)
 	    save_LIBS=$LIBS
 
+	    dnl FIXME: Rewrite test to use regex, we do not use signals anymore.
 	    AC_MSG_CHECKING([for multithreaded boost libraries])
 	    LIBS="$save_LIBS -lboost_signals-mt $LIBTHREAD"
 	    AC_LINK_IFELSE(
@@ -419,9 +420,9 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    AC_LANG_POP(C++)
 	    BOOST_INCLUDES=
 	    if test $lyx_std_regex = yes ; then
-	      BOOST_LIBS="-lboost_signals${BOOST_MT}"
+	      BOOST_LIBS=""
 	    else
-	      BOOST_LIBS="-lboost_regex${BOOST_MT} -lboost_signals${BOOST_MT}"
+	      BOOST_LIBS="-lboost_regex${BOOST_MT}"
 	    fi
 
 	    dnl In general, system boost libraries are incompatible with

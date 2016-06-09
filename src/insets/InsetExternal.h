@@ -19,7 +19,7 @@
 #include "support/FileName.h"
 #include "support/unique_ptr.h"
 
-#include <boost/signals/trackable.hpp>
+#include <boost/signals2/trackable.hpp>
 
 
 namespace lyx {
@@ -90,7 +90,7 @@ private:
 class RenderBase;
 
 ///
-class InsetExternal : public Inset, public boost::signals::trackable
+class InsetExternal : public Inset, public boost::signals2::trackable
 {
 	// Disable assignment operator, since it is not used, and it is too
 	// complicated to implement it consistently with the copy constructor

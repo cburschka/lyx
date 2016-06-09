@@ -14,7 +14,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include <boost/signals/trackable.hpp>
+#include <boost/signals2/trackable.hpp>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -36,7 +36,7 @@ class Server;
  a clean string interface.
  */
 #ifndef _WIN32
-class LyXComm : public boost::signals::trackable {
+class LyXComm : public boost::signals2::trackable {
 #else
 class LyXComm : public QObject {
 	Q_OBJECT

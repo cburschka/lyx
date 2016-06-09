@@ -16,14 +16,14 @@
 #include "support/Timeout.h"
 
 #include "support/bind.h"
-#include <boost/signals/trackable.hpp>
+#include <boost/signals2/trackable.hpp>
 
 using namespace std;
 
 namespace lyx {
 namespace support {
 
-class FileMonitor::Impl : public boost::signals::trackable {
+class FileMonitor::Impl : public boost::signals2::trackable {
 public:
 
 	///
@@ -128,7 +128,7 @@ unsigned long FileMonitor::checksum() const
 }
 
 
-boost::signals::connection FileMonitor::connect(slot_type const & slot) const
+boost::signals2::connection FileMonitor::connect(slot_type const & slot) const
 {
 	return pimpl_->fileChanged_.connect(slot);
 }

@@ -15,7 +15,7 @@
 #ifndef FILEMONITOR_H
 #define FILEMONITOR_H
 
-#include <boost/signal.hpp>
+#include <boost/signals2.hpp>
 
 namespace lyx {
 namespace support {
@@ -55,10 +55,10 @@ public:
 	unsigned long checksum() const;
 
 	/// Connect and you'll be informed when the file has changed.
-	typedef boost::signal<void()> FileChangedSig;
+	typedef boost::signals2::signal<void()> FileChangedSig;
 	typedef FileChangedSig::slot_type slot_type;
 	///
-	boost::signals::connection connect(slot_type const &) const;
+	boost::signals2::connection connect(slot_type const &) const;
 
 private:
 	/// noncopyable

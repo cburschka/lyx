@@ -194,7 +194,7 @@ typedef InProgressProcesses::value_type InProgressProcess;
 namespace lyx {
 namespace graphics {
 
-class PreviewLoader::Impl : public boost::signals::trackable {
+class PreviewLoader::Impl : public boost::signals2::trackable {
 public:
 	///
 	Impl(PreviewLoader & p, Buffer const & b);
@@ -215,7 +215,7 @@ public:
 	void refreshPreviews();
 
 	/// Emit this signal when an image is ready for display.
-	boost::signal<void(PreviewImage const &)> imageReady;
+	boost::signals2::signal<void(PreviewImage const &)> imageReady;
 
 	Buffer const & buffer() const { return buffer_; }
 
@@ -321,7 +321,7 @@ void PreviewLoader::refreshPreviews()
 }
 
 
-boost::signals::connection PreviewLoader::connect(slot_type const & slot) const
+boost::signals2::connection PreviewLoader::connect(slot_type const & slot) const
 {
 	return pimpl_->imageReady.connect(slot);
 }

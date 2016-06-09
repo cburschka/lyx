@@ -315,7 +315,6 @@ char * strerror(int n);
 #define BOOST_DISABLE_THREADS 1
 #define BOOST_NO_WREGEX 1
 #define BOOST_NO_WSTRING 1
-#define BOOST_SIGNALS_NO_DEPRECATION_WARNING 1
 
 #ifdef __CYGWIN__
 #  define NOMINMAX

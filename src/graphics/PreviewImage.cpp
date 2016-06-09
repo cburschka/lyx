@@ -28,7 +28,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace graphics {
 
-class PreviewImage::Impl : public boost::signals::trackable {
+class PreviewImage::Impl : public boost::signals2::trackable {
 public:
 	///
 	Impl(PreviewImage & p, PreviewLoader & l,

@@ -18,7 +18,7 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#include <boost/signal.hpp>
+#include <boost/signals2.hpp>
 #include <QObject>
 
 #include "ColorCode.h"
@@ -76,10 +76,10 @@ public:
 	 *  has been created and is ready for loading through
 	 *  lyx::graphics::PreviewImage::image().
 	 */
-	typedef boost::signal<void(PreviewImage const &)> sig_type;
+	typedef boost::signals2::signal<void(PreviewImage const &)> sig_type;
 	typedef sig_type::slot_type slot_type;
 	///
-	boost::signals::connection connect(slot_type const &) const;
+	boost::signals2::connection connect(slot_type const &) const;
 
 	/** When PreviewImage has finished loading the image file into memory,
 	 *  it tells the PreviewLoader to tell the outside world

@@ -77,7 +77,7 @@ RenderPreview::RenderPreview(Inset const * inset)
 RenderPreview::RenderPreview(RenderPreview const & other,
 			     Inset const * inset)
 	: RenderBase(other),
-	  boost::signals::trackable(),
+	  boost::signals2::trackable(),
 	  snippet_(other.snippet_),
 	  parent_(inset)
 {}
@@ -284,7 +284,7 @@ void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-boost::signals::connection
+boost::signals2::connection
 RenderMonitoredPreview::fileChanged(slot_type const & slot)
 {
 	return monitor_.connect(slot);

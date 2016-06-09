@@ -630,7 +630,7 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 namespace {
 
 class ShowMessage
-	: public boost::signals::trackable {
+	: public boost::signals2::trackable {
 public:
 	ShowMessage(Buffer const & b) : buffer_(b) {}
 	void operator()(docstring const & msg) const { buffer_.message(msg); }

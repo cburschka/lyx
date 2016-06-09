@@ -419,7 +419,7 @@ InsetExternal::InsetExternal(Buffer * buf)
 // Mouse hover is not copied and remains empty
 InsetExternal::InsetExternal(InsetExternal const & other)
 	: Inset(other),
-	  boost::signals::trackable(),
+	  boost::signals2::trackable(),
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone(this))
 {}

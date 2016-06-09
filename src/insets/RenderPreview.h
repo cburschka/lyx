@@ -21,9 +21,9 @@
 #include "support/docstring.h"
 #include "support/FileMonitor.h"
 
-#include <boost/signal.hpp>
-#include <boost/signals/trackable.hpp>
-#include <boost/signals/connection.hpp>
+#include <boost/signals2.hpp>
+#include <boost/signals2/trackable.hpp>
+#include <boost/signals2/connection.hpp>
 
 namespace lyx {
 
@@ -41,7 +41,7 @@ class PreviewLoader;
 } // namespace graphics
 
 
-class RenderPreview : public RenderBase, public boost::signals::trackable {
+class RenderPreview : public RenderBase, public boost::signals2::trackable {
 public:
 	/// Return true if preview is enabled in text (from LyXRC::preview)
 	static bool previewText();
@@ -105,7 +105,7 @@ private:
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
 	 */
-	boost::signals::connection ploader_connection_;
+	boost::signals2::connection ploader_connection_;
 
 	/// Inform the core that the inset has changed.
 	Inset const * parent_;
@@ -126,7 +126,7 @@ public:
 
 	/// Connect and you'll be informed when the file changes.
 	typedef support::FileMonitor::slot_type slot_type;
-	boost::signals::connection fileChanged(slot_type const &);
+	boost::signals2::connection fileChanged(slot_type const &);
 
 	/// equivalent to dynamic_cast
 	virtual RenderMonitoredPreview * asMonitoredPreview() { return this; }

@@ -37,7 +37,7 @@ namespace lyx {
 
 namespace graphics {
 
-class CacheItem::Impl : public boost::signals::trackable {
+class CacheItem::Impl : public boost::signals2::trackable {
 public:
 
 	///
@@ -114,10 +114,10 @@ public:
 	ImageStatus status_;
 
 	/// This signal is emitted when the image loading status changes.
-	boost::signal<void()> statusChanged;
+	boost::signals2::signal<void()> statusChanged;
 
 	/// The connection of the signal ConvProcess::finishedConversion,
-	boost::signals::connection cc_;
+	boost::signals2::connection cc_;
 
 	///
 	unique_ptr<Converter> converter_;
@@ -192,7 +192,7 @@ ImageStatus CacheItem::status() const
 }
 
 
-boost::signals::connection CacheItem::connect(slot_type const & slot) const
+boost::signals2::connection CacheItem::connect(slot_type const & slot) const
 {
 	return pimpl_->statusChanged.connect(slot);
 }

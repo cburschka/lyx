@@ -13,6 +13,3 @@ else()
 	add_subdirectory(regex) 
 endif()
 
-
-add_subdirectory(signals) 
-

@@ -59,7 +59,7 @@ namespace {
 //
 /////////////////////////////////////////////////////////////////////
 
-class Murder : public boost::signals::trackable {
+class Murder : public boost::signals2::trackable {
 public:
 	//
 	static void killItDead(int secs, pid_t pid)

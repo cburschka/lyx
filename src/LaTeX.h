@@ -19,7 +19,7 @@
 #include "support/docstring.h"
 #include "support/FileName.h"
 
-#include <boost/signal.hpp>
+#include <boost/signals2.hpp>
 
 #include <vector>
 #include <set>
@@ -148,7 +148,7 @@ public:
 	};
 
 	/// This signal emits an informative message
-	boost::signal<void(docstring)> message;
+	boost::signals2::signal<void(docstring)> message;
 
 
 	/**
