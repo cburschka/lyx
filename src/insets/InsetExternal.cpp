@@ -116,6 +116,7 @@ support::FileName TempName::operator()() const
 
 InsetExternalParams::InsetExternalParams()
 	: display(true),
+	  preview_mode(PREVIEW_OFF),
 	  lyxscale(defaultLyxScale),
 	  draft(false)
 {
