@@ -228,6 +228,7 @@ dnl AC_LANG_POP(C)
 lyx_win_res=false;
 case ${host} in
     *mingw*|*cygwin*) lyx_win_res=true;;
+    *freebsd*) AC_SEARCH_LIBS(backtrace_symbols, [execinfo])
 esac
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)
 LYX_SET_VERSION_INFO
