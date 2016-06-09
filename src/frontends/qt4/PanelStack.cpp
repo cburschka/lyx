@@ -16,7 +16,6 @@
 #include "qt_helpers.h"
 
 #include "support/debug.h"
-#include "support/foreach.h"
 #include "support/lassert.h"
 
 #include <QAbstractButton>
@@ -244,11 +243,11 @@ void PanelStack::search()
 	// If the search string is empty we enable all the items
 	// otherwise we disable everything and then selectively
 	// re-enable matching items
-	foreach (QTreeWidgetItem * tree_item, panel_map_) {
+	for (QTreeWidgetItem * tree_item : panel_map_) {
 		setTreeItemStatus(tree_item, enable_all);
 	}
 
-	foreach (QTreeWidgetItem * tree_item, panel_map_) {
+	for (QTreeWidgetItem * tree_item : panel_map_) {
 		// Current widget
 		QWidget * pane_widget = widget_map_[tree_item];
 
@@ -259,7 +258,7 @@ void PanelStack::search()
 		if (pane_widget) {
 			// Loops on the list of children widgets (recursive)
 			QWidgetList children = pane_widget->findChildren<QWidget *>();
-			foreach (QWidget * child_widget, children) {
+			for (QWidget * child_widget : children) {
 				bool widget_matches = false;
 
 				// Try to cast to the most common widgets and looks in it's content

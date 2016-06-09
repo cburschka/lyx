@@ -26,7 +26,6 @@
 #include "insets/InsetBox.h"
 
 #include "support/gettext.h"
-#include "support/foreach.h"
 #include "support/lstrings.h"
 
 #include <QComboBox>

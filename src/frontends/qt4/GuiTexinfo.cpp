@@ -16,7 +16,6 @@
 #include "FuncRequest.h"
 
 #include "support/filetools.h"
-#include "support/foreach.h"
 #include "support/FileName.h"
 
 #include "qt_helpers.h"
@@ -141,7 +140,7 @@ void GuiTexInfo::updateStyles(TexFileType type)
 	data.sort();
 
 	fileListLW->clear();
-	foreach (QString const & item, data)
+	for(QString const & item : data)
 		fileListLW->addItem(item);
 
 	activeStyle_ = type;

@@ -15,7 +15,6 @@
 #include "qt_helpers.h"
 
 #include "support/debug.h"
-#include "support/foreach.h"
 
 #include <QCheckBox>
 #include <QPushButton>
@@ -102,7 +101,7 @@ public:
 	bool checkWidgets() const
 	{
 		bool valid = true;
-		foreach (const CheckedLineEdit & w, checked_widgets_) 
+		for (const CheckedLineEdit & w : checked_widgets_)
 			valid &= w.check();
 		return valid;
 	}
@@ -252,10 +251,8 @@ void ButtonController::refreshReadOnly() const
 {
 	if (d->read_only_.empty())
 		return;
-
 	bool const enable = !policy().isReadOnly();
-	
-	foreach (QWidget * w, d->read_only_)
+	for(QWidget * w : d->read_only_)
 		setWidgetEnabled(w, enable);
 }
 

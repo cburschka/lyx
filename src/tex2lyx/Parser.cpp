@@ -12,7 +12,6 @@
 
 #include "Encoding.h"
 #include "Parser.h"
-#include "support/foreach.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 

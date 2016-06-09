@@ -64,7 +64,6 @@
 #include "support/ExceptionMessage.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
-#include "support/foreach.h"
 #include "support/ForkedCalls.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
@@ -1877,11 +1876,12 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		QList<GuiView *> allViews = d->views_.values();
 
-		// this foreach does not modify any buffer. It just collects info on local visibility of buffers
-		// and on which buffer is active in each view.
+		// this for does not modify any buffer. It just collects info on local
+		// visibility of buffers and on which buffer is active in each view.
 		Buffer * const last = theBufferList().last();
-		foreach (GuiView * view, allViews) {
-			// all of the buffers might be locally hidden. That is, there is no active buffer.
+		for(GuiView * view : allViews) {
+			// all of the buffers might be locally hidden. That is, there is no
+			// active buffer.
 			if (!view || !view->currentBufferView())
 				activeBuffers[view] = 0;
 			else
@@ -1928,7 +1928,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		// put things back to how they were (if possible).
-		foreach (GuiView * view, allViews) {
+		for (GuiView * view : allViews) {
 			Buffer * originalBuf = activeBuffers[view];
 			// there might not have been an active buffer in this view or it might have been closed by the LFUN.
 			if (theBufferList().isLoaded(originalBuf))
@@ -2811,7 +2811,7 @@ bool GuiApplication::closeAllViews()
 	theSession().lastOpened().clear();
 
 	QList<GuiView *> const views = d->views_.values();
-	foreach (GuiView * view, views) {
+	for (GuiView * view : views) {
 		if (!view->closeScheduled())
 			return false;
 	}
@@ -2827,7 +2827,7 @@ bool GuiApplication::prepareAllViewsForLogout()
 		return true;
 
 	QList<GuiView *> const views = d->views_.values();
-	foreach (GuiView * view, views) {
+	for (GuiView * view : views) {
 		if (!view->prepareAllBuffersForLogout())
 			return false;
 	}
@@ -2846,7 +2846,7 @@ GuiView & GuiApplication::view(int id) const
 void GuiApplication::hideDialogs(string const & name, Inset * inset) const
 {
 	QList<GuiView *> const views = d->views_.values();
-	foreach (GuiView * view, views)
+	for (GuiView * view : views)
 		view->hideDialog(name, inset);
 }
 
