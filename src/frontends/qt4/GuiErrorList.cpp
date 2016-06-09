@@ -57,7 +57,7 @@ namespace lyx {
 namespace frontend {
 
 GuiErrorList::GuiErrorList(GuiView & lv)
-	: GuiDialog(lv, "errorlist", qt_("Error List"))
+	: GuiDialog(lv, "errorlist", qt_("Error List")), from_master_(false)
 {
 	setupUi(this);
 
