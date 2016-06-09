@@ -145,13 +145,9 @@ Section -ProgramFiles SecProgramFiles
     StrCpy $PathBibTeXEditor ""
     ${if} $MultiUser.Privileges == "Admin"
      ${orif} $MultiUser.Privileges == "Power"
-     ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\Classes\JabRef\shell\open\command" ""
-     StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
-     StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
+     ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
     ${else}
-     # $Documents is the path to the documents folder of the current user (contains the user name)
-     StrCpy $PathBibTeXEditor $Documents -10 # remove '\Documents'
-     StrCpy $PathBibTeXEditor "$PathBibTeXEditor\JabRef"
+     ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
      ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
       StrCpy $PathBibTeXEditor ""
      ${endif}

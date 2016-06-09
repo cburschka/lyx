@@ -1,7 +1,15 @@
-﻿Changelog for LyX-220-2:
+﻿Changelog for LyX-220-3:
+- updated to Qt 5.6.1
+- updated to MiKTeX 2.9 build 5997
+- updated to JabRef 3.4
+- updated to Imagemagick 6.9.4-8
+
+
+Changelog for LyX-220-2:
 - remove also the user dependent LyX settings from the registry if the user
   preferences should be uninstalled
 - calculate the required installation size correctly
+- updated to Imagemagick 6.9.4-6 (fixes 2 security issues)
 
 
 Changelog for LyX.220-1:
