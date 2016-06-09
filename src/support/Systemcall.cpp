@@ -295,16 +295,10 @@ int Systemcall::startscript(Starttype how, string const & what,
 }
 
 
-SystemcallPrivate::SystemcallPrivate(std::string const & sf,
-				     std::string const & of,
-				     std::string const & ef) :
-				process_(new QProcess), 
-				out_index_(0),
-				err_index_(0),
-				in_file_(sf),
-				out_file_(of), 
-				err_file_(ef), 
-				process_events_(false)
+SystemcallPrivate::SystemcallPrivate(std::string const & sf, std::string const & of,
+                                     std::string const & ef)
+	: state(Error), process_(new QProcess), out_index_(0), err_index_(0),
+	  in_file_(sf), out_file_(of), err_file_(ef), process_events_(false)
 {
 	if (!in_file_.empty())
 		process_->setStandardInputFile(QString::fromLocal8Bit(in_file_.c_str()));
