@@ -162,6 +162,7 @@ Parser::Parser(idocstream & is, std::string const & fixedenc)
 {
 	if (fixed_enc_)
 		is_.setEncoding(fixedenc);
+	catInit();
 }
 
 
@@ -173,6 +174,7 @@ Parser::Parser(string const & s)
 	  // An idocstringstream can not change the encoding
 	  fixed_enc_(true)
 {
+	catInit();
 }
 
 
