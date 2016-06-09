@@ -100,6 +100,9 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
 {
 	if (buf)
 		language_ = buf->params().quotes_language;
+	else
+		language_ = EnglishQuotes;
+
 	setSide(c);
 }
 
