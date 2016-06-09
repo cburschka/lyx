@@ -634,7 +634,7 @@ void LocalLayout::validatePressed() {
 
 GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document", qt_("Document Settings")),
-	  nonModuleChanged_(false)
+	  biblioChanged_(false), nonModuleChanged_(false)
 {
 	setupUi(this);
 
