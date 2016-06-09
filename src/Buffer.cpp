@@ -236,8 +236,8 @@ public:
 	/// positions of child buffers in the buffer
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
 	struct ScopeBuffer {
-		ScopeBuffer() {}
-		ScopeBuffer(DocIterator const & s,Buffer const * b)
+		ScopeBuffer() : buffer(0) {}
+		ScopeBuffer(DocIterator const & s, Buffer const * b)
 			: scope(s), buffer(b) {}
 		DocIterator scope;
 		Buffer const * buffer;
