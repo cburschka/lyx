@@ -237,6 +237,7 @@ dnl AC_LANG_POP(C)
 lyx_win_res=false;
 case ${host} in
     *mingw*|*cygwin*) lyx_win_res=true;;
+    *freebsd*) AC_SEARCH_LIBS(backtrace_symbols, [execinfo])
 esac
 if test "x$lyx_win_res" = "xtrue"; then
     AC_CHECK_TOOL(RC, windres,)
