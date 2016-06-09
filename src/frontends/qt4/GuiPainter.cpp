@@ -29,6 +29,8 @@
 #include "support/lassert.h"
 #include "support/debug.h"
 
+#include <algorithm>
+
 #include <QPixmapCache>
 #include <QTextLayout>
 

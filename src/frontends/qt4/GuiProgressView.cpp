@@ -24,6 +24,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 
+#include <algorithm>
+
 #include <QCheckBox>
 #include <QDebug>
 #include <QSettings>
