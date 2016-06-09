@@ -481,6 +481,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	if (text_->isMainText()) {
 		if (pit == 0) {
 			pm.rows().front().dimension().asc += 20;
+			/* coverity[copy_paste_error]: coverity thinks that we
+			 * should update pm.dim().asc below, but all the rows
+			 * heights are actually counted as part of the paragraph metric
+			 * descent see loop above).
+			 */
 			pm.dim().des += 20;
 		}
 		ParagraphList const & pars = text_->paragraphs();
