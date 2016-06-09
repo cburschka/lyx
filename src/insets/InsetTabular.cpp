@@ -3474,7 +3474,8 @@ InsetTabular::InsetTabular(Buffer * buf, row_type rows,
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: Inset(tab), tabular(tab.tabular)
+	: Inset(tab), tabular(tab.tabular),
+	  first_visible_cell_(0), offset_valign_(0), rowselect_(false), colselect_(false)
 {
 }
 
