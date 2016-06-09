@@ -37,7 +37,7 @@ namespace frontend {
 
 
 GuiSendTo::GuiSendTo(GuiView & lv)
-	: GuiDialog(lv, "sendto", qt_("Export or Send Document"))
+	: GuiDialog(lv, "sendto", qt_("Export or Send Document")), format_(0)
 {
 	setupUi(this);
 
