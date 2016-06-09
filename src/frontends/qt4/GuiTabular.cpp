@@ -45,7 +45,9 @@ namespace lyx {
 namespace frontend {
 
 GuiTabular::GuiTabular(QWidget * parent)
-	: InsetParamsWidget(parent)
+	: InsetParamsWidget(parent), firstheader_suppressable_(false),
+	  lastfooter_suppressable_(false)
+
 {
 	setupUi(this);
 
