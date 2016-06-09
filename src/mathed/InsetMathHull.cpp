@@ -1872,13 +1872,14 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 namespace {
 
-bool allowDisplayMath(Cursor cur)
+bool allowDisplayMath(Cursor const & cur)
 {
 	LATTEST(cur.depth() > 1);
-	cur.pop();
+	Cursor tmpcur = cur;
+	tmpcur.pop();
 	FuncStatus status;
 	FuncRequest cmd(LFUN_MATH_DISPLAY);
-	return cur.getStatus(cmd, status) && status.enabled();
+	return tmpcur.getStatus(cmd, status) && status.enabled();
 }
 
 }
