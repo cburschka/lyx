@@ -51,7 +51,7 @@ Package const & package();
 class Package {
 public:
 	/// Default constructor does not lead to the paths being set.
-	Package() {}
+	Package() : explicit_user_support_dir_(false), in_build_dir_(false) {}
 
 	/** Called by init_package, above.
 	 *  All paths will be initialized.
