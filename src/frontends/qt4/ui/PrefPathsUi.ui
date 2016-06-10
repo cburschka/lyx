@@ -48,7 +48,7 @@
    <item row="10" column="1" colspan="2" >
     <widget class="QLineEdit" name="pathPrefixED">
      <property name="toolTip">
-      <string>Specify those directories which should be prepended to the PATH environment variable.&#x0a;Use the OS native format.</string>
+      <string>Specify those directories which should be prepended to the PATH environment variable. Use the OS native format.</string>
      </property>
     </widget>
    </item>
@@ -65,7 +65,7 @@
    <item row="11" column="1" colspan="2">
     <widget class="QLineEdit" name="texinputsPrefixED">
      <property name="toolTip">
-      <string>Specify those directories which should be prepended to the TEXINPUTS environment variable.&#x0a;A '.' represents the current document directory. Use the OS native format.</string>
+      <string>Specify those directories which should be prepended to the TEXINPUTS environment variable. A '.' represents the current document directory. Use the OS native format.</string>
      </property>
     </widget>
    </item>
