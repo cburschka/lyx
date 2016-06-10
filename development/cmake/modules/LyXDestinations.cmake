@@ -67,7 +67,8 @@ function(get_font_destination _result)
     # "Contents/Resources/fonts/"
     set(_dir "${LYX_DATA_SUBDIR}fonts/")
   elseif(UNIX)
-    set(_dir "fonts/truetype/${_lyx}/")
+    # at least on ubuntu
+    set(_dir "share/fonts/truetype/${_lyx}/")
   else()
     message(FATAL_ERROR "Unhandled platform")
   endif()
@@ -82,7 +83,7 @@ function(get_tex_destination _result)
     # "Contents/Resources/tex/" 
     set(_dir "${LYX_DATA_SUBDIR}tex/")
   elseif(UNIX)
-    set(_dir "texmf/tex/latex/${_lyx}/")
+    set(_dir "share/texmf/tex/latex/${_lyx}/")
   else()
     message(FATAL_ERROR "Unhandled platform")
   endif()

@@ -12,11 +12,11 @@ endif()
 #
 # Special handling for ${_file_type} == "*"
 #     Here we try to exclude files which we do not want to install
-# Depending on _what, installation goes to
+# Depending on _what, installation on UNIX goes to
 # data -> ${LYX_DATA_SUBDIR}
-# font -> fonts/truetype/${_lyx}/
+# font -> share/fonts/truetype/${_lyx}/
 # bin -> bin
-# tex -> texmf/tex/latex/${_lyx}/
+# tex -> share/texmf/tex/latex/${_lyx}/
 macro(lyx_install _what _parent_src_dir _gl_dir _file_type)
   #message("checking parents ${_parent_src_dir}")
   file(GLOB _dirs RELATIVE "${_parent_src_dir}" ${_parent_src_dir}/${_gl_dir})
