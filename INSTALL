@@ -205,8 +205,9 @@ The following options allow you to tweak the generated code more precisely (see 
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly.
 
-  o --disable-cxx11 forces the compiler in C++98 mode. The default is
-    to use C++11 mode for known good compilers.
+  o --disable-std-regex forces the compiler to use boost::regex. The default is
+    to use std::regex for known good C++ libraries, but the test is not robust for clang.
+    --enable-std-regex will force the use of std::regex.
 
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try

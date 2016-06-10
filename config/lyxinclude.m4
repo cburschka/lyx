@@ -176,8 +176,10 @@ dnl the extra cxx11 flags have to be passed to the preprocessor. They are
 dnl not plainly added to AM_CPPFLAGS because then the objc compiler (mac)
 dnl would fail.
 AC_DEFUN([LYX_CXX_USE_REGEX],
-[lyx_std_regex=no
-   save_CPPFLAGS=$CPPFLAGS
+[AC_ARG_ENABLE(std-regex,
+  AC_HELP_STRING([--enable-std-regex],[use std::regex instead of boost::regex (default is autodetected)]),
+  [lyx_std_regex=$enableval],
+  [save_CPPFLAGS=$CPPFLAGS
    # we want to pass -std=c++11 to clang/cpp if necessary
    CPPFLAGS="$AM_CPPFLAGS $1 $CPPFLAGS"
    save_CXXFLAGS=$CXXFLAGS
@@ -197,8 +199,8 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
          *) ;;
        esac
      fi
-   fi
-   AC_MSG_RESULT([$lyx_std_regex])
+     AC_MSG_RESULT([$lyx_std_regex])
+   fi])
 
  if test $lyx_std_regex = yes ; then
   lyx_flags="$lyx_flags std-regex"
@@ -367,7 +369,7 @@ if test x$GXX = xyes; then
                 [cxx11_flags="-std=gnu++11"],
                 [cxx11_flags="-std=c++11"]);;
     esac
-    # cxx11_flags is useful when running preprocessor alone 
+    # cxx11_flags is useful when running preprocessor alone
     # (see detection of regex).
     AM_CXXFLAGS="$cxx11_flags $AM_CXXFLAGS"
 fi
