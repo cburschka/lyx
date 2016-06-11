@@ -92,3 +92,7 @@ export/doc/es/.*_(pdf[45]|dvi3)_texF
 # Non-ASCII char in verbatim environment is dropped (with a warning when
 # doing this interactively) with ASCII (and hence also with XeTeX).
 export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF
+
+# inputencoding="utf8-plain" with 8-bit TeX: non-ASCII characters are passed
+#  as two 8-bit characters leading to garbage in the output
+export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
