@@ -106,6 +106,8 @@ void KeyMap::bind(KeySequence * seq, FuncRequest const & func, unsigned int r)
 	KeyModifier const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
+	// FIXME perf: Profiling shows that this is responsible of 99% of the
+	// cost of GuiPrefs::applyView()
 	Table::iterator end = table.end();
 	for (Table::iterator it = table.begin(); it != end; ++it) {
 		if (code == it->code
