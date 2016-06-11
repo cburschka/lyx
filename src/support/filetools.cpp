@@ -42,6 +42,7 @@
 #include "support/lassert.h"
 #include "support/regex.h"
 
+#include <limits.h>
 #include <fcntl.h>
 #ifdef HAVE_MAGIC_H
 #include <magic.h>
