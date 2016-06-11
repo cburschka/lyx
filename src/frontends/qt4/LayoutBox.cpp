@@ -638,6 +638,7 @@ void LayoutBox::updateContents(bool reset)
 	if (!bv) {
 		d->model_->clear();
 		setEnabled(false);
+		setMinimumWidth(sizeHint().width());
 		d->text_class_.reset();
 		d->inset_ = 0;
 		return;
@@ -677,13 +678,10 @@ void LayoutBox::updateContents(bool reset)
 
 	set(d->owner_.currentBufferView()->cursor().innerParagraph().layout().name());
 	d->countCategories();
-	
-	// needed to recalculate size hint
-	hide();
+
 	setMinimumWidth(sizeHint().width());
 	setEnabled(!bv->buffer().isReadonly() &&
 		lyx::getStatus(FuncRequest(LFUN_LAYOUT)).enabled());
-	show();
 }
 
 
