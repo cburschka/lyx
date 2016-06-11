@@ -701,7 +701,7 @@ bool GuiWorkArea::event(QEvent * e)
 			QPoint pos = helpEvent->pos();
 			if (pos.x() < viewport()->width()) {
 				QString s = toqstr(d->buffer_view_->toolTip(pos.x(), pos.y()));
-				QToolTip::showText(helpEvent->globalPos(), s);
+				QToolTip::showText(helpEvent->globalPos(), formatToolTip(s,35));
 			}
 			else
 				QToolTip::hideText();

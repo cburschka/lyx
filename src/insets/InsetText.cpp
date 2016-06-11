@@ -965,10 +965,8 @@ string InsetText::contextMenuName() const
 }
 
 
-docstring InsetText::toolTipText(docstring prefix,
-		size_t numlines, size_t len) const
+docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 {
-	size_t const max_length = numlines * len;
 	OutputParams rp(&buffer().params().encoding());
 	rp.for_tooltip = true;
 	odocstringstream oss;
@@ -978,17 +976,17 @@ docstring InsetText::toolTipText(docstring prefix,
 	ParagraphList::const_iterator end = paragraphs().end();
 	ParagraphList::const_iterator it = beg;
 	bool ref_printed = false;
-	docstring str;
 
 	for (; it != end; ++it) {
 		if (it != beg)
 			oss << '\n';
-		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, max_length);
-		str = oss.str();
-		if (str.length() >= max_length)
+		writePlaintextParagraph(buffer(), *it, oss, rp, ref_printed, len);
+		if (oss.tellp() >= 0 && size_t(oss.tellp()) > len)
 			break;
 	}
-	return support::wrapParas(str, 4, len, numlines);
+	docstring str = oss.str();
+	support::truncateWithEllipsis(str, len);
+	return str;
 }
 
 

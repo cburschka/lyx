@@ -201,13 +201,14 @@ public:
 	/// returns the text to be used as tooltip
 	/// \param prefix: a string that will preced the tooltip,
 	/// e.g., "Index: ".
-	/// \param numlines: the number of lines in the tooltip
-	/// \param len: length of those lines
+	/// \param len: length of the resulting string
 	/// NOTE This routine is kind of slow. It's fine to use it within the 
 	/// GUI, but definitely do not try to use it in updateBuffer or anything
-	/// of that sort.
+	/// of that sort. (Note: unnecessary internal copies have been removed
+	/// since the previous note. The efficiency would have to be assessed
+	/// again by profiling.)
 	docstring toolTipText(docstring prefix = empty_docstring(),
-			size_t numlines = 5, size_t len = 80) const;
+	                      size_t len = 400) const;
 
 	///
 	std::string contextMenu(BufferView const &, int, int) const;

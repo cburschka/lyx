@@ -165,17 +165,18 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 		return _("No citations selected!");
 
 	vector<docstring> keys = getVectorFromString(key);
-	vector<docstring>::const_iterator it = keys.begin();
-	vector<docstring>::const_iterator en = keys.end();
+	if (keys.size() == 1)
+		return  bi.getInfo(keys[0], buffer(), true);
+
 	docstring tip;
-	for (; it != en; ++it) {
-		docstring const key_info = bi.getInfo(*it, buffer());
+	tip += "<ol>";
+	for (docstring const & key : keys) {
+		docstring const key_info = bi.getInfo(key, buffer(), true);
 		if (key_info.empty())
 			continue;
-		if (!tip.empty())
-			tip += "\n";
-		tip += wrap(key_info, -4);
+		tip += "<li>" + key_info + "</li>";
 	}
+	tip += "</ol>";
 	return tip;
 }
 

@@ -173,21 +173,16 @@ docstring InsetBibtex::screenLabel() const
 
 docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) const
 {
-	docstring item = from_ascii("* ");
-	docstring tip = _("Databases:") + "\n";
+	docstring tip = _("Databases:");
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 
-	if (bibfilelist.empty()) {
-		tip += item;
-		tip += _("none");
-	} else {
-		vector<docstring>::const_iterator it = bibfilelist.begin();
-		vector<docstring>::const_iterator en = bibfilelist.end();
-		for (; it != en; ++it) {
-			tip += item;
-			tip += *it + "\n";
-		}
-	}
+	tip += "<ul>";
+	if (bibfilelist.empty())
+		tip += "<li>" + _("none") + "</li>";
+	else
+		for (docstring const & bibfile : bibfilelist)
+			tip += "<li>" + bibfile + "</li>";
+	tip += "</ul>";
 
 	// Style-Options
 	bool toc = false;
@@ -199,14 +194,10 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			style = split(style, bibtotoc, char_type(','));
 	}
 
-	tip += _("Style File:") +"\n";
-	tip += item;
-	if (!style.empty())
-		tip += style;
-	else
-		tip += _("none");
+	tip += _("Style File:");
+	tip += "<ul><li>" + (style.empty() ? _("none") : style) + "</li></ul>";
 
-	tip += "\n" + _("Lists:") + " ";
+	tip += _("Lists:") + " ";
 	docstring btprint = getParam("btprint");
 		if (btprint == "btPrintAll")
 			tip += _("all references");

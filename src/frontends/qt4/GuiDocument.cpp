@@ -1278,10 +1278,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		QString tooltip = toqstr(bformat(_("%1$s [Class '%2$s']"), guiname, from_utf8(tc.latexname())));
 		if (!available) {
 			docstring const output_type = (tc.outputType() == lyx::DOCBOOK) ? _("DocBook") : _("LaTeX");
-			tooltip += '\n' + toqstr(wrap(bformat(_("Class not found by LyX. "
+			tooltip += '\n' + toqstr(bformat(_("Class not found by LyX. "
 							   "Please check if you have the matching %1$s class "
 							   "and all required packages (%2$s) installed."),
-							 output_type, from_utf8(tc.prerequisites(", ")))));
+							 output_type, from_utf8(tc.prerequisites(", "))));
 		}
 		latexModule->classCO->addItemSort(toqstr(tc.name()),
 						  toqstr(guiname),

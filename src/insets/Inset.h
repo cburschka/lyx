@@ -412,7 +412,9 @@ public:
 	virtual bool producesOutput() const { return true; }
 
 	/// \return Tool tip for this inset.
-	/// This default implementation returns an empty string.
+	/// This default implementation returns an empty string. This can be
+	/// either plain text or Qt html, and formatToolTip will be called
+	/// on it before display in both cases.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
 	
 	/// \return Context menu identifier. This function determines
