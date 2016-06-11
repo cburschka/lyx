@@ -83,8 +83,7 @@ void InsetMathSize::mathmlize(MathStream & ms) const
 	stringstream attrs;
 	attrs << "displaystyle='" << (dispstyle ? "true" : "false")
 		<< "' scriptlevel='" << scriptlevel << "'";
-	ms << MTag("mstyle", attrs.str()) << ">"
-	   << cell(0) << ETag("mstyle");
+	ms << MTag("mstyle", attrs.str()) << cell(0) << ETag("mstyle");
 }
 
 
