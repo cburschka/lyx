@@ -262,9 +262,8 @@ set(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
 	if (CMAKE_CXX_COMPILER_ID MATCHES "^[cC]lang$")
 	  # ignore the GCC_VERSION for clang
-	  # We pretend the compiler version >= 4.9
+	  # and use the resulting CXX11_STD_REGEX found in FindCXX11Compiler.cmake
 	  message(STATUS "Using clang")
-	  # CXX11_STD_REGEX found in FindCXX11Compiler.cmake
 	  if(CXX11_STD_REGEX)
 	    set(LYX_USE_STD_REGEX 1)
 	  else()
