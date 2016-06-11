@@ -39,6 +39,16 @@ from parser_tools import find_token, find_token_backwards, find_re, \
      find_end_of_inset, find_end_of_layout, find_nonempty_line, \
      get_containing_layout, get_value, check_token
 
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+if not PY2:
+    text_type = str
+    unichr = chr
+else:
+    text_type = unicode
+    unichr = unichr
+# End of code to support for both python 2 and 3
+
 ####################################################################
 # Private helper functions
 
@@ -796,7 +806,7 @@ def convert_specialchar_internal(document, forward):
             else:
                 i = j
             continue
-        for key, value in specialchars.iteritems():
+        for key, value in specialchars.items():
             if forward:
                 document.body[i] = document.body[i].replace("\\SpecialChar " + key, "\\SpecialChar " + value)
                 document.body[i] = document.body[i].replace("\\SpecialCharNoPassThru " + key, "\\SpecialCharNoPassThru " + value)
@@ -1155,7 +1165,7 @@ def convert_origin(document):
         else:
             origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
         if os.name != 'nt':
-            origin = unicode(origin, sys.getfilesystemencoding())
+            origin = text_type(origin, sys.getfilesystemencoding())
     document.header[i:i] = ["\\origin " + origin]
 
 
