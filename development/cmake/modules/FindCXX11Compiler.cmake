@@ -80,6 +80,26 @@ int main() {
 };
 ")
 
+# The following code snipped taken from example in http://stackoverflow.com/questions/8561850/compile-stdregex-iterator-with-gcc
+set(REGEX_TEST_SOURCE
+"
+#include <regex>
+#include <iostream>
+
+#include <string.h>
+
+typedef std::regex_iterator<const char *> Myiter;
+int main()
+{
+    const char *pat = \"axayaz\";
+    Myiter::regex_type rx(\"a\");
+    Myiter next(pat, pat + strlen(pat), rx);
+    Myiter end;
+
+    return (0);
+}
+")
+
 # check c compiler
 set(SAFE_CMAKE_REQUIRED_QUIET ${CMAKE_REQUIRED_QUIET})
 set(CMAKE_REQUIRED_QUIET ON)
@@ -93,7 +113,15 @@ FOREACH(FLAG ${CXX11_FLAG_CANDIDATES})
     SET(CXX11_FLAG "${FLAG}")
     message(STATUS "CXX11_FLAG_DETECTED = \"${FLAG}\"")
     set(LYX_USE_CXX11 1)
-    BREAK()
+      check_cxx_source_compiles("${REGEX_TEST_SOURCE}" CXX_STD_REGEX_DETECTED)
+      if (CXX_STD_REGEX_DETECTED)
+	message(STATUS "Compiler supports std_regex")
+	set(CXX11_STD_REGEX ON)
+      else()
+	message(STATUS "Compiler does not support std_regex")
+	set(CXX11_STD_REGEX OFF)
+      endif()
+    break()
   ENDIF()
 ENDFOREACH()
 set(CMAKE_REQUIRED_QUIET ${SAFE_CMAKE_REQUIRED_QUIET})
@@ -101,4 +129,4 @@ set(CMAKE_REQUIRED_QUIET ${SAFE_CMAKE_REQUIRED_QUIET})
 # handle the standard arguments for find_package
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(CXX11Compiler DEFAULT_MSG CXX11_FLAG)
 
-MARK_AS_ADVANCED(CXX11_FLAG)
+MARK_AS_ADVANCED(CXX11_FLAG CXX11_STD_REGEX)
