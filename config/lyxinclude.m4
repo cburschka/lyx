@@ -393,7 +393,11 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
 	if test x$lyx_cv_with_included_boost = xyes ; then
 	    BOOST_INCLUDES='-I$(top_srcdir)/3rdparty/boost'
-	    BOOST_LIBS='$(top_builddir)/3rdparty/boost/liblyxboost.a'
+	    if test $lyx_std_regex = yes ; then
+	      BOOST_LIBS=""
+	    else
+	      BOOST_LIBS='$(top_builddir)/3rdparty/boost/liblyxboost.a'
+	    fi
 	else
 	    BOOST_INCLUDES=
 	    if test $lyx_std_regex = yes ; then
