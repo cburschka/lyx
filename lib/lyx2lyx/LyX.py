@@ -280,17 +280,20 @@ class LyX_base:
         """Reads a file into the self.header and
         self.body parts, from self.input."""
 
+        # First pass: Read header to determine file encoding
         while True:
             line = self.input.readline()
             if not line:
-                self.error("Invalid LyX file.")
+                # eof found before end of header
+                self.error("Invalid LyX file: Missing body.")
 
             line = trim_eol(line)
             if check_token(line, '\\begin_preamble'):
                 while 1:
                     line = self.input.readline()
                     if not line:
-                        self.error("Invalid LyX file.")
+                        # eof found before end of header
+                        self.error("Invalid LyX file: Missing body.")
 
                     line = trim_eol(line)
                     if check_token(line, '\\end_preamble'):
@@ -345,6 +348,8 @@ class LyX_base:
             self.header[i] = self.header[i].decode(self.encoding)
         for i in range(len(self.preamble)):
             self.preamble[i] = self.preamble[i].decode(self.encoding)
+        for i in range(len(self.body)):
+            self.body[i] = self.body[i].decode(self.encoding)
 
         # Read document body
         while 1:
