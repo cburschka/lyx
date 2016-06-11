@@ -2584,8 +2584,10 @@ QFont const GuiApplication::typewriterSystemFont()
 	QFont font("monospace");
 #endif
 	if (!isFixedPitch(font)) {
+#if QT_VERSION >= 0x040700
 		// try to enforce a real monospaced font
 		font.setStyleHint(QFont::Monospace);
+#endif
 		if (!isFixedPitch(font)) {
 			font.setStyleHint(QFont::TypeWriter);
 			if (!isFixedPitch(font)) font.setFamily("courier");
