@@ -12,10 +12,6 @@ EXTRA_DIST = boost \
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)
 
-if LYX_USE_STD_REGEX
-
-else
-
 # This version is more than three times faster than the one below
 
 if MONOLITHIC_BOOST
@@ -48,4 +44,3 @@ liblyxboost_a_SOURCES = \
 
 endif #MONOLITHIC_BOOST
 
-endif #LYX_USE_STD_REGEX
