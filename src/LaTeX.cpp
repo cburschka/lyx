@@ -97,6 +97,12 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 	: cmd(latex), file(f), path(p), lpath(lp), runparams(rp), biber(false)
 {
 	num_errors = 0;
+	// lualatex can still produce a DVI with --output-format=dvi. However,
+	// we do not use that internally (we use the "dvilualatex" command) so
+	// it would only happen from a custom converter. Thus, it is better to
+	// guess that lualatex produces a PDF than to guess a DVI.
+	// FIXME we should base the extension on the output format, which we should
+	// get in a robust way, e.g. from the converter.
 	if (prefixIs(cmd, "pdf") || prefixIs(cmd, "lualatex") || prefixIs(cmd, "xelatex")) {
 		depfile = FileName(file.absFileName() + ".dep-pdf");
 		output_file =
