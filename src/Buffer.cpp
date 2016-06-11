@@ -1659,9 +1659,11 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 {
 	OutputParams runparams = runparams_in;
 
-	// XeTeX with TeX fonts is only safe with ASCII encoding,
-	// but the "flavor" is not known in BufferParams::encoding().
-	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
+	// XeTeX with TeX fonts is only safe with ASCII encoding (see also #9740),
+	// Check here, because the "flavor" is not known in BufferParams::encoding()
+	// (power users can override this safety measure selecting "utf8-plain").
+	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX)
+	    && (runparams.encoding->name() != "utf8-plain"))
 		runparams.encoding = encodings.fromLyXName("ascii");
 
 	string const encoding = runparams.encoding->iconvName();
@@ -1747,8 +1749,10 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	OutputParams runparams = runparams_in;
 
 	// XeTeX with TeX fonts is only safe with ASCII encoding,
-	// but the "flavor" is not known in BufferParams::encoding().
-	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
+	// Check here, because the "flavor" is not known in BufferParams::encoding()
+	// (power users can override this safety measure selecting "utf8-plain").
+	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX)
+	    && (runparams.encoding->name() != "utf8-plain"))
 		runparams.encoding = encodings.fromLyXName("ascii");
 	// FIXME: when only the current paragraph is shown, this is ignored
 	//        (or not reached) and characters encodable in the current

@@ -120,6 +120,11 @@ export/doc/(de|es|fr)/Additional_pdf4_texF
 # \ding{58} and \ding{171} not supported with XeTeX and system fonts:
 export/examples/fr/ListesPuces_pdf4_systemF
 
+# inputencoding="utf8-plain" with Xe/LuaTeX: characters with
+# Unicode point > 256 lead to errors with 8-bit fonts
+# (We keep this option for power users setting Unicode fonts in the preamble
+# or document class file).
+export/export/utf8-plain-with-tex-fonts_.*_texF
 
 Sublabel: texissues
 #

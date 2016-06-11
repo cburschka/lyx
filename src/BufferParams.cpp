@@ -2973,8 +2973,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 	// XeTeX/LuaTeX: (see also #9740)
 	// With Unicode fonts we use utf8-plain without encoding package.
 	// With TeX fonts, we cannot use utf8-plain, but "inputenc" fails.
-	// XeTeX must use ASCII encoding, for LuaTeX, we load
-	// "luainputenc" (see below).
+	// XeTeX must use ASCII encoding (see Buffer.cpp),
+	//  for LuaTeX, we load "luainputenc" (see below).
 	if (useNonTeXFonts || features.runparams().flavor == OutputParams::XETEX)
 		return;
 
