@@ -395,12 +395,16 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    BOOST_INCLUDES='-I$(top_srcdir)/3rdparty/boost'
 	    BOOST_LIBS='$(top_builddir)/3rdparty/boost/liblyxboost.a'
 	else
-	    AC_LANG_PUSH(C++)
-	    save_LIBS=$LIBS
+	    BOOST_INCLUDES=
+	    if test $lyx_std_regex = yes ; then
+	      BOOST_LIBS=""
+	    else
+	      AC_LANG_PUSH(C++)
+	      save_LIBS=$LIBS
 
-	    AC_MSG_CHECKING([for multithreaded boost libraries])
-	    LIBS="$save_LIBS -lboost_regex-mt $LIBTHREAD"
-	    AC_LINK_IFELSE(
+	      AC_MSG_CHECKING([for multithreaded boost libraries])
+	      LIBS="$save_LIBS -lboost_regex-mt $LIBTHREAD"
+	      AC_LINK_IFELSE(
 		[AC_LANG_PROGRAM([#include <boost/regex.hpp>],
 			[boost::regex reg;])],
 		[AC_MSG_RESULT([yes])
@@ -416,23 +420,20 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 		     [AC_MSG_RESULT([no])
 		      AC_MSG_ERROR([cannot find suitable boost library (do not use --without-included-boost)])
 		 ])
-	    ])
-	    LIBS=$save_LIBS
-	    AC_LANG_POP(C++)
-	    BOOST_INCLUDES=
-	    if test $lyx_std_regex = yes ; then
-	      BOOST_LIBS=""
-	    else
-	      BOOST_LIBS="-lboost_regex${BOOST_MT}"
-	    fi
+	      ])
+	      LIBS=$save_LIBS
+	      AC_LANG_POP(C++)
 
-	    dnl In general, system boost libraries are incompatible with
-	    dnl the use of stdlib-debug in libstdc++. See ticket #9736 for
-	    dnl details.
-	    if test $enable_stdlib_debug = "yes" ; then
+	      dnl In general, system boost libraries are incompatible with
+	      dnl the use of stdlib-debug in libstdc++. See ticket #9736 for
+	      dnl details.
+	      if test $enable_stdlib_debug = "yes" ; then
 		LYX_WARNING([Compiling LyX with stdlib-debug and system boost libraries may lead to
    crashes. Consider using --disable-stdlib-debug or removing
    --without-included-boost.])
+	      fi
+
+	      BOOST_LIBS="-lboost_regex${BOOST_MT}"
 	    fi
 	fi
 	AC_SUBST(BOOST_INCLUDES)
