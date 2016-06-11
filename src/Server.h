@@ -16,6 +16,9 @@
 
 #include <boost/signals2/trackable.hpp>
 
+#include <vector>
+#include <sstream>
+
 #ifdef _WIN32
 #include <windows.h>
 #include <QObject>
