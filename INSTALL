@@ -55,11 +55,12 @@ LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
 library to be able to compile this version of LyX.
 
-For full LyX usability we suggest to use Qt 4.x and at least Qt 4.8 which
-has been widely tested. For compilation you need to compile against at
-least Qt 4.5.0 and at Windows we advise at highest Qt 4.8.4. The only
-special point to make is that you must ensure that both LyX and the
-Qt libraries are compiled with the same C++ compiler.
+For full LyX usability we suggest to use Qt 5.x and Qt 5.6 and higher,
+or at the very least Qt 5.4. For compilation you need to compile against
+at least Qt 4.8 which has been widely tested, and for Windows we advise
+at least Qt 4.8.4. For Qt 5 we recommend at least Qt 5.4. The only
+special point to make is that you must ensure that both LyX and the Qt
+libraries are compiled with the same C++ compiler.
 
 To build LyX with spell checking capabilities included you have to
 install at least one of the development packages of the spell checker
