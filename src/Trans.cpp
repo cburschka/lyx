@@ -287,6 +287,10 @@ int Trans::load(Lexer & lex)
 			allowed = lex.getDocString();
 			LYXERR(Debug::KBMAP, "allowed: " << to_utf8(allowed));
 
+			// FIXME Coverity
+			// This is being flagged because we could in principle fail
+			// ever to hit the break above, in which case we exit the loop
+			// when it == end. Then this crashes.
 			insertException(kmod_list_[accent_1].exception_list,
 					it->first, allowed, true, accent_2);
 		}
