@@ -3241,7 +3241,6 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 	case LFUN_VC_COMPARE: {
-
 		if (cmd.argument().empty()) {
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, "comparehistory"));
 			break;
@@ -3251,6 +3250,8 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		string f1, f2;
 
 		// f1
+		// it seems safe to assume we have a buffer
+		// coverity[FORWARD_NULL]
 		if (!buffer->lyxvc().prepareFileRevision(rev1, f1))
 			break;
 
