@@ -58,6 +58,8 @@
 
 #include "support/bind.h"
 
+#include <iostream>
+
 #ifdef _WIN32
 #include <io.h>
 #include <QCoreApplication>
