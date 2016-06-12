@@ -41,6 +41,7 @@ else()
     set(CXX11_FLAG_CANDIDATES "--std=gnu++11")
   else()
     set(CXX11_FLAG_CANDIDATES
+      "--std=c++14"
       "--std=c++11"
       "--std=gnu++11"
       "--std=gnu++0x"

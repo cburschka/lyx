@@ -61,6 +61,7 @@ check_symbol_exists(pid_t "sys/types.h" HAVE_PID_T)
 check_symbol_exists(intmax_t "inttypes.h" HAVE_INTTYPES_H_WITH_UINTMAX)
 check_symbol_exists(uintmax_t "stdint.h" HAVE_STDINT_H_WITH_UINTMAX)
 check_symbol_exists(LC_MESSAGES "locale.h" HAVE_LC_MESSAGES)
+check_symbol_exists(PATH_MAX "limits.h" HAVE_DEF_PATH_MAX)
 
 check_type_size(intmax_t HAVE_INTMAX_T)
 macro_bool_to_01(HAVE_UINTMAX_T HAVE_STDINT_H_WITH_UINTMAX)
@@ -172,6 +173,16 @@ check_cxx_source_compiles(
 	"
 lyx_cv_prog_clang)
 
+check_cxx_source_compiles(
+  "
+  #include <memory>
+  using std::make_unique;
+  int main() {
+    return(0);
+  }
+  "
+HAVE_DEF_MAKE_UNIQUE)
+
 set(USE_LLVM_LIBCPP)
 set(STD_STRING_USES_COW)
 set(USE_GLIBCXX_CXX11_ABI)
@@ -230,4 +241,3 @@ elseif(LYX_USE_QT MATCHES "QT4")
 else()
   message(FATAL_ERROR "Check for QT_USES_X11: Not handled LYX_USE_QT (= ${LYX_USE_QT})")
 endif()
-

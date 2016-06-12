@@ -48,7 +48,7 @@
 #cmakedefine USE_POSIX_PACKAGING 1
 #cmakedefine USE_WINDOWS_PACKAGING 1
 #cmakedefine USE_MACOSX_PACKAGING 1
-#cmakedefine PATH_MAX ${PATH_MAX}
+#cmakedefine HAVE_DEF_PATH_MAX 1
 
 #cmakedefine WORDS_BIGENDIAN 1
 
@@ -86,6 +86,7 @@ ${Include_used_spellchecker}
 #define ENABLE_NLS 1
 #endif
 
+#cmakedefine HAVE_DEF_MAKE_UNIQUE 1
 
 #endif // config.h guard
 
