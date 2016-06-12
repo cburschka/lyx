@@ -4622,6 +4622,11 @@ static depth_type getDepth(DocIterator const & it)
 		if (!it[i].inset().inMathed())
 			depth += it[i].paragraph().getDepth() + 1;
 	// remove 1 since the outer inset does not count
+	// we should have at least one non-math inset, so
+	// depth should nevery be 0. but maybe it is worth
+	// marking this, just in case.
+	LATTEST(depth > 0);
+	// coverity[INTEGER_OVERFLOW]
 	return depth - 1;
 }
 
