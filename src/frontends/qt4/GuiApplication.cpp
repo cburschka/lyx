@@ -1464,6 +1464,8 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 	// if the current buffer is not that one, switch to it.
 	BufferView * doc_bv = current_view_ ?
 		current_view_->documentBufferView() : 0;
+	// FIXME It's possible that doc_bv is null!!
+	// See coverity #102061
 	Cursor const old = doc_bv->cursor();
 	if (!doc_bv || doc_bv->buffer().fileName() != tmp.filename) {
 		if (switchToBuffer) {
