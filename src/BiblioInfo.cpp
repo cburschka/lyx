@@ -1060,6 +1060,11 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			docstring const num = convert<docstring>(++keynumber);
 			entry.setCiteNumber(num);
 		} else {
+			// coverity complains about our derefercing the iterator last,
+			// which was not initialized above. but it does get initialized
+			// after the first time through the loop, which is the point of
+			// the first test.
+			// coverity[FORWARD_NULL]
 			if (it != cited_entries_.begin()
 			    && entry.getAbbreviatedAuthor() == last->second.getAbbreviatedAuthor()
 			    // we access the year via getYear() so as to get it from the xref,
