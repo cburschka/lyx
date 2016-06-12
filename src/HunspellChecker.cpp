@@ -151,7 +151,7 @@ const string HunspellChecker::Private::dictPath(int selector)
 {
 	switch (selector) {
 	case 3:
-		return addName(osPackageDictDirectory(),dictDirectory());
+		return osPackageDictDirectory();
 		break;
 	case 2:
 		return addName(package().system_support().absFileName(),dictDirectory());
