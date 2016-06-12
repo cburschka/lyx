@@ -490,14 +490,15 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 
 		Buffer * buf = pimpl_->buffer_list_.newBuffer(fname.absFileName());
 		LYXERR(Debug::FILES, "Loading " << fname);
-		if (buf->loadLyXFile() == Buffer::ReadSuccess) {
+		if (buf && buf->loadLyXFile() == Buffer::ReadSuccess) {
 			ErrorList const & el = buf->errorList("Parse");
 			if (!el.empty())
 					for_each(el.begin(), el.end(),
 									 bind(&LyX::printError, this, _1));
 			command_line_buffers.push_back(buf);
 		} else {
-			pimpl_->buffer_list_.release(buf);
+			if (buf)
+				pimpl_->buffer_list_.release(buf);
 			docstring const error_message =
 					bformat(_("LyX failed to load the following file: %1$s"),
 									from_utf8(fname.absFileName()));
