@@ -1673,8 +1673,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			current_view_->openDocument(fname);
 			if (current_view_ && !current_view_->documentBufferView())
 				current_view_->close();
-		} else
+		} else {
+			// we know !d->views.empty(), so this should be ok
+			// coverity[FORWARD_NULL]
 			current_view_->openDocument(fname);
+		}
 		break;
 	}
 
