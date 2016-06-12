@@ -35,6 +35,9 @@ namespace {
 class Correction {
 public:
 	///
+	/// \brief Correction
+	// it is fine not to initialize from2_
+	// coverity[UNINIT_CTOR]
 	Correction() {}
 	///
 	bool correct(MathAtom & at, char_type c) const;
