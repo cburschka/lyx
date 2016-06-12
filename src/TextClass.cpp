@@ -528,6 +528,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			// Either way, we just scan the rest and discard it
 			else {
 				Layout lay;
+				// false positive from coverity
+				// coverity[CHECKED_RETURN]
 				readStyle(lexrc, lay);
 			}
 			break;

@@ -1408,6 +1408,8 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		docstring repl_latex = ods.str();
 		LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
 		string s;
+		// false positive from coverity
+		// coverity[CHECKED_RETURN]
 		regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
 		regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);

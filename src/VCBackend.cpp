@@ -566,6 +566,8 @@ void CVS::scanMaster()
 			// Ok extract the fields.
 			smatch sm;
 
+			// false positive from coverity
+			// coverity[CHECKED_RETURN]
 			regex_match(line, sm, reg);
 
 			//sm[0]; // whole matched string

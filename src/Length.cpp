@@ -355,6 +355,8 @@ GlueLength::GlueLength(Length const & len, Length const & plus,
 
 GlueLength::GlueLength(string const & data)
 {
+	// false positive from coverity
+	// coverity[CHECKED_RETURN]
 	isValidGlueLength(data, this);
 }
 

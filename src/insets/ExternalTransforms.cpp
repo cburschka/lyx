@@ -310,6 +310,8 @@ string const sanitizeLatexOption(string const & input)
 	// Strip any trailing commas
 	// "...foo,,,]" -> "...foo" ("...foo,,," may be empty)
 	static lyx::regex const back("^(.*[^,])?,*\\] *$");
+	// false positive from coverity
+	// coverity[CHECKED_RETURN]
 	regex_match(output, what, back);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
