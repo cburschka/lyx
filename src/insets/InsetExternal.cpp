@@ -376,6 +376,8 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		lyxerr	<< "InsetExternalParams::read:\n";
+		// false positive
+		// coverity[NEGATIVE_RETURNS]
 		write(buffer, lyxerr);
 	}
 
