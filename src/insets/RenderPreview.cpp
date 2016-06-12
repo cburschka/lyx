@@ -104,6 +104,9 @@ docstring const statusMessage(BufferView const * bv, string const & snippet)
 
 	Buffer const & buffer = bv->buffer();
 	graphics::PreviewLoader const * loader = buffer.loader();
+	// please coverity (probably worth the check anyway)
+	if (!loader)
+		return docstring();
 	graphics::PreviewLoader::Status const status = loader->status(snippet);
 
 	docstring message;
