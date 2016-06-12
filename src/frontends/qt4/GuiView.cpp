@@ -3962,6 +3962,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FORWARD_SEARCH: {
+		// it seems safe to assume we have a document buffer, since
+		// getStatus wants one.
+		// coverity[FORWARD_NULL]
 			Buffer const * doc_master = doc_buffer->masterBuffer();
 			FileName const path(doc_master->temppath());
 			string const texname = doc_master->isChild(doc_buffer)
