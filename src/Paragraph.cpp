@@ -1397,7 +1397,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 				}
 			}
 			string const snippet = to_utf8(ods.str());
-			features.addPreambleSnippet(snippet);
+			features.addPreambleSnippet(snippet, true);
 		}
 	}
 
