@@ -169,7 +169,7 @@ void InsetMathDecoration::infoize(odocstream & os) const
 
 namespace {
 	struct Attributes {
-		Attributes() {}
+		Attributes() : over(false) {}
 		Attributes(bool o, string t)
 			: over(o), tag(t) {}
 		bool over;

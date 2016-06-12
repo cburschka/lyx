@@ -89,7 +89,7 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 GuiCitation::GuiCitation(GuiView & lv)
 	: DialogView(lv, "citation", qt_("Citation")),
-	  params_(insetCode("citation"))
+	  style_(0), params_(insetCode("citation"))
 {
 	setupUi(this);
 

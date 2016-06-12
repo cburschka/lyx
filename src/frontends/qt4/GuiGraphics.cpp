@@ -110,7 +110,7 @@ static void setAutoTextCB(QCheckBox * checkBox, QLineEdit * lineEdit,
 
 
 GuiGraphics::GuiGraphics(GuiView & lv)
-	: GuiDialog(lv, "graphics", qt_("Graphics"))
+	: GuiDialog(lv, "graphics", qt_("Graphics")), bbChanged(false)
 {
 	setupUi(this);
 	

@@ -171,7 +171,7 @@ docstring InsetPrintNomencl::screenLabel() const
 
 
 struct NomenclEntry {
-	NomenclEntry() {}
+	NomenclEntry() : par(0) {}
 	NomenclEntry(docstring s, docstring d, Paragraph const * p)
 	  : symbol(s), desc(d), par(p)
 	{}

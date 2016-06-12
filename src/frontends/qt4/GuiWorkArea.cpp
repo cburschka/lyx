@@ -1825,6 +1825,7 @@ void TabWorkArea::closeTab(int index)
 class DisplayPath {
 public:
 	/// make vector happy
+	// coverity[UNINIT_CTOR]
 	DisplayPath() {}
 	///
 	DisplayPath(int tab, FileName const & filename)
