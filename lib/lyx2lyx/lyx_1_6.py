@@ -27,11 +27,7 @@ from parser_tools import find_token, find_end_of, find_tokens, get_value
 # Provide support for both python 2 and 3
 PY2 = sys.version_info[0] == 2
 if not PY2:
-    text_type = str
     unichr = chr
-else:
-    text_type = unicode
-    unichr = unichr
 # End of code to support for both python 2 and 3
 
 ####################################################################

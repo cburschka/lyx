@@ -33,7 +33,6 @@ if not PY2:
     unichr = chr
 else:
     text_type = unicode
-    unichr = unichr
 # End of code to support for both python 2 and 3
 
 ####################################################################

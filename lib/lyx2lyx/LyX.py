@@ -28,6 +28,7 @@ import locale
 import sys
 import re
 import time
+import io
 
 try:
     import lyx2lyx_version
@@ -36,6 +37,10 @@ except: # we are running from build directory so assume the last version
     version__ = '2.3'
 
 default_debug__ = 2
+
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+# End of code to support for both python 2 and 3
 
 ####################################################################
 # Private helper functions
@@ -158,6 +163,17 @@ def trim_eol(line):
         return line[:-1]
 
 
+def trim_eol_binary(line):
+    " Remove end of line char(s)."
+    if line[-1] != 10 and line[-1] != 13:
+        # May happen for the last line of a document
+        return line
+    if line[-2:-1] == 13:
+        return line[:-2]
+    else:
+        return line[:-1]
+
+
 def get_encoding(language, inputencoding, format, cjk_encoding):
     " Returns enconding of the lyx file"
     if format > 248:
@@ -200,7 +216,8 @@ class LyX_base:
         error: the name of the error file, if empty use the standard error.
         debug: debug level, O means no debug, as its value increases be more verbose.
         """
-        self.choose_io(input, output)
+        self.choose_input(input)
+        self.output = output
 
         if error:
             self.err = open(error, "w")
@@ -281,25 +298,41 @@ class LyX_base:
         self.body parts, from self.input."""
 
         # First pass: Read header to determine file encoding
+        # If we are running under python3 then all strings are binary in this
+        # pass. In some cases we need to convert binary to unicode in order to
+        # use our parser tools. Since we do not know the true encoding yet we
+        # use latin1. This works since a) the parts we are interested in are
+        # pure ASCII (subset of latin1) and b) in contrast to pure ascii or
+        # utf8, one can decode any 8byte string using latin1.
         while True:
             line = self.input.readline()
             if not line:
                 # eof found before end of header
                 self.error("Invalid LyX file: Missing body.")
 
-            line = trim_eol(line)
-            if check_token(line, '\\begin_preamble'):
+            if PY2:
+                line = trim_eol(line)
+                decoded = line
+            else:
+                line = trim_eol_binary(line)
+                decoded = line.decode('latin1')
+            if check_token(decoded, '\\begin_preamble'):
                 while 1:
                     line = self.input.readline()
                     if not line:
                         # eof found before end of header
                         self.error("Invalid LyX file: Missing body.")
 
-                    line = trim_eol(line)
-                    if check_token(line, '\\end_preamble'):
+                    if PY2:
+                        line = trim_eol(line)
+                        decoded = line
+                    else:
+                        line = trim_eol_binary(line)
+                        decoded = line.decode('latin1')
+                    if check_token(decoded, '\\end_preamble'):
                         break
 
-                    if line.split()[:0] in ("\\layout",
+                    if decoded.split()[:0] in ("\\layout",
                                             "\\begin_layout", "\\begin_body"):
 
                         self.warning("Malformed LyX file:"
@@ -309,33 +342,48 @@ class LyX_base:
 
                     self.preamble.append(line)
 
-            if check_token(line, '\\end_preamble'):
+            if check_token(decoded, '\\end_preamble'):
                 continue
 
             line = line.strip()
             if not line:
                 continue
 
-            if line.split()[0] in ("\\layout", "\\begin_layout",
+            if decoded.split()[0] in ("\\layout", "\\begin_layout",
                                    "\\begin_body", "\\begin_deeper"):
                 self.body.append(line)
                 break
 
             self.header.append(line)
 
-        i = find_token(self.header, '\\textclass', 0)
+        if PY2:
+            i = find_token(self.header, '\\textclass', 0)
+        else:
+            i = find_token(self.header, b'\\textclass', 0)
         if i == -1:
             self.warning("Malformed LyX file: Missing '\\textclass'.")
-            i = find_token(self.header, '\\lyxformat', 0) + 1
-            self.header[i:i] = ['\\textclass article']
+            if PY2:
+                i = find_token(self.header, '\\lyxformat', 0) + 1
+                self.header[i:i] = ['\\textclass article']
+            else:
+                i = find_token(self.header, b'\\lyxformat', 0) + 1
+                self.header[i:i] = [b'\\textclass article']
 
-        self.textclass = get_value(self.header, "\\textclass", 0)
-        self.backend = get_backend(self.textclass)
-        self.format  = self.read_format()
-        self.language = get_value(self.header, "\\language", 0,
-                                  default = "english")
-        self.inputencoding = get_value(self.header, "\\inputencoding",
-                                       0, default = "auto")
+        if PY2:
+            self.textclass = get_value(self.header, "\\textclass", 0,
+                                       default = "")
+            self.language = get_value(self.header, "\\language", 0,
+                                      default = "english")
+            self.inputencoding = get_value(self.header, "\\inputencoding", 0,
+                                           default = "auto")
+        else:
+            self.textclass = get_value(self.header, b"\\textclass", 0,
+                                       default = b"")
+            self.language = get_value(self.header, b"\\language", 0,
+                                      default = b"english").decode('ascii')
+            self.inputencoding = get_value(self.header, b"\\inputencoding", 0,
+                                           default = b"auto").decode('ascii')
+        self.format = self.read_format()
         self.encoding = get_encoding(self.language,
                                      self.inputencoding, self.format,
                                      self.cjk_encoding)
@@ -344,6 +392,7 @@ class LyX_base:
         # Second pass over header and preamble, now we know the file encoding
         # Do not forget the textclass (Debian bug #700828)
         self.textclass = self.textclass.decode(self.encoding)
+        self.backend = get_backend(self.textclass)
         for i in range(len(self.header)):
             self.header[i] = self.header[i].decode(self.encoding)
         for i in range(len(self.preamble)):
@@ -361,6 +410,7 @@ class LyX_base:
 
     def write(self):
         " Writes the LyX file to self.output."
+        self.choose_output(self.output)
         self.set_version()
         self.set_format()
         self.set_textclass()
@@ -375,29 +425,53 @@ class LyX_base:
             header = self.header
 
         for line in header + [''] + self.body:
-            self.output.write(line.encode(self.encoding)+"\n")
+            self.output.write(line+u"\n")
 
 
-    def choose_io(self, input, output):
-        """Choose input and output streams, dealing transparently with
+    def choose_output(self, output):
+        """Choose output streams dealing transparently with
         compressed files."""
 
-        if output:
-            self.output = open(output, "wb")
+        # This is a bit complicated, because we need to be compatible both with
+        # python 2 and python 3. Therefore we handle the encoding here and not
+        # when writing individual lines and may need up to 3 layered file like
+        # interfaces.
+        if self.compressed:
+            if output:
+                outputfileobj = open(output, 'wb')
+            else:
+                # We cannot not use stdout directly since it needs text, not bytes in python 3
+                outputfileobj = os.fdopen(sys.stdout.fileno(), 'wb')
+            # We cannot not use gzip.open() since it is not supported by python 2
+            zipbuffer = gzip.GzipFile(mode='wb', fileobj=outputfileobj)
+            # We do not want to use different newlines on different OSes inside zipped files
+            self.output = io.TextIOWrapper(zipbuffer, encoding=self.encoding, newline='\n')
         else:
-            self.output = sys.stdout
+            if output:
+                self.output = io.open(output, 'w', encoding=self.encoding)
+            else:
+                self.output = io.open(sys.stdout.fileno(), 'w', encoding=self.encoding)
 
+
+    def choose_input(self, input):
+        """Choose input stream, dealing transparently with
+        compressed files."""
+
+        # Since we do not know the encoding yet we need to read the input as
+        # bytes in binary mode, and convert later to unicode.
         if input and input != '-':
             self.dir = os.path.dirname(os.path.abspath(input))
             try:
                 gzip.open(input).readline()
                 self.input = gzip.open(input)
-                self.output = gzip.GzipFile(mode="wb", fileobj=self.output)
+                self.compressed = True
             except:
-                self.input = open(input)
+                self.input = open(input, 'rb')
+                self.compressed = False
         else:
             self.dir = ''
-            self.input = sys.stdin
+            self.input = os.fdopen(sys.stdin.fileno(), 'rb')
+            self.compressed = False
 
 
     def lyxformat(self, format):
@@ -470,11 +544,14 @@ class LyX_base:
     def read_format(self):
         " Read from the header the fileformat of the present LyX file."
         for line in self.header:
-            result = fileformat.match(line)
+            if PY2:
+                result = fileformat.match(line)
+            else:
+                result = fileformat.match(line.decode('ascii'))
             if result:
                 return self.lyxformat(result.group(1))
         else:
-            self.error("Invalid LyX File.")
+            self.error("Invalid LyX File: Missing format.")
         return None
 
 
