@@ -1981,6 +1981,8 @@ void TabWorkArea::updateTabTexts()
 			// that it makes the path more unique.
 			somethingChanged = true;
 			It sit = segStart;
+			// this is ok for the reason mentioned  in the previous comment.
+			// coverity[INVALIDATE_ITERATOR]
 			QString dspString = sit->forecastPathString();
 			LYXERR(Debug::GUI, "first forecast found for "
 			       << sit->abs() << " => " << dspString);
