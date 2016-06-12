@@ -52,7 +52,8 @@ class InGuiThread : private IntoGuiThreadMover
 {
 public:
 
-	InGuiThread() {}
+	// please coverity by explicitly initalizing this variable.
+	InGuiThread() : return_value_(R()) {}
 
 	template<class F>
 	R call(F f)
