@@ -88,7 +88,8 @@ public:
 	/// Print requirements to lyxerr
 	void showStruct() const;
 	///
-	void addPreambleSnippet(std::string const &);
+	void addPreambleSnippet(std::string const & snippet, 
+	                        bool allowdupes = false);
 	///
 	std::string getPreambleSnippets() const;
 	///

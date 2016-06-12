@@ -579,11 +579,12 @@ bool LaTeXFeatures::isAvailable(string const & name)
 }
 
 
-void LaTeXFeatures::addPreambleSnippet(string const & preamble)
+void LaTeXFeatures::addPreambleSnippet(string const & preamble,
+		bool allowdupes)
 {
 	SnippetList::const_iterator begin = preamble_snippets_.begin();
 	SnippetList::const_iterator end   = preamble_snippets_.end();
-	if (find(begin, end, preamble) == end)
+	if (allowdupes || find(begin, end, preamble) == end)
 		preamble_snippets_.push_back(preamble);
 }
 
