@@ -143,6 +143,20 @@ AC_DEFUN([LYX_PROG_CLANG],
 #endif
 ],
 [lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+if test $CLANG = yes ; then
+  AC_CACHE_CHECK([for clang version],
+    [lyx_cv_clang_version],
+    [clang_noversion=no
+     AC_COMPUTE_INT(clang_major,__clang_major__,,[clang_noversion_=yes])
+     AC_COMPUTE_INT(clang_minor,__clang_minor__,,[clang_noversion_=yes])
+     AC_COMPUTE_INT(clang_patchlevel,__clang_patchlevel__,,[clang_noversion_=yes])
+     if test $clang_noversion = yes ; then
+       clang_version=unknown
+     else
+       clang_version=$clang_major.$clang_minor.$clang_patchlevel
+     fi
+     lyx_cv_clang_version=$clang_version])
+fi
 ])
 
 
@@ -317,7 +331,8 @@ if test x$GXX = xyes; then
     gxx_version=`${CXX} -dumpversion`
     CXX_VERSION="($gxx_version)"
   else
-    gxx_version=clang
+    gxx_version=clang-$clang_version
+    CXX_VERSION="($clang_version)"
   fi
 
   AM_CXXFLAGS="$lyx_optim"
@@ -359,9 +374,13 @@ if test x$GXX = xyes; then
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
         cxx11_flags="-std=c++0x";;
-      clang)
+      clang-3.0*|clang-3.1*|clang-3.2*|clang-3.3*)
         dnl presumably all clang versions support c++11.
-	dnl the deprecated-register warning is very annoying with Qt4.x right now.
+	dnl boost contains pragmas that are annoying on older clang versions
+        cxx11_flags="-std=c++11 -Wno-unknown-pragmas";;
+      clang*)
+        dnl the more recent versions support the deprecated-register warning,
+        dnl which  is very annoying with Qt4.x right now.
         cxx11_flags="-std=c++11"
         AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
       *)
