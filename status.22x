@@ -62,6 +62,8 @@ What's new
 
 - Fix default location for RPM based hunspell dictionary search (bug 10071 and 10192).
 
+- Fix double input of tabulations with Qt5 < Qt5.5 (bug 9218).
+
 
 * INTERNALS
 
@@ -89,3 +91,6 @@ What's new
 
 * BUILD/INSTALLATION
 
+- Due to bug fixes, it is no longer discouraged to build against Qt 5.4.
+
+- Building against Qt < 4.7 no longer fails.
