@@ -35,8 +35,11 @@ bool TexRow::RowEntryList::addEntry(RowEntry const & entry)
 	if (!entry.is_math) {
 		if (text_entry_ < size())
 			return false;
-		else
+		else {
 			text_entry_ = size();
+			push_back(entry);
+			return true;
+		}
 	}
 	forceAddEntry(entry);
 	return true;
