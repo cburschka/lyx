@@ -64,7 +64,6 @@ Win32/packaging/installer/lang/japanese.nsh \
 Win32/packaging/installer/lang/norwegian.nsh \
 Win32/packaging/installer/lang/polish.nsh \
 Win32/packaging/installer/lang/portuguese.nsh \
-Win32/packaging/installer/lang/portugueseBR \
 Win32/packaging/installer/lang/romanian.nsh \
 Win32/packaging/installer/lang/slovak.nsh \
 Win32/packaging/installer/lang/spanish.nsh \
