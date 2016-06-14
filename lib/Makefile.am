@@ -587,9 +587,9 @@ dist_images_DATA = \
 	images/psnfss3.png \
 	images/psnfss4.png \
 	images/standard.png \
-	${dist_images_DATA1X} \
-	${dist_images_DATA2X} \
-	${dist_images_DATA3X}
+	$(dist_images_DATA1X) \
+	$(dist_images_DATA2X) \
+	$(dist_images_DATA3X)
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
@@ -1727,7 +1727,7 @@ dist_imagesoxygen_DATA1X = \
 
 dist_imagesoxygen_DATA = \
 	images/oxygen/iconsize.png \
-	${dist_imagesoxygen_DATA1X}
+	$(dist_imagesoxygen_DATA1X)
 
 imagesmathoxygendir = $(imagesdir)/math/oxygen
 dist_imagesmathoxygen_DATA = \
