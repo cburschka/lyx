@@ -39,10 +39,9 @@ public:
 		wsPreview
 	};
 	///
-	WriteStream(otexrowstream & os, bool fragile, bool latex, OutputType output,
-				Encoding const * encoding = 0);
-	///
-	explicit WriteStream(otexrowstream & os);
+	explicit WriteStream(otexrowstream & os, bool fragile = false,
+	                     bool latex = false, OutputType output = wsDefault,
+	                     Encoding const * encoding = 0);
 	///
 	~WriteStream();
 	///

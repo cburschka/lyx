@@ -45,7 +45,19 @@ private:
 	bool enabled;
 };
 
+
+//for gcc 4.6
+#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6)
+template <typename X>
+struct RefChanger : unique_ptr<RevertibleRef<X>>
+{
+	RefChanger(unique_ptr<RevertibleRef<X>> p)
+		: unique_ptr<RevertibleRef<X>>(move(p))
+		{}
+};
+#else
 template <typename X> using RefChanger = unique_ptr<RevertibleRef<X>>;
+#endif
 
 
 /// Saves the value of \param ref in a movable object

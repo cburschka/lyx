@@ -24,7 +24,9 @@ struct Revertible {
 	virtual void keep() {}
 };
 
-using Changer = unique_ptr<Revertible>;
+//for gcc 4.6
+//using Changer = unique_ptr<Revertible>;
+typedef unique_ptr<Revertible> Changer;
 
 
 }

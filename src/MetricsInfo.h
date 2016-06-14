@@ -52,9 +52,8 @@ enum Styles {
 class MetricsBase {
 public:
 	///
-	MetricsBase();
-	///
-	MetricsBase(BufferView * bv, FontInfo font, int textwidth);
+	MetricsBase(BufferView * bv = 0, FontInfo font = FontInfo(),
+	            int textwidth = 0);
 
 	/// the current view
 	BufferView * bv;

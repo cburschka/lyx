@@ -36,9 +36,10 @@ namespace lyx {
 //
 /////////////////////////////////////////////////////////////////////////
 
-MetricsBase::MetricsBase()
-	: bv(0), font(), style(LM_ST_TEXT), fontname("mathnormal"), textwidth(0),
-	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
+MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
+	: bv(b), font(move(f)), style(LM_ST_TEXT), fontname("mathnormal"),
+	  textwidth(w), solid_line_thickness_(1), solid_line_offset_(1),
+	  dotted_line_thickness_(1)
 {
 	if (lyxrc.zoom >= 200) {
 		// derive the line thickness from zoom factor
@@ -54,15 +55,6 @@ MetricsBase::MetricsBase()
 		// (increase thickness at 150%, 250% etc.)
 		dotted_line_thickness_ = (lyxrc.zoom + 50) / 100;
 	}
-}
-
-
-MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
-	: MetricsBase()
-{
-	bv = b;
-	font = f;
-	textwidth = w;
 }
 
 
