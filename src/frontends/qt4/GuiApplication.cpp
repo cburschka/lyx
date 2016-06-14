@@ -1671,17 +1671,17 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			boost::crc_32_type crc;
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
-            // we know current_view_ is non-null, because createView sets it.
-            // but let's make sure
-            LASSERT(current_view_, break);
+			// we know current_view_ is non-null, because createView sets it.
+			// but let's make sure
+			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
 			// FIXME but then why check current_view_ here?
 			if (current_view_ && !current_view_->documentBufferView())
 				current_view_->close();
 		} else {
 			// we know !d->views.empty(), so this should be ok
-            // but let's make sure
-            LASSERT(current_view_, break);
+			// but let's make sure
+			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
 		}
 		break;
