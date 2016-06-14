@@ -19,13 +19,23 @@
 namespace lyx {
 namespace frontend {
 
+
 LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
 	: QSyntaxHighlighter(parent)
 {
-	keywordFormat.setForeground(Qt::darkBlue);
+	auto blend = [](QColor color1, QColor color2) {
+		int r = 0.5 * (color1.red() + color2.red());
+		int g = 0.5 * (color1.green() + color2.green());
+		int b = 0.5 * (color1.blue() + color2.blue());
+		return QColor(r, g, b);
+	};
+	QPalette palette = QPalette();
+	QColor text_color = palette.color(QPalette::Active, QPalette::Text);
+	keywordFormat.setForeground(blend(Qt::blue, text_color));
 	keywordFormat.setFontWeight(QFont::Bold);
-	commentFormat.setForeground(Qt::darkGray);
-	mathFormat.setForeground(Qt::red);
+	commentFormat.setForeground(palette.color(QPalette::Disabled,
+	                                          QPalette::Text));
+	mathFormat.setForeground(blend(Qt::red, text_color));
 	warningFormat.setForeground(Qt::red);
 	warningFormat.setFontWeight(QFont::Bold);
 }
