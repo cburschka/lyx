@@ -66,6 +66,13 @@ IconvProcessor::IconvProcessor(string tocode, string fromcode)
 {}
 
 
+// for gcc 4.6
+IconvProcessor::IconvProcessor(IconvProcessor && other)
+	: tocode_(move(other.tocode_)), fromcode_(move(other.fromcode_)),
+	  h_(move(other.h_))
+{}
+
+
 bool IconvProcessor::init()
 {
 	if (h_)

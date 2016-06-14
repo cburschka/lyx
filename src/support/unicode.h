@@ -62,8 +62,8 @@ public:
 		char * out_buffer, size_t max_out_size);
 	/// target encoding
 	std::string to() const { return tocode_; }
-	// required by g++ 4.7
-	IconvProcessor(IconvProcessor &&) = default;
+	// required by g++ 4.6
+	IconvProcessor(IconvProcessor && other);
 };
 
 /// Get the global IconvProcessor instance of the current thread for
