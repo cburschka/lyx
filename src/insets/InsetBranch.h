@@ -61,7 +61,7 @@ private:
 	///
 	void read(Lexer & lex);
 	///
-	docstring const buttonLabel(BufferView const & bv) const;
+	docstring const buttonLabel(BufferView const &) const;
 	///
 	ColorCode backgroundColor(PainterInfo const &) const;
 	///
