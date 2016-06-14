@@ -82,36 +82,38 @@ docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 }
 
 
-docstring const InsetBranch::buttonLabel(BufferView const & bv) const
+docstring const InsetBranch::buttonLabel(BufferView const &) const
 {
 	static char_type const tick = 0x2714; // ✔ U+2714 HEAVY CHECK MARK
 	static char_type const cross = 0x2716; // ✖ U+2716 HEAVY MULTIPLICATION X
-	docstring s = _("Branch: ") + params_.branch;
+
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	bool const inmaster = branchlist.find(params_.branch);
 	bool const inchild = buffer().params().branchlist().find(params_.branch);
-	if (!inmaster && inchild)
-		s = _("Branch (child only): ") + params_.branch;
-	else if (inmaster && !inchild)
-		s = _("Branch (master only): ") + params_.branch;
-	else if (!inmaster)
-		s = _("Branch (undefined): ") + params_.branch;
-	if (!params_.branch.empty()) {
-		// FIXME UNICODE
-		ColorCode c = lcolor.getFromLyXName(to_utf8(params_.branch));
-		if (c == Color_none)
-			s = _("Undef: ") + s;
-	}
+
 	bool const master_selected = isBranchSelected();
 	bool const child_selected = isBranchSelected(true);
+
 	docstring symb = docstring(1, master_selected ? tick : cross);
 	if (inchild && master_selected != child_selected)
 		symb += child_selected ? tick : cross;
-	if (decoration() == InsetLayout::CLASSIC)
-		return symb + (isOpen(bv) ? s : getNewLabel(s));
-	else
-		return symb + params_.branch + ": " + getNewLabel(s);
+
+	if (decoration() == InsetLayout::MINIMALISTIC)
+		return symb + params_.branch;
+
+	docstring s;
+	if (inmaster && inchild)
+		s = _("Branch: ");
+	else if (inchild) // && !inmaster
+		s = _("Branch (child only): ");
+	else if (inmaster) // && !inchild
+		s = _("Branch (master only): ");
+	else // !inmaster && !inchild
+		s = _("Branch (undefined): ");
+	s += params_.branch;
+
+    return symb + s;
 }
 
 
