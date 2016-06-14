@@ -57,7 +57,6 @@ liblyxsupport_a_SOURCES = \
 	FileNameList.h \
 	filetools.cpp \
 	filetools.h \
-	foreach.h \
 	ForkedCalls.cpp \
 	ForkedCalls.h \
 	functional.h \
