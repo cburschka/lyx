@@ -163,8 +163,12 @@ SET(CPACK_SOURCE_IGNORE_FILES
 "/\\\\.project$"
 "/\\\\.cproject$"
 "/\\\\.history$"
+"/\\\\.gitignore$"
+"/\\\\.gitattributes$"
 "\\\\.#"
 "\\\\.swp$"
+"\\\\.my$"
+"\\\\.pyc$"
 "~$"
 "/#"
 "/_CPack_Packages/"
@@ -188,7 +192,12 @@ SET(CPACK_SOURCE_IGNORE_FILES
 "/autom4te\\\\.cache/"
 "/\\\\.deps/"
 "/build/"
+"/attic/"
+"/HTML/"
 "/lyx-2\\\\."
+"/InsetMathXYArrow\\\\..*$"
+"/expectedTestFailures$"
+"/MergedManuals.lyx$"
 )
 
 if(LYX_CPACK)
