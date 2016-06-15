@@ -87,11 +87,11 @@ How do I upgrade from an earlier LyX version?
 What do I need to compile LyX from the source distribution?
 
     * A good C++ compiler.  Development is being done mainly with
-      gcc/g++, but some others work also. As of LyX 1.6.0, you need at
-      least gcc 3.2.x.
+      gcc/g++, but some others work also. As of LyX 2.3.0, you need
+      at least gcc 4.6.x.
 
-    * The Qt4 library, at least version 4.5.0. For all features
-      newer versions (e.g. Qt 4.8) are recommended.
+    * The Qt4 library, at least version 4.8.0. For all features
+      newer versions (e.g. Qt 5.6) are recommended.
 
     Read the file "INSTALL" for more information on compiling.
 
