@@ -272,8 +272,8 @@ if(UNIX OR MINGW)
 	  execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
 	  message(STATUS "Using GCC version ${GCC_VERSION}")
 	  if(GCC_VERSION VERSION_LESS 4.9)
-		  if(GCC_VERSION VERSION_LESS 4.3)
-			  message(FATAL_ERROR "gcc >= 4.3 is required.")
+		  if(GCC_VERSION VERSION_LESS 4.6)
+			  message(FATAL_ERROR "gcc >= 4.6 is required.")
 		  endif()
 		  # <regex> in gcc is unusable in versions less than 4.9.0
 		  # see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
