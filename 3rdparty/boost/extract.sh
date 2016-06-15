@@ -45,11 +45,11 @@ cp -vR needed/libs .
 rm -rf needed
 
 # found by bcp but not needed by us
+rm -rf boost/regex/icu.hpp
 rm -rf boost/typeof
 rm -rf libs/config
 rm -rf libs/smart_ptr
 rm -rf libs/regex/build
 rm -rf libs/regex/test
-
-
+rm -rf libs/regex/src/icu.cpp
 

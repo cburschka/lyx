@@ -18,7 +18,6 @@ boost_add_library(boost_regex
    cpp_regex_traits.cpp
    cregex.cpp
    fileiter.cpp
-   icu.cpp
    instances.cpp
    posix_api.cpp
    regex.cpp
