@@ -151,6 +151,7 @@ cmake/modules/FindMyThesLIB.cmake \
 cmake/modules/FindOpenSSL.cmake \
 cmake/modules/FindQt4.cmake \
 cmake/modules/FindZLIB.cmake \
+cmake/modules/LyXDestinations.cmake \
 cmake/modules/LyXMacros.cmake \
 cmake/modules/LyXPaths.cmake \
 cmake/modules/LyXuic.cmake \
@@ -163,6 +164,7 @@ cmake/po/unix2dos.py \
 cmake/post_install/CMakeLists.txt \
 cmake/scripts/LyXCreateImagesResource.cmake \
 cmake/scripts/LyXGetVersion.cmake \
+cmake/scripts/xmingw \
 keystest/cache-bisect.py \
 keystest/keytest.py \
 keystest/make_screenshot_html.py
