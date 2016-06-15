@@ -162,7 +162,6 @@ Build options
     -- LYX_CONSOLE              = ON     : Show console on Windows
     -- LYX_VLD                  = OFF    : Use VLD with MSVC
     -- LYX_WALL                 = OFF    : Enable all warnings
-    -- LYX_CONFIGURE_CHECKS     = OFF    : Also run configure checks for MSVC
     -- LYX_DEPENDENCIES_DOWNLOAD= OFF    : Download precompiled 3rd party libraries for MSVC 10
 
 

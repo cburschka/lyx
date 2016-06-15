@@ -156,7 +156,6 @@ LYX_OPTION(PROFILE              "Build with options for gprof" OFF GCC)
 LYX_OPTION(CONSOLE               "Show console on Windows, enforce with =FORCE" ON MSVC)
 LYX_OPTION(VLD                   "Use VLD with MSVC" OFF MSVC)
 LYX_OPTION(WALL                  "Enable all warnings" OFF MSVC)
-LYX_OPTION(CONFIGURE_CHECKS      "Also run configure checks for MSVC" OFF MSVC)
 LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 
 # APPLE specific
@@ -904,13 +903,9 @@ if (WIN32 AND Qt5Core_FOUND)
 	set(Z_PREFIX 1)
 endif()
 
-# compiler tests, config.h generation
-if(MSVC AND NOT LYX_CONFIGURE_CHECKS)
-	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.msvc ${TOP_BINARY_DIR}/configCompiler.h)
-else()
-	include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
-	configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
-endif()
+# compiler tests, config.h generation LYX_CONFIGURE_CHECKS
+include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
+configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
 
 set(QPA_XCB)
 if(Qt5X11Extras_FOUND AND QT_USES_X11)
