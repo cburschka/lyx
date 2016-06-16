@@ -38,14 +38,16 @@ namespace lyx {
 namespace support {
 namespace os {
 
-static string const python2(string const & binary, bool verbose = false)
+static string const python23(string const & binary, bool verbose = false)
 {
 	if (verbose)
 		lyxerr << "Examining " << binary << "\n";
 
-	// Check whether this is a python 2 binary.
+	// Check whether this is a python 2 or 3 binary.
 	cmd_ret const out = runCommand(binary + " -V 2>&1");
-	if (out.first < 0 || !prefixIs(out.second, "Python 2"))
+	if (out.first < 0 ||
+	    (!prefixIs(out.second, "Python 2") &&
+	     !prefixIs(out.second, "Python 3")))
 		return string();
 
 	if (verbose)
@@ -64,9 +66,9 @@ string const python(bool reset)
 {
 	// FIXME THREAD
 	// Check whether the first python in PATH is the right one.
-	static string command = python2("python -tt");
+	static string command = python23("python -tt");
 	if (reset) {
-		command = python2("python -tt");
+		command = python23("python -tt");
 	}
 
 	if (command.empty()) {
@@ -85,13 +87,13 @@ string const python(bool reset)
 			for (int i = 0; i < list.size() && command.empty(); ++i) {
 				string const binary = addName(localdir,
 					list.at(i).toLocal8Bit().constData());
-				command = python2(binary, true);
+				command = python23(binary, true);
 			}
 		}
 
 		// Default to "python" if no usable binary was found.
 		if (command.empty()) {
-			lyxerr << "Warning: No python v2.x binary found.\n";
+			lyxerr << "Warning: No python v2.x or 3.x binary found.\n";
 			command = "python";
 		}
 
