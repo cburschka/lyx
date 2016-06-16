@@ -20,14 +20,6 @@ if INSTALL_MACOSX
 lyxclient_LDFLAGS = -framework AppKit
 endif
 
-# everything below the line containing the single backslashs
-# an ugly hack and needed because of the
-# linking problems described in ../Makefile.am
-# These four objects are linked as object files as they are not
-# referenced within the core and therefore are not picked up
-# by the linker without looping over libs. We do not want that,
-# and in fact libtools seems not able to do that.
-
 SOURCEFILES = \
   boost.cpp \
   client.cpp

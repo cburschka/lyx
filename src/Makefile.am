@@ -51,8 +51,6 @@ lyx_LDFLAGS = -framework AppKit -framework ApplicationServices \
 	-Wl,-rpath,@executable_path/../Frameworks
 endif
 
-#lyx_LDFLAGS=-Wl,-O1
-
 if INSTALL_MACOSX
 APPLESPELL = AppleSpellChecker.cpp AppleSpellChecker.h
 endif
@@ -72,10 +70,6 @@ HUNSPELL = HunspellChecker.cpp HunspellChecker.h
 PWL = PersonalWordList.cpp PersonalWordList.h
 endif
 
-# These four objects are linked as object files as they are not
-# referenced within the core and therefore are not picked up
-# by the linker without looping over libs. We do not want that,
-# and in fact libtools seems not able to do that.
 lyx_SOURCES = \
 	main.cpp \
 	$(APPLESPELL) \
@@ -675,11 +669,6 @@ HEADERFILESINSETS = \
 	insets/InsetTOC.h \
 	insets/InsetVSpace.h \
 	insets/InsetWrap.h
-
-#	insets/InsetList.cpp \
-#	insets/InsetList.h \
-#	insets/InsetSection.h \
-#	insets/InsetSection.cpp
 
 lyxinsets.cpp:
 	$(AM_V_GEN)for file in $(SOURCEFILESINSETS) ; do echo '#include "'$${file}'"' ; done >$@
