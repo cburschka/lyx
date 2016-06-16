@@ -204,10 +204,10 @@ def get_encoding(language, inputencoding, format, cjk_encoding):
 class LyX_base:
     """This class carries all the information of the LyX file."""
 
-    def __init__(self, end_format = 0, input = "", output = "", error = "",
-                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = "", systemlyxdir = '', language = "english",
-                 encoding = "auto"):
+    def __init__(self, end_format = 0, input = u'', output = u'', error = u'',
+                 debug = default_debug__, try_hard = 0, cjk_encoding = u'',
+                 final_version = u'', systemlyxdir = u'', language = u'english',
+                 encoding = u'auto'):
 
         """Arguments:
         end_format: final format that the file should be converted. (integer)
@@ -459,7 +459,7 @@ class LyX_base:
 
         # Since we do not know the encoding yet we need to read the input as
         # bytes in binary mode, and convert later to unicode.
-        if input and input != '-':
+        if input and input != u'-':
             self.dir = os.path.dirname(os.path.abspath(input))
             try:
                 gzip.open(input).readline()
@@ -469,7 +469,7 @@ class LyX_base:
                 self.input = open(input, 'rb')
                 self.compressed = False
         else:
-            self.dir = ''
+            self.dir = u''
             self.input = os.fdopen(sys.stdin.fileno(), 'rb')
             self.compressed = False
 
@@ -817,9 +817,9 @@ class LyX_base:
 class File(LyX_base):
     " This class reads existing LyX files."
 
-    def __init__(self, end_format = 0, input = "", output = "", error = "",
-                 debug = default_debug__, try_hard = 0, cjk_encoding = '',
-                 final_version = '', systemlyxdir = ''):
+    def __init__(self, end_format = 0, input = u'', output = u'', error = u'',
+                 debug = default_debug__, try_hard = 0, cjk_encoding = u'',
+                 final_version = u'', systemlyxdir = u''):
         LyX_base.__init__(self, end_format, input, output, error,
                           debug, try_hard, cjk_encoding, final_version,
                           systemlyxdir)

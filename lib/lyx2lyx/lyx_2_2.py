@@ -39,10 +39,6 @@ from parser_tools import find_token, find_token_backwards, find_re, \
      find_end_of_inset, find_end_of_layout, find_nonempty_line, \
      get_containing_layout, get_value, check_token
 
-# Provide support for both python 2 and 3
-PY2 = sys.version_info[0] == 2
-# End of code to support for both python 2 and 3
-
 ####################################################################
 # Private helper functions
 
@@ -1135,11 +1131,11 @@ def convert_origin(document):
     if i == -1:
         document.warning("Malformed LyX document: No \\textclass!!")
         return
-    if document.dir == "":
-        origin = "stdin"
+    if document.dir == u'':
+        origin = u'stdin'
     else:
-        relpath = ''
-        if document.systemlyxdir and document.systemlyxdir != '':
+        relpath = u''
+        if document.systemlyxdir and document.systemlyxdir != u'':
             try:
                 if os.path.isabs(document.dir):
                     absdir = os.path.normpath(document.dir)
@@ -1150,16 +1146,14 @@ def convert_origin(document):
                 else:
                     abssys = os.path.normpath(os.path.abspath(document.systemlyxdir))
                 relpath = os.path.relpath(absdir, abssys)
-                if relpath.find('..') == 0:
-                    relpath = ''
+                if relpath.find(u'..') == 0:
+                    relpath = u''
             except:
-                relpath = ''
-        if relpath == '':
-            origin = document.dir.replace('\\', '/') + '/'
+                relpath = u''
+        if relpath == u'':
+            origin = document.dir.replace(u'\\', u'/') + u'/'
         else:
-            origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
-        if os.name != 'nt' and PY2:
-            origin = unicode(origin, sys.getfilesystemencoding())
+            origin = os.path.join(u"/systemlyxdir", relpath).replace(u'\\', u'/') + u'/'
     document.header[i:i] = ["\\origin " + origin]
 
 

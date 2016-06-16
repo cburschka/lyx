@@ -1893,8 +1893,7 @@ def convert_graphics(document):
             return
         i = i + 1
         filename = document.body[j].split()[1]
-        absname = os.path.normpath(os.path.join(document.dir, filename))
-        if document.input == stdin and not os.path.isabs(filename):
+        if document.dir == u'' and not os.path.isabs(filename):
             # We don't know the directory and cannot check the document.
             # We could use a heuristic and take the current directory,
             # and we could try to find out if documentname has an extension,
@@ -1905,6 +1904,7 @@ def convert_graphics(document):
          You may need to correct the document manually or run
          lyx2lyx again with the .lyx document as commandline argument.""" % filename)
             continue
+        absname = os.path.normpath(os.path.join(document.dir, filename))
         # This needs to be the same algorithm as in pre 233 insetgraphics
         if access(absname, F_OK):
             continue
