@@ -36,7 +36,8 @@ AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES) $(ZLIB_INCLUDES)
 BUILT_SOURCES = lyxclient.cpp
 CLEANFILES += lyxclient.cpp
 
-lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
+nodist_lyxclient_SOURCES = lyxclient.cpp
+lyxclient_SOURCES = $(HEADERFILES)
 
 else
 

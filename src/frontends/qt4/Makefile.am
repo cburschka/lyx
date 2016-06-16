@@ -362,8 +362,8 @@ liblyxqt4.cpp:
 
 if MONOLITHIC_FRONTEND_QT
 
+nodist_liblyxqt4_a_SOURCES += liblyxqt4.cpp
 liblyxqt4_a_SOURCES = \
-	liblyxqt4.cpp \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
 

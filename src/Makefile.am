@@ -328,7 +328,8 @@ if MONOLITHIC_CORE
 BUILT_SOURCES += lyxcore.cpp $(STANDALONEFILES)
 CLEANFILES += lyxcore.cpp
 
-liblyxcore_a_SOURCES = lyxcore.cpp $(STANDALONEFILES) $(HEADERFILESCORE)
+nodist_liblyxcore_a_SOURCES = lyxcore.cpp
+liblyxcore_a_SOURCES = $(STANDALONEFILES) $(HEADERFILESCORE)
 
 else
 
@@ -540,7 +541,8 @@ if MONOLITHIC_MATHED
 BUILT_SOURCES += lyxmathed.cpp
 CLEANFILES += lyxmathed.cpp
 
-liblyxmathed_a_SOURCES = lyxmathed.cpp $(HEADERFILESMATHED)
+nodist_liblyxmathed_a_SOURCES = lyxmathed.cpp
+liblyxmathed_a_SOURCES = $(HEADERFILESMATHED)
 
 else
 
@@ -678,7 +680,8 @@ if MONOLITHIC_INSETS
 BUILT_SOURCES += lyxinsets.cpp
 CLEANFILES += lyxinsets.cpp
 
-liblyxinsets_a_SOURCES = lyxinsets.cpp $(HEADERFILESINSETS)
+nodist_liblyxinsets_a_SOURCES = lyxinsets.cpp
+liblyxinsets_a_SOURCES = $(HEADERFILESINSETS)
 
 else
 
