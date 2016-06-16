@@ -77,7 +77,7 @@ string const python(bool reset)
 		vector<string> const path = getEnvPath("PATH");
 		vector<string>::const_iterator it = path.begin();
 		vector<string>::const_iterator const end = path.end();
-		lyxerr << "Looking for python v2.x ...\n";
+		lyxerr << "Looking for python v2.x or 3.x ...\n";
 		for (; it != end; ++it) {
 			QString const dir = toqstr(*it);
 			string const localdir = dir.toLocal8Bit().constData();
