@@ -172,7 +172,6 @@ static void build_translator()
 	insetnames[MATH_UNDERSET_CODE] = InsetName("mathunderset");
 	insetnames[MATH_UNKNOWN_CODE] = InsetName("mathunknown");
 	insetnames[MATH_XARROW_CODE] = InsetName("mathxarrow");
-	insetnames[MATH_XYARROW_CODE] = InsetName("mathxyarrow");
 	insetnames[MATH_XYMATRIX_CODE] = InsetName("mathxymatrix");
 	insetnames[MATH_DIAGRAM_CODE] = InsetName("mathdiagram");
 	insetnames[MATH_MACRO_CODE] = InsetName("mathmacro");

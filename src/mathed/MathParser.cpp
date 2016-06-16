@@ -1943,23 +1943,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			cell->push_back(createInsetMath(t.cs(), buf));
 			parse2(cell->back(), FLAG_ITEM, mode, false);
 		}
-
-		// Disabled
-		else if (1 && t.cs() == "ar") {
-			auto p = make_unique<InsetMathXYArrow>();
-			// try to read target
-			parse(p->cell(0), FLAG_OTPTION, mode);
-			// try to read label
-			if (nextToken().cat() == catSuper || nextToken().cat() == catSub) {
-				p->up_ = nextToken().cat() == catSuper;
-				getToken();
-				parse(p->cell(1), FLAG_ITEM, mode);
-				//lyxerr << "read label: " << p->cell(1) << endl;
-			}
-
-			cell->push_back(MathAtom(p.release()));
-			//lyxerr << "read cell: " << cell << endl;
-		}
 #endif
 
 		else if (t.cs() == "lyxmathsym") {

@@ -217,11 +217,9 @@ enum InsetCode {
 	///
 	MATH_XARROW_CODE,
 	///
-	MATH_XYARROW_CODE,
+	MATH_XYMATRIX_CODE,
 	///
-	MATH_XYMATRIX_CODE, // 100
-	///
-	MATH_MACRO_CODE,
+	MATH_MACRO_CODE, // 100
 	///
 	ARGUMENT_PROXY_CODE,
 	///
@@ -229,9 +227,9 @@ enum InsetCode {
 	///
 	MATH_DIAGRAM_CODE, 
 	///
-	SCRIPT_CODE, // 105
+	SCRIPT_CODE,
 	///
-	IPA_CODE,
+	IPA_CODE, // 105
 	///
 	IPACHAR_CODE,
 	///

@@ -195,7 +195,6 @@ SET(CPACK_SOURCE_IGNORE_FILES
 "/attic/"
 "/HTML/"
 "/lyx-2\\\\."
-"/InsetMathXYArrow\\\\..*$"
 "/expectedTestFailures$"
 "/MergedManuals.lyx$"
 )
