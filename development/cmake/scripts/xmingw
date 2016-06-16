@@ -19,7 +19,7 @@ builddir=$PWD
 # ---------------------------------------------------------
 # set 'versionname' to overwrite generated one based on 'ver'
 #
-ver=2.2
+ver=2.3
 date=`date --utc '+%Y.%m.%d-%H.%M'`
 if [ -z $versionname ]; then
     versionname=LyX$ver-$date
