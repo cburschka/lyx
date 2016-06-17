@@ -30,12 +30,14 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
 
+from parser_tools import find_token, get_value
+
 #from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
 #  lyx2verbatim, length_in_bp, convert_info_insets
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
-from parser_tools import find_token
+from lyx2lyx_tools import add_to_preamble
 
 ####################################################################
 # Private helper functions
@@ -48,12 +50,29 @@ from parser_tools import find_token
 ###
 ###############################################################################
 
+def convert_microtype(document):
+    " Add microtype settings. "
+    i = find_token(document.header, "\\font_tt_scale" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\font_tt_scale.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{microtype}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_microtype 0")
+    else:
+        document.header.insert(i + 1, "\\use_microtype 1")
+        del document.preamble[j]
+
+
 def revert_microtype(document):
     " Remove microtype settings. "
     i = find_token(document.header, "\\use_microtype", 0)
     if i == -1:
         return
+    value = get_value(document.header, "\\use_microtype" , i).split()[0]
     del document.header[i]
+    if value == "1":
+        add_to_preamble(document, ["\\usepackage{microtype}"])
 
 
 
@@ -63,7 +82,7 @@ def revert_microtype(document):
 
 supported_versions = ["2.3.0", "2.3"]
 convert = [
-           [509, []]
+           [509, [convert_microtype]]
           ]
 
 revert =  [
