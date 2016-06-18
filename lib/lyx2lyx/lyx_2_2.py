@@ -1154,8 +1154,7 @@ def convert_origin(document):
             origin = document.dir.replace('\\', '/') + '/'
         else:
             origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
-        if os.name != 'nt':
-            origin = unicode(origin, sys.getfilesystemencoding())
+        origin = unicode(origin, sys.getfilesystemencoding())
     document.header[i:i] = ["\\origin " + origin]
 
 
