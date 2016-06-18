@@ -69,8 +69,20 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("name", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("reference", ParamInfo::LATEX_REQUIRED,
 				ParamInfo::HANDLING_ESCAPE);
+		param_info_.add("plural", ParamInfo::LYX_INTERNAL);
+		param_info_.add("caps", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
+}
+
+
+namespace {
+
+void capitalize(docstring & s) {
+	char_type t = uppercase(s[0]);
+	s[0] = t;
+}
+
 }
 
 
@@ -89,7 +101,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 // label, thus: \prettyref{pfx:suffix}.
 //
 docstring InsetRef::getFormattedCmd(docstring const & ref, 
-	docstring & label, docstring & prefix) const
+	docstring & label, docstring & prefix, docstring const & caps) const
 {
 	static docstring const defcmd = from_ascii("\\ref");
 	static docstring const prtcmd = from_ascii("\\prettyref");
@@ -127,6 +139,9 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 			return defcmd;
 		}
 	}
+	if (caps == "true") {
+		capitalize(prefix);
+	}
 	return from_ascii("\\") + prefix + from_ascii("ref");
 }
 
@@ -158,8 +173,12 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 	else if (cmd == "formatted") {
 		docstring label;
 		docstring prefix;
-		docstring const fcmd = getFormattedCmd(data, label, prefix);
-		os << fcmd << '{' << label << '}';
+		docstring const fcmd = 
+			getFormattedCmd(data, label, prefix, getParam("caps"));
+		os << fcmd;
+		if (buffer().params().use_refstyle && getParam("plural") == "true")
+		    os << "[s]";
+		os << '{' << label << '}';
 	}
 	else if (cmd == "labelonly") {
 		os << getParam("reference");
@@ -233,8 +252,12 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			        op.local_font->language()->lang());
 		else if (cmd == "eqref")
 			display_string = '(' + value + ')';
-		else if (cmd == "formatted")
+		else if (cmd == "formatted") {
 			display_string = il->prettyCounter();
+			if (buffer().params().use_refstyle && getParam("caps") == "true")
+				capitalize(display_string);
+			// it is hard to see what to do about plurals...
+		}
 		else if (cmd == "nameref")
 			// FIXME We don't really have the ability to handle these
 			// properly in XHTML output yet (bug #8599).
@@ -327,7 +350,8 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
-		docstring const fcmd = getFormattedCmd(data, label, prefix);
+		docstring const fcmd = 
+			getFormattedCmd(data, label, prefix, getParam("caps"));
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
 			if (prefix == "cha")

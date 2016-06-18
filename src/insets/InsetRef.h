@@ -111,7 +111,7 @@ private:
 	/// \param argument for reference command
 	/// \param prefix of the label (before :)
 	docstring getFormattedCmd(docstring const & ref, docstring & label,
-			docstring & prefix) const;
+			docstring & prefix, docstring const & caps) const;
 
 	///
 	mutable docstring screen_label_;

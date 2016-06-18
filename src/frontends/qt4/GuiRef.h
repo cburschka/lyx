@@ -69,6 +69,8 @@ private:
 	void applyView();
 	/// update dialog
 	void updateContents();
+	///
+	void enableBoxes();
 
 	/// is name allowed for this ?
 	bool nameAllowed();
