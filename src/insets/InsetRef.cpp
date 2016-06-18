@@ -57,7 +57,8 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 		|| s == "vpageref"
 		|| s == "formatted"
 		|| s == "eqref"
-		|| s == "nameref";
+		|| s == "nameref"
+		|| s == "labelonly";
 }
 
 
@@ -159,6 +160,9 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		docstring prefix;
 		docstring const fcmd = getFormattedCmd(data, label, prefix);
 		os << fcmd << '{' << label << '}';
+	}
+	else if (cmd == "labelonly") {
+		os << getParam("reference");
 	}
 	else {
 		// We don't want to output p_["name"], since that is only used 
@@ -356,6 +360,7 @@ InsetRef::type_info const InsetRef::types[] = {
 	{ "vref",      N_("Standard+Textual Page"), N_("Ref+Text: ")},
 	{ "formatted", N_("Formatted"),             N_("Format: ")},
 	{ "nameref",   N_("Reference to Name"),     N_("NameRef: ")},
+	{ "labelonly", N_("Label Only"),            N_("Label: ")},
 	{ "", "", "" }
 };
 
