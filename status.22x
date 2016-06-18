@@ -66,6 +66,9 @@ What's new
 
 - Correctly protect the \pagebreak command when needed (bug 10092).
 
+- Resolve problem on Windows with importing files from directories with
+  accented characters on FAT drives (bug 10218).
+
 
 * LYX2LYX
 
