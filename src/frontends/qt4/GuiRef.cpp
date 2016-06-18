@@ -118,7 +118,8 @@ void GuiRef::gotoClicked()
 	// to which we are going (or from which we are returning) is
 	// restored in the dialog. It's a bit of a hack, but it works,
 	// and no-one seems to have any better idea.
-	bool const toggled = last_reference_.empty();
+	bool const toggled = 
+		last_reference_.isEmpty() || last_reference_.isNull();
 	if (toggled)
 		last_reference_ = referenceED->text();
 	gotoRef();
