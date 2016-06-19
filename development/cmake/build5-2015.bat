@@ -36,7 +36,7 @@ REM Add path to qmake here or set PATH correctly on your system.
 set PATH=C:\Qt\Qt5.6.0-MSVC2015\5.6\msvc2015\bin;%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
-set GNUWIN32_DIR=D:\LyXGit\Master\lyx-windows-deps-msvc2010
+set GNUWIN32_DIR=D:\LyXGit\Master\lyx-windows-deps-msvc2015
 set LYX_SOURCE=D:\LyXGit\Master\
 set LYX_BUILD=D:\LyXGit\Master\compile-2015
 
