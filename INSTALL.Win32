@@ -20,6 +20,8 @@ Compiling with Microsoft Visual C++
 	Download the latest Qt for Open Source C++ development on Windows (VS2015)
 	from https://qt.io/download-open-source/
 	Qt 5.6.x is recommended, but 5.7.x or later versions should work as well.
+	Make sure that the bin subfolder of the Qt installation (e.g.
+	C:\Qt\Qt5.6.1\5.6\msvc2015\bin) is listed in the PATH environment variable.
 
 3	Install Python
 
@@ -32,7 +34,9 @@ Compiling with Microsoft Visual C++
 
 5	Configure
 
-	- Open the MSVC 2015 command prompt and run the CMake GUI from there.
+	- Open the "Developer Command Prompt for VS2015" from the
+	  "Visual Studio 2015\Visual Studio Tools" subfolder of the start menu.
+	  Run the CMake GUI from the command window that was opened.
  	  Alternatively, you can create a .bat file that first contains the line
 	  call "C:\Program Files (x86)\Microsoft Visual Studio 2015\VC\vcvarsall.bat" x86
 	  and then calls the CMake GUI and use this .bat file to start CMake.
@@ -45,10 +49,6 @@ Compiling with Microsoft Visual C++
 
 	- Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	  Pre-compiled dependencies will automatically be downloaded.
-
-	- Set QT_QMAKE_EXECUTABLE to e.g.
-	  C:\Qt\qt-everywhere-opensource-src-5.6.1\bin\qmake.exe
-	  and Configure again.
 
 	- Enable the LYX_INSTALL option, set CMAKE_INSTALL_PREFIX to
 	  C:\LyX\lyx-23-install and click Configure.
