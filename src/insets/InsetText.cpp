@@ -48,6 +48,7 @@
 #include "Row.h"
 #include "sgml.h"
 #include "TexRow.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "Text.h"
 #include "TextMetrics.h"

@@ -73,6 +73,7 @@
 #include "LyX.h" // use_gui
 #include "OutputParams.h"
 
+
 using namespace std;
 using namespace lyx::support;
 
@@ -669,9 +670,8 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		InsetSpaceParams isp(true);
 		InsetSpace::string2params(to_utf8(str), isp);
 		InsetSpace is(isp);
-		TexRow texrow;
 		odocstringstream ods;
-		otexstream os(ods, texrow);
+		otexstream os(ods, false);
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		OutputParams op(ascii);
 		is.latex(os, op);

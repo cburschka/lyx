@@ -53,7 +53,7 @@ void TexRow::RowEntryList::forceAddEntry(RowEntry const & entry)
 }
 
 
-TexRow::TextEntry TexRow::RowEntryList::getTextEntry() const
+TextEntry TexRow::RowEntryList::getTextEntry() const
 {
 	if (text_entry_ < size())
 		return operator[](text_entry_).text;
@@ -61,7 +61,7 @@ TexRow::TextEntry TexRow::RowEntryList::getTextEntry() const
 }
 
 
-TexRow::RowEntry TexRow::RowEntryList::entry() const
+RowEntry TexRow::RowEntryList::entry() const
 {
 	if (0 < size())
 		return operator[](0);
@@ -77,8 +77,8 @@ void TexRow::RowEntryList::append(RowEntryList const & row)
 }
 
 
-TexRow::TextEntry const TexRow::text_none = { -1, 0 };
-TexRow::RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
+TextEntry const TexRow::text_none = { -1, 0 };
+RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
 
 
 bool TexRow::isNone(TextEntry const & t)
@@ -101,7 +101,7 @@ void TexRow::reset(bool enable)
 }
 
 
-TexRow::RowEntry TexRow::textEntry(int id, int pos)
+RowEntry TexRow::textEntry(int id, int pos)
 {
 	RowEntry entry;
 	entry.is_math = false;
@@ -111,7 +111,7 @@ TexRow::RowEntry TexRow::textEntry(int id, int pos)
 }
 
 
-TexRow::RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
+RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 {
 	RowEntry entry;
 	entry.is_math = true;
@@ -121,8 +121,8 @@ TexRow::RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 }
 
 
-bool operator==(TexRow::RowEntry const & entry1,
-				TexRow::RowEntry const & entry2)
+bool operator==(RowEntry const & entry1,
+				RowEntry const & entry2)
 {
 	return entry1.is_math == entry2.is_math
 		&& (entry1.is_math
@@ -216,7 +216,7 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 }
 
 
-TexRow::RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
+RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 {
 	RowEntry entry;
 	InsetMath * insetMath = slice.asInsetMath();
@@ -408,7 +408,7 @@ std::pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 		// matches either at a deeper level, or at the same level but not
 		// before.
 		for (size_t i = best_slice; i < n; ++i) {
-			TexRow::RowEntry entry_i = rowEntryFromCursorSlice(dit[i]);
+			RowEntry entry_i = rowEntryFromCursorSlice(dit[i]);
 			if (sameParOrInsetMath(*it, entry_i)) {
 				if (comparePos(*it, entry_i) >= 0
 					&& (i > best_slice

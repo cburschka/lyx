@@ -48,19 +48,6 @@ namespace Alert {
 
 
 //
-// Dummy TexRow support (needed by docstream)
-//
-
-
-void TexRow::newline()
-{}
-
-
-void TexRow::newlines(int)
-{}
-
-
-//
 // Dummy LyXRC support
 //
 

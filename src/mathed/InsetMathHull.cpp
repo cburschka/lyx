@@ -43,6 +43,7 @@
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "sgml.h"
+#include "TexRow.h"
 #include "TextClass.h"
 #include "TextPainter.h"
 #include "TocBackend.h"
@@ -614,8 +615,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		odocstringstream os;
-		TexRow texrow(false);
-		otexrowstream ots(os,texrow);
+		otexrowstream ots(os, false);
 		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		dim.wid = os.str().size();
@@ -631,8 +631,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		odocstringstream os;
-		TexRow texrow(false);
-		otexrowstream ots(os,texrow);
+		otexrowstream ots(os, false);
 		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
@@ -651,8 +650,7 @@ static docstring latexString(InsetMathHull const & inset)
 	static Encoding const * encoding = 0;
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
-	TexRow texrow(false);
-	otexrowstream ots(ls,texrow);
+	otexrowstream ots(ls, false);
 	WriteStream wi(ots, false, true, WriteStream::wsPreview, encoding);
 	inset.write(wi);
 	return ls.str();
@@ -2182,8 +2180,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
-	TexRow texrow(false);
-	otexrowstream ots(oss,texrow);
+	otexrowstream ots(oss, false);
 	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	oss << "Formula ";
 	write(wi);
@@ -2226,8 +2223,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	}
 
 	odocstringstream oss;
-	TexRow texrow(false);
-	otexrowstream ots(oss,texrow);
+	otexrowstream ots(oss, false);
 	Encoding const * const enc = encodings.fromLyXName("utf8");
 	WriteStream wi(ots, false, true, WriteStream::wsDefault, enc);
 
@@ -2269,8 +2265,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
 	odocstringstream ls;
-	TexRow texrow;
-	otexstream ols(ls, texrow);
+	otexstream ols(ls);
 	if (runparams.flavor == OutputParams::XML) {
 		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
@@ -2288,7 +2283,7 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	} else {
 		ms << MTag("alt role='tex'");
 		latex(ols, runparams);
-		res = texrow.rows();
+		res = ols.texrow().rows();
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");
 	}
@@ -2537,8 +2532,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
 		odocstringstream ls;
-		TexRow texrow(false);
-		otexrowstream ots(ls,texrow);
+		otexrowstream ots(ls, false);
 		WriteStream wi(ots, false, true, WriteStream::wsPreview);
 		ModeSpecifier specifier(wi, MATH_MODE);
 		mathAsLatex(wi);

@@ -38,6 +38,7 @@
 #include "LyXRC.h"
 #include "OutputParams.h"
 #include "Spacing.h"
+#include "texstream.h"
 #include "TexRow.h"
 #include "VSpace.h"
 #include "PDFOptions.h"

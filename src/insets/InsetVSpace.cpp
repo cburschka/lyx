@@ -24,6 +24,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
+#include "texstream.h"
 #include "Text.h"
 
 #include "support/debug.h"

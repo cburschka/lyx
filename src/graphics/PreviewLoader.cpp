@@ -25,6 +25,7 @@
 #include "output.h"
 #include "OutputParams.h"
 #include "TexRow.h"
+#include "texstream.h"
 
 #include "frontends/Application.h" // hexName
 
@@ -625,8 +626,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 
-	TexRow texrow;
-	otexstream os(of, texrow);
+	otexstream os(of);
 	OutputParams runparams(&enc);
 	LaTeXFeatures features(buffer_, buffer_.params(), runparams);
 

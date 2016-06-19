@@ -21,6 +21,7 @@
 #include "FuncStatus.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
+#include "texstream.h"
 
 #include "insets/InsetBox.h"
 #include "insets/InsetBranch.h"

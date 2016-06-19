@@ -13,7 +13,6 @@
 #define BUFFER_H
 
 #include "OutputEnums.h"
-#include "OutputParams.h"
 
 #include "support/unique_ptr.h"
 #include "support/strfwd.h"
@@ -51,6 +50,7 @@ class MacroData;
 class MacroNameSet;
 class MacroSet;
 class OutputParams;
+class otexstream;
 class Paragraph;
 class ParConstIterator;
 class ParIterator;
@@ -325,13 +325,13 @@ public:
 	    method with a string stream if the output is supposed to go to a
 	    file. \code
 	    ofdocstream ofs;
-	    otexstream os(ofs, texrow);
+	    otexstream os(ofs);
 	    ofs.open("test.tex");
 	    writeLaTeXSource(os, ...);
 	    ofs.close();
 	    \endcode is NOT equivalent to \code
 	    odocstringstream oss;
-	    otexstream os(oss, texrow);
+	    otexstream os(oss);
 	    writeLaTeXSource(os, ...);
 	    ofdocstream ofs;
 	    ofs.open("test.tex");

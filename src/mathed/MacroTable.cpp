@@ -200,8 +200,7 @@ int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 	// output template
 	MathMacroTemplate const & tmpl =
 		static_cast<MathMacroTemplate const &>(*inset);
-	TexRow texrow(false);
-	otexrowstream ots(os,texrow);
+	otexrowstream ots(os, false);
 	WriteStream wi(ots, false, true, WriteStream::wsDefault);
 	return tmpl.write(wi, overwriteRedefinition);
 }

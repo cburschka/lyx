@@ -22,10 +22,11 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "CutAndPaste.h"
-#include "FuncStatus.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
+#include "TexRow.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
@@ -1268,8 +1269,8 @@ void InsetMathGrid::write(WriteStream & os,
 		for (col_type col = beg_col; col < end_col;) {
 			int nccols = 1;
 			idx_type const idx = index(row, col);
-			TexRow::RowEntry entry = os.texrow().mathEntry(id(),idx);
-			os.texrow().startMath(id(),idx);
+			RowEntry entry = TexRow::mathEntry(id(),idx);
+			os.texrow().start(entry);
 			if (col >= lastcol) {
 				++col;
 				continue;

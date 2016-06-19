@@ -31,6 +31,7 @@
 #include "Paragraph.h"
 #include "ParIterator.h"
 #include "Row.h"
+#include "texstream.h"
 #include "Text.h"
 #include "TextMetrics.h"
 #include "TocBackend.h"
@@ -1566,8 +1567,7 @@ void Cursor::normalize()
 			<< pos() << ' ' << lastpos() <<  " in idx: " << idx()
 		       << " in atom: '";
 		odocstringstream os;
-		TexRow texrow(false);
-		otexrowstream ots(os,texrow);
+		otexrowstream ots(os, false);
 		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		inset().asInsetMath()->write(wi);
 		lyxerr << to_utf8(os.str()) << endl;

@@ -23,6 +23,7 @@
 #include "OutputParams.h"
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
+#include "texstream.h"
 #include "TextClass.h"
 
 #include "insets/InsetBibitem.h"

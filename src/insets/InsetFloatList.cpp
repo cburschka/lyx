@@ -26,6 +26,7 @@
 #include "Lexer.h"
 #include "Paragraph.h"
 #include "output_xhtml.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 

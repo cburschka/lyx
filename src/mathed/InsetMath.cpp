@@ -53,8 +53,7 @@ void InsetMath::dump() const
 {
 	lyxerr << "---------------------------------------------" << endl;
 	odocstringstream os;
-	TexRow texrow(false);
-	otexrowstream ots(os,texrow);
+	otexrowstream ots(os, false);
 	WriteStream wi(ots, false, true, WriteStream::wsDefault);
 	write(wi);
 	lyxerr << to_utf8(os.str());
@@ -158,8 +157,7 @@ HullType InsetMath::getType() const
 ostream & operator<<(ostream & os, MathAtom const & at)
 {
 	odocstringstream oss;
-	TexRow texrow(false);
-	otexrowstream ots(oss,texrow);
+	otexrowstream ots(oss, false);
 	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	at->write(wi);
 	return os << to_utf8(oss.str());
@@ -168,8 +166,7 @@ ostream & operator<<(ostream & os, MathAtom const & at)
 
 odocstream & operator<<(odocstream & os, MathAtom const & at)
 {
-	TexRow texrow(false);
-	otexrowstream ots(os,texrow);
+	otexrowstream ots(os, false);
 	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	at->write(wi);
 	return os;

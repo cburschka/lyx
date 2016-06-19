@@ -12,10 +12,16 @@
 #ifndef LYX_TEXSTREAM_H
 #define LYX_TEXSTREAM_H
 
-#include "TexRow.h"
 #include "support/docstream.h"
+#include "support/unique_ptr.h"
 
 namespace lyx {
+
+class TexRow;
+
+
+// declared below
+class otexstringstream;
 
 /** Wrapper class for odocstream.
     This class is used to automatically count the lines of the exported latex
@@ -25,21 +31,24 @@ namespace lyx {
 class otexrowstream {
 public:
 	///
-	otexrowstream(odocstream & os, TexRow & texrow)
-		: os_(os), texrow_(texrow) {}
+	explicit otexrowstream(odocstream & os, bool enable = true);
+	/// defaulted
+	~otexrowstream();
 	///
 	odocstream & os() { return os_; }
 	///
-	TexRow & texrow() { return texrow_; }
+	TexRow & texrow() { return *texrow_; }
+	///
+	unique_ptr<TexRow> && releaseTexRow();
 	///
 	void put(char_type const & c);
 	///
-	void append(docstring const &, TexRow const &);
+	void append(docstring const & str, TexRow texrow);
 private:
 	///
 	odocstream & os_;
 	///
-	TexRow & texrow_;
+	unique_ptr<TexRow> texrow_;
 };
 
 ///
@@ -70,8 +79,8 @@ otexrowstream & operator<<(otexrowstream & ots, Type value);
 class otexstream : public otexrowstream {
 public:
 	///
-	otexstream(odocstream & os, TexRow & texrow)
-		: otexrowstream(os, texrow), canbreakline_(false),
+	explicit otexstream(odocstream & os, bool enable = true)
+		: otexrowstream(os, enable), canbreakline_(false),
 		  protectspace_(false), parbreak_(true), lastchar_(0) {}
 	///
 	void put(char_type const & c);
@@ -134,6 +143,7 @@ otexstream & operator<<(otexstream &, char);
 ///
 template <typename Type>
 otexstream & operator<<(otexstream & ots, Type value);
+
 
 }
 

@@ -19,6 +19,7 @@
 
 #include "insets/InsetText.h"
 
+#include "support/docstream.h"
 #include "support/lassert.h"
 #include "support/lyxalgo.h"
 #include "support/qstring_helpers.h"

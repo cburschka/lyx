@@ -46,26 +46,27 @@ typedef void const * uid_type;
 typedef size_t idx_type;
 
 
+/// an individual par id/pos <=> row mapping
+struct TextEntry { int id; int pos; };
+
+/// an individual math id/cell <=> row mapping
+struct MathEntry { uid_type id; idx_type cell; };
+
+/// a container for passing entries around
+struct RowEntry {
+	bool is_math;// true iff the union is a math
+	union {
+		struct TextEntry text;
+		struct MathEntry math;
+	};
+};
+
+
 /// Represents the correspondence between paragraphs and the generated
 /// LaTeX file
 
 class TexRow {
 public:
-	/// an individual par id/pos <=> row mapping
-	struct TextEntry { int id; int pos; };
-
-	/// an individual math id/cell <=> row mapping
-	struct MathEntry { uid_type id; idx_type cell; };
-
-	/// a container for passing entries around
-	struct RowEntry {
-		bool is_math;// true iff the union is a math
-		union {
-			struct TextEntry text;
-			struct MathEntry math;
-		};
-	};
-
 	// For each row we store a list of one special TextEntry and several
 	// RowEntries. (The order is important.)  We only want one text entry
 	// because we do not want to store every position in the lyx file. On the
@@ -205,7 +206,7 @@ private:
 	bool enabled_;
 };
 
-bool operator==(TexRow::RowEntry const &, TexRow::RowEntry const &);
+bool operator==(RowEntry const &, RowEntry const &);
 
 LyXErr & operator<<(LyXErr &, TexRow &);
 

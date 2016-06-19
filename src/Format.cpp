@@ -23,6 +23,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/mutex.h"
+#include "support/docstream.h"
 #include "support/os.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"

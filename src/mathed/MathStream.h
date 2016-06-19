@@ -17,6 +17,7 @@
 
 #include "support/Changer.h"
 #include "support/strfwd.h"
+#include "support/unique_ptr.h"
 
 
 namespace lyx {
@@ -25,6 +26,7 @@ class Encoding;
 class InsetMath;
 class MathAtom;
 class MathData;
+class RowEntry;
 
 //
 // LaTeX/LyX
@@ -88,7 +90,7 @@ public:
 	Encoding const * encoding() const { return encoding_; }
 
 	/// Temporarily change the TexRow information about the outer row entry.
-	Changer changeRowEntry(TexRow::RowEntry entry);
+	Changer changeRowEntry(RowEntry entry);
 	/// TexRow::starts the innermost outer math inset
 	/// returns true if the outer row entry will appear at this line
 	bool startOuterRow();
@@ -120,7 +122,8 @@ private:
 	///
 	Encoding const * encoding_;
 	/// Row entry we are in
-	TexRow::RowEntry row_entry_;
+	/// (it is a pointer to allow forward-declaration)
+	unique_ptr<RowEntry> row_entry_;
 };
 
 ///

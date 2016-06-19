@@ -68,6 +68,7 @@ TODO
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "frontends/alert.h"

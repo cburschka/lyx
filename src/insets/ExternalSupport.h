@@ -13,13 +13,15 @@
 #ifndef EXTERNALSUPPORT_H
 #define EXTERNALSUPPORT_H
 
-#include "texstream.h"
+#include <string>
+
 
 namespace lyx {
 
 class Buffer;
 class ExportData;
 class InsetExternalParams;
+class otexstream;
 
 namespace external {
 

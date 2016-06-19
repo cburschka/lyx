@@ -52,6 +52,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "TexRow.h"
 #include "Text.h"
 
 #include "frontends/Application.h"
@@ -251,8 +252,7 @@ bool InsetMathNest::idxLast(Cursor & cur) const
 void InsetMathNest::dump() const
 {
 	odocstringstream oss;
-	TexRow texrow(false);
-	otexrowstream ots(oss,texrow);
+	otexrowstream ots(oss, false);
 	WriteStream os(ots);
 	os << "---------------------------------------------\n";
 	write(os);
@@ -407,8 +407,8 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
 			runparams.encoding);
 	wi.canBreakLine(os.canBreakLine());
-	Changer dummy = wi.changeRowEntry(os.texrow().textEntry(runparams.lastid,
-	                                                        runparams.lastpos));
+	Changer dummy = wi.changeRowEntry(TexRow::textEntry(runparams.lastid,
+	                                                    runparams.lastpos));
 	write(wi);
 	// Reset parbreak status after a math inset.
 	os.lastChar(0);

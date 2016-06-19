@@ -31,6 +31,7 @@
 #include "OutputParams.h"
 #include "output_xhtml.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"

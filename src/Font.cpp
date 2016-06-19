@@ -25,6 +25,7 @@
 #include "LyXRC.h"
 #include "output_latex.h"
 #include "OutputParams.h"
+#include "texstream.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"

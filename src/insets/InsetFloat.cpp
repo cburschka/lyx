@@ -29,6 +29,8 @@
 #include "Lexer.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
+#include "TexRow.h"
+#include "texstream.h"
 #include "TextClass.h"
 
 #include "support/debug.h"
@@ -493,9 +495,8 @@ bool InsetFloat::allowsCaptionVariation(std::string const & newtype) const
 
 docstring InsetFloat::getCaption(OutputParams const & runparams) const
 {
-	TexRow texrow(false);
 	odocstringstream ods;
-	otexstream os(ods, texrow);
+	otexstream os(ods, false);
 	getCaption(os, runparams);
 	return ods.str();
 }
@@ -514,15 +515,14 @@ void InsetFloat::getCaption(otexstream & os,
 	ins->getArgs(os, runparams);
 
 	os << '[';
-	TexRow texrow;
 	odocstringstream ods;
-	otexstream oss(ods, texrow);
+	otexstream oss(ods);
 	ins->getArgument(oss, runparams);
 	docstring arg = ods.str();
 	// Protect ']'
 	if (arg.find(']') != docstring::npos)
 		arg = '{' + arg + '}';
-	os.append(arg, texrow);
+	os.append(arg, move(oss.texrow()));
 	os << ']';
 }
 

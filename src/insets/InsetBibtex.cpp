@@ -27,6 +27,7 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "PDFOptions.h"
+#include "texstream.h"
 #include "TextClass.h"
 
 #include "frontends/alert.h"

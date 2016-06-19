@@ -36,6 +36,7 @@
 #include "output_plaintext.h"
 #include "output_xhtml.h"
 #include "OutputParams.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 
@@ -1085,9 +1086,8 @@ bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
 
 docstring latexString(InsetInclude const & inset)
 {
-	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods, texrow);
+	otexstream os(ods, false);
 	// We don't need to set runparams.encoding since this will be done
 	// by latex() anyway.
 	OutputParams runparams(0);

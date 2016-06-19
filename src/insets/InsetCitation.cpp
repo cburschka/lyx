@@ -24,6 +24,7 @@
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"

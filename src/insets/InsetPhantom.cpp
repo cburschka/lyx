@@ -28,6 +28,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "texstream.h"
 #include "TextClass.h"
 
 #include "support/docstream.h"

@@ -22,6 +22,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "RenderPreview.h"
+#include "texstream.h"
 
 #include "frontends/Painter.h"
 
@@ -120,9 +121,8 @@ void InsetIPA::addPreview(DocIterator const & inset_pos,
 
 void InsetIPA::preparePreview(DocIterator const & pos) const  
 {
-	TexRow texrow;
-	odocstringstream str;  
-	otexstream os(str, texrow);
+	odocstringstream str;
+	otexstream os(str, false);
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
 	docstring const snippet = str.str();

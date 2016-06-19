@@ -23,6 +23,7 @@
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"

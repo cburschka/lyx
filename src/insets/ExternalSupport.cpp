@@ -22,6 +22,7 @@
 #include "Exporter.h"
 #include "Format.h"
 #include "Mover.h"
+#include "texstream.h"
 
 #include "frontends/alert.h"
 

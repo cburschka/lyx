@@ -27,6 +27,7 @@
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 #include "output_xhtml.h"
+#include "texstream.h"
 #include "TextClass.h"
 
 #include "support/debug.h"

@@ -11,6 +11,9 @@
 #include <config.h>
 
 #include "texstream.h"
+
+#include "TexRow.h"
+
 #include "support/lstrings.h"
 #include "support/unicode.h"
 
@@ -30,10 +33,26 @@ using lyx::support::split;
 namespace lyx {
 
 
-void otexrowstream::append(docstring const & str, TexRow const & texrow)
+otexrowstream::otexrowstream(odocstream & os, bool enable)
+	: os_(os), texrow_(make_unique<TexRow>(enable))
+{}
+
+
+otexrowstream::~otexrowstream() = default;
+
+
+unique_ptr<TexRow> && otexrowstream::releaseTexRow()
+{
+	auto p = make_unique<TexRow>();
+	swap(texrow_, p);
+	return move(p);
+}
+
+
+void otexrowstream::append(docstring const & str, TexRow texrow)
 {
 	os_ << str;
-	texrow_.append(texrow);
+	texrow_->append(move(texrow));
 }
 
 
@@ -41,7 +60,7 @@ void otexrowstream::put(char_type const & c)
 {
 	os_.put(c);
 	if (c == '\n')
-		texrow_.newline();
+		texrow_->newline();
 }
 
 

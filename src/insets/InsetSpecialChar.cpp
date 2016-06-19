@@ -20,6 +20,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_xhtml.h"
+#include "texstream.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

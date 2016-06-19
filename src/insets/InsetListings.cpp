@@ -30,6 +30,7 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
+#include "texstream.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -395,9 +396,8 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	if (ins == 0)
 		return docstring();
 
-	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods, texrow);
+	otexstream os(ods, false);
 	ins->getArgs(os, runparams);
 	ins->getArgument(os, runparams);
 

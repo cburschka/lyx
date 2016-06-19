@@ -28,6 +28,7 @@
 #include "output_latex.h"
 #include "output_xhtml.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "TocBackend.h"
 
@@ -74,9 +75,8 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 	}
 
 	// get contents of InsetText as LaTeX and plaintext
-	TexRow texrow;
 	odocstringstream ourlatex;
-	otexstream ots(ourlatex, texrow);
+	otexstream ots(ourlatex);
 	InsetText::latex(ots, runparams);
 	odocstringstream ourplain;
 	InsetText::plaintext(ourplain, runparams);

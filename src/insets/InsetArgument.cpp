@@ -24,6 +24,8 @@
 #include "Lexer.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
+#include "TexRow.h"
+#include "texstream.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -268,9 +270,8 @@ void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams_in, docstring const & ldelim,
 		docstring const & rdelim, docstring const & presetarg) const
 {
-	TexRow texrow;
 	odocstringstream ss;
-	otexstream ots(ss, texrow);
+	otexstream ots(ss);
 	OutputParams runparams = runparams_in;
 	if (!pass_thru_chars_.empty())
 		runparams.pass_thru_chars += pass_thru_chars_;
@@ -281,6 +282,7 @@ void InsetArgument::latexArgument(otexstream & os,
 		str = presetarg + sep + str;
 	if (ldelim != "{" && support::contains(str, rdelim))
 		str = '{' + str + '}';
+	// TODO: append texrow information
 	os << ldelim << str << rdelim;
 }
 

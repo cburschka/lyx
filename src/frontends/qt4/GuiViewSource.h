@@ -18,19 +18,25 @@
 
 #include "Buffer.h"
 #include "DockView.h"
-#include "TexRow.h"
 
 #include <QDockWidget>
 #include <QString>
 #include <QTimer>
 
+
 class QTextDocument;
 
+
 namespace lyx {
+
+class TexRow;
+
+
 namespace frontend {
 
 class GuiViewSource;
 class LaTeXHighlighter;
+
 
 class ViewSourceWidget : public QWidget, public Ui::ViewSourceUi
 {

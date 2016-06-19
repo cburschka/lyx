@@ -22,6 +22,7 @@
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
+#include "texstream.h"
 
 #include "support/docstream.h"
 #include "support/FileName.h"

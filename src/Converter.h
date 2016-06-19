@@ -29,7 +29,6 @@ class Buffer;
 class ErrorList;
 class Format;
 class Formats;
-class OutputParams;
 
 
 ///

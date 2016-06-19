@@ -30,6 +30,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_latex.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
@@ -560,9 +561,8 @@ static bool isPreviewWanted(InsetExternalParams const & params)
 
 static docstring latexString(InsetExternal const & inset)
 {
-	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods, texrow);
+	otexstream os(ods, false);
 	// We don't need to set runparams.encoding since it is not used by
 	// latex().
 	OutputParams runparams(0);
@@ -730,8 +730,7 @@ int InsetExternal::plaintext(odocstringstream & os,
 	if (runparams.for_tooltip)
 		return 0;
 
-	TexRow texrow;
-	otexstream ots(os, texrow);
+	otexstream ots(os, false);
 	ots << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), ots,
 				*(runparams.exportdata), false,
@@ -743,9 +742,8 @@ int InsetExternal::plaintext(odocstringstream & os,
 int InsetExternal::docbook(odocstream & os,
 			   OutputParams const & runparams) const
 {
-	TexRow texrow;
 	odocstringstream ods;
-	otexstream ots(ods, texrow);
+	otexstream ots(ods, false);
 	external::writeExternal(params_, "DocBook", buffer(), ots,
 				*(runparams.exportdata), false,
 				runparams.dryrun || runparams.inComment);

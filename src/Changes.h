@@ -21,8 +21,6 @@
 #include "support/types.h"
 #include "support/lyxtime.h"
 
-#include "texstream.h"
-
 #include <vector>
 
 
@@ -32,8 +30,10 @@ class AuthorList;
 class Buffer;
 class DocIterator;
 class OutputParams;
+class otexstream;
 class PainterInfo;
 class FontInfo;
+
 
 class Change {
 public:

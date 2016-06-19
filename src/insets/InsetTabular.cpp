@@ -45,6 +45,8 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "TexRow.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
 
@@ -2685,8 +2687,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	bool const is_tabular_star = !tabular_width.zero();
-	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid,
-											 runparams.lastpos);
+	RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
 
 	//+---------------------------------------------------------------------
 	//+                      first the opening preamble                    +

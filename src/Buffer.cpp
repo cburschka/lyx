@@ -57,6 +57,7 @@
 #include "PDFOptions.h"
 #include "SpellChecker.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TexRow.h"
 #include "Text.h"
 #include "TextClass.h"
@@ -1684,7 +1685,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	ErrorList & errorList = d->errorLists["Export"];
 	errorList.clear();
 	bool failed_export = false;
-	otexstream os(ofs, d->texrow);
+	otexstream os(ofs);
 
 	// make sure we are ready to export
 	// this needs to be done before we validate
@@ -1694,7 +1695,6 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	updateMacroInstances(OutputUpdate);
 
 	try {
-		os.texrow().reset();
 		writeLaTeXSource(os, original_path, runparams, output);
 	}
 	catch (EncodingException const & e) {
@@ -1724,6 +1724,8 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		lyxerr << "Caught some really weird exception..." << endl;
 		lyx_exit(1);
 	}
+
+	d->texrow = move(os.texrow());
 
 	ofs.close();
 	if (ofs.fail()) {
@@ -3715,14 +3717,13 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			LaTeXFeatures features(*this, params(), runparams);
 			params().validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
-			texrow = make_unique<TexRow>();
-			texrow->newline();
-			texrow->newline();
 			// latex or literate
-			otexstream ots(os, *texrow);
-
+			otexstream ots(os);
+			// output above
+			ots.texrow().newlines(2);
 			// the real stuff
 			latexParagraphs(*this, text(), ots, runparams);
+			texrow = ots.releaseTexRow();
 			texrow->finalize();
 
 			// Restore the parenthood
@@ -3758,13 +3759,13 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 				writeDocBookSource(os, absFileName(), runparams, output);
 		} else {
 			// latex or literate
-			texrow = make_unique<TexRow>();
-			texrow->newline();
-			texrow->newline();
-			otexstream ots(os, *texrow);
+			otexstream ots(os);
+			// output above
+			ots.texrow().newlines(2);
 			if (master)
 				runparams.is_child = true;
 			writeLaTeXSource(ots, string(), runparams, output);
+			texrow = ots.releaseTexRow();
 			texrow->finalize();
 		}
 	}

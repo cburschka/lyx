@@ -15,6 +15,7 @@
 
 #include "Encoding.h"
 #include "Lexer.h"
+#include "texstream.h"
 
 #include "support/convert.h"
 #include "support/debug.h"

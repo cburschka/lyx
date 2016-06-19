@@ -19,6 +19,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "RenderPreview.h"
+#include "texstream.h"
 
 #include "frontends/Painter.h"
 
@@ -81,9 +82,8 @@ void InsetPreview::addPreview(DocIterator const & inset_pos,
 
 void InsetPreview::preparePreview(DocIterator const & pos) const
 {
-	TexRow texrow;
 	odocstringstream str;
-	otexstream os(str, texrow);
+	otexstream os(str, false);
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
 

@@ -22,6 +22,7 @@
 #include "Cursor.h"
 #include "Format.h"
 #include "Paragraph.h"
+#include "TexRow.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"

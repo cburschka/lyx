@@ -40,6 +40,7 @@
 #include "ParagraphParameters.h"
 #include "SpellChecker.h"
 #include "sgml.h"
+#include "texstream.h"
 #include "TextClass.h"
 #include "TexRow.h"
 #include "Text.h"
@@ -1377,13 +1378,12 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		BufferParams const & bp = features.runparams().is_child
 			? buf.masterParams() : buf.params();
 		Font f;
-		TexRow texrow;
 		// Using a string stream here circumvents the encoding
 		// switching machinery of odocstream. Therefore the
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		odocstringstream ods;
-		otexstream os(ods, texrow);
+		otexstream os(ods, false);
 		if (is_command) {
 			os << '\\' << from_ascii(layout_->latexname());
 			// we have to provide all the optional arguments here, even though

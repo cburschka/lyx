@@ -22,6 +22,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "Paragraph.h"
+#include "texstream.h"
 #include "TocBackend.h"
 
 #include "support/debug.h"
