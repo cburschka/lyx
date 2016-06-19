@@ -3496,6 +3496,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << ":";
 			os << convert_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
+			os << "plural \"false\"\n";
+			os << "caps \"false\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("refstyle");
 		}
@@ -3512,6 +3514,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "reference \""
 				   << convert_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
+				os << "plural \"false\"\n";
+				os << "caps \"false\"\n";
 				end_inset(os);
 				if (t.cs() == "vref" || t.cs() == "vpageref")
 					preamble.registerAutomaticallyLoadedPackage("varioref");
