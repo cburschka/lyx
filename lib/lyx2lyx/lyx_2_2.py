@@ -632,6 +632,10 @@ def convert_dashes(document):
             else:
                 i = j
             continue
+        if len(words) > 0 and words[0] in ["\\leftindent", "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
+            # skip paragraph parameters (bug 10243)
+            i += 1
+            continue
         while True:
             j = document.body[i].find("--")
             if j == -1:
