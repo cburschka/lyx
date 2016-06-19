@@ -32,7 +32,12 @@ Compiling with Microsoft Visual C++
 
 5	Configure
 
-	- Run the CMake GUI.
+	- Open the MSVC 2015 command prompt and run the CMake GUI from there.
+ 	  Alternatively, you can create a .bat file that first contains the line
+	  call "C:\Program Files (x86)\Microsoft Visual Studio 2015\VC\vcvarsall.bat" x86
+	  and then calls the CMake GUI and use this .bat file to start CMake.
+	  The MSVC 2015 command prompt or vcvarsall.bat set some environment
+	  variables that are needed for CMake to find the compiler.
 
 	- Set the source code path to C:\LyX\lyx-23
 	  Set the build path to C:\LyX\lyx-23-build
