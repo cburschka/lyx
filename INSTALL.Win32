@@ -38,7 +38,7 @@ Compiling with Microsoft Visual C++
 	  "Visual Studio 2015\Visual Studio Tools" subfolder of the start menu.
 	  Run the CMake GUI from the command window that was opened.
  	  Alternatively, you can create a .bat file that first contains the line
-	  call "C:\Program Files (x86)\Microsoft Visual Studio 2015\VC\vcvarsall.bat" x86
+	  call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 	  and then calls the CMake GUI and use this .bat file to start CMake.
 	  The MSVC 2015 command prompt or vcvarsall.bat set some environment
 	  variables that are needed for CMake to find the compiler.
