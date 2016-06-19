@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 510
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -177,6 +177,7 @@ graphicboxes
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -38933,67 +38934,6 @@ target "http://fr.wikipedia.org/wiki/XBoard"
 \end_layout
 
 \begin_layout Description
-Date Ce modèle insère la date sous la forme 
-\emph on
-Jour-Mois-Année
-\emph default
-.
- Voici un exemple de date insérée comme objet externe : 
-\begin_inset External
-	template Date
-	filename .
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Retirer l'espace protégé quand le bug 4398 sera résolu !
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-La date n'apparaîtra pas dans \SpecialChar LyX
-, mais seulement dans la sortie imprimée.
- Il y a deux autre méthodes pour insérer une date : Avec le menu 
-\family sans
-Insertion\SpecialChar menuseparator
-Date
-\family default
- et avec la commande \SpecialChar LaTeX
- 
-\series bold
-
-\backslash
-today
-\series default
- entrée comme code \SpecialChar TeX
-.
- Ces différentes méthodes sont comparée dans le tableau
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Comparaison-des-dates"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Description
 Diagramme
 \begin_inset space ~
 \end_inset
@@ -39471,9 +39411,8 @@ Comparaison des méthodes d'insertion de la date.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="4">
+<lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -39483,22 +39422,6 @@ Comparaison des méthodes d'insertion de la date.
 
 \begin_layout Plain Layout
 Format du document
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family sans
-Objet
-\begin_inset space ~
-\end_inset
-
-Externe\SpecialChar menuseparator
-Date
 \end_layout
 
 \end_inset
@@ -39544,15 +39467,6 @@ today
 \begin_inset Text
 
 \begin_layout Plain Layout
-comme boîte d'insert
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 comme date
 \end_layout
 
@@ -39589,15 +39503,6 @@ comme date
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-comme date
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -39614,15 +39519,6 @@ comme commande
 
 \begin_layout Plain Layout
 DVI, PDF, PS
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-comme date
 \end_layout
 
 \end_inset

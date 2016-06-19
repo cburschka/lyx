@@ -409,38 +409,6 @@ Template PDFPages
 TemplateEnd
 
 
-Template Date
-	GuiName "Date"
-	HelpText
-		Today's date.
-		Read 'info date' for more information.
-	HelpTextEnd
-	InputFormat date
-	FileFilter "*"
-	AutomaticProduction true
-	Preview Off
-	Format LaTeX
-		Product "$$Contents(\"$$Tempname\")"
-		UpdateFormat dateout
-		UpdateResult "$$Tempname"
-	FormatEnd
-	Format PDFLaTeX
-		Product "$$Contents(\"$$Tempname\")"
-		UpdateFormat dateout
-		UpdateResult "$$Tempname"
-	FormatEnd
-	Format Ascii
-		Product "$$Contents(\"$$Tempname\")"
-		UpdateFormat dateout
-		UpdateResult "$$Tempname"
-	FormatEnd
-	Format DocBook
-		Product "$$Contents(\"$$Tempname\")"
-		UpdateFormat dateout
-		UpdateResult "$$Tempname"
-	FormatEnd
-TemplateEnd
-
 Template Dia
 	GuiName "Dia diagram"
 	HelpText

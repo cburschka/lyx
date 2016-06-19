@@ -2311,7 +2311,6 @@ dist_scripts_DATA += \
 	scripts/convert_pdf.py \
 	scripts/convertDefault.py \
 	scripts/csv2lyx.py \
-	scripts/date.py \
 	scripts/ext_copy.py \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.py \

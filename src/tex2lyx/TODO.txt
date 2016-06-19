@@ -12,8 +12,8 @@ LyX feature:   LyX inset or document setting
 Format LaTeX feature                        LyX feature
 224    external insets defined in           InsetExternal
        lib/external_templates.
-       (- Date and RasterImage cannot be supported
-        - Dia and LilyPond are an \includegraphics and can therefore onyl be imported as image
+       (- RasterImage clashes with InsetGraphics
+        - Dia and LilyPond are an \includegraphics and can therefore only be imported as image
         - Chess diagram, PDF pages and Spreadsheet are supported)
        (Xfig figure, Lilypond, Dia diagram can be supported by looking at the file extension)
 226    nothing (impossible to import)       InsetBranch, \branch...\end_branch

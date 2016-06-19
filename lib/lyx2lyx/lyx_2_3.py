@@ -30,14 +30,14 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
 
-from parser_tools import find_token, get_value
+from parser_tools import find_token, find_end_of_inset, get_value
 
 #from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
 #  lyx2verbatim, length_in_bp, convert_info_insets
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
-from lyx2lyx_tools import add_to_preamble
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 
 ####################################################################
 # Private helper functions
@@ -75,6 +75,24 @@ def revert_microtype(document):
         add_to_preamble(document, ["\\usepackage{microtype}"])
 
 
+def convert_dateinset(document):
+    ' Convert date external inset to ERT '
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset External", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed lyx document: Missing '\\end_inset' in convert_dateinset.")
+            i += 1
+            continue
+        if get_value(document.body, 'template', i, j) == "Date":
+            document.body[i : j + 1] = put_cmd_in_ert("\\today ")
+        i += 1
+        continue
+
+
 
 ##
 # Conversion hub
@@ -82,10 +100,12 @@ def revert_microtype(document):
 
 supported_versions = ["2.3.0", "2.3"]
 convert = [
-           [509, [convert_microtype]]
+           [509, [convert_microtype]],
+           [510, [convert_dateinset]]
           ]
 
 revert =  [
+           [509, []],
            [508, [revert_microtype]]
           ]
 
