@@ -1,0 +1,28 @@
+#\DeclareLyXModule{Title and Preamble Hacks}
+#DescriptionBegin
+#Provides two new styles:
+#1. An "In Premable" style that puts whatever is entered into it into the preamble.
+#   This can be used, if one wishes, to include preamble code in the body of the
+#   LyX document.
+#2. An "In Title" style that will put its contents into the body of the LaTeX 
+#   document, but before \maketitle is issued. This is useful for making branches
+#   and notes in title-related material. (If you put these in a Standard layout,
+#   this signals to LyX to output \maketitle, which may then come too early.)
+#DescriptionEnd
+#Author: Richard Heck <rgheck@lyx.org>
+
+Format 60
+
+Style "In Preamble"
+	CopyStyle Standard
+	Category FrontMatter
+	InPreamble 1
+	ForceLocal -1
+End
+
+Style "In Title"
+	CopyStyle Standard
+	Category FrontMatter
+	InTitle 1
+	ForceLocal -1
+End
