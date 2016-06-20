@@ -106,9 +106,9 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	if (inmaster && inchild)
 		s = _("Branch: ");
 	else if (inchild) // && !inmaster
-		s = _("Branch (child only): ");
+		s = _("Branch (child): ");
 	else if (inmaster) // && !inchild
-		s = _("Branch (master only): ");
+		s = _("Branch (master): ");
 	else // !inmaster && !inchild
 		s = _("Branch (undefined): ");
 	s += params_.branch;
