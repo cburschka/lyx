@@ -226,8 +226,11 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			lyxtype_ = translateLyXType(lt);
 			if (lyxtype_  == NOLYXTYPE)
 				LYXERR0("Unknown LyXType `" << lt << "'.");
-			if (lyxtype_ == CHARSTYLE)
+			if (lyxtype_ == CHARSTYLE) {
+				// by default, charstyles force the plain layout
 				multipar_ = false;
+				forceplain_ = true;
+			}
 			break;
 		}
 		case IL_LATEXTYPE:  {
