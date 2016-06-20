@@ -16,6 +16,7 @@
 
 #include "support/docstring.h"
 
+#include "frontends/KeyModifier.h"
 #include "frontends/mouse_state.h"
 
 
@@ -47,7 +48,7 @@ public:
 	explicit FuncRequest(FuncCode act, Origin o = INTERNAL);
 	/// actions without extra argument
 	FuncRequest(FuncCode act, int x, int y, mouse_button::state button,
-		    Origin o = INTERNAL);
+		    KeyModifier modifier, Origin o = INTERNAL);
 	/// actions with extra argument
 	FuncRequest(FuncCode act, docstring const & arg,
 		    Origin o = INTERNAL);
@@ -57,10 +58,7 @@ public:
 	/// for changing requests a bit
 	FuncRequest(FuncRequest const & cmd, docstring const & arg,
 		    Origin o = INTERNAL);
-	/// for changing requests a bit. FIXME: remove this
-	FuncRequest(FuncRequest const & cmd, std::string const & arg,
-		    Origin o = INTERNAL);
-
+	
 	/// access the whole argument
 	docstring const & argument() const { return argument_; }
 	///
@@ -79,6 +77,8 @@ public:
 	void set_y(int y) { y_ = y; }
 	/// 
 	mouse_button::state button() const { return button_; }
+	///
+	KeyModifier modifier() { return modifier_; }
 
 	/// argument parsing, extract argument i as std::string
 	std::string getArg(unsigned int i) const;
@@ -103,6 +103,8 @@ private:
 	int y_;
 	/// some extra information (like button number)
 	mouse_button::state button_;
+	///
+	KeyModifier modifier_;
 };
 
 

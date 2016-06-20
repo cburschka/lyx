@@ -1550,7 +1550,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 		}
 	}
 	bool do_selection = cmd.button() == mouse_button::button1
-		&& cmd.argument() == "region-select";
+		&& cmd.modifier() == ShiftModifier;
 	bv.mouseSetCursor(cur, do_selection);
 	if (cmd.button() == mouse_button::button1) {
 		//lyxerr << "## lfunMousePress: setting cursor to: " << cur << endl;

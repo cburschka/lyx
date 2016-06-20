@@ -105,7 +105,7 @@ struct GuiWorkArea::Private
 	/// hide the cursor
 	void removeCursor();
 	///
-	void dispatch(FuncRequest const & cmd0, KeyModifier = NoModifier);
+	void dispatch(FuncRequest const & cmd0);
 	/// hide the visible cursor, if it is visible
 	void hideCursor();
 	/// show the cursor if it is not visible

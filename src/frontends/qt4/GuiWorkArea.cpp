@@ -521,27 +521,14 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 }
 
 
-void GuiWorkArea::Private::dispatch(FuncRequest const & cmd0, KeyModifier mod)
+void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 {
 	// Handle drag&drop
-	if (cmd0.action() == LFUN_FILE_OPEN) {
+	if (cmd.action() == LFUN_FILE_OPEN) {
 		DispatchResult dr;
-		lyx_view_->dispatch(cmd0, dr);
+		lyx_view_->dispatch(cmd, dr);
 		return;
 	}
-
-	FuncRequest cmd;
-
-	if (cmd0.action() == LFUN_MOUSE_PRESS) {
-		if (mod == ShiftModifier)
-			cmd = FuncRequest(cmd0, "region-select");
-		else if (mod == ControlModifier)
-			cmd = FuncRequest(cmd0, "paragraph-select");
-		else
-			cmd = cmd0;
-	}
-	else
-		cmd = cmd0;
 
 	bool const notJustMovingTheMouse =
 		cmd.action() != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
@@ -815,7 +802,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	if (d->dc_event_.active && d->dc_event_ == *e) {
 		d->dc_event_.active = false;
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
-			q_button_state(e->button()));
+				q_button_state(e->button()), q_key_state(e->modifiers()));
 		d->dispatch(cmd);
 		e->accept();
 		return;
@@ -826,8 +813,8 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 #endif
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
-		q_button_state(e->button()));
-	d->dispatch(cmd, q_key_state(e->modifiers()));
+		q_button_state(e->button()), q_key_state(e->modifiers()));
+	d->dispatch(cmd);
 
 	// Save the context menu on mouse press, because also the mouse
 	// cursor is set on mouse press. Afterwards, we can either release
@@ -847,7 +834,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 		d->synthetic_mouse_event_.timeout.stop();
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
-			      q_button_state(e->button()));
+			      q_button_state(e->button()), q_key_state(e->modifiers()));
 	d->dispatch(cmd);
 	e->accept();
 }
@@ -858,7 +845,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// we kill the triple click if we move
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
-		q_motion_state(e->buttons()));
+		q_motion_state(e->buttons()), q_key_state(e->modifiers()));
 
 	e->accept();
 
@@ -1122,7 +1109,7 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 			   SLOT(doubleClickTimeout()));
 	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
 			ev->x(), ev->y(),
-			q_button_state(ev->button()));
+			q_button_state(ev->button()), q_key_state(ev->modifiers()));
 	d->dispatch(cmd);
 	ev->accept();
 }
