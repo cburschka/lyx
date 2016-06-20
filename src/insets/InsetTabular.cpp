@@ -3018,7 +3018,7 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
 
-		xs << html::StartTag(celltag, attr.str()) << html::CR();
+		xs << html::StartTag(celltag, attr.str(), true) << html::CR();
 		ret += cellInset(cell)->xhtml(xs, runparams);
 		xs << html::EndTag(celltag) << html::CR();
 		++cell;
