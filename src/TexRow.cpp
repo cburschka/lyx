@@ -21,59 +21,56 @@
 
 #include "support/debug.h"
 #include "support/docstring_list.h"
+#include "support/lassert.h"
 
 #include <algorithm>
 #include <sstream>
+
+using namespace std;
 
 
 namespace lyx {
 
 
-
-bool TexRow::RowEntryList::addEntry(RowEntry const & entry)
+bool TexRow::RowEntryList::addEntry(RowEntry entry)
 {
 	if (!entry.is_math) {
-		if (text_entry_ < size())
+		if (!isNone(text_entry_))
 			return false;
-		else {
-			text_entry_ = size();
-			push_back(RowEntry(entry));
-			return true;
-		}
+		else
+			text_entry_ = entry.text;
 	}
 	forceAddEntry(entry);
 	return true;
 }
 
 
-void TexRow::RowEntryList::forceAddEntry(RowEntry const & entry)
+void TexRow::RowEntryList::forceAddEntry(RowEntry entry)
 {
-	if (size() == 0 || !(operator[](size() - 1) == entry))
-		push_back(RowEntry(entry));
+	if (v_.empty() || !(v_.back() == entry))
+		v_.push_back(entry);
 }
 
 
 TextEntry TexRow::RowEntryList::getTextEntry() const
 {
-	if (text_entry_ < size())
-		return operator[](text_entry_).text;
+	if (!isNone(text_entry_))
+		return text_entry_;
 	return TexRow::text_none;
 }
 
 
-RowEntry TexRow::RowEntryList::entry() const
+void TexRow::RowEntryList::append(RowEntryList row)
 {
-	if (0 < size())
-		return operator[](0);
-	return TexRow::row_none;
+	if (isNone(text_entry_))
+		text_entry_ = row.text_entry_;
+	move(row.begin(), row.end(), back_inserter(v_));
 }
 
 
-void TexRow::RowEntryList::append(RowEntryList const & row)
+TexRow::TexRow(bool enable)
 {
-	if (text_entry_ >= size())
-		text_entry_ = row.text_entry_ + size();
-	insert(end(), row.begin(), row.end());
+	reset(enable);
 }
 
 
@@ -81,13 +78,15 @@ TextEntry const TexRow::text_none = { -1, 0 };
 RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
 
 
-bool TexRow::isNone(TextEntry const & t)
+//static
+bool TexRow::isNone(TextEntry t)
 {
 	return t.id < 0;
 }
 
 
-bool TexRow::isNone(RowEntry const & r)
+//static
+bool TexRow::isNone(RowEntry r)
 {
 	return !r.is_math && isNone(r.text);
 }
@@ -96,11 +95,18 @@ bool TexRow::isNone(RowEntry const & r)
 void TexRow::reset(bool enable)
 {
 	rowlist_.clear();
-	current_row_ = RowEntryList();
 	enabled_ = enable;
+	newline();
 }
 
 
+TexRow::RowEntryList & TexRow::currentRow()
+{
+	return rowlist_.back();
+}
+
+
+//static
 RowEntry TexRow::textEntry(int id, int pos)
 {
 	RowEntry entry;
@@ -111,6 +117,7 @@ RowEntry TexRow::textEntry(int id, int pos)
 }
 
 
+//static
 RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 {
 	RowEntry entry;
@@ -121,15 +128,14 @@ RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 }
 
 
-bool operator==(RowEntry const & entry1,
-				RowEntry const & entry2)
+bool operator==(RowEntry entry1, RowEntry entry2)
 {
 	return entry1.is_math == entry2.is_math
 		&& (entry1.is_math
-			? (entry1.math.id == entry2.math.id
-			   && entry1.math.cell == entry2.math.cell)
-			: (entry1.text.id == entry2.text.id
-			   && entry1.text.pos == entry2.text.pos));
+		    ? (entry1.math.id == entry2.math.id
+		       && entry1.math.cell == entry2.math.cell)
+		    : (entry1.text.id == entry2.text.id
+		       && entry1.text.pos == entry2.text.pos));
 }
 
 
@@ -137,7 +143,7 @@ bool TexRow::start(RowEntry entry)
 {
 	if (!enabled_)
 		return false;
-	return current_row_.addEntry(entry);
+	return currentRow().addEntry(entry);
 }
 
 
@@ -151,7 +157,7 @@ void TexRow::forceStart(int id, int pos)
 {
 	if (!enabled_)
 		return;
-	return current_row_.forceAddEntry(textEntry(id,pos));
+	return currentRow().forceAddEntry(textEntry(id,pos));
 }
 
 
@@ -165,47 +171,32 @@ void TexRow::newline()
 {
 	if (!enabled_)
 		return;
-	rowlist_.push_back(current_row_);
-	current_row_ = RowEntryList();
+	rowlist_.push_back(RowEntryList());
 }
 
-void TexRow::newlines(int num_lines)
+
+void TexRow::newlines(size_t num_lines)
 {
-	if (!enabled_)
-		return;
-	for (int i = 0; i < num_lines; ++i) {
+	while (num_lines--)
 		newline();
-	}
 }
 
-void TexRow::finalize()
+
+void TexRow::append(TexRow other)
 {
-	if (!enabled_)
+	if (!enabled_ || !other.enabled_)
 		return;
-	newline();
+	RowList::iterator it = other.rowlist_.begin();
+	RowList::iterator const end = other.rowlist_.end();
+	LASSERT(it != end, return);
+	currentRow().append(move(*it++));
+	move(it, end, back_inserter(rowlist_));
 }
-
-
-void TexRow::append(TexRow const & texrow)
-{
-	if (!enabled_ || !texrow.enabled_)
-		return;
-	RowList::const_iterator it = texrow.rowlist_.begin();
-	RowList::const_iterator const end = texrow.rowlist_.end();
-	if (it == end) {
-		current_row_.append(texrow.current_row_);
-	} else {
-		current_row_.append(*it++);
-		rowlist_.push_back(current_row_);
-		rowlist_.insert(rowlist_.end(), it, end);
-		current_row_ = texrow.current_row_;
-	}
-}
-
 
 
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
+	LYXERR(Debug::LATEX, "getIdFromRow: row " << row << " requested");
 	TextEntry t = text_none;
 	if (row <= int(rowlist_.size()))
 		while (row > 0 && isNone(t = rowlist_[row - 1].getTextEntry()))
@@ -216,6 +207,7 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 }
 
 
+//static
 RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 {
 	RowEntry entry;
@@ -228,28 +220,26 @@ RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 		entry.is_math = 0;
 		entry.text.id = slice.paragraph().id();
 		entry.text.pos = slice.pos();
-	} else {
-		// should not happen
-		entry = row_none;
-	}
+	} else
+		LASSERT(false, return row_none);
 	return entry;
 }
 
 
-bool TexRow::sameParOrInsetMath(RowEntry const & entry1,
-								RowEntry const & entry2)
+//static
+bool TexRow::sameParOrInsetMath(RowEntry entry1, RowEntry entry2)
 {
 	return entry1.is_math == entry2.is_math
 		&& (entry1.is_math
-			? (entry1.math.id == entry2.math.id)
-			: (entry1.text.id == entry2.text.id));
+		    ? (entry1.math.id == entry2.math.id)
+		    : (entry1.text.id == entry2.text.id));
 }
 
 
-// assumes it is sameParOrInsetMath
-int TexRow::comparePos(RowEntry const & entry1,
-					   RowEntry const & entry2)
+//static
+int TexRow::comparePos(RowEntry entry1, RowEntry entry2)
 {
+	// assume it is sameParOrInsetMath
 	if (entry1.is_math)
 		return entry2.math.cell - entry1.math.cell;
 	else
@@ -273,7 +263,7 @@ class TexRow::RowListIterator
 {
 public:
 	RowListIterator(RowList::const_iterator r,
-					RowList::const_iterator r_end)
+	                RowList::const_iterator r_end)
 		: row_it_(r), row_end_(r_end),
 		  it_(r == r_end ? RowEntryList::const_iterator() : r->begin()),
 		  it_end_(r == r_end ? RowEntryList::const_iterator() : r->end())
@@ -361,7 +351,7 @@ TexRow::RowListIterator TexRow::end() const
 }
 
 
-std::pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
+pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 {
 	bool beg_found = false;
 	bool end_is_next = true;
@@ -431,19 +421,19 @@ std::pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 		}
 	}
 	if (!beg_found)
-		return std::make_pair(-1,-1);
+		return make_pair(-1,-1);
 	int const best_beg_row = distance(rowlist_.begin(),
 									  best_beg_entry.row()) + 1;
 	int const best_end_row = distance(rowlist_.begin(),
 									  best_end_entry.row()) + end_offset;
-	return std::make_pair(best_beg_row, best_end_row);
+	return make_pair(best_beg_row, best_end_row);
 }
 
 
-std::pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
+pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 {
 	DocIterator beg = cur.selectionBegin();
-	std::pair<int,int> beg_rows = rowFromDocIterator(beg);
+	pair<int,int> beg_rows = rowFromDocIterator(beg);
 	if (cur.selection()) {
 		DocIterator end = cur.selectionEnd();
 		if (!cur.selIsMultiCell()
@@ -453,18 +443,24 @@ std::pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 				|| end.top().idx() != 0
 				|| end.top().pos() != 0))
 			end.top().backwardPos();
-		std::pair<int,int> end_rows = rowFromDocIterator(end);
-		return std::make_pair(std::min(beg_rows.first, end_rows.first),
-							  std::max(beg_rows.second, end_rows.second));
+		pair<int,int> end_rows = rowFromDocIterator(end);
+		return make_pair(min(beg_rows.first, end_rows.first),
+		                 max(beg_rows.second, end_rows.second));
 	} else
-		return std::make_pair(beg_rows.first, beg_rows.second);
+		return make_pair(beg_rows.first, beg_rows.second);
+}
+
+
+int TexRow::rows() const
+{
+	return rowlist_.size();
 }
 
 
 // debugging functions
 
 ///
-docstring TexRow::asString(RowEntry const & entry)
+docstring TexRow::asString(RowEntry entry)
 {
 	odocstringstream os;
 	if (entry.is_math)
@@ -481,17 +477,15 @@ void TexRow::prepend(docstring_list & tex) const
 	size_type const prefix_length = 25;
 	if (tex.size() < rowlist_.size())
 		tex.resize(rowlist_.size());
-	std::vector<RowEntryList>::const_iterator it = rowlist_.begin();
-	std::vector<RowEntryList>::const_iterator const beg = rowlist_.begin();
-	std::vector<RowEntryList>::const_iterator const end = rowlist_.end();
+	auto it = rowlist_.cbegin();
+	auto const beg = rowlist_.cbegin();
+	auto const end = rowlist_.cend();
 	for (; it < end; ++it) {
 		docstring entry;
-		std::vector<RowEntry>::const_iterator it2 = it->begin();
-		std::vector<RowEntry>::const_iterator const end2 = it->end();
-		for (; it2 != end2; ++it2)
-			entry += asString(*it2);
+		for (RowEntry const & e : *it)
+			entry += asString(e);
 		if (entry.length() < prefix_length)
-			entry = entry + docstring(prefix_length - entry.length(), L' ');
+			entry = entry + docstring(prefix_length - entry.length(), ' ');
 		ptrdiff_t i = it - beg;
 		tex[i] = entry + "  " + tex[i];
 	}
@@ -499,7 +493,7 @@ void TexRow::prepend(docstring_list & tex) const
 
 
 
-LyXErr & operator<<(LyXErr & l, TexRow & texrow)
+LyXErr & operator<<(LyXErr & l, TexRow const & texrow)
 {
 	if (l.enabled()) {
 		for (int i = 0; i < texrow.rows(); i++) {

@@ -1924,8 +1924,6 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	}
 	runparams_in.encoding = runparams.encoding;
 
-	os.texrow().finalize();
-
 	LYXERR(Debug::INFO, "Finished making LaTeX file.");
 	LYXERR(Debug::INFO, "Row count was " << os.texrow().rows() - 1 << '.');
 }
@@ -3724,7 +3722,6 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			// the real stuff
 			latexParagraphs(*this, text(), ots, runparams);
 			texrow = ots.releaseTexRow();
-			texrow->finalize();
 
 			// Restore the parenthood
 			if (!master)
@@ -3766,7 +3763,6 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 				runparams.is_child = true;
 			writeLaTeXSource(ots, string(), runparams, output);
 			texrow = ots.releaseTexRow();
-			texrow->finalize();
 		}
 	}
 	return texrow;
