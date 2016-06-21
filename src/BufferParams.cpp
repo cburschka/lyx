@@ -1582,7 +1582,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << from_ascii(ams);
 
 	if (useNonTeXFonts) {
-		os << "\\usepackage{fontspec}\n";
+		if (!features.isProvided("fontspec"))
+			os << "\\usepackage{fontspec}\n";
 		if (features.mustProvide("unicode-math")
 		    && features.isAvailable("unicode-math"))
 			os << "\\usepackage{unicode-math}\n";
@@ -2047,7 +2048,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// koma's own caption commands are used instead of caption. We
 	// use \PassOptionsToPackage here because the user could have
 	// already loaded subfig in the preamble.
-	if (features.isRequired("subfig")) {
+	if (features.mustProvide("subfig")) {
 		atlyxpreamble += "\\@ifundefined{showcaptionsetup}{}{%\n"
 			" \\PassOptionsToPackage{caption=false}{subfig}}\n"
 			"\\usepackage{subfig}\n";
@@ -2108,7 +2109,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 	if (features.isRequired("bicaption"))
 		lyxpreamble += "\\usepackage{bicaption}\n";
-	if (!listings_params.empty() || features.isRequired("listings"))
+	if (!listings_params.empty() || features.mustProvide("listings"))
 		lyxpreamble += "\\usepackage{listings}\n";
 	if (!listings_params.empty()) {
 		lyxpreamble += "\\lstset{";
