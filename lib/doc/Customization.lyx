@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 510
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -56,6 +56,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -117,11 +118,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -18510,7 +18512,23 @@ MultiPar
 
 \end_inset
 
- to false.
+ to false
+\change_inserted 424524441 1466537871
+ and 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1466537871
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to true
+\change_unchanged
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -18521,7 +18539,23 @@ MultiPar
 
 \end_inset
 
- can be set to true for 
+ can be set to true
+\change_inserted 424524441 1466537883
+, or 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1466537883
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to false,
+\change_unchanged
+ for 
 \begin_inset Flex Code
 status collapsed
 
@@ -18546,6 +18580,7 @@ LyXType
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Description
