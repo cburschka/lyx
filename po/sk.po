@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-06-03 21:39+0200\n"
-"PO-Revision-Date: 2016-06-03 19:39+0000\n"
+"POT-Creation-Date: 2016-06-21 21:55+0200\n"
+"PO-Revision-Date: 2016-06-21 20:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6234,6 +6234,36 @@ msgstr "Alternatívny reťazec dôkazu"
 #: lib/layouts/svcommon.inc:647 lib/layouts/theorems-proof.inc:34
 msgid "Proof."
 msgstr "Dôkaz."
+
+#: lib/layouts/InStar.module:2
+msgid "Title and Preamble Hacks"
+msgstr "Kúzla v Titule a v Preambule"
+
+#: lib/layouts/InStar.module:12
+msgid ""
+"Provides two new styles: 1. An In Premable style that puts whatever is "
+"entered into it into the preamble. This can be used, if one wishes, to "
+"include preamble code in the body of the LyX document. 2. An In Title style "
+"that will put its contents into the body of the LaTeX document, but before "
+"\\maketitle is issued. This is useful for making branches and notes in title-"
+"related material. (If you put these in a Standard layout, this signals to "
+"LyX to output \\maketitle, which may then come too early.)"
+msgstr ""
+"Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
+"zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
+"preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' položí svoj obsah "
+"do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
+"tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
+"rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
+"byť predčasné.)"
+
+#: lib/layouts/InStar.module:16
+msgid "In Preamble"
+msgstr "V Preambule"
+
+#: lib/layouts/InStar.module:23
+msgid "In Title"
+msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -23025,14 +23055,6 @@ msgstr ""
 "Prečítajte si dokumentáciu balíka pdfpages\n"
 "pre ďalšie nastavenia a detaily.\n"
 
-#: lib/external_templates:415
-msgid ""
-"Today's date.\n"
-"Read 'info date' for more information.\n"
-msgstr ""
-"Dnešné dátum.\n"
-"Pre ďalšie informácie si prečítajte stránku manuálu ('info date').\n"
-
 #: lib/external_templates:444
 msgid "Dia"
 msgstr "Dia"
@@ -23140,10 +23162,6 @@ msgstr "Prostý text (obrázok)"
 #: lib/configure.py:630
 msgid "Plain text (Xfig output)"
 msgstr "Prostý text (Xfig výstup)"
-
-#: lib/configure.py:631
-msgid "date (output)"
-msgstr "dátum (výstup)"
 
 #: lib/configure.py:632 src/frontends/qt4/GuiDocument.cpp:1277
 #: src/frontends/qt4/GuiErrorList.cpp:44
@@ -23406,10 +23424,6 @@ msgstr "MS-Word Office-Open XML"
 msgid "MS Word Office Open XML|O"
 msgstr "MS-Word Office-Open XML|W"
 
-#: lib/configure.py:716
-msgid "date command"
-msgstr "príkaz pre dátum"
-
 #: lib/configure.py:717
 msgid "Table (CSV)"
 msgstr "Tabuľka (CSV)"
@@ -23442,6 +23456,10 @@ msgstr "LyX 2.0.x"
 #: lib/configure.py:725
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
+
+#: lib/configure.py:703
+msgid "LyX 2.2.x"
+msgstr "LyX 2.2.x"
 
 #: lib/configure.py:726
 msgid "CJK LyX 1.4.x (big5)"
@@ -30046,21 +30064,17 @@ msgstr "Vetva (%1$s): %2$s"
 msgid "Branch: "
 msgstr "Vetva: "
 
-#: src/insets/InsetBranch.cpp:95
-msgid "Branch (child only): "
-msgstr "Vetva (len potomok): "
+#: src/insets/InsetBranch.cpp:109
+msgid "Branch (child): "
+msgstr "Vetva (potomok): "
 
-#: src/insets/InsetBranch.cpp:97
-msgid "Branch (master only): "
-msgstr "Vetva (len hlavný dokument): "
+#: src/insets/InsetBranch.cpp:111
+msgid "Branch (master): "
+msgstr "Vetva (hlavný dokument): "
 
 #: src/insets/InsetBranch.cpp:99
 msgid "Branch (undefined): "
 msgstr "Vetva (ne-definovaná): "
-
-#: src/insets/InsetBranch.cpp:104
-msgid "Undef: "
-msgstr "Nie def: "
 
 #: src/insets/InsetBranch.cpp:170
 msgid "Branch state changes in master document"
@@ -30720,8 +30734,8 @@ msgid "Reference to Name"
 msgstr "Referencia na Meno"
 
 #: src/insets/InsetRef.cpp:357
-msgid "NameRef:"
-msgstr "MenoRef:"
+msgid "NameRef: "
+msgstr "MenoRef: "
 
 #: src/insets/InsetScript.cpp:343
 msgid "subscript"
@@ -31445,6 +31459,22 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Today's date.\n"
+#~ "Read 'info date' for more information.\n"
+#~ msgstr ""
+#~ "Dnešné dátum.\n"
+#~ "Pre ďalšie informácie si prečítajte stránku manuálu ('info date').\n"
+
+#~ msgid "date (output)"
+#~ msgstr "dátum (výstup)"
+
+#~ msgid "date command"
+#~ msgstr "príkaz pre dátum"
+
+#~ msgid "Undef: "
+#~ msgstr "Nie def: "
 
 #~ msgid "Change: "
 #~ msgstr "Zmena: "
@@ -34791,3 +34821,12 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
 #~ "kurzor na miesto v dokumente kde sa chyba stala."
+
+#~ msgid "NameRef:"
+#~ msgstr "MenoRef:"
+
+#~ msgid "Branch (child only): "
+#~ msgstr "Vetva (len potomok): "
+
+#~ msgid "Branch (master only): "
+#~ msgstr "Vetva (len hlavný dokument): "
