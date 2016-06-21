@@ -1,35 +1,39 @@
-Public release of LyX version 2.2.0
-========================================
+Public release of LyX version 2.2.1
+===================================
 
-We are proud to announce the release of LyX 2.2.0.
+We are proud to announce the release of LyX 2.2.1.
 
-With this release, LyX celebrates 20 years of existence. The 2.2 series
-has a rich set of new features compared to the current stable series.
+LyX 2.2.1 is the first maintenance released in the 2.2.x series.
 
-LyX 2.2.0 is the culmination of two years of hard work. An overview
-of the new features can be found here:
-  http://wiki.lyx.org/LyX/NewInLyX22
+LyX is a document processor that encourages an approach to writing based 
+on the structure of your documents and not simply their appearance. It is
+released under a Free and Open Source Software license.
 
-You can download LyX 2.2.0 from https://www.lyx.org/Download/.
+You can download LyX 2.1.4 from http://www.lyx.org/Download/.
 
-For Windows users, if you installed a pre-release of LyX 2.2.0, you
-should uninstall that version before installing this newer release.
+LyX 2.2.1 is the result of on-going efforts to make our stable version more 
+reliable and more stable. We have fixed a number of bugs and made a number 
+of improvements. FILL IN
 
-We hope you will enjoy the result!
+One important change is to the behavior of character styles. By default,
+these now prohibit changes to the paragraph layout. Putting a description 
+inside a character style typically results in invalid LaTeX code, so this 
+makes certain mistakes harder to make. Power users who have taken advantage 
+of the previous behavior can restore it by adding "ForcePlain 0" to the 
+declaration of the character style, so long as this is done after "LyXType 
+charstyle" has been declared.
 
-The file lib/RELEASE-NOTES lists some known issues and problems compared
-to the current stable releases (LyX 2.1.x). We strongly recommend that
-packagers of LyX on various platforms and distributions read this file.
-
-As with any major release, this one comes with a lot of new features but
-also some bugs. If you think you have found a bug in LyX 2.2.0, either
-email the LyX developers' mailing list (lyx-devel at lists.lyx.org),
-or open a bug report at http://www.lyx.org/trac/wiki/BugTrackerHome.
+If you think you have found a bug in LyX 2.2.1, please open a bug report at
+http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
+really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
+<at> lists.lyx.org) and ask. 
 
 If you have trouble using LyX or have a question, consult the
-documentation that comes with LyX (under Help) and the LyX wiki, which you
-will find at http://wiki.lyx.org/. You can also send email to the LyX users'
-list (lyx-users at lists.lyx.org).
+documentation that comes with LyX and the LyX wiki, which lives at
+http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
+users' list (lyx-users <at> lists.lyx.org).
+
+We hope you enjoy using LyX 2.2.1.
 
 The LyX team.
 http://www.lyx.org
