@@ -24,7 +24,6 @@
 #ifndef INSET_TABULAR_H
 #define INSET_TABULAR_H
 
-#include "Inset.h"
 #include "InsetText.h"
 #include "Length.h"
 
@@ -677,7 +676,10 @@ public:
 		///
 		shared_ptr<InsetTableCell> inset;
 	};
-	CellData & cellInfo(idx_type cell) const;
+	///
+	CellData const & cellInfo(idx_type cell) const;
+	///
+	CellData & cellInfo(idx_type cell);
 	///
 	typedef std::vector<CellData> cell_vector;
 	///
@@ -832,7 +834,9 @@ public:
 	/// change associated Buffer
 	void setBuffer(Buffer & buffer);
 	/// retrieve associated Buffer
-	Buffer & buffer() const { return *buffer_; }
+	Buffer const & buffer() const { return *buffer_; }
+	/// retrieve associated Buffer
+	Buffer & buffer() { return *buffer_; }
 
 private:
 	Buffer * buffer_;

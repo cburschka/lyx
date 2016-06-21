@@ -1668,7 +1668,13 @@ bool Tabular::hasMultiColumn(col_type c) const
 }
 
 
-Tabular::CellData & Tabular::cellInfo(idx_type cell) const
+Tabular::CellData const & Tabular::cellInfo(idx_type cell) const
+{
+	return cell_info[cellRow(cell)][cellColumn(cell)];
+}
+
+
+Tabular::CellData & Tabular::cellInfo(idx_type cell)
 {
 	return cell_info[cellRow(cell)][cellColumn(cell)];
 }
@@ -2606,7 +2612,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		if (getAlignment(cell) == LYX_ALIGN_DECIMAL) {
 			// copy cell and split in 2
 			InsetTableCell head = InsetTableCell(*cellInset(cell));
-			head.setBuffer(buffer());
+			head.setBuffer(const_cast<Buffer &>(buffer()));
 			DocIterator dit = cellInset(cell)->getText(0)->macrocontextPosition();
 			dit.pop_back();
 			dit.push_back(CursorSlice(head));
