@@ -3,13 +3,8 @@ Public release of LyX version 2.2.1
 
 We are proud to announce the release of LyX 2.2.1.
 
-LyX 2.2.1 is the first maintenance released in the 2.2.x series.
-
-LyX is a document processor that encourages an approach to writing based 
-on the structure of your documents and not simply their appearance. It is
-released under a Free and Open Source Software license.
-
-You can download LyX 2.2.1 from http://www.lyx.org/Download/.
+LyX 2.2.1 is the first maintenance release in the 2.2.x series. You can 
+download LyX 2.2.1 from http://www.lyx.org/Download/.
 
 LyX 2.2.1 is the result of on-going efforts to make our stable version more 
 reliable and more stable. We have fixed a number of bugs and made a number 
@@ -22,6 +17,10 @@ makes certain mistakes harder to make. Power users who have taken advantage
 of the previous behavior can restore it by adding "ForcePlain 0" to the 
 declaration of the character style, so long as this is done after "LyXType 
 charstyle" has been declared.
+
+LyX is a document processor that encourages an approach to writing based 
+on the structure of your documents and not simply their appearance. It is
+released under a Free and Open Source Software license.
 
 If you think you have found a bug in LyX 2.2.1, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it

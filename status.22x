@@ -62,13 +62,13 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- InPreamble styles should be written to the premable as many times as the
-  user requests them, even if it results in duplicate commands.
-
 - Correctly protect the \pagebreak command when needed (bug 10092).
 
 - Resolve problem on Windows with importing files from directories with
   accented characters on FAT drives (bug 10218).
+
+- InPreamble styles should be written to the premable as many times as the
+  user requests them, even if it results in duplicate commands.
 
 - Make sure we output all XHTML table cells, even the empty ones (bug 10153).
 
