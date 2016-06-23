@@ -125,6 +125,8 @@ private:
 	RenderButton & button() const { return button_; }
 	/// This should provide the text for the button
 	virtual docstring screenLabel() const = 0;
+	/// This should return true when font is inherited from text
+	virtual bool inheritFont() const { return false; }
 
 	/// \name Static public methods obligated for InsetCommand derived classes
 	//@{

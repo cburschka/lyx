@@ -32,16 +32,18 @@ RenderBase * RenderButton::clone(Inset const *) const
 }
 
 
-void RenderButton::update(docstring const & text, bool editable)
+void RenderButton::update(docstring const & text, bool editable,
+                          bool inherit_font)
 {
 	text_ = text;
 	editable_ = editable;
+	inherit_font_ = inherit_font;
 }
 
 
-void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
+void RenderButton::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontInfo font = sane_font;
+	FontInfo font = inherit_font_ ? mi.base.font : sane_font;
 	font.decSize();
 	frontend::FontMetrics const & fm =
 		theFontMetrics(font);
@@ -58,7 +60,7 @@ void RenderButton::metrics(MetricsInfo &, Dimension & dim) const
 void RenderButton::draw(PainterInfo & pi, int x, int y) const
 {
 	// Draw it as a box with the LaTeX text
-	FontInfo font = sane_font;
+	FontInfo font = inherit_font_ ? pi.base.font : sane_font;
 	font.setColor(Color_command);
 	font.decSize();
 

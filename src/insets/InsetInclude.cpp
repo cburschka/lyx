@@ -1019,7 +1019,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		if (!set_label_) {
 			set_label_ = true;
-			button_.update(screenLabel(), true);
+			button_.update(screenLabel(), true, false);
 		}
 		button_.metrics(mi, dim);
 	}
@@ -1201,7 +1201,7 @@ void InsetInclude::updateCommand()
 
 void InsetInclude::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	button_.update(screenLabel(), true);
+	button_.update(screenLabel(), true, false);
 
 	Buffer const * const childbuffer = getChildBuffer();
 	if (childbuffer) {
