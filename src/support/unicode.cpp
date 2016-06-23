@@ -62,7 +62,7 @@ struct IconvProcessor::Handler {
 
 
 IconvProcessor::IconvProcessor(string tocode, string fromcode)
-	: tocode_(tocode), fromcode_(fromcode)
+	: tocode_(move(tocode)), fromcode_(move(fromcode))
 {}
 
 
@@ -132,23 +132,11 @@ int IconvProcessor::convert(char const * buf, size_t buflen,
 			lyxerr << "E2BIG  There is not sufficient room at *outbuf." << endl;
 			break;
 		case EILSEQ:
-			lyxerr << "EILSEQ An invalid multibyte sequence"
-				<< " has been encountered in the input.\n"
-				<< "When converting from " << fromcode_
-				<< " to " << tocode_ << ".\n";
-			lyxerr << "Input:" << hex;
-			for (size_t i = 0; i < buflen; ++i) {
-				// char may be signed, avoid output of
-				// something like 0xffffffc2
-				boost::uint32_t const b =
-					*reinterpret_cast<unsigned char const *>(buf + i);
-				lyxerr << " 0x" << (unsigned int)b;
-			}
-			lyxerr << dec << endl;
-			break;
 		case EINVAL:
-			lyxerr << "EINVAL An incomplete multibyte sequence"
-				<< " has been encountered in the input.\n"
+			lyxerr << (errno == EINVAL
+			           ? "EINVAL An incomplete "
+			           : "EILSEQ An invalid ")
+				<< "multibyte sequence has been encountered in the input.\n"
 				<< "When converting from " << fromcode_
 				<< " to " << tocode_ << ".\n";
 			lyxerr << "Input:" << hex;
