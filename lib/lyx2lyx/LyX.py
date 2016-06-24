@@ -308,7 +308,7 @@ class LyX_base:
             if check_token(line, '\\end_preamble'):
                 continue
 
-            line = line.strip()
+            line = line.rstrip()
             if not line:
                 continue
 
