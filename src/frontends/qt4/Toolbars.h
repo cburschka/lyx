@@ -44,7 +44,9 @@ public:
 		/// a button that expands a menu but remembers the last choice
 		STICKYPOPUPMENU,
 		///
-		ICONPALETTE
+		ICONPALETTE,
+		///
+		DYNAMICMENU
 	};
 
 	ToolbarItem(Type type,

@@ -74,10 +74,12 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		TO_EXPORTFORMATS,
 		TO_IMPORTFORMATS,
 		TO_UPDATEFORMATS,
-		TO_VIEWFORMATS
+		TO_VIEWFORMATS,
+		TO_DYNAMICMENU
 	};
 
 	struct LexerKeyword toolTags[] = {
+		{ "dynamicmenu", TO_DYNAMICMENU},
 		{ "end", TO_ENDTOOLBAR },
 		{ "exportformats", TO_EXPORTFORMATS },
 		{ "iconpalette", TO_ICONPALETTE },
@@ -154,6 +156,16 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				add(ToolbarItem(ToolbarItem::POPUPMENU, pname, label));
 			}
 			break;
+
+		case TO_DYNAMICMENU: {
+			if (lex.next(true)) {
+				string const name = lex.getString();
+				lex.next(true);
+				docstring const label = lex.getDocString();
+				add(ToolbarItem(ToolbarItem::DYNAMICMENU, name, label));
+			}
+			break;
+		}
 
 		case TO_STICKYPOPUPMENU:
 			if (lex.next(true)) {

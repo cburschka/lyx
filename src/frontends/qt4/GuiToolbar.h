@@ -20,6 +20,8 @@
 #include <QToolBar>
 #include <QToolButton>
 
+#include "support/strfwd.h"
+
 class QSettings;
 
 namespace lyx {
@@ -38,29 +40,77 @@ class LayoutBox;
 class ToolbarInfo;
 class ToolbarItem;
 
-class MenuButton : public QToolButton
+class MenuButtonBase : public QToolButton
 {
 	Q_OBJECT
 public:
 	///
-	MenuButton(GuiToolbar * bar, ToolbarItem const & item,
-		bool const sticky = false);
+	MenuButtonBase(GuiToolbar * bar, ToolbarItem const & item);
 
-private:
+protected:
 	///
-	void initialize();
+	virtual void initialize() = 0;
 	///
 	GuiToolbar * bar_;
 	///
 	ToolbarItem const & tbitem_;
 
-private Q_SLOTS:
+protected Q_SLOTS:
 	///
 	void actionTriggered(QAction * action);
+	///
+	virtual void updateTriggered() = 0;
+};
+
+
+class StaticMenuButton : public MenuButtonBase
+{
+	Q_OBJECT
+public:
+	///
+	StaticMenuButton(GuiToolbar * bar, ToolbarItem const & item,
+		bool const sticky = false);
+
+protected:
+	///
+	void initialize();
+
+protected Q_SLOTS:
 	///
 	void updateTriggered();
 };
 
+
+/// A menu which can be populated on the fly.
+/// The 'type' of menu must be given in the toolbar file
+/// (stdtoolbars.inc, usually) and must be one of:
+///		dynamic-custom-insets
+///		dynamic-char-styles
+/// To add a new one of these, you must add a routine, like 
+/// loadFlexInsets, that will populate the menu, and call it from
+/// updateTriggered. Make sure to add the new type to isMenuType().
+class DynamicMenuButton : public MenuButtonBase
+{
+    Q_OBJECT
+public:
+	///
+	DynamicMenuButton(GuiToolbar * bar, ToolbarItem const & item);
+	///
+	~DynamicMenuButton();
+	///
+	static bool isMenuType(std::string const & s);
+protected:
+	///
+	void initialize();
+	///
+	void loadFlexInsets();
+	/// pimpl so we don't have to include big files
+	class Private;
+	Private * d;
+protected Q_SLOTS:
+	///
+	void updateTriggered();
+};
 
 
 class GuiToolbar : public QToolBar
@@ -107,6 +157,8 @@ public:
 
 	///
 	Action * addItem(ToolbarItem const & item);
+    ///
+    GuiView const & owner() { return owner_; }
 
 Q_SIGNALS:
 	///

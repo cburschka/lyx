@@ -469,6 +469,8 @@ dist_images_DATA1X = \
 	images/dialog-toggle_findreplaceadv.svgz \
 	images/dialog-toggle_toc.svgz \
 	images/down.svgz \
+	images/dynamic-char-styles.svgz \
+	images/dynamic-custom-insets.svgz \
 	images/editclear.svgz \
 	images/emblem-readonly.svgz \
 	images/emblem-shellescape.svgz \
@@ -1746,6 +1748,8 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/dialog-show_vclog.svgz \
 	images/oxygen/dialog-toggle_findreplaceadv.svgz \
 	images/oxygen/dialog-toggle_toc.svgz \
+	images/oxygen/dynamic-char-styles.svgz \
+	images/oxygen/dynamic-custom-insets.svgz \
 	images/oxygen/down.svgz \
 	images/oxygen/editclear.svgz \
 	images/oxygen/ert-insert.svgz \

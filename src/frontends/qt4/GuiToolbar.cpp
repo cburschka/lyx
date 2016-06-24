@@ -18,21 +18,28 @@
 #include "GuiToolbar.h"
 
 #include "Action.h"
+#include "Buffer.h"
+#include "BufferParams.h"
+#include "BufferView.h"
+#include "Cursor.h"
+#include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "GuiApplication.h"
 #include "GuiCommandBuffer.h"
 #include "GuiView.h"
 #include "IconPalette.h"
 #include "InsertTableWidget.h"
-#include "LayoutBox.h"
-#include "qt_helpers.h"
-#include "Toolbars.h"
-
-#include "FuncRequest.h"
-#include "FuncStatus.h"
 #include "KeyMap.h"
+#include "LayoutBox.h"
 #include "LyX.h"
 #include "LyXRC.h"
+#include "qt_helpers.h"
 #include "Session.h"
+#include "Text.h"
+#include "TextClass.h"
+#include "Toolbars.h"
+
+#include "insets/InsetText.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -181,7 +188,7 @@ public:
 } // namespace
 
 
-MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const sticky)
+MenuButtonBase::MenuButtonBase(GuiToolbar * bar, ToolbarItem const & item)
 	: QToolButton(bar), bar_(bar), tbitem_(item)
 {
 	setPopupMode(QToolButton::InstantPopup);
@@ -201,6 +208,20 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 			break;
 		}
 	}
+}
+
+
+void MenuButtonBase::actionTriggered(QAction * action)
+{
+	QToolButton::setDefaultAction(action);
+	setPopupMode(QToolButton::DelayedPopup);
+}
+
+
+StaticMenuButton::StaticMenuButton(
+    GuiToolbar * bar, ToolbarItem const & item, bool const sticky)
+	: MenuButtonBase(bar, item)
+{
 	if (sticky)
 		connect(this, SIGNAL(triggered(QAction *)),
 			this, SLOT(actionTriggered(QAction *)));
@@ -210,7 +231,7 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 }
 
 
-void MenuButton::initialize()
+void StaticMenuButton::initialize()
 {
 	QString const label = qt_(to_ascii(tbitem_.label_));
 	ButtonMenu * m = new ButtonMenu(label, this);
@@ -232,14 +253,7 @@ void MenuButton::initialize()
 }
 
 
-void MenuButton::actionTriggered(QAction * action)
-{
-	QToolButton::setDefaultAction(action);
-	setPopupMode(QToolButton::DelayedPopup);
-}
-
-
-void MenuButton::updateTriggered()
+void StaticMenuButton::updateTriggered()
 {
 	if (!menu())
 		return;
@@ -258,6 +272,126 @@ void MenuButton::updateTriggered()
 	// turns non-TeX fonts on)
 	if (defaultAction() && !defaultAction()->isEnabled())
 		setPopupMode(QToolButton::InstantPopup);
+}
+
+
+class DynamicMenuButton::Private
+{
+	/// noncopyable
+	Private(Private const &);
+	void operator=(Private const &);
+public:
+	Private() : inset_(0) {}
+	///
+	DocumentClassConstPtr text_class_;
+	///
+	InsetText const * inset_;
+};
+
+
+DynamicMenuButton::DynamicMenuButton(GuiToolbar * bar, ToolbarItem const & item)
+	: MenuButtonBase(bar, item), d(new Private())
+{
+	initialize();
+}
+
+
+DynamicMenuButton::~DynamicMenuButton() 
+{ 
+	delete d;
+}
+
+
+void DynamicMenuButton::initialize()
+{
+	QString const label = qt_(to_ascii(tbitem_.label_));
+	ButtonMenu * m = new ButtonMenu(label, this);
+	m->setWindowTitle(label);
+	m->setTearOffEnabled(true);
+	connect(bar_, SIGNAL(updated()), m, SLOT(updateParent()));
+	connect(bar_, SIGNAL(updated()), this, SLOT(updateTriggered()));
+	connect(bar_, SIGNAL(iconSizeChanged(QSize)),
+		this, SLOT(setIconSize(QSize)));
+	setMenu(m);
+}
+
+
+bool DynamicMenuButton::isMenuType(string const & s)
+{
+	return s == "dynamic-custom-insets" ||
+	       s == "dynamic-char-styles";
+}
+
+
+void DynamicMenuButton::updateTriggered()
+{
+	QMenu * m = menu();
+	// the menu should exist by this point
+	// if not, we can at least avoid crashing in release mode
+	LASSERT(m, return);
+	GuiView const & owner = bar_->owner();
+	BufferView const * bv = owner.currentBufferView();
+	if (!bv) {
+		m->clear();
+		setEnabled(false);
+		setMinimumWidth(sizeHint().width());
+		d->text_class_.reset();
+		d->inset_ = 0;
+		return;
+	}
+
+	DocumentClassConstPtr text_class = 
+			bv->buffer().params().documentClassPtr();
+	InsetText const * inset = &(bv->cursor().innerText()->inset());
+	// if the text class has changed, then we need to reload the menu
+	if (d->text_class_ != text_class) {
+		d->text_class_ = text_class;
+		// at the moment, we can just call loadFlexInsets, and it will
+		// handle both types. if there were more types of menus, then we 
+		// might need to have other options.
+		loadFlexInsets();
+	}
+	// remember where we are
+	d->inset_ = inset;
+	// note that enabling here might need to be more subtle if there
+	// were other kinds of menus.
+	setEnabled(!bv->buffer().isReadonly() &&
+						 !m->isEmpty() && 
+						 inset->insetAllowed(FLEX_CODE));
+}
+
+
+void DynamicMenuButton::loadFlexInsets()
+{
+	QMenu * m = menu();
+	m->clear();
+	string const & menutype = tbitem_.name_;
+	InsetLayout::InsetLyXType ftype;
+	if (menutype == "dynamic-custom-insets")
+		ftype = InsetLayout::CUSTOM;
+	else if (menutype == "dynamic-char-styles")
+		ftype = InsetLayout::CHARSTYLE;
+	else {
+		// this should have been taken care of earlier
+		LASSERT(false, return);
+	}
+
+	TextClass::InsetLayouts const & inset_layouts = 
+			d->text_class_->insetLayouts();
+	for (auto const & iit : inset_layouts) {
+		InsetLayout const & il = iit.second;
+		if (il.lyxtype() != ftype)
+			continue;
+		docstring const name = iit.first;
+		QString const loc_item = toqstr(translateIfPossible(
+				prefixIs(name, from_ascii("Flex:")) ? 
+				name.substr(5) : name));
+		FuncRequest func(LFUN_FLEX_INSERT, 
+				from_ascii("\"") + name + from_ascii("\""), FuncRequest::TOOLBAR);
+		Action * act = 
+				new Action(func, getIcon(func, false), loc_item, loc_item, this);
+		m->addAction(act);
+	}
 }
 
 
@@ -299,15 +433,22 @@ void GuiToolbar::add(ToolbarItem const & item)
 	case ToolbarItem::ICONPALETTE:
 		addWidget(new PaletteButton(this, item));
 		break;
-
 	case ToolbarItem::POPUPMENU: {
-		addWidget(new MenuButton(this, item, false));
+		addWidget(new StaticMenuButton(this, item, false));
 		break;
 		}
 	case ToolbarItem::STICKYPOPUPMENU: {
-		addWidget(new MenuButton(this, item, true));
+		addWidget(new StaticMenuButton(this, item, true));
 		break;
 		}
+	case ToolbarItem::DYNAMICMENU: {
+		// we only handle certain things
+		if (DynamicMenuButton::isMenuType(item.name_))
+			addWidget(new DynamicMenuButton(this, item));
+		else
+			LYXERR0("Unknown dynamic menu type: " << item.name_);
+		break;
+	}
 	case ToolbarItem::COMMAND: {
 		if (!getStatus(*item.func_).unknown())
 			addAction(addItem(item));

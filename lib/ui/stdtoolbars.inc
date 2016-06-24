@@ -96,6 +96,9 @@ ToolbarSet
 		Item "Toggle math toolbar" "toolbar-toggle math"
 		Item "Toggle table toolbar" "toolbar-toggle table"
 		Item "Toggle review toolbar" "toolbar-toggle review"
+		Separator
+		DynamicMenu "dynamic-custom-insets" "Custom Insets"
+		DynamicMenu "dynamic-char-styles" "Character Styles"
 	End
 
 	Toolbar "view/update" "View/Update"
