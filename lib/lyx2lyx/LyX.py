@@ -317,7 +317,7 @@ class LyX_base:
                 line = trim_eol_binary(line)
                 decoded = line.decode('latin1')
             if check_token(decoded, '\\begin_preamble'):
-                while 1:
+                while True:
                     line = self.input.readline()
                     if not line:
                         # eof found before end of header
