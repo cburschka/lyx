@@ -364,8 +364,6 @@ private:
 	///
 	void insertLyXFile(docstring const & fname);
 	///
-	void insertPlaintextFile(docstring const & fname,
-		bool asParagraph);
 	/// Open Export As ... dialog. \p iformat is the format the
 	/// filter is initially set to.
 	bool exportBufferAs(Buffer & b, docstring const & iformat);
