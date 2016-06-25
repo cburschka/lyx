@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 510
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -55,6 +55,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -25514,23 +25515,7 @@ Format Ascii
 \begin_layout LyX-Code
 
 \lang english
-Product "$$Contents(
-\backslash
-"$$AbsPath$$Basename.asc
-\backslash
-")"
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-UpdateFormat asciixfig
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-UpdateResult "$$AbsPath$$Basename.asc"
+Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code
@@ -25583,18 +25568,6 @@ ReferencedFile docbook "$$AbsPath$$Basename.eps"
 
 \lang english
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-FormatEnd
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code

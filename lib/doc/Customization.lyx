@@ -23122,19 +23122,7 @@ Format Ascii
 \end_layout
 
 \begin_layout LyX-Code
-Product "$$Contents(
-\backslash
-"$$AbsPath$$Basename.asc
-\backslash
-")"
-\end_layout
-
-\begin_layout LyX-Code
-UpdateFormat asciixfig
-\end_layout
-
-\begin_layout LyX-Code
-UpdateResult "$$AbsPath$$Basename.asc"
+Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code
@@ -23171,14 +23159,6 @@ ReferencedFile docbook "$$AbsPath$$Basename.eps"
 
 \begin_layout LyX-Code
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
-\end_layout
-
-\begin_layout LyX-Code
-FormatEnd
-\end_layout
-
-\begin_layout LyX-Code
-Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code

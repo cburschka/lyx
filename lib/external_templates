@@ -136,9 +136,7 @@ Template RasterImage
 		ReferencedFile pdflatex "$$AbsPath$$Basename.$$pngOrjpg"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
-		UpdateFormat asciiimage
-		UpdateResult "$$AbsPath$$Basename.asc"
+		Product "[RasterImage: $$FName]"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
@@ -201,9 +199,7 @@ Template VectorGraphics
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
-		UpdateFormat asciiimage
-		UpdateResult "$$AbsPath$$Basename.asc"
+		Product "[VectorGraphics: $$FName]"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
@@ -253,9 +249,7 @@ Template XFig
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
-		UpdateFormat asciixfig
-		UpdateResult "$$AbsPath$$Basename.asc"
+		Product "[XFig: $$FName]"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
@@ -450,9 +444,7 @@ Template Dia
 		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
 	FormatEnd
 	Format Ascii
-		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
-		UpdateFormat asciiimage
-		UpdateResult "$$AbsPath$$Basename.asc"
+		Product "[Dia: $$FName]"
 	FormatEnd
 	Format DocBook
 		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
