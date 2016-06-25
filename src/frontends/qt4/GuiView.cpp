@@ -3541,7 +3541,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			else
 				target_dir = doc_buffer->fileName().onlyPath();
 
-			if (doc_buffer->isUnnamed() || !target_dir.isDirWritable()) {
+			if ((dest.empty() && doc_buffer->isUnnamed())
+			    || !target_dir.isDirWritable()) {
 				exportBufferAs(*doc_buffer, cmd.argument());
 				break;
 			}
