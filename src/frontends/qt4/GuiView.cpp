@@ -3539,7 +3539,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (!dest.empty() && FileName::isAbsolute(dest))
 				target_dir = FileName(support::onlyPath(dest));
 			else
-                target_dir = doc_buffer->fileName().onlyPath();
+				target_dir = doc_buffer->fileName().onlyPath();
 
 			if (doc_buffer->isUnnamed() || !target_dir.isDirWritable()) {
 				exportBufferAs(*doc_buffer, cmd.argument());
