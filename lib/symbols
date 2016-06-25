@@ -133,11 +133,11 @@ ce                font        forcetext
 cf                font        forcetext
 
 # old-style font commands
-bf                oldfont     none
-cal               oldfont     none
-it                oldfont     none
-rm                oldfont     none
-tt                oldfont     none
+bf                oldfont     none    hiddensymbol
+cal               oldfont     none    hiddensymbol
+it                oldfont     none    hiddensymbol
+rm                oldfont     none    hiddensymbol
+tt                oldfont     none    hiddensymbol
 
 # matrix environments
 Bmatrix           matrix      none
