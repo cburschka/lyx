@@ -39,7 +39,7 @@ def update_tabular(document):
     regexp = re.compile(r'^\\begin_inset\s+Tabular')
     lines = document.body
     i=0
-    while 1:
+    while True:
         i = find_re(lines, regexp, i)
         if i == -1:
             break

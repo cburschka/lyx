@@ -146,7 +146,7 @@ def remove_oldfloat(document):
     " Change \begin_float .. \end_float into \begin_inset Float .. \end_inset"
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_float", i)
         if i == -1:
             break
@@ -215,7 +215,7 @@ def remove_pextra(document):
     lines = document.body
     i = 0
     flag = 0
-    while 1:
+    while True:
         i = find_re(lines, pextra_type2_rexp, i)
         if i == -1:
             break
@@ -258,7 +258,7 @@ def remove_pextra(document):
         j = get_next_paragraph(lines, i, document.format + 1)
 
         count = 0
-        while 1:
+        while True:
             # collect more paragraphs to the minipage
             count = count+1
             if j == -1 or not check_token(lines[j], "\\layout"):
@@ -301,12 +301,12 @@ def remove_oldert(document):
                  ""]
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_tokens(lines, ["\\latex latex", "\\layout LaTeX"], i)
         if i == -1:
             break
         j = i+1
-        while 1:
+        while True:
             # \end_inset is for ert inside a tabular cell. The other tokens
             # are obvious.
             j = find_tokens(lines, ["\\latex default", "\\layout", "\\begin_inset", "\\end_inset", "\\end_float", "\\the_end"],
@@ -327,7 +327,7 @@ def remove_oldert(document):
             new = ['\layout %s' % document.default_layout, "", ""]
 
         k = i+1
-        while 1:
+        while True:
             k2 = find_re(lines, ert_rexp, k, j)
             inset = hfill = specialchar = 0
             if k2 == -1:
@@ -399,7 +399,7 @@ def remove_oldert(document):
 
     # Delete remaining "\latex xxx" tokens
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\latex ", i)
         if i == -1:
             break
@@ -410,7 +410,7 @@ def remove_oldertinset(document):
     " ERT insert are hidden feature of lyx 1.1.6. This might be removed in the future."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset ERT", i)
         if i == -1:
             break
@@ -445,7 +445,7 @@ def combine_ert(document):
     " Combine ERT paragraphs."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset ERT", i)
         if i == -1:
             break
@@ -490,7 +490,7 @@ def remove_figinset(document):
     " Remove figinset."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Figure", i)
         if i == -1:
             break
@@ -564,7 +564,7 @@ def update_tabular(document):
     regexp = re.compile(r'^\\begin_inset\s+Tabular')
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_re(lines, regexp, i)
         if i == -1:
             break
@@ -697,7 +697,7 @@ def update_longtables(document):
     regexp = re.compile(r'^\\begin_inset\s+Tabular')
     body = document.body
     i = 0
-    while 1:
+    while True:
         i = find_re(body, regexp, i)
         if i == -1:
             break
@@ -766,7 +766,7 @@ def fix_oldfloatinset(document):
     " Figure insert are hidden feature of lyx 1.1.6. This might be removed in the future."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Float ", i)
         if i == -1:
             break
@@ -780,7 +780,7 @@ def change_listof(document):
     " Change listof insets."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset LatexCommand \\listof", i)
         if i == -1:
             break
@@ -793,7 +793,7 @@ def change_infoinset(document):
     " Change info inset."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Info", i)
         if i == -1:
             break

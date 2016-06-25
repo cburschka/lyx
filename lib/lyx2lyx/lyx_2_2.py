@@ -153,7 +153,7 @@ def convert_separator(document):
         }
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_deeper", i)
         if i == -1:
             break
@@ -175,7 +175,7 @@ def convert_separator(document):
             i = i + 1
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\align", i)
         if i == -1:
             break
@@ -208,7 +208,7 @@ def convert_separator(document):
     regexp = re.compile(r'^\\begin_layout (?:(-*)|(\s*))(Separator|EndOfSlide)(?:(-*)|(\s*))$', re.IGNORECASE)
 
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             return
@@ -249,7 +249,7 @@ def revert_separator(document):
               "", "\\end_inset", ""]
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Separator", i)
         if i == -1:
             return
@@ -341,7 +341,7 @@ def convert_parbreak(document):
     """
     parbreakinset = "\\begin_inset Separator parbreak"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, parbreakinset, i)
         if i == -1:
             return
@@ -366,7 +366,7 @@ def revert_parbreak(document):
     Revert latexpar separators to parbreak separators.
     """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Separator latexpar", i)
         if i == -1:
             return

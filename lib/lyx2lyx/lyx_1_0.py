@@ -26,7 +26,7 @@ def obsolete_latex_title(document):
 
     body = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(body, '\\layout', i)
         if i == -1:
             return
@@ -43,7 +43,7 @@ def update_tabular(document):
     lines = document.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
     i = 0
-    while 1:
+    while True:
         i = find_re(lines, lyxtable_re, i)
         if i == -1:
             break

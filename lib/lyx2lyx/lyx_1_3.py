@@ -54,7 +54,7 @@ def change_insetgraphics(document):
     " Change inset Graphics."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Graphics", i)
         if i == -1:
             break
@@ -113,7 +113,7 @@ def change_tabular(document):
     " Change tabular."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "<column", i)
         if i == -1:
             break

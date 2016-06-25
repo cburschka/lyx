@@ -61,7 +61,7 @@ def find_beginning_of_layout(lines, i):
 def revert_framed(document):
     "Revert framed notes. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Note Framed", "\\begin_inset Note Shaded"], i)
 
         if i == -1:
@@ -216,7 +216,7 @@ def revert_booktabs(document):
     re_bspace = re.compile(r'\s+bottomspace="[^"]+"')
     re_ispace = re.compile(r'\s+interlinespace="[^"]+"')
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Tabular", i)
         if i == -1:
             return
@@ -470,14 +470,14 @@ implemented.'''
 def revert_cs_label(document):
     " Remove status flag of charstyle label. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset CharStyle", i)
         if i == -1:
             return
         # Seach for a line starting 'show_label'
         # If it is not there, break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i][:10] == "show_label"):
                 del document.body[i]
                 break
@@ -504,7 +504,7 @@ key "argument"
 This must be called after convert_commandparams.
 """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\bibitem", i)
         if i == -1:
             break
@@ -592,7 +592,7 @@ def convert_commandparams(document):
     # convert_bibitem()), but could be read in, so we convert it here, too.
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand", i)
         if i == -1:
             break
@@ -680,7 +680,7 @@ def convert_commandparams(document):
 def revert_commandparams(document):
     regex = re.compile(r'(\S+)\s+(.+)')
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand", i)
         if i == -1:
             break
@@ -738,7 +738,7 @@ def revert_nomenclature(document):
     regex = re.compile(r'(\S+)\s+(.+)')
     i = 0
     use_nomencl = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand nomenclature", i)
         if i == -1:
             break
@@ -789,7 +789,7 @@ def revert_printnomenclature(document):
     regex = re.compile(r'(\S+)\s+(.+)')
     i = 0
     use_nomencl = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand printnomenclature", i)
         if i == -1:
             break
@@ -855,7 +855,7 @@ def revert_esint(document):
 def revert_clearpage(document):
     " clearpage -> ERT "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\clearpage", i)
         if i == -1:
             break
@@ -876,7 +876,7 @@ def revert_clearpage(document):
 def revert_cleardoublepage(document):
     " cleardoublepage -> ERT "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\cleardoublepage", i)
         if i == -1:
             break
@@ -934,7 +934,7 @@ def revert_encodings(document):
 def convert_caption(document):
     " Convert caption layouts to caption insets. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout Caption", i)
         if i == -1:
             return
@@ -954,7 +954,7 @@ def revert_caption(document):
     " Convert caption insets to caption layouts. "
     " This assumes that the text class has a caption style. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Caption", i)
         if i == -1:
             return
@@ -1119,7 +1119,7 @@ def convert_accent(document):
     re_contents = re.compile(r'^([^\s{]+)(.*)$')
     re_accentedcontents = re.compile(r'^\s*{?([^{}]*)}?\s*$')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, re_wholeinset, i)
         if i == -1:
             return
@@ -1452,13 +1452,13 @@ def revert_utf8plain(document):
 def revert_beamer_alert(document):
     " Revert beamer's \\alert inset back to ERT. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset CharStyle Alert", i)
         if i == -1:
             return
         document.body[i] = "\\begin_inset ERT"
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i][:13] == "\\begin_layout"):
                 # Insert the \alert command
                 document.body[i + 1] = "\\alert{" + document.body[i + 1] + '}'
@@ -1471,13 +1471,13 @@ def revert_beamer_alert(document):
 def revert_beamer_structure(document):
     " Revert beamer's \\structure inset back to ERT. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset CharStyle Structure", i)
         if i == -1:
             return
         document.body[i] = "\\begin_inset ERT"
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i][:13] == "\\begin_layout"):
                 document.body[i + 1] = "\\structure{" + document.body[i + 1] + '}'
                 break
@@ -1550,7 +1550,7 @@ def revert_cv_textclass(document):
 def convert_graphics_rotation(document):
     " add scaleBeforeRotation graphics parameter. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Graphics", i)
         if i == -1:
             return
@@ -1572,7 +1572,7 @@ def convert_graphics_rotation(document):
 def revert_graphics_rotation(document):
     " remove scaleBeforeRotation graphics parameter. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Graphics", i)
         if i == -1:
             return

@@ -916,7 +916,7 @@ def merge_gbrief(document):
                     "Verteiler":       "cc",
                     "Gruss":           "Closing"}
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout", i)
         if i == -1:
             break
@@ -1332,7 +1332,7 @@ def revert_lyx_version(document):
         pass
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset Info', i)
         if i == -1:
             return
@@ -1481,7 +1481,7 @@ def revert_align_decimal(document):
 def convert_optarg(document):
   " Convert \\begin_inset OptArg to \\begin_inset Argument "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset OptArg', i)
     if i == -1:
       return
@@ -1492,7 +1492,7 @@ def convert_optarg(document):
 def revert_argument(document):
   " Convert \\begin_inset Argument to \\begin_inset OptArg "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset Argument', i)
     if i == -1:
       return
@@ -1503,7 +1503,7 @@ def revert_argument(document):
 def revert_makebox(document):
   " Convert \\makebox to TeX code "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset Box', i)
     if i == -1:
       break
@@ -1550,7 +1550,7 @@ def revert_makebox(document):
 def convert_use_makebox(document):
   " Adds use_makebox option for boxes "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset Box', i)
     if i == -1:
       return
@@ -1668,7 +1668,7 @@ def revert_nameref(document):
   for cmd in cmds:
     i = 0
     oldcmd = "LatexCommand " + cmd
-    while 1:
+    while True:
       # It seems better to look for this, as most of the reference
       # insets won't be ones we care about.
       i = find_token(document.body, oldcmd, i)
@@ -1705,7 +1705,7 @@ def revert_nameref(document):
 def remove_Nameref(document):
   " Convert Nameref commands to nameref commands "
   i = 0
-  while 1:
+  while True:
     # It seems better to look for this, as most of the reference
     # insets won't be ones we care about.
     i = find_token(document.body, "LatexCommand Nameref" , i)
@@ -1947,7 +1947,7 @@ def convert_rule(document):
 def revert_rule(document):
     " Revert line insets to Tex code "
     i = 0
-    while 1:
+    while True:
       i = find_token(document.body, "\\begin_inset CommandInset line" , i)
       if i == -1:
         return
@@ -2349,7 +2349,7 @@ def revert_script(document):
     " Convert subscript/superscript inset to TeX code "
     i = 0
     foundsubscript = False
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset script', i)
         if i == -1:
             break

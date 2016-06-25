@@ -78,7 +78,7 @@ def revert_microtype(document):
 def convert_dateinset(document):
     ' Convert date external inset to ERT '
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset External", i)
         if i == -1:
             return

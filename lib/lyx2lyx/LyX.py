@@ -401,7 +401,7 @@ class LyX_base:
             self.body[i] = self.body[i].decode(self.encoding)
 
         # Read document body
-        while 1:
+        while True:
             line = self.input.readline().decode(self.encoding)
             if not line:
                 break
@@ -767,7 +767,7 @@ class LyX_base:
 
 #        toc_par = []
 #        i = 0
-#        while 1:
+#        while True:
 #            i = find_tokens(self.body, sections, i)
 #            if i == -1:
 #                break

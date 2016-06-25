@@ -105,7 +105,7 @@ def del_token(lines, token, start, end):
 def remove_color_default(document):
     " Remove \color default"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\color default", i)
         if i == -1:
             return
@@ -179,7 +179,7 @@ def revert_spaces(document):
     " \InsetSpace ~ -> \SpecialChar ~"
     regexp = re.compile(r'(.*)(\\InsetSpace\s+)(\S+)')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             break
@@ -236,7 +236,7 @@ def revert_eqref(document):
     "\\begin_inset LatexCommand \\eqref -> ERT"
     regexp = re.compile(r'^\\begin_inset\s+LatexCommand\s+\\eqref')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             break
@@ -264,7 +264,7 @@ def revert_bibtex(document):
 def remove_insetparent(document):
     " Remove \lyxparent"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand \\lyxparent", i)
         if i == -1:
             break
@@ -276,7 +276,7 @@ def convert_external(document):
     external_rexp = re.compile(r'\\begin_inset External ([^,]*),"([^"]*)",')
     external_header = "\\begin_inset External"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, external_header, i)
         if i == -1:
             break
@@ -311,7 +311,7 @@ def revert_external_1(document):
     " Revert inset External."
     external_header = "\\begin_inset External"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, external_header, i)
         if i == -1:
             break
@@ -336,7 +336,7 @@ def revert_external_2(document):
     " Revert inset External. (part II)"
     draft_token = '\tdraft'
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset External', i)
         if i == -1:
             break
@@ -354,7 +354,7 @@ def convert_comment(document):
     " Convert \\layout comment"
     i = 0
     comment = "\\layout Comment"
-    while 1:
+    while True:
         i = find_token(document.body, comment, i)
         if i == -1:
             return
@@ -365,7 +365,7 @@ def convert_comment(document):
                         '\\layout %s' % document.default_layout]
         i = i + 7
 
-        while 1:
+        while True:
                 old_i = i
                 i = find_token(document.body, "\\layout", i)
                 if i == -1:
@@ -418,7 +418,7 @@ def convert_comment(document):
 def revert_comment(document):
     " Revert comments"
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Comment", "\\begin_inset Greyedout"], i)
 
         if i == -1:
@@ -437,7 +437,7 @@ def add_end_layout(document):
     i = i + 1
     struct_stack = ["\\layout"]
 
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset", "\\end_inset", "\\layout",
                                 "\\begin_deeper", "\\end_deeper", "\\the_end"], i)
 
@@ -504,7 +504,7 @@ def add_end_layout(document):
 def rm_end_layout(document):
     " Remove \end_layout"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\end_layout', i)
 
         if i == -1:
@@ -535,7 +535,7 @@ def rm_tracking_changes(document):
 def rm_body_changes(document):
     " Remove body changes."
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\change_", i)
         if i == -1:
             return
@@ -546,7 +546,7 @@ def rm_body_changes(document):
 def layout2begin_layout(document):
     " \layout -> \begin_layout "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\layout', i)
         if i == -1:
             return
@@ -558,7 +558,7 @@ def layout2begin_layout(document):
 def begin_layout2layout(document):
     " \begin_layout -> \layout "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_layout', i)
         if i == -1:
             return
@@ -578,7 +578,7 @@ def convert_table_valignment_middle(document):
     " Convert table  valignment, center -> middle"
     regexp = re.compile(r'^\\begin_inset\s+Tabular')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             return
@@ -602,7 +602,7 @@ def revert_valignment_middle(document):
     " Convert table  valignment, middle -> center"
     regexp = re.compile(r'^\\begin_inset\s+Tabular')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             return
@@ -677,7 +677,7 @@ parskip}
     attribute_values = ['default', 'default', 'default', 'default',
                         'default', 'default', 'default', 'none', document.language]
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout", i)
         if i == -1:
             return
@@ -835,7 +835,7 @@ parskip}
 def convert_note(document):
     " Convert Notes. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Note",
                                 "\\begin_inset Comment",
                                 "\\begin_inset Greyedout"], i)
@@ -850,7 +850,7 @@ def revert_note(document):
     " Revert Notes. "
     note_header = "\\begin_inset Note "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, note_header, i)
         if i == -1:
             break
@@ -862,7 +862,7 @@ def revert_note(document):
 def convert_box(document):
     " Convert Boxes. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Boxed",
                                 "\\begin_inset Doublebox",
                                 "\\begin_inset Frameless",
@@ -880,7 +880,7 @@ def revert_box(document):
     " Revert Boxes."
     box_header = "\\begin_inset Box "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, box_header, i)
         if i == -1:
             break
@@ -892,7 +892,7 @@ def revert_box(document):
 def convert_collapsable(document):
     " Convert collapsed insets. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens_exact(document.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
@@ -909,7 +909,7 @@ def convert_collapsable(document):
         # If, however, we find a line starting '\begin_layout'
         # (_always_ present) then break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i] == "collapsed false"):
                 document.body[i] = "status open"
                 break
@@ -927,7 +927,7 @@ def convert_collapsable(document):
 def revert_collapsable(document):
     " Revert collapsed insets. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens_exact(document.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
@@ -944,7 +944,7 @@ def revert_collapsable(document):
         # If, however, we find a line starting '\begin_layout'
         # (_always_ present) then break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i] == "status open"):
                 document.body[i] = "collapsed false"
                 break
@@ -963,7 +963,7 @@ def revert_collapsable(document):
 def convert_ert(document):
     " Convert ERT. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset ERT", i)
         if i == -1:
             break
@@ -972,7 +972,7 @@ def convert_ert(document):
         # If, however, we find a line starting '\begin_layout'
         # (_always_ present) then break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i] == "status Open"):
                 document.body[i] = "status open"
                 break
@@ -993,7 +993,7 @@ def convert_ert(document):
 def revert_ert(document):
     " Revert ERT. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset ERT", i)
         if i == -1:
             break
@@ -1002,7 +1002,7 @@ def revert_ert(document):
         # If, however, we find a line starting '\begin_layout'
         # (_always_ present) then break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i] == "status open"):
                 document.body[i] = "status Open"
                 break
@@ -1028,7 +1028,7 @@ def convert_minipage(document):
     inner_pos = ["c","t","b","s"]
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Minipage", i)
         if i == -1:
             return
@@ -1199,7 +1199,7 @@ def revert_breaks(document):
 
     # Convert the insets
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, tokens, i)
         if i == -1:
             return
@@ -1554,7 +1554,7 @@ def convert_frameless_box(document):
     pos = ['t', 'c', 'b']
     inner_pos = ['c', 't', 'b', 's']
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset Frameless', i)
         if i == -1:
             return
@@ -1733,7 +1733,7 @@ def convert_frameless_box(document):
 def remove_branches(document):
     " Remove branches. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.header, "\\branch", i)
         if i == -1:
             break
@@ -1745,7 +1745,7 @@ def remove_branches(document):
         del document.header[i:j+1]
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Branch", i)
         if i == -1:
             return
@@ -1760,7 +1760,7 @@ def remove_branches(document):
         # If, however, we find a line starting '\layout'
         # (_always_ present) then break with a warning message
         collapsed_found = 0
-        while 1:
+        while True:
             if (document.body[i][:9] == "collapsed"):
                 del document.body[i]
                 collapsed_found = 1
@@ -1821,7 +1821,7 @@ def revert_bibtopic(document):
 def convert_float(document):
     " Convert sideway floats. "
     i = 0
-    while 1:
+    while True:
         i = find_token_exact(document.body, '\\begin_inset Float', i)
         if i == -1:
             return
@@ -1829,7 +1829,7 @@ def convert_float(document):
         # If, however, we find a line starting '\begin_layout'
         # (_always_ present) then break with a warning message
         i = i + 1
-        while 1:
+        while True:
             if (document.body[i][:4] == "wide"):
                 document.body.insert(i + 1, 'sideways false')
                 break
@@ -1843,7 +1843,7 @@ def convert_float(document):
 def revert_float(document):
     " Revert sideways floats. "
     i = 0
-    while 1:
+    while True:
         i = find_token_exact(document.body, '\\begin_inset Float', i)
         if i == -1:
             return
@@ -1883,7 +1883,7 @@ def convert_graphics(document):
     """ Add extension to documentnames of insetgraphics if necessary.
     """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Graphics", i)
         if i == -1:
             return
@@ -1924,7 +1924,7 @@ def convert_names(document):
 
     i = 0
 
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout Author", i)
         if i == -1:
             return
@@ -2092,7 +2092,7 @@ def revert_paperpackage(document):
 def convert_bullets(document):
     " Convert bullets. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.header, "\\bullet", i)
         if i == -1:
             return
@@ -2110,7 +2110,7 @@ def convert_bullets(document):
 def revert_bullets(document):
     " Revert bullets. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.header, "\\bullet", i)
         if i == -1:
             return
@@ -2235,13 +2235,13 @@ def normalize_paragraph_params(document):
                          "\\leftindent"
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_layout', i)
         if i == -1:
             return
 
         i = i + 1
-        while 1:
+        while True:
             if body[i].strip() and body[i].split()[0] not in allowed_parameters:
                 break
 
@@ -2282,7 +2282,7 @@ def convert_ert_paragraphs(document):
                           '\\emph', '\\numeric', '\\bar', '\\noun',
                           '\\color', '\\lang']
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset ERT', i)
         if i == -1:
             return
@@ -2294,7 +2294,7 @@ def convert_ert_paragraphs(document):
 
         # convert non-standard paragraphs to standard
         k = i
-        while 1:
+        while True:
             k = find_token(document.body, "\\begin_layout", k, j)
             if k == -1:
                 break
@@ -2314,7 +2314,7 @@ def convert_ert_paragraphs(document):
         # insert an empty paragraph before each paragraph but the first
         k = i
         first_pagraph = 1
-        while 1:
+        while True:
             k = find_token(document.body, "\\begin_layout", k, j)
             if k == -1:
                 break
@@ -2329,7 +2329,7 @@ def convert_ert_paragraphs(document):
 
         # convert \\newline to new paragraph
         k = i
-        while 1:
+        while True:
             k = find_token(document.body, "\\newline", k, j)
             if k == -1:
                 break
@@ -2347,7 +2347,7 @@ def convert_ert_paragraphs(document):
 def revert_ert_paragraphs(document):
     " Remove double paragraph breaks. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset ERT', i)
         if i == -1:
             return
@@ -2359,7 +2359,7 @@ def revert_ert_paragraphs(document):
 
         # replace paragraph breaks with \newline
         k = i
-        while 1:
+        while True:
             k = find_token(document.body, "\\end_layout", k, j)
             l = find_token(document.body, "\\begin_layout", k, j)
             if k == -1 or l == -1:
@@ -2370,7 +2370,7 @@ def revert_ert_paragraphs(document):
 
         # replace double \newlines with paragraph breaks
         k = i
-        while 1:
+        while True:
             k = find_token(document.body, "\\newline", k, j)
             if k == -1:
                 break
@@ -2402,7 +2402,7 @@ def convert_french(document):
     # Change language in the document body
     regexp = re.compile(r'^\\lang\s+frenchb')
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             break
@@ -2448,7 +2448,7 @@ def convert_sgml_paragraphs(document):
         return
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout SGML", i)
 
         if i == -1:

@@ -838,7 +838,7 @@ def revert_verbatim(document, starred = False):
                    'begin{%s}' % (latex_name),
                    '\\end_layout', '', '\\begin_layout Plain Layout', '']
 
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout %s" % (layout_name), i)
         if i == -1:
             return
@@ -850,7 +850,7 @@ def revert_verbatim(document, starred = False):
             continue
         # delete all line breaks insets (there are no other insets)
         l = i
-        while 1:
+        while True:
             n = find_token(document.body, "\\begin_inset Newline newline", l, j)
             if n == -1:
                 n = find_token(document.body, "\\begin_inset Newline linebreak", l, j)
@@ -898,7 +898,7 @@ def revert_verbatim(document, starred = False):
 def revert_tipa(document):
     " Revert native TIPA insets to mathed or ERT. "
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset IPA", i)
         if i == -1:
             return
