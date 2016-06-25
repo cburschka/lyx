@@ -249,20 +249,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		ci->setButtonLabel();
 
 	cur.recordUndo();
-	if (cmd.action() == LFUN_INDEX_INSERT) {
-		docstring ds = subst(text->getStringToIndex(cur), '\n', ' ');
-		text->insertInset(cur, inset);
-		if (edit)
-			inset->edit(cur, true);
-		// Now put this into inset
-		Font const f(inherit_font, cur.current_font.language());
-		if (!ds.empty()) {
-			cur.text()->insertStringAsLines(cur, ds, f);
-			cur.leaveInset(*inset);
-		}
-		return true;
-	}
-	else if (cmd.action() == LFUN_ARGUMENT_INSERT) {
+	if (cmd.action() == LFUN_ARGUMENT_INSERT) {
 		bool cotextinsert = false;
 		InsetArgument const * const ia = static_cast<InsetArgument const *>(inset);
 		Layout const & lay = cur.paragraph().layout();
