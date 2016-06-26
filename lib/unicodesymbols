@@ -67,13 +67,13 @@
 0x00ae "\\textregistered"         "textcomp" "force" "\\circledR" "amssymb" # REGISTERED SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
 0x00b0 "\\textdegree"             "textcomp" "force" "{^\\circ}" "" # DEGREE SIGN # the force flag is only needed due to a bug in teTeX 3 / TeXLive 2005
-0x00b1 "\\textpm"                 "textcomp" "force" "\pm" # ± PLUS-MINUS SIGN
+0x00b1 "\\textpm"                 "textcomp" "force" "\\pm" "" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
-0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
+0x00b7 "\\textperiodcentered"     "" "" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "" "" "" # CEDILLA
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
@@ -106,7 +106,7 @@
 0x00d5 "\\~{O}"                   "" "mathalpha" "\\tilde{O}" # LATIN CAPITAL LETTER O WITH TILDE
 0x00d6 "\\\"{O}"                  "" "mathalpha" "\\ddot{O}" # LATIN CAPITAL LETTER O WITH DIAERESIS
 0x00d7 "\\texttimes"              "textcomp" "force" "\\times" # × MULTIPLICATION SIGN
-0x00d8 "\\O"                      "" "mathalpha" "\slashed{O}" "slashed" # LATIN CAPITAL LETTER O WITH STROKE
+0x00d8 "\\O"                      "" "mathalpha" "\\slashed{O}" "slashed" # LATIN CAPITAL LETTER O WITH STROKE
 0x00d9 "\\`{U}"                   "" "mathalpha" "\\grave{U}" # LATIN CAPITAL LETTER U WITH GRAVE
 0x00da "\\'{U}"                   "" "mathalpha" "\\acute{U}" # LATIN CAPITAL LETTER U WITH ACUTE
 0x00db "\\^{U}"                   "" "mathalpha" "\\hat{U}" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX
@@ -1713,9 +1713,9 @@
 0x2001 "\\quad"                   "" "force=utf8" "\\quad" "" # EM QUAD
 0x2002 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN SPACE
 0x2003 "\\quad"                   "" "force=utf8" "\\quad" "" # EM SPACE
-0x2004 "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\hskip0.3333em\relax}" "force=utf8" "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\hskip0.3333em\relax}" # THREE-PER-EM SPACE
-0x2005 "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\hskip0.25em\relax}" "force=utf8" "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\hskip0.25em\relax}" # FOUR-PER-EM SPACE
-0x2006 "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\hskip0.16667em\relax}" "force=utf8" "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\hskip0.16667em\relax}" # SIX-PER-EM SPACE
+0x2004 "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" "force=utf8" "\\LyXThreePerEmSpace" "\\newcommand*{\\LyXThreePerEmSpace}{\\hskip0.3333em\\relax}" # THREE-PER-EM SPACE
+0x2005 "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" "force=utf8" "\\LyXFourPerEmSpace" "\\newcommand*{\\LyXFourPerEmSpace}{\\hskip0.25em\\relax}" # FOUR-PER-EM SPACE
+0x2006 "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" "force=utf8" "\\LyXSixPerEmSpace" "\\newcommand*{\\LyXSixPerEmSpace}{\\hskip0.16667em\\relax}" # SIX-PER-EM SPACE
 0x2007 "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" "force=utf8" "\\LyXFigureSpace" "\\newcommand*\\LyXFigureSpace{\\hphantom{0}}" # FIGURE SPACE
 0x2008 "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" "force=utf8" "\\LyXPunctSpace" "\\newcommand*\\LyXPunctSpace{\\hphantom{,}}" # PUNCTUATION SPACE
 0x2009 "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" "force=utf8" "\\LyXThinSpace" "\\newcommand*\\LyXThinSpace{\\,\\hspace{0pt}}" # THIN SPACE
@@ -1902,7 +1902,7 @@
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213a ""                         "" "" "" "" # ROTATED CAPITAL Q
 #0x213b ""                         "" "" # FACSIMILE SIGN
-0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
+0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
 #
 # number forms
 #
@@ -2158,7 +2158,7 @@
 0x223c ""                         "" "" "\\sim" "" # TILDE OPERATOR
 #0x223d ""                         "" "" "" "" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
-0x223f "\AC"                      "wasysym" "" "\AC" "wasysym" # SINE WAVE = alternating current
+0x223f "\\AC"                     "wasysym" "" "\\AC" "wasysym" # SINE WAVE = alternating current
 #0x2240 ""                         "" "" "" "" # WREATH PRODUCT
 #0x2241 ""                         "" "" "" "" # NOT TILDE
 #0x2242 ""                         "" "" "" "" # MINUS TILDE
