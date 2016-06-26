@@ -1106,7 +1106,7 @@ namespace {
 		if (tmp.size() < 2)
 			return MathData();
 
-		out = subst(tmp[1], "\\>", string());
+		out = subst(subst(tmp[1], "\\>", string()), "{\\it ", "\\mathit{");
 		lyxerr << "output: '" << out << "'" << endl;
 
 		// Ugly code that tries to make the result prettier
