@@ -33,8 +33,6 @@
 #include <vector>
 
 
-using std::shared_ptr;
-
 namespace lyx {
 
 class Buffer;
@@ -611,13 +609,13 @@ public:
 	/// returns the VISIBLE cell at r,c, which may be the same as the
 	/// cell at the previous row or column, if we're dealing with some
 	/// multirow or multicell.
-	shared_ptr<InsetTableCell> cellInset(idx_type cell);
-	shared_ptr<InsetTableCell> cellInset(row_type row, col_type column);
+	std::shared_ptr<InsetTableCell> cellInset(idx_type cell);
+	std::shared_ptr<InsetTableCell> cellInset(row_type row, col_type column);
 	InsetTableCell const * cellInset(idx_type cell) const;
 	//@}
 	///
 	void setCellInset(row_type row, col_type column,
-	                  shared_ptr<InsetTableCell>);
+	                  std::shared_ptr<InsetTableCell>);
 	/// Search for \param inset in the tabular, with the
 	///
 	void validate(LaTeXFeatures &) const;
@@ -674,7 +672,7 @@ public:
 		///
 		Length p_width; // this is only set for multicolumn!!!
 		///
-		shared_ptr<InsetTableCell> inset;
+		std::shared_ptr<InsetTableCell> inset;
 	};
 	///
 	CellData const & cellInfo(idx_type cell) const;
@@ -921,9 +919,9 @@ public:
 	/// number of cells
 	size_t nargs() const { return tabular.numberofcells; }
 	///
-	shared_ptr<InsetTableCell const> cell(idx_type) const;
+	std::shared_ptr<InsetTableCell const> cell(idx_type) const;
 	///
-	shared_ptr<InsetTableCell> cell(idx_type);
+	std::shared_ptr<InsetTableCell> cell(idx_type);
 	///
 	Text * getText(int) const;
 

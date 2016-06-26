@@ -97,6 +97,7 @@ using cap::replaceSelection;
 using cap::grabAndEraseSelection;
 using cap::selClearOrDel;
 using cap::pasteSimpleText;
+using frontend::Clipboard;
 
 // globals...
 static Font freefont(ignore_font, ignore_language);

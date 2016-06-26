@@ -1579,7 +1579,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		docstring topaste;
 		if (cmd.argument().empty() && !theClipboard().isInternal())
-			topaste = theClipboard().getAsText(Clipboard::PlainTextType);
+			topaste = theClipboard().getAsText(frontend::Clipboard::PlainTextType);
 		else {
 			idocstringstream is(cmd.argument());
 			int n = 0;

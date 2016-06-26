@@ -18,8 +18,6 @@
 
 #include "support/strfwd.h"
 
-using lyx::support::FileName;
-
 namespace lyx {
 namespace frontend {
 
@@ -62,7 +60,7 @@ public:
 	/// Get the contents of the window system clipboard in any text format except LyxTextType.
 	virtual docstring const getAsText(TextType type) const = 0;
 	/// Get the contents of the window system clipboard as graphics file.
-	virtual FileName getAsGraphics(Cursor const & cur, GraphicsType type) const = 0;
+	virtual support::FileName getAsGraphics(Cursor const & cur, GraphicsType type) const = 0;
 
 	/**
 	 * Fill the system clipboard. The format of \p lyx is as written in

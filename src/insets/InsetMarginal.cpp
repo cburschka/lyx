@@ -63,7 +63,7 @@ void InsetMarginal::addToToc(DocIterator const & cpit, bool output_active,
 	docstring const str = tooltip;
 	tooltip = support::wrapParas(tooltip, 0, 60, 2);
 	
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("marginalnote");
+	std::shared_ptr<Toc> toc = buffer().tocBackend().toc("marginalnote");
 	toc->push_back(TocItem(pit, 0, str, output_active, tooltip));
 
 	// Proceed with the rest of the inset.

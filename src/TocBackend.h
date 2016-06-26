@@ -26,8 +26,6 @@
 #include <stack>
 
 
-using std::shared_ptr;
-
 namespace lyx {
 
 class Buffer;
@@ -125,7 +123,7 @@ private:
 class TocBuilder
 {
 public:
-	TocBuilder(shared_ptr<Toc> const toc);
+	TocBuilder(std::shared_ptr<Toc> const toc);
 	/// When entering a float
 	void pushItem(DocIterator const & dit, docstring const & s,
 	              bool output_active, bool is_captioned = false);
@@ -142,7 +140,7 @@ private:
 		bool is_captioned;
 	};
 	///
-	shared_ptr<Toc> const toc_;
+	std::shared_ptr<Toc> const toc_;
 	///
 	std::stack<frame> stack_;
 };
@@ -169,9 +167,9 @@ public:
 	///
 	TocList const & tocs() const { return tocs_; }
 	/// never null
-	shared_ptr<Toc const> toc(std::string const & type) const;
+	std::shared_ptr<Toc const> toc(std::string const & type) const;
 	/// never null
-	shared_ptr<Toc> toc(std::string const & type);
+	std::shared_ptr<Toc> toc(std::string const & type);
 	/// \return the current TocBuilder for the Toc of type \param type, or
 	/// creates one if it does not already exist.
 	TocBuilder & builder(std::string const & type);

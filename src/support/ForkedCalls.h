@@ -24,8 +24,6 @@
 #include <memory>
 
 
-using std::shared_ptr;
-
 namespace lyx {
 namespace support {
 
@@ -44,7 +42,7 @@ public:
 	///
 	virtual ~ForkedProcess() {}
 	///
-	virtual shared_ptr<ForkedProcess> clone() const = 0;
+	virtual std::shared_ptr<ForkedProcess> clone() const = 0;
 
 	/** A SignalType signal can be emitted once the forked process
 	 *  has finished. It passes:
@@ -65,7 +63,7 @@ public:
 	 *
 	 *  It doesn't matter if the slot disappears, SigC takes care of that.
 	 */
-	typedef shared_ptr<SignalType> SignalTypePtr;
+	typedef std::shared_ptr<SignalType> SignalTypePtr;
 
 	/** Invoking the following methods makes sense only if the command
 	 *  is running asynchronously!
@@ -157,7 +155,7 @@ public:
 	ForkedCall(std::string const & path = empty_string(),
 	           std::string const & lpath = empty_string());
 	///
-	virtual shared_ptr<ForkedProcess> clone() const {
+	virtual std::shared_ptr<ForkedProcess> clone() const {
 		return std::make_shared<ForkedCall>(*this);
 	}
 

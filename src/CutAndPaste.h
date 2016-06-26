@@ -22,7 +22,6 @@
 
 #include <vector>
 
-using lyx::frontend::Clipboard;
 
 namespace lyx {
 
@@ -89,11 +88,11 @@ void pasteSelection(Cursor & cur, ErrorList &);
 /// Does handle undo. Does only work in text, not mathed.
 /// \p asParagraphs is only considered if plain text is pasted.
 bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
-	Clipboard::TextType preferedType = Clipboard::LyXOrPlainTextType);
+	frontend::Clipboard::TextType preferedType = frontend::Clipboard::LyXOrPlainTextType);
 /// Replace the current selection with the clipboard contents as graphic.
 /// Does handle undo. Does only work in text, not mathed.
 void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
-	Clipboard::GraphicsType preferedType = Clipboard::AnyGraphicsType);
+	frontend::Clipboard::GraphicsType preferedType = frontend::Clipboard::AnyGraphicsType);
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
 bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);

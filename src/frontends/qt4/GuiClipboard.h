@@ -68,7 +68,7 @@ public:
 	 */
 	//@{
 	std::string const getAsLyX() const;
-	FileName getAsGraphics(Cursor const & cur, GraphicsType type) const;
+	support::FileName getAsGraphics(Cursor const & cur, GraphicsType type) const;
 	docstring const getAsText(TextType type) const;
 	void put(std::string const & text) const;
 	void put(std::string const & lyx, docstring const & html, docstring const & text);
@@ -79,7 +79,7 @@ public:
 	bool empty() const;
 	//@}
 
-	FileName getPastedGraphicsFileName(Cursor const & cur,
+	support::FileName getPastedGraphicsFileName(Cursor const & cur,
 		Clipboard::GraphicsType & type) const;
 
 private Q_SLOTS:
