@@ -12,7 +12,6 @@ EXTRA_DIST = \
 	1.3.3/license.hunspell \
 	1.3.3/README \
 	1.3.3/THANKS \
-	1.3.3/src/hunspell/hunspell.dsp \
 	1.3.3/src/hunspell/hunvisapi.h.in \
 	1.3.3/src/hunspell/license.hunspell \
 	1.3.3/src/hunspell/license.myspell \
