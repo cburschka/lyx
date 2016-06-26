@@ -841,9 +841,17 @@ dnl Defines HAVE_DEF_{NAME}
 AC_DEFUN([LYX_CHECK_DEF],
 [LYX_AH_CHECK_DEF($1, $2)
  AC_MSG_CHECKING([whether $1 is defined by header $2])
+ save_CPPFLAGS=$CPPFLAGS
+ CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+ save_CXXFLAGS=$CXXFLAGS
+ CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
+ AC_LANG_PUSH(C++)
  AC_TRY_COMPILE([#include <$2>], [$3],
      lyx_have_def_name=yes,
      lyx_have_def_name=no)
+ AC_LANG_POP(C++)
+ CXXFLAGS=$save_CXXFLAGS
+ CPPFLAGS=$save_CPPFLAGS
  AC_MSG_RESULT($lyx_have_def_name)
  if test "x$lyx_have_def_name" = xyes; then
    AC_DEFINE_UNQUOTED(AS_TR_CPP(HAVE_DEF_$1))
