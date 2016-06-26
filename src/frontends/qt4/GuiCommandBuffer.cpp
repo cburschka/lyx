@@ -94,19 +94,25 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);
 
-	upPB = new QPushButton(qpup, "", this);
-	upPB->setToolTip(qt_("List of previous commands"));
-	upPB->setMaximumSize(24, 24);
-	downPB = new QPushButton(qpdown, "", this);
-	downPB->setToolTip(qt_("Next command"));
-	downPB->setMaximumSize(24, 24);
-	downPB->setEnabled(false);
-	connect(downPB, SIGNAL(clicked()), this, SLOT(down()));
-	connect(upPB, SIGNAL(pressed()), this, SLOT(listHistoryUp()));
-
 	edit_ = new GuiCommandEdit(this);
 	edit_->setMinimumSize(edit_->sizeHint());
 	edit_->setFocusPolicy(Qt::ClickFocus);
+
+	int height = max(24, 2 * (edit_->sizeHint().height() / 2));
+	QSize button_size = QSize(height, height);
+	QSize icon_size = button_size - QSize(4, 4);
+
+	upPB = new QPushButton(qpup, "", this);
+	upPB->setToolTip(qt_("List of previous commands"));
+	upPB->setMaximumSize(button_size);
+	upPB->setIconSize(icon_size);
+	downPB = new QPushButton(qpdown, "", this);
+	downPB->setToolTip(qt_("Next command"));
+	downPB->setMaximumSize(button_size);
+	downPB->setIconSize(icon_size);
+	downPB->setEnabled(false);
+	connect(downPB, SIGNAL(clicked()), this, SLOT(down()));
+	connect(upPB, SIGNAL(pressed()), this, SLOT(listHistoryUp()));
 
 	connect(edit_, SIGNAL(returnPressed()), this, SLOT(dispatch()));
 	connect(edit_, SIGNAL(tabPressed()), this, SLOT(complete()));
