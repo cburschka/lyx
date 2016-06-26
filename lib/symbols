@@ -280,7 +280,6 @@ triangle           cmsy         52   0 mathord  &utri;
 forall             cmsy         56  34 mathord  &forall;
 exists             cmsy         57  36 mathord  &exist;
 neg                cmsy         58 216 mathord  &not;
-lnot               cmsy         58 216 mathord  &not;
 flat               cmm          91   0 mathord  &flat;
 natural            cmm          92   0 mathord  &natur;
 sharp              cmm          93  35 mathord  &sharp;
@@ -359,9 +358,7 @@ swarrow            cmsy         46   0 mathrel  &swarr;
 Leftrightarrow     cmsy         44 219 mathrel  &harr;
 Leftarrow          cmsy         40 220 mathrel  &lArr;
 Rightarrow         cmsy         41 222 mathrel  &rArr;
-leq                cmsy        183 163 mathrel  &le;
 le                 cmsy        183 163 mathrel  &le;
-geq                cmsy        184 179 mathrel  &ge;
 ge                 cmsy        184 179 mathrel  &ge;
 succ               cmsy        194   0 mathrel  &sc;
 prec               cmsy        193   0 mathrel  &pr;
@@ -1123,8 +1120,11 @@ pod                lyxblacktext  0   0 func     x     amsmath
 # pre-defined macros
 #
 
+\def\leq\le                                                     mathrel &le;
+\def\geq\ge                                                     mathrel &ge;
 \def\neq{\not=}                                                 mathrel &ne;
 \def\ne{\not=}                                                  mathrel &ne;
+\def\lnot\neg                                                   mathord &not;
 \def\notin{\not\in}
 \def\slash{/}
 
