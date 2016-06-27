@@ -802,7 +802,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 	if (d->dc_event_.active && d->dc_event_ == *e) {
 		d->dc_event_.active = false;
 		FuncRequest cmd(LFUN_MOUSE_TRIPLE, e->x(), e->y(),
-				q_button_state(e->button()), q_key_state(e->modifiers()));
+			q_button_state(e->button()), q_key_state(e->modifiers()));
 		d->dispatch(cmd);
 		e->accept();
 		return;
@@ -813,7 +813,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 #endif
 
 	FuncRequest const cmd(LFUN_MOUSE_PRESS, e->x(), e->y(),
-		q_button_state(e->button()), q_key_state(e->modifiers()));
+			q_button_state(e->button()), q_key_state(e->modifiers()));
 	d->dispatch(cmd);
 
 	// Save the context menu on mouse press, because also the mouse
@@ -834,7 +834,7 @@ void GuiWorkArea::mouseReleaseEvent(QMouseEvent * e)
 		d->synthetic_mouse_event_.timeout.stop();
 
 	FuncRequest const cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
-			      q_button_state(e->button()), q_key_state(e->modifiers()));
+			q_button_state(e->button()), q_key_state(e->modifiers()));
 	d->dispatch(cmd);
 	e->accept();
 }
@@ -845,7 +845,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 	// we kill the triple click if we move
 	doubleClickTimeout();
 	FuncRequest cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
-		q_motion_state(e->buttons()), q_key_state(e->modifiers()));
+			q_motion_state(e->buttons()), q_key_state(e->modifiers()));
 
 	e->accept();
 
@@ -1106,9 +1106,8 @@ void GuiWorkArea::mouseDoubleClickEvent(QMouseEvent * ev)
 {
 	d->dc_event_ = DoubleClick(ev);
 	QTimer::singleShot(QApplication::doubleClickInterval(), this,
-			   SLOT(doubleClickTimeout()));
-	FuncRequest cmd(LFUN_MOUSE_DOUBLE,
-			ev->x(), ev->y(),
+			SLOT(doubleClickTimeout()));
+	FuncRequest cmd(LFUN_MOUSE_DOUBLE, ev->x(), ev->y(),
 			q_button_state(ev->button()), q_key_state(ev->modifiers()));
 	d->dispatch(cmd);
 	ev->accept();
