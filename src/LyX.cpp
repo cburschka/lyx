@@ -50,7 +50,6 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
-#include "support/bind.h"
 #include "support/ConsoleApplication.h"
 #include "support/lassert.h"
 #include "support/debug.h"
@@ -65,8 +64,9 @@
 #include "support/unique_ptr.h"
 
 #include <algorithm>
-#include <iostream>
 #include <csignal>
+#include <iostream>
+#include <functional>
 #include <map>
 #include <stdlib.h>
 #include <string>
@@ -492,9 +492,8 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 		LYXERR(Debug::FILES, "Loading " << fname);
 		if (buf && buf->loadLyXFile() == Buffer::ReadSuccess) {
 			ErrorList const & el = buf->errorList("Parse");
-			if (!el.empty())
-					for_each(el.begin(), el.end(),
-									 bind(&LyX::printError, this, _1));
+			for(ErrorItem const & e : el)
+				printError(e);
 			command_line_buffers.push_back(buf);
 		} else {
 			if (buf)
@@ -1109,7 +1108,7 @@ bool LyX::readEncodingsFile(string const & enc_name,
 namespace {
 
 /// return the the number of arguments consumed
-typedef boost::function<int(string const &, string const &, string &)> cmd_helper;
+typedef function<int(string const &, string const &, string &)> cmd_helper;
 
 int parse_dbg(string const & arg, string const &, string &)
 {

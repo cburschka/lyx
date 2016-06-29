@@ -338,7 +338,7 @@ void extractIt(boost::any const & any_factory,
 		return;
 
 	Factory factory = boost::any_cast<Factory>(any_factory);
-	if (!factory.empty())
+	if (!factory)
 		transformer = factory(data);
 }
 

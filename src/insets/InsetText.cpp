@@ -423,8 +423,8 @@ void InsetText::rejectChanges()
 void InsetText::validate(LaTeXFeatures & features) const
 {
 	features.useInsetLayout(getLayout());
-	for_each(paragraphs().begin(), paragraphs().end(),
-		 bind(&Paragraph::validate, _1, ref(features)));
+	for (Paragraph const & p : paragraphs())
+		p.validate(features);
 }
 
 

@@ -26,6 +26,7 @@
 #include "support/filetools.h"
 #include "support/FileMonitor.h"
 #include "support/lassert.h"
+#include "support/unique_ptr.h"
 
 #include "support/bind.h"
 #include "support/TempFile.h"
@@ -437,7 +438,8 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_.reset(new Converter(filename, to_file_base.absFileName(), from, to_));
+	converter_ = make_unique<Converter>(filename, to_file_base.absFileName(),
+	                                    from, to_);
 	converter_->connect(bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();
 }

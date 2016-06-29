@@ -27,7 +27,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include "support/bind.h"
 #include "support/regex.h"
 #include "support/TempFile.h"
 

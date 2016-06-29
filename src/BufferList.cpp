@@ -32,10 +32,8 @@
 #include "support/Package.h"
 
 #include "support/lassert.h"
-#include "support/bind.h"
 
 #include <algorithm>
-#include <functional>
 #include <iterator>
 #include <memory>
 
@@ -277,55 +275,34 @@ bool BufferList::isOthersChild(Buffer * parent, Buffer * child)
 	Buffer const * parent_ = child->parent();
 	if (parent_ && parent_ != parent)
 		return true;
-	
-	BufferStorage::iterator it = bstore.begin();
-	BufferStorage::iterator end = bstore.end();
-	for (; it != end; ++it) {
-		Buffer * buf = *it;
+
+	for(Buffer * buf : bstore)
 		if (buf != parent && buf->isChild(child))
 			return true;
-	}
 	return false;
-}
-
-
-namespace {
-
-struct equivalent_to : public binary_function<FileName, FileName, bool>
-{
-	bool operator()(FileName const & x, FileName const & y) const
-	{ return equivalent(x, y); }
-};
-
 }
 
 
 Buffer * BufferList::getBuffer(support::FileName const & fname, bool internal) const
 {
 	// 1) cheap test, using string comparison of file names
-	BufferStorage::const_iterator it = find_if(bstore.begin(), bstore.end(),
-		lyx::bind(equal_to<FileName>(), lyx::bind(&Buffer::fileName, _1), fname));
-	if (it != bstore.end())
-		return *it;
+	for (Buffer * b : bstore)
+		if (b->fileName() == fname)
+			return b;
 	// 2) possibly expensive test, using equivalence test of file names
-	it = find_if(bstore.begin(), bstore.end(),
-		lyx::bind(equivalent_to(), lyx::bind(&Buffer::fileName, _1), fname));
-	if (it != bstore.end())
-		return *it;
-
+	for (Buffer * b : bstore)
+		if (equivalent(b->fileName(), fname))
+			return b;
 	if (internal) {
 		// 1) cheap test, using string comparison of file names
-		BufferStorage::const_iterator it = find_if(binternal.begin(), binternal.end(),
-			lyx::bind(equal_to<FileName>(), lyx::bind(&Buffer::fileName, _1), fname));
-		if (it != binternal.end())
-			return *it;
+		for (Buffer * b : binternal)
+			if (b->fileName() == fname)
+				return b;
 		// 2) possibly expensive test, using equivalence test of file names
-		it = find_if(binternal.begin(), binternal.end(),
-			     lyx::bind(equivalent_to(), lyx::bind(&Buffer::fileName, _1), fname));
-		if (it != binternal.end())
-			return *it;
+		for (Buffer * b : binternal)
+			if (equivalent(b->fileName(), fname))
+				return b;
 	}
-
 	return 0;
 }
 

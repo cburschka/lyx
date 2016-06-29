@@ -2218,8 +2218,8 @@ void Buffer::validate(LaTeXFeatures & features) const
 	if (!features.runparams().is_child)
 		params().validate(features);
 
-	for_each(paragraphs().begin(), paragraphs().end(),
-		 bind(&Paragraph::validate, _1, ref(features)));
+	for (Paragraph const & p : paragraphs())
+		p.validate(features);
 
 	if (lyxerr.debugging(Debug::LATEX)) {
 		features.showStruct();

@@ -146,7 +146,6 @@
 #include <QMacPasteboardMime>
 #endif // Q_OS_MAC
 
-#include "support/bind.h"
 #include <boost/crc.hpp>
 
 #include <exception>

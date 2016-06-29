@@ -26,11 +26,13 @@
 #include "support/debug.h"
 #include "support/environment.h"
 #include "support/FileName.h"
+#include "support/lassert.h"
 #include "support/socktools.h"
 
-#include "support/bind.h"
+#include <boost/assert.hpp>
 
 #include <cerrno>
+#include <cstring>
 #include <ostream>
 
 #if defined (_WIN32)

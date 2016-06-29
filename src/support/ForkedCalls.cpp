@@ -47,7 +47,6 @@
 using namespace std;
 
 
-
 namespace lyx {
 namespace support {
 
@@ -475,7 +474,7 @@ void callNext()
 	Process pro = callQueue_.front();
 	callQueue_.pop();
 	// Bind our chain caller
-	pro.second->connect(lyx::bind(&ForkedCallQueue::callback, _1, _2));
+	pro.second->connect(callback);
 	ForkedCall call;
 	//If we fail to fork the process, then emit the signal
 	//to tell the outside world that it failed.
@@ -553,7 +552,7 @@ string const getChildErrorMessage()
 
 namespace ForkedCallsController {
 
-typedef std::shared_ptr<ForkedProcess> ForkedProcessPtr;
+typedef shared_ptr<ForkedProcess> ForkedProcessPtr;
 typedef list<ForkedProcessPtr> ListType;
 typedef ListType::iterator iterator;
 

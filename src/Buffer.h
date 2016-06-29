@@ -687,7 +687,7 @@ private:
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
 	///
-	ExportStatus preview(std::string const & format, bool includeall = false) const;
+	ExportStatus preview(std::string const & format, bool includeall) const;
 	///
 	void setMathFlavor(OutputParams & op) const;
 

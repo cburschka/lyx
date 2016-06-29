@@ -19,11 +19,12 @@
 #include "support/unique_ptr.h"
 
 #include <boost/any.hpp>
-#include <boost/function.hpp>
 
-#include <string>
+#include <functional>
 #include <map>
 #include <memory>
+#include <string>
+
 
 namespace lyx {
 
@@ -317,17 +318,17 @@ enum TransformID {
 };
 
 
-typedef boost::function<TransformOption::ptr_type(ClipData)>
+typedef std::function<TransformOption::ptr_type(ClipData)>
 	ClipOptionFactory;
-typedef boost::function<TransformOption::ptr_type(std::string)>
+typedef std::function<TransformOption::ptr_type(std::string)>
 	ExtraOptionFactory;
-typedef boost::function<TransformOption::ptr_type(ResizeData)>
+typedef std::function<TransformOption::ptr_type(ResizeData)>
 	ResizeOptionFactory;
-typedef boost::function<TransformOption::ptr_type(RotationData)>
+typedef std::function<TransformOption::ptr_type(RotationData)>
 	RotationOptionFactory;
-typedef boost::function<TransformCommand::ptr_type(ResizeData)>
+typedef std::function<TransformCommand::ptr_type(ResizeData)>
 	ResizeCommandFactory;
-typedef boost::function<TransformCommand::ptr_type(RotationData)>
+typedef std::function<TransformCommand::ptr_type(RotationData)>
 	RotationCommandFactory;
 
 

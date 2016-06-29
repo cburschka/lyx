@@ -23,8 +23,6 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
-#include "support/bind.h"
-
 #include <algorithm>
 
 using namespace std;

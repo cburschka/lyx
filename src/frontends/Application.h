@@ -18,7 +18,7 @@
 
 #include "support/strfwd.h"
 
-#include <boost/function.hpp>
+#include <functional>
 
 #include <vector>
 
@@ -216,12 +216,12 @@ public:
 	*      passing Color_white returns "ffffff".
 	*/
 	virtual std::string const hexName(ColorCode col) = 0;
-	
+
 	/**
 	* add a callback for socket read notification
 	* @param fd socket descriptor (file/socket/etc)
 	*/
-	typedef boost::function<void()> SocketCallback;
+	typedef std::function<void()> SocketCallback;
 	virtual void registerSocketCallback(int fd, SocketCallback func) = 0;
 
 	/**
