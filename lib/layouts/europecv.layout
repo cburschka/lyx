@@ -105,6 +105,7 @@ End
 Style Picture
 	CopyStyle	Name
 	LatexName	ecvpicture
+	PassThru	true
 	LabelString	"Picture:"
 	Argument 1
 	  LabelString	"Size"
