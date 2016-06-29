@@ -387,7 +387,7 @@ void RowPainter::paintFirst() const
 
 void RowPainter::paintLabel() const
 {
-	docstring const str = par_.labelString();
+	docstring const & str = par_.labelString();
 	if (str.empty())
 		return;
 
