@@ -903,6 +903,14 @@ contributors = [
                  "6 October 2013",
                  u"Dialog usability fix"),
 
+     contributor(u"John Hudson",
+                 "j.r.hudson () virginmedia ! com",
+                 "GPL",
+                 "Contributions",
+                 "m=146722333213915",
+                 "29 June 2016",
+                 u"Documentation updates"),
+
      contributor(u"Bernard Hurley",
                  "bernard () fong-hurley ! org ! uk",
                  "GPL",
