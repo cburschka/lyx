@@ -1168,6 +1168,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
 		cur.text()->insertStringAsLines(cur, text, cur.current_font);
+	cur.forceBufferUpdate();
 	return true;
 }
 
