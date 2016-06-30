@@ -373,7 +373,9 @@ if test x$GXX = xyes; then
       4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
-        cxx11_flags="-std=c++0x";;
+        cxx11_flags="-std=gnu++0x";;
+      4.7*|4.8*|4.9*|5.*)
+        cxx11_flags="-std=gnu++11";;
       clang-3.0*|clang-3.1*|clang-3.2*|clang-3.3*)
         dnl presumably all clang versions support c++11.
 	dnl boost contains pragmas that are annoying on older clang versions
@@ -383,10 +385,8 @@ if test x$GXX = xyes; then
         dnl which  is very annoying with Qt4.x right now.
         cxx11_flags="-std=c++11"
         AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
-      *)
-        AS_CASE([$host], [*cygwin*],
-                [cxx11_flags="-std=gnu++11"],
-                [cxx11_flags="-std=c++11"]);;
+      *) # gcc 6 and newer use C++14 as default
+	 ;;
     esac
     # cxx11_flags is useful when running preprocessor alone
     # (see detection of regex).
