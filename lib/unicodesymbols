@@ -2159,10 +2159,10 @@
 #0x223d ""                         "" "" "" "" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
 0x223f "\\AC"                     "wasysym" "" "\\AC" "wasysym" # SINE WAVE = alternating current
-#0x2240 ""                         "" "" "" "" # WREATH PRODUCT
+0x2240 ""                         "" "" "\\wr" "" # WREATH PRODUCT
 #0x2241 ""                         "" "" "" "" # NOT TILDE
 #0x2242 ""                         "" "" "" "" # MINUS TILDE
-#0x2243 ""                         "" "" "" "" # ASYMPTOTICALLY EQUAL TO
+0x2243 ""                         "" "" "\\simeq" "" # ASYMPTOTICALLY EQUAL TO
 #0x2244 ""                         "" "" "" "" # NOT ASYMPTOTICALLY EQUAL TO
 #0x2245 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO
 #0x2246 ""                         "" "" "" "" # APPROXIMATELY BUT NOT ACTUALLY EQUAL TO
@@ -2172,7 +2172,7 @@
 #0x224a ""                         "" "" "" "" # ALMOST EQUAL OR EQUAL TO
 #0x224b ""                         "" "" "" "" # TRIPLE TILDE
 #0x224c ""                         "" "" "" "" # ALL EQUAL TO
-#0x224d ""                         "" "" "" "" # EQUIVALENT TO
+0x224d ""                         "" "" "\\asymp" "" # EQUIVALENT TO
 #0x224e ""                         "" "" "" "" # GEOMETRICALLY EQUIVALENT TO
 #0x224f ""                         "" "" "" "" # DIFFERENCE BETWEEN
 #0x2250 ""                         "" "" "" "" # APPROACHES THE LIMIT
@@ -2240,8 +2240,8 @@
 0x228e ""                         "" "" "\\uplus" "" # MULTISET UNION
 #0x228f ""                         "" "" "" "" # SQUARE IMAGE OF
 #0x2290 ""                         "" "" "" "" # SQUARE ORIGINAL OF
-#0x2291 ""                         "" "" "" "" # SQUARE IMAGE OF OR EQUAL TO
-#0x2292 ""                         "" "" "" "" # SQUARE ORIGINAL OF OR EQUAL TO
+0x2291 ""                         "" "" "\\sqsubseteq" "" # SQUARE IMAGE OF OR EQUAL TO
+0x2292 ""                         "" "" "\\sqsupseteq" "" # SQUARE ORIGINAL OF OR EQUAL TO
 0x2293 ""                         "" "" "\\sqcap" "" # SQUARE CAP
 0x2294 ""                         "" "" "\\sqcup" "" # SQUARE CUP
 0x2295 ""                         "" "" "\\oplus" "" # CIRCLED PLUS
@@ -2257,10 +2257,10 @@
 0x229f ""                         "" "" "\\boxminus" "amssymb" # SQUARED MINUS
 0x22a0 ""                         "" "" "\\boxtimes" "amssymb" # SQUARED TIMES
 0x22a1 ""                         "" "" "\\boxdot" "amssymb" # SQUARED DOT OPERATOR
-#0x22a2 ""                         "" "" "" "" # RIGHT TACK
-#0x22a3 ""                         "" "" "" "" # LEFT TACK
-#0x22a4 ""                         "" "" "" "" # DOWN TACK
-#0x22a5 ""                         "" "" "" "" # UP TACK
+0x22a2 ""                         "" "" "\\vdash" "" # RIGHT TACK
+0x22a3 ""                         "" "" "\\dashv" "" # LEFT TACK
+0x22a4 ""                         "" "" "\\top" "" # DOWN TACK
+0x22a5 ""                         "" "" "\\bot" "" # UP TACK
 #0x22a6 ""                         "" "" "" "" # ASSERTION
 #0x22a7 ""                         "" "" "" "" # MODELS
 #0x22a8 ""                         "" "" "" "" # TRUE
@@ -2293,7 +2293,7 @@
 #0x22c3 ""                         "" "" "" "" # N-ARY UNION
 #0x22c4 ""                         "" "" "" "" # DIAMOND OPERATOR
 #0x22c5 ""                         "" "" "" "" # DOT OPERATOR
-#0x22c6 ""                         "" "" "" "" # STAR OPERATOR
+0x22c6 ""                         "" "" "\\star" "" # STAR OPERATOR
 #0x22c7 ""                         "" "" "" "" # DIVISION TIMES
 #0x22c8 ""                         "" "" "" "" # BOWTIE
 #0x22c9 ""                         "" "" "" "" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
@@ -2388,8 +2388,8 @@
 #0x231f ""                         "" "" "" "" # BOTTOM RIGHT CORNER
 #0x2320 ""                         "" "" "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" "" "" # BOTTOM HALF INTEGRAL
-#0x2322 ""                         "" "" "" "" # FROWN
-#0x2323 ""                         "" "" "" "" # SMILE
+0x2322 ""                         "" "" "\\frown" "" # FROWN
+0x2323 ""                         "" "" "\\smile" "" # SMILE
 #0x2324 ""                         "" "" "" "" # UP ARROWHEAD BETWEEN TWO HORIZONTAL BARS
 #0x2325 ""                         "" "" "" "" # OPTION KEY
 0x2326 "Delete"                   "" "notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
@@ -2500,9 +2500,22 @@
 #
 0x25a0 "\\textifsymbol[ifgeo]{80}" "ifsym" "" # BLACK SQUARE
 0x25a1 "\\textifsymbol[ifgeo]{32}" "ifsym" "" # WHITE SQUARE
+#0x25a2 ""                         "" "" "" "" # WHITE SQUARE WITH ROUNDED CORNERS
+#0x25a3 ""                         "" "" "" "" # WHITE SQUARE CONTAINING BLACK SMALL SQUARE
+#0x25a4 ""                         "" "" "" "" # SQUARE WITH HORIZONTAL FILL
+#0x25a5 ""                         "" "" "" "" # SQUARE WITH VERTICAL FILL
+#0x25a6 ""                         "" "" "" "" # SQUARE WITH ORTHOGONAL CROSSHATCH FILL
+#0x25a7 ""                         "" "" "" "" # SQUARE WITH UPPER LEFT TO LOWER RIGHT FILL
+#0x25a8 ""                         "" "" "" "" # SQUARE WITH UPPER RIGHT TO LOWER LEFT FILL
+#0x25a9 ""                         "" "" "" "" # SQUARE WITH DIAGONAL CROSSHATCH FILL
 0x25aa "\\textifsymbol[ifgeo]{112}" "ifsym" "" # BLACK SMALL SQUARE
 0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "" # WHITE SMALL SQUARE
 0x25ac "{\\ascii\\SYN}"           "ascii" "" # BLACK RECTANGLE
+#0x25ad ""                         "" "" "" "" # WHITE RECTANGLE
+#0x25ae ""                         "" "" "" "" # BLACK VERTICAL RECTANGLE
+#0x25af ""                         "" "" "" "" # WHITE VERTICAL RECTANGLE
+#0x25b0 ""                         "" "" "" "" # BLACK PARALLELOGRAM
+#0x25b1 ""                         "" "" "" "" # WHITE PARALLELOGRAM
 0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "" # BLACK UP-POINTING TRIANGLE
 0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" "\\bigtriangleup" "" # WHITE UP-POINTING TRIANGLE
 0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" # BLACK UP-POINTING SMALL TRIANGLE
@@ -2512,6 +2525,7 @@
 0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
 0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "" # WHITE RIGHT-POINTING SMALL TRIANGLE
 0x25ba "\\RIGHTarrow"             "wasysym" "" # BLACK RIGHT-POINTING POINTER
+#0x25bb ""                         "" "" "" "" # WHITE RIGHT-POINTING POINTER
 0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "" # BLACK DOWN-POINTING TRIANGLE
 0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" "\\bigtriangledown" "" # WHITE DOWN-POINTING TRIANGLE
 0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" # BLACK DOWN-POINTING SMALL TRIANGLE
@@ -2521,13 +2535,23 @@
 0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
 0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "" # WHITE LEFT-POINTING SMALL TRIANGLE
 0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
+#0x25c5 ""                         "" "" "" "" # WHITE LEFT-POINTING POINTER
 0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" #"\\Diamondblack" "txfonts|pxfonts" # BLACK DIAMOND
 0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" "\\Diamond" "amssymb" # WHITE DIAMOND
+#0x25c8 ""                         "" "" "" "" # WHITE DIAMOND CONTAINING BLACK SMALL DIAMOND
+#0x25c9 ""                         "" "" "" "" # FISHEYE
 0x25ca ""                         "" "" "\\lozenge" "amssymb" # LOZENGE
 0x25cb "\\Circle"                 "wasysym" "" "\\Circle" "wasysym" # CIRCLE
+#0x25cc ""                         "" "" "" "" # DOTTED CIRCLE
+#0x25cd ""                         "" "" "" "" # CIRCLE WITH VERTICAL FILL
+#0x25ce ""                         "" "" "" "" # BULLSEYE
 0x25cf "\\CIRCLE"                 "wasysym" "" "\\CIRCLE" "wasysym" # BLACK CIRCLE
 0x25d0 "\\LEFTcircle"             "wasysym" "" "\\LEFTcircle" "wasysym" # CIRCLE WITH LEFT HALF BLACK
 0x25d1 "\\RIGHTcircle"            "wasysym" "" "\\RIGHTcircle" "wasysym" # CIRCLE WITH RIGHT HALF BLACK
+#0x25d2 ""                         "" "" "" "" # CIRCLE WITH LOWER HALF BLACK
+#0x25d3 ""                         "" "" "" "" # CIRCLE WITH UPPER HALF BLACK
+#0x25d4 ""                         "" "" "" "" # CIRCLE WITH UPPER RIGHT QUADRANT BLACK
+#0x25d5 ""                         "" "" "" "" # CIRCLE WITH ALL BUT UPPER LEFT QUADRANT BLACK
 0x25d6 "\\LEFTCIRCLE"             "wasysym" "" "\\LEFTCIRCLE" "wasysym" # LEFT HALF BLACK CIRCLE
 0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" "\\RIGHTCIRCLE" "wasysym" # RIGHT HALF BLACK CIRCLE
 0x25d8 "{\\ascii\\BS}"            "ascii" "" # INVERSE BULLET
@@ -2715,6 +2739,7 @@
 #
 # miscellaneous mathematical symbols-A
 #
+0x27c2 ""                         "" "" "\\perp" "" # PERPENDICULAR
 0x27e6 ""                         "" "" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
 0x27e7 ""                         "" "" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
 0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
@@ -2751,8 +2776,11 @@
 #0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
+0x2a3f ""                         "" "" "\\amalg" "" # AMALGAMATION OR COPRODUCT
 0x2a7d ""                         "" "" "\\leqslant" "amssymb" # LESS-THAN OR SLANTED EQUAL TO
 0x2a7e ""                         "" "" "\\geqslant" "amssymb" # GREATER-THAN OR SLANTED EQUAL TO
+0x2aaf ""                         "" "" "\\preceq" "" # PRECEDES ABOVE SINGLE-LINE EQUALS SIGN
+0x2ab0 ""                         "" "" "\\succeq" "" # SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN
 #
 # Modifier tone letters
 #
