@@ -2993,6 +2993,13 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 			continue;
 
 		stringstream attr;
+		
+		Length const cwidth = column_info[c].p_width;
+		if (!cwidth.zero()) {
+			string const hwidth = cwidth.asHTMLString();
+			attr << "style =\"width: " << hwidth << ";\" ";
+		}
+		
 		attr << "align='";
 		switch (getAlignment(cell)) {
 		case LYX_ALIGN_LEFT:
