@@ -1349,6 +1349,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		else
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
+		// we only need to do this if we have deleted or restored a
+		// BiBTeX inset. but there is no other place to do it. one
+		// obvious idea is to try to do it in a copy constructor for
+		// InsetBibTeX, but when that is invoked, the buffer_ member 
+		// is not yet set.
+		buffer().invalidateBibfileCache();
+		buffer().removeBiblioTempFiles();
 		break;
 
 	case LFUN_REDO:
@@ -1359,6 +1366,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		else
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		dr.forceBufferUpdate();
+		// see above
+		buffer().invalidateBibfileCache();
+		buffer().removeBiblioTempFiles();
 		break;
 
 	case LFUN_FONT_STATE:
