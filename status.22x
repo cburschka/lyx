@@ -108,6 +108,9 @@ What's new
 
 - Do not omit the first space of the selection when copying (bug 9995).
 
+- Do not allow non-default layouts to be pasted into table cells that are not fixed
+  width (bug 8782).
+
 - Display the correct column alignment and a better column spacing in AMS
   environments (bugs 1861, 9908).
 

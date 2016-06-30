@@ -160,7 +160,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// set the paragraphs to plain layout if necessary
 	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 	if (cur.inset().usePlainLayout()) {
-		bool forcePlainLayout = cur.inset().forcePlainLayout();
+		bool forcePlainLayout = target_inset->forcePlainLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
