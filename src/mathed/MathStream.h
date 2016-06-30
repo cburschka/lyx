@@ -589,6 +589,9 @@ OctaveStream & operator<<(OctaveStream &, char);
 ///
 OctaveStream & operator<<(OctaveStream &, int);
 
+
+docstring convertDelimToXMLEscape(docstring const & name);
+
 } // namespace lyx
 
 #endif
