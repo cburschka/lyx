@@ -2483,7 +2483,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	//    )
 	// but what follows is equivalent, since we'll enter only if either (a) we
 	// tried and failed with MathML or HTML or (b) didn't try yet at all but
-	// aren't doing LaTeX, in which case we are doing Images.
+	// aren't doing LaTeX.
+	//
+	// so this is for Images.
 	if (!success && mathtype != BufferParams::LaTeX) {
 		graphics::PreviewImage const * pimage = 0;
 		if (!op.dryrun) {
@@ -2510,7 +2512,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 
 			string const tag = (getType() == hullSimple) ? "span" : "div";
 			xs << html::CR()
-			   << html::StartTag(tag)
+			   << html::StartTag(tag, "style = \"text-align: center;\"")
 				 << html::CompTag("img", "src=\"" + filename + "\" alt=\"Mathematical Equation\"")
 				 << html::EndTag(tag)
 				 << html::CR();
