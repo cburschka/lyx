@@ -14,7 +14,7 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_REVISION 0
 !define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 3 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 4 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -57,6 +57,6 @@ These typically need to be modified for each LyX release
 !if ${SETUPTYPE} == BUNDLE
  !define JabRefInstall "external\JabRef_windows_3_4.exe"
  !define SIZE_JABREF 25700 # size in KB
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5997.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6022.exe"
 !endif
 
