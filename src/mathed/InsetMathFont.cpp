@@ -194,9 +194,15 @@ void InsetMathFont::mathmlize(MathStream & os) const
 	// no support at present for textipa, textsc, noun
 
 	if (!variant.empty()) {
-		os << MTag("mstyle", "mathvariant='" + variant + "'")
-		   << cell(0)
-		   << ETag("mstyle");
+		if (tag == "mathbb") {
+			os << MTag("mstyle", "class='mathbb' mathvariant='" + variant + "'")
+			   << cell(0)
+			   << ETag("mstyle");
+		} else {
+			os << MTag("mstyle", "mathvariant='" + variant + "'")
+				 << cell(0)
+				 << ETag("mstyle");
+		}
 	} else
 		os << cell(0);
 }
