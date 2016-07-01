@@ -210,7 +210,7 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.lines(xp, yp, 2, ColorName());
 
 		if (params_.kind == InsetSeparatorParams::PARBREAK) {
-			yp[0] += 0.25 * asc * 0.75;
+			yp[0] += int(0.25 * asc * 0.75);
 			yp[1] = yp[0];
 			pi.pain.lines(xp, yp, 2, ColorName());
 		}
