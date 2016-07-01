@@ -755,10 +755,14 @@ if(WIN32)
 		set(WIN32_CONSOLE WIN32)
 	endif()
 	if(MSVC)
-		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX)
+		# -DPSAPI_VERSION=1 is needed to run on vista (bug 10186)
+		add_definitions(-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE -DNOMINMAX -DPSAPI_VERSION=1)
 		# disable checked iterators for msvc release builds to get maximum speed
 		set(CMAKE_CXX_FLAGS_RELEASE  "${CMAKE_CXX_FLAGS_RELEASE} /D_SECURE_SCL=0")
 	else()
+		# -DPSAPI_VERSION=1 is not needed for mingw, since the mingw psapi.h
+		# does not use it and always declares the vista compatible API.
+		# If this ever changes then -DPSAPI_VERSION might be needed here as well. 
 		add_definitions(-DWINVER=0x0500)
 	endif()
 endif()
