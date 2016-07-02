@@ -1001,8 +1001,13 @@ namespace {
 	{
 		// In order to avoid parsing problems with command interpreters
 		// we pass input data through a file
-		TempFile tempfile("casinput");
-		FileName const cas_tmpfile = tempfile.name();
+		// Since the CAS is supposed to read the temp file we need
+		// to unlock it on windows (bug 10262).
+		unique_ptr<TempFile> tempfile(new TempFile("casinput"));
+		tempfile->setAutoRemove(false);
+		FileName const cas_tmpfile = tempfile->name();
+		tempfile.reset();
+
 		if (cas_tmpfile.empty()) {
 			lyxerr << "Warning: cannot create temporary file."
 			       << endl;
