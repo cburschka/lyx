@@ -7228,12 +7228,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7246,6 +7248,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7268,6 +7271,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -26693,7 +26697,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-通常，ヘッダとフッタは文頭で設定しますが，お望みならば，どこででも変更することができます．図
+通常，ヘッダとフッタは文頭で設定しますが，お望みならば，どこででも変更することができます．
+\lang english
+These environments can be selected in the environment pull-down box.
+\end_layout
+
+\begin_layout Standard
+図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ページレイアウト"
@@ -27080,8 +27090,24 @@ headheight
 \backslash
 footheight
 \series default
-を再定義してください．ここで「高さ」は，標準単位での高さです．どのくらいの高さが必要かがわからない場合には，とりあえずヘッダやフッタを定義して，PDFで文書をプ
-レビューしてみてください．それから，
+を再定義してください
+\lang english
+(e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+1cm
+\series default
+)
+\lang japanese
+．ここで「高さ」は，標準単位での高さです．どのくらいの高さが必要かがわからない場合には，とりあえずヘッダやフッタを定義して，PDFで文書をプレビューしてみてくだ
+さい．それから，
 \family sans
 文書\SpecialChar menuseparator
 LaTeXログ

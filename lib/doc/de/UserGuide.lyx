@@ -8493,10 +8493,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8509,6 +8511,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8532,6 +8535,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -30062,7 +30066,7 @@ Module
 \begin_inset space ~
 \end_inset
 
-Stile
+Umgebungen
 \end_layout
 
 \begin_layout Description
@@ -30115,6 +30119,8 @@ rechts
 
 \begin_layout Standard
 für die verschiedenen Positionen in der Kopf/Fußzeile an.
+ Diese Umgebungen können über das Umgebungs-„Pull-down“-Menü ausgewählt
+ werden.
 \end_layout
 
 \begin_layout Standard
@@ -30557,7 +30563,7 @@ headheight
 footheight
 \series default
  im \SpecialChar LaTeX
--Vorspann in folgendem Schema über:
+-Vorspann in folgendem Schema mit der Zeile:
 \end_layout
 
 \begin_layout Standard
@@ -30571,7 +30577,20 @@ headheight}{Höhe}
 \end_layout
 
 \begin_layout Standard
-Dabei ist die Höhe eine Größe in Standard-Einheiten.
+Dabei ist die 
+\series bold
+Höhe
+\series default
+ eine Größe in Standard-Einheiten (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\series bold
+3cm
+\series default
+).
  Weiß man nicht welche Höhe man benötigt, definiert man die Kopf/Fußzeilen
  und schaut das Dokument als PDF an.
  Anschließend öffnet man das \SpecialChar LaTeX

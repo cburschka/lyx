@@ -8613,12 +8613,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8631,6 +8633,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8655,6 +8658,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -31780,7 +31784,7 @@ Módulos
 \begin_inset space ~
 \end_inset
 
-estilos:
+etornos:
 \end_layout
 
 \begin_layout Description
@@ -31833,6 +31837,9 @@ derecha
 
 \begin_layout Standard
 para las diferentes posiciones en el encabezado y en el pie de página.
+ 
+\lang english
+These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -32329,7 +32336,11 @@ headheight}{altura}
 \end_layout
 
 \begin_layout Standard
-Altura es una longitud en unidades estándar.
+Altura es una longitud en unidades estándar (por ejemplo 
+\series bold
+1cm
+\series default
+).
  Si desconoces la cantidad de espacio necesaria, define tu encabezado o
  pie y haz una vista previa PDF del documento.
  Luego abres el 

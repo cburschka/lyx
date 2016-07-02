@@ -9138,12 +9138,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9156,6 +9158,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9188,6 +9191,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -33082,7 +33086,7 @@ Personnalisation en-têtes/pieds de page
 \begin_inset space ~
 \end_inset
 
-styles suivants:
+environnements suivants:
 \end_layout
 
 \begin_layout Description
@@ -33135,6 +33139,9 @@ droit
 
 \begin_layout Standard
 pour paramétrer les différentes positions dans l'en-tête et le pied.
+ 
+\lang english
+These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -33543,15 +33550,11 @@ où
 \begin_inset Quotes frd
 \end_inset
 
- est une taille en unités standard comme 
-\family sans
-pt
-\family default
- ou 
-\family sans
-mm
-\family default
-.
+ est une taille en unités standard (pour example 
+\series bold
+1cm
+\series default
+).
  Si vous ne voulez pas de ligne, positionnez l'épaisseur à 0
 \begin_inset space ~
 \end_inset
