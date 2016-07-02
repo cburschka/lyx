@@ -40,12 +40,19 @@ else()
   if (CYGWIN)
     set(CXX11_FLAG_CANDIDATES "--std=gnu++11")
   else()
-    set(CXX11_FLAG_CANDIDATES
-      "--std=c++14"
-      "--std=c++11"
-      "--std=gnu++11"
-      "--std=gnu++0x"
-    )
+    if (MSVC)
+      # MSVC does not have a general C++11 flag, one can only switch off
+      # MS extensions with /Za in general or by extension with /Zc.
+      # Use an empty flag to ensure that CXX11_STD_REGEX is correctly set.
+      set(CXX11_FLAG_CANDIDATES "")
+    else()
+      set(CXX11_FLAG_CANDIDATES
+        "--std=c++14"
+        "--std=c++11"
+        "--std=gnu++11"
+        "--std=gnu++0x"
+      )
+    endif()
   endif()
 endif()
 
