@@ -285,7 +285,7 @@
 #0x0185 ""                         "" "" # LATIN SMALL LETTER TONE SIX
 #0x0186 ""                         "" "" # LATIN CAPITAL LETTER OPEN O
 #0x0187 ""                         "" "" # LATIN CAPITAL LETTER C WITH HOOK
-0x0188 "\\texthtc"               "tipa" "force" # LATIN SMALL LETTER C WITH HOOK
+0x0188 "\\texthtc"                "tipa" "force" "" "" # LATIN SMALL LETTER C WITH HOOK
 #0x0189 ""                         "" "" # LATIN CAPITAL LETTER AFRICAN D
 #0x018a ""                         "" "" # LATIN CAPITAL LETTER D WITH HOOK
 #0x018b ""                         "" "" # LATIN CAPITAL LETTER D WITH TOPBAR
@@ -816,8 +816,8 @@
 0x03a7 "\\textgreek{Q}"           "textgreek" "" # GREEK CAPITAL LETTER CHI
 0x03a8 "\\textgreek{Y}"           "textgreek" "" "\\Psi" "" # GREEK CAPITAL LETTER PSI
 0x03a9 "\\textgreek{W}"           "textgreek" "" "\\Omega" "" # GREEK CAPITAL LETTER OMEGA
-0x03aa "\\textgreek{\"I}"   	  "textgreek" "" # GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
-0x03ab "\\textgreek{\"U}"   	  "textgreek" "" # GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
+0x03aa "\\textgreek{\"I}"         "textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DIALYTIKA
+0x03ab "\\textgreek{\"U}"         "textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DIALYTIKA
 0x03ac "\\textgreek{\\char136}"   "textgreek" "" # GREEK SMALL LETTER ALPHA WITH TONOS
 0x03ad "\\textgreek{\\char232}"   "textgreek" "" # GREEK SMALL LETTER EPSILON WITH TONOS
 0x03ae "\\textgreek{\\char160}"   "textgreek" "" # GREEK SMALL LETTER ETA WITH TONOS
@@ -848,8 +848,8 @@
 0x03c7 "\\textgreek{q}"           "textgreek" "mathalpha,tipashortcut=X" "\\chi" "" # GREEK SMALL LETTER CHI
 0x03c8 "\\textgreek{y}"           "textgreek" "mathalpha" "\\psi" "" # GREEK SMALL LETTER PSI
 0x03c9 "\\textgreek{w}"           "textgreek" "mathalpha" "\\omega" "" # GREEK SMALL LETTER OMEGA
-0x03ca "\\textgreek{\"i}"   	  "textgreek" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA
-0x03cb "\\textgreek{\"u}"   	  "textgreek" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA
+0x03ca "\\textgreek{\"i}"         "textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA
+0x03cb "\\textgreek{\"u}"         "textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA
 0x03cc "\\textgreek{\\char236}"   "textgreek" "" # GREEK SMALL LETTER OMICRON WITH TONOS
 0x03cd "\\textgreek{\\char212}"   "textgreek" "" # GREEK SMALL LETTER UPSILON WITH TONOS
 0x03ce "\\textgreek{\\char184}"   "textgreek" "" # GREEK SMALL LETTER OMEGA WITH TONOS
