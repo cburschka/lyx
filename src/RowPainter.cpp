@@ -204,7 +204,8 @@ void RowPainter::paintMisspelledMark(Row::Element const & e) const
 		if (x1 > x2)
 			swap(x1, x2);
 
-		pi_.pain.line(x_ + x1, y, x_ + x2, y, Color_error,
+		pi_.pain.line(int(x_ + x1), y, int(x_ + x2), y, 
+		              Color_error,
 		              Painter::line_onoffdash, thickness);
 		pos = range.last + 1;
 	}

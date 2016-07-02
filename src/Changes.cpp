@@ -558,8 +558,8 @@ void Change::paintCue(PainterInfo & pi, double const x1, double const y,
 		return;
 	// Calculate 1/3 height of font
 	FontMetrics const & fm = theFontMetrics(font);
-	int const y_bar = deleted() ? y - fm.maxAscent() / 3
-		: y + 2 * pi.base.solidLineOffset() + pi.base.solidLineThickness();
+	int const y_bar = int(deleted() ? y - fm.maxAscent() / 3
+		: y + 2 * pi.base.solidLineOffset() + pi.base.solidLineThickness());
 	pi.pain.line(int(x1), y_bar, int(x2), y_bar, color(),
 	             Painter::line_solid, pi.base.solidLineThickness());
 }
@@ -588,7 +588,8 @@ void Change::paintCue(PainterInfo & pi, double const x1, double const y1,
 		y = y1;
 		break;
 	}
-	pi.pain.line(x1, y2, x2, y, color(), Painter::line_solid,
+	pi.pain.line(int(x1), int(y2), int(x2), int(y), 
+	             color(), Painter::line_solid,
 	             pi.base.solidLineThickness());
 }
 
