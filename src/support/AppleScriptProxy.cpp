@@ -27,7 +27,7 @@ using namespace lyx;
 
 extern "C" LyXFunctionResult applescript_execute_command(const char *cmd, const char *arg) {
 	LYXERR(Debug::ACTION, "Running command [" << cmd << "] with arguments [" << arg << "]");
-	FuncRequest fr(lyxaction.lookupFunc(cmd), arg);
+	FuncRequest fr(lyxaction.lookupFunc(cmd), from_utf8(arg));
 	fr.setOrigin(FuncRequest::LYXSERVER);
 	DispatchResult dr;
 	theApp()->dispatch(fr, dr);
