@@ -44,7 +44,7 @@ else()
       # MSVC does not have a general C++11 flag, one can only switch off
       # MS extensions with /Za in general or by extension with /Zc.
       # Use an empty flag to ensure that CXX11_STD_REGEX is correctly set.
-      set(CXX11_FLAG_CANDIDATES "")
+      set(CXX11_FLAG_CANDIDATES "noflagneeded")
     else()
       set(CXX11_FLAG_CANDIDATES
         "--std=c++14"
@@ -113,7 +113,9 @@ set(SAFE_CMAKE_REQUIRED_QUIET ${CMAKE_REQUIRED_QUIET})
 set(CMAKE_REQUIRED_QUIET ON)
 SET(SAFE_CMAKE_REQUIRED_FLAGS "${CMAKE_REQUIRED_FLAGS}")
 FOREACH(FLAG ${CXX11_FLAG_CANDIDATES})
-  SET(CMAKE_REQUIRED_FLAGS "${FLAG}")
+  IF(NOT "${FLAG}" STREQUAL "noflagneeded")
+    SET(CMAKE_REQUIRED_FLAGS "${FLAG}")
+  ENDIF()
   UNSET(CXX11_FLAG_DETECTED CACHE)
   CHECK_CXX_SOURCE_COMPILES("${CXX11_TEST_SOURCE}" CXX11_FLAG_DETECTED)
   IF(CXX11_FLAG_DETECTED)
@@ -136,5 +138,8 @@ set(CMAKE_REQUIRED_QUIET ${SAFE_CMAKE_REQUIRED_QUIET})
 
 # handle the standard arguments for find_package
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(CXX11Compiler DEFAULT_MSG CXX11_FLAG)
+IF("${CXX11_FLAG}" STREQUAL "noflagneeded")
+  SET(CXX11_FLAG "")
+ENDIF()
 
 MARK_AS_ADVANCED(CXX11_FLAG CXX11_STD_REGEX)
