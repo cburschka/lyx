@@ -1599,6 +1599,14 @@ contributors = [
                  "25 September 2007",
                  u"Major rework of the AMS classes"),
 
+     contributor(u"Dima Ruinskiy",
+                 "dima.ruinskiy () outlook ! com",
+                 "GPL",
+                 "Joining LyX development team",
+                 "m=146687842921797",
+                 "24 June 2016",
+                 u"Reintroduction of Windows Vista support (bug 10186)"),
+
      contributor(u"Guy Rutenberg",
                  "guyrutenberg () gmail ! com",
                  "GPL",
