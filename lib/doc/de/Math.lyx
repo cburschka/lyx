@@ -34089,6 +34089,35 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
+\begin_inset Formula $\int\left(\frac{1}{1+x^{3}}\right)dx=-\frac{\log\left(x^{2}-x+1\right)}{6}+\frac{\arctan\left(\frac{2\,x-1}{\sqrt{3}}\right)}{\sqrt{3}}+\frac{\log\left(x+1\right)}{3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Es muss die Einfügung für automatische Klammern 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+ verwendet werden statt einfacher zeichen für Klammern '(' ')'.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $\det\left[\begin{array}{ccc}
 1 & 6 & 7\\
 2 & 5 & 8\\
@@ -34101,6 +34130,20 @@ Maxima
 
 \begin_layout Itemize
 \begin_inset Formula $\lim_{x\rightarrow0}\left(\frac{\sin(x)}{x}\right)=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $powerseries\left(-\log\left(5-x\right),x,1\right)=\sum_{{\mathit{i}_{2}}=0}^{\infty}{\frac{4^{-{\mathit{i}_{2}}-1}\,\left(x-1\right)^{{\mathit{i}_{2}}+1}}{{\mathit{i}_{2}}+1}}-\log4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $solve\left(x_{1}+y_{1}^{3}=y_{1}+x_{1}^{2},x_{1}\right)=\left[x_{1}=-\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}-1}{2},x_{1}=\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}+1}{2}\right]$
 \end_inset
 
 
@@ -34995,6 +35038,13 @@ Dazu ein Test:
 
 Wie man sieht, entspricht der Abstand des Zählers und Nenners vom Strich
  in etwa der dreifachen Strichdicke.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
