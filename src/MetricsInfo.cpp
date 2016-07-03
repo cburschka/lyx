@@ -45,7 +45,7 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
 		// derive the line thickness from zoom factor
 		// the zoom is given in percent
 		// (increase thickness at 250%, 450% etc.)
-		solid_line_thickness_ = (lyxrc.zoom + 50) / 200;
+		solid_line_thickness_ = (lyxrc.zoom + 150) / 200;
 		// adjust line_offset_ too
 		solid_line_offset_ = 1 + solid_line_thickness_ / 2;
 	}
