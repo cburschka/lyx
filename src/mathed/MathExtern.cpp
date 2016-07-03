@@ -1021,6 +1021,7 @@ namespace {
 		lyxerr << "calling: " << cmd
 		       << "\ninput: '" << data << "'" << endl;
 		cmd_ret const ret = runCommand(command);
+		cas_tmpfile.removeFile();
 		return ret.second;
 	}
 
