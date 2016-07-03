@@ -1678,14 +1678,21 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// but let's make sure
 			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
-			// FIXME but then why check current_view_ here?
-			if (current_view_ && !current_view_->documentBufferView())
+			if (!current_view_->documentBufferView())
 				current_view_->close();
+			else {
+				current_view_->raise();
+				current_view_->activateWindow();
+				current_view_->showNormal();
+			}
 		} else {
 			// we know !d->views.empty(), so this should be ok
 			// but let's make sure
 			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
+			current_view_->raise();
+			current_view_->activateWindow();
+			current_view_->showNormal();
 		}
 		break;
 	}
