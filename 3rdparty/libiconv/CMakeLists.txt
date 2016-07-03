@@ -45,7 +45,7 @@ add_definitions(-Dset_relocation_prefix=libcharset_set_relocation_prefix -Dreloc
 set(SRC_LIBCHARSET ${SRCDIR}/libcharset/lib/localcharset.c)
 
 # libiconv
-set(SRC_LIBICONV ${SRCDIR}/lib/iconv.c)
+set(SRC_LIBICONV ${SRCDIR}/lib/iconv.c ${SRCDIR}/lib/relocatable.c)
 
 add_library(iconv ${SRC_LIBICONV} ${SRC_LIBCHARSET})
 set_target_properties(iconv PROPERTIES COMPILE_FLAGS -DBUILDING_LIBICONV)
