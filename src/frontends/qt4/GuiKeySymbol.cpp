@@ -612,7 +612,7 @@ static char encode(string const & encoding, QString const & str)
 #endif
 
 
-void setKeySymbol(KeySymbol * sym, QKeyEvent * ev)
+void setKeySymbol(KeySymbol * sym, QKeyEvent const * ev)
 {
 	sym->setKey(ev->key());
 	if (ev->text().isNull()) {

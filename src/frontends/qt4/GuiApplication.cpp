@@ -2119,19 +2119,43 @@ void GuiApplication::handleKeyFunc(FuncCode action)
 }
 
 
+//Keep this in sync with GuiApplication::processKeySym below
+bool GuiApplication::queryKeySym(KeySymbol const & keysym,
+                                 KeyModifier state) const
+{
+	// Do nothing if we have nothing
+	if (!keysym.isOK() || keysym.isModifier())
+		return false;
+	// Do a one-deep top-level lookup for cancel and meta-fake keys.
+	KeySequence seq;
+	FuncRequest func = seq.addkey(keysym, state);
+	// When not cancel or meta-fake, do the normal lookup.
+	if ((func.action() != LFUN_CANCEL) && (func.action() != LFUN_META_PREFIX)) {
+		seq = d->keyseq;
+		func = seq.addkey(keysym, (state | d->meta_fake_bit));
+	}
+	// Maybe user can only reach the key via holding down shift.
+	// Let's see. But only if shift is the only modifier
+	if (func.action() == LFUN_UNKNOWN_ACTION && state == ShiftModifier)
+		// If addkey looked up a command and did not find further commands then
+		// seq has been reset at this point
+		func = seq.addkey(keysym, NoModifier);
+
+	LYXERR(Debug::KEY, " Key (queried) [action=" << func.action() << "]["
+	       << seq.print(KeySequence::Portable) << ']');
+	return func.action() != LFUN_UNKNOWN_ACTION;
+}
+
+
+//Keep this in sync with GuiApplication::queryKeySym above
 void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 {
 	LYXERR(Debug::KEY, "KeySym is " << keysym.getSymbolName());
 
 	// Do nothing if we have nothing (JMarc)
-	if (!keysym.isOK()) {
-		LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
-		if (current_view_)
-			current_view_->restartCursor();
-		return;
-	}
-
-	if (keysym.isModifier()) {
+	if (!keysym.isOK() || keysym.isModifier()) {
+		if (!keysym.isOK())
+			LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
 		if (current_view_)
 			current_view_->restartCursor();
 		return;
@@ -2177,6 +2201,8 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	// Let's see. But only if shift is the only modifier
 	if (func.action() == LFUN_UNKNOWN_ACTION && state == ShiftModifier) {
 		LYXERR(Debug::KEY, "Trying without shift");
+		// If addkey looked up a command and did not find further commands then
+		// seq has been reset at this point
 		func = d->keyseq.addkey(keysym, NoModifier);
 		LYXERR(Debug::KEY, "Action now " << func.action());
 	}

@@ -3227,6 +3227,9 @@ void PrefShortcuts::shortcutOkPressed()
 		shortcutsTW->setCurrentItem(item);
 		shortcutsTW->scrollToItem(item);
 	} else {
+		// FIXME: The error message could be more explicit. This can happen in
+		// particular if the user wants to introduce a LFUN which is Hidden such
+		// as self-insert.
 		Alert::error(_("Failed to create shortcut"),
 			_("Can not insert shortcut to the list"));
 		return;
