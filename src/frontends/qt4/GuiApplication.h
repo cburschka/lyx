@@ -165,6 +165,9 @@ public:
 #endif
 	}
 
+	/// return true if the key is part of a shortcut
+	bool queryKeySym(KeySymbol const & key, KeyModifier state) const;
+	///
 	void processKeySym(KeySymbol const & key, KeyModifier state);
 	/// return the status bar state string
 	docstring viewStatusMessage();

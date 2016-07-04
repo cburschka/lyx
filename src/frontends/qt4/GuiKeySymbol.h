@@ -18,7 +18,7 @@ class QKeyEvent;
 namespace lyx {
 
 /// delayed constructor
-void setKeySymbol(KeySymbol * sym, QKeyEvent * ev);
+void setKeySymbol(KeySymbol * sym, QKeyEvent const * ev);
 
 /// return the LyX key state from Qt's
 KeyModifier q_key_state(Qt::KeyboardModifiers state);
