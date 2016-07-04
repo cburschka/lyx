@@ -11,7 +11,10 @@
 #include "../support/Package.h"
 
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <sstream>
+using namespace std;
 
 
 namespace lyx {
