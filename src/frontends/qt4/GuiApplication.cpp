@@ -1660,10 +1660,19 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
 			current_view_->openDocument(fname);
-			if (current_view_ && !current_view_->documentBufferView())
+			if (!current_view_->documentBufferView())
 				current_view_->close();
-		} else
+			else {
+				current_view_->raise();
+				current_view_->activateWindow();
+				current_view_->showNormal();
+			}
+		} else {
 			current_view_->openDocument(fname);
+			current_view_->raise();
+			current_view_->activateWindow();
+			current_view_->showNormal();
+		}
 		break;
 	}
 
