@@ -39,6 +39,10 @@
 # include <io.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
 using namespace std;
 using namespace lyx::support;
 
