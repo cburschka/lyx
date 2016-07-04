@@ -1120,11 +1120,11 @@ pod                lyxblacktext  0   0 func     x     amsmath
 # pre-defined macros
 #
 
-\def\leq\le                                                     mathrel &le;
-\def\geq\ge                                                     mathrel &ge;
+\def\leq{\le}                                                   mathrel &le;
+\def\geq{\ge}                                                   mathrel &ge;
 \def\neq{\not=}                                                 mathrel &ne;
 \def\ne{\not=}                                                  mathrel &ne;
-\def\lnot\neg                                                   mathord &not;
+\def\lnot{\neg}                                                 mathord &not;
 \def\notin{\not\in}
 \def\slash{/}
 
