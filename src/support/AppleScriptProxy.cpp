@@ -22,6 +22,8 @@
 #include "support/docstring.h"
 #include "support/debug.h"
 
+#include <stdlib.h>
+
 using namespace std;
 using namespace lyx;
 
@@ -33,7 +35,7 @@ extern "C" LyXFunctionResult applescript_execute_command(const char *cmd, const 
 	theApp()->dispatch(fr, dr);
 
 	string const rval = to_utf8(dr.message());
-	char *cstr =(char*)  malloc((rval.size()+1)*sizeof(rval[0]));
+	char *cstr = (char*) malloc((rval.size()+1)*sizeof(rval[0]));
 	strcpy (cstr, rval.c_str());
 
 	// Returns the result
