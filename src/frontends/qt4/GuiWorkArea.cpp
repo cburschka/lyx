@@ -81,6 +81,7 @@
 #include "support/bind.h"
 
 #include <cmath>
+#include <iostream>
 
 int const TabIndicatorWidth = 3;
 
