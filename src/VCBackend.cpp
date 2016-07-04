@@ -31,6 +31,7 @@
 #include "support/TempFile.h"
 
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 using namespace lyx::support;

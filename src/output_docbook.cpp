@@ -32,6 +32,8 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 
+#include <iostream>
+
 using namespace std;
 using namespace lyx::support;
 
