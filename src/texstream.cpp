@@ -41,11 +41,11 @@ otexrowstream::otexrowstream(odocstream & os, bool enable)
 otexrowstream::~otexrowstream() = default;
 
 
-unique_ptr<TexRow> && otexrowstream::releaseTexRow()
+unique_ptr<TexRow> otexrowstream::releaseTexRow()
 {
 	auto p = make_unique<TexRow>();
 	swap(texrow_, p);
-	return move(p);
+	return p;
 }
 
 

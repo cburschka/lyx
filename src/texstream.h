@@ -39,7 +39,7 @@ public:
 	///
 	TexRow & texrow() { return *texrow_; }
 	///
-	unique_ptr<TexRow> && releaseTexRow();
+	unique_ptr<TexRow> releaseTexRow();
 	///
 	void put(char_type const & c);
 	///
