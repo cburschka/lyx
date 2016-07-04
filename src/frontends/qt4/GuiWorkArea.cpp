@@ -504,6 +504,14 @@ void GuiWorkArea::redraw(bool update_metrics)
 }
 
 
+// Keep in sync with GuiWorkArea::processKeySym below
+bool GuiWorkArea::queryKeySym(KeySymbol const & key, KeyModifier mod) const
+{
+	return guiApp->queryKeySym(key, mod);
+}
+
+
+// Keep in sync with GuiWorkArea::queryKeySym above
 void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 {
 	if (d->lyx_view_->isFullScreen() && d->lyx_view_->menuBar()->isVisible()
@@ -722,6 +730,12 @@ bool GuiWorkArea::event(QEvent * e)
 		e->accept();
 		return true;
 	}
+
+	case QEvent::ShortcutOverride:
+		// keyPressEvent is ShortcutOverride-aware and only accepts the event in
+		// this case
+		keyPressEvent(static_cast<QKeyEvent *>(e));
+		return e->isAccepted();
 
 	case QEvent::KeyPress: {
 		// We catch this event in order to catch the Tab or Shift+Tab key press
@@ -1037,6 +1051,10 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
+	// this is also called for ShortcutOverride events. In this case, one must
+	// not act but simply accept the event explicitly.
+	bool const act = (ev->type() != QEvent::ShortcutOverride);
+
 	// Do not process here some keys if dialog_mode_ is set
 	if (d->dialog_mode_
 		&& (ev->modifiers() == Qt::NoModifier
@@ -1054,7 +1072,8 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 		switch (ev->key()) {
 		case Qt::Key_Enter:
 		case Qt::Key_Return:
-			d->completer_->activate();
+			if (act)
+				d->completer_->activate();
 			ev->accept();
 			return;
 		}
@@ -1064,7 +1083,9 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	// (the auto repeated events come too fast)
 	// it looks like this is only needed on X11
 #if defined(Q_WS_X11) || defined(QPA_XCB)
-	if (qApp->hasPendingEvents() && ev->isAutoRepeat()) {
+	// FIXME: this is a weird way to implement event compression. Also, this is
+	// broken with IBus.
+	if (act && qApp->hasPendingEvents() && ev->isAutoRepeat()) {
 		switch (ev->key()) {
 		case Qt::Key_PageDown:
 		case Qt::Key_PageUp:
@@ -1079,7 +1100,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	}
 #endif
 
-	KeyModifier m = q_key_state(ev->modifiers());
+	KeyModifier const m = q_key_state(ev->modifiers());
 
 	std::string str;
 	if (m & ShiftModifier)
@@ -1090,16 +1111,20 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 		str += "Alt-";
 	if (m & MetaModifier)
 		str += "Meta-";
-	
-	LYXERR(Debug::KEY, " count: " << ev->count() << " text: " << ev->text()
-		<< " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key()
-		<< " keyState: " << str);
+
+	if (act)
+		LYXERR(Debug::KEY, " count: " << ev->count() << " text: " << ev->text()
+		       << " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key()
+		       << " keyState: " << str);
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
 	if (sym.isOK()) {
-		processKeySym(sym, q_key_state(ev->modifiers()));
-		ev->accept();
+		if (act) {
+			processKeySym(sym, m);
+			ev->accept();
+		} else
+			ev->setAccepted(queryKeySym(sym, m));
 	} else {
 		ev->ignore();
 	}
