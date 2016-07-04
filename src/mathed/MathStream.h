@@ -14,6 +14,7 @@
 
 #include "InsetMath.h"
 #include "texstream.h"
+#include "TexRow.h"
 
 #include "support/Changer.h"
 #include "support/strfwd.h"
@@ -26,7 +27,6 @@ class Encoding;
 class InsetMath;
 class MathAtom;
 class MathData;
-class RowEntry;
 
 //
 // LaTeX/LyX
