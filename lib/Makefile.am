@@ -2170,6 +2170,7 @@ dist_layouts_DATA =\
 	layouts/IEEEtran.layout \
 	layouts/IEEEtran-CompSoc.layout \
 	layouts/IEEEtran-TransMag.layout \
+	layouts/InStar.module \
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/initials.module \
