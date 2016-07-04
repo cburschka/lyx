@@ -48,6 +48,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 
+#include <stdlib.h>
 #include <cmath>
 
 using namespace std;
