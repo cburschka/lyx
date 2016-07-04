@@ -1680,7 +1680,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			current_view_->openDocument(fname);
 			if (!current_view_->documentBufferView())
 				current_view_->close();
-			else {
+			else if (cmd.origin() == FuncRequest::LYXSERVER) {
 				current_view_->raise();
 				current_view_->activateWindow();
 				current_view_->showNormal();
@@ -1690,9 +1690,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// but let's make sure
 			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
-			current_view_->raise();
-			current_view_->activateWindow();
-			current_view_->showNormal();
+			if (cmd.origin() == FuncRequest::LYXSERVER) {
+				current_view_->raise();
+				current_view_->activateWindow();
+				current_view_->showNormal();
+			}
 		}
 		break;
 	}
