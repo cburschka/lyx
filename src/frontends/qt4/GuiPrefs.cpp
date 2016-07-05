@@ -3130,6 +3130,15 @@ bool PrefShortcuts::validateNewShortcut(FuncRequest const & func,
 		return false;
 	}
 
+	// It is not currently possible to bind Hidden lfuns such as self-insert. In
+	// the future, to remove this limitation, see GuiPrefs::insertShortcutItem
+	// and how it is used in GuiPrefs::shortcutOkPressed.
+	if (lyxaction.getActionType(func.action()) == LyXAction::Hidden) {
+		Alert::error(_("Failed to create shortcut"),
+			_("This LyX function is hidden and cannot be bound."));
+		return false;
+	}
+
 	if (k.length() == 0) {
 		Alert::error(_("Failed to create shortcut"),
 			_("Invalid or empty key sequence"));
@@ -3194,9 +3203,6 @@ void PrefShortcuts::shortcutOkPressed()
 		shortcutsTW->setCurrentItem(item);
 		shortcutsTW->scrollToItem(item);
 	} else {
-		// FIXME: The error message could be more explicit. This can happen in
-		// particular if the user wants to introduce a LFUN which is Hidden such
-		// as self-insert.
 		Alert::error(_("Failed to create shortcut"),
 			_("Can not insert shortcut to the list"));
 		return;
