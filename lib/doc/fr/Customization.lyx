@@ -20139,8 +20139,7 @@ s, etc).
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset
@@ -20165,7 +20164,21 @@ MultiPar
 
 \end_inset
 
- à faux.
+ à faux et 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to true
+\lang french
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -20176,7 +20189,21 @@ MultiPar
 
 \end_inset
 
- peut être positionné à vrai pour les inserts 
+ peut être positionné à vrai ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to false
+\lang french
+, pour les inserts 
 \begin_inset Flex Code
 status collapsed
 
@@ -20195,8 +20222,7 @@ après
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset

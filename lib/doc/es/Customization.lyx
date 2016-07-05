@@ -18303,8 +18303,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset
@@ -18329,7 +18328,21 @@ MultiPar
 
 \end_inset
 
- es falso.
+ es falso y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to true
+\lang spanish
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -18340,7 +18353,21 @@ MultiPar
 
 \end_inset
 
- se puede poner como verdadero para recuadros de estilos 
+ se puede poner como verdadero, o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to fals
+\lang spanish
+e, para recuadros de estilos 
 \begin_inset Flex Code
 status collapsed
 
@@ -18359,8 +18386,7 @@ después
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset

@@ -16902,11 +16902,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
-LyX
-\family default
-Type
+LyxType
 \end_layout
 
 \end_inset
@@ -16941,6 +16937,26 @@ status collapsed
 
 \end_inset
 
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ automatisch auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
  gesetzt.
  
 \begin_inset Flex Code
@@ -16958,6 +16974,26 @@ status collapsed
 
 \begin_layout Plain Layout
 1
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
 \end_layout
 
 \end_inset
@@ -16981,11 +17017,7 @@ nach
 status collapsed
 
 \begin_layout Plain Layout
-
-\family sans
-LyX
-\family default
-Type
+LyxType
 \end_layout
 
 \end_inset

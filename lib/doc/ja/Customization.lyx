@@ -16423,7 +16423,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset
@@ -16448,7 +16448,23 @@ MultiPar
 
 \end_inset
 
-が偽に設定されます．文字様式差込枠で
+が偽に設定されます
+\lang english
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to true
+\lang japanese
+．文字様式差込枠で
 \begin_inset Flex Code
 status collapsed
 
@@ -16458,12 +16474,28 @@ MultiPar
 
 \end_inset
 
-を真にしたい時には，
+を真にしたい時には
+\lang english
+, or 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+
+\lang english
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to false
+\lang japanese
+，
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyxType
 \end_layout
 
 \end_inset
