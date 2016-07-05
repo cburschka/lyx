@@ -1585,6 +1585,7 @@ bool Text::erase(Cursor & cur)
 			return dissolveInset(cur);
 
 		if (!par.isMergedOnEndOfParDeletion(cur.buffer()->params().track_changes)) {
+			cur.recordUndo(DELETE_UNDO);
 			par.setChange(cur.pos(), Change(Change::DELETED));
 			cur.forwardPos();
 			needsUpdate = true;
