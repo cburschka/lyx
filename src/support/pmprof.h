@@ -8,7 +8,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-/** How to use this trivial profiler:
+/**
+ * ==== HOW TO USE THIS TRIVIAL PROFILER:
  *
  * * at the beginning of the interesting block, just add:
  *   PROFILE_THIS_BLOCK(some_identifier)
@@ -17,7 +18,18 @@
  *
  * * when the program ends, statistics will be sent to standard error, like:
  *
- *   ##### some_identifier: 6.48475usec, count=25405
+ *   #pmprof# some_identifier: 6.51usec, count=7120, total=46.33msec
+ *
+ * * It is also possible to profile caching schemes. All it takes is an additional
+ *   PROFILE_CACHE_MISS(some_identifier)
+ *   in the place that takes care of cache misses. Then the output at the end will change to
+ *
+ *   #pmprof# some_identifier: 6.51usec, count=7120, total=46.33msec
+ *      hit: 96%, 4.36usec, count=6849, total=29.89msec
+ *     miss: 3%, 60.65usec, count=271, total=16.43msec
+ *
+ *
+ * ==== ABOUT PROFILING SCOPE:
  *
  * The code measured by the profiler corresponds to the lifetime of a
  * local variable declared by the PROFILE_THIS_BLOCK macro.
@@ -120,38 +132,66 @@ int gettimeofday(struct timeval * tv, struct timezone * /*tz*/)
 
 #endif // _WIN32
 
+namespace {
+
+void dump(long long sec, long long usec, unsigned long long count) {
+	double const total = sec * 1000000 + usec;
+	std::cerr << std::fixed << std::setprecision(2)
+			  << total / count
+			  << "usec, count=" << count
+			  << ", total=" << total * 0.001 << "msec"
+			  << std::endl;
+}
+
+}
+
+
 /* Helper class for gathering data. Instantiate this as a static
  * variable, so that its destructor will be executed when the program
  * ends.
  */
 
+
 class PMProfStat {
 public:
-	PMProfStat(char const * name)
-	  : name_(name), sec_(0), usec_(0), count_(0) {}
+	PMProfStat(char const * name) : name_(name), sec_(0), usec_(0), count_(0),
+                                    miss_sec_(0), miss_usec_(0), miss_count_(0) {}
 
 	~PMProfStat() {
 		if (count_>0) {
-			double total = 0.001 * (sec_ * 1000000 + usec_);
-			std::cerr << std::fixed << std::setprecision(2) 
-				<< "#pmprof# " << name_ << ": "
-				<< total / count_
-				<< "msec, count=" << count_
-				<< ", total=" << total << "msec"
-				<< std::endl;
+			if (miss_count_ == 0) {
+				std::cerr << "#pmprof# " << name_ << ": ";
+				dump(sec_, usec_, count_);
+			}
+			else {
+				std::cerr << "#pmprof# " << name_ << ": ";
+				dump(sec_ + miss_sec_, usec_ + miss_usec_, count_ + miss_count_);
+				std::cerr << "   hit: " << 100 * count_ / (count_ + miss_count_) << "%, ";
+				dump(sec_, usec_, count_);
+				std::cerr << "  miss: " << 100 * miss_count_ / (count_ + miss_count_) << "%, ";
+				dump(miss_sec_, miss_usec_, miss_count_);
+			}
 		}
 	}
 
-	void add(const long long s, const long long u) {
-		sec_ += s;
-		usec_ += u;
-		count_++;
+	void add(const long long s, const long long u, const bool hit) {
+		if (hit) {
+			sec_ += s;
+			usec_ += u;
+			count_++;
+		} else {
+			miss_sec_ += s;
+			miss_usec_ += u;
+			miss_count_++;
+		}
 	}
 
 private:
 	char const * name_;
 	long long sec_, usec_;
 	unsigned long long count_;
+	long long miss_sec_, miss_usec_;
+	unsigned long long miss_count_;
 };
 
 
@@ -162,7 +202,7 @@ private:
  */
 class PMProfInstance {
 public:
-	PMProfInstance(PMProfStat * stat) : stat_(stat)
+	PMProfInstance(PMProfStat * stat) : hit(true), stat_(stat)
 	{
 		gettimeofday(&before_, 0);
 	}
@@ -170,8 +210,10 @@ public:
 	~PMProfInstance() {
 		gettimeofday(&after_, 0);
 		stat_->add(after_.tv_sec - before_.tv_sec,
-			   after_.tv_usec - before_.tv_usec);
+		           after_.tv_usec - before_.tv_usec, hit);
 	}
+
+	bool hit;
 
 private:
 	timeval before_, after_;
@@ -182,6 +224,9 @@ private:
 #define PROFILE_THIS_BLOCK(a) \
 	static PMProfStat PMPS_##a(#a);\
 	PMProfInstance PMPI_##a(&PMPS_##a);
+
+#define PROFILE_CACHE_MISS(a) \
+	PMPI_##a.hit = false;
 
 
 #endif
