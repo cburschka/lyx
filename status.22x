@@ -141,6 +141,9 @@ What's new
 - Fix cursor position after Redo of a document settings change (bug
   10097).
 
+- Handle undo after deleting end of paragraph in change tracking mode
+  (bug 10253).
+
 - Disable Edit > Dissolve Inset in tabulars (bug 9954).
 
 - Shortcut preferences: ask the user for removing bindings when using the
