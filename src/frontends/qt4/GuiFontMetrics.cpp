@@ -21,10 +21,35 @@
 
 #include "insets/Inset.h"
 
+#include "support/convert.h"
 #include "support/lassert.h"
+
+#define DISABLE_PMPROF
+#include "support/pmprof.h"
+
+#ifdef CACHE_SOME_METRICS
+#include <QByteArray>
+#endif
 
 using namespace std;
 using namespace lyx::support;
+
+#ifdef CACHE_SOME_METRICS
+namespace std {
+
+/*
+ * Argument-dependent lookup implies that this function shall be
+ * declared in the namespace of its argument. But this is std
+ * namespace, since lyx::docstring is just std::basic_string<wchar_t>.
+ */
+uint qHash(lyx::docstring const & s)
+{
+	return qHash(QByteArray(reinterpret_cast<char const *>(s.data()),
+	                        s.size() * sizeof(lyx::docstring::value_type)));
+}
+
+}
+#endif
 
 namespace lyx {
 namespace frontend {
@@ -51,11 +76,23 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-// Limit strwidth_cache_ size to 512kB of string data
+/*
+ * Limit (strwidth|breakat)_cache_ size to 512kB of string data.
+ * Limit qtextlayout_cache_ size to 500 elements (we do not know the
+ * size of the QTextLayout objects anyway).
+ * Note that all these numbers are arbitrary.
+ */
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
-	: font_(font), metrics_(font, 0),
-	  strwidth_cache_(1 << 19),
-	  tl_cache_rtl_(false), tl_cache_wordspacing_(-1.0)
+	: font_(font), metrics_(font, 0)
+#ifdef CACHE_METRICS_WIDTH
+	, strwidth_cache_(1 << 19)
+#endif
+#ifdef CACHE_METRICS_BREAKAT
+	, breakat_cache_(1 << 19)
+#endif
+#ifdef CACHE_METRICS_QTEXTLAYOUT
+	,  qtextlayout_cache_(500)
+#endif
 {
 }
 
@@ -140,14 +177,15 @@ int GuiFontMetrics::rbearing(char_type c) const
 
 int GuiFontMetrics::width(docstring const & s) const
 {
-	QByteArray qba =
-		QByteArray(reinterpret_cast<char const *>(s.data()),
-		           s.size() * sizeof(docstring::value_type));
-	int * pw = strwidth_cache_[qba];
+	PROFILE_THIS_BLOCK(width)
+#ifdef CACHE_METRICS_WIDTH
+	int * pw = strwidth_cache_[s];
 	if (pw)
 		return *pw;
 	// For some reason QMetrics::width returns a wrong value with Qt5
 	// int w = metrics_.width(toqstr(s));
+	PROFILE_CACHE_MISS(width)
+#endif
 	QTextLayout tl;
 	tl.setText(toqstr(s));
 	tl.setFont(font_);
@@ -155,8 +193,9 @@ int GuiFontMetrics::width(docstring const & s) const
 	QTextLine line = tl.createLine();
 	tl.endLayout();
 	int w = int(line.naturalTextWidth());
-
-	strwidth_cache_.insert(qba, new int(w), qba.size());
+#ifdef CACHE_METRICS_WIDTH
+	strwidth_cache_.insert(s, new int(w), s.size() * sizeof(char_type));
+#endif
 	return w;
 }
 
@@ -179,26 +218,34 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 
-QTextLayout const &
-GuiFontMetrics::getTextLayout(docstring const & s, QFont font,
-                              bool const rtl, double const wordspacing) const
+QTextLayout const *
+GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
+                              double const wordspacing) const
 {
-	if (s != tl_cache_s_ || font != tl_cache_font_ || rtl != tl_cache_rtl_
-	    || wordspacing != tl_cache_wordspacing_) {
-		tl_cache_.setText(toqstr(s));
-		font.setWordSpacing(wordspacing);
-		tl_cache_.setFont(font);
+	PROFILE_THIS_BLOCK(getTextLayout)
+	QTextLayout * ptl;
+#ifdef CACHE_METRICS_QTEXTLAYOUT
+	docstring const s_cache = s + (rtl ? "r" : "l") + convert<docstring>(wordspacing);
+	ptl = qtextlayout_cache_[s_cache];
+	if (!ptl) {
+		PROFILE_CACHE_MISS(getTextLayout)
+#endif
+		ptl = new QTextLayout();
+		ptl->setCacheEnabled(true);
+		ptl->setText(toqstr(s));
+		QFont copy = font_;
+		copy.setWordSpacing(wordspacing);
+		ptl->setFont(copy);
 		// Note that both setFlags and the enums are undocumented
-		tl_cache_.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-		tl_cache_.beginLayout();
-		tl_cache_.createLine();
-		tl_cache_.endLayout();
-		tl_cache_s_ = s;
-		tl_cache_font_ = font;
-		tl_cache_rtl_ = rtl;
-		tl_cache_wordspacing_ = wordspacing;
+		ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+		ptl->beginLayout();
+		ptl->createLine();
+		ptl->endLayout();
+#ifdef CACHE_METRICS_QTEXTLAYOUT
+		qtextlayout_cache_.insert(s_cache, ptl);
 	}
-	return tl_cache_;
+#endif
+	return ptl;
 }
 
 
@@ -207,32 +254,32 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
 {
 	if (pos <= 0)
 		return rtl ? width(s) : 0;
-	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
+	QTextLayout const * tl = getTextLayout(s, rtl, wordspacing);
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
 	 */
 	int const qpos = toqstr(s.substr(0, pos)).length();
-	return static_cast<int>(tl.lineForTextPosition(qpos).cursorToX(qpos));
+	return static_cast<int>(tl->lineForTextPosition(qpos).cursorToX(qpos));
 }
 
 
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
-	int const qpos = tl.lineForTextPosition(0).xToCursor(x);
+	QTextLayout const * tl = getTextLayout(s, rtl, wordspacing);
+	int const qpos = tl->lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
-	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(qpos));
+	x = static_cast<int>(tl->lineForTextPosition(0).cursorToX(qpos));
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
 	 */
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	return qstring_to_ucs4(tl.text().left(qpos)).length();
+	return qstring_to_ucs4(tl->text().left(qpos)).length();
 #else
 	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
-	 * by QString::toUcs4 (used by qstring_to_ucs4)may have wrong
+	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
 	 * length. We work around the problem by trying all docstring
 	 * positions until the right one is found. This is slow only if
 	 * there are many high-plane Unicode characters. It might be
@@ -269,10 +316,10 @@ int GuiFontMetrics::countExpanders(docstring const & str) const
 }
 
 
-bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+pair<int, int> *
+GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
+                               bool const rtl, bool const force) const
 {
-	if (s.empty())
-		return false;
 	QTextLayout tl;
 	/* Qt will not break at a leading or trailing space, and we need
 	 * that sometimes, see http://www.lyx.org/trac/ticket/9921.
@@ -280,7 +327,7 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	 * To work around the problem, we enclose the string between
 	 * zero-width characters so that the QTextLayout algorithm will
 	 * agree to break the text at these extremal spaces.
-	*/
+	 */
 	// Unicode character ZERO WIDTH NO-BREAK SPACE
 	QChar const zerow_nbsp(0xfeff);
 	QString qs = zerow_nbsp + toqstr(s) + zerow_nbsp;
@@ -314,8 +361,7 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	tl.createLine();
 	tl.endLayout();
 	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
-		return false;
-	x = int(line.naturalTextWidth());
+		return new pair<int, int>(-1, -1);
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
@@ -324,10 +370,10 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	// The ending character zerow_nbsp has to be ignored if the line is complete.
 	int const qlen = line.textLength() - offset - (line.textLength() == qs.length());
 #if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
-	s = qstring_to_ucs4(qs.mid(offset, qlen));
+	int len = qstring_to_ucs4(qs.mid(offset, qlen)).length();
 #else
 	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
-	 * by QString::toUcs4 (used by qstring_to_ucs4)may have wrong
+	 * by QString::toUcs4 (used by qstring_to_ucs4) may have wrong
 	 * length. We work around the problem by trying all docstring
 	 * positions until the right one is found. This is slow only if
 	 * there are many high-plane Unicode characters. It might be
@@ -338,7 +384,36 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	while (len >= 0 && toqstr(s.substr(0, len)).length() != qlen)
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
-	s = s.substr(0, len);
+#endif
+	// The -1 is here to account for the leading zerow_nbsp.
+	return new pair<int, int>(len, int(line.naturalTextWidth()));
+}
+
+
+bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+{
+	PROFILE_THIS_BLOCK(breakAt)
+	if (s.empty())
+		return false;
+	pair<int, int> * pp;
+#ifdef CACHE_METRICS_BREAKAT
+	docstring const s_cache = s + convert<docstring>(x) + (rtl ? "r" : "l") + (force ? "f" : "w");
+
+	pp = breakat_cache_[s_cache];
+	if (!pp) {
+		PROFILE_CACHE_MISS(breakAt)
+#endif
+		pp = breakAt_helper(s, x, rtl, force);
+#ifdef CACHE_METRICS_BREAKAT
+		breakat_cache_.insert(s_cache, pp, s_cache.size() * sizeof(char_type));
+	}
+#endif
+	if (pp->first == -1)
+		return false;
+	s = s.substr(0, pp->first);
+	x = pp->second;
+#ifndef CACHE_METRICS_BREAKAT
+	delete pp;
 #endif
 	return true;
 }
@@ -353,7 +428,6 @@ void GuiFontMetrics::rectText(docstring const & str,
 	ascent = metrics_.ascent() + d;
 	descent = metrics_.descent() + d;
 }
-
 
 
 void GuiFontMetrics::buttonText(docstring const & str,

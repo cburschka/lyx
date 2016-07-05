@@ -155,6 +155,13 @@ string convert<string>(double d)
 
 
 template<>
+docstring convert<docstring>(double d)
+{
+	return from_ascii(convert<string>(d));
+}
+
+
+template<>
 int convert<int>(string const s)
 {
 	return strtol(s.c_str(), 0, 10);

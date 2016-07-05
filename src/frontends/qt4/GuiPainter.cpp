@@ -478,8 +478,17 @@ void GuiPainter::text(int x, int y, docstring const & s,
 		return;
 	}
 
-	// don't use the pixmap cache,
-	do_drawText(x, y, str, dir, f, ff);
+	// don't use the pixmap cache
+	setQPainterPen(computeColor(f.realColor()));
+	if (dir != Auto) {
+		QTextLayout const * ptl = fm.getTextLayout(s, dir == RtL, wordspacing);
+		ptl->draw(this, QPointF(x, y - fm.maxAscent()));
+	}
+	else {
+		if (font() != ff)
+			setFont(ff);
+		drawText(x, y, str);
+	}
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
 }

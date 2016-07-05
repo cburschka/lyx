@@ -16,12 +16,28 @@
 
 #include "support/docstring.h"
 
-#include <QByteArray>
-#include <QCache>
 #include <QFont>
 #include <QFontMetrics>
 #include <QHash>
 #include <QTextLayout>
+
+// Declare which font metrics elements have to be cached
+
+#define CACHE_METRICS_WIDTH
+#define CACHE_METRICS_BREAKAT
+// Qt 5.x already has its own caching of QTextLayout objects
+#if (QT_VERSION < 0x050000)
+#define CACHE_METRICS_QTEXTLAYOUT
+#endif
+
+#if defined(CACHE_METRICS_WIDTH) || defined(CACHE_METRICS_BREAKAT) \
+  || defined(CACHE_METRICS_QTEXTLAYOUT)
+#define CACHE_SOME_METRICS
+#endif
+
+#ifdef CACHE_SOME_METRICS
+#include <QCache>
+#endif
 
 namespace lyx {
 namespace frontend {
@@ -65,11 +81,16 @@ public:
 	///
 	int width(QString const & str) const;
 
+	/// Return a pointer to a cached QTextLayout object
+	QTextLayout const *
+	getTextLayout(docstring const & s, bool const rtl,
+                  double const wordspacing) const;
+
 private:
 
-	QTextLayout const &
-	getTextLayout(docstring const & s, QFont font,
-	              bool const rtl, double const wordspacing) const;
+	std::pair<int, int> *
+	breakAt_helper(docstring const & s, int const x,
+	               bool const rtl, bool const force) const;
 
 	/// The font
 	QFont font_;
@@ -80,8 +101,20 @@ private:
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
 
+#ifdef CACHE_METRICS_WIDTH
 	/// Cache of string widths
-	mutable QCache<QByteArray, int> strwidth_cache_;
+	mutable QCache<docstring, int> strwidth_cache_;
+#endif
+
+#ifdef CACHE_METRICS_BREAKAT
+	/// Cache for breakAt
+	mutable QCache<docstring, std::pair<int, int>> breakat_cache_;
+#endif
+
+#ifdef CACHE_METRICS_QTEXTLAYOUT
+	/// Cache for QTextLayout:s
+	mutable QCache<docstring, QTextLayout> qtextlayout_cache_;
+#endif
 
 	struct AscendDescend {
 		int ascent;
@@ -94,13 +127,6 @@ private:
 
 	/// Cache of char right bearings
 	mutable QHash<char_type, int> rbearing_cache_;
-
-	// A trivial QTextLayout cache
-	mutable QTextLayout tl_cache_;
-	mutable docstring tl_cache_s_;
-	mutable QFont tl_cache_font_;
-	mutable bool tl_cache_rtl_;
-	mutable double tl_cache_wordspacing_;
 
 };
 
