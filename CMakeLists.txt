@@ -141,7 +141,10 @@ LYX_OPTION(ENABLE_URLTESTS  "Enable for URL tests" OFF ALL)
 LYX_OPTION(ENABLE_EXPORT_TESTS "Enable for export tests" OFF ALL)
 LYX_OPTION(ASAN             "Use address sanitizer" OFF ALL)
 LYX_COMBO(USE_QT            "Use Qt version as frontend" QT4 QT5)
-LYX_OPTION(3RDPARTY_BUILD   "Build 3rdparty libs" OFF ALL)
+#LYX_OPTION(3RDPARTY_BUILD   "Build 3rdparty libs" OFF ALL)
+LYX_OPTION(EXTERNAL_Z       "Build 3rdparty lib zlib" ON ALL)
+LYX_OPTION(EXTERNAL_ICONV   "Build 3rdparty lib iconvlib" ON ALL)
+LYX_OPTION(EXTERNAL_HUNSPELL "Build 3rdparty lib hunspelllib" ON ALL)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
@@ -206,7 +209,6 @@ if(LYX_MERGE_FILES)
 else()
 	set(LYX_MERGE_REBUILD OFF)
 endif()
-
 
 if(LYX_DEPENDENCIES_DOWNLOAD)
 	message(STATUS)
@@ -310,6 +312,14 @@ elseif(APPLE)
 	set(USE_MACOSX_PACKAGING ON)
 else()
 	set(USE_POSIX_PACKAGING ON)
+endif()
+
+if(LYX_3RDPARTY_BUILD)
+  # LYX_3RDPARTY_BUILD is not cached anymore, but for compatibility reasons
+  # this enables the build of all 3rd_party libs
+  set(LYX_EXTERNAL_Z        OFF CACHE BOOL "Build 3rdparty lib zlib"    FORCE)
+  set(LYX_EXTERNAL_ICONV    OFF CACHE BOOL "Build 3rdparty iconvlib"    FORCE)
+  set(LYX_EXTERNAL_HUNSPELL OFF CACHE BOOL "Build 3rdparty hunspelllib" FORCE)
 endif()
 
 macro(setstripped _varname)
@@ -642,7 +652,7 @@ include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
 set(Spelling_FOUND OFF)
 set(Include_used_spellchecker)   # String will be inserted into config.h
 
-if(LYX_3RDPARTY_BUILD)
+if(NOT LYX_EXTERNAL_HUNSPELL)
     add_subdirectory(3rdparty/hunspell)
     add_definitions(-DHUNSPELL_STATIC)
     set(HUNSPELL_FOUND ON)
@@ -706,13 +716,17 @@ if(LYX_NLS)
 	endif()
 endif()
 
-if(LYX_3RDPARTY_BUILD)
-	add_subdirectory(3rdparty/libiconv)
-	set(HAVE_ICONV_CONST 1)
-	add_subdirectory(3rdparty/zlib)
+if(LYX_EXTERNAL_ICONV)
+  find_package(ICONV REQUIRED)
 else()
-	find_package(ICONV REQUIRED)
-	find_package(ZLIB REQUIRED)
+  add_subdirectory(3rdparty/libiconv)
+  set(HAVE_ICONV_CONST 1)
+endif()
+
+if(LYX_EXTERNAL_Z)
+  find_package(ZLIB REQUIRED)
+else()
+  add_subdirectory(3rdparty/zlib)
 endif()
 
 if(LYX_EXTERNAL_BOOST)
