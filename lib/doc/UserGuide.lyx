@@ -134,12 +134,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 986154928 "Gnter Milde"
 \end_header
 
 \begin_body
@@ -8311,12 +8310,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8329,6 +8330,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8352,6 +8354,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -16979,42 +16982,6 @@ open close
 "
 \family default
 , generates this automatically.
-\change_inserted 986154928 1464030688
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 986154928 1464016381
-You can, of course, remove this 
-\begin_inset Quotes eld
-\end_inset
-
-smart quotes
-\begin_inset Quotes erd
-\end_inset
-
- keybinding if you prefer.
- See section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Editing-Shortcuts"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -17186,23 +17153,7 @@ this
 \end_layout
 
 \begin_layout Standard
-For 
-\change_inserted 986154928 1464016392
-
-\begin_inset Quotes eld
-\end_inset
-
-smart
-\begin_inset Quotes erd
-\end_inset
-
- 
-\change_unchanged
-single quotes 
-\change_deleted 986154928 1464016400
-you have to 
-\change_unchanged
-use the shortcut 
+For single quotes you have to use the shortcut 
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert single"
@@ -31058,7 +31009,11 @@ Modules
 \begin_inset Quotes eld
 \end_inset
 
+
+\emph on
 Custom Header/Footerlines
+\emph default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -31067,7 +31022,7 @@ Custom Header/Footerlines
 \begin_inset space ~
 \end_inset
 
-styles:
+environments:
 \end_layout
 
 \begin_layout Description
@@ -31120,6 +31075,7 @@ Footer
 
 \begin_layout Standard
 for the different positions in the header/footer.
+ These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -31367,12 +31323,13 @@ Definition
 \end_layout
 
 \begin_layout Standard
-To define your header line, add all three header styles.
- The things you add to the styles appear on odd numbered pages, the things
- in the optional arguments on even numbered pages.
+To define your header line, add all three header environments.
+ The things you add to each environment appear on odd numbered pages, the
+ things in the optional arguments on even numbered pages.
  For single-sided documents, the optional arguments will not be used and
  can be omitted.
- If you leave a style or its argument empty, nothing appears in the output.
+ If you leave a header environment or its argument empty, nothing appears
+ in the output.
  Defining the footer line works similarly.
 \end_layout
 
@@ -31464,8 +31421,8 @@ Appearance
 \begin_layout Standard
 The header and footer will appear on normal pages.
  Some pages are different.
- The title page has a style of its own, and so does any page that starts
- a new part or chapter in your book.
+ The title page has a header/footer environment of its own, and so does
+ any page that starts a new part or chapter in your book.
  Such pages will not have the custom headers/footers, but that is normal.
  There is for example no need to print a header with the chapter name on
  the chapter page where the chapter heading is in big bold letters anyway.
@@ -31509,12 +31466,16 @@ headrulewidth}{thickness}
 \begin_layout Standard
 where thickness is a size in standard units like 
 \family sans
+\emph on
 pt
 \family default
+\emph default
  or 
 \family sans
+\emph on
 mm
 \family default
+\emph default
 .
  If you don't want a line, set the thickness to 0
 \begin_inset space \thinspace{}
@@ -31546,7 +31507,7 @@ Several header/footer lines
 
 \begin_layout Standard
 In case you need more than one text line as a header/footer, you can do
- this by adding a normal line break in the style definition.
+ this by adding a ragged line break in the style definition.
  However, the default height of the header/footer is only the one of one
  text line.
  To expand the height, redefine the \SpecialChar LaTeX
@@ -31562,7 +31523,7 @@ headheight
 \backslash
 footheight
 \series default
- in this entry in 
+ with this entry in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -31586,14 +31547,34 @@ headheight}{height}
 \end_layout
 
 \begin_layout Standard
-where height is a size in standard units.
- If you don't know which amount of space is needed for the height, define
- your header/footer and preview your document as a PDF.
+where 
+\series bold
+height
+\series default
+ is a size in standard units (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+1cm
+\series default
+).
+ If you don't know how much space is needed for the height, define your
+ header/footer and preview your document as a PDF.
  Then open the \SpecialChar LaTeX
  logfile with the menu 
 \family sans
 Document\SpecialChar menuseparator
-LaTeX Log
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Log
 \family default
  and use the button 
 \family sans

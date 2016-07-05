@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 510
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -99,7 +99,6 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -5965,13 +5964,7 @@ Format
 \end_inset
 
 タグは挿入しなくてはなりません．どの書式を使用しても構いませんが，通常は，執筆時点の最新書式を用いることになるでしょう(\SpecialChar LyX
- 2.1では，最新書式は48です)．また，
-ローカルレイアウトは，\SpecialChar LyX
- 1.6より前の版ではサポートされていないことを認識しておく必要があります．したがって，文書を\SpecialChar LyX
- 1.5またはそれ以前の版に(ローカルレイアウト
-情報を失うことなく)書き出せることを望むならば，使用するべきではありません．第1.6版へ—第1.6版はUIはありませんがローカルレイアウトをサポートしています—書き
-出せることを望むならば，書式11を用いて，さらに\SpecialChar LyX
- 1.6で使用できるレイアウト要素のみを使用してください．
+ 2.2では，最新書式は60です)
 \end_layout
 
 \begin_layout Standard
@@ -6294,7 +6287,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 35
+Format 60
 \begin_inset Newline newline
 \end_inset
 
@@ -6429,18 +6422,7 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXClass[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -6968,22 +6950,7 @@ myarticle
 \size small
 #  
 \backslash
-DeclareLaT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size small
-eXClass[article,foo.sty]{Article (with My Own Headings)}
+DeclareLaTeXClass[article,foo.sty]{Article (with My Own Headings)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7190,18 +7157,7 @@ status collapsed
 \begin_layout LyX-Code
 #
 \backslash
-DeclareL
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXModule[endnotes.sty]{Endnotes} 
+DeclareLyXModule[endnotes.sty]{Endnotes} 
 \end_layout
 
 \begin_layout Standard
@@ -7440,7 +7396,7 @@ status collapsed
 \end_inset
 
 1.3.x以前のレイアウトファイルには，明示されたファイル形式がないため，書式1と解されます．\SpecialChar LyX
-現行版のファイル形式は，書式59です．しかし，\SpecialChar LyX
+現行版のファイル形式は，書式60です．しかし，\SpecialChar LyX
 の各版は，旧版の\SpecialChar LyX
 で作成さ
 れたファイルを読むことができるように，旧版のレイアウトファイルも読むことができます．しかしながら，以前の書式に変換する方法はありません．
@@ -16424,7 +16380,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset
@@ -16449,7 +16405,25 @@ MultiPar
 
 \end_inset
 
-が偽に設定されます．文字様式差込枠で
+が偽に設定されます
+\lang english
+ and 
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+
+\lang english
+ to true
+\lang japanese
+．文字様式差込枠で
 \begin_inset Flex Code
 status collapsed
 
@@ -16459,12 +16433,30 @@ MultiPar
 
 \end_inset
 
-を真にしたい時には，
+を真にしたい時には
+\lang english
+, or 
+\lang japanese
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+ForcePlain
+\end_layout
+
+\end_inset
+
+
+\lang english
+ to false
+\lang japanese
+，
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyxType
 \end_layout
 
 \end_inset

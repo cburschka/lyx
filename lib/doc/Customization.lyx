@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 510
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -56,7 +56,6 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -118,12 +117,11 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -6765,16 +6763,7 @@ Format
  Any format is acceptable, but one would normally use the format current
  at the time.
  (In \SpecialChar LyX
- 2.1, the current layout format is 48.) You should be aware that local
- layout is not supported by versions of \SpecialChar LyX
- prior to 1.6, so you should not
- use it if you want to be able to export your document to \SpecialChar LyX
- 1.5 or earlier
- (without, that is, losing the local layout information).
- If you wish to be able to export to 1.6—local layout is supported in 1.6,
- though there is no UI for it—then you should use format 11 and, of course,
- use only layout constructs that were available in \SpecialChar LyX
- 1.6.
+ 2.2, the current layout format is 60.)
 \end_layout
 
 \begin_layout Standard
@@ -6941,8 +6930,7 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class{report}
+DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
@@ -6952,8 +6940,7 @@ to read
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
@@ -7146,7 +7133,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 35
+Format 60
 \begin_inset Newline newline
 \end_inset
 
@@ -7280,8 +7267,7 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -8435,7 +8421,7 @@ Format
 
 .
  The format for the present version of \SpecialChar LyX
- is format 59.
+ is format 60.
  But each version of \SpecialChar LyX
  is capable of reading earlier versions' layout files,
  just as they are capable of reading files produced by earlier versions
@@ -18487,7 +18473,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset
@@ -18512,23 +18498,17 @@ MultiPar
 
 \end_inset
 
- to false
-\change_inserted 424524441 1466537871
- and 
+ to false and 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 424524441 1466537871
 ForcePlain
 \end_layout
 
 \end_inset
 
- to true
-\change_unchanged
-.
+ to true.
  
 \begin_inset Flex Code
 status collapsed
@@ -18539,23 +18519,17 @@ MultiPar
 
 \end_inset
 
- can be set to true
-\change_inserted 424524441 1466537883
-, or 
+ can be set to true, or 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 424524441 1466537883
 ForcePlain
 \end_layout
 
 \end_inset
 
- to false,
-\change_unchanged
- for 
+ to false, for 
 \begin_inset Flex Code
 status collapsed
 
@@ -18574,13 +18548,12 @@ after
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Description

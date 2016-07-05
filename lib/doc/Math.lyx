@@ -213,7 +213,6 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 5863208 "ab"
 \end_header
 
 \begin_body
@@ -34200,31 +34199,32 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 5863208 1465782906
 \begin_inset Formula $\int\left(\frac{1}{1+x^{3}}\right)dx=-\frac{\log\left(x^{2}-x+1\right)}{6}+\frac{\arctan\left(\frac{2\,x-1}{\sqrt{3}}\right)}{\sqrt{3}}+\frac{\log\left(x+1\right)}{3}$
 \end_inset
 
 
-\begin_inset Foot
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 5863208 1465782906
-Note that one needs to use proper delimiter insets 
+\series bold
+Note:
+\series default
+ One needs to use proper delimiter insets 
 \begin_inset Formula $\left(\right)$
 \end_inset
 
  instead of simple '(' ')' characters.
- 
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
-
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -34245,29 +34245,17 @@ Note that one needs to use proper delimiter insets
 
 \end_layout
 
-\begin_layout Standard
-
-\change_inserted 5863208 1465782942
-One can also use standard commands known to CAS:
-\end_layout
-
 \begin_layout Itemize
-
-\change_inserted 5863208 1465782942
-\begin_inset Formula $powerseries\left(-\log\left(5-x\right),x,1\right)=\sum_{{\mathit i_{2}}=0}^{\infty}{\frac{4^{-{\mathit i_{2}}-1}\,\left(x-1\right)^{{\mathit i_{2}}+1}}{{\mathit i_{2}}+1}}-\log4$
+\begin_inset Formula $powerseries\left(-\log\left(5-x\right),x,1\right)=\sum_{{\mathit{i}_{2}}=0}^{\infty}{\frac{4^{-{\mathit{i}_{2}}-1}\,\left(x-1\right)^{{\mathit{i}_{2}}+1}}{{\mathit{i}_{2}}+1}}-\log4$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 5863208 1465782942
 \begin_inset Formula $solve\left(x_{1}+y_{1}^{3}=y_{1}+x_{1}^{2},x_{1}\right)=\left[x_{1}=-\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}-1}{2},x_{1}=\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}+1}{2}\right]$
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -35171,6 +35159,13 @@ A test:
 
 As one can see, the distance of the numerator and the denominator to the
  fraction bar is round about three times the bar thickness.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
