@@ -530,7 +530,15 @@ Sie können Dokumente in \SpecialChar LyX
 \end_inset
 
 B.
- DocBook als „Backend“ das PDFs erzeugen kann.
+ DocBook als 
+\begin_inset Quotes gld
+\end_inset
+
+Backend
+\begin_inset Quotes grd
+\end_inset
+
+ das PDFs erzeugen kann.
  Des Weiteren können Sie \SpecialChar LyX
 -Dokumente jederzeit als reine Textdatei oder XHTML
  ausgeben.
@@ -1325,8 +1333,23 @@ beachten
 \family default
  können Sie festlegen, ob bei der Suche die Schreibweise berücksichtigt
  werden soll.
- Ist sie aktiv, wird zum Beispiel bei der Suche nach „Treffen“ das Wort
- „treffen“ nicht gefunden.
+ Ist sie aktiv, wird zum Beispiel bei der Suche nach 
+\begin_inset Quotes gld
+\end_inset
+
+Treffen
+\begin_inset Quotes grd
+\end_inset
+
+ das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+treffen
+\begin_inset Quotes grd
+\end_inset
+
+ nicht gefunden.
 \end_layout
 
 \begin_layout Standard
@@ -1342,8 +1365,31 @@ ganze
 
 Wörter
 \family default
- schaltet den Modus „nur ganze Worte suchen“ ein und aus.
- Dann wird beispielsweise bei der Suche nach „Treff“ das Wort „Treffer“
+ schaltet den Modus 
+\begin_inset Quotes gld
+\end_inset
+
+nur ganze Worte suchen
+\begin_inset Quotes grd
+\end_inset
+
+ ein und aus.
+ Dann wird beispielsweise bei der Suche nach 
+\begin_inset Quotes gld
+\end_inset
+
+Treff
+\begin_inset Quotes grd
+\end_inset
+
+ das Wort 
+\begin_inset Quotes gld
+\end_inset
+
+Treffer
+\begin_inset Quotes grd
+\end_inset
+
  nicht gefunden.
 \end_layout
 
@@ -2462,7 +2508,15 @@ Es gibt drei Hilfstasten:
 \family sans
 Steuerung
 \family default
- (in der Dokumentation als „Strg“
+ (in der Dokumentation als 
+\begin_inset Quotes gld
+\end_inset
+
+Strg
+\begin_inset Quotes grd
+\end_inset
+
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Strg"
@@ -2527,10 +2581,18 @@ Ende des Dokuments.
 Umschalt
 \family default
  (in der Dokumentation als 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
-„Umschalt
+Umschalt
 \family default
-“
+
+\begin_inset Quotes grd
+\end_inset
+
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Umschalt"
@@ -2575,8 +2637,12 @@ Diese Taste macht verschiedene Dinge und aktiviert zudem die Menü Schnellauswah
 \begin_deeper
 \begin_layout Standard
 Zum Beispiel öffnet die Sequenz 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
-„Alt
+Alt
 \begin_inset space ~
 \end_inset
 
@@ -2594,16 +2660,36 @@ t
 \family sans
 b
 \family default
-“ den „Textstil“ Dialog.
+
+\begin_inset Quotes grd
+\end_inset
+
+ den 
+\begin_inset Quotes gld
+\end_inset
+
+Textstil
+\begin_inset Quotes grd
+\end_inset
+
+ Dialog.
  
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
-„Alt
+Alt
 \begin_inset space ~
 \end_inset
 
 d
 \family default
-“ öffnet das 
+
+\begin_inset Quotes grd
+\end_inset
+
+ öffnet das 
 \family sans
 Datei
 \family default
@@ -3023,7 +3109,15 @@ Dokument ! Einstellungen
 
 \end_inset
 
- gelistet sind, als „nicht verfügbar“ markiert sind.
+ gelistet sind, als 
+\begin_inset Quotes gld
+\end_inset
+
+nicht verfügbar
+\begin_inset Quotes grd
+\end_inset
+
+ markiert sind.
  Oder sie sind überrascht wenn sie z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3064,15 +3158,30 @@ IOP
 
 \begin_layout Standard
 Falls es eine Dokumentklasse gibt, die Sie benutzen möchten, die aber als
- „nicht verfügbar“ gekennzeichnet ist, müssen Sie die entsprechenden Paketdateie
-n installieren.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+nicht verfügbar
+\begin_inset Quotes grd
+\end_inset
+
+ gekennzeichnet ist, müssen Sie die entsprechenden Paketdateien installieren.
  Der einfachste Weg herauszufinden welche Dateien Sie installieren müssen,
  ist es, die Dokumentklasse für eine neue Datei zu verwenden.
  \SpecialChar LyX
  wird dann einen Dialog zeigen, der die fehlenden Dateien auf\SpecialChar ligaturebreak
 listet.
- In Abschnitt „Installation eines neuen \SpecialChar LaTeX
--Paketes“ des 
+ In Abschnitt 
+\begin_inset Quotes gld
+\end_inset
+
+Installation eines neuen \SpecialChar LaTeX
+-Paketes
+\begin_inset Quotes grd
+\end_inset
+
+ des 
 \emph on
 Anpassung
 \emph default
@@ -4408,7 +4517,15 @@ Die verschiedenen Absatzumgebungen machen den Gebrauch unsauberer Tabstops,
 \end_layout
 
 \begin_layout Standard
-Eine Absatzumgebung wählt man mit dem „Pull-down“-Menü 
+Eine Absatzumgebung wählt man mit dem 
+\begin_inset Quotes gld
+\end_inset
+
+Pull-down
+\begin_inset Quotes grd
+\end_inset
+
+-Menü 
 \begin_inset Graphics
 	filename ../clipart/ToolbarEnvBox.png
 	scale 70
@@ -4427,8 +4544,15 @@ Alt+A+Leertaste
 .
  Wenn das Menü geöffnet ist, können Sie die Einträge einschränken, wenn
  Sie Buchstaben eingeben, die in dem von Ihnen gesuchten Eintrag vorkommen.
- Geben Sie zum Beispiel „abs“ ein, werden alle Einträge angezeigt, die mit
- Abschnitten zu tun haben.
+ Geben Sie zum Beispiel 
+\begin_inset Quotes gld
+\end_inset
+
+abs
+\begin_inset Quotes grd
+\end_inset
+
+ ein, werden alle Einträge angezeigt, die mit Abschnitten zu tun haben.
  Mit der 
 \family sans
 Esc
@@ -5034,7 +5158,15 @@ s
  des Abschnittes und, falls möglich, des Kapitels, in dem der Unter-Unterabschni
 tt steht.
  Beispiel: der fünfte Abschnitt des zweiten Kapitels dieses Handbuches hat
- die Marke „2.5“.
+ die Marke 
+\begin_inset Quotes gld
+\end_inset
+
+2.5
+\begin_inset Quotes grd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5198,8 +5330,15 @@ Einfügen
 Kurztitel
 \family default
 .
- Dies fügt eine mit „Kurztitel“ beschriftete Box ein, in die man den Kurztitel
- eingeben kann.
+ Dies fügt eine mit 
+\begin_inset Quotes gld
+\end_inset
+
+Kurztitel
+\begin_inset Quotes grd
+\end_inset
+
+ beschriftete Box ein, in die man den Kurztitel eingeben kann.
  Dies funktioniert auch für Beschriftungen innerhalb von Gleitumgebungen.
  Pro Überschrift ist nur ein Kurztitel zulässig.
 \end_layout
@@ -5590,7 +5729,7 @@ gekrochen ist auf einen Baum,
 \begin_inset Newline newline
 \end_inset
 
-schon meint, dass er ein Vöglein wär’
+schon meint, dass er ein Vöglein wär'
 \begin_inset Newline newline
 \end_inset
 
@@ -6595,7 +6734,15 @@ Liste
 \begin_inset Newline newline
 \end_inset
 
-Die voreingestellte Breite ist die Länge von „00.00.0000“ (entspricht 6
+Die voreingestellte Breite ist die Länge von 
+\begin_inset Quotes gld
+\end_inset
+
+00.00.0000
+\begin_inset Quotes grd
+\end_inset
+
+ (entspricht 6
 \begin_inset space ~
 \end_inset
 
@@ -6837,8 +6984,15 @@ Roman
 arabic
 \series default
 .
- Um Punkte mit großen oder kleinen Buchstaben zu „nummerieren“, verwenden
- Sie die Befehle 
+ Um Punkte mit großen oder kleinen Buchstaben zu 
+\begin_inset Quotes gld
+\end_inset
+
+nummerieren
+\begin_inset Quotes grd
+\end_inset
+
+, verwenden Sie die Befehle 
 \series bold
 
 \backslash
@@ -8582,11 +8736,18 @@ reference "sec:Umgebungen-schachteln"
 
 \begin_layout Standard
 \SpecialChar LyX
- unterscheidet sich vom normalen Konzept der „Textverarbeitung-als-Super\SpecialChar softhyphen
+ unterscheidet sich vom normalen Konzept der 
+\begin_inset Quotes gld
+\end_inset
+
+Textverarbeitung-als-Super\SpecialChar softhyphen
 schreib\SpecialChar softhyphen
-m
-a\SpecialChar softhyphen
-schine“ sehr stark.
+ma\SpecialChar softhyphen
+schine
+\begin_inset Quotes grd
+\end_inset
+
+ sehr stark.
  Mit einer Schreibmaschine ist Text bloß Tinte auf Papier.
  Bei einigen Textverarbeitungen ist das auch heute noch das Hauptproblem.
  \SpecialChar LyX
@@ -9579,9 +9740,17 @@ listung
 \family sans
 Aufzählung
 \family default
- innerhalb von „A.“ erstellen wollten, würden wir Fehlermeldungen erhalten.
+ innerhalb von 
+\begin_inset Quotes gld
+\end_inset
+
+A.
+\begin_inset Quotes grd
+\end_inset
+
+ erstellen wollten, würden wir Fehlermeldungen erhalten.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Noch einmal: \SpecialChar LyX
@@ -9686,7 +9855,15 @@ Dies ist eine
 \family sans
 Standard
 \family default
--Umgebung, in „3-a“ geschachtelt.
+-Umgebung, in 
+\begin_inset Quotes gld
+\end_inset
+
+3-a
+\begin_inset Quotes grd
+\end_inset
+
+ geschachtelt.
  Also ist sie auf Stufe 4.
  Wir haben dies durch 
 \family sans
@@ -9758,7 +9935,15 @@ bung kann man nichts schachteln, deswegen sind wir noch auf 4.
 \emph on
 können
 \emph default
- innerhalb von „3-a“ weiterschachteln.
+ innerhalb von 
+\begin_inset Quotes gld
+\end_inset
+
+3-a
+\begin_inset Quotes grd
+\end_inset
+
+ weiterschachteln.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -10827,14 +11012,30 @@ reference "sec:Literaturverzeichnis"
 Offensic
 \family default
 \series default
-htlich sollte zwischen „Abschnitt“ und „
+htlich sollte zwischen 
+\begin_inset Quotes gld
+\end_inset
+
+Abschnitt
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Literaturverzeichnis"
 
 \end_inset
 
-“ ein geschütztes Leerzeichen stehen.
+
+\begin_inset Quotes grd
+\end_inset
+
+ ein geschütztes Leerzeichen stehen.
  Dieses wird über das Menü 
 \family sans
 Einfügen
@@ -11881,7 +12082,11 @@ jumps
 \end_layout
 
 \begin_layout Standard
-So dass die Antwortmöglichkeiten exakt nach dem Ausdruck „Mr.
+So dass die Antwortmöglichkeiten exakt nach dem Ausdruck 
+\begin_inset Quotes gld
+\end_inset
+
+Mr.
 \begin_inset space ~
 \end_inset
 
@@ -11889,7 +12094,11 @@ Edge
 \begin_inset space ~
 \end_inset
 
-“ beginnen.
+
+\begin_inset Quotes grd
+\end_inset
+
+ beginnen.
  Dafür können Sie die Phantom-Einfügung im Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
@@ -11898,7 +12107,11 @@ Phantom
 \family default
  verwenden.
  In unserem Fall fügen Sie ein horizontales Phantom am Anfang der letzten
- beiden Zeilen ein und schreiben „Mr.
+ beiden Zeilen ein und schreiben 
+\begin_inset Quotes gld
+\end_inset
+
+Mr.
 \begin_inset space ~
 \end_inset
 
@@ -11906,10 +12119,30 @@ Edge
 \begin_inset space ~
 \end_inset
 
-“ in das Phantom (beachten sie das Leerzeichen nach „Edge“).
+
+\begin_inset Quotes grd
+\end_inset
+
+ in das Phantom (beachten sie das Leerzeichen nach 
+\begin_inset Quotes gld
+\end_inset
+
+Edge
+\begin_inset Quotes grd
+\end_inset
+
+).
  Eine Phantom-Einfügung gibt nur den Leerraum ihres Inhalts aus (so wie
  ein Platzhalter).
- Das ist der Grund warum es „Phantom“ genannt wird.
+ Das ist der Grund warum es 
+\begin_inset Quotes gld
+\end_inset
+
+Phantom
+\begin_inset Quotes grd
+\end_inset
+
+ genannt wird.
  Das normale Phantom gibt die Höhe und Breite des Inhalts als Leerraum aus,
  während die horizontale und vertikale Variante nur die entsprechende Dimension
  ausgibt.
@@ -12952,22 +13185,38 @@ Standard,
  verwendet die Schrift, die die aktuelle Dokumentklasse als Standard hat.
  In den meisten Fällen ist dies die Standard-\SpecialChar TeX
 -Schrift, die als 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
-„Computer
+Computer
 \begin_inset space ~
 \end_inset
 
 Modern
 \family default
-“ (
+
+\begin_inset Quotes grd
+\end_inset
+
+ (
 \family typewriter
 cm
 \family default
 ) oder 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
-„European Computer Modern
+European Computer Modern
 \family default
-“ (
+
+\begin_inset Quotes grd
+\end_inset
+
+ (
 \family typewriter
 ec
 \family default
@@ -13163,11 +13412,27 @@ zwei
 brève
 \emph default
  in einer PDF-Datei suchen, werden Sie es nicht finden, weil der PDF-Betrachter
- nach „è“ sucht und nicht nach „e +
+ nach 
+\begin_inset Quotes gld
+\end_inset
+
+è
+\begin_inset Quotes grd
+\end_inset
+
+ sucht und nicht nach 
+\begin_inset Quotes gld
+\end_inset
+
+e +
 \begin_inset space ~
 \end_inset
 
- ̀“.
+ ̀
+\begin_inset Quotes grd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -13542,7 +13807,7 @@ nicht
  die Bildschirmschrift! Die Änderung ist nur in der Ausgabe sichtbar; dies
  ist Teil des WYSIWYM Konzeptes.
  \SpecialChar LyX
-’ Bildschirmschriften können im Dialog 
+' Bildschirmschriften können im Dialog 
 \family sans
 Werkzeuge\SpecialChar menuseparator
 Einstellungen
@@ -14429,7 +14694,15 @@ Winzig
 \family default
  
 \size tiny
-Dies ist die „winzige“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+winzige
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (Tastenkürzel: 
@@ -14463,7 +14736,15 @@ Klein
 \family default
  
 \size scriptsize
-Dies ist die „sehr kleine“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+sehr kleine
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (Tastenkürzel: 
@@ -14485,7 +14766,15 @@ Fußnote
 \family default
  
 \size footnotesize
-Dies ist die „Fußnoten“-Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+Fußnoten
+\begin_inset Quotes grd
+\end_inset
+
+-Schriftgröße.
 
 \size default
  (
@@ -14511,7 +14800,15 @@ Klein
 \family default
  
 \size small
-Dies ist die „kleine“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+kleine
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (
@@ -14543,7 +14840,15 @@ Alt+S
 \family sans
 Normal
 \family default
- Dies ist die „normale“ Schriftgröße.
+ Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+normale
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
  Dies ist auch die Standardgröße (Tastenkürzel: 
 \family sans
 Alt+S
@@ -14567,7 +14872,15 @@ Groß
 \family default
  
 \size large
-Dies ist die „große“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+große
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (Tastenkürzel: 
@@ -14597,7 +14910,15 @@ Größer
 \family default
  
 \size larger
-Dies ist die „größere“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+größere
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
  
 \size default
 (Tastenkürzel: 
@@ -14631,7 +14952,15 @@ Größer
 \family default
  
 \size largest
-Dies ist die „noch größere“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+noch größere
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (Tastenkürzel: 
@@ -14653,7 +14982,15 @@ Riesig
 \family default
  
 \size huge
-Dies ist die „riesige“ Schriftgröße.
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+riesige
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftgröße.
 
 \size default
  (Tastenkürzel: 
@@ -14683,7 +15020,15 @@ Gigantisch
 \family default
  
 \size giant
-Dies ist die „gigantische“ Schrift\SpecialChar softhyphen
+Dies ist die 
+\begin_inset Quotes gld
+\end_inset
+
+gigantische
+\begin_inset Quotes grd
+\end_inset
+
+ Schrift\SpecialChar softhyphen
 größe.
 
 \size default
@@ -15026,8 +15371,23 @@ Leertaste
 \family default
 .
  Will man nur die Einstellungen umschalten, die man gerade geändert hat
- (angenommen man hat gerade den Schnitt auf „geneigt“ und die Strichstärke
- auf „fett“ gesetzt), verwendet man die Option 
+ (angenommen man hat gerade den Schnitt auf 
+\begin_inset Quotes gld
+\end_inset
+
+geneigt
+\begin_inset Quotes grd
+\end_inset
+
+ und die Strichstärke auf 
+\begin_inset Quotes gld
+\end_inset
+
+fett
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt), verwendet man die Option 
 \family sans
 Alle
 \begin_inset space ~
@@ -15063,8 +15423,16 @@ Schreibmaschine
 \family typewriter
 Schreibmaschine
 \family default
- ist eine sogenannte „nichtproportionale“ Schriftart, was bedeutet, dass
- jedes Zeichen dieselbe Breite hat; das 'i' ist so breit wie das 'm'.
+ ist eine sogenannte 
+\begin_inset Quotes gld
+\end_inset
+
+nichtproportionale
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 'i'
+ ist so breit wie das 'm'.
  Hier ist ein Beispiel
 \begin_inset Newline newline
 \end_inset
@@ -15117,8 +15485,15 @@ kein Schreibmaschine-Text
 Serifenschrift
 \family default
  Schriftarten verwenden Zeichen mit Serifen.
- Dies sind die kleinen „Anhängsel“ am Ende der Striche, die ein Zeichen
- bilden.
+ Dies sind die kleinen 
+\begin_inset Quotes gld
+\end_inset
+
+Anhängsel
+\begin_inset Quotes grd
+\end_inset
+
+ am Ende der Striche, die ein Zeichen bilden.
  Das folgende Beispiel zeigt den Unterschied:
 \begin_inset Newline newline
 \end_inset
@@ -15151,7 +15526,14 @@ Serifenlos
 \end_layout
 
 \begin_layout Standard
-„Umschalten“ bezieht sich auf das Setzen oder Entfernen von Schrifteigenschaften.
+\begin_inset Quotes gld
+\end_inset
+
+Umschalten
+\begin_inset Quotes grd
+\end_inset
+
+ bezieht sich auf das Setzen oder Entfernen von Schrifteigenschaften.
  Wenn eine Eigenschaft fürs Umschalten im Textstil-Dialog ausgewählt ist,
  wird sie vom ausgewählten Text entfernt, wenn dieser schon die Eigenschaft
  besitzt.
@@ -15164,10 +15546,32 @@ B.
  die Schrifteigenschaften B, C, F und G hat, und wenn B auf umschalten,
  C auf nicht umschalten gesetzt ist, wird der Text danach die Eigenschaften
  A, C, F und G haben.
- „Niemals Umschalten“ und „Immer Umschalten“ bedeutet, dass man die Umschalt-Eig
-enschaft nicht kontrolliert.
- Für die Eigenschaften der linken Seite des Dialogs („Familie“ usw.) entscheidet
- man selbst über das Umschalten.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Niemals Umschalten
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Immer Umschalten
+\begin_inset Quotes grd
+\end_inset
+
+ bedeutet, dass man die Umschalt-Eigenschaft nicht kontrolliert.
+ Für die Eigenschaften der linken Seite des Dialogs (
+\begin_inset Quotes gld
+\end_inset
+
+Familie
+\begin_inset Quotes grd
+\end_inset
+
+ usw.) entscheidet man selbst über das Umschalten.
  Wenn 
 \family sans
 Alle
@@ -15178,12 +15582,36 @@ umschalten
 \family default
  gewählt ist, werden alle Eigenschaften der linken Dialogseite umgeschaltet;
  standardmäßig werden sie nicht umgeschaltet.
- Die Einstellung „Zurücksetzen“ wird nie umgeschaltet.
+ Die Einstellung 
+\begin_inset Quotes gld
+\end_inset
+
+Zurücksetzen
+\begin_inset Quotes grd
+\end_inset
+
+ wird nie umgeschaltet.
  Wenn man z.
 \begin_inset space \thinspace{}
 \end_inset
 
-B: „Strichstärke“ auf „Zurücksetzen“ setzt, 
+B: 
+\begin_inset Quotes gld
+\end_inset
+
+Strichstärke
+\begin_inset Quotes grd
+\end_inset
+
+ auf 
+\begin_inset Quotes gld
+\end_inset
+
+Zurücksetzen
+\begin_inset Quotes grd
+\end_inset
+
+ setzt, 
 \family sans
 Alle
 \begin_inset space ~
@@ -15192,7 +15620,15 @@ Alle
 umschalten
 \family default
  wählt und dies auf fett gesetzten Text anwendet, wird auf die Voreinstellung
- „Mittel“ zurückgesetzt, egal wie oft man den Stil anwendet.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Mittel
+\begin_inset Quotes grd
+\end_inset
+
+ zurückgesetzt, egal wie oft man den Stil anwendet.
 \end_layout
 
 \begin_layout Standard
@@ -15320,7 +15756,7 @@ Dateiformate ! ASCII
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15328,7 +15764,7 @@ Dieses Dateiformat hat die Endung
 .txt
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -15411,7 +15847,7 @@ Dateiformate ! \SpecialChar LaTeX
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15419,7 +15855,7 @@ Dieses Dateiformat hat die Endung
 .tex
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  und enthält alle Befehle, die von \SpecialChar LaTeX
@@ -15474,14 +15910,29 @@ Dateiformate ! DVI
 \end_layout
 
 \begin_layout Standard
-Dieses Dateiformat hat die Endung „
+Dieses Dateiformat hat die Endung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 .dvi
 \family default
-“.
- Diese bedeutet „device-independent“ (geräteunabhängig) da dieses Format
- genau das ist: Man kann es auf allen Computern ohne irgend welche Konvertierung
-en einsetzen.
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Diese bedeutet 
+\begin_inset Quotes gld
+\end_inset
+
+device-independent
+\begin_inset Quotes grd
+\end_inset
+
+ (geräteunabhängig) da dieses Format genau das ist: Man kann es auf allen
+ Computern ohne irgend welche Konvertierungen einsetzen.
  DVIs eignen sich für schnelle Voransicht für andere Ausgabeformate wie
  PostScript.
 \end_layout
@@ -15572,8 +16023,16 @@ Adobe
  als Druckersprache entwickelt.
  Das Format enthält daher Befehle, die Drucker verwenden um die Datei zu
  drucken.
- PostScript kann als „Programmiersprache“ angesehen werden; man kann damit
- Berechnungen durchführen und Diagramme und Bilder zeichnen.
+ PostScript kann als 
+\begin_inset Quotes gld
+\end_inset
+
+Programmiersprache
+\begin_inset Quotes grd
+\end_inset
+
+ angesehen werden; man kann damit Berechnungen durchführen und Diagramme
+ und Bilder zeichnen.
 \begin_inset Foot
 status collapsed
 
@@ -15604,8 +16063,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-PostScript kann Bilder nur im Format „Encapsulated PostScript“ (EPS, Dateiendung
- 
+PostScript kann Bilder nur im Format 
+\begin_inset Quotes gld
+\end_inset
+
+Encapsulated PostScript
+\begin_inset Quotes grd
+\end_inset
+
+ (EPS, Dateiendung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15613,7 +16079,11 @@ PostScript kann Bilder nur im Format „Encapsulated PostScript“ (EPS, Dateien
 \family typewriter
 .eps
 \family default
-“) enthalten.
+
+\begin_inset Quotes grd
+\end_inset
+
+) enthalten.
  Da \SpecialChar LyX
  es erlaubt jedes bekannte Bildformat in Dokumente einzufügen, muss
  es diese im Hintergrund in EPS konvertieren.
@@ -15691,19 +16161,42 @@ Dieses Dateiformat hat die Endung
 \end_inset
 
 .
- Das „Portable Document Format“ (PDF) wurde von 
+ Das 
+\begin_inset Quotes gld
+\end_inset
+
+Portable Document Format
+\begin_inset Quotes grd
+\end_inset
+
+ (PDF) wurde von 
 \family typewriter
 Adobe
 \family default
  von PostScript abgeleitet.
  Es ist komprimierter und verwendet weniger Befehle als PostScript.
- Wie der Name „portable“ (übertragbar) impliziert, kann es auf jedem Computersys
-tem dargestellt werden und der Ausdruck wird exakt gleich aussehen.
+ Wie der Name 
+\begin_inset Quotes gld
+\end_inset
+
+portable
+\begin_inset Quotes grd
+\end_inset
+
+ (übertragbar) impliziert, kann es auf jedem Computersystem dargestellt
+ werden und der Ausdruck wird exakt gleich aussehen.
 \end_layout
 
 \begin_layout Standard
-PDF kann Bilder in seinem eigenen PDF-Format sowie in den Formaten „Joint
- Photographic Experts Group“ (JPG, Dateiendung 
+PDF kann Bilder in seinem eigenen PDF-Format sowie in den Formaten 
+\begin_inset Quotes gld
+\end_inset
+
+Joint Photographic Experts Group
+\begin_inset Quotes grd
+\end_inset
+
+ (JPG, Dateiendung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15727,7 +16220,15 @@ PDF kann Bilder in seinem eigenen PDF-Format sowie in den Formaten „Joint
 \begin_inset Quotes grd
 \end_inset
 
-) und „Portable Network Graphics“ (PNG, Dateiendung 
+) und 
+\begin_inset Quotes gld
+\end_inset
+
+Portable Network Graphics
+\begin_inset Quotes grd
+\end_inset
+
+ (PNG, Dateiendung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16123,7 +16624,7 @@ Andere Formate aktualisieren
 
 \begin_layout Standard
 Bei der Vorschau eines Dokuments wird die Ausgabedatei nur in \SpecialChar LyX
-’ temporärem
+' temporärem
  Verzeichnis erzeugt.
  Für eine permanente Ausgabe muss das Dokument exportiert werden.
 \end_layout
@@ -41147,7 +41648,8 @@ Größe
 \family default
  der Auf\SpecialChar ligaturebreak
 listungszeichen angeben.
- Die Auflistung-Umgebung ist in Abschnitt
+ Die Auf\SpecialChar ligaturebreak
+listung-Umgebung ist in Abschnitt
 \begin_inset space ~
 \end_inset
 
