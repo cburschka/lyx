@@ -160,26 +160,53 @@ fi
 ])
 
 
-dnl Usage: LYX_CXX_CXX11: set lyx_use_cxx11 to yes if the compiler implements
-dnl the C++11 standard.
-AC_DEFUN([LYX_CXX_CXX11],
-[AC_CACHE_CHECK([whether the compiler implements C++11],
-               [lyx_cv_cxx_cxx11],
- [save_CPPFLAGS=$CPPFLAGS
-  CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
-  save_CXXFLAGS=$CXXFLAGS
-  CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
-  AC_LANG_PUSH(C++)
-  AC_TRY_COMPILE([], [
-#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
-	    this is a c++11 compiler
-#endif
-  ],
-  [lyx_cv_cxx_cxx11=no], [lyx_cv_cxx_cxx11=yes ; lyx_flags="$lyx_flags c++11"])
- AC_LANG_POP(C++)
- CXXFLAGS=$save_CXXFLAGS
- CPPFLAGS=$save_CPPFLAGS])
- lyx_use_cxx11=$lyx_cv_cxx_cxx11
+dnl Usage: LYX_CXX_CXX11_FLAGS: add to AM_CXXFLAGS the best flag that
+selects C++11 mode; gives an error when C++11 mode is not found.
+AC_DEFUN([LYX_CXX_CXX11_FLAGS],
+[AC_CACHE_CHECK([for at least C++11 mode], [lyx_cv_cxx11_flags],
+ [lyx_cv_cxx11_flags=none
+  for flag in -std=c++14 -std=c++11 "" -std=c++0x -std=gnu++14 -std=gnu++11 -std=gnu++0x ; do
+    save_CPPFLAGS=$CPPFLAGS
+    CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+    save_CXXFLAGS=$CXXFLAGS
+    CXXFLAGS="$flag $AM_CXXFLAGS $CXXFLAGS"
+    AC_LANG_PUSH(C++)
+    dnl sample openmp source code to test
+    AC_TRY_COMPILE([
+       template <typename T>
+       struct check
+       {
+	   static_assert(sizeof(int) <= sizeof(T), "not big enough");
+       };
+
+       typedef check<check<bool>> right_angle_brackets;
+
+       class TestDeleted
+       {
+       public:
+	   TestDeleted() = delete;
+       };
+
+
+       int a;
+       decltype(a) b;
+
+       typedef check<int> check_type;
+       check_type c;
+       check_type&& cr = static_cast<check_type&&>(c);
+
+       auto d = a;],
+    [return 0;],
+    [lyx_cv_cxx11_flags=$flag; break])
+   AC_LANG_POP(C++)
+   CXXFLAGS=$save_CXXFLAGS
+   CPPFLAGS=$save_CPPFLAGS
+  done])
+  if test $lyx_cv_cxx11_flags = none ; then
+    AC_ERROR([Cannot find suitable C++11 mode for compiler $CXX])
+  fi
+  lyx_cxx11_flags=$lyx_cv_cxx11_flags
+  AM_CXXFLAGS="$lyx_cxx11_flags $AM_CXXFLAGS"
 ])
 
 
@@ -369,35 +396,24 @@ if test x$GXX = xyes; then
         ;;
     esac
   fi
+fi
+
+LYX_CXX_CXX11_FLAGS
+
+# Some additional flags may be needed
+if test x$GXX = xyes; then
     case $gxx_version in
-      4.6*)
-        dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
-        dnl The source code relies on that.
-        cxx11_flags="-std=gnu++0x";;
-      4.7*|4.8*|4.9*|5.*)
-        cxx11_flags="-std=gnu++11";;
       clang-3.0*|clang-3.1*|clang-3.2*|clang-3.3*)
-        dnl presumably all clang versions support c++11.
-	dnl boost contains pragmas that are annoying on older clang versions
-        cxx11_flags="-std=c++11 -Wno-unknown-pragmas";;
+        dnl boost contains pragmas that are annoying on older clang versions
+        AM_CPPFLAGS="-Wno-unknown-pragmas $AM_CPPFLAGS";;
       clang*)
         dnl the more recent versions support the deprecated-register warning,
         dnl which  is very annoying with Qt4.x right now.
-        cxx11_flags="-std=c++11"
         AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
-      *) # gcc 6 and newer use C++14 as default
-	 ;;
     esac
-    # cxx11_flags is useful when running preprocessor alone
-    # (see detection of regex).
-    AM_CXXFLAGS="$cxx11_flags $AM_CXXFLAGS"
 fi
 
-LYX_CXX_CXX11
-if test $lyx_use_cxx11 = no; then
-  AC_ERROR([A C++11 compatible compiler is required])
-fi
-LYX_CXX_USE_REGEX([$cxx11_flags])
+LYX_CXX_USE_REGEX([$lyx_cxx11_flags])
 ])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
