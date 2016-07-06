@@ -195,8 +195,7 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
        check_type c;
        check_type&& cr = static_cast<check_type&&>(c);
 
-       auto d = a;],
-    [return 0;],
+       auto d = a;], [],
     [lyx_cv_cxx11_flags=$flag; break])
    AC_LANG_POP(C++)
    CXXFLAGS=$save_CXXFLAGS
@@ -205,43 +204,44 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
   if test $lyx_cv_cxx11_flags = none ; then
     AC_ERROR([Cannot find suitable C++11 mode for compiler $CXX])
   fi
-  lyx_cxx11_flags=$lyx_cv_cxx11_flags
-  AM_CXXFLAGS="$lyx_cxx11_flags $AM_CXXFLAGS"
+  AM_CXXFLAGS="$lyx_cv_cxx11_flags $AM_CXXFLAGS"
 ])
 
 
-dnl Usage: LYX_CXX_USE_REGEX(cxx11_flags)
+dnl Usage: LYX_CXX_USE_REGEX
 dnl decide whether we want to use std::regex and set the
-dnl LYX_USE_STD_REGEX accordingly.
-dnl the extra cxx11 flags have to be passed to the preprocessor. They are
-dnl not plainly added to AM_CPPFLAGS because then the objc compiler (mac)
-dnl would fail.
+dnl LYX_USE_STD_REGEX macro and conditional accordingly.
 AC_DEFUN([LYX_CXX_USE_REGEX],
 [AC_ARG_ENABLE(std-regex,
   AC_HELP_STRING([--enable-std-regex],[use std::regex instead of boost::regex (default is autodetected)]),
   [lyx_std_regex=$enableval],
-  [save_CPPFLAGS=$CPPFLAGS
-   # we want to pass -std=c++11 to clang/cpp if necessary
-   CPPFLAGS="$AM_CPPFLAGS $1 $CPPFLAGS"
+  [AC_MSG_CHECKING([for correct regex implementation])
+   save_CPPFLAGS=$CPPFLAGS
+   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
    save_CXXFLAGS=$CXXFLAGS
    CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
    AC_LANG_PUSH(C++)
-   AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
+   # The following code snippet has been taken taken from example in
+   #   http://stackoverflow.com/questions/8561850/compile-stdregex-iterator-with-gcc
+   AC_TRY_LINK(
+     [
+	#include <regex>
+	#include <iostream>
+
+	#include <string.h>
+
+	typedef std::regex_iterator<const char *> Myiter;
+     ], [
+	const char *pat = "axayaz";
+	Myiter::regex_type rx("a");
+	Myiter next(pat, pat + strlen(pat), rx);
+	Myiter end;
+   ], [lyx_std_regex=yes], [lyx_std_regex=no])
    AC_LANG_POP(C++)
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
-   if test x$GXX = xyes && test $lyx_std_regex = yes ; then
-     AC_MSG_CHECKING([for correct regex implementation])
-     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
-       dnl <regex> in gcc is unusable in versions less than 4.9.0
-       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-       case $gxx_version in
-         4.6*|4.7*|4.8*) lyx_std_regex=no ;;
-         *) ;;
-       esac
-     fi
-     AC_MSG_RESULT([$lyx_std_regex])
-   fi])
+   AC_MSG_RESULT([$lyx_std_regex])
+ ])
 
  if test $lyx_std_regex = yes ; then
   lyx_flags="$lyx_flags std-regex"
@@ -413,7 +413,7 @@ if test x$GXX = xyes; then
     esac
 fi
 
-LYX_CXX_USE_REGEX([$lyx_cxx11_flags])
+LYX_CXX_USE_REGEX
 ])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
