@@ -3079,12 +3079,8 @@ void BufferView::draw(frontend::Painter & pain)
 	switch (d->update_strategy_) {
 
 	case NoScreenUpdate:
-		// If no screen painting is actually needed, only some the different
-		// coordinates of insets and paragraphs needs to be updated.
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
-		pi.full_repaint = true;
-		pi.pain.setDrawingEnabled(false);
-		tm.draw(pi, 0, y);
+		// nothing to do
 		break;
 
 	case SingleParUpdate:
