@@ -72,16 +72,13 @@ AC_DEFUN([QT_FIND_TOOL],
 		qt_ext=qt5
 	fi
 
-	lyx_qt_path=$PATH
 	if test -n "$qt_cv_bin" ; then
-		lyx_qt_path=$qt_cv_bin:$PATH
-	fi
-
-	if qtchooser -l 2>/dev/null | grep -q ^$qt_ext\$ >/dev/null ; then
-		AC_CHECK_PROG($1, $2, [$2 -qt=$qt_ext],, [$lyx_qt_path])
+		AC_PATH_PROGS($1, [$2], [], $qt_cv_bin)
+	elif qtchooser -l 2>/dev/null | grep -q ^$qt_ext\$ >/dev/null ; then
+		AC_CHECK_PROG($1, $2, [$2 -qt=$qt_ext],, [$PATH])
 	fi
 	if test -z "$$1"; then
-		AC_CHECK_PROGS($1, [$2-$qt_ext $2],[],$lyx_qt_path)
+		AC_CHECK_PROGS($1, [$2-$qt_ext $2],[],$PATH)
 	fi
 	if test -z "$$1"; then
 		AC_MSG_ERROR([cannot find $2 binary.])
