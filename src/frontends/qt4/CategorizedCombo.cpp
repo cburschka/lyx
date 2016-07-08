@@ -348,7 +348,6 @@ CategorizedCombo::CategorizedCombo(QWidget * parent)
 	: QComboBox(parent), d(new Private(this))
 {
 	setSizeAdjustPolicy(QComboBox::AdjustToContents);
-	setFocusPolicy(Qt::ClickFocus);
 	setMinimumWidth(sizeHint().width());
 	setMaxVisibleItems(100);
 
