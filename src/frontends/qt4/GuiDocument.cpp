@@ -750,7 +750,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	masterChildModule->childrenTW->resizeColumnToContents(2);
 
 
-	// output
+	// Format
 	outputModule = new UiWidget<Ui::OutputUi>;
 
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
@@ -775,6 +775,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	outputModule->synccustomCB->setValidator(new NoNewLineValidator(
 		outputModule->synccustomCB));
+
+	connect(outputModule->saveTransientPropertiesCB, SIGNAL(clicked()),
+	        this, SLOT(change_adaptor()));
 
 	// fonts
 	fontModule = new FontModule;
@@ -1424,7 +1427,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(listingsModule, N_("Listings[[inset]]"));
 	docPS->addPanel(bulletsModule, N_("Bullets"));
 	docPS->addPanel(branchesModule, N_("Branches"));
-	docPS->addPanel(outputModule, N_("Output"));
+	docPS->addPanel(outputModule, N_("Format"));
 	docPS->addPanel(preambleModule, N_("LaTeX Preamble"));
 	docPS->setCurrentPanel("Document Class");
 // FIXME: hack to work around resizing bug in Qt >= 4.2
@@ -2839,7 +2842,7 @@ void GuiDocument::applyView()
 	bp_.listings_params =
 		InsetListingsParams(fromqstr(listingsModule->listingsED->toPlainText())).params();
 
-	// output
+	// Format
 	bp_.default_output_format = fromqstr(outputModule->defaultFormatCO->itemData(
 		outputModule->defaultFormatCO->currentIndex()).toString());
 
@@ -2860,6 +2863,9 @@ void GuiDocument::applyView()
 	bp_.html_css_as_file = outputModule->cssCB->isChecked();
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 	bp_.display_pixel_ratio = theGuiApp()->pixelRatio();
+
+	bp_.save_transient_properties =
+		outputModule->saveTransientPropertiesCB->isChecked();
 
 	// fonts
 	bp_.fonts_roman[nontexfonts] =
@@ -3396,7 +3402,7 @@ void GuiDocument::paramsToDialog()
 		fontModule->fontencLE->setText(toqstr(bp_.fontenc));
 	}
 
-	// Output
+	// Format
 	// This must be set _after_ fonts since updateDefaultFormat()
 	// checks osFontsCB settings.
 	// update combobox with formats
@@ -3415,6 +3421,9 @@ void GuiDocument::paramsToDialog()
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
 	outputModule->strictCB->setChecked(bp_.html_be_strict);
 	outputModule->cssCB->setChecked(bp_.html_css_as_file);
+
+	outputModule->saveTransientPropertiesCB
+		->setChecked(bp_.save_transient_properties);
 
 	// paper
 	bool const extern_geometry =
