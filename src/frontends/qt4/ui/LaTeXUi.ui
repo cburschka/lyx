@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>LaTeXUi</class>
  <widget class="QWidget" name="LaTeXUi">
@@ -211,7 +212,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>CategorizedCombo</class>
+   <class>lyx::frontend::CategorizedCombo</class>
    <extends>QComboBox</extends>
    <header>CategorizedCombo.h</header>
   </customwidget>
@@ -247,6 +248,22 @@
     <hint type="destinationlabel">
      <x>237</x>
      <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>groupBox</sender>
+   <signal>clicked()</signal>
+   <receiver>classCO</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>47</y>
     </hint>
    </hints>
   </connection>
