@@ -72,7 +72,7 @@ What's new
 - Resolve problem on Windows with importing files from directories with
   accented characters on FAT drives (bug 10218).
 
-- InPreamble styles should be written to the premable as many times as the
+- InPreamble styles should be written to the preamble as many times as the
   user requests them, even if it results in duplicate commands.
 
 - Make sure we output all XHTML table cells, even the empty ones (bug 10153).
@@ -86,6 +86,8 @@ What's new
 - Load math packages automatically with JSS template (bug 9242).
 
 - Calling a Computer Algebra System from LyX works again (windows only bug 10262).
+
+- Fix command clash between beamer and covington (from the Linguistics module).
 
 
 * LYX2LYX
