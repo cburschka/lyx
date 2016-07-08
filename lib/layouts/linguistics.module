@@ -31,6 +31,8 @@ Style Numbered_Example_(multiline)
 	EndFont
 	Requires	      covington
 	Preamble
+	% Backwards compatibility with covington < 1.1
+	% This code can be removed eventually
 	\@ifundefined{covexample}{%
 	    \newenvironment{covexample}{\begin{example}}{\end{example}}%
 	}
@@ -50,6 +52,8 @@ Style Numbered_Examples_(consecutive)
 		Tooltip       "Customize the numeration"
 	EndArgument
 	Preamble
+	% Backwards compatibility with covington < 1.1
+	% This code can be removed eventually
 	\@ifundefined{covexamples}{%
 	    \newenvironment{covexamples}{\begin{examples}}{\end{examples}}%
 	}
