@@ -117,16 +117,10 @@ struct CompTag
 struct ParTag : public StartTag
 {
 	///
-	explicit ParTag(std::string const & tag, std::string const & attr,
-	       std::string const & parid)
-	  : StartTag(tag, attr), parid_(parid)
-	{}
+	explicit ParTag(std::string const & tag, std::string attr,
+	       std::string const & parid);
 	///
 	~ParTag() {}
-	///
-	docstring writeTag() const;
-	/// the "magic par label" for this paragraph
-	std::string parid_;
 };
 
 

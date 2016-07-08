@@ -135,16 +135,13 @@ docstring EndTag::writeEndTag() const
 }
 
 
-docstring ParTag::writeTag() const
+ParTag::ParTag(std::string const & tag, std::string attr,
+       std::string const & parid)
+  : StartTag(tag)
 {
-	docstring output = StartTag::writeTag();
-
-	if (parid_.empty())
-		return output;
-
-	string const pattr = "id='" + parid_ + "'";
-	output += html::CompTag("a", pattr).writeTag();
-	return output;
+	if (!parid.empty())
+		attr += " id='" + parid + "'";
+	attr_ = attr;
 }
 
 
