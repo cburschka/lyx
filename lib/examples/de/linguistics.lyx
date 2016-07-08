@@ -218,10 +218,6 @@ key "covington"
 \end_inset
 
 : Dieses Paket wird benötigt, um nummerierte Beispiele und Glossen zu erzeugen.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -255,10 +251,6 @@ convington
  selbst nicht unterstützt).
  Das Paket ist darüber hinaus aber auch generell nützlich, um das Aussehen
  von Listen (Aufzählungen, Auflistungen, Beschreibungen) anzupassen.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -292,10 +284,6 @@ Bedeutung
 .
  Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -325,10 +313,6 @@ key "float"
 : Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis.
  Es sollte Bestandteil jeder \SpecialChar LaTeX
 -Distribution sein.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -356,10 +340,6 @@ key "forest"
 \end_inset
 
 : Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -744,10 +724,6 @@ Einstellungen\SpecialChar ldots
 -Vorspann
 \family default
  kopieren:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Quote
@@ -930,7 +906,25 @@ Glossen (und Beispiele) in Beamer-Präsentationen
 \end_layout
 
 \begin_layout Standard
-Leider arbeiten das Paket 
+Wenn Sie das Linguistik-Modul in einer Beamer-Präsentation verwenden wollen,
+ beachten Sie bitte folgendes:
+\end_layout
+
+\begin_layout Itemize
+Für Glossen müssen Sie in Beamer immer einen 
+\begin_inset Quotes gld
+\end_inset
+
+fragilen
+\begin_inset Quotes grd
+\end_inset
+
+ Rahmen verwenden.
+ 
+\end_layout
+
+\begin_layout Itemize
+Ältere Versionen des Pakets 
 \emph on
 covington
 \emph default
@@ -938,7 +932,7 @@ covington
 \emph on
 Beamer
 \emph default
--Klasse von Haus aus nicht gut zusammen, da beide die Befehle 
+-Klasse arbeiten von Haus aus nicht gut zusammen, da beide die Befehle 
 \family typewriter
 
 \backslash
@@ -950,8 +944,9 @@ example
 \backslash
 examples
 \family default
- zu definieren versuchen, was eine \SpecialChar LaTeX
--Fehlermeldung erzeugt.
+ zu definieren versuchen, was in diesen älteren Versionen eine \SpecialChar LaTeX
+-Fehlermeldung
+ erzeugt, sobald sie Glossen oder Beispiele einfügen.
  Sie können das Problem beheben, indem Sie in 
 \family sans
 Dokument\SpecialChar menuseparator
@@ -961,6 +956,7 @@ Lokales Format
  folgenden Code kopieren:
 \end_layout
 
+\begin_deeper
 \begin_layout Quote
 \begin_inset listings
 lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
@@ -1062,18 +1058,14 @@ OK
 \end_layout
 
 \begin_layout Standard
-Beachten Sie auch, dass Sie für Glossen in Beamer einen 
-\begin_inset Quotes gld
-\end_inset
-
-fragilen
-\begin_inset Quotes grd
-\end_inset
-
- Rahmen verwenden müssen.
- 
+Ab 
+\emph on
+covington
+\emph default
+ 1.1 besteht dieses Problem nicht mehr.
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Tableaux für Optimalitätstheorie
 \end_layout
@@ -1982,7 +1974,7 @@ Es fehlt ein Symbol: der (2005 in das IPA aufgenommene) labiodentale Flap.
 \emph on
 Tipa-
 \emph default
-Pakete noch nicht; daher kann es auch nicht von LyX unterstützt werden.
+Paket noch nicht; daher kann es auch nicht von LyX unterstützt werden.
 \end_layout
 
 \end_inset
