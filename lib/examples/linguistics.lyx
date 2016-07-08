@@ -933,16 +933,48 @@ Using Glosses (and Examples) in a Beamer Presentation
 \end_layout
 
 \begin_layout Standard
-The 
-\emph on
-covington
-\emph default
- package and the 
+If you use the linguistics module with 
 \emph on
 beamer
 \emph default
- class do not work together out of the box, since they both try to define
- the commands 
+ presentations, there are some caveats:
+\end_layout
+
+\begin_layout Itemize
+If you want to use glosses in 
+\emph on
+beamer
+\emph default
+, you need to put it in a 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+ frame.
+ 
+\end_layout
+
+\begin_layout Itemize
+Older versions of the 
+\emph on
+covington
+\emph default
+ package (before version 1.1) do not play with the 
+\emph on
+beamer
+\emph default
+ class out of the box, since both 
+\emph on
+beamer
+\emph default
+ and 
+\emph on
+covington
+\emph default
+ try to define the commands 
 \family typewriter
 
 \backslash
@@ -954,9 +986,14 @@ example
 \backslash
 examples
 \family default
-, which results in a \SpecialChar LaTeX
+.
+ In these older versions of 
+\emph on
+covington
+\emph default
+, this results in a \SpecialChar LaTeX
  error.
- You can work around the problem by inserting the following code in 
+ You can work around this problem by inserting the following code in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -965,6 +1002,7 @@ Local Layout
 :
 \end_layout
 
+\begin_deeper
 \begin_layout Quote
 \begin_inset listings
 lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
@@ -1060,27 +1098,48 @@ OK
 \end_inset
 
 .
- This effectively defuncts beamer's example(s) environment in favour of
- covington's.
+ This effectively defuncts 
+\emph on
+beamer's
+\emph default
+ example(s) environment in favor of 
+\emph on
+covington's
+\emph default
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., you can use the 
+\family sans
+Numbered Example
+\family default
+ styles, but not 
+\emph on
+beamer's
+\emph default
+ 
+\family sans
+Example
+\family default
+ and 
+\family sans
+Examples
+\family default
+).
 \end_layout
 
 \begin_layout Standard
-Furthermore, if you want to use glosses in 
+As of v.
+ 1.1 of 
 \emph on
-beamer
+covington
 \emph default
-, you need to put it in a 
-\begin_inset Quotes eld
-\end_inset
-
-fragile
-\begin_inset Quotes erd
-\end_inset
-
- frame.
+, this problem is solved.
  
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Optimality Theory Tableaux
 \end_layout

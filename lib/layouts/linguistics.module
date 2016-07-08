@@ -12,7 +12,7 @@ Format 60
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
 	LatexType             Environment
-	LatexName             example
+	LatexName             covexample
 	NextNoIndent          1
 	Margin                Dynamic
 	LabelSep              xx
@@ -30,6 +30,11 @@ Style Numbered_Example_(multiline)
 		Color         Blue
 	EndFont
 	Requires	      covington
+	Preamble
+	\@ifundefined{covexample}{%
+	    \newenvironment{covexample}{\begin{example}}{\end{example}}%
+	}
+	EndPreamble
 	Category              Linguistics
 End
 
@@ -38,12 +43,17 @@ End
 Style Numbered_Examples_(consecutive)
 	CopyStyle	      Numbered_Example_(multiline)
 	LatexType             Item_Environment
-	LatexName             examples
+	LatexName             covexamples
 	LabelString           "Examples:"
 	Argument item:1
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"
 	EndArgument
+	Preamble
+	\@ifundefined{covexamples}{%
+	    \newenvironment{covexamples}{\begin{examples}}{\end{examples}}%
+	}
+	EndPreamble
 End
 
 
