@@ -229,6 +229,13 @@ static docstring const papersizepdf_def = from_ascii(
 	"\\pdfpageheight\\paperheight\n"
 	"\\pdfpagewidth\\paperwidth\n");
 
+static docstring const papersizepdflua_def = from_ascii(
+	"% Backwards compatibility for LuaTeX < 0.90\n"
+	"\\@ifundefined{pageheight}{\\let\\pageheight\\pdfpageheight}\n"
+	"\\@ifundefined{pagewidth}{\\let\\pagewidth\\pdfpagewidth}\n"
+	"\\pageheight\\paperheight\n"
+	"\\pagewidth\\paperwidth\n");
+
 static docstring const cedilla_def = from_ascii(
 	"\\newcommand{\\docedilla}[2]{\\underaccent{#1\\mathchar'30}{#2}}\n"
 	"\\newcommand{\\cedilla}[1]{\\mathpalette\\docedilla{#1}}\n");
@@ -1173,8 +1180,11 @@ docstring const LaTeXFeatures::getMacros() const
 	}
 
 	if (mustProvide("papersize")) {
-		if (runparams_.flavor == OutputParams::LATEX)
+		if (runparams_.flavor == OutputParams::LATEX
+		    || runparams_.flavor == OutputParams::DVILUATEX)
 			macros << papersizedvi_def << '\n';
+		else if  (runparams_.flavor == OutputParams::LUATEX)
+			macros << papersizepdflua_def << '\n';
 		else
 			macros << papersizepdf_def << '\n';
 	}
