@@ -1467,8 +1467,10 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0064.svgz \
 	images/ipa/unicode-insert_0x0065.svgz \
 	images/ipa/unicode-insert_0x0066.svgz \
+	images/ipa/unicode-insert_0x0067.svgz \
 	images/ipa/unicode-insert_0x0068.svgz \
 	images/ipa/unicode-insert_0x0069.svgz \
+	images/ipa/unicode-insert_0x006a.svgz \
 	images/ipa/unicode-insert_0x006b.svgz \
 	images/ipa/unicode-insert_0x006c.svgz \
 	images/ipa/unicode-insert_0x006d.svgz \
@@ -1507,8 +1509,10 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0257.svgz \
 	images/ipa/unicode-insert_0x0258.svgz \
 	images/ipa/unicode-insert_0x0259.svgz \
+	images/ipa/unicode-insert_0x025a.svgz \
 	images/ipa/unicode-insert_0x025b.svgz \
 	images/ipa/unicode-insert_0x025c.svgz \
+	images/ipa/unicode-insert_0x025d.svgz \
 	images/ipa/unicode-insert_0x025e.svgz \
 	images/ipa/unicode-insert_0x025f.svgz \
 	images/ipa/unicode-insert_0x0260.svgz \
@@ -1520,7 +1524,9 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0266.svgz \
 	images/ipa/unicode-insert_0x0267.svgz \
 	images/ipa/unicode-insert_0x0268.svgz \
+	images/ipa/unicode-insert_0x0269.svgz \
 	images/ipa/unicode-insert_0x026a.svgz \
+	images/ipa/unicode-insert_0x026b.svgz \
 	images/ipa/unicode-insert_0x026c.svgz \
 	images/ipa/unicode-insert_0x026d.svgz \
 	images/ipa/unicode-insert_0x026e.svgz \
@@ -1532,17 +1538,23 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0274.svgz \
 	images/ipa/unicode-insert_0x0275.svgz \
 	images/ipa/unicode-insert_0x0276.svgz \
+	images/ipa/unicode-insert_0x0277.svgz \
 	images/ipa/unicode-insert_0x0278.svgz \
 	images/ipa/unicode-insert_0x0279.svgz \
 	images/ipa/unicode-insert_0x027a.svgz \
 	images/ipa/unicode-insert_0x027b.svgz \
+	images/ipa/unicode-insert_0x027c.svgz \
 	images/ipa/unicode-insert_0x027d.svgz \
 	images/ipa/unicode-insert_0x027e.svgz \
+	images/ipa/unicode-insert_0x027f.svgz \
 	images/ipa/unicode-insert_0x0280.svgz \
 	images/ipa/unicode-insert_0x0281.svgz \
 	images/ipa/unicode-insert_0x0282.svgz \
 	images/ipa/unicode-insert_0x0283.svgz \
 	images/ipa/unicode-insert_0x0284.svgz \
+	images/ipa/unicode-insert_0x0285.svgz \
+	images/ipa/unicode-insert_0x0286.svgz \
+	images/ipa/unicode-insert_0x0287.svgz \
 	images/ipa/unicode-insert_0x0288.svgz \
 	images/ipa/unicode-insert_0x0289.svgz \
 	images/ipa/unicode-insert_0x028a.svgz \
@@ -1554,16 +1566,33 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0290.svgz \
 	images/ipa/unicode-insert_0x0291.svgz \
 	images/ipa/unicode-insert_0x0292.svgz \
+	images/ipa/unicode-insert_0x0293.svgz \
 	images/ipa/unicode-insert_0x0294.svgz \
 	images/ipa/unicode-insert_0x0295.svgz \
+	images/ipa/unicode-insert_0x0296.svgz \
+	images/ipa/unicode-insert_0x0297.svgz \
 	images/ipa/unicode-insert_0x0298.svgz \
 	images/ipa/unicode-insert_0x0299.svgz \
+	images/ipa/unicode-insert_0x029a.svgz \
 	images/ipa/unicode-insert_0x029b.svgz \
 	images/ipa/unicode-insert_0x029c.svgz \
 	images/ipa/unicode-insert_0x029d.svgz \
+	images/ipa/unicode-insert_0x029e.svgz \
 	images/ipa/unicode-insert_0x029f.svgz \
+	images/ipa/unicode-insert_0x02a0.svgz \
 	images/ipa/unicode-insert_0x02a1.svgz \
 	images/ipa/unicode-insert_0x02a2.svgz \
+	images/ipa/unicode-insert_0x02a3.svgz \
+	images/ipa/unicode-insert_0x02a4.svgz \
+	images/ipa/unicode-insert_0x02a5.svgz \
+	images/ipa/unicode-insert_0x02a6.svgz \
+	images/ipa/unicode-insert_0x02a7.svgz \
+	images/ipa/unicode-insert_0x02a8.svgz \
+	images/ipa/unicode-insert_0x02a9.svgz \
+	images/ipa/unicode-insert_0x02aA.svgz \
+	images/ipa/unicode-insert_0x02ab.svgz \
+	images/ipa/unicode-insert_0x02ac.svgz \
+	images/ipa/unicode-insert_0x02ad.svgz \
 	images/ipa/unicode-insert_0x02b0.svgz \
 	images/ipa/unicode-insert_0x02b2.svgz \
 	images/ipa/unicode-insert_0x02b7.svgz \
