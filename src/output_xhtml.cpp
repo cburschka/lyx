@@ -291,21 +291,27 @@ XHTMLStream::XHTMLStream(odocstream & os)
 
 
 #ifdef XHTML_DEBUG
-void XHTMLStream::dumpTagStack(string const & msg) const
+void XHTMLStream::dumpTagStack(string const & msg)
 {
-	writeError(msg + ": Tag Stack");
-	TagStack::const_reverse_iterator it = tag_stack_.rbegin();
-	TagStack::const_reverse_iterator en = tag_stack_.rend();
+	*this << html::CR();
+	writeError(msg);
+	*this << html::CR();
+	writeError("Tag Stack");
+	TagDeque::const_reverse_iterator it = tag_stack_.rbegin();
+	TagDeque::const_reverse_iterator en = tag_stack_.rend();
 	for (; it != en; ++it) {
-		writeError(it->tag_);
+		writeError(it->get()->tag_);
 	}
+	writeError("End Tag Stack");
+	*this << html::CR();
 	writeError("Pending Tags");
 	it = pending_tags_.rbegin();
 	en = pending_tags_.rend();
 	for (; it != en; ++it) {
-		writeError(it->tag_);
+		writeError(it->get()->tag_);
 	}
-	writeError("End Tag Stack");
+	writeError("End Pending Tags");
+	*this << html::CR();
 }
 #endif
 
