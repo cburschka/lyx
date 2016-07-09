@@ -554,7 +554,7 @@ def checkLuatex():
     if LUATEX != '':
         addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
     if DVILUATEX != '':
-        addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
+        addToRC(r'\converter dviluatex   dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
 
 
 def checkModule(module):
