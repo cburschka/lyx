@@ -27,6 +27,7 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <atomic>
 #include <map>
 #include <QThreadStorage>
 
@@ -105,10 +106,8 @@ docstring sgml::escapeString(docstring const & raw)
 
 docstring const sgml::uniqueID(docstring const & label)
 {
-	// FIXME THREAD
-	// It seems unlikely there could be a problem here,
-	// but we could have concurrent access, in principle.
-	static unsigned int seed = 1000;
+	// thread-safe
+	static atomic_uint seed(1000);
 	return label + convert<docstring>(++seed);
 }
 

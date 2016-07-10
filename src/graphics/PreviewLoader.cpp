@@ -41,6 +41,7 @@
 #include "support/bind.h"
 #include "support/TempFile.h"
 
+#include <atomic>
 #include <fstream>
 #include <iomanip>
 #include <memory>
@@ -728,8 +729,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	if (wait) {
 		ForkedCall call(buffer_.filePath(), buffer_.layoutPos());
 		int ret = call.startScript(ForkedProcess::Wait, command);
-		// FIXME THREAD
-		static int fake = (2^20) + 1;
+		static atomic_int fake((2^20) + 1);
 		int pid = fake++;
 		inprogress.pid = pid;
 		inprogress.command = command;
