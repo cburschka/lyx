@@ -2760,7 +2760,8 @@ void doFontSwitch(vector<html::FontTag> & tagsToOpen,
 docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 				    XHTMLStream & xs,
 				    OutputParams const & runparams,
-				    Font const & outerfont,
+				    Font const & outerfont, 
+				    bool start_paragraph, bool close_paragraph,
 				    pos_type initial) const
 {
 	docstring retval;
@@ -2782,7 +2783,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 	Layout const & style = *d->layout_;
 
-	xs.startParagraph(allowEmpty());
+	if (start_paragraph)
+		xs.startParagraph(allowEmpty());
 
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
@@ -3068,7 +3070,9 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			if (!runparams.for_toc || inset->isInToc()) {
 				OutputParams np = runparams;
 				np.local_font = &font;
-				if (!inset->getLayout().htmlisblock())
+				// If the paragraph has size 1, then we are in the "special
+				// case" where we do not output the containing paragraph info
+				if (!inset->getLayout().htmlisblock() && size() != 1)
 					np.html_in_par = true;
 				retval += inset->xhtml(xs, np);
 			}
@@ -3079,8 +3083,13 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		font_old = font.fontInfo();
 	}
 
+	// FIXME XHTML
+	// I'm worried about what happens if a branch, say, is itself
+	// wrapped in some font stuff. I think that will not work.
 	xs.closeFontTags();
-	xs.endParagraph();
+	if (close_paragraph)
+		xs.endParagraph();
+
 	return retval;
 }
 

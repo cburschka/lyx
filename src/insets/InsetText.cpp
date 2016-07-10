@@ -588,7 +588,9 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	runparams.par_end = text().paragraphs().size();
 	
 	if (undefined()) {
+		xs.startParagraph(false);
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
+		xs.endParagraph();
 		return docstring();
 	}
 
@@ -622,7 +624,9 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	if (il.isPassThru())
 		runparams.pass_thru = true;
 
+	xs.startParagraph(false);
 	xhtmlParagraphs(text_, buffer(), xs, runparams);
+	xs.endParagraph();
 
 	if (opts & WriteInnerTag)
 		xs << html::EndTag(il.htmlinnertag());

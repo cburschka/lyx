@@ -832,25 +832,26 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		if (!lay.counter.empty())
 			buf.masterBuffer()->params().
 			    documentClass().counters().step(lay.counter, OutputUpdate);
+
 		// FIXME We should see if there's a label to be output and
 		// do something with it.
 		if (par != pbegin)
 			xs << html::CR();
 
-		// If we are already in a paragraph, and this is the first one, then we
-		// do not want to open the paragraph tag.
-		// we also do not want to open it if the current layout does not permit
-		// multiple paragraphs.
-		bool const opened = runparams.html_make_pars &&
-			(par != pbegin || !runparams.html_in_par);
-		bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
+		// We want to open the paragraph tag if:
+		//   (i) the current layout permits multiple paragraphs
+		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
+		//       we are, but this is not the first paragraph
+		// But we do not want to open the paragraph tag if this paragraph contains
+		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such 
+		// as a branch). That is the "special case" we handle first.
+		Inset const * specinset = par->size() == 1 ? par->getInset(0) : 0;
+		bool const special_case =  
+			specinset && !specinset->getLayout().htmlisblock();
 
-		if (opened)
-			openParTag(xs, lay, par->params(),
-			           make_parid ? par->magicLabel() : "");
-
-		docstring const deferred =
-			par->simpleLyXHTMLOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)));
+		bool const opened = runparams.html_make_pars
+			&& (!runparams.html_in_par || par != pbegin)
+			&& !special_case;
 
 		// We want to issue the closing tag if either:
 		//   (i)  We opened it, and either html_in_par is false,
@@ -862,12 +863,24 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		bool const needclose =
 			(opened && (!runparams.html_in_par || nextpar != pend))
 			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
+
+		if (opened) {
+			// We do not issue the paragraph id if we are doing 
+			// this for the TOC (or some similar purpose)
+			openParTag(xs, lay, par->params(),
+			           runparams.for_toc ? "" : par->magicLabel());
+		}
+
+		docstring const deferred = par->simpleLyXHTMLOnePar(buf, xs, 
+			runparams, text.outerFont(distance(begin, par)),
+			opened, needclose);
+
+		if (!deferred.empty()) {
+			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
+		}
 		if (needclose) {
 			closeTag(xs, lay);
 			xs << html::CR();
-		}
-		if (!deferred.empty()) {
-			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
 		}
 	}
 	return pend;
@@ -995,7 +1008,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					openItemTag(xs, style, par->params());
 
 				par->simpleLyXHTMLOnePar(buf, xs, runparams,
-					text.outerFont(distance(begin, par)), sep);
+					text.outerFont(distance(begin, par)), true, true, sep);
 				++par;
 
 				// We may not want to close the tag yet, in particular:

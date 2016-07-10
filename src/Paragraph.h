@@ -222,6 +222,8 @@ public:
 				 XHTMLStream & xs,
 				 OutputParams const & runparams,
 				 Font const & outerfont,
+				 bool start_paragraph = true,
+				 bool close_paragraph = true,
 				 pos_type initial = 0) const;
 
 	///
