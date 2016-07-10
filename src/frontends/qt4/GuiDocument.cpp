@@ -1748,7 +1748,7 @@ void GuiDocument::deleteBoxBackgroundColor()
 
 void GuiDocument::languageChanged(int i)
 {
-	// some languages only work with polyglossia/XeTeX
+	// some languages only work with polyglossia
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
 	if (lang->babel().empty() && !lang->polyglossia().empty()) {

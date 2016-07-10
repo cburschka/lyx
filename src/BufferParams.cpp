@@ -2131,6 +2131,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// xunicode needs to be loaded at least after amsmath, amssymb,
 	// esint and the other packages that provide special glyphs
+	// The package only supports XeTeX currently.
 	if (features.runparams().flavor == OutputParams::XETEX
 	    && useNonTeXFonts)
 		lyxpreamble += "\\usepackage{xunicode}\n";
@@ -2352,7 +2353,10 @@ string BufferParams::bufferFormat() const
 	string format = documentClass().outputFormat();
 	if (format == "latex") {
 		if (useNonTeXFonts)
-			return "xetex"; // actually "xetex or luatex"
+			// FIXME: In this context, this means "xetex or luatex"
+			// with fontspec. We cannot differentiate further here.
+			// But maybe use a more appropriate string.
+			return "xetex";
 		if (encoding().package() == Encoding::japanese)
 			return "platex";
 	}
