@@ -204,12 +204,13 @@ public:
 	/// \return false if there are open font tags we could not close.
 	/// because they are "blocked" by open non-font tags on the stack.
 	bool closeFontTags();
-	/// call at start of paragraph. sets a mark so we know what tags
-	/// to close at the end.
-	void startParagraph(bool keep_empty);
-	/// call at end of paragraph to clear that mark. note that this
-	/// will also close any tags still open.
-	void endParagraph();
+	/// sets a mark so we know what tags to close at the end.
+	/// normally called at the start of a paragraph.
+	void startDivision(bool keep_empty);
+	/// clears the mark set by previous method.
+	/// there should not be any other tags open before it on the stack,
+	/// but if there are, we will close them.
+	void endDivision();
 	///
 	XHTMLStream & operator<<(docstring const &);
 	///

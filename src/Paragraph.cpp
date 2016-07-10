@@ -2776,7 +2776,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	Layout const & style = *d->layout_;
 
 	if (start_paragraph)
-		xs.startParagraph(allowEmpty());
+		xs.startDivision(allowEmpty());
 
 	FontInfo font_old =
 		style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
@@ -3080,7 +3080,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	// wrapped in some font stuff. I think that will not work.
 	xs.closeFontTags();
 	if (close_paragraph)
-		xs.endParagraph();
+		xs.endDivision();
 
 	return retval;
 }

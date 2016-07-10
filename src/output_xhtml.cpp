@@ -368,7 +368,7 @@ bool XHTMLStream::closeFontTags()
 }
 
 
-void XHTMLStream::startParagraph(bool keep_empty)
+void XHTMLStream::startDivision(bool keep_empty)
 {
 	pending_tags_.push_back(makeTagPtr(html::StartTag(parsep_tag)));
 	if (keep_empty)
@@ -376,7 +376,7 @@ void XHTMLStream::startParagraph(bool keep_empty)
 }
 
 
-void XHTMLStream::endParagraph()
+void XHTMLStream::endDivision()
 {
 	if (isTagPending(parsep_tag)) {
 		// this case is normal. it just means we didn't have content,
@@ -394,7 +394,7 @@ void XHTMLStream::endParagraph()
 	}
 
 	if (!isTagOpen(parsep_tag)) {
-		writeError("No paragraph separation tag found in endParagraph().");
+		writeError("No division separation tag found in endDivision().");
 		return;
 	}
 
@@ -852,7 +852,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		bool const special_case =  
 			specinset && !specinset->getLayout().htmlisblock();
 
-		bool const opened = runparams.html_make_pars
+		bool const open_par = runparams.html_make_pars
 			&& (!runparams.html_in_par || par != pbegin)
 			&& !special_case;
 
@@ -863,11 +863,11 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		//        but we are in the first par, and there is a next par.
 		ParagraphList::const_iterator nextpar = par;
 		++nextpar;
-		bool const needclose =
-			(opened && (!runparams.html_in_par || nextpar != pend))
-			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
+		bool const close_par =
+			(open_par && (!runparams.html_in_par || nextpar != pend))
+			|| (!open_par && runparams.html_in_par && par == pbegin && nextpar != pend);
 
-		if (opened) {
+		if (open_par) {
 			// We do not issue the paragraph id if we are doing 
 			// this for the TOC (or some similar purpose)
 			openParTag(xs, lay, par->params(),
@@ -876,12 +876,12 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 
 		docstring const deferred = par->simpleLyXHTMLOnePar(buf, xs, 
 			runparams, text.outerFont(distance(begin, par)),
-			opened, needclose);
+			open_par, close_par);
 
 		if (!deferred.empty()) {
 			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
 		}
-		if (needclose) {
+		if (close_par) {
 			closeTag(xs, lay);
 			xs << html::CR();
 		}
