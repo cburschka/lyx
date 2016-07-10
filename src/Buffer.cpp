@@ -4311,10 +4311,10 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	ExportStatus const status = doExport(format, true, false, result_file);
 	FileName const previewFile(result_file);
 
-	LATTEST (isClone());
-	d->cloned_buffer_->d->preview_file_ = previewFile;
-	d->cloned_buffer_->d->preview_format_ = format;
-	d->cloned_buffer_->d->preview_error_ = (status != ExportSuccess);
+	Impl * theimpl = isClone() ? d->cloned_buffer_->d : d;
+	theimpl->preview_file_ = previewFile;
+	theimpl->preview_format_ = format;
+	theimpl->preview_error_ = (status != ExportSuccess);
 
 	if (status != ExportSuccess)
 		return status;
@@ -4323,14 +4323,11 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 			return PreviewError;
 		else
 			return PreviewSuccess;
-	}
-	else {
-		// Successful export but no output file?
-		// Probably a bug in error detection.
-		LATTEST (status != ExportSuccess);
-
-		return status;
-	}
+	} 
+	// Successful export but no output file?
+	// Probably a bug in error detection.
+	LATTEST(status != ExportSuccess);
+	return status;
 }
 
 
