@@ -4318,12 +4318,11 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 
 	if (status != ExportSuccess)
 		return status;
-	if (previewFile.exists()) {
-		if (!formats.view(*this, previewFile, format))
-			return PreviewError;
-		else
-			return PreviewSuccess;
-	} 
+
+	if (previewFile.exists())
+		return formats.view(*this, previewFile, format) ?
+			PreviewSuccess : PreviewError;
+
 	// Successful export but no output file?
 	// Probably a bug in error detection.
 	LATTEST(status != ExportSuccess);
