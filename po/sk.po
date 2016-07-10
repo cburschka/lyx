@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-06-21 21:55+0200\n"
-"PO-Revision-Date: 2016-06-21 20:34+0000\n"
+"POT-Creation-Date: 2016-07-03 18:28+0200\n"
+"PO-Revision-Date: 2016-07-03 16:37+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3300,11 +3300,10 @@ msgstr "minút"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
 "If this is checked, new documents will be saved in a compressed binary-"
-"format by default.\n"
-"Existing documents will still be saved in their current state (compressed or "
-"uncompressed)."
+"format by default. Existing documents will still be saved in their current "
+"state (compressed or uncompressed)."
 msgstr ""
-"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
+"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované. "
 "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
 "či nekomprimované)."
 
@@ -3315,12 +3314,11 @@ msgstr "Štandardne &ukladať nové dokumenty komprimované"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
 "If this is checked, the document directory path will be saved in the "
-"document.\n"
-"This allows moving the document elsewhere and still finding the included "
-"files."
+"document. This allows moving the document elsewhere and still finding the "
+"included files."
 msgstr ""
-"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu.\n"
-"Dovolí sa tým premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
+"premiestniť dokument niekde inde a predsa nájsť vložené súbory."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
@@ -3332,16 +3330,15 @@ msgstr "Okná && Pracovná Plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Open documents in &tabs"
-msgstr "&Otvoriť dokumenty v paneloch"
+msgstr "&Otvoriť dokumenty v kartách"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid ""
-"Whether to open documents in an already running instance of LyX.\n"
-"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+"Whether to open documents in an already running instance of LyX. (Set the "
+"LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
-"Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
-"(Nastaviť cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
-"vlastnosť)"
+"Či otvoriť dokumenty v už spustenej inštancii LyX-a. (Nastaviť cestu k "
+"dátovodu pre LyXServer a reštartovať LyX umožní túto vlastnosť)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Use s&ingle instance"
@@ -3803,16 +3800,12 @@ msgstr "Začiatočné voľby a indikátory pre CheckTeX"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:285
 msgid ""
 "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
-"files.\n"
-"Change the default only if the TeX engine was not correctly detected at "
-"configure time.\n"
-"Warning: Your changes here will not be saved."
+"files. Change the default only if the TeX engine was not correctly detected "
+"at configure time. Warning: Your changes here will not be saved."
 msgstr ""
 "Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
-"Cygwin.\n"
-"Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX počas "
-"konfigurácie.\n"
-"Varovanie: Tieto vaše zmeny nebudú uložené."
+"Cygwin. Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX "
+"počas konfigurácie. Varovanie: Tieto vaše zmeny nebudú uložené."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:291
 msgid "&Use Windows-style paths in LaTeX files"
@@ -3905,6 +3898,14 @@ msgstr "Všetky súbory"
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51
+msgid ""
+"Specify those directories which should be prepended to the PATH environment "
+"variable. Use the OS native format."
+msgstr ""
+"Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
+"adresármi. Použiť formát vhodný pre daný operačný systém."
+
 #: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3130
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
@@ -3918,6 +3919,16 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 msgid "TEX&INPUTS prefix:"
 msgstr "Prefix pre TEX&INPUTS:"
+
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68
+msgid ""
+"Specify those directories which should be prepended to the TEXINPUTS "
+"environment variable. A '.' represents the current document directory. Use "
+"the OS native format."
+msgstr ""
+"Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
+"ostatnými adresármi. '.' reprezentuje aktuálny adresár dokumentu. Použiť "
+"formát vhodný pre daný operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3229
 msgid ""
@@ -4113,11 +4124,11 @@ msgstr "Sada &ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
 msgid ""
-"The icon set to use. Warning: normal size of icons may be\n"
-"wrong until you save the preferences and restart LyX."
+"The icon set to use. Warning: normal size of icons may be wrong until you "
+"save the preferences and restart LyX."
 msgstr ""
-"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
-"nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
+"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť nevhodný až kým "
+"sa neuložia nastavenia a reštartuje LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
@@ -18816,7 +18827,7 @@ msgstr "Aktualizovať lokálny adresár z repozitáru"
 
 #: lib/ui/stdtoolbars.inc:296
 msgid "Math Panels"
-msgstr "Matematické panely"
+msgstr "Matematické Panely"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Math spacings"
@@ -23155,14 +23166,6 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Prostý text (šachy)"
 
-#: lib/configure.py:629
-msgid "Plain text (image)"
-msgstr "Prostý text (obrázok)"
-
-#: lib/configure.py:630
-msgid "Plain text (Xfig output)"
-msgstr "Prostý text (Xfig výstup)"
-
 #: lib/configure.py:632 src/frontends/qt4/GuiDocument.cpp:1277
 #: src/frontends/qt4/GuiErrorList.cpp:44
 msgid "DocBook"
@@ -24727,7 +24730,7 @@ msgstr "rožky mat. vzorca"
 
 #: src/Color.cpp:264
 msgid "math line"
-msgstr "matematický panel"
+msgstr "matematický riadok"
 
 #: src/Color.cpp:266
 msgid "math macro hovered background"
@@ -27930,6 +27933,10 @@ msgid ""
 msgstr ""
 "Hlavný dokument '%1$s'\n"
 "nie je možné nahrať."
+
+#: src/frontends/qt4/GuiDocument.cpp:3931
+msgid "(Module name: %1)"
+msgstr "(Názov modulu: %1)"
 
 #: src/frontends/qt4/GuiErrorList.cpp:46 src/frontends/qt4/GuiLog.cpp:255
 msgid "Literate"
@@ -31460,6 +31467,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Plain text (image)"
+#~ msgstr "Prostý text (obrázok)"
+
+#~ msgid "Plain text (Xfig output)"
+#~ msgstr "Prostý text (Xfig výstup)"
+
 #~ msgid ""
 #~ "Today's date.\n"
 #~ "Read 'info date' for more information.\n"
@@ -34830,3 +34843,50 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Branch (master only): "
 #~ msgstr "Vetva (len hlavný dokument): "
+
+#~ msgid ""
+#~ "If this is checked, new documents will be saved in a compressed binary-"
+#~ "format by default.\n"
+#~ "Existing documents will still be saved in their current state (compressed or "
+#~ "uncompressed)."
+#~ msgstr ""
+#~ "Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
+#~ "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
+#~ "či nekomprimované)."
+
+#~ msgid ""
+#~ "If this is checked, the document directory path will be saved in the "
+#~ "document.\n"
+#~ "This allows moving the document elsewhere and still finding the included "
+#~ "files."
+#~ msgstr ""
+#~ "Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu.\n"
+#~ "Dovolí sa tým premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+
+#~ msgid ""
+#~ "Whether to open documents in an already running instance of LyX.\n"
+#~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
+#~ msgstr ""
+#~ "Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
+#~ "(Nastaviť cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
+#~ "vlastnosť)"
+
+#~ msgid ""
+#~ "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
+#~ "files.\n"
+#~ "Change the default only if the TeX engine was not correctly detected at "
+#~ "configure time.\n"
+#~ "Warning: Your changes here will not be saved."
+#~ msgstr ""
+#~ "Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
+#~ "Cygwin.\n"
+#~ "Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX počas "
+#~ "konfigurácie.\n"
+#~ "Varovanie: Tieto vaše zmeny nebudú uložené."
+
+#~ msgid ""
+#~ "The icon set to use. Warning: normal size of icons may be\n"
+#~ "wrong until you save the preferences and restart LyX."
+#~ msgstr ""
+#~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
+#~ "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
