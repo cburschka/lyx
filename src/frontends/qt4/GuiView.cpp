@@ -3445,7 +3445,6 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 #else
 	Buffer::ExportStatus status;
 	if (syncFunc) {
-		// TODO check here if it breaks exporting with Qt < 4.4
 		status = (used_buffer->*syncFunc)(format, true);
 	} else if (previewFunc) {
 		status = (used_buffer->*previewFunc)(format); 
