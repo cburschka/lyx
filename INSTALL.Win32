@@ -13,13 +13,25 @@ Compiling with Microsoft Visual C++
 1	Install MSVC 2015
 
 	If you don't have Visual C++ 2015 installed, get the free Community edition
-	from https://www.visualstudio.com/
+	from https://www.visualstudio.com/. Make sure that the following two
+	features are selected for installation:
+	- "Visual C++" from "Programming languages" (only the first option
+	  "Common Tools for Visual C++ 2015" is needed)
+	- "Tools and Windows SDKs" from "Windows 8.1 and Windows Phone 8.0/8.1 Tools"
+	The latter one requires Windows 8.1. If you use an older windows version
+	please install the "Windows Software Development Kit (SDK) für Windows 8.1"
+	from https://developer.microsoft.com/en-us/windows/downloads/windows-8-1-sdk.
+	This version requires at least Windows 7.
+	If the build complains later that it cannot find the file
+	C:\Microsoft.Cpp.Default.props then the SDK is not installed properly.
 
 2	Install Qt
 
 	Download the latest Qt for Open Source C++ development on Windows (VS2015)
 	from https://qt.io/download-open-source/
 	Qt 5.6.x is recommended, but 5.7.x or later versions should work as well.
+	If you want to build LyX as 32bit application, you need Qt x86.
+	If you want to build LyX as 64bit application, you need Qt x64.
 	Make sure that the bin subfolder of the Qt installation (e.g.
 	C:\Qt\Qt5.6.1\5.6\msvc2015\bin) is listed in the PATH environment variable.
 
@@ -40,23 +52,24 @@ Compiling with Microsoft Visual C++
  	  Alternatively, you can create a .bat file that first contains the line
 	  call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 	  and then calls the CMake GUI and use this .bat file to start CMake.
+	  This is for building a 32bit LyX, if you want to build a 64bit LyX replace
+	  'x86' by 'amd64'.
 	  The MSVC 2015 command prompt or vcvarsall.bat set some environment
 	  variables that are needed for CMake to find the compiler.
 
 	- Set the source code path to C:\LyX\lyx-23
 	  Set the build path to C:\LyX\lyx-23-build
-	  Click Configure and set the generator to Visual Studio 14.
+	  Click Configure and set the generator to "Visual Studio 14 2015" to
+	  build a 32bit LyX or "Visual Studio 14 2015 Win64" to build a 64bit LyX.
+
+	- Set LYX_USE_QT to QT5 and click Configure.
 
 	- Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
 	  Pre-compiled dependencies will automatically be downloaded.
+	  If you installed the dependencies manually, set GNUWIN32_DIR instead
+	  to the folder that contains the dependencies and click Configure.
 
-	- Enable the LYX_INSTALL option, set CMAKE_INSTALL_PREFIX to
-	  C:\LyX\lyx-23-install and click Configure.
-
-	- Check the Advanced checkbox.
-	  Set GETTEXT_MSGFMT_EXECUTABLE to
-	  C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\gettext-tools\msgfmt.exe,
-	  and do the same for the other gettext tools.
+	- Enable the LYX_INSTALL option and click Configure.
 
 	- Click Generate.
 
@@ -65,40 +78,41 @@ Compiling with Microsoft Visual C++
 	A Microsoft Visual C++ solution should have been generated at
 	C:\LyX\lyx-23-build\lyx.sln
 	Compile the INSTALL project to get a LyX installation in
-	C:\LyX\lyx-23-install
+	C:\LyX\lyx-23-build\LYX_INSTALLED.
 
 7	Copy dependencies
 
 	Copy
 	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\bin
 	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\imagemagick
-	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\python
+	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\Python
 	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\ghostscript
 	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\Resources
-	to C:\LyX\lyx-23-install
+	to C:\LyX\lyx-23-build\LYX_INSTALLED
 
-	And copy from the Qt bin directory
-	(e.g. C:\Qt\bin)
-	QtCore5.dll
-	QtGui5.dll
-	QtCore5d.dll (if compiling Debug version)
-	QtGui5d.dll (if compiling Debug version)
-	to C:\LyX\lyx-23-install\bin
+	And copy from the Qt bin directory (see item 2 "Install Qt" above)
+	Qt5Core.dll
+	Qt5Gui.dll
+	Qt5Svg.dll
+	Qt5Cored.dll (if compiling Debug version)
+	Qt5Guid.dll (if compiling Debug version)
+	Qt5Svgd.dll (if compiling Debug version)
+	to C:\LyX\lyx-23-build\LYX_INSTALLED\bin
 
 8	Define path prefix
 
-	Add the following line to C:\LyX\lyx-23-install\Resources\lyxrc.dist,
+	Add the following line to C:\LyX\lyx-23-build\LYX_INSTALLED\Resources\lyxrc.dist,
 	so LyX will find the bundled tools such as Python, ImageMagick
 	and Ghostscript:
 
-	\path_prefix "$LyXDir\bin;$LyXDir\python;$LyXDir\imagemagick;$LyXDir\ghostscript"
+	\path_prefix "$LyXDir\bin;$LyXDir\Python;$LyXDir\imagemagick;$LyXDir\ghostscript"
 
 	You may also add the location of your LaTeX installation if it's not on the
 	system PATH, and the location of JabRef.
 
 9	Start LyX
 
-	C:\LyX\lyx-23-install\bin\lyx.exe
+	C:\LyX\lyx-23-build\LYX_INSTALLED\bin\lyx.exe
 
 
 Creating the Installer
