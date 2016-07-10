@@ -73,6 +73,9 @@
 // Defined if QT=QT5 uses X11
 #cmakedefine QPA_XCB 1
 
+// Define if you have the Qt5X11Extras module
+#cmakedefine HAVE_QT5_X11_EXTRAS 1
+
 ${Include_used_spellchecker}
 
 #cmakedefine AIKSAURUSLIB_FOUND 1
