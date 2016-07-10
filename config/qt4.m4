@@ -172,18 +172,30 @@ AC_DEFUN([QT_DO_IT_ALL],
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QTLIB_VERSION has been found.])
 	])
 
+	save_CPPFLAGS=$CPPFLAGS
+	AC_MSG_CHECKING([whether Qt uses the X Window system])
+	CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	if test x$USE_QT5 = xyes ; then
-	  save_CPPFLAGS=$CPPFLAGS
-	  AC_MSG_CHECKING([whether Qt uses the X Window system])
-	  CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
 	  AC_EGREP_CPP(xcb,
 	    [#include <qconfig.h>
 	    QT_QPA_DEFAULT_PLATFORM_NAME],
 	    [AC_MSG_RESULT(yes)
 	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
 	    [AC_MSG_RESULT(no)])
-	  CPPFLAGS=$save_CPPFLAGS
+	else
+	  AC_PREPROC_IFELSE([AC_LANG_SOURCE([
+	    [#include <qglobal.h>],
+	    [#ifndef Q_WS_X11],
+	    [#error Fail],
+	    [#endif]])],
+	    qt_use_x11=yes,
+	    qt_use_x11=no)
+	  AC_MSG_RESULT($qt_use_x11)
+	  if test "x$qt_use_x11" = "xyes"; then
+	    QT_LIB="$QT_LIB -lX11"
+	  fi
 	fi
+	CPPFLAGS=$save_CPPFLAGS
 
 	QT_FIND_TOOL([QT_MOC], [moc])
 	QT_FIND_TOOL([QT_UIC], [uic])
@@ -209,6 +221,13 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	if test "x$USE_QT5" != "xno" ; then
 		qt_corelibs="Qt5Core"
 		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
+		lyx_use_x11extras=false
+		PKG_CHECK_EXISTS(Qt5X11Extras, [lyx_use_x11extras=true], [])
+		if $lyx_use_x11extras; then
+			qt_guilibs="$qt_guilibs Qt5X11Extras xcb"
+			AC_DEFINE(HAVE_QT5_X11_EXTRAS, 1,
+				[Define if you have the Qt5X11Extras module])
+		fi
 		lyx_use_winextras=false
 		PKG_CHECK_EXISTS(Qt5WinExtras, [lyx_use_winextras=true], [])
 		if $lyx_use_winextras; then

@@ -121,10 +121,14 @@
 #ifdef Q_WS_X11
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
+#include <QX11Info>
 #undef CursorShape
 #undef None
 #elif defined(QPA_XCB)
 #include <xcb/xcb.h>
+#ifdef HAVE_QT5_X11_EXTRAS
+#include <QtX11Extras/QX11Info>
+#endif
 #endif
 
 #if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
@@ -3130,8 +3134,26 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 		BufferView * bv = current_view_->currentBufferView();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
-			if (!sel.empty())
+			if (!sel.empty()) {
 				d->selection_.put(sel);
+				// Refresh the selection request timestamp.
+				// We have to do this by ourselves as Qt seems
+				// not doing that, maybe because of our
+				// "persistent selection" implementation
+				// (see comments in GuiSelection.cpp).
+				XSelectionEvent nev;
+				nev.type = SelectionNotify;
+				nev.display = xev->xselectionrequest.display;
+				nev.requestor = xev->xselectionrequest.requestor;
+				nev.selection = xev->xselectionrequest.selection;
+				nev.target = xev->xselectionrequest.target;
+				nev.property = 0L; // None
+				nev.time = CurrentTime;
+				XSendEvent(QX11Info::display(),
+					nev.requestor, False, 0,
+					reinterpret_cast<XEvent *>(&nev));
+				return true;
+			}
 		}
 		break;
 	}
@@ -3166,8 +3188,29 @@ bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 		BufferView * bv = current_view_->currentBufferView();
 		if (bv) {
 			docstring const sel = bv->requestSelection();
-			if (!sel.empty())
+			if (!sel.empty()) {
 				d->selection_.put(sel);
+#ifdef HAVE_QT5_X11_EXTRAS
+				// Refresh the selection request timestamp.
+				// We have to do this by ourselves as Qt seems
+				// not doing that, maybe because of our
+				// "persistent selection" implementation
+				// (see comments in GuiSelection.cpp).
+				xcb_selection_notify_event_t nev;
+				nev.response_type = XCB_SELECTION_NOTIFY;
+				nev.requestor = srev->requestor;
+				nev.selection = srev->selection;
+				nev.target = srev->target;
+				nev.property = XCB_NONE;
+				nev.time = XCB_CURRENT_TIME;
+				xcb_connection_t * con = QX11Info::connection();
+				xcb_send_event(con, 0, srev->requestor,
+					XCB_EVENT_MASK_NO_EVENT,
+					reinterpret_cast<char const *>(&nev));
+				xcb_flush(con);
+#endif
+				return true;
+			}
 		}
 		break;
 	}

@@ -12,6 +12,7 @@ include(CheckFunctionExists)
 include(CheckLibraryExists)
 include(CheckTypeSize)
 include(CheckCXXSourceCompiles)
+include(CheckCXXSourceRuns)
 include(MacroBoolTo01)
 include(TestBigEndian)
 
@@ -197,7 +198,30 @@ else()
   endif()
 endif()
 
+set(QPA_XCB)
+set(HAVE_QT5_X11_EXTRAS)
 if(LYX_USE_QT MATCHES "QT5")
+
+  set(CMAKE_REQUIRED_INCLUDES ${Qt5Core_INCLUDE_DIRS})
+  set(CMAKE_REQUIRED_FLAGS)
+  #message(STATUS "Qt5Core_INCLUDE_DIRS = ${Qt5Core_INCLUDE_DIRS}")
+  check_cxx_source_runs(
+    "
+    #include <QtCore/qconfig.h>
+    #include <string>
+    using namespace std;
+    string a(QT_QPA_DEFAULT_PLATFORM_NAME);
+    int main(int argc, char **argv)
+    {
+      if (a.compare(\"xcb\") == 0)
+	return(0);
+      else
+	return 1;
+    }
+    "
+    QT_USES_X11)
+  set(QPA_XCB ${QT_USES_X11})
+
   if (Qt5X11Extras_FOUND)
     get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
     get_target_property(_x11extra_link_libraries Qt5::X11Extras IMPORTED_LOCATION_${_x11extra_prop})
@@ -215,7 +239,8 @@ if(LYX_USE_QT MATCHES "QT5")
               bool isX11 = QX11Info::isPlatformX11();
             }
             "
-    QT_USES_X11)
+      QT_HAS_X11_EXTRAS)
+    set(HAVE_QT5_X11_EXTRAS ${QT_HAS_X11_EXTRAS})
   endif()
   if (Qt5WinExtras_FOUND)
     get_target_property(_winextra_prop Qt5::WinExtras IMPORTED_CONFIGURATIONS)

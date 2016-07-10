@@ -925,11 +925,6 @@ endif()
 include(${LYX_CMAKE_DIR}/ConfigureChecks.cmake)
 configure_file(${LYX_CMAKE_DIR}/configCompiler.h.cmake ${TOP_BINARY_DIR}/configCompiler.h)
 
-set(QPA_XCB)
-if(Qt5X11Extras_FOUND AND QT_USES_X11)
-  # QPA_XCB is only valid if QT5+X11
-  set(QPA_XCB 1)
-endif()
 configure_file(${LYX_CMAKE_DIR}/config.h.cmake ${TOP_BINARY_DIR}/config.h)
 
 if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
