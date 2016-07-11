@@ -2350,17 +2350,7 @@ bool BufferParams::addLayoutModule(string const & modName)
 
 string BufferParams::bufferFormat() const
 {
-	string format = documentClass().outputFormat();
-	if (format == "latex") {
-		if (useNonTeXFonts)
-			// FIXME: In this context, this means "xetex or luatex"
-			// with fontspec. We cannot differentiate further here.
-			// But maybe use a more appropriate string.
-			return "xetex";
-		if (encoding().package() == Encoding::japanese)
-			return "platex";
-	}
-	return format;
+	return documentClass().outputFormat();
 }
 
 
@@ -2421,16 +2411,9 @@ vector<string> BufferParams::backends() const
 			v.push_back("pdflatex");
 			v.push_back("latex");
 		}
+		v.push_back("xetex");
 		v.push_back("luatex");
 		v.push_back("dviluatex");
-		v.push_back("xetex");
-	} else if (buffmt == "xetex") {
-		v.push_back("xetex");
-		// FIXME: need to test all languages (bug 8205)
-		if (!language || !language->isPolyglossiaExclusive()) {
-			v.push_back("luatex");
-			v.push_back("dviluatex");
-		}
 	} else
 		v.push_back(buffmt);
 

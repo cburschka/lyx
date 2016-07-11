@@ -127,7 +127,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	// glyphs, except if full-unicode aware backends
 	// such as XeTeX or LuaTeX are used, and with pLaTeX.
 	bool const multibyte_possible =	runparams.isFullUnicode()
-	    || (buffer().params().bufferFormat() == "platex"
+	    || (buffer().params().encoding().package() == Encoding::japanese
 	        && runparams.encoding->package() == Encoding::japanese);
 
 	if (!multibyte_possible && !runparams.encoding->hasFixedWidth()) {

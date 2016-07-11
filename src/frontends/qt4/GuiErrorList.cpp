@@ -44,11 +44,9 @@ string const guiErrorType(string const & s)
 		return N_("DocBook");
 	else if (s == "literate")
 		return N_("Literate");
-	else if (s == "platex")
-		return N_("pLaTeX");
-	else if (s == "latex" || "xetex")
-		// All LaTeX variants except pLaTeX
-		// (LaTeX, PDFLaTeX, XeTeX, LuaTeX)
+	else if (s == "latex")
+		// This covers all LaTeX variants
+		// (LaTeX, PDFLaTeX, XeTeX, LuaTeX, pLaTeX)
 		return N_("LaTeX");
 	return s;
 }
