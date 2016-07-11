@@ -119,7 +119,6 @@ cmake/LyX_license.txt \
 cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
 cmake/TODO.txt \
-cmake/build4-2010.bat \
 cmake/build5-2015.bat \
 cmake/build5-2015-installer.bat \
 cmake/config.cpp.cmake \
