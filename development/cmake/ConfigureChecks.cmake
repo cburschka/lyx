@@ -241,6 +241,7 @@ if(LYX_USE_QT MATCHES "QT5")
             "
       QT_HAS_X11_EXTRAS)
     set(HAVE_QT5_X11_EXTRAS ${QT_HAS_X11_EXTRAS})
+    set(LYX_QT5_X11_EXTRAS_LIBRARY ${_x11extra_link_libraries})
   endif()
   if (Qt5WinExtras_FOUND)
     get_target_property(_winextra_prop Qt5::WinExtras IMPORTED_CONFIGURATIONS)

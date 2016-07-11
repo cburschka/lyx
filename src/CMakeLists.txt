@@ -134,6 +134,14 @@ target_link_libraries(${_lyx}
 
 qt_use_modules(${_lyx} Core Gui)
 
+if(QT_HAS_X11_EXTRAS)
+  find_library(XCB_LIBRARY NAMES xcb)
+  if (XCB_LIBRARY MATCHES "NOTFOUND")
+    message(FATAL_ERROR "Need xcb library to use with QT5_X11_EXTRAS")
+  endif()
+  target_link_libraries(${_lyx} ${LYX_QT5_X11_EXTRAS_LIBRARY} ${XCB_LIBRARY})
+endif()
+
 lyx_target_link_libraries(${_lyx} HUNSPELL ASPELL ENCHANT Magic)
 
 if(APPLE)
