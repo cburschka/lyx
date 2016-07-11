@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-11 14:17-0400\n"
-"PO-Revision-Date: 2016-06-02 13:35+0000\n"
+"POT-Creation-Date: 2016-07-11 19:19+0200\n"
+"PO-Revision-Date: 2016-07-11 18:43+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1600,7 +1600,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:23
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr "Použiť fonty mimo TeXu(cez &XeTeX/LuaTeX)"
+msgstr "Použiť &fonty mimo TeXu(cez XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:43
 msgid "&Default family:"
@@ -3320,7 +3320,7 @@ msgstr "Okná && Pracovná Plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Open documents in &tabs"
-msgstr "&Otvoriť dokumenty v paneloch"
+msgstr "&Otvoriť dokumenty v kartách"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid ""
@@ -6231,9 +6231,8 @@ msgid "Proof."
 msgstr "Dôkaz."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
-msgstr "Titul (prostý rám)"
+msgstr "Kúzla v Titule a v Preambule"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6245,16 +6244,21 @@ msgid ""
 "related material. (If you put these in a Standard layout, this signals to "
 "LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
+"zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
+"preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' položí svoj obsah "
+"do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
+"tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
+"rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
+"byť predčasné.)"
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Preambula"
+msgstr "V Preambule"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Titul"
+msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -18810,7 +18814,7 @@ msgstr "Aktualizovať lokálny adresár z repozitáru"
 
 #: lib/ui/stdtoolbars.inc:296
 msgid "Math Panels"
-msgstr "Matematické panely"
+msgstr "Matematické Panely"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Math spacings"
@@ -23103,12 +23107,11 @@ msgstr "FEN"
 
 #: lib/configure.py:584
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: lib/configure.py:585
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Komprimované|m"
+msgstr "SVG (komprimované)"
 
 #: lib/configure.py:588
 msgid "BMP"
@@ -23517,9 +23520,9 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
 #: src/Author.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "Zostavené %1$s, %2$s"
+msgstr "%1$s (%2$s)"
 
 #: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2339
 #, c-format
@@ -24738,7 +24741,7 @@ msgstr "rožky mat. vzorca"
 
 #: src/Color.cpp:264
 msgid "math line"
-msgstr "matematický panel"
+msgstr "matematický riadok"
 
 #: src/Color.cpp:266
 msgid "math macro hovered background"
@@ -26186,7 +26189,7 @@ msgstr "[Zmeniť Sledovanie] "
 #: src/Text.cpp:1908
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr ""
+msgstr "Zmenené %2$s od %1$s."
 
 #: src/Text.cpp:1918 src/mathed/InsetMathFont.cpp:213
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -27207,18 +27210,16 @@ msgid "Merge Changes"
 msgstr "Zlúčiť Zmeny"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Zmenil %1$s\n"
+"Zmenené od %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
-#, fuzzy
 msgid "Change made on %1\n"
-msgstr "Zmena zrobená %1$s\n"
+msgstr "Zmeny zrobené %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83
@@ -30748,9 +30749,8 @@ msgid "Reference to Name"
 msgstr "Referencia na Meno"
 
 #: src/insets/InsetRef.cpp:357
-#, fuzzy
 msgid "NameRef: "
-msgstr "MenoRef:"
+msgstr "MenoRef: "
 
 #: src/insets/InsetScript.cpp:343
 msgid "subscript"
@@ -31932,6 +31932,9 @@ msgstr "Neznámy používateľ"
 #~ "Uložením tohto dokumentu na nové miesto sa súbor:\n"
 #~ "  %1$s\n"
 #~ "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
+
+#~ msgid "Built on %1$s[[date]], %2$s[[time]]"
+#~ msgstr "Zostavené %1$s, %2$s"
 
 #~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
 #~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
@@ -34816,3 +34819,16 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
 #~ "kurzor na miesto v dokumente kde sa chyba stala."
+
+#~ msgid ""
+#~ "Change by %1$s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Zmenil %1$s\n"
+#~ "\n"
+
+#~ msgid "Change made at %1$s\n"
+#~ msgstr "Zmena zrobená %1$s\n"
+
+#~ msgid "NameRef:"
+#~ msgstr "MenoRef:"
