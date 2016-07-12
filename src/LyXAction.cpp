@@ -3642,6 +3642,15 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BRANCH_INVERT
+ * \li Action: Toggles inversion status of branch inset.
+ * \li Syntax: branch-invert
+ * \li Origin: rgheck, 12 July 2016
+ * \endvar
+ */
+		{ LFUN_BRANCH_INVERT, "branch-invert", AtPoint, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BRANCH_ACTIVATE
  * \li Action: Activate the branch.
  * \li Syntax: branch-activate <BRANCH>

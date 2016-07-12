@@ -188,6 +188,9 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 	}
+	case LFUN_BRANCH_INVERT:
+		params_.inverted = !params_.inverted;
+		break;
 	case LFUN_BRANCH_ADD:
 		lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, params_.branch));
 		break;
@@ -218,6 +221,10 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BRANCH_ACTIVATE:
 		flag.setEnabled(known_branch && !isBranchSelected(true));
+		break;
+
+	case LFUN_BRANCH_INVERT:
+		flag.setEnabled(true);
 		break;
 
 	case LFUN_BRANCH_ADD:

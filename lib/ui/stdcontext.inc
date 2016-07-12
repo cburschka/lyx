@@ -494,6 +494,7 @@ Menuset
 		OptItem "Deactivate Branch|e" "branch-deactivate"
 		OptItem "Activate Branch in Master|M" "branch-master-activate"
 		OptItem "Deactivate Branch in Master|v" "branch-master-deactivate"
+    OptItem "Toggle Inversion|I" "branch-invert"
 		OptItem "Add Unknown Branch|w" "branch-add"
 	End
 
