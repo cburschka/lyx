@@ -1145,7 +1145,7 @@ string citationStyleToString(const CitationStyle & cs)
 {
 	string cmd = cs.cmd;
 	if (cs.forceUpperCase)
-		cmd[0] = 'C';
+		cmd[0] = uppercase(cmd[0]);
 	if (cs.fullAuthorList)
 		cmd += '*';
 	return cmd;
