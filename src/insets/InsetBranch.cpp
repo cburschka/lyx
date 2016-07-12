@@ -225,6 +225,7 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_BRANCH_INVERT:
 		flag.setEnabled(true);
+		flag.setOnOff(params_.inverted);
 		break;
 
 	case LFUN_BRANCH_ADD:
