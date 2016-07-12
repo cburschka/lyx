@@ -16,6 +16,10 @@ What's new
 
 - Enable the use of LuaTeX for all polyglossia-supported languages.
 
+- New document parameter "Save transient properties" under Document Properties >
+  Format. (Output has been renamed into Format.) Disabling this option is made
+  to play nicer in collaborative settings. (bug 9841)
+
 
 * TEX2LYX IMPROVEMENTS
 
