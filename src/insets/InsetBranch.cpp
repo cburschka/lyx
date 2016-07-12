@@ -189,7 +189,11 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 	case LFUN_BRANCH_INVERT:
+		cur.recordUndoInset(this);
 		params_.inverted = !params_.inverted;
+		// what we really want here is a TOC update, but that means
+		// a full buffer update
+		cur.forceBufferUpdate();
 		break;
 	case LFUN_BRANCH_ADD:
 		lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, params_.branch));
