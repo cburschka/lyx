@@ -33,6 +33,7 @@ GuiBranch::GuiBranch(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
 	connect(branchCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	connect(invertedCB, SIGNAL(clicked()), this, SIGNAL(changed()));
 }
 
 
@@ -55,12 +56,13 @@ void GuiBranch::paramsToDialog(Inset const * inset)
 			id = count;
 	}
 	branchCO->setCurrentIndex(id);
+	invertedCB->setChecked(ib->params().inverted);
 }
 
 
 docstring GuiBranch::dialogToParams() const
 {
-	InsetBranchParams params(qstring_to_ucs4(branchCO->currentText()));
+	InsetBranchParams params(qstring_to_ucs4(branchCO->currentText()), invertedCB->isChecked());
 	return from_utf8(InsetBranch::params2string(params));
 }
 
@@ -68,6 +70,7 @@ docstring GuiBranch::dialogToParams() const
 bool GuiBranch::checkWidgets(bool readonly) const
 {
 	branchCO->setEnabled(!readonly);
+	invertedCB->setEnabled(!readonly);
 	return InsetParamsWidget::checkWidgets();
 }
 

@@ -20,13 +20,17 @@ class InsetBranchParams {
 public:
 	///
 	explicit InsetBranchParams(docstring const & b = docstring())
-		: branch(b) {}
+		: branch(b), inverted(false) {}
+	InsetBranchParams(docstring const & b, bool i)
+		: branch(b), inverted(i) {}
 	///
 	void write(std::ostream & os) const;
 	///
 	void read(Lexer & lex);
 	///
 	docstring branch;
+	///
+	bool inverted;
 };
 
 
@@ -52,6 +56,8 @@ public:
 	docstring branch() const { return params_.branch; }
 	///
 	void rename(docstring const & newname) { params_.branch = newname; }
+	///
+	InsetBranchParams const & params() const { return params_; }
 
 private:
 	///
@@ -85,14 +91,16 @@ private:
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype) const;
 	///
-	InsetBranchParams const & params() const { return params_; }
-	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
 
 	/** \returns true if params_.branch is listed as 'selected' in
 		\c buffer. \p child only checks within child documents.
 	 */
 	bool isBranchSelected(bool const child = false) const;
+	///
+	bool isBranchActive(bool const child = false) const
+		// XOR
+		{ return isBranchSelected(child) != params_.inverted; }
 	/*!
 	 * Is the content of this inset part of the output document?
 	 *

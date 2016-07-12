@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>BranchUi</class>
  <widget class="QWidget" name="BranchUi">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>259</width>
-    <height>38</height>
+    <height>62</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,6 +28,13 @@
     <widget class="QComboBox" name="branchCO">
      <property name="toolTip">
       <string>Select your branch</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="invertedCB">
+     <property name="text">
+      <string>Inverted</string>
      </property>
     </widget>
    </item>

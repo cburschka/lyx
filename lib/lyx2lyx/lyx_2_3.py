@@ -93,6 +93,88 @@ def convert_dateinset(document):
         continue
 
 
+def convert_ibranches(document):
+    ' Add "inverted 0" to branch insets'
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Branch", i)
+        if i == -1:
+            return
+        document.body.insert(i + 1, "inverted 0")
+        i += 1
+
+
+def revert_ibranches(document):
+    ' Convert inverted branches to explicit anti-branches'
+    # Get list of branches
+    ourbranches = {}
+    i = 0
+    while True:
+        i = find_token(document.header, "\\branch", i)
+        if i == -1:
+            break
+        branch = document.header[i][8:].strip()
+        if document.header[i+1].startswith("\\selected "):
+            #document.warning(document.header[i+1])
+            #document.warning(document.header[i+1][10])
+            selected = int(document.header[i+1][10])
+        else:
+            document.warning("Malformed LyX document: No selection indicator for branch " + branch)
+            selected = 1
+            
+        # the value tells us whether the branch is selected
+        ourbranches[document.header[i][8:].strip()] = selected
+        i += 1
+
+    # Figure out what inverted branches, if any, have been used
+    # and convert them to "Anti-OldBranch"
+    ibranches = {}
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Branch", i)
+        if i == -1:
+            break
+        if not document.body[i+1].startswith("inverted "):
+            document.warning("Malformed LyX document: Missing 'inverted' tag!")
+            i += 1
+            continue
+        inverted = document.body[i+1][9]
+        #document.warning(document.body[i+1])
+
+        if inverted == "1":
+            branch = document.body[i][20:].strip()
+            #document.warning(branch)
+            if not branch in ibranches:
+                antibranch = "Anti-" + branch
+                while antibranch in ibranches:
+                    antibranch = "x" + antibranch
+                ibranches[branch] = antibranch
+            else:
+                antibranch = ibranches[branch]
+            #document.warning(antibranch)
+            document.body[i] = "\\begin_inset Branch " + antibranch
+
+        # remove "inverted" key
+        del document.body[i+1]
+        i += 1
+
+    # now we need to add the new branches to the header
+    for old, new in ibranches.iteritems():
+        i = find_token(document.header, "\\branch " + old, 0)
+        if i == -1:
+            document.warning("Can't find branch %s even though we found it before!" % (old))
+            continue
+        j = find_token(document.header, "\\end_branch", i)
+        if j == -1:
+            document.warning("Malformed LyX document! Can't find end of branch " + old)
+            continue
+        # ourbranches[old] - 1 inverts the selection status of the old branch
+        lines = ["\\branch " + new,
+                 "\\selected " + str(ourbranches[old] - 1)]
+        # these are the old lines telling us color, etc.
+        lines += document.header[i+2 : j+1]
+        document.header[i:i] = lines
+        
 
 ##
 # Conversion hub
@@ -101,10 +183,12 @@ def convert_dateinset(document):
 supported_versions = ["2.3.0", "2.3"]
 convert = [
            [509, [convert_microtype]],
-           [510, [convert_dateinset]]
+           [510, [convert_dateinset]],
+           [511, [convert_ibranches]]
           ]
 
 revert =  [
+           [510, [revert_ibranches]],
            [509, []],
            [508, [revert_microtype]]
           ]
