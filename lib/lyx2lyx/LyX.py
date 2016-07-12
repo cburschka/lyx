@@ -92,7 +92,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
                    ("2_1", list(range(414,475)), minor_versions("2.1" , 5)),
                    ("2_2", list(range(475,509)), minor_versions("2.2" , 0)),
-                   ("2_3", list(range(509,511)), minor_versions("2.3" , 0))
+                   ("2_3", (), minor_versions("2.3" , 0))
                   ]
 
 ####################################################################
