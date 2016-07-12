@@ -280,9 +280,15 @@ bool InsetBranch::isBranchSelected(bool const child) const
 }
 
 
+bool InsetBranch::producesOutput() const
+{
+	return isBranchSelected(false) != params_.inverted;
+}
+
+
 void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 {
-	if (isBranchActive())
+	if (producesOutput())
 		InsetText::latex(os, runparams);
 }
 
@@ -290,7 +296,7 @@ void InsetBranch::latex(otexstream & os, OutputParams const & runparams) const
 int InsetBranch::plaintext(odocstringstream & os,
 			   OutputParams const & runparams, size_t max_length) const
 {
-	if (!isBranchActive())
+	if (!producesOutput())
 		return 0;
 
 	int len = InsetText::plaintext(os, runparams, max_length);
@@ -301,13 +307,13 @@ int InsetBranch::plaintext(odocstringstream & os,
 int InsetBranch::docbook(odocstream & os,
 			 OutputParams const & runparams) const
 {
-	return isBranchActive() ?  InsetText::docbook(os, runparams) : 0;
+	return producesOutput() ?  InsetText::docbook(os, runparams) : 0;
 }
 
 
 docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
-	if (isBranchActive()) {
+	if (producesOutput()) {
 		OutputParams newrp = rp;
 		newrp.par_begin = 0;
 		newrp.par_end = text().paragraphs().size();
@@ -319,7 +325,7 @@ docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 
 void InsetBranch::toString(odocstream & os) const
 {
-	if (isBranchActive())
+	if (producesOutput())
 		InsetCollapsable::toString(os);
 }
 
@@ -327,14 +333,14 @@ void InsetBranch::toString(odocstream & os) const
 void InsetBranch::forOutliner(docstring & os, size_t const maxlen,
 							  bool const shorten) const
 {
-	if (isBranchActive())
+	if (producesOutput())
 		InsetCollapsable::forOutliner(os, maxlen, shorten);
 }
 
 
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
-	if (isBranchActive())
+	if (producesOutput())
 		InsetCollapsable::validate(features);
 }
 
@@ -348,7 +354,7 @@ string InsetBranch::contextMenuName() const
 bool InsetBranch::isMacroScope() const 
 {
 	// Its own scope if not selected by buffer
-	return !isBranchActive();
+	return !producesOutput();
 }
 
 
@@ -388,7 +394,7 @@ void InsetBranch::addToToc(DocIterator const & cpit, bool output_active,
 	toc->push_back(TocItem(pit, 0, str, output_active));
 
 	// Proceed with the rest of the inset.
-	bool const doing_output = output_active && isBranchActive();
+	bool const doing_output = output_active && producesOutput();
 	InsetCollapsable::addToToc(cpit, doing_output, utype);
 }
 

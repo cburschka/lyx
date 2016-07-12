@@ -97,17 +97,13 @@ private:
 		\c buffer. \p child only checks within child documents.
 	 */
 	bool isBranchSelected(bool const child = false) const;
-	///
-	bool isBranchActive(bool const child = false) const
-		// XOR
-		{ return isBranchSelected(child) != params_.inverted; }
 	/*!
 	 * Is the content of this inset part of the output document?
 	 *
-	 * Note that Branch insets are only considered part of the
-	 * document when they are selected.
+	 * Note that Branch insets are considered part of the
+	 * document when they are selected XOR inverted.
 	 */
-	bool producesOutput() const { return isBranchSelected(); }
+	bool producesOutput() const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
