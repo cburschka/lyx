@@ -3,6 +3,10 @@
 
 !!Interface changes
 
+LyX now has "inverted" branch insets, which output their contents just in 
+case a given branch is not "activated". This makes inclusion of alternate
+material in different versions easier.
+
 
 !!!The following pref variables were added in 2.3:
 

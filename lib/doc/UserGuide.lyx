@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 511
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -68,6 +68,7 @@ enumitem
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -134,11 +135,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -8310,14 +8312,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8330,7 +8330,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8354,7 +8353,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -29745,6 +29743,7 @@ Here is an example, where only the question text appears, the answer branch
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -29758,6 +29757,7 @@ Question: Who was the first physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -29864,6 +29864,62 @@ Exam-Question-Answer.pdf
 
  if both branches were active.
  This helps you to export different versions of your document easily.
+\change_inserted 424524441 1468296009
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 424524441 1468297080
+As of LyX 2.3.0, there are also 
+\begin_inset Quotes eld
+\end_inset
+
+inverted
+\begin_inset Quotes erd
+\end_inset
+
+ branch insets, whose content is output just in case the branch is 
+\emph on
+not
+\emph default
+ activated.
+ 
+\begin_inset Branch Question
+inverted 1
+status open
+
+\begin_layout Standard
+
+\change_inserted 424524441 1468296217
+For example, this material will only appear when the Question branch is
+ deactivated.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ This make it easy to add alternative text for different versions of a document.
+ To control whether a particular inset is 
+\begin_inset Quotes eld
+\end_inset
+
+inverted
+\begin_inset Quotes erd
+\end_inset
+
+, right-click on the inset button and choose 
+\begin_inset Quotes eld
+\end_inset
+
+Toggle Inversion
+\begin_inset Quotes erd
+\end_inset
+
+.
+\change_deleted 424524441 1468296150
+
 \end_layout
 
 \begin_layout Standard
@@ -29948,6 +30004,7 @@ answer}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -29984,6 +30041,7 @@ answer}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Answer
+inverted 0
 status collapsed
 
 \begin_layout Standard
