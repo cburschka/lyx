@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2012-11-03 01:01+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -4277,7 +4277,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Wybór indeksu, który ma być wydrukowany w tym miejscu dokumentu."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Wyjście"
 
@@ -28668,11 +28668,6 @@ msgstr "Ozdobniki"
 msgid "Branches"
 msgstr "Gałęzie"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "&Format:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "Preambuła LaTeX-a"
@@ -32437,6 +32432,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Nieznany użytkownik"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "&Format:"
 
 #~ msgid "Change: "
 #~ msgstr "Zmiana: "

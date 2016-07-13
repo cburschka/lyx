@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 17:56+0200\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2016-07-13 16:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
@@ -4202,7 +4202,7 @@ msgstr ""
 "Vyberte si ktorý register by mal byť tlačený na tomto mieste v dokumente."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Výstup"
 
@@ -27763,10 +27763,6 @@ msgstr "Odrážky"
 msgid "Branches"
 msgstr "Vetvy"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-msgid "Format"
-msgstr "Formát"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "Preambula LaTeX-u"
@@ -31500,6 +31496,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Format"
+#~ msgstr "Formát"
 
 #~ msgid "Change: "
 #~ msgstr "Zmena: "

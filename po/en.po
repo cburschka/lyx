@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2010-11-29 08:29+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -4086,7 +4086,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr ""
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr ""
 
@@ -27001,10 +27001,6 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1426 src/frontends/qt4/qt_helpers.cpp:637
 msgid "Branches"
-msgstr ""
-
-#: src/frontends/qt4/GuiDocument.cpp:1427
-msgid "Format"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1428

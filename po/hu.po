@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -4279,7 +4279,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Válassza ki a dokumentum alapértelmezett betűcsaládját"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Kimenet"
 
@@ -28877,11 +28877,6 @@ msgstr "Felsorolásjelek"
 msgid "Branches"
 msgstr "Változatok"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "Formá&tum:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "LaTeX preambulum"
@@ -32727,6 +32722,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ismeretlen felhasználó"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "Formá&tum:"
 
 #~ msgid "Change: "
 #~ msgstr "Változás: "

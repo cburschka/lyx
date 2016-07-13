@@ -72,7 +72,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2016-04-19 22:27+0300\n"
 "Last-Translator: Jari-Matti Mäkelä <jmjm@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -4224,7 +4224,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Valitse hakemisto, joka tulostetaan tähän kohtaa asiakirjaa."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Tuloste"
 
@@ -28436,11 +28436,6 @@ msgstr "Merkit"
 msgid "Branches"
 msgstr "Haarat"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "Muoto:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "LaTeX-aloitusosa"
@@ -32178,6 +32173,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "Muoto:"
 
 #~ msgid "svgz"
 #~ msgstr "svgz"

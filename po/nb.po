@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2016-04-07 10:07+0200\n"
 "Last-Translator: Helge Hafting <helge.hafting@ntnu.no>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -4162,7 +4162,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Velg registeret som skal trykkes på dette stedet i dokumentet."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Utdata"
 
@@ -27803,11 +27803,6 @@ msgstr "Bomber"
 msgid "Branches"
 msgstr "Dokumentgrener"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "&Format:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preamble"
@@ -31547,6 +31542,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Ukjent bruker"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "&Format:"
 
 #~ msgid "svgz"
 #~ msgstr "svgz"

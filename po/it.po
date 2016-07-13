@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2016-07-12 17:42+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -4230,7 +4230,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Seleziona l'indice che sarà stampato in questa parte del documento."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Uscite"
 
@@ -27874,10 +27874,6 @@ msgstr "Elenchi puntati"
 msgid "Branches"
 msgstr "Rami"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-msgid "Format"
-msgstr "Formato"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
@@ -31629,6 +31625,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
+
+#~ msgid "Format"
+#~ msgstr "Formato"
 
 #~ msgid "svgz"
 #~ msgstr "svgz"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -4383,7 +4383,7 @@ msgstr ""
 "Specifică valorile implicite ale familiei de fonturi pentru documentul dat"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 #, fuzzy
 msgid "Output"
 msgstr "Ieșire"
@@ -29136,11 +29136,6 @@ msgstr "Marcheri"
 msgid "Branches"
 msgstr "Cale fișiere de rezervă:|#r"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "&Format:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 #, fuzzy
 msgid "LaTeX Preamble"
@@ -33135,6 +33130,10 @@ msgstr ""
 #, fuzzy
 msgid "Unknown user"
 msgstr "Cuvînt necunoscut:"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "&Format:"
 
 #, fuzzy
 #~ msgid "Change: "

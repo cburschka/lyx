@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
+"POT-Creation-Date: 2016-07-13 13:49-0400\n"
 "PO-Revision-Date: 2008-07-28 17:53+0100\n"
 "Last-Translator: joan <joan@montane.cat>\n"
 "Language-Team: Catalan\n"
@@ -4420,7 +4420,7 @@ msgid "Select the index that shall be printed at this place of the document."
 msgstr "Selecciona la famíla predeterminada pel document"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Sortida"
 
@@ -29247,11 +29247,6 @@ msgstr "Vinyetes"
 msgid "Branches"
 msgstr "Branques"
 
-#: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
-msgid "Format"
-msgstr "&Format:"
-
 #: src/frontends/qt4/GuiDocument.cpp:1428
 #, fuzzy
 msgid "LaTeX Preamble"
@@ -33081,6 +33076,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuari desconegut"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "&Format:"
 
 #, fuzzy
 #~ msgid "Change: "
