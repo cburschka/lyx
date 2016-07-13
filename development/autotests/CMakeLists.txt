@@ -67,7 +67,7 @@ if(QT_USES_X11)
     message(STATUS "cmake build is therefore omitting keytests")
   endif()
 
-  if(Missing)
+  if(Missing OR NOT LYX_ENABLE_KEYTESTS)
     set(_runtest FALSE)
   else()
     project(keytest)

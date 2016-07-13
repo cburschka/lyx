@@ -4732,7 +4732,18 @@ Keytests
 \end_layout
 
 \begin_layout Standard
-Automated tests based on the "MonKey Testing" keytest program.
+Automated tests based on the "MonKey Testing" keytest program are enabled
+ if the necessary dependencies are found and if the CMake flag 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-DLYX_ENABLE_KEYTESTS=ON
+\end_layout
+
+\end_inset
+
+ is used.
  They are documented in the README document in 
 \begin_inset Flex Code
 status collapsed
