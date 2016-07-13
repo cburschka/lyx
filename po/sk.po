@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-12 19:26-0400\n"
-"PO-Revision-Date: 2016-07-11 18:43+0000\n"
+"POT-Creation-Date: 2016-07-13 17:56+0200\n"
+"PO-Revision-Date: 2016-07-13 16:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2718,9 +2718,8 @@ msgid "De&fault output format:"
 msgstr "Štandardný výstupný &formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
-#, fuzzy
 msgid "LyX Format"
-msgstr "&Formát:"
+msgstr "LyX-Formát"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -2730,10 +2729,15 @@ msgid ""
 "directory path). Disabling this option plays nicer in\n"
 "collaborative settings and with version control systems."
 msgstr ""
+"Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa\n"
+"často prepínajú alebo sú zvláštne ohľadom na používateľa (také ako\n"
+"napr. výstup sledovaných zmien, alebo cesta adresára dokumentu).\n"
+"Vypnutie tejto voľby je vhodnejšie ako pre spoluprácu\n"
+"tak i pri používaniu správe verzií."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr ""
+msgstr "Ulož &prechodné vlastnosti"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -27760,9 +27764,8 @@ msgid "Branches"
 msgstr "Vetvy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1427
-#, fuzzy
 msgid "Format"
-msgstr "&Formát:"
+msgstr "Formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "LaTeX Preamble"
@@ -31497,12 +31500,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid "svgz"
-#~ msgstr "svgz"
-
-#~ msgid "svgz|SVG"
-#~ msgstr "svgz|SVG"
 
 #~ msgid "Change: "
 #~ msgstr "Zmena: "
