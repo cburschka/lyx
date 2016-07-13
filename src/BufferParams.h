@@ -382,7 +382,7 @@ public:
 	bool use_bibtopic;
 	/// Split the index?
 	bool use_indices;
-	/// Save trensient properties?
+	/// Save transient properties?
 	bool save_transient_properties;
 	/// revision tracking for this buffer ? (this is a transient property)
 	bool track_changes;
