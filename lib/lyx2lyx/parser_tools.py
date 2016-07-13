@@ -315,6 +315,25 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
     return val.strip('"')
 
 
+def get_bool_value(lines, token, start, end = 0, default = None):
+    """ get_value(lines, token, start[[, end], default]) -> string
+
+    Find the next line that looks like:
+      token bool_value
+
+    Returns True if bool_value is 1 or true and
+    False if bool_value is 0 or false
+    """
+
+    val = get_value(lines, token, start, end, "")
+
+    if val == "1" or val == "true":
+        return True
+    if val == "0" or val == "false":
+        return False
+    return default
+
+
 def get_option_value(line, option):
     rx = option + '\s*=\s*"([^"]+)"'
     rx = re.compile(rx)
