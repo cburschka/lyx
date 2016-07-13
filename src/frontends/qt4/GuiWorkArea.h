@@ -230,6 +230,9 @@ private Q_SLOTS:
 	void on_currentTabChanged(int index);
 	///
 	void showContextMenu(const QPoint & pos);
+	/// enable closing tab on middle-click
+	void mousePressEvent(QMouseEvent * me);
+	void mouseReleaseEvent(QMouseEvent * me);
 	///
 	void mouseDoubleClickEvent(QMouseEvent * event);
 
@@ -238,6 +241,8 @@ private:
 	bool posIsTab(QPoint position);
 
 	int clicked_tab_;
+	///
+	int midpressed_tab_;
 	///
 	QToolButton * closeBufferButton;
 }; // TabWorkArea

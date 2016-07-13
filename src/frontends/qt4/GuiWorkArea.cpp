@@ -1557,7 +1557,7 @@ NoTabFrameMacStyle noTabFrameMacStyle;
 
 
 TabWorkArea::TabWorkArea(QWidget * parent)
-	: QTabWidget(parent), clicked_tab_(-1)
+	: QTabWidget(parent), clicked_tab_(-1), midpressed_tab_(-1)
 {
 #ifdef Q_OS_MAC
 	setStyle(&noTabFrameMacStyle);
@@ -1602,6 +1602,26 @@ TabWorkArea::TabWorkArea(QWidget * parent)
 		this, SLOT(closeTab(int)));
 
 	setUsesScrollButtons(true);
+}
+
+
+void TabWorkArea::mousePressEvent(QMouseEvent *me)
+{
+	if (me->button() == Qt::MidButton)
+		midpressed_tab_ = tabBar()->tabAt(me->pos());
+	else
+		QTabWidget::mousePressEvent(me);
+}
+
+
+void TabWorkArea::mouseReleaseEvent(QMouseEvent *me)
+{
+	if (me->button() == Qt::MidButton) {
+		int const midreleased_tab = tabBar()->tabAt(me->pos());
+		if (midpressed_tab_ == midreleased_tab && posIsTab(me->pos()))
+			closeTab(midreleased_tab);
+	} else
+		QTabWidget::mouseReleaseEvent(me);
 }
 
 
