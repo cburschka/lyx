@@ -134,11 +134,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -8310,14 +8311,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8330,7 +8329,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8354,7 +8352,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -42928,6 +42925,30 @@ image
 scaling
 \family default
  is used for the size of equations in the output.
+\change_inserted 2047637253 1468428759
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 2047637253 1468429852
+Save
+\begin_inset space ~
+\end_inset
+
+transient
+\begin_inset space ~
+\end_inset
+
+properties controls whether document settings that are frequently switched
+ or that are specific to the user must be saved with the document.
+ Disabling this option can prevent issues in collaborative settings or when
+ using version control systems (for instance unnecessary merge conflicts).
+ The properties that are affected by this switch include for now: the activation
+ of change tracking, the output of tracked changes, and the recording of
+ the document directory path.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
