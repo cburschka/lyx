@@ -812,6 +812,17 @@ arg   "buffer-view"
 respectively.
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+\lang english
+Another hint:
+\series default
+ In case you are using a high-resolution display, the LyX toolbar icons
+ are quite small.
+ To change their size, right-click into a toolbar.
+\end_layout
+
 \begin_layout Subsection
 Opérations de base
 \end_layout
@@ -3006,7 +3017,7 @@ Insécable
  (raccourci 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 ) entre le mot 
