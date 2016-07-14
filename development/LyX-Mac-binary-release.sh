@@ -187,7 +187,6 @@ while [ $# -gt 0 ]; do
 		;;
 	--with-qt-dir=*)
 		QTDIR=$(echo ${1}|cut -d= -f2)
-		export PATH="${QTDIR}/bin:${PATH}"
 		shift
 		;;
 	--with-macosx-target=*)
