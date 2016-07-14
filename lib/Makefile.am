@@ -2174,6 +2174,7 @@ dist_layouts_DATA =\
 	layouts/ijmpc.layout \
 	layouts/ijmpd.layout \
 	layouts/initials.module \
+	layouts/InStar.module \
 	layouts/iopart.layout \
 	layouts/isprs.layout \
 	layouts/iucr.layout \
