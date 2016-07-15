@@ -313,12 +313,14 @@
 # 23 mai 2016 : correction d'une erreur de traduction (tailles d'icônes)
 #               et de conflits de raccourcis
 # ------------------------------------------------------------------
+# 15 juillet 2016 : dernière revue avant 2.2.1
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-07-13 13:49-0400\n"
-"PO-Revision-Date: 2016-05-23 23:13+0100\n"
+"PO-Revision-Date: 2016-07-15 09:54-0000\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -1527,7 +1529,6 @@ msgid "Show Output &Anyway"
 msgstr "&Afficher la sortie malgré tout"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
-#, fuzzy
 msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
@@ -3034,9 +3035,8 @@ msgid "De&fault output format:"
 msgstr "&Format implicite du résultat :"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
-#, fuzzy
 msgid "LyX Format"
-msgstr "&Format :"
+msgstr "Format LyX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -3046,10 +3046,15 @@ msgid ""
 "directory path). Disabling this option plays nicer in\n"
 "collaborative settings and with version control systems."
 msgstr ""
+"Sauvegarder tous les paramètres du fichier LyX, incluant ceux qui\n"
+"sont fréquemment modifiés ou ceux qui sont spécifiés par l'utilisateur\n"
+"(comme l'impression du suivi de modifications, ou le répertoire du\n"
+"document). Désactiver cette option convient mieux pour l'utilisation\n"
+"collaborative ou celle du contrôle de version."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr ""
+msgstr "Enregistrer les propriétés &transitoires"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -4607,7 +4612,7 @@ msgstr "Afficher tous les messages d'analyse"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:226
 msgid "&All"
-msgstr "&Toutes"
+msgstr "&Tous"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
@@ -6615,12 +6620,9 @@ msgstr "Une autre preuve"
 msgid "Proof."
 msgstr "Preuve."
 
-# Cadre pour Frame et Diapositive pour Slide ?
-# Oui JOC
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
-msgstr "Titre (Cadre Simple)"
+msgstr "Particularités pour le titre et le préambule"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6632,16 +6634,22 @@ msgid ""
 "related material. (If you put these in a Standard layout, this signals to "
 "LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Produit deux nouveaux styles : 1. Un style « Dans le préambule » qui met "
+"tout ce qu'il contient dans le préambule. ceci peut être utilisé à la "
+"demande pour insérer du code de préambule dans le document LyX. 2. Un style "
+"« Dans le titre » qui placera son contenu dans le document LaTeX, mais avant "
+"l'émission de \\maketitle. Ceci est utile pour créer des branches et des "
+"notes dans ce qui est lié au titre (si vous insérez ces éléments dans un "
+"style standard, ceci indique à LyX d'émettre \\maketitle , qui pourrait "
+"alors apparaître trop tôt)."
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Préambule"
+msgstr "Dans le préambule"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Titre"
+msgstr "Dans le titre"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -23560,9 +23568,8 @@ msgid "SVG"
 msgstr "SVG"
 
 #: lib/configure.py:585
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Compressé|C"
+msgstr "SVG (compressé)"
 
 #: lib/configure.py:588
 msgid "BMP"
@@ -23971,9 +23978,9 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
 #: src/Author.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "Compilation du %1$s[[date]], %2$s[[heure]]"
+msgstr "%1$s (%2$s)"
 
 #: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2342
 #, c-format
@@ -26715,7 +26722,7 @@ msgstr "[Suivi des Modifications] "
 #: src/Text.cpp:1908
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr ""
+msgstr "Modifié par %1$s le %2$s."
 
 #: src/Text.cpp:1918 src/mathed/InsetMathFont.cpp:213
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -27740,18 +27747,16 @@ msgid "Merge Changes"
 msgstr "Fusionner les modifications"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Modifié par %1$s\n"
+"Modifié par %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
-#, fuzzy
 msgid "Change made on %1\n"
-msgstr "Modifié le %1$s\n"
+msgstr "Modifié le %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83
@@ -31260,7 +31265,7 @@ msgstr "CASSÉ : "
 
 #: src/insets/InsetRef.cpp:351 src/mathed/InsetMathRef.cpp:225
 msgid "Ref: "
-msgstr "Réf : "
+msgstr "Réf: "
 
 #: src/insets/InsetRef.cpp:352 src/mathed/InsetMathRef.cpp:226
 msgid "Equation"
@@ -31268,7 +31273,7 @@ msgstr "Équation"
 
 #: src/insets/InsetRef.cpp:352 src/mathed/InsetMathRef.cpp:226
 msgid "EqRef: "
-msgstr "RéfÉq : "
+msgstr "RéfÉq: "
 
 #: src/insets/InsetRef.cpp:353 src/mathed/InsetMathRef.cpp:227
 msgid "Page Number"
@@ -31276,7 +31281,7 @@ msgstr "Numéro de page"
 
 #: src/insets/InsetRef.cpp:353 src/mathed/InsetMathRef.cpp:227
 msgid "Page: "
-msgstr "Page : "
+msgstr "Page: "
 
 #: src/insets/InsetRef.cpp:354 src/mathed/InsetMathRef.cpp:228
 msgid "Textual Page Number"
@@ -31284,7 +31289,7 @@ msgstr "N° de page du texte"
 
 #: src/insets/InsetRef.cpp:354 src/mathed/InsetMathRef.cpp:228
 msgid "TextPage: "
-msgstr "Page du texte : "
+msgstr "PageTexte: "
 
 #: src/insets/InsetRef.cpp:355 src/mathed/InsetMathRef.cpp:229
 msgid "Standard+Textual Page"
@@ -31292,7 +31297,7 @@ msgstr "Standard + N° de page du texte"
 
 #: src/insets/InsetRef.cpp:355 src/mathed/InsetMathRef.cpp:229
 msgid "Ref+Text: "
-msgstr "Réf+Texte : "
+msgstr "Réf+Texte: "
 
 #: src/insets/InsetRef.cpp:356
 msgid "Formatted"
@@ -31300,16 +31305,15 @@ msgstr "Mis en page"
 
 #: src/insets/InsetRef.cpp:356
 msgid "Format: "
-msgstr "Format : "
+msgstr "Formattée: "
 
 #: src/insets/InsetRef.cpp:357
 msgid "Reference to Name"
 msgstr "Référence au nom"
 
 #: src/insets/InsetRef.cpp:357
-#, fuzzy
 msgid "NameRef: "
-msgstr "NomRef :"
+msgstr "RefNom:"
 
 #: src/insets/InsetScript.cpp:343
 msgid "subscript"
