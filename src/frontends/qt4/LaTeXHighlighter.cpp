@@ -31,8 +31,8 @@ QColor blend(QColor color1, QColor color2) {
 }
 
 
-LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
-	: QSyntaxHighlighter(parent)
+LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter)
+	: QSyntaxHighlighter(parent), at_letter_(at_letter)
 {
 	QPalette palette = QPalette();
 	QColor text_color = palette.color(QPalette::Active, QPalette::Text);
@@ -96,7 +96,11 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		startIndex = exprStartDispMath.indexIn(text, startIndex + length);
 	}
 	// \whatever
-	static const QRegExp exprKeyword("\\\\[A-Za-z]+");
+	static const QRegExp exprKeywordAtOther("\\\\[A-Za-z]+");
+	// \wh@tever
+	static const QRegExp exprKeywordAtLetter("\\\\[A-Za-z@]+");
+	QRegExp const & exprKeyword = at_letter_ ? exprKeywordAtLetter
+	                                         : exprKeywordAtOther;
 	index = exprKeyword.indexIn(text);
 	while (index >= 0) {
 		int length = exprKeyword.matchedLength();
