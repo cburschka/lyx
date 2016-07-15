@@ -572,7 +572,15 @@ if(NOT MSVC)
 	if(NOT LYX_QUIET)
 		set(CMAKE_VERBOSE_MAKEFILE ON)
 	endif()
-    set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}")
+	set(LYX_CXX_FLAGS "-Wall -Wunused-parameter ${LYX_GCC11_MODE}")
+	if(LYX_CXX_FLAGS MATCHES "\\+\\+(14|11|98)")
+	  # Thanks to Brad King <brad.king@kitware.com>
+	  # for the pointer to https://cmake.org/cmake/help/v3.6/variable/CMAKE_CXX_STANDARD.html
+	  # This allows us to use QT5.7 with recent g++ (version >= 4.9) compilers
+	  # and still use our own c++ extension tests
+	  set(CMAKE_CXX_STANDARD ${CMAKE_MATCH_1})
+	  message(STATUS "CMAKE_CXX_STANDARD set to ${CMAKE_CXX_STANDARD}")
+	endif()
 	if(LYX_STDLIB_DEBUG)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
 	endif()
