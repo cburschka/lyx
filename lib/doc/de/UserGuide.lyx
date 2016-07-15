@@ -41878,6 +41878,36 @@ Handbuchergänzungen
  Die Skalierung wird für die Größe von Gleichungen in der Ausgabe verwendet.
 \end_layout
 
+\begin_layout Description
+LyX-Format Die Option 
+\family sans
+Vorübergehende Eigenschaften speichern
+\family default
+ legt fest, ob auch Einstellungen in die Datei gespeichert werden, die oft
+ geändert werden oder die benutzerspezifisch sind.
+ Die Eigenschaften, die von der Option betroffen sind, sind momentan
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+die Aktivierung der Änderungsverfolgung
+\end_layout
+
+\begin_layout Itemize
+die Ausgabe verfolgter Änderungen
+\end_layout
+
+\begin_layout Itemize
+die Speicherung des Dateipfads zum Dokument
+\end_layout
+
+\begin_layout Standard
+Die Deaktivierung der Option kann Probleme verhindern, die auftreten wenn
+ ein Dokument von mehreren Personen geändert wird und/oder wenn ein Versionskont
+rollsystem verwendet wird.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 \SpecialChar LaTeX
 -Vorspann
