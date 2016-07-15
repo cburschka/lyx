@@ -20,8 +20,9 @@ namespace lyx {
 namespace frontend {
 
 
-LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent)
-	: QSyntaxHighlighter(parent)
+LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent,
+                                   bool const at_letter)
+	: QSyntaxHighlighter(parent), at_letter_(at_letter)
 {
 	auto blend = [](QColor color1, QColor color2) {
 		int r = 0.5 * (color1.red() + color2.red());
@@ -91,7 +92,11 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 		startIndex = exprStartDispMath.indexIn(text, startIndex + length);
 	}
 	// \whatever
-	static const QRegExp exprKeyword("\\\\[A-Za-z]+");
+	static const QRegExp exprKeywordAtOther("\\\\[A-Za-z]+");
+	// \wh@tever
+	static const QRegExp exprKeywordAtLetter("\\\\[A-Za-z@]+");
+	QRegExp const & exprKeyword = at_letter_ ? exprKeywordAtLetter
+	                                         : exprKeywordAtOther;
 	index = exprKeyword.indexIn(text);
 	while (index >= 0) {
 		int length = exprKeyword.matchedLength();

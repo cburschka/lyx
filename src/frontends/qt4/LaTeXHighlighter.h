@@ -25,7 +25,8 @@ namespace frontend {
 class LaTeXHighlighter : public QSyntaxHighlighter
 {
 public:
-	LaTeXHighlighter(QTextDocument * parent);
+	explicit LaTeXHighlighter(QTextDocument * parent,
+	                          bool const at_letter = false);
 
 protected:
 	void highlightBlock(QString const & text);
@@ -35,6 +36,8 @@ private:
 	QTextCharFormat keywordFormat;
 	QTextCharFormat mathFormat;
 	QTextCharFormat warningFormat;
+	// is at a letter (as in the preamble)
+	bool const at_letter_;
 };
 
 } // namespace frontend

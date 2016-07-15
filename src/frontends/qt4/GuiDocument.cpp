@@ -453,7 +453,8 @@ PreambleModule::PreambleModule() : current_id_(0)
 {
 	// This is not a memory leak. The object will be destroyed
 	// with this.
-	(void) new LaTeXHighlighter(preambleTE->document());
+	// @ is letter in the LyX user preamble
+	(void) new LaTeXHighlighter(preambleTE->document(), true);
 	preambleTE->setFont(guiApp->typewriterSystemFont());
 	preambleTE->setWordWrapMode(QTextOption::NoWrap);
 	setFocusProxy(preambleTE);
