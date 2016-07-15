@@ -5,28 +5,6 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/es/
 \textclass book
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% Work around a bug in Babel-Spanish with \lim if non-TeX fonts are used:
-\@ifpackageloaded{fontspec}{\unaccentedoperators}{}
-
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language spanish
@@ -59,7 +37,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -557,7 +535,7 @@ como\SpecialChar endofsentence
 Comprueba el resultado final en PDF con 
 \family sans
 Documento\SpecialChar menuseparator
-Ver [PDF (pdflatex)]
+Ver
 \family default
  o con el botón 
 \begin_inset Info
@@ -569,29 +547,6 @@ arg   "buffer-view"
  \SpecialChar LyX
  lanzará un programa visor de PDF que abrirá una nueva ventana mostrándote
  el aspecto de tu documento cuando esté impreso.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Puedes ahorrar tiempo dejando que el visor de PDF se siga ejecutando en
- segundo plano.
- De esta forma, puedes usar 
-\family sans
-Ver\SpecialChar menuseparator
-Actualizar
-\family default
- o el botón 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- y simplemente pulsar sobre la ventana del visor (o restaurarla) después.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -607,6 +562,52 @@ al formato que quieras.
 ¡Enhorabuena! Has escrito e impreso tu primer documento \SpecialChar LyX
 .
  Todo lo demás son detalles.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+A hint
+\lang spanish
+:
+\series default
+ Puedes ahorrar tiempo dejando que el visor de PDF se siga ejecutando en
+ segundo plano.
+ De esta forma, puedes usar 
+\family sans
+Ver\SpecialChar menuseparator
+Actualizar
+\family default
+ o el botón 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ y simplemente pulsar sobre la ventana del visor después.
+ 
+\lang english
+Under Windows still use
+\lang spanish
+ 
+\family sans
+Documento\SpecialChar menuseparator
+Ver
+\family default
+ o 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+
+\lang english
+ respectively.
 \end_layout
 
 \begin_layout Subsection
@@ -1363,7 +1364,8 @@ Subsubsección
  y comprueba cómo los demás números de sección se actualizan.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -1648,7 +1650,8 @@ protegidos
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -1723,7 +1726,8 @@ Guía del usuario
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -2117,7 +2121,11 @@ desde
 plantilla
 \family default
 .
- Elige 
+ Elige
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 letter.lyx
 \family default
@@ -2309,12 +2317,17 @@ Libro
  este tutorial.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
 \series default
-: Arregla el título, la fecha y el autor en 
+: Arregla el título, la fecha y el autor en
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 ejemplo_sin_lyx.lyx
 \end_layout
@@ -2411,7 +2424,11 @@ Sitúa el cursor en algún lugar de la sección 2 de tu documento.
 \end_layout
 
 \begin_layout LyX-Code
-Si quieres saber más acerca de este documento, mira la sección .
+Si quieres saber más acerca de este documento,
+\begin_inset Newline newline
+\end_inset
+
+mira la sección.
 \end_layout
 
 \begin_layout Standard
@@ -2684,7 +2701,8 @@ reference "sec:Clases-de-documento"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -2751,7 +2769,11 @@ pie
 
 \begin_layout LyX-Code
 \SpecialChar LyX
- es un procesador de composición tipográfica de textos.
+ es un procesador de composición tipográfica de
+\begin_inset Newline linebreak
+\end_inset
+
+textos.
 \end_layout
 
 \begin_layout Standard
@@ -2895,7 +2917,8 @@ Convierte ahora tu nota al pie en texto, selecciónala y conviértela en una
  de nuevo para ver su aspecto.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -2947,7 +2970,11 @@ El Tutorial de Lyx, por el equipo de documentación de \SpecialChar LyX
 
 
 \family default
- como primera referencia.
+ como primera
+\begin_inset Newline linebreak
+\end_inset
+
+referencia.
  Observa que \SpecialChar LyX
  pone automáticamente un número en un recuadro antes de cada
  referencia.
@@ -3097,7 +3124,8 @@ Guía del usuario
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio:
@@ -3192,7 +3220,8 @@ Para deshacerte del índice, puedes borrar su marcador como cualquier otro
  carácter.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -3246,8 +3275,12 @@ Escribe en cualquier parte de tu documento:
 \end_layout
 
 \begin_layout LyX-Code
-Me gusta lo que dijo Einstein, E=mc^2, porque es tan sencillo\SpecialChar ldots
- 
+Me gusta lo que dijo Einstein, E=mc^2, porque es
+\begin_inset Newline newline
+\end_inset
+
+tan sencillo\SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -3602,7 +3635,8 @@ _
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -4005,7 +4039,8 @@ Abajo
  cuadradas, otras fracciones, cualquier cosa.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -4154,11 +4189,7 @@ sin
 \family sans
 Retroceso
 \family default
- se borrará
-\begin_inset Formula $ $
-\end_inset
-
- toda la palabra.
+ se borrará toda la palabra.
  Ahora escribe 
 \begin_inset Quotes fld
 \end_inset
@@ -4509,7 +4540,8 @@ Retorno
  párrafos de tu documento—, que probablemente no es lo que querías.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
@@ -4521,13 +4553,14 @@ ejemplo_sin_lyx.lyx
  en modo presentación, y comprueba que se componen de manera diferente.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Ejercicio
 \series default
 : Utilizando las herramientas que has aprendido en esta sección, deberías
- de ser capaz de escribir una ecuación como ésta
+ de ser capaz de escribir una ecuación como ésta:
 \begin_inset Foot
 status collapsed
 
@@ -4547,7 +4580,7 @@ Casos
 
 \end_inset
 
-: 
+ 
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -5137,8 +5170,7 @@ Puede que desees convertir un documento \SpecialChar LyX
 \family sans
 Archivo\SpecialChar menuseparator
 Exportar\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 .
  Se creará un archivo 
@@ -5206,8 +5238,7 @@ Preámbulo
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  y escribe en la ventana que aparecerá.
  Todo lo que introduzcas se le pasará directamente a \SpecialChar LaTeX
@@ -5233,14 +5264,11 @@ Bibliografía
 \begin_inset space ~
 \end_inset
 
-Bib\SpecialChar TeX
-
+BibTeX
 \family default
  para incluir un archivo 
-\family typewriter
-Bib
 \family sans
-\SpecialChar TeX
+Bib\SpecialChar TeX
 
 \family default
 .
@@ -5257,10 +5285,8 @@ de
 Datos
 \family default
  puedes cargar archivos 
-\family typewriter
-Bib
 \family sans
-\SpecialChar TeX
+Bib\SpecialChar TeX
 
 \family default
 .
@@ -5323,8 +5349,7 @@ de
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 .
  Pulsando sobre un error en dicho diálogo, se mostrará información detallada

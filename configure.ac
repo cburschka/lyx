@@ -2,6 +2,7 @@ dnl Process with autoconf to generate configure script   -*- sh -*-
 
 AC_INIT(LyX,2.2.2dev,[lyx-devel@lists.lyx.org],[lyx])
 AC_PRESERVE_HELP_ORDER
+
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2016-05-23"])
 AC_PREREQ(2.60)
@@ -231,6 +232,7 @@ dnl AC_LANG_POP(C)
 lyx_win_res=false;
 case ${host} in
     *mingw*|*cygwin*) lyx_win_res=true;;
+    *freebsd*) AC_SEARCH_LIBS(backtrace_symbols, [execinfo])
 esac
 AM_CONDITIONAL(LYX_WIN_RESOURCE, $lyx_win_res)
 LYX_SET_VERSION_INFO

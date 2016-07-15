@@ -5,25 +5,6 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/de/
 \textclass book
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
-% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language ngerman
@@ -56,14 +37,14 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
-\use_geometry true
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -87,10 +68,6 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 3.5cm
-\topmargin 3.5cm
-\rightmargin 3.5cm
-\bottommargin 3.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -382,9 +359,9 @@ Dies ist nicht nötig.
 -Tricks für \SpecialChar LyX
  kennenlernen wollen, schauen Sie in
  \SpecialChar LyX
-' 
+’ 
 \emph on
-Eingebette Objekte
+Eingebettete Objekte
 \emph default
  Handbuch.
  Ansonsten kaufen Sie sich ein spezielles \SpecialChar LaTeX
@@ -452,7 +429,7 @@ n von \SpecialChar LyX
 \end_inset
 
  Falls Sie mehrere Dokumente gleichzeitig geöffnet haben, können Sie einfach
- über die Karteikarten, das Menü 
+ über die Registerkarten, das Menü 
 \family sans
 Ansicht
 \family default
@@ -509,7 +486,7 @@ beispiel_roh.lyx
 -Fähigkeiten hat.
  Immer wenn Sie neue Funktionen von \SpecialChar LyX
  kennenlernen, werden Sie aufgefordert,
- die entsprechenden Abschnitte in 
+ die entsprechenden Abschnitte in der Datei 
 \family typewriter
 beispiel_roh.lyx
 \family default
@@ -542,15 +519,11 @@ beispiel_gelyxt.lyx
 \begin_layout Standard
 Die Beispieldateien finden Sie im Verzeichnis 
 \family typewriter
-[Resources/]examples/de
+[Resources/]examp\SpecialChar softhyphen
+les/de
 \family default
  des \SpecialChar LyX
--In\SpecialChar softhyphen
-stal\SpecialChar softhyphen
-la\SpecialChar softhyphen
-tions\SpecialChar softhyphen
-ord\SpecialChar softhyphen
-ners.
+-Installationsordners.
  Laden Sie die nicht modifizierte Datei und verwenden Sie 
 \family sans
 Datei\SpecialChar menuseparator
@@ -647,45 +620,10 @@ arg   "buffer-view"
  \SpecialChar LyX
  wird einen PDF-Betrachter starten, der dann ein eigenes Fenster öffnet,
  in dem Sie den Text so sehen können, wie er später gedruckt aussehen wird.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sie können Zeit sparen, wenn Sie den PDF-Betrachter nicht jedes Mal neu
- starten, sondern nur das erste Mal, und das Programm dann im Hintergrund
- weiterlaufen lassen.
- Sie können dann den Menüpunkt 
-\family sans
-Ansicht\SpecialChar menuseparator
-Aktualisieren
-\family default
- wählen oder auf 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- klicken und danach in das PDF-Betrachter-Fenster klicken, um die neue Version
- zu sehen.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
-Drucken Sie den Text aus: 
-\family sans
-Datei\SpecialChar menuseparator
-Drucken
-\family default
- und dann auf 
-\family sans
-Drucken
-\family default
- klicken.
- Oder exportieren Sie es mit 
+Exportieren Sie das druckfertige Dokument mit 
 \family sans
 Datei
 \family default
@@ -701,6 +639,50 @@ Exportieren
 Glückwunsch! Sie haben gerade Ihren ersten Text mit \SpecialChar LyX
  geschrieben und gedruckt.
  Alles andere sind nur noch Details.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Ein Tipp:
+\series default
+ Sie können Zeit sparen, wenn Sie den PDF-Betrachter nicht jedes Mal neu
+ starten, sondern nur das erste Mal, und das Programm dann im Hintergrund
+ weiterlaufen lassen.
+ Sie können dann unter MacOS und Linux den Menüpunkt 
+\family sans
+Dokument\SpecialChar menuseparator
+Ansicht\SpecialChar menuseparator
+Aktualisieren
+\family default
+ wählen oder auf 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ klicken und danach in das PDF-Betrachter-Fenster klicken, um die neue Version
+ zu sehen.
+ Unter Windows verwenden Sie weiterhin den Menüpunkt 
+\family sans
+Dokument\SpecialChar menuseparator
+Ansicht
+\family default
+ bzw.
+\begin_inset space \space{}
+\end_inset
+
+ 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -727,7 +709,8 @@ Rückgängig \SpecialChar LyX
  Dies bedeutet, Sie können durch die wiederholte Auswahl von 
 \family sans
 Bearbeiten\SpecialChar menuseparator
-Rückgängig
+Rück\SpecialChar softhyphen
+gängig
 \family default
  oder einen Klick auf 
 \begin_inset Info
@@ -764,11 +747,8 @@ Derzeit ist das Rückgängig machen auf 100 Schritte beschränkt.
 \begin_layout Description
 Ausschneiden/Kopieren/Einfügen Benutzen Sie die Menüpunkte 
 \family sans
-Bear\SpecialChar softhyphen
-beiten\SpecialChar menuseparator
-Aus\SpecialChar softhyphen
-schnei\SpecialChar softhyphen
-den 
+Bearbeiten\SpecialChar menuseparator
+Ausschneiden 
 \family default
 (
 \begin_inset Info
@@ -908,8 +888,8 @@ einfügen
 \family default
  einfach anzuklicken.
  Wenn Sie den Mauszeiger eine kurze Zeit unbewegt über einem solchen Schalter
- positionieren, erscheint ein kleines hellgelbes Feld, das seine Funktion
- beschreibt (genannt 
+ positionieren, erscheint ein kleines Feld, das die Funktion beschreibt
+ (genannt 
 \emph on
 Tooltip
 \emph default
@@ -1064,11 +1044,12 @@ Umgebungen
 \end_layout
 
 \begin_layout Standard
-Derartige Umgebungen bilden den Hauptteil des WYSIWYM-Konzeptes von \SpecialChar LyX
+Derartige Umgebungen bilden den Hauptteil des WYSIWYM-Konzep\SpecialChar softhyphen
+tes von \SpecialChar LyX
 .
  Ein bestimmter Umgebungstyp verlangt eventuell bestimmte Einstellungen
  für Schriftgröße, Zeichensatz, Einzug, Zeilenabstand und so fort.
- Und das Problem wird teilweise noch verschlimmert: So verwendet vielleicht
+ Das Problem wird teilweise noch verschlimmert: So verwendet vielleicht
  eine Zeitschrift für ihre Titel eine 18-Punkt-Schrift in Fettdruck, zentriert
  gesetzt, eine andere verwendet kursive 15-Punkt-Schriften.
  Verschiedene Sprachen verwenden andere Standardeinstellungen für den Einzug.
@@ -1193,7 +1174,11 @@ Eingabe
 \end_layout
 
 \begin_layout LyX-Code
-Dies ist eine Einleitung für mein erstes \SpecialChar LyX
+Dies ist eine Einleitung für mein erstes
+\begin_inset Newline newline
+\end_inset
+
+\SpecialChar LyX
 -Dokument.
 \end_layout
 
@@ -1313,7 +1298,7 @@ Eingabe
 \end_layout
 
 \begin_layout LyX-Code
-Hier werden Abschnitte und Unterabschnitte erläutert.
+Hier werden Abschnitte und Unterabschnitte erklärt.
 \end_layout
 
 \begin_layout LyX-Code
@@ -1493,7 +1478,8 @@ Unterunterabschn
  sich die Nummerierung der folgenden Abschnitte ändert.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
@@ -1561,7 +1547,8 @@ Eine Präsentation auf Projektionsfolien könnte die
 \family sans
 Auflistung
 \family default
--Umgebung mit ihren durch unterschiedliche Symbole abgesetzten Listen verwenden,
+-Umge\SpecialChar softhyphen
+bung mit ihren durch unterschiedliche Symbole abgesetzten Listen verwenden,
  um verschiedene Punkte zu beschreiben.
 \end_layout
 
@@ -1635,7 +1622,11 @@ Der Textsatz wird automatisch erstellt.
 \end_layout
 
 \begin_layout LyX-Code
-Die Darstellung mathematischer Symbole ist im WYSIWYG-Format.
+Die Darstellung mathematischer Symbole ist im
+\begin_inset Newline newline
+\end_inset
+
+WYSIWYG-Format.
 \end_layout
 
 \begin_layout LyX-Code
@@ -1773,7 +1764,8 @@ Strg+Leertaste
 ) verbunden werden.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung
@@ -1863,7 +1855,8 @@ Benutzerhandbuch
  ausführlich beschrieben.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung
@@ -1988,7 +1981,11 @@ Einstellungen
 \SpecialChar menuseparator
 
 \family sans
-Dokumentklasse:
+Dokument-
+\begin_inset Newline linebreak
+\end_inset
+
+klasse
 \family default
 ), und sehen Sie sich an, auf welche Weise es dann gesetzt wird.
  Wenn Sie Ihr Dokument zum Beispiel in die Klasse 
@@ -2238,7 +2235,8 @@ Einstellungen
 \SpecialChar menuseparator
 
 \family sans
-Dokumentklasse
+Dokumentklas\SpecialChar softhyphen
+se
 \family default
  die Dokumentklasse 
 \family sans
@@ -2348,8 +2346,8 @@ Eine Vorlage ist eine ganz normale \SpecialChar LyX
  indem Sie die von Ihnen gewünschten Änderungen an der Vorlage durchführen
  und die Datei dann als Ihre Vorlage abspeichern.
  Für alle folgenden Briefe können Sie dann diese Version als Vorlage verwenden.
- Sie sollten das alles jetzt vielleicht einfach mal ausprobieren – schreiben
- Sie doch als Übung einen kleinen Brief an jemanden!
+ Sie sollten das alles jetzt vielleicht einfach mal ausprobieren.
+ Schreiben Sie doch als Übung einen kleinen Brief an jemanden!
 \end_layout
 
 \begin_layout Standard
@@ -2392,9 +2390,11 @@ Dokumenttitel
 \begin_layout Standard
 Wie auch \SpecialChar LaTeX
  betrachtet \SpecialChar LyX
- den Titelblock – der aus der eigentlichen Überschrift,
- dem Namen des Autors, dem Datum und eventuell sogar dem Abstract eines
- Artikels bestehen kann – als einen eigenständigen Teil des Dokumentes.
+ den Titelblock als einen eigenständigen Teil des Dokumente
+s.
+ Dieser kann aus der eigentlichen Überschrift, dem Namen des Autors, dem
+ Datum und eventuell sogar dem Abstract eines Artikels bestehen.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2452,7 +2452,8 @@ Abstract
  und betrachten dann das Ganze in der Vorschau.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung
@@ -2469,7 +2470,8 @@ Marken und Querverweise
 \end_layout
 
 \begin_layout Standard
-Sie können jedes Kapitel, Unterkapitel, Formel, Fußnote und Gleitobjekt
+Sie können jedes Kapitel, Unterkapitel, jede Formel, Fußnote und jedes Gleitobje
+kt
 \begin_inset Foot
 status collapsed
 
@@ -2489,8 +2491,8 @@ Eingebettete Objekte
 
  Ihres Dokumentes mit einer Marke versehen.
  Sie können dann in anderen Teilen Ihres Textes auf dieses Element verweisen.
- Sie können sich dabei wahlweise auf die Nummer des Kapitels oder auf die
- Seite im Text, auf der das besagte Kapitel steht, beziehen.
+ Sie können sich dabei wahlweise auf die Nummer des Kapitels beziehen oder
+ auf die Seite im Text, auf der das besagte Kapitel steht.
  Wie auch bei der Nummerierung von Abschnitten und Fußnoten kümmert sich
  \SpecialChar LyX
  um die korrekte Verwaltung dieser Querverweise.
@@ -2506,7 +2508,7 @@ Zu Beginn gleich ein praktisches Beispiel: Markieren Sie den zweiten Abschnitt
 \begin_inset Quotes gld
 \end_inset
 
-Was das Tutorium ist\SpecialChar ldots
+Was das Tutorium\SpecialChar ldots
 
 \begin_inset Quotes grd
 \end_inset
@@ -2600,8 +2602,8 @@ Sie hätten diese Marke übrigens genauso gut irgendwo anders im betreffenden
  Kapitel einfügen können, denn Verweise auf einen Abschnitt beziehen sich
  immer auf die Abschnittsnummer, die als letzte vor der Marke definiert
  ist.
- Dadurch, dass man sie gleich zu Beginn setzt, ist aber sichergestellt,
- dass auch Verweise auf die Seitennummer des Kapitels richtig sind.
+ Wenn man sie gleich zu Beginn setzt, ist aber sichergestellt, dass auch
+ Verweise auf die Seitennummer des Kapitels richtig sind.
 \end_layout
 
 \begin_layout Standard
@@ -2624,11 +2626,11 @@ Positionieren Sie nun den Cursor irgendwo im dritten Kapitel dieses Dokumentes
 \end_layout
 
 \begin_layout LyX-Code
-Wenn Sie mehr über dieses Dokument erfahren wollen,
+Wenn Sie mehr über dieses Dokument erfahren
 \begin_inset Newline newline
 \end_inset
 
-lesen Sie Abschnitt.
+wollen, lesen Sie Abschnitt.
 \end_layout
 
 \begin_layout Standard
@@ -2730,7 +2732,7 @@ Strg+V
 \begin_layout Standard
 \SpecialChar LyX
  stellt die Querverweise in einer grauen Schaltfläche dar, die an der aktuellen
- Cursors-Position eingefügt wird.
+ Cursor-Position eingefügt wird.
  Später, im ausgedruckten Dokument, werden diese Platzhalter durch die tatsächli
 chen Werte von Kapitel und Seitennummer ersetzt.
  Sehen Sie sich Ihren Text in der Vorschau an, und Sie werden feststellen,
@@ -2831,12 +2833,17 @@ Querverweis
  haben.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
 \series default
- Korrigieren Sie die Querverweise in der Datei 
+ Korrigieren Sie die Querverweise in der Datei
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 beispiel_roh.lyx
 \family default
@@ -2880,9 +2887,11 @@ Nummer
 \end_layout
 
 \begin_layout LyX-Code
-\SpecialChar LyX
- ist eine Textverarbeitung, die den Schriftsatz be\SpecialChar softhyphen
-herrscht.
+LyX ist eine Textverarbeitung, die den Schriftsatz
+\begin_inset Newline newline
+\end_inset
+
+beherrscht.
 \end_layout
 
 \begin_layout Standard
@@ -2947,7 +2956,8 @@ Kopieren
 \family default
 .
  Sie können auch einfach gewöhnlichen, bereits geschriebenen Text in eine
- Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schaltfläche
+ Fußnote umwandeln, indem Sie ihn markieren und dann die Fußnoten-Schalt\SpecialChar softhyphen
+fläche
  anklicken.
  Umgekehrt können Sie eine Fußnote in gewöhnlichen Text umwandeln, indem
  Sie den Cursor vor den Fußnotentext stellen und die Rücktaste (
@@ -3001,12 +3011,17 @@ Wandeln Sie normalen Text in eine Randnotiz.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung
 \series default
-: Korrigieren Sie die Fußnoten in der Datei 
+: Korrigieren Sie die Fußnoten in der Datei
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 beispiel_roh.lyx
 \family default
@@ -3042,7 +3057,7 @@ Gehen Sie zum Ende des Dokumentes und wechseln Sie in den Umgebungstyp
 Literaturverzeichnis
 \family default
 .
- Jeder Absatz, den Sie von jetzt ab eingeben, wird eine Referenz.
+ Jeder Absatz, den Sie von nun an eingeben, wird eine Referenz.
  Sie sehen, dass \SpecialChar LyX
  automatisch eine Nummer in einem Rahmen vor die Referenz
  setzt.
@@ -3179,7 +3194,8 @@ Benutzerhandbuch
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
@@ -3209,15 +3225,16 @@ vor
 \family sans
 Einfügen\SpecialChar menuseparator
 Liste
-\begin_inset space \space{}
+\begin_inset space \thinspace{}
 \end_inset
 
 /
-\begin_inset space \space{}
+\begin_inset space \thinspace{}
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar menuseparator
-Inhaltsverzeichnis
+Inhaltsver\SpecialChar softhyphen
+zeichnis
 \family default
 .
  Der Schriftzug 
@@ -3275,15 +3292,19 @@ Um ein Inhaltsverzeichnis zu löschen, können Sie den Platzhalter ganz einfach
  markieren und wie jedes gewöhnliche Zeichen löschen.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung
 \series default
-: Korrigieren Sie das Inhaltsverzeichnis in der Datei 
+: Korrigieren Sie das Inhaltsverzeichnis in der Datei
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
-beispiel_roh.
- lyx
+beispiel_roh.lyx
 \family default
 .
 \end_layout
@@ -3308,13 +3329,16 @@ Mathematische Ausdrücke
  alle gebräuchlichen mathematischen \SpecialChar LaTeX
 -Befehle wie gewohnt eingegeben werden
  können, doch in \SpecialChar LyX
- werden sie in einer WYSIWYM-Art auch angezeigt! Andererseits
+ werden sie in einer WYSIWYM-Art auch angezeigt! Des Weiteren
  ermöglicht die Tafel der Mathematiksymbole
 \family sans
 ,
 \family default
- dass man professionell aussehende mathematische Ausdrücke schnell und leicht
- schreiben kann, auch wenn man noch nie \SpecialChar LaTeX
+ dass man professionell aussehende mathematische Ausdrücke schnell und
+\begin_inset Newline linebreak
+\end_inset
+
+leicht schreiben kann, auch wenn man noch nie \SpecialChar LaTeX
  benutzt hat.
 \begin_inset Foot
 status collapsed
@@ -3347,15 +3371,11 @@ Schreibe Sie irgendwo in Ihrem \SpecialChar LyX
 \end_layout
 
 \begin_layout LyX-Code
-Ich liebe, was Einstein sagte, E=mc^2, weil es so einfach
+Ich liebe, was Einstein sagte, E=mc^2, weil es so
 \begin_inset Newline newline
 \end_inset
 
-ist.
-\begin_inset Formula $öl$
-\end_inset
-
-
+einfach ist.
 \end_layout
 
 \begin_layout Standard
@@ -3392,7 +3412,8 @@ arg   "math-mode"
  umrahmt wird.
  Das purpurrote Kästchen zeigt an, dass man im Mathe-Editor ist.
  Außerdem erscheint am unteren Rand eine weitere Werkzeugleiste zur Eingabe
- von Mathe-Symbolen und -Konstrukten.
+ von Mathe-Symbolen und -Konstruk\SpecialChar softhyphen
+ten.
 \end_layout
 
 \begin_layout Standard
@@ -3409,7 +3430,7 @@ arg   "math-mode"
 
 .
  Die Formel wird nun in blauer Farbe angezeigt und jetzt ansehnlich gesetzt
- - mit Abstand zwischen den Buchstaben und dem Gleichheitszeichen und einer
+ – mit Abstand zwischen den Buchstaben und dem Gleichheitszeichen und einer
  hochgestellten 
 \begin_inset Quotes gld
 \end_inset
@@ -3441,7 +3462,7 @@ phie.
 sqrt
 \family default
 ; dies kann frustrierend sein, weil man nicht sehen kann, wie ein Ausdruck
- gesetzt wird, bis man nicht die Vorschau angesehen und viel Zeit beim Finden
+ gesetzt wird, bis man die Vorschau angesehen und viel Zeit beim Finden
  von fehlenden Klammern und anderen Fehlern verbracht hat.
  Andererseits versucht \SpecialChar LyX
  nicht, den Ausdruck perfekt aussehen zu lassen (WYSIWYG)
@@ -3724,7 +3745,8 @@ Wenn Sie mathematische Ausdrücke schreiben und mit
 \family sans
 Esc
 \family default
- den Mathematik-Modus verlassen, ist zu beachten, dass (normalerweise) kein
+ den Ma\SpecialChar softhyphen
+thematik-Modus verlassen, ist zu beachten, dass (normalerweise) kein
  Leerzeichen nach dem Ausdruck gesetzt wird.
  Das ist gut, wenn ein Punkt oder ein Komma folgen; wenn Sie aber ein Wort
  nach einer Formel schreiben möchten, dann müssen Sie explizit ein Leerzeichen
@@ -3740,7 +3762,8 @@ Ein Exponent kann über das Menü
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
-Hochgestellt
+Hochge\SpecialChar softhyphen
+stellt
 \family default
  eingegeben werden, doch es ist wirklich einfacher, die 
 \begin_inset Quotes gld
@@ -3763,7 +3786,7 @@ Leerzeichen
 \family sans
 Esc
 \family default
--Taste (um den Mathematikeditor vollkommen zu verlassen) drücken, erscheint
+-Taste drücken (um den Mathematikeditor vollkommen zu verlassen), erscheint
  alles als Exponent.
 \end_layout
 
@@ -3786,19 +3809,22 @@ _
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
 \series default
- Schreiben Sie die Gleichung 1 von 
+ Schreiben Sie die Gleichung
+\begin_inset space ~
+\end_inset
+
+1 von 
 \family typewriter
 beispiel_roh.lyx
 \family default
  im Ma\SpecialChar softhyphen
-the\SpecialChar softhyphen
-ma\SpecialChar softhyphen
-tik-Modus.
+thematik-Modus.
 \end_layout
 
 \begin_layout Section
@@ -3840,7 +3866,8 @@ Mathe-Werkzeugleiste
  kann über das Menü 
 \family sans
 Ansicht\SpecialChar menuseparator
-Werkzeugleisten\SpecialChar menuseparator
+Werkzeug\SpecialChar softhyphen
+leisten\SpecialChar menuseparator
 Mathe
 \family default
  (
@@ -4087,7 +4114,7 @@ Kontrollfläche
 
  schreiben, haben Sie bereits Ihren ersten einfachen Bruch geschrieben.
  Natürlich können Sie auch beliebige andere Ausdrücke in die zwei Quadrate
- schreiben: Variablen mit Exponenten, Quadratwurzeln, andere Brüche, usw..
+ schreiben: Variablen mit Exponenten, Quadratwurzeln, andere Brüche, usw…
 \end_layout
 
 \begin_layout Standard
@@ -4095,14 +4122,16 @@ Kontrollfläche
 \series bold
 Übung:
 \series default
- Schreiben Sie die Gleichung 2 von 
+ Schreiben Sie die Gleichung
+\begin_inset space ~
+\end_inset
+
+2 von 
 \family typewriter
 beispiel_roh.lyx
 \family default
  im Ma\SpecialChar softhyphen
-the\SpecialChar softhyphen
-ma\SpecialChar softhyphen
-tik-Modus.
+thematik-Modus.
 \end_layout
 
 \begin_layout Subsection
@@ -4227,7 +4256,8 @@ Andere Kommandos, die im \SpecialChar TeX
 \family sans
 Funktionen-
 \family default
-Listenauswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
+Listen\SpecialChar softhyphen
+auswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
  und deren Inverse, hyperbolische Funktionen, Logarithmen, Grenzwerte und
  eine Menge weiterer Funktionen.
  Diese Funktionen können auch mit Exponenten und Indizes versehen werden,
@@ -4258,19 +4288,22 @@ Listenauswahl eingefügt werden müssen, sind andere trigonometrische Funktionen
  wichtig ist.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
 \series default
- Schreiben Sie die Gleichung 3 von 
+ Schreiben Sie die Gleichung
+\begin_inset space ~
+\end_inset
+
+3 von 
 \family typewriter
 beispiel_roh.lyx
 \family default
  im Ma\SpecialChar softhyphen
-the\SpecialChar softhyphen
-ma\SpecialChar softhyphen
-tik-Modus.
+thematik-Modus.
 \end_layout
 
 \begin_layout Subsection
@@ -4453,7 +4486,8 @@ Der Modus für abgesetzte Formeln hat einige Unterschiede im Vergleich zum
 \end_layout
 
 \begin_layout Itemize
-Der Standard-Zeichensatz ist für einige Symbole wie 
+Der Standard-Zeichensatz ist für einige Symbole größer, wie zum Beispiel
+ für 
 \begin_inset Formula $\sum$
 \end_inset
 
@@ -4461,7 +4495,7 @@ Der Standard-Zeichensatz ist für einige Symbole wie
 \begin_inset Formula $\int$
 \end_inset
 
- größer
+
 \end_layout
 
 \begin_layout Itemize
@@ -4495,20 +4529,22 @@ nach
  nicht gewünscht ist.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
 \series default
- Setzen Sie die verschiedenen Gleichungen in 
+ Setzen Sie in 
 \family typewriter
 beispiel_roh.lyx
 \family default
- in den absetzten Anzeigemodus und sehen Sie sich an, wie sich der Schriftsatz
- verändert.
+ die verschiedenen Gleichungen in den abgesetzten Anzeigemodus und sehen
+ Sie sich an, wie sich der Schriftsatz verändert.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Übung:
@@ -4537,8 +4573,8 @@ Weitere mathematische Dinge
 \end_layout
 
 \begin_layout Standard
-Der Mathematik-Editor hat noch viel weiter reichende Fähigkeiten, bislang
- haben Sie nur die Grundlagen kennengelernt.
+Der Mathematik-Editor hat noch viel weiter reichende Fähigkeiten.
+ Bisher haben Sie nur die Grundlagen kennengelernt.
  Im 
 \emph on
 Mathe
@@ -4602,9 +4638,7 @@ Benutzerhandbuch
  Mit der Auswahl 
 \family sans
 Einfügen\SpecialChar menuseparator
-Ta\SpecialChar softhyphen
-bel\SpecialChar softhyphen
-le
+Tabelle
 \family default
  (
 \begin_inset Info
@@ -4612,7 +4646,7 @@ type  "icon"
 arg   "tabular-insert"
 \end_inset
 
-) legen Sie eine Tabelle an, indem Sie mit der Maus die Größe festlegen..
+) legen Sie eine Tabelle an, indem Sie mit der Maus die Größe festlegen.
  Klicken Sie nun mit dem 
 \emph on
 rechten Mausknopf
@@ -4627,7 +4661,10 @@ Einstellungen
 \family default
  zu öffnen.
  Hier können umfangreiche Einstellungen einfach vorgenommen werden.
- Wenn Sie auf 
+\begin_inset Newline linebreak
+\end_inset
+
+Wenn Sie auf 
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
@@ -4665,7 +4702,8 @@ Sowohl Tabellen als auch Abbildungen können mit Beschriftungen versehen
 \SpecialChar LyX
  ist voll konfigurierbar.
  Angefangen vom Aussehen des \SpecialChar LyX
--Fensters bis hin zum Format der Ausgabe, alles
+-Fens\SpecialChar softhyphen
+ters bis hin zum Format der Ausgabe, alles
  kann in weitem Rahmen verändert werden.
  Dies geschieht mit dem Menü 
 \family sans
@@ -4851,8 +4889,8 @@ Objekte
 \emph default
  werden die Unterschiede zwischen \SpecialChar LyX
  und \SpecialChar LaTeX
- sehr viel ausführlicher behandelt,
- dort finden Sie auch viele Tipps, wie Sie diverse \SpecialChar LaTeX
+ sehr viel ausführlicher behandelt.
+ Dort finden Sie auch viele Tipps, wie Sie diverse \SpecialChar LaTeX
 -Tricks auch in \SpecialChar LyX
  einsetzen
  können.
@@ -4979,7 +5017,7 @@ zwischen
  WYSIWYG-Tabellen und -Abbildungen bieten.
  \SpecialChar LyX
  wird niemals alle \SpecialChar LaTeX
--Pakete unterstützen.
+-Pakete direkt unterstützen.
  Indem Sie im \SpecialChar LaTeX
 -Vorspann (siehe Abschnitt 
 \begin_inset CommandInset ref
@@ -4994,8 +5032,8 @@ reference "subsec:LaTeX-Vorspann"
 \backslash
 usepackage{foo}
 \family default
- eingeben, können Sie aber auch solche Pakete verwenden – wenn auch nicht
- mit Unterstützung von WYSIWYM.
+ eingeben, können Sie aber auch noch nicht unterstützten Pakete verwenden
+ – wenn auch nicht mit Unterstützung von WYSIWYM.
 \end_layout
 
 \begin_layout Subsection
@@ -5090,9 +5128,9 @@ tex2lyx
 \end_layout
 
 \begin_layout Standard
-Es ist wichtig zu verstehen, d
+Es ist wichtig zu verstehen, dass
 \family sans
-ass 
+ 
 \family typewriter
 tex2lyx
 \family sans
@@ -5114,8 +5152,8 @@ bekannt
 -Layout-Datei
 \family default
  für die Dokumentklasse vorhanden sein.
- Gibt es keine Layout-Datei, erhalten Sie eine Fehlermeldung, dass die Konvertie
-rung fehlgeschlagen ist.
+ Wenn keine Layout-Datei gefunden wird, erhalten Sie eine Fehlermeldung,
+ dass die Konvertierung fehlgeschlagen ist.
  Ohne Layout-Datei weiß 
 \family typewriter
 tex2lyx
@@ -5149,8 +5187,7 @@ Eventuell wollen Sie ein \SpecialChar LyX
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
  wird die von Ihnen editierte Datei (zum Beispiel 
 \family typewriter
@@ -5224,13 +5261,8 @@ Dokument
 \SpecialChar menuseparator
 
 \family sans
-Einstellungen
-\family default
- 
-\family sans
-\SpecialChar menuseparator
-\SpecialChar LaTeX
--Vorspann
+Einstellungen\SpecialChar menuseparator
+LaTeX-Vorspann
 \family default
 , und tragen Sie dort die gewünschten \SpecialChar LaTeX
 -Kommandos ein.
@@ -5265,8 +5297,7 @@ Liste
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar menuseparator
-Bib\SpecialChar TeX
-
+BibTeX
 \begin_inset space \space{}
 \end_inset
 
@@ -5320,10 +5351,11 @@ Unter dem Menüpunkten
 Einfügen\SpecialChar menuseparator
 Sonderzeichen
 \family default
- und 
+ sowie 
 \family sans
 Einfügen\SpecialChar menuseparator
-Formatierung
+For\SpecialChar softhyphen
+matierung
 \family default
  finden Sie weitere besondere Zeichen, wie etwa Fortsetzungspunkte, erzwungene
  Zeilenumbrüche, Trennvorschläge usw.

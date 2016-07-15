@@ -157,17 +157,9 @@ Function MissingPrograms
   ${endif}
 
   # test if and where the BibTeX-editor JabRef is installed
-  ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
+  ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
   ${if} $PathBibTeXEditor == ""
-   ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
-  ${endif}
-  # since JabRef 3.x the pathes are different
-  # there is currently a bug in the Jabref installer that prevents to install it without admin permissions
-  # therefore only check the admin installation
-  ${if} $PathBibTeXEditor == ""
-   ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\Classes\JabRef\shell\open\command" ""
-   StrCpy $PathBibTeXEditor $PathBibTeXEditor -17 # remove '\JabRef.exe" "%1"'
-   StrCpy $PathBibTeXEditor $PathBibTeXEditor "" 1 # remove the leading quote
+   ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
   ${endif}
 
   ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"

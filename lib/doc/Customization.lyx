@@ -6763,16 +6763,7 @@ Format
  Any format is acceptable, but one would normally use the format current
  at the time.
  (In \SpecialChar LyX
- 2.1, the current layout format is 48.) You should be aware that local
- layout is not supported by versions of \SpecialChar LyX
- prior to 1.6, so you should not
- use it if you want to be able to export your document to \SpecialChar LyX
- 1.5 or earlier
- (without, that is, losing the local layout information).
- If you wish to be able to export to 1.6—local layout is supported in 1.6,
- though there is no UI for it—then you should use format 11 and, of course,
- use only layout constructs that were available in \SpecialChar LyX
- 1.6.
+ 2.2, the current layout format is 60.)
 \end_layout
 
 \begin_layout Standard
@@ -6939,8 +6930,7 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class{report}
+DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
@@ -6950,8 +6940,7 @@ to read
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
@@ -7144,7 +7133,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 35
+Format 60
 \begin_inset Newline newline
 \end_inset
 
@@ -7278,8 +7267,7 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -8433,7 +8421,7 @@ Format
 
 .
  The format for the present version of \SpecialChar LyX
- is format 59.
+ is format 60.
  But each version of \SpecialChar LyX
  is capable of reading earlier versions' layout files,
  just as they are capable of reading files produced by earlier versions
@@ -18485,7 +18473,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset
@@ -18510,7 +18498,17 @@ MultiPar
 
 \end_inset
 
- to false.
+ to false and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to true.
  
 \begin_inset Flex Code
 status collapsed
@@ -18521,7 +18519,17 @@ MultiPar
 
 \end_inset
 
- can be set to true for 
+ can be set to true, or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ to false, for 
 \begin_inset Flex Code
 status collapsed
 
@@ -18540,7 +18548,7 @@ after
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+LyxType
 \end_layout
 
 \end_inset

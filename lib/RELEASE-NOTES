@@ -118,19 +118,35 @@
   several regressions with respect to Qt 4.x. See #9215 for a list of bugs
   related to compiling LyX with different versions of Qt.
 
+* The Qt libraries must have support for the SVG graphic format, because
+  LyX now uses svg icons. If this support is lacking, icons cannot be shown.
+
+* If compiling LyX on Windows with Qt 5.6, it is recommended to use MSVC 2015
+  update 2 to avoid #9892.
+
 * LyX now gives an error if the underlying LaTeX command exited with error.
 
 
 !!Known issues in version 2.2.0
 
-* LyX needs to be run under Python 2 and will not work properly on systems
-  where Python 3 is the default binary. See #7030 to know how to fix this
-  properly, since simple shebang conversion in *.py files will not be enough.
+* LyX needs Python 2.7 at runtime. The python 2 interpreter needs to be named
+  either 'python' or 'python2'.
+  Building LyX usually works with Python 3 as well, but there might be cases
+  where it does not work properly on systems where Python 3 is the default
+  binary. See #7030 to know how to fix this properly, since simple shebang
+  conversion in *.py files will not be enough.
 
 * If using LyX with Qt 4, it is possible to suddenly get keyboard keys wrong,
   and deadlock. To work around the issue, you can disable IBus for LyX by
   starting LyX as 'XMODIFIERS= lyx'. For further discussion and alternative
   workarounds, see #9362.
+
+* LyX can produce LuaTeX output that is not compatible with the newest versions
+  of the engine (e.g. 0.95.0, the version in TeX Live 2016). In a later 2.2.x
+  version we plan to implement exporting of LuaTeX code that is compatible
+  with the LuaTeX versions shipped with both TeX Live 2015 and TeX Live 2016.
+  For more information, see the following mailing list thread:
+  https://www.mail-archive.com/search?l=mid&q=20160520075810.yi3uspufehev5aln%40cotopaxi
 
 
 !!Caveats when upgrading from earlier versions to 2.2.x

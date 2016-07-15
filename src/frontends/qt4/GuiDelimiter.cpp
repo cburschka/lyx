@@ -21,8 +21,9 @@
 #include "FontInfo.h"
 #include "FuncRequest.h"
 
-#include "support/gettext.h"
+#include "support/debug.h"
 #include "support/docstring.h"
+#include "support/gettext.h"
 
 #include <QPixmap>
 #include <QCheckBox>
@@ -201,7 +202,16 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		lwi->setFont(font);
 		lwi->setToolTip(toqstr(delim));
 		lwi->setSizeHint(item_size);
-		lwi->setTextAlignment(Qt::AlignTop);
+		switch (ms.fontfamily) {
+		case CMSY_FAMILY:
+		case STMARY_FAMILY:
+			// Hack to work around the broken metrics of these fonts
+			// FIXME: Better fix the fonts or use fonts that are not broken
+			lwi->setTextAlignment(Qt::AlignTop | Qt::AlignHCenter);
+			break;
+		default:
+			lwi->setTextAlignment(Qt::AlignCenter);
+		}
 		list_items[ms.unicode] = lwi;
 		leftLW->addItem(lwi);
 	}

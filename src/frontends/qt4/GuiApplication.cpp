@@ -600,12 +600,16 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 {
 #if (QT_VERSION >= 0x040600)
 	if (lyxrc.use_system_theme_icons) {
+		// use the icons from system theme that are available
 		QString action = toqstr(lyxaction.getActionName(f.action()));
 		if (!f.argument().empty())
 			action += " " + toqstr(f.argument());
 		QString const theme_icon = themeIconName(action);
-		if (QIcon::hasThemeIcon(theme_icon))
-			return QIcon::fromTheme(theme_icon);
+		if (QIcon::hasThemeIcon(theme_icon)) {
+			QIcon const thmicn = QIcon::fromTheme(theme_icon);
+			if (!thmicn.isNull())
+				return thmicn;
+		}
 	}
 #endif
 
@@ -1656,10 +1660,21 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
 			current_view_->openDocument(fname);
-			if (current_view_ && !current_view_->documentBufferView())
+			if (!current_view_->documentBufferView())
 				current_view_->close();
-		} else
+			else if (cmd.origin() == FuncRequest::LYXSERVER) {
+				current_view_->raise();
+				current_view_->activateWindow();
+				current_view_->showNormal();
+			}
+		} else {
 			current_view_->openDocument(fname);
+			if (cmd.origin() == FuncRequest::LYXSERVER) {
+				current_view_->raise();
+				current_view_->activateWindow();
+				current_view_->showNormal();
+			}
+		}
 		break;
 	}
 
@@ -2583,8 +2598,10 @@ QFont const GuiApplication::typewriterSystemFont()
 	QFont font("monospace");
 #endif
 	if (!isFixedPitch(font)) {
+#if QT_VERSION >= 0x040700
 		// try to enforce a real monospaced font
 		font.setStyleHint(QFont::Monospace);
+#endif
 		if (!isFixedPitch(font)) {
 			font.setStyleHint(QFont::TypeWriter);
 			if (!isFixedPitch(font)) font.setFamily("courier");

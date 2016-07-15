@@ -4,27 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/doc/ja/
-\textclass jbook
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
- % the pages of the TOC are numbered roman
- % and a pdf-bookmark for the TOC is added
- \pagenumbering{roman}
- \let\myTOC\tableofcontents
- \renewcommand\tableofcontents{%
-   \pdfbookmark[1]{Contents}{}
-   \myTOC
-   \cleardoublepage
-   \pagenumbering{arabic} }
-\end_preamble
+\textclass jsbook
 \use_default_options false
 \maintain_unincluded_children false
 \begin_local_layout
@@ -69,7 +49,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -84,13 +64,13 @@ End
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize a4paper
+\papersize default
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -144,7 +124,7 @@ End
 status collapsed
 
 \begin_layout Plain Layout
-なにかコメントや間違いの修正がある場合には、\SpecialChar LyX
+なにかコメントや間違いの修正がある場合には，\SpecialChar LyX
 文書化メーリングリスト(
 \begin_inset CommandInset href
 LatexCommand href
@@ -153,7 +133,7 @@ type "mailto:"
 
 \end_inset
 
-)までお知らせ下さい。この文書の翻訳は、当初人見光太郎氏が行った貢献に基づいています。
+)までお知らせ下さい．この文書の翻訳は，当初人見光太郎氏が行った貢献に基づいています．
 \end_layout
 
 \end_inset
@@ -175,7 +155,7 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-この文書の最新のPDF版を以下の場所で入手できます。
+この文書の最新のPDF版を以下の場所で入手できます．
 \begin_inset Newline newline
 \end_inset
 
@@ -200,62 +180,62 @@ http://wiki.lyx.org/\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-このファイルは、\SpecialChar LaTeX
-のことを聞いたことがないか、詳しく知らない人のためにデザインされています。\SpecialChar LaTeX
-のことを知らなくても気にしないで下さい。\SpecialChar LyX
+このファイルは，\SpecialChar LaTeX
+のことを聞いたことがないか，詳しく知らない人のためにデザインされています．\SpecialChar LaTeX
+のことを知らなくても気にしないで下さい．\SpecialChar LyX
 を使うのに\SpecialChar LaTeX
 について学ぶ必要はあ
-りません。\SpecialChar LyX
+りません．\SpecialChar LyX
 は\SpecialChar LaTeX
-を使うための、ほとんどWYSIWYGなインターフェイスなのです。しかし\SpecialChar LyX
-を効率的に使うためには、少しばかり覚えなければならないことがあります。
+を使うための，ほとんどWYSIWYGなインターフェイスなのです．しかし\SpecialChar LyX
+を効率的に使うためには，少しばかり覚えなければならないことがあります．
 \end_layout
 
 \begin_layout Standard
-読者の中には、「.」の後ろにスペースを2つ入れようとしたりとか、段落のあいだに３行空白を入れようとして、この文書を読むに至った方も居られるでしょう。その時、そうい
-った操作ができないことに気づかれたことと思います。実は、他のワードプロセッサで親しんでこられた小手先の技のほとんどが、\SpecialChar LyX
+読者の中には，「.」の後ろにスペースを2つ入れようとしたりとか，段落のあいだに３行空白を入れようとして，この文書を読むに至った方も居られるでしょう．その時，そうい
+った操作ができないことに気づかれたことと思います．実は，他のワードプロセッサで親しんでこられた小手先の技のほとんどが，\SpecialChar LyX
 では使えないことに気づかれることになるはず
-です。なぜならば、これまでお使いになられてきたほとんどのワードプロセッサが、手動で全てのスペースを入れたり、フォントを変えたりといったようなことを、許してきたか
-らです。つまり、あなたは文書を書くだけでなく、組版の作業までやる羽目になっていたのです。\SpecialChar LyX
-は、その組版が整合的になされるように、あなたの代わりに作業を代行し、あな
-たが書くことの中身などのもっと重要なことに集中できるようにします。
+です．なぜならば，これまでお使いになられてきたほとんどのワードプロセッサが，手動で全てのスペースを入れたり，フォントを変えたりといったようなことを，許してきたか
+らです．つまり，あなたは文書を書くだけでなく，組版の作業までやる羽目になっていたのです．\SpecialChar LyX
+は，その組版が整合的になされるように，あなたの代わりに作業を代行し，あな
+たが書くことの中身などのもっと重要なことに集中できるようにします．
 \end_layout
 
 \begin_layout Standard
-ですから、\SpecialChar LyX
-をもっと知るために続きを読んでください。この入門篇を読む時間は、まちがいなく無駄にはなりません。
+ですから，\SpecialChar LyX
+をもっと知るために続きを読んでください．この入門篇を読む時間は，まちがいなく無駄にはなりません．
 \end_layout
 
 \begin_layout Section
-入門篇に含まれているもの、含まれていないもの
+入門篇に含まれているもの，含まれていないもの
 \end_layout
 
 \begin_layout Standard
-この節をはじめる前に少し注意することがあります。
+この節をはじめる前に少し注意することがあります．
 \emph on
 入門篇
 \emph default
-は、説明書の
+は，説明書の
 \emph on
 はじめの一歩
 \emph default
-にまとめられている表記法を使用します。この説明書を先に手に取ってしまった方は、この
+にまとめられている表記法を使用します．この説明書を先に手に取ってしまった方は，この
 \emph on
 入門篇
 \emph default
-を進める前に、まず
+を進める前に，まず
 \emph on
 はじめの一歩
 \emph default
-を読んでください。
+を読んでください．
 \end_layout
 
 \begin_layout Standard
-さて、どのフォントを使った表記が何を意味するか、すでにご存知のはずですから、この
+さて，どのフォントを使った表記が何を意味するか，すでにご存知のはずですから，この
 \emph on
 入門篇
 \emph default
-が何を目的としているか、少しお話ししておくことにしましょう。
+が何を目的としているか，少しお話ししておくことにしましょう．
 \end_layout
 
 \begin_layout Subsection
@@ -267,24 +247,24 @@ http://wiki.lyx.org/\SpecialChar LyX
 \emph on
 入門篇
 \emph default
-は、例と練習問題から成っています。この文書を効果的に使うためには、筆者が入力してみるようにお伝えするものすべてを実際に入力し、また、すべての練習問題を試してみて
-、うまくこなせるかどうかを確認しながら、この文書を一通り読み通すべきです。この入門篇のPDF版を印刷して置いておくと便利でしょう。
+は，例と練習問題から成っています．この文書を効果的に使うためには，筆者が入力してみるようにお伝えするものすべてを実際に入力し，また，すべての練習問題を試してみて
+，うまくこなせるかどうかを確認しながら，この文書を一通り読み通すべきです．この入門篇のPDF版を印刷して置いておくと便利でしょう．
 \end_layout
 
 \begin_layout Standard
 もし\SpecialChar LaTeX
-をご存知ならば、\SpecialChar LyX
+をご存知ならば，\SpecialChar LyX
 の発想のほとんどは\SpecialChar LaTeX
-の発想の変形にほかならないので、
+の発想の変形にほかならないので，
 \emph on
 入門篇
 \emph default
-は多少なりとも早く読むことができるでしょう。しかしながら、知っておきたい\SpecialChar LyX
-ならではの機能もあります。仮に
+は多少なりとも早く読むことができるでしょう．しかしながら，知っておきたい\SpecialChar LyX
+ならではの機能もあります．仮に
 \emph on
 入門篇
 \emph default
-の他の部分を読む気がないとしても、\SpecialChar LaTeX
+の他の部分を読む気がないとしても，\SpecialChar LaTeX
 の熟練ユーザーのために書かれた第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -292,7 +272,7 @@ reference "sec:latexusers"
 
 \end_inset
 
-節だけは、必ず読むべきです。
+節だけは，必ず読むべきです．
 \end_layout
 
 \begin_layout Subsection
@@ -310,11 +290,11 @@ reference "sec:latexusers"
 
 \begin_deeper
 \begin_layout Standard
-これが欲しいならば、
+これが欲しいならば，
 \emph on
 ユーザーの手引き
 \emph default
-を見てください。
+を見てください．
 \end_layout
 
 \end_deeper
@@ -329,18 +309,18 @@ reference "sec:latexusers"
 
 \begin_deeper
 \begin_layout Standard
-必要ないでしょう。\SpecialChar LyX
+必要ないでしょう．\SpecialChar LyX
 の中で\SpecialChar LaTeX
-を使ってできる、素敵なトリックに関心があるなら、埋め込み説明書の
+を使ってできる，素敵なトリックに関心があるなら，埋め込み説明書の
 \emph on
 オブジェクト篇
 \emph default
-を見ると良いでしょう。
+を見ると良いでしょう．
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-そろそろ先に進みましょう。あなたの最初の文書を作ってみる時間です。
+そろそろ先に進みましょう．あなたの最初の文書を作ってみる時間です．
 \end_layout
 
 \begin_layout Chapter
@@ -354,88 +334,88 @@ reference "sec:latexusers"
 \end_layout
 
 \begin_layout Standard
-さて文章を書きはじめる準備はできましたが、その前にちょっとだけ、入門篇をわかりやすく役立つものにするために言っておかなくてはならないことがあります。
+さて文章を書きはじめる準備はできましたが，その前にちょっとだけ，入門篇をわかりやすく役立つものにするために言っておかなくてはならないことがあります．
 \end_layout
 
 \begin_layout Standard
-入門篇ではお伝えしきれない情報がありますので、まず
+入門篇ではお伝えしきれない情報がありますので，まず
 \emph on
 最初
 \emph default
-に他のヘルプファイルがどこにあるか確認しておいてください。これは簡単にできます。\SpecialChar LyX
+に他のヘルプファイルがどこにあるか確認しておいてください．これは簡単にできます．\SpecialChar LyX
 をスタートして
 \family sans
-、ヘルプ
+，ヘルプ
 \family default
-メニューを開き、
+メニューを開き，
 \emph on
 ユーザーの手引き
 \emph default
-を選んでください。同じように
+を選んでください．同じように
 \emph on
 入門篇
 \emph default
 も読み込んでおきたいと思われるかもしれません（これをあなたがすでに\SpecialChar LyX
-の中で読んでいるのでなければ）。このようにしておけば、自分でファイルを書いてるときも、これらの
+の中で読んでいるのでなければ）．このようにしておけば，自分でファイルを書いてるときも，これらの
 説明書を読むことができます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これらを見れば、\SpecialChar LyX
-の多くの機能をどのように使うか、良い例を見つけることもできるでしょう。
+これらを見れば，\SpecialChar LyX
+の多くの機能をどのように使うか，良い例を見つけることもできるでしょう．
 \end_layout
 
 \end_inset
 
-。いったん2つ以上の文書を開けば、これらの間を切り替えるのに、
+．いったん2つ以上の文書を開けば，これらの間を切り替えるのに，
 \family sans
 表示
 \family default
-メニューや文書タブを使うことができます。
+メニューや文書タブを使うことができます．
 \end_layout
 
 \begin_layout Standard
-この入門篇では、あなたが完全に動いている状態の\SpecialChar LyX
-、\SpecialChar LaTeX
-頒布版、それにPDFビューア及びPDFビューアを持っているものと仮定します。すべての主要なLinux頒布版やBS
-D頒布版ではそうなっているはずですし、Windowsでも、\SpecialChar LyX
-インストーラによってちゃんとセットアップされているでしょう。
+この入門篇では，あなたが完全に動いている状態の\SpecialChar LyX
+，\SpecialChar LaTeX
+頒布版，それにPDFビューア及びPDFビューアを持っているものと仮定します．すべての主要なLinux頒布版やBS
+D頒布版ではそうなっているはずですし，Windowsでも，\SpecialChar LyX
+インストーラによってちゃんとセットアップされているでしょう．
 \end_layout
 
 \begin_layout Standard
-最後ですが、\SpecialChar LyX
+最後ですが，\SpecialChar LyX
 の技量をお試しにいただくために
 \family typewriter
 example_raw.lyx
 \family default
-という名前のファイルを作りました。このファイルは、\SpecialChar LyX
-のすばらしい機能をまったく知らない人によって書かれたものと想定してください。あなたが新しい機能を学んだら、この
-ファイルのそれにあたる部分を直してみてください。このファイルには、どのように直したら良いか、「ちっちゃな」ヒントも含まれています
+という名前のファイルを作りました．このファイルは，\SpecialChar LyX
+のすばらしい機能をまったく知らない人によって書かれたものと想定してください．あなたが新しい機能を学んだら，この
+ファイルのそれにあたる部分を直してみてください．このファイルには，どのように直したら良いか，「ちっちゃな」ヒントも含まれています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-ヒントは黄色い「注釈」に入っています。ヒントを見たいときは、それをクリックして下さい。
+ヒントは黄色い「注釈」に入っています．ヒントを見たいときは，それをクリックして下さい．
 \end_layout
 
 \end_inset
 
-。もしカンニングしたかったり、自分がやったものの答え合わせをしたいならば、
+．もしカンニングしたかったり，自分がやったものの答え合わせをしたいならば，
 \family typewriter
 example_lyxified.lyx
 \family default
-というファイルがあります。これは内容は同じですが、師範級の\SpecialChar LyX
-ユーザーによって書かれ、組版されたものです。
+というファイルがあります．これは内容は同じですが，師範級の\SpecialChar LyX
+ユーザーによって書かれ，組版されたものです．
 \end_layout
 
 \begin_layout Standard
-用例ファイルは、\SpecialChar LyX
+用例ファイルは，\SpecialChar LyX
 がインストールされたフォルダの
 \family typewriter
 examples/ja
 \family default
-ディレクトリに入っています。あなたが作業する文書を作るために、元となる文書を開き、
+ディレクトリに入っています．あなたが作業する文書を作るために，元となる文書を開き，
 \family sans
 ファイル
 \family default
@@ -444,25 +424,25 @@ examples/ja
 \family sans
 名前をつけて保存
 \family default
-を選択して、自分のディレクトリに複製を作って下さい。そしてこのファイルの一部を直すごとに、これらの変更がPDF出力にどのような影響を与えるか、確認して下さい。
+を選択して，自分のディレクトリに複製を作って下さい．そしてこのファイルの一部を直すごとに，これらの変更がPDF出力にどのような影響を与えるか，確認して下さい．
 \end_layout
 
 \begin_layout Standard
-ところで、
+ところで，
 \family typewriter
 example
 \family default
-ディレクトリには、他の用例ファイルもたくさんあります。それらのファイルは、色々な面白いことを\SpecialChar LyX
-でどうすればいいのかを見せてくれます。この
+ディレクトリには，他の用例ファイルもたくさんあります．それらのファイルは，色々な面白いことを\SpecialChar LyX
+でどうすればいいのかを見せてくれます．この
 \emph on
 入門篇
 \emph default
-を終ってからか、何か素敵なことを\SpecialChar LyX
-でどうすればいいか思いつかないときに見てみて下さい。
+を終ってからか，何か素敵なことを\SpecialChar LyX
+でどうすればいいか思いつかないときに見てみて下さい．
 \end_layout
 
 \begin_layout Subsection
-文字の入力、表示、書き出し
+文字の入力，表示，書き出し
 \end_layout
 
 \begin_layout Itemize
@@ -479,7 +459,7 @@ example
 \end_layout
 
 \begin_layout Itemize
-次の文を打ち込んで下さい。『
+次の文を打ち込んで下さい．『
 \family typewriter
 これが私の最初の\SpecialChar LyX
 文書です！
@@ -510,37 +490,15 @@ example
 \family sans
 表示
 \family default
-を選ぶか、ツールバーで
+を選ぶか，ツールバーで
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
-を押して、\SpecialChar LaTeX
-を実行させ、PDFファイルを作ります。\SpecialChar LyX
-は、PDFビューアを開いて、印刷したときにあなたの文書がどのように見えるかを表示します。
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-PDFビューアをバックグラウンドで起動したままにしておけば、時間を節約することができます。
-\family sans
-表示\SpecialChar menuseparator
-更新
-\family default
-を選ぶか、ツールバーボタン
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
-を押して、\SpecialChar LaTeX
-を走らせた後、単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです。
-\end_layout
-
-\end_inset
-
- 
+を押して，\SpecialChar LaTeX
+を実行させ，PDFファイルを作ります．\SpecialChar LyX
+は，PDFビューアを開いて，印刷したときにあなたの文書がどのように見えるかを表示します．
 \end_layout
 
 \begin_layout Itemize
@@ -555,14 +513,67 @@ arg   "buffer-update"
 \family default
 を選んで
 \family sans
-、
+，
 \family default
-印刷する準備の整った文書を、適当なファイル形式に書き出してください
+印刷する準備の整った文書を，適当なファイル形式に書き出してください
 \end_layout
 
 \begin_layout Standard
 おめでとうございます！最初の\SpecialChar LyX
-文書を書くことができました。後は、すべて詳細にすぎません。
+文書を書くことができました．後は，すべて詳細にすぎません．
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+A hint
+\lang japanese
+:
+\series default
+ PDFビューアをバックグラウンドで起動したままにしておけば，時間を節約することができます．
+\family sans
+表示\SpecialChar menuseparator
+更新
+\family default
+を選ぶか，ツールバーボタン
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+を押して，\SpecialChar LaTeX
+を走らせた後，単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです．
+\lang english
+Under Windows still use 
+\family sans
+\lang japanese
+文書
+\family default
+\SpecialChar menuseparator
+
+\family sans
+表示
+\family default
+を選ぶか
+\lang english
+or
+\lang japanese
+
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+
+\lang english
+respectively
+\lang japanese
+．
 \end_layout
 
 \begin_layout Subsection
@@ -571,13 +582,13 @@ arg   "buffer-update"
 
 \begin_layout Standard
 もちろん\SpecialChar LyX
-は、これまでワードプロセッサで慣れ親しんでこられたようなことのほとんどを行うことができます。自動的にワードラップや字下げも行います。ここでは幾つかの単純
-なコマンドについて簡単に説明します。
+は，これまでワードプロセッサで慣れ親しんでこられたようなことのほとんどを行うことができます．自動的にワードラップや字下げも行います．ここでは幾つかの単純
+なコマンドについて簡単に説明します．
 \end_layout
 
 \begin_layout Description
 元に戻す \SpecialChar LyX
-は多段階の復元をすることができます、つまり、現在の編集セッションを開始してから行ったすべてのことを、
+は多段階の復元をすることができます，つまり，現在の編集セッションを開始してから行ったすべてのことを，
 \family sans
 編集
 \family default
@@ -592,7 +603,7 @@ type  "icon"
 arg   "undo"
 \end_inset
 
-を繰り返し押す）ことで復元することができるのです。元に戻しすぎてしまったときには、
+を繰り返し押す）ことで復元することができるのです．元に戻しすぎてしまったときには，
 \family sans
 編集
 \family default
@@ -607,7 +618,7 @@ type  "icon"
 arg   "redo"
 \end_inset
 
-）を選択して、新しい方に戻ってください。
+）を選択して，新しい方に戻ってください．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -616,12 +627,12 @@ arg   "redo"
 
 \begin_deeper
 \begin_layout Standard
-今は復旧は100ステップに制限されてます。
+今は復旧は100ステップに制限されてます．
 \end_layout
 
 \end_deeper
 \begin_layout Description
-切り取り/貼り付け/コピー 切り取り・コピー・貼り付けには、
+切り取り/貼り付け/コピー 切り取り・コピー・貼り付けには，
 \family sans
 編集
 \family default
@@ -636,7 +647,7 @@ type  "icon"
 arg   "cut"
 \end_inset
 
-）、
+），
 \family sans
 編集
 \family default
@@ -651,7 +662,7 @@ type  "icon"
 arg   "copy"
 \end_inset
 
-）、または
+），または
 \family sans
 編集
 \family default
@@ -666,15 +677,15 @@ type  "icon"
 arg   "paste"
 \end_inset
 
-）を使ってください。また
+）を使ってください．また
 \emph on
 マウスの中ボタン
 \emph default
-を使うと、選択したテキスト（他のプログラム内での選択でも結構です）が自動的に貼り付けされます。
+を使うと，選択したテキスト（他のプログラム内での選択でも結構です）が自動的に貼り付けされます．
 \end_layout
 
 \begin_layout Description
-検索/置換 検索をするには、
+検索/置換 検索をするには，
 \family sans
 編集
 \family default
@@ -689,11 +700,11 @@ type  "icon"
 arg   "dialog-show findreplace"
 \end_inset
 
-）を選択してください。ダイアログボックスで
+）を選択してください．ダイアログボックスで
 \family sans
 次候補
 \family default
-ボタンを押すと検索し、
+ボタンを押すと検索し，
 \family sans
 置換
 \family default
@@ -702,20 +713,20 @@ arg   "dialog-show findreplace"
 status collapsed
 
 \begin_layout Plain Layout
-終わったら、ダイアログボックスを閉じてください。あるいは、ダイアログボックスを開いたままにしておくのが便利であれば、そうしておくこともできます。\SpecialChar LyX
+終わったら，ダイアログボックスを閉じてください．あるいは，ダイアログボックスを開いたままにしておくのが便利であれば，そうしておくこともできます．\SpecialChar LyX
 で使われるほとん
-どのダイアログボックスは、開いたままにしておくことが可能です。\SpecialChar LyX
-のメインウインドウやダイアログボックスに入力しようとするときは、それらに正しくフォーカスが当ってい
-ることを確認してください。
+どのダイアログボックスは，開いたままにしておくことが可能です．\SpecialChar LyX
+のメインウインドウやダイアログボックスに入力しようとするときは，それらに正しくフォーカスが当ってい
+ることを確認してください．
 \end_layout
 
 \end_inset
 
-。お望みであれば、大文字小文字を区別して検索することも、単語単位で検索することもできます。また、文書を後ろ向きに検索することもできます。
+．お望みであれば，大文字小文字を区別して検索することも，単語単位で検索することもできます．また，文書を後ろ向きに検索することもできます．
 \end_layout
 
 \begin_layout Description
-文字書式 文字は、
+文字書式 文字は，
 \emph on
 強調したり
 \emph default
@@ -725,7 +736,7 @@ type  "icon"
 arg   "font-emph"
 \end_inset
 
-:既定では、英文はイタリック体に和文はボールド体にします)、, 
+:既定では，英文はイタリック体に和文はボールド体にします)，, 
 \noun on
 名詞体にしたり
 \noun default
@@ -735,7 +746,7 @@ type  "icon"
 arg   "font-noun"
 \end_inset
 
-:通常はスモールキャップ体で、人の名前に用いられます)、あるいは
+:通常はスモールキャップ体で，人の名前に用いられます)，あるいは
 \family sans
 編集\SpecialChar menuseparator
 文字様式\SpecialChar menuseparator
@@ -747,11 +758,11 @@ type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-)を使って、好きな書体にすることができます。
+)を使って，好きな書体にすることができます．
 \end_layout
 
 \begin_layout Description
-ツールバー 良く使う機能、例えば
+ツールバー 良く使う機能，例えば
 \family sans
 貼り付け
 \family default
@@ -759,11 +770,11 @@ arg   "dialog-show character"
 \family sans
 印刷
 \family default
-などは、メニューの下のツールバーにまとめてあります。
+などは，メニューの下のツールバーにまとめてあります．
 \end_layout
 
 \begin_layout Standard
-もちろんさっきあなたが書いたのはたった一行なので、これらの機能を便利に使うには短すぎます。もっと文章を書くようになるにつれ、復旧や貼り付けを試してみてください。
+もちろんさっきあなたが書いたのはたった一行なので，これらの機能を便利に使うには短すぎます．もっと文章を書くようになるにつれ，復旧や貼り付けを試してみてください．
 \end_layout
 
 \begin_layout Subsection
@@ -773,72 +784,72 @@ WYSIWYM: \SpecialChar LyX
 
 \begin_layout Standard
 新しいユーザーが\SpecialChar LyX
-を使う場合に、もっとも難しく感じるのは、\SpecialChar LyX
-の空白の扱いでしょう。何回もReturnキーを押したとしても、空白行は一行しか入りません。スペースキーを
-何度押したとしても、空白は一つしか入りません。空白行では、\SpecialChar LyX
-はスペース一個さえ入力することを許しません。タブキーを押しても、タブストップ分移動することはありません
-。実は、タブストップなんてものは、存在しないのです！それに、タブやマージンをセットするためにページの一番上にあるはずのルーラーもないのです。
+を使う場合に，もっとも難しく感じるのは，\SpecialChar LyX
+の空白の扱いでしょう．何回もReturnキーを押したとしても，空白行は一行しか入りません．スペースキーを
+何度押したとしても，空白は一つしか入りません．空白行では，\SpecialChar LyX
+はスペース一個さえ入力することを許しません．タブキーを押しても，タブストップ分移動することはありません
+．実は，タブストップなんてものは，存在しないのです！それに，タブやマージンをセットするためにページの一番上にあるはずのルーラーもないのです．
 \end_layout
 
 \begin_layout Standard
-ほとんどの市販のワードプロセッサは、WYSIWYG、すなわち「What You See is What You Get（見ている状態が手に入るのと同じ状態）」の
-原則に基づいています。それに対して、\SpecialChar LyX
-の原則は、「What You See Is What You 
+ほとんどの市販のワードプロセッサは，WYSIWYG，すなわち「What You See is What You Get（見ている状態が手に入るのと同じ状態）」の
+原則に基づいています．それに対して，\SpecialChar LyX
+の原則は，「What You See Is What You 
 \emph on
 Mean
 \emph default
-（見ている状態は意図している状態）」です。あなたが 意図することを入力していくと、\SpecialChar LyX
-はあなたに代わって、出力がすばらしくなるよう、組版を自動調整します。
+（見ている状態は意図している状態）」です．あなたが 意図することを入力していくと，\SpecialChar LyX
+はあなたに代わって，出力がすばらしくなるよう，組版を自動調整します．
 \family sans
 Return
 \family default
-は文法的には段落を分けることを意味しますし、
+は文法的には段落を分けることを意味しますし，
 \family sans
 スペース
 \family default
-は文法的には単語を分けることを意味しますから、文法的には、それらを続けて複数入れる理由がありません。
+は文法的には単語を分けることを意味しますから，文法的には，それらを続けて複数入れる理由がありません．
 \family sans
 タブ
 \family default
-は文法的な意味をまったく持っていませんので、\SpecialChar LyX
+は文法的な意味をまったく持っていませんので，\SpecialChar LyX
 は
 \family sans
 タブ
 \family default
-はサポートしません。\SpecialChar LyX
-を使うことによって、文書の
+はサポートしません．\SpecialChar LyX
+を使うことによって，文書の
 \emph on
 内容
 \emph default
-の心配をする時間を増やすことができ、
+の心配をする時間を増やすことができ，
 \emph on
 体裁
 \emph default
-の心配をする時間を減らすことができます。WYSIWYMの概念に関する情報については、
+の心配をする時間を減らすことができます．WYSIWYMの概念に関する情報については，
 \emph on
 はじめの一歩
 \emph default
-を参照してください。
+を参照してください．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-には、文書の体裁を微調整する（多くの）手段があります。最終的には、\SpecialChar LyX
-は、あなたの意図するところを
+には，文書の体裁を微調整する（多くの）手段があります．最終的には，\SpecialChar LyX
+は，あなたの意図するところを
 \emph on
-、正確
+，正確
 \emph default
-には組版することはできないかもしれません。
+には組版することはできないかもしれません．
 \emph on
 ユーザーの手引
 \emph default
-には、微調整のためのすべての情報が書いてあります。そこには例えば、
+には，微調整のためのすべての情報が書いてあります．そこには例えば，
 \family sans
 水平フィル
 \family default
-や縦方向の空白—複数の空白や空行を使うよりもずっと強力で多機能です—をはじめ、フォントの大きさや文字様式、段落の配置を手動で変更する方法が説明してあります。しか
-し重要なことは、文書を書くにあたって、最初から最後まで内容に集中することができ、最後にちょっとだけ微調整の心配をしてやるだけでいいという点です。標準的なワードプ
-ロセッサでは、文章を書いているあいだを通じて、たえず文書の整形に気を取られてしまいます。
+や縦方向の空白—複数の空白や空行を使うよりもずっと強力で多機能です—をはじめ，フォントの大きさや文字様式，段落の配置を手動で変更する方法が説明してあります．しか
+し重要なことは，文書を書くにあたって，最初から最後まで内容に集中することができ，最後にちょっとだけ微調整の心配をしてやるだけでいいという点です．標準的なワードプ
+ロセッサでは，文章を書いているあいだを通じて，たえず文書の整形に気を取られてしまいます．
 \end_layout
 
 \begin_layout Section
@@ -846,7 +857,7 @@ Return
 \end_layout
 
 \begin_layout Standard
-文書は、それぞれ異なった目的を持つ部分からできています。私たちは、この部分のことを
+文書は，それぞれ異なった目的を持つ部分からできています．私たちは，この部分のことを
 \emph on
 環境
 \emph default
@@ -854,18 +865,18 @@ Return
 \emph on
 environment
 \emph default
-）と呼んでいます。文書の大半は、ふつうの本文から成ります。節見出し（あるいは章見出しや小節見出し）は、これから新しいトピックやサブトピックが始まることを読者に知
-らせる環境です。また、ある種の文書は、特別な環境を用います。学術論文なら概要環境とタイトル環境が用いられるでしょう。書簡の場合はそのどちらも用いられないでしょう
-が、送り主の住所を教える環境は用いられるでしょう。
+）と呼んでいます．文書の大半は，ふつうの本文から成ります．節見出し（あるいは章見出しや小節見出し）は，これから新しいトピックやサブトピックが始まることを読者に知
+らせる環境です．また，ある種の文書は，特別な環境を用います．学術論文なら概要環境とタイトル環境が用いられるでしょう．書簡の場合はそのどちらも用いられないでしょう
+が，送り主の住所を教える環境は用いられるでしょう．
 \end_layout
 
 \begin_layout Standard
-環境は、\SpecialChar LyX
-の「What You See Is What You Mean」の哲学を支えるための基本的な要素です。ある一つの環境は、そのためのフォント型、フォントの
-大きさ、字下げ、行間の間隔等を必要とします。問題をより複雑にするのは、ある環境の正確な体裁が、文書によって変わることです。ある学術雑誌は、節見出しに18ポイント
-のボールド体を使い、中央揃えにするのに対して、他の学術雑誌は15ポイントのイタリック体を使って左寄せにします。言語によって字下げの標準様式は変わるでしょうし、書
-誌情報の体裁もひじょうに大きく異なります。\SpecialChar LyX
-を使えば、これらすべての異なる体裁様式を覚える必要はなくなるのです。
+環境は，\SpecialChar LyX
+の「What You See Is What You Mean」の哲学を支えるための基本的な要素です．ある一つの環境は，そのためのフォント型，フォントの
+大きさ，字下げ，行間の間隔等を必要とします．問題をより複雑にするのは，ある環境の正確な体裁が，文書によって変わることです．ある学術雑誌は，節見出しに18ポイント
+のボールド体を使い，中央揃えにするのに対して，他の学術雑誌は15ポイントのイタリック体を使って左寄せにします．言語によって字下げの標準様式は変わるでしょうし，書
+誌情報の体裁もひじょうに大きく異なります．\SpecialChar LyX
+を使えば，これらすべての異なる体裁様式を覚える必要はなくなるのです．
 \end_layout
 
 \begin_layout Standard
@@ -873,7 +884,7 @@ environment
 \family sans
 環境
 \family default
-選択ボックスは、ツールバーの左端にあり、
+選択ボックスは，ツールバーの左端にあり，
 \begin_inset Graphics
 	filename clipart/ToolbarEnvBox.png
 	scale 75
@@ -881,9 +892,9 @@ environment
 
 \end_inset
 
-のような形をしています。そして、それはいまお書きになっている場所の環境を表示しています。さきほど、あなたが最初の文書をお書きになっていたときには、そこには「標準
-」と表示してあったでしょう。これはテキストの既定の環境です。あなたの新しい文章にいろいろな環境を入れてみて下さい。そうすればそれがどのように働くかを見ることがで
-きます。
+のような形をしています．そして，それはいまお書きになっている場所の環境を表示しています．さきほど，あなたが最初の文書をお書きになっていたときには，そこには「標準
+」と表示してあったでしょう．これはテキストの既定の環境です．あなたの新しい文章にいろいろな環境を入れてみて下さい．そうすればそれがどのように働くかを見ることがで
+きます．
 \end_layout
 
 \begin_layout Subsection
@@ -896,7 +907,7 @@ environment
 \family typewriter
 はじめに
 \family default
-と入力してください、そして
+と入力してください，そして
 \family sans
 環境
 \family default
@@ -909,14 +920,14 @@ environment
 status collapsed
 
 \begin_layout Plain Layout
-行を選択しておく必要はありません。もしどこも選択されていなかったら、\SpecialChar LyX
-はあなたが今いる段落を選んだ環境に変更します。逆に、環境を選ぶ前に複数の段落を選択しておけば
-、それらをすべて新しい環境に変えることができます。
+行を選択しておく必要はありません．もしどこも選択されていなかったら，\SpecialChar LyX
+はあなたが今いる段落を選んだ環境に変更します．逆に，環境を選ぶ前に複数の段落を選択しておけば
+，それらをすべて新しい環境に変えることができます．
 \end_layout
 
 \end_inset
 
-。
+．
 \family sans
 節*
 \family default
@@ -924,19 +935,19 @@ status collapsed
 \family sans
 節
 \family default
-を選んでいることを確認してください。この2つの違いは後で説明します。\SpecialChar LyX
-が「1」という節番号を入れ、節見出しとして大きなフォントで画面上に組版します。Returnキ
-ーを押してみてください。
+を選んでいることを確認してください．この2つの違いは後で説明します．\SpecialChar LyX
+が「1」という節番号を入れ，節見出しとして大きなフォントで画面上に組版します．Returnキ
+ーを押してみてください．
 \family sans
 環境
 \family default
-ボックスの表示は「節」から「標準」へ戻ります。節タイトルは、ほとんどの環境がそうですが、Returnキーを押すとその環境が終わったものと仮定します。文章の導入部
+ボックスの表示は「節」から「標準」へ戻ります．節タイトルは，ほとんどの環境がそうですが，Returnキーを押すとその環境が終わったものと仮定します．文章の導入部
 を次のように入力してみましょう:
 \end_layout
 
 \begin_layout LyX-Code
-これは、私の最初の\SpecialChar LyX
-文書の導入部です。
+これは，私の最初の\SpecialChar LyX
+文書の導入部です．
 \end_layout
 
 \begin_layout Standard
@@ -948,22 +959,22 @@ Returnキーを押してまた
 \family sans
 節
 \family default
-を選んでください。\SpecialChar LyX
-はまた「2」という節番号を表示して、あなたがタイトルを入力するのを待ちます。
+を選んでください．\SpecialChar LyX
+はまた「2」という節番号を表示して，あなたがタイトルを入力するのを待ちます．
 \family typewriter
 「追加の事項
 \family default
-」と入力してください。\SpecialChar LyX
-が、これを節見出しとして組版するのが分かるでしょう。
+」と入力してください．\SpecialChar LyX
+が，これを節見出しとして組版するのが分かるでしょう．
 \end_layout
 
 \begin_layout Standard
-だいぶん良くなってきました。前と同じように、第1節の最後（「
+だいぶん良くなってきました．前と同じように，第1節の最後（「
 \family typewriter
 最初の\SpecialChar LyX
 文書です
 \family default
-」の後ろ）に戻って、Returnキーを押し、
+」の後ろ）に戻って，Returnキーを押し，
 \family sans
 環境
 \family default
@@ -971,14 +982,14 @@ Returnキーを押してまた
 \family sans
 節
 \family default
-を選んでください。\SpecialChar LyX
-は「2」を表示して、あなたが節見出しを入力するのを待ちます。
+を選んでください．\SpecialChar LyX
+は「2」を表示して，あなたが節見出しを入力するのを待ちます．
 \family typewriter
 「この文書について
 \family default
-」と入力してください。さきほど第２節だった「追加の事項」の節が、自動的に第3節になっています！真にWYSIWYMの流儀では、あなたは節見出しを構成する本文だけわ
-かっていればよく、連番振りやその組版は\SpecialChar LyX
-が面倒を見るのです。
+」と入力してください．さきほど第２節だった「追加の事項」の節が，自動的に第3節になっています！真にWYSIWYMの流儀では，あなたは節見出しを構成する本文だけわ
+かっていればよく，連番振りやその組版は\SpecialChar LyX
+が面倒を見るのです．
 \end_layout
 
 \begin_layout Standard
@@ -986,11 +997,11 @@ Returnキーを押して
 \family sans
 標準
 \family default
-環境に戻り、次の5行を入力してください。
+環境に戻り，次の5行を入力してください．
 \end_layout
 
 \begin_layout LyX-Code
-節と小節の説明が以下にあります。
+節と小節の説明が以下にあります．
 \end_layout
 
 \begin_layout LyX-Code
@@ -998,7 +1009,7 @@ Returnキーを押して
 \end_layout
 
 \begin_layout LyX-Code
-節は小節よりも大きいです。
+節は小節よりも大きいです．
 \end_layout
 
 \begin_layout LyX-Code
@@ -1006,56 +1017,56 @@ Returnキーを押して
 \end_layout
 
 \begin_layout LyX-Code
-小節は節よりも小さいです。
+小節は節よりも小さいです．
 \end_layout
 
 \begin_layout Standard
 2行目をクリックして
 \family sans
-、環境
+，環境
 \family default
 ボックスから
 \family sans
 小節
 \family default
-を選んでください。\SpecialChar LyX
-は、この小節に「2.1」という番号を振って、通常の本文よりは大きいものの、節見出しよりは小さいフォントを使って組版します。同じようにして、4行目
+を選んでください．\SpecialChar LyX
+は，この小節に「2.1」という番号を振って，通常の本文よりは大きいものの，節見出しよりは小さいフォントを使って組版します．同じようにして，4行目
 も
 \family sans
 小節
 \family default
-に変えましょう。おそらく想像されていたとおり、この節に「2.2」と\SpecialChar LyX
-が自動的に番号を振ります。もし第２節の前に新しい節を挿入すると、第２節は第３節に番号が変わり、ま
-た小節の番号も「3.1」と「3.2」になります。
+に変えましょう．おそらく想像されていたとおり，この節に「2.2」と\SpecialChar LyX
+が自動的に番号を振ります．もし第２節の前に新しい節を挿入すると，第２節は第３節に番号が変わり，ま
+た小節の番号も「3.1」と「3.2」になります．
 \end_layout
 
 \begin_layout Standard
 これ以下の階層の節割りには
 \family sans
-、小々節
+，小々節
 \family default
-、
+，
 \family sans
 段落
 \family default
-、
+，
 \family sans
 小段落
 \family default
-等があります。ご自分でこれらを試してみてください。既定では、段落と小段落の見出しには番号が振られず、小段落は字下げされることに気付かれることでしょう。詳細の説明
+等があります．ご自分でこれらを試してみてください．既定では，段落と小段落の見出しには番号が振られず，小段落は字下げされることに気付かれることでしょう．詳細の説明
 とこの設定の変更の仕方については
 \emph on
-、ユーザーの手引き
+，ユーザーの手引き
 \emph default
-をご参照ください。実は、
+をご参照ください．実は，
 \family sans
 章
 \family default
-見出しが、
+見出しが，
 \family sans
 節
 \family default
-より上の、最上位の階層の節割りになっていますが、これはあるタイプ（文書クラス）の\SpecialChar LyX
+より上の，最上位の階層の節割りになっていますが，これはあるタイプ（文書クラス）の\SpecialChar LyX
 文書でしか使えません（第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1063,11 +1074,11 @@ reference "sec:文書クラス"
 
 \end_inset
 
-節を参照）。
+節を参照）．
 \end_layout
 
 \begin_layout Standard
-最後になりましたが、番号の振られていない節や小節が欲しい場合もあるでしょう。そのための環境もあります。既存の節見出しの一つを
+最後になりましたが，番号の振られていない節や小節が欲しい場合もあるでしょう．そのための環境もあります．既存の節見出しの一つを
 \family sans
 節*
 \family default
@@ -1075,8 +1086,8 @@ reference "sec:文書クラス"
 \family sans
 環境
 \family default
-ボックスの下の方までスクロールしないと見つからないかもしれません）に変えると、通常の節見出しで用いられるのと同じフォント寸法を用いるものの、番号が振られなくなり
-ます。
+ボックスの下の方までスクロールしないと見つからないかもしれません）に変えると，通常の節見出しで用いられるのと同じフォント寸法を用いるものの，番号が振られなくなり
+ます．
 \family sans
 小節
 \family default
@@ -1084,7 +1095,7 @@ reference "sec:文書クラス"
 \family sans
 小々節
 \family default
-にも、対応した「星付き」環境があります。既存の節や小節を星付き環境に変更してみて、特に、他の節の番号がどのように更新されるかを確認してください。
+にも，対応した「星付き」環境があります．既存の節や小節を星付き環境に変更してみて，特に，他の節の番号がどのように更新されるかを確認してください．
  
 \end_layout
 
@@ -1097,7 +1108,7 @@ reference "sec:文書クラス"
 \family typewriter
 example_raw.lyx
 \family default
-の、節見出しと小節見出しを正しく直してください。
+の，節見出しと小節見出しを正しく直してください．
 \end_layout
 
 \begin_layout Subsection
@@ -1106,35 +1117,35 @@ example_raw.lyx
 
 \begin_layout Standard
 \SpecialChar LyX
-は、箇条書きを組版するための環境をいくつか持っています。この各箇条書き環境を使えば、概要を書くのに100万回も
+は，箇条書きを組版するための環境をいくつか持っています．この各箇条書き環境を使えば，概要を書くのに100万回も
 \family sans
 タブ
 \family default
-を打つことから開放され、箇条書きの中に項目を追加しても連番を振り直さずに済むようになります。文書の種類が異なれば、論理的に異なった箇条書き環境が必要とされます。
+を打つことから開放され，箇条書きの中に項目を追加しても連番を振り直さずに済むようになります．文書の種類が異なれば，論理的に異なった箇条書き環境が必要とされます．
 \end_layout
 
 \begin_layout Itemize
-スライドの発表では、各要点を説明するのに
+スライドの発表では，各要点を説明するのに
 \family sans
 箇条書き（記号）
 \family default
-環境のブリット付き一覧が使用されるでしょう。
+環境のブリット付き一覧が使用されるでしょう．
 \end_layout
 
 \begin_layout Itemize
 要約では
 \family sans
-、箇条書き（連番）
+，箇条書き（連番）
 \family default
-環境の連番（あるいはアルファベット）の振られた一覧が使用されるでしょう。
+環境の連番（あるいはアルファベット）の振られた一覧が使用されるでしょう．
 \end_layout
 
 \begin_layout Itemize
-ソフトウエア・パッケージ群の取扱説明書では、各項目がボールド体の単語で始まる
+ソフトウエア・パッケージ群の取扱説明書では，各項目がボールド体の単語で始まる
 \family sans
 箇条書き（記述）
 \family default
-環境が使用されるかもしれません。
+環境が使用されるかもしれません．
 \end_layout
 
 \begin_layout Itemize
@@ -1142,23 +1153,23 @@ example_raw.lyx
 \family sans
 箇条書き（一覧）
 \family default
-環境は、
+環境は，
 \family sans
 箇条書き（記述）
 \family default
-環境から派生したものです。
+環境から派生したものです．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-が他のワードプロセッサより優れている理由の一覧を作ってみましょう。使用中の文書のどこかに、次のように入力してください:
+が他のワードプロセッサより優れている理由の一覧を作ってみましょう．使用中の文書のどこかに，次のように入力してください:
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
 \SpecialChar LyX
-は他のワープロよりも優れています。なぜなら
+は他のワープロよりも優れています．なぜなら
 \end_layout
 
 \begin_layout Standard
@@ -1166,7 +1177,7 @@ example_raw.lyx
 \family sans
 Return
 \family default
-を押して下さい。それから
+を押して下さい．それから
 \family sans
 環境
 \family default
@@ -1180,34 +1191,34 @@ type  "icon"
 arg   "layout Itemize"
 \end_inset
 
-)。すると\SpecialChar LyX
-は、行頭に小さな「印」（ブリット）を描画します。以下のように理由を入力してください。
+)．すると\SpecialChar LyX
+は，行頭に小さな「印」（ブリット）を描画します．以下のように理由を入力してください．
 \end_layout
 
 \begin_layout LyX-Code
-組版をあなたの代わりにやってくれます。
+組版をあなたの代わりにやってくれます．
 \end_layout
 
 \begin_layout LyX-Code
-数式はWYSIWYGです。
+数式はWYSIWYGです．
 \end_layout
 
 \begin_layout LyX-Code
-箇条書きを作るのがとても簡単です。
+箇条書きを作るのがとても簡単です．
 \end_layout
 
 \begin_layout Standard
-箇条書き環境では、見出しの場合と違っ
+箇条書き環境では，見出しの場合と違っ
 \family sans
 Return
 \family default
-を押しても環境が終了しません。その代わり、\SpecialChar LyX
-はあなたが引き続き、箇条書きの次項目を入力するものと仮定します。つまり、上のように理由を入力すると、三つの項目の箇条書
-きになるはずです。もし一つの箇条書き
+を押しても環境が終了しません．その代わり，\SpecialChar LyX
+はあなたが引き続き，箇条書きの次項目を入力するものと仮定します．つまり，上のように理由を入力すると，三つの項目の箇条書
+きになるはずです．もし一つの箇条書き
 \emph on
 項目
 \emph default
-が二つ以上の段落を持つようにしたいときには、
+が二つ以上の段落を持つようにしたいときには，
 \family sans
 Ctrl-Return
 \family default
@@ -1215,7 +1226,7 @@ Ctrl-Return
 \family sans
 保護された改行
 \family default
-を使うのが一つの方法です。箇条書きから抜けたいときには、
+を使うのが一つの方法です．箇条書きから抜けたいときには，
 \family sans
 標準
 \family default
@@ -1225,29 +1236,29 @@ type  "shortcut"
 arg   "layout Standard"
 \end_inset
 
-を使ってください）。
+を使ってください）．
 \end_layout
 
 \begin_layout Standard
-これで美しい記号付きの箇条書きができたはずです。お望みならば、印刷時の箇条書きの仕上がりをみるために、\SpecialChar LaTeX
-を走らせてみてください。一方、これらの理由に番号を振りたか
-った場合はどうすればよいでしょうか。その場合は、単に箇条書き全体を選択して
+これで美しい記号付きの箇条書きができたはずです．お望みならば，印刷時の箇条書きの仕上がりをみるために，\SpecialChar LaTeX
+を走らせてみてください．一方，これらの理由に番号を振りたか
+った場合はどうすればよいでしょうか．その場合は，単に箇条書き全体を選択して
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
-では、箇条書きの
+では，箇条書きの
 \emph on
 前の
 \emph default
-段落をともに選択しない限り、最初のブリットを選択することはできませんが、おそらくそうしたいと思われることはないでしょう。同様に、連番の振られた節見出しの番号も選
-択することはできません。これは、ブリットや番号はそれぞれ文書設定や本文中の位置に依存するため、意図的にこのようになっているのです。
+段落をともに選択しない限り，最初のブリットを選択することはできませんが，おそらくそうしたいと思われることはないでしょう．同様に，連番の振られた節見出しの番号も選
+択することはできません．これは，ブリットや番号はそれぞれ文書設定や本文中の位置に依存するため，意図的にこのようになっているのです．
 \end_layout
 
 \end_inset
 
-、
+，
 \family sans
 環境
 \family default
@@ -1261,12 +1272,12 @@ type  "icon"
 arg   "layout Enumerate"
 \end_inset
 
-)。ほら！一瞬です。前述したように、項目を加えたり削除したりすると、\SpecialChar LyX
-は自動的に連番を更新してくれます。
+)．ほら！一瞬です．前述したように，項目を加えたり削除したりすると，\SpecialChar LyX
+は自動的に連番を更新してくれます．
 \end_layout
 
 \begin_layout Standard
-他の2つの箇条書き環境、
+他の2つの箇条書き環境，
 \family sans
 箇条書き（記述）
 \family default
@@ -1274,7 +1285,7 @@ arg   "layout Enumerate"
 \family sans
 箇条書き（一覧）
 \family default
-の出力がどのようなものになるかを見るために、この箇条書きが選択された状態のまま、これらの環境に変更してみるとよろしいでしょう(
+の出力がどのようなものになるかを見るために，この箇条書きが選択された状態のまま，これらの環境に変更してみるとよろしいでしょう(
 \begin_inset Info
 type  "icon"
 arg   "layout Description"
@@ -1286,28 +1297,28 @@ type  "icon"
 arg   "layout List"
 \end_inset
 
-)。これらの2つの環境では、箇条書きの各項目は、最初の単語が用語として表示され、段落の残り（
+)．これらの2つの環境では，箇条書きの各項目は，最初の単語が用語として表示され，段落の残り（
 \family sans
 Return
 \family default
-を入力するまで）がその用語の定義として表示されるような形で構成されます。用語は、ボールド体で組版される（
+を入力するまで）がその用語の定義として表示されるような形で構成されます．用語は，ボールド体で組版される（
 \family sans
 箇条書き（記述）
 \family default
-）か、「タブ」
+）か，「タブ」
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-ただし、不器用で融通が効かない変更不可能なタイプライター式の
+ただし，不器用で融通が効かない変更不可能なタイプライター式の
 \family sans
 タブ
 \family default
-ではなくて、一番長い用語に合わせて変化する組版工式の
+ではなくて，一番長い用語に合わせて変化する組版工式の
 \family sans
 タブ
 \family default
-です。
+です．
 \end_layout
 
 \end_inset
@@ -1316,11 +1327,11 @@ status collapsed
 \family sans
 箇条書き（一覧）
 \family default
-）されます。用語定義に2つ以上の単語を指定したい場合には、それらの単語を
+）されます．用語定義に2つ以上の単語を指定したい場合には，それらの単語を
 \family sans
 保護された空白
 \family default
-で区切るようにしてください。
+で区切るようにしてください．
 \end_layout
 
 \begin_layout Standard
@@ -1332,16 +1343,16 @@ status collapsed
 \family typewriter
 example_raw.lyx
 \family default
-にある箇条書きを組版してみてください。
+にある箇条書きを組版してみてください．
 \end_layout
 
 \begin_layout Standard
-箇条書きは、お互いに自由に入れ子にすることができます。要約を書く場合がわかりやすい用例です。連番箇条書きや記号箇条書きは、入れ子として別の連番箇条書きや記号箇条
-書きを含むことになるでしょう。各種箇条書きの詳細や、入れ子の用例については
+箇条書きは，お互いに自由に入れ子にすることができます．要約を書く場合がわかりやすい用例です．連番箇条書きや記号箇条書きは，入れ子として別の連番箇条書きや記号箇条
+書きを含むことになるでしょう．各種箇条書きの詳細や，入れ子の用例については
 \emph on
-、ユーザーの手引き
+，ユーザーの手引き
 \emph default
- をご参照ください。
+ をご参照ください．
 \end_layout
 
 \begin_layout Subsection
@@ -1349,15 +1360,15 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-引用を周囲の本文から切り離して行うための環境が2つあります。一つは、短い引用のための
+引用を周囲の本文から切り離して行うための環境が2つあります．一つは，短い引用のための
 \family sans
 引用（字下げなし）
 \family default
-であり、もう一つは、長い引用のための
+であり，もう一つは，長い引用のための
 \family sans
 引用（字下げあり）
 \family default
-です。コンピュータのコード（
+です．コンピュータのコード（
 \family sans
 \SpecialChar LyX
 コード
@@ -1380,25 +1391,25 @@ status collapsed
 \family typewriter
 タイプライタ
 \family default
-体で出力され、\SpecialChar LyX
-内で唯一、コードの字下げを可能にするために、複数の空白を使うことが許された環境です。
+体で出力され，\SpecialChar LyX
+内で唯一，コードの字下げを可能にするために，複数の空白を使うことが許された環境です．
 \family sans
 詩句
 \family default
-環境を使えば、詩を書くことさえできます。この環境では
+環境を使えば，詩を書くことさえできます．この環境では
 \family sans
 Return
 \family default
-で連（スタンザ）を分け、
+で連（スタンザ）を分け，
 \family sans
 Ctrl-Return
 \family default
-で連の中の行を分けます。利用可能な\SpecialChar LyX
-環境すべてについてのより完全な説明については、
+で連の中の行を分けます．利用可能な\SpecialChar LyX
+環境すべてについてのより完全な説明については，
 \emph on
 ユーザーの手引き
 \emph default
-をご参照ください。
+をご参照ください．
 \end_layout
 
 \begin_layout Standard
@@ -1423,7 +1434,7 @@ example_raw.lyx
 \family sans
 詩句
 \family default
-を正しく組版してください。
+を正しく組版してください．
 \end_layout
 
 \begin_layout Chapter
@@ -1431,14 +1442,14 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-前章で、\SpecialChar LyX
-での書きかたに慣れていただけたものと思います。そこでは、\SpecialChar LyX
-の基本的な編集操作と、環境を使った強力な執筆法を紹介しました。しかしながら、\SpecialChar LyX
+前章で，\SpecialChar LyX
+での書きかたに慣れていただけたものと思います．そこでは，\SpecialChar LyX
+の基本的な編集操作と，環境を使った強力な執筆法を紹介しました．しかしながら，\SpecialChar LyX
 を使うほとんどの人々
-は、論文・論説・書籍・取扱説明書・書簡のような本格的な文書を執筆することを欲しています。本章は、\SpecialChar LyX
-を使って単に文章を書くだけのレベルを卒業して、本格的な文書を執筆
-する水準までご案内しようとするものです。まず各種の文書を執筆することを可能とする文書クラスというものをご紹介します。それから、タイトル・脚注・相互参照・書誌情報
-・目次といった、単なる文章を文書に仕上げるための多くの追加機能をご説明いたします。
+は，論文・論説・書籍・取扱説明書・書簡のような本格的な文書を執筆することを欲しています．本章は，\SpecialChar LyX
+を使って単に文章を書くだけのレベルを卒業して，本格的な文書を執筆
+する水準までご案内しようとするものです．まず各種の文書を執筆することを可能とする文書クラスというものをご紹介します．それから，タイトル・脚注・相互参照・書誌情報
+・目次といった，単なる文章を文書に仕上げるための多くの追加機能をご説明いたします．
 \end_layout
 
 \begin_layout Section
@@ -1453,8 +1464,8 @@ name "sec:文書クラス"
 \end_layout
 
 \begin_layout Standard
-文書の種類によって組版のしかたは異ならなくてはなりません。例えば、書籍は一般に両面に印刷されますが、論文は片面です。また、多くの文書は固有の環境を含み、例えば書
-簡には、送り主の住所やサインのための環境が含まれますが、書籍や論文では、これらの環境は意味をなしません。\SpecialChar LyX
+文書の種類によって組版のしかたは異ならなくてはなりません．例えば，書籍は一般に両面に印刷されますが，論文は片面です．また，多くの文書は固有の環境を含み，例えば書
+簡には，送り主の住所やサインのための環境が含まれますが，書籍や論文では，これらの環境は意味をなしません．\SpecialChar LyX
 
 \emph on
 文書クラス
@@ -1464,28 +1475,28 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar LaTeX
 ユーザーへ：これは\SpecialChar LaTeX
-のdocument classと同じものです。
+のdocument classと同じものです．
 \end_layout
 
 \end_inset
 
 
 \emph default
-は、このような文書間の大局的な違いを取り扱うためのものです。例えばこの
+は，このような文書間の大局的な違いを取り扱うためのものです．例えばこの
 \emph on
 入門篇
 \emph default
-は、
+は，
 \family sans
 Book
 \family default
-文書クラスで書かれています。文書クラスは、WYSIWYM哲学の重要な構成要素となっています。なぜなら、文書クラスが、\SpecialChar LyX
+文書クラスで書かれています．文書クラスは，WYSIWYM哲学の重要な構成要素となっています．なぜなら，文書クラスが，\SpecialChar LyX
 に文書をどのように組版すべきかを指示してくれ
-るおかげで、書き手は組版のしかたについて関知する必要がなくなっているからです。
+るおかげで，書き手は組版のしかたについて関知する必要がなくなっているからです．
 \end_layout
 
 \begin_layout Standard
-前章でお書きになった文書は、おそらくは
+前章でお書きになった文書は，おそらくは
 \family sans
 Article
 \family default
@@ -1494,12 +1505,12 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-通常、これが既定の文書クラスになっています。
+通常，これが既定の文書クラスになっています．
 \end_layout
 
 \end_inset
 
-。それを（
+．それを（
 \family sans
 文書
 \family default
@@ -1508,31 +1519,31 @@ status collapsed
 \family sans
 設定
 \family default
-ダイアログを使って）他の文書クラスへ変更してみて、文書の組版がどう変わるかを確認してみましょう。文書クラスを
+ダイアログを使って）他の文書クラスへ変更してみて，文書の組版がどう変わるかを確認してみましょう．文書クラスを
 \family sans
 Book
 \family default
-文書クラスへと変更して、
+文書クラスへと変更して，
 \family sans
 環境
 \family default
-ボックスを見てみても、利用できる環境がほとんど同じであることがわかるはずです。ただし、新しく
+ボックスを見てみても，利用できる環境がほとんど同じであることがわかるはずです．ただし，新しく
 \family sans
 章（Chapter）
 \family default
-環境が使えるようになっています。このように、ある文書クラスでどの環境が使えるか不確かな場合は、
+環境が使えるようになっています．このように，ある文書クラスでどの環境が使えるか不確かな場合は，
 \family sans
 環境
 \family default
-ボックスを開いてみればよいのです。
+ボックスを開いてみればよいのです．
 \end_layout
 
 \begin_layout Standard
-学術雑誌によって、フォント寸法や、段組が一段か二段か、ページヘッダなどが異なっています。『コンピュータの時代』がますます成熟するにつれて、各学術雑誌は電子投稿を
-受け付けるようになり、執筆者が正しく組版された論文を提出できるように専用の\SpecialChar LaTeX
-「スタイルファイル」を用意するようになってきました。\SpecialChar LyX
+学術雑誌によって，フォント寸法や，段組が一段か二段か，ページヘッダなどが異なっています．『コンピュータの時代』がますます成熟するにつれて，各学術雑誌は電子投稿を
+受け付けるようになり，執筆者が正しく組版された論文を提出できるように専用の\SpecialChar LaTeX
+「スタイルファイル」を用意するようになってきました．\SpecialChar LyX
 はこのようなスタイルファイルもサポ
-ートするように設計されています。例えば
+ートするように設計されています．例えば
 \family sans
 Article
 \begin_inset space ~
@@ -1540,12 +1551,12 @@ Article
 
 (AMS)
 \family default
-文書クラスを使うことによって、アメリカ数学会(American Mathematics Society)発行の学術誌向けの組版（および追加の環境）をサポートして
-います。
+文書クラスを使うことによって，アメリカ数学会(American Mathematics Society)発行の学術誌向けの組版（および追加の環境）をサポートして
+います．
 \end_layout
 
 \begin_layout Standard
-以下の表は、いくつかの文書クラスのひじょうに簡単な要約です。さらに多くの詳細については、取扱説明書『
+以下の表は，いくつかの文書クラスのひじょうに簡単な要約です．さらに多くの詳細については，取扱説明書『
 \emph on
 高度な機能篇
 \emph default
@@ -1553,7 +1564,7 @@ Article
 \emph on
 特別な文書クラス
 \emph default
-」の節をご参照ください。
+」の節をご参照ください．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1719,7 +1730,7 @@ letter
 \end_layout
 
 \begin_layout Standard
-書簡を書くには、新規ファイルを開いたのち、
+書簡を書くには，新規ファイルを開いたのち，
 \family sans
 文書
 \family default
@@ -1732,13 +1743,13 @@ letter
 \family sans
 Letter
 \family default
-クラスを指定するのが一つの方法です。これは、書簡を書くのにもっともわかりやすい方法ではありますが、余分な仕事を増やすように思われます。ビジネス書簡を書くたびに、
-自分の住所と相手の住所、本文、サイン等を入れなくてはならなくなることでしょう。このため、\SpecialChar LyX
+クラスを指定するのが一つの方法です．これは，書簡を書くのにもっともわかりやすい方法ではありますが，余分な仕事を増やすように思われます．ビジネス書簡を書くたびに，
+自分の住所と相手の住所，本文，サイン等を入れなくてはならなくなることでしょう．このため，\SpecialChar LyX
 には書簡の手本となる書簡用
 \emph on
 ひな型
 \emph default
-が備わっています。ひな型を使えば、書簡を書くたびに書簡の対応部分を自分向けに変更するだけでいいのです。
+が備わっています．ひな型を使えば，書簡を書くたびに書簡の対応部分を自分向けに変更するだけでいいのです．
 \end_layout
 
 \begin_layout Standard
@@ -1747,11 +1758,11 @@ Letter
 ファイル\SpecialChar menuseparator
 新規(ひな型使用)
 \family default
-を選択して、新規ファイルを開いてください。ひな型として
+を選択して，新規ファイルを開いてください．ひな型として
 \family typewriter
 letter.lyx
 \family default
-を選択します。保存後印刷して、各環境がどのように組版されるかを確認してください。
+を選択します．保存後印刷して，各環境がどのように組版されるかを確認してください．
 \end_layout
 
 \begin_layout Standard
@@ -1759,11 +1770,11 @@ letter.lyx
 \family sans
 環境
 \family default
-ボックスを見ると、
+ボックスを見ると，
 \family sans
 自分の住所
 \family default
-のような、他のほとんどの文書クラスにはない環境があるのが分かります。一方、
+のような，他のほとんどの文書クラスにはない環境があるのが分かります．一方，
 \family sans
 引用（字下げなし）
 \family default
@@ -1771,55 +1782,55 @@ letter.lyx
 \family sans
 箇条書き（記述）
 \family default
-などの環境は、よく見かけるものです。各環境がどのような機能を果たすかを理解するために、しばらくのあいだ、いろいろといじってみてください。例えば、
+などの環境は，よく見かけるものです．各環境がどのような機能を果たすかを理解するために，しばらくのあいだ，いろいろといじってみてください．例えば，
 \family sans
 署名
 \family default
-環境では、実際の署名の前に「署名：」という単語が赤字で表示されることに気が付かれることでしょう。この単語は、ファイルを表示または書き出してみるとわかるように、実
-際の書簡には現れません。これは、署名行がどこにあるかをお知らせするだけのものです。さらに、
+環境では，実際の署名の前に「署名：」という単語が赤字で表示されることに気が付かれることでしょう．この単語は，ファイルを表示または書き出してみるとわかるように，実
+際の書簡には現れません．これは，署名行がどこにあるかをお知らせするだけのものです．さらに，
 \family sans
 署名
 \family default
-行は、ファイル内のどこにあってもかまわないことに注意してください。\SpecialChar LyX
-はWYSIWYMですから、
+行は，ファイル内のどこにあってもかまわないことに注意してください．\SpecialChar LyX
+はWYSIWYMですから，
 \family sans
 署名
 \family default
-環境はどこでも好きなところに置くことができても、\SpecialChar LyX
-は、印刷時には署名は書簡の最後に置かれるべきだということを知っているのです。
+環境はどこでも好きなところに置くことができても，\SpecialChar LyX
+は，印刷時には署名は書簡の最後に置かれるべきだということを知っているのです．
 \end_layout
 
 \begin_layout Standard
 ひな型は通常の\SpecialChar LyX
-ファイルです。ということは、自分の住所と署名が入力済みのファイルを、新しいひな型として保存できるということです。以後、書簡を書くときは、いつもこの
-新しいひな型を使うようにすれば、時間が節約できます。ここでは実際に「練習問題」をお出しする必要はないでしょう。とにかく誰かに手紙を書いてみてください！
+ファイルです．ということは，自分の住所と署名が入力済みのファイルを，新しいひな型として保存できるということです．以後，書簡を書くときは，いつもこの
+新しいひな型を使うようにすれば，時間が節約できます．ここでは実際に「練習問題」をお出しする必要はないでしょう．とにかく誰かに手紙を書いてみてください！
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-ひな型を使ってものを書くときに注意すべきことがあります。ある環境の中の本文をすべて消した後に — 例えば、自分の本当の住所で置き換えるために
+ひな型を使ってものを書くときに注意すべきことがあります．ある環境の中の本文をすべて消した後に — 例えば，自分の本当の住所で置き換えるために
 \family sans
 自分の住所
 \family default
-フィールドを全部消した後に —、何も書かないで他の場所にカーソルを移動すると、環境自体が消えてしまうことがあります。これは、ほとんどの環境は中に本文がない状態で
-は存在できないためです。消えてしまった環境を戻すには、
+フィールドを全部消した後に —，何も書かないで他の場所にカーソルを移動すると，環境自体が消えてしまうことがあります．これは，ほとんどの環境は中に本文がない状態で
+は存在できないためです．消えてしまった環境を戻すには，
 \family sans
 環境
 \family default
-ボックスからもう一度その環境を選択し直してください。
+ボックスからもう一度その環境を選択し直してください．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-ひな型を使うと大幅な時間の節約が期待できますので、可能なときはできるかぎり使うようにした方がいいでしょう。また、ひな型を使えば、より洗練された文書クラスの使い方
-を学ぶ一助となります。さらに、あまりスキルのないおおぜいのユーザーたちのために\SpecialChar LyX
-を設定してやらなくてはならない立場にいる人にも役立つものと思われます。例えば、彼ら
+ひな型を使うと大幅な時間の節約が期待できますので，可能なときはできるかぎり使うようにした方がいいでしょう．また，ひな型を使えば，より洗練された文書クラスの使い方
+を学ぶ一助となります．さらに，あまりスキルのないおおぜいのユーザーたちのために\SpecialChar LyX
+を設定してやらなくてはならない立場にいる人にも役立つものと思われます．例えば，彼ら
 が初めて\SpecialChar LyX
-を習うにしても、自社用にカスタマイズされた書簡のひな型があれば、かなりとっつきやすくなることでしょう。
+を習うにしても，自社用にカスタマイズされた書簡のひな型があれば，かなりとっつきやすくなることでしょう．
 \end_layout
 
 \begin_layout Section
@@ -1829,12 +1840,12 @@ status collapsed
 \begin_layout Standard
 （\SpecialChar LaTeX
 と同様）\SpecialChar LyX
-は、文章のタイトル — これには狭義のタイトル・著者名・日付、場合によっては論文の概要を含みます — を文書の他の部分とは独立の存在として扱います。
+は，文章のタイトル — これには狭義のタイトル・著者名・日付，場合によっては論文の概要を含みます — を文書の他の部分とは独立の存在として扱います．
 \end_layout
 
 \begin_layout Standard
 これまでに作成してきた\SpecialChar LyX
-文書に戻って、その文書クラスが
+文書に戻って，その文書クラスが
 \family sans
 Article
 \family default
@@ -1843,32 +1854,32 @@ Article
 status collapsed
 
 \begin_layout Plain Layout
-Letter文書クラスではタイトルは使えないので、ここではもうLetter文書クラスは使えません。
+Letter文書クラスではタイトルは使えないので，ここではもうLetter文書クラスは使えません．
 \end_layout
 
 \end_inset
 
-。一行目にタイトルを入力して、その行を
+．一行目にタイトルを入力して，その行を
 \family sans
 タイトル
 \family default
-環境に変更してください。次の行には、ご自分の名前を入れ、その行を
+環境に変更してください．次の行には，ご自分の名前を入れ，その行を
 \family sans
 著者
 \family default
-環境に変更します。その次の行には
+環境に変更します．その次の行には
 \family sans
 日付
 \family default
-環境として日付を入れてください。次に、
+環境として日付を入れてください．次に，
 \family sans
 概要
 \family default
-環境で、文書の要約を一二段落入力します。その後、印刷時にタイトルがどのように表現されるか、確認してください。このとき、文書形式を
+環境で，文書の要約を一二段落入力します．その後，印刷時にタイトルがどのように表現されるか，確認してください．このとき，文書形式を
 \family sans
 Book
 \family default
-に変更してみると、この入門篇の第1頁のように、別頁立てのタイトルが得られることがわかります。
+に変更してみると，この入門篇の第1頁のように，別頁立てのタイトルが得られることがわかります．
 \end_layout
 
 \begin_layout Standard
@@ -1880,7 +1891,7 @@ Book
 \family typewriter
 example_raw.
 \family default
-lyxのタイトル・日付・著者名を正しくしてください。
+lyxのタイトル・日付・著者名を正しくしてください．
 \end_layout
 
 \begin_layout Section
@@ -1893,7 +1904,7 @@ lyxのタイトル・日付・著者名を正しくしてください。
 status collapsed
 
 \begin_layout Plain Layout
-フロートについては、
+フロートについては，
 \emph on
 ユーザーの手引き
 \emph default
@@ -1901,17 +1912,17 @@ status collapsed
 \emph on
 埋込オブジェクト篇
 \emph default
-の各説明書で説明されています。
+の各説明書で説明されています．
 \end_layout
 
 \end_inset
 
-には、ラベル付けをすることができます。ラベルを付けると、相互参照を使用することで文書の他の場所からこの節を参照することができます。節番号を参照することもできます
-し、あるいはその節が登場するページ番号を参照することもできます。節番号と同様に、\SpecialChar LyX
-は相互参照の連番の面倒も見てくれます。ラベルと相互参照による自動参照機能は、\SpecialChar LyX
+には，ラベル付けをすることができます．ラベルを付けると，相互参照を使用することで文書の他の場所からこの節を参照することができます．節番号を参照することもできます
+し，あるいはその節が登場するページ番号を参照することもできます．節番号と同様に，\SpecialChar LyX
+は相互参照の連番の面倒も見てくれます．ラベルと相互参照による自動参照機能は，\SpecialChar LyX
 （お
 よび\SpecialChar LaTeX
-）が他のワードプロセッサをしのぐ最大の利点の一つです。
+）が他のワードプロセッサをしのぐ最大の利点の一つです．
 \end_layout
 
 \begin_layout Subsection
@@ -1919,9 +1930,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-前に書いた文書で、「この文書について」という見出しの第2節にラベルを付けてみましょう。この節見出しの行末をクリックし
+前に書いた文書で，「この文書について」という見出しの第2節にラベルを付けてみましょう．この節見出しの行末をクリックし
 \family sans
-、挿入
+，挿入
 \family default
 \SpecialChar menuseparator
 
@@ -1934,12 +1945,12 @@ type  "icon"
 arg   "label-insert"
 \end_inset
 
-を押してください。ダイアログボックスが、入力候補を表示してラベル名の入力を求めます。OKボタンを押すと、そのラベル名が節見出しの横にボックス表示されます。
+を押してください．ダイアログボックスが，入力候補を表示してラベル名の入力を求めます．OKボタンを押すと，そのラベル名が節見出しの横にボックス表示されます．
 \end_layout
 
 \begin_layout Standard
-ここまででは、まだ何も成し遂げていません — ラベルは印刷文書には表れないので、PDF出力は以前とまったく変わりません。しかしながら、いまやラベルをつけたので、
-相互参照でラベルを参照することができます。次はそれをやってみましょう。
+ここまででは，まだ何も成し遂げていません — ラベルは印刷文書には表れないので，PDF出力は以前とまったく変わりません．しかしながら，いまやラベルをつけたので，
+相互参照でラベルを参照することができます．次はそれをやってみましょう．
 \end_layout
 
 \begin_layout Subsection
@@ -1947,15 +1958,15 @@ arg   "label-insert"
 \end_layout
 
 \begin_layout Standard
-カーソルをこの文書の第2節のどこかに合わせて、次のように入力してください。
+カーソルをこの文書の第2節のどこかに合わせて，次のように入力してください．
 \end_layout
 
 \begin_layout LyX-Code
-この文書についてより詳細をお知りになりたい場合は、
+この文書についてより詳細をお知りになりたい場合は，
 \begin_inset Newline newline
 \end_inset
 
-ページの第節をご参照ください。
+ページの第節をご参照ください．
 \end_layout
 
 \begin_layout Standard
@@ -1970,26 +1981,26 @@ type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-を選択してください。
+を選択してください．
 \family sans
 相互参照
 \family default
-ダイアログボックスが現れて、参照することができるラベルの一覧が表示されます。いまのところ、ただ一つ「sec:この文書について」だけが表示されているはずです。まず
-書式と書かれているドロップダウンメニューを選び、「＜参照＞」を選択します。それから「sec:この文書について」を選択すると（既定として選択されているかもしれませ
-ん）、「参照：sec:この文書について」と書かれた参照マーカーが現れます。次に、カーソルを「ページ」という単語の前に合わせて、書式を「＜参照ページ＞」にして「s
-ec:この文書について」を選択します（欧文の場合に、「Section
+ダイアログボックスが現れて，参照することができるラベルの一覧が表示されます．いまのところ，ただ一つ「sec:この文書について」だけが表示されているはずです．まず
+書式と書かれているドロップダウンメニューを選び，「＜参照＞」を選択します．それから「sec:この文書について」を選択すると（既定として選択されているかもしれませ
+ん），「参照：sec:この文書について」と書かれた参照マーカーが現れます．次に，カーソルを「ページ」という単語の前に合わせて，書式を「＜参照ページ＞」にして「s
+ec:この文書について」を選択します（欧文の場合に，「Section
 \begin_inset space ~
 \end_inset
 
-2」のような表示をさせたい場合には、「Section」という単語と参照のあいだには、空白ではなく
+2」のような表示をさせたい場合には，「Section」という単語と参照のあいだには，空白ではなく
 \family sans
 保護された空白
 \family default
-を入れなければなりません）。この方法の代わりに、ラベルを右クリックして、現れるコンテクスト・メニューにある
+を入れなければなりません）．この方法の代わりに，ラベルを右クリックして，現れるコンテクスト・メニューにある
 \family sans
 参照としてコピー
 \family default
-を使う方法もあります。こうすることによって、このラベルへの相互参照はクリップボードに移されるので、
+を使う方法もあります．こうすることによって，このラベルへの相互参照はクリップボードに移されるので，
 \family sans
 編集\SpecialChar menuseparator
 貼り付け
@@ -2020,21 +2031,21 @@ type  "shortcut"
 arg   "paste"
 \end_inset
 
-）を使って、現在のカーソル位置にコピーすることができます。印刷した文書では、この参照マーカーはページ番号や節番号に置き換えられます。文書をPDFとして表示してみ
-ると、最後の頁で「第2節」と「1ページ」（あるいは第2節の見出しがある頁）を参照していることが分かるでしょう。
+）を使って，現在のカーソル位置にコピーすることができます．印刷した文書では，この参照マーカーはページ番号や節番号に置き換えられます．文書をPDFとして表示してみ
+ると，最後の頁で「第2節」と「1ページ」（あるいは第2節の見出しがある頁）を参照していることが分かるでしょう．
 \end_layout
 
 \begin_layout Standard
-便利なことに、相互参照は、\SpecialChar LyX
-で文書を編集する際、ハイパーリンクとして機能します。参照をクリックすると、
+便利なことに，相互参照は，\SpecialChar LyX
+で文書を編集する際，ハイパーリンクとして機能します．参照をクリックすると，
 \family sans
 相互参照
 \family default
-ダイアログが開きますので、そこで
+ダイアログが開きますので，そこで
 \family sans
 ラベルに移動
 \family default
-をクリックすれば、参照しているラベルにカーソルを移動することができるのです。
+をクリックすれば，参照しているラベルにカーソルを移動することができるのです．
 \end_layout
 
 \begin_layout Subsection
@@ -2042,40 +2053,40 @@ arg   "paste"
 \end_layout
 
 \begin_layout Standard
-以前、相互参照の番号付けは\SpecialChar LyX
-が管理すると書きましたが、それをこれから確認してみましょう。第2節の前に新しい節を加えてください。PDF表示を更新すると
- — ほら！ — 節への相互参照が「3」に変わっています！次に「この文書について」の節を小節に変更してみると、相互参照は第3節の代わりに第2.1小節を参照するよう
-になります。もちろんページ参照は、ラベルの前にまるまる1ページ分の文章を追加しない限り変化しません。
+以前，相互参照の番号付けは\SpecialChar LyX
+が管理すると書きましたが，それをこれから確認してみましょう．第2節の前に新しい節を加えてください．PDF表示を更新すると
+ — ほら！ — 節への相互参照が「3」に変わっています！次に「この文書について」の節を小節に変更してみると，相互参照は第3節の代わりに第2.1小節を参照するよう
+になります．もちろんページ参照は，ラベルの前にまるまる1ページ分の文章を追加しない限り変化しません．
 \end_layout
 
 \begin_layout Standard
-もう少しラベルの練習をしたければ、最初に相互参照があった場所にまた新しくラベルを挿入し直して、文書のどこか他の場所から参照してみてください。相互参照を繰り返し入
-力することが多ければ、
+もう少しラベルの練習をしたければ，最初に相互参照があった場所にまた新しくラベルを挿入し直して，文書のどこか他の場所から参照してみてください．相互参照を繰り返し入
+力することが多ければ，
 \family sans
 相互参照
 \family default
-ダイアログを開いたままにしておくと便利でしょう。
+ダイアログを開いたままにしておくと便利でしょう．
 \end_layout
 
 \begin_layout Standard
 もっと大きな文書でも相互参照がちゃんとページを取得するかどうかを確認したいならば
 \emph on
-、ユーザーの手引き
+，ユーザーの手引き
 \emph default
 から何ページかクリップボードに
 \family sans
 コピー
 \family default
-して、現在の文書に取ってきた文章を
+して，現在の文書に取ってきた文章を
 \family sans
 貼り付け
 \family default
-てやってみてください。
+てやってみてください．
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-このとき、章見出しをコピーすると、章がarticleクラスでは使えないために、\SpecialChar LyX
+このとき，章見出しをコピーすると，章がarticleクラスでは使えないために，\SpecialChar LyX
 がエラーを起こす可能性があります（第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2083,7 +2094,7 @@ reference "sec:文書クラス"
 
 \end_inset
 
-節を参照）。そうなったときは、章見出しを削除すれば大丈夫です。
+節を参照）．そうなったときは，章見出しを削除すれば大丈夫です．
 \end_layout
 
 \end_inset
@@ -2100,7 +2111,7 @@ reference "sec:文書クラス"
 \family typewriter
 example_raw.lyx
 \family default
-の参照を正しく直してください。
+の参照を正しく直してください．
 \end_layout
 
 \begin_layout Section
@@ -2108,7 +2119,7 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-脚注は、ツールバーの
+脚注は，ツールバーの
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
@@ -2123,38 +2134,38 @@ arg   "footnote-insert"
 \family sans
 脚注
 \family default
-メニューを使えば、加えることができます。現在の文中にある\SpecialChar LyX
-という単語のどれでもいいですから、その単語の後ろにカーソルを持っていって、ツールバーの
+メニューを使えば，加えることができます．現在の文中にある\SpecialChar LyX
+という単語のどれでもいいですから，その単語の後ろにカーソルを持っていって，ツールバーの
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-ボタンを押して下さい。すると脚注ボックスが現れて、脚注の文章が入力できるようになります。カーソルが脚注ボックスの先頭に現れますから、次のように入力してください。
+ボタンを押して下さい．すると脚注ボックスが現れて，脚注の文章が入力できるようになります．カーソルが脚注ボックスの先頭に現れますから，次のように入力してください．
 \end_layout
 
 \begin_layout LyX-Code
 \SpecialChar LyX
-は組版ワードプロセッサです。
+は組版ワードプロセッサです．
 \end_layout
 
 \begin_layout Standard
-「脚注」と書いてあるボタンをクリックしてみてください。脚注ボックスが閉じて、印刷したときに脚注のマークが入るところにfootというボタンだけが画面に残ります。こ
-れを脚注を折り畳むといっています。この「脚注」ボタンをクリックすればまた脚注ボックスが現れ、脚注を見たり、編集したりできます。
+「脚注」と書いてあるボタンをクリックしてみてください．脚注ボックスが閉じて，印刷したときに脚注のマークが入るところにfootというボタンだけが画面に残ります．こ
+れを脚注を折り畳むといっています．この「脚注」ボタンをクリックすればまた脚注ボックスが現れ，脚注を見たり，編集したりできます．
 \end_layout
 
 \begin_layout Standard
-脚注は通常の本文と同様に、切り貼りができます。やってみてください。脚注ボタンを選んで
+脚注は通常の本文と同様に，切り貼りができます．やってみてください．脚注ボタンを選んで
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-キーボードを使って選択をする方が簡単かもしれません。マウスを使うと間違ってクリックして脚注行を開いてしまうことがあります。
+キーボードを使って選択をする方が簡単かもしれません．マウスを使うと間違ってクリックして脚注行を開いてしまうことがあります．
 \end_layout
 
 \end_inset
 
-、
+，
 \family sans
 コピー
 \family default
@@ -2162,18 +2173,18 @@ status collapsed
 \family sans
 貼り付け
 \family default
-をしてみてください。また通常の本文を脚注へ変えることもできます。脚注にしたい場所を選択して
+をしてみてください．また通常の本文を脚注へ変えることもできます．脚注にしたい場所を選択して
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
-ボタンを押してください。脚注を通常の本文に戻すには、カーソルが脚注の先頭にある時にバックスペースキーを押すか、カーソルが脚注の最後にある時に削除キーを押してくだ
-さい。
+ボタンを押してください．脚注を通常の本文に戻すには，カーソルが脚注の先頭にある時にバックスペースキーを押すか，カーソルが脚注の最後にある時に削除キーを押してくだ
+さい．
 \end_layout
 
 \begin_layout Standard
-傍注は、
+傍注は，
 \family sans
 挿入
 \family default
@@ -2182,30 +2193,30 @@ arg   "footnote-insert"
 \family sans
 傍注
 \family default
-を選ぶか、ツールバーの
+を選ぶか，ツールバーの
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-ボタンを押せば追加することができます。傍注は脚注とほとんど同じですが、以下の点が違います。
+ボタンを押せば追加することができます．傍注は脚注とほとんど同じですが，以下の点が違います．
 \end_layout
 
 \begin_layout Itemize
-画面上の箱に書かれるのは footでなくてmarginです。
+画面上の箱に書かれるのは footでなくてmarginです．
 \end_layout
 
 \begin_layout Itemize
-ページの下部にではなく、左右のマージンに印刷されます。
+ページの下部にではなく，左右のマージンに印刷されます．
 \end_layout
 
 \begin_layout Itemize
-傍注には、番号がつきません。
+傍注には，番号がつきません．
 \end_layout
 
 \begin_layout Standard
-さっき作った脚注を普通のテキストに変換し、傍注にしてみましょう。\SpecialChar LaTeX
-を走らせて、どのように印刷されるかを見てください。
+さっき作った脚注を普通のテキストに変換し，傍注にしてみましょう．\SpecialChar LaTeX
+を走らせて，どのように印刷されるかを見てください．
 \end_layout
 
 \begin_layout Standard
@@ -2217,7 +2228,7 @@ arg   "marginalnote-insert"
 \family typewriter
 example_raw.lyx
 \family default
-の脚注を直してください。
+の脚注を直してください．
 \end_layout
 
 \begin_layout Section
@@ -2232,10 +2243,10 @@ name "sec:参考文献"
 \end_layout
 
 \begin_layout Standard
-（少なくとも厳密な科学の分野では）書誌情報cの参照は、相互参照と似ています。書誌情報cは文章の最後につく文献のリストで、文章の中から参照できます。節見出しと同じ
+（少なくとも厳密な科学の分野では）書誌情報cの参照は，相互参照と似ています．書誌情報cは文章の最後につく文献のリストで，文章の中から参照できます．節見出しと同じ
 ように\SpecialChar LyX
 と\SpecialChar LaTeX
-が文献リストに番号をつけ、文献を追加して番号が変わった場合は、その文献を参照している先の文献番号も変えてくれます。
+が文献リストに番号をつけ，文献を追加して番号が変わった場合は，その文献を参照している先の文献番号も変えてくれます．
 \end_layout
 
 \begin_layout Standard
@@ -2243,7 +2254,7 @@ name "sec:参考文献"
 \family sans
 書誌情報
 \family default
-環境に変えてください。すると入力する段落のそれぞれが、書誌情報の項目になります。一つめの文献として「
+環境に変えてください．すると入力する段落のそれぞれが，書誌情報の項目になります．一つめの文献として「
 \family typewriter
 \SpecialChar LyX
 文書化チーム著『\SpecialChar LyX
@@ -2251,20 +2262,20 @@ name "sec:参考文献"
 \family default
 」と入力してください
 \family typewriter
-。
+．
 \family default
 \SpecialChar LyX
-は各文献の前に四角に囲まれた番号を自動的につけます。四角に囲まれた文献番号をクリックすると、
+は各文献の前に四角に囲まれた番号を自動的につけます．四角に囲まれた文献番号をクリックすると，
 \family sans
 書誌情報の設定
 \family default
-ダイアログボックスが現れます。「キー」とは、\SpecialChar LyX
-文書中でのこの文献への参照に使われるキーであり、「ラベル」は出力に現れる文字です。ラベルが入力されていない（既定）と
-きには、文献番号が出力されます。キーフィールドを、覚えやすいように「lyxtutorial」に変えましょう。
+ダイアログボックスが現れます．「キー」とは，\SpecialChar LyX
+文書中でのこの文献への参照に使われるキーであり，「ラベル」は出力に現れる文字です．ラベルが入力されていない（既定）と
+きには，文献番号が出力されます．キーフィールドを，覚えやすいように「lyxtutorial」に変えましょう．
 \end_layout
 
 \begin_layout Standard
-文章中のどこかを選んで、文献を参照してみましょう。
+文章中のどこかを選んで，文献を参照してみましょう．
 \family sans
 挿入
 \family default
@@ -2273,24 +2284,24 @@ name "sec:参考文献"
 \family sans
 文献引用
 \family default
-を選ぶか、ツールバーボタン
+を選ぶか，ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset citation"
 \end_inset
 
-を押してください。すると、
+を押してください．すると，
 \family sans
 文献引用
 \family default
-ダイアログボックスが現れます。ダイアログの右パネルには、すべての文献項目が表示され、参照したい文献を選ぶことができるようになっているはずです。「lyxtutor
-ial」を選択して（今のところ、文献で選べるのはこれだけです）、中央の「追加」ボタンを押して挿入します（このやり方で複数のキーを移動すれば、複数の文献を一箇所に
-参照することができます）。
+ダイアログボックスが現れます．ダイアログの右パネルには，すべての文献項目が表示され，参照したい文献を選ぶことができるようになっているはずです．「lyxtutor
+ial」を選択して（今のところ，文献で選べるのはこれだけです），中央の「追加」ボタンを押して挿入します（このやり方で複数のキーを移動すれば，複数の文献を一箇所に
+参照することができます）．
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-書誌情報のラベル名に覚えやすいものをつければ、書誌一覧で項目を見つけやすくなります。
+書誌情報のラベル名に覚えやすいものをつければ，書誌一覧で項目を見つけやすくなります．
 \end_layout
 
 \end_inset
@@ -2299,7 +2310,7 @@ status open
 \family sans
 OK
 \family default
-ボタンを押してください。このファイルをPDFで表示してください。文献の引用が、角括弧で本文に挿入され、文末の書誌情報を参照していることが確認できるでしょう。
+ボタンを押してください．このファイルをPDFで表示してください．文献の引用が，角括弧で本文に挿入され，文末の書誌情報を参照していることが確認できるでしょう．
 \end_layout
 
 \begin_layout Standard
@@ -2311,9 +2322,9 @@ OK
 \family sans
 後置文字列
 \family default
-フィールドは、参照番号のあとに入れる（例えば、参考文献の何ページか、何章かというような）コメントを書くのに使います。これは参照番号の後に括弧にくくられて印刷され
-ます。もし参考文献を番号ではなくラベルで参照したい場合（学術誌の中には、Smithが95年に書いた論文を参照するのに[Smith95]と表記するものもあります）
-には、
+フィールドは，参照番号のあとに入れる（例えば，参考文献の何ページか，何章かというような）コメントを書くのに使います．これは参照番号の後に括弧にくくられて印刷され
+ます．もし参考文献を番号ではなくラベルで参照したい場合（学術誌の中には，Smithが95年に書いた論文を参照するのに[Smith95]と表記するものもあります）
+には，
 \family sans
 書誌情報の設定
 \family default
@@ -2321,15 +2332,15 @@ OK
 \family sans
 ラベル
 \family default
-フィールドを使ってください。詳しい説明は
+フィールドを使ってください．詳しい説明は
 \emph on
-、
+，
 \emph default
 いつもどおり
 \emph on
 ユーザーの手引き
 \emph default
-を見てください。
+を見てください．
 \end_layout
 
 \begin_layout Standard
@@ -2341,7 +2352,7 @@ OK
 \family typewriter
 example_raw.lyx
 \family default
-の書誌情報とそれの参照を直してください。
+の書誌情報とそれの参照を直してください．
 \end_layout
 
 \begin_layout Section
@@ -2349,8 +2360,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-文書のはじめに目次を入れたいときもあるでしょう。\SpecialChar LyX
-では、簡単に目次を入れることができます。文書のタイトルの後ろ、最初の節見出しの前でReturnキーを押して
+文書のはじめに目次を入れたいときもあるでしょう．\SpecialChar LyX
+では，簡単に目次を入れることができます．文書のタイトルの後ろ，最初の節見出しの前でReturnキーを押して
 \family sans
 挿入
 \family default
@@ -2364,16 +2375,16 @@ example_raw.lyx
 \family sans
 目次
 \family default
-を選んでください。「目次」と書いたボタンが文書のはじめに現れるでしょう。
+を選んでください．「目次」と書いたボタンが文書のはじめに現れるでしょう．
 \end_layout
 
 \begin_layout Standard
-これだけだとそれほど役に立つようには見えないのですが、PDFファイルを見てみると、目次が生成されているのが確認できるでしょう。ここでも、節の順番を変えたり追加し
-たりすると、PDFファイルを更新したときに、それらの変更がPDFファイルに自動的に反映されるのです。
+これだけだとそれほど役に立つようには見えないのですが，PDFファイルを見てみると，目次が生成されているのが確認できるでしょう．ここでも，節の順番を変えたり追加し
+たりすると，PDFファイルを更新したときに，それらの変更がPDFファイルに自動的に反映されるのです．
 \end_layout
 
 \begin_layout Standard
-目次は画面上の文書には表示されないようになっていますが、目次ボタンをクリックするか、
+目次は画面上の文書には表示されないようになっていますが，目次ボタンをクリックするか，
 \family sans
 表示\SpecialChar menuseparator
 文書構造
@@ -2384,22 +2395,22 @@ type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
-を使えば、別ウインドウに目次を表示することができます。このメニューは、文書に目次挿入枠が入っていなくても有効です。これは、文書の各部を行ったり来たりするのにたい
-へん便利なツールです。
+を使えば，別ウインドウに目次を表示することができます．このメニューは，文書に目次挿入枠が入っていなくても有効です．これは，文書の各部を行ったり来たりするのにたい
+へん便利なツールです．
 \family sans
 文書構造
 \family default
-ウインドウの（小）節見出しをクリックすると、その行が選択されて、（\SpecialChar LyX
-編集ウインドウの）表示が文書の対応する場所に移動します。目次内を上下するには矢印キーも使えます
-。したがって、文章を編集している最中は、常にこのウィンドウを開いておく方が便利だと思うようになるかもしれません。一方、
+ウインドウの（小）節見出しをクリックすると，その行が選択されて，（\SpecialChar LyX
+編集ウインドウの）表示が文書の対応する場所に移動します．目次内を上下するには矢印キーも使えます
+．したがって，文章を編集している最中は，常にこのウィンドウを開いておく方が便利だと思うようになるかもしれません．一方，
 \family sans
 移動
 \family default
-メニューにも目次が自動的に表示されるので、こちらからも同様の機能を使うことができます。
+メニューにも目次が自動的に表示されるので，こちらからも同様の機能を使うことができます．
 \end_layout
 
 \begin_layout Standard
-目次ボタンは、他のふつうの文字とまったく同じように削除することができます。
+目次ボタンは，他のふつうの文字とまったく同じように削除することができます．
 \end_layout
 
 \begin_layout Standard
@@ -2411,7 +2422,7 @@ arg   "dialog-toggle toc"
 \family typewriter
 example_raw.lyx
 \family default
-の目次を直してください。
+の目次を直してください．
 \end_layout
 
 \begin_layout Chapter
@@ -2420,17 +2431,17 @@ example_raw.lyx
 
 \begin_layout Standard
 \SpecialChar LaTeX
-は美しい数式を出力できるので、多くの科学者に使われています。他のワードプロセッサーと違い、コントロール文字や数式エディターを使う必要もありません。けれども\SpecialChar LaTeX
+は美しい数式を出力できるので，多くの科学者に使われています．他のワードプロセッサーと違い，コントロール文字や数式エディターを使う必要もありません．けれども\SpecialChar LaTeX
 で数式
-を書くのは、文章を書くというよりもむしろプログラムを書くのに近いものです。幸運なことに、\SpecialChar LyX
-は数式にもWYSIWYMを使っています。今まで\SpecialChar LaTeX
+を書くのは，文章を書くというよりもむしろプログラムを書くのに近いものです．幸運なことに，\SpecialChar LyX
+は数式にもWYSIWYMを使っています．今まで\SpecialChar LaTeX
 を使っていた人なら良く使う\SpecialChar LaTeX
 
-の数式コマンドが、今まで通り入力できそれが画面にWYSIWYMのやり方で表示されるのに気付くでしょう。今までLaTeXを使ったことのない人でも
+の数式コマンドが，今まで通り入力できそれが画面にWYSIWYMのやり方で表示されるのに気付くでしょう．今までLaTeXを使ったことのない人でも
 \family sans
 数式パネル
 \family default
-を使えば、本格的な数式を簡単に素早く書くことができます。
+を使えば，本格的な数式を簡単に素早く書くことができます．
 \end_layout
 
 \begin_layout Section
@@ -2438,58 +2449,58 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-お使いの文書のどこかに次のように入力してください。
+お使いの文書のどこかに次のように入力してください．
 \end_layout
 
 \begin_layout LyX-Code
-私はアインシュタインがとなえたE=mc^2が好きだ。たいへんシンプルだからである。
+私はアインシュタインがとなえたE=mc^2が好きだ．たいへんシンプルだからである．
 \end_layout
 
 \begin_layout Standard
-この文中にある数式は、\SpecialChar LyX
-中でも出力で見ても、あまりきれいではありません。等号の両側には空白がありませんし、「2」は上付き文字で書きたいところです。この悪い組版は、\SpecialChar LyX
+この文中にある数式は，\SpecialChar LyX
+中でも出力で見ても，あまりきれいではありません．等号の両側には空白がありませんし，「2」は上付き文字で書きたいところです．この悪い組版は，\SpecialChar LyX
 
-に数式を書いているのだと教えてやらなかったために起こったもので、\SpecialChar LyX
-は、数式を通常のテキストとして組版してしまったのです。
+に数式を書いているのだと教えてやらなかったために起こったもので，\SpecialChar LyX
+は，数式を通常のテキストとして組版してしまったのです．
 \end_layout
 
 \begin_layout Standard
-しかし、正しく組版される数式を作ることは可能です。数式を選択して、ツールバーボタンの
+しかし，正しく組版される数式を作ることは可能です．数式を選択して，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
-を押すか、
+を押すか，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 行内数式
 \family default
-メニューを選んでください。何も選択しなかった場合には、\SpecialChar LyX
-は空の数式を表す小さな青い箱を挿入します。そこにもう一度E=mc^2と入力してください。数式は青色で表示さ
-れ、数式が書かれると青い四角は消えます。
+メニューを選んでください．何も選択しなかった場合には，\SpecialChar LyX
+は空の数式を表す小さな青い箱を挿入します．そこにもう一度E=mc^2と入力してください．数式は青色で表示さ
+れ，数式が書かれると青い四角は消えます．
 \family sans
 Esc
 \family default
-を押して数式モードから出ましょう。紫のマーカーが消えて、カーソルは数式の右に移動します。ここで何か入力すると、それは普通の本文として扱われます。
+を押して数式モードから出ましょう．紫のマーカーが消えて，カーソルは数式の右に移動します．ここで何か入力すると，それは普通の本文として扱われます．
 \end_layout
 
 \begin_layout Standard
-出力を見てみると、今度は数式がきれいに組版されて、等号の両側には空白が入り、「2」は上付き文字になっているはずです。数式の中の文字は変数だと仮定され、イタリック
-体になります。数字はそのままです。
+出力を見てみると，今度は数式がきれいに組版されて，等号の両側には空白が入り，「2」は上付き文字になっているはずです．数式の中の文字は変数だと仮定され，イタリック
+体になります．数字はそのままです．
 \end_layout
 
 \begin_layout Standard
-この数式エディタも、WYSIWYM哲学の一例です。\SpecialChar LaTeX
-では、数式をテキストや
+この数式エディタも，WYSIWYM哲学の一例です．\SpecialChar LaTeX
+では，数式をテキストや
 \backslash
-sqrt等のコマンドを使って書きます。この方法はファイルを\SpecialChar LaTeX
-にかけないと数式がどのように見えるかわからない上に、入れ忘れの括弧を探したりするのに時間をとられるので
-、苛つきかねません。\SpecialChar LyX
-は、数式を完璧に（WYSIWYG）表示するわけではありませんが、数式がどのような感じに見えるかはきわめて良好に再現します。その後の本格的な組
-版は、\SpecialChar LaTeX
-が担当してくれます。
+sqrt等のコマンドを使って書きます．この方法はファイルを\SpecialChar LaTeX
+にかけないと数式がどのように見えるかわからない上に，入れ忘れの括弧を探したりするのに時間をとられるので
+，苛つきかねません．\SpecialChar LyX
+は，数式を完璧に（WYSIWYG）表示するわけではありませんが，数式がどのような感じに見えるかはきわめて良好に再現します．その後の本格的な組
+版は，\SpecialChar LaTeX
+が担当してくれます．
 \end_layout
 
 \begin_layout Section
@@ -2504,16 +2515,16 @@ sqrt等のコマンドを使って書きます。この方法はファイルを\
 \begin_inset Formula $E=1+mc^{2}$
 \end_inset
 
-に変えてみましょう。矢印キーを使ってカーソルを方程式の中に移動させてください。方程式の中に入ると紫のマーカーがあらわれて、数式を編集していることを教えてくれます
-。矢印キーを使って「=」の右にカーソルを移動し、「1+」とするだけです。
+に変えてみましょう．矢印キーを使ってカーソルを方程式の中に移動させてください．方程式の中に入ると紫のマーカーがあらわれて，数式を編集していることを教えてくれます
+．矢印キーを使って「=」の右にカーソルを移動し，「1+」とするだけです．
 \family sans
 Esc
 \family default
-か矢印キーを使って数式から出ましょう。
+か矢印キーを使って数式から出ましょう．
 \end_layout
 
 \begin_layout Standard
-後ほど説明する特殊キーを除けば、数式モードの編集は、通常の本文を編集するのと同じです。何かを削除するには、
+後ほど説明する特殊キーを除けば，数式モードの編集は，通常の本文を編集するのと同じです．何かを削除するには，
 \family sans
 Delete
 \family default
@@ -2521,7 +2532,7 @@ Delete
 \family sans
 Backspace
 \family default
-）を使い、文字を選択するには、矢印キーやマウスを使ってください。数式モードでも
+）を使い，文字を選択するには，矢印キーやマウスを使ってください．数式モードでも
 \family sans
 編集
 \family default
@@ -2530,7 +2541,7 @@ Backspace
 \family sans
 元に戻す
 \family default
-は機能しますし、切り取りや貼り付けもできます。一つだけ気をつけなければならないのは、カーソルが、数式の外のすぐ左か右にあるときに、
+は機能しますし，切り取りや貼り付けもできます．一つだけ気をつけなければならないのは，カーソルが，数式の外のすぐ左か右にあるときに，
 \family sans
 Delete
 \family default
@@ -2538,11 +2549,11 @@ Delete
 \family sans
 Backspace
 \family default
-キーを押すと、数式全体を削除してしまうことです。幸い、
+キーを押すと，数式全体を削除してしまうことです．幸い，
 \family sans
 元に戻す
 \family default
-を使えば、元に戻すことができます。
+を使えば，元に戻すことができます．
 \end_layout
 
 \begin_layout Standard
@@ -2553,9 +2564,9 @@ Backspace
 \begin_inset Formula $E=mc^{2.5}+1$
 \end_inset
 
-に変えたくなったらどうでしょう。今度も、編集したい場所でマウスをクリックするか、矢印キーを使います。カーソルが「c」と「2」の間にあるときに、↑キーを押して、カ
-ーソルを「2」の前の、上付き文字の高さへ移動してください。「.5」を書き加えましょう。それから↓キーを押せば、カーソルは標準の高さへ戻ります。↓キーの代わりにスペ
-ースキーを押しても、カーソルは上付き文字の直後に戻ります（ここで「+1」を入力できるでしょう）。
+に変えたくなったらどうでしょう．今度も，編集したい場所でマウスをクリックするか，矢印キーを使います．カーソルが「c」と「2」の間にあるときに，↑キーを押して，カ
+ーソルを「2」の前の，上付き文字の高さへ移動してください．「.5」を書き加えましょう．それから↓キーを押せば，カーソルは標準の高さへ戻ります．↓キーの代わりにスペ
+ースキーを押しても，カーソルは上付き文字の直後に戻ります（ここで「+1」を入力できるでしょう）．
 \end_layout
 
 \begin_layout Section
@@ -2567,22 +2578,22 @@ Backspace
 \family sans
 数式ツールバー
 \family default
-（以下で説明します）から挿入することもできますが、実は単にキャレットキー「^」を押した方が簡単です。すると\SpecialChar LyX
-が、青い四角を新しく上付き文字の位置に表示して、そこへ
-の入力がすべて小フォントの上付き文字になります。上付き文字から脱するには、スペースキー（あるいは数式から完全に出たいならば
+（以下で説明します）から挿入することもできますが，実は単にキャレットキー「^」を押した方が簡単です．すると\SpecialChar LyX
+が，青い四角を新しく上付き文字の位置に表示して，そこへ
+の入力がすべて小フォントの上付き文字になります．上付き文字から脱するには，スペースキー（あるいは数式から完全に出たいならば
 \family sans
 Esc
 \family default
-キー）を押します。
+キー）を押します．
 \end_layout
 
 \begin_layout Standard
-下付き文字（添字）も同じように簡単です。アンダースコアキー（_）を押せば下付き文字を入力し始めることができます。さらに、上付き文字の上に上付きさせたり添字に上付
-きさせたりと言うようなことも可能です。こんな具合です：
+下付き文字（添字）も同じように簡単です．アンダースコアキー（_）を押せば下付き文字を入力し始めることができます．さらに，上付き文字の上に上付きさせたり添字に上付
+きさせたりと言うようなことも可能です．こんな具合です：
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
@@ -2590,7 +2601,7 @@ Esc
 \family typewriter
 example_raw.lyx
 \family default
- のequation 1を数式モードにして下さい。
+ のequation 1を数式モードにして下さい．
 \end_layout
 
 \begin_layout Section
@@ -2602,7 +2613,7 @@ example_raw.lyx
 \family sans
 数式ツールバー
 \family default
-は、数学記号を入れたり複雑な数式操作をするのに便利です。これらの操作のほとんどは、キーボードや、
+は，数学記号を入れたり複雑な数式操作をするのに便利です．これらの操作のほとんどは，キーボードや，
 \family sans
 編集\SpecialChar menuseparator
 数式
@@ -2612,15 +2623,15 @@ example_raw.lyx
 挿入\SpecialChar menuseparator
 数式
 \family default
-メニューからも実行することができます。しかしながら、ここでは
+メニューからも実行することができます．しかしながら，ここでは
 \family sans
 数式ツールバー
 \family default
-に何があるかをお教えするために、
+に何があるかをお教えするために，
 \family sans
 数式ツールバー
 \family default
-の使い方の説明にとどめることにしましょう。
+の使い方の説明にとどめることにしましょう．
 \begin_inset Flex Ruby
 status collapsed
 
@@ -2640,11 +2651,11 @@ status collapsed
 
 \end_inset
 
-とコマンドは、説明書の
+とコマンドは，説明書の
 \emph on
 数式篇
 \emph default
-で調べることができます。
+で調べることができます．
 \end_layout
 
 \begin_layout Standard
@@ -2652,7 +2663,7 @@ status collapsed
 \family sans
 数式ツールバー
 \family default
-は、カーソルが数式内にある時に表示されますが、
+は，カーソルが数式内にある時に表示されますが，
 \family sans
 表示\SpecialChar menuseparator
 ツールバー
@@ -2663,16 +2674,16 @@ type  "icon"
 arg   "toolbar-toggle math"
 \end_inset
 
-)。上記メニューで「数式」 をクリックすると、ツールバーは底面にずっとされるようになります。この状態にあることは、
+)．上記メニューで「数式」 をクリックすると，ツールバーは底面にずっとされるようになります．この状態にあることは，
 \family sans
 ツールバー
 \family default
-メニューにチェックマークが表示されるのでわかります。この状態にある
+メニューにチェックマークが表示されるのでわかります．この状態にある
 \family sans
 ツールバー
 \family default
-メニューの「数式」をもう一度クリックすると、数式ツールバーは、カーソルが数式モード中にあるときだけ表示されるようになります。この状態にあることは、メニューの表示
-が、「数式」の代わりに「数式（自動）」と表示されることでわかります。
+メニューの「数式」をもう一度クリックすると，数式ツールバーは，カーソルが数式モード中にあるときだけ表示されるようになります．この状態にあることは，メニューの表示
+が，「数式」の代わりに「数式（自動）」と表示されることでわかります．
 \end_layout
 
 \begin_layout Subsection
@@ -2684,8 +2695,8 @@ arg   "toolbar-toggle math"
 \family sans
 数式ツールバー
 \family default
-を使うと、様々な記号を数式内で使うことができます。たとえば、演算子や矢印、関係子、区切り記号、特殊文字、和や積分の記号などです。和記号や積分記号の上限と下限は上
-付き文字と下付き文字で入れることができます。
+を使うと，様々な記号を数式内で使うことができます．たとえば，演算子や矢印，関係子，区切り記号，特殊文字，和や積分の記号などです．和記号や積分記号の上限と下限は上
+付き文字と下付き文字で入れることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2693,38 +2704,38 @@ arg   "toolbar-toggle math"
 \end_layout
 
 \begin_layout Standard
-平方根を入れるには、
+平方根を入れるには，
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-ボタンを押して下さい。平方根があらわれ、カーソルが平方根の中の新しい挿入ポイントへ移動します。そこへ変数でも数字でも、他の平方根でも、分数でも好きなものを入力で
-きます。\SpecialChar LyX
-は平方根の中に書かれたものに応じて自動的に平方根の大きさを変えてくれます。
+ボタンを押して下さい．平方根があらわれ，カーソルが平方根の中の新しい挿入ポイントへ移動します．そこへ変数でも数字でも，他の平方根でも，分数でも好きなものを入力で
+きます．\SpecialChar LyX
+は平方根の中に書かれたものに応じて自動的に平方根の大きさを変えてくれます．
 \end_layout
 
 \begin_layout Standard
-文字や文字列に、例えば
+文字や文字列に，例えば
 \begin_inset Formula $\overrightarrow{v}$
 \end_inset
 
-、
+，
 \begin_inset Formula $\overrightarrow{a+b}$
 \end_inset
 
-のようなアクセントを付けることも同様にすることができます。装飾は、ツールバーの
+のようなアクセントを付けることも同様にすることができます．装飾は，ツールバーの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
-ボタンから選択できます。装飾を選ぶと、その装飾の上か下に挿入ポイントが出てくるので、その中に装飾を付けたい文字を入力して下さい。装飾には、入力した文字に応じて長
-さの変わる可変長のものと、一文字のみを装飾するのに適した固定長のものの二つの種類があります。
+ボタンから選択できます．装飾を選ぶと，その装飾の上か下に挿入ポイントが出てくるので，その中に装飾を付けたい文字を入力して下さい．装飾には，入力した文字に応じて長
+さの変わる可変長のものと，一文字のみを装飾するのに適した固定長のものの二つの種類があります．
 \end_layout
 
 \begin_layout Standard
-括弧、角括弧、縦棒等の区切り記号も同様に動作しますが、やや複雑です。
+括弧，角括弧，縦棒等の区切り記号も同様に動作しますが，やや複雑です．
 \family sans
 区切り記号
 \family default
@@ -2736,37 +2747,37 @@ arg   "dialog-show mathdelimiter"
 
 を押すと
 \family sans
-、区切り記号
+，区切り記号
 \family default
-ダイアログが開きます。現在選択している区切り記号はボックスの中に表示されます。既定では括弧の対になってますが、中括弧の対や、中括弧と括弧、
+ダイアログが開きます．現在選択している区切り記号はボックスの中に表示されます．既定では括弧の対になってますが，中括弧の対や，中括弧と括弧，
 \begin_inset Formula $a=\left\langle 7\right.$
 \end_inset
 
-のように空の括弧（空の区切り記号は、\SpecialChar LyX
-中では破線で表示されますが、出力はされません）を選ぶこともできます。
+のように空の括弧（空の区切り記号は，\SpecialChar LyX
+中では破線で表示されますが，出力はされません）を選ぶこともできます．
 \end_layout
 
 \begin_layout Standard
-もし面倒くさければ、
+もし面倒くさければ，
 \family sans
 区切り記号
 \family default
-ダイアログを使わずに数式モードで直接括弧を入力することもできます。しかしながら、このようにして入力した括弧は、普通の文字と同じ大きさなので、括弧の中に大きな分数
-や行列が入っていると醜悪な出力になります。そういう場合は、（）の対などを直接挿入する三つの区切り記号ボタンのうちのいずれを使った方がいいでしょう
+ダイアログを使わずに数式モードで直接括弧を入力することもできます．しかしながら，このようにして入力した括弧は，普通の文字と同じ大きさなので，括弧の中に大きな分数
+や行列が入っていると醜悪な出力になります．そういう場合は，（）の対などを直接挿入する三つの区切り記号ボタンのうちのいずれを使った方がいいでしょう
 \begin_inset Info
 type  "icon"
 arg   "math-delim ( )"
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-区切り記号や平方根やアクセントは、既存の数式の一部に後から付けることもできます。変更したい数式部分を選択して、
+区切り記号や平方根やアクセントは，既存の数式の一部に後から付けることもできます．変更したい数式部分を選択して，
 \family sans
 数式ツールバー
 \family default
-の中から使いたいボタンを押します。この方法を、ニュートンの第2法則を、スカラー形からベクトル形へ書き換える（
+の中から使いたいボタンを押します．この方法を，ニュートンの第2法則を，スカラー形からベクトル形へ書き換える（
 \begin_inset Formula $f=ma$
 \end_inset
 
@@ -2774,7 +2785,7 @@ arg   "math-delim ( )"
 \begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
 \end_inset
 
-に）のに使ってみましょう。後で行列の使い方を習ったならば、これを使って行列のまわりに括弧、もしくは角括弧をつけることができます。
+に）のに使ってみましょう．後で行列の使い方を習ったならば，これを使って行列のまわりに括弧，もしくは角括弧をつけることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -2782,7 +2793,7 @@ arg   "math-delim ( )"
 \end_layout
 
 \begin_layout Standard
-分数を作るには、
+分数を作るには，
 \family sans
 数式ツールバー
 \family default
@@ -2792,10 +2803,10 @@ type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-をクリックしてください。\SpecialChar LyX
-は、二つの挿入ポイントをもつ分数を表示します。多分わかるとは思いますが、矢印キーとマウスで分子と分母の間を移動できます。上の四角をクリッ
-クして「１」を入力して下さい。下向きの矢印キーで分母に移り、「2」を入れて下さい。分数のできあがりです！もちろん二つの四角のそれぞれには、数字以外のもの、すなわ
-ち上付き文字のついた変数や平方根、別の分数、その他諸々を入力することができます。
+をクリックしてください．\SpecialChar LyX
+は，二つの挿入ポイントをもつ分数を表示します．多分わかるとは思いますが，矢印キーとマウスで分子と分母の間を移動できます．上の四角をクリッ
+クして「１」を入力して下さい．下向きの矢印キーで分母に移り，「2」を入れて下さい．分数のできあがりです！もちろん二つの四角のそれぞれには，数字以外のもの，すなわ
+ち上付き文字のついた変数や平方根，別の分数，その他諸々を入力することができます．
 \end_layout
 
 \begin_layout Standard
@@ -2807,7 +2818,7 @@ arg   "math-insert \\frac-square"
 \family typewriter
 example_raw.lyx
 \family default
-のequation 2を数式モードに変更してください。
+のequation 2を数式モードに変更してください．
 \end_layout
 
 \begin_layout Subsection
@@ -2815,8 +2826,8 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Standard
-数式モードの中では文字は変数だと考えられているので、もし数式モードでsinと入力すると、\SpecialChar LyX
-は、あなたが
+数式モードの中では文字は変数だと考えられているので，もし数式モードでsinと入力すると，\SpecialChar LyX
+は，あなたが
 \begin_inset Formula $s$
 \end_inset
 
@@ -2828,9 +2839,9 @@ example_raw.lyx
 \begin_inset Formula $n$
 \end_inset
 
-の3つの変数を入力したと考えます。本当は「sin」という単語をローマン体で組版したかったのに、3つの文字がイタリック体で組版されてしまいます。その上、\SpecialChar LyX
+の3つの変数を入力したと考えます．本当は「sin」という単語をローマン体で組版したかったのに，3つの文字がイタリック体で組版されてしまいます．その上，\SpecialChar LyX
 は単語「s
-in」と「x」の間に空白を入れることもしません（スペースキーを押すと数式モードから出て行くだけです）。それでは、どうすれば 
+in」と「x」の間に空白を入れることもしません（スペースキーを押すと数式モードから出て行くだけです）．それでは，どうすれば 
 \begin_inset Formula $sin(x)$
 \end_inset
 
@@ -2838,7 +2849,7 @@ in」と「x」の間に空白を入れることもしません（スペース�
 \begin_inset Formula $\sin(x)$
 \end_inset
 
- を得ることができるのでしょうか。
+ を得ることができるのでしょうか．
 \end_layout
 
 \begin_layout Standard
@@ -2852,26 +2863,26 @@ type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-をクリックし、現れる関数一覧でsinをクリックして下さい。\SpecialChar LyX
-中に、斜字でないローマン体の「sin」という単語が黒で表示されるでしょう。この単語全体が一つの記号とし
-て取り扱われるので、
+をクリックし，現れる関数一覧でsinをクリックして下さい．\SpecialChar LyX
+中に，斜字でないローマン体の「sin」という単語が黒で表示されるでしょう．この単語全体が一つの記号とし
+て取り扱われるので，
 \family sans
 Backspace
 \family default
-を押すと単語全体が削除されます。その後に「(x)」と入力して下さい。すると、数式モードの習いとして、青のイタリック体で表示されるます。出力では、数式が正しく組版
-されています。試して下さい。
+を押すと単語全体が削除されます．その後に「(x)」と入力して下さい．すると，数式モードの習いとして，青のイタリック体で表示されるます．出力では，数式が正しく組版
+されています．試して下さい．
 \end_layout
 
 \begin_layout Standard
-関数一覧には、他に三角関数・逆三角関数・双曲関数・対数・極限などいろいろあります。これらの関数には、上付き文字や下付き文字を付けることができます。これは、
+関数一覧には，他に三角関数・逆三角関数・双曲関数・対数・極限などいろいろあります．これらの関数には，上付き文字や下付き文字を付けることができます．これは，
 \begin_inset Formula $\cos^{2}\theta$
 \end_inset
 
-、
+，
 \begin_inset Formula $\lim_{n\rightarrow\infty}$
 \end_inset
 
- のような入力をする上で必須なのです。
+ のような入力をする上で必須なのです．
 \end_layout
 
 \begin_layout Standard
@@ -2883,7 +2894,7 @@ Backspace
 \family typewriter
 example_raw.lyx
 \family default
-のequation 3を数式モードにして下さい。
+のequation 3を数式モードにして下さい．
 \end_layout
 
 \begin_layout Subsection
@@ -2901,26 +2912,26 @@ type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-を押して下さい。現れるダイアログで、行列の行数と列数を選択することができます。行数を2行、列数を3列にして
+を押して下さい．現れるダイアログで，行列の行数と列数を選択することができます．行数を2行，列数を3列にして
 \family sans
 OK
 \family default
-を押して下さい。\SpecialChar LyX
-は、
+を押して下さい．\SpecialChar LyX
+は，
 \begin_inset Formula $2\times3$
 \end_inset
 
-行列の中に六つの挿入ポイントを表示します。これまでと同様、各挿入ポイントには、どのような種類の数式（平方根、別の行列等）を入れることができます。必要ならば、挿入
-ポイントのいくつかを空のままにしておくこともできます。
+行列の中に六つの挿入ポイントを表示します．これまでと同様，各挿入ポイントには，どのような種類の数式（平方根，別の行列等）を入れることができます．必要ならば，挿入
+ポイントのいくつかを空のままにしておくこともできます．
 \end_layout
 
 \begin_layout Standard
-タブキーで水平方向に別の列に移動できます。また矢印キーを使っても移動できます。一つの挿入ポイントの終りで右方向の矢印キーを打つと隣の箱へ移り、下方向の矢印キーを
-打つと次の行へ移動するというぐあいです。
+タブキーで水平方向に別の列に移動できます．また矢印キーを使っても移動できます．一つの挿入ポイントの終りで右方向の矢印キーを打つと隣の箱へ移り，下方向の矢印キーを
+打つと次の行へ移動するというぐあいです．
 \end_layout
 
 \begin_layout Standard
-行数や列数を変更する必要が生じた場合は、
+行数や列数を変更する必要が生じた場合は，
 \family sans
 編集\SpecialChar menuseparator
 行と列
@@ -2949,16 +2960,16 @@ type  "icon"
 arg   "tabular-feature delete-column"
 \end_inset
 
-ボタンを使ってください。
+ボタンを使ってください．
 \end_layout
 
 \begin_layout Standard
 列の間のスペースや行列全体の垂直方向の位置の調整については
 \emph on
-、ユーザーの手引き
+，ユーザーの手引き
 \emph default
-を見て下さい。行列は数式用のものです。もし普通のテキストが入った表を作りたい場合は、行列に普通のテキストを書くよりも\SpecialChar LyX
-の優秀な表機能を使って下さい。
+を見て下さい．行列は数式用のものです．もし普通のテキストが入った表を作りたい場合は，行列に普通のテキストを書くよりも\SpecialChar LyX
+の優秀な表機能を使って下さい．
 \end_layout
 
 \begin_layout Subsection
@@ -2966,16 +2977,16 @@ arg   "tabular-feature delete-column"
 \end_layout
 
 \begin_layout Standard
-ここまではテキストと同じ行に数式を入れる方法について説明して来ました。行内表示と呼ばれるものです。これは短い、簡単な数式の場合はいいのですが、長い数式を書く場合
-やテキストから独立させたい場合には別行立てモードで書く必要があります。また数式にラベルや式番号（
+ここまではテキストと同じ行に数式を入れる方法について説明して来ました．行内表示と呼ばれるものです．これは短い，簡単な数式の場合はいいのですが，長い数式を書く場合
+やテキストから独立させたい場合には別行立てモードで書く必要があります．また数式にラベルや式番号（
 \emph on
 ユーザーの手引き
 \emph default
-を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も、別行立てモードにする必要があります。
+を見て下さい）をつけたい場合や複数行にまたがる数式を書きたい場合も，別行立てモードにする必要があります．
 \end_layout
 
 \begin_layout Standard
-数式の中で、
+数式の中で，
 \family sans
 数式ツールバー
 \family default
@@ -2989,12 +3000,12 @@ type  "icon"
 arg   "math-display"
 \end_inset
 
-を押して下さい。こうすると、数式が中央揃えになり、上下に空白行が加えられます。何か数式を入力してファイルをコンパイルし、どのように表示されるかご覧になって下さい
-。
+を押して下さい．こうすると，数式が中央揃えになり，上下に空白行が加えられます．何か数式を入力してファイルをコンパイルし，どのように表示されるかご覧になって下さい
+．
 \family sans
 別行立て
 \family default
-ボタンは実は切替スイッチになっています。入力した数式のいくつかを、別行立てモードにしたり、戻したりしてみてください。
+ボタンは実は切替スイッチになっています．入力した数式のいくつかを，別行立てモードにしたり，戻したりしてみてください．
 \end_layout
 
 \begin_layout Standard
@@ -3021,13 +3032,13 @@ arg   "math-display"
 \end_layout
 
 \begin_layout Standard
-このようにいくつかの違いはありますが、別行立て表示と行内表示は非常に似たものです。
+このようにいくつかの違いはありますが，別行立て表示と行内表示は非常に似たものです．
 \end_layout
 
 \begin_layout Standard
-最後に一つ、別行立て数式の組版に関して注意があります。数式を新段落にしたいのか否かに気をつけてください。数式を文や段落の途中に入れたいのならば、Returnキー
-を押さないで下さい。Returnキーを押すと、数式に続く本文が新段落のはじまりであると解釈されてしまいます。すると使用中の文書の段落設定によって、字下げされたり
-空白があいたりすることになるので、望ましいものとはならないでしょう。
+最後に一つ，別行立て数式の組版に関して注意があります．数式を新段落にしたいのか否かに気をつけてください．数式を文や段落の途中に入れたいのならば，Returnキー
+を押さないで下さい．Returnキーを押すと，数式に続く本文が新段落のはじまりであると解釈されてしまいます．すると使用中の文書の段落設定によって，字下げされたり
+空白があいたりすることになるので，望ましいものとはならないでしょう．
 \end_layout
 
 \begin_layout Standard
@@ -3039,7 +3050,7 @@ arg   "math-display"
 \family typewriter
 example_raw.lyx
 \family default
-の数式を別行立てモードにしてどのように組版されるか見て下さい。
+の数式を別行立てモードにしてどのように組版されるか見て下さい．
 \end_layout
 
 \begin_layout Standard
@@ -3052,18 +3063,18 @@ example_raw.lyx
 status collapsed
 
 \begin_layout Plain Layout
-この難しい方法をこなした後で、
+この難しい方法をこなした後で，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 Cases環境
 \family default
-を試してみてください。
+を試してみてください．
 \end_layout
 
 \end_inset
 
-。
+．
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -3084,15 +3095,15 @@ f(x)=\left\{ \begin{array}{cc}
 
 \begin_layout Standard
 \SpecialChar LyX
-の数式エディタは、もっとたくさんのことができます。すでに基本は習得しましたから
+の数式エディタは，もっとたくさんのことができます．すでに基本は習得しましたから
 \emph on
-、
+，
 \emph default
-以下のようなことを実現するコツを知るには、
+以下のようなことを実現するコツを知るには，
 \emph on
 ユーザーの手引き
 \emph default
-を参照してください。
+を参照してください．
 \end_layout
 
 \begin_layout Itemize
@@ -3108,7 +3119,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Itemize
-字体を変える、例えば数式中でボールド体の文字をつかう。
+字体を変える，例えば数式中でボールド体の文字をつかう．
 \end_layout
 
 \begin_layout Itemize
@@ -3116,7 +3127,7 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Itemize
-マクロを書く。これはとても強力です。文章のはじめで定義するとそれを文章を通して使うことができます。
+マクロを書く．これはとても強力です．文章のはじめで定義するとそれを文章を通して使うことができます．
 \end_layout
 
 \begin_layout Itemize
@@ -3124,7 +3135,7 @@ f(x)=\left\{ \begin{array}{cc}
 \emph on
 入門篇
 \emph default
-で触れることのできなかったその他多くのこと。
+で触れることのできなかったその他多くのこと．
 \end_layout
 
 \begin_layout Chapter
@@ -3137,8 +3148,8 @@ f(x)=\left\{ \begin{array}{cc}
 \end_layout
 
 \begin_layout Standard
-ここまでで、\SpecialChar LyX
-で使えるすべてのコマンドを見たわけではありません。またすべてを見ることを意図したわけでもありません。いつもどおり、詳しくは
+ここまでで，\SpecialChar LyX
+で使えるすべてのコマンドを見たわけではありません．またすべてを見ることを意図したわけでもありません．いつもどおり，詳しくは
 \emph on
 ユーザーの手引き
 \emph default
@@ -3146,13 +3157,13 @@ f(x)=\left\{ \begin{array}{cc}
 \emph on
 埋込オブジェクト篇
 \emph default
-の説明書を見て下さい。ここでは、\SpecialChar LyX
-で可能な主要機能の一部について少しだけ触れておきます。
+の説明書を見て下さい．ここでは，\SpecialChar LyX
+で可能な主要機能の一部について少しだけ触れておきます．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-は、表のWYSIWYMサポートをしています。表を作るには、
+は，表のWYSIWYMサポートをしています．表を作るには，
 \family sans
 挿入\SpecialChar menuseparator
 表
@@ -3163,26 +3174,26 @@ type  "icon"
 arg   "tabular-insert"
 \end_inset
 
-）を使って下さい。表を
+）を使って下さい．表を
 \emph on
 右マウスボタン
 \emph default
-でクリックすると、
+でクリックすると，
 \family sans
 表設定
 \family default
-ダイアログボックスが現れるので、そこで表の詳しい編集ができます。
+ダイアログボックスが現れるので，そこで表の詳しい編集ができます．
 \begin_inset Info
 type  "icon"
 arg   "toolbar-toggle table"
 \end_inset
 
-を押すと、表ツールバーが固定的に表示されるようになります。
+を押すと，表ツールバーが固定的に表示されるようになります．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-は、文書中に任意の形式の図を取り込むことができます（ご想像の通り、
+は，文書中に任意の形式の図を取り込むことができます（ご想像の通り，
 \family sans
 挿入\SpecialChar menuseparator
 図
@@ -3193,20 +3204,20 @@ type  "icon"
 arg   "dialog-show-new-inset graphics"
 \end_inset
 
-）を選択します。すると、図ファイルを探したり、図を回転させたり、大きさを変えたりできるようになります）。表や図にはキャプションをつけることができ、\SpecialChar LyX
+）を選択します．すると，図ファイルを探したり，図を回転させたり，大きさを変えたりできるようになります）．表や図にはキャプションをつけることができ，\SpecialChar LyX
 
- は自動的に図や表の一覧を生成します。
+ は自動的に図や表の一覧を生成します．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-はあらゆる面でカスタマイズができます。\SpecialChar LyX
-ウインドウの外観から出力の仕方まで、あらゆることが、さまざまな方法で設定できます。大半の設定は、
+はあらゆる面でカスタマイズができます．\SpecialChar LyX
+ウインドウの外観から出力の仕方まで，あらゆることが，さまざまな方法で設定できます．大半の設定は，
 \family sans
 ツール\SpecialChar menuseparator
 設定
 \family default
-で行います。これに関する詳細は、
+で行います．これに関する詳細は，
 \family sans
 ヘルプ
 \family default
@@ -3215,20 +3226,20 @@ arg   "dialog-show-new-inset graphics"
 \family sans
 カスタマイズ篇
 \family default
-を参照してください。
+を参照してください．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-は5大陸にまたがるプログラマーのチームで開発されています。したがって、\SpecialChar LyX
-は、英語以外の言語（オランダ語・ドイツ語・フランス語・ギリシア語・チェコ語・トルコ語等）を
-、他のワードプロセッサよりもよくサポートしています。アラビア語・ペルシア語・ヘブライ語のような、右から左に文字を書く言語もサポートしていますし、日本語・中国語・
-韓国語のアジア言語もサポートしています。文書を他の言語で書けるだけでなく、メニューやエラーメッセージも他の言語に設定することができます。
+は5大陸にまたがるプログラマーのチームで開発されています．したがって，\SpecialChar LyX
+は，英語以外の言語（オランダ語・ドイツ語・フランス語・ギリシア語・チェコ語・トルコ語等）を
+，他のワードプロセッサよりもよくサポートしています．アラビア語・ペルシア語・ヘブライ語のような，右から左に文字を書く言語もサポートしていますし，日本語・中国語・
+韓国語のアジア言語もサポートしています．文書を他の言語で書けるだけでなく，メニューやエラーメッセージも他の言語に設定することができます．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-のメニューは、キー割り当て機能を持っています。
+のメニューは，キー割り当て機能を持っています．
 \family sans
 ファイル
 \family default
@@ -3237,7 +3248,7 @@ arg   "dialog-show-new-inset graphics"
 \family sans
 開く
 \family default
-をマウスで選ぶ代わりに、キーボードから
+をマウスで選ぶ代わりに，キーボードから
 \family sans
 Alt+F
 \family default
@@ -3245,13 +3256,13 @@ Alt+F
 \family sans
 O
 \family default
-と入力するか、メニュー項目の横に表示されているキー割り当て（既定では
+と入力するか，メニュー項目の横に表示されているキー割り当て（既定では
 \begin_inset Info
 type  "shortcut"
 arg   "file-open"
 \end_inset
 
-）を使うことができます。キー割り当ても設定が可能です。これに関する詳細は、
+）を使うことができます．キー割り当ても設定が可能です．これに関する詳細は，
 \family sans
 ヘルプ
 \family default
@@ -3260,28 +3271,28 @@ arg   "file-open"
 \family sans
 カスタマイズ篇
 \family default
-を見て下さい。
+を見て下さい．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-は、\SpecialChar LaTeX
-文書を読み込むことができます。第
+は，\SpecialChar LaTeX
+文書を読み込むことができます．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:tex2lyx"
 
 \end_inset
 
-節を参照してください。
+節を参照してください．
 \end_layout
 
 \begin_layout Itemize
-スペルチェックや類義語辞典、単語数チェックの機能があります。
+スペルチェックや類義語辞典，単語数チェックの機能があります．
 \end_layout
 
 \begin_layout Itemize
-目次や用語集の生成がサポートされています。
+目次や用語集の生成がサポートされています．
 \end_layout
 
 \begin_layout Section
@@ -3299,26 +3310,26 @@ name "sec:latexusers"
 
 \begin_layout Standard
 もし\SpecialChar LaTeX
-をご存じないのであれば、本節は読まなくてけっこうです。読んでも、\SpecialChar LaTeX
-を習ってから本節を読みたいと思われることでしょう。一方、\SpecialChar LyX
-を使いはじめる人には、\SpecialChar LaTeX
+をご存じないのであれば，本節は読まなくてけっこうです．読んでも，\SpecialChar LaTeX
+を習ってから本節を読みたいと思われることでしょう．一方，\SpecialChar LyX
+を使いはじめる人には，\SpecialChar LaTeX
 も使い慣れてい
-る人がいます。もし、あなたがこれに該当するならば、\SpecialChar LaTeX
-でできることのすべてが、\SpecialChar LyX
-でできるかどうかに興味があるでしょう。簡潔に答えれば、\SpecialChar LyX
-は、\SpecialChar LaTeX
+る人がいます．もし，あなたがこれに該当するならば，\SpecialChar LaTeX
+でできることのすべてが，\SpecialChar LyX
+でできるかどうかに興味があるでしょう．簡潔に答えれば，\SpecialChar LyX
+は，\SpecialChar LaTeX
 でできることのほとんどすべて
-を、何らかの方法で実現できます。そしてまちがいなく、\SpecialChar LaTeX
-文書を書く作業の大半を簡単にしてくれます。
+を，何らかの方法で実現できます．そしてまちがいなく，\SpecialChar LaTeX
+文書を書く作業の大半を簡単にしてくれます．
 \end_layout
 
 \begin_layout Standard
-これは入門篇なので、新規の\SpecialChar LyX
-ユーザーが最も興味を持ちそうなことのみを取り上げることにします。
+これは入門篇なので，新規の\SpecialChar LyX
+ユーザーが最も興味を持ちそうなことのみを取り上げることにします．
 \emph on
 入門篇
 \emph default
-が長くなりすぎないように、ここでは最小限の情報だけを載せることにします。取扱説明書の
+が長くなりすぎないように，ここでは最小限の情報だけを載せることにします．取扱説明書の
 \emph on
 高度な機能篇
 \emph default
@@ -3326,11 +3337,11 @@ name "sec:latexusers"
 \emph on
 埋込オブジェクト篇
 \emph default
-に、\SpecialChar LyX
+に，\SpecialChar LyX
 と\SpecialChar LaTeX
-の違いに関する多くの情報と、\SpecialChar LaTeX
+の違いに関する多くの情報と，\SpecialChar LaTeX
 で使われる様々なトリックを\SpecialChar LyX
-ではどう実現したらいいかの説明があります。
+ではどう実現したらいいかの説明があります．
 \end_layout
 
 \begin_layout Subsection
@@ -3340,8 +3351,8 @@ name "sec:latexusers"
 
 \begin_layout Standard
 \SpecialChar TeX
-モードで入力されたものは、すべて直接\SpecialChar LaTeX
-に渡され、画面には赤で表示されます。
+モードで入力されたものは，すべて直接\SpecialChar LaTeX
+に渡され，画面には赤で表示されます．
 \family sans
 挿入\SpecialChar menuseparator
 \SpecialChar TeX
@@ -3353,27 +3364,27 @@ type  "icon"
 arg   "ert-insert"
 \end_inset
 
-）を選択すると、\SpecialChar LyX
+）を選択すると，\SpecialChar LyX
 の中で\SpecialChar TeX
-コマンドを使うことができます。この操作で生成されたボックスの中に書かれたのものすべては、そのまま \SpecialChar LaTeX
- に渡されることになります。
+コマンドを使うことができます．この操作で生成されたボックスの中に書かれたのものすべては，そのまま \SpecialChar LaTeX
+ に渡されることになります．
 \end_layout
 
 \begin_layout Standard
-数式の中では、\SpecialChar TeX
-モードは少し違った扱われ方をします。\SpecialChar TeX
-モードは、バックスラッシュを入力すると、ただちに始まります。バックスラッシュは表示されませんが、それに続いて入
-力したものはすべて赤で表示されます。\SpecialChar TeX
-モードから出るには、
+数式の中では，\SpecialChar TeX
+モードは少し違った扱われ方をします．\SpecialChar TeX
+モードは，バックスラッシュを入力すると，ただちに始まります．バックスラッシュは表示されませんが，それに続いて入
+力したものはすべて赤で表示されます．\SpecialChar TeX
+モードから出るには，
 \family sans
 Space
 \family default
-キーか、他のアルファベット以外の文字、例えば数字・アンダースコア・キャレット・括弧等を入力します。\SpecialChar TeX
-モードから出ると、もし\SpecialChar LyX
+キーか，他のアルファベット以外の文字，例えば数字・アンダースコア・キャレット・括弧等を入力します．\SpecialChar TeX
+モードから出ると，もし\SpecialChar LyX
 が入力された\SpecialChar TeX
-コマンドを知っているならば、\SpecialChar TeX
+コマンドを知っているならば，\SpecialChar TeX
 
-コマンドはWYSIWYMに変換されます。もし数式の中で
+コマンドはWYSIWYMに変換されます．もし数式の中で
 \family typewriter
 
 \backslash
@@ -3383,38 +3394,38 @@ gamma
 \family sans
 Space
 \family default
-を押すと、\SpecialChar LyX
-は、赤のgammaを青の
+を押すと，\SpecialChar LyX
+は，赤のgammaを青の
 \begin_inset Formula $\gamma$
 \end_inset
 
-へと変えます。これは、それほど複雑でないほとんどすべての数式マクロに対して機能します。この方法は、
+へと変えます．これは，それほど複雑でないほとんどすべての数式マクロに対して機能します．この方法は，
 \family sans
 数式ツールバー
 \family default
-を使うよりも速いので、特にベテランの\SpecialChar LaTeX
-ユーザーには重宝するでしょう。
+を使うよりも速いので，特にベテランの\SpecialChar LaTeX
+ユーザーには重宝するでしょう．
 \end_layout
 
 \begin_layout Standard
-特別なケースとしては、もし\SpecialChar TeX
-モードで中括弧（{）をタイプすると、はじめとおわりの中括弧が赤で挿入され、\SpecialChar TeX
-モードから出て、カーソルを中括弧の間へ移動します。これは変数
-をとるコマンドで、\SpecialChar LyX
-が知らないものを入力するときに便利です。
+特別なケースとしては，もし\SpecialChar TeX
+モードで中括弧（{）をタイプすると，はじめとおわりの中括弧が赤で挿入され，\SpecialChar TeX
+モードから出て，カーソルを中括弧の間へ移動します．これは変数
+をとるコマンドで，\SpecialChar LyX
+が知らないものを入力するときに便利です．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-は、\SpecialChar LaTeX
-ができることをすべて完璧にできるわけではありません。いくつかの凝った機能は、まったくサポートされていなかったり、働きはするもののWYSIWYMではなかったり
-します。しかし\SpecialChar TeX
-モードを使えば、WYSIWYMの数式・表・編集機能のような、\SpecialChar LyX
-の便利な機能をすべて維持した上で、\SpecialChar LaTeX
-の柔軟性を完全に生かすことができます。\SpecialChar LyX
-は、すべての\SpecialChar LaTeX
+は，\SpecialChar LaTeX
+ができることをすべて完璧にできるわけではありません．いくつかの凝った機能は，まったくサポートされていなかったり，働きはするもののWYSIWYMではなかったり
+します．しかし\SpecialChar TeX
+モードを使えば，WYSIWYMの数式・表・編集機能のような，\SpecialChar LyX
+の便利な機能をすべて維持した上で，\SpecialChar LaTeX
+の柔軟性を完全に生かすことができます．\SpecialChar LyX
+は，すべての\SpecialChar LaTeX
 パ
-ッケージを直接サポートすることはできませんが、プリアンブル（第
+ッケージを直接サポートすることはできませんが，プリアンブル（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:preamble"
@@ -3427,7 +3438,7 @@ reference "sec:preamble"
 \backslash
 usepackage{foo}
 \family default
-と書けば、お望みのどんなパッケージでも使うことができます—ただしそのパッケージの機能に関しては、WYSIWYMサポートは与えられません。
+と書けば，お望みのどんなパッケージでも使うことができます—ただしそのパッケージの機能に関しては，WYSIWYMサポートは与えられません．
 \end_layout
 
 \begin_layout Subsection
@@ -3459,19 +3470,19 @@ name "sec:tex2lyx"
 
 (plain)
 \family default
-メニューを使えば、\SpecialChar LaTeX
+メニューを使えば，\SpecialChar LaTeX
 ファイルを\SpecialChar LyX
-に読み込むことができます。このメニューは、
+に読み込むことができます．このメニューは，
 \family typewriter
 tex2lyx
 \family default
-プログラムを呼び出し、foo.texファイルからfoo.lyxファイルを生成した後、\SpecialChar LyX
-でこのファイルを開くことになります。もしこの変換がうまく行かない場合には、オプシ
-ョンを工夫して、コマンドラインから
+プログラムを呼び出し，foo.texファイルからfoo.lyxファイルを生成した後，\SpecialChar LyX
+でこのファイルを開くことになります．もしこの変換がうまく行かない場合には，オプシ
+ョンを工夫して，コマンドラインから
 \family typewriter
 tex2lyx
 \family default
-を呼び出してみてください。
+を呼び出してみてください．
 \end_layout
 
 \begin_layout Standard
@@ -3479,17 +3490,17 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-は、正しい文法で書かれた\SpecialChar LaTeX
-のほとんどを変換することができますが、変換できる場合でも、文書の一部を変換し残す場合もあります。
+は，正しい文法で書かれた\SpecialChar LaTeX
+のほとんどを変換することができますが，変換できる場合でも，文書の一部を変換し残す場合もあります．
 \family typewriter
 tex2lyx
 \family default
-は、理解できない部分は\SpecialChar TeX
-モードのままで残すので、
+は，理解できない部分は\SpecialChar TeX
+モードのままで残すので，
 \family typewriter
 tex2lyx
 \family default
-に変換させた後、赤い文字列を探し出して、手動で正しく編集するとよいでしょう。
+に変換させた後，赤い文字列を探し出して，手動で正しく編集するとよいでしょう．
 \end_layout
 
 \begin_layout Standard
@@ -3497,7 +3508,7 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-には、それ自身の取扱説明書(manページ)があり、Unix/Linuxユーザーは、コンソールコマンド
+には，それ自身の取扱説明書(manページ)があり，Unix/Linuxユーザーは，コンソールコマンド
 \family typewriter
 man
 \begin_inset space ~
@@ -3505,9 +3516,9 @@ man
 
 tex2lyx
 \family default
-でアクセスすることができます。manページは、サポートされていない\SpecialChar LaTeX
-コマンド・環境や、遭遇しうるバグ（およびその回避のしかた）、さまざまなオプションの使い方などを
-説明しています。
+でアクセスすることができます．manページは，サポートされていない\SpecialChar LaTeX
+コマンド・環境や，遭遇しうるバグ（およびその回避のしかた），さまざまなオプションの使い方などを
+説明しています．
 \end_layout
 
 \begin_layout Standard
@@ -3515,25 +3526,25 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-は、\SpecialChar LyX
-が「知っている」文書クラスのファイルしか変換できないことを理解しておくことは重要です。つまり、対応する\SpecialChar LyX
+は，\SpecialChar LyX
+が「知っている」文書クラスのファイルしか変換できないことを理解しておくことは重要です．つまり，対応する\SpecialChar LyX
 
 \family sans
 レイアウトファイル
 \family default
-がなくてはなりません。レイアウトファイルがない場合には、変換を実行することができなかったという旨のエラーが発生します。\SpecialChar LaTeX
+がなくてはなりません．レイアウトファイルがない場合には，変換を実行することができなかったという旨のエラーが発生します．\SpecialChar LaTeX
 ファイルの文書クラスに対応したレイアウトが
-ない限り、
+ない限り，
 \family typewriter
 tex2lyx
 \family default
-は、ファイル中の\SpecialChar LaTeX
-を、\SpecialChar LyX
-が理解できる形に変換する方法がわからないのです。レイアウトファイルについての詳細と、その作成の仕方については、取扱説明書『
+は，ファイル中の\SpecialChar LaTeX
+を，\SpecialChar LyX
+が理解できる形に変換する方法がわからないのです．レイアウトファイルについての詳細と，その作成の仕方については，取扱説明書『
 \emph on
 カスタマイズ篇
 \emph default
-』の第5章に説明があります。
+』の第5章に説明があります．
 \end_layout
 
 \begin_layout Subsection
@@ -3545,8 +3556,8 @@ tex2lyx
 \begin_layout Standard
 \SpecialChar LyX
 文書を\SpecialChar LaTeX
-文書に変換したい場合もあるでしょう。例えば、\SpecialChar LyX
-を持っていない共同研究者や共同執筆者に文書を読ませたい場合です。
+文書に変換したい場合もあるでしょう．例えば，\SpecialChar LyX
+を持っていない共同研究者や共同執筆者に文書を読ませたい場合です．
 \family sans
 ファイル\SpecialChar menuseparator
 書き出し\SpecialChar menuseparator
@@ -3557,7 +3568,7 @@ tex2lyx
 
 (plain)
 \family default
-を選択してください。これは編集中の
+を選択してください．これは編集中の
 \family typewriter
 whatever.lyx
 \family default
@@ -3565,7 +3576,7 @@ whatever.lyx
 \family typewriter
 whatever.tex
 \family default
-を生成します。
+を生成します．
 \end_layout
 
 \begin_layout Subsection
@@ -3587,13 +3598,13 @@ whatever.tex
 \family sans
 設定
 \family default
-ダイアログは、文書全体にわたるオプションを扱っています。文書クラス・既定のフォント寸法・用紙寸法はここで変更してください。文書クラスオプションならびに\SpecialChar LaTeX
+ダイアログは，文書全体にわたるオプションを扱っています．文書クラス・既定のフォント寸法・用紙寸法はここで変更してください．文書クラスオプションならびに\SpecialChar LaTeX
 パッケージ
-のオプションは、
+のオプションは，
 \family sans
 追加オプション
 \family default
-エリアへ入れて下さい。
+エリアへ入れて下さい．
 \end_layout
 
 \begin_layout Subsubsection
@@ -3609,8 +3620,8 @@ name "sec:preamble"
 
 \begin_layout Standard
 \SpecialChar LaTeX
-ファイルのプリアンブルに追加したい特定のコマンドがある場合、それは\SpecialChar LyX
-文書でも使えます。
+ファイルのプリアンブルに追加したい特定のコマンドがある場合，それは\SpecialChar LyX
+文書でも使えます．
 \family sans
 文書
 \family default
@@ -3626,7 +3637,7 @@ name "sec:preamble"
 プリアンブル\SpecialChar ldots
 
 \family default
-を選択して、ダイアログウインドウ（あるいはフロントエンドによっては、文書設定ダイアログ）に入力してください。
+を選択して，ダイアログウインドウ（あるいはフロントエンドによっては，文書設定ダイアログ）に入力してください．
 \end_layout
 
 \begin_layout Subsection
@@ -3637,30 +3648,30 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 \SpecialChar LyX
 はBib\SpecialChar TeX
-をサポートしています。Bib\SpecialChar TeX
-とは、複数の文書で使うための書誌情報データベースをつくるものです。Bib\SpecialChar TeX
-ファイルを文書に挿入するには、
+をサポートしています．Bib\SpecialChar TeX
+とは，複数の文書で使うための書誌情報データベースをつくるものです．Bib\SpecialChar TeX
+ファイルを文書に挿入するには，
 \family sans
 挿入\SpecialChar menuseparator
 一覧/目次\SpecialChar menuseparator
 Bib\SpecialChar TeX
 書誌情報
 \family default
-を選択してください。
+を選択してください．
 \family sans
 データベース
 \family default
 フィールドにBib\SpecialChar TeX
-ファイルを読み込み、
+ファイルを読み込み，
 \family sans
 形式
 \family default
 フィールドにBib\SpecialChar TeX
-スタイルファイルを読み込んでください。
+スタイルファイルを読み込んでください．
 \end_layout
 
 \begin_layout Standard
-以上を行った後は、取り込んだ文献データベースの中にある、任意の文献を、
+以上を行った後は，取り込んだ文献データベースの中にある，任意の文献を，
 \family sans
 挿入
 \family default
@@ -3676,12 +3687,12 @@ reference "sec:参考文献"
 
 \end_inset
 
-節参照）を使って参照することができるようになります。また、
+節参照）を使って参照することができるようになります．また，
 \family sans
 文献引用
 \family default
-ダイアログ内のボックスに、使用中のBib\SpecialChar TeX
-ファイルにある全文献一覧が表示されます。
+ダイアログ内のボックスに，使用中のBib\SpecialChar TeX
+ファイルにある全文献一覧が表示されます．
 \end_layout
 
 \begin_layout Section
@@ -3689,17 +3700,17 @@ reference "sec:参考文献"
 \end_layout
 
 \begin_layout Standard
-文書を閲覧しようとしたときに、\SpecialChar LyX
+文書を閲覧しようとしたときに，\SpecialChar LyX
 や\SpecialChar LaTeX
-が命令を理解できずに、エラーになることがあります。これが起こると、\SpecialChar LyX
+が命令を理解できずに，エラーになることがあります．これが起こると，\SpecialChar LyX
 は
 \family sans
 \SpecialChar LaTeX
 エラー
 \family default
-ダイアログを表示します。このダイアログ中の各エラーをクリックすると、\SpecialChar LyX
-文書中のエラーが発生した場所へ移動し、詳細な\SpecialChar LaTeX
-エラーメッセージを表示します。
+ダイアログを表示します．このダイアログ中の各エラーをクリックすると，\SpecialChar LyX
+文書中のエラーが発生した場所へ移動し，詳細な\SpecialChar LaTeX
+エラーメッセージを表示します．
 \end_layout
 
 \end_body

@@ -1008,7 +1008,7 @@ void MathMacro::mathmlize(MathStream & os) const
 		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
 			char const * type = d->macro_->MathMLtype();
-			os << '<' << type << "> " << xmlname << " /<"
+			os << '<' << type << "> " << xmlname << " </"
 			   << type << '>';
 			return;
 		}

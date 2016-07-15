@@ -1,4 +1,37 @@
-﻿Changelog for LyX.220-RC1-1:
+﻿Changelog for LyX-220-4:
+- recompiled LyX using MSVC 2015 update 3
+- updated to MiKTeX 2.9 build 6022
+- updated to Imagemagick 6.9.x
+
+
+
+Changelog for LyX-220-3:
+- updated to Qt 5.6.1
+- updated to MiKTeX 2.9 build 5997
+- updated to JabRef 3.4
+- updated to Imagemagick 6.9.4-8
+
+
+Changelog for LyX-220-2:
+- remove also the user dependent LyX settings from the registry if the user
+  preferences should be uninstalled
+- calculate the required installation size correctly
+- updated to Imagemagick 6.9.4-6 (fixes 2 security issues)
+
+
+Changelog for LyX.220-1:
+- installs LyX 2.2.0
+- updated to MiKTeX 2.9 build 5987
+- updated to Imagemagick 6.9.4-4
+- updated to JabRef 3.3
+- new thesaurus for Norwegian (Nynorsk)
+- updated thesaurus for English (US) and Norwegian (Bokmal)
+- updated spell-checker dictionary for English (AU and GB), Norwegian (Bokmal and Nynorsk) and Scottish
+  (To benefit from it you must uninstall an already installed LyX 2.2.0 and
+   then use this installer.)
+
+
+Changelog for LyX.220-RC1-1:
 - installs LyX 2.2.0 RC1
 - updated to Ghostscript 9.19
 - updated to Imagemagick 6.9.3-8

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * \file GuiView.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
@@ -3530,7 +3530,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
-			if (!target_dir.isDirWritable()) {
+			if ((dest.empty() && doc_buffer->isUnnamed())
+			    || !target_dir.isDirWritable()) {
 				exportBufferAs(*doc_buffer, cmd.argument());
 				break;
 			}

@@ -6420,8 +6420,7 @@ format local
 Vous le trouverez via 
 \family sans
 Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Format local
 \family default
 .
@@ -6443,18 +6442,7 @@ Format
  N'importe quel format est admissible, mais on utilise d'habitude le format
  de la version de \SpecialChar LyX
  utilisée (pour \SpecialChar LyX
- 2.1, le format porte le numéro 48).
- Vous devez savoir que le format local n'existe pas pour les versions de
- \SpecialChar LyX
- antérieures à 1.6, vous ne devez donc pas l'utiliser si vous envisagez
- d'exporter votre document en version 1.5 ou antérieure (en fait, sans perdre
- l'information de format local).
- Si vous souhaitez exporter vers \SpecialChar LyX
- version 1.6 — le format local est reconnu,
- mais il n'y a pas d'interface pour y accéder — vous devez alors utiliser
- le format 11 et bien entendu vous restreindre aux constructions de format
- qui étaient disponibles avec \SpecialChar LyX
- 1.6.
+ 2.2, le format porte le numéro 60).
 \end_layout
 
 \begin_layout Standard
@@ -6598,8 +6586,7 @@ ma_classe.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class{report}
+DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
@@ -6609,8 +6596,7 @@ en :
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[report, ma_classe.sty]{report (ma_classe)}
+DeclareLaTeXClass[report, ma_classe.sty]{report (ma_classe)}
 \end_layout
 
 \begin_layout Standard
@@ -6679,8 +6665,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Classe de document
 \end_layout
 
@@ -6825,8 +6810,7 @@ ma_classe.sty
 \lang english
 #
 \backslash
-Declare\SpecialChar LyX
-Module{mon paquetage} 
+DeclareLyXModule{mon paquetage} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -6854,7 +6838,7 @@ Module{mon paquetage}
 \begin_layout LyX-Code
 
 \lang english
-Format 35
+Format 60
 \begin_inset Newline newline
 \end_inset
 
@@ -6999,8 +6983,7 @@ thesis.layout
 \lang english
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -7407,18 +7390,7 @@ Ne pas effacer la ligne ci-dessous ; configure compte dessus.
 \size small
 #  
 \backslash
-DeclareLaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXClass{Article (Standard Class)}
+DeclareLaTeXClass{Article (Standard Class)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7637,18 +7609,7 @@ mon_article.layout
 \size small
 #  
 \backslash
-DeclareLaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXClass[article]{Article (avec Mes En-têtes)}
+DeclareLaTeXClass[article]{Article (avec Mes En-têtes)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7705,18 +7666,7 @@ Article (avec Mes En-têtes)
 \size small
 #  
 \backslash
-DeclareLaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXClass[article,machin.sty]{Article (avec Mes En-têtes)}
+DeclareLaTeXClass[article,machin.sty]{Article (avec Mes En-têtes)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7780,18 +7730,7 @@ Donc, de la manière la plus explicite, la forme d'une déclaration de format
 \size small
 #  
 \backslash
-DeclareLaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXClass[class,package.sty]{description du format}
+DeclareLaTeXClass[class,package.sty]{description du format}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7983,22 +7922,7 @@ La première ligne d'un module doit être rédigée comme suit:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareL
-\size small
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size default
-yXModule[endnotes.sty]{Endnotes}
+DeclareLyXModule[endnotes.sty]{Endnotes}
 \end_layout
 
 \begin_layout Standard
@@ -8274,7 +8198,7 @@ Format
 
 \lang french
 .
- Le numéro de format du présent fichier est le numéro 59.
+ Le numéro de format du présent fichier est le numéro 60.
  mais chaque version de \SpecialChar LyX
  peut lire les fichiers de format d'une version
  plus ancienne, comme elle peut lire les documents crées avec une version
@@ -20139,8 +20063,7 @@ s, etc).
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset
@@ -20165,7 +20088,21 @@ MultiPar
 
 \end_inset
 
- à faux.
+ à faux et 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to true
+\lang french
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -20176,7 +20113,21 @@ MultiPar
 
 \end_inset
 
- peut être positionné à vrai pour les inserts 
+ peut être positionné à vrai ou 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to false
+\lang french
+, pour les inserts 
 \begin_inset Flex Code
 status collapsed
 
@@ -20195,8 +20146,7 @@ après
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset

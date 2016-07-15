@@ -2988,6 +2988,13 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 			continue;
 
 		stringstream attr;
+		
+		Length const cwidth = column_info[c].p_width;
+		if (!cwidth.zero()) {
+			string const hwidth = cwidth.asHTMLString();
+			attr << "style =\"width: " << hwidth << ";\" ";
+		}
+		
 		attr << "align='";
 		switch (getAlignment(cell)) {
 		case LYX_ALIGN_LEFT:
@@ -3019,7 +3026,7 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 		else if (isMultiRow(cell))
 			attr << " rowspan='" << rowSpan(cell) << "'";
 
-		xs << html::StartTag(celltag, attr.str()) << html::CR();
+		xs << html::StartTag(celltag, attr.str(), true) << html::CR();
 		ret += cellInset(cell)->xhtml(xs, runparams);
 		xs << html::EndTag(celltag) << html::CR();
 		++cell;

@@ -31,7 +31,6 @@ class ShortcutWidget : public QLabel {
 public:
 	ShortcutWidget(QWidget * parent);
 	void reset();
-	bool eventFilter(QObject*, QEvent* e );
 	KeySequence const getKeySequence() const;
 	void setKeySequence(lyx::KeySequence const & s);
 	void removeFromSequence();

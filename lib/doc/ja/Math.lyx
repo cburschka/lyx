@@ -185,7 +185,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -266,7 +266,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \noindent
-コメントや誤りの修正などがございましたら、\SpecialChar LyX
+コメントや誤りの修正などがございましたら，\SpecialChar LyX
 文書化メーリングリスト
 \family typewriter
 
@@ -280,7 +280,7 @@ type "mailto:"
 
 
 \family default
-までお知らせください。
+までお知らせください．
 \end_layout
 
 \end_inset
@@ -322,7 +322,7 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-この文書をPDFやPS、DVIに書き出すには、\SpecialChar LaTeX
+この文書をPDFやPS，DVIに書き出すには，\SpecialChar LaTeX
 パッケージの
 \series bold
 braket
@@ -351,11 +351,11 @@ undertilde
 \series bold
 was
 \series default
-が導入されている必要があります。これらが導入されていなくても文書はエクスポートできますが、パッケージを必要とする節は出力には現れません。また、
+が導入されている必要があります．これらが導入されていなくても文書はエクスポートできますが，パッケージを必要とする節は出力には現れません．また，
 \series bold
 mhchem
 \series default
-が導入されていないと、本ファイルを書き出すことができません。
+が導入されていないと，本ファイルを書き出すことができません．
 \end_layout
 
 \begin_layout Plain Layout
@@ -372,7 +372,7 @@ http://wiki.lyx.org/\SpecialChar LyX
 
 
 \series default
-にあります。
+にあります．
 \end_layout
 
 \end_inset
@@ -392,18 +392,18 @@ http://wiki.lyx.org/\SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-この文書は、\SpecialChar LyX
-の数式機能の説明書であると同時に、なによりも数式記号および数式要素に使用される\SpecialChar LaTeX
-コマンドのコレクションでもあります。説明は、コマンドの使用を念頭に置い
-ています。したがって、ユーザーの手引きの
+この文書は，\SpecialChar LyX
+の数式機能の説明書であると同時に，なによりも数式記号および数式要素に使用される\SpecialChar LaTeX
+コマンドのコレクションでもあります．説明は，コマンドの使用を念頭に置い
+ています．したがって，ユーザーの手引きの
 \family typewriter
 数式
 \family default
-の節をすでにお読みになっていることを前提としています。
+の節をすでにお読みになっていることを前提としています．
 \end_layout
 
 \begin_layout Standard
-この説明書で説明されている、ほとんどの数式記号と、数式要素の多くは、
+この説明書で説明されている，ほとんどの数式記号と，数式要素の多くは，
 \family sans
 挿入\SpecialChar menuseparator
 数式
@@ -412,12 +412,12 @@ http://wiki.lyx.org/\SpecialChar LyX
 \family sans
 数式ツールバー
 \family default
-からアクセスすることが可能です。しかし、たくさんの数式を書かなくてはならない人はみな、数式ツールバーを使うよりもコマンドを使った方がずっと速いことに気付くことに
-なるのです。したがって、この説明書はコマンドに焦点を当てますが、対応するツールバーボタンが利用可能なときには、それにも言及することにします。
+からアクセスすることが可能です．しかし，たくさんの数式を書かなくてはならない人はみな，数式ツールバーを使うよりもコマンドを使った方がずっと速いことに気付くことに
+なるのです．したがって，この説明書はコマンドに焦点を当てますが，対応するツールバーボタンが利用可能なときには，それにも言及することにします．
 \end_layout
 
 \begin_layout Standard
-とくに断らなければ、コマンドは数式内からのみ利用可能です。この文書で説明されているすべてのコマンドを利用できるようにするためには、文書設定(
+とくに断らなければ，コマンドは数式内からのみ利用可能です．この文書で説明されているすべてのコマンドを利用できるようにするためには，文書設定(
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -436,8 +436,8 @@ status collapsed
 \family sans
 AMS mathパッケージを自動的に使う
 \family default
-オプションは、\SpecialChar LyX
-でサポートされている数式要素が見つかったときのみ、
+オプションは，\SpecialChar LyX
+でサポートされている数式要素が見つかったときのみ，
 \begin_inset ERT
 status collapsed
 
@@ -450,16 +450,16 @@ AmS
 
 \end_inset
 
--mathパッケージを使用します。
+-mathパッケージを使用します．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-説明を明瞭にするために、この文書はすべての
+説明を明瞭にするために，この文書はすべての
 \begin_inset ERT
 status collapsed
 
@@ -490,7 +490,7 @@ AmS
 
 \end_inset
 
--mathコマンドの一覧は、
+-mathコマンドの一覧は，
 \family sans
 
 \begin_inset CommandInset href
@@ -502,13 +502,13 @@ target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
 
 
 \family default
-ファイルに収録されています。このファイルは、すべての\SpecialChar LaTeX
-標準頒布版に含まれています。
+ファイルに収録されています．このファイルは，すべての\SpecialChar LaTeX
+標準頒布版に含まれています．
 \end_layout
 
 \end_inset
 
-を列挙はしません。
+を列挙はしません．
 \end_layout
 
 \begin_layout Section
@@ -526,7 +526,7 @@ status collapsed
 
 \end_inset
 
-を作成するには、
+を作成するには，
 \begin_inset Flex Ruby
 status collapsed
 
@@ -552,13 +552,13 @@ type  "shortcuts"
 arg   "math-mode"
 \end_inset
 
-のうちのいずれか、あるいはツールバーボタン
+のうちのいずれか，あるいはツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
-を使用してください。
+を使用してください．
 \begin_inset Newline newline
 \end_inset
 
@@ -572,33 +572,33 @@ status collapsed
 
 \end_inset
 
-を作成するには、
+を作成するには，
 \begin_inset Info
 type  "shortcuts"
 arg   "math-display"
 \end_inset
 
-のうちいずれかの捷径を使用して下さい。
+のうちいずれかの捷径を使用して下さい．
 \end_layout
 
 \begin_layout Standard
-別行立て様式の数式を行内数式に変更するには、カーソルを数式内に合わせて
+別行立て様式の数式を行内数式に変更するには，カーソルを数式内に合わせて
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
 \end_inset
 
-のいずれかの捷径か、
+のいずれかの捷径か，
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
-メニューを使用して下さい。同じ方法が、行内数式を別行立て数式に変更するのにも使用できます。
+メニューを使用して下さい．同じ方法が，行内数式を別行立て数式に変更するのにも使用できます．
 \end_layout
 
 \begin_layout Standard
-行内数式の一部を別行立て数式の大きさで表示するには、
+行内数式の一部を別行立て数式の大きさで表示するには，
 \series bold
 
 \backslash
@@ -618,11 +618,11 @@ displaystyle
 
 
 \series default
-を数式に入力して下さい。すると、青いボックスが新規に現れて、希望する数式の箇所を挿入することができます。
+を数式に入力して下さい．すると，青いボックスが新規に現れて，希望する数式の箇所を挿入することができます．
 \end_layout
 
 \begin_layout Standard
-表の中では、行内数式のみの使用が許されています。
+表の中では，行内数式のみの使用が許されています．
 \end_layout
 
 \begin_layout Standard
@@ -630,21 +630,21 @@ displaystyle
 \family sans
 数式ツールバー
 \family default
-は、
+は，
 \family sans
 表示\SpecialChar menuseparator
 ツールバー
 \family default
-メニューで表示することができます。そのメニューで「数式」をクリックすると、ツールバーが下部に永続的に表示されます。この状態は、
+メニューで表示することができます．そのメニューで「数式」をクリックすると，ツールバーが下部に永続的に表示されます．この状態は，
 \family sans
 ツールバー
 \family default
-メニューの中ではチェック印で表されます。この状態から、
+メニューの中ではチェック印で表されます．この状態から，
 \family sans
 ツールバー
 \family default
-メニューの「数式」をもう一度クリックすると、数式ツールバーは、カーソルが数式内部にあるときのみ表示されるようになります。この状態は、メニュー項目が「数式」から「
-数式(自動)」に変わることで表されます。
+メニューの「数式」をもう一度クリックすると，数式ツールバーは，カーソルが数式内部にあるときのみ表示されるようになります．この状態は，メニュー項目が「数式」から「
+数式(自動)」に変わることで表されます．
 \end_layout
 
 \begin_layout Standard
@@ -660,13 +660,13 @@ T exもーど@\SpecialChar TeX
 
 \end_inset
 
-は、ツールバーボタン
+は，ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "ert-insert"
 \end_inset
 
-を押すか、
+を押すか，
 \family sans
 挿入\SpecialChar menuseparator
 Te
@@ -688,18 +688,18 @@ type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-)メニューを使うことで、起動できます。
+)メニューを使うことで，起動できます．
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
-には、出力においては上付き文字と下付き文字とで表示される三つの「固有名詞」、\SpecialChar TeX
+には，出力においては上付き文字と下付き文字とで表示される三つの「固有名詞」，\SpecialChar TeX
 ・\SpecialChar LaTeX
 ・\SpecialChar LyX
-があります。これらの名称が、固有名詞として認識されるのを防ぐために、ここでは\SpecialChar TeX
+があります．これらの名称が，固有名詞として認識されるのを防ぐために，ここでは\SpecialChar TeX
 括弧
-が挿入されています。
+が挿入されています．
 \end_layout
 
 \end_inset
@@ -720,7 +720,7 @@ L atexぷりあんぶる@\SpecialChar LaTeX
 
 \end_inset
 
-を変更するには、
+を変更するには，
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
@@ -737,11 +737,11 @@ status collapsed
 
 eXプリアンブル
 \family default
-メニューを使用してください。
+メニューを使用してください．
 \end_layout
 
 \begin_layout Standard
-行列や場合分け、多行数式を続けて編集するには、
+行列や場合分け，多行数式を続けて編集するには，
 \family sans
 編集\SpecialChar menuseparator
 数式
@@ -751,8 +751,8 @@ eXプリアンブル
 編集\SpecialChar menuseparator
 行と列
 \family default
-メニューを使うか、表ツールバーを使用することができます。メニューから行や列を交換するように指定されたときには、カーソルのある列や行は、それぞれ右側の列や下の行と
-交換されます。カーソルが最後の列や行にあるときには、左の列や上の行と交換されることになります。
+メニューを使うか，表ツールバーを使用することができます．メニューから行や列を交換するように指定されたときには，カーソルのある列や行は，それぞれ右側の列や下の行と
+交換されます．カーソルが最後の列や行にあるときには，左の列や上の行と交換されることになります．
 \end_layout
 
 \begin_layout Standard
@@ -761,25 +761,25 @@ eXプリアンブル
 status collapsed
 
 \begin_layout Plain Layout
-多行数式では、
+多行数式では，
 \series bold
 
 \backslash
 intertext
 \series default
-コマンドが使用されます。
+コマンドが使用されます．
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:多行数式中のテキスト"
 
 \end_inset
 
-を参照のこと。
+を参照のこと．
 \end_layout
 
 \end_inset
 
-には、
+には，
 \emph on
 数式テキスト
 \emph default
@@ -803,13 +803,13 @@ status collapsed
 
 \end_inset
 
-が使用されます。このモードには、捷径
+が使用されます．このモードには，捷径
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
 \end_inset
 
-を使うか、
+を使うか，
 \series bold
 
 \backslash
@@ -827,9 +827,9 @@ text
 
 \end_inset
 
-コマンドを挿入することで入ることができます。テキストは、\SpecialChar LyX
-中では黒字で表示されるので、青字で表示される他の数式部分とは区別することができます。出力においては、数式
-テキストは、他の数式部分とは違って、アップライト体に組まれます。
+コマンドを挿入することで入ることができます．テキストは，\SpecialChar LyX
+中では黒字で表示されるので，青字で表示される他の数式部分とは区別することができます．出力においては，数式
+テキストは，他の数式部分とは違って，アップライト体に組まれます．
 \end_layout
 
 \begin_layout Subsection*
@@ -838,7 +838,7 @@ text
 
 \begin_layout Standard
 数式要素に使われるほとんどの\SpecialChar LaTeX
-コマンドは、以下のような構成になっています。
+コマンドは，以下のような構成になっています．
 \end_layout
 
 \begin_layout Standard
@@ -850,13 +850,13 @@ text
 \end_layout
 
 \begin_layout Standard
-コマンドは、つねにバックスラッシュ「
+コマンドは，つねにバックスラッシュ「
 \series bold
 
 \backslash
 
 \series default
-」で始まります。非必須の引数を省略するときには、随伴する括弧も省略しなくてはなりません。必須引数の前後の括弧は、この文書中では、\SpecialChar TeX
+」で始まります．非必須の引数を省略するときには，随伴する括弧も省略しなくてはなりません．必須引数の前後の括弧は，この文書中では，\SpecialChar TeX
 括弧
 \begin_inset Index idx
 status collapsed
@@ -868,36 +868,36 @@ T exかっこ@\SpecialChar TeX
 
 \end_inset
 
-と呼ぶことにします。数式中でコマンド名に左括弧を付けると、\SpecialChar LyX
+と呼ぶことにします．数式中でコマンド名に左括弧を付けると，\SpecialChar LyX
 は自動的に\SpecialChar TeX
-括弧を生成します。数式中ではそれ以外に、
+括弧を生成します．数式中ではそれ以外に，
 \series bold
 
 \backslash
 {
 \series default
-コマンドを使えば、つねに\SpecialChar TeX
-括弧を生成することができます。\SpecialChar LyX
-中で、青字で表示される通常の括弧とは違って、\SpecialChar TeX
-括弧は赤字で表示されます。\SpecialChar TeX
-モード中では、\SpecialChar TeX
-括弧を得るのに、とくに
-コマンドは必要としません。また、\SpecialChar TeX
-括弧は出力中では表示されません。
+コマンドを使えば，つねに\SpecialChar TeX
+括弧を生成することができます．\SpecialChar LyX
+中で，青字で表示される通常の括弧とは違って，\SpecialChar TeX
+括弧は赤字で表示されます．\SpecialChar TeX
+モード中では，\SpecialChar TeX
+括弧を得るのに，とくに
+コマンドは必要としません．また，\SpecialChar TeX
+括弧は出力中では表示されません．
 \end_layout
 
 \begin_layout Standard
 記号のコマンドのように引数のないコマンドを\SpecialChar TeX
-モードに入力するときには、コマンドの終わりを表すために、コマンドの後に空白が
+モードに入力するときには，コマンドの終わりを表すために，コマンドの後に空白が
 \emph on
 かならず
 \emph default
-入力されなくてはなりません。この空白は出力中には現れません。空白を出力中に表示したいときには、空白の後に、通常テキストモードの保護された空白が来なくてはなりませ
-ん。
+入力されなくてはなりません．この空白は出力中には現れません．空白を出力中に表示したいときには，空白の後に，通常テキストモードの保護された空白が来なくてはなりませ
+ん．
 \end_layout
 
 \begin_layout Standard
-保護された空白は、
+保護された空白は，
 \begin_inset Info
 type  "shortcuts"
 arg   "command-alternatives space-insert protected ; math-space"
@@ -923,7 +923,7 @@ status collapsed
 
 \end_inset
 
-で入力できます。
+で入力できます．
 \end_layout
 
 \begin_layout Subsection*
@@ -938,14 +938,14 @@ status collapsed
 \begin_inset space \textvisiblespace{}
 \end_inset
 
- は、空白文字を入力することを表します。
+ は，空白文字を入力することを表します．
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\to$
 \end_inset
 
-のような矢印は、キーボードから対応する矢印
+のような矢印は，キーボードから対応する矢印
 \begin_inset Flex Ruby
 status collapsed
 
@@ -965,7 +965,7 @@ status collapsed
 
 \end_inset
 
-を押すことを表します。
+を押すことを表します．
 \end_layout
 
 \begin_layout Subsection*
@@ -1442,19 +1442,19 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-添字は、アンダースコア「_」を打鍵するか、数式ツールバーボタン
+添字は，アンダースコア「_」を打鍵するか，数式ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-subscript"
 \end_inset
 
-を使って入力することができ、指数は、キャレット「^」を打鍵するか、数式ツールバーボタン
+を使って入力することができ，指数は，キャレット「^」を打鍵するか，数式ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-superscript"
 \end_inset
 
-を使って入力することができます。
+を使って入力することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1569,22 +1569,22 @@ A
 \end_layout
 
 \begin_layout Standard
-キャレットは、言語によってはアクセント記号として使用されているので、そのような場合には、母音字の後でキャレットを押すと、指数にならずにアクセントをつけることにな
+キャレットは，言語によってはアクセント記号として使用されているので，そのような場合には，母音字の後でキャレットを押すと，指数にならずにアクセントをつけることにな
 ってしまいます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-使用しているキーボード設定によっては、同様のことが母音以外の文字でも起こることがあります。
+使用しているキーボード設定によっては，同様のことが母音以外の文字でも起こることがあります．
 \end_layout
 
 \end_inset
 
-。この場合に指数を作るには、上記の最後の例のように、キャレットの後に
+．この場合に指数を作るには，上記の最後の例のように，キャレットの後に
 \family sans
 Space
 \family default
-を押してください。
+を押してください．
 \end_layout
 
 \begin_layout Subsection
@@ -1609,7 +1609,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-分数は、コマンド
+分数は，コマンド
 \series bold
 
 \backslash
@@ -1633,13 +1633,13 @@ type  "icon"
 arg   "math-insert \\frac"
 \end_inset
 
-で作ることができます。フォント寸法は、分数が行内数式にあるか別行立て数式にあるかに応じて、自動的に調整されます。数式ツールバーボタン
+で作ることができます．フォント寸法は，分数が行内数式にあるか別行立て数式にあるかに応じて，自動的に調整されます．数式ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-を使えば、分数の種類を選ぶことができます。
+を使えば，分数の種類を選ぶことができます．
 \end_layout
 
 \begin_layout Standard
@@ -1661,7 +1661,7 @@ dfrac
 
 \end_inset
 
-を使えば、つねに別行立て数式の大きさを持つ分数を作成することができます。また、コマンド
+を使えば，つねに別行立て数式の大きさを持つ分数を作成することができます．また，コマンド
 \series bold
 
 \backslash
@@ -1679,11 +1679,11 @@ tfrac
 
 \end_inset
 
-では、つねに行内数式の大きさで分数が表示されます。以下はこれらの例です。
+では，つねに行内数式の大きさで分数が表示されます．以下はこれらの例です．
 \end_layout
 
 \begin_layout Standard
-これは、コマンド
+これは，コマンド
 \series bold
 
 \backslash
@@ -1693,11 +1693,11 @@ frac
 \begin_inset Formula $\frac{1}{2}$
 \end_inset
 
-を含む行です。
+を含む行です．
 \end_layout
 
 \begin_layout Standard
-これは、コマンド
+これは，コマンド
 \series bold
 
 \backslash
@@ -1707,7 +1707,7 @@ dfrac
 \begin_inset Formula $\dfrac{1}{2}$
 \end_inset
 
-を含む行です。
+を含む行です．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1865,7 +1865,7 @@ frac
 \begin_inset Newpage newpage
 \end_inset
 
-入れ子の分数を作るには、コマンド
+入れ子の分数を作るには，コマンド
 \series bold
 
 \backslash
@@ -1883,7 +1883,7 @@ cfrac
 
 \end_inset
 
-が使えます。以下がその例です。
+が使えます．以下がその例です．
 \begin_inset VSpace -3mm
 \end_inset
 
@@ -1903,7 +1903,7 @@ cfrac
 \end_layout
 
 \begin_layout Standard
-上記の例で使用したコマンドは、
+上記の例で使用したコマンドは，
 \end_layout
 
 \begin_layout Standard
@@ -1970,7 +1970,7 @@ D
 \end_layout
 
 \begin_layout Standard
-です。
+です．
 \end_layout
 
 \begin_layout Standard
@@ -1987,29 +1987,29 @@ D
 \backslash
 cfrac
 \series default
-は、他の分数中に入れ子になっている場合も含め、分数をつねに別行立て数式の大きさに設定します。
+は，他の分数中に入れ子になっている場合も含め，分数をつねに別行立て数式の大きさに設定します．
 \end_layout
 
 \begin_layout Standard
-分子の揃え方は、指定することができます。
+分子の揃え方は，指定することができます．
 \series bold
 
 \backslash
 cfracleft
 \series default
-コマンドは左揃えにし、
+コマンドは左揃えにし，
 \series bold
 
 \backslash
 cfracright
 \series default
-は右揃えにします。
+は右揃えにします．
 \series bold
 
 \backslash
 cfrac
 \series default
-は中央揃えです。以下の各分数は、それぞれの揃え位置を示しています。
+は中央揃えです．以下の各分数は，それぞれの揃え位置を示しています．
 \series bold
 
 \begin_inset Formula 
@@ -2039,15 +2039,15 @@ cfracleft
 \backslash
 cfracright
 \series default
-は、生粋の\SpecialChar LaTeX
-コマンドではなく、実体は、コマンド
+は，生粋の\SpecialChar LaTeX
+コマンドではなく，実体は，コマンド
 \series bold
 
 \backslash
 cfrac[揃え位置]{分子}{分母}
 \series default
-です。したがって、これらを\SpecialChar TeX
-モードで使うことはできません。
+です．したがって，これらを\SpecialChar TeX
+モードで使うことはできません．
 \end_layout
 
 \end_inset
@@ -2059,7 +2059,7 @@ cfrac[揃え位置]{分子}{分母}
 \begin_inset VSpace medskip
 \end_inset
 
-ときに、以下のように
+ときに，以下のように
 \series bold
 
 \backslash
@@ -2071,7 +2071,7 @@ cfrac
 \backslash
 frac
 \series default
-を組み合わせて使うと便利です。
+を組み合わせて使うと便利です．
 \begin_inset Formula 
 \[
 \cfrac{A}{B+\cfrac{C+\frac{E}{F}}{D}}
@@ -2083,7 +2083,7 @@ frac
 \end_layout
 
 \begin_layout Standard
-斜めの分数線を持つ行内分数を作るには、コマンド
+斜めの分数線を持つ行内分数を作るには，コマンド
 \series bold
 
 \backslash
@@ -2105,7 +2105,7 @@ nicefrac
 \begin_inset Formula $\nicefrac{5}{31}$
 \end_inset
 
-)を使うか、コマンド
+)を使うか，コマンド
 \series bold
 
 \backslash
@@ -2127,7 +2127,7 @@ unitfrac
 \begin_inset Formula $\unitfrac{5}{31}$
 \end_inset
 
-)を使います。さらに、
+)を使います．さらに，
 \begin_inset Formula $\unitfrac[2]{1}{3}$
 \end_inset
 
@@ -2137,7 +2137,7 @@ unitfrac
 \backslash
 unitfracthree
 \series default
-もあります。
+もあります．
 \end_layout
 
 \begin_layout Standard
@@ -2149,14 +2149,14 @@ status open
 \series bold
 【註】
 \series default
-実は、
+実は，
 \series bold
 
 \backslash
 unitfracthree
 \series default
 は生粋の\SpecialChar LaTeX
-コマンドではなく、実体は
+コマンドではなく，実体は
 \begin_inset Newline newline
 \end_inset
 
@@ -2166,8 +2166,8 @@ unitfracthree
 \backslash
 unitfrac[自然数]{分子}{分母}
 \series default
-というコマンドなので、\SpecialChar TeX
-コードでは使用できません。
+というコマンドなので，\SpecialChar TeX
+コードでは使用できません．
 \end_layout
 
 \end_inset
@@ -2176,25 +2176,25 @@ unitfrac[自然数]{分子}{分母}
 \end_layout
 
 \begin_layout Standard
-分数線を変更できるような独自の分数の定義のしかたは、第
+分数線を変更できるような独自の分数の定義のしかたは，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自己定義の分数"
 
 \end_inset
 
-節に説明があります。
+節に説明があります．
 \end_layout
 
 \begin_layout Standard
-多行分数の説明は、第
+多行分数の説明は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:多行にわたる分数"
 
 \end_inset
 
-節にあります。
+節にあります．
 \end_layout
 
 \begin_layout Subsection
@@ -2244,7 +2244,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-平方根は、
+平方根は，
 \series bold
 
 \backslash
@@ -2268,7 +2268,7 @@ type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-で作成することができ、他のすべての根号は、コマンド
+で作成することができ，他のすべての根号は，コマンド
 \series bold
 
 \backslash
@@ -2292,7 +2292,7 @@ type  "icon"
 arg   "math-insert \\root"
 \end_inset
 
-で作成することができます。
+で作成することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -2396,28 +2396,28 @@ A-B
 \end_layout
 
 \begin_layout Standard
-平方根は、根号指数フィールドを空白のままにしておけば、
+平方根は，根号指数フィールドを空白のままにしておけば，
 \series bold
 
 \backslash
 root
 \series default
-でも作成することができます。
+でも作成することができます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula $\sqrt[\beta]{B}$
 \end_inset
 
-の例のように、指数のとる値によっては、根号への距離が近すぎることがあります。
+の例のように，指数のとる値によっては，根号への距離が近すぎることがあります．
 \begin_inset Newline newline
 \end_inset
 
-この場合には、
+この場合には，
 \begin_inset Formula $\beta$
 \end_inset
 
-が根号に触れてしまいます。これを避けるためには、以下のようなコマンド書式で、コマンド
+が根号に触れてしまいます．これを避けるためには，以下のようなコマンド書式で，コマンド
 \series bold
 
 \backslash
@@ -2453,7 +2453,7 @@ uproot
 
 \end_inset
 
-を使います。
+を使います．
 \end_layout
 
 \begin_layout Standard
@@ -2471,11 +2471,11 @@ uproot{距離}
 \end_layout
 
 \begin_layout Standard
-ここで「距離」は、指数を左あるいは上に動かす、Big Point(単位bp；
+ここで「距離」は，指数を左あるいは上に動かす，Big Point(単位bp；
 \begin_inset Formula $\mathrm{72\,bp=1}$
 \end_inset
 
-インチ)での数値です。これらのコマンドは、指数に書き込みます。このようにして、コマンド
+インチ)での数値です．これらのコマンドは，指数に書き込みます．このようにして，コマンド
 \begin_inset Newline newline
 \end_inset
 
@@ -2511,11 +2511,11 @@ B
 
 
 \series default
-は、正しく組版された数式
+は，正しく組版された数式
 \begin_inset Formula $\sqrt[\leftroot{-1}\uproot{2}\beta]{B}$
 \end_inset
 
-を生成します。
+を生成します．
 \end_layout
 
 \begin_layout Subsection
@@ -2533,7 +2533,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-二項係数は、コマンド
+二項係数は，コマンド
 \series bold
 
 \backslash
@@ -2557,19 +2557,19 @@ type  "icon"
 arg   "math-insert \\frac-square"
 \end_inset
 
-の小メニューを使って挿入することができます。分数(
+の小メニューを使って挿入することができます．分数(
 \series bold
 
 \backslash
 frac
 \series default
-)と同様に、
+)と同様に，
 \series bold
 
 \backslash
 binom
 \series default
-の他に、コマンド
+の他に，コマンド
 \series bold
 
 \backslash
@@ -2605,7 +2605,7 @@ tbinom
 
 \end_inset
 
-があります。二項係数のまわりの括弧に、他の括弧を使うには、コマンド
+があります．二項係数のまわりの括弧に，他の括弧を使うには，コマンド
 \series bold
 
 \backslash
@@ -2641,7 +2641,7 @@ brack
 
 \end_inset
 
-があります。
+があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -2996,7 +2996,7 @@ type  "icon"
 arg   "math-insert \\cases"
 \end_inset
 
-を使用した後では、
+を使用した後では，
 \begin_inset Flex Ruby
 status collapsed
 
@@ -3028,7 +3028,7 @@ type  "icon"
 arg   "tabular-feature append-row"
 \end_inset
 
-を使えば、新しい行を作ることができます。
+を使えば，新しい行を作ることができます．
 \end_layout
 
 \begin_layout Standard
@@ -3038,13 +3038,13 @@ arg   "tabular-feature append-row"
 \backslash
 cases
 \series default
-は、
+は，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 Cases環境
 \family default
-メニューで挿入することもできます。
+メニューで挿入することもできます．
 \end_layout
 
 \begin_layout Subsection
@@ -3080,7 +3080,7 @@ not
 
 \end_inset
 
-を挿入することで、すべての文字を取り消し形で表示できます。文字はスラッシュを上書きされた形になります。
+を挿入することで，すべての文字を取り消し形で表示できます．文字はスラッシュを上書きされた形になります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -3201,7 +3201,7 @@ parallel
 \end_layout
 
 \begin_layout Standard
-最後の例が示すように、すべての否定形がきれいに出力されるわけではありません。このことから、否定形に専用のコマンドを持つものもあります(第
+最後の例が示すように，すべての否定形がきれいに出力されるわけではありません．このことから，否定形に専用のコマンドを持つものもあります(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:数学記号"
@@ -3215,7 +3215,7 @@ reference "sec:関係子"
 
 \end_inset
 
-節を参照)。
+節を参照)．
 \end_layout
 
 \begin_layout Subsection
@@ -3319,19 +3319,19 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-同位体と化学記号の組版に関しては、第
+同位体と化学記号の組版に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:化学記号と化学式"
 
 \end_inset
 
-節に記述があります。
+節に記述があります．
 \end_layout
 
 \end_inset
 
-を表示しようとすると、次のような問題が起こります。
+を表示しようとすると，次のような問題が起こります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -3399,7 +3399,7 @@ reference "subsec:化学記号と化学式"
 \end_layout
 
 \begin_layout Standard
-短い方の指数は、既定で、長い方の指数の一文字目の下ないし上に配置されてしまいます。これを避けるには、一文字ないし複数の空の文字を生成するコマンド
+短い方の指数は，既定で，長い方の指数の一文字目の下ないし上に配置されてしまいます．これを避けるには，一文字ないし複数の空の文字を生成するコマンド
 \series bold
 
 \backslash
@@ -3428,7 +3428,7 @@ type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-の小メニューに入っています。
+の小メニューに入っています．
 \end_layout
 
 \end_inset
@@ -3439,20 +3439,20 @@ type  "icon"
 arg   "math/phantom"
 \end_inset
 
-があります。
+があります．
 \series bold
 
 \backslash
 phantom
 \series default
-を挿入すると、二つの赤い矢印が重なった青枠が表示されます。矢印は、箱の中身の幅と高さの両方が、埋め草(指定した文字と同じ大きさの余白を確保するために使われる空打
-ち文字)として適用されることを示しています。したがって、
+を挿入すると，二つの赤い矢印が重なった青枠が表示されます．矢印は，箱の中身の幅と高さの両方が，埋め草(指定した文字と同じ大きさの余白を確保するために使われる空打
+ち文字)として適用されることを示しています．したがって，
 \series bold
 
 \backslash
 phantom
 \series default
-の作る文字は、箱の中身の文字の大きさを持つ埋め草となります。
+の作る文字は，箱の中身の文字の大きさを持つ埋め草となります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -3619,7 +3619,7 @@ _MMt
 \end_layout
 
 \begin_layout Standard
-さらに、
+さらに，
 \series bold
 
 \backslash
@@ -3675,23 +3675,23 @@ type  "icon"
 arg   "math/hphantom"
 \end_inset
 
-)というコマンドもあります。
+)というコマンドもあります．
 \series bold
 
 \backslash
 vphantom
 \series default
-は、枠内部の文字の最大高のみの空白を作り、幅は考慮しません。
+は，枠内部の文字の最大高のみの空白を作り，幅は考慮しません．
 \series bold
 
 \backslash
 hphantom
 \series default
-は、枠の内容の幅のみの空白を作ります。このことから、これらの枠は一本の赤矢印のみで表示されます。
+は，枠の内容の幅のみの空白を作ります．このことから，これらの枠は一本の赤矢印のみで表示されます．
 \end_layout
 
 \begin_layout Standard
-たとえば、
+たとえば，
 \series bold
 
 \backslash
@@ -3707,7 +3707,7 @@ a
 \backslash
 int
 \series default
-は、積分記号
+は，積分記号
 \begin_inset Foot
 status collapsed
 
@@ -3718,40 +3718,40 @@ status collapsed
 \backslash
 int
 \series default
-コマンドは、積分記号を生成します。第
+コマンドは，積分記号を生成します．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:大演算子"
 
 \end_inset
 
-節を参照してください。
+節を参照してください．
 \end_layout
 
 \end_inset
 
-が最大高の文字なので、積分記号の高さを持つ空白を作ります。実際の適用例については、第
+が最大高の文字なので，積分記号の高さを持つ空白を作ります．実際の適用例については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:多行にわたる括弧"
 
 \end_inset
 
-節を参照してください。
+節を参照してください．
 \end_layout
 
 \begin_layout Standard
-埋め草は、メニュー
+埋め草は，メニュー
 \family sans
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 埋め草
 \family default
-を使えば、以下のように本文中でも使用することができます。
+を使えば，以下のように本文中でも使用することができます．
 \end_layout
 
 \begin_layout Standard
-これは本文です。
+これは本文です．
 \begin_inset Newline newline
 \end_inset
 
@@ -3765,7 +3765,7 @@ status open
 
 \end_inset
 
-本文です。
+本文です．
 \end_layout
 
 \begin_layout Subsection
@@ -3976,7 +3976,7 @@ A+B
 \end_layout
 
 \begin_layout Standard
-上記最後の例では、先に
+上記最後の例では，先に
 \series bold
 
 \backslash
@@ -3988,28 +3988,28 @@ overline
 \backslash
 underline
 \series default
-が来ようが、関係ありません。
+が来ようが，関係ありません．
 \end_layout
 
 \begin_layout Standard
-二重下線を引くには、
+二重下線を引くには，
 \series bold
 
 \backslash
 underline
 \series default
-を二回使います。
+を二回使います．
 \end_layout
 
 \begin_layout Standard
-文字の上下6本の線まで引くことができます。
+文字の上下6本の線まで引くことができます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-自己定義の線は、以下の書式を持つ
+自己定義の線は，以下の書式を持つ
 \series bold
 
 \backslash
@@ -4027,7 +4027,7 @@ rule
 
 \end_inset
 
-コマンドで作成することができます。
+コマンドで作成することができます．
 \end_layout
 
 \begin_layout Standard
@@ -4043,14 +4043,14 @@ rule[垂直オフセット幅]{長さ}{厚み}
 \series bold
 「垂直オフセット幅
 \series default
-」は、行を上方に(値が負であれば下方に)移動させます。値としては、第
+」は，行を上方に(値が負であれば下方に)移動させます．値としては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:使用できる単位"
 
 \end_inset
 
-表に掲げてある単位を用いることができます。以下に、
+表に掲げてある単位を用いることができます．以下に，
 \begin_inset Newline newline
 \end_inset
 
@@ -4070,27 +4070,27 @@ rule{2cm}{1pt}
 
 
 \series default
-というコマンドを用いて作成したふたつの例を例示します。
+というコマンドを用いて作成したふたつの例を例示します．
 \end_layout
 
 \begin_layout Standard
-この行には、
+この行には，
 \begin_inset Formula $\rule[-2ex]{3cm}{2pt}\rule{2cm}{1pt}$
 \end_inset
 
-二本の線があります。
+二本の線があります．
 \end_layout
 
 \begin_layout Standard
 
 \backslash
-ruleは、メニュー
+ruleは，メニュー
 \family sans
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 水平線
 \family default
-を使っても、本文に挿入することができます。
+を使っても，本文に挿入することができます．
 \end_layout
 
 \begin_layout Standard
@@ -4103,7 +4103,7 @@ height "1pt"
 
 \end_inset
 
-文章です。
+文章です．
 \end_layout
 
 \begin_layout Subsection
@@ -4128,7 +4128,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-省略符号には、いくつかの種類が使用できます
+省略符号には，いくつかの種類が使用できます
 \begin_inset Foot
 status collapsed
 
@@ -4139,12 +4139,12 @@ type  "icon"
 arg   "math-insert \\ldots"
 \end_inset
 
-ボタンで表示されている小メニューです。
+ボタンで表示されている小メニューです．
 \end_layout
 
 \end_inset
 
-。列挙のためには、ベースラインの点々(
+．列挙のためには，ベースラインの点々(
 \series bold
 
 \backslash
@@ -4162,7 +4162,7 @@ ldots
 
 \end_inset
 
-)を使用しますが、演算子の場合は、演算子と同じ高さの点々(
+)を使用しますが，演算子の場合は，演算子と同じ高さの点々(
 \series bold
 
 \backslash
@@ -4180,7 +4180,7 @@ cdots
 
 \end_inset
 
-)が必要です。
+)が必要です．
 \series bold
 
 \backslash
@@ -4198,8 +4198,8 @@ dots
 
 \end_inset
 
-コマンドを使うと、\SpecialChar LaTeX
-は次に来る文字がどのような種類の文字であるかによって、自動的にどの種類を使うかを選択します。
+コマンドを使うと，\SpecialChar LaTeX
+は次に来る文字がどのような種類の文字であるかによって，自動的にどの種類を使うかを選択します．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -4490,7 +4490,7 @@ A_{n1} & \cdots & A_{nm}
 \backslash
 ldots
 \series default
-です。
+です．
 \end_layout
 
 \begin_layout Standard
@@ -4503,7 +4503,7 @@ ldots
 \backslash
 iddots
 \series default
-を使うには、文書設定の
+を使うには，文書設定の
 \family sans
 数式オプション
 \family default
@@ -4511,7 +4511,7 @@ iddots
 \family sans
 mathdotsパッケージを(自動的に)使う
 \family default
-オプションのうちいずれかを有効にしなくてはなりません。
+オプションのうちいずれかを有効にしなくてはなりません．
 \begin_inset Newline newline
 \end_inset
 
@@ -4519,14 +4519,14 @@ mathdotsパッケージを(自動的に)使う
 \family sans
 mathdotsパッケージを使う
 \family default
-オプションを使用すると、文書中のフォント様式や寸法が既定値でないときのあらゆるドットの表示が改善されます。
+オプションを使用すると，文書中のフォント様式や寸法が既定値でないときのあらゆるドットの表示が改善されます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-とくに行列には、複数列にわたることのできる省略符号があります。これは、以下の書式を持つ
+とくに行列には，複数列にわたることのできる省略符号があります．これは，以下の書式を持つ
 \series bold
 
 \backslash
@@ -4544,7 +4544,7 @@ hdotsfor
 
 \end_inset
 
-コマンドで作ることができます。
+コマンドで作ることができます．
 \end_layout
 
 \begin_layout Standard
@@ -4556,23 +4556,23 @@ hdotsfor[距離]{列数}
 \end_layout
 
 \begin_layout Standard
-ここで「列数」は、何列に広げるかを指定します。「距離」は、点々のあいだの距離を示す因子です。
+ここで「列数」は，何列に広げるかを指定します．「距離」は，点々のあいだの距離を示す因子です．
 \end_layout
 
 \begin_layout Standard
-以下の行列では、2行目の1つ目の枠に
+以下の行列では，2行目の1つ目の枠に
 \series bold
 
 \backslash
 hdotsfor[2]{4}
 \series default
-を挿入して、
+を挿入して，
 \series bold
 
 \backslash
 dots
 \series default
-コマンドの2倍の点間距離を持つ省略符号を挿入しています。
+コマンドの2倍の点間距離を持つ省略符号を挿入しています．
 \begin_inset Formula 
 \[
 \left(\begin{array}{cccc}
@@ -4584,15 +4584,15 @@ q & w & e & r
 
 \end_inset
 
-省略符号を広げる対象となる行列フィールドは空白にしておく必要があることに注意して下さい。さもないと\SpecialChar LaTeX
-エラーが発生します。
+省略符号を広げる対象となる行列フィールドは空白にしておく必要があることに注意して下さい．さもないと\SpecialChar LaTeX
+エラーが発生します．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-さらに、
+さらに，
 \series bold
 
 \backslash
@@ -4610,24 +4610,24 @@ dotfill
 
 \end_inset
 
-コマンドを使えば、行の残りを点々で埋めることもできます。このコマンドの働きは、
+コマンドを使えば，行の残りを点々で埋めることもできます．このコマンドの働きは，
 \series bold
 
 \backslash
 hfill
 \series default
-と同様のものです。第
+と同様のものです．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:可変長の空白"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
-たとえば、
+たとえば，
 \series bold
 A
 \backslash
@@ -4637,7 +4637,7 @@ dotfill
 
 B
 \series default
-コマンドは、
+コマンドは，
 \end_layout
 
 \begin_layout Standard
@@ -4648,13 +4648,13 @@ B
 \end_layout
 
 \begin_layout Standard
-のようになります。点々を使う
+のようになります．点々を使う
 \series bold
 
 \backslash
 dotfill
 \series default
-の直線版として、
+の直線版として，
 \series bold
 
 \backslash
@@ -4683,8 +4683,8 @@ hrulefill
 \end_layout
 
 \begin_layout Standard
-があります。これらのコマンドを本文で使用するには、これらのコマンドは\SpecialChar TeX
-モードで挿入される必要があります。
+があります．これらのコマンドを本文で使用するには，これらのコマンドは\SpecialChar TeX
+モードで挿入される必要があります．
 \end_layout
 
 \begin_layout Section
@@ -4709,7 +4709,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-行列は、数式ツールバーボタンの
+行列は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
@@ -4721,7 +4721,7 @@ arg   "dialog-show mathmatrix"
 数式\SpecialChar menuseparator
 行列
 \family default
-メニューで挿入することができます。すると、行列の行数・列数・配置方法・装飾を尋ねられます。ここで垂直配置は、行内数式内の行列でのみ意味を持ちます。
+メニューで挿入することができます．すると，行列の行数・列数・配置方法・装飾を尋ねられます．ここで垂直配置は，行内数式内の行列でのみ意味を持ちます．
 \end_layout
 
 \begin_layout Standard
@@ -4733,7 +4733,7 @@ C & F & I & L
 \end{array}$
 \end_inset
 
-で、二番目は「中央」配置
+で，二番目は「中央」配置
 \begin_inset Formula $\begin{array}{cccc}
 A & D & G & J\\
 B & E & H & K\\
@@ -4741,7 +4741,7 @@ C & F & I & L
 \end{array}$
 \end_inset
 
-、三番目は「下」配置
+，三番目は「下」配置
 \begin_inset Formula $\begin{array}[b]{cccc}
 A & D & G & J\\
 B & E & H & K\\
@@ -4749,39 +4749,39 @@ C & F & I & L
 \end{array}$
 \end_inset
 
-です。
+です．
 \end_layout
 
 \begin_layout Standard
-水平配置は、各列がどのように配置されるべきかを指定します。これは、各列に対応した文字を一つずつ入力することによって設定します。
+水平配置は，各列がどのように配置されるべきかを指定します．これは，各列に対応した文字を一つずつ入力することによって設定します．
 \emph on
 l
 \emph default
-は左寄せ、
+は左寄せ，
 \emph on
 c
 \emph default
-は中央揃え、
+は中央揃え，
 \emph on
 r
 \emph default
-は右寄せを意味します。たとえば、第1列が左寄せで第2列と第3列が中央揃え、第4列が右揃えの
+は右寄せを意味します．たとえば，第1列が左寄せで第2列と第3列が中央揃え，第4列が右揃えの
 \begin_inset Formula $4\times4$
 \end_inset
 
-行列を作成するには、水平配置のところに
+行列を作成するには，水平配置のところに
 \series bold
 lccr
 \series default
-と入力します。通常、行列では各列は中央揃えですから、各列の既定値は
+と入力します．通常，行列では各列は中央揃えですから，各列の既定値は
 \series bold
 c
 \series default
-です。
+です．
 \end_layout
 
 \begin_layout Standard
-水平行列の例です。
+水平行列の例です．
 \end_layout
 
 \begin_layout Standard
@@ -4825,7 +4825,7 @@ C & F & 10000
 \end_layout
 
 \begin_layout Standard
-つづいて行や列を追加したり削除したりするには、数式ツールバーボタンの
+つづいて行や列を追加したり削除したりするには，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-row"
@@ -4842,13 +4842,13 @@ arg   "tabular-feature delete-row"
 編集\SpecialChar menuseparator
 行と列
 \family default
-メニューを使用することができます。また、行は
+メニューを使用することができます．また，行は
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-で作成することもできます。
+で作成することもできます．
 \end_layout
 
 \begin_layout Standard
@@ -4863,7 +4863,7 @@ arg   "newline-insert newline"
 \family sans
 装飾
 \family default
-は、行列の前後に選択した様式の括弧を加えます。他にも括弧は、
+は，行列の前後に選択した様式の括弧を加えます．他にも括弧は，
 \series bold
 
 \backslash
@@ -4927,14 +4927,14 @@ Alt+M
 
 括弧
 \family default
-)。第
+)．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自動の括弧丈"
 
 \end_inset
 
-節を参照してください。あるいは、以下のコマンドを使うこともできます。
+節を参照してください．あるいは，以下のコマンドを使うこともできます．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -5242,14 +5242,14 @@ matrix
 \backslash
 vmatrix
 \series default
-などを挿入すると、青枠が二つの垂直線のあいだに現れるので、そこに行列を挿入することができます。
+などを挿入すると，青枠が二つの垂直線のあいだに現れるので，そこに行列を挿入することができます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-じつは多行数式はすべて行列なので、行列の各列の間隔を変更するには、第
+じつは多行数式はすべて行列なので，行列の各列の間隔を変更するには，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:列間"
@@ -5274,11 +5274,11 @@ arraycolsep
 
 \end_inset
 
-をここでも使用することができます。
+をここでも使用することができます．
 \end_layout
 
 \begin_layout Standard
-行間隔を変更するには、
+行間隔を変更するには，
 \series bold
 
 \backslash
@@ -5296,7 +5296,7 @@ arraystretch
 
 \end_inset
 
-コマンドを使用します。以下のようにして使用します。
+コマンドを使用します．以下のようにして使用します．
 \end_layout
 
 \begin_layout Standard
@@ -5328,24 +5328,24 @@ renewcommand
 \backslash
 renewcommand
 \series default
-コマンドは、伸長因子を定義済みの
+コマンドは，伸長因子を定義済みの
 \series bold
 
 \backslash
 arraystretch
 \series default
-コマンドに割り当てます。たとえば行間隔を2倍にするには、因子として2を指定して下さい。すると、以降の行列すべてにこれが使用されるようになります。元の間隔に戻すに
-は、
+コマンドに割り当てます．たとえば行間隔を2倍にするには，因子として2を指定して下さい．すると，以降の行列すべてにこれが使用されるようになります．元の間隔に戻すに
+は，
 \series bold
 
 \backslash
 arraystretch
 \series default
-に因子1を割り当てて下さい。
+に因子1を割り当てて下さい．
 \end_layout
 
 \begin_layout Standard
-本文行中に行列を入れるには、
+本文行中に行列を入れるには，
 \series bold
 
 \backslash
@@ -5363,17 +5363,17 @@ smallmatrix
 
 \end_inset
 
-コマンドを使います。これを挿入すると、二つの点線に囲まれた青枠が現れます。この枠のなかに行列を入れることができます。
+コマンドを使います．これを挿入すると，二つの点線に囲まれた青枠が現れます．この枠のなかに行列を入れることができます．
 \end_layout
 
 \begin_layout Standard
-これは、本文行中の行列
+これは，本文行中の行列
 \begin_inset Formula $\left(\begin{smallmatrix}A & B\\
 C & D
 \end{smallmatrix}\right)$
 \end_inset
 
-です。
+です．
 \end_layout
 
 \begin_layout Section
@@ -5889,11 +5889,11 @@ status open
 【註】
 \series default
 \SpecialChar TeX
-モードでは、
+モードでは，
 \backslash
 
 \backslash
-コマンドはその場所に改行を入れてしまうので、バックスラッシュを入力するには
+コマンドはその場所に改行を入れてしまうので，バックスラッシュを入力するには
 \series bold
 
 \backslash
@@ -5911,7 +5911,7 @@ textbackslash
 
 \end_inset
 
-を使わなくてはなりません。
+を使わなくてはなりません．
 \end_layout
 
 \end_inset
@@ -5920,7 +5920,7 @@ textbackslash
 \end_layout
 
 \begin_layout Standard
-上に列挙した文字すべてについて、以下の二小節で説明されているコマンドを使って、大きさを調整することができます。これらのコマンドを使用するにあたっては、
+上に列挙した文字すべてについて，以下の二小節で説明されているコマンドを使って，大きさを調整することができます．これらのコマンドを使用するにあたっては，
 \series bold
 
 \backslash
@@ -5940,7 +5940,7 @@ rangle
 \begin_inset Formula $>$
 \end_inset
 
-の文字を直接使用することができます。
+の文字を直接使用することができます．
 \end_layout
 
 \begin_layout Subsubsection
@@ -5965,7 +5965,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-括弧の丈は、\SpecialChar LaTeX
+括弧の丈は，\SpecialChar LaTeX
 コマンドの
 \series bold
 
@@ -5984,13 +5984,13 @@ big
 
 \end_inset
 
-、
+，
 \series bold
 
 \backslash
 Big
 \series default
-、
+，
 \series bold
 
 \backslash
@@ -6002,23 +6002,23 @@ bigg
 \backslash
 Bigg
 \series default
-を使って、手動で指定することができます。
+を使って，手動で指定することができます．
 \series bold
 
 \backslash
 big
 \series default
-が最小の大きさであり、
+が最小の大きさであり，
 \series bold
 
 \backslash
 Bigg
 \series default
-が最大の括弧丈になります。
+が最大の括弧丈になります．
 \end_layout
 
 \begin_layout Standard
-これらのコマンドは、括弧の階層を強調するのに使われます。
+これらのコマンドは，括弧の階層を強調するのに使われます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -6086,7 +6086,7 @@ Bigg
 \end_layout
 
 \begin_layout Standard
-二つ目の数式では、
+二つ目の数式では，
 \series bold
 
 \backslash
@@ -6098,11 +6098,11 @@ Big)^
 
 C
 \series default
-というコマンドが使われています。
+というコマンドが使われています．
 \end_layout
 
 \begin_layout Standard
-以下は、すべての括弧丈の羅列です。
+以下は，すべての括弧丈の羅列です．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -6171,7 +6171,7 @@ Bigg)^0,5
 \backslash
 big
 \series default
-型コマンドの他に、括弧と中身のあいだにもう少し空白を加える
+型コマンドの他に，括弧と中身のあいだにもう少し空白を加える
 \series bold
 
 \backslash
@@ -6189,7 +6189,7 @@ bigm
 
 \end_inset
 
-という派生型と、空白を追加しない
+という派生型と，空白を追加しない
 \series bold
 
 \backslash
@@ -6215,7 +6215,7 @@ bigr
 
 \end_inset
 
-派生型があります。
+派生型があります．
 \series bold
 
 \backslash
@@ -6225,7 +6225,7 @@ bigl
 \emph on
 l
 \emph default
-は、左括弧であることを示し、右括弧の場合には、
+は，左括弧であることを示し，右括弧の場合には，
 \emph on
 l
 \emph default
@@ -6233,11 +6233,11 @@ l
 \emph on
 r
 \emph default
-を用います。左括弧と右括弧は、それぞれ括弧の開始と終了に用いられます。
+を用います．左括弧と右括弧は，それぞれ括弧の開始と終了に用いられます．
 \end_layout
 
 \begin_layout Standard
-以下の表は、これらの派生型の比較です。
+以下の表は，これらの派生型の比較です．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -6440,7 +6440,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-可変の丈を持つ括弧は、
+可変の丈を持つ括弧は，
 \series bold
 
 \backslash
@@ -6476,13 +6476,13 @@ right
 
 \end_inset
 
-コマンド、あるいは数式ツールバーボタンの
+コマンド，あるいは数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
 \end_inset
 
-で挿入することができます。
+で挿入することができます．
 \series bold
 
 \backslash
@@ -6494,7 +6494,7 @@ left
 \backslash
 right
 \series default
-の直後には、必要とする括弧を挿入しなくてはなりません。すると、括弧丈は出力時に自動的に計算されます。
+の直後には，必要とする括弧を挿入しなくてはなりません．すると，括弧丈は出力時に自動的に計算されます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -6531,7 +6531,7 @@ C
 
 \end_inset
 
-を生成します。
+を生成します．
 \end_layout
 
 \begin_layout Standard
@@ -6568,7 +6568,7 @@ right)
 
 \end_inset
 
-を生成します。
+を生成します．
 \end_layout
 
 \begin_layout Standard
@@ -6584,7 +6584,7 @@ left
 \backslash
 right
 \series default
-の代わりに、
+の代わりに，
 \begin_inset Flex Ruby
 status collapsed
 
@@ -6612,12 +6612,12 @@ Alt+M
 
 括弧
 \family default
-を使うこともできます。これを使うと、\SpecialChar LyX
-中で即座に実際の括弧丈を確認することができるという利点と、対応する右括弧も生成されるという利点があります。
+を使うこともできます．これを使うと，\SpecialChar LyX
+中で即座に実際の括弧丈を確認することができるという利点と，対応する右括弧も生成されるという利点があります．
 \begin_inset Newline newline
 \end_inset
 
-すると、先ほどの例を作るコマンドは
+すると，先ほどの例を作るコマンドは
 \series bold
 
 \backslash
@@ -6637,11 +6637,11 @@ A
 
 C
 \series default
-となります。
+となります．
 \end_layout
 
 \begin_layout Standard
-左括弧あるいは右括弧を省略するには、ドットを挿入します。たとえば、
+左括弧あるいは右括弧を省略するには，ドットを挿入します．たとえば，
 \series bold
 
 \backslash
@@ -6675,7 +6675,7 @@ right}
 
 
 \series default
-を生成します。
+を生成します．
 \series bold
 
 \backslash
@@ -6687,8 +6687,8 @@ left
 \backslash
 right
 \series default
-コマンドは、文書が再度読み込まれたときには、\SpecialChar LyX
-によって正しい丈の括弧に変換され、省略された括弧は、点線として表示されます。
+コマンドは，文書が再度読み込まれたときには，\SpecialChar LyX
+によって正しい丈の括弧に変換され，省略された括弧は，点線として表示されます．
 \end_layout
 
 \begin_layout Standard
@@ -6696,9 +6696,9 @@ right
 \end_inset
 
 著名な\SpecialChar LaTeX
-頒布版は、すべて\SpecialChar LaTeX
+頒布版は，すべて\SpecialChar LaTeX
 の拡張であるe\SpecialChar TeX
-を使用しているので、これらの頒布版では、すべての括弧および極限に対して
+を使用しているので，これらの頒布版では，すべての括弧および極限に対して
 \series bold
 
 \backslash
@@ -6726,13 +6726,13 @@ status collapsed
 【訳註】
 \series default
 p\SpecialChar LaTeX
-では、標準では
+では，標準では
 \series bold
 
 \backslash
 middle
 \series default
-コマンドは使えません。よって、以下の例では「
+コマンドは使えません．よって，以下の例では「
 \series bold
 
 \backslash
@@ -6752,12 +6752,12 @@ biggm
 \begin_inset Formula $|$
 \end_inset
 
-」を用いています。
+」を用いています．
 \end_layout
 
 \end_inset
 
-。このコマンドでは、物理ベクトル
+．このコマンドでは，物理ベクトル
 \begin_inset Formula 
 \[
 \left\langle \phi\:\biggm|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
@@ -6765,7 +6765,7 @@ biggm
 
 \end_inset
 
-で必要とされるように、次に続く文字の高さは、囲まれる括弧の高さに調節されます。物理ベクトルに関しては、第
+で必要とされるように，次に続く文字の高さは，囲まれる括弧の高さに調節されます．物理ベクトルに関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:物理ベクトル"
@@ -6773,7 +6773,7 @@ reference "subsec:物理ベクトル"
 \end_inset
 
 節に説明されているように特殊な\SpecialChar LaTeX
-パッケージがあります。
+パッケージがあります．
 \end_layout
 
 \begin_layout Subsection
@@ -6978,7 +6978,7 @@ C
 \end_layout
 
 \begin_layout Standard
-最後の例では、
+最後の例では，
 \series bold
 
 \backslash
@@ -6990,7 +6990,7 @@ overbrace
 \backslash
 underbrace
 \series default
-が先に挿入されようが代わりはありません。
+が先に挿入されようが代わりはありません．
 \end_layout
 
 \begin_layout Standard
@@ -7005,7 +7005,7 @@ underbrace
 \family sans
 数式オプション
 \family default
-で、
+で，
 \series bold
 mathtools
 \series default
@@ -7023,7 +7023,7 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-オプションを設定すると、以下のような角括弧が利用可能になります。
+オプションを設定すると，以下のような角括弧が利用可能になります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -7208,7 +7208,7 @@ overbracket
 \backslash
 underbracket
 \series default
-に関しては、コマンドに続く角括弧中に、希望する厚みを指定すれば、以下のように、角括弧の筆跡の厚みに変更を加えることができます。
+に関しては，コマンドに続く角括弧中に，希望する厚みを指定すれば，以下のように，角括弧の筆跡の厚みに変更を加えることができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -7315,14 +7315,14 @@ _5
 \begin_inset VSpace bigskip
 \end_inset
 
-括弧をお互いに重ねる必要がある場合には、第
+括弧をお互いに重ねる必要がある場合には，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:多行数式"
 
 \end_inset
 
-節に説明されているように、次のような多行数式を使わなくてはなりません。
+節に説明されているように，次のような多行数式を使わなくてはなりません．
 \begin_inset Formula 
 \begin{eqnarray*}
 A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
@@ -7331,7 +7331,7 @@ A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
 
 \end_inset
 
-一行目には、数式が一つめの括弧とともに挿入されています。ここで、空白コマンド
+一行目には，数式が一つめの括弧とともに挿入されています．ここで，空白コマンド
 \begin_inset Foot
 status collapsed
 
@@ -7343,7 +7343,7 @@ reference "subsec:定義済みの空白"
 
 \end_inset
 
-章に説明があります。
+章に説明があります．
 \end_layout
 
 \end_inset
@@ -7358,32 +7358,32 @@ reference "subsec:定義済みの空白"
 \begin_inset Formula $d$
 \end_inset
 
-の前に挿入しておくことが重要です。さもないと、
+の前に挿入しておくことが重要です．さもないと，
 \begin_inset Formula $q$
 \end_inset
 
-の後ろで終わる括弧のせいで、直後の「+」の周りに正しく空白が入ることが妨げられてしまう
+の後ろで終わる括弧のせいで，直後の「+」の周りに正しく空白が入ることが妨げられてしまう
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは、括弧が文字として取り扱われないためです。第
+これは，括弧が文字として取り扱われないためです．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:二項演算子"
 
 \end_inset
 
-章参照。
+章参照．
 \end_layout
 
 \end_inset
 
-ためです。二行目には、二つめの括弧が挿入されています。
+ためです．二行目には，二つめの括弧が挿入されています．
 \begin_inset Formula $b$
 \end_inset
 
-の直前から始まるようにするために、まず
+の直前から始まるようにするために，まず
 \series bold
 
 \backslash
@@ -7402,29 +7402,29 @@ status collapsed
 \backslash
 hphantom
 \series default
-に関する詳細は、第
+に関する詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:埋め草"
 
 \end_inset
 
-章を参照してください。
+章を参照してください．
 \end_layout
 
 \end_inset
 
-が挿入されています。この数式中の「+」も空白で囲まれるようにするために、この空白コマンドが必要になっています。二つめの括弧は
+が挿入されています．この数式中の「+」も空白で囲まれるようにするために，この空白コマンドが必要になっています．二つめの括弧は
 \series bold
-、
+，
 \backslash
 hphantom{bbqq+dddd}
 \series default
-コマンドの下に置きます。
+コマンドの下に置きます．
 \end_layout
 
 \begin_layout Standard
-以下の例のように、括弧が反対側に重なる場合には、もっと複雑になります。
+以下の例のように，括弧が反対側に重なる場合には，もっと複雑になります．
 \begin_inset ERT
 status collapsed
 
@@ -7463,8 +7463,8 @@ jot}{3pt}
 
 \end_inset
 
-最初の数式行は、括弧が上に来ていること以外は、先の例の第二行と同じです。二行目には、二つめの括弧と一緒に数式が入っています。一行目の括弧と数式のあいだに余白が入
-ることを防ぐために、行間を減らさなくてはならないのですが、これは\SpecialChar LyX
+最初の数式行は，括弧が上に来ていること以外は，先の例の第二行と同じです．二行目には，二つめの括弧と一緒に数式が入っています．一行目の括弧と数式のあいだに余白が入
+ることを防ぐために，行間を減らさなくてはならないのですが，これは\SpecialChar LyX
 のバグ
 \begin_inset Foot
 status collapsed
@@ -7482,14 +7482,14 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-のせいで簡単にはできません。この問題を回避するためには、数式直前に\SpecialChar TeX
+のせいで簡単にはできません．この問題を回避するためには，数式直前に\SpecialChar TeX
 モードで
 \series bold
 setlength{
 \backslash
 jot}{-6pt}
 \series default
-というコマンドを入れて、大域的な数式行間
+というコマンドを入れて，大域的な数式行間
 \series bold
 
 \backslash
@@ -7511,24 +7511,24 @@ jot
 \begin_inset space \thinspace{}
 \end_inset
 
-ptに変更しなくてはなりません。
+ptに変更しなくてはなりません．
 \series bold
 
 \backslash
 jot
 \series default
-は、数式直後に同様のコマンドを使って標準値の3
+は，数式直後に同様のコマンドを使って標準値の3
 \begin_inset space \thinspace{}
 \end_inset
 
-ptに戻します。数式中の行間について、詳しくは第
+ptに戻します．数式中の行間について，詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:行間"
 
 \end_inset
 
-章に説明があります。
+章に説明があります．
 \end_layout
 
 \begin_layout Section
@@ -7546,13 +7546,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-矢印は、数式ツールバーボタンの
+矢印は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leftarrow"
 \end_inset
 
-か、以下の各小節に列挙してあるコマンドで挿入することができます。
+か，以下の各小節に列挙してあるコマンドで挿入することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -8303,21 +8303,21 @@ dasharrow
 \begin_inset VSpace medskip
 \end_inset
 
-たとえばベクトル記号の矢印のようにアクセントとして使用される矢印は、第
+たとえばベクトル記号の矢印のようにアクセントとして使用される矢印は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:アクセント"
 
 \end_inset
 
-節に一覧があります。
+節に一覧があります．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-さらに、ラベル付き矢印
+さらに，ラベル付き矢印
 \begin_inset Index idx
 status collapsed
 
@@ -8327,7 +8327,7 @@ status collapsed
 
 \end_inset
 
-として、
+として，
 \series bold
 
 \backslash
@@ -8376,8 +8376,8 @@ vspace{4mm}
 
 \end_inset
 
-があります。これらのコマンドを数式に挿入すると、二つの青枠のついた矢印が現れるので、そこにラベルを入れることができます。矢印の長さは、ラベルの幅に応じて調整され
-ます。
+があります．これらのコマンドを数式に挿入すると，二つの青枠のついた矢印が現れるので，そこにラベルを入れることができます．矢印の長さは，ラベルの幅に応じて調整され
+ます．
 \end_layout
 
 \begin_layout Standard
@@ -8500,7 +8500,7 @@ F(a)
 \family sans
 数式オプション
 \family default
-で、
+で，
 \series bold
 mathtools
 \series default
@@ -8518,7 +8518,7 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-オプションを設定すると、以下のようなラベル付き矢印が利用可能になります。
+オプションを設定すると，以下のようなラベル付き矢印が利用可能になります．
 \end_layout
 
 \begin_layout Standard
@@ -8909,7 +8909,7 @@ xrightleftharpoons
 \end_layout
 
 \begin_layout Standard
-これらの矢印は、すべて以下のようなコマンドスキームを取ります。
+これらの矢印は，すべて以下のようなコマンドスキームを取ります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -9334,7 +9334,7 @@ nwarrow
 \begin_inset VSpace medskip
 \end_inset
 
-垂直矢印は、第
+垂直矢印は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:手動の括弧丈"
@@ -9348,7 +9348,7 @@ reference "subsec:自動の括弧丈"
 
 \end_inset
 
-節に述べられているコマンドを使うと、区分記号として使用することもできます。
+節に述べられているコマンドを使うと，区分記号として使用することもできます．
 \end_layout
 
 \begin_layout Section
@@ -9373,13 +9373,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-アクセントは、数式ツールバーボタンの
+アクセントは，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\hat"
 \end_inset
 
-か、以下の各小節に列挙してあるコマンドで入力することができます。
+か，以下の各小節に列挙してあるコマンドで入力することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -9401,14 +9401,14 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-本文中のアクセントについては、第
+本文中のアクセントについては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:文章中のアクセント"
 
 \end_inset
 
-節を参照。
+節を参照．
 \end_layout
 
 \end_inset
@@ -9435,7 +9435,7 @@ status collapsed
 \backslash
 texorpdfstring
 \series default
-は、PDFのしおりに脚註が現れるのを防ぐために使われています。
+は，PDFのしおりに脚註が現れるのを防ぐために使われています．
 \end_layout
 
 \begin_layout Plain Layout
@@ -9445,14 +9445,14 @@ texorpdfstring
 \backslash
 texorpdfstring
 \series default
-についての詳細は、第
+についての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:節見出し中の数式"
 
 \end_inset
 
-節にあります。
+節にあります．
 \end_layout
 
 \end_inset
@@ -9959,8 +9959,8 @@ status collapsed
 
 \end_inset
 
-のようなアクセントは、数式に直接入れることができます。\SpecialChar LyX
-は、それを対応するアクセントコマンドに変換します。ウムラウト
+のようなアクセントは，数式に直接入れることができます．\SpecialChar LyX
+は，それを対応するアクセントコマンドに変換します．ウムラウト
 \begin_inset Index idx
 status collapsed
 
@@ -9970,15 +9970,15 @@ status collapsed
 
 \end_inset
 
-に関しては、母音の前に引用符を挿入する方法の方がよいでしょう。ウムラウトのある数式部分がドイツ語に指定してあれば、\SpecialChar LaTeX
-は、引用符と母音をまとめて一つの文字として取り
-扱います。
+に関しては，母音の前に引用符を挿入する方法の方がよいでしょう．ウムラウトのある数式部分がドイツ語に指定してあれば，\SpecialChar LaTeX
+は，引用符と母音をまとめて一つの文字として取り
+扱います．
 \series bold
 
 \backslash
 ddot
 \series default
-と違い、この方法では、以下の例に示すように「本物の」ウムラウトが作られます。
+と違い，この方法では，以下の例に示すように「本物の」ウムラウトが作られます．
 \end_layout
 
 \begin_layout Standard
@@ -10091,16 +10091,16 @@ i
 \backslash
 ddot
 \series default
-に比べて良いもう一つの利点は、上記のアクセントコマンドが
+に比べて良いもう一つの利点は，上記のアクセントコマンドが
 \emph on
 数式中テキストでは使用できない
 \emph default
-のに対し、ウムラウトは直接数式中テキストに変換されることです。(アクセントコマンドによる)アクセント付き文字を数式中テキストに変換すると、アクセントの下にある文
-字しか変換されません。これは、たとえばイタリック体やボールド体への変換など、他のすべての変換に関しても言えることです。
+のに対し，ウムラウトは直接数式中テキストに変換されることです．(アクセントコマンドによる)アクセント付き文字を数式中テキストに変換すると，アクセントの下にある文
+字しか変換されません．これは，たとえばイタリック体やボールド体への変換など，他のすべての変換に関しても言えることです．
 \end_layout
 
 \begin_layout Standard
-ウムラウトと他のアクセント付き文字は、数式中テキストに直接入れることができます。
+ウムラウトと他のアクセント付き文字は，数式中テキストに直接入れることができます．
 \end_layout
 
 \begin_layout Standard
@@ -10112,7 +10112,7 @@ ddot
 
 \begin_layout Standard
 \SpecialChar LyX
-は、\SpecialChar LaTeX
+は，\SpecialChar LaTeX
 パッケージ
 \series bold
 undertilde
@@ -10127,7 +10127,7 @@ status collapsed
 
 \end_inset
 
-がシステム上に導入されていれば、文字下のティルダもサポートします。
+がシステム上に導入されていれば，文字下のティルダもサポートします．
 \end_layout
 
 \begin_layout Standard
@@ -10148,12 +10148,12 @@ ifundertilde
 status open
 
 \begin_layout Plain Layout
-以下の表は、
+以下の表は，
 \series bold
 undertilde
 \series default
  \SpecialChar LaTeX
-パッケージが導入済みのときのみ表示されます。
+パッケージが導入済みのときのみ表示されます．
 \end_layout
 
 \end_inset
@@ -10247,12 +10247,12 @@ else
 status open
 
 \begin_layout Plain Layout
-以下は、
+以下は，
 \series bold
 undertilde
 \series default
  \SpecialChar LaTeX
-パッケージが導入されていないときのみ表示されます。
+パッケージが導入されていないときのみ表示されます．
 \end_layout
 
 \end_inset
@@ -10261,12 +10261,12 @@ undertilde
 \end_layout
 
 \begin_layout Standard
-この小節のすべてを出力で見るには、
+この小節のすべてを出力で見るには，
 \series bold
 undertilde
 \series default
  \SpecialChar LaTeX
-パッケージを導入する必要があります。
+パッケージを導入する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -10617,7 +10617,7 @@ A=B
 \begin_inset VSpace medskip
 \end_inset
 
-これらのコマンドでは、好きなだけ多くの文字にアクセントを付けることができます。しかし、
+これらのコマンドでは，好きなだけ多くの文字にアクセントを付けることができます．しかし，
 \series bold
 
 \backslash
@@ -10629,7 +10629,7 @@ widetilde
 \backslash
 widehat
 \series default
-のアクセントは、以下の例のように、出力では3文字分の長さにしかなりません。
+のアクセントは，以下の例のように，出力では3文字分の長さにしかなりません．
 \begin_inset Formula 
 \[
 \widetilde{A+B=C-D}
@@ -10677,7 +10677,7 @@ underset
 
 \end_inset
 
-コマンドを使っても、複数の文字にアクセントを付けることができます。
+コマンドを使っても，複数の文字にアクセントを付けることができます．
 \series bold
 
 \backslash
@@ -10691,7 +10691,7 @@ A=B
 
 ***
 \series default
-というコマンドは、
+というコマンドは，
 \begin_inset Formula 
 \[
 \underset{***}{A=B}
@@ -10699,7 +10699,7 @@ A=B
 
 \end_inset
 
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Section
@@ -10753,7 +10753,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式に水平方向の空白を挿入することが、必要になることがあります。これは、保護された空白(
+数式に水平方向の空白を挿入することが，必要になることがあります．これは，保護された空白(
 \begin_inset Flex Ruby
 status collapsed
 
@@ -10779,7 +10779,7 @@ type  "shortcut"
 arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
-)を挿入することで実現できます。「
+)を挿入することで実現できます．「
 \color blue
 
 \begin_inset space \textvisiblespace{}
@@ -10787,21 +10787,21 @@ arg   "command-alternatives space-insert protected ; math-space"
 
 
 \color inherit
-」が現れるので、
+」が現れるので，
 \family sans
 Space
 \family default
-を何回か押すことによって、8種の異なる長さの空白のうち一つを選択することができます。空白は、数式ツールバーボタンの
+を何回か押すことによって，8種の異なる長さの空白のうち一つを選択することができます．空白は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-を押すか、特定のコマンドを入力することで、挿入することができます。挿入したコマンド如何に関わらず、直後に
+を押すか，特定のコマンドを入力することで，挿入することができます．挿入したコマンド如何に関わらず，直後に
 \family sans
 Space
 \family default
-を押すことによって、長さを変更することができます。
+を押すことによって，長さを変更することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -10831,7 +10831,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち、
+保護された空白を挿入したのち，
 \family sans
 Space
 \family default
@@ -11049,7 +11049,7 @@ qquad
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち、
+保護された空白を挿入したのち，
 \family sans
 Space
 \family default
@@ -11270,16 +11270,16 @@ hspace{1em}
 \family sans
 Space
 \family default
-を押した場合は、第
+を押した場合は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:可変長の空白"
 
 \end_inset
 
-節に説明されているように、可変空白となります。9回押した場合は、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、\SpecialChar LyX
+節に説明されているように，可変空白となります．9回押した場合は，一見，空白を生まないように見えます．実はこれは負の長さなので，他の長さと異なり，\SpecialChar LyX
 中では赤で表示さ
-れます。以下のように、他にもう二つ、負の長さの空白があります。
+れます．以下のように，他にもう二つ，負の長さの空白があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -11332,7 +11332,7 @@ negthickspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-保護された空白を挿入したのち、
+保護された空白を挿入したのち，
 \family sans
 Space
 \family default
@@ -11403,7 +11403,7 @@ Space
 \end_layout
 
 \begin_layout Standard
-負の空白を使うと、文字が重なってしまうことがあります。これを利用して、合字処理を強制することができます。これは、たとえば以下のように、和演算子に使えます。
+負の空白を使うと，文字が重なってしまうことがあります．これを利用して，合字処理を強制することができます．これは，たとえば以下のように，和演算子に使えます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -11518,8 +11518,8 @@ f_kl
 
 \begin_layout Standard
 \noindent
-イコール記号などの関係子は、つねに空白を前後に伴うようになっていますが、これを抑制するには、イコール記号を\SpecialChar TeX
-括弧で囲みます。以下の例にこれを示します。
+イコール記号などの関係子は，つねに空白を前後に伴うようになっていますが，これを抑制するには，イコール記号を\SpecialChar TeX
+括弧で囲みます．以下の例にこれを示します．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -11588,7 +11588,7 @@ f_kl
 
 \begin_layout Standard
 \noindent
-二行目の数式を作るコマンドは、
+二行目の数式を作るコマンドは，
 \series bold
 A
 \backslash
@@ -11598,14 +11598,14 @@ A
 
 B
 \series default
-です。
+です．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-物理単位には、値と単位のあいだに通常の空白ではなく、最小の空白を入れる必要があるために、それに適した空白が必要です。本文中の単位には、挿入\SpecialChar menuseparator
+物理単位には，値と単位のあいだに通常の空白ではなく，最小の空白を入れる必要があるために，それに適した空白が必要です．本文中の単位には，挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 小空白メニュー(
 \begin_inset Flex Ruby
@@ -11633,11 +11633,11 @@ type  "shortcut"
 arg   "space-insert thin"
 \end_inset
 
-)で、最小の空白を挿入することができます。
+)で，最小の空白を挿入することができます．
 \end_layout
 
 \begin_layout Standard
-違いを示す例を以下に掲げます。
+違いを示す例を以下に掲げます．
 \end_layout
 
 \begin_layout Standard
@@ -11724,14 +11724,14 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-数式中の垂直方向の空白については、第
+数式中の垂直方向の空白については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:行間"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -11754,20 +11754,20 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-texorpdfstringは、PDFのしおりに脚註が現れるのを防ぐために使われています。
+texorpdfstringは，PDFのしおりに脚註が現れるのを防ぐために使われています．
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-texorpdfstringについての詳細は、第
+texorpdfstringについての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:節見出し中の数式"
 
 \end_inset
 
-節にあります。
+節にあります．
 \end_layout
 
 \end_inset
@@ -11797,7 +11797,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-指定した長さの空白が、
+指定した長さの空白が，
 \series bold
 
 \backslash
@@ -11815,7 +11815,7 @@ hspace
 
 \end_inset
 
-コマンドで入力することができます。すると、ながい「
+コマンドで入力することができます．すると，ながい「
 \color blue
 
 \begin_inset space \textvisiblespace{}
@@ -11823,7 +11823,7 @@ hspace
 
 
 \color inherit
-」が現れます。長さは、「
+」が現れます．長さは，「
 \color blue
 
 \begin_inset space \textvisiblespace{}
@@ -11831,8 +11831,8 @@ hspace
 
 
 \color inherit
-」を左クリックすることによって指定することができます。長さは負の値でも構いません。空白が行冒頭の文字である場合、それは無視されます。この場合でも、空白出力を強制
-させたいときには、
+」を左クリックすることによって指定することができます．長さは負の値でも構いません．空白が行冒頭の文字である場合，それは無視されます．この場合でも，空白出力を強制
+させたいときには，
 \series bold
 
 \backslash
@@ -11844,7 +11844,7 @@ hspace
 \backslash
 hspace*
 \series default
-コマンドを使用するか、「
+コマンドを使用するか，「
 \color blue
 \lang english
 
@@ -11854,15 +11854,15 @@ hspace*
 
 \color inherit
 \lang japanese
-」の上を左クリックして、
+」の上を左クリックして，
 \family sans
 保護
 \family default
-オプションをチェックしてください。
+オプションをチェックしてください．
 \begin_inset Newline newline
 \end_inset
 
-数式が使用できる空白をすべて使い尽くすだけの空白を挿入するには、
+数式が使用できる空白をすべて使い尽くすだけの空白を挿入するには，
 \series bold
 
 \backslash
@@ -11880,7 +11880,7 @@ hfill
 
 \end_inset
 
-コマンドを使用します。
+コマンドを使用します．
 \end_layout
 
 \begin_layout Standard
@@ -12019,30 +12019,30 @@ B=B
 \end_layout
 
 \begin_layout Standard
-上記の最後の例では、使用できる空白は、表の列中もっとも長い要素によって規定されます。行内数式では、空白は、
+上記の最後の例では，使用できる空白は，表の列中もっとも長い要素によって規定されます．行内数式では，空白は，
 \series bold
 
 \backslash
 hfill
 \series default
-が挿入された行の長さに依存します。つまり、その行が全幅を使用している場合、空白はまったく作られません。また
+が挿入された行の長さに依存します．つまり，その行が全幅を使用している場合，空白はまったく作られません．また
 \series bold
 
 \backslash
 hfill
 \series default
-は、別行立て数式中では、
+は，別行立て数式中では，
 \series bold
 行頭下げ
 \series default
-数式スタイルが使われているときのみ、意味を持ちます(数式スタイルは第
+数式スタイルが使われているときのみ，意味を持ちます(数式スタイルは第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節で説明されています)。
+節で説明されています)．
 \end_layout
 
 \begin_layout Standard
@@ -12052,7 +12052,7 @@ reference "sec:数式様式"
 \backslash
 hfill
 \series default
-の他にも、空白を模様で埋める
+の他にも，空白を模様で埋める
 \series bold
 
 \backslash
@@ -12064,24 +12064,24 @@ dotfill
 \backslash
 hrulefill
 \series default
-といったコマンドがあります。用例については第
+といったコマンドがあります．用例については第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:省略符号"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
-本文中では、可変長空白は、
+本文中では，可変長空白は，
 \family sans
 挿入\SpecialChar menuseparator
 整形\SpecialChar menuseparator
 水平方向の空白
 \family default
-メニューで挿入することができます。
+メニューで挿入することができます．
 \end_layout
 
 \begin_layout Standard
@@ -12089,7 +12089,7 @@ reference "subsec:省略符号"
 \end_layout
 
 \begin_layout Standard
-この行には、
+この行には，
 \begin_inset space \hspace{}
 \length 2cm
 \end_inset
@@ -12098,15 +12098,15 @@ reference "subsec:省略符号"
 \begin_inset space \thinspace{}
 \end_inset
 
-cmの空白が入っています。
+cmの空白が入っています．
 \end_layout
 
 \begin_layout Standard
-この行には、
+この行には，
 \begin_inset space \hfill{}
 \end_inset
 
-最大の空白が入っています。
+最大の空白が入っています．
 \end_layout
 
 \begin_layout Subsection
@@ -12124,7 +12124,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-行内数式前後の空白は、長さ
+行内数式前後の空白は，長さ
 \series bold
 
 \backslash
@@ -12142,7 +12142,7 @@ mathsurround
 
 
 \series default
-を使って調節することができます。長さの値は、以下の書式を持つ
+を使って調節することができます．長さの値は，以下の書式を持つ
 \series bold
 
 \backslash
@@ -12160,7 +12160,7 @@ setlength
 
 
 \series default
-コマンドを使って設定することができます。
+コマンドを使って設定することができます．
 \end_layout
 
 \begin_layout Standard
@@ -12182,7 +12182,7 @@ mathsurround
 \begin_inset space \thinspace{}
 \end_inset
 
-mmの値に設定するには、以下のコマンド
+mmの値に設定するには，以下のコマンド
 \end_layout
 
 \begin_layout Standard
@@ -12197,11 +12197,11 @@ mathsurround}{5mm}
 
 \begin_layout Standard
 を\SpecialChar TeX
-モードで挿入します。すると、5
+モードで挿入します．すると，5
 \begin_inset space \thinspace{}
 \end_inset
 
-mmの空白がすべての行内数式の前後に設定されることになります。
+mmの空白がすべての行内数式の前後に設定されることになります．
 \begin_inset ERT
 status collapsed
 
@@ -12220,7 +12220,7 @@ mathsurround}{5mm}
 \end_layout
 
 \begin_layout Standard
-この行には、周囲に5
+この行には，周囲に5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12228,7 +12228,7 @@ mmの余白を設定した行内数式
 \begin_inset Formula $A=B$
 \end_inset
 
-があります。
+があります．
 \begin_inset ERT
 status collapsed
 
@@ -12247,7 +12247,7 @@ mathsurround}{0pt}
 \end_layout
 
 \begin_layout Standard
-既定値に戻すには、
+既定値に戻すには，
 \series bold
 
 \backslash
@@ -12257,7 +12257,7 @@ mathsurround
 \begin_inset space \thinspace{}
 \end_inset
 
-ptの値に戻して下さい。
+ptの値に戻して下さい．
 \end_layout
 
 \begin_layout Section
@@ -12307,7 +12307,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-本文中のボックスについては、取扱説明書
+本文中のボックスについては，取扱説明書
 \family typewriter
 埋め込みオブジェクト篇
 \family default
@@ -12315,7 +12315,7 @@ status collapsed
 \family typewriter
 ボックス
 \family default
-の章に述べられています。
+の章に述べられています．
 \end_layout
 
 \begin_layout Subsection
@@ -12380,27 +12380,27 @@ boxed
 
 \end_inset
 
-コマンドを使えば、数式やその一部を枠の中に入れることができます。
+コマンドを使えば，数式やその一部を枠の中に入れることができます．
 \end_layout
 
 \begin_layout Standard
-どちらかのコマンドを数式に挿入すると、枠の中に青枠が現れ、数式の断片を入れることができます。
+どちらかのコマンドを数式に挿入すると，枠の中に青枠が現れ，数式の断片を入れることができます．
 \series bold
 
 \backslash
 fbox
 \series default
-の場合には、そのままではボックスの中身が数式テキストとして取り扱われてしまうので、
+の場合には，そのままではボックスの中身が数式テキストとして取り扱われてしまうので，
 \family sans
 Ctrl+M
 \family default
-を使って、このボックスの中にもう一度数式を作らなくてはなりません。
+を使って，このボックスの中にもう一度数式を作らなくてはなりません．
 \series bold
 
 \backslash
 boxed
 \series default
-を使った場合には、新しい数式が自動的に枠内に作られます。
+を使った場合には，新しい数式が自動的に枠内に作られます．
 \end_layout
 
 \begin_layout Standard
@@ -12410,13 +12410,13 @@ boxed
 \backslash
 fbox
 \series default
-コマンドは、数式がつねに本文の大きさに設定されてしまうので、別行立て数式に枠を付けるのには適していません。逆に
+コマンドは，数式がつねに本文の大きさに設定されてしまうので，別行立て数式に枠を付けるのには適していません．逆に
 \series bold
 
 \backslash
 boxed
 \series default
-は、数式がつねに別行立て数式の大きさに設定されてしまうので、行内数式に枠をつけるのには適していません。
+は，数式がつねに別行立て数式の大きさに設定されてしまうので，行内数式に枠をつけるのには適していません．
 \end_layout
 
 \begin_layout Standard
@@ -12426,7 +12426,7 @@ boxed
 \backslash
 fbox
 \series default
-の拡張として、枠幅と配置も指定することができる
+の拡張として，枠幅と配置も指定することができる
 \series bold
 
 \backslash
@@ -12444,13 +12444,13 @@ framebox
 
 \end_inset
 
-コマンドがあります。
+コマンドがあります．
 \series bold
 
 \backslash
 framebox
 \series default
-は、以下の書式を持ちます。
+は，以下の書式を持ちます．
 \end_layout
 
 \begin_layout Standard
@@ -12462,7 +12462,7 @@ framebox[枠幅][位置]{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-「位置」は、
+「位置」は，
 \emph on
 l
 \emph default
@@ -12470,25 +12470,25 @@ l
 \emph on
 r
 \emph default
-の値をとります。
+の値をとります．
 \emph on
 l
 \emph default
-は、ボックス中で数式を左寄せ、
+は，ボックス中で数式を左寄せ，
 \emph on
 r
 \emph default
-は右寄せにします。位置を指定しない時には、数式は中央揃えになります。
+は右寄せにします．位置を指定しない時には，数式は中央揃えになります．
 \begin_inset Newline newline
 \end_inset
 
-「枠幅」を指定しない時には、位置を指定することができません。この場合には、
+「枠幅」を指定しない時には，位置を指定することができません．この場合には，
 \series bold
 
 \backslash
 fbox
 \series default
-と同様、枠幅がボックスの内容に応じて調節されるのです。
+と同様，枠幅がボックスの内容に応じて調節されるのです．
 \end_layout
 
 \begin_layout Standard
@@ -12498,13 +12498,13 @@ fbox
 \backslash
 framebox
 \series default
-コマンドを挿入すると、三つの青枠を含むボックスが現れます。最初の二つの枠は括弧で囲まれており、二つとも非必須の変数であることを意味します。三つ目の枠は、
+コマンドを挿入すると，三つの青枠を含むボックスが現れます．最初の二つの枠は括弧で囲まれており，二つとも非必須の変数であることを意味します．三つ目の枠は，
 \series bold
 
 \backslash
 fbox
 \series default
-同様、数式の断片を入れるためのものです。
+同様，数式の断片を入れるためのものです．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -12700,8 +12700,8 @@ B
 \end_layout
 
 \begin_layout Standard
-枠の厚みも調節可能です。そのためには、以下のコマンドを数式の前に\SpecialChar TeX
-モードで挿入しなくてはなりません。
+枠の厚みも調節可能です．そのためには，以下のコマンドを数式の前に\SpecialChar TeX
+モードで挿入しなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -12750,7 +12750,7 @@ fboxsep
 \begin_inset Quotes erd
 \end_inset
 
-は、枠とボックス内の一文字目との間の距離を示します。これを使った例として、以下の枠付き数式をご覧下さい。
+は，枠とボックス内の一文字目との間の距離を示します．これを使った例として，以下の枠付き数式をご覧下さい．
 \begin_inset ERT
 status collapsed
 
@@ -12773,7 +12773,7 @@ fboxsep 3mm
 
 \end_inset
 
-この数式の直前には、
+この数式の直前には，
 \end_layout
 
 \begin_layout Standard
@@ -12799,12 +12799,12 @@ fboxsep
 \end_layout
 
 \begin_layout Standard
-というコマンドが、\SpecialChar TeX
-モードで挿入されています。ここで与えられた値は、以後のすべてのボックスに適用されます。
+というコマンドが，\SpecialChar TeX
+モードで挿入されています．ここで与えられた値は，以後のすべてのボックスに適用されます．
 \end_layout
 
 \begin_layout Standard
-標準の枠寸法に戻すには、
+標準の枠寸法に戻すには，
 \end_layout
 
 \begin_layout Standard
@@ -12847,8 +12847,8 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Standard
-というコマンドを、次の数式が始まる前に\SpecialChar TeX
-モードで挿入しておきます。
+というコマンドを，次の数式が始まる前に\SpecialChar TeX
+モードで挿入しておきます．
 \end_layout
 
 \begin_layout Subsection
@@ -12877,7 +12877,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-枠のないボックスを作るには、
+枠のないボックスを作るには，
 \series bold
 
 \backslash
@@ -12931,7 +12931,7 @@ raisebox
 
 \end_inset
 
-の三つのコマンドがあります。
+の三つのコマンドがあります．
 \end_layout
 
 \begin_layout Standard
@@ -12941,13 +12941,13 @@ raisebox
 \backslash
 raisebox
 \series default
-を使うと、ボックスを上付きにしたり下付きにしたりすることができます。しかし、通常の上付き文字・下付き文字とは違い、ボックス内の文字寸法はそのまま保たれます。
+を使うと，ボックスを上付きにしたり下付きにしたりすることができます．しかし，通常の上付き文字・下付き文字とは違い，ボックス内の文字寸法はそのまま保たれます．
 \series bold
 
 \backslash
 raisebox
 \series default
-は、以下の書式で用いられます。
+は，以下の書式で用いられます．
 \end_layout
 
 \begin_layout Standard
@@ -12965,7 +12965,7 @@ raisebox{高さ}{ボックスの内容}
 \backslash
 fbox
 \series default
-と同様、ボックスに数式を入れる際には、明示的に数式として入れる必要があります。
+と同様，ボックスに数式を入れる際には，明示的に数式として入れる必要があります．
 \begin_inset Note Greyedout
 status open
 
@@ -12980,18 +12980,18 @@ status open
 \backslash
 raisebox
 \series default
-のところで、
+のところで，
 \family sans
 Ctrl+M
 \family default
-を一回でなく二回押すことによって、もう一段数式をいれています。これは、\SpecialChar LyX
+を一回でなく二回押すことによって，もう一段数式をいれています．これは，\SpecialChar LyX
 が
 \series bold
 
 \backslash
 raisebox
 \series default
-を直接サポートしていないためです。
+を直接サポートしていないためです．
 \end_layout
 
 \end_inset
@@ -13149,7 +13149,7 @@ B
 \end_layout
 
 \begin_layout Standard
-枠がないことを除けば、
+枠がないことを除けば，
 \series bold
 
 \backslash
@@ -13161,7 +13161,7 @@ mbox
 \backslash
 fbox
 \series default
-と同じであり、
+と同じであり，
 \series bold
 
 \backslash
@@ -13173,7 +13173,7 @@ makebox
 \backslash
 framebox
 \series default
-と同じです。
+と同じです．
 \end_layout
 
 \begin_layout Subsection
@@ -13202,7 +13202,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-本節で説明されているコマンドをすべて使えるようにするためには、\SpecialChar LaTeX
+本節で説明されているコマンドをすべて使えるようにするためには，\SpecialChar LaTeX
 プリアンブルに
 \end_layout
 
@@ -13220,13 +13220,13 @@ usepackage{color}
 status collapsed
 
 \begin_layout Plain Layout
-定義済みの色を使って、文書中のどこかで文章に色を付けてある場合、\SpecialChar LyX
-は、自動的に\SpecialChar LaTeX
+定義済みの色を使って，文書中のどこかで文章に色を付けてある場合，\SpecialChar LyX
+は，自動的に\SpecialChar LaTeX
 パッケージ
 \series bold
 color
 \series default
-を読み込みます。したがって、本パッケージが二度読み込まれる可能性があるわけですが、そうなったとしても問題は生じません。
+を読み込みます．したがって，本パッケージが二度読み込まれる可能性があるわけですが，そうなったとしても問題は生じません．
 \end_layout
 
 \end_inset
@@ -13236,13 +13236,13 @@ color
 status collapsed
 
 \begin_layout Plain Layout
-本パッケージが二度読み込まれることを防ぐために、\SpecialChar LaTeX
-プリアンブルにマクロを挿入してあります。
+本パッケージが二度読み込まれることを防ぐために，\SpecialChar LaTeX
+プリアンブルにマクロを挿入してあります．
 \end_layout
 
 \end_inset
 
-を書き加えて、\SpecialChar LaTeX
+を書き加えて，\SpecialChar LaTeX
 パッケージの
 \series bold
 color
@@ -13257,8 +13257,8 @@ status collapsed
 \series bold
 color
 \series default
-は、すべての標準的な\SpecialChar LaTeX
-頒布版に含まれています。
+は，すべての標準的な\SpecialChar LaTeX
+頒布版に含まれています．
 \end_layout
 
 \end_inset
@@ -13273,14 +13273,14 @@ status collapsed
 
 \end_inset
 
-を読み込む必要があります。
+を読み込む必要があります．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-ボックスに色を付けるには、
+ボックスに色を付けるには，
 \series bold
 
 \backslash
@@ -13298,7 +13298,7 @@ colorbox
 
 \end_inset
 
-コマンドを以下の書式で使用します。
+コマンドを以下の書式で使用します．
 \end_layout
 
 \begin_layout Standard
@@ -13310,39 +13310,39 @@ colorbox{色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-ボックスの内容には、別のボックスが含まれても構いませんし、
+ボックスの内容には，別のボックスが含まれても構いませんし，
 \series bold
 
 \backslash
 colorbox
 \series default
-自体も、別のボックスに入っていても構いません(以下の二番目と三番目の例を参照してください)。ボックスに数式を含める場合には、
+自体も，別のボックスに入っていても構いません(以下の二番目と三番目の例を参照してください)．ボックスに数式を含める場合には，
 \series bold
 
 \backslash
 raisebox
 \series default
-と同様、明示的に数式を作らなくてはなりません
+と同様，明示的に数式を作らなくてはなりません
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは、
+これは，
 \series bold
 
 \backslash
 fcolorbox
 \series default
-コマンドにも当てはまります。
+コマンドにも当てはまります．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-選択できる定義済みの色としては、
+選択できる定義済みの色としては，
 \end_layout
 
 \begin_layout Standard
@@ -13382,7 +13382,7 @@ yellow
 \end_layout
 
 \begin_layout Standard
-があります。
+があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -13549,11 +13549,11 @@ C=D
 \backslash
 colorbox
 \series default
-は、ボックスに色をつけるだけで、ボックス内の文字には色付けをしません。すべての文字に色付けするには、数式全体を選択し、
+は，ボックスに色をつけるだけで，ボックス内の文字には色付けをしません．すべての文字に色付けするには，数式全体を選択し，
 \family sans
 文字様式
 \family default
-ダイアログで欲しい色を選択します。このダイアログは、ツールバーボタン
+ダイアログで欲しい色を選択します．このダイアログは，ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
@@ -13565,12 +13565,12 @@ arg   "dialog-show character"
 文字様式\SpecialChar menuseparator
 任意設定
 \family default
-メニューで開くことができます。すると、数式番号も数式と同じ色になります。数式番号が数式の文字とは別の色になるようにするには、数式内部で色を変えなくてはなりません
-。
+メニューで開くことができます．すると，数式番号も数式と同じ色になります．数式番号が数式の文字とは別の色になるようにするには，数式内部で色を変えなくてはなりません
+．
 \end_layout
 
 \begin_layout Standard
-たとえば、
+たとえば，
 \end_layout
 
 \begin_layout Standard
@@ -13604,7 +13604,7 @@ reference "eq:red"
 
 \end_inset
 
-は、全体が赤色です。
+は，全体が赤色です．
 \begin_inset Newline newline
 \end_inset
 
@@ -13615,14 +13615,14 @@ reference "eq:redgreen"
 
 \end_inset
 
-は、数式番号を緑色にするために、まず全体を緑色にします。その後、数式内の文字を赤色にします。
+は，数式番号を緑色にするために，まず全体を緑色にします．その後，数式内の文字を赤色にします．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-ボックスの枠だけ別の色にするには、
+ボックスの枠だけ別の色にするには，
 \series bold
 
 \backslash
@@ -13640,7 +13640,7 @@ fcolorbox
 
 \end_inset
 
-コマンドを以下の書式で使用します。
+コマンドを以下の書式で使用します．
 \end_layout
 
 \begin_layout Standard
@@ -13652,7 +13652,7 @@ fcolorbox{枠の色}{色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-つまり、
+つまり，
 \series bold
 
 \backslash
@@ -13664,13 +13664,13 @@ fcolorbox
 \backslash
 colorbox
 \series default
-コマンドの拡張です。
+コマンドの拡張です．
 \series bold
 
 \backslash
 framebox
 \series default
-と同様に、枠の厚みは
+と同様に，枠の厚みは
 \series bold
 
 \backslash
@@ -13682,7 +13682,7 @@ fboxrule
 \backslash
 fboxsep
 \series default
-で設定します。たとえば、
+で設定します．たとえば，
 \begin_inset ERT
 status collapsed
 
@@ -13720,11 +13720,11 @@ fboxsep 3pt
 
 \end_inset
 
-のようにします。
+のようにします．
 \end_layout
 
 \begin_layout Standard
-上記の数式は、以下のコマンドで作成されています。
+上記の数式は，以下のコマンドで作成されています．
 \begin_inset Newline newline
 \end_inset
 
@@ -13753,15 +13753,15 @@ fcolorbox{cyan
 \begin_inset VSpace bigskip
 \end_inset
 
-定義済みの色以外の色を使いたい場合には、まずその色を定義しなくてはなりません。
+定義済みの色以外の色を使いたい場合には，まずその色を定義しなくてはなりません．
 \end_layout
 
 \begin_layout Standard
-たとえば、「
+たとえば，「
 \series bold
 darkgreen
 \series default
-」という色を定義するには、\SpecialChar LaTeX
+」という色を定義するには，\SpecialChar LaTeX
 プリアンブルに
 \end_layout
 
@@ -13800,7 +13800,7 @@ definecolor
 \end_layout
 
 \begin_layout Standard
-という行を書き加えます。
+という行を書き加えます．
 \end_layout
 
 \begin_layout Standard
@@ -13808,7 +13808,7 @@ definecolor
 \series bold
 cmyk
 \series default
-とは、
+とは，
 \series bold
 cyan
 \series default
@@ -13824,7 +13824,7 @@ yellow
 \series bold
 black
 \series default
-(黒)の各色を表す色空間です。コンマで区切られた四つの数字は、この色空間における各色の出力強度です。強度は、0
+(黒)の各色を表す色空間です．コンマで区切られた四つの数字は，この色空間における各色の出力強度です．強度は，0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13832,19 +13832,19 @@ black
 \begin_inset space \thinspace{}
 \end_inset
 
-1の範囲をとることができます。定義には、
+1の範囲をとることができます．定義には，
 \series bold
 cmyk
 \series default
-の他に、
+の他に，
 \series bold
 rgb
 \series default
-という色空間を使うこともできます。
+という色空間を使うこともできます．
 \series bold
 rgb
 \series default
-とは、
+とは，
 \series bold
 red
 \series default
@@ -13856,23 +13856,23 @@ green
 \series bold
 blue
 \series default
-(青)の各色を意味し、この場合には、各色に対応した三つの出力強度を指定します。さらに、灰色の出力強度のみをとる
+(青)の各色を意味し，この場合には，各色に対応した三つの出力強度を指定します．さらに，灰色の出力強度のみをとる
 \series bold
 gray
 \series default
-という色空間もあります。
+という色空間もあります．
 \end_layout
 
 \begin_layout Standard
-例として、文字が
+例として，文字が
 \series bold
 yellow
 \series default
-に色付けされ、新しく定義した
+に色付けされ，新しく定義した
 \series bold
 darkgreen
 \series default
-という色を持つ枠付きボックスを挙げておきます。
+という色を持つ枠付きボックスを挙げておきます．
 \begin_inset Formula 
 \begin{equation}
 \colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
@@ -13890,7 +13890,7 @@ darkgreen
 \backslash
 textcolor
 \series default
-コマンドを使うと、以下のように、自前で定義した色をテキスト中でも使用することができます。
+コマンドを使うと，以下のように，自前で定義した色をテキスト中でも使用することができます．
 \begin_inset Index idx
 status collapsed
 
@@ -13916,7 +13916,7 @@ textcolor{darkgreen}{
 
 \end_inset
 
-この文は「darkgreen」です。
+この文は「darkgreen」です．
 \begin_inset ERT
 status collapsed
 
@@ -13949,13 +13949,13 @@ textcolor
 
 \end_inset
 
-は、
+は，
 \series bold
 
 \backslash
 textcolor{色}{色付けをする文}
 \series default
-という書式で使用することができます。
+という書式で使用することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -13984,7 +13984,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-いくつかの行や段落を含む、いわゆる段落ボックス(parbox)は、
+いくつかの行や段落を含む，いわゆる段落ボックス(parbox)は，
 \family sans
 挿入\SpecialChar menuseparator
 ボックス
@@ -13995,18 +13995,18 @@ type  "icon"
 arg   "box-insert"
 \end_inset
 
-で作成することができます。
+で作成することができます．
 \end_layout
 
 \begin_layout Standard
-以下の例は、行中の枠付きparboxを示したものです。
+以下の例は，行中の枠付きparboxを示したものです．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-この行は、
+この行は，
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -14026,11 +14026,11 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-これは段落ボックスです。これはちょうど5
+これは段落ボックスです．これはちょうど5
 \begin_inset space \thinspace{}
 \end_inset
 
-cmの幅になっており、以下のように数式を含めることもできます。
+cmの幅になっており，以下のように数式を含めることもできます．
 \begin_inset Formula $\int A\,\mathrm{d}s=C$
 \end_inset
 
@@ -14039,7 +14039,7 @@ cmの幅になっており、以下のように数式を含めることもでき
 
 \end_inset
 
-parboxの入った行です。
+parboxの入った行です．
 \end_layout
 
 \begin_layout Standard
@@ -14050,15 +14050,15 @@ parboxの入った行です。
 \end_layout
 
 \begin_layout Standard
-このようなボックスは、灰色のボックス挿入枠を右クリックすることによって作ることができます。すると、ボックスの特性を表示したダイアログが現れます。上の例では、
+このようなボックスは，灰色のボックス挿入枠を右クリックすることによって作ることができます．すると，ボックスの特性を表示したダイアログが現れます．上の例では，
 \emph on
 装飾
 \emph default
-：簡素な長方形の箱型、
+：簡素な長方形の箱型，
 \emph on
 内部ボックス
 \emph default
-：parboxコマンド、
+：parboxコマンド，
 \emph on
 幅
 \emph default
@@ -14066,11 +14066,11 @@ parboxの入った行です。
 \begin_inset space \thinspace{}
 \end_inset
 
-cm、
+cm，
 \emph on
 垂直ボックス配置
 \emph default
-：中央、に設定されています。
+：中央，に設定されています．
 \end_layout
 
 \begin_layout Standard
@@ -14078,7 +14078,7 @@ cm、
 \end_inset
 
 \SpecialChar LaTeX
-では、parboxは、以下の書式を持つ
+では，parboxは，以下の書式を持つ
 \series bold
 
 \backslash
@@ -14096,7 +14096,7 @@ parbox
 
 \end_inset
 
-コマンドによって作られます。
+コマンドによって作られます．
 \end_layout
 
 \begin_layout Standard
@@ -14108,7 +14108,7 @@ parbox[位置]{幅}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
-「位置」は、
+「位置」は，
 \emph on
 b
 \emph default
@@ -14116,26 +14116,26 @@ b
 \emph on
 t
 \emph default
-の値をとることができます。下揃えを意味する
+の値をとることができます．下揃えを意味する
 \emph on
 b
 \emph default
-(bottom)は、ボックスを、周囲の本文中の最後の行と合わせることを意味します。上揃えを意味する
+(bottom)は，ボックスを，周囲の本文中の最後の行と合わせることを意味します．上揃えを意味する
 \emph on
 t
 \emph default
-(top)は、これを最初の行に合わせます。位置を指定しない時には、ボックスは事実上中央揃えになります。用例については、取扱説明書埋込オブジェクト篇の
+(top)は，これを最初の行に合わせます．位置を指定しない時には，ボックスは事実上中央揃えになります．用例については，取扱説明書埋込オブジェクト篇の
 \emph on
 ボックス
 \emph default
-の節をご参照下さい。
+の節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-数式番号を含めて、数式を完全に枠で囲むためには、数式をparbox内に収めなくてはなりません。こうするには、数式前に\SpecialChar TeX
+数式番号を含めて，数式を完全に枠で囲むためには，数式をparbox内に収めなくてはなりません．こうするには，数式前に\SpecialChar TeX
 モードで
 \series bold
 parbox{
@@ -14146,7 +14146,7 @@ fboxsep-2
 \backslash
 fboxrule}{
 \series default
-というコマンドを挿入します。ここで
+というコマンドを挿入します．ここで
 \series bold
 
 \backslash
@@ -14164,8 +14164,8 @@ linewidth
 
 
 \series default
-は、使用中の文書に設定されている行幅です。枠は、parboxの外側にあるので、枠余白と枠幅の2倍を行幅から差し引かなくてはなりません。引数中で掛け算や引き算を行
-うためには、\SpecialChar LaTeX
+は，使用中の文書に設定されている行幅です．枠は，parboxの外側にあるので，枠余白と枠幅の2倍を行幅から差し引かなくてはなりません．引数中で掛け算や引き算を行
+うためには，\SpecialChar LaTeX
 パッケージの
 \series bold
 calc
@@ -14179,8 +14179,8 @@ status collapsed
 \series bold
 calc
 \series default
-は、標準的\SpecialChar LaTeX
-頒布版のすべてに含まれています。
+は，標準的\SpecialChar LaTeX
+頒布版のすべてに含まれています．
 \end_layout
 
 \end_inset
@@ -14195,7 +14195,7 @@ status collapsed
 
 \end_inset
 
-を、\SpecialChar LaTeX
+を，\SpecialChar LaTeX
 プリアンブル中で
 \end_layout
 
@@ -14208,12 +14208,12 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-のように読み込んでおく必要があります。数式の後では、\SpecialChar TeX
+のように読み込んでおく必要があります．数式の後では，\SpecialChar TeX
 モードで
 \series bold
 }}
 \series default
-を入力して、二つのボックスを閉じておかなくてはなりません。以下に例を挙げます。
+を入力して，二つのボックスを閉じておかなくてはなりません．以下に例を挙げます．
 \begin_inset ERT
 status collapsed
 
@@ -14299,7 +14299,7 @@ fboxsep 3pt
 \backslash
 fbox
 \series default
-の引数としてparboxが使われているので、この場合には、
+の引数としてparboxが使われているので，この場合には，
 \series bold
 
 \backslash
@@ -14311,14 +14311,14 @@ fbox
 \backslash
 boxed
 \series default
-を使おうが、差は生じません。
+を使おうが，差は生じません．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-段落ボックスは、数式にじかにコメントを付けるのにたいへん便利です。これを行うには、
+段落ボックスは，数式にじかにコメントを付けるのにたいへん便利です．これを行うには，
 \series bold
 
 \backslash
@@ -14336,7 +14336,7 @@ tag
 \backslash
 tag
 \series default
-についての詳細は、第
+についての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自己定義番号"
@@ -14347,13 +14347,13 @@ reference "subsec:自己定義番号"
 \end_layout
 
 \begin_layout Standard
-以下は、
+以下は，
 \series bold
 
 \backslash
 parbox
 \series default
-を使ってコメントを付けた数式の例です。
+を使ってコメントを付けた数式の例です．
 \end_layout
 
 \begin_layout Standard
@@ -14373,7 +14373,7 @@ parbox{5cm}{
 
 \end_inset
 
-これは説明です。数式や多行数式本体からはっきりと離れています。
+これは説明です．数式や多行数式本体からはっきりと離れています．
 \begin_inset ERT
 status collapsed
 
@@ -14391,18 +14391,18 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
-は、まだ数式中での
+は，まだ数式中での
 \series bold
 
 \backslash
 parbox
 \series default
-コマンドをサポートしていないので、上のような数式は、完全に\SpecialChar TeX
-モードで挿入しなくてはなりません。この数式は、以下のようなコマンド列を使って作ってあります。
+コマンドをサポートしていないので，上のような数式は，完全に\SpecialChar TeX
+モードで挿入しなくてはなりません．この数式は，以下のようなコマンド列を使って作ってあります．
 \end_layout
 
 \begin_layout Standard
-まず、
+まず，
 \series bold
 
 \backslash
@@ -14424,7 +14424,7 @@ status collapsed
 \series bold
 行頭下げ
 \series default
-数式様式を使用している時には、
+数式様式を使用している時には，
 \series bold
 
 \backslash
@@ -14438,26 +14438,26 @@ tag*
 \backslash
 hfill
 \series default
-を用いることもできます(数式様式に関しては、第
+を用いることもできます(数式様式に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節をご参照下さい)。
+節をご参照下さい)．
 \end_layout
 
 \end_inset
 
-。それから、説明を通常のテキストとして入れ、最後に
+．それから，説明を通常のテキストとして入れ，最後に
 \series bold
 }}
 \backslash
 ]
 \series default
 を\SpecialChar TeX
-モードで挿入します。ここで
+モードで挿入します．ここで
 \series bold
 
 \backslash
@@ -14469,7 +14469,7 @@ reference "sec:数式様式"
 \backslash
 ]
 \series default
-コマンドは別行立て数式を作るためのものです。
+コマンドは別行立て数式を作るためのものです．
 \end_layout
 
 \begin_layout Standard
@@ -14479,7 +14479,7 @@ reference "sec:数式様式"
 \backslash
 parbox
 \series default
-を使う利点は、数式テキストモードを使用して「コメントを付けた」以下の例と比較すると、よくわかるでしょう。
+を使う利点は，数式テキストモードを使用して「コメントを付けた」以下の例と比較すると，よくわかるでしょう．
 \begin_inset Formula 
 \[
 5x-7b=3b\textrm{これは説明です。数式本体から離れていません...}
@@ -14550,7 +14550,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ここに挙げた積分演算子をすべて使えるようにするには、文書設定の
+ここに挙げた積分演算子をすべて使えるようにするには，文書設定の
 \family sans
 数式オプション
 \family default
@@ -14558,7 +14558,7 @@ status collapsed
 \family sans
 esintパッケージを自動的に使う
 \family default
-オプションを有効にしなくてはなりません。
+オプションを有効にしなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -15176,21 +15176,21 @@ biguplus
 \end_layout
 
 \begin_layout Standard
-すべての大演算子は、数式ツールバーボタンの
+すべての大演算子は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\intop"
 \end_inset
 
-でも挿入することができます。
+でも挿入することができます．
 \end_layout
 
 \begin_layout Standard
-これらの演算子は、よく見ないと同じように見える二項演算子よりも大きいので、大演算子と呼ばれます。大演算子はすべて、次小節で説明する「範囲」をとることができます。
+これらの演算子は，よく見ないと同じように見える二項演算子よりも大きいので，大演算子と呼ばれます．大演算子はすべて，次小節で説明する「範囲」をとることができます．
 \end_layout
 
 \begin_layout Standard
-積分演算子はすべて、
+積分演算子はすべて，
 \series bold
 
 \backslash
@@ -15202,24 +15202,24 @@ intop
 \backslash
 ointop
 \series default
-のように、
+のように，
 \series bold
 op
 \series default
-で終わる別バージョンがあります。これらの演算子は、
+で終わる別バージョンがあります．これらの演算子は，
 \series bold
 
 \backslash
 int
 \series default
-とは範囲の表示のしかたが異なります。第
+とは範囲の表示のしかたが異なります．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:演算子の範囲"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Subsubsection*
@@ -15231,11 +15231,11 @@ reference "subsec:演算子の範囲"
 \emph on
 d
 \emph default
-は演算子なので、アップライト体で組まれなくてはなりません。これを行うには
+は演算子なので，アップライト体で組まれなくてはなりません．これを行うには
 \emph on
 d
 \emph default
-を選択して、
+を選択して，
 \begin_inset Flex Ruby
 status collapsed
 
@@ -15266,23 +15266,23 @@ arg   "font-roman"
 status collapsed
 
 \begin_layout Plain Layout
-文字様式については、第
+文字様式については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書体様式"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
-。最後に、演算子の慣例に倣って、
+．最後に，演算子の慣例に倣って，
 \emph on
 d
 \emph default
-の前に最小空白を挿入しなくてはなりません。たとえば、
+の前に最小空白を挿入しなくてはなりません．たとえば，
 \end_layout
 
 \begin_layout Standard
@@ -15312,7 +15312,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-多重積分に関しては、以下のコマンドがあります。
+多重積分に関しては，以下のコマンドがあります．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -15566,7 +15566,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-範囲は、上付き文字と下付き文字とで作成することができます。
+範囲は，上付き文字と下付き文字とで作成することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -15647,11 +15647,11 @@ A(x)
 \end_layout
 
 \begin_layout Standard
-行内数式では、範囲は演算子の右横に表示されます。別行立て数式での範囲は、積分範囲を除き、演算子の上と下に表示されます。
+行内数式では，範囲は演算子の右横に表示されます．別行立て数式での範囲は，積分範囲を除き，演算子の上と下に表示されます．
 \end_layout
 
 \begin_layout Standard
-範囲が演算子の横に表示されるように強制するには、カーソルを当該演算子の直後において、
+範囲が演算子の横に表示されるように強制するには，カーソルを当該演算子の直後において，
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
@@ -15689,11 +15689,11 @@ type  "shortcut"
 arg   "math-limits"
 \end_inset
 
-)を選択することで範囲形式を変更することができます。以下はその用例です。
+)を選択することで範囲形式を変更することができます．以下はその用例です．
 \end_layout
 
 \begin_layout Standard
-既定の範囲形式は、以下のようになっています。
+既定の範囲形式は，以下のようになっています．
 \begin_inset Formula 
 \[
 \sum_{x=0}^{\infty}\frac{1}{x^{2}}
@@ -15701,13 +15701,13 @@ arg   "math-limits"
 
 \end_inset
 
-以下は、範囲形式を
+以下は，範囲形式を
 \family sans
 \series bold
 行内形式
 \family default
 \series default
-に変更したときの表示です。
+に変更したときの表示です．
 \begin_inset Formula 
 \[
 \sum\nolimits _{x=0}^{\infty}\frac{1}{x^{2}}
@@ -15731,12 +15731,12 @@ ointop
 \series bold
 op
 \series default
-で終わるもの以外の積分記号では、範囲は、既定で演算子の横に設定されます。しかし、多重積分においては、範囲を演算子の下に置くべきときがあります。このことから、以下
-の例では、範囲形式を
+で終わるもの以外の積分記号では，範囲は，既定で演算子の横に設定されます．しかし，多重積分においては，範囲を演算子の下に置くべきときがあります．このことから，以下
+の例では，範囲形式を
 \series bold
 別行立て形式
 \series default
-にして積分記号の下に置くようにしています。
+にして積分記号の下に置くようにしています．
 \begin_inset Formula 
 \begin{equation}
 \iiint\limits _{V}X\,\mathrm{d}V=U\label{eq:VolInt}
@@ -15751,7 +15751,7 @@ op
 \begin_inset VSpace medskip
 \end_inset
 
-範囲に条件を指定したい場合には、
+範囲に条件を指定したい場合には，
 \series bold
 
 \backslash
@@ -15787,7 +15787,7 @@ substack
 
 \end_inset
 
-コマンドを使用します。たとえば、以下の表記 
+コマンドを使用します．たとえば，以下の表記 
 \begin_inset Formula 
 \begin{equation}
 \sum_{\begin{subarray}{c}
@@ -15803,11 +15803,11 @@ k\,\in\,\mathbb{N}
 \end_layout
 
 \begin_layout Standard
-を作成するには、以下のようにしなくてはなりません。
+を作成するには，以下のようにしなくてはなりません．
 \begin_inset Newline newline
 \end_inset
 
-まず、
+まず，
 \series bold
 
 \backslash
@@ -15821,7 +15821,7 @@ n
 
 _
 \series default
-というコマンドを入力します。すると、和演算子の下の青枠に移動するので、ここに
+というコマンドを入力します．すると，和演算子の下の青枠に移動するので，ここに
 \series bold
 
 \backslash
@@ -15831,13 +15831,13 @@ subarray
 
 
 \series default
-コマンドを挿入します。すると、青枠が紫枠の中に入って、ここに複数の行を書き込むことができるようになります。新しい行は、改行(
+コマンドを挿入します．すると，青枠が紫枠の中に入って，ここに複数の行を書き込むことができるようになります．新しい行は，改行(
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-)を挿入することで作ることができます。ここに
+)を挿入することで作ることができます．ここに
 \begin_inset Newline newline
 \end_inset
 
@@ -15857,11 +15857,11 @@ k
 
 
 \series default
-と入力すると、新規行のための新しい枠が現れます。
+と入力すると，新規行のための新しい枠が現れます．
 \end_layout
 
 \begin_layout Standard
-各行の揃え方は、
+各行の揃え方は，
 \family sans
 表ツールバー
 \family default
@@ -15870,7 +15870,7 @@ k
 編集\SpecialChar menuseparator
 行と列
 \family default
-メニューで変更することができますが、右揃えにするには、行頭に
+メニューで変更することができますが，右揃えにするには，行頭に
 \series bold
 
 \backslash
@@ -15880,7 +15880,7 @@ hfill
 
 
 \series default
-を挿入しなくてはなりません。
+を挿入しなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -15890,27 +15890,27 @@ hfill
 \backslash
 substack
 \series default
-コマンドは、各行がつねに中央揃えになることを除いては、
+コマンドは，各行がつねに中央揃えになることを除いては，
 \series bold
 
 \backslash
 subarray
 \series default
-と同じです。
+と同じです．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-演算子の後に来る文字は、範囲の横に来るので、
+演算子の後に来る文字は，範囲の横に来るので，
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:substack"
 
 \end_inset
 
-式のように、演算子の横の余白が大きくなりすぎることがあります。これを防ぐには、コマンド
+式のように，演算子の横の余白が大きくなりすぎることがあります．これを防ぐには，コマンド
 \series bold
 
 \backslash
@@ -15928,11 +15928,11 @@ smashoperator
 
 \end_inset
 
-を使うことができます。これを有効化するには、文書設定の
+を使うことができます．これを有効化するには，文書設定の
 \family sans
 数式オプション
 \family default
-で、
+で，
 \series bold
 mathtools
 \series default
@@ -15950,13 +15950,13 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-オプションを指定してください。
+オプションを指定してください．
 \series bold
 
 \backslash
 smashoperator
 \series default
-は、内容物の幅を0
+は，内容物の幅を0
 \lang english
 
 \begin_inset space \thinspace{}
@@ -15964,7 +15964,7 @@ smashoperator
 
 
 \lang japanese
-ptに設定します。
+ptに設定します．
 \lang english
 
 \begin_inset Newline newline
@@ -15979,7 +15979,7 @@ reference "eq:substack"
 
 \end_inset
 
-式に応用してみると、コマンド
+式に応用してみると，コマンド
 \end_layout
 
 \begin_layout Standard
@@ -15991,7 +15991,7 @@ smashoperator{
 \end_layout
 
 \begin_layout Standard
-の波括弧の中に、範囲付きの演算子を挿入することになります。波括弧を閉じた後に、数式を続けます。例：
+の波括弧の中に，範囲付きの演算子を挿入することになります．波括弧を閉じた後に，数式を続けます．例：
 \begin_inset Formula 
 \[
 \sum_{\mathclap{\substack{0<k<1000\\
@@ -16003,7 +16003,7 @@ k\,\in\,\mathbb{N}
 
 \end_inset
 
-演算子の片側だけ、空白を0
+演算子の片側だけ，空白を0
 \lang english
 
 \begin_inset space \thinspace{}
@@ -16011,13 +16011,13 @@ k\,\in\,\mathbb{N}
 
 
 \lang japanese
-ptにすることも可能です。そのためには、
+ptにすることも可能です．そのためには，
 \series bold
 
 \backslash
 smashoperator
 \series default
-と付属する波括弧の間に、
+と付属する波括弧の間に，
 \series bold
 [l]
 \series default
@@ -16025,13 +16025,13 @@ smashoperator
 \series bold
 [r]
 \series default
-と書き込みます。下記は、
+と書き込みます．下記は，
 \series bold
 
 \backslash
 smashoperator
 \series default
-のとりうる形の例です。
+のとりうる形の例です．
 \end_layout
 
 \begin_layout Standard
@@ -16053,7 +16053,7 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 \end_layout
 
 \begin_layout Standard
-範囲を持つ演算子が続くとき、出力での、範囲の組版は出来が良くないものになることがあります。下記をご覧ください。
+範囲を持つ演算子が続くとき，出力での，範囲の組版は出来が良くないものになることがあります．下記をご覧ください．
 \begin_inset Formula 
 \[
 \text{a)}\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\limsup_{n\to\infty}\max_{p\ge n}
@@ -16061,11 +16061,11 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 
 \end_inset
 
-組版を改善するには、文書設定の
+組版を改善するには，文書設定の
 \family sans
 数式オプション
 \family default
-で、
+で，
 \series bold
 mathtools
 \series default
@@ -16083,7 +16083,7 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-オプションを指定してください。その上で、数式中の最初の演算子の前に直接、
+オプションを指定してください．その上で，数式中の最初の演算子の前に直接，
 \series bold
 
 \backslash
@@ -16101,7 +16101,7 @@ adjustlimits
 
 \end_inset
 
-を置いてください。そうすると、上記の例はこのようになります。
+を置いてください．そうすると，上記の例はこのようになります．
 \begin_inset Formula 
 \[
 \text{a)}\adjustlimits\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\adjustlimits\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\adjustlimits\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\adjustlimits\limsup_{n\to\infty}\max_{p\ge n}
@@ -16116,14 +16116,14 @@ adjustlimits
 \begin_inset VSpace bigskip
 \end_inset
 
-一つの範囲を複数の演算子に用いる方法が、第
+一つの範囲を複数の演算子に用いる方法が，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自己定義演算子"
 
 \end_inset
 
-節に述べられています。
+節に述べられています．
 \end_layout
 
 \begin_layout Subsection
@@ -16177,7 +16177,7 @@ underset
 
 \end_inset
 
-コマンドを使うと、それぞれ演算子の上や下に、文字をアクセントとして付けることができます。また、
+コマンドを使うと，それぞれ演算子の上や下に，文字をアクセントとして付けることができます．また，
 \series bold
 
 \backslash
@@ -16195,7 +16195,7 @@ sideset
 
 \end_inset
 
-コマンドを使うと、文字を演算子の前や後ろに付けることができます。
+コマンドを使うと，文字を演算子の前や後ろに付けることができます．
 \end_layout
 
 \begin_layout Standard
@@ -16205,7 +16205,7 @@ sideset
 \backslash
 sideset
 \series default
-には4つの派生版があります。
+には4つの派生版があります．
 \end_layout
 
 \begin_layout Itemize
@@ -16215,7 +16215,7 @@ sideset
 \backslash
 sideset
 \series default
-は、演算子の隅に文字を置くのに用います。
+は，演算子の隅に文字を置くのに用います．
 \end_layout
 
 \begin_layout Itemize
@@ -16225,14 +16225,14 @@ sideset
 \backslash
 sidesetn
 \series default
-は、演算子の前後に文字を置くのに用います(この派生版は、\SpecialChar LaTeX
+は，演算子の前後に文字を置くのに用います(この派生版は，\SpecialChar LaTeX
 の元々の
 \series bold
 
 \backslash
 sideset
 \series default
-コマンドを表します)。
+コマンドを表します)．
 \end_layout
 
 \begin_layout Itemize
@@ -16242,7 +16242,7 @@ sideset
 \backslash
 sidesetl
 \series default
-は、演算子の左隅と後ろに文字を置くのに用います。
+は，演算子の左隅と後ろに文字を置くのに用います．
 \end_layout
 
 \begin_layout Itemize
@@ -16252,11 +16252,11 @@ sidesetl
 \backslash
 sidesetr
 \series default
-は、演算子の右隅と前に文字を置くのに用います。
+は，演算子の右隅と前に文字を置くのに用います．
 \end_layout
 
 \begin_layout Standard
-たとえば、
+たとえば，
 \series bold
 
 \backslash
@@ -16288,7 +16288,7 @@ _k=1
 \series bold
 n
 \series default
-というコマンドを入力すると、
+というコマンドを入力すると，
 \begin_inset Formula 
 \[
 \sideset{}{'}\sum_{k=1}^{n}
@@ -16296,7 +16296,7 @@ n
 
 \end_inset
 
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Standard
@@ -16310,7 +16310,7 @@ status open
 \backslash
 sideset
 \series default
-は、大演算子を修飾するためだけに用いることができ、二項演算子には用いることができません。
+は，大演算子を修飾するためだけに用いることができ，二項演算子には用いることができません．
 \end_layout
 
 \end_inset
@@ -16319,7 +16319,7 @@ sideset
 \end_layout
 
 \begin_layout Standard
-のようになります。最後の例からわかるように、
+のようになります．最後の例からわかるように，
 \series bold
 
 \backslash
@@ -16331,7 +16331,7 @@ overset
 \backslash
 underset
 \series default
-では、記号や文字にアクセントをつけることもできます。一方。 また、
+では，記号や文字にアクセントをつけることもできます．一方． また，
 \series bold
 
 \backslash
@@ -16355,7 +16355,7 @@ maltese
 \series bold
 a
 \series default
-というコマンドならば、
+というコマンドならば，
 \begin_inset Formula 
 \[
 \overset{a}{\maltese}
@@ -16392,7 +16392,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-二項演算子は、前後に文字がある場合、周囲に余白が入ります。
+二項演算子は，前後に文字がある場合，周囲に余白が入ります．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -16421,7 +16421,7 @@ status collapsed
 \backslash
 raisebox
 \series default
-はスペーサーとして使用しているだけです。
+はスペーサーとして使用しているだけです．
 \end_layout
 
 \end_inset
@@ -17434,23 +17434,23 @@ triangleright
 \end_layout
 
 \begin_layout Standard
-二項演算子は、すべて数式ツールバーボタンの
+二項演算子は，すべて数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\pm"
 \end_inset
 
-から挿入することもできます。
+から挿入することもできます．
 \end_layout
 
 \begin_layout Standard
-ラプラス演算子を組版するには、
+ラプラス演算子を組版するには，
 \series bold
 
 \backslash
 bigtriangleup
 \series default
-以外に、
+以外に，
 \series bold
 
 \backslash
@@ -17470,7 +17470,7 @@ nabla
 \begin_inset Formula $\nabla^{2}$
 \end_inset
 
-)を使用することもできます。
+)を使用することもできます．
 \end_layout
 
 \begin_layout Standard
@@ -17483,13 +17483,13 @@ nabla
 \family sans
 メニュー区切り
 \family default
-で入力される文字は、
+で入力される文字は，
 \series bold
 
 \backslash
 triangleright
 \series default
-演算子です。
+演算子です．
 \end_layout
 
 \begin_layout Subsection
@@ -17539,7 +17539,7 @@ DeclareMathOperator
 
 \end_inset
 
-コマンドを使用すると、自己定義演算子を定義することができます。このコマンドの書式は
+コマンドを使用すると，自己定義演算子を定義することができます．このコマンドの書式は
 \end_layout
 
 \begin_layout Standard
@@ -17551,18 +17551,18 @@ DeclareMathOperator{新規コマンド}{表示}
 \end_layout
 
 \begin_layout Standard
-です。「表示」は、出力での演算子の表示され方を定義する文字や記号です。大演算子を定義するには、コマンドの後に「*」を置きます。自己定義の大演算子は、すべて第
+です．「表示」は，出力での演算子の表示され方を定義する文字や記号です．大演算子を定義するには，コマンドの後に「*」を置きます．自己定義の大演算子は，すべて第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:演算子の範囲"
 
 \end_inset
 
-節で述べられた範囲を指定することができます。
+節で述べられた範囲を指定することができます．
 \end_layout
 
 \begin_layout Standard
-たとえば、以下のような\SpecialChar LaTeX
+たとえば，以下のような\SpecialChar LaTeX
 プリアンブル行
 \end_layout
 
@@ -17579,20 +17579,20 @@ blacklozenge}
 \end_layout
 
 \begin_layout Standard
-は、第
+は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:その他の記号"
 
 \end_inset
 
-節にある菱形記号を使った大演算子を挿入する、以下のようなコマンド
+節にある菱形記号を使った大演算子を挿入する，以下のようなコマンド
 \series bold
 
 \backslash
 Lozenge
 \series default
-を定義します。
+を定義します．
 \begin_inset Formula 
 \[
 \Lozenge_{n=1}^{\infty}
@@ -17600,7 +17600,7 @@ Lozenge
 
 \end_inset
 
-上記の数式を作るコマンドは、
+上記の数式を作るコマンドは，
 \series bold
 
 \backslash
@@ -17616,14 +17616,14 @@ infty
 
 _n=1
 \series default
-です。
+です．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-自己定義演算子を、同一文書内で複数回用いない時には、以下の書式を持つ
+自己定義演算子を，同一文書内で複数回用いない時には，以下の書式を持つ
 \series bold
 
 \backslash
@@ -17659,7 +17659,7 @@ mathbin
 
 \end_inset
 
-コマンドを用いて定義を行うこともできます。
+コマンドを用いて定義を行うこともできます．
 \end_layout
 
 \begin_layout Standard
@@ -17683,13 +17683,13 @@ mathbin{表示}
 \backslash
 mathop
 \series default
-は大演算子を定義し、
+は大演算子を定義し，
 \series bold
 
 \backslash
 mathbin
 \series default
-は二項演算子を定義します。
+は二項演算子を定義します．
 \end_layout
 
 \begin_layout Standard
@@ -17699,7 +17699,7 @@ mathbin
 \backslash
 mathop
 \series default
-は、以下のように、複数の演算子に共通の範囲指定を行うのに用いることができます。
+は，以下のように，複数の演算子に共通の範囲指定を行うのに用いることができます．
 \end_layout
 
 \begin_layout Standard
@@ -17754,7 +17754,7 @@ _i,j=1
 
 
 \series default
-というコマンドを用いています。
+というコマンドを用いています．
 \end_layout
 
 \begin_layout Section
@@ -17825,7 +17825,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式中のラテン文字は、以下の書体様式のうちいずれかに設定することができます。
+数式中のラテン文字は，以下の書体様式のうちいずれかに設定することができます．
 \end_layout
 
 \begin_layout Standard
@@ -18245,7 +18245,7 @@ status open
 \backslash
 mathbb
 \series default
-、
+，
 \series bold
 mathcal
 \series default
@@ -18255,7 +18255,7 @@ mathcal
 \backslash
 mathscr
 \series default
-様式は、大文字にのみ使用することができます。
+様式は，大文字にのみ使用することができます．
 \end_layout
 
 \end_inset
@@ -18264,17 +18264,17 @@ mathscr
 \end_layout
 
 \begin_layout Standard
-既定では、
+既定では，
 \series bold
 
 \backslash
 mathnormal
 \series default
-様式に設定されています。
+様式に設定されています．
 \end_layout
 
 \begin_layout Standard
-書体様式コマンドは、以下のように数式構成要素内の文字に対しても機能します。
+書体様式コマンドは，以下のように数式構成要素内の文字に対しても機能します．
 \begin_inset Formula 
 \[
 \mathfrak{A=\frac{b}{C}}
@@ -18286,13 +18286,13 @@ mathnormal
 \end_layout
 
 \begin_layout Standard
-数式テキストに含まれる文字に対しては、数式書体様式は反映せず、
+数式テキストに含まれる文字に対しては，数式書体様式は反映せず，
 \series bold
 
 \backslash
 textrm
 \series default
-様式で表示されます。数式テキストの様式を文字様式ダイアログで設定することができないのは、\SpecialChar LyX
+様式で表示されます．数式テキストの様式を文字様式ダイアログで設定することができないのは，\SpecialChar LyX
 のバグです
 \begin_inset Foot
 status collapsed
@@ -18310,23 +18310,23 @@ target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-書体様式コマンドの代わりに、
+書体様式コマンドの代わりに，
 \family sans
 編集\SpecialChar menuseparator
 数学\SpecialChar menuseparator
 文字様式
 \family default
-ダイアログや、
+ダイアログや，
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-を使用することもできます。
+を使用することもできます．
 \end_layout
 
 \begin_layout Subsection
@@ -18351,14 +18351,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式全体をボールド体にしようとすると、前節の
+数式全体をボールド体にしようとすると，前節の
 \series bold
 
 \backslash
 mathbf
 \series default
-コマンドは、ギリシャ文字の小文字に対しては機能しないので、使用することができません。さらにこのコマンドは、以下の式のように、ラテン文字をつねにアップライト体に印
-字してしまいます。
+コマンドは，ギリシャ文字の小文字に対しては機能しないので，使用することができません．さらにこのコマンドは，以下の式のように，ラテン文字をつねにアップライト体に印
+字してしまいます．
 \end_layout
 
 \begin_layout Standard
@@ -18373,13 +18373,13 @@ mathbf
 \end_layout
 
 \begin_layout Standard
-この数式を正しく表示するには、以下のように、
+この数式を正しく表示するには，以下のように，
 \series bold
 
 \backslash
 boldsymbol
 \series default
-コマンドを使用します。
+コマンドを使用します．
 \begin_inset Formula 
 \[
 \boldsymbol{\int_{n}^{2}f(\theta)=\Gamma\qquad\textrm{\textbackslash boldsymbolを使用した数式}}
@@ -18387,11 +18387,11 @@ boldsymbol
 
 \end_inset
 
-また、数式を
+また，数式を
 \series bold
 boldmath環境
 \series default
-に設定する方法もあります。この環境は、\SpecialChar TeX
+に設定する方法もあります．この環境は，\SpecialChar TeX
 モードで
 \series bold
 
@@ -18410,7 +18410,7 @@ boldmath
 
 
 \series default
-コマンドを挿入することによって作ることができます。環境を閉じるには、
+コマンドを挿入することによって作ることができます．環境を閉じるには，
 \series bold
 
 \backslash
@@ -18429,7 +18429,7 @@ unboldmath
 
 \series default
 コマンドを\SpecialChar TeX
-モードで挿入します。
+モードで挿入します．
 \begin_inset ERT
 status collapsed
 
@@ -18481,7 +18481,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式も、通常の本文と同様、色を付けることができます。数式あるいは数式の一部を選択して、文字様式ダイアログを使用して下さい。下記は、マゼンタ色にした数式です。
+数式も，通常の本文と同様，色を付けることができます．数式あるいは数式の一部を選択して，文字様式ダイアログを使用して下さい．下記は，マゼンタ色にした数式です．
 \begin_inset Formula 
 \[
 {\color{magenta}\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}
@@ -18500,7 +18500,7 @@ reference "subsec:色付きボックス"
 
 \end_inset
 
-節に述べられているように、自己定義の色を定義することもできます。自己定義の色は、以下の書式を持つ
+節に述べられているように，自己定義の色を定義することもできます．自己定義の色は，以下の書式を持つ
 \series bold
 
 \backslash
@@ -18519,7 +18519,7 @@ textcolor
 \end_inset
 
 \SpecialChar TeX
-コードコマンドで適用することができます。
+コードコマンドで適用することができます．
 \end_layout
 
 \begin_layout Standard
@@ -18531,7 +18531,7 @@ textcolor{色}{文字ないし数式}
 \end_layout
 
 \begin_layout Standard
-下記の例は、全体を濃緑にし、一部を赤にしています。
+下記の例は，全体を濃緑にし，一部を赤にしています．
 \end_layout
 
 \begin_layout Standard
@@ -18571,7 +18571,7 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
-のバグのため、自己定義色は数式全体に対してしか使用することができません
+のバグのため，自己定義色は数式全体に対してしか使用することができません
 \begin_inset Foot
 status collapsed
 
@@ -18588,7 +18588,7 @@ target "http://www.lyx.org/trac/ticket/5269"
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Subsection
@@ -18613,7 +18613,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式内の文字については、本文中の文字同様、以下の書体寸法設定コマンドがあります。
+数式内の文字については，本文中の文字同様，以下の書体寸法設定コマンドがあります．
 \end_layout
 
 \begin_layout Standard
@@ -18623,37 +18623,37 @@ status collapsed
 \backslash
 Huge
 \series default
-、
+，
 \series bold
 
 \backslash
 huge
 \series default
-、
+，
 \series bold
 
 \backslash
 LARGE
 \series default
-、
+，
 \series bold
 
 \backslash
 Large
 \series default
-、
+，
 \series bold
 
 \backslash
 large
 \series default
-、
+，
 \series bold
 
 \backslash
 normalsize
 \series default
-、
+，
 \series bold
 
 \backslash
@@ -18669,13 +18669,13 @@ small
 \backslash
 footnotesize
 \series default
-、
+，
 \series bold
 
 \backslash
 scriptsize
 \series default
-、および
+，および
 \series bold
 
 \backslash
@@ -18683,23 +18683,23 @@ tiny
 \end_layout
 
 \begin_layout Standard
-これらのコマンドによって生成される実際の書体寸法は、文書の書体寸法に依存し、文書の書体寸法が
+これらのコマンドによって生成される実際の書体寸法は，文書の書体寸法に依存し，文書の書体寸法が
 \series bold
 
 \backslash
 normalsize
 \series default
-コマンドに設定されます。他のコマンドは、
+コマンドに設定されます．他のコマンドは，
 \series bold
 
 \backslash
 normalsize
 \series default
-を基準として拡大ないし縮小されます。しかしながら、書体寸法は一定の値を越えることができないようになっています。たとえば、文書書体寸法が12
+を基準として拡大ないし縮小されます．しかしながら，書体寸法は一定の値を越えることができないようになっています．たとえば，文書書体寸法が12
 \begin_inset space \thinspace{}
 \end_inset
 
-ptであるならば、
+ptであるならば，
 \series bold
 
 \backslash
@@ -18711,29 +18711,29 @@ Huge
 \backslash
 huge
 \series default
-コマンドと同じ大きさに落とされます。
+コマンドと同じ大きさに落とされます．
 \end_layout
 
 \begin_layout Standard
-ある場所以降のすべての数式と本文文字を変更するには、書体寸法コマンドを\SpecialChar TeX
-モードで挿入します。元の書体寸法に戻すには、数式の後に\SpecialChar TeX
+ある場所以降のすべての数式と本文文字を変更するには，書体寸法コマンドを\SpecialChar TeX
+モードで挿入します．元の書体寸法に戻すには，数式の後に\SpecialChar TeX
 モードで
 \series bold
 
 \backslash
 normalsize
 \series default
-コマンドを挿入します。
+コマンドを挿入します．
 \end_layout
 
 \begin_layout Standard
-数式内では、以下の寸法コマンドまたはツールバーボタン
+数式内では，以下の寸法コマンドまたはツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-を使用して、寸法を変更することができます。
+を使用して，寸法を変更することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -18888,12 +18888,12 @@ scriptscriptstyle
 \end_layout
 
 \begin_layout Standard
-これらのコマンドを入力すると、青いボックスが現れるので、そこに数式のパーツを入れることができます。
+これらのコマンドを入力すると，青いボックスが現れるので，そこに数式のパーツを入れることができます．
 \end_layout
 
 \begin_layout Standard
-フォント寸法を変更するにはもう一つの方法がありますが、これは記号と数式内テキストのみに使うことができます。これを使うには、書体寸法コマンドを数式テキスト内に挿入
-します。数式テキストの終わりか、別の書体寸法コマンドが現れるまでの文字すべてが、選択した寸法になります。以下に二つの例を挙げます。
+フォント寸法を変更するにはもう一つの方法がありますが，これは記号と数式内テキストのみに使うことができます．これを使うには，書体寸法コマンドを数式テキスト内に挿入
+します．数式テキストの終わりか，別の書体寸法コマンドが現れるまでの文字すべてが，選択した寸法になります．以下に二つの例を挙げます．
 \begin_inset VSpace -2mm
 \end_inset
 
@@ -18949,13 +18949,13 @@ normalsize
 \begin_inset VSpace medskip
 \end_inset
 
-二つの式の前には、
+二つの式の前には，
 \series bold
 
 \backslash
 huge
 \series default
-コマンドが挿入されています。二つ目の数式を入力するコマンドは、
+コマンドが挿入されています．二つ目の数式を入力するコマンドは，
 \begin_inset Newline newline
 \end_inset
 
@@ -19030,11 +19030,11 @@ A
 
 
 \series default
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Standard
-ある記号を別の寸法で表示することができないときには、その記号はつねに既定寸法で表示されます。
+ある記号を別の寸法で表示することができないときには，その記号はつねに既定寸法で表示されます．
 \end_layout
 
 \begin_layout Section
@@ -19052,14 +19052,14 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-すべてのギリシャ文字は、ツールバーボタンの
+すべてのギリシャ文字は，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\alpha"
 \end_inset
 
-からでも挿入することができます。各国の組版規則では、数式内のギリシャ文字はどれもイタリック体か斜体で組版されなくてはならないことになっていますが、フランス語やロ
-シア語などいくつかの言語では、それにもかかわらず立体で組版されることがあります。
+からでも挿入することができます．各国の組版規則では，数式内のギリシャ文字はどれもイタリック体か斜体で組版されなくてはならないことになっていますが，フランス語やロ
+シア語などいくつかの言語では，それにもかかわらず立体で組版されることがあります．
 \end_layout
 
 \begin_layout Subsection
@@ -19966,14 +19966,14 @@ omega
 \end_layout
 
 \begin_layout Standard
-アップライト体のギリシャ文字を作成する方法は、第
+アップライト体のギリシャ文字を作成する方法は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:アップライト体ギリシャ小文字"
 
 \end_inset
 
-節に説明されています。
+節に説明されています．
 \end_layout
 
 \begin_layout Subsection
@@ -20344,22 +20344,22 @@ Omega
 \begin_inset VSpace medskip
 \end_inset
 
-大文字のギリシャ文字が立体で表示されるのは、\SpecialChar TeX
-の開発途上に生じたデザイン上のバグによるものです。正しいイタリック体の大文字を得るためには、各コマンドの頭に
+大文字のギリシャ文字が立体で表示されるのは，\SpecialChar TeX
+の開発途上に生じたデザイン上のバグによるものです．正しいイタリック体の大文字を得るためには，各コマンドの頭に
 \series bold
 var
 \series default
-を付けてください。たとえば、
+を付けてください．たとえば，
 \series bold
 
 \backslash
 varGamma
 \series default
-コマンドは、
+コマンドは，
 \begin_inset Formula $\varGamma$
 \end_inset
 
-を生成します。もう一つの方法は、パッケージ
+を生成します．もう一つの方法は，パッケージ
 \series bold
 fixmath
 \series default
@@ -20372,7 +20372,7 @@ status collapsed
 \series bold
 fixmath
 \series default
-は、\SpecialChar LaTeX
+は，\SpecialChar LaTeX
 パッケージ
 \series bold
 was
@@ -20400,7 +20400,7 @@ vspace{4mm}
 
 \end_inset
 
-に含まれています。
+に含まれています．
 \end_layout
 
 \end_inset
@@ -20428,7 +20428,7 @@ usepackage{fixmath}
 \end_layout
 
 \begin_layout Standard
-と書いて読み込む方法です。すると、文書中の大きなギリシャ文字は、すべて自動的にイタリック体として組版されます。
+と書いて読み込む方法です．すると，文書中の大きなギリシャ文字は，すべて自動的にイタリック体として組版されます．
 \end_layout
 
 \begin_layout Subsection
@@ -20446,7 +20446,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ギリシャ文字は、ラテン文字のようには、多様な書体様式に設定することができません。ギリシャ文字をボールド体にできるのは、
+ギリシャ文字は，ラテン文字のようには，多様な書体様式に設定することができません．ギリシャ文字をボールド体にできるのは，
 \series bold
 
 \backslash
@@ -20464,7 +20464,7 @@ boldsymbol
 
 \end_inset
 
-。
+．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -20583,14 +20583,14 @@ status collapsed
 
 \begin_layout Plain Layout
 各\SpecialChar LaTeX
-パッケージに含まれる全記号をほとんど網羅した一覧が、
+パッケージに含まれる全記号をほとんど網羅した一覧が，
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Symbols"
 
 \end_inset
 
-にあります。
+にあります．
 \end_layout
 
 \end_inset
@@ -20613,20 +20613,20 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-texorpdfstringは、PDFのしおりに脚註が現れるのを防ぐために使われています。
+texorpdfstringは，PDFのしおりに脚註が現れるのを防ぐために使われています．
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-texorpdfstringについての詳細は、第
+texorpdfstringについての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:節見出し中の数式"
 
 \end_inset
 
-節にあります。
+節にあります．
 \end_layout
 
 \end_inset
@@ -20645,7 +20645,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-本節に掲げてある各記号の多くは、ツールバーボタンの
+本節に掲げてある各記号の多くは，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\nabla"
@@ -20657,7 +20657,7 @@ type  "icon"
 arg   "math-insert \\digamma"
 \end_inset
 
-でも挿入することができます。
+でも挿入することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -20971,7 +20971,7 @@ status collapsed
 \backslash
 raisebox
 \series default
-はスペーサーとして使用しているだけです。
+はスペーサーとして使用しているだけです．
 \end_layout
 
 \end_inset
@@ -22300,14 +22300,14 @@ diagdown
 \end_layout
 
 \begin_layout Standard
-寸法を変えて表示することのできる記号もあります。第
+寸法を変えて表示することのできる記号もあります．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書体寸法"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Subsection
@@ -22348,7 +22348,7 @@ officialeuro
 \end_layout
 
 \begin_layout Standard
-ユーロ通貨記号を数式で使用するには、\SpecialChar LaTeX
+ユーロ通貨記号を数式で使用するには，\SpecialChar LaTeX
 パッケージ
 \series bold
 eurosym
@@ -22363,8 +22363,8 @@ status collapsed
 
 \end_inset
 
-が導入されていて、以下のような\SpecialChar LaTeX
-プリアンブル行によって読み込まれていなくてはなりません。
+が導入されていて，以下のような\SpecialChar LaTeX
+プリアンブル行によって読み込まれていなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -22376,7 +22376,7 @@ usepackage[gennarrow]{eurosym}
 \end_layout
 
 \begin_layout Standard
-すると、ユーロ通貨記号を
+すると，ユーロ通貨記号を
 \series bold
 
 \backslash
@@ -22394,26 +22394,26 @@ euro
 
 \end_inset
 
-コマンドで挿入することができるようになります。
+コマンドで挿入することができるようになります．
 \end_layout
 
 \begin_layout Standard
-数式テキストには、
+数式テキストには，
 \series bold
 eurosym
 \series default
-が導入されていなくても、ユーロ通貨記号を直接キーボードを使って(あれば)挿入することができます。
+が導入されていなくても，ユーロ通貨記号を直接キーボードを使って(あれば)挿入することができます．
 \series bold
 eurosym
 \series default
-が導入されていれば、
+が導入されていれば，
 \series bold
 
 \backslash
 euro
 \series default
 は\SpecialChar TeX
-モードでも挿入することができます。また、正式な通貨記号を
+モードでも挿入することができます．また，正式な通貨記号を
 \series bold
 
 \backslash
@@ -22432,7 +22432,7 @@ officialeuro
 \end_inset
 
 コマンド(これは\SpecialChar TeX
-モードでのみ使用することができます)で挿入することができます。
+モードでのみ使用することができます)で挿入することができます．
 \end_layout
 
 \begin_layout Standard
@@ -22453,12 +22453,12 @@ ifeurosym
 status open
 
 \begin_layout Plain Layout
-以下の表は、\SpecialChar LaTeX
+以下の表は，\SpecialChar LaTeX
 パッケージ
 \series bold
 eurosym
 \series default
-が導入済みのときのみ表示されます。
+が導入済みのときのみ表示されます．
 \end_layout
 
 \end_inset
@@ -22467,7 +22467,7 @@ eurosym
 \end_layout
 
 \begin_layout Standard
-以下は、各ユーロ通貨記号のまとめです。
+以下は，各ユーロ通貨記号のまとめです．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -22639,13 +22639,13 @@ officialeuro
 status collapsed
 
 \begin_layout Plain Layout
-ここでは、
+ここでは，
 \series bold
 
 \backslash
 cmidrule
 \series default
-は表罫線のためだけに用いられています。詳細については、取扱説明書
+は表罫線のためだけに用いられています．詳細については，取扱説明書
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -22653,7 +22653,7 @@ cmidrule
 \family sans
 フォーマル形式の表
 \family default
-の節をご覧下さい。
+の節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -22679,12 +22679,12 @@ else
 status open
 
 \begin_layout Plain Layout
-以下は、\SpecialChar LaTeX
+以下は，\SpecialChar LaTeX
 パッケージ
 \series bold
 eurosym
 \series default
-が導入されていないときのみ表示されます。
+が導入されていないときのみ表示されます．
 \end_layout
 
 \end_inset
@@ -22693,12 +22693,12 @@ eurosym
 \end_layout
 
 \begin_layout Standard
-本節の残りを出力としてみるためには、\SpecialChar LaTeX
+本節の残りを出力としてみるためには，\SpecialChar LaTeX
 パッケージ
 \series bold
 eurosym
 \series default
-を導入する必要があります。
+を導入する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -22771,13 +22771,13 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-関係子はすべて、ツールバーボタンの
+関係子はすべて，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leq"
 \end_inset
 
-でも挿入することができます。
+でも挿入することができます．
 \end_layout
 
 \begin_layout Standard
@@ -24091,7 +24091,7 @@ lhd
 \backslash
 rhd
 \series default
-の文字は、同じように見える演算子
+の文字は，同じように見える演算子
 \series bold
 
 \backslash
@@ -24103,22 +24103,22 @@ triangleleft
 \backslash
 triangleright
 \series default
-よりも大きくなっています。
+よりも大きくなっています．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-は、特殊な関係子を多くサポートしています。これらの関係子一覧を見るには、ツールバーボタン
+は，特殊な関係子を多くサポートしています．これらの関係子一覧を見るには，ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leqq"
 \end_inset
 
-をご覧ください。
+をご覧ください．
 \end_layout
 
 \begin_layout Standard
-関係子は、記号とは違って、つねに前後に余白が置かれます。
+関係子は，記号とは違って，つねに前後に余白が置かれます．
 \end_layout
 
 \begin_layout Standard
@@ -24140,7 +24140,7 @@ stackrel
 
 \end_inset
 
-コマンドを使うと、以下のように、ラベル付きの関係子を作ることができます。
+コマンドを使うと，以下のように，ラベル付きの関係子を作ることができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -24258,11 +24258,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-一般的に、数式表現では変数は
+一般的に，数式表現では変数は
 \shape italic
 イタリック体
 \shape default
-に設定されますが、関数名はイタリック体にしません。なぜなら、
+に設定されますが，関数名はイタリック体にしません．なぜなら，
 \begin_inset Formula $sin$
 \end_inset
 
@@ -24270,8 +24270,8 @@ status collapsed
 \begin_inset Formula $s\cdot i\cdot n$
 \end_inset
 
-であるかのように誤解させる恐れがあるためです。そのために、定義済み関数が存在し、これらは先行する要素よりも少し離れて配置されます。定義済み関数は、関数名の前にバ
-ックスラッシュを加えたコマンドとして挿入します。
+であるかのように誤解させる恐れがあるためです．そのために，定義済み関数が存在し，これらは先行する要素よりも少し離れて配置されます．定義済み関数は，関数名の前にバ
+ックスラッシュを加えたコマンドとして挿入します．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -24395,7 +24395,7 @@ sin(x)+B
 \end_layout
 
 \begin_layout Standard
-以下の関数が定義済みです。
+以下の関数が定義済みです．
 \end_layout
 
 \begin_layout Standard
@@ -24828,13 +24828,13 @@ gcd
 \end_layout
 
 \begin_layout Standard
-上記は、数式ツールバーボタンの
+上記は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-でも挿入することができます。
+でも挿入することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -24852,12 +24852,12 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-たとえば符号関数sgn(x)のように、定義済みでない関数を使うには、二つの方法があります。
+たとえば符号関数sgn(x)のように，定義済みでない関数を使うには，二つの方法があります．
 \end_layout
 
 \begin_layout Itemize
 以下の行を\SpecialChar LaTeX
-プリアンブルに加えることによって関数を定義します。
+プリアンブルに加えることによって関数を定義します．
 \begin_inset Foot
 status collapsed
 
@@ -24868,14 +24868,14 @@ status collapsed
 \backslash
 DeclareMathOperator
 \series default
-についての詳細は、第
+についての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自己定義演算子"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \end_inset
@@ -24926,21 +24926,21 @@ DeclareMathOperator
 \begin_inset Newline newline
 \end_inset
 
-これによって、新しく定義された関数を
+これによって，新しく定義された関数を
 \series bold
 
 \backslash
 sgn
 \series default
-コマンドで呼び出すことができるようになります。
+コマンドで呼び出すことができるようになります．
 \end_layout
 
 \begin_layout Itemize
-数式を普通に書き下し、関数名を選択して(上記の例では
+数式を普通に書き下し，関数名を選択して(上記の例では
 \emph on
 sgn
 \emph default
-の文字)、それを数式テキストに変更します。最後に、空白を先行する要素と関数の間に入れます。
+の文字)，それを数式テキストに変更します．最後に，空白を先行する要素と関数の間に入れます．
 \end_layout
 
 \begin_layout Standard
@@ -24950,12 +24950,12 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
-上では、自己定義関数は赤で表示され、定義済み関数は黒で表示されます。
+上では，自己定義関数は赤で表示され，定義済み関数は黒で表示されます．
 \end_layout
 
 \end_inset
 
-。
+．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -25051,7 +25051,7 @@ A
 \end_layout
 
 \begin_layout Standard
-自己定義関数を何回か使用する場合には、一番目の方法の方が適切です。
+自己定義関数を何回か使用する場合には，一番目の方法の方が適切です．
 \end_layout
 
 \begin_layout Subsection
@@ -25069,7 +25069,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-極限用には、
+極限用には，
 \series bold
 
 \backslash
@@ -25099,7 +25099,7 @@ liminf
 \backslash
 limsup
 \series default
-の他に、以下の関数があります。
+の他に，以下の関数があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -25244,7 +25244,7 @@ varinjlim
 \begin_inset VSpace medskip
 \end_inset
 
-極限は、下付き文字を挿入することによって示されます。行内数式では、極限は、以下のように関数の横に置かれます。
+極限は，下付き文字を挿入することによって示されます．行内数式では，極限は，以下のように関数の横に置かれます．
 \end_layout
 
 \begin_layout Standard
@@ -25317,7 +25317,7 @@ x=B
 \end_layout
 
 \begin_layout Standard
-別行立て数式では、極限は、以下のように通常どおり下に置かれます。
+別行立て数式では，極限は，以下のように通常どおり下に置かれます．
 \begin_inset Formula 
 \[
 \lim_{x\to A}x=B
@@ -25336,14 +25336,14 @@ x=B
 \end_layout
 
 \begin_layout Standard
-極限の組版を調整する仕方については、第
+極限の組版を調整する仕方については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:演算子の範囲"
 
 \end_inset
 
-節をご覧ください。
+節をご覧ください．
 \end_layout
 
 \begin_layout Subsection
@@ -25393,11 +25393,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-剰余関数は、特別に4つの派生型があります。
+剰余関数は，特別に4つの派生型があります．
 \end_layout
 
 \begin_layout Standard
-以下は、別行立て数式での派生型です。
+以下は，別行立て数式での派生型です．
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
@@ -25413,9 +25413,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。既定では、剰余関数は、続く一文字目だけを考慮します。二文字以上を使いたい時には、下記
+行内数式では，すべての派生型で，関数名の前の余白がすこし小さく設定されます．既定では，剰余関数は，続く一文字目だけを考慮します．二文字以上を使いたい時には，下記
 のように文字を\SpecialChar TeX
-括弧で囲みます。
+括弧で囲みます．
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
@@ -25443,9 +25443,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-^および_の各文字は、通常、上付き文字や下付き文字を生成してしまいます。これらの文字自体を得るには、その前に
+^および_の各文字は，通常，上付き文字や下付き文字を生成してしまいます．これらの文字自体を得るには，その前に
 \backslash
-を付けなくてはなりません。
+を付けなくてはなりません．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -25546,8 +25546,8 @@ _
 \end_layout
 
 \begin_layout Standard
-以下の各コマンドは、数式テキストか\SpecialChar TeX
-モード中でのみ使用することができます。
+以下の各コマンドは，数式テキストか\SpecialChar TeX
+モード中でのみ使用することができます．
 \end_layout
 
 \begin_layout Standard
@@ -25812,7 +25812,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-mm空白を分離用に使っているのは、そうしないと出力が¡や¿になってしまうためです。
+mm空白を分離用に使っているのは，そうしないと出力が¡や¿になってしまうためです．
 \end_layout
 
 \end_inset
@@ -26040,17 +26040,17 @@ j
 \begin_inset Formula $\textrm{\textrm{Ø}}$
 \end_inset
 
-の各文字は、数式ツールバーボタンの
+の各文字は，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\digamma"
 \end_inset
 
-からも挿入することができます。
+からも挿入することができます．
 \end_layout
 
 \begin_layout Standard
-例外は、
+例外は，
 \series bold
 !
 \begin_inset space \hspace{}
@@ -26068,8 +26068,8 @@ arg   "math-insert \\digamma"
 
 `
 \series default
-の各コマンドで、これらは直接\SpecialChar LyX
-中の本文に入れることができます。
+の各コマンドで，これらは直接\SpecialChar LyX
+中の本文に入れることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -26094,8 +26094,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-以下に挙げる各コマンドを使えば、すべての文字にアクセントを付けることができます。これらのコマンドは、\SpecialChar TeX
-モードで入れなくてはなりません。
+以下に挙げる各コマンドを使えば，すべての文字にアクセントを付けることができます．これらのコマンドは，\SpecialChar TeX
+モードで入れなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -26705,7 +26705,7 @@ c e
 \backslash
 t
 \series default
-コマンドは異なる二つの文字にアクセントを付けることもできます。たとえば、コマンド
+コマンドは異なる二つの文字にアクセントを付けることもできます．たとえば，コマンド
 \series bold
 
 \backslash
@@ -26715,7 +26715,7 @@ t
 
 sz
 \series default
-は、
+は，
 \begin_inset ERT
 status collapsed
 
@@ -26728,7 +26728,7 @@ t sz
 
 \end_inset
 
-となります。
+となります．
 \end_layout
 
 \begin_layout Standard
@@ -26744,13 +26744,13 @@ t sz
 \series bold
 ^
 \series default
- の各アクセントは、\SpecialChar TeX
-モードを使わなくても、母音といっしょに直接キーボードから入力することもできます。チルダ
+ の各アクセントは，\SpecialChar TeX
+モードを使わなくても，母音といっしょに直接キーボードから入力することもできます．チルダ
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-これは、チルダがアクセントとして定義されているキーボードのみに適用されます。
+これは，チルダがアクセントとして定義されているキーボードのみに適用されます．
 \end_layout
 
 \end_inset
@@ -26759,7 +26759,7 @@ status collapsed
 \series bold
 ~
 \series default
-を、
+を，
 \emph on
 a
 \emph default
@@ -26771,7 +26771,7 @@ n
 \emph on
 o
 \emph default
-といっしょに使うときも同様です。
+といっしょに使うときも同様です．
 \end_layout
 
 \begin_layout Standard
@@ -26817,22 +26817,22 @@ u
 \backslash
 v
 \series default
-の各コマンドと、キーボードから直接挿入するアクセントは、数式テキスト中でも使うことができます。他のアクセントについては、数式内向けの特別な数式コマンドがあります
-。第
+の各コマンドと，キーボードから直接挿入するアクセントは，数式テキスト中でも使うことができます．他のアクセントについては，数式内向けの特別な数式コマンドがあります
+．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:一文字に付けるアクセント"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-さらに、
+さらに，
 \series bold
 
 \backslash
@@ -26850,7 +26850,7 @@ textcircled
 
 \end_inset
 
-コマンドを使えば、著作権マークのように、あらゆる数字や文字を丸で囲む—敢えて言えば、丸囲みでアクセントを付けるようなものといえるでしょう—ことができます。
+コマンドを使えば，著作権マークのように，あらゆる数字や文字を丸で囲む—敢えて言えば，丸囲みでアクセントを付けるようなものといえるでしょう—ことができます．
 \end_layout
 
 \begin_layout Standard
@@ -26972,7 +26972,7 @@ raisebox{-1.5pt}W}
 \end_layout
 
 \begin_layout Standard
-ここではユーザーが、文字が丸のなかに収まるように調整してやらなくてはなりません。ここでは、
+ここではユーザーが，文字が丸のなかに収まるように調整してやらなくてはなりません．ここでは，
 \series bold
 
 \backslash
@@ -26990,12 +26990,12 @@ reference "subsec:書体寸法"
 
 \end_inset
 
-節参照のこと。
+節参照のこと．
 \end_layout
 
 \end_inset
 
-で丸の大きさを指定しています。そして
+で丸の大きさを指定しています．そして
 \series bold
 
 \backslash
@@ -27013,12 +27013,12 @@ reference "subsec:枠なしボックス"
 
 \end_inset
 
-節参照のこと。
+節参照のこと．
 \end_layout
 
 \end_inset
 
-を使って、文字が真ん中にくるようにしています。
+を使って，文字が真ん中にくるようにしています．
 \end_layout
 
 \begin_layout Subsection
@@ -27036,7 +27036,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-古式数字は、
+古式数字は，
 \series bold
 
 \backslash
@@ -27054,8 +27054,8 @@ oldstylenums
 
 \end_inset
 
-コマンドで作成することができます。このコマンドは、数式中でも\SpecialChar TeX
-モード中でも使うことができます。コマンド書式は、
+コマンドで作成することができます．このコマンドは，数式中でも\SpecialChar TeX
+モード中でも使うことができます．コマンド書式は，
 \end_layout
 
 \begin_layout Standard
@@ -27067,17 +27067,17 @@ oldstylenums{数字}
 \end_layout
 
 \begin_layout Standard
-です。
+です．
 \series bold
 
 \backslash
 oldstylenums{0123456789}
 \series default
-というコマンドは、
+というコマンドは，
 \begin_inset Formula $\oldstylenums{0123456789}$
 \end_inset
 
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Section
@@ -27102,7 +27102,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-以下の二つの配置様式があります。
+以下の二つの配置様式があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -27111,11 +27111,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Description
-中央揃え 事前に定義された標準です。
+中央揃え 事前に定義された標準です．
 \end_layout
 
 \begin_layout Description
-行頭下げ これを使うには、
+行頭下げ これを使うには，
 \family sans
 文書\SpecialChar menuseparator
 設定
@@ -27124,11 +27124,11 @@ status collapsed
 \family sans
 文書クラス
 \family default
-において、
+において，
 \series bold
 fleqn
 \series default
-オプションを指定しておかなくてはなりません。
+オプションを指定しておかなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -27136,7 +27136,7 @@ fleqn
 \series bold
 行頭下げ
 \series default
-を用いる場合には、行頭下げの大きさを
+を用いる場合には，行頭下げの大きさを
 \series bold
 
 \backslash
@@ -27154,12 +27154,12 @@ mathindent
 
 \end_inset
 
-の値で調整することができます。これを15
+の値で調整することができます．これを15
 \begin_inset space \thinspace{}
 \end_inset
 
-mmにするには、\SpecialChar LaTeX
-プリアンブルに以下のコマンドを入れておきます。
+mmにするには，\SpecialChar LaTeX
+プリアンブルに以下のコマンドを入れておきます．
 \end_layout
 
 \begin_layout Standard
@@ -27179,16 +27179,16 @@ mathindent}{15mm}
 \backslash
 mathindent
 \series default
-を明示的に指定しない場合には、事前に定義されている30
+を明示的に指定しない場合には，事前に定義されている30
 \begin_inset space \thinspace{}
 \end_inset
 
-ptが適用されます。
+ptが適用されます．
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-また、以下の二つの連番様式があります。
+また，以下の二つの連番様式があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -27197,11 +27197,11 @@ ptが適用されます。
 
 \begin_deeper
 \begin_layout Description
-右 事前に定義された標準です。
+右 事前に定義された標準です．
 \end_layout
 
 \begin_layout Description
-左 これを使うには、
+左 これを使うには，
 \family sans
 文書\SpecialChar menuseparator
 設定
@@ -27210,11 +27210,11 @@ ptが適用されます。
 \family sans
 文書クラス
 \family default
-において、
+において，
 \series bold
 leqno
 \series default
-オプションを指定しておかなくてはなりません。
+オプションを指定しておかなくてはなりません．
 \end_layout
 
 \end_deeper
@@ -27227,22 +27227,22 @@ fleqn
 \series bold
 leqno
 \series default
-は、いっしょに指定することができます。両方のオプションを同時に入れる場合には、コンマで区切って下さい。
+は，いっしょに指定することができます．両方のオプションを同時に入れる場合には，コンマで区切って下さい．
 \end_layout
 
 \begin_layout Standard
-これで選択した様式は、文書中のすべての別行立て数式に用いられます。もし、中央揃えと行頭下げの両様式を同一文書中で用いたい場合には、
+これで選択した様式は，文書中のすべての別行立て数式に用いられます．もし，中央揃えと行頭下げの両様式を同一文書中で用いたい場合には，
 \series bold
 中央揃え
 \series default
-様式を指定するようにします。そして、行頭下げにしたい数式は、flalign環境に指定するようにします。第
+様式を指定するようにします．そして，行頭下げにしたい数式は，flalign環境に指定するようにします．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:flalign環境"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \begin_layout Section
@@ -27276,13 +27276,13 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
-では、多行数式は、数式中で
+では，多行数式は，数式中で
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すことで作られます。この操作によって、第
+を押すことで作られます．この操作によって，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:eqnarray環境"
@@ -27293,11 +27293,11 @@ reference "subsec:eqnarray環境"
 \series bold
 eqnarray環境
 \series default
-が作り出されるか、あるいは文書設定で
+が作り出されるか，あるいは文書設定で
 \family sans
 AMS mathパッケージを使う
 \family default
-オプションが選択されている場合には、第
+オプションが選択されている場合には，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:標準align環境"
@@ -27308,26 +27308,26 @@ reference "subsec:標準align環境"
 \series bold
 align環境
 \series default
-が作り出されることになります。
+が作り出されることになります．
 \end_layout
 
 \begin_layout Standard
-他にも、
+他にも，
 \family sans
 挿入\SpecialChar menuseparator
 数式
 \family default
-メニューで作ることのできる多行数式環境があります。これらの環境は、以下の各節で説明します。
+メニューで作ることのできる多行数式環境があります．これらの環境は，以下の各節で説明します．
 \end_layout
 
 \begin_layout Standard
-すべての多行数式において、新規行は、
+すべての多行数式において，新規行は，
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すことによって作られます。行を足したり削ったりするには、数式ツールバーボタンの
+を押すことによって作られます．行を足したり削ったりするには，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-row"
@@ -27339,12 +27339,12 @@ type  "icon"
 arg   "tabular-feature delete-row"
 \end_inset
 
-を使うか、
+を使うか，
 \family sans
 編集\SpecialChar menuseparator
 行と列
 \family default
-メニューを使うことができます。
+メニューを使うことができます．
 \end_layout
 
 \begin_layout Subsubsection
@@ -27373,7 +27373,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-以下のように、多行数式において行のあいだの空白が足りないことが、ときどき起こります。
+以下のように，多行数式において行のあいだの空白が足りないことが，ときどき起こります．
 \begin_inset Formula 
 \begin{eqnarray*}
 B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \textrm{-}4x^{2}B^{2}+4x_{0}xB^{2}\\
@@ -27387,7 +27387,7 @@ B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \te
 
 \begin_layout Standard
 \SpecialChar LaTeX
-において行間を付け加えるには、新規行コマンドに非必須の引数をとらせて指定しますが、これはまだ\SpecialChar LyX
+において行間を付け加えるには，新規行コマンドに非必須の引数をとらせて指定しますが，これはまだ\SpecialChar LyX
 には実装されていない
 \begin_inset Foot
 status collapsed
@@ -27400,13 +27400,13 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-を参照。
+を参照．
 \end_layout
 
 \end_inset
 
-ので、数式全体を\SpecialChar TeX
-モードで入れなくてはなりません。上記の例の行間を大きくするには、最初の行の最後に
+ので，数式全体を\SpecialChar TeX
+モードで入れなくてはなりません．上記の例の行間を大きくするには，最初の行の最後に
 \series bold
 
 \backslash
@@ -27414,7 +27414,7 @@ target "http://www.lyx.org/trac/ticket/1505"
 \backslash
 [3mm]
 \series default
-というコマンドを入れます。すると、次のようになります。
+というコマンドを入れます．すると，次のようになります．
 \begin_inset ERT
 status collapsed
 
@@ -27470,7 +27470,7 @@ end{eqnarray*}
 \begin_inset VSpace bigskip
 \end_inset
 
-同一数式内のすべての行の行間を一律に指定するには、
+同一数式内のすべての行の行間を一律に指定するには，
 \series bold
 
 \backslash
@@ -27488,25 +27488,25 @@ jot
 
 \end_inset
 
-変数を変更します。定義は、
+変数を変更します．定義は，
 \begin_inset Formula $\mbox{行間}=\mathrm{6\,pt+\backslash jot}$
 \end_inset
 
-となっています。
+となっています．
 \series bold
 
 \backslash
 jot
 \series default
-の既定値は、3
+の既定値は，3
 \begin_inset space \thinspace{}
 \end_inset
 
-ptです。上記の例のように、行間を3
+ptです．上記の例のように，行間を3
 \begin_inset space \thinspace{}
 \end_inset
 
-mm追加するには、
+mm追加するには，
 \end_layout
 
 \begin_layout Standard
@@ -27520,8 +27520,8 @@ jot}{3mm+3pt}
 \end_layout
 
 \begin_layout Standard
-というコマンドを、数式直前に\SpecialChar TeX
-モードで入れておきます。これを行うには、\SpecialChar LaTeX
+というコマンドを，数式直前に\SpecialChar TeX
+モードで入れておきます．これを行うには，\SpecialChar LaTeX
 プリアンブルに
 \end_layout
 
@@ -27534,7 +27534,7 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-という行を入れて、\SpecialChar LaTeX
+という行を入れて，\SpecialChar LaTeX
 パッケージ
 \series bold
 calc
@@ -27549,7 +27549,7 @@ status collapsed
 calc
 \series default
 は標準的な\SpecialChar LaTeX
-頒布版のすべてに付属しています。
+頒布版のすべてに付属しています．
 \end_layout
 
 \end_inset
@@ -27564,7 +27564,7 @@ status collapsed
 
 \end_inset
 
- を読み込んでおく必要があります。すると、
+ を読み込んでおく必要があります．すると，
 \begin_inset ERT
 status collapsed
 
@@ -27606,7 +27606,7 @@ jot}{3pt}
 
 \end_inset
 
-のような結果を得ます。行間を既定値に戻すには、
+のような結果を得ます．行間を既定値に戻すには，
 \series bold
 
 \backslash
@@ -27616,7 +27616,7 @@ jot
 \begin_inset space \thinspace{}
 \end_inset
 
-ptに戻します。
+ptに戻します．
 \end_layout
 
 \begin_layout Subsubsection
@@ -27645,12 +27645,12 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-多行数式は、行列を形成します。たとえば、eqnarray環境の数式は、3列からなる行列です。この環境で列間を変更すれば、関係子周辺の余白を変更することができます
-。
+多行数式は，行列を形成します．たとえば，eqnarray環境の数式は，3列からなる行列です．この環境で列間を変更すれば，関係子周辺の余白を変更することができます
+．
 \end_layout
 
 \begin_layout Standard
-列間は、
+列間は，
 \series bold
 
 \backslash
@@ -27668,7 +27668,7 @@ arraycolsep
 
 \end_inset
 
-変数を使って指定し、
+変数を使って指定し，
 \begin_inset Newline newline
 \end_inset
 
@@ -27686,7 +27686,7 @@ arraycolsep
 \begin_inset Newline newline
 \end_inset
 
-という関係があります。したがって、
+という関係があります．したがって，
 \end_layout
 
 \begin_layout Standard
@@ -27701,11 +27701,11 @@ arraycolsep}{1cm}
 
 \begin_layout Standard
 というコマンドを\SpecialChar TeX
-モードで入れると、ここから後のすべての数式の列間が2
+モードで入れると，ここから後のすべての数式の列間が2
 \begin_inset space \thinspace{}
 \end_inset
 
-cmになります。これを既定値に戻すには、
+cmになります．これを既定値に戻すには，
 \series bold
 
 \backslash
@@ -27715,15 +27715,15 @@ arraycolsep
 \begin_inset space \thinspace{}
 \end_inset
 
-ptに戻して下さい。
+ptに戻して下さい．
 \end_layout
 
 \begin_layout Standard
-以下は、2
+以下は，2
 \begin_inset space \thinspace{}
 \end_inset
 
-cmの列間を持つ数式です。
+cmの列間を持つ数式です．
 \begin_inset ERT
 status collapsed
 
@@ -27751,7 +27751,7 @@ C & \ne & A
 \begin_inset space \thinspace{}
 \end_inset
 
-ptを持つ数式です。
+ptを持つ数式です．
 \begin_inset ERT
 status collapsed
 
@@ -27793,11 +27793,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-長い数式は、以下の方法を使って組版することができます。
+長い数式は，以下の方法を使って組版することができます．
 \end_layout
 
 \begin_layout Itemize
-左辺ないし右辺の一方が、行幅よりもかなり短いときには、以下のように、短い方を左辺に置き、右辺を二行に分けて組版します。
+左辺ないし右辺の一方が，行幅よりもかなり短いときには，以下のように，短い方を左辺に置き，右辺を二行に分けて組版します．
 \begin_inset Formula 
 \begin{eqnarray}
 H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\nonumber \\
@@ -27806,8 +27806,8 @@ H & = & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{
 
 \end_inset
 
-二行目の最初のマイナス記号は、行頭の文字になってしまうため、通常、表示の上で演算子としては取り扱われません。前後に余白が置かれることもなく、分数線からも離れて表
-示されません。これを避けるために、マイナス記号の後に
+二行目の最初のマイナス記号は，行頭の文字になってしまうため，通常，表示の上で演算子としては取り扱われません．前後に余白が置かれることもなく，分数線からも離れて表
+示されません．これを避けるために，マイナス記号の後に
 \series bold
 
 \backslash
@@ -27824,14 +27824,14 @@ status collapsed
 \backslash
 hspace
 \series default
-に関しての詳細は、第
+に関しての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:可変長の空白"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -27852,11 +27852,11 @@ hspace
 \begin_inset space \thinspace{}
 \end_inset
 
-pt空白を入れてあります。
+pt空白を入れてあります．
 \end_layout
 
 \begin_layout Itemize
-数式の両辺がともに長すぎるときには、
+数式の両辺がともに長すぎるときには，
 \series bold
 
 \backslash
@@ -27874,7 +27874,7 @@ lefteqn
 
 \end_inset
 
-コマンドを使います。これを最初の行の第一列に入れると、以下のように、続きの内容が他の列にかかって表示されます。
+コマンドを使います．これを最初の行の第一列に入れると，以下のように，続きの内容が他の列にかかって表示されます．
 \begin_inset Formula 
 \begin{eqnarray}
 \lefteqn{4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}}\nonumber \\
@@ -27890,11 +27890,11 @@ lefteqn
 \backslash
 lefteqn
 \series default
-を入力すると、青枠から少し左にずれたところに現れる紫枠にカーソルが移るので、ここに数式を入力します。
+を入力すると，青枠から少し左にずれたところに現れる紫枠にカーソルが移るので，ここに数式を入力します．
 \begin_inset Newline newline
 \end_inset
 
-二行め以降の行の内容は、二列め以降の列に挿入します。挿入する列が右になるほど、字下げの量が大きくなります。
+二行め以降の行の内容は，二列め以降の列に挿入します．挿入する列が右になるほど，字下げの量が大きくなります．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -27913,20 +27913,20 @@ status open
 \backslash
 lefteqn
 \series default
-を使用する際には、以下のことにご注意下さい。
+を使用する際には，以下のことにご注意下さい．
 \end_layout
 
 \begin_layout Itemize
-数式では、ページ幅全部を使うことはしません。たとえば、上記の例で、最初の行に
+数式では，ページ幅全部を使うことはしません．たとえば，上記の例で，最初の行に
 \begin_inset Formula $-B^{2}$
 \end_inset
 
-という項を置いたとすると、ページ余白の領域に出てしまいますが、これはよくありません。幅をうまく使うには、最初の行の行頭に負の空白を入れる方法もあります。
+という項を置いたとすると，ページ余白の領域に出てしまいますが，これはよくありません．幅をうまく使うには，最初の行の行頭に負の空白を入れる方法もあります．
 \end_layout
 
 \begin_layout Itemize
 \SpecialChar LyX
-のバグによって、最初の行にマウスでカーソルを入れることはできません
+のバグによって，最初の行にマウスでカーソルを入れることはできません
 \begin_inset Foot
 status collapsed
 
@@ -27943,7 +27943,7 @@ target "http://www.lyx.org/trac/ticket/1429"
 
 \end_inset
 
-。カーソルを行頭に合わせて、矢印
+．カーソルを行頭に合わせて，矢印
 \begin_inset Flex Ruby
 status collapsed
 
@@ -27963,7 +27963,7 @@ status collapsed
 
 \end_inset
 
-で移動するしかありません。
+で移動するしかありません．
 \end_layout
 
 \end_inset
@@ -27972,7 +27972,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-長い数式を組む他の方法として、第
+長い数式を組む他の方法として，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:multline環境"
@@ -27986,7 +27986,7 @@ reference "subsec:数式の一部の多行化"
 
 \end_inset
 
-節で述べられている環境を用いる方法があります。
+節で述べられている環境を用いる方法があります．
 \end_layout
 
 \begin_layout Subsubsection
@@ -28011,7 +28011,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-分数の分母もしくは分子が長すぎて、一行に入りきらないことがあります。この場合には、分数内で改行をしなくてはなりません。これを行うには、
+分数の分母もしくは分子が長すぎて，一行に入りきらないことがあります．この場合には，分数内で改行をしなくてはなりません．これを行うには，
 \series bold
 
 \backslash
@@ -28029,11 +28029,11 @@ splitfrac
 
 \end_inset
 
-を使うことができます。これを有効化するには、文書設定の
+を使うことができます．これを有効化するには，文書設定の
 \family sans
 数式オプション
 \family default
-で、
+で，
 \series bold
 mathtools
 \series default
@@ -28051,7 +28051,7 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-オプションを指定してください。
+オプションを指定してください．
 \series bold
 
 \backslash
@@ -28069,7 +28069,7 @@ splitfrac{1行目}{2行目}
 \end_layout
 
 \begin_layout Standard
-となっており、分母にも分子にも使うことができます。
+となっており，分母にも分子にも使うことができます．
 \end_layout
 
 \begin_layout Standard
@@ -28080,7 +28080,7 @@ a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\fra
 
 \end_inset
 
-上記の最初の分子に使われているコマンドは、
+上記の最初の分子に使われているコマンドは，
 \end_layout
 
 \begin_layout Standard
@@ -28098,7 +28098,7 @@ splitfrac{xy+xy+xy+xy+xy
 \end_layout
 
 \begin_layout Standard
-です。
+です．
 \end_layout
 
 \begin_layout Subsubsection
@@ -28123,7 +28123,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-多行にわたる括弧を作ろうとすると、以下のような問題が生じます。
+多行にわたる括弧を作ろうとすると，以下のような問題が生じます．
 \begin_inset Formula 
 \begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
@@ -28136,11 +28136,11 @@ A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
 \end_layout
 
 \begin_layout Standard
-可変寸法の括弧は多行にわたることができないので、閉じ括弧が初めの括弧よりも小さくなってしまっています。
+可変寸法の括弧は多行にわたることができないので，閉じ括弧が初めの括弧よりも小さくなってしまっています．
 \end_layout
 
 \begin_layout Standard
-二行めの括弧の大きさを正しく設定するには、最初の行の終わりを
+二行めの括弧の大きさを正しく設定するには，最初の行の終わりを
 \series bold
 
 \backslash
@@ -28158,7 +28158,7 @@ right
 
 \end_inset
 
-とし、二行めの始めを
+とし，二行めの始めを
 \series bold
 
 \backslash
@@ -28179,14 +28179,14 @@ left
 \backslash
 right
 \series default
-に関する詳細は、第
+に関する詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自動の括弧丈"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -28205,13 +28205,13 @@ left
 
 \end_inset
 
-とします。一行めにおいては、範囲付き積演算子がもっとも大きな記号であり、これが二行めの括弧の大きさにならなくてはならないので、
+とします．一行めにおいては，範囲付き積演算子がもっとも大きな記号であり，これが二行めの括弧の大きさにならなくてはならないので，
 \series bold
 
 \backslash
 left.
 \series default
-の後に、
+の後に，
 \series bold
 
 \backslash
@@ -28261,11 +28261,11 @@ vphantom
 
 \end_inset
 
-というコマンドを挿入します。
+というコマンドを挿入します．
 \end_layout
 
 \begin_layout Standard
-その結果が以下の数式です。
+その結果が以下の数式です．
 \begin_inset Formula 
 \begin{eqnarray*}
 A & = & \sin(x)\left[\prod_{R=1}^{\infty}\frac{1}{R}+\cdots\right.\\
@@ -28282,30 +28282,30 @@ align環境
 \end_layout
 
 \begin_layout Standard
-align環境は、すべての型の多行数式に使うことができ、とくに、いくつかの数式を並べて表示させるのに便利です。
+align環境は，すべての型の多行数式に使うことができ，とくに，いくつかの数式を並べて表示させるのに便利です．
 \end_layout
 
 \begin_layout Standard
-align環境には列があり、奇数列は右揃え、偶数列は左揃えに設定されます。align環境の行にはすべて、付番することができます。
+align環境には列があり，奇数列は右揃え，偶数列は左揃えに設定されます．align環境の行にはすべて，付番することができます．
 \end_layout
 
 \begin_layout Standard
-align環境は、
+align環境は，
 \family sans
 挿入\SpecialChar menuseparator
 数式
 \family default
-メニューから作ることができます。
+メニューから作ることができます．
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
-メニューを使えば、既存の数式をalign環境に変更することができます。
+メニューを使えば，既存の数式をalign環境に変更することができます．
 \end_layout
 
 \begin_layout Standard
-列を追加したり削除したりするには、数式ツールバーボタンの
+列を追加したり削除したりするには，数式ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "tabular-feature append-column"
@@ -28317,12 +28317,12 @@ type  "icon"
 arg   "tabular-feature delete-column"
 \end_inset
 
-を使うか、
+を使うか，
 \family sans
 編集\SpecialChar menuseparator
 行と列
 \family default
-メニューを使います。
+メニューを使います．
 \end_layout
 
 \begin_layout Subsubsection
@@ -28351,23 +28351,23 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-このalign環境は、数式中で
+このalign環境は，数式中で
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すか、
+を押すか，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 AMS align環境
 \family default
-メニューで作ることができます。
+メニューで作ることができます．
 \end_layout
 
 \begin_layout Standard
-以下は、二つの数式を横に並べた例ですが、これは4列からなるalign環境として作ります。
+以下は，二つの数式を横に並べた例ですが，これは4列からなるalign環境として作ります．
 \begin_inset Formula 
 \begin{align*}
 A & =\sin(B) & C & =D\\
@@ -28376,7 +28376,7 @@ C & \ne A & B & \ne D
 
 \end_inset
 
-ご覧になって分かるように、この環境の数式は、一列めの前と偶数列の後に
+ご覧になって分かるように，この環境の数式は，一列めの前と偶数列の後に
 \series bold
 
 \backslash
@@ -28391,21 +28391,21 @@ status collapsed
 \backslash
 hfill
 \series default
-に関する詳細は、第
+に関する詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:可変長の空白"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
 
 
 \series default
-があるかのように配置されます。数式様式として
+があるかのように配置されます．数式様式として
 \series bold
 行頭下げ
 \begin_inset Foot
@@ -28414,7 +28414,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-数式様式については、第
+数式様式については，第
 \series default
 
 \begin_inset CommandInset ref
@@ -28423,20 +28423,20 @@ reference "sec:数式様式"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
 
 
 \series default
-を使う場合には、第一列の前の
+を使う場合には，第一列の前の
 \series bold
 
 \backslash
 hfill
 \series default
-はない形で数式が設定されます。
+はない形で数式が設定されます．
 \end_layout
 
 \begin_layout Subsubsection
@@ -28458,22 +28458,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-alignat環境には、事前に設定された列間が存在しません。列間は、必要ならば、第
+alignat環境には，事前に設定された列間が存在しません．列間は，必要ならば，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:空白"
 
 \end_inset
 
-節に述べられている空白を使用して手動で入れます。
+節に述べられている空白を使用して手動で入れます．
 \end_layout
 
 \begin_layout Standard
-以下は、上記の例をalignat環境に設定し、二つめの数式の頭に1
+以下は，上記の例をalignat環境に設定し，二つめの数式の頭に1
 \begin_inset space \thinspace{}
 \end_inset
 
-cmの空白を入れたものです。
+cmの空白を入れたものです．
 \begin_inset Formula 
 \begin{alignat*}{2}
 A & =\sin(B) & \hspace{1cm}C & =D\\
@@ -28482,7 +28482,7 @@ C & \ne A & B & \ne D
 
 \end_inset
 
-列間を各列ごとに設定することができるので、この環境は、とくに三つないし四つの数式を横に並べるのに向いています。
+列間を各列ごとに設定することができるので，この環境は，とくに三つないし四つの数式を横に並べるのに向いています．
 \end_layout
 
 \begin_layout Subsubsection
@@ -28511,7 +28511,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この環境では、つねに、最初の二列をできるだけ左寄せにし、最後の二列をできるだけ右寄せにするように設定されます。以下がその例です。
+この環境では，つねに，最初の二列をできるだけ左寄せにし，最後の二列をできるだけ右寄せにするように設定されます．以下がその例です．
 \begin_inset Formula 
 \begin{flalign*}
 A & =1 & B & =2 & C & =3\\
@@ -28524,19 +28524,19 @@ X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end_layout
 
 \begin_layout Standard
-奇数列のflalign環境を作成し、最後の列に空の\SpecialChar TeX
-括弧を入れておくと、数式様式として
+奇数列のflalign環境を作成し，最後の列に空の\SpecialChar TeX
+括弧を入れておくと，数式様式として
 \series bold
 中央揃え
 \series default
-が用いられているときでも、一部の数式を左寄せにすることができます。以下は、例として
+が用いられているときでも，一部の数式を左寄せにすることができます．以下は，例として
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:VolInt"
 
 \end_inset
 
-式を行頭下げにしたものです。
+式を行頭下げにしたものです．
 \begin_inset Formula 
 \begin{flalign}
 \hspace{30pt}\iiint\limits _{V}X\,\mathrm{d}V & =U & {}
@@ -28544,11 +28544,11 @@ reference "eq:VolInt"
 
 \end_inset
 
-ここで、最初の二列には数式が入れられており、行頭下げ数式様式と同等の字下げを行うために、30
+ここで，最初の二列には数式が入れられており，行頭下げ数式様式と同等の字下げを行うために，30
 \begin_inset space \thinspace{}
 \end_inset
 
-ptの空白が第1列の頭に入れてあります。
+ptの空白が第1列の頭に入れてあります．
 \end_layout
 
 \begin_layout Subsection
@@ -28577,8 +28577,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この環境を作成すると、三つの青枠が現れます。最初の枠の内容は右寄せに設定され、最後の枠の内容は左寄せに設定されます。中央の枠は、関係子のみを入れることを想定して
-いるので、その内容は中央揃えで少し小さく設定されます。
+この環境を作成すると，三つの青枠が現れます．最初の枠の内容は右寄せに設定され，最後の枠の内容は左寄せに設定されます．中央の枠は，関係子のみを入れることを想定して
+いるので，その内容は中央揃えで少し小さく設定されます．
 \begin_inset Formula 
 \begin{eqnarray*}
 \frac{ABC}{D} & \frac{ABC}{D} & \frac{ABC}{D}\\
@@ -28610,7 +28610,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この環境には、中央揃えに設定された列一つしかありません。行はすべて付番することができます。
+この環境には，中央揃えに設定された列一つしかありません．行はすべて付番することができます．
 \begin_inset Formula 
 \begin{gather}
 A=1\\
@@ -28648,15 +28648,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-gather環境同様、multline環境には、中央揃えに設定された列一つしかありません。ただし、一行めが左揃えに設定され、最終行が右揃えに設定されるのです。他
-の行はすべて中央揃えになります。このことから、この環境は、長い数式に使うのに向いています。用例として、
+gather環境同様，multline環境には，中央揃えに設定された列一つしかありません．ただし，一行めが左揃えに設定され，最終行が右揃えに設定されるのです．他
+の行はすべて中央揃えになります．このことから，この環境は，長い数式に使うのに向いています．用例として，
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:lefteqn"
 
 \end_inset
 
-式をmultline環境に置いたものを示します。
+式をmultline環境に置いたものを示します．
 \begin_inset Formula 
 \begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
@@ -28670,24 +28670,24 @@ reference "eq:lefteqn"
 \end_layout
 
 \begin_layout Standard
-文書の付番設定が右寄せ(左寄せ)になっているときには、出力では、multline環境の最後(最初)の行だけが付番されます
+文書の付番設定が右寄せ(左寄せ)になっているときには，出力では，multline環境の最後(最初)の行だけが付番されます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-付番様式については、第
+付番様式については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節を参照。
+節を参照．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
@@ -28723,7 +28723,7 @@ shoveleft
 
 
 \series default
-コマンドを使えば、中央揃えの行を右寄せや左寄せにすることができます。これらのコマンドは、以下のようにして使います。
+コマンドを使えば，中央揃えの行を右寄せや左寄せにすることができます．これらのコマンドは，以下のようにして使います．
 \end_layout
 
 \begin_layout Standard
@@ -28762,15 +28762,15 @@ multlinegap
 
 
 \series default
-長は、一行めの左ページ余白からの距離を指定します。既定値は0
+長は，一行めの左ページ余白からの距離を指定します．既定値は0
 \begin_inset space \thinspace{}
 \end_inset
 
-ptの長さです。
+ptの長さです．
 \end_layout
 
 \begin_layout Standard
-以下は、上記の数式に
+以下は，上記の数式に
 \end_layout
 
 \begin_layout Standard
@@ -28784,8 +28784,8 @@ multlinegap}{2cm}
 \end_layout
 
 \begin_layout Standard
-というコマンドを、\SpecialChar TeX
-モードで直前に挿入した例です。
+というコマンドを，\SpecialChar TeX
+モードで直前に挿入した例です．
 \begin_inset ERT
 status collapsed
 
@@ -28825,13 +28825,13 @@ multlinegap}{0pt}
 
 \end_inset
 
-二行めは、
+二行めは，
 \series bold
 
 \backslash
 shoveleft
 \series default
-を使って左揃えにしています。
+を使って左揃えにしています．
 \end_layout
 
 \begin_layout Subsection
@@ -28860,7 +28860,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式の一部分のみを多行表示したい場合には、
+数式の一部分のみを多行表示したい場合には，
 \series bold
 aligned
 \series default
@@ -28876,20 +28876,20 @@ gathered
 \series bold
 split
 \series default
-のうちのいずれかの環境を使用します。これらは、
+のうちのいずれかの環境を使用します．これらは，
 \family sans
 挿入\SpecialChar menuseparator
 数式
 \family default
-メニューか、本節で解説している各コマンドを使用して挿入することができます。
+メニューか，本節で解説している各コマンドを使用して挿入することができます．
 \end_layout
 
 \begin_layout Standard
-最初の三つの環境は、環境名から
+最初の三つの環境は，環境名から
 \series bold
 ed
 \series default
-を省いた同名の多行数式環境と同じ性格を持ちますが、環境の前後に数式を続けることが可能です。たとえば、
+を省いた同名の多行数式環境と同じ性格を持ちますが，環境の前後に数式を続けることが可能です．たとえば，
 \begin_inset Formula 
 \[
 \left.\begin{aligned}\Delta x\Delta p & \ge\frac{\hbar}{2}\\
@@ -28904,7 +28904,7 @@ ed
 \end_layout
 
 \begin_layout Standard
-この数式を作るには、別行立て数式をまず作っておいて、そこに
+この数式を作るには，別行立て数式をまず作っておいて，そこに
 \series bold
 
 \backslash
@@ -28922,20 +28922,20 @@ aligned
 
 
 \series default
-コマンドを挿入しています。紫枠の中に青枠が現れるので、そこに必要に応じて、列や行を加えていきます。この多行環境の外には、括弧などの他の数式要素を入れることができ
-ます。
+コマンドを挿入しています．紫枠の中に青枠が現れるので，そこに必要に応じて，列や行を加えていきます．この多行環境の外には，括弧などの他の数式要素を入れることができ
+ます．
 \end_layout
 
 \begin_layout Standard
-aligned環境は、長い数式を水平方向を揃えて表示するのにも向いています。別行立て数式内でalignedを用いるようにすると、数式番号を行末の、数式全高の中心
-に配置できる利点があります。以下に例として、
+aligned環境は，長い数式を水平方向を揃えて表示するのにも向いています．別行立て数式内でalignedを用いるようにすると，数式番号を行末の，数式全高の中心
+に配置できる利点があります．以下に例として，
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:shortlong"
 
 \end_inset
 
-式にaligned環境を適用したものを示します。
+式にaligned環境を適用したものを示します．
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
@@ -28961,7 +28961,7 @@ gathered
 \series bold
 split
 \series default
-の各環境を使うには、それぞれ
+の各環境を使うには，それぞれ
 \series bold
 
 \backslash
@@ -29015,7 +29015,7 @@ split
 
 \end_inset
 
-の各コマンドを挿入します。split環境は、aligned環境と同じ性格を持ちますが、二つの列しか作ることができません。
+の各コマンドを挿入します．split環境は，aligned環境と同じ性格を持ちますが，二つの列しか作ることができません．
 \end_layout
 
 \begin_layout Subsection
@@ -29054,7 +29054,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-各align系環境およびmultline・gather環境では、独立した行に列揃えの影響を受けない形でテキストを挿入することができます。これを行うには、以下の書
+各align系環境およびmultline・gather環境では，独立した行に列揃えの影響を受けない形でテキストを挿入することができます．これを行うには，以下の書
 式を持つ
 \series bold
 
@@ -29073,7 +29073,7 @@ intertext
 
 \end_inset
 
-コマンドを使います。
+コマンドを使います．
 \end_layout
 
 \begin_layout Standard
@@ -29085,20 +29085,20 @@ intertext{テキスト}
 \end_layout
 
 \begin_layout Standard
-テキストのハイフネーションを行うことはできないので、テキストは一行に収めなくてはなりません。\SpecialChar LyX
-は、現時点では
+テキストのハイフネーションを行うことはできないので，テキストは一行に収めなくてはなりません．\SpecialChar LyX
+は，現時点では
 \series bold
 
 \backslash
 intertext
 \series default
-を直接サポートしていないので、テキストは数式テキストとして書き入れます。ここで、
+を直接サポートしていないので，テキストは数式テキストとして書き入れます．ここで，
 \series bold
 
 \backslash
 intertext
 \series default
-は行頭になくてはならず、当該行の上に出力されます。以下は、二行めの行頭にテキストを入れた例です。
+は行頭になくてはならず，当該行の上に出力されます．以下は，二行めの行頭にテキストを入れた例です．
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
@@ -29117,7 +29117,7 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \backslash
 intertext
 \series default
-は、文と数式行の間に、常に縦空白を生み出します。この空白を抑制するには、文書設定の
+は，文と数式行の間に，常に縦空白を生み出します．この空白を抑制するには，文書設定の
 \family sans
 数式オプション
 \family default
@@ -29139,7 +29139,7 @@ status collapsed
 \family sans
 常に読み込み
 \family default
-に設定してください。そうすると、以下のように、
+に設定してください．そうすると，以下のように，
 \series bold
 
 \backslash
@@ -29163,7 +29163,7 @@ shortintertext
 
 \end_inset
 
-コマンドを使うことができます。
+コマンドを使うことができます．
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
@@ -29226,7 +29226,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-付番数式は、
+付番数式は，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
@@ -29260,7 +29260,7 @@ Ctrl+Alt
 
 N
 \family default
-)で作ることができます。既存の数式に番号を振るには、
+)で作ることができます．既存の数式に番号を振るには，
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
@@ -29272,12 +29272,12 @@ type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-)を使います。\SpecialChar LyX
-中において数式番号は、数式の後に括弧に囲まれた「#」で表されます。「#」は、実際の出力では数式番号に置き換えられます。
+)を使います．\SpecialChar LyX
+中において数式番号は，数式の後に括弧に囲まれた「#」で表されます．「#」は，実際の出力では数式番号に置き換えられます．
 \end_layout
 
 \begin_layout Standard
-多行数式で付番が有効になっているときには、すべての行に番号が振られます。ただし、
+多行数式で付番が有効になっているときには，すべての行に番号が振られます．ただし，
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
@@ -29289,18 +29289,18 @@ type  "shortcut"
 arg   "math-number-line-toggle"
 \end_inset
 
-)を使用すれば、各行毎に付番するかどうか指定することができます。
+)を使用すれば，各行毎に付番するかどうか指定することができます．
 \end_layout
 
 \begin_layout Standard
-行内数式を除いて、すべての数式は二通りの様式で番号を振ることができます。第
+行内数式を除いて，すべての数式は二通りの様式で番号を振ることができます．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \begin_layout Subsection
@@ -29318,37 +29318,37 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ラベルを付けた数式は、すべて相互参照することができます。ラベルは、
+ラベルを付けた数式は，すべて相互参照することができます．ラベルは，
 \family sans
 挿入\SpecialChar menuseparator
 ラベル
 \family default
-メニューか、ツールバーボタンの
+メニューか，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
-で付けることができます。このとき、カーソルは別行立て数式の中になくてはなりません。すると、テキストフィールドの中に
+で付けることができます．このとき，カーソルは別行立て数式の中になくてはなりません．すると，テキストフィールドの中に
 \series bold
 eq:と
 \series default
-いう接頭語の入ったダイアログが現れるので、接頭語の後にラベルを挿入します。この既定の接頭辞は「equation(数式)」を意味し、こうして数式ラベルであるとの標
-を付けることによって、節ラベルなどから区別し、大きな文書の中でラベルを見つけるのを容易にします。ラベルを変更するには、
+いう接頭語の入ったダイアログが現れるので，接頭語の後にラベルを挿入します．この既定の接頭辞は「equation(数式)」を意味し，こうして数式ラベルであるとの標
+を付けることによって，節ラベルなどから区別し，大きな文書の中でラベルを見つけるのを容易にします．ラベルを変更するには，
 \family sans
 挿入\SpecialChar menuseparator
 ラベル
 \family default
-メニューをもういちど使って下さい。
+メニューをもういちど使って下さい．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-中でラベル名は、数式の後ろに、二つの括弧に囲まれて表示されます。ラベル付きの数式はつねに付番されます。
+中でラベル名は，数式の後ろに，二つの括弧に囲まれて表示されます．ラベル付きの数式はつねに付番されます．
 \end_layout
 
 \begin_layout Standard
-相互参照は、
+相互参照は，
 \family sans
 挿入\SpecialChar menuseparator
 相互参照
@@ -29359,25 +29359,25 @@ type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
-を使って挿入します。数式相互参照は、出力では数式番号として表示されます。相互参照ダイアログで「
+を使って挿入します．数式相互参照は，出力では数式番号として表示されます．相互参照ダイアログで「
 \series bold
 (＜参照＞)
 \series default
-」書式を選択した場合には、出力での相互参照は、括弧に囲まれた数式番号として表示されます。
+」書式を選択した場合には，出力での相互参照は，括弧に囲まれた数式番号として表示されます．
 \begin_inset Newline newline
 \end_inset
 
 \SpecialChar LyX
-中で相互参照を右クリックすると、参照先の数式に移動することができます。
+中で相互参照を右クリックすると，参照先の数式に移動することができます．
 \end_layout
 
 \begin_layout Standard
-以下は、後の各小節に現れる数式への相互参照を含む例です。
+以下は，後の各小節に現れる数式への相互参照を含む例です．
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-相互参照の型の違いに留意してください。
+相互参照の型の違いに留意してください．
 \end_layout
 
 \end_inset
@@ -29399,21 +29399,21 @@ reference "eq:c"
 
 \end_inset
 
-式は、等価です。(
+式は，等価です．(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Rom"
 
 \end_inset
 
-)式とは異なり、(
+)式とは異なり，(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Lat"
 
 \end_inset
 
-)式では、付番にラテン数字を使用しています。
+)式では，付番にラテン数字を使用しています．
 \end_layout
 
 \begin_layout Standard
@@ -29435,28 +29435,28 @@ status collapsed
 \backslash
 tag
 \series default
-は、第
+は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自己定義番号"
 
 \end_inset
 
-節に説明があります。
+節に説明があります．
 \end_layout
 
 \end_inset
 
 
 \series default
-の引数が、第
+の引数が，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落ボックス"
 
 \end_inset
 
-節で述べたボックスを含んでいるときには、その数式を参照することはできません。
+節で述べたボックスを含んでいるときには，その数式を参照することはできません．
 \end_layout
 
 \begin_layout Subsection
@@ -29486,12 +29486,12 @@ begin{subequations}
 \backslash
 end{subequations}
 \series default
-コマンドを使うと、数式に細目番号を付けることができます。これらのコマンドは、\SpecialChar TeX
-モードで入れます。
+コマンドを使うと，数式に細目番号を付けることができます．これらのコマンドは，\SpecialChar TeX
+モードで入れます．
 \end_layout
 
 \begin_layout Standard
-たとえば、
+たとえば，
 \begin_inset Formula 
 \begin{equation}
 A=C-B
@@ -29552,11 +29552,11 @@ end{subequations}
 \end_layout
 
 \begin_layout Standard
-この例を作るには、次のようにします。
+この例を作るには，次のようにします．
 \end_layout
 
 \begin_layout Enumerate
-一つめの数式を入力します。
+一つめの数式を入力します．
 \end_layout
 
 \begin_layout Enumerate
@@ -29574,25 +29574,25 @@ begin{subequations}
 
 
 \series default
-を入力します。
+を入力します．
 \end_layout
 
 \begin_layout Enumerate
-二つめの数式を入力します。
+二つめの数式を入力します．
 \end_layout
 
 \begin_layout Enumerate
-三つめの数式を入力します。
+三つめの数式を入力します．
 \end_layout
 
 \begin_layout Enumerate
-三つめの数式の後に、
+三つめの数式の後に，
 \series bold
 
 \backslash
 end{subequations}
 \series default
-を入力します。
+を入力します．
 \end_layout
 
 \begin_layout Standard
@@ -29608,68 +29608,44 @@ begin
 \backslash
 end
 \series default
-コマンドのあいだの数式はすべて、a・b・c\SpecialChar ldots
-
-\lang english
-in the output
-\lang japanese
-。のように細目番号が振られます。
+コマンドのあいだの数式はすべて，出力中ではa・b・c\SpecialChar ldots
+のように細目番号が振られます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Referencing subequations work like for normal equations: 
-\lang japanese
-
+細目番号への参照は，
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:b"
 
 \end_inset
 
-
-\lang english
-, 
-\lang japanese
-
+や
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:c"
 
 \end_inset
 
-
-\lang english
-.
- If you want to reference the subequations collectively, insert a label
- directly after
+のように，通常の数式参照同様に動作します．細目数式全体に対する参照が欲しい場合には，
 \series bold
-\lang japanese
  
 \backslash
-begin{subequations}
+begin{subequations}の直後にラベルを挿入して，それを参照してください．
 \series default
- 
-\lang english
-and reference it.
- Formula 
-\lang japanese
-
+数式
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:以下は、二行めのみ付番を無効にしている多行数式の例です。"
 
 \end_inset
 
-
-\lang english
- is an example.
+はその例です．
 \end_layout
 
 \begin_layout Standard
-上記のように、コマンドを\SpecialChar TeX
-モードで入れると、最初の二つの数式のあいだに空白が生じてしまいます。これを戻すために、-5
+上記のように，コマンドを\SpecialChar TeX
+モードで入れると，最初の二つの数式のあいだに空白が生じてしまいます．これを戻すために，-5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29679,7 +29655,7 @@ mmの垂直空白を
 \backslash
 begin{subequations}
 \series default
-コマンドの後に入れています。数式様式として
+コマンドの後に入れています．数式様式として
 \series bold
 行頭下げ
 \begin_inset Foot
@@ -29688,7 +29664,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-数式様式に関しては、第
+数式様式に関しては，第
 \series default
 
 \begin_inset CommandInset ref
@@ -29697,33 +29673,26 @@ reference "sec:数式様式"
 
 \end_inset
 
-節を参照。
+節を参照．
 \end_layout
 
 \end_inset
 
 
 \series default
-を用いているときには、これを-7
+を用いているときには，これを-7
 \begin_inset space \thinspace{}
 \end_inset
 
-mm空白にしてください。
+mm空白にしてください．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get another subnumber instead of small Latin letters, insert this command
- as TeX code after
-\lang japanese
- 
+ラテン小文字でない細目番号を得るには，
 \series bold
 
 \backslash
-begin{subequations}
-\series default
-:
+begin{subequations}の直後にTeXコードで下記のコマンドを挿入してください．
 \end_layout
 
 \begin_layout Standard
@@ -29743,24 +29712,12 @@ roman{equation}}
 \begin_layout Standard
 
 \series bold
-
+ここで，
 \backslash
-theparentequation
-\series default
- 
-\lang english
-creates hereby the parent number and
-\lang japanese
- 
-\series bold
-
+theparentequationは親番号を生成し，
 \backslash
-roman{equation}
+roman{equation}は細目番号として小文字ローマ数字を生成します．番号付けの調整について，詳しくは
 \series default
-\lang english
- adds a small Roman number as subnumber.
- For more information about the customization of the numbering, see 
-\lang japanese
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -29768,16 +29725,11 @@ reference "subsec:ローマ数字や文字を使った付番"
 
 \end_inset
 
-。
+を参照してください．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example for a multiline formula where the numbering is customized
- and turned off for the second line:
-\lang japanese
-
+下記は，番号付けを調整済みで，2行目の付番を消した多行数式の例です．
 \begin_inset ERT
 status collapsed
 
@@ -29873,8 +29825,8 @@ status collapsed
 
 \end_inset
 
-標準の付番では、数式番号の周りに括弧が表示されます。括弧をたとえば縦棒に置き換えるには、\SpecialChar LaTeX
-プリアンブルに以下の行を付け加えます。
+標準の付番では，数式番号の周りに括弧が表示されます．括弧をたとえば縦棒に置き換えるには，\SpecialChar LaTeX
+プリアンブルに以下の行を付け加えます．
 \end_layout
 
 \begin_layout Standard
@@ -29909,8 +29861,8 @@ maketag@@@{
 status collapsed
 
 \begin_layout Plain Layout
-このマクロは、テスト用に\SpecialChar LaTeX
-プリアンブルで既に宣言されています。これを有効にするには、最初のパーセント記号を取り除いて下さい。
+このマクロは，テスト用に\SpecialChar LaTeX
+プリアンブルで既に宣言されています．これを有効にするには，最初のパーセント記号を取り除いて下さい．
 \end_layout
 
 \end_inset
@@ -29919,18 +29871,18 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-他の記号を使いたいときには、
+他の記号を使いたいときには，
 \series bold
 #1
 \series default
-脇の縦棒を一つないし複数の文字で置き換えて下さい。数式番号だけで良い時は、縦棒を削除して下さい。
+脇の縦棒を一つないし複数の文字で置き換えて下さい．数式番号だけで良い時は，縦棒を削除して下さい．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-数式の後ろに、括弧に囲まれた連番の代わりに、何かしらの表現が欲しいときには、以下のように
+数式の後ろに，括弧に囲まれた連番の代わりに，何かしらの表現が欲しいときには，以下のように
 \series bold
 
 \backslash
@@ -29948,7 +29900,7 @@ tag
 
 \end_inset
 
-コマンドを使います。
+コマンドを使います．
 \begin_inset Formula 
 \begin{equation}
 A+B=C\tag{何とかかんとか}\label{eq:tag}
@@ -29956,7 +29908,7 @@ A+B=C\tag{何とかかんとか}\label{eq:tag}
 
 \end_inset
 
-上記の例では、
+上記の例では，
 \series bold
 
 \backslash
@@ -29966,7 +29918,7 @@ tag
 
 何とかかんとか
 \series default
-というコマンドを数式に打ち込んでいます。
+というコマンドを数式に打ち込んでいます．
 \end_layout
 
 \begin_layout Standard
@@ -29980,7 +29932,7 @@ tag*
 
 何とかかんとか
 \series default
-というコマンドを使うと、星印は表現の周りの括弧を抑制するので、以下のようになります。
+というコマンドを使うと，星印は表現の周りの括弧を抑制するので，以下のようになります．
 \begin_inset Formula 
 \[
 A+B=C\tag*{something}
@@ -29995,7 +29947,7 @@ A+B=C\tag*{something}
 \begin_inset VSpace bigskip
 \end_inset
 
-数式番号を、文書中の新しい部門や節ごとに振りなおしたいときには、部に関しては
+数式番号を，文書中の新しい部門や節ごとに振りなおしたいときには，部に関しては
 \begin_inset Newline newline
 \end_inset
 
@@ -30059,26 +30011,26 @@ addtoreset
 
 
 \series default
-というコマンドを使います。
+というコマンドを使います．
 \end_layout
 
 \begin_layout Standard
 これらのコマンドを\SpecialChar TeX
-モードで使えるようにするためには、
+モードで使えるようにするためには，
 \series bold
 
 \backslash
 makeatletter
 \series default
 コマンドで「@」字を\SpecialChar LaTeX
-中で「有効」にしてやらなくてはなりません。一方、
+中で「有効」にしてやらなくてはなりません．一方，
 \series bold
 
 \backslash
 makeatother
 \series default
-コマンドはこれを無効にします。したがって、\SpecialChar TeX
-モード中での上記コマンド列は、
+コマンドはこれを無効にします．したがって，\SpecialChar TeX
+モード中での上記コマンド列は，
 \end_layout
 
 \begin_layout Standard
@@ -30104,12 +30056,12 @@ makeatother
 
 
 \series default
-のようにならなくてはなりません。
+のようにならなくてはなりません．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LaTeX
-プリアンブル中では、
+プリアンブル中では，
 \series bold
 
 \backslash
@@ -30121,8 +30073,8 @@ makeatletter
 \backslash
 makeatother
 \series default
-は、\SpecialChar LyX
-が内部的に自動で挿入するので省略してかまいません。
+は，\SpecialChar LyX
+が内部的に自動で挿入するので省略してかまいません．
 \end_layout
 
 \begin_layout Standard
@@ -30132,7 +30084,7 @@ makeatother
 \backslash
 @addtoreset
 \series default
-を戻すには、まず\SpecialChar LaTeX
+を戻すには，まず\SpecialChar LaTeX
 プリアンブル中に
 \end_layout
 
@@ -30145,7 +30097,7 @@ usepackage{remreset}
 \end_layout
 
 \begin_layout Standard
-という行を入れて、
+という行を入れて，
 \series bold
 remreset.sty
 \series default
@@ -30158,7 +30110,7 @@ status collapsed
 \series bold
 remreset
 \series default
-は、\SpecialChar LaTeX
+は，\SpecialChar LaTeX
 パッケージの
 \series bold
 carlisle
@@ -30173,8 +30125,8 @@ status collapsed
 
 \end_inset
 
-の一部として含まれており、\SpecialChar LaTeX
-標準頒布版には含まれています。
+の一部として含まれており，\SpecialChar LaTeX
+標準頒布版には含まれています．
 \end_layout
 
 \end_inset
@@ -30189,7 +30141,7 @@ status collapsed
 
 \end_inset
 
-ファイルを読み込んでおかなくてはなりません。その後
+ファイルを読み込んでおかなくてはなりません．その後
 \begin_inset Newline newline
 \end_inset
 
@@ -30241,20 +30193,20 @@ removefromreset
 \backslash
 @addtoreset
 \series default
-と同じ書式で使用すると、
+と同じ書式で使用すると，
 \series bold
 
 \backslash
 @addtoreset
 \series default
-を戻すことができます。
+を戻すことができます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-ときには、数式を
+ときには，数式を
 \end_layout
 
 \begin_layout Standard
@@ -30264,11 +30216,11 @@ removefromreset
 \end_layout
 
 \begin_layout Standard
-のような形で付番し、節ごとに数式番号を「1」から始めさせなくてはならないときがあります。
+のような形で付番し，節ごとに数式番号を「1」から始めさせなくてはならないときがあります．
 \end_layout
 
 \begin_layout Standard
-このような場合のために、
+このような場合のために，
 \series bold
 
 \backslash
@@ -30286,7 +30238,7 @@ numberwithin
 
 \end_inset
 
-というコマンドがあり、
+というコマンドがあり，
 \end_layout
 
 \begin_layout Standard
@@ -30298,11 +30250,11 @@ numberwithin{カウンタ}{節階層}
 \end_layout
 
 \begin_layout Standard
-という書式で用います。「カウンタ」は、どの番号を制御するかを表し、「節階層」は点の前に何の番号を振るのかを表します。
+という書式で用います．「カウンタ」は，どの番号を制御するかを表し，「節階層」は点の前に何の番号を振るのかを表します．
 \end_layout
 
 \begin_layout Standard
-したがって、ここでは\SpecialChar LaTeX
+したがって，ここでは\SpecialChar LaTeX
 プリアンブルか\SpecialChar TeX
 コードで
 \end_layout
@@ -30316,7 +30268,7 @@ numberwithin{equation}{section}
 \end_layout
 
 \begin_layout Standard
-という行を用いることにしましょう。その結果がこれです。
+という行を用いることにしましょう．その結果がこれです．
 \begin_inset ERT
 status collapsed
 
@@ -30341,7 +30293,7 @@ A+B=C
 \end_layout
 
 \begin_layout Standard
-たとえば、部番号を節階層として使用して、表に付番を施すときには
+たとえば，部番号を節階層として使用して，表に付番を施すときには
 \begin_inset Newline newline
 \end_inset
 
@@ -30351,11 +30303,11 @@ A+B=C
 \backslash
 numberwithin{table}{part}
 \series default
-を用います。
+を用います．
 \end_layout
 
 \begin_layout Standard
-標準の付番方式に戻したいときや、この種の付番が文書クラスで定義されているときに、それを止めさせたい場合には、
+標準の付番方式に戻したいときや，この種の付番が文書クラスで定義されているときに，それを止めさせたい場合には，
 \end_layout
 
 \begin_layout Standard
@@ -30423,20 +30375,20 @@ arabic{table}}
 
 \begin_layout Standard
 というコマンドを\SpecialChar TeX
-コードとして入れるか、\SpecialChar LaTeX
-プリアンブルに入れます。
+コードとして入れるか，\SpecialChar LaTeX
+プリアンブルに入れます．
 \series bold
 
 \backslash
 numberwithin
 \series default
-は、内部的に上記で述べた
+は，内部的に上記で述べた
 \series bold
 
 \backslash
 @addtoreset
 \series default
-コマンドを使用しているので、これも使用後は戻しておかなくてはなりません。
+コマンドを使用しているので，これも使用後は戻しておかなくてはなりません．
 \begin_inset ERT
 status collapsed
 
@@ -30498,7 +30450,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式は、ローマ数字やラテン文字を使って付番することもできます。たとえば、小文字のローマ数字を使って付番するには、数式の前に\SpecialChar TeX
+数式は，ローマ数字やラテン文字を使って付番することもできます．たとえば，小文字のローマ数字を使って付番するには，数式の前に\SpecialChar TeX
 モードで
 \end_layout
 
@@ -30515,7 +30467,7 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-というコマンドを入れます。
+というコマンドを入れます．
 \series bold
 
 \backslash
@@ -30533,7 +30485,7 @@ renewcommand
 
 \end_inset
 
-は、定義済みのコマンド
+は，定義済みのコマンド
 \series bold
 
 \backslash
@@ -30556,7 +30508,7 @@ status collapsed
 \backslash
 renewcommand
 \series default
-コマンドは、第
+コマンドは，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:newcommandコマンド"
@@ -30569,29 +30521,29 @@ reference "subsec:newcommandコマンド"
 \backslash
 newcommand
 \series default
-コマンドと同じ書式を持ちます。
+コマンドと同じ書式を持ちます．
 \end_layout
 
 \end_inset
 
-。ここで、
+．ここで，
 \series bold
 equation
 \series default
-は数式カウンタです。コマンド
+は数式カウンタです．コマンド
 \series bold
 
 \backslash
 the
 \series default
-をカウンタの接頭辞として使用すると、カウンタの値がアラビア数字として出力されます。数式に番号を振ると、\SpecialChar LaTeX
-は、内部的に
+をカウンタの接頭辞として使用すると，カウンタの値がアラビア数字として出力されます．数式に番号を振ると，\SpecialChar LaTeX
+は，内部的に
 \series bold
 
 \backslash
 theequation
 \series default
-コマンドを数式の後ろに置くのです。
+コマンドを数式の後ろに置くのです．
 \series bold
 
 \backslash
@@ -30609,11 +30561,11 @@ roman
 
 
 \series default
-は、カウンタを小文字のローマ数字として出力します。
+は，カウンタを小文字のローマ数字として出力します．
 \end_layout
 
 \begin_layout Standard
-こうして、
+こうして，
 \series bold
 
 \backslash
@@ -30623,7 +30575,7 @@ c
 \series bold
 ommand
 \series default
-コマンド以降の数式はすべて、ローマ数字で付番されるようになります。大文字のローマ数字での付番に切り替えたいときは、同じコマンドの
+コマンド以降の数式はすべて，ローマ数字で付番されるようになります．大文字のローマ数字での付番に切り替えたいときは，同じコマンドの
 \series bold
 
 \backslash
@@ -30649,7 +30601,7 @@ Roman
 
 \end_inset
 
-に変えて挿入します。また、小文字ラテン文字を使って「付番」したいときのために、
+に変えて挿入します．また，小文字ラテン文字を使って「付番」したいときのために，
 \series bold
 
 \backslash
@@ -30667,7 +30619,7 @@ alph
 
 \end_inset
 
-コマンドがあり、大文字ラテン文字を使って付番したいときのためには、
+コマンドがあり，大文字ラテン文字を使って付番したいときのためには，
 \series bold
 
 \backslash
@@ -30687,7 +30639,7 @@ Alph
 
 \end_inset
 
-コマンドがあります。
+コマンドがあります．
 \end_layout
 
 \begin_layout Standard
@@ -30699,7 +30651,7 @@ status open
 \series bold
 【註】
 \series default
-ラテン文字を使うと、一つの文書の中で、最大26個の数式しか番号を振ることができません。
+ラテン文字を使うと，一つの文書の中で，最大26個の数式しか番号を振ることができません．
 \end_layout
 
 \end_inset
@@ -30818,7 +30770,7 @@ D=\textrm{大文字ラテン文字}\label{eq:Lat}
 \end_layout
 
 \begin_layout Standard
-既定の付番方式に戻すには、以下のコマンドを挿入してください。
+既定の付番方式に戻すには，以下のコマンドを挿入してください．
 \end_layout
 
 \begin_layout Standard
@@ -30877,8 +30829,8 @@ E=\textrm{アラビア数字}
 \begin_inset VSpace medskip
 \end_inset
 
-以上からわかるとおり、付番様式の違いに関わらず、数式番号は連番で振られます。様式変更時に「1」から番号が始まるようにするためには、新しい数式カウンタを定義しなく
-てはなりません。この点に関する説明は、ファイル
+以上からわかるとおり，付番様式の違いに関わらず，数式番号は連番で振られます．様式変更時に「1」から番号が始まるようにするためには，新しい数式カウンタを定義しなく
+てはなりません．この点に関する説明は，ファイル
 \begin_inset CommandInset href
 LatexCommand href
 name "Formula-numbering.lyx"
@@ -30886,7 +30838,7 @@ target "run:Formula-numbering.lyx"
 
 \end_inset
 
-にあります。
+にあります．
 \end_layout
 
 \begin_layout Section
@@ -30931,22 +30883,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-以下は、化学関係の文章の例です。
+以下は，化学関係の文章の例です．
 \end_layout
 
 \begin_layout Quote
 \begin_inset Formula $\mathrm{SO_{4}^{2-}}$
 \end_inset
 
-イオンは、2つの
+イオンは，2つの
 \begin_inset Formula $\mathrm{Na^{+}}$
 \end_inset
 
-イオンと反応して、硫酸化塩
+イオンと反応して，硫酸化塩
 \begin_inset Formula $\left(\mathrm{Na_{2}SO_{4}}\right)$
 \end_inset
 
-を形成します。この化学式は以下のようになります。
+を形成します．この化学式は以下のようになります．
 \begin_inset Formula 
 \begin{equation}
 \mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
@@ -30958,7 +30910,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この化学式は、直接数式として作成することができます。記号がイタリック体として表示されることを防ぐには、全体を選択してから
+この化学式は，直接数式として作成することができます．記号がイタリック体として表示されることを防ぐには，全体を選択してから
 \begin_inset Flex Ruby
 status collapsed
 
@@ -30984,28 +30936,28 @@ type  "shortcut"
 arg   "font-roman"
 \end_inset
 
-を押せば、アップライトフォント様式に変更することができます
+を押せば，アップライトフォント様式に変更することができます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-フォント様式に関しては、第
+フォント様式に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書体様式"
 
 \end_inset
 
-節を参照のこと。
+節を参照のこと．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
-化学式を組版するのにもう少し便利な方法は、\SpecialChar LaTeX
+化学式を組版するのにもう少し便利な方法は，\SpecialChar LaTeX
 パッケージ
 \series bold
 mhchem
@@ -31038,13 +30990,13 @@ ce
 
 \end_inset
 
-コマンドを使用することです。
+コマンドを使用することです．
 \series bold
 
 \backslash
 ce
 \series default
-を数式に入力すると、新しい青いボックスが現れ、直感的に化学式を入力することができます。
+を数式に入力すると，新しい青いボックスが現れ，直感的に化学式を入力することができます．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -31424,17 +31376,17 @@ status open
 【註】
 \series default
 \SpecialChar LyX
-では、
+では，
 \series bold
 mhchem
 \series default
-の説明書通りに上矢印を得ようと^文字を使用しても、うまく行きません。代わりに、次のように、負の小空白の後に
+の説明書通りに上矢印を得ようと^文字を使用しても，うまく行きません．代わりに，次のように，負の小空白の後に
 \series bold
 
 \backslash
 uparrow
 \series default
-コマンドを続けます。
+コマンドを続けます．
 \color none
 
 \begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
@@ -31500,24 +31452,24 @@ Na2SO4
 
 
 \series default
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Standard
-複数行の化学式を作るには、第
+複数行の化学式を作るには，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:多行数式"
 
 \end_inset
 
-節に述べられている方法で、多行数式をまず作ります。その後、数式の小さな青いボックスそれぞれに
+節に述べられている方法で，多行数式をまず作ります．その後，数式の小さな青いボックスそれぞれに
 \series bold
 
 \backslash
 ce
 \series default
-コマンドを使用します。
+コマンドを使用します．
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:TEOS-reaction-1"
@@ -31531,7 +31483,7 @@ reference "eq:TEOS-reaction-2"
 
 \end_inset
 
-式は、多段化学反応式の例で、一つの式毎に番号が振られています。
+式は，多段化学反応式の例で，一つの式毎に番号が振られています．
 \begin_inset Formula 
 \begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
@@ -31548,13 +31500,13 @@ reference "eq:TEOS-reaction-2"
 \series bold
 mhchem
 \series default
-パッケージは、
+パッケージは，
 \series bold
 
 \backslash
 ce
 \series default
-の他に、特殊ケースに使用する
+の他に，特殊ケースに使用する
 \series bold
 
 \backslash
@@ -31572,13 +31524,13 @@ cf
 
 \end_inset
 
-コマンドを提供しています。
+コマンドを提供しています．
 \series bold
 
 \backslash
 cf
 \series default
-の詳しい情報と例示については、
+の詳しい情報と例示については，
 \series bold
 mhchem
 \series default
@@ -31589,7 +31541,7 @@ key "mhchem"
 
 \end_inset
 
-の取扱説明書をご覧ください。
+の取扱説明書をご覧ください．
 \end_layout
 
 \begin_layout Section
@@ -31598,7 +31550,7 @@ key "mhchem"
 
 \begin_layout Standard
 \SpecialChar LyX
-は、二つの型の可換図
+は，二つの型の可換図
 \series bold
 amscd
 \series default
@@ -31606,7 +31558,7 @@ amscd
 \series bold
 xymatrix
 \series default
-をサポートしており、以下でこれらの説明をします。
+をサポートしており，以下でこれらの説明をします．
 \end_layout
 
 \begin_layout Subsection
@@ -31624,7 +31576,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この型の図解は、以下のように、関係を縦横の線や矢印で図示します。
+この型の図解は，以下のように，関係を縦横の線や矢印で図示します．
 \begin_inset Formula 
 \[
 \begin{CD}A@>>>B@>>>C\\
@@ -31639,7 +31591,7 @@ F@<<<E@<<<D
 \end_layout
 
 \begin_layout Standard
-これを作るには、数式に
+これを作るには，数式に
 \series bold
 
 \backslash
@@ -31657,32 +31609,32 @@ CD
 
 
 \series default
-コマンドを挿入します。二つの点線に囲まれた青枠が現れるので、ここにコマンドを入れていきます。
+コマンドを挿入します．二つの点線に囲まれた青枠が現れるので，ここにコマンドを入れていきます．
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-を押すと、新しい行が作られます。水平方向の関係は奇数行に入れ、垂直方向の関係は偶数行に入れます。
+を押すと，新しい行が作られます．水平方向の関係は奇数行に入れ，垂直方向の関係は偶数行に入れます．
 \end_layout
 
 \begin_layout Standard
-関係を作るには、以下のコマンドがあります。
+関係を作るには，以下のコマンドがあります．
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\boldsymbol{@<<<}$
 \end_inset
 
-は左矢印、
+は左矢印，
 \begin_inset Formula $\boldsymbol{@>>>}$
 \end_inset
 
-は右矢印、
+は右矢印，
 \series bold
 @=
 \series default
-は長い等号を生成します。
+は長い等号を生成します．
 \end_layout
 
 \begin_layout Itemize
@@ -31690,15 +31642,15 @@ arg   "newline-insert newline"
 \series bold
 @AAA
 \series default
-は上矢印、
+は上矢印，
 \series bold
 @VVV
 \series default
-は下矢印、
+は下矢印，
 \begin_inset Formula $\boldsymbol{@|}$
 \end_inset
 
-は縦向きの等号を生成します。
+は縦向きの等号を生成します．
 \end_layout
 
 \begin_layout Itemize
@@ -31706,15 +31658,15 @@ arg   "newline-insert newline"
 \series bold
 @.
 \series default
-は関係が存在しない部分に置きます。
+は関係が存在しない部分に置きます．
 \end_layout
 
 \begin_layout Standard
-矢印はすべて、以下のようにラベル付けをすることができます。
+矢印はすべて，以下のようにラベル付けをすることができます．
 \end_layout
 
 \begin_layout Itemize
-文章を、第1と第2の「
+文章を，第1と第2の「
 \begin_inset Formula $<$
 \end_inset
 
@@ -31722,7 +31674,7 @@ arg   "newline-insert newline"
 \begin_inset Formula $>$
 \end_inset
 
-」のあいだに入れると、この文章は矢印の上に表示されます。第2・第3の「
+」のあいだに入れると，この文章は矢印の上に表示されます．第2・第3の「
 \begin_inset Formula $<$
 \end_inset
 
@@ -31730,17 +31682,17 @@ arg   "newline-insert newline"
 \begin_inset Formula $>$
 \end_inset
 
-」のあいだに入れると、矢印の下に表示されます。
+」のあいだに入れると，矢印の下に表示されます．
 \end_layout
 
 \begin_layout Itemize
-縦矢印に付ける文章を、第1・第2の「A」ないし「V」のあいだに入れると、この文章は矢印の左に表示されます。第2・第3のもののあいだに入れると、矢印の右に表示され
-ます。文章中に「A」や「V」の文字があるときには、これらは\SpecialChar TeX
-括弧の中に入れなくてはなりません。
+縦矢印に付ける文章を，第1・第2の「A」ないし「V」のあいだに入れると，この文章は矢印の左に表示されます．第2・第3のもののあいだに入れると，矢印の右に表示され
+ます．文章中に「A」や「V」の文字があるときには，これらは\SpecialChar TeX
+括弧の中に入れなくてはなりません．
 \end_layout
 
 \begin_layout Standard
-以下は、上記のすべての関係を使った例です。
+以下は，上記のすべての関係を使った例です．
 \end_layout
 
 \begin_layout Standard
@@ -31758,7 +31710,7 @@ D@<<j<E@>k>>F@=C
 \end_layout
 
 \begin_layout Standard
-これを作るコマンドは、以下のとおりです。
+これを作るコマンドは，以下のとおりです．
 \begin_inset Newline newline
 \end_inset
 
@@ -31878,29 +31830,29 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-xymatricesを使うには、\SpecialChar LaTeX
+xymatricesを使うには，\SpecialChar LaTeX
 パッケージの
 \series bold
 xypic
 \series default
-が導入済みである必要があります。xymatrixは、数式中に
+が導入済みである必要があります．xymatrixは，数式中に
 \series bold
 
 \backslash
 xymatrix
 \series default
-コマンドを入れることで作ることができます。すると、通常の行列と同じようにして、列や行を付け加えることができます。第
+コマンドを入れることで作ることができます．すると，通常の行列と同じようにして，列や行を付け加えることができます．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:行列"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Standard
-amscd図解とは異なり、xymatricesは、対角矢印や曲がった矢印など多様なサポートをしています。作ることのできる可換図と装飾は、
+amscd図解とは異なり，xymatricesは，対角矢印や曲がった矢印など多様なサポートをしています．作ることのできる可換図と装飾は，
 \family sans
 ヘルプ\SpecialChar menuseparator
 用途別説明書\SpecialChar menuseparator
@@ -31910,7 +31862,7 @@ XY-pic説明書
 \emph on
 XY-pic説明書
 \emph default
-で詳しく網羅しています。
+で詳しく網羅しています．
 \end_layout
 
 \begin_layout Subsection
@@ -31930,30 +31882,30 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ファインマン図を使うには、\SpecialChar LaTeX
+ファインマン図を使うには，\SpecialChar LaTeX
 パッケージ
 \series bold
 feyn
 \series default
-を導入しておかなくてはなりません。すると、ファインマン図は、数式中で
+を導入しておかなくてはなりません．すると，ファインマン図は，数式中で
 \series bold
 
 \backslash
 Diagram
 \series default
-コマンドを挿入すれば生成されます。通常の行列で行うのと同じようにして新規行や新規列を加えることができます(第
+コマンドを挿入すれば生成されます．通常の行列で行うのと同じようにして新規行や新規列を加えることができます(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:行列"
 
 \end_inset
 
-節参照)。
+節参照)．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-でのファインマン図の作り方は、メニュー
+でのファインマン図の作り方は，メニュー
 \family sans
 ヘルプ\SpecialChar menuseparator
 用途別説明書
@@ -31962,7 +31914,7 @@ reference "sec:行列"
 \emph on
 ファインマン図
 \emph default
-』にあります。
+』にあります．
 \end_layout
 
 \begin_layout Section
@@ -31984,7 +31936,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-【註】自己定義コマンド名及びマクロ名には、ラテン文字しか使用することができません。
+【註】自己定義コマンド名及びマクロ名には，ラテン文字しか使用することができません．
 \end_layout
 
 \end_inset
@@ -32030,14 +31982,14 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-頻繁に用いるには、長すぎる\SpecialChar LaTeX
-コマンドはたくさんありますが、
+頻繁に用いるには，長すぎる\SpecialChar LaTeX
+コマンドはたくさんありますが，
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドを使えば、新しい短縮コマンドを定義することが可能です。
+コマンドを使えば，新しい短縮コマンドを定義することが可能です．
 \end_layout
 
 \begin_layout Standard
@@ -32047,7 +31999,7 @@ newcommand
 \backslash
 newcommand
 \series default
-コマンドの書式は、
+コマンドの書式は，
 \end_layout
 
 \begin_layout Standard
@@ -32077,7 +32029,7 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-です。
+です．
 \end_layout
 
 \begin_layout Standard
@@ -32089,8 +32041,8 @@ status open
 \series bold
 【註】
 \series default
-新コマンド名が、使用中の文書や呼び出している\SpecialChar LaTeX
-パッケージで、既に使用されていないことを確認して下さい。たとえば、
+新コマンド名が，使用中の文書や呼び出している\SpecialChar LaTeX
+パッケージで，既に使用されていないことを確認して下さい．たとえば，
 \series bold
 
 \backslash
@@ -32102,7 +32054,7 @@ Leftarrow
 \backslash
 le
 \series default
-というコマンドを定義したとすると、
+というコマンドを定義したとすると，
 \series bold
 
 \backslash
@@ -32112,7 +32064,7 @@ le
 \begin_inset Formula $\le$
 \end_inset
 
-」を表すコマンドとして定義されてしまっているので、エラーメッセージが表示されます。
+」を表すコマンドとして定義されてしまっているので，エラーメッセージが表示されます．
 \end_layout
 
 \end_inset
@@ -32121,7 +32073,7 @@ le
 \end_layout
 
 \begin_layout Standard
-「引数の数」は、0
+「引数の数」は，0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -32129,16 +32081,16 @@ le
 \begin_inset space \thinspace{}
 \end_inset
 
-9の範囲の整数であり、新コマンドがいくつの引数をとるかを指定するものです。「オプションの値」では、非必須の引数の既定値を定義できます。これを指定すると、新コマン
+9の範囲の整数であり，新コマンドがいくつの引数をとるかを指定するものです．「オプションの値」では，非必須の引数の既定値を定義できます．これを指定すると，新コマン
 ドの
 \emph on
 最初の
 \emph default
-引数は、自動的に非必須の引数になります。
+引数は，自動的に非必須の引数になります．
 \end_layout
 
 \begin_layout Standard
-以下にいくつかの例を挙げます。
+以下にいくつかの例を挙げます．
 \end_layout
 
 \begin_layout Itemize
@@ -32154,8 +32106,8 @@ Longrightarrow
 \backslash
 gr
 \series default
-というコマンドを定義するには、\SpecialChar LaTeX
-プリアンブルに以下の行を加えます。
+というコマンドを定義するには，\SpecialChar LaTeX
+プリアンブルに以下の行を加えます．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32187,7 +32139,7 @@ underline
 \backslash
 us
 \series default
-というコマンドを定義するには、(下線を引くべき文字列を示す)引数を考慮に入れなくてはなりません。このためには、以下のようなプリアンブル行を入れます。
+というコマンドを定義するには，(下線を引くべき文字列を示す)引数を考慮に入れなくてはなりません．このためには，以下のようなプリアンブル行を入れます．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32217,11 +32169,11 @@ underline{#1}}
 \series bold
 #
 \series default
-」という文字は、引数の入る場所を示し、その後ろの「
+」という文字は，引数の入る場所を示し，その後ろの「
 \series bold
 1
 \series default
-」は、これが第1引数の入る場所であることを示します。
+」は，これが第1引数の入る場所であることを示します．
 \end_layout
 
 \begin_layout Itemize
@@ -32231,13 +32183,13 @@ underline{#1}}
 \backslash
 framebox
 \series default
-の短縮形として、たとえば
+の短縮形として，たとえば
 \series bold
 
 \backslash
 fb
 \series default
-というコマンドを定義するには、
+というコマンドを定義するには，
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32263,20 +32215,20 @@ framebox#1#2{$#3$}}
 \begin_inset Newline newline
 \end_inset
 
-二つのドルマークは、
+二つのドルマークは，
 \series bold
 
 \backslash
 framebox
 \series default
-が必要とする内部の数式を作り出します。第
+が必要とする内部の数式を作り出します．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:枠付きボックス"
 
 \end_inset
 
-節をご参照下さい。
+節をご参照下さい．
 \end_layout
 
 \begin_layout Itemize
@@ -32286,7 +32238,7 @@ reference "subsec:枠付きボックス"
 \backslash
 fcolorbox
 \series default
-用の新コマンドを作るには、以下のように、色を示す引数を非必須として定義します。
+用の新コマンドを作るには，以下のように，色を示す引数を非必須として定義します．
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32318,15 +32270,15 @@ fcolorbox{#2}{#1}{$#3$}}
 \backslash
 cb
 \series default
-を使うときに色が指定されなければ、事前に定義された色である
+を使うときに色が指定されなければ，事前に定義された色である
 \series bold
 white
 \series default
-が使用されます。
+が使用されます．
 \end_layout
 
 \begin_layout Standard
-以下は、上で定義したコマンドの動作テストです。
+以下は，上で定義したコマンドの動作テストです．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -32565,8 +32517,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-自己定義コマンドは、複雑な表現を使うときに特に便利です。たとえば、文書中で二次方程式を扱っているとすると、同じような解の形が何度も出てきます。二次方程式の一般型
-は、
+自己定義コマンドは，複雑な表現を使うときに特に便利です．たとえば，文書中で二次方程式を扱っているとすると，同じような解の形が何度も出てきます．二次方程式の一般型
+は，
 \begin_inset Formula 
 \[
 0=\lambda^{2}+p\lambda+q
@@ -32574,7 +32526,7 @@ status collapsed
 
 \end_inset
 
-であり、その解の一般型は
+であり，その解の一般型は
 \begin_inset Formula 
 \[
 \lambda_{1,2}=-\frac{p}{2}\pm\sqrt{\frac{p²}{4}-q}
@@ -32586,7 +32538,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-です。
+です．
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -32598,12 +32550,12 @@ status collapsed
 \begin_inset Formula $q$
 \end_inset
 
-の3つのパラメータを指定することが必須であり、
+の3つのパラメータを指定することが必須であり，
 \begin_inset Formula $\lambda$
 \end_inset
 
-の指数をオプションとして与えることができるような、解の公式のコマンドを定義するには、以下のような\SpecialChar LaTeX
-プリアンブル行を加えます。
+の指数をオプションとして与えることができるような，解の公式のコマンドを定義するには，以下のような\SpecialChar LaTeX
+プリアンブル行を加えます．
 \begin_inset Newline newline
 \end_inset
 
@@ -32645,7 +32597,7 @@ frac{#3^{2}}{4}-#4}}
 \end_layout
 
 \begin_layout Standard
-これを使って解の公式を作るには、
+これを使って解の公式を作るには，
 \begin_inset Newline newline
 \end_inset
 
@@ -32669,44 +32621,44 @@ lambda
 \backslash
 {q
 \series default
-というコマンドを数式に入れます。
+というコマンドを数式に入れます．
 \end_layout
 
 \begin_layout Standard
-新コマンドを定義する方法は、たとえば\SpecialChar LaTeX
+新コマンドを定義する方法は，たとえば\SpecialChar LaTeX
 中で分数は
 \series bold
 
 \backslash
 frac{分子}{分母}
 \series default
-の形で入れなくてはならないことなど、使用するすべての\SpecialChar LaTeX
-コマンドの書式を知っている必要があるので、直感的ではありません。さらに、定義中で中括弧を入れ忘れることはよく
-あり、それをやってしまうと、\SpecialChar LyX
-からは新コマンドが何をやらかしているか確認しにくくなってしまいます。これらの問題を回避するために、\SpecialChar LyX
-は、
+の形で入れなくてはならないことなど，使用するすべての\SpecialChar LaTeX
+コマンドの書式を知っている必要があるので，直感的ではありません．さらに，定義中で中括弧を入れ忘れることはよく
+あり，それをやってしまうと，\SpecialChar LyX
+からは新コマンドが何をやらかしているか確認しにくくなってしまいます．これらの問題を回避するために，\SpecialChar LyX
+は，
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドの代わりに、数式マクロを使う方法を提供しています。
+コマンドの代わりに，数式マクロを使う方法を提供しています．
 \end_layout
 
 \begin_layout Standard
-数式マクロは、
+数式マクロは，
 \family sans
 挿入\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 マクロ
 \family default
-メニューか、ツールバーボタンの
+メニューか，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-macro newmacroname_newcommand"
 \end_inset
 
-で作ることができます。すると、数式マクロツールバーが表示されるとともに、マクロを定義した箇所に以下のようなボックスが現れます。
+で作ることができます．すると，数式マクロツールバーが表示されるとともに，マクロを定義した箇所に以下のようなボックスが現れます．
 \begin_inset Newline newline
 \end_inset
 
@@ -32736,7 +32688,7 @@ arg   "math-macro newmacroname_newcommand"
 
 
 \backslash
-newmacronameが既定のマクロ名として現れますが、意味のある名称に変更するべきでしょう。欲しい数式は一つ目の青枠の中に入れます。引数を置く場所は、
+newmacronameが既定のマクロ名として現れますが，意味のある名称に変更するべきでしょう．欲しい数式は一つ目の青枠の中に入れます．引数を置く場所は，
 \series bold
 
 \backslash
@@ -32748,27 +32700,27 @@ newmacronameが既定のマクロ名として現れますが、意味のある�
 \backslash
 #引数番号
 \series default
-というコマンドで入力するか、マクロツールバーボタンの
+というコマンドで入力するか，マクロツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-macro-add-param"
 \end_inset
 
-を使用します。引数位置は赤で表示されます。引数は、最大で9つまでとることができます。非必須引数は、ツールバーボタンの
+を使用します．引数位置は赤で表示されます．引数は，最大で9つまでとることができます．非必須引数は，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-macro-add-optional-param"
 \end_inset
 
-で作ることができます。最初の必須引数は、ツールバーボタンの
+で作ることができます．最初の必須引数は，ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-macro-make-optional"
 \end_inset
 
-を使って、非必須引数にすることができます。二つ目の青枠には、\SpecialChar LyX
-中でのマクロの表示のしかたを定義することができます。通常は、定義したとおりに表示された方が便利なので
-、この枠は空白にしておきます。しかし、画面の過半を占拠してしまうようなマクロを作ってしまった場合には、たとえばこの枠に
+を使って，非必須引数にすることができます．二つ目の青枠には，\SpecialChar LyX
+中でのマクロの表示のしかたを定義することができます．通常は，定義したとおりに表示された方が便利なので
+，この枠は空白にしておきます．しかし，画面の過半を占拠してしまうようなマクロを作ってしまった場合には，たとえばこの枠に
 \begin_inset Newline newline
 \end_inset
 
@@ -32804,29 +32756,29 @@ qG:
 
 
 \series default
-のように入れることができます。このようにすると、マクロ名と引数のみが\SpecialChar LyX
-上に表示され、見通しが良くなります。一方、出力での数式は、最初の枠で定義したように表示されま
-す。
+のように入れることができます．このようにすると，マクロ名と引数のみが\SpecialChar LyX
+上に表示され，見通しが良くなります．一方，出力での数式は，最初の枠で定義したように表示されま
+す．
 \begin_inset Newline newline
 \end_inset
 
-さらに、数式中のマクロ表示は、マクロの中にカーソルを置いて、
+さらに，数式中のマクロ表示は，マクロの中にカーソルを置いて，
 \family sans
 表示\SpecialChar menuseparator
 数式マクロを展開(畳む)
 \family default
-メニューを使うことで、マクロ毎に変えることができます。
+メニューを使うことで，マクロ毎に変えることができます．
 \end_layout
 
 \begin_layout Standard
-マクロを使うには、数式中にマクロ名をコマンドとして入れます。上記の例では、
+マクロを使うには，数式中にマクロ名をコマンドとして入れます．上記の例では，
 \series bold
 
 \backslash
 qG
 \series default
-とします。このマクロは、\SpecialChar LyX
-中では以下のように表示されます。
+とします．このマクロは，\SpecialChar LyX
+中では以下のように表示されます．
 \begin_inset Newline newline
 \end_inset
 
@@ -32849,7 +32801,7 @@ qG
 \begin_inset Newline newline
 \end_inset
 
-以下は、上記の例に、引数
+以下は，上記の例に，引数
 \begin_inset Formula $x$
 \end_inset
 
@@ -32861,7 +32813,7 @@ qG
 \begin_inset Formula $B$
 \end_inset
 
-を指定したものです。
+を指定したものです．
 \end_layout
 
 \begin_layout Standard
@@ -32877,43 +32829,43 @@ qG
 
 \begin_layout Standard
 \SpecialChar LyX
-は、
+は，
 \family sans
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 編集\SpecialChar menuseparator
 制御
 \family default
-メニューで、マクロを編集するのに複数の様式を用意しています。あなたに最も合った様式を見つけるには、様式を選択してから、違いを見るために数式マクロにカーソルを合わ
-せてみてください。
+メニューで，マクロを編集するのに複数の様式を用意しています．あなたに最も合った様式を見つけるには，様式を選択してから，違いを見るために数式マクロにカーソルを合わ
+せてみてください．
 \end_layout
 
 \begin_layout Standard
-数式マクロは、文書書き出し時に、内部的に
+数式マクロは，文書書き出し時に，内部的に
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドに変換されます。こうして生成された
+コマンドに変換されます．こうして生成された
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドは、\SpecialChar LaTeX
-プリアンブルには置かれませんので、マクロは、文書中、マクロ定義ボックスよりも後の数式でのみ使うことができます。
+コマンドは，\SpecialChar LaTeX
+プリアンブルには置かれませんので，マクロは，文書中，マクロ定義ボックスよりも後の数式でのみ使うことができます．
 \end_layout
 
 \begin_layout Standard
-数式マクロは、
+数式マクロは，
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドから直接作ることもできます。たとえば、\SpecialChar LyX
-中に通常の文章として、
+コマンドから直接作ることもできます．たとえば，\SpecialChar LyX
+中に通常の文章として，
 \series bold
 
 \begin_inset Newline newline
@@ -32931,7 +32883,7 @@ xleftarrow[#2]{#1}}
 
 
 \series default
-というコマンドを書き入れ、この全体を選択して、
+というコマンドを書き入れ，この全体を選択して，
 \begin_inset Flex Ruby
 status collapsed
 
@@ -32955,18 +32907,18 @@ status collapsed
 \family sans
 Ctrl+M
 \family default
-を押すと、このコマンドは数式マクロに変換されます。この方法を使うに当たっては、
+を押すと，このコマンドは数式マクロに変換されます．この方法を使うに当たっては，
 \series bold
 
 \backslash
 newcommand
 \series default
-コマンドが正しく入力されていることに気をつけなくてはなりません。さもないと、間違ったマクロが作られてしまって、\SpecialChar LaTeX
-エラーが発生します。
+コマンドが正しく入力されていることに気をつけなくてはなりません．さもないと，間違ったマクロが作られてしまって，\SpecialChar LaTeX
+エラーが発生します．
 \end_layout
 
 \begin_layout Standard
-数式マクロには、まだ、マクロ定義中に再帰的に数式を入れてしまうと、正しく処理されないという問題が残っています。したがって、第
+数式マクロには，まだ，マクロ定義中に再帰的に数式を入れてしまうと，正しく処理されないという問題が残っています．したがって，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:newcommandコマンド"
@@ -32979,12 +32931,12 @@ reference "subsec:newcommandコマンド"
 \backslash
 fb
 \series default
-は、マクロとしては作ることができません。
+は，マクロとしては作ることができません．
 \end_layout
 
 \begin_layout Standard
-カーソルがマクロ定義ボックスの中にあるとき、\SpecialChar LyX
-中に以下のようなマクロツールバーが表示されます。
+カーソルがマクロ定義ボックスの中にあるとき，\SpecialChar LyX
+中に以下のようなマクロツールバーが表示されます．
 \end_layout
 
 \begin_layout Standard
@@ -33021,7 +32973,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-マクロツールバーは、左から右に、以下の各ボタンがあります。
+マクロツールバーは，左から右に，以下の各ボタンがあります．
 \end_layout
 
 \begin_layout Standard
@@ -33415,8 +33367,8 @@ status open
 
 \begin_layout Standard
 \SpecialChar LyX
-では、\SpecialChar LyX
-の数式エディタで書かれた数式表現と、外部プログラムやユーザ定義スクリプトとの間のやり取りが可能です。現在サポートされているプログラムは、
+では，\SpecialChar LyX
+の数式エディタで書かれた数式表現と，外部プログラムやユーザ定義スクリプトとの間のやり取りが可能です．現在サポートされているプログラムは，
 \family sans
 Maple
 \family default
@@ -33432,7 +33384,7 @@ Maxima
 \family sans
 Octave
 \family default
-です。サポートされている数式表現は、非常に単純なものに限られていますので、ご注意ください。
+です．サポートされている数式表現は，非常に単純なものに限られていますので，ご注意ください．
 \end_layout
 
 \begin_layout Subsection
@@ -33440,21 +33392,21 @@ Octave
 \end_layout
 
 \begin_layout Standard
-数式表現を書いた後、
+数式表現を書いた後，
 \family sans
 編集\SpecialChar menuseparator
 数式\SpecialChar menuseparator
 コンピュータ代数システムを使用
 \family default
-メニューで、コンピュータに導入済みのプログラムを選択します。その後、計算結果が、数式表現の右に「=」演算子とともに表示されます。
+メニューで，コンピュータに導入済みのプログラムを選択します．その後，計算結果が，数式表現の右に「=」演算子とともに表示されます．
 \end_layout
 
 \begin_layout Standard
-下記は、どのような計算が可能かをいくつか例示したものです(出力は
+下記は，どのような計算が可能かをいくつか例示したものです(出力は
 \family typewriter
 Maxima
 \family default
-です)。
+です)．
 \end_layout
 
 \begin_layout Itemize
@@ -33479,6 +33431,38 @@ Maxima
 \end_layout
 
 \begin_layout Itemize
+\begin_inset Formula $\int\left(\frac{1}{1+x^{3}}\right)dx=-\frac{\log\left(x^{2}-x+1\right)}{6}+\frac{\arctan\left(\frac{2\,x-1}{\sqrt{3}}\right)}{\sqrt{3}}+\frac{\log\left(x+1\right)}{3}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\lang english
+Note:
+\series default
+ One needs to use proper delimiter insets 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+ instead of simple '(' ')' characters.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $\det\left[\begin{array}{ccc}
 1 & 6 & 7\\
 2 & 5 & 8\\
@@ -33496,12 +33480,26 @@ Maxima
 
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Formula $powerseries\left(-\log\left(5-x\right),x,1\right)=\sum_{{\mathit{i}_{2}}=0}^{\infty}{\frac{4^{-{\mathit{i}_{2}}-1}\,\left(x-1\right)^{{\mathit{i}_{2}}+1}}{{\mathit{i}_{2}}+1}}-\log4$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $solve\left(x_{1}+y_{1}^{3}=y_{1}+x_{1}^{2},x_{1}\right)=\left[x_{1}=-\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}-1}{2},x_{1}=\frac{\sqrt{4\,y_{1}^{3}-4\,y_{1}+1}+1}{2}\right]$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 捷径
 \end_layout
 
 \begin_layout Standard
-現在のところ、代数プログラムを呼び出すための
+現在のところ，代数プログラムを呼び出すための
 \begin_inset Flex Ruby
 status collapsed
 
@@ -33521,7 +33519,7 @@ status collapsed
 
 \end_inset
 
-はありません。しかし、捷径を
+はありません．しかし，捷径を
 \family sans
 math-extern
 \family default
@@ -33533,7 +33531,7 @@ math-extern
 関数篇
 \family default
 \emph default
-』参照)。例えば、数式エディタ中で
+』参照)．例えば，数式エディタ中で
 \family sans
 リターン
 \family default
@@ -33557,11 +33555,11 @@ status collapsed
 
 \end_inset
 
-をバインドさせることもできます。それを
+をバインドさせることもできます．それを
 \family typewriter
 Maxima
 \family default
-にバインドするには、下記の捷径定義コマンドを使用します。
+にバインドするには，下記の捷径定義コマンドを使用します．
 \end_layout
 
 \begin_layout Standard
@@ -33599,16 +33597,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式中の負の数は、数の前の負符号が、差演算子記号と同じ長さに設定されてしまうために、汚く見えてしまうことがあります。負の数を通常の文章として書くと、負符号は正し
-く表示されます。
+数式中の負の数は，数の前の負符号が，差演算子記号と同じ長さに設定されてしまうために，汚く見えてしまうことがあります．負の数を通常の文章として書くと，負符号は正し
+く表示されます．
 \end_layout
 
 \begin_layout Standard
-したがって、この問題は、負符号を数式テキストに変換することによって、解消されます。
+したがって，この問題は，負符号を数式テキストに変換することによって，解消されます．
 \end_layout
 
 \begin_layout Standard
-以下は、この問題を示す例です。
+以下は，この問題を示す例です．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -33743,11 +33741,11 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LaTeX
-では、英語の慣習にしたがい、数式中のコンマを数字の位区切りに使用します。よって、数式中のコンマの後ろには、つねに空白が加わります。
+では，英語の慣習にしたがい，数式中のコンマを数字の位区切りに使用します．よって，数式中のコンマの後ろには，つねに空白が加わります．
 \end_layout
 
 \begin_layout Standard
-これを回避するためには、コンマを選択して、数式テキストに変更して下さい(
+これを回避するためには，コンマを選択して，数式テキストに変更して下さい(
 \begin_inset Flex Ruby
 status collapsed
 
@@ -33773,11 +33771,11 @@ type  "shortcut"
 arg   "math-mode"
 \end_inset
 
-)。
+)．
 \end_layout
 
 \begin_layout Standard
-文書中の数式コンマを、すべて小数点として使うには、\SpecialChar LaTeX
+文書中の数式コンマを，すべて小数点として使うには，\SpecialChar LaTeX
 プリアンブルに
 \end_layout
 
@@ -33790,7 +33788,7 @@ usepackage{icomma}
 \end_layout
 
 \begin_layout Standard
-という行を加えて、
+という行を加えて，
 \series bold
 icomma.sty
 \series default
@@ -33803,7 +33801,7 @@ status collapsed
 \series bold
 icomma
 \series default
-は、\SpecialChar LaTeX
+は，\SpecialChar LaTeX
 パッケージ
 \series bold
 was
@@ -33831,7 +33829,7 @@ vspace{4mm}
 
 \end_inset
 
-に含まれています。
+に含まれています．
 \end_layout
 
 \end_inset
@@ -33846,7 +33844,7 @@ status collapsed
 
 \end_inset
 
-ファイルを読み込みます。
+ファイルを読み込みます．
 \end_layout
 
 \begin_layout Subsection
@@ -33890,7 +33888,7 @@ status collapsed
 braket
 \series default
  は標準的\SpecialChar LaTeX
-頒布版のすべてに含まれています。
+頒布版のすべてに含まれています．
 \end_layout
 
 \end_inset
@@ -33905,7 +33903,7 @@ status collapsed
 
 \end_inset
 
-には、定義済みのベクトルが提供されており、
+には，定義済みのベクトルが提供されており，
 \end_layout
 
 \begin_layout Standard
@@ -33918,7 +33916,7 @@ usepackage{braket}
 
 \begin_layout Standard
 という\SpecialChar LaTeX
-プリアンブル行で読み込むことができます。
+プリアンブル行で読み込むことができます．
 \end_layout
 
 \begin_layout Standard
@@ -33939,17 +33937,17 @@ ifbraket
 status open
 
 \begin_layout Plain Layout
-以下の表は、
+以下の表は，
 \series bold
 braket
 \series default
  \SpecialChar LaTeX
-パッケージが導入済みのときのみ表示されます。
+パッケージが導入済みのときのみ表示されます．
 \end_layout
 
 \end_inset
 
-以下のコマンドが定義されています。
+以下のコマンドが定義されています．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -34080,7 +34078,7 @@ phi
 \backslash
 Braket
 \series default
-コマンドを使うと、以下のように、すべての縦棒がそれを囲む括弧と同じ大きさに設定されます。
+コマンドを使うと，以下のように，すべての縦棒がそれを囲む括弧と同じ大きさに設定されます．
 \begin_inset Formula 
 \[
 \Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
@@ -34111,7 +34109,7 @@ status open
 braket
 \series default
  \SpecialChar LaTeX
-パッケージが導入されていないときには、以下が表示されます。
+パッケージが導入されていないときには，以下が表示されます．
 \end_layout
 
 \end_inset
@@ -34120,12 +34118,12 @@ braket
 \end_layout
 
 \begin_layout Standard
-本小節の全体を出力で見るためには、
+本小節の全体を出力で見るためには，
 \series bold
 braket
 \series default
  \SpecialChar LaTeX
-パッケージを導入する必要があります。
+パッケージを導入する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -34151,20 +34149,20 @@ fi
 \backslash
 Braket
 \series default
-と同じ効果は、第
+と同じ効果は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:自動の括弧丈"
 
 \end_inset
 
-節に説明されているとおり、
+節に説明されているとおり，
 \series bold
 
 \backslash
 middle
 \series default
-コマンドを用いることによっても実現できます。
+コマンドを用いることによっても実現できます．
 \end_layout
 
 \begin_layout Subsection
@@ -34189,7 +34187,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-分数用の自己定義コマンドを定義するには、以下の書式を持つ
+分数用の自己定義コマンドを定義するには，以下の書式を持つ
 \series bold
 
 \backslash
@@ -34207,7 +34205,7 @@ genfrac
 
 \end_inset
 
-コマンドを使います。
+コマンドを使います．
 \end_layout
 
 \begin_layout Standard
@@ -34237,7 +34235,7 @@ genfrac
 \end_layout
 
 \begin_layout Standard
-ここで「様式」は、0
+ここで「様式」は，0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -34245,7 +34243,7 @@ genfrac
 \begin_inset space \thinspace{}
 \end_inset
 
-3の範囲の数字です。
+3の範囲の数字です．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -34367,28 +34365,28 @@ genfrac
 \end_layout
 
 \begin_layout Standard
-「様式」を指定しないときには、
+「様式」を指定しないときには，
 \series bold
 
 \backslash
 frac
 \series default
-コマンドのように、大きさは周囲の環境に合わせて調節されます。 
+コマンドのように，大きさは周囲の環境に合わせて調節されます． 
 \end_layout
 
 \begin_layout Standard
-「分数線の厚み」を指定しないときには、既定値である0.4
+「分数線の厚み」を指定しないときには，既定値である0.4
 \begin_inset space \thinspace{}
 \end_inset
 
-ptが用いられます。
+ptが用いられます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-たとえば、第
+たとえば，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:分数"
@@ -34407,7 +34405,7 @@ dfrac
 \backslash
 tbinom
 \series default
-コマンドは、
+コマンドは，
 \end_layout
 
 \begin_layout Standard
@@ -34439,14 +34437,14 @@ genfrac{(}{)}{0pt}{1}{#1}{#2}}
 \end_layout
 
 \begin_layout Standard
-というコマンドで定義できます。
+というコマンドで定義できます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-分数線の厚みを非必須の引数として与えることのできる分数を定義するには、\SpecialChar LaTeX
+分数線の厚みを非必須の引数として与えることのできる分数を定義するには，\SpecialChar LaTeX
 プリアンブルに
 \end_layout
 
@@ -34463,11 +34461,11 @@ genfrac{}{}{#1}{}{#2}{#3}}
 \end_layout
 
 \begin_layout Standard
-という行を入れます。
+という行を入れます．
 \end_layout
 
 \begin_layout Standard
-以下は、そのテストです。
+以下は，そのテストです．
 \begin_inset Formula 
 \begin{align*}
 \text{コマンド} &  & \mathrm{\backslash fracS[1mm]\backslash\{A\to\backslash\{B} &  & \mathrm{\backslash fracS[5mm]\backslash\{A\to\backslash\{B}\\
@@ -34476,7 +34474,7 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \end_inset
 
-ご覧になってわかるように、分子や分母から分数線までの距離は、分数線の厚みの約3倍になります。
+ご覧になってわかるように，分子や分母から分数線までの距離は，分数線の厚みの約3倍になります．
 \end_layout
 
 \begin_layout Subsection
@@ -34494,7 +34492,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式の全体もしくは一部を消去するには、4つの方法があります。
+数式の全体もしくは一部を消去するには，4つの方法があります．
 \begin_inset Separator latexpar
 \end_inset
 
@@ -34520,12 +34518,12 @@ ifcancel
 status open
 
 \begin_layout Plain Layout
-下記の表は、\SpecialChar LaTeX
+下記の表は，\SpecialChar LaTeX
 パッケージ
 \series bold
 cancel
 \series default
-が導入済みの時のみ表示されます。
+が導入済みの時のみ表示されます．
 \end_layout
 
 \end_inset
@@ -34718,7 +34716,7 @@ A=B
 \backslash
 cancelto
 \series default
-は、以下のように、とくに数式中の分数の約分を表示するのに適しています。
+は，以下のように，とくに数式中の分数の約分を表示するのに適しています．
 \begin_inset Formula 
 \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
@@ -34736,7 +34734,7 @@ cancelto
 \backslash
 cancelto
 \series default
-の「下付き文字」寸法の大きさを変えるには、
+の「下付き文字」寸法の大きさを変えるには，
 \end_layout
 
 \begin_layout Standard
@@ -34749,7 +34747,7 @@ PassOptionsToPackage{オプション}{cancel}
 
 \begin_layout Standard
 という行を\SpecialChar LaTeX
-プリアンブルに書き加えてください。ここで、
+プリアンブルに書き加えてください．ここで，
 \series bold
 オプション
 \series default
@@ -34757,16 +34755,16 @@ PassOptionsToPackage{オプション}{cancel}
 \series bold
 samesize
 \series default
-にすると、取り消した部分と同じ寸法になり、
+にすると，取り消した部分と同じ寸法になり，
 \series bold
 Smaller
 \series default
-にすると、通常よりも少し小さくなります。
+にすると，通常よりも少し小さくなります．
 \end_layout
 
 \begin_layout Standard
-取り消し線に色を付けるには、\SpecialChar TeX
-コードで以下のコマンドを書き加えてください。
+取り消し線に色を付けるには，\SpecialChar TeX
+コードで以下のコマンドを書き加えてください．
 \end_layout
 
 \begin_layout Standard
@@ -34786,7 +34784,7 @@ color{red}}
 \series bold
 red
 \series default
-は、お好みの色に変更することができます。
+は，お好みの色に変更することができます．
 \end_layout
 
 \begin_layout Standard
@@ -34851,7 +34849,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-他の微調整については、
+他の微調整については，
 \series bold
 cancel
 \series default
@@ -34862,7 +34860,7 @@ key "cancel"
 
 \end_inset
 
-をご覧ください。
+をご覧ください．
 \begin_inset Index idx
 status collapsed
 
@@ -34893,12 +34891,12 @@ else
 status open
 
 \begin_layout Plain Layout
-下記の表は、\SpecialChar LaTeX
+下記の表は，\SpecialChar LaTeX
 パッケージ
 \series bold
 cancel
 \series default
-が導入済みの時のみ表示されます。
+が導入済みの時のみ表示されます．
 \end_layout
 
 \end_inset
@@ -34907,12 +34905,12 @@ cancel
 \end_layout
 
 \begin_layout Standard
-本小節の続きを見るには、\SpecialChar LaTeX
+本小節の続きを見るには，\SpecialChar LaTeX
 パッケージ
 \series bold
 cancel
 \series default
-を導入する必要があります。
+を導入する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -34953,7 +34951,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式を節見出し中で使う際には、以下のことに留意しなくてはなりません。
+数式を節見出し中で使う際には，以下のことに留意しなくてはなりません．
 \end_layout
 
 \begin_layout Standard
@@ -34979,8 +34977,8 @@ status collapsed
 
 \end_inset
 
-サポートが有効になっている場合、PDFのしおりが、目次にある節見出しすべてに関して生成されます。しおり中に数式を入れることはPDFの慣習に違反しているため、節見
-出しに数式が含まれている場合、数式はしおり中に誤った文字列として表示されます。
+サポートが有効になっている場合，PDFのしおりが，目次にある節見出しすべてに関して生成されます．しおり中に数式を入れることはPDFの慣習に違反しているため，節見
+出しに数式が含まれている場合，数式はしおり中に誤った文字列として表示されます．
 \end_layout
 
 \end_inset
@@ -34989,21 +34987,21 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-これらの問題は、
+これらの問題は，
 \family sans
 挿入\SpecialChar menuseparator
 短縮タイトル
 \family default
-メニューを使って、問題となる節見出しの最後に短縮タイトルを入れることで解決することができます。短縮タイトルは、目次が美しく整形されるように、多行にわたる節見出し
-に別名を付けるものです。目次中には、短縮タイトルのみが表示され、したがってPDFしおり中にも短縮タイトルのみが表示されます。
+メニューを使って，問題となる節見出しの最後に短縮タイトルを入れることで解決することができます．短縮タイトルは，目次が美しく整形されるように，多行にわたる節見出し
+に別名を付けるものです．目次中には，短縮タイトルのみが表示され，したがってPDFしおり中にも短縮タイトルのみが表示されます．
 \end_layout
 
 \begin_layout Standard
-数式を目次中でも使わなくてもならないが、
+数式を目次中でも使わなくてもならないが，
 \series bold
 hyperref
 \series default
-も使用しなくてはならないときには、
+も使用しなくてはならないときには，
 \end_layout
 
 \begin_layout Standard
@@ -35028,16 +35026,16 @@ texorpdfstring
 
 \begin_layout Standard
 というコマンドを\SpecialChar TeX
-モードで使う方法があります。
+モードで使う方法があります．
 \end_layout
 
 \begin_layout Standard
-「部分」は、見出し中、PDFしおりに表示したくない部分です。これは、文字・数式・脚註のほかに相互参照をとることもできます。しおりには、この部分の代わりに、「代替
-文字列」が用いられます。
+「部分」は，見出し中，PDFしおりに表示したくない部分です．これは，文字・数式・脚註のほかに相互参照をとることもできます．しおりには，この部分の代わりに，「代替
+文字列」が用いられます．
 \end_layout
 
 \begin_layout Standard
-以下の二つは、見出しの例です。
+以下の二つは，見出しの例です．
 \begin_inset VSpace -3mm
 \end_inset
 
@@ -35120,17 +35118,17 @@ unboldmath
 
 \end_inset
 
-一つめの見出しでは短縮タイトルが使われており、二つめの見出しでは
+一つめの見出しでは短縮タイトルが使われており，二つめの見出しでは
 \series bold
 
 \backslash
 texorpdfstring
 \series default
-が使われています。
+が使われています．
 \end_layout
 
 \begin_layout Standard
-他の節見出しと同じ書式を得るために、上の見出し全体は
+他の節見出しと同じ書式を得るために，上の見出し全体は
 \series bold
 boldmath
 \series default
@@ -35146,12 +35144,12 @@ reference "subsec:ボールド体の数式"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Subsection
@@ -35169,7 +35167,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-多段組文中に数式を作ると、段の中に収まりきらないことも多く、ページ幅全体に広がるようにする必要があることがあります。これは、
+多段組文中に数式を作ると，段の中に収まりきらないことも多く，ページ幅全体に広がるようにする必要があることがあります．これは，
 \series bold
 multicol
 \series default
@@ -35182,8 +35180,8 @@ status collapsed
 \series bold
 multicol
 \series default
-は、標準的\SpecialChar LaTeX
-頒布版のすべてに含まれています。
+は，標準的\SpecialChar LaTeX
+頒布版のすべてに含まれています．
 \end_layout
 
 \end_inset
@@ -35199,7 +35197,7 @@ status collapsed
 \end_inset
 
  \SpecialChar LaTeX
-パッケージを、
+パッケージを，
 \end_layout
 
 \begin_layout Standard
@@ -35212,7 +35210,7 @@ usepackage{multicol}
 
 \begin_layout Standard
 という\SpecialChar LaTeX
-プリアンブル行を書いて読み込むことで、実現できます。
+プリアンブル行を書いて読み込むことで，実現できます．
 \end_layout
 
 \begin_layout Standard
@@ -35220,7 +35218,7 @@ usepackage{multicol}
 status open
 
 \begin_layout Plain Layout
-ここで、
+ここで，
 \family sans
 文書\SpecialChar menuseparator
 設定
@@ -35229,7 +35227,7 @@ status open
 \family sans
 本文レイアウト
 \family default
-で、
+で，
 \family sans
 二段組文書
 \family default
@@ -35237,7 +35235,7 @@ status open
 \emph on
 有効にしてはならない
 \emph default
-ことに注意してください。
+ことに注意してください．
 \end_layout
 
 \end_inset
@@ -35259,7 +35257,7 @@ begin{multicols}{段数}
 
 \begin_layout Standard
 というコマンドを\SpecialChar TeX
-モードで書き入れます。「段数」は、2
+モードで書き入れます．「段数」は，2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35267,7 +35265,7 @@ begin{multicols}{段数}
 \begin_inset space \thinspace{}
 \end_inset
 
-10のあいだの数字です。多段組文の終わる数式の前には、
+10のあいだの数字です．多段組文の終わる数式の前には，
 \end_layout
 
 \begin_layout Standard
@@ -35280,29 +35278,29 @@ end{multicols}
 
 \begin_layout Standard
 というコマンドを\SpecialChar TeX
-モードで入れます。
+モードで入れます．
 \end_layout
 
 \begin_layout Standard
-このコマンドによって、数式の前にいくらかの余白が、自動的に作られます。これをなくすには、数式の前に-6
+このコマンドによって，数式の前にいくらかの余白が，自動的に作られます．これをなくすには，数式の前に-6
 \begin_inset space \thinspace{}
 \end_inset
 
-mmの垂直空白を入れて下さい。数式様式
+mmの垂直空白を入れて下さい．数式様式
 \series bold
 
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-数式様式に関しては、第
+数式様式に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
@@ -35313,15 +35311,15 @@ reference "sec:数式様式"
 \series bold
 行頭下げ
 \series default
-を使用している場合には、代わりに-9
+を使用している場合には，代わりに-9
 \begin_inset space \thinspace{}
 \end_inset
 
-mmの垂直空白を入れて下さい。
+mmの垂直空白を入れて下さい．
 \end_layout
 
 \begin_layout Standard
-以下は、別行立て数式を含む、多段組文の例です。
+以下は，別行立て数式を含む，多段組文の例です．
 \end_layout
 
 \begin_layout Standard
@@ -35461,11 +35459,11 @@ reference "eq:within"
 
 \end_inset
 
-式のように、数式内で変数の説明をするには、
+式のように，数式内で変数の説明をするには，
 \begin_inset Formula $n$
 \end_inset
 
-個の変数が使われている場合、左寄せの列を持つ
+個の変数が使われている場合，左寄せの列を持つ
 \begin_inset Formula $2\times n$
 \end_inset
 
@@ -35474,19 +35472,19 @@ reference "eq:within"
 status collapsed
 
 \begin_layout Plain Layout
-行列に関しては、第
+行列に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:行列"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
-。説明を小さな文字にするには、行列の前に、たとえば
+．説明を小さな文字にするには，行列の前に，たとえば
 \series bold
 
 \backslash
@@ -35497,19 +35495,19 @@ footnotesize
 status collapsed
 
 \begin_layout Plain Layout
-フォント寸法に関しては、第
+フォント寸法に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書体寸法"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
@@ -35520,21 +35518,21 @@ reference "subsec:書体寸法"
 status collapsed
 
 \begin_layout Plain Layout
-数式様式に関しては、第
+数式様式に関しては，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
 
 \series default
-を使っている場合、行列を数式とページ余白から等距離に置くために、行列の前後に
+を使っている場合，行列を数式とページ余白から等距離に置くために，行列の前後に
 \series bold
 
 \backslash
@@ -35551,23 +35549,23 @@ status collapsed
 \backslash
 hfill
 \series default
-は、
+は，
 \series bold
 行頭下げ
 \series default
-様式のときのみ機能します。第
+様式のときのみ機能します．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:可変長の空白"
 
 \end_inset
 
-節をご覧下さい。
+節をご覧下さい．
 \end_layout
 
 \end_inset
 
-を入れます。
+を入れます．
 \end_layout
 
 \begin_layout Standard
@@ -35575,22 +35573,22 @@ reference "subsec:可変長の空白"
 \series bold
 中央揃え
 \series default
-を使っている場合、数式を字下げするには、第
+を使っている場合，数式を字下げするには，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:flalign環境"
 
 \end_inset
 
-節で述べた方法を使用します。
+節で述べた方法を使用します．
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:within"
 
 \end_inset
 
-式には5列があり、最初の2列には数式、3列めには行列、最終列には空の\SpecialChar TeX
-括弧が入っています。
+式には5列があり，最初の2列には数式，3列めには行列，最終列には空の\SpecialChar TeX
+括弧が入っています．
 \begin_inset Formula 
 \begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
@@ -35627,11 +35625,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ほとんどの数式書体は、イタリック体のギリシャ小文字しか提供していません。しかし、
+ほとんどの数式書体は，イタリック体のギリシャ小文字しか提供していません．しかし，
 \begin_inset Formula $\pi$
 \end_inset
 
-中間子やニュートリノのような素粒子の記号には、アップライト体のギリシャ文字が必要とされます。
+中間子やニュートリノのような素粒子の記号には，アップライト体のギリシャ文字が必要とされます．
 \series bold
 upgreek.sty
 \series default
@@ -35644,7 +35642,7 @@ status collapsed
 \series bold
 upgreek
 \series default
-は、
+は，
 \series bold
 was
 \series default
@@ -35672,7 +35670,7 @@ vspace{4mm}
 \end_inset
 
  \SpecialChar LaTeX
-パッケージの一部です。
+パッケージの一部です．
 \end_layout
 
 \end_inset
@@ -35700,7 +35698,7 @@ usepackage{upgreek}
 
 \begin_layout Standard
 という\SpecialChar LaTeX
-プリアンブル行で読み込めば、これらが提供されるようになります。
+プリアンブル行で読み込めば，これらが提供されるようになります．
 \begin_inset ERT
 status collapsed
 
@@ -35718,35 +35716,35 @@ ifupgreek
 status open
 
 \begin_layout Plain Layout
-以下の表は、
+以下の表は，
 \series bold
 upgreek
 \series default
  \SpecialChar LaTeX
-パッケージが導入済みのときのみ表示されます。
+パッケージが導入済みのときのみ表示されます．
 \end_layout
 
 \end_inset
 
-アップライト体のギリシャ小文字は、ギリシャ小文字のコマンド名の前に
+アップライト体のギリシャ小文字は，ギリシャ小文字のコマンド名の前に
 \series bold
 up
 \series default
-を付けると作ることができます。たとえば
+を付けると作ることができます．たとえば
 \series bold
 
 \backslash
 uptau
 \series default
-コマンドは、
+コマンドは，
 \begin_inset Formula $\uptau$
 \end_inset
 
-のようになります。
+のようになります．
 \end_layout
 
 \begin_layout Standard
-これらのコマンドを使えば、以下のような素粒子の反応を組版することができるようになります。
+これらのコマンドを使えば，以下のような素粒子の反応を組版することができるようになります．
 \begin_inset Formula 
 \[
 \uppi^{+}\to\upmu^{+}+\upnu_{\upmu}
@@ -35758,11 +35756,11 @@ uptau
 \end_layout
 
 \begin_layout Standard
-アップライト体の文字は、イタリック体のものよりも太く幅広です。したがって、これらを「
+アップライト体の文字は，イタリック体のものよりも太く幅広です．したがって，これらを「
 \begin_inset Formula $\mu m$
 \end_inset
 
-」のような単位に使うべきではありません。
+」のような単位に使うべきではありません．
 \end_layout
 
 \begin_layout Standard
@@ -35783,12 +35781,12 @@ else
 status open
 
 \begin_layout Plain Layout
-以下は、
+以下は，
 \series bold
 upgreek
 \series default
  \SpecialChar LaTeX
-パッケージが導入されていないときのみ表示されます。
+パッケージが導入されていないときのみ表示されます．
 \end_layout
 
 \end_inset
@@ -35797,12 +35795,12 @@ upgreek
 \end_layout
 
 \begin_layout Standard
-この小節のすべてを出力で見るには、
+この小節のすべてを出力で見るには，
 \series bold
 upgreek
 \series default
  \SpecialChar LaTeX
-パッケージを導入する必要があります。
+パッケージを導入する必要があります．
 \end_layout
 
 \begin_layout Standard
@@ -35836,11 +35834,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-折にふれて、テキスト文字を直接数式中に入れたいときがあるでしょう。たとえば、中黒「·」を
+折にふれて，テキスト文字を直接数式中に入れたいときがあるでしょう．たとえば，中黒「·」を
 \begin_inset Formula $\nu=5·10^{5}\,\mathrm{Hz}$
 \end_inset
 
-のように数式中で頻繁に用いようとすると、この中黒はすべてのエンコーディングでテキスト文字として定義されているために、代わりに
+のように数式中で頻繁に用いようとすると，この中黒はすべてのエンコーディングでテキスト文字として定義されているために，代わりに
 \series bold
 
 \backslash
@@ -35858,12 +35856,12 @@ reference "subsec:二項演算子"
 
 \end_inset
 
-節参照。
+節参照．
 \end_layout
 
 \end_inset
 
-コマンドを挿入しなくてはならなくなることでしょう。しかし、
+コマンドを挿入しなくてはならなくなることでしょう．しかし，
 \end_layout
 
 \begin_layout Standard
@@ -35887,7 +35885,7 @@ i}
 
 \begin_layout Standard
 という\SpecialChar LaTeX
-プリアンブル行を使えば、エンコーディングに変更を加えることができます。
+プリアンブル行を使えば，エンコーディングに変更を加えることができます．
 \end_layout
 
 \begin_layout Standard
@@ -35897,7 +35895,7 @@ i}
 設定\SpecialChar menuseparator
 言語
 \family default
-メニュー)は、キーボード上の
+メニュー)は，キーボード上の
 \begin_inset Flex Ruby
 status collapsed
 
@@ -35917,53 +35915,53 @@ status collapsed
 
 \end_inset
 
-が押されたときにどの文字が表示されるかを指定します。「·」文字に対応する鍵が押されると、内部的には
+が押されたときにどの文字が表示されるかを指定します．「·」文字に対応する鍵が押されると，内部的には
 \series bold
 
 \backslash
 textperiodcentered
 \series default
-コマンドが使用されます。しかし、このコマンドは数式中では使えないので、\SpecialChar LaTeX
-エラーが発生するのです。変更後のエンコーディングでは、文字が数式中に挿入されたか否かによっ
-て、正しいコマンドが自動的に選択されます。
+コマンドが使用されます．しかし，このコマンドは数式中では使えないので，\SpecialChar LaTeX
+エラーが発生するのです．変更後のエンコーディングでは，文字が数式中に挿入されたか否かによっ
+て，正しいコマンドが自動的に選択されます．
 \end_layout
 
 \begin_layout Standard
-定義ファイル中には、複数の文字のエンコーディングが保管されています。たとえば、
+定義ファイル中には，複数の文字のエンコーディングが保管されています．たとえば，
 \series bold
 latin9
 \series default
-エンコーディングは、\SpecialChar LaTeX
+エンコーディングは，\SpecialChar LaTeX
 がインストールされたフォルダにある
 \series bold
 latin9.def
 \series default
-ファイルに定義されています。エンコーディングは、\SpecialChar LaTeX
-プリアンブルで変更するべきであって、定義ファイルを変更してはなりません。さもないと、自分の作成した文書は、他のコ
-ンピューターで作業をしている他のユーザーによっては編集することができなくなってしまいます。
+ファイルに定義されています．エンコーディングは，\SpecialChar LaTeX
+プリアンブルで変更するべきであって，定義ファイルを変更してはなりません．さもないと，自分の作成した文書は，他のコ
+ンピューターで作業をしている他のユーザーによっては編集することができなくなってしまいます．
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
 
-中黒の他にこの文書では、角度記号「
+中黒の他にこの文書では，角度記号「
 \begin_inset Formula $^{\circ}$
 \end_inset
 
-」が、数式に直接入れることができるよう、以下のような\SpecialChar LaTeX
+」が，数式に直接入れることができるよう，以下のような\SpecialChar LaTeX
 プリアンブル行で定義されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 【訳註】p\SpecialChar LaTeX
-では、これらの定義は必要ないので、コメントアウトして無効にしてあります。
+では，これらの定義は必要ないので，コメントアウトして無効にしてあります．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Standard
@@ -36002,8 +36000,8 @@ L atexこめんと@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-本文中では、ファイルの\SpecialChar LaTeX
-ソースコードでのみ見ることのできるコメントを、
+本文中では，ファイルの\SpecialChar LaTeX
+ソースコードでのみ見ることのできるコメントを，
 \family sans
 挿入
 \lang english
@@ -36017,7 +36015,7 @@ L atexこめんと@\SpecialChar LaTeX
 \lang japanese
 コメント
 \family default
-メニューで挿入することができます。これと同じことは、数式中ではできませんが、
+メニューで挿入することができます．これと同じことは，数式中ではできませんが，
 \end_layout
 
 \begin_layout Standard
@@ -36029,8 +36027,8 @@ L atexこめんと@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-というコマンドを使えば、\SpecialChar LaTeX
-コメントを挿入することができます。このコマンドを打ち込むと、コメントを書き込むことのできるボックスが生成されます。\SpecialChar LyX
+というコマンドを使えば，\SpecialChar LaTeX
+コメントを挿入することができます．このコマンドを打ち込むと，コメントを書き込むことのできるボックスが生成されます．\SpecialChar LyX
 のバグのせいで
 \begin_inset Foot
 status collapsed
@@ -36048,9 +36046,9 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 \end_inset
 
-、コメント中に、通常の本文や数式内本文そのものを書くことはできませんが、\SpecialChar LaTeX
-出力中に、\SpecialChar LaTeX
-コマンドの形では見ることができます。
+，コメント中に，通常の本文や数式内本文そのものを書くことはできませんが，\SpecialChar LaTeX
+出力中に，\SpecialChar LaTeX
+コマンドの形では見ることができます．
 \lang english
 
 \begin_inset Newline newline
@@ -36058,8 +36056,8 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 
 \lang japanese
-下記は、\SpecialChar LaTeX
-コメントを持つ数式の例です。
+下記は，\SpecialChar LaTeX
+コメントを持つ数式の例です．
 \begin_inset Formula 
 \[
 A=B%\text{これはコメントです。}
@@ -36086,40 +36084,40 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この節は、ISO規範に掲げてある、もっとも重要な組版ルールの要約です
+この節は，ISO規範に掲げてある，もっとも重要な組版ルールの要約です
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-この要約の一部は、ISO規則を取り上げている「Duden」
+この要約の一部は，ISO規則を取り上げている「Duden」
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Duden"
 
 \end_inset
 
-と呼ばれるドイツの半公的辞書から採られています。
+と呼ばれるドイツの半公的辞書から採られています．
 \end_layout
 
 \end_inset
 
-。
+．
 \end_layout
 
 \begin_layout Itemize
-物理単位は、つねに(イタリック文中にあるときも)アップライト体にします
+物理単位は，つねに(イタリック文中にあるときも)アップライト体にします
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-書体様式で指定します。第
+書体様式で指定します．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書体様式"
 
 \end_inset
 
-節を参照。
+節を参照．
 \end_layout
 
 \end_inset
@@ -36132,24 +36130,24 @@ km/h
 \begin_inset Newline newline
 \end_inset
 
-値と単位の間には、最小空白を入れます。第
+値と単位の間には，最小空白を入れます．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:定義済みの空白"
 
 \end_inset
 
-節を参照。
+節を参照．
 \begin_inset Newline newline
 \end_inset
 
-この慣習は、
+この慣習は，
 \series bold
 
 \backslash
 unittwo
 \series default
-コマンドを使用すると、つねに満たされます。このコマンドを数式に入れると、二つの枠が現れます。最初の枠には値をいれ、第二の枠に単位を入れると、上記と同じような結果
+コマンドを使用すると，つねに満たされます．このコマンドを数式に入れると，二つの枠が現れます．最初の枠には値をいれ，第二の枠に単位を入れると，上記と同じような結果
 が得られます：
 \begin_inset Formula $\unit[30]{km/h}$
 \end_inset
@@ -36158,25 +36156,25 @@ unittwo
 \begin_inset space \thinspace{}
 \end_inset
 
-。実は、
+．実は，
 \series bold
 
 \backslash
 unittwo
 \series default
-は、\SpecialChar LaTeX
-コマンドの実体ではなく、
+は，\SpecialChar LaTeX
+コマンドの実体ではなく，
 \series bold
 
 \backslash
 unit[値]{単位}
 \series default
-というコマンドです。したがって、これを\SpecialChar TeX
-コード中で使用することはできません。
+というコマンドです．したがって，これを\SpecialChar TeX
+コード中で使用することはできません．
 \end_layout
 
 \begin_layout Itemize
-百分率記号と千分率記号は、物理単位と同様に組みます：
+百分率記号と千分率記号は，物理単位と同様に組みます：
 \begin_inset Newline newline
 \end_inset
 
@@ -36192,7 +36190,7 @@ unit[値]{単位}
 \begin_inset Formula $15^{\circ}$
 \end_inset
 
-。しかし、単位として用いられるときは別です：15
+．しかし，単位として用いられるときは別です：15
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -36204,7 +36202,7 @@ unit[値]{単位}
 \end_layout
 
 \begin_layout Itemize
-4桁以上の数は、3桁ごとに最小空白を直前に挿入して、グループ化します：18
+4桁以上の数は，3桁ごとに最小空白を直前に挿入して，グループ化します：18
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -36223,38 +36221,38 @@ unit[値]{単位}
 \begin_inset space \thinspace{}
 \end_inset
 
-cmのような寸法には、積記号「
+cmのような寸法には，積記号「
 \begin_inset Formula $\times$
 \end_inset
 
-」を用います。これは、
+」を用います．これは，
 \series bold
 
 \backslash
 times
 \series default
-コマンドか、
+コマンドか，
 \family sans
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号
 \family default
-メニューから入れることができます。
+メニューから入れることができます．
 \end_layout
 
 \begin_layout Itemize
-いくつかの文字を含む関数名は、混乱を防ぐためにアップライト体にします。第
+いくつかの文字を含む関数名は，混乱を防ぐためにアップライト体にします．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:定義済み函数"
 
 \end_inset
 
-節を参照。
+節を参照．
 \end_layout
 
 \begin_layout Itemize
-複数の文字を含む指数は、アップライト体にします：
+複数の文字を含む指数は，アップライト体にします：
 \begin_inset Formula $E_{\mathrm{kin}}$
 \end_inset
 
@@ -36270,7 +36268,7 @@ reference "subsec:定義済み函数"
 \end_layout
 
 \begin_layout Itemize
-微分作用素・積分作用素「d」、オイラー数「e」、虚数単位「i」は、他の変数と間違えることを避けるために、アップライト体にします。
+微分作用素・積分作用素「d」，オイラー数「e」，虚数単位「i」は，他の変数と間違えることを避けるために，アップライト体にします．
 \end_layout
 
 \begin_layout Itemize
@@ -36278,7 +36276,7 @@ reference "subsec:定義済み函数"
 \noun on
 フーリエ
 \noun default
-変換を表す文字は、
+変換を表す文字は，
 \series bold
 
 \backslash
@@ -36311,7 +36309,7 @@ mathscr
 \begin_inset Formula $\mathscr{F}$
 \end_inset
 
-で入れることができます。
+で入れることができます．
 \end_layout
 
 \begin_layout Standard
@@ -36336,7 +36334,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-いくつかの文字や記号は、複数のコマンドから作ることができます。以下は、同義のコマンドの一覧です。
+いくつかの文字や記号は，複数のコマンドから作ることができます．以下は，同義のコマンドの一覧です．
 \end_layout
 
 \begin_layout Standard

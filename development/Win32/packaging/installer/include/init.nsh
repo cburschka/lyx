@@ -14,7 +14,7 @@ Var LyXLangName
 !macro EXTERNAL_INIT COMPONENT
 
   # APP_REGKEY_SETUP = "Software\${APP_NAME}${APP_SERIES_KEY}\Setup"
-  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX16
+  # where ${APP_NAME}${APP_SERIES_KEY} is something like LyX22
   ReadRegStr $ComponentPath SHELL_CONTEXT "${APP_REGKEY_SETUP}" "${COMPONENT} Path"
   
   # BIN_LATEX etc are defined in settings.nsh
@@ -46,20 +46,24 @@ FunctionEnd
 
 Section "!${APP_NAME}" SecCore
  SectionIn RO
+ !if ${SETUPTYPE} == BUNDLE
+  # if no TeX was found MiKTeX will be installed which requires space
+  !if $PathLaTeX == ""
+   AddSize 1020000 # size in KB
+  !endif
+ !endif
 SectionEnd
 
 Section "$(SecFileAssocTitle)" SecFileAssoc
- SectionIn RO
  StrCpy $CreateFileAssociations "true" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
- SectionIn RO
- StrCpy $CreateDesktopIcon "false"
+ StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
 !if ${SETUPTYPE} == BUNDLE
- Section /o "$(SecInstJabRefTitle)" SecInstJabRef
+ Section "$(SecInstJabRefTitle)" SecInstJabRef
   AddSize ${SIZE_JABREF}
   StrCpy $InstallJabRef "true"
  SectionEnd
@@ -164,7 +168,7 @@ SectionEnd
 
 Section /o "English (AU)" SecDEnglishAU
  StrCpy $DictCodes "en_AU,$DictCodes"
- AddSize 587
+ AddSize 651
 SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
@@ -176,7 +180,7 @@ Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_GB,$DictCodes"
- AddSize 652
+ AddSize 760
 SectionEnd
 
 Section /o "English (NZ)" SecDEnglishNZ
@@ -188,7 +192,7 @@ Section "English (US)" SecDEnglishUS
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_US,$DictCodes"
- AddSize 530
+ AddSize 547
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
@@ -239,7 +243,7 @@ SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
- AddSize 3090
+ AddSize 4161
 SectionEnd
 
 Section /o "Galego" SecDGalician
@@ -319,12 +323,12 @@ SectionEnd
 
 Section /o "Norsk (Bokmål)" SecDNorwegianNB
  StrCpy $DictCodes "nb_NO,$DictCodes"
- AddSize 3992
+ AddSize 5291
 SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
- AddSize 1540
+ AddSize 3292
 SectionEnd
 
 Section /o "Occitan" SecDOccitan
@@ -479,7 +483,7 @@ SectionEnd
 
 Section /o "English (US/AU)" SecTEnglishUSAU
  StrCpy $ThesCodes "en_US,$ThesCodes"
- AddSize 21600
+ AddSize 22095
 SectionEnd
 
 Section /o "Español" SecTSpanish
@@ -524,7 +528,12 @@ SectionEnd
 
 Section /o "Norsk (Bokmål)" SecTNorwegianNB
  StrCpy $ThesCodes "nb_NO,$ThesCodes"
- AddSize 2535
+ AddSize 2595
+SectionEnd
+
+Section /o "Norsk (Nynorsk)" SecTNorwegianNN
+ StrCpy $ThesCodes "nn_NO,$ThesCodes"
+ AddSize 2
 SectionEnd
 
 Section /o "Polski" SecTPolish
@@ -1330,6 +1339,13 @@ Function .onInit
    SectionSetFlags ${SecTNorwegianNB} $0
    SectionSetSize ${SecTNorwegianNB} 0
   ${endif}
+  StrCpy $Search "nn_NO"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTNorwegianNN} $0
+   SectionSetSize ${SecTNorwegianNN} 0
+  ${endif}
   StrCpy $Search "pl_PL"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1443,7 +1459,7 @@ Function un.onInit
   ${endif}
   
   # test if JabRef was installed together with LyX
-  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX"
   ${if} $0 == "Yes${APP_SERIES_KEY}"
    SectionSetText 3 "JabRef" # names the corersponding uninstaller section
    StrCpy $JabRefInstalled "Yes"

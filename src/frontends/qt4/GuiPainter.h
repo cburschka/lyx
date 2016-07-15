@@ -105,15 +105,14 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		lyx::graphics::Image const & image);
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is given by \c rtl.
+	/** draw a string at position x, y (y is the baseline). The text
+	 * direction depends on the string itself.
 	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, FontInfo const & f,
-                     bool rtl = false, double wordspacing = 0.0);
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f);
 
-	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is enforced by the \c Font.
+	/** draw a string at position x, y (y is the baseline). The text
+	 * direction is enforced by the \c Font.
 	 * \return the width of the drawn text.
 	 */
 	virtual int text(int x, int y, docstring const & str, Font const & f,
@@ -186,8 +185,14 @@ private:
 	void setQPainterPen(QColor const & col,
 		line_style ls = line_solid, int lw = thin_line);
 
-	// Helper for text() method
-	void do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff);
+	/// Direction for painting text
+	enum Direction { LtR, RtL, Auto };
+
+	/// Helpers for text() method
+	void do_drawText(int x, int y, QString str, Direction dir, FontInfo const & f, QFont ff);
+	///
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f,
+                     Direction dir, double wordspacing);
 
 	QColor current_color_;
 	Painter::line_style current_ls_;

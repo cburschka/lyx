@@ -28,9 +28,9 @@ namespace frontend {
 class QMacPasteboardMimeGraphics;
 
 /**
- *  \class CacheMimeData 
- * 
- *  This class is used in order to query the clipboard only once on 
+ *  \class CacheMimeData
+ *
+ *  This class is used in order to query the clipboard only once on
  *  startup and once each time the contents of the clipboard changes.
  */
 class CacheMimeData : public QMimeData
@@ -84,6 +84,7 @@ public:
 
 private Q_SLOTS:
 	void on_dataChanged();
+	void update();
 
 private:
 	bool plaintext_clipboard_empty_;
@@ -92,7 +93,7 @@ private:
 	/// the cached mime data used to describe the information
 	/// that can be stored in the clipboard
 	CacheMimeData cache_;
-	/// checksum for internal clipboard data (used on Mac) 
+	/// checksum for internal clipboard data (used on Mac)
 	boost::uint32_t checksum;
 };
 

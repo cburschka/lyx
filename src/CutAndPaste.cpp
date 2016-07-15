@@ -160,7 +160,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// set the paragraphs to plain layout if necessary
 	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 	if (cur.inset().usePlainLayout()) {
-		bool forcePlainLayout = cur.inset().forcePlainLayout();
+		bool forcePlainLayout = target_inset->forcePlainLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		ParagraphList::iterator const end = insertion.end();
@@ -1169,6 +1169,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 		cur.text()->insertStringAsParagraphs(cur, text, cur.current_font);
 	else
 		cur.text()->insertStringAsLines(cur, text, cur.current_font);
+	cur.forceBufferUpdate();
 	return true;
 }
 

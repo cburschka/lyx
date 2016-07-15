@@ -15,32 +15,13 @@ What's new
 * DOCUMENT INPUT/OUTPUT
 
 
-
 * TEX2LYX IMPROVEMENTS
-
 
 
 * USER INTERFACE
 
-- Increase the maximum value for the number of last open files that LyX can
-  remember (bug 9924).
-
-- Change mouse cursor to indicate row/column selection in tabulars.
-
-- Make inset-select-all select all cells only in tables.
-
-- Automatically show the review toolbar if the document has tracked changes
-  (bug 8738), and related UI imrovements.
-
-- Implement "Dissolve Inset" and "Show Label" context menu items for
-  arguments (bug 10150).
-
-- Restore selected reference when using "Go to label" and "Go back" in the
-  cross-reference dialog.
-
 
 * DOCUMENTATION AND LOCALIZATION
-
 
 
 * BUILD/INSTALLATION
@@ -53,63 +34,20 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Correctly protect the \pagebreak command when needed (bug 10092).
 
 * LYX2LYX
 
 
-
 * USER INTERFACE
 
-- Do not omit the first space of the selection when copying (bug 9995).
-
-- Display the correct column alignment and a better column spacing in AMS
-  environments (bugs 1861, 9908).
-
-- Disable properly toggling math diplay in places where it is not
-  possible (bug 10033).
-
-- Fix horizontal scrolling feature when inside a collapsable inset
-  with several paragraphs.
-
-- Fix selection of large formula with the mouse when horizontal
-  scrolling kicks in (but 10094).
-
-- Fix display of collapsable insets when the same document is shown in
-  two views with different width (bug 9756).
-
-- fix display glitches when editing changes the dimension of insets
-  (bug 6691).
-
-- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
-
-- Fix cursor position after Redo of a document settings change (bug
-  10097).
-
-- Disable Edit > Dissolve Inset in tabulars (bug 9954).
-
-- Shortcut preferences: ask the user for removing bindings when using the
-  "restore" button (#9174).
-
-- Shortcut preferences: fix the already-bound-key detection logic.
-
-- Shortcut preferences: don't forget to trigger the search when it is
-  initialized with the previous value.
-
-- Remove extra spacing around  button insets (bug 10149).
-
-- Fix drawing of buttons by enforcing equal left/right spacing (bug 10147).
 
 * INTERNALS
-
 
 
 * DOCUMENTATION AND LOCALIZATION
 
 
-
 * LYXHTML
-
 
 
 * TEX2LYX
@@ -121,7 +59,3 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- Fix monolithic builds with autotools on Mac OS X.
-
-- Avoid 'ar' warning with recent binutils versions.

@@ -44,7 +44,7 @@ Configuration of LyX installer
 
 !define APP_NAME "LyX"
 !define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}.${APP_VERSION_BUILD}"
-# for the proposed install folder we use the scheme "LyX 2.0" while we need for the registry the scheme "LyX 2.0.4"
+# for the proposed install folder we use the scheme "LyX 2.1" while we need for the registry the scheme "LyX 2.1.4"
 # to check if it is exactly this version (to support side by side installations)
 !define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}"
@@ -57,12 +57,12 @@ Configuration of LyX installer
 !define APP_WEBPAGE_INFO "${APP_NAME} Website"
 !define APP_WIKI "http://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2016 by the LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
 !define BIN_LYX "lyx.exe"
 
-!define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX200"
+!define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX220"
 !define APP_REGKEY_SETUP "${APP_REGKEY}\Setup"
 !define APP_REGKEY_SETTINGS "${APP_REGKEY}\Settings"
 

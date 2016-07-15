@@ -22,7 +22,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -117,20 +117,18 @@ status collapsed
 \SpecialChar LyX
 の出力は素晴らしい出来映えです！ご覧になりたければ、
 \family sans
-\lang english
-Document\SpecialChar menuseparator
-View
-\begin_inset space ~
-\end_inset
-
+文書\SpecialChar menuseparator
 [PDF
 \begin_inset space ~
 \end_inset
 
-(pdflatex)]
+(dvipdfm)]
+\begin_inset space ~
+\end_inset
+
+を表示
 \family default
-\lang japanese
- を選択してみてください。
+を選択してみてください。
 \end_layout
 
 \begin_layout Enumerate
@@ -184,11 +182,10 @@ http://www.lyx.org/WebJa.Home
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Linuxユーザーへの注釈：
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+\SpecialChar LaTeX
+頒布版の
 \family sans
 \SpecialChar TeX
 
@@ -197,47 +194,38 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+用の言語パッケージが導入済みかどうかチェックしてください．もしないと，\SpecialChar LaTeX
+エラーが発生します．
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+例えば，Linux頒布版
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+および
 \family sans
 Debian
 \family default
- the package name for the German language is 
-\begin_inset Quotes eld
-\end_inset
-
-
+では，ドイツ語用のパッケージ名は「
 \family typewriter
 texlive-lang-german
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+」です．
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+言語パッケージの導入後\SpecialChar LyX
+メニューから
 \family sans
-Tools
+ツール
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+環境構成
 \family default
-.
+を実行しなくてはなりません．
 \end_layout
 
 \end_body

@@ -14,17 +14,14 @@
 
 
 import os, re, string, sys
+import io
 import polib
 from optparse import OptionParser
 
 
-# we do unix/windows line trimming ourselves since it can happen that we
-# are on unix, but the file has been written on windows or vice versa.
 def trim_eol(line):
-    " Remove end of line char(s)."
-    if line[-2:-1] == '\r':
-        return line[:-2]
-    elif line[-1:] == '\r' or line[-1:] == '\n':
+    " Remove end of line char."
+    if line[-1:] == '\n':
         return line[:-1]
     else:
         # file with no EOL in last line
@@ -39,7 +36,7 @@ def read(input):
         if not line:
             break
         line = trim_eol(line)
-        lines.append(line.decode('UTF-8'))
+        lines.append(line)
     return lines
 
 
@@ -59,7 +56,7 @@ def parse_msg(lines):
     return polib.unescape(msg)
 
 
-def translate(msgid, msgstr_lines, po2, options):
+def translate(msgid, flags, msgstr_lines, po2, options):
     msgstr = parse_msg(msgstr_lines)
     if options.overwrite:
         other = po2.find(msgid)
@@ -70,7 +67,7 @@ def translate(msgid, msgstr_lines, po2, options):
         if msgstr == other.msgstr:
             return 0
     else:
-        if msgstr != '':
+        if msgstr != '' and not u'fuzzy' in flags:
             return 0
         other = po2.find(msgid)
         if not other:
@@ -80,6 +77,12 @@ def translate(msgid, msgstr_lines, po2, options):
     if options.nonnull and other.msgstr == other.msgid:
         return 0
     msgstr = other.msgstr
+    if 'fuzzy' in other.flags:
+        if not u'fuzzy' in flags:
+            flags.append(u'fuzzy')
+    else:
+        if u'fuzzy' in flags:
+            flags.remove(u'fuzzy')
     obsolete = (msgstr_lines[0].find('#~') == 0)
     j = msgstr_lines[0].find('"')
     # must not assign to msgstr_lines, because that would not be seen by our caller
@@ -108,6 +111,12 @@ def mergepo_polib(target, source, options):
                 continue
             if other.translated() and other.msgstr != entry.msgstr:
                 entry.msgstr = other.msgstr
+                if 'fuzzy' in other.flags:
+                    if not 'fuzzy' in entry.flags:
+                        entry.flags.append('fuzzy')
+                else:
+                    if 'fuzzy' in entry.flags:
+                        entry.flags.remove('fuzzy')
                 changed = changed + 1
     else:
         for entry in po1.untranslated_entries():
@@ -130,14 +139,17 @@ def mergepo_minimaldiff(target, source, options):
     target_enc = polib.detect_encoding(target)
     # for utf8 files we can use our self written parser to minimize diffs,
     # otherwise we need to use polib
-    if target_enc != 'UTF-8':
+    if not target_enc in ['UTF-8', 'utf-8', 'utf_8']:
         raise
-    po1 = open(target, 'rb')
+    # open file with universal newlines, since it can happen that we are
+    # on unix, but the file has been written on windows or vice versa.
+    po1 = io.open(target, 'r', encoding='utf_8', newline=None)
     oldlines = read(po1)
     po1.close()
     newlines = []
     in_msgid = False
     in_msgstr = False
+    flags = []
     msgstr_lines = []
     msgid_lines = []
     msgid = ''
@@ -148,19 +160,25 @@ def mergepo_minimaldiff(target, source, options):
             else:
                 in_msgid = False
                 msgid = parse_msg(msgid_lines)
-                newlines.extend(msgid_lines)
-                msgid_lines = []
         elif in_msgstr:
             if line.find('"') == 0 or line.find('#~ "') == 0:
                 msgstr_lines.append(line)
             else:
                 in_msgstr = False
-                changed = changed + translate(msgid, msgstr_lines, po2, options)
+                changed = changed + translate(msgid, flags, msgstr_lines, po2, options)
+                if len(flags) > 0:
+                    flagline = u'#, ' + u', '.join(flags)
+                    newlines.append(flagline)
+                    flags = []
+                newlines.extend(msgid_lines)
                 newlines.extend(msgstr_lines)
+                msgid_lines = []
                 msgstr_lines = []
                 msgid = ''
         if not in_msgid and not in_msgstr:
-            if line.find('msgid') == 0 or line.find('#~ msgid') == 0:
+            if line.find('#,') == 0 and len(flags) == 0:
+                flags = line[2:].strip().split(u', ')
+            elif line.find('msgid') == 0 or line.find('#~ msgid') == 0:
                 msgid_lines.append(line)
                 in_msgid = True
             elif line.find('msgstr') == 0 or line.find('#~ msgstr') == 0:
@@ -173,16 +191,22 @@ def mergepo_minimaldiff(target, source, options):
                 newlines.append(line)
     if msgid != '':
         # the file ended with a msgstr
-        changed = changed + translate(msgid, msgstr_lines, po2, options)
+        changed = changed + translate(msgid, flags, msgstr_lines, po2, options)
+        if len(flags) > 0:
+            flagline = u'#, ' + u', '.join(flags)
+            newlines.append(flagline)
+            flags = []
+        newlines.extend(msgid_lines)
         newlines.extend(msgstr_lines)
+        msgid_lines = []
         msgstr_lines = []
         msgid = ''
     if changed > 0:
         # we store .po files with unix line ends in git,
         # so do always write them even on windows
-        po1 = open(target, 'wb')
+        po1 = io.open(target, 'w', encoding='utf_8', newline='\n')
         for line in newlines:
-            po1.write(line.encode('UTF-8') + '\n')
+            po1.write(line + '\n')
     return changed
 
 
@@ -197,7 +221,8 @@ def mergepo(target, source, options):
     try:
         changed = mergepo_minimaldiff(target, source, options)
         sys.stderr.write('Updated %d translations with minimal diff.\n' % changed)
-    except:
+    except Exception as e:
+        sys.stderr.write('Unable to use minimal diff: %s\n' % e)
         changed = mergepo_polib(target, source, options)
         sys.stderr.write('Updated %d translations using polib.\n' % changed)
 

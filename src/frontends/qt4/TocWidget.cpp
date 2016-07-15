@@ -55,6 +55,13 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 	moveDownTB->setIcon(QIcon(getPixmap("images/", "outline-down", "svgz,png")));
 	updateTB->setIcon(QIcon(getPixmap("images/", "reload", "svgz,png")));
 
+	QSize icon_size = gui_view.iconSize();
+	moveOutTB->setIconSize(icon_size);
+	moveInTB->setIconSize(icon_size);
+	moveUpTB->setIconSize(icon_size);
+	moveDownTB->setIconSize(icon_size);
+	updateTB->setIconSize(icon_size);
+
 	// avoid flickering
 	tocTV->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
@@ -232,6 +239,7 @@ void TocWidget::on_tocTV_pressed(QModelIndex const & index)
 	if (button & Qt::LeftButton) {
 		goTo(index);
 		gui_view_.setFocus();
+		gui_view_.activateWindow();
 	}
 }
 

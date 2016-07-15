@@ -1467,8 +1467,10 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0064.svgz \
 	images/ipa/unicode-insert_0x0065.svgz \
 	images/ipa/unicode-insert_0x0066.svgz \
+	images/ipa/unicode-insert_0x0067.svgz \
 	images/ipa/unicode-insert_0x0068.svgz \
 	images/ipa/unicode-insert_0x0069.svgz \
+	images/ipa/unicode-insert_0x006a.svgz \
 	images/ipa/unicode-insert_0x006b.svgz \
 	images/ipa/unicode-insert_0x006c.svgz \
 	images/ipa/unicode-insert_0x006d.svgz \
@@ -1507,8 +1509,10 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0257.svgz \
 	images/ipa/unicode-insert_0x0258.svgz \
 	images/ipa/unicode-insert_0x0259.svgz \
+	images/ipa/unicode-insert_0x025a.svgz \
 	images/ipa/unicode-insert_0x025b.svgz \
 	images/ipa/unicode-insert_0x025c.svgz \
+	images/ipa/unicode-insert_0x025d.svgz \
 	images/ipa/unicode-insert_0x025e.svgz \
 	images/ipa/unicode-insert_0x025f.svgz \
 	images/ipa/unicode-insert_0x0260.svgz \
@@ -1520,7 +1524,9 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0266.svgz \
 	images/ipa/unicode-insert_0x0267.svgz \
 	images/ipa/unicode-insert_0x0268.svgz \
+	images/ipa/unicode-insert_0x0269.svgz \
 	images/ipa/unicode-insert_0x026a.svgz \
+	images/ipa/unicode-insert_0x026b.svgz \
 	images/ipa/unicode-insert_0x026c.svgz \
 	images/ipa/unicode-insert_0x026d.svgz \
 	images/ipa/unicode-insert_0x026e.svgz \
@@ -1532,17 +1538,23 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0274.svgz \
 	images/ipa/unicode-insert_0x0275.svgz \
 	images/ipa/unicode-insert_0x0276.svgz \
+	images/ipa/unicode-insert_0x0277.svgz \
 	images/ipa/unicode-insert_0x0278.svgz \
 	images/ipa/unicode-insert_0x0279.svgz \
 	images/ipa/unicode-insert_0x027a.svgz \
 	images/ipa/unicode-insert_0x027b.svgz \
+	images/ipa/unicode-insert_0x027c.svgz \
 	images/ipa/unicode-insert_0x027d.svgz \
 	images/ipa/unicode-insert_0x027e.svgz \
+	images/ipa/unicode-insert_0x027f.svgz \
 	images/ipa/unicode-insert_0x0280.svgz \
 	images/ipa/unicode-insert_0x0281.svgz \
 	images/ipa/unicode-insert_0x0282.svgz \
 	images/ipa/unicode-insert_0x0283.svgz \
 	images/ipa/unicode-insert_0x0284.svgz \
+	images/ipa/unicode-insert_0x0285.svgz \
+	images/ipa/unicode-insert_0x0286.svgz \
+	images/ipa/unicode-insert_0x0287.svgz \
 	images/ipa/unicode-insert_0x0288.svgz \
 	images/ipa/unicode-insert_0x0289.svgz \
 	images/ipa/unicode-insert_0x028a.svgz \
@@ -1554,16 +1566,33 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0x0290.svgz \
 	images/ipa/unicode-insert_0x0291.svgz \
 	images/ipa/unicode-insert_0x0292.svgz \
+	images/ipa/unicode-insert_0x0293.svgz \
 	images/ipa/unicode-insert_0x0294.svgz \
 	images/ipa/unicode-insert_0x0295.svgz \
+	images/ipa/unicode-insert_0x0296.svgz \
+	images/ipa/unicode-insert_0x0297.svgz \
 	images/ipa/unicode-insert_0x0298.svgz \
 	images/ipa/unicode-insert_0x0299.svgz \
+	images/ipa/unicode-insert_0x029a.svgz \
 	images/ipa/unicode-insert_0x029b.svgz \
 	images/ipa/unicode-insert_0x029c.svgz \
 	images/ipa/unicode-insert_0x029d.svgz \
+	images/ipa/unicode-insert_0x029e.svgz \
 	images/ipa/unicode-insert_0x029f.svgz \
+	images/ipa/unicode-insert_0x02a0.svgz \
 	images/ipa/unicode-insert_0x02a1.svgz \
 	images/ipa/unicode-insert_0x02a2.svgz \
+	images/ipa/unicode-insert_0x02a3.svgz \
+	images/ipa/unicode-insert_0x02a4.svgz \
+	images/ipa/unicode-insert_0x02a5.svgz \
+	images/ipa/unicode-insert_0x02a6.svgz \
+	images/ipa/unicode-insert_0x02a7.svgz \
+	images/ipa/unicode-insert_0x02a8.svgz \
+	images/ipa/unicode-insert_0x02a9.svgz \
+	images/ipa/unicode-insert_0x02aA.svgz \
+	images/ipa/unicode-insert_0x02ab.svgz \
+	images/ipa/unicode-insert_0x02ac.svgz \
+	images/ipa/unicode-insert_0x02ad.svgz \
 	images/ipa/unicode-insert_0x02b0.svgz \
 	images/ipa/unicode-insert_0x02b2.svgz \
 	images/ipa/unicode-insert_0x02b7.svgz \
@@ -1637,6 +1666,19 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/bookmark-goto_0.svgz \
 	images/oxygen/bookmark-save.svgz \
 	images/oxygen/box-insert.svgz \
+	images/oxygen/break-line.svgz \
+	images/oxygen/buffer-close.svgz \
+	images/oxygen/buffer-export.svgz \
+	images/oxygen/buffer-export_dvi.svgz \
+	images/oxygen/buffer-export_dvi3.svgz \
+	images/oxygen/buffer-export_latex.svgz \
+	images/oxygen/buffer-export_pdf.svgz \
+	images/oxygen/buffer-export_pdf2.svgz \
+	images/oxygen/buffer-export_pdf3.svgz \
+	images/oxygen/buffer-export_pdf4.svgz \
+	images/oxygen/buffer-export_pdf5.svgz \
+	images/oxygen/buffer-export_ps.svgz \
+	images/oxygen/buffer-export_text.svgz \
 	images/oxygen/buffer-new.svgz \
 	images/oxygen/buffer-reload.svgz \
 	images/oxygen/buffer-toggle-output-sync.svgz \
@@ -1660,27 +1702,34 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/buffer-view_ps.svgz \
 	images/oxygen/buffer-write-as.svgz \
 	images/oxygen/buffer-write.svgz \
+	images/oxygen/build-program.svgz \
 	images/oxygen/change-accept.svgz \
 	images/oxygen/change-next.svgz \
 	images/oxygen/change-reject.svgz \
+	images/oxygen/changes-merge.svgz \
 	images/oxygen/changes-output.svgz \
 	images/oxygen/changes-track.svgz \
-	images/oxygen/tab-group-close.svgz \
 	images/oxygen/closetab.svgz \
 	images/oxygen/copy.svgz \
 	images/oxygen/cut.svgz \
 	images/oxygen/depth-decrement.svgz \
 	images/oxygen/depth-increment.svgz \
+	images/oxygen/dialog-preferences.svgz \
 	images/oxygen/dialog-show-new-inset_citation.svgz \
 	images/oxygen/dialog-show-new-inset_graphics.svgz \
 	images/oxygen/dialog-show-new-inset_include.svgz \
 	images/oxygen/dialog-show-new-inset_ref.svgz \
 	images/oxygen/dialog-show_character.svgz \
 	images/oxygen/dialog-show_findreplace.svgz \
+	images/oxygen/dialog-show_mathdelimiter.svgz \
+	images/oxygen/dialog-show_mathmatrix.svgz \
 	images/oxygen/dialog-show_print.svgz \
 	images/oxygen/dialog-show_spellchecker.svgz \
+	images/oxygen/dialog-show_vclog.svgz \
 	images/oxygen/dialog-toggle_findreplaceadv.svgz \
 	images/oxygen/dialog-toggle_toc.svgz \
+	images/oxygen/down.svgz \
+	images/oxygen/editclear.svgz \
 	images/oxygen/ert-insert.svgz \
 	images/oxygen/file-open.svgz \
 	images/oxygen/float-insert_figure.svgz \
@@ -1688,42 +1737,109 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/font-bold.svgz \
 	images/oxygen/font-emph.svgz \
 	images/oxygen/font-noun.svgz \
+	images/oxygen/font-sans.svgz \
+	images/oxygen/font-smallcaps.svgz \
 	images/oxygen/footnote-insert.svgz \
+	images/oxygen/hidetab.svgz \
 	images/oxygen/href-insert.svgz \
 	images/oxygen/index-insert.svgz \
+	images/oxygen/info-insert_buffer_vcs-revision.svgz \
 	images/oxygen/label-insert.svgz \
 	images/oxygen/layout-document.svgz \
 	images/oxygen/layout-paragraph.svgz \
 	images/oxygen/layout.svgz \
+	images/oxygen/layout_Chunk.svgz \
 	images/oxygen/layout_Description.svgz \
 	images/oxygen/layout_Enumerate.svgz \
 	images/oxygen/layout_Itemize.svgz \
 	images/oxygen/layout_List.svgz \
+	images/oxygen/layout_LyX-Code.svgz \
+	images/oxygen/layout_Section.svgz \
 	images/oxygen/lyx-quit.svgz \
 	images/oxygen/marginalnote-insert.svgz \
 	images/oxygen/master-buffer-update.svgz \
+	images/oxygen/master-buffer-update_pdf2.svgz \
 	images/oxygen/master-buffer-view.svgz \
+	images/oxygen/math-display.svgz \
+	images/oxygen/math-macro-add-greedy-optional-param.svgz \
+	images/oxygen/math-macro-add-optional-param.svgz \
+	images/oxygen/math-macro-add-param.svgz \
+	images/oxygen/math-macro-append-greedy-param.svgz \
+	images/oxygen/math-macro-make-nonoptional.svgz \
+	images/oxygen/math-macro-make-optional.svgz \
+	images/oxygen/math-macro-remove-greedy-param.svgz \
+	images/oxygen/math-macro-remove-optional-param.svgz \
+	images/oxygen/math-macro-remove-param.svgz \
 	images/oxygen/math-macro_newmacroname_newcommand.svgz \
+	images/oxygen/math-matrix.svgz \
 	images/oxygen/math-mode.svgz \
+	images/oxygen/math-subscript.svgz \
+	images/oxygen/math-superscript.svgz \
 	images/oxygen/nomencl-insert.svgz \
 	images/oxygen/note-insert.svgz \
 	images/oxygen/note-next.svgz \
+	images/oxygen/outline-down.svgz \
+	images/oxygen/outline-in.svgz \
+	images/oxygen/outline-out.svgz \
+	images/oxygen/outline-up.svgz \
 	images/oxygen/paste.svgz \
 	images/oxygen/redo.svgz \
 	images/oxygen/reload.svgz \
+	images/oxygen/script-insert_subscript.svgz \
+	images/oxygen/script-insert_superscript.svgz \
 	images/oxygen/spelling-continuously.svgz \
-	images/oxygen/view-split_horizontal.svgz \
-	images/oxygen/view-split_vertical.svgz \
+	images/oxygen/sub.svgz \
+	images/oxygen/super.svgz \
+	images/oxygen/tab-group-close.svgz \
+	images/oxygen/tabular-feature_align-decimal.svgz \
+	images/oxygen/tabular-feature_append-column.svgz \
+	images/oxygen/tabular-feature_append-row.svgz \
+	images/oxygen/tabular-feature_delete-column.svgz \
+	images/oxygen/tabular-feature_delete-row.svgz \
+	images/oxygen/tabular-feature_m-align-center.svgz \
+	images/oxygen/tabular-feature_m-align-left.svgz \
+	images/oxygen/tabular-feature_m-align-right.svgz \
+	images/oxygen/tabular-feature_m-valign-bottom.svgz \
+	images/oxygen/tabular-feature_m-valign-middle.svgz \
+	images/oxygen/tabular-feature_m-valign-top.svgz \
+	images/oxygen/tabular-feature_move-column-left.svgz \
+	images/oxygen/tabular-feature_move-column-right.svgz \
+	images/oxygen/tabular-feature_move-row-down.svgz \
+	images/oxygen/tabular-feature_move-row-up.svgz \
+	images/oxygen/tabular-feature_multicolumn.svgz \
+	images/oxygen/tabular-feature_multirow.svgz \
+	images/oxygen/tabular-feature_set-all-lines.svgz \
+	images/oxygen/tabular-feature_set-border-lines.svgz \
+	images/oxygen/tabular-feature_set-longtabular.svgz \
+	images/oxygen/tabular-feature_toggle-line-bottom.svgz \
+	images/oxygen/tabular-feature_toggle-line-left.svgz \
+	images/oxygen/tabular-feature_toggle-line-right.svgz \
+	images/oxygen/tabular-feature_toggle-line-top.svgz \
+	images/oxygen/tabular-feature_toggle-rotate-cell.svgz \
+	images/oxygen/tabular-feature_toggle-rotate-tabular.svgz \
+	images/oxygen/tabular-feature_unset-all-lines.svgz \
 	images/oxygen/tabular-insert.svgz \
 	images/oxygen/textstyle-apply.svgz \
 	images/oxygen/thesaurus-entry.svgz \
 	images/oxygen/toolbar-toggle_math.svgz \
+	images/oxygen/toolbar-toggle_math_panels.svgz \
 	images/oxygen/toolbar-toggle_table.svgz \
 	images/oxygen/undo.svgz \
+	images/oxygen/unknown.svgz \
+	images/oxygen/up.svgz \
 	images/oxygen/update-others.svgz \
 	images/oxygen/url-insert.svgz \
+	images/oxygen/vc-check-in.svgz \
+	images/oxygen/vc-check-out.svgz \
+	images/oxygen/vc-compare.svgz \
+	images/oxygen/vc-compare_0.svgz \
+	images/oxygen/vc-locking-toggle.svgz \
+	images/oxygen/vc-register.svgz \
+	images/oxygen/vc-repo-update.svgz \
 	images/oxygen/vc-revert.svgz \
-	images/oxygen/view-others.svgz
+	images/oxygen/view-others.svgz \
+	images/oxygen/view-split_horizontal.svgz \
+	images/oxygen/view-split_vertical.svgz
 
 dist_imagesoxygen_DATA = \
 	images/oxygen/iconsize.png \

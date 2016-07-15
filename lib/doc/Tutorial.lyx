@@ -5,25 +5,6 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/
 \textclass book
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-\end_preamble
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -59,7 +40,7 @@ logicalmkup
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -160,7 +141,7 @@ Welcome to \SpecialChar LyX
 This manual is designed for all of you who have never heard of \SpecialChar LaTeX
 , or do not
  know it very well.
- Now, do not panic - you will not need to learn \SpecialChar LaTeX
+ Now, do not panic – you will not need to learn \SpecialChar LaTeX
  to use \SpecialChar LyX
 .
  That is, after all, the whole point of \SpecialChar LyX
@@ -457,7 +438,11 @@ Notes
 \end_inset
 
  If you want to cheat, or check what you have done, there is also a file
- called 
+ called
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 example_lyxified.lyx
 \family default
@@ -549,28 +534,6 @@ arg   "buffer-view"
  \SpecialChar LyX
  will open a PDF-viewer program displaying your document as it will look
  when printed.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-You can save time by leaving the PDF-viewer running in the background.
- Then, you can use 
-\family sans
-Document\SpecialChar menuseparator
-Update
-\family default
- or the toolbar button 
-\begin_inset Info
-type  "icon"
-arg   "buffer-update"
-\end_inset
-
- and just click on the PDF-viewer window (or unminimize it) afterwards.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -588,6 +551,42 @@ Export
 Congratulations! You have written your first \SpecialChar LyX
  document.
  All of the rest is just details.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+A hint:
+\series default
+ You can save time by leaving the PDF viewer running in the background.
+ Under MacOS and Linux you can use 
+\family sans
+Document\SpecialChar menuseparator
+Update
+\family default
+ or the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ and just click on the PDF viewer window afterwards.
+ Under Windows still use 
+\family sans
+Document\SpecialChar menuseparator
+View
+\family default
+ or 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ respectively.
 \end_layout
 
 \begin_layout Subsection
@@ -889,7 +888,7 @@ Space
 \family sans
 Tab
 \family default
- has no grammatical function at all - so \SpecialChar LyX
+ has no grammatical function at all – so \SpecialChar LyX
  does not support it.
  Using \SpecialChar LyX
 , you will spend more of your time worrying about the 
@@ -1391,12 +1390,17 @@ Subsubsection
  and note how the other section numbers are updated.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
 \series default
-: Fix the section and subsection headings in 
+: Fix the section and subsection headings in
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 example_raw.lyx
 \family default
@@ -1686,7 +1690,8 @@ Space
 s.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -1766,7 +1771,8 @@ User's Guide
  environments.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -1780,7 +1786,11 @@ Quote, \SpecialChar LyX
 \family sans
 Verse
 \family default
- in 
+ in
+\begin_inset Newline newline
+\end_inset
+
+
 \family typewriter
 example_raw.lyx
 \end_layout
@@ -2261,6 +2271,13 @@ Templates can be a huge time-saver, and we urge you to use them whenever
  a letter template customized for their company, for example.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Document Titles
 \end_layout
@@ -2318,7 +2335,8 @@ Abstract
  page, like the first page of this tutorial.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -2421,7 +2439,11 @@ Place the cursor somewhere in Section
 \end_layout
 
 \begin_layout LyX-Code
-If you want to know more about this document, then see Section .
+If you want to know more about this document,
+\begin_inset Newline newline
+\end_inset
+
+then see Section .
 \end_layout
 
 \begin_layout Standard
@@ -2693,7 +2715,8 @@ reference "sec:Document-Classes"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -2871,7 +2894,8 @@ Change your \SpecialChar LyX
  again to see what the margin note looks like.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -3063,7 +3087,8 @@ User's Guide
  for details.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise:
@@ -3175,7 +3200,8 @@ To get rid of the Table of Contents, you can delete the table of contents
  button just like any other text.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -3225,8 +3251,11 @@ Somewhere in your \SpecialChar LyX
 \end_layout
 
 \begin_layout LyX-Code
-I like what Einstein said, E=mc^2, because it is so simple.
- 
+I like what Einstein said, E=mc^2, because it is
+\begin_inset Newline linebreak
+\end_inset
+
+so simple.
 \end_layout
 
 \begin_layout Standard
@@ -3519,7 +3548,7 @@ _
 \begin_inset Quotes erd
 \end_inset
 
- .
+.
  You can subscript and superscript both subscripts and superscripts like
  this: 
 \begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
@@ -3529,12 +3558,17 @@ _
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
 \series default
-: Put equation 1 of 
+: Put equation
+\begin_inset space ~
+\end_inset
+
+1 of 
 \family typewriter
 example_raw.lyx
 \family default
@@ -3869,12 +3903,17 @@ Down
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
 \series default
-: Put equation 2 of 
+: Put equation
+\begin_inset space ~
+\end_inset
+
+2 of 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4052,12 +4091,17 @@ The function list includes other trigonometric functions and their inverses,
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
 \series default
-: Put equation 3 of 
+: Put equation
+\begin_inset space ~
+\end_inset
+
+3 of 
 \family typewriter
 example_raw.lyx
 \family default
@@ -4200,11 +4244,7 @@ arg   "math-display"
 
  in the 
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Toolbar
+Math Toolbar
 \family default
 .
  This centers the formula and adds a blank line before and after it.
@@ -4262,7 +4302,8 @@ after
  paragraph settings, which is probably not what you want.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -4274,7 +4315,8 @@ example_raw.lyx
  into display mode, and see how they are typeset differently.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
 \series bold
 Exercise
@@ -4626,8 +4668,7 @@ Anything that you enter in \SpecialChar TeX
  by choosing 
 \family sans
 Insert\SpecialChar menuseparator
-\SpecialChar TeX
-
+TeX
 \begin_inset space ~
 \end_inset
 
@@ -4798,8 +4839,7 @@ You can import a \SpecialChar LaTeX
 \family sans
 File\SpecialChar menuseparator
 Import\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -4914,8 +4954,7 @@ You might wish to convert a \SpecialChar LyX
 \family sans
 File\SpecialChar menuseparator
 Export\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \family default
 .
  This will create a file 
@@ -4979,8 +5018,7 @@ If you have special commands to put in the preamble of a \SpecialChar LaTeX
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-\SpecialChar LaTeX
-
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -5015,8 +5053,7 @@ List
 \end_inset
 
 TOC\SpecialChar menuseparator
-Bib\SpecialChar TeX
-
+BibTeX
 \begin_inset space ~
 \end_inset
 

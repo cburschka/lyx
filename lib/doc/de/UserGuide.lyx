@@ -267,7 +267,11 @@ Abschnitt
 \begin_inset Quotes gld
 \end_inset
 
-Fett, Schriftgröße 17, linksbündig, 5
+Fett, Schriftgröße
+\begin_inset space ~
+\end_inset
+
+17, linksbündig, 5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -349,7 +353,7 @@ Skalierung auf Bildschirm
  verwenden.
  Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
  \SpecialChar LyX
-' Hauptarbeitsbereich sind.
+’ Hauptarbeitsbereich sind.
  Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
  Dies funktioniert leider noch nicht für Gleichungen.
 \end_layout
@@ -1787,7 +1791,7 @@ Mit der
 F5
 \family default
  -Taste wird der Cursor vertikal in \SpecialChar LyX
-' Hauptfenster zentriert.
+’ Hauptfenster zentriert.
 \end_layout
 
 \begin_layout Subsection
@@ -1875,16 +1879,13 @@ Rechts-klicken auf Elemente in der Gliederung öffnet in vielen Fällen ein
 \end_layout
 
 \begin_layout Standard
-Das Feld `Filter' erlaubt es, die angezeigten Einträge einzugrenzen.
+Das Feld 
+\family sans
+Filter
+\family default
+ erlaubt es, die angezeigten Einträge einzugrenzen.
  Wenn zum Beispiel die Liste der Marken und Querverweise angezeigt ist und
- Sie nur Verweise auf Unterabschnitte sehen wollen, geben Sie den Text 
-\begin_inset Quotes gld
-\end_inset
-
-sub:
-\begin_inset Quotes grd
-\end_inset
-
+ Sie nur Verweise auf Unterabschnitte sehen wollen, geben Sie den Text „sub:“
  in den Filter ein und nur Einträge mit diesem Text werden angezeigt.
 \end_layout
 
@@ -2012,7 +2013,8 @@ Navigieren ! Horizontaler Bildlauf
 
 \begin_layout Standard
 \SpecialChar LyX
- hat keine horizontale Bildlaufleiste, denn die Standard Seitenformate der
+ hat keine horizontale Bildlauf\SpecialChar ligaturebreak
+leiste, denn die Standard Seitenformate der
  Ausgabe, wie z.
 \begin_inset space \thinspace{}
 \end_inset
@@ -2298,7 +2300,7 @@ B.
 autocorrect
 \family default
  zu finden, die sich irgendwo in \SpecialChar LyX
-' Installationsordner befindet.
+’ Installationsordner befindet.
  Die Automatische Korrektur kann jederzeit angeschaltet werden in dem man
  das Ausrufezeichen drückt '!'.
  Durch Drücken der Leertaste wird sie ausgeschaltet.
@@ -2330,7 +2332,7 @@ emacs
 \family default
 .
  \SpecialChar LyX
-' Voreinstellung ist 
+’ Voreinstellung ist 
 \family typewriter
 cua
 \family default
@@ -2341,7 +2343,8 @@ Bearbeiten\SpecialChar menuseparator
 Tastenkürzel
 \family default
  geändert werden kann.
- (Man kann dort auch alle Tastenkürzel auflisten oder ändern, wie es in
+ (Man kann dort auch alle Tastenkürzel auf\SpecialChar ligaturebreak
+listen oder ändern, wie es in
  Abschnitt
 \begin_inset space \thinspace{}
 \end_inset
@@ -2510,7 +2513,7 @@ Steuerung
 \end_inset
 
 Strg
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 
@@ -2586,7 +2589,7 @@ Umschalt
 Umschalt
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 
@@ -2607,15 +2610,7 @@ description "Umschalt-Taste"
 \family sans
 Alt
 \family default
- (in der Dokumentation als 
-\begin_inset Quotes gld
-\end_inset
-
-Alt
-\begin_inset Quotes erd
-\end_inset
-
-
+ (in der Dokumentation als „Alt“
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Alt"
@@ -2624,15 +2619,7 @@ description "Alt oder Meta-Taste"
 \end_inset
 
  bezeichnet) Dies ist auf den meisten Tastaturen die Alt Taste, es sei denn
- dass die Tastatur eine spezielle 
-\begin_inset Quotes gld
-\end_inset
-
-Meta
-\begin_inset Quotes grd
-\end_inset
-
- Taste besitzt.
+ dass die Tastatur eine spezielle „Meta“ Taste besitzt.
  Haben Sie beide Tasten, müssen Sie herausfinden welche die Funktion der
  Alt Taste hat.
 \begin_inset Newline newline
@@ -2674,7 +2661,7 @@ t
 b
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  den 
@@ -2766,7 +2753,8 @@ Einstellungen
 Bearbeiten\SpecialChar menuseparator
 Tastenkürzel
 \family default
- alle Tastenkürzel auflisten oder ändern, wie es in Abschnitt
+ alle Tastenkürzel auf\SpecialChar ligaturebreak
+listen oder ändern, wie es in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -2957,7 +2945,7 @@ Broadway Layout zum Schreiben von Theaterstücken.
  Dies ist keine \SpecialChar LaTeX
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3182,7 +3170,8 @@ nicht verfügbar
  Der einfachste Weg herauszufinden welche Dateien Sie installieren müssen,
  ist es, die Dokumentklasse für eine neue Datei zu verwenden.
  \SpecialChar LyX
- wird dann einen Dialog zeigen, der die fehlenden Dateien auflistet.
+ wird dann einen Dialog zeigen, der die fehlenden Dateien auf\SpecialChar ligaturebreak
+listet.
  In Abschnitt 
 \begin_inset Quotes gld
 \end_inset
@@ -3375,7 +3364,7 @@ m Dokumenten verwendet zu werden.
  nur in diesem einen Dokument.
  Also so etwas wie einen dokumentspezifischen \SpecialChar LaTeX
 -Vorspann: \SpecialChar LyX
-' sogenanntes 
+’ sogenanntes 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4003,19 +3992,19 @@ Standard
 \begin_layout Itemize
 
 \family sans
-A0 - A6
+A0 – A6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-B0 - B6
+B0 – B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-C0 - C6
+C0 – C6
 \end_layout
 
 \begin_layout Itemize
@@ -4027,7 +4016,7 @@ US letter, US legal, US executive
 \begin_layout Itemize
 
 \family sans
-JIS B0 - JIS B6
+JIS B0 – JIS B6
 \end_layout
 
 \begin_layout Itemize
@@ -5811,7 +5800,8 @@ name "subsec:Listen"
  hat vier verschiedene Absatzumgebungen, um unterschiedliche Listen zu erzeugen.
  In den 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 - und 
 \family sans
@@ -5914,7 +5904,8 @@ name "subsec:Auflistung"
 \begin_layout Standard
 Der erste Listentyp, den wir genauer beschreiben werden, ist die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Absatz\SpecialChar softhyphen
 umgebung.
@@ -5946,7 +5937,8 @@ Die Elemente können beliebig lang sein.
  rückt den linken Rand jedes Elements automatisch ein.
  Die Einrückung ist immer relativ zu der Umgebung, in der die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
  sich befindet.
 \end_layout
@@ -5954,7 +5946,8 @@ Auflistung
 \begin_layout Itemize
 Wenn Sie 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebungen schachteln, bekommt jede Stufe ein neues Symbol als Markierung.
 \end_layout
@@ -5981,12 +5974,14 @@ reference "sec:Umgebungen-schachteln"
 \begin_layout Standard
 Natürlich war diese Erklärung auch ein Beispiel für eine 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 .
  Die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung eignet sich am besten für Listen, bei denen die Reihenfolge keine
  Rolle spielt.
@@ -6001,7 +5996,8 @@ Wir sagten, dass unterschiedliche Stufen unterschiedliche Symbole als Markierung
 \begin_layout Itemize
 Die Marke für die erste Stufe von 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
  ist ein schwarzer Kreis.
 \begin_inset Separator latexpar
@@ -6051,7 +6047,8 @@ Und zurück zu Stufe eins.
 \begin_layout Standard
 Dieses sind die Standardmarken für eine 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 .
  Sie können diese Marken Ihren Wünschen anpassen, indem Sie im Dialogfenster
@@ -6071,7 +6068,8 @@ Dokument ! Einstellungen
 
  unter 
 \family sans
-Auflistungszeichen
+Auf\SpecialChar ligaturebreak
+listungszeichen
 \family default
  die 
 \family sans
@@ -6220,7 +6218,8 @@ Aufzählung
 \begin_layout Enumerate
 Ebenso wie die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung macht die 
 \family sans
@@ -6257,7 +6256,8 @@ maximal vier Schachtelungsstufen sind erlaubt.
 \begin_layout Standard
 Anders als bei der 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung sind die verschiedenen Marken von 
 \family sans
@@ -6498,7 +6498,8 @@ Beschreibung
 -Umgebung aber nicht benutzen, wenn Sie einen ganzen Satz hervorheben wollen.
  Dann benutzt man besser 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
  oder 
 \family sans
@@ -6702,7 +6703,7 @@ type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-).
+.
  Der Text im Feld 
 \family sans
 Längste
@@ -6713,27 +6714,11 @@ Marke
 \family default
  bestimmt die Standardmarkenbreite.
  Wenn Sie wollen, können Sie hier den Text Ihrer breitesten Marke eintragen
- oder stattdessen den Buchstaben 
-\begin_inset Quotes gld
-\end_inset
-
-M
-\begin_inset Quotes grd
-\end_inset
-
- mehrfach hintereinander verwenden.
+ oder stattdessen den Buchstaben 'M' mehrfach hintereinander verwenden.
  Das M ist der breiteste Buchstabe und eine Standard-Einheit von Längen
  in \SpecialChar LaTeX
 .
- Verwendet man 
-\begin_inset Quotes gld
-\end_inset
-
-M
-\begin_inset Quotes grd
-\end_inset
-
- als Einheit der Breite, muss man die 
+ Verwendet man 'M' als Einheit der Breite, muss man die 
 \family sans
 Längste
 \begin_inset space ~
@@ -8053,7 +8038,8 @@ article
 \family sans
 report
 \family default
--Dokumentklassen benutzen.
+-Dokument\SpecialChar softhyphen
+klassen benutzen.
 \end_layout
 
 \begin_layout Standard
@@ -8135,7 +8121,7 @@ Zusammenfassung
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8800,11 +8786,11 @@ zwei
 
 \begin_deeper
 \begin_layout Enumerate
-Unterliste - Punkt 1
+Unterliste – Punkt 1
 \end_layout
 
 \begin_layout Enumerate
-Unterliste - Punkt 2
+Unterliste – Punkt 2
 \end_layout
 
 \end_deeper
@@ -9052,7 +9038,8 @@ Zitat
 \begin_layout Itemize
 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \end_layout
 
 \begin_layout Itemize
@@ -9662,7 +9649,7 @@ Wenn Sie dies in \SpecialChar LyX
 \end_layout
 
 \begin_layout Enumerate
-Stufe 1 - außen
+Stufe 1 – außen
 \begin_inset Separator latexpar
 \end_inset
 
@@ -9745,7 +9732,8 @@ Aufzählung
 \family default
 -Umgebung und die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung nur vierfach schachteln.
  Wenn wir zum Beispiel eine weitere 
@@ -9904,7 +9892,8 @@ Aufzählung
 \family default
 - und 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebungen!
 \end_layout
@@ -9991,6 +9980,10 @@ Alt+Eingabe
 \family default
 , gefolgt von 
 \family sans
+
+\begin_inset Newline newline
+\end_inset
+
 Alt+Eingabe+Links
 \family default
 .
@@ -10084,7 +10077,6 @@ Dies ist die
 -Code
 \family default
 -Umgebung auf Stufe 1, der äußersten Stufe.
- 
 \end_layout
 
 \begin_layout LyX-Code
@@ -10092,7 +10084,11 @@ Jetzt werden wir Eingabe drücken, dann
 \family sans
 Alt+Eingabe+Rechts
 \family default
-; danach werden wir zur 
+; danach 
+\begin_inset Newline newline
+\end_inset
+
+werden wir zur
 \end_layout
 
 \begin_layout LyX-Code
@@ -10157,7 +10153,8 @@ Aufzählung
 \family default
 - und 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebungen
 \begin_inset Argument 1
@@ -10195,12 +10192,17 @@ Alt+Eingabe
 \family default
  gedrückt, gefolgt von 
 \family sans
+
+\begin_inset Newline newline
+\end_inset
+
 Alt+Eingabe+Rechts
 \family default
 .
  Was wird passieren, wenn wir eine 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung hier hinein schachteln? Sie wird auf Stufe 3 sein, aber welche
  Marke wird es sein? Ein Stern?
@@ -10219,7 +10221,8 @@ erste
 \emph default
  
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Stufe, obwohl wir auf Stufe 3 sind.
  Deswegen ist die Marke ein schwarzer Kreis.
@@ -10227,13 +10230,18 @@ Auflistung
 \family sans
 Alt+Eingabe
 \family default
-, dann 
+, 
+\begin_inset Newline newline
+\end_inset
+
+dann 
 \family sans
 Alt+Eingabe+Rechts
 \family default
 , dann der Umgebungswechsel auf 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 .)
 \begin_inset Separator latexpar
@@ -10248,7 +10256,11 @@ Hier ist Stufe 4, produziert mit
 \family sans
 Alt+Eingabe
 \family default
-, dann 
+, dann
+\begin_inset Newline newline
+\end_inset
+
+ 
 \family sans
 Alt+Eingabe+Rechts.
 
@@ -10412,7 +10424,8 @@ Aufzählung
 \family default
 - und 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebungen benutzt.
  Die Anzahl von 
@@ -10435,7 +10448,8 @@ Aufzählung
 -Eintrag benutzt.
  Dasselbe gilt auch für die 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 -Umgebung.
 \end_layout
@@ -10766,7 +10780,8 @@ Wie Sie sehen können, erreichen Sie mit dem Schachteln von Umgebungen in
  eine ganze Menge mit nur wenigen Tastendrücken.
  Wir hätten leicht eine 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
  innerhalb von 
 \family sans
@@ -10794,7 +10809,8 @@ Zitat
 \family default
  innerhalb von einer 
 \family sans
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \family default
 .
  Sie haben jede Menge Möglichkeiten zur Auswahl.
@@ -10857,7 +10873,8 @@ Aufzählung
 \end_layout
 
 \begin_layout Itemize
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \end_layout
 
 \end_deeper
@@ -11000,7 +11017,7 @@ htlich sollte zwischen
 \end_inset
 
 Abschnitt
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  und 
@@ -11015,7 +11032,7 @@ reference "sec:Literaturverzeichnis"
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  ein geschütztes Leerzeichen stehen.
@@ -11072,6 +11089,10 @@ Leerraum ! horizontaler
 \begin_layout Standard
 Alle horizontalen Leerräume können über das Menü 
 \family sans
+
+\begin_inset Newline newline
+\end_inset
+
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
 Horizontaler
@@ -12107,7 +12128,7 @@ Edge
 \end_inset
 
 Edge
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 ).
@@ -12595,16 +12616,8 @@ Strg+Umschalt+Enter
 \family default
 eingefügt wird, bricht die Zeile um und dehnt sie dabei so, dass sie den
  kompletten Raum zwischen den Seitenrändern einnimmt.
- Dies ist nützlich um 
-\begin_inset Quotes gld
-\end_inset
-
-Fransen
-\begin_inset Quotes grd
-\end_inset
-
- in Blocksatz-Absätzen zu verhindern, die eventuell durch Leerraum aufgrund
- eines Zeilenumbruchs entstehen.
+ Dies ist nützlich um „Fransen“ in Blocksatz-Absätzen zu verhindern, die
+ eventuell durch Leerraum aufgrund eines Zeilenumbruchs entstehen.
 \end_layout
 
 \begin_layout Standard
@@ -13144,7 +13157,8 @@ reference "subsec:LaTeX-Schriftunterstützung"
 -Schriften sind dann allerdings nicht verfügbar.
  Es ist zu beachten, dass \SpecialChar LyX
  dann alle verfügbaren Schriften in jeder der
- drei Listen (Serifenschrift, Serifenlose, und Schreibmaschine) aufführt,
+ drei Listen (Serifenschrift, Serifenlose, und Schreibmaschine) auf\SpecialChar ligaturebreak
+führt,
  da \SpecialChar LyX
  die Familie nicht bestimmen kann.
  Des Weiteren kann die Ausgabe mit einigen der Schriften fehlschlagen, entweder
@@ -13342,23 +13356,7 @@ stehlen
 \emph on
 Guillemets
 \emph default
- 
-\begin_inset Quotes gld
-\end_inset
-
-«
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-»
-\begin_inset Quotes grd
-\end_inset
-
-,
+ '«' und '»',
 \begin_inset Foot
 status collapsed
 
@@ -13415,13 +13413,9 @@ brève
 \emph default
  in einer PDF-Datei suchen, werden Sie es nicht finden, weil der PDF-Betrachter
  nach 
-\emph on
-
 \begin_inset Quotes gld
 \end_inset
 
-
-\emph default
 è
 \begin_inset Quotes grd
 \end_inset
@@ -14773,11 +14767,11 @@ Fußnote
  
 \size footnotesize
 Dies ist die 
-\begin_inset Quotes pld
+\begin_inset Quotes gld
 \end_inset
 
 Fußnoten
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 -Schriftgröße.
@@ -14811,7 +14805,7 @@ Dies ist die
 \end_inset
 
 kleine
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  Schriftgröße.
@@ -14851,7 +14845,7 @@ Normal
 \end_inset
 
 normale
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  Schriftgröße.
@@ -15034,7 +15028,8 @@ gigantische
 \begin_inset Quotes grd
 \end_inset
 
- Schriftgröße.
+ Schrift\SpecialChar softhyphen
+größe.
 
 \size default
  (Tastenkürzel: 
@@ -15142,7 +15137,11 @@ Unterstrichen
 Dies ist unterstrichener Text.
 
 \bar default
- (Tastenkürzel 
+ 
+\begin_inset Newline newline
+\end_inset
+
+(Tastenkürzel 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -15181,7 +15180,11 @@ unterstrichen
 Dies ist doppelt unterstrichener Text.
 
 \uuline default
- (Tastenkürzel 
+ 
+\begin_inset Newline newline
+\end_inset
+
+(Tastenkürzel 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -15212,7 +15215,11 @@ unterstrichen
 Dies ist wellig unterstrichener Text.
 
 \uwave default
- (Tastenkürzel 
+ 
+\begin_inset Newline newline
+\end_inset
+
+(Tastenkürzel 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -15241,7 +15248,11 @@ Durchgestrichen
 Dies ist durchgestrichener Text.
 
 \strikeout default
- (Tastenkürzel 
+ 
+\begin_inset Newline newline
+\end_inset
+
+(Tastenkürzel 
 \family sans
 Strg+Umschalt+O
 \family default
@@ -15420,23 +15431,8 @@ nichtproportionale
 \begin_inset Quotes grd
 \end_inset
 
- Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 
-\begin_inset Quotes gld
-\end_inset
-
-i
-\begin_inset Quotes grd
-\end_inset
-
- ist so breit wie das 
-\begin_inset Quotes gld
-\end_inset
-
-m
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 'i'
+ ist so breit wie das 'm'.
  Hier ist ein Beispiel
 \begin_inset Newline newline
 \end_inset
@@ -15760,7 +15756,7 @@ Dateiformate ! ASCII
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15768,7 +15764,7 @@ Dieses Dateiformat hat die Endung
 .txt
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -15851,7 +15847,7 @@ Dateiformate ! \SpecialChar LaTeX
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -15859,7 +15855,7 @@ Dieses Dateiformat hat die Endung
 .tex
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
  und enthält alle Befehle, die von \SpecialChar LaTeX
@@ -15871,7 +15867,7 @@ Dieses Dateiformat hat die Endung
  die Datei mit anderen Werkzeugen bearbeiten.
  Die \SpecialChar LaTeX
 -Datei wird automatisch in \SpecialChar LyX
-' temporärem Verzeichnis erstellt, wann
+’ temporärem Verzeichnis erstellt, wann
  immer Sie Ihr Dokument ansehen oder exportieren.
 \end_layout
 
@@ -16008,7 +16004,7 @@ Dateiformate ! PostScript
 
 \begin_layout Standard
 Dieses Dateiformat hat die Endung 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -16016,7 +16012,7 @@ Dieses Dateiformat hat die Endung
 .ps
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
@@ -16509,15 +16505,8 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Standard
-Die XHTML-Ausgabe ist noch 
-\begin_inset Quotes gld
-\end_inset
-
-in der Entwicklung
-\begin_inset Quotes grd
-\end_inset
-
- so dass noch nicht alle Funktionen von \SpecialChar LyX
+Die XHTML-Ausgabe ist noch „in der Entwicklung“ so dass noch nicht alle
+ Funktionen von \SpecialChar LyX
  unterstützt werden.
  Siehe das Kapitel 
 \emph on
@@ -16680,19 +16669,11 @@ Gedankenstriche
 
 \begin_layout Standard
 In \SpecialChar LyX
- hat das 
-\begin_inset Quotes gld
-\end_inset
-
-
+ hat das '
 \family typewriter
 -
 \family default
-
-\begin_inset Quotes eld
-\end_inset
-
--Zeichen vier Längen
+'-Zeichen vier Längen
 \emph on
 :
 \emph default
@@ -16984,7 +16965,7 @@ Minuszeichen
 
 \begin_layout Standard
 Wenn Sie dies in \SpecialChar LyX
- lesen, sehen Sie keine Unterschiede, aber in der gedruckten
+ lesen, sehen Sie kaum Unterschiede, aber in der gedruckten
  Version erkennen Sie es.
 \end_layout
 
@@ -17246,11 +17227,7 @@ reference "subsec:TeX-Code-Kästchen"
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Quotes gld
-\end_inset
-
-Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
+„Im Deutschen werden zusammengesetzte Worte entweder zusammengeschrieben
  wie eben oder mit einem Bindestrich zusammengefügt wie bei Programmiersprachen
 \begin_inset ERT
 status collapsed
@@ -17263,11 +17240,7 @@ status collapsed
 \end_inset
 
 Handbücher\SpecialChar ldots
-
-\begin_inset Quotes grd
-\end_inset
-
-
+“
 \end_layout
 
 \begin_layout Enumerate
@@ -17296,15 +17269,8 @@ Weil \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-kann es wie hier vorkommen, dass die Zeile nach dem 
-\begin_inset Quotes gld
-\end_inset
-
--
-\begin_inset Quotes grd
-\end_inset
-
--Zeichen umgebrochen wird, was natürlich Unsinn ist.
+kann es wie hier vorkommen, dass die Zeile nach dem '-'-Zeichen umgebrochen
+ wird, was natürlich Unsinn ist.
  Dann verwendet man am besten den geschützten Trennstrich
 \begin_inset Index idx
 status collapsed
@@ -17484,19 +17450,11 @@ Strg+Alt+Leertaste
 \end_layout
 
 \begin_layout Enumerate
-Benutzen Sie einen kleinen Zwischenraum 
-\begin_inset Quotes gld
-\end_inset
-
-
+Benutzen Sie einen kleinen Zwischenraum „
 \begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- (
+“ (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latex-einführung"
@@ -17600,15 +17558,7 @@ status collapsed
  setzt Anführungszeichen normalerweise richtig.
  Insbesondere wird es unterschiedliche Anführungszeichen für den Beginn
  und das Ende des eingeschlossenen Textes benutzen.
- Zum Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-Anfang Ende
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Zum Beispiel „Anfang Ende“.
  Das Tastaturzeichen 
 \family sans
 "
@@ -17668,154 +17618,60 @@ Anführungszeichen
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes eld
-\end_inset
-
-Text
-\begin_inset Quotes erd
-\end_inset
-
-
+“Text”
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes eld
-\end_inset
-
-doppelt
-\begin_inset Quotes grd
-\end_inset
-
-
+ benutzt die Anführungszeichen: “doppelt”
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes sld
-\end_inset
-
-Text
-\begin_inset Quotes srd
-\end_inset
-
-
+”Text”
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes sld
-\end_inset
-
-doppelt
-\begin_inset Quotes srd
-\end_inset
-
-
+ benutzt die Anführungszeichen: ”doppelt”
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes gld
-\end_inset
-
-Text
-\begin_inset Quotes grd
-\end_inset
-
-
+„Text“
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes gld
-\end_inset
-
-doppelt
-\begin_inset Quotes grd
-\end_inset
-
-
+ benutzt die Anführungszeichen: „doppelt“
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes pld
-\end_inset
-
-Text
-\begin_inset Quotes prd
-\end_inset
-
-
+„Text”
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes pld
-\end_inset
-
-doppelt
-\begin_inset Quotes prd
-\end_inset
-
-
+ benutzt die Anführungszeichen: „doppelt”
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes fld
-\end_inset
-
-Text
-\begin_inset Quotes frd
-\end_inset
-
-
+«Text»
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes fld
-\end_inset
-
-doppelt
-\begin_inset Quotes frd
-\end_inset
-
-
+ benutzt die Anführungszeichen: «doppelt»
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes ald
-\end_inset
-
-Text
-\begin_inset Quotes ard
-\end_inset
-
-
+»Text«
 \family default
- benutzt die Anführungszeichen: 
-\begin_inset Quotes ald
-\end_inset
-
-doppelt
-\begin_inset Quotes ard
-\end_inset
-
-
+ benutzt die Anführungszeichen: »doppelt«
 \end_layout
 
 \begin_layout Standard
 Um ein einfaches Anführungszeichens zu schreiben wollen, benutzen Sie 
 \family sans
-Alt+
-\begin_inset Quotes grd
-\end_inset
-
-
+Alt+"
 \family default
 .
 \end_layout
@@ -17918,42 +17774,12 @@ ffl
 
 \begin_layout Standard
 Manchmal aber möchte man keine Ligaturen in einem Wort.
- Während eine Ligatur in einem Wort wie 
-\begin_inset Quotes pld
-\end_inset
-
-Graffiti
-\begin_inset Quotes grd
-\end_inset
-
- vielleicht in Ordnung ist, sieht es in zusammengesetzten Worten seltsam
- aus, zum Beispiel 
-\begin_inset Quotes pld
-\end_inset
-
-Stofflappen
-\begin_inset Quotes grd
-\end_inset
-
- oder 
-\begin_inset Quotes pld
-\end_inset
-
-Dorffest
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Während eine Ligatur in einem Wort wie „Graffiti“ vielleicht in Ordnung
+ ist, sieht es in zusammengesetzten Worten seltsam aus, zum Beispiel „Stofflappe
+n“ oder „Dorffest“.
  Um die Ligatur aufzuheben benutzt man den \SpecialChar LaTeX
--Befehl 
-\begin_inset Quotes pld
-\end_inset
-
-|
-\begin_inset Quotes grd
-\end_inset
-
- zwischen den Buchstaben (
+-Befehl „|“ zwischen den Buchstaben
+ (
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
@@ -17974,41 +17800,9 @@ Ligatur!-trenner
 Strg+Umschalt+L
 \family default
 ).
- Dies macht aus 
-\begin_inset Quotes pld
-\end_inset
-
-Stofflappen
-\begin_inset Quotes grd
-\end_inset
-
- 
-\begin_inset Quotes pld
-\end_inset
-
-Stoff\SpecialChar ligaturebreak
-lappen
-\begin_inset Quotes grd
-\end_inset
-
- und aus 
-\begin_inset Quotes pld
-\end_inset
-
-Dorffest
-\begin_inset Quotes grd
-\end_inset
-
- 
-\begin_inset Quotes pld
-\end_inset
-
-Dorf\SpecialChar ligaturebreak
-fest
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Dies macht aus „Stofflappen“ „Stoff\SpecialChar ligaturebreak
+lappen“ und aus „Dorffest“ „Dorf\SpecialChar ligaturebreak
+fest“.
 \end_layout
 
 \begin_layout Subsection
@@ -18073,19 +17867,11 @@ ietet \SpecialChar LyX
 
 \begin_layout Standard
 Sie wundern sich vielleicht warum die \SpecialChar LaTeX
--Version 
-\begin_inset Quotes gld
-\end_inset
-
-2
+-Version „2
 \begin_inset Formula $\epsilon$
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- ist.
+“ ist.
  Es ist eine alte Tradition in der \SpecialChar TeX
 -Welt, dass man für Programme verrückte
  Versionsnummern vergibt.
@@ -18094,25 +17880,9 @@ Sie wundern sich vielleicht warum die \SpecialChar LaTeX
 \begin_inset Formula $\pi$
 \end_inset
 
-: Die aktuelle Version ist 
-\begin_inset Quotes gld
-\end_inset
-
-\SpecialChar TeX
--3.141592
-\begin_inset Quotes grd
-\end_inset
-
-, die vorherige war 
-\begin_inset Quotes gld
-\end_inset
-
-\SpecialChar TeX
--3.14159
-\begin_inset Quotes grd
-\end_inset
-
-.
+: Die aktuelle Version ist „\SpecialChar TeX
+-3.141592“, die vorherige war „\SpecialChar TeX
+-3.14159“.
 \end_layout
 
 \begin_layout Subsection
@@ -18134,15 +17904,8 @@ Im Allgemeinen ist der Abstand zwischen Zahl und Einheit kleiner als ein
  normales Leerzeichen zwischen zwei Wörtern.
  Wie man im Beispiel sehen kann, sieht es besser aus, wenn der Abstand kleiner
  ist.
- Um solch ein 
-\begin_inset Quotes gld
-\end_inset
-
-halbes Leerzeichen
-\begin_inset Quotes erd
-\end_inset
-
- für Einheiten einzufügen, verwendet man das Menü 
+ Um solch ein „halbes Leerzeichen“ für Einheiten einzufügen, verwendet man
+ das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
@@ -18540,20 +18303,12 @@ arg   "footnote-insert"
 \end_inset
 
  Diese Box ist \SpecialChar LyX
-' Darstellung einer Fußnote.
+’ Darstellung einer Fußnote.
  Klickt man mit links auf die Marke 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-Fußnote
+„Fußnote
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-, wird die Box geöffnet und man kann den Fußnotentext hineinschreiben.
+“, wird die Box geöffnet und man kann den Fußnotentext hineinschreiben.
  Nochmaliges Klicken auf die Marke schließt die Box.
  Will man bestehenden Text als Fußnote setzen, markiert man ihn einfach
  und klickt dann auf den Fußnoten-Werkzeugleistenknopf.
@@ -18630,15 +18385,7 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
- eine Randnotiz einfügen, erscheint eine Box mit der Beschriftung 
-\begin_inset Quotes gld
-\end_inset
-
-Rand
-\begin_inset Quotes grd
-\end_inset
-
-.
+ eine Randnotiz einfügen, erscheint eine Box mit der Beschriftung „Rand“.
  Diese Box repräsentiert in \SpecialChar LyX
  eine Randnotiz.
 \end_layout
@@ -18937,27 +18684,11 @@ Treppeneffekt
 Aliasing
 \emph default
 ).
- Bekannte Formate sind 
-\begin_inset Quotes eld
-\end_inset
-
-Graphics Interchange Format
-\begin_inset Quotes erd
-\end_inset
-
- (GIF, Dateiendung 
-\begin_inset Quotes eld
-\end_inset
-
-
+ Bekannte Formate sind „Graphics Interchange Format“ (GIF, Dateiendung „
 \family typewriter
 .gif
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -18989,27 +18720,11 @@ status collapsed
 
 \end_inset
 
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Portable Network Graphics
-\begin_inset Quotes erd
-\end_inset
-
- (PNG, Dateiendung 
-\begin_inset Quotes eld
-\end_inset
-
-
+, „Portable Network Graphics“ (PNG, Dateiendung „
 \family typewriter
 .png
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -19041,39 +18756,15 @@ status collapsed
 
 \end_inset
 
-, und 
-\begin_inset Quotes eld
-\end_inset
-
-Joint Photographic Experts Group
-\begin_inset Quotes erd
-\end_inset
-
- (JPG, Dateiendung 
-\begin_inset Quotes eld
-\end_inset
-
-
+, und „Joint Photographic Experts Group“ (JPG, Dateiendung „
 \family typewriter
 .jpg
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
- oder 
-\begin_inset Quotes eld
-\end_inset
-
-
+“ oder „
 \family typewriter
 .jpeg
 \family default
-
-\begin_inset Quotes erd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -19126,27 +18817,12 @@ Grafiken
 \begin_inset Newline newline
 \end_inset
 
-Skalierbare Grafikformate können 
-\begin_inset Quotes gld
-\end_inset
-
-Scalable Vector Graphics
-\begin_inset Quotes grd
-\end_inset
-
- (SVG, Dateiendung 
-\begin_inset Quotes gld
-\end_inset
-
-
+Skalierbare Grafikformate können „Scalable Vector Graphics“ (SVG, Dateiendung
+ „
 \family typewriter
 .svg
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -19178,27 +18854,11 @@ status collapsed
 
 \end_inset
 
-, 
-\begin_inset Quotes gld
-\end_inset
-
-Encapsulated PostScript
-\begin_inset Quotes grd
-\end_inset
-
- (EPS, Dateiendung 
-\begin_inset Quotes gld
-\end_inset
-
-
+, „Encapsulated PostScript“ (EPS, Dateiendung „
 \family typewriter
 .eps
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -19230,27 +18890,11 @@ status collapsed
 
 \end_inset
 
- und 
-\begin_inset Quotes gld
-\end_inset
-
-Portable Document Format
-\begin_inset Quotes grd
-\end_inset
-
- (PDF, Dateiendung 
-\begin_inset Quotes gld
-\end_inset
-
-
+ und „Portable Document Format“ (PDF, Dateiendung „
 \family typewriter
 .pdf
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-)
+“)
 \begin_inset Index idx
 status collapsed
 
@@ -22357,15 +22001,8 @@ Einführung
 
 \begin_layout Standard
 Ein Gleitobjekt ist ein Teil eines Dokuments, das keinen festen Platz hat.
- Es kann eine oder mehrere Seiten vorwärts oder rückwärts 
-\begin_inset Quotes gld
-\end_inset
-
-gleiten
-\begin_inset Quotes grd
-\end_inset
-
-, dahin wo es am besten passt.
+ Es kann eine oder mehrere Seiten vorwärts oder rückwärts „gleiten“, dahin
+ wo es am besten passt.
  
 \family sans
 Fußnoten
@@ -22418,19 +22055,11 @@ Gleitobjekt
 \end_inset
 
 B.
- die Beschriftung 
-\begin_inset Quotes gld
-\end_inset
-
-Abbildung
+ die Beschriftung „Abbildung
 \begin_inset space ~
 \end_inset
 
-#:
-\begin_inset Quotes grd
-\end_inset
-
- hat (# ist die aktuelle Nummer) wird in das Dokument eingefügt.
+#:“ hat (# ist die aktuelle Nummer) wird in das Dokument eingefügt.
  Die Beschriftung wird automatisch in der Ausgabe in die Dokumentsprache
  übersetzt.
  Nach der Beschriftung kann man einen Text für die Legende eingeben.
@@ -22607,25 +22236,9 @@ arg   "dialog-show-new-inset ref"
 
 .
  Es ist wichtig Querverweise für Abbildungs-Gleitobjekte zu verwenden, und
- nicht vage Formulierungen wie 
-\begin_inset Quotes gld
-\end_inset
-
-die obige Abbildung
-\begin_inset Quotes grd
-\end_inset
-
-, denn \SpecialChar LaTeX
- wird die Gleitobjekte in der Ausgabe neu anordnen, so dass sie nicht
- mehr 
-\begin_inset Quotes gld
-\end_inset
-
-obig
-\begin_inset Quotes grd
-\end_inset
-
- sein muss.
+ nicht vage Formulierungen wie „die obige Abbildung“, denn \SpecialChar LaTeX
+ wird die Gleitobjekt
+e in der Ausgabe neu anordnen, so dass sie nicht mehr „obig“ sein muss.
  Für mehr über Querverweise siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -22839,15 +22452,7 @@ arg   "float-insert table"
  eingefügt werden.
  Sie haben dieselben Eigenschaften wie Abbildungs-Gleitobjekte bis auf dass
  die Tabelle darin normalerweise unter die Beschriftung statt wie bei Abbildunge
-n darüber gesetzt wird und dass die Marken mit 
-\begin_inset Quotes gld
-\end_inset
-
-tab:
-\begin_inset Quotes grd
-\end_inset
-
- beginnen.
+n darüber gesetzt wird und dass die Marken mit „tab:“ beginnen.
  Tabelle
 \begin_inset space ~
 \end_inset
@@ -23645,14 +23250,7 @@ x^2
 y
 \series default
  eingeben.
- Wenn Sie Zeichen in der Hochstellung haben, die mit dem Zirkumflex 
-\begin_inset Quotes gld
-\end_inset
-
-^
-\begin_inset Quotes grd
-\end_inset
-
+ Wenn Sie Zeichen in der Hochstellung haben, die mit dem Zirkumflex '^'
  akzentuiert werden können, müssen Sie die 
 \family sans
 Leertaste
@@ -24832,7 +24430,7 @@ Einfügen\SpecialChar menuseparator
 Mathe\SpecialChar menuseparator
 Array-Umgebung
 \family default
-: dann bekommen Sie automatisch eine 2x2-Matrix, oder Sie klicken in der
+: dann bekommen Sie automatisch eine 2×2-Matrix, oder Sie klicken in der
  automatischen 
 \family sans
 Mathe-Werkzeugleiste
@@ -25279,28 +24877,13 @@ arg   "label-insert"
 ) eingefügt, wenn sich der Cursor in der Gleichung befindet.
  Es erscheint ein Dialog, in den man die Marke eingibt.
  Es ist empfohlen, dass man das vorgeschlagene 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-eq:
+„eq:
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- als ersten Teil der Marke verwendet, da dies später hilft, schnell den
+“ als ersten Teil der Marke verwendet, da dies später hilft, schnell den
  Typ der Marke zu finden, wenn man viele Marken im Dokument hat.
- Wir haben im folgenden Beispiel die Marke 
-\begin_inset Quotes gld
-\end_inset
-
-eq:tanhExp
-\begin_inset Quotes grd
-\end_inset
-
- in der zweiten Zeile eingegeben:
+ Wir haben im folgenden Beispiel die Marke „eq:tanhExp“ in der zweiten Zeile
+ eingegeben:
 \begin_inset Formula 
 \begin{eqnarray}
 \tanh(x) & = & \frac{\sinh(x)}{\cosh(x)}\nonumber \\
@@ -25342,7 +24925,7 @@ reference "eq:tanhExp"
 
 \begin_layout Standard
 Die Eigenschaften von \SpecialChar LyX
-' Querverweis-Box sind in Abschnitt
+’ Querverweis-Box sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -25817,7 +25400,8 @@ Kalligrafisch
 Der Tastaturbefehl, um zu einem speziellen Schriftstil zu wechseln, wird
  im 
 \family typewriter
-Mathe-Modus
+Mathe\SpecialChar softhyphen
+Modus
 \family default
  wie beschrieben interpretiert.
  Der 
@@ -26194,7 +25778,7 @@ name "sec:Querverweise"
 
 \begin_layout Standard
 Eine von \SpecialChar LyX
-' Stärken sind Querverweise.
+’ Stärken sind Querverweise.
  Sie können auf jeden Abschnitt, jedes Gleitobjekt, jede Fußnote, Formel
  und Liste im Dokument referenzieren.
  Für eine Referenz müssen Sie zuerst eine Marke in den zu referenzieren
@@ -26237,7 +25821,6 @@ arg   "label-insert"
  Ein Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Marke.png
-	scale 85
 
 \end_inset
 
@@ -26260,26 +25843,10 @@ enu:Zweiter-Eintrag
 
 .
  Der Präfix 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-enu:
+„enu:
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- steht für 
-\begin_inset Quotes gld
-\end_inset
-
-enumerate
-\begin_inset Quotes grd
-\end_inset
-
- (auf deutsch: 
+“ steht für „enumerate“ (auf deutsch: 
 \emph on
 nummeriert
 \emph default
@@ -26291,18 +25858,10 @@ nummeriert
 
 B.
  
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-sec:
+„sec:
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- (Englisch für 
+“ (Englisch für 
 \emph on
 section
 \emph default
@@ -26325,7 +25884,6 @@ arg   "dialog-show-new-inset ref"
  Ein graues Querverweis-Kästchen wie dieses: 
 \begin_inset Graphics
 	filename clipart/Querverweis.png
-	scale 85
 
 \end_inset
 
@@ -26333,18 +25891,10 @@ arg   "dialog-show-new-inset ref"
  Marken.
  Um eine Marke einzufügen, können Sie die Marken alphabetisch sortieren
  und wählen dann 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-enu:Zweiter-Eintrag
+„enu:Zweiter-Eintrag
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- aus.
+“ aus.
  Im Feld 
 \family sans
 Format
@@ -26445,15 +25995,7 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 \begin_layout Description
 (<Querverweis>): druckt die Nummer umgeben von zwei runden Klammern, dies
  ist der Stil, wie er normalerweise für Verweise auf Formeln verwendet wird,
- speziell wenn der Name 
-\begin_inset Quotes gld
-\end_inset
-
-Gleichung
-\begin_inset Quotes grd
-\end_inset
-
- weggelassen wird: 
+ speziell wenn der Name „Gleichung“ weggelassen wird: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "tab:Ein-Tabellen-Gleitobjekt"
@@ -26487,15 +26029,7 @@ Seite
 \begin_inset space ~
 \end_inset
 
-<Seite>: druckt den Text 
-\begin_inset Quotes gld
-\end_inset
-
-auf Seite
-\begin_inset Quotes grd
-\end_inset
-
- und die Seitennummer: 
+<Seite>: druckt den Text „auf Seite“ und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "tab:Ein-Tabellen-Gleitobjekt"
@@ -26515,32 +26049,10 @@ auf dieser Seite
 \end_inset
 
  gedruckt; wenn sich die Marke auf der gegenüberliegenden Seite in einem
- doppelseitigen Dokument befindet, wird 
-\begin_inset Quotes gld
-\end_inset
-
-auf der gegenüberliegenden Seite
-\begin_inset Quotes grd
-\end_inset
-
+ doppelseitigen Dokument befindet, wird „auf der gegenüberliegenden Seite“
  gedruckt; befindet sie sich auf der vorigen Seite, die keine gegenüberliegende
- ist, wird 
-\begin_inset Quotes gld
-\end_inset
-
-auf der vorherigen Seite
-\begin_inset Quotes grd
-\end_inset
-
- gedruckt; wenn sie sich auf der nächsten, nicht gegenüberliegenden Seite
- befindet, wird 
-\begin_inset Quotes gld
-\end_inset
-
-auf der nächsten Seite
-\begin_inset Quotes grd
-\end_inset
-
+ ist, wird „auf der vorherigen Seite“ gedruckt; wenn sie sich auf der nächsten,
+ nicht gegenüberliegenden Seite befindet, wird „auf der nächsten Seite“
  gedruckt.
  Der Wortlaut des gedruckten Texts hängt zudem von der verwendeten Dokumentklass
 e ab.
@@ -26559,15 +26071,8 @@ Seite
 \begin_inset space ~
 \end_inset
 
-<Seite>: druckt die Nummer, den Text 
-\begin_inset Quotes gld
-\end_inset
-
-auf Seite
-\begin_inset Quotes grd
-\end_inset
-
-, und die Seitennummer: 
+<Seite>: druckt die Nummer, den Text „auf Seite“, und die Seitennummer:
+ 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "tab:Ein-Tabellen-Gleitobjekt"
@@ -26701,18 +26206,10 @@ newref
 
 B.
  alle Verweise auf Abbildungen (die den Marken-Präfix 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-fig
+„fig
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- haben) umzuformatieren, verwendet man den Befehl
+“ haben) umzuformatieren, verwendet man den Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -26835,16 +26332,8 @@ Marken können jederzeit geändert werden.
 \begin_layout Standard
 Wenn ein Querverweis eine nicht existierende Marke referenziert, erscheint
  in \SpecialChar LyX
- 
-\begin_inset Quotes gld
-\end_inset
-
-NICHT VORHANDEN
-\begin_inset Quotes grd
-\end_inset
-
- in der Querverweismarke und in der Ausgabe zwei Fragezeichen statt der
- Referenz.
+ „NICHT VORHANDEN“ in der Querverweismarke und in der Ausgabe zwei Fragezeic
+hen statt der Referenz.
 \end_layout
 
 \begin_layout Standard
@@ -27390,7 +26879,7 @@ Es gibt zwei Möglichkeiten, in einem \SpecialChar LyX
 \end_layout
 
 \begin_layout Enumerate
-Sie können eine Literaturverzeichnis-Datenbank einfügen
+Sie können eine Literaturverzeichnis-Datenbank einfügen.
 \begin_inset Foot
 status collapsed
 
@@ -27409,7 +26898,7 @@ Bib\SpecialChar TeX
 
 \end_inset
 
-, was in Abschnitt
+ Dies wird in Abschnitt
 \begin_inset space \space{}
 \end_inset
 
@@ -27420,7 +26909,8 @@ reference "sec:Literaturverzeichnis-Datenbanken"
 
 \end_inset
 
- beschrieben wird.
+ beschrieben.
+ .
 \end_layout
 
 \begin_layout Enumerate
@@ -27535,15 +27025,7 @@ Marke
 \family default
  für einen Eintrag, erscheint die Marke statt der Nummer.
  Hier sind zwei Beispiele, da erste ohne Marke, das zweite mit der Marke
- 
-\begin_inset Quotes gld
-\end_inset
-
-Credits
-\begin_inset Quotes grd
-\end_inset
-
-:
+ „Credits“:
 \end_layout
 
 \begin_layout Standard
@@ -27578,7 +27060,8 @@ key "lyxcredit"
 Um alle Literatureinträge auszurichten, kann man im Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
-Absatz-Einstellungen
+Absatz-Ein\SpecialChar softhyphen
+stellungen
 \family default
  (Werkzeugleistenknopf 
 \begin_inset Info
@@ -27698,7 +27181,8 @@ Liste
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar menuseparator
-BibTeX-Literaturverzeichnis
+Bib\SpecialChar softhyphen
+TeX-Literaturverzeichnis
 \family default
 , woraufhin das 
 \family sans
@@ -27848,7 +27332,9 @@ Literaturverzeichnis
 \family default
 die Option 
 \family sans
-Abschnittspezifisches
+Ab\SpecialChar softhyphen
+schnitt\SpecialChar softhyphen
+spezifisches
 \begin_inset space \space{}
 \end_inset
 
@@ -27933,19 +27419,11 @@ Damit wird die Standardeinstellung überschrieben.
 \begin_layout Standard
 Im Dialogfenster können Sie auch Text, der vor oder nach dem Verweis erscheinen
  soll, festlegen.
- Hier erscheint der Text 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel
+ Hier erscheint der Text „Kapitel
 \begin_inset space \space{}
 \end_inset
 
-3
-\begin_inset Quotes grd
-\end_inset
-
- nach dem Verweis: 
+3“ nach dem Verweis: 
 \begin_inset CommandInset citation
 LatexCommand cite
 after "Kapitel 3"
@@ -28021,18 +27499,10 @@ Stichwortverzeichnis
 \family default
  eingefügt.
  Eine hellblaue Box namens 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-Stichwortverzeichnis
+„Stichwortverzeichnis
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- zeigt die Stelle an, wo das Stichwortverzeichnis in der Ausgabe erscheinen
+“ zeigt die Stelle an, wo das Stichwortverzeichnis in der Ausgabe erscheinen
  wird.
  Die Stichwortverzeichnis-Box ist nicht wie andere \SpecialChar LyX
 -Boxen anklickbar.
@@ -28072,7 +27542,8 @@ Stichworte werden häufig gruppiert, um dem Leser eine schnelle Suche zu
  ermöglichen.
  Wenn wir zum Beispiel 
 \emph on
-Auflistung
+Auf\SpecialChar ligaturebreak
+listung
 \emph default
  und 
 \emph on
@@ -28100,7 +27571,8 @@ Liste
 .
  Im Textfeld für das Stichwort
 \emph on
- Auflistung
+ Auf\SpecialChar ligaturebreak
+listung
 \emph default
  in Abschnitt
 \begin_inset space \space{}
@@ -28119,7 +27591,8 @@ reference "subsec:Auflistung"
 \begin_layout Standard
 
 \series bold
-Liste ! Auflistung
+Liste ! Auf\SpecialChar ligaturebreak
+listung
 \end_layout
 
 \begin_layout Standard
@@ -28153,18 +27626,10 @@ ein.
 
 \begin_layout Standard
 Das Ausrufezeichen 
-\begin_inset Quotes gld
-\end_inset
-
-
 \series bold
-!
+'!
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- markiert die Gruppierungsstufe, von denen es drei gibt.
+' markiert die Gruppierungsstufe, von denen es drei gibt.
  Jede Stufe wird in der Druckausgabe ein wenig eingerückt.
  Für eine höhere Stufe ist kein Stichwort nötig, es wird aber trotzdem gedruckt,
  aber ohne Seitenzahl.
@@ -28244,11 +27709,7 @@ Die Befehle
 \series bold
 |(
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- und 
+“ und 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28256,11 +27717,7 @@ Die Befehle
 \series bold
 |)
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- beginnen bzw.
+“ beginnen bzw.
 \begin_inset space \space{}
 \end_inset
 
@@ -28269,15 +27726,7 @@ beenden den Indexbereich.
  des Dokuments einfügen.
  Diese erscheinen im Stichwortverzeichnis als ein Stichwort mit einer nachstehen
 den Liste von Seitenzahlen in denen sich das Stichwort befindet.
- Ein Beispiel ist das Stichwort 
-\begin_inset Quotes gld
-\end_inset
-
-Dokument ! Einstellungen
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Ein Beispiel ist das Stichwort „Dokument ! Einstellungen“.
 \end_layout
 
 \begin_layout Subsection
@@ -28396,33 +27845,9 @@ reference "subsec:Stichwort-Programm"
 \end_inset
 
  weiß nicht wie die Akzente in verschiedenen Sprachen einsortiert werden.
- Als Beispiel haben wir die drei Stichworte 
-\begin_inset Quotes gld
-\end_inset
-
-maison
-\begin_inset Quotes grd
-\end_inset
-
-, 
-\begin_inset Quotes gld
-\end_inset
-
-maïs
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-maître
-\begin_inset Quotes grd
-\end_inset
-
-.
+ Als Beispiel haben wir die drei Stichworte „maison“, „maïs“ und „maître“.
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Sinnloseintrag ! maïs
@@ -28463,23 +27888,8 @@ voriger Eintrag@aktueller Eintrag
 \end_layout
 
 \begin_layout Standard
-In unserem Fall wollen wir 
-\begin_inset Quotes gld
-\end_inset
-
-maison
-\begin_inset Quotes grd
-\end_inset
-
- nach 
-\begin_inset Quotes gld
-\end_inset
-
-maïs
-\begin_inset Quotes grd
-\end_inset
-
- haben und schreiben daher in das Stichwort von maison:
+In unserem Fall wollen wir „maison“ nach „maïs“ haben und schreiben daher
+ in das Stichwort von maison:
 \end_layout
 
 \begin_layout Standard
@@ -28547,11 +27957,7 @@ e mit
 \SpecialChar LaTeX
 -Paket ! 
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- beginnen.
+“ beginnen.
  Der Grund ist, dass sich das Stichwort für aeguill in einer Fußnote befindet.
  Um diesen Fehler von 
 \family sans
@@ -28612,15 +28018,8 @@ Dies ist ein kursiver Sinnloseintrag
 
 \end_inset
 
- Des Weiteren kann die Seitennummer mit dem Befehl 
-\begin_inset Quotes gld
-\end_inset
-
-|
-\begin_inset Quotes grd
-\end_inset
-
-, gefolgt von einem \SpecialChar LaTeX
+ Des Weiteren kann die Seitennummer mit dem Befehl „|“, gefolgt von einem
+ \SpecialChar LaTeX
 -Befehl ohne Backslash, formatiert werden .
  Man kann zum Beispiel
 \end_layout
@@ -28652,11 +28051,7 @@ Sinnloseintrag ! kursive Seitennummer:|textit
 \series bold
 |Befehl
 \series default
-
-\begin_inset Quotes grd
-\end_inset
-
- 
+“ 
 \series bold
 
 \backslash
@@ -28952,15 +28347,8 @@ Mehrere Stichwortverzeichnisse
 
 \begin_layout Standard
 In vielen Fällen ist es üblich mehr als ein Stichwortverzeichnis zu haben.
- Zum Beispiel könnten Sie ein separates Stichwortverzeichnis 
-\begin_inset Quotes gld
-\end_inset
-
-Index der Namen
-\begin_inset Quotes grd
-\end_inset
-
- neben dem Standard-Stichwortverzeichnis haben wollen.
+ Zum Beispiel könnten Sie ein separates Stichwortverzeichnis „Index der
+ Namen“ neben dem Standard-Stichwortverzeichnis haben wollen.
  Mit \SpecialChar LaTeX
  ist dies nicht direkt möglich, aber es gibt Pakete, die dies ermöglichen.
  \SpecialChar LyX
@@ -29027,15 +28415,7 @@ Mehrere Indexe verwenden
 \family sans
 Verfügbare Indexe
 \family default
- bereits den Standard-Index 
-\begin_inset Quotes gld
-\end_inset
-
-Stichwortverzeichnis
-\begin_inset Quotes grd
-\end_inset
-
-.
+ bereits den Standard-Index „Stichwortverzeichnis“.
  Um weitere Indexe hinzuzufügen, geben Sie den Namen des Indexes in das
  Feld 
 \family sans
@@ -29084,15 +28464,7 @@ Wenn Sie die Index-Zuweisung eines Indexeintrags ändern wollen, klicken
 
 \begin_layout Itemize
 Durch Rechtsklicken auf einen Index kann man dessen Typ ändern.
- Man kann des weiteren einen Index als 
-\begin_inset Quotes gld
-\end_inset
-
-Unterindex
-\begin_inset Quotes grd
-\end_inset
-
- verwenden.
+ Man kann des weiteren einen Index als „Unterindex“ verwenden.
  Wenn man das macht, wird die Überschrift des Indexes um eine Ebene verringert.
  Das bedeutet, dass wenn man z.
 \begin_inset space \thinspace{}
@@ -29100,7 +28472,7 @@ Unterindex
 
 B.
  eine Buch-Dokumentklasse verwendet, in der der Titel des Stichwortverzeichnisse
-s als Kapitel definiert ist, der Titels des Unterindex' als Abschnitt definiert
+s als Kapitel definiert ist, der Titels des Unterindex’ als Abschnitt definiert
  wird und daher in Nicht-Unterindexe eingegliedert werden kann.
 \end_layout
 
@@ -29271,19 +28643,11 @@ Symbol
 \end_inset
 
 B.
- 
-\begin_inset Quotes gld
-\end_inset
-
-
+ „
 \begin_inset Formula $\sigma$
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- zu bekommen, fügt man dies ein:
+“ zu bekommen, fügt man dies ein:
 \begin_inset Newline newline
 \end_inset
 
@@ -29297,28 +28661,12 @@ sigma$
 
 
 \series default
-Das Zeichen 
-\begin_inset Quotes gld
-\end_inset
-
-$
-\begin_inset Quotes grd
-\end_inset
-
- beginnt/beendet die Formel.
+Das Zeichen '$' beginnt/beendet die Formel.
  Der \SpecialChar LaTeX
 -Befehl für den griechischen Buchstaben ist dessen Name beginnend mit
- einem umgekehrten Schrägstrich 
-\begin_inset Quotes gld
-\end_inset
-
-
+ einem umgekehrten Schrägstrich '
 \backslash
-
-\begin_inset Quotes grd
-\end_inset
-
-.
+'.
  Für große griechische Buchstaben beginnt der Befehl mit einem Großbuchstaben:
  
 \series bold
@@ -29353,19 +28701,11 @@ Textstil
  Dialog nicht verwenden, um den Beschreibungstext zu formatieren, sondern
  man muss \SpecialChar LaTeX
 -Befehle verwenden.
- Zum Beispiel lautet die Beschreibung für den Nomenklatureintrag für 
-\begin_inset Quotes gld
-\end_inset
-
-
+ Zum Beispiel lautet die Beschreibung für den Nomenklatureintrag für „
 \begin_inset Formula $\sigma$
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- in diesem Dokument:
+“ in diesem Dokument:
 \begin_inset Newline newline
 \end_inset
 
@@ -29542,33 +28882,17 @@ description "Sinnsloseintrag für das Zeichen \\textsf{sigma}"
 Symbol
 \family default
  steht.
- Sie werden daher nach 
-\begin_inset Quotes gld
-\end_inset
-
-
+ Sie werden daher nach „
 \family sans
 a
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-
+“ und „
 \family typewriter
 $
 \backslash
 sigma$
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- sortiert – das 
+“ sortiert – das 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -29576,15 +28900,7 @@ sigma$
 \emph on
 a
 \emph default
- erscheinen, denn das Befehlszeichen 
-\begin_inset Quotes gld
-\end_inset
-
-$
-\begin_inset Quotes grd
-\end_inset
-
- wird bei der Sortierung berücksichtigt.
+ erscheinen, denn das Befehlszeichen '$' wird bei der Sortierung berücksichtigt.
 \end_layout
 
 \begin_layout Standard
@@ -29648,34 +28964,18 @@ nomencl
 
 \begin_layout Description
 refeq Verweis mit dem Ausdruck 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-, siehe Gleichung (#)
+„, siehe Gleichung (#)
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
+“
 \end_layout
 
 \begin_layout Description
 refpage Verweis mit dem Ausdruck 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-, Seite (#)
+„, Seite (#)
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
+“
 \end_layout
 
 \begin_layout Description
@@ -29769,16 +29069,8 @@ nomnorefeqpage schaltet die entsprechende Option ab
 \end_layout
 
 \begin_layout Standard
-Damit Wörter wie 
-\begin_inset Quotes gld
-\end_inset
-
-Seite
-\begin_inset Quotes grd
-\end_inset
-
- auch auf Deutsch und nicht in Englisch erscheinen, fügen Sie diese Zeilen
- dem \SpecialChar LaTeX
+Damit Wörter wie „Seite“ auch auf Deutsch und nicht in Englisch erscheinen,
+ fügen Sie diese Zeilen dem \SpecialChar LaTeX
 -Vorspann ihres Dokuments hinzu:
 \end_layout
 
@@ -29847,18 +29139,10 @@ status collapsed
 
 Verzeichnis einfügen.
  An der Stelle erscheint ein Kästchen mit der Aufschrift 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-Nomenklatur
+„Nomenklatur
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-, und dort wird das Verzeichnis auch gedruckt.
+“, und dort wird das Verzeichnis auch gedruckt.
  Mit einem Rechtsklick auf das Kästchen kann man die verfügbare Breite für
  die Symbole einstellen.
  Sie können dabei zwischen diesen Einstellungen wählen:
@@ -29893,15 +29177,7 @@ Benutzerdefiniert benutzerdefinierte Breite
 \end_layout
 
 \begin_layout Standard
-In der Druckausgabe erscheint die Nomenklatur als 
-\begin_inset Quotes gld
-\end_inset
-
-Nomenclature
-\begin_inset Quotes grd
-\end_inset
-
-.
+In der Druckausgabe erscheint die Nomenklatur als „Nomenclature“.
  Sie können den Namen im \SpecialChar LaTeX
 -Vorspann mit dieser Zeile ändern:
 \end_layout
@@ -30064,15 +29340,8 @@ Entfernen
 \family default
 .
  Des Weiteren erlaubt es der Dialog, zwei Zweige miteinander zu vereinen
- (einfach einen Zweig in den Namen eines anderen umbenennen) und 
-\begin_inset Quotes gld
-\end_inset
-
-unbekannte Zweige
-\begin_inset Quotes grd
-\end_inset
-
- (d.
+ (einfach einen Zweig in den Namen eines anderen umbenennen) und „unbekannte
+ Zweige“ (d.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -30147,88 +29416,13 @@ Zweige
 \family default
  aktivieren, wird der Name des aktiven Zweigs beim Export des Dokuments
  an den Dateinamen angehängt.
- Angenommen Sie haben eine Datei namens 
-\begin_inset Quotes gld
-\end_inset
-
-Prüfung.lyx
-\begin_inset Quotes grd
-\end_inset
-
- mit den beiden obigen Zweigen.
- Wenn 
-\begin_inset Quotes gld
-\end_inset
-
-Dateinamensendung
-\begin_inset Quotes grd
-\end_inset
-
- aktiv ist, wird die exportierte PDF-Datei 
-\begin_inset Quotes gld
-\end_inset
-
-Prüfung.pdf
-\begin_inset Quotes grd
-\end_inset
-
- heißen wenn beide Zweige 
-\begin_inset Quotes gld
-\end_inset
-
-Frage
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-Antwort
-\begin_inset Quotes grd
-\end_inset
-
- inaktiv waren, 
-\begin_inset Quotes eld
-\end_inset
-
-Prüfung-Frage.pdf
-\begin_inset Quotes erd
-\end_inset
-
- wenn nur der Zweig 
-\begin_inset Quotes gld
-\end_inset
-
-Frage
-\begin_inset Quotes grd
-\end_inset
-
- aktiv war, 
-\begin_inset Quotes eld
-\end_inset
-
-Prüfung-Antwort.pdf
-\begin_inset Quotes erd
-\end_inset
-
- wenn nur der Zweig 
-\begin_inset Quotes gld
-\end_inset
-
-Antwort
-\begin_inset Quotes grd
-\end_inset
-
- aktiv war, und 
-\begin_inset Quotes gld
-\end_inset
-
-Prüfung-Frage-Antwort.pdf
-\begin_inset Quotes grd
-\end_inset
-
- wenn beide Zweige aktiv waren.
+ Angenommen Sie haben eine Datei namens „Prüfung.lyx“ mit den beiden obigen
+ Zweigen.
+ Wenn „Dateinamensendung“ aktiv ist, wird die exportierte PDF-Datei „Prüfung.pdf“
+ heißen wenn beide Zweige „Frage“ und „Antwort“ inaktiv waren, „Prüfung-Frage.pdf
+“ wenn nur der Zweig „Frage“ aktiv war, „Prüfung-Antwort.pdf“ wenn nur der
+ Zweig „Antwort“ aktiv war, und „Prüfung-Frage-Antwort.pdf“ wenn beide Zweige
+ aktiv waren.
  Dies hilft um verschiedene Versionen einer Datei zu exportieren ohne den
  Überblick zu verlieren.
 \end_layout
@@ -30817,7 +30011,8 @@ Geöffnet
  dargestellt.
  Um die Darstellung zu ändern, machen Sie einen Rechtsklick auf das Kästchen
  und wählen in dem Dialogfenster aus, was Sie wollen.
- Außerdem können Sie im geöffneten Zustand die Einfügung auflösen, das heißt,
+ Außerdem können Sie im geöffneten Zustand die Einfügung auf\SpecialChar ligaturebreak
+lösen, das heißt,
  der enthaltenen Text wird normal dargestellt.
  Wenn das Kästchen geschlossen ist, öffnet ein Linksklick es.
 \end_layout
@@ -30858,7 +30053,7 @@ fbox{
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename clipart/ERT.png
+	filename ../clipart/ERT.png
 	scale 75
 
 \end_inset
@@ -30936,15 +30131,7 @@ Wenn Sie größere Dokumente oder Bücher schreiben, müssen Sie etwas über
 -Befehle wissen, die \SpecialChar LyX
  im Hintergrund verwendet.
  Da \SpecialChar LaTeX
- auf Befehlen basiert, können Sie Ihren Text 
-\begin_inset Quotes gld
-\end_inset
-
-programmieren
-\begin_inset Quotes grd
-\end_inset
-
-.
+ auf Befehlen basiert, können Sie Ihren Text „programmieren“.
  Dies hat den Vorteil, dass das Aussehen des Dokuments jederzeit geändert
  werden kann, wenn man die richtigen Befehle kennt.
  Stellen Sie sich zum Beispiel vor, dass Sie ein Handbuch für ein Produkt
@@ -31276,7 +30463,7 @@ status open
 
 \begin_layout Plain Layout
 \SpecialChar LyX
-'
+’
 \family sans
 \series bold
 \color red
@@ -31375,20 +30562,12 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Module
 \family default
- das Modul 
-\begin_inset Quotes gld
-\end_inset
-
-Benutzerdefinierte Kopf/Fußzeilen
-\begin_inset Quotes grd
-\end_inset
-
- hinzu.
+ das Modul „Benutzerdefinierte Kopf/Fußzeilen“ hinzu.
  Dieses Modul bietet die 6
 \begin_inset space ~
 \end_inset
 
-Stile
+Umgebungen
 \end_layout
 
 \begin_layout Description
@@ -31441,6 +30620,8 @@ rechts
 
 \begin_layout Standard
 für die verschiedenen Positionen in der Kopf/Fußzeile an.
+ Diese Umgebungen können über das Umgebungs-„Pull-down“-Menü ausgewählt
+ werden.
 \end_layout
 
 \begin_layout Standard
@@ -31668,15 +30849,7 @@ Achtung
 \family sans
 Seiten-Stil
 \family default
- auf 
-\begin_inset Quotes gld
-\end_inset
-
-Standard
-\begin_inset Quotes grd
-\end_inset
-
- gesetzt ist.
+ auf „Standard“ gesetzt ist.
  Daher sollten Sie deren Stil ausprobieren bevor Sie eigenen Kopf-/Fußzeilen
  definieren.
 \end_layout
@@ -31740,15 +30913,7 @@ roman{page} druckt die aktuelle Seitennummer in kleinen römischen Ziffern
 leftmark druckt die aktuelle Abschnittsnummer und dessen Titel.
  Besitzt das Dokument Kapitel, druckt es stattdessen die Kapitelnummer und
  dessen Name.
- Es heißt 
-\begin_inset Quotes pld
-\end_inset
-
-leftmark
-\begin_inset Quotes prd
-\end_inset
-
-, da man es üblicherweise links in der Kopfzeile verwendet.
+ Es heißt „leftmark“, da man es üblicherweise links in der Kopfzeile verwendet.
 \end_layout
 
 \begin_layout Description
@@ -31899,7 +31064,7 @@ headheight
 footheight
 \series default
  im \SpecialChar LaTeX
--Vorspann in folgendem Schema über:
+-Vorspann in folgendem Schema mit der Zeile:
 \end_layout
 
 \begin_layout Standard
@@ -31913,7 +31078,20 @@ headheight}{Höhe}
 \end_layout
 
 \begin_layout Standard
-Dabei ist die Höhe eine Größe in Standard-Einheiten.
+Dabei ist die 
+\series bold
+Höhe
+\series default
+ eine Größe in Standard-Einheiten (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\series bold
+3cm
+\series default
+).
  Weiß man nicht welche Höhe man benötigt, definiert man die Kopf/Fußzeilen
  und schaut das Dokument als PDF an.
  Anschließend öffnet man das \SpecialChar LaTeX
@@ -32017,7 +31195,7 @@ Fußzeile
 \end_inset
 
 Mitte \SpecialChar LyX
-'
+’
 \family sans
 \series bold
 \color red
@@ -32619,7 +31797,7 @@ Quelltext-Panel
  Das Fenster zeigt den Quellcode des gesamten Absatzes, indem sich der Cursor
  momentan befindet.
  Man kann auch Dokumentteile in \SpecialChar LyX
-' Hauptfenster markieren, dann wird nur
+’ Hauptfenster markieren, dann wird nur
  der Code der Auswahl angezeigt (wenn es mehr als ein Absatz ist).
  Um das gesamte Dokument als Quellcode anzusehen, verwendet man die entsprechend
 e Option im Quellcode-Fenster.
@@ -32747,7 +31925,7 @@ ersetzen
 \family sans
 Umschalt
 \family default
-+F oder den Werkzeugleistenknopf 
++F) oder den Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "dialog-toggle findreplaceadv"
@@ -32831,10 +32009,10 @@ Suchen
  Wenn nach Formeln gesucht wird, werden diese gefunden, wenn sie allein
  stehen, aber auch wenn sie Teil einer Formel sind.
  Zum Beispiel werden die beiden Beispiele in dieser Formel gefunden: 
-\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -32951,15 +32129,8 @@ das Ersetzen mit einer formatierten Version des selben Wortes, z.
 \end_inset
 
 B.
- Ersetzen des Namens 
-\begin_inset Quotes gld
-\end_inset
-
-func()
-\begin_inset Quotes grd
-\end_inset
-
- mit seiner Version im Stil Schreibmaschine 
+ Ersetzen des Namens „func()“ mit seiner Version im Stil Schreibmaschine
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -32967,11 +32138,7 @@ func()
 \family typewriter
 func()
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
-
+“
 \end_layout
 
 \begin_layout Itemize
@@ -32980,31 +32147,15 @@ func()
 \end_inset
 
 B.
- um alle Vorkommen von 
-\begin_inset Quotes gld
-\end_inset
-
-
+ um alle Vorkommen von „
 \begin_inset Formula $R$
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- mit 
-\begin_inset Quotes gld
-\end_inset
-
-
+“ mit „
 \begin_inset Formula $\mathbb{R}$
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- zu ersetzen (dabei hilft es eventuell, die Optionen 
+“ zu ersetzen (dabei hilft es eventuell, die Optionen 
 \family sans
 Ganze Wörter
 \family default
@@ -33020,15 +32171,8 @@ Ignoriere Format
 \family sans
 Einstellungen
 \family default
- zu deaktivieren, um zu verhindern, dass alle 
-\begin_inset Quotes eld
-\end_inset
-
-R
-\begin_inset Quotes erd
-\end_inset
-
- im normalen Text ersetzt werden), oder 
+ zu deaktivieren, um zu verhindern, dass alle „R“ im normalen Text ersetzt
+ werden), oder 
 \begin_inset Formula $x_{j}^{i}$
 \end_inset
 
@@ -33304,7 +32448,7 @@ Alle von \SpecialChar LyX
 
 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -33324,7 +32468,7 @@ Es gibt 2
 Dateien für jede Sprache.
  Um ein Wörterbuch unter Windows zu installieren, kopiert man beide Dateien
  in \SpecialChar LyX
-' Installationsunterordner 
+’ Installationsunterordner 
 \family sans
 ~
 \backslash
@@ -33381,7 +32525,7 @@ hunspell
 \family typewriter
 enchant
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Enchant selbst ist eine Hüllbibliothek mit verschiedenen konfigurierbaren
@@ -33443,14 +32587,7 @@ Wörter
 \begin_inset space ~
 \end_inset
 
-akzeptieren Verhindert, dass zusammengesetzte Wörter wie 
-\begin_inset Quotes gld
-\end_inset
-
-Verzeichnisname
-\begin_inset Quotes erd
-\end_inset
-
+akzeptieren Verhindert, dass zusammengesetzte Wörter wie „Verzeichnisname“
  moniert werden.
 \end_layout
 
@@ -33618,7 +32755,7 @@ Thesaurus-Wörterbücher
 \family default
 ) nur noch mitteilen, wo sie gespeichert sind.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Unter Linux sind die üblichen Orte (abhängig von Ihrer Distribution und
@@ -33979,7 +33116,7 @@ Farbe ! Änderungsverfolgung
 \end_inset
 
  Der Autor und das Datum der Änderung werden in \SpecialChar LyX
-' Statusleiste angezeigt,
+’ Statusleiste angezeigt,
  wenn sich der Cursor in geändertem Text befindet.
  Die selbe Information erhalten Sie, wenn Sie den Werkzeugleistenknopf 
 \begin_inset Info
@@ -34895,15 +34032,8 @@ Importieren
 Man kann hier Dateien von älteren \SpecialChar LyX
 -Versionen, HTML-Dateien, \SpecialChar LaTeX
 -Dateien, NoWeb-Date
-ien, einfache Textdateien und 
-\begin_inset Quotes gld
-\end_inset
-
-Komma-getrennte
-\begin_inset Quotes grd
-\end_inset
-
-, tabellenartige Textdateien (CSV) importieren.
+ien, einfache Textdateien und „Komma-getrennte“, tabellenartige Textdateien
+ (CSV) importieren.
  Die Dateien werden als neues \SpecialChar LyX
 -Dokument importiert.
 \end_layout
@@ -35223,23 +34353,7 @@ LyX
 z.y.x \SpecialChar LyX
 -Dokument in einem Format, das von der \SpecialChar LyX
 -Version z.y.x lesbar ist.
- (
-\begin_inset Quotes gld
-\end_inset
-
-z
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-y
-\begin_inset Quotes grd
-\end_inset
-
- repräsentieren die Versionsnummer)
+ (z und y repräsentieren die Versionsnummer)
 \end_layout
 
 \begin_layout Description
@@ -35392,7 +34506,8 @@ PDF
 \begin_inset space ~
 \end_inset
 
-Auflösung) wie 
+Auf\SpecialChar ligaturebreak
+lösung) wie 
 \family sans
 PDF
 \begin_inset space ~
@@ -35400,7 +34515,8 @@ PDF
 
 (pdflatex)
 \family default
- aber mit einer reduzierten Pixel-Auflösung von 150
+ aber mit einer reduzierten Pixel-Auf\SpecialChar ligaturebreak
+lösung von 150
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35573,7 +34689,7 @@ Fax
 \begin_layout Standard
 Dieses Menü erscheint nur, wenn ein Faxprogramm installiert ist (bei Windows
  muss zusätzlich dessen Programmpfad zu \SpecialChar LyX
-' PATH-Präfix hinzugefügt werden,
+’ PATH-Präfix hinzugefügt werden,
  siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -35597,7 +34713,7 @@ kdeprintfax
  senden.
  Das voreingestellte Format der gesendeten Datei ist PostScript.
  Das Format kann in \SpecialChar LyX
-' Grundeinstellungen, wie in Abschnitt
+’ Grundeinstellungen, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -35813,7 +34929,8 @@ Diese Menüs sind nur aktiv, wenn sich der Cursor in einer Tabelle befindet.
 \end_layout
 
 \begin_layout Subsection
-Einfügung auflösen
+Einfügung auf\SpecialChar ligaturebreak
+lösen
 \end_layout
 
 \begin_layout Standard
@@ -36089,7 +35206,7 @@ Tabelle ist.
 
 \begin_layout Standard
 \SpecialChar LyX
-' Werkzeugleisten und ihre Knöpfe sind in Abschnitt
+’ Werkzeugleisten und ihre Knöpfe sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36137,7 +35254,7 @@ Hälfte
 teilen
 \family default
  teilt \SpecialChar LyX
-' Hauptfenster vertikal, 
+’ Hauptfenster vertikal, 
 \family sans
 Ansicht
 \begin_inset space ~
@@ -36920,15 +36037,8 @@ Benutzerdefinierte Einfügungen
 Fügt dokumentklassen-spezifische Einfügungen ein.
  Solche Einfügungen existieren nur, wenn sie in der Layout-Datei der Dokumentkla
 sse definiert sind.
- Ein Beispiel ist die Dokumentklasse 
-\begin_inset Quotes gld
-\end_inset
-
-article (Elsevier)
-\begin_inset Quotes grd
-\end_inset
-
- mit drei benutzerdefinierten Einfügungen.
+ Ein Beispiel ist die Dokumentklasse „article (Elsevier)“ mit drei benutzerdefin
+ierten Einfügungen.
  Der Abschnitt 
 \emph on
 Flexible Einfügungen und InsetLayout
@@ -39052,7 +38162,7 @@ arg   "textstyle-apply"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Formatiert Text unter Benutzung der aktuellen Einstellungen des 
+Formatiert Text mit der aktuellen Einstellungen des 
 \family sans
 Bearbeiten\SpecialChar menuseparator
 Textstil
@@ -40478,15 +39588,7 @@ Suchen
 \end_inset
 
 B.
- nach 
-\begin_inset Quotes gld
-\end_inset
-
-Seite
-\begin_inset Quotes grd
-\end_inset
-
- suchen, werden einige Untermenüs ausgegraut und deaktiviert.
+ nach „Seite“ suchen, werden einige Untermenüs ausgegraut und deaktiviert.
  Nur Untermenüs mit Seiteneinstellungen bleiben aktiviert.
  In diesen Untermenüs werden die Seiteneinstellungen rot hervorgehoben.
 \end_layout
@@ -40522,7 +39624,7 @@ Lokales
 Format
 \family default
  können Sie eine eigene Layout-Datei laden, die sich nicht in \SpecialChar LyX
-' 
+’ 
 \emph on
 layouts
 \emph default
@@ -40954,15 +40056,7 @@ Sprachpaket
 \family default
  legt das \SpecialChar LaTeX
 -Paket fest, das für die Silbentrennung und Übersetzung von Ausdrücken
- wie 
-\begin_inset Quotes gld
-\end_inset
-
-Teil
-\begin_inset Quotes grd
-\end_inset
-
- verwendet wird.
+ wie „Teil“ verwendet wird.
  Die möglichen Einstellungen sind:
 \end_layout
 
@@ -42534,11 +41628,13 @@ Objekte
 \end_layout
 
 \begin_layout Section
-Auflistungszeichen
+Auf\SpecialChar ligaturebreak
+listungszeichen
 \end_layout
 
 \begin_layout Standard
-Hier können Sie die Zeichen für die verschiedenen Auflistungs-
+Hier können Sie die Zeichen für die verschiedenen Auf\SpecialChar ligaturebreak
+listungs-
 \family sans
 Ebenen
 \family default
@@ -42550,8 +41646,10 @@ Schrift
 \family sans
 Größe
 \family default
- der Auflistungszeichen angeben.
- Die Auflistung-Umgebung ist in Abschnitt
+ der Auf\SpecialChar ligaturebreak
+listungszeichen angeben.
+ Die Auf\SpecialChar ligaturebreak
+listung-Umgebung ist in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -42688,39 +41786,8 @@ Ausgabeformat: Das Format, welches verwendet wird, wenn Sie im Menü
 \family sans
 Dokument
 \family default
- oder der Werkzeugleiste 
-\begin_inset Quotes gld
-\end_inset
-
-Ansehen
-\begin_inset Quotes grd
-\end_inset
-
-, 
-\begin_inset Quotes gld
-\end_inset
-
-Aktualisieren
-\begin_inset Quotes grd
-\end_inset
-
-, 
-\begin_inset Quotes gld
-\end_inset
-
-Hauptdokument ansehen
-\begin_inset Quotes grd
-\end_inset
-
- oder 
-\begin_inset Quotes gld
-\end_inset
-
-Hauptdokument aktualisieren
-\begin_inset Quotes grd
-\end_inset
-
- anklicken.
+ oder der Werkzeugleiste „Ansehen“, „Aktualisieren“, „Hauptdokument ansehen“
+ oder „Hauptdokument aktualisieren“ anklicken.
  Die Standard-Einstellung wird in 
 \family sans
 Werkzeuge\SpecialChar menuseparator
@@ -42973,15 +42040,7 @@ Separator
 \family sans
 Icon
 \family default
- und im Fall des Menüs 
-\begin_inset Quotes gld
-\end_inset
-
-file_lastfiles
-\begin_inset Quotes grd
-\end_inset
-
- einen 
+ und im Fall des Menüs „file_lastfiles“ einen 
 \family sans
 Lastfiles
 \family default
@@ -42995,28 +42054,12 @@ Lastfiles
 
 
 \series bold
-Item 
-\begin_inset Quotes eld
-\end_inset
-
-Menü 
+Item „Menü 
 \series default
 oder
 \series bold
- Knopfname
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Quotes eld
-\end_inset
-
-\SpecialChar LyX
--Funktion
-\begin_inset Quotes erd
-\end_inset
-
-
+ Knopfname“ „\SpecialChar LyX
+-Funktion“
 \end_layout
 
 \begin_layout Standard
@@ -43056,23 +42099,7 @@ Lesezeichen
 
 
 \series bold
-Item 
-\begin_inset Quotes eld
-\end_inset
-
-Lesezeichen 6 speichern
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Quotes eld
-\end_inset
-
-bookmark-save 6
-\begin_inset Quotes erd
-\end_inset
-
-
+Item „Lesezeichen 6 speichern“ „bookmark-save 6“
 \end_layout
 
 \begin_layout Standard
@@ -43080,15 +42107,7 @@ bookmark-save 6
 \begin_inset VSpace smallskip*
 \end_inset
 
-zum Menü 
-\begin_inset Quotes gld
-\end_inset
-
-navigate_bookmarks
-\begin_inset Quotes grd
-\end_inset
-
- in der Datei 
+zum Menü „navigate_bookmarks“ in der Datei 
 \emph on
 stdmenus.inc
 \emph default
@@ -43101,7 +42120,7 @@ Mit
  Symboldesign
 \family default
  kann das Aussehen von \SpecialChar LyX
-' Werkzeugleisten geändert werden.
+’ Werkzeugleisten geändert werden.
  Die derzeit verfügbaren Symboldesigns sind in 
 \begin_inset CommandInset href
 LatexCommand href
@@ -43163,7 +42182,7 @@ Mit der Option
 Aussehen und Größe von Fenstern wiederherstellen
 \family default
  wird \SpecialChar LyX
-' Hauptfenster mit der Größe und dem Aussehen geöffnet, das in der
+’ Hauptfenster mit der Größe und dem Aussehen geöffnet, das in der
  letzten \SpecialChar LyX
 -Sitzung benutzt wurde.
 \end_layout
@@ -43843,15 +42862,7 @@ broadway.bind
 \shape default
 , und für Sprachen.
  Der Name einer Tastaturkürzel-Datei für Sprachen beginnt mit dem Sprach-Code,
- zum Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-pt
-\begin_inset Quotes grd
-\end_inset
-
- für Portugiesisch.
+ zum Beispiel „pt“ für Portugiesisch.
  Wenn Sie \SpecialChar LyX
  für eine spezielle Sprache benutzen, wird es die entsprechende
  Tastaturkürzel-Datei benutzen.
@@ -43970,15 +42981,8 @@ textstyle-apply
 Ein vorhandenes Tastaturkürzel wird ebenso geändert.
  Sie auch mehrere Funktionen einem Tastaturkürzel zuordnen, indem Sie die
  \SpecialChar LyX
--Funktion mit 
-\begin_inset Quotes gld
-\end_inset
-
-command alternatives
-\begin_inset Quotes grd
-\end_inset
-
- beginnen und die verschiedenen Funktionen, durch Kommas getrennt, anfügen.
+-Funktion mit „command alternatives“ beginnen und die verschiedenen Funktionen,
+ durch Kommas getrennt, anfügen.
  \SpecialChar LyX
  wird dann für das Tastaturkürzel die erste Funktion benutzen, die im gerade
  bearbeiteten Dokumentteil aktiv ist.
@@ -43999,24 +43003,8 @@ Alternativ können Sie natürlich auch die entsprechende Tastaturkürzel-Datei
 \series bold
 
 \backslash
-bind 
-\begin_inset Quotes gld
-\end_inset
-
-Tastaturkürzel
-\begin_inset Quotes grd
-\end_inset
-
- 
-\begin_inset Quotes gld
-\end_inset
-
-\SpecialChar LyX
--Funktion
-\begin_inset Quotes grd
-\end_inset
-
-
+bind „Tastaturkürzel“ „\SpecialChar LyX
+-Funktion“
 \end_layout
 
 \begin_layout Subsection
@@ -44315,15 +43303,7 @@ Arbeitsverzeichnis
 \begin_inset Newline newline
 \end_inset
 
-Sicherungsdateien haben die Endung 
-\begin_inset Quotes gld
-\end_inset
-
-.lyx~
-\begin_inset Quotes grd
-\end_inset
-
-.
+Sicherungsdateien haben die Endung „.lyx~“.
 \end_layout
 
 \begin_layout Description
@@ -44559,7 +43539,7 @@ der
 \end_inset
 
 Benutzeroberfläche Hier kann die Sprache der \SpecialChar LyX
-' Menüs eingestellt werden.
+’ Menüs eingestellt werden.
  Der aktuelle Übersetzungsstatus ist hier zu finden:
 \begin_inset Newline newline
 \end_inset
@@ -44579,19 +43559,7 @@ Sprachpaket legt fest, welches \SpecialChar LaTeX
 -Paket für die Sprachunterstützung geladen
  werden soll.
  Zur Sprachunterstützung zählen Silbentrennmuster ebenso wie die Lokalisation
- von Daten und von Klassen verwendeten Ausdrücken wie 
-\begin_inset Quotes gld
-\end_inset
-
-Kapitel
-\begin_inset Quotes grd
-\end_inset
-
- und Tabelle
-\begin_inset Quotes grd
-\end_inset
-
-.
+ von Daten und von Klassen verwendeten Ausdrücken wie „Kapitel“ und „Tabelle“.
  Das verbreitetste Sprachpaket ist 
 \series bold
 babel
@@ -44718,7 +43686,7 @@ Standard-Dezimaltrenner Legen Sie hier den Standard-Dezimaltrenner fest,
 \begin_layout Description
 Standard-Längeneinheit Legt die Einheit fest, die als Voreinstellung für
  Längen in \SpecialChar LyX
-' Dialogen verwendet wird.
+’ Dialogen verwendet wird.
 \end_layout
 
 \begin_layout Description
@@ -45079,18 +44047,10 @@ X2
 \family default
  werden für Kyrillisch verwendet.
  Kombinationen der Kodierungen wie 
-\begin_inset Quotes gld
-\end_inset
-
-
 \family sans
-T1, T2B
+„T1, T2B
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
- sind möglich.
+“ sind möglich.
  Die Schriftkodierung wird normalerweise automatisch von den Sprachpaketen
  geladen, die \SpecialChar LyX
  im Hintergund verwendet.
@@ -45210,25 +44170,9 @@ in
 
 \SpecialChar LaTeX
 -Dateien Verwendet Pfade in der Notation von Windows; das bedeutet, dass
- 
-\begin_inset Quotes gld
-\end_inset
-
-
+ '
 \backslash
-
-\begin_inset Quotes grd
-\end_inset
-
- anstelle von 
-\begin_inset Quotes gld
-\end_inset
-
-/
-\begin_inset Quotes grd
-\end_inset
-
- verwendet wird, um Verzeichnisse zu trennen.
+' anstelle von '/' verwendet wird, um Verzeichnisse zu trennen.
  Diese Option ist automatisch aktiv unter \SpecialChar LyX
  für Windows.
 \begin_inset Index idx
@@ -45452,7 +44396,7 @@ Anpassung
 
 \begin_layout Standard
 Da alle Konvertierungen von einem Format in ein anderes in \SpecialChar LyX
-' temporärem
+’ temporärem
  Verzeichnis stattfinden, ist es manchmal notwendig eine Datei zu modifizieren,
  bevor sie ins temporäre Verzeichnis kopiert und dort konvertiert wird.
  Dies geschieht, indem man einen 
@@ -47477,7 +46421,7 @@ set_width "auto"
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Damit der Index den Namen 
@@ -47546,7 +46490,8 @@ indexname
 <Legende>name
 \series default
 .
- Eine Auflistung der möglichen Namen findet man unter
+ Eine Auf\SpecialChar ligaturebreak
+listung der möglichen Namen findet man unter
 \end_layout
 
 \begin_layout Plain Layout

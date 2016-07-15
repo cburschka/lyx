@@ -3994,19 +3994,19 @@ Predeterminado
 \begin_layout Itemize
 
 \family sans
-A0 - A6
+A0 – A6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-B0 - B6
+B0 – B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-C0 - C6
+C0 – C6
 \end_layout
 
 \begin_layout Itemize
@@ -4018,7 +4018,7 @@ Carta US, Oficio US, Ejecutivo US
 \begin_layout Itemize
 
 \family sans
-JIS B0 - JIS B6
+JIS B0 – JIS B6
 \end_layout
 
 \begin_layout Itemize
@@ -4507,7 +4507,7 @@ begin{
 \emph on
 environment
 \emph default
-} ...
+} \SpecialChar ldots
  
 \backslash
 end{
@@ -8613,12 +8613,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8631,6 +8633,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8655,6 +8658,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -18387,7 +18391,6 @@ verás un recuadro como este
 : 
 \begin_inset Graphics
 	filename clipart/notapie.png
-	scale 85
 	groupId botonesbh
 
 \end_inset
@@ -22614,7 +22617,6 @@ Flotantes ! Leyenda
  Un recuadro se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotante.png
-	scale 85
 	groupId botonesbh
 
 \end_inset
@@ -24375,7 +24377,6 @@ b
  se ve 
 \begin_inset Graphics
 	filename ../clipart/SpaceMarker.png
-	scale 85
 	groupId botonesbh
 
 \end_inset
@@ -26952,7 +26953,6 @@ Aceptar
  se inserta un cuadro gris parecido a este: 
 \begin_inset Graphics
 	filename clipart/etiqueta.png
-	scale 85
 	groupId botonesbh
 
 \end_inset
@@ -27019,7 +27019,6 @@ Aceptar
  se inserta un recuadro gris parecido a este: 
 \begin_inset Graphics
 	filename clipart/referencia.png
-	scale 85
 	groupId botonesbh
 
 \end_inset
@@ -31785,7 +31784,7 @@ Módulos
 \begin_inset space ~
 \end_inset
 
-estilos:
+etornos:
 \end_layout
 
 \begin_layout Description
@@ -31838,6 +31837,9 @@ derecha
 
 \begin_layout Standard
 para las diferentes posiciones en el encabezado y en el pie de página.
+ 
+\lang english
+These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -32334,7 +32336,11 @@ headheight}{altura}
 \end_layout
 
 \begin_layout Standard
-Altura es una longitud en unidades estándar.
+Altura es una longitud en unidades estándar (por ejemplo 
+\series bold
+1cm
+\series default
+).
  Si desconoces la cantidad de espacio necesaria, define tu encabezado o
  pie y haz una vista previa PDF del documento.
  Luego abres el 

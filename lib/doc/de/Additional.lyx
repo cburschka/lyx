@@ -68,7 +68,7 @@ shapepar
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
@@ -327,50 +327,7 @@ Einst nannten wir \SpecialChar LyX
 \begin_inset Quotes gld
 \end_inset
 
-WYSIWYM
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-What You See Is What You Mean
-\lang ngerman
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-HHa: Der Text wurde von \SpecialChar LyX
- unterstrichen, weil er als englisch markiert wurde
- (
-\family sans
-Bearbeiten\SpecialChar menuseparator
-Textstil\SpecialChar menuseparator
-Benutzerdefiniert\SpecialChar menuseparator
-Sprache
-\family default
- oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 70
-	BoundingBox 0bp 6bp 20bp 20bp
-
-\end_inset
-
-).
- Das hat bei der Rechtschreibprüfung den Vorteil, dass er dann übergangen
- wird.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
--Oberfläche für \SpecialChar LaTeX
+WYSIWYM-Oberfläche für \SpecialChar LaTeX
 
 \begin_inset Quotes grd
 \end_inset
@@ -482,32 +439,6 @@ Dokument\SpecialChar menuseparator
 Aktualisieren
 \end_layout
 
-\begin_layout Itemize
-
-\family sans
-Datei\SpecialChar menuseparator
-Drucken
-\family default
- (
-\family sans
-Strg+P
-\family default
- oder 
-\begin_inset Info
-type  "icon"
-arg   "dialog-show print"
-\end_inset
-
- )
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Datei\SpecialChar menuseparator
-Faxen
-\end_layout
-
 \begin_layout Standard
 \SpecialChar LaTeX
  wird nur gestartet, wenn die Datei seit dem letzten \SpecialChar LaTeX
@@ -557,19 +488,9 @@ Wenn \SpecialChar LaTeX
  mit 
 \family sans
 Ansicht\SpecialChar menuseparator
-DVI (Strg+D
+DVI 
 \family default
- oder 
-\begin_inset Info
-type  "icon"
-arg   "buffer-view dvi"
-\end_inset
-
-
-\family sans
-)
-\family default
- gestartet wurde, wird \SpecialChar LyX
+gestartet wurde, wird \SpecialChar LyX
  dann den DVI-Betrachter mit der 
 \family typewriter
 .dv
@@ -590,17 +511,7 @@ Anzeigeprogramm
  Wenn Sie 
 \family sans
 Ansicht\SpecialChar menuseparator
-Postscript (Strg+T 
-\family default
-oder 
-\begin_inset Info
-type  "icon"
-arg   "buffer-view ps"
-\end_inset
-
-
-\family sans
-)
+Postscript
 \family default
  oder 
 \family sans
@@ -779,14 +690,9 @@ Mit
 \family sans
 Datei\SpecialChar menuseparator
 Importieren\SpecialChar menuseparator
-LaTeX\SpecialChar ldots
-
+LaTeX
 \family default
-
-\begin_inset space \space{}
-\end_inset
-
-können Sie eine \SpecialChar LaTeX
+ können Sie eine \SpecialChar LaTeX
 -Datei nach \SpecialChar LyX
  importieren.
  Dadurch wird ein Programm namens 
@@ -1445,8 +1351,7 @@ Die Befehle, die \SpecialChar LyX
 Wählen Sie 
 \family sans
 Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 LaTeX-Vorspann.
 
 \family default
@@ -1872,13 +1777,12 @@ LaTeX-Protokoll
 \end_layout
 
 \begin_layout Itemize
-
-\family typewriter
 \begin_inset Quotes gld
 \end_inset
 
-\SpecialChar LaTeX
- Warning:
+
+\family typewriter
+LaTeX Warning:
 \family default
 
 \begin_inset Quotes eld
@@ -1918,8 +1822,7 @@ Sie können sie weitgehend ignorieren.
 
 
 \family typewriter
-\SpecialChar LaTeX
- Font Warning:
+LaTeX Font Warning:
 \family default
 
 \begin_inset Quotes grd
@@ -2071,9 +1974,8 @@ Dies Warnungen erscheinen bei Problemen mit dem Seitenumbruch.
 \begin_inset Quotes gld
 \end_inset
 
- 
+LaTeX
 \family typewriter
-\SpecialChar LaTeX
  Error: File 
 \begin_inset Quotes els
 \end_inset
@@ -2168,8 +2070,7 @@ usepackage{}
 
 
 \family typewriter
-\SpecialChar LaTeX
- Error: Unknown option
+LaTeX Error: Unknown option
 \family default
 
 \begin_inset Quotes grd
@@ -8580,20 +8481,10 @@ Das erste, was Sie eingeben müssen, sind die Informationen für den Titel.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\family sans
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -8670,17 +8561,6 @@ ed
 <date>
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
 \end_layout
 
 \end_inset
@@ -8819,20 +8699,10 @@ paper (A&A)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\family sans
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -8906,17 +8776,6 @@ Literaturliste
 LaTeX
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -8940,20 +8799,10 @@ paper (A&A)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\family typewriter
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -9017,17 +8866,6 @@ object{}
 
 \backslash
 titlerunning{}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
 \end_layout
 
 \end_inset
@@ -13171,8 +13009,7 @@ Der größte Vorteil der neuen Klasse ist jedoch ihre Flexibilität, denn das
 -Vorspanns (
 \family sans
 Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 LaTeX-Vorspann)
 \family default
  oder mittels einer speziellen Stildatei (einer sogenannten 
@@ -13946,8 +13783,7 @@ name "Folien-Start"
 Als erstes müssen Sie im Dialogfeld 
 \family sans
 Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Dokumentklasse
 \family default
  die 
@@ -14180,20 +14016,8 @@ slides
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -14261,17 +14085,6 @@ LyX-Code
 Kommentar
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -14291,20 +14104,8 @@ Dafür gibt es folgende neue Umgebungstypen:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -14334,19 +14135,23 @@ Unsichtbarer Text
 
 \family sans
 SichtbarerText
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
+\begin_deeper
 \begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
 
 
-\backslash
-end{multicols}
 \end_layout
 
+\end_deeper
 \end_inset
 
 
@@ -15482,9 +15287,9 @@ reference "Folien-mit-slides"
 \family sans
 foils
 \family default
--Klasse (
+-Klasse
 \family sans
-slides (FoilTeX))
+ FoilTeX
 \family default
  nicht an, ist das entsprechende \SpecialChar LaTeX
 -Paket vermutlich nicht auf Ihrem Rechner
@@ -15500,9 +15305,13 @@ slides (default)
 Die \SpecialChar LyX
 -Dokumentklasse 
 \family sans
-slides (FoilTeX)
+FoilTeX
 \family default
- basiert auf der Version 2.1 der Klassen\SpecialChar softhyphen
+ basiert auf der Version
+\begin_inset space ~
+\end_inset
+
+2.1 der Klassen\SpecialChar softhyphen
 datei 
 \family typewriter
 foils.cls
@@ -15519,8 +15328,7 @@ Zu Beginn
 Als erstes müssen Sie im Dialogfeld 
 \family sans
 Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Dokumentklasse
 \family default
  die 
@@ -15529,11 +15337,7 @@ Dokumentklasse
 \family default
  
 \family sans
-slides
-\begin_inset space ~
-\end_inset
-
-(FoilTeX)
+FoilTeX
 \family default
  auswählen.
  Einige zusätzliche Dinge sollten Sie zu den Einstellungsmöglichkeiten für
@@ -15564,7 +15368,23 @@ foils
 \end_layout
 
 \begin_layout Itemize
-Die Standardschriftgröße ist 20pt, alternativ sind 17pt, 15pt und 30pt möglich.
+Die Standardschriftgröße ist 20
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, alternativ sind 17
+\begin_inset space \thinspace{}
+\end_inset
+
+pt, 15
+\begin_inset space \thinspace{}
+\end_inset
+
+pt und 30
+\begin_inset space \thinspace{}
+\end_inset
+
+pt möglich.
 \end_layout
 
 \begin_layout Itemize
@@ -15599,7 +15419,7 @@ A4
 Letter
 \family default
  sowie eine spezielle Größe für 35
-\begin_inset Formula $\,$
+\begin_inset space \thinspace{}
 \end_inset
 
 mm Dias.
@@ -15781,7 +15601,8 @@ s
  anlegen.
  Diese Option sagt 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , den dvips-Treiber zu verwenden, um Seiten, die im Querformat gesetzt werden
  sollen, zu drehen.
@@ -15827,7 +15648,8 @@ foils
 -Klasse unterstützt.
  Außerdem bietet 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
  eine Reihe zusätzlicher Typen, und ein paar weitere werden von \SpecialChar LyX
  hinzugefügt.
@@ -15835,20 +15657,8 @@ FoilTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -15989,17 +15799,6 @@ Beschriftung
 Kommentar
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -16014,25 +15813,10 @@ gebungen.
  und Inhalt darstellen, gibt es für derartige Aufteilungen spezielle Befehle
  in 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , die neue Folien beginnen:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -16048,41 +15832,9 @@ Rotatehead
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 Außerdem bietet \SpecialChar LyX
  leicht abgeänderte Versionen dieser Umgebungen:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{3}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -16095,22 +15847,6 @@ Shorthead
 
 \family sans
 ShortRotatehead
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16129,20 +15865,8 @@ FoilTeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -16210,24 +15934,6 @@ Proposition*
 Definition*
 \end_layout
 
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -16238,22 +15944,6 @@ end{multicols}
 Die Umgebungen mit einem Stern am Ende des Namens sind nicht nummeriert.
  Darüberhinaus steuert \SpecialChar LyX
  noch zwei Aufzählungstypen hinzu:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -16269,26 +15959,11 @@ CrossList
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
  bietet einige sehr mächtige Befehle, um Kopf- und Fußzeilen für die Folien
  zu erzeugen, die Sie am besten im \SpecialChar LaTeX
@@ -16302,28 +15977,12 @@ Foilhead
 \end_layout
 
 \begin_layout Standard
-Hierfür gibt es die folgende Befehle [
-\shape smallcaps
-Martin Vermeer
-\shape default
-]:
+Hierfür gibt es die folgende Befehle:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{multicols}{4}
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\begin_inset Flex Multiple Columns
+status open
 
 \begin_layout Itemize
 
@@ -16378,7 +16037,7 @@ Header
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset space ~
 \end_inset
 
@@ -16386,17 +16045,6 @@ Header
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{multicols}
-\end_layout
-
 \end_inset
 
 
@@ -16406,7 +16054,8 @@ end{multicols}
 \noindent
 Außerdem gibt es noch eine Reihe von Befehlen in 
 \family sans
-FoilTeX
+Foil\SpecialChar TeX
+
 \family default
 , die von \SpecialChar LyX
  nicht direkt unterstützt werden.
@@ -16437,8 +16086,7 @@ Foils.lyx
 , wenn Sie im Dialog 
 \family sans
 Datei\SpecialChar menuseparator
-Öffnen\SpecialChar ldots
-
+Öffnen
 \family default
  auf den Knopf 
 \family sans
@@ -16629,8 +16277,7 @@ FoilTeX
  Falls Sie die Platzierung der Gleitobjekte verändert haben (
 \family sans
 Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-
+Einstellungen
 \family default
 ), so wird dies ignoriert.
 \end_layout

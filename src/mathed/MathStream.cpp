@@ -12,6 +12,7 @@
 
 #include "MathStream.h"
 
+#include "MathFactory.h"
 #include "MathData.h"
 #include "MathExtern.h"
 
@@ -709,5 +710,26 @@ OctaveStream & operator<<(OctaveStream & os, string const & s)
 	return os;
 }
 
+
+docstring convertDelimToXMLEscape(docstring const & name)
+{
+	if (name.size() == 1) {
+		char_type const c = name[0];
+		if (c == '<')
+			return from_ascii("&lt;");
+		else if (c == '>')
+			return from_ascii("&gt;");
+		else
+			return name;
+	}
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(name);
+	if (it != words.end()) {
+		docstring const escape = it->second.xmlname;
+		return escape;
+	}
+	LYXERR0("Unable to find `" << name <<"' in the mathWordList.");
+	return name;
+}
 
 } // namespace lyx

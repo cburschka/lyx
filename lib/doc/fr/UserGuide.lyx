@@ -4384,19 +4384,19 @@ Implicite
 \begin_layout Itemize
 
 \family sans
-A0 - A6
+A0 – A6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-B0 - B6
+B0 – B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-C0 - C6
+C0 – C6
 \end_layout
 
 \begin_layout Itemize
@@ -4408,7 +4408,7 @@ lettre US, légal US, executive US
 \begin_layout Itemize
 
 \family sans
-JIS B0 - JIS B6
+JIS B0 – JIS B6
 \end_layout
 
 \begin_layout Itemize
@@ -4942,7 +4942,7 @@ begin{
 \emph on
 environnement
 \emph default
-} ...
+} \SpecialChar ldots
  
 \backslash
 end{
@@ -24131,7 +24131,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -27949,8 +27949,7 @@ arg   "label-insert"
  de la palette.
  Une boîte grise de ce genre 
 \begin_inset Graphics
-	filename ../clipart/label.png
-	scale 85
+	filename clipart/label.png
 
 \end_inset
 
@@ -28033,8 +28032,7 @@ arg   "dialog-show-new-inset ref"
 .
  Une boîte grise de référence croisée de ce genre 
 \begin_inset Graphics
-	filename ../clipart/reference.png
-	scale 85
+	filename clipart/reference.png
 
 \end_inset
 
@@ -33088,7 +33086,7 @@ Personnalisation en-têtes/pieds de page
 \begin_inset space ~
 \end_inset
 
-styles suivants:
+environnements suivants:
 \end_layout
 
 \begin_layout Description
@@ -33141,6 +33139,9 @@ droit
 
 \begin_layout Standard
 pour paramétrer les différentes positions dans l'en-tête et le pied.
+ 
+\lang english
+These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -33549,15 +33550,11 @@ où
 \begin_inset Quotes frd
 \end_inset
 
- est une taille en unités standard comme 
-\family sans
-pt
-\family default
- ou 
-\family sans
-mm
-\family default
-.
+ est une taille en unités standard (pour example 
+\series bold
+1cm
+\series default
+).
  Si vous ne voulez pas de ligne, positionnez l'épaisseur à 0
 \begin_inset space ~
 \end_inset

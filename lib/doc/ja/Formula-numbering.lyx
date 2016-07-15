@@ -61,7 +61,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -111,7 +111,7 @@
 \begin_body
 
 \begin_layout Standard
-この文書は、二つの数式カテゴリの使い方を示すものです。一つのカテゴリにはアラビア数字、もう一つはローマ数字で番号が振られています。
+この文書は，二つの数式カテゴリの使い方を示すものです．一つのカテゴリにはアラビア数字，もう一つはローマ数字で番号が振られています．
 \end_layout
 
 \begin_layout Standard
@@ -294,8 +294,8 @@ height "1pt"
 \begin_inset VSpace medskip
 \end_inset
 
-この例を作成するには、ローマ数字の数式のカウンタをまず定義しなくてはなりません。そのためには、\SpecialChar LaTeX
-プリアンブルに以下のように入力します。
+この例を作成するには，ローマ数字の数式のカウンタをまず定義しなくてはなりません．そのためには，\SpecialChar LaTeX
+プリアンブルに以下のように入力します．
 \end_layout
 
 \begin_layout Standard
@@ -324,7 +324,7 @@ roman{rom}}
 \series bold
 equation
 \series default
-の値を保存するには、プリアンブルに以下のように入力します。
+の値を保存するには，プリアンブルに以下のように入力します．
 \end_layout
 
 \begin_layout Standard
@@ -366,7 +366,7 @@ theequation
 \end_layout
 
 \begin_layout Standard
-文書中で二つの連番スキームの間を切り替えるには、ローマ数字用に
+文書中で二つの連番スキームの間を切り替えるには，ローマ数字用に
 \end_layout
 
 \begin_layout Standard
@@ -392,7 +392,7 @@ therom}
 \end_layout
 
 \begin_layout Standard
-というコマンドをプリアンブルで定義し、アラビア数字用には
+というコマンドをプリアンブルで定義し，アラビア数字用には
 \end_layout
 
 \begin_layout Standard
@@ -418,24 +418,24 @@ org@theeq}
 \end_layout
 
 \begin_layout Standard
-と定義します。
+と定義します．
 \end_layout
 
 \begin_layout Standard
-各数式は、既定ではアラビア数字で連番が振られます。ローマ数字に切り替えるには\SpecialChar TeX
+各数式は，既定ではアラビア数字で連番が振られます．ローマ数字に切り替えるには\SpecialChar TeX
 コードで
 \series bold
 
 \backslash
 setrom
 \series default
-コマンドを挿入します。
+コマンドを挿入します．
 \series bold
 
 \backslash
 setarab
 \series default
-コマンドで連番はアラビア数字に切り替わります。
+コマンドで連番はアラビア数字に切り替わります．
 \end_layout
 
 \end_body

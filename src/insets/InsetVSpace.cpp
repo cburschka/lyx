@@ -232,14 +232,12 @@ int InsetVSpace::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetVSpace::xhtml(XHTMLStream &, OutputParams const &) const
+docstring InsetVSpace::xhtml(XHTMLStream & os, OutputParams const &) const
 {
-	odocstringstream ods;
-	XHTMLStream xds(ods);
 	string const len = space_.asHTMLLength();
 	string const attr = "style='height:" + (len.empty() ? "1em" : len) + "'";
-	xds << html::StartTag("div", attr, true) << html::EndTag("div");
-	return ods.str();
+	os << html::StartTag("div", attr, true) << html::EndTag("div");
+	return docstring();
 }
 
 

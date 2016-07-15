@@ -724,7 +724,7 @@ bool GuiWorkArea::event(QEvent * e)
 		return true;
 	}
 
-	case QEvent::ShortcutOverride: {
+	case QEvent::KeyPress: {
 		// We catch this event in order to catch the Tab or Shift+Tab key press
 		// which are otherwise reserved to focus switching between controls
 		// within a dialog.

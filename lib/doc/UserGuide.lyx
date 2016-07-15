@@ -3148,7 +3148,7 @@ IOP
 
 \begin_layout Standard
 If there is a document class you would like to use that is marked as 
-\begin_inset Quotes erd
+\begin_inset Quotes eld
 \end_inset
 
 Unavailable
@@ -4157,19 +4157,19 @@ Default
 \begin_layout Itemize
 
 \family sans
-A0 - A6
+A0 – A6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-B0 - B6
+B0 – B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-C0 - C6
+C0 – C6
 \end_layout
 
 \begin_layout Itemize
@@ -4181,7 +4181,7 @@ US letter, US legal, US executive
 \begin_layout Itemize
 
 \family sans
-JIS B0 - JIS B6
+JIS B0 – JIS B6
 \end_layout
 
 \begin_layout Itemize
@@ -4625,7 +4625,7 @@ begin{
 \emph on
 environment
 \emph default
-} ...
+} \SpecialChar ldots
  
 \backslash
 end{
@@ -12276,8 +12276,8 @@ You shouldn't use forced line breaks to correct \SpecialChar LaTeX
 's line breaking, as \SpecialChar LaTeX
  is
  very good at line breaking.
- There are, however, a number of situations where it is necessaryactively
- to set a line break, for example, in a poem or for an address (see sections
+ There are, however, a number of situations where it is necessary to set
+ a line break actively, for example, in a poem or for an address (see sections
 \begin_inset space ~
 \end_inset
 
@@ -17053,15 +17053,7 @@ Text
 
 
 \family default
- Use quotes like 
-\begin_inset Quotes sld
-\end_inset
-
-this
-\begin_inset Quotes srd
-\end_inset
-
-
+ Use quotes like ”this”
 \end_layout
 
 \begin_layout Labeling
@@ -26100,7 +26092,6 @@ arg   "label-insert"
  A gray label box like this: 
 \begin_inset Graphics
 	filename clipart/label.png
-	scale 85
 
 \end_inset
 
@@ -26174,7 +26165,6 @@ arg   "dialog-show-new-inset ref"
  A gray cross-reference box like this: 
 \begin_inset Graphics
 	filename clipart/reference.png
-	scale 85
 
 \end_inset
 
@@ -31019,7 +31009,11 @@ Modules
 \begin_inset Quotes eld
 \end_inset
 
+
+\emph on
 Custom Header/Footerlines
+\emph default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -31028,7 +31022,7 @@ Custom Header/Footerlines
 \begin_inset space ~
 \end_inset
 
-styles:
+environments:
 \end_layout
 
 \begin_layout Description
@@ -31081,6 +31075,7 @@ Footer
 
 \begin_layout Standard
 for the different positions in the header/footer.
+ These environments can be selected in the environment pull-down box.
 \end_layout
 
 \begin_layout Standard
@@ -31328,12 +31323,13 @@ Definition
 \end_layout
 
 \begin_layout Standard
-To define your header line, add all three header styles.
- The things you add to the styles appear on odd numbered pages, the things
- in the optional arguments on even numbered pages.
+To define your header line, add all three header environments.
+ The things you add to each environment appear on odd numbered pages, the
+ things in the optional arguments on even numbered pages.
  For single-sided documents, the optional arguments will not be used and
  can be omitted.
- If you leave a style or its argument empty, nothing appears in the output.
+ If you leave a header environment or its argument empty, nothing appears
+ in the output.
  Defining the footer line works similarly.
 \end_layout
 
@@ -31425,8 +31421,8 @@ Appearance
 \begin_layout Standard
 The header and footer will appear on normal pages.
  Some pages are different.
- The title page has a style of its own, and so does any page that starts
- a new part or chapter in your book.
+ The title page has a header/footer environment of its own, and so does
+ any page that starts a new part or chapter in your book.
  Such pages will not have the custom headers/footers, but that is normal.
  There is for example no need to print a header with the chapter name on
  the chapter page where the chapter heading is in big bold letters anyway.
@@ -31470,12 +31466,16 @@ headrulewidth}{thickness}
 \begin_layout Standard
 where thickness is a size in standard units like 
 \family sans
+\emph on
 pt
 \family default
+\emph default
  or 
 \family sans
+\emph on
 mm
 \family default
+\emph default
 .
  If you don't want a line, set the thickness to 0
 \begin_inset space \thinspace{}
@@ -31507,7 +31507,7 @@ Several header/footer lines
 
 \begin_layout Standard
 In case you need more than one text line as a header/footer, you can do
- this by adding a normal line break in the style definition.
+ this by adding a ragged line break in the style definition.
  However, the default height of the header/footer is only the one of one
  text line.
  To expand the height, redefine the \SpecialChar LaTeX
@@ -31523,7 +31523,7 @@ headheight
 \backslash
 footheight
 \series default
- in this entry in 
+ with this entry in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -31547,14 +31547,34 @@ headheight}{height}
 \end_layout
 
 \begin_layout Standard
-where height is a size in standard units.
- If you don't know which amount of space is needed for the height, define
- your header/footer and preview your document as a PDF.
+where 
+\series bold
+height
+\series default
+ is a size in standard units (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+1cm
+\series default
+).
+ If you don't know how much space is needed for the height, define your
+ header/footer and preview your document as a PDF.
  Then open the \SpecialChar LaTeX
  logfile with the menu 
 \family sans
 Document\SpecialChar menuseparator
-LaTeX Log
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Log
 \family default
  and use the button 
 \family sans
@@ -32486,10 +32506,10 @@ Find
  When searching for a formula, it is found both when it is alone and when
  it occurs in sub-formulas and nested parts of sub-formulas.
  For example the mentioned segments would be found in something like 
-\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -44682,7 +44702,7 @@ prefix The TEXINPUTS environment variable allows you to use external files
  Note that any non-absolute path listed in the TEXINPUTS prefix is considered
  to be relative to the directory of your \SpecialChar LyX
  file.
- It is recommended that you always include ‘.' as one of the paths; otherwise
+ It is recommended that you always include '.' as one of the paths; otherwise
  compilation may fail for some documents.
 \end_layout
 

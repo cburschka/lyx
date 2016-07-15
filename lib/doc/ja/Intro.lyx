@@ -69,7 +69,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -144,9 +144,9 @@ End
 status collapsed
 
 \begin_layout Plain Layout
-コメントや間違いの修正がある場合には、\SpecialChar LyX
-文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい。この文書の翻訳は、当初人見光太郎氏が
-行った貢献に基づいています。
+コメントや間違いの修正がある場合には，\SpecialChar LyX
+文書化メーリングリスト（lyx-docs@lists.lyx.org）までお知らせ下さい．この文書の翻訳は，当初人見光太郎氏が
+行った貢献に基づいています．
 \end_layout
 
 \end_inset
@@ -175,22 +175,22 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \SpecialChar LyX
-は文書作成システムであり、特に、数学や相互参照・参考文献・索引などを含む、複雑な技術文書や科学論文を作成するのに適しています。自動化された節分けやページ分け、ス
-ペルチェックなど、よく行われる処理能力を要求する文書の作成は、どのような長さのものであれ、たいへん得意とします。あなたのお母さんに手紙を書くのにも使うことができ
-ることは確かですが、そのような目的には、おそらくもっと単純なプログラムを使うこともできるでしょう。\SpecialChar LyX
-は、横断幕やチラシ・広告などを作成する目的には、あきらかに最適
-なツールではありませんが（理由は後で説明します）、これらのものも、少し工夫すれば作ることはできます。\SpecialChar LyX
-を使うに適した例を挙げると、メモ・書簡・博士論文・講義ノート
-・セミナーノート・学会会誌・ソフトウエアの説明書・書籍・査読つき科学雑誌の論文・演劇や映画の台本・企画書・プレゼンテーションなどがあります。
+は文書作成システムであり，特に，数学や相互参照・参考文献・索引などを含む，複雑な技術文書や科学論文を作成するのに適しています．自動化された節分けやページ分け，ス
+ペルチェックなど，よく行われる処理能力を要求する文書の作成は，どのような長さのものであれ，たいへん得意とします．あなたのお母さんに手紙を書くのにも使うことができ
+ることは確かですが，そのような目的には，おそらくもっと単純なプログラムを使うこともできるでしょう．\SpecialChar LyX
+は，横断幕やチラシ・広告などを作成する目的には，あきらかに最適
+なツールではありませんが（理由は後で説明します），これらのものも，少し工夫すれば作ることはできます．\SpecialChar LyX
+を使うに適した例を挙げると，メモ・書簡・博士論文・講義ノート
+・セミナーノート・学会会誌・ソフトウエアの説明書・書籍・査読つき科学雑誌の論文・演劇や映画の台本・企画書・プレゼンテーションなどがあります．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-は、コンピュータで文書を書くにあたって、古色蒼然たる「タイプライタ方式」の伝統を打ち破った、マークアップ言語パラダイムに基づいた近代的アプローチを採用したプログ
-ラムです。\SpecialChar LyX
-は、組版に長ける必要なしに、最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています。組版作業のほとんどは、著者ではなくコンピュ
-ータによって行われるので、\SpecialChar LyX
-を使えば著者は執筆に専念できるのです。
+は，コンピュータで文書を書くにあたって，古色蒼然たる「タイプライタ方式」の伝統を打ち破った，マークアップ言語パラダイムに基づいた近代的アプローチを採用したプログ
+ラムです．\SpecialChar LyX
+は，組版に長ける必要なしに，最低限の作業ですばやくプロ級の出力を得ることを望む著者を念頭につくられています．組版作業のほとんどは，著者ではなくコンピュ
+ータによって行われるので，\SpecialChar LyX
+を使えば著者は執筆に専念できるのです．
 \end_layout
 
 \begin_layout Standard
@@ -204,11 +204,11 @@ LatexCommand tableofcontents
 \bar no
 \noun off
 \color none
-を使う上での最初の戸惑いは、おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます。かつて、文書を作成するのに使うことのできるものはタイプラ
-イターだけでしたから、われわれはみな、タイプライターの制約を乗り越えるための、様々な小技を身につけたものでした。下線を引くのは—これは単に「＿」を文字の上に打ち
-直すことに他ならなかったわけですが—文章を強調する方法として定着しました。表をつくるには、前もって各列の幅とタブストップをどうすべきかを計算してから、設定するこ
-とを強いられました。同じようなことが、書簡や、その他右揃えを必要とする文章を書く際には要求されました。行末でのハイフネーションには、よく見て慎重に先を予測するこ
-とが要求されたものでした。
+を使う上での最初の戸惑いは，おもにユーザーとして必要とされる思考法を変えなくてはならないことから来ます．かつて，文書を作成するのに使うことのできるものはタイプラ
+イターだけでしたから，われわれはみな，タイプライターの制約を乗り越えるための，様々な小技を身につけたものでした．下線を引くのは—これは単に「＿」を文字の上に打ち
+直すことに他ならなかったわけですが—文章を強調する方法として定着しました．表をつくるには，前もって各列の幅とタブストップをどうすべきかを計算してから，設定するこ
+とを強いられました．同じようなことが，書簡や，その他右揃えを必要とする文章を書く際には要求されました．行末でのハイフネーションには，よく見て慎重に先を予測するこ
+とが要求されたものでした．
 \end_layout
 
 \begin_layout Standard
@@ -221,9 +221,9 @@ LatexCommand tableofcontents
 \bar no
 \noun off
 \color none
-言い換えれば、われわれはみな、どの文字がどこに配置されるかを気にするように訓練されていました。そのため、ほとんどすべてのワードプロセッサは、この発想を引き継いで
-います。これらは、依然として空白を追加するのにタブストップを使いますし、ある要素がページ内のどこに現れるか、依然として厳密に考慮する必要があります。文章を強調し
-ようと思えば、タイプライター時代にホイールを変えていたように、フォントを変えねばなりません。これが
+言い換えれば，われわれはみな，どの文字がどこに配置されるかを気にするように訓練されていました．そのため，ほとんどすべてのワードプロセッサは，この発想を引き継いで
+います．これらは，依然として空白を追加するのにタブストップを使いますし，ある要素がページ内のどこに現れるか，依然として厳密に考慮する必要があります．文章を強調し
+ようと思えば，タイプライター時代にホイールを変えていたように，フォントを変えねばなりません．これが
 \family default
 \series default
 \shape default
@@ -241,7 +241,7 @@ WYSIWYG
 \bar no
 \noun off
 \color none
-、すなわち「
+，すなわち「
 \family default
 \series default
 \shape default
@@ -259,7 +259,7 @@ What You See Is What You Get」
 \bar no
 \noun off
 \color none
-なワードプロセッサの根底に流れる哲学です。不幸にして、このパラダイムは、しばしば、「
+なワードプロセッサの根底に流れる哲学です．不幸にして，このパラダイムは，しばしば，「
 \family default
 \series default
 \shape default
@@ -277,7 +277,7 @@ What You See Is All You Get
 \bar no
 \noun off
 \color none
-（画面で見た以上のものは手に入らない）」という結果に終わります。
+（画面で見た以上のものは手に入らない）」という結果に終わります．
 \end_layout
 
 \begin_layout Standard
@@ -299,7 +299,7 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-、\SpecialChar LyX
+，\SpecialChar LyX
 
 \family roman
 \series medium
@@ -309,7 +309,7 @@ What You See Is All You Get
 \bar no
 \noun off
 \color none
-が通常のワードプロセッサと異なる点です。あなたはどの文字がどこに配置されるかを気にする必要はありません。
+が通常のワードプロセッサと異なる点です．あなたはどの文字がどこに配置されるかを気にする必要はありません．
 \family default
 \series default
 \shape default
@@ -355,7 +355,7 @@ What You See Is All You Get
 \bar default
 \noun default
 \color inherit
-、後は\SpecialChar LyX
+，後は\SpecialChar LyX
 
 \family roman
 \series medium
@@ -379,8 +379,8 @@ What You See Is All You Get
 status collapsed
 
 \begin_layout Plain Layout
-公正を期するために付け加えれば、もっとも人気のあるオフィススイートの最新版では、同様のマークアップ法を使った、ある種の様式シートを使うことができます。しかしなが
-ら、われわれの経験によれば、現実にはほとんど使われていません。
+公正を期するために付け加えれば，もっとも人気のあるオフィススイートの最新版では，同様のマークアップ法を使った，ある種の様式シートを使うことができます．しかしなが
+ら，われわれの経験によれば，現実にはほとんど使われていません．
 \end_layout
 
 \end_inset
@@ -394,7 +394,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-と呼ばれるルールに基づいて処理してくれます。簡単な例で見てみましょう。
+と呼ばれるルールに基づいて処理してくれます．簡単な例で見てみましょう．
 \end_layout
 
 \begin_layout Standard
@@ -407,8 +407,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-あなたはレポートを書いているものとしましょう。レポートを開始するにあたって、「はじめに」という節が欲しいですね。ですから、お使いのワープロでフォント寸法を変更す
-るためのメニューを探し出して、新しいフォント寸法を決めます。それから、ボールド体（太字）を有効にします。それからようやく「1.
+あなたはレポートを書いているものとしましょう．レポートを開始するにあたって，「はじめに」という節が欲しいですね．ですから，お使いのワープロでフォント寸法を変更す
+るためのメニューを探し出して，新しいフォント寸法を決めます．それから，ボールド体（太字）を有効にします．それからようやく「1.
 \family default
 \series default
 \shape default
@@ -434,17 +434,17 @@ status collapsed
 \bar no
 \noun off
 \color none
-はじめに」と入力します。当然ながら、あとになってこの節を文書中の他の箇所に持っていくことに決めたり、前に新しい節を挿入したりすると、この節とあとに続くすべての節
-の節番号を直さなくてはならなくなりますし、さらに目次中の節番号も修正しなくてはならなくなります。
+はじめに」と入力します．当然ながら，あとになってこの節を文書中の他の箇所に持っていくことに決めたり，前に新しい節を挿入したりすると，この節とあとに続くすべての節
+の節番号を直さなくてはならなくなりますし，さらに目次中の節番号も修正しなくてはならなくなります．
 \end_layout
 
 \begin_layout Standard
-一方、\SpecialChar LyX
-では、ボタンバーの一番左のプルダウンメニューから
+一方，\SpecialChar LyX
+では，ボタンバーの一番左のプルダウンメニューから
 \family sans
 節
 \family default
-を選んで、「はじめに」と入力するだけです。
+を選んで，「はじめに」と入力するだけです．
 \end_layout
 
 \begin_layout Standard
@@ -457,7 +457,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-そう。それだけなのです。もし、節の切り貼りを行ったとしても、節番号は自動的に—すべての箇所で—振り直されます。さらに、この節に対する参照が正しく（内部参照タグを
+そう．それだけなのです．もし，節の切り貼りを行ったとしても，節番号は自動的に—すべての箇所で—振り直されます．さらに，この節に対する参照が正しく（内部参照タグを
 挿入することによって）入れられていれば
 \family default
 \series default
@@ -467,7 +467,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-、ファイル内すべての参照は、\SpecialChar LyX
+，ファイル内すべての参照は，\SpecialChar LyX
 
 \family roman
 \series medium
@@ -477,7 +477,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-が自動更新してくれるので、あなたは決して節番号に触れる必要がありません。
+が自動更新してくれるので，あなたは決して節番号に触れる必要がありません．
 \end_layout
 
 \begin_layout Standard
@@ -490,7 +490,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-次に、一貫性の問題を見てみましょう。5日後、あなたはレポートをもういちど開いて、第4節を書きはじめます。しかしながら、あなたは18
+次に，一貫性の問題を見てみましょう．5日後，あなたはレポートをもういちど開いて，第4節を書きはじめます．しかしながら，あなたは18
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -498,7 +498,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-ポイントを使ってしまったので、第4節の節見出しは、第1節で使ったのとは違うフォントで組版されることになってしまいます。このような問題は、
+ポイントを使ってしまったので，第4節の節見出しは，第1節で使ったのとは違うフォントで組版されることになってしまいます．このような問題は，
 \family default
 \series default
 \shape default
@@ -517,8 +517,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-では起こりようもありません。何がどのフォント寸法で組まれるべきかというような退屈なことの記録係は、すべてコンピューターがになうのであって、あなたではありません。
-なにしろ、これこそがコンピュータの得意な仕事なのですから。
+では起こりようもありません．何がどのフォント寸法で組まれるべきかというような退屈なことの記録係は，すべてコンピューターがになうのであって，あなたではありません．
+なにしろ，これこそがコンピュータの得意な仕事なのですから．
 \end_layout
 
 \begin_layout Standard
@@ -531,10 +531,10 @@ status collapsed
 \bar no
 \noun off
 \color none
-もうひとつの例として、箇条書きを作りたいものとしましょう。他のワープロでは、箇条書きを作るには、タブストップと改行を多用しなくてはなりません。各項目のラベルをど
-こに配置するか予測しなくてはなりませんし、そのラベルにはどのラベルを採用するか、各項目間には空行をいくつ入れるか等々といったことも計算する必要があります。\SpecialChar LyX
+もうひとつの例として，箇条書きを作りたいものとしましょう．他のワープロでは，箇条書きを作るには，タブストップと改行を多用しなくてはなりません．各項目のラベルをど
+こに配置するか予測しなくてはなりませんし，そのラベルにはどのラベルを採用するか，各項目間には空行をいくつ入れるか等々といったことも計算する必要があります．\SpecialChar LyX
 におい
-ては、考慮すべきことは2つしかありません。この箇条書きがどのような種類のものなのかということと、箇条書きに何を入れたいのかということ、それだけなのです。
+ては，考慮すべきことは2つしかありません．この箇条書きがどのような種類のものなのかということと，箇条書きに何を入れたいのかということ，それだけなのです．
 \end_layout
 
 \begin_layout Standard
@@ -547,8 +547,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-つまり、\SpecialChar LyX
-の根底に流れる基本的な考え方は、「
+つまり，\SpecialChar LyX
+の根底に流れる基本的な考え方は，「
 \family default
 \series default
 \shape default
@@ -566,7 +566,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-を指定するのであって、それを
+を指定するのであって，それを
 \family default
 \series default
 \shape default
@@ -584,7 +584,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-ではない」ということです。「
+ではない」ということです．「
 \family default
 \series default
 \shape default
@@ -602,8 +602,8 @@ What You See Is What You Get (WYSIWYG)
 \bar no
 \noun off
 \color none
-」の代わりに、\SpecialChar LyX
-のモデルは、「
+」の代わりに，\SpecialChar LyX
+のモデルは，「
 \family default
 \series default
 \shape default
@@ -631,9 +631,9 @@ Mean
 \bar no
 \noun off
 \color none
-」を採用しています。これは、文書を執筆する手順を、大幅に簡素化する強力なアイデアです。またこれが、\SpecialChar LyX
+」を採用しています．これは，文書を執筆する手順を，大幅に簡素化する強力なアイデアです．またこれが，\SpecialChar LyX
 がポスターや広告を作成するのに向いた道具ではない理由でもありま
-す。この場合には、段落や節といった機能単位が存在しないがゆえに、各要素をどこに配置するかを、むしろ
+す．この場合には，段落や節といった機能単位が存在しないがゆえに，各要素をどこに配置するかを，むしろ
 \family default
 \series default
 \shape default
@@ -651,10 +651,10 @@ Mean
 \bar no
 \noun off
 \color none
-からです。これは、\SpecialChar LyX
-がなにか洗練された機能を備えていないということを意味するものではありません。これは単に、\SpecialChar LyX
+からです．これは，\SpecialChar LyX
+がなにか洗練された機能を備えていないということを意味するものではありません．これは単に，\SpecialChar LyX
 はそのような仕事を行うのにはふさわしいツールではないと
-いうだけです。—— 釘を打つのにネジ回しは使わないではありませんか。
+いうだけです．—— 釘を打つのにネジ回しは使わないではありませんか．
 \end_layout
 
 \begin_layout Subsection
@@ -706,8 +706,8 @@ status collapsed
 \bar no
 \noun off
 \color none
-以下は、\SpecialChar LyX
-にないものの一覧です。
+以下は，\SpecialChar LyX
+にないものの一覧です．
 \end_layout
 
 \begin_layout Itemize
@@ -758,10 +758,10 @@ Enter
 \bar no
 \noun off
 \color none
-各要素のページ上の位置を示すルーラーやタブストップは、\SpecialChar LyX
-では無用の長物です。各要素がページ上のどこへ行くかはプログラムが気にすることであって、あなたではありません
-。余分な空白についても同様です。\SpecialChar LyX
-が、文脈に応じて必要ならば空白を追加します。空白行を2つ続けて入れられないということは、最初は当惑するでしょうが、
+各要素のページ上の位置を示すルーラーやタブストップは，\SpecialChar LyX
+では無用の長物です．各要素がページ上のどこへ行くかはプログラムが気にすることであって，あなたではありません
+．余分な空白についても同様です．\SpecialChar LyX
+が，文脈に応じて必要ならば空白を追加します．空白行を2つ続けて入れられないということは，最初は当惑するでしょうが，
 \family default
 \series default
 \shape default
@@ -779,7 +779,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-式の思考法に慣れるにしたがって、当然のこととなってくるでありましょう。
+式の思考法に慣れるにしたがって，当然のこととなってくるでありましょう．
 \end_layout
 
 \begin_layout Standard
@@ -792,8 +792,8 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-以下は、\SpecialChar LyX
-に存在するものの、あなたの予想どおりとは限らない使われ方をするものです。
+以下は，\SpecialChar LyX
+に存在するものの，あなたの予想どおりとは限らない使われ方をするものです．
 \end_layout
 
 \begin_layout Itemize
@@ -885,10 +885,10 @@ WYSIWYM
 \noun off
 \color none
 これらは\SpecialChar LyX
-に存在はしますが、必要とされることは一般的にほとんどないでしょう。これらは、\SpecialChar LyX
-があなたが何をしているかに応じて調整するからです。文書の各部分は、自動的にそ
-れぞれのタイプフェイスとフォント寸法に設定されます。段落の字下げは文脈に依存します。すなわち、別種の段落はそれぞれ異なった字下げ法がなされます。改頁もやはり自動
-的に行われます。一般的に、行間・単語間・段落間の距離は可変的であり、\SpecialChar LyX
+に存在はしますが，必要とされることは一般的にほとんどないでしょう．これらは，\SpecialChar LyX
+があなたが何をしているかに応じて調整するからです．文書の各部分は，自動的にそ
+れぞれのタイプフェイスとフォント寸法に設定されます．段落の字下げは文脈に依存します．すなわち，別種の段落はそれぞれ異なった字下げ法がなされます．改頁もやはり自動
+的に行われます．一般的に，行間・単語間・段落間の距離は可変的であり，\SpecialChar LyX
 によって調整されます
 \begin_inset Foot
 status collapsed
@@ -903,7 +903,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-これらを、文書全体や文書中の特定の部分について調節する方法があります（いくつかについてだけは
+これらを，文書全体や文書中の特定の部分について調節する方法があります（いくつかについてだけは
 \family default
 \series default
 \shape default
@@ -922,7 +922,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-の知識が必要ですが）。詳しくは
+の知識が必要ですが）．詳しくは
 \family default
 \series default
 \shape default
@@ -958,7 +958,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-を参照してください。
+を参照してください．
 \end_layout
 
 \end_inset
@@ -972,7 +972,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-。
+．
 \end_layout
 
 \begin_layout Standard
@@ -1005,7 +1005,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-が、他のワープロをしのぐと思われる分野が幾つかあります。
+が，他のワープロをしのぐと思われる分野が幾つかあります．
 \end_layout
 
 \begin_layout Itemize
@@ -1083,7 +1083,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-たしかに、今日の多くのワープロは、数学記号・表・ハイフネーションを扱えますし、スタイル定義や
+たしかに，今日の多くのワープロは，数学記号・表・ハイフネーションを扱えますし，スタイル定義や
 \family default
 \series default
 \shape default
@@ -1101,7 +1101,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-の概念の方向に接近してきてはいます。しかしながら、他のワープロでは、最近になってこれらの機能が可能となったばかりです。これに対して、\SpecialChar LyX
+の概念の方向に接近してきてはいます．しかしながら，他のワープロでは，最近になってこれらの機能が可能となったばかりです．これに対して，\SpecialChar LyX
 は
 \family default
 \series default
@@ -1121,7 +1121,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-システムの上に建てられていて、
+システムの上に建てられていて，
 \family default
 \series default
 \shape default
@@ -1140,7 +1140,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-は、20年以上前から
+は，20年以上前から
 \family default
 \series default
 \shape default
@@ -1158,7 +1158,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-。
+．
 \end_layout
 
 \begin_layout Subsection
@@ -1177,7 +1177,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-は、1985年に
+は，1985年に
 \family default
 \series default
 \shape default
@@ -1218,7 +1218,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-、
+，
 \emph on
 ユーザーの手引き
 \emph default
@@ -1270,7 +1270,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar no
 \noun off
 \color none
-です。
+です．
 \end_layout
 
 \end_inset
@@ -1284,7 +1284,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar default
 \noun default
 \color inherit
-、Donald Knuth
+，Donald Knuth
 \family roman
 \series medium
 \shape up
@@ -1312,7 +1312,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar no
 \noun off
 \color none
-と呼ばれる組版用言語の上に作られています。
+と呼ばれる組版用言語の上に作られています．
 \family default
 \series default
 \shape default
@@ -1340,7 +1340,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar default
 \noun default
 \color inherit
-、ASCII
+，ASCII
 \family roman
 \series medium
 \shape up
@@ -1358,7 +1358,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar default
 \noun default
 \color inherit
-、
+，
 \family roman
 \series medium
 \shape up
@@ -1367,7 +1367,7 @@ A Guide to \SpecialChar LaTeX2e
 \bar no
 \noun off
 \color none
-実行します。
+実行します．
 \family default
 \series default
 \shape default
@@ -1376,18 +1376,18 @@ A Guide to \SpecialChar LaTeX2e
 \bar default
 \noun default
 \color inherit
-印刷業界の多くの「小技」は、Knuthによってコンピュータアルゴリズムにモデル化され、\SpecialChar TeX
-の中に組み込まれたために、すばらしい印刷品質を誇るのです。\SpecialChar TeX
+印刷業界の多くの「小技」は，Knuthによってコンピュータアルゴリズムにモデル化され，\SpecialChar TeX
+の中に組み込まれたために，すばらしい印刷品質を誇るのです．\SpecialChar TeX
 から直接得ること
-ができるのは、ポータブル・ドキュメント・フォーマットこと
+ができるのは，ポータブル・ドキュメント・フォーマットこと
 \emph on
 pdf
 \emph default
-や、いわゆる「デバイス・インディペンダント」形式ファイルすなわち
+や，いわゆる「デバイス・インディペンダント」形式ファイルすなわち
 \emph on
 dvi
 \emph default
-があります。dvi形式は、プレビューのために頻繁に用いられ、あとでPostScriptなどの他の形式に変換することができるようになっています。
+があります．dvi形式は，プレビューのために頻繁に用いられ，あとでPostScriptなどの他の形式に変換することができるようになっています．
 \end_layout
 
 \begin_layout Standard
@@ -1401,7 +1401,7 @@ dvi
 \noun off
 \color none
 \SpecialChar TeX
-は、組版のエンジンであるばかりでなく、ユーザーがマクロを定義することをも容認します。
+は，組版のエンジンであるばかりでなく，ユーザーがマクロを定義することをも容認します．
 \family default
 \series default
 \shape default
@@ -1420,7 +1420,7 @@ dvi
 \bar no
 \noun off
 \color none
-を使う人々のほとんどは、実は
+を使う人々のほとんどは，実は
 \family default
 \series default
 \shape default
@@ -1429,7 +1429,7 @@ dvi
 \bar default
 \noun default
 \color inherit
-、Knuth
+，Knuth
 \family roman
 \series medium
 \shape up
@@ -1438,7 +1438,7 @@ dvi
 \bar no
 \noun off
 \color none
-が組版の細部の大半を隠すために作った、マクロパッケージを使っているのです。ここで
+が組版の細部の大半を隠すために作った，マクロパッケージを使っているのです．ここで
 \family default
 \series default
 \shape default
@@ -1456,8 +1456,8 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-が登場します。彼は、節・表・数式などを統一的かつ整合的な方法で組版できるコマンド群を持つ、写植工向けよりはユーザーにこそやさしいマクロパッケージを作ろうとしまし
-た。こうして
+が登場します．彼は，節・表・数式などを統一的かつ整合的な方法で組版できるコマンド群を持つ，写植工向けよりはユーザーにこそやさしいマクロパッケージを作ろうとしまし
+た．こうして
 \family default
 \series default
 \shape default
@@ -1476,11 +1476,11 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-が生まれたのです。
+が生まれたのです．
 \end_layout
 
 \begin_layout Standard
-このとき、\SpecialChar LaTeX
+このとき，\SpecialChar LaTeX
 
 \family roman
 \series medium
@@ -1490,7 +1490,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-の成長と発展に平行して、他の人々もスライドや数学学術誌向けの論文などを作るために独自の
+の成長と発展に平行して，他の人々もスライドや数学学術誌向けの論文などを作るために独自の
 \family default
 \series default
 \shape default
@@ -1509,7 +1509,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-マクロパッケージを創り出していきました。ある人たちは
+マクロパッケージを創り出していきました．ある人たちは
 \family default
 \series default
 \shape default
@@ -1518,7 +1518,7 @@ Leslie Lamport
 \bar default
 \noun default
 \color inherit
-、そのために生の\SpecialChar TeX
+，そのために生の\SpecialChar TeX
 
 \family roman
 \series medium
@@ -1528,7 +1528,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-をそのまま使いましたし、一方で
+をそのまま使いましたし，一方で
 \family default
 \series default
 \shape default
@@ -1547,7 +1547,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-を修正し始めた人たちもいました。この混乱した状況をまとめるために
+を修正し始めた人たちもいました．この混乱した状況をまとめるために
 \family default
 \series default
 \shape default
@@ -1556,7 +1556,7 @@ Leslie Lamport
 \bar default
 \noun default
 \color inherit
-、\SpecialChar LaTeX
+，\SpecialChar LaTeX
 -nician
 \family roman
 \series medium
@@ -1566,7 +1566,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-のチームが、1980年代の後半に、現
+のチームが，1980年代の後半に，現
 \family default
 \series default
 \shape default
@@ -1604,7 +1604,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-を開発しはじめました。この
+を開発しはじめました．この
 \family default
 \series default
 \shape default
@@ -1623,7 +1623,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-の新バージョンは、
+の新バージョンは，
 \family default
 \series default
 \shape default
@@ -1642,7 +1642,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-コマンドへのより使いやすいインターフェイスを提供するコマンドや、新しいフォントを使うのを助けるコマンドを備えています。実は、
+コマンドへのより使いやすいインターフェイスを提供するコマンドや，新しいフォントを使うのを助けるコマンドを備えています．実は，
 \family default
 \series default
 \shape default
@@ -1661,7 +1661,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-はそれ自身が、きわめて拡張性の高い言語なのです！これまで、世界中のユーザーが
+はそれ自身が，きわめて拡張性の高い言語なのです！これまで，世界中のユーザーが
 \family default
 \series default
 \shape default
@@ -1670,7 +1670,7 @@ Leslie Lamport
 \bar default
 \noun default
 \color inherit
-、\SpecialChar LaTeX
+，\SpecialChar LaTeX
 
 \family roman
 \series medium
@@ -1680,7 +1680,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-標準のアドオンに飽き足らずに、独自のアドオンを開発してきています。
+標準のアドオンに飽き足らずに，独自のアドオンを開発してきています．
 \end_layout
 
 \begin_layout Standard
@@ -1694,7 +1694,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-を拡張するには2つの方法があります。ひとつはクラスであり、もうひとつはスタイルです。
+を拡張するには2つの方法があります．ひとつはクラスであり，もうひとつはスタイルです．
 \family default
 \series default
 \shape default
@@ -1712,7 +1712,7 @@ Leslie Lamport
 \bar no
 \noun off
 \color none
-は、本や論文などの新たな文書の型を定義する
+は，本や論文などの新たな文書の型を定義する
 \family default
 \series default
 \shape default
@@ -1748,7 +1748,7 @@ eX
 \bar no
 \noun off
 \color none
-マクロ群です。スライドのためのクラスもありますし、物理や数学の学術誌のためのクラスもあります。さらに、多くの大学が、自校の博士論文様式のためのクラスまで用意して
+マクロ群です．スライドのためのクラスもありますし，物理や数学の学術誌のためのクラスもあります．さらに，多くの大学が，自校の博士論文様式のためのクラスまで用意して
 いるのです！
 \family default
 \series default
@@ -1767,7 +1767,7 @@ eX
 \bar no
 \noun off
 \color none
-はクラスと違って新たな文書の型を定義しませんが、どの文書からでも使えるような
+はクラスと違って新たな文書の型を定義しませんが，どの文書からでも使えるような
 \family default
 \series default
 \shape default
@@ -1787,8 +1787,8 @@ eX
 \bar no
 \noun off
 \color none
-の型を定義します。例えば、\SpecialChar LyX
-ではページ余白や行間の距離を変えるのに、それぞれ別の
+の型を定義します．例えば，\SpecialChar LyX
+ではページ余白や行間の距離を変えるのに，それぞれ別の
 \family default
 \series default
 \shape default
@@ -1807,8 +1807,8 @@ eX
 \bar no
 \noun off
 \color none
-スタイルファイルを使っています。実に様々な種類のスタイルファイルがあります。ラベルや封書印刷用のもの、字下げの振る舞いを変えるもの、画像を操作するもの、装飾ペー
-ジヘッダをデザインするもの、参考文献の体裁を変えるもの、脚注の場所や体裁を変えるもの、表や図や箇条書きの振る舞いを変えるもの、等々。
+スタイルファイルを使っています．実に様々な種類のスタイルファイルがあります．ラベルや封書印刷用のもの，字下げの振る舞いを変えるもの，画像を操作するもの，装飾ペー
+ジヘッダをデザインするもの，参考文献の体裁を変えるもの，脚注の場所や体裁を変えるもの，表や図や箇条書きの振る舞いを変えるもの，等々．
 \end_layout
 
 \begin_layout Standard
@@ -1872,7 +1872,7 @@ eX
 \bar no
 \noun off
 \color none
-を使った、文書型の定義
+を使った，文書型の定義
 \end_layout
 
 \begin_layout Description
@@ -1946,7 +1946,7 @@ eX
 \bar default
 \noun default
 \color inherit
-、
+，
 \family roman
 \series medium
 \shape up
@@ -1986,8 +1986,8 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-本節では、\SpecialChar LyX
-と他のワードプロセッサの違いの説明を試みました。簡単にいえば、
+本節では，\SpecialChar LyX
+と他のワードプロセッサの違いの説明を試みました．簡単にいえば，
 \family default
 \series default
 \shape default
@@ -2006,7 +2006,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-がこの違いの源になっています。
+がこの違いの源になっています．
 \family default
 \series default
 \shape default
@@ -2016,7 +2016,7 @@ WYSIWYM
 \noun default
 \color inherit
 \SpecialChar LaTeX
-をバックエンドとして用いることによって、
+をバックエンドとして用いることによって，
 \family roman
 \series medium
 \shape up
@@ -2026,7 +2026,7 @@ WYSIWYM
 \noun off
 \color none
 \SpecialChar LyX
-は、あなたが
+は，あなたが
 \family default
 \series default
 \shape default
@@ -2046,7 +2046,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-書くかに専念できるように手助けします。そして、コンピュータにそれが
+書くかに専念できるように手助けします．そして，コンピュータにそれが
 \family default
 \series default
 \shape default
@@ -2064,7 +2064,7 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-見栄えになるかを処理させるのです。
+見栄えになるかを処理させるのです．
 \end_layout
 
 \begin_layout Section
@@ -2081,10 +2081,10 @@ WYSIWYM
 \bar no
 \noun off
 \color none
-ユーザーの抱きうる質問を網羅し、すべての\SpecialChar LyX
-の機能を説明するために、取扱説明書はいくつかの独立したファイルに分けられています。各ファイルは以下に述べるように、それぞ
-れの目的を持っています。しかしながら、本章にはいつかあなたを助けることになる、役に立つ情報とコメントが書いてありますので、これらのファイルのいずれかを読み始める
-前に、まずこの章を通してお読み下さい。
+ユーザーの抱きうる質問を網羅し，すべての\SpecialChar LyX
+の機能を説明するために，取扱説明書はいくつかの独立したファイルに分けられています．各ファイルは以下に述べるように，それぞ
+れの目的を持っています．しかしながら，本章にはいつかあなたを助けることになる，役に立つ情報とコメントが書いてありますので，これらのファイルのいずれかを読み始める
+前に，まずこの章を通してお読み下さい．
 \end_layout
 
 \begin_layout Standard
@@ -2098,10 +2098,10 @@ WYSIWYM
 \noun off
 \color none
 \SpecialChar LyX
-の開発は、望むらくは留まることがないと思われるので、我々の更新の努力にも関わらず、取扱説明書のうちの一部は不完全であったり、内容が若干古くなっていたりするかもし
-れません。\SpecialChar LyX
-の他の部分と同様に、この取扱説明書も、他に「本当の仕事」や、家族や、洗わなければならない皿、手のかかる猫なんかを持つボランティアのグループによって作ら
-れているのです。もし手を差し伸べていただけるならば、この文書の残りと、第
+の開発は，望むらくは留まることがないと思われるので，我々の更新の努力にも関わらず，取扱説明書のうちの一部は不完全であったり，内容が若干古くなっていたりするかもし
+れません．\SpecialChar LyX
+の他の部分と同様に，この取扱説明書も，他に「本当の仕事」や，家族や，洗わなければならない皿，手のかかる猫なんかを持つボランティアのグループによって作ら
+れているのです．もし手を差し伸べていただけるならば，この文書の残りと，第
 \family default
 \series default
 \shape default
@@ -2126,7 +2126,7 @@ reference "sec:貢献"
 \bar no
 \noun off
 \color none
-節をぜひ読んで下さい。
+節をぜひ読んで下さい．
 \end_layout
 
 \begin_layout Standard
@@ -2139,8 +2139,8 @@ reference "sec:貢献"
 \bar no
 \noun off
 \color none
-それともうひとつお願いがあります —— もしこの取扱説明書の中で、混乱を招く箇所や、よくわからないあるいは間違っている箇所があったら、躊躇することなく私たちにお
-知らせ下さい。
+それともうひとつお願いがあります —— もしこの取扱説明書の中で，混乱を招く箇所や，よくわからないあるいは間違っている箇所があったら，躊躇することなく私たちにお
+知らせ下さい．
 \family default
 \series default
 \shape default
@@ -2149,7 +2149,7 @@ reference "sec:貢献"
 \bar default
 \noun default
 \color inherit
-現在の文書管理者には、
+現在の文書管理者には，
 \family typewriter
 
 \begin_inset CommandInset href
@@ -2161,7 +2161,7 @@ type "mailto:"
 
 
 \family default
-宛てにメールを送ることで連絡をとることができます。また、もし取扱説明書にははっきりと答えられていない疑問があり、すぐに助けが必要な場合には、活発なユーザー向けメ
+宛てにメールを送ることで連絡をとることができます．また，もし取扱説明書にははっきりと答えられていない疑問があり，すぐに助けが必要な場合には，活発なユーザー向けメ
 ーリングリスト
 \family typewriter
 
@@ -2174,7 +2174,7 @@ type "mailto:"
 
 
 \family default
-があります。
+があります．
 \end_layout
 
 \begin_layout Subsection
@@ -2191,11 +2191,11 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-これを読まれている方の中には、取扱説明書を印刷した方もいらっしゃるでしょうし、\SpecialChar LyX
-の中で読んでいる方もいらっしゃるかもしれません。\SpecialChar LyX
+これを読まれている方の中には，取扱説明書を印刷した方もいらっしゃるでしょうし，\SpecialChar LyX
+の中で読んでいる方もいらっしゃるかもしれません．\SpecialChar LyX
 ファイルと印刷されたものの間にはい
-くらか違いがあります。まずタイトルは、画面では単に文書の先頭に表示されるだけなのに対し、印刷版では場合によっては独立したページに表示されます。また、画面では脚注
-や目次も完全には表示されません。脚注を開くには
+くらか違いがあります．まずタイトルは，画面では単に文書の先頭に表示されるだけなのに対し，印刷版では場合によっては独立したページに表示されます．また，画面では脚注
+や目次も完全には表示されません．脚注を開くには
 \begin_inset Graphics
 	filename clipart/footnote.png
 	height 14pt
@@ -2203,7 +2203,7 @@ type "mailto:"
 
 \end_inset
 
-と表示されている部分をマウスの左ボタンでクリックして下さい。
+と表示されている部分をマウスの左ボタンでクリックして下さい．
 \family default
 \series default
 \shape default
@@ -2212,36 +2212,36 @@ type "mailto:"
 \bar default
 \noun default
 \color inherit
-目次を開くには灰色の箱をクリックするか、
+目次を開くには灰色の箱をクリックするか，
 \family sans
 移動
 \family default
-メニューをクリックすると、中身が自動的に表示されます。
+メニューをクリックすると，中身が自動的に表示されます．
 \end_layout
 
 \begin_layout Standard
-印刷された取扱説明書では、章番号・節番号・小節番号などのすべての相互参照は、実際の番号として表示されます。しかしながら画面上で見ている場合には、すべての相互参照
-は、次のような明るい灰色の箱で表されます
+印刷された取扱説明書では，章番号・節番号・小節番号などのすべての相互参照は，実際の番号として表示されます．しかしながら画面上で見ている場合には，すべての相互参照
+は，次のような明るい灰色の箱で表されます
 \begin_inset Graphics
 	filename clipart/reference.png
 	height 12pt
 
 \end_inset
 
-。この箱を左のマウスボタンでクリックすると、文書内すべての相互参照の一覧があるダイアログウインドウがあらわれます。この
+．この箱を左のマウスボタンでクリックすると，文書内すべての相互参照の一覧があるダイアログウインドウがあらわれます．この
 \emph on
 \SpecialChar LyX
 はじめの一歩
 \emph default
-には、二つだけ相互参照が含まれていて、そのうち最初のものには「sec:貢献」という名前が付いています。その箱を右クリックするか、開いたダイアログの中の
+には，二つだけ相互参照が含まれていて，そのうち最初のものには「sec:貢献」という名前が付いています．その箱を右クリックするか，開いたダイアログの中の
 \family sans
 ラベルに移動
 \family default
-いうボタンをクリックすると、参照されている節に飛ぶことができます。移動する前の場所に戻るのも、同じように簡単です。
+いうボタンをクリックすると，参照されている節に飛ぶことができます．移動する前の場所に戻るのも，同じように簡単です．
 \family sans
 戻る
 \family default
-ボタンをクリックすれば、元の場所に戻ることができます。
+ボタンをクリックすれば，元の場所に戻ることができます．
 \end_layout
 
 \begin_layout Standard
@@ -2254,8 +2254,8 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-さて、このファイルの印刷版とオンライン版との差異を明らかにしましたので、この文書の書式の説明に移ることができます。以後、ときどき以下のような異なったフォントを見
-かけることになるでしょう。
+さて，このファイルの印刷版とオンライン版との差異を明らかにしましたので，この文書の書式の説明に移ることができます．以後，ときどき以下のような異なったフォントを見
+かけることになるでしょう．
 \end_layout
 
 \begin_layout Itemize
@@ -2270,7 +2270,7 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-は、一般的な強調・一般的な論点・本の題名・他の取扱説明書の節見出し・著者からの注意に使われます。
+は，一般的な強調・一般的な論点・本の題名・他の取扱説明書の節見出し・著者からの注意に使われます．
 \end_layout
 
 \begin_layout Itemize
@@ -2285,8 +2285,8 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-は、プログラム名・ファイル名・\SpecialChar LyX
-のコード・関数名に使われます。
+は，プログラム名・ファイル名・\SpecialChar LyX
+のコード・関数名に使われます．
 \end_layout
 
 \begin_layout Itemize
@@ -2303,7 +2303,7 @@ type "mailto:"
 \bar no
 \noun off
 \color none
-は、メニュー名・ボタン名・ダイアログボックス名・キーボードの
+は，メニュー名・ボタン名・ダイアログボックス名・キーボードの
 \family default
 \series default
 \shape default
@@ -2350,7 +2350,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-の名称に使われます。
+の名称に使われます．
 \end_layout
 
 \begin_layout Itemize
@@ -2365,7 +2365,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-は、人名に使われます。
+は，人名に使われます．
 \end_layout
 
 \begin_layout Itemize
@@ -2373,8 +2373,8 @@ status collapsed
 \series bold
 ボールド体（Bold）
 \series default
-は、\SpecialChar LaTeX
-コードを表すのに使われます。
+は，\SpecialChar LaTeX
+コードを表すのに使われます．
 \end_layout
 
 \begin_layout Standard
@@ -2387,7 +2387,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-鍵を参照する場合には次のように短縮して表示します。
+鍵を参照する場合には次のように短縮して表示します．
 \end_layout
 
 \begin_layout Itemize
@@ -2413,7 +2413,7 @@ Ctrl-
 \color inherit
 コントロール-
 \family default
-鍵を表します。
+鍵を表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2439,7 +2439,7 @@ Shift-
 \color inherit
 シフト-
 \family default
-鍵を表します。
+鍵を表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2473,7 +2473,7 @@ Meta
 \family sans
 -
 \family default
-鍵を表します。
+鍵を表します．
 \end_layout
 
 \begin_layout Itemize
@@ -2508,7 +2508,7 @@ F12
 \bar no
 \noun off
 \color none
-」はファンクション鍵です。
+」はファンクション鍵です．
 \end_layout
 
 \begin_layout Itemize
@@ -2523,7 +2523,7 @@ Esc
 \bar no
 \noun off
 \color none
-」はエスケープ鍵です。
+」はエスケープ鍵です．
 \end_layout
 
 \begin_layout Itemize
@@ -2598,7 +2598,7 @@ Esc
 \bar no
 \noun off
 \color none
-」は自明でしょう。
+」は自明でしょう．
 \end_layout
 
 \begin_layout Itemize
@@ -2713,7 +2713,7 @@ PageDown
 \bar no
 \noun off
 \color none
-」は、大多数の
+」は，大多数の
 \family default
 \series default
 \shape default
@@ -2731,7 +2731,7 @@ PC
 \bar no
 \noun off
 \color none
-キーボードの場合、矢印鍵の上にある6つの鍵です。キーボードによっては
+キーボードの場合，矢印鍵の上にある6つの鍵です．キーボードによっては
 \family default
 \series default
 \shape default
@@ -2740,7 +2740,7 @@ PC
 \bar default
 \noun default
 \color inherit
-、「
+，「
 \family sans
 PageUp
 \family roman
@@ -2771,7 +2771,7 @@ PageDown
 \bar no
 \noun off
 \color none
-」は、
+」は，
 \family default
 \series default
 \shape default
@@ -2811,7 +2811,7 @@ Next
 \bar no
 \noun off
 \color none
-」と呼ばれていることもあります。
+」と呼ばれていることもあります．
 \end_layout
 
 \begin_layout Itemize
@@ -2844,7 +2844,7 @@ Next
 \bar no
 \noun off
 \color none
-は同じ鍵を指します。
+は同じ鍵を指します．
 \family sans
 \series default
 \shape default
@@ -2880,7 +2880,7 @@ Next
 \bar no
 \noun off
 \color none
-」と表示しているキーボードもあれば、
+」と表示しているキーボードもあれば，
 \family default
 \series default
 \shape default
@@ -2898,8 +2898,8 @@ Next
 \bar no
 \noun off
 \color none
-」と表示しているものもあり、はたまた両方の鍵を持つキーボードもあります。\SpecialChar LyX
-はそれらをすべて同じ鍵として扱うので、われわれも
+」と表示しているものもあり，はたまた両方の鍵を持つキーボードもあります．\SpecialChar LyX
+はそれらをすべて同じ鍵として扱うので，われわれも
 \family sans
 \series default
 \shape default
@@ -2921,7 +2921,7 @@ Next
 \bar no
 \noun off
 \color none
-を区別せずに使います。
+を区別せずに使います．
 \end_layout
 
 \begin_layout Standard
@@ -2954,7 +2954,7 @@ status collapsed
 
 \end_inset
 
-の一覧は、
+の一覧は，
 \family sans
 \series default
 \shape default
@@ -2990,7 +2990,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-にあります。
+にあります．
 \end_layout
 
 \begin_layout Subsection
@@ -2998,15 +2998,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この文書で用いられる単位の理解のために、表
+この文書で用いられる単位の理解のために，表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:画像用単位"
 
 \end_inset
 
-に、\SpecialChar LyX
-で使うことのできる単位をまとめておきます。
+に，\SpecialChar LyX
+で使うことのできる単位をまとめておきます．
 \end_layout
 
 \begin_layout Standard
@@ -3541,7 +3541,7 @@ em)
 \bar no
 \noun off
 \color none
-以下の一覧は、
+以下の一覧は，
 \family sans
 \series default
 \shape default
@@ -3559,7 +3559,7 @@ em)
 \bar no
 \noun off
 \color none
-メニューの中にある基本的な取扱説明書の内容を説明したものです。。
+メニューの中にある基本的な取扱説明書の内容を説明したものです．．
 \end_layout
 
 \begin_layout Description
@@ -3572,7 +3572,7 @@ em)
 \bar no
 \noun off
 \color none
-このファイルです。
+このファイルです．
 \end_layout
 
 \begin_layout Description
@@ -3586,9 +3586,9 @@ em)
 \noun off
 \color none
  もしあなたが\SpecialChar LyX
-を使うのが初めてで、\SpecialChar LaTeX
-を使ったことがないのであれば、これから始めてください。\SpecialChar LaTeX
-を使ったことのある方は、
+を使うのが初めてで，\SpecialChar LaTeX
+を使ったことがないのであれば，これから始めてください．\SpecialChar LaTeX
+を使ったことのある方は，
 \family default
 \series default
 \shape default
@@ -3608,7 +3608,7 @@ em)
 \color none
 の「\SpecialChar LaTeX
 ユーザーのための\SpecialChar LyX
-」の節から読み始めてください（他の節も読んだっていいんですよ）。
+」の節から読み始めてください（他の節も読んだっていいんですよ）．
 \end_layout
 
 \begin_layout Description
@@ -3621,7 +3621,7 @@ em)
 \bar no
 \noun off
 \color none
- 中心となる取扱説明書です。この文書で\SpecialChar LyX
+ 中心となる取扱説明書です．この文書で\SpecialChar LyX
 の機能と基本的な操作の
 \family default
 \series default
@@ -3640,7 +3640,7 @@ em)
 \bar no
 \noun off
 \color none
-を説明しています。この取扱説明書は、
+を説明しています．この取扱説明書は，
 \family default
 \series default
 \shape default
@@ -3658,7 +3658,7 @@ em)
 \bar no
 \noun off
 \color none
-をすでに読んでいることを前提にして書かれています。
+をすでに読んでいることを前提にして書かれています．
 \end_layout
 
 \begin_layout Description
@@ -3666,8 +3666,8 @@ em)
 \emph on
 ユーザーの手引き
 \emph default
-の拡張です。表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています。これには、\SpecialChar LaTeX
-熟練者向けのテクニックもたくさん含まれています。
+の拡張です．表・図・フロート・ 注釈・プログラムリスト・ボックスなどの使い方を詳細に述べています．これには，\SpecialChar LaTeX
+熟練者向けのテクニックもたくさん含まれています．
 \end_layout
 
 \begin_layout Description
@@ -3675,7 +3675,7 @@ em)
 \emph on
 ユーザーの手引き
 \emph default
-の拡張です。あらゆる数式の組版の仕方を詳述しています。
+の拡張です．あらゆる数式の組版の仕方を詳述しています．
 \end_layout
 
 \begin_layout Description
@@ -3690,8 +3690,8 @@ em)
 \bar no
 \noun off
 \color none
-の拡張です。生の\SpecialChar LaTeX
-コマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています。
+の拡張です．生の\SpecialChar LaTeX
+コマンド・その他のレイアウト・特殊な編集機能などの使い方を述べています．
 \end_layout
 
 \begin_layout Description
@@ -3705,8 +3705,8 @@ em)
 \noun off
 \color none
 \SpecialChar LyX
-全体の挙動のカスタマイズの仕方など、高度な\SpecialChar LyX
-の機能を説明しています。これには、
+全体の挙動のカスタマイズの仕方など，高度な\SpecialChar LyX
+の機能を説明しています．これには，
 \family default
 \series default
 \shape default
@@ -3753,9 +3753,9 @@ status collapsed
 \bar no
 \noun off
 \color none
-設定・国際化・設定ファイルの説明などを含みます。これには、\SpecialChar LyX
+設定・国際化・設定ファイルの説明などを含みます．これには，\SpecialChar LyX
 が\SpecialChar LaTeX
-クラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています。
+クラスやパッケージをサポートするのに必要な，レイアウトファイルの情報も含まれています．
 \end_layout
 
 \begin_layout Description
@@ -3798,7 +3798,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-を表にしています。
+を表にしています．
 \end_layout
 
 \begin_layout Description
@@ -3813,9 +3813,9 @@ status collapsed
 \noun off
 \color none
 \SpecialChar LyX
-は、導入時にお使いのシステムを精査します。このファイルには、その際\SpecialChar LyX
-が取得した情報が記録してあります。もしお使いになりたい機能が使用できない場合には、このファイル
-の内容を調べてみて下さい。
+は，導入時にお使いのシステムを精査します．このファイルには，その際\SpecialChar LyX
+が取得した情報が記録してあります．もしお使いになりたい機能が使用できない場合には，このファイル
+の内容を調べてみて下さい．
 \end_layout
 
 \begin_layout Standard
@@ -3828,7 +3828,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-これらのファイルは、必要な時には他のファイルを参照しています。例えば、
+これらのファイルは，必要な時には他のファイルを参照しています．例えば，
 \family default
 \series default
 \shape default
@@ -3846,7 +3846,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-は、\SpecialChar LyX
+は，\SpecialChar LyX
 の導入とカスタマイズについて
 \family default
 \series default
@@ -3865,7 +3865,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-情報を含んではいますが、
+情報を含んではいますが，
 \family default
 \series default
 \shape default
@@ -3885,7 +3885,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-を参照するように読者に指示しています。
+を参照するように読者に指示しています．
 \end_layout
 
 \begin_layout Standard
@@ -3898,7 +3898,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-重要な点をもう一度言わせてください。
+重要な点をもう一度言わせてください．
 \family default
 \series default
 \shape default
@@ -3960,7 +3960,7 @@ yX
 \bar no
 \noun off
 \color none
-を使ったことがないなら、ただちに
+を使ったことがないなら，ただちに
 \family default
 \series default
 \shape default
@@ -3978,7 +3978,7 @@ yX
 \bar no
 \noun off
 \color none
-を読んで下さい。
+を読んで下さい．
 \family default
 \series default
 \shape default
@@ -4002,7 +4002,7 @@ yX
 \bar no
 \noun off
 \color none
-さもないと、あなたは不必要な苛立ちを抱え込むことになるでしょう。
+さもないと，あなたは不必要な苛立ちを抱え込むことになるでしょう．
 \end_layout
 
 \begin_layout Section
@@ -4023,10 +4023,10 @@ name "sec:貢献"
 
 \begin_layout Standard
 \SpecialChar LyX
-は、ほとんどがC++で書かれています（\SpecialChar LaTeX
-インポート部には、Pythonを使っています）。\SpecialChar LyX
-は大きなプロジェクトですから、バグからは逃れることはできませんし、ソースコ
-ードも改良していく必要があります。
+は，ほとんどがC++で書かれています（\SpecialChar LaTeX
+インポート部には，Pythonを使っています）．\SpecialChar LyX
+は大きなプロジェクトですから，バグからは逃れることはできませんし，ソースコ
+ードも改良していく必要があります．
 \end_layout
 
 \begin_layout Subsubsection
@@ -4035,15 +4035,15 @@ name "sec:貢献"
 
 \begin_layout Standard
 \SpecialChar LyX
-を使っていると、バグだと思われる振る舞いを見つけることがあるかもしれません。ほとんどないことですが、クラッシュを経験するかもしれません。また、ユーザーインターフ
-ェイスに問題がある場合も、\SpecialChar LyX
-チームは大きなバグだと考えています。特に、混乱しやすかったりわかりにくい\SpecialChar LyX
-のインターフェイスを指摘していただけると助かります。
+を使っていると，バグだと思われる振る舞いを見つけることがあるかもしれません．ほとんどないことですが，クラッシュを経験するかもしれません．また，ユーザーインターフ
+ェイスに問題がある場合も，\SpecialChar LyX
+チームは大きなバグだと考えています．特に，混乱しやすかったりわかりにくい\SpecialChar LyX
+のインターフェイスを指摘していただけると助かります．
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
-にはバグ追跡システムがあり、
+にはバグ追跡システムがあり，
 \begin_inset Flex URL
 status collapsed
 
@@ -4054,8 +4054,8 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 
 \end_inset
 
-でアクセスすることができます。バグを報告する前にはつねに、このバグ追跡システムを利用して、報告済みのバグでないかどうかを確かめてください。報告済みのバグにコメン
-トを加えたり、新しいバグを報告するには、バグ追跡システムを使うか、あるいは開発者用のメーリングリスト
+でアクセスすることができます．バグを報告する前にはつねに，このバグ追跡システムを利用して，報告済みのバグでないかどうかを確かめてください．報告済みのバグにコメン
+トを加えたり，新しいバグを報告するには，バグ追跡システムを使うか，あるいは開発者用のメーリングリスト
 \family typewriter
 
 \begin_inset CommandInset href
@@ -4067,7 +4067,7 @@ type "mailto:"
 
 
 \family default
-にメールを送ってください。このメーリングリストのアーカイブには、\SpecialChar LyX
+にメールを送ってください．このメーリングリストのアーカイブには，\SpecialChar LyX
 のメインウェブサイト
 \family typewriter
 
@@ -4083,32 +4083,32 @@ http://www.lyx.org/
 
 
 \family default
-からリンクが張られています。
+からリンクが張られています．
 \end_layout
 
 \begin_layout Standard
-バグ報告を役立つものにするには、少なくとも問題のあった\SpecialChar LyX
-のバージョンが明記されていなくてはなりません。また、正確で詳しい説明があることが望まれます。開発者が、どこ
-にバグがあるのかを特定するのに時間を取られれば取られるほど、他に改良を加える時間がなくなります。\SpecialChar LyX
-を走らせているシステムと、システムのバージョンを明記してください
-。システムに導入されているライブラリのバージョンと、関係がある場合には、\SpecialChar LyX
-が使用している外部プログラムのバージョンも書いてください。バグが、コンパイルやその前のコ
-ンフィギュレーションの問題ならば、
+バグ報告を役立つものにするには，少なくとも問題のあった\SpecialChar LyX
+のバージョンが明記されていなくてはなりません．また，正確で詳しい説明があることが望まれます．開発者が，どこ
+にバグがあるのかを特定するのに時間を取られれば取られるほど，他に改良を加える時間がなくなります．\SpecialChar LyX
+を走らせているシステムと，システムのバージョンを明記してください
+．システムに導入されているライブラリのバージョンと，関係がある場合には，\SpecialChar LyX
+が使用している外部プログラムのバージョンも書いてください．バグが，コンパイルやその前のコ
+ンフィギュレーションの問題ならば，
 \family typewriter
 config.log
 \family default
-ファイルを添付して、どのコンパイラを使ったかも言及してください。
+ファイルを添付して，どのコンパイラを使ったかも言及してください．
 \end_layout
 
 \begin_layout Subsubsection
-バグを直す、新しい機能を導入する
+バグを直す，新しい機能を導入する
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
 を改良するために\SpecialChar LyX
-のソースに手を加えた場合には、変更したところを（unifiedフォーマットの）diffファイルとして、上でした開発者用のメーリングリストに送って
-ください。そのときには、チェンジログとあなたのパッチの説明もいっしょに送ってください。
+のソースに手を加えた場合には，変更したところを（unifiedフォーマットの）diffファイルとして，上でした開発者用のメーリングリストに送って
+ください．そのときには，チェンジログとあなたのパッチの説明もいっしょに送ってください．
 \end_layout
 
 \begin_layout Subsection
@@ -4117,9 +4117,9 @@ config.log
 
 \begin_layout Standard
 \SpecialChar LyX
-の取扱説明書は広範にわたっています。しかし、\SpecialChar LyX
-はつねに開発が続けられていて、新しいリリースごとに新しい機能が増えています。改善を必要とする取扱説明書を見つけること
-もあるでしょう。本節では、取扱説明書に間違いを見つけた場合や、取扱説明書を改善する提案がある場合にはどうしたらいいのかを説明します。
+の取扱説明書は広範にわたっています．しかし，\SpecialChar LyX
+はつねに開発が続けられていて，新しいリリースごとに新しい機能が増えています．改善を必要とする取扱説明書を見つけること
+もあるでしょう．本節では，取扱説明書に間違いを見つけた場合や，取扱説明書を改善する提案がある場合にはどうしたらいいのかを説明します．
 \end_layout
 
 \begin_layout Subsubsection
@@ -4127,7 +4127,7 @@ config.log
 \end_layout
 
 \begin_layout Standard
-取扱説明書に問題を見つけたら、メーリングリスト
+取扱説明書に問題を見つけたら，メーリングリスト
 \family typewriter
 
 \begin_inset CommandInset href
@@ -4139,7 +4139,7 @@ type "mailto:"
 
 
 \family default
-にメールを送ってください。文書化チームが必要な修正を施すでしょう。
+にメールを送ってください．文書化チームが必要な修正を施すでしょう．
 \end_layout
 
 \begin_layout Subsubsection
@@ -4157,8 +4157,8 @@ type "mailto:"
 \noun off
 \color none
 \SpecialChar LyX
-文書化プロジェクトは、他の\SpecialChar LyX
-プロジェクトと同様に常に手助けを必要としています。もし文書化プロジェクトへの貢献に興味があるなら、次のことを行って下さい。
+文書化プロジェクトは，他の\SpecialChar LyX
+プロジェクトと同様に常に手助けを必要としています．もし文書化プロジェクトへの貢献に興味があるなら，次のことを行って下さい．
 \end_layout
 
 \begin_layout Enumerate
@@ -4211,7 +4211,7 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \begin_inset Newline newline
 \end_inset
 
-から入手して下さい。
+から入手して下さい．
 \end_layout
 
 \begin_layout Enumerate
@@ -4260,11 +4260,11 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \bar no
 \noun off
 \color none
-を読んで下さい。
+を読んで下さい．
 \begin_inset Newline newline
 \end_inset
 
-これをしていただくのは、全体像を掴んでもらうためです。
+これをしていただくのは，全体像を掴んでもらうためです．
 \family default
 \series default
 \shape default
@@ -4300,12 +4300,12 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 \bar no
 \noun off
 \color none
-は、通常、全ての取扱説明書の中で一番最新のものになっています。これを見ると、我々が取扱説明書をどのように読めるように、またどのように見えるようにしたいかをおわか
-りいただけるでしょう。
+は，通常，全ての取扱説明書の中で一番最新のものになっています．これを見ると，我々が取扱説明書をどのように読めるように，またどのように見えるようにしたいかをおわか
+りいただけるでしょう．
 \end_layout
 
 \begin_layout Enumerate
-変更を加えたい点について議論したり、フィードバックを受けたりするには、
+変更を加えたい点について議論したり，フィードバックを受けたりするには，
 \family typewriter
 
 \begin_inset Newline newline
@@ -4325,11 +4325,11 @@ type "mailto:"
 
 
 \family default
-でチームに接触してください。
+でチームに接触してください．
 \end_layout
 
 \begin_layout Standard
-あなたが提案したいと思う変更点は、文書の明瞭さの改善から、取扱説明書の大規模な再構成までありうるでしょう。どのような改善も歓迎です。
+あなたが提案したいと思う変更点は，文書の明瞭さの改善から，取扱説明書の大規模な再構成までありうるでしょう．どのような改善も歓迎です．
 \end_layout
 
 \end_body

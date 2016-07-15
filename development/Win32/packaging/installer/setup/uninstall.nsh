@@ -73,11 +73,13 @@ Section "un.LyX" un.SecUnProgramFiles
   SetOutPath "$TEMP"
   RMDir /r "$INSTDIR"
   
-  # Registry keys
+  # Registry keys and values
   DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"
   DeleteRegKey SHCTX "${APP_REGKEY}"
   DeleteRegKey SHCTX "${APP_UNINST_KEY}"
   DeleteRegKey HKCR "Applications\lyx.exe"
+  DeleteRegValue HKCR "LyX.Document\Shell\open\command" ""
+  DeleteRegValue HKCR "LyX.Document\DefaultIcon" ""
   
   # File associations
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
@@ -91,7 +93,6 @@ Section "un.LyX" un.SecUnProgramFiles
   DeleteRegKey SHCTX "SOFTWARE\${APP_REGKEY}"
   
   # delete info that programs were installed together with LyX
-  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "OnlyWithLyX"
   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
   
   # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
@@ -113,6 +114,8 @@ Section /o "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
  # remove LyX's config files
  StrCpy $AppSubfolder ${APP_DIR_USERDATA}
  Call un.DelAppPathSub # function from LyXUtils.nsh
+ # remove registry settings
+ DeleteRegKey HKCU "Software\LyX\LyX${APP_SERIES_NAME}"
   
 SectionEnd
 
@@ -134,15 +137,17 @@ Section "un.JabRef" un.SecUnJabRef
  ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX
   ${If} $MultiUser.Privileges == "Admin"
   ${OrIf} $MultiUser.Privileges == "Power"
-   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
    IfSilent 0 +2
    ExecWait "$1 /S" # run JabRef's uninstaller
    ExecWait "$1" # run JabRef's uninstaller
+   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
   ${else}
-   # in this case we can only read the start menu location and then start the linked uninstaller
-   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
-   StrCpy $1 "$1\Uninstall JabRef "${JabRefVersion}".lnk"
-   ExecShell "" "$1" # run JabRef's uninstaller
+   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
+   IfSilent 0 +2
+   ExecWait "$1 /S" # run JabRef's uninstaller
+   ExecWait "$1" # run JabRef's uninstaller
+   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
   ${endif}
  ${endif}
 

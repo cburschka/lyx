@@ -48,6 +48,22 @@ public:
 	static void string2params(std::string const &, InsetSeparatorParams &);
 	///
 	static std::string params2string(InsetSeparatorParams const &);
+	/// To be used in combination with inset-forall
+	/// Here's a command that removes every latexpar separator:
+	///   inset-forall Separator:latexpar char-delete-forward
+	docstring layoutName() const
+	{
+		switch (params_.kind) {
+		case InsetSeparatorParams::PLAIN:
+			return from_ascii("Separator:plain");
+		case InsetSeparatorParams::PARBREAK:
+			return from_ascii("Separator:parbreak");
+		case InsetSeparatorParams::LATEXPAR:
+			return from_ascii("Separator:latexpar");
+		}
+		// remove warning
+		return docstring();
+	}
 private:
 	///
 	InsetSeparatorParams params() const { return params_; }

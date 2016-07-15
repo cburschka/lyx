@@ -1120,7 +1120,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1162,7 +1162,7 @@ Structure indéfinissable
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -25022,8 +25022,6 @@ arg   "label-insert"
  Une boîte grise de ce genre : 
 \begin_inset Graphics
 	filename clipart/label.png
-	lyxscale 85
-	scale 85
 	scaleBeforeRotation
 
 \end_inset
@@ -25077,8 +25075,7 @@ arg   "dialog-show-new-inset ref"
  une.
  Une boîte grise de référence croisée comme celle-ci : 
 \begin_inset Graphics
-	filename ../clipart/reference.png
-	scale 85
+	filename clipart/reference.png
 	scaleBeforeRotation
 
 \end_inset
@@ -31482,19 +31479,27 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\noindent
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename ../clipart/without_fntright.pdf
 	width 100col%
@@ -31503,12 +31508,6 @@ framebox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -31548,19 +31547,27 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+\noindent
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename ../clipart/with_fntright.pdf
 	width 100col%
@@ -31569,12 +31576,6 @@ framebox{
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -31683,32 +31684,33 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
-status collapsed
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-framebox{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename ../clipart/endnotes.pdf
+	width 100col%
 	scaleBeforeRotation
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset

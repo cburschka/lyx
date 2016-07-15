@@ -539,37 +539,13 @@ def checkLatex(dtl_tools):
 
 
 def checkLuatex():
-    ''' Check if luatex is there and usable '''
+    ''' Check if luatex is there '''
     path, LUATEX = checkProg('LuaTeX', ['lualatex $$i'])
     path, DVILUATEX = checkProg('LuaTeX (DVI)', ['dvilualatex $$i'])
     if LUATEX != '':
-    # luatex binary is there
-        msg = "checking if LuaTeX is usable ..."
-        # Check if luatex is usable
-        writeToFile('luatest.tex', r'''
-\nonstopmode
-\documentclass{minimal}
-\usepackage{fontspec}
-\begin{document}
-.
-\end{document}
-''')
-        # run lualatex on luatest.tex and check result
-        luatest = cmdOutput(LUATEX + ' luatest.tex')
-        if luatest.find('XeTeX is required to compile this document') != -1:
-            # fontspec/luatex too old! We do not support this version.
-            logger.info(msg + ' no (probably not recent enough)')
-        elif luatest.find('! LaTeX Error: File `fontspec.sty\' not found') != -1:
-            # fontspec missing
-            logger.info(msg + ' no (missing fontspec)')
-        else:
-            # working luatex
-            logger.info(msg + ' yes')
-            addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
-            if DVILUATEX != '':
-                addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
-        # remove temporary files
-        removeFiles(['luatest.tex', 'luatest.log', 'luatest.aux', 'luatest.pdf'])
+        addToRC(r'\converter luatex      pdf5       "%s"	"latex=lualatex"' % LUATEX)
+    if DVILUATEX != '':
+        addToRC(r'\converter luatex      dvi3        "%s"	"latex=dvilualatex"' % DVILUATEX)
 
 
 def checkModule(module):
@@ -605,7 +581,8 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""	""'])
     #
     checkViewerEditor('a SVG viewer and editor', [inkscape_name],
-        rc_entry = [r'\Format svg        "svg, svgz" SVG                "" "%%" "%%"	"vector,zipped=native"	"image/svg+xml"'],
+        rc_entry = [r'''\Format svg        "svg" SVG                "" "%%" "%%"	"vector"	"image/svg+xml"
+\Format svgz       "svgz" "SVG (compressed)" "" "%%" "%%"	"vector,zipped=native"	""'''],
         path = [inkscape_path])
     #
     imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""	"image/x-bmp"
@@ -972,7 +949,7 @@ def checkConverterEntries():
     checkProg('an EPS -> PDF converter', ['epstopdf'],
         rc_entry = [ r'\converter eps        pdf6       "epstopdf --outfile=$$o $$i"	""'])
     #
-    checkProg('an EPS -> PNG converter', ['convert $$i $$o'],
+    checkProg('an EPS -> PNG converter', ['magick $$i $$o', 'convert $$i $$o'],
         rc_entry = [ r'\converter eps        png        "%%"	""'])
     #
     # no agr -> pdf6 converter, since the pdf library used by gracebat is not
@@ -1002,18 +979,27 @@ def checkConverterEntries():
     # odg->png and odg->pdf converters, since the bb would be too large as well.
     checkProg('an OpenDocument -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
+    #
+    checkProg('a SVG (compressed) -> SVG converter', ['gunzip -c $$i > $$o'],
+        rc_entry = [ r'\converter svgz       svg        "%%"	""'])
+    #
+    checkProg('a SVG -> SVG (compressed) converter', ['gzip -c $$i > $$o'],
+        rc_entry = [ r'\converter svg        svgz       "%%"	""'])
     # Only define a converter to pdf6 for graphics
     # Prefer rsvg-convert over inkscape since it is faster (see http://www.lyx.org/trac/ticket/9891)
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
-        rc_entry = [ r'\converter svg        pdf6       "%%"    ""'],
+        rc_entry = [ r'''\converter svg        pdf6       "%%"    ""
+\converter svgz       pdf6       "%%"    ""'''],
         path = ['', inkscape_path])
     #
     checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
-        rc_entry = [ r'\converter svg        eps        "%%"    ""'],
+        rc_entry = [ r'''\converter svg        eps        "%%"    ""
+\converter svgz       eps        "%%"    ""'''],
         path = ['', inkscape_path])
     #
     checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', inkscape_name + ' --without-gui --file=$$i --export-png=$$o'],
-        rc_entry = [ r'\converter svg        png        "%%"    ""'],
+        rc_entry = [ r'''\converter svg        png        "%%"    "",
+\converter svgz       png        "%%"    ""'''],
         path = ['', inkscape_path])
 
     #
@@ -1522,7 +1508,10 @@ def rescanTeXFiles():
     if not os.path.isfile( os.path.join(srcdir, 'scripts', 'TeXFiles.py') ):
         logger.error("configure: error: cannot find TeXFiles.py script")
         sys.exit(1)
-    tfp = cmdOutput("python -tt " + '"' + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
+    interpreter = sys.executable
+    if interpreter == '':
+        interpreter = "python"
+    tfp = cmdOutput(interpreter + " -tt " + '"' + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
     logger.info(tfp)
     logger.info("\tdone")
 

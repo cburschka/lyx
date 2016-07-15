@@ -6379,16 +6379,7 @@ Format
  Cualquier formato es aceptable, pero debería usarse normalmente el actual
  formato.
  (En \SpecialChar LyX
- 2.1 el formato actual es 48).
- Debes tener en cuenta que el formato local no es soportado por versiones
- de \SpecialChar LyX
- anteriores a 1.6, por tanto no deberías usarlo si quieres poder exportar
- el documento a \SpecialChar LyX
- 1.5 o anteriores sin perder la información del formato local.
- Si quieres poder exportar a 1.6 —el formato local es soportado pero no hay
- IU par él—, deberías usar formato 11 y, por supuesto, usar solo estructuras
- que estuvieran disponibles en \SpecialChar LyX
- 1.6.
+ 2.2 el formato actual es 60).
 \end_layout
 
 \begin_layout Standard
@@ -6553,8 +6544,7 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class{report}
+DeclareLaTeXClass{report}
 \end_layout
 
 \begin_layout Standard
@@ -6564,8 +6554,7 @@ por la línea
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
@@ -6751,8 +6740,7 @@ myclass.sty
 \begin_layout LyX-Code
 #
 \backslash
-Declare\SpecialChar LyX
-Module{My Package} 
+DeclareLyXModule{My Package} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -6772,7 +6760,7 @@ Module{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 35
+Format 60
 \begin_inset Newline newline
 \end_inset
 
@@ -6882,8 +6870,7 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-Declare\SpecialChar LaTeX
-Class[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -7301,22 +7288,7 @@ del T.
 \size small
 #  
 \backslash
-DeclareLaT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size small
-eXClass{Article (Standard Class)}
+DeclareLaTeXClass{Article (Standard Class)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7525,22 +7497,7 @@ myarticle.layout
 \size small
 #  
 \backslash
-DeclareLaT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size small
-eXClass[article]{Article (con Mis Encabezados)}
+DeclareLaTeXClass[article]{Article (con Mis Encabezados)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7596,22 +7553,7 @@ Article (con Mis Encabezados)
 \size small
 #  
 \backslash
-DeclareLaT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size small
-eXClass[article,foo.sty]{Article (con Mis Encabezados)}
+DeclareLaTeXClass[article,foo.sty]{Article (con Mis Encabezados)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7665,22 +7607,7 @@ Así, para ser lo más explícito posible, la forma de la declaración del forma
 \size small
 #  
 \backslash
-DeclareLaT
-\size default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\size small
-eXClass[class,package.sty]{descripción del formato}
+DeclareLaTeXClass[class,package.sty]{descripción del formato}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7851,18 +7778,7 @@ Un módulo debe empezar con una línea como la siguiente:
 \begin_layout LyX-Code
 #
 \backslash
-DeclareL
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXModule[endnotes.sty]{Endnotes} 
+DeclareLyXModule[endnotes.sty]{Endnotes} 
 \end_layout
 
 \begin_layout Standard
@@ -8111,7 +8027,7 @@ Format
 
 .
  El número para la versión actual de \SpecialChar LyX
- es formato 59.
+ es formato 60.
  Cada versión de \SpecialChar LyX
  es capaz de leer los formatos de versiones anteriores,
  de la misma forma que puede leer archivos producidos con versiones de \SpecialChar LyX
@@ -18070,7 +17986,7 @@ Command, Environment, None
 ] Cómo debería traducirse el estilo en \SpecialChar LaTeX
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Flex Code
@@ -18303,8 +18219,7 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset
@@ -18329,7 +18244,21 @@ MultiPar
 
 \end_inset
 
- es falso.
+ es falso y 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to true
+\lang spanish
+.
  
 \begin_inset Flex Code
 status collapsed
@@ -18340,7 +18269,21 @@ MultiPar
 
 \end_inset
 
- se puede poner como verdadero para recuadros de estilos 
+ se puede poner como verdadero, o 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForcePlain
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+to fals
+\lang spanish
+e, para recuadros de estilos 
 \begin_inset Flex Code
 status collapsed
 
@@ -18359,8 +18302,7 @@ después
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar LyX
-Type
+LyxType
 \end_layout
 
 \end_inset

@@ -107,48 +107,9 @@ void InsetMathBig::normalize(NormalStream & os) const
 
 void InsetMathBig::mathmlize(MathStream & os) const
 {
-	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>";
-	if (delim_ == "(" || delim_ == ")"
-			|| delim_ == "[" || delim_ == "]"
-			|| delim_ == "|" || delim_ == "/")
-		os << delim_;
-	else if (delim_ == "\\{" || delim_ == "\\lbrace")
-		os << "{";
-	else if (delim_ == "\\}" || delim_ == "\\rbrace")
-		os << "}";
-	else if (delim_ == "\\slash")
-		os << "/";
-	else if (delim_ == "\\|" || delim_ == "\\vert")
-		os << "|";
-	else if (delim_ == "\\Vert")
-		os << "&par;";
-	else if (delim_ == "\\\\" || delim_ == "\\backslash")
-		os <<" \\";
-	else if (delim_ == "\\langle")
-		os << "&lt;";
-	else if (delim_ == "\\rangle")
-		os << "&gt;";
-	else if (delim_ == "\\lceil")
-		os << "&lceil;";
-	else if (delim_ == "\\rceil")
-		os << "&rceil;";
-	else if (delim_ == "\\lfloor")
-		os << "&lfloor;";
-	else if (delim_ == "\\rfloor")
-		os << "&rfloor;";
-	else if (delim_ == "\\downarrow")
-		os << "&darr;";
-	else if (delim_ == "\\uparrow")
-		os << "&uarr;";
-	else if (delim_ == "\\Downarrow")
-		os << "&dArr;";
-	else if (delim_ == "\\Uparrow")
-		os << "&uArr;";
-	else if (delim_ == "\\updownarrow")
-		os << "&varr;";
-	else if (delim_ == "\\Updownarrow")
-		os << "&vArr;";
-	os << "</mo>";
+	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true'>"
+	   << convertDelimToXMLEscape(delim_)
+	   << "</mo>";
 }
 
 
@@ -161,48 +122,9 @@ void InsetMathBig::htmlize(HtmlStream & os) const
 	case 4: case 5: name = "biggg"; break;
 	default: name  = "big"; break;
 	}
-	os << MTag("span", "class='" + name + "symbol'");
-	if (delim_ == "(" || delim_ == ")"
-			|| delim_ == "[" || delim_ == "]"
-			|| delim_ == "|" || delim_ == "/")
-		os << delim_;
-	else if (delim_ == "\\{" || delim_ == "\\lbrace")
-		os << "{";
-	else if (delim_ == "\\}" || delim_ == "\\rbrace")
-		os << "}";
-	else if (delim_ == "\\slash")
-		os << "/";
-	else if (delim_ == "\\|" || delim_ == "\\vert")
-		os << "|";
-	else if (delim_ == "\\Vert")
-		os << "&par;";
-	else if (delim_ == "\\\\" || delim_ == "\\backslash")
-		os <<" \\";
-	else if (delim_ == "\\langle")
-		os << "&lt;";
-	else if (delim_ == "\\rangle")
-		os << "&gt;";
-	else if (delim_ == "\\lceil")
-		os << "&lceil;";
-	else if (delim_ == "\\rceil")
-		os << "&rceil;";
-	else if (delim_ == "\\lfloor")
-		os << "&lfloor;";
-	else if (delim_ == "\\rfloor")
-		os << "&rfloor;";
-	else if (delim_ == "\\downarrow")
-		os << "&darr;";
-	else if (delim_ == "\\uparrow")
-		os << "&uarr;";
-	else if (delim_ == "\\Downarrow")
-		os << "&dArr;";
-	else if (delim_ == "\\Uparrow")
-		os << "&uArr;";
-	else if (delim_ == "\\updownarrow")
-		os << "&varr;";
-	else if (delim_ == "\\Updownarrow")
-		os << "&vArr;";
-	os << ETag("span");
+	os << MTag("span", "class='" + name + "symbol'")
+	   << convertDelimToXMLEscape(delim_)
+	   << ETag("span");
 }
 
 
