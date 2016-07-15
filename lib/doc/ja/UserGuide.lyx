@@ -36232,6 +36232,49 @@ XHTMLでの数式出力
 」の節に詳細な解説があります．伸縮は，出力における数式の大きさを調整するのに用いられます．
 \end_layout
 
+\begin_layout Description
+
+\lang english
+LyX
+\begin_inset space ~
+\end_inset
+
+Format The option 
+\family sans
+Save transient properties
+\family default
+ controls whether document settings that are frequently switched or that
+ are specific to the user are saved with the document.
+ The properties that are affected by option are currently
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+the activation of change tracking
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+the output of tracked changes
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+the recording of the document directory path.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Disabling the option can prevent issues in collaborative work and/or when
+ using a version control system (for instance unnecessary merge conflicts).
+\end_layout
+
+\end_deeper
 \begin_layout Section
 LaTeXプリアンブル
 \end_layout
