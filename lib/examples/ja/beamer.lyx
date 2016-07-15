@@ -114,10 +114,6 @@ Beamerと\SpecialChar LyX
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -182,10 +178,6 @@ Beamer
 \end_inset
 
 クラスを用いると、発表スライドを生成することができます。これは
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -249,10 +241,6 @@ status open
 
 \begin_layout Frame
 この発表は、
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -315,10 +303,6 @@ status open
 
 \begin_layout Frame
 通常、発表には
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -422,10 +406,6 @@ status collapsed
 \end_inset
 
 の各レイアウトで構成されます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -569,10 +549,6 @@ Beamer
 \end_inset
 
 では、スライドのことを「フレーム」と呼びます。フレーム内のものは全て、1つのスライドに収められます(スライドの中に副スライドを収めることもあります)。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -725,10 +701,6 @@ status open
 
 \begin_layout Frame
 それには、(このフレームで行なっているように)各フレームのフレームオプションに「label」を指定して、ラベル名を付けます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -770,10 +742,6 @@ status collapsed
 \end_inset
 
 で指定するだけです(再度「重ね合わせ」の概念については、下記参照)。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -844,10 +812,6 @@ status open
 フレームを1枚に表示するために
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -936,10 +900,6 @@ status collapsed
 \end_inset
 
 段落様式で分けることができます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1049,10 +1009,6 @@ status open
 \begin_layout PlainFrame
 \SpecialChar LyX
 は、以下の2つの特殊なフレーム型を提供しています。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1102,10 +1058,6 @@ status open
 発表を節分けする
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1166,10 +1118,6 @@ status open
 フレーム構成の再調整
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1237,10 +1185,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1251,10 +1195,6 @@ status open
 \begin_layout Itemize
 付録は、\SpecialChar LyX
 中では、以下のようにして通常通り入力することができます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1276,10 +1216,6 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 付録によく収録されるのは書誌情報です。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1336,10 +1272,6 @@ status open
 \begin_layout Frame
 基本的には、重ね合わせは、スライドの中身を動的に変更できるようにするものです。ものや文章を少しずつ開示したり、内容をフェイドアウトさせ、強調したり、文字や画像を
 取り替えたりといったことができます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1423,10 +1355,6 @@ Beamer
 \end_inset
 
 では、多くの重ね合わせ型が提供されています。中でも重要なものは
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1527,10 +1455,6 @@ article
 \end_inset
 
 など)。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1569,10 +1493,6 @@ status open
 2
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1628,10 +1548,6 @@ status open
 3
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1733,10 +1649,6 @@ status collapsed
 \end_inset
 
 で指定することができます。このようにして「2」を入力すれば、引用は第2(副)スライドにのみ表示されます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1801,10 +1713,6 @@ status open
 \begin_layout Frame
 「被覆(covering)」と「蔵匿(hiding)」の違いは、蔵匿対象がそこに無いかのごとく扱われるのに対し、被覆対象は覆われているだけである(スペースは確保
 されている)という点です。前スライドの引用を被覆する代わりに蔵匿したとすると、以下のように、スペースは表示される時だけ確保されます。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1906,10 +1814,6 @@ setbeamercovered
 
 コマンドを使って、(発表全体にわたって)グローバルにも、(ここでのように1フレームのみなど)ローカルにも設定することができます。既定では、対象は完全に被覆されま
 す。「transparent(透過)」モードでは、被覆文は、以下のように淡色表示されているのがわかります。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1983,10 +1887,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2002,10 +1902,6 @@ status open
 \begin_layout Itemize
 通常の重ね合わせ/動作指定には、順序指定用文法を用います。例えば「+(1)-」とすると、以下のように、個別の項目指定がない限りは、箇条書き中の各項目を一つづつ(
 開始オフセット1で)開示します。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2105,10 +2001,6 @@ status open
 \begin_layout Frame
 これによって、重ね合わせ対応の段落や\SpecialChar ldots
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2187,10 +2079,6 @@ status open
 \noindent
 このフレームは、既定の重ね合わせ指定を使用しています\SpecialChar ldots
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2244,10 +2132,6 @@ status collapsed
 
 レイアウトを用いると、以下のように、それ以降のすべての内容を被覆する点を指定できます(既定では、一時停止以前の内容が開示された後、1つのスライドの間のみ被覆しま
 す)。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2336,10 +2220,6 @@ Beamer
 
 \begin_layout Frame
 これらは具体的に
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2368,10 +2248,6 @@ status collapsed
 \end_inset
 
 レイアウト\SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -2420,10 +2296,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2441,10 +2313,6 @@ status open
 5
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2539,10 +2407,6 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2766,10 +2630,6 @@ status collapsed
 \end_inset
 
 でも見つけられます)が重ねあわせを認識します。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2911,10 +2771,6 @@ status open
 
 \begin_layout Frame
 特に発表に適した環境に
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2967,10 +2823,6 @@ Beamer
 \end_inset
 
 クラスは、外見の異なる、以下の3つの定義済ブロックを提供しています。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3074,20 +2926,12 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 \SpecialChar LyX
 では、ブロックは、フレームに類似のインターフェースを持ちます。つまり
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3123,10 +2967,6 @@ status open
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3137,10 +2977,6 @@ status open
 \end_deeper
 \begin_layout Frame
 定理は、出力はブロックに類似していますが、(型に依存して)固定した見出しを持っています。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3207,10 +3043,6 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3254,18 +3086,10 @@ status open
 
 \begin_layout Frame
 発表を段組にすると便利なことがあります。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3348,10 +3172,6 @@ status collapsed
 
 \begin_layout Frame
 註:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3431,10 +3251,6 @@ Beamer
 \end_inset
 
 用語では、「モード」は特定の出力経路を指します。各目的のためにモードがいくつか存在しますが、特に3つを取り上げてみたいと思います。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3498,19 +3314,11 @@ status open
 \begin_layout Frame
 しかし、文書の一部やフレーム、見出し、すべての「動作」対応環境は、別のモードに切り替えることができます。例えば、このフレームは「presentation」モード
 に切り替えられています。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 それはどういうことですか？
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3577,10 +3385,6 @@ status open
 
 \begin_layout Frame
 これは、本当に便利なのですよ！文書を一つだけ作っておいて、発表と配布資料—article(原稿)モードを使って—の両方を生成することができるのです。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3635,10 +3439,6 @@ status open
 
 \begin_layout Frame
 既述のように多くの要素がモードに対応しています。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3743,10 +3543,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3825,10 +3621,6 @@ status open
 \begin_layout Frame
 \SpecialChar LyX
 でbeamer article(原稿)を作るのは簡単です。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3897,10 +3689,6 @@ status open
 テーマ
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -4003,10 +3791,6 @@ status open
 
 \begin_layout Frame
 しかし、外見を変更したい時に、更の状態からテーマを書く必要はありません。
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4131,10 +3915,6 @@ newblock
 \end_layout
 
 \begin_layout Frame
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
