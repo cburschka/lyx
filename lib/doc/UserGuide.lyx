@@ -134,11 +134,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -6680,7 +6681,13 @@ The default numbering of numbered lists can be changed by adding an optional
  argument (menu 
 \family sans
 Insert\SpecialChar menuseparator
+
+\change_inserted 1414654397 1468603313
+Enumerate Options
+\change_deleted 1414654397 1468603316
 Short Title
+\change_unchanged
+
 \family default
 ) to the first item of each level in the list.
  There you add the command
@@ -6728,7 +6735,13 @@ reference "sec:TeX-Code"
 \emph on
  enumi
 \emph default
- is hereby the first level counter of the enumeration.
+ is 
+\change_inserted 1414654397 1468603336
+the LaTeX name of 
+\change_deleted 1414654397 1468603338
+hereby 
+\change_unchanged
+the first level counter of the enumeration.
  The command 
 \series bold
 
