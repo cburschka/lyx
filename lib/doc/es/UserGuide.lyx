@@ -1448,10 +1448,6 @@ Estas son las operaciones básicas con el ratón:
 
 \begin_layout Enumerate
 Movimiento
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1467,10 +1463,6 @@ del ratón en cualquier punto de la ventana de edición.
 \end_deeper
 \begin_layout Enumerate
 Seleccionar texto
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1507,10 +1499,6 @@ Pegar
 \end_deeper
 \begin_layout Enumerate
 Insertados (Notas, flotantes, etc.)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2383,10 +2371,6 @@ description "tecla Control"
  en los archivos de documentación).
  Tiene un par de usos diferentes, dependiendo de las teclas con las que
  se combine:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2490,10 +2474,6 @@ teclas de aceleración de menú
 \emph default
 : usada en combinación con la tecla de la letra subrayada en el nombre de
  un menú o un ítem, abre ese menú o acciona el ítem.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3978,10 +3958,6 @@ del
 papel
 \family default
  Elección del tamaño de impresión del papel:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5628,10 +5604,6 @@ Enumeración*.
 
 \begin_layout Itemize
 Cada ítem tiene una marca o símbolo particular como etiqueta.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5664,10 +5636,6 @@ Enumeración*
 \family default
  dentro de otra, la marca cambia a otra nueva.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5753,28 +5721,16 @@ La marca para el primer nivel de
 Enumeración*
 \family default
  es un punto grueso, o topo.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 La marca del segundo nivel es una raya.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 El tercer nivel tiene un asterisco.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5877,10 +5833,6 @@ Enumeración
 
 \begin_layout Enumerate
 Cada ítem se etiqueta con un número o letra.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5912,10 +5864,6 @@ Enumeración*
 Enumeración
 \family default
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5978,29 +5926,17 @@ reference "subsec:En-español"
 
 \begin_layout Enumerate
 El primer nivel usa números arábigos seguidos de un punto.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 El segundo usa letras minúsculas y paréntesis.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 El tercer nivel usa números romanos en minúscula y punto.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6917,7 +6853,7 @@ La numeración predeterminada de las listas numeradas se puede cambiar añadiend
  un argumento opcional (menú 
 \family sans
 Insertar\SpecialChar menuseparator
-Título breve
+Opciones de enumeración
 \family default
 ) al primer ítem de cada nivel en la lista.
  Añades el comando
@@ -7093,10 +7029,6 @@ Alph{enumi}
 \end_inset
 
 Nivel 1
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7129,10 +7061,6 @@ Nivel 2
 
 \begin_layout Enumerate
 Nivel 2
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7161,10 +7089,6 @@ arabic{enumiii}}
 \end_inset
 
 Nivel 3
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8613,14 +8537,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8633,7 +8555,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8658,7 +8579,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -8713,10 +8633,6 @@ uno
 
 \begin_layout Enumerate
 dos
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8855,10 +8771,6 @@ No
 
 anidables No pueden anidarse.
  No pueden anidar.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8900,10 +8812,6 @@ Totalmente
 
 anidables Puedes anidarlos.
  Puedes anidar otras cosas en ellos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8976,10 +8884,6 @@ Parcialmente
 
 anidables Puedes anidarlos en otros entornos.
  No puedes anidar nada en ellos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9216,19 +9120,11 @@ He aquí un ejemplo con un cuadro:
 
 \begin_layout Enumerate
 Ítem Uno
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Esto es (a) y está anidado.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9353,10 +9249,6 @@ Si no anidamos el cuadro, la lista se vería así:
 
 \begin_layout Enumerate
 Ítem Uno
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9497,10 +9389,6 @@ Hay otra trampa en la que puedes caer: Anidar el cuadro pero sin la profundidad
 
 \begin_layout Enumerate
 Ítem Uno
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9655,46 +9543,26 @@ nivel #6
 
 \begin_layout Enumerate
 nivel #1 - el más externo
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 nivel #2
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 nivel #3
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 nivel #4
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 nivel #5
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9777,10 +9645,6 @@ Ejemplo 1: Lista con seis niveles
 Lista
 \family default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9796,10 +9660,6 @@ Alt+Entrar
 Mayúsculas+Alt+Derecha
 \family default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9824,10 +9684,6 @@ Alt+Entrar
 Mayúsculas+Alt+Derecha
 \family default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9917,20 +9773,12 @@ podemos
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring MMM
 #5-a Este es el nivel #5\SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -10052,10 +9900,6 @@ después de lo cuál, cambiamos a
 Enumeración
 \family default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10127,10 +9971,6 @@ Enumeración
 \family default
 .
  Vamos a anidar realmente un puñado de ellos.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10154,10 +9994,6 @@ Mayúsculas+Alt+Derecha
 Enumeración*
 \family default
  en éste? Estará en el nivel #3, pero ¿cuál será su etiqueta? ¿Un asterisco?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10255,10 +10091,6 @@ Mayúsculas+Alt+Derecha
 Enumeración
 \family default
 *.)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10273,10 +10105,6 @@ Mayúsculas+Alt+Derecha
 \family default
 .
  Haremos esto otra vez\SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -10504,10 +10332,6 @@ Ahora vamos a ir locos del todo.
 Enumeración
 \family default
 )
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10530,10 +10354,6 @@ Entrar, Mayúsculas+Alt+Derecha, Normal
 Entrar, Enumeración
 \family default
 : nivel #1) Este es el siguiente ítem en la lista.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10569,10 +10389,6 @@ Alt+Entrar)
 
 \begin_layout Verse
 Ahora viene un cuadro:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10758,10 +10574,6 @@ Derecha
 \family default
 .
  Aquí va:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12466,10 +12278,6 @@ En la mayoría de los casos la opción por omisión es justificado, en la que
  el hueco entre palabras es variable y cada línea llena el espacio entre
  los márgenes izquierdo y derecho.
  Las otras tres opciones son evidentes, y se verían así:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14357,10 +14165,6 @@ Familia
 \family default
  Apariencia general de la tipografía.
  Las opciones posibles son:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14447,10 +14251,6 @@ Grosor
 \family default
  Esto corresponde a la intensidad de impresión.
  Las opciones son:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14499,10 +14299,6 @@ Forma
 \family default
  Como su nombre indica.
  Opciones:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14716,10 +14512,6 @@ Tamaño
 , sino una indicación general de lo que
  quieres hacer.
  Las opciones son:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -15173,10 +14965,6 @@ otra vez
 Otros
 \family default
  Aquí puedes cambiar estas otras opciones:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -18737,10 +18525,6 @@ Gráficos
  La imagen se muestra en la salida exactamente en la posición en que está
  en el texto.
  Esta es una imagen en un párrafo separado, centrado horizontalmente:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19331,10 +19115,6 @@ Cuadro/Tabla
  fila aparece separada por una línea doble: la línea inferior de la primera
  fila y la línea superior de la segunda fila.
  Ejemplo de cuadro:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19622,10 +19402,6 @@ una
  la alineación, la anchura, y los bordes afectan solo a la celda multicolumna.
  Aquí hay un ejemplo de cuadro con multicolumna en la primera fila, y una
  celda de la última fila sin borde superior: 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20037,10 +19813,6 @@ encabezado
 \family default
 .
  El siguiente cuadro muestra cómo funciona:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22239,10 +22011,6 @@ Para poner entradas multilínea en una celda, debes declarar una anchura
  Entonces, si la longitud del texto excede el ancho dado, se divide automáticame
 nte en varias líneas y la celda se amplía verticalmente.
  Un ejemplo:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23294,10 +23062,6 @@ Marco.
 \family default
  Haciendo clic derecho en el recuadro se pueden fijar las dimensiones y
  la alineación de la minipágina.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31858,10 +31622,6 @@ reference "fig:Diseño-de-página"
 
  muestra el diseño de una página y la colocación de los encabezados y pies
  en la misma.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

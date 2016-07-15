@@ -5355,10 +5355,6 @@ latex foiltex.ins
 
 \begin_layout Enumerate
 ここで，パッケージを全ユーザーに使用可能にするか自分自身だけで使うかを決定する必要があります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5650,10 +5646,6 @@ latex
 ここまで来れば，あとは\SpecialChar LaTeX
 に新しいファイルがあることを告げるだけです．これは使用している\SpecialChar LaTeX
 頒布版に依存します．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9382,10 +9374,6 @@ EndArgument
 \end_inset
 
 で閉じなくてはなりません．非必須引数が2つあるコマンドの場合は，以下のようになります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11348,10 +11336,6 @@ Itemize, Bibliography
 \end_inset
 
 ]
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11708,10 +11692,6 @@ db_*.inc
 \end_inset
 
 ．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12110,10 +12090,6 @@ Static
 \end_inset
 
 このレイアウトの左余白の種類です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13367,10 +13343,6 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16174,10 +16146,6 @@ LatexType
 \end_inset
 
 ．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -17160,10 +17128,6 @@ LabelStringAppendix
 \end_inset
 
 も同じ値に設定されます．文字列中では，以下の構成要素を使用することができます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -20586,7 +20550,19 @@ Format Ascii
 \end_layout
 
 \begin_layout LyX-Code
-Product "[XFig: $$FName]"
+Product "$$Contents(
+\backslash
+"$$AbsPath$$Basename.asc
+\backslash
+")"
+\end_layout
+
+\begin_layout LyX-Code
+UpdateFormat asciixfig
+\end_layout
+
+\begin_layout LyX-Code
+UpdateResult "$$AbsPath$$Basename.asc"
 \end_layout
 
 \begin_layout LyX-Code
@@ -20623,6 +20599,14 @@ ReferencedFile docbook "$$AbsPath$$Basename.eps"
 
 \begin_layout LyX-Code
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code

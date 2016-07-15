@@ -1227,10 +1227,6 @@ status collapsed
 
 \begin_layout Enumerate
 動き
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1245,10 +1241,6 @@ status collapsed
 \end_deeper
 \begin_layout Enumerate
 テキストの選択
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1280,10 +1272,6 @@ status collapsed
 \end_deeper
 \begin_layout Enumerate
 差込枠(脚註・註釈・フロート等)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2213,10 +2201,6 @@ description "コントロールキー"
 \end_inset
 
 で表されます．)これはどの鍵と組み合わせるかによって，いくつかの異なった使い方があります：
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2305,10 +2289,6 @@ Alt+
 メニュー高速化鍵
 \emph default
 を有効にする役割があります．もしこの鍵を，メニューやメニュー項目で下線が引いてある文字と一緒に押すと，そのメニュー項目を選ぶことができるのです．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3529,10 +3509,6 @@ status collapsed
 用紙書式
 \family default
  印刷する用紙寸法を選びます．選べるのは，次のサイズです．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4962,10 +4938,6 @@ name "sec:箇条書き（記号）"
 
 \begin_layout Itemize
 各々の項目は小さい印(シンボル)をラベルとして使います．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4997,10 +4969,6 @@ name "sec:箇条書き（記号）"
 箇条書き(記号)
 \family default
 環境を入れると項目のラベルのシンボルが変わります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5046,28 +5014,16 @@ reference "sec:入れ子"
 箇条書き(記号)
 \family default
 のラベルは黒丸です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 2番目のレベルのシンボルはダッシュ(-)です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 3番目のレベルのラベルはアステリスク(*)です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5160,10 +5116,6 @@ name "sec:箇条書き（連番）"
 
 \begin_layout Enumerate
 各々の項目は数字またはアルファベットをラベルとして使います．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5195,10 +5147,6 @@ name "sec:箇条書き（連番）"
 箇条書き(連番)
 \family default
 環境は
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5239,28 +5187,16 @@ name "sec:箇条書き（連番）"
 
 \begin_layout Enumerate
 一番目のレベルでは後ろにピリオド(.)が付いたアラビア数字がラベルに使われます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 2番目のレベルでは括弧で囲まれた小文字のアルファベットが使われます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 3番目のレベルでは後ろにピリオドが付いた小文字のローマ数字が使われます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5714,9 +5650,12 @@ status collapsed
 連番箇条書きの番号の振り方の既定値は，箇条書きの各階層における最初の項目に，非必須引数を加えることで(
 \family sans
 挿入\SpecialChar menuseparator
-短縮タイトル
+
+\lang english
+Enumerate Options
 \family default
-メニュー)変更することができます．そこに，\SpecialChar TeX
+\lang japanese
+)変更することができます．そこに，\SpecialChar TeX
 コードで(
 \begin_inset Flex Ruby
 status collapsed
@@ -5871,10 +5810,6 @@ Alph{enumi}
 \end_inset
 
 第1階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5907,10 +5842,6 @@ arabic{enumii}
 
 \begin_layout Enumerate
 第2階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5939,10 +5870,6 @@ arabic{enumiii}}
 \end_inset
 
 第3階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7313,10 +7240,6 @@ name "sec:入れ子"
 
 \begin_layout Enumerate
 論点2
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7445,10 +7368,6 @@ arg   "depth-decrement"
 
 \begin_layout Description
 入れ子にできないもの 他の環境を入れることも，他の環境に入ることもできないもの．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7485,10 +7404,6 @@ arg   "depth-decrement"
 \end_deeper
 \begin_layout Description
 完全に入れ子にできるもの 他の環境を入れることも，他の環境に入ることもできるもの．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7556,10 +7471,6 @@ arg   "depth-decrement"
 \end_deeper
 \begin_layout Description
 他の環境に入れるもの 他の環境には入れるが，他の環境を入れることができないもの．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7760,19 +7671,11 @@ reference "sec:フロート"
 
 \begin_layout Enumerate
 項目1
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 これは(a)，入れ子になっています．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7860,10 +7763,6 @@ reference "sec:フロート"
 
 \begin_layout Enumerate
 項目1
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8051,10 +7950,6 @@ status collapsed
 
 \begin_layout Enumerate
 項目1
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8251,46 +8146,26 @@ status collapsed
 
 \begin_layout Enumerate
 第1階層 − もっとも外側
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 第2階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 第3階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 第4階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 第5階層
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8349,10 +8224,6 @@ status collapsed
 箇条書き(一覧)
 \family default
 環境になっています．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8371,10 +8242,6 @@ arg   "depth-increment"
 \end_inset
 
 を使って作りました．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8407,10 +8274,6 @@ arg   "depth-increment"
 \end_inset
 
 を使っても作ることができます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8486,20 +8349,12 @@ arg   "paragraph-break inverse"
 可能
 \emph default
 です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 #5-a ここは第5階層です\SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -8622,10 +8477,6 @@ arg   "depth-increment"
 箇条書き(連番)
 \family default
 環境に変更します．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8689,10 +8540,6 @@ status collapsed
 箇条書き(連番)
 \family default
 段落環境の第1階層です．ここへ箇条書きを入れ子にしていきます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8714,10 +8561,6 @@ arg   "depth-increment"
 箇条書き(記号)
 \family default
 環境を入れるとどうなるでしょうか．第3階層になるはずですが，ラベルはどうなるでしょうか．星印でしょうか．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8747,10 +8590,6 @@ arg   "depth-increment"
 箇条書き(記号)
 \family default
 に変えました)．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8768,10 +8607,6 @@ arg   "depth-increment"
 \end_inset
 
 を押しました．また同じことをして…
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8943,10 +8778,6 @@ arg   "depth-decrement"
 箇条書き(連番)
 \family default
 )
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8999,10 +8830,6 @@ status collapsed
 Return, 箇条書き(連番)
 \family default
 ：第1階層)ここはリスト中，第2の項目です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9052,10 +8879,6 @@ arg   "paragraph-break inverse"
 
 \begin_layout Verse
 そして表を入れましょう．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9221,10 +9044,6 @@ arg   "newline-insert newline"
 \end_inset
 
 を使う必要があることを忘れないで下さい．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9343,19 +9162,11 @@ name "subsec:入れ子の分離"
 
 \begin_layout Enumerate
 こんにちは
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 これは
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10800,10 +10611,6 @@ arg   "paragraph-params \\align default"
 \family default
 です．この場合，単語間の空白の長さは，段落の各行がちょうど左余白から右余白までの領域を埋めるように自動調整されます．他の3つの配置は，ほぼ自明ですが以下のように
 なります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12308,10 +12115,6 @@ arg   "dialog-show character"
 フォント族
 \family default
  フォントの「概観」です．選択肢は
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12399,10 +12202,6 @@ arg   "font-typewriter"
 太さ
 \family default
  これは印字の太さに対応しています．選択肢は
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12444,10 +12243,6 @@ arg   "font-bold"
 字形
 \family default
  名の示す通りです．選択肢は
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12621,10 +12416,6 @@ reference "sec:スペルチェック"
 
 に詳細な指定をわたすようにはなっておらず，何をしたいか一般的な意図を\SpecialChar LyX
 に示すだけです．選択肢は以下の通りです．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12878,10 +12669,6 @@ arg   "font-size decrease"
 その他
 \family default
  これはその他，文字レベルで変更可能なものです．選択肢は以下の通りです．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -15680,10 +15467,6 @@ LaTeXとLyXのオプション
 \begin_layout Standard
 図ダイアログは，画像をクリックすることによって，いつでも呼び出すことができます．図は，出力では，それが置かれている本文中の位置に正確に配置されます．以下は，独立
 した中央揃えの段落に置かれたPDF形式の画像の例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -15971,10 +15754,6 @@ arg   "tabular-insert"
 \family default
 メニューを選択します．するとダイアログが現れ，行数と列数を訊いてきます．既定の表では，各セルの周囲に罫線が引かれ，第一行が表の他の部分から分離して表示されます．
 この分離が起こるのは二重線のためです．第一行のセルが下に罫線を伴っているのと同時に，第二行のセルも上に罫線を伴っているのです．以下は表の一例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16190,10 +15969,6 @@ reference "subsec:表のセル"
 を使うと，同一行あるいは同一列にある複数のセルを連結列セルあるいは連結行セルとして指定することができます．こうすると，複数のセルを一つのセルに連結し，2列あるい
 は2行以上にまたがって表示されます．連結列はそれ自体独立した行として取り扱われるので，連結列における水平揃えや列幅や罫線などの設定は，連結列のセルのみに有効です
 ．以下は，第一行に連結列があり，最終行に上罫線がない(1列のみの)連結列がある表の例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16502,10 +16277,6 @@ status collapsed
 冒頭ヘッダ
 \family default
 の順のうち，最初という意味です．長尺表の動作を見るために以下の例を参照してください．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -18689,10 +18460,6 @@ name "subsec:表のセル"
 \begin_layout Standard
 表のセルに複数行にわたる項目を入れるには，表ダイアログで当該列に固定列幅を宣言しなくてはなりません．すると，文章が指定した列幅よりも長くなると，自動的に複数行に
 改行され，セル高も高く調整されます．以下の例をご覧ください．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19503,10 +19270,6 @@ name "sec:ミニページ"
 ボックス
 \family default
 メニューで挿入できます．ボックスを右クリックすると，ミニページの幅やページ内部での配置を変更することができます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

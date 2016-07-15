@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 510
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -212,7 +212,6 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -636,10 +635,6 @@ reference "sec:画像形式"
 \end_inset
 
 の画像の例で，単独の中央揃えの段落に置いてあります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -657,10 +652,6 @@ reference "sec:画像形式"
 
 \begin_layout Standard
 下記は上と同じ画像ですが，下書きモードのものです．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1488,10 +1479,6 @@ arg   "tabular-insert"
 
 既定の表では，各セルの周囲に罫線が引かれ，第一行が表の他の部分から分離して表示されます．この分離が起こるのは二重線のためです．第一行のセルが下に罫線を伴っている
 のと同時に，第二行のセルも上に罫線を伴っているのです．以下は表の一例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2987,10 +2974,6 @@ reference "subsec:多頁表のキャプション"
 
 \begin_layout Standard
 加えて，表が分割される行を指定することができます．多頁表の動作を見るために以下の例を参照してください．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7282,10 +7265,6 @@ reference "tab:別キャプション"
 \end_inset
 
 は，異なるヘッダを持つ多頁表の一例です．2番目のキャプションには表番が現れないようにしてあります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9395,10 +9374,6 @@ parfillskip}{0pt}
 \begin_layout Standard
 というコマンドを当該セルの初めに\SpecialChar TeX
 コードで挿入しなくてはなりません．こうすることで，新規頁部分に表示されるセル内の部分が，正しく全幅を使用するようにできます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11224,10 +11199,6 @@ arg   "tabular-feature multicolumn"
 \begin_layout Standard
 連結列はセル設定が独立しています．つまり，セル罫線やセルの縦横揃え，幅設定等を変更した場合には，現在の連結列のみに適用されるのです．以下は，第一行に連結行があり
 ，最下行に上罫線のない連結行がある表の例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11974,10 +11945,6 @@ arg   "tabular-feature multirow"
 
 \begin_layout Standard
 下記は一列目に連結列を適用した表の例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12137,10 +12104,6 @@ raggedright
 
 \begin_layout Standard
 下記は，-4ミリの垂直オフセットを設定し，3センチ幅の列中にある右揃えの連結列セルがある表の例です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12337,10 +12300,6 @@ arg   "newline-insert newline"
 \end_inset
 
 )を使用できますが，この場合，下記の例に示されているようにセル行との整合を顧慮しません．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12735,10 +12694,6 @@ Crystal Clear Pro
 
 \begin_layout Standard
 3引数書式は，例えばスポーツリーグや距離を示すクロス表に便利です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12957,10 +12912,6 @@ Falcons
 
 \begin_layout Standard
 大きなクロス表では，下記のように，2つないし全部のコーナーセルに対角線を入れると良いかもしれません．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13443,10 +13394,6 @@ diagbox[dir=SW]{ホームチーム}{結果}{アウェイチーム}
 \begin_layout Standard
 対角線を引いたセルに必要な幅は，自動的に計算されます．したがって，計算された幅よりも小さい固定列幅を指定してしまうと，下記の例のように，セルの中身がはみ出てしま
 います．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13669,10 +13616,6 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 というコマンドを使用します．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13768,10 +13711,6 @@ Perfect Green
 
 \begin_layout Standard
 対角線の引いたセルは，当該列中で最も幅広くなっていなくてはなりません．さもないと，次の表のように，対角線の長さが正しく計算できなくなってしまいます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13881,10 +13820,6 @@ tabcolsepを足す必要はなくなります．下記の表では，3
 \end_inset
 
 cm幅を使用しています．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14030,10 +13965,6 @@ Ctrl+Return
 \end_inset
 
 ．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31141,10 +31072,6 @@ status collapsed
 内部ボックス
 \family default
 を設定していないときには，ボックスの内容は，ボックスダイアログの中で水平揃えの設定をすることができます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -32029,10 +31956,6 @@ status collapsed
 
 \begin_layout Standard
 段落ボックス(parbox)はミニページに非常によく似ていますが，脚註を付けることができない点が違います．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34255,10 +34178,6 @@ reference "sec:折返しフロート"
 \end_inset
 
 節の折返しフロートは，段落中で，以下のような配置がされます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35332,10 +35251,6 @@ lettrine
 \end_inset
 
 の「I」．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -35378,10 +35293,6 @@ t
 \end_deeper
 \begin_layout Enumerate
 頭文字に回り込む行は1行のみ．頭文字は標準フォントで2文字．スモールキャップ体で印字する文字はなし．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -35472,10 +35383,6 @@ usepackage{color}}{}
 
 \series default
 というコマンドを書きこんでおかなくてはなりません．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -35725,6 +35632,60 @@ target "http://en.wikipedia.org/wiki/XBoard"
 
 \series default
 プログラムで作成されたチェス棋譜をサポートします．
+\end_layout
+
+\begin_layout Description
+日付 これは，
+\emph on
+日-月-年
+\emph default
+の書式で日付を挿入します．右は，外部素材として挿入された日付です：
+\begin_inset External
+	template Date
+	filename .
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+バグ4398が修正されたら，この保護空白は削除してください！
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+日付は\SpecialChar LyX
+内では表示されず，出力のみで表示されます．日付を挿入するには，ほかに二つの方法があります．一つは，
+\family sans
+挿入
+\family default
+\SpecialChar menuseparator
+日付メニューを使用する方法で，他は\SpecialChar LaTeX
+コマンドの
+\series bold
+
+\backslash
+today
+\series default
+を\SpecialChar TeX
+コードで使用する方法です．これらの各方法は，表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:日付挿入方法"
+
+\end_inset
+
+に比較を掲載しておきます．
 \end_layout
 
 \begin_layout Description
@@ -36112,8 +36073,9 @@ name "tab:日付挿入方法"
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="4" columns="4">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -36123,6 +36085,18 @@ name "tab:日付挿入方法"
 
 \begin_layout Plain Layout
 文書書式
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+外部素材\SpecialChar menuseparator
+日付
 \end_layout
 
 \end_inset
@@ -36170,6 +36144,15 @@ today
 \begin_inset Text
 
 \begin_layout Plain Layout
+差込枠として
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 日付として
 \end_layout
 
@@ -36206,6 +36189,15 @@ today
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+日付として
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -36222,6 +36214,15 @@ today
 
 \begin_layout Plain Layout
 DVI, PDF, PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+日付として
 \end_layout
 
 \end_inset
@@ -36463,10 +36464,6 @@ status open
 
 \begin_layout Description
 入力(input) この方法は，内包による方法に非常によく似ています．異なっている点は，
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper

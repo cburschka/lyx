@@ -5627,10 +5627,6 @@ déplié
 \begin_layout Enumerate
 Vous devez alors décider si ce paquetage doit être disponible pour tous
  les utilisateurs ou seulement pour vous-même.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5989,10 +5985,6 @@ Vous devez alors informer \SpecialChar LaTeX
  de la présence de nouveaux fichiers.
  Ceci dépend de nouveau de la distribution \SpecialChar LaTeX
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10933,10 +10925,6 @@ EndArgument
 
 \lang french
 .Ainsi une commande avec deux arguments sera spécifiée comme suit: 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13490,10 +13478,6 @@ Itemize, Bibliography
 
 \lang french
 ]
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14050,10 +14034,6 @@ db_*.inc
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14583,10 +14563,6 @@ Static
 
 \lang french
 fixe le type de marge à gauche du format.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16177,10 +16153,6 @@ theorems-ams.inc
 
 \lang english
 Preamble
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -19777,10 +19749,6 @@ LatexType
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21046,10 +21014,6 @@ LabelStringAppendix
 
  à la même valeur.
  Les arguments spécifiques suivants peuvent être utilisés:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -25464,7 +25428,23 @@ Format Ascii
 \begin_layout LyX-Code
 
 \lang english
-Product "[XFig: $$FName]"
+Product "$$Contents(
+\backslash
+"$$AbsPath$$Basename.asc
+\backslash
+")"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat asciixfig
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.asc"
 \end_layout
 
 \begin_layout LyX-Code
@@ -25517,6 +25497,18 @@ ReferencedFile docbook "$$AbsPath$$Basename.eps"
 
 \lang english
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code

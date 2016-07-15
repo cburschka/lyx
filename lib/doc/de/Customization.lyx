@@ -4175,10 +4175,6 @@ n.
 \begin_layout Enumerate
 Nun müssen Sie entscheiden, ob das Paket für alle Nutzer oder nur für Sie
  verfügbar sein soll.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4411,10 +4407,6 @@ Jetzt muss man \SpecialChar LaTeX
  nur noch mitteilen, dass es neue Dateien gibt.
  Die ist je nach \SpecialChar LaTeX
 -Distribution anders:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8884,10 +8876,6 @@ EndArgument
 \end_inset
 
 optionalen Argumenten hat somit diese Struktur:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11105,10 +11093,6 @@ Itemize, Bibliography
 \end_inset
 
 ]
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11536,10 +11520,6 @@ db_*.inc
  ) für spezielle Beispiele.
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -12017,10 +11997,6 @@ Static
 
 legt fest, wie der linke Rand des Textes bestimmt wird.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13473,10 +13449,6 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16672,10 +16644,6 @@ LatexType
  Siehe die SGML-Klassendateienfür spezielle Beispiele.
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -22208,7 +22176,23 @@ Format Ascii
 \begin_layout LyX-Code
 
 \lang english
-Product "[XFig: $$FName]"
+Product "$$Contents(
+\backslash
+"$$AbsPath$$Basename.asc
+\backslash
+")"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateFormat asciixfig
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+UpdateResult "$$AbsPath$$Basename.asc"
 \end_layout
 
 \begin_layout LyX-Code
@@ -22261,6 +22245,18 @@ ReferencedFile docbook "$$AbsPath$$Basename.eps"
 
 \lang english
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+FormatEnd
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code
