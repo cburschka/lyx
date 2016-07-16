@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 510
+\lyxformat 511
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -114,7 +114,6 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 424524441 "rgheck"
 \author 893223064 "John Robert Hudson" j.r.hudson@virginmedia.com
 \end_header
 
@@ -126,13 +125,7 @@ Additional \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.
-\change_inserted 424524441 1467174349
-3
-\change_deleted 424524441 1467174348
-2
-\change_unchanged
-.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Author
@@ -5921,8 +5914,6 @@ Left
 \end_inset
 
 Header
-\family default
-
 \end_layout
 
 \begin_deeper
@@ -7581,8 +7572,6 @@ Math Options
 \size normal
 The title environment defines the kind of your paper.
  So use one of the following environments for the title:
-\size default
-
 \end_layout
 
 \begin_deeper
@@ -25595,18 +25584,7 @@ status collapsed
 
 \end_inset
 
- is the Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XServer pipe path specified in 
+ is the LyXServer pipe path specified in 
 \begin_inset Flex Noun
 status collapsed
 
@@ -25673,18 +25651,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 

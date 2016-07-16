@@ -434,18 +434,7 @@ status collapsed
 
 \begin_layout Plain Layout
 ヘルプ\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXの設定
+LaTeXの設定
 \end_layout
 
 \end_inset
@@ -523,18 +512,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-doc/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXConfig.lyx
+doc/LaTeXConfig.lyx
 \end_layout
 
 \end_inset
@@ -544,18 +522,7 @@ eXConfig.lyx
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXConfig.lyx.in
+LaTeXConfig.lyx.in
 \end_layout
 
 \end_inset
@@ -2023,7 +1990,7 @@ HTML
 
 形式の複写子を導入します．これらの形式を書き出す際，複写子は，本体のHTMLファイルだけでなく，関連した様々なファイル（スタイルファイルや画像など）もコピーされ
 るように手配します．これらのファイルはすべて，元の\SpecialChar LyX
-ファイルのあるディレクトリのサブディレクトリに書き込まれます
+ファイルのあるディレクトリのサブディレクトリに書き込まれます．
 \begin_inset Foot
 status collapsed
 
@@ -2034,18 +2001,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXconv
+LyXconv
 \end_layout
 
 \end_inset
@@ -2065,18 +2021,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-/path/to/filename.html.L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXconv
+/path/to/filename.html.LyXconv
 \end_layout
 
 \end_inset
@@ -2087,7 +2032,7 @@ yXconv
 
 \end_inset
 
-．
+
 \end_layout
 
 \begin_layout Section
