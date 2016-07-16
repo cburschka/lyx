@@ -6797,18 +6797,7 @@ Este método proporciona el archivo DVI con la información necesaria para
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DVI
+LaTeX (plain)->DVI
 \end_layout
 
 \end_inset
@@ -6818,18 +6807,7 @@ eX (plain)->DVI
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain)->DraftDVI
+LaTeX (plain)->DraftDVI
 \end_layout
 
 \end_inset
@@ -7018,18 +6996,7 @@ Para activar Sync\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain) -> DVI
+LaTeX (plain) -> DVI
 \end_layout
 
 \end_inset
@@ -7039,18 +7006,7 @@ eX (plain) -> DVI
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (plain) -> DraftDVI
+LaTeX (plain) -> DraftDVI
 \end_layout
 
 \end_inset
@@ -7083,18 +7039,7 @@ latex -synctex=1 $$i
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX (pdflatex) -> PDF (pdflatex)
+LaTeX (pdflatex) -> PDF (pdflatex)
 \end_layout
 
 \end_inset
@@ -7351,18 +7296,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 
@@ -11832,8 +11766,6 @@ Encabezado_Derecho
 
 \family sans
 Encabezado_Izquierdo
-\family default
-
 \end_layout
 
 \begin_deeper

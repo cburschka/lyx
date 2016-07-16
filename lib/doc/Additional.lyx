@@ -6676,18 +6676,7 @@ status collapsed
 
 \end_inset
 
- is the Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XServer pipe path specified in 
+ is the LyXServer pipe path specified in 
 \begin_inset Flex Noun
 status collapsed
 
@@ -6754,18 +6743,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 
@@ -11306,8 +11284,6 @@ Left
 \end_inset
 
 Header
-\family default
-
 \end_layout
 
 \begin_deeper
@@ -12966,8 +12942,6 @@ Math Options
 \size normal
 The title environment defines the kind of your paper.
  So use one of the following environments for the title:
-\size default
-
 \end_layout
 
 \begin_deeper
