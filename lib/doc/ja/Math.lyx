@@ -669,18 +669,7 @@ arg   "ert-insert"
 を押すか，
 \family sans
 挿入\SpecialChar menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-Xコード
+TeXコード
 \family default
 (捷径：
 \begin_inset Info
@@ -724,18 +713,7 @@ L atexぷりあんぶる@\SpecialChar LaTeX
 \family sans
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXプリアンブル
+LaTeXプリアンブル
 \family default
 メニューを使用してください．
 \end_layout
@@ -17730,14 +17708,11 @@ status collapsed
 
 \begin_layout Standard
 \align center
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -17754,6 +17729,17 @@ status collapsed
 
 \begin_layout Plain Layout
 出力
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Shortcut
 \end_layout
 
 \end_inset
@@ -17791,6 +17777,15 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -17817,6 +17812,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathbf{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 
@@ -17857,6 +17866,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-boldsymbol"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -17886,6 +17909,15 @@ ABC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -17923,20 +17955,30 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -17953,6 +17995,17 @@ AbC
 
 \begin_layout Plain Layout
 出力
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Shortcut
 \end_layout
 
 \end_inset
@@ -17990,6 +18043,15 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18016,6 +18078,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathrm{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 
@@ -18056,6 +18132,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18082,6 +18172,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathtt{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 
@@ -18122,13 +18226,18 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 

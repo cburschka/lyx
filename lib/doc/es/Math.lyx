@@ -649,18 +649,7 @@ arg   "ert-insert"
  de la barra de herramientas o con el menú 
 \family sans
 Insertar\SpecialChar menuseparator
-Código Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+Código TeX
 \family default
 , (atajo 
 \family sans
@@ -716,18 +705,7 @@ status collapsed
 \family sans
 Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
-Preámbulo LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Preámbulo LaTeX
 \family default
 .
 \end_layout
@@ -10844,8 +10822,6 @@ arg   "math-insert \\space"
 \family sans
 Espacio.
  
-\family default
-
 \end_layout
 
 \begin_layout Standard
@@ -13425,8 +13401,6 @@ white
 , 
 \series bold
 yellow
-\series default
-
 \end_layout
 
 \begin_layout Standard
@@ -17942,14 +17916,11 @@ Las letras latinas en las ecuaciones se pueden poner en uno de los siguientes
 
 \begin_layout Standard
 \align center
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -17966,6 +17937,15 @@ Comando
 
 \begin_layout Plain Layout
 Resultado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Atajo
 \end_layout
 
 \end_inset
@@ -18003,6 +17983,15 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18029,6 +18018,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathbf{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 
@@ -18069,6 +18072,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-boldsymbol"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18098,6 +18115,15 @@ ABC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -18135,20 +18161,30 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18165,6 +18201,15 @@ Comando
 
 \begin_layout Plain Layout
 Resultado
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Atajo
 \end_layout
 
 \end_inset
@@ -18202,6 +18247,15 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18228,6 +18282,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathrm{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 
@@ -18268,6 +18336,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18294,6 +18376,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathtt{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 
@@ -18334,13 +18430,18 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -19215,6 +19316,13 @@ key "Bezos"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -20131,13 +20239,6 @@ reference "subsec:Griegas-en-redonda"
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Mayúsculas
 \begin_inset Index idx
@@ -20829,13 +20930,6 @@ arg   "math-insert \\digamma"
 \end_inset
 
  de la barra de ecuaciones.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -25762,8 +25856,6 @@ limsup
  están definidas las siguientes funciones:
 \series bold
  
-\series default
-
 \end_layout
 
 \begin_layout Standard
@@ -31976,13 +32068,6 @@ ce
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
@@ -32539,13 +32624,6 @@ xymatrix
 , que se explican a continuación.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Diagramas amscd
 \begin_inset Index idx
@@ -32967,6 +33045,13 @@ específicos
 , hay ejemplos de diagramas de este tipo.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Comandos definidos por el usuario
 \begin_inset Index idx
@@ -33147,13 +33232,6 @@ El número de argumentos es un entero en el rango 0-9 y especifica cuántos
 primer
 \emph default
  argumento del nuevo comando es automáticamente opcional.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
