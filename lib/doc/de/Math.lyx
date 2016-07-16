@@ -13355,8 +13355,6 @@ white
  und 
 \series bold
 yellow
-\series default
-
 \end_layout
 
 \begin_layout Standard
@@ -17916,14 +17914,11 @@ Lateinische Buchstaben in einer Formel können in folgenden Schriftstilen
 
 \begin_layout Standard
 \align center
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -17940,6 +17935,15 @@ Befehl
 
 \begin_layout Plain Layout
 Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tastenkürzel
 \end_layout
 
 \end_inset
@@ -17977,6 +17981,15 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18006,6 +18019,17 @@ AbC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Strg+Alt+B
 \end_layout
 
 \end_inset
@@ -18043,6 +18067,17 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Strg+B
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18072,6 +18107,15 @@ ABC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -18109,20 +18153,30 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18139,6 +18193,15 @@ Befehl
 
 \begin_layout Plain Layout
 Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tastenkürzel
 \end_layout
 
 \end_inset
@@ -18176,6 +18239,15 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18205,6 +18277,17 @@ AbC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Alt+Z R
 \end_layout
 
 \end_inset
@@ -18242,6 +18325,17 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Alt+Z S
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18271,6 +18365,17 @@ AbC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family sans
+Strg+Shift+P
 \end_layout
 
 \end_inset
@@ -18308,13 +18413,18 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -20097,13 +20207,6 @@ reference "subsec:Aufrechte-kleine-griechische"
 \end_inset
 
  beschrieben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -25691,13 +25794,6 @@ Sonderzeichen im mathematischen Text
 Die folgenden Befehle können nur im mathematischen Textmodus oder im \SpecialChar TeX
 -Modus
  verwendet werden:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

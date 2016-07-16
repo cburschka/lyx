@@ -688,18 +688,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \family default
  (raccourci 
 \family sans
@@ -758,18 +747,7 @@ Préambule
 \begin_inset space ~
 \end_inset
 
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 .
 \end_layout
@@ -13508,8 +13486,6 @@ white
  (blanc), et 
 \series bold
 yellow (jaune)
-\series default
-
 \end_layout
 
 \begin_layout Standard
@@ -18132,14 +18108,11 @@ Dans les formules on peut affecter aux lettres latines un des styles de
 
 \begin_layout Standard
 \align center
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18156,6 +18129,15 @@ Commande
 
 \begin_layout Plain Layout
 Résultat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Raccourci
 \end_layout
 
 \end_inset
@@ -18193,6 +18175,15 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18219,6 +18210,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathbf{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 
@@ -18259,6 +18264,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-boldsymbol"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18288,6 +18307,15 @@ ABC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -18325,20 +18353,30 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18355,6 +18393,15 @@ Commande
 
 \begin_layout Plain Layout
 Résultat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Raccourci
 \end_layout
 
 \end_inset
@@ -18392,6 +18439,15 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18418,6 +18474,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathrm{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 
@@ -18458,6 +18528,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18484,6 +18568,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathtt{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 
@@ -18524,13 +18622,18 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -18605,7 +18708,7 @@ textrm
 .
  Le fait que l'on ne puisse pas changer leur style avec la fenêtre de dialogue
  de style est un bug de \SpecialChar LyX
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -18622,7 +18725,7 @@ target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -20346,6 +20449,13 @@ reference "subsec:minuscules-grecques-droites"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Lettres majuscules
 \begin_inset Index idx
@@ -21867,13 +21977,6 @@ bot
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -25907,6 +26010,13 @@ _
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -32393,13 +32503,6 @@ amscd
  qui sont décrits dans ce qui suit.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Les diagrammes amscd
 \begin_inset Index idx
@@ -36415,13 +36518,6 @@ reference "sec:Styles-de-formules"
 \end_inset
 
 mm à la place.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
