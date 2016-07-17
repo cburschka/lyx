@@ -4,10 +4,18 @@ Compiling LyX 2.3 for Win32 and creating Windows installer
 It's recommended to compile LyX using Microsoft Visual C++ 2015 and CMake.
 
 
-Compiling with Microsoft Visual C++
+Compiling with Microsoft Visual C++ (MSVC)
 ===================================
 
-	These instructions assume the LyX source code is in C:\LyX\lyx-23
+	The easiest way to install LyX with MSVC is to follow this Wiki page:
+	
+	http://wiki.lyx.org/Windows/Compilation
+	
+	If you find there any errors please write a mail to the lyx-devel mailing list.
+	
+----------------------------------------------------------------------------
+	
+	These following instructions assume the LyX source code is in C:\LyX\lyx-23
 	You can also use another directory if you prefer.
 
 1	Install MSVC 2015
