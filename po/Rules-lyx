@@ -57,4 +57,4 @@ formats_l10n.pot: $(top_srcdir)/lib/configure.py
 
 # LyX specific code to generate l10n statistics for the web site
 i18n.inc: $(POFILES) postats.py
-	(cd $(srcdir) ; $(PYTHON) postats.py "$(VERSION)" $(POFILES)) >$@
+	$(PYTHON) $(srcdir)/postats.py "$(VERSION)" $(POFILES) >$@
