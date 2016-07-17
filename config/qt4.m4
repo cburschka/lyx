@@ -77,8 +77,8 @@ AC_DEFUN([QT_FIND_TOOL],
 	elif qtchooser -l 2>/dev/null | grep -q ^$qt_ext\$ >/dev/null ; then
 		AC_PATH_PROG(qtc_path, qtchooser, [], [$PATH])
 		AC_PATH_PROG($2_path, $2, [], [$PATH])
-		qtc_path=$(dirname "$qtc_path")
-		$2_path=$(dirname "$$2_path")
+		qtc_path=`dirname "$qtc_path"`
+		$2_path=`dirname "$$2_path"`
 		if test "$qtc_path" = "$$2_path" ; then
 			AC_CHECK_PROG($1, $2, [$2 -qt=$qt_ext],, [$PATH])
 		fi
