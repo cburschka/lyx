@@ -604,6 +604,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_SCREEN_ZOOM:
 			lexrc >> zoom;
+			if (zoom < 10)
+				zoom = 10;
 			break;
 
 		case RC_GEOMETRY_SESSION:

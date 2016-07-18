@@ -1990,6 +1990,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_ZOOM_OUT:
 		enable = doc_buffer && lyxrc.zoom > 10;
+		if (lyxrc.zoom <= 10)
+			flag.message(_("Zoom level cannot be less than 10%."));
 		break;
 
 	case LFUN_BUFFER_ZOOM_IN:
@@ -3933,17 +3935,22 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_BUFFER_ZOOM_IN:
-		case LFUN_BUFFER_ZOOM_OUT:
+		case LFUN_BUFFER_ZOOM_OUT: {
+			// use a signed temp to avoid overflow
+			int zoom = lyxrc.zoom;
 			if (cmd.argument().empty()) {
 				if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
-					lyxrc.zoom += 20;
+					zoom += 20;
 				else
-					lyxrc.zoom -= 20;
+					zoom -= 20;
 			} else
-				lyxrc.zoom += convert<int>(cmd.argument());
+				zoom += convert<int>(cmd.argument());
 
-			if (lyxrc.zoom < 10)
-				lyxrc.zoom = 10;
+			if (zoom < 10)
+				zoom = 10;
+			lyxrc.zoom = zoom;
+
+			dr.setMessage(bformat(_("Zoom level is now %1$d%"), lyxrc.zoom));
 
 			// The global QPixmapCache is used in GuiPainter to cache text
 			// painting so we must reset it.
@@ -3951,6 +3958,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			guiApp->fontLoader().update();
 			lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 			break;
+		}
 
 		case LFUN_VC_REGISTER:
 		case LFUN_VC_RENAME:
