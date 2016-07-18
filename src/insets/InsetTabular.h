@@ -470,6 +470,9 @@ public:
 	///
 	VAlignment getVAlignment(idx_type cell,
 				 bool onlycolumn = false) const;
+	/// The vertical offset of the table due to the vertical
+	/// alignment with respect to the baseline.
+	int offsetVAlignment() const;
 	///
 	Length const getPWidth(idx_type cell) const;
 	///
@@ -1055,9 +1058,6 @@ private:
 	bool oneCellHasRotationState(bool rotated,
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
-	/// The vertical offset of the table due to the vertical
-	/// alignment with respect to the baseline.
-	mutable int offset_valign_;
 	/// true when selecting rows with the mouse
 	bool rowselect_;
 	/// true when selecting columns with the mouse
