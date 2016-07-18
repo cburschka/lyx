@@ -38,12 +38,7 @@ namespace frontend {
  *
  * The intention for a toolkit is that it uses these methods to paint
  * onto a backing pixmap. Only when expose events arrive via the event
- * queue (perhaps generated via Screen::expose), does the copy onto
- * the actual WorkArea widget take place. Paints are wrapped in (possibly
- * recursive) calls to start() and end() to facilitate the backing pixmap
- * management.
- *
- * Note that the methods return *this for convenience.
+ * queue, does the copy onto the actual WorkArea widget take place.
  *
  * Caution: All char_type and docstring arguments of the text drawing
  * methods of this class are no UCS4 chars or strings if the font is a
