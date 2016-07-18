@@ -178,20 +178,23 @@ void InsetQuotes::parseString(string const & s)
 }
 
 
+// FIXME: should we add a language or a font parameter member?
 docstring InsetQuotes::displayString() const
 {
-	Language const * loclang = 
+	Language const * loclang =
 		isBufferValid() ? buffer().params().language : 0;
 	int const index = quote_index[side_][language_];
 	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
-	// in french, spaces are added inside double quotes
+	// in french, thin spaces are added inside double quotes
 	// FIXME: this should be done by a separate quote type.
 	if (times_ == DoubleQuotes && loclang && prefixIs(loclang->code(), "fr")) {
+		// THIN SPACE (U+2009)
+		char_type const thin_space = 0x2009;
 		if (side_ == LeftQuote)
-			retdisp += ' ';
+			retdisp += thin_space;
 		else
-			retdisp.insert(size_t(0), 1, ' ');
+			retdisp = thin_space + retdisp;
 	}
 
 	return retdisp;
@@ -201,39 +204,18 @@ docstring InsetQuotes::displayString() const
 void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontInfo & font = mi.base.font;
-	frontend::FontMetrics const & fm =
-		theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
-	dim.wid = 0;
-
-	// FIXME: should we add a language or a font parameter member?
-	docstring const text = displayString();
-	for (string::size_type i = 0; i < text.length(); ++i) {
-		if (text[i] == ' ')
-			dim.wid += fm.width('i');
-		else if (i == 0 || text[i] != text[i - 1])
-			dim.wid += fm.width(text[i]);
-		else
-			dim.wid += fm.width(',');
-	}
+	dim.wid = fm.width(displayString());
 }
 
 
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
-	// FIXME: should we add a language or a font parameter member?
-	docstring const text = displayString();
 	FontInfo font = pi.base.font;
 	font.setPaintColor(pi.textColor(font.realColor()));
-	if (text.length() == 2 && text[0] == text[1]) {
-		pi.pain.text(x, y, text[0], font);
-		int const t = theFontMetrics(font)
-			.width(',');
-		pi.pain.text(x + t, y, text[0], font);
-	} else {
-		pi.pain.text(x, y, text, font);
-	}
+	pi.pain.text(x, y, displayString(), font);
 }
 
 
