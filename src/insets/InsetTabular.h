@@ -756,7 +756,7 @@ public:
 	///
 	column_vector column_info;
 	///
-	mutable cell_vvector cell_info;
+	cell_vvector cell_info;
 	///
 	Length tabular_width;
 	///

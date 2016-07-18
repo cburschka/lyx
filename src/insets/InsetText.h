@@ -232,7 +232,7 @@ private:
 	///
 	ColorCode frame_color_;
 	///
-	mutable Text text_;
+	Text text_;
 };
 
 
