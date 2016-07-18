@@ -104,7 +104,11 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 			name_ = convert<string>(ours);
 		}
 	}
-	Layout::LaTeXArgMap::const_iterator const lait = args.find(name_);
+
+    // FIXME It does not look to me as if this needs to be redone
+    // over and over again. All the arguments are coming from the
+    // layout. If that changes....
+    Layout::LaTeXArgMap::const_iterator const lait = args.find(name_);
 	if (lait != args.end()) {
 		docstring label = translateIfPossible((*lait).second.labelstring);
 		docstring striplabel;
