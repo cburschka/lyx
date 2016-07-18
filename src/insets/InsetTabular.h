@@ -1055,8 +1055,6 @@ private:
 	bool oneCellHasRotationState(bool rotated,
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
-	///
-	mutable idx_type first_visible_cell_;
 	/// The vertical offset of the table due to the vertical
 	/// alignment with respect to the baseline.
 	mutable int offset_valign_;

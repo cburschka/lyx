@@ -3487,14 +3487,14 @@ docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 InsetTabular::InsetTabular(Buffer * buf, row_type rows,
 			   col_type columns)
 	: Inset(buf), tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))),
-	  first_visible_cell_(0), offset_valign_(0), rowselect_(false), colselect_(false)
+	  offset_valign_(0), rowselect_(false), colselect_(false)
 {
 }
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
 	: Inset(tab), tabular(tab.tabular),
-	  first_visible_cell_(0), offset_valign_(0), rowselect_(false), colselect_(false)
+	  offset_valign_(0), rowselect_(false), colselect_(false)
 {
 }
 
@@ -3757,7 +3757,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	bool const original_selection_state = pi.selected;
 
 	idx_type idx = 0;
-	first_visible_cell_ = Tabular::npos;
 
 	int yy = y + offset_valign_;
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
@@ -3772,9 +3771,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				nx += tabular.cellWidth(idx);
 				continue;
 			}
-
-			if (first_visible_cell_ == Tabular::npos)
-				first_visible_cell_ = idx;
 
 			pi.selected |= isCellSelected(cur, r, c);
 			int const cx = nx + tabular.textHOffset(idx);
@@ -4296,41 +4292,6 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
 		break;
-
-//	case LFUN_SCREEN_DOWN: {
-//		//if (hasSelection())
-//		//	cur.selection() = false;
-//		col_type const col = tabular.cellColumn(cur.idx());
-//		int const t =	cur.bv().top_y() + cur.bv().height();
-//		if (t < yo() + tabular.getHeightOfTabular()) {
-//			cur.bv().scrollDocView(t, true);
-//			cur.idx() = tabular.cellBelow(first_visible_cell_) + col;
-//		} else {
-//			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
-//		}
-//		cur.par() = 0;
-//		cur.pos() = 0;
-//		break;
-//	}
-//
-//	case LFUN_SCREEN_UP: {
-//		//if (hasSelection())
-//		//	cur.selection() = false;
-//		col_type const col = tabular.cellColumn(cur.idx());
-//		int const t =	cur.bv().top_y() + cur.bv().height();
-//		if (yo() < 0) {
-//			cur.bv().scrollDocView(t, true);
-//			if (yo() > 0)
-//				cur.idx() = col;
-//			else
-//				cur.idx() = tabular.cellBelow(first_visible_cell_) + col;
-//		} else {
-//			cur.idx() = col;
-//		}
-//		cur.par() = cur.lastpar();
-//		cur.pos() = cur.lastpos();
-//		break;
-//	}
 
 	case LFUN_LAYOUT_TABULAR:
 		cur.bv().showDialog("tabular");
