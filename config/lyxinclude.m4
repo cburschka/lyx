@@ -170,7 +170,6 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
     CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
     save_CXXFLAGS=$CXXFLAGS
     CXXFLAGS="$flag $AM_CXXFLAGS $CXXFLAGS"
-    AC_LANG_PUSH(C++)
     dnl sample openmp source code to test
     AC_TRY_COMPILE([
        template <typename T>
@@ -197,7 +196,6 @@ AC_DEFUN([LYX_CXX_CXX11_FLAGS],
 
        auto d = a;], [],
     [lyx_cv_cxx11_flags=$flag; break])
-   AC_LANG_POP(C++)
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
   done])
@@ -220,7 +218,6 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
    CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
    save_CXXFLAGS=$CXXFLAGS
    CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
-   AC_LANG_PUSH(C++)
    # The following code snippet has been taken taken from example in
    #   http://stackoverflow.com/questions/8561850/compile-stdregex-iterator-with-gcc
    AC_TRY_LINK(
@@ -237,7 +234,6 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
 	Myiter next(pat, pat + strlen(pat), rx);
 	Myiter end;
    ], [lyx_std_regex=yes], [lyx_std_regex=no])
-   AC_LANG_POP(C++)
    CXXFLAGS=$save_CXXFLAGS
    CPPFLAGS=$save_CPPFLAGS
    AC_MSG_RESULT([$lyx_std_regex])
@@ -284,8 +280,10 @@ AC_REQUIRE([AC_PROG_CXXCPP])
 
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
+LYX_CXX_CXX11_FLAGS
 LYX_LIB_STDCXX
 LYX_LIB_STDCXX_CXX11_ABI
+LYX_CXX_USE_REGEX
 AC_LANG_POP(C++)
 
 if test $lyx_cv_lib_stdcxx = "yes" ; then
@@ -362,7 +360,7 @@ if test x$GXX = xyes; then
     CXX_VERSION="($clang_version)"
   fi
 
-  AM_CXXFLAGS="$lyx_optim"
+  AM_CXXFLAGS="$lyx_optim $AM_CXXFLAGS"
   if test x$enable_debug = xyes ; then
       AM_CXXFLAGS="-g $AM_CXXFLAGS"
   fi
@@ -398,8 +396,6 @@ if test x$GXX = xyes; then
   fi
 fi
 
-LYX_CXX_CXX11_FLAGS
-
 # Some additional flags may be needed
 if test x$GXX = xyes; then
     case $gxx_version in
@@ -412,8 +408,6 @@ if test x$GXX = xyes; then
         AM_CXXFLAGS="$AM_CXXFLAGS -Wno-deprecated-register";;
     esac
 fi
-
-LYX_CXX_USE_REGEX
 ])
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
