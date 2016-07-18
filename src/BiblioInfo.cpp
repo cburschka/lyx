@@ -299,8 +299,7 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 	if (authors.size() == 2 && authors[1] != "others")
 		retval = bformat(from_ascii("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
-
-	if (authors.size() >= 2)
+	else if (authors.size() >= 2)
 		retval = bformat(from_ascii("%1$s et al."),
 			familyName(authors[0]));
 
