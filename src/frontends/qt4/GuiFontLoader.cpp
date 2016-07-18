@@ -104,13 +104,12 @@ GuiFontInfo & fontinfo(FontInfo const & f)
         // We can reset the font to something sensible in release mode.
         LATTEST(false);
         LYXERR0("Unrealized font!");
-        // We could be fancier here, if we wanted, and just fix things where
-        // there is a problem. But it doesn't seem worth it, since we should
-        // not be here in the first place.
+        FontInfo f2 = f;
+        f2.realize(sane_font);
         GuiFontInfo * & fi =
-            fontinfo_[sane_font.family()][sane_font.series()][sane_font.realShape()][sane_font.size()];
+            fontinfo_[f2.family()][f2.series()][f2.realShape()][f2.size()];
         if (!fi)
-            fi = new GuiFontInfo(f);
+            fi = new GuiFontInfo(f2);
         return *fi;
     }
 	// fi is a reference to the pointer type (GuiFontInfo *) in the
