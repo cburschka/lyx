@@ -1054,10 +1054,11 @@ private:
 	/// return the cell nearest to x, y
 	idx_type getNearestCell(BufferView &, int x, int y) const;
 
-	/// test the rotation state of the give cell range.
+	/// test the rotation state of the given cell range.
 	bool oneCellHasRotationState(bool rotated,
 				row_type row_start, row_type row_end,
 				col_type col_start, col_type col_end) const;
+
 	/// true when selecting rows with the mouse
 	bool rowselect_;
 	/// true when selecting columns with the mouse
