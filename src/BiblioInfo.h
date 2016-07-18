@@ -52,10 +52,10 @@ public:
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
 	/// \return the short form of an authorlist, used for sorting
-	docstring const getAbbreviatedAuthor(bool jurabib_style = false) const;
-	/// \return the short form of an authorlist, translated to the
-	/// buffer language.
-	docstring const getAbbreviatedAuthor(Buffer const & buf, bool jurabib_style = false) const;
+	/// this will be translated to the UI language if buf is null
+	/// otherwise, it will be translated to the buffer language.
+	docstring const getAbbreviatedAuthor(
+	    Buffer const * buf = 0, bool jurabib_style = false) const;
 	///
 	docstring const getYear() const;
 	///

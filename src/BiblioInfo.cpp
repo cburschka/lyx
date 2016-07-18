@@ -255,7 +255,8 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
+docstring const BibTeXInfo::getAbbreviatedAuthor(
+    Buffer const * buf, bool jurabib_style) const
 {
 	if (!is_bibtex_) {
 		docstring const opt = label();
@@ -296,29 +297,20 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 
 	docstring retval = familyName(authors[0]);
 
-	if (authors.size() == 2 && authors[1] != "others")
-		retval = bformat(from_ascii("%1$s and %2$s"),
-			familyName(authors[0]), familyName(authors[1]));
-	else if (authors.size() >= 2)
-		retval = bformat(from_ascii("%1$s et al."),
-			familyName(authors[0]));
+	if (authors.size() == 2 && authors[1] != "others") {
+		docstring const dformat = buf ? 
+			buf->B_("%1$s and %2$s") : from_ascii("%1$s and %2$s");
+		retval = bformat(dformat, familyName(authors[0]), familyName(authors[1]));
+	} else if (authors.size() >= 2) {
+		// we get here either if the author list is longer than two names
+		// or if the second 'name' is "others". we do the same thing either
+		// way.
+		docstring const dformat = buf ? 
+			buf->B_("%1$s et al.") : from_ascii("%1$s et al.");
+		retval = bformat(dformat, familyName(authors[0]));
+	}
 
 	return convertLaTeXCommands(retval);
-}
-
-
-docstring const BibTeXInfo::getAbbreviatedAuthor(Buffer const & buf, bool jurabib_style) const
-{
-	docstring const author = getAbbreviatedAuthor(jurabib_style);
-	if (!is_bibtex_)
-		return author;
-	vector<docstring> const authors = getVectorFromString(author, from_ascii(" and "));
-	if (authors.size() == 2)
-		return bformat(buf.B_("%1$s and %2$s"), authors[0], authors[1]);
-	docstring::size_type const idx = author.rfind(from_ascii(" et al."));
-	if (idx != docstring::npos)
-		return bformat(buf.B_("%1$s et al."), author.substr(0, idx));
-	return author;
 }
 
 
@@ -719,12 +711,12 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = cite_number_;
 		else if (key == "abbrvauthor")
 			// Special key to provide abbreviated author names.
-			ret = getAbbreviatedAuthor(buf, false);
+			ret = getAbbreviatedAuthor(&buf, false);
 		else if (key == "shortauthor")
 			// When shortauthor is not defined, jurabib automatically
 			// provides jurabib-style abbreviated author names. We do
 			// this as well.
-			ret = getAbbreviatedAuthor(buf, true);
+			ret = getAbbreviatedAuthor(&buf, true);
 		else if (key == "shorttitle") {
 			// When shorttitle is not defined, jurabib uses for `article'
 			// and `periodical' entries the form `journal volume [year]'
@@ -821,7 +813,7 @@ docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, Buffer c
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAbbreviatedAuthor(buf, false);
+	return data.getAbbreviatedAuthor(&buf, false);
 }
 
 
@@ -1097,7 +1089,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 		if (numbers) {
 			entry.label(entry.citeNumber());
 		} else {
-			docstring const auth = entry.getAbbreviatedAuthor(buf, false);
+			docstring const auth = entry.getAbbreviatedAuthor(&buf, false);
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
 			docstring const year = getYear(*it, buf, true);
