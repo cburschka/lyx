@@ -227,8 +227,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 				pi.backgroundColor(this));
 
 		// Change color of the frame in tracked changes, like for tabulars.
-        // Only do so if the color is not custom. But do so even if RowPainter
-        // handles the strike-through already.
+		// Only do so if the color is not custom. But do so even if RowPainter
+		// handles the strike-through already.
 		Color c;
 		if (pi.change_.changed()
 		    // Originally, these are the colors with role Text, from role() in
