@@ -20,6 +20,9 @@ What's new
 
 * USER INTERFACE
 
+* When changing zoom level, show current value in status bar (bug
+  10212).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -42,7 +45,7 @@ What's new
 
 - Avoid crashing in release mode if we stumble across an unrealized font.
 
-- Fix display of citations with two authors. 
+- Fix display of citations with two authors.
 
 - Fix display of multi-author citations when the GUI language is not English.
 
