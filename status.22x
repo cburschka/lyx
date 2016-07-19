@@ -54,7 +54,7 @@ What's new
 - Make inset-select-all select all cells only in tables.
 
 - Automatically show the review toolbar if the document has tracked changes
-  (bug 8738), and related UI imrovements.
+  (bug 8738), and related UI improvements.
 
 - Implement "Dissolve Inset" and "Show Label" context menu items for
   arguments (bug 10150).
@@ -110,13 +110,15 @@ What's new
 
 - Fix display of labels in right-to-left languages (bug 10169).
 
+- Fix button label font of inset arguments when some traits are inherited.
+
 - When a counter is stepped, reset recursively all subcounters (bug #10063).
 
 - Fix on screen narrow box when using \width as box width unit (bug 10048).
 
 - Raise GuiView on buffer switch to bring it topmost in multi-window mode.
 
-- Fix smal typo in Reference dialog (bug 10194).
+- Fix small typo in Reference dialog (bug 10194).
 
 - Fix default location for RPM based hunspell dictionary search (bug 10071 and 10192).
 
@@ -130,7 +132,7 @@ What's new
 - Display the correct column alignment and a better column spacing in AMS
   environments (bugs 1861, 9908).
 
-- Disable properly toggling math diplay in places where it is not
+- Disable properly toggling math display in places where it is not
   possible (bug 10033).
 
 - Fix horizontal scrolling feature when inside a collapsable inset
@@ -166,7 +168,7 @@ What's new
 - Shortcut preferences: don't forget to trigger the search when it is
   initialized with the previous value.
 
-- Remove extra spacing around  button insets (bug 10149).
+- Remove extra spacing around button insets (bug 10149).
 
 - Fix drawing of buttons by enforcing equal left/right spacing (bug 10147).
 
