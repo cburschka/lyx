@@ -5908,7 +5908,7 @@ Syntax buffer-zoom-in [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom in %, the default is 20.
+Params <ZOOM>: The zoom in % points (neg. or pos.), the default is 20.
 \end_layout
 
 \begin_layout Description
@@ -5928,7 +5928,7 @@ Syntax buffer-zoom-out [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom in %, the default is 20.
+Params <ZOOM>: The zoom in % points (neg. or pos.), the default is -20.
 \end_layout
 
 \begin_layout Description

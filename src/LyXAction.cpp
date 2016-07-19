@@ -3739,7 +3739,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN
  * \li Action: Increases the zoom of the screen fonts.
  * \li Syntax: buffer-zoom-in [<ZOOM>]
- * \li Params: <ZOOM>: The zoom in %, the default is 20.
+ * \li Params: <ZOOM>: The zoom in % points (neg. or pos.), the default is 20.
  * \li Origin: vfr, 30 Mar 2009
  * \endvar
  */
@@ -3749,7 +3749,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_OUT
  * \li Action: Decreases the zoom of the screen fonts.
  * \li Syntax: buffer-zoom-out [<ZOOM>]
- * \li Params: <ZOOM>: The zoom in %, the default is 20.
+ * \li Params: <ZOOM>: The zoom in % points (neg. or pos.), the default is -20.
  * \li Origin: vfr, 30 Mar 2009
  * \endvar
  */
