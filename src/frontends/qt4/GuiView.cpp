@@ -1993,15 +1993,19 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_ZOOM_OUT:
-		enable = doc_buffer && lyxrc.zoom > 10;
-		if (lyxrc.zoom <= 10)
+	case LFUN_BUFFER_ZOOM_IN: {
+		// only diff between these two is that the default for ZOOM_OUT
+		// is a neg. number
+		bool const neg_zoom =
+			convert<int>(cmd.argument()) < 0 ||
+			(cmd.action() == LFUN_BUFFER_ZOOM_OUT && cmd.argument().empty());
+		if (lyxrc.zoom <= 10 && neg_zoom) {
 			flag.message(_("Zoom level cannot be less than 10%."));
+			enable = false;
+		} else
+			enable = doc_buffer;
 		break;
-
-	case LFUN_BUFFER_ZOOM_IN:
-		enable = doc_buffer != 0;
-		break;
-
+	}
 	case LFUN_BUFFER_MOVE_NEXT:
 	case LFUN_BUFFER_MOVE_PREVIOUS:
 		// we do not cycle when moving
