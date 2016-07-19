@@ -114,6 +114,7 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -851615295 "ef"
 \author 893223064 "John Robert Hudson" j.r.hudson@virginmedia.com
 \end_header
 
@@ -25819,7 +25820,11 @@ lyxclient -g %1 %2
 \end_layout
 
 \begin_layout Standard
-Reverse search is triggered by double-click.
+Reverse search is triggered by double-click
+\change_inserted -851615295 1468920502
+ or, in more recent versions, by context menu
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsubsection*
