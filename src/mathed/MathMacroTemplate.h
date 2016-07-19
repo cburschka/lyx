@@ -92,6 +92,8 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	void drawBackground(PainterInfo & pi, int x, int y) const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// identifies macro templates
 	MathMacroTemplate * asMacroTemplate() { return this; }
