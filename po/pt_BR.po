@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-07-13 13:49-0400\n"
-"PO-Revision-Date: 2016-04-24 11:18-0300\n"
+"PO-Revision-Date: 2016-07-15 19:54-0300\n"
 "Last-Translator: Georger Araújo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -1055,7 +1055,7 @@ msgstr "Notas esmaecidas:"
 #: src/frontends/qt4/GuiDocument.cpp:1648
 #: src/frontends/qt4/GuiDocument.cpp:1678
 msgid "&Change..."
-msgstr "&Mudar..."
+msgstr "&Alterar..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
 msgid "Background Colors"
@@ -1220,7 +1220,6 @@ msgid "Show Output &Anyway"
 msgstr "Mostrar Saída, &Até com Erros"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
-#, fuzzy
 msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
@@ -2242,8 +2241,8 @@ msgstr "Selecione qual pacote de idioma o Lyx deve usar"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: "
-"\\usepackage{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2729,9 +2728,8 @@ msgid "De&fault output format:"
 msgstr "&Formato padrão de saída:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
-#, fuzzy
 msgid "LyX Format"
-msgstr "&Formato:"
+msgstr "Formato LyX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -2741,10 +2739,15 @@ msgid ""
 "directory path). Disabling this option plays nicer in\n"
 "collaborative settings and with version control systems."
 msgstr ""
+"Salvar todos os parâmetros no arquivo LyX, inclusive os que são\n"
+"modificados com frequência ou que são específicos de usuário\n"
+"(p. ex. o caminho de pasta do documento, ou a saída do controle\n"
+"de alterações). Desativar esta opção funciona melhor em\n"
+"cenários colaborativos e com sistemas de controle de versão."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr ""
+msgstr "Salvar propriedades &transientes"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -6292,9 +6295,8 @@ msgid "Proof."
 msgstr "Prova."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
-msgstr "Título (Moldura Simples)"
+msgstr "Manhas de Título e Preâmbulo"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6306,16 +6308,22 @@ msgid ""
 "related material. (If you put these in a Standard layout, this signals to "
 "LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Oferece dois novos estilos: 1. Um estilo No Preâmbulo que insere o que for "
+"digitado nele no preâmbulo. Isso pode ser usado, caso desejado, para incluir "
+"código de preâmbulo no corpo de um documento do LyX. 2. Um estilo No Título "
+"que insere seu conteúdo no corpo do documento LaTeX, mas antes que o comando "
+"\\maketitle seja emitido. Isso é útil para criar ramos e notas em material "
+"relacionado ao título (se você usar esses estilos em um layout Padrão, isso "
+"sinaliza ao LyX para emitir o comando \\maketitle, que pode então vir antes "
+"do momento desejado)."
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Preâmbulo"
+msgstr "No Preâmbulo"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Título"
+msgstr "No Título"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -11962,9 +11970,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install."
-"packages('knitr'). Nota: exige R >= 2.14.1. Para mais informações, consulte "
-"http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install.packages"
+"('knitr'). Nota: exige R >= 2.14.1. Para mais informações, consulte http://"
+"yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13655,7 +13663,7 @@ msgid ""
 "chemical risk and safety statements. For a description see the file R-S-"
 "statements.lyx in LyX's examples folder."
 msgstr ""
-"Fornece dois insets e um environment para compor números e frases de "
+"Oferece dois insets e um environment para compor números e frases de "
 "declarações de risco químico e segurança. Para mais informações, consulte o "
 "arquivo 'R-S-statements.lyx' na pasta de exemplos do LyX."
 
@@ -18094,7 +18102,7 @@ msgstr "Inserir novo Ramo...|I"
 
 #: lib/ui/stdmenus.inc:524
 msgid "Change Tracking|C"
-msgstr "Controle de Alterações|A"
+msgstr "Controle de Alterações|l"
 
 #: lib/ui/stdmenus.inc:525
 msgid "Build Program|B"
@@ -18102,7 +18110,7 @@ msgstr "Construir Programa|C"
 
 #: lib/ui/stdmenus.inc:526
 msgid "LaTeX Log|L"
-msgstr "Log do LaTeX|L"
+msgstr "Log do LaTeX|X"
 
 #: lib/ui/stdmenus.inc:527
 msgid "Start Appendix Here|x"
@@ -18118,7 +18126,7 @@ msgstr "Atualizar Documento Mestre|A"
 
 #: lib/ui/stdmenus.inc:534
 msgid "Compressed|o"
-msgstr "Comprimido|m"
+msgstr "Comprimido|o"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Disable Editing|E"
@@ -23198,9 +23206,8 @@ msgid "SVG"
 msgstr "SVG"
 
 #: lib/configure.py:585
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Comprimido|m"
+msgstr "SVG (comprimido)"
 
 #: lib/configure.py:588
 msgid "BMP"
@@ -23609,9 +23616,9 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Formato de Arquivamento LyX (tar.gz)"
 
 #: src/Author.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "Compilado em %1$s[[date]], %2$s[[time]]"
+msgstr "%1$s[[name]] (%2$s[[email]])"
 
 #: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2342
 #, c-format
@@ -23681,7 +23688,7 @@ msgstr "\\begin_document ausente"
 #: src/Buffer.cpp:993 src/Buffer.cpp:999 src/Buffer.cpp:2794
 #: src/Buffer.cpp:2800
 msgid "Changes not shown in LaTeX output"
-msgstr "Modificações não mostradas na saída LaTeX"
+msgstr "Alterações não mostradas na saída LaTeX"
 
 #: src/Buffer.cpp:994 src/Buffer.cpp:2795
 msgid ""
@@ -23690,7 +23697,7 @@ msgid ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"As modificações não serão realçadas na saída LaTeX, porque não estão "
+"As alterações não serão realçadas na saída LaTeX, porque não estão "
 "instalados nem o dvipost nem o xcolor/ulem.\n"
 "Por favor instale esses pacotes ou redefina \\lyxadded e \\lyxdeleted no "
 "preâmbulo LaTeX."
@@ -23702,8 +23709,8 @@ msgid ""
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 msgstr ""
-"As modificações não serão realçadas na saída LaTeX ao usar o pdflatex, "
-"porque o xcolor e o ulem não estão instalados.\n"
+"As alterações não serão realçadas na saída LaTeX ao usar o pdflatex, porque "
+"o xcolor e o ulem não estão instalados.\n"
 "Por favor instale ambos os pacotes ou redefina \\lyxadded e \\lyxdeleted no "
 "preâmbulo LaTeX."
 
@@ -23873,7 +23880,7 @@ msgstr " não foi possível gravar o arquivo!"
 
 #: src/Buffer.cpp:1530
 msgid " done."
-msgstr " pronto."
+msgstr " feito."
 
 #: src/Buffer.cpp:1545
 #, c-format
@@ -25948,11 +25955,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3056
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3060
 msgid ""
@@ -26323,7 +26330,7 @@ msgstr "[Controle de Alterações] "
 #: src/Text.cpp:1908
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr ""
+msgstr "Alterado por %1$s[[author]] em %2$s[[date]]. "
 
 #: src/Text.cpp:1918 src/mathed/InsetMathFont.cpp:213
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -27350,16 +27357,14 @@ msgid "Merge Changes"
 msgstr "Mesclar Alterações"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Alteração feita por %1$s\n"
+"Alterado por %1$s\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
-#, fuzzy
 msgid "Change made on %1\n"
 msgstr "Alteração feita em %1$s\n"
 
@@ -29829,7 +29834,7 @@ msgstr "Mais Idiomas ...|M"
 
 #: src/frontends/qt4/Menus.cpp:965 src/frontends/qt4/Menus.cpp:966
 msgid "Hidden|H"
-msgstr "Ocultos|H"
+msgstr "Ocultos|O"
 
 #: src/frontends/qt4/Menus.cpp:970
 msgid "<No Documents Open>"
@@ -30913,9 +30918,8 @@ msgid "Reference to Name"
 msgstr "Referência a Nome"
 
 #: src/insets/InsetRef.cpp:357
-#, fuzzy
 msgid "NameRef: "
-msgstr "RefNome:"
+msgstr "RefANome:"
 
 #: src/insets/InsetScript.cpp:343
 msgid "subscript"
@@ -31595,7 +31599,7 @@ msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
 msgstr ""
-"Aconteceu um erro com este documento.\n"
+"Houve um erro com este documento.\n"
 "O LyX tentará fechá-lo de forma segura."
 
 #: src/support/lassert.cpp:83
