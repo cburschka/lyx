@@ -550,8 +550,15 @@ void RowPainter::paintOnlyInsets()
 	Row::const_iterator const & end = row_.end();
 	for ( ; cit != end ; ++cit) {
 		Row::Element const & e = *cit;
-		if (e.type == Row::INSET)
-				paintInset(e);
+		if (e.type == Row::INSET) {
+			paintInset(e);
+			// The line that indicates word in a different language
+			paintForeignMark(e);
+			// change tracking (not for insets that handle it themselves)
+			if (!e.inset->canPaintChange(*pi_.base.bv))
+				paintChange(e);
+		}
+
 		x_ += e.full_width();
 	}
 }
