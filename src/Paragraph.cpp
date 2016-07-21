@@ -2022,7 +2022,6 @@ docstring Paragraph::expandParagraphLabel(Layout const & layout,
 void Paragraph::applyLayout(Layout const & new_layout)
 {
 	d->layout_ = &new_layout;
-	setBeginOfBody();
 	LyXAlignment const oldAlign = d->params_.align();
 
 	if (!(oldAlign & d->layout_->alignpossible)) {
