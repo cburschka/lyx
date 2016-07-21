@@ -402,6 +402,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	}
 
 	// redo insets
+	par.setBeginOfBody();
 	Font const bufferfont = buffer.params().getFont();
 	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	InsetList::const_iterator ii = par.insetList().begin();
@@ -435,7 +436,6 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		}
 	}
 
-	par.setBeginOfBody();
 	pos_type first = 0;
 	size_t row_index = 0;
 	// maximum pixel width of a row

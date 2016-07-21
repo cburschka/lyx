@@ -49,7 +49,11 @@ What's new
 
 - Fix display of multi-author citations when the GUI language is not English.
 
-- Fix bug where change tracking marks are lost under math insets (bug 10265).
+- Fix bug where change tracking marks are lost under math insets (bug
+  10265).
+
+- Fix display glitch when switching to Description layout with an inset
+  at the beginning of the paragraph (bug 10163)
 
 * INTERNALS
 
