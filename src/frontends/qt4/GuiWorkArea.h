@@ -234,7 +234,9 @@ private Q_SLOTS:
 	void mouseDoubleClickEvent(QMouseEvent * event);
 
 private:
-	///
+	/// true if position is a tab (rather than the blank space in tab bar)
+	bool posIsTab(QPoint position);
+
 	int clicked_tab_;
 	///
 	QToolButton * closeBufferButton;

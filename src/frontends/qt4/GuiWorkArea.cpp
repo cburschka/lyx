@@ -1628,6 +1628,15 @@ void TabWorkArea::paintEvent(QPaintEvent * event)
 }
 
 
+bool TabWorkArea::posIsTab(QPoint position)
+{
+	for (int i = 0; i < count(); ++i)
+		if (tabBar()->tabRect(i).contains(position))
+			return true;
+	return false;
+}
+
+
 void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
 {
 	if (event->button() != Qt::LeftButton)
@@ -1640,9 +1649,8 @@ void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
 	// leave this code for now. (skostysh, 2016-07-21)
 	//
 	// return early if double click on existing tabs
-	for (int i = 0; i < count(); ++i)
-		if (tabBar()->tabRect(i).contains(event->pos()))
-			return;
+	if (posIsTab(event->pos()))
+		return;
 
 	dispatch(FuncRequest(LFUN_BUFFER_NEW));
 }
