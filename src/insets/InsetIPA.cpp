@@ -151,7 +151,7 @@ void InsetIPA::reloadPreview(DocIterator const & pos) const
 void InsetIPA::draw(PainterInfo & pi, int x, int y) const
 {
 	if (previewState(pi.base.bv)) {
-		preview_->draw(pi, x + TEXT_TO_INSET_OFFSET, y);
+		preview_->draw(pi, x, y);
 		setPosCache(pi, x, y);
 		return;
 	}
@@ -181,15 +181,12 @@ void InsetIPA::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
-		mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
-		
+
 		dim.wid = max(dim.wid, 4);
 		dim.asc = max(dim.asc, 4);
-		
+
 		dim.asc += TEXT_TO_INSET_OFFSET;
 		dim.des += TEXT_TO_INSET_OFFSET;
-		dim.wid += TEXT_TO_INSET_OFFSET;
-		dim.wid += TEXT_TO_INSET_OFFSET;
 		// insert a one pixel gap
 		dim.wid += 1;
 		// Cache the inset dimension.
