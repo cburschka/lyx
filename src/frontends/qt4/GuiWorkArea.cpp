@@ -1633,6 +1633,12 @@ void TabWorkArea::mouseDoubleClickEvent(QMouseEvent * event)
 	if (event->button() != Qt::LeftButton)
 		return;
 
+	// this code chunk is unnecessary because it seems the event only makes
+	// it this far if it is not on a tab. I'm not sure why this is (maybe
+	// it is handled and ended in DragTabBar?), and thus I'm not sure if
+	// this is true in all cases and if it will be true in the future so I
+	// leave this code for now. (skostysh, 2016-07-21)
+	//
 	// return early if double click on existing tabs
 	for (int i = 0; i < count(); ++i)
 		if (tabBar()->tabRect(i).contains(event->pos()))
