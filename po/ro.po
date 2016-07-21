@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 13:49-0400\n"
+"POT-Creation-Date: 2016-07-21 14:31-0400\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -201,7 +201,7 @@ msgstr "&Adaugă"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1791
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Renunță"
@@ -27638,7 +27638,7 @@ msgstr "Format|F"
 msgid " not known"
 msgstr "necunoscut"
 
-#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1687
+#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1676
 #, fuzzy
 msgid "Missing argument"
 msgstr "Parametrii listă"
@@ -28219,70 +28219,70 @@ msgstr "Despre LyX"
 msgid "LyX: %1$s"
 msgstr "Vizualizează DVI"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #, fuzzy
 msgid "About %1"
 msgstr "Despre LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #: src/frontends/qt4/GuiPrefs.cpp:3265
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 #, fuzzy
 msgid "Reconfigure"
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 #, fuzzy
 msgid "Quit %1"
 msgstr "Despre LyX"
 
-#: src/frontends/qt4/GuiApplication.cpp:1121
+#: src/frontends/qt4/GuiApplication.cpp:1110
 #, fuzzy
 msgid "Nothing to do"
 msgstr "Nimic de indexat"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1116
 #, fuzzy
 msgid "Unknown action"
 msgstr "necunoscut"
 
-#: src/frontends/qt4/GuiApplication.cpp:1171
+#: src/frontends/qt4/GuiApplication.cpp:1160
 #, fuzzy
 msgid "Command not handled"
 msgstr "S&fîrșit comandă:"
 
-#: src/frontends/qt4/GuiApplication.cpp:1177
+#: src/frontends/qt4/GuiApplication.cpp:1166
 #, fuzzy
 msgid "Command disabled"
 msgstr "S&fîrșit comandă:"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1280
 msgid "Command not allowed without a buffer open"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1298
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1489
 #, fuzzy
 msgid "Running configure..."
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:1508
+#: src/frontends/qt4/GuiApplication.cpp:1497
 #, fuzzy
 msgid "Reloading configuration..."
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1504
 #, fuzzy
 msgid "System reconfiguration failed"
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1505
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -28290,64 +28290,64 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1521
+#: src/frontends/qt4/GuiApplication.cpp:1510
 #, fuzzy
 msgid "System reconfigured"
 msgstr "Reconfigurează|R"
 
-#: src/frontends/qt4/GuiApplication.cpp:1522
+#: src/frontends/qt4/GuiApplication.cpp:1511
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1602
+#: src/frontends/qt4/GuiApplication.cpp:1591
 #, fuzzy
 msgid "Exiting."
 msgstr "Ieșire|I"
 
-#: src/frontends/qt4/GuiApplication.cpp:1699
+#: src/frontends/qt4/GuiApplication.cpp:1688
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Inserez documentul %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1718
+#: src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1734
+#: src/frontends/qt4/GuiApplication.cpp:1723
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1931
+#: src/frontends/qt4/GuiApplication.cpp:1920
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2006
+#: src/frontends/qt4/GuiApplication.cpp:1995
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Document implicit|#D"
 
-#: src/frontends/qt4/GuiApplication.cpp:2010
+#: src/frontends/qt4/GuiApplication.cpp:1999
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Salvează valorile ca implicite pentru document"
 
-#: src/frontends/qt4/GuiApplication.cpp:2189
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2193
 #, fuzzy
 msgid "Unknown function."
 msgstr "necunoscut"
 
-#: src/frontends/qt4/GuiApplication.cpp:2672
+#: src/frontends/qt4/GuiApplication.cpp:2661
 #, fuzzy
 msgid "The current document was closed."
 msgstr "Verteiler"
 
-#: src/frontends/qt4/GuiApplication.cpp:2682
+#: src/frontends/qt4/GuiApplication.cpp:2671
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -28355,24 +28355,24 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2686
-#: src/frontends/qt4/GuiApplication.cpp:2692
+#: src/frontends/qt4/GuiApplication.cpp:2675
+#: src/frontends/qt4/GuiApplication.cpp:2681
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2690
+#: src/frontends/qt4/GuiApplication.cpp:2679
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2982
-#: src/frontends/qt4/GuiApplication.cpp:2994
+#: src/frontends/qt4/GuiApplication.cpp:2971
+#: src/frontends/qt4/GuiApplication.cpp:2983
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Listă de slide-uri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2972
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -28383,12 +28383,12 @@ msgstr ""
 "%1$s.\n"
 "Te rog verifică instalarea."
 
-#: src/frontends/qt4/GuiApplication.cpp:2989
+#: src/frontends/qt4/GuiApplication.cpp:2978
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Listă de slide-uri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2990
+#: src/frontends/qt4/GuiApplication.cpp:2979
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -28398,7 +28398,7 @@ msgstr ""
 "%1$s.\n"
 "Te rog verifică instalarea."
 
-#: src/frontends/qt4/GuiApplication.cpp:2995
+#: src/frontends/qt4/GuiApplication.cpp:2984
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

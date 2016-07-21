@@ -214,7 +214,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 13:49-0400\n"
+"POT-Creation-Date: 2016-07-21 14:31-0400\n"
 "PO-Revision-Date: 2016-04-12 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -403,7 +403,7 @@ msgstr "Lä&gg till"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1791
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Avbryt"
@@ -26509,7 +26509,7 @@ msgstr "Utformning "
 msgid " not known"
 msgstr " inte känd"
 
-#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1687
+#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1676
 msgid "Missing argument"
 msgstr "Argument saknas"
 
@@ -27130,60 +27130,60 @@ msgstr "Om LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 msgid "About %1"
 msgstr "Om %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #: src/frontends/qt4/GuiPrefs.cpp:3265
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Reconfigure"
 msgstr "Omkonfigurera"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Quit %1"
 msgstr "Avsluta %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1121
+#: src/frontends/qt4/GuiApplication.cpp:1110
 msgid "Nothing to do"
 msgstr "Ingenting att göra"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1116
 msgid "Unknown action"
 msgstr "Okänd handling"
 
-#: src/frontends/qt4/GuiApplication.cpp:1171
+#: src/frontends/qt4/GuiApplication.cpp:1160
 msgid "Command not handled"
 msgstr "Kommando hanteras inte"
 
-#: src/frontends/qt4/GuiApplication.cpp:1177
+#: src/frontends/qt4/GuiApplication.cpp:1166
 msgid "Command disabled"
 msgstr "Kommando inaktiverad"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1280
 msgid "Command not allowed without a buffer open"
 msgstr "Kommandot tillåts inte utan en buffert öppen"
 
-#: src/frontends/qt4/GuiApplication.cpp:1298
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "<LFUN-COMMAND>-argumentet för buffer-forall är inte giltigt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1489
 msgid "Running configure..."
 msgstr "Konfigurering körs..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1508
+#: src/frontends/qt4/GuiApplication.cpp:1497
 msgid "Reloading configuration..."
 msgstr "Laddar om konfiguration..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1504
 msgid "System reconfiguration failed"
 msgstr "Systemets omkonfigurering misslyckades"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1505
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -27195,11 +27195,11 @@ msgstr ""
 "inte fungerar som det ska.\n"
 "Vänligen omkonfigurera igen om det behövs."
 
-#: src/frontends/qt4/GuiApplication.cpp:1521
+#: src/frontends/qt4/GuiApplication.cpp:1510
 msgid "System reconfigured"
 msgstr "System omkonfigurerat"
 
-#: src/frontends/qt4/GuiApplication.cpp:1522
+#: src/frontends/qt4/GuiApplication.cpp:1511
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -27209,50 +27209,50 @@ msgstr ""
 "Du måste starta om LyX för att kunna använda\n"
 "uppdaterade specifikationer för dokumentklasser."
 
-#: src/frontends/qt4/GuiApplication.cpp:1602
+#: src/frontends/qt4/GuiApplication.cpp:1591
 msgid "Exiting."
 msgstr "Avslutar."
 
-#: src/frontends/qt4/GuiApplication.cpp:1699
+#: src/frontends/qt4/GuiApplication.cpp:1688
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Öppnar hjälpfil %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1718
+#: src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_namn> <x11_namn>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1734
+#: src/frontends/qt4/GuiApplication.cpp:1723
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" misslyckades - färg är odefinierad eller kanske inte kan "
 "omdefinieras"
 
-#: src/frontends/qt4/GuiApplication.cpp:1931
+#: src/frontends/qt4/GuiApplication.cpp:1920
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Tillämpade \"%1$s\" till %2$d buffert(ar)"
 
-#: src/frontends/qt4/GuiApplication.cpp:2006
+#: src/frontends/qt4/GuiApplication.cpp:1995
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Standardvärden för dokument sparade i %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2010
+#: src/frontends/qt4/GuiApplication.cpp:1999
 msgid "Unable to save document defaults"
 msgstr "Kan inte spara standardvärden för dokument"
 
-#: src/frontends/qt4/GuiApplication.cpp:2189
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2193
 msgid "Unknown function."
 msgstr "Okänd funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2672
+#: src/frontends/qt4/GuiApplication.cpp:2661
 msgid "The current document was closed."
 msgstr "Det aktuella dokumentet stängdes."
 
-#: src/frontends/qt4/GuiApplication.cpp:2682
+#: src/frontends/qt4/GuiApplication.cpp:2671
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -27264,12 +27264,12 @@ msgstr ""
 "\n"
 "Undantag: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2686
-#: src/frontends/qt4/GuiApplication.cpp:2692
+#: src/frontends/qt4/GuiApplication.cpp:2675
+#: src/frontends/qt4/GuiApplication.cpp:2681
 msgid "Software exception Detected"
 msgstr "Mjukvaruundantag upptäckt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2690
+#: src/frontends/qt4/GuiApplication.cpp:2679
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -27277,12 +27277,12 @@ msgstr ""
 "LyX har fångat ett riktigt konstigt undantag, det kommer nu att försöka "
 "spara alla osparade dokument och avslutas."
 
-#: src/frontends/qt4/GuiApplication.cpp:2982
-#: src/frontends/qt4/GuiApplication.cpp:2994
+#: src/frontends/qt4/GuiApplication.cpp:2971
+#: src/frontends/qt4/GuiApplication.cpp:2983
 msgid "Could not find UI definition file"
 msgstr "Kunde inte hitta UI-definitionsfil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2972
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27293,11 +27293,11 @@ msgstr ""
 "%1$s\n"
 "Vänligen kontrollera din installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2989
+#: src/frontends/qt4/GuiApplication.cpp:2978
 msgid "Could not find default UI file"
 msgstr "Kunde inte hitta standard UI-fil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2990
+#: src/frontends/qt4/GuiApplication.cpp:2979
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27305,7 +27305,7 @@ msgstr ""
 "LyX kunde inte hitta standardfilen för UI!\n"
 "Vänligen kontrollera din installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2995
+#: src/frontends/qt4/GuiApplication.cpp:2984
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 13:49-0400\n"
+"POT-Creation-Date: 2016-07-21 14:31-0400\n"
 "PO-Revision-Date: 2012-11-03 01:01+0200\n"
 "Last-Translator: Michał Fita <michal.fita@gmail.com>\n"
 "Language-Team: No team\n"
@@ -206,7 +206,7 @@ msgstr "&Dodaj"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1791
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Anuluj"
@@ -27184,7 +27184,7 @@ msgstr "Układ"
 msgid " not known"
 msgstr " nieznane"
 
-#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1687
+#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1676
 msgid "Missing argument"
 msgstr "Brakuje argumentu"
 
@@ -27810,60 +27810,60 @@ msgstr "O LyX-ie"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 msgid "About %1"
 msgstr "O %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #: src/frontends/qt4/GuiPrefs.cpp:3265
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Reconfigure"
 msgstr "Rekonfiguruj"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Quit %1"
 msgstr "Wyjdź z %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1121
+#: src/frontends/qt4/GuiApplication.cpp:1110
 msgid "Nothing to do"
 msgstr "Nic do zrobienia"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1116
 msgid "Unknown action"
 msgstr "Nieznane polecenie"
 
-#: src/frontends/qt4/GuiApplication.cpp:1171
+#: src/frontends/qt4/GuiApplication.cpp:1160
 msgid "Command not handled"
 msgstr "Polecenie nie obsłużone"
 
-#: src/frontends/qt4/GuiApplication.cpp:1177
+#: src/frontends/qt4/GuiApplication.cpp:1166
 msgid "Command disabled"
 msgstr "Polecenie zablokowane"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1280
 msgid "Command not allowed without a buffer open"
 msgstr "Polecenie nie dostępne bez otwartego bufora"
 
-#: src/frontends/qt4/GuiApplication.cpp:1298
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "argument <LFUN-COMMAND> z dla wszystkich w buforze nie jest poprawna"
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1489
 msgid "Running configure..."
 msgstr "Uruchomiono konfigurowanie..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1508
+#: src/frontends/qt4/GuiApplication.cpp:1497
 msgid "Reloading configuration..."
 msgstr "Przeładowanie konfiguracji..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1504
 msgid "System reconfiguration failed"
 msgstr "Niepowodzenie rekonfiguracji systemu"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1505
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -27875,11 +27875,11 @@ msgstr ""
 "jednakże LyX może nie działać poprawnie.\n"
 "Proszę rekonfigurować ponownie, gdy zajdzie potrzeba."
 
-#: src/frontends/qt4/GuiApplication.cpp:1521
+#: src/frontends/qt4/GuiApplication.cpp:1510
 msgid "System reconfigured"
 msgstr "System został zrekonfigurowany"
 
-#: src/frontends/qt4/GuiApplication.cpp:1522
+#: src/frontends/qt4/GuiApplication.cpp:1511
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -27889,50 +27889,50 @@ msgstr ""
 "Niezbędne jest ponowne uruchomienie programu LyX\n"
 "dla odświeżenia informacji o klasach."
 
-#: src/frontends/qt4/GuiApplication.cpp:1602
+#: src/frontends/qt4/GuiApplication.cpp:1591
 msgid "Exiting."
 msgstr "Zakończanie."
 
-#: src/frontends/qt4/GuiApplication.cpp:1699
+#: src/frontends/qt4/GuiApplication.cpp:1688
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otwieranie pliku pomocy %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1718
+#: src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Składnia: set-color <kolor_LyX> <kolor_X11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1734
+#: src/frontends/qt4/GuiApplication.cpp:1723
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Ustawienie koloru %1$s nie powiodło się -- kolor nie został zdefiniowany lub "
 "nie można go przedefiniować"
 
-#: src/frontends/qt4/GuiApplication.cpp:1931
+#: src/frontends/qt4/GuiApplication.cpp:1920
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Zastosowano \"%1$s\" do %2$d bufora(-ów)"
 
-#: src/frontends/qt4/GuiApplication.cpp:2006
+#: src/frontends/qt4/GuiApplication.cpp:1995
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Ustawienia domyślne dokumentu zapisano w %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2010
+#: src/frontends/qt4/GuiApplication.cpp:1999
 msgid "Unable to save document defaults"
 msgstr "Nie można zapisać ustawień domyślnych"
 
-#: src/frontends/qt4/GuiApplication.cpp:2189
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2193
 msgid "Unknown function."
 msgstr "Nieznane polecenie"
 
-#: src/frontends/qt4/GuiApplication.cpp:2672
+#: src/frontends/qt4/GuiApplication.cpp:2661
 msgid "The current document was closed."
 msgstr "Aktualny dokument został zamknięty."
 
-#: src/frontends/qt4/GuiApplication.cpp:2682
+#: src/frontends/qt4/GuiApplication.cpp:2671
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -27944,12 +27944,12 @@ msgstr ""
 "\n"
 "Wyjątek: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2686
-#: src/frontends/qt4/GuiApplication.cpp:2692
+#: src/frontends/qt4/GuiApplication.cpp:2675
+#: src/frontends/qt4/GuiApplication.cpp:2681
 msgid "Software exception Detected"
 msgstr "Wykryto wyjątek oprogramowania"
 
-#: src/frontends/qt4/GuiApplication.cpp:2690
+#: src/frontends/qt4/GuiApplication.cpp:2679
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -27957,12 +27957,12 @@ msgstr ""
 "LyX uchwycił jakiś wyjątkowo zakręcony wyjątek, nastąpi teraz próba "
 "zapisania wszystkich niezapisanych dokumentów, następnie wyjścia."
 
-#: src/frontends/qt4/GuiApplication.cpp:2982
-#: src/frontends/qt4/GuiApplication.cpp:2994
+#: src/frontends/qt4/GuiApplication.cpp:2971
+#: src/frontends/qt4/GuiApplication.cpp:2983
 msgid "Could not find UI definition file"
 msgstr "Nie można odnaleźć pliku definicji UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2972
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27973,11 +27973,11 @@ msgstr ""
 "%1$s.\n"
 "Proszę sprawdzić swoją instalację."
 
-#: src/frontends/qt4/GuiApplication.cpp:2989
+#: src/frontends/qt4/GuiApplication.cpp:2978
 msgid "Could not find default UI file"
 msgstr "Nie można odnaleźć domyślnego pliku UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2990
+#: src/frontends/qt4/GuiApplication.cpp:2979
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27985,7 +27985,7 @@ msgstr ""
 "LyX nie mógł odnaleźć domyślnego pliku interfejsu użytkownika!\n"
 "Proszę sprawdzić swoją instalację."
 
-#: src/frontends/qt4/GuiApplication.cpp:2995
+#: src/frontends/qt4/GuiApplication.cpp:2984
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

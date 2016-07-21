@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 13:49-0400\n"
+"POT-Creation-Date: 2016-07-21 14:31-0400\n"
 "PO-Revision-Date: 2016-07-13 16:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
@@ -199,7 +199,7 @@ msgstr "Pr&idať"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1791
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -26288,7 +26288,7 @@ msgstr "Schéma "
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1687
+#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1676
 msgid "Missing argument"
 msgstr "Chýba parameter"
 
@@ -26910,60 +26910,60 @@ msgstr "O programe LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 msgid "About %1"
 msgstr "O %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #: src/frontends/qt4/GuiPrefs.cpp:3265
 msgid "Preferences"
 msgstr "Preferencie"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Reconfigure"
 msgstr "Rekonfigurácia"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Quit %1"
 msgstr "Opustiť %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1121
+#: src/frontends/qt4/GuiApplication.cpp:1110
 msgid "Nothing to do"
 msgstr "Nie je čo robiť"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1116
 msgid "Unknown action"
 msgstr "Neznáma akcia"
 
-#: src/frontends/qt4/GuiApplication.cpp:1171
+#: src/frontends/qt4/GuiApplication.cpp:1160
 msgid "Command not handled"
 msgstr "Príkaz bez spracovávania"
 
-#: src/frontends/qt4/GuiApplication.cpp:1177
+#: src/frontends/qt4/GuiApplication.cpp:1166
 msgid "Command disabled"
 msgstr "Príkaz blokovaný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1280
 msgid "Command not allowed without a buffer open"
 msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden zásobník"
 
-#: src/frontends/qt4/GuiApplication.cpp:1298
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "argument pre <LFUN-COMMAND> buffer-forall je neplatný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1489
 msgid "Running configure..."
 msgstr "Spúšťam konfigurovanie…"
 
-#: src/frontends/qt4/GuiApplication.cpp:1508
+#: src/frontends/qt4/GuiApplication.cpp:1497
 msgid "Reloading configuration..."
 msgstr "Nové načítanie konfigurácie…"
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1504
 msgid "System reconfiguration failed"
 msgstr "Rekonfigurácia systému zlyhala"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1505
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -26975,11 +26975,11 @@ msgstr ""
 "ale LyX možno nebude schopný pracovať správne.\n"
 "Keď nutné, skúste prosím ešte raz rekonfigurovať."
 
-#: src/frontends/qt4/GuiApplication.cpp:1521
+#: src/frontends/qt4/GuiApplication.cpp:1510
 msgid "System reconfigured"
 msgstr "Systém je rekonfigurovaný"
 
-#: src/frontends/qt4/GuiApplication.cpp:1522
+#: src/frontends/qt4/GuiApplication.cpp:1511
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -26989,50 +26989,50 @@ msgstr ""
 "Musíte reštartovať LyX, keď chcete použiť akúkoľvek z\n"
 "aktualizovaných nastavení tried dokumentov."
 
-#: src/frontends/qt4/GuiApplication.cpp:1602
+#: src/frontends/qt4/GuiApplication.cpp:1591
 msgid "Exiting."
 msgstr "Končím."
 
-#: src/frontends/qt4/GuiApplication.cpp:1699
+#: src/frontends/qt4/GuiApplication.cpp:1688
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s pomocníkom %1$s…"
 
-#: src/frontends/qt4/GuiApplication.cpp:1718
+#: src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1734
+#: src/frontends/qt4/GuiApplication.cpp:1723
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
-#: src/frontends/qt4/GuiApplication.cpp:1931
+#: src/frontends/qt4/GuiApplication.cpp:1920
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Aplikované \"%1$s\" na %2$d zásobníkoch"
 
-#: src/frontends/qt4/GuiApplication.cpp:2006
+#: src/frontends/qt4/GuiApplication.cpp:1995
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Štandardy dokumentu uložené v %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2010
+#: src/frontends/qt4/GuiApplication.cpp:1999
 msgid "Unable to save document defaults"
 msgstr "Nedajú sa uložiť štandardné definície dokumentu"
 
-#: src/frontends/qt4/GuiApplication.cpp:2189
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2193
 msgid "Unknown function."
 msgstr "Neznáma funkcia."
 
-#: src/frontends/qt4/GuiApplication.cpp:2672
+#: src/frontends/qt4/GuiApplication.cpp:2661
 msgid "The current document was closed."
 msgstr "Aktuálny dokument sa zavrel."
 
-#: src/frontends/qt4/GuiApplication.cpp:2682
+#: src/frontends/qt4/GuiApplication.cpp:2671
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -27044,12 +27044,12 @@ msgstr ""
 "\n"
 "Výnimka: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2686
-#: src/frontends/qt4/GuiApplication.cpp:2692
+#: src/frontends/qt4/GuiApplication.cpp:2675
+#: src/frontends/qt4/GuiApplication.cpp:2681
 msgid "Software exception Detected"
 msgstr "Detekovaná softvérová výnimka"
 
-#: src/frontends/qt4/GuiApplication.cpp:2690
+#: src/frontends/qt4/GuiApplication.cpp:2679
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -27057,12 +27057,12 @@ msgstr ""
 "LyX zachytil záhadnú výnimku a teraz sa pokúsi uložiť všetky neuložené "
 "dokumenty a skončiť."
 
-#: src/frontends/qt4/GuiApplication.cpp:2982
-#: src/frontends/qt4/GuiApplication.cpp:2994
+#: src/frontends/qt4/GuiApplication.cpp:2971
+#: src/frontends/qt4/GuiApplication.cpp:2983
 msgid "Could not find UI definition file"
 msgstr "Nemôžem nájsť súbor definíc pre UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2972
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27073,11 +27073,11 @@ msgstr ""
 "%1$s.\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2989
+#: src/frontends/qt4/GuiApplication.cpp:2978
 msgid "Could not find default UI file"
 msgstr "Nemôžem nájsť predvolený UI-súbor"
 
-#: src/frontends/qt4/GuiApplication.cpp:2990
+#: src/frontends/qt4/GuiApplication.cpp:2979
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27085,7 +27085,7 @@ msgstr ""
 "LyX nenašiel predvolený UI súbor!\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2995
+#: src/frontends/qt4/GuiApplication.cpp:2984
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

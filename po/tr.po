@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-13 13:49-0400\n"
+"POT-Creation-Date: 2016-07-21 14:31-0400\n"
 "PO-Revision-Date: 2009-05-25 16:49+0100\n"
 "Last-Translator: H. İbrahim Güngör <h.ibrahim.gungor@gmail.com>\n"
 "Language-Team: Turkish <kde-i18n-doc@kde.org>\n"
@@ -203,7 +203,7 @@ msgstr "&Ekle"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1791
+#: src/frontends/qt4/GuiApplication.cpp:1780
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -27443,7 +27443,7 @@ msgstr "Yerleşim "
 msgid " not known"
 msgstr " bilinmiyor"
 
-#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1687
+#: src/Text3.cpp:2044 src/frontends/qt4/GuiApplication.cpp:1676
 msgid "Missing argument"
 msgstr "Eksik parametre"
 
@@ -28043,62 +28043,62 @@ msgstr "LyX Hakkında"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 msgid "About %1"
 msgstr "%1 Hakkında"
 
-#: src/frontends/qt4/GuiApplication.cpp:675
+#: src/frontends/qt4/GuiApplication.cpp:664
 #: src/frontends/qt4/GuiPrefs.cpp:3265
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Reconfigure"
 msgstr "Yeniden yapılandır"
 
-#: src/frontends/qt4/GuiApplication.cpp:676
+#: src/frontends/qt4/GuiApplication.cpp:665
 msgid "Quit %1"
 msgstr "%1 Çıkılıyor"
 
-#: src/frontends/qt4/GuiApplication.cpp:1121
+#: src/frontends/qt4/GuiApplication.cpp:1110
 msgid "Nothing to do"
 msgstr "Yapılacak birşey yok"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1116
 msgid "Unknown action"
 msgstr "Bilinmeyen eylem"
 
-#: src/frontends/qt4/GuiApplication.cpp:1171
+#: src/frontends/qt4/GuiApplication.cpp:1160
 #, fuzzy
 msgid "Command not handled"
 msgstr "Komut kapalı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1177
+#: src/frontends/qt4/GuiApplication.cpp:1166
 msgid "Command disabled"
 msgstr "Komut kapalı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1280
 #, fuzzy
 msgid "Command not allowed without a buffer open"
 msgstr "Bir belge açılmadan bu komut çalışmaz"
 
-#: src/frontends/qt4/GuiApplication.cpp:1298
+#: src/frontends/qt4/GuiApplication.cpp:1287
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1500
+#: src/frontends/qt4/GuiApplication.cpp:1489
 msgid "Running configure..."
 msgstr "Yapılandırma çalıştırılıyor..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1508
+#: src/frontends/qt4/GuiApplication.cpp:1497
 msgid "Reloading configuration..."
 msgstr "Yapılandırma yenileniyor..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1515
+#: src/frontends/qt4/GuiApplication.cpp:1504
 msgid "System reconfiguration failed"
 msgstr "Sistem yeniden yapılandırma başarısız"
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1505
 #, fuzzy
 msgid ""
 "The system reconfiguration has failed.\n"
@@ -28110,11 +28110,11 @@ msgstr ""
 "Öntanımlı metin sınıfı kullanılıyor fakat LyX düzgün çalışamayabilir.\n"
 "Gerekirse yeniden yapılandırın."
 
-#: src/frontends/qt4/GuiApplication.cpp:1521
+#: src/frontends/qt4/GuiApplication.cpp:1510
 msgid "System reconfigured"
 msgstr "Sistem yeniden yapılandırıldı"
 
-#: src/frontends/qt4/GuiApplication.cpp:1522
+#: src/frontends/qt4/GuiApplication.cpp:1511
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -28124,50 +28124,50 @@ msgstr ""
 "Güncellenen belge sınıflarını kullanabilmek\n"
 "için, LyX'i yeniden başlatmalısınız."
 
-#: src/frontends/qt4/GuiApplication.cpp:1602
+#: src/frontends/qt4/GuiApplication.cpp:1591
 msgid "Exiting."
 msgstr "Çıkılıyor."
 
-#: src/frontends/qt4/GuiApplication.cpp:1699
+#: src/frontends/qt4/GuiApplication.cpp:1688
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Yardım dosyası %1$s açılıyor..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1718
+#: src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1734
+#: src/frontends/qt4/GuiApplication.cpp:1723
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" başarısız - renk tanımlı değil ya da yeniden "
 "tanımlanmayabilir"
 
-#: src/frontends/qt4/GuiApplication.cpp:1931
+#: src/frontends/qt4/GuiApplication.cpp:1920
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2006
+#: src/frontends/qt4/GuiApplication.cpp:1995
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Belge öntanımlıları %1$s e kaydedildi"
 
-#: src/frontends/qt4/GuiApplication.cpp:2010
+#: src/frontends/qt4/GuiApplication.cpp:1999
 msgid "Unable to save document defaults"
 msgstr "Belge öntanımları kaydedilemedi"
 
-#: src/frontends/qt4/GuiApplication.cpp:2189
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2178
+#: src/frontends/qt4/GuiApplication.cpp:2193
 msgid "Unknown function."
 msgstr "Bilinmeyen fonksiyon."
 
-#: src/frontends/qt4/GuiApplication.cpp:2672
+#: src/frontends/qt4/GuiApplication.cpp:2661
 msgid "The current document was closed."
 msgstr "Mevcut belge kapatıldı."
 
-#: src/frontends/qt4/GuiApplication.cpp:2682
+#: src/frontends/qt4/GuiApplication.cpp:2671
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -28179,12 +28179,12 @@ msgstr ""
 "\n"
 "İstisna: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2686
-#: src/frontends/qt4/GuiApplication.cpp:2692
+#: src/frontends/qt4/GuiApplication.cpp:2675
+#: src/frontends/qt4/GuiApplication.cpp:2681
 msgid "Software exception Detected"
 msgstr "Yazılım İstisnası Yakalandı"
 
-#: src/frontends/qt4/GuiApplication.cpp:2690
+#: src/frontends/qt4/GuiApplication.cpp:2679
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -28192,12 +28192,12 @@ msgstr ""
 "Lyx çok garip kural dışı durum yakaladı, kaydedilmemiş tüm belgeleri "
 "kaydetmeye çalışacak ve çıkacak."
 
-#: src/frontends/qt4/GuiApplication.cpp:2982
-#: src/frontends/qt4/GuiApplication.cpp:2994
+#: src/frontends/qt4/GuiApplication.cpp:2971
+#: src/frontends/qt4/GuiApplication.cpp:2983
 msgid "Could not find UI definition file"
 msgstr "Arabirim tanımlama dosyası bulunamadı"
 
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2972
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -28208,12 +28208,12 @@ msgstr ""
 "okunurken hata oluştur.\n"
 "Lütfen kurulumunuzu kontrol edin."
 
-#: src/frontends/qt4/GuiApplication.cpp:2989
+#: src/frontends/qt4/GuiApplication.cpp:2978
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Arabirim tanımlama dosyası bulunamadı"
 
-#: src/frontends/qt4/GuiApplication.cpp:2990
+#: src/frontends/qt4/GuiApplication.cpp:2979
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -28223,7 +28223,7 @@ msgstr ""
 "okunurken hata oluştur.\n"
 "Lütfen kurulumunuzu kontrol edin."
 
-#: src/frontends/qt4/GuiApplication.cpp:2995
+#: src/frontends/qt4/GuiApplication.cpp:2984
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
