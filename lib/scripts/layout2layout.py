@@ -10,8 +10,9 @@
 
 # This script will update a .layout file to current format
 
+# The latest layout format is also defined in src/TextClass.cpp
+currentFormat = 60
 
-import os, re, string, sys
 
 # Incremented to format 4, 6 April 2007, lasgouttes
 # Introduction of generic "Provides" declaration
@@ -208,12 +209,22 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 60
 
+import os, re, string, sys
+import argparse
 
-def usage(prog_name):
-    return ("Usage: %s inputfile outputfile\n" % prog_name +
-            "or     %s <inputfile >outputfile" % prog_name)
+# Provide support for both python 2 and 3
+# (copied from lyx2lyx)
+PY2 = sys.version_info[0] == 2
+if PY2:
+    # argparse returns strings in the commandline encoding, we need to convert.
+    # sys.getdefaultencoding() would not always be correct, see
+    # http://legacy.python.org/dev/peps/pep-0383/
+    def cmd_arg(arg):
+        return arg.decode(sys.getfilesystemencoding())
+else:
+    cmd_arg = str
+# End of code to support for both python 2 and 3
 
 
 def error(message):
@@ -257,7 +268,7 @@ def addstring(s, l):
     l.append(s)
 
 
-def convert(lines):
+def convert(lines, end_format):
     " Convert to new format."
     re_Comment = re.compile(r'^(\s*)#')
     re_Counter = re.compile(r'\s*Counter\s*', re.IGNORECASE)
@@ -404,14 +415,14 @@ def convert(lines):
             if match:
                 formatline = i
                 format = int(match.group(4))
-                if format > 1 and format < currentFormat:
+                if format > 1 and format < end_format:
                     lines[i] = "Format %d" % (format + 1)
                     only_comment = 0
-                elif format == currentFormat:
+                elif format == end_format:
                     # nothing to do
                     return format
                 else:
-                    error('Cannot convert file format %s to %s' % (format, currentFormat))
+                    error('Cannot convert file format %s to %s' % (format, end_format))
             else:
                 lines.insert(i, "Format 2")
                 only_comment = 0
@@ -1140,27 +1151,50 @@ def convert(lines):
 
 
 def main(argv):
+    args = {}
+    args["description"] = "Convert layout file <inputfile> to a newer format."
+
+    parser = argparse.ArgumentParser(**args)
+
+    parser.add_argument("-t", "--to", type=int, dest="format",
+                        help=("destination layout format, default %i (latest)") % currentFormat)
+    parser.add_argument("input_file", nargs='?', type=cmd_arg, default=None,
+                        help="input file (default stdin)")
+    parser.add_argument("output_file", nargs='?', type=cmd_arg, default=None,
+                        help="output file (default stdout)")
+
+    options = parser.parse_args()
 
     # Open files
-    if len(argv) == 1:
-        source = sys.stdin
-        output = sys.stdout
-    elif len(argv) == 3:
-        source = open(argv[1], 'rb')
-        output = open(argv[2], 'wb')
+    if options.input_file:
+        source = open(options.input_file, 'rb')
     else:
-        error(usage(argv[0]))
+        source = sys.stdin
+
+    if options.output_file:
+        output = open(options.output_file, 'wb')
+    else:
+        output = sys.stdout
+
+    if options.format:
+        end_format = options.format
+    else:
+        end_format = currentFormat
+
+    if end_format > currentFormat:
+        error("Format %i does not exist" % end_format);
 
     # Do the real work
     lines = read(source)
     format = 1
-    while (format < currentFormat):
-        format = convert(lines)
+    while (format < end_format):
+        format = convert(lines, end_format)
     write(output, lines)
 
     # Close files
-    if len(argv) == 3:
+    if options.input_file:
         source.close()
+    if options.output_file:
         output.close()
 
     return 0
