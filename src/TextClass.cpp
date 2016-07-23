@@ -63,6 +63,12 @@ namespace lyx {
 //
 int const LAYOUT_FORMAT = 60; //lasgouttes LongTableNoNumber => Unnumbered
 
+
+// Layout format for the current lyx file format. Controls which format is
+// targeted by Local Layout > Convert. In master, equal to LAYOUT_FORMAT.
+int const LYXFILE_LAYOUT_FORMAT = LAYOUT_FORMAT;
+
+
 namespace {
 
 class LayoutNamesEqual : public unary_function<Layout, bool> {
@@ -79,26 +85,29 @@ private:
 };
 
 
-bool layout2layout(FileName const & filename, FileName const & tempfile)
+bool layout2layout(FileName const & filename, FileName const & tempfile,
+                   int const format = LAYOUT_FORMAT)
 {
 	FileName const script = libFileSearch("scripts", "layout2layout.py");
 	if (script.empty()) {
 		LYXERR0("Could not find layout conversion "
-			  "script layout2layout.py.");
+		        "script layout2layout.py.");
 		return false;
 	}
 
 	ostringstream command;
 	command << os::python() << ' ' << quoteName(script.toFilesystemEncoding())
-		<< ' ' << quoteName(filename.toFilesystemEncoding())
-		<< ' ' << quoteName(tempfile.toFilesystemEncoding());
+	        << " -t " << format
+	        << ' ' << quoteName(filename.toFilesystemEncoding())
+	        << ' ' << quoteName(tempfile.toFilesystemEncoding());
 	string const command_str = command.str();
 
 	LYXERR(Debug::TCLASS, "Running `" << command_str << '\'');
 
 	cmd_ret const ret = runCommand(command_str);
 	if (ret.first != 0) {
-		LYXERR0("Could not run layout conversion script layout2layout.py.");
+		if (format == LAYOUT_FORMAT)
+			LYXERR0("Conversion of layout with layout2layout.py has failed.");
 		return false;
 	}
 	return true;
@@ -290,7 +299,7 @@ std::string TextClass::convert(std::string const & str)
 	os.close();
 	TempFile tmp2("convert_localXXXXXX.layout");
 	FileName const tempfile = tmp2.name();
-	bool success = layout2layout(fn, tempfile);
+	bool success = layout2layout(fn, tempfile, LYXFILE_LAYOUT_FORMAT);
 	if (!success)
 		return "";
 	ifstream is(tempfile.toFilesystemEncoding().c_str());
@@ -375,13 +384,13 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 	os << str;
 	os.close();
 
-	// now try to convert it
-	bool const worx = convertLayoutFormat(tempfile, rt);
-	if (!worx) {
+	// now try to convert it to LAYOUT_FORMAT
+	if (!convertLayoutFormat(tempfile, rt)) {
 		LYXERR0("Unable to convert internal layout information to format "
 			<< LAYOUT_FORMAT);
 		return ERROR;
 	}
+
 	return OK_OLDFORMAT;
 }
 

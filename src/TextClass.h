@@ -171,7 +171,8 @@ public:
 	ReturnValues read(Lexer & lex, ReadType rt = BASECLASS);
 	/// validates the layout information passed in str
 	static ReturnValues validate(std::string const & str);
-	///
+	/// \return the conversion of \param str to the latest layout format
+	/// compatible with the lyx format.
 	static std::string convert(std::string const & str);
 
 	///////////////////////////////////////////////////////////////////
@@ -514,6 +515,9 @@ std::ostream & operator<<(std::ostream & os, PageSides p);
 
 /// current format of layout files
 extern int const LAYOUT_FORMAT;
+/// layout format for the current lyx file format (usually equal to
+/// LAYOUT_FORMAT)
+extern int const LYXFILE_LAYOUT_FORMAT;
 
 
 } // namespace lyx

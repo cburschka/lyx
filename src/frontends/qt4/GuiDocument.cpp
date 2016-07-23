@@ -545,6 +545,15 @@ void LocalLayout::apply(BufferParams & params)
 }
 
 
+void LocalLayout::hideConvert()
+{
+	convertPB->setEnabled(false);
+	convertLB->setText("");
+	convertPB->hide();
+	convertLB->hide();
+}
+
+
 void LocalLayout::textChanged()
 {
 	static const QString message =
@@ -556,15 +565,14 @@ void LocalLayout::textChanged()
 		validated_ = true;
 		validatePB->setEnabled(false);
 		validLB->setText("");
-		convertPB->hide();
-		convertLB->hide();
+		hideConvert();
 		changed();
 	} else if (!validatePB->isEnabled()) {
 		// if that's already enabled, we shouldn't need to do anything.
 		validated_ = false;
 		validLB->setText(message);
 		validatePB->setEnabled(true);
-		convertPB->setEnabled(false);
+		hideConvert();
 		changed();
 	}
 }
@@ -574,44 +582,52 @@ void LocalLayout::convert() {
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 	string const newlayout = TextClass::convert(layout);
-	LYXERR0(newlayout);
-	if (newlayout.empty()) {
-		Alert::error(_("Conversion Failed!"),
-		      _("Failed to convert local layout to current format."));
-	} else {
+	if (!newlayout.empty())
 		locallayoutTE->setPlainText(toqstr(newlayout));
-	}
 	validate();
 }
 
 
 void LocalLayout::convertPressed() {
 	convert();
+	hideConvert();
 	changed();
 }
 
 
 void LocalLayout::validate() {
-	static const QString valid = qt_("Layout is valid!");
-	static const QString vtext =
-		toqstr("<p style=\"font-weight: bold; \">")
-		  + valid + toqstr("</p>");
-	static const QString invalid = qt_("Layout is invalid!");
-	static const QString ivtext =
-		toqstr("<p style=\"color: #c00000; font-weight: bold; \">")
-		  + invalid + toqstr("</p>");
-
+	// Bold text
+	static const QString vpar("<p style=\"font-weight: bold;\">%1</p>");
+	// Flashy red bold text
+	static const QString ivpar("<p style=\"color: #c00000; font-weight: bold; \">"
+	                           "%1</p>");
 	string const layout =
 		fromqstr(locallayoutTE->document()->toPlainText().trimmed());
 	if (!layout.empty()) {
 		TextClass::ReturnValues const ret = TextClass::validate(layout);
 		validated_ = (ret == TextClass::OK) || (ret == TextClass::OK_OLDFORMAT);
 		validatePB->setEnabled(false);
-		validLB->setText(validated_ ? vtext : ivtext);
+		validLB->setText(validated_ ? vpar.arg(qt_("Layout is valid!"))
+		                            : ivpar.arg(qt_("Layout is invalid!")));
 		if (ret == TextClass::OK_OLDFORMAT) {
 			convertPB->show();
-			convertPB->setEnabled(true);
-			convertLB->setText(qt_("Convert to current format"));
+			// Testing conversion to LYXFILE_LAYOUT_FORMAT at this point
+			// already.
+			if (TextClass::convert(layout).empty()) {
+				// Conversion failed. If LAYOUT_FORMAT > LYXFILE_LAYOUT_FORMAT,
+				// then maybe the layout is still valid, but its format is more
+				// recent than LYXFILE_LAYOUT_FORMAT. However, if LAYOUT_FORMAT
+				// == LYXFILE_LAYOUT_FORMAT then something is definitely wrong.
+				convertPB->setEnabled(false);
+				const QString text = (LAYOUT_FORMAT == LYXFILE_LAYOUT_FORMAT)
+					? ivpar.arg(qt_("Conversion to current format impossible!"))
+					: vpar.arg(qt_("Conversion to current stable format "
+					               "impossible."));
+				convertLB->setText(text);
+			} else {
+				convertPB->setEnabled(true);
+				convertLB->setText(qt_("Convert to current format"));
+			}
 			convertLB->show();
 		} else {
 			convertPB->hide();

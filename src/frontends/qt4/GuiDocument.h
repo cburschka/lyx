@@ -322,6 +322,7 @@ Q_SIGNALS:
 private:
 	void validate();
 	void convert();
+	void hideConvert();
 private Q_SLOTS:
 	void textChanged();
 	void validatePressed();
