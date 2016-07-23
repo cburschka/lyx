@@ -43,10 +43,13 @@ macro(add_gettext_python  _par _dir)
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
       PRE_BUILD
-      COMMAND  ${CMAKE_COMMAND} -E copy_if_different "${TOP_SRC_DIR}/lib/layouttranslations" "${_dst}"
-      COMMAND ${LYX_PYTHON_EXECUTABLE}
-      ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
-      COMMAND  ${CMAKE_COMMAND} -E copy_if_different "${_dst}" "${TOP_SRC_DIR}/lib/layouttranslations"
+      COMMAND  ${CMAKE_COMMAND}
+	"-DTOP_SRC_DIR=${TOP_SRC_DIR}"
+	"-DDestFile=${_dst}"
+	"-DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}"
+	"-DParType=${_par1}"
+	"-DSources=${_src_files}"
+	-P "${TOP_SRC_DIR}/po/CreateLayoutTranslations.cmake"
       DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
