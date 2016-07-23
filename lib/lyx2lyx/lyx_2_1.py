@@ -219,7 +219,15 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
           else:
             lineERT += 1
       if environment == True:
+        # FIXME This version of the routine does not check for and pass over
+        # arguments before n. So it attempts to process the argument in the
+        # document, no matter what has been specified.
+        #
+        # The other branch does do that, but probably that code would be better
+        # in a single location: Skip all those arguments, then process the ones
+        # we want.
         end_ERT = find_end_of_inset(document.body, lineERT)
+        document.warning(str(end_ERT))
         if end_ERT == -1:
           document.warning("Can't find end of ERT!!")
           break
@@ -253,6 +261,9 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
               end2 = find_token(document.body, "\\end_inset", closing)
               document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
             document.body[lineERT : end_ERT + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n += 1
+        else:
+          document.warning("Unable to process argument!")
           n += 1
 
 
