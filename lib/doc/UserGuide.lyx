@@ -140,6 +140,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 274215730 "scott"
 \author 424524441 "rgheck"
 \end_header
 
@@ -43604,6 +43605,12 @@ arg   "closetab"
 \family default
 ) at the right side of the tab bar to close tabs.
  Otherwise every document tab has its own close button.
+
+\change_inserted 274215730 1469338548
+ Regardless of this option, one may always close a tab by middle-clicking
+ it in the tab bar.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
