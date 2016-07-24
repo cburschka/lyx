@@ -11,6 +11,9 @@ include_directories(${TOP_SRC_DIR}/po)
 
 SET(_lyxname ${PACKAGE})
 SET(_py_sources)
+
+# Idea stolen from http://public.kitware.com/pipermail/cmake/2011-January/041666.html
+
 macro(add_gettext_python  _par _dir)
   set(_sources)
   foreach(_arg ${ARGN})
@@ -40,6 +43,9 @@ macro(add_gettext_python  _par _dir)
     DEPENDS ${_tmp_src_files}
   )
   if (${_par} MATCHES "layouttranslations")
+    # lyx_pot.py requires the module "polib" if using target layouttranslations1,
+    # so we have to check for it
+    find_python_module("polib" REQUIRED)
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
       PRE_BUILD
