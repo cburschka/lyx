@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.2.1.
+This file describes what has been done in the preparation of LyX 2.2.2.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance.
@@ -14,12 +14,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Enable the use of LuaTeX for all polyglossia-supported languages.
-
-- New document parameter "Save transient properties" under Document Properties >
-  Format. (Output has been renamed into Format.) Disabling this option is made
-  to play nicer in collaborative settings. (bug 9841)
-
 
 * TEX2LYX IMPROVEMENTS
 
@@ -27,40 +21,10 @@ What's new
 
 * USER INTERFACE
 
-- Syntax highlighting in the preamble and and the source view has been made
-  compatible with dark themes (bug 8325).
-
-- Changed the display of buttons for collapsed branches. We now display the
-  same thing as if the branches were open (bug 10213).
-
-- "Provides <package> 1" now works with fontspec, subfig, and listings (bug
-  10257).
-
-- Added a new module "Title and Preamble Hacks".
-
-- Bring window to front after loading a document in single instance (bug 7875).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Brazilian, French, German, Interlingua, Italian and Slovakian user
-  interface localization.
-
-- Increase the maximum value for the number of last open files that LyX can
-  remember (bug 9924).
-
-- Change mouse cursor to indicate row/column selection in tabulars.
-
-- Make inset-select-all select all cells only in tables.
-
-- Automatically show the review toolbar if the document has tracked changes
-  (bug 8738), and related UI improvements.
-
-- Implement "Dissolve Inset" and "Show Label" context menu items for
-  arguments (bug 10150).
-
-- Restore selected reference when using "Go to label" and "Go back" in the
-  cross-reference dialog.
 
 
 * BUILD/INSTALLATION
@@ -73,112 +37,11 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Correctly protect the \pagebreak command when needed (bug 10092).
-
-- Resolve problem on Windows with importing files from directories with
-  accented characters on FAT drives (bug 10218).
-
-- InPreamble styles should be written to the preamble as many times as the
-  user requests them, even if it results in duplicate commands.
-
-- Make sure we output all XHTML table cells, even the empty ones (bug 10153).
-
-- .svgz images are now converted to .svg for XHTML export (bug 10160).
-
-- Ask where to export file if not yet saved (bug 8814).
-
-- Fix size issue with outliner icons on HiDPI monitors (bug 10125).
-
-- Load math packages automatically with JSS template (bug 9242).
-
-- Calling a Computer Algebra System from LyX works again (windows only bug 10262).
-
-- Fix command clash between beamer and covington (from the Linguistics module).
-
-- Fix crash on Buffer preview when not exporting in thread.
-
 
 * LYX2LYX
 
-- Fix paragraph argument conversion for \labelwidthstring etc (bug 10243).
-
-
 
 * USER INTERFACE
-
-- CharStyles now prohibit layout changes by default (bug 10237).
-
-- Fix display of labels in right-to-left languages (bug 10169).
-
-- Fix button label font of inset arguments when some traits are inherited.
-
-- When a counter is stepped, reset recursively all subcounters (bug #10063).
-
-- Fix on screen narrow box when using \width as box width unit (bug 10048).
-
-- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
-
-- Fix small typo in Reference dialog (bug 10194).
-
-- Fix default location for RPM based hunspell dictionary search (bug 10071 and 10192).
-
-- Fix double input of tabulations with Qt5 < Qt5.5 (bug 9218).
-
-- Do not omit the first space of the selection when copying (bug 9995).
-
-- Do not allow non-default layouts to be pasted into table cells that are not fixed
-  width (bug 8782).
-
-- Display the correct column alignment and a better column spacing in AMS
-  environments (bugs 1861, 9908).
-
-- Disable properly toggling math display in places where it is not
-  possible (bug 10033).
-
-- Fix horizontal scrolling feature when inside a collapsable inset
-  with several paragraphs.
-
-- Fix selection of large formula with the mouse when horizontal
-  scrolling kicks in (but 10094).
-
-- Fix bug where cursor can't be put at the end of a line before an
-  inset (bug 10180).
-
-- Fix display of collapsable insets when the same document is shown in
-  two views with different width (bug 9756).
-
-- fix display glitches when editing changes the dimension of insets
-  (bug 6691).
-
-- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
-
-- Fix cursor position after Redo of a document settings change (bug
-  10097).
-
-- Handle undo after deleting end of paragraph in change tracking mode
-  (bug 10253).
-
-- Disable Edit > Dissolve Inset in tabulars (bug 9954).
-
-- Shortcut preferences: ask the user for removing bindings when using the
-  "restore" button (#9174).
-
-- Shortcut preferences: fix the already-bound-key detection logic.
-
-- Shortcut preferences: don't forget to trigger the search when it is
-  initialized with the previous value.
-
-- Remove extra spacing around button insets (bug 10149).
-
-- Fix drawing of buttons by enforcing equal left/right spacing (bug 10147).
-
-- Fix problem with drawing of lists after pasting normal text (bug 8735).
-
-- Accessibility of the document class selector from keyboard (bug 10035).
-
-- Fix title of LuaTeX and XeTeX error dialogs (part of bug 10013).
-
-- Remove special code for Qt5 to load SVG icons with HiDPI (bug 10281).
 
 
 * INTERNALS
@@ -187,25 +50,8 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Move documentation change logs to lib/doc (they are not distributed).
-
 
 * LYXHTML
-
-- Output width of table columns (bug 8168).
-
-- Fix output of math sizes (bug 10129).
-
-- Fix output of vertical space in the middle of a paragraph (bug 8154).
-
-- Fix output of ABOVE and CENTERED label types (bug 8843).
-
-- Output correct entities for named delimiters (bug 8280).
-
-- Added class attribute for mathbb to allow customization (part of bug
-  8521).
-
-- Use 'text-align: center;' with displayed equations (bug 8654).
 
 
 * TEX2LYX
@@ -217,16 +63,4 @@ What's new
 
 
 * BUILD/INSTALLATION
-
-- Due to bug fixes, it is no longer discouraged to build against Qt 5.4.
-
-- Building against Qt < 4.7 no longer fails.
-
-- Fix monolithic builds with autotools on Mac OS X.
-
-- Avoid 'ar' warning with recent binutils versions.
-
-- LyX compiled with Microsoft Visual Studio 2015 runs now on Windows Vista (bug 10186)
-
-- Add some missing oxygen and IPA icons to the distribution.
 
