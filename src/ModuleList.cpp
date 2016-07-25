@@ -262,12 +262,13 @@ LyXModule const * ModuleList::operator[](string const & str) const
 LyXModule * ModuleList::operator[](string const & str)
 {
 	LyXModuleList::iterator it = modlist_.begin();
-	for (; it != modlist_.end(); ++it)
+	for (; it != modlist_.end(); ++it) {
 		if (it->getID() == str) {
-		LyXModule & mod = *it;
-		return &mod;
+			LyXModule & mod = *it;
+			return &mod;
 		}
-		return 0;
+	}
+	return 0;
 }
 
 } // namespace lyx
