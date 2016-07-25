@@ -775,6 +775,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	outputModule->synccustomCB->setValidator(new NoNewLineValidator(
 		outputModule->synccustomCB));
 
+	connect(outputModule->saveTransientPropertiesCB, SIGNAL(clicked()),
+	        this, SLOT(change_adaptor()));
+
 	// fonts
 	fontModule = new FontModule;
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
@@ -1745,7 +1748,7 @@ void GuiDocument::deleteBoxBackgroundColor()
 
 void GuiDocument::languageChanged(int i)
 {
-	// some languages only work with polyglossia/XeTeX
+	// some languages only work with polyglossia
 	Language const * lang = lyx::languages.getLanguage(
 		fromqstr(langModule->languageCO->itemData(i).toString()));
 	if (lang->babel().empty() && !lang->polyglossia().empty()) {
@@ -2858,6 +2861,9 @@ void GuiDocument::applyView()
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
 	bp_.display_pixel_ratio = theGuiApp()->pixelRatio();
 
+	bp_.save_transient_properties =
+		outputModule->saveTransientPropertiesCB->isChecked();
+
 	// fonts
 	bp_.fonts_roman[nontexfonts] =
 		fromqstr(fontModule->fontsRomanCO->
@@ -3408,6 +3414,9 @@ void GuiDocument::paramsToDialog()
 	outputModule->mathoutCB->setCurrentIndex(bp_.html_math_output);
 	outputModule->strictCB->setChecked(bp_.html_be_strict);
 	outputModule->cssCB->setChecked(bp_.html_css_as_file);
+
+	outputModule->saveTransientPropertiesCB
+		->setChecked(bp_.save_transient_properties);
 
 	// paper
 	bool const extern_geometry =

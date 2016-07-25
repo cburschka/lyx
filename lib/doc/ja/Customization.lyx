@@ -434,18 +434,7 @@ status collapsed
 
 \begin_layout Plain Layout
 ヘルプ\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXの設定
+LaTeXの設定
 \end_layout
 
 \end_inset
@@ -523,18 +512,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-doc/LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXConfig.lyx
+doc/LaTeXConfig.lyx
 \end_layout
 
 \end_inset
@@ -544,18 +522,7 @@ eXConfig.lyx
 status collapsed
 
 \begin_layout Plain Layout
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eXConfig.lyx.in
+LaTeXConfig.lyx.in
 \end_layout
 
 \end_inset
@@ -2023,7 +1990,7 @@ HTML
 
 形式の複写子を導入します．これらの形式を書き出す際，複写子は，本体のHTMLファイルだけでなく，関連した様々なファイル（スタイルファイルや画像など）もコピーされ
 るように手配します．これらのファイルはすべて，元の\SpecialChar LyX
-ファイルのあるディレクトリのサブディレクトリに書き込まれます
+ファイルのあるディレクトリのサブディレクトリに書き込まれます．
 \begin_inset Foot
 status collapsed
 
@@ -2034,18 +2001,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXconv
+LyXconv
 \end_layout
 
 \end_inset
@@ -2065,18 +2021,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-/path/to/filename.html.L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXconv
+/path/to/filename.html.LyXconv
 \end_layout
 
 \end_inset
@@ -2087,7 +2032,7 @@ yXconv
 
 \end_inset
 
-．
+
 \end_layout
 
 \begin_layout Section
@@ -5355,10 +5300,6 @@ latex foiltex.ins
 
 \begin_layout Enumerate
 ここで，パッケージを全ユーザーに使用可能にするか自分自身だけで使うかを決定する必要があります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5650,10 +5591,6 @@ latex
 ここまで来れば，あとは\SpecialChar LaTeX
 に新しいファイルがあることを告げるだけです．これは使用している\SpecialChar LaTeX
 頒布版に依存します．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9382,10 +9319,6 @@ EndArgument
 \end_inset
 
 で閉じなくてはなりません．非必須引数が2つあるコマンドの場合は，以下のようになります．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11348,10 +11281,6 @@ Itemize, Bibliography
 \end_inset
 
 ]
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11708,10 +11637,6 @@ db_*.inc
 \end_inset
 
 ．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12110,10 +12035,6 @@ Static
 \end_inset
 
 このレイアウトの左余白の種類です．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13367,10 +13288,6 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16174,10 +16091,6 @@ LatexType
 \end_inset
 
 ．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -17160,10 +17073,6 @@ LabelStringAppendix
 \end_inset
 
 も同じ値に設定されます．文字列中では，以下の構成要素を使用することができます．
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper

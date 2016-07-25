@@ -427,10 +427,6 @@ pas
 \begin_layout Itemize
 Des explications détaillées sur toutes les fonctionnalités de \SpecialChar LyX
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -454,10 +450,6 @@ l'Utilisateur
 \begin_layout Itemize
 Une description détaillée de \SpecialChar LaTeX
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -812,6 +804,17 @@ arg   "buffer-view"
 respectively.
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+\lang english
+Another hint:
+\series default
+ In case you are using a high-resolution display, the LyX toolbar icons
+ are quite small.
+ To change their size, right-click into a toolbar.
+\end_layout
+
 \begin_layout Subsection
 Opérations de base
 \end_layout
@@ -858,10 +861,6 @@ arg   "redo"
 
 ) pour restituer les modifications annulées.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2304,10 +2303,6 @@ Options
 avancées
 \emph default
  pour plus de détails.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3006,7 +3001,7 @@ Insécable
  (raccourci 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 ) entre le mot 

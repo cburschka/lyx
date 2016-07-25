@@ -6681,13 +6681,7 @@ The default numbering of numbered lists can be changed by adding an optional
  argument (menu 
 \family sans
 Insert\SpecialChar menuseparator
-
-\change_inserted 1414654397 1468603313
 Enumerate Options
-\change_deleted 1414654397 1468603316
-Short Title
-\change_unchanged
-
 \family default
 ) to the first item of each level in the list.
  There you add the command
@@ -19349,7 +19343,7 @@ Header
 \family default
 : The current row and all rows above, that don't have any special options
  defined, are defined to be the header rows of all pages of the longtable.
- except for the first page, if 
+ Except for the first page, if 
 \family sans
 First
 \begin_inset space ~
@@ -42943,6 +42937,39 @@ scaling
  is used for the size of equations in the output.
 \end_layout
 
+\begin_layout Description
+LyX
+\begin_inset space ~
+\end_inset
+
+Format The option 
+\family sans
+Save transient properties
+\family default
+ controls whether document settings that are frequently switched or that
+ are specific to the user are saved with the document.
+ The properties that are affected by option are currently
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the activation of change tracking
+\end_layout
+
+\begin_layout Itemize
+the output of tracked changes
+\end_layout
+
+\begin_layout Itemize
+the recording of the document directory path.
+\end_layout
+
+\begin_layout Standard
+Disabling the option can prevent issues in collaborative work and/or when
+ using a version control system (for instance unnecessary merge conflicts).
+\end_layout
+
+\end_deeper
 \begin_layout Section
 La
 \family sans

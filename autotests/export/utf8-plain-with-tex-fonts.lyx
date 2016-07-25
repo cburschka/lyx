@@ -3,14 +3,16 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/springer/
-\textclass svmono
-\use_default_options false
-\master svmono_book-master.lyx
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8-plain
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -34,14 +36,14 @@
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -50,7 +52,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \index Index
 \shortcut idx
 \color #008000
@@ -72,67 +74,12 @@
 
 \begin_body
 
-\begin_layout Foreword
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The style Foreword has an optional argument that overrides the default text
- "Foreword".
- This is useful when there are different forewords by different authors
- and editors.
-\end_layout
-
-\end_inset
-
-
+\begin_layout Standard
+¹²³¼½¬¸@ł€¶←
 \end_layout
 
 \begin_layout Standard
-The foreword covers introductory remarks preceding the text of a book that
- are written by a 
-\shape italic
-person other than the author or editor
-\shape default
- of the book.
- If applicable, the foreword precedes the preface which is written by the
- author or editor of the book.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{
-\backslash
-baselineskip}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align right
-Place, month year
-\begin_inset space \hfill{}
-\end_inset
-
-
-\shape italic
-Firstname Surname
-\shape default
-
-\begin_inset Newline newline
-\end_inset
-
-
+ätsch Grüße, em- and en-dash: — ―
 \end_layout
 
 \end_body

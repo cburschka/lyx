@@ -2147,10 +2147,6 @@ Did you go overboard with the nesting? \SpecialChar LyX
 Okay, you didn't get any error messages, but your output looks awful.
  If you have a table or figure that's too wide or long for the page, you
  need to:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3902,10 +3898,6 @@ The dialog provides you with a table of bullet shapes.
 The six panels are divided up by the packages they require.
  The following table shows the mappings from button name to \SpecialChar LaTeX
  package.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -4305,10 +4297,6 @@ renewcommand{}{}
  In this itemized list the following \SpecialChar LaTeX
  code was used to change the bullet
  used for the first depth.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6688,18 +6676,7 @@ status collapsed
 
 \end_inset
 
- is the Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XServer pipe path specified in 
+ is the LyXServer pipe path specified in 
 \begin_inset Flex Noun
 status collapsed
 
@@ -6766,18 +6743,7 @@ status collapsed
 \end_layout
 
 \begin_layout LyX-Code
-/Applications/Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X.app/Contents/MacOS/lyxeditor "$2" $1
+/Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
 
@@ -8443,10 +8409,6 @@ Edit the resulting
 .tex
 \family default
  file with your favorite text editor
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10780,10 +10742,6 @@ always
 \emph default
  has the logo centered at the bottom of the page (if one is defined).
  The possible page style choices and what they do are as follows:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -11326,12 +11284,6 @@ Left
 \end_inset
 
 Header
-\family default
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12990,12 +12942,6 @@ Math Options
 \size normal
 The title environment defines the kind of your paper.
  So use one of the following environments for the title:
-\size default
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -13262,10 +13208,6 @@ Edit the resulting
 .tex
 \family default
  file with a text editor and make the following changes
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -15674,10 +15616,6 @@ Section*
 
 \begin_layout Itemize
 Additional page styles:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -15712,10 +15650,6 @@ outer page number is placed on outer side of page
 \end_deeper
 \begin_layout Itemize
 Options 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16600,10 +16534,6 @@ style
 \family default
  behaves a bit differently for this class.
  The possible choices and what they do are as follows:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -16660,10 +16590,6 @@ clock
 \end_inset
 
  in the extra class options.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21492,10 +21418,6 @@ There are more possibilities how to activate revision information in our
 \begin_layout Itemize
 \SpecialChar LyX
  supports directly:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -21684,10 +21606,6 @@ file.lyx
 
 .
  Supported flags are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -22085,10 +22003,6 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
  any password from you.
  To keep things easy we will use only keys without any additional password
  protection etc.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -22850,10 +22764,6 @@ How is literate programming different from verbose commenting?
 \begin_layout Quotation
 There are three distinguishing characteristics.
  In order of importance, they are: 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -23181,10 +23091,6 @@ DVI
  menu option is chosen, a \SpecialChar LaTeX
  file is generated.
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -23263,10 +23169,6 @@ Customization
 
  to generate the \SpecialChar LaTeX
  file.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper

@@ -688,18 +688,7 @@ Code
 \begin_inset space ~
 \end_inset
 
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+TeX
 \family default
  (raccourci 
 \family sans
@@ -758,18 +747,7 @@ Préambule
 \begin_inset space ~
 \end_inset
 
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 .
 \end_layout
@@ -1517,10 +1495,6 @@ arg   "math-superscript"
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1768,10 +1742,6 @@ Une ligne avec la fraction
 dfrac
 \series default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2313,10 +2283,6 @@ arg   "math-insert \\root"
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2681,10 +2647,6 @@ brack
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3114,10 +3076,6 @@ not
 
  chaque caractère peut être affiché barré.
  Les caractères sont en quelque sorte accentués par une barre de fraction.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3344,10 +3302,6 @@ reference "subsec:Symboles-chimiques"
 \end_inset
 
 , on rencontre le problème suivant:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3478,10 +3432,6 @@ Traduction de placeholder, c'est un terme de typographie (NdT).
  créée aura la même largeur et la même hauteur que le contenu de la boîte.
  De la même façon, les caractères fantômes sont des garnitures qui ont la
  taille du caractère concerné.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6134,10 +6084,6 @@ Bigg
 \begin_layout Standard
 Ces commandes sont utilisées pour mettre en évidence les différents niveaux
  de parenthèses:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6214,10 +6160,6 @@ C.
 
 \begin_layout Standard
 Voici un aperçu de toutes les tailles de parenthèses:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6342,10 +6284,6 @@ r
 
 \begin_layout Standard
 Dans le tableau qui suit figure une comparaison entre les différentes variantes:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -6606,10 +6544,6 @@ right
 .
  La taille de la parenthèse sera alors calculée automatiquement pour la
  sortie.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7083,10 +7017,6 @@ Paquetages ! mathtools
 \end_inset
 
 , vous avez accès aux crochets :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7269,10 +7199,6 @@ underbracket
 \series default
  vous pouvez modifier l'épaisseur du trait de l'accolade en la précisant
  entre crochets après la commande:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -8646,10 +8572,6 @@ Paquetages ! mathtools
 \end_inset
 
 , vous avez accès aux flèches avec étiquettes suivantes :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9030,10 +8952,6 @@ xrightleftharpoons
 
 \begin_layout Standard
 La syntaxe des commandes pour toutes ces flèches est la suivante :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -10340,10 +10258,6 @@ undertilde
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -10969,10 +10883,6 @@ Espace
 \family default
 .
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11438,10 +11348,6 @@ reference "subsec:Espace-variable"
 , contrairement aux autres espaces, parce
  que c'est une espace négative.
  Il y a deux autres espaces négatives:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11564,10 +11470,6 @@ Résultat
 Les espaces négatives peuvent faire que les caractères se chevauchent.
  Elles peuvent être utilisée pour forcer des ligatures, par exemple pour
  les opérateurs de sommation:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11683,10 +11585,6 @@ Les opérateurs de relations comme par exemple le signe égal, sont toujours
  Pour les supprimer, le signe égal est mis entre deux accolades \SpecialChar TeX
 .
  L'exemple suivant donne une illustration:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12719,10 +12617,6 @@ framebox
 fbox
 \series default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13216,10 +13110,6 @@ raisebox
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13596,12 +13486,6 @@ white
  (blanc), et 
 \series bold
 yellow (jaune)
-\series default
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -15889,10 +15773,6 @@ Opérateurs ! Limites
 
 \begin_layout Standard
 Les limites sont créées avec les indices et les exposants:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -18228,14 +18108,11 @@ Dans les formules on peut affecter aux lettres latines un des styles de
 
 \begin_layout Standard
 \align center
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18252,6 +18129,15 @@ Commande
 
 \begin_layout Plain Layout
 Résultat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Raccourci
 \end_layout
 
 \end_inset
@@ -18289,6 +18175,15 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18315,6 +18210,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathbf{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-bold"
 \end_inset
 
 
@@ -18355,6 +18264,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-boldsymbol"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18384,6 +18307,15 @@ ABC
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -18421,20 +18353,30 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
+\align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
@@ -18451,6 +18393,15 @@ Commande
 
 \begin_layout Plain Layout
 Résultat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Raccourci
 \end_layout
 
 \end_inset
@@ -18488,6 +18439,15 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18514,6 +18474,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathrm{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-roman"
 \end_inset
 
 
@@ -18554,6 +18528,20 @@ AbC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-sans"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" leftline="true" usebox="none">
@@ -18580,6 +18568,20 @@ AbC
 
 \begin_layout Plain Layout
 \begin_inset Formula $\mathtt{AbC}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Info
+type  "shortcut"
+arg   "font-typewriter"
 \end_inset
 
 
@@ -18620,13 +18622,18 @@ ABC
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -18701,7 +18708,7 @@ textrm
 .
  Le fait que l'on ne puisse pas changer leur style avec la fenêtre de dialogue
  de style est un bug de \SpecialChar LyX
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -18718,7 +18725,7 @@ target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -19194,10 +19201,6 @@ arg   "math-insert \\style"
 \end_inset
 
  de la barre d'outils mathématique:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20446,6 +20449,13 @@ reference "subsec:minuscules-grecques-droites"
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Lettres majuscules
 \begin_inset Index idx
@@ -20941,10 +20951,6 @@ boldsymbol
 \end_inset
 
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21976,13 +21982,6 @@ bot
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Symboles divers
 \begin_inset CommandInset label
@@ -22965,10 +22964,6 @@ eurosym
 
 \begin_layout Standard
 Un aperçu des différents symboles de l'Euro:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24650,10 +24645,6 @@ stackrel
 \end_inset
 
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24785,10 +24776,6 @@ italique
  arguments par un peu d'espace.
  Elles sont insérées comme des commandes commençant par une barre de fraction
  inverse avant leur nom.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -25474,10 +25461,6 @@ Dans \SpecialChar LyX
 \end_inset
 
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -25619,10 +25602,6 @@ liminf
 limsup
 \series default
  on a aussi les fonctions suivantes:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -25945,10 +25924,6 @@ Les caractères ^ et _ doivent normalement créer respectivement un exposant
  Pour obtenir les caractères eux-mêmes, vous devez les insérer avec un 
 \backslash
  avant :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26035,6 +26010,13 @@ _
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -27630,10 +27612,6 @@ Formules ! styles
 
 \begin_layout Itemize
 Il y a deux styles d'alignements différents:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -27718,10 +27696,6 @@ pt est utilisée.
 \end_deeper
 \begin_layout Itemize
 Et deux styles différents de numérotation:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -31949,10 +31923,6 @@ ce
 \series default
  dans une formule, une boîte bleue apparaît dans laquelle on peut saisir
  des formules chimiques de façon intuitive.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -32531,13 +32501,6 @@ amscd
  xymatrix
 \series default
  qui sont décrits dans ce qui suit.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -33286,10 +33249,6 @@ white
 
 \begin_layout Standard
 Un test des nouvelles commandes:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34871,10 +34830,6 @@ Le problème disparaît donc en convertissant le signe moins en texte mathémati
 
 \begin_layout Standard
 Un exemple pour illustrer le problème:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35139,10 +35094,6 @@ braket
 
 \begin_layout Standard
 Les commandes suivantes sont définies:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35436,10 +35387,6 @@ genfrac
 
 \begin_layout Standard
 Le style est un nombre allant de 0 à 3.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35716,10 +35663,6 @@ cancel
 
 \begin_layout Standard
 Il y a quatre façon de barrer une formule u une portion de formule:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -36575,13 +36518,6 @@ reference "sec:Styles-de-formules"
 \end_inset
 
 mm à la place.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

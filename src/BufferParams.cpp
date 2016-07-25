@@ -2123,6 +2123,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// xunicode needs to be loaded at least after amsmath, amssymb,
 	// esint and the other packages that provide special glyphs
+	// The package only supports XeTeX currently.
 	if (features.runparams().flavor == OutputParams::XETEX
 	    && useNonTeXFonts)
 		lyxpreamble += "\\usepackage{xunicode}\n";
@@ -2344,7 +2345,10 @@ string BufferParams::bufferFormat() const
 	string format = documentClass().outputFormat();
 	if (format == "latex") {
 		if (useNonTeXFonts)
-			return "xetex"; // actually "xetex or luatex"
+			// FIXME: In this context, this means "xetex or luatex"
+			// with fontspec. We cannot differentiate further here.
+			// But maybe use a more appropriate string.
+			return "xetex";
 		if (encoding().package() == Encoding::japanese)
 			return "platex";
 	}
@@ -2414,11 +2418,8 @@ vector<string> BufferParams::backends() const
 		v.push_back("xetex");
 	} else if (buffmt == "xetex") {
 		v.push_back("xetex");
-		// FIXME: need to test all languages (bug 8205)
-		if (!language || !language->isPolyglossiaExclusive()) {
-			v.push_back("luatex");
-			v.push_back("dviluatex");
-		}
+		v.push_back("luatex");
+		v.push_back("dviluatex");
 	} else
 		v.push_back(buffmt);
 
@@ -2967,8 +2968,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 	// XeTeX/LuaTeX: (see also #9740)
 	// With Unicode fonts we use utf8-plain without encoding package.
 	// With TeX fonts, we cannot use utf8-plain, but "inputenc" fails.
-	// XeTeX must use ASCII encoding, for LuaTeX, we load
-	// "luainputenc" (see below).
+	// XeTeX must use ASCII encoding (see Buffer.cpp),
+	//  for LuaTeX, we load "luainputenc" (see below).
 	if (useNonTeXFonts || features.runparams().flavor == OutputParams::XETEX)
 		return;
 

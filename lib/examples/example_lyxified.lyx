@@ -145,15 +145,16 @@ The function of typographic design is to help the reader understand the
 \begin_layout Subsection
 Why \SpecialChar LyX
  is better
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:lyxbetter"
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 \SpecialChar LyX
  can be useful to more people than \SpecialChar LaTeX
 .
@@ -225,14 +226,22 @@ very excited
 \begin_layout Standard
 For a more philosophical discussion of why \SpecialChar LyX
  is better than lots of other
- word processors, see Section 
+ word processors, see Section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:lyxbetter"
 
 \end_inset
 
-, which can be found on page 
+, which can be found on page
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:lyxbetter"

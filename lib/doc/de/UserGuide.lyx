@@ -1616,10 +1616,6 @@ An dieser Stelle werden nur die grundlegenden Operationen beschrieben, die
 
 \begin_layout Enumerate
 Positionieren
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1650,10 +1646,6 @@ rechten
 \end_deeper
 \begin_layout Enumerate
 Text markieren
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1700,10 +1692,6 @@ rs den X-Puffer.
 \end_deeper
 \begin_layout Enumerate
 Fußnoten, Randnotizen, Gleitobjekte (Abbildungen und Tabellen) usw.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2526,10 +2514,6 @@ description "Steuerung-Taste"
 
  bezeichnet) Diese hat verschiedene Funktionen, abhängig mit welcher Taste
  es in Kombination verwendet wird:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2628,10 +2612,6 @@ description "Alt oder Meta-Taste"
 Diese Taste macht verschiedene Dinge und aktiviert zudem die Menü Schnellauswahl.
  Wenn man sie in Kombination mit einem unterstrichenen Buchstaben eines
  Menüeintrags verwendet, wird dieses Menü ausgewählt.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -3976,10 +3956,6 @@ Papierformat
 \family default
  Auf welche Papiergröße ausgegeben werden soll.
  Die Größen sind
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5914,10 +5890,6 @@ umgebung.
 
 \begin_layout Itemize
 Jedes Element besitzt ein bestimmtes Aufzählungszeichen als Marke.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6000,28 +5972,16 @@ Auf\SpecialChar ligaturebreak
 listung
 \family default
  ist ein schwarzer Kreis.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Die Marke für die zweite Stufe ist ein Gedankenstrich.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Die Marke für die dritte Stufe ist ein Stern.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6170,10 +6130,6 @@ Aufzählung
 
 \begin_layout Enumerate
 Jedes Element hat eine Ziffer als Marke.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6226,10 +6182,6 @@ listung
 Aufzählung
 \family default
 -Umgebung folgendes:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6283,29 +6235,17 @@ Die erste Stufe von
 Aufzählung
 \family default
  benutzt arabische Ziffern, gefolgt von einem Punkt.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Die zweite Stufe benutzt Kleinbuchstaben in runden Klammern.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Die dritte Stufe benutzt kleingeschriebene römische Ziffern, gefolgt von
  einem Punkt.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6910,7 +6850,11 @@ Die voreingestellte Nummerierung von Aufzählungen kann geändert werden,
  indem man ein optionales Argument (Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
-Kurztitel
+Benutzerdef.
+\begin_inset space \space{}
+\end_inset
+
+Aufzählung
 \family default
 ) zum ersten Eintrag jeder Stufe der Liste hinzufügt.
  Darin fügt man den Befehl
@@ -7070,10 +7014,6 @@ Alph{enumi}
 \end_inset
 
 Stufe 1
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7106,10 +7046,6 @@ Stufe 2
 
 \begin_layout Enumerate
 Level 2
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -7138,10 +7074,6 @@ arabic{enumiii}}
 \end_inset
 
 Stufe 3
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8647,12 +8579,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8665,7 +8595,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8689,7 +8618,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -8778,10 +8706,6 @@ eins
 
 \begin_layout Enumerate
 zwei
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8957,10 +8881,6 @@ Nicht
 
 schachtelbar Man kann sie nicht schachteln.
  Man kann nichts in sie hinein schachteln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9002,10 +8922,6 @@ Vollständig
 
 schachtelbar Man kann sie schachteln.
  Man kann andere Dinge in sie hinein schachteln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9087,10 +9003,6 @@ Teilweise
 
 schachtelbar Man kann sie in andere Dinge schachteln.
  Man kann nichts in sie hinein schachteln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9320,19 +9232,11 @@ Hier ist ein Beispiel mit einer Tabelle:
 
 \begin_layout Enumerate
 Punkt eins
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Dies ist (a) und geschachtelt.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9407,10 +9311,6 @@ Wenn wir die Tabelle nicht geschachtelt hätten, würde die Liste wie folgt
 
 \begin_layout Enumerate
 Punkt eins
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9500,10 +9400,6 @@ Es gibt noch eine Falle, in die man leicht geht: man schachtelt zwar die
 
 \begin_layout Enumerate
 Punkt eins
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9650,46 +9546,26 @@ Wenn Sie dies in \SpecialChar LyX
 
 \begin_layout Enumerate
 Stufe 1 – außen
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Stufe 2
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Stufe 3
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Stufe 4
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Stufe 5
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9798,10 +9674,6 @@ Beispiel 1: Sechsfache und gemischte Schachtelung
 Liste
 \family default
 -Umgebung.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9817,10 +9689,6 @@ Alt+Eingabe
 Alt+Eingabe+Rechts
 \family default
 .
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9843,10 +9711,6 @@ Alt+Ein\SpecialChar softhyphen
 gabe
 \family default
  drücken, gefolgt von v.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9944,20 +9808,12 @@ können
 \end_inset
 
  weiterschachteln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 5-a Dies ist Stufe 5\SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -10097,10 +9953,6 @@ werden wir zur
 Aufzählung
 \family default
 -Umgebung wechseln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10177,10 +10029,6 @@ Aufzählung
 \family default
 -Absatzumgebung.
  Wir wollen einige davon schachteln.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10206,10 +10054,6 @@ listung
 \family default
 -Umgebung hier hinein schachteln? Sie wird auf Stufe 3 sein, aber welche
  Marke wird es sein? Ein Stern?
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10244,10 +10088,6 @@ Auf\SpecialChar ligaturebreak
 listung
 \family default
 .)
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10266,10 +10106,6 @@ Alt+Eingabe+Rechts.
 
 \family default
  Wir werden das noch einmal machen \SpecialChar ldots
-
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
@@ -10467,10 +10303,6 @@ Jetzt werden wir völlig verrückt.
 Aufzählung
 \family default
 )
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10498,10 +10330,6 @@ Alt+Eingabe+Rechts, Standard
 Eingabe, Aufzählung
 \family default
 : Stufe 1) Dies ist der nächste Eintrag in der Liste.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10543,10 +10371,6 @@ Alt+Eingabe
 
 \begin_layout Verse
 Hier kommt eine Tabelle:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10708,10 +10532,6 @@ rechts
 \end_inset
 
 
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10845,19 +10665,11 @@ Es ist manchmal notwendig zwei aufeinanderfolgende Umgebungen gleichen Typs
 
 \begin_layout Enumerate
 Hallo
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 dies ist eine
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12355,10 +12167,6 @@ Rechts
 \family default
  aktivieren, wird die Voreinstellung deaktiviert.
  Diese Ausrichtungen sind selbsterklärend und sehen wie folgt aus:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14267,10 +14075,6 @@ allgemeine Aussehen
 \emph default
  der Schrift.
  Es gibt folgende Möglichkeiten:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14361,10 +14165,6 @@ Druckstärke
 \end_inset
 
  mit folgenden Optionen:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14422,10 +14222,6 @@ Schnitt
 
 \family default
  Wie der Name schon sagt mit folgenden Optionen:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14675,10 +14471,6 @@ al zur Standard-Schriftgröße.
  Noch einmal, Sie füttern \SpecialChar LyX
  nicht mit Details, sondern mit einer Beschreibung
  von dem, was Sie machen wollen.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -15091,10 +14883,6 @@ noch einmal
 Diverses
 \family default
  Hier können Sie auf Buchstabenniveau noch ein paar andere Dinge ändern:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -18581,10 +18369,6 @@ Der Grafikdialog kann jederzeit durch Klicken auf ein Bild geöffnet werden.
  Text befinden.
  Dies ist ein Beispielbild in einem separaten, horizontal zentrierten Absatz:
  
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19017,10 +18801,6 @@ Tabelle
  Dies kommt durch eine doppelte Linie zustande: Die Zellen der ersten Zeile
  haben eine untere Linie und die Zellen der zweiten Zeile eine obere Linie.
  Hier ist eine Beispieltabelle:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19278,10 +19058,6 @@ einer
 ngs-, Breiten-, und Linieneinstellungen nur die Mehrfachspaltenzelle betrifft.
  Hier ist eine Beispieltabelle mit einer Mehrfachspaltenzelle in der ersten
  Zeile und einer in der letzten Zeile ohne obere Linie:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19605,10 +19381,6 @@ Erste
 Kopfzeile
 \family default
 ; siehe die folgende Lange Tabelle als Beispiel wie es funktioniert:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21813,10 +21585,6 @@ Um mehrzeilige Einträge in Tabellenzellen zu erstellen, muss man eine feste
  Der Text wird dann automatisch in mehrere Zeilen aufgeteilt und die Zelle
  vertikal vergrößert, wenn die angegebene Breite überschritten wird.
  Ein Beispiel:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22676,10 +22444,6 @@ Box
  eingefügt wird.
  Per Rechts-klicken auf die Boxmarke kann die Breite und Ausrichtung der
  Minipage eingestellt werden.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23800,10 +23564,6 @@ reference "tab:Akzente"
 
  enthält die Akzentnamen im Textmodus, in Formeln und Beispiele für die
  Akzente.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -41878,6 +41638,36 @@ Handbuchergänzungen
  Die Skalierung wird für die Größe von Gleichungen in der Ausgabe verwendet.
 \end_layout
 
+\begin_layout Description
+LyX-Format Die Option 
+\family sans
+Vorübergehende Eigenschaften speichern
+\family default
+ legt fest, ob auch Einstellungen in die Datei gespeichert werden, die oft
+ geändert werden oder die benutzerspezifisch sind.
+ Die Eigenschaften, die von der Option betroffen sind, sind momentan
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+die Aktivierung der Änderungsverfolgung
+\end_layout
+
+\begin_layout Itemize
+die Ausgabe verfolgter Änderungen
+\end_layout
+
+\begin_layout Itemize
+die Speicherung des Dateipfads zum Dokument
+\end_layout
+
+\begin_layout Standard
+Die Deaktivierung der Option kann Probleme verhindern, die auftreten wenn
+ ein Dokument von mehreren Personen geändert wird und/oder wenn ein Versionskont
+rollsystem verwendet wird.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 \SpecialChar LaTeX
 -Vorspann
