@@ -587,7 +587,7 @@ void RowPainter::paintOnlyInsets()
 				x_ += e.full_width();
 				continue;
 			}
-			int orig_x = x_;
+			double orig_x = x_;
 			paintInset(e.inset, e.font, e.change, e.pos);
 			// The line that indicates word in a different language
 			paintForeignMark(orig_x, e.font.language(), e.dim.descent());
