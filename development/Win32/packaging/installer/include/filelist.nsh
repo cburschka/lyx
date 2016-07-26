@@ -61,6 +61,7 @@ Lists of files to include in the installer
   ${FILE}msvcr100.dll"
   ${FILE}msvcp100.dll"
   # Files needed for MSVC 2015
+  ${FILE}concrt140.dll"
   ${FILE}msvcp140.dll"
   ${FILE}vcamp140.dll"
   ${FILE}vccorlib140.dll"

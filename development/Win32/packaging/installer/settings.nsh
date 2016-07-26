@@ -11,10 +11,10 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION_MAJOR 2
 !define APP_VERSION_MINOR 2
-!define APP_VERSION_REVISION 0
+!define APP_VERSION_REVISION 1
 !define APP_VERSION_EMERGENCY "" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 3 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 1 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -51,12 +51,12 @@ These typically need to be modified for each LyX release
 !define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.9.4"
+!define ImageMagickVersion "6.9.5"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define JabRefInstall "external\JabRef_windows_3_4.exe"
- !define SIZE_JABREF 25700 # size in KB
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.5997.exe"
+ !define JabRefInstall "external\JabRef_windows_3_5.exe"
+ !define SIZE_JABREF 26252 # size in KB
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6022.exe"
 !endif
 
