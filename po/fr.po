@@ -315,12 +315,16 @@
 # ------------------------------------------------------------------
 # 15 juillet 2016 : dernière revue avant 2.2.1
 # ------------------------------------------------------------------
+# 27 juillet 2016 : revue traduction de Save Transient Properties
+#                   traduction de « Format du texte » modifiée en
+# 		  « Mise en page du texte »
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-07-21 14:31-0400\n"
-"PO-Revision-Date: 2016-07-15 09:54-0000\n"
+"PO-Revision-Date: 2016-07-27 17:41+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3036,7 +3040,7 @@ msgstr "&Format implicite du résultat :"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
 msgid "LyX Format"
-msgstr "Format LyX"
+msgstr "Enregistrement du fichier LyX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -3054,7 +3058,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr "Enregistrer les propriétés &transitoires"
+msgstr "Enregistrer les propriétés &temporaires"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -28246,7 +28250,7 @@ msgstr "Format local"
 
 #: src/frontends/qt4/GuiDocument.cpp:1413
 msgid "Text Layout"
-msgstr "Format du texte"
+msgstr "Mise en page du texte"
 
 #: src/frontends/qt4/GuiDocument.cpp:1415
 msgid "Page Margins"
