@@ -56,7 +56,7 @@ macro(add_gettext_python  _par _dir)
 	"-DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}"
 	"-DParType=${_par1}"
 	"-DSources=${_src_files}"
-        "-DLYX_PY_POLIB=${LYX_PY_POLIB1}"
+        "-DLYX_PY_POLIB=${LYX_PY_POLIB}"
 	-P "${TOP_SRC_DIR}/po/CreateLayoutTranslations.cmake"
       DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
