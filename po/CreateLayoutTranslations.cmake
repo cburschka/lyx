@@ -9,6 +9,7 @@
 #       -DLYX_PYTHON_EXECUTABLE=xxx \
 #       -DParType=xxx \
 #       -DSources=xxx \
+#       -DLYX_PY_POLIB=${LYX_PY_POLIB} \
 #       -P "${TOP_SRC_DIR}/po/CreateLayoutTranslations.cmake"
 
 set(_dst ${DestFile})
@@ -23,6 +24,9 @@ macro(die_if _err text)
 endmacro()
 
 message(STATUS "Starting CreateLayoutTranslations")
+if ("${LYX_PY_POLIB}" STREQUAL "")
+  message(STATUS "Missing needed pythons polib, be prepared for error")
+endif()
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${TOP_SRC_DIR}/lib/layouttranslations" "${_dst}"
   RESULT_VARIABLE _err)
 die_if(_err "Copy of layouttranslations failed")

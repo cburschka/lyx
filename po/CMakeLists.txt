@@ -12,8 +12,6 @@ include_directories(${TOP_SRC_DIR}/po)
 SET(_lyxname ${PACKAGE})
 SET(_py_sources)
 
-# Idea stolen from http://public.kitware.com/pipermail/cmake/2011-January/041666.html
-
 macro(add_gettext_python  _par _dir)
   set(_sources)
   foreach(_arg ${ARGN})
@@ -45,7 +43,10 @@ macro(add_gettext_python  _par _dir)
   if (${_par} MATCHES "layouttranslations")
     # lyx_pot.py requires the module "polib" if using target layouttranslations1,
     # so we have to check for it
-    find_python_module("polib" REQUIRED)
+    find_python_module("polib")
+    if ("${LYX_PY_POLIB}" STREQUAL "")
+      message(STATUS "You will be unable to update layouttranslations file")
+    endif()
     ADD_CUSTOM_COMMAND(
       OUTPUT "${_dst}"
       PRE_BUILD
@@ -55,6 +56,7 @@ macro(add_gettext_python  _par _dir)
 	"-DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}"
 	"-DParType=${_par1}"
 	"-DSources=${_src_files}"
+        "-DLYX_PY_POLIB=${LYX_PY_POLIB1}"
 	-P "${TOP_SRC_DIR}/po/CreateLayoutTranslations.cmake"
       DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
