@@ -531,6 +531,10 @@ bool Formats::isZippedFile(support::FileName const & filename) const {
 	map<string, ZippedInfo>::iterator it = zipped_.find(fname);
 	if (it != zipped_.end() && it->second.timestamp == timestamp)
 		return it->second.zipped;
+	// FIXME perf: This very expensive function is called on startup on each
+	// file whic is going to be parsed, and also on svgz icons. Maybe there is a
+	// quicker way to check whether a file is zipped?  I.e. for icons we
+	// probably just need to check the extension (svgz vs svg).
 	string const & format = getFormatFromFile(filename);
 	bool zipped = (format == "gzip" || format == "zip");
 	zipped_.insert(make_pair(fname, ZippedInfo(zipped, timestamp)));

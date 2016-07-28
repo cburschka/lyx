@@ -159,6 +159,10 @@ void ConverterCache::Impl::readIndex()
 		FormatCache & format_cache = cache[orig_from_name];
 		if (format_cache.from_format.empty())
 			format_cache.from_format =
+				// FIXME perf: This very expensive function is called on all
+				// cached files on opening. This slows LyX startup a lot. It
+				// would be better if this information was retrieved in a
+				// delayed fashion.
 				formats.getFormatFromFile(orig_from_name);
 		format_cache.cache[to_format] = item;
 	}

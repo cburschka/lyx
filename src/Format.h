@@ -153,6 +153,7 @@ public:
 	 * fails, from file extension.
 	 * \returns file format if it could be found, otherwise an empty
 	 * string.
+	 * This function is expensive.
 	 */
 	std::string getFormatFromFile(support::FileName const & filename) const;
 	/// Finds a format from a file extension. Returns string() if not found.
