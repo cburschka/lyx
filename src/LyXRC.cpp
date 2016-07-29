@@ -634,45 +634,33 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 
 		case RC_DOCUMENTPATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				document_path = os::internal_path(lexrc.getString());
-				document_path = expandPath(document_path);
-			}
 			break;
 
 		case RC_EXAMPLEPATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				example_path = os::internal_path(lexrc.getString());
-				example_path = expandPath(example_path);
-			}
 			break;
 
 		case RC_TEMPLATEPATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				template_path = os::internal_path(lexrc.getString());
-				template_path = expandPath(template_path);
-			}
 			break;
 
 		case RC_TEMPDIRPATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				tempdir_path = os::internal_path(lexrc.getString());
-				tempdir_path = expandPath(tempdir_path);
-			}
 			break;
 
 		case RC_THESAURUSDIRPATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				thesaurusdir_path = os::internal_path(lexrc.getString());
-				thesaurusdir_path = expandPath(thesaurusdir_path);
-			}
 			break;
 
 		case RC_HUNSPELLDIR_PATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				hunspelldir_path = os::internal_path(lexrc.getString());
-				hunspelldir_path = expandPath(hunspelldir_path);
-			}
 			break;
 
 		case RC_USELASTFILEPOS:
@@ -813,10 +801,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 
 		case RC_SERVERPIPE:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				lyxpipes = os::internal_path(lexrc.getString());
-				lyxpipes = expandPath(lyxpipes);
-			}
 			break;
 
 		case RC_CURSOR_FOLLOWS_SCROLLBAR:
@@ -901,10 +887,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			lexrc >> save_origin;
 			break;
 		case RC_BACKUPDIR_PATH:
-			if (lexrc.next()) {
+			if (lexrc.next())
 				backupdir_path = os::internal_path(lexrc.getString());
-				backupdir_path = expandPath(backupdir_path);
-			}
 			break;
 		case RC_DEFAULT_DECIMAL_POINT:
 			lexrc >> default_decimal_point;

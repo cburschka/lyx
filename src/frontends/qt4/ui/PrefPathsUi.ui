@@ -20,20 +20,14 @@
     <number>6</number>
    </property>
    <item row="12" column="0" colspan="3" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Relative and absolute paths are allowed. Relative paths will be expanded with respect to the working directory (WD). For all paths except the "TEXINPUTS prefix" the WD is the directory from which you start LyX, and thus could change for each LyX session. For the "TEXINPUTS prefix" path the WD is the directory containing the document. The path "." (without quotes) is a common example of a relative path and refers to the WD.</string>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>329</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
    <item row="10" column="0" >
     <widget class="QLabel" name="pathPrefixLA" >
@@ -65,7 +59,7 @@
    <item row="11" column="1" colspan="2">
     <widget class="QLineEdit" name="texinputsPrefixED">
      <property name="toolTip">
-      <string>Specify those directories which should be prepended to the TEXINPUTS environment variable. A '.' represents the current document directory. Use the OS native format.</string>
+      <string>Specify those directories which should be prepended to the TEXINPUTS environment variable. Use the OS native format.</string>
      </property>
     </widget>
    </item>
