@@ -213,6 +213,24 @@ QString guiName(std::string const & type, BufferParams const & bp);
 QString formatToolTip(QString text, int width = 30);
 
 
+#if QT_VERSION < 0x050300
+// Very partial implementation of QSignalBlocker for archaic qt versions.
+class QSignalBlocker {
+public:
+	explicit QSignalBlocker(QObject * o)
+		: obj(o), init_state(obj && obj->blockSignals(true)) {}
+
+	~QSignalBlocker() {
+		if (obj)
+			obj->blockSignals(init_state);
+	}
+private:
+	QObject * obj;
+	bool init_state;
+};
+#endif
+
+
 } // namespace lyx
 
 #endif // QTHELPERS_H
