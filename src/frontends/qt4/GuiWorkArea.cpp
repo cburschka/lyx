@@ -1650,10 +1650,8 @@ void TabWorkArea::paintEvent(QPaintEvent * event)
 
 bool TabWorkArea::posIsTab(QPoint position)
 {
-	for (int i = 0; i < count(); ++i)
-		if (tabBar()->tabRect(i).contains(position))
-			return true;
-	return false;
+	// tabAt returns -1 if tab does not covers position
+	return tabBar()->tabAt(position) > -1;
 }
 
 
