@@ -675,10 +675,9 @@ void GuiWorkArea::toggleCursor()
 void GuiWorkArea::Private::updateScrollbar()
 {
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-	// WARNING: don't touch at the scrollbar value like this:
-	//   verticalScrollBar()->setValue(scroll_.position);
-	// because this would cause a recursive signal/slot calling with
-	// GuiWorkArea::scrollTo
+	// Block signals to prevent setRange() and setSliderPosition from causing
+	// recursive calls via the signal valueChanged. (#10311)
+	QSignalBlocker blocker(p->verticalScrollBar());
 	p->verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	p->verticalScrollBar()->setPageStep(scroll_.page_step);
 	p->verticalScrollBar()->setSingleStep(scroll_.single_step);
