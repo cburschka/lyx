@@ -220,9 +220,6 @@ std::string const unzippedFileName(std::string const & zipped_file);
 FileName const unzipFile(FileName const & zipped_file,
 			 std::string const & unzipped_file = std::string());
 
-/// Create absolute path. If impossible, don't do anything
-std::string const expandPath(std::string const & path);
-
 /** Convert relative path into absolute path based on a basepath.
   If relpath is absolute, just use that.
   If basepath doesn't exist use CWD.

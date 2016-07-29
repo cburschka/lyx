@@ -644,35 +644,6 @@ string const onlyFileName(string const & fname)
 }
 
 
-// Create absolute path. If impossible, don't do anything
-// Supports ./ and ~/. Later we can add support for ~logname/. (Asger)
-string const expandPath(string const & path)
-{
-	// checks for already absolute path
-	string rTemp = replaceEnvironmentPath(path);
-	if (FileName::isAbsolute(rTemp))
-		return rTemp;
-
-	string temp;
-	string const copy = rTemp;
-
-	// Split by next /
-	rTemp = split(rTemp, temp, '/');
-
-	if (temp == ".")
-		return FileName::getcwd().absFileName() + '/' + rTemp;
-
-	if (temp == "~")
-		return Package::get_home_dir().absFileName() + '/' + rTemp;
-
-	if (temp == "..")
-		return makeAbsPath(copy).absFileName();
-
-	// Don't know how to handle this
-	return copy;
-}
-
-
 // Search the string for ${VAR} and $VAR and replace VAR using getenv.
 string const replaceEnvironmentPath(string const & path)
 {
