@@ -873,7 +873,7 @@ void BufferView::scrollToCursor()
 }
 
 
-bool BufferView::scrollToCursor(DocIterator const & dit, bool recenter)
+bool BufferView::scrollToCursor(DocIterator const & dit, bool const recenter)
 {
 	// We are not properly started yet, delay until resizing is
 	// done.
