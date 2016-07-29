@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-03 18:28+0200\n"
-"PO-Revision-Date: 2016-07-03 16:37+0000\n"
+"POT-Creation-Date: 2016-07-29 19:45+0200\n"
+"PO-Revision-Date: 2016-07-29 18:21+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -520,9 +520,13 @@ msgstr "&Dostupné vetvy:"
 msgid "Select your branch"
 msgstr "Vyberte svoju vetvu"
 
+#: src/frontends/qt4/ui/BranchUi.ui:37
+msgid "Inverted"
+msgstr "Invertované"
+
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Nová vetva:"
+msgstr "&Nová:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -2729,6 +2733,26 @@ msgstr "Určite štandardný výstupný formát (pre náhľad/aktualizáciu)"
 msgid "De&fault output format:"
 msgstr "Štandardný výstupný &formát:"
 
+#: src/frontends/qt4/ui/OutputUi.ui:86
+msgid "LyX Format"
+msgstr "LyX-Formát"
+
+#: src/frontends/qt4/ui/OutputUi.ui:98
+msgid ""
+"Save all parameters in the LyX file, including ones that are frequently "
+"switched or that are specific to the user (such as the output of the tracked "
+"changes, or the document directory path). Disabling this option plays nicer "
+"in collaborative settings and with version control systems."
+msgstr ""
+"Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa často "
+"prepínajú alebo sú zvláštne ohľadom na používateľa (také ako napr. výstup "
+"sledovaných zmien, alebo cesta adresára dokumentu). Vypnutie tejto voľby je "
+"vhodnejšie ako pre spoluprácu tak i pri používaniu správe verzií."
+
+#: src/frontends/qt4/ui/OutputUi.ui:101
+msgid "Save &transient properties"
+msgstr "Ulož &prechodné vlastnosti"
+
 #: src/frontends/qt4/ui/OutputUi.ui:68
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
@@ -3894,19 +3918,35 @@ msgstr "Len hlavný súbor"
 msgid "All files"
 msgstr "Všetky súbory"
 
+#: src/frontends/qt4/ui/PrefPathsUi.ui:25
+msgid ""
+"Relative and absolute paths are allowed. Relative paths will be expanded "
+"with respect to the working directory (WD). For all paths except the "
+"\"TEXINPUTS prefix\" the WD is the directory from which you start LyX, and "
+"thus could change for each LyX session. For the \"TEXINPUTS prefix\" path "
+"the WD is the directory containing the document. The path \".\" (without "
+"quotes) is a common example of a relative path and refers to the WD."
+msgstr ""
+"Relatívne i absolútne cesty sú dovolené. Relatívne cesty sa rozvinú s "
+"ohľadom na pracovný adresár (PA). Pre každú cestu s výnimkou \"TEXINPUTS-"
+"prefix\" PA je adresár z ktorého bol LyX štartovaný, čiže sa môže meniť pri "
+"každom LyX-sedení. Pre \"TEXINPUTS prefix\" cestu, PA je adresár obsahujúci "
+"editovaný dokument. Cesta \".\" (bez úvodzoviek) je bežným príkladom "
+"relatívnej cesty ktorý referuje PA. "
+
 #: src/frontends/qt4/ui/PrefPathsUi.ui:41
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51
+#: src/frontends/qt4/ui/PrefPathsUi.ui:45
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
-"adresármi. Použiť formát vhodný pre daný operačný systém."
+"adresármi. Použite miestny formát pre daný operačný systém."
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3130
+#: src/LyXRC.cpp:3115
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3914,23 +3954,21 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
 "adresármi.\n"
-"Použiť formát vhodný pre daný operačný systém."
+"Použite miestny formát pre daný operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 msgid "TEX&INPUTS prefix:"
 msgstr "Prefix pre TEX&INPUTS:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68
+#: src/frontends/qt4/ui/PrefPathsUi.ui:62
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
-"environment variable. A '.' represents the current document directory. Use "
-"the OS native format."
+"environment variable. Use the OS native format."
 msgstr ""
-"Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
-"ostatnými adresármi. '.' reprezentuje aktuálny adresár dokumentu. Použiť "
-"formát vhodný pre daný operačný systém."
+"Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS. Použite "
+"miestny formát pre daný operačný systém."
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3229
+#: src/LyXRC.cpp:3214
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -3938,7 +3976,7 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
 "ostatnými adresármi.\n"
-"'.' reprezentuje aktuálny adresár dokumentu. Použiť formát vhodný pre daný "
+"'.' reprezentuje aktuálny adresár dokumentu. Použite miestny formát pre daný "
 "operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
@@ -6252,13 +6290,13 @@ msgstr "Kúzla v Titule a v Preambule"
 
 #: lib/layouts/InStar.module:12
 msgid ""
-"Provides two new styles: 1. An In Premable style that puts whatever is "
+"Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
 "entered into it into the preamble. This can be used, if one wishes, to "
-"include preamble code in the body of the LyX document. 2. An In Title style "
-"that will put its contents into the body of the LaTeX document, but before "
-"\\maketitle is issued. This is useful for making branches and notes in title-"
-"related material. (If you put these in a Standard layout, this signals to "
-"LyX to output \\maketitle, which may then come too early.)"
+"include preamble code in the body of the LyX document. 2. An 'In Title' "
+"style that will put its contents into the body of the LaTeX document, but "
+"before \\maketitle is issued. This is useful for making branches and notes "
+"in title-related material. (If you put these in a Standard layout, this "
+"signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
 "Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
 "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
@@ -17165,6 +17203,10 @@ msgstr "Aktivovať vetvu v hlavnom dokumente|H"
 msgid "Deactivate Branch in Master|v"
 msgstr "Dezaktivovať vetvu v hlavnom dokumente|v"
 
+#: lib/ui/stdcontext.inc:497
+msgid "Invert Inset|I"
+msgstr "Invertovať Vložku|I"
+
 #: lib/ui/stdcontext.inc:488
 msgid "Add Unknown Branch|w"
 msgstr "Pridať Neznámu Vetvu"
@@ -27729,6 +27771,10 @@ msgstr "Odrážky"
 msgid "Branches"
 msgstr "Vetvy"
 
+#: src/frontends/qt4/GuiDocument.cpp:1430
+msgid "Format"
+msgstr "Formát"
+
 #: src/frontends/qt4/GuiDocument.cpp:1425
 msgid "LaTeX Preamble"
 msgstr "Preambula LaTeX-u"
@@ -27941,10 +27987,6 @@ msgstr "(Názov modulu: %1)"
 #: src/frontends/qt4/GuiErrorList.cpp:46 src/frontends/qt4/GuiLog.cpp:255
 msgid "Literate"
 msgstr "Literárne"
-
-#: src/frontends/qt4/GuiErrorList.cpp:48
-msgid "pLaTeX"
-msgstr "pLaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:60
 msgid "Error List"
@@ -28583,6 +28625,10 @@ msgstr "Nepodarilo sa vytvoriť skratku"
 msgid "Unknown or invalid LyX function"
 msgstr "Neznáma alebo neplatná LyX funkcia"
 
+#: src/frontends/qt4/GuiPrefs.cpp:3171
+msgid "This LyX function is hidden and cannot be bound."
+msgstr "Táto funkcia LyXu je tajná a nedá sa viazať. "
+
 #: src/frontends/qt4/GuiPrefs.cpp:3122
 msgid "Invalid or empty key sequence"
 msgstr "Chybná alebo prázdna sekvencia kláves"
@@ -29181,6 +29227,10 @@ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznáma lišta nástrojov \"%1$s\""
 
+#: src/frontends/qt4/GuiView.cpp:1994
+msgid "Zoom level cannot be less than 10%."
+msgstr "Stupeň lupy nesmie byť menší ako 10%."
+
 #: src/frontends/qt4/GuiView.cpp:2078
 msgid "Select template file"
 msgstr "Vyberte súbor šablóny"
@@ -29550,6 +29600,10 @@ msgstr "Všetky dokumenty uložené."
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
+
+#: src/frontends/qt4/GuiView.cpp:3953
+msgid "Zoom level is now %1$d%"
+msgstr "Stupeň lupy je teraz %1$d%"
 
 #: src/frontends/qt4/GuiView.cpp:3976
 msgid "Please, preview the document first."
@@ -30061,6 +30115,11 @@ msgstr "ne-aktívna"
 #, c-format
 msgid "master: %1$s, child: %2$s"
 msgstr "hlavný dokument:%1$s, potomok: %2$s"
+
+#: src/insets/InsetBranch.cpp:78
+#, c-format
+msgid "Branch, inverted (%1$s): %2$s"
+msgstr "Vetva, invertovaná (%1$s): %2$s"
 
 #: src/insets/InsetBranch.cpp:78
 #, c-format
@@ -31466,6 +31525,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Specify those directories which should be prepended to the TEXINPUTS "
+#~ "environment variable. A '.' represents the current document directory. "
+#~ "Use the OS native format."
+#~ msgstr ""
+#~ "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
+#~ "ostatnými adresármi. '.' reprezentuje aktuálny adresár dokumentu. Použiť "
+#~ "formát vhodný pre daný operačný systém."
+
+#~ msgid "Toggle Inversion|I"
+#~ msgstr "Prepnúť Inverziu|I"
 
 #~ msgid "Plain text (image)"
 #~ msgstr "Prostý text (obrázok)"
@@ -34890,3 +34961,20 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
 #~ "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
+
+#~ msgid ""
+#~ "Provides two new styles: 1. An In Premable style that puts whatever is "
+#~ "entered into it into the preamble. This can be used, if one wishes, to "
+#~ "include preamble code in the body of the LyX document. 2. An In Title style "
+#~ "that will put its contents into the body of the LaTeX document, but before "
+#~ "\\maketitle is issued. This is useful for making branches and notes in title-"
+#~ "related material. (If you put these in a Standard layout, this signals to "
+#~ "LyX to output \\maketitle, which may then come too early.)"
+#~ msgstr ""
+#~ "Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
+#~ "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
+#~ "preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' položí svoj obsah "
+#~ "do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
+#~ "tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
+#~ "rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
+#~ "byť predčasné.)"
