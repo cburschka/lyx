@@ -875,12 +875,13 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			runparams, text.outerFont(distance(begin, par)),
 			opened, needclose);
 
-		if (!deferred.empty()) {
+        if (needclose) {
+            closeTag(xs, lay);
+            xs << html::CR();
+        }
+
+        if (!deferred.empty()) {
 			xs << XHTMLStream::ESCAPE_NONE << deferred << html::CR();
-		}
-		if (needclose) {
-			closeTag(xs, lay);
-			xs << html::CR();
 		}
 	}
 	return pend;
