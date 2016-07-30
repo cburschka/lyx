@@ -293,7 +293,7 @@ int InsetCaption::docbook(odocstream & os,
 }
 
 
-docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
+docstring InsetCaption::xhtml(XHTMLStream &, OutputParams const & rp) const
 {
 	if (rp.html_disable_captions)
 		return docstring();
@@ -308,10 +308,14 @@ docstring InsetCaption::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		else
 			attr = attr + " class='" + our_class + "'";
 	}
-	xs << html::StartTag(tag, attr);
-	docstring def = getCaptionAsHTML(xs, rp);
-	xs << html::EndTag(tag);
-	return def;
+	odocstringstream ods;
+	XHTMLStream ourxs(ods);
+	ourxs << html::StartTag(tag, attr) << html::CR();
+	docstring def = getCaptionAsHTML(ourxs, rp);
+	ourxs << html::EndTag(tag) << html::CR();
+	if (!def.empty())
+		return ods.str() + "\n" + def;
+	return ods.str();
 }
 
 

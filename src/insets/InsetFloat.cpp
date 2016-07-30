@@ -300,7 +300,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 
 	odocstringstream ods;
 	XHTMLStream newxs(ods);
-	newxs << html::StartTag(htmltype, attr);
+	newxs << html::StartTag(htmltype, attr) << html::CR();
 	InsetText::XHTMLOptions const opts = 
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
