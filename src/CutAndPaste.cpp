@@ -486,16 +486,18 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 	// to be so, but the alternative is to construct a new one of these (with a
 	// new temporary directory, etc) every time, and then to destroy it. So maybe
 	// it's worth just keeping this one around.
-	// FIXME THREAD
 	static TempFile tempfile("clipboard.internal");
 	tempfile.setAutoRemove(false);
-	static Buffer * staticbuffer = theBufferList().newInternalBuffer(
-			tempfile.name().absFileName());
-
-	// These two things only really need doing the first time.
-	staticbuffer->setUnnamed(true);
-	staticbuffer->inset().setBuffer(*staticbuffer);
-
+	// The initialization of staticbuffer is thread-safe. Using a lambda
+	// guarantees that the properties are set only once.
+	static Buffer * staticbuffer = [&](){
+		Buffer * b =
+			theBufferList().newInternalBuffer(tempfile.name().absFileName());
+		b->setUnnamed(true);
+		b->inset().setBuffer(*b);
+		//initialize staticbuffer with b
+		return b;
+	}();
 	// Use a clone for the complicated stuff so that we do not need to clean
 	// up in order to avoid a crash.
 	Buffer * buffer = staticbuffer->cloneBufferOnly();

@@ -78,7 +78,6 @@ static int const s_numimages_ = 10;
 static int const s_millisecs_ = 500;
 
 
-// FIXME THREAD
 LoaderQueue & LoaderQueue::get()
 {
 	static LoaderQueue singleton;

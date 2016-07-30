@@ -44,7 +44,6 @@ public:
 };
 
 
-// FIXME THREAD
 Cache & Cache::get()
 {
 	// Now return the cache

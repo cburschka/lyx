@@ -64,9 +64,9 @@ int timeout_min()
 
 string const python(bool reset)
 {
-	// FIXME THREAD
 	// Check whether the first python in PATH is the right one.
 	static string command = python23("python -tt");
+	// FIXME THREAD
 	if (reset) {
 		command = python23("python -tt");
 	}
