@@ -103,7 +103,7 @@ private:
 	 * Note that Branch insets are considered part of the
 	 * document when they are selected XOR inverted.
 	 */
-	bool producesOutput() const;
+    bool producesOutput(bool const child = false) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///

@@ -64,7 +64,7 @@ void InsetBranch::read(Lexer & lex)
 }
 
 
-docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
+docstring InsetBranch::toolTip(BufferView const &, int, int) const
 {
 	docstring const masterstatus = isBranchSelected() ?
 		_("active") : _("non-active");
@@ -72,14 +72,22 @@ docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 		_("active") : _("non-active");
 	docstring const status = (masterstatus == childstatus) ?
 		masterstatus :
-		support::bformat(_("master: %1$s, child: %2$s"),
+		support::bformat(_("master %1$s, child %2$s"),
 						 masterstatus, childstatus);
-	docstring const heading = params_.inverted ?
-		support::bformat(_("Branch, inverted (%1$s): %2$s"), status, params_.branch) :
-		support::bformat(_("Branch (%1$s): %2$s"), status, params_.branch);
-	if (isOpen(bv))
-		return heading;
-	return toolTipText(heading + from_ascii("\n"));
+
+	docstring const masteron = producesOutput() ?
+		_("on") : _("off");
+	docstring const childon = producesOutput(true) ?
+		_("on") : _("off");
+	docstring const onoff = (masteron == childon) ?
+		masteron :
+		support::bformat(_("master %1$s, child %2$s"),
+						 masteron, childon);
+
+	docstring const heading = 
+		support::bformat(_("Branch Name: %1$s\nBranch Status: %2$s\nInset Status: %3$s"),
+						 params_.branch, status, onoff);
+	return toolTipText(heading);
 }
 
 
@@ -87,25 +95,18 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 {
 	static char_type const tick = 0x2714; // ✔ U+2714 HEAVY CHECK MARK
 	static char_type const cross = 0x2716; // ✖ U+2716 HEAVY MULTIPLICATION X
-	static char_type const itick = 0x271A; // ✚ U+271A HEAVY GREEK CROSS
-	static char_type const icross = 0x274E; // ❎ U+274E NEGATIVE SQUARED CROSS MARK
 
 	Buffer const & realbuffer = *buffer().masterBuffer();
 	BranchList const & branchlist = realbuffer.params().branchlist();
 	bool const inmaster = branchlist.find(params_.branch);
 	bool const inchild = buffer().params().branchlist().find(params_.branch);
 
-	bool const master_selected = isBranchSelected();
-	bool const child_selected = isBranchSelected(true);
+	bool const master_selected = producesOutput();
+	bool const child_selected = producesOutput(true);
 
-	docstring symb = docstring(1, master_selected ? 
-		(params_.inverted ? icross : tick) :
-		(params_.inverted ? itick: cross));
-	if (inchild && master_selected != child_selected) {
-		symb += child_selected ? 
-			(params_.inverted ? icross : tick) :
-			(params_.inverted ? itick: cross);
-	}
+	docstring symb = docstring(1, master_selected ? tick : cross);
+	if (inchild && master_selected != child_selected)
+		symb += (child_selected ? tick : cross);
 
 	if (decoration() == InsetLayout::MINIMALISTIC)
 		return symb + params_.branch;
@@ -280,9 +281,9 @@ bool InsetBranch::isBranchSelected(bool const child) const
 }
 
 
-bool InsetBranch::producesOutput() const
+bool InsetBranch::producesOutput(bool const child) const
 {
-	return isBranchSelected(false) != params_.inverted;
+	return isBranchSelected(child) != params_.inverted;
 }
 
 
