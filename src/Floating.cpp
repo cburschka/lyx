@@ -44,7 +44,7 @@ Floating::Floating(string const & type, string const & placement,
 string const & Floating::htmlAttrib() const
 {
 	if (html_attrib_.empty())
-		html_attrib_ = "class='float " + defaultCSSClass() + "'";
+		html_attrib_ = "class='" + defaultCSSClass() + "'";
 	return html_attrib_;
 }
 
