@@ -981,6 +981,9 @@ public:
 	void completionPosAndDim(Cursor const &, int & x, int & y, Dimension & dim) const;
 	///
 	virtual bool usePlainLayout() const { return true; }
+	///
+	docstring layoutName() const { return from_ascii("Tabular"); }
+
 
 	///
 	InsetTabular * asInsetTabular() { return this; }

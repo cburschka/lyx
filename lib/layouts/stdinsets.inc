@@ -618,3 +618,16 @@ End
 InsetLayout PrintNomencl
   HTMLTag h2
 End
+
+InsetLayout Tabular
+	HTMLStyle
+		table {
+			border-collapse: collapse;
+			display: inline-block;
+		}
+		td {
+			border: 1px solid black;
+			padding: 0.5ex;
+		}
+	EndHTMLStyle
+End
