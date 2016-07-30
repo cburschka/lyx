@@ -77,6 +77,8 @@ public:
 	///
 	FontInfo getLabelfont() const;
 	///
+	ColorCode labelColor() const;
+	///
 	void setButtonLabel();
 	//@}
 

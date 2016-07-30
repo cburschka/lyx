@@ -257,6 +257,13 @@ FontInfo InsetArgument::getLabelfont() const
 }
 
 
+ColorCode InsetArgument::labelColor() const {
+	if (labelfont_.color() != Color_inherit)
+		return labelfont_.color();
+	return InsetCollapsable::labelColor();
+}
+
+
 InsetLayout::InsetDecoration InsetArgument::decoration() const
 {
 	InsetLayout::InsetDecoration dec = getLayout().decoration();
