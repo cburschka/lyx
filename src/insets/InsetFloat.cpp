@@ -306,16 +306,17 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
 	newxs << html::EndTag(htmltype);
 
-	if (rp.inFloat == OutputParams::NONFLOAT)
+	if (rp.inFloat == OutputParams::NONFLOAT) {
 		// In this case, this float needs to be deferred, but we'll put it
 		// before anything the text itself deferred.
 		deferred = ods.str() + '\n' + deferred;
-	else 
+	} else {
 		// In this case, the whole thing is already being deferred, so
 		// we can write to the stream.
 		// Note that things will already have been escaped, so we do not 
 		// want to escape them again.
 		xs << XHTMLStream::ESCAPE_NONE << ods.str();
+	}
 	return deferred;
 }
 
