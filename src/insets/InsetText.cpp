@@ -621,7 +621,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 
 	InsetLayout const & il = getLayout();
 	if (opts & WriteOuterTag)
-		xs << html::StartTag(il.htmltag(), il.htmlattr()) << html::CR();
+		xs << html::StartTag(il.htmltag(), il.htmlattr());
 
 	if ((opts & WriteLabel) && !il.counter().empty()) {
 		BufferParams const & bp = buffer().masterBuffer()->params();
@@ -633,9 +633,9 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
 			// FIXME is this check necessary?
 			if (!lbl.empty()) {
-				xs << html::StartTag(il.htmllabeltag(), il.htmllabelattr())
-				   << lbl
-				   << html::EndTag(il.htmllabeltag());
+				xs << html::StartTag(il.htmllabeltag(), il.htmllabelattr());
+				xs << lbl;
+				xs << html::EndTag(il.htmllabeltag());
 			}
 		}
 	}

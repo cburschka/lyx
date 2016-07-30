@@ -556,14 +556,13 @@ InsetLayout Caption:Standard
 	LabelString          standard
 	LaTeXType            command
 	LatexName            caption
-	NeedProtect          1
+	NeedProtect	     1
 	MultiPar             false
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
 		InsertCotext  1
 	EndArgument
-	HTMLTag               div
 	HTMLStyle
 		div.float-caption {
 			text-align: center;
@@ -581,7 +580,6 @@ InsetLayout Caption:Unnumbered
 	LabelString          unlabelled
 	LatexName            caption*
 	ResetArgs            1
-	HTMLAttr "class='float-caption float-caption-unnumbered'"
 End
 
 
