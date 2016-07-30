@@ -239,6 +239,8 @@ public:
 	///
 	void htmlize(HtmlStream &, std::string attrib) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	//void octave(OctaveStream &) const;
 
 protected:

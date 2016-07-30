@@ -26,6 +26,7 @@
 #include "FuncStatus.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
+#include "LaTeXFeatures.h"
 
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
@@ -1234,6 +1235,19 @@ void InsetMathGrid::htmlize(HtmlStream & os, string attrib) const
 void InsetMathGrid::htmlize(HtmlStream & os) const
 {
 	htmlize(os, "class='mathtable'");
+}
+
+
+void InsetMathGrid::validate(LaTeXFeatures & features) const
+{
+	if (features.runparams().math_flavor == OutputParams::MathAsHTML
+	    && (nrows() > 1 || ncols() > 1)) {
+		// CSS taken from InsetMathCases
+		features.addCSSSnippet(
+			"table.mathtable{display: inline-block; text-align: center; border: none;"
+			"border-left: thin solid black; vertical-align: middle; padding-left: 0.5ex;}\n"
+			"table.mathtable td {text-align: left; border: none;}");
+	}
 }
 
 
