@@ -45,6 +45,7 @@
 #include <fstream>
 #include <iomanip>
 #include <memory>
+#include <mutex>
 #include <sstream>
 
 #include <QTimer>
@@ -91,13 +92,13 @@ lyx::Converter const * setConverter(string const & from)
 			return ptr;
 	}
 
-	// FIXME THREAD
-	static bool first = true;
-	if (first) {
-		first = false;
-		LYXERR0("PreviewLoader::startLoading()\n"
-			<< "No converter from \"" << from << "\" format has been defined.");
-	}
+	// Show the error only once
+	static once_flag flag;
+	call_once(flag, [&](){
+			LYXERR0("PreviewLoader::startLoading()\n"
+			        << "No converter from \"" << from
+			        << "\" format has been defined.");
+		});
 	return 0;
 }
 
