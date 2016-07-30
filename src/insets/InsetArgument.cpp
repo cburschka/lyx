@@ -245,7 +245,7 @@ FontInfo InsetArgument::getFont() const
 {
 	if (font_ != inherit_font)
 		return font_;
-	return getLayout().font();
+	return InsetCollapsable::getFont();
 }
 
 
@@ -253,7 +253,7 @@ FontInfo InsetArgument::getLabelfont() const
 {
 	if (labelfont_ != inherit_font)
 		return labelfont_;
-	return getLayout().labelfont();
+	return InsetCollapsable::getLabelfont();
 }
 
 
