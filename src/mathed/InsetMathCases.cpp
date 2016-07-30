@@ -177,11 +177,11 @@ void InsetMathCases::validate(LaTeXFeatures & features) const
 	features.require("amsmath");
 	InsetMathGrid::validate(features);
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
-		// CSS based on eLyXer's
+		// CSS based on eLyXer's, with modifications suggested in bug #8755
 		features.addCSSSnippet(
-			"table.cases{display: inline-block; text-align: center;"
+			"table.cases{display: inline-block; text-align: center; border: none;"
 			"border-left: thin solid black; vertical-align: middle; padding-left: 0.5ex;}\n"
-			"table.cases td {text-align: left;}");
+			"table.cases td {text-align: left; border: none;}");
 }
 
 
