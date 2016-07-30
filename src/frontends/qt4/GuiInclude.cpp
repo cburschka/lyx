@@ -91,21 +91,10 @@ void GuiInclude::change_adaptor()
 
 docstring GuiInclude::validate_listings_params()
 {
-	// use a cache here to avoid repeated validation
-	// of the same parameters
-	// FIXME THREAD
-	static string param_cache = string();
-	static docstring msg_cache = docstring();
-	
 	if (typeCO->currentIndex() != 3 || bypassCB->isChecked())
 		return docstring();
-
 	string params = fromqstr(listingsED->toPlainText());
-	if (params != param_cache) {
-		param_cache = params;
-		msg_cache = InsetListingsParams(params).validate();
-	}
-	return msg_cache;
+	return InsetListingsParams(params).validate();
 }
 
 

@@ -571,6 +571,7 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
 	// FIXME THREAD
+	// This should be moved to a class member.
 	// Used for optimisation: store last searched string.
 	static QString last_searched_string;
 	// Used to disable the above optimisation.

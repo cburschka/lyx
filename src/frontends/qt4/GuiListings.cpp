@@ -346,21 +346,9 @@ string GuiListings::construct_params()
 
 docstring GuiListings::validate_listings_params()
 {
-	// use a cache here to avoid repeated validation
-	// of the same parameters
-	// FIXME THREAD
-	static string param_cache;
-	static docstring msg_cache;
-	
 	if (bypassCB->isChecked())
 		return docstring();
-
-	string params = construct_params();
-	if (params != param_cache) {
-		param_cache = params;
-		msg_cache = InsetListingsParams(params).validate();
-	}
-	return msg_cache;
+	return InsetListingsParams(construct_params()).validate();
 }
 
 

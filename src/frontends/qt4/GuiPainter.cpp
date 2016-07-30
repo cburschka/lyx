@@ -208,11 +208,16 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 		return;
 
 	// double the size if needed
-	// FIXME THREAD
+#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6)
 	static QVector<QPoint> points(32);
+#else
+	thread_local QVector<QPoint> points(32);
+#endif
 	if (np > points.size())
 		points.resize(2 * np);
 
+	// Note: the proper way to not get blurry vertical and horizontal lines is
+	// to add 0.5 to all coordinates.
 	bool antialias = false;
 	for (int i = 0; i < np; ++i) {
 		points[i].setX(xp[i]);

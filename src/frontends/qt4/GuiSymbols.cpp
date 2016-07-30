@@ -152,8 +152,11 @@ const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 QString getBlock(char_type c)
 {
 	// store an educated guess for the next search
-	// FIXME THREAD
+#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6)
 	static int lastBlock = 0;
+#else
+	thread_local int lastBlock = 0;
+#endif
 
 	// "clever reset"
 	if (c < 0x7f)

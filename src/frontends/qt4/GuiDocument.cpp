@@ -1496,21 +1496,10 @@ void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 
 QString GuiDocument::validateListingsParameters()
 {
-	// use a cache here to avoid repeated validation
-	// of the same parameters
-	// FIXME THREAD
-	static string param_cache;
-	static QString msg_cache;
-
 	if (listingsModule->bypassCB->isChecked())
 		return QString();
-
 	string params = fromqstr(listingsModule->listingsED->toPlainText());
-	if (params != param_cache) {
-		param_cache = params;
-		msg_cache = toqstr(InsetListingsParams(params).validate());
-	}
-	return msg_cache;
+	return toqstr(InsetListingsParams(params).validate());
 }
 
 
