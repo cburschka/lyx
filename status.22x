@@ -97,6 +97,8 @@ What's new
 
 - Fix output of floats, etc, inside environments (bug 9094).
 
+- Simplify XHTML output for floats, etc (bug 8605).
+
 - Add "dir='auto'" to body tag, which should help a lot with export of
   RTL languages (bug 8279, partly).
 
