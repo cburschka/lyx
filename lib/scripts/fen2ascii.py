@@ -28,7 +28,6 @@ margin= " "*6
 
 print margin+'   +'+"-"*15+'+'
 for i in range(8):
-
     cont = cont + 1
     tmp=""
     for j in comp[i]:
