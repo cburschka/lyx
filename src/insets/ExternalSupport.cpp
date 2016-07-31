@@ -200,7 +200,7 @@ string const doSubstitution(InsetExternalParams const & params,
 
 		size_t const pos = result.find("$$Contents(\"");
 		size_t const end = result.find("\")", pos);
-		result.replace(pos, end + 2, contents);
+		result.replace(pos, end + 2- pos, contents);
 	}
 
 	return result;
