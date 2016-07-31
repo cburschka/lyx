@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 511
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -56,6 +56,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -117,11 +118,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -222,6 +224,7 @@ This manual covers the customization features present in \SpecialChar LyX
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -3517,6 +3520,7 @@ If you ever find an error in the original document, fix it and notify the
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Section
@@ -22945,7 +22949,13 @@ Transform Resize
 \end_layout
 
 \begin_layout LyX-Code
-Format \SpecialChar LaTeX
+Format 
+\change_deleted 424524441 1469933132
+\SpecialChar LaTeX
+
+\change_inserted 424524441 1469933134
+LaTeX
+\change_unchanged
 
 \end_layout
 
@@ -23002,7 +23012,13 @@ FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-Format PDF\SpecialChar LaTeX
+Format PDF
+\change_deleted 424524441 1469933139
+\SpecialChar LaTeX
+
+\change_inserted 424524441 1469933140
+LaTeX
+\change_unchanged
 
 \end_layout
 
@@ -23419,6 +23435,10 @@ Format
 \end_inset
 
 LaTeX|PDFLaTeX|PlainText|DocBook
+\change_inserted 424524441 1469933248
+|XHTML
+\change_unchanged
+
 \end_layout
 
 \end_inset
