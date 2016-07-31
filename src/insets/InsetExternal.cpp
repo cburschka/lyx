@@ -729,10 +729,11 @@ int InsetExternal::plaintext(odocstringstream & os,
 
 	TexRow texrow;
 	otexstream ots(os, texrow);
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
 	ots << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), ots,
-				*(runparams.exportdata), false,
-				runparams.dryrun || runparams.inComment);
+				*(runparams.exportdata), external_in_tmpdir, dryrun);
 	return PLAINTEXT_NEWLINE;
 }
 
@@ -743,9 +744,10 @@ int InsetExternal::docbook(odocstream & os,
 	TexRow texrow;
 	odocstringstream ods;
 	otexstream ots(ods, texrow);
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
 	external::writeExternal(params_, "DocBook", buffer(), ots,
-				*(runparams.exportdata), false,
-				runparams.dryrun || runparams.inComment);
+				*(runparams.exportdata), external_in_tmpdir, dryrun);
 	os << ods.str();
 	return int(count(ods.str().begin(), ods.str().end(), '\n'));
 }
