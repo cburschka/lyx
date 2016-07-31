@@ -1011,8 +1011,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				if (labelfirst)
 					openItemTag(xs, style, par->params());
 
-				par->simpleLyXHTMLOnePar(buf, xs, runparams,
+				docstring deferred = par->simpleLyXHTMLOnePar(buf, xs, runparams,
 					text.outerFont(distance(begin, par)), true, true, sep);
+				xs << XHTMLStream::ESCAPE_NONE << deferred;
 				++par;
 
 				// We may not want to close the tag yet, in particular:
