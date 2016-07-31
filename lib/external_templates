@@ -314,6 +314,11 @@ Template ChessDiagram
 	Format DocBook
 		Product "[Chess: $$AbsOrRelPathMaster$$Basename]"
 	FormatEnd
+	Format XHTML
+		Product "<pre>$$Contents(\"$$AbsPath$$Basename.asc\")</pre>"
+		UpdateFormat asciichess
+		UpdateResult "$$AbsPath$$Basename.asc"
+	FormatEnd
 TemplateEnd
 
 
