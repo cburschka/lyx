@@ -968,11 +968,13 @@ def checkConverterEntries():
             r'''\converter dot        eps        "dot -Teps $$i -o $$o"	""
 \converter dot        png        "dot -Tpng $$i -o $$o"	""'''])
     #
-    checkProg('a Dia -> PNG converter', ['dia -e $$o -t png $$i'],
-        rc_entry = [ r'\converter dia        png        "%%"	""'])
+    path, dia = checkProg('a Dia -> Image converter', ['dia'])
+    if dia == 'dia':
+        addToRC(r'''\converter dia        png        "dia -e $$o -t png $$i"	""
+\converter dia        eps        "dia -e $$o -t eps $$i"	""'
+\converter dia        svg        "dia -e $$o -t svg $$i"	""''')
+
     #
-    checkProg('a Dia -> EPS converter', ['dia -e $$o -t eps $$i'],
-        rc_entry = [ r'\converter dia        eps        "%%"	""'])
     # Actually, this produces EPS, but with a wrong bounding box (usually A4 or letter).
     # The eps2->eps converter then fixes the bounding box by cropping.
     # Although unoconv can convert to png and pdf as well, do not define
