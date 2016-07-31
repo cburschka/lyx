@@ -2151,7 +2151,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 	if (output_body) {
 		bool const output_body_tag = (output != IncludedFile);
 		if (output_body_tag)
-			os << "<body>\n";
+			os << "<body dir=\"auto\">\n";
 		XHTMLStream xs(os);
 		if (output != IncludedFile)
 			// if we're an included file, the counters are in the master.
