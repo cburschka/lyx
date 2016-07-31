@@ -145,6 +145,12 @@ Template RasterImage
 		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
 		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
+	Format XHTML
+		Product "<img src=\"$$AbsOrRelPathMaster$$Basename.png\" />"
+		UpdateFormat png
+		UpdateResult "$$AbsPath$$Basename.png"
+		ReferencedFile xhtml "$$AbsPath$$Basename.png"
+	FormatEnd
 TemplateEnd
 
 Template VectorGraphics
