@@ -872,14 +872,12 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (params().filename.empty())
 		return string();
 
-	string const orig_file = params().filename.absFileName();
+	if (!params().filename.isReadableFile())
+		return string();
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
 	Buffer const * masterBuffer = buffer().masterBuffer();
-
-	if (!params().filename.isReadableFile())
-		return string();
 
 	// We place all temporary files in the master buffer's temp dir.
 	// This is possible because we use mangled file names.
@@ -895,14 +893,16 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (status == FAILURE)
 		return string();
 
-	string output_file = onlyFileName(temp_file.absFileName());
-
 	string const from = formats.getFormatFromFile(temp_file);
-	if (from.empty())
+	if (from.empty()) {
 		LYXERR(Debug::GRAPHICS, "\tCould not get file format.");
+		return string();
+	}
 
 	string const to   = findTargetFormat(from, runparams);
 	string const ext  = formats.extension(to);
+	string const orig_file = params().filename.absFileName();
+	string output_file = onlyFileName(temp_file.absFileName());
 	LYXERR(Debug::GRAPHICS, "\t we have: from " << from << " to " << to);
 	LYXERR(Debug::GRAPHICS, "\tthe orig file is: " << orig_file);
 
