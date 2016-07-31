@@ -30,6 +30,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_latex.h"
+#include "output_xhtml.h"
 #include "TocBackend.h"
 
 #include "frontends/alert.h"
@@ -753,12 +754,17 @@ int InsetExternal::docbook(odocstream & os,
 }
 
 
-docstring InsetExternal::xhtml(XHTMLStream  & /*xs*/,
-			OutputParams const & /*rp*/) const
+docstring InsetExternal::xhtml(XHTMLStream & xs,
+			OutputParams const & runparams) const
 {
-//	external::writeExternal(params_, "XHTML", buffer(), os,
-//				       *(runparams.exportdata), false,
-//				       runparams.dryrun || runparams.inComment);
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
+    TexRow texrow;
+    odocstringstream ods;
+    otexstream ots(ods, texrow);
+    external::writeExternal(params_, "XHTML", buffer(), ots,
+				       *(runparams.exportdata), external_in_tmpdir, dryrun);
+	xs << XHTMLStream::ESCAPE_NONE << ods.str();
 	return docstring();
 }
 
