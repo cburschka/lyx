@@ -921,6 +921,7 @@ def checkConverterEntries():
     if fig2dev == "fig2dev":
         addToRC(r'''\converter fig        eps        "fig2dev -L eps $$i $$o"	""
 \converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
+\converter fig        svg        "fig2dev -L svg $$i $$o"	""
 \converter fig        png        "fig2dev -L png $$i $$o"	""
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
