@@ -973,7 +973,7 @@ def checkConverterEntries():
     path, dia = checkProg('a Dia -> Image converter', ['dia'])
     if dia == 'dia':
         addToRC(r'''\converter dia        png        "dia -e $$o -t png $$i"	""
-\converter dia        eps        "dia -e $$o -t eps $$i"	""'
+\converter dia        eps        "dia -e $$o -t eps $$i"	""
 \converter dia        svg        "dia -e $$o -t svg $$i"	""''')
 
     #
