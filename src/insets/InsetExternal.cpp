@@ -730,11 +730,12 @@ int InsetExternal::plaintext(odocstringstream & os,
 	if (runparams.for_tooltip)
 		return 0;
 
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
 	otexstream ots(os, false);
 	ots << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), ots,
-				*(runparams.exportdata), false,
-				runparams.dryrun || runparams.inComment);
+				*(runparams.exportdata), external_in_tmpdir, dryrun);
 	return PLAINTEXT_NEWLINE;
 }
 
@@ -742,11 +743,12 @@ int InsetExternal::plaintext(odocstringstream & os,
 int InsetExternal::docbook(odocstream & os,
 			   OutputParams const & runparams) const
 {
+	bool const external_in_tmpdir = !runparams.nice;
+	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
 	otexstream ots(ods, false);
 	external::writeExternal(params_, "DocBook", buffer(), ots,
-				*(runparams.exportdata), false,
-				runparams.dryrun || runparams.inComment);
+				*(runparams.exportdata), external_in_tmpdir, dryrun);
 	os << ods.str();
 	return int(count(ods.str().begin(), ods.str().end(), '\n'));
 }
