@@ -632,6 +632,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
 \Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"	"application/vnd.ms-excel"
+\Format html_table html   "HTML Table (for spreadsheets)"      "" "" "%%"    "document"	"text/html"
 \Format oocalc     ods    "OpenDocument spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
  #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
@@ -1010,7 +1011,11 @@ def checkConverterEntries():
     checkProg('a spreadsheet -> latex converter', ['ssconvert'],
        rc_entry = [ r'''\converter gnumeric latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
 \converter oocalc latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
-\converter excel  latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""'''])
+\converter excel  latex "ssconvert --export-type=Gnumeric_html:latex $$i $$o" ""
+\converter gnumeric html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
+\converter oocalc html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
+\converter excel  html_table "ssconvert --export-type=Gnumeric_html:html40frag $$i $$o" ""
+'''])
 
     path, lilypond = checkProg('a LilyPond -> EPS/PDF/PNG converter', ['lilypond'])
     if (lilypond != ''):
