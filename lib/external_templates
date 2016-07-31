@@ -208,6 +208,12 @@ Template VectorGraphics
 		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
 		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 	FormatEnd
+	Format XHTML
+		Product "<img src=\"$$AbsOrRelPathMaster$$Basename.svg\" />"
+		UpdateFormat svg
+		UpdateResult "$$AbsPath$$Basename.svg"
+		ReferencedFile xhtml "$$AbsPath$$Basename.svg"
+	FormatEnd
 TemplateEnd
 
 Template XFig
