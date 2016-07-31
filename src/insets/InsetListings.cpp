@@ -272,10 +272,10 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	if (isInline)
 		out << html::CompTag("br");
 	else {
-		out << html::StartTag("div", "class='float float-listings'");
+		out << html::StartTag("div", "class='float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
-			out << html::StartTag("div", "class='float-caption'")
+			out << html::StartTag("div", "class='listings-caption'")
 			    << XHTMLStream::ESCAPE_NONE
 			    << caption << html::EndTag("div");
 	}
@@ -371,6 +371,7 @@ docstring const InsetListings::buttonLabel(BufferView const & bv) const
 void InsetListings::validate(LaTeXFeatures & features) const
 {
 	features.require("listings");
+	features.useInsetLayout(getLayout());
 	string param_string = params().params();
 	if (param_string.find("\\color") != string::npos)
 		features.require("color");
