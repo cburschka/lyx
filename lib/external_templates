@@ -81,6 +81,11 @@ Template GnumericSpreadsheet
 	Format DocBook
 		Product "[Spreadsheet: $$FName]"
 	FormatEnd
+	Format XHTML
+		Product "$$Contents(\"$$AbsPath$$Basename.html\")</p>"
+		UpdateFormat html_table
+		UpdateResult "$$AbsPath$$Basename.html"
+	FormatEnd
 TemplateEnd
 
 Template RasterImage
