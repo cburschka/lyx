@@ -75,6 +75,12 @@ Template GnumericSpreadsheet
 		Requirement "ifthen"
 		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.tex"
 	FormatEnd
+	Format Ascii
+		Product "[Spreadsheet: $$FName]"
+	FormatEnd
+	Format DocBook
+		Product "[Spreadsheet: $$FName]"
+	FormatEnd
 TemplateEnd
 
 Template RasterImage
