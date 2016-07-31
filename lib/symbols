@@ -1100,20 +1100,20 @@ pod                lyxblacktext  0   0 func     x     amsmath
 
 
 # mathtools.sty
-\def\vcentcolon{:}                             mathtools
-\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon} mathtools
-\def\coloneqq{\vcentcolon\kern-7mu=}           mathtools
-\def\Coloneqq{\dblcolon\kern-7mu=}             mathtools
-\def\coloneq{\vcentcolon\kern-7mu-}            mathtools
-\def\Coloneq{\dblcolon\kern-7mu-}              mathtools
-\def\eqqcolon{=\kern-8mu\vcentcolon}           mathtools
-\def\Eqqcolon{=\kern-8mu\dblcolon}             mathtools
-\def\eqcolon{-\kern-8mu\vcentcolon}            mathtools
-\def\Eqcolon{-\kern-8mu\dblcolon}              mathtools
-\def\colonapprox{\vcentcolon\kern-7mu\approx}  mathtools
-\def\Colonapprox{\dblcolon\kern-7mu\approx}    mathtools
-\def\colonsim{\vcentcolon\kern-7mu\sim}        mathtools
-\def\Colonsim{\dblcolon\kern-7mu\sim}          mathtools
+\def\vcentcolon{:}                             mathtools :
+\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon} mathtools ::
+\def\coloneqq{\vcentcolon\kern-7mu=}           mathtools &#x2254;
+\def\Coloneqq{\dblcolon\kern-7mu=}             mathtools ::=
+\def\coloneq{\vcentcolon\kern-7mu-}            mathtools :-
+\def\Coloneq{\dblcolon\kern-7mu-}              mathtools ::-
+\def\eqqcolon{=\kern-8mu\vcentcolon}           mathtools &#x2255;
+\def\Eqqcolon{=\kern-8mu\dblcolon}             mathtools =::
+\def\eqcolon{-\kern-8mu\vcentcolon}            mathtools -:
+\def\Eqcolon{-\kern-8mu\dblcolon}              mathtools -::
+\def\colonapprox{\vcentcolon\kern-7mu\approx}  mathtools :&ap;
+\def\Colonapprox{\dblcolon\kern-7mu\approx}    mathtools ::&ap;
+\def\colonsim{\vcentcolon\kern-7mu\sim}        mathtools :&sim;
+\def\Colonsim{\dblcolon\kern-7mu\sim}          mathtools ::&sim;
 
 
 #
@@ -1125,7 +1125,7 @@ pod                lyxblacktext  0   0 func     x     amsmath
 \def\neq{\not=}                                                 mathrel &ne;
 \def\ne{\not=}                                                  mathrel &ne;
 \def\lnot{\neg}                                                 mathord &not;
-\def\notin{\not\in}
+\def\notin{\not\in}                                             ""      &notin;
 \def\slash{/}
 
 \def\longleftrightarrow{\leftarrow\kern-12.5mu\rightarrow}
@@ -1134,32 +1134,32 @@ pod                lyxblacktext  0   0 func     x     amsmath
 \def\doteq{\stackrel{\cdot}{=}}
 
 iffont cmsy
-\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}
-\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
-\def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
-\def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
-\def\implies{\Longrightarrow}                                   amsmath
-\def\impliedby{\Longleftarrow}                                  amsmath
-\def\mapsto{\mapstochar\kern-9mu\rightarrow}
-\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow}
-\def\models{\vert\kern-7mu\lyxeq}
+\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}               ""       &xrarr;
+\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}                 ""       &xlarr;
+\def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}               ""       &#x27F9;
+\def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}                 ""       &#x27F8;
+\def\implies{\Longrightarrow}                                   amsmath  &#x27F9;
+\def\impliedby{\Longleftarrow}                                  amsmath  &#x27F8;
+\def\mapsto{\mapstochar\kern-9mu\rightarrow}                    ""       &#x21A4;
+\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow} ""     &#x27FB;
+\def\models{\vert\kern-7mu\lyxeq}                               ""       &vDash;
 else
-\def\implies{=>}                                                amsmath
-\def\impliedby{<=}                                              amsmath
+\def\implies{=>}                                                amsmath  &#x27F9;
+\def\impliedby{<=}                                              amsmath  &#x27F8;
 endif
 iffont cmm
-\def\hookrightarrow{\lhook\kern-12mu\rightarrow}
-\def\hookleftarrow{\leftarrow\kern-12mu\rhook}
-\def\bowtie{\triangleright\kern-6mu\triangleleft}
+\def\hookrightarrow{\lhook\kern-12mu\rightarrow}                ""       &#x21AA;
+\def\hookleftarrow{\leftarrow\kern-12mu\rhook}                  ""       &#x21A9;
+\def\bowtie{\triangleright\kern-6mu\triangleleft}               ""       &#x22C8;
 endif
 iffont msa
-\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}                amssymb
-\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}                  amssymb
+\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}                amssymb  &#x290F;
+\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}                  amssymb  &#x290E;
 else
-\def\dashrightarrow{- - \rightarrow}                            amssymb
-\def\dashleftarrow{\leftarrow{} - -}                            amssymb
+\def\dashrightarrow{- - \rightarrow}                            amssymb  &#x290F;
+\def\dashleftarrow{\leftarrow{} - -}                            amssymb  &#x290E;
 endif
-\def\dasharrow{\dashrightarrow}                                 amssymb
+\def\dasharrow{\dashrightarrow}                                 amssymb  &#x290F;
 iffont msb
 \def\Join{\ltimes\kern-18.5mu\rtimes}                           amssymb
 else
@@ -1171,10 +1171,10 @@ endif
 
 iffont cmsy
 # The \sim is placed too high...
-\def\cong{\stackrel{_\sim}{=}}
+\def\cong{\stackrel{_\sim}{=}}                                  ""        &cong;
 lyxsurd               cmsy        112 0 mathord  &radic;
-\def\surd{^\lyxsurd}
-\def\textdegree{\kern-1mu^{\circ}\kern-4mu}
+\def\surd{^\lyxsurd}                                            ""        &radic;
+\def\textdegree{\kern-1mu^{\circ}\kern-4mu}                     ""        &deg;
 else
 # FIXME: These don't work on OS X, since the Symbol font uses a different
 #        encoding and is therefore disabled in FontLoader::available().
