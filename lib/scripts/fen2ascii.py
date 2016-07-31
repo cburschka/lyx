@@ -32,15 +32,15 @@ for i in range(8):
     cont = cont + 1
     tmp=""
     for j in comp[i]:
-	if j>='0' and j <= '9':
-	    for k in range(int(j)):
-		cont = cont + 1
-		x, mod = divmod(cont,2)
-		if mod : tmp = tmp + '| '
-		else : tmp = tmp + '|*'
-	else :
-	    tmp = tmp + '|' + j
-	    cont = cont + 1
+        if j>='0' and j <= '9':
+            for k in range(int(j)):
+                cont = cont + 1
+                x, mod = divmod(cont,2)
+                if mod : tmp = tmp + '| '
+                else : tmp = tmp + '|*'
+        else :
+            tmp = tmp + '|' + j
+            cont = cont + 1
 
     row = 8 - i
     print margin, row, tmp+"|"
