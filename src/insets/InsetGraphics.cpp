@@ -964,10 +964,20 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// really be better to do width and height conversion, rather than to output
 	// these parameters here.
 	string imgstyle;
-	if (!params().width.zero())
-		imgstyle += "width:" + params().width.asHTMLString() + ";";
-	if (!params().height.zero())
-		imgstyle += " height:" + params().height.asHTMLString() + ";";
+	bool const havewidth  = !params().width.zero();
+	bool const haveheight = !params().height.zero();
+	if (havewidth || haveheight) {
+		if (havewidth)
+			imgstyle += "width:" + params().width.asHTMLString() + ";";
+		if (haveheight)
+			imgstyle += " height:" + params().height.asHTMLString() + ";";
+	} else if (params().scale != "100") {
+		// Note that this will not have the same effect as in LaTeX export:
+		// There, the image will be scaled from its original size. Here, the
+		// percentage will be interpreted by the browser, and the image will
+		// be scaled to a percentage of the window size.
+		imgstyle = "width:" + params().scale + "%;";
+	}
 	if (!imgstyle.empty())
 		imgstyle = "style='" + imgstyle + "' ";
 

@@ -6,6 +6,7 @@ All comments are welcome.
 We try to group things by topic and in decreasing order of importance.
 Please feel free to re-arrange if that seems like a good idea.
 
+
 What's new
 ==========
 
@@ -36,6 +37,9 @@ What's new
 *************
 
 * DOCUMENT INPUT/OUTPUT
+
+- We no longer attempt to convert images for which we cannot find an
+  input format.
 
 
 * LYX2LYX
@@ -78,6 +82,8 @@ What's new
 - Fix output of table borders (bug 10154).
 
 - Fix display of several math symbols (bug 8844).
+
+- Use scaling factor for export of images (bug 8742).
 
 
 * TEX2LYX
