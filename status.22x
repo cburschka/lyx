@@ -24,7 +24,7 @@ What's new
 * When changing zoom level, show current value in status bar (bug
   10212).
 
-  
+
 * DOCUMENTATION AND LOCALIZATION
 
 
@@ -51,6 +51,9 @@ What's new
 * LYX2LYX
 
 - Fix hang with some IEEEtran documents (bug 10307).
+
+- Fix export of compressed files to previous versions that were not
+  recognised on windows (bug 10273).
 
 
 * USER INTERFACE
