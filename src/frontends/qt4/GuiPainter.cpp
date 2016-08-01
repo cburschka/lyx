@@ -213,7 +213,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 	if (np > points.size())
 		points.resize(2 * np);
 
-	bool antialias = ls != line_solid_aliased;
+	bool antialias = false;
 	for (int i = 0; i < np; ++i) {
 		points[i].setX(xp[i]);
 		points[i].setY(yp[i]);
@@ -223,7 +223,8 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 	QColor const color = computeColor(col);
 	setQPainterPen(color, ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
-	setRenderHint(Antialiasing, antialias && text_is_antialiased);
+	setRenderHint(Antialiasing,
+	              antialias && text_is_antialiased && ls != line_solid_aliased);
 	if (fs == fill_none) {
 		drawPolyline(points.data(), np);
 	} else {
