@@ -106,7 +106,7 @@ def setEnviron():
 
 def copy_tree(src, dst, preserve_symlinks=False, level=0):
     ''' Copy an entire directory tree 'src' to a new location 'dst'.
- 
+
     Code inspired from distutils.copy_tree.
 	 Copying ignores non-regular files and the cache directory.
     Pipes may be present as leftovers from LyX for lyx-server.
@@ -115,7 +115,7 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
     copied as symlinks (on platforms that support them!); otherwise
     (the default), the destination of the symlink will be copied.
     '''
- 
+
     if not os.path.isdir(src):
         raise FileError, \
               "cannot copy tree '%s': not a directory" % src
@@ -124,12 +124,12 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
     except os.error, (errno, errstr):
         raise FileError, \
               "error listing files in '%s': %s" % (src, errstr)
- 
+
     if not os.path.isdir(dst):
         os.makedirs(dst)
- 
+
     outputs = []
- 
+
     for name in names:
         src_name = os.path.join(src, name)
         dst_name = os.path.join(dst, name)
@@ -147,7 +147,7 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
             outputs.append(dst_name)
         else:
             logger.info("Ignore non-regular file %s", src_name)
- 
+
     return outputs
 
 
@@ -766,7 +766,7 @@ def checkConverterEntries():
 \converter knitr   xetex      "%%"	""
 \converter knitr   luatex     "%%"	""'''])
     #
-    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
+    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'],
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
     #
     checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'],
@@ -863,7 +863,7 @@ def checkConverterEntries():
     #
     checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
-    # Do not define a converter to pdf6, ps is a pure export format 
+    # Do not define a converter to pdf6, ps is a pure export format
     checkProg('a PS to PDF converter', ['ps2pdf $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
     #
@@ -1162,19 +1162,19 @@ def processLayoutFile(file, bool_docbook):
         Declare lines look like this:
 
         \DeclareLaTeXClass[<requirements>]{<description>}
-        
+
         Optionally, a \DeclareCategory line follows:
-        
+
         \DeclareCategory{<category>}
-        
+
         So for example (article.layout, scrbook.layout, svjog.layout)
-        
+
         \DeclareLaTeXClass{article}
         \DeclareCategory{Articles}
-        
+
         \DeclareLaTeXClass[scrbook]{book (koma-script)}
         \DeclareCategory{Books}
-        
+
         \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
 
         we'd expect this output:
