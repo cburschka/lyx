@@ -1248,6 +1248,7 @@ void InsetMathGrid::validate(LaTeXFeatures & features) const
 			"border-left: thin solid black; vertical-align: middle; padding-left: 0.5ex;}\n"
 			"table.mathtable td {text-align: left; border: none;}");
 	}
+	InsetMathNest::validate(features);
 }
 
 
