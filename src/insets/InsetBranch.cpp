@@ -64,7 +64,7 @@ void InsetBranch::read(Lexer & lex)
 }
 
 
-docstring InsetBranch::toolTip(BufferView const &, int, int) const
+docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 {
 	docstring const masterstatus = isBranchSelected() ?
 		_("active") : _("non-active");
@@ -87,7 +87,10 @@ docstring InsetBranch::toolTip(BufferView const &, int, int) const
 	docstring const heading = 
 		support::bformat(_("Branch Name: %1$s\nBranch Status: %2$s\nInset Status: %3$s"),
 						 params_.branch, status, onoff);
-	return toolTipText(heading);
+
+	if (isOpen(bv))
+		return heading;
+	return toolTipText(heading + from_ascii("\n"));
 }
 
 
