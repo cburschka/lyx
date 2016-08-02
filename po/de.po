@@ -90,20 +90,20 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-07-15 02:43+0200\n"
-"PO-Revision-Date: 2016-07-15 02:54+0200\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"PO-Revision-Date: 2016-08-02 13:20+0100\n"
+"Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -1736,10 +1736,12 @@ msgid ""
 "Activate extensions such as character protrusion and font expansion via the "
 "microtype package"
 msgstr ""
+"Aktiviert mikrotypographische Erweiterungen wie optischen Randausgleich und"
+" Schriftskalierung mithilfe des Mikrotype-Pakets"
 
 #: src/frontends/qt4/ui/FontUi.ui:264
 msgid "Enable micr&o-typographic extensions"
-msgstr ""
+msgstr "M&ikrotypographische Erweiterungen aktivieren"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -6068,6 +6070,15 @@ msgid ""
 "in title-related material. (If you put these in a Standard layout, this "
 "signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Bietet zwei neue Absatzstile: 1. Ein Stil \"Im Vorspann\", der den Inhalt des"
+" Absatzes im "
+"LaTeX-Vorspann ausgibt. Damit kann man optional Vorspann-Code in den"
+" Hauptteil des LyX-Dokuments eingeben. "
+"2. Ein Stil \"Im Titel\", der den Inhalt in den Hauptteil des Dokuments, aber"
+" vor \\maketitle, ausgibt. "
+"Dies ist bspw. nützlich, um Zweige und Notizen in der Titelei zu platzieren."
+" (Wenn Sie hierfür den Absatzstil Standard "
+"verwenden, gibt LyX \\maketitle aus, was manchmal nicht erwünscht ist)."
 
 #: lib/layouts/InStar.module:16
 msgid "In Preamble"
@@ -16596,7 +16607,7 @@ msgstr "Deaktiviere Zweig im Hauptdokument|v"
 
 #: lib/ui/stdcontext.inc:497
 msgid "Invert Inset|I"
-msgstr ""
+msgstr "Einfügung umkehren|u"
 
 #: lib/ui/stdcontext.inc:498
 msgid "Add Unknown Branch|w"
@@ -17670,7 +17681,7 @@ msgstr "Mehrsprachige Legenden|g"
 
 #: lib/ui/stdmenus.inc:622
 msgid "Paralist|t"
-msgstr ""
+msgstr "Paralist|t"
 
 #: lib/ui/stdmenus.inc:623
 msgid "PDF comments|D"
@@ -28158,6 +28169,8 @@ msgstr "Unbekannte oder ungültige LyX-Funktion."
 #: src/frontends/qt4/GuiPrefs.cpp:3171
 msgid "This LyX function is hidden and cannot be bound."
 msgstr ""
+"Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer"
+" Tastenkombination belegt werden."
 
 #: src/frontends/qt4/GuiPrefs.cpp:3177
 msgid "Invalid or empty key sequence"
