@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-08-02 12:52+0200\n"
-"PO-Revision-Date: 2016-08-02 13:17+0100\n"
+"POT-Creation-Date: 2016-08-03 09:05+0200\n"
+"PO-Revision-Date: 2016-08-03 09:06+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -6375,23 +6375,21 @@ msgstr "Titel und Vorspann-Anpassungen"
 
 #: lib/layouts/InStar.module:12
 msgid ""
-"Provides two new styles: 1. An In Premable style that puts whatever is "
+"Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
 "entered into it into the preamble. This can be used, if one wishes, to "
-"include preamble code in the body of the LyX document. 2. An In Title style "
-"that will put its contents into the body of the LaTeX document, but before "
-"\\maketitle is issued. This is useful for making branches and notes in title-"
-"related material. (If you put these in a Standard layout, this signals to "
-"LyX to output \\maketitle, which may then come too early.)"
+"include preamble code in the body of the LyX document. 2. An 'In Title' "
+"style that will put its contents into the body of the LaTeX document, but "
+"before \\maketitle is issued. This is useful for making branches and notes "
+"in title-related material. (If you put these in a Standard layout, this "
+"signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
-"Bietet zwei neue Absatzstile: 1. Ein Stil \"Im Vorspann\", der den Inhalt des"
-" Absatzes im "
-"LaTeX-Vorspann ausgibt. Damit kann man optional Vorspann-Code in den"
-" Hauptteil des LyX-Dokuments eingeben. "
-"2. Ein Stil \"Im Titel\", der den Inhalt in den Hauptteil des Dokuments, aber"
-" vor \\maketitle, ausgibt. "
-"Dies ist bspw. nützlich, um Zweige und Notizen in der Titelei zu platzieren."
-" (Wenn Sie hierfür den Absatzstil Standard "
-"verwenden, gibt LyX \\maketitle aus, was manchmal nicht erwünscht ist)."
+"Bietet zwei neue Absatzstile: 1. Ein Stil \"Im Vorspann\", der den Inhalt "
+"des Absatzes im LaTeX-Vorspann ausgibt. Damit kann man optional Vorspann-"
+"Code in den Hauptteil des LyX-Dokuments eingeben. 2. Ein Stil \"Im Titel\", "
+"der den Inhalt in den Hauptteil des Dokuments, aber vor \\maketitle, "
+"ausgibt. Dies ist bspw. nützlich, um Zweige und Notizen in der Titelei zu "
+"platzieren. (Wenn Sie hierfür den Absatzstil Standard verwenden, gibt LyX "
+"\\maketitle aus, was manchmal nicht erwünscht ist)."
 
 #: lib/layouts/InStar.module:16
 msgid "In Preamble"
@@ -17028,7 +17026,7 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:329 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1308 src/mathed/InsetMathGrid.cpp:1594
+#: src/Text3.cpp:1308 src/mathed/InsetMathGrid.cpp:1595
 #: src/mathed/InsetMathNest.cpp:581
 msgid "Paste"
 msgstr "Einfügen"
@@ -26248,8 +26246,8 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"Der prozentuale Skalierungsfaktor für die Bildschirmschriften. Ein Wert "
-"von 100% lässt die Zeichen etwa genauso groß erscheinen wie auf Papier."
+"Der prozentuale Skalierungsfaktor für die Bildschirmschriften. Ein Wert von "
+"100% lässt die Zeichen etwa genauso groß erscheinen wie auf Papier."
 
 #: src/LyXRC.cpp:3197
 msgid "Allow session manager to save and restore windows geometry."
@@ -31369,27 +31367,27 @@ msgstr "Verzierung: %1$s"
 msgid "Environment: %1$s"
 msgstr "Umgebung: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1750
+#: src/mathed/InsetMathGrid.cpp:1751
 msgid "Cursor not in table"
 msgstr "Cursor nicht in Tabelle"
 
-#: src/mathed/InsetMathGrid.cpp:1755
+#: src/mathed/InsetMathGrid.cpp:1756
 msgid "Only one row"
 msgstr "Nur eine Zeile"
 
-#: src/mathed/InsetMathGrid.cpp:1761
+#: src/mathed/InsetMathGrid.cpp:1762
 msgid "Only one column"
 msgstr "Nur eine Spalte"
 
-#: src/mathed/InsetMathGrid.cpp:1769
+#: src/mathed/InsetMathGrid.cpp:1770
 msgid "No hline to delete"
 msgstr "Keine horizontale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.cpp:1778
+#: src/mathed/InsetMathGrid.cpp:1779
 msgid "No vline to delete"
 msgstr "Keine vertikale Linie zu löschen"
 
-#: src/mathed/InsetMathGrid.cpp:1807
+#: src/mathed/InsetMathGrid.cpp:1808
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
