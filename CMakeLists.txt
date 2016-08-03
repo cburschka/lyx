@@ -461,7 +461,14 @@ else()
   set(SYSTEM_DATADIR "${CMAKE_INSTALL_PREFIX}")
 endif()
 
-if(LYX_PACKAGE_SUFFIX)
+# The define below allows lyx-executable to find its default configuration files
+# see routines
+#    Package::messages_file()
+#    get_default_user_support_dir()
+#    relative_system_support_dir()
+# in src/support/Package.cpp
+#
+if(LYX_PROGRAM_SUFFIX)
 	set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
 else()
 	set(PACKAGE ${PACKAGE_BASE})
