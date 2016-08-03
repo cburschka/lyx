@@ -13,6 +13,7 @@
 #define ACTION_H
 
 #include <QAction>
+#include <memory>
 
 class QIcon;
 
@@ -32,8 +33,15 @@ class Action : public QAction
 	Q_OBJECT
 
 public:
-	Action(QIcon const & icon, QString const & text,
-		FuncRequest const & func, QString const & tooltip, QObject * parent);
+	// Makes a copy of func
+	Action(FuncRequest func, QIcon const & icon, QString const & text,
+	       QString const & tooltip, QObject * parent);
+
+	// Takes shared ownership of func.
+	// Use for perf-sensitive code such as populating menus.
+	Action(std::shared_ptr<FuncRequest const> func,
+	       QIcon const & icon, QString const & text,
+	       QString const & tooltip, QObject * parent);
 
 	void update();
 
@@ -45,7 +53,8 @@ private Q_SLOTS:
 	void action();
 
 private:
-	FuncRequest const & func_ ;
+	void init(QIcon const & icon, QString const & text, QString const & tooltip);
+	std::shared_ptr<FuncRequest const> func_;
 };
 
 

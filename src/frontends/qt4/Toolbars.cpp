@@ -38,14 +38,16 @@ namespace frontend {
 //
 /////////////////////////////////////////////////////////////////////////
 
-ToolbarItem::ToolbarItem(Type type, FuncRequest const & func, docstring const & label)
-	: type_(type), func_(func), label_(label)
+ToolbarItem::ToolbarItem(Type type, FuncRequest const & func,
+                         docstring const & label)
+	: type_(type), func_(make_shared<FuncRequest>(func)), label_(label)
 {
 }
 
 
-ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label)
-	: type_(type), label_(label), name_(name)
+ToolbarItem::ToolbarItem(Type type, string const & name,
+                         docstring const & label)
+	: type_(type), func_(make_shared<FuncRequest>()), label_(label), name_(name)
 {
 }
 
@@ -53,7 +55,7 @@ ToolbarItem::ToolbarItem(Type type, string const & name, docstring const & label
 void ToolbarInfo::add(ToolbarItem const & item)
 {
 	items.push_back(item);
-	items.back().func_.setOrigin(FuncRequest::TOOLBAR);
+	items.back().func_->setOrigin(FuncRequest::TOOLBAR);
 }
 
 

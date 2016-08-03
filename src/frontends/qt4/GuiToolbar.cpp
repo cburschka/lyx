@@ -116,12 +116,12 @@ Action * GuiToolbar::addItem(ToolbarItem const & item)
 	QString text = toqstr(item.label_);
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(item.func_);
+	KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*item.func_);
 	if (!bindings.empty())
 		text += " [" + toqstr(bindings.begin()->print(KeySequence::ForGui)) + "]";
 
-	Action * act = new Action(getIcon(item.func_, false),
-				  text, item.func_, text, this);
+	Action * act = new Action(item.func_, getIcon(*item.func_, false), text,
+	                          text, this);
 	actions_.append(act);
 	return act;
 }
@@ -148,7 +148,7 @@ public:
 		ToolbarInfo const * tbinfo = guiApp->toolbars().info(tbitem_.name_);
 		if (tbinfo)
 			// use the icon of first action for the toolbar button
-			setIcon(getIcon(tbinfo->items.begin()->func_, true));
+			setIcon(getIcon(*tbinfo->items.begin()->func_, true));
 	}
 
 	void mousePressEvent(QMouseEvent * e)
@@ -173,7 +173,7 @@ public:
 		ToolbarInfo::item_iterator it = tbinfo->items.begin();
 		ToolbarInfo::item_iterator const end = tbinfo->items.end();
 		for (; it != end; ++it)
-			if (!getStatus(it->func_).unknown())
+			if (!getStatus(*it->func_).unknown())
 				panel->addButton(bar_->addItem(*it));
 
 		QToolButton::mousePressEvent(e);
@@ -228,7 +228,7 @@ void MenuButton::initialize()
 	ToolbarInfo::item_iterator it = tbinfo->items.begin();
 	ToolbarInfo::item_iterator const end = tbinfo->items.end();
 	for (; it != end; ++it)
-		if (!getStatus(it->func_).unknown())
+		if (!getStatus(*it->func_).unknown())
 			m->add(bar_->addItem(*it));
 	setMenu(m);
 }
@@ -311,7 +311,7 @@ void GuiToolbar::add(ToolbarItem const & item)
 		break;
 		}
 	case ToolbarItem::COMMAND: {
-		if (!getStatus(item.func_).unknown())
+		if (!getStatus(*item.func_).unknown())
 			addAction(addItem(item));
 		break;
 		}

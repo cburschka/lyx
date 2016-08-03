@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <map>
+#include <memory>
 
 
 namespace lyx {
@@ -57,7 +58,7 @@ public:
 	/// item type
 	Type type_;
 	/// action
-	FuncRequest func_;
+	std::shared_ptr<FuncRequest> func_; // non-null
 	/// label/tooltip
 	docstring label_;
 	/// name

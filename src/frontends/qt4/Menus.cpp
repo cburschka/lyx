@@ -198,8 +198,8 @@ public:
 		 QString const & submenu = QString(),
 		 QString const & tooltip = QString(),
 		 bool optional = false)
-		: kind_(kind), label_(label), submenuname_(submenu),
-		  tooltip_(tooltip), optional_(optional)
+		: kind_(kind), label_(label), func_(make_shared<FuncRequest>()),
+		  submenuname_(submenu), tooltip_(tooltip), optional_(optional)
 	{
 		LATTEST(kind == Submenu || kind == Help || kind == Info);
 	}
@@ -210,10 +210,10 @@ public:
 		 QString const & tooltip = QString(),
 		 bool optional = false,
 		 FuncRequest::Origin origin = FuncRequest::MENU)
-		: kind_(kind), label_(label), func_(func),
+		: kind_(kind), label_(label), func_(make_shared<FuncRequest>(func)),
 		  tooltip_(tooltip), optional_(optional)
 	{
-		func_.setOrigin(origin);
+		func_->setOrigin(origin);
 	}
 
 	/// The label of a given menuitem
@@ -234,7 +234,7 @@ public:
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
-	FuncRequest const & func() const { return func_; }
+	shared_ptr<FuncRequest const> func() const { return func_; }
 	/// the tooltip
 	QString const & tooltip() const { return tooltip_; }
 	/// returns true if the entry should be omitted when disabled
@@ -253,13 +253,13 @@ public:
 			return QString();
 		// Get the keys bound to this action, but keep only the
 		// first one later
-		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(func_);
+		KeyMap::Bindings bindings = theTopLevelKeymap().findBindings(*func_);
 		if (!bindings.empty())
 			return toqstr(bindings.begin()->print(KeySequence::ForGui));
 
 		LYXERR(Debug::KBMAP, "No binding for "
-			<< lyxaction.getActionName(func_.action())
-			<< '(' << func_.argument() << ')');
+			<< lyxaction.getActionName(func_->action())
+			<< '(' << func_->argument() << ')');
 		return QString();
 	}
 
@@ -285,7 +285,7 @@ private:
 	///
 	QString label_;
 	///
-	FuncRequest func_;
+	shared_ptr<FuncRequest> func_;// non-null
 	///
 	QString submenuname_;
 	///
@@ -398,7 +398,7 @@ void MenuDefinition::addWithStatusCheck(MenuItem const & i)
 	switch (i.kind()) {
 
 	case MenuItem::Command: {
-		FuncStatus status = lyx::getStatus(i.func());
+		FuncStatus status = lyx::getStatus(*i.func());
 		if (status.unknown() || (!status.enabled() && i.optional()))
 			break;
 		items_.push_back(i);
@@ -691,7 +691,7 @@ MenuItem const & MenuDefinition::operator[](size_type i) const
 bool MenuDefinition::hasFunc(FuncRequest const & func) const
 {
 	for (const_iterator it = begin(), et = end(); it != et; ++it)
-		if (it->func() == func)
+		if (*it->func() == func)
 			return true;
 	return false;
 }
@@ -741,7 +741,7 @@ bool MenuDefinition::searchMenu(FuncRequest const & func, docstring_list & names
 	const_iterator m = begin();
 	const_iterator m_end = end();
 	for (; m != m_end; ++m) {
-		if (m->kind() == MenuItem::Command && m->func() == func) {
+		if (m->kind() == MenuItem::Command && *m->func() == func) {
 			names.push_back(qstring_to_ucs4(m->label()));
 			return true;
 		}
@@ -1706,7 +1706,7 @@ struct Menu::Impl
 {
 	/// populates the menu or one of its submenu
 	/// This is used as a recursive function
-	void populate(QMenu & qMenu, MenuDefinition const & menu);
+	void populate(QMenu * qMenu, MenuDefinition const & menu);
 
 	/// Only needed for top level menus.
 	MenuDefinition * top_level_menu;
@@ -1739,7 +1739,7 @@ static QString label(MenuItem const & mi)
 	return label;
 }
 
-void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
+void Menu::Impl::populate(QMenu * qMenu, MenuDefinition const & menu)
 {
 	LYXERR(Debug::GUI, "populating menu " << menu.name());
 	if (menu.empty()) {
@@ -1747,21 +1747,26 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 		return;
 	}
 	LYXERR(Debug::GUI, " *****  menu entries " << menu.size());
-	MenuDefinition::const_iterator m = menu.begin();
-	MenuDefinition::const_iterator end = menu.end();
-	for (; m != end; ++m) {
-		if (m->kind() == MenuItem::Separator)
-			qMenu.addSeparator();
-		else if (m->kind() == MenuItem::Submenu) {
-			QMenu * subMenu = qMenu.addMenu(label(*m));
-			populate(*subMenu, m->submenu());
+	for (MenuItem const & m : menu)
+		switch (m.kind()) {
+		case MenuItem::Separator:
+			qMenu->addSeparator();
+			break;
+		case MenuItem::Submenu: {
+			QMenu * subMenu = qMenu->addMenu(label(m));
+			populate(subMenu, m.submenu());
 			subMenu->setEnabled(!subMenu->isEmpty());
-		} else {
-			// we have a MenuItem::Command
-			qMenu.addAction(new Action(QIcon(), label(*m),
-				m->func(), m->tooltip(), &qMenu));
+			break;
 		}
-	}
+		case MenuItem::Command:
+		default:
+			// FIXME: A previous comment assured that MenuItem::Command was the
+			// only possible case in practice, but this is wrong.  It would be
+			// good to document which cases are actually treated here.
+			qMenu->addAction(new Action(m.func(), QIcon(), label(m),
+			                            m.tooltip(), qMenu));
+			break;
+		}
 }
 
 #if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && (QT_VERSION >= 0x040600)
@@ -1919,7 +1924,7 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 		QAction::MenuRole role;
 	};
 
-	static MacMenuEntry entries[] = {
+	static const MacMenuEntry entries[] = {
 		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
@@ -1948,11 +1953,10 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 	// add the entries to a QMenu that will eventually be empty
 	// and therefore invisible.
 	QMenu * qMenu = qmb->addMenu("special");
-	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
-	MenuDefinition::const_iterator end = mac_special_menu_.end();
-	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(QIcon(), cit->label(),
-			cit->func(), QString(), qMenu);
+	size_t i = 0;
+	for (MenuItem const & m : mac_special_menu_) {
+		Action * action = new Action(m.func(), QIcon(), m.label(),
+		                             QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
 	}
@@ -2091,7 +2095,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			break;
 
 		case MenuItem::Command:
-			if (!mac_special_menu_.hasFunc(cit->func()))
+			if (!mac_special_menu_.hasFunc(*cit->func()))
 				tomenu.addWithStatusCheck(*cit);
 		}
 	}
@@ -2330,7 +2334,7 @@ void Menus::updateMenu(Menu * qmenu)
 	if (qmenu->d->view)
 		bv = qmenu->d->view->currentBufferView();
 	d->expand(fromLyxMenu, *qmenu->d->top_level_menu, bv);
-	qmenu->d->populate(*qmenu, *qmenu->d->top_level_menu);
+	qmenu->d->populate(qmenu, *qmenu->d->top_level_menu);
 }
 
 

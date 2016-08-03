@@ -24,14 +24,32 @@
 #include "support/debug.h"
 #include "support/lstrings.h"
 
+using namespace std;
+
+
 namespace lyx {
 namespace frontend {
 
 
-Action::Action(QIcon const & icon,
-	  QString const & text, FuncRequest const & func,
-	  QString const & tooltip, QObject * parent)
+Action::Action(FuncRequest func, QIcon const & icon, QString const & text,
+               QString const & tooltip, QObject * parent)
+	: QAction(parent), func_(make_shared<FuncRequest>(move(func)))
+{
+	init(icon, text, tooltip);
+}
+
+
+Action::Action(shared_ptr<FuncRequest const> func,
+               QIcon const & icon, QString const & text,
+               QString const & tooltip, QObject * parent)
 	: QAction(parent), func_(func)
+{
+	init(icon, text, tooltip);
+}
+
+
+void Action::init(QIcon const & icon, QString const & text,
+                  QString const & tooltip)
 {
 	// only Qt/Mac handles that
 	setMenuRole(NoRole);
@@ -46,7 +64,7 @@ Action::Action(QIcon const & icon,
 
 void Action::update()
 {
-	FuncStatus const status = getStatus(func_);
+	FuncStatus const status = getStatus(*func_);
 
 	if (status.onOff(true)) {
 		setCheckable(true);
@@ -66,7 +84,7 @@ void Action::action()
 {
 	//LYXERR(Debug::ACTION, "calling lyx::dispatch: func_: ");
 
-	lyx::dispatch(func_);
+	lyx::dispatch(*func_);
 	triggered(this);
 }
 
