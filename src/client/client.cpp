@@ -504,9 +504,11 @@ int g(vector<docstring> const & arg)
 		     << endl;
 		return -1;
 	}
-	singleCommand = "LYXCMD:server-goto-file-row "
-		+ arg[0] + ' '
-		+ arg[1];
+	singleCommand = "LYXCMD:command-sequence "
+		"server-goto-file-row "
+			+ arg[0] + ' '
+			+ arg[1] + "; " +
+		"lyx-activate";
 	return 2;
 }
 

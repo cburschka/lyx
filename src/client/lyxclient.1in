@@ -53,7 +53,7 @@ LyX commands documentation can be found in LyX Help menu.
 send a single \fIcommand\fR, print LyX information to standard output and exit. LYXCMD prefix is needed in the given command.
 .TP
 .BI \-g " file line"
-this is simply a wrapper for the command 'server\-goto\-file\-row \fIfile\fR \fIline\fR'. It is used by the DVI previewer to elicit inverse DVI search.
+this is simply a wrapper for the command 'command-sequence server\-goto\-file\-row \fIfile\fR \fIline\fR; lyx-activate'. It is used by the PDF and DVI previewer to elicit inverse search and focus the LyX window.
 .PP
 If neither \fB\-c\fR nor \fB\-g\fR are used, \fBlyxclient\fR will regard any
 standard input as commands to be sent to LyX, printing LyX's responses to
