@@ -12,6 +12,14 @@ Input beamer.layout
 Provides geometry 0
 Provides hyperref 0
 
+DefaultFont
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
+EndFont
+
 Preamble
 	\usepackage{beamerarticle,pgf}
 	% this default might be overridden by plain title style
