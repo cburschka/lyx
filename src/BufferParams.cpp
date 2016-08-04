@@ -2407,13 +2407,17 @@ vector<string> BufferParams::backends() const
 
 	// FIXME: Don't hardcode format names here, but use a flag
 	if (buffmt == "latex") {
-		if (!useNonTeXFonts) {
-			v.push_back("pdflatex");
-			v.push_back("latex");
+		if (encoding().package() == Encoding::japanese)
+			v.push_back("platex");
+		else {
+			if (!useNonTeXFonts) {
+				v.push_back("pdflatex");
+				v.push_back("latex");
+			}
+			v.push_back("xetex");
+			v.push_back("luatex");
+			v.push_back("dviluatex");
 		}
-		v.push_back("xetex");
-		v.push_back("luatex");
-		v.push_back("dviluatex");
 	} else
 		v.push_back(buffmt);
 
