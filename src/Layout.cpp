@@ -1089,7 +1089,7 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 
 void Layout::write(ostream & os) const
 {
-	os << "Style " << to_utf8(name_) << '\n';
+	os << "Style \"" << to_utf8(name_) << "\"\n";
 	if (!category_.empty() && obsoleted_by_.empty())
 		os << "\tCategory \"" << to_utf8(category_) << "\"\n";
 	// Can't deduce Copystyle here :-(
