@@ -7026,6 +7026,26 @@ Syntax command-prefix
 \end_layout
 
 \begin_layout Subsection*
+lyx-activate
+\end_layout
+
+\begin_layout Description
+Action Activates the LyX window.
+\end_layout
+
+\begin_layout Description
+Notion On Linux and Mac OS, this action brings the LyX window into focus. Such behavior is not allowed by Windows OS so instead the color of the taskbar entry is changed to indicate that the window has changed in some way. This action is useful in combination with reverse search.
+\end_layout
+
+\begin_layout Description
+Syntax lyx-activate
+\end_layout
+
+\begin_layout Description
+Origin skostysh, 4 Aug 2016
+\end_layout
+
+\begin_layout Subsection*
 self-insert
 \end_layout
 

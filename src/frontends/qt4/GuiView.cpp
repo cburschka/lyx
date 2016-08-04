@@ -2055,6 +2055,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_SERVER_GOTO_FILE_ROW:
+	case LFUN_LYX_ACTIVATE:
 		break;
 	case LFUN_FORWARD_SEARCH:
 		enable = !(lyxrc.forward_search_dvi.empty() && lyxrc.forward_search_pdf.empty());
@@ -3976,6 +3977,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_SERVER_GOTO_FILE_ROW:
 			goToFileRow(to_utf8(cmd.argument()));
+			break;
+
+		case LFUN_LYX_ACTIVATE:
+			activateWindow();
 			break;
 
 		case LFUN_FORWARD_SEARCH: {

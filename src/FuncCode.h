@@ -466,6 +466,7 @@ enum FuncCode
 	LFUN_BUFFER_MOVE_PREVIOUS,      // skostysh 20150408
 	LFUN_TABULAR_FEATURE,           // gm, 20151210
 	LFUN_BRANCH_INVERT,             // rgheck, 20160712
+	LFUN_LYX_ACTIVATE,              // skostysh, 20160804
 	LFUN_LASTACTION                 // end of the table
 };
 

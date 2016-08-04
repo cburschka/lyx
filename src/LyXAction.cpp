@@ -2716,6 +2716,19 @@ void LyXAction::init()
  */
 		{ LFUN_LYX_QUIT, "lyx-quit", NoBuffer, Buffer },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_LYX_ACTIVATE
+ * \li Action: Activates the LyX window.
+ * \li Notion: On Linux and Mac OS, this action brings the LyX window
+               into focus. Such behavior is not allowed by Windows OS
+               so instead the color of the taskbar entry is changed to
+               indicate that the window has changed in some way.
+               This action is useful in combination with reverse search.
+ * \li Syntax: lyx-activate
+ * \li Origin: skostysh, 4 Aug 2016
+ * \endvar
+ */
+		{ LFUN_LYX_ACTIVATE, "lyx-activate", ReadOnly | NoBuffer, Hidden },
+/*!
  * \var lyx::FuncCode lyx::LFUN_TOOLBAR_TOGGLE
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
  * \li Notion: Skipping "auto" when allowauto is false.
