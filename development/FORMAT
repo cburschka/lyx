@@ -13,22 +13,22 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2016-08-04 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 512
-	Added inclusion of styles from [scr]article to the [scr]article-beamer
-	layouts. On reversion, this is handled via local layout additions that
-	are removed again on conversion.
+	  Added inclusion of styles from [scr]article to the [scr]article-beamer
+	  layouts. On reversion, this is handled via local layout additions that
+	  are removed again on conversion.
 
 2016-07-11 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 511
-	Added "inverted" branches
+	  Added "inverted" branches
 
 2016-06-19 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 510
-	 Removed external date inset
+	  Removed external date inset
 
 2016-06-16 Pavel Sanda <sanda@lyx.org>
 	* Format incremented to 509.
-	New parameter "\use_microtype bool" for including microtype LaTeX
-	package into preamble.
+	  New parameter "\use_microtype bool" for including microtype LaTeX
+	  package into preamble.
 
 2016-04-05 Enrico Forestieri <forenr@lyx.org>
 	* Format incremented to 508
