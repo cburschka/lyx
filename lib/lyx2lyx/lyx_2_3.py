@@ -25,7 +25,7 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-#from parser_tools import find_token, find_end_of, find_tokens, \
+from parser_tools import find_end_of#, find_token, find_tokens, \
 #  find_token_exact, find_end_of_inset, find_end_of_layout, \
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value, get_bool_value
@@ -176,7 +176,90 @@ def revert_ibranches(document):
         # these are the old lines telling us color, etc.
         lines += document.header[i+2 : j+1]
         document.header[i:i] = lines
-        
+
+
+def revert_beamer_article_styles(document):
+    " Include (scr)article styles in beamer article "
+
+    beamer_articles = ["article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_articles:
+        return
+
+    inclusion = "article.layout"
+    if document.textclass == "scrarticle-beamer":
+        inclusion = "scrartcl.layout"
+
+    while True:
+        i = find_token(document.header, "\\begin_local_layout", 0)
+        if i == -1:
+            k = find_token(document.header, "\\language", 0)
+            if k == -1:
+                # this should not happen
+                document.warning("Malformed LyX document! No \\language header found!")
+                break
+            document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+            i = find_token(document.header, "\\begin_local_layout", 0)
+        if i != -1:
+            j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+            if j == -1:
+                # this should not happen
+                break
+
+            document.header[i+1 : i+1] = ["### Inserted by lyx2lyx (more [scr]article styles) ###",
+                                          "Input " + inclusion,
+                                          "Input beamer.layout",
+                                          "Provides geometry 0",
+                                          "Provides hyperref 0",
+                                          "DefaultFont",
+                                          "	Family                Roman",
+                                          "	Series                Medium",
+                                          "	Shape                 Up",
+                                          "	Size                  Normal",
+                                          "	Color                 None",
+                                          "EndFont",
+                                          "Preamble",
+                                          "	\\usepackage{beamerarticle,pgf}",
+                                          "	% this default might be overridden by plain title style",
+                                          "	\\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
+                                          "	\\AtBeginDocument{",
+                                          "		\\let\\origtableofcontents=\\tableofcontents",
+                                          "		\\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
+                                          "		\\def\\gobbletableofcontents#1{\\origtableofcontents}",
+                                          "	}",
+                                          "EndPreamble",
+                                          "### End of insertion by lyx2lyx (more [scr]article styles) ###"]
+        return
+
+
+def convert_beamer_article_styles(document):
+    " Remove included (scr)article styles in beamer article "
+
+    beamer_articles = ["article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_articles:
+        return
+
+    while True:
+        i = find_token(document.header, "\\begin_local_layout", 0)
+        if i == -1:
+            return
+
+        j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+        if j == -1:
+            # this should not happen
+            break
+
+        k = find_token(document.header, "### Inserted by lyx2lyx (more [scr]article styles) ###", i, j)
+        if k != -1:
+            l = find_token(document.header, "### End of insertion by lyx2lyx (more [scr]article styles) ###", i, j)
+            if l == -1:
+                # this should not happen
+                document.warning("End of lyx2lyx local layout insertion not found!")
+                break
+
+            document.header[k : l + 1] = []
+
+        return
+
 
 ##
 # Conversion hub
@@ -186,10 +269,12 @@ supported_versions = ["2.3.0", "2.3"]
 convert = [
            [509, [convert_microtype]],
            [510, [convert_dateinset]],
-           [511, [convert_ibranches]]
+           [511, [convert_ibranches]],
+           [512, [convert_beamer_article_styles]]
           ]
 
 revert =  [
+           [511, [revert_beamer_article_styles]],
            [510, [revert_ibranches]],
            [509, []],
            [508, [revert_microtype]]
