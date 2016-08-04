@@ -2569,15 +2569,6 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 }
 
 
-struct PrettyNameComparator
-{
-	bool operator()(Format const *first, Format const *second) const {
-		return compare_no_case(translateIfPossible(from_ascii(first->prettyname())),
-				       translateIfPossible(from_ascii(second->prettyname()))) <= 0;
-	}
-};
-
-
 bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 {
 	FileName fname = b.fileName();
@@ -2593,8 +2584,12 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 	for (; it != formats.end(); ++it)
 		if (it->documentFormat())
 			export_formats.push_back(&(*it));
-	PrettyNameComparator cmp;
-	sort(export_formats.begin(), export_formats.end(), cmp);
+	sort(export_formats.begin(), export_formats.end(),
+	     [](Format const *first, Format const *second) {
+		     QString name1 = qt_(first->prettyname());
+		     QString name2 = qt_(second->prettyname());
+		     return 0 < name2.localeAwareCompare(name1);
+	     });
 	vector<Format const *>::const_iterator fit = export_formats.begin();
 	map<QString, string> fmap;
 	QString filter;
