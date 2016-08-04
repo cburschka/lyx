@@ -208,11 +208,8 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 		return;
 
 	// double the size if needed
-#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6)
+	// FIXME THREAD
 	static QVector<QPoint> points(32);
-#else
-	thread_local QVector<QPoint> points(32);
-#endif
 	if (np > points.size())
 		points.resize(2 * np);
 

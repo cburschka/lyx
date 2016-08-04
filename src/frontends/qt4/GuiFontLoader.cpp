@@ -373,13 +373,9 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 bool FontLoader::available(FontInfo const & f)
 {
-#if defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6)
-	static vector<bool> cache_set(NUM_FAMILIES, false);
-	static vector<bool> cache(NUM_FAMILIES, false);
-#else
-	thread_local vector<bool> cache_set(NUM_FAMILIES, false);
-	thread_local vector<bool> cache(NUM_FAMILIES, false);
-#endif
+	// FIXME THREAD
+	static vector<int> cache_set(NUM_FAMILIES, false);
+	static vector<int> cache(NUM_FAMILIES, false);
 
 	FontFamily family = f.family();
 #ifdef Q_OS_MAC
