@@ -335,6 +335,10 @@ bool XHTMLStream::closeFontTags()
 		// we haven't had any content
 		return true;
 
+#ifdef	XHTML_DEBUG
+	dumpTagStack("Beging Close Font Tags");
+#endif
+
 	// this may be a useless check, since we ought at least to have
 	// the parsep_tag. but it can't hurt too much to be careful.
 	if (tag_stack_.empty())
@@ -351,6 +355,10 @@ bool XHTMLStream::closeFontTags()
 		curtag = tag_stack_.back();
 	}
 
+#ifdef	XHTML_DEBUG
+	dumpTagStack("End Close Font Tags");
+#endif
+	
 	if (*curtag == parsep_tag)
 		return true;
 
@@ -373,6 +381,9 @@ void XHTMLStream::startDivision(bool keep_empty)
 	pending_tags_.push_back(makeTagPtr(html::StartTag(parsep_tag)));
 	if (keep_empty)
 		clearTagDeque();
+#ifdef	XHTML_DEBUG
+	dumpTagStack("StartDivision");
+#endif
 }
 
 
@@ -390,6 +401,11 @@ void XHTMLStream::endDivision()
 			if (*cur_tag == parsep_tag)
 				break;
 		}
+
+#ifdef	XHTML_DEBUG
+		dumpTagStack("EndDivision");
+#endif
+		
 		return;
 	}
 
@@ -408,6 +424,10 @@ void XHTMLStream::endDivision()
 		writeError("Tag `" + cur_tag->tag_ + "' still open at end of paragraph. Closing.");
 		os_ << cur_tag->writeEndTag();
 	}
+
+#ifdef	XHTML_DEBUG
+	dumpTagStack("EndDivision");
+#endif
 }
 
 
