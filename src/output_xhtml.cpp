@@ -344,7 +344,7 @@ bool XHTMLStream::closeFontTags()
 		tag_stack_.pop_back();
 		// this shouldn't happen, since then the font tags
 		// weren't in any other tag.
-		LBUFERR(!tag_stack_.empty());
+		LASSERT(!tag_stack_.empty(), return true);
 		curtag = tag_stack_.back();
 	}
 
