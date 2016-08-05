@@ -842,12 +842,28 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		//   (i) the current layout permits multiple paragraphs
 		//  (ii) we are either not already inside a paragraph (HTMLIsBlock) OR
 		//       we are, but this is not the first paragraph
-		// But we do not want to open the paragraph tag if this paragraph contains
+		//
+		// But there is also a special case, and we first see whether we are in it.
+		// We do not want to open the paragraph tag if this paragraph contains
 		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such 
-		// as a branch). That is the "special case" we handle first.
+		// as a branch). On the other hand, if that single item has a font change
+		// applied to it, then we still do need to open the paragraph.
+		//
+		// Obviously, this is very fragile. The main reason we need to do this is
+		// because of branches, e.g., a branch that contains an entire new section.
+		// We do not really want to wrap that whole thing in a <div>...</div>.
+		bool special_case = false;
 		Inset const * specinset = par->size() == 1 ? par->getInset(0) : 0;
-		bool const special_case =  
-			specinset && !specinset->getLayout().htmlisblock();
+		if (specinset && !specinset->getLayout().htmlisblock()) {
+			Layout const & style = par->layout();
+			FontInfo const first_font = style.labeltype == LABEL_MANUAL ?
+						style.labelfont : style.font;
+			FontInfo const our_font =
+				par->getFont(buf.masterBuffer()->params(), 0,
+			               text.outerFont(distance(begin, par))).fontInfo();
+			if (first_font == our_font)
+				special_case = true;
+		}
 
 		bool const opened = runparams.html_make_pars
 			&& (!runparams.html_in_par || par != pbegin)
