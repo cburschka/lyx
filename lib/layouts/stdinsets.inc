@@ -124,11 +124,11 @@ InsetLayout Note:Comment
 	Display               false
 	HTMLTag               div
 	HTMLIsBlock           true
-  HTMLStyle
-    div.note_comment {
-      display: none;
-    }
-  EndHTMLStyle
+	HTMLStyle
+	div.note_comment {
+		display: none;
+	}
+	EndHTMLStyle
 End
 
 
@@ -142,8 +142,7 @@ InsetLayout Note:Note
 	  Size                Small
 	EndFont
 	MultiPar              true
-	HTMLIsBlock           false
-# FIXME HTML Need CSS
+	# Not output for XHTML
 End
 
 
