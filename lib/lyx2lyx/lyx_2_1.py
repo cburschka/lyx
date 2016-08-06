@@ -227,7 +227,6 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
         # in a single location: Skip all those arguments, then process the ones
         # we want.
         end_ERT = find_end_of_inset(document.body, lineERT)
-        document.warning(str(end_ERT))
         if end_ERT == -1:
           document.warning("Can't find end of ERT!!")
           break
