@@ -247,6 +247,33 @@ AC_DEFUN([LYX_CXX_USE_REGEX],
 ])
 
 
+dnl Usage: LYX_CXX_USE_CALL_ONCE
+dnl check whether we can use std::call_once and set the
+dnl LYX_USE_STD_CALL_ONCE macro and conditional accordingly.
+AC_DEFUN([LYX_CXX_USE_CALL_ONCE],
+[AC_MSG_CHECKING([for std::call_once availability])
+   save_CPPFLAGS=$CPPFLAGS
+   CPPFLAGS="$AM_CPPFLAGS $CPPFLAGS"
+   save_CXXFLAGS=$CXXFLAGS
+   CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
+   AC_TRY_LINK(
+     [
+	#include <mutex>
+	static std::once_flag flag;
+     ], [
+	std::call_once(flag, [](){ return; });
+   ], [lyx_std_call_once=yes], [lyx_std_call_once=no])
+   CXXFLAGS=$save_CXXFLAGS
+   CPPFLAGS=$save_CPPFLAGS
+   AC_MSG_RESULT([$lyx_std_call_once])
+
+ if test $lyx_std_call_once = yes ; then
+  AC_DEFINE([LYX_USE_STD_CALL_ONCE], 1, [define to 1 if std::call_once is supported by the compiler])
+ fi
+ AM_CONDITIONAL([LYX_USE_STD_CALL_ONCE], test $lyx_std_call_once = yes)
+])
+
+
 dnl Usage: LYX_LIB_STDCXX: set lyx_cv_lib_stdcxx to yes if the STL library is libstdc++.
 AC_DEFUN([LYX_LIB_STDCXX],
 [AC_CACHE_CHECK([whether STL is libstdc++],
@@ -284,6 +311,7 @@ LYX_CXX_CXX11_FLAGS
 LYX_LIB_STDCXX
 LYX_LIB_STDCXX_CXX11_ABI
 LYX_CXX_USE_REGEX
+LYX_CXX_USE_CALL_ONCE
 AC_LANG_POP(C++)
 
 if test $lyx_cv_lib_stdcxx = "yes" ; then

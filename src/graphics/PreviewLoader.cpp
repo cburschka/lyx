@@ -93,12 +93,24 @@ lyx::Converter const * setConverter(string const & from)
 	}
 
 	// Show the error only once
+#ifdef LYX_USE_STD_CALL_ONCE
+	// This is thread-safe.
 	static once_flag flag;
 	call_once(flag, [&](){
 			LYXERR0("PreviewLoader::startLoading()\n"
 			        << "No converter from \"" << from
 			        << "\" format has been defined.");
 		});
+#else
+	// This is not thread-safe.
+	static bool first = true;
+	if (first) {
+		first = false;
+		LYXERR0("PreviewLoader::startLoading()\n"
+			<< "No converter from \"" << from
+			<< "\" format has been defined.");
+	}
+#endif
 	return 0;
 }
 
