@@ -91,6 +91,9 @@ ${Include_used_spellchecker}
 
 #cmakedefine HAVE_DEF_MAKE_UNIQUE 1
 
+// Define to 1 if std::call_once is supported by the compiler
+#cmakedefine LYX_USE_STD_CALL_ONCE 1
+
 #endif // config.h guard
 
 

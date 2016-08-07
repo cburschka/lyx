@@ -184,6 +184,17 @@ check_cxx_source_compiles(
   "
 HAVE_DEF_MAKE_UNIQUE)
 
+check_cxx_source_compiles(
+  "
+  #include <mutex>
+  static std::once_flag flag;
+  int main() {
+    std::call_once(flag, [](){ return; });
+    return(0);
+  }
+  "
+LYX_USE_STD_CALL_ONCE)
+
 set(USE_LLVM_LIBCPP)
 set(STD_STRING_USES_COW)
 set(USE_GLIBCXX_CXX11_ABI)
