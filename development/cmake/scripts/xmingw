@@ -2,7 +2,10 @@
 #!/bin/sh
 #
 # Installed MinGW needed.
-# Ubuntu : sudo apt-get install g++-mingw-w64-i686
+# Ubuntu :
+#   sudo apt-get install g++-mingw-w64-i686
+#   sudo update-alternatives --set i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix
+#   sudo update-alternatives --set i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix
 
 
 
