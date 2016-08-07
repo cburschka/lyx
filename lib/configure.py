@@ -758,19 +758,22 @@ def checkConverterEntries():
         rc_entry = [r'''\converter literate   latex      "%%"	""
 \converter literate   pdflatex      "%%"	""
 \converter literate   xetex         "%%"	""
-\converter literate   luatex        "%%"	""'''])
+\converter literate   luatex        "%%"	""
+\converter literate   dviluatex     "%%"	""'''])
     #
     checkProg('a Sweave -> LaTeX converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxsweave.R $$p$$i $$p$$o $$e $$r'],
         rc_entry = [r'''\converter sweave   latex      "%%"	""
 \converter sweave   pdflatex   "%%"	""
 \converter sweave   xetex      "%%"	""
-\converter sweave   luatex     "%%"	""'''])
+\converter sweave   luatex     "%%"	""
+\converter sweave   dviluatex  "%%"	""'''])
     #
     checkProg('a knitr -> LaTeX converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r'],
         rc_entry = [r'''\converter knitr   latex      "%%"	""
 \converter knitr   pdflatex   "%%"	""
 \converter knitr   xetex      "%%"	""
-\converter knitr   luatex     "%%"	""'''])
+\converter knitr   luatex     "%%"	""
+\converter knitr   dviluatex  "%%"	""'''])
     #
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
         rc_entry = [ r'\converter sweave      r      "%%"    ""' ])
@@ -1065,6 +1068,7 @@ def checkConverterEntries():
                 addToRC(r'\converter lilypond-book pdflatex "lilypond-book --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$i" ""')
                 addToRC(r'\converter lilypond-book xetex    "lilypond-book --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$i"  ""')
                 addToRC(r'\converter lilypond-book luatex   "lilypond-book --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$i" ""')
+                addToRC(r'\converter lilypond-book dviluatex "lilypond-book --safe --latex-program=dvilualatex --lily-output-dir=ly-eps $$i" ""')
                 logger.info('+  found LilyPond-book version %s.' % version_number)
             else:
                 logger.info('+  found LilyPond-book, but version %s is too old.' % version_number)
