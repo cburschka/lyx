@@ -169,6 +169,7 @@ SET(CPACK_SOURCE_IGNORE_FILES
 "\\\\.swp$"
 "\\\\.my$"
 "\\\\.pyc$"
+"\\\\.patch$"
 "~$"
 "/#"
 "/_CPack_Packages/"
