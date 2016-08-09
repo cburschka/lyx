@@ -1190,8 +1190,9 @@ void latexParagraphs(Buffer const & buf,
 		if (layout.intitle) {
 			if (already_title) {
 				LYXERR0("Error in latexParagraphs: You"
-					" should not mix title layouts"
-					" with normal ones.");
+					" are using a layout (\"" << layout.name() << "\")"
+					" intended for the title, after using"
+					" non-title layouts.");
 			} else if (!was_title) {
 				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
