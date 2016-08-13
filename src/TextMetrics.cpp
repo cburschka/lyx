@@ -625,18 +625,14 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 		// Common case : there is no hfill, and the alignment will be
 		// meaningful
 		switch (getAlign(par, row)) {
-		case LYX_ALIGN_BLOCK: {
-			int const ns = row.countSeparators();
-			// If we have separators, then stretch the row
-			if (ns) {
-				row.setSeparatorExtraWidth(double(w) / ns);
-				row.dimension().wid += w;
-			} else if (text_->isRTL(par)) {
+		case LYX_ALIGN_BLOCK:
+			// Expand expanding characters by a total of w
+			if (!row.setExtraWidth(w) && text_->isRTL(par)) {
+				// Justification failed and the text is RTL: align to the right
 				row.left_margin += w;
 				row.dimension().wid += w;
 			}
 			break;
-		}
 		case LYX_ALIGN_RIGHT:
 			row.left_margin += w;
 			row.dimension().wid += w;
@@ -655,6 +651,7 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 		return;
 	}
 
+	// Case nh > 0. There are hfill separators.
 	hfill = w / nh;
 	hfill_rem = w % nh;
 	row.dimension().wid += w;

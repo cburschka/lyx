@@ -60,6 +60,8 @@ public:
 		int & width,
 		int & ascent,
 		int & descent) const;
+
+	int countExpanders(docstring const & str) const;
 	///
 	int width(QString const & str) const;
 

@@ -142,6 +142,10 @@ public:
 	inline int center(char_type c) const {
 		return (rbearing(c) - lbearing(c)) / 2;
 	}
+
+	/// return the number of expanding characters taken into account for
+	/// increased inter-word spacing during justification
+	virtual int countExpanders(docstring const & str) const = 0;
 };
 
 

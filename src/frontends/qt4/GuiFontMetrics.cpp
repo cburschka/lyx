@@ -246,6 +246,27 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
 }
 
 
+int GuiFontMetrics::countExpanders(docstring const & str) const
+{
+	// Numbers of characters that are expanded by inter-word spacing.  These
+	// characters are spaces, except for characters 09-0D which are treated
+	// specially.  (From a combination of testing with the notepad found in qt's
+	// examples, and reading the source code.)  In addition, consecutive spaces
+	// only count as one expander.
+	bool wasspace = false;
+	int nexp = 0;
+	for (char_type c : str)
+		if (c > 0x0d && QChar(c).isSpace()) {
+			if (!wasspace) {
+				++nexp;
+				wasspace = true;
+			}
+		} else
+			wasspace = false;
+	return nexp;
+}
+
+
 bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
 {
 	if (s.empty())

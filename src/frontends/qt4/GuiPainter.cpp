@@ -423,7 +423,8 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	int textwidth = 0;
 	if (tw == 0.0)
 		// Note that we have to take in account space stretching (word spacing)
-		textwidth = fm.width(s) + count(s.begin(), s.end(), ' ') * wordspacing;
+		textwidth = fm.width(s) +
+			static_cast<int>(fm.countExpanders(s) * wordspacing);
 	else
 		textwidth = static_cast<int>(tw);
 

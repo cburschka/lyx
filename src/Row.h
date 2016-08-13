@@ -61,11 +61,21 @@ public:
 			: type(t), pos(p), endpos(p + 1), inset(0),
 			  extra(0), font(f), change(ch), final(false) {}
 
-		// Return total width of element, including separator overhead
-		// FIXME: Cache this value or the number of separators?
-		double full_width() const { return dim.wid + extra * countSeparators(); }
 		// Return the number of separator in the element (only STRING type)
 		int countSeparators() const;
+
+		// Return total width of element, including separator overhead
+		// FIXME: Cache this value or the number of expanders?
+		double full_width() const { return dim.wid + extra * countExpanders(); }
+		// Return the number of expanding characters in the element (only STRING
+		// type).
+		int countExpanders() const;
+		// Return the amount of expansion: the number of expanding characters
+		// that get stretched during justification, times the em of the font
+		// (only STRING type).
+		int expansionAmount() const;
+		// set extra proportionally to the font em value.
+		void setExtra(double extra_per_em);
 
 		/** Return position in pixels (from the left) of position
 		 * \param i in the row element.
@@ -182,8 +192,10 @@ public:
 
 	// Return the number of separators in the row
 	int countSeparators() const;
-	// Set the extra spacing for every separator in STRING elements
-	void setSeparatorExtraWidth(double w);
+	// Set the extra spacing for every expanding character in STRING-type
+	// elements.  \param w is the total amount of extra width for the row to be
+	// distributed among expanders.  \return false if the justification fails.
+	bool setExtraWidth(int w);
 
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,

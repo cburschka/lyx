@@ -37,23 +37,39 @@ using support::rtrim;
 using frontend::FontMetrics;
 
 
+// Maximum length that a space can be stretched when justifying text
+static double const MAX_SPACE_STRETCH = 1.5; //em
+
+
 int Row::Element::countSeparators() const
 {
 	if (type != STRING)
 		return 0;
-	// Consecutive spaces count as only one separator.
-	bool wasspace = false;
-	int nsep = 0;
-	for (size_t i = 0 ; i < str.size() ; ++i) {
-		if (str[i] == ' ') {
-			if (!wasspace) {
-				++nsep;
-				wasspace = true;
-			}
-		} else
-			wasspace = false;
-	}
-	return nsep;
+	return count(str.begin(), str.end(), ' ');
+}
+
+
+int Row::Element::countExpanders() const
+{
+	if (type != STRING)
+		return 0;
+	return theFontMetrics(font).countExpanders(str);
+}
+
+
+int Row::Element::expansionAmount() const
+{
+	if (type != STRING)
+		return 0;
+	return countExpanders() * theFontMetrics(font).em();
+}
+
+
+void Row::Element::setExtra(double extra_per_em)
+{
+	if (type != STRING)
+		return;
+	extra = extra_per_em * theFontMetrics(font).em();
 }
 
 
@@ -234,7 +250,7 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 	switch (e.type) {
 	case Row::STRING:
 		os << "STRING: `" << to_utf8(e.str) << "' ("
-		   << e.countSeparators() << " sep.), ";
+		   << e.countExpanders() << " expanders.), ";
 		break;
 	case Row::VIRTUAL:
 		os << "VIRTUAL: `" << to_utf8(e.str) << "', ";
@@ -311,13 +327,28 @@ int Row::countSeparators() const
 }
 
 
-void Row::setSeparatorExtraWidth(double w)
+bool Row::setExtraWidth(int w)
 {
-	separator = w;
-	iterator const end = elements_.end();
-	for (iterator it = elements_.begin() ; it != end ; ++it)
-		if (it->type == Row::STRING)
-			it->extra = w;
+	if (w < 0)
+		// this is not expected to happen (but it does)
+		return false;
+	// amount of expansion: number of expanders time the em value for each
+	// string element
+	int exp_amount = 0;
+	for (Row::Element const & e : elements_)
+		exp_amount += e.expansionAmount();
+	// extra length per expander per em
+	double extra_per_em = double(w) / exp_amount;
+	if (extra_per_em > MAX_SPACE_STRETCH)
+		// do not stretch more than MAX_SPACE_STRETCH em per expander
+		return false;
+	// add extra length to each element proportionally to its em.
+	for (Row::Element & e : elements_)
+		if (e.type == Row::STRING)
+			e.setExtra(extra_per_em);
+	// update row dimension
+	dim_.wid += w;
+	return true;
 }
 
 
