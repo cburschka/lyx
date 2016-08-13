@@ -102,7 +102,7 @@ lyx::Converter const * setConverter(string const & from)
 			        << "\" format has been defined.");
 		});
 #else
-	// This is not thread-safe.
+	// This is also thread-safe according to §6.7.4 of the C++11 standard.
 	static bool first = true;
 	if (first) {
 		first = false;
