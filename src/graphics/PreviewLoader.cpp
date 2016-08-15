@@ -103,13 +103,11 @@ lyx::Converter const * setConverter(string const & from)
 		});
 #else
 	// This is also thread-safe according to §6.7.4 of the C++11 standard.
-	static bool first = true;
-	if (first) {
-		first = false;
-		LYXERR0("PreviewLoader::startLoading()\n"
-			<< "No converter from \"" << from
-			<< "\" format has been defined.");
-	}
+	static bool once = ([&]{
+			LYXERR0("PreviewLoader::startLoading()\n"
+			        << "No converter from \"" << from
+			        << "\" format has been defined.");
+		} (), true);
 #endif
 	return 0;
 }
