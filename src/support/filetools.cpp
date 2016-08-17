@@ -21,6 +21,7 @@
 
 #include <config.h>
 
+#include "LyX.h"
 #include "LyXRC.h"
 
 #include "support/filetools.h"
@@ -994,6 +995,11 @@ cmd_ret const runCommand(string const & cmd)
 	// of course the best would be to have a
 	// pstream (process stream), with the
 	// variants ipstream, opstream
+
+	if (verbose)
+		lyxerr << "\nRunning: " << cmd << endl;
+	else
+		LYXERR(Debug::INFO,"Running: " << cmd);
 
 #if defined (_WIN32)
 	STARTUPINFO startup;

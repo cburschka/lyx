@@ -66,6 +66,9 @@ using namespace lyx::support;
 
 namespace lyx {
 
+// Dummy verbose support
+bool verbose = false;
+
 // Dummy LyXRC support
 struct LyXRC {
 	string icon_set;

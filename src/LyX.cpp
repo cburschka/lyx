@@ -92,6 +92,12 @@ namespace os = support::os;
 bool use_gui = true;
 
 
+// Report on the terminal about spawned commands. The default is false
+// and can be changed with the option -v (--verbose).
+
+bool verbose = false;
+
+
 // We default to open documents in an already running instance, provided that
 // the lyxpipe has been setup. This can be overridden either on the command
 // line or through preference settings.
@@ -1161,6 +1167,8 @@ int parse_help(string const &, string const &, string &)
 		  "\t-r [--remote]\n"
 		  "                  open documents in an already running instance\n"
 		  "                  (a working lyxpipe is needed)\n"
+		  "\t-v [--verbose]\n"
+		  "                  report on terminal about spawned commands.\n"
 		  "\t-batch    execute commands without launching GUI and exit.\n"
 		  "\t-version  summarize version and build info\n"
 			       "Check the LyX man page for more details.")) << endl;
@@ -1295,6 +1303,13 @@ int parse_remote(string const &, string const &, string &)
 }
 
 
+int parse_verbose(string const &, string const &, string &)
+{
+	verbose = true;
+	return 0;
+}
+
+
 int parse_force(string const & arg, string const &, string &)
 {
 	if (arg == "all") {
@@ -1342,6 +1357,8 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--no-remote"] = parse_noremote;
 	cmdmap["-r"] = parse_remote;
 	cmdmap["--remote"] = parse_remote;
+	cmdmap["-v"] = parse_verbose;
+	cmdmap["--verbose"] = parse_verbose;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it

@@ -23,6 +23,7 @@
 #include "support/os.h"
 #include "support/ProgressInterface.h"
 
+#include "LyX.h"
 #include "LyXRC.h"
 
 #include <cstdlib>
@@ -239,7 +240,10 @@ int Systemcall::startscript(Starttype how, string const & what,
 			    bool process_events)
 {
 	string const what_ss = commandPrep(what);
-	LYXERR(Debug::INFO,"Running: " << what_ss);
+	if (verbose)
+		lyxerr << "\nRunning: " << what_ss << endl;
+	else
+		LYXERR(Debug::INFO,"Running: " << what_ss);
 
 	string infile;
 	string outfile;

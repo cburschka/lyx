@@ -195,6 +195,10 @@ void GuiProgressView::clearText()
 
 void GuiProgressView::appendLyXErrText(QString const & text)
 {
+	// Skip verbose messages meant for the terminal
+	if (text.startsWith("\nRunning:"))
+		return;
+
 	widget_->outTE->moveCursor(QTextCursor::End);
 	widget_->outTE->insertPlainText(text);
 	widget_->outTE->ensureCursorVisible();

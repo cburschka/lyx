@@ -48,6 +48,13 @@ namespace Alert {
 
 
 //
+// Dummy verbose support
+//
+
+bool verbose = false;
+
+
+//
 // Dummy LyXRC support
 //
 
