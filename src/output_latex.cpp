@@ -29,12 +29,15 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetArgument.h"
 
+#include "frontends/alert.h"
+
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 #include "support/textutils.h"
+#include "support/gettext.h"
 
 #include <QThreadStorage>
 
@@ -1178,6 +1181,8 @@ void latexParagraphs(Buffer const & buf,
 	bool already_title = false;
 	DocumentClass const & tclass = bparams.documentClass();
 
+	// Did we already warn about inTitle layout mixing? (we only warn once)
+	bool gave_layout_warning = false;
 	for (; pit < runparams.par_end; ++pit) {
 		lastpit = pit;
 		ParagraphList::const_iterator par = paragraphs.constIterator(pit);
@@ -1189,10 +1194,15 @@ void latexParagraphs(Buffer const & buf,
 
 		if (layout.intitle) {
 			if (already_title) {
-				LYXERR0("Error in latexParagraphs: You"
-					" are using a layout (\"" << layout.name() << "\")"
-					" intended for the title, after using"
-					" non-title layouts.");
+				if (!gave_layout_warning) {
+					gave_layout_warning = true;
+					frontend::Alert::warning(_("Error in latexParagraphs"),
+							bformat(_("You are using at least one "
+							  "layout (%1$s) intended for the title, "
+							  "after using non-title layouts. This "
+							  "could lead to missing or incorrect output."
+							  ), layout.name()));
+				}
 			} else if (!was_title) {
 				was_title = true;
 				if (tclass.titletype() == TITLE_ENVIRONMENT) {
