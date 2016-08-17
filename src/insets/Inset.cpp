@@ -520,6 +520,16 @@ void Inset::metricsMarkers2(Dimension & dim, int framesize) const
 }
 
 
+void Inset::drawBackground(PainterInfo & pi, int x, int y) const
+{
+	if (pi.full_repaint && backgroundColor(pi) == Color_none)
+		return;
+	Dimension const dim = dimension(*pi.base.bv);
+	pi.pain.fillRectangle(x, y - dim.asc, dim.wid, dim.asc + dim.des,
+	                      pi.backgroundColor(this));
+}
+
+
 void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
 	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?

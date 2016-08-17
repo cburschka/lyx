@@ -70,8 +70,6 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	void drawBackground(PainterInfo & pi, int x, int y) const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(std::ostream &) const;

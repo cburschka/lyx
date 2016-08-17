@@ -583,17 +583,6 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void MathMacroTemplate::drawBackground(PainterInfo & pi, int x, int y) const
-{
-	if (pi.full_repaint)
-		return;
-	Dimension const dim = dimension(*pi.base.bv);
-	pi.pain.fillRectangle(x, y - dim.asc, dim.wid, dim.asc + dim.des,
-	                      pi.backgroundColor(this));
-}
-
-
-
 void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
 	// FIXME: Calling Changer on the same object repeatedly is inefficient.

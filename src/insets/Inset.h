@@ -190,7 +190,7 @@ public:
 	virtual void drawSelection(PainterInfo &, int, int) const {}
 	/// draw inset background if the inset has an own background and a
 	/// selection is drawn by drawSelection.
-	virtual void drawBackground(PainterInfo &, int, int) const {}
+	virtual void drawBackground(PainterInfo &, int, int) const;
 	///
 	virtual bool editing(BufferView const * bv) const;
 	///

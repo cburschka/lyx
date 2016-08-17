@@ -78,6 +78,8 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
+	virtual void drawBackground(PainterInfo &, int, int) const {}
+	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,

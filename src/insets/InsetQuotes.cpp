@@ -211,16 +211,6 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetQuotes::drawBackground(PainterInfo & pi, int x, int y) const
-{
-	if (pi.full_repaint)
-		return;
-	Dimension const dim = dimension(*pi.base.bv);
-	pi.pain.fillRectangle(x, y - dim.asc, dim.wid, dim.asc + dim.des,
-	                      pi.backgroundColor(this));
-}
-
-
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font = pi.base.font;

@@ -54,6 +54,8 @@ public:
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	virtual void drawBackground(PainterInfo &, int, int) const {}
 
 	/// return x,y of given position relative to the inset's baseline
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
