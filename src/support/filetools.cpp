@@ -1071,10 +1071,14 @@ cmd_ret const runCommand(string const & cmd)
 
 #if defined (_WIN32)
 	WaitForSingleObject(process.hProcess, INFINITE);
+	DWORD pret;
+	if (!GetExitCodeProcess(process.hProcess, &pret))
+		pret = -1;
 	if (!infile.empty())
 		CloseHandle(startup.hStdInput);
 	CloseHandle(process.hProcess);
-	int const pret = fclose(inf);
+	if (fclose(inf) != 0)
+		pret = -1;
 #elif defined (HAVE_PCLOSE)
 	int const pret = pclose(inf);
 #elif defined (HAVE__PCLOSE)
