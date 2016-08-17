@@ -18,8 +18,6 @@
 namespace lyx {
 
 namespace{
-// FIXME (later): Qt >= 4.4 has a proper QPalette::NoRole value.
-QPalette::ColorRole const NoRole = static_cast<QPalette::ColorRole>(-1);
 
 QPalette::ColorRole role(ColorCode col)
 {
@@ -33,7 +31,7 @@ QPalette::ColorRole role(ColorCode col)
 	case Color_mathcorners:
 		return QPalette::Base;
 		break;
-				
+
 	case Color_foreground:
 	case Color_cursor:
 	case Color_preview:
@@ -41,7 +39,7 @@ QPalette::ColorRole role(ColorCode col)
 	case Color_previewframe:
 		return QPalette::Text;
 		break;
-				
+
 	case Color_selection:
 		return QPalette::Highlight;
 		break;
@@ -52,7 +50,7 @@ QPalette::ColorRole role(ColorCode col)
 	case Color_urltext:
 		return QPalette::Link;
 	default:
-		return NoRole;
+		return QPalette::NoRole;
 	}
 }
 
@@ -83,7 +81,7 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 		const_cast<ColorCache *>(this)->init();
 	if (color <= Color_ignore && color.mergeColor == Color_ignore) {
 		QPalette::ColorRole const cr = role(color.baseColor);
-		if (syscolors && cr != NoRole) {
+		if (syscolors && cr != QPalette::NoRole) {
 			static QColor const white = Qt::white;
 			QColor const c = pal_.brush(QPalette::Active, cr).color();
 			if (cr == QPalette::Base && c == white)
@@ -104,7 +102,7 @@ QColor ColorCache::get(Color const & color, bool syscolors) const
 			(base_color.blue() + merge_color.blue()) / 2);
 	}
 	// used by branches
-	return QColor(lcolor.getX11Name(color.baseColor).c_str()); 
+	return QColor(lcolor.getX11Name(color.baseColor).c_str());
 }
 
 
@@ -115,7 +113,7 @@ bool ColorCache::isSystem(ColorCode const color) const
 		static QColor const white = Qt::white;
 		return pal_.brush(QPalette::Active, cr).color() != white;
 	} else
-		return cr != NoRole;
+		return cr != QPalette::NoRole;
 }
 
 
