@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-29 19:45+0200\n"
-"PO-Revision-Date: 2016-07-29 18:21+0000\n"
+"POT-Creation-Date: 2016-08-19 11:14+0200\n"
+"PO-Revision-Date: 2016-08-19 20:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17929,7 +17929,7 @@ msgstr "Jednoduchá Úvodzovka|J"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Protected Hyphen|y"
-msgstr "Chránené Spojovacie Znamienko|C"
+msgstr "Chránený Spojovník|C"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Breakable Slash|a"
@@ -17997,7 +17997,7 @@ msgstr "Fantóm"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Hyphenation Point|H"
-msgstr "Bod delenia slova"
+msgstr "Bod Rozdeľovania"
 
 #: lib/ui/stdmenus.inc:427
 msgid "Ligature Break|k"
@@ -23313,6 +23313,10 @@ msgstr "Gnumeric tabuľkový procesor"
 msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
+#: lib/configure.py:641
+msgid "HTML Table (for spreadsheets)"
+msgstr "HTML Tabuľka (pre tabuľkové procesory) "
+
 #: lib/configure.py:658
 msgid "OpenDocument spreadsheet"
 msgstr "OpenDocument tabuľkový procesor"
@@ -25483,7 +25487,7 @@ msgstr "Zoznam podporovaných ladiacich indikátorov:"
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1137
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -25523,6 +25527,8 @@ msgid ""
 "\t-r [--remote]\n"
 "                  open documents in an already running instance\n"
 "                  (a working lyxpipe is needed)\n"
+"\t-v [--verbose]\n"
+"                  report on terminal about spawned commands.\n"
 "\t-batch    execute commands without launching GUI and exit.\n"
 "\t-version  summarize version and build info\n"
 "Check the LyX man page for more details."
@@ -25564,6 +25570,8 @@ msgstr ""
 "\t-r [--remote]\n"
 "                  otvorí dokumenty v už spustenej inštancii\n"
 "                  (potrebujete pracujúci lyx-dátovod)\n"
+"\t-v [--verbose]\n"
+"                  hlási vytvorené príkazy na terminál.\n"
 "\t-batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
@@ -27421,14 +27429,6 @@ msgstr "Modul nenájdený!"
 msgid "Press button to check validity..."
 msgstr "Kliknite tlačidlo na kontrolu validity…"
 
-#: src/frontends/qt4/GuiDocument.cpp:577
-msgid "Conversion Failed!"
-msgstr "Konverzia zlyhala!"
-
-#: src/frontends/qt4/GuiDocument.cpp:578
-msgid "Failed to convert local layout to current format."
-msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
-
 #: src/frontends/qt4/GuiDocument.cpp:593
 msgid "Layout is valid!"
 msgstr "Schéma je platná!"
@@ -27436,6 +27436,14 @@ msgstr "Schéma je platná!"
 #: src/frontends/qt4/GuiDocument.cpp:597
 msgid "Layout is invalid!"
 msgstr "Schéma je neplatná!"
+
+#: src/frontends/qt4/GuiDocument.cpp:623
+msgid "Conversion to current format impossible!"
+msgstr "Konvertovať na aktuálny formát je nemožné!"
+
+#: src/frontends/qt4/GuiDocument.cpp:624
+msgid "Conversion to current stable format impossible."
+msgstr "Konvertovať na aktuálny stabilný formát je nemožné."
 
 #: src/frontends/qt4/GuiDocument.cpp:612
 msgid "Convert to current format"
@@ -30111,20 +30119,21 @@ msgstr "aktívna"
 msgid "non-active"
 msgstr "ne-aktívna"
 
-#: src/insets/InsetBranch.cpp:75
+#: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:84
 #, c-format
-msgid "master: %1$s, child: %2$s"
-msgstr "hlavný dokument:%1$s, potomok: %2$s"
+msgid "master %1$s, child %2$s"
+msgstr "hlavný dokument %1$s, potomok %2$s"
 
-#: src/insets/InsetBranch.cpp:78
+#: src/insets/InsetBranch.cpp:88
 #, c-format
-msgid "Branch, inverted (%1$s): %2$s"
-msgstr "Vetva, invertovaná (%1$s): %2$s"
-
-#: src/insets/InsetBranch.cpp:78
-#, c-format
-msgid "Branch (%1$s): %2$s"
-msgstr "Vetva (%1$s): %2$s"
+msgid ""
+"Branch Name: %1$s\n"
+"Branch Status: %2$s\n"
+"Inset Status: %3$s"
+msgstr ""
+"Názov Vetvy: %1$s\n"
+"Štatus Vetvy: %2$s\n"
+"Štatus Vložky: %3$s "
 
 #: src/insets/InsetBranch.cpp:89
 msgid "Branch: "
@@ -31213,6 +31222,19 @@ msgstr ""
 "Nedá sa otvoriť špecifikovaný dokument\n"
 "%1$s."
 
+#: src/output_latex.cpp:1199
+msgid "Error in latexParagraphs"
+msgstr "Chyba v latexových odstavcoch"
+
+#: src/output_latex.cpp:1200
+#, c-format
+msgid ""
+"You are using at least one layout (%1$s) intended for the title, after using "
+"non-title layouts. This could lead to missing or incorrect output."
+msgstr ""
+"Po použitiu bez-titulnej schémy používate najmenej jednu schému (%1$s) "
+"určenú pre titul. To môže viesť k vynechanému alebo chybnému výstupu. "
+
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
 msgstr "Súhrn: "
@@ -31525,6 +31547,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Conversion Failed!"
+#~ msgstr "Konverzia zlyhala!"
+
+#~ msgid "Failed to convert local layout to current format."
+#~ msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
+
+#~ msgid "Branch, inverted (%1$s): %2$s"
+#~ msgstr "Vetva, invertovaná (%1$s): %2$s"
+
+#~ msgid "Branch (%1$s): %2$s"
+#~ msgstr "Vetva (%1$s): %2$s"
 
 #~ msgid ""
 #~ "Specify those directories which should be prepended to the TEXINPUTS "
@@ -34978,3 +35012,90 @@ msgstr "Neznámy používateľ"
 #~ "tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
 #~ "rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
 #~ "byť predčasné.)"
+
+#~ msgid "master: %1$s, child: %2$s"
+#~ msgstr "hlavný dokument:%1$s, potomok: %2$s"
+
+#~ msgid ""
+#~ "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+#~ "Command line switches (case sensitive):\n"
+#~ "\t-help              summarize LyX usage\n"
+#~ "\t-userdir dir       set user directory to dir\n"
+#~ "\t-sysdir dir        set system directory to dir\n"
+#~ "\t-geometry WxH+X+Y  set geometry of the main window\n"
+#~ "\t-dbg feature[,feature]...\n"
+#~ "                  select the features to debug.\n"
+#~ "                  Type `lyx -dbg' to see the list of features\n"
+#~ "\t-x [--execute] command\n"
+#~ "                  where command is a lyx command.\n"
+#~ "\t-e [--export] fmt\n"
+#~ "                  where fmt is the export format of choice. Look in\n"
+#~ "                  Tools->Preferences->File Handling->File Formats->Short "
+#~ "Name\n"
+#~ "                  to see which parameter (which differs from the format "
+#~ "name\n"
+#~ "                  in the File->Export menu) should be passed.\n"
+#~ "                  Note that the order of -e and -x switches matters.\n"
+#~ "\t-E [--export-to] fmt filename\n"
+#~ "                  where fmt is the export format of choice (see --export),\n"
+#~ "                  and filename is the destination filename.\n"
+#~ "\t-i [--import] fmt file.xxx\n"
+#~ "                  where fmt is the import format of choice\n"
+#~ "                  and file.xxx is the file to be imported.\n"
+#~ "\t-f [--force-overwrite] what\n"
+#~ "                  where what is either `all', `main' or `none',\n"
+#~ "                  specifying whether all files, main file only, or no "
+#~ "files,\n"
+#~ "                  respectively, are to be overwritten during a batch "
+#~ "export.\n"
+#~ "                  Anything else is equivalent to `all', but is not "
+#~ "consumed.\n"
+#~ "\t-n [--no-remote]\n"
+#~ "                  open documents in a new instance\n"
+#~ "\t-r [--remote]\n"
+#~ "                  open documents in an already running instance\n"
+#~ "                  (a working lyxpipe is needed)\n"
+#~ "\t-batch    execute commands without launching GUI and exit.\n"
+#~ "\t-version  summarize version and build info\n"
+#~ "Check the LyX man page for more details."
+#~ msgstr ""
+#~ "Použitie: lyx [prepínače ] [ názov.lyx … ]\n"
+#~ "Prepínače (rozlišuje sa veľkosť písmen):\n"
+#~ "\t-help              sumarizuje použitie LyX\n"
+#~ "\t-userdir dir       nastaviť používateľský adresár na dir\n"
+#~ "\t-sysdir dir        nastaviť systémový adresár na dir\n"
+#~ "\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
+#~ "\t-dbg časť[,časť]…\n"
+#~ "                  vyberie patričné časti na ladenie.\n"
+#~ "                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
+#~ "\t-x [--execute] príkaz\n"
+#~ "                  spustí lyx-príkaz príkaz.\n"
+#~ "\t-e [--export] fmt\n"
+#~ "                  kde fmt je vybraný exportný formát. Pozrite si\n"
+#~ "                  Nástroje->Preferencie…->Obsluha súborov->Formáty Súborov-"
+#~ ">Skratka\n"
+#~ "                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
+#~ "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
+#~ "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
+#~ "\t-E [--export-to] fmt názov\n"
+#~ "                  kde fmt je vybraný exportný formát (pozrite --export),\n"
+#~ "                  a názov je meno výsledného súboru.\n"
+#~ "\t-i [--import] fmt file.xxx\n"
+#~ "                  kde fmt je vybraný formát k importu\n"
+#~ "                  a file.xxx je meno súboru určeného pre import.\n"
+#~ "\t-f [--force-overwrite] čo\n"
+#~ "                  kde \"čo\" je alebo `all' alebo `main' alebo `none'.\n"
+#~ "                  Keď `all', tak bude prepísaný každý súbor počas\n"
+#~ "                    dávkového exportu.\n"
+#~ "                  Keď `main' bude prepísaný len hlavný súbor.\n"
+#~ "                  Keď `none' nebude nič prepísané.\n"
+#~ "                  Všetko iné je rovnocenné k `all', len že nie je "
+#~ "skonzumované.\n"
+#~ "\t-n [--no-remote]\n"
+#~ "                 otvorí dokumenty v novej inštancii\n"
+#~ "\t-r [--remote]\n"
+#~ "                  otvorí dokumenty v už spustenej inštancii\n"
+#~ "                  (potrebujete pracujúci lyx-dátovod)\n"
+#~ "\t-batch    spusti príkazy bez GUI a skonč.\n"
+#~ "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
+#~ "Viac informácií nájdete v manuálovej stránke LyXu."
