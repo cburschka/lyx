@@ -8,7 +8,7 @@ set(check_layout_SOURCES)
 foreach(_f insets/InsetLayout.cpp Color.cpp Counters.cpp Floating.cpp
        FloatList.cpp FontInfo.cpp Layout.cpp LayoutFile.cpp Lexer.cpp
        ModuleList.cpp Spacing.cpp TextClass.cpp tests/check_layout.cpp
-       tests/boost.cpp tests/dummy_functions.cpp)
+       tests/boost.cpp support/tests/dummy_functions.cpp)
   list(APPEND check_layout_SOURCES "${TOP_SRC_DIR}/src/${_f}")
 endforeach()
 
@@ -53,7 +53,7 @@ endforeach()
 set(check_ExternalTransforms_SOURCES)
 foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
 	Length.cpp lengthcommon.cpp tests/check_ExternalTransforms.cpp
-	tests/boost.cpp tests/dummy_functions.cpp)
+	tests/boost.cpp support/tests/dummy_functions.cpp)
     list(APPEND check_ExternalTransforms_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 
@@ -76,7 +76,7 @@ add_test(NAME "check_ExternalTransforms"
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 
 set(check_Length_SOURCES)
-foreach(_f Length.cpp lengthcommon.cpp tests/check_Length.cpp tests/boost.cpp tests/dummy_functions.cpp)
+foreach(_f Length.cpp lengthcommon.cpp tests/check_Length.cpp tests/boost.cpp support/tests/dummy_functions.cpp)
   list(APPEND check_Length_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 add_executable(check_Length ${check_Length_SOURCES})
@@ -98,7 +98,7 @@ add_dependencies(lyx_run_tests check_Length)
 
 include_directories(${TOP_SRC_DIR}/src/tests)
 set(check_ListingsCaption_SOURCES)
-foreach(_f tests/check_ListingsCaption.cpp tests/boost.cpp tests/dummy_functions.cpp)
+foreach(_f tests/check_ListingsCaption.cpp tests/boost.cpp support/tests/dummy_functions.cpp)
   list(APPEND check_ListingsCaption_SOURCES ${TOP_SRC_DIR}/src/${_f})
 endforeach()
 add_executable(check_ListingsCaption ${check_ListingsCaption_SOURCES})

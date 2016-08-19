@@ -1,10 +1,13 @@
 #include <config.h>
 
-#include "../Messages.h"
+#include "support/Messages.h"
 
 using namespace std;
 
 namespace lyx {
+	// Dummy verbose support
+	bool verbose = false;
+
 	// Dummy LyXRC support
 	class LyXRC { string icon_set; } lyxrc;
 
@@ -34,11 +37,20 @@ namespace lyx {
 	{
 		return string();
 	}
+
 	//
-	// Dummy verbose support
+	// Dummy FontMetrics (needed by Length)
 	//
+	namespace frontend {
+	class FontMetrics {
+		int em() const { return 0; };
+	};
+	}
 
-	bool verbose = false;
+	class FontInfo;
 
-
+	frontend::FontMetrics const & theFontMetrics(FontInfo const &) {
+		static frontend::FontMetrics dummy;
+		return dummy;
+	}
 }

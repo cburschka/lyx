@@ -744,9 +744,9 @@ check_layout_SOURCES = \
 	ModuleList.cpp \
 	Spacing.cpp \
 	TextClass.cpp \
+	support/tests/dummy_functions.cpp \
 	tests/check_layout.cpp \
-	tests/boost.cpp \
-	tests/dummy_functions.cpp
+	tests/boost.cpp
 
 check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
 check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
@@ -757,9 +757,9 @@ check_ExternalTransforms_SOURCES = \
 	insets/ExternalTransforms.cpp \
 	Length.cpp \
 	lengthcommon.cpp \
+	support/tests/dummy_functions.cpp \
 	tests/check_ExternalTransforms.cpp \
-	tests/boost.cpp \
-	tests/dummy_functions.cpp
+	tests/boost.cpp
 
 check_Length_CPPFLAGS = $(AM_CPPFLAGS)
 check_Length_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
@@ -768,17 +768,17 @@ check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
 	Length.cpp \
 	lengthcommon.cpp \
+	support/tests/dummy_functions.cpp \
 	tests/check_Length.cpp \
-	tests/boost.cpp \
-	tests/dummy_functions.cpp
+	tests/boost.cpp
 
 check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
 check_ListingsCaption_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
 	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
+	support/tests/dummy_functions.cpp \
 	tests/check_ListingsCaption.cpp \
-	tests/boost.cpp \
-	tests/dummy_functions.cpp
+	tests/boost.cpp
 
 .PHONY: alltests alltests-recursive updatetests
