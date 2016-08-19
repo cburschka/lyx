@@ -454,6 +454,8 @@ private:
 
 	/// Request to open the command toolbar if it is "auto"
 	bool command_execute_;
+	/// Request to give focus to minibuffer
+	bool minibuffer_focus_;
 
 };
 

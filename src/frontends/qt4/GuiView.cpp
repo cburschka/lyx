@@ -513,7 +513,7 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false)
+	  command_execute_(false), minibuffer_focus_(false)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
@@ -1564,6 +1564,10 @@ void GuiView::updateToolbars()
 			context |= Toolbars::IPA;
 		if (command_execute_)
 			context |= Toolbars::MINIBUFFER;
+		if (minibuffer_focus_) {
+			context |= Toolbars::MINIBUFFER_FOCUS;
+			minibuffer_focus_ = false;
+		}
 
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
 			it->second->update(context);
@@ -3655,6 +3659,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_COMMAND_EXECUTE: {
 			command_execute_ = true;
+			minibuffer_focus_ = true;
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:

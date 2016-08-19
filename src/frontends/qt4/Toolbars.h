@@ -108,9 +108,10 @@ public:
 		TABLE = 256, //< show when in table
 		REVIEW = 512, //< show when change tracking is enabled
 		MATHMACROTEMPLATE = 1024, //< show in math macro template
-		SAMEROW = 2048, //place to the current row, no new line
+		SAMEROW = 2048, //< place to the current row, no new line
 		IPA = 4096, //< show when in IPA inset
 		MINIBUFFER = 8192, //< show when command-execute has been invoked
+		MINIBUFFER_FOCUS = 16384, //< set focus to minibuffer
 		ALLOWAUTO = MATH | TABLE | REVIEW | MATHMACROTEMPLATE | IPA | MINIBUFFER
 	};
 

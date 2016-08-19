@@ -324,9 +324,8 @@ void GuiToolbar::add(ToolbarItem const & item)
 void GuiToolbar::update(int context)
 {
 	if (visibility_ & Toolbars::AUTO) {
-		bool const was_visible = isVisible();
 		setVisible(visibility_ & context & Toolbars::ALLOWAUTO);
-		if (isVisible() && !was_visible && commandBuffer())
+		if (isVisible() && commandBuffer() && (context & Toolbars::MINIBUFFER_FOCUS))
 			commandBuffer()->setFocus();
 	}
 
