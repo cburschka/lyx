@@ -1613,47 +1613,37 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 	if (!buf)
 		return;
 
-	vector<docstring> caps;
 	DocumentClass const & dc = buf->params().documentClass();
-	TextClass::InsetLayouts::const_iterator lit = dc.insetLayouts().begin();
-	TextClass::InsetLayouts::const_iterator len = dc.insetLayouts().end();
-	for (; lit != len; ++lit) {
-		if (prefixIs(lit->first, from_ascii("Caption:")))
-			caps.push_back(lit->first);
+	vector< pair<docstring, FuncRequest> > caps;
+	for (pair<docstring, InsetLayout> const & il : dc.insetLayouts()) {
+		docstring instype;
+		docstring const type = split(il.first, instype, ':');
+		if (instype == "Caption") {
+			// skip forbidden caption types
+			FuncRequest const cmd = switchcap
+				? FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + type)
+				: FuncRequest(LFUN_CAPTION_INSERT, type);
+			if (getStatus(cmd).enabled())
+				caps.push_back(make_pair(type, cmd));
+		}
 	}
 
 	if (caps.empty() || (switchcap && caps.size() == 1))
 		return;
 	if (caps.size() == 1) {
-		docstring dummy;
-		docstring const type = split(*caps.begin(), dummy, ':');
-		add(MenuItem(MenuItem::Command, qt_("Caption"),
-			 FuncRequest(LFUN_CAPTION_INSERT, translateIfPossible(type))));
+		add(MenuItem(MenuItem::Command, qt_("Caption"), caps.front().second));
 		return;
 	}
 
 	MenuDefinition captions;
-
-	vector<docstring>::const_iterator cit = caps.begin();
-	vector<docstring>::const_iterator end = caps.end();
-
-	for (int ii = 1; cit != end; ++cit, ++ii) {
-		docstring dummy;
-		docstring const type = split(*cit, dummy, ':');
+	for (pair<docstring, FuncRequest> const & cap : caps) {
+		docstring const type = cap.first;
 		docstring const trtype = translateIfPossible(type);
 		docstring const cmitem = bformat(_("Caption (%1$s)"), trtype);
-		// make menu item optional, otherwise we would also see
-		// forbidden caption types
 		if (switchcap)
-			addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(cmitem),
-				     FuncRequest(LFUN_INSET_MODIFY,
-						 from_ascii("changetype ")
-						 + type), QString(), true));
+			add(MenuItem(MenuItem::Command, toqstr(cmitem), cap.second));
 		else
-			captions.addWithStatusCheck(MenuItem(MenuItem::Command,
-							     toqstr(trtype),
-							     FuncRequest(LFUN_CAPTION_INSERT,
-							     type), QString(), true));
+			captions.add(MenuItem(MenuItem::Command, toqstr(trtype), cap.second));
 	}
 	if (!captions.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Caption"));
