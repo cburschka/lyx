@@ -52,5 +52,10 @@ namespace lyx {
 		static frontend::FontMetrics dummy;
 		return dummy;
 	}
+	//
+	// Dummy verbose support
+	//
+
+	bool verbose = false;
 
 }

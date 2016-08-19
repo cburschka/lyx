@@ -34,5 +34,11 @@ namespace lyx {
 	{
 		return string();
 	}
+	//
+	// Dummy verbose support
+	//
+
+	bool verbose = false;
+
 
 }
