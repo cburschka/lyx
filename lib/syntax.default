@@ -403,6 +403,7 @@ $$
 \ce{}
 \cf{}
 \ccname
+\cellcolor[]{}
 \centering
 \centerline{translate}
 \chapter[]{}
@@ -418,10 +419,11 @@ $$
 \cleardoublepage
 \clearpage
 \closing{}
-\color[]{,,}  % Two variants of this command and the next (jpw)
+\color[]{}  % Two variants of this command and the next (jpw)
 %\color{}
-\colorspec[]{,,}{}
+\colorspec[]{}{}
 %\colorspec{}{}
+\columncolor[]{}
 %\contentsline{}{\numberline{}  }{}     % Appears only in .toc file (JMarc)
 \contentsname
 %\dashbox{}(,)[]{}   %picture
@@ -434,7 +436,7 @@ $$
 \DeclareRobustCommandx{}[][]{} % xargs.sty
 \DeclareRobustCommandx*{}[][]{} % xargs.sty
 \def{}{}
-\definecolor{}{}{,,}
+\definecolor{}{}{}
 \DeleteShortVerb{} % from doc.sty, argument must be verbatim
 \DescribeMacro{}
 \discretionary{}{}{}
@@ -445,7 +447,7 @@ $$
 \ensuremath{}
 \extracolsep{}
 \fbox{translate}
-\fcolorbox[]{,,}{,,}{}  % Two variants of this command
+\fcolorbox[]{}{}{}  % Two variants of this command
 %\fcolorbox{}{}{}
 \figurename
 \floatpagefraction
@@ -558,7 +560,7 @@ $$
 \opening{}
 % \oval(,)[]   %picture
 \pagebreak[]
-\pagecolor[]{,,}
+\pagecolor[]{}
 % \pagecolor{}    % tex2lyx can first care about this when fileformat 351 is supported
 \pagename
 \pagenumbering{}
@@ -610,7 +612,8 @@ $$
 \rmdefault
 \Roman{}
 \roman{}
-\rotatebox{}{translate}
+\rotatebox[]{}{translate}
+\rowcolor[]{}
 \rule[]{}{}
 \samepage
 \savebox{}[][]{}
@@ -664,7 +667,7 @@ $$
 \telephone{translate}
 \texorpdfstring{translate}{translate} % from the hyperref package
 \textcircled{translate}
-\textcolor[]{,,}{translate}
+\textcolor[]{}{translate}
 %\textcolor{}{}
 \textbf{translate}     % hardcoded, but needed nevertheless for \let\xyz\textbf
 \textnormal{translate} % hardcoded, but needed nevertheless for \let\xyz\textnormal
