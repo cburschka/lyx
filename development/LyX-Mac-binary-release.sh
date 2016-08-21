@@ -783,11 +783,13 @@ EOF
 			"@executable_path/../${fwdir}/${version}${libnm}"\
 			"${target}"
 	done
-	if [ ! -d "${condir}/translations" ]; then
-		mkdir -p "${condir}/translations"
+	if [ -d "${source}"/translations ]; then
+		if [ ! -d "${condir}/translations" ]; then
+			mkdir -p "${condir}/translations"
+		fi
+		echo Copy Qt translations to "${condir}/translations"
+		cp -p "${source}"/translations/qt_*.qm "${condir}/translations"
 	fi
-	echo Copy Qt translations to "${condir}/translations"
-	cp -p "${source}"/translations/qt_*.qm "${condir}/translations"
 }
 
 # -------------------------
