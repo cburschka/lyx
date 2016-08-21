@@ -420,7 +420,7 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	dviCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -i %{page+1} $$o\"");
 	pdfCB->addItem("");
 	pdfCB->addItem("CMCDDE SUMATRA control [ForwardSearch(\\\"$$o\\\",\\\"$$t\\\",$$n,0,0,1)]");
-	pdfCB->addItem("SumatraPDF -reuse-instance $$o -forward-search $$t $$n");
+	pdfCB->addItem("SumatraPDF -reuse-instance \"$$o\" -forward-search \"$$t\" $$n");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
 	pdfCB->addItem("okular --unique \"$$o#src:$$n $$f\"");
 	pdfCB->addItem("qpdfview --unique \"$$o#src:$$f:$$n:0\"");
