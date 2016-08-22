@@ -16,6 +16,7 @@
 
 namespace lyx {
 
+class MetricsBase;
 
 /* The TeXbook, p. 158:
  *
@@ -58,6 +59,10 @@ MathClass string_to_class(docstring const &);
 
 docstring const class_to_string(MathClass);
 
+void update_class(MathClass & mc, MathClass const prev, MathClass const next);
+
+int class_spacing(MathClass const mc1, MathClass const mc2,
+                  MetricsBase const & mb);
 
 } // namespace lyx
 

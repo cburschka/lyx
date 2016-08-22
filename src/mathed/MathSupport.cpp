@@ -528,6 +528,9 @@ int mathed_font_em(FontInfo const & font)
  * punctuation, and is put around inner objects, except where these
  * are followed by a close or preceded by an open symbol, and except
  * if the other object is a large operator or a binary relation.
+ *
+ * See the file MathClass.cpp for a formal implementation of the rules
+ * above.
  */
 
 int mathed_thinmuskip(FontInfo font)
