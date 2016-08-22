@@ -23,7 +23,7 @@ ASpellLibrary="libaspell.15.dylib"
 
 HunSpellVersion=${HunSpellVersion:-"1.3.3"}
 HunSpellSource="hunspell-${HunSpellVersion}"
-HunSpellLibrary="libhunspell-1.3.3.dylib"
+HunSpellLibrary="libhunspell-1.3.0.dylib"
 
 unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 
