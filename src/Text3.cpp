@@ -1607,6 +1607,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		switch (cmd.button()) {
 		case mouse_button::button1:
 			// Set the cursor
+			bvcur.resetAnchor();
 			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
 				cur.screenUpdateFlags(Update::FitCursor);
 			if (bvcur.wordSelection())
