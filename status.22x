@@ -91,6 +91,8 @@ What's new
 - When doing a selection with Shift-click, make sure that the selection anchor
   is correct.
 
+- Avoid to overwrite end-of-proof character with text on screen (bug
+  10344).
 
 * INTERNALS
 
