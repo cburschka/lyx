@@ -513,14 +513,17 @@ void RowPainter::paintLast() const
 		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
-		int const max_row_width = width_ - size - Inset::TEXT_TO_INSET_OFFSET;
-		int x = is_rtl ? nestMargin() + changebarMargin()
-			: max_row_width - row_.right_margin;
 
 		// If needed, move the box a bit to avoid overlapping with text.
-		int const rem = max_row_width - row_.width();
-		if (rem <= 0)
-			x += is_rtl ? rem : - rem;
+		int x = 0;
+		if (is_rtl) {
+			int const normal_x = nestMargin() + changebarMargin();
+			x = min(normal_x, row_.left_margin - size - Inset::TEXT_TO_INSET_OFFSET);
+		} else {
+			int const normal_x = width_ - row_.right_margin
+				- size - Inset::TEXT_TO_INSET_OFFSET;
+			x = max(normal_x, row_.width());
+		}
 
 		if (endlabel == END_LABEL_BOX)
 			pi_.pain.rectangle(x, y, size, size, Color_eolmarker);
