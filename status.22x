@@ -106,6 +106,8 @@ What's new
 
 - Fix the minimum size of the citation dialog on first time (bug 10019).
 
+- When Enter does nothing (empty paragraph), do not record undo (bug 10089).
+
 
 * INTERNALS
 

@@ -769,7 +769,8 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 		else {
 			docstring const & lay = cur.paragraph().usePlainLayout()
 			    ? tclass.plainLayoutName() : tclass.defaultLayoutName();
-			setLayout(cur, lay);
+			if (lay != layout.name())
+				setLayout(cur, lay);
 		}
 		return;
 	}
