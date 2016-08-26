@@ -96,3 +96,7 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF
 # inputencoding="utf8-plain" with 8-bit TeX: non-ASCII characters are passed
 #  as two 8-bit characters leading to garbage in the output
 export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
+
+# The following document mixes inTitle layouts and leads to
+# likely unintended output. See #10347
+export/mixing_inTitle_layouts.lyx
