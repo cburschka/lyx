@@ -13,6 +13,9 @@
 #define INSET_PARAMS_WIDGET_H
 
 #include "insets/InsetCode.h"
+#include "insets/Inset.h"
+
+#include "qt_helpers.h"
 
 #include "FuncCode.h"
 
@@ -57,6 +60,8 @@ public:
 	InsetParamsWidget(QWidget * parent);
 	/// This is a base class; destructor must exist and be virtual.
 	virtual ~InsetParamsWidget() {}
+	///
+	virtual QString dialogTitle() const { return toqstr(insetName(insetCode())); }
 	///
 	virtual InsetCode insetCode() const = 0;
 	///

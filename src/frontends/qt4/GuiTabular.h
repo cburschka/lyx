@@ -42,6 +42,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return TABULAR_CODE; }
 	FuncCode creationCode() const { return LFUN_TABULAR_INSERT; }
+	QString dialogTitle() const { return qt_("Tabular Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

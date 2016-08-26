@@ -36,6 +36,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return math_mode_ ? MATH_SPACE_CODE : SPACE_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const { return qt_("Horizontal Space Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

@@ -35,6 +35,7 @@ public:
 	//@{
 	InsetCode insetCode() const { return FLOAT_CODE; }
 	FuncCode creationCode() const { return LFUN_FLOAT_INSERT; }
+	QString dialogTitle() const { return qt_("Float Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;
