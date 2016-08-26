@@ -33,6 +33,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return INFO_CODE; }
 	FuncCode creationCode() const { return LFUN_INFO_INSERT; }
+	QString dialogTitle() const { return qt_("Info Inset Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

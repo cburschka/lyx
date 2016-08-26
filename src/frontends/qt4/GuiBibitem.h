@@ -33,6 +33,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return BIBITEM_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const { return qt_("Bibliography Item Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

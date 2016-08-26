@@ -41,6 +41,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return BOX_CODE; }
 	FuncCode creationCode() const { return LFUN_BOX_INSERT; }
+	QString dialogTitle() const { return qt_("Box Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

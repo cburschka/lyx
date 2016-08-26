@@ -74,7 +74,7 @@ struct InsetParamsDialog::Private
 
 InsetParamsDialog::InsetParamsDialog(GuiView & lv, InsetParamsWidget * widget)
 	: DialogView(lv, toqstr(insetName(widget->insetCode())),
-	toqstr(insetName(widget->insetCode()))), d(new Private)
+	widget->dialogTitle()), d(new Private)
 {
 	setupUi(this);
 	setInsetParamsWidget(widget);

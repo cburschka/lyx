@@ -31,6 +31,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return LINE_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const { return qt_("Line Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

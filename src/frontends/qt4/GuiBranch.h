@@ -32,6 +32,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return BRANCH_CODE; }
 	FuncCode creationCode() const { return LFUN_BRANCH_INSERT; }
+	QString dialogTitle() const { return qt_("Branch Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;

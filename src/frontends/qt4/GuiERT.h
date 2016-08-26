@@ -30,6 +30,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return ERT_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const { return qt_("TeX Mode Inset Settings"); }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets(bool readonly) const;
