@@ -35,7 +35,7 @@ Style Numbered_Example_(multiline)
 	% This code can be removed eventually
 	\@ifundefined{covexample}{%
 	    \newenvironment{covexample}{\begin{example}}{\end{example}}%
-	}
+	}{}
 	EndPreamble
 	Category              Linguistics
 End
@@ -56,7 +56,7 @@ Style Numbered_Examples_(consecutive)
 	% This code can be removed eventually
 	\@ifundefined{covexamples}{%
 	    \newenvironment{covexamples}{\begin{examples}}{\end{examples}}%
-	}
+	}{}
 	EndPreamble
 End
 
