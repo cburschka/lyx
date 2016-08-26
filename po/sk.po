@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-08-24 12:29+0200\n"
-"PO-Revision-Date: 2016-08-26 10:51+0000\n"
+"POT-Creation-Date: 2016-08-26 21:00+0200\n"
+"PO-Revision-Date: 2016-08-26 19:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -26796,6 +26796,10 @@ msgstr "Nemám otvorené dokumenty v ktorých by som mohol hľadať"
 msgid "Advanced Find and Replace"
 msgstr "Pokročilé Hľadať a Nahradiť"
 
+#: src/frontends/qt4/FloatPlacement.h:38
+msgid "Float Settings"
+msgstr "Nastavenia Plávajúceho Objektu"
+
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor CREDITS\n"
@@ -27104,6 +27108,10 @@ msgstr ""
 "Preskúmajte pod Nástroje->Preferencie…->Vzhľad->Užívateľské rozhranie a\n"
 "skontrolujte ktorý užívateľský súbor používate."
 
+#: src/frontends/qt4/GuiBibitem.h:36
+msgid "Bibliography Item Settings"
+msgstr "Nastavenia Záznamu Bibliografie"
+
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
 msgstr "BibTeX bibliografia"
@@ -27175,6 +27183,14 @@ msgstr "Celková Výška"
 #: src/insets/InsetBox.cpp:139
 msgid "Makebox"
 msgstr "Makebox"
+
+#: src/frontends/qt4/GuiBox.h:44
+msgid "Box Settings"
+msgstr "Nastavenia Rámiku"
+
+#: src/frontends/qt4/GuiBranch.h:35
+msgid "Branch Settings"
+msgstr "Nastavenia Vetvy"
 
 #: src/frontends/qt4/GuiBranches.cpp:53 src/insets/Inset.cpp:111
 msgid "Branch"
@@ -27972,6 +27988,10 @@ msgstr ""
 "Hlavný dokument '%1$s'\n"
 "nie je možné nahrať."
 
+#: src/frontends/qt4/GuiERT.h:33
+msgid "TeX Mode Inset Settings"
+msgstr "Nastavenia Módu TeX"
+
 #: src/frontends/qt4/GuiErrorList.cpp:46 src/frontends/qt4/GuiLog.cpp:255
 msgid "Literate"
 msgstr "Literárne"
@@ -28207,6 +28227,14 @@ msgstr ""
 "Pozn. - chránená polovičná Quad medzera sa zmení na\n"
 "vertikálnu medzeru, keď bude použitá na začiatku odstavca!"
 
+#: src/frontends/qt4/GuiHSpace.h:39
+msgid "Horizontal Space Settings"
+msgstr "Nastavenia Horizontálnej Medzery"
+
+#: src/frontends/qt4/GuiHyperlink.h:35
+msgid "Hyperlink Settings"
+msgstr "Nastavenia Hyperlinky "
+
 #: src/frontends/qt4/GuiInclude.cpp:122 src/frontends/qt4/GuiInclude.cpp:184
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:377
 #: src/frontends/qt4/GuiListings.cpp:452
@@ -28287,6 +28315,10 @@ msgstr "zásobník"
 msgid "lyxinfo"
 msgstr "lyxinfo"
 
+#: src/frontends/qt4/GuiInfo.h:36
+msgid "Info Inset Settings"
+msgstr "Nastavenia Vložky Info"
+
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
 msgstr "Shift-"
@@ -28302,6 +28334,14 @@ msgstr "Voľba-"
 #: src/frontends/qt4/GuiKeySymbol.cpp:715
 msgid "Command-"
 msgstr "Príkaz-"
+
+#: src/frontends/qt4/GuiLabel.h:35
+msgid "Label Settings"
+msgstr "Nastavenia Návestia"
+
+#: src/frontends/qt4/GuiLine.h:34
+msgid "Line Settings"
+msgstr "Nastavenia Riadku"
 
 #: src/frontends/qt4/GuiListings.cpp:60
 msgid "No language"
@@ -28395,6 +28435,10 @@ msgstr "Vmatrix"
 #: src/frontends/qt4/GuiMathMatrix.cpp:62
 msgid "Math Matrix"
 msgstr "Matematická matica"
+
+#: src/frontends/qt4/GuiNomenclature.h:36
+msgid "Nomenclature Settings"
+msgstr "Nastavenia Nomenklatúry"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -29109,6 +29153,10 @@ msgstr "Kódový bod: "
 msgid "Symbols"
 msgstr "Symboly"
 
+#: src/frontends/qt4/GuiTabular.h:45
+msgid "Tabular Settings"
+msgstr "Nastavenia Tabuľky"
+
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
 msgstr "Vložiť tabuľku"
@@ -29137,6 +29185,10 @@ msgstr "vypnuté"
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
+
+#: src/frontends/qt4/GuiVSpace.h:40
+msgid "Vertical Space Settings"
+msgstr "Nastavenia Vertikálnej Medzery"
 
 #: src/frontends/qt4/GuiView.cpp:164
 msgid "version "
@@ -33739,9 +33791,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Nastavenia záznamu bibliografie"
 
-#~ msgid "Branch Settings"
-#~ msgstr "Nastavenia vetvy"
-
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
 #~ msgstr ""
@@ -33753,9 +33802,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX Kód nastavenia"
-
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Nastavenia vertikálnej medzery"
 
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Protokolový súbor LaTeXu nebol nájdený"
@@ -33781,9 +33827,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Kontrola pravopisu zlyhala"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Nastavenia vertikálnej medzery"
 
 #~ msgid "No Table of contents"
 #~ msgstr "Bez obsahu"
