@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-07-21 14:31-0400\n"
-"PO-Revision-Date: 2016-07-13 16:30+0000\n"
+"POT-Creation-Date: 2016-08-24 12:29+0200\n"
+"PO-Revision-Date: 2016-08-26 10:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -522,7 +522,7 @@ msgstr "Vyberte svoju vetvu"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Nová vetva:"
+msgstr "&Nová:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -3915,7 +3915,7 @@ msgstr "Všetky súbory"
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3129
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3131
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3923,13 +3923,13 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
 "adresármi.\n"
-"Použiť formát vhodný pre daný operačný systém."
+"Použite miestny formát pre daný operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:58
 msgid "TEX&INPUTS prefix:"
 msgstr "Prefix pre TEX&INPUTS:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3228
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3230
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -3937,7 +3937,7 @@ msgid ""
 msgstr ""
 "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS pred "
 "ostatnými adresármi.\n"
-"'.' reprezentuje aktuálny adresár dokumentu. Použiť formát vhodný pre daný "
+"'.' reprezentuje aktuálny adresár dokumentu. Použite miestny formát pre daný "
 "operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:75
@@ -4162,7 +4162,7 @@ msgstr "&Uložiť"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
-msgstr "Nastavenia pre nomenklatúru"
+msgstr "Nastavenia nomenklatúry"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4505,7 +4505,7 @@ msgstr "Súčasná pozícia stĺpca"
 
 #: src/frontends/qt4/ui/TabularUi.ui:106
 msgid "&Table Settings"
-msgstr "Nastavenia &tabuľky"
+msgstr "Nastavenia &Tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:112
 msgid "Row setting"
@@ -6258,13 +6258,13 @@ msgstr "Kúzla v Titule a v Preambule"
 
 #: lib/layouts/InStar.module:12
 msgid ""
-"Provides two new styles: 1. An In Premable style that puts whatever is "
+"Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
 "entered into it into the preamble. This can be used, if one wishes, to "
-"include preamble code in the body of the LyX document. 2. An In Title style "
-"that will put its contents into the body of the LaTeX document, but before "
-"\\maketitle is issued. This is useful for making branches and notes in title-"
-"related material. (If you put these in a Standard layout, this signals to "
-"LyX to output \\maketitle, which may then come too early.)"
+"include preamble code in the body of the LyX document. 2. An 'In Title' "
+"style that will put its contents into the body of the LaTeX document, but "
+"before \\maketitle is issued. This is useful for making branches and notes "
+"in title-related material. (If you put these in a Standard layout, this "
+"signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
 "Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
 "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
@@ -17420,39 +17420,39 @@ msgstr "Rozpustiť vložku"
 
 #: lib/ui/stdmenus.inc:137
 msgid "TeX Code Settings...|C"
-msgstr "Nastavenia TeX kódu…|k"
+msgstr "Nastavenia TeX Kódu…|K"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Float Settings...|a"
-msgstr "Nastavenia plávajúceho objektu…|p"
+msgstr "Nastavenia Plávajúceho Objektu…|P"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Text Wrap Settings...|W"
-msgstr "Nastavenia obtekania textu…|o"
+msgstr "Nastavenia Obtekania Textu…|O"
 
 #: lib/ui/stdmenus.inc:141
 msgid "Note Settings...|N"
-msgstr "Nastavenia poznámky…|n"
+msgstr "Nastavenia Poznámky…|N"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Phantom Settings...|h"
-msgstr "Nastavenia pre fantóm…|f"
+msgstr "Nastavenia Fantómu…|F"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Branch Settings...|B"
-msgstr "Nastavenia vetvy…|e"
+msgstr "Nastavenia Vetvy…|e"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Box Settings...|x"
-msgstr "Nastavenia rámiku…|r"
+msgstr "Nastavenia Rámiku…|R"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia registrových hesiel…|h"
+msgstr "Nastavenia Registrových Hesiel…|H"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Index Settings...|x"
-msgstr "Nastavenia registra…|g"
+msgstr "Nastavenia Registra…|g"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Info Settings...|n"
@@ -17460,11 +17460,11 @@ msgstr "Nastavenia pre Info…|I"
 
 #: lib/ui/stdmenus.inc:148
 msgid "Listings Settings...|g"
-msgstr "Nastavenia výpisu…|s"
+msgstr "Nastavenia Výpisu…|s"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Table Settings...|a"
-msgstr "Nastavenia tabuľky…|t"
+msgstr "Nastavenia Tabuľky…|T"
 
 #: lib/ui/stdmenus.inc:156
 msgid "Paste from HTML|H"
@@ -17896,7 +17896,7 @@ msgstr "Jednoduchá Úvodzovka|J"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Protected Hyphen|y"
-msgstr "Chránené Spojovacie Znamienko|C"
+msgstr "Chránený Spojovník|C"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Breakable Slash|a"
@@ -17964,7 +17964,7 @@ msgstr "Fantóm"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Hyphenation Point|H"
-msgstr "Bod delenia slova"
+msgstr "Bod Rozdeľovania"
 
 #: lib/ui/stdmenus.inc:427
 msgid "Ligature Break|k"
@@ -23301,6 +23301,10 @@ msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
 #: lib/configure.py:635
+msgid "HTML Table (for spreadsheets)"
+msgstr "HTML Tabuľka (pre tabuľkové procesory) "
+
+#: lib/configure.py:635
 msgid "OpenDocument spreadsheet"
 msgstr "OpenDocument tabuľkový procesor"
 
@@ -27435,7 +27439,7 @@ msgstr "Konvertovať na aktuálny formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:636
 msgid "Document Settings"
-msgstr "Nastavenia dokumentu"
+msgstr "Nastavenia Dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:746 src/frontends/qt4/GuiInclude.cpp:48
 #: src/frontends/qt4/Menus.cpp:1447
@@ -28305,7 +28309,7 @@ msgstr "Žiadny jazyk"
 
 #: src/frontends/qt4/GuiListings.cpp:164
 msgid "Program Listing Settings"
-msgstr "Nastavenia Výpisov Zdrojových Kódov"
+msgstr "Nastavenia Výpisu Zdrojového Kódu"
 
 #: src/frontends/qt4/GuiListings.cpp:416
 msgid "No dialect"
@@ -28394,11 +28398,11 @@ msgstr "Matematická matica"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
-msgstr "Nastavenia poznámky"
+msgstr "Nastavenia Poznámky"
 
 #: src/frontends/qt4/GuiParagraph.cpp:48
 msgid "Paragraph Settings"
-msgstr "Nastavenia odstavca"
+msgstr "Nastavenia Odstavca"
 
 #: src/frontends/qt4/GuiParagraph.cpp:80
 msgid ""
@@ -28416,7 +28420,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
 msgid "Phantom Settings"
-msgstr "Nastavenia pre Fantóm"
+msgstr "Nastavenia Fantómu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "System files|#S#s"
@@ -29211,6 +29215,10 @@ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznáma lišta nástrojov \"%1$s\""
 
+#: src/frontends/qt4/GuiView.cpp:1992
+msgid "Zoom level cannot be less than 10%."
+msgstr "Stupeň lupy nesmie byť menší ako 10%."
+
 #: src/frontends/qt4/GuiView.cpp:2081
 msgid "Select template file"
 msgstr "Vyberte súbor šablóny"
@@ -29580,6 +29588,10 @@ msgstr "Všetky dokumenty uložené."
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
+
+#: src/frontends/qt4/GuiView.cpp:3943
+msgid "Zoom level is now %1$d%"
+msgstr "Stupeň lupy je teraz %1$d%"
 
 #: src/frontends/qt4/GuiView.cpp:3982
 msgid "Please, preview the document first."
@@ -31183,6 +31195,19 @@ msgid ""
 msgstr ""
 "Nedá sa otvoriť špecifikovaný dokument\n"
 "%1$s."
+
+#: src/output_latex.cpp:1198
+msgid "Error in latexParagraphs"
+msgstr "Chyba v latexových odstavcoch"
+
+#: src/output_latex.cpp:1199
+#, c-format
+msgid ""
+"You are using at least one layout (%1$s) intended for the title, after using "
+"non-title layouts. This could lead to missing or incorrect output."
+msgstr ""
+"Po použitiu bez-titulnej schémy používate najmenej jednu schému (%1$s) "
+"určenú pre titul. To môže viesť k vynechanému alebo chybnému výstupu. "
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
@@ -34851,3 +34876,20 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "NameRef:"
 #~ msgstr "MenoRef:"
+
+#~ msgid ""
+#~ "Provides two new styles: 1. An In Premable style that puts whatever is "
+#~ "entered into it into the preamble. This can be used, if one wishes, to "
+#~ "include preamble code in the body of the LyX document. 2. An In Title style "
+#~ "that will put its contents into the body of the LaTeX document, but before "
+#~ "\\maketitle is issued. This is useful for making branches and notes in title-"
+#~ "related material. (If you put these in a Standard layout, this signals to "
+#~ "LyX to output \\maketitle, which may then come too early.)"
+#~ msgstr ""
+#~ "Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
+#~ "zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
+#~ "preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' položí svoj obsah "
+#~ "do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
+#~ "tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
+#~ "rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
+#~ "byť predčasné.)"
