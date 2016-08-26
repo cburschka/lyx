@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-08-19 11:14+0200\n"
-"PO-Revision-Date: 2016-08-19 20:36+0000\n"
+"POT-Creation-Date: 2016-08-26 12:11+0200\n"
+"PO-Revision-Date: 2016-08-26 10:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4201,7 +4201,7 @@ msgstr "&Uložiť"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
-msgstr "Nastavenia pre nomenklatúru"
+msgstr "Nastavenia nomenklatúry"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
@@ -4544,7 +4544,7 @@ msgstr "Súčasná pozícia stĺpca"
 
 #: src/frontends/qt4/ui/TabularUi.ui:106
 msgid "&Table Settings"
-msgstr "Nastavenia &tabuľky"
+msgstr "Nastavenia &Tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:112
 msgid "Row setting"
@@ -17453,39 +17453,39 @@ msgstr "Rozpustiť vložku"
 
 #: lib/ui/stdmenus.inc:137
 msgid "TeX Code Settings...|C"
-msgstr "Nastavenia TeX kódu…|k"
+msgstr "Nastavenia TeX Kódu…|K"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Float Settings...|a"
-msgstr "Nastavenia plávajúceho objektu…|p"
+msgstr "Nastavenia Plávajúceho Objektu…|P"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Text Wrap Settings...|W"
-msgstr "Nastavenia obtekania textu…|o"
+msgstr "Nastavenia Obtekania Textu…|O"
 
 #: lib/ui/stdmenus.inc:141
 msgid "Note Settings...|N"
-msgstr "Nastavenia poznámky…|n"
+msgstr "Nastavenia Poznámky…|N"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Phantom Settings...|h"
-msgstr "Nastavenia pre fantóm…|f"
+msgstr "Nastavenia Fantómu…|F"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Branch Settings...|B"
-msgstr "Nastavenia vetvy…|e"
+msgstr "Nastavenia Vetvy…|e"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Box Settings...|x"
-msgstr "Nastavenia rámiku…|r"
+msgstr "Nastavenia Rámiku…|R"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia registrových hesiel…|h"
+msgstr "Nastavenia Registrových Hesiel…|H"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Index Settings...|x"
-msgstr "Nastavenia registra…|g"
+msgstr "Nastavenia Registra…|g"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Info Settings...|n"
@@ -17493,11 +17493,11 @@ msgstr "Nastavenia pre Info…|I"
 
 #: lib/ui/stdmenus.inc:148
 msgid "Listings Settings...|g"
-msgstr "Nastavenia výpisu…|s"
+msgstr "Nastavenia Výpisu…|s"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Table Settings...|a"
-msgstr "Nastavenia tabuľky…|t"
+msgstr "Nastavenia Tabuľky…|T"
 
 #: lib/ui/stdmenus.inc:156
 msgid "Paste from HTML|H"
@@ -26809,6 +26809,10 @@ msgstr "Nemám otvorené dokumenty v ktorých by som mohol hľadať"
 msgid "Advanced Find and Replace"
 msgstr "Pokročilé Hľadať a Nahradiť"
 
+#: src/frontends/qt4/FloatPlacement.h:38
+msgid "Float Settings"
+msgstr "Nastavenia Plávajúceho Objektu"
+
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor CREDITS\n"
@@ -27117,6 +27121,10 @@ msgstr ""
 "Preskúmajte pod Nástroje->Preferencie…->Vzhľad->Užívateľské rozhranie a\n"
 "skontrolujte ktorý užívateľský súbor používate."
 
+#: src/frontends/qt4/GuiBibitem.h:36
+msgid "Bibliography Item Settings"
+msgstr "Nastavenia Záznamu Bibliografie"
+
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
 msgstr "BibTeX bibliografia"
@@ -27188,6 +27196,14 @@ msgstr "Celková Výška"
 #: src/insets/InsetBox.cpp:139
 msgid "Makebox"
 msgstr "Makebox"
+
+#: src/frontends/qt4/GuiBox.h:44
+msgid "Box Settings"
+msgstr "Nastavenia Rámiku"
+
+#: src/frontends/qt4/GuiBranch.h:35
+msgid "Branch Settings"
+msgstr "Nastavenia Vetvy"
 
 #: src/frontends/qt4/GuiBranches.cpp:53 src/insets/Inset.cpp:111
 msgid "Branch"
@@ -27449,9 +27465,9 @@ msgstr "Konvertovať na aktuálny stabilný formát je nemožné."
 msgid "Convert to current format"
 msgstr "Konvertovať na aktuálny formát"
 
-#: src/frontends/qt4/GuiDocument.cpp:636
+#: src/frontends/qt4/GuiDocument.cpp:654
 msgid "Document Settings"
-msgstr "Nastavenia dokumentu"
+msgstr "Nastavenia Dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:746 src/frontends/qt4/GuiInclude.cpp:48
 #: src/frontends/qt4/Menus.cpp:1447
@@ -27992,6 +28008,10 @@ msgstr ""
 msgid "(Module name: %1)"
 msgstr "(Názov modulu: %1)"
 
+#: src/frontends/qt4/GuiERT.h:33
+msgid "TeX Mode Inset Settings"
+msgstr "Nastavenia Módu TeX"
+
 #: src/frontends/qt4/GuiErrorList.cpp:46 src/frontends/qt4/GuiLog.cpp:255
 msgid "Literate"
 msgstr "Literárne"
@@ -28223,6 +28243,14 @@ msgstr ""
 "Pozn. - chránená polovičná Quad medzera sa zmení na\n"
 "vertikálnu medzeru, keď bude použitá na začiatku odstavca!"
 
+#: src/frontends/qt4/GuiHSpace.h:39
+msgid "Horizontal Space Settings"
+msgstr "Nastavenia Vertikálnej Medzery"
+
+#: src/frontends/qt4/GuiHyperlink.h:35
+msgid "Hyperlink Settings"
+msgstr "Nastavenia Hyperlinky "
+
 #: src/frontends/qt4/GuiInclude.cpp:122 src/frontends/qt4/GuiInclude.cpp:184
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:377
 #: src/frontends/qt4/GuiListings.cpp:452
@@ -28303,6 +28331,10 @@ msgstr "zásobník"
 msgid "lyxinfo"
 msgstr "lyxinfo"
 
+#: src/frontends/qt4/GuiInfo.h:36
+msgid "Info Inset Settings"
+msgstr "Nastavenia Vložky Info"
+
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
 msgstr "Shift-"
@@ -28319,13 +28351,21 @@ msgstr "Voľba-"
 msgid "Command-"
 msgstr "Príkaz-"
 
+#: src/frontends/qt4/GuiLabel.h:35
+msgid "Label Settings"
+msgstr "Nastavenia Návestia"
+
+#: src/frontends/qt4/GuiLine.h:34
+msgid "Line Settings"
+msgstr "Nastavenia Riadku"
+
 #: src/frontends/qt4/GuiListings.cpp:60
 msgid "No language"
 msgstr "Žiadny jazyk"
 
 #: src/frontends/qt4/GuiListings.cpp:164
 msgid "Program Listing Settings"
-msgstr "Nastavenia Výpisov Zdrojových Kódov"
+msgstr "Nastavenia Výpisu Zdrojového Kódu"
 
 #: src/frontends/qt4/GuiListings.cpp:416
 msgid "No dialect"
@@ -28412,13 +28452,17 @@ msgstr "Vmatrix"
 msgid "Math Matrix"
 msgstr "Matematická matica"
 
+#: src/frontends/qt4/GuiNomenclature.h:36
+msgid "Nomenclature Settings"
+msgstr "Nastavenia Nomenklatúry"
+
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
-msgstr "Nastavenia poznámky"
+msgstr "Nastavenia Poznámky"
 
 #: src/frontends/qt4/GuiParagraph.cpp:48
 msgid "Paragraph Settings"
-msgstr "Nastavenia odstavca"
+msgstr "Nastavenia Odstavca"
 
 #: src/frontends/qt4/GuiParagraph.cpp:80
 msgid ""
@@ -28436,7 +28480,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
 msgid "Phantom Settings"
-msgstr "Nastavenia pre Fantóm"
+msgstr "Nastavenia Fantómu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "System files|#S#s"
@@ -29129,6 +29173,10 @@ msgstr "Kódový bod: "
 msgid "Symbols"
 msgstr "Symboly"
 
+#: src/frontends/qt4/GuiTabular.h:45
+msgid "Tabular Settings"
+msgstr "Nastavenia Tabuľky"
+
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
 msgstr "Vložiť tabuľku"
@@ -29157,6 +29205,10 @@ msgstr "vypnuté"
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
+
+#: src/frontends/qt4/GuiVSpace.h:40
+msgid "Vertical Space Settings"
+msgstr "Nastavenia Vertikálnej Medzery"
 
 #: src/frontends/qt4/GuiView.cpp:164
 msgid "version "
@@ -33805,9 +33857,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Bibliography Entry Settings"
 #~ msgstr "Nastavenia záznamu bibliografie"
 
-#~ msgid "Branch Settings"
-#~ msgstr "Nastavenia vetvy"
-
 #~ msgid ""
 #~ "Input listings parameters on the right. Enter ? for a list of parameters."
 #~ msgstr ""
@@ -33819,9 +33868,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "TeX Code Settings"
 #~ msgstr "TeX Kód nastavenia"
-
-#~ msgid "Horizontal Space Settings"
-#~ msgstr "Nastavenia vertikálnej medzery"
 
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Protokolový súbor LaTeXu nebol nájdený"
@@ -33847,9 +33893,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "The spellchecker has failed"
 #~ msgstr "Kontrola pravopisu zlyhala"
-
-#~ msgid "Vertical Space Settings"
-#~ msgstr "Nastavenia vertikálnej medzery"
 
 #~ msgid "No Table of contents"
 #~ msgstr "Bez obsahu"
