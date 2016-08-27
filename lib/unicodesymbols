@@ -57,7 +57,7 @@
 0x00a4 "\\textcurrency"           "textcomp" "" # CURRENCY SYMBOL
 0x00a5 "\\textyen"                "textcomp" "" "\\yen" "amssymb" # YEN SIGN
 0x00a6 "\\textbrokenbar"          "textcomp" "" # BROKEN BAR
-0x00a7 "\\textsection"            "textcomp" "" # SECTION SIGN
+0x00a7 "\\textsection"            "textcomp" "" "\\mathsection" "" # SECTION SIGN
 0x00a8 "\\textasciidieresis"      "textcomp" "" # DIAERESIS
 0x00a9 "\\textcopyright"          "textcomp" "" # COPYRIGHT SIGN
 0x00aa "\\textordfeminine"        "textcomp" "" # FEMININE ORDINAL INDICATOR
@@ -72,7 +72,7 @@
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
 0x00b4 "\\textasciiacute"         "textcomp" "" # ACUTE ACCENT
 0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
-0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
+0x00b6 "\\textparagraph"          "textcomp" "" "\\mathparagraph" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" "\\cdot" "" # MIDDLE DOT
 0x00b8 "\\c{ }"                   "" "" "" "" # CEDILLA
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
@@ -1744,7 +1744,7 @@
 #0x201f ""                         "" "" # DOUBLE HIGH-REVERSED-9 QUOTATION MARK
 0x2020 "\\dag"                    "" "" "\\dagger" "" # DAGGER
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
-0x2022 "\\textbullet"             "textcomp" "" # BULLET
+0x2022 "\\textbullet"             "textcomp" "" "\\bullet" "" # BULLET
 0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET # ≈ 0x25b8
 0x2024 "."                        "" "notermination=text" "" "" # ONE DOT LEADER # ≈ FULL STOP
 0x2025 ".\\,."                    "" "notermination=text" "" "" # TWO DOT LEADER
@@ -1850,6 +1850,8 @@
 0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
 # use the following macro for the character CADA UNA
 0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" ""
+#0x2107 ""                         "" "" "" "" # EULER CONSTANT
+#0x2108 ""                         "" "" "" "" # SCRUPLE
 0x2109 "°{}F"                     "" "notermination=text" "" "" # DEGREE FAHRENHEIT
 # mathrsfs has no small letters
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
@@ -1877,7 +1879,9 @@
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
+#0x2123 ""                         "" "" "" "" # VERSICLE
 0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
+#0x2125 ""                         "" "" "" "" # OUNCE SIGN
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
 0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
@@ -1891,7 +1895,7 @@
 #0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
 0x2130 ""                         "" "" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
 0x2131 ""                         "" "" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
-#0x2132 ""                         "" "" "" "" # TURNED CAPITAL F
+0x2132 ""                         "" "" "\\Finv" "amssymb" # TURNED CAPITAL F
 0x2133 ""                         "" "" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
 # mathrsfs has no small letters
 #0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
@@ -1902,10 +1906,32 @@
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213a ""                         "" "" "" "" # ROTATED CAPITAL Q
 #0x213b ""                         "" "" # FACSIMILE SIGN
+#0x213c ""                         "" "" "" "" # DOUBLE-STRUCK SMALL PI
+#0x213d ""                         "" "" "" "" # DOUBLE-STRUCK SMALL GAMMA
+#0x213e ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL GAMMA
+#0x213f ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL PI
+#0x2140 ""                         "" "" "" "" # DOUBLE-STRUCK N-ARY SUMMATION
+0x2141 ""                         "" "" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
+#0x2142 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL L
+#0x2143 ""                         "" "" "" "" # REVERSED SANS-SERIF CAPITAL L
+#0x2144 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL Y
+#0x2145 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC CAPITAL D
+#0x2146 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL D
+#0x2147 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL E
+#0x2148 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL I
+#0x2149 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL J
+#0x214a ""                         "" "" "" "" # PROPERTY LINE
+#0x214b ""                         "" "" "" "" # TURNED AMPERSAND
+#0x214c ""                         "" "" "" "" # PER SIGN
 0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
+#0x214e ""                         "" "" "" "" # TURNED SMALL F
+#0x214f ""                         "" "" "" "" # SYMBOL FOR SAMARITAN SOURCE
 #
 # number forms
 #
+#0x2150 ""                         "" "" "" "" # VULGAR FRACTION ONE SEVENTH
+#0x2151 ""                         "" "" "" "" # VULGAR FRACTION ONE NINTH
+#0x2152 ""                         "" "" "" "" # VULGAR FRACTION ONE TENTH
 # use the following macro for the character VULGAR FRACTION ONE THIRD
 0x2153 "\\LyXonethird" "\\newcommand*\\LyXonethird{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" ""
 # use the following macro for the character VULGAR FRACTION TWO THIRDS
@@ -2007,7 +2033,7 @@
 0x21aa ""                         "" "" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
 0x21ab ""                         "" "" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
 0x21ac ""                         "" "" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
-#0x21ad ""                         "" "" "" "" # LEFT RIGHT WAVE ARROW
+0x21ad ""                         "" "" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
 0x21ae ""                         "" "" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
 # stmaryrd defines \lightnig as math-command but this clashes with wasysym where \lightning in math mode produces "`"
 0x21af "\\lightning"              "wasysym" "" "" "" # DOWNWARDS ZIGZAG ARROW
@@ -2129,9 +2155,9 @@
 0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
 0x2220 ""                         "" "" "\\angle" "" # ANGLE
 0x2221 ""                         "" "" "\\measuredangle" "amssymb" # MEASURED ANGLE
-#0x2222 ""                         "" "" "" "" # SPHERICAL ANGLE
-#0x2223 ""                         "" "" "\\divides" "mathabx" # DIVIDES
-#0x2224 ""                         "" "" "\\notdivides" "mathabx" # DOES NOT DIVIDE
+0x2222 ""                         "" "" "\\sphericalangle" "amssymb" # SPHERICAL ANGLE
+0x2223 ""                         "" "" "\\mid" "" # DIVIDES # or "\\divides" "mathabx"
+0x2224 ""                         "" "" "\\nmid" "" # DOES NOT DIVIDE # or "\\notdivides" "mathabx"
 0x2225 ""                         "" "" "\\parallel" "" # PARALLEL TO
 0x2226 ""                         "" "" "\\nparallel" "amssymb" # NOT PARALLEL TO
 0x2227 ""                         "" "" "\\bigwedge" "" # LOGICAL AND
@@ -2156,12 +2182,12 @@
 #0x223a ""                         "" "" "" "" # GEOMETRIC PROPORTION
 #0x223b ""                         "" "" "" "" # HOMOTHETIC
 0x223c ""                         "" "" "\\sim" "" # TILDE OPERATOR
-#0x223d ""                         "" "" "" "" # REVERSED TILDE
+0x223d ""                         "" "" "\\backsim" "amssymb" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
 0x223f "\\AC"                     "wasysym" "" "\\AC" "wasysym" # SINE WAVE = alternating current
 0x2240 ""                         "" "" "\\wr" "" # WREATH PRODUCT
 #0x2241 ""                         "" "" "" "" # NOT TILDE
-#0x2242 ""                         "" "" "" "" # MINUS TILDE
+0x2242 ""                         "" "" "\\eqsim" "amssymb" # MINUS TILDE
 0x2243 ""                         "" "" "\\simeq" "" # ASYMPTOTICALLY EQUAL TO
 #0x2244 ""                         "" "" "" "" # NOT ASYMPTOTICALLY EQUAL TO
 #0x2245 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO
@@ -2169,16 +2195,16 @@
 #0x2247 ""                         "" "" "" "" # NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
 0x2248 ""                         "" "" "\\approx" # ALMOST EQUAL TO
 #0x2249 ""                         "" "" "\\napprox" "mathabx" # NOT ALMOST EQUAL TO
-#0x224a ""                         "" "" "" "" # ALMOST EQUAL OR EQUAL TO
+0x224a ""                         "" "" "\\approxeq" "amssymb" # ALMOST EQUAL OR EQUAL TO
 #0x224b ""                         "" "" "" "" # TRIPLE TILDE
 #0x224c ""                         "" "" "" "" # ALL EQUAL TO
 0x224d ""                         "" "" "\\asymp" "" # EQUIVALENT TO
 #0x224e ""                         "" "" "" "" # GEOMETRICALLY EQUIVALENT TO
 #0x224f ""                         "" "" "" "" # DIFFERENCE BETWEEN
 #0x2250 ""                         "" "" "" "" # APPROACHES THE LIMIT
-#0x2251 ""                         "" "" "" "" # GEOMETRICALLY EQUAL TO
-#0x2252 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
-#0x2253 ""                         "" "" "" "" # IMAGE OF OR APPROXIMATELY EQUAL TO
+0x2251 ""                         "" "" "\\Doteq" "amssymb" # GEOMETRICALLY EQUAL TO
+0x2252 ""                         "" "" "\\fallingdotseq" "amssymb" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
+0x2253 ""                         "" "" "\\risingdotseq" "amssymb" # IMAGE OF OR APPROXIMATELY EQUAL TO
 0x2254 ""                         "" "" "\\coloneqq" "mathtools" # COLON EQUALS
 0x2255 ""                         "" "" "\\eqqcolon" "mathtools" # EQUALS COLON
 0x2256 ""                         "" "" "\\eqcirc" "amssymb" # RING IN EQUAL TO
@@ -2238,8 +2264,8 @@
 #0x228c ""                         "" "" "" "" # MULTISET
 #0x228d ""                         "" "" "" "" # MULTISET MULTIPLICATION
 0x228e ""                         "" "" "\\uplus" "" # MULTISET UNION
-#0x228f ""                         "" "" "" "" # SQUARE IMAGE OF
-#0x2290 ""                         "" "" "" "" # SQUARE ORIGINAL OF
+0x228f ""                         "" "" "\\sqsubset" "amssymb" # SQUARE IMAGE OF
+0x2290 ""                         "" "" "\\sqsupset" "amssymb" # SQUARE ORIGINAL OF
 0x2291 ""                         "" "" "\\sqsubseteq" "" # SQUARE IMAGE OF OR EQUAL TO
 0x2292 ""                         "" "" "\\sqsupseteq" "" # SQUARE ORIGINAL OF OR EQUAL TO
 0x2293 ""                         "" "" "\\sqcap" "" # SQUARE CAP
@@ -2263,27 +2289,27 @@
 0x22a5 ""                         "" "" "\\bot" "" # UP TACK
 #0x22a6 ""                         "" "" "" "" # ASSERTION
 #0x22a7 ""                         "" "" "" "" # MODELS
-#0x22a8 ""                         "" "" "" "" # TRUE
-#0x22a9 ""                         "" "" "" "" # FORCES
-#0x22aa ""                         "" "" "" "" # TRIPLE VERTICAL BAR RIGHT TURNSTILE
+0x22a8 ""                         "" "" "\\vDash" "amssymb" # TRUE
+0x22a9 ""                         "" "" "\\Vdash" "amssymb" # FORCES
+0x22aa ""                         "" "" "\\Vvdash" "amssymb" # TRIPLE VERTICAL BAR RIGHT TURNSTILE
 #0x22ab ""                         "" "" "" "" # DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
-#0x22ac ""                         "" "" "" "" # DOES NOT PROVE
-#0x22ad ""                         "" "" "" "" # NOT TRUE
-#0x22ae ""                         "" "" "" "" # DOES NOT FORCE
+0x22ac ""                         "" "" "\\nvdash" "amssymb" # DOES NOT PROVE
+0x22ad ""                         "" "" "\\nvDash" "amssymb" # NOT TRUE
+0x22ae ""                         "" "" "\\nVdash" "amssymb" # DOES NOT FORCE
 #0x22af ""                         "" "" "" "" # NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
 #0x22b0 ""                         "" "" "" "" # PRECEDES UNDER RELATION
 #0x22b1 ""                         "" "" "" "" # SUCCEEDS UNDER RELATION
-#0x22b2 ""                         "" "" "" "" # NORMAL SUBGROUP OF
-#0x22b3 ""                         "" "" "" "" # CONTAINS AS NORMAL SUBGROUP
-#0x22b4 ""                         "" "" "" "" # NORMAL SUBGROUP OF OR EQUAL TO
-#0x22b5 ""                         "" "" "" "" # CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
+0x22b2 ""                         "" "" "\\vartriangleleft" "amssymb" # NORMAL SUBGROUP OF
+0x22b3 ""                         "" "" "\\vartriangleright" "amssymb" # CONTAINS AS NORMAL SUBGROUP
+0x22b4 ""                         "" "" "\\trianglelefteq" "amssymb" # NORMAL SUBGROUP OF OR EQUAL TO
+0x22b5 ""                         "" "" "\\trianglerighteq" "amssymb" # CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
 #0x22b6 ""                         "" "" "" "" # ORIGINAL OF
 #0x22b7 ""                         "" "" "" "" # IMAGE OF
-#0x22b8 ""                         "" "" "" "" # MULTIMAP
+0x22b8 ""                         "" "" "\\multimap" "amssymb" # MULTIMAP
 #0x22b9 ""                         "" "" "" "" # HERMITIAN CONJUGATE MATRIX
-#0x22ba ""                         "" "" "" "" # INTERCALATE
-#0x22bb ""                         "" "" "" "" # XOR
-#0x22bc ""                         "" "" "" "" # NAND
+0x22ba ""                         "" "" "\\intercal" "amssymb" # INTERCALATE
+0x22bb ""                         "" "" "\\veebar" "amssymb" # XOR
+0x22bc ""                         "" "" "\\barwedge" "amssymb" # NAND
 #0x22bd ""                         "" "" "" "" # NOR
 #0x22be ""                         "" "" "" "" # RIGHT ANGLE WITH ARC
 #0x22bf ""                         "" "" "" "" # RIGHT TRIANGLE
@@ -2294,31 +2320,31 @@
 #0x22c4 ""                         "" "" "" "" # DIAMOND OPERATOR
 #0x22c5 ""                         "" "" "" "" # DOT OPERATOR
 0x22c6 ""                         "" "" "\\star" "" # STAR OPERATOR
-#0x22c7 ""                         "" "" "" "" # DIVISION TIMES
-#0x22c8 ""                         "" "" "" "" # BOWTIE
-#0x22c9 ""                         "" "" "" "" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
-#0x22ca ""                         "" "" "" "" # RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
-#0x22cb ""                         "" "" "" "" # LEFT SEMIDIRECT PRODUCT
-#0x22cc ""                         "" "" "" "" # RIGHT SEMIDIRECT PRODUCT
+0x22c7 ""                         "" "" "\\divideontimes" "amssymb" # DIVISION TIMES
+0x22c8 ""                         "" "" "\\bowtie" "" # BOWTIE
+0x22c9 ""                         "" "" "\\ltimes" "amssymb" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
+0x22ca ""                         "" "" "\\rtimes" "amssymb" # RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
+0x22cb ""                         "" "" "\\leftthreetimes" "amssymb" # LEFT SEMIDIRECT PRODUCT
+0x22cc ""                         "" "" "\\rightthreetimes" "amssymb" # RIGHT SEMIDIRECT PRODUCT
 #0x22cd ""                         "" "" "" "" # REVERSED TILDE EQUALS
-#0x22ce ""                         "" "" "" "" # CURLY LOGICAL OR
-#0x22cf ""                         "" "" "" "" # CURLY LOGICAL AND
-#0x22d0 ""                         "" "" "" "" # DOUBLE SUBSET
-#0x22d1 ""                         "" "" "" "" # DOUBLE SUPERSET
-#0x22d2 ""                         "" "" "" "" # DOUBLE INTERSECTION
-#0x22d3 ""                         "" "" "" "" # DOUBLE UNION
-#0x22d4 ""                         "" "" "" "" # PITCHFORK
+0x22ce ""                         "" "" "\\curlyvee" "amssymb" # CURLY LOGICAL OR
+0x22cf ""                         "" "" "\\curlywedge" "amssymb" # CURLY LOGICAL AND
+0x22d0 ""                         "" "" "\\Subset" "amssymb" # DOUBLE SUBSET
+0x22d1 ""                         "" "" "\\Supset" "amssymb" # DOUBLE SUPERSET
+0x22d2 ""                         "" "" "\\Cap" "amssymb" # DOUBLE INTERSECTION
+0x22d3 ""                         "" "" "\\Cup" "amssymb" # DOUBLE UNION
+0x22d4 ""                         "" "" "\\pitchfork" "amssymb" # PITCHFORK
 #0x22d5 ""                         "" "" "" "" # EQUAL AND PARALLEL TO
-#0x22d6 ""                         "" "" "" "" # LESS-THAN WITH DOT
-#0x22d7 ""                         "" "" "" "" # GREATER-THAN WITH DOT
+0x22d6 ""                         "" "" "\\lessdot" "amssymb" # LESS-THAN WITH DOT
+0x22d7 ""                         "" "" "\\gtrdot" "amssymb" # GREATER-THAN WITH DOT
 0x22d8 ""                         "" "" "\\llless" "amssymb" # VERY MUCH LESS-THAN
 0x22d9 ""                         "" "" "\\gggtr" "amssymb" # VERY MUCH GREATER-THAN
-#0x22da ""                         "" "" "" "" # LESS-THAN EQUAL TO OR GREATER-THAN
-#0x22db ""                         "" "" "" "" # GREATER-THAN EQUAL TO OR LESS-THAN
+0x22da ""                         "" "" "\\lesseqgtr" "amssymb" # LESS-THAN EQUAL TO OR GREATER-THAN
+0x22db ""                         "" "" "\\gtreqless" "amssymb" # GREATER-THAN EQUAL TO OR LESS-THAN
 #0x22dc ""                         "" "" "" "" # EQUAL TO OR LESS-THAN
 #0x22dd ""                         "" "" "" "" # EQUAL TO OR GREATER-THAN
-#0x22de ""                         "" "" "" "" # EQUAL TO OR PRECEDES
-#0x22df ""                         "" "" "" "" # EQUAL TO OR SUCCEEDS
+0x22de ""                         "" "" "\\curlyeqprec" "amssymb" # EQUAL TO OR PRECEDES
+0x22df ""                         "" "" "\\curlyeqsucc" "amssymb" # EQUAL TO OR SUCCEEDS
 #0x22e0 ""                         "" "" "" "" # DOES NOT PRECEDE OR EQUAL
 #0x22e1 ""                         "" "" "" "" # DOES NOT SUCCEED OR EQUAL
 #0x22e2 ""                         "" "" "" "" # NOT SQUARE IMAGE OF OR EQUAL TO
@@ -2331,8 +2357,8 @@
 #0x22e9 ""                         "" "" "" "" # SUCCEEDS BUT NOT EQUIVALENT TO
 #0x22ea ""                         "" "" "" "" # NOT NORMAL SUBGROUP OF
 #0x22eb ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP
-#0x22ec ""                         "" "" "" "" # NOT NORMAL SUBGROUP OF OR EQUAL TO
-#0x22ed ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
+0x22ec ""                         "" "" "\\ntrianglelefteq" "amssymb" # NOT NORMAL SUBGROUP OF OR EQUAL TO
+0x22ed ""                         "" "" "\\ntrianglerighteq" "amssymb" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
 0x22ee "\\vdots"                  "" "" "\\vdots" "" # VERTICAL ELLIPSIS
 0x22ef ""                         "" "" "\\cdots" "" # MIDLINE HORIZONTAL ELLIPSIS
 0x22f0 ""                         "" "" "\\iddots" "mathdots" # UP RIGHT DIAGONAL ELLIPSIS
@@ -2362,10 +2388,10 @@
 #0x2305 ""                         "" "" "" "" # PROJECTIVE
 #0x2306 ""                         "" "" "" "" # PERSPECTIVE
 #0x2307 ""                         "" "" "" "" # WAVY LINE
-#0x2308 ""                         "" "" "" "" # LEFT CEILING
-#0x2309 ""                         "" "" "" "" # RIGHT CEILING
-#0x230a ""                         "" "" "" "" # LEFT FLOOR
-#0x230b ""                         "" "" "" "" # RIGHT FLOOR
+0x2308 ""                         "" "" "\\lceil" "" # LEFT CEILING
+0x2309 ""                         "" "" "\\rceil" "" # RIGHT CEILING
+0x230a ""                         "" "" "\\lfloor" "" # LEFT FLOOR
+0x230b ""                         "" "" "\\rfloor" "" # RIGHT FLOOR
 #0x230c ""                         "" "" "" "" # BOTTOM RIGHT CROP
 #0x230d ""                         "" "" "" "" # BOTTOM LEFT CROP
 #0x230e ""                         "" "" "" "" # TOP RIGHT CROP
@@ -2382,10 +2408,10 @@
 #0x2319 ""                         "" "" "" "" # TURNED NOT SIGN
 0x231a "\\Clocklogo"              "marvosym" "" # WATCH
 #0x231b ""                         "" "" "" "" # HOURGLASS
-#0x231c ""                         "" "" "" "" # TOP LEFT CORNER
-#0x231d ""                         "" "" "" "" # TOP RIGHT CORNER
-#0x231e ""                         "" "" "" "" # BOTTOM LEFT CORNER
-#0x231f ""                         "" "" "" "" # BOTTOM RIGHT CORNER
+0x231c ""                         "" "" "\\ulcorner" "amssymb" # TOP LEFT CORNER
+0x231d ""                         "" "" "\\urcorner" "amssymb" # TOP RIGHT CORNER
+0x231e ""                         "" "" "\\llcorner" "amssymb" # BOTTOM LEFT CORNER
+0x231f ""                         "" "" "\\lrcorner" "amssymb" # BOTTOM RIGHT CORNER
 #0x2320 ""                         "" "" "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" "" "" # BOTTOM HALF INTEGRAL
 0x2322 ""                         "" "" "\\frown" "" # FROWN
@@ -2518,8 +2544,8 @@
 #0x25b1 ""                         "" "" "" "" # WHITE PARALLELOGRAM
 0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "" # BLACK UP-POINTING TRIANGLE
 0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" "\\bigtriangleup" "" # WHITE UP-POINTING TRIANGLE
-0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" # BLACK UP-POINTING SMALL TRIANGLE
-0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "" # WHITE UP-POINTING SMALL TRIANGLE
+0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" "\\blacktriangle" "amssymb" # BLACK UP-POINTING SMALL TRIANGLE
+0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "" "\\vartriangle" "amssymb" # WHITE UP-POINTING SMALL TRIANGLE
 0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "" "\\RHD" "wasysym" # BLACK RIGHT-POINTING TRIANGLE
 0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "" "\\rhd" "amssymb" # WHITE RIGHT-POINTING TRIANGLE
 0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
@@ -2528,8 +2554,8 @@
 #0x25bb ""                         "" "" "" "" # WHITE RIGHT-POINTING POINTER
 0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "" # BLACK DOWN-POINTING TRIANGLE
 0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" "\\bigtriangledown" "" # WHITE DOWN-POINTING TRIANGLE
-0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" # BLACK DOWN-POINTING SMALL TRIANGLE
-0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "" # WHITE DOWN-POINTING SMALL TRIANGLE
+0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" "\\blacktriangledown" "amssymb" # BLACK DOWN-POINTING SMALL TRIANGLE
+0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "" "\\triangledown" "amssymb" # WHITE DOWN-POINTING SMALL TRIANGLE
 0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "" "\\LHD" "wasysym" # BLACK LEFT-POINTING TRIANGLE
 0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "" "\\lhd" "amssymb" # WHITE LEFT-POINTING TRIANGLE
 0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
@@ -2557,7 +2583,7 @@
 0x25d8 "{\\ascii\\BS}"            "ascii" "" # INVERSE BULLET
 0x25d9 "{\\ascii\\LF}"            "ascii" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
-0x25ef "\\textbigcircle"          "textcomp" "" # LARGE CIRCLE
+0x25ef "\\textbigcircle"          "textcomp" "" "\\bigcirc" "" # LARGE CIRCLE
 0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" "\\square" "amssymb" # WHITE MEDIUM SQUARE
 0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "" "\\blacksquare" "amssymb" # BLACK MEDIUM SQUARE
 #
@@ -2744,6 +2770,7 @@
 0x27e7 ""                         "" "" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
 0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+0x29eb ""                         "" "" "\\blacklozenge" "amssymb" # BLACK LOZENGE
 #
 # supplemental mathematical operators
 #
@@ -2777,10 +2804,87 @@
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
 0x2a3f ""                         "" "" "\\amalg" "" # AMALGAMATION OR COPRODUCT
+0x2a5e ""                         "" "" "\\doublebarwedge" "amssymb" # LOGICAL AND WITH DOUBLE OVERBAR
 0x2a7d ""                         "" "" "\\leqslant" "amssymb" # LESS-THAN OR SLANTED EQUAL TO
 0x2a7e ""                         "" "" "\\geqslant" "amssymb" # GREATER-THAN OR SLANTED EQUAL TO
+#0x2a7f ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
+#0x2a80 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
+#0x2a81 ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
+#0x2a82 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
+#0x2a83 ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE RIGHT
+#0x2a84 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE LEFT
+0x2a85 ""                         "" "" "\\lessapprox" "amssymb" # LESS-THAN OR APPROXIMATE
+0x2a86 ""                         "" "" "\\gtrapprox" "amssymb" # GREATER-THAN OR APPROXIMATE
+0x2a87 ""                         "" "" "\\lneq" "amssymb" # LESS-THAN AND SINGLE-LINE NOT EQUAL TO
+0x2a88 ""                         "" "" "\\gneq" "amssymb" # GREATER-THAN AND SINGLE-LINE NOT EQUAL TO
+#0x2a89 ""                         "" "" "" "" # LESS-THAN AND NOT APPROXIMATE
+#0x2a8a ""                         "" "" "" "" # GREATER-THAN AND NOT APPROXIMATE
+0x2a8b ""                         "" "" "\\lesseqqgtr" "amssymb" # LESS-THAN ABOVE DOUBLE-LINE EQUAL ABOVE GREATER-THAN
+0x2a8c ""                         "" "" "\\gtreqqless" "amssymb" # GREATER-THAN ABOVE DOUBLE-LINE EQUAL ABOVE LESS-THAN
+#0x2a8d ""                         "" "" "" "" # LESS-THAN ABOVE SIMILAR OR EQUAL
+#0x2a8e ""                         "" "" "" "" # GREATER-THAN ABOVE SIMILAR OR EQUAL
+#0x2a8f ""                         "" "" "" "" # LESS-THAN ABOVE SIMILAR ABOVE GREATER-THAN
+#0x2a90 ""                         "" "" "" "" # GREATER-THAN ABOVE SIMILAR ABOVE LESS-THAN
+#0x2a91 ""                         "" "" "" "" # LESS-THAN ABOVE GREATER-THAN ABOVE DOUBLE-LINE EQUAL
+#0x2a92 ""                         "" "" "" "" # GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL
+#0x2a93 ""                         "" "" "" "" # LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
+#0x2a94 ""                         "" "" "" "" # GREATER-THAN ABOVE SLANTED EQUAL ABOVE LESS-THAN ABOVE SLANTED EQUAL
+0x2a95 ""                         "" "" "\\eqslantless" "amssymb" # SLANTED EQUAL TO OR LESS-THAN
+0x2a96 ""                         "" "" "\\eqslantgtr" "amssymb" # SLANTED EQUAL TO OR GREATER-THAN
+#0x2a97 ""                         "" "" "" "" # SLANTED EQUAL TO OR LESS-THAN WITH DOT INSIDE
+#0x2a98 ""                         "" "" "" "" # SLANTED EQUAL TO OR GREATER-THAN WITH DOT INSIDE
+#0x2a99 ""                         "" "" "" "" # DOUBLE-LINE EQUAL TO OR LESS-THAN
+#0x2a9a ""                         "" "" "" "" # DOUBLE-LINE EQUAL TO OR GREATER-THAN
+#0x2a9b ""                         "" "" "" "" # DOUBLE-LINE SLANTED EQUAL TO OR LESS-THAN
+#0x2a9c ""                         "" "" "" "" # DOUBLE-LINE SLANTED EQUAL TO OR GREATER-THAN
+#0x2a9d ""                         "" "" "" "" # SIMILAR OR LESS-THAN
+#0x2a9e ""                         "" "" "" "" # SIMILAR OR GREATER-THAN
+#0x2a9f ""                         "" "" "" "" # SIMILAR ABOVE LESS-THAN ABOVE EQUALS SIGN
+#0x2aa0 ""                         "" "" "" "" # SIMILAR ABOVE GREATER-THAN ABOVE EQUALS SIGN
+#0x2aa1 ""                         "" "" "" "" # DOUBLE NESTED LESS-THAN
+#0x2aa2 ""                         "" "" "" "" # DOUBLE NESTED GREATER-THAN
+#0x2aa3 ""                         "" "" "" "" # DOUBLE NESTED LESS-THAN WITH UNDERBAR
+#0x2aa4 ""                         "" "" "" "" # GREATER-THAN OVERLAPPING LESS-THAN
+#0x2aa5 ""                         "" "" "" "" # GREATER-THAN BESIDE LESS-THAN
+#0x2aa6 ""                         "" "" "" "" # LESS-THAN CLOSED BY CURVE
+#0x2aa7 ""                         "" "" "" "" # GREATER-THAN CLOSED BY CURVE
+#0x2aa8 ""                         "" "" "" "" # LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
+#0x2aa9 ""                         "" "" "" "" # GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
+#0x2aaa ""                         "" "" "" "" # SMALLER THAN
+#0x2aab ""                         "" "" "" "" # LARGER THAN
+#0x2aac ""                         "" "" "" "" # SMALLER THAN OR EQUAL TO
+#0x2aad ""                         "" "" "" "" # LARGER THAN OR EQUAL TO
+0x2aae ""                         "" "" "\\bumpeq" "amssymb" # EQUALS SIGN WITH BUMPY ABOVE
 0x2aaf ""                         "" "" "\\preceq" "" # PRECEDES ABOVE SINGLE-LINE EQUALS SIGN
 0x2ab0 ""                         "" "" "\\succeq" "" # SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN
+#0x2ab1 ""                         "" "" "" "" # PRECEDES ABOVE SINGLE-LINE NOT EQUAL TO
+#0x2ab2 ""                         "" "" "" "" # SUCCEEDS ABOVE SINGLE-LINE NOT EQUAL TO
+#0x2ab3 ""                         "" "" "" "" # PRECEDES ABOVE EQUALS SIGN
+#0x2ab4 ""                         "" "" "" "" # SUCCEEDS ABOVE EQUALS SIGN
+0x2ab5 ""                         "" "" "\\precneqq" "amssymb" # PRECEDES ABOVE NOT EQUAL TO
+0x2ab6 ""                         "" "" "\\succneqq" "amssymb" # SUCCEEDS ABOVE NOT EQUAL TO
+0x2ab7 ""                         "" "" "\\precapprox" "amssymb" # PRECEDES ABOVE ALMOST EQUAL TO
+0x2ab8 ""                         "" "" "\\succapprox" "amssymb" # SUCCEEDS ABOVE ALMOST EQUAL TO
+#0x2ab9 ""                         "" "" "" "" # PRECEDES ABOVE NOT ALMOST EQUAL TO
+#0x2aba ""                         "" "" "" "" # SUCCEEDS ABOVE NOT ALMOST EQUAL TO
+#0x2abb ""                         "" "" "" "" # DOUBLE PRECEDES
+#0x2abc ""                         "" "" "" "" # DOUBLE SUCCEEDS
+#0x2abd ""                         "" "" "" "" # SUBSET WITH DOT
+#0x2abe ""                         "" "" "" "" # SUPERSET WITH DOT
+#0x2abf ""                         "" "" "" "" # SUBSET WITH PLUS SIGN BELOW
+#0x2ac0 ""                         "" "" "" "" # SUPERSET WITH PLUS SIGN BELOW
+#0x2ac1 ""                         "" "" "" "" # SUBSET WITH MULTIPLICATION SIGN BELOW
+#0x2ac2 ""                         "" "" "" "" # SUPERSET WITH MULTIPLICATION SIGN BELOW
+#0x2ac3 ""                         "" "" "" "" # SUBSET OF OR EQUAL TO WITH DOT ABOVE
+#0x2ac4 ""                         "" "" "" "" # SUPERSET OF OR EQUAL TO WITH DOT ABOVE
+0x2ac5 ""                         "" "" "\\subseteqq" "amssymb" # SUBSET OF ABOVE EQUALS SIGN
+0x2ac6 ""                         "" "" "\\supseteqq" "amssymb" # SUPERSET OF ABOVE EQUALS SIGN
+#0x2ac7 ""                         "" "" "" "" # SUBSET OF ABOVE TILDE OPERATOR
+#0x2ac8 ""                         "" "" "" "" # SUPERSET OF ABOVE TILDE OPERATOR
+#0x2ac9 ""                         "" "" "" "" # SUBSET OF ABOVE ALMOST EQUAL TO
+#0x2aca ""                         "" "" "" "" # SUPERSET OF ABOVE ALMOST EQUAL TO
+0x2acb ""                         "" "" "\\subsetneqq" "amssymb" # SUBSET OF ABOVE NOT EQUAL TO
+0x2acc ""                         "" "" "\\supsetneqq" "amssymb" # SUPERSET OF ABOVE NOT EQUAL TO
 #
 # Modifier tone letters
 #
