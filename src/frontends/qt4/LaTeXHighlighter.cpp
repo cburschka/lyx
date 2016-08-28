@@ -20,8 +20,7 @@ namespace lyx {
 namespace frontend {
 
 
-LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent,
-                                   bool const at_letter)
+LaTeXHighlighter::LaTeXHighlighter(QTextDocument * parent, bool at_letter)
 	: QSyntaxHighlighter(parent), at_letter_(at_letter)
 {
 	auto blend = [](QColor color1, QColor color2) {
