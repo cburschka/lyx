@@ -149,7 +149,12 @@ void ViewSourceWidget::contentsChanged()
 void ViewSourceWidget::setViewFormat(int const index)
 {
 	outputFormatCO->setCurrentIndex(index);
-	view_format_ = outputFormatCO->itemData(index).toString();
+	string format = fromqstr(outputFormatCO->itemData(index).toString());
+	if (view_format_ != format) {
+		view_format_ = format;
+		// emit signal
+		formatChanged();
+	}
 }
 
 
@@ -185,8 +190,6 @@ void ViewSourceWidget::realUpdateView()
 	// we will try to preserve this
 	int const h_scroll = viewSourceTV->horizontalScrollBar()->value();
 
-	string const format = fromqstr(view_format_);
-
 	Buffer::OutputWhat output = Buffer::CurrentParagraph;
 	if (contentsCO->currentIndex() == 1)
 		output = Buffer::FullSource;
@@ -196,7 +199,8 @@ void ViewSourceWidget::realUpdateView()
 		output = Buffer::OnlyBody;
 
 	docstring content;
-	getContent(bv_, output, content, format, masterPerspectiveCB->isChecked());
+	getContent(bv_, output, content, view_format_,
+	           masterPerspectiveCB->isChecked());
 	QString old = document_->toPlainText();
 	QString qcontent = toqstr(content);
 #ifdef DEVEL_VERSION
@@ -306,6 +310,16 @@ void ViewSourceWidget::realUpdateView()
 }
 
 
+docstring ViewSourceWidget::currentFormatName() const
+{
+	// Compute the actual format used
+	string const format = !bv_ ? ""
+		: flavor2format(bv_->buffer().params().getOutputFlavor(view_format_));
+	Format const * f = formats.getFormat(format.empty() ? view_format_ : format);
+	return f ? f->prettyname() : from_utf8(view_format_);
+}
+
+
 // only used in DEVEL_MODE for debugging
 // need a proper LFUN if we want to implement it in release mode
 void ViewSourceWidget::gotoCursor()
@@ -341,9 +355,8 @@ void ViewSourceWidget::updateDefaultFormat()
 		} 
 
 		QString const pretty = toqstr(translateIfPossible(fmt->prettyname()));
-		QString const qformat = toqstr(format);
-		outputFormatCO->addItem(pretty, QVariant(qformat));
-		if (qformat == view_format_)
+		outputFormatCO->addItem(pretty, QVariant(toqstr(format)));
+		if (format == view_format_)
 		   index = outputFormatCO->count() -1;
 	}
 	setViewFormat(index);
@@ -367,7 +380,7 @@ void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 void ViewSourceWidget::saveSession(QString const & session_key) const
 {
 	QSettings settings;
-	settings.setValue(session_key + "/output", view_format_);
+	settings.setValue(session_key + "/output", toqstr(view_format_));
 	settings.setValue(session_key + "/contents", contentsCO->currentIndex());
 	settings.setValue(session_key + "/autoupdate", autoUpdateCB->isChecked());
 	settings.setValue(session_key + "/masterview",
@@ -378,7 +391,8 @@ void ViewSourceWidget::saveSession(QString const & session_key) const
 void ViewSourceWidget::restoreSession(QString const & session_key)
 {
 	QSettings settings;
-    view_format_ = settings.value(session_key + "/output", 0).toString();
+	view_format_ = fromqstr(settings.value(session_key + "/output", 0)
+	                        .toString());
 	contentsCO->setCurrentIndex(settings
 								.value(session_key + "/contents", 0)
 								.toInt());
@@ -396,10 +410,11 @@ void ViewSourceWidget::restoreSession(QString const & session_key)
 
 GuiViewSource::GuiViewSource(GuiView & parent,
 		Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "view-source", qt_("LaTeX Source"), area, flags)
+	: DockView(parent, "view-source", qt_("Code Preview"), area, flags)
 {
 	widget_ = new ViewSourceWidget;
 	setWidget(widget_);
+	connect(widget_, SIGNAL(formatChanged()), this, SLOT(updateTitle()));
 }
 
 
@@ -416,6 +431,7 @@ void GuiViewSource::updateView()
 		widget_->updateView();
 	}
 	widget_->masterPerspectiveCB->setEnabled(buffer().parent());
+	updateTitle();
 }
 
 
@@ -431,24 +447,19 @@ void GuiViewSource::enableView(bool enable)
 
 bool GuiViewSource::initialiseParams(string const & /*source*/)
 {
-	setWindowTitle(title());
+	updateTitle();
 	return true;
 }
 
 
-QString GuiViewSource::title() const
+void GuiViewSource::updateTitle()
 {
-	switch (docType()) {
-		case LATEX:
-			//FIXME: this is shown for LyXHTML source, LyX source, etc.
-			return qt_("LaTeX Source");
-		case DOCBOOK:
-			return qt_("DocBook Source");
-		case LITERATE:
-			return qt_("Literate Source");
-	}
-	LATTEST(false);
-	return QString();
+	docstring const format = widget_->currentFormatName();
+	QString const title = format.empty() ? qt_("Code Preview")
+		: qt_("%1[[preview format name]] Preview")
+		  .arg(toqstr(translateIfPossible(format)));
+	setTitle(title);
+	setWindowTitle(title);
 }
 
 

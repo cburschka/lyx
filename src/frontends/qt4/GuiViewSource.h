@@ -70,6 +70,11 @@ public Q_SLOTS:
 	void contentsChanged();
 	///
 	void gotoCursor();
+	/// Name of the current format. Empty if none.
+	docstring currentFormatName() const;
+
+Q_SIGNALS:
+	void formatChanged() const;
 
 private Q_SLOTS:
 	/// update content
@@ -86,7 +91,7 @@ private:
 	/// LaTeX syntax highlighter
 	LaTeXHighlighter * highlighter_;
 	///
-	QString view_format_;
+	std::string view_format_;
 	///
 	QTimer * update_timer_;
 	/// TexRow information from the last source view. If TexRow is unavailable
@@ -122,8 +127,9 @@ public:
 	bool wantInitialFocus() const { return false; }
 	///@}
 
+private Q_SLOTS:
 	/// The title displayed by the dialog reflects source type.
-	QString title() const;
+	void updateTitle();
 
 private:
 	/// The encapsulated widget.

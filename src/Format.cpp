@@ -846,6 +846,7 @@ FlavorTranslator initFlavorTranslator()
 	f.addPair(OutputParams::XML, "docbook-xml");
 	f.addPair(OutputParams::HTML, "xhtml");
 	f.addPair(OutputParams::TEXT, "text");
+	f.addPair(OutputParams::LYX, "lyx");
 	return f;
 }
 
