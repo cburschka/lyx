@@ -2583,32 +2583,25 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 	QStringList types;
 	QString const anyformat = qt_("Guess from extension (*.*)");
 	types << anyformat;
-	Formats::const_iterator it = formats.begin();
+
 	vector<Format const *> export_formats;
-	for (; it != formats.end(); ++it)
-		if (it->documentFormat())
-			export_formats.push_back(&(*it));
-	sort(export_formats.begin(), export_formats.end(),
-	     [](Format const *first, Format const *second) {
-		     QString name1 = qt_(first->prettyname());
-		     QString name2 = qt_(second->prettyname());
-		     return 0 < name2.localeAwareCompare(name1);
-	     });
-	vector<Format const *>::const_iterator fit = export_formats.begin();
+	for (Format const & f : formats)
+		if (f.documentFormat())
+			export_formats.push_back(&f);
+	sort(export_formats.begin(), export_formats.end(), Format::formatSorter);
 	map<QString, string> fmap;
 	QString filter;
 	string ext;
-	for (; fit != export_formats.end(); ++fit) {
-		docstring const loc_prettyname =
-			translateIfPossible(from_utf8((*fit)->prettyname()));
+	for (Format const * f : export_formats) {
+		docstring const loc_prettyname = translateIfPossible(f->prettyname());
 		QString const loc_filter = toqstr(bformat(from_ascii("%1$s (*.%2$s)"),
 						     loc_prettyname,
-						     from_ascii((*fit)->extension())));
+						     from_ascii(f->extension())));
 		types << loc_filter;
-		fmap[loc_filter] = (*fit)->name();
-		if (from_ascii((*fit)->name()) == iformat) {
+		fmap[loc_filter] = f->name();
+		if (from_ascii(f->name()) == iformat) {
 			filter = loc_filter;
-			ext = (*fit)->extension();
+			ext = f->extension();
 		}
 	}
 	string ofname = fname.onlyFileName();

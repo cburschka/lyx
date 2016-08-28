@@ -1072,14 +1072,12 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 	MenuItem item(MenuItem::Submenu, smenue);
 	item.setSubmenu(MenuDefinition(smenue));
 
-	Formats::const_iterator fit = formats.begin();
-	Formats::const_iterator end = formats.end();
-	for (; fit != end ; ++fit) {
-		if ((*fit)->dummy())
+	for (Format const * f : formats) {
+		if (f->dummy())
 			continue;
 
-		docstring lab = from_utf8((*fit)->prettyname());
-		docstring const scut = from_utf8((*fit)->shortcut());
+		docstring lab = f->prettyname();
+		docstring const scut = from_utf8(f->shortcut());
 		docstring const tmplab = lab;
 
 		if (!scut.empty())
@@ -1096,7 +1094,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 			break;
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
-			if ((*fit)->name() == buf->params().getDefaultOutputFormat()) {
+			if (f->name() == buf->params().getDefaultOutputFormat()) {
 				docstring lbl = (kind == MenuItem::ViewFormats
 					? bformat(_("View [%1$s]|V"), label)
 					: bformat(_("Update [%1$s]|U"), label));
@@ -1105,7 +1103,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 			}
 		// fall through
 		case MenuItem::ExportFormats:
-			if (!(*fit)->inExportMenu())
+			if (!f->inExportMenu())
 				continue;
 			break;
 		default:
@@ -1120,14 +1118,14 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 			// note that at this point, we know that buf is not null
 			LATTEST(buf);
 			item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command,
-				toqstr(label), FuncRequest(action, (*fit)->name())));
+				toqstr(label), FuncRequest(action, f->name())));
 		} else {
 			if (buf)
 				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
-					FuncRequest(action, (*fit)->name())));
+					FuncRequest(action, f->name())));
 			else
 				add(MenuItem(MenuItem::Command, toqstr(label),
-					FuncRequest(action, (*fit)->name())));
+					FuncRequest(action, f->name())));
 		}
 	}
 	if (view_update)

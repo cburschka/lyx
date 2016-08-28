@@ -1636,20 +1636,22 @@ void PrefConverters::updateRC(LyXRC const & rc)
 
 void PrefConverters::updateGui()
 {
+	QString const pattern("%1 -> %2");
 	form_->formats().sort();
 	form_->converters().update(form_->formats());
 	// save current selection
-	QString current = converterFromCO->currentText()
-		+ " -> " + converterToCO->currentText();
+	QString current =
+		pattern
+		.arg(converterFromCO->currentText())
+		.arg(converterToCO->currentText());
 
 	converterFromCO->clear();
 	converterToCO->clear();
 
-	Formats::const_iterator cit = form_->formats().begin();
-	Formats::const_iterator end = form_->formats().end();
-	for (; cit != end; ++cit) {
-		converterFromCO->addItem(qt_(cit->prettyname()));
-		converterToCO->addItem(qt_(cit->prettyname()));
+	for (Format const & f : form_->formats()) {
+		QString const name = toqstr(translateIfPossible(f.prettyname()));
+		converterFromCO->addItem(name);
+		converterToCO->addItem(name);
 	}
 
 	// currentRowChanged(int) is also triggered when updating the listwidget
@@ -1657,19 +1659,20 @@ void PrefConverters::updateGui()
 	convertersLW->blockSignals(true);
 	convertersLW->clear();
 
-	Converters::const_iterator ccit = form_->converters().begin();
-	Converters::const_iterator cend = form_->converters().end();
-	for (; ccit != cend; ++ccit) {
+	for (Converter const & c : form_->converters()) {
 		QString const name =
-			qt_(ccit->From()->prettyname()) + " -> " + qt_(ccit->To()->prettyname());
-		int type = form_->converters().getNumber(ccit->From()->name(), ccit->To()->name());
+			pattern
+			.arg(toqstr(translateIfPossible(c.From()->prettyname())))
+			.arg(toqstr(translateIfPossible(c.To()->prettyname())));
+		int type = form_->converters().getNumber(c.From()->name(),
+		                                         c.To()->name());
 		new QListWidgetItem(name, convertersLW, type);
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
 	convertersLW->blockSignals(false);
 
 	// restore selection
-	if (!current.isEmpty()) {
+	if (current != pattern.arg(QString()).arg(QString())) {
 		QList<QListWidgetItem *> const item =
 			convertersLW->findItems(current, Qt::MatchExactly);
 		if (!item.isEmpty())
@@ -1884,7 +1887,7 @@ public:
 private:
 	QString toString(Format const & format) const
 	{
-		return qt_(format.prettyname());
+		return toqstr(translateIfPossible(format.prettyname()));
 	}
 };
 
@@ -1931,13 +1934,13 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 
 namespace {
 
-string const l10n_shortcut(string const & prettyname, string const & shortcut)
+string const l10n_shortcut(docstring const & prettyname, string const & shortcut)
 {
 	if (shortcut.empty())
 		return string();
 
 	string l10n_format =
-		to_utf8(_(prettyname + '|' + shortcut));
+		to_utf8(_(to_utf8(prettyname) + '|' + shortcut));
 	return split(l10n_format, '|');
 }
 
@@ -1986,25 +1989,24 @@ void PrefFileformats::updateView()
 	defaultFormatCB->clear();
 	defaultOTFFormatCB->clear();
 	form_->formats().sort();
-	Formats::const_iterator cit = form_->formats().begin();
-	Formats::const_iterator end = form_->formats().end();
-	for (; cit != end; ++cit) {
-		formatsCB->addItem(qt_(cit->prettyname()),
-				QVariant(form_->formats().getNumber(cit->name())));
-		if (cit->viewer().empty())
+	for (Format const & f : formats) {
+		QString const prettyname = toqstr(translateIfPossible(f.prettyname()));
+		formatsCB->addItem(prettyname,
+		                   QVariant(form_->formats().getNumber(f.name())));
+		if (f.viewer().empty())
 			continue;
-		if (form_->converters().isReachable("xhtml", cit->name())
-		    || form_->converters().isReachable("dviluatex", cit->name())
-		    || form_->converters().isReachable("luatex", cit->name())
-		    || form_->converters().isReachable("xetex", cit->name())) {
-			defaultFormatCB->addItem(qt_(cit->prettyname()),
-					QVariant(toqstr(cit->name())));
-			defaultOTFFormatCB->addItem(qt_(cit->prettyname()),
-					QVariant(toqstr(cit->name())));
-		} else if (form_->converters().isReachable("latex", cit->name())
-			   || form_->converters().isReachable("pdflatex", cit->name()))
-			defaultFormatCB->addItem(qt_(cit->prettyname()),
-					QVariant(toqstr(cit->name())));
+		if (form_->converters().isReachable("xhtml", f.name())
+		    || form_->converters().isReachable("dviluatex", f.name())
+		    || form_->converters().isReachable("luatex", f.name())
+		    || form_->converters().isReachable("xetex", f.name())) {
+			defaultFormatCB->addItem(prettyname,
+					QVariant(toqstr(f.name())));
+			defaultOTFFormatCB->addItem(prettyname,
+					QVariant(toqstr(f.name())));
+		} else if (form_->converters().isReachable("latex", f.name())
+			   || form_->converters().isReachable("pdflatex", f.name()))
+			defaultFormatCB->addItem(prettyname,
+					QVariant(toqstr(f.name())));
 	}
 
 	// restore selections
@@ -2146,10 +2148,10 @@ void PrefFileformats::on_formatsCB_editTextChanged(const QString &)
 void PrefFileformats::updatePrettyname()
 {
 	QString const newname = formatsCB->currentText();
-	if (newname == qt_(currentFormat().prettyname()))
+	if (newname == toqstr(translateIfPossible(currentFormat().prettyname())))
 		return;
 
-	currentFormat().setPrettyname(fromqstr(newname));
+	currentFormat().setPrettyname(qstring_to_ucs4(newname));
 	formatsChanged();
 	updateView();
 	changed();
@@ -2251,7 +2253,7 @@ Format & PrefFileformats::currentFormat()
 
 void PrefFileformats::on_formatNewPB_clicked()
 {
-	form_->formats().add("", "", "", "", "", "", "", Format::none);
+	form_->formats().add("", "", docstring(), "", "", "", "", Format::none);
 	updateView();
 	formatsCB->setCurrentIndex(0);
 	formatsCB->setFocus(Qt::OtherFocusReason);

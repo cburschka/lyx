@@ -987,11 +987,12 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		}
 		case RC_FILEFORMAT: {
 			bool ok = true;
-			string format, extensions, prettyname, shortcut;
+			string format, extensions, shortcut;
+			docstring prettyname;
 			if (!(lexrc >> format >> extensions))
 				ok = false;
 			if (ok && lexrc.next(true))
-				prettyname  = lexrc.getString();
+				prettyname = lexrc.getDocString();
 			else
 				ok = false;
 			if (ok)
@@ -2524,7 +2525,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			    format->mime() != cit->mime()) {
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extensions() << "\" \""
-				   << cit->prettyname() << "\" \""
+				   << to_utf8(cit->prettyname()) << "\" \""
 				   << cit->shortcut() << "\" \""
 				   << escapeCommand(cit->viewer()) << "\" \""
 				   << escapeCommand(cit->editor()) << "\" \"";

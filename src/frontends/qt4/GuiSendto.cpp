@@ -73,42 +73,20 @@ void GuiSendTo::updateContents()
 {
 	all_formats_ = buffer().params().exportableFormats(false);
 	sort(all_formats_.begin(), all_formats_.end(), Format::formatSorter);
-	
 	// Save the current selection if any
-	Format const * current_format = 0;
+	Format const * current_format = nullptr;
 	int const line = formatLW->currentRow();
-	if (line >= 0 && line <= formatLW->count()
+	if (line >= 0 && static_cast<unsigned int>(line) < all_formats_.size()
 	    && formatLW->selectedItems().size() > 0)
 		current_format = all_formats_[line];
-
-	// Check whether the current contents of the browser will be
-	// changed by loading the contents of formats
-	vector<string> keys;
-	keys.resize(all_formats_.size());
-
-	vector<string>::iterator result = keys.begin();
-	vector<Format const *>::const_iterator it  = all_formats_.begin();
-	vector<Format const *>::const_iterator end = all_formats_.end();
-
-	int current_line = -1;
-	for (int ln = 0; it != end; ++it, ++result, ++ln) {
-		*result = (*it)->prettyname();
-		if (current_format 
-		    && (*it)->prettyname() == current_format->prettyname())
-			current_line = ln;
-	}
-
-	// Reload the browser
+	// Reset the list widget
 	formatLW->clear();
-
-	for (vector<string>::const_iterator it = keys.begin();
-	     it != keys.end(); ++it) {
-		formatLW->addItem(qt_(*it));
+	for (Format const * f : all_formats_) {
+		formatLW->addItem(toqstr(translateIfPossible(f->prettyname())));
+		// Restore the selection
+		if (current_format && f->prettyname() == current_format->prettyname())
+			formatLW->setCurrentRow(formatLW->count() - 1);
 	}
-
-	// Restore the selection
-	if (current_line > -1)
-		formatLW->setCurrentItem(formatLW->item(current_line));
 }
 
 

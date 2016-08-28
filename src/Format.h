@@ -42,7 +42,7 @@ public:
 		zipped_native = 8
 	};
 	///
-	Format(std::string const & n, std::string const & e, std::string const & p,
+	Format(std::string const & n, std::string const & e, docstring const & p,
 	       std::string const & s, std::string const & v, std::string const & ed,
 	       std::string const & m, int);
 	///
@@ -68,9 +68,9 @@ public:
 	///
 	void setExtensions(std::string const & v);
 	///
-	std::string const prettyname() const { return prettyname_; }
+	docstring const prettyname() const { return prettyname_; }
 	///
-	void setPrettyname(std::string const & v) { prettyname_ = v; }
+	void setPrettyname(docstring const & v) { prettyname_ = v; }
 	///
 	std::string const shortcut() const { return shortcut_; }
 	///
@@ -106,7 +106,7 @@ private:
 	/// Filename extensions, the first one being the default
 	std::vector<std::string> extension_list_;
 	/// Name presented to the user. Needs to be unique.
-	trivstring prettyname_;
+	trivdocstring prettyname_;
 	/// Keyboard shortcut for the View and Export menu.
 	trivstring shortcut_;
 	/*!
@@ -176,7 +176,7 @@ public:
 	void add(std::string const & name);
 	///
 	void add(std::string const & name, std::string const & extensions,
-		 std::string const & prettyname, std::string const & shortcut,
+		 docstring const & prettyname, std::string const & shortcut,
 		 std::string const & viewer, std::string const & editor,
 		 std::string const & mime, int flags);
 	///

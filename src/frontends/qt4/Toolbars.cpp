@@ -194,19 +194,16 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		case TO_VIEWFORMATS: {
 			vector<Format const *> formats = (code == TO_IMPORTFORMATS) ?
 				theConverters().importableFormats() :
-				theConverters().exportableFormats(code != TO_EXPORTFORMATS);
+				theConverters().exportableFormats(true);
 			sort(formats.begin(), formats.end());
-			vector<Format const *>::const_iterator fit = formats.begin();
-			vector<Format const *>::const_iterator end = formats.end();
-			for (; fit != end ; ++fit) {
-				if ((*fit)->dummy())
+			for (Format const * f : formats) {
+				if (f->dummy())
 					continue;
 				if (code != TO_IMPORTFORMATS &&
-				    !(*fit)->documentFormat())
+				    !f->documentFormat())
 					continue;
 
-				docstring const prettyname =
-					from_utf8((*fit)->prettyname());
+				docstring const prettyname = f->prettyname();
 				docstring tooltip;
 				FuncCode lfun = LFUN_NOACTION;
 				switch (code) {
@@ -227,7 +224,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 					tooltip = _("View %1$s");
 					break;
 				}
-				FuncRequest func(lfun, (*fit)->name(),
+				FuncRequest func(lfun, f->name(),
 						FuncRequest::TOOLBAR);
 				add(ToolbarItem(ToolbarItem::COMMAND, func,
 						bformat(tooltip, prettyname)));

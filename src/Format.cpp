@@ -106,16 +106,18 @@ private:
 
 bool Format::formatSorter(Format const * lhs, Format const * rhs)
 {
-	return compare_locale(_(lhs->prettyname()), _(rhs->prettyname())) < 0;
+	return compare_locale(translateIfPossible(lhs->prettyname()),
+	                      translateIfPossible(rhs->prettyname())) < 0;
 }
 
 bool operator<(Format const & a, Format const & b)
 {
-	return compare_locale(_(a.prettyname()), _(b.prettyname())) < 0;
+	return compare_locale(translateIfPossible(a.prettyname()),
+	                      translateIfPossible(b.prettyname())) < 0;
 }
 
 
-Format::Format(string const & n, string const & e, string const & p,
+Format::Format(string const & n, string const & e, docstring const & p,
 	       string const & s, string const & v, string const & ed,
 	       string const & m, int flags)
 	: name_(n), prettyname_(p), shortcut_(s), viewer_(v),
@@ -599,13 +601,13 @@ int Formats::getNumber(string const & name) const
 void Formats::add(string const & name)
 {
 	if (!getFormat(name))
-		add(name, name, name, string(), string(), string(),
+		add(name, name, from_utf8(name), string(), string(), string(),
 		    string(), Format::document);
 }
 
 
 void Formats::add(string const & name, string const & extensions,
-		  string const & prettyname, string const & shortcut,
+		  docstring const & prettyname, string const & shortcut,
 		  string const & viewer, string const & editor,
 		  string const & mime, int flags)
 {
@@ -803,7 +805,7 @@ docstring const Formats::prettyName(string const & name) const
 {
 	Format const * format = getFormat(name);
 	if (format)
-		return from_utf8(format->prettyname());
+		return format->prettyname();
 	else
 		return from_utf8(name);
 }

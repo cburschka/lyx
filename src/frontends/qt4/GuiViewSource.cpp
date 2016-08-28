@@ -340,7 +340,7 @@ void ViewSourceWidget::updateDefaultFormat()
 			continue;
 		} 
 
-		QString const pretty = qt_(fmt->prettyname());
+		QString const pretty = toqstr(translateIfPossible(fmt->prettyname()));
 		QString const qformat = toqstr(format);
 		outputFormatCO->addItem(pretty, QVariant(qformat));
 		if (qformat == view_format_)
