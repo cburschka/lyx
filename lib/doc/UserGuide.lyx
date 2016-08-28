@@ -134,11 +134,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -16118,7 +16119,7 @@ reference "sec:File-Formats"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -37589,7 +37590,7 @@ Format
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -37856,7 +37857,7 @@ Format
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -37953,7 +37954,7 @@ Format
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -42748,10 +42749,16 @@ reference "sec:Branches"
 \end_layout
 
 \begin_layout Section
+
+\change_deleted 2047637253 1472399758
 Output
+\change_inserted 2047637253 1472400015
+Formats
+\change_unchanged
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Doc-Output"
+name "sec:Doc-Formats"
 
 \end_inset
 
@@ -42942,15 +42949,27 @@ Save transient properties
  controls whether document settings that are frequently switched or that
  are specific to the user are saved with the document.
  The properties that are affected by option are currently
+\change_inserted 2047637253 1472400492
+:
+\change_unchanged
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 the activation of change tracking
+\change_inserted 2047637253 1472400062
+,
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
 the output of tracked changes
+\change_inserted 2047637253 1472400062
+,
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
