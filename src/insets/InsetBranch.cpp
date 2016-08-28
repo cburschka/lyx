@@ -77,8 +77,9 @@ docstring InsetBranch::toolTip(BufferView const & bv, int, int) const
 
 	docstring const masteron = producesOutput() ?
 		_("on") : _("off");
-	docstring const childon = producesOutput(true) ?
-		_("on") : _("off");
+	docstring const childon =
+		(isBranchSelected(true) != params_.inverted) ?
+			_("on") : _("off");
 	docstring const onoff = (masteron == childon) ?
 		masteron :
 		support::bformat(_("master %1$s, child %2$s"),
@@ -105,7 +106,7 @@ docstring const InsetBranch::buttonLabel(BufferView const &) const
 	bool const inchild = buffer().params().branchlist().find(params_.branch);
 
 	bool const master_selected = producesOutput();
-	bool const child_selected = producesOutput(true);
+	bool const child_selected = isBranchSelected(true) != params_.inverted;
 
 	docstring symb = docstring(1, master_selected ? tick : cross);
 	if (inchild && master_selected != child_selected)
@@ -284,9 +285,9 @@ bool InsetBranch::isBranchSelected(bool const child) const
 }
 
 
-bool InsetBranch::producesOutput(bool const child) const
+bool InsetBranch::producesOutput() const
 {
-	return isBranchSelected(child) != params_.inverted;
+	return isBranchSelected() != params_.inverted;
 }
 
 
