@@ -208,24 +208,7 @@ int compare_no_case(docstring const & s, docstring const & s2)
 
 int compare_locale(docstring const & s, docstring const & s2)
 {
-	// FIXME We have a report that this does not work on windows (bug 9030)
-	try
-	{
-		string const l = to_local8bit(s);
-		string const r = to_local8bit(s2);
-		return strcoll(l.c_str(), r.c_str());
-	}
-	catch (bad_cast & e)
-	{
-		// fall back to builtin sorting
-		LYXERR0("Could not compare using the current locale: "
-		        << e.what() << ", using fallback.");
-		if (s < s2)
-			return -1;
-		if (s > s2)
-			return 1;
-		return 0;
-	}
+	return QString::localeAwareCompare(toqstr(s), toqstr(s2));
 }
 
 
