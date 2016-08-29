@@ -1607,8 +1607,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bvcur.setMark(false);
 		switch (cmd.button()) {
 		case mouse_button::button1:
-			// Set the cursor
-			bvcur.resetAnchor();
+			if (!bvcur.selection())
+				// Set the cursor
+				bvcur.resetAnchor();
 			if (!bv->mouseSetCursor(cur, cmd.modifier() == ShiftModifier))
 				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
 			if (bvcur.wordSelection())
