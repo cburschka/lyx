@@ -7,8 +7,8 @@
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       =
-# format    = lyx16x|lyx21x|xhtml
-# extension = 16.lyx|21.lyx|xhtml
+# format    = lyx16x|lyx21x|lyx22x|xhtml
+# extension = 16.lyx|21.lyx|22.lyx|xhtml
 # file      = xxx
 #
 # Script should be called like:
@@ -141,6 +141,7 @@ else()
       message(STATUS "Expected result file \"${result_file_name}\" exists")
       if (format MATCHES "xhtml")
         if (XMLLINT_EXECUTABLE)
+	  message(STATUS "Calling: ${XMLLINT_EXECUTABLE} --sax --html --valid")
           # check the created xhtml file
           execute_process(
             COMMAND ${XMLLINT_EXECUTABLE} --sax --html --valid  "${result_file_name}"
@@ -150,6 +151,7 @@ else()
           file(WRITE "${result_file_name}.sax_out" ${xmlout})
           if (NOT _err)
             # check if sax-parser output contains error messages
+	    message(STATUS "Check the output: ${PERL_EXECUTABLE} ${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl")
             execute_process(
               COMMAND ${PERL_EXECUTABLE} "${TOP_SRC_DIR}/development/autotests/examineXmllintOutput.pl" "${result_file_name}.sax_out"
               OUTPUT_VARIABLE xmlout
