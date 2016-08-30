@@ -44,13 +44,6 @@ public:
 		Multicolumn multi_;
 		/// special multi colums alignment
 		docstring align_;
-		/// these should be a per-cell property, but ok to have it here
-		/// for single-column grids like paragraphs
-		mutable int glue_;
-		///
-		mutable pos_type begin_;
-		///
-		mutable pos_type end_;
 	};
 
 	/// additional per-row information

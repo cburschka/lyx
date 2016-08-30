@@ -82,7 +82,7 @@ static void resetGrid(InsetMathGrid & grid)
 
 
 InsetMathGrid::CellInfo::CellInfo()
-	: multi_(CELL_NORMAL), glue_(0), begin_(0), end_(0)
+	: multi_(CELL_NORMAL)
 {}
 
 
