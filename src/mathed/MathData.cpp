@@ -847,19 +847,11 @@ void MathData::collectParameters(Cursor * cur,
 
 int MathData::pos2x(BufferView const * bv, size_type pos) const
 {
-	return pos2x(bv, pos, 0);
-}
-
-
-int MathData::pos2x(BufferView const * bv, size_type pos, int glue) const
-{
 	int x = 0;
 	size_type target = min(pos, size());
 	CoordCache::Insets const & coords = bv->coordCache().getInsets();
 	for (size_type i = 0; i < target; ++i) {
 		const_iterator it = begin() + i;
-		if ((*it)->getChar() == ' ')
-			x += glue;
 		//lyxerr << "char: " << (*it)->getChar()
 		//	<< "width: " << (*it)->width() << endl;
 		x += coords.dim((*it).nucleus()).wid;
@@ -870,12 +862,6 @@ int MathData::pos2x(BufferView const * bv, size_type pos, int glue) const
 
 MathData::size_type MathData::x2pos(BufferView const * bv, int targetx) const
 {
-	return x2pos(bv, targetx, 0);
-}
-
-
-MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue) const
-{
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
@@ -883,8 +869,6 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue
 	// find first position after targetx
 	for (; currx < targetx && it != end(); ++it) {
 		lastx = currx;
-		if ((*it)->getChar() == ' ')
-			currx += glue;
 		currx += coords.dim((*it).nucleus()).wid;
 	}
 
