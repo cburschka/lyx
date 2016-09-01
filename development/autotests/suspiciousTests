@@ -160,13 +160,6 @@ export/.*/he/.*pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/splash_(dvi3|pdf[45])_texF
 
-# LuaTeX fails for an \mbox in an index, e.g. $a_{\mbox{a}}$.
-# This construct appears in the included bib file biblioExample.bib in
-# the entry Eisenstein2005. Error message is
-#   Missing character: There is no (U+6035) in font rm-lmr12!
-# (with system fonts: 602D and 6039)
-export/examples/(|es/)(europe|modern)CV_(dvi3|pdf5)_(texF|systemF)
-
 # Document uses Postscript specials
 # Does not compile with pdflatex (see note in the document source).
 export/examples/instant_preview_(dvi3|pdf4)_systemF

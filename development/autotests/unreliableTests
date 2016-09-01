@@ -100,3 +100,10 @@ export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
 # The following document mixes inTitle layouts and leads to
 # likely unintended output. See #10347
 export/mixing_inTitle_layouts.lyx
+
+# Characters with accents are not output
+# Reported to LuaTeX mailing list here:
+# https://www.mail-archive.com/search?l=mid&q=20160831134006.4fewxothddqfeyw4%40steph
+# (not expecting much attention because DVI is not given high priority)
+export/doc/es/Customization_dvi3_systemF
+export/examples/(|es/)(europe|modern)CV_dvi3_systemF
