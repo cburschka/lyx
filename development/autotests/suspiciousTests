@@ -108,6 +108,11 @@ export/.*/hu/.*(dvi3|pdf5)_texF
 # documents requiring pre-processing fail with Japanese #8823
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
 
+# #10355: xmllint detects failures
+export/doc/attic/eu_UserGuide_xhtml
+export/doc/(es|ja)/UserGuide_xhtml
+export/examples/spreadsheet_xhtml
+
 
 Sublabel: ert
 #
