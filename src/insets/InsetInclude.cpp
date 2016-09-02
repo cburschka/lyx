@@ -62,6 +62,7 @@
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
 #include "support/mutex.h"
+#include "support/ExceptionMessage.h"
 
 #include "support/bind.h"
 
@@ -702,7 +703,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				onlyPath().absFileName(), runparams, Buffer::OnlyBody)) {
 			if (!runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
-					"was not exported correctly.\nWarning: "
+					"was not exported correctly.\n "
 					"LaTeX export is probably incomplete."),
 					included_file.displayName());
 				ErrorList const & el = tmp->errorList("Export");
@@ -710,7 +711,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
 						msg, el.begin()->error,
 						el.begin()->description);
-				Alert::warning(_("Export failure"), msg);
+				throw ExceptionMessage(ErrorException, _("Error: "),
+						       msg);
 			}
 		}
 		runparams.encoding = oldEnc;
@@ -727,14 +729,15 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 
 			if (!success && !runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
-						"was not exported correctly.\nWarning: "
+						"was not exported correctly.\n "
 						"LaTeX export is probably incomplete."),
 						included_file.displayName());
 				if (!el.empty())
 					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
 							msg, el.begin()->error,
 							el.begin()->description);
-				Alert::warning(_("Export failure"), msg);
+				throw ExceptionMessage(ErrorException, _("Error: "),
+						       msg);
 			}
 		}
 	} else {
