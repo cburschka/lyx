@@ -28,7 +28,7 @@ export/doc/fr/UserGuide_.*_systemF
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
 # + language nesting problem (may disappear after completed translation)
-export/doc/(de/|es/|fr/)Customization_.*_systemF
+export/doc/(de/|fr/)Customization_.*_systemF
 
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
@@ -93,7 +93,7 @@ Sublabel: lyxbugs
 export/doc/(nb|sk)/Intro.*systemF
 # language nesting (may disappear after completed translation)
 export/examples/fr/linguistics_.*_systemF
-export/doc/(de/|es/|fr/)Customization_.*_systemF
+export/doc/(de/|fr/)Customization_.*_systemF
 
 # use LuaTeX-compatible language names #9910
 # Wrong language name for LuaTeX (with Babel, no error with Polyglossia)
@@ -116,9 +116,6 @@ Sublabel: ert
 
 # Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
 export/doc/(de|es|fr)/Additional_pdf4_texF
-
-# \ding{58} and \ding{171} not supported with XeTeX and system fonts:
-export/examples/fr/ListesPuces_pdf4_systemF
 
 # inputencoding="utf8-plain" with Xe/LuaTeX: characters with
 # Unicode point > 256 lead to errors with 8-bit fonts
