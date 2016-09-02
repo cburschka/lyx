@@ -9,6 +9,9 @@ check_load/templates/attic/latex8
 export/templates/attic/latex8_pdf.*
 export/templates/attic/latex8_(dvi|dvi3_.*)
 
+# aastex.cls is obsolete and replaced by aastex6.cls
+export/doc/attic/aastex6_sample_(dvi|pdf).*
+
 # CJK fails with LuaTeX or XeTeX and 8-bit fonts:
 export/examples/ko/splash.*texF
 export/.*/zh_CN/.*texF
