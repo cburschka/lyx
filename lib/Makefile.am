@@ -2316,6 +2316,8 @@ dist_scripts_DATA += \
 	scripts/fen2ascii.py \
 	scripts/fig2pdftex.py \
 	scripts/fig2pstex.py \
+	scripts/svg2pdftex.py \
+	scripts/svg2pstex.py \
 	scripts/fig_copy.py \
 	scripts/html2latexwrapper.py \
 	scripts/include_bib.py \

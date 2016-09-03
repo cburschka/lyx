@@ -290,6 +290,48 @@ Template XFig
 TemplateEnd
 
 
+Template Inkscape
+	GuiName "Inkscape figure"
+	HelpText
+		An Inkscape figure.
+		This template should work flawlessly with Inkscape 0.48. 
+		For Inkscape 0.91, there is a bug in the LaTeX + PDF output
+		which makes a workaround necessary, see Embedded Objects manual.
+	HelpTextEnd
+	InputFormat svg
+	FileFilter "*.svg"
+	AutomaticProduction true
+	Transform Rotate
+	Preview InstantPreview
+	Format PDFLaTeX
+		TransformCommand Rotate RotationLatexCommand
+		# Resize is not desirable here, as fonts are sized to surrounding LaTeX font
+		Product "$$RotateFront\\input{$$AbsOrRelPathMaster$$Basename.pdf_tex}$$RotateBack"
+		UpdateFormat pdftex
+		UpdateResult "$$AbsPath$$Basename.pdf_tex"
+		Requirement "color"
+		Requirement "graphicx"
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
+		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.pdf_tex"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
+	FormatEnd
+	Format LaTeX
+		TransformCommand Rotate RotationLatexCommand
+		Product "$$RotateFront\\input{$$AbsOrRelPathMaster$$Basename.eps_tex}$$RotateBack"
+		UpdateFormat pstex
+		UpdateResult "$$AbsPath$$Basename.eps_tex"
+		Requirement "color"
+		Requirement "graphicx"
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.eps_tex"
+		ReferencedFile latex "$$AbsPath$$Basename.eps"
+		ReferencedFile dvi   "$$AbsPath$$Basename.eps"
+	FormatEnd
+TemplateEnd
+
+
 Template ChessDiagram
 	GuiName "Chess diagram"
 	HelpText

@@ -712,9 +712,9 @@ def checkFormatEntries(dtl_tools):
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"	""
 \Format klyx       cjklyx "CJK LyX 1.4.x (euc-kr)" "" ""	""	"document"	""
 \Format lyxpreview lyxpreview "LyX Preview"       "" ""	""	""	""
-\Format pdftex     pdftex_t PDFTEX                "" ""	""	""	""
+\Format pdftex     "pdftex_t, pdf_tex" PDFTEX                "" ""	""	""	""
 \Format program    ""      Program                "" ""	""	""	""
-\Format pstex      pstex_t PSTEX                  "" ""	""	""	""
+\Format pstex      "pstex_t, ps_tex" PSTEX                  "" ""	""	""	""
 \Format wmf        wmf    "Windows Metafile"      "" ""	""	"vector"	"image/x-wmf"
 \Format emf        emf    "Enhanced Metafile"     "" ""	""	"vector"	"image/x-emf"
 \Format wordhtml  "html, htm" "HTML (MS Word)"    "" "" ""	"document"	""
@@ -934,6 +934,8 @@ def checkConverterEntries():
 \converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
 \converter fig        svg        "fig2dev -L svg $$i $$o"	""
 \converter fig        png        "fig2dev -L png $$i $$o"	""
+\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py $$i $$o" ""
+\converter svg        pstex      "python -tt $$s/scripts/svg2pstex.py $$i $$o" ""
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #

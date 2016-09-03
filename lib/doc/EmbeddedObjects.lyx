@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -171,6 +171,7 @@ graphicboxes
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -38609,6 +38610,118 @@ target "http://en.wikipedia.org/wiki/Xfig"
 .
 \end_layout
 
+\begin_layout Description
+Inkscape
+\begin_inset space ~
+\end_inset
+
+figure This experimental template supports images created with the program
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://fi.wikipedia.org/wiki/Inkscape"
+
+\end_inset
+
+.
+ It works very similarly to Xfig support, except that Inkscape is a more
+ modern image editor than Xfig, which uses Scalable Vector Graphics (SVG)
+ as its native format.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+LyX will process the image file in much the same way as it does an Xfig
+ image, extracting the text into a separate TeX file for the text strings,
+ and a PDF file for the rest.
+\end_layout
+
+\begin_layout Description
+Warning: Unfortunately the latest version of Inkscape, 0.91, contains a bug:
+ with multi-page PDFs, the TeX file will sometimes reference more pages
+ than the PDF file contains.
+ This is the version that ships with Ubuntu 16.04.
+ Its use with LyX can therefore not be recommended, until the bug is fixed
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A workaround for those who have already SVG figures in their document is,
+ to manually do the LaTeX+PDF output from Inkscape, edit the 
+\family typewriter
+.pdf_tex
+\family default
+ file to remove the erroneous references, and 
+\family typewriter
+
+\backslash
+input
+\family default
+ it directly into LyX, i.e., not use the external-template mechanism:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename workaround.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Here, the child document input inset (
+\family sans
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
+Child Document
+\family default
+) was used, which allows you do directly edit the 
+\family typewriter
+.pdf_tex
+\family default
+ file in a text editor.
+ The LaTeX output  is based on this edited snippet as re-generation from
+ the SVG file has been commented out.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The reason why we would use this complicated process at all, like in the
+ case of Xfig, is that it makes the text strings inside the figure of the
+ same font type and attributes as the surrounding text, which looks so much
+ more professional.
+ With Inkscape, even the 
+\emph on
+size
+\emph default
+ of the font is taken from the surrounding LaTeX document – in Xfig, you
+ have to set it by hand to be the same.
+ Of course you can always embed LaTeX modifiers like 
+\family typewriter
+
+\backslash
+Large
+\family default
+, 
+\family typewriter
+
+\backslash
+small
+\family default
+, etc.
+ into your figure text strings.
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Float table
 placement !h
