@@ -36,6 +36,7 @@
 namespace lyx {
 
 class LyXErr;
+class Buffer;
 class Cursor;
 class CursorSlice;
 class DocIterator;
@@ -130,15 +131,27 @@ public:
 	void newlines(size_t num_lines);
 
 	/**
-	 * getIdFromRow - find pid and position for a given row
+	 * getEntriesFromRow - find pids and position for a given row
 	 * @param row row number to find
-	 * @param id set to id if found
-	 * @param pos set to paragraph position if found
-	 * @return true if found, false otherwise
-	 *
-	 * If the row could not be found, pos is set to zero and
-	 * id is set to -1
+	 * @return a pair of TextEntry denoting the start and end of the position.
+	 * The TextEntry values can be isNone(). If no row is found then the first
+	 * value isNone().
 	 */
+	std::pair<TextEntry,TextEntry> getEntriesFromRow(int row) const;
+
+	/**
+	 * getDocIteratorFromRow - find pids and positions for a given row
+	 * @param row number to find
+	 * @param buffer here to look
+	 * @return a pair of DocIterators the start and end of the position.
+	 * The DocIterators can be invalid. The starting DocIterator being invalid
+	 * means that no row was found. Note: there is no guarantee that the
+	 * DocIterators are in the same inset or even at the same depth.
+	 */
+	std::pair<DocIterator, DocIterator> getDocIteratorFromRow(
+	    int row,
+	    Buffer const & buf) const;
+	//TODO: remove the following by replacing it with the above
 	bool getIdFromRow(int row, int & id, int & pos) const;
 
 	/// Finds the best pair of rows for dit

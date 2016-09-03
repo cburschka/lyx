@@ -2341,49 +2341,27 @@ void BufferView::setCursorFromRow(int row)
 
 void BufferView::setCursorFromRow(int row, TexRow const & texrow)
 {
-	int tmpid;
-	int tmppos;
-	pit_type newpit = 0;
-	pos_type newpos = 0;
-
-	texrow.getIdFromRow(row, tmpid, tmppos);
-
-	bool posvalid = (tmpid != -1);
-	if (posvalid) {
-		// we need to make sure that the row and position
-		// we got back are valid, because the buffer may well
-		// have changed since we last generated the LaTeX.
-		DocIterator dit = buffer_.getParFromID(tmpid);
-		if (dit == doc_iterator_end(&buffer_))
-			posvalid = false;
-		else if (dit.depth() > 1) {
-			// We are in an inset.
-			pos_type lastpos = dit.lastpos();
-			dit.pos() = tmppos > lastpos ? lastpos : tmppos;
-			setCursor(dit);
-			recenter();
-			return;
-		} else {
-			newpit = dit.pit();
-			// now have to check pos.
-			newpos = tmppos;
-			Paragraph const & par = buffer_.text().getPar(newpit);
-			if (newpos > par.size()) {
-				LYXERR0("Requested position no longer valid.");
-				newpos = par.size() - 1;
-			}
-		}
-	}
-	if (!posvalid) {
+	DocIterator start, end;
+	tie(start,end) = texrow.getDocIteratorFromRow(row, buffer_);
+	// we need to make sure that the DocIterators
+	// we got back are valid, because the buffer may well
+	// have changed since we last generated the LaTeX.
+	if (!start) {
+		LYXERR(Debug::LATEX,
+		       "setCursorFromRow: invalid position for row " << row);
 		frontend::Alert::error(_("Inverse Search Failed"),
-			_("Invalid position requested by inverse search.\n"
-		    "You need to update the viewed document."));
+		                       _("Invalid position requested by inverse search.\n"
+		                         "You may need to update the viewed document."));
 		return;
 	}
-	d->cursor_.reset();
-	buffer_.text().setCursor(d->cursor_, newpit, newpos);
-	d->cursor_.selection(false);
-	d->cursor_.resetAnchor();
+	// Setting selection start
+	d->cursor_.clearSelection();
+	setCursor(start);
+	// Setting selection end
+	if (end) {
+		d->cursor_.resetAnchor();
+		setCursorSelectionTo(end);
+	}
 	recenter();
 }
 

@@ -13,6 +13,7 @@
 
 #include <config.h>
 
+#include "Buffer.h"
 #include "Cursor.h"
 #include "Paragraph.h"
 #include "TexRow.h"
@@ -195,6 +196,66 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 	id = t.id;
 	pos = t.pos;
 	return !isNone(t);
+}
+
+
+pair<TextEntry, TextEntry> TexRow::getEntriesFromRow(int const row) const
+{
+	LYXERR(Debug::LATEX, "getEntriesFromRow: row " << row << " requested");
+	// check bounds for row - 1, our target index
+	if (row <= 0)
+		return {text_none, text_none};
+	size_t const i = static_cast<size_t>(row - 1);
+	if (i >= rowlist_.size())
+		return {text_none, text_none};
+	// find the start entry
+	size_t j = i;
+	while (j > 0 && isNone(rowlist_[j].getTextEntry()))
+		--j;
+	TextEntry start = rowlist_[j].getTextEntry();
+	// find the end entry
+	j = i + 1;
+	while (j < rowlist_.size() && isNone(rowlist_[j].getTextEntry()))
+		++j;
+	TextEntry end =
+		(j < rowlist_.size()) ? rowlist_[j].getTextEntry() : text_none;
+	// The following occurs for a displayed math inset for instance (for good
+	// reasons involving subtleties of the algorithm in getRowFromDocIterator).
+	// We want this inset selected.
+	if (start.id == end.id && start.pos == end.pos)
+		++end.pos;
+	return {start, end};
+}
+
+
+pair<DocIterator, DocIterator> TexRow::getDocIteratorFromRow(
+    int const row,
+    Buffer const & buf) const
+{
+	TextEntry start, end;
+	tie(start,end) = getEntriesFromRow(row);
+	LYXERR(Debug::LATEX,
+	       "getDocIteratorFromRow: for row " << row << ", TexRow has found "
+	       "start (id=" << start.id << ",pos=" << start.pos << "), "
+	       "end (id=" << end.id << ",pos=" << end.pos << ")");
+	// Finding start
+	DocIterator dit_start = buf.getParFromID(start.id);
+	if (dit_start)
+		dit_start.pos() = min(start.pos, dit_start.lastpos());
+	// Finding end
+	DocIterator dit_end = buf.getParFromID(end.id);
+	if (dit_end) {
+		dit_end.pos() = min(end.pos, dit_end.lastpos());
+		// So far dit_end belongs to the next row. Step backwards.
+		if (!dit_end.top().at_cell_begin()) {
+			CursorSlice end_top = dit_end.top();
+			end_top.backwardPos();
+			if (dit_start && end_top != dit_start.top())
+				dit_end.top() = end_top;
+		}
+		dit_end.boundary(true);
+	}
+	return {dit_start, dit_end};
 }
 
 
@@ -427,12 +488,7 @@ pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 	pair<int,int> beg_rows = rowFromDocIterator(beg);
 	if (cur.selection()) {
 		DocIterator end = cur.selectionEnd();
-		if (!cur.selIsMultiCell()
-			// backwardPos asserts without the following test, IMO it's not my
-			// duty to check this.
-			&& (end.top().pit() != 0
-				|| end.top().idx() != 0
-				|| end.top().pos() != 0))
+		if (!cur.selIsMultiCell() && !end.top().at_cell_begin())
 			end.top().backwardPos();
 		pair<int,int> end_rows = rowFromDocIterator(end);
 		return make_pair(min(beg_rows.first, end_rows.first),

@@ -2875,11 +2875,9 @@ void Buffer::getLanguages(std::set<Language const *> & languages) const
 DocIterator Buffer::getParFromID(int const id) const
 {
 	Buffer * buf = const_cast<Buffer *>(this);
-	if (id < 0) {
-		// John says this is called with id == -1 from undo
-		lyxerr << "getParFromID(), id: " << id << endl;
+	if (id < 0)
+		// This means non-existent
 		return doc_iterator_end(buf);
-	}
 
 	for (DocIterator it = doc_iterator_begin(buf); !it.atEnd(); it.forwardPar())
 		if (it.paragraph().id() == id)
