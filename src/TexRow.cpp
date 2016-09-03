@@ -107,7 +107,7 @@ TexRow::RowEntryList & TexRow::currentRow()
 
 
 //static
-RowEntry TexRow::textEntry(int id, int pos)
+RowEntry TexRow::textEntry(int id, pos_type pos)
 {
 	RowEntry entry;
 	entry.is_math = false;
@@ -147,13 +147,13 @@ bool TexRow::start(RowEntry entry)
 }
 
 
-bool TexRow::start(int id, int pos)
+bool TexRow::start(int id, pos_type pos)
 {
 	return start(textEntry(id,pos));
 }
 
 
-void TexRow::forceStart(int id, int pos)
+void TexRow::forceStart(int id, pos_type pos)
 {
 	if (!enabled_)
 		return;

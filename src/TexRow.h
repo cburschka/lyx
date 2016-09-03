@@ -47,7 +47,7 @@ typedef size_t idx_type;
 
 
 /// an individual par id/pos <=> row mapping
-struct TextEntry { int id; int pos; };
+struct TextEntry { int id; pos_type pos; };
 
 /// an individual math id/cell <=> row mapping
 struct MathEntry { uid_type id; idx_type cell; };
@@ -104,7 +104,7 @@ public:
 	/// Converts a CursorSlice into a RowEntry
 	static RowEntry rowEntryFromCursorSlice(CursorSlice const & slice);
 	/// Encapsulates the paragraph and position for later use
-	static RowEntry textEntry(int id, int pos);
+	static RowEntry textEntry(int id, pos_type pos);
 	/// Encapsulates a cell and position for later use
 	static RowEntry mathEntry(uid_type id, idx_type cell);
 
@@ -116,7 +116,7 @@ public:
 	bool start(RowEntry entry);
 	/// Defines the paragraph and position for the current line
 	/// returns true if this entry will appear on the current row
-	bool start(int id, int pos);
+	bool start(int id, pos_type pos);
 	/// Defines a cell and position for the current line.  Always appear in the
 	/// current row.
 	void startMath(uid_type id, idx_type cell);
@@ -125,7 +125,7 @@ public:
 	/// text flow. Note: since the cell idx is not recorded it does not work as
 	/// well as for math grids; if we were to do that properly we would need to
 	/// access the id of the parent Tabular inset from the CursorSlice.
-	void forceStart(int id, int pos);
+	void forceStart(int id, pos_type pos);
 
 	/// Insert node when line is completed
 	void newline();

@@ -238,7 +238,7 @@ public:
 	mutable int lastid;
 
 	/// Last position in the last paragraph before an inset
-	mutable int lastpos;
+	mutable pos_type lastpos;
 
 	/// is this the last paragraph in the current buffer/inset?
 	bool isLastPar;
