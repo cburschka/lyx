@@ -64,9 +64,7 @@ public:
 	void resize(size_t i) { slices_.resize(i); }
 
 	/// is the iterator valid?
-	operator const void*() const { return empty() ? 0 : this; }
-	/// is this iterator invalid?
-	bool operator!() const { return empty(); }
+	explicit operator bool() const { return !empty(); }
 
 	/// does this iterator have any content?
 	bool empty() const { return slices_.empty(); }

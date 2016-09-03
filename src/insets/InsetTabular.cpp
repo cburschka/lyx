@@ -543,7 +543,7 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool 
 {
 	InsetTableCell tail = InsetTableCell(head);
 	DocIterator const dit = separatorPos(&head, align_d);
-	hassep = dit;
+	hassep = (bool)dit;
 	if (hassep) {
 		pit_type const psize = head.paragraphs().front().size();
 		head.paragraphs().front().eraseChars(dit.pos(), psize, false);

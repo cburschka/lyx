@@ -156,7 +156,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_OUTLINE_IN:
 	case LFUN_OUTLINE_OUT:
 	case LFUN_SECTION_SELECT:
-		status.setEnabled(item.dit() != 0);
+		status.setEnabled((bool)item.dit());
 		return true;
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
