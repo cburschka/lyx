@@ -190,6 +190,12 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 # with any export format -- only LuaTeX reports a missing character).
 export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 
+# These files use packages that are not compatible with the newest LuaTeX. We
+# could potentially fix these by loading the luatex85 package early in the
+# LyX-generated preamble, but it seems it's better to wait until the packages
+# fix the root issue themselves.
+# xy package:
+.*(|fr/)xy(pic|figure).*pdf5.*
 
 
 Sublabel: multilingual
