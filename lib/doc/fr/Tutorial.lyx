@@ -163,7 +163,7 @@ type "mailto:"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Information sur l'état de la traduction:
@@ -194,6 +194,16 @@ Modification section 1.2, référence à l'Intro, JPC 20/07/14
 
 \begin_layout Plain Layout
 Mise à jour section 5.4, JPC 28/01/16
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour générale pour 2.2, JPC 25/07/16 - Normalisation typo de l'insertion
+ des notes de bas de page, corrections typographiques mineures et quelques
+ ajouts traduits
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -757,17 +767,18 @@ Magnifique ! Vous venez d'écrire votre premier document \SpecialChar LyX
 \begin_layout Standard
 
 \series bold
-\lang english
-A hint
-\lang french
-:
+Une
+\begin_inset space ~
+\end_inset
+
+astuce:
 \series default
- Vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche
+ vous pouvez gagner du temps en laissant tourner la visionneuse PDF en tâche
  de fond.
  Vous pourrez alors utiliser 
 \family sans
-Visualiser\SpecialChar menuseparator
-Mise
+Document\SpecialChar menuseparator
+Mettre
 \begin_inset space ~
 \end_inset
 
@@ -784,11 +795,7 @@ arg   "buffer-update"
 \end_inset
 
  et simplement cliquer sur la fenêtre de la visionneuse PDF ensuite.
- 
-\lang english
-Under Windows still use
-\lang french
- 
+ Avec Windows utiliser simplement 
 \family sans
 Document\SpecialChar menuseparator
 Visionner
@@ -799,20 +806,25 @@ type  "icon"
 arg   "buffer-view"
 \end_inset
 
- 
-\lang english
-respectively.
+.
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Another hint:
+Une
+\begin_inset space ~
+\end_inset
+
+autre
+\begin_inset space ~
+\end_inset
+
+astuce:
 \series default
- In case you are using a high-resolution display, the LyX toolbar icons
- are quite small.
- To change their size, right-click into a toolbar.
+ si vous bénéficiez d'un écran à haute résolution, les icônes des barres
+ d'outils LyX sont plutôt petits; pour modifier leur taille, faites un clic
+ droit dans une barre d'outils.
 \end_layout
 
 \begin_layout Subsection
@@ -1231,16 +1243,16 @@ points, justifié à gauche; des langues différentes peuvent avoir des conventi
 \end_layout
 
 \begin_layout Standard
-La boîte de choix d'
+Le menu déroulant de choix d'
 \family sans
 Environnement
 \family default
- (ou boîte de choix des styles) est située tout à fait à gauche de la barre
- d'outils (juste en dessous du menu 
+ (ou menu déroulant de choix des styles) est situé tout à fait à gauche
+ de la barre d'outils (juste en dessous du menu 
 \family sans
 Fichier
 \family default
-), elle ressemble à ceci : 
+), il ressemble à ceci : 
 \begin_inset Graphics
 	filename ../clipart/ToolbarEnvBox.png
 	scale 75
@@ -1321,11 +1333,11 @@ Section*
 Entrée
 \family default
 \SpecialChar endofsentence
- Vous remarquerez que la boîte d'
+ Vous remarquerez que le menu déroulant d'
 \family sans
 Environnement
 \family default
- est repassée de 
+ est repassé de 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1370,7 +1382,7 @@ Entrée
 \family sans
 Section
 \family default
- dans la boîte d'Environnement.
+ dans le menu déroulant d'Environnement.
  \SpecialChar LyX
  affiche un 
 \begin_inset Quotes fld
@@ -1409,7 +1421,7 @@ Entrée
 \family sans
 Section
 \family default
- dans la boîte d'
+ dans le menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -1480,7 +1492,7 @@ Cliquez sur la deuxième ligne et choisissez
 \family sans
 SousSection
 \family default
- dans la boîte d'Environnement.
+ dans le menu déroulant d'Environnement.
  \SpecialChar LyX
  numérote la sous-section 
 \begin_inset Quotes fld
@@ -1605,7 +1617,8 @@ Pour finir, si vous souhaitez avoir des sections et sous-sections non numéroté
 \family sans
 Section*
 \family default
- (pour le trouver, vous devrez peut-être descendre dans la boîte d'
+ (pour le trouver, vous devrez peut-être descendre dans le menu déroulant
+ d'
 \family sans
 Environnement
 \family default
@@ -1647,10 +1660,6 @@ SousSousSection
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Dans le fichier 
 \family typewriter
@@ -1745,7 +1754,7 @@ Entrée
 \family sans
 ListePuces
 \family default
- dans la boîte d'Environnement (
+ dans le menu déroulant d'Environnement (
 \begin_inset Info
 type  "icon"
 arg   "layout Itemize"
@@ -1852,7 +1861,7 @@ précédant
 \family sans
 Énumération
 \family default
- dans la boîte d'
+ dans le menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -1974,10 +1983,6 @@ Insécables
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Typographier la liste dans 
 \family typewriter
@@ -2087,10 +2092,6 @@ l'Utilisateur
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Corrigez la typographie de la citation (
 \family sans
@@ -2218,7 +2219,7 @@ Votre document est sans doute écrit en classe de document
 \family sans
 Article
 \family default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -2228,6 +2229,7 @@ C'est habituellement la classe de document implicite.
 
 \end_inset
 
+.
  Essayez de basculer vers d'autres classes (dans la fenêtre 
 \family sans
 Document\SpecialChar menuseparator
@@ -2238,7 +2240,7 @@ Paramètres
 \family sans
 book
 \family default
-), si vous regardez dans la boîte d'
+), si vous regardez dans le menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -2249,7 +2251,8 @@ Chapitre
 \family default
 ).
  En cas de doute quant à la disponibilité de tel ou tel environnement dans
- la classe de votre document, jetez juste un œil dans la boîte d'
+ la classe de votre document, jetez juste un œil dans le menu déroulant
+ d'
 \family sans
 Environnement
 \family default
@@ -2494,7 +2497,7 @@ Paramètres
 \emph on
 modèle
 \emph default
- de lettre ; dès que vous avez un modèle, il vous suffit de remplacer quelques
+ de lettre; dès que vous avez un modèle, il vous suffit de remplacer quelques
  éléments avec votre texte pour chaque nouvelle lettre.
 \end_layout
 
@@ -2523,7 +2526,7 @@ letter.lyx
 \end_layout
 
 \begin_layout Standard
-Dans la boîte d'
+Dans le menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -2546,7 +2549,7 @@ Description
 \family default
  vous sont déjà familiers.
  Vous pouvez vous entraîner un moment pour vous rendre compte du comportement
- des nouveaux environnements.
+ des nouveaux environnements
 \begin_inset Foot
 status collapsed
 
@@ -2563,7 +2566,8 @@ NdT : il est intéressant de noter ici que les environnements ont parfois
 \begin_layout Plain Layout
 Ne pas hésiter à faire 
 \family sans
-Visualiser\SpecialChar menuseparator
+Document\SpecialChar menuseparator
+Visionner\SpecialChar menuseparator
 PDF
 \family default
  pour se rendre compte du rendu final.
@@ -2571,6 +2575,7 @@ PDF
 
 \end_inset
 
+.
  L'environnement 
 \family sans
 Signature
@@ -2611,7 +2616,7 @@ Un modèle est un fichier \SpecialChar LyX
  À partir de là, vous pouvez reprendre ce fichier pour écrire de nouvelles
  lettres, et gagner du temps.
  Inutile de vous proposer un exercice à ce sujet ; faites donc une lettre
- pour quelqu'un !
+ pour quelqu'un
 \begin_inset Foot
 status collapsed
 
@@ -2629,7 +2634,7 @@ Adresse
  pour écrire la vôtre – et que vous déplacez le curseur sans saisir aucun
  texte, l'environnement peut disparaître.
  En effet, la plupart des environnements ne peuvent exister sans texte.
- Dans ce cas, récupérez-le simplement à partir de la boîte d'
+ Dans ce cas, récupérez-le simplement à partir du menu déroulant d'
 \family sans
 Environnement
 \family default
@@ -2639,7 +2644,7 @@ Environnement
 
 \end_inset
 
-
+!
 \end_layout
 
 \begin_layout Standard
@@ -3128,14 +3133,14 @@ Nous disions que \SpecialChar LyX
 
 2.
  Relancez \SpecialChar LaTeX
-,
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 NdT : en faisant 
 \family sans
-Visualiser\SpecialChar menuseparator
+Document\SpecialChar menuseparator
 Mettre
 \begin_inset space ~
 \end_inset
@@ -3156,21 +3161,21 @@ PDF
 
 \end_inset
 
- et – voilà !
+, et – voilà
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-NdT : en français dans le texte.
+NdT: en français dans le texte.
 \end_layout
 
 \end_inset
 
- – la référence croisée à la section est passée maintenant à
+! – la référence croisée à la section est passée maintenant à
 \begin_inset space ~
 \end_inset
 
-3 ! Faites passer la section 
+3! Faites passer la section 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3230,7 +3235,7 @@ l'Utilisateur
 \family sans
 Coller
 \family default
- dans votre document.
+ dans votre document
 \begin_inset Foot
 status collapsed
 
@@ -3256,7 +3261,7 @@ reference "sec:classes-de-documents"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Labeling
@@ -3264,10 +3269,6 @@ reference "sec:classes-de-documents"
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Corrigez les références à l'intérieur de 
 \family typewriter
@@ -3499,10 +3500,6 @@ ez-le à son tour en note en marge.
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Corrigez la note de bas de page dans 
 \family typewriter
@@ -3734,11 +3731,7 @@ l'Utilisateur
 \labelwidthstring 00.00.0000
 
 \series bold
-Exercice
-\begin_inset space ~
-\end_inset
-
-:
+Exercice:
 \series default
  Corrigez la bibliographie et la citation dans
 \begin_inset Newline newline
@@ -3880,10 +3873,6 @@ Pour supprimer la table des matières de votre document, il vous suffit d'efface
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Corrigez la table des matières du fichier 
 \family typewriter
@@ -3921,7 +3910,7 @@ Palette
 Mathématique
 \family default
  vous permettra d'obtenir, facilement et rapidement, des écrits mathématiques
- d'aspect professionnel.
+ d'aspect professionnel
 \begin_inset Foot
 status collapsed
 
@@ -3938,7 +3927,7 @@ s.
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -4287,7 +4276,7 @@ Palette Mathématique
 status collapsed
 
 \begin_layout Plain Layout
-NdT : 
+NdT: 
 \begin_inset Quotes fld
 \end_inset
 
@@ -4361,10 +4350,6 @@ _
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Mettez l'équation n°1 du fichier 
 \family typewriter
@@ -4424,7 +4409,7 @@ Barre d'outils Maths
  s'affiche quand le curseur se trouve dans une formule et elle peut être
  activée manuellement avec le menu 
 \family sans
-Visualiser\SpecialChar menuseparator
+Affichage\SpecialChar menuseparator
 Barres
 \begin_inset space ~
 \end_inset
@@ -4704,10 +4689,6 @@ Bas
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Mettez l'équation n° 2 de 
 \family typewriter
@@ -4902,10 +4883,6 @@ Fonctions
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Mettez l'équation n° 3 de 
 \family typewriter
@@ -5224,10 +5201,6 @@ e, ce que vous ne souhaitez probablement pas.
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : Mettez les différentes formules du fichier 
 \family typewriter
@@ -5241,13 +5214,9 @@ exemple_brut.lyx
 
 \series bold
 Exercice
-\begin_inset space ~
-\end_inset
-
-
 \series default
 : En utilisant les différents outils dont vous avez appris le maniement
- dans cette section, vous devriez pouvoir écrire une équation comme celle-ci:
+ dans cette section, vous devriez pouvoir écrire une équation comme celle-ci
 \begin_inset Foot
 status collapsed
 
@@ -5265,7 +5234,7 @@ cas.
 
 \end_inset
 
-
+:
 \begin_inset Formula 
 \[
 f(x)=\left\{ \begin{array}{cc}
@@ -5393,7 +5362,7 @@ type  "icon"
 arg   "tabular-insert"
 \end_inset
 
- de la barre d'outils) pour obtenir un tableau.
+ de la barre d'outils) pour obtenir un tableau
 \begin_inset Foot
 status collapsed
 
@@ -5421,6 +5390,7 @@ table
 
 \end_inset
 
+.
  Cliquez sur le tableau avec le 
 \emph on
 bouton droit
@@ -6097,7 +6067,7 @@ Bibliographie
 BibTeX
 \family default
  pour inclure un fichier Bib\SpecialChar TeX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -6120,6 +6090,7 @@ Ne vous étonnez pas si l'ouverture de la fenêtre prend un peu de temps:
 
 \end_inset
 
+.
  Dans le champ 
 \family sans
 Base
@@ -6275,7 +6246,7 @@ frenchbsetup
 \begin_inset Newline newline
 \end_inset
 
-de votre distribution.
+de votre distribution
 \begin_inset Foot
 status collapsed
 
@@ -6293,6 +6264,7 @@ AtBeginDocument{}
 
 \end_inset
 
+.
  Vous pouvez également visiter le site de l'auteur de ce fichier, 
 \begin_inset CommandInset href
 LatexCommand href
@@ -6336,9 +6308,9 @@ oe{}
 oe{} en mode \SpecialChar TeX
 , ou bien en utilisant directement l'encodage implicite avec
  une touche ou une combinaison de touches qui appellent le bon code avec
- un clavier correctement configuré.
+ un clavier correctement configuré
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Voyez la page 
@@ -6393,7 +6365,7 @@ que vous pouvez associer à une combinaison de touches non affectée.
 
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard

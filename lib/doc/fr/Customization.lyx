@@ -195,7 +195,7 @@ Chrétien
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -219,7 +219,8 @@ Mise à jour pour 2.2, 19/01/2016 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Original : 09/06/2013
+Nouvel exemple pour le paragraphe 4.1.1.1 + quelques corrections mineures,
+ 25/07/2016 (JPC)
 \end_layout
 
 \end_inset
@@ -3181,9 +3182,6 @@ distribution
 \end_layout
 
 \begin_layout Subsubsection
-
-\family roman
-\series medium
 Messages ambigus
 \end_layout
 
@@ -3197,17 +3195,19 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-To
+&New:
 \end_layout
 
 \end_inset
 
- qui se traduit en allemand par 
+ qui se traduit en français par 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-Nach
+
+\lang german
+Nouvelle
 \end_layout
 
 \end_inset
@@ -3217,20 +3217,12 @@ Nach
 status collapsed
 
 \begin_layout Plain Layout
-Bis
+Nouvel
 \end_layout
 
 \end_inset
 
-, suivant la signification exacte de 
-\begin_inset Quotes fld
-\end_inset
-
-to
-\begin_inset Quotes frd
-\end_inset
-
- en anglais.
+, suivant le genre et l'initiale du mot suivant.
  GNU 
 \begin_inset Flex Code
 status collapsed
@@ -3251,7 +3243,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-To
+&New:
 \end_layout
 
 \end_inset
@@ -3263,7 +3255,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-To[[as in 'From format x to format y']]
+&New:[[branch]]
 \end_layout
 
 \end_inset
@@ -3275,7 +3267,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-To[[as in 'From page x to page y']].
+&New:[[index]].
 \end_layout
 
 \end_inset
@@ -3287,7 +3279,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-To
+&New:
 \end_layout
 
 \end_inset
@@ -3309,7 +3301,14 @@ gettext
 status collapsed
 
 \begin_layout Plain Layout
-Nach
+
+\noun on
+\lang german
+Nouvelle branche
+\begin_inset space ~
+\end_inset
+
+:
 \end_layout
 
 \end_inset
@@ -3319,7 +3318,14 @@ Nach
 status collapsed
 
 \begin_layout Plain Layout
-Bis
+
+\noun on
+\lang english
+Nouvel index
+\begin_inset space ~
+\end_inset
+
+:
 \end_layout
 
 \end_inset
@@ -18500,7 +18506,15 @@ status collapsed
 
 ] indique s'il faut utiliser le contenu de l'insert comme une étiquette,
  quand l'insert est fermé.
- Valeur implicite: faux.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -18816,7 +18830,15 @@ LatexName
 \end_inset
 
 .
- Valeur implicite: vrai.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+vrai
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -19243,7 +19265,15 @@ PlainLayout
 
  doit être utilisé, ou bien si l'utilisateur peut modifier le style de paragraph
 e utilisé dans l'insert.
- Valeur implicite: faux.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -19379,7 +19409,15 @@ Plan
  bas de page dans un titre de section soit incluse dans la tables des matières
  affichée dans le plan, mais voudra habituellement voir affiché le contenu
  d'un style de caractère.
- Valeur implicite; faux, pas d'inclusion.
+ Valeur implicite; 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+, pas d'inclusion.
 \end_layout
 
 \begin_layout Description
@@ -20042,7 +20080,15 @@ MultiPar
 
 \end_inset
 
- à faux et 
+ à 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+ et 
 \begin_inset Flex Code
 status collapsed
 
@@ -20052,10 +20098,14 @@ ForcePlain
 
 \end_inset
 
- 
-\lang english
-to true
-\lang french
+ à 
+\begin_inset Quotes fld
+\end_inset
+
+vrai
+\begin_inset Quotes frd
+\end_inset
+
 .
  
 \begin_inset Flex Code
@@ -20067,7 +20117,15 @@ MultiPar
 
 \end_inset
 
- peut être positionné à vrai ou 
+ peut être positionné à 
+\begin_inset Quotes fld
+\end_inset
+
+vrai
+\begin_inset Quotes frd
+\end_inset
+
+ ou 
 \begin_inset Flex Code
 status collapsed
 
@@ -20077,10 +20135,14 @@ ForcePlain
 
 \end_inset
 
- 
-\lang english
-to false
-\lang french
+à 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
 , pour les inserts 
 \begin_inset Flex Code
 status collapsed
@@ -20193,7 +20255,15 @@ MultiPar
 \end_inset
 
 .
- Valeur implicite: vrai.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+vrai
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -20258,7 +20328,15 @@ protect
 rien
 \emph default
  sur le fait que la commande elle-même doive être protégée).
- Valeur implicite: faux.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -20717,7 +20795,15 @@ status collapsed
 
 ] indique si l'insert doit utiliser la police de caractères environnante
  ou bien utiliser la sienne propre.
- Valeur implicite: faux, utiliser la police de caractères environnante.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+faux
+\begin_inset Quotes frd
+\end_inset
+
+, utiliser la police de caractères environnante.
 \end_layout
 
 \begin_layout Description
@@ -20803,7 +20889,15 @@ status collapsed
 \end_inset
 
 ] active le correcteur orthographique sur le contenu de cet insert.
- Valeur implicite: vrai.
+ Valeur implicite: 
+\begin_inset Quotes fld
+\end_inset
+
+vrai
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -24433,7 +24527,7 @@ tag
 \end_inset
 
  dans les exemples ci-dessus.
- La valeur implicite dépend dépend du réglage de 
+ La valeur implicite dépend  du réglage de 
 \begin_inset Flex Code
 status collapsed
 

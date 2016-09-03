@@ -267,6 +267,18 @@ Gestion des variantes typographiques entre v.o.
  et v.f, 8 avril 2016 (JPC&Jean-Marc)
 \end_layout
 
+\begin_layout Plain Layout
+Quelques traductions + doc 
+\begin_inset Quotes fld
+\end_inset
+
+Enregistrement des propriétés temporaires
+\begin_inset Quotes frd
+\end_inset
+
+, 25 juillet 2016 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -2720,7 +2732,7 @@ d'apprentissage
  Avec \SpecialChar LyX
 , la touche de tabulation n'est utilisée que pour accepter les suggestions
  de la complétion de saisie, pour déplacer le curseur dans les tables ou
- les matrices mathématiques ou pour modifier la profondeur d'emboîtemet
+ les matrices mathématiques ou pour modifier la profondeur d’emboîtement
  dans ListePuces ou Énumération.
 \end_layout
 
@@ -7346,8 +7358,8 @@ Listes ! Énumération ! Personnalisée
 La numérotation implicite des listes numérotées peut être modifiée en ajoutant
  un argument optionnel (menu 
 \family sans
-Insert\SpecialChar menuseparator
-Options de énumération
+Insertion\SpecialChar menuseparator
+Options d'énumération
 \family default
 ) au premier élément de chaque niveau de la liste.
  Vous ajoutez alors la commande 
@@ -7363,13 +7375,7 @@ roman{enumi}
 
 \begin_layout Standard
 en code \SpecialChar TeX
- (raccourci 
-\begin_inset Info
-type  "shortcut"
-arg   "ert-insert"
-\end_inset
 
-).
 \begin_inset Foot
 status collapsed
 
@@ -7391,6 +7397,13 @@ reference "sec:Code-TeX"
 
 \end_inset
 
+ (raccourci 
+\begin_inset Info
+type  "shortcut"
+arg   "ert-insert"
+\end_inset
+
+).
 
 \emph on
  enumi
@@ -9042,12 +9055,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9060,6 +9075,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9092,6 +9108,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -10819,15 +10836,15 @@ troisième
 \family sans
 Énumération
 \family default
- (c'est-à-dire un 
+ (c'est-à-dire une 
 \family sans
 Énumération
 \family default
- dans un 
+ dans une 
 \family sans
 Énumération
 \family default
- dans un 
+ dans une 
 \family sans
 Énumération
 \family default
@@ -32843,9 +32860,8 @@ droit
 
 \begin_layout Standard
 pour paramétrer les différentes positions dans l'en-tête et le pied.
- 
-\lang english
-These environments can be selected in the environment pull-down box.
+ Ces environnements peuvent être sélectionnés dans le menu déroulant des
+ styles.
 \end_layout
 
 \begin_layout Standard
@@ -33107,12 +33123,13 @@ Pour définir la ligne d'en-tête, il faut ajouter les
 trois
 \emph default
  styles d'en-tête.
- Ce que vous ajouter aux styles apparaît sur les pages impaires, ce qui
- est en argument optionnel apparaît sur les pages paires.
+ Ce que vous ajouter aux environnements apparaît sur les pages impaires,
+ ce qui est en argument optionnel apparaît sur les pages paires.
  Pour les documents en recto seul, l'argument optionnel n'est pas utilisé
  et peut être omis.
- Si vous laissez un style ou un argument optionnel vide, rien n'est imprimé.
- la définition de la ligne de pied fonctionne de la même façon.
+ Si vous laissez un environnement ou un argument optionnel vide, rien n'est
+ imprimé.
+ La définition de la ligne de pied fonctionne de la même façon.
 \end_layout
 
 \begin_layout Standard
@@ -33206,7 +33223,7 @@ Apparence
 \begin_layout Standard
 L'en-tête et le pied de page apparaîtront sur les pages normales.
  Certaines pages sont différentes: la page de titre a sa mise en page propre,
- ainsi que les page qui débutent un partie ou un chapitre de votre livre.
+ ainsi que les pages qui débutent un partie ou un chapitre de votre livre.
  Ces pages n'ont pas d'en-tête et de pied personnalisé, mais ceci est normal.
  Il n'y a pas besoin par exemple d'imprimer le titre du chapitre sur une
  page ou il est déjà imprimé en grande taille et en gras.
@@ -33254,9 +33271,13 @@ où
 \begin_inset Quotes frd
 \end_inset
 
- est une taille en unités standard (pour example 
+ est une taille en unités standard (par example 
 \series bold
-1cm
+pt
+\series default
+ ou 
+\series bold
+cm
 \series default
 ).
  Si vous ne voulez pas de ligne, positionnez l'épaisseur à 0
@@ -33323,14 +33344,14 @@ headheight}{hauteur}
 
 \begin_layout Standard
 où 
-\begin_inset Quotes fld
-\end_inset
-
+\series bold
 hauteur
-\begin_inset Quotes frd
-\end_inset
-
- est une taille en unités standard.
+\series default
+ est une taille en unités standard (par exemple 
+\series bold
+1cm
+\series default
+).
  Si vous ne savez pas quelle valeur mettre, définissez votre en-tête et
  visionnez votre document en PDF.
  Puis ouvrez le fichier journal \SpecialChar LaTeX
@@ -34277,10 +34298,10 @@ Les formules mathématiques peuvent être explorées en saisissant dans l'édite
  elle est isolée et quand elle se trouve insérée dans une sous-formule et
  dans des parties encapsulées d'une sous-formule: par exemple les éléments
  ci-dessus seraient trouvés dans 
-\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}.$
+\begin_inset Formula $\frac{x^{2}}{\sqrt{\frac{x^{2}}{1+x^{2}}}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -44595,48 +44616,47 @@ Options avancées
 \end_layout
 
 \begin_layout Description
+Enregistrement
+\begin_inset space ~
+\end_inset
 
-\lang english
+de
+\begin_inset space ~
+\end_inset
+
 LyX
 \begin_inset space ~
 \end_inset
 
-Format The option 
+ L'option 
 \family sans
-Save transient properties
+Enregistrer les réglages temporaires
 \family default
- controls whether document settings that are frequently switched or that
- are specific to the user are saved with the document.
- The properties that are affected by option are currently
+ autorise la sauvegarde des réglages du document qui sont souvent (dés)activés
+ ou qui sont propres à l'utilisateur.
+ Les réglages affectés par l'option sont actuellement:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-the activation of change tracking
+l'activation du suivi des modifications;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-the output of tracked changes
+l'affichage des modifications dans le résultat imprimable;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-the recording of the document directory path.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Disabling the option can prevent issues in collaborative work and/or when
- using a version control system (for instance unnecessary merge conflicts).
+l’enregistrement du chemin d'accès au répertoire du document.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Désactiver l'option peut éviter des problèmes lors de la gestion collaborative
+ du document ou quand le document est sous contrôle de version (par exemple
+ en évitant des conflits de fusion inutiles).
+\end_layout
+
 \begin_layout Section
 Préambule LaTeX
 \end_layout

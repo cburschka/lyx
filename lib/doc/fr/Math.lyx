@@ -281,7 +281,11 @@ Juin 2014 : relecture complète du document pour 2.1 par J.-P.
 \end_layout
 
 \begin_layout Plain Layout
-Décembre 2015 : mise à jour pour LyX 2.2
+Décembre 2015 : mise à jour pour LyX 2.2 (JPC)
+\end_layout
+
+\begin_layout Plain Layout
+Juillet 2016 : nouvelle mise à jour pour 2.2, une note ajoutée (JPC)
 \end_layout
 
 \end_inset
@@ -34703,19 +34707,34 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- One needs to use proper delimiter insets 
+ il faut utiliser les inserts de délimitation appropriés 
 \begin_inset Formula $\left(\right)$
 \end_inset
 
- instead of simple '(' ')' characters.
+ et non pas les caractères 
+\begin_inset Quotes fld
+\end_inset
+
+(
+\begin_inset Quotes frd
+\end_inset
+
+ et 
+\begin_inset Quotes fld
+\end_inset
+
+)
+\begin_inset Quotes frd
+\end_inset
+
+ .
 \end_layout
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Itemize
