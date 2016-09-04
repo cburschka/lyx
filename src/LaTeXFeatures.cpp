@@ -231,8 +231,8 @@ static docstring const papersizepdf_def = from_ascii(
 
 static docstring const papersizepdflua_def = from_ascii(
 	"% Backwards compatibility for LuaTeX < 0.90\n"
-	"\\@ifundefined{pageheight}{\\let\\pageheight\\pdfpageheight}\n"
-	"\\@ifundefined{pagewidth}{\\let\\pagewidth\\pdfpagewidth}\n"
+	"\\@ifundefined{pageheight}{\\let\\pageheight\\pdfpageheight}{}\n"
+	"\\@ifundefined{pagewidth}{\\let\\pagewidth\\pdfpagewidth}{}\n"
 	"\\pageheight\\paperheight\n"
 	"\\pagewidth\\paperwidth\n");
 
