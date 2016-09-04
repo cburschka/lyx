@@ -2517,7 +2517,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 }
 
 
-bool BufferView::mouseSetCursor(Cursor & cur, bool select)
+bool BufferView::mouseSetCursor(Cursor & cur, bool const select)
 {
 	LASSERT(&cur.bv() == this, return false);
 
@@ -2535,27 +2535,23 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 	if (leftinset)
 		d->cursor_.fixIfBroken();
 
-	// FIXME: shift-mouse selection doesn't work well across insets.
-	bool const do_selection =
-			select && &d->cursor_.normalAnchor().inset() == &cur.inset();
-
 	// do the dEPM magic if needed
 	// FIXME: (1) move this to InsetText::notifyCursorLeaves?
 	// FIXME: (2) if we had a working InsetText::notifyCursorLeaves,
 	// the leftinset bool would not be necessary (badcursor instead).
 	bool update = leftinset;
-	if (!do_selection && d->cursor_.inTexted())
-		update |= checkDepm(cur, d->cursor_);
 
-	if (!do_selection)
-		d->cursor_.resetAnchor();
-	d->cursor_.setCursor(cur);
-	d->cursor_.boundary(cur.boundary());
-	if (do_selection)
+	if (select) {
 		d->cursor_.setSelection();
-	else
+		d->cursor_.setCursorSelectionTo(cur);
+	} else {
+		if (d->cursor_.inTexted())
+			update |= checkDepm(cur, d->cursor_);
+		d->cursor_.resetAnchor();
+		d->cursor_.setCursor(cur);
 		d->cursor_.clearSelection();
-
+	}
+	d->cursor_.boundary(cur.boundary());
 	d->cursor_.finishUndo();
 	d->cursor_.setCurrentFont();
 	if (update)
