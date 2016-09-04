@@ -2478,6 +2478,18 @@ void BufferView::setCursor(DocIterator const & dit)
 }
 
 
+void BufferView::setCursorSelectionTo(DocIterator const & dit)
+{
+	size_t const n = dit.depth();
+	for (size_t i = 0; i < n; ++i)
+		dit[i].inset().edit(d->cursor_, true);
+
+	d->cursor_.selection(true);
+	d->cursor_.setCursorSelectionTo(dit);
+	d->cursor_.setCurrentFont();
+}
+
+
 bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 {
 	// Would be wrong to delete anything if we have a selection.

@@ -149,7 +149,10 @@ public:
 	/// set the cursor data
 	void setCursorData(CursorData const & data);
 	/// sets cursor part
+	/// this (intentionally) does neither touch anchor nor selection status
 	void setCursor(DocIterator const & it);
+	/// set the cursor to dit normalised against the anchor, and set selection.
+	void setCursorSelectionTo(DocIterator dit);
 	/// sets the cursor to the normalized selection anchor
 	void setCursorToAnchor();
 

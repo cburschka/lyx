@@ -249,6 +249,8 @@ public:
 	/// sets cursor.
 	/// This will also open all relevant collapsable insets.
 	void setCursor(DocIterator const &);
+	/// set the selection up to dit.
+	void setCursorSelectionTo(DocIterator const & dit);
 	/// Check deleteEmptyParagraphMechanism and update metrics if needed.
 	/// \retval true if an update was needed.
 	bool checkDepm(Cursor & cur, Cursor & old);

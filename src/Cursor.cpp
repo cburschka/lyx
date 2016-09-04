@@ -194,10 +194,34 @@ void Cursor::reset()
 }
 
 
-// this (intentionally) does neither touch anchor nor selection status
 void Cursor::setCursor(DocIterator const & cur)
 {
 	DocIterator::operator=(cur);
+}
+
+
+void Cursor::setCursorSelectionTo(DocIterator dit)
+{
+	size_t i = 0;
+	// normalise dit
+	while (i < dit.depth() && i < anchor_.depth() && dit[i] == anchor_[i])
+		++i;
+	if (i != dit.depth()) {
+		// otherwise the cursor is already normal
+		if (i == anchor_.depth())
+			// dit is a proper extension of the anchor_
+			dit.cutOff(i - 1);
+		else if (i + 1 < dit.depth()) {
+			// one has dit[i] != anchor_[i] but either dit[i-1] == anchor_[i-1]
+			// or i == 0. Remove excess.
+			dit.cutOff(i);
+			if (dit[i] > anchor_[i])
+				// place dit after the inset it was in
+				++dit.pos();
+		}
+	}
+	setCursor(dit);
+	setSelection();
 }
 
 
