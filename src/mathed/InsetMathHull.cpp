@@ -615,7 +615,7 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		odocstringstream os;
-		otexrowstream ots(os, false);
+		otexrowstream ots(os);
 		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		dim.wid = os.str().size();
@@ -631,7 +631,7 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		odocstringstream os;
-		otexrowstream ots(os, false);
+		otexrowstream ots(os);
 		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
@@ -650,7 +650,7 @@ static docstring latexString(InsetMathHull const & inset)
 	static Encoding const * encoding = 0;
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
-	otexrowstream ots(ls, false);
+	otexrowstream ots(ls);
 	WriteStream wi(ots, false, true, WriteStream::wsPreview, encoding);
 	inset.write(wi);
 	return ls.str();
@@ -2180,7 +2180,7 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
-	otexrowstream ots(oss, false);
+	otexrowstream ots(oss);
 	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	oss << "Formula ";
 	write(wi);
@@ -2223,7 +2223,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	}
 
 	odocstringstream oss;
-	otexrowstream ots(oss, false);
+	otexrowstream ots(oss);
 	Encoding const * const enc = encodings.fromLyXName("utf8");
 	WriteStream wi(ots, false, true, WriteStream::wsDefault, enc);
 
@@ -2532,7 +2532,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
 		odocstringstream ls;
-		otexrowstream ots(ls, false);
+		otexrowstream ots(ls);
 		WriteStream wi(ots, false, true, WriteStream::wsPreview);
 		ModeSpecifier specifier(wi, MATH_MODE);
 		mathAsLatex(wi);

@@ -398,7 +398,7 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 		return docstring();
 
 	odocstringstream ods;
-	otexstream os(ods, false);
+	otexstream os(ods);
 	ins->getArgs(os, runparams);
 	ins->getArgument(os, runparams);
 

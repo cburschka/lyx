@@ -1172,7 +1172,7 @@ void MathMacroTemplate::read(Lexer & lex)
 void MathMacroTemplate::write(ostream & os) const
 {
 	odocstringstream oss;
-	otexrowstream ots(oss, false);
+	otexrowstream ots(oss);
 	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	oss << "FormulaMacro\n";
 	write(wi);

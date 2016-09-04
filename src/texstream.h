@@ -31,7 +31,7 @@ class otexstringstream;
 class otexrowstream {
 public:
 	///
-	explicit otexrowstream(odocstream & os, bool enable = true);
+	explicit otexrowstream(odocstream & os);
 	/// defaulted
 	~otexrowstream();
 	///
@@ -79,8 +79,8 @@ otexrowstream & operator<<(otexrowstream & ots, Type value);
 class otexstream : public otexrowstream {
 public:
 	///
-	explicit otexstream(odocstream & os, bool enable = true)
-		: otexrowstream(os, enable), canbreakline_(false),
+	explicit otexstream(odocstream & os)
+		: otexrowstream(os), canbreakline_(false),
 		  protectspace_(false), parbreak_(true), lastchar_(0) {}
 	///
 	void put(char_type const & c);

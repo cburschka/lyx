@@ -497,7 +497,7 @@ bool InsetFloat::allowsCaptionVariation(std::string const & newtype) const
 docstring InsetFloat::getCaption(OutputParams const & runparams) const
 {
 	odocstringstream ods;
-	otexstream os(ods, false);
+	otexstream os(ods);
 	getCaption(os, runparams);
 	return ods.str();
 }

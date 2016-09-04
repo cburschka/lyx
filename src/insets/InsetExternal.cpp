@@ -563,7 +563,7 @@ static bool isPreviewWanted(InsetExternalParams const & params)
 static docstring latexString(InsetExternal const & inset)
 {
 	odocstringstream ods;
-	otexstream os(ods, false);
+	otexstream os(ods);
 	// We don't need to set runparams.encoding since it is not used by
 	// latex().
 	OutputParams runparams(0);
@@ -733,7 +733,7 @@ int InsetExternal::plaintext(odocstringstream & os,
 
 	bool const external_in_tmpdir = !runparams.nice;
 	bool const dryrun = runparams.dryrun || runparams.inComment;
-	otexstream ots(os, false);
+	otexstream ots(os);
 	ots << '\n'; // output external material on a new line
 	external::writeExternal(params_, "Ascii", buffer(), ots,
 				*(runparams.exportdata), external_in_tmpdir, dryrun);
@@ -747,7 +747,7 @@ int InsetExternal::docbook(odocstream & os,
 	bool const external_in_tmpdir = !runparams.nice;
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
-	otexstream ots(ods, false);
+	otexstream ots(ods);
 	external::writeExternal(params_, "DocBook", buffer(), ots,
 				*(runparams.exportdata), external_in_tmpdir, dryrun);
 	os << ods.str();
@@ -761,7 +761,7 @@ docstring InsetExternal::xhtml(XHTMLStream & xs,
 	bool const external_in_tmpdir = !runparams.nice;
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
-	otexstream ots(ods, false);
+	otexstream ots(ods);
 	external::writeExternal(params_, "XHTML", buffer(), ots,
 				       *(runparams.exportdata), external_in_tmpdir, dryrun);
 	xs << XHTMLStream::ESCAPE_NONE << ods.str();

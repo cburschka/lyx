@@ -33,8 +33,8 @@ using lyx::support::split;
 namespace lyx {
 
 
-otexrowstream::otexrowstream(odocstream & os, bool enable)
-	: os_(os), texrow_(make_unique<TexRow>(enable))
+otexrowstream::otexrowstream(odocstream & os)
+	: os_(os), texrow_(make_unique<TexRow>())
 {}
 
 

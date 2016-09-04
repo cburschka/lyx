@@ -252,7 +252,7 @@ bool InsetMathNest::idxLast(Cursor & cur) const
 void InsetMathNest::dump() const
 {
 	odocstringstream oss;
-	otexrowstream ots(oss, false);
+	otexrowstream ots(oss);
 	WriteStream os(ots);
 	os << "---------------------------------------------\n";
 	write(os);

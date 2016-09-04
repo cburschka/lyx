@@ -1959,7 +1959,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
-	d->texrow.reset(false);
+	d->texrow.reset();
 
 	DocumentClass const & tclass = params().documentClass();
 	string const & top_element = tclass.latexname();

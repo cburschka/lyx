@@ -689,7 +689,7 @@ bool createInsetMath_fromDialogStr(docstring const & str, MathData & ar)
 		InsetSpace::string2params(to_utf8(str), isp);
 		InsetSpace is(isp);
 		odocstringstream ods;
-		otexstream os(ods, false);
+		otexstream os(ods);
 		Encoding const * const ascii = encodings.fromLyXName("ascii");
 		OutputParams op(ascii);
 		is.latex(os, op);

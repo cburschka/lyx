@@ -756,7 +756,7 @@ static docstring buffer_to_latex(Buffer & buffer)
 {
 	OutputParams runparams(&buffer.params().encoding());
 	odocstringstream ods;
-	otexstream os(ods, false);
+	otexstream os(ods);
 	runparams.nice = true;
 	runparams.flavor = OutputParams::LATEX;
 	runparams.linelen = 80; //lyxrc.plaintext_linelen;
@@ -1076,7 +1076,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	LBUFERR(buf.params().isLatex());
 
 	odocstringstream ods;
-	otexstream os(ods, false);
+	otexstream os(ods);
 	OutputParams runparams(&buf.params().encoding());
 	runparams.nice = false;
 	runparams.flavor = OutputParams::LATEX;
@@ -1422,7 +1422,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		sel_len = repl_buffer.paragraphs().begin()->size();
 	} else if (cur.inMathed()) {
 		odocstringstream ods;
-		otexstream os(ods, false);
+		otexstream os(ods);
 		OutputParams runparams(&repl_buffer.params().encoding());
 		runparams.nice = false;
 		runparams.flavor = OutputParams::LATEX;

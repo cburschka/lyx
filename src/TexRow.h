@@ -76,8 +76,6 @@ class TexRow {
 	///
 	RowList rowlist_;
 	///
-	bool enabled_;
-	///
 	RowEntryList & currentRow();
 
 	///
@@ -88,11 +86,10 @@ class TexRow {
 	RowListIterator end() const;
 public:
 	///
-	TexRow(bool enable = true);
+	TexRow();
 
-	/// Clears structure.  Set enable to false if texrow is not needed, to avoid
-	/// computing TexRow when it is going to be immediately discarded.
-	void reset(bool enable = true);
+	/// Clears structure.
+	void reset();
 
 	static const TextEntry text_none;
 	static const RowEntry row_none;

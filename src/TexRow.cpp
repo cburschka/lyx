@@ -68,9 +68,9 @@ void TexRow::RowEntryList::append(RowEntryList row)
 }
 
 
-TexRow::TexRow(bool enable)
+TexRow::TexRow()
 {
-	reset(enable);
+	reset();
 }
 
 
@@ -92,10 +92,9 @@ bool TexRow::isNone(RowEntry r)
 }
 
 
-void TexRow::reset(bool enable)
+void TexRow::reset()
 {
 	rowlist_.clear();
-	enabled_ = enable;
 	newline();
 }
 
@@ -141,8 +140,6 @@ bool operator==(RowEntry entry1, RowEntry entry2)
 
 bool TexRow::start(RowEntry entry)
 {
-	if (!enabled_)
-		return false;
 	return currentRow().addEntry(entry);
 }
 
@@ -155,8 +152,6 @@ bool TexRow::start(int id, pos_type pos)
 
 void TexRow::forceStart(int id, pos_type pos)
 {
-	if (!enabled_)
-		return;
 	return currentRow().forceAddEntry(textEntry(id,pos));
 }
 
@@ -169,8 +164,6 @@ void TexRow::startMath(uid_type id, idx_type cell)
 
 void TexRow::newline()
 {
-	if (!enabled_)
-		return;
 	rowlist_.push_back(RowEntryList());
 }
 
@@ -184,8 +177,6 @@ void TexRow::newlines(size_t num_lines)
 
 void TexRow::append(TexRow other)
 {
-	if (!enabled_ || !other.enabled_)
-		return;
 	RowList::iterator it = other.rowlist_.begin();
 	RowList::iterator const end = other.rowlist_.end();
 	LASSERT(it != end, return);
