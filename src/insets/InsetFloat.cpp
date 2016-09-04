@@ -516,14 +516,14 @@ void InsetFloat::getCaption(otexstream & os,
 	ins->getArgs(os, runparams);
 
 	os << '[';
-	odocstringstream ods;
-	otexstream oss(ods);
-	ins->getArgument(oss, runparams);
-	docstring arg = ods.str();
+	otexstringstream os2;
+	ins->getArgument(os2, runparams);
+	TexString ts = os2.release();
+	docstring & arg = ts.str;
 	// Protect ']'
 	if (arg.find(']') != docstring::npos)
 		arg = '{' + arg + '}';
-	os.append(arg, move(oss.texrow()));
+	os << move(ts);
 	os << ']';
 }
 

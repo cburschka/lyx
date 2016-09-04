@@ -49,13 +49,6 @@ unique_ptr<TexRow> otexrowstream::releaseTexRow()
 }
 
 
-void otexrowstream::append(docstring const & str, TexRow texrow)
-{
-	os_ << str;
-	texrow_->append(move(texrow));
-}
-
-
 void otexrowstream::put(char_type const & c)
 {
 	os_.put(c);
@@ -73,6 +66,22 @@ void otexstream::put(char_type const & c)
 	}
 	otexrowstream::put(c);
 	lastChar(c);
+}
+
+
+size_t otexstringstream::length()
+{
+	auto pos = ods_.tellp();
+	return (pos >= 0) ? size_t(pos) : 0;
+}
+
+
+TexString otexstringstream::release()
+{
+	TexString ts{ods_.str(), TexRow()};
+	swap(ts.texrow, texrow());
+	ods_ = odocstringstream();
+	return ts;
 }
 
 
@@ -112,6 +121,7 @@ otexrowstream & operator<<(otexrowstream & ots, odocstream_manip pf)
 	return ots;
 }
 
+
 otexstream & operator<<(otexstream & ots, odocstream_manip pf)
 {
 	otexrowstream & otrs = ots;
@@ -119,6 +129,38 @@ otexstream & operator<<(otexstream & ots, odocstream_manip pf)
 	if (pf == static_cast<odocstream_manip>(endl)) {
 		ots.lastChar('\n');
 	}
+	return ots;
+}
+
+
+otexrowstream & operator<<(otexrowstream & ots, TexString ts)
+{
+	ts.validate();
+	ots.os() << move(ts.str);
+	ots.texrow().append(move(ts.texrow));
+	return ots;
+}
+
+
+otexstream & operator<<(otexstream & ots, TexString ts)
+{
+	size_t const len = ts.str.length();
+	// Check whether there is something to output
+	if (len == 0)
+		return ots;
+
+	otexrowstream & otrs = ots;
+	if (ots.protectSpace()) {
+		if (!ots.canBreakLine() && ts.str[0] == ' ')
+			otrs << "{}";
+		ots.protectSpace(false);
+	}
+
+	if (len > 1)
+		ots.canBreakLine(ts.str[len - 2] != '\n');
+	ots.lastChar(ts.str[len - 1]);
+
+	otrs << move(ts);
 	return ots;
 }
 

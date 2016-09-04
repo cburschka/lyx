@@ -18,10 +18,8 @@
 namespace lyx {
 
 class TexRow;
+class TexString;
 
-
-// declared below
-class otexstringstream;
 
 /** Wrapper class for odocstream.
     This class is used to automatically count the lines of the exported latex
@@ -43,7 +41,7 @@ public:
 	///
 	void put(char_type const & c);
 	///
-	void append(docstring const & str, TexRow texrow);
+	void append(TexString ts);
 private:
 	///
 	odocstream & os_;
@@ -53,6 +51,8 @@ private:
 
 ///
 otexrowstream & operator<<(otexrowstream &, odocstream_manip);
+///
+otexrowstream & operator<<(otexrowstream &, TexString);
 ///
 otexrowstream & operator<<(otexrowstream &, docstring const &);
 ///
@@ -85,6 +85,8 @@ public:
 	///
 	void put(char_type const & c);
 	///
+	void append(TexString ts);
+	///
 	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
 	///
 	bool canBreakLine() const { return canbreakline_; }
@@ -114,6 +116,25 @@ private:
 	char_type lastchar_;
 };
 
+
+/// because we need to pass ods_ to the base class
+struct otexstringstream_helper { odocstringstream ods_; };
+
+/// otexstringstream : a odocstringstream with tex/row correspondence
+class otexstringstream : otexstringstream_helper, public otexstream {
+public:
+	otexstringstream() : otexstringstream_helper(), otexstream(ods_) {}
+	///
+	docstring str() const { return ods_.str(); }
+	///
+	size_t length();
+	///
+	bool empty() { return 0 == length(); }
+	/// move-returns the contents and reset the texstream
+	TexString release();
+};
+
+
 /// Helper structs for breaking a line
 struct BreakLine {
 	char n;
@@ -132,6 +153,8 @@ otexstream & operator<<(otexstream &, BreakLine);
 otexstream & operator<<(otexstream &, SafeBreakLine);
 ///
 otexstream & operator<<(otexstream &, odocstream_manip);
+///
+otexstream & operator<<(otexstream &, TexString);
 ///
 otexstream & operator<<(otexstream &, docstring const &);
 ///

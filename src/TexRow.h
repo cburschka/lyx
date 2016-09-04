@@ -89,6 +89,14 @@ public:
 	///
 	TexRow();
 
+	/// Copy can be expensive and is not usually useful for TexRow.
+	/// Force explicit copy, prefer move instead. This also prevents
+	/// move()s from being converted into copy silently.
+	explicit TexRow(TexRow const & other) = default;
+	TexRow(TexRow && other) = default;
+	TexRow & operator=(TexRow const & other) = default;
+	TexRow & operator=(TexRow && other) = default;
+
 	/// Clears structure.
 	void reset();
 
@@ -164,7 +172,9 @@ public:
 	std::pair<int,int> rowFromCursor(Cursor const & dit) const;
 
 	/// Returns the number of rows contained
-	int rows() const;
+	size_t rows() const;
+	/// Fill or trim to reach the row count \param r
+	void setRows(size_t r);
 
 	/// appends texrow. the final line of this is merged with the first line of
 	/// texrow.
@@ -180,6 +190,31 @@ private:
 	/// assumes it is the sameParOrInsetMath
 	static int comparePos(RowEntry entry1, RowEntry entry2);
 
+};
+
+
+/// TexString : dumb struct to pass around docstrings with TexRow information.
+/// They are best created using oTexStringstream.
+/// They can be output to otexrowstreams and otexstreams.
+/// A valid TexString has as many newlines in str as in texrow. Be careful not
+/// to introduce a mismatch between the line and the row counts, as this will
+/// assert in devel mode when outputting to a otexstream.
+struct TexString {
+	///
+	docstring str;
+	///
+	TexRow texrow;
+	/// Copy can be expensive and is not usually useful for TexString.
+	/// Force explicit copy, prefer move instead. This also prevents
+	/// move()s from being converted into copy silently.
+	explicit TexString(TexString const &) = default;
+	TexString(TexString && other) = default;
+	TexString & operator=(TexString const & other) = default;
+	TexString & operator=(TexString && other) = default;
+	///
+	TexString() = default;
+	/// ensure that the string and the TexRow have as many newlines.
+	void validate();
 };
 
 

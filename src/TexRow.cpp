@@ -34,13 +34,27 @@ using namespace std;
 namespace lyx {
 
 
+void TexString::validate()
+{
+	size_t lines = 1 + count(str.begin(), str.end(), '\n');
+	size_t rows = texrow.rows();
+	bool valid = lines == rows;
+	if (!valid)
+		LYXERR0("TexString has " << lines << " lines but " << rows << " rows." );
+	// Assert in devel mode.  This is important to catch bugs early, otherwise
+	// they might be hard to notice and find.  Recover gracefully in release
+	// mode.
+	LASSERT(valid, texrow.setRows(lines));
+}
+
+
 bool TexRow::RowEntryList::addEntry(RowEntry entry)
 {
 	if (!entry.is_math) {
-		if (!isNone(text_entry_))
-			return false;
-		else
+		if (isNone(text_entry_))
 			text_entry_ = entry.text;
+		else if (!v_.empty() && TexRow::sameParOrInsetMath(v_.back(), entry))
+			return false;
 	}
 	forceAddEntry(entry);
 	return true;
@@ -499,9 +513,15 @@ pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 }
 
 
-int TexRow::rows() const
+size_t TexRow::rows() const
 {
 	return rowlist_.size();
+}
+
+
+void TexRow::setRows(size_t r)
+{
+	rowlist_.resize(r, RowEntryList());
 }
 
 
@@ -544,7 +564,7 @@ void TexRow::prepend(docstring_list & tex) const
 LyXErr & operator<<(LyXErr & l, TexRow const & texrow)
 {
 	if (l.enabled()) {
-		for (int i = 0; i < texrow.rows(); i++) {
+		for (size_t i = 0; i < texrow.rows(); i++) {
 			int id,pos;
 			if (texrow.getIdFromRow(i+1,id,pos) && id>0)
 				l << i+1 << ":" << id << ":" << pos << "\n";

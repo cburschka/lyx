@@ -1118,7 +1118,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 		}
 	}
 
-	int prev_rows = os.texrow().rows();
+	size_t const previous_row_count = os.texrow().rows();
 
 	try {
 		runparams.lastid = id_;
@@ -1138,7 +1138,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 				os << '}';
 	}
 
-	if (os.texrow().rows() > prev_rows) {
+	if (os.texrow().rows() > previous_row_count) {
 		os.texrow().start(owner_->id(), i + 1);
 		column = 0;
 	} else {
