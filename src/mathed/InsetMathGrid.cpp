@@ -618,7 +618,7 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 			col_type const c = col(idx);
 			if (r > 0 && r < nrows()) {
 				for (unsigned int i = 0; i < rowinfo_[r].lines_; ++i) {
-					int yy = y + rowinfo_[r].offset_
+					int const yy = y + rowinfo_[r].offset_
 						- rowinfo_[r].ascent_
 						- i * hlinesep()
 						- hlinesep()/2 - rowsep()/2;
@@ -631,14 +631,17 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 			}
 			if (c > 0 && c < ncols()) {
 				for (unsigned int i = 0; i < colinfo_[c].lines_; ++i) {
-					int xx = x + lmargin
+					int const xx = x + lmargin
 						+ colinfo_[c].offset_
 						- i * vlinesep()
 						- vlinesep()/2 - colsep()/2;
-					pi.pain.line(xx,
-						rowinfo_[r].offset_ - rowinfo_[r].ascent_,
-						xx,
-						rowinfo_[r].offset_ + rowinfo_[r].descent_,
+					int top_offset;
+					if (r > 0)
+						top_offset = rowinfo_[r - 1].offset_ + rowinfo_[r - 1].descent_;
+					else
+						top_offset = rowinfo_[0].offset_- rowinfo_[0].ascent_;
+					pi.pain.line(xx, y + top_offset,
+						xx, y + rowinfo_[r].offset_ + rowinfo_[r].descent_,
 						Color_foreground);
 				}
 			}
