@@ -59,6 +59,8 @@ public:
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// Drawing background is handled in draw
+	virtual void drawBackground(PainterInfo &, int, int) const {}
 	///
 	bool editable() const { return true; }
 	///
