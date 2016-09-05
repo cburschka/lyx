@@ -35,12 +35,12 @@
 
 namespace lyx {
 
-class LyXErr;
 class Buffer;
 class Cursor;
 class CursorSlice;
 class DocIterator;
 class docstring_list;
+class FuncRequest;
 
 /// types for cells and math insets
 typedef void const * uid_type;
@@ -145,7 +145,7 @@ public:
 
 	/**
 	 * getEntriesFromRow - find pids and position for a given row
-	 * @param row row number to find
+	 * @param row number to find
 	 * @return a pair of TextEntry denoting the start and end of the position.
 	 * The TextEntry values can be isNone(). If no row is found then the first
 	 * value isNone().
@@ -153,15 +153,29 @@ public:
 	std::pair<TextEntry,TextEntry> getEntriesFromRow(int row) const;
 
 	/**
+	 * getDocIteratorFromEntries - find pids and positions for a given row
+	 * @param buffer where to look
+	 * @return a pair of DocIterators denoting the start and end of the
+	 * position.  The DocIterators can be invalid.  The starting DocIterator
+	 * being invalid means that no location was found.  Note: there is no
+	 * guarantee that the DocIterators are in the same inset or even at the
+	 * same depth.
+	 */
+	static std::pair<DocIterator, DocIterator> getDocIteratorsFromEntries(
+	    TextEntry start,
+	    TextEntry end,
+	    Buffer const & buf);
+
+	// A FuncRequest to select from start to end
+	static FuncRequest goToFunc(TextEntry start, TextEntry end);
+
+	/**
 	 * getDocIteratorFromRow - find pids and positions for a given row
 	 * @param row number to find
-	 * @param buffer here to look
-	 * @return a pair of DocIterators the start and end of the position.
-	 * The DocIterators can be invalid. The starting DocIterator being invalid
-	 * means that no row was found. Note: there is no guarantee that the
-	 * DocIterators are in the same inset or even at the same depth.
+	 * @param buffer where to look
+	 * @return a pair of DocIterators as above.
 	 */
-	std::pair<DocIterator, DocIterator> getDocIteratorFromRow(
+	std::pair<DocIterator, DocIterator> getDocIteratorsFromRow(
 	    int row,
 	    Buffer const & buf) const;
 	//TODO: remove the following by replacing it with the above
@@ -273,9 +287,6 @@ public:
 
 
 bool operator==(RowEntry entry1, RowEntry entry2);
-
-
-LyXErr & operator<<(LyXErr &, TexRow const &);
 
 
 } // namespace lyx

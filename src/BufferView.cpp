@@ -1411,7 +1411,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(cmd.getArg(0));
-		int const pos = convert<int>(cmd.getArg(1));
+		pos_type const pos = convert<int>(cmd.getArg(1));
+		if (id < 0)
+			break;
+		string const str_id_end = cmd.getArg(2);
+		string const str_pos_end = cmd.getArg(3);
 		int i = 0;
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
@@ -1428,10 +1432,20 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				<< b->absFileName() << "'.");
 
 			if (b == &buffer_) {
-				// Set the cursor
-				cur.pos() = pos;
-				mouseSetCursor(cur);
-				dr.screenUpdate(Update::Force | Update::FitCursor);
+				bool success;
+				if (str_id_end.empty() || str_pos_end.empty()) {
+					// Set the cursor
+					cur.pos() = pos;
+					mouseSetCursor(cur);
+					success = true;
+				} else {
+					int const id_end = convert<int>(str_id_end);
+					pos_type const pos_end = convert<int>(str_pos_end);
+					success = setCursorFromEntries({id, pos},
+					                               {id_end, pos_end});
+				}
+				if (success)
+					dr.screenUpdate(Update::Force | Update::FitCursor);
 			} else {
 				// Switch to other buffer view and resend cmd
 				lyx::dispatch(FuncRequest(
@@ -2329,36 +2343,40 @@ int BufferView::scrollUp(int offset)
 }
 
 
-void BufferView::setCursorFromRow(int row)
+bool BufferView::setCursorFromRow(int row)
 {
-	setCursorFromRow(row, buffer_.texrow());
+	return setCursorFromRow(row, buffer_.texrow());
 }
 
 
-void BufferView::setCursorFromRow(int row, TexRow const & texrow)
+bool BufferView::setCursorFromRow(int row, TexRow const & texrow)
 {
-	DocIterator start, end;
-	tie(start,end) = texrow.getDocIteratorFromRow(row, buffer_);
-	// we need to make sure that the DocIterators
-	// we got back are valid, because the buffer may well
-	// have changed since we last generated the LaTeX.
-	if (!start) {
-		LYXERR(Debug::LATEX,
-		       "setCursorFromRow: invalid position for row " << row);
-		frontend::Alert::error(_("Inverse Search Failed"),
-		                       _("Invalid position requested by inverse search.\n"
-		                         "You may need to update the viewed document."));
-		return;
-	}
+	TextEntry start, end;
+	tie(start,end) = texrow.getEntriesFromRow(row);
+	LYXERR(Debug::LATEX,
+	       "setCursorFromRow: for row " << row << ", TexRow has found "
+	       "start (id=" << start.id << ",pos=" << start.pos << "), "
+	       "end (id=" << end.id << ",pos=" << end.pos << ")");
+	return setCursorFromEntries(start, end);
+}
+
+
+bool BufferView::setCursorFromEntries(TextEntry start, TextEntry end)
+{
+	DocIterator dit_start, dit_end;
+	tie(dit_start,dit_end) =
+		TexRow::getDocIteratorsFromEntries(start, end, buffer_);
+	if (!dit_start)
+		return false;
 	// Setting selection start
 	d->cursor_.clearSelection();
-	setCursor(start);
+	setCursor(dit_start);
 	// Setting selection end
-	if (end) {
+	if (dit_end) {
 		d->cursor_.resetAnchor();
-		setCursorSelectionTo(end);
+		setCursorSelectionTo(dit_end);
 	}
-	recenter();
+	return true;
 }
 
 

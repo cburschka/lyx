@@ -3400,8 +3400,15 @@ bool GuiView::goToFileRow(string const & argument)
 		return false;
 	}
 	setBuffer(buf);
-	documentBufferView()->setCursorFromRow(row);
-	return true;
+	bool success = documentBufferView()->setCursorFromRow(row);
+	if (!success) {
+		LYXERR(Debug::LATEX,
+		       "setCursorFromRow: invalid position for row " << row);
+		frontend::Alert::error(_("Inverse Search Failed"),
+		                       _("Invalid position requested by inverse search.\n"
+		                         "You may need to update the viewed document."));
+	}
+	return success;
 }
 
 

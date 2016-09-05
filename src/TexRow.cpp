@@ -15,11 +15,13 @@
 
 #include "Buffer.h"
 #include "Cursor.h"
+#include "FuncRequest.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 
 #include "mathed/InsetMath.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/lassert.h"
@@ -257,16 +259,22 @@ pair<TextEntry, TextEntry> TexRow::getEntriesFromRow(int const row) const
 }
 
 
-pair<DocIterator, DocIterator> TexRow::getDocIteratorFromRow(
+pair<DocIterator, DocIterator> TexRow::getDocIteratorsFromRow(
     int const row,
     Buffer const & buf) const
 {
 	TextEntry start, end;
 	tie(start,end) = getEntriesFromRow(row);
-	LYXERR(Debug::LATEX,
-	       "getDocIteratorFromRow: for row " << row << ", TexRow has found "
-	       "start (id=" << start.id << ",pos=" << start.pos << "), "
-	       "end (id=" << end.id << ",pos=" << end.pos << ")");
+	return getDocIteratorsFromEntries(start, end, buf);
+}
+
+
+//static
+pair<DocIterator, DocIterator> TexRow::getDocIteratorsFromEntries(
+	    TextEntry start,
+	    TextEntry end,
+	    Buffer const & buf)
+{
 	// Finding start
 	DocIterator dit_start = buf.getParFromID(start.id);
 	if (dit_start)
@@ -286,6 +294,16 @@ pair<DocIterator, DocIterator> TexRow::getDocIteratorFromRow(
 	}
 	return {dit_start, dit_end};
 }
+
+
+//static
+FuncRequest TexRow::goToFunc(TextEntry start, TextEntry end)
+{
+	return {LFUN_PARAGRAPH_GOTO,
+			convert<string>(start.id) + " " + convert<string>(start.pos) + " " +
+			convert<string>(end.id) + " " + convert<string>(end.pos)};
+}
+
 
 
 //static
@@ -572,21 +590,6 @@ void TexRow::prepend(docstring_list & tex) const
 		tex[i] = entry + "  " + tex[i];
 	}
 }
-
-
-
-LyXErr & operator<<(LyXErr & l, TexRow const & texrow)
-{
-	if (l.enabled()) {
-		for (size_t i = 0; i < texrow.rows(); i++) {
-			int id,pos;
-			if (texrow.getIdFromRow(i+1,id,pos) && id>0)
-				l << i+1 << ":" << id << ":" << pos << "\n";
-		}
-	}
-	return l;
-}
-
 
 
 } // namespace lyx

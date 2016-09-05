@@ -2053,12 +2053,17 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_GOTO
  * \li Action: Jump to a paragraph given by its id number and optionally the
                desired position within the paragraph.
- * \li Notion: Note that id number of paragraph is not the sequential number of paragraph
-               seen on the screen. Moreover the id is unique for all opened buffers (documents).
- * \li Syntax: paragraph-goto <PAR_ID_NUMBER> <POSITION_IN_PAR>
- * \li Params: <PAR_ID_NUMBER>:  paragraph id \n
-               <POSITION_IN_PAR>: desired position within the paragraph
+               If given four arguments id_start, pos_start, id_end, pos_end,
+               perform a selection from start to end.
+ * \li Notion: Note that id number of paragraph is not the sequential number of
+               paragraph seen on the screen. Moreover the id is unique for all
+               opened buffers (documents). Both ids must belong to the same
+               buffer.
+ * \li Syntax: paragraph-goto <PAR_ID> <POS_IN_PAR> [<PAR_ID> <POS_IN_PAR>]
+ * \li Params: <PAR_ID>:  paragraph id \n
+               <POS_IN_PAR>: desired position within the paragraph
  * \li Origin: Dekel, 26 Aug 2000
+               gmunch, 5 Sep 2016
  * \endvar
  */
 		{ LFUN_PARAGRAPH_GOTO, "paragraph-goto", ReadOnly | NoInternal, Edit },

@@ -46,6 +46,7 @@ class ParagraphMetrics;
 class Point;
 class TexRow;
 class Text;
+class TextEntry;
 class TextMetrics;
 
 enum CursorStatus {
@@ -162,9 +163,11 @@ public:
 	void gotoLabel(docstring const & label);
 
 	/// set the cursor based on the given TeX source row.
-	void setCursorFromRow(int row);
+	bool setCursorFromRow(int row);
 	///
-	void setCursorFromRow(int row, TexRow const & texrow);
+	bool setCursorFromRow(int row, TexRow const & texrow);
+	/// set the cursor based on the given start and end TextEntries.
+	bool setCursorFromEntries(TextEntry start, TextEntry end);
 
 	/// set cursor to the given inset. Return true if found.
 	bool setCursorFromInset(Inset const *);
