@@ -197,14 +197,19 @@ export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 # xy package:
 .*(|fr/)xy(pic|figure).*pdf5.*
 
-
-Sublabel: multilingual
+# Polyglossia + LuaTeX + \verb bug with Cyrillic and Greek:
 #
+# when compiling with LuaTeX, the "verb" and "url" macros trigger a false
+# error (also with fonts supporting Cyrillic!) and spurious output
+# See https://github.com/reutenauer/polyglossia/issues/160
+export/examples/(ru|uk)/splash_(dvi3|pdf5)_systemF
+
+# Problem with Check and Slovak Babel support.
+# (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
+# All exports using babel fail.
 # Without the Czech or Slovak text it compiles
 # No problem with inserted German (or other foreign language) text
-# No problem if the table is Slovak too
-# Seems to be a problem with Check and Slovak Babel support. File a bug there.
-# All exports using babel fail:
+# No problem if the table is Slovak, too
 export/export/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 
 
