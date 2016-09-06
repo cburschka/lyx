@@ -160,7 +160,6 @@ Menuset
 #
 
 	Menu "context-argument"
-		Item "Dissolve Inset|D" "inset-dissolve"
 		Separator
 		SwitchArguments
 	End
