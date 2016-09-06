@@ -55,7 +55,8 @@ dist_clipartdoc_DATA = \
 	clipart/ToolbarEnvBox.png \
 	clipart/ViewToolbar.png \
 	clipart/without_fntright.pdf \
-	clipart/with_fntright.pdf
+	clipart/with_fntright.pdf \
+	clipart/workaround.png
 
 cadocdir = $(docdir)/ca
 dist_cadoc_DATA = \

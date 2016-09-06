@@ -228,11 +228,12 @@ graphicboxes
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 227574939 "Kyttj"
 \end_header
 
 \begin_body
@@ -38608,9 +38609,13 @@ target "http://en.wikipedia.org/wiki/Xfig"
 
 \series default
 .
+\change_inserted 227574939 1473131626
+
 \end_layout
 
 \begin_layout Description
+
+\change_inserted 227574939 1473131628
 Inkscape
 \begin_inset space ~
 \end_inset
@@ -38620,7 +38625,7 @@ figure This experimental template supports images created with the program
 \begin_inset CommandInset href
 LatexCommand href
 name "Inkscape"
-target "https://fi.wikipedia.org/wiki/Inkscape"
+target "https://en.wikipedia.org/wiki/Inkscape"
 
 \end_inset
 
@@ -38632,12 +38637,16 @@ target "https://fi.wikipedia.org/wiki/Inkscape"
 
 \begin_deeper
 \begin_layout Standard
+
+\change_inserted 227574939 1473131628
 LyX will process the image file in much the same way as it does an Xfig
  image, extracting the text into a separate TeX file for the text strings,
  and a PDF file for the rest.
 \end_layout
 
 \begin_layout Description
+
+\change_inserted 227574939 1473131628
 Warning: Unfortunately the latest version of Inkscape, 0.91, contains a bug:
  with multi-page PDFs, the TeX file will sometimes reference more pages
  than the PDF file contains.
@@ -38647,6 +38656,8 @@ Warning: Unfortunately the latest version of Inkscape, 0.91, contains a bug:
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted 227574939 1473131628
 A workaround for those who have already SVG figures in their document is,
  to manually do the LaTeX+PDF output from Inkscape, edit the 
 \family typewriter
@@ -38662,8 +38673,10 @@ input
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 227574939 1473131628
 \begin_inset Graphics
-	filename workaround.png
+	filename clipart/workaround.png
 	scale 50
 
 \end_inset
@@ -38672,6 +38685,8 @@ input
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 227574939 1473131628
 Here, the child document input inset (
 \family sans
 Insert\SpecialChar menuseparator
@@ -38683,7 +38698,7 @@ Child Document
 .pdf_tex
 \family default
  file in a text editor.
- The LaTeX output  is based on this edited snippet as re-generation from
+ The LaTeX output is based on this edited snippet as re-generation from
  the SVG file has been commented out.
 \end_layout
 
@@ -38694,6 +38709,8 @@ Child Document
 
 \begin_deeper
 \begin_layout Standard
+
+\change_inserted 227574939 1473131628
 The reason why we would use this complicated process at all, like in the
  case of Xfig, is that it makes the text strings inside the figure of the
  same font type and attributes as the surrounding text, which looks so much

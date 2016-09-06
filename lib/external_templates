@@ -295,8 +295,11 @@ Template Inkscape
 	HelpText
 		An Inkscape figure.
 		This template should work flawlessly with Inkscape 0.48. 
-		For Inkscape 0.91, there is a bug in the LaTeX + PDF output
-		which makes a workaround necessary, see Embedded Objects manual.
+		For Inkscape 0.91, there is a (reported) bug in the 
+		LaTeX + PDF output which makes a workaround necessary, 
+		see Embedded Objects manual.
+		Note that using this template automatically uses the 
+		document text in the image (like with the Xfig template).
 	HelpTextEnd
 	InputFormat svg
 	FileFilter "*.svg"
