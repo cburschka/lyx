@@ -1,0 +1,770 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+% Präambel nicht verändern!!!
+%
+% Die Präambel stellt sicher, dass das Benutzerhandbuch korrekt
+% in die Formate pdf, ps und dvi exportiert werden kann.
+% Wenn Probleme beim Exportieren auftreten, können Sie sich
+% an das LyX-Dokumentationsteam wenden.
+% EMail: lyx-docs@lists.lyx.org
+
+% Setzt den Link für Spruenge zu Gleitabbildungen
+% auf den Anfang des Gelitobjekts und nicht aufs Ende
+\usepackage[figure]{hypcap}
+
+% Die Seiten des Inhaltsverzeichnisses werden römisch numeriert,
+% ein PDF-Lesezeichen für das Inhaltsverzeichnis wird hinzugefügt
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \frontmatter
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \mainmatter }
+
+\@ifpackageloaded{babel}{
+ % Linkfläche für Querverweise vergrößern und automatisch benennen,
+ \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+ \addto\extrasngerman{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{Kap.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}%
+ }
+}{}
+\end_preamble
+\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "FreeSerif"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "LyX-Anpassung: Möglichkeiten für fortgeschrittene Benutzer"
+\pdf_author "LyX Team, deutsche Übersetzung: Peter Sütterlin, Leif Albers und Hartmut Haase"
+\pdf_subject "LyX-Dokumentation, Anpassung"
+\pdf_keywords "LyX, Dokumentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\branch OutDated
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\SpecialChar LyX
+-Anpassung:
+\begin_inset Newline newline
+\end_inset
+
+Möglichkeiten für fortgeschrittene Benutzer
+\end_layout
+
+\begin_layout Enumerate
+Das Layout für eine flexible Einfügung wird definiert.
+ In diesem Fall muss 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+<Typ>
+\end_layout
+
+\end_inset
+
+ in der Form 
+\lang english
+
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Flex:<Name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+
+\lang ngerman
+ sein, wobei 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+ ein beliebiger gültiger Bezeichner sein kann, der in keiner anderen existierend
+en Einfügung benutzt wird.
+ Der Bezeichner darf Leerzeichen enthalten, dann muss aber der komplette
+ Typ in Anführungszeichen gesetzt werden.
+ Beachten Sie, dass die Definition einer flexiblen Einfügung 
+\emph on
+auch
+\emph default
+ einen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LyXType
+\end_layout
+
+\end_inset
+
+-Eintrag enthalten muss, der festlegt welcher Einfügungstyp definiert wird.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+The layout for user specific branch is being defined.
+ In this case, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<Typ>
+\end_layout
+
+\end_inset
+
+ must be of the form
+\lang ngerman
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Branch:<Name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\lang english
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+name
+\end_layout
+
+\end_inset
+
+ may be be any valid identifier of branch defined in user's document.
+ The identifier may include spaces, but in that case the whole thing must
+ be wrapped in quotes.
+ The main purpose of this feature is to allow \SpecialChar LaTeX
+ wrapping around specific
+ branches as user needs.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+The layout of a user (or class) specific caption is being defined.
+ In this case, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<Typ>
+\end_layout
+
+\end_inset
+
+ must be of the form
+\lang ngerman
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Caption:<Name>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\lang english
+where 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+name
+\end_layout
+
+\end_inset
+
+ specifies the name of the caption as it appears in the menu.
+ Have a look at the standard caption (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Standard
+\end_layout
+
+\end_inset
+
+), the specific captions of the KOMA-Script classes (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Above
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Below
+\end_layout
+
+\end_inset
+
+) oder das Modul 
+\family sans
+Multilingual
+\begin_inset space ~
+\end_inset
+
+Captions
+\family default
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Caption:Bicaption
+\end_layout
+
+\end_inset
+
+) for applications.
+\end_layout
+
+\begin_layout Standard
+Die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+InsetLayout
+\end_layout
+
+\end_inset
+
+-Definition kann folgende Einträge enthalten:
+\end_layout
+
+\begin_layout Description
+
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Paragraph styles
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The sort of XHTML \SpecialChar LyX
+ outputs for a paragraph depends upon whether we are dealing
+ with a normal paragraph, a command, or an environment, where this is itself
+ determined by the contents of the corresponding 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+\SpecialChar LaTeX
+Type
+\end_layout
+
+\end_inset
+
+ tag.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For a command or normal paragraph, the output XHTML has the following form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Label</labeltag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+Contents of the paragraph.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The label tags are of course omitted if the paragraph does not have a label.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For an environment that is not some sort of list, the XHTML takes this form:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Environment Label</labeltag>First paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag>Second paragraph.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the label is output only for the first paragraph, as it should
+ be for a theorem, for example.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For a list, we have one of these forms:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<tag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag><itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>First item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+<labeltag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>List Label</labeltag><itemtag attr=
+\begin_inset Quotes erd
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+>Second item.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+</tag>
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note the different orders of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+labeltag
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+itemtag
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Chapter
+Namen von verfügbaren Farben für die Verwendung in Layout-Dateien
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Namen-von-Farben"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die hier aufgelisteten Farben sind die Standardfarben und die, die man in
+ den \SpecialChar LyX
+-Voreinstellungen festlegen kann.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+none
+\lang ngerman
+ Keine spezielle Farbe – entfernt Farbe oder setzt Farbe auf Voreinstellung
+\end_layout
+
+\begin_layout Description
+
+\lang english
+black
+\end_layout
+
+\begin_layout Description
+
+\lang english
+white
+\end_layout
+
+\begin_layout Description
+
+\lang english
+red
+\end_layout
+
+\begin_layout Description
+
+\lang english
+green
+\end_layout
+
+\begin_layout Description
+
+\lang english
+urllabel Label color for URL insets
+\end_layout
+
+\begin_layout Description
+
+\lang english
+urltext Color for URL inset text
+\end_layout
+
+\end_body
+\end_document

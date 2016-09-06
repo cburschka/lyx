@@ -29,10 +29,6 @@ export/doc/(de/|fr/)Customization_.*_systemF
 # Probably language mess
 export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
 
-# language nesting in index insets
-# fails with polyglossia, works with language_package==babel)
-export/export/languagenesting_index_inset_.*_systemF
-
 # Missing characters with Latin Modern Unicode:
 # 0000 NULL           (where does this come from?)
 # 212B ANGSTROM SIGN  (literal character in the source, replace with 00C5)
@@ -108,6 +104,16 @@ export/examples/spreadsheet_xhtml
 # Compilation error if longest label marker in labeling style
 # contains underscores etc. Ticket #10371
 export/export/LongestLabelWithUnderscore_[^x].*
+
+
+Sublabel: language-nesting
+# language nesting problems with polyglossia (works with babel)
+
+# in index insets
+export/export/languagenesting_index_inset_.*_systemF
+
+# in enumerate and lyxcode
+export/export/languagenesting_enumerate_and_lyxcode.*_systemF
 
 
 Sublabel: ert
