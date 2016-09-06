@@ -110,9 +110,7 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
-#if QT_VERSION >= 0x050000
 #include <QSvgRenderer>
-#endif
 #include <QtConcurrentRun>
 #include <QTime>
 #include <QTimer>
@@ -553,7 +551,7 @@ GuiView::GuiView(int id)
 #endif
 
 #endif
-	resetWindowTitleAndIconText();
+	resetWindowTitle();
 
 	// use tabbed dock area for multiple docks
 	// (such as "source" and "messages")
@@ -576,6 +574,23 @@ GuiView::GuiView(int id)
 		busylabel, SLOT(show()));
 	connect(&d.processing_thread_watcher_, SIGNAL(finished()), 
 		busylabel, SLOT(hide()));
+
+	QFontMetrics const fm(statusBar()->fontMetrics());
+	int const roheight = max(int(d.normalIconSize), fm.height());
+	QSize const rosize(roheight, roheight);
+	QPixmap readonly = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")).pixmap(rosize);
+	read_only_ = new QLabel(statusBar());
+	read_only_->setPixmap(readonly);
+	read_only_->setScaledContents(true);
+	read_only_->setAlignment(Qt::AlignCenter);
+	read_only_->hide();
+	statusBar()->addPermanentWidget(read_only_);
+
+	version_control_ = new QLabel(statusBar());
+	version_control_->setAlignment(Qt::AlignCenter);
+	version_control_->setFrameStyle(QFrame::StyledPanel);
+	version_control_->hide();
+	statusBar()->addPermanentWidget(version_control_);
 
 	statusBar()->setSizeGripEnabled(true);
 	updateStatusBar();
@@ -1144,14 +1159,35 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	if (wa != d.current_work_area_
 		|| wa->bufferView().buffer().isInternal())
 		return;
-	setWindowTitle(qt_("LyX: ") + wa->windowTitle());
-	setWindowIconText(wa->windowIconText());
-#if (QT_VERSION >= 0x040400)
-	// Sets the path for the window: this is used by OSX to 
+	Buffer const & buf = wa->bufferView().buffer();
+	// Set the windows title
+	docstring title = buf.fileName().displayName(130) + from_ascii("[*]");
+#ifndef Q_WS_MAC
+	title += from_ascii(" - LyX");
+#endif
+	setWindowTitle(toqstr(title));
+	// Sets the path for the window: this is used by OSX to
 	// allow a context click on the title bar showing a menu
 	// with the path up to the file
-	setWindowFilePath(toqstr(wa->bufferView().buffer().absFileName()));
-#endif
+	setWindowFilePath(toqstr(buf.absFileName()));
+	// Tell Qt whether the current document is changed
+	setWindowModified(!buf.isClean());
+
+	if (buf.isReadonly())
+		read_only_->show();
+	else
+		read_only_->hide();
+
+	if (buf.lyxvc().inUse()) {
+		version_control_->show();
+		if (buf.lyxvc().locking())
+			version_control_->setText(
+				toqstr(bformat(_("%1$s lock"),
+				               from_ascii(buf.lyxvc().vcname()))));
+		else
+			version_control_->setText(toqstr(buf.lyxvc().vcname()));
+	} else
+		version_control_->hide();
 }
 
 
@@ -1196,7 +1232,7 @@ void GuiView::on_lastWorkAreaRemoved()
 	updateDialog("document", "");
 	updateDialogs();
 
-	resetWindowTitleAndIconText();
+	resetWindowTitle();
 	updateStatusBar();
 
 	if (lyxrc.open_buffers_in_tabs)
@@ -1285,7 +1321,7 @@ bool GuiView::event(QEvent * e)
 			updateDialog("document", "");
 			updateDialogs();
 		} else {
-			resetWindowTitleAndIconText();
+			resetWindowTitle();
 		}
 		setFocus();
 		return QMainWindow::event(e);
@@ -1312,10 +1348,9 @@ bool GuiView::event(QEvent * e)
 	}
 }
 
-void GuiView::resetWindowTitleAndIconText()
+void GuiView::resetWindowTitle()
 {
 	setWindowTitle(qt_("LyX"));
-	setWindowIconText(qt_("LyX"));
 }
 
 bool GuiView::focusNextPrevChild(bool /*next*/)

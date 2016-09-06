@@ -50,6 +50,8 @@ public:
 	LyXVC();
 	///
 	~LyXVC();
+	/// Name of the underlying VCS
+	std::string vcname() const;
 	/// Is \p fn under version control?
 	static bool fileInVC(support::FileName const & fn);
 	/** Not a good name perhaps. This function should be called whenever

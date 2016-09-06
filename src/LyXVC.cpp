@@ -46,6 +46,12 @@ LyXVC::~LyXVC()
 {}
 
 
+string LyXVC::vcname() const
+{
+	return vcs->vcname();
+}
+
+
 bool LyXVC::fileInVC(FileName const & fn)
 {
 	if (!RCS::findFile(fn).empty())
