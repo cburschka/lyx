@@ -1102,37 +1102,6 @@ lyx2lyx
 New layouts and modules
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Description
-Note: This section is currently only a proposal under discussion.
- Please correct/amend as suited.
- Remove this note once a consensus is found.
-\end_layout
-
-\begin_layout Plain Layout
-See the thread 
-\begin_inset Quotes eld
-\end_inset
-
-Proposal for a guide on updating layouts
-\begin_inset Quotes erd
-\end_inset
-
- for details and background
-\end_layout
-
-\begin_layout Plain Layout
-http://permalink.gmane.org/gmane.editors.lyx.devel/161126 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1174,7 +1143,7 @@ target "https://wiki.lyx.org/Layouts/Layouts"
 \begin_layout Standard
 In older versions of this document, it was stated that new layout files
  require a file format change.
- After some discussion it was decided that this is not needed.
+ After some discussion, it was decided that this is not needed.
 \begin_inset Foot
 status open
 
@@ -1437,6 +1406,37 @@ Modules do not need a template, only an example, which is strongly encouraged
 
 \begin_layout Subsection
 Layouts for document classes with incompatible versions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Description
+Note: This section is currently only a proposal under discussion.
+ Please correct/amend as suited.
+ Remove this note once a consensus is found.
+\end_layout
+
+\begin_layout Plain Layout
+See the thread 
+\begin_inset Quotes eld
+\end_inset
+
+Proposal for a guide on updating layouts
+\begin_inset Quotes erd
+\end_inset
+
+ for details and background
+\end_layout
+
+\begin_layout Plain Layout
+http://permalink.gmane.org/gmane.editors.lyx.devel/161126 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3357,7 +3357,7 @@ If the export did not fail previously but led to wrong output (PDF, say),
 \begin_inset Quotes eld
 \end_inset
 
-unreliable:wrong:output
+unreliable:wrong_output
 \begin_inset Quotes erd
 \end_inset
 
@@ -5020,7 +5020,7 @@ If you are not the maintainer of a doc file or a chapter/section, you MUST
 \begin_layout Enumerate
 Respect the formatting of the document.
  The different files use different formatting styles.
- That is OK and has historic reasons nobody fully know ;-).
+ That is OK and has historic reasons nobody fully knows ;-).
  But it is important to be consistent within one file.
 \end_layout
 
