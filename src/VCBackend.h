@@ -38,6 +38,8 @@ public:
 	VCS(Buffer * b) : vcstatus(NOLOCKING), owner_(b) {}
 	virtual ~VCS() {}
 
+	/// the name of the vc backend
+	virtual std::string vcname() const = 0;
 	/// register a file for version control
 	virtual void registrer(std::string const & msg) = 0;
 	/// can this operation be processed in the current VCS?
@@ -150,6 +152,8 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
+	virtual std::string vcname() const { return "RCS"; };
+
 	virtual void registrer(std::string const & msg);
 
 	virtual bool renameEnabled();
@@ -233,6 +237,8 @@ public:
 
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
+
+	virtual std::string vcname() const { return "CVS"; };
 
 	virtual void registrer(std::string const & msg);
 
@@ -373,6 +379,8 @@ public:
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
 
+	virtual std::string vcname() const { return "SVN"; };
+
 	virtual void registrer(std::string const & msg);
 
 	virtual bool renameEnabled();
@@ -480,6 +488,8 @@ public:
 
 	/// get file from repo, the caller must ensure that it does not exist locally
 	static bool retrieve(support::FileName const & file);
+
+	virtual std::string vcname() const { return "GIT"; };
 
 	virtual void registrer(std::string const & msg);
 

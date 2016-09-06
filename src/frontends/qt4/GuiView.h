@@ -24,6 +24,7 @@
 class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
+class QLabel;
 class QMenu;
 class QShowEvent;
 
@@ -220,12 +221,12 @@ public Q_SLOTS:
 	/// idle timeout.
 	/// clear any temporary message and replace with current status.
 	void clearMessage();
+	///
+	void updateWindowTitle(GuiWorkArea * wa);
 
 private Q_SLOTS:
 	///
-	void updateWindowTitle(GuiWorkArea * wa);
-	///
-	void resetWindowTitleAndIconText();
+	void resetWindowTitle();
 
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
@@ -454,6 +455,11 @@ private:
 	bool command_execute_;
 	/// Request to give focus to minibuffer
 	bool minibuffer_focus_;
+
+	/// Statusbar widget that shows read-only status
+	QLabel * read_only_;
+	/// Statusbar widget that shows version control status
+	QLabel * version_control_;
 
 };
 

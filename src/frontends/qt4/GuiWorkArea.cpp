@@ -1387,34 +1387,8 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 
 void GuiWorkArea::updateWindowTitle()
 {
-	docstring maximize_title;
-	docstring minimize_title;
-
-	Buffer const & buf = d->buffer_view_->buffer();
-	FileName const file_name = buf.fileName();
-	if (!file_name.empty()) {
-		maximize_title = file_name.displayName(130);
-		minimize_title = from_utf8(file_name.onlyFileName());
-		if (buf.lyxvc().inUse()) {
-			if (buf.lyxvc().locking())
-				maximize_title +=  _(" (version control, locking)");
-			else
-				maximize_title +=  _(" (version control)");
-		}
-		if (!buf.isClean()) {
-			maximize_title += _(" (changed)");
-			minimize_title += char_type('*');
-		}
-		if (buf.isReadonly())
-			maximize_title += _(" (read only)");
-	}
-
-	QString const new_title = toqstr(maximize_title);
-	if (new_title != windowTitle()) {
-		QWidget::setWindowTitle(new_title);
-		QWidget::setWindowIconText(toqstr(minimize_title));
-		titleChanged(this);
-	}
+	d->lyx_view_->updateWindowTitle(this);
+	titleChanged(this);
 }
 
 
