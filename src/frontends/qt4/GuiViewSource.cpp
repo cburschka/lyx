@@ -21,6 +21,8 @@
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Format.h"
+#include "FuncRequest.h"
+#include "LyX.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 
@@ -66,11 +68,6 @@ ViewSourceWidget::ViewSourceWidget()
 		this, SLOT(setViewFormat(int)));
 	connect(outputFormatCO, SIGNAL(activated(int)),
 		this, SLOT(contentsChanged()));
-#ifdef DEVEL_VERSION
-	if (lyx::lyxerr.debugging(Debug::LATEX))
-		connect(viewSourceTV, SIGNAL(cursorPositionChanged()),
-				this, SLOT(gotoCursor()));
-#endif
 
 	// setting the update timer
 	update_timer_->setSingleShot(true);
@@ -90,6 +87,9 @@ ViewSourceWidget::ViewSourceWidget()
 	viewSourceTV->setFont(guiApp->typewriterSystemFont());
 	// again, personal taste
 	viewSourceTV->setWordWrapMode(QTextOption::NoWrap);
+
+	// catch double click events
+	viewSourceTV->viewport()->installEventFilter(this);
 }
 
 
@@ -320,14 +320,24 @@ docstring ViewSourceWidget::currentFormatName(BufferView const * bv) const
 }
 
 
-// only used in DEVEL_MODE for debugging
-// need a proper LFUN if we want to implement it in release mode
-void ViewSourceWidget::gotoCursor()
+bool ViewSourceWidget::eventFilter(QObject * obj, QEvent * ev)
 {
-	if (!bv_ || !texrow_)
+	// this event filter is installed on the viewport of the QTextView
+	if (obj == viewSourceTV->viewport() &&
+	    ev->type() == QEvent::MouseButtonDblClick) {
+		goToCursor();
+		return true;
+	}
+	return false;
+}
+
+
+void ViewSourceWidget::goToCursor() const
+{
+	if (!texrow_)
 		return;
 	int row = viewSourceTV->textCursor().blockNumber() + 1;
-	const_cast<BufferView *>(bv_)->setCursorFromRow(row, *texrow_);
+	dispatch(TexRow::goToFunc(texrow_->getEntriesFromRow(row)));
 }
 
 

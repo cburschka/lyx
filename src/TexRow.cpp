@@ -305,6 +305,12 @@ FuncRequest TexRow::goToFunc(TextEntry start, TextEntry end)
 }
 
 
+//static
+FuncRequest TexRow::goToFunc(std::pair<TextEntry,TextEntry> entries)
+{
+	return goToFunc(entries.first, entries.second);
+}
+
 
 //static
 RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)

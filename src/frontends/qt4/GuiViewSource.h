@@ -69,7 +69,7 @@ public Q_SLOTS:
 	///
 	void contentsChanged();
 	///
-	void gotoCursor();
+	void goToCursor() const;
 	/// Name of the current format. Empty if none.
 	docstring currentFormatName(BufferView const * bv) const;
 
@@ -84,6 +84,8 @@ private:
 	/// Get the source code of selected paragraphs, or the whole document.
 	void getContent(BufferView const * view, Buffer::OutputWhat output,
 			   docstring & str, std::string const & format, bool master);
+	/// Grab double clicks on the viewport
+	bool eventFilter(QObject * obj, QEvent * event);
 	///
 	BufferView const * bv_;
 	///
