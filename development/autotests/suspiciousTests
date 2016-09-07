@@ -14,13 +14,6 @@ Sublabel: todo
 # * easyfix issues,
 # * LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
 
-# the ukrainean splash has preamble code loading russian babel
-# in the preamble (Why?)
-# TODO: remove the LaTeX preamble code:
-# fixes the inverted tests below,
-# side-effects: Ukrainean instead of Russian date, different hyphenation.
-export/examples/uk/splash_(dvi3|pdf[45])_texF
-
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
 # + language nesting problem (may disappear after completed translation)
@@ -72,49 +65,50 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
+# Fails with 
+# ! LaTeX Error: Cannot determine size of graphic in 0_usr_local_src_lyx_lib_doc_
+# clipart_footnote.png (no BoundingBox).
+# + more errors
+# May affect more languages!
+export/doc/(nb|el)/Intro_pdf5_.*
+
 
 Sublabel: lyxbugs
 #
 # LyX bugs with a Trac number.
 
-# Language nesting and polyglossia #9633
+#9633 Language nesting and polyglossia
 export/doc/(nb|sk)/Intro.*systemF
-# language nesting (may disappear after completed translation)
+# in index insets
+export/export/languagenesting_index_inset_.*_systemF
+# in enumerate and lyxcode
+export/export/languagenesting_enumerate_and_lyxcode.*_systemF
+# these instances may disappear after completed translation
 export/examples/fr/linguistics_.*_systemF
 export/doc/(de/|fr/)Customization_.*_systemF
 
-# use LuaTeX-compatible language names #9910
+#9910 use LuaTeX-compatible language names
 # Wrong language name for LuaTeX (with Babel, no error with Polyglossia)
+# Seems fixed in recent Babel now (2016-09-07)
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 # ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
-export/doc/attic/id_UserGuide_dvi3.*
-export/doc/attic/id_UserGuide_pdf5.*
+export/doc/attic/id_UserGuide_(dvi3|pdf5).*
 export/(doc|examples)/id/.*_(dvi3|pdf5)_texF
-export/.*/hu/.*(dvi3|pdf5)_texF
+export/(doc|examples)/hu/.*(dvi3|pdf5)_texF
 
-# documents requiring pre-processing fail with Japanese #8823
+#8823 documents requiring pre-processing fail with Japanese 
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
 
-# #10355: xmllint detects failures
+#10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
 export/doc/(es|ja)/UserGuide_xhtml
 export/examples/spreadsheet_xhtml
+export/export/WrongDfnTagHandling_xhtml
 
-# Compilation error if longest label marker in labeling style
-# contains underscores etc. Ticket #10371
+#10371 Compilation error if longest label marker in labeling style
+# contains underscores etc.
 export/export/LongestLabelWithUnderscore_[^x].*
-
-
-Sublabel: language-nesting
-# language nesting problems with polyglossia (works with babel)
-
-# in index insets
-export/export/languagenesting_index_inset_.*_systemF
-
-# in enumerate and lyxcode
-export/export/languagenesting_enumerate_and_lyxcode.*_systemF
-
 
 Sublabel: ert
 #
@@ -200,11 +194,11 @@ export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
 .*(|fr/)xy(pic|figure).*pdf5.*
 
 # Polyglossia + LuaTeX + \verb bug with Cyrillic and Greek:
-#
 # when compiling with LuaTeX, the "verb" and "url" macros trigger a false
 # error (also with fonts supporting Cyrillic!) and spurious output
 # See https://github.com/reutenauer/polyglossia/issues/160
 export/examples/(ru|uk)/splash_(dvi3|pdf5)_systemF
+export/doc/(ru|uk)/Intro_(dvi3|pdf5)_systemF
 
 # Problem with Check and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
@@ -233,5 +227,3 @@ export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
 export/doc/attic/id_UserGuide_pdf[45]_systemF
 
-Sublabel: xhtml
-export/export/WrongDfnTagHandling_xhtml
