@@ -1,7 +1,9 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 503
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/attic/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -136,9 +138,9 @@ enumitem
 \papersides 2
 \paperpagestyle default
 \tracking_changes false
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\output_changes false
 \html_be_strict true
 \end_header
 
@@ -1514,7 +1516,7 @@ Berikut ini adalah dasar pengunaan tetikus.
 
 \begin_layout Enumerate
 Memindah Kursor
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1535,7 +1537,7 @@ tombol tetikus kiri
 \end_deeper
 \begin_layout Enumerate
 Memilih dan Menandai Teks
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -1573,7 +1575,7 @@ Tempelkan.
 \end_deeper
 \begin_layout Enumerate
 Sisipan Tambahan (Catatan kaki, Nota, Ambangan, etc.)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2313,7 +2315,7 @@ description "Tombol ketik Control"
 
 ) Tombol ini mempunyai beberapa fungsi, tergantung dengan tombol ketik lain
  yang dikombinasikan:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -2428,7 +2430,7 @@ pemercepat menu
 .
  Apabila anda menggunakan dengan kombinasi huruf dibawah menu, berarti and
  memilih menu tersebut.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5662,7 +5664,7 @@ Itemize
 
 \begin_layout Itemize
 Each item has a particular bullet or symbol as its label.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5700,7 +5702,7 @@ Itemize
 Itemize
 \family default
  environment, the label changes to a new symbol.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5756,7 +5758,7 @@ The label for the first level
 Itemize
 \family default
  is a large black dot, or bullet.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5765,7 +5767,7 @@ Itemize
 \begin_deeper
 \begin_layout Itemize
 The label for the second level is a dash.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5774,7 +5776,7 @@ The label for the second level is a dash.
 \begin_deeper
 \begin_layout Itemize
 The label for the third is an asterisk.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5883,7 +5885,7 @@ Enumerate
 
 \begin_layout Enumerate
 Each item has a numeral as its label.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5918,7 +5920,7 @@ Itemize
 Enumerate
 \family default
  environment:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5968,7 +5970,7 @@ The first level of an
 Enumerate
 \family default
  uses Arabic numerals followed by a period.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5977,7 +5979,7 @@ Enumerate
 \begin_deeper
 \begin_layout Enumerate
 The second level uses lower case letters surrounded by parentheses.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -5986,7 +5988,7 @@ The second level uses lower case letters surrounded by parentheses.
 \begin_deeper
 \begin_layout Enumerate
 The third level uses lower-case Roman numerals followed by a period.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6778,7 +6780,7 @@ Alph{enumi}
 \end_inset
 
 Level 1
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6814,7 +6816,7 @@ Level 2
 
 \begin_layout Enumerate
 Level 2
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -6846,7 +6848,7 @@ arabic{enumiii}}
 \end_inset
 
 Level 3
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8052,7 +8054,7 @@ arg   "newline-insert newline"
 Space
 \family default
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8241,7 +8243,7 @@ one
 
 \begin_layout Enumerate
 two
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8384,7 +8386,7 @@ Here's a list of the three types of nesting behavior, and which paragraph
 \begin_layout Description
 Unnestable Can't nest them.
  Can't nest into them.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8429,7 +8431,7 @@ Fully
 
 Nestable You can nest them.
  You can nest other things into them.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8489,7 +8491,7 @@ List
 \begin_layout Description
 Nestable-Inside You can nest them inside other things.
  You can't nest anything into them.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8734,7 +8736,7 @@ Here's an example with a table:
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8743,7 +8745,7 @@ Item One
 \begin_deeper
 \begin_layout Enumerate
 This is (a) and it's nested.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -8871,7 +8873,7 @@ If we hadn't nested the table at all, the list would look like this:
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9015,7 +9017,7 @@ There's another trap you can fall into: Nesting the table, but not going
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9177,7 +9179,7 @@ level #6
 
 \begin_layout Enumerate
 level #1 – outermost
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9186,7 +9188,7 @@ level #1 – outermost
 \begin_deeper
 \begin_layout Enumerate
 level #2
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9195,7 +9197,7 @@ level #2
 \begin_deeper
 \begin_layout Enumerate
 level #3
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9204,7 +9206,7 @@ level #3
 \begin_deeper
 \begin_layout Enumerate
 level #4
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9213,7 +9215,7 @@ level #4
 \begin_deeper
 \begin_layout Itemize
 level #5
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9290,7 +9292,7 @@ Example 1: The Six-fold Way and Mixed Nesting
 List
 \family default
  environment.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9313,7 +9315,7 @@ arg   "depth-increment"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9348,7 +9350,7 @@ arg   "depth-increment"
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9449,7 +9451,7 @@ can
 \end_inset
 
 .
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9460,7 +9462,7 @@ can
 \labelwidthstring MMM
 #5-a This is level #5\SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9591,7 +9593,7 @@ arg   "depth-increment"
 Enumerate
 \family default
  environment.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9668,7 +9670,7 @@ Enumerate
 \family default
  paragraph environment.
  We're actually going to nest a bunch of these.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9696,7 +9698,7 @@ Itemize
 \family default
  environment inside of this one? It will be at level #3, but what will its
  label be? An asterisk?
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9732,7 +9734,7 @@ arg   "depth-increment"
 Itemize
 \family default
 .)
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9755,7 +9757,7 @@ arg   "depth-increment"
 .
  We'll do that again\SpecialChar ldots
 
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9959,7 +9961,7 @@ We're going to go totally nuts now.
 Enumerate
 \family default
 )
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -9995,7 +9997,7 @@ arg   "depth-increment"
 Return, Enumerate
 \family default
 : level #1) This is the next item in the list.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10050,7 +10052,7 @@ arg   "paragraph-break inverse"
 
 \begin_layout Verse
 Here comes a table:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -10275,7 +10277,7 @@ Address
 \family default
  environments.
  Here it goes:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -11731,7 +11733,7 @@ The default in most cases is justified alignment, in which the inter-word
  spacing is variable and each line of a paragraph fills the region between
  the left and right margins.
  The other three alignments should be self-explanatory, and look like this:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13360,7 +13362,7 @@ overall look
 
  of the font.
  The possible options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13440,7 +13442,7 @@ Series
 \family default
  This corresponds to the print weight.
  Options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13486,7 +13488,7 @@ Shape
 \family default
  As the name implies.
  Options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13570,7 +13572,7 @@ nal to the document font size.
  the details, but a general description of what
  you want to do.
  The options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -13876,7 +13878,7 @@ Misc
 \family default
  Here you can change a few other things at the character level.
  Options are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -17330,7 +17332,7 @@ The graphics dialog can be called at any time by clicking on an image.
  in the text.
  This is an example image within a separate, horizontally centered paragraph:
  
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -17851,7 +17853,7 @@ Table
  have a line below them and the cells of the second row have a line above
  them.
  Here's an example table:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18141,7 +18143,7 @@ one
  and border settings affect only the multicolumn cell.
  Here's an example table with a multicolumn cell in the first row and one
  in the last row without the upper border:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -18499,7 +18501,7 @@ header.
 
 \family default
  See the following longtable to see how it works:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -20700,7 +20702,7 @@ To have multi-line entries in table cells, you have to declare a fixed width
  Your text is then automatically split into multiple lines and the cell
  is enlarged vertically when the length of the text exceeds the given width.
  An example:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -21712,7 +21714,7 @@ Box
 .
  Right-clicking on the box allows you to alter the width of the minipage
  and its alignment within the page.
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
