@@ -556,7 +556,7 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 
 		// Everything from the start of the input to
 		// the start of the match.
-		parse_filter(string(what[-1].first, what[-1].second));
+		parse_filter(string(it, what[0].first));
 
 		// Increment the iterator to the end of the match.
 		it += distance(it, what[0].second);
