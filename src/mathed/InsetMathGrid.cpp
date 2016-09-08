@@ -636,10 +636,13 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 						- i * vlinesep()
 						- vlinesep()/2 - colsep()/2;
 					int top_offset;
-					if (r > 0)
+					// prevRowHasLine needs to be changed if multicolumn lines are supported
+					bool const prevRowHasLine(r > 0);
+					if (prevRowHasLine)
+						// start from offset of previous row to create a continous line
 						top_offset = rowinfo_[r - 1].offset_ + rowinfo_[r - 1].descent_;
 					else
-						top_offset = rowinfo_[0].offset_- rowinfo_[0].ascent_;
+						top_offset = rowinfo_[r].offset_- rowinfo_[r].ascent_;
 					pi.pain.line(xx, y + top_offset,
 						xx, y + rowinfo_[r].offset_ + rowinfo_[r].descent_,
 						Color_foreground);
