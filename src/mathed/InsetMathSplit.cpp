@@ -14,7 +14,7 @@
 
 #include "MathData.h"
 #include "MathStream.h"
-#include "MathStream.h"
+#include "MathSupport.h"
 
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -141,9 +141,19 @@ void InsetMathSplit::write(WriteStream & ws) const
 		suffix = from_ascii("*");
 	ws << "\\begin{" << name_ << suffix << '}';
 	bool open = ws.startOuterRow();
-	if (name_ != "split" && name_ != "align" && verticalAlignment() != 'c')
-		ws << '[' << verticalAlignment() << ']';
-	if (name_ == "alignedat")
+	bool const hasArg(name_ == "alignedat");
+	if (name_ != "split" && name_ != "align") {
+		if (verticalAlignment() != 'c')
+			ws << '[' << verticalAlignment() << ']';
+		else if (!hasArg) {
+			docstring const first(asString(cell(0)));
+			// prevent misinterpretation of the first character of
+			// the first cell as optional argument (bug 10361)
+			if (!first.empty() && first[0] == '[')
+				ws << "[]";
+		}
+	}
+	if (hasArg)
 		ws << '{' << static_cast<unsigned int>((ncols() + 1)/2) << '}';
 	InsetMathGrid::write(ws);
 	if (ws.fragile())
