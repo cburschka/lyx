@@ -5,11 +5,14 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{textalpha}
+\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -23,7 +26,7 @@
 \font_tt_scale 100 100
 \use_microtype false
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -73,7 +76,29 @@
 \begin_body
 
 \begin_layout Standard
-Greek and Coptic Unicode block:
+Greek with utf8 requires 
+\begin_inset Quotes eld
+\end_inset
+
+textalpha
+\begin_inset Quotes erd
+\end_inset
+
+ (see Document>Settings>Preamble) or setting the language of Greek parts
+ to Greek.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "#9681"
+target "http://www.lyx.org/trac/ticket/9681"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Block 8: Greek and Coptic
 \end_layout
 
 \begin_layout Labeling
