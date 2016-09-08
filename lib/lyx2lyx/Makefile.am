@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES = *.pyc *.pyo
+CLEANFILES += *.pyc *.pyo
 
 EXTRA_DIST = lyx2lyx_version.py.in test_parser_tools.py CMakeLists.txt
 
