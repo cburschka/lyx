@@ -47,7 +47,7 @@ Template GnumericSpreadsheet
 		both for gnumeric and excel files.
 	HelpTextEnd
 	InputFormat "gnumeric"
-	FileFilter "*.{gnumeric,ods,xls}"
+	FileFilter "*.{gnumeric,ods,xls,xlsx}"
 	AutomaticProduction true
 	Format LaTeX
 		Product "\\def\\inputGnumericTable{}\\input{$$AbsOrRelPathMaster$$Basename.tex}"
