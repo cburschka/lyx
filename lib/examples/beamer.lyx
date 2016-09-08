@@ -91,7 +91,7 @@ The \SpecialChar LyX
 
 \begin_layout Date
 V.
- 2.1
+ 2.2
 \end_layout
 
 \begin_layout TitleGraphic
@@ -932,7 +932,12 @@ Separator
 
 \end_inset
 
- paragraph style.
+ inset, which can be produced by hitting return in an empty Standard paragraph
+ right below the frame (see UserGuide, sec.
+\begin_inset space ~
+\end_inset
+
+3.4.6).
 \end_layout
 
 \begin_deeper
@@ -950,7 +955,8 @@ Tip
 \end_layout
 
 \begin_layout Block
-There is a simple automated way to start a new frame: Issue 
+There is a simple and much more convenient way to start a new frame: Issue
+ 
 \begin_inset Flex Alert
 status collapsed
 
