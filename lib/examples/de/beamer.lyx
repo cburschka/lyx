@@ -92,7 +92,7 @@ Das \SpecialChar LyX
 
 \begin_layout Date
 V.
- 2.1
+ 2.2
 \end_layout
 
 \begin_layout TitleGraphic
@@ -1077,18 +1077,10 @@ Rahmen trennen
 \begin_layout Frame
 \noindent
 Direkt aufeinander folgende Rahmen müssen voneinander getrennt werden.
- Dazu verwenden Sie den Absatzstil 
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-Trenner
-\end_layout
-
-\end_inset
-
-.
+ Dazu verwenden Sie eine Absatztrenner-Einfügung.
+ Diese können Sie einzufügen, indem Sie in einem leeren Standard-Absatz
+ (direkt unter dem Rahmen) die Return-Taste drücken (siehe Benutzerhandbuch,
+ Abschnitt 3.4.6).
 \end_layout
 
 \begin_deeper
@@ -1106,7 +1098,7 @@ Tipp
 \end_layout
 
 \begin_layout Block
-Die komfortabelste Methode, um einen neuen Rahmen zu beginnen, ist wie folgt:
+Eine komfortablere Methode, um einen neuen Rahmen zu beginnen, ist wie folgt:
  Führen Sie 
 \begin_inset Flex Alert
 status collapsed
