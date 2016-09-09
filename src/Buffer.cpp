@@ -1322,7 +1322,7 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 FileName Buffer::getBackupName() const {
 	FileName const & fn = fileName();
 	string const fname = fn.onlyFileNameWithoutExt();
-	string const fext  = fn.extension();
+	string const fext  = fn.extension() + "~";
 	string const fpath = lyxrc.backupdir_path.empty() ?
 		fn.onlyPath().absFileName() :
 		lyxrc.backupdir_path;
