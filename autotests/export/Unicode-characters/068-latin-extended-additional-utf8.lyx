@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -78,48 +78,72 @@
 \begin_body
 
 \begin_layout Subsection*
-9 Cyrillic
+68 Latin Extended Additional
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-410 А Б В Г Д Е Ж З И Й К Л М Н О П
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-420 Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-430 а б в г д е ж з и й к л м н о п
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-440 р с т у ф х ц ч ш щ ъ ы ь э ю я
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-450 ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-460 
+1E00 Ḁ ḁ Ḃ ḃ Ḅ ḅ Ḇ ḇ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ
+Ḉ ḉ
+\end_layout
+
+\end_inset
+
+ Ḋ ḋ Ḍ ḍ Ḏ ḏ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E10 Ḑ ḑ Ḓ ḓ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ḕ ḕ Ḗ ḗ
+\end_layout
+
+\end_inset
+
+ Ḙ ḙ Ḛ ḛ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ḝ ḝ
+\end_layout
+
+\end_inset
+
+ Ḟ ḟ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E20 Ḡ ḡ Ḣ ḣ Ḥ ḥ Ḧ ḧ Ḩ ḩ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ḫ ḫ
+\end_layout
+
+\end_inset
+
+ Ḭ ḭ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ḯ ḯ
 \end_layout
 
 \end_inset
@@ -129,13 +153,29 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-470 
+1E30 Ḱ ḱ Ḳ ḳ Ḵ ḵ Ḷ ḷ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ
+Ḹ ḹ
+\end_layout
+
+\end_inset
+
+ Ḻ ḻ Ḽ ḽ Ḿ ḿ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E40 Ṁ ṁ Ṃ ṃ Ṅ ṅ Ṇ ṇ Ṉ ṉ Ṋ ṋ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ṍ ṍ Ṏ ṏ
 \end_layout
 
 \end_inset
@@ -145,13 +185,93 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-480 
+1E50 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҁ ҁ ҂  ҃  ҄  ҅  ҆    ҈  ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ
+Ṑ ṑ Ṓ ṓ
+\end_layout
+
+\end_inset
+
+ Ṕ ṕ Ṗ ṗ Ṙ ṙ Ṛ ṛ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ṝ ṝ
+\end_layout
+
+\end_inset
+
+ Ṟ ṟ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E60 Ṡ ṡ Ṣ ṣ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ṥ ṥ Ṧ ṧ Ṩ ṩ
+\end_layout
+
+\end_inset
+
+ Ṫ ṫ Ṭ ṭ Ṯ ṯ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E70 Ṱ ṱ Ṳ ṳ Ṵ ṵ Ṷ ṷ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ṹ ṹ Ṻ ṻ
+\end_layout
+
+\end_inset
+
+ Ṽ ṽ Ṿ ṿ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E80 Ẁ ẁ Ẃ ẃ Ẅ ẅ Ẇ ẇ Ẉ ẉ Ẋ ẋ Ẍ ẍ Ẏ ẏ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1E90 Ẑ ẑ Ẓ ẓ Ẕ ẕ ẖ ẗ ẘ ẙ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ẚ ẛ
+\end_layout
+
+\end_inset
+
+ ẞ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1EA0 Ạ ạ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ả ả Ấ ấ Ầ ầ Ẩ ẩ Ẫ ẫ Ậ ậ Ắ ắ
 \end_layout
 
 \end_inset
@@ -161,24 +281,24 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-490 Ґ ґ Ғ ғ 
+1EB0 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҕ ҕ
+Ằ ằ Ẳ ẳ Ẵ ẵ Ặ ặ Ẹ ẹ Ẻ ẻ
 \end_layout
 
 \end_inset
 
- Җ җ Ҙ ҙ Қ қ 
+ Ẽ ẽ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҝ ҝ Ҟ ҟ
+Ế ế
 \end_layout
 
 \end_inset
@@ -188,40 +308,24 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4A0 Ҡ ҡ Ң ң Ҥ ҥ 
+1EC0 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҧ ҧ Ҩ ҩ
+Ề ề Ể ể Ễ ễ Ệ ệ Ỉ ỉ
 \end_layout
 
 \end_inset
 
- Ҫ ҫ 
+ Ị ị Ọ ọ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҭ ҭ
-\end_layout
-
-\end_inset
-
- Ү ү
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-4B0 Ұ ұ Ҳ ҳ Ҵ ҵ Ҷ ҷ Ҹ ҹ 
-\begin_inset Branch na
-inverted 0
-status collapsed
-
-\begin_layout Standard
-Һ һ Ҽ ҽ Ҿ ҿ
+Ỏ ỏ
 \end_layout
 
 \end_inset
@@ -231,13 +335,13 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4C0 Ӏ Ӂ ӂ 
+1ED0 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
- Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ
+Ố ố Ồ ồ Ổ ổ Ỗ ỗ Ộ ộ Ớ ớ Ờ ờ Ở ở
 \end_layout
 
 \end_inset
@@ -247,92 +351,45 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4D0 Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ
+1EE0 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+Ỡ ỡ Ợ ợ Ụ ụ Ủ ủ Ứ ứ Ừ ừ Ử ử Ữ ữ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4E0 
+1EF0 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ӡ ӡ
+Ự ự
 \end_layout
 
 \end_inset
 
- Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө 
+ Ỳ ỳ Ỵ ỵ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ӫ ӫ
+Ỷ ỷ
 \end_layout
 
 \end_inset
 
- Ӭ ӭ Ӯ ӯ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-4F0 Ӱ ӱ Ӳ ӳ Ӵ ӵ 
-\begin_inset Branch na
-inverted 0
-status collapsed
-
-\begin_layout Standard
-Ӷ ӷ
-\end_layout
-
-\end_inset
-
- Ӹ ӹ 
-\begin_inset Branch na
-inverted 0
-status collapsed
-
-\begin_layout Standard
-Ӻ ӻ Ӽ ӽ Ӿ ӿ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-31 Thai
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-3640 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-ุ ู ฺ
-\end_layout
-
-\end_inset
-
- ฿ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-เ แ
-\end_layout
-
-\end_inset
-
- 
+ Ỹ ỹ 
 \end_layout
 
 \end_body

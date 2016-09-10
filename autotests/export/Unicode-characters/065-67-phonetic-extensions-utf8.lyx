@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -78,48 +78,51 @@
 \begin_body
 
 \begin_layout Subsection*
-9 Cyrillic
+65 Phonetic Extensions
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-410 А Б В Г Д Е Ж З И Й К Л М Н О П
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-420 Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-430 а б в г д е ж з и й к л м н о п
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-440 р с т у ф х ц ч ш щ ъ ы ь э ю я
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-450 ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-460 
+1D10 ᴀ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ
+ᴁ ᴂ ᴃ ᴄ ᴅ ᴆ 
+\end_layout
+
+\end_inset
+
+ᴇ ᴈ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴉ
+\end_layout
+
+\end_inset
+
+ ᴊ ᴋ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴌ
+\end_layout
+
+\end_inset
+
+ ᴍ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴎ ᴏ
 \end_layout
 
 \end_inset
@@ -129,13 +132,35 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-470 
+1D10 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ
+ᴐ ᴑ ᴒ ᴓ ᴔ ᴕ ᴖ ᴗ
+\end_layout
+
+\end_inset
+
+ ᴘ ᴙ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴚ ᴛ
+\end_layout
+
+\end_inset
+
+ ᴜ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴝ ᴞ ᴟ
 \end_layout
 
 \end_inset
@@ -145,13 +170,24 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-480 
+1D20 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҁ ҁ ҂  ҃  ҄  ҅  ҆    ҈  ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ
+ᴠ ᴡ ᴢ ᴣ ᴤ ᴥ ᴦ ᴧ ᴨ ᴩ ᴪ ᴫ
+\end_layout
+
+\end_inset
+
+ ᴬ ᴭ ᴮ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᴯ
 \end_layout
 
 \end_inset
@@ -161,142 +197,154 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-490 Ґ ґ Ғ ғ 
+1D30 ᴰ ᴱ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҕ ҕ
+ᴲ
 \end_layout
 
 \end_inset
 
- Җ җ Ҙ ҙ Қ қ 
+ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҝ ҝ Ҟ ҟ
+ᴻ
 \end_layout
 
 \end_inset
 
+ ᴼ 
+\begin_inset Branch na
+inverted 0
+status collapsed
 
+\begin_layout Standard
+ᴽ
+\end_layout
+
+\end_inset
+
+ ᴾ ᴿ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4A0 Ҡ ҡ Ң ң Ҥ ҥ 
+1D40 ᵀ ᵁ ᵂ ᵃ ᵄ ᵅ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҧ ҧ Ҩ ҩ
+ᵆ
 \end_layout
 
 \end_inset
 
- Ҫ ҫ 
+ ᵇ ᵈ ᵉ ᵊ ᵋ ᵌ ᵍ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ҭ ҭ
+ᵎ
 \end_layout
 
 \end_inset
 
- Ү ү
+ ᵏ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4B0 Ұ ұ Ҳ ҳ Ҵ ҵ Ҷ ҷ Ҹ ҹ 
+1D50 ᵐ ᵑ ᵒ ᵓ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Һ һ Ҽ ҽ Ҿ ҿ
+ᵔ ᵕ
 \end_layout
 
 \end_inset
 
+ ᵖ ᵗ ᵘ 
+\begin_inset Branch na
+inverted 0
+status collapsed
 
+\begin_layout Standard
+ᵙ
+\end_layout
+
+\end_inset
+
+ ᵚ ᵛ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᵜ
+\end_layout
+
+\end_inset
+
+ ᵝ ᵞ ᵟ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4C0 Ӏ Ӂ ӂ 
+1D60 ᵠ ᵡ ᵢ ᵣ ᵤ ᵥ ᵦ ᵧ ᵨ ᵩ ᵪ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
- Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ
+ᵫ ᵬ
 \end_layout
 
 \end_inset
 
-
+ ᵭ ᵮ ᵯ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4D0 Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-4E0 
+1D70 ᵰ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ӡ ӡ
+ᵱ
 \end_layout
 
 \end_inset
 
- Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө 
+ ᵲ ᵳ ᵴ ᵵ ᵶ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ӫ ӫ
+ᵷ ᵸ ᵹ ᵺ ᵻ ᵼ ᵽ
 \end_layout
 
 \end_inset
 
- Ӭ ӭ Ӯ ӯ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-4F0 Ӱ ӱ Ӳ ӳ Ӵ ӵ 
+ ᵾ 
 \begin_inset Branch na
 inverted 0
 status collapsed
 
 \begin_layout Standard
-Ӷ ӷ
-\end_layout
-
-\end_inset
-
- Ӹ ӹ 
-\begin_inset Branch na
-inverted 0
-status collapsed
-
-\begin_layout Standard
-Ӻ ӻ Ӽ ӽ Ӿ ӿ
+ᵿ
 \end_layout
 
 \end_inset
@@ -305,34 +353,139 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection*
-31 Thai
+66 Phonetic Extension Supplement
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-3640 
+1D80 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-ุ ู ฺ
+ᶀ ᶁ ᶂ ᶃ ᶄ ᶅ ᶆ ᶇ ᶈ ᶉ ᶊ ᶋ ᶌ ᶍ ᶎ ᶏ
 \end_layout
 
 \end_inset
 
- ฿ 
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1D90 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-เ แ
+ᶐ ᶑ ᶒ ᶓ ᶔ ᶕ ᶖ ᶗ ᶘ ᶙ ᶚ ᶛ ᶜ ᶝ ᶞ ᶟ
 \end_layout
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DA0 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᶠ ᶡ ᶢ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DB0 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶻ ᶼ ᶽ ᶾ ᶿ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+67 Combining Diacritical Marks Supplement
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DC0 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+x᷀ x᷁ x᷂ x᷃
+\end_layout
+
+\end_inset
+
+ x᷄ x᷅ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+x᷆ x᷇
+\end_layout
+
+\end_inset
+
+ x᷈ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+x᷉ x᷊
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DD0 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DE0 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+1DF0 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+x᷾ x᷿
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
