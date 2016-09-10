@@ -65,13 +65,6 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
-# Fails with 
-# ! LaTeX Error: Cannot determine size of graphic in 0_usr_local_src_lyx_lib_doc_
-# clipart_footnote.png (no BoundingBox).
-# + more errors
-# May affect more languages!
-export/doc/(nb|el)/Intro_pdf5_.*
-
 
 Sublabel: lyxbugs
 #
