@@ -1856,7 +1856,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			cur.niceInsert(createInsetMath("sim", buf));
 			return true;
 		}
-		if (currentMode() == InsetMath::MATH_MODE && !isAsciiOrMathAlpha(c)) {
+		if (currentMode() == InsetMath::MATH_MODE && Encodings::isUnicodeTextOnly(c)) {
 			MathAtom at = createInsetMath("text", buf);
 			at.nucleus()->cell(0).push_back(MathAtom(new InsetMathChar(c)));
 			cur.niceInsert(at);

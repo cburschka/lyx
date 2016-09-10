@@ -601,6 +601,16 @@ bool Encodings::isMathAlpha(char_type c)
 }
 
 
+bool Encodings::isUnicodeTextOnly(char_type c)
+{
+	if (isASCII(c) || isMathAlpha(c))
+		return false;
+
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	return it == unicodesymbols.end() || it->second.mathcommand().empty();
+}
+
+
 Encoding const *
 Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 {

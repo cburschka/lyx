@@ -287,6 +287,12 @@ public:
 	 */
 	static bool isMathAlpha(char_type c);
 	/**
+	 * Do we have to wrap in \text this character when in mathmode?
+	 * This is true if \p c is not ascii and the "mathalpha" flag is not
+	 * set and a mathcommand is not defined in the unicodesymbols file.
+	 */
+	static bool isUnicodeTextOnly(char_type c);
+	/**
 	 * Register \p c as a mathmode command.
 	 */
 	static void addMathCmd(char_type c) { mathcmd.insert(c); }
