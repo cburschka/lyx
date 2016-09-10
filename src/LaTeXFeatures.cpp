@@ -1885,4 +1885,24 @@ void LaTeXFeatures::resolveAlternatives()
 }
 
 
+void LaTeXFeatures::expandMultiples()
+{
+	for (Features::iterator it = features_.begin(); it != features_.end();) {
+		if (contains(*it, ',')) {
+			vector<string> const multiples = getVectorFromString(*it, ",");
+			vector<string>::const_iterator const end = multiples.end();
+			vector<string>::const_iterator itm = multiples.begin();
+			// Do nothing if any multiple is already required
+			for (; itm != end; ++itm) {
+				if (!isRequired(*itm))
+					require(*itm);
+			}
+			features_.erase(it);
+			it = features_.begin();
+		} else
+			++it;
+	}
+}
+
+
 } // namespace lyx

@@ -68,6 +68,8 @@ public:
 	///
 	char const * MathMLtype() const;
 	///
+	latexkeys const * symbol() const { return sym_; }
+	///
 	void setSymbol(latexkeys const * sym) { sym_ = sym; }
 	///
 	DocIterator const & pos() { return pos_; }

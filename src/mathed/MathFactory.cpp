@@ -360,23 +360,41 @@ void initMath()
 }
 
 
-bool ensureMath(WriteStream & os, bool needs_math_mode, bool macro)
+bool ensureMath(WriteStream & os, bool needs_mathmode, bool macro,
+                bool textmode_macro)
 {
 	bool brace = os.pendingBrace();
 	os.pendingBrace(false);
 	if (!os.latex())
 		return brace;
-	if (os.textMode() && needs_math_mode) {
-		os << "\\ensuremath{";
+	if (os.textMode() && needs_mathmode) {
+		if (brace) {
+			// close \lyxmathsym
+			os << '}';
+			brace = false;
+		} else {
+			os << "\\ensuremath{";
+			brace = true;
+		}
 		os.textMode(false);
-		brace = true;
-	} else if (macro && brace && !needs_math_mode) {
-		// This is a user defined macro, but not a MathMacro, so we
-		// cannot be sure what mode is needed. As it was entered in
-		// a text box, we restore the text mode.
-		os << '}';
+	} else if (macro && textmode_macro && !os.textMode()) {
+		if (brace) {
+			// close \ensuremath
+			os << '}';
+			brace = false;
+		} else {
+			os << "\\lyxmathsym{";
+			brace = true;
+		}
 		os.textMode(true);
+	} else if (macro && brace && !textmode_macro) {
+		// This is a user defined macro, not a MathMacro, so we
+		// cannot be sure what mode is needed. We leave it in the
+		// same environment it was entered by closing either \lyxmathsym
+		// or \ensuremath, whichever was opened.
+		os << '}';
 		brace = false;
+		os.textMode(!os.textMode());
 	}
 	return brace;
 }

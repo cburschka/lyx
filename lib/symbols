@@ -667,18 +667,18 @@ lyxleft            msa          76   0 mathord  &larr;
 
 male               wasy          26  0 x        &male;
 female             wasy          25  0 x        &female;
-currency           wasy          27  0 textmode &curren; wasysym # works in text mode only (produces \oe in math mode)
-phone              wasy          7   0 textmode &phone;  wasysym # works in text mode only (produces \Upsilon in math mode)
-recorder           wasy          6   0 textmode &telrec; wasysym # works in text mode only (produces \Sigma in math mode)
-clock              wasy          28  0 textmode &clock;  wasysym # works in text mode only (produces \o in math mode)
-lightning          wasy          18  0 textmode &#x2607; wasysym # works in text mode only (produces ` in math mode)
+currency           wasy          27  0 textmode &curren; wasysym,amstext,lyxmathsym # works in text mode only (produces \oe in math mode)
+phone              wasy          7   0 textmode &phone;  wasysym,amstext,lyxmathsym # works in text mode only (produces \Upsilon in math mode)
+recorder           wasy          6   0 textmode &telrec; wasysym,amstext,lyxmathsym # works in text mode only (produces \Sigma in math mode)
+clock              wasy          28  0 textmode &clock;  wasysym,amstext,lyxmathsym # works in text mode only (produces \o in math mode)
+lightning          wasy          18  0 textmode &#x2607; wasysym,amstext,lyxmathsym # works in text mode only (produces ` in math mode)
 # FIXME Display is wrong (bug 8493): qt does not display characters at the \t position (0x09)
-pointer            wasy          9   0 textmode x        wasysym # works in text mode only (produces \Psi in math mode)
-RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym # works in text mode only (produces \jmath in math mode)
-LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym # works in text mode only (produces \imath in math mode)
-UParrow            wasy          75  0 textmode &#x25B2; wasysym # works in text mode only (produces K in math mode)
-DOWNarrow          wasy          76  0 textmode &#x25BC; wasysym # works in text mode only (produces L in math mode)
-AC                 wasy          58  0 textmode &#x223F; wasysym # works in text mode only
+pointer            wasy          9   0 textmode x        wasysym,amstext,lyxmathsym # works in text mode only (produces \Psi in math mode)
+RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym,amstext,lyxmathsym # works in text mode only (produces \jmath in math mode)
+LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym,amstext,lyxmathsym # works in text mode only (produces \imath in math mode)
+UParrow            wasy          75  0 textmode &#x25B2; wasysym,amstext,lyxmathsym # works in text mode only (produces K in math mode)
+DOWNarrow          wasy          76  0 textmode &#x25BC; wasysym,amstext,lyxmathsym # works in text mode only (produces L in math mode)
+AC                 wasy          58  0 textmode &#x223F; wasysym,amstext,lyxmathsym # works in text mode only
 \def\HF{\approx}                                         wasysym
 VHF                wasy          64  0 x        &#x224B; # triple tilde
 Square             wasy          50  0 x        &square;
@@ -770,8 +770,8 @@ sagittarius        wasy          99  0 x        &#x2650;
 capricornus        wasy          100 0 x        &#x2651;
 aquarius           wasy          101 0 x        &#x2652;
 pisces             wasy          102 0 x        &#x2653;
-conjunction        wasy          86  0 textmode &#x260C; wasysym # works in text mode only (produces V in math mode)
-opposition         wasy          87  0 textmode &#x260D; wasysym # works in text mode only (produces W in math mode)
+conjunction        wasy          86  0 textmode &#x260C; wasysym,amstext,lyxmathsym # works in text mode only (produces V in math mode)
+opposition         wasy          87  0 textmode &#x260D; wasysym,amstext,lyxmathsym # works in text mode only (produces W in math mode)
 # APL characters
 APLstar            wasy          69  0 x        &#x235F;
 APLlog             wasy          22  0 x        x
@@ -799,11 +799,11 @@ lyxgluoneelement   wasy          82  0 x        x        notexisting
 # special characters
 cent               wasy         103   0 x        &#00A2;
 permil             wasy         104   0 x        &#x2030;
-agemO              wasy          48   0 textmode &mho;    wasysym # works in text mode only (produces 0 in math mode)
-thorn              wasy         105   0 textmode &#x00FE; wasysym # works in text mode only (produces i in math mode)
-Thorn              wasy         106   0 textmode &#x00DE; wasysym # works in text mode only (produces j in math mode)
-openo              wasy         108   0 textmode &#x0254; wasysym # works in text mode only (produces l in math mode)
-inve               wasy          85   0 textmode &#x0259; wasysym # works in text mode only (produces U in math mode)
+agemO              wasy          48   0 textmode &mho;    wasysym,amstext,lyxmathsym # works in text mode only (produces 0 in math mode)
+thorn              wasy         105   0 textmode &#x00FE; wasysym,amstext,lyxmathsym # works in text mode only (produces i in math mode)
+Thorn              wasy         106   0 textmode &#x00DE; wasysym,amstext,lyxmathsym # works in text mode only (produces j in math mode)
+openo              wasy         108   0 textmode &#x0254; wasysym,amstext,lyxmathsym # works in text mode only (produces l in math mode)
+inve               wasy          85   0 textmode &#x0259; wasysym,amstext,lyxmathsym # works in text mode only (produces U in math mode)
 
 #mho               wasy          48    0  mathord &mho;    wasysym # already in amsfonts
 #Join              wasy          49    0  mathrel x        wasysym # already in amsfonts
@@ -1166,21 +1166,21 @@ else
 \def\Join{|x|}                                                  amssymb
 endif
 # Fixme: latin-1 chars in text file
-\def\AA{\AA}{Å}
-\def\O{\O}{Ø}
+\def\AA{\AA}{Å} textmode &Aring;  amstext,lyxmathsym
+\def\O{\O}{Ø}   textmode &Oslash; amstext,lyxmathsym
 
 iffont cmsy
 # The \sim is placed too high...
 \def\cong{\stackrel{_\sim}{=}}                                  mathrel &cong;
 lyxsurd               cmsy        112 0 mathord  &radic;
 \def\surd{^\lyxsurd}                                            mathord &radic;
-\def\textdegree{\kern-1mu^{\circ}\kern-4mu}                     mathord &deg;
+\def\textdegree{\kern-1mu^{\circ}\kern-4mu} textmode &deg; textcomp,amstext,lyxmathsym
 else
 # FIXME: These don't work on OS X, since the Symbol font uses a different
 #        encoding and is therefore disabled in FontLoader::available().
 cong               lyxsymbol             64  0 mathrel  &cong;
 surd               lyxsymbol             214 0 mathord  &radic;
-textdegree         lyxsymbol             176 0 mathord  &deg;
+textdegree         lyxsymbol             176 0 mathord  &deg; textcomp,amstext,lyxmathsym
 endif
 
 #"{\hat{}}

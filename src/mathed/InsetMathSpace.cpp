@@ -266,7 +266,9 @@ void InsetMathSpace::normalize(NormalStream & os) const
 
 void InsetMathSpace::write(WriteStream & os) const
 {
-	// no MathEnsurer - all kinds work in text and math mode
+	// All kinds work in text and math mode, so simply suspend
+	// writing a possibly pending mode closing brace.
+	MathEnsurer ensurer(os, false);
 	if (space_info[space_].escape)
 		os << '\\';
 	os << space_info[space_].name.c_str();

@@ -156,6 +156,8 @@ public:
 	OutputParams const & runparams() const { return runparams_; }
 	/// Resolve alternatives like "esint|amsmath|wasysym"
 	void resolveAlternatives();
+	/// Expand multiple requirements like "textcomp,lyxmathsym,amstext"
+	void expandMultiples();
 	///
 	void setHTMLTitle(docstring const & t) { htmltitle_ = t; }
 	///

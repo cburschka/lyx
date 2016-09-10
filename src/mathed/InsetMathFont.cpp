@@ -64,6 +64,24 @@ bool InsetMathFont::lockedMode() const
 }
 
 
+void InsetMathFont::write(WriteStream & os) const
+{
+	// Close the mode changing command inserted during export if
+	// we are going to output another mode changing command that
+	// actually doesn't change mode. This avoids exporting things
+	// such as \ensuremath{a\mathit{b}} or \textit{a\text{b}} and
+	// produce instead \ensuremath{a}\mathit{b} and \textit{a}\text{b}.
+	if (os.pendingBrace()
+	    && ((currentMode() == TEXT_MODE && os.textMode())
+		    || (currentMode() == MATH_MODE && !os.textMode()))) {
+		os.os() << '}';
+		os.pendingBrace(false);
+		os.textMode(!os.textMode());
+	}
+	InsetMathNest::write(os);
+}
+
+
 void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet(font());

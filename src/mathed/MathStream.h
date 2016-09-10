@@ -141,10 +141,11 @@ WriteStream & operator<<(WriteStream &, int);
 ///
 WriteStream & operator<<(WriteStream &, unsigned int);
 
-/// ensure math mode, possibly by opening \ensuremath
-bool ensureMath(WriteStream & os, bool needs_math_mode = true, bool macro = false);
+/// ensure correct mode, possibly by opening \ensuremath or \lyxmathsym
+bool ensureMath(WriteStream & os, bool needs_mathmode = true,
+                bool macro = false, bool textmode_macro = false);
 
-/// ensure the requested mode, possibly by closing \ensuremath
+/// ensure the requested mode, possibly by closing \ensuremath or \lyxmathsym
 int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool ascii);
 
 
@@ -153,6 +154,8 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool as
  *
  * A local variable of this type can be used to either ensure math mode
  * or delay the writing of a pending brace when outputting LaTeX.
+ * A LyX MathMacro is always assumed needing a math mode environment, while
+ * no assumption is made for macros defined through \newcommand or \def.
  *
  * Example 1:
  *
@@ -171,23 +174,35 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool as
  *
  * Example 3:
  *
- *      MathEnsurer ensurer(os, needs_math_mode, true);
+ *      MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
  *
- * The third parameter is set to true only for a user defined macro, which
- * needs special handling. When it is a MathMacro, the needs_math_mode
- * parameter is true and the behavior is as in Example 1. When the
- * needs_math_mode parameter is false (not a MathMacro) and the macro
- * was entered in a text box and we are in math mode, the mode is reset
- * to text. This is because the macro was probably designed for text mode
- * (given that it was entered in text mode and we have no way to tell the
- * contrary).
+ * This form is mainly used for math macros as they are treated specially.
+ * In essence, the macros defined in the lib/symbols file and tagged as
+ * textmode will be enclosed in \lyxmathsym if they appear in a math mode
+ * environment, while macros defined in the preamble or ERT are left as is.
+ * The third parameter must be set to true and the fourth parameter has also
+ * to be specified. Only the following 3 different cases are handled.
+ *
+ * When the needs_mathmode parameter is true the behavior is as in Example 1.
+ * This is the case for a LyX MathMacro or a macro not tagged as textmode.
+ *
+ * When the needs_mathmode and textmode_macro parameters are both false the
+ * macro is left in the same (text or math mode) environment it was entered.
+ * This is because it is assumed that the macro was designed for that mode
+ * and we have no way to tell the contrary.
+ * This is the case for macros defined by using \newcommand or \def in ERT.
+ *
+ * When the needs_mathmode parameter is false while textmode_macro is true the
+ * macro will be enclosed in \lyxmathsym if it appears in a math mode environment.
+ * This is the case for the macros tagged as textmode in lib/symbols.
  */
 class MathEnsurer
 {
 public:
 	///
-	explicit MathEnsurer(WriteStream & os, bool needs_math_mode = true, bool macro = false)
-		: os_(os), brace_(ensureMath(os, needs_math_mode, macro)) {}
+	explicit MathEnsurer(WriteStream & os, bool needs_mathmode = true,
+	                     bool macro = false, bool textmode_macro = false)
+		: os_(os), brace_(ensureMath(os, needs_mathmode, macro, textmode_macro)) {}
 	///
 	~MathEnsurer() { os_.pendingBrace(brace_); }
 private:

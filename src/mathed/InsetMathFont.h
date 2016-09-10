@@ -34,6 +34,8 @@ public:
 	/// do we allow changing mode during latex export?
 	bool lockedMode() const;
 	///
+	void write(WriteStream & os) const;
+	///
 	docstring name() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

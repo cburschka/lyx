@@ -260,6 +260,8 @@ void InsetMathSymbol::write(WriteStream & os) const
 	unique_ptr<MathEnsurer> ensurer;
 	if (currentMode() != TEXT_MODE)
 		ensurer = make_unique<MathEnsurer>(os);
+	else
+		ensurer = make_unique<MathEnsurer>(os, false, true, true);
 	os << '\\' << name();
 
 	// $,#, etc. In theory the restriction based on catcodes, but then
