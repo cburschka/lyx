@@ -47,9 +47,11 @@
 
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathBrace.h"
+#include "mathed/InsetMathEnsureMath.h"
 #include "mathed/InsetMathScript.h"
 #include "mathed/MacroTable.h"
 #include "mathed/MathData.h"
+#include "mathed/MathFactory.h"
 #include "mathed/MathMacro.h"
 
 #include <sstream>
@@ -1447,7 +1449,20 @@ bool Cursor::macroModeClose()
 	else if (atom.nucleus()->nargs() > 0)
 		atom.nucleus()->cell(0).append(selection);
 
-	plainInsert(atom);
+	if (in->currentMode() == Inset::TEXT_MODE
+	    && atom.nucleus()->currentMode() == Inset::MATH_MODE) {
+		MathAtom at(new InsetMathEnsureMath(buffer()));
+		at.nucleus()->cell(0).push_back(atom);
+		niceInsert(at);
+		posForward();
+	} else if (in->currentMode() == Inset::MATH_MODE
+		   && atom.nucleus()->currentMode() == Inset::TEXT_MODE) {
+		MathAtom at = createInsetMath("text", buffer());
+		at.nucleus()->cell(0).push_back(atom);
+		niceInsert(at);
+		posForward();
+	} else
+		plainInsert(atom);
 
 	// finally put the macro argument behind, if needed
 	if (macroArg) {
