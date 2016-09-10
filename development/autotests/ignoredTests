@@ -1,4 +1,5 @@
-# Regular expressions for test combinations known to fail permanently.
+# Regular expressions for test combinations known to fail permanently
+# or irrelevant
 #
 # Patterns will be automatically enclosed with '^' and '$'.
 # Combinations matching these patterns will be skipped
@@ -50,3 +51,12 @@ export/doc/(ja/|)MergedManuals_xhtml
 
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
+
+# Sublabel: irrelevant
+# Dedicated test samples that don't need testing in all variants:
+# ===============================================================
+
+# Tests for lib/unicodesymbols -> only test export to 8-bit LaTeX
+check_load/export/Unicode-characters/.*
+lyx2lyx/export/Unicode-characters/.*
+export/export/Unicode-character.*(lyx..|xhtml)
