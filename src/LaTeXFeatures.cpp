@@ -296,7 +296,7 @@ static docstring const textcommaabove_def = from_ascii(
 
 static docstring const textcommaaboveright_def = from_ascii(
         "\\ProvideTextCommandDefault{\\textcommaaboveright}[1]{%%\n"
-        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize\\ `}{#1}}\n");
+        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize\\ '}{#1}}\n");
 
 // Baltic languages use a comma-accent instead of a cedilla
 static docstring const textbaltic_def = from_ascii(
@@ -953,6 +953,8 @@ string const LaTeXFeatures::getPackages() const
 		packages << "\\usepackage{tipa}\n";
 	if (mustProvide("tipx") && !params_.useNonTeXFonts)
 		packages << "\\usepackage{tipx}\n";
+	if (mustProvide("extraipa") && !params_.useNonTeXFonts)
+		packages << "\\usepackage{extraipa}\n";
 	if (mustProvide("tone") && !params_.useNonTeXFonts)
 		packages << "\\usepackage{tone}\n";
 

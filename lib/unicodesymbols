@@ -219,7 +219,7 @@
 0x0146 "\\c{n}"                   "textbaltic" "mathalpha,force=utf8" "\\cedilla{n}" "accents,cedilla" # LATIN SMALL LETTER N WITH CEDILLA (actually a comma accent, Latvian)
 0x0147 "\\v{N}"                   "" "mathalpha" "\\check{N}" # LATIN CAPITAL LETTER N WITH CARON
 0x0148 "\\v{n}"                   "" "mathalpha" "\\check{n}" # LATIN SMALL LETTER N WITH CARON
-0x0149 "'n"                       "" "force=utf8" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
+0x0149 "'n"                       "" "force=utf8,deprecated" "" "" # LATIN SMALL LETTER N PRECEDED BY APOSTROPHE
 0x014a "\\NG"                     "" "" "" "" # LATIN CAPITAL LETTER ENG
 0x014b "\\ng"                     "" "tipashortcut=N" "" "" # LATIN SMALL LETTER ENG
 0x014c "\\={O}"                   "" "mathalpha" "\\bar{O}" # LATIN CAPITAL LETTER O WITH MACRON
@@ -586,19 +586,19 @@
 #
 # Spacing Modifier Letters
 #
-0x02b0 "\\textsuperscript{h}"      "" "" # MODIFIER LETTER SMALL H
+0x02b0 "\\textsuperscript{h}"      "" "force=utf8" # MODIFIER LETTER SMALL H
 0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "force" # MODIFIER LETTER SMALL H WITH HOOK
-0x02b2 "\\textsuperscript{j}"      "" "" # MODIFIER LETTER SMALL J
-0x02b3 "\\textsuperscript{r}"      "" "" # MODIFIER LETTER SMALL R
+0x02b2 "\\textsuperscript{j}"      "" "force=utf8" # MODIFIER LETTER SMALL J
+0x02b3 "\\textsuperscript{r}"      "" "force=utf8" # MODIFIER LETTER SMALL R
 0x02b4 "\\textsuperscript{\\textturnr}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R
 0x02b5 "\\textsuperscript{\\textturnrrtail}" "tipa" "force" # MODIFIER LETTER SMALL TURNED R WITH HOOK
 0x02b6 "\\textsuperscript{\\textinvscr}" "tipa" "force" # MODIFIER LETTER SMALL CAPITAL INVERTED R
-0x02b7 "\\textsuperscript{w}"      "" "" # MODIFIER LETTER SMALL W
-0x02b8 "\\textsuperscript{y}"      "" "" # MODIFIER LETTER SMALL Y
-0x02b9 "\\textasciiacute"          "textcomp" "" # MODIFIER LETTER PRIME
-0x02ba "\\textacutedbl"            "textcomp" "" # MODIFIER LETTER DOUBLE PRIME
-0x02bb "\\textquoteleft"           "" "" # MODIFIER LETTER TURNED COMMA
-0x02bc "'"                         "" "notermination=both" # MODIFIER LETTER APOSTROPHE
+0x02b7 "\\textsuperscript{w}"      "" "force=utf8" # MODIFIER LETTER SMALL W
+0x02b8 "\\textsuperscript{y}"      "" "force=utf8" # MODIFIER LETTER SMALL Y
+0x02b9 "\\textasciiacute"          "textcomp" "force=utf8" # MODIFIER LETTER PRIME
+0x02ba "\\textacutedbl"            "textcomp" "force=utf8" # MODIFIER LETTER DOUBLE PRIME
+0x02bb "\\textquoteleft"           "" "force=utf8" # MODIFIER LETTER TURNED COMMA
+0x02bc "'"                         "" "notermination=both,force=utf8" # MODIFIER LETTER APOSTROPHE
 0x02bd "\\textrevapostrophe"       "tipa" "force" # MODIFIER LETTER REVERSED COMMA
 #0x02be ""                         "" "" # MODIFIER LETTER RIGHT HALF RING
 #0x02bf ""                         "" "" # MODIFIER LETTER LEFT HALF RING
@@ -611,11 +611,11 @@
 0x02c6 "\\^{ }"                   "" "" # MODIFIER LETTER CIRCUMFLEX ACCENT
 0x02c7 "\\v{ }"                   "" "" # CARON
 0x02c8 "\\textprimstress"         "tipa" "force" # MODIFIER LETTER VERTICAL LINE
-0x02c9 "\\={ }"                   "" "" # MODIFIER LETTER MACRON
-0x02ca "\\'{ }"                   "" "" # MODIFIER LETTER ACUTE ACCENT
-0x02cb "\\`{ }"                   "" "" # MODIFIER LETTER GRAVE ACCENT
+0x02c9 "\\={ }"                   "" "force=utf8" # MODIFIER LETTER MACRON
+0x02ca "\\'{ }"                   "" "force=utf8" # MODIFIER LETTER ACUTE ACCENT
+0x02cb "\\`{ }"                   "" "force=utf8" # MODIFIER LETTER GRAVE ACCENT
 0x02cc "\\textsecstress"          "tipa" "force" # MODIFIER LETTER LOW VERTICAL LINE
-0x02cd "\\b{ }"                   "" "" # MODIFIER LETTER LOW MACRON
+0x02cd "\\b{ }"                   "" "force=utf8" # MODIFIER LETTER LOW MACRON
 0x02ce "\\textsubgrave{ }"        "tipa" "force" # MODIFIER LETTER LOW GRAVE ACCENT
 0x02cf "\\textsubacute{ }"        "tipa" "force" # MODIFIER LETTER LOW ACUTE ACCENT
 0x02d0 "\\textlengthmark"         "tipa" "force,tipashortcut=:" # MODIFIER LETTER TRIANGULAR COLON
@@ -624,20 +624,20 @@
 #0x02d3 ""                         "" "" # MODIFIER LETTER CENTRED LEFT HALF RING
 0x02d4 "\\textraising{ }"         "tipa" "force" # MODIFIER LETTER UP TACK
 0x02d5 "\\textlowering{ }"        "tipa" "force" # MODIFIER LETTER DOWN TACK
-0x02d6 ""                         "" "notermination=math" "+" # MODIFIER LETTER PLUS SIGN
-0x02d7 ""                         "" "notermination=math" "-" # MODIFIER LETTER MINUS SIGN
+0x02d6 ""                         "" "notermination=math,force=utf8" "+" # MODIFIER LETTER PLUS SIGN
+0x02d7 ""                         "" "notermination=math,force=utf8" "-" # MODIFIER LETTER MINUS SIGN
 0x02d8 "\\u{ }"                   "" "" # BREVE
-0x02d9 "\\.{ }"                   "" "" # DOT ABOVE
-0x02da "\\r{ }"                   "" "" # RING ABOVE
-0x02db "\\k{ }"                   "" "" # OGONEK
+0x02d9 "\\.{ }"                   "" "force=utf8" # DOT ABOVE
+0x02da "\\r{ }"                   "" "force=utf8" # RING ABOVE
+0x02db "\\k{ }"                   "" "force=utf8" # OGONEK
 0x02dc "\\~{ }"                   "" "" # SMALL TILDE
 0x02dd "\\H{ }"                   "" "" # DOUBLE ACUTE ACCENT
 0x02de "\\textrhoticity"          "tipa" "force" # MODIFIER LETTER RHOTIC HOOK
 #0x02df "\\textovercross{ }"       "tipa" "force" # MODIFIER LETTER CROSS ACCENT
 0x02e0 "\\textsuperscript{\\textgamma}"  "tipa" "force" # MODIFIER LETTER SMALL GAMMA
-0x02e1 "\\textsuperscript{l}"     "" "" # MODIFIER LETTER SMALL L
-0x02e2 "\\textsuperscript{s}"     "" "" # MODIFIER LETTER SMALL S
-0x02e3 "\\textsuperscript{x}"     "" "" # MODIFIER LETTER SMALL X
+0x02e1 "\\textsuperscript{l}"     "" "force=utf8" # MODIFIER LETTER SMALL L
+0x02e2 "\\textsuperscript{s}"     "" "force=utf8" # MODIFIER LETTER SMALL S
+0x02e3 "\\textsuperscript{x}"     "" "force=utf8" # MODIFIER LETTER SMALL X
 0x02e4 "\\textsuperscript{\\textrevglotstop}" "tipa" "force" # MODIFIER LETTER SMALL REVERSED GLOTTAL STOP
 0x02e5 "\\tone{55}"               "tone" "force" # MODIFIER LETTER EXTRA-HIGH TONE BAR
 0x02e6 "\\tone{44}"               "tone" "force" # MODIFIER LETTER HIGH TONE BAR
@@ -687,9 +687,9 @@
 0x030f "\\textdoublegrave"        "tipa" "combining,force" # COMBINING DOUBLE GRAVE ACCENT
 0x0310 "\\textdotbreve"           "tipa" "combining,force" # COMBINING CANDRABINDU
 0x0311 "\\textroundcap"           "tipa" "combining,force" # COMBINING INVERTED BREVE
-#0x0312 ""                         "" "combining,force" # COMBINING TURNED COMMA ABOVE
-0x0313 "\\textcommaabove"         "textcommaabove" "combining,force" # COMBINING COMMA ABOVE
-#0x0314 ""                         "" "combining,force" # COMBINING REVERSED COMMA ABOVE
+0x0312 "\\textcommaabove"	  "textcommaabove" "combining,force" # COMBINING TURNED COMMA ABOVE
+#0x0313 "\\textgreek{\\accpsili}"    "textgreek" "combining,force" # COMBINING COMMA ABOVE
+#0x0314 "\\textgreek{\\accdasia}"    "textgreek" "combining,force" # COMBINING REVERSED COMMA ABOVE
 0x0315 "\\textcommaaboveright"    "textcommaaboveright" "combining,force" # COMBINING COMMA ABOVE RIGHT
 0x0316 "\\textsubgrave"           "tipa" "combining,force" # COMBINING GRAVE ACCENT BELOW
 0x0317 "\\textsubacute"           "tipa" "combining,force" # COMBINING ACUTE ACCENT BELOW
@@ -737,17 +737,17 @@
 #0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
 0x0342 "\\~"                       "" "combining,force" "" "" # COMBINING GREEK PERISPOMENI
 #0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS == 0x0313 COMBINING COMMA ABOVE (= combining GREEK PSILI)
-0x0344 "\\\"'"                     "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
-0x0345 "|"                         "textgreek" "force"  # COMBINING GREEK YPOGEGRAMMENI (place after the base letter, the combination is done via ligature definitions in Greek text fonts (LGR))
-0x0346 "\\overbridge"             "tipa" "combining,force" # COMBINING BRIDGE ABOVE
-0x0347 "\\subdoublebar"           "tipa" "combining,force" # COMBINING EQUALS SIGN BELOW
-0x0348 "\\subdoublevert"          "tipa" "combining,force" # COMBINING DOUBLE VERTICAL LINE BELOW
-0x0349 "\\subcorner"              "tipa" "combining,force" # COMBINING LEFT ANGLE BELOW
-0x034a "\\crtilde"                "tipa" "combining,force" # COMBINING NOT TILDE ABOVE
-0x034b "\\dottedtilde"            "tipa" "combining,force" # COMBINING HOMOTHETIC ABOVE
-0x034c "\\doubletilde"            "tipa" "combining,force" # COMBINING ALMOST EQUAL TO ABOVE
-0x034d "\\spreadlips"             "tipa" "combining,force" # COMBINING LEFT RIGHT ARROW BELOW
-0x034e "\\whistle"                "tipa" "combining,force" # COMBINING UPWARDS ARROW BELOW
+#0x0344 "\\\"'"                    "" "textgreek,combining,force" # COMBINING GREEK DIALYTIKA TONOS (works only with Greek text fonts (LGR))
+#0x0345 "|"                        "textgreek" "force"  # COMBINING GREEK YPOGEGRAMMENI (postfic accent, works only with Greek text fonts (LGR))
+0x0346 "\\overbridge"             "extraipa" "combining,force" # COMBINING BRIDGE ABOVE
+0x0347 "\\subdoublebar"           "extraipa" "combining,force" # COMBINING EQUALS SIGN BELOW
+0x0348 "\\subdoublevert"          "extraipa" "combining,force" # COMBINING DOUBLE VERTICAL LINE BELOW
+0x0349 "\\subcorner"              "extraipa" "combining,force" # COMBINING LEFT ANGLE BELOW
+0x034a "\\crtilde"                "extraipa" "combining,force" # COMBINING NOT TILDE ABOVE
+0x034b "\\dottedtilde"            "extraipa" "combining,force" # COMBINING HOMOTHETIC ABOVE
+0x034c "\\doubletilde"            "extraipa" "combining,force" # COMBINING ALMOST EQUAL TO ABOVE
+0x034d "\\spreadlips"             "extraipa" "combining,force" # COMBINING LEFT RIGHT ARROW BELOW
+0x034e "\\whistle"                "extraipa" "combining,force" # COMBINING UPWARDS ARROW BELOW
 #0x034f ""                         "" "" # COMBINING GRAPHEME JOINER
 #0x0360 ""                         "" "combining,force" # COMBINING DOUBLE TILDE
 0x0361 "\\t"                      "" "combining,force" # COMBINING DOUBLE INVERTED BREVE (ligature tie)
@@ -1133,69 +1133,69 @@
 #0x1d29 ""                         "" "" # GREEK LETTER SMALL CAPITAL RHO
 #0x1d2a ""                         "" "" # GREEK LETTER SMALL CAPITAL PSI
 #0x1d2b ""                         "" "" # CYRILLIC LETTER SMALL CAPITAL EL
-0x1d2c "\\textsuperscript{A}"      "" "" # MODIFIER LETTER CAPITAL A
-0x1d2d "\\textsuperscript{\\AE}"   "" "" # MODIFIER LETTER CAPITAL AE
-0x1d2e "\\textsuperscript{B}"      "" "" # MODIFIER LETTER CAPITAL B
+0x1d2c "\\textsuperscript{A}"      "" "force=utf8" # MODIFIER LETTER CAPITAL A
+0x1d2d "\\textsuperscript{\\AE}"   "" "force=utf8" # MODIFIER LETTER CAPITAL AE
+0x1d2e "\\textsuperscript{B}"      "" "force=utf8" # MODIFIER LETTER CAPITAL B
 #0x1d2f ""                         "" "" # MODIFIER LETTER CAPITAL BARRED B
-0x1d30 "\\textsuperscript{D}"      "" "" # MODIFIER LETTER CAPITAL D
-0x1d31 "\\textsuperscript{E}"      "" "" # MODIFIER LETTER CAPITAL E
+0x1d30 "\\textsuperscript{D}"      "" "force=utf8" # MODIFIER LETTER CAPITAL D
+0x1d31 "\\textsuperscript{E}"      "" "force=utf8" # MODIFIER LETTER CAPITAL E
 #0x1d32 ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED E
-0x1d33 "\\textsuperscript{G}"      "" "" # MODIFIER LETTER CAPITAL G
-0x1d34 "\\textsuperscript{H}"      "" "" # MODIFIER LETTER CAPITAL H
-0x1d35 "\\textsuperscript{I}"      "" "" # MODIFIER LETTER CAPITAL I
-0x1d36 "\\textsuperscript{J}"      "" "" # MODIFIER LETTER CAPITAL J
-0x1d37 "\\textsuperscript{K}"      "" "" # MODIFIER LETTER CAPITAL K
-0x1d38 "\\textsuperscript{L}"      "" "" # MODIFIER LETTER CAPITAL L
-0x1d39 "\\textsuperscript{M}"      "" "" # MODIFIER LETTER CAPITAL M
-0x1d3a "\\textsuperscript{N}"      "" "" # MODIFIER LETTER CAPITAL N
+0x1d33 "\\textsuperscript{G}"      "" "force=utf8" # MODIFIER LETTER CAPITAL G
+0x1d34 "\\textsuperscript{H}"      "" "force=utf8" # MODIFIER LETTER CAPITAL H
+0x1d35 "\\textsuperscript{I}"      "" "force=utf8" # MODIFIER LETTER CAPITAL I
+0x1d36 "\\textsuperscript{J}"      "" "force=utf8" # MODIFIER LETTER CAPITAL J
+0x1d37 "\\textsuperscript{K}"      "" "force=utf8" # MODIFIER LETTER CAPITAL K
+0x1d38 "\\textsuperscript{L}"      "" "force=utf8" # MODIFIER LETTER CAPITAL L
+0x1d39 "\\textsuperscript{M}"      "" "force=utf8" # MODIFIER LETTER CAPITAL M
+0x1d3a "\\textsuperscript{N}"      "" "force=utf8" # MODIFIER LETTER CAPITAL N
 #0x1d3b ""                         "" "" # MODIFIER LETTER CAPITAL REVERSED N
-0x1d3c "\\textsuperscript{O}"      "" "" # MODIFIER LETTER CAPITAL O
+0x1d3c "\\textsuperscript{O}"      "" "force=utf8" # MODIFIER LETTER CAPITAL O
 #0x1d3d ""                         "" "" # MODIFIER LETTER CAPITAL OU
-0x1d3e "\\textsuperscript{P}"      "" "" # MODIFIER LETTER CAPITAL P
-0x1d3f "\\textsuperscript{R}"      "" "" # MODIFIER LETTER CAPITAL R
-0x1d40 "\\textsuperscript{T}"      "" "" # MODIFIER LETTER CAPITAL T
-0x1d41 "\\textsuperscript{U}"      "" "" # MODIFIER LETTER CAPITAL U
-0x1d42 "\\textsuperscript{W}"      "" "" # MODIFIER LETTER CAPITAL W
-0x1d43 "\\textsuperscript{a}"      "" "" # MODIFIER LETTER SMALL A
+0x1d3e "\\textsuperscript{P}"      "" "force=utf8" # MODIFIER LETTER CAPITAL P
+0x1d3f "\\textsuperscript{R}"      "" "force=utf8" # MODIFIER LETTER CAPITAL R
+0x1d40 "\\textsuperscript{T}"      "" "force=utf8" # MODIFIER LETTER CAPITAL T
+0x1d41 "\\textsuperscript{U}"      "" "force=utf8" # MODIFIER LETTER CAPITAL U
+0x1d42 "\\textsuperscript{W}"      "" "force=utf8" # MODIFIER LETTER CAPITAL W
+0x1d43 "\\textsuperscript{a}"      "" "force=utf8" # MODIFIER LETTER SMALL A
 0x1d44 "\\textsuperscript{\\textturna}" "tipa" "force" # MODIFIER LETTER SMALL TURNED A
 0x1d45 "\\textsuperscript{\\textscripta}" "tipa" "force" # MODIFIER LETTER SMALL ALPHA
 #0x1d46 ""                         "" "" # MODIFIER LETTER SMALL TURNED AE
-0x1d47 "\\textsuperscript{b}"      "" "" # MODIFIER LETTER SMALL B
-0x1d48 "\\textsuperscript{d}"      "" "" # MODIFIER LETTER SMALL D
-0x1d49 "\\textsuperscript{e}"      "" "" # MODIFIER LETTER SMALL E
+0x1d47 "\\textsuperscript{b}"      "" "force=utf8" # MODIFIER LETTER SMALL B
+0x1d48 "\\textsuperscript{d}"      "" "force=utf8" # MODIFIER LETTER SMALL D
+0x1d49 "\\textsuperscript{e}"      "" "force=utf8" # MODIFIER LETTER SMALL E
 0x1d4a "\\textsuperscript{\\textschwa}" "tipa" "force" # MODIFIER LETTER SMALL SCHWA
 0x1d4b "\\textsuperscript{\\textepsilon}" "tipa" "force" # MODIFIER LETTER SMALL OPEN E
 0x1d4c "\\textsuperscript{\\textrevepsilon}" "tipa" "force" # MODIFIER LETTER SMALL TURNED OPEN E
-0x1d4d "\\textsuperscript{g}"       "" "" # MODIFIER LETTER SMALL G
+0x1d4d "\\textsuperscript{g}"       "" "force=utf8" # MODIFIER LETTER SMALL G
 #0x1d4e ""                         "" "" # MODIFIER LETTER SMALL TURNED I
-0x1d4f "\\textsuperscript{k}"      "" "" # MODIFIER LETTER SMALL K
-0x1d50 "\\textsuperscript{m}"      "" "" # MODIFIER LETTER SMALL M
+0x1d4f "\\textsuperscript{k}"      "" "force=utf8" # MODIFIER LETTER SMALL K
+0x1d50 "\\textsuperscript{m}"      "" "force=utf8" # MODIFIER LETTER SMALL M
 0x1d51 "\\textsuperscript{\\ng}"   "tipa" "force" # MODIFIER LETTER SMALL ENG
-0x1d52 "\\textsuperscript{o}"      "" "" # MODIFIER LETTER SMALL O
+0x1d52 "\\textsuperscript{o}"      "" "force=utf8" # MODIFIER LETTER SMALL O
 0x1d53 "\\textsuperscript{\\textopeno}" "tipa" "force" # MODIFIER LETTER SMALL OPEN O
 #0x1d54 ""                         "" "" # MODIFIER LETTER SMALL TOP HALF O
 #0x1d55 ""                         "" "" # MODIFIER LETTER SMALL BOTTOM HALF O
-0x1d56 "\\textsuperscript{p}"      "" "" # MODIFIER LETTER SMALL P
-0x1d57 "\\textsuperscript{t}"      "" "" # MODIFIER LETTER SMALL T
-0x1d58 "\\textsuperscript{u}"      "" "" # MODIFIER LETTER SMALL U
+0x1d56 "\\textsuperscript{p}"      "" "force=utf8" # MODIFIER LETTER SMALL P
+0x1d57 "\\textsuperscript{t}"      "" "force=utf8" # MODIFIER LETTER SMALL T
+0x1d58 "\\textsuperscript{u}"      "" "force=utf8" # MODIFIER LETTER SMALL U
 #0x1d59 ""                         "" "" # MODIFIER LETTER SMALL SIDEWAYS U
 0x1d5a "\\textsuperscript{\\textturnm}" "tipa" "force" # MODIFIER LETTER SMALL TURNED M
-0x1d5b "\\textsuperscript{v}"      "" "" # MODIFIER LETTER SMALL V
+0x1d5b "\\textsuperscript{v}"      "" "force=utf8" # MODIFIER LETTER SMALL V
 #0x1d5c ""                         "" "" # MODIFIER LETTER SMALL AIN
-0x1d5d "\\textsuperscript{\\textgreek{b}}" "textgreek" "" # MODIFIER LETTER SMALL BETA
-0x1d5e "\\textsuperscript{\\textgreek{g}}" "textgreek" "" # MODIFIER LETTER SMALL GREEK GAMMA
-0x1d5f "\\textsuperscript{\\textgreek{d}}" "textgreek""" # MODIFIER LETTER SMALL DELTA
-0x1d60 "\\textsuperscript{\\textgreek{f}}" "textgreek""" # MODIFIER LETTER SMALL GREEK PHI
-0x1d61 "\\textsuperscript{\\textgreek{q}}" "textgreek""" # MODIFIER LETTER SMALL CHI
-0x1d62 "\\textsubscript{i}"       "subscript" "" "{{}_i}" "" # LATIN SUBSCRIPT SMALL LETTER I
-0x1d63 "\\textsubscript{r}"       "subscript" "" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
-0x1d64 "\\textsubscript{u}"       "subscript" "" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
-0x1d65 "\\textsubscript{v}"       "subscript" "" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
-0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript,textgreek" "" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
-0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript,textgreek" "" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
-0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript,textgreek" "" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
-0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript,textgreek" "" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
-0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript,textgreek" "" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
+0x1d5d "\\textsuperscript{\\textgreek{b}}" "textgreek" "force=utf8" # MODIFIER LETTER SMALL BETA
+0x1d5e "\\textsuperscript{\\textgreek{g}}" "textgreek" "force=utf8" # MODIFIER LETTER SMALL GREEK GAMMA
+0x1d5f "\\textsuperscript{\\textgreek{d}}" "textgreek" "force=utf8" # MODIFIER LETTER SMALL DELTA
+0x1d60 "\\textsuperscript{\\textgreek{f}}" "textgreek" "force=utf8" # MODIFIER LETTER SMALL GREEK PHI
+0x1d61 "\\textsuperscript{\\textgreek{q}}" "textgreek" "force=utf8" # MODIFIER LETTER SMALL CHI
+0x1d62 "\\textsubscript{i}"       "subscript" "force=utf8" "{{}_i}" "" # LATIN SUBSCRIPT SMALL LETTER I
+0x1d63 "\\textsubscript{r}"       "subscript" "force=utf8" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
+0x1d64 "\\textsubscript{u}"       "subscript" "force=utf8" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
+0x1d65 "\\textsubscript{v}"       "subscript" "force=utf8" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
+0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript,textgreek" "force=utf8" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
+0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript,textgreek" "force=utf8" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
+0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript,textgreek" "force=utf8" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
+0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript,textgreek" "force=utf8" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
+0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript,textgreek" "force=utf8" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
 0x1d6d "\\textsuperimposetilde{d}" "tipa" "force" # LATIN SMALL LETTER D WITH MIDDLE TILDE
@@ -1230,18 +1230,18 @@
 0x1e01 "\\textsubring{a}"         "tipa" "force,mathalpha" "\\subring{a}" "accents,subring" # LATIN SMALL LETTER A WITH RING BELOW
 0x1e02 "\\.{B}"                   "" "mathalpha" "\\dot{B}" # LATIN CAPITAL LETTER B WITH DOT ABOVE
 0x1e03 "\\.{b}"                   "" "mathalpha" "\\dot{b}" # LATIN SMALL LETTER B WITH DOT ABOVE
-0x1e04 "\\d{B}"                   "" "mathalpha" "\\subdot{B}" "accents,subdot" # LATIN CAPITAL LETTER B WITH DOT BELOW
-0x1e05 "\\d{b}"                   "" "mathalpha" "\\subdot{b}" "accents,subdot" # LATIN SMALL LETTER B WITH DOT BELOW
-#0x1e06 ""                         "" "" # LATIN CAPITAL LETTER B WITH LINE BELOW
-#0x1e07 ""                         "" "" # LATIN SMALL LETTER B WITH LINE BELOW
+0x1e04 "\\d{B}"                   "" "force=utf8,mathalpha" "\\subdot{B}" "accents,subdot" # LATIN CAPITAL LETTER B WITH DOT BELOW
+0x1e05 "\\d{b}"                   "" "force=utf8,mathalpha" "\\subdot{b}" "accents,subdot" # LATIN SMALL LETTER B WITH DOT BELOW
+0x1e06 "\\b{B}"                   "" "force=utf8" # LATIN CAPITAL LETTER B WITH LINE BELOW
+0x1e07 "\\b{b}"			  "" "force=utf8" # LATIN SMALL LETTER B WITH LINE BELOW
 #0x1e08 ""                         "" "" # LATIN CAPITAL LETTER C WITH CEDILLA AND ACUTE
 #0x1e09 ""                         "" "" # LATIN SMALL LETTER C WITH CEDILLA AND ACUTE
-0x1e0a "\\.{D}"                   "" "mathalpha" "\\dot{D}" # LATIN CAPITAL LETTER D WITH DOT ABOVE
-0x1e0b "\\.{d}"                   "" "mathalpha" "\\dot{d}" # LATIN SMALL LETTER D WITH DOT ABOVE
-0x1e0c "\\d{D}"                   "" "mathalpha" "\\subdot{D}" "accents,subdot" # LATIN CAPITAL LETTER D WITH DOT BELOW
-0x1e0d "\\d{d}"                   "" "mathalpha" "\\subdot{d}" "accents,subdot" # LATIN SMALL LETTER D WITH DOT BELOW
-#0x1e0e ""                         "" "" # LATIN CAPITAL LETTER D WITH LINE BELOW
-#0x1e0f ""                         "" "" # LATIN SMALL LETTER D WITH LINE BELOW
+0x1e0a "\\.{D}"                   "" "force=utf8,mathalpha" "\\dot{D}" # LATIN CAPITAL LETTER D WITH DOT ABOVE
+0x1e0b "\\.{d}"                   "" "force=utf8,mathalpha" "\\dot{d}" # LATIN SMALL LETTER D WITH DOT ABOVE
+0x1e0c "\\d{D}"                   "" "force=utf8,mathalpha" "\\subdot{D}" "accents,subdot" # LATIN CAPITAL LETTER D WITH DOT BELOW
+0x1e0d "\\d{d}"                   "" "force=utf8,mathalpha" "\\subdot{d}" "accents,subdot" # LATIN SMALL LETTER D WITH DOT BELOW
+0x1e0e "\\b{D}"			  "" "force=utf8" # LATIN CAPITAL LETTER D WITH LINE BELOW
+0x1e0f "\\b{d}"                   "" "force=utf8" # LATIN SMALL LETTER D WITH LINE BELOW
 0x1e10 "\\c{D}"                   "" "force=utf8,mathalpha" "\\cedilla{D}" "accents,cedilla" # LATIN CAPITAL LETTER D WITH CEDILLA
 0x1e11 "\\c{d}"                   "" "force=utf8,mathalpha" "\\cedilla{d}" "accents,cedilla" # LATIN SMALL LETTER D WITH CEDILLA
 0x1e12 "\\textsubcircum{D}"       "tipa" "force,mathalpha" "\\subhat{D}" "accents,subhat" # LATIN CAPITAL LETTER D WITH CIRCUMFLEX BELOW
@@ -1256,50 +1256,50 @@
 0x1e1b "\\textsubtilde{e}"        "tipa" "force,mathalpha" "\\subtilde{e}" "accents,subtilde" # LATIN SMALL LETTER E WITH TILDE BELOW
 #0x1e1c ""                         "" "" # LATIN CAPITAL LETTER E WITH CEDILLA AND BREVE
 #0x1e1d ""                         "" "" # LATIN SMALL LETTER E WITH CEDILLA AND BREVE
-0x1e1e "\\.{F}"                   "" "mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
-0x1e1f "\\.{f}"                   "" "mathalpha" "\\dot{f}" # LATIN SMALL LETTER F WITH DOT ABOVE
-#0x1e20 ""                         "" "" # LATIN CAPITAL LETTER G WITH MACRON
-#0x1e21 ""                         "" "" # LATIN SMALL LETTER G WITH MACRON
-0x1e22 "\\.{H}"                   "" "mathalpha" "\\dot{H}" # LATIN CAPITAL LETTER H WITH DOT ABOVE
-0x1e23 "\\.{h}"                   "" "mathalpha" "\\dot{h}" # LATIN SMALL LETTER H WITH DOT ABOVE
-0x1e24 "\\d{H}"                   "" "mathalpha" "\\subdot{H}" "accents,subdot" # LATIN CAPITAL LETTER H WITH DOT BELOW
-0x1e25 "\\d{h}"                   "" "mathalpha" "\\subdot{h}" "accents,subdot" # LATIN SMALL LETTER H WITH DOT BELOW
-0x1e26 "\\\"{H}"                  "" "mathalpha" "\\ddot{H}" # LATIN CAPITAL LETTER H WITH DIAERESIS
-0x1e27 "\\\"{h}"                  "" "mathalpha" "\\ddot{h}" # LATIN SMALL LETTER H WITH DIAERESIS
-0x1e28 "\\c{H}"                   "" "mathalpha" "\\cedilla{H}" "accents,cedilla" # LATIN CAPITAL LETTER H WITH CEDILLA
-0x1e29 "\\c{h}"                   "" "mathalpha" "\\cedilla{h}" "accents,cedilla" # LATIN SMALL LETTER H WITH CEDILLA
+0x1e1e "\\.{F}"                   "" "force=utf8,mathalpha" "\\dot{F}" # LATIN CAPITAL LETTER F WITH DOT ABOVE
+0x1e1f "\\.{f}"                   "" "force=utf8,mathalpha" "\\dot{f}" # LATIN SMALL LETTER F WITH DOT ABOVE
+0x1e20 "\\={G}"                   "" "force=utf8" # LATIN CAPITAL LETTER G WITH MACRON
+0x1e21 "\\={g}"                   "" "force=utf8," # LATIN SMALL LETTER G WITH MACRON
+0x1e22 "\\.{H}"                   "" "force=utf8,mathalpha" "\\dot{H}" # LATIN CAPITAL LETTER H WITH DOT ABOVE
+0x1e23 "\\.{h}"                   "" "force=utf8,mathalpha" "\\dot{h}" # LATIN SMALL LETTER H WITH DOT ABOVE
+0x1e24 "\\d{H}"                   "" "force=utf8,mathalpha" "\\subdot{H}" "accents,subdot" # LATIN CAPITAL LETTER H WITH DOT BELOW
+0x1e25 "\\d{h}"                   "" "force=utf8,mathalpha" "\\subdot{h}" "accents,subdot" # LATIN SMALL LETTER H WITH DOT BELOW
+0x1e26 "\\\"{H}"                  "" "force=utf8,mathalpha" "\\ddot{H}" # LATIN CAPITAL LETTER H WITH DIAERESIS
+0x1e27 "\\\"{h}"                  "" "force=utf8,mathalpha" "\\ddot{h}" # LATIN SMALL LETTER H WITH DIAERESIS
+0x1e28 "\\c{H}"                   "" "force=utf8,mathalpha" "\\cedilla{H}" "accents,cedilla" # LATIN CAPITAL LETTER H WITH CEDILLA
+0x1e29 "\\c{h}"                   "" "force=utf8,mathalpha" "\\cedilla{h}" "accents,cedilla" # LATIN SMALL LETTER H WITH CEDILLA
 #0x1e2a ""                         "" "" # LATIN CAPITAL LETTER H WITH BREVE BELOW
 #0x1e2b ""                         "" "" # LATIN SMALL LETTER H WITH BREVE BELOW
 0x1e2c "\\textsubtilde{I}"        "tipa" "force,mathalpha" "\\subtilde{I}" "accents,subtilde" # LATIN CAPITAL LETTER I WITH TILDE BELOW
 0x1e2d "\\textsubtilde{i}"        "tipa" "force,mathalpha" "\\subtilde{i}" "accents,subtilde" # LATIN SMALL LETTER I WITH TILDE BELOW
 #0x1e2e ""                         "" "" # LATIN CAPITAL LETTER I WITH DIAERESIS AND ACUTE
 #0x1e2f ""                         "" "" # LATIN SMALL LETTER I WITH DIAERESIS AND ACUTE
-0x1e30 "\\'{K}"                   "" "mathalpha" "\\acute{K}" # LATIN CAPITAL LETTER K WITH ACUTE
-0x1e31 "\\'{k}"                   "" "mathalpha" "\\acute{k}" # LATIN SMALL LETTER K WITH ACUTE
-0x1e32 "\\d{K}"                   "" "mathalpha" "\\subdot{K}" "accents,subdot" # LATIN CAPITAL LETTER K WITH DOT BELOW
-0x1e33 "\\d{k}"                   "" "mathalpha" "\\subdot{k}" "accents,subdot" # LATIN SMALL LETTER K WITH DOT BELOW
-#0x1e34 ""                         "" "" # LATIN CAPITAL LETTER K WITH LINE BELOW
-#0x1e35 ""                         "" "" # LATIN SMALL LETTER K WITH LINE BELOW
-0x1e36 "\\d{L}"                   "" "mathalpha" "\\subdot{L}" "accents,subdot" # LATIN CAPITAL LETTER L WITH DOT BELOW
-0x1e37 "\\d{l}"                   "" "mathalpha" "\\subdot{l}" "accents,subdot" # LATIN SMALL LETTER L WITH DOT BELOW
+0x1e30 "\\'{K}"                   "" "force=utf8,mathalpha" "\\acute{K}" # LATIN CAPITAL LETTER K WITH ACUTE
+0x1e31 "\\'{k}"                   "" "force=utf8,mathalpha" "\\acute{k}" # LATIN SMALL LETTER K WITH ACUTE
+0x1e32 "\\d{K}"                   "" "force=utf8,mathalpha" "\\subdot{K}" "accents,subdot" # LATIN CAPITAL LETTER K WITH DOT BELOW
+0x1e33 "\\d{k}"                   "" "force=utf8,mathalpha" "\\subdot{k}" "accents,subdot" # LATIN SMALL LETTER K WITH DOT BELOW
+0x1e34 "\\b{K}"			  "" "force=utf8" # LATIN CAPITAL LETTER K WITH LINE BELOW
+0x1e35 "\\b{k}"                   "" "force=utf8" # LATIN SMALL LETTER K WITH LINE BELOW
+0x1e36 "\\d{L}"                   "" "force=utf8,mathalpha" "\\subdot{L}" "accents,subdot" # LATIN CAPITAL LETTER L WITH DOT BELOW
+0x1e37 "\\d{l}"                   "" "force=utf8,mathalpha" "\\subdot{l}" "accents,subdot" # LATIN SMALL LETTER L WITH DOT BELOW
 #0x1e38 ""                         "" "" # LATIN CAPITAL LETTER L WITH DOT BELOW AND MACRON
 #0x1e39 ""                         "" "" # LATIN SMALL LETTER L WITH DOT BELOW AND MACRON
-#0x1e3a ""                         "" "" # LATIN CAPITAL LETTER L WITH LINE BELOW
-#0x1e3b ""                         "" "" # LATIN SMALL LETTER L WITH LINE BELOW
+0x1e3a "\\b{L}"			  "" "force=utf8" # LATIN CAPITAL LETTER L WITH LINE BELOW
+0x1e3b "\\b{l}"                   "" "force=utf8" # LATIN SMALL LETTER L WITH LINE BELOW
 0x1e3c "\\textsubcircum{L}"       "tipa" "force,mathalpha" "\\subhat{L}" "accents,subhat" # LATIN CAPITAL LETTER L WITH CIRCUMFLEX BELOW
 0x1e3d "\\textsubcircum{l}"       "tipa" "force,mathalpha" "\\subhat{l}" "accents,subhat" # LATIN SMALL LETTER L WITH CIRCUMFLEX BELOW
-0x1e3e "\\'{M}"                   "" "mathalpha" "\\acute{M}" # LATIN CAPITAL LETTER M WITH ACUTE
-0x1e3f "\\'{m}"                   "" "mathalpha" "\\acute{m}" # LATIN SMALL LETTER M WITH ACUTE
-0x1e40 "\\.{M}"                   "" "mathalpha" "\\dot{M}" # LATIN CAPITAL LETTER M WITH DOT ABOVE
-0x1e41 "\\.{m}"                   "" "mathalpha" "\\dot{m}" # LATIN SMALL LETTER M WITH DOT ABOVE
-0x1e42 "\\d{M}"                   "" "mathalpha" "\\subdot{M}" "accents,subdot" # LATIN CAPITAL LETTER M WITH DOT BELOW
-0x1e43 "\\d{m}"                   "" "mathalpha" "\\subdot{m}" "accents,subdot" # LATIN SMALL LETTER M WITH DOT BELOW
-0x1e44 "\\.{N}"                   "" "mathalpha" "\\dot{N}" # LATIN CAPITAL LETTER N WITH DOT ABOVE
-0x1e45 "\\.{n}"                   "" "mathalpha" "\\dot{n}" # LATIN SMALL LETTER N WITH DOT ABOVE
-0x1e46 "\\d{N}"                   "" "mathalpha" "\\subdot{N}" "accents,subdot" # LATIN CAPITAL LETTER N WITH DOT BELOW
-0x1e47 "\\d{n}"                   "" "mathalpha" "\\subdot{n}" "accents,subdot" # LATIN SMALL LETTER N WITH DOT BELOW
-#0x1e48 ""                         "" "" # LATIN CAPITAL LETTER N WITH LINE BELOW
-#0x1e49 ""                         "" "" # LATIN SMALL LETTER N WITH LINE BELOW
+0x1e3e "\\'{M}"                   "" "force=utf8,mathalpha" "\\acute{M}" # LATIN CAPITAL LETTER M WITH ACUTE
+0x1e3f "\\'{m}"                   "" "force=utf8,mathalpha" "\\acute{m}" # LATIN SMALL LETTER M WITH ACUTE
+0x1e40 "\\.{M}"                   "" "force=utf8,mathalpha" "\\dot{M}" # LATIN CAPITAL LETTER M WITH DOT ABOVE
+0x1e41 "\\.{m}"                   "" "force=utf8,mathalpha" "\\dot{m}" # LATIN SMALL LETTER M WITH DOT ABOVE
+0x1e42 "\\d{M}"                   "" "force=utf8,mathalpha" "\\subdot{M}" "accents,subdot" # LATIN CAPITAL LETTER M WITH DOT BELOW
+0x1e43 "\\d{m}"                   "" "force=utf8,mathalpha" "\\subdot{m}" "accents,subdot" # LATIN SMALL LETTER M WITH DOT BELOW
+0x1e44 "\\.{N}"                   "" "force=utf8,mathalpha" "\\dot{N}" # LATIN CAPITAL LETTER N WITH DOT ABOVE
+0x1e45 "\\.{n}"                   "" "force=utf8,mathalpha" "\\dot{n}" # LATIN SMALL LETTER N WITH DOT ABOVE
+0x1e46 "\\d{N}"                   "" "force=utf8,mathalpha" "\\subdot{N}" "accents,subdot" # LATIN CAPITAL LETTER N WITH DOT BELOW
+0x1e47 "\\d{n}"                   "" "force=utf8,mathalpha" "\\subdot{n}" "accents,subdot" # LATIN SMALL LETTER N WITH DOT BELOW
+0x1e48 "\\b{N}"                   "" "force=utf8" # LATIN CAPITAL LETTER N WITH LINE BELOW
+0x1e49 "\\b{n}"                   "" "force=utf8" # LATIN SMALL LETTER N WITH LINE BELOW
 0x1e4a "\\textsubcircum{N}"       "tipa" "force,mathalpha" "\\subhat{N}" "accents,subhat" # LATIN CAPITAL LETTER N WITH CIRCUMFLEX BELOW
 0x1e4b "\\textsubcircum{n}"       "tipa" "force,mathalpha" "\\subhat{n}" "accents,subhat" # LATIN SMALL LETTER N WITH CIRCUMFLEX BELOW
 #0x1e4c ""                         "" "" # LATIN CAPITAL LETTER O WITH TILDE AND ACUTE
@@ -1310,38 +1310,38 @@
 #0x1e51 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND GRAVE
 #0x1e52 ""                         "" "" # LATIN CAPITAL LETTER O WITH MACRON AND ACUTE
 #0x1e53 ""                         "" "" # LATIN SMALL LETTER O WITH MACRON AND ACUTE
-0x1e54 "\\'{P}"                   "" "mathalpha" "\\acute{P}" # LATIN CAPITAL LETTER P WITH ACUTE
-0x1e55 "\\'{p}"                   "" "mathalpha" "\\acute{p}" # LATIN SMALL LETTER P WITH ACUTE
-0x1e56 "\\.{P}"                   "" "mathalpha" "\\dot{P}" # LATIN CAPITAL LETTER P WITH DOT ABOVE
-0x1e57 "\\.{p}"                   "" "mathalpha" "\\dot{p}" # LATIN SMALL LETTER P WITH DOT ABOVE
-0x1e58 "\\.{R}"                   "" "mathalpha" "\\dot{R}" # LATIN CAPITAL LETTER R WITH DOT ABOVE
-0x1e59 "\\.{r}"                   "" "mathalpha" "\\dot{r}" # LATIN SMALL LETTER R WITH DOT ABOVE
-0x1e5a "\\d{R}"                   "" "mathalpha" "\\subdot{R}" "accents,subdot" # LATIN CAPITAL LETTER R WITH DOT BELOW
-0x1e5b "\\d{r}"                   "" "mathalpha" "\\subdot{r}" "accents,subdot" # LATIN SMALL LETTER R WITH DOT BELOW
+0x1e54 "\\'{P}"                   "" "force=utf8,mathalpha" "\\acute{P}" # LATIN CAPITAL LETTER P WITH ACUTE
+0x1e55 "\\'{p}"                   "" "force=utf8,mathalpha" "\\acute{p}" # LATIN SMALL LETTER P WITH ACUTE
+0x1e56 "\\.{P}"                   "" "force=utf8,mathalpha" "\\dot{P}" # LATIN CAPITAL LETTER P WITH DOT ABOVE
+0x1e57 "\\.{p}"                   "" "force=utf8,mathalpha" "\\dot{p}" # LATIN SMALL LETTER P WITH DOT ABOVE
+0x1e58 "\\.{R}"                   "" "force=utf8,mathalpha" "\\dot{R}" # LATIN CAPITAL LETTER R WITH DOT ABOVE
+0x1e59 "\\.{r}"                   "" "force=utf8,mathalpha" "\\dot{r}" # LATIN SMALL LETTER R WITH DOT ABOVE
+0x1e5a "\\d{R}"                   "" "force=utf8,mathalpha" "\\subdot{R}" "accents,subdot" # LATIN CAPITAL LETTER R WITH DOT BELOW
+0x1e5b "\\d{r}"                   "" "force=utf8,mathalpha" "\\subdot{r}" "accents,subdot" # LATIN SMALL LETTER R WITH DOT BELOW
 #0x1e5c ""                         "" "" # LATIN CAPITAL LETTER R WITH DOT BELOW AND MACRON
 #0x1e5d ""                         "" "" # LATIN SMALL LETTER R WITH DOT BELOW AND MACRON
-#0x1e5e ""                         "" "" # LATIN CAPITAL LETTER R WITH LINE BELOW
-#0x1e5f ""                         "" "" # LATIN SMALL LETTER R WITH LINE BELOW
-0x1e60 "\\.{S}"                   "" "mathalpha" "\\dot{S}" # LATIN CAPITAL LETTER S WITH DOT ABOVE
-0x1e61 "\\.{s}"                   "" "mathalpha" "\\dot{s}" # LATIN SMALL LETTER S WITH DOT ABOVE
-0x1e62 "\\d{S}"                   "" "mathalpha" "\\subdot{S}" "accents,subdot" # LATIN CAPITAL LETTER S WITH DOT BELOW
-0x1e63 "\\d{s}"                   "" "mathalpha" "\\subdot{s}" "accents,subdot" # LATIN SMALL LETTER S WITH DOT BELOW
+0x1e5e "\\b{R}"			  "" "force=utf8" # LATIN CAPITAL LETTER R WITH LINE BELOW
+0x1e5f "\\b{r}"                   "" "force=utf8" # LATIN SMALL LETTER R WITH LINE BELOW
+0x1e60 "\\.{S}"                   "" "force=utf8,mathalpha" "\\dot{S}" # LATIN CAPITAL LETTER S WITH DOT ABOVE
+0x1e61 "\\.{s}"                   "" "force=utf8,mathalpha" "\\dot{s}" # LATIN SMALL LETTER S WITH DOT ABOVE
+0x1e62 "\\d{S}"                   "" "force=utf8,mathalpha" "\\subdot{S}" "accents,subdot" # LATIN CAPITAL LETTER S WITH DOT BELOW
+0x1e63 "\\d{s}"                   "" "force=utf8,mathalpha" "\\subdot{s}" "accents,subdot" # LATIN SMALL LETTER S WITH DOT BELOW
 #0x1e64 ""                         "" "" # LATIN CAPITAL LETTER S WITH ACUTE AND DOT ABOVE
 #0x1e65 ""                         "" "" # LATIN SMALL LETTER S WITH ACUTE AND DOT ABOVE
 #0x1e66 ""                         "" "" # LATIN CAPITAL LETTER S WITH CARON AND DOT ABOVE
 #0x1e67 ""                         "" "" # LATIN SMALL LETTER S WITH CARON AND DOT ABOVE
 #0x1e68 ""                         "" "" # LATIN CAPITAL LETTER S WITH DOT BELOW AND DOT ABOVE
 #0x1e69 ""                         "" "" # LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE
-0x1e6a "\\.{T}"                   "" "mathalpha" "\\dot{T}" # LATIN CAPITAL LETTER T WITH DOT ABOVE
-0x1e6b "\\.{t}"                   "" "mathalpha" "\\dot{t}" # LATIN SMALL LETTER T WITH DOT ABOVE
-0x1e6c "\\d{T}"                   "" "mathalpha" "\\subdot{T}" "accents,subdot" # LATIN CAPITAL LETTER T WITH DOT BELOW
-0x1e6d "\\d{t}"                   "" "mathalpha" "\\subdot{t}" "accents,subdot" # LATIN SMALL LETTER T WITH DOT BELOW
-#0x1e6e ""                         "" "" # LATIN CAPITAL LETTER T WITH LINE BELOW
-#0x1e6f ""                         "" "" # LATIN SMALL LETTER T WITH LINE BELOW
+0x1e6a "\\.{T}"                   "" "force=utf8,mathalpha" "\\dot{T}" # LATIN CAPITAL LETTER T WITH DOT ABOVE
+0x1e6b "\\.{t}"                   "" "force=utf8,mathalpha" "\\dot{t}" # LATIN SMALL LETTER T WITH DOT ABOVE
+0x1e6c "\\d{T}"                   "" "force=utf8,mathalpha" "\\subdot{T}" "accents,subdot" # LATIN CAPITAL LETTER T WITH DOT BELOW
+0x1e6d "\\d{t}"                   "" "force=utf8,mathalpha" "\\subdot{t}" "accents,subdot" # LATIN SMALL LETTER T WITH DOT BELOW
+0x1e6e "\\b{T}"			  "" "force=utf8" # LATIN CAPITAL LETTER T WITH LINE BELOW
+0x1e6f "\\b{t}"                   "" "force=utf8" # LATIN SMALL LETTER T WITH LINE BELOW
 0x1e70 "\\textsubcircum{T}"       "tipa" "force,mathalpha" "\\subhat{T}" "accents,subhat" # LATIN CAPITAL LETTER T WITH CIRCUMFLEX BELOW
 0x1e71 "\\textsubcircum{t}"       "tipa" "force,mathalpha" "\\subhat{t}" "accents,subhat" # LATIN SMALL LETTER T WITH CIRCUMFLEX BELOW
-#0x1e72 ""                         "" "" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
-#0x1e73 ""                         "" "" # LATIN SMALL LETTER U WITH DIAERESIS BELOW
+0x1e72 "\\textsubumlaut{U}"	  "tipa" "force" # LATIN CAPITAL LETTER U WITH DIAERESIS BELOW
+0x1e73 "\\textsubumlaut{u}"	  "tipa" "force" # LATIN SMALL LETTER U WITH DIAERESIS BELOW
 0x1e74 "\\textsubtilde{U}"        "tipa" "force,mathalpha" "\\subtilde{U}" "accents,subtilde" # LATIN CAPITAL LETTER U WITH TILDE BELOW
 0x1e75 "\\textsubtilde{u}"        "tipa" "force,mathalpha" "\\subtilde{u}" "accents,subtilde" # LATIN SMALL LETTER U WITH TILDE BELOW
 0x1e76 "\\textsubcircum{U}"       "tipa" "force,mathalpha" "\\subhat{U}" "accents,subhat" # LATIN CAPITAL LETTER U WITH CIRCUMFLEX BELOW
@@ -1350,41 +1350,41 @@
 #0x1e79 ""                         "" "" # LATIN SMALL LETTER U WITH TILDE AND ACUTE
 #0x1e7a ""                         "" "" # LATIN CAPITAL LETTER U WITH MACRON AND DIAERESIS
 #0x1e7b ""                         "" "" # LATIN SMALL LETTER U WITH MACRON AND DIAERESIS
-0x1e7c "\\~{V}"                   "" "mathalpha" "\\tilde{V}" # LATIN CAPITAL LETTER V WITH TILDE
-0x1e7d "\\~{v}"                   "" "mathalpha" "\\tilde{v}" # LATIN SMALL LETTER V WITH TILDE
-0x1e7e "\\d{V}"                   "" "mathalpha" "\\subdot{V}" "accents,subdot" # LATIN CAPITAL LETTER V WITH DOT BELOW
-0x1e7f "\\d{v}"                   "" "mathalpha" "\\subdot{v}" "accents,subdot" # LATIN SMALL LETTER V WITH DOT BELOW
-0x1e80 "\\`{W}"                   "" "mathalpha" "\\grave{W}" # LATIN CAPITAL LETTER W WITH GRAVE
-0x1e81 "\\`{w}"                   "" "mathalpha" "\\grave{w}" # LATIN SMALL LETTER W WITH GRAVE
-0x1e82 "\\'{W}"                   "" "mathalpha" "\\acute{W}" # LATIN CAPITAL LETTER W WITH ACUTE
-0x1e83 "\\'{w}"                   "" "mathalpha" "\\acute{w}" # LATIN SMALL LETTER W WITH ACUTE
-0x1e84 "\\\"{W}"                  "" "mathalpha" "\\ddot{W}" # LATIN CAPITAL LETTER W WITH DIAERESIS
-0x1e85 "\\\"{w}"                  "" "mathalpha" "\\ddot{w}" # LATIN SMALL LETTER W WITH DIAERESIS
-0x1e86 "\\.{W}"                   "" "mathalpha" "\\dot{W}" # LATIN CAPITAL LETTER W WITH DOT ABOVE
-0x1e87 "\\.{w}"                   "" "mathalpha" "\\dot{w}" # LATIN SMALL LETTER W WITH DOT ABOVE
-0x1e88 "\\d{W}"                   "" "mathalpha" "\\subdot{W}" "accents,subdot" # LATIN CAPITAL LETTER W WITH DOT BELOW
-0x1e89 "\\d{w}"                   "" "mathalpha" "\\subdot{w}" "accents,subdot" # LATIN SMALL LETTER W WITH DOT BELOW
-0x1e8a "\\.{X}"                   "" "mathalpha" "\\dot{X}" # LATIN CAPITAL LETTER X WITH DOT ABOVE
-0x1e8b "\\.{x}"                   "" "mathalpha" "\\dot{x}" # LATIN SMALL LETTER X WITH DOT ABOVE
-0x1e8c "\\\"{X}"                  "" "mathalpha" "\\ddot{X}" # LATIN CAPITAL LETTER X WITH DIAERESIS
-0x1e8d "\\\"{x}"                  "" "mathalpha" "\\ddot{x}" # LATIN SMALL LETTER X WITH DIAERESIS
-0x1e8e "\\.{Y}"                   "" "mathalpha" "\\dot{Y}" # LATIN CAPITAL LETTER Y WITH DOT ABOVE
-0x1e8f "\\.{y}"                   "" "mathalpha" "\\dot{y}" # LATIN SMALL LETTER Y WITH DOT ABOVE
-0x1e90 "\\^{Z}"                   "" "mathalpha" "\\hat{Z}" # LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
-0x1e91 "\\^{z}"                   "" "mathalpha" "\\hat{z}" # LATIN SMALL LETTER Z WITH CIRCUMFLEX
-0x1e92 "\\d{Z}"                   "" "mathalpha" "\\subdot{Z}" "accents,subdot" # LATIN CAPITAL LETTER Z WITH DOT BELOW
-0x1e93 "\\d{z}"                   "" "mathalpha" "\\subdot{z}" "accents,subdot" # LATIN SMALL LETTER Z WITH DOT BELOW
-#0x1e94 ""                         "" "" # LATIN CAPITAL LETTER Z WITH LINE BELOW
-#0x1e95 ""                         "" "" # LATIN SMALL LETTER Z WITH LINE BELOW
-#0x1e96 ""                         "" "" # LATIN SMALL LETTER H WITH LINE BELOW
-0x1e97 "\\\"{t}"                  "" "mathalpha" "\\ddot{t}" # LATIN SMALL LETTER T WITH DIAERESIS
-0x1e98 "\\r{w}"                   "" "mathalpha" "\\mathring{w}" # LATIN SMALL LETTER W WITH RING ABOVE
-0x1e99 "\\r{y}"                   "" "mathalpha" "\\mathring{y}" # LATIN SMALL LETTER Y WITH RING ABOVE
+0x1e7c "\\~{V}"                   "" "force=utf8,mathalpha" "\\tilde{V}" # LATIN CAPITAL LETTER V WITH TILDE
+0x1e7d "\\~{v}"                   "" "force=utf8,mathalpha" "\\tilde{v}" # LATIN SMALL LETTER V WITH TILDE
+0x1e7e "\\d{V}"                   "" "force=utf8,mathalpha" "\\subdot{V}" "accents,subdot" # LATIN CAPITAL LETTER V WITH DOT BELOW
+0x1e7f "\\d{v}"                   "" "force=utf8,mathalpha" "\\subdot{v}" "accents,subdot" # LATIN SMALL LETTER V WITH DOT BELOW
+0x1e80 "\\`{W}"                   "" "force=utf8,mathalpha" "\\grave{W}" # LATIN CAPITAL LETTER W WITH GRAVE
+0x1e81 "\\`{w}"                   "" "force=utf8,mathalpha" "\\grave{w}" # LATIN SMALL LETTER W WITH GRAVE
+0x1e82 "\\'{W}"                   "" "force=utf8,mathalpha" "\\acute{W}" # LATIN CAPITAL LETTER W WITH ACUTE
+0x1e83 "\\'{w}"                   "" "force=utf8,mathalpha" "\\acute{w}" # LATIN SMALL LETTER W WITH ACUTE
+0x1e84 "\\\"{W}"                  "" "force=utf8,mathalpha" "\\ddot{W}" # LATIN CAPITAL LETTER W WITH DIAERESIS
+0x1e85 "\\\"{w}"                  "" "force=utf8,mathalpha" "\\ddot{w}" # LATIN SMALL LETTER W WITH DIAERESIS
+0x1e86 "\\.{W}"                   "" "force=utf8,mathalpha" "\\dot{W}" # LATIN CAPITAL LETTER W WITH DOT ABOVE
+0x1e87 "\\.{w}"                   "" "force=utf8,mathalpha" "\\dot{w}" # LATIN SMALL LETTER W WITH DOT ABOVE
+0x1e88 "\\d{W}"                   "" "force=utf8,mathalpha" "\\subdot{W}" "accents,subdot" # LATIN CAPITAL LETTER W WITH DOT BELOW
+0x1e89 "\\d{w}"                   "" "force=utf8,mathalpha" "\\subdot{w}" "accents,subdot" # LATIN SMALL LETTER W WITH DOT BELOW
+0x1e8a "\\.{X}"                   "" "force=utf8,mathalpha" "\\dot{X}" # LATIN CAPITAL LETTER X WITH DOT ABOVE
+0x1e8b "\\.{x}"                   "" "force=utf8,mathalpha" "\\dot{x}" # LATIN SMALL LETTER X WITH DOT ABOVE
+0x1e8c "\\\"{X}"                  "" "force=utf8,mathalpha" "\\ddot{X}" # LATIN CAPITAL LETTER X WITH DIAERESIS
+0x1e8d "\\\"{x}"                  "" "force=utf8,mathalpha" "\\ddot{x}" # LATIN SMALL LETTER X WITH DIAERESIS
+0x1e8e "\\.{Y}"                   "" "force=utf8,mathalpha" "\\dot{Y}" # LATIN CAPITAL LETTER Y WITH DOT ABOVE
+0x1e8f "\\.{y}"                   "" "force=utf8,mathalpha" "\\dot{y}" # LATIN SMALL LETTER Y WITH DOT ABOVE
+0x1e90 "\\^{Z}"                   "" "force=utf8,mathalpha" "\\hat{Z}" # LATIN CAPITAL LETTER Z WITH CIRCUMFLEX
+0x1e91 "\\^{z}"                   "" "force=utf8,mathalpha" "\\hat{z}" # LATIN SMALL LETTER Z WITH CIRCUMFLEX
+0x1e92 "\\d{Z}"                   "" "force=utf8,mathalpha" "\\subdot{Z}" "accents,subdot" # LATIN CAPITAL LETTER Z WITH DOT BELOW
+0x1e93 "\\d{z}"                   "" "force=utf8,mathalpha" "\\subdot{z}" "accents,subdot" # LATIN SMALL LETTER Z WITH DOT BELOW
+0x1e94 "\\b{Z}"			  "" "force=utf8" # LATIN CAPITAL LETTER Z WITH LINE BELOW
+0x1e95 "\\b{z}"                   "" "force=utf8" # LATIN SMALL LETTER Z WITH LINE BELOW
+0x1e96 "\\b{h}"                   "" "force=utf8" # LATIN SMALL LETTER H WITH LINE BELOW
+0x1e97 "\\\"{t}"                  "" "force=utf8,mathalpha" "\\ddot{t}" # LATIN SMALL LETTER T WITH DIAERESIS
+0x1e98 "\\r{w}"                   "" "force=utf8,mathalpha" "\\mathring{w}" # LATIN SMALL LETTER W WITH RING ABOVE
+0x1e99 "\\r{y}"                   "" "force=utf8,mathalpha" "\\mathring{y}" # LATIN SMALL LETTER Y WITH RING ABOVE
 #0x1e9a ""                         "" "" # LATIN SMALL LETTER A WITH RIGHT HALF RING
 #0x1e9b ""                         "" "" # LATIN SMALL LETTER LONG S WITH DOT ABOVE
-0x1e9e "\\SS"                     "" "" "" "" # LATIN CAPITAL LETTER SHARP S
-0x1ea0 "\\d{A}"                   "" "mathalpha" "\\subdot{A}" "accents,subdot" # LATIN CAPITAL LETTER A WITH DOT BELOW
-0x1ea1 "\\d{a}"                   "" "mathalpha" "\\subdot{a}" "accents,subdot" # LATIN SMALL LETTER A WITH DOT BELOW
+0x1e9e "\\SS"                     "" "force=utf8," "" "" # LATIN CAPITAL LETTER SHARP S
+0x1ea0 "\\d{A}"                   "" "force=utf8,mathalpha" "\\subdot{A}" "accents,subdot" # LATIN CAPITAL LETTER A WITH DOT BELOW
+0x1ea1 "\\d{a}"                   "" "force=utf8,mathalpha" "\\subdot{a}" "accents,subdot" # LATIN SMALL LETTER A WITH DOT BELOW
 #0x1ea2 ""                         "" "" # LATIN CAPITAL LETTER A WITH HOOK ABOVE
 #0x1ea3 ""                         "" "" # LATIN SMALL LETTER A WITH HOOK ABOVE
 #0x1ea4 ""                         "" "" # LATIN CAPITAL LETTER A WITH CIRCUMFLEX AND ACUTE
@@ -1407,12 +1407,12 @@
 #0x1eb5 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND TILDE
 #0x1eb6 ""                         "" "" # LATIN CAPITAL LETTER A WITH BREVE AND DOT BELOW
 #0x1eb7 ""                         "" "" # LATIN SMALL LETTER A WITH BREVE AND DOT BELOW
-0x1eb8 "\\d{E}"                   "" "mathalpha" "\\subdot{E}" "accents,subdot" # LATIN CAPITAL LETTER E WITH DOT BELOW
-0x1eb9 "\\d{e}"                   "" "mathalpha" "\\subdot{e}" "accents,subdot" # LATIN SMALL LETTER E WITH DOT BELOW
+0x1eb8 "\\d{E}"                   "" "force=utf8,mathalpha" "\\subdot{E}" "accents,subdot" # LATIN CAPITAL LETTER E WITH DOT BELOW
+0x1eb9 "\\d{e}"                   "" "force=utf8,mathalpha" "\\subdot{e}" "accents,subdot" # LATIN SMALL LETTER E WITH DOT BELOW
 #0x1eba ""                         "" "" # LATIN CAPITAL LETTER E WITH HOOK ABOVE
 #0x1ebb ""                         "" "" # LATIN SMALL LETTER E WITH HOOK ABOVE
-0x1ebc "\\~{E}"                   "" "mathalpha" "\\tilde{E}" # LATIN CAPITAL LETTER E WITH TILDE
-0x1ebd "\\~{e}"                   "" "mathalpha" "\\tilde{e}" # LATIN SMALL LETTER E WITH TILDE
+0x1ebc "\\~{E}"                   "" "force=utf8,mathalpha" "\\tilde{E}" # LATIN CAPITAL LETTER E WITH TILDE
+0x1ebd "\\~{e}"                   "" "force=utf8,mathalpha" "\\tilde{e}" # LATIN SMALL LETTER E WITH TILDE
 #0x1ebe ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND ACUTE
 #0x1ebf ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND ACUTE
 #0x1ec0 ""                         "" "" # LATIN CAPITAL LETTER E WITH CIRCUMFLEX AND GRAVE
@@ -1425,10 +1425,10 @@
 #0x1ec7 ""                         "" "" # LATIN SMALL LETTER E WITH CIRCUMFLEX AND DOT BELOW
 #0x1ec8 ""                         "" "" # LATIN CAPITAL LETTER I WITH HOOK ABOVE
 #0x1ec9 ""                         "" "" # LATIN SMALL LETTER I WITH HOOK ABOVE
-0x1eca "\\d{I}"                   "" "mathalpha" "\\subdot{I}" "accents,subdot" # LATIN CAPITAL LETTER I WITH DOT BELOW
-0x1ecb "\\d{i}"                   "" "mathalpha" "\\subdot{i}" "accents,subdot" # LATIN SMALL LETTER I WITH DOT BELOW
-0x1ecc "\\d{O}"                   "" "mathalpha" "\\subdot{O}" "accents,subdot" # LATIN CAPITAL LETTER O WITH DOT BELOW
-0x1ecd "\\d{o}"                   "" "mathalpha" "\\subdot{o}" "accents,subdot" # LATIN SMALL LETTER O WITH DOT BELOW
+0x1eca "\\d{I}"                   "" "force=utf8,mathalpha" "\\subdot{I}" "accents,subdot" # LATIN CAPITAL LETTER I WITH DOT BELOW
+0x1ecb "\\d{i}"                   "" "force=utf8,mathalpha" "\\subdot{i}" "accents,subdot" # LATIN SMALL LETTER I WITH DOT BELOW
+0x1ecc "\\d{O}"                   "" "force=utf8,mathalpha" "\\subdot{O}" "accents,subdot" # LATIN CAPITAL LETTER O WITH DOT BELOW
+0x1ecd "\\d{o}"                   "" "force=utf8,mathalpha" "\\subdot{o}" "accents,subdot" # LATIN SMALL LETTER O WITH DOT BELOW
 #0x1ece ""                         "" "" # LATIN CAPITAL LETTER O WITH HOOK ABOVE
 #0x1ecf ""                         "" "" # LATIN SMALL LETTER O WITH HOOK ABOVE
 #0x1ed0 ""                         "" "" # LATIN CAPITAL LETTER O WITH CIRCUMFLEX AND ACUTE
@@ -1451,8 +1451,8 @@
 #0x1ee1 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND TILDE
 #0x1ee2 ""                         "" "" # LATIN CAPITAL LETTER O WITH HORN AND DOT BELOW
 #0x1ee3 ""                         "" "" # LATIN SMALL LETTER O WITH HORN AND DOT BELOW
-0x1ee4 "\\d{U}"                   "" "mathalpha" "\\subdot{U}" "accents,subdot" # LATIN CAPITAL LETTER U WITH DOT BELOW
-0x1ee5 "\\d{u}"                   "" "mathalpha" "\\subdot{u}" "accents,subdot" # LATIN SMALL LETTER U WITH DOT BELOW
+0x1ee4 "\\d{U}"                   "" "force=utf8,mathalpha" "\\subdot{U}" "accents,subdot" # LATIN CAPITAL LETTER U WITH DOT BELOW
+0x1ee5 "\\d{u}"                   "" "force=utf8,mathalpha" "\\subdot{u}" "accents,subdot" # LATIN SMALL LETTER U WITH DOT BELOW
 #0x1ee6 ""                         "" "" # LATIN CAPITAL LETTER U WITH HOOK ABOVE
 #0x1ee7 ""                         "" "" # LATIN SMALL LETTER U WITH HOOK ABOVE
 #0x1ee8 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND ACUTE
@@ -1465,14 +1465,14 @@
 #0x1eef ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND TILDE
 #0x1ef0 ""                         "" "" # LATIN CAPITAL LETTER U WITH HORN AND DOT BELOW
 #0x1ef1 ""                         "" "" # LATIN SMALL LETTER U WITH HORN AND DOT BELOW
-0x1ef2 "\\`{Y}"                   "" "mathalpha" "\\grave{Y}" # LATIN CAPITAL LETTER Y WITH GRAVE
-0x1ef3 "\\`{y}"                   "" "mathalpha" "\\grave{y}" # LATIN SMALL LETTER Y WITH GRAVE
-0x1ef4 "\\d{Y}"                   "" "mathalpha" "\\subdot{Y}" "accents,subdot" # LATIN CAPITAL LETTER Y WITH DOT BELOW
-0x1ef5 "\\d{y}"                   "" "mathalpha" "\\subdot{y}" "accents,subdot" # LATIN SMALL LETTER Y WITH DOT BELOW
+0x1ef2 "\\`{Y}"                   "" "force=utf8,mathalpha" "\\grave{Y}" # LATIN CAPITAL LETTER Y WITH GRAVE
+0x1ef3 "\\`{y}"                   "" "force=utf8,mathalpha" "\\grave{y}" # LATIN SMALL LETTER Y WITH GRAVE
+0x1ef4 "\\d{Y}"                   "" "force=utf8,mathalpha" "\\subdot{Y}" "accents,subdot" # LATIN CAPITAL LETTER Y WITH DOT BELOW
+0x1ef5 "\\d{y}"                   "" "force=utf8,mathalpha" "\\subdot{y}" "accents,subdot" # LATIN SMALL LETTER Y WITH DOT BELOW
 #0x1ef6 ""                         "" "" # LATIN CAPITAL LETTER Y WITH HOOK ABOVE
 #0x1ef7 ""                         "" "" # LATIN SMALL LETTER Y WITH HOOK ABOVE
-0x1ef8 "\\~{Y}"                   "" "mathalpha" "\\tilde{Y}" # LATIN CAPITAL LETTER Y WITH TILDE
-0x1ef9 "\\~{y}"                   "" "mathalpha" "\\tilde{y}" # LATIN SMALL LETTER Y WITH TILDE
+0x1ef8 "\\~{Y}"                   "" "force=utf8,mathalpha" "\\tilde{Y}" # LATIN CAPITAL LETTER Y WITH TILDE
+0x1ef9 "\\~{y}"                   "" "force=utf8,mathalpha" "\\tilde{y}" # LATIN SMALL LETTER Y WITH TILDE
 #
 # Greek extended
 #
@@ -1736,7 +1736,7 @@
 # use the following macro for the character HORIZONTAL BAR
 0x2015 "\\LyXbar" "\\newcommand*\\LyXbar{\\rule[0.585ex]{1.2em}{0.25pt}}" "force"
 0x2016 "\\textbardbl"             "textcomp,notermination=math" "tipashortcut=\\textdoublevertline{}" "\\|" "" # DOUBLE VERTICAL LINE
-0x2017 "\\subdoublebar{ }"        "tipa" "" "" "" # DOUBLE LOW LINE
+0x2017 "\\subdoublebar{ }"        "extraipa" "force=utf8" "" "" # DOUBLE LOW LINE
 0x2018 "\\textquoteleft"          "" "" # LEFT SINGLE QUOTATION MARK
 0x2019 "\\textquoteright"         "" "" # RIGHT SINGLE QUOTATION MARK
 0x201a "\\quotesinglbase"         "" "" # SINGLE LOW-9 QUOTATION MARK
@@ -1748,9 +1748,9 @@
 0x2020 "\\dag"                    "" "" "\\dagger" "" # DAGGER
 0x2021 "\\ddag"                   "" "" "\\ddagger" "" # DOUBLE DAGGER
 0x2022 "\\textbullet"             "textcomp" "" "\\bullet" "" # BULLET
-0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # TRIANGULAR BULLET # ≈ 0x25b8
-0x2024 "."                        "" "notermination=text" "" "" # ONE DOT LEADER # ≈ FULL STOP
-0x2025 ".\\,."                    "" "notermination=text" "" "" # TWO DOT LEADER
+0x2023 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8" # TRIANGULAR BULLET # ≈ 0x25b8
+0x2024 "."                        "" "notermination=text,force=utf8" "" "" # ONE DOT LEADER # ≈ FULL STOP
+0x2025 ".\\,."                    "" "notermination=text,force=utf8" "" "" # TWO DOT LEADER
 0x2026 "\\dots"                   "" "" "\\ldots" "" # HORIZONTAL ELLIPSIS
 #0x2027 ""                        "" "notermination=text" "" "" # HYPHENATION POINT (visible symbol used to indicate correct positions for word breaking, looks like but is not 0x00b7 middle dot)
 #0x2028 ""                         "" "" "" "" # LINE SEPARATOR
@@ -1763,71 +1763,74 @@
 0x202f "\\,"                      "" "notermination=both" "\\," "" # NARROW NO-BREAK SPACE
 0x2030 "\\textperthousand"        "textcomp" "" # PER MILLE SIGN
 0x2031 "\\textpertenthousand"     "textcomp" "" # PER TEN THOUSAND SIGN
-0x2032 "\\textasciiacute"         "textcomp" "" "\\prime" "" # PRIME
-0x2033 "\\textacutedbl"           "textcomp" "" # DOUBLE PRIME
+0x2032 "\\textasciiacute"         "textcomp" "force=utf8" "\\prime" "" # PRIME
+0x2033 "\\textacutedbl"           "textcomp" "force=utf8" # DOUBLE PRIME
 #0x2034 ""                         "" "" # TRIPLE PRIME
-0x2035 "\\textasciigrave"         "textcomp" "" "\\backprime" "amssymb" # REVERSED PRIME
-0x2036 "\\textgravedbl"           "textcomp" "" # REVERSED DOUBLE PRIME
+0x2035 "\\textasciigrave"         "textcomp" "force=utf8" "\\backprime" "amssymb" # REVERSED PRIME
+0x2036 "\\textgravedbl"           "textcomp" "force=utf8" # REVERSED DOUBLE PRIME
 #0x2037 ""                         "" "" # REVERSED TRIPLE PRIME
-0x2038 "\\^{}"                    "" "" "" "" # CARET
+0x2038 "\\textsubcircum{ }"       "tipa" "force=utf8" "" "" # CARET
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
-0x203c "!!"                       "" "notermination=text" "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
+0x203c "!!"                       "" "notermination=text,force=utf8" "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
-0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" ""
-0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ }" # UNDERTIE
+0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" "force=utf8"
+0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8" # UNDERTIE
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
-0x2045 "\\textlquill"             "textcomp" "" # LEFT SQUARE BRACKET WITH QUILL
-0x2046 "\\textrquill"             "textcomp" "" # RIGHT SQUARE BRACKET WITH QUILL
-0x2047 "??"                       "" "notermination=text" "" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
-0x2048 "?!"                       "" "notermination=text" "" "" # QUESTION EXCLAMATION MARK
-0x2049 "!?"                       "" "notermination=text" "" "" # EXCLAMATION QUESTION MARK
+0x2045 "\\textlquill"             "textcomp" "force=utf8" # LEFT SQUARE BRACKET WITH QUILL
+0x2046 "\\textrquill"             "textcomp" "force=utf8" # RIGHT SQUARE BRACKET WITH QUILL
+0x2047 "??"                       "" "notermination=text,force=utf8" "" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
+0x2048 "?!"                       "" "notermination=text,force=utf8" "" "" # QUESTION EXCLAMATION MARK
+0x2049 "!?"                       "" "notermination=text,force=utf8" "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
 0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
-0x205f ""                         "" "notermination=math" "\\:" "" # MEDIUM MATHEMATICAL SPACE
+0x205f ""                         "" "notermination=math,force=utf8" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
-0x2070 "\\textsuperscript{0}"     "" "" "{{}^0}" "" # SUPERSCRIPT ZERO
-0x2071 "\\textsuperscript{i}"     "" "" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
-0x2074 "\\textsuperscript{4}"     "" "" "{{}^4}" "" # SUPERSCRIPT FOUR
-0x2075 "\\textsuperscript{5}"     "" "" "{{}^5}" "" # SUPERSCRIPT FIVE
-0x2076 "\\textsuperscript{6}"     "" "" "{{}^6}" "" # SUPERSCRIPT SIX
-0x2077 "\\textsuperscript{7}"     "" "" "{{}^7}" "" # SUPERSCRIPT SEVEN
-0x2078 "\\textsuperscript{8}"     "" "" "{{}^8}" "" # SUPERSCRIPT EIGHT
-0x2079 "\\textsuperscript{9}"     "" "" "{{}^9}" "" # SUPERSCRIPT NINE
-0x207a "\\textsuperscript{+}"     "" "" "{{}^+}" "" # SUPERSCRIPT PLUS SIGN
-0x207b "\\textsuperscript{-}"     "" "" "{{}^-}" "" # SUPERSCRIPT MINUS
-0x207c "\\textsuperscript{=}"     "" "" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
-0x207d "\\textsuperscript{(}"     "" "" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
-0x207e "\\textsuperscript{)}"     "" "" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
-0x207f "\\textsuperscript{n}"     "" "" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
-0x2080 "\\textsubscript{0}"       "subscript" "" "{{}_0}" "" # SUBSCRIPT ZERO
-0x2081 "\\textsubscript{1}"       "subscript" "" "{{}_1}" "" # SUBSCRIPT ONE
-0x2082 "\\textsubscript{2}"       "subscript" "" "{{}_2}" "" # SUBSCRIPT TWO
-0x2083 "\\textsubscript{3}"       "subscript" "" "{{}_3}" "" # SUBSCRIPT THREE
-0x2084 "\\textsubscript{4}"       "subscript" "" "{{}_4}" "" # SUBSCRIPT FOUR
-0x2085 "\\textsubscript{5}"       "subscript" "" "{{}_5}" "" # SUBSCRIPT FIVE
-0x2086 "\\textsubscript{6}"       "subscript" "" "{{}_6}" "" # SUBSCRIPT SIX
-0x2087 "\\textsubscript{7}"       "subscript" "" "{{}_7}" "" # SUBSCRIPT SEVEN
-0x2088 "\\textsubscript{8}"       "subscript" "" "{{}_8}" "" # SUBSCRIPT EIGHT
-0x2089 "\\textsubscript{9}"       "subscript" "" "{{}_9}" "" # SUBSCRIPT NINE
-0x208a "\\textsubscript{+}"       "subscript" "" "{{}_+}" "" # SUBSCRIPT PLUS SIGN
-0x208b "\\textsubscript{-}"       "subscript" "" "{{}_-}" "" # SUBSCRIPT MINUS
-0x208c "\\textsubscript{=}"       "subscript" "" "{{}_=}" "" # SUBSCRIPT EQUALS SIGN
-0x208d "\\textsubscript{(}"       "subscript" "" "{{}_(}" "" # SUBSCRIPT LEFT PARENTHESIS
-0x208e "\\textsubscript{)}"       "subscript" "" "{{}_)}" "" # SUBSCRIPT RIGHT PARENTHESIS
-0x2090 "\\textsubscript{a}"       "subscript" "" "{{}_a}" "" # LATIN SUBSCRIPT SMALL LETTER A
-0x2091 "\\textsubscript{e}"       "subscript" "" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
-0x2092 "\\textsubscript{o}"       "subscript" "" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
-0x2093 "\\textsubscript{x}"       "subscript" "" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
-0x2094 "\\textsubscript{\\textschwa}" "subscript" "" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
+#
+# superscripts and subscripts
+#
+0x2070 "\\textsuperscript{0}"     "" "force=utf8" "{{}^0}" "" # SUPERSCRIPT ZERO
+0x2071 "\\textsuperscript{i}"     "" "force=utf8" "{{}^i}" "" # SUPERSCRIPT LATIN SMALL LETTER I
+0x2074 "\\textsuperscript{4}"     "" "force=utf8" "{{}^4}" "" # SUPERSCRIPT FOUR
+0x2075 "\\textsuperscript{5}"     "" "force=utf8" "{{}^5}" "" # SUPERSCRIPT FIVE
+0x2076 "\\textsuperscript{6}"     "" "force=utf8" "{{}^6}" "" # SUPERSCRIPT SIX
+0x2077 "\\textsuperscript{7}"     "" "force=utf8" "{{}^7}" "" # SUPERSCRIPT SEVEN
+0x2078 "\\textsuperscript{8}"     "" "force=utf8" "{{}^8}" "" # SUPERSCRIPT EIGHT
+0x2079 "\\textsuperscript{9}"     "" "force=utf8" "{{}^9}" "" # SUPERSCRIPT NINE
+0x207a "\\textsuperscript{+}"     "" "force=utf8" "{{}^+}" "" # SUPERSCRIPT PLUS SIGN
+0x207b "\\textsuperscript{-}"     "" "force=utf8" "{{}^-}" "" # SUPERSCRIPT MINUS
+0x207c "\\textsuperscript{=}"     "" "force=utf8" "{{}^=}" "" # SUPERSCRIPT EQUALS SIGN
+0x207d "\\textsuperscript{(}"     "" "force=utf8" "{{}^(}" "" # SUPERSCRIPT LEFT PARENTHESIS
+0x207e "\\textsuperscript{)}"     "" "force=utf8" "{{}^)}" "" # SUPERSCRIPT RIGHT PARENTHESIS
+0x207f "\\textsuperscript{n}"     "" "force=utf8" "{{}^n}" "" # SUPERSCRIPT LATIN SMALL LETTER N
+0x2080 "\\textsubscript{0}"       "subscript" "force=utf8" "{{}_0}" "" # SUBSCRIPT ZERO
+0x2081 "\\textsubscript{1}"       "subscript" "force=utf8" "{{}_1}" "" # SUBSCRIPT ONE
+0x2082 "\\textsubscript{2}"       "subscript" "force=utf8" "{{}_2}" "" # SUBSCRIPT TWO
+0x2083 "\\textsubscript{3}"       "subscript" "force=utf8" "{{}_3}" "" # SUBSCRIPT THREE
+0x2084 "\\textsubscript{4}"       "subscript" "force=utf8" "{{}_4}" "" # SUBSCRIPT FOUR
+0x2085 "\\textsubscript{5}"       "subscript" "force=utf8" "{{}_5}" "" # SUBSCRIPT FIVE
+0x2086 "\\textsubscript{6}"       "subscript" "force=utf8" "{{}_6}" "" # SUBSCRIPT SIX
+0x2087 "\\textsubscript{7}"       "subscript" "force=utf8" "{{}_7}" "" # SUBSCRIPT SEVEN
+0x2088 "\\textsubscript{8}"       "subscript" "force=utf8" "{{}_8}" "" # SUBSCRIPT EIGHT
+0x2089 "\\textsubscript{9}"       "subscript" "force=utf8" "{{}_9}" "" # SUBSCRIPT NINE
+0x208a "\\textsubscript{+}"       "subscript" "force=utf8" "{{}_+}" "" # SUBSCRIPT PLUS SIGN
+0x208b "\\textsubscript{-}"       "subscript" "force=utf8" "{{}_-}" "" # SUBSCRIPT MINUS
+0x208c "\\textsubscript{=}"       "subscript" "force=utf8" "{{}_=}" "" # SUBSCRIPT EQUALS SIGN
+0x208d "\\textsubscript{(}"       "subscript" "force=utf8" "{{}_(}" "" # SUBSCRIPT LEFT PARENTHESIS
+0x208e "\\textsubscript{)}"       "subscript" "force=utf8" "{{}_)}" "" # SUBSCRIPT RIGHT PARENTHESIS
+0x2090 "\\textsubscript{a}"       "subscript" "force=utf8" "{{}_a}" "" # LATIN SUBSCRIPT SMALL LETTER A
+0x2091 "\\textsubscript{e}"       "subscript" "force=utf8" "{{}_e}" "" # LATIN SUBSCRIPT SMALL LETTER E
+0x2092 "\\textsubscript{o}"       "subscript" "force=utf8" "{{}_o}" "" # LATIN SUBSCRIPT SMALL LETTER O
+0x2093 "\\textsubscript{x}"       "subscript" "force=utf8" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
+0x2094 "\\textsubscript{\\textschwa}" "subscript" "force=utf8" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
 #
 # currency symbols
 #
 0x20a1 "\\textcolonmonetary"      "textcomp" "" # COLON SIGN
-0x20a3 "\\textfrenchfranc"        "textcomp" "" # FRENCH FRANC SIGN
+#0x20a3 "\\textfrenchfranc"        "textcomp" "" # FRENCH FRANC SIGN # ! Undefined control sequence. \textfrenchfranc
 0x20a4 "\\textlira"               "textcomp" "" # LIRA SIGN
 0x20a6 "\\textnaira"              "textcomp" "" # NAIRA SIGN
 #0x20a7 ""                         "" "" # PESETA SIGN
@@ -1836,7 +1839,7 @@
 0x20ab "\\textdong"               "textcomp" "" # DONG SIGN
 0x20ac "\\texteuro"               "textcomp" "" # EURO SIGN
 0x20b1 "\\textpeso"               "textcomp" "" # PESO SIGN
-0x20b2 "\\textguarani"            "textcomp" "" # GUARANI SIGN
+0x20b2 "\\textguarani"            "textcomp" "force=utf8" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
 
 #
