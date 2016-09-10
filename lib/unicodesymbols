@@ -1846,69 +1846,70 @@
 # letterlike symbols
 #
 # use the following macro for the character ACCOUNT OF
-0x2100 "\\LyXaccountof" "\\newcommand*\\LyXaccountof{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{c}}}" ""
+0x2100 "\\LyXaccountof"
+"\\newcommand*\\LyXaccountof{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{c}}}" "force=utf8"
 # use the following macro for the character ADRESSED TO THE SUBJECT
-0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" ""
-0x2102 ""                         "" "" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
+0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" "force=utf8"
+0x2102 ""                         "" "force=utf8" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "force=utf8x" "" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
 # use the following macro for the character CARE OF
-0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" ""
+0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" "force=utf8"
 # use the following macro for the character CADA UNA
-0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" ""
+0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" "force=utf8"
 #0x2107 ""                         "" "" "" "" # EULER CONSTANT
 #0x2108 ""                         "" "" "" "" # SCRUPLE
-0x2109 "°{}F"                     "" "notermination=text" "" "" # DEGREE FAHRENHEIT
+0x2109 "°{}F"                     "" "force,notermination=text" "" "" # DEGREE FAHRENHEIT
 # mathrsfs has no small letters
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
-0x210b ""                         "" "" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
-0x210c ""                         "" "" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
-0x210d ""                         "" "" "\\mathbb{H}" "amssymb" # DOUBLE-STRUCK CAPITAL H
-0x210e ""                         "" "notermination=math" "h" # PLANCK CONSTANT
-0x210f ""                         "" "" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
-0x2110 ""                         "" "" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
-0x2111 ""                         "" "" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
-0x2112 ""                         "" "" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
-0x2113 ""                         "" "" "\\ell" # SCRIPT SMALL L
+0x210b ""                         "" "force=utf8" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
+0x210c ""                         "" "force=utf8" "\\mathfrak{H}" "amssymb" # BLACK-LETTER CAPITAL H
+0x210d ""                         "" "force=utf8" "\\mathbb{H}" "amssymb" # DOUBLE-STRUCK CAPITAL H
+0x210e ""                         "" "force=utf8,notermination=math" "h" # PLANCK CONSTANT
+0x210f ""                         "" "force=utf8" "\\hbar" "amssymb" # PLANCK CONSTANT OVER TWO PI
+0x2110 ""                         "" "force=utf8" "\\mathscr{I}" "mathrsfs" # SCRIPT CAPITAL I
+0x2111 ""                         "" "force=utf8" "\\mathfrak{I}" "amssymb" # BLACK-LETTER CAPITAL I
+0x2112 ""                         "" "force=utf8" "\\mathscr{L}" "mathrsfs" # SCRIPT CAPITAL L
+0x2113 ""                         "" "force=utf8" "\\ell" # SCRIPT SMALL L
 #0x2114 ""                         "" "" "" "" # L B BAR SYMBOL
-0x2115 ""                         "" "" "\\mathbb{N}" "amssymb" # DOUBLE-STRUCK CAPITAL N
+0x2115 ""                         "" "force=utf8" "\\mathbb{N}" "amssymb" # DOUBLE-STRUCK CAPITAL N
 0x2116 "\\textnumero"             "textcomp" "" # NUMERO SIGN
 0x2117 "\\textcircledP"           "textcomp" "" # SOUND RECORDING COYRIGHT
-0x2118 ""                         "" "" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
-0x2119 ""                         "" "" "\\mathbb{P}" "amssymb" # DOUBLE-STRUCK CAPITAL P
-0x211a ""                         "" "" "\\mathbb{Q}" "amssymb" # DOUBLE-STRUCK CAPITAL Q
-0x211b ""                         "" "" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
-0x211c ""                         "" "" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
-0x211d ""                         "" "" "\\mathbb{R}" "amssymb" # DOUBLE-STRUCK CAPITAL R
+0x2118 ""                         "" "force=utf8" "\\wp" "amssymb" # ℘ Weierstrass elliptic function, misnamed SCRIPT CAPITAL P
+0x2119 ""                         "" "force=utf8" "\\mathbb{P}" "amssymb" # DOUBLE-STRUCK CAPITAL P
+0x211a ""                         "" "force=utf8" "\\mathbb{Q}" "amssymb" # DOUBLE-STRUCK CAPITAL Q
+0x211b ""                         "" "force=utf8" "\\mathscr{R}" "mathrsfs" # SCRIPT CAPITAL R
+0x211c ""                         "" "force=utf8" "\\mathfrak{R}" "amssymb" # BLACK-LETTER CAPITAL R
+0x211d ""                         "" "force=utf8" "\\mathbb{R}" "amssymb" # DOUBLE-STRUCK CAPITAL R
 0x211e "\\textrecipe"             "textcomp" "" # PRESCRIPTION TAKE
 #0x211f ""                         "" "" "" "" # RESPONSE
 0x2120 "\\textservicemark"        "textcomp" "" # SERVICE MARK
 #0x2121 ""                         "" "" # TELEPHONE SIGN
 0x2122 "\\texttrademark"          "textcomp" "" # TRADE MARK SIGN
 #0x2123 ""                         "" "" "" "" # VERSICLE
-0x2124 ""                         "" "" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
+0x2124 ""                         "" "force=utf8" "\\mathbb{Z}" "amssymb" # DOUBLE-STRUCK CAPITAL Z
 #0x2125 ""                         "" "" "" "" # OUNCE SIGN
 0x2126 "\\textohm"                "textcomp" "" # OHM SIGN
 0x2127 "\\textmho"                "textcomp" "" "\\mho" "amssymb" # INVERTED OHM SIGN
-0x2128 ""                         "" "" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
+0x2128 ""                         "" "force=utf8" "\\mathfrak{Z}" "amssymb" # BLACK-LETTER CAPITAL Z
 #0x2129 ""                         "" "" "" "" # TURNED GREEK SMALL LETTER IOTA
 0x212a "K"                        "" "notermination=text" "" "" # KELVIN SIGN
 0x212b "\\AA"                     "" "force=utf8,deprecated" "" "" # ANGSTROM SIGN
-0x212c ""                         "" "" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
-0x212d ""                         "" "" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
+0x212c ""                         "" "force=utf8" "\\mathscr{B}" "mathrsfs" # SCRIPT CAPITAL B
+0x212d ""                         "" "force=utf8" "\\mathfrak{C}" "amssymb" # BLACK-LETTER CAPITAL C
 0x212e "\\textestimated"          "textcomp" "" # ESTIMATED SYMBOL
 # mathrsfs has no small letters
 #0x212f ""                         "" "" "\\mathscr{e}" "mathrsfs" # SCRIPT SMALL E
-0x2130 ""                         "" "" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
-0x2131 ""                         "" "" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
-0x2132 ""                         "" "" "\\Finv" "amssymb" # TURNED CAPITAL F
-0x2133 ""                         "" "" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
+0x2130 ""                         "" "force=utf8" "\\mathscr{E}" "mathrsfs" # SCRIPT CAPITAL E
+0x2131 ""                         "" "force=utf8" "\\mathscr{F}" "mathrsfs" # SCRIPT CAPITAL F
+0x2132 ""                         "" "force=utf8" "\\Finv" "amssymb" # TURNED CAPITAL F
+0x2133 ""                         "" "force=utf8" "\\mathscr{M}" "mathrsfs" # SCRIPT CAPITAL M
 # mathrsfs has no small letters
 #0x2134 ""                         "" "" "\\mathscr{o}" "mathrsfs" # SCRIPT SMALL O
-0x2135 ""                         "" "" "\\aleph" "amssymb" # ALEF SYMBOL
-0x2136 ""                         "" "" "\\beth" "amssymb" # BET SYMBOL
-0x2137 ""                         "" "" "\\gimel" "amssymb" # GIMEL SYMBOL
-0x2138 ""                         "" "" "\\daleth" "amssymb" # DALET SYMBOL
+0x2135 ""                         "" "force=utf8" "\\aleph" "amssymb" # ALEF SYMBOL
+0x2136 ""                         "" "force=utf8" "\\beth" "amssymb" # BET SYMBOL
+0x2137 ""                         "" "force=utf8" "\\gimel" "amssymb" # GIMEL SYMBOL
+0x2138 ""                         "" "force=utf8" "\\daleth" "amssymb" # DALET SYMBOL
 #0x2139 ""                         "" "" # INFORMATION SOURCE
 #0x213a ""                         "" "" "" "" # ROTATED CAPITAL Q
 #0x213b ""                         "" "" # FACSIMILE SIGN
@@ -1917,7 +1918,7 @@
 #0x213e ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL GAMMA
 #0x213f ""                         "" "" "" "" # DOUBLE-STRUCK CAPITAL PI
 #0x2140 ""                         "" "" "" "" # DOUBLE-STRUCK N-ARY SUMMATION
-0x2141 ""                         "" "" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
+0x2141 ""                         "" "force=utf8" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
 #0x2142 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL L
 #0x2143 ""                         "" "" "" "" # REVERSED SANS-SERIF CAPITAL L
 #0x2144 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL Y
@@ -1929,7 +1930,7 @@
 #0x214a ""                         "" "" "" "" # PROPERTY LINE
 #0x214b ""                         "" "" "" "" # TURNED AMPERSAND
 #0x214c ""                         "" "" "" "" # PER SIGN
-0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "" # ⅍ AKTIESELSKAB
+0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "force=utf8" # ⅍ AKTIESELSKAB
 #0x214e ""                         "" "" "" "" # TURNED SMALL F
 #0x214f ""                         "" "" "" "" # SYMBOL FOR SAMARITAN SOURCE
 #
@@ -1939,63 +1940,63 @@
 #0x2151 ""                         "" "" "" "" # VULGAR FRACTION ONE NINTH
 #0x2152 ""                         "" "" "" "" # VULGAR FRACTION ONE TENTH
 # use the following macro for the character VULGAR FRACTION ONE THIRD
-0x2153 "\\LyXonethird" "\\newcommand*\\LyXonethird{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" ""
+0x2153 "\\LyXonethird" "\\newcommand*\\LyXonethird{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION TWO THIRDS
-0x2154 "\\LyXtwothirds" "\\newcommand*\\LyXtwothirds{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" ""
+0x2154 "\\LyXtwothirds" "\\newcommand*\\LyXtwothirds{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION ONE FIFTH
-0x2155 "\\LyXonefifth" "\\newcommand*\\LyXonefifth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+0x2155 "\\LyXonefifth" "\\newcommand*\\LyXonefifth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION TWO FIFTHS
-0x2156 "\\LyXtwofifths" "\\newcommand*\\LyXtwofifths{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+0x2156 "\\LyXtwofifths" "\\newcommand*\\LyXtwofifths{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION THREE FIFTHS
-0x2157 "\\LyXthreefifths" "\\newcommand*\\LyXthreefifths{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+0x2157 "\\LyXthreefifths" "\\newcommand*\\LyXthreefifths{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION FOUR FIFTHS
-0x2158 "\\LyXfourfifths" "\\newcommand*\\LyXfourfifths{\\mbox{\\raisebox{.8ex}{4}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" ""
+0x2158 "\\LyXfourfifths" "\\newcommand*\\LyXfourfifths{\\mbox{\\raisebox{.8ex}{4}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION ONE SIXTH
-0x2159 "\\LyXonesixth" "\\newcommand*\\LyXonesixth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" ""
+0x2159 "\\LyXonesixth" "\\newcommand*\\LyXonesixth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION FIVE SIXTHS
-0x215a "\\LyXfivesixths" "\\newcommand*\\LyXfivesixths{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" ""
+0x215a "\\LyXfivesixths" "\\newcommand*\\LyXfivesixths{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION ONE EIGHT
-0x215b "\\LyXoneeight" "\\newcommand*\\LyXoneeight{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+0x215b "\\LyXoneeight" "\\newcommand*\\LyXoneeight{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION THREE EIGHTS
-0x215c "\\LyXthreeeights" "\\newcommand*\\LyXthreeeights{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+0x215c "\\LyXthreeeights" "\\newcommand*\\LyXthreeeights{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION FIVE EIGHTS
-0x215d "\\LyXfiveeights" "\\newcommand*\\LyXfiveeights{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+0x215d "\\LyXfiveeights" "\\newcommand*\\LyXfiveeights{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8"
 # use the following macro for the character VULGAR FRACTION SEVEN EIGHTS
-0x215e "\\LyXseveneights" "\\newcommand*\\LyXseveneights{\\mbox{\\raisebox{.8ex}{7}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" ""
+0x215e "\\LyXseveneights" "\\newcommand*\\LyXseveneights{\\mbox{\\raisebox{.8ex}{7}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8"
 # use the following macro for the character FRACTION NUMERATOR ONE
-0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\kern-.18em}}}" ""
-0x2160 "\\mbox{I}"                "" "" # ROMAN NUMERAL ONE
-0x2161 "\\mbox{II}"               "" "" # ROMAN NUMERAL TWO
-0x2162 "\\mbox{III}"              "" "" # ROMAN NUMERAL THREE
-0x2163 "\\mbox{IV}"               "" "" # ROMAN NUMERAL FOUR
-0x2164 "\\mbox{V}"                "" "" # ROMAN NUMERAL FIVE
-0x2165 "\\mbox{VI}"               "" "" # ROMAN NUMERAL SIX
-0x2166 "\\mbox{VII}"              "" "" # ROMAN NUMERAL SEVEN
-0x2167 "\\mbox{VIII}"             "" "" # ROMAN NUMERAL EIGHT
-0x2168 "\\mbox{IX}"               "" "" # ROMAN NUMERAL NINE
-0x2169 "\\mbox{X}"                "" "" # ROMAN NUMERAL TEN
-0x216a "\\mbox{XI}"               "" "" # ROMAN NUMERAL ELEVEN
-0x216b "\\mbox{XII}"              "" "" # ROMAN NUMERAL TWELVE
-0x216c "\\mbox{L}"                "" "" # ROMAN NUMERAL FIFTY
-0x216d "\\mbox{C}"                "" "" # ROMAN NUMERAL ONE HUNDRED
-0x216e "\\mbox{D}"                "" "" # ROMAN NUMERAL FIVE HUNDRED
-0x216f "\\mbox{M}"                "" "" # ROMAN NUMERAL ONE THOUSAND
-0x2170 "\\mbox{i}"                "" "" # SMALL ROMAN NUMERAL ONE
-0x2171 "\\mbox{ii}"               "" "" # SMALL ROMAN NUMERAL TWO
-0x2172 "\\mbox{iii}"              "" "" # SMALL ROMAN NUMERAL THREE
-0x2173 "\\mbox{iv}"               "" "" # SMALL ROMAN NUMERAL FOUR
-0x2174 "\\mbox{v}"                "" "" # SMALL ROMAN NUMERAL FIVE
-0x2175 "\\mbox{vi}"               "" "" # SMALL ROMAN NUMERAL SIX
-0x2176 "\\mbox{vii}"              "" "" # SMALL ROMAN NUMERAL SEVEN
-0x2177 "\\mbox{viii}"             "" "" # SMALL ROMAN NUMERAL EIGHT
-0x2178 "\\mbox{ix}"               "" "" # SMALL ROMAN NUMERAL NINE
-0x2179 "\\mbox{x}"                "" "" # SMALL ROMAN NUMERAL TEN
-0x217a "\\mbox{xi}"               "" "" # SMALL ROMAN NUMERAL ELEVEN
-0x217b "\\mbox{xii}"              "" "" # SMALL ROMAN NUMERAL TWELVE
-0x217c "\\mbox{l}"                "" "" # SMALL ROMAN NUMERAL FIFTY
-0x217d "\\mbox{c}"                "" "" # SMALL ROMAN NUMERAL ONE HUNDRED
-0x217e "\\mbox{d}"                "" "" # SMALL ROMAN NUMERAL FIVE HUNDRED
-0x217f "\\mbox{m}"                "" "" # SMALL ROMAN NUMERAL ONE THOUSAND
+0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\kern-.18em}}}" "force=utf8"
+0x2160 "\\mbox{I}"                "" "force=utf8" # ROMAN NUMERAL ONE
+0x2161 "\\mbox{II}"               "" "force=utf8" # ROMAN NUMERAL TWO
+0x2162 "\\mbox{III}"              "" "force=utf8" # ROMAN NUMERAL THREE
+0x2163 "\\mbox{IV}"               "" "force=utf8" # ROMAN NUMERAL FOUR
+0x2164 "\\mbox{V}"                "" "force=utf8" # ROMAN NUMERAL FIVE
+0x2165 "\\mbox{VI}"               "" "force=utf8" # ROMAN NUMERAL SIX
+0x2166 "\\mbox{VII}"              "" "force=utf8" # ROMAN NUMERAL SEVEN
+0x2167 "\\mbox{VIII}"             "" "force=utf8" # ROMAN NUMERAL EIGHT
+0x2168 "\\mbox{IX}"               "" "force=utf8" # ROMAN NUMERAL NINE
+0x2169 "\\mbox{X}"                "" "force=utf8" # ROMAN NUMERAL TEN
+0x216a "\\mbox{XI}"               "" "force=utf8" # ROMAN NUMERAL ELEVEN
+0x216b "\\mbox{XII}"              "" "force=utf8" # ROMAN NUMERAL TWELVE
+0x216c "\\mbox{L}"                "" "force=utf8" # ROMAN NUMERAL FIFTY
+0x216d "\\mbox{C}"                "" "force=utf8" # ROMAN NUMERAL ONE HUNDRED
+0x216e "\\mbox{D}"                "" "force=utf8" # ROMAN NUMERAL FIVE HUNDRED
+0x216f "\\mbox{M}"                "" "force=utf8" # ROMAN NUMERAL ONE THOUSAND
+0x2170 "\\mbox{i}"                "" "force=utf8" # SMALL ROMAN NUMERAL ONE
+0x2171 "\\mbox{ii}"               "" "force=utf8" # SMALL ROMAN NUMERAL TWO
+0x2172 "\\mbox{iii}"              "" "force=utf8" # SMALL ROMAN NUMERAL THREE
+0x2173 "\\mbox{iv}"               "" "force=utf8" # SMALL ROMAN NUMERAL FOUR
+0x2174 "\\mbox{v}"                "" "force=utf8" # SMALL ROMAN NUMERAL FIVE
+0x2175 "\\mbox{vi}"               "" "force=utf8" # SMALL ROMAN NUMERAL SIX
+0x2176 "\\mbox{vii}"              "" "force=utf8" # SMALL ROMAN NUMERAL SEVEN
+0x2177 "\\mbox{viii}"             "" "force=utf8" # SMALL ROMAN NUMERAL EIGHT
+0x2178 "\\mbox{ix}"               "" "force=utf8" # SMALL ROMAN NUMERAL NINE
+0x2179 "\\mbox{x}"                "" "force=utf8" # SMALL ROMAN NUMERAL TEN
+0x217a "\\mbox{xi}"               "" "force=utf8" # SMALL ROMAN NUMERAL ELEVEN
+0x217b "\\mbox{xii}"              "" "force=utf8" # SMALL ROMAN NUMERAL TWELVE
+0x217c "\\mbox{l}"                "" "force=utf8" # SMALL ROMAN NUMERAL FIFTY
+0x217d "\\mbox{c}"                "" "force=utf8" # SMALL ROMAN NUMERAL ONE HUNDRED
+0x217e "\\mbox{d}"                "" "force=utf8" # SMALL ROMAN NUMERAL FIVE HUNDRED
+0x217f "\\mbox{m}"                "" "force=utf8" # SMALL ROMAN NUMERAL ONE THOUSAND
 #0x2180 ""                         "" "" "" "" # ROMAN NUMERAL ONE THOUSAND C D
 #0x2181 ""                         "" "" "" "" # ROMAN NUMERAL FIVE THOUSAND
 #0x2182 ""                         "" "" "" "" # ROMAN NUMERAL TEN THOUSAND
@@ -2013,95 +2014,95 @@
 0x2191 "\\textuparrow"            "textcomp" "" "\\uparrow" # UPWARDS ARROW
 0x2192 "\\textrightarrow"         "textcomp" "" "\\rightarrow" # RIGHTWARDS ARROW
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
-0x2194 ""                         "" "" "\\leftrightarrow" # LEFT RIGHT ARROW
-0x2195 ""                         "" "" "\\updownarrow" # UP DOWN ARROW
-0x2196 "Home"                     "" "notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
-0x2197 "\\textglobrise"           "tipa" "" "\\nearrow" "" # NORTH EAST ARROW
-0x2198 "End"                      "" "notermination=text,tipashortcut=\\textglobfall{}" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
-0x2199 ""                         "" "" "\\swarrow" "" # SOUTH WEST ARROW
-0x219a ""                         "" "" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
-0x219b ""                         "" "" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
+0x2194 ""                         "" "force=utf8" "\\leftrightarrow" # LEFT RIGHT ARROW
+0x2195 ""                         "" "force=utf8" "\\updownarrow" # UP DOWN ARROW
+0x2196 "Home"                     "" "force=utf8,notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
+0x2197 "\\textglobrise"           "tipa" "force=utf8" "\\nearrow" "" # NORTH EAST ARROW
+0x2198 "End"                      "" "force=utf8,notermination=text,tipashortcut=\\textglobfall{}" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
+0x2199 ""                         "" "force=utf8" "\\swarrow" "" # SOUTH WEST ARROW
+0x219a ""                         "" "force=utf8" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
+0x219b ""                         "" "force=utf8" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
 #0x219c ""                         "" "" "" "" # LEFTWARDS WAVE ARROW
 # amssymb and amsfonts define leadsto as well, but wrong (looks like 0x21dd)
-0x219d ""                         "" "" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
-0x219e ""                         "" "" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
+0x219d ""                         "" "force=utf8" "\\leadsto" "latexsym|wasysym" # RIGHTWARDS WAVE ARROW,
+0x219e ""                         "" "force=utf8" "\\twoheadleftarrow" "amssymb" # LEFTWARDS TWO HEADED ARROW
 #0x219f ""                         "" "" "" "" # UPWARDS TWO HEADED ARROW
-0x21a0 ""                         "" "" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
+0x21a0 ""                         "" "force=utf8" "\\twoheadrightarrow" "amssymb" # RIGHTWARDS TWO HEADED ARROW
 #0x21a1 ""                         "" "" "" "" # DOWNWARDS TWO HEADED ARROW
-0x21a2 ""                         "" "" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
-0x21a3 ""                         "" "" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
-0x21a4 ""                         "" "" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
+0x21a2 ""                         "" "force=utf8" "\\leftarrowtail" "amssymb" # LEFTWARDS ARROW WITH TAIL
+0x21a3 ""                         "" "force=utf8" "\\rightarrowtail" "amssymb" # RIGHTWARDS ARROW WITH TAIL
+0x21a4 ""                         "" "force=utf8" "\\mapsfrom" "stmaryrd" # LEFTWARDS ARROW FROM BAR
 #0x21a5 ""                         "" "" "" "" # UPWARDS ARROW FROM BAR
-0x21a6 ""                         "" "" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
+0x21a6 ""                         "" "force=utf8" "\\mapsto" "" # RIGHTWARDS ARROW FROM BAR
 #0x21a7 ""                         "" "" "" "" # DOWNWARDS ARROW FROM BAR
-0x21a8 "{\\ascii\\ETB}"           "ascii" "" # UP DOWN ARROW WITH BASE
-0x21a9 ""                         "" "" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
-0x21aa ""                         "" "" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
-0x21ab ""                         "" "" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
-0x21ac ""                         "" "" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
-0x21ad ""                         "" "" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
-0x21ae ""                         "" "" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
+0x21a8 "\\ETB"			  "ascii" "force=utf8" # UP DOWN ARROW WITH BASE
+0x21a9 ""                         "" "force=utf8" "\\hookleftarrow" "" # LEFTWARDS ARROW WITH HOOK
+0x21aa ""                         "" "force=utf8" "\\hookrightarrow" "" # RIGHTWARDS ARROW WITH HOOK
+0x21ab ""                         "" "force=utf8" "\\looparrowleft" "amssymb" # LEFTWARDS ARROW WITH LOOP
+0x21ac ""                         "" "force=utf8" "\\looparrowright" "amssymb" # RIGHTWARDS ARROW WITH LOOP
+0x21ad ""                         "" "force=utf8" "\\leftrightsquigarrow" "amssymb" # LEFT RIGHT WAVE ARROW
+0x21ae ""                         "" "force=utf8" "\\nleftrightarrow" "amssymb" # LEFT RIGHT ARROW WITH STROKE
 # stmaryrd defines \lightnig as math-command but this clashes with wasysym where \lightning in math mode produces "`"
-0x21af "\\lightning"              "wasysym" "" "" "" # DOWNWARDS ZIGZAG ARROW
-0x21b0 ""                         "" "" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
-0x21b1 ""                         "" "" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
+0x21af "\\lightning"              "wasysym" "force=utf8" "" "" # DOWNWARDS ZIGZAG ARROW
+0x21b0 ""                         "" "force=utf8" "\\Lsh" "amssymb" # UPWARDS ARROW WITH TIP LEFTWARDS
+0x21b1 ""                         "" "force=utf8" "\\Rsh" "amssymb" # UPWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b2 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP LEFTWARDS
 #0x21b3 ""                         "" "" "" "" # DOWNWARDS ARROW WITH TIP RIGHTWARDS
 #0x21b4 ""                         "" "" "" "" # RIGHTWARDS ARROW WITH CORNER DOWNWARDS
-0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
-0x21b6 ""                         "" "" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
-0x21b7 ""                         "" "" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
+0x21b5 "{\\Pisymbol{psy}{191}}"   "pifont" "force=utf8" # DOWNWARDS ARROW WITH CORNER LEFTWARDS, Return key
+0x21b6 ""                         "" "force=utf8" "\\curvearrowleft" "amssymb" # ANTICLOCKWISE TOP SEMICIRCLE ARROW
+0x21b7 ""                         "" "force=utf8" "\\curvearrowright" "amssymb" # CLOCKWISE TOP SEMICIRCLE ARROW
 #0x21b8 ""                         "" "" "" "" # NORTH WEST ARROW TO LONG BAR
 #0x21b9 ""                         "" "" "" "" # LEFTWARDS ARROW TO BAR OVER RIGHTWARDS ARROW TO BAR
-0x21ba ""                         "" "" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
-0x21bb ""                         "" "" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
-0x21bc ""                         "" "" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
-0x21bd ""                         "" "" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
-0x21be ""                         "" "" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
-0x21bf ""                         "" "" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
-0x21c0 ""                         "" "" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
-0x21c1 ""                         "" "" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
-0x21c2 ""                         "" "" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
-0x21c3 ""                         "" "" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
-0x21c4 ""                         "" "" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
+0x21ba ""                         "" "force=utf8" "\\circlearrowleft" "amssymb" # ANTICLOCKWISE OPEN CIRCLE ARROW
+0x21bb ""                         "" "force=utf8" "\\circlearrowright" "amssymb" # CLOCKWISE OPEN CIRCLE ARROW
+0x21bc ""                         "" "force=utf8" "\\leftharpoonup" "" # LEFTWARDS HARPOON WITH BARB UPWARDS
+0x21bd ""                         "" "force=utf8" "\\leftharpoondown" "" # LEFTWARDS HARPOON WITH BARB DOWNWARDS
+0x21be ""                         "" "force=utf8" "\\upharpoonright" "amssymb" # UPWARDS HARPOON WITH BARB RIGHTWARDS
+0x21bf ""                         "" "force=utf8" "\\upharpoonleft" "amssymb" # UPWARDS HARPOON WITH BARB LEFTWARDS
+0x21c0 ""                         "" "force=utf8" "\\rightharpoonup" "" # RIGHTWARDS HARPOON WITH BARB UPWARDS
+0x21c1 ""                         "" "force=utf8" "\\rightharpoondown" "" # RIGHTWARDS HARPOON WITH BARB DOWNWARDS
+0x21c2 ""                         "" "force=utf8" "\\downharpoonright" "amssymb" # DOWNWARDS HARPOON WITH BARB RIGHTWARDS
+0x21c3 ""                         "" "force=utf8" "\\downharpoonleft" "amssymb" # DOWNWARDS HARPOON WITH BARB LEFTWARDS
+0x21c4 ""                         "" "force=utf8" "\\rightleftarrows" "amssymb" # RIGHTWARDS ARROW OVER LEFTWARDS ARROW
 #0x21c5 ""                         "" "" "\\updownarrows" "mathabx" # UPWARDS ARROW LEFTWARDS OF DOWNWARDS ARROW
-0x21c6 ""                         "" "" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
-0x21c7 ""                         "" "" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
-0x21c8 ""                         "" "" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
-0x21c9 ""                         "" "" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
-0x21ca ""                         "" "" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
-0x21cb ""                         "" "" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
-0x21cc ""                         "" "" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
-0x21cd ""                         "" "" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
-0x21ce ""                         "" "" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
-0x21cf ""                         "" "" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
-0x21d0 ""                         "" "" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
-0x21d1 ""                         "" "" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
-0x21d2 ""                         "" "" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
-0x21d3 ""                         "" "" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
-0x21d4 ""                         "" "" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
-0x21d5 ""                         "" "" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
+0x21c6 ""                         "" "force=utf8" "\\leftrightarrows" "amssymb" # LEFTWARDS ARROW OVER RIGHTWARDS ARROW
+0x21c7 ""                         "" "force=utf8" "\\leftleftarrows" "amssymb" # LEFTWARDS PAIRED ARROWS
+0x21c8 ""                         "" "force=utf8" "\\upuparrows" "amssymb" # UPWARDS PAIRED ARROWS
+0x21c9 ""                         "" "force=utf8" "\\rightrightarrows" "amssymb" # RIGHTWARDS PAIRED ARROWS
+0x21ca ""                         "" "force=utf8" "\\downdownarrows" "amssymb" # DOWNWARDS PAIRED ARROWS
+0x21cb ""                         "" "force=utf8" "\\leftrightharpoons" "amssymb" # LEFTWARDS HARPOON OVER RIGHTWARDS HARPOON
+0x21cc ""                         "" "force=utf8" "\\rightleftharpoons" "amssymb" # RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON
+0x21cd ""                         "" "force=utf8" "\\nLeftarrow" "amssymb" # LEFTWARDS DOUBLE ARROW WITH STROKE
+0x21ce ""                         "" "force=utf8" "\\nLeftrightarrow" "amssymb" # LEFT RIGHT DOUBLE ARROW WITH STROKE
+0x21cf ""                         "" "force=utf8" "\\nRightarrow" "amssymb" # RIGHTWARDS DOUBLE ARROW WITH STROKE
+0x21d0 ""                         "" "force=utf8" "\\Leftarrow" "" # LEFTWARDS DOUBLE ARROW
+0x21d1 ""                         "" "force=utf8" "\\Uparrow" "" # UPWARDS DOUBLE ARROW
+0x21d2 ""                         "" "force=utf8" "\\Rightarrow" "" # RIGHTWARDS DOUBLE ARROW
+0x21d3 ""                         "" "force=utf8" "\\Downarrow" "" # DOWNWARDS DOUBLE ARROW
+0x21d4 ""                         "" "force=utf8" "\\Leftrightarrow" "" # LEFT RIGHT DOUBLE ARROW
+0x21d5 ""                         "" "force=utf8" "\\Updownarrow" "" # UP DOWN DOUBLE ARROW
 #0x21d6 ""                         "" "" "\\Nwarrow" "MnSymbol" # NORTH WEST DOUBLE ARROW
 #0x21d7 ""                         "" "" "\\Nearrow" "MnSymbol" # NORTH EAST DOUBLE ARROW
 #0x21d8 ""                         "" "" "\\Searrow" "MnSymbol" # SOUTH EAST DOUBLE ARROW
 #0x21d9 ""                         "" "" "\\Swarrow" "MnSymbol" # SOUTH WEST DOUBLE ARROW
-0x21da ""                         "" "" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
-0x21db ""                         "" "" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
+0x21da ""                         "" "force=utf8" "\\Lleftarrow" "amssymb" # LEFTWARDS TRIPLE ARROW
+0x21db ""                         "" "force=utf8" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
 #0x21dc ""                         "" "" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
-0x21dd ""                         "" "" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
-0x21de "Option-Up Arrow"          "" "notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
-0x21df "Option-Down Arrow"        "" "notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
-0x21e0 ""                         "" "" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
+0x21dd ""                         "" "force=utf8" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
+0x21de "Option-Up Arrow"          "" "force=utf8,notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
+0x21df "Option-Down Arrow"        "" "force=utf8,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
+0x21e0 ""                         "" "force=utf8" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
 #0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
-0x21e2 ""                         "" "" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
+0x21e2 ""                         "" "force=utf8" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
 #0x21e3 ""                         "" "" "" "" # DOWNWARDS DASHED ARROW
-0x21e4 "Shift-Tab"                "" "notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
-0x21e5 "Tab"                      "" "notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
+0x21e4 "Shift-Tab"                "" "force=utf8,notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
+0x21e5 "Tab"                      "" "force=utf8,notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
 #0x21e6 ""                         "" "" "" "" # LEFTWARDS WHITE ARROW
 #0x21e7 ""                         "" "" "" "" # UPWARDS WHITE ARROW
-0x21e8 "\\pointer"                "wasysym" "" "" "" # RIGHTWARDS WHITE ARROW
+0x21e8 "\\pointer"                "wasysym" "force=utf8" "" "" # RIGHTWARDS WHITE ARROW
 #0x21e9 ""                         "" "" "" "" # DOWNWARDS WHITE ARROW
-0x21ea "Caps Lock"                "" "notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
+0x21ea "Caps Lock"                "" "force=utf8,notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
 #0x21eb ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL
 #0x21ec ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH HORIZONTAL BAR
 #0x21ed ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH VERTICAL BAR
