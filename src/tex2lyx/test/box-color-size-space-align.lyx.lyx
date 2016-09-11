@@ -2897,7 +2897,21 @@ Characters
 \begin_layout Standard
 
 \size normal
-from package "ascii" and "ifsym": ®↨◻◼ ◙ ◙
+from package "ascii" and "ifsym": ®
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\backslash
+ascii
+\backslash
+ETB}
+\end_layout
+
+\end_inset
+
+◻◼ ◙ ◙
 \end_layout
 
 \begin_layout Standard
