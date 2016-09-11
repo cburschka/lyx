@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-11 12:06-0400\n"
-"PO-Revision-Date: 2016-08-26 19:06+0000\n"
+"POT-Creation-Date: 2016-09-09 09:58+0200\n"
+"PO-Revision-Date: 2016-09-11 16:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2691,7 +2691,7 @@ msgstr "Určite štandardný výstupný formát (pre náhľad/aktualizáciu)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:64
 msgid "De&fault output format:"
-msgstr "Štandardný výstupný &formát:"
+msgstr "Š&tandardný výstup:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
 msgid "LyX Format"
@@ -2734,7 +2734,7 @@ msgstr "Vlastné makro do preambuly LaTeX-u"
 
 #: src/frontends/qt4/ui/OutputUi.ui:156
 msgid "XHTML Output Options"
-msgstr "Voľby Východzie XHTML"
+msgstr "XHTML Voľby"
 
 #: src/frontends/qt4/ui/OutputUi.ui:165
 msgid "Whether to comply strictly with XHTML 1.1."
@@ -2773,7 +2773,7 @@ msgstr "LaTeX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:230
 msgid "Math &image scaling:"
-msgstr "Mat. &mierka obrázku:"
+msgstr "Mat. mierka &obrázku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:246
 msgid "Scaling factor for images used for math output."
@@ -23266,9 +23266,8 @@ msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
 #: lib/configure.py:635
-#, fuzzy
 msgid "MS Excel Office Open XML"
-msgstr "MS-Word Office-Open XML"
+msgstr "MS-Excel Office-Open XML"
 
 #: lib/configure.py:636
 msgid "HTML Table (for spreadsheets)"
@@ -29115,7 +29114,7 @@ msgstr "Symboly"
 
 #: src/frontends/qt4/GuiTabular.h:45
 msgid "Tabular Settings"
-msgstr "Nastavenia Tabuľky"
+msgstr "Tabuľkové Nastavenia"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
@@ -31100,7 +31099,7 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 #: src/mathed/InsetMathGrid.cpp:1811
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Neznáme vlastnosti tabuľky '%1$s'"
+msgstr "Neznáma tabuľková vlastnosť '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1563
 #, c-format
