@@ -134,6 +134,10 @@
  {% \usepackage{sidecap} % This breaks title fonts with pLaTeX
   \setboolean{sidecap}{true}}
  {\setboolean{sidecap}{false}}
+% set sidecap to false in all cases for Japanese manual.
+% It breaks compliation and gives the following error:
+% ! LaTeX Error: Environment SCfigure undefined.
+\setboolean{sidecap}{false}
 
 % check for picinpar
 % used for surrounded fixed objects
