@@ -1449,9 +1449,11 @@ bool Cursor::macroModeClose()
 	else if (atom.nucleus()->nargs() > 0)
 		atom.nucleus()->cell(0).append(selection);
 
+	bool ert_macro = atomAsMacro && !atomAsMacro->macro();
+
 	if (in && in->currentMode() == Inset::TEXT_MODE
 	    && atom.nucleus()->currentMode() == Inset::MATH_MODE
-	    && name != from_ascii("ensuremath")) {
+	    && name != from_ascii("ensuremath") && !ert_macro) {
 		MathAtom at(new InsetMathEnsureMath(buffer()));
 		at.nucleus()->cell(0).push_back(atom);
 		niceInsert(at);
