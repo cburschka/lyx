@@ -45,7 +45,7 @@
 \language english
 \language_package none
 \inputencoding iso8859-15
-\fontencoding T1
+\fontencoding T2A,LGR,T1
 \font_roman "cmr" "default"
 \font_sans "berasans" "default"
 \font_typewriter "default" "default"
@@ -2897,21 +2897,7 @@ Characters
 \begin_layout Standard
 
 \size normal
-from package "ascii" and "ifsym": ®
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\backslash
-ascii
-\backslash
-ETB}
-\end_layout
-
-\end_inset
-
-◻◼ ◙ ◙
+from package "ascii" and "ifsym": ®↨◻◼◙
 \end_layout
 
 \begin_layout Standard

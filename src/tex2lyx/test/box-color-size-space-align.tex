@@ -6,7 +6,7 @@
 \usepackage{berasans}
 \renewcommand{\familydefault}{\sfdefault}
 
-\usepackage[T1]{fontenc}
+\usepackage[T2A,LGR,T1]{fontenc}
 \usepackage[latin9]{inputenc}
 
 \usepackage{geometry}
@@ -21,18 +21,17 @@
 \definecolor{note_fontcolor}{rgb}{0, 0, 1}
 \definecolor{shadecolor}{rgb}{1, 1, 0}
 \usepackage{framed}
+\usepackage{textcomp}
 \usepackage{calc}
 \usepackage{fancybox}
 \PassOptionsToPackage{normalem}{ulem}
 \usepackage{ulem}
 \usepackage{ifsym}
 \usepackage{ascii}
-\usepackage{textgreek}
-\usepackage{textcyr}
 \usepackage{subscript}
 \usepackage{tfrupee}
 \usepackage{bbding}
-\usepackage{marvosym}
+%\usepackage{marvosym} % clash with pifont (! \Cross already defined)
 \usepackage{wasysym}
 \usepackage{pifont}
 \usepackage{tipa}
@@ -46,6 +45,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \newcommand{\noun}[1]{\textsc{#1}}
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\ProvideTextCommand{\~}{LGR}[1]{\char126#1}
+\DeclareRobustCommand{\cyrtext}{%
+  \fontencoding{T2A}\selectfont\def\encodingdefault{T2A}}
+\DeclareRobustCommand{\textcyr}[1]{\leavevmode{\cyrtext #1}}
 %% The greyedout annotation environment
 \newenvironment{lyxgreyedout}{\textcolor{note_fontcolor}\bgroup}{\egroup}
 
@@ -508,9 +514,7 @@ smallskip 2:\vspace{\smallskipamount}
 \section{Characters}
 
 from package "ascii" and "ifsym": 
-\textregistered{\ascii\ETB}\textifsymbol[ifgeo]{48}\textifsymbol[ifgeo]{96}
-{\ascii\LF}
-\ascii\LF{}
+\textregistered\ETB\textifsymbol[ifgeo]{48}\textifsymbol[ifgeo]{96}\LF{}
 
 from textcomp: 
 \textnumero\texttrademark
