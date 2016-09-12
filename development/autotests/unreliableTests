@@ -67,11 +67,6 @@ Sublabel: varying_versions
 export/templates/aastex_(dvi|pdf).*
 export/examples/aas_sample_(dvi|pdf).*
 
-# Fails on an updated TeXLive16 with 
-# ! LaTeX Error: Cannot determine size of graphic in 0_usr_local_src_lyx_lib_doc_clipart_footnote.png (no BoundingBox).
-# May affect more languages.
-export/doc/(nb|el)/Intro_pdf5_.*
-
 
 Sublabel: wrong_output
 # ====================
