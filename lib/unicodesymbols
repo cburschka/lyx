@@ -1785,7 +1785,7 @@
 0x2048 "?!"                       "" "notermination=text,force=utf8" "" "" # QUESTION EXCLAMATION MARK
 0x2049 "!?"                       "" "notermination=text,force=utf8" "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
-0x205d "\\vdots"                  "" "" # TRICOLON # ≈ VERTICAL ELLIPSIS
+0x205d ""                         "" "" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "notermination=math,force=utf8" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
@@ -2366,7 +2366,7 @@
 #0x22eb ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP
 0x22ec ""                         "" "" "\\ntrianglelefteq" "amssymb" # NOT NORMAL SUBGROUP OF OR EQUAL TO
 0x22ed ""                         "" "" "\\ntrianglerighteq" "amssymb" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
-0x22ee "\\vdots"                  "" "" "\\vdots" "" # VERTICAL ELLIPSIS
+0x22ee ""                         "" "" "\\vdots" "" # VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
 0x22ef ""                         "" "" "\\cdots" "" # MIDLINE HORIZONTAL ELLIPSIS
 0x22f0 ""                         "" "" "\\iddots" "mathdots" # UP RIGHT DIAGONAL ELLIPSIS
 0x22f1 ""                         "" "" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
@@ -2389,7 +2389,7 @@
 #
 0x2300 "\\diameter"               "wasysym" "" "\\diameter" "wasysym" # DIAMETER SIGN
 #0x2301 ""                         "" "" "" "" # ELECTRIC ARROW
-0x2302 "{\\ascii\\DEL}"           "ascii" "" # HOUSE
+0x2302 "\\DEL"                    "ascii" "" # HOUSE
 #0x2303 ""                         "" "" "" "" # UP ARROWHEAD
 #0x2304 ""                         "" "" "" "" # DOWN ARROWHEAD
 #0x2305 ""                         "" "" "" "" # PROJECTIVE
@@ -2435,40 +2435,40 @@
 # The symbols using ascii.sty are commented because the visual appearance
 # is different from the one in the official unicode charts, although the
 # the symbols are semantically correct.
-#0x2400 "{\\NUL}"                  "ascii" "" "" "" # SYMBOL FOR NULL
-#0x2401 "{\\SOH}"                  "ascii" "" "" "" # SYMBOL FOR START OF HEADING
-#0x2402 "{\\STX}"                  "ascii" "" "" "" # SYMBOL FOR START OF TEXT
-#0x2403 "{\\ETX}"                  "ascii" "" "" "" # SYMBOL FOR END OF TEXT
-#0x2404 "{\\EOT}"                  "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION
-#0x2405 "{\\ENQ}"                  "ascii" "" "" "" # SYMBOL FOR ENQUIRY
-#0x2406 "{\\ACK}"                  "ascii" "" "" "" # SYMBOL FOR ACKNOWLEDGE
-#0x2407 "{\\BEL}"                  "ascii" "" "" "" # SYMBOL FOR BELL
-#0x2408 "{\\BS}"                   "ascii" "" "" "" # SYMBOL FOR BACKSPACE
-#0x2409 "{\\HT}"                   "ascii" "" "" "" # SYMBOL FOR HORIZONTAL TABULATION
-#0x240a "{\\LT}"                   "ascii" "" "" "" # SYMBOL FOR LINE FEED
-#0x240b "{\\VT}"                   "ascii" "" "" "" # SYMBOL FOR VERTICAL TABULATION
-#0x240c "{\\FF}"                   "ascii" "" "" "" # SYMBOL FOR FORM FEED
-#0x240d "{\\CR}"                   "ascii" "" "" "" # SYMBOL FOR CARRIAGE RETURN
-#0x240e "{\\SO}"                   "ascii" "" "" "" # SYMBOL FOR SHIFT OUT
-#0x240f "{\\SI}"                   "ascii" "" "" "" # SYMBOL FOR SHIFT IN
-#0x2410 "{\\DLE}"                  "ascii" "" "" "" # SYMBOL FOR DATA LINK ESCAPE
-#0x2411 "{\\DCa}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL ONE
-#0x2412 "{\\DCb}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL TWO
-#0x2413 "{\\DCc}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL THREE
-#0x2414 "{\\DCd}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL FOUR
-#0x2415 "{\\NAK}"                  "ascii" "" "" "" # SYMBOL FOR NEGATIVE ACKNOWLEDGE
-#0x2416 "{\\SYN}"                  "ascii" "" "" "" # SYMBOL FOR SYNCHRONOUS IDLE
-#0x2417 "{\\ETB}"                  "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION BLOCK
-#0x2418 "{\\CAN}"                  "ascii" "" "" "" # SYMBOL FOR CANCEL
-#0x2419 "{\\EM}"                   "ascii" "" "" "" # SYMBOL FOR END OF MEDIUM
-#0x241a "{\\SUB}"                  "ascii" "" "" "" # SYMBOL FOR SUBSTITUTE
-#0x241b "{\\ESC}"                  "ascii" "" "" "" # SYMBOL FOR ESCAPE
-#0x241c "{\\FS}"                   "ascii" "" "" "" # SYMBOL FOR FILE SEPARATOR
-#0x241d "{\\GS}"                   "ascii" "" "" "" # SYMBOL FOR GROUP SEPARATOR
-#0x241e "{\\RS}"                   "ascii" "" "" "" # SYMBOL FOR RECORD SEPARATOR
-#0x241f "{\\US}"                   "ascii" "" "" "" # SYMBOL FOR UNIT SEPARATOR
+#0x2400 "\\NUL"                    "ascii" "" "" "" # SYMBOL FOR NULL
+#0x2401 "\\SOH"                    "ascii" "" "" "" # SYMBOL FOR START OF HEADING
+#0x2402 "\\STX"                    "ascii" "" "" "" # SYMBOL FOR START OF TEXT
+#0x2403 "\\ETX"                    "ascii" "" "" "" # SYMBOL FOR END OF TEXT
+#0x2404 "\\EOT"                    "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION
+#0x2405 "\\ENQ"                    "ascii" "" "" "" # SYMBOL FOR ENQUIRY
+#0x2406 "\\ACK"                    "ascii" "" "" "" # SYMBOL FOR ACKNOWLEDGE
+#0x2407 "\\BEL"                    "ascii" "" "" "" # SYMBOL FOR BELL
+#0x2408 "\\BS"                     "ascii" "" "" "" # SYMBOL FOR BACKSPACE
+#0x2409 "\\HT"                     "ascii" "" "" "" # SYMBOL FOR HORIZONTAL TABULATION
+#0x240a "\\LT"                     "ascii" "" "" "" # SYMBOL FOR LINE FEED
+#0x240b "\\VT"                     "ascii" "" "" "" # SYMBOL FOR VERTICAL TABULATION
+#0x240c "\\FF"                     "ascii" "" "" "" # SYMBOL FOR FORM FEED
+#0x240d "\\CR"                     "ascii" "" "" "" # SYMBOL FOR CARRIAGE RETURN
+#0x240e "\\SO"                     "ascii" "" "" "" # SYMBOL FOR SHIFT OUT
+#0x240f "\\SI"                     "ascii" "" "" "" # SYMBOL FOR SHIFT IN
+#0x2410 "\\DLE"                    "ascii" "" "" "" # SYMBOL FOR DATA LINK ESCAPE
+#0x2411 "\\DCa"                    "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL ONE
+#0x2412 "\\DCb"                    "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL TWO
+#0x2413 "\\DCc"                    "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL THREE
+#0x2414 "\\DCd"                    "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL FOUR
+#0x2415 "\\NAK"                    "ascii" "" "" "" # SYMBOL FOR NEGATIVE ACKNOWLEDGE
+#0x2416 "\\SYN"                    "ascii" "" "" "" # SYMBOL FOR SYNCHRONOUS IDLE
+#0x2417 "\\ETB"                    "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION BLOCK
+#0x2418 "\\CAN"                    "ascii" "" "" "" # SYMBOL FOR CANCEL
+#0x2419 "\\EM"                     "ascii" "" "" "" # SYMBOL FOR END OF MEDIUM
+#0x241a "\\SUB"                    "ascii" "" "" "" # SYMBOL FOR SUBSTITUTE
+#0x241b "\\ESC"                    "ascii" "" "" "" # SYMBOL FOR ESCAPE
+#0x241c "\\FS"                     "ascii" "" "" "" # SYMBOL FOR FILE SEPARATOR
+#0x241d "\\GS"                     "ascii" "" "" "" # SYMBOL FOR GROUP SEPARATOR
+#0x241e "\\RS"                     "ascii" "" "" "" # SYMBOL FOR RECORD SEPARATOR
+#0x241f "\\US"                     "ascii" "" "" "" # SYMBOL FOR UNIT SEPARATOR
 #0x2420 ""                         "" "" "" "" # SYMBOL FOR SPACE
-#0x2421 "{\\DEL}"                  "ascii" "" "" "" # SYMBOL FOR DELETE
+#0x2421 "\\DEL"                    "ascii" "" "" "" # SYMBOL FOR DELETE
 0x2422 "\\textblank"              "textcomp" "" # BLANK SYMBOL
 0x2423 "\\textvisiblespace"       "textcomp" "" # OPEN BOX
 #0x2424 ""                         "" "" "" "" # SYMBOL FOR NEWLINE
@@ -2543,7 +2543,7 @@
 #0x25a9 ""                         "" "" "" "" # SQUARE WITH DIAGONAL CROSSHATCH FILL
 0x25aa "\\textifsymbol[ifgeo]{112}" "ifsym" "" # BLACK SMALL SQUARE
 0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "" # WHITE SMALL SQUARE
-0x25ac "{\\ascii\\SYN}"           "ascii" "" # BLACK RECTANGLE
+0x25ac "\\SYN"			   "ascii" "" # BLACK RECTANGLE
 #0x25ad ""                         "" "" "" "" # WHITE RECTANGLE
 #0x25ae ""                         "" "" "" "" # BLACK VERTICAL RECTANGLE
 #0x25af ""                         "" "" "" "" # WHITE VERTICAL RECTANGLE
@@ -2587,8 +2587,8 @@
 #0x25d5 ""                         "" "" "" "" # CIRCLE WITH ALL BUT UPPER LEFT QUADRANT BLACK
 0x25d6 "\\LEFTCIRCLE"             "wasysym" "" "\\LEFTCIRCLE" "wasysym" # LEFT HALF BLACK CIRCLE
 0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" "\\RIGHTCIRCLE" "wasysym" # RIGHT HALF BLACK CIRCLE
-0x25d8 "{\\ascii\\BS}"            "ascii" "" # INVERSE BULLET
-0x25d9 "{\\ascii\\LF}"            "ascii" "" # INVERSE WHITE CIRCLE
+0x25d8 "\\BS"			  "ascii" "" # INVERSE BULLET
+0x25d9 "\\LF"            	  "ascii" "" # INVERSE WHITE CIRCLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
 0x25ef "\\textbigcircle"          "textcomp" "" "\\bigcirc" "" # LARGE CIRCLE
 0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" "\\square" "amssymb" # WHITE MEDIUM SQUARE
