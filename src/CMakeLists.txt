@@ -132,9 +132,6 @@ target_link_libraries(${_lyx}
 	${LYX_QTMAIN_LIBRARY}
 	${vld_dll})
 
-if(LYX_USE_QT MATCHES "QT4")
-  target_link_libraries(${_lyx} ${QT_QTSVG_LIBRARY})
-endif()
 qt_use_modules(${_lyx} Core Gui)
 
 if(QT_USES_X11)
