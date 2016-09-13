@@ -94,27 +94,7 @@ status collapsed
 
 \end_inset
 
- ℅ ℆ 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-℉
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Error 84 returned from iconv when converting from UCS-4LE to ascii
-\end_layout
-
-\end_inset
-
- 
+ ℅ ℆ ℉ 
 \begin_inset Branch na
 inverted 0
 status collapsed
@@ -222,7 +202,8 @@ status open
 The OHM SIGN is normalized to greek letter OMEGA which requires wrapping
  in 
 \backslash
-textgreek (or loading the textalpha package) to get the right font.
+textgreek (or setting to Greek or loading the textalpha package) to get
+ the right font.
 \end_layout
 
 \end_inset
@@ -326,16 +307,14 @@ status collapsed
 2150 ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ⅟ 
 \end_layout
 
+\begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-TODO: smaller? 
-\size footnotesize
-⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ⅟ 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-nicefrac? 
+TODO: scriptsize? I
+\size scriptsize
+⅓ ⅔ ⅕ ⅖
+\size default
+I nicefrac? I
 \begin_inset Formula $\nicefrac{1}{3}$
 \end_inset
 
@@ -347,27 +326,7 @@ nicefrac?
 \begin_inset Formula $\nicefrac{1}{5}$
 \end_inset
 
- 
-\begin_inset Formula $\nicefrac{2}{5}$
-\end_inset
-
- 
-\begin_inset Formula $\nicefrac{4}{5}$
-\end_inset
-
- 
-\begin_inset Formula $\nicefrac{1}{6}$
-\end_inset
-
- 
-\begin_inset Formula $\nicefrac{1}{8}$
-\end_inset
-
- 
-\begin_inset Formula $\nicefrac{1}{}$
-\end_inset
-
-
+I
 \end_layout
 
 \end_deeper

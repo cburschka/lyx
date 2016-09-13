@@ -1785,7 +1785,7 @@
 0x2048 "?!"                       "" "notermination=text,force=utf8" "" "" # QUESTION EXCLAMATION MARK
 0x2049 "!?"                       "" "notermination=text,force=utf8" "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
-0x205d ""                         "" "" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
+0x205d ""                         "" "force=utf8" "\\vdots" ""# TRICOLON # ≈ VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
 #0x205e ""                         "" "" "" "" # VERTICAL FOUR DOTS
 0x205f ""                         "" "notermination=math,force=utf8" "\\:" "" # MEDIUM MATHEMATICAL SPACE
 #0x2060 ""                         "" "" "" "" # WORD JOINER
@@ -1859,7 +1859,7 @@
 0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" "force=utf8"
 #0x2107 ""                         "" "" "" "" # EULER CONSTANT
 #0x2108 ""                         "" "" "" "" # SCRUPLE
-0x2109 "°{}F"                     "" "force,notermination=text" "" "" # DEGREE FAHRENHEIT
+0x2109 "\\textdegree{}F"	  "" "force,notermination=text" "" "" # DEGREE FAHRENHEIT
 # mathrsfs has no small letters
 #0x210a ""                         "" "" "\\mathscr{g}" "mathrsfs" # SCRIPT SMALL G
 0x210b ""                         "" "force=utf8" "\\mathscr{H}" "mathrsfs" # SCRIPT CAPITAL H
@@ -2016,9 +2016,9 @@
 0x2193 "\\textdownarrow"          "textcomp" "" "\\downarrow" # DOWNWARDS ARROW
 0x2194 ""                         "" "force=utf8" "\\leftrightarrow" # LEFT RIGHT ARROW
 0x2195 ""                         "" "force=utf8" "\\updownarrow" # UP DOWN ARROW
-0x2196 "Home"                     "" "force=utf8,notermination=text" "\\nwarrow" "amssymb" # Qt::Key_Home, NORTH WEST ARROW
+0x2196 ""                         "" "force=utf8" "\\nwarrow" "" # NORTH WEST ARROW
 0x2197 "\\textglobrise"           "tipa" "force=utf8" "\\nearrow" "" # NORTH EAST ARROW
-0x2198 "End"                      "" "force=utf8,notermination=text,tipashortcut=\\textglobfall{}" "\\searrow" "" # Qt::Key_End, SOUTH EAST ARROW
+0x2198 "\\textglobfall"           "tipa" "force=utf8" "\\searrow" "" #
 0x2199 ""                         "" "force=utf8" "\\swarrow" "" # SOUTH WEST ARROW
 0x219a ""                         "" "force=utf8" "\\nleftarrow" "amssymb" # LEFTWARDS ARROW WITH STROKE
 0x219b ""                         "" "force=utf8" "\\nrightarrow" "amssymb" # RIGHTWARDS ARROW WITH STROKE
@@ -2090,19 +2090,19 @@
 0x21db ""                         "" "force=utf8" "\\Rrightarrow" "amssymb" # RIGHTWARDS TRIPLE ARROW
 #0x21dc ""                         "" "" "\\leftsquigarrow" "mathabx" # LEFTWARDS SQUIGGLE ARROW
 0x21dd ""                         "" "force=utf8" "\\rightsquigarrow" "amssymb" # RIGHTWARDS SQUIGGLE ARROW
-0x21de "Option-Up Arrow"          "" "force=utf8,notermination=text" "" "" # Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up
-0x21df "Option-Down Arrow"        "" "force=utf8,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down
+0x21de "Option-Up Arrow"          "" "force=utf8,notermination=text" "" "" #Qt::Key_PageUp, UPWARDS ARROW WITH DOUBLE STROKE = page up "\\nHuparrow" "boisik|stik"
+0x21df "Option-Down Arrow"        "" "force=utf8,notermination=text" "" "" # Qt::Key_PageDown, DOWNWARDS ARROW WITH DOUBLE STROKE = page down "\\nHdownarrow" "boisik|stix"
 0x21e0 ""                         "" "force=utf8" "\\dashleftarrow" "amssymb" # LEFTWARDS DASHED ARROW
 #0x21e1 ""                         "" "" "" "" # UPWARDS DASHED ARROW
 0x21e2 ""                         "" "force=utf8" "\\dashrightarrow" "amssymb" # RIGHTWARDS DASHED ARROW
 #0x21e3 ""                         "" "" "" "" # DOWNWARDS DASHED ARROW
-0x21e4 "Shift-Tab"                "" "force=utf8,notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab
-0x21e5 "Tab"                      "" "force=utf8,notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab
+0x21e4 "Shift-Tab"                "" "force=utf8,notermination=text" "" "" # Qt::Key_Backtab, LEFTWARDS ARROW TO BAR = leftward tab "\\barleftarrow" "boisik|stix"
+0x21e5 "Tab"                      "" "force=utf8,notermination=text" "" "" # Qt::Key_Tab, RIGHTWARDS ARROW TO BAR = rightward tab "\\rightarrowbar" "boisik|stix"
 #0x21e6 ""                         "" "" "" "" # LEFTWARDS WHITE ARROW
 #0x21e7 ""                         "" "" "" "" # UPWARDS WHITE ARROW
 0x21e8 "\\pointer"                "wasysym" "force=utf8" "" "" # RIGHTWARDS WHITE ARROW
 #0x21e9 ""                         "" "" "" "" # DOWNWARDS WHITE ARROW
-0x21ea "Caps Lock"                "" "force=utf8,notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock
+0x21ea "Caps Lock"                "" "force=utf8,notermination=text" "" "" # Qt::Key_CapsLock, UPWARDS WHITE ARROW FROM BAR = caps lock "\\whitearrowupfrombar" "boisik|stix"
 #0x21eb ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL
 #0x21ec ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH HORIZONTAL BAR
 #0x21ed ""                         "" "" "" "" # UPWARDS WHITE ARROW ON PEDESTAL WITH VERTICAL BAR
@@ -2127,196 +2127,196 @@
 #
 # mathematical operators
 #
-0x2200 ""                         "" "" "\\forall" "" # FOR ALL
-0x2201 ""                         "" "" "\\complement" "amssymb" # COMPLEMENT
-0x2202 ""                         "" "" "\\partial" # PARTIAL DIFFERENTIAL
-0x2203 ""                         "" "" "\\exists" "" # THERE EXISTS
-0x2204 ""                         "" "" "\\nexists" "amssymb" # THERE DOES NOT EXIST
-0x2205 ""                         "" "" "\\varnothing" "amssymb" # EMPTY SET
-0x2206 ""                         "" "" "\\Delta" # INCREMENT
-0x2207 ""                         "" "" "\\nabla" "" # NABLA
-0x2208 ""                         "" "" "\\in" "" # ELEMENT OF
-0x2209 ""                         "" "" "\\notin" "" # NOT AN ELEMENT OF
+0x2200 ""                         "" "force=utf8" "\\forall" "" # FOR ALL
+0x2201 ""                         "" "force=utf8" "\\complement" "amssymb" # COMPLEMENT
+0x2202 ""                         "" "force=utf8" "\\partial" # PARTIAL DIFFERENTIAL
+0x2203 ""                         "" "force=utf8" "\\exists" "" # THERE EXISTS
+0x2204 ""                         "" "force=utf8" "\\nexists" "amssymb" # THERE DOES NOT EXIST
+0x2205 ""                         "" "force=utf8" "\\varnothing" "amssymb" # EMPTY SET
+0x2206 ""                         "" "force=utf8" "\\Delta" # INCREMENT
+0x2207 ""                         "" "force=utf8" "\\nabla" "" # NABLA
+0x2208 ""                         "" "force=utf8" "\\in" "" # ELEMENT OF
+0x2209 ""                         "" "force=utf8" "\\notin" "" # NOT AN ELEMENT OF
 #0x220a ""                         "" "" "" "" # SMALL ELEMENT OF
-0x220b ""                         "" "" "\\ni" "" # CONTAINS AS MEMBER
+0x220b ""                         "" "force=utf8" "\\ni" "" # CONTAINS AS MEMBER
 #0x220c ""                         "" "" "\\notni" "txfonts|pxfonts" # DOES NOT CONTAIN AS MEMBER
 #0x220d ""                         "" "" "" "" # SMALL CONTAINS AS MEMBER
 #0x220e ""                         "" "" "" "" # END OF PROOF
-0x220f ""                         "" "" "\\prod" # N-ARY PRODUCT
-0x2210 ""                         "" "" "\\coprod" "" # N-ARY COPRODUCT
-0x2211 ""                         "" "" "\\sum" # N-ARY SUMMATION
-0x2212 "\\textminus"              "textcomp" "notermination=math" "-" "" # MINUS SIGN
-0x2213 ""                         "" "" "\\mp" "" # MINUS-OR-PLUS SIGN
-0x2214 ""                         "" "" "\\dotplus" "amssymb" # DOT PLUS
-0x2215 ""                         "" "" "\\slash" # DIVISION SLASH
-0x2216 ""                         "" "" "\\setminus" "" # SET MINUS
-0x2217 "\\textasteriskcentered"   "textcomp" "" "\\ast" "" # ASTERISK OPERATOR
-0x2218 ""                         "" "" "\\circ" "" # RING OPERATOR
-0x2219 ""                         "" "" "\\centerdot" "amssymb" # BULLET OPERATOR
-0x221a "\\textsurd"               "textcomp" "" "\\surd" "" # SQUARE ROOT
-0x221b ""                         "" "" "\\sqrt[3]{\\vphantom{a}}" "" # CUBE ROOT
-0x221c ""                         "" "" "\\sqrt[4]{\\vphantom{a}}" "" # FOURTH ROOT
-0x221d ""                         "" "" "\\propto" # PROPORTIONAL TO
-0x221e ""                         "" "" "\\infty" # INFINITY
+0x220f ""                         "" "force=utf8" "\\prod" # N-ARY PRODUCT
+0x2210 ""                         "" "force=utf8" "\\coprod" "" # N-ARY COPRODUCT
+0x2211 ""                         "" "force=utf8" "\\sum" # N-ARY SUMMATION
+0x2212 "\\textminus"              "textcomp" "force=utf8,notermination=math" "-" "" # MINUS SIGN
+0x2213 ""                         "" "force=utf8" "\\mp" "" # MINUS-OR-PLUS SIGN
+0x2214 ""                         "" "force=utf8" "\\dotplus" "amssymb" # DOT PLUS
+0x2215 ""                         "" "force=utf8" "\\slash" # DIVISION SLASH
+0x2216 ""                         "" "force=utf8" "\\setminus" "" # SET MINUS
+0x2217 "\\textasteriskcentered"   "textcomp" "force=utf8" "\\ast" "" # ASTERISK OPERATOR
+0x2218 ""                         "" "force=utf8" "\\circ" "" # RING OPERATOR
+0x2219 ""                         "" "force=utf8" "\\centerdot" "amssymb" # BULLET OPERATOR
+0x221a "\\textsurd"               "textcomp" "force=utf8" "\\surd" "" # SQUARE ROOT
+0x221b ""                         "" "force=utf8" "\\sqrt[3]{\\vphantom{a}}" "" # CUBE ROOT
+0x221c ""                         "" "force=utf8" "\\sqrt[4]{\\vphantom{a}}" "" # FOURTH ROOT
+0x221d ""                         "" "force=utf8" "\\propto" # PROPORTIONAL TO
+0x221e ""                         "" "force=utf8" "\\infty" # INFINITY
 # use the following macro for the character RIGHT ANGLE
-0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" ""
-0x2220 ""                         "" "" "\\angle" "" # ANGLE
-0x2221 ""                         "" "" "\\measuredangle" "amssymb" # MEASURED ANGLE
-0x2222 ""                         "" "" "\\sphericalangle" "amssymb" # SPHERICAL ANGLE
-0x2223 ""                         "" "" "\\mid" "" # DIVIDES # or "\\divides" "mathabx"
-0x2224 ""                         "" "" "\\nmid" "" # DOES NOT DIVIDE # or "\\notdivides" "mathabx"
-0x2225 ""                         "" "" "\\parallel" "" # PARALLEL TO
-0x2226 ""                         "" "" "\\nparallel" "amssymb" # NOT PARALLEL TO
-0x2227 ""                         "" "" "\\bigwedge" "" # LOGICAL AND
-0x2228 ""                         "" "" "\\bigvee" "" # LOGICAL OR
-0x2229 ""                         "" "" "\\bigcap" # INTERSECTION
-0x222a ""                         "" "" "\\bigcup" "" # UNION
-0x222b ""                         "" "" "\\int" "esint" # INTEGRAL
-0x222c ""                         "" "" "\\iint" "esint|amsmath" # DOUBLE INTEGRAL
-0x222d ""                         "" "" "\\iiint" "esint|amsmath" # TRIPLE INTEGRAL
-0x222e ""                         "" "" "\\oint" "esint" # CONTOUR INTEGRAL
-0x222f ""                         "" "" "\\oiint" "esint" # SURFACE INTEGRAL
+0x221f "\\LyXrightangle" "\\newcommand*\\LyXrightangle{{\\usefont{U}{msa}{m}{n}\\char120}}" "force=utf8"
+0x2220 ""                         "" "force=utf8" "\\angle" "" # ANGLE
+0x2221 ""                         "" "force=utf8" "\\measuredangle" "amssymb" # MEASURED ANGLE
+0x2222 ""                         "" "force=utf8" "\\sphericalangle" "amssymb" # SPHERICAL ANGLE
+0x2223 ""                         "" "force=utf8" "\\mid" "" # DIVIDES # or "\\divides" "mathabx"
+0x2224 ""                         "" "force=utf8" "\\nmid" "" # DOES NOT DIVIDE # or "\\notdivides" "mathabx"
+0x2225 ""                         "" "force=utf8" "\\parallel" "" # PARALLEL TO
+0x2226 ""                         "" "force=utf8" "\\nparallel" "amssymb" # NOT PARALLEL TO
+0x2227 ""                         "" "force=utf8" "\\bigwedge" "" # LOGICAL AND
+0x2228 ""                         "" "force=utf8" "\\bigvee" "" # LOGICAL OR
+0x2229 ""                         "" "force=utf8" "\\bigcap" # INTERSECTION
+0x222a ""                         "" "force=utf8" "\\bigcup" "" # UNION
+0x222b ""                         "" "force=utf8" "\\int" "esint" # INTEGRAL
+0x222c ""                         "" "force=utf8" "\\iint" "esint|amsmath" # DOUBLE INTEGRAL
+0x222d ""                         "" "force=utf8" "\\iiint" "esint|amsmath" # TRIPLE INTEGRAL
+0x222e ""                         "" "force=utf8" "\\oint" "esint" # CONTOUR INTEGRAL
+0x222f ""                         "" "force=utf8" "\\oiint" "esint" # SURFACE INTEGRAL
 #0x2230 ""                         "" "" "\\oiiint" "txfonts|pxfonts|fourier|mathdesign" # VOLUME INTEGRAL
 #0x2231 ""                         "" "" "" "" # CLOCKWISE INTEGRAL
-0x2232 ""                         "" "" "\\ointclockwise" "esint" # CLOCKWISE CONTOUR INTEGRAL
-0x2233 ""                         "" "" "\\ointctrclockwise" "esint" # ANTICLOCKWISE CONTOUR INTEGRAL
-0x2234 ""                         "" "" "\\therefore" "amssymb" # THEREFORE
-0x2235 ""                         "" "" "\\because" "amssymb" # BECAUSE
+0x2232 ""                         "" "force=utf8" "\\ointclockwise" "esint" # CLOCKWISE CONTOUR INTEGRAL
+0x2233 ""                         "" "force=utf8" "\\ointctrclockwise" "esint" # ANTICLOCKWISE CONTOUR INTEGRAL
+0x2234 ""                         "" "force=utf8" "\\therefore" "amssymb" # THEREFORE
+0x2235 ""                         "" "force=utf8" "\\because" "amssymb" # BECAUSE
 #0x2236 ""                         "" "" "" "" # RATIO
-0x2237 ""                         "" "" "\\dblcolon" "mathtools" # PROPORTION
+0x2237 ""                         "" "force=utf8" "\\dblcolon" "mathtools" # PROPORTION
 #0x2238 ""                         "" "" "" "" # DOT MINUS
-0x2239 ""                         "" "" "\\eqcolon" "mathtools" # EXCESS
+0x2239 ""                         "" "force=utf8" "\\eqcolon" "mathtools" # EXCESS
 #0x223a ""                         "" "" "" "" # GEOMETRIC PROPORTION
 #0x223b ""                         "" "" "" "" # HOMOTHETIC
-0x223c ""                         "" "" "\\sim" "" # TILDE OPERATOR
-0x223d ""                         "" "" "\\backsim" "amssymb" # REVERSED TILDE
+0x223c ""                         "" "force=utf8" "\\sim" "" # TILDE OPERATOR
+0x223d ""                         "" "force=utf8" "\\backsim" "amssymb" # REVERSED TILDE
 #0x223e ""                         "" "" "" "" # INVERTED LAZY S
-0x223f "\\AC"                     "wasysym" "" "\\AC" "wasysym" # SINE WAVE = alternating current
-0x2240 ""                         "" "" "\\wr" "" # WREATH PRODUCT
+0x223f "\\AC"                     "wasysym" "force=utf8" "\\AC" "wasysym" # SINE WAVE = alternating current
+0x2240 ""                         "" "force=utf8" "\\wr" "" # WREATH PRODUCT
 #0x2241 ""                         "" "" "" "" # NOT TILDE
-0x2242 ""                         "" "" "\\eqsim" "amssymb" # MINUS TILDE
-0x2243 ""                         "" "" "\\simeq" "" # ASYMPTOTICALLY EQUAL TO
+0x2242 ""                         "" "force=utf8" "\\eqsim" "amssymb" # MINUS TILDE
+0x2243 ""                         "" "force=utf8" "\\simeq" "" # ASYMPTOTICALLY EQUAL TO
 #0x2244 ""                         "" "" "" "" # NOT ASYMPTOTICALLY EQUAL TO
 #0x2245 ""                         "" "" "" "" # APPROXIMATELY EQUAL TO
 #0x2246 ""                         "" "" "" "" # APPROXIMATELY BUT NOT ACTUALLY EQUAL TO
 #0x2247 ""                         "" "" "" "" # NEITHER APPROXIMATELY NOR ACTUALLY EQUAL TO
-0x2248 ""                         "" "" "\\approx" # ALMOST EQUAL TO
+0x2248 ""                         "" "force=utf8" "\\approx" # ALMOST EQUAL TO
 #0x2249 ""                         "" "" "\\napprox" "mathabx" # NOT ALMOST EQUAL TO
 0x224a ""                         "" "" "\\approxeq" "amssymb" # ALMOST EQUAL OR EQUAL TO
 #0x224b ""                         "" "" "" "" # TRIPLE TILDE
 #0x224c ""                         "" "" "" "" # ALL EQUAL TO
-0x224d ""                         "" "" "\\asymp" "" # EQUIVALENT TO
+0x224d ""                         "" "force=utf8" "\\asymp" "" # EQUIVALENT TO
 #0x224e ""                         "" "" "" "" # GEOMETRICALLY EQUIVALENT TO
 #0x224f ""                         "" "" "" "" # DIFFERENCE BETWEEN
 #0x2250 ""                         "" "" "" "" # APPROACHES THE LIMIT
-0x2251 ""                         "" "" "\\Doteq" "amssymb" # GEOMETRICALLY EQUAL TO
-0x2252 ""                         "" "" "\\fallingdotseq" "amssymb" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
-0x2253 ""                         "" "" "\\risingdotseq" "amssymb" # IMAGE OF OR APPROXIMATELY EQUAL TO
-0x2254 ""                         "" "" "\\coloneqq" "mathtools" # COLON EQUALS
-0x2255 ""                         "" "" "\\eqqcolon" "mathtools" # EQUALS COLON
-0x2256 ""                         "" "" "\\eqcirc" "amssymb" # RING IN EQUAL TO
-0x2257 ""                         "" "" "\\circeq" "amssymb" # RING EQUAL TO
+0x2251 ""                         "" "force=utf8" "\\Doteq" "amssymb" # GEOMETRICALLY EQUAL TO
+0x2252 ""                         "" "force=utf8" "\\fallingdotseq" "amssymb" # APPROXIMATELY EQUAL TO OR THE IMAGE OF
+0x2253 ""                         "" "force=utf8" "\\risingdotseq" "amssymb" # IMAGE OF OR APPROXIMATELY EQUAL TO
+0x2254 ""                         "" "force=utf8" "\\coloneqq" "mathtools" # COLON EQUALS
+0x2255 ""                         "" "force=utf8" "\\eqqcolon" "mathtools" # EQUALS COLON
+0x2256 ""                         "" "force=utf8" "\\eqcirc" "amssymb" # RING IN EQUAL TO
+0x2257 ""                         "" "force=utf8" "\\circeq" "amssymb" # RING EQUAL TO
 #0x2258 ""                         "" "" "" "" # CORRESPONDS TO
 #0x2259 ""                         "" "" "" "" # ESTIMATES
 #0x225a ""                         "" "" "" "" # EQUIANGULAR TO
 #0x225b ""                         "" "" "" "" # STAR EQUALS
-0x225c ""                         "" "" "\\triangleq" "amssymb" # DELTA EQUAL TO
+0x225c ""                         "" "force=utf8" "\\triangleq" "amssymb" # DELTA EQUAL TO
 #0x225d ""                         "" "" "" "" # EQUAL TO BY DEFINITION
 #0x225e ""                         "" "" "" "" # MEASURED BY
 #0x225f ""                         "" "" "" "" # QUESTIONED EQUAL TO
-0x2260 ""                         "" "" "\\neq" # NOT EQUAL TO
-0x2261 ""                         "" "" "\\equiv" # IDENTICAL TO
+0x2260 ""                         "" "force=utf8" "\\neq" # NOT EQUAL TO
+0x2261 ""                         "" "force=utf8" "\\equiv" # IDENTICAL TO
 #0x2262 ""                         "" "" "" "" # NOT IDENTICAL TO
 #0x2263 ""                         "" "" "" "" # STRICTLY EQUIVALENT TO
-0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
-0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
-0x2266 ""                         "" "" "\\leqq" "amssymb" # LESS-THAN OVER EQUAL TO
-0x2267 ""                         "" "" "\\geqq" "amssymb" # GREATER-THAN OVER EQUAL TO
-0x2268 ""                         "" "" "\\lneqq" "amssymb" # LESS-THAN BUT NOT EQUAL TO
-0x2269 ""                         "" "" "\\gneqq" "amssymb" # GREATER-THAN BUT NOT EQUAL TO
-0x226a ""                         "" "" "\\ll" "" # MUCH LESS-THAN
-0x226b ""                         "" "" "\\gg" "" # MUCH GREATER-THAN
-0x226c ""                         "" "" "\\between" "amssymb" # BETWEEN
+0x2264 ""                         "" "force=utf8" "\\le" # LESS-THAN OR EQUAL TO
+0x2265 ""                         "" "force=utf8" "\\ge" # GREATER-THAN OR EQUAL TO
+0x2266 ""                         "" "force=utf8" "\\leqq" "amssymb" # LESS-THAN OVER EQUAL TO
+0x2267 ""                         "" "force=utf8" "\\geqq" "amssymb" # GREATER-THAN OVER EQUAL TO
+0x2268 ""                         "" "force=utf8" "\\lneqq" "amssymb" # LESS-THAN BUT NOT EQUAL TO
+0x2269 ""                         "" "force=utf8" "\\gneqq" "amssymb" # GREATER-THAN BUT NOT EQUAL TO
+0x226a ""                         "" "force=utf8" "\\ll" "" # MUCH LESS-THAN
+0x226b ""                         "" "force=utf8" "\\gg" "" # MUCH GREATER-THAN
+0x226c ""                         "" "force=utf8" "\\between" "amssymb" # BETWEEN
 #0x226d ""                         "" "" "" "" # NOT EQUIVALENT TO
-0x226e ""                         "" "" "\\nless" "amssymb" # NOT LESS-THAN
-0x226f ""                         "" "" "\\ngtr" "amssymb" # NOT GREATER-THAN
-0x2270 ""                         "" "" "\\nleq" "amssymb" # NEITHER LESS-THAN NOR EQUAL TO
-0x2271 ""                         "" "" "\\ngeq" "amssymb" # NEITHER GREATER-THAN NOR EQUAL TO
-0x2272 ""                         "" "" "\\lesssim" "amssymb" # LESS-THAN OR EQUIVALENT TO
-0x2273 ""                         "" "" "\\gtrsim" "amssymb" # GREATER-THAN OR EQUIVALENT TO
+0x226e ""                         "" "force=utf8" "\\nless" "amssymb" # NOT LESS-THAN
+0x226f ""                         "" "force=utf8" "\\ngtr" "amssymb" # NOT GREATER-THAN
+0x2270 ""                         "" "force=utf8" "\\nleq" "amssymb" # NEITHER LESS-THAN NOR EQUAL TO
+0x2271 ""                         "" "force=utf8" "\\ngeq" "amssymb" # NEITHER GREATER-THAN NOR EQUAL TO
+0x2272 ""                         "" "force=utf8" "\\lesssim" "amssymb" # LESS-THAN OR EQUIVALENT TO
+0x2273 ""                         "" "force=utf8" "\\gtrsim" "amssymb" # GREATER-THAN OR EQUIVALENT TO
 #0x2274 ""                         "" "" "" "" # NEITHER LESS-THAN NOR EQUIVALENT TO
 #0x2275 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR EQUIVALENT TO
-0x2276 ""                         "" "" "\\lessgtr" "amssymb" # LESS-THAN OR GREATER-THAN
-0x2277 ""                         "" "" "\\gtrless" "amssymb" # GREATER-THAN OR LESS-THAN
+0x2276 ""                         "" "force=utf8" "\\lessgtr" "amssymb" # LESS-THAN OR GREATER-THAN
+0x2277 ""                         "" "force=utf8" "\\gtrless" "amssymb" # GREATER-THAN OR LESS-THAN
 #0x2278 ""                         "" "" "" "" # NEITHER LESS-THAN NOR GREATER-THAN
 #0x2279 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR LESS-THAN
-0x227a ""                         "" "" "\\prec" "" # PRECEDES
-0x227b ""                         "" "" "\\succ" "" # SUCCEEDS
-0x227c ""                         "" "" "\\preccurlyeq" "amssymb" # PRECEDES OR EQUAL TO
-0x227d ""                         "" "" "\\succcurlyeq" "amssymb" # SUCCEEDS OR EQUAL TO
-0x227e ""                         "" "" "\\precsim" "amssymb" # PRECEDES OR EQUIVALENT TO
-0x227f ""                         "" "" "\\succsim" "amssymb" # SUCCEEDS OR EQUIVALENT TO
-0x2280 ""                         "" "" "\\nprec" "amssymb" # DOES NOT PRECEDE
-0x2281 ""                         "" "" "\\nsucc" "amssymb" # DOES NOT SUCCEED
-0x2282 ""                         "" "" "\\subset" "" # SUBSET OF
-0x2283 ""                         "" "" "\\supset" "" # SUPERSET OF
+0x227a ""                         "" "force=utf8" "\\prec" "" # PRECEDES
+0x227b ""                         "" "force=utf8" "\\succ" "" # SUCCEEDS
+0x227c ""                         "" "force=utf8" "\\preccurlyeq" "amssymb" # PRECEDES OR EQUAL TO
+0x227d ""                         "" "force=utf8" "\\succcurlyeq" "amssymb" # SUCCEEDS OR EQUAL TO
+0x227e ""                         "" "force=utf8" "\\precsim" "amssymb" # PRECEDES OR EQUIVALENT TO
+0x227f ""                         "" "force=utf8" "\\succsim" "amssymb" # SUCCEEDS OR EQUIVALENT TO
+0x2280 ""                         "" "force=utf8" "\\nprec" "amssymb" # DOES NOT PRECEDE
+0x2281 ""                         "" "force=utf8" "\\nsucc" "amssymb" # DOES NOT SUCCEED
+0x2282 ""                         "" "force=utf8" "\\subset" "" # SUBSET OF
+0x2283 ""                         "" "force=utf8" "\\supset" "" # SUPERSET OF
 #0x2284 ""                         "" "" "" "" # NOT A SUBSET OF
 #0x2285 ""                         "" "" "" "" # NOT A SUPERSET OF
-0x2286 ""                         "" "" "\\subseteq" "" # SUBSET OF OR EQUAL TO
-0x2287 ""                         "" "" "\\supseteq" "" # SUPERSET OF OR EQUAL TO
-0x2288 ""                         "" "" "\\nsubseteq" "amssymb" # NEITHER A SUBSET OF NOR EQUAL TO
-0x2289 ""                         "" "" "\\nsupseteq" "amssymb" # NEITHER A SUPERSET OF NOR EQUAL TO
-0x228a ""                         "" "" "\\subsetneq" "amssymb" # SUBSET OF WITH NOT EQUAL TO
-0x228b ""                         "" "" "\\supsetneq" "amssymb" # SUPERSET OF WITH NOT EQUAL TO
+0x2286 ""                         "" "force=utf8" "\\subseteq" "" # SUBSET OF OR EQUAL TO
+0x2287 ""                         "" "force=utf8" "\\supseteq" "" # SUPERSET OF OR EQUAL TO
+0x2288 ""                         "" "force=utf8" "\\nsubseteq" "amssymb" # NEITHER A SUBSET OF NOR EQUAL TO
+0x2289 ""                         "" "force=utf8" "\\nsupseteq" "amssymb" # NEITHER A SUPERSET OF NOR EQUAL TO
+0x228a ""                         "" "force=utf8" "\\subsetneq" "amssymb" # SUBSET OF WITH NOT EQUAL TO
+0x228b ""                         "" "force=utf8" "\\supsetneq" "amssymb" # SUPERSET OF WITH NOT EQUAL TO
 #0x228c ""                         "" "" "" "" # MULTISET
 #0x228d ""                         "" "" "" "" # MULTISET MULTIPLICATION
-0x228e ""                         "" "" "\\uplus" "" # MULTISET UNION
-0x228f ""                         "" "" "\\sqsubset" "amssymb" # SQUARE IMAGE OF
-0x2290 ""                         "" "" "\\sqsupset" "amssymb" # SQUARE ORIGINAL OF
-0x2291 ""                         "" "" "\\sqsubseteq" "" # SQUARE IMAGE OF OR EQUAL TO
-0x2292 ""                         "" "" "\\sqsupseteq" "" # SQUARE ORIGINAL OF OR EQUAL TO
-0x2293 ""                         "" "" "\\sqcap" "" # SQUARE CAP
-0x2294 ""                         "" "" "\\sqcup" "" # SQUARE CUP
-0x2295 ""                         "" "" "\\oplus" "" # CIRCLED PLUS
-0x2296 ""                         "" "" "\\ominus" "" # CIRCLED MINUS
-0x2297 ""                         "" "" "\\otimes" "" # CIRCLED TIMES
-0x2298 ""                         "" "" "\\oslash" "" # CIRCLED DIVISION SLASH
-0x2299 ""                         "" "" "\\odot" "" # CIRCLED DOT OPERATOR
-0x229a ""                         "" "" "\\circledcirc" "amssymb" # CIRCLED RING OPERATOR
-0x229b ""                         "" "" "\\circledast" "amssymb" # CIRCLED ASTERISK OPERATOR
+0x228e ""                         "" "force=utf8" "\\uplus" "" # MULTISET UNION
+0x228f ""                         "" "force=utf8" "\\sqsubset" "amssymb" # SQUARE IMAGE OF
+0x2290 ""                         "" "force=utf8" "\\sqsupset" "amssymb" # SQUARE ORIGINAL OF
+0x2291 ""                         "" "force=utf8" "\\sqsubseteq" "" # SQUARE IMAGE OF OR EQUAL TO
+0x2292 ""                         "" "force=utf8" "\\sqsupseteq" "" # SQUARE ORIGINAL OF OR EQUAL TO
+0x2293 ""                         "" "force=utf8" "\\sqcap" "" # SQUARE CAP
+0x2294 ""                         "" "force=utf8" "\\sqcup" "" # SQUARE CUP
+0x2295 ""                         "" "force=utf8" "\\oplus" "" # CIRCLED PLUS
+0x2296 ""                         "" "force=utf8" "\\ominus" "" # CIRCLED MINUS
+0x2297 ""                         "" "force=utf8" "\\otimes" "" # CIRCLED TIMES
+0x2298 ""                         "" "force=utf8" "\\oslash" "" # CIRCLED DIVISION SLASH
+0x2299 ""                         "" "force=utf8" "\\odot" "" # CIRCLED DOT OPERATOR
+0x229a ""                         "" "force=utf8" "\\circledcirc" "amssymb" # CIRCLED RING OPERATOR
+0x229b ""                         "" "force=utf8" "\\circledast" "amssymb" # CIRCLED ASTERISK OPERATOR
 #0x229c ""                         "" "" "" "" # CIRCLED EQUALS
-0x229d ""                         "" "" "\\circleddash" "amssymb" # CIRCLED DASH
-0x229e ""                         "" "" "\\boxplus" "amssymb" # SQUARED PLUS
-0x229f ""                         "" "" "\\boxminus" "amssymb" # SQUARED MINUS
-0x22a0 ""                         "" "" "\\boxtimes" "amssymb" # SQUARED TIMES
-0x22a1 ""                         "" "" "\\boxdot" "amssymb" # SQUARED DOT OPERATOR
-0x22a2 ""                         "" "" "\\vdash" "" # RIGHT TACK
-0x22a3 ""                         "" "" "\\dashv" "" # LEFT TACK
-0x22a4 ""                         "" "" "\\top" "" # DOWN TACK
-0x22a5 ""                         "" "" "\\bot" "" # UP TACK
+0x229d ""                         "" "force=utf8" "\\circleddash" "amssymb" # CIRCLED DASH
+0x229e ""                         "" "force=utf8" "\\boxplus" "amssymb" # SQUARED PLUS
+0x229f ""                         "" "force=utf8" "\\boxminus" "amssymb" # SQUARED MINUS
+0x22a0 ""                         "" "force=utf8" "\\boxtimes" "amssymb" # SQUARED TIMES
+0x22a1 ""                         "" "force=utf8" "\\boxdot" "amssymb" # SQUARED DOT OPERATOR
+0x22a2 ""                         "" "force=utf8" "\\vdash" "" # RIGHT TACK
+0x22a3 ""                         "" "force=utf8" "\\dashv" "" # LEFT TACK
+0x22a4 ""                         "" "force=utf8" "\\top" "" # DOWN TACK
+0x22a5 ""                         "" "force=utf8" "\\bot" "" # UP TACK
 #0x22a6 ""                         "" "" "" "" # ASSERTION
 #0x22a7 ""                         "" "" "" "" # MODELS
-0x22a8 ""                         "" "" "\\vDash" "amssymb" # TRUE
-0x22a9 ""                         "" "" "\\Vdash" "amssymb" # FORCES
-0x22aa ""                         "" "" "\\Vvdash" "amssymb" # TRIPLE VERTICAL BAR RIGHT TURNSTILE
+0x22a8 ""                         "" "force=utf8" "\\vDash" "amssymb" # TRUE
+0x22a9 ""                         "" "force=utf8" "\\Vdash" "amssymb" # FORCES
+0x22aa ""                         "" "force=utf8" "\\Vvdash" "amssymb" # TRIPLE VERTICAL BAR RIGHT TURNSTILE
 #0x22ab ""                         "" "" "" "" # DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
-0x22ac ""                         "" "" "\\nvdash" "amssymb" # DOES NOT PROVE
-0x22ad ""                         "" "" "\\nvDash" "amssymb" # NOT TRUE
-0x22ae ""                         "" "" "\\nVdash" "amssymb" # DOES NOT FORCE
+0x22ac ""                         "" "force=utf8" "\\nvdash" "amssymb" # DOES NOT PROVE
+0x22ad ""                         "" "force=utf8" "\\nvDash" "amssymb" # NOT TRUE
+0x22ae ""                         "" "force=utf8" "\\nVdash" "amssymb" # DOES NOT FORCE
 #0x22af ""                         "" "" "" "" # NEGATED DOUBLE VERTICAL BAR DOUBLE RIGHT TURNSTILE
 #0x22b0 ""                         "" "" "" "" # PRECEDES UNDER RELATION
 #0x22b1 ""                         "" "" "" "" # SUCCEEDS UNDER RELATION
-0x22b2 ""                         "" "" "\\vartriangleleft" "amssymb" # NORMAL SUBGROUP OF
-0x22b3 ""                         "" "" "\\vartriangleright" "amssymb" # CONTAINS AS NORMAL SUBGROUP
-0x22b4 ""                         "" "" "\\trianglelefteq" "amssymb" # NORMAL SUBGROUP OF OR EQUAL TO
-0x22b5 ""                         "" "" "\\trianglerighteq" "amssymb" # CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
+0x22b2 ""                         "" "force=utf8" "\\vartriangleleft" "amssymb" # NORMAL SUBGROUP OF
+0x22b3 ""                         "" "force=utf8" "\\vartriangleright" "amssymb" # CONTAINS AS NORMAL SUBGROUP
+0x22b4 ""                         "" "force=utf8" "\\trianglelefteq" "amssymb" # NORMAL SUBGROUP OF OR EQUAL TO
+0x22b5 ""                         "" "force=utf8" "\\trianglerighteq" "amssymb" # CONTAINS AS NORMAL SUBGROUP OR EQUAL TO
 #0x22b6 ""                         "" "" "" "" # ORIGINAL OF
 #0x22b7 ""                         "" "" "" "" # IMAGE OF
-0x22b8 ""                         "" "" "\\multimap" "amssymb" # MULTIMAP
+0x22b8 ""                         "" "force=utf8" "\\multimap" "amssymb" # MULTIMAP
 #0x22b9 ""                         "" "" "" "" # HERMITIAN CONJUGATE MATRIX
-0x22ba ""                         "" "" "\\intercal" "amssymb" # INTERCALATE
-0x22bb ""                         "" "" "\\veebar" "amssymb" # XOR
-0x22bc ""                         "" "" "\\barwedge" "amssymb" # NAND
+0x22ba ""                         "" "force=utf8" "\\intercal" "amssymb" # INTERCALATE
+0x22bb ""                         "" "force=utf8" "\\veebar" "amssymb" # XOR
+0x22bc ""                         "" "force=utf8" "\\barwedge" "amssymb" # NAND
 #0x22bd ""                         "" "" "" "" # NOR
 #0x22be ""                         "" "" "" "" # RIGHT ANGLE WITH ARC
 #0x22bf ""                         "" "" "" "" # RIGHT TRIANGLE
@@ -2326,32 +2326,32 @@
 #0x22c3 ""                         "" "" "" "" # N-ARY UNION
 #0x22c4 ""                         "" "" "" "" # DIAMOND OPERATOR
 #0x22c5 ""                         "" "" "" "" # DOT OPERATOR
-0x22c6 ""                         "" "" "\\star" "" # STAR OPERATOR
-0x22c7 ""                         "" "" "\\divideontimes" "amssymb" # DIVISION TIMES
-0x22c8 ""                         "" "" "\\bowtie" "" # BOWTIE
-0x22c9 ""                         "" "" "\\ltimes" "amssymb" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
-0x22ca ""                         "" "" "\\rtimes" "amssymb" # RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
-0x22cb ""                         "" "" "\\leftthreetimes" "amssymb" # LEFT SEMIDIRECT PRODUCT
-0x22cc ""                         "" "" "\\rightthreetimes" "amssymb" # RIGHT SEMIDIRECT PRODUCT
+0x22c6 ""                         "" "force=utf8" "\\star" "" # STAR OPERATOR
+0x22c7 ""                         "" "force=utf8" "\\divideontimes" "amssymb" # DIVISION TIMES
+0x22c8 ""                         "" "force=utf8" "\\bowtie" "" # BOWTIE
+0x22c9 ""                         "" "force=utf8" "\\ltimes" "amssymb" # LEFT NORMAL FACTOR SEMIDIRECT PRODUCT
+0x22ca ""                         "" "force=utf8" "\\rtimes" "amssymb" # RIGHT NORMAL FACTOR SEMIDIRECT PRODUCT
+0x22cb ""                         "" "force=utf8" "\\leftthreetimes" "amssymb" # LEFT SEMIDIRECT PRODUCT
+0x22cc ""                         "" "force=utf8" "\\rightthreetimes" "amssymb" # RIGHT SEMIDIRECT PRODUCT
 #0x22cd ""                         "" "" "" "" # REVERSED TILDE EQUALS
-0x22ce ""                         "" "" "\\curlyvee" "amssymb" # CURLY LOGICAL OR
-0x22cf ""                         "" "" "\\curlywedge" "amssymb" # CURLY LOGICAL AND
-0x22d0 ""                         "" "" "\\Subset" "amssymb" # DOUBLE SUBSET
-0x22d1 ""                         "" "" "\\Supset" "amssymb" # DOUBLE SUPERSET
-0x22d2 ""                         "" "" "\\Cap" "amssymb" # DOUBLE INTERSECTION
-0x22d3 ""                         "" "" "\\Cup" "amssymb" # DOUBLE UNION
-0x22d4 ""                         "" "" "\\pitchfork" "amssymb" # PITCHFORK
+0x22ce ""                         "" "force=utf8" "\\curlyvee" "amssymb" # CURLY LOGICAL OR
+0x22cf ""                         "" "force=utf8" "\\curlywedge" "amssymb" # CURLY LOGICAL AND
+0x22d0 ""                         "" "force=utf8" "\\Subset" "amssymb" # DOUBLE SUBSET
+0x22d1 ""                         "" "force=utf8" "\\Supset" "amssymb" # DOUBLE SUPERSET
+0x22d2 ""                         "" "force=utf8" "\\Cap" "amssymb" # DOUBLE INTERSECTION
+0x22d3 ""                         "" "force=utf8" "\\Cup" "amssymb" # DOUBLE UNION
+0x22d4 ""                         "" "force=utf8" "\\pitchfork" "amssymb" # PITCHFORK
 #0x22d5 ""                         "" "" "" "" # EQUAL AND PARALLEL TO
-0x22d6 ""                         "" "" "\\lessdot" "amssymb" # LESS-THAN WITH DOT
-0x22d7 ""                         "" "" "\\gtrdot" "amssymb" # GREATER-THAN WITH DOT
-0x22d8 ""                         "" "" "\\llless" "amssymb" # VERY MUCH LESS-THAN
-0x22d9 ""                         "" "" "\\gggtr" "amssymb" # VERY MUCH GREATER-THAN
-0x22da ""                         "" "" "\\lesseqgtr" "amssymb" # LESS-THAN EQUAL TO OR GREATER-THAN
-0x22db ""                         "" "" "\\gtreqless" "amssymb" # GREATER-THAN EQUAL TO OR LESS-THAN
+0x22d6 ""                         "" "force=utf8" "\\lessdot" "amssymb" # LESS-THAN WITH DOT
+0x22d7 ""                         "" "force=utf8" "\\gtrdot" "amssymb" # GREATER-THAN WITH DOT
+0x22d8 ""                         "" "force=utf8" "\\llless" "amssymb" # VERY MUCH LESS-THAN
+0x22d9 ""                         "" "force=utf8" "\\gggtr" "amssymb" # VERY MUCH GREATER-THAN
+0x22da ""                         "" "force=utf8" "\\lesseqgtr" "amssymb" # LESS-THAN EQUAL TO OR GREATER-THAN
+0x22db ""                         "" "force=utf8" "\\gtreqless" "amssymb" # GREATER-THAN EQUAL TO OR LESS-THAN
 #0x22dc ""                         "" "" "" "" # EQUAL TO OR LESS-THAN
 #0x22dd ""                         "" "" "" "" # EQUAL TO OR GREATER-THAN
-0x22de ""                         "" "" "\\curlyeqprec" "amssymb" # EQUAL TO OR PRECEDES
-0x22df ""                         "" "" "\\curlyeqsucc" "amssymb" # EQUAL TO OR SUCCEEDS
+0x22de ""                         "" "force=utf8" "\\curlyeqprec" "amssymb" # EQUAL TO OR PRECEDES
+0x22df ""                         "" "force=utf8" "\\curlyeqsucc" "amssymb" # EQUAL TO OR SUCCEEDS
 #0x22e0 ""                         "" "" "" "" # DOES NOT PRECEDE OR EQUAL
 #0x22e1 ""                         "" "" "" "" # DOES NOT SUCCEED OR EQUAL
 #0x22e2 ""                         "" "" "" "" # NOT SQUARE IMAGE OF OR EQUAL TO
@@ -2364,12 +2364,12 @@
 #0x22e9 ""                         "" "" "" "" # SUCCEEDS BUT NOT EQUIVALENT TO
 #0x22ea ""                         "" "" "" "" # NOT NORMAL SUBGROUP OF
 #0x22eb ""                         "" "" "" "" # DOES NOT CONTAIN AS NORMAL SUBGROUP
-0x22ec ""                         "" "" "\\ntrianglelefteq" "amssymb" # NOT NORMAL SUBGROUP OF OR EQUAL TO
-0x22ed ""                         "" "" "\\ntrianglerighteq" "amssymb" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
-0x22ee ""                         "" "" "\\vdots" "" # VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
-0x22ef ""                         "" "" "\\cdots" "" # MIDLINE HORIZONTAL ELLIPSIS
-0x22f0 ""                         "" "" "\\iddots" "mathdots" # UP RIGHT DIAGONAL ELLIPSIS
-0x22f1 ""                         "" "" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
+0x22ec ""                         "" "force=utf8" "\\ntrianglelefteq" "amssymb" # NOT NORMAL SUBGROUP OF OR EQUAL TO
+0x22ed ""                         "" "force=utf8" "\\ntrianglerighteq" "amssymb" # DOES NOT CONTAIN AS NORMAL SUBGROUP OR EQUAL
+0x22ee ""                         "" "force=utf8" "\\vdots" "" # VERTICAL ELLIPSIS, fails in text mode, if "mathdots" is loaded.
+0x22ef ""                         "" "force=utf8" "\\cdots" "" # MIDLINE HORIZONTAL ELLIPSIS
+0x22f0 ""                         "" "force=utf8" "\\iddots" "mathdots" # UP RIGHT DIAGONAL ELLIPSIS
+0x22f1 ""                         "" "force=utf8" "\\ddots" "" # ⋱ DOWN RIGHT DIAGONAL ELLIPSIS
 #0x22f2 ""                         "" "" "" "" # ELEMENT OF WITH LONG HORIZONTAL STROKE
 #0x22f3 ""                         "" "" "" "" # ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
 #0x22f4 ""                         "" "" "" "" # SMALL ELEMENT OF WITH VERTICAL BAR AT END OF HORIZONTAL STROKE
@@ -2387,48 +2387,48 @@
 #
 # miscellaneous technical
 #
-0x2300 "\\diameter"               "wasysym" "" "\\diameter" "wasysym" # DIAMETER SIGN
+0x2300 "\\diameter"               "wasysym" "force=utf8" "\\diameter" "wasysym" # DIAMETER SIGN
 #0x2301 ""                         "" "" "" "" # ELECTRIC ARROW
-0x2302 "\\DEL"                    "ascii" "" # HOUSE
+0x2302 "\\DEL"                    "ascii" "force=utf8" # HOUSE
 #0x2303 ""                         "" "" "" "" # UP ARROWHEAD
 #0x2304 ""                         "" "" "" "" # DOWN ARROWHEAD
 #0x2305 ""                         "" "" "" "" # PROJECTIVE
 #0x2306 ""                         "" "" "" "" # PERSPECTIVE
 #0x2307 ""                         "" "" "" "" # WAVY LINE
-0x2308 ""                         "" "" "\\lceil" "" # LEFT CEILING
-0x2309 ""                         "" "" "\\rceil" "" # RIGHT CEILING
-0x230a ""                         "" "" "\\lfloor" "" # LEFT FLOOR
-0x230b ""                         "" "" "\\rfloor" "" # RIGHT FLOOR
+0x2308 ""                         "" "force=utf8" "\\lceil" "" # LEFT CEILING
+0x2309 ""                         "" "force=utf8" "\\rceil" "" # RIGHT CEILING
+0x230a ""                         "" "force=utf8" "\\lfloor" "" # LEFT FLOOR
+0x230b ""                         "" "force=utf8" "\\rfloor" "" # RIGHT FLOOR
 #0x230c ""                         "" "" "" "" # BOTTOM RIGHT CROP
 #0x230d ""                         "" "" "" "" # BOTTOM LEFT CROP
 #0x230e ""                         "" "" "" "" # TOP RIGHT CROP
 #0x230f ""                         "" "" "" "" # TOP LEFT CROP
-0x2310 ""                         "" "" "\\invneg" "wasysym" # REVERSED NOT SIGN
+0x2310 ""                         "" "force=utf8" "\\invneg" "wasysym" # REVERSED NOT SIGN
 #0x2311 ""                         "" "" "" "" # SQUARE LOZENGE
 #0x2312 ""                         "" "" "" "" # ARC
 #0x2313 ""                         "" "" "" "" # SEGMENT
 #0x2314 ""                         "" "" "" "" # SECTOR
-0x2315 "\\recorder"               "wasysym" "" "" "" # TELEPHONE RECORDER
+0x2315 "\\recorder"               "wasysym" "force=utf8" "" "" # TELEPHONE RECORDER
 #0x2316 ""                         "" "" "" "" # POSITION INDICATOR
 #0x2317 ""                         "" "" "" "" # VIEWDATA SQUARE
 #0x2318 ""                         "" "" "" "" # PLACE OF INTEREST SIGN
 #0x2319 ""                         "" "" "" "" # TURNED NOT SIGN
-0x231a "\\Clocklogo"              "marvosym" "" # WATCH
+0x231a "\\Clocklogo"              "marvosym" "force=utf8" # WATCH
 #0x231b ""                         "" "" "" "" # HOURGLASS
-0x231c ""                         "" "" "\\ulcorner" "amssymb" # TOP LEFT CORNER
-0x231d ""                         "" "" "\\urcorner" "amssymb" # TOP RIGHT CORNER
-0x231e ""                         "" "" "\\llcorner" "amssymb" # BOTTOM LEFT CORNER
-0x231f ""                         "" "" "\\lrcorner" "amssymb" # BOTTOM RIGHT CORNER
+0x231c ""                         "" "force=utf8" "\\ulcorner" "amssymb" # TOP LEFT CORNER
+0x231d ""                         "" "force=utf8" "\\urcorner" "amssymb" # TOP RIGHT CORNER
+0x231e ""                         "" "force=utf8" "\\llcorner" "amssymb" # BOTTOM LEFT CORNER
+0x231f ""                         "" "force=utf8" "\\lrcorner" "amssymb" # BOTTOM RIGHT CORNER
 #0x2320 ""                         "" "" "" "" # TOP HALF INTEGRAL
 #0x2321 ""                         "" "" "" "" # BOTTOM HALF INTEGRAL
-0x2322 ""                         "" "" "\\frown" "" # FROWN
-0x2323 ""                         "" "" "\\smile" "" # SMILE
+0x2322 ""                         "" "force=utf8" "\\frown" "" # FROWN
+0x2323 ""                         "" "force=utf8" "\\smile" "" # SMILE
 #0x2324 ""                         "" "" "" "" # UP ARROWHEAD BETWEEN TWO HORIZONTAL BARS
 #0x2325 ""                         "" "" "" "" # OPTION KEY
-0x2326 "Delete"                   "" "notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
-0x2328 "\\Keyboard"               "marvosym" "" # KEYBOARD
-0x232b "Backspace"                "" "notermination=text" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
-0x238b "Escape"                   "" "notermination=text" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
+0x2326 "Delete"                   "" "force=utf8,notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
+0x2328 "\\Keyboard"               "marvosym" "force=utf8" # KEYBOARD
+0x232b "Backspace"                "" "force=utf8,notermination=text" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
+0x238b "Escape"                   "" "force=utf8,notermination=text" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
 #
 # control pictures
 #
