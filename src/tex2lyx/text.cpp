@@ -4745,10 +4745,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			// handle some TIPA special characters
 			else if (preamble.isPackageUsed("tipa")) {
-				if (name == "\\textglobfall") {
-					name = "End";
-					skip_braces(p);
-				} else if (name == "\\s") {
+				if (name == "\\s") {
 					// fromLaTeXCommand() does not yet
 					// recognize tipa short cuts
 					name = "\\textsyllabic";
