@@ -1710,7 +1710,7 @@
 0x1ffd "\\textgreek{'v}"        "textgreek" "" "" "" # GREEK OXIA
 0x1ffe "\\textgreek{<v}"        "textgreek" "" "" "" # GREEK DASIA
 #
-# general punctuation
+# 70 General Punctuation
 #
 0x2000 "\\enskip"                 "" "force=utf8" "\\enskip" "" # EN QUAD
 0x2001 "\\quad"                   "" "force=utf8" "\\quad" "" # EM QUAD
@@ -1773,15 +1773,19 @@
 0x2039 "\\guilsinglleft"          "" "" # SINGLE LEFT-POINTING ANGLE QUOTATION MARK
 0x203a "\\guilsinglright"         "" "" # SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
 0x203b "\\textreferencemark"      "textcomp" "" # REFERENCE MARK
-0x203c "!!"                       "" "notermination=text,force=utf8" "" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
+0x203c "!!"                       "" "notermination=text,force=utf8" "!!" "" # DOUBLE EXCLAMATION MARK # ≈ 2×EXCLAMATION MARK
 0x203d "\\textinterrobang"        "textcomp" "" # INTERROBANG
 # use the following macro for the character OVERLINE
 0x203e "\\LyXoverline" "\\newcommand*\\LyXoverline{\\raisebox{2.6ex}{\\_}}" "force=utf8"
 0x203f "\\textbottomtiebar{ }"    "tipa" "tipashortcut=\\t*{ },force=utf8" # UNDERTIE
+#0x2040 ""                         "" "" "" "" # CHARACTER TIE
+#0x2041 ""                         "" "" "" "" # CARET INSERTION POINT
+#0x2042 ""                         "" "" "" "" # ASTERISM
+#0x2043 ""                         "" "" "" "" # HYPHEN BULLET
 0x2044 "\\textfractionsolidus"    "textcomp" "" # FRACTION SLASH
 0x2045 "\\textlquill"             "textcomp" "force=utf8" # LEFT SQUARE BRACKET WITH QUILL
 0x2046 "\\textrquill"             "textcomp" "force=utf8" # RIGHT SQUARE BRACKET WITH QUILL
-0x2047 "??"                       "" "notermination=text,force=utf8" "" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
+0x2047 "??"                       "" "notermination=text,force=utf8" "??" "" # DOUBLE QUESTION MARK # ≈ 2×QUESTION MARK
 0x2048 "?!"                       "" "notermination=text,force=utf8" "" "" # QUESTION EXCLAMATION MARK
 0x2049 "!?"                       "" "notermination=text,force=utf8" "" "" # EXCLAMATION QUESTION MARK
 0x2052 "\\textdiscount"           "textcomp" "" # COMMERCIAL MINUS SIGN
@@ -1921,14 +1925,14 @@
 0x2141 ""                         "" "force=utf8" "\\Game" "amssymb" # TURNED SANS-SERIF CAPITAL G
 #0x2142 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL L
 #0x2143 ""                         "" "" "" "" # REVERSED SANS-SERIF CAPITAL L
-#0x2144 ""                         "" "" "" "" # TURNED SANS-SERIF CAPITAL Y
+0x2144 ""                         "" "force=utf8" "\Yup" "stmaryrd" # TURNED SANS-SERIF CAPITAL Y
 #0x2145 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC CAPITAL D
 #0x2146 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL D
 #0x2147 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL E
 #0x2148 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL I
 #0x2149 ""                         "" "" "" "" # DOUBLE-STRUCK ITALIC SMALL J
 #0x214a ""                         "" "" "" "" # PROPERTY LINE
-#0x214b ""                         "" "" "" "" # TURNED AMPERSAND
+0x214b ""                         "" "force=utf8" "\\bindnasrepma" "stmaryrd" # TURNED AMPERSAND
 #0x214c ""                         "" "" "" "" # PER SIGN
 0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "force=utf8" # ⅍ AKTIESELSKAB
 #0x214e ""                         "" "" "" "" # TURNED SMALL F
@@ -2121,8 +2125,8 @@
 #0x21fa ""                         "" "" "" "" # LEFTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fb ""                         "" "" "" "" # RIGHTWARDS ARROW WITH DOUBLE VERTICAL STROKE
 #0x21fc ""                         "" "" "" "" # LEFT RIGHT ARROW WITH DOUBLE VERTICAL STROKE
-#0x21fd ""                         "" "" "" "" # LEFTWARDS OPEN-HEADED ARROW
-#0x21fe ""                         "" "" "" "" # RIGHTWARDS OPEN-HEADED ARROW
+0x21fd ""                         "" "force=utf8" "\\leftarrowtriangle" "stmaryrd" # LEFTWARDS OPEN-HEADED ARROW
+0x21fe ""                         "" "force=utf8" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
 #0x21ff ""                         "" "" "" "" # LEFT RIGHT OPEN-HEADED ARROW
 #
 # mathematical operators
@@ -2404,7 +2408,7 @@
 #0x230e ""                         "" "" "" "" # TOP RIGHT CROP
 #0x230f ""                         "" "" "" "" # TOP LEFT CROP
 0x2310 ""                         "" "force=utf8" "\\invneg" "wasysym" # REVERSED NOT SIGN
-#0x2311 ""                         "" "" "" "" # SQUARE LOZENGE
+0x2311 ""                         "" "force=utf8" "\\wasylozenge" "wasysym" # SQUARE LOZENGE
 #0x2312 ""                         "" "" "" "" # ARC
 #0x2313 ""                         "" "" "" "" # SEGMENT
 #0x2314 ""                         "" "" "" "" # SECTOR
@@ -2428,6 +2432,9 @@
 0x2326 "Delete"                   "" "force=utf8,notermination=text" "" "" # Qt::Key_Delete, ERASE TO THE RIGHT = delete to the right key
 0x2328 "\\Keyboard"               "marvosym" "force=utf8" # KEYBOARD
 0x232b "Backspace"                "" "force=utf8,notermination=text" "" "" # Qt::Key_Backspace, ERASE TO THE LEFT = delete to the left key
+0x2339 ""                         "" "force=utf8" "\\APLinv" "wasysym" # APL FUNCTIONAL SYMBOL QUAD DIVIDE
+0x233f ""                         "" "force=utf8" "\\notslash" "wasysym" # APL FUNCTIONAL SYMBOL SLASH BAR
+0x2340 ""                         "" "force=utf8" "\\notbackslash" "wasysym" # APL FUNCTIONAL SYMBOL BACKSLASH BAR
 0x238b "Escape"                   "" "force=utf8,notermination=text" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
 #
 # control pictures
@@ -2477,16 +2484,16 @@
 #
 # 80 Enclosed Alphanumerics
 #
-0x2460 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT ONE
-0x2461 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT TWO
-0x2462 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT THREE
-0x2463 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT FOUR
-0x2464 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT FIVE
-0x2465 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT SIX
-0x2466 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT SEVEN
-0x2467 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT EIGHT
-0x2468 "\ding{172}"               "pifont" "" "" "" # CIRCLED DIGIT NINE
-0x2469 "\ding{172}"               "pifont" "" "" "" # CIRCLED NUMBER TEN
+0x2460 "\ding{172}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT ONE
+0x2461 "\ding{173}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT TWO
+0x2462 "\ding{174}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT THREE
+0x2463 "\ding{175}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT FOUR
+0x2464 "\ding{176}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT FIVE
+0x2465 "\ding{177}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT SIX
+0x2466 "\ding{178}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT SEVEN
+0x2467 "\ding{179}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT EIGHT
+0x2468 "\ding{180}"               "pifont" "force=utf8" "" "" # CIRCLED DIGIT NINE
+0x2469 "\ding{181}"               "pifont" "force=utf8" "" "" # CIRCLED NUMBER TEN
 #0x246a ""                         "" "" "" "" # CIRCLED NUMBER ELEVEN
 #0x246b ""                         "" "" "" "" # CIRCLED NUMBER TWELVE
 #0x246c ""                         "" "" "" "" # CIRCLED NUMBER THIRTEEN
@@ -2804,7 +2811,7 @@
 0x259e "\\pmboxdrawuni{259E}"     "pmboxdraw" "" # QUADRANT UPPER RIGHT AND LOWER LEFT
 0x259f "\\pmboxdrawuni{259F}"     "pmboxdraw" "" # QUADRANT UPPER RIGHT AND LOWER LEFT AND LOWER RIGHT
 #
-# geometric shapes
+# 84 Geometric Shapes
 #
 0x25a0 "\\textifsymbol[ifgeo]{80}" "ifsym" "force=utf8" # BLACK SQUARE
 0x25a1 "\\textifsymbol[ifgeo]{32}" "ifsym" "force=utf8" # WHITE SQUARE
@@ -2881,7 +2888,7 @@
 #0x25e8 ""                         "" "" "" "" # SQUARE WITH RIGHT HALF BLACK
 #0x25e9 ""                         "" "" "" "" # SQUARE WITH UPPER LEFT DIAGONAL HALF BLACK
 #0x25ea ""                         "" "" "" "" # SQUARE WITH LOWER RIGHT DIAGONAL HALF BLACK
-#0x25eb ""                         "" "" "" "" # WHITE SQUARE WITH VERTICAL BISECTING LINE
+0x25eb ""                         "" "force=utf8" "\\boxbar" "stmaryrd" # WHITE SQUARE WITH VERTICAL BISECTING LINE
 #0x25ec ""                         "" "" "" "" # WHITE UP-POINTING TRIANGLE WITH DOT
 #0x25ed ""                         "" "" "" "" # UP-POINTING TRIANGLE WITH LEFT HALF BLACK
 #0x25ee ""                         "" "" "" "" # UP-POINTING TRIANGLE WITH RIGHT HALF BLACK
@@ -2911,9 +2918,9 @@
 0x2606 "\\FiveStarOpen"           "bbding" "force=utf8" # WHITE STAR
 #0x2607 ""                         "" "" "" "" # LIGHTNING
 #0x2608 ""                         "" "" "" "" # THUNDERSTORM
-#0x2609 ""                         "" "" "" "" # SUN
-#0x260a ""                         "" "" "" "" # ASCENDING NODE
-#0x260b ""                         "" "" "" "" # DESCENDING NODE
+0x2609 "\\astrosun"               "wasysym" "force=utf8" "" "" # SUN
+0x260a "\\ascnode"                "wasysym" "force=utf8" "" "" # ASCENDING NODE
+0x260b "\\descnode"               "wasysym" "force=utf8" "" "" # DESCENDING NODE
 0x260c "\\conjunction"            "wasysym" "force=utf8" # CONJUNCTION = alchemical symbol for day
 0x260d "\\opposition"             "wasysym" "force=utf8" #OPPOSITION
 0x260e "\\Telefon"                "marvosym" "force=utf8" # BLACK TELEPHON
@@ -3016,10 +3023,11 @@
 0x266f ""                         "" "force=utf8" "\\sharp" "" # MUSIC SHARP SIGN
 #0x2670 ""                         "" "" "" "" # WEST SYRIAC CROSS
 #0x2671 ""                         "" "" "" "" # EAST SYRIAC CROSS
-#0x2672 ""                         "" "" "" "" # UNIVERSAL RECYCLING SYMBOL
+0x2672 "\\Recycling"              "marvosym" "force=utf8" "" "" # UNIVERSAL RECYCLING SYMBOL
 #0x2673 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-1 PLASTICS
 #0x2674 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-2 PLASTICS
 #0x2675 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-3 PLASTICS
+#0x2676 ""                         "" "" "" ""Maltese"           "bbding" "force=utf8" "\\maltese" "amssymb" # MALTESE CROSS
 #0x2676 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-4 PLASTICS
 #0x2677 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-5 PLASTICS
 #0x2678 ""                         "" "" "" "" # RECYCLING SYMBOL FOR TYPE-6 PLASTICS
@@ -3048,7 +3056,7 @@
 #0x268f ""                         "" "" "" "" # DIGRAM FOR GREATER YIN
 #0x2690 ""                         "" "" "" "" # WHITE FLAG
 #0x2691 ""                         "" "" "" "" # BLACK FLAG
-#0x2692 ""                         "" "" "" "" # HAMMER AND PICK
+0x2692 "\MineSign"                 "marvosym" "force=utf8" "" "" # HAMMER AND PICK
 #0x2693 ""                         "" "" "" "" # ANCHOR
 #0x2694 ""                         "" "" "" "" # CROSSED SWORDS
 #0x2695 ""                         "" "" "" "" # STAFF OF AESCULAPIUS
@@ -3072,7 +3080,7 @@
 #0x26a7 ""                         "" "" "" "" # MALE WITH STROKE AND MALE AND FEMALE SIGN
 #0x26a8 ""                         "" "" "" "" # VERTICAL MALE WITH STROKE SIGN
 #0x26a9 ""                         "" "" "" "" # HORIZONTAL MALE WITH STROKE SIGN
-#0x26aa ""                         "" "" "" "" # MEDIUM WHITE CIRCLE
+0x26aa "\Neutral"                 "marvosym" "force=utf8" "" "" # MEDIUM WHITE CIRCLE
 #0x26ab ""                         "" "" "" "" # MEDIUM BLACK CIRCLE
 #0x26ac ""                         "" "" "" "" # MEDIUM SMALL WHITE CIRCLE
 0x26ad "\\textmarried"            "textcomp" "force=utf8" # MARRIAGE SYMBOL
@@ -3345,26 +3353,62 @@
 0x27be "\\ding{254}"              "pifont" "force=utf8" "" "" # OPEN-OUTLINED RIGHTWARDS ARROW
 #0x27bf ""                         "" "" # DOUBLE CURLY LOOP
 #
-# miscellaneous mathematical symbols-A
+# 87 Miscellaneous Mathematical Symbols-A
 #
 #0x27c0 ""                         "" "" "" "" # THREE DIMENSIONAL ANGLE
 #0x27c1 ""                         "" "" "" "" # WHITE TRIANGLE CONTAINING SMALL WHITE TRIANGLE
 0x27c2 ""                         "" "" "\\perp" "" # PERPENDICULAR
+0x27c5 ""                         "" "" "\\Lbag" "stmaryrd" # LEFT S-SHAPED BAG DELIMITER
+0x27c6 ""                         "" "" "\\Rbag" "stmaryrd" # RIGHT S-SHAPED BAG DELIMITER
 0x27e6 ""                         "" "" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
 0x27e7 ""                         "" "" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
 0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
 0x27e9 "\\textrangle"             "textcomp" "" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
-0x29eb ""                         "" "" "\\blacklozenge" "amssymb" # BLACK LOZENGE
+#
+# 88 Supplemental Arrows-A
+#
+#0x27f0 ""                         "" "" "" "" # UPWARDS QUADRUPLE ARROW
+#0x27f1 ""                         "" "" "" "" # DOWNWARDS QUADRUPLE ARROW
+#0x27f2 ""                         "" "" "" "" # ANTICLOCKWISE GAPPED CIRCLE ARROW
+#0x27f3 ""                         "" "" "" "" # CLOCKWISE GAPPED CIRCLE ARROW
+#0x27f4 ""                         "" "" "" "" # RIGHT ARROW WITH CIRCLED PLUS
+0x27f5 ""                         "" "" "\\longleftarrow" "" # LONG LEFTWARDS ARROW
+0x27f6 ""                         "" "" "\\longrightarrow" "" # LONG RIGHTWARDS ARROW
+0x27f7 ""                         "" "" "\\longleftrightarrow" "" # LONG LEFT RIGHT ARROW
+0x27f8 ""                         "" "" "\\Longleftarrow" "" # LONG LEFTWARDS DOUBLE ARROW
+0x27f9 ""                         "" "" "\\Longrightarrow" "" # LONG RIGHTWARDS DOUBLE ARROW
+0x27fa ""                         "" "" "\\Longleftrightarrow" "" # LONG LEFT RIGHT DOUBLE ARROW
+0x27fb ""                         "" "" "\\longmapsfrom" "stmaryrd" # LONG LEFTWARDS ARROW FROM BAR
+0x27fc ""                         "" "" "\\longmapsto" "" # LONG RIGHTWARDS ARROW FROM BAR
+0x27fd ""                         "" "" "\\Longmapsfrom" "stmaryrd" # LONG LEFTWARDS DOUBLE ARROW FROM BAR
+0x27fe ""                         "" "" "\\Longmapsto" "stmaryrd" # LONG RIGHTWARDS DOUBLE ARROW FROM BAR
+#0x27ff ""                         "" "" "" "" # LONG RIGHTWARDS SQUIGGLE ARROW
+#
+# 90 Supplemental Arrows-B
+#
+0x2906 ""                         "" "" "\\Mapsfrom" "stmaryrd" # LEFTWARDS DOUBLE ARROW FROM BAR
+0x2907 ""                         "" "" "\\Mapsto" "stmaryrd" # RIGHTWARDS DOUBLE ARROW FROM BAR
+#
+# Miscellaneous Mathematical Symbols-B
+#
+0x2987 ""                         "" "" "\\limg" "stmaryrd" # Z NOTATION LEFT IMAGE BRACKET
+0x2988 ""                         "" "" "\\rimg" "stmaryrd" # Z NOTATION RIGHT IMAGE BRACKET
+0x29c4 ""                         "" "" "\\boxslash" "stmaryrd" # SQUARED RISING DIAGONAL SLASH
+0x29c5 ""                         "" "" "\\boxbslash" "stmaryrd" # SQUARED FALLING DIAGONAL SLASH
+0x29c6 ""                         "" "" "\\boxast" "stmaryrd" # SQUARED ASTERISK
+0x29c7 ""                         "" "" "\\boxcircle" "stmaryrd" # SQUARED SMALL CIRCLE
+0x29c8 ""                         "" "" "\\boxbox" "stmaryrd" # SQUARED SQUARE
+0x29eb ""                         "" "" "\\\blacklozenge" "amssymb" # BLACK LOZENGE
 #
 # supplemental mathematical operators
 #
-0x2a00 ""                         "" "" "\\bigodot" "" # (or MnSymbol) N-ARY CIRCLED DOT OPERATOR
-0x2a01 ""                         "" "" "\\bigoplus" "" # (or MnSymbol) N-ARY CIRCLED PLUS OPERATOR
-0x2a02 ""                         "" "" "\\bigotimes" "" # (or MnSymbol) N-ARY CIRCLED TIMES OPERATOR
+0x2a00 ""                         "" "" "\\bigodot" "" # N-ARY CIRCLED DOT OPERATOR
+0x2a01 ""                         "" "" "\\bigoplus" "" # N-ARY CIRCLED PLUS OPERATOR
+0x2a02 ""                         "" "" "\\bigotimes" "" # N-ARY CIRCLED TIMES OPERATOR
 #0x2a03 ""                         "" "" "\\bigcupdot" "MnSymbol" # N-ARY UNION OPERATOR WITH DOT
-0x2a04 ""                         "" "" "\\biguplus" "" # (or MnSymbol) N-ARY UNION OPERATOR WITH PLUS
+0x2a04 ""                         "" "" "\\biguplus" "" # N-ARY UNION OPERATOR WITH PLUS
 0x2a05 ""                         "" "" "\\bigsqcap" "stmaryrd" # (or MnSymbol) N-ARY SQUARE INTERSECTION OPERATOR
-0x2a06 ""                         "" "" "\\bigsqcup" "" # (or MnSymbol) N-ARY SQUARE UNION OPERATOR
+0x2a06 ""                         "" "" "\\bigsqcup" "" # N-ARY SQUARE UNION OPERATOR
 #0x2a07 ""                         "" "" "" "" # TWO LOGICAL AND OPERATOR
 #0x2a08 ""                         "" "" "" "" # TWO LOGICAL OR OPERATOR
 #0x2a09 ""                         "" "" "\\bigtimes" "MnSymbol" # N-ARY TIMES OPERATOR
@@ -3387,6 +3431,8 @@
 #0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
+0x2a1d ""                         "" "" "\\Join" "amssymb" # INTEGRAL WITH UNDERBAR
+0x2a1f ""                         "" "" "\\fatsemi" "stmaryrd" # Z NOTATION SCHEMA COMPOSITION
 0x2a3f ""                         "" "" "\\amalg" "" # AMALGAMATION OR COPRODUCT
 0x2a5e ""                         "" "" "\\doublebarwedge" "amssymb" # LOGICAL AND WITH DOUBLE OVERBAR
 0x2a7d ""                         "" "" "\\leqslant" "amssymb" # LESS-THAN OR SLANTED EQUAL TO
@@ -3430,8 +3476,8 @@
 #0x2aa3 ""                         "" "" "" "" # DOUBLE NESTED LESS-THAN WITH UNDERBAR
 #0x2aa4 ""                         "" "" "" "" # GREATER-THAN OVERLAPPING LESS-THAN
 #0x2aa5 ""                         "" "" "" "" # GREATER-THAN BESIDE LESS-THAN
-#0x2aa6 ""                         "" "" "" "" # LESS-THAN CLOSED BY CURVE
-#0x2aa7 ""                         "" "" "" "" # GREATER-THAN CLOSED BY CURVE
+0x2aa6 ""                         "" "" "\\leftslice" "stmaryrd" # LESS-THAN CLOSED BY CURVE
+0x2aa7 ""                         "" "" "\\rightslice" "stmaryrd" # GREATER-THAN CLOSED BY CURVE
 #0x2aa8 ""                         "" "" "" "" # LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
 #0x2aa9 ""                         "" "" "" "" # GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
 #0x2aaa ""                         "" "" "" "" # SMALLER THAN
@@ -3449,8 +3495,8 @@
 0x2ab6 ""                         "" "" "\\succneqq" "amssymb" # SUCCEEDS ABOVE NOT EQUAL TO
 0x2ab7 ""                         "" "" "\\precapprox" "amssymb" # PRECEDES ABOVE ALMOST EQUAL TO
 0x2ab8 ""                         "" "" "\\succapprox" "amssymb" # SUCCEEDS ABOVE ALMOST EQUAL TO
-#0x2ab9 ""                         "" "" "" "" # PRECEDES ABOVE NOT ALMOST EQUAL TO
-#0x2aba ""                         "" "" "" "" # SUCCEEDS ABOVE NOT ALMOST EQUAL TO
+0x2ab9 ""                         "" "" "\\precnapprox" "amssymb" # PRECEDES ABOVE NOT ALMOST EQUAL TO
+0x2aba ""                         "" "" "\\succnapprox" "amssymb" # SUCCEEDS ABOVE NOT ALMOST EQUAL TO
 #0x2abb ""                         "" "" "" "" # DOUBLE PRECEDES
 #0x2abc ""                         "" "" "" "" # DOUBLE SUCCEEDS
 #0x2abd ""                         "" "" "" "" # SUBSET WITH DOT
@@ -3469,6 +3515,11 @@
 #0x2aca ""                         "" "" "" "" # SUPERSET OF ABOVE ALMOST EQUAL TO
 0x2acb ""                         "" "" "\\subsetneqq" "amssymb" # SUBSET OF ABOVE NOT EQUAL TO
 0x2acc ""                         "" "" "\\supsetneqq" "amssymb" # SUPERSET OF ABOVE NOT EQUAL TO
+#
+0x2af4 ""                         "" "" "\\interleave" "stmaryrd" # TRIPLE VERTICAL BAR BINARY RELATION
+0x2afc ""                         "" "" "\\biginterleave" "stmaryrd" # LARGE TRIPLE VERTICAL BAR OPERATOR
+0x2afd ""                         "" "" "\\sslash" "stmaryrd" # DOUBLE SOLIDUS OPERATOR
+0x2afe ""                         "" "" "\\talloblong" "stmaryrd" # WHITE VERTICAL BAR
 #
 # Modifier tone letters
 #
