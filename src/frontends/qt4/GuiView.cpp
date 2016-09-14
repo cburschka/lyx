@@ -1170,12 +1170,6 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 		|| wa->bufferView().buffer().isInternal())
 		return;
 	Buffer const & buf = wa->bufferView().buffer();
-	// Sets the path for the window: this is used by OSX to
-	// allow a context click on the title bar showing a menu
-	// with the path up to the file
-	setWindowFilePath(toqstr(buf.absFileName()));
-	// Tell Qt whether the current document is changed
-	setWindowModified(!buf.isClean());
 	// Set the windows title
 	docstring title = buf.fileName().displayName(130) + from_ascii("[*]");
 #ifndef Q_WS_MAC
@@ -1183,6 +1177,12 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	title += from_ascii(" ") + char_type(0x2014) + from_ascii(" LyX");
 #endif
 	setWindowTitle(toqstr(title));
+	// Sets the path for the window: this is used by OSX to
+	// allow a context click on the title bar showing a menu
+	// with the path up to the file
+	setWindowFilePath(toqstr(buf.absFileName()));
+	// Tell Qt whether the current document is changed
+	setWindowModified(!buf.isClean());
 
 	if (buf.isReadonly())
 		read_only_->show();
