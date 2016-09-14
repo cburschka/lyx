@@ -346,7 +346,7 @@ void SpellcheckerWidget::Private::setSelection(
 		int const size = end.pos() - from.pos();
 		bv->putSelectionAt(from, size, false);
 	}
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+	bv->processUpdateFlags(Update::Force | Update::FitCursor);
 }
 
 void SpellcheckerWidget::Private::forward()
@@ -490,6 +490,8 @@ void SpellcheckerWidget::on_replaceAllPB_clicked()
 	LYXERR(Debug::GUI, "Replace all (" << replacement << ")");
 	dispatch(FuncRequest(LFUN_WORD_REPLACE, datastring));
 	d->forward();
+	// replace all wraps around
+	d->wrapAround(true);
 	d->check(); // continue spellchecking
 	d->canCheck();
 }

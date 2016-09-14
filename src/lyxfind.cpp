@@ -132,7 +132,8 @@ bool searchAllowed(docstring const & str)
 
 
 bool findOne(BufferView * bv, docstring const & searchstr,
-	     bool case_sens, bool whole, bool forward, bool find_del = true)
+	     bool case_sens, bool whole, bool forward,
+	     bool find_del = true, bool check_wrap = false)
 {
 	if (!searchAllowed(searchstr))
 		return false;
@@ -149,6 +150,32 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 
 	if (match_len > 0)
 		bv->putSelectionAt(cur, match_len, !forward);
+	else if (check_wrap) {
+		DocIterator cur_orig(bv->cursor());
+		docstring q;
+		if (forward)
+			q = _("End of file reached while searching forward.\n"
+			  "Continue searching from the beginning?");
+		else
+			q = _("Beginning of file reached while searching backward.\n"
+			  "Continue searching from the end?");
+		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
+			q, 0, 1, _("&Yes"), _("&No"));
+		if (wrap_answer == 0) {
+			if (forward) {
+				bv->cursor().clear();
+				bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
+			} else {
+				bv->cursor().setCursor(doc_iterator_end(&bv->buffer()));
+				bv->cursor().backwardPos();
+			}
+			bv->clearSelection();
+			if (findOne(bv, searchstr, case_sens, whole, forward, find_del, false))
+				return true;
+		}
+		bv->cursor().setCursor(cur_orig);
+		return false;
+	}
 
 	return match_len > 0;
 }
@@ -221,11 +248,12 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 			   bool whole, bool forward, bool findnext)
 {
 	Cursor & cur = bv->cursor();
+	bool found = false;
 	if (!cur.selection()) {
 		// no selection, non-empty search string: find it
 		if (!searchstr.empty()) {
-			findOne(bv, searchstr, case_sens, whole, forward);
-			return make_pair(true, 0);
+			found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+			return make_pair(found, 0);
 		}
 		// empty search string
 		if (!cur.inTexted())
@@ -253,8 +281,8 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	// no selection or current selection is not search word:
 	// just find the search word
 	if (!have_selection || !match) {
-		findOne(bv, searchstr, case_sens, whole, forward);
-		return make_pair(true, 0);
+		found = findOne(bv, searchstr, case_sens, whole, forward, true, findnext);
+		return make_pair(found, 0);
 	}
 
 	// we're now actually ready to replace. if the buffer is
@@ -269,7 +297,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		        cur.pos() = cur.lastpos());
 	}
 	if (findnext)
-		findOne(bv, searchstr, case_sens, whole, forward, false);
+		findOne(bv, searchstr, case_sens, whole, forward, false, findnext);
 
 	return make_pair(true, 1);
 }
@@ -323,7 +351,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 	bool matchword     = parse_bool(howto);
 	bool forward       = parse_bool(howto);
 
-	return findOne(bv, search, casesensitive, matchword, forward);
+	return findOne(bv, search, casesensitive, matchword, forward, true, true);
 }
 
 
@@ -380,7 +408,7 @@ bool lyxreplace(BufferView * bv,
 	} else if (findnext) {
 		// if we have deleted characters, we do not replace at all, but
 		// rather search for the next occurence
-		if (findOne(bv, search, casesensitive, matchword, forward))
+		if (findOne(bv, search, casesensitive, matchword, forward, true, findnext))
 			update = true;
 		else
 			bv->message(_("String not found."));

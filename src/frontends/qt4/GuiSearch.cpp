@@ -120,49 +120,12 @@ void GuiSearch::replaceallClicked()
 }
 
 
-void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward)
-{
-	dispatch(func);
-
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-
-	if (!bv->cursor().result().dispatched()) {
-		GuiView & lv = *const_cast<GuiView *>(&lyxview());
-		DocIterator cur_orig(bv->cursor());
-		docstring q;
-		if (forward)
-			q = _("End of file reached while searching forward.\n"
-			  "Continue searching from the beginning?");
-		else
-			q = _("Beginning of file reached while searching backward.\n"
-			  "Continue searching from the end?");
-		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
-			q, 0, 1, _("&Yes"), _("&No"));
-		if (wrap_answer == 0) {
-			if (forward) {
-				bv->cursor().clear();
-				bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
-			} else {
-				bv->cursor().setCursor(doc_iterator_end(&bv->buffer()));
-				bv->cursor().backwardPos();
-			}
-			bv->clearSelection();
-			dispatch(func);
-			if (bv->cursor().result().dispatched())
-				return;
-		}
-		bv->cursor().setCursor(cur_orig);
-		lv.message(_("String not found."));
-	}
-}
-
-
 void GuiSearch::find(docstring const & search, bool casesensitive,
 			 bool matchword, bool forward)
 {
 	docstring const data =
 		find2string(search, casesensitive, matchword, forward);
-	wrap_dispatch(FuncRequest(LFUN_WORD_FIND, data), forward);
+	dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 
 
@@ -173,7 +136,7 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 	docstring const data =
 		replace2string(replace, search, casesensitive,
 				     matchword, all, forward);
-	wrap_dispatch(FuncRequest(LFUN_WORD_REPLACE, data), forward);
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }
 
 
