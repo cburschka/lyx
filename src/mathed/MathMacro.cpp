@@ -614,9 +614,9 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		drawMarkers2(pi, expx, expy);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
-		bool user_macro = mathedWordList().find(name()) == mathedWordList().end();
-		bool upshape = user_macro ? false : d->macro_ && d->macro_->symbol()
-				&& d->macro_->symbol()->extra == "textmode";
+		MacroData const * macro = MacroTable::globalMacros().get(name());
+		bool upshape = macro && macro->symbol()
+				&& macro->symbol()->extra == "textmode";
 		Changer dummy = pi.base.font.changeShape(upshape ? UP_SHAPE
 							: pi.base.font.shape());
 
@@ -930,11 +930,11 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	bool user_macro = mathedWordList().find(name()) == mathedWordList().end();
-	bool textmode_macro = user_macro ? false : d->macro_ && d->macro_->symbol()
-				&& d->macro_->symbol()->extra == "textmode";
-	bool needs_mathmode = user_macro ? bool(d->macro_) : d->macro_ && (!d->macro_->symbol()
-				|| d->macro_->symbol()->extra != "textmode");
+	MacroData const * macro = MacroTable::globalMacros().get(name());
+	bool textmode_macro = macro && macro->symbol()
+				&& macro->symbol()->extra == "textmode";
+	bool needs_mathmode = macro && (!macro->symbol()
+				|| macro->symbol()->extra != "textmode");
 
 	MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
 
