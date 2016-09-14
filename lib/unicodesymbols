@@ -2475,19 +2475,88 @@
 #0x2425 ""                         "" "" "" "" # SYMBOL FOR DELETE FORM TWO
 #0x2426 ""                         "" "" "" "" # SYMBOL FOR SUBSTITUTE FORM TWO
 #
-# box drawing
+# 82 Box Drawing
 #
 0x2500 "\\textSFx"                "pmboxdraw" "" # BOX DRAWINGS LIGHT HORIZONTAL
+0x2501 "\\pmboxdrawuni{2501}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY HORIZONTAL
 0x2502 "\\textSFxi"               "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL
+0x2503 "\\pmboxdrawuni{2503}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY VERTICAL
+#0x2504 "\\pmboxdrawuni{2504}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT TRIPLE DASH HORIZONTAL
+#0x2505 "\\pmboxdrawuni{2505}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL
+#0x2506 "\\pmboxdrawuni{2506}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT TRIPLE DASH VERTICAL
+#0x2507 "\\pmboxdrawuni{2507}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY TRIPLE DASH VERTICAL
+#0x2508 "\\pmboxdrawuni{2508}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT QUADRUPLE DASH HORIZONTAL
+#0x2509 "\\pmboxdrawuni{2509}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY QUADRUPLE DASH HORIZONTAL
+#0x250a "\\pmboxdrawuni{250a}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT QUADRUPLE DASH VERTICAL
+#0x250b "\\pmboxdrawuni{250b}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY QUADRUPLE DASH VERTICAL
 0x250c "\\textSFi"                "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND RIGHT
+0x250d "\\pmboxdrawuni{250D}"     "pmboxdraw" "" # BOX DRAWINGS DOWN LIGHT AND RIGHT HEAVY
+0x250e "\\pmboxdrawuni{250E}"     "pmboxdraw" "" # BOX DRAWINGS DOWN HEAVY AND RIGHT LIGHT
+0x250f "\\pmboxdrawuni{250F}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOWN AND RIGHT
 0x2510 "\\textSFiii"              "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND LEFT
+0x2511 "\\pmboxdrawuni{2511}"     "pmboxdraw" "" # BOX DRAWINGS DOWN LIGHT AND LEFT HEAVY
+0x2512 "\\pmboxdrawuni{2512}"     "pmboxdraw" "" # BOX DRAWINGS DOWN HEAVY AND LEFT LIGHT
+0x2513 "\\pmboxdrawuni{2513}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOWN AND LEFT
 0x2514 "\\textSFii"               "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND RIGHT
+0x2515 "\\pmboxdrawuni{2515}"     "pmboxdraw" "" # BOX DRAWINGS UP LIGHT AND RIGHT HEAVY
+0x2516 "\\pmboxdrawuni{2516}"     "pmboxdraw" "" # BOX DRAWINGS UP HEAVY AND RIGHT LIGHT
+0x2517 "\\pmboxdrawuni{2517}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY UP AND RIGHT
 0x2518 "\\textSFiv"               "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND LEFT
+0x2519 "\\pmboxdrawuni{2519}"     "pmboxdraw" "" # BOX DRAWINGS UP LIGHT AND LEFT HEAVY
+0x251a "\\pmboxdrawuni{251A}"     "pmboxdraw" "" # BOX DRAWINGS UP HEAVY AND LEFT LIGHT
+0x251b "\\pmboxdrawuni{251B}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY UP AND LEFT
 0x251c "\\textSFviii"             "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND RIGHT
+0x251d "\\pmboxdrawuni{251D}"     "pmboxdraw" "" # BOX DRAWINGS VERTICAL LIGHT AND RIGHT HEAVY
+0x251e "\\pmboxdrawuni{251E}"     "pmboxdraw" "" # BOX DRAWINGS UP HEAVY AND RIGHT DOWN LIGHT
+0x251f "\\pmboxdrawuni{251F}"     "pmboxdraw" "" # BOX DRAWINGS DOWN HEAVY AND RIGHT UP LIGHT
+0x2520 "\\pmboxdrawuni{2520}"     "pmboxdraw" "" # BOX DRAWINGS VERTICAL HEAVY AND RIGHT LIGHT
+0x2521 "\\pmboxdrawuni{2521}"     "pmboxdraw" "" # BOX DRAWINGS DOWN LIGHT AND RIGHT UP HEAVY
+0x2522 "\\pmboxdrawuni{2522}"     "pmboxdraw" "" # BOX DRAWINGS UP LIGHT AND RIGHT DOWN HEAVY
+0x2523 "\\pmboxdrawuni{2523}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY VERTICAL AND RIGHT
 0x2524 "\\textSFix"               "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND LEFT
+0x2525 "\\pmboxdrawuni{2525}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS VERTICAL LIGHT AND LEFT HEAVY
+0x2526 "\\pmboxdrawuni{2526}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS UP HEAVY AND LEFT DOWN LIGHT
+0x2527 "\\pmboxdrawuni{2527}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS DOWN HEAVY AND LEFT UP LIGHT
+0x2528 "\\pmboxdrawuni{2528}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS VERTICAL HEAVY AND LEFT LIGHT
+0x2529 "\\pmboxdrawuni{2529}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS DOWN LIGHT AND LEFT UP HEAVY
+0x252a "\\pmboxdrawuni{252A}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS UP LIGHT AND LEFT DOWN HEAVY
+0x252b "\\pmboxdrawuni{252B}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS HEAVY VERTICAL AND LEFT
 0x252c "\\textSFvi"               "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN AND HORIZONTAL
+0x252d "\\pmboxdrawuni{252D}"     "pmboxdraw" "" # BOX DRAWINGS LEFT HEAVY AND RIGHT DOWN LIGHT
+0x252e "\\pmboxdrawuni{252E}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT HEAVY AND LEFT DOWN LIGHT
+0x252f "\\pmboxdrawuni{252F}"     "pmboxdraw" "" # BOX DRAWINGS DOWN LIGHT AND HORIZONTAL HEAVY
+0x2530 "\\pmboxdrawuni{2530}"     "pmboxdraw" "" # BOX DRAWINGS DOWN HEAVY AND HORIZONTAL LIGHT
+0x2531 "\\pmboxdrawuni{2531}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT LIGHT AND LEFT DOWN HEAVY
+0x2532 "\\pmboxdrawuni{2532}"     "pmboxdraw" "" # BOX DRAWINGS LEFT LIGHT AND RIGHT DOWN HEAVY
+0x2533 "\\pmboxdrawuni{2533}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOWN AND HORIZONTAL
 0x2534 "\\textSFvii"              "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND HORIZONTAL
+0x2535 "\\pmboxdrawuni{2535}"     "pmboxdraw" "" # BOX DRAWINGS LEFT HEAVY AND RIGHT UP LIGHT
+0x2536 "\\pmboxdrawuni{2536}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT HEAVY AND LEFT UP LIGHT
+0x2537 "\\pmboxdrawuni{2537}"     "pmboxdraw" "" # BOX DRAWINGS UP LIGHT AND HORIZONTAL HEAVY
+0x2538 "\\pmboxdrawuni{2538}"     "pmboxdraw" "" # BOX DRAWINGS UP HEAVY AND HORIZONTAL LIGHT
+0x2539 "\\pmboxdrawuni{2539}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT LIGHT AND LEFT UP HEAVY
+0x253a "\\pmboxdrawuni{253A}"     "pmboxdraw" "" # BOX DRAWINGS LEFT LIGHT AND RIGHT UP HEAVY
+0x253b "\\pmboxdrawuni{253B}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY UP AND HORIZONTAL
 0x253c "\\textSFv"                "pmboxdraw" "" # BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL
+0x253d "\\pmboxdrawuni{253D}"     "pmboxdraw" "" # BOX DRAWINGS LEFT HEAVY AND RIGHT VERTICAL LIGHT
+0x253e "\\pmboxdrawuni{253E}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT HEAVY AND LEFT VERTICAL LIGHT
+0x253f "\\pmboxdrawuni{253F}"     "pmboxdraw" "" # BOX DRAWINGS VERTICAL LIGHT AND HORIZONTAL HEAVY
+0x2540 "\\pmboxdrawuni{2540}"     "pmboxdraw" "" # BOX DRAWINGS UP HEAVY AND DOWN HORIZONTAL LIGHT
+0x2541 "\\pmboxdrawuni{2541}"     "pmboxdraw" "" # BOX DRAWINGS DOWN HEAVY AND UP HORIZONTAL LIGHT
+0x2542 "\\pmboxdrawuni{2542}"     "pmboxdraw" "" # BOX DRAWINGS VERTICAL HEAVY AND HORIZONTAL LIGHT
+0x2543 "\\pmboxdrawuni{2543}"     "pmboxdraw" "" # BOX DRAWINGS LEFT UP HEAVY AND RIGHT DOWN LIGHT
+0x2544 "\\pmboxdrawuni{2544}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT UP HEAVY AND LEFT DOWN LIGHT
+0x2545 "\\pmboxdrawuni{2545}"     "pmboxdraw" "" # BOX DRAWINGS LEFT DOWN HEAVY AND RIGHT UP LIGHT
+0x2546 "\\pmboxdrawuni{2546}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT DOWN HEAVY AND LEFT UP LIGHT
+0x2547 "\\pmboxdrawuni{2547}"     "pmboxdraw" "" # BOX DRAWINGS DOWN LIGHT AND UP HORIZONTAL HEAVY
+0x2548 "\\pmboxdrawuni{2548}"     "pmboxdraw" "" # BOX DRAWINGS UP LIGHT AND DOWN HORIZONTAL HEAVY
+0x2549 "\\pmboxdrawuni{2549}"     "pmboxdraw" "" # BOX DRAWINGS RIGHT LIGHT AND LEFT VERTICAL HEAVY
+0x254a "\\pmboxdrawuni{254A}"     "pmboxdraw" "" # BOX DRAWINGS LEFT LIGHT AND RIGHT VERTICAL HEAVY
+0x254b "\\pmboxdrawuni{254B}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY VERTICAL AND HORIZONTAL
+#0x254c "\\pmboxdrawuni{254C}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DOUBLE DASH HORIZONTAL
+#0x254d "\\pmboxdrawuni{254D}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOUBLE DASH HORIZONTAL
+#0x254e "\\pmboxdrawuni{254E}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DOUBLE DASH VERTICAL
+#0x254f "\\pmboxdrawuni{254F}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOUBLE DASH VERTICAL
 0x2550 "\\textSFxliii"            "pmboxdraw" "" # BOX DRAWINGS DOUBLE HORIZONTAL
 0x2551 "\\textSFxxiv"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL
 0x2552 "\\textSFli"               "pmboxdraw" "" # BOX DRAWINGS DOWN SINGLE AND RIGHT DOUBLE
@@ -2517,82 +2586,156 @@
 0x256a "\\textSFliv"              "pmboxdraw" "" # BOX DRAWINGS VERTICAL SINGLE AND HORIZONTAL DOUBLE
 0x256b "\\textSFliii"             "pmboxdraw" "" # BOX DRAWINGS VERTICAL DOUBLE AND HORIZONTAL SINGLE
 0x256c "\\textSFxliv"             "pmboxdraw" "" # BOX DRAWINGS DOUBLE VERTICAL AND HORIZONTAL
+#0x256d "\\pmboxdrawuni{256D}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT ARC DOWN AND RIGHT
+#0x256e "\\pmboxdrawuni{256E}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT ARC DOWN AND LEFT
+#0x256f "\\pmboxdrawuni{256F}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT ARC UP AND LEFT
+#0x2570 "\\pmboxdrawuni{2570}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT ARC UP AND RIGHT
+#0x2571 "\\pmboxdrawuni{2571}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DIAGONAL UPPER RIGHT TO LOWER LEFT
+#0x2572 "\\pmboxdrawuni{2572}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DIAGONAL UPPER LEFT TO LOWER RIGHT
+#0x2573 "\\pmboxdrawuni{2573}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DIAGONAL CROSS
+0x2574 "\\pmboxdrawuni{2574}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT LEFT
+0x2575 "\\pmboxdrawuni{2575}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT UP
+0x2576 "\\pmboxdrawuni{2576}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT RIGHT
+0x2577 "\\pmboxdrawuni{2577}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT DOWN
+0x2578 "\\pmboxdrawuni{2578}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY LEFT
+0x2579 "\\pmboxdrawuni{2579}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY UP
+0x257a "\\pmboxdrawuni{257A}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY RIGHT
+0x257b "\\pmboxdrawuni{257B}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY DOWN
+0x257c "\\pmboxdrawuni{257C}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT LEFT AND HEAVY RIGHT
+0x257d "\\pmboxdrawuni{257D}"     "pmboxdraw" "" # BOX DRAWINGS LIGHT UP AND HEAVY DOWN
+0x257e "\\pmboxdrawuni{257E}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY LEFT AND LIGHT RIGHT
+0x257f "\\pmboxdrawuni{257F}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS HEAVY UP AND LIGHT DOWN # wrong macro in pmboxdrawenc.dfu
 #
 # block elements
 #
 0x2580 "\\textupblock"            "pmboxdraw" "" # UPPER HALF BLOCK
+0x2581 "\\pmboxdrawuni{2581}"     "pmboxdraw" "" # LOWER ONE EIGHTH BLOCK
+0x2582 "\\pmboxdrawuni{2582}"     "pmboxdraw" "" # LOWER ONE QUARTER BLOCK
+0x2583 "\\pmboxdrawuni{2583}"     "pmboxdraw" "" # LOWER THREE EIGHTHS BLOCK
 0x2584 "\\textdnblock"            "pmboxdraw" "" # LOWER HALF BLOCK
+0x2585 "\\pmboxdrawuni{2585}"     "pmboxdraw" "" # LOWER FIVE EIGHTHS BLOCK
+0x2586 "\\pmboxdrawuni{2586}"     "pmboxdraw" "" # LOWER THREE QUARTERS BLOCK
+0x2587 "\\pmboxdrawuni{2587}"     "pmboxdraw" "" # LOWER SEVEN EIGHTHS BLOCK
 0x2588 "\\textblock"              "pmboxdraw" "" # FULL BLOCK
+0x2589 "\\pmboxdrawuni{2589}"     "pmboxdraw" "" # LEFT SEVEN EIGHTHS BLOCK
+0x258a "\\pmboxdrawuni{258A}"     "pmboxdraw" "" # LEFT THREE QUARTERS BLOCK
+0x258b "\\pmboxdrawuni{258B}"     "pmboxdraw" "" # LEFT FIVE EIGHTHS BLOCK
 0x258c "\\textlfblock"            "pmboxdraw" "" # LEFT HALF BLOCK
+0x258d "\\pmboxdrawuni{258D}"     "pmboxdraw" "" # LEFT THREE EIGHTHS BLOCK
+0x258e "\\pmboxdrawuni{258E}"     "pmboxdraw" "" # LEFT ONE QUARTER BLOCK
+0x258f "\\pmboxdrawuni{258F}"     "pmboxdraw" "" # LEFT ONE EIGHTH BLOCK
 0x2590 "\\textrtblock"            "pmboxdraw" "" # RIGHT HALF BLOCK
-0x2591 "\\textltshade"            "pmboxdraw" "" # LIGHT SHADE
-0x2592 "\\textshade"              "pmboxdraw" "" # MEDIUM SHADE
-0x2593 "\\textdkshade"            "pmboxdraw" "" # DARK SHADE
+0x2591 "\\textltshade"            "pmboxdraw,color" "" # LIGHT SHADE
+0x2592 "\\textshade"              "pmboxdraw,color" "" # MEDIUM SHADE
+0x2593 "\\textdkshade"            "pmboxdraw,color" "" # DARK SHADE
+0x2594 "\\pmboxdrawuni{2594}"     "pmboxdraw" "" # UPPER ONE EIGHTH BLOCK
+0x2595 "\\pmboxdrawuni{2595}"     "pmboxdraw" "" # RIGHT ONE EIGHTH BLOCK
+0x2596 "\\pmboxdrawuni{2596}"     "pmboxdraw" "" # QUADRANT LOWER LEFT
+0x2597 "\\pmboxdrawuni{2597}"     "pmboxdraw" "" # QUADRANT LOWER RIGHT
+0x2598 "\\pmboxdrawuni{2598}"     "pmboxdraw" "" # QUADRANT UPPER LEFT
+0x2599 "\\pmboxdrawuni{2599}"     "pmboxdraw" "" # QUADRANT UPPER LEFT AND LOWER LEFT AND LOWER RIGHT
+0x259a "\\pmboxdrawuni{259A}"     "pmboxdraw" "" # QUADRANT UPPER LEFT AND LOWER RIGHT
+0x259b "\\pmboxdrawuni{259B}"     "pmboxdraw" "" # QUADRANT UPPER LEFT AND UPPER RIGHT AND LOWER LEFT
+0x259c "\\pmboxdrawuni{259C}"     "pmboxdraw" "" # QUADRANT UPPER LEFT AND UPPER RIGHT AND LOWER RIGHT
+0x259d "\\pmboxdrawuni{259D}"     "pmboxdraw" "" # QUADRANT UPPER RIGHT
+0x259e "\\pmboxdrawuni{259E}"     "pmboxdraw" "" # QUADRANT UPPER RIGHT AND LOWER LEFT
+0x259f "\\pmboxdrawuni{259F}"     "pmboxdraw" "" # QUADRANT UPPER RIGHT AND LOWER LEFT AND LOWER RIGHT
 #
 # geometric shapes
 #
-0x25a0 "\\textifsymbol[ifgeo]{80}" "ifsym" "" # BLACK SQUARE
+0x25a0 "\\textifsymbol[ifgeo]{80}" "ifsym" "force=utf8" # BLACK SQUARE
 0x25a1 "\\textifsymbol[ifgeo]{32}" "ifsym" "force=utf8" # WHITE SQUARE
 #0x25a2 ""                         "" "" "" "" # WHITE SQUARE WITH ROUNDED CORNERS
-#0x25a3 ""                         "" "" "" "" # WHITE SQUARE CONTAINING BLACK SMALL SQUARE
+#0x25a3 "\rlap{\BigSquare}{\FilledSmallSquare}" "[geometry]ifsym" "" "" "" # WHITE SQUARE CONTAINING BLACK SMALL SQUARE
 #0x25a4 ""                         "" "" "" "" # SQUARE WITH HORIZONTAL FILL
 #0x25a5 ""                         "" "" "" "" # SQUARE WITH VERTICAL FILL
 #0x25a6 ""                         "" "" "" "" # SQUARE WITH ORTHOGONAL CROSSHATCH FILL
 #0x25a7 ""                         "" "" "" "" # SQUARE WITH UPPER LEFT TO LOWER RIGHT FILL
 #0x25a8 ""                         "" "" "" "" # SQUARE WITH UPPER RIGHT TO LOWER LEFT FILL
 #0x25a9 ""                         "" "" "" "" # SQUARE WITH DIAGONAL CROSSHATCH FILL
-0x25aa "\\textifsymbol[ifgeo]{112}" "ifsym" "" # BLACK SMALL SQUARE
-0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "" # WHITE SMALL SQUARE
-0x25ac "\\SYN"			   "ascii" "" # BLACK RECTANGLE
+0x25aa "\\textifsymbol[ifgeo]{112}" "ifsym" "force=utf8" # BLACK SMALL SQUARE
+0x25ab "\\textifsymbol[ifgeo]{64}" "ifsym" "force=utf8" # WHITE SMALL SQUARE
+0x25ac "\\SYN"			   "ascii" "force=utf8" # BLACK RECTANGLE
 #0x25ad ""                         "" "" "" "" # WHITE RECTANGLE
 #0x25ae ""                         "" "" "" "" # BLACK VERTICAL RECTANGLE
 #0x25af ""                         "" "" "" "" # WHITE VERTICAL RECTANGLE
 #0x25b0 ""                         "" "" "" "" # BLACK PARALLELOGRAM
 #0x25b1 ""                         "" "" "" "" # WHITE PARALLELOGRAM
-0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "" # BLACK UP-POINTING TRIANGLE
-0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "" "\\bigtriangleup" "" # WHITE UP-POINTING TRIANGLE
-0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "" "\\blacktriangle" "amssymb" # BLACK UP-POINTING SMALL TRIANGLE
-0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "" "\\vartriangle" "amssymb" # WHITE UP-POINTING SMALL TRIANGLE
-0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "" "\\RHD" "wasysym" # BLACK RIGHT-POINTING TRIANGLE
-0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "" "\\rhd" "amssymb" # WHITE RIGHT-POINTING TRIANGLE
-0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "" # BLACK RIGHT-POINTING SMALL TRIANGLE
-0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "" # WHITE RIGHT-POINTING SMALL TRIANGLE
-0x25ba "\\RIGHTarrow"             "wasysym" "" # BLACK RIGHT-POINTING POINTER
-#0x25bb ""                         "" "" "" "" # WHITE RIGHT-POINTING POINTER
-0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "" # BLACK DOWN-POINTING TRIANGLE
-0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "" "\\bigtriangledown" "" # WHITE DOWN-POINTING TRIANGLE
-0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "" "\\blacktriangledown" "amssymb" # BLACK DOWN-POINTING SMALL TRIANGLE
-0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "" "\\triangledown" "amssymb" # WHITE DOWN-POINTING SMALL TRIANGLE
-0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "" "\\LHD" "wasysym" # BLACK LEFT-POINTING TRIANGLE
-0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "" "\\lhd" "amssymb" # WHITE LEFT-POINTING TRIANGLE
-0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "" # BLACK LEFT-POINTING SMALL TRIANGLE
-0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "" # WHITE LEFT-POINTING SMALL TRIANGLE
-0x25c4 "\\LEFTarrow"              "wasysym" "" # BLACK LEFT-POINTING POINTER
+0x25b2 "\\textifsymbol[ifgeo]{97}" "ifsym" "force=utf8" # BLACK UP-POINTING TRIANGLE
+0x25b3 "\\textifsymbol[ifgeo]{49}" "ifsym" "force=utf8" "\\bigtriangleup" "" # WHITE UP-POINTING TRIANGLE
+0x25b4 "\\textifsymbol[ifgeo]{113}" "ifsym" "force=utf8" "\\blacktriangle" "amssymb" # BLACK UP-POINTING SMALL TRIANGLE
+0x25b5 "\\textifsymbol[ifgeo]{65}" "ifsym" "force=utf8" "\\vartriangle" "amssymb" # WHITE UP-POINTING SMALL TRIANGLE
+0x25b6 "\\textifsymbol[ifgeo]{100}" "ifsym" "force=utf8" "\\RHD" "wasysym" # BLACK RIGHT-POINTING TRIANGLE
+0x25b7 "\\textifsymbol[ifgeo]{52}" "ifsym" "force=utf8" "\\rhd" "amssymb" # WHITE RIGHT-POINTING TRIANGLE
+0x25b8 "\\textifsymbol[ifgeo]{116}" "ifsym" "force=utf8" # BLACK RIGHT-POINTING SMALL TRIANGLE
+0x25b9 "\\textifsymbol[ifgeo]{68}" "ifsym" "force=utf8" # WHITE RIGHT-POINTING SMALL TRIANGLE
+0x25ba "\\RIGHTarrow"             "wasysym" "force=utf8" # BLACK RIGHT-POINTING POINTER
+#0x25bb "\\textwide{\\textifsymbol[ifgeo]{68}}" "ifsym" "force=utf8" "" "" # WHITE RIGHT-POINTING POINTER # textwide should print wide version but actually prints narrow one!
+0x25bc "\\textifsymbol[ifgeo]{99}" "ifsym" "force=utf8" # BLACK DOWN-POINTING TRIANGLE
+0x25bd "\\textifsymbol[ifgeo]{51}" "ifsym" "force=utf8" "\\bigtriangledown" "" # WHITE DOWN-POINTING TRIANGLE
+0x25be "\\textifsymbol[ifgeo]{115}" "ifsym" "force=utf8" "\\blacktriangledown" "amssymb" # BLACK DOWN-POINTING SMALL TRIANGLE
+0x25bf "\\textifsymbol[ifgeo]{67}" "ifsym" "force=utf8" "\\triangledown" "amssymb" # WHITE DOWN-POINTING SMALL TRIANGLE
+0x25c0 "\\textifsymbol[ifgeo]{98}" "ifsym" "force=utf8" "\\LHD" "wasysym" # BLACK LEFT-POINTING TRIANGLE
+0x25c1 "\\textifsymbol[ifgeo]{50}" "ifsym" "force=utf8" "\\lhd" "amssymb" # WHITE LEFT-POINTING TRIANGLE
+0x25c2 "\\textifsymbol[ifgeo]{114}" "ifsym" "force=utf8" # BLACK LEFT-POINTING SMALL TRIANGLE
+0x25c3 "\\textifsymbol[ifgeo]{66}" "ifsym" "force=utf8" # WHITE LEFT-POINTING SMALL TRIANGLE
+0x25c4 "\\LEFTarrow"              "wasysym" "force=utf8" # BLACK LEFT-POINTING POINTER
 #0x25c5 ""                         "" "" "" "" # WHITE LEFT-POINTING POINTER
-0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "" #"\\Diamondblack" "txfonts|pxfonts" # BLACK DIAMOND
-0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "" "\\Diamond" "amssymb" # WHITE DIAMOND
+0x25c6 "\\textifsymbol[ifgeo]{102}" "ifsym" "force=utf8" #"\\Diamondblack" "txfonts|pxfonts" # BLACK DIAMOND
+0x25c7 "\\textifsymbol[ifgeo]{54}" "ifsym" "force=utf8" "\\Diamond" "amssymb" # WHITE DIAMOND
 #0x25c8 ""                         "" "" "" "" # WHITE DIAMOND CONTAINING BLACK SMALL DIAMOND
 #0x25c9 ""                         "" "" "" "" # FISHEYE
-0x25ca ""                         "" "" "\\lozenge" "amssymb" # LOZENGE
-0x25cb "\\Circle"                 "wasysym" "" "\\Circle" "wasysym" # CIRCLE
+0x25ca ""                         "" "force=utf8" "\\lozenge" "amssymb" # LOZENGE
+0x25cb "\\Circle"                 "wasysym" "force=utf8" "\\Circle" "wasysym" # CIRCLE
 #0x25cc ""                         "" "" "" "" # DOTTED CIRCLE
 #0x25cd ""                         "" "" "" "" # CIRCLE WITH VERTICAL FILL
 #0x25ce ""                         "" "" "" "" # BULLSEYE
-0x25cf "\\CIRCLE"                 "wasysym" "" "\\CIRCLE" "wasysym" # BLACK CIRCLE
-0x25d0 "\\LEFTcircle"             "wasysym" "" "\\LEFTcircle" "wasysym" # CIRCLE WITH LEFT HALF BLACK
-0x25d1 "\\RIGHTcircle"            "wasysym" "" "\\RIGHTcircle" "wasysym" # CIRCLE WITH RIGHT HALF BLACK
+0x25cf "\\CIRCLE"                 "wasysym" "force=utf8" "\\CIRCLE" "wasysym" # BLACK CIRCLE
+0x25d0 "\\LEFTcircle"             "wasysym" "force=utf8" "\\LEFTcircle" "wasysym" # CIRCLE WITH LEFT HALF BLACK
+0x25d1 "\\RIGHTcircle"            "wasysym" "force=utf8" "\\RIGHTcircle" "wasysym" # CIRCLE WITH RIGHT HALF BLACK
 #0x25d2 ""                         "" "" "" "" # CIRCLE WITH LOWER HALF BLACK
 #0x25d3 ""                         "" "" "" "" # CIRCLE WITH UPPER HALF BLACK
 #0x25d4 ""                         "" "" "" "" # CIRCLE WITH UPPER RIGHT QUADRANT BLACK
 #0x25d5 ""                         "" "" "" "" # CIRCLE WITH ALL BUT UPPER LEFT QUADRANT BLACK
-0x25d6 "\\LEFTCIRCLE"             "wasysym" "" "\\LEFTCIRCLE" "wasysym" # LEFT HALF BLACK CIRCLE
-0x25d7 "\\RIGHTCIRCLE"            "wasysym" "" "\\RIGHTCIRCLE" "wasysym" # RIGHT HALF BLACK CIRCLE
-0x25d8 "\\BS"			  "ascii" "" # INVERSE BULLET
-0x25d9 "\\LF"            	  "ascii" "" # INVERSE WHITE CIRCLE
+0x25d6 "\\LEFTCIRCLE"             "wasysym" "force=utf8" "\\LEFTCIRCLE" "wasysym" # LEFT HALF BLACK CIRCLE
+0x25d7 "\\RIGHTCIRCLE"            "wasysym" "force=utf8" "\\RIGHTCIRCLE" "wasysym" # RIGHT HALF BLACK CIRCLE
+0x25d8 "\\BS"			  "ascii" "force=utf8" # INVERSE BULLET
+0x25d9 "\\LF"            	  "ascii" "force=utf8" # INVERSE WHITE CIRCLE
+#0x25da ""                         "" "" "" "" # UPPER HALF INVERSE WHITE CIRCLE
+#0x25db ""                         "" "" "" "" # LOWER HALF INVERSE WHITE CIRCLE
+#0x25dc ""                         "" "" "" "" # UPPER LEFT QUADRANT CIRCULAR ARC
+#0x25dd ""                         "" "" "" "" # UPPER RIGHT QUADRANT CIRCULAR ARC
+#0x25de ""                         "" "" "" "" # LOWER RIGHT QUADRANT CIRCULAR ARC
+#0x25df ""                         "" "" "" "" # LOWER LEFT QUADRANT CIRCULAR ARC
+#0x25e0 ""                         "" "" "" "" # UPPER HALF CIRCLE
+#0x25e1 ""                         "" "" "" "" # LOWER HALF CIRCLE
+#0x25e2 ""                         "" "" "" "" # BLACK LOWER RIGHT TRIANGLE
+#0x25e3 ""                         "" "" "" "" # BLACK LOWER LEFT TRIANGLE
+#0x25e4 ""                         "" "" "" "" # BLACK UPPER LEFT TRIANGLE
+#0x25e5 ""                         "" "" "" "" # BLACK UPPER RIGHT TRIANGLE
 0x25e6 "\\textopenbullet"         "textcomp" "" # WHITE BULLET
+#0x25e7 ""                         "" "" "" "" # SQUARE WITH LEFT HALF BLACK
+#0x25e8 ""                         "" "" "" "" # SQUARE WITH RIGHT HALF BLACK
+#0x25e9 ""                         "" "" "" "" # SQUARE WITH UPPER LEFT DIAGONAL HALF BLACK
+#0x25ea ""                         "" "" "" "" # SQUARE WITH LOWER RIGHT DIAGONAL HALF BLACK
+#0x25eb ""                         "" "" "" "" # WHITE SQUARE WITH VERTICAL BISECTING LINE
+#0x25ec ""                         "" "" "" "" # WHITE UP-POINTING TRIANGLE WITH DOT
+#0x25ed ""                         "" "" "" "" # UP-POINTING TRIANGLE WITH LEFT HALF BLACK
+#0x25ee ""                         "" "" "" "" # UP-POINTING TRIANGLE WITH RIGHT HALF BLACK
 0x25ef "\\textbigcircle"          "textcomp" "" "\\bigcirc" "" # LARGE CIRCLE
-0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "" "\\square" "amssymb" # WHITE MEDIUM SQUARE
-0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "" "\\blacksquare" "amssymb" # BLACK MEDIUM SQUARE
+#0x25f0 ""                         "" "" "" "" # WHITE SQUARE WITH UPPER LEFT QUADRANT
+#0x25f1 ""                         "" "" "" "" # WHITE SQUARE WITH LOWER LEFT QUADRANT
+#0x25f2 ""                         "" "" "" "" # WHITE SQUARE WITH LOWER RIGHT QUADRANT
+#0x25f3 ""                         "" "" "" "" # WHITE SQUARE WITH UPPER RIGHT QUADRANT
+#0x25f4 ""                         "" "" "" "" # WHITE CIRCLE WITH UPPER LEFT QUADRANT
+#0x25f5 ""                         "" "" "" "" # WHITE CIRCLE WITH LOWER LEFT QUADRANT
+#0x25f6 ""                         "" "" "" "" # WHITE CIRCLE WITH LOWER RIGHT QUADRANT
+#0x25f7 ""                         "" "" "" "" # WHITE CIRCLE WITH UPPER RIGHT QUADRANT
+#0x25f8 ""                         "" "" "" "" # UPPER LEFT TRIANGLE
+#0x25f9 ""                         "" "" "" "" # UPPER RIGHT TRIANGLE
+#0x25fa ""                         "" "" "" "" # LOWER LEFT TRIANGLE
+0x25fb "\\textifsymbol[ifgeo]{48}" "ifsym" "force=utf8" "\\square" "amssymb" # WHITE MEDIUM SQUARE
+0x25fc "\\textifsymbol[ifgeo]{96}" "ifsym" "force=utf8" "\\blacksquare" "amssymb" # BLACK MEDIUM SQUARE
 #
 # miscellaneous symbols
 #
