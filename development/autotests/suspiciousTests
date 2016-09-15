@@ -88,17 +88,7 @@ export/export/latex/languagenesting_enumerate_and_lyxcode.*_systemF
 export/examples/fr/linguistics_.*_systemF
 export/doc/(de/|fr/)Customization_.*_systemF
 
-#9910 use LuaTeX-compatible language names
-# Wrong language name for LuaTeX (with Babel, no error with Polyglossia)
-# Seems fixed in recent Babel now (2016-09-07)
-# After LyX 2.1 is released, apply the patch and remove these
-# See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-# ! LuaTeX error ...e/2015/texmf-dist/tex/luatex/hyph-utf8/luatex-hyphen.lua:53: luatex-hyphen: no entry in language.dat.lua for this language: bahasa
-export/doc/attic/id_UserGuide_(dvi3|pdf5).*
-export/(doc|examples)/id/.*_(dvi3|pdf5)_texF
-export/(doc|examples)/hu/.*(dvi3|pdf5)_texF
-
-#8823 documents requiring pre-processing fail with Japanese 
+#8823 documents requiring pre-processing fail with Japanese
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
 
 #10355 xmllint detects failures
@@ -227,4 +217,3 @@ export/doc/attic/eu_UserGuide_pdf[25].*
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
 export/doc/attic/id_UserGuide_pdf[45]_systemF
-
