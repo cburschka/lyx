@@ -152,7 +152,7 @@ elsif (0) { # set to '1' to enable setting of inputencoding
 my $sourcedir = dirname($source);
 my $destdir = dirname($dest);
 if (! -d $destdir) {
-  diestack("could not make dir \"$destdir\"") if (! mkdir $destdir);
+  diestack("could not make dir \"$destdir\"") if (! mkpath $destdir);
 }
 
 my $destdirOfSubdocuments;
