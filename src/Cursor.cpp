@@ -1426,8 +1426,9 @@ bool Cursor::macroModeClose()
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
 	if (in && in->interpretString(*this, s))
 		return true;
-	MathAtom atom = buffer()->getMacro(name, *this, false) ?
-		MathAtom(new MathMacro(buffer(), name)) : createInsetMath(name, buffer());
+	bool const ert_macro = !buffer()->getMacro(name, *this, false);
+	MathAtom atom = ert_macro ? createInsetMath(name, buffer())
+				  : MathAtom(new MathMacro(buffer(), name));
 
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;
@@ -1454,7 +1455,6 @@ bool Cursor::macroModeClose()
 	bool keep_mathmode = it != words.end() && (it->second.inset == "font"
 						|| it->second.inset == "oldfont"
 						|| it->second.inset == "mbox");
-	bool ert_macro = atomAsMacro && !atomAsMacro->macro();
 
 	if (in && in->currentMode() == Inset::TEXT_MODE
 	    && atom.nucleus()->currentMode() == Inset::MATH_MODE
