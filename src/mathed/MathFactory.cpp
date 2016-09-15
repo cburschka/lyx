@@ -387,7 +387,7 @@ bool ensureMath(WriteStream & os, bool needs_mathmode, bool macro,
 			brace = true;
 		}
 		os.textMode(true);
-	} else if (macro && brace && !textmode_macro) {
+	} else if (macro && brace && !needs_mathmode && !textmode_macro) {
 		// This is a user defined macro, not a MathMacro, so we
 		// cannot be sure what mode is needed. We leave it in the
 		// same environment it was entered by closing either \lyxmathsym
