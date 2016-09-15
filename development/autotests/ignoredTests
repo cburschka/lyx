@@ -56,7 +56,11 @@ export/doc/(ja/|)MergedManuals_xhtml
 # Dedicated test samples that don't need testing in all variants:
 # ===============================================================
 
-# Tests for lib/unicodesymbols -> only test export to 8-bit LaTeX
-check_load/export/Unicode-characters/.*
-lyx2lyx/export/Unicode-characters/.*
-export/export/Unicode-character.*(lyx..|xhtml)
+# Dedicated test samples for LaTeX:
+# 
+# don't check loading
+check_load/export/latex/.*
+# don't check lyx2lyx
+lyx2lyx/export/latex/.*
+# don't check export to other LyX versions or HTML
+export/export/latex.*(lyx..|xhtml)

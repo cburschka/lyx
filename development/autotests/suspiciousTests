@@ -19,8 +19,8 @@ Sublabel: todo
 # + language nesting problem (may disappear after completed translation)
 export/doc/(de/|fr/)Customization_.*_systemF
 
-# Probably language mess
-export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+# Error in Japanese document if LyX-logo is preceded by foreign language
+export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3))
 
 # Missing characters with Latin Modern Unicode:
 # 0000 NULL           (where does this come from?)
@@ -65,6 +65,14 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
+# dedicated tests that fail with:
+# could not make dir "/usr/local/src/lyxtest/autotests/out-home/AbC_1zG2wo/latex/Unicode-characters" at /usr/local/src/lyx/development/autotests/lyxStatus.pm line 97.
+# Called stack
+# (0) lyxStatus::diestack() called from "/usr/local/src/lyx/development/autotests/useSystemFonts.pl":154
+# CMake Error at /usr/local/src/lyx/development/autotests/export.cmake:49 (message):
+#  Export failed while converting
+export/export/latex/Unicode-characters.*
+
 
 Sublabel: lyxbugs
 #
@@ -73,9 +81,9 @@ Sublabel: lyxbugs
 #9633 Language nesting and polyglossia
 export/doc/(nb|sk)/Intro.*systemF
 # in index insets
-export/export/languagenesting_index_inset_.*_systemF
+export/export/latex/languagenesting_index_inset_.*_systemF
 # in enumerate and lyxcode
-export/export/languagenesting_enumerate_and_lyxcode.*_systemF
+export/export/latex/languagenesting_enumerate_and_lyxcode.*_systemF
 # these instances may disappear after completed translation
 export/examples/fr/linguistics_.*_systemF
 export/doc/(de/|fr/)Customization_.*_systemF
@@ -101,7 +109,7 @@ export/export/WrongDfnTagHandling_xhtml
 
 #10371 Compilation error if longest label marker in labeling style
 # contains underscores etc.
-export/export/LongestLabelWithUnderscore_[^x].*
+export/export/latex/LongestLabelWithUnderscore.*
 
 Sublabel: ert
 #
@@ -115,7 +123,7 @@ export/doc/(de|es|fr)/Additional_pdf4_texF
 # Unicode point > 256 lead to errors with 8-bit fonts
 # (We keep this option for power users setting Unicode fonts in the preamble
 # or document class file).
-export/export/utf8-plain-with-tex-fonts_.*_texF
+export/export/latex/utf8-plain-with-tex-fonts_.*_texF
 
 Sublabel: texissues
 #
@@ -199,7 +207,7 @@ export/doc/(ru|uk)/Intro_(dvi3|pdf5)_systemF
 # Without the Czech or Slovak text it compiles
 # No problem with inserted German (or other foreign language) text
 # No problem if the table is Slovak, too
-export/export/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
+export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 
 
 Sublabel: attic

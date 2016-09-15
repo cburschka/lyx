@@ -1,4 +1,21 @@
-# Languages cannot be in regex as .*, therefore they have to be explicitly named
-# This is due to our implementation in creating different lists for different languages
+# Regular expressions for tests that are most likely "wontfix" 
+# or "sep" (someone elses problem)
+#
+# Tests matching here AND in "invertedTests" get the label "suspended"
+# and the test-feature 'inverted', i.e. they are reported as failing if 
+# the export works without error.
+#
+# Patterns will be automatically enclosed with '^' and '$'.
+#
+# Languages cannot be in the pattern as .*. Therefore they have to be
+# explicitly named. This is due to our implementation creating different
+# lists for different languages.
+##############################################################################
+
+# XeTeX/LuaTeX with TeX fonts is a rarely used combination and not properly 
+# supported by many packages. -> Failures are mostly due to LaTeX problems.
 .*(|de|es|fr|he|hu|id|ko|ru|uk|zh_CN)/.*(dvi3|pdf4|pdf5)_texF
+
+# Files in the attic are kept for reference and conversion tests.
+# Failures are usually due to new package versions and "wontfix".
 .*/attic/(eu|id|it|pl|sk)_.*

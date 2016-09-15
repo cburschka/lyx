@@ -1,7 +1,8 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 503
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
+\save_transient_properties true
 \origin unavailable
 \textclass scrbook
 \begin_preamble
@@ -48,8 +49,9 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
-\default_output_format default
+\default_output_format pdf5
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -724,7 +726,7 @@ There are more possibilities how to activate revision information in our
 \lang english
 \SpecialChar LyX
  supports directly:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -879,7 +881,7 @@ file.lyx
 
 .
  Supported flags are:
-\begin_inset Separator parbreak
+\begin_inset Separator latexpar
 \end_inset
 
 

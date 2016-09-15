@@ -1,7 +1,8 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 503
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
+\save_transient_properties true
 \origin unavailable
 \textclass article
 \use_default_options false
@@ -20,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -87,9 +89,9 @@
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\output_changes false
 \html_be_strict true
 \end_header
 
@@ -98,6 +100,7 @@
 \begin_layout Standard
 Remove this inserted Slovak text 
 \begin_inset Branch slovak
+inverted 0
 status open
 
 \begin_layout Standard
@@ -117,6 +120,7 @@ Deutscher Text
 \lang english
  is non-problematic.
 \begin_inset Branch czech
+inverted 0
 status open
 
 \begin_layout Standard
@@ -197,7 +201,8 @@ This is the minimal table example.
 
 \begin_layout Standard
 Encoding switches are not to blame.
- Rather an incompatibility of array or multirow packages with Babels slovak.ldf.
+ Rather an incompatibility of array or multirow packages with Babels slovak.ldf
+ and czech.ldf.
 \end_layout
 
 \end_body
