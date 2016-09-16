@@ -264,63 +264,77 @@
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLabel" name="citationStyleLA">
-          <property name="text">
-           <string>Citation st&amp;yle:</string>
-          </property>
-          <property name="buddy">
-           <cstring>citationStyleCO</cstring>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="citationStyleLA">
+            <property name="text">
+             <string>Citation st&amp;yle:</string>
+            </property>
+            <property name="buddy">
+             <cstring>citationStyleCO</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="textBeforeLA">
+            <property name="text">
+             <string>Text &amp;before:</string>
+            </property>
+            <property name="buddy">
+             <cstring>textBeforeED</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QComboBox" name="citationStyleCO">
-          <property name="toolTip">
-           <string>Natbib citation style to use</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QComboBox" name="citationStyleCO">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Natbib citation style to use</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLineEdit" name="textBeforeED">
+              <property name="toolTip">
+               <string>Text to place before citation</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="textAfterLA">
+              <property name="text">
+               <string>&amp;Text after:</string>
+              </property>
+              <property name="buddy">
+               <cstring>textAfterED</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="textAfterED">
+              <property name="toolTip">
+               <string>Text to place after citation</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
       <item row="1" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QLabel" name="textBeforeLA">
-          <property name="text">
-           <string>Text &amp;before:</string>
-          </property>
-          <property name="buddy">
-           <cstring>textBeforeED</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="textBeforeED">
-          <property name="toolTip">
-           <string>Text to place before citation</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="textAfterLA">
-          <property name="text">
-           <string>&amp;Text after:</string>
-          </property>
-          <property name="buddy">
-           <cstring>textAfterED</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="textAfterED">
-          <property name="toolTip">
-           <string>Text to place after citation</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
        <layout class="QHBoxLayout">
         <property name="spacing">
          <number>6</number>
