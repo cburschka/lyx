@@ -44,6 +44,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="toolTip">
+        <string>Select the fields on which the filter applies</string>
+       </property>
        <property name="maxVisibleItems">
         <number>16</number>
        </property>
@@ -68,6 +71,9 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="toolTip">
+        <string>Select the entry types on which the filter applies</string>
+       </property>
        <property name="insertPolicy">
         <enum>QComboBox::NoInsert</enum>
        </property>
@@ -83,6 +89,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="searchOptionsPB">
+       <property name="toolTip">
+        <string>Click for more filter options</string>
+       </property>
        <property name="text">
         <string>O&amp;ptions</string>
        </property>
@@ -246,6 +255,9 @@
          <property name="acceptDrops">
           <bool>false</bool>
          </property>
+         <property name="toolTip">
+          <string/>
+         </property>
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -298,7 +310,7 @@
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Natbib citation style to use</string>
+             <string>Citation style to use, if different styles are provided</string>
             </property>
            </widget>
           </item>
@@ -307,7 +319,7 @@
             <item>
              <widget class="QLineEdit" name="textBeforeED">
               <property name="toolTip">
-               <string>Text to place before citation</string>
+               <string>Text that precedes the reference (e.g., &quot;cf.&quot;)</string>
               </property>
              </widget>
             </item>
@@ -324,7 +336,7 @@
             <item>
              <widget class="QLineEdit" name="textAfterED">
               <property name="toolTip">
-               <string>Text to place after citation</string>
+               <string>Text that follows the reference (e.g., pages)</string>
               </property>
              </widget>
             </item>
@@ -367,7 +379,7 @@
         <item>
          <widget class="QCheckBox" name="forceuppercaseCB">
           <property name="toolTip">
-           <string>Force upper case in citation</string>
+           <string>Force upper case in names (&quot;Del Piero&quot;, not &quot;del Piero&quot;)</string>
           </property>
           <property name="text">
            <string>Force upcas&amp;ing</string>
@@ -377,7 +389,7 @@
         <item>
          <widget class="QCheckBox" name="fulllistCB">
           <property name="toolTip">
-           <string>List all authors</string>
+           <string>Always list all authors (rather than using &quot;et al.&quot;)</string>
           </property>
           <property name="text">
            <string>All aut&amp;hors</string>

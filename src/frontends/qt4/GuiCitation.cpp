@@ -104,7 +104,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	filter_->setAutoHideButton(FancyLineEdit::Right, true);
 #endif
 #if QT_VERSION >= 0x040700
-	filter_->setPlaceholderText(qt_("Filter available"));
+	filter_->setPlaceholderText(qt_("All avail. citations"));
 #endif
 
 	filterBarL->addWidget(filter_, 0);
@@ -368,9 +368,11 @@ void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 {
 	if (!idx.isValid() || bi.empty()) {
 		infoML->document()->clear();
+		infoML->setToolTip(qt_("Displays a sketchy preview if a citation is selected above"));
 		return;
 	}
 
+	infoML->setToolTip(qt_("Sketchy preview of the selected citation"));
 	QString const keytxt = toqstr(
 		bi.getInfo(qstring_to_ucs4(idx.data().toString()), documentBuffer(), true));
 	infoML->document()->setHtml(keytxt);
@@ -479,8 +481,8 @@ void GuiCitation::regexChanged()
 void GuiCitation::updateFilterHint()
 {
 	QString const hint = instant_->isChecked() ?
-		qt_("Enter the text to search for") :
-		qt_("Enter the text to search for and press Enter");
+		qt_("Enter string to filter the list of available citations") :
+		qt_("Enter string to filter the list of available citations and press <Enter>");
 	filter_->setToolTip(hint);
 }
 
