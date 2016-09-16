@@ -3,9 +3,9 @@
 # Patterns will be automatically enclosed with '^' and '$'.
 # Matching tests get the label "inverted"
 # or (if also matching a pattern in "suspendedTests") "suspended".
-# They get also the test-feature 'inverted', i.e.
+# They get also the test-property 'WILL_FAIL', i.e.
 # they are reported as failing if the export works without error.
-
+# https://cmake.org/cmake/help/v3.0/prop_test/WILL_FAIL.html
 
 Sublabel: todo
 #

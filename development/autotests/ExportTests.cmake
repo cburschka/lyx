@@ -277,7 +277,7 @@ assignLabelDepth(1 "unreliable" "inverted")
 assignLabelDepth(2 "suspended")
 assignLabelDepth(-1 "examples" "manuals" "mathmacros" "templates" "autotests")
 
-loadTestList(suspiciousTests suspiciousTests 7)
+loadTestList(invertedTests invertedTests 7)
 loadTestList(ignoredTests ignoredTests 0)
 loadTestList(suspendedTests suspendedTests 6)
 loadTestList(unreliableTests unreliableTests 5)
@@ -318,7 +318,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
     foreach(_lyx_format_num 16 21 22)
       set(TestName "export/${libsubfolder}/${f}_lyx${_lyx_format_num}")
       set(mytestlabel ${testlabel} "lyx2lyx" "load")
-      maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+      maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
         add_test(NAME ${TestName}
           WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -343,7 +343,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
       # For use of lyx2lyx we need the python executable
       set(mytestlabel ${lyx2lyxtestlabel})
       set(TestName "lyx2lyx/${libsubfolder}/${f}")
-      maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+      maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
       if(TestName)
         add_test(NAME ${TestName}
           WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -359,7 +359,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
     set(loadtestlabel "load")
     set(mytestlabel ${loadtestlabel})
     set(TestName "check_load/${libsubfolder}/${f}")
-    maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+    maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
     if(TestName)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
@@ -387,7 +387,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           set(TestName "export/${libsubfolder}/${f}_${format}_${fonttype}")
         endif()
         set(mytestlabel ${testlabel})
-        maketestname(TestName inverted suspiciousTests ignoredTests unreliableTests mytestlabel)
+        maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
         if(TestName)
           add_test(NAME ${TestName}
             WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"

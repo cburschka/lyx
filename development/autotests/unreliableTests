@@ -10,10 +10,10 @@
 
 
 Sublabel: nonstandard
-# ===================
+#####################
 # Documents with additional requirements,
 # e.g. a class or package file not in TeXLive.
-# TODO: rename to "extra"?
+# TODO: rename to "extra" or "exotic"?
 
 export/templates/IUCr-article_(dvi|pdf).*
 # does not work with pdflatex, lualatex (PDF) or XeTeX (postscript specials?).
@@ -47,6 +47,7 @@ export/templates/IUCr-article_pdf4_systemF
 export/templates/ACM-siggraph_(dvi|pdf).*
 
 Sublabel: erratic
+#################
 # Tests depending on local configuration, or the phase of the moon.
 
 # for unknonwn reasons, seminar fails at some places:
@@ -57,8 +58,8 @@ export/doc/es/Customization_pdf4_texF
 
 
 Sublabel: varying_versions
-# ========================
-# Test depending on TeX distribution, package versions or OS
+##########################
+# Test depending on TeX distribution, package versions or OS.
 
 # document class aastex.cls replaced by aastex6.cls (v.1 2016/02/16)
 # in CTAN and TeXLive in march 2016
@@ -69,7 +70,7 @@ export/examples/aas_sample_(dvi|pdf).*
 
 
 Sublabel: wrong_output
-# ====================
+######################
 # Export does not fail but the resulting document has errors.
 #
 # These tests are actually not "unreliable" (different result for different
@@ -99,7 +100,7 @@ export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
 
 # The following document mixes inTitle layouts and leads to
 # likely unintended output. See #10347
-export/mixing_inTitle_layouts.lyx
+export/export/mixing_inTitle_layouts(pdf|dvi).*
 
 # Characters with accents are not output
 # Reported to LuaTeX mailing list here:
