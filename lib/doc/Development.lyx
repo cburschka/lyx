@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,7 +25,6 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 1
@@ -5179,6 +5178,83 @@ No.
 Documentation policies
 \end_layout
 
+\begin_layout Subsection
+Rules
+\end_layout
+
+\begin_layout Standard
+There are 6
+\begin_inset space ~
+\end_inset
+
+rules in editing the docs:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:If-you-are"
+
+\end_inset
+
+If you are not the maintainer of a doc file or a chapter/section, you MUST
+ use change tracking so that the maintainer could review your changes
+\end_layout
+
+\begin_layout Enumerate
+Respect the formatting of the document.
+ The different files use different formatting styles.
+ That is OK and has historic reasons nobody fully knows ;-).
+ But it is important to be consistent within one file.
+\end_layout
+
+\begin_layout Enumerate
+All changes you make to a file in one language MUST also go the file in
+ the other actively maintained languages.
+ Normally the maintainer does this for you, if you are the maintainer, you
+ must do this by copying or changing the changed or added text to the other
+ files so that the translators sees the blue underlined text and know what
+ they have to translate and what was changed.
+\end_layout
+
+\begin_layout Enumerate
+You MUST assure that the document is compilable as 
+\begin_inset Quotes eld
+\end_inset
+
+PDF (pdflatex)
+\begin_inset Quotes erd
+\end_inset
+
+ after your changes.
+\end_layout
+
+\begin_layout Enumerate
+All fixes (typos, compilation fixes, updates info etc.) go at first into
+ the current GIT branch because the user should benefit from all fixes with
+ every minor release.
+ Feel free to commit directly to branch as long as you follow rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:If-you-are"
+
+\end_inset
+
+.
+ You can immediately commit to master as well.
+\end_layout
+
+\begin_layout Enumerate
+The fileformat of a file must not be changed unless you document a new feature
+ in LyX that requires a new fileformat.
+ The reason for this rule is to keep it easy for the doc maintainers to
+ port/backport changes to from master/branch.
+\end_layout
+
 \begin_layout Standard
 The main documentation consists of these files:
 \end_layout
@@ -5271,47 +5347,6 @@ Customization.lyx this manual covers information how to customize \SpecialChar L
  If you do this please assure that your information are given for all OSes
  and \SpecialChar LaTeX
  distributions (meaning be as objective as possible).
-\end_layout
-
-\begin_layout Standard
-There are only 4
-\begin_inset space ~
-\end_inset
-
-rules in editing the docs:
-\end_layout
-
-\begin_layout Enumerate
-If you are not the maintainer of a doc file or a chapter/section, you MUST
- use change tracking so that the maintainer could review your changes
-\end_layout
-
-\begin_layout Enumerate
-Respect the formatting of the document.
- The different files use different formatting styles.
- That is OK and has historic reasons nobody fully knows ;-).
- But it is important to be consistent within one file.
-\end_layout
-
-\begin_layout Enumerate
-All changes you make to a file in one language MUST also go the file in
- the other actively maintained languages.
- Normally the maintainer does this for you, if you are the maintainer, you
- must do this by copying or changing the changed or added text to the other
- files so that the translators sees the blue underlined text and know what
- they have to translate and what was changed.
-\end_layout
-
-\begin_layout Enumerate
-You MUST assure that the document is compilable as 
-\begin_inset Quotes eld
-\end_inset
-
-PDF (pdflatex)
-\begin_inset Quotes erd
-\end_inset
-
- after your changes.
 \end_layout
 
 \end_body
