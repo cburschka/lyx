@@ -16,6 +16,7 @@
 
 #include "GuiCitation.h"
 
+#include "GuiApplication.h"
 #include "GuiSelectionManager.h"
 #include "LyXToolBox.h"
 #include "qt_helpers.h"
@@ -34,6 +35,7 @@
 #include "support/lstrings.h"
 
 #include <QCloseEvent>
+#include <QMenu>
 #include <QSettings>
 #include <QShowEvent>
 #include <QVariant>
@@ -93,6 +95,35 @@ GuiCitation::GuiCitation(GuiView & lv)
 {
 	setupUi(this);
 
+	// The filter bar
+	filter_ = new FancyLineEdit(this);
+#if QT_VERSION >= 0x040600
+	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
+	filter_->setButtonVisible(FancyLineEdit::Right, true);
+	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
+	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+#endif
+#if QT_VERSION >= 0x040700
+	filter_->setPlaceholderText(qt_("Filter available"));
+#endif
+
+	filterBarL->addWidget(filter_, 0);
+	findKeysLA->setBuddy(filter_);
+
+	// Add search options as button menu
+	regexp_ = new QAction(qt_("Regular e&xpression"), this);
+	regexp_->setCheckable(true);
+	casesense_ = new QAction(qt_("Case se&nsitive"), this);
+	casesense_->setCheckable(true);
+	instant_ = new QAction(qt_("Search as you &type"), this);
+	instant_->setCheckable(true);
+
+	QMenu * searchOpts = new QMenu(this);
+	searchOpts->addAction(regexp_);
+	searchOpts->addAction(casesense_);
+	searchOpts->addAction(instant_);
+	searchOptionsPB->setMenu(searchOpts);
+
 	connect(citationStyleCO, SIGNAL(activated(int)),
 		this, SLOT(on_citationStyleCO_currentIndexChanged(int)));
 	connect(fulllistCB, SIGNAL(clicked()),
@@ -103,8 +134,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(updateStyles()));
 	connect(textAfterED, SIGNAL(textChanged(QString)),
 		this, SLOT(updateStyles()));
-	connect(findLE, SIGNAL(returnPressed()),
-		this, SLOT(on_searchPB_clicked()));
 	connect(textBeforeED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
 	connect(textAfterED, SIGNAL(returnPressed()),
@@ -119,7 +148,20 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(selectionManager, SIGNAL(okHook()),
 		this, SLOT(on_okPB_clicked()));
 
-	setFocusProxy(availableLV);
+	connect(filter_, SIGNAL(rightButtonClicked()),
+		this, SLOT(resetFilter()));
+	connect(filter_, SIGNAL(textEdited(QString)),
+		this, SLOT(filterChanged(QString)));
+	connect(filter_, SIGNAL(returnPressed()),
+		this, SLOT(filterPressed()));
+	connect(regexp_, SIGNAL(triggered()),
+		this, SLOT(regexChanged()));
+	connect(casesense_, SIGNAL(triggered()),
+		this, SLOT(caseChanged()));
+	connect(instant_, SIGNAL(triggered(bool)),
+		this, SLOT(instantChanged(bool)));
+
+	setFocusProxy(filter_);
 }
 
 
@@ -152,39 +194,9 @@ void GuiCitation::applyView()
 
 void GuiCitation::showEvent(QShowEvent * e)
 {
-	findLE->clear();
+	filter_->clear();
 	availableLV->setFocus();
-
-	// Set the minimal size of the QToolbox. Without this, the size of the
-	// QToolbox is only determined by values in the ui file (e.g. computed by
-	// qtcreator) and therefore causes portability and localisation issues. Note
-	// that the page widgets must have a layout with layoutSizeContraint =
-	// SetMinimumSize or similar.  KNOWN ISSUE: the calculations are incorrect
-	// the first time the dialog is shown. This problem is mitigated by the fact
-	// that LyX remembers the dialog sizes between sessions.
-	QSize minimum_size = QSize(0,0);
-	// Compute the max of the minimal sizes of the pages
-	QWidget * page;
-	for (int i = 0; (page = citationTB->widget(i)); ++i)
-		minimum_size = minimum_size.expandedTo(page->minimumSizeHint());
-	// Add the height of the tabs
-	if (citationTB->currentWidget())
-		minimum_size.rheight() += citationTB->height() -
-			citationTB->currentWidget()->height();
-	citationTB->setMinimumSize(minimum_size);
-
 	DialogView::showEvent(e);
-}
-
-
-void GuiCitation::on_citationTB_currentChanged(int i)
-{
-	if (i == 0)
-		findLE->setFocus();
-	else if (citationStyleCO->isEnabled())
-		citationStyleCO->setFocus();
-	else
-		textAfterED->setFocus();
 }
 
 
@@ -212,6 +224,7 @@ void GuiCitation::on_applyPB_clicked()
 void GuiCitation::on_restorePB_clicked()
 {
 	init();
+	updateFilterHint();
 }
 
 
@@ -390,8 +403,9 @@ void GuiCitation::findText(QString const & text, bool reset)
 	else
 		entry_type = entries[index];
 
-	bool const case_sentitive = caseCB->checkState();
-	bool const reg_exp = regexCB->checkState();
+	bool const case_sentitive = casesense_->isChecked();
+	bool const reg_exp = regexp_->isChecked();
+
 	findKey(bi, text, onlyKeys, field, entry_type,
 	               case_sentitive, reg_exp, reset);
 	//FIXME
@@ -405,13 +419,13 @@ void GuiCitation::findText(QString const & text, bool reset)
 
 void GuiCitation::on_fieldsCO_currentIndexChanged(int /*index*/)
 {
-	findText(findLE->text(), true);
+	findText(filter_->text(), true);
 }
 
 
 void GuiCitation::on_entriesCO_currentIndexChanged(int /*index*/)
 {
-	findText(findLE->text(), true);
+	findText(filter_->text(), true);
 }
 
 
@@ -425,43 +439,58 @@ void GuiCitation::on_citationStyleCO_currentIndexChanged(int index)
 }
 
 
-void GuiCitation::on_findLE_textChanged(const QString & text)
+void GuiCitation::filterChanged(const QString & text)
 {
-	bool const searchAsWeGo = (asTypeCB->checkState() == Qt::Checked);
-	searchPB->setDisabled(text.isEmpty() || searchAsWeGo);
 	if (!text.isEmpty()) {
-		if (searchAsWeGo)
-			findText(findLE->text());
+		if (instant_->isChecked())
+			findText(filter_->text());
 		return;
 	}
-	findText(findLE->text());
-	findLE->setFocus();
-}
-
-void GuiCitation::on_searchPB_clicked()
-{
-	findText(findLE->text(), true);
+	findText(filter_->text());
+	filter_->setFocus();
 }
 
 
-void GuiCitation::on_caseCB_stateChanged(int)
+void GuiCitation::filterPressed()
 {
-	findText(findLE->text());
+	findText(filter_->text(), true);
 }
 
 
-void GuiCitation::on_regexCB_stateChanged(int)
+void GuiCitation::resetFilter()
 {
-	findText(findLE->text());
+	filter_->setText(QString());
+	findText(filter_->text(), true);
 }
 
 
-void GuiCitation::on_asTypeCB_stateChanged(int)
+void GuiCitation::caseChanged()
 {
-	bool const searchAsWeGo = (asTypeCB->checkState() == Qt::Checked);
-	searchPB->setDisabled(findLE->text().isEmpty() || searchAsWeGo);
-	if (searchAsWeGo)
-		findText(findLE->text(), true);
+	findText(filter_->text());
+}
+
+
+void GuiCitation::regexChanged()
+{
+	findText(filter_->text());
+}
+
+
+void GuiCitation::updateFilterHint()
+{
+	QString const hint = instant_->isChecked() ?
+		qt_("Enter the text to search for") :
+		qt_("Enter the text to search for and press Enter");
+	filter_->setToolTip(hint);
+}
+
+
+void GuiCitation::instantChanged(bool checked)
+{
+	if (checked)
+		findText(filter_->text(), true);
+
+	updateFilterHint();
 }
 
 
@@ -786,11 +815,11 @@ void GuiCitation::saveSession() const
 	Dialog::saveSession();
 	QSettings settings;
 	settings.setValue(
-		sessionKey() + "/regex", regexCB->isChecked());
+		sessionKey() + "/regex", regexp_->isChecked());
 	settings.setValue(
-		sessionKey() + "/casesensitive", caseCB->isChecked());
+		sessionKey() + "/casesensitive", casesense_->isChecked());
 	settings.setValue(
-		sessionKey() + "/autofind", asTypeCB->isChecked());
+		sessionKey() + "/autofind", instant_->isChecked());
 }
 
 
@@ -798,12 +827,10 @@ void GuiCitation::restoreSession()
 {
 	Dialog::restoreSession();
 	QSettings settings;
-	regexCB->setChecked(
-		settings.value(sessionKey() + "/regex").toBool());
-	caseCB->setChecked(
-		settings.value(sessionKey() + "/casesensitive").toBool());
-	asTypeCB->setChecked(
-		settings.value(sessionKey() + "/autofind").toBool());
+	regexp_->setChecked(settings.value(sessionKey() + "/regex").toBool());
+	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
+	instant_->setChecked(settings.value(sessionKey() + "/autofind").toBool());
+	updateFilterHint();
 }
 
 
