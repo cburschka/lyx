@@ -65,14 +65,6 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
-# dedicated tests that fail with:
-# could not make dir "/usr/local/src/lyxtest/autotests/out-home/AbC_1zG2wo/latex/Unicode-characters" at /usr/local/src/lyx/development/autotests/lyxStatus.pm line 97.
-# Called stack
-# (0) lyxStatus::diestack() called from "/usr/local/src/lyx/development/autotests/useSystemFonts.pl":154
-# CMake Error at /usr/local/src/lyx/development/autotests/export.cmake:49 (message):
-#  Export failed while converting
-export/export/latex/Unicode-characters.*
-
 
 Sublabel: lyxbugs
 #

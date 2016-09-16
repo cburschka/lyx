@@ -2739,69 +2739,77 @@
 #
 # miscellaneous symbols
 #
-0x2605 "\\FiveStar"               "bbding" "" "\\bigstar" "amssymb" # BLACK STAR
-0x2606 "\\FiveStarOpen"           "bbding" "" # WHITE STAR
-0x260c "\\conjunction"            "wasysym" "" # CONJUNCTION = alchemical symbol for day
-0x260d "\\opposition"             "wasysym" "" #OPPOSITION
-0x260e "\\Telefon"                "marvosym" "" # BLACK TELEPHON
-0x2610 "\\Square"                 "wasysym" "" "\\Square" "wasysym" # BALLOT BOX
-0x2611 "\\CheckedBox"             "wasysym" "" "\\CheckedBox" "wasysym" # BALLOT BOX WITH CHECK
-0x2612 "\\XBox"                   "wasysym" "" "\\XBox" "wasysym" # BALLOT BOX WITH X
-0x261a "\\HandCuffLeft"           "bbding" "" # BLACK LEFT POINTING INDEX
-0x261b "\\HandCuffRight"          "bbding" "" # BLACK RIGHT POINTING INDEX
-0x261c "\\HandLeft"               "bbding" "" # WHITE LEFT POINTING INDEX
-0x261e "\\HandRight"              "bbding" "" # WHITE RIGHT POINTING INDEX
-0x2622 "\\Radioactivity"          "marvosym" "" # RADIOACTIVE SIGN
-0x2623 "\\Biohazard"              "marvosym" "" # BIOHAZARD SIGN
-0x2625 "\\Ankh"                   "marvosym" "" # ANKH
-0x262f "\\Yinyang"                "marvosym" "" # YIN YANG
-0x2639 "\\frownie"                "wasysym" "" "\\frownie" "wasysym" # WHITE FROWNING FACE
-0x263a "\\smiley"                 "wasysym" "" "\\smiley" "wasysym" # WHITE SMILING FACE
-0x263b "\\blacksmiley"            "wasysym" "" "\\blacksmiley" "wasysym" # BLACK SMILING FACE
-0x263c "\\sun"                    "wasysym" "" "\\sun" "wasysym" # WHITE SUN WITH RAYS
-0x263d "\\rightmoon"              "wasysym" "" "\\rightmoon" "wasysym" # FIRST QUARTER MOON
-0x263e "\\leftmoon"               "wasysym" "" "\\leftmoon" "wasysym" # LAST QUARTER MOON
-0x263f "\\mercury"                "wasysym" "" "\\mercury" "wasysym" # MERCURY
-0x2640 "\\female"                 "wasysym" "" "\\female" "wasysym" # FEMALE SIGN
-0x2641 "\\earth"                  "wasysym" "" "\\earth" "wasysym" # EARTH
-0x2642 "\\male"                   "wasysym" "" "\\male" "wasysym" # MALE SIGN
-0x2643 "\\jupiter"                "wasysym" "" "\\jupiter" "wasysym" # JUPITER
-0x2644 "\\saturn"                 "wasysym" "" "\\saturn" "wasysym" # SATURN
-0x2645 "\\uranus"                 "wasysym" "" "\\uranus" "wasysym" # URANUS
-0x2646 "\\neptune"                "wasysym" "" "\\neptune" "wasysym" # NEPTUNE
-0x2647 "\\pluto"                  "wasysym" "" "\\pluto" "wasysym" # PLUTO
-0x2648 "\\aries"                  "wasysym" "" "\\aries" "wasysym" # ARIES
-0x2649 "\\taurus"                 "wasysym" "" "\\taurus" "wasysym" # TAURUS
-0x264a "\\gemini"                 "wasysym" "" "\\gemini" "wasysym" # GEMINI
-0x264b "\\cancer"                 "wasysym" "" "\\cancer" "wasysym" # CANCER
-0x264c "\\leo"                    "wasysym" "" "\\leo" "wasysym" # LEO
-0x264d "\\virgo"                  "wasysym" "" "\\virgo" "wasysym" # VIRGO
-0x264e "\\libra"                  "wasysym" "" "\\libra" "wasysym" # LIBRA
-0x264f "\\scorpio"                "wasysym" "" "\\scorpio" "wasysym" # SCORPIO
-0x2650 "\\sagittarius"            "wasysym" "" "\\sagittarius" "wasysym" # SAGITTARIUS
-0x2651 "\\capricornus"            "wasysym" "" "\\capricornus" "wasysym" # CAPRICORNUS
-0x2652 "\\aquarius"               "wasysym" "" "\\aquarius" "wasysym" # AQUARIUS
-0x2653 "\\pisces"                 "wasysym" "" "\\pisces" "wasysym" # PISCES
-0x2660 "\\ding{171}"              "pifont" "" "\\spadesuit" # BLACK SPADE SUIT
-0x2661 ""                         "" "" "\\heartsuit" # WHITE HEART SUIT
-0x2662 ""                         "" "" "\\diamondsuit" # WHITE DIAMOND SUIT
-0x2663 "\\ding{168}"              "pifont" "" "\\clubsuit" # BLACK CLUB SUIT
+0x2605 "\\FiveStar"               "bbding" "force=utf8" "\\bigstar" "amssymb" # BLACK STAR
+0x2606 "\\FiveStarOpen"           "bbding" "force=utf8" # WHITE STAR
+0x260c "\\conjunction"            "wasysym" "force=utf8" # CONJUNCTION = alchemical symbol for day
+0x260d "\\opposition"             "wasysym" "force=utf8" #OPPOSITION
+0x260e "\\Telefon"                "marvosym" "force=utf8" # BLACK TELEPHON
+0x2610 "\\Square"                 "wasysym" "force=utf8" "\\Square" "wasysym" # BALLOT BOX
+0x2611 "\\CheckedBox"             "wasysym" "force=utf8" "\\CheckedBox" "wasysym" # BALLOT BOX WITH CHECK
+0x2612 "\\XBox"                   "wasysym" "force=utf8" "\\XBox" "wasysym" # BALLOT BOX WITH X
+#0x2613 ""                         "" "" "" "" # SALTIRE
+#0x2614 ""                         "" "" "" "" # UMBRELLA WITH RAIN DROPS
+0x2615 "\\Coffeecup"              "marvosym" "force=utf8" "" "" # HOT BEVERAGE
+#0x2616 ""                         "" "" "" "" # WHITE SHOGI PIECE
+#0x2617 ""                         "" "" "" "" # BLACK SHOGI PIECE
+#0x2618 ""                         "" "" "" "" # SHAMROCK
+#0x2619 ""                         "" "" "" "" # REVERSED ROTATED FLORAL HEART BULLET
+0x261a "\\HandCuffLeft"           "bbding" "force=utf8" # BLACK LEFT POINTING INDEX
+0x261b "\\HandCuffRight"          "bbding" "force=utf8" # BLACK RIGHT POINTING INDEX
+0x261c "\\HandLeft"               "bbding" "force=utf8" # WHITE LEFT POINTING INDEX
+0x261e "\\HandRight"              "bbding" "force=utf8" # WHITE RIGHT POINTING INDEX
+0x2622 "\\Radioactivity"          "marvosym" "force=utf8" # RADIOACTIVE SIGN
+0x2623 "\\Biohazard"              "marvosym" "force=utf8" # BIOHAZARD SIGN
+0x2625 "\\Ankh"                   "marvosym" "force=utf8" # ANKH
+0x262f "\\Yinyang"                "marvosym" "force=utf8" # YIN YANG
+0x2639 "\\frownie"                "wasysym" "force=utf8" "\\frownie" "wasysym" # WHITE FROWNING FACE
+0x263a "\\smiley"                 "wasysym" "force=utf8" "\\smiley" "wasysym" # WHITE SMILING FACE
+0x263b "\\blacksmiley"            "wasysym" "force=utf8" "\\blacksmiley" "wasysym" # BLACK SMILING FACE
+0x263c "\\sun"                    "wasysym" "force=utf8" "\\sun" "wasysym" # WHITE SUN WITH RAYS
+0x263d "\\rightmoon"              "wasysym" "force=utf8" "\\rightmoon" "wasysym" # FIRST QUARTER MOON
+0x263e "\\leftmoon"               "wasysym" "force=utf8" "\\leftmoon" "wasysym" # LAST QUARTER MOON
+0x263f "\\mercury"                "wasysym" "force=utf8" "\\mercury" "wasysym" # MERCURY
+0x2640 "\\female"                 "wasysym" "force=utf8" "\\female" "wasysym" # FEMALE SIGN
+0x2641 "\\earth"                  "wasysym" "force=utf8" "\\earth" "wasysym" # EARTH
+0x2642 "\\male"                   "wasysym" "force=utf8" "\\male" "wasysym" # MALE SIGN
+0x2643 "\\jupiter"                "wasysym" "force=utf8" "\\jupiter" "wasysym" # JUPITER
+0x2644 "\\saturn"                 "wasysym" "force=utf8" "\\saturn" "wasysym" # SATURN
+0x2645 "\\uranus"                 "wasysym" "force=utf8" "\\uranus" "wasysym" # URANUS
+0x2646 "\\neptune"                "wasysym" "force=utf8" "\\neptune" "wasysym" # NEPTUNE
+0x2647 "\\pluto"                  "wasysym" "force=utf8" "\\pluto" "wasysym" # PLUTO
+0x2648 "\\aries"                  "wasysym" "force=utf8" "\\aries" "wasysym" # ARIES
+0x2649 "\\taurus"                 "wasysym" "force=utf8" "\\taurus" "wasysym" # TAURUS
+0x264a "\\gemini"                 "wasysym" "force=utf8" "\\gemini" "wasysym" # GEMINI
+0x264b "\\cancer"                 "wasysym" "force=utf8" "\\cancer" "wasysym" # CANCER
+0x264c "\\leo"                    "wasysym" "force=utf8" "\\leo" "wasysym" # LEO
+0x264d "\\virgo"                  "wasysym" "force=utf8" "\\virgo" "wasysym" # VIRGO
+0x264e "\\libra"                  "wasysym" "force=utf8" "\\libra" "wasysym" # LIBRA
+0x264f "\\scorpio"                "wasysym" "force=utf8" "\\scorpio" "wasysym" # SCORPIO
+0x2650 "\\sagittarius"            "wasysym" "force=utf8" "\\sagittarius" "wasysym" # SAGITTARIUS
+0x2651 "\\capricornus"            "wasysym" "force=utf8" "\\capricornus" "wasysym" # CAPRICORNUS
+0x2652 "\\aquarius"               "wasysym" "force=utf8" "\\aquarius" "wasysym" # AQUARIUS
+0x2653 "\\pisces"                 "wasysym" "force=utf8" "\\pisces" "wasysym" # PISCES
+0x2660 "\\ding{171}"              "pifont" "force=utf8" "\\spadesuit" # BLACK SPADE SUIT
+0x2661 ""                         "" "force=utf8" "\\heartsuit" # WHITE HEART SUIT
+0x2662 ""                         "" "force=utf8" "\\diamondsuit" # WHITE DIAMOND SUIT
+0x2663 "\\ding{168}"              "pifont" "force=utf8" "\\clubsuit" # BLACK CLUB SUIT
 #0x2664 ""                         "" "" "\\varspadesuit" "txfonts|pxfonts" # WHITE SPADE SUIT
-0x2665 "\\ding{170}"              "pifont" "" "" "" # BLACK HEART SUIT
-0x2666 "\\ding{169}"              "pifont" "" "" "" # BLACK DIAMOND SUIT
+0x2665 "\\ding{170}"              "pifont" "force=utf8" "" "" # BLACK HEART SUIT
+0x2666 "\\ding{169}"              "pifont" "force=utf8" "" "" # BLACK DIAMOND SUIT
 #0x2667 ""                         "" "" "\\varclubsuit" "txfonts|pxfonts" # WHITE CLUB SUIT
 #0x2668 ""                         "" "" "" "" # HOT SPRINGS
-0x2669 "\\quarternote"            "wasysym" "" "\\quarternote" "wasysym" # QUARTER NOTE
+0x2669 "\\quarternote"            "wasysym" "force=utf8" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
-0x266b "\\twonotes"               "wasysym" "" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
+0x266b "\\twonotes"               "wasysym" "force=utf8" "\\twonotes" "wasysym" # BEAMED EIGHTH NOTES
 #0x266c ""                         "" "" "" "" # BEAMED SIXTEENTH NOTES
-0x266d ""                         "" "" "\\flat" "" # MUSIC FLAT SIGN
-0x266e ""                         "" "" "\\natural" "" # MUSIC NATURAL SIGN
-0x266f ""                         "" "" "\\sharp" "" # MUSIC SHARP SIGN
-0x26a2 "\\FemaleFemale"           "marvosym" "" # DOUBLED FEMALE SIGN
-0x26a3 "\\MaleMale"               "marvosym" "" # DOUBLED MALE SIGN
-0x26a4 "\\FemaleMale"             "marvosym" "" # INTERLOCKED FEMALE AND MALE SIGN
-0x26a5 "\\Hermaphrodite"          "marvosym" "" # MALE AND FEMALE SIGN
+0x266d ""                         "" "force=utf8" "\\flat" "" # MUSIC FLAT SIGN
+0x266e ""                         "" "force=utf8" "\\natural" "" # MUSIC NATURAL SIGN
+0x266f ""                         "" "force=utf8" "\\sharp" "" # MUSIC SHARP SIGN
+0x267f "\\Wheelchair"             "marvosym" "force=utf8" "" "" # WHEELCHAIR SYMBOL (marvosym wheelchair looks left but there is only one wheelchair in Unicode)
+0x26a2 "\\FemaleFemale"           "marvosym" "force=utf8" # DOUBLED FEMALE SIGN
+0x26a3 "\\MaleMale"               "marvosym" "force=utf8" # DOUBLED MALE SIGN
+0x26a4 "\\FemaleMale"             "marvosym" "force=utf8" # INTERLOCKED FEMALE AND MALE SIGN
+0x26a5 "\\Hermaphrodite"          "marvosym" "force=utf8" # MALE AND FEMALE SIGN
 #0x26a6 ""                         "" "" "" "" # MALE WITH STROKE SIGN
 #0x26a7 ""                         "" "" "" "" # MALE WITH STROKE AND MALE AND FEMALE SIGN
 #0x26a8 ""                         "" "" "" "" # VERTICAL MALE WITH STROKE SIGN
@@ -2809,8 +2817,8 @@
 #0x26aa ""                         "" "" "" "" # MEDIUM WHITE CIRCLE
 #0x26ab ""                         "" "" "" "" # MEDIUM BLACK CIRCLE
 #0x26ac ""                         "" "" "" "" # MEDIUM SMALL WHITE CIRCLE
-0x26ad "\\textmarried"            "textcomp" "" # MARRIAGE SYMBOL
-0x26ae "\\textdivorced"           "textcomp" "" # DIVORCE SYMBOL
+0x26ad "\\textmarried"            "textcomp" "force=utf8" # MARRIAGE SYMBOL
+0x26ae "\\textdivorced"           "textcomp" "force=utf8" # DIVORCE SYMBOL
 #0x26af ""                         "" "" "" "" # UNMARRIED PARTNERSHIP SYMBOL
 #
 # dingbats
