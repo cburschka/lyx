@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-08-26 12:11+0200\n"
-"PO-Revision-Date: 2016-08-26 10:31+0000\n"
+"POT-Creation-Date: 2016-09-16 10:13+0200\n"
+"PO-Revision-Date: 2016-09-16 08:39+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -886,13 +886,13 @@ msgstr "&Použiť"
 msgid "Close"
 msgstr "Zavrieť"
 
+#: src/frontends/qt4/ui/CitationUi.ui:27
+msgid "&Filter:"
+msgstr "&Filter:"
+
 #: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
 msgstr "Do&stupné Citácie:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:56
-msgid "S&elected Citations:"
-msgstr "&Vybrané Citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:81
 msgid "Click or press Enter to add the selected citation to the list"
@@ -911,32 +911,12 @@ msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:220
-msgid "&Search Citation"
-msgstr "Hľadať &citáciu"
+msgid "Selected &Citations:"
+msgstr "&Vybrané Citácie:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:229
-msgid "Searc&h:"
-msgstr "Hľ&adať:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:242
-msgid ""
-"Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"Vložte text na hľadanie a stlačte Enter alebo kliknite tlačidlo aby hľadanie "
-"začalo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:255
-msgid "Click or press Enter in the search box to search"
-msgstr ""
-"Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie začalo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:258
-msgid "&Search"
-msgstr "Hľada&j"
-
-#: src/frontends/qt4/ui/CitationUi.ui:268
-msgid "Search &field:"
-msgstr "P&riestor hľadania:"
+#: src/frontends/qt4/ui/CitationUi.ui:261
+msgid "Formatting"
+msgstr "Formátovanie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:294
 #: src/frontends/qt4/GuiCitation.cpp:296
@@ -951,22 +931,18 @@ msgstr "Re&gulárny výraz"
 msgid "Case se&nsitive"
 msgstr "Roz&lišovať veľkosť písmen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:329
-msgid "Entry t&ypes:"
-msgstr "&Typy záznamov:"
-
 #: src/frontends/qt4/ui/CitationUi.ui:352
 #: src/frontends/qt4/GuiCitation.cpp:311
 msgid "All entry types"
 msgstr "Všetky typy záznamov"
 
+#: src/frontends/qt4/ui/CitationUi.ui:87
+msgid "O&ptions"
+msgstr "M&ožnosti"
+
 #: src/frontends/qt4/ui/CitationUi.ui:373
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
-
-#: src/frontends/qt4/ui/CitationUi.ui:389
-msgid "For&matting"
-msgstr "&Formátovanie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "Citation st&yle:"
@@ -996,17 +972,17 @@ msgstr "Text, umiestnený za citátom"
 msgid "List all authors"
 msgstr "Vypísať všetkých autorov"
 
-#: src/frontends/qt4/ui/CitationUi.ui:473
-msgid "&Full author list"
-msgstr "Výpis všetkých a&utorov"
+#: src/frontends/qt4/ui/CitationUi.ui:369
+msgid "All aut&hors"
+msgstr "Každý a&utor"
 
 #: src/frontends/qt4/ui/CitationUi.ui:480
 msgid "Force upper case in citation"
 msgstr "Vnútiť veľké písmená do citácie"
 
-#: src/frontends/qt4/ui/CitationUi.ui:483
-msgid "Force u&pper case"
-msgstr "Vnútiť v&eľké písmo"
+#: src/frontends/qt4/ui/CitationUi.ui:359
+msgid "Force upcas&ing"
+msgstr "Vynútiť v&eľké písmo"
 
 #: src/frontends/qt4/ui/CitationUi.ui:504
 #: src/frontends/qt4/ui/DocumentUi.ui:44
@@ -2729,9 +2705,9 @@ msgstr "Výstupný formát"
 msgid "Specify the default output format (for view/update)"
 msgstr "Určite štandardný výstupný formát (pre náhľad/aktualizáciu)"
 
-#: src/frontends/qt4/ui/OutputUi.ui:46
+#: src/frontends/qt4/ui/OutputUi.ui:64
 msgid "De&fault output format:"
-msgstr "Štandardný výstupný &formát:"
+msgstr "Š&tandardný výstup:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
 msgid "LyX Format"
@@ -2770,9 +2746,9 @@ msgstr "&Vlastné makro:"
 msgid "Custom LaTeX preamble macro"
 msgstr "Vlastné makro do preambuly LaTeX-u"
 
-#: src/frontends/qt4/ui/OutputUi.ui:113
+#: src/frontends/qt4/ui/OutputUi.ui:156
 msgid "XHTML Output Options"
-msgstr "Voľby Východzie XHTML"
+msgstr "XHTML Voľby"
 
 #: src/frontends/qt4/ui/OutputUi.ui:122
 msgid "Whether to comply strictly with XHTML 1.1."
@@ -2810,9 +2786,9 @@ msgstr "Obrázky"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: src/frontends/qt4/ui/OutputUi.ui:187
+#: src/frontends/qt4/ui/OutputUi.ui:230
 msgid "Math &image scaling:"
-msgstr "Mat. &mierka obrázku:"
+msgstr "Mat. mierka &obrázku:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:203
 msgid "Scaling factor for images used for math output."
@@ -23314,6 +23290,10 @@ msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
 #: lib/configure.py:641
+msgid "MS Excel Office Open XML"
+msgstr "MS-Excel Office-Open XML"
+
+#: lib/configure.py:641
 msgid "HTML Table (for spreadsheets)"
 msgstr "HTML Tabuľka (pre tabuľkové procesory) "
 
@@ -27325,6 +27305,14 @@ msgstr "Štýl Textu"
 msgid "Keys"
 msgstr "Kľúče"
 
+#: src/frontends/qt4/GuiCitation.cpp:482
+msgid "Enter the text to search for"
+msgstr "Vložte sem hľadaný text"
+
+#: src/frontends/qt4/GuiCitation.cpp:483
+msgid "Enter the text to search for and press Enter"
+msgstr "Vložte text na hľadanie a stlačte Enter"
+
 #: src/frontends/qt4/GuiClipboard.cpp:173
 msgid "LinkBack PDF"
 msgstr "LinkBack PDF"
@@ -27795,9 +27783,9 @@ msgstr "Odrážky"
 msgid "Branches"
 msgstr "Vetvy"
 
-#: src/frontends/qt4/GuiDocument.cpp:1430
-msgid "Format"
-msgstr "Formát"
+#: src/frontends/qt4/GuiDocument.cpp:1447
+msgid "Formats[[output]]"
+msgstr "Výstupné Formáty"
 
 #: src/frontends/qt4/GuiDocument.cpp:1425
 msgid "LaTeX Preamble"
@@ -28245,7 +28233,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiHSpace.h:39
 msgid "Horizontal Space Settings"
-msgstr "Nastavenia Vertikálnej Medzery"
+msgstr "Nastavenia Horizontálnej Medzery"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
@@ -29175,7 +29163,7 @@ msgstr "Symboly"
 
 #: src/frontends/qt4/GuiTabular.h:45
 msgid "Tabular Settings"
-msgstr "Nastavenia Tabuľky"
+msgstr "Tabuľkové Nastavenia"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
@@ -29265,6 +29253,11 @@ msgstr "Skončiť LyX"
 #: src/frontends/qt4/GuiView.cpp:970
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
+
+#: src/frontends/qt4/GuiView.cpp:1196
+#, c-format
+msgid "%1$s lock"
+msgstr "%1$s blokovaný"
 
 #: src/frontends/qt4/GuiView.cpp:1240
 msgid "Welcome to LyX!"
@@ -29686,22 +29679,6 @@ msgstr "DocBook Zdroj"
 msgid "Literate Source"
 msgstr "Zdroj Dokumentácie"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1387
-msgid " (version control, locking)"
-msgstr " (kontrola verzií, blokovanie)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1389
-msgid " (version control)"
-msgstr " (kontrola verzií)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1392
-msgid " (changed)"
-msgstr " (zmenený)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1396
-msgid " (read only)"
-msgstr " (iba pre čítanie)"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:1570
 msgid "Close File"
 msgstr "Zavrieť Súbor"
@@ -29887,6 +29864,10 @@ msgstr "Hľadať"
 #: src/frontends/qt4/PanelStack.cpp:80
 msgid "Clear text"
 msgstr "Text vyprázdniť"
+
+#: src/frontends/qt4/GuiCitation.cpp:107
+msgid "Filter available"
+msgstr "Dostupné filtre"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -30428,18 +30409,18 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:703 src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:705 src/insets/InsetInclude.cpp:731
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
-"Warning: LaTeX export is probably incomplete."
+" LaTeX export is probably incomplete."
 msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-"Upozornenie: LaTeX-ov export asi nie je úplný."
+" LaTeX-ov export asi nie je úplný."
 
-#: src/insets/InsetInclude.cpp:712 src/insets/InsetInclude.cpp:736
-msgid "Export failure"
-msgstr "Exportovanie zlyhalo"
+#: src/insets/InsetInclude.cpp:714 src/insets/InsetInclude.cpp:739
+msgid "Error: "
+msgstr "Chyba: "
 
 #: src/insets/InsetInclude.cpp:786
 msgid "Unsupported Inclusion"
@@ -31163,10 +31144,10 @@ msgstr "žiadna horizontálna línia na zmazanie"
 msgid "No vline to delete"
 msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 
-#: src/mathed/InsetMathGrid.cpp:1788
+#: src/mathed/InsetMathGrid.cpp:1807
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
-msgstr "Neznáme vlastnosti tabuľky '%1$s'"
+msgstr "Neznáma tabuľková vlastnosť '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1435
 #, c-format
@@ -31599,6 +31580,49 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Search Citation"
+#~ msgstr "Hľadať &citáciu"
+
+#~ msgid "Searc&h:"
+#~ msgstr "Hľ&adať:"
+
+#~ msgid "Click or press Enter in the search box to search"
+#~ msgstr ""
+#~ "Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie začalo"
+
+#~ msgid "&Search"
+#~ msgstr "Hľada&j"
+
+#~ msgid "Search &field:"
+#~ msgstr "P&riestor hľadania:"
+
+#~ msgid "Entry t&ypes:"
+#~ msgstr "&Typy záznamov:"
+
+#~ msgid "For&matting"
+#~ msgstr "&Formátovanie"
+
+#~ msgid "&Full author list"
+#~ msgstr "Výpis všetkých a&utorov"
+
+#~ msgid " (version control, locking)"
+#~ msgstr " (kontrola verzií, blokovanie)"
+
+#~ msgid " (version control)"
+#~ msgstr " (kontrola verzií)"
+
+#~ msgid " (changed)"
+#~ msgstr " (zmenený)"
+
+#~ msgid " (read only)"
+#~ msgstr " (iba pre čítanie)"
+
+#~ msgid "Export failure"
+#~ msgstr "Exportovanie zlyhalo"
+
+#~ msgid "Format"
+#~ msgstr "Formát"
 
 #~ msgid "Conversion Failed!"
 #~ msgstr "Konverzia zlyhala!"
@@ -34904,9 +34928,6 @@ msgstr "Neznámy používateľ"
 #~ "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
 #~ "Titul'."
 
-#~ msgid "Formatting"
-#~ msgstr "Formátovanie"
-
 #~ msgid "Text a&fter:"
 #~ msgstr "Te&xt za:"
 
@@ -35142,3 +35163,22 @@ msgstr "Neznámy používateľ"
 #~ "\t-batch    spusti príkazy bez GUI a skonč.\n"
 #~ "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 #~ "Viac informácií nájdete v manuálovej stránke LyXu."
+
+#~ msgid ""
+#~ "Included file `%1$s' was not exported correctly.\n"
+#~ "Warning: LaTeX export is probably incomplete."
+#~ msgstr ""
+#~ "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
+#~ "Upozornenie: LaTeX-ov export asi nie je úplný."
+
+#~ msgid "S&elected Citations:"
+#~ msgstr "&Vybrané Citácie:"
+
+#~ msgid ""
+#~ "Enter the text to search for and press Enter or click the button to search"
+#~ msgstr ""
+#~ "Vložte text na hľadanie a stlačte Enter alebo kliknite tlačidlo aby hľadanie "
+#~ "začalo"
+
+#~ msgid "Force u&pper case"
+#~ msgstr "Vnútiť v&eľké písmo"
