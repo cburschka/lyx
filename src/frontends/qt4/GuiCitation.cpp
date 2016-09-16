@@ -307,7 +307,8 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	citationStyleCO->blockSignals(true);
 
 	// save old index
-	int const oldIndex = citationStyleCO->currentIndex();
+	int const curindex = citationStyleCO->currentIndex();
+	int const oldIndex = (curindex < 0) ? style_ : curindex;
 	citationStyleCO->clear();
 	citationStyleCO->insertItems(0, sty);
 	citationStyleCO->setEnabled(true);
@@ -822,6 +823,8 @@ void GuiCitation::saveSession() const
 		sessionKey() + "/casesensitive", casesense_->isChecked());
 	settings.setValue(
 		sessionKey() + "/autofind", instant_->isChecked());
+	settings.setValue(
+		sessionKey() + "/citestyle", style_);
 }
 
 
@@ -832,6 +835,7 @@ void GuiCitation::restoreSession()
 	regexp_->setChecked(settings.value(sessionKey() + "/regex").toBool());
 	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
 	instant_->setChecked(settings.value(sessionKey() + "/autofind").toBool());
+	style_ = settings.value(sessionKey() + "/citestyle").toInt();
 	updateFilterHint();
 }
 
