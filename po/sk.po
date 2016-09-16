@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-16 10:44+0200\n"
-"PO-Revision-Date: 2016-09-16 08:59+0000\n"
+"POT-Creation-Date: 2016-09-16 14:59+0200\n"
+"PO-Revision-Date: 2016-09-16 14:03+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -305,9 +305,9 @@ msgstr "Prid&ať…"
 msgid "Remove the selected database"
 msgstr "Odstrániť vybranú databázu"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:97
+#: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
-msgstr "Z&mazať"
+msgstr "Zm&azať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
 msgid "Type and Size"
@@ -890,6 +890,10 @@ msgstr "Zavrieť"
 msgid "&Filter:"
 msgstr "&Filter:"
 
+#: src/frontends/qt4/ui/CitationUi.ui:48
+msgid "Select the fields on which the filter applies"
+msgstr "Vyberte políčka na ktoré chcete použiť filter "
+
 #: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
 msgstr "Do&stupné Citácie:"
@@ -923,6 +927,10 @@ msgstr "Formátovanie"
 msgid "All fields"
 msgstr "Všetky políčka"
 
+#: src/frontends/qt4/ui/CitationUi.ui:75
+msgid "Select the entry types on which the filter applies"
+msgstr "Vyberte typy záznamov na ktoré chcete použiť filter"
+
 #: src/frontends/qt4/ui/CitationUi.ui:315
 msgid "Regular e&xpression"
 msgstr "Re&gulárny výraz"
@@ -936,9 +944,13 @@ msgstr "Roz&lišovať veľkosť písmen"
 msgid "All entry types"
 msgstr "Všetky typy záznamov"
 
-#: src/frontends/qt4/ui/CitationUi.ui:87
+#: src/frontends/qt4/ui/CitationUi.ui:93
+msgid "Click for more filter options"
+msgstr "Kliknite sem na viac volieb pre filter"
+
+#: src/frontends/qt4/ui/CitationUi.ui:96
 msgid "O&ptions"
-msgstr "M&ožnosti"
+msgstr "&Možnosti"
 
 #: src/frontends/qt4/ui/CitationUi.ui:373
 msgid "Search as you &type"
@@ -948,41 +960,42 @@ msgstr "V&yhľadávať pri zadávaní"
 msgid "Citation st&yle:"
 msgstr "Štý&l citácie:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:408
-msgid "Natbib citation style to use"
-msgstr "Ktorý natbib štýl citátov použiť"
-
 #: src/frontends/qt4/ui/CitationUi.ui:415
 msgid "Text &before:"
 msgstr "&Text pred:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:425
-msgid "Text to place before citation"
-msgstr "Text, umiestnený pred citátom"
+#: src/frontends/qt4/ui/CitationUi.ui:313
+msgid "Citation style to use, if different styles are provided"
+msgstr "Použitý štýl citácie, v prípade keď je viacej štýlov prístupných"
+
+#: src/frontends/qt4/ui/CitationUi.ui:322
+msgid "Text that precedes the reference (e.g., \"cf.\")"
+msgstr "Text predchádzajúci referencie (napr., \"por.\") "
 
 #: src/frontends/qt4/ui/CitationUi.ui:432
 msgid "&Text after:"
 msgstr "Te&xt za:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:442
-msgid "Text to place after citation"
-msgstr "Text, umiestnený za citátom"
+#: src/frontends/qt4/ui/CitationUi.ui:339
+msgid "Text that follows the reference (e.g., pages)"
+msgstr "Text nasledujúci referencie (napr., strany)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:470
-msgid "List all authors"
-msgstr "Vypísať všetkých autorov"
+#: src/frontends/qt4/ui/CitationUi.ui:382
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+msgstr ""
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
 
 #: src/frontends/qt4/ui/CitationUi.ui:369
 msgid "All aut&hors"
 msgstr "Každý a&utor"
 
-#: src/frontends/qt4/ui/CitationUi.ui:480
-msgid "Force upper case in citation"
-msgstr "Vnútiť veľké písmená do citácie"
-
 #: src/frontends/qt4/ui/CitationUi.ui:359
 msgid "Force upcas&ing"
 msgstr "Vynútiť v&eľké písmo"
+
+#: src/frontends/qt4/ui/CitationUi.ui:392
+msgid "Always list all authors (rather than using \"et al.\")"
+msgstr "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\")"
 
 #: src/frontends/qt4/ui/CitationUi.ui:504
 #: src/frontends/qt4/ui/DocumentUi.ui:44
@@ -2639,7 +2652,7 @@ msgstr "Pr&idať"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:110
 msgid "De&lete"
-msgstr "&Zmazať"
+msgstr "Zm&azať"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:154
 msgid "S&elected:"
@@ -3279,7 +3292,7 @@ msgstr "&Nahrať súbory otvorené v predošlom sedení"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
 msgid "&Clear all session information"
-msgstr "&Zmazať všetky informácie týkajúce sa sedenia"
+msgstr "Zm&azať všetky informácie týkajúce sa sedenia"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
 msgid "Backup && Saving"
@@ -4399,7 +4412,7 @@ msgstr "Zmazať posledný záznam z sekvencie skratky"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
 msgid "&Delete Key"
-msgstr "Z&mazať znak"
+msgstr "Zm&azať znak"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
@@ -27305,13 +27318,23 @@ msgstr "Štýl Textu"
 msgid "Keys"
 msgstr "Kľúče"
 
-#: src/frontends/qt4/GuiCitation.cpp:482
-msgid "Enter the text to search for"
-msgstr "Vložte sem hľadaný text"
+#: src/frontends/qt4/GuiCitation.cpp:371
+msgid "Displays a sketchy preview if a citation is selected above"
+msgstr "Zobrazí náčrtkovitý náhľad hore vybranej citácie"
 
-#: src/frontends/qt4/GuiCitation.cpp:483
-msgid "Enter the text to search for and press Enter"
-msgstr "Vložte text na hľadanie a stlačte Enter"
+#: src/frontends/qt4/GuiCitation.cpp:375
+msgid "Sketchy preview of the selected citation"
+msgstr "Zobrazí náčrtkovitý náhľad vybranej citácie"
+
+#: src/frontends/qt4/GuiCitation.cpp:484
+msgid "Enter string to filter the list of available citations"
+msgstr "Zadajte reťazec na výber z listiny dostupných citácií"
+
+#: src/frontends/qt4/GuiCitation.cpp:485
+msgid ""
+"Enter string to filter the list of available citations and press <Enter>"
+msgstr ""
+"Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
 
 #: src/frontends/qt4/GuiClipboard.cpp:173
 msgid "LinkBack PDF"
@@ -29866,8 +29889,8 @@ msgid "Clear text"
 msgstr "Text vyprázdniť"
 
 #: src/frontends/qt4/GuiCitation.cpp:107
-msgid "Filter available"
-msgstr "Filtrovať dostupné"
+msgid "All avail. citations"
+msgstr "Všetky dostupné citácie"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -31580,6 +31603,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Natbib citation style to use"
+#~ msgstr "Ktorý natbib štýl citátov použiť"
+
+#~ msgid "Text to place before citation"
+#~ msgstr "Text, umiestnený pred citátom"
+
+#~ msgid "Text to place after citation"
+#~ msgstr "Text, umiestnený za citátom"
+
+#~ msgid "Force upper case in citation"
+#~ msgstr "Vnútiť veľké písmená do citácie"
+
+#~ msgid "List all authors"
+#~ msgstr "Vypísať všetkých autorov"
+
+#~ msgid "Filter available"
+#~ msgstr "Filtrovať dostupné"
+
+#~ msgid "Enter the text to search for"
+#~ msgstr "Vložte sem hľadaný text"
+
+#~ msgid "Enter the text to search for and press Enter"
+#~ msgstr "Vložte text na hľadanie a stlačte Enter"
 
 #~ msgid "&Search Citation"
 #~ msgstr "Hľadať &citáciu"
