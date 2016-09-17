@@ -13,6 +13,8 @@
 
 #include "GuiRef.h"
 
+#include "GuiApplication.h"
+
 #include "Buffer.h"
 #include "BufferList.h"
 #include "FuncRequest.h"
@@ -48,6 +50,26 @@ GuiRef::GuiRef(GuiView & lv)
 
 	at_ref_ = false;
 
+	// The filter bar
+	filter_ = new FancyLineEdit(this);
+#if QT_VERSION >= 0x040600
+	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
+	filter_->setButtonVisible(FancyLineEdit::Right, true);
+	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
+	filter_->setAutoHideButton(FancyLineEdit::Right, true);
+#endif
+#if QT_VERSION >= 0x040700
+	filter_->setPlaceholderText(qt_("All avail. Labels"));
+#endif
+	filter_->setToolTip(qt_("Enter string to filter the list of available labels"));
+
+	filterBarL->addWidget(filter_, 0);
+	findKeysLA->setBuddy(filter_);
+
+	sortingCO->addItem(qt_("By Occurrence"), "unsorted");
+	sortingCO->addItem(qt_("Alphabetically (Case-Insensitive)"), "nocase");
+	sortingCO->addItem(qt_("Alphabetically (Case-Sensitive)"), "case");
+
 	refsTW->setColumnCount(1);
 	refsTW->header()->setVisible(false);
 
@@ -60,8 +82,10 @@ GuiRef::GuiRef(GuiView & lv)
 	connect(typeCO, SIGNAL(activated(int)),
 		this, SLOT(changed_adaptor()));
 	connect(referenceED, SIGNAL(textChanged(QString)),
+		this, SLOT(refTextChanged(QString)));
+	connect(referenceED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
-	connect(findLE, SIGNAL(textEdited(QString)),
+	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterLabels()));
 	connect(csFindCB, SIGNAL(clicked()),
 		this, SLOT(filterLabels()));
@@ -73,10 +97,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(selectionChanged()));
 	connect(refsTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(refSelected(QTreeWidgetItem *)));
-	connect(sortCB, SIGNAL(clicked()),
+	connect(sortingCO, SIGNAL(activated(int)),
 		this, SLOT(sortToggled()));
-	connect(caseSensitiveCB, SIGNAL(clicked()),
-		this, SLOT(caseSensitiveToggled()));
 	connect(groupCB, SIGNAL(clicked()),
 		this, SLOT(groupToggled()));
 	connect(gotoPB, SIGNAL(clicked()),
@@ -167,6 +189,14 @@ void GuiRef::refHighlighted(QTreeWidgetItem * sel)
 }
 
 
+void GuiRef::refTextChanged(QString const & str)
+{
+	gotoPB->setEnabled(!str.isEmpty());
+	typeCO->setEnabled(!str.isEmpty());
+	typeLA->setEnabled(!str.isEmpty());
+}
+
+
 void GuiRef::refSelected(QTreeWidgetItem * sel)
 {
 	if (isBufferReadonly())
@@ -190,13 +220,6 @@ void GuiRef::refSelected(QTreeWidgetItem * sel)
 
 
 void GuiRef::sortToggled()
-{
-	caseSensitiveCB->setEnabled(sortCB->isChecked());
-	redoRefs();
-}
-
-
-void GuiRef::caseSensitiveToggled()
 {
 	redoRefs();
 }
@@ -316,16 +339,14 @@ bool GuiRef::typeAllowed()
 void GuiRef::setGoBack()
 {
 	gotoPB->setText(qt_("&Go Back"));
-	gotoPB->setToolTip("");
-	gotoPB->setToolTip(qt_("Jump back"));
+	gotoPB->setToolTip(qt_("Jump back to the original cursor location"));
 }
 
 
 void GuiRef::setGotoRef()
 {
 	gotoPB->setText(qt_("&Go to Label"));
-	gotoPB->setToolTip("");
-	gotoPB->setToolTip(qt_("Jump to label"));
+	gotoPB->setToolTip(qt_("Jump to the selected label"));
 }
 
 
@@ -392,13 +413,14 @@ void GuiRef::redoRefs()
 	if (noprefix)
 		refsCategories.insert(0, qt_("<No prefix>"));
 
-	if (sortCB->isEnabled() && sortCB->isChecked()) {
-		if(caseSensitiveCB->isEnabled() && caseSensitiveCB->isChecked())
-			qSort(refsStrings.begin(), refsStrings.end());
-		else
-			qSort(refsStrings.begin(), refsStrings.end(),
-			      caseInsensitiveLessThan /*defined above*/);
-	}
+	QString const sort = sortingCO->isEnabled() ?
+				sortingCO->itemData(sortingCO->currentIndex()).toString()
+				: QString();
+	if (sort == "nocase")
+		qSort(refsStrings.begin(), refsStrings.end(),
+		      caseInsensitiveLessThan /*defined above*/);
+	else if (sort == "case")
+		qSort(refsStrings.begin(), refsStrings.end());
 
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
@@ -459,6 +481,10 @@ void GuiRef::redoRefs()
 	// Re-activate the emission of signals by these widgets.
 	refsTW->blockSignals(false);
 	referenceED->blockSignals(false);
+
+	gotoPB->setEnabled(!referenceED->text().isEmpty());
+	typeCO->setEnabled(!referenceED->text().isEmpty());
+	typeLA->setEnabled(!referenceED->text().isEmpty());
 }
 
 
@@ -472,13 +498,11 @@ void GuiRef::updateRefs()
 		Buffer const * buf = theBufferList().getBuffer(name);
 		buf->getLabelList(refs_);
 	}
-	sortCB->setEnabled(!refs_.empty());
-	caseSensitiveCB->setEnabled(sortCB->isEnabled() && sortCB->isChecked());
+	sortingCO->setEnabled(!refs_.empty());
 	refsTW->setEnabled(!refs_.empty());
 	groupCB->setEnabled(!refs_.empty());
 	// refsTW should only be the focus proxy when it is enabled
 	setFocusProxy(refs_.empty() ? 0 : refsTW);
-	gotoPB->setEnabled(!refs_.empty());
 	redoRefs();
 }
 
@@ -510,7 +534,7 @@ void GuiRef::filterLabels()
 	while (*it) {
 		(*it)->setHidden(
 			(*it)->childCount() == 0
-			&& !(*it)->text(0).contains(findLE->text(), cs)
+			&& !(*it)->text(0).contains(filter_->text(), cs)
 		);
 		++it;
 	}

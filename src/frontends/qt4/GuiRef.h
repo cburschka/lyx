@@ -14,6 +14,7 @@
 
 #include "GuiDialog.h"
 #include "ui_RefUi.h"
+#include "FancyLineEdit.h"
 
 #include "insets/InsetCommandParams.h"
 
@@ -41,9 +42,9 @@ private Q_SLOTS:
 	void filterLabels();
 	void refHighlighted(QTreeWidgetItem *);
 	void selectionChanged();
+	void refTextChanged(QString const &);
 	void refSelected(QTreeWidgetItem *);
 	void sortToggled();
-	void caseSensitiveToggled();
 	void groupToggled();
 	void updateClicked();
 	void resetDialog();
@@ -92,6 +93,9 @@ private:
 private:
 	///
 	InsetCommandParams params_;
+
+	/// contains the search box
+	FancyLineEdit * filter_;
 
 	/// went to a reference ?
 	bool at_ref_;
