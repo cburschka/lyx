@@ -107,7 +107,6 @@ Section -ProgramFiles SecProgramFiles
   File /r "${FILES_IMAGEMAGICK}\"
   !insertmacro FileListMSVC File "${FILES_MSVC}\"
   # register ImageMagick
-  WriteRegStr SHCTX "SOFTWARE\Classes\Applications" "AutoRun" "$INSTDIR\imagemagick\convert.exe $$"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "BinPath" "$INSTDIR\imagemagick"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "CoderModulesPath" "$INSTDIR\imagemagick\modules\coders"
   WriteRegStr SHCTX "SOFTWARE\ImageMagick\${ImageMagickVersion}\Q:16" "ConfigurePath" "$INSTDIR\imagemagick"
