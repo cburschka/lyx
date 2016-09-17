@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-16 13:34+0200\n"
-"PO-Revision-Date: 2016-09-17 09:55+0100\n"
+"POT-Creation-Date: 2016-09-17 13:07+0200\n"
+"PO-Revision-Date: 2016-09-17 13:20+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -137,7 +137,7 @@ msgstr "Versionshinweise"
 #: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
 #: src/frontends/qt4/ui/ParagraphUi.ui:261 src/frontends/qt4/ui/PrefsUi.ui:90
-#: src/frontends/qt4/ui/RefUi.ui:343 src/frontends/qt4/ui/SearchUi.ui:203
+#: src/frontends/qt4/ui/RefUi.ui:370 src/frontends/qt4/ui/SearchUi.ui:203
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58 src/frontends/qt4/ui/ThesaurusUi.ui:138
 #: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:163
@@ -154,7 +154,6 @@ msgid "The label as it appears in the document"
 msgstr "Die Marke, wie sie im Dokument erscheint"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:54 src/frontends/qt4/ui/LabelUi.ui:36
-#: src/frontends/qt4/ui/RefUi.ui:190
 msgid "&Label:"
 msgstr "&Marke:"
 
@@ -341,7 +340,7 @@ msgstr "Literatur&verzeichnis ins Inhaltsverzeichnis"
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:263 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/ui/PhantomUi.ui:38
-#: src/frontends/qt4/ui/PrintindexUi.ui:38 src/frontends/qt4/ui/RefUi.ui:317
+#: src/frontends/qt4/ui/PrintindexUi.ui:38 src/frontends/qt4/ui/RefUi.ui:344
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:127
@@ -942,7 +941,7 @@ msgstr "Änderungen &sofort übernehmen"
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:251 src/frontends/qt4/ui/PrefsUi.ui:80
-#: src/frontends/qt4/ui/RefUi.ui:330 src/frontends/qt4/ui/SendtoUi.ui:85
+#: src/frontends/qt4/ui/RefUi.ui:357 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:2234
 #: src/frontends/qt4/GuiDocument.cpp:2427
@@ -960,7 +959,7 @@ msgstr "&Übernehmen"
 msgid "Close"
 msgstr "Schließen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:27
+#: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:27
 msgid "&Filter:"
 msgstr "&Filter:"
 
@@ -968,7 +967,7 @@ msgstr "&Filter:"
 msgid "Select the fields on which the filter applies"
 msgstr "Wählen Sie hier die Felder, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:329
+#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:330
 msgid "All fields"
 msgstr "Alle Felder"
 
@@ -977,7 +976,7 @@ msgid "Select the entry types on which the filter applies"
 msgstr ""
 "Wählen Sie hier die Eintragstypen, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:344
+#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:345
 msgid "All entry types"
 msgstr "Alle Eintragstypen"
 
@@ -1979,7 +1978,7 @@ msgid "Name associated with the URL"
 msgstr "Name für die URL"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:42
-#: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:257
+#: src/frontends/qt4/ui/PrefIdentityUi.ui:50 src/frontends/qt4/ui/RefUi.ui:273
 msgid "&Name:"
 msgstr "&Name:"
 
@@ -2142,7 +2141,7 @@ msgid "Add a new index to the list"
 msgstr "Füge einen neuen Index zur Liste hinzu"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
-#: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
+#: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:96
 msgid "1"
 msgstr "1"
 
@@ -2535,7 +2534,7 @@ msgstr "Protokollt&yp:"
 msgid "Update the display"
 msgstr "Anzeige aktualisieren"
 
-#: src/frontends/qt4/ui/LogUi.ui:78 src/frontends/qt4/ui/RefUi.ui:294
+#: src/frontends/qt4/ui/LogUi.ui:78 src/frontends/qt4/ui/RefUi.ui:321
 #: src/frontends/qt4/ui/ViewSourceUi.ui:150
 msgid "&Update"
 msgstr "A&ktualisieren"
@@ -2986,7 +2985,6 @@ msgstr "Papierformat"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:29
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:20
-#: src/frontends/qt4/ui/RefUi.ui:355
 msgid "&Format:"
 msgstr "&Format:"
 
@@ -4377,95 +4375,96 @@ msgstr "Statusmeldungen anzeigen?"
 msgid "&Statusbar messages"
 msgstr "&Statusmeldungen"
 
-#: src/frontends/qt4/ui/RefUi.ui:22
-msgid "La&bels in:"
-msgstr "Ma&rken in:"
+#: src/frontends/qt4/ui/RefUi.ui:37
+msgid "&In[[buffer]]:"
+msgstr "&In:"
 
-#: src/frontends/qt4/ui/RefUi.ui:49
-msgid "&References"
-msgstr "&Verweise"
-
-#: src/frontends/qt4/ui/RefUi.ui:76
-msgid "Fil&ter:"
-msgstr "Fil&ter:"
-
-#: src/frontends/qt4/ui/RefUi.ui:89
-msgid "Enter string to filter the label list"
-msgstr "Geben Sie eine Zeichenkette zum Filtern der Markenliste ein."
-
-#: src/frontends/qt4/ui/RefUi.ui:99
+#: src/frontends/qt4/ui/RefUi.ui:56
 msgid "Filter case-sensitively"
 msgstr "Groß-/Kleinschreibung beim Filtern beachten"
 
-#: src/frontends/qt4/ui/RefUi.ui:102
-msgid "Case-sensiti&ve"
+#: src/frontends/qt4/ui/RefUi.ui:59
+msgid "Case Sensiti&ve"
 msgstr "Groß-/&Kleinschreibung beachten"
 
-#: src/frontends/qt4/ui/RefUi.ui:127
-msgid ""
-"Sort labels in alphabetical order (case-insensitively unless the Case-"
-"sensitive option is checked)"
-msgstr ""
-"Sortiert Marken alphabetisch (ohne Groß-/Kleinschreibung zu beachten, wenn "
-"die Option \"Groß-/Kleinschreibung beachten\" nicht verwendet wird)"
+#: src/frontends/qt4/ui/RefUi.ui:74
+msgid "The (sub-)document from which the available labels are displayed"
+msgstr "Das (Teil-)Dokument, dessen verfügbare Marken angezeigt werden."
 
-#: src/frontends/qt4/ui/RefUi.ui:130
-msgid "&Sort"
-msgstr "&Sortieren"
+#: src/frontends/qt4/ui/RefUi.ui:85
+msgid "Available &Labels:"
+msgstr "&Verfügbare Marken:"
 
-#: src/frontends/qt4/ui/RefUi.ui:140
-msgid "Sort labels case-sensitively in alphabetical order"
-msgstr "Sortiert Marken alphabetisch ohne Groß-/Kleinschreibung zu beachten"
+#: src/frontends/qt4/ui/RefUi.ui:121
+msgid "So&rt:"
+msgstr "&Sortierung:"
 
-#: src/frontends/qt4/ui/RefUi.ui:143
-msgid "Cas&e-sensitive"
-msgstr "&Groß-/Kleinschreibung beachten"
+#: src/frontends/qt4/ui/RefUi.ui:131
+msgid "Sorting of the list of available labels"
+msgstr "Sortierung der Liste verfügbarer Marken."
 
-#: src/frontends/qt4/ui/RefUi.ui:150
-msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr "Marken nach Präfix (bspw. \"sec:\") gruppieren"
+#: src/frontends/qt4/ui/RefUi.ui:138
+msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
+msgstr "Liste der verfügbaren Marken nach Präfix (bspw. \"sec:\") gruppieren"
 
-#: src/frontends/qt4/ui/RefUi.ui:153
+#: src/frontends/qt4/ui/RefUi.ui:141
 msgid "Grou&p"
 msgstr "Gru&ppieren"
 
-#: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:326
+#: src/frontends/qt4/ui/RefUi.ui:165
+msgid "Sele&cted Label:"
+msgstr "Ausgewählte &Marke:"
+
+#: src/frontends/qt4/ui/RefUi.ui:178
+msgid "Select a label from the list above or enter a label manually"
+msgstr ""
+"Wählen Sie eine Marke aus der Liste oben oder geben Sie manuell eine ein."
+
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/GuiRef.cpp:349
+msgid "Jump to the selected label"
+msgstr "Springe zur ausgewählten Marke"
+
+#: src/frontends/qt4/ui/RefUi.ui:194 src/frontends/qt4/GuiRef.cpp:348
 msgid "&Go to Label"
 msgstr "&Gehe zur Marke"
 
-#: src/frontends/qt4/ui/RefUi.ui:212
-msgid "Cross-reference as it appears in output"
-msgstr "Querverweis, wie er in der Ausgabe erscheint"
+#: src/frontends/qt4/ui/RefUi.ui:205
+msgid "Reference For&mat:"
+msgstr "&Querverweisstil:"
 
-#: src/frontends/qt4/ui/RefUi.ui:216
+#: src/frontends/qt4/ui/RefUi.ui:224
+msgid "Adjust the style of the cross-reference"
+msgstr "Wählen Sie hier den Stil des Querverweises aus."
+
+#: src/frontends/qt4/ui/RefUi.ui:228
 msgid "<reference>"
 msgstr "<Querverweis>"
 
-#: src/frontends/qt4/ui/RefUi.ui:221
+#: src/frontends/qt4/ui/RefUi.ui:233
 msgid "(<reference>)"
 msgstr "(<Querverweis>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:226
+#: src/frontends/qt4/ui/RefUi.ui:238
 msgid "<page>"
 msgstr "<Seite>"
 
-#: src/frontends/qt4/ui/RefUi.ui:231
+#: src/frontends/qt4/ui/RefUi.ui:243
 msgid "on page <page>"
 msgstr "auf Seite <Seite>"
 
-#: src/frontends/qt4/ui/RefUi.ui:236
+#: src/frontends/qt4/ui/RefUi.ui:248
 msgid "<reference> on page <page>"
 msgstr "<Querverweis> auf Seite <Seite>"
 
-#: src/frontends/qt4/ui/RefUi.ui:241
+#: src/frontends/qt4/ui/RefUi.ui:253
 msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
-#: src/frontends/qt4/ui/RefUi.ui:246
+#: src/frontends/qt4/ui/RefUi.ui:258
 msgid "Textual reference"
 msgstr "Textverweis"
 
-#: src/frontends/qt4/ui/RefUi.ui:291
+#: src/frontends/qt4/ui/RefUi.ui:318
 msgid "Update the label list"
 msgstr "Liste der Marken aktualisieren"
 
@@ -27576,7 +27575,8 @@ msgstr "Keine Farbe"
 msgid "Text Style"
 msgstr "Textstil"
 
-#: src/frontends/qt4/GuiCitation.cpp:103 src/frontends/qt4/PanelStack.cpp:79
+#: src/frontends/qt4/GuiCitation.cpp:103 src/frontends/qt4/GuiRef.cpp:58
+#: src/frontends/qt4/PanelStack.cpp:79
 msgid "Clear text"
 msgstr "Eingabe löschen"
 
@@ -27596,24 +27596,24 @@ msgstr "&Groß-/Kleinschreibung beachten"
 msgid "Search as you &type"
 msgstr "Während der &Eingabe suchen"
 
-#: src/frontends/qt4/GuiCitation.cpp:330
+#: src/frontends/qt4/GuiCitation.cpp:331
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: src/frontends/qt4/GuiCitation.cpp:371
+#: src/frontends/qt4/GuiCitation.cpp:372
 msgid "Displays a sketchy preview if a citation is selected above"
 msgstr ""
 "Zeigt eine ungefähre Vorschau an, wenn oben ein Verweis ausgewählt wurde."
 
-#: src/frontends/qt4/GuiCitation.cpp:375
+#: src/frontends/qt4/GuiCitation.cpp:376
 msgid "Sketchy preview of the selected citation"
 msgstr "Ungefähre Vorschau des ausgewählten Verweises."
 
-#: src/frontends/qt4/GuiCitation.cpp:484
+#: src/frontends/qt4/GuiCitation.cpp:485
 msgid "Enter string to filter the list of available citations"
 msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein."
 
-#: src/frontends/qt4/GuiCitation.cpp:485
+#: src/frontends/qt4/GuiCitation.cpp:486
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
@@ -29072,23 +29072,39 @@ msgstr "Testebene"
 msgid "Set"
 msgstr "Aktiv"
 
-#: src/frontends/qt4/GuiRef.cpp:44
+#: src/frontends/qt4/GuiRef.cpp:46
 msgid "Cross-reference"
 msgstr "Querverweis"
 
-#: src/frontends/qt4/GuiRef.cpp:318
+#: src/frontends/qt4/GuiRef.cpp:62
+msgid "All available labels"
+msgstr "Alle verfügbaren Marken"
+
+#: src/frontends/qt4/GuiRef.cpp:64
+msgid "Enter string to filter the list of available labels"
+msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Marken ein."
+
+#: src/frontends/qt4/GuiRef.cpp:69
+msgid "By Occurrence"
+msgstr "Nach Vorkommen"
+
+#: src/frontends/qt4/GuiRef.cpp:70
+msgid "Alphabetically (Case-Insensitive)"
+msgstr "Alphabetisch"
+
+#: src/frontends/qt4/GuiRef.cpp:71
+msgid "Alphabetically (Case-Sensitive)"
+msgstr "Alphabetisch (Groß- vor Kleinschreibung)"
+
+#: src/frontends/qt4/GuiRef.cpp:341
 msgid "&Go Back"
 msgstr "&Gehe zurück"
 
-#: src/frontends/qt4/GuiRef.cpp:320
-msgid "Jump back"
-msgstr "Springe zurück"
+#: src/frontends/qt4/GuiRef.cpp:342
+msgid "Jump back to the original cursor location"
+msgstr "Springe zur ursprünglichen Cursor-Platzierung zurück"
 
-#: src/frontends/qt4/GuiRef.cpp:328
-msgid "Jump to label"
-msgstr "Springe zur Marke"
-
-#: src/frontends/qt4/GuiRef.cpp:393 src/frontends/qt4/GuiRef.cpp:412
+#: src/frontends/qt4/GuiRef.cpp:414 src/frontends/qt4/GuiRef.cpp:434
 msgid "<No prefix>"
 msgstr "<Ohne Präfix>"
 
@@ -31934,6 +31950,43 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "La&bels in:"
+#~ msgstr "Ma&rken in:"
+
+#~ msgid "&References"
+#~ msgstr "&Verweise"
+
+#~ msgid "Fil&ter:"
+#~ msgstr "Fil&ter:"
+
+#~ msgid "Enter string to filter the label list"
+#~ msgstr "Geben Sie eine Zeichenkette zum Filtern der Markenliste ein."
+
+#~ msgid ""
+#~ "Sort labels in alphabetical order (case-insensitively unless the Case-"
+#~ "sensitive option is checked)"
+#~ msgstr ""
+#~ "Sortiert Marken alphabetisch (ohne Groß-/Kleinschreibung zu beachten, "
+#~ "wenn die Option \"Groß-/Kleinschreibung beachten\" nicht verwendet wird)"
+
+#~ msgid "&Sort"
+#~ msgstr "&Sortieren"
+
+#~ msgid "Sort labels case-sensitively in alphabetical order"
+#~ msgstr "Sortiert Marken alphabetisch ohne Groß-/Kleinschreibung zu beachten"
+
+#~ msgid "Cas&e-sensitive"
+#~ msgstr "&Groß-/Kleinschreibung beachten"
+
+#~ msgid "Cross-reference as it appears in output"
+#~ msgstr "Querverweis, wie er in der Ausgabe erscheint"
+
+#~ msgid "Jump back"
+#~ msgstr "Springe zurück"
+
+#~ msgid "Jump to label"
+#~ msgstr "Springe zur Marke"
+
 #~ msgid "Natbib citation style to use"
 #~ msgstr "Zu verwendender Natbib-Zitierstil"
 
@@ -34341,9 +34394,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "No file open!"
 #~ msgstr "Keine Datei geöffnet!"
-
-#~ msgid "Jump to the label"
-#~ msgstr "Springe zur Marke"
 
 #~ msgid "Unknown author index for deletion: %1$d\n"
 #~ msgstr "Unbekannter Autor-Index für die Löschung: %1$d\n"
