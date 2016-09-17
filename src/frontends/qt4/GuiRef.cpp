@@ -59,7 +59,7 @@ GuiRef::GuiRef(GuiView & lv)
 	filter_->setAutoHideButton(FancyLineEdit::Right, true);
 #endif
 #if QT_VERSION >= 0x040700
-	filter_->setPlaceholderText(qt_("All avail. Labels"));
+	filter_->setPlaceholderText(qt_("All available labels"));
 #endif
 	filter_->setToolTip(qt_("Enter string to filter the list of available labels"));
 
