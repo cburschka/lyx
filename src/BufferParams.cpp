@@ -305,6 +305,35 @@ SpaceTranslator const & spacetranslator()
 	return translator;
 }
 
+
+bool inSystemDir(FileName const & document_dir, string & system_dir)
+{
+	// A document is assumed to be in a system LyX directory (not
+	// necessarily the system directory of the running instance)
+	// if both "configure.py" and "chkconfig.ltx" are found in
+	// either document_dir/../ or document_dir/../../.
+	// If true, the system directory path is returned in system_dir
+	// with a trailing path separator.
+
+	string const msg = "Checking whether document is in a system dir...";
+
+	string dir = document_dir.absFileName();
+
+	for (int i = 0; i < 2; ++i) {
+		dir = addPath(dir, "..");
+		if (!fileSearch(dir, "configure.py").empty() &&
+		    !fileSearch(dir, "chkconfig.ltx").empty()) {
+			LYXERR(Debug::FILES, msg << " yes");
+			system_dir = addPath(FileName(dir).realPath(), "");
+			return true;
+		}
+	}
+
+	LYXERR(Debug::FILES, msg << " no");
+	system_dir = string();
+	return false;
+}
+
 } // anon namespace
 
 
@@ -683,8 +712,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		origin = lex.getString();
 		string const sysdirprefix = "/systemlyxdir/";
 		if (prefixIs(origin, sysdirprefix)) {
-			origin.replace(0, sysdirprefix.length() - 1,
-				package().system_support().absFileName());
+			string docsys;
+			if (inSystemDir(filepath, docsys))
+				origin.replace(0, sysdirprefix.length() - 1, docsys);
+			else
+				origin.replace(0, sysdirprefix.length() - 1,
+					package().system_support().absFileName());
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
@@ -1028,8 +1061,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// the document directory (must end with a path separator)
 	// realPath() is used to resolve symlinks, while addPath(..., "")
 	// ensures a trailing path separator.
+	string docsys;
 	string filepath = addPath(buf->fileName().onlyPath().realPath(), "");
-	string const sysdir = addPath(package().system_support().realPath(), "");
+	string const sysdir = inSystemDir(FileName(filepath), docsys) ? docsys
+			: addPath(package().system_support().realPath(), "");
 	string const relpath =
 		to_utf8(makeRelPath(from_utf8(filepath), from_utf8(sysdir)));
 	if (!prefixIs(relpath, "../") && !FileName::isAbsolute(relpath))
