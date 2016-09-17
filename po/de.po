@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-11 12:06-0400\n"
-"PO-Revision-Date: 2016-09-11 18:42+0100\n"
+"POT-Creation-Date: 2016-09-16 13:52+0200\n"
+"PO-Revision-Date: 2016-09-17 10:01+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -275,8 +275,9 @@ msgid "Enter BibTeX database name"
 msgstr "Name der BibTeX-Datenbank eingeben"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
-#: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:84
-#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:369
+#: src/frontends/qt4/ui/BranchesUi.ui:113
+#: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
+#: src/CutAndPaste.cpp:369
 msgid "&Add"
 msgstr "&Hinzufügen"
 
@@ -331,7 +332,7 @@ msgid "Add bibliography to &TOC"
 msgstr "Literatur&verzeichnis ins Inhaltsverzeichnis"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:200 src/frontends/qt4/ui/CharacterUi.ui:357
-#: src/frontends/qt4/ui/CitationUi.ui:511
+#: src/frontends/qt4/ui/CitationUi.ui:447
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600
@@ -353,7 +354,7 @@ msgstr "&OK"
 msgid "Move the selected database downwards in the list"
 msgstr "Rückt die ausgewählte Datenbank in der Liste nach unten"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/CitationUi.ui:153
+#: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/CitationUi.ui:211
 #: src/frontends/qt4/ui/ModulesUi.ui:124
 msgid "Do&wn"
 msgstr "Run&ter"
@@ -362,7 +363,7 @@ msgstr "Run&ter"
 msgid "Move the selected database upwards in the list"
 msgstr "Rückt die ausgewählte Datenbank in der Liste nach oben"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:129
+#: src/frontends/qt4/ui/BibtexUi.ui:238 src/frontends/qt4/ui/CitationUi.ui:188
 #: src/frontends/qt4/ui/ModulesUi.ui:117
 msgid "&Up"
 msgstr "Rau&f"
@@ -387,7 +388,7 @@ msgstr "&Hinzufügen..."
 msgid "Remove the selected database"
 msgstr "Die ausgewählte Datenbank entfernen"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:97
+#: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
 msgstr "&Löschen"
 
@@ -681,7 +682,7 @@ msgid "Add A&ll"
 msgstr "A&lle hinzufügen"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:58
-#: src/frontends/qt4/ui/CitationUi.ui:534
+#: src/frontends/qt4/ui/CitationUi.ui:470
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
@@ -955,133 +956,111 @@ msgstr "&Übernehmen"
 msgid "Close"
 msgstr "Schließen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:33
+#: src/frontends/qt4/ui/CitationUi.ui:27
+msgid "&Filter:"
+msgstr "&Filter:"
+
+#: src/frontends/qt4/ui/CitationUi.ui:48
+msgid "Select the fields on which the filter applies"
+msgstr "Wählen Sie hier die Felder, auf die der Filter angewendet werden soll."
+
+#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:329
+msgid "All fields"
+msgstr "Alle Felder"
+
+#: src/frontends/qt4/ui/CitationUi.ui:75
+msgid "Select the entry types on which the filter applies"
+msgstr ""
+"Wählen Sie hier die Eintragstypen, auf die der Filter angewendet werden soll."
+
+#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:344
+msgid "All entry types"
+msgstr "Alle Eintragstypen"
+
+#: src/frontends/qt4/ui/CitationUi.ui:93
+msgid "Click for more filter options"
+msgstr "Klicken Sie hier für weitere Filter-Optionen."
+
+#: src/frontends/qt4/ui/CitationUi.ui:96
+msgid "O&ptions"
+msgstr "O&ptionen"
+
+#: src/frontends/qt4/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
 msgstr "&Verfügbare Verweise:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:56
-msgid "S&elected Citations:"
-msgstr "Ausge&wählte Verweise:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:81
+#: src/frontends/qt4/ui/CitationUi.ui:140
 msgid "Click or press Enter to add the selected citation to the list"
 msgstr ""
 "Mit Mausklick oder Eingabetaste fügen Sie den ausgewählten Literaturverweis "
 "hinzu.  "
 
-#: src/frontends/qt4/ui/CitationUi.ui:94
+#: src/frontends/qt4/ui/CitationUi.ui:153
 msgid "Click or press Delete to delete the selected citation from the list"
 msgstr ""
 "Mit Mausklick oder Entf entfernen Sie den ausgewählten Literaturverweis"
 
-#: src/frontends/qt4/ui/CitationUi.ui:126
+#: src/frontends/qt4/ui/CitationUi.ui:185
 msgid "Move the selected citation up (Ctrl-Up)"
 msgstr "Ausgewählten Verweis nach vorne verschieben (Strg+Hoch)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:150
+#: src/frontends/qt4/ui/CitationUi.ui:208
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Ausgewählten Verweis nach hinten verschieben (Strg+Runter)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:212
-msgid "&Search Citation"
-msgstr "Verweis &suchen"
+#: src/frontends/qt4/ui/CitationUi.ui:229
+msgid "Selected &Citations:"
+msgstr "Ausge&wählte Verweise:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:221
-msgid "Searc&h:"
-msgstr "S&uchen:"
+#: src/frontends/qt4/ui/CitationUi.ui:273
+msgid "Formatting"
+msgstr "Formatierung"
 
-#: src/frontends/qt4/ui/CitationUi.ui:234
-msgid ""
-"Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"Geben Sie den Suchtext hier ein und drücken Sie die Eingabetaste oder "
-"klicken den Suchknopf."
-
-#: src/frontends/qt4/ui/CitationUi.ui:247
-msgid "Click or press Enter in the search box to search"
-msgstr ""
-"Klicken Sie hier oder drücken Sie aus dem Suchfeld heraus die Eingabetaste, "
-"um zu suchen"
-
-#: src/frontends/qt4/ui/CitationUi.ui:250
-msgid "&Search"
-msgstr "&Suchen"
-
-#: src/frontends/qt4/ui/CitationUi.ui:260
-msgid "Search &field:"
-msgstr "Such&feld:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:286 src/frontends/qt4/GuiCitation.cpp:316
-msgid "All fields"
-msgstr "Alle Felder"
-
-#: src/frontends/qt4/ui/CitationUi.ui:307
-msgid "Regular e&xpression"
-msgstr "&Regulärer Ausdruck"
-
-#: src/frontends/qt4/ui/CitationUi.ui:314
-msgid "Case se&nsitive"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
-
-#: src/frontends/qt4/ui/CitationUi.ui:321
-msgid "Entry t&ypes:"
-msgstr "Eintragst&ypen:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:344 src/frontends/qt4/GuiCitation.cpp:331
-msgid "All entry types"
-msgstr "Alle Eintragstypen"
-
-#: src/frontends/qt4/ui/CitationUi.ui:365
-msgid "Search as you &type"
-msgstr "Während der &Eingabe suchen"
-
-#: src/frontends/qt4/ui/CitationUi.ui:373
-msgid "For&matting"
-msgstr "For&matierung"
-
-#: src/frontends/qt4/ui/CitationUi.ui:382
+#: src/frontends/qt4/ui/CitationUi.ui:283
 msgid "Citation st&yle:"
 msgstr "Z&itierstil:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:392
-msgid "Natbib citation style to use"
-msgstr "Zu verwendender Natbib-Zitierstil"
-
-#: src/frontends/qt4/ui/CitationUi.ui:399
+#: src/frontends/qt4/ui/CitationUi.ui:293
 msgid "Text &before:"
 msgstr "Text &davor:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:409
-msgid "Text to place before citation"
-msgstr "Vor dem Verweis einzufügender Text"
+#: src/frontends/qt4/ui/CitationUi.ui:313
+msgid "Citation style to use, if different styles are provided"
+msgstr "Verwendeter Zitierstil, falls mehrere Stile verfügbar sind."
 
-#: src/frontends/qt4/ui/CitationUi.ui:416
+#: src/frontends/qt4/ui/CitationUi.ui:322
+msgid "Text that precedes the reference (e.g., \"cf.\")"
+msgstr "Text, der dem Verweis vorausgeht (z.B. \"vgl.\")"
+
+#: src/frontends/qt4/ui/CitationUi.ui:329
 msgid "&Text after:"
 msgstr "&Text danach:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:426
-msgid "Text to place after citation"
-msgstr "Nach dem Verweis einzufügender Text"
+#: src/frontends/qt4/ui/CitationUi.ui:339
+msgid "Text that follows the reference (e.g., pages)"
+msgstr "Text, der dem Verweis folgt (z.B. die Seitenzahlen)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:454
-msgid "List all authors"
-msgstr "Alle Autoren im Verweis aufführen"
+#: src/frontends/qt4/ui/CitationUi.ui:382
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+msgstr ""
+"Erzwingt Anfangsgroßschreibung in Namen (\"Von Humboldt\" statt \"von "
+"Humboldt\")."
 
-#: src/frontends/qt4/ui/CitationUi.ui:457
-msgid "&Full author list"
-msgstr "Alle Autore&n"
+#: src/frontends/qt4/ui/CitationUi.ui:385
+msgid "Force upcas&ing"
+msgstr "A&nfangsgroßschreibung erzwingen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:464
-msgid "Force upper case in citation"
-msgstr "Großschreibung zu Beginn des Verweises erzwingen"
+#: src/frontends/qt4/ui/CitationUi.ui:392
+msgid "Always list all authors (rather than using \"et al.\")"
+msgstr ""
+"Erzwingt eine vollständige Autorenliste (statt der Verwendung von \"et al.\" "
+"oder \"u.a.\")."
 
-#: src/frontends/qt4/ui/CitationUi.ui:467
-msgid "Force u&pper case"
-msgstr "Anfangsgroßschreibung &erzwingen"
+#: src/frontends/qt4/ui/CitationUi.ui:395
+msgid "All aut&hors"
+msgstr "Alle A&utoren"
 
-#: src/frontends/qt4/ui/CitationUi.ui:488 src/frontends/qt4/ui/DocumentUi.ui:44
+#: src/frontends/qt4/ui/CitationUi.ui:424 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:682
 #: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:44
@@ -1089,7 +1068,7 @@ msgstr "Anfangsgroßschreibung &erzwingen"
 msgid "&Restore"
 msgstr "&Zurücksetzen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:524
+#: src/frontends/qt4/ui/CitationUi.ui:460
 msgid "App&ly"
 msgstr "&Übernehmen"
 
@@ -4414,9 +4393,7 @@ msgstr "Sortiert Marken alphabetisch ohne Groß-/Kleinschreibung zu beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:143
 msgid "Cas&e-sensitive"
-msgstr ""
-"&Groß-/Kleinschreibung\n"
-"beachten"
+msgstr "&Groß-/Kleinschreibung beachten"
 
 #: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
@@ -7590,7 +7567,7 @@ msgstr "Kolumnenkopf:"
 msgid "Published-online:"
 msgstr "Online veröffentlicht:"
 
-#: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:91
+#: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:93
 msgid "Citation"
 msgstr "Literaturverweis"
 
@@ -27566,9 +27543,51 @@ msgstr "Keine Farbe"
 msgid "Text Style"
 msgstr "Textstil"
 
-#: src/frontends/qt4/GuiCitation.cpp:317
+#: src/frontends/qt4/GuiCitation.cpp:103 src/frontends/qt4/PanelStack.cpp:80
+msgid "Clear text"
+msgstr "Eingabe löschen"
+
+#: src/frontends/qt4/GuiCitation.cpp:107
+msgid "All avail. citations"
+msgstr "Alle verf. Verweise"
+
+#: src/frontends/qt4/GuiCitation.cpp:114
+msgid "Regular e&xpression"
+msgstr "&Regulärer Ausdruck"
+
+#: src/frontends/qt4/GuiCitation.cpp:116
+msgid "Case se&nsitive"
+msgstr ""
+"&Groß-/Kleinschreibung\n"
+"beachten"
+
+#: src/frontends/qt4/GuiCitation.cpp:118
+msgid "Search as you &type"
+msgstr "Während der &Eingabe suchen"
+
+#: src/frontends/qt4/GuiCitation.cpp:330
 msgid "Keys"
 msgstr "Schlüssel"
+
+#: src/frontends/qt4/GuiCitation.cpp:371
+msgid "Displays a sketchy preview if a citation is selected above"
+msgstr ""
+"Zeigt eine ungefähre Vorschau an, wenn oben ein Verweis ausgewählt wurde."
+
+#: src/frontends/qt4/GuiCitation.cpp:375
+msgid "Sketchy preview of the selected citation"
+msgstr "Ungefähre Vorschau des ausgewählten Verweises."
+
+#: src/frontends/qt4/GuiCitation.cpp:484
+msgid "Enter string to filter the list of available citations"
+msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein."
+
+#: src/frontends/qt4/GuiCitation.cpp:485
+msgid ""
+"Enter string to filter the list of available citations and press <Enter>"
+msgstr ""
+"Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein und "
+"drücken Sie <Enter>."
 
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "LinkBack PDF"
@@ -30149,10 +30168,6 @@ msgstr "Keine Aktion definiert!"
 msgid "Search"
 msgstr "Suchen"
 
-#: src/frontends/qt4/PanelStack.cpp:80
-msgid "Clear text"
-msgstr "Eingabe löschen"
-
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
 msgid "Export %1$s"
@@ -31881,6 +31896,53 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Natbib citation style to use"
+#~ msgstr "Zu verwendender Natbib-Zitierstil"
+
+#~ msgid "Text to place before citation"
+#~ msgstr "Vor dem Verweis einzufügender Text"
+
+#~ msgid "Text to place after citation"
+#~ msgstr "Nach dem Verweis einzufügender Text"
+
+#~ msgid "Force upper case in citation"
+#~ msgstr "Großschreibung zu Beginn des Verweises erzwingen"
+
+#~ msgid "List all authors"
+#~ msgstr "Alle Autoren im Verweis aufführen"
+
+#~ msgid "Filter available"
+#~ msgstr "Verfügbare filtern"
+
+#~ msgid "Enter the text to search for"
+#~ msgstr "Geben Sie hier den Suchtext ein"
+
+#~ msgid "Enter the text to search for and press Enter"
+#~ msgstr "Geben Sie hier den Suchtext ein und drücken Sie die Eingabetaste"
+
+#~ msgid "&Search Citation"
+#~ msgstr "Verweis &suchen"
+
+#~ msgid "Searc&h:"
+#~ msgstr "S&uchen:"
+
+#~ msgid "Click or press Enter in the search box to search"
+#~ msgstr ""
+#~ "Klicken Sie hier oder drücken Sie aus dem Suchfeld heraus die "
+#~ "Eingabetaste, um zu suchen"
+
+#~ msgid "&Search"
+#~ msgstr "&Suchen"
+
+#~ msgid "Search &field:"
+#~ msgstr "Such&feld:"
+
+#~ msgid "Entry t&ypes:"
+#~ msgstr "Eintragst&ypen:"
+
+#~ msgid "&Full author list"
+#~ msgstr "Alle Autore&n"
 
 #, fuzzy
 #~ msgid "Format"
