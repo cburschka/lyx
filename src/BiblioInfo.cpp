@@ -316,8 +316,26 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(
 
 docstring const BibTeXInfo::getYear() const
 {
-	if (is_bibtex_)
-		return operator[]("year");
+	if (is_bibtex_) {
+		// first try legacy year field
+		docstring year = operator[]("year");
+		if (!year.empty())
+			return year;
+		// now try biblatex's date field
+		year = operator[]("date");
+		// Format is [-]YYYY-MM-DD*/[-]YYYY-MM-DD*
+		// We only want the years.
+		static regex const yreg("[-]?([\\d]{4}).*");
+		static regex const ereg(".*/([\\d]{4}).*");
+		smatch sm;
+		string const date = to_utf8(year);
+		regex_match(date, sm, yreg);
+		year = from_ascii(sm[1]);
+		// check for an endyear
+		if (regex_match(date, sm, ereg))
+			year += char_type(0x2013) + from_ascii(sm[1]);
+		return year;
+	}
 
 	docstring const opt = label();
 	if (opt.empty())
