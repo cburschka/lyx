@@ -1959,6 +1959,7 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 		                             QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
+		++i;
 	}
 }
 
