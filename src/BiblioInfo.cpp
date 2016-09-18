@@ -326,7 +326,7 @@ docstring const BibTeXInfo::getYear() const
 		// Format is [-]YYYY-MM-DD*/[-]YYYY-MM-DD*
 		// We only want the years.
 		static regex const yreg("[-]?([\\d]{4}).*");
-		static regex const ereg(".*/([\\d]{4}).*");
+		static regex const ereg(".*/[-]?([\\d]{4}).*");
 		smatch sm;
 		string const date = to_utf8(year);
 		regex_match(date, sm, yreg);
