@@ -45,6 +45,8 @@ public:
 	/// and the values are the associated field values.
 	typedef std::map<docstring, docstring>::const_iterator const_iterator;
 	///
+	typedef std::vector<BibTeXInfo const *> const BibTeXInfoList;
+	///
 	BibTeXInfo() : is_bibtex_(true), modifier_(0) {}
 	/// argument sets isBibTeX_, so should be false only if it's coming
 	/// from a bibliography environment
@@ -58,14 +60,12 @@ public:
 	    Buffer const * buf = 0, bool jurabib_style = false) const;
 	///
 	docstring const getYear() const;
-	///
-	docstring const getXRef() const;
 	/// \return formatted BibTeX data suitable for framing.
-	/// \param pointer to crossref information
-	docstring const & getInfo(BibTeXInfo const * const xref,
+	/// \param vector of pointers to crossref/xdata information
+	docstring const & getInfo(BibTeXInfoList const xrefs,
 			Buffer const & buf, bool richtext) const;
 	/// \return formatted BibTeX data for a citation label
-	docstring const getLabel(BibTeXInfo const * const xref,
+	docstring const getLabel(BibTeXInfoList const xrefs,
 		Buffer const & buf, docstring const & format, bool richtext,
 		const docstring & before, const docstring & after,
 		const docstring & dialog, bool next = false) const;
@@ -111,11 +111,11 @@ public:
 	bool isBibTeX() const { return is_bibtex_; }
 private:
 	/// like operator[], except, if the field is empty, it will attempt
-	/// to get the data from xref BibTeXInfo object, which would normally
-	/// be the one referenced in the crossref field.
+	/// to get the data from xref BibTeXInfo objects, which would normally
+	/// be the one referenced in the crossref or xdata field.
 	docstring getValueForKey(std::string const & key, Buffer const & buf,
 		docstring const & before, docstring const & after, docstring const & dialog,
-		BibTeXInfo const * const xref, size_t maxsize = 4096) const;
+		BibTeXInfoList const xrefs, size_t maxsize = 4096) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -133,7 +133,7 @@ private:
 	/// moreover, keys that look like "%_key%" are treated as translatable
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(docstring const & fmt,
-		BibTeXInfo const * const xref, int & counter,
+		BibTeXInfoList const xrefs, int & counter,
 		Buffer const & buf, docstring before = docstring(),
 		docstring after = docstring(), docstring dialog = docstring(),
 		bool next = false) const;
@@ -166,8 +166,13 @@ private:
 /// from BibTeX or from bibliography environments.
 class BiblioInfo {
 public:
+	///
+	typedef std::vector<BibTeXInfo const *> BibTeXInfoList;
 	/// bibliography key --> data for that key
 	typedef std::map<docstring, BibTeXInfo>::const_iterator const_iterator;
+	/// Get a vector with all external data (crossref, xdata)
+	std::vector<docstring> const getXRefs(BibTeXInfo const & data,
+					      bool const nested = false) const;
 	/// \return a sorted vector of bibliography keys
 	std::vector<docstring> const getKeys() const;
 	/// \return a sorted vector of present BibTeX fields
@@ -179,15 +184,19 @@ public:
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
-	/// Note that this will get the year from the crossref if it's
-	/// not present in the record itself.
+	/// If no legacy year field is present, check for date (common in
+	/// biblatex) and extract the year from there.
+	/// Note further that this will get the year from the crossref or xdata
+	/// if it's not present in the record itself.
 	docstring const getYear(docstring const & key,
 			bool use_modifier = false) const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
-	/// Note that this will get the year from the crossref if it's
-	/// not present in the record itself.
+	/// If no legacy year field is present, check for date (common in
+	/// biblatex) and extract the year from there.
+	/// Note further that this will get the year from the crossref or xdata
+	/// if it's not present in the record itself.
 	/// If no year is found, \return "No year" translated to the buffer
 	/// language.
 	docstring const getYear(docstring const & key, Buffer const & buf,
@@ -196,7 +205,7 @@ public:
 	docstring const getCiteNumber(docstring const & key) const;
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists.
-	/// Note that this will retrieve data from the crossref as needed.
+	/// Note that this will retrieve data from the crossref or xdata as needed.
 	/// If \param richtext is true, then it will output any richtext tags
 	/// marked in the citation format and escape < and > elsewhere.
 	docstring const getInfo(docstring const & key, Buffer const & buf,

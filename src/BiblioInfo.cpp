@@ -352,14 +352,6 @@ docstring const BibTeXInfo::getYear() const
 }
 
 
-docstring const BibTeXInfo::getXRef() const
-{
-	if (!is_bibtex_)
-		return docstring();
-	return operator[]("crossref");
-}
-
-
 namespace {
 
 docstring parseOptions(docstring const & format, string & optkey,
@@ -485,7 +477,7 @@ I can tell, but it still feels like a hack. Fixing this would require quite a
 bit of work, however.
 */
 docstring BibTeXInfo::expandFormat(docstring const & format,
-		BibTeXInfo const * const xref, int & counter, Buffer const & buf,
+		BibTeXInfoList const xrefs, int & counter, Buffer const & buf,
 		docstring before, docstring after, docstring dialog, bool next) const
 {
 	// incorrect use of macros could put us in an infinite loop
@@ -534,7 +526,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 					ret << trans;
 				} else {
 					docstring const val =
-						getValueForKey(key, buf, before, after, dialog, xref, max_keysize);
+						getValueForKey(key, buf, before, after, dialog, xrefs, max_keysize);
 					if (!scanning_rich)
 						ret << from_ascii("{!<span class=\"bib-" + key + "\">!}");
 					ret << val;
@@ -565,16 +557,16 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 						return _("ERROR!");
 					fmt = newfmt;
 					docstring const val =
-						getValueForKey(optkey, buf, before, after, dialog, xref);
+						getValueForKey(optkey, buf, before, after, dialog, xrefs);
 					if (optkey == "next" && next)
 						ret << ifpart; // without expansion
 					else if (!val.empty()) {
 						int newcounter = 0;
-						ret << expandFormat(ifpart, xref, newcounter, buf,
+						ret << expandFormat(ifpart, xrefs, newcounter, buf,
 							before, after, dialog, next);
 					} else if (!elsepart.empty()) {
 						int newcounter = 0;
-						ret << expandFormat(elsepart, xref, newcounter, buf,
+						ret << expandFormat(elsepart, xrefs, newcounter, buf,
 							before, after, dialog, next);
 					}
 					// fmt will have been shortened for us already
@@ -623,7 +615,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 }
 
 
-docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
+docstring const & BibTeXInfo::getInfo(BibTeXInfoList const xrefs,
 	Buffer const & buf, bool richtext) const
 {
 	if (!richtext && !info_.empty())
@@ -642,7 +634,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 	docstring const & format =
 		from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 	int counter = 0;
-	info_ = expandFormat(format, xref, counter, buf,
+	info_ = expandFormat(format, xrefs, counter, buf,
 		docstring(), docstring(), docstring(), false);
 
 	if (info_.empty()) {
@@ -660,7 +652,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 }
 
 
-docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
+docstring const BibTeXInfo::getLabel(BibTeXInfoList const xrefs,
 	Buffer const & buf, docstring const & format, bool richtext,
 	docstring const & before, docstring const & after, 
 	docstring const & dialog, bool next) const
@@ -668,7 +660,7 @@ docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	docstring loclabel;
 
 	int counter = 0;
-	loclabel = expandFormat(format, xref, counter, buf,
+	loclabel = expandFormat(format, xrefs, counter, buf,
 		before, after, dialog, next);
 
 	if (!loclabel.empty() && !next) {
@@ -698,7 +690,7 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	docstring const & before, docstring const & after, docstring const & dialog,
-	BibTeXInfo const * const xref, size_t maxsize) const
+	BibTeXInfoList const xrefs, size_t maxsize) const
 {
 	// anything less is pointless
 	LASSERT(maxsize >= 16, maxsize = 16);
@@ -710,8 +702,16 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	}
 
 	docstring ret = operator[](key);
-	if (ret.empty() && xref)
-		ret = (*xref)[key];
+	if (ret.empty() && !xrefs.empty()) {
+		vector<BibTeXInfo const *>::const_iterator it = xrefs.begin();
+		vector<BibTeXInfo const *>::const_iterator en = xrefs.end();
+		for (; it != en; ++it) {
+			if (*it && !(**it)[key].empty()) {
+				ret = (**it)[key];
+				break;
+			}
+		}
+	}
 	if (ret.empty()) {
 		// some special keys
 		// FIXME: dialog, textbefore and textafter have nothing to do with this
@@ -751,7 +751,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			docstring const & format =
 				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 			int counter = 0;
-			ret = expandFormat(format, xref, counter, buf,
+			ret = expandFormat(format, xrefs, counter, buf,
 				docstring(), docstring(), docstring(), false);
 		} else if (key == "textbefore")
 			ret = before;
@@ -788,6 +788,30 @@ public:
 };
 
 } // namespace anon
+
+
+vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const nested) const
+{
+	vector<docstring> result;
+	if (!data.isBibTeX())
+		return result;
+	// Legacy crossref field. This is not nestable.
+	if (!nested && !data["crossref"].empty())
+		result.push_back(data["crossref"]);
+	// Biblatex's xdata field. Infinitely nestable.
+	docstring const xdatakey = data["xdata"];
+	if (!xdatakey.empty()) {
+		result.push_back(xdatakey);
+		BiblioInfo::const_iterator it = find(xdatakey);
+		if (it != end()) {
+			BibTeXInfo const & xdata = it->second;
+			vector<docstring> const nxdata = getXRefs(xdata, true);
+			if (!nxdata.empty())
+				result.insert(result.end(), nxdata.begin(), nxdata.end());
+		}
+	}
+	return result;
+}
 
 
 vector<docstring> const BiblioInfo::getKeys() const
@@ -853,17 +877,23 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) co
 	BibTeXInfo const & data = it->second;
 	docstring year = data.getYear();
 	if (year.empty()) {
-		// let's try the crossref
-		docstring const xref = data.getXRef();
-		if (xref.empty())
+		// let's try the crossrefs
+		vector<docstring> const xrefs = getXRefs(data);
+		if (xrefs.empty())
 			// no luck
 			return docstring();
-		BiblioInfo::const_iterator const xrefit = find(xref);
-		if (xrefit == end())
-			// no luck again
-			return docstring();
-		BibTeXInfo const & xref_data = xrefit->second;
-		year = xref_data.getYear();
+		vector<docstring>::const_iterator it = xrefs.begin();
+		vector<docstring>::const_iterator en = xrefs.end();
+		for (; it != en; ++it) {
+			BiblioInfo::const_iterator const xrefit = find(*it);
+			if (xrefit == end())
+				continue;
+			BibTeXInfo const & xref_data = xrefit->second;
+			year = xref_data.getYear();
+			if (!year.empty())
+				// success!
+				break;
+		}
 	}
 	if (use_modifier && data.modifier() != 0)
 		year += data.modifier();
@@ -887,14 +917,18 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 	if (it == end())
 		return docstring(_("Bibliography entry not found!"));
 	BibTeXInfo const & data = it->second;
-	BibTeXInfo const * xrefptr = 0;
-	docstring const xref = data.getXRef();
-	if (!xref.empty()) {
-		BiblioInfo::const_iterator const xrefit = find(xref);
-		if (xrefit != end())
-			xrefptr = &(xrefit->second);
+	BibTeXInfoList xrefptrs;
+	vector<docstring> const xrefs = getXRefs(data);
+	if (!xrefs.empty()) {
+		vector<docstring>::const_iterator it = xrefs.begin();
+		vector<docstring>::const_iterator en = xrefs.end();
+		for (; it != en; ++it) {
+			BiblioInfo::const_iterator const xrefit = find(*it);
+			if (xrefit != end())
+				xrefptrs.push_back(&(xrefit->second));
+		}
 	}
-	return data.getInfo(xrefptr, buf, richtext);
+	return data.getInfo(xrefptrs, buf, richtext);
 }
 
 
@@ -922,17 +956,21 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 		BibTeXInfo empty_data;
 		empty_data.key(*key);
 		BibTeXInfo & data = empty_data;
-		BibTeXInfo const * xrefptr = 0;
+		vector<BibTeXInfo const *> xrefptrs;
 		if (it != end()) {
 			data = it->second;
-			docstring const xref = data.getXRef();
-			if (!xref.empty()) {
-				BiblioInfo::const_iterator const xrefit = find(xref);
-				if (xrefit != end())
-					xrefptr = &(xrefit->second);
+			vector<docstring> const xrefs = getXRefs(data);
+			if (!xrefs.empty()) {
+				vector<docstring>::const_iterator it = xrefs.begin();
+				vector<docstring>::const_iterator en = xrefs.end();
+				for (; it != en; ++it) {
+					BiblioInfo::const_iterator const xrefit = find(*it);
+					if (xrefit != end())
+						xrefptrs.push_back(&(xrefit->second));
+				}
 			}
 		}
-		ret = data.getLabel(xrefptr, buf, ret, for_xhtml,
+		ret = data.getLabel(xrefptrs, buf, ret, for_xhtml,
 			before, after, dialog, key + 1 != ken);
 	}
 
