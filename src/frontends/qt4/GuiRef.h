@@ -40,6 +40,7 @@ private Q_SLOTS:
 	void changed_adaptor();
 	void gotoClicked();
 	void filterLabels();
+	void resetFilter();
 	void refHighlighted(QTreeWidgetItem *);
 	void selectionChanged();
 	void refTextChanged(QString const &);

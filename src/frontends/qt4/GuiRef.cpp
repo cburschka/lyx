@@ -52,15 +52,11 @@ GuiRef::GuiRef(GuiView & lv)
 
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
-#if QT_VERSION >= 0x040600
 	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
 	filter_->setButtonVisible(FancyLineEdit::Right, true);
 	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	filter_->setAutoHideButton(FancyLineEdit::Right, true);
-#endif
-#if QT_VERSION >= 0x040700
 	filter_->setPlaceholderText(qt_("All available labels"));
-#endif
 	filter_->setToolTip(qt_("Enter string to filter the list of available labels"));
 
 	filterBarL->addWidget(filter_, 0);
@@ -87,6 +83,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(filter_, SIGNAL(textEdited(QString)),
 		this, SLOT(filterLabels()));
+	connect(filter_, SIGNAL(rightButtonClicked()),
+		this, SLOT(resetFilter()));
 	connect(csFindCB, SIGNAL(clicked()),
 		this, SLOT(filterLabels()));
 	connect(nameED, SIGNAL(textChanged(QString)),
@@ -538,6 +536,13 @@ void GuiRef::filterLabels()
 		);
 		++it;
 	}
+}
+
+
+void GuiRef::resetFilter()
+{
+	filter_->setText(QString());
+	filterLabels();
 }
 
 
