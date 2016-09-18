@@ -20,7 +20,7 @@ Sublabel: todo
 export/doc/(de/|fr/)Customization_.*_systemF
 
 # Error in Japanese document if LyX-logo is preceded by foreign language
-export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3))
+export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
 # Missing characters with Latin Modern Unicode:
 # 0000 NULL           (where does this come from?)

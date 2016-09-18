@@ -20,7 +20,7 @@ export/.*/zh_CN/.*texF
 # Japanese manuals use language "japanese" wich is tied to "platex"
 # (automatically set instead of (plain) LaTeX).
 # For export with other engines, the language must be set to "Japanese (CJK).
-# see also INVERTED.*export/export/ja/wrong_auto_encoding_(dvi|pdf(|3))
+# see also INVERTED.TODO_export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
 export/.*/ja/.*_(pdf[245]|dvi3).*
