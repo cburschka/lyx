@@ -97,15 +97,11 @@ GuiCitation::GuiCitation(GuiView & lv)
 
 	// The filter bar
 	filter_ = new FancyLineEdit(this);
-#if QT_VERSION >= 0x040600
 	filter_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
 	filter_->setButtonVisible(FancyLineEdit::Right, true);
 	filter_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	filter_->setAutoHideButton(FancyLineEdit::Right, true);
-#endif
-#if QT_VERSION >= 0x040700
 	filter_->setPlaceholderText(qt_("All avail. citations"));
-#endif
 
 	filterBarL->addWidget(filter_, 0);
 	findKeysLA->setBuddy(filter_);
@@ -117,6 +113,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	casesense_->setCheckable(true);
 	instant_ = new QAction(qt_("Search as you &type"), this);
 	instant_->setCheckable(true);
+	instant_->setChecked(true);
 
 	QMenu * searchOpts = new QMenu(this);
 	searchOpts->addAction(regexp_);
