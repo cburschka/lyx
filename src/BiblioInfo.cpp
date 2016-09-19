@@ -799,15 +799,21 @@ vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const
 	if (!nested && !data["crossref"].empty())
 		result.push_back(data["crossref"]);
 	// Biblatex's xdata field. Infinitely nestable.
-	docstring const xdatakey = data["xdata"];
-	if (!xdatakey.empty()) {
-		result.push_back(xdatakey);
-		BiblioInfo::const_iterator it = find(xdatakey);
-		if (it != end()) {
-			BibTeXInfo const & xdata = it->second;
-			vector<docstring> const nxdata = getXRefs(xdata, true);
-			if (!nxdata.empty())
-				result.insert(result.end(), nxdata.begin(), nxdata.end());
+	// XData field can consist of a comma-separated list of keys
+	vector<docstring> const xdatakeys = getVectorFromString(data["xdata"]);
+	if (!xdatakeys.empty()) {
+		vector<docstring>::const_iterator xit = xdatakeys.begin();
+		vector<docstring>::const_iterator xen = xdatakeys.end();
+		for (; xit != xen; ++xit) {
+			docstring const xdatakey = *xit;
+			result.push_back(xdatakey);
+			BiblioInfo::const_iterator it = find(xdatakey);
+			if (it != end()) {
+				BibTeXInfo const & xdata = it->second;
+				vector<docstring> const nxdata = getXRefs(xdata, true);
+				if (!nxdata.empty())
+					result.insert(result.end(), nxdata.begin(), nxdata.end());
+			}
 		}
 	}
 	return result;
