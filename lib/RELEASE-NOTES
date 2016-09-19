@@ -3,9 +3,15 @@
 
 !!Interface changes
 
-LyX now has "inverted" branch insets, which output their contents just in 
-case a given branch is not "activated". This makes inclusion of alternate
-material in different versions easier.
+* LyX now has "inverted" branch insets, which output their contents just in 
+  case a given branch is not "activated". This makes inclusion of alternate
+  material in different versions easier.
+
+* When inserting a command or symbol in mathed, it is now automatically
+  wrapped in a real inset (either \text or \ensuremath) assuring the correct
+  mode, instead of being wrapped only in the output. The wrapping inset can
+  be safely dissolved, as it will be automatically inserted at export time
+  if needed, as usual.
 
 
 !!!The following pref variables were added in 2.3:
