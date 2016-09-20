@@ -18,16 +18,17 @@ CiteFormat default
 	!volnum {%volume%[[ %_voltext% %volume%, {%number%[[%_numtext% %number%]]}]]}
 	!quotetitle "%title%"
 	!emphtitle {!<i>!}%title%{!</i>!}
-	!emphjournal {!<i>!}%journal%{!</i>!}
+	!emphjournal {!<i>!}{%journal%[[%journal%]][[{%journaltitle%[[%journaltitle%]]}]]}{!</i>!}
+	!location {%address%[[%address%: ]][[{%location%[[%location%: ]]}]]}
 
-	!insomething %author%, %!quotetitle%, %_in%{%editor%[[ %editor%, %_edtext%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%)%!pages%.{%note%[[ %note%]]}
+	!insomething %author%, %!quotetitle%, %_in%{%editor%[[ %editor%, %_edtext%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%)%!pages%.{%note%[[ %note%]]}
 
 	article %author%, %!quotetitle%, %!emphjournal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%.{%note%[[ %note%]]}
 
-	book %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} ({%address%[[%address%: ]]}%publisher%, %year%).{%note%[[ %note%]]}
+	book %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%).{%note%[[ %note%]]}
 
 	incollection %!insomething%
 	inproceedings %!insomething%
 
-	thesis %author%, %title% ({%address%[[%address%: ]]}%school%, %year%).{%note%[[ %note%]]}
+	thesis %author%, %title% (%!location%{%school%[[%school%]][[%institution%]]}, %year%).{%note%[[ %note%]]}
 End
