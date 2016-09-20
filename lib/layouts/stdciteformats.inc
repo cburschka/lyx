@@ -25,7 +25,10 @@ CiteFormat default
 
 	article %author%, %!quotetitle%, %!emphjournal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%.{%note%[[ %note%]]}
 
-	book %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%).{%note%[[ %note%]]}
+	!booklike %!authoredit%%!emphtitle%%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%).{%note%[[ %note%]]}
+	book %!booklike%
+	collection %!booklike%
+	proceedings %!booklike%
 
 	incollection %!insomething%
 	inproceedings %!insomething%
