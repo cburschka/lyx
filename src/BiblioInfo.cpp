@@ -796,8 +796,18 @@ vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const
 	if (!data.isBibTeX())
 		return result;
 	// Legacy crossref field. This is not nestable.
-	if (!nested && !data["crossref"].empty())
-		result.push_back(data["crossref"]);
+	if (!nested && !data["crossref"].empty()) {
+		docstring const xrefkey = data["crossref"];
+		result.push_back(xrefkey);
+		// However, check for nested xdatas
+		BiblioInfo::const_iterator it = find(xrefkey);
+		if (it != end()) {
+			BibTeXInfo const & xref = it->second;
+			vector<docstring> const nxdata = getXRefs(xref, true);
+			if (!nxdata.empty())
+				result.insert(result.end(), nxdata.begin(), nxdata.end());
+		}
+	}
 	// Biblatex's xdata field. Infinitely nestable.
 	// XData field can consist of a comma-separated list of keys
 	vector<docstring> const xdatakeys = getVectorFromString(data["xdata"]);
