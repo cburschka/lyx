@@ -30,5 +30,8 @@ CiteFormat default
 	incollection %!insomething%
 	inproceedings %!insomething%
 
-	thesis %author%, %title% (%!location%{%school%[[%school%]][[%institution%]]}, %year%).{%note%[[ %note%]]}
+	!theses %author%, %title% (%!location%{%school%[[%school%]][[%institution%]]}, %year%).{%note%[[ %note%]]}
+	thesis %!theses%
+	phdthesis %!theses%
+	mastersthesis %!theses%
 End
