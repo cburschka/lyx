@@ -328,15 +328,15 @@ void InsetNote::validate(LaTeXFeatures & features) const
 {
 	switch (params_.type) {
 	case InsetNoteParams::Comment:
-		features.require("verbatim");
 		if (features.runparams().flavor == OutputParams::HTML)
 			// we do output this but set display to "none" by default,
 			// but people might want to use it.
 			InsetCollapsable::validate(features);
+		else
+			// Only do the requires
+			features.useInsetLayout(getLayout());
 		break;
 	case InsetNoteParams::Greyedout:
-		features.require("color");
-		features.require("lyxgreyedout");
 		InsetCollapsable::validate(features);
 		break;
 	case InsetNoteParams::Note:

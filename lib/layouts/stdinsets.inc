@@ -115,6 +115,7 @@ InsetLayout Note:Comment
 	LabelString           Comment
 	LatexType             environment
 	LatexName             comment
+	Requires	      verbatim
 	BgColor               commentbg
 	LabelFont
 	  Color               comment
@@ -150,6 +151,7 @@ InsetLayout Note:Greyedout
 	LabelString           Greyedout
 	LatexType             environment
 	LatexName             lyxgreyedout
+	Requires	      color,lyxgreyedout
 	BgColor               greyedoutbg
 	Font
 	  Color               greyedouttext
