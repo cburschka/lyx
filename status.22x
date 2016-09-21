@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.2.2.
+This file describes what has been done in the preparation of LyX 2.2.3.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance.
@@ -15,7 +15,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- .xlsx is now a suggested extension in the spreadsheet external template
 
 
 * TEX2LYX IMPROVEMENTS
@@ -23,28 +22,13 @@ What's new
 
 * USER INTERFACE
 
-- When changing zoom level, show current value in status bar (bug
-  10212).
-
-- Names containing @ are now recognised by the syntax highlighter in the
-  preamble.
-
-- Replace Insert>Caption submenu by a normal entry when there is only one
-  caption type.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Brazilian, French, German, Italian and Slovak user interface localization.
-
-- Updated French Customizaion, Math, Tutorial and UserGuide manuals.
-
-- Update beamer manual with regard to the new Separator usage.
 
 
 * BUILD/INSTALLATION
-
-- If available, use qtchooser to select correct Qt tools when configuring.
 
 
 
@@ -53,107 +37,26 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- We no longer attempt to convert images for which we cannot find an
-  input format.
-
-- Fixed fen2ascii script.
-
-- Fixed preview of external material with plaintext and DocBook.
-
-- Fixed substitution for $$Contents in external templates.
-
-- Fixed usage of new module "Title and Preamble Hacks" (bug 10320).
-
-- Fix error with older versions of the covington package in the
-  Linguistics module (bug 10340).
-
-- Fix LaTeX error with recent LuaTeX versions when using landscape.
-
-- Fix data loss with [ in first cell of aligned environment (bug 10361).
 
 
 * LYX2LYX
 
-- Fix hang with some IEEEtran documents (bug 10307).
-
-- Fix export of compressed files to previous versions that were not
-  recognised on windows (bug 10273).
 
 
 * USER INTERFACE
 
-- Avoid crashing in release mode if we stumble across an unrealized font.
 
-- Correctly return exit code from spawned processes on Windows (bug 10327).
-
-- Fix display of citations with two authors.
-
-- Fix display of multi-author citations when the GUI language is not English.
-
-- Fix bug where change tracking marks are lost under math insets (bug
-  10265).
-
-- Fix display glitch when switching to Description layout with an inset
-  at the beginning of the paragraph (bug 10163)
-
-- Fix display of label font for argument insets.
-
-- Keep leading whitespace when converting local layout.
-
-- Correct default font of beamer article layouts (bug 9977).
-
-- Remove extra whitespace around Preview and IPA insets (bug 10304).
-
-- Let M-x give focus to minibuffer when it is already open.
-
-- When doing a selection with Shift-click, make sure that the selection anchor
-  is correct.
-
-- Avoid to overwrite end-of-proof character with text on screen (bug
-  10344).
-
-- Use proper dialog titles in InsetParams-derived dialogs (bug 10329).
-
-- Fix "scroll here" feature of scrollbar (bug 10311).
-
-- Fix the minimum size of the citation dialog on first time (bug 10019).
-
-- When Enter does nothing (empty paragraph), do not record undo (bug 10089).
-
-- Remove duplicate context menu item for Argument insets (bug 10368).
-
-- Fix display of vertical lines inside math matrices (bug 10363).
 
 * INTERNALS
+
 
 
 * DOCUMENTATION AND LOCALIZATION
 
 
+
 * LYXHTML
 
-- Enable export of external material (bug 8693).
-
-- Fix problem with output of branches (bug 8022).
-
-- Fix output of table borders (bug 10154).
-
-- Fix display of several math symbols (bug 8844).
-
-- Use scaling factor for export of images (bug 8742).
-
-- Fix display of listings (bug 8362).
-
-- Fix output of floats, etc, inside environments (bug 9094).
-
-- Simplify XHTML output for floats, etc (bug 8605).
-
-- Add "dir='auto'" to body tag, which should help a lot with export of
-  RTL languages (bug 8279, partly).
-
-- Fix display of cases and matrices (bugs 8753, 8755).
-
-- Fixed output of logos to the TOC.
 
 
 * TEX2LYX
