@@ -1173,8 +1173,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	// Set the windows title
 	docstring title = buf.fileName().displayName(130) + from_ascii("[*]");
 #ifndef Q_WS_MAC
-	// — U+2014 EM DASH
-	title += from_ascii(" ") + char_type(0x2014) + from_ascii(" LyX");
+	title += from_ascii(" - LyX");
 #endif
 	setWindowTitle(toqstr(title));
 	// Sets the path for the window: this is used by OSX to
