@@ -50,9 +50,6 @@ Sublabel: erratic
 #################
 # Tests depending on local configuration, or the phase of the moon.
 
-# for unknonwn reasons, seminar fails at some places:
-export/examples/(|fr/)seminar_.*(dvi|pdf).*
-
 # Export fails the first time but works the second time. (Why?)
 export/doc/es/Customization_pdf4_texF
 
@@ -76,10 +73,10 @@ Sublabel: wrong_output
 # These tests are actually not "unreliable" (different result for different
 # runs) but *invalid* (not measuring what they should measure).
 
-# seminar.sty uses Postscript specials
-# -> wrong output with pdflatex/LuaTeX and DVI (missing landscape slides).
-export/examples/(|fr/)seminar_pdf[25].*
-export/examples/(|fr/)seminar_dvi.*
+# seminar.sty uses Postscript specials or PGF
+# -> wrong output with DVI (missing landscape slides).
+#    (currently) wrong output with LuaTeX (scaled with 0.5)
+export/examples/(|fr/)seminar_(dvi|pdf5).*
 
 # Babel-Spanish uses Babel's "strings" feature to define
 # separate auto-strings using UTF-8 literals.
