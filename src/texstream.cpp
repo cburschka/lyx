@@ -80,7 +80,8 @@ TexString otexstringstream::release()
 {
 	TexString ts{ods_.str(), TexRow()};
 	swap(ts.texrow, texrow());
-	ods_ = odocstringstream();
+	ods_.clear();
+	ods_.str(docstring());
 	return ts;
 }
 

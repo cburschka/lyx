@@ -89,6 +89,7 @@ public:
 	///
 	TexRow();
 
+#if !(defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6))
 	/// Copy can be expensive and is not usually useful for TexRow.
 	/// Force explicit copy, prefer move instead. This also prevents
 	/// move()s from being converted into copy silently.
@@ -96,6 +97,10 @@ public:
 	TexRow(TexRow && other) = default;
 	TexRow & operator=(TexRow const & other) = default;
 	TexRow & operator=(TexRow && other) = default;
+# else
+	//for gcc 4.6, nothing to do: it's enough to disable implicit copy during
+	// dev with more recent versions of gcc.
+#endif
 
 	/// Clears structure.
 	void reset();
@@ -204,6 +209,7 @@ struct TexString {
 	docstring str;
 	///
 	TexRow texrow;
+#if !(defined(__GNUC__) && (__GNUC__ == 4) && (__GNUC_MINOR__ == 6))
 	/// Copy can be expensive and is not usually useful for TexString.
 	/// Force explicit copy, prefer move instead. This also prevents
 	/// move()s from being converted into copy silently.
@@ -211,6 +217,10 @@ struct TexString {
 	TexString(TexString && other) = default;
 	TexString & operator=(TexString const & other) = default;
 	TexString & operator=(TexString && other) = default;
+# else
+	//for gcc 4.6, nothing to do: it's enough to disable implicit copy during
+	// dev with more recent versions of gcc.
+#endif
 	///
 	TexString() = default;
 	/// ensure that the string and the TexRow have as many newlines.
