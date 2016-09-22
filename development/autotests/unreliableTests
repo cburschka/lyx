@@ -51,7 +51,7 @@ Sublabel: erratic
 # Tests depending on local configuration, or the phase of the moon.
 
 # for unknonwn reasons, seminar fails at some places:
-export/examples/(|fr/)seminar_.*
+export/examples/(|fr/)seminar_.*(dvi|pdf).*
 
 # Export fails the first time but works the second time. (Why?)
 export/doc/es/Customization_pdf4_texF

@@ -93,13 +93,20 @@ export/export/WrongDfnTagHandling_xhtml
 # contains underscores etc.
 export/export/latex/LongestLabelWithUnderscore.*
 
+#9871 LyX sends invalid Unicode to iconv when converting to ASCII
+# most probably due to BabelPreamble code (language specific headings for
+# theorems, problems , ... are written in the language's default encoding 
+# if they contain non-ASCII characters)
+export/doc/(es|fr)/Additional_pdf4_texF
+
+
 Sublabel: ert
 #
 # Export failures due to "raw" LaTeX use in ERT or preamble code.
 # "Wontfix" if demonstrating correct use and OK in the default output format.
 
 # Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
-export/doc/(de|es|fr)/Additional_pdf4_texF
+export/doc/(de|es)/Additional_pdf4_texF
 
 # inputencoding="utf8-plain" with Xe/LuaTeX: characters with
 # Unicode point > 256 lead to errors with 8-bit fonts
