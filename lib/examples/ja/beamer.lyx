@@ -114,6 +114,7 @@ Beamerと\SpecialChar LyX
 \end_layout
 
 \begin_layout Frame
+
 \end_layout
 
 \begin_deeper
@@ -2361,13 +2362,21 @@ status open
 \end_layout
 
 \begin_layout Frame
-\begin_inset ERT
-status open
+\begin_inset Note Comment
+status collapsed
 
 \begin_layout Plain Layout
-
-%限定開示(uncover)と可視との違いを示すため
+限定開示(uncover)と可視との違いを示すため
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2407,6 +2416,7 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
+
 \end_layout
 
 \begin_deeper
@@ -3043,6 +3053,7 @@ status collapsed
 \end_layout
 
 \begin_layout Frame
+
 \end_layout
 
 \begin_deeper
@@ -3090,6 +3101,7 @@ status open
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
+
 \end_layout
 
 \begin_deeper
@@ -3915,6 +3927,7 @@ newblock
 \end_layout
 
 \begin_layout Frame
+
 \end_layout
 
 \begin_deeper
