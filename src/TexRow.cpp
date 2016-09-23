@@ -25,6 +25,7 @@
 #include "support/lassert.h"
 
 #include <algorithm>
+#include <iterator>
 #include <sstream>
 
 using namespace std;
