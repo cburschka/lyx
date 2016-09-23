@@ -99,15 +99,6 @@ export/export/latex/LongestLabelWithUnderscore.*
 # if they contain non-ASCII characters)
 export/doc/(es|fr)/Additional_pdf4_texF
 
-#10394 Do not error on missing characters in "nullfont".
-# "LaTeXing" seminar fails (except for LuaTeX) with 
-#    Missing character: There is no 0 in font nullfont!
-# due to a bug in PGF (https://sourceforge.net/p/pgf/bugs/314/)
-# However, these warnings can be safely ignored as PGF deliberately uses
-# "nullfont" to suppress output.
-#   http://tex.stackexchange.com/questions/121154/tikzpicture-options-causing-there-is-no-in-font-nullfont
-export/examples/(|fr/)seminar_.*(dvi|pdf|pdf[2-4]).*
-
 
 Sublabel: ert
 #

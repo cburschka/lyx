@@ -899,9 +899,11 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 						 from_local8bit("pdfTeX Error"),
 						 from_local8bit(token),
 						 child_name);
-			} else if (prefixIs(token, "Missing character: There is no ")) {
-				// XeTeX/LuaTeX error about missing glyph in selected font
-				// (bug 9610)
+			} else if (prefixIs(token, "Missing character: There is no ")
+					   && !contains(token, "nullfont")) {
+				// Warning about missing glyph in selected font
+				// may be dataloss (bug 9610)
+				// but can be ignored for 'nullfont' (bug 10394).
 				retval |= LATEX_ERROR;
 				terr.insertError(0,
 						 from_local8bit("Missing glyphs!"),
