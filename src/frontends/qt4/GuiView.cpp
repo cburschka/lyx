@@ -578,17 +578,7 @@ GuiView::GuiView(int id)
 	QFontMetrics const fm(statusBar()->fontMetrics());
 	int const roheight = max(int(d.normalIconSize), fm.height());
 	QSize const rosize(roheight, roheight);
-	QPixmap readonly = QPixmap(rosize);
-	QString imagedir = "images/";
-	FileName fname = imageLibFileSearch(imagedir, "emblem-readonly", "svgz");
-	QSvgRenderer renderer(toqstr(fname.absFileName()));
-	if (renderer.isValid()) {
-		readonly.fill(statusBar()->palette().color(QWidget::backgroundRole()));
-		QPainter painter(&readonly);
-		renderer.render(&painter);
-	} else {
-		readonly = getPixmap("images/", "emblem-readonly", "png").scaled(rosize, Qt::KeepAspectRatio);
-	}
+	QPixmap readonly = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")).pixmap(rosize);
 	read_only_ = new QLabel(statusBar());
 	read_only_->setPixmap(readonly);
 	read_only_->setScaledContents(true);
