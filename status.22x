@@ -20,6 +20,7 @@ What's new
 * TEX2LYX IMPROVEMENTS
 
 
+
 * USER INTERFACE
 
 - The title bar is now set according to platform UI. Read-only and
@@ -74,6 +75,12 @@ What's new
 - Fix logic of OK/Apply buttons in cross-references dialog (bug 10376).
 
 - Fix display of Examples and Sub-Examples labels in linguistics module.
+
+- LyX keyboard shortcuts now take precedence over Qt accelerators. In
+  particular, under KDE, the automatic accelerator reassignment no longer steals
+  keys from LyX shortcuts (but can still leave some accelerators
+  inoperable). (bug 10261, see http://www.lyx.org/trac/ticket/10261#comment:16
+  for a workaround to KDE's bug.)
 
 
 * INTERNALS
