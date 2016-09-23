@@ -277,20 +277,23 @@ void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams_in, docstring const & ldelim,
 		docstring const & rdelim, docstring const & presetarg) const
 {
-	odocstringstream ss;
-	otexstream ots(ss);
+	otexstringstream ots;
 	OutputParams runparams = runparams_in;
 	if (!pass_thru_chars_.empty())
 		runparams.pass_thru_chars += pass_thru_chars_;
 	InsetText::latex(ots, runparams);
-	docstring str = ss.str();
-	docstring const sep = str.empty() ? docstring() : from_ascii(", ");
-	if (!presetarg.empty())
-		str = presetarg + sep + str;
-	if (ldelim != "{" && support::contains(str, rdelim))
-		str = '{' + str + '}';
-	// TODO: append texrow information
-	os << ldelim << str << rdelim;
+	TexString ts = ots.release();
+	bool const add_braces = ldelim != "{" && support::contains(ts.str, rdelim);
+	os << ldelim;
+	if (add_braces)
+		os << '{';
+	os << presetarg;
+	if (!presetarg.empty() && !ts.str.empty())
+		os << ", ";
+	os << move(ts);
+	if (add_braces)
+		os << '}';
+	os << rdelim;
 }
 
 
