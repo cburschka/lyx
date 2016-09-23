@@ -23,9 +23,7 @@ namespace lyx {
 class InsetCaptionable : public InsetCollapsable
 {
 public:
-	InsetCaptionable(Buffer * buffer)
-		: InsetCollapsable(buffer), caption_type_("senseless") {}
-	InsetCaptionable(Buffer * buffer, std::string const & type)
+	InsetCaptionable(Buffer * buffer, std::string const & type = "senseless")
 		: InsetCollapsable(buffer), caption_type_(type) {}
 	///
 	std::string const & captionType() const { return caption_type_; }
@@ -33,6 +31,12 @@ public:
 	docstring floatName(std::string const & type) const;
 	///
 protected:
+	///
+	InsetCaption const * getCaptionInset() const;
+	///
+	docstring getCaptionText(OutputParams const &) const;
+	///
+	docstring getCaptionHTML(OutputParams const &) const;
 	///
 	virtual void setCaptionType(std::string const & type);
 	/// are our captions subcaptions?

@@ -18,6 +18,7 @@
 namespace lyx {
 
 class LaTeXFeatures;
+class TexString;
 
 /////////////////////////////////////////////////////////////////////////
 //
@@ -75,9 +76,9 @@ private:
 	///
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
-	docstring getCaption(OutputParams const &) const;
+	TexString getCaption(OutputParams const &) const;
 	///
-	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE; } 
+	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE; }
 
 	///
 	InsetListingsParams params_;

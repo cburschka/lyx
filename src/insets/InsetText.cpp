@@ -27,7 +27,6 @@
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
-#include "InsetCaption.h"
 #include "InsetList.h"
 #include "Intl.h"
 #include "Language.h"
@@ -1016,52 +1015,6 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 	docstring str = oss.str();
 	support::truncateWithEllipsis(str, len);
 	return str;
-}
-
-
-InsetCaption const * InsetText::getCaptionInset() const
-{
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	for (; pit != paragraphs().end(); ++pit) {
-		InsetList::const_iterator it = pit->insetList().begin();
-		for (; it != pit->insetList().end(); ++it) {
-			Inset & inset = *it->inset;
-			if (inset.lyxCode() == CAPTION_CODE) {
-				InsetCaption const * ins =
-					static_cast<InsetCaption const *>(it->inset);
-				return ins;
-			}
-		}
-	}
-	return 0;
-}
-
-
-docstring InsetText::getCaptionText(OutputParams const & runparams) const
-{
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	ins->getCaptionAsPlaintext(ods, runparams);
-	return ods.str();
-}
-
-
-docstring InsetText::getCaptionHTML(OutputParams const & runparams) const
-{
-	InsetCaption const * ins = getCaptionInset();
-	if (ins == 0)
-		return docstring();
-
-	odocstringstream ods;
-	XHTMLStream xs(ods);
-	docstring def = ins->getCaptionAsHTML(xs, runparams);
-	if (!def.empty())
-		// should already have been escaped
-		xs << XHTMLStream::ESCAPE_NONE << def << '\n';
-	return ods.str();
 }
 
 

@@ -15,12 +15,18 @@
 
 #include "InsetCaptionable.h"
 
+#include "InsetCaption.h"
+
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "FloatList.h"
+#include "InsetList.h"
+#include "output_xhtml.h"
 #include "TextClass.h"
 #include "TocBackend.h"
+
+#include "support/docstream.h"
 
 using namespace std;
 
@@ -41,6 +47,52 @@ docstring InsetCaptionable::floatName(string const & type) const
 	FloatList const & floats = bp.documentClass().floats();
 	FloatList::const_iterator it = floats[type];
 	return (it == floats.end()) ? from_utf8(type) : bp.B_(it->second.name());
+}
+
+
+InsetCaption const * InsetCaptionable::getCaptionInset() const
+{
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	for (; pit != paragraphs().end(); ++pit) {
+		InsetList::const_iterator it = pit->insetList().begin();
+		for (; it != pit->insetList().end(); ++it) {
+			Inset & inset = *it->inset;
+			if (inset.lyxCode() == CAPTION_CODE) {
+				InsetCaption const * ins =
+					static_cast<InsetCaption const *>(it->inset);
+				return ins;
+			}
+		}
+	}
+	return 0;
+}
+
+
+docstring InsetCaptionable::getCaptionText(OutputParams const & runparams) const
+{
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	ins->getCaptionAsPlaintext(ods, runparams);
+	return ods.str();
+}
+
+
+docstring InsetCaptionable::getCaptionHTML(OutputParams const & runparams) const
+{
+	InsetCaption const * ins = getCaptionInset();
+	if (ins == 0)
+		return docstring();
+
+	odocstringstream ods;
+	XHTMLStream xs(ods);
+	docstring def = ins->getCaptionAsHTML(xs, runparams);
+	if (!def.empty())
+		// should already have been escaped
+		xs << XHTMLStream::ESCAPE_NONE << def << '\n';
+	return ods.str();
 }
 
 

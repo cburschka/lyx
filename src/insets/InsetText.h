@@ -220,12 +220,6 @@ public:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 protected:
 	///
-	InsetCaption const * getCaptionInset() const;
-	///
-	docstring getCaptionText(OutputParams const &) const;
-	///
-	docstring getCaptionHTML(OutputParams const &) const;
-	///
 	void iterateForToc(DocIterator const & cdit, bool output_active,
 					   UpdateType utype) const;
 private:

@@ -30,6 +30,7 @@
 #include "output_xhtml.h"
 #include "OutputParams.h"
 #include "TextClass.h"
+#include "TexRow.h"
 #include "texstream.h"
 
 #include "support/debug.h"
@@ -222,13 +223,13 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	} else {
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
-		docstring const caption = getCaption(rp);
-		if (param_string.empty() && caption.empty())
+		TexString caption = getCaption(rp);
+		if (param_string.empty() && caption.str.empty())
 			os << breakln << "\\begin{lstlisting}\n";
 		else {
 			os << breakln << "\\begin{lstlisting}[";
-			if (!caption.empty()) {
-				os << "caption={" << caption << '}';
+			if (!caption.str.empty()) {
+				os << "caption={" << move(caption) << '}';
 				if (!param_string.empty())
 					os << ',';
 			}
@@ -388,17 +389,13 @@ bool InsetListings::showInsetDialog(BufferView * bv) const
 }
 
 
-docstring InsetListings::getCaption(OutputParams const & runparams) const
+TexString InsetListings::getCaption(OutputParams const & runparams) const
 {
-	if (paragraphs().empty())
-		return docstring();
-
 	InsetCaption const * ins = getCaptionInset();
 	if (ins == 0)
-		return docstring();
+		return TexString();
 
-	odocstringstream ods;
-	otexstream os(ods);
+	otexstringstream os;
 	ins->getArgs(os, runparams);
 	ins->getArgument(os, runparams);
 
@@ -407,8 +404,8 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 
 	// the caption may contain \label{} but the listings
 	// package prefer caption={}, label={}
-	docstring cap = ods.str();
-	if (!contains(to_utf8(cap), "\\label{"))
+	TexString cap = os.release();
+	if (!contains(cap.str, from_ascii("\\label{")))
 		return cap;
 	// convert from
 	//     blah1\label{blah2} blah3
@@ -420,7 +417,11 @@ docstring InsetListings::getCaption(OutputParams const & runparams) const
 	// NOTE that } is not allowed in blah2.
 	regex const reg("(.*)\\\\label\\{(.*?)\\}(.*)");
 	string const new_cap("$1$3},label={$2");
-	return from_utf8(regex_replace(to_utf8(cap), reg, new_cap));
+	// TexString validity: the substitution preserves the number of newlines.
+	// Moreover we assume that $2 does not contain newlines, so that the texrow
+	// information remains accurate.
+	cap.str = from_utf8(regex_replace(to_utf8(cap.str), reg, new_cap));
+	return cap;
 }
 
 

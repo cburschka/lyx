@@ -76,6 +76,8 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	// get contents of InsetText as LaTeX and plaintext
 	odocstringstream ourlatex;
+	// FIXME: do Tex/Row correspondence (I don't currently understand what is
+	// being generated from latexstr below)
 	otexstream ots(ourlatex);
 	InsetText::latex(ots, runparams);
 	odocstringstream ourplain;

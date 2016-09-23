@@ -18,6 +18,9 @@
 
 namespace lyx {
 
+class TexString;
+
+
 class InsetFloatParams
 {
 public:
@@ -107,9 +110,7 @@ private:
 	///
 	Inset * clone() const { return new InsetFloat(*this); }
 	///
-	docstring getCaption(OutputParams const &) const;
-	///
-	void getCaption(otexstream & os, OutputParams const & runparams) const;
+	TexString getCaption(OutputParams const &) const;
 
 	InsetFloatParams params_;
 };
