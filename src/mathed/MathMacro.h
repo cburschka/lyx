@@ -70,6 +70,8 @@ public:
 
 	///
 	void validate(LaTeXFeatures &) const;
+	///
+	mode_type currentMode() const;
 
 	///
 	void write(WriteStream & os) const;
