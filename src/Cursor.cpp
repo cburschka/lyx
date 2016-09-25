@@ -1479,7 +1479,8 @@ bool Cursor::macroModeClose()
 	bool keep_mathmode = it != words.end() && (it->second.inset == "font"
 						|| it->second.inset == "oldfont"
 						|| it->second.inset == "mbox");
-	bool ert_macro = !user_macro && it == words.end();
+	bool ert_macro = !user_macro && it == words.end()
+				     && !atom.nucleus()->asInsetMath();
 
 	if (in && in->currentMode() == Inset::TEXT_MODE
 	    && atom.nucleus()->currentMode() == Inset::MATH_MODE
