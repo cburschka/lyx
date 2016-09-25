@@ -21,7 +21,8 @@ namespace lyx {
 OutputParams::OutputParams(Encoding const * enc)
 	: flavor(LATEX), math_flavor(NotApplicable), nice(false), is_child(false),
 	  moving_arg(false), intitle(false), inulemcmd(0), local_font(0), master_language(0),
-	  encoding(enc), free_spacing(false), use_babel(false), use_polyglossia(false),
+	  encoding(enc), pushPolyglossiaLang(0), popPolyglossiaLang(0),
+	  free_spacing(false), use_babel(false), use_polyglossia(false),
 	  use_indices(false), use_japanese(false), linelen(0), depth(0),
 	  exportdata(new ExportData),
 	  inComment(false), inTableCell(NO), inFloat(NONFLOAT),

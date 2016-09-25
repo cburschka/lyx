@@ -29,6 +29,14 @@ class Paragraph;
 class OutputParams;
 class Text;
 
+/** Register a language switch when using polyglossia.
+ */
+void pushPolyglossiaLang(std::string const & lang);
+
+/** Unregister the last language switch when using polyglossia.
+ */
+void popPolyglossiaLang();
+
 /** Export optional and required arguments of the paragraph \p par.
     Non-existing required arguments are output empty: {}.
  */

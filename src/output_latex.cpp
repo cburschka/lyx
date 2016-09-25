@@ -478,6 +478,24 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 } // namespace anon
 
 
+void pushPolyglossiaLang(string const & lang_name)
+{
+	OutputState * state = getOutputState();
+
+	state->lang_switch_depth_.push(state->nest_level_);
+	state->open_polyglossia_lang_.push(lang_name);
+}
+
+
+void popPolyglossiaLang()
+{
+	OutputState * state = getOutputState();
+
+	state->lang_switch_depth_.pop();
+	state->open_polyglossia_lang_.pop();
+}
+
+
 void latexArgInsets(Paragraph const & par, otexstream & os,
 	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, string const & prefix)
 {
@@ -1265,7 +1283,14 @@ void latexParagraphs(Buffer const & buf,
 			  : subst(lang_begin_command, "$$lang", mainlang);
 		os << bc;
 		os << '\n';
+		if (runparams.use_polyglossia) {
+			state->lang_switch_depth_.push(state->nest_level_);
+			state->open_polyglossia_lang_.push(mainlang);
+		}
 	}
+
+	runparams.pushPolyglossiaLang = pushPolyglossiaLang;
+	runparams.popPolyglossiaLang = popPolyglossiaLang;
 
 	ParagraphList const & paragraphs = text.paragraphs();
 
