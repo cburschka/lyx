@@ -62,9 +62,9 @@ public:
 	/// The macros definitions needed by the document
 	docstring const getMacros() const;
 	/// Extra preamble code before babel is called
-	std::string const getBabelPresettings() const;
+	docstring const getBabelPresettings() const;
 	/// Extra preamble code after babel is called
-	std::string const getBabelPostsettings() const;
+	docstring const getBabelPostsettings() const;
 	/// Do we need to pass the languages to babel directly?
 	bool needBabelLangOptions() const;
 	/// Load AMS packages when appropriate
@@ -88,14 +88,13 @@ public:
 	/// Print requirements to lyxerr
 	void showStruct() const;
 	///
-	void addPreambleSnippet(std::string const & snippet, 
-	                        bool allowdupes = false);
+	void addPreambleSnippet(docstring const & snippet, bool allowdupes = false);
 	///
-	std::string getPreambleSnippets() const;
+	docstring getPreambleSnippets() const;
 	///
 	void addCSSSnippet(std::string const &);
 	///
-	std::string getCSSSnippets() const;
+	docstring getCSSSnippets() const;
 	/// Add a feature name requirements
 	void require(std::string const & name);
 	/// Add a set of feature names requirements
@@ -175,7 +174,7 @@ private:
 	///
 	Features features_;
 	/// Static preamble bits, from external templates, or anywhere else
-	typedef std::list<std::string> SnippetList;
+	typedef std::list<docstring> SnippetList;
 	///
 	SnippetList preamble_snippets_;
 	///

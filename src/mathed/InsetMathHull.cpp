@@ -955,14 +955,14 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 
 		if (type_ == hullRegexp) {
 			features.require("color");
-			string frcol = lcolor.getLaTeXName(Color_regexpframe);
-			string bgcol = "white";
+			docstring frcol = from_utf8(lcolor.getLaTeXName(Color_regexpframe));
+			docstring bgcol = from_ascii("white");
 			features.addPreambleSnippet(
-				string("\\newcommand{\\regexp}[1]{\\fcolorbox{")
-				+ frcol + string("}{")
-				+ bgcol + string("}{\\ensuremath{\\mathtt{#1}}}}"));
+				"\\newcommand{\\regexp}[1]{\\fcolorbox{"
+				+ frcol + "}{"
+				+ bgcol + "}{\\ensuremath{\\mathtt{#1}}}}");
 			features.addPreambleSnippet(
-				string("\\newcommand{\\endregexp}{}"));
+				from_ascii("\\newcommand{\\endregexp}{}"));
 		}
 
 		// Validation is necessary only if not using AMS math.

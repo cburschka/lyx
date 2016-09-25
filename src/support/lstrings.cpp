@@ -717,6 +717,12 @@ bool containsOnly(string const & s, string const & cset)
 }
 
 
+bool containsOnly(docstring const & s, string const & cset)
+{
+	return s.find_first_not_of(from_ascii(cset)) == string::npos;
+}
+
+
 // ale970405+lasgoutt-970425
 // rewritten to use new string (Lgb)
 string const token(string const & a, char delim, int n)

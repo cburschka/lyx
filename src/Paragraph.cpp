@@ -1412,8 +1412,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 					latexArgInsets(*owner_, os, rp, layout_->postcommandargs(), "post:");
 				}
 			}
-			string const snippet = to_utf8(ods.str());
-			features.addPreambleSnippet(snippet, true);
+			features.addPreambleSnippet(ods.str(), true);
 		}
 	}
 

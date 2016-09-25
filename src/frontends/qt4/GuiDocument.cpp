@@ -494,7 +494,7 @@ void PreambleModule::update(BufferParams const & params, BufferId id)
 
 void PreambleModule::apply(BufferParams & params)
 {
-	params.preamble = fromqstr(preambleTE->document()->toPlainText());
+	params.preamble = qstring_to_ucs4(preambleTE->document()->toPlainText());
 }
 
 
@@ -540,7 +540,8 @@ void LocalLayout::update(BufferParams const & params, BufferId id)
 
 void LocalLayout::apply(BufferParams & params)
 {
-	string const layout = fromqstr(locallayoutTE->document()->toPlainText());
+	docstring const layout =
+		qstring_to_ucs4(locallayoutTE->document()->toPlainText());
 	params.setLocalLayout(layout, false);
 }
 

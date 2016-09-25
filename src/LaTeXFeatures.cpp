@@ -586,8 +586,8 @@ bool LaTeXFeatures::isAvailable(string const & name)
 }
 
 
-void LaTeXFeatures::addPreambleSnippet(string const & preamble,
-		bool allowdupes)
+void LaTeXFeatures::addPreambleSnippet(docstring const & preamble,
+                                       bool allowdupes)
 {
 	SnippetList::const_iterator begin = preamble_snippets_.begin();
 	SnippetList::const_iterator end   = preamble_snippets_.end();
@@ -598,10 +598,11 @@ void LaTeXFeatures::addPreambleSnippet(string const & preamble,
 
 void LaTeXFeatures::addCSSSnippet(std::string const & snippet)
 {
+	docstring const u_snippet = from_ascii(snippet);
 	SnippetList::const_iterator begin = css_snippets_.begin();
 	SnippetList::const_iterator end   = css_snippets_.end();
-	if (find(begin, end, snippet) == end)
-		css_snippets_.push_back(snippet);
+	if (find(begin, end, u_snippet) == end)
+		css_snippets_.push_back(u_snippet);
 }
 
 
@@ -1150,9 +1151,9 @@ string const LaTeXFeatures::getPackages() const
 }
 
 
-string LaTeXFeatures::getPreambleSnippets() const
+docstring LaTeXFeatures::getPreambleSnippets() const
 {
-	ostringstream snip;
+	odocstringstream snip;
 	SnippetList::const_iterator pit  = preamble_snippets_.begin();
 	SnippetList::const_iterator pend = preamble_snippets_.end();
 	for (; pit != pend; ++pit)
@@ -1161,9 +1162,9 @@ string LaTeXFeatures::getPreambleSnippets() const
 }
 
 
-std::string LaTeXFeatures::getCSSSnippets() const
+docstring LaTeXFeatures::getCSSSnippets() const
 {
-	ostringstream snip;
+	odocstringstream snip;
 	SnippetList::const_iterator pit  = css_snippets_.begin();
 	SnippetList::const_iterator pend = css_snippets_.end();
 	for (; pit != pend; ++pit)
@@ -1178,7 +1179,7 @@ docstring const LaTeXFeatures::getMacros() const
 
 	if (!preamble_snippets_.empty()) {
 		macros << '\n';
-		macros << from_utf8(getPreambleSnippets());
+		macros << getPreambleSnippets();
 	}
 
 	if (mustProvide("papersize")) {
@@ -1346,15 +1347,13 @@ docstring const LaTeXFeatures::getMacros() const
 }
 
 
-string const LaTeXFeatures::getBabelPresettings() const
+docstring const LaTeXFeatures::getBabelPresettings() const
 {
-	ostringstream tmp;
+	odocstringstream tmp;
 
-	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end = UsedLanguages_.end();
-	for (; it != end; ++it)
-		if (!(*it)->babel_presettings().empty())
-			tmp << (*it)->babel_presettings() << '\n';
+	for (Language const * lang : UsedLanguages_)
+		if (!lang->babel_presettings().empty())
+			tmp << lang->babel_presettings() << '\n';
 	if (!params_.language->babel_presettings().empty())
 		tmp << params_.language->babel_presettings() << '\n';
 
@@ -1365,15 +1364,13 @@ string const LaTeXFeatures::getBabelPresettings() const
 }
 
 
-string const LaTeXFeatures::getBabelPostsettings() const
+docstring const LaTeXFeatures::getBabelPostsettings() const
 {
-	ostringstream tmp;
+	odocstringstream tmp;
 
-	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end = UsedLanguages_.end();
-	for (; it != end; ++it)
-		if (!(*it)->babel_postsettings().empty())
-			tmp << (*it)->babel_postsettings() << '\n';
+	for (Language const * lang : UsedLanguages_)
+		if (!lang->babel_postsettings().empty())
+			tmp << lang->babel_postsettings() << '\n';
 	if (!params_.language->babel_postsettings().empty())
 		tmp << params_.language->babel_postsettings() << '\n';
 

@@ -81,7 +81,7 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 						features.require(feat);
 					}
 				} else
-					features.addPreambleSnippet(mathpreamble);
+					features.addPreambleSnippet(from_utf8(mathpreamble));
 			}
 		}
 		// with utf8-plain, we do not load packages (see #7766)
@@ -96,7 +96,7 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 						features.require(feat);
 					}
 				} else
-					features.addPreambleSnippet(textpreamble);
+					features.addPreambleSnippet(from_utf8(textpreamble));
 			}
 		}
 	}

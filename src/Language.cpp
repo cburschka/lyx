@@ -169,11 +169,11 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_POSTBABELPREAMBLE:
 			babel_postsettings_ =
-				lex.getLongString("EndPostBabelPreamble");
+				lex.getLongString(from_ascii("EndPostBabelPreamble"));
 			break;
 		case LA_PREBABELPREAMBLE:
 			babel_presettings_ =
-				lex.getLongString("EndPreBabelPreamble");
+				lex.getLongString(from_ascii("EndPreBabelPreamble"));
 			break;
 		case LA_REQUIRES:
 			lex >> requires_;

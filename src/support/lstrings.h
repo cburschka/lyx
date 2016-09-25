@@ -151,8 +151,11 @@ inline bool contains(docstring const & a, char_type b)
 	return a.find(b) != docstring::npos;
 }
 
-///
+/// Returns true if the first argument is made of ascii chars given in the
+/// second argument.
 bool containsOnly(std::string const &, std::string const &);
+///
+bool containsOnly(docstring const &, std::string const &);
 
 /** Extracts a token from this string at the nth delim.
     Doesn't modify the original string. Similar to strtok.

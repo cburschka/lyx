@@ -304,7 +304,7 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 		os << altFont(osffont_).getLaTeXCode(dryrun, ot1, complete, sc, osf, nomath, scale);
 
 	if (!preamble_.empty())
-		os << preamble_;
+		os << to_utf8(preamble_);
 
 	return os.str();
 }
@@ -420,7 +420,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 			lex >> packageoption_;
 			break;
 		case LF_PREAMBLE:
-			preamble_ = lex.getLongString("EndPreamble");
+			preamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
 		case LF_PROVIDES: {
 			lex.eatLine();

@@ -718,28 +718,27 @@ docstring const Lexer::getDocString(bool trim) const
 // I would prefer to give a tag number instead of an explicit token
 // here, but it is not possible because Buffer::readDocument uses
 // explicit tokens (JMarc)
-string const Lexer::getLongString(string const & endtoken)
+docstring Lexer::getLongString(docstring const & endtoken)
 {
-	string str;
-	string prefix;
+	docstring str;
+	docstring prefix;
 	bool firstline = true;
 
 	while (pimpl_->is) { //< eatLine only reads from is, not from pushTok
 		if (!eatLine())
 			// blank line in the file being read
 			continue;
+		docstring tmpstr = getDocString();
+		docstring const token = trim(tmpstr, " \t");
 
-		string const token = trim(getString(), " \t");
-
-		LYXERR(Debug::PARSER, "LongString: `" << getString() << '\'');
+		LYXERR(Debug::PARSER, "LongString: `" << tmpstr << '\'');
 
 		// We do a case independent comparison, like searchKeyword does.
-		if (compare_ascii_no_case(token, endtoken) == 0)
+		if (compare_no_case(token, endtoken) == 0)
 			break;
 
-		string tmpstr = getString();
 		if (firstline) {
-			size_t i = tmpstr.find_first_not_of(' ');
+			size_t i = tmpstr.find_first_not_of(char_type(' '));
 			if (i != string::npos)
 				prefix = tmpstr.substr(0, i);
 			firstline = false;
@@ -755,7 +754,7 @@ string const Lexer::getLongString(string const & endtoken)
 	}
 
 	if (!pimpl_->is)
-		printError("Long string not ended by `" + endtoken + '\'');
+		printError("Long string not ended by `" + to_utf8(endtoken) + '\'');
 
 	return str;
 }

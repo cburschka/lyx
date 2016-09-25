@@ -78,7 +78,7 @@ public:
 
 	void operator()(value_type const & vt) {
 		os_ << "PreambleDef " << vt.first << '\n'
-		    << vt.second
+		    << to_utf8(vt.second)
 		    << "PreambleDefEnd" << endl;
 	}
 
@@ -99,7 +99,7 @@ public:
 		os_ << "Template " << et.lyxName << '\n'
 		    << "\tGuiName " << et.guiName << '\n'
 		    << "\tHelpText\n"
-		    << et.helpText
+		    << to_utf8(et.helpText)
 		    << "\tHelpTextEnd\n"
 		    << "\tInputFormat " << et.inputFormat << '\n'
 		    << "\tFileFilter " << et.fileRegExp << '\n'
@@ -228,16 +228,15 @@ TemplateManager::getTemplateByName(string const & name) const
 }
 
 
-string const
-TemplateManager::getPreambleDefByName(string const & name) const
+docstring TemplateManager::getPreambleDefByName(string const & name) const
 {
 	string const trimmed_name = trim(name);
 	if (trimmed_name.empty())
-		return string();
+		return docstring();
 
 	PreambleDefs::const_iterator it = preambledefs.find(trimmed_name);
 	if (it == preambledefs.end())
-		return string();
+		return docstring();
 
 	return it->second;
 }
@@ -278,7 +277,7 @@ void TemplateManager::readTemplates(FileName const & path)
 		case TM_PREAMBLEDEF: {
 			lex.next();
 			string const name = lex.getString();
-			preambledefs[name] = lex.getLongString(preamble_end_tag);
+			preambledefs[name] = lex.getLongString(from_ascii(preamble_end_tag));
 		}
 		break;
 
@@ -341,7 +340,7 @@ void Template::readTemplate(Lexer & lex)
 			break;
 
 		case TO_HELPTEXT:
-			helpText = lex.getLongString("HelpTextEnd");
+			helpText = lex.getLongString(from_ascii("HelpTextEnd"));
 			break;
 
 		case TO_INPUTFORMAT:

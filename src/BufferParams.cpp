@@ -1082,9 +1082,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// then the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
-		string const tmppreamble = rtrim(preamble, "\n");
+		docstring const tmppreamble = rtrim(preamble, "\n");
 		os << "\\begin_preamble\n"
-		   << tmppreamble
+		   << to_utf8(tmppreamble)
 		   << "\n\\end_preamble\n";
 	}
 
@@ -1135,20 +1135,20 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << convert<string>(maintain_unincluded_children) << '\n';
 
 	// local layout information
-	string const local_layout = getLocalLayout(false);
+	docstring const local_layout = getLocalLayout(false);
 	if (!local_layout.empty()) {
 		// remove '\n' from the end
-		string const tmplocal = rtrim(local_layout, "\n");
+		docstring const tmplocal = rtrim(local_layout, "\n");
 		os << "\\begin_local_layout\n"
-		   << tmplocal
+		   << to_utf8(tmplocal)
 		   << "\n\\end_local_layout\n";
 	}
-	string const forced_local_layout = getLocalLayout(true);
+	docstring const forced_local_layout = getLocalLayout(true);
 	if (!forced_local_layout.empty()) {
 		// remove '\n' from the end
-		string const tmplocal = rtrim(forced_local_layout, "\n");
+		docstring const tmplocal = rtrim(forced_local_layout, "\n");
 		os << "\\begin_forced_local_layout\n"
-		   << tmplocal
+		   << to_utf8(tmplocal)
 		   << "\n\\end_forced_local_layout\n";
 	}
 
@@ -1931,11 +1931,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		|| features.isRequired("varioref")
 		|| features.isRequired("vietnamese")
 		|| features.isRequired("japanese"))) {
+			lyxpreamble += features.getBabelPresettings();
 			// FIXME UNICODE
-			lyxpreamble += from_utf8(features.getBabelPresettings());
 			lyxpreamble += from_utf8(babelCall(language_options.str(),
 							   features.needBabelLangOptions())) + '\n';
-			lyxpreamble += from_utf8(features.getBabelPostsettings());
+			lyxpreamble += features.getBabelPostsettings();
 	}
 
 	// The optional packages;
@@ -2031,13 +2031,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			"User specified LaTeX commands.\n";
 
 		// Check if the user preamble contains uncodable glyphs
-		docstring const u_preamble = from_utf8(preamble);
 		odocstringstream user_preamble;
 		docstring uncodable_glyphs;
 		Encoding const * const enc = features.runparams().encoding;
 		if (enc) {
-			for (size_t n = 0; n < u_preamble.size(); ++n) {
-				char_type c = u_preamble[n];
+			for (size_t n = 0; n < preamble.size(); ++n) {
+				char_type c = preamble[n];
 				if (!enc->encodable(c)) {
 					docstring const glyph(1, c);
 					LYXERR0("Uncodable character '"
@@ -2054,7 +2053,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 					user_preamble.put(c);
 			}
 		} else
-			user_preamble << u_preamble;
+			user_preamble << preamble;
 
 		// On BUFFER_VIEW|UPDATE, warn user if we found uncodable glyphs
 		if (!features.runparams().dryrun && !uncodable_glyphs.empty()) {
@@ -2145,11 +2144,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		&& !features.isRequired("varioref")
 	    && !features.isRequired("vietnamese")
 	    && !features.isRequired("japanese")) {
+		lyxpreamble += features.getBabelPresettings();
 		// FIXME UNICODE
-		lyxpreamble += from_utf8(features.getBabelPresettings());
 		lyxpreamble += from_utf8(babelCall(language_options.str(),
 						   features.needBabelLangOptions())) + '\n';
-		lyxpreamble += from_utf8(features.getBabelPostsettings());
+		lyxpreamble += features.getBabelPostsettings();
 	}
 	if (features.isRequired("bicaption"))
 		lyxpreamble += "\\usepackage{bicaption}\n";
@@ -2331,10 +2330,11 @@ void BufferParams::makeDocumentClass(bool const clone)
 
 	TextClass::ReturnValues success = TextClass::OK;
 	if (!forced_local_layout_.empty())
-		success = doc_class_->read(forced_local_layout_, TextClass::MODULE);
+		success = doc_class_->read(to_utf8(forced_local_layout_),
+		                           TextClass::MODULE);
 	if (!local_layout_.empty() &&
 	    (success == TextClass::OK || success == TextClass::OK_OLDFORMAT))
-		success = doc_class_->read(local_layout_, TextClass::MODULE);
+		success = doc_class_->read(to_utf8(local_layout_), TextClass::MODULE);
 	if (success != TextClass::OK && success != TextClass::OK_OLDFORMAT) {
 		docstring const msg = _("Error reading internal layout information");
 		frontend::Alert::warning(_("Read Error"), msg);
@@ -2354,16 +2354,16 @@ bool BufferParams::citationModuleCanBeAdded(string const & modName) const
 }
 
 
-std::string BufferParams::getLocalLayout(bool forced) const
+docstring BufferParams::getLocalLayout(bool forced) const
 {
 	if (forced)
-		return doc_class_->forcedLayouts();
+		return from_utf8(doc_class_->forcedLayouts());
 	else
 		return local_layout_;
 }
 
 
-void BufferParams::setLocalLayout(string const & layout, bool forced)
+void BufferParams::setLocalLayout(docstring const & layout, bool forced)
 {
 	if (forced)
 		forced_local_layout_ = layout;
@@ -2576,7 +2576,7 @@ void BufferParams::readPreamble(Lexer & lex)
 		lyxerr << "Error (BufferParams::readPreamble):"
 			"consistency check failed." << endl;
 
-	preamble = lex.getLongString("\\end_preamble");
+	preamble = lex.getLongString(from_ascii("\\end_preamble"));
 }
 
 
@@ -2590,9 +2590,9 @@ void BufferParams::readLocalLayout(Lexer & lex, bool forced)
 
 	if (forced)
 		forced_local_layout_ =
-			lex.getLongString("\\end_forced_local_layout");
+			lex.getLongString(from_ascii("\\end_forced_local_layout"));
 	else
-		local_layout_ = lex.getLongString("\\end_local_layout");
+		local_layout_ = lex.getLongString(from_ascii("\\end_local_layout"));
 }
 
 

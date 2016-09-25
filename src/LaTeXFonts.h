@@ -133,7 +133,7 @@ private:
 	///
 	docstring requires_;
 	///
-	std::string preamble_;
+	docstring preamble_;
 	///
 	bool osfdefault_;
 	///

@@ -465,15 +465,15 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_PREAMBLE:
-			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			preamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
 
 		case LT_LANGPREAMBLE:
-			langpreamble_ = from_utf8(lex.getLongString("EndLangPreamble"));
+			langpreamble_ = lex.getLongString(from_ascii("EndLangPreamble"));
 			break;
 
 		case LT_BABELPREAMBLE:
-			babelpreamble_ = from_utf8(lex.getLongString("EndBabelPreamble"));
+			babelpreamble_ = lex.getLongString(from_ascii("EndBabelPreamble"));
 			break;
 
 		case LT_LABELTYPE:
@@ -635,7 +635,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 			
 		case LT_HTMLSTYLE:
-			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
+			htmlstyle_ = lex.getLongString(from_ascii("EndHTMLStyle"));
 			break;
 
 		case LT_HTMLFORCECSS:
@@ -643,7 +643,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_HTMLPREAMBLE:
-			htmlpreamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			htmlpreamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
 		
 		case LT_HTMLTITLE:

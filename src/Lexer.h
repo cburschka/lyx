@@ -147,7 +147,7 @@ public:
 	    each following line. This mechanism does not work
 	    perfectly if you use tabs.
 	*/
-	std::string const getLongString(std::string const & endtag);
+	docstring getLongString(docstring const & endtag);
 
 	/// Pushes a token list on a stack and replaces it with a new one.
 	template<int N> void pushTable(LexerKeyword (&table)[N])

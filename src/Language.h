@@ -72,9 +72,9 @@ public:
 	/// set variety (needed for rc.spellchecker_alt_lang)
 	void setVariety(std::string const & v) { variety_ = v; }
 	/// preamble settings after babel was called
-	std::string const babel_postsettings() const { return babel_postsettings_; }
+	docstring babel_postsettings() const { return babel_postsettings_; }
 	/// preamble settings before babel is called
-	std::string const babel_presettings() const { return babel_presettings_; }
+	docstring babel_presettings() const { return babel_presettings_; }
 	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
 	/// fontenc encoding(s)
@@ -119,9 +119,9 @@ private:
 	///
 	trivstring variety_;
 	///
-	trivstring babel_postsettings_;
+	trivdocstring babel_postsettings_;
 	///
-	trivstring babel_presettings_;
+	trivdocstring babel_presettings_;
 	///
 	trivstring fontenc_;
 	///

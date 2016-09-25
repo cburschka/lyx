@@ -53,7 +53,7 @@ public:
 	/// What will the button in the GUI say?
 	std::string guiName;
 	/// A short help text
-	std::string helpText;
+	docstring helpText;
 	/** The format of the input file. Can be "*", in which case we try and
 	 *   ascertain the format from the contents of the file.
 	 */
@@ -112,7 +112,7 @@ public:
 	/** Map from the LyX name of the preamble definition to the preamble
 	 *  definition itself.
 	 */
-	typedef std::map<std::string, std::string> PreambleDefs;
+	typedef std::map<std::string, docstring> PreambleDefs;
 
 	static TemplateManager & get();
 
@@ -124,7 +124,7 @@ public:
 	/** return the preamble definition by LyX name.
 	 *  If it isn't found, return an empty std::string.
 	 */
-	std::string const getPreambleDefByName(std::string const & name) const;
+	docstring getPreambleDefByName(std::string const & name) const;
 	/// noncopyable
 	TemplateManager(TemplateManager const &) = delete;
 	void operator=(TemplateManager const &) = delete;

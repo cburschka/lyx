@@ -828,10 +828,8 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 	external::TemplateManager & etm = external::TemplateManager::get();
 
-	it  = cit->second.preambleNames.begin();
-	end = cit->second.preambleNames.end();
-	for (; it != end; ++it) {
-		string const preamble = etm.getPreambleDefByName(*it);
+	for (string const & name : cit->second.preambleNames) {
+		docstring const preamble = etm.getPreambleDefByName(name);
 		if (!preamble.empty())
 			features.addPreambleSnippet(preamble);
 	}

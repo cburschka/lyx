@@ -909,8 +909,8 @@ int Buffer::readHeader(Lexer & lex)
 	params().html_latex_end.clear();
 	params().html_math_img_scale = 1.0;
 	params().output_sync_macro.erase();
-	params().setLocalLayout(string(), false);
-	params().setLocalLayout(string(), true);
+	params().setLocalLayout(docstring(), false);
+	params().setLocalLayout(docstring(), true);
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
@@ -1985,7 +1985,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
-		docstring preamble = from_utf8(params().preamble);
+		docstring preamble = params().preamble;
 		if (runparams.flavor != OutputParams::XML ) {
 			preamble += "<!ENTITY % output.print.png \"IGNORE\">\n";
 			preamble += "<!ENTITY % output.print.pdf \"IGNORE\">\n";
@@ -2088,14 +2088,14 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		if (!styles.empty())
 			os << "\n<!-- Text Class Preamble -->\n" << styles << '\n';
 
-		styles = from_utf8(features.getPreambleSnippets());
+		styles = features.getPreambleSnippets();
 		if (!styles.empty())
 			os << "\n<!-- Preamble Snippets -->\n" << styles << '\n';
 
 		// we will collect CSS information in a stream, and then output it
 		// either here, as part of the header, or else in a separate file.
 		odocstringstream css;
-		styles = from_utf8(features.getCSSSnippets());
+		styles = features.getCSSSnippets();
 		if (!styles.empty())
 			css << "/* LyX Provided Styles */\n" << styles << '\n';
 

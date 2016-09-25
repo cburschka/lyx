@@ -407,13 +407,13 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			bgcolor_ = lcolor.getFromLyXName(tmp);
 			break;
 		case IL_PREAMBLE:
-			preamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			preamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
 		case IL_BABELPREAMBLE:
-			babelpreamble_ = from_utf8(lex.getLongString("EndBabelPreamble"));
+			babelpreamble_ = lex.getLongString(from_ascii("EndBabelPreamble"));
 			break;
 		case IL_LANGPREAMBLE:
-			langpreamble_ = from_utf8(lex.getLongString("EndLangPreamble"));
+			langpreamble_ = lex.getLongString(from_ascii("EndLangPreamble"));
 			break;
 		case IL_REFPREFIX:
 			lex >> refprefix_;
@@ -440,10 +440,10 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			lex >> htmlisblock_;
 			break;
 		case IL_HTMLSTYLE:
-			htmlstyle_ = from_utf8(lex.getLongString("EndHTMLStyle"));
+			htmlstyle_ = lex.getLongString(from_ascii("EndHTMLStyle"));
 			break;
 		case IL_HTMLPREAMBLE:
-			htmlpreamble_ = from_utf8(lex.getLongString("EndPreamble"));
+			htmlpreamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();

@@ -159,9 +159,9 @@ public:
 	/// Clear the removed module list
 	void clearRemovedModules() { removed_modules_.clear(); }
 	/// Get the local layouts
-	std::string getLocalLayout(bool) const;
+	docstring getLocalLayout(bool forced) const;
 	/// Set the local layouts
-	void setLocalLayout(std::string const &, bool);
+	void setLocalLayout(docstring const & layout, bool forced);
 
 	/// returns \c true if the buffer contains a LaTeX document
 	bool isLatex() const;
@@ -321,7 +321,7 @@ public:
 	///
 	std::string origin;
 	///
-	std::string preamble;
+	docstring preamble;
 	///
 	std::string options;
 	/// use the class options defined in the layout?
@@ -541,9 +541,9 @@ private:
 	/// the user has chosen not to use
 	std::list<std::string> removed_modules_;
 	/// The local layouts without the forced ones
-	std::string local_layout_;
+	docstring local_layout_;
 	/// Forced local layouts only for reading (use getLocalLayout() instead)
-	std::string forced_local_layout_;
+	docstring forced_local_layout_;
 
 	/// the list of included children (for includeonly)
 	std::list<std::string> included_children_;

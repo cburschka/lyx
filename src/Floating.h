@@ -12,11 +12,13 @@
 #ifndef FLOATING_H
 #define FLOATING_H
 
+#include "support/strfwd.h"
+
 #include <string>
 
 
 namespace lyx {
-	
+
 /** This is a "float layout" object. It contains the parameters for how to
  *  handle the different kinds of floats, default ones and user created ones.
  *  Objects of this class is stored in a container in FloatList. The different
@@ -35,7 +37,7 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 std::string const & htmlStyle, bool usesfloat, bool isprefined,
+		 docstring const & htmlStyle, bool usesfloat, bool isprefined,
 		 bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }
@@ -69,7 +71,7 @@ public:
 	///
 	bool allowsSideways() const { return allowssideways_; }
 	/// style information, for preamble
-	std::string const & htmlStyle() const { return html_style_; }
+	docstring const & htmlStyle() const { return html_style_; }
 	/// class, for css, defaults to "float-" + type()
 	std::string const & htmlAttrib() const;
 	/// tag type, defaults to "div"
@@ -112,7 +114,7 @@ private:
 	///
 	mutable std::string defaultcssclass_;
 	/// 
-	std::string html_style_;
+	docstring html_style_;
 };
 
 

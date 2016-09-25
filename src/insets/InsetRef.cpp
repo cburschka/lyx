@@ -323,14 +323,14 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
-		string const fcmd = to_utf8(getFormattedCmd(data, label, prefix));
+		docstring const fcmd = getFormattedCmd(data, label, prefix);
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
 			if (prefix == "cha")
-				features.addPreambleSnippet("\\let\\charef=\\chapref");
+				features.addPreambleSnippet(from_ascii("\\let\\charef=\\chapref"));
 			else if (!prefix.empty()) {
-				string lcmd = "\\AtBeginDocument{\\providecommand" + 
-						fcmd + "[1]{\\ref{" + to_utf8(prefix) + ":#1}}}";
+				docstring lcmd = "\\AtBeginDocument{\\providecommand" +
+						fcmd + "[1]{\\ref{" + prefix + ":#1}}}";
 				features.addPreambleSnippet(lcmd);
 			}
 		} else {
@@ -338,7 +338,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 			// prettyref uses "cha" for chapters, so we provide a kind of
 			// translation.
 			if (prefix == "chap")
-				features.addPreambleSnippet("\\let\\pr@chap=\\pr@cha");
+				features.addPreambleSnippet(from_ascii("\\let\\pr@chap=\\pr@cha"));
 		}
 	} else if (cmd == "eqref" && !buffer().params().use_refstyle)
 		// with refstyle, we simply output "(\ref{label})"

@@ -539,7 +539,7 @@ void GuiExternal::updateContents()
 void GuiExternal::updateTemplate()
 {
 	external::Template templ = getTemplate(externalCO->currentIndex());
-	externalTB->setPlainText(qt_(templ.helpText));
+	externalTB->setPlainText(toqstr(translateIfPossible(templ.helpText)));
 
 	// Ascertain which (if any) transformations the template supports
 	// and disable tabs and Group Boxes hosting unsupported transforms.
