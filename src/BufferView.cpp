@@ -495,9 +495,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 
 	// updateMetrics() does not update paragraph position
 	// This is done at draw() time. So we need a redraw!
-	// We pass true so that metrics are computed for the sake
-	// of having MacroData updated.
-	buffer_.changed(true);
+	buffer_.changed(false);
 
 	if (needsFitCursor()) {
 		// The cursor is off screen so ensure it is visible.
@@ -2167,9 +2165,7 @@ void BufferView::updateHoveredInset() const
 
 		// This event (moving without mouse click) is not passed further.
 		// This should be changed if it is further utilized.
-		// We pass true so that metrics are computed for the sake
-		// of having MacroData updated.
-		buffer_.changed(true);
+		buffer_.changed(false);
 	}
 }
 

@@ -939,11 +939,11 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	bool user_macro = !MacroTable::globalMacros().get(name());
-	bool textmode_macro = user_macro ? false : d->macro_ && d->macro_->symbol()
-				&& d->macro_->symbol()->extra == "textmode";
-	bool needs_mathmode = user_macro ? bool(d->macro_) : d->macro_ && (!d->macro_->symbol()
-				|| d->macro_->symbol()->extra != "textmode");
+	MacroData const * data = MacroTable::globalMacros().get(name());
+	bool textmode_macro = data && data->symbol()
+				   && data->symbol()->extra == "textmode";
+	bool needs_mathmode = data && (!data->symbol()
+				       || data->symbol()->extra != "textmode");
 
 	MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
 
