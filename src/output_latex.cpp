@@ -1289,9 +1289,6 @@ void latexParagraphs(Buffer const & buf,
 		}
 	}
 
-	runparams.pushPolyglossiaLang = pushPolyglossiaLang;
-	runparams.popPolyglossiaLang = popPolyglossiaLang;
-
 	ParagraphList const & paragraphs = text.paragraphs();
 
 	if (runparams.par_begin == runparams.par_end) {

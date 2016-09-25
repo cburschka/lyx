@@ -141,16 +141,6 @@ public:
 	 */
 	mutable Encoding const * encoding;
 
-	/** Pointer to a function for registering a language switch
-	    when using polyglossia.
-	*/
-	mutable void (* pushPolyglossiaLang)(std::string const & lang_name);
-
-	/** Pointer to a function for unregistering  the last language
-	    switch when using polyglossia.
-	*/
-	mutable void (* popPolyglossiaLang)();
-
 	/** free_spacing == true means that the inset is in a free-spacing
 	    paragraph.
 	*/
