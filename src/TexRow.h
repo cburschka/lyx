@@ -199,7 +199,7 @@ private:
 
 
 /// TexString : dumb struct to pass around docstrings with TexRow information.
-/// They are best created using oTexStringstream.
+/// They are best created using otexstringstream.
 /// They can be output to otexrowstreams and otexstreams.
 /// A valid TexString has as many newlines in str as in texrow. Be careful not
 /// to introduce a mismatch between the line and the row counts, as this will
@@ -221,9 +221,13 @@ struct TexString {
 	//for gcc 4.6, nothing to do: it's enough to disable implicit copy during
 	// dev with more recent versions of gcc.
 #endif
-	///
+	/// Empty TexString
 	TexString() = default;
-	/// ensure that the string and the TexRow have as many newlines.
+	/// Texstring containing str and TexRow with enough lines which are empty
+	explicit TexString(docstring str);
+	/// Texstring containing str and texrow. Must be valid.
+	TexString(docstring str, TexRow texrow);
+	/// Ensure that the string and the TexRow have as many newlines.
 	void validate();
 };
 

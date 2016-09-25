@@ -27,6 +27,7 @@ class Buffer;
 class BufferParams;
 class InsetLayout;
 class Language;
+class TexString;
 
 /** The packages and commands that a buffer needs. This class
  *  contains a list<string>.  Each of the LaTeX packages that a buffer needs
@@ -60,7 +61,7 @@ public:
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document
-	docstring const getMacros() const;
+	TexString getMacros() const;
 	/// Extra preamble code before babel is called
 	docstring const getBabelPresettings() const;
 	/// Extra preamble code after babel is called
@@ -84,13 +85,15 @@ public:
 	/// Include a file for use with the SGML entities
 	void includeFile(docstring const & key, std::string const & name);
 	/// The float definitions.
-	void getFloatDefinitions(odocstream & os) const;
+	void getFloatDefinitions(otexstream & os) const;
 	/// Print requirements to lyxerr
 	void showStruct() const;
-	///
+	/// Add preamble snippet with TexRow information
+	void addPreambleSnippet(TexString snippet, bool allowdupes = false);
+	/// Add preamble snippet without TexRow information
 	void addPreambleSnippet(docstring const & snippet, bool allowdupes = false);
 	///
-	docstring getPreambleSnippets() const;
+	TexString getPreambleSnippets() const;
 	///
 	void addCSSSnippet(std::string const &);
 	///
@@ -174,7 +177,7 @@ private:
 	///
 	Features features_;
 	/// Static preamble bits, from external templates, or anywhere else
-	typedef std::list<docstring> SnippetList;
+	typedef std::list<TexString> SnippetList;
 	///
 	SnippetList preamble_snippets_;
 	///

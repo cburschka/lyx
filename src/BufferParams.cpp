@@ -1994,34 +1994,37 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "\\usepackage[dot]{bibtopic}\n";
 
 	// Will be surrounded by \makeatletter and \makeatother when not empty
-	docstring atlyxpreamble;
+	otexstringstream atlyxpreamble;
 
 	// Some macros LyX will need
-	docstring tmppreamble(features.getMacros());
-
-	if (!tmppreamble.empty())
-		atlyxpreamble += "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-			"LyX specific LaTeX commands.\n"
-			+ tmppreamble + '\n';
-
+	{
+		TexString tmppreamble = features.getMacros();
+		if (!tmppreamble.str.empty())
+			atlyxpreamble << "\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+			                 "LyX specific LaTeX commands.\n"
+			              << move(tmppreamble)
+			              << '\n';
+	}
 	// the text class specific preamble
-	tmppreamble = features.getTClassPreamble();
-	if (!tmppreamble.empty())
-		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-			"Textclass specific LaTeX commands.\n"
-			+ tmppreamble + '\n';
-
+	{
+		docstring tmppreamble = features.getTClassPreamble();
+		if (!tmppreamble.empty())
+			atlyxpreamble << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+			                 "Textclass specific LaTeX commands.\n"
+			              << tmppreamble
+			              << '\n';
+	}
 	// suppress date if selected
 	// use \@ifundefined because we cannot be sure that every document class
 	// has a \date command
 	if (suppress_date)
-		atlyxpreamble += "\\@ifundefined{date}{}{\\date{}}\n";
+		atlyxpreamble << "\\@ifundefined{date}{}{\\date{}}\n";
 
 	/* the user-defined preamble */
 	if (!containsOnly(preamble, " \n\t")) {
 		// FIXME UNICODE
-		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-			"User specified LaTeX commands.\n";
+		atlyxpreamble << "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
+		                 "User specified LaTeX commands.\n";
 
 		// Check if the user preamble contains uncodable glyphs
 		odocstringstream user_preamble;
@@ -2064,7 +2067,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				    "preamble code accordingly."),
 				  uncodable_glyphs));
 		}
-		atlyxpreamble += user_preamble.str() + '\n';
+		atlyxpreamble << user_preamble.str() << '\n';
 	}
 
 	// footmisc must be loaded after setspace
@@ -2072,7 +2075,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// preamble. For that reason we also pass the options via
 	// \PassOptionsToPackage in getPreamble() and not here.
 	if (features.mustProvide("footmisc"))
-		atlyxpreamble += "\\usepackage{footmisc}\n";
+		atlyxpreamble << "\\usepackage{footmisc}\n";
 
 	// subfig loads internally the LaTeX package "caption". As
 	// caption is a very popular package, users will load it in
@@ -2084,11 +2087,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// koma's own caption commands are used instead of caption. We
 	// use \PassOptionsToPackage here because the user could have
 	// already loaded subfig in the preamble.
-	if (features.mustProvide("subfig")) {
-		atlyxpreamble += "\\@ifundefined{showcaptionsetup}{}{%\n"
-			" \\PassOptionsToPackage{caption=false}{subfig}}\n"
-			"\\usepackage{subfig}\n";
-	}
+	if (features.mustProvide("subfig"))
+		atlyxpreamble << "\\@ifundefined{showcaptionsetup}{}{%\n"
+		                 " \\PassOptionsToPackage{caption=false}{subfig}}\n"
+		                 "\\usepackage{subfig}\n";
 
 	// Itemize bullet settings need to be last in case the user
 	// defines their own bullets that use a package included
@@ -2123,13 +2125,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	if (!bullets_def.empty())
-		atlyxpreamble += bullets_def + "}\n\n";
+		atlyxpreamble << bullets_def << "}\n\n";
 
-	if (!atlyxpreamble.empty()) {
+	if (!atlyxpreamble.empty())
 		os << "\n\\makeatletter\n"
-		   << atlyxpreamble
+		   << atlyxpreamble.release()
 		   << "\\makeatother\n\n";
-	}
 
 	// We try to load babel late, in case it interferes with other packages.
 	// Jurabib, hyperref, varioref, bicaption and listings (bug 8995) have to be

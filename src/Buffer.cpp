@@ -1902,8 +1902,6 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 	} // output_preamble
 
-	os.texrow().start(paragraphs().begin()->id(), 0);
-
 	LYXERR(Debug::INFO, "preamble finished, now the body.");
 
 	// the real stuff
@@ -2088,7 +2086,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 		if (!styles.empty())
 			os << "\n<!-- Text Class Preamble -->\n" << styles << '\n';
 
-		styles = features.getPreambleSnippets();
+		styles = features.getPreambleSnippets().str;
 		if (!styles.empty())
 			os << "\n<!-- Preamble Snippets -->\n" << styles << '\n';
 

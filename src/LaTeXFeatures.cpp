@@ -30,6 +30,8 @@
 #include "Lexer.h"
 #include "LyXRC.h"
 #include "TextClass.h"
+#include "TexRow.h"
+#include "texstream.h"
 
 #include "insets/InsetLayout.h"
 
@@ -586,24 +588,60 @@ bool LaTeXFeatures::isAvailable(string const & name)
 }
 
 
-void LaTeXFeatures::addPreambleSnippet(docstring const & preamble,
-                                       bool allowdupes)
+namespace {
+
+void addSnippet(std::list<TexString> & list, TexString ts, bool allow_dupes)
 {
-	SnippetList::const_iterator begin = preamble_snippets_.begin();
-	SnippetList::const_iterator end   = preamble_snippets_.end();
-	if (allowdupes || find(begin, end, preamble) == end)
-		preamble_snippets_.push_back(preamble);
+	if (allow_dupes ||
+	    // test the absense of duplicates, i.e. elements with same str
+	    none_of(list.begin(), list.end(), [&](TexString const & ts2){
+			    return ts.str == ts2.str;
+		    })
+	    )
+		list.push_back(move(ts));
+}
+
+
+TexString getSnippets(std::list<TexString> const & list)
+{
+	otexstringstream snip;
+	for (TexString const & ts : list)
+		snip << TexString(ts) << '\n';
+	return snip.release();
+}
+
+} //anon namespace
+
+
+void LaTeXFeatures::addPreambleSnippet(TexString ts, bool allow_dupes)
+{
+	addSnippet(preamble_snippets_, move(ts), allow_dupes);
+}
+
+
+void LaTeXFeatures::addPreambleSnippet(docstring const & str, bool allow_dupes)
+{
+	addSnippet(preamble_snippets_, TexString(str), allow_dupes);
 }
 
 
 void LaTeXFeatures::addCSSSnippet(std::string const & snippet)
 {
-	docstring const u_snippet = from_ascii(snippet);
-	SnippetList::const_iterator begin = css_snippets_.begin();
-	SnippetList::const_iterator end   = css_snippets_.end();
-	if (find(begin, end, u_snippet) == end)
-		css_snippets_.push_back(u_snippet);
+	addSnippet(css_snippets_, TexString(from_ascii(snippet)), false);
 }
+
+
+TexString LaTeXFeatures::getPreambleSnippets() const
+{
+	return getSnippets(preamble_snippets_);
+}
+
+
+docstring LaTeXFeatures::getCSSSnippets() const
+{
+	return getSnippets(css_snippets_).str;
+}
+
 
 
 void LaTeXFeatures::useFloat(string const & name, bool subfloat)
@@ -1151,31 +1189,9 @@ string const LaTeXFeatures::getPackages() const
 }
 
 
-docstring LaTeXFeatures::getPreambleSnippets() const
+TexString LaTeXFeatures::getMacros() const
 {
-	odocstringstream snip;
-	SnippetList::const_iterator pit  = preamble_snippets_.begin();
-	SnippetList::const_iterator pend = preamble_snippets_.end();
-	for (; pit != pend; ++pit)
-		snip << *pit << '\n';
-	return snip.str();
-}
-
-
-docstring LaTeXFeatures::getCSSSnippets() const
-{
-	odocstringstream snip;
-	SnippetList::const_iterator pit  = css_snippets_.begin();
-	SnippetList::const_iterator pend = css_snippets_.end();
-	for (; pit != pend; ++pit)
-		snip << *pit << '\n';
-	return snip.str();
-}
-
-
-docstring const LaTeXFeatures::getMacros() const
-{
-	odocstringstream macros;
+	otexstringstream macros;
 
 	if (!preamble_snippets_.empty()) {
 		macros << '\n';
@@ -1319,7 +1335,7 @@ docstring const LaTeXFeatures::getMacros() const
 		macros << changetracking_dvipost_def;
 
 	if (mustProvide("ct-xcolor-ulem")) {
-		streamsize const prec = macros.precision(2);
+		streamsize const prec = macros.os().precision(2);
 
 		RGBColor cadd = rgbFromHexName(lcolor.getX11Name(Color_addedtext));
 		macros << "\\providecolor{lyxadded}{rgb}{"
@@ -1329,7 +1345,7 @@ docstring const LaTeXFeatures::getMacros() const
 		macros << "\\providecolor{lyxdeleted}{rgb}{"
 		       << cdel.r / 255.0 << ',' << cdel.g / 255.0 << ',' << cdel.b / 255.0 << "}\n";
 
-		macros.precision(prec);
+		macros.os().precision(prec);
 
 		if (isRequired("hyperref"))
 			macros << changetracking_xcolor_ulem_hyperref_def;
@@ -1343,7 +1359,7 @@ docstring const LaTeXFeatures::getMacros() const
 	if (mustProvide("rtloutputdblcol"))
 		macros << rtloutputdblcol_def;
 
-	return macros.str();
+	return macros.release();
 }
 
 
@@ -1755,7 +1771,7 @@ void LaTeXFeatures::showStruct() const
 {
 	lyxerr << "LyX needs the following commands when LaTeXing:"
 	       << "\n***** Packages:" << getPackages()
-	       << "\n***** Macros:" << to_utf8(getMacros())
+	       << "\n***** Macros:" << to_utf8(getMacros().str)
 	       << "\n***** Textclass stuff:" << to_utf8(getTClassPreamble())
 	       << "\n***** done." << endl;
 }
@@ -1779,7 +1795,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 }
 
 
-void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
+void LaTeXFeatures::getFloatDefinitions(otexstream & os) const
 {
 	FloatList const & floats = params_.documentClass().floats();
 

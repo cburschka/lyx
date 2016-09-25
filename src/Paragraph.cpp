@@ -1386,8 +1386,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// switching machinery of odocstream. Therefore the
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
-		odocstringstream ods;
-		otexstream os(ods);
+		otexstringstream os;
 		if (is_command) {
 			os << '\\' << from_ascii(layout_->latexname());
 			// we have to provide all the optional arguments here, even though
@@ -1400,19 +1399,21 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			}
 			os << from_ascii(layout_->latexparam());
 		}
-		docstring::size_type const length = ods.str().length();
+		size_t const length = os.length();
 		// this will output "{" at the beginning, but not at the end
 		owner_->latex(bp, f, os, features.runparams(), 0, -1, true);
-		if (ods.str().length() > length) {
+		if (os.length() > length) {
 			if (is_command) {
-				ods << '}';
+				// FIXME: why does it has to be os.os() (equivalent to ods
+				// before)?
+				os.os() << '}';
 				if (!layout_->postcommandargs().empty()) {
 					OutputParams rp = features.runparams();
 					rp.local_font = &owner_->getFirstFontSettings(bp);
 					latexArgInsets(*owner_, os, rp, layout_->postcommandargs(), "post:");
 				}
 			}
-			features.addPreambleSnippet(ods.str(), true);
+			features.addPreambleSnippet(os.release(), true);
 		}
 	}
 

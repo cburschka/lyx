@@ -34,6 +34,20 @@ using namespace std;
 namespace lyx {
 
 
+TexString::TexString(docstring s)
+	: str(move(s)), texrow(TexRow())
+{
+	texrow.setRows(1 + count(str.begin(), str.end(), '\n'));
+}
+
+
+TexString::TexString(docstring s, TexRow t)
+	: str(move(s)), texrow(move(t))
+{
+	validate();
+}
+
+
 void TexString::validate()
 {
 	size_t lines = 1 + count(str.begin(), str.end(), '\n');

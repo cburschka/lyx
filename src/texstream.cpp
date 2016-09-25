@@ -78,8 +78,9 @@ size_t otexstringstream::length()
 
 TexString otexstringstream::release()
 {
-	TexString ts{ods_.str(), TexRow()};
-	swap(ts.texrow, texrow());
+	TexString ts(ods_.str(), move(texrow()));
+	// reset this
+	texrow() = TexRow();
 	ods_.clear();
 	ods_.str(docstring());
 	return ts;
