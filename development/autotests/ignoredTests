@@ -5,13 +5,44 @@
 # Combinations matching these patterns will be skipped
 # by the cmake test configuration.
 
-# latex8.sty is obsolete and replaced by IEEEconf.
-check_load/templates/attic/latex8
-export/templates/attic/latex8_pdf.*
-export/templates/attic/latex8_(dvi|dvi3_.*)
 
-# aastex.cls is obsolete and replaced by aastex6.cls
-export/doc/attic/aastex6_sample_(dvi|pdf).*
+# ================================================
+Sublabel: problematic
+# Documents that cause problems for the test suite
+# ================================================
+
+# Endless loop after the third roundtrip
+export/templates/IEEEtran-Journal_lyx16
+
+# problems exporting to lyx16x
+export/examples/(Literate|noweb2lyx)_lyx16
+
+# Ignore MergedManuals_xhtml because the test is very time-consuming
+# and the underlying subdocuments are already tested
+export/doc/(ja/|)MergedManuals_xhtml
+
+
+# ===========================================
+Sublabel: special
+# Documents that do not work with all exports
+# ===========================================
+
+# Inside these two files, we state that they should only be expected
+# to work with pdflatex and possibly lualatex.
+export/examples/PDF-form_(dvi.*|pdf[^25]*)
+export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
+export/examples/(|de/|fr/)PDF-comment_pdf5_texF
+
+# Document uses Postscript specials
+# Does not compile with pdflatex (see note in the document source).
+export/examples/instant_preview_(dvi3|pdf4)_systemF
+export/examples/instant_preview_pdf[25].*
+export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
+export/examples/fr/exemple-powerdot_pdf[25].*
+
+# requires jss.cls (not on CTAN)
+# "All documents need to be processed by pdflatex" [jss.pdf]
+export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 
 # CJK fails with LuaTeX or XeTeX and 8-bit fonts:
 export/examples/ko/splash.*texF
@@ -34,27 +65,32 @@ export/examples/springer/svmono_(acknow|acronym|appendix|chapter|dedication|fore
 export/examples/springer/svmult_(acknow|acronym|appendix|cblist|dedication|foreword|glossary|part|preface|referenc)_lyx[0-9][0-9]
 export/examples/thesis/(Acknowledgments|Appendix|Summary|chapter-[12])_lyx[0-9][0-9]
 
-# Endless loop after the third roundtrip
-export/templates/IEEEtran-Journal_lyx16
-
-#
-# problems exporting to lyx16x
-export/examples/(Literate|noweb2lyx)_lyx16
-
 # Document class "Docbook article (SGML)" does not work with LaTeX:
 export/examples/docbook_article_(dvi3|pdf[245]).*
 export/templates/DocBook_article_(dvi3|pdf[245]).*
 
-# Ignore MergedManuals_xhtml because the test is very time-consuming
-# and the underlying subdocuments are already tested
-export/doc/(ja/|)MergedManuals_xhtml
-
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
 
-# Sublabel: irrelevant
-# Dedicated test samples that don't need testing in all variants:
-# ===============================================================
+
+# ============================================================
+Sublabel: obsolete
+# Documents relying on no longer available packages or classes
+# ============================================================
+
+# latex8.sty is obsolete and replaced by IEEEconf.
+check_load/templates/attic/latex8
+export/templates/attic/latex8_pdf.*
+export/templates/attic/latex8_(dvi|dvi3_.*)
+
+# aastex.cls is obsolete and replaced by aastex6.cls
+export/doc/attic/aastex6_sample_(dvi|pdf).*
+
+
+# ==============================================================
+Sublabel: irrelevant
+# Dedicated test samples that don't need testing in all variants
+# ==============================================================
 
 # Dedicated test samples for LaTeX:
 # 

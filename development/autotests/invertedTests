@@ -16,7 +16,6 @@ Sublabel: todo
 
 # Missing characters (U+0361, U+1E61) in LM,
 # set different system font in the source?
-# + language nesting problem (may disappear after completed translation)
 export/doc/(de/|fr/)Customization_.*_systemF
 
 # Error in Japanese document if LyX-logo is preceded by foreign language
@@ -124,18 +123,6 @@ Sublabel: texissues
 # Fails with ASCII (and hence also with XeTeX).
 export/doc/(|de/|es/|fr/)UserGuide_pdf4_texF
 
-# chemgreek incompatible with LuaTeX and TeX fonts
-# fixed in TeXLive 2016-01-07 (add to unreliable?)
-#export/examples/achemso_(dvi3|pdf5)_texF
-# Math depends on the mhchem package which loads chemgreek
-#export/doc/(|de/|es/|fr/)Math_(dvi3|pdf5)_texF
-
-# Inside these two files, we state that they should only be expected
-# to work with pdflatex and possibly lualatex.
-export/examples/PDF-form_(dvi.*|pdf[^25]*)
-export/examples/(|de/|fr/)PDF-comment_dvi3_.*F
-export/examples/(|de/|fr/)PDF-comment_pdf5_texF
-
 # Hebrew docs do not currently work with LuaTeX (will be fixed in TeXLive-16)
 # TODO: set working system fonts in the lyx sources
 export/.*/he/.*(dvi3|pdf5).*
@@ -148,22 +135,11 @@ export/.*/he/.*pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/splash_(dvi3|pdf[45])_texF
 
-# Document uses Postscript specials
-# Does not compile with pdflatex (see note in the document source).
-export/examples/instant_preview_(dvi3|pdf4)_systemF
-export/examples/instant_preview_pdf[25].*
-export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
-export/examples/fr/exemple-powerdot_pdf[25].*
-
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
 # seems to be polyglossia-related (dvi3 worked with babel)
 export/examples/H-P-statements_.*_systemF
-
-# requires jss.cls (not on CTAN)
-# "All documents need to be processed by pdflatex" [jss.pdf]
-export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 
 # tufte (partially) incompatible with latex and xelatex:
 # \MakeTextUppercase requires microtype.
@@ -201,9 +177,8 @@ export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 
 Sublabel: attic
 #
-# Documents in the attic.
-# Kept for reference and format conversion test.
-# However, most problems here are "wontfix".
+# Documents in the attic are kept for reference and format conversion test.
+# However, many problems here are "wontfix".
 
 # Fails because of missing .png graphic files.
 # They were replaced by .svgz, but, as this file is in the attic, we do not
@@ -215,5 +190,4 @@ export/doc/attic/eu_UserGuide_pdf[25].*
 # (i.e. could be ERT, package incompatiblity, ...)
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
-# for LuaTeX tests, the problem is 'Language bahasai not found in language.dat.lua'
 export/doc/attic/id_UserGuide_.*systemF
