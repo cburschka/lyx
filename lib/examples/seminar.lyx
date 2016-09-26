@@ -3,18 +3,13 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/
+\origin unavailable
 \textclass seminar
 \begin_preamble
 \renewcommand{\printlandscape}{\special{landscape}}
 
 % if slides come out in the viewer upside down, try:
 %\sliderotation{right}
-
-%\AtBeginDocument{%
-%  \pdfpageheight = \paperheight
-%  \pdfpagewidth = \paperwidth
-%}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -33,7 +28,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \graphics default
-\default_output_format pdf
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -68,7 +63,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -82,11 +77,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
-\tracking_changes false
+\tracking_changes true
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\output_changes false
 \html_be_strict false
+\author -1402925745 "Günter Milde"
 \end_header
 
 \begin_body
@@ -110,7 +106,13 @@ Günter Milde
 \end_layout
 
 \begin_layout Date
+
+\change_deleted -1402925745 1474889155
 10/10/2010
+\change_inserted -1402925745 1474889171
+2016/09/26
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -119,6 +121,8 @@ Günter Milde
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1474889091
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -127,8 +131,12 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+
+\change_deleted -1402925745 1474889091
 Basics
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -149,7 +157,23 @@ target "http://www.ctan.org/pkg/seminar"
 \end_inset
 
  class is designed to produce overhead slides (transparencies).
- For powerpoint-like presentations, use a 
+ 
+\change_inserted -1402925745 1474922761
+For PowerPoint-like presentations, a 
+\emph on
+presentation
+\emph default
+ document class like
+\family sans
+ beamer
+\family default
+ or
+\family sans
+ powerdot
+\family default
+ may be better suited.
+\change_deleted -1402925745 1474922603
+For powerpoint-like presentations, use a 
 \emph on
 presentation
 \emph default
@@ -162,6 +186,8 @@ presentation
  powerdot
 \family default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -179,13 +205,40 @@ Custom
 \end_inset
 
 Insets).
- 
+\change_inserted -1402925745 1474888427
+
 \end_layout
 
 \begin_layout Itemize
-It is really helpful to read the seminar handbook: 
-\family typewriter
 
+\change_inserted -1402925745 1474888428
+Virtually everything that can appear in normal \SpecialChar LaTeX
+ (except floats) can also
+ be on a slide.
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1474889216
+Additional styles: 
+\family sans
+SlideHeading, SlideSubheading
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\change_deleted -1402925745 1474890462
+It is really helpful to read t
+\change_inserted -1402925745 1474890371
+T
+\change_unchanged
+he seminar handbook
+\change_deleted -1402925745 1474890377
+:
+\change_unchanged
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
@@ -193,6 +246,10 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
 
 \end_inset
 
+
+\change_inserted -1402925745 1474890474
+ is somewhat outdated but still a helpful reading.
+\change_unchanged
 
 \end_layout
 
@@ -202,6 +259,46 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1402925745 1474922589
+\begin_inset Flex LandscapeSlide
+status open
+
+\begin_layout SlideHeading
+
+\change_inserted -1402925745 1474922589
+Warnings
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922589
+
+\family sans
+Seminar
+\family default
+ uses 
+\begin_inset CommandInset href
+LatexCommand href
+name "PGF"
+target "http://ctan.org/pkg/pgf"
+
+\end_inset
+
+ graphic specials: size and orientation of the slides show problems depending
+ on the output format and viewing application (see Troubleshooting below).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922589
+Assure that the document page margins are set to default.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \family sans
 Seminar
@@ -217,6 +314,16 @@ notes.
 \emph default
  (See Configuration below on how to print only slides, only notes, or both.)
  
+\change_inserted -1402925745 1474922061
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -1402925745 1474922061
+Configuration
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -224,10 +331,14 @@ notes.
 status open
 
 \begin_layout SlideHeading
+
+\change_deleted -1402925745 1474922059
 Configuration
+\change_unchanged
+
 \end_layout
 
-\begin_layout SlideSubHeading
+\begin_layout SlideHeading
 Output options
 \begin_inset CommandInset label
 LatexCommand label
@@ -257,37 +368,79 @@ Class
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -1402925745 1474889308
+notes Both notes and slides are printed (default).
+\end_layout
+
+\begin_layout Description
 slidesonly Only the slides are printed.
 \end_layout
 
 \begin_layout Description
 notesonly Only the notes are printed
+\change_inserted -1402925745 1474888348
+.
+\change_deleted -1402925745 1474920233
+
 \end_layout
 
-\begin_layout Description
+\begin_deeper
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474920182
 notes Both notes and slides are printed.
 \end_layout
 
+\end_deeper
 \begin_layout Description
 notesonly* Produces a slide marker for each slide environment
+\change_inserted -1402925745 1474888342
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-article Print as article (two-up).
+article Print as article (two-up
+\change_inserted -1402925745 1474922014
+ with PDF (dvipfm) and option 
+\family typewriter
+portrait
+\change_unchanged
+
+\family default
+).
+\change_inserted -1402925745 1474921997
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1402925745 1474921939
+semrot Rotate slides if orientation does not match the document default.
+\change_deleted -1402925745 1474918549
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_deleted -1402925745 1474918549
 \begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout SlideSubHeading
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474918215
 Preamble commands 
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_deleted -1402925745 1474918215
 The following options can be added to the 
 \family sans
 \SpecialChar LaTeX
@@ -306,7 +459,62 @@ Class
 :
 \end_layout
 
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474918215
+
+\backslash
+onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+color plots),
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474918215
+
+\backslash
+notslides{4,8,9,11} don't print these slides.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1402925745 1474918207
+\begin_inset Flex LandscapeSlide
+status open
+
+\begin_layout SlideHeading
+
+\change_inserted -1402925745 1474918217
+Preamble commands 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1474918891
+The following options can be added to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble:
+\end_layout
+
 \begin_layout Description
+
+\change_inserted -1402925745 1474918217
 
 \backslash
 onlyslides{8,9,11} print only slides number 8, 9 and 11 (e.
@@ -322,8 +530,26 @@ color plots),
 
 \begin_layout Description
 
+\change_inserted -1402925745 1474922222
+
 \backslash
 notslides{4,8,9,11} don't print these slides.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -1402925745 1474922253
+For more configuration options and commands see 
+\begin_inset CommandInset href
+LatexCommand href
+name "sem-user.pdf"
+target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -332,6 +558,8 @@ notslides{4,8,9,11} don't print these slides.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1474889046
 \begin_inset Flex PortraitSlide
 status open
 
@@ -364,9 +592,13 @@ SlideSubheading
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1474922578
 \begin_inset Flex LandscapeSlide
 status open
 
@@ -374,16 +606,44 @@ status open
 Warnings
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
+
+\change_deleted -1402925745 1474918932
 
 \family sans
-seminar
+s
+\change_inserted -1402925745 1474918932
+S
+\change_unchanged
+eminar
 \family default
- uses Postscript specials: size and orientation of the slides show problems
- depending on the output format and viewing application:
+ uses 
+\change_deleted -1402925745 1474889980
+Postscript
+\change_inserted -1402925745 1474890060
+
+\begin_inset CommandInset href
+LatexCommand href
+name "PGF"
+target "http://ctan.org/pkg/pgf"
+
+\end_inset
+
+ graphic
+\change_unchanged
+ specials: size and orientation of the slides show problems depending on
+ the output format and viewing application
+\change_deleted -1402925745 1474890082
+:
+\change_inserted -1402925745 1474922169
+ (see Troubleshooting below).
+\change_unchanged
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474890111
 Landscape slides do not work with 
 \family sans
 DVI, DVI (luatex), PDF (pdflatex),
@@ -395,17 +655,23 @@ PDF (luatex)
 .
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474890111
 Compiling with XeTeX works (with both, TeX-fonts and Unicode fonts) but
  requires Babel (not Polyglossia) as language package.
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_deleted -1402925745 1474890111
 With the current configuration in Document\SpecialChar menuseparator
 Settings,
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474890111
 
 \family sans
 PDF (ps2pdf)
@@ -413,7 +679,9 @@ PDF (ps2pdf)
  adapts the page orientation → online viewing and presentation.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+
+\change_deleted -1402925745 1474890111
 
 \family sans
 Postscript
@@ -423,20 +691,36 @@ Postscript
 PDF (dvipdfm)
 \family default
  rotate landscape slides → hardcopies.
+\change_inserted -1402925745 1474890136
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474890321
+Assure that the document page margins are set to default.
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1474890134
 Seminar uses non-standard ways to deal with paper layout and orientation.
  Therefore, also Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Page Layout\SpecialChar menuseparator
 Orientation has no effect on
  the output.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -454,18 +738,59 @@ normal
 \end_inset
 
  headings and subheadings.
- (To get a slide with the listings, nest themt in a 
+ 
+\change_deleted -1402925745 1474919028
+(To get a slide with the listings, nest themt in a 
 \family sans
 slide 
 \family default
 inset.)
-\end_layout
+\change_inserted -1402925745 1474919052
 
-\begin_layout Subsection
-Slide contents
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1402925745 1474919052
+The 
+\family sans
+SlideContents
+\family default
+ inset is an analogue to the table of contents but lists only 
+\family sans
+SlideHeading
+\family default
+s (no 
+\family sans
+SlideSubheading
+\family default
+s): 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1402925745 1474890769
+Slide contents
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1402925745 1474890676
+\begin_inset Flex LandscapeSlide
+status open
+
+\begin_layout SlideContents
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -1402925745 1474890676
 The 
 \family sans
 SlideContents
@@ -489,6 +814,8 @@ status collapsed
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -501,9 +828,30 @@ Analogue to a list of tables, the
 ListOfSlides
 \family default
  style lists all slides in your document: 
+\change_inserted -1402925745 1474919351
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1402925745 1474919360
+\begin_inset Flex LandscapeSlide
+status open
+
+\begin_layout ListOfSlides
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -1402925745 1474919384
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1402925745 1474888721
 \begin_inset Flex ListOfSlides
 status collapsed
 
@@ -513,6 +861,8 @@ status collapsed
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -533,8 +883,9 @@ ProgressContents
 \begin_inset Flex LandscapeSlide
 status open
 
-\begin_layout Plain Layout
-\align center
+\begin_layout ProgressContents
+
+\change_deleted -1402925745 1474888766
 \begin_inset Flex ProgressContents
 status collapsed
 
@@ -545,6 +896,8 @@ status collapsed
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -552,8 +905,12 @@ status collapsed
 
 \end_layout
 
-\begin_layout SlideSubHeading
-Fancier formatting
+\begin_layout Section
+F
+\change_deleted -1402925745 1474922352
+ancier f
+\change_unchanged
+ormatting
 \end_layout
 
 \begin_layout Standard
@@ -563,10 +920,18 @@ The \SpecialChar LaTeX
 \begin_inset space \thinspace{}
 \end_inset
 
-g.:
+g.
+\change_inserted -1402925745 1474919495
+, fancy frames:
+\change_deleted -1402925745 1474919478
+:
+\change_unchanged
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted -1402925745 1474919437
 different font sets, e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -578,14 +943,22 @@ g.
 the Iwona fonts: 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+
+\change_deleted -1402925745 1474919437
 
 \backslash
 usepackage{iwona}
+\change_unchanged
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted -1402925745 1474919484
 fancy frames:
+\change_unchanged
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -614,8 +987,6 @@ shadowsize}{1pt}]{shadow} framecolor "black"backgroundcolor "none"
 
 \begin_layout Standard
 See 
-\family typewriter
-
 \begin_inset CommandInset href
 LatexCommand href
 name "sem-user.pdf"
@@ -623,10 +994,25 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
 
 \end_inset
 
- for details.
+ for details
+\family typewriter
+.
+\change_deleted -1402925745 1474919515
+
 \end_layout
 
-\begin_layout SlideHeading
+\begin_layout Standard
+
+\change_inserted -1402925745 1474919607
+You can set sans-serif as default font family and select suitable font under
+ Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
 Troubleshooting
 \end_layout
 
@@ -636,7 +1022,34 @@ Troubleshooting
 seminar.cls
 \family default
  versions before 1.5 (2008-10-15) contained a bug regarding the a4paper option.
- If you use A4 paper with such a version, set in the menu 
+\change_inserted -1402925745 1474919744
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474919768
+Originally, 
+\family typewriter
+seminar.cls
+\change_deleted -1402925745 1474920539
+
+\family default
+ 
+\change_inserted -1402925745 1474921482
+ used pstricks for the graphics.
+ This failed with pdfTeX and LuaTeX.
+ Update to a current version using 
+\begin_inset CommandInset href
+LatexCommand href
+name "PGF"
+target "http://ctan.org/pkg/pgf"
+
+\end_inset
+
+, if you want to use non-TeX fonts.
+\change_deleted -1402925745 1474919744
+If you use A4 paper with such a version, set in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -695,9 +1108,13 @@ Document
 Class
 \family default
 .
+\change_inserted -1402925745 1474920863
+
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted -1402925745 1474919860
 If you have problems with the orientation of the slides/page, try the recommenda
 tions in Apppendix
 \begin_inset space ~
@@ -716,10 +1133,99 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
 
 \family default
 .
+
+\change_inserted -1402925745 1474920465
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1402925745 1474920457
+Correct size and orientation of the slides is somewhat tricky.
+ Depending on the use case, different settings and export routes work best:
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1402925745 1474890311
+Assure that the document page margins are set to default.
+\change_inserted -1402925745 1474920559
+
 \end_layout
 
 \begin_layout Itemize
-Assure that the document page margins are set to default.
+
+\change_inserted -1402925745 1474921681
+
+\family sans
+Seminar
+\family default
+ defaults to landscape orientation.
+ Therefore, Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page Layout\SpecialChar menuseparator
+Orientation has no effect on the
+ output.
+ Instead, add the 
+\family typewriter
+portrait
+\family default
+ class option for portrait mode.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922931
+The default settings work nice for landscape slides on screen with PDF (dvipdfm)
+, PDF (pdflatex), and PDF (XeTeX).
+ Do not mix LandscapeSlide and PortraitSlide, if you want to present on
+ screen or with a video projector.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922932
+LuaTeX scales the content by a factor 0.5 when generating PDF.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -1402925745 1474923032
+With the option “trim margins” in the PDF viewer (e.g.
+ Okular), this can be used as a workaround for mixed slides on screen.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922895
+When printing on transparencies, LandscapeSlides and PortraitSlide can be
+ mixed if the option 
+\family typewriter
+semrot
+\family default
+ is set and the export is done with PDF (dvipdfm).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -1402925745 1474922895
+Output formats DVI, DVI (LuaTeX), Postscript, and PDF (ps2pdf) require the
+ option 
+\family typewriter
+portrait
+\family default
+ or 
+\family typewriter
+article
+\family default
+.
+ Printing of (rotated) landscape slides is possible with options 
+\family typewriter
+portrait,semrot
+\family default
+.
 \end_layout
 
 \end_body
