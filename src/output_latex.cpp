@@ -982,8 +982,8 @@ void TeXOnePar(Buffer const & buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (nextpar && par_lang != nextpar_lang
-		    && nextpar->getDepth() == par.getDepth()
+		if ((nextpar && par_lang != nextpar_lang
+			     && nextpar->getDepth() == par.getDepth())
 		    || (atSameLastLangSwitchDepth(state) && nextpar
 			    && nextpar->getDepth() < par.getDepth()))
 			close_lang_switch = use_polyglossia;
