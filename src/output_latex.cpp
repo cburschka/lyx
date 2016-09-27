@@ -107,7 +107,25 @@ bool atSameLastLangSwitchDepth(OutputState const * state)
 
 	return state->lang_switch_depth_.size() == 0
 			? true
-			: state->lang_switch_depth_.top() == state->nest_level_;
+			: abs(state->lang_switch_depth_.top()) == state->nest_level_;
+}
+
+
+bool isLocalSwitch(OutputState const * state)
+{
+	// Return true if the language was opened by the \text<lang> command.
+
+	return state->lang_switch_depth_.size()
+		&& state->lang_switch_depth_.top() < 0;
+}
+
+
+bool langOpenedAtThisLevel(OutputState const * state)
+{
+	// Return true if the language was opened at the current nesting level.
+
+	return state->lang_switch_depth_.size()
+		&& abs(state->lang_switch_depth_.top()) == state->nest_level_;
 }
 
 
@@ -204,10 +222,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 				prev_par_lang))
 			  // the '%' is necessary to prevent unwanted whitespace
 			  << "%\n";
-			if (use_polyglossia) {
-				state->lang_switch_depth_.pop();
-				state->open_polyglossia_lang_.pop();
-			}
+			if (use_polyglossia)
+				popPolyglossiaLang();
 		}
 
 		// If no language was explicitly opened and we are using
@@ -229,10 +245,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 			    os << bc;
 			    // the '%' is necessary to prevent unwanted whitespace
 			    os << "%\n";
-			    if (use_polyglossia) {
-				    state->lang_switch_depth_.push(state->nest_level_);
-				    state->open_polyglossia_lang_.push(par_lang);
-			    }
+			    if (use_polyglossia)
+				    pushPolyglossiaLang(par_lang);
 		}
 	}
 
@@ -298,13 +312,15 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		os << breakln;
 		// Close any polyglossia language opened at this nest level
 		if (runparams.use_polyglossia) {
-			OutputState * state = getOutputState();
-			while (state->lang_switch_depth_.size()
-			       && state->lang_switch_depth_.top() == state->nest_level_) {
-				os << "\\end{" << openPolyglossiaLang(state)
-				   << "}%\n";
-				state->lang_switch_depth_.pop();
-				state->open_polyglossia_lang_.pop();
+			while (langOpenedAtThisLevel(state)) {
+				if (isLocalSwitch(state)) {
+					os << "}";
+				} else {
+					os << "\\end{"
+					   << openPolyglossiaLang(state)
+					   << "}%\n";
+				}
+				popPolyglossiaLang();
 			}
 		}
 		state->nest_level_ -= 1;
@@ -486,11 +502,12 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 } // namespace anon
 
 
-void pushPolyglossiaLang(string const & lang_name)
+void pushPolyglossiaLang(string const & lang_name, bool localswitch)
 {
 	OutputState * state = getOutputState();
 
-	state->lang_switch_depth_.push(state->nest_level_);
+	int nest_level = localswitch ? -state->nest_level_ : state->nest_level_;
+	state->lang_switch_depth_.push(nest_level);
 	state->open_polyglossia_lang_.push(lang_name);
 }
 
@@ -790,10 +807,8 @@ void TeXOnePar(Buffer const & buf,
 				"$$lang",
 				prev_lang))
 			   << lang_command_termination;
-			if (use_polyglossia && !localswitch) {
-				state->lang_switch_depth_.pop();
-				state->open_polyglossia_lang_.pop();
-			}
+			if (use_polyglossia)
+				popPolyglossiaLang();
 		}
 
 		// We need to open a new language if we couldn't close the previous
@@ -850,10 +865,8 @@ void TeXOnePar(Buffer const & buf,
 					  : subst(lang_begin_command, "$$lang", par_lang);
 				os << bc;
 				os << lang_command_termination;
-				if (use_polyglossia && !localswitch) {
-					state->lang_switch_depth_.push(state->nest_level_);
-					state->open_polyglossia_lang_.push(par_lang);
-				}
+				if (use_polyglossia)
+					pushPolyglossiaLang(par_lang, localswitch);
 			}
 		}
 	}
@@ -912,10 +925,8 @@ void TeXOnePar(Buffer const & buf,
 						"$$lang",
 						par_lang))
 					<< lang_command_termination;
-					if (use_polyglossia && !localswitch) {
-						state->lang_switch_depth_.push(state->nest_level_);
-						state->open_polyglossia_lang_.push(par_lang);
-					}
+					if (use_polyglossia)
+						pushPolyglossiaLang(par_lang, localswitch);
 				}
 				runparams.encoding = encoding;
 			}
@@ -1081,11 +1092,8 @@ void TeXOnePar(Buffer const & buf,
 					os << bc;
 					pending_newline = !localswitch;
 					unskip_newline = !localswitch;
-					if (use_polyglossia && !localswitch) {
-						state->lang_switch_depth_.push(
-								state->nest_level_);
-						state->open_polyglossia_lang_.push(current_lang);
-					}
+					if (use_polyglossia)
+						pushPolyglossiaLang(current_lang, localswitch);
 				}
 			} else if (!par_lang.empty()) {
 				// If we are in an environment, we have to close the "outer" language afterwards
@@ -1110,10 +1118,8 @@ void TeXOnePar(Buffer const & buf,
 						par_lang));
 					pending_newline = !localswitch;
 					unskip_newline = !localswitch;
-					if (use_polyglossia && !localswitch) {
-						state->lang_switch_depth_.pop();
-						state->open_polyglossia_lang_.pop();
-					}
+					if (use_polyglossia)
+						popPolyglossiaLang();
 				}
 			}
 		}
@@ -1291,10 +1297,8 @@ void latexParagraphs(Buffer const & buf,
 			  : subst(lang_begin_command, "$$lang", mainlang);
 		os << bc;
 		os << '\n';
-		if (runparams.use_polyglossia) {
-			state->lang_switch_depth_.push(state->nest_level_);
-			state->open_polyglossia_lang_.push(mainlang);
-		}
+		if (runparams.use_polyglossia)
+			pushPolyglossiaLang(mainlang);
 	}
 
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -1399,10 +1403,8 @@ void latexParagraphs(Buffer const & buf,
 					"$$lang",
 					mainlang))
 			<< '\n';
-		if (runparams.use_polyglossia) {
-			state->lang_switch_depth_.pop();
-			state->open_polyglossia_lang_.pop();
-		}
+		if (runparams.use_polyglossia)
+			popPolyglossiaLang();
 	}
 
 	// If the last paragraph is an environment, we'll have to close
@@ -1418,10 +1420,8 @@ void latexParagraphs(Buffer const & buf,
 					"$$lang",
 					pol_lang))
 		   << '\n';
-		if (runparams.use_polyglossia) {
-			state->lang_switch_depth_.pop();
-			state->open_polyglossia_lang_.pop();
-		}
+		if (runparams.use_polyglossia)
+			popPolyglossiaLang();
 	}
 
 	// reset inherited encoding

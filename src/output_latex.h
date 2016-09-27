@@ -30,8 +30,9 @@ class OutputParams;
 class Text;
 
 /** Register a language switch when using polyglossia.
+    Set \p localswitch to true if the \text<lang> command is used.
  */
-void pushPolyglossiaLang(std::string const & lang);
+void pushPolyglossiaLang(std::string const & lang, bool localswitch = false);
 
 /** Unregister the last language switch when using polyglossia.
  */
