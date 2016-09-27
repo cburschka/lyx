@@ -210,9 +210,17 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 			}
 		}
 
+		// If no language was explicitly opened and we are using
+		// polyglossia, then the current polyglossia language is
+		// the document language.
+		string const & pol_lang = use_polyglossia
+					  && state->lang_switch_depth_.size()
+						  ? openPolyglossiaLang(state)
+						  : doc_lang;
+
 		if ((lang_end_command.empty() ||
 		    par_lang != doc_lang ||
-		    par_lang != openPolyglossiaLang(state)) &&
+		    par_lang != pol_lang) &&
 		    !par_lang.empty()) {
 			    string bc = use_polyglossia ?
 					getPolyglossiaBegin(lang_begin_command, par_lang,
