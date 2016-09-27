@@ -1899,21 +1899,20 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// Now insert the LyX specific LaTeX commands...
-	docstring lyxpreamble;
 	features.resolveAlternatives();
 	features.expandMultiples();
 
 	if (output_sync) {
 		if (!output_sync_macro.empty())
-			lyxpreamble += from_utf8(output_sync_macro) +"\n";
+			os << from_utf8(output_sync_macro) +"\n";
 		else if (features.runparams().flavor == OutputParams::LATEX)
-			lyxpreamble += "\\usepackage[active]{srcltx}\n";
+			os << "\\usepackage[active]{srcltx}\n";
 		else if (features.runparams().flavor == OutputParams::PDFLATEX)
-			lyxpreamble += "\\synctex=-1\n";
+			os << "\\synctex=-1\n";
 	}
 
 	// The package options (via \PassOptionsToPackage)
-	lyxpreamble += from_ascii(features.getPackageOptions());
+	os << from_ascii(features.getPackageOptions());
 
 	// due to interferences with babel and hyperref, the color package has to
 	// be loaded (when it is not already loaded) before babel when hyperref
@@ -1921,7 +1920,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// http://www.lyx.org/trac/ticket/5291
 	// we decided therefore to load color always before babel, see
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
-	lyxpreamble += from_ascii(features.getColorOptions());
+	os << from_ascii(features.getColorOptions());
 
 	// If we use hyperref, jurabib, japanese, varioref or vietnamese,
 	// we have to call babel before
@@ -1931,15 +1930,15 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		|| features.isRequired("varioref")
 		|| features.isRequired("vietnamese")
 		|| features.isRequired("japanese"))) {
-			lyxpreamble += features.getBabelPresettings();
+			os << features.getBabelPresettings();
 			// FIXME UNICODE
-			lyxpreamble += from_utf8(babelCall(language_options.str(),
-							   features.needBabelLangOptions())) + '\n';
-			lyxpreamble += features.getBabelPostsettings();
+			os << from_utf8(babelCall(language_options.str(),
+			                          features.needBabelLangOptions())) + '\n';
+			os << features.getBabelPostsettings();
 	}
 
 	// The optional packages;
-	lyxpreamble += from_ascii(features.getPackages());
+	os << from_ascii(features.getPackages());
 
 	// Additional Indices
 	if (features.isRequired("splitidx")) {
@@ -1957,16 +1956,16 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 						  "representable in the current encoding and therefore have been omitted:\n%1$s."),
 						indexname_latex.second));
 			}
-			lyxpreamble += "\\newindex[";
-			lyxpreamble += indexname_latex.first;
-			lyxpreamble += "]{";
-			lyxpreamble += escape(iit->shortcut());
-			lyxpreamble += "}\n";
+			os << "\\newindex[";
+			os << indexname_latex.first;
+			os << "]{";
+			os << escape(iit->shortcut());
+			os << "}\n";
 		}
 	}
 
 	// Line spacing
-	lyxpreamble += from_utf8(spacing().writePreamble(features.isProvided("SetSpace")));
+	os << from_utf8(spacing().writePreamble(features.isProvided("SetSpace")));
 
 	// PDF support.
 	// * Hyperref manual: "Make sure it comes last of your loaded
@@ -1978,27 +1977,21 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	//   avoid errors with algorithm floats.
 	// use hyperref explicitly if it is required
 	if (features.isRequired("hyperref")) {
-		// pass what we have to stream here, since we need
-		// to access the stream itself in PDFOptions.
-		os << lyxpreamble;
-
 		OutputParams tmp_params = features.runparams();
 		pdfoptions().writeLaTeX(tmp_params, os,
 					features.isProvided("hyperref"));
-		// set back for the rest
-		lyxpreamble.clear();
 		// correctly break URLs with hyperref and dvi output
 		if (features.runparams().flavor == OutputParams::LATEX
 		    && features.isAvailable("breakurl"))
-			lyxpreamble += "\\usepackage{breakurl}\n";
+			os << "\\usepackage{breakurl}\n";
 	} else if (features.isRequired("nameref"))
 		// hyperref loads this automatically
-		lyxpreamble += "\\usepackage{nameref}\n";
+		os << "\\usepackage{nameref}\n";
 
 	// bibtopic needs to be loaded after hyperref.
 	// the dot provides the aux file naming which LyX can detect.
 	if (features.mustProvide("bibtopic"))
-		lyxpreamble += "\\usepackage[dot]{bibtopic}\n";
+		os << "\\usepackage[dot]{bibtopic}\n";
 
 	// Will be surrounded by \makeatletter and \makeatother when not empty
 	docstring atlyxpreamble;
@@ -2132,9 +2125,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (!bullets_def.empty())
 		atlyxpreamble += bullets_def + "}\n\n";
 
-	if (!atlyxpreamble.empty())
-		lyxpreamble += "\n\\makeatletter\n"
-			+ atlyxpreamble + "\\makeatother\n\n";
+	if (!atlyxpreamble.empty()) {
+		os << "\n\\makeatletter\n"
+		   << atlyxpreamble
+		   << "\\makeatother\n\n";
+	}
 
 	// We try to load babel late, in case it interferes with other packages.
 	// Jurabib, hyperref, varioref, bicaption and listings (bug 8995) have to be
@@ -2144,24 +2139,24 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		&& !features.isRequired("varioref")
 	    && !features.isRequired("vietnamese")
 	    && !features.isRequired("japanese")) {
-		lyxpreamble += features.getBabelPresettings();
+		os << features.getBabelPresettings();
 		// FIXME UNICODE
-		lyxpreamble += from_utf8(babelCall(language_options.str(),
-						   features.needBabelLangOptions())) + '\n';
-		lyxpreamble += features.getBabelPostsettings();
+		os << from_utf8(babelCall(language_options.str(),
+		                          features.needBabelLangOptions())) + '\n';
+		os << features.getBabelPostsettings();
 	}
 	if (features.isRequired("bicaption"))
-		lyxpreamble += "\\usepackage{bicaption}\n";
+		os << "\\usepackage{bicaption}\n";
 	if (!listings_params.empty() || features.mustProvide("listings"))
-		lyxpreamble += "\\usepackage{listings}\n";
+		os << "\\usepackage{listings}\n";
 	if (!listings_params.empty()) {
-		lyxpreamble += "\\lstset{";
+		os << "\\lstset{";
 		// do not test validity because listings_params is
 		// supposed to be valid
 		string par =
 			InsetListingsParams(listings_params).separatedParams(true);
-		lyxpreamble += from_utf8(par);
-		lyxpreamble += "}\n";
+		os << from_utf8(par);
+		os << "}\n";
 	}
 
 	// xunicode needs to be loaded at least after amsmath, amssymb,
@@ -2169,44 +2164,42 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// The package only supports XeTeX currently.
 	if (features.runparams().flavor == OutputParams::XETEX
 	    && useNonTeXFonts)
-		lyxpreamble += "\\usepackage{xunicode}\n";
+		os << "\\usepackage{xunicode}\n";
 
 	// Polyglossia must be loaded last
 	if (use_polyglossia) {
 		// call the package
-		lyxpreamble += "\\usepackage{polyglossia}\n";
+		os << "\\usepackage{polyglossia}\n";
 		// set the main language
-		lyxpreamble += "\\setdefaultlanguage";
+		os << "\\setdefaultlanguage";
 		if (!language->polyglossiaOpts().empty())
-			lyxpreamble += "[" + from_ascii(language->polyglossiaOpts()) + "]";
-		lyxpreamble += "{" + from_ascii(language->polyglossia()) + "}\n";
+			os << "[" << from_ascii(language->polyglossiaOpts()) << "]";
+		os << "{" << from_ascii(language->polyglossia()) << "}\n";
 		// now setup the other languages
 		std::map<std::string, std::string> const polylangs =
 			features.getPolyglossiaLanguages();
 		for (std::map<std::string, std::string>::const_iterator mit = polylangs.begin();
 		     mit != polylangs.end() ; ++mit) {
-			lyxpreamble += "\\setotherlanguage";
+			os << "\\setotherlanguage";
 			if (!mit->second.empty())
-				lyxpreamble += "[" + from_ascii(mit->second) + "]";
-			lyxpreamble += "{" + from_ascii(mit->first) + "}\n";
+				os << "[" << from_ascii(mit->second) << "]";
+			os << "{" << from_ascii(mit->first) << "}\n";
 		}
 	}
 
 	// Load custom language package here
 	if (features.langPackage() == LaTeXFeatures::LANG_PACK_CUSTOM) {
 		if (lang_package == "default")
-			lyxpreamble += from_utf8(lyxrc.language_custom_package);
+			os << from_utf8(lyxrc.language_custom_package);
 		else
-			lyxpreamble += from_utf8(lang_package);
-		lyxpreamble += '\n';
+			os << from_utf8(lang_package);
+		os << '\n';
 	}
 
 	docstring const i18npreamble =
 		features.getTClassI18nPreamble(use_babel, use_polyglossia);
 	if (!i18npreamble.empty())
-		lyxpreamble += i18npreamble + '\n';
-
-	os << lyxpreamble;
+		os << i18npreamble + '\n';
 
 	return use_babel;
 }
