@@ -1404,9 +1404,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		owner_->latex(bp, f, os, features.runparams(), 0, -1, true);
 		if (os.length() > length) {
 			if (is_command) {
-				// FIXME: why does it has to be os.os() (equivalent to ods
-				// before)?
-				os.os() << '}';
+				os << '}';
 				if (!layout_->postcommandargs().empty()) {
 					OutputParams rp = features.runparams();
 					rp.local_font = &owner_->getFirstFontSettings(bp);
