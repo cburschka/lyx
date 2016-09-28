@@ -310,11 +310,11 @@ void ViewSourceWidget::realUpdateView()
 }
 
 
-docstring ViewSourceWidget::currentFormatName() const
+docstring ViewSourceWidget::currentFormatName(BufferView const * bv) const
 {
 	// Compute the actual format used
-	string const format = !bv_ ? ""
-		: flavor2format(bv_->buffer().params().getOutputFlavor(view_format_));
+	string const format = !bv ? ""
+		: flavor2format(bv->buffer().params().getOutputFlavor(view_format_));
 	Format const * f = formats.getFormat(format.empty() ? view_format_ : format);
 	return f ? f->prettyname() : from_utf8(view_format_);
 }
@@ -454,7 +454,7 @@ bool GuiViewSource::initialiseParams(string const & /*source*/)
 
 void GuiViewSource::updateTitle()
 {
-	docstring const format = widget_->currentFormatName();
+	docstring const format = widget_->currentFormatName(bufferview());
 	QString const title = format.empty() ? qt_("Code Preview")
 		: qt_("%1[[preview format name]] Preview")
 		  .arg(toqstr(translateIfPossible(format)));
