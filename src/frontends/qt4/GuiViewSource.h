@@ -65,7 +65,7 @@ public Q_SLOTS:
 	///
 	void gotoCursor();
 	/// Name of the current format. Empty if none.
-	docstring currentFormatName() const;
+	docstring currentFormatName(BufferView const * bv) const;
 
 Q_SIGNALS:
 	void formatChanged() const;
