@@ -250,7 +250,7 @@ public:
 	 *  We should aim to reduce/remove these from the interface.
 	 */
 	//@{
-	GuiView const & lyxview() const { return *lyxview_; }
+	GuiView const & lyxview() const { return lyxview_; }
 	/// Current buffer
 	Buffer const & buffer() const;
 	/// Main document buffer
@@ -273,7 +273,7 @@ private:
 	///
 	QString title_;
 	///
-	GuiView * lyxview_;
+	GuiView & lyxview_;
 
 	/// intentionally unimplemented, therefore uncopiable
 	Dialog(Dialog const &);

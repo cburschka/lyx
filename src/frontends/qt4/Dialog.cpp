@@ -45,7 +45,7 @@ namespace lyx {
 namespace frontend {
 
 Dialog::Dialog(GuiView & lv, QString const & name, QString const & title)
-	: name_(name), title_(title), lyxview_(&lv)
+	: name_(name), title_(title), lyxview_(lv)
 {}
 
 
@@ -75,21 +75,21 @@ void Dialog::updateDialog() const
 
 void Dialog::disconnect() const
 {
-	lyxview_->disconnectDialog(fromqstr(name_));
+	lyxview_.disconnectDialog(fromqstr(name_));
 }
 
 
 bool Dialog::isBufferAvailable() const
 {
-	return lyxview_->currentBufferView() != 0;
+	return lyxview_.currentBufferView() != 0;
 }
 
 
 bool Dialog::isBufferReadonly() const
 {
-	if (!lyxview_->documentBufferView())
+	if (!lyxview_.documentBufferView())
 		return true;
-	return lyxview_->documentBufferView()->buffer().isReadonly();
+	return lyxview_.documentBufferView()->buffer().isReadonly();
 }
 
 
@@ -112,21 +112,21 @@ KernelDocType Dialog::docType() const
 
 BufferView const * Dialog::bufferview() const
 {
-	return lyxview_->currentBufferView();
+	return lyxview_.currentBufferView();
 }
 
 
 Buffer const & Dialog::buffer() const
 {
-	LAPPERR(lyxview_->currentBufferView());
-	return lyxview_->currentBufferView()->buffer();
+	LAPPERR(lyxview_.currentBufferView());
+	return lyxview_.currentBufferView()->buffer();
 }
 
 
 Buffer const & Dialog::documentBuffer() const
 {
-	LAPPERR(lyxview_->documentBufferView());
-	return lyxview_->documentBufferView()->buffer();
+	LAPPERR(lyxview_.documentBufferView());
+	return lyxview_.documentBufferView()->buffer();
 }
 
 
@@ -193,9 +193,9 @@ void Dialog::showView()
 	if (wantInitialFocus())
 		w->setFocus();
 	else {
-		lyxview_->raise();
-		lyxview_->activateWindow();
-		lyxview_->setFocus();
+		lyxview_.raise();
+		lyxview_.activateWindow();
+		lyxview_.setFocus();
 	}
 }
 
@@ -270,7 +270,7 @@ void Dialog::checkStatus()
 
 QString Dialog::sessionKey() const
 {
-	return "views/" + QString::number(lyxview_->id())
+	return "views/" + QString::number(lyxview_.id())
 		+ "/" + name();
 }
 
