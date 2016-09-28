@@ -23,17 +23,14 @@ namespace frontend {
 
 class DialogView : public QDialog, public Dialog
 {
+	Q_OBJECT
+
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.
 	/// \param name is the identifier given to the dialog by its parent
 	/// container.
 	/// \param title is the window title used for decoration.
-	DialogView(GuiView & lv, QString const & name, QString const & title)
-		: QDialog(&lv), Dialog(lv, name, "LyX: " + title)
-	{
-		// remove question marks from Windows dialogs
-		setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
-	}
+	DialogView(GuiView & lv, QString const & name, QString const & title);
 
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
@@ -47,21 +44,12 @@ protected:
 	bool needBufferOpen() const { return isBufferDependent(); }
 	//@}
 	/// Any dialog that overrides this method should make sure to call it.
-	void closeEvent(QCloseEvent * ev)
-	{
-		clearParams();
-		Dialog::disconnect();
-		ev->accept();
-	}
+	void closeEvent(QCloseEvent * ev);
 	/// Any dialog that overrides this method should make sure to call it.
-	void hideEvent(QHideEvent * ev)
-	{
-		if (!ev->spontaneous()) {
-			clearParams();
-			Dialog::disconnect();
-			ev->accept();
-		}
-	}
+	void hideEvent(QHideEvent * ev);
+
+protected Q_SLOTS:
+	void on_bufferViewChanged() {};
 };
 
 } // namespace frontend

@@ -28,6 +28,9 @@ GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
 	: QDialog(&lv), Dialog(lv, name, "LyX: " + title), updating_(false), 
 	  is_closing_(false)
 {
+	connect(&lv, SIGNAL(bufferViewChanged()),
+	        this, SLOT(on_bufferViewChanged()));
+
 	// remove question marks from Windows dialogs
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }

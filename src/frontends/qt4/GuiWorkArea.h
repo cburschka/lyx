@@ -100,6 +100,8 @@ Q_SIGNALS:
 	void titleChanged(GuiWorkArea *);
 	///
 	void busy(bool);
+	///
+	void bufferViewChanged();
 
 private Q_SLOTS:
 	/// Scroll the BufferView.

@@ -214,6 +214,8 @@ public:
 Q_SIGNALS:
 	void closing(int);
 	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
+	// emitted when the work area or its buffer view changed
+	void bufferViewChanged();
 
 public Q_SLOTS:
 	///

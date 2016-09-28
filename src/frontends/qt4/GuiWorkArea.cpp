@@ -392,6 +392,7 @@ void GuiWorkArea::setBuffer(Buffer & buffer)
 	if (buffer.text().paragraphs().size() > 4)
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	QTimer::singleShot(50, this, SLOT(fixVerticalScrollBar()));
+	Q_EMIT bufferViewChanged();
 }
 
 

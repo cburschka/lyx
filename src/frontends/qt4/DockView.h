@@ -29,20 +29,16 @@ namespace frontend {
  **/
 class DockView : public QDockWidget, public Dialog
 {
+	Q_OBJECT
+
 public:
-	DockView(
-		GuiView & parent, ///< the main window where to dock.
-		QString const & name, ///< dialog identifier.
-		QString const & title, ///< dialog title.
-		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
-		Qt::WindowFlags flags = 0
-	)
-		: QDockWidget(&parent, flags), Dialog(parent, name, title)
-	{
-		setObjectName(name);
-		parent.addDockWidget(area, this);
-		hide();
-	}
+	DockView(GuiView & parent, ///< the main window where to dock.
+	         QString const & name, ///< dialog identifier.
+	         QString const & title, ///< dialog title.
+	         Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of
+															   ///the dock (and
+															   ///also drawer)
+	         Qt::WindowFlags flags = 0);
 
 	virtual ~DockView() {}
 
@@ -52,27 +48,17 @@ public:
 	/// We don't want to restore geometry session for dock widgets.
 	void restoreSession() {}
 
-	void keyPressEvent(QKeyEvent * ev)
-	{
-		if (ev->key() == Qt::Key_Escape) {
-			QMainWindow * mw = static_cast<QMainWindow *>(parent());
-			if (!mw) {
-				ev->ignore();
-				return;
-			}
-			mw->activateWindow();
-			mw->setFocus();
-			if (isFloating())
-				hide();
-			ev->accept();
-		}
-	}
+	void keyPressEvent(QKeyEvent * ev);
+
 	/// Dialog inherited methods
 	//@{
 	void applyView() {}
 	bool isClosing() const { return false; }
 	bool needBufferOpen() const { return false; }
 	//@}
+
+protected Q_SLOTS:
+	void on_bufferViewChanged() {} //override
 };
 
 } // frontend

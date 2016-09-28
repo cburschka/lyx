@@ -59,6 +59,9 @@ public Q_SLOTS:
 	///
 	void closeEvent(QCloseEvent * e);
 
+protected Q_SLOTS:
+	void on_bufferViewChanged() {};//override
+
 public:
 	/** Check whether we may apply our data.
 	 *

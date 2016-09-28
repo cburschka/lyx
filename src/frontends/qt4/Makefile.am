@@ -61,6 +61,8 @@ SOURCEFILES = \
 	CategorizedCombo.cpp \
 	ColorCache.cpp \
 	CustomizedWidgets.cpp \
+	DialogView.cpp \
+	DockView.cpp \
 	EmptyTable.cpp \
 	FancyLineEdit.cpp \
 	FileDialog.cpp \
@@ -159,8 +161,6 @@ SOURCEFILES = \
 NOMOCHEADER = \
 	ButtonController.h \
 	ColorCache.h \
-	DialogView.h \
-	DockView.h \
 	FileDialog.h \
 	GuiFontExample.h \
 	GuiFontLoader.h \
@@ -180,6 +180,8 @@ MOCHEADER = \
 	BulletsModule.h \
 	CategorizedCombo.h \
 	CustomizedWidgets.h \
+	DialogView.h \
+	DockView.h \
 	EmptyTable.h \
 	FancyLineEdit.h \
 	FindAndReplace.h \

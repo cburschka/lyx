@@ -15,7 +15,6 @@
 
 #include "GuiView.h"
 
-#include "Dialog.h"
 #include "DispatchResult.h"
 #include "FileDialog.h"
 #include "FontLoader.h"
@@ -1194,25 +1193,31 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 {
 	if (d.current_work_area_)
-		QObject::disconnect(d.current_work_area_, SIGNAL(busy(bool)),
-			this, SLOT(setBusy(bool)));
+		// disconnect the current work area from all slots
+		QObject::disconnect(d.current_work_area_, 0, this, 0);
 	disconnectBuffer();
 	disconnectBufferView();
 	connectBufferView(wa->bufferView());
 	connectBuffer(wa->bufferView().buffer());
 	d.current_work_area_ = wa;
 	QObject::connect(wa, SIGNAL(titleChanged(GuiWorkArea *)),
-		this, SLOT(updateWindowTitle(GuiWorkArea *)));
-	QObject::connect(wa, SIGNAL(busy(bool)), this, SLOT(setBusy(bool)));
-	updateWindowTitle(wa);
+	                 this, SLOT(updateWindowTitle(GuiWorkArea *)));
+	QObject::connect(wa, SIGNAL(busy(bool)),
+	                 this, SLOT(setBusy(bool)));
+	QObject::connect(wa, SIGNAL(bufferViewChanged()),
+	                 this, SIGNAL(bufferViewChanged()));
+	Q_EMIT updateWindowTitle(wa);
+	Q_EMIT bufferViewChanged();
 
 	structureChanged();
 
 	// The document settings needs to be reinitialised.
+	// TODO: no longer needed now there is bufferViewChanged?
 	updateDialog("document", "");
 
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
+	// TODO: no longer needed now there is bufferViewChanged?
 	updateDialogs();
 }
 
@@ -1228,6 +1233,8 @@ void GuiView::on_lastWorkAreaRemoved()
 		return;
 
 	// Reset and updates the dialogs.
+	Q_EMIT bufferViewChanged();
+	// TODO: no longer needed now there is bufferViewChanged?
 	d.toc_models_.reset(0);
 	updateDialog("document", "");
 	updateDialogs();
@@ -1310,19 +1317,10 @@ bool GuiView::event(QEvent * e)
 			cap::saveSelection(old_view->currentBufferView()->cursor());
 		}
 		guiApp->setCurrentView(this);
-		if (d.current_work_area_) {
-			BufferView & bv = d.current_work_area_->bufferView();
-			connectBufferView(bv);
-			connectBuffer(bv.buffer());
-			// The document structure, name and dialogs might have
-			// changed in another view.
-			structureChanged();
-			// The document settings needs to be reinitialised.
-			updateDialog("document", "");
-			updateDialogs();
-		} else {
+		if (d.current_work_area_)
+			on_currentWorkAreaChanged(d.current_work_area_);
+		else
 			resetWindowTitle();
-		}
 		setFocus();
 		return QMainWindow::event(e);
 	}
@@ -1477,6 +1475,7 @@ void GuiView::setCurrentWorkArea(GuiWorkArea * wa)
 	if (!wa) {
 		d.current_work_area_ = 0;
 		d.setBackground();
+		Q_EMIT bufferViewChanged();
 		return;
 	}
 
