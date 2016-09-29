@@ -45,6 +45,8 @@ public:
 	Inset * clone() const { return new InsetIPA(*this); }
 
 	bool neverIndent() const { return true; }
+
+	bool forceLocalFontSwitch() const { return true; }
 	
 	InsetCode lyxCode() const { return IPA_CODE; }
 	
