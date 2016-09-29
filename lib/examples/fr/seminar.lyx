@@ -224,7 +224,8 @@ target "http://ctan.org/pkg/pgf"
 \end_inset
 
 : la taille et l'orientation des transparents présente des problèmes suivant
- les format de sortie et l'utilitaire d'affichage (voir le transparent 
+ les formats de sortie et l'utilitaire d'affichage (voir le transparent
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -253,14 +254,6 @@ Implicites
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Flex LandscapeSlide
-status open
-
-\begin_layout SlideHeading
-
-\end_layout
-
 \begin_layout SlideHeading
 Options d'impression
 \begin_inset CommandInset label
@@ -272,7 +265,7 @@ name "sli:output-options"
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 Les options suivantes peuvent être ajoutées au champ 
 \family sans
 Options
@@ -336,16 +329,12 @@ notesonly
 article imprime comme un article (2 par page avec PDF (dvipdfm) et l'option
 \family typewriter
  portrait).
+
 \family sans
-semrot
+ semrot
 \family default
  pivote les transparents dont l'orientation ne correspond pas à la valeur
  implicite pour le document.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -521,11 +510,15 @@ g.
 
 \begin_layout LyX-Code
 
+\lang english
+
 \backslash
 usepackage{fancybox}
 \end_layout
 
 \begin_layout LyX-Code
+
+\lang english
 
 \backslash
 setlength{
@@ -535,12 +528,20 @@ slideframewidth}{1pt}
 
 \begin_layout LyX-Code
 
+\lang english
+
 \backslash
 slideframe[
 \backslash
 setlength{
 \backslash
-shadowsize}{1pt}]{shadow} framecolor "black"backgroundcolor "none"
+shadowsize}{1pt}]{shadow}%
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+           framecolor "black" backgroundcolor
 \end_layout
 
 \begin_layout Standard
@@ -555,7 +556,9 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
  pour les détails
 \family typewriter
 .
-\family default
+\end_layout
+
+\begin_layout Standard
 Vous pouvez sélectionner une famille implicite sans empattements avec une
  police appropriée via 
 \family sans
@@ -569,6 +572,23 @@ Polices
 \begin_layout Section
 En cas de problèmes\SpecialChar ldots
 
+\end_layout
+
+\begin_layout Itemize
+Lyx-2.2.0 échoue avec l'erreur 
+\begin_inset Quotes fld
+\end_inset
+
+
+\lang english
+missing characters in font nullfont
+\begin_inset Quotes frd
+\end_inset
+
+
+\lang french
+.
+ Cette erreur provient d'un bogue PGF et peut être ignorée.
 \end_layout
 
 \begin_layout Itemize
