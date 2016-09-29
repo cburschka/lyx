@@ -57,13 +57,16 @@ Style SlideSubHeading
 	Align			Center
 End
 
+
 InsetLayout Flex:ListOfSlides
 	CopyStyle		Flex:LandscapeSlide
 	LabelString		"List of Slides"
 	LatexType		Command
+	LyxType			custom
 	LatexName		listofslides
 	BgColor			listingsbg
-	Spellcheck		0
+	MultiPar		false
+	Spellcheck		false
 End
 
 InsetLayout Flex:SlideContents
