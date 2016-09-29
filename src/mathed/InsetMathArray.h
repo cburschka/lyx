@@ -31,8 +31,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	InsetMathArray * asArrayInset() { return this; }
@@ -51,6 +49,11 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_ARRAY_CODE; }
+	///
+	int leftMargin() const { return 4; } //override
+	///
+	int rightMargin() const { return 2; } //override
+
 private:
 	virtual Inset * clone() const;
 	///

@@ -103,9 +103,6 @@ public:
 	void metrics(MetricsInfo & mi, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	///
-	void drawWithMargin(PainterInfo & pi, int x, int y,
-		int lmargin = 0, int rmargin = 0) const;
 	/// draw decorations.
 	void drawDecoration(PainterInfo & pi, int x, int y) const
 	{ drawMarkers2(pi, x, y); }
@@ -248,6 +245,11 @@ protected:
 	int cellYOffset(idx_type idx) const;
 	/// Width of cell, taking combined columns into account
 	int cellWidth(idx_type idx) const;
+	///
+	virtual int leftMargin() const { return 1; }
+	///
+	virtual int rightMargin() const { return 1; }
+
 	/// returns proper 'end of line' code for LaTeX
 	virtual docstring eolString(row_type row, bool fragile, bool latex,
 			bool last_eoln) const;
@@ -269,6 +271,10 @@ protected:
 	/// The value of a fixed col spacing for a certain hull type
 	static int colSpace(HullType type, col_type col);
 
+	/// positions of vertical and horizontal lines
+	int vLineHOffset(col_type col, unsigned int line) const;
+	int hLineVOffset(row_type row, unsigned int line) const;
+
 	/// row info.
 	/// rowinfo_[nrows()] is a dummy row used only for hlines.
 	std::vector<RowInfo> rowinfo_;
@@ -282,7 +288,7 @@ protected:
 
 private:
 	///
-	char v_align_; // add approp. type
+	char v_align_; // FIXME: add approp. type
 	///
 	Inset * clone() const;
 };

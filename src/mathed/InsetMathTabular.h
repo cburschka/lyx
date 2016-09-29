@@ -29,8 +29,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	InsetMathTabular * asTabularInset() { return this; }
@@ -47,6 +45,10 @@ public:
 	void maple(MapleStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_TABULAR_CODE; }
+	///
+	int leftMargin() const { return 4; } //override
+	///
+	int rightMargin() const { return 2; } //override
 
 private:
 	Inset * clone() const;

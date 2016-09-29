@@ -54,6 +54,11 @@ public:
 	char const * name_left() const;
 	///
 	char const * name_right() const;
+	///
+	int leftMargin() const { return 6; } //override
+	///
+	int rightMargin() const { return 8; } //override
+
 private:
 	virtual Inset * clone() const;
 	///

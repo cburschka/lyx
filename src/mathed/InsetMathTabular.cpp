@@ -47,22 +47,13 @@ void InsetMathTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
 	InsetMathGrid::metrics(mi, dim);
-	dim.wid += 6;
-}
-
-
-Dimension const InsetMathTabular::dimension(BufferView const & bv) const
-{
-	Dimension dim = InsetMathGrid::dimension(bv);
-	dim.wid += 6;
-	return dim;
 }
 
 
 void InsetMathTabular::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeFontSet("textnormal");
-	InsetMathGrid::drawWithMargin(pi, x, y, 4, 2);
+	InsetMathGrid::draw(pi, x, y);
 }
 
 

@@ -27,8 +27,6 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
-	Dimension const dimension(BufferView const &) const;
-	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);
@@ -54,6 +52,11 @@ public:
 	InsetCode lyxCode() const { return MATH_CASES_CODE; }
 	///
 	int displayColSpace(col_type) const;
+	///
+	int leftMargin() const { return 8; } //override
+	///
+	int rightMargin() const { return 0; } //override
+
 private:
 	virtual Inset * clone() const;
 };

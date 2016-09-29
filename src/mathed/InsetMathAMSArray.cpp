@@ -88,7 +88,6 @@ void InsetMathAMSArray::metrics(MetricsInfo & mi, Dimension & dim) const
 	Changer dummy =
 		mi.base.changeStyle(LM_ST_TEXT, mi.base.style == LM_ST_DISPLAY);
 	InsetMathGrid::metrics(mi, dim);
-	dim.wid += 14;
 }
 
 
@@ -101,7 +100,7 @@ void InsetMathAMSArray::draw(PainterInfo & pi, int x, int y) const
 	mathed_draw_deco(pi, x + dim.width() - 8, yy, 5, dim.height(), from_ascii(name_right()));
 	Changer dummy =
 		pi.base.changeStyle(LM_ST_TEXT, pi.base.style == LM_ST_DISPLAY);
-	InsetMathGrid::drawWithMargin(pi, x, y, 6, 8);
+	InsetMathGrid::draw(pi, x, y);
 }
 
 

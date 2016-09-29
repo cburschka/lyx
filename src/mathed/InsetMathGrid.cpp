@@ -418,7 +418,6 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
 	}
-	rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
 	rowinfo_[nrows()].ascent_  = 0;
 	rowinfo_[nrows()].descent_ = 0;
 
@@ -482,7 +481,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	colinfo_[ncols()].width_  = 0;
 
 	// compute horizontal offsets
-	colinfo_[0].offset_ = border();
+	colinfo_[0].offset_ = border() + colinfo_[0].lines_ * vlinesep();;
 	for (col_type col = 1; col <= ncols(); ++col) {
 		colinfo_[col].offset_ =
 			colinfo_[col - 1].offset_ +
@@ -535,7 +534,7 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = rowinfo_[nrows() - 1].offset_
 		+ rowinfo_[nrows() - 1].descent_
 		+ hlinesep() * rowinfo_[nrows()].lines_
-		+ border();
+		+ border() + 1;
 
 
 /*
@@ -588,20 +587,38 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		cxrow->setBaseline(cxrow->getBaseline() - ascent);
 	}
 */
+	dim.wid += leftMargin() + rightMargin();
 	metricsMarkers2(dim);
 	// Cache the inset dimension.
 	setDimCache(mi, dim);
 }
 
 
-void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
+int InsetMathGrid::vLineHOffset(col_type col, unsigned int line) const
 {
-	drawWithMargin(pi, x, y, 1, 1);
+	if (col < ncols())
+		return leftMargin() + colinfo_[col].offset_
+			- (colinfo_[col].lines_ - line - 1) * vlinesep()
+			- vlinesep()/2 - colsep()/2;
+	else {
+		LASSERT(col == ncols(), return 0);
+		return leftMargin() + colinfo_[col-1].offset_ + colinfo_[col-1].width_
+			+ line * vlinesep()
+			+ vlinesep()/2 + colsep()/2;
+	}
 }
 
 
-void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
-	int lmargin, int rmargin) const
+int InsetMathGrid::hLineVOffset(row_type row, unsigned int line) const
+{
+	return rowinfo_[row].offset_
+		- rowinfo_[row].ascent_
+		- line * hlinesep()
+		- hlinesep()/2 - rowsep()/2;
+}
+
+
+void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	BufferView const & bv = *pi.base.bv;
@@ -609,68 +626,37 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
 		if (cellinfo_[idx].multi_ != CELL_PART_OF_MULTICOLUMN) {
 			cell(idx).draw(pi,
-				x + lmargin + cellXOffset(bv, idx),
-				y + cellYOffset(idx));
+			               x + leftMargin() + cellXOffset(bv, idx),
+			               y + cellYOffset(idx));
 
-			// draw inner lines cell by cell because of possible multicolumns
-			// FIXME: multicolumn lines are not yet considered
-			row_type const r = row(idx);
-			col_type const c = col(idx);
-			if (r > 0 && r < nrows()) {
-				for (unsigned int i = 0; i < rowinfo_[r].lines_; ++i) {
-					int const yy = y + rowinfo_[r].offset_
-						- rowinfo_[r].ascent_
-						- i * hlinesep()
-						- hlinesep()/2 - rowsep()/2;
-					int const xx1 = x + lmargin + colinfo_[c].offset_;
-					int const xx2 = (c + 1 == ncols()) ?
-						// last column
-						xx1 + colinfo_[c].width_ :
-						// first columns
-						x + lmargin + colinfo_[c+1].offset_;
-					pi.pain.line(xx1, yy, xx2, yy, Color_foreground);
-				}
-			}
-			if (c > 0 && c < ncols()) {
+			row_type r = row(idx);
+			int const yy1 = y + hLineVOffset(r, 0);
+			int const yy2 = y + hLineVOffset(r + 1, rowinfo_[r + 1].lines_ - 1);
+			auto draw_left_borders = [&](col_type c) {
 				for (unsigned int i = 0; i < colinfo_[c].lines_; ++i) {
-					int const xx = x + lmargin
-						+ colinfo_[c].offset_
-						- i * vlinesep()
-						- vlinesep()/2 - colsep()/2;
-					int top_offset;
-					// prevRowHasLine needs to be changed if multicolumn lines are supported
-					bool const prevRowHasLine(r > 0);
-					if (prevRowHasLine)
-						// start from offset of previous row to create a continous line
-						top_offset = rowinfo_[r - 1].offset_ + rowinfo_[r - 1].descent_;
-					else
-						top_offset = rowinfo_[r].offset_- rowinfo_[r].ascent_;
-					pi.pain.line(xx, y + top_offset,
-						xx, y + rowinfo_[r].offset_ + rowinfo_[r].descent_,
-						Color_foreground);
+					int const xx = x + vLineHOffset(c, i);
+					pi.pain.line(xx, yy1, xx, yy2, Color_foreground);
 				}
-			}
+			};
+			col_type c = col(idx);
+			// Draw inner left borders cell-by-cell because of multicolumns
+			draw_left_borders(c);
+			// Draw the right border (only once)
+			if (c == 0)
+				draw_left_borders(ncols());
 		}
 	}
 
-	// draw outer lines in one go
-	for (row_type row = 0; row <= nrows(); row += nrows())
-		for (unsigned int i = 0; i < rowinfo_[row].lines_; ++i) {
-			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
-				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pi.pain.line(x + lmargin + 1, yy,
-				     x + dim.width() - rmargin - 1, yy,
-				     Color_foreground);
+	// Draw horizontal borders
+	for (row_type r = 0; r <= nrows(); ++r) {
+		int const xx1 = x + vLineHOffset(0, 0);
+		int const xx2 = x + vLineHOffset(ncols(), colinfo_[ncols()].lines_ - 1);
+		for (unsigned int i = 0; i < rowinfo_[r].lines_; ++i) {
+			int const yy = y + hLineVOffset(r, i);
+			pi.pain.line(xx1, yy, xx2, yy, Color_foreground);
 		}
+	}
 
-	for (col_type col = 0; col <= ncols(); col += ncols())
-		for (unsigned int i = 0; i < colinfo_[col].lines_; ++i) {
-			int xx = x + lmargin + colinfo_[col].offset_
-				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pi.pain.line(xx, y - dim.ascent() + 1,
-				     xx, y + dim.descent() - 1,
-				     Color_foreground);
-		}
 	drawMarkers2(pi, x, y);
 }
 
@@ -699,7 +685,6 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
 	}
-	//rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
 	rowinfo_[nrows()].ascent_  = 0;
 	rowinfo_[nrows()].descent_ = 0;
 
