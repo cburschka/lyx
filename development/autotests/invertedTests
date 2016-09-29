@@ -14,10 +14,6 @@ Sublabel: todo
 # * easyfix issues,
 # * LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
 
-# Missing characters (U+0361, U+1E61) in LM,
-# set different system font in the source?
-export/doc/(de/|fr/)Customization_.*_systemF
-
 # Error in Japanese document if LyX-logo is preceded by foreign language
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
@@ -69,16 +65,6 @@ Sublabel: lyxbugs
 #
 # LyX bugs with a Trac number.
 
-#9633 Language nesting and polyglossia
-export/doc/(nb|sk)/Intro.*systemF
-# in index insets
-export/export/latex/languagenesting_index_inset_.*_systemF
-# in enumerate and lyxcode
-export/export/latex/languagenesting_enumerate_and_lyxcode.*_systemF
-# these instances may disappear after completed translation
-export/examples/fr/linguistics_.*_systemF
-export/doc/(de/|fr/)Customization_.*_systemF
-
 #8823 documents requiring pre-processing fail with Japanese
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
 
@@ -94,7 +80,7 @@ export/export/latex/LongestLabelWithUnderscore.*
 
 #9871 LyX sends invalid Unicode to iconv when converting to ASCII
 # most probably due to BabelPreamble code (language specific headings for
-# theorems, problems , ... are written in the language's default encoding 
+# theorems, problems , ... are written in the language's default encoding
 # if they contain non-ASCII characters)
 export/doc/(es|fr)/Additional_pdf4_texF
 
