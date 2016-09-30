@@ -13,8 +13,6 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "MathData.h"
-
 #include "insets/Inset.h"
 
 
@@ -84,6 +82,7 @@ class MathematicaStream;
 class MathStream;
 class WriteStream;
 
+class MathData;
 class MathMacroTemplate;
 class MathMacro;
 class Cursor;

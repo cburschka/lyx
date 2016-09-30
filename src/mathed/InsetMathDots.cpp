@@ -13,6 +13,7 @@
 
 #include "InsetMathDots.h"
 
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
 #include "MathStream.h"
 #include "MathSupport.h"

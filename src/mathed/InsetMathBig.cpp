@@ -12,7 +12,9 @@
 
 #include "InsetMathBig.h"
 
+#include "Dimension.h"
 #include "LaTeXFeatures.h"
+
 #include "MathSupport.h"
 #include "MathStream.h"
 #include "MetricsInfo.h"

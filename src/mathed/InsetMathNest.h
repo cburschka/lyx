@@ -13,6 +13,7 @@
 #define MATH_NESTINSET_H
 
 #include "InsetMath.h"
+#include "MathData.h"
 
 #include <map>
 

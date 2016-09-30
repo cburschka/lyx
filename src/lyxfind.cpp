@@ -39,6 +39,7 @@
 #include "mathed/InsetMath.h"
 #include "mathed/InsetMathGrid.h"
 #include "mathed/InsetMathHull.h"
+#include "mathed/MathData.h"
 #include "mathed/MathStream.h"
 #include "mathed/MathSupport.h"
 
