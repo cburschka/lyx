@@ -30,7 +30,10 @@ public:
 	/// \param title is the window title used for decoration.
 	DialogView(GuiView & lv, QString const & name, QString const & title)
 		: QDialog(&lv), Dialog(lv, name, "LyX: " + title)
-	{}
+	{
+		// remove question marks from Windows dialogs
+		setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+	}
 
 	virtual QWidget * asQWidget() { return this; }
 	virtual QWidget const * asQWidget() const { return this; }
