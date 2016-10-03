@@ -234,6 +234,7 @@ graphicboxes
 \html_css_as_file 0
 \html_be_strict false
 \author 227574939 "Kyttj"
+\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -38620,8 +38621,24 @@ Inkscape
 \begin_inset space ~
 \end_inset
 
-figure This experimental template supports images created with the program
+figure This experimental template supports 
+\change_inserted 2047637253 1475533187
+SVG 
+\change_inserted 227574939 1473131628
+images
+\change_inserted 2047637253 1475533525
+ that contain text written in \SpecialChar LaTeX
+.
+
+\change_inserted 227574939 1473131628
  
+\change_inserted 2047637253 1475533551
+It relies on the PDF/PS+\SpecialChar LaTeX
+ option of 
+\change_deleted 2047637253 1475533556
+created with 
+\change_inserted 227574939 1473131628
+the program 
 \begin_inset CommandInset href
 LatexCommand href
 name "Inkscape"
@@ -38630,14 +38647,90 @@ target "https://en.wikipedia.org/wiki/Inkscape"
 \end_inset
 
 .
- It works very similarly to Xfig support, except that Inkscape is a more
- modern image editor than Xfig, which uses Scalable Vector Graphics (SVG)
- as its native format.
+ 
+\change_inserted 2047637253 1475534005
+As described by the CTAN demonstration package 
+\emph on
+svg-inkscape
+\emph default
+,
 \end_layout
 
 \begin_deeper
+\begin_layout Quote
+
+\change_inserted 2047637253 1475534064
+
+\emph on
+using the 
+\begin_inset Quotes eld
+\end_inset
+
+PDF+\SpecialChar LaTeX
+ output
+\begin_inset Quotes erd
+\end_inset
+
+ option of Inkscape, it is possible to include SVG in documents, in which
+ \SpecialChar LaTeX
+ typesets the text.
+ This results in uniform text style throughout the document, including text
+ in images; moreover, \SpecialChar LaTeX
+ commands may be used in the image’s text, providing
+ such things as mathematics and references.
+\end_layout
+
 \begin_layout Standard
 
+\change_inserted 2047637253 1475534692
+With Inkscape, even the size of the font is taken from the surrounding \SpecialChar LaTeX
+
+ document.
+ Of course, you can always embed \SpecialChar LaTeX
+ modifiers like 
+\family typewriter
+
+\backslash
+Large
+\family default
+, 
+\family typewriter
+
+\backslash
+small
+\family default
+, etc.
+ into your figure text strings.
+ Refer to the 
+\emph on
+svg-inkscape
+\emph default
+ documentation package for more information and examples.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2047637253 1475534902
+It should be noted that while the image takes into account the surrounding
+ font, its preview in \SpecialChar LyX
+ does not.
+ Wrapping the external inset in a preview inset gives better results in
+ this regard.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 2047637253 1475534821
+It
+\change_inserted 2047637253 1475534913
+The template
+\change_inserted 227574939 1473131628
+ works very similarly to Xfig support, except that Inkscape is a more modern
+ image editor than Xfig, which uses Scalable Vector Graphics (SVG) as its
+ native format.
+
+\change_unchanged
+ 
 \change_inserted 227574939 1473131628
 LyX will process the image file in much the same way as it does an Xfig
  image, extracting the text into a separate TeX file for the text strings,
@@ -38705,12 +38798,13 @@ Child Document
 \end_inset
 
 .
+\change_deleted 2047637253 1475534230
+
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 
-\change_inserted 227574939 1473131628
+\change_deleted 2047637253 1475534225
 The reason why we would use this complicated process at all, like in the
  case of Xfig, is that it makes the text strings inside the figure of the
  same font type and attributes as the surrounding text, which looks so much
@@ -38735,9 +38829,10 @@ small
 \family default
 , etc.
  into your figure text strings.
+\change_inserted 227574939 1473131628
+
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Float table
