@@ -74,8 +74,24 @@ static bool normalcolor(docstring const & color)
 void InsetMathColor::validate(LaTeXFeatures & features) const
 {
 	InsetMathNest::validate(features);
-	if (!normalcolor(color_))
-		features.require("color");
+	if (!normalcolor(color_)) {
+		switch (lcolor.getFromLaTeXName(to_utf8(color_))) {
+			case Color_brown:
+			case Color_darkgray:
+			case Color_gray:
+			case Color_lightgray:
+			case Color_lime:
+			case Color_olive:
+			case Color_orange:
+			case Color_pink:
+			case Color_purple:
+			case Color_teal:
+			case Color_violet:
+				features.require("xcolor");
+			default:
+				features.require("color");
+		}
+	}
 }
 
 
