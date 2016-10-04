@@ -88,7 +88,7 @@ Changer MetricsBase::changeFontSet(string const & name, bool cond)
 
 MetricsInfo::MetricsInfo(BufferView * bv, FontInfo font, int textwidth,
                          MacroContext const & mc)
-	: base(bv, font, textwidth), macrocontext(mc)
+	: base(bv, font, textwidth), macro_nesting(0), macrocontext(mc)
 {}
 
 

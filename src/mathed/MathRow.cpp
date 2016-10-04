@@ -22,6 +22,7 @@
 #include "CoordCache.h"
 #include "MetricsInfo.h"
 
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -35,26 +36,33 @@ using namespace std;
 namespace lyx {
 
 
-MathRow::Element::Element(Type t, MathClass const mc)
-	: type(t),
-	  inset(0), mclass(mc), before(0), after(0), compl_unique_to(0),
-	  macro(0)
+MathRow::Element::Element(Type t, MetricsInfo &mi)
+	: type(t), macro_nesting(mi.macro_nesting),
+	  inset(0), mclass(MC_ORD), before(0), after(0), compl_unique_to(0),
+	  macro(0), color(Color_red)
 {}
 
 
-MathRow::MathRow(MetricsInfo const & mi, MathData const * ar)
+MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 {
-	if (ar->empty())
-		return;
-
 	// First there is a dummy element of type "open"
-	push_back(Element(BEGIN, MC_OPEN));
+	push_back(Element(BEGIN, mi));
+	back().mclass = MC_OPEN;
 
 	// Then insert the MathData argument
-	ar->addToMathRow(*this, mi);
+	bool const has_contents = ar->addToMathRow(*this, mi);
+
+	// empty arrays are visible when they are editable
+	// we reserve the necessary space anyway (even if nothing gets drawn)
+	if (!has_contents) {
+		Element e(BOX, mi);
+		e.color = Color_mathline;
+		push_back(e);
+	}
 
 	// Finally there is a dummy element of type "close"
-	push_back(Element(END, MC_CLOSE));
+	push_back(Element(END, mi));
+	back().mclass = MC_CLOSE;
 
 	/* Do spacing only in math mode. This test is a bit clumsy,
 	 * but it is used in other places for guessing the current mode.
@@ -120,9 +128,9 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 	map<MathMacro const *, Dimension> dim_macros;
 	map<MathData const *, Dimension> dim_arrays;
 	CoordCache & coords = mi.base.bv->coordCache();
-
 	for (Element const & e : elements_) {
 		Dimension d;
+		mi.macro_nesting = e.macro_nesting;
 		switch (e.type) {
 		case BEGIN:
 		case END:
@@ -131,12 +139,6 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			e.inset->metrics(mi, d);
 			d.wid += e.before + e.after;
 			coords.insets().add(e.inset, d);
-			dim += d;
-			// Now add the dimension to current macros and arguments.
-			for (auto & dim_macro : dim_macros)
-				dim_macro.second += d;
-			for (auto & dim_array : dim_arrays)
-				dim_array.second += d;
 			break;
 		case BEG_MACRO:
 			e.macro->macro()->lock();
@@ -164,6 +166,19 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			coords.arrays().add(e.ar, dim_arrays[e.ar]);
 			dim_arrays.erase(e.ar);
 			break;
+		case BOX:
+			d = theFontMetrics(mi.base.font).dimension('I');
+			d.wid += e.before + e.after;
+			break;
+		}
+
+		if (!d.empty()) {
+			dim += d;
+			// Now add the dimension to current macros and arguments.
+			for (auto & dim_macro : dim_macros)
+				dim_macro.second += d;
+			for (auto & dim_array : dim_arrays)
+				dim_array.second += d;
 		}
 
 		if (e.compl_text.empty())
@@ -180,7 +195,6 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 {
 	CoordCache & coords = pi.base.bv->coordCache();
 	for (Element const & e : elements_) {
-		Dimension d;
 		switch (e.type) {
 		case INSET: {
 			// This is hackish: the math inset does not know that space
@@ -211,6 +225,15 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			if (e.macro->editMetrics(pi.base.bv))
 				pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
 			break;
+		case BOX: {
+			Dimension const d = theFontMetrics(pi.base.font).dimension('I');
+			// the box is not visible in non-editable context (except for grey macro boxes).
+			if (e.macro_nesting == 0 || e.color == Color_mathmacroblend)
+				pi.pain.rectangle(x + e.before, y - d.ascent(),
+								  d.width(), d.height(), e.color);
+			x += d.wid;
+			break;
+		}
 		case BEGIN:
 		case END:
 		case END_MACRO:
@@ -276,6 +299,9 @@ ostream & operator<<(ostream & os, MathRow::Element const & e)
 		break;
 	case MathRow::END_ARG:
 		os << ")";
+		break;
+	case MathRow::BOX:
+		os << "@";
 		break;
 	}
 	return os;

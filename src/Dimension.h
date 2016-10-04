@@ -32,6 +32,8 @@ public:
 	void operator+=(Dimension const & dim);
 	/// set to empty box
 	void clear() { wid = asc = des = 0; }
+	/// check if box is empty
+	bool empty() const { return wid == 0 && asc == 0 && wid == 0; }
 	/// get height
 	int height() const { return asc + des; }
 	/// get ascent

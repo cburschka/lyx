@@ -56,9 +56,9 @@ MathClass InsetMath::mathClass() const
 }
 
 
-bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo const &) const
+bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
-	MathRow::Element e;
+	MathRow::Element e(MathRow::INSET, mi);
 	e.inset = this;
 	e.mclass = mathClass();
 	mrow.push_back(e);

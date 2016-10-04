@@ -122,7 +122,7 @@ public:
 	MathAtom const & operator[](pos_type) const;
 
 	/// Add this array to a math row. Return true if contents got added
-	bool addToMathRow(MathRow &, MetricsInfo const & mi) const;
+	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
 	/// rebuild cached metrics information
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

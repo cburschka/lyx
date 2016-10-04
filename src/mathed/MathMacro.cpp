@@ -68,28 +68,49 @@ public:
 	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
-	bool addToMathRow(MathRow & mrow, MetricsInfo const & mi) const
+	bool addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	{
-		MathRow::Element e(MathRow::BEG_ARG);
-		e.macro = mathMacro_;
-		e.ar = &mathMacro_->cell(idx_);
-		mrow.push_back(e);
+		// macro arguments are in macros
+		LATTEST(mi.macro_nesting > 0);
+		if (mi.macro_nesting == 1)
+			mi.macro_nesting = 0;
+
+		MathRow::Element e_beg(MathRow::BEG_ARG, mi);
+		e_beg.macro = mathMacro_;
+		e_beg.ar = &mathMacro_->cell(idx_);
+		mrow.push_back(e_beg);
 
 		mathMacro_->macro()->unlock();
-		bool const has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
+		bool has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
 		mathMacro_->macro()->lock();
 
-		e.type = MathRow::END_ARG;
-		mrow.push_back(e);
+		// if there was no contents, and the contents is editable,
+		// then we insert a box instead.
+		if (!has_contents && mi.macro_nesting == 0) {
+			MathRow::Element e(MathRow::BOX, mi);
+			e.color = Color_mathline;
+			mrow.push_back(e);
+			has_contents = true;
+		}
 
-		if (has_contents)
-			return true;
-		// if there was no contents, then we insert the empty macro inset
-		// instead.
-		return InsetMath::addToMathRow(mrow, mi);
+		if (mi.macro_nesting == 0)
+			mi.macro_nesting = 1;
+
+		MathRow::Element e_end(MathRow::END_ARG, mi);
+		e_end.macro = mathMacro_;
+		e_end.ar = &mathMacro_->cell(idx_);
+
+		mrow.push_back(e_end);
+
+		return has_contents;
 	}
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
+		// macro arguments are in macros
+		LATTEST(mi.macro_nesting > 0);
+		if (mi.macro_nesting == 1)
+			mi.macro_nesting = 0;
+
 		mathMacro_->macro()->unlock();
 		mathMacro_->cell(idx_).metrics(mi, dim);
 
@@ -98,6 +119,8 @@ public:
 			def_.metrics(mi, dim);
 
 		mathMacro_->macro()->lock();
+		if (mi.macro_nesting == 0)
+			mi.macro_nesting = 1;
 	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
 	// MathMacro uses the definition and not the expanded cells.
@@ -287,31 +310,42 @@ MathMacro::~MathMacro()
 }
 
 
-bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo const & mi) const
+bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	// set edit mode for which we will have calculated row.
 	// This is the same as what is done in metrics().
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
-	if (displayMode() == MathMacro::DISPLAY_NORMAL
-	    && !d->editing_[mi.base.bv]) {
-		MathRow::Element e(MathRow::BEG_MACRO);
-		e.macro = this;
+	if (displayMode() != MathMacro::DISPLAY_NORMAL
+	    || d->editing_[mi.base.bv])
+		return InsetMath::addToMathRow(mrow, mi);
+
+	MathRow::Element e_beg(MathRow::BEG_MACRO, mi);
+	e_beg.macro = this;
+	mrow.push_back(e_beg);
+
+	++mi.macro_nesting;
+
+	d->macro_->lock();
+	bool has_contents = d->expanded_.addToMathRow(mrow, mi);
+	d->macro_->unlock();
+
+	// if there was no contents and the array is editable, then we
+	// insert a grey box instead.
+	if (!has_contents && mi.macro_nesting == 1) {
+		MathRow::Element e(MathRow::BOX, mi);
+		e.color = Color_mathmacroblend;
 		mrow.push_back(e);
-
-		d->macro_->lock();
-		bool const has_contents = d->expanded_.addToMathRow(mrow, mi);
-		d->macro_->unlock();
-
-		e.type = MathRow::END_MACRO;
-		mrow.push_back(e);
-
-		if (has_contents)
-			return true;
-		// if there was no contents, then we insert the empty macro inset
-		// instead.
+		has_contents = true;
 	}
-	return InsetMath::addToMathRow(mrow, mi);
+
+	--mi.macro_nesting;
+
+	MathRow::Element e_end(MathRow::END_MACRO, mi);
+	e_end.macro = this;
+	mrow.push_back(e_end);
+
+	return has_contents;
 }
 
 
@@ -407,6 +441,9 @@ bool MathMacro::editMetrics(BufferView const * bv) const
 
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	// the macro contents is not editable (except the arguments)
+	++mi.macro_nesting;
+
 	// set edit mode for which we will have calculated metrics. But only
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
@@ -495,6 +532,9 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des += 2;
 		}
 	}
+
+	// restore macro nesting
+	--mi.macro_nesting;
 }
 
 

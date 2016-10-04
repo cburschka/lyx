@@ -31,7 +31,6 @@
 #include "mathed/InsetMathUnknown.h"
 
 #include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -217,7 +216,7 @@ void MathData::touch() const
 }
 
 
-bool MathData::addToMathRow(MathRow & mrow, MetricsInfo const & mi) const
+bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	bool has_contents = false;
 	BufferView * bv = mi.base.bv;
@@ -275,12 +274,6 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	slevel_ = (4 * xascent) / 5;
 	sshift_ = xascent / 4;
 
-	if (empty()) {
-		// Cache the dimension.
-		mi.base.bv->coordCache().arrays().add(this, dim);
-		return;
-	}
-
 	MathRow mrow(mi, this);
 	mrow_cache_[mi.base.bv] = mrow;
 	mrow.metrics(mi, dim);
@@ -298,11 +291,6 @@ void MathData::draw(PainterInfo & pi, int const x, int const y) const
 	setXY(bv, x, y);
 
 	Dimension const & dim = bv.coordCache().getArrays().dim(this);
-
-	if (empty()) {
-		pi.pain.rectangle(x, y - dim.ascent(), dim.width(), dim.height(), Color_mathline);
-		return;
-	}
 
 	// don't draw outside the workarea
 	if (y + dim.descent() <= 0

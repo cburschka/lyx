@@ -167,7 +167,7 @@ public:
 	/// The class of the math object (used primarily for spacing)
 	virtual MathClass mathClass() const;
 	/// Add this inset to a math row. Return true if contents got added
-	virtual bool addToMathRow(MathRow &, MetricsInfo const & mi) const;
+	virtual bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }

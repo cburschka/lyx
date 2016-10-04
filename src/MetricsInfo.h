@@ -101,6 +101,8 @@ public:
 
 	///
 	MetricsBase base;
+	/// count wether the current mathdata is nested in macro(s)
+	int macro_nesting;
 	/// The context to resolve macros
 	MacroContext const & macrocontext;
 };

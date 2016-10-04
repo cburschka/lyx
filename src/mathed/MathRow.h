@@ -14,6 +14,8 @@
 
 #include "MathClass.h"
 
+#include "ColorCode.h"
+
 #include "support/docstring.h"
 
 #include <vector>
@@ -51,16 +53,19 @@ public:
 		END_ARG, // a macro argument ends here
 		BEGIN, // dummy element before row
 		END, // dummy element after row
+		BOX // an empty box
 	};
 
 	// An elements, together with its spacing
 	struct Element
 	{
 		///
-		Element(Type t = INSET, MathClass const mc = MC_ORD);
+		Element(Type t, MetricsInfo & mi);
 
 		/// Classifies the contents of the object
 		Type type;
+		/// count wether the current mathdata is nested in macro(s)
+		int macro_nesting;
 
 		/// When type is INSET
 		/// the math inset
@@ -80,6 +85,9 @@ public:
 
 		// type is BEG_ARG, END_ARG
 		MathData const * ar;
+
+		// type is BOX
+		ColorCode color;
 	};
 
 	///
@@ -105,7 +113,7 @@ public:
 
 	// create the math row by unwinding all macros in the MathData and
 	// compute the spacings.
-	MathRow(MetricsInfo const & mi, MathData const * ar);
+	MathRow(MetricsInfo & mi, MathData const * ar);
 
 	//
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

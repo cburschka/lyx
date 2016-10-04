@@ -39,7 +39,7 @@ public:
 	///
 	/// If the macro is in normal edit mode, dissolve its contents in
 	/// the row. Otherwise, just insert the inset.
-	bool addToMathRow(MathRow &, MetricsInfo const & mi) const;
+	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
