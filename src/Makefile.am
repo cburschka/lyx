@@ -403,6 +403,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathCases.cpp \
 	mathed/InsetMathChar.cpp \
+	mathed/InsetMathClass.cpp \
 	mathed/InsetMathColor.cpp \
 	mathed/InsetMathComment.cpp \
 	mathed/InsetMathDecoration.cpp \
@@ -475,6 +476,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathCancelto.h \
 	mathed/InsetMathCases.h \
 	mathed/InsetMathChar.h \
+	mathed/InsetMathClass.h \
 	mathed/InsetMathColor.h \
 	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \

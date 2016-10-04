@@ -19,6 +19,7 @@
 #include "InsetMathCancel.h"
 #include "InsetMathCancelto.h"
 #include "InsetMathCases.h"
+#include "InsetMathClass.h"
 #include "InsetMathColor.h"
 #include "InsetMathDecoration.h"
 #include "InsetMathDots.h"
@@ -662,9 +663,12 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathSpecialChar(s));
 	if (s == " ")
 		return MathAtom(new InsetMathSpace(" ", ""));
-
 	if (s == "regexp")
 		return MathAtom(new InsetMathHull(buf, hullRegexp));
+
+	MathClass const mc = string_to_class(s);
+	if (mc != MC_UNKNOWN)
+		return MathAtom(new InsetMathClass(buf, mc));
 
 	return MathAtom(new MathMacro(buf, s));
 }
