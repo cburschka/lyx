@@ -88,8 +88,10 @@ void InsetMathColor::validate(LaTeXFeatures & features) const
 			case Color_teal:
 			case Color_violet:
 				features.require("xcolor");
+				break;
 			default:
 				features.require("color");
+				break;
 		}
 	}
 }
