@@ -597,7 +597,7 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	int const a = y - dim.asc + 1;
 	int const w = dim.wid - 2;
 	int const h = dim.height() - 2;
-	pi.pain.rectangle(x, a, w, h, Color_mathframe);
+	pi.pain.rectangle(x + 1, a, w, h, Color_mathframe);
 
 	// just to be sure: set some dummy values for coord cache
 	for (idx_type i = 0; i < nargs(); ++i)
