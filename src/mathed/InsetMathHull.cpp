@@ -563,10 +563,9 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	BufferView const * const bv = pi.base.bv;
 	Dimension const dim = dimension(*bv);
 
-	if (type_ == hullRegexp) {
-		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
-			dim.width() - 2, dim.height() - 2, Color_regexpframe);
-	}
+	if (type_ == hullRegexp)
+		pi.pain.rectangle(x + 2, y - dim.ascent() + 1,
+		                  dim.width() - 3, dim.height() - 2, Color_regexpframe);
 
 	if (previewState(bv)) {
 		// Do not draw change tracking cue if taken care of by RowPainter
