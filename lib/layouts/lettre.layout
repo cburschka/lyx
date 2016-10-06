@@ -23,9 +23,13 @@
 #  - margins set to dynamic to ensure alignment of line headings
 #  - categories
 #  - ordering control left at the beginning (any other way ?)
+#---------------
+# rev.4; J.-P. Chretien oct 2016
+# update and review for inclusion in lyx-2.2.3
+#  - remove the workaround for page format (not needed after v2.351)
 
 
-Format 60
+Format 68
 
 #(pre)declarations (just to impose some order on the menus)
 Style Standard
@@ -129,8 +133,9 @@ Preamble
 
 % to get the specified pagesize 
 % (workaround for an a4paper/lettre problem in pdf mode)
-\@ifpackageloaded{ifpdf}{}{\usepackage{ifpdf}}
-\ifpdf\input pdftexconfig.tex\fi
+% removed in oct 2016, no more needed since 2.351 and created an error with LuaTeX
+%\@ifpackageloaded{ifpdf}{}{\usepackage{ifpdf}}
+%\ifpdf\input pdftexconfig.tex\fi
 
 EndPreamble
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -11,7 +11,7 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
+\font_roman "default" "FreeSans"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,7 +30,7 @@
 \paperfontsize 11
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize default
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -83,6 +84,62 @@ La liste des styles couvre tous les éléments d'une lettre qui apparaissent
 
 \begin_layout Plain Layout
 L'ordre des éléments est indifférent.
+\end_layout
+
+\begin_layout Plain Layout
+Le format de la page est codé en dur en Iso A4 jusqu'à le version 2.351 de
+ la classe (09/09/2014, TeXLive 2015), qui interprète correctement l'option
+ de classe 
+\family typewriter
+a4paper
+\family default
+.
+ Par contre, les options de classe 
+\family typewriter
+letterpaper
+\family default
+, 
+\family typewriter
+legalpaper
+\family default
+ et 
+\family typewriter
+executivepaper
+\family default
+ (appelés respectivement par 
+\family typewriter
+Lettre US
+\family default
+, 
+\family typewriter
+Légal US
+\family default
+ et 
+\family typewriter
+Executive US
+\family default
+ dans la fenêtre 
+\family sans
+Documents\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Format de la Page
+\family default
+) donnent des tailles de page inexactes, il faut installer la version 2.354
+ pour un fonctionnement correct si vous résidez dans un pays utilisant les
+ normes US.
+ Elle peut être téléchargée 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "ici"
+target "http://download.gna.org/lettre_observatoire/release/20151201_v2.354/lettre.zip"
+
+\end_inset
+
+
+\series default
+, et installée localement en attendant sa ditribution officielle.
 \end_layout
 
 \end_inset
