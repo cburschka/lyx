@@ -57,7 +57,7 @@ def read(input):
 def write(output, lines):
     " Write output file."
     for line in lines:
-        output.write(line[1] + u'\n')
+        output.write(line[1] + '\n')
 
 
 def complete(lines, start, stop):

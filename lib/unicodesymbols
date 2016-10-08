@@ -50,6 +50,9 @@
 # - tipashortcut=<shortcut> Shortcut notation for TIPA
 # - deprecated         Do not use this symbol for backwards conversion in LyX and tex2lyx.
 
+#
+# 2 Latin-1 Supplement
+#
 0x00a0 "~"                        "" "notermination=both" "~" "" # NO-BREAK SPACE
 0x00a1 "\\textexclamdown"         "" "" # INVERTED EXCLAMATION MARK
 0x00a2 "\\textcent"               "textcomp" "" #"\\mathcent" "txfonts|pxfonts" # CENT SIGN
@@ -146,6 +149,9 @@
 0x00fd "\\'{y}"                   "" "mathalpha" "\\acute{y}" # LATIN SMALL LETTER Y WITH ACUTE
 0x00fe "\\th"                     "" "" # LATIN SMALL LETTER THORN
 0x00ff "\\\"{y}"                  "" "mathalpha" "\\ddot{y}" # LATIN SMALL LETTER Y WITH DIAERESIS
+#
+# 3 Latin Extended-A
+#
 0x0100 "\\={A}"                   "" "mathalpha" "\\bar{A}" # LATIN CAPITAL LETTER A WITH MACRON
 0x0101 "\\={a}"                   "" "mathalpha" "\\bar{a}" # LATIN SMALL LETTER A WITH MACRON
 0x0102 "\\u{A}"                   "" "mathalpha" "\\breve{A}" # LATIN CAPITAL LETTER A WITH BREVE
@@ -275,7 +281,7 @@
 0x017e "\\v{z}"                   "" "mathalpha" "\\check{z}" # LATIN SMALL LETTER Z WITH CARON
 #0x017f ""                         "" "" "" "" # LATIN SMALL LETTER LONG S
 #
-# Latin Extended-B
+# 4 Latin Extended-B
 #
 0x0180 "\\textcrb"                "tipa" "force" # LATIN SMALL LETTER B WITH STROKE
 #0x0181 ""                         "" "" # LATIN CAPITAL LETTER B WITH HOOK
@@ -485,7 +491,7 @@
 #0x024e ""                         "" "" "" "" # LATIN CAPITAL LETTER Y WITH STROKE
 #0x024f ""                         "" "" "" "" # LATIN SMALL LETTER Y WITH STROKE
 #
-# IPA extensions
+# 5 IPA extensions
 #
 0x0250 "\\textturna"              "tipa" "force,tipashortcut=5" # LATIN SMALL LETTER TURNED A
 0x0251 "\\textscripta"            "tipa" "force,tipashortcut=A" # LATIN SMALL LETTER ALPHA
@@ -584,7 +590,7 @@
 0x02ae "\\textlhtlongy"            "tipa" "force" # LATIN SMALL LETTER TURNED H WITH FISHHOOK
 0x02af "\\textvibyy"               "tipa" "force" # LATIN SMALL LETTER TURNED H WITH FISHHOOK AND TAIL
 #
-# Spacing Modifier Letters
+# 6 Spacing Modifier Letters
 #
 0x02b0 "\\textsuperscript{h}"      "" "force=utf8" # MODIFIER LETTER SMALL H
 0x02b1 "\\textsuperscript{\\texthth}"  "tipa" "force" # MODIFIER LETTER SMALL H WITH HOOK
@@ -667,7 +673,7 @@
 #0x02fe ""                         "" "" "" "" # MODIFIER LETTER OPEN SHELF
 #0x02ff ""                         "" "" "" "" # MODIFIER LETTER LOW LEFT ARROW
 #
-# Combining diacritical marks
+# 7 Combining diacritical marks
 #
 0x0300 "\\`"                      "" "combining,force" "" "" # COMBINING GRAVE ACCENT
 0x0301 "\\'"                      "" "combining,force" "" "" # COMBINING ACUTE ACCENT
@@ -766,7 +772,7 @@
 #0x036e ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER V
 #0x036f ""                         "" "combining,force" # COMBINING LATIN SMALL LETTER X
 #
-# Greek
+# 8 Greek and Coptic
 #
 #0x0370 ""                         "" "" "" "" # GREEK CAPITAL LETTER HETA
 #0x0371 ""                         "" "" "" "" # GREEK SMALL LETTER HETA
@@ -877,7 +883,7 @@
 0x03f5 ""                         "" "mathalpha" "\epsilon" "" # GREEK LUNATE EPSILON SYMBOL
 0x03f6 ""                         "" "mathalpha" "\backepsilon" "amssymb" # GREEK REVERSED LUNATE EPSILON SYMBOL
 #
-# Cyrillic
+# 9 Cyrillic
 #
 # "textcyr" selects LaTeX font encoding T2A
 0x0400 "\\textcyr{\\`\\CYRE}"     "textcyr" "" # CYRILLIC CAPITAL LETTER IE WITH GRAVE
@@ -1083,11 +1089,11 @@
 0x04f8 "\\textcyr{\\\"\CYRERY}"    "textcyr" "" # CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
 0x04f9 "\\textcyr{\\\"\cyrery}"    "textcyr" "" # CYRILLIC SMALL LETTER YERU WITH DIAERESIS
 #
-# Thai
+# 31 Thai
 #
 0x0e3f "\\textbaht"            "textcomp" "" # THAI CURRENCY SYMBOL BAHT
 #
-# Phonetic Extensions
+# 65 Phonetic Extensions
 #
 0x1d00 "\\textsca"                "tipa" "force" # LATIN LETTER SMALL CAPITAL A
 #0x1d01 ""                        "" "" # LATIN LETTER SMALL CAPITAL AE
@@ -1218,13 +1224,13 @@
 0x1d7e "\\textbaru"               "tipa" "force,tipashortcut=0" # LATIN SMALL CAPITAL LETTER U WITH STROKE
 #0x1d7f ""                         "" "" # LATIN SMALL LETTER UPSILON WITH STROKE
 #
-# Combining Diacritical Marks Supplement
+# 67 Combining Diacritical Marks Supplement
 #
 0x1dc4 "\\texthighrise"            "tipa" "combining,force" "" "" # COMBINING MACRON-ACUTE
 0x1dc5 "\\textlowrise"             "tipa" "combining,force" "" "" # COMBINING GRAVE-MACRON
 0x1dc8 "\\textrisefall"            "tipa" "combining,force" "" "" # COMBINING GRAVE-ACUTE-GRAVE
 #
-# Latin Extended Additional
+# 68 Latin Extended Additional
 #
 0x1e00 "\\textsubring{A}"         "tipa" "force,mathalpha" "\\subring{A}" "accents,subring" # LATIN CAPITAL LETTER A WITH RING BELOW
 0x1e01 "\\textsubring{a}"         "tipa" "force,mathalpha" "\\subring{a}" "accents,subring" # LATIN SMALL LETTER A WITH RING BELOW
@@ -1474,7 +1480,7 @@
 0x1ef8 "\\~{Y}"                   "" "force=utf8,mathalpha" "\\tilde{Y}" # LATIN CAPITAL LETTER Y WITH TILDE
 0x1ef9 "\\~{y}"                   "" "force=utf8,mathalpha" "\\tilde{y}" # LATIN SMALL LETTER Y WITH TILDE
 #
-# Greek extended
+# 69 Greek extended
 #
 0x1f00 "\\textgreek{>a}"        "textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI
 0x1f01 "\\textgreek{<a}"        "textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA
@@ -1831,7 +1837,7 @@
 0x2093 "\\textsubscript{x}"       "subscript" "force=utf8" "{{}_x}" "" # LATIN SUBSCRIPT SMALL LETTER X
 0x2094 "\\textsubscript{\\textschwa}" "subscript" "force=utf8" "{{}_\\textschwa}" "tipa" # LATIN SUBSCRIPT SMALL LETTER SCHWA
 #
-# currency symbols
+# 72 Currency Symbols
 #
 0x20a1 "\\textcolonmonetary"      "textcomp" "" # COLON SIGN
 #0x20a3 "\\textfrenchfranc"        "textcomp" "" # FRENCH FRANC SIGN # ! Undefined control sequence. \textfrenchfranc
@@ -1847,7 +1853,7 @@
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
 
 #
-# letterlike symbols
+# 74 Letterlike Symbols
 #
 # use the following macro for the character ACCOUNT OF
 0x2100 "\\LyXaccountof"
@@ -1938,7 +1944,7 @@
 #0x214e ""                         "" "" "" "" # TURNED SMALL F
 #0x214f ""                         "" "" "" "" # SYMBOL FOR SAMARITAN SOURCE
 #
-# number forms
+# 75 Number Forms
 #
 #0x2150 ""                         "" "" "" "" # VULGAR FRACTION ONE SEVENTH
 #0x2151 ""                         "" "" "" "" # VULGAR FRACTION ONE NINTH
@@ -2012,7 +2018,7 @@
 #0x2188 ""                         "" "" "" "" # ROMAN NUMERAL ONE HUNDRED THOUSAND
 #0x2189 ""                         "" "" "" "" # VULGAR FRACTION ZERO THIRDS
 #
-# arrows
+# 76 Arrows
 #
 0x2190 "\\textleftarrow"          "textcomp" "" "\\leftarrow" # LEFTWARDS ARROW
 0x2191 "\\textuparrow"            "textcomp" "" "\\uparrow" # UPWARDS ARROW
@@ -2129,7 +2135,7 @@
 0x21fe ""                         "" "force=utf8" "\\rightarrowtriangle" "stmaryrd" # RIGHTWARDS OPEN-HEADED ARROW
 #0x21ff ""                         "" "" "" "" # LEFT RIGHT OPEN-HEADED ARROW
 #
-# mathematical operators
+# 77 Mathematical Operators
 #
 0x2200 ""                         "" "force=utf8" "\\forall" "" # FOR ALL
 0x2201 ""                         "" "force=utf8" "\\complement" "amssymb" # COMPLEMENT
@@ -2389,7 +2395,7 @@
 #0x22fe ""                         "" "" "" "" # SMALL CONTAINS WITH OVERBAR
 #0x22ff ""                         "" "" "" "" # Z NOTATION BAG MEMBERSHIP
 #
-# miscellaneous technical
+# 78 Miscellaneous Technical
 #
 0x2300 "\\diameter"               "wasysym" "force=utf8" "\\diameter" "wasysym" # DIAMETER SIGN
 #0x2301 ""                         "" "" "" "" # ELECTRIC ARROW
@@ -2437,7 +2443,7 @@
 0x2340 ""                         "" "force=utf8" "\\notbackslash" "wasysym" # APL FUNCTIONAL SYMBOL BACKSLASH BAR
 0x238b "Escape"                   "" "force=utf8,notermination=text" "" "" # Qt::Key_Escape, BROKEN CIRCLE WITH NORTHWEST ARROW = escape
 #
-# control pictures
+# 79 Control Pictures
 #
 # The symbols using ascii.sty are commented because the visual appearance
 # is different from the one in the official unicode charts, although the
@@ -2776,7 +2782,7 @@
 0x257e "\\pmboxdrawuni{257E}"     "pmboxdraw" "" # BOX DRAWINGS HEAVY LEFT AND LIGHT RIGHT
 0x257f "\\pmboxdrawuni{257F}"     "pmboxdraw" "force=utf8" # BOX DRAWINGS HEAVY UP AND LIGHT DOWN # wrong macro in pmboxdrawenc.dfu
 #
-# block elements
+# 83 Block Elements
 #
 0x2580 "\\textupblock"            "pmboxdraw" "" # UPPER HALF BLOCK
 0x2581 "\\pmboxdrawuni{2581}"     "pmboxdraw" "" # LOWER ONE EIGHTH BLOCK
@@ -3357,13 +3363,13 @@
 #
 #0x27c0 ""                         "" "" "" "" # THREE DIMENSIONAL ANGLE
 #0x27c1 ""                         "" "" "" "" # WHITE TRIANGLE CONTAINING SMALL WHITE TRIANGLE
-0x27c2 ""                         "" "" "\\perp" "" # PERPENDICULAR
-0x27c5 ""                         "" "" "\\Lbag" "stmaryrd" # LEFT S-SHAPED BAG DELIMITER
-0x27c6 ""                         "" "" "\\Rbag" "stmaryrd" # RIGHT S-SHAPED BAG DELIMITER
-0x27e6 ""                         "" "" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
-0x27e7 ""                         "" "" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
-0x27e8 "\\textlangle"             "textcomp" "" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
-0x27e9 "\\textrangle"             "textcomp" "" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
+0x27c2 ""                         "" "force=utf8" "\\perp" "" # PERPENDICULAR
+0x27c5 ""                         "" "force=utf8" "\\Lbag" "stmaryrd" # LEFT S-SHAPED BAG DELIMITER
+0x27c6 ""                         "" "force=utf8" "\\Rbag" "stmaryrd" # RIGHT S-SHAPED BAG DELIMITER
+0x27e6 ""                         "" "force=utf8" "\\llbracket" "stmaryrd" # MATHEMATICAL LEFT WHITE SQUARE BRACKET
+0x27e7 ""                         "" "force=utf8" "\\rrbracket" "stmaryrd" # MATHEMATICAL RIGHT WHITE SQUARE BRACKET
+0x27e8 "\\textlangle"             "textcomp" "force=utf8" "\\langle" "" # MATHEMATICAL LEFT ANGLE BRACKET
+0x27e9 "\\textrangle"             "textcomp" "force=utf8" "\\rangle" "" # MATHEMATICAL RIGHT ANGLE BRACKET
 #
 # 88 Supplemental Arrows-A
 #
@@ -3372,85 +3378,207 @@
 #0x27f2 ""                         "" "" "" "" # ANTICLOCKWISE GAPPED CIRCLE ARROW
 #0x27f3 ""                         "" "" "" "" # CLOCKWISE GAPPED CIRCLE ARROW
 #0x27f4 ""                         "" "" "" "" # RIGHT ARROW WITH CIRCLED PLUS
-0x27f5 ""                         "" "" "\\longleftarrow" "" # LONG LEFTWARDS ARROW
-0x27f6 ""                         "" "" "\\longrightarrow" "" # LONG RIGHTWARDS ARROW
-0x27f7 ""                         "" "" "\\longleftrightarrow" "" # LONG LEFT RIGHT ARROW
-0x27f8 ""                         "" "" "\\Longleftarrow" "" # LONG LEFTWARDS DOUBLE ARROW
-0x27f9 ""                         "" "" "\\Longrightarrow" "" # LONG RIGHTWARDS DOUBLE ARROW
-0x27fa ""                         "" "" "\\Longleftrightarrow" "" # LONG LEFT RIGHT DOUBLE ARROW
-0x27fb ""                         "" "" "\\longmapsfrom" "stmaryrd" # LONG LEFTWARDS ARROW FROM BAR
-0x27fc ""                         "" "" "\\longmapsto" "" # LONG RIGHTWARDS ARROW FROM BAR
-0x27fd ""                         "" "" "\\Longmapsfrom" "stmaryrd" # LONG LEFTWARDS DOUBLE ARROW FROM BAR
-0x27fe ""                         "" "" "\\Longmapsto" "stmaryrd" # LONG RIGHTWARDS DOUBLE ARROW FROM BAR
+0x27f5 ""                         "" "force=utf8" "\\longleftarrow" "" # LONG LEFTWARDS ARROW
+0x27f6 ""                         "" "force=utf8" "\\longrightarrow" "" # LONG RIGHTWARDS ARROW
+0x27f7 ""                         "" "force=utf8" "\\longleftrightarrow" "" # LONG LEFT RIGHT ARROW
+0x27f8 ""                         "" "force=utf8" "\\Longleftarrow" "" # LONG LEFTWARDS DOUBLE ARROW
+0x27f9 ""                         "" "force=utf8" "\\Longrightarrow" "" # LONG RIGHTWARDS DOUBLE ARROW
+0x27fa ""                         "" "force=utf8" "\\Longleftrightarrow" "" # LONG LEFT RIGHT DOUBLE ARROW
+0x27fb ""                         "" "force=utf8" "\\longmapsfrom" "stmaryrd" # LONG LEFTWARDS ARROW FROM BAR
+0x27fc ""                         "" "force=utf8" "\\longmapsto" "" # LONG RIGHTWARDS ARROW FROM BAR
+0x27fd ""                         "" "force=utf8" "\\Longmapsfrom" "stmaryrd" # LONG LEFTWARDS DOUBLE ARROW FROM BAR
+0x27fe ""                         "" "force=utf8" "\\Longmapsto" "stmaryrd" # LONG RIGHTWARDS DOUBLE ARROW FROM BAR
 #0x27ff ""                         "" "" "" "" # LONG RIGHTWARDS SQUIGGLE ARROW
 #
 # 90 Supplemental Arrows-B
 #
-0x2906 ""                         "" "" "\\Mapsfrom" "stmaryrd" # LEFTWARDS DOUBLE ARROW FROM BAR
-0x2907 ""                         "" "" "\\Mapsto" "stmaryrd" # RIGHTWARDS DOUBLE ARROW FROM BAR
+0x2906 ""                         "" "force=utf8" "\\Mapsfrom" "stmaryrd" # LEFTWARDS DOUBLE ARROW FROM BAR
+0x2907 ""                         "" "force=utf8" "\\Mapsto" "stmaryrd" # RIGHTWARDS DOUBLE ARROW FROM BAR
 #
-# Miscellaneous Mathematical Symbols-B
+# 91 Miscellaneous Mathematical Symbols-B
 #
-0x2987 ""                         "" "" "\\limg" "stmaryrd" # Z NOTATION LEFT IMAGE BRACKET
-0x2988 ""                         "" "" "\\rimg" "stmaryrd" # Z NOTATION RIGHT IMAGE BRACKET
-0x29c4 ""                         "" "" "\\boxslash" "stmaryrd" # SQUARED RISING DIAGONAL SLASH
-0x29c5 ""                         "" "" "\\boxbslash" "stmaryrd" # SQUARED FALLING DIAGONAL SLASH
-0x29c6 ""                         "" "" "\\boxast" "stmaryrd" # SQUARED ASTERISK
-0x29c7 ""                         "" "" "\\boxcircle" "stmaryrd" # SQUARED SMALL CIRCLE
-0x29c8 ""                         "" "" "\\boxbox" "stmaryrd" # SQUARED SQUARE
-0x29eb ""                         "" "" "\\\blacklozenge" "amssymb" # BLACK LOZENGE
+0x2980 ""                         "" "force=utf8" "\\interleave" "stmaryrd" # TRIPLE VERTICAL BAR DELIMITER
+#0x2981 ""                         "" "" "" "" # Z NOTATION SPOT
+#0x2982 ""                         "" "" "" "" # Z NOTATION TYPE COLON
+#0x2983 ""                         "" "" "" "" # LEFT WHITE CURLY BRACKET
+#0x2984 ""                         "" "" "" "" # RIGHT WHITE CURLY BRACKET
+#0x2985 ""                         "" "" "" "" # LEFT WHITE PARENTHESIS
+#0x2986 ""                         "" "" "" "" # RIGHT WHITE PARENTHESIS
+0x2987 ""                         "" "force=utf8" "\\llparenthesis" "stmaryrd" # Z NOTATION LEFT IMAGE BRACKET
+0x2988 ""                         "" "force=utf8" "\\rrparenthesis" "stmaryrd" # Z NOTATION RIGHT IMAGE BRACKET
+#0x2989 ""                         "" "" "" "" # Z NOTATION LEFT BINDING BRACKET
+#0x298a ""                         "" "" "" "" # Z NOTATION RIGHT BINDING BRACKET
+#0x298b ""                         "" "" "" "" # LEFT SQUARE BRACKET WITH UNDERBAR
+#0x298c ""                         "" "" "" "" # RIGHT SQUARE BRACKET WITH UNDERBAR
+#0x298d ""                         "" "" "" "" # LEFT SQUARE BRACKET WITH TICK IN TOP CORNER
+#0x298e ""                         "" "" "" "" # RIGHT SQUARE BRACKET WITH TICK IN BOTTOM CORNER
+#0x298f ""                         "" "" "" "" # LEFT SQUARE BRACKET WITH TICK IN BOTTOM CORNER
+#0x2990 ""                         "" "" "" "" # RIGHT SQUARE BRACKET WITH TICK IN TOP CORNER
+#0x2991 ""                         "" "" "" "" # LEFT ANGLE BRACKET WITH DOT
+#0x2992 ""                         "" "" "" "" # RIGHT ANGLE BRACKET WITH DOT
+#0x2993 ""                         "" "" "" "" # LEFT ARC LESS-THAN BRACKET
+#0x2994 ""                         "" "" "" "" # RIGHT ARC GREATER-THAN BRACKET
+#0x2995 ""                         "" "" "" "" # DOUBLE LEFT ARC GREATER-THAN BRACKET
+#0x2996 ""                         "" "" "" "" # DOUBLE RIGHT ARC LESS-THAN BRACKET
+#0x2997 ""                         "" "" "" "" # LEFT BLACK TORTOISE SHELL BRACKET
+#0x2998 ""                         "" "" "" "" # RIGHT BLACK TORTOISE SHELL BRACKET
+#0x2999 ""                         "" "" "" "" # DOTTED FENCE
+#0x299a ""                         "" "" "" "" # VERTICAL ZIGZAG LINE
+#0x299b ""                         "" "" "" "" # MEASURED ANGLE OPENING LEFT
+#0x299c ""                         "" "" "" "" # RIGHT ANGLE VARIANT WITH SQUARE
+#0x299d ""                         "" "" "" "" # MEASURED RIGHT ANGLE WITH DOT
+#0x299e ""                         "" "" "" "" # ANGLE WITH S INSIDE
+#0x299f ""                         "" "" "" "" # ACUTE ANGLE
+#0x29a0 ""                         "" "" "" "" # SPHERICAL ANGLE OPENING LEFT
+#0x29a1 ""                         "" "" "" "" # SPHERICAL ANGLE OPENING UP
+#0x29a2 ""                         "" "" "" "" # TURNED ANGLE
+#0x29a3 ""                         "" "" "" "" # REVERSED ANGLE
+#0x29a4 ""                         "" "" "" "" # ANGLE WITH UNDERBAR
+#0x29a5 ""                         "" "" "" "" # REVERSED ANGLE WITH UNDERBAR
+#0x29a6 ""                         "" "" "" "" # OBLIQUE ANGLE OPENING UP
+#0x29a7 ""                         "" "" "" "" # OBLIQUE ANGLE OPENING DOWN
+#0x29a8 ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING UP AND RIGHT
+#0x29a9 ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING UP AND LEFT
+#0x29aa ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING DOWN AND RIGHT
+#0x29ab ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING DOWN AND LEFT
+#0x29ac ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING RIGHT AND UP
+#0x29ad ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING LEFT AND UP
+#0x29ae ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING RIGHT AND DOWN
+#0x29af ""                         "" "" "" "" # MEASURED ANGLE WITH OPEN ARM ENDING IN ARROW POINTING LEFT AND DOWN
+#0x29b0 ""                         "" "" "" "" # REVERSED EMPTY SET
+#0x29b1 ""                         "" "" "" "" # EMPTY SET WITH OVERBAR
+#0x29b2 ""                         "" "" "" "" # EMPTY SET WITH SMALL CIRCLE ABOVE
+#0x29b3 ""                         "" "" "" "" # EMPTY SET WITH RIGHT ARROW ABOVE
+#0x29b4 ""                         "" "" "" "" # EMPTY SET WITH LEFT ARROW ABOVE
+#0x29b5 ""                         "" "" "" "" # CIRCLE WITH HORIZONTAL BAR
+0x29b6 ""                         "" "force=utf8" "\\varobar" "stmaryrd" # CIRCLED VERTICAL BAR
+#0x29b7 ""                         "" "" "" "" # CIRCLED PARALLEL
+0x29b8 ""                         "" "force=utf8" "\\varobslash" "stmaryrd" # CIRCLED REVERSE SOLIDUS
+#0x29b9 ""                         "" "" "" "" # CIRCLED PERPENDICULAR
+#0x29ba ""                         "" "" "" "" # CIRCLE DIVIDED BY HORIZONTAL BAR AND TOP HALF DIVIDED BY VERTICAL BAR
+#0x29bb ""                         "" "" "" "" # CIRCLE WITH SUPERIMPOSED X
+#0x29bc ""                         "" "" "" "" # CIRCLED ANTICLOCKWISE-ROTATED DIVISION SIGN
+#0x29bd ""                         "" "" "" "" # UP ARROW THROUGH CIRCLE
+0x29be ""                         "" "force=utf8" "\\varocircle" "stmaryrd" # CIRCLED WHITE BULLET
+0x29bf ""                         "" "force=utf8" "\\varodot" "stmaryrd" # CIRCLED BULLET
+0x29c0 ""                         "" "force=utf8" "\\varolessthan" "stmaryrd" # CIRCLED LESS-THAN
+0x29c1 ""                         "" "force=utf8" "\\varogreaterthan" "stmaryrd" # CIRCLED GREATER-THAN
+#0x29c2 ""                         "" "" "" "" # CIRCLE WITH SMALL CIRCLE TO THE RIGHT
+#0x29c3 ""                         "" "" "" "" # CIRCLE WITH TWO HORIZONTAL STROKES TO THE RIGHT
+0x29c4 ""                         "" "force=utf8" "\\boxslash" "stmaryrd" # SQUARED RISING DIAGONAL SLASH
+0x29c5 ""                         "" "force=utf8" "\\boxbslash" "stmaryrd" # SQUARED FALLING DIAGONAL SLASH
+0x29c6 ""                         "" "force=utf8" "\\boxast" "stmaryrd" # SQUARED ASTERISK
+0x29c7 ""                         "" "force=utf8" "\\boxcircle" "stmaryrd" # SQUARED SMALL CIRCLE
+0x29c8 ""                         "" "force=utf8" "\\boxbox" "stmaryrd" # SQUARED SQUARE
+#0x29c9 ""                         "" "" "" "" # TWO JOINED SQUARES
+#0x29ca ""                         "" "" "" "" # TRIANGLE WITH DOT ABOVE
+#0x29cb ""                         "" "" "" "" # TRIANGLE WITH UNDERBAR
+#0x29cc ""                         "" "" "" "" # S IN TRIANGLE
+#0x29cd ""                         "" "" "" "" # TRIANGLE WITH SERIFS AT BOTTOM
+#0x29ce ""                         "" "" "" "" # RIGHT TRIANGLE ABOVE LEFT TRIANGLE
+#0x29cf ""                         "" "" "" "" # LEFT TRIANGLE BESIDE VERTICAL BAR
+#0x29d0 ""                         "" "" "" "" # VERTICAL BAR BESIDE RIGHT TRIANGLE
+#0x29d1 ""                         "" "" "" "" # BOWTIE WITH LEFT HALF BLACK
+#0x29d2 ""                         "" "" "" "" # BOWTIE WITH RIGHT HALF BLACK
+#0x29d3 ""                         "" "" "" "" # BLACK BOWTIE
+#0x29d4 ""                         "" "" "" "" # TIMES WITH LEFT HALF BLACK
+#0x29d5 ""                         "" "" "" "" # TIMES WITH RIGHT HALF BLACK
+#0x29d6 ""                         "" "" "" "" # WHITE HOURGLASS
+#0x29d7 ""                         "" "" "" "" # BLACK HOURGLASS
+#0x29d8 ""                         "" "" "" "" # LEFT WIGGLY FENCE
+#0x29d9 ""                         "" "" "" "" # RIGHT WIGGLY FENCE
+#0x29da ""                         "" "" "" "" # LEFT DOUBLE WIGGLY FENCE
+#0x29db ""                         "" "" "" "" # RIGHT DOUBLE WIGGLY FENCE
+#0x29dc ""                         "" "" "" "" # INCOMPLETE INFINITY
+#0x29dd ""                         "" "" "" "" # TIE OVER INFINITY
+#0x29de ""                         "" "" "" "" # INFINITY NEGATED WITH VERTICAL BAR
+#0x29df ""                         "" "" "" "" # DOUBLE-ENDED MULTIMAP
+0x29e0 "\\SquareCastShadowTopLeft"    "bbding" "force=utf8" "" "" # SQUARE WITH CONTOURED OUTLINE
+#0x29e1 ""                         "" "" "" "" # INCREASES AS
+#0x29e2 ""                         "" "" "" "" # SHUFFLE PRODUCT
+#0x29e3 ""                         "" "" "" "" # EQUALS SIGN AND SLANTED PARALLEL
+#0x29e4 ""                         "" "" "" "" # EQUALS SIGN AND SLANTED PARALLEL WITH TILDE ABOVE
+#0x29e5 ""                         "" "" "" "" # IDENTICAL TO AND SLANTED PARALLEL
+#0x29e6 ""                         "" "" "" "" # GLEICH STARK
+#0x29e7 ""                         "" "" "" "" # THERMODYNAMIC
+#0x29e8 ""                         "" "" "" "" # DOWN-POINTING TRIANGLE WITH LEFT HALF BLACK
+#0x29e9 ""                         "" "" "" "" # DOWN-POINTING TRIANGLE WITH RIGHT HALF BLACK
+#0x29ea ""                         "" "" "" "" # BLACK DIAMOND WITH DOWN ARROW
+0x29eb ""                         "" "force=utf8" "\\blacklozenge" "amssymb" # BLACK LOZENGE
+#0x29ec ""                         "" "" "" "" # WHITE CIRCLE WITH DOWN ARROW
+#0x29ed ""                         "" "" "" "" # BLACK CIRCLE WITH DOWN ARROW
+#0x29ee ""                         "" "" "" "" # ERROR-BARRED WHITE SQUARE
+#0x29ef ""                         "" "" "" "" # ERROR-BARRED BLACK SQUARE
+#0x29f0 ""                         "" "" "" "" # ERROR-BARRED WHITE DIAMOND
+#0x29f1 ""                         "" "" "" "" # ERROR-BARRED BLACK DIAMOND
+#0x29f2 ""                         "" "" "" "" # ERROR-BARRED WHITE CIRCLE
+#0x29f3 ""                         "" "" "" "" # ERROR-BARRED BLACK CIRCLE
+#0x29f4 ""                         "" "" "" "" # RULE-DELAYED
+0x29f5 "\\textbackslash"          "" "force=utf8" "" "" # REVERSE SOLIDUS OPERATOR
+#0x29f6 ""                         "" "" "" "" # SOLIDUS WITH OVERBAR
+#0x29f7 ""                         "" "" "" "" # REVERSE SOLIDUS WITH HORIZONTAL STROKE
+#0x29f8 ""                         "" "" "" "" # BIG SOLIDUS
+#0x29f9 ""                         "" "" "" "" # BIG REVERSE SOLIDUS
+#0x29fa ""                         "" "" "" "" # DOUBLE PLUS
+#0x29fb ""                         "" "" "" "" # TRIPLE PLUS
+#0x29fc ""                         "" "" "" "" # LEFT-POINTING CURVED ANGLE BRACKET
+#0x29fd ""                         "" "" "" "" # RIGHT-POINTING CURVED ANGLE BRACKET
+#0x29fe ""                         "" "" "" "" # TINY
 #
-# supplemental mathematical operators
 #
-0x2a00 ""                         "" "" "\\bigodot" "" # N-ARY CIRCLED DOT OPERATOR
-0x2a01 ""                         "" "" "\\bigoplus" "" # N-ARY CIRCLED PLUS OPERATOR
-0x2a02 ""                         "" "" "\\bigotimes" "" # N-ARY CIRCLED TIMES OPERATOR
+# 92 Supplemental Mathematical Operators
+#
+0x2a00 ""                         "" "force=utf8" "\\bigodot" "" # N-ARY CIRCLED DOT OPERATOR
+0x2a01 ""                         "" "force=utf8" "\\bigoplus" "" # N-ARY CIRCLED PLUS OPERATOR
+0x2a02 ""                         "" "force=utf8" "\\bigotimes" "" # N-ARY CIRCLED TIMES OPERATOR
 #0x2a03 ""                         "" "" "\\bigcupdot" "MnSymbol" # N-ARY UNION OPERATOR WITH DOT
-0x2a04 ""                         "" "" "\\biguplus" "" # N-ARY UNION OPERATOR WITH PLUS
-0x2a05 ""                         "" "" "\\bigsqcap" "stmaryrd" # (or MnSymbol) N-ARY SQUARE INTERSECTION OPERATOR
-0x2a06 ""                         "" "" "\\bigsqcup" "" # N-ARY SQUARE UNION OPERATOR
+0x2a04 ""                         "" "force=utf8" "\\biguplus" "" # N-ARY UNION OPERATOR WITH PLUS
+0x2a05 ""                         "" "force=utf8" "\\bigsqcap" "stmaryrd" # (or MnSymbol) N-ARY SQUARE INTERSECTION OPERATOR
+0x2a06 ""                         "" "force=utf8" "\\bigsqcup" "" # N-ARY SQUARE UNION OPERATOR
 #0x2a07 ""                         "" "" "" "" # TWO LOGICAL AND OPERATOR
 #0x2a08 ""                         "" "" "" "" # TWO LOGICAL OR OPERATOR
 #0x2a09 ""                         "" "" "\\bigtimes" "MnSymbol" # N-ARY TIMES OPERATOR
 #0x2a0a ""                         "" "" "" "" # MODULO TWO SUM
 #0x2a0b ""                         "" "" "\\sumint" "MnSymbol" # SUMMATION WITH INTEGRAL
-0x2a0c ""                         "" "" "\\iiiint" "esint" # QUADRUPLE INTEGRAL OPERATOR
+0x2a0c ""                         "" "force=utf8" "\\iiiint" "esint" # QUADRUPLE INTEGRAL OPERATOR
 #0x2a0d ""                         "" "" "" "" # FINITE PART INTEGRAL
 #0x2a0e ""                         "" "" "" "" # INTEGRAL WITH DOUBLE STROKE
-0x2a0f ""                         "" "" "\\fint" "esint" # INTEGRAL AVERAGE WITH SLASH
+0x2a0f ""                         "" "force=utf8" "\\fint" "esint" # INTEGRAL AVERAGE WITH SLASH
 #0x2a10 ""                         "" "" "" "" # CIRCULATION FUNCTION
 #0x2a11 ""                         "" "" "" "" # ANTICLOCKWISE INTEGRATION
 #0x2a12 ""                         "" "" "" "" # LINE INTEGRATION WITH RECTANGULAR PATH AROUND POLE
 #0x2a13 ""                         "" "" "" "" # LINE INTEGRATION WITH SEMICIRCULAR PATH AROUND POLE
 #0x2a14 ""                         "" "" "" "" # LINE INTEGRATION NOT INCLUDING THE POLE
 #0x2a15 ""                         "" "" "" "" # INTEGRAL AROUND A POINT OPERATOR
-0x2a16 ""                         "" "" "\\sqint" "esint" # QUATERNION INTEGRAL OPERATOR
+0x2a16 ""                         "" "force=utf8" "\\sqint" "esint" # QUATERNION INTEGRAL OPERATOR
 #0x2a17 ""                         "" "" "" "" # INTEGRAL WITH LEFTWARDS ARROW WITH HOOK
 #0x2a18 ""                         "" "" "" "" # INTEGRAL WITH TIMES SIGN
 #0x2a19 ""                         "" "" "" "" # INTEGRAL WITH INTERSECTION
 #0x2a1a ""                         "" "" "" "" # INTEGRAL WITH UNION
 #0x2a1b ""                         "" "" "" "" # INTEGRAL WITH OVERBAR
 #0x2a1c ""                         "" "" "" "" # INTEGRAL WITH UNDERBAR
-0x2a1d ""                         "" "" "\\Join" "amssymb" # INTEGRAL WITH UNDERBAR
-0x2a1f ""                         "" "" "\\fatsemi" "stmaryrd" # Z NOTATION SCHEMA COMPOSITION
-0x2a3f ""                         "" "" "\\amalg" "" # AMALGAMATION OR COPRODUCT
-0x2a5e ""                         "" "" "\\doublebarwedge" "amssymb" # LOGICAL AND WITH DOUBLE OVERBAR
-0x2a7d ""                         "" "" "\\leqslant" "amssymb" # LESS-THAN OR SLANTED EQUAL TO
-0x2a7e ""                         "" "" "\\geqslant" "amssymb" # GREATER-THAN OR SLANTED EQUAL TO
+0x2a1d ""                         "" "force=utf8" "\\Join" "amssymb" # INTEGRAL WITH UNDERBAR
+#0x2a1e ""                         "" "" "" "" # LARGE LEFT TRIANGLE OPERATOR
+0x2a1f ""                         "" "force=utf8" "\\fatsemi" "stmaryrd" # Z NOTATION SCHEMA COMPOSITION
+0x2a3f ""                         "" "force=utf8" "\\amalg" "" # AMALGAMATION OR COPRODUCT
+0x2a55 ""			  "" "force=utf8" "\\merge" "stmaryrd" # TWO INTERSECTING LOGICAL AND
+0x2a5e ""                         "" "force=utf8" "\\doublebarwedge" "amssymb" # LOGICAL AND WITH DOUBLE OVERBAR
+0x2a7d ""                         "" "force=utf8" "\\leqslant" "amssymb" # LESS-THAN OR SLANTED EQUAL TO
+0x2a7e ""                         "" "force=utf8" "\\geqslant" "amssymb" # GREATER-THAN OR SLANTED EQUAL TO
 #0x2a7f ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
 #0x2a80 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT INSIDE
 #0x2a81 ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
 #0x2a82 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE
 #0x2a83 ""                         "" "" "" "" # LESS-THAN OR SLANTED EQUAL TO WITH DOT ABOVE RIGHT
 #0x2a84 ""                         "" "" "" "" # GREATER-THAN OR SLANTED EQUAL TO WITH DOT ABOVE LEFT
-0x2a85 ""                         "" "" "\\lessapprox" "amssymb" # LESS-THAN OR APPROXIMATE
-0x2a86 ""                         "" "" "\\gtrapprox" "amssymb" # GREATER-THAN OR APPROXIMATE
-0x2a87 ""                         "" "" "\\lneq" "amssymb" # LESS-THAN AND SINGLE-LINE NOT EQUAL TO
-0x2a88 ""                         "" "" "\\gneq" "amssymb" # GREATER-THAN AND SINGLE-LINE NOT EQUAL TO
+0x2a85 ""                         "" "force=utf8" "\\lessapprox" "amssymb" # LESS-THAN OR APPROXIMATE
+0x2a86 ""                         "" "force=utf8" "\\gtrapprox" "amssymb" # GREATER-THAN OR APPROXIMATE
+0x2a87 ""                         "" "force=utf8" "\\lneq" "amssymb" # LESS-THAN AND SINGLE-LINE NOT EQUAL TO
+0x2a88 ""                         "" "force=utf8" "\\gneq" "amssymb" # GREATER-THAN AND SINGLE-LINE NOT EQUAL TO
 #0x2a89 ""                         "" "" "" "" # LESS-THAN AND NOT APPROXIMATE
 #0x2a8a ""                         "" "" "" "" # GREATER-THAN AND NOT APPROXIMATE
-0x2a8b ""                         "" "" "\\lesseqqgtr" "amssymb" # LESS-THAN ABOVE DOUBLE-LINE EQUAL ABOVE GREATER-THAN
-0x2a8c ""                         "" "" "\\gtreqqless" "amssymb" # GREATER-THAN ABOVE DOUBLE-LINE EQUAL ABOVE LESS-THAN
+0x2a8b ""                         "" "force=utf8" "\\lesseqqgtr" "amssymb" # LESS-THAN ABOVE DOUBLE-LINE EQUAL ABOVE GREATER-THAN
+0x2a8c ""                         "" "force=utf8" "\\gtreqqless" "amssymb" # GREATER-THAN ABOVE DOUBLE-LINE EQUAL ABOVE LESS-THAN
 #0x2a8d ""                         "" "" "" "" # LESS-THAN ABOVE SIMILAR OR EQUAL
 #0x2a8e ""                         "" "" "" "" # GREATER-THAN ABOVE SIMILAR OR EQUAL
 #0x2a8f ""                         "" "" "" "" # LESS-THAN ABOVE SIMILAR ABOVE GREATER-THAN
@@ -3459,8 +3587,8 @@
 #0x2a92 ""                         "" "" "" "" # GREATER-THAN ABOVE LESS-THAN ABOVE DOUBLE-LINE EQUAL
 #0x2a93 ""                         "" "" "" "" # LESS-THAN ABOVE SLANTED EQUAL ABOVE GREATER-THAN ABOVE SLANTED EQUAL
 #0x2a94 ""                         "" "" "" "" # GREATER-THAN ABOVE SLANTED EQUAL ABOVE LESS-THAN ABOVE SLANTED EQUAL
-0x2a95 ""                         "" "" "\\eqslantless" "amssymb" # SLANTED EQUAL TO OR LESS-THAN
-0x2a96 ""                         "" "" "\\eqslantgtr" "amssymb" # SLANTED EQUAL TO OR GREATER-THAN
+0x2a95 ""                         "" "force=utf8" "\\eqslantless" "amssymb" # SLANTED EQUAL TO OR LESS-THAN
+0x2a96 ""                         "" "force=utf8" "\\eqslantgtr" "amssymb" # SLANTED EQUAL TO OR GREATER-THAN
 #0x2a97 ""                         "" "" "" "" # SLANTED EQUAL TO OR LESS-THAN WITH DOT INSIDE
 #0x2a98 ""                         "" "" "" "" # SLANTED EQUAL TO OR GREATER-THAN WITH DOT INSIDE
 #0x2a99 ""                         "" "" "" "" # DOUBLE-LINE EQUAL TO OR LESS-THAN
@@ -3476,27 +3604,27 @@
 #0x2aa3 ""                         "" "" "" "" # DOUBLE NESTED LESS-THAN WITH UNDERBAR
 #0x2aa4 ""                         "" "" "" "" # GREATER-THAN OVERLAPPING LESS-THAN
 #0x2aa5 ""                         "" "" "" "" # GREATER-THAN BESIDE LESS-THAN
-0x2aa6 ""                         "" "" "\\leftslice" "stmaryrd" # LESS-THAN CLOSED BY CURVE
-0x2aa7 ""                         "" "" "\\rightslice" "stmaryrd" # GREATER-THAN CLOSED BY CURVE
+0x2aa6 ""                         "" "force=utf8" "\\leftslice" "stmaryrd" # LESS-THAN CLOSED BY CURVE
+0x2aa7 ""                         "" "force=utf8" "\\rightslice" "stmaryrd" # GREATER-THAN CLOSED BY CURVE
 #0x2aa8 ""                         "" "" "" "" # LESS-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
 #0x2aa9 ""                         "" "" "" "" # GREATER-THAN CLOSED BY CURVE ABOVE SLANTED EQUAL
 #0x2aaa ""                         "" "" "" "" # SMALLER THAN
 #0x2aab ""                         "" "" "" "" # LARGER THAN
 #0x2aac ""                         "" "" "" "" # SMALLER THAN OR EQUAL TO
 #0x2aad ""                         "" "" "" "" # LARGER THAN OR EQUAL TO
-0x2aae ""                         "" "" "\\bumpeq" "amssymb" # EQUALS SIGN WITH BUMPY ABOVE
-0x2aaf ""                         "" "" "\\preceq" "" # PRECEDES ABOVE SINGLE-LINE EQUALS SIGN
-0x2ab0 ""                         "" "" "\\succeq" "" # SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN
+0x2aae ""                         "" "force=utf8" "\\bumpeq" "amssymb" # EQUALS SIGN WITH BUMPY ABOVE
+0x2aaf ""                         "" "force=utf8" "\\preceq" "" # PRECEDES ABOVE SINGLE-LINE EQUALS SIGN
+0x2ab0 ""                         "" "force=utf8" "\\succeq" "" # SUCCEEDS ABOVE SINGLE-LINE EQUALS SIGN
 #0x2ab1 ""                         "" "" "" "" # PRECEDES ABOVE SINGLE-LINE NOT EQUAL TO
 #0x2ab2 ""                         "" "" "" "" # SUCCEEDS ABOVE SINGLE-LINE NOT EQUAL TO
 #0x2ab3 ""                         "" "" "" "" # PRECEDES ABOVE EQUALS SIGN
 #0x2ab4 ""                         "" "" "" "" # SUCCEEDS ABOVE EQUALS SIGN
-0x2ab5 ""                         "" "" "\\precneqq" "amssymb" # PRECEDES ABOVE NOT EQUAL TO
-0x2ab6 ""                         "" "" "\\succneqq" "amssymb" # SUCCEEDS ABOVE NOT EQUAL TO
-0x2ab7 ""                         "" "" "\\precapprox" "amssymb" # PRECEDES ABOVE ALMOST EQUAL TO
-0x2ab8 ""                         "" "" "\\succapprox" "amssymb" # SUCCEEDS ABOVE ALMOST EQUAL TO
-0x2ab9 ""                         "" "" "\\precnapprox" "amssymb" # PRECEDES ABOVE NOT ALMOST EQUAL TO
-0x2aba ""                         "" "" "\\succnapprox" "amssymb" # SUCCEEDS ABOVE NOT ALMOST EQUAL TO
+0x2ab5 ""                         "" "force=utf8" "\\precneqq" "amssymb" # PRECEDES ABOVE NOT EQUAL TO
+0x2ab6 ""                         "" "force=utf8" "\\succneqq" "amssymb" # SUCCEEDS ABOVE NOT EQUAL TO
+0x2ab7 ""                         "" "force=utf8" "\\precapprox" "amssymb" # PRECEDES ABOVE ALMOST EQUAL TO
+0x2ab8 ""                         "" "force=utf8" "\\succapprox" "amssymb" # SUCCEEDS ABOVE ALMOST EQUAL TO
+0x2ab9 ""                         "" "force=utf8" "\\precnapprox" "amssymb" # PRECEDES ABOVE NOT ALMOST EQUAL TO
+0x2aba ""                         "" "force=utf8" "\\succnapprox" "amssymb" # SUCCEEDS ABOVE NOT ALMOST EQUAL TO
 #0x2abb ""                         "" "" "" "" # DOUBLE PRECEDES
 #0x2abc ""                         "" "" "" "" # DOUBLE SUCCEEDS
 #0x2abd ""                         "" "" "" "" # SUBSET WITH DOT
@@ -3507,19 +3635,19 @@
 #0x2ac2 ""                         "" "" "" "" # SUPERSET WITH MULTIPLICATION SIGN BELOW
 #0x2ac3 ""                         "" "" "" "" # SUBSET OF OR EQUAL TO WITH DOT ABOVE
 #0x2ac4 ""                         "" "" "" "" # SUPERSET OF OR EQUAL TO WITH DOT ABOVE
-0x2ac5 ""                         "" "" "\\subseteqq" "amssymb" # SUBSET OF ABOVE EQUALS SIGN
-0x2ac6 ""                         "" "" "\\supseteqq" "amssymb" # SUPERSET OF ABOVE EQUALS SIGN
+0x2ac5 ""                         "" "force=utf8" "\\subseteqq" "amssymb" # SUBSET OF ABOVE EQUALS SIGN
+0x2ac6 ""                         "" "force=utf8" "\\supseteqq" "amssymb" # SUPERSET OF ABOVE EQUALS SIGN
 #0x2ac7 ""                         "" "" "" "" # SUBSET OF ABOVE TILDE OPERATOR
 #0x2ac8 ""                         "" "" "" "" # SUPERSET OF ABOVE TILDE OPERATOR
 #0x2ac9 ""                         "" "" "" "" # SUBSET OF ABOVE ALMOST EQUAL TO
 #0x2aca ""                         "" "" "" "" # SUPERSET OF ABOVE ALMOST EQUAL TO
-0x2acb ""                         "" "" "\\subsetneqq" "amssymb" # SUBSET OF ABOVE NOT EQUAL TO
-0x2acc ""                         "" "" "\\supsetneqq" "amssymb" # SUPERSET OF ABOVE NOT EQUAL TO
+0x2acb ""                         "" "force=utf8" "\\subsetneqq" "amssymb" # SUBSET OF ABOVE NOT EQUAL TO
+0x2acc ""                         "" "force=utf8" "\\supsetneqq" "amssymb" # SUPERSET OF ABOVE NOT EQUAL TO
 #
-0x2af4 ""                         "" "" "\\interleave" "stmaryrd" # TRIPLE VERTICAL BAR BINARY RELATION
-0x2afc ""                         "" "" "\\biginterleave" "stmaryrd" # LARGE TRIPLE VERTICAL BAR OPERATOR
-0x2afd ""                         "" "" "\\sslash" "stmaryrd" # DOUBLE SOLIDUS OPERATOR
-0x2afe ""                         "" "" "\\talloblong" "stmaryrd" # WHITE VERTICAL BAR
+0x2af4 ""                         "" "force=utf8" "\\interleave" "stmaryrd" # TRIPLE VERTICAL BAR BINARY RELATION
+0x2afc ""                         "" "force=utf8" "\\biginterleave" "stmaryrd" # LARGE TRIPLE VERTICAL BAR OPERATOR
+0x2afd ""                         "" "force=utf8" "\\sslash" "stmaryrd" # DOUBLE SOLIDUS OPERATOR
+0x2afe ""                         "" "force=utf8" "\\talloblong" "stmaryrd" # WHITE VERTICAL BAR
 #
 # Modifier tone letters
 #
