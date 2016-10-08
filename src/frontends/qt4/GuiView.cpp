@@ -2034,8 +2034,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		bool const neg_zoom =
 			convert<int>(cmd.argument()) < 0 ||
 			(cmd.action() == LFUN_BUFFER_ZOOM_OUT && cmd.argument().empty());
-		if (lyxrc.zoom <= 10 && neg_zoom) {
-			flag.message(_("Zoom level cannot be less than 10%."));
+		if (lyxrc.zoom <= zoom_min && neg_zoom) {
+			docstring const msg =
+				bformat(_("Zoom level cannot be less than %1$d%."), zoom_min);
+			flag.message(msg);
 			enable = false;
 		} else
 			enable = doc_buffer;
@@ -3979,8 +3981,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			} else
 				zoom += convert<int>(cmd.argument());
 
-			if (zoom < 10)
-				zoom = 10;
+			if (zoom < static_cast<int>(zoom_min))
+				zoom = zoom_min;
 			lyxrc.zoom = zoom;
 
 			dr.setMessage(bformat(_("Zoom level is now %1$d%"), lyxrc.zoom));
