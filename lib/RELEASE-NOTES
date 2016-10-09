@@ -19,6 +19,12 @@
 
 !!!The following pref variables were changed in 2.3:
 
+* \document_path
+  Default is changed to ".". The best guess for where the user wants to save
+  or find files is the directory the user started LyX from. Before, the
+  default was always the home directory. If desired, the old behavior can be
+  restored by changing the default path in Preferences > "Working directory".
+
 
 !!!The following pref variables are obsoleted in 2.3:
 
