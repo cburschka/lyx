@@ -1217,11 +1217,6 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 void GuiView::on_bufferViewChanged()
 {
 	structureChanged();
-
-	// The document settings needs to be reinitialised.
-	// TODO: no longer needed now there is bufferViewChanged?
-	updateDialog("document", "");
-
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
 	updateDialogs();

@@ -82,6 +82,9 @@ public:
 	///
 	BufferParams const & params() const { return bp_; }
 
+public Q_SLOTS:
+	void on_bufferViewChanged();//override
+
 private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();

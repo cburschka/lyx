@@ -1456,6 +1456,13 @@ GuiDocument::GuiDocument(GuiView & lv)
 }
 
 
+void GuiDocument::on_bufferViewChanged()
+{
+	if (isVisibleView())
+		initialiseParams("");
+}
+
+
 void GuiDocument::saveDefaultClicked()
 {
 	saveDocDefault();
