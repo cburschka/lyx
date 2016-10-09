@@ -350,6 +350,12 @@ Menuset
 
 	Menu "toolbars"
 		Toolbars
+		Separator
+		Item "Small-sized Icons" "icon-size small"
+		Item "Normal-sized Icons" "icon-size normal"
+		Item "Big-sized Icons" "icon-size big"
+		Item "Huge-sized Icons" "icon-size huge"
+		Item "Giant-sized Icons" "icon-size giant"
 	End
 #
 # INSERT MENU

@@ -2728,6 +2728,17 @@ void LyXAction::init()
  */
 		{ LFUN_TOOLBAR_TOGGLE, "toolbar-toggle", NoBuffer, Buffer },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_ICON_SIZE
+ * \li Action: Sets icon size of toolbars.
+ * \li Syntax: icon-size [<SIZE>]
+ * \li Params: <SIZE> : the icon size in px or one of the logical settings
+                        small|normal|big|huge|giant, the default is normal
+                        (whose size in px is icon set dependent).
+ * \li Origin: 11 July 2016
+ * \endvar
+ */
+		{ LFUN_ICON_SIZE, "icon-size", NoBuffer, Buffer },
+/*!
  * \var lyx::FuncCode lyx::LFUN_MENU_OPEN
  * \li Action: Opens the menu given by its name.
  * \li Syntax: menu-open <NAME>

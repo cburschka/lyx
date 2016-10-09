@@ -328,62 +328,6 @@ public:
 		delete stack_widget_;
 	}
 
-	QMenu * toolBarPopup(GuiView * parent)
-	{
-		// FIXME: translation
-		QMenu * menu = new QMenu(parent);
-		QActionGroup * iconSizeGroup = new QActionGroup(parent);
-
-		QAction * smallIcons = new QAction(iconSizeGroup);
-		smallIcons->setText(qt_("Small-sized icons"));
-		smallIcons->setCheckable(true);
-		QObject::connect(smallIcons, SIGNAL(triggered()),
-			parent, SLOT(smallSizedIcons()));
-		menu->addAction(smallIcons);
-
-		QAction * normalIcons = new QAction(iconSizeGroup);
-		normalIcons->setText(qt_("Normal-sized icons"));
-		normalIcons->setCheckable(true);
-		QObject::connect(normalIcons, SIGNAL(triggered()),
-			parent, SLOT(normalSizedIcons()));
-		menu->addAction(normalIcons);
-
-		QAction * bigIcons = new QAction(iconSizeGroup);
-		bigIcons->setText(qt_("Big-sized icons"));
-		bigIcons->setCheckable(true);
-		QObject::connect(bigIcons, SIGNAL(triggered()),
-			parent, SLOT(bigSizedIcons()));
-		menu->addAction(bigIcons);
-
-		QAction * hugeIcons = new QAction(iconSizeGroup);
-		hugeIcons->setText(qt_("Huge-sized icons"));
-		hugeIcons->setCheckable(true);
-		QObject::connect(hugeIcons, SIGNAL(triggered()),
-			parent, SLOT(hugeSizedIcons()));
-		menu->addAction(hugeIcons);
-
-		QAction * giantIcons = new QAction(iconSizeGroup);
-		giantIcons->setText(qt_("Giant-sized icons"));
-		giantIcons->setCheckable(true);
-		QObject::connect(giantIcons, SIGNAL(triggered()),
-			parent, SLOT(giantSizedIcons()));
-		menu->addAction(giantIcons);
-
-		unsigned int cur = parent->iconSize().width();
-		if ( cur == parent->d.smallIconSize)
-			smallIcons->setChecked(true);
-		else if (cur == parent->d.normalIconSize)
-			normalIcons->setChecked(true);
-		else if (cur == parent->d.bigIconSize)
-			bigIcons->setChecked(true);
-		else if (cur == parent->d.hugeIconSize)
-			hugeIcons->setChecked(true);
-		else if (cur == parent->d.giantIconSize)
-			giantIcons->setChecked(true);
-
-		return menu;
-	}
-
 	void setBackground()
 	{
 		stack_widget_->setCurrentWidget(bg_widget_);
@@ -438,6 +382,60 @@ public:
 			return;
 		}
 		processing_thread_watcher_.setFuture(f);
+	}
+
+	QSize iconSize(docstring const & icon_size)
+	{
+		unsigned int size;
+		if (icon_size == "small")
+			size = smallIconSize;
+		else if (icon_size == "normal")
+			size = normalIconSize;
+		else if (icon_size == "big")
+			size = bigIconSize;
+		else if (icon_size == "huge")
+			size = hugeIconSize;
+		else if (icon_size == "giant")
+			size = giantIconSize;
+		else
+			size = icon_size.empty() ? normalIconSize : convert<int>(icon_size);
+
+		if (size < smallIconSize)
+			size = smallIconSize;
+
+		return QSize(size, size);
+	}
+
+	QSize iconSize(QString const & icon_size)
+	{
+		return iconSize(qstring_to_ucs4(icon_size));
+	}
+
+	string & iconSize(QSize const & qsize)
+	{
+		LATTEST(qsize.width() == qsize.height());
+
+		static string icon_size;
+
+		unsigned int size = qsize.width();
+
+		if (size < smallIconSize)
+			size = smallIconSize;
+
+		if (size == smallIconSize)
+			icon_size = "small";
+		else if (size == normalIconSize)
+			icon_size = "normal";
+		else if (size == bigIconSize)
+			icon_size = "big";
+		else if (size == hugeIconSize)
+			icon_size = "huge";
+		else if (size == giantIconSize)
+			icon_size = "giant";
+		else
+			icon_size = convert<string>(size);
+
+		return icon_size;
 	}
 
 public:
@@ -514,7 +512,7 @@ GuiView::GuiView(int id)
 	  command_execute_(false), minibuffer_focus_(false)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
-	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
+	setIconSize(QSize(d.normalIconSize, d.normalIconSize)); // at least on Mac the default is 32 otherwise, which is huge
 	constructToolbars();
 
 	// set ourself as the current view. This is needed for the menu bar
@@ -605,6 +603,11 @@ GuiView::GuiView(int id)
 
 	connect(this, SIGNAL(triggerShowDialog(QString const &, QString const &, Inset *)),
 		SLOT(doShowDialog(QString const &, QString const &, Inset *)));
+
+	// set custom application bars context menu, e.g. tool bar and menu bar
+	setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
+		SLOT(toolBarPopup(const QPoint &)));
 
 	// Forbid too small unresizable window because it can happen
 	// with some window manager under X11.
@@ -717,7 +720,7 @@ void GuiView::saveLayout() const
 	settings.setValue("geometry", saveGeometry());
 #endif
 	settings.setValue("layout", saveState(0));
-	settings.setValue("icon_size", iconSize());
+	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 }
 
 
@@ -744,17 +747,7 @@ bool GuiView::restoreLayout()
 		return false;
 
 	//code below is skipped when when ~/.config/LyX is (re)created
-	QSize icon_size = settings.value(icon_key).toSize();
-	// Check whether session size changed.
-	if (icon_size.width() != int(d.smallIconSize) &&
-	    icon_size.width() != int(d.normalIconSize) &&
-	    icon_size.width() != int(d.bigIconSize) &&
-	    icon_size.width() != int(d.hugeIconSize) &&
-	    icon_size.width() != int(d.giantIconSize)) {
-		icon_size.setWidth(d.normalIconSize);
-		icon_size.setHeight(d.normalIconSize);
-	}
-	setIconSize(icon_size);
+	setIconSize(d.iconSize(settings.value(icon_key).toString()));
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)
 	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -916,12 +909,6 @@ void GuiView::focusInEvent(QFocusEvent * e)
 		currentMainWorkArea()->setFocus();
 	else
 		d.bg_widget_->setFocus();
-}
-
-
-QMenu * GuiView::createPopupMenu()
-{
-	return d.toolBarPopup(this);
 }
 
 
@@ -1109,36 +1096,6 @@ void GuiView::updateStatusBarMessage(QString const & str)
 	statusBar()->showMessage(str);
 	d.statusbar_timer_.stop();
 	d.statusbar_timer_.start(3000);
-}
-
-
-void GuiView::smallSizedIcons()
-{
-	setIconSize(QSize(d.smallIconSize, d.smallIconSize));
-}
-
-
-void GuiView::normalSizedIcons()
-{
-	setIconSize(QSize(d.normalIconSize, d.normalIconSize));
-}
-
-
-void GuiView::bigSizedIcons()
-{
-	setIconSize(QSize(d.bigIconSize, d.bigIconSize));
-}
-
-
-void GuiView::hugeSizedIcons()
-{
-	setIconSize(QSize(d.hugeIconSize, d.hugeIconSize));
-}
-
-
-void GuiView::giantSizedIcons()
-{
-	setIconSize(QSize(d.giantIconSize, d.giantIconSize));
 }
 
 
@@ -1923,6 +1880,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		}
 		break;
 	}
+
+	case LFUN_ICON_SIZE:
+		flag.setOnOff(d.iconSize(cmd.argument()) == iconSize());
+		break;
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		enable = buf != 0;
@@ -3398,6 +3359,14 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
+void GuiView::toolBarPopup(const QPoint & /*pos*/)
+{
+	QMenu * menu = new QMenu;
+	menu = guiApp->menus().menu(toqstr("context-toolbars"), * this);
+	menu->exec(QCursor::pos());
+}
+
+
 template<class T>
 Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * clone, string const & format)
 {
@@ -3797,6 +3766,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string const name = cmd.getArg(0);
 			if (GuiToolbar * t = toolbar(name))
 				t->toggle();
+			break;
+		}
+
+		case LFUN_ICON_SIZE: {
+			QSize size = d.iconSize(cmd.argument());
+			setIconSize(size);
+			dr.setMessage(bformat(_("Icon size set to %1$dx%2$d."),
+						size.width(), size.height()));
 			break;
 		}
 
