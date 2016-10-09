@@ -620,7 +620,6 @@ int InsetMathGrid::hLineVOffset(row_type row, unsigned int line) const
 
 void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 {
-	Dimension const dim = dimension(*pi.base.bv);
 	BufferView const & bv = *pi.base.bv;
 
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
