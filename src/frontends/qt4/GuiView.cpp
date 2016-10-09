@@ -4091,7 +4091,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	bv = currentBufferView();
 
 	// Clear non-empty selections
-        // (e.g. from a "char-forward-select" followed by "char-backward-select")
+	// (e.g. from a "char-forward-select" followed by "char-backward-select")
 	if (bv) {
 		Cursor & cur = bv->cursor();
 		if ((cur.selection() && cur.selBegin() == cur.selEnd())) {
