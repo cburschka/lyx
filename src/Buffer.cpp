@@ -949,15 +949,13 @@ int Buffer::readHeader(Lexer & lex)
 									"%1$s %2$s\n"),
 							 from_utf8(token),
 							 lex.getDocString());
-				errorList.push_back(ErrorItem(_("Document header error"),
-					s, -1, 0, 0));
+				errorList.push_back(ErrorItem(_("Document header error"), s));
 			}
 		}
 	}
 	if (begin_header_line) {
 		docstring const s = _("\\begin_header is missing");
-		errorList.push_back(ErrorItem(_("Document header error"),
-			s, -1, 0, 0));
+		errorList.push_back(ErrorItem(_("Document header error"), s));
 	}
 
 	params().makeDocumentClass();
@@ -979,8 +977,7 @@ bool Buffer::readDocument(Lexer & lex)
 
 	if (!lex.checkFor("\\begin_document")) {
 		docstring const s = _("\\begin_document is missing");
-		errorList.push_back(ErrorItem(_("Document header error"),
-			s, -1, 0, 0));
+		errorList.push_back(ErrorItem(_("Document header error"), s));
 	}
 
 	readHeader(lex);
@@ -1707,17 +1704,17 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		errorList.push_back(ErrorItem(msg, _("Some characters of your document are probably not "
 				"representable in the chosen encoding.\n"
 				"Changing the document encoding to utf8 could help."),
-				e.par_id, e.pos, e.pos + 1));
+		                              {e.par_id, e.pos}, {e.par_id, e.pos + 1}));
 		failed_export = true;
 	}
 	catch (iconv_codecvt_facet_exception const & e) {
 		errorList.push_back(ErrorItem(_("iconv conversion failed"),
-			_(e.what()), -1, 0, 0));
+		                              _(e.what())));
 		failed_export = true;
 	}
 	catch (exception const & e) {
 		errorList.push_back(ErrorItem(_("conversion failed"),
-			_(e.what()), -1, 0, 0));
+		                              _(e.what())));
 		failed_export = true;
 	}
 	catch (...) {
@@ -4474,56 +4471,33 @@ Buffer::ReadStatus Buffer::loadThisLyXFile(FileName const & fn)
 
 void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 {
-	TeXErrors::Errors::const_iterator it = terr.begin();
-	TeXErrors::Errors::const_iterator end = terr.end();
-	ListOfBuffers clist = getDescendents();
-	ListOfBuffers::const_iterator cen = clist.end();
-
-	for (; it != end; ++it) {
-		int id_start = -1;
-		int pos_start = -1;
-		int errorRow = it->error_in_line;
+	for (auto const & err : terr) {
+		TextEntry start, end = TexRow::text_none;
+		int errorRow = err.error_in_line;
 		Buffer const * buf = 0;
 		Impl const * p = d;
-		if (it->child_name.empty())
-		    p->texrow.getIdFromRow(errorRow, id_start, pos_start);
+		if (err.child_name.empty())
+			tie(start, end) = p->texrow.getEntriesFromRow(errorRow);
 		else {
 			// The error occurred in a child
-			ListOfBuffers::const_iterator cit = clist.begin();
-			for (; cit != cen; ++cit) {
+			for (Buffer const * child : getDescendents()) {
 				string const child_name =
-					DocFileName(changeExtension(
-						(*cit)->absFileName(), "tex")).
-							mangledFileName();
-				if (it->child_name != child_name)
+					DocFileName(changeExtension(child->absFileName(), "tex")).
+					mangledFileName();
+				if (err.child_name != child_name)
 					continue;
-				(*cit)->d->texrow.getIdFromRow(errorRow,
-							id_start, pos_start);
-				if (id_start != -1) {
+				tie(start, end) = child->d->texrow.getEntriesFromRow(errorRow);
+				if (!TexRow::isNone(start)) {
 					buf = d->cloned_buffer_
-						? (*cit)->d->cloned_buffer_->d->owner_
-						: (*cit)->d->owner_;
-					p = (*cit)->d;
+						? child->d->cloned_buffer_->d->owner_
+						: child->d->owner_;
+					p = child->d;
 					break;
 				}
 			}
 		}
-		int id_end = -1;
-		int pos_end = -1;
-		bool found;
-		do {
-			++errorRow;
-			found = p->texrow.getIdFromRow(errorRow, id_end, pos_end);
-		} while (found && id_start == id_end && pos_start == pos_end);
-
-		if (id_start != id_end) {
-			// Next registered position is outside the inset where
-			// the error occurred, so signal end-of-paragraph
-			pos_end = 0;
-		}
-
-		errorList.push_back(ErrorItem(it->error_desc,
-			it->error_text, id_start, pos_start, pos_end, buf));
+		errorList.push_back(ErrorItem(err.error_desc, err.error_text,
+		                              start, end, buf));
 	}
 }
 

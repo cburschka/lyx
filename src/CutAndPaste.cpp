@@ -751,8 +751,8 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 		if (added_one || newlayouts.find(name) != newlayouts.end()) {
 			// Warn the user.
 			docstring const s = bformat(_("Layout `%1$s' was not found."), name);
-			errorlist.push_back(
-				ErrorItem(_("Layout Not Found"), s, it->id(), 0, it->size()));
+			errorlist.push_back(ErrorItem(_("Layout Not Found"), s,
+			                              {it->id(), 0}, {it->id(), -1}));
 		}
 
 		if (in.usePlainLayout())
@@ -787,8 +787,9 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 					layoutName, oldname, newname);
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(
-					_("Undefined flex inset"),
-					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
+			                              _("Undefined flex inset"), s,
+			                              {it.paragraph().id(), it.pos()},
+			                              {it.paragraph().id(), it.pos()+1}));
 		} else if (code == TABULAR_CODE) {
 			// The recursion above does not catch paragraphs in "hidden" cells,
 			// i.e., ones that are part of a multirow or multicolum. So we need

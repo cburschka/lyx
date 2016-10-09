@@ -12,6 +12,8 @@
 #ifndef ERRORLIST_H
 #define ERRORLIST_H
 
+#include "TexRow.h"
+
 #include "support/docstring.h"
 #include "support/types.h"
 
@@ -27,13 +29,17 @@ class ErrorItem {
 public:
 	docstring error;
 	docstring description;
-	int par_id;
-	pos_type pos_start;
-	pos_type pos_end;
+	// To generalise into RowEntries
+	TextEntry start;
+	TextEntry end;
 	Buffer const * buffer;
+	// With a start position and an end position
 	ErrorItem(docstring const & error, docstring const & description,
-		  int parid, pos_type posstart, pos_type posend,
-		  Buffer const * buf = 0);
+	          TextEntry start, TextEntry end,
+	          Buffer const * buf = 0);
+	// Error outside the document body
+	ErrorItem(docstring const & error, docstring const & description,
+	          Buffer const * buf = 0);
 	ErrorItem();
 };
 

@@ -18,15 +18,21 @@ namespace lyx {
 
 
 ErrorItem::ErrorItem(docstring const & error_, docstring const & description_,
-		     int par_id_, pos_type pos_start_, pos_type pos_end_,
-		     Buffer const * buffer_)
-	: error(error_), description(description_), par_id(par_id_),
-	  pos_start(pos_start_),  pos_end(pos_end_), buffer(buffer_)
+                     TextEntry start_, TextEntry end_, Buffer const * buffer_)
+	: error(error_), description(description_), start(start_), end(end_),
+	  buffer(buffer_)
+{}
+
+
+ErrorItem::ErrorItem(docstring const & error_, docstring const & description_,
+                     Buffer const * buffer_)
+	: error(error_), description(description_), start(TexRow::text_none),
+	  end(TexRow::text_none), buffer(buffer_)
 {}
 
 
 ErrorItem::ErrorItem()
-	: par_id(-1), pos_start(0), pos_end(0), buffer(0)
+	: start(TexRow::text_none), end(TexRow::text_none)
 {}
 
 

@@ -217,19 +217,6 @@ void TexRow::append(TexRow other)
 }
 
 
-bool TexRow::getIdFromRow(int row, int & id, int & pos) const
-{
-	LYXERR(Debug::LATEX, "getIdFromRow: row " << row << " requested");
-	TextEntry t = text_none;
-	if (row <= int(rowlist_.size()))
-		while (row > 0 && isNone(t = rowlist_[row - 1].getTextEntry()))
-			--row;
-	id = t.id;
-	pos = t.pos;
-	return !isNone(t);
-}
-
-
 pair<TextEntry, TextEntry> TexRow::getEntriesFromRow(int const row) const
 {
 	LYXERR(Debug::LATEX, "getEntriesFromRow: row " << row << " requested");

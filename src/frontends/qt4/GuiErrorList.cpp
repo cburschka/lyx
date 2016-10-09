@@ -23,6 +23,7 @@
 #include "LyX.h"
 #include "ParIterator.h"
 #include "Text.h"
+#include "TexRow.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
@@ -162,8 +163,7 @@ bool GuiErrorList::initialiseParams(string const & data)
 bool GuiErrorList::goTo(int item)
 {
 	ErrorItem const & err = errorList()[item];
-
-	if (err.par_id == -1)
+	if (TexRow::isNone(err.start))
 		return false;
 
 	Buffer const * errbuf = err.buffer ? err.buffer : buf_;
@@ -174,42 +174,7 @@ bool GuiErrorList::goTo(int item)
 		FuncRequest fr(LFUN_BUFFER_SWITCH, errbuf->absFileName());
 		dispatch(fr);
 	}
-
-	DocIterator dit = errbuf->getParFromID(err.par_id);
-
-	if (dit == doc_iterator_end(errbuf)) {
-		// FIXME: Happens when loading a read-only doc with 
-		// unknown layout. Should this be the case?
-		LYXERR0("par id " << err.par_id << " not found");
-		return false;
-	}
-
-	// Don't try to highlight the content of non-editable insets
-	while (!dit.inset().editable())
-		dit.backwardPos();
-
-	// Now make the selection.
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-	if (bv->selectIfEmpty(dit)) {
-		// The paragraph is empty but can be selected
-		bv->processUpdateFlags(Update::Force | Update::FitCursor);
-		return true;
-	}
-	if (dit.empty()) {
-		// The paragraph is empty and cannot be selected
-		return false;
-	}
-	// if pos_end is 0, this means it is end-of-paragraph
-	pos_type const s = dit.lastpos();
-	pos_type const end = err.pos_end ? min(err.pos_end, s) : s;
-	pos_type const start = min(err.pos_start, end);
-	pos_type const range = end == start ? s - start : end - start;
-	// end-of-paragraph cannot be highlighted, so highlight the last thing
-	dit.pos() = range ? start : end - 1;
-	// FIXME LFUN
-	// If we used an LFUN, we would not need these lines:
-	bv->putSelectionAt(dit, max(range, pos_type(1)), false);
-	bv->processUpdateFlags(Update::Force | Update::FitCursor);
+	dispatch(TexRow::goToFunc(err.start, err.end));
 	return true;
 }
 

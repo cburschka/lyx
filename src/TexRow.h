@@ -179,8 +179,6 @@ public:
 	std::pair<DocIterator, DocIterator> getDocIteratorsFromRow(
 	    int row,
 	    Buffer const & buf) const;
-	//TODO: remove the following by replacing it with the above
-	bool getIdFromRow(int row, int & id, int & pos) const;
 
 	/// Finds the best pair of rows for dit
 	/// returns (-1,-1) if not found.
