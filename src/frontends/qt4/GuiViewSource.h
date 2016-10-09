@@ -43,29 +43,27 @@ class ViewSourceWidget : public QWidget, public Ui::ViewSourceUi
 	Q_OBJECT
 
 public:
-	ViewSourceWidget();
-	///
-	void setBufferView(BufferView const * bv);
+	ViewSourceWidget(QWidget * parent);
 	/// returns true if the string has changed
 	bool setText(QString const & qstr = QString());
 	///
 	void saveSession(QString const & session_key) const;
 	///
 	void restoreSession(QString const & session_key);
+	///
+	int updateDelay() const;
 
 protected:
 	///
 	void resizeEvent (QResizeEvent * event);
 
 public Q_SLOTS:
-	/// schedule an update after delay
-	void updateView();
-	/// schedule an update now
-	void updateViewNow();
+	///
+	void updateView(BufferView const * bv);
 	///
 	void setViewFormat(int const index);
 	//
-	void updateDefaultFormat();
+	void updateDefaultFormat(BufferView const & bv);
 	///
 	void contentsChanged();
 	///
@@ -74,28 +72,20 @@ public Q_SLOTS:
 	docstring currentFormatName(BufferView const * bv) const;
 
 Q_SIGNALS:
-	void formatChanged() const;
-
-private Q_SLOTS:
-	/// update content
-	void realUpdateView();
+	void needUpdate() const;
 
 private:
 	/// Get the source code of selected paragraphs, or the whole document.
-	void getContent(BufferView const * view, Buffer::OutputWhat output,
+	void getContent(BufferView const & view, Buffer::OutputWhat output,
 			   docstring & str, std::string const & format, bool master);
 	/// Grab double clicks on the viewport
 	bool eventFilter(QObject * obj, QEvent * event);
-	///
-	BufferView const * bv_;
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter
 	LaTeXHighlighter * highlighter_;
 	///
 	std::string view_format_;
-	///
-	QTimer * update_timer_;
 	/// TexRow information from the last source view. If TexRow is unavailable
 	/// for the last format then texrow_ is null.
 	unique_ptr<TexRow> texrow_;
@@ -112,8 +102,6 @@ public:
 		Qt::DockWidgetArea area = Qt::BottomDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 
-	~GuiViewSource();
-
 	/// Controller inherited method.
 	///@{
 	bool initialiseParams(std::string const & source);
@@ -129,13 +117,26 @@ public:
 	bool wantInitialFocus() const { return false; }
 	///@}
 
+public Q_SLOTS:
+	///
+	void on_bufferViewChanged();//override
+
 private Q_SLOTS:
 	/// The title displayed by the dialog reflects source type.
 	void updateTitle();
+	/// schedule an update after delay
+	void scheduleUpdate();
+	/// schedule an update now
+	void scheduleUpdateNow();
+
+	/// update content
+	void realUpdateView();
 
 private:
 	/// The encapsulated widget.
 	ViewSourceWidget * widget_;
+	///
+	QTimer * update_timer_;
 };
 
 } // namespace frontend
