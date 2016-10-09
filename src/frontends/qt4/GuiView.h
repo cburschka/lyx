@@ -462,7 +462,7 @@ private:
 	QLabel * version_control_;
 
 	/// Minimum zoom percentage
-	unsigned int const zoom_min = 10;
+	unsigned int const zoom_min_ = 10;
 
 };
 
