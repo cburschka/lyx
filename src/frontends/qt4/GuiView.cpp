@@ -512,6 +512,9 @@ GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
 	  command_execute_(false), minibuffer_focus_(false)
 {
+	connect(this, SIGNAL(bufferViewChanged()),
+	        this, SLOT(on_bufferViewChanged()));
+
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
 	constructToolbars();
@@ -1208,7 +1211,11 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	                 this, SIGNAL(bufferViewChanged()));
 	Q_EMIT updateWindowTitle(wa);
 	Q_EMIT bufferViewChanged();
+}
 
+
+void GuiView::on_bufferViewChanged()
+{
 	structureChanged();
 
 	// The document settings needs to be reinitialised.
@@ -1217,7 +1224,6 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 
 	// Buffer-dependent dialogs must be updated. This is done here because
 	// some dialogs require buffer()->text.
-	// TODO: no longer needed now there is bufferViewChanged?
 	updateDialogs();
 }
 
@@ -1234,10 +1240,6 @@ void GuiView::on_lastWorkAreaRemoved()
 
 	// Reset and updates the dialogs.
 	Q_EMIT bufferViewChanged();
-	// TODO: no longer needed now there is bufferViewChanged?
-	d.toc_models_.reset(0);
-	updateDialog("document", "");
-	updateDialogs();
 
 	resetWindowTitle();
 	updateStatusBar();
