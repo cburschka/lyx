@@ -146,7 +146,6 @@ public:
 	/// updates the possible layouts selectable
 	void updateLayoutList();
 	void updateToolbars();
-	QMenu * createPopupMenu();
 
 	///
 	LayoutBox * getLayoutDialog() const;
@@ -237,13 +236,6 @@ private Q_SLOTS:
 	///
 	void on_lastWorkAreaRemoved();
 
-	/// slots to change the icon size
-	void smallSizedIcons();
-	void normalSizedIcons();
-	void bigSizedIcons();
-	void hugeSizedIcons();
-	void giantSizedIcons();
-
 	/// For completion of autosave or export threads.
 	void processingThreadStarted();
 	void processingThreadFinished();
@@ -256,6 +248,9 @@ private Q_SLOTS:
 	/// must be called from GUI thread
 	void updateStatusBarMessage(QString const & str);
 	void clearMessageText();
+
+	///
+	void toolBarPopup(const QPoint &pos);
 
 private:
 	/// Open given child document in current buffer directory.
