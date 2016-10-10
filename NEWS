@@ -1,6 +1,25 @@
 What's new in version 2.2.1?
 ----------------------------
 
+LyX 2.2.2 is the second maintenance release in the 2.2.x series. 
+
+We have fixed a number of bugs and made a number  of improvements. 
+Most of these are relatively minor, but we nonetheless encourage all 
+users of 2.2.1 to upgrade to this version.
+
+Perhaps the most important bug we fixed affected use of covington.sty with
+2.2.1. This will only have affected users of the Linguistics module.
+
+One new feature is the use of the "scaling" option when exporting images
+for XHTML. This does not work the same way as with LaTeX export. What it
+does is add something like "width: 50%" to the style attribute. This will
+ordinarily be interpreted by the browser as a percentage relative to the
+current element.
+
+
+What's new in version 2.2.1?
+----------------------------
+
 LyX 2.2.1 is the first maintenance relase in the 2.2.x series.
 
 A large number of bugs have been fixed since the 2.2.0 release.

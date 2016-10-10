@@ -15,7 +15,8 @@ reliable and more stable. We have fixed a number of bugs and made a number
 of improvements. Most of these are relatively minor, but we nonetheless
 encourage all users of 2.2.1 to upgrade to this version.
 
-
+Perhaps the most important bug we fixed affected use of covington.sty with
+2.2.1. This will only have affected users of the Linguistics module.
 
 One new feature is the use of the "scaling" option when exporting images
 for XHTML. This does not work the same way as with LaTeX export. What it
@@ -47,49 +48,36 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Enable the use of LuaTeX for all polyglossia-supported languages.
+- .xlsx is now a suggested extension in the spreadsheet external template.
 
-- New document parameter "Save transient properties" under Document Properties >
-  Format. (Output has been renamed into Format.) Disabling this option is made
-  to play nicer in collaborative settings. (bug 9841)
+- Improve systemlyxdir handling.
 
 
 * USER INTERFACE
 
-- Syntax highlighting in the preamble and and the source view has been made
-  compatible with dark themes (bug 8325).
+- When changing zoom level, show current value in status bar (bug
+  10212).
 
-- Changed the display of buttons for collapsed branches. We now display the
-  same thing as if the branches were open (bug 10213).
+- Names containing @ are now recognised by the syntax highlighter in the
+  preamble.
 
-- "Provides <package> 1" now works with fontspec, subfig, and listings (bug
-  10257).
-
-- Added a new module "Title and Preamble Hacks".
-
-- Bring window to front after loading a document in single instance (bug 7875).
+- Replace Insert>Caption submenu by a normal entry when there is only one
+  caption type.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Brazilian, French, German, Interlingua, Italian and Slovakian user
-  interface localization.
+- Updated Brazilian, French, German, Italian and Slovak user interface localization.
 
-- Increase the maximum value for the number of last open files that LyX can
-  remember (bug 9924).
+- Updated French Customizaion, Math, Tutorial and UserGuide manuals.
 
-- Change mouse cursor to indicate row/column selection in tabulars.
+- Update beamer manual with regard to the new Separator usage.
 
-- Make inset-select-all select all cells only in tables.
 
-- Automatically show the review toolbar if the document has tracked changes
-  (bug 8738), and related UI improvements.
+* BUILD/INSTALLATION
 
-- Implement "Dissolve Inset" and "Show Label" context menu items for
-  arguments (bug 10150).
+- If available, use qtchooser to select correct Qt tools when configuring.
 
-- Restore selected reference when using "Go to label" and "Go back" in the
-  cross-reference dialog.
 
 
 ** Bug fixes:
@@ -97,148 +85,99 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Correctly protect the \pagebreak command when needed (bug 10092).
+- We no longer attempt to convert images for which we cannot find an
+  input format.
 
-- Resolve problem on Windows with importing files from directories with
-  accented characters on FAT drives (bug 10218).
+- Fixed fen2ascii script.
 
-- InPreamble styles should be written to the preamble as many times as the
-  user requests them, even if it results in duplicate commands.
+- Fixed preview of external material with plaintext and DocBook.
 
-- Make sure we output all XHTML table cells, even the empty ones (bug 10153).
+- Fixed substitution for $$Contents in external templates.
 
-- .svgz images are now converted to .svg for XHTML export (bug 10160).
+- Fixed usage of new module "Title and Preamble Hacks" (bug 10320).
 
-- Ask where to export file if not yet saved (bug 8814).
+- Fix error with older versions of the covington package in the
+  Linguistics module (bug 10340).
 
-- Fix size issue with outliner icons on HiDPI monitors (bug 10125).
+- Fix LaTeX error with recent LuaTeX versions when using landscape.
 
-- Load math packages automatically with JSS template (bug 9242).
-
-- Calling a Computer Algebra System from LyX works again (windows only bug 10262).
-
-- Fix command clash between beamer and covington (from the Linguistics module).
-
-- Fix crash on Buffer preview when not exporting in thread.
+- Fix data loss with [ in first cell of aligned environment (bug 10361).
 
 
 * LYX2LYX
 
-- Fix paragraph argument conversion for \labelwidthstring etc (bug 10243).
+- Fix hang with some IEEEtran documents (bug 10307).
 
+- Fix export of compressed files to previous versions that were not
+  recognised on windows (bug 10273).
 
 
 * USER INTERFACE
 
-- CharStyles now prohibit layout changes by default (bug 10237).
+- Avoid crashing in release mode if we stumble across an unrealized font.
 
-- Fix display of labels in right-to-left languages (bug 10169).
+- Correctly return exit code from spawned processes on Windows (bug 10327).
 
-- Fix button label font of inset arguments when some traits are inherited.
+- Fix display of citations with two authors.
 
-- When a counter is stepped, reset recursively all subcounters (bug #10063).
+- Fix display of multi-author citations when the GUI language is not English.
 
-- Fix on screen narrow box when using \width as box width unit (bug 10048).
+- Fix bug where change tracking marks are lost under math insets (bug
+  10265).
 
-- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
+- Fix display glitch when switching to Description layout with an inset
+  at the beginning of the paragraph (bug 10163)
 
-- Fix small typo in Reference dialog (bug 10194).
+- Fix display of label font for argument insets.
 
-- Fix default location for RPM based hunspell dictionary search (bug 10071 and 10192).
+- Keep leading whitespace when converting local layout.
 
-- Fix double input of tabulations with Qt5 < Qt5.5 (bug 9218).
+- Correct default font of beamer article layouts (bug 9977).
 
-- Do not omit the first space of the selection when copying (bug 9995).
+- Remove extra whitespace around Preview and IPA insets (bug 10304).
 
-- Do not allow non-default layouts to be pasted into table cells that are not fixed
-  width (bug 8782).
+- Let M-x give focus to minibuffer when it is already open.
 
-- Display the correct column alignment and a better column spacing in AMS
-  environments (bugs 1861, 9908).
+- When doing a selection with Shift-click, make sure that the selection anchor
+  is correct.
 
-- Disable properly toggling math display in places where it is not
-  possible (bug 10033).
+- Avoid to overwrite end-of-proof character with text on screen (bug
+  10344).
 
-- Fix horizontal scrolling feature when inside a collapsable inset
-  with several paragraphs.
+- Use proper dialog titles in InsetParams-derived dialogs (bug 10329).
 
-- Fix selection of large formula with the mouse when horizontal
-  scrolling kicks in (but 10094).
+- Fix "scroll here" feature of scrollbar (bug 10311).
 
-- Fix bug where cursor can't be put at the end of a line before an
-  inset (bug 10180).
+- Fix the minimum size of the citation dialog on first time (bug 10019).
 
-- Fix display of collapsable insets when the same document is shown in
-  two views with different width (bug 9756).
+- When Enter does nothing (empty paragraph), do not record undo (bug 10089).
 
-- fix display glitches when editing changes the dimension of insets
-  (bug 6691).
+- Remove duplicate context menu item for Argument insets (bug 10368).
 
-- Raise GuiView on buffer switch to bring it topmost in multi-window mode.
-
-- Fix cursor position after Redo of a document settings change (bug
-  10097).
-
-- Handle undo after deleting end of paragraph in change tracking mode
-  (bug 10253).
-
-- Disable Edit > Dissolve Inset in tabulars (bug 9954).
-
-- Shortcut preferences: ask the user for removing bindings when using the
-  "restore" button (#9174).
-
-- Shortcut preferences: fix the already-bound-key detection logic.
-
-- Shortcut preferences: don't forget to trigger the search when it is
-  initialized with the previous value.
-
-- Remove extra spacing around button insets (bug 10149).
-
-- Fix drawing of buttons by enforcing equal left/right spacing (bug 10147).
-
-- Fix problem with drawing of lists after pasting normal text (bug 8735).
-
-- Accessibility of the document class selector from keyboard (bug 10035).
-
-- Fix title of LuaTeX and XeTeX error dialogs (part of bug 10013).
-
-- Remove special code for Qt5 to load SVG icons with HiDPI (bug 10281).
-
-
-* DOCUMENTATION AND LOCALIZATION
-
-- Move documentation change logs to lib/doc (they are not distributed).
+- Fix display of vertical lines inside math matrices (bug 10363).
 
 
 * LYXHTML
 
-- Output width of table columns (bug 8168).
+- Enable export of external material (bug 8693).
 
-- Fix output of math sizes (bug 10129).
+- Fix problem with output of branches (bug 8022).
 
-- Fix output of vertical space in the middle of a paragraph (bug 8154).
+- Fix output of table borders (bug 10154).
 
-- Fix output of ABOVE and CENTERED label types (bug 8843).
+- Fix display of several math symbols (bug 8844).
 
-- Output correct entities for named delimiters (bug 8280).
+- Use scaling factor for export of images (bug 8742).
 
-- Added class attribute for mathbb to allow customization (part of bug
-  8521).
+- Fix display of listings (bug 8362).
 
-- Use 'text-align: center;' with displayed equations (bug 8654).
+- Fix output of floats, etc, inside environments (bug 9094).
 
+- Simplify XHTML output for floats, etc (bug 8605).
 
-* BUILD/INSTALLATION
+- Add "dir='auto'" to body tag, which should help a lot with export of
+  RTL languages (bug 8279, partly).
 
-- Due to bug fixes, it is no longer discouraged to build against Qt 5.4.
+- Fix display of cases and matrices (bugs 8753, 8755).
 
-- Building against Qt < 4.7 no longer fails.
-
-- Fix monolithic builds with autotools on Mac OS X.
-
-- Avoid 'ar' warning with recent binutils versions.
-
-- LyX compiled with Microsoft Visual Studio 2015 runs now on Windows Vista (bug 10186)
-
-- Add some missing oxygen and IPA icons to the distribution.
-
+- Fixed output of logos to the TOC.
