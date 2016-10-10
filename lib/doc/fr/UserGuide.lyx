@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -81,7 +81,6 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -31601,8 +31600,7 @@ Réponses
 
 \begin_layout Standard
 \begin_inset Branch Question
-inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 Question: Qui a été le premier prix Nobel de physique ?
@@ -31615,7 +31613,6 @@ Question: Qui a été le premier prix Nobel de physique ?
 
 \begin_layout Standard
 \begin_inset Branch Réponse
-inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -31789,8 +31786,7 @@ reponse}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
-inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
@@ -31826,7 +31822,6 @@ reponse}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Réponse
-inverted 0
 status collapsed
 
 \begin_layout Standard
