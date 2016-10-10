@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -81,6 +81,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -3483,7 +3484,7 @@ IOP
 \end_layout
 
 \begin_layout Standard
-Si vous souhaitez utiliser une classe document marquée 
+Si vous souhaitez utiliser une classe de document marquée 
 \begin_inset Quotes fld
 \end_inset
 
@@ -3492,8 +3493,8 @@ Indisponible
 \end_inset
 
 , il vous suffit d'installer les paquetages appropriés.
- La manière la plus aisée de trouver quels fichiers ont manquants est d'utiliser
- la classe pour un nouveau document: \SpecialChar LyX
+ La manière la plus aisée de trouver quels fichiers sont manquants est d'utilise
+r la classe pour un nouveau document: \SpecialChar LyX
  ouvrira une fenêtre de dialogue listant
  les fichiers manquants.
  Voyez la section 
@@ -31600,6 +31601,7 @@ Réponses
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -31613,6 +31615,7 @@ Question: Qui a été le premier prix Nobel de physique ?
 
 \begin_layout Standard
 \begin_inset Branch Réponse
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -31786,6 +31789,7 @@ reponse}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -31822,6 +31826,7 @@ reponse}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Réponse
+inverted 0
 status collapsed
 
 \begin_layout Standard
