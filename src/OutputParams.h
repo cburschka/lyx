@@ -79,6 +79,8 @@ public:
 	    This esentially seems to mean whether InsetInclude, InsetGraphics
 	    and InsetExternal should add the absolute path to any external
 	    files or not.
+	    Non-nice LaTeX also includes additional safe line breaks in order to
+	    increase the precision of forward/reverse search and error reporting.
 	*/
 	bool nice;
 

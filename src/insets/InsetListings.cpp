@@ -224,10 +224,13 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
 		TexString caption = getCaption(rp);
+		os << breakln << "\\begin{lstlisting}";
 		if (param_string.empty() && caption.str.empty())
-			os << breakln << "\\begin{lstlisting}\n";
+			os << "\n";
 		else {
-			os << breakln << "\\begin{lstlisting}[";
+			if (!runparams.nice)
+				os << safebreakln;
+			os << "[";
 			if (!caption.str.empty()) {
 				os << "caption={" << move(caption) << '}';
 				if (!param_string.empty())
