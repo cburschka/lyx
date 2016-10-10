@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-11 12:06-0400\n"
+"POT-Creation-Date: 2016-10-10 10:33-0400\n"
 "PO-Revision-Date: 2011-06-21 20:54+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -24626,7 +24626,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:1038 src/BufferParams.cpp:424
+#: src/Buffer.cpp:1038 src/BufferParams.cpp:453
 #: src/frontends/qt4/GuiLog.cpp:251 src/insets/InsetIndex.cpp:449
 msgid "Index"
 msgstr "Indeks"
@@ -25061,7 +25061,7 @@ msgstr "Dokument %1$s je ponovo učitan."
 msgid "Could not reload document %1$s."
 msgstr "Ne mogu da ponovo učitam dokument %1$s"
 
-#: src/BufferParams.cpp:475
+#: src/BufferParams.cpp:504
 #, fuzzy
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
@@ -25070,7 +25070,7 @@ msgstr ""
 "AMS LaTeX paketi se koriste samo ako se simboli iz AMS-matematičke trake sa "
 "alatkama ubacuju u formule"
 
-#: src/BufferParams.cpp:477
+#: src/BufferParams.cpp:506
 #, fuzzy
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
@@ -25079,7 +25079,7 @@ msgstr ""
 "AMS LaTeX paketi se koriste samo ako se simboli iz AMS-matematičke trake sa "
 "alatkama ubacuju u formule"
 
-#: src/BufferParams.cpp:479
+#: src/BufferParams.cpp:508
 #, fuzzy
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
@@ -25088,7 +25088,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:481
+#: src/BufferParams.cpp:510
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -25096,7 +25096,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:483
+#: src/BufferParams.cpp:512
 #, fuzzy
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
@@ -25105,7 +25105,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:485
+#: src/BufferParams.cpp:514
 #, fuzzy
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
@@ -25114,7 +25114,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:516
 #, fuzzy
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
@@ -25123,7 +25123,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:489
+#: src/BufferParams.cpp:518
 #, fuzzy
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
@@ -25132,7 +25132,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:491
+#: src/BufferParams.cpp:520
 #, fuzzy
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
@@ -25141,7 +25141,7 @@ msgstr ""
 "AMS LaTeX paketi se koriste samo ako se simboli iz AMS-matematičke trake sa "
 "alatkama ubacuju u formule"
 
-#: src/BufferParams.cpp:493
+#: src/BufferParams.cpp:522
 #, fuzzy
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
@@ -25150,7 +25150,7 @@ msgstr ""
 "LaTeX paket esint se koristi samo ako postoje posebni simboli koji su "
 "ubačeni u formule"
 
-#: src/BufferParams.cpp:665
+#: src/BufferParams.cpp:694
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -25164,17 +25164,17 @@ msgid ""
 "User's Guide for more information."
 msgstr ""
 
-#: src/BufferParams.cpp:674
+#: src/BufferParams.cpp:703
 msgid "Document class not available"
 msgstr "Dokument klasa nije dostupna"
 
-#: src/BufferParams.cpp:1911 src/insets/InsetCommandParams.cpp:434
+#: src/BufferParams.cpp:1946 src/insets/InsetCommandParams.cpp:434
 #: src/insets/InsetHyperlink.cpp:198
 #, fuzzy
 msgid "Uncodable characters"
 msgstr "specijalni karakteri"
 
-#: src/BufferParams.cpp:1912
+#: src/BufferParams.cpp:1947
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -25182,25 +25182,25 @@ msgid ""
 "%1$s."
 msgstr ""
 
-#: src/BufferParams.cpp:2004 src/Encoding.cpp:245 src/Paragraph.cpp:2532
+#: src/BufferParams.cpp:2039 src/Encoding.cpp:245 src/Paragraph.cpp:2532
 #: src/frontends/qt4/LaTeXHighlighter.cpp:127 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
 #: src/mathed/MathExtern.cpp:1478
 msgid "LyX Warning: "
 msgstr "LyX upozorenje:"
 
-#: src/BufferParams.cpp:2005 src/Encoding.cpp:246 src/Paragraph.cpp:2533
+#: src/BufferParams.cpp:2040 src/Encoding.cpp:246 src/Paragraph.cpp:2533
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
 #: src/mathed/MathExtern.cpp:1479
 msgid "uncodable character"
 msgstr ""
 
-#: src/BufferParams.cpp:2018
+#: src/BufferParams.cpp:2053
 #, fuzzy
 msgid "Uncodable character in user preamble"
 msgstr "specijalni karakteri"
 
-#: src/BufferParams.cpp:2020
+#: src/BufferParams.cpp:2055
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -25212,7 +25212,7 @@ msgid ""
 "(such as utf8) or change the preamble code accordingly."
 msgstr ""
 
-#: src/BufferParams.cpp:2226
+#: src/BufferParams.cpp:2261
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -25222,11 +25222,11 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:2232
+#: src/BufferParams.cpp:2267
 msgid "Document class not found"
 msgstr "Dokument klasa nije pronađena"
 
-#: src/BufferParams.cpp:2239
+#: src/BufferParams.cpp:2274
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -25236,15 +25236,15 @@ msgid ""
 "correct output."
 msgstr ""
 
-#: src/BufferParams.cpp:2245 src/BufferView.cpp:1302 src/BufferView.cpp:1334
+#: src/BufferParams.cpp:2280 src/BufferView.cpp:1302 src/BufferView.cpp:1334
 msgid "Could not load class"
 msgstr "Nije moguće učitati klasu"
 
-#: src/BufferParams.cpp:2295
+#: src/BufferParams.cpp:2330
 msgid "Error reading internal layout information"
 msgstr ""
 
-#: src/BufferParams.cpp:2296 src/TextClass.cpp:1612
+#: src/BufferParams.cpp:2331 src/TextClass.cpp:1612
 msgid "Read Error"
 msgstr "Greška pri čitanju"
 

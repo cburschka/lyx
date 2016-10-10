@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-11 12:06-0400\n"
+"POT-Creation-Date: 2016-10-10 10:33-0400\n"
 "PO-Revision-Date: 2014-03-28 00:38+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -24355,7 +24355,7 @@ msgstr ""
 "Pastikan paket tersebut diinstal atau definisikan \\lyxadded dan "
 "\\lyxdeleted dalam the LaTeX preamble."
 
-#: src/Buffer.cpp:1038 src/BufferParams.cpp:424
+#: src/Buffer.cpp:1038 src/BufferParams.cpp:453
 #: src/frontends/qt4/GuiLog.cpp:251 src/insets/InsetIndex.cpp:449
 msgid "Index"
 msgstr "Indeks"
@@ -24821,7 +24821,7 @@ msgstr "Dokumen %1$s dimuat ulang."
 msgid "Could not reload document %1$s."
 msgstr "Tidak bisa memuat ulang dokumen %1$s"
 
-#: src/BufferParams.cpp:475
+#: src/BufferParams.cpp:504
 #, fuzzy
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
@@ -24830,7 +24830,7 @@ msgstr ""
 "Paket LaTeX AMS hanya digunakan jika simbol AMS dari kotak bantuan "
 "matematika disisipkan dalam rumus"
 
-#: src/BufferParams.cpp:477
+#: src/BufferParams.cpp:506
 #, fuzzy
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
@@ -24839,7 +24839,7 @@ msgstr ""
 "Paket LaTeX AMS hanya digunakan jika simbol AMS dari kotak bantuan "
 "matematika disisipkan dalam rumus"
 
-#: src/BufferParams.cpp:479
+#: src/BufferParams.cpp:508
 #, fuzzy
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
@@ -24848,7 +24848,7 @@ msgstr ""
 "Paket LaTeX mathdots hanya digunakan jika perintah \\iddots disisipkan dalam "
 "rumus"
 
-#: src/BufferParams.cpp:481
+#: src/BufferParams.cpp:510
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -24856,7 +24856,7 @@ msgstr ""
 "Paket LaTeX esint hanya digunakan jika simbol khusus integral  disisipkan "
 "dalam rumus"
 
-#: src/BufferParams.cpp:483
+#: src/BufferParams.cpp:512
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
@@ -24864,7 +24864,7 @@ msgstr ""
 "Paket LaTeX mathdots hanya digunakan jika perintah \\iddots disisipkan dalam "
 "rumus"
 
-#: src/BufferParams.cpp:485
+#: src/BufferParams.cpp:514
 #, fuzzy
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
@@ -24873,7 +24873,7 @@ msgstr ""
 "Paket LaTeX mathdots hanya digunakan jika perintah \\iddots disisipkan dalam "
 "rumus"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:516
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
@@ -24881,7 +24881,7 @@ msgstr ""
 "Paket LaTeX mhchem hanya digunakan jika perintah \\ce atau \\cf disisipkan "
 "dalam rumus"
 
-#: src/BufferParams.cpp:489
+#: src/BufferParams.cpp:518
 #, fuzzy
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
@@ -24890,7 +24890,7 @@ msgstr ""
 "Paket LaTeX mathdots hanya digunakan jika perintah \\iddots disisipkan dalam "
 "rumus"
 
-#: src/BufferParams.cpp:491
+#: src/BufferParams.cpp:520
 #, fuzzy
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
@@ -24899,7 +24899,7 @@ msgstr ""
 "Paket LaTeX AMS hanya digunakan jika simbol AMS dari kotak bantuan "
 "matematika disisipkan dalam rumus"
 
-#: src/BufferParams.cpp:493
+#: src/BufferParams.cpp:522
 #, fuzzy
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
@@ -24908,7 +24908,7 @@ msgstr ""
 "Paket LaTeX esint hanya digunakan jika simbol khusus integral  disisipkan "
 "dalam rumus"
 
-#: src/BufferParams.cpp:665
+#: src/BufferParams.cpp:694
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -24931,16 +24931,16 @@ msgstr ""
 "Lihat subbab 3.1.2.2 di buku panduan pengguna\n"
 "untuk penjelasan lengkap."
 
-#: src/BufferParams.cpp:674
+#: src/BufferParams.cpp:703
 msgid "Document class not available"
 msgstr "Dokumen class tidak tersedia"
 
-#: src/BufferParams.cpp:1911 src/insets/InsetCommandParams.cpp:434
+#: src/BufferParams.cpp:1946 src/insets/InsetCommandParams.cpp:434
 #: src/insets/InsetHyperlink.cpp:198
 msgid "Uncodable characters"
 msgstr "Karakter tidak bisa di sandikan"
 
-#: src/BufferParams.cpp:1912
+#: src/BufferParams.cpp:1947
 #, fuzzy, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -24951,25 +24951,25 @@ msgstr ""
 "diwakili dengan enkoding sekarang sehingga akan diabaikan:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2004 src/Encoding.cpp:245 src/Paragraph.cpp:2532
+#: src/BufferParams.cpp:2039 src/Encoding.cpp:245 src/Paragraph.cpp:2532
 #: src/frontends/qt4/LaTeXHighlighter.cpp:127 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
 #: src/mathed/MathExtern.cpp:1478
 msgid "LyX Warning: "
 msgstr "Peringatan LyX: "
 
-#: src/BufferParams.cpp:2005 src/Encoding.cpp:246 src/Paragraph.cpp:2533
+#: src/BufferParams.cpp:2040 src/Encoding.cpp:246 src/Paragraph.cpp:2533
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
 #: src/mathed/MathExtern.cpp:1479
 msgid "uncodable character"
 msgstr "Karakter tidak bisa di encode"
 
-#: src/BufferParams.cpp:2018
+#: src/BufferParams.cpp:2053
 #, fuzzy
 msgid "Uncodable character in user preamble"
 msgstr "Karakter huruf nama pengarang tidak dikenal"
 
-#: src/BufferParams.cpp:2020
+#: src/BufferParams.cpp:2055
 #, fuzzy, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -24988,7 +24988,7 @@ msgstr ""
 "Pilih enkoding dokumen yang sesuai (misalnya utf8)\n"
 "atau ubahlah ejaan dari nama penulis."
 
-#: src/BufferParams.cpp:2226
+#: src/BufferParams.cpp:2261
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -25003,11 +25003,11 @@ msgstr ""
 "bawaan akan digunakan. LyX tidak bisa membuat\n"
 "keluaran yang diinginkan."
 
-#: src/BufferParams.cpp:2232
+#: src/BufferParams.cpp:2267
 msgid "Document class not found"
 msgstr "Dokumen class tidak ditemukan"
 
-#: src/BufferParams.cpp:2239
+#: src/BufferParams.cpp:2274
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -25022,15 +25022,15 @@ msgstr ""
 "bawaan akan digunakan. LyX tidak bisa membuat\n"
 "keluaran yang diinginkan."
 
-#: src/BufferParams.cpp:2245 src/BufferView.cpp:1302 src/BufferView.cpp:1334
+#: src/BufferParams.cpp:2280 src/BufferView.cpp:1302 src/BufferView.cpp:1334
 msgid "Could not load class"
 msgstr "Tidak bisa memuat dokumen class"
 
-#: src/BufferParams.cpp:2295
+#: src/BufferParams.cpp:2330
 msgid "Error reading internal layout information"
 msgstr "Ada kesalahan membaca informasi tataletak internal"
 
-#: src/BufferParams.cpp:2296 src/TextClass.cpp:1612
+#: src/BufferParams.cpp:2331 src/TextClass.cpp:1612
 msgid "Read Error"
 msgstr "Kesalahan membaca"
 

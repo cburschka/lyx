@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-11 12:06-0400\n"
+"POT-Creation-Date: 2016-10-10 10:33-0400\n"
 "PO-Revision-Date: 2016-02-15 09:44+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
@@ -23675,7 +23675,7 @@ msgstr ""
 "Por favor instala ambos paquetes o redefine \\lyxadded y \\lyxdeleted en el "
 "preámbulo LaTeX."
 
-#: src/Buffer.cpp:1038 src/BufferParams.cpp:424
+#: src/Buffer.cpp:1038 src/BufferParams.cpp:453
 #: src/frontends/qt4/GuiLog.cpp:251 src/insets/InsetIndex.cpp:449
 msgid "Index"
 msgstr "Índice"
@@ -24154,7 +24154,7 @@ msgstr "Documento %1$s abierto."
 msgid "Could not reload document %1$s."
 msgstr "No se pudo recargar el documento %1$s"
 
-#: src/BufferParams.cpp:475
+#: src/BufferParams.cpp:504
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
@@ -24162,7 +24162,7 @@ msgstr ""
 "El paquete LaTeX amsmath solo se usa si se insertan en fórmulas símbolos de "
 "las barras de herramientas de ecuaciones AMS "
 
-#: src/BufferParams.cpp:477
+#: src/BufferParams.cpp:506
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
@@ -24170,7 +24170,7 @@ msgstr ""
 "El paquete LaTeX amssymb solo se usa si se insertan en fórmulas símbolos de "
 "las barras de herramientas de ecuaciones AMS "
 
-#: src/BufferParams.cpp:479
+#: src/BufferParams.cpp:508
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
@@ -24178,7 +24178,7 @@ msgstr ""
 "El paquete LaTeX cancel solo se usa si se insertan comandos \\cancel en "
 "fórmulas"
 
-#: src/BufferParams.cpp:481
+#: src/BufferParams.cpp:510
 msgid ""
 "The LaTeX package esint is only used if special integral symbols are "
 "inserted into formulas"
@@ -24186,7 +24186,7 @@ msgstr ""
 "El paquete LaTeX esint solo se usa si se insertan en ecuaciones símbolos "
 "especiales de integral"
 
-#: src/BufferParams.cpp:483
+#: src/BufferParams.cpp:512
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
@@ -24194,7 +24194,7 @@ msgstr ""
 "El paquete LaTex mathdots solo se utiliza si se inserta en la ecuación el "
 "comando \\iddots"
 
-#: src/BufferParams.cpp:485
+#: src/BufferParams.cpp:514
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
@@ -24202,7 +24202,7 @@ msgstr ""
 "El paquete LaTex mathtools solo se utiliza si se inserta ciertas relaciones "
 "matemáticas en la ecuación"
 
-#: src/BufferParams.cpp:487
+#: src/BufferParams.cpp:516
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
@@ -24210,7 +24210,7 @@ msgstr ""
 "El paquete LaTex mhchem solo se usa si se insertan en ecuaciones los "
 "comandos \\ce o \\cf"
 
-#: src/BufferParams.cpp:489
+#: src/BufferParams.cpp:518
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
@@ -24218,7 +24218,7 @@ msgstr ""
 "El paquete LaTex stackrel solo se utiliza si se inserta en la ecuación el "
 "comando \\stackrel"
 
-#: src/BufferParams.cpp:491
+#: src/BufferParams.cpp:520
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
@@ -24226,7 +24226,7 @@ msgstr ""
 "El paquete LaTeX stmaryrd solo se usa si se insertan en fórmulas símbolos de "
 "St Mary's Road para ciencia computacional  "
 
-#: src/BufferParams.cpp:493
+#: src/BufferParams.cpp:522
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
@@ -24234,7 +24234,7 @@ msgstr ""
 "El paquete LaTeX undertilde solo se usa si se inserta la decoración del "
 "marco  'utilde'"
 
-#: src/BufferParams.cpp:665
+#: src/BufferParams.cpp:694
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -24257,16 +24257,16 @@ msgstr ""
 "Véase la sección 3.1.2.2 (Disponibilidad) de la\n"
 "Guía del usuario para más información. "
 
-#: src/BufferParams.cpp:674
+#: src/BufferParams.cpp:703
 msgid "Document class not available"
 msgstr "Clase de documento no disponible"
 
-#: src/BufferParams.cpp:1911 src/insets/InsetCommandParams.cpp:434
+#: src/BufferParams.cpp:1946 src/insets/InsetCommandParams.cpp:434
 #: src/insets/InsetHyperlink.cpp:198
 msgid "Uncodable characters"
 msgstr "Caracteres no codificables"
 
-#: src/BufferParams.cpp:1912
+#: src/BufferParams.cpp:1947
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -24277,24 +24277,24 @@ msgstr ""
 "representables en la codificación actual y se han omitido:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2004 src/Encoding.cpp:245 src/Paragraph.cpp:2532
+#: src/BufferParams.cpp:2039 src/Encoding.cpp:245 src/Paragraph.cpp:2532
 #: src/frontends/qt4/LaTeXHighlighter.cpp:127 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
 #: src/mathed/MathExtern.cpp:1478
 msgid "LyX Warning: "
 msgstr "Aviso de LyX: "
 
-#: src/BufferParams.cpp:2005 src/Encoding.cpp:246 src/Paragraph.cpp:2533
+#: src/BufferParams.cpp:2040 src/Encoding.cpp:246 src/Paragraph.cpp:2533
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
 #: src/mathed/MathExtern.cpp:1479
 msgid "uncodable character"
 msgstr "carácter no codificable"
 
-#: src/BufferParams.cpp:2018
+#: src/BufferParams.cpp:2053
 msgid "Uncodable character in user preamble"
 msgstr "Carácter no codificable en el preámbulo de usuario"
 
-#: src/BufferParams.cpp:2020
+#: src/BufferParams.cpp:2055
 #, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
@@ -24312,7 +24312,7 @@ msgstr ""
 "Elige una codificación adecuada (como utf8)\n"
 "o cambia adecuadamente el código en el preámbulo."
 
-#: src/BufferParams.cpp:2226
+#: src/BufferParams.cpp:2261
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -24327,11 +24327,11 @@ msgstr ""
 "predeterminada con formatos predefinidos.\n"
 "LyX no podrá generar una salida correcta."
 
-#: src/BufferParams.cpp:2232
+#: src/BufferParams.cpp:2267
 msgid "Document class not found"
 msgstr "Clase de documento no disponible"
 
-#: src/BufferParams.cpp:2239
+#: src/BufferParams.cpp:2274
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -24346,15 +24346,15 @@ msgstr ""
 "predeterminada con formatos predefinidos.\n"
 "LyX no podrá generar una salida correcta."
 
-#: src/BufferParams.cpp:2245 src/BufferView.cpp:1302 src/BufferView.cpp:1334
+#: src/BufferParams.cpp:2280 src/BufferView.cpp:1302 src/BufferView.cpp:1334
 msgid "Could not load class"
 msgstr "No se pudo cargar la clase"
 
-#: src/BufferParams.cpp:2295
+#: src/BufferParams.cpp:2330
 msgid "Error reading internal layout information"
 msgstr "Error al leer la información interna de formato"
 
-#: src/BufferParams.cpp:2296 src/TextClass.cpp:1612
+#: src/BufferParams.cpp:2331 src/TextClass.cpp:1612
 msgid "Read Error"
 msgstr "Error de lectura"
 
