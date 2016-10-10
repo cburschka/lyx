@@ -74,9 +74,8 @@ Sublabel: wrong_output
 # runs) but *invalid* (not measuring what they should measure).
 
 # seminar.sty uses Postscript specials or PGF
-# -> wrong output with DVI (missing landscape slides).
-#    (currently) wrong output with LuaTeX (scaled with 0.5)
-export/examples/(|fr/)seminar_(dvi|pdf5).*
+# -> wrong output with DVI and PDF (ps2pdf) (de-placed landscape slides).
+export/examples/(|fr/)seminar_(dvi|pdf).*
 
 # Babel-Spanish uses Babel's "strings" feature to define
 # separate auto-strings using UTF-8 literals.
@@ -97,7 +96,7 @@ export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
 
 # The following document mixes inTitle layouts and leads to
 # likely unintended output. See #10347
-export/export/mixing_inTitle_layouts(pdf|dvi).*
+export/export/mixing_inTitle_layouts_(pdf|dvi).*
 
 # Characters with accents are not output
 # Reported to LuaTeX mailing list here:
