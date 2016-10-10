@@ -1102,37 +1102,6 @@ lyx2lyx
 New layouts and modules
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Description
-Note: This section is currently only a proposal under discussion.
- Please correct/amend as suited.
- Remove this note once a consensus is found.
-\end_layout
-
-\begin_layout Plain Layout
-See the thread 
-\begin_inset Quotes eld
-\end_inset
-
-Proposal for a guide on updating layouts
-\begin_inset Quotes erd
-\end_inset
-
- for details and background
-\end_layout
-
-\begin_layout Plain Layout
-http://permalink.gmane.org/gmane.editors.lyx.devel/161126 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -1174,7 +1143,7 @@ target "https://wiki.lyx.org/Layouts/Layouts"
 \begin_layout Standard
 In older versions of this document, it was stated that new layout files
  require a file format change.
- After some discussion it was decided that this is not needed.
+ After some discussion, it was decided that this is not needed.
 \begin_inset Foot
 status open
 
@@ -1437,6 +1406,37 @@ Modules do not need a template, only an example, which is strongly encouraged
 
 \begin_layout Subsection
 Layouts for document classes with incompatible versions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Description
+Note: This section is currently only a proposal under discussion.
+ Please correct/amend as suited.
+ Remove this note once a consensus is found.
+\end_layout
+
+\begin_layout Plain Layout
+See the thread 
+\begin_inset Quotes eld
+\end_inset
+
+Proposal for a guide on updating layouts
+\begin_inset Quotes erd
+\end_inset
+
+ for details and background
+\end_layout
+
+\begin_layout Plain Layout
+http://permalink.gmane.org/gmane.editors.lyx.devel/161126 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3193,7 +3193,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-development/autotests/suspiciousTests
+development/autotests/invertedTests
 \end_layout
 
 \end_inset
@@ -3333,15 +3333,15 @@ inverted
 \emph on
 uninvert
 \emph default
- the test by removing the labeling pattern from 
+ the test by removing the pattern from the 
 \begin_inset Quotes eld
 \end_inset
 
-suspiciousTests
+invertedTests
 \begin_inset Quotes erd
 \end_inset
 
-) (see 
+ file) (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "par:Inverted-tests"
@@ -3353,11 +3353,15 @@ reference "par:Inverted-tests"
 
 \begin_layout Itemize
 If the export did not fail previously but led to wrong output (PDF, say),
- it is in fact an improvement when the test now fails, label it as 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Non-failing test with wrong output should be labeledas 
 \begin_inset Quotes eld
 \end_inset
 
-unreliable:wrong:output
+unreliable:wrong_output
 \begin_inset Quotes erd
 \end_inset
 
@@ -3371,9 +3375,25 @@ reference "par:Unreliable-tests"
 ).
 \end_layout
 
+\end_inset
+
+ it is in fact an improvement when the test now fails.
+ 
+\emph on
+Invert
+\emph default
+ the failing test case (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par:Inverted-tests"
+
+\end_inset
+
+).
+\end_layout
+
 \begin_layout Itemize
-In case of tests failing due to missing requirements (when only a subset
- of TeXLive is installed or a test labeled 
+In case of tests failing due to missing requirements (tests labeled 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3381,8 +3401,9 @@ unreliable:nonstandard
 \begin_inset Quotes erd
 \end_inset
 
- fails), ignore the failure, ask for someone else to run the test, or install
- the missing ressources and try again.
+ or testing on a system withonly a subset of TeXLive installed), ignore
+ the failure, ask for someone else to run the test, or install the missing
+ ressources and try again.
 \end_layout
 
 \begin_layout Paragraph
@@ -3401,7 +3422,7 @@ Test cases whose name matches a pattern in the file
 status collapsed
 
 \begin_layout Plain Layout
-development/autotests/suspiciousTests
+development/autotests/invertedTests
 \end_layout
 
 \end_inset
@@ -3456,7 +3477,7 @@ The following sublabels are currently present in
 status collapsed
 
 \begin_layout Plain Layout
-suspiciousTests
+invertedTests
 \end_layout
 
 \end_inset
@@ -3522,12 +3543,20 @@ otherwise, add a pattern here.
 
 \end_deeper
 \begin_layout Description
-attic Documents in the attic.
- (Kept for reference and format conversion test.)
+attic Documents in the attic (kept for reference and format conversion test).
+ Usually 
+\begin_inset Quotes eld
+\end_inset
+
+Wontfix
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subparagraph
-suspended 
+suspended tests
 \end_layout
 
 \begin_layout Standard
@@ -3702,6 +3731,20 @@ status collapsed
 
 \end_layout
 
+\begin_layout Standard
+The following sublabels are currently present in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+unreliableTests
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
 \begin_layout Description
 nonstandard Documents with additional requirements, e.g.
  a class or package file not in TeXLive.
@@ -3710,7 +3753,23 @@ nonstandard Documents with additional requirements, e.g.
 status open
 
 \begin_layout Plain Layout
-TODO: rename to "extra"?
+TODO: rename to 
+\begin_inset Quotes eld
+\end_inset
+
+extra
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+exotic
+\begin_inset Quotes erd
+\end_inset
+
+?
 \end_layout
 
 \end_inset
@@ -3718,48 +3777,23 @@ TODO: rename to "extra"?
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-These tests are labeled as 
-\family typewriter
-'nonstandard'.
-\end_layout
-
-\end_deeper
 \begin_layout Description
-erratic Tests depending on local configuration, OS, TeX distribution, package
- versions, or the phase of the moon.
+erratic Tests depending on local configuration or the phase of the moon.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: use 
-\emph on
-erratic
-\emph default
- only for the phase-of-moon dependency?
 \end_layout
 
-\end_inset
-
-
+\begin_layout Description
+varying_versions Test depending on TeX distribution, package versions or
+ OS.
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-These tests are labeled as 
-\family typewriter
-'erratic'.
-\end_layout
-
-\end_deeper
 \begin_layout Description
 wrong
 \begin_inset space ~
 \end_inset
 
-output Export does not fail but the resulting document has errors.
+output Export does not fail but the resulting document has (undetected)
+ errors.
 \end_layout
 
 \begin_deeper
@@ -3770,11 +3804,7 @@ status open
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-These tests are actually not 
-\emph on
-unreliable
-\emph default
- but 
+These tests are in a strict sense not unreliable but 
 \emph on
 invalid
 \emph default
@@ -3831,8 +3861,8 @@ Output Stop if tests not selected here
 
 \end_deeper
 \begin_layout Description
-unreliableTests: Tests selected either pass or fail, but that is dependent
- on the system where the test is run.
+unreliableTests: Tests selected pass or fail dependent on the system where
+ the test is run.
  Selected tests gain the label 'unreliable'.
 \end_layout
 
@@ -3849,7 +3879,7 @@ Output Stop if test selected, gain label 'unreliable'.
 
 \end_deeper
 \begin_layout Description
-suspiciousTests 
+invertedTests 
 \begin_inset space \space{}
 \end_inset
 
@@ -3864,12 +3894,13 @@ Input Each test which passed 'unreliableTests'
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Output Stop if not selected.
+Output Stop if not selected, gain test-property 'WILL_FAIL' (i.e.
+ tests are reported as failing if the export works without error.) If no
+ subselection applies, gain labels 'export' and 'inverted'.
 \end_layout
 
 \begin_layout Standard
-The following file is meant as subselections of 'suspiciousTests'.
- If neither subselection applies, test gains labels 'export' and 'inverted'
+The following filter perfoms a subselection of 'invertedTests':
 \end_layout
 
 \begin_layout Description
@@ -3881,7 +3912,7 @@ suspendedTests Tests selected here gain the label 'suspended' but _not_
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Input Each test selected by 'suspiciousTests' 
+Input Each test selected by 'invertedTests' 
 \end_layout
 
 \begin_layout Labeling
@@ -3898,7 +3929,7 @@ The following table may clarify label assignement
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="12">
+<lyxtabular version="3" rows="7" columns="9">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -3909,15 +3940,12 @@ The following table may clarify label assignement
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Test found in file:
+Test matching pattern in file:
 \end_layout
 
 \end_inset
@@ -3949,20 +3977,11 @@ Test found in file:
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Marked in ctest, Assigned label
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+Assigned label
 \end_layout
 
 \end_inset
@@ -3977,33 +3996,6 @@ Marked in ctest, Assigned label
 \end_inset
 </cell>
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4017,6 +4009,15 @@ Marked in ctest, Assigned label
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+test property
 \end_layout
 
 \end_inset
@@ -4027,7 +4028,7 @@ Marked in ctest, Assigned label
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ignored
+ignoredTests
 \end_layout
 
 \end_inset
@@ -4036,7 +4037,7 @@ Ignored
 \begin_inset Text
 
 \begin_layout Plain Layout
-Unreliable
+unreliableTests
 \end_layout
 
 \end_inset
@@ -4045,7 +4046,7 @@ Unreliable
 \begin_inset Text
 
 \begin_layout Plain Layout
-Suspicious
+invertedTests
 \end_layout
 
 \end_inset
@@ -4054,12 +4055,12 @@ Suspicious
 \begin_inset Text
 
 \begin_layout Plain Layout
-Suspended
+suspendedTests
 \end_layout
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4068,16 +4069,7 @@ export
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4086,16 +4078,7 @@ unreliable
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4104,16 +4087,7 @@ inverted
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4122,7 +4096,7 @@ suspended
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4182,48 +4156,12 @@ Yes
 \begin_inset Text
 
 \begin_layout Plain Layout
--
-\end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4237,6 +4175,15 @@ Yes
 
 \begin_layout Plain Layout
 -
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4292,48 +4239,12 @@ Yes
 \begin_inset Text
 
 \begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 +
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4347,6 +4258,15 @@ Yes
 
 \begin_layout Plain Layout
 -
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4407,43 +4327,7 @@ Yes
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4457,6 +4341,15 @@ Yes
 
 \begin_layout Plain Layout
 +
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WILL_FAIL
 \end_layout
 
 \end_inset
@@ -4503,6 +4396,15 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 -
 \end_layout
 
@@ -4517,43 +4419,7 @@ No
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4566,7 +4432,7 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+WILL_FAIL
 \end_layout
 
 \end_inset
@@ -4613,29 +4479,11 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 +
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
@@ -4645,25 +4493,7 @@ No
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4681,8 +4511,446 @@ No
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Without the 
+\begin_inset Quotes eld
+\end_inset
+
+suspendedTests
+\begin_inset Quotes erd
+\end_inset
+
+ filter, this would be far less complicated:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="7">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Test matching pattern in file:
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Label
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+test property
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ignoredTests
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unreliableTests
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+invertedTests
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+export
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+unreliable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inverted
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Yes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WILL_FAIL
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4732,7 +5000,18 @@ Keytests
 \end_layout
 
 \begin_layout Standard
-Automated tests based on the "MonKey Testing" keytest program.
+Automated tests based on the "MonKey Testing" keytest program are enabled
+ if the necessary dependencies are found and if the CMake flag 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-DLYX_ENABLE_KEYTESTS=ON
+\end_layout
+
+\end_inset
+
+ is used.
  They are documented in the README document in 
 \begin_inset Flex Code
 status collapsed
@@ -4745,7 +5024,6 @@ development/autotests
 
  subfolder of the \SpecialChar LyX
  source code distribution.
- T
 \end_layout
 
 \begin_layout Subsubsection
@@ -4900,6 +5178,83 @@ No.
 Documentation policies
 \end_layout
 
+\begin_layout Subsection
+Rules
+\end_layout
+
+\begin_layout Standard
+There are 6
+\begin_inset space ~
+\end_inset
+
+rules in editing the docs:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:If-you-are"
+
+\end_inset
+
+If you are not the maintainer of a doc file or a chapter/section, you MUST
+ use change tracking so that the maintainer could review your changes
+\end_layout
+
+\begin_layout Enumerate
+Respect the formatting of the document.
+ The different files use different formatting styles.
+ That is OK and has historic reasons nobody fully knows ;-).
+ But it is important to be consistent within one file.
+\end_layout
+
+\begin_layout Enumerate
+All changes you make to a file in one language MUST also go the file in
+ the other actively maintained languages.
+ Normally the maintainer does this for you, if you are the maintainer, you
+ must do this by copying or changing the changed or added text to the other
+ files so that the translators sees the blue underlined text and know what
+ they have to translate and what was changed.
+\end_layout
+
+\begin_layout Enumerate
+You MUST assure that the document is compilable as 
+\begin_inset Quotes eld
+\end_inset
+
+PDF (pdflatex)
+\begin_inset Quotes erd
+\end_inset
+
+ or the document's default output format after your changes.
+\end_layout
+
+\begin_layout Enumerate
+All fixes (typos, compilation fixes, updates info etc.) go at first into
+ the current GIT branch because the user should benefit from all fixes with
+ every minor release.
+ Feel free to commit directly to branch as long as you follow rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:If-you-are"
+
+\end_inset
+
+.
+ You can immediately commit to master as well.
+\end_layout
+
+\begin_layout Enumerate
+The fileformat of a file must not be changed unless you document a new feature
+ in LyX that requires a new fileformat.
+ The reason for this rule is to keep it easy for the doc maintainers to
+ port/backport changes to from master/branch.
+\end_layout
+
 \begin_layout Standard
 The main documentation consists of these files:
 \end_layout
@@ -4992,47 +5347,6 @@ Customization.lyx this manual covers information how to customize \SpecialChar L
  If you do this please assure that your information are given for all OSes
  and \SpecialChar LaTeX
  distributions (meaning be as objective as possible).
-\end_layout
-
-\begin_layout Standard
-There are only 4
-\begin_inset space ~
-\end_inset
-
-rules in editing the docs:
-\end_layout
-
-\begin_layout Enumerate
-If you are not the maintainer of a doc file or a chapter/section, you MUST
- use change tracking so that the maintainer could review your changes
-\end_layout
-
-\begin_layout Enumerate
-Respect the formatting of the document.
- The different files use different formatting styles.
- That is OK and has historic reasons nobody fully know ;-).
- But it is important to be consistent within one file.
-\end_layout
-
-\begin_layout Enumerate
-All changes you make to a file in one language MUST also go the file in
- the other actively maintained languages.
- Normally the maintainer does this for you, if you are the maintainer, you
- must do this by copying or changing the changed or added text to the other
- files so that the translators sees the blue underlined text and know what
- they have to translate and what was changed.
-\end_layout
-
-\begin_layout Enumerate
-You MUST assure that the document is compilable as 
-\begin_inset Quotes eld
-\end_inset
-
-PDF (pdflatex)
-\begin_inset Quotes erd
-\end_inset
-
- after your changes.
 \end_layout
 
 \end_body
