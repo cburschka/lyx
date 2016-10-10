@@ -324,6 +324,10 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (runparams_in.inFloat != OutputParams::NONFLOAT) {
+		if (!paragraphs().empty() && !runparams_in.nice)
+			// improve TexRow precision in non-nice mode
+			os << safebreakln;
+
 		if (runparams_in.moving_arg)
 			os << "\\protect";
 		os << "\\subfloat";
@@ -333,8 +337,6 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		os << getCaption(rp);
 		os << '{';
 		// The main argument is the contents of the float. This is not a moving argument.
-		if (!paragraphs().empty())
-			os.texrow().forceStart(paragraphs()[0].id(), 0);
 		rp.moving_arg = false;
 		rp.inFloat = OutputParams::SUBFLOAT;
 		InsetText::latex(os, rp);
@@ -503,6 +505,9 @@ TexString InsetFloat::getCaption(OutputParams const & runparams) const
 	otexstringstream os;
 	ins->getArgs(os, runparams);
 
+	if (!runparams.nice)
+		// increase TexRow precision in non-nice mode
+		os << safebreakln;
 	os << '[';
 	otexstringstream os2;
 	ins->getArgument(os2, runparams);
@@ -513,6 +518,8 @@ TexString InsetFloat::getCaption(OutputParams const & runparams) const
 		arg = '{' + arg + '}';
 	os << move(ts);
 	os << ']';
+	if (!runparams.nice)
+		os << safebreakln;
 	return os.release();
 }
 
