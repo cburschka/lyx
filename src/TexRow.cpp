@@ -249,7 +249,8 @@ pair<TextEntry, TextEntry> TexRow::getEntriesFromRow(int const row) const
 	while (j < rowlist_.size() && isNone(rowlist_[j].getTextEntry()))
 		++j;
 	TextEntry end =
-		(j < rowlist_.size()) ? rowlist_[j].getTextEntry() : text_none;
+		(j < rowlist_.size()) ? rowlist_[j].getTextEntry()
+		                      : TextEntry{start.id, -1}; // last position
 	// The following occurs for a displayed math inset for instance (for good
 	// reasons involving subtleties of the algorithm in getRowFromDocIterator).
 	// We want this inset selected.
@@ -275,16 +276,22 @@ pair<DocIterator, DocIterator> TexRow::getDocIteratorsFromEntries(
 	    TextEntry end,
 	    Buffer const & buf)
 {
+	auto set_pos = [](DocIterator & dit, pos_type pos) {
+		dit.pos() = (pos >= 0) ? min(pos, dit.lastpos())
+		                       // negative pos values are counted from the end
+		                       : max(dit.lastpos() + pos + 1, pos_type(0));
+	};
 	// Finding start
 	DocIterator dit_start = buf.getParFromID(start.id);
 	if (dit_start)
-		dit_start.pos() = min(start.pos, dit_start.lastpos());
+		set_pos(dit_start, start.pos);
 	// Finding end
 	DocIterator dit_end = buf.getParFromID(end.id);
 	if (dit_end) {
-		dit_end.pos() = min(end.pos, dit_end.lastpos());
-		// So far dit_end belongs to the next row. Step backwards.
-		if (!dit_end.top().at_cell_begin()) {
+		set_pos(dit_end, end.pos);
+		// Step backwards to prevent selecting the beginning of another
+		// paragraph.
+		if (dit_end.pos() == 0 && !dit_end.top().at_cell_begin()) {
 			CursorSlice end_top = dit_end.top();
 			end_top.backwardPos();
 			if (dit_start && end_top != dit_start.top())
