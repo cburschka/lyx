@@ -1887,6 +1887,8 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		}
 
 		// make the body.
+		// mark the beginning of the body to separate it from InPreamble insets
+		os.texrow().start(TexRow::beginDocument());
 		os << "\\begin{document}\n";
 
 		// output the parent macros

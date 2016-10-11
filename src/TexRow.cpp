@@ -242,30 +242,63 @@ void TexRow::append(TexRow other)
 pair<TexRow::TextEntry, TexRow::TextEntry>
 TexRow::getEntriesFromRow(int const row) const
 {
+	// FIXME: Take math entries into account, take table cells into account and
+	//        get rid of the ad hoc special text entry for each row.
+	//
+	// FIXME: A yellow note alone on its paragraph makes the reverse-search on
+	//        the subsequent line inaccurate. Get rid of text entries that
+	//        correspond to no output by delaying their addition, at the level
+	//        of otexrowstream, until a character is actually output.
+	//
 	LYXERR(Debug::LATEX, "getEntriesFromRow: row " << row << " requested");
+
 	// check bounds for row - 1, our target index
 	if (row <= 0)
 		return {text_none, text_none};
 	size_t const i = static_cast<size_t>(row - 1);
 	if (i >= rowlist_.size())
 		return {text_none, text_none};
+
 	// find the start entry
-	size_t j = i;
-	while (j > 0 && isNone(rowlist_[j].getTextEntry()))
-		--j;
-	TextEntry start = rowlist_[j].getTextEntry();
+	TextEntry const start = [&]() {
+		for (size_t j = i; j > 0; --j) {
+			if (!isNone(rowlist_[j].getTextEntry()))
+				return rowlist_[j].getTextEntry();
+			// Check the absence of begin_document at row j. The begin_document row
+			// entry is used to prevent mixing of body and preamble.
+			for (RowEntry entry : rowlist_[j])
+				if (entry.type == begin_document)
+					return text_none;
+		}
+		return text_none;
+	} ();
+
 	// find the end entry
-	j = i + 1;
-	while (j < rowlist_.size() && isNone(rowlist_[j].getTextEntry()))
-		++j;
-	TextEntry end =
-		(j < rowlist_.size()) ? rowlist_[j].getTextEntry()
-		                      : TextEntry{start.id, -1}; // last position
+	TextEntry end = [&]() {
+		if (isNone(start))
+			return text_none;
+		// select up to the last position of the starting paragraph as a
+		// fallback
+		TextEntry last_pos = {start.id, -1};
+		// find the next occurence of paragraph start.id
+		for (size_t j = i + 1; j < rowlist_.size(); ++j) {
+			for (RowEntry entry : rowlist_[j]) {
+				if (entry.type == begin_document)
+					// what happens in the preamble remains in the preamble
+					return last_pos;
+				if (entry.type == text_entry && entry.text.id == start.id)
+					return entry.text;
+			}
+		}
+		return last_pos;
+	} ();
+
 	// The following occurs for a displayed math inset for instance (for good
 	// reasons involving subtleties of the algorithm in getRowFromDocIterator).
 	// We want this inset selected.
 	if (start.id == end.id && start.pos == end.pos)
 		++end.pos;
+
 	return {start, end};
 }
 
@@ -494,6 +527,7 @@ TexRow::RowListIterator TexRow::end() const
 
 pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 {
+	// Do not change anything in this algorithm if unsure.
 	bool beg_found = false;
 	bool end_is_next = true;
 	int end_offset = 1;
