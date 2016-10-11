@@ -2708,7 +2708,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 {
 	bool const is_tabular_star = !tabular_width.zero();
-	RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
+	TexRow::RowEntry pos = TexRow::textEntry(runparams.lastid, runparams.lastpos);
 
 	//+---------------------------------------------------------------------
 	//+                      first the opening preamble                    +

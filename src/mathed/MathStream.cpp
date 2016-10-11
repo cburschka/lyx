@@ -131,7 +131,7 @@ WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
 	  output_(output), pendingspace_(false), pendingbrace_(false),
 	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
 	  mathsout_(false), ulemcmd_(NONE), line_(0), encoding_(encoding),
-	  row_entry_(make_unique<RowEntry>(TexRow::row_none))
+	  row_entry_(TexRow::row_none)
 {}
 
 
@@ -180,17 +180,17 @@ void WriteStream::asciiOnly(bool ascii)
 }
 
 
-Changer WriteStream::changeRowEntry(RowEntry entry)
+Changer WriteStream::changeRowEntry(TexRow::RowEntry entry)
 {
-	return make_change(*row_entry_, entry);
+	return make_change(row_entry_, entry);
 }
 
 
 bool WriteStream::startOuterRow()
 {
-	if (TexRow::isNone(*row_entry_))
+	if (TexRow::isNone(row_entry_))
 		return false;
-	return texrow().start(*row_entry_);
+	return texrow().start(row_entry_);
 }
 
 

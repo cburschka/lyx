@@ -1276,7 +1276,7 @@ void InsetMathGrid::write(WriteStream & os,
 		for (col_type col = beg_col; col < end_col;) {
 			int nccols = 1;
 			idx_type const idx = index(row, col);
-			RowEntry entry = TexRow::mathEntry(id(),idx);
+			TexRow::RowEntry entry = TexRow::mathEntry(id(),idx);
 			os.texrow().start(entry);
 			if (col >= lastcol) {
 				++col;

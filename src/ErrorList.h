@@ -27,6 +27,7 @@ class Buffer;
 /// A class to hold an error item
 class ErrorItem {
 public:
+	typedef TexRow::TextEntry TextEntry;
 	docstring error;
 	docstring description;
 	// To generalise into RowEntries
@@ -35,8 +36,7 @@ public:
 	Buffer const * buffer;
 	// With a start position and an end position
 	ErrorItem(docstring const & error, docstring const & description,
-	          TextEntry start, TextEntry end,
-	          Buffer const * buf = 0);
+	          TextEntry start, TextEntry end, Buffer const * buf = 0);
 	// Error outside the document body
 	ErrorItem(docstring const & error, docstring const & description,
 	          Buffer const * buf = 0);

@@ -47,26 +47,27 @@ typedef void const * uid_type;
 typedef size_t idx_type;
 
 
-/// an individual par id/pos <=> row mapping
-struct TextEntry { int id; pos_type pos; };
-
-/// an individual math id/cell <=> row mapping
-struct MathEntry { uid_type id; idx_type cell; };
-
-/// a container for passing entries around
-struct RowEntry {
-	bool is_math;// true iff the union is a math
-	union {
-		struct TextEntry text;
-		struct MathEntry math;
-	};
-};
-
-
 /// Represents the correspondence between paragraphs and the generated
 /// LaTeX file
 
 class TexRow {
+public:
+	/// an individual par id/pos <=> row mapping
+	struct TextEntry { int id; pos_type pos; };
+
+	/// an individual math id/cell <=> row mapping
+	struct MathEntry { uid_type id; idx_type cell; };
+
+	/// a container for passing entries around
+	struct RowEntry {
+		bool is_math;// true iff the union is a math
+		union {
+			struct TextEntry text;
+			struct MathEntry math;
+		};
+	};
+
+private:
 	/// id/pos correspondence for a single row
 	class RowEntryList;
 
@@ -286,7 +287,7 @@ public:
 };
 
 
-bool operator==(RowEntry entry1, RowEntry entry2);
+bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2);
 
 
 } // namespace lyx

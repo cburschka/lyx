@@ -84,7 +84,7 @@ void TexRow::RowEntryList::forceAddEntry(RowEntry entry)
 }
 
 
-TextEntry TexRow::RowEntryList::getTextEntry() const
+TexRow::TextEntry TexRow::RowEntryList::getTextEntry() const
 {
 	if (!isNone(text_entry_))
 		return text_entry_;
@@ -106,8 +106,8 @@ TexRow::TexRow()
 }
 
 
-TextEntry const TexRow::text_none = { -1, 0 };
-RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
+TexRow::TextEntry const TexRow::text_none = { -1, 0 };
+TexRow::RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
 
 
 //static
@@ -138,7 +138,7 @@ TexRow::RowEntryList & TexRow::currentRow()
 
 
 //static
-RowEntry TexRow::textEntry(int id, pos_type pos)
+TexRow::RowEntry TexRow::textEntry(int id, pos_type pos)
 {
 	RowEntry entry;
 	entry.is_math = false;
@@ -149,7 +149,7 @@ RowEntry TexRow::textEntry(int id, pos_type pos)
 
 
 //static
-RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
+TexRow::RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 {
 	RowEntry entry;
 	entry.is_math = true;
@@ -159,7 +159,7 @@ RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 }
 
 
-bool operator==(RowEntry entry1, RowEntry entry2)
+bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2)
 {
 	return entry1.is_math == entry2.is_math
 		&& (entry1.is_math
@@ -217,7 +217,8 @@ void TexRow::append(TexRow other)
 }
 
 
-pair<TextEntry, TextEntry> TexRow::getEntriesFromRow(int const row) const
+pair<TexRow::TextEntry, TexRow::TextEntry>
+TexRow::getEntriesFromRow(int const row) const
 {
 	LYXERR(Debug::LATEX, "getEntriesFromRow: row " << row << " requested");
 	// check bounds for row - 1, our target index
@@ -312,7 +313,7 @@ FuncRequest TexRow::goToFuncFromRow(int const row) const
 
 
 //static
-RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
+TexRow::RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 {
 	RowEntry entry;
 	InsetMath * insetMath = slice.asInsetMath();

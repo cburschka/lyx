@@ -13,6 +13,8 @@
 #define MATH_MATHMLSTREAM_H
 
 #include "InsetMath.h"
+
+#include "TexRow.h"
 #include "texstream.h"
 
 #include "support/Changer.h"
@@ -26,7 +28,6 @@ class Encoding;
 class InsetMath;
 class MathAtom;
 class MathData;
-struct RowEntry;
 
 //
 // LaTeX/LyX
@@ -104,7 +105,7 @@ public:
 	Encoding const * encoding() const { return encoding_; }
 
 	/// Temporarily change the TexRow information about the outer row entry.
-	Changer changeRowEntry(RowEntry entry);
+	Changer changeRowEntry(TexRow::RowEntry entry);
 	/// TexRow::starts the innermost outer math inset
 	/// returns true if the outer row entry will appear at this line
 	bool startOuterRow();
@@ -140,8 +141,7 @@ private:
 	///
 	Encoding const * encoding_;
 	/// Row entry we are in
-	/// (it is a pointer to allow forward-declaration)
-	unique_ptr<RowEntry> row_entry_;
+	TexRow::RowEntry row_entry_;
 };
 
 ///

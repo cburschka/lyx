@@ -2345,7 +2345,7 @@ int BufferView::scrollUp(int offset)
 
 bool BufferView::setCursorFromRow(int row)
 {
-	TextEntry start, end;
+	TexRow::TextEntry start, end;
 	tie(start,end) = buffer_.texrow().getEntriesFromRow(row);
 	LYXERR(Debug::LATEX,
 	       "setCursorFromRow: for row " << row << ", TexRow has found "
@@ -2355,7 +2355,8 @@ bool BufferView::setCursorFromRow(int row)
 }
 
 
-bool BufferView::setCursorFromEntries(TextEntry start, TextEntry end)
+bool BufferView::setCursorFromEntries(TexRow::TextEntry start,
+                                      TexRow::TextEntry end)
 {
 	DocIterator dit_start, dit_end;
 	tie(dit_start,dit_end) =

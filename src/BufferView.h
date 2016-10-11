@@ -16,6 +16,7 @@
 #define BUFFER_VIEW_H
 
 #include "DocumentClassPtr.h"
+#include "TexRow.h"
 #include "update_flags.h"
 
 #include "support/strfwd.h"
@@ -46,7 +47,6 @@ class ParagraphMetrics;
 class Point;
 class TexRow;
 class Text;
-struct TextEntry;
 class TextMetrics;
 
 enum CursorStatus {
@@ -165,7 +165,7 @@ public:
 	/// set the cursor based on the given TeX source row.
 	bool setCursorFromRow(int row);
 	/// set the cursor based on the given start and end TextEntries.
-	bool setCursorFromEntries(TextEntry start, TextEntry end);
+	bool setCursorFromEntries(TexRow::TextEntry start, TexRow::TextEntry end);
 
 	/// set cursor to the given inset. Return true if found.
 	bool setCursorFromInset(Inset const *);
