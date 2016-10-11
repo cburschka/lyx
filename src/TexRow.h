@@ -168,7 +168,8 @@ public:
 
 	// A FuncRequest to select from start to end
 	static FuncRequest goToFunc(TextEntry start, TextEntry end);
-	static FuncRequest goToFunc(std::pair<TextEntry,TextEntry> entries);
+	// A FuncRequest to select a row
+	FuncRequest goToFuncFromRow(int const row) const;
 
 	/**
 	 * getDocIteratorFromRow - find pids and positions for a given row

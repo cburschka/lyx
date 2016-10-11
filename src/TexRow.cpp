@@ -299,10 +299,15 @@ FuncRequest TexRow::goToFunc(TextEntry start, TextEntry end)
 }
 
 
-//static
-FuncRequest TexRow::goToFunc(std::pair<TextEntry,TextEntry> entries)
+FuncRequest TexRow::goToFuncFromRow(int const row) const
 {
-	return goToFunc(entries.first, entries.second);
+	TextEntry start, end;
+	tie(start,end) = getEntriesFromRow(row);
+	LYXERR(Debug::LATEX,
+	       "goToFuncFromRow: for row " << row << ", TexRow has found "
+	       "start (id=" << start.id << ",pos=" << start.pos << "), "
+	       "end (id=" << end.id << ",pos=" << end.pos << ")");
+	return goToFunc(start, end);
 }
 
 

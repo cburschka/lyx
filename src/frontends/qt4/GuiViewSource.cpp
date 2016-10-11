@@ -330,7 +330,7 @@ void ViewSourceWidget::goToCursor() const
 	if (!texrow_)
 		return;
 	int row = viewSourceTV->textCursor().blockNumber() + 1;
-	dispatch(TexRow::goToFunc(texrow_->getEntriesFromRow(row)));
+	dispatch(texrow_->goToFuncFromRow(row));
 }
 
 

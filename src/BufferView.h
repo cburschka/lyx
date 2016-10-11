@@ -164,8 +164,6 @@ public:
 
 	/// set the cursor based on the given TeX source row.
 	bool setCursorFromRow(int row);
-	///
-	bool setCursorFromRow(int row, TexRow const & texrow);
 	/// set the cursor based on the given start and end TextEntries.
 	bool setCursorFromEntries(TextEntry start, TextEntry end);
 
