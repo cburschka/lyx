@@ -66,11 +66,15 @@ void TexString::validate()
 
 bool TexRow::RowEntryList::addEntry(RowEntry entry)
 {
-	if (!entry.is_math) {
+	switch (entry.type) {
+	case text_entry:
 		if (isNone(text_entry_))
 			text_entry_ = entry.text;
 		else if (!v_.empty() && TexRow::sameParOrInsetMath(v_.back(), entry))
 			return false;
+		break;
+	default:
+		break;
 	}
 	forceAddEntry(entry);
 	return true;
@@ -107,7 +111,7 @@ TexRow::TexRow()
 
 
 TexRow::TextEntry const TexRow::text_none = { -1, 0 };
-TexRow::RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
+TexRow::RowEntry const TexRow::row_none = TexRow::textEntry(-1, 0);
 
 
 //static
@@ -120,7 +124,7 @@ bool TexRow::isNone(TextEntry t)
 //static
 bool TexRow::isNone(RowEntry r)
 {
-	return !r.is_math && isNone(r.text);
+	return r.type == text_entry && isNone(r.text);
 }
 
 
@@ -141,7 +145,7 @@ TexRow::RowEntryList & TexRow::currentRow()
 TexRow::RowEntry TexRow::textEntry(int id, pos_type pos)
 {
 	RowEntry entry;
-	entry.is_math = false;
+	entry.type = text_entry;
 	entry.text.pos = pos;
 	entry.text.id = id;
 	return entry;
@@ -152,21 +156,39 @@ TexRow::RowEntry TexRow::textEntry(int id, pos_type pos)
 TexRow::RowEntry TexRow::mathEntry(uid_type id, idx_type cell)
 {
 	RowEntry entry;
-	entry.is_math = true;
+	entry.type = math_entry;
 	entry.math.cell = cell;
 	entry.math.id = id;
 	return entry;
 }
 
 
+//static
+TexRow::RowEntry TexRow::beginDocument()
+{
+	RowEntry entry;
+	entry.type = begin_document;
+	entry.begindocument = {};
+	return entry;
+}
+
+
 bool operator==(TexRow::RowEntry entry1, TexRow::RowEntry entry2)
 {
-	return entry1.is_math == entry2.is_math
-		&& (entry1.is_math
-		    ? (entry1.math.id == entry2.math.id
-		       && entry1.math.cell == entry2.math.cell)
-		    : (entry1.text.id == entry2.text.id
-		       && entry1.text.pos == entry2.text.pos));
+	if (entry1.type != entry2.type)
+		return false;
+	switch (entry1.type) {
+	case TexRow::text_entry:
+		return entry1.text.id == entry2.text.id
+			&& entry1.text.pos == entry2.text.pos;
+	case TexRow::math_entry:
+		return entry1.math.id == entry2.math.id
+			&& entry1.math.cell == entry2.math.cell;
+	case TexRow::begin_document:
+		return true;
+	default:
+		return false;
+	}
 }
 
 
@@ -318,11 +340,11 @@ TexRow::RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 	RowEntry entry;
 	InsetMath * insetMath = slice.asInsetMath();
 	if (insetMath) {
-		entry.is_math = 1;
+		entry.type = math_entry;
 		entry.math.id = insetMath->id();
 		entry.math.cell = slice.idx();
 	} else if (slice.text()) {
-		entry.is_math = 0;
+		entry.type = text_entry;
 		entry.text.id = slice.paragraph().id();
 		entry.text.pos = slice.pos();
 	} else
@@ -334,10 +356,18 @@ TexRow::RowEntry TexRow::rowEntryFromCursorSlice(CursorSlice const & slice)
 //static
 bool TexRow::sameParOrInsetMath(RowEntry entry1, RowEntry entry2)
 {
-	return entry1.is_math == entry2.is_math
-		&& (entry1.is_math
-		    ? (entry1.math.id == entry2.math.id)
-		    : (entry1.text.id == entry2.text.id));
+	if (entry1.type != entry2.type)
+		return false;
+	switch (entry1.type) {
+	case TexRow::text_entry:
+		return entry1.text.id == entry2.text.id;
+	case TexRow::math_entry:
+		return entry1.math.id == entry2.math.id;
+	case TexRow::begin_document:
+		return true;
+	default:
+		return false;
+	}
 }
 
 
@@ -345,10 +375,16 @@ bool TexRow::sameParOrInsetMath(RowEntry entry1, RowEntry entry2)
 int TexRow::comparePos(RowEntry entry1, RowEntry entry2)
 {
 	// assume it is sameParOrInsetMath
-	if (entry1.is_math)
-		return entry2.math.cell - entry1.math.cell;
-	else
+	switch (entry1.type /* equal to entry2.type */) {
+	case TexRow::text_entry:
 		return entry2.text.pos - entry1.text.pos;
+	case TexRow::math_entry:
+		return entry2.math.cell - entry1.math.cell;
+	case TexRow::begin_document:
+		return 0;
+	default:
+		return 0;
+	}
 }
 
 
@@ -569,10 +605,19 @@ void TexRow::setRows(size_t r)
 docstring TexRow::asString(RowEntry entry)
 {
 	odocstringstream os;
-	if (entry.is_math)
-		os << "(1," << entry.math.id << "," << entry.math.cell << ")";
-	else
-		os << "(0," << entry.text.id << "," << entry.text.pos << ")";
+	switch (entry.type) {
+	case TexRow::text_entry:
+		os << "(par " << entry.text.id << "," << entry.text.pos << ")";
+		break;
+	case TexRow::math_entry:
+		os << "(" << entry.math.id << "," << entry.math.cell << ")";
+		break;
+	case TexRow::begin_document:
+		os << "(begin_document)";
+		break;
+	default:
+		break;
+	}
 	return os.str();
 }
 

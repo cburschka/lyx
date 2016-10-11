@@ -52,6 +52,16 @@ typedef size_t idx_type;
 
 class TexRow {
 public:
+	/// We begin with defining the types of row information we are tracking
+	///
+
+	/// type of row entries
+	enum RowType {
+		text_entry,
+		math_entry,
+		begin_document
+	};
+
 	/// an individual par id/pos <=> row mapping
 	struct TextEntry { int id; pos_type pos; };
 
@@ -60,12 +70,30 @@ public:
 
 	/// a container for passing entries around
 	struct RowEntry {
-		bool is_math;// true iff the union is a math
+		RowType type;
 		union {
-			struct TextEntry text;
-			struct MathEntry math;
+			struct TextEntry text;// iff the type is text_entry
+			struct MathEntry math;// iff the type is row_entry
+			struct {} begindocument;// iff the type is begin_document
 		};
 	};
+
+	/// Encapsulates the paragraph and position for later use
+	static RowEntry textEntry(int id, pos_type pos);
+	/// Encapsulates a cell and position for later use
+	static RowEntry mathEntry(uid_type id, idx_type cell);
+	/// Denotes the beginning of the document
+	static RowEntry beginDocument();
+
+	/// Converts a CursorSlice into a RowEntry
+	static RowEntry rowEntryFromCursorSlice(CursorSlice const & slice);
+
+	static const TextEntry text_none;
+	static const RowEntry row_none;
+	/// Returns true if RowEntry is devoid of information
+	static bool isNone(RowEntry entry);
+	/// Returns true if TextEntry is devoid of information
+	static bool isNone(TextEntry entry);
 
 private:
 	/// id/pos correspondence for a single row
@@ -106,20 +134,6 @@ public:
 	/// Clears structure.
 	void reset();
 
-	static const TextEntry text_none;
-	static const RowEntry row_none;
-	/// Returns true if RowEntry is devoid of information
-	static bool isNone(RowEntry entry);
-	/// Returns true if TextEntry is devoid of information
-	static bool isNone(TextEntry entry);
-
-	/// Converts a CursorSlice into a RowEntry
-	static RowEntry rowEntryFromCursorSlice(CursorSlice const & slice);
-	/// Encapsulates the paragraph and position for later use
-	static RowEntry textEntry(int id, pos_type pos);
-	/// Encapsulates a cell and position for later use
-	static RowEntry mathEntry(uid_type id, idx_type cell);
-
 	/// for debugging purposes
 	static docstring asString(RowEntry entry);
 
@@ -146,6 +160,7 @@ public:
 
 	/**
 	 * getEntriesFromRow - find pids and position for a given row
+	 * This is the main algorithm behind reverse-search.
 	 * @param row number to find
 	 * @return a pair of TextEntry denoting the start and end of the position.
 	 * The TextEntry values can be isNone(). If no row is found then the first
@@ -184,6 +199,7 @@ public:
 
 	/// Finds the best pair of rows for dit
 	/// returns (-1,-1) if not found.
+	/// This is the main algorithm behind forward-search.
 	std::pair<int,int> rowFromDocIterator(DocIterator const & dit) const;
 
 	/// Finds the best pair of rows for cursor, taking the selection into
@@ -204,7 +220,7 @@ public:
 	void prepend(docstring_list &) const;
 
 private:
-	/// true iff same paragraph or math inset
+	/// true iff same paragraph or math inset or begin_document
 	static bool sameParOrInsetMath(RowEntry entry1, RowEntry entry2);
 	/// computes the distance in pos or cell index
 	/// assumes it is the sameParOrInsetMath
