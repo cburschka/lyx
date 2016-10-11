@@ -4017,7 +4017,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_SERVER_GOTO_FILE_ROW:
-			goToFileRow(to_utf8(cmd.argument()));
+			if(goToFileRow(to_utf8(cmd.argument())))
+				dr.screenUpdate(Update::Force | Update::FitCursor);
 			break;
 
 		case LFUN_LYX_ACTIVATE:
