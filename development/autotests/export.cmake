@@ -126,10 +126,15 @@ if (extension MATCHES "\\.lyx$")
     set(LYX_SOURCE ${result_file_name})
   endforeach()
 else()
-  message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
+  if ($ENV{LYX_DEBUG_LATEX})
+    set(LatexDebugParam -dbg latex)
+  else()
+    set(LatexDebugParam)
+  endif()
+  message(STATUS "Executing ${lyx} ${LatexDebugParam} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
   file(REMOVE ${result_file_name})
   execute_process(
-    COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
+    COMMAND ${lyx} ${LatexDebugParam} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
     RESULT_VARIABLE _err)
 
   #check if result file created

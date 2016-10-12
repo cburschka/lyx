@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 512
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,6 +25,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 1
@@ -3401,9 +3402,17 @@ unreliable:nonstandard
 \begin_inset Quotes erd
 \end_inset
 
- or testing on a system withonly a subset of TeXLive installed), ignore
+ or testing on a system with only a subset of TeXLive installed), ignore
  the failure, ask for someone else to run the test, or install the missing
- ressources and try again.
+ resources and try again.
+\end_layout
+
+\begin_layout Itemize
+Check the log file Testing/Temporary/LastTest.log.
+ In case of latex-errors rerun the failing test with environment variable
+ 'LAX_DEBUG_LATEX' set to '1'.
+ This will include latex messages in LastTest.log, so it should be easier
+ to interpret the fail-reason.
 \end_layout
 
 \begin_layout Paragraph
