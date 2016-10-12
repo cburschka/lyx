@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-04-24 10:40+0200\n"
-"PO-Revision-Date: 2016-02-01 09:20+0200\n"
+"PO-Revision-Date: 2016-10-11 19:14+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -1209,6 +1209,8 @@ msgstr "Переглянути &журнал повністю…"
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
 msgstr ""
+"Намагатися показати результати, навіть якщо під час компіляції виявлено "
+"помилки"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:96
 msgid "Show Output &Anyway"
@@ -1219,6 +1221,9 @@ msgid ""
 "Selecting an error will show the error message in the panel below, and jump "
 "the cursor to the location in the document where the error occurred."
 msgstr ""
+"Позначення пункту помилки призведе до показу повідомлення щодо помилки на "
+"нижній панелі і переведення курсора до місця у документі, де було виявлено "
+"помилку."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1547,7 +1552,7 @@ msgstr "Форма"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
 msgid "Float Type:"
-msgstr "Тип плаваючого об’єкта:"
+msgstr "Тип рухомого об’єкта:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
@@ -1575,7 +1580,7 @@ msgstr "&Якщо можливо, не переміщувати"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
-msgstr "&Сторінка плаваючих об'єктів"
+msgstr "&Сторінка рухомих об'єктів"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:90
 msgid "&Bottom of page"
@@ -2289,11 +2294,11 @@ msgstr "&Вбудований текст програми"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Перевірка плаваючих текстів програм"
+msgstr "Перевірка рухомих текстів програм"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "&Плаваючі"
+msgstr "&Рухомі"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2301,7 +2306,7 @@ msgstr "Р&озташування:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Визначте розташування (htbp) плаваючих текстів програм"
+msgstr "Визначте розташування (htbp) рухомих текстів програм"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -6591,9 +6596,8 @@ msgid "Thesaurus"
 msgstr "Тезаурус"
 
 #: lib/layouts/aastex.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "Американське астрономічне товариство (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/apa.layout:159 lib/layouts/apa6.layout:149
@@ -6771,31 +6775,28 @@ msgid "Separate the dataset ID from text"
 msgstr "Відокремити ідентифікатор набору даних від тексту"
 
 #: lib/layouts/aastex6.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "Американське астрономічне товариство (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
-msgstr ""
+msgstr "Програмне забезпечення"
 
 #: lib/layouts/aastex6.layout:66
 msgid "Software:"
-msgstr ""
+msgstr "Програмне забезпечення:"
 
 #: lib/layouts/aastex6.layout:99
 msgid "APPENDIX"
-msgstr ""
+msgstr "ДОДАТОК"
 
 #: lib/layouts/aastex6.layout:103
-#, fuzzy
 msgid "References-"
-msgstr "Посилання"
+msgstr "Посилання-"
 
 #: lib/layouts/aastex6.layout:110
-#, fuzzy
 msgid "Note-"
-msgstr "Примітка"
+msgstr "Примітка-"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -6941,9 +6942,8 @@ msgid "ACM SIG Proceedings (SP)"
 msgstr "ACM SIG Proceedings (SP)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92"
-msgstr "ACM SIGGRAPH"
+msgstr "ACM SIGGGRAPH 0.92"
 
 #: lib/layouts/acmsiggraph-0-92.layout:69 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -7120,7 +7120,7 @@ msgstr "Подяки"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
-msgstr ""
+msgstr "ACM SIGGRAPH (старіше за 0.91, застаріле)"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
@@ -17421,7 +17421,7 @@ msgstr "Параметри TeX коду…|X"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Float Settings...|a"
-msgstr "Налаштування плаваючих об'єктів|л"
+msgstr "Налаштування рухомих об'єктів|л"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Text Wrap Settings...|W"
@@ -17797,7 +17797,7 @@ msgstr "Списки та зміст|С"
 
 #: lib/ui/stdmenus.inc:365
 msgid "Float|a"
-msgstr "Плаваючий об'єкт|о"
+msgstr "Рухомий об'єкт|о"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Note|N"
@@ -17977,11 +17977,11 @@ msgstr "Нумерована формула|Н"
 
 #: lib/ui/stdmenus.inc:465
 msgid "Figure Wrap Float|F"
-msgstr "Плаваючий рисунок з обрізкою|о"
+msgstr "Рухомий рисунок з обрізкою|о"
 
 #: lib/ui/stdmenus.inc:466
 msgid "Table Wrap Float|T"
-msgstr "Плаваюча таблиця з обрізкою|р"
+msgstr "Рухома таблиця з обрізкою|р"
 
 #: lib/ui/stdmenus.inc:470
 msgid "Table of Contents|C"
@@ -18393,11 +18393,11 @@ msgstr "Зменшити"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
-msgstr "Вставити широкий плаваючий об'єкт"
+msgstr "Вставити широкий рухомий об'єкт"
 
 #: lib/ui/stdtoolbars.inc:121
 msgid "Insert table float"
-msgstr "Вставити плаваючий об'єкт"
+msgstr "Вставити рухомий об'єкт"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Insert label"
@@ -27799,7 +27799,7 @@ msgstr "Параметри математики"
 
 #: src/frontends/qt4/GuiDocument.cpp:1420
 msgid "Float Placement"
-msgstr "Розташування плаваючих об'єктів"
+msgstr "Розташування рухомих об'єктів"
 
 #: src/frontends/qt4/GuiDocument.cpp:1422
 msgid "Bullets"
@@ -29694,7 +29694,7 @@ msgstr "Закрити вкладку"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Параметри огортання плаваючих об'єктів"
+msgstr "Параметри огортання рухомих об'єктів"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
@@ -30245,12 +30245,12 @@ msgstr "Зовнішній шаблон %1$s не встановлено"
 
 #: src/insets/InsetFloat.cpp:130 src/insets/InsetFloat.cpp:469
 msgid "float: "
-msgstr "плаваючий об'єкт: "
+msgstr "рухомий об'єкт: "
 
 #: src/insets/InsetFloat.cpp:132
 #, c-format
 msgid "ERROR: Unknown float type: %1$s"
-msgstr "ПОМИЛКА: Плаваючий об'єкт невідомого типу: %1$s."
+msgstr "ПОМИЛКА: рухомий об'єкт невідомого типу: %1$s."
 
 #: src/insets/InsetFloat.cpp:401
 msgid "float"
@@ -30258,7 +30258,7 @@ msgstr "float"
 
 #: src/insets/InsetFloat.cpp:472
 msgid "subfloat: "
-msgstr "плаваючий підоб'єкт: "
+msgstr "рухомий підоб'єкт: "
 
 #: src/insets/InsetFloat.cpp:482
 msgid " (sideways)"
@@ -30266,7 +30266,7 @@ msgstr " (сторони)"
 
 #: src/insets/InsetFloatList.cpp:81
 msgid "ERROR: Nonexistent float type!"
-msgstr "ПОМИЛКА: Плаваючий об'єкт неіснуючого типу!"
+msgstr "ПОМИЛКА: рухомий об'єкт неіснуючого типу!"
 
 #: src/insets/InsetFloatList.cpp:151
 #, c-format
