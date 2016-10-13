@@ -1089,13 +1089,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph const & par = pars_[pit];
 		bool lastpar = (pit == pit_type(pars_.size() - 1));
 		Paragraph const & nextpar = lastpar ? par : pars_[pit + 1];
-		pit_type prev = pit;
-		if (pit > 0) {
-			if (!pars_[pit - 1].layout().isEnvironment())
-				prev = depthHook(pit, par.getDepth());
-			else if (pars_[pit - 1].getDepth() >= par.getDepth())
-				prev = pit - 1;
-		}
+		pit_type prev = pit > 0 ? depthHook(pit, par.getDepth()) : pit;
 		if (prev < pit && cur.pos() == par.beginOfBody()
 		    && !par.size() && !par.isEnvSeparator(cur.pos())
 		    && !par.layout().isCommand()
