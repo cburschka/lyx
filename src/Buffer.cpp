@@ -4673,7 +4673,7 @@ static bool needEnumCounterReset(ParIterator const & it)
 		--prev_it.top().pit();
 		Paragraph const & prev_par = *prev_it;
 		if (prev_par.getDepth() <= cur_depth)
-			return  prev_par.layout().labeltype != LABEL_ENUMERATE;
+			return prev_par.layout().name() != par.layout().name();
 	}
 	// start of nested inset: reset
 	return true;
@@ -4757,8 +4757,12 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 			break;
 		}
 
+		// Increase the master counter?
+		if (layout.stepmastercounter && needEnumCounterReset(it))
+			counters.stepMaster(enumcounter, utype);
+
 		// Maybe we have to reset the enumeration counter.
-		if (needEnumCounterReset(it))
+		if (!layout.resumecounter && needEnumCounterReset(it))
 			counters.reset(enumcounter);
 		counters.step(enumcounter, utype);
 

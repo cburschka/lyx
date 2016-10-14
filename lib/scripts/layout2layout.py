@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 60
+currentFormat = 61
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -201,6 +201,9 @@ currentFormat = 60
 
 # Incremented to format 60, 25 March 2016 by lasgouttes
 # Rename caption subtype LongTableNoNumber to Unnumbered
+
+# Incremented to format 61, 14 October 2016 by spitz
+# New Layout tags "ResumeCounter", "StepMasterCounter"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -443,6 +446,11 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 60:
+            # nothing to do.
+            i += 1
             continue
 
         if format == 59:

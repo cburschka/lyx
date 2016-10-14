@@ -14685,6 +14685,62 @@ CopyStyle
 status collapsed
 
 \begin_layout Plain Layout
+ResumeCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Resumes a counter that is usually reset at each new sequence of layouts.
+ This is currently only useful when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 RightDelim
 \end_layout
 
@@ -14912,6 +14968,63 @@ status collapsed
 
 ] Allow spell-checking paragraphs of this style.
  Default is true.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+StepMasterCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+] Steps the master counter of a given counter at the beginning of a new
+ sequence of layouts.
+ This is currently only useful when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+LabelType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Enumerate
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description

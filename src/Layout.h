@@ -313,6 +313,10 @@ public:
 	bool inpreamble;
 	/// Which counter to step
 	docstring counter;
+	/// Resume counter?
+	bool resumecounter;
+	/// Step master counter?
+	bool stepmastercounter;
 	/// Prefix to use when creating labels
 	docstring refprefix;
 	/// Depth of XML command

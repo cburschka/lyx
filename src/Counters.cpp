@@ -278,6 +278,18 @@ void Counters::resetSlaves(docstring const & ctr)
 }
 
 
+void Counters::stepMaster(docstring const & ctr, UpdateType utype)
+{
+	CounterList::iterator it = counterList_.find(ctr);
+	if (it == counterList_.end()) {
+		lyxerr << "step: Counter does not exist: "
+		       << to_utf8(ctr) << endl;
+		return;
+	}
+	step(it->second.master(), utype);
+}
+
+
 void Counters::step(docstring const & ctr, UpdateType utype)
 {
 	CounterList::iterator it = counterList_.find(ctr);

@@ -130,6 +130,10 @@ public:
 	int value(docstring const & ctr) const;
 	/// Reset recursively all the counters that are slaves of the one named by \c ctr.
 	void resetSlaves(docstring const & ctr);
+	/// Increment by one master of counter named by \c ctr.
+	/// This also resets the counter named by \c ctr.
+	/// \param utype determines whether we track the counters.
+	void stepMaster(docstring const & ctr, UpdateType utype);
 	/// Increment by one counter named by \c ctr, and zeroes slave
 	/// counter(s) for which it is the master.
 	/// \param utype determines whether we track the counters.
