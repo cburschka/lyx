@@ -9,6 +9,33 @@
 
 Format 60
 
+# FIXME: It is currently not possible to share a
+# counter in layouts with STATIC and ENUMERATE
+# LabelType. The counters are not stepped properly.
+Counter example
+	Within               chapter
+#	LabelString          "(\arabic{example})"
+	LabelString          "Examples:"
+End
+
+Counter examplei
+	Within               chapter
+#	LabelString          "(\arabic{examplei})"
+	LabelString          "Examples:"
+End
+
+Counter subexample
+	Within               examplei
+#	LabelString          "\theexamplei (\alph{subexample})"
+	LabelString          "Subexample:"
+End
+
+Counter subexamplei
+	Within               examplei
+#	LabelString          "\theexamplei (\alph{subexamplei})"
+	LabelString          "Subexample:"
+End
+
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
 	LatexType             Environment
@@ -24,6 +51,7 @@ Style Numbered_Example_(multiline)
 	Align                 Block
 	AlignPossible         Block, Left
 	LabelType             Static
+#	LabelCounter          "example"
 	LabelString           "Example:"
 	LabelFont
 		Shape         Italic
@@ -46,7 +74,8 @@ Style Numbered_Examples_(consecutive)
 	CopyStyle	      Numbered_Example_(multiline)
 	LatexType             Item_Environment
 	LatexName             covexamples
-	LabelString           "Examples:"
+	LabelType             Enumerate
+	LabelCounter          "example"
 	Argument item:1
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"
@@ -65,7 +94,7 @@ End
 Style Subexample
 	CopyStyle	      Numbered_Examples_(consecutive)
 	LatexName             subexample
-	LabelString           "Subexample:"
+	LabelCounter          "subexample"
 	Requires	      covington,enumitem
 	Preamble
 		\newenvironment{subexample}{%
