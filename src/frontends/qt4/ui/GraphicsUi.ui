@@ -59,7 +59,7 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="5" >
+       <item row="2" column="0" colspan="5" >
         <widget class="QGroupBox" name="sizeGB" >
          <property name="title" >
           <string>Output Size</string>
@@ -181,7 +181,7 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="5" >
+       <item row="3" column="0" colspan="5" >
         <widget class="QGroupBox" name="rotationGB" >
          <property name="title" >
           <string>Rotate Graphics</string>
@@ -274,6 +274,26 @@
         <widget class="QLineEdit" name="filename" >
          <property name="toolTip" >
           <string>File name of image</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4" >
+        <widget class="QPushButton" name="editPB" >
+         <property name="text" >
+          <string>&amp;Edit</string>
+         </property>
+         <property name="toolTip" >
+          <string>Edit in external editor (specify an existing filename first)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4" >
+        <widget class="QPushButton" name="chooseSamplePB" >
+         <property name="text" >
+          <string>&amp;New...</string>
+         </property>
+         <property name="toolTip" >
+          <string>Create copying from sample file in &lt;HOME&gt;/.lyx/samples (specify a valid destination filename first)</string>
          </property>
         </widget>
        </item>

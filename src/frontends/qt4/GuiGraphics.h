@@ -43,6 +43,9 @@ private Q_SLOTS:
 	void on_newGroupPB_clicked();
 	void on_browsePB_clicked();
 	void on_getPB_clicked();
+	void on_editPB_clicked();
+	void on_chooseSamplePB_clicked();
+	void on_okPB_clicked();
 	void on_scaleCB_toggled(bool);
 	void on_WidthCB_toggled(bool);
 	void on_HeightCB_toggled(bool);
@@ -74,6 +77,8 @@ private:
 	std::string readBoundingBox(std::string const & file);
 	/// test if file exist
 	bool isFileNameValid(std::string const & fname) const;
+	/// Check if file exists, if not, ask whether ok to continue
+	bool checkFileExists();
 
 	/// Control the bb
 	bool bbChanged;

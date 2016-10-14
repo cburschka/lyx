@@ -24,6 +24,7 @@
 #include "LengthCombo.h"
 #include "Length.h"
 #include "LyXRC.h"
+#include "Format.h"
 
 #include "graphics/epstools.h"
 #include "graphics/GraphicsCache.h"
@@ -42,6 +43,7 @@
 #include "support/types.h"
 
 #include <QCheckBox>
+#include <QFileDialog>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -248,6 +250,13 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 void GuiGraphics::change_adaptor()
 {
 	changed();
+	string const fname = fromqstr(filename->text());
+	FileName dest_fname(FileName(fromqstr(bufferFilePath())), fname);
+	Format const * fmt = theFormats().getFormat(theFormats().getFormatFromFile(dest_fname));
+	LYXERR(Debug::GRAPHICS, "fmt: " << fmt
+		<< ", fmt_name: " << theFormats().getFormatFromFile(dest_fname));
+	editPB->setEnabled(!fname.empty() && !dest_fname.isDirectory() && dest_fname.exists());
+	chooseSamplePB->setEnabled(!fname.empty() && !dest_fname.isDirectory());
 }
 
 
@@ -356,6 +365,91 @@ void GuiGraphics::on_browsePB_clicked()
 		filename->setText(str);
 		changed();
 	}
+}
+
+
+bool GuiGraphics::checkFileExists()
+{
+	string const fname = fromqstr(filename->text());
+	FileName dest_fname(FileName(fromqstr(bufferFilePath())), fname);
+	if (fname.empty() || !dest_fname.exists()) {
+		return frontend::Alert::prompt(
+			_("Continue?"), bformat(_("File '%1$s' does not exist. Continue?"), from_utf8(dest_fname.absFileName())),
+			0, 1, _("&Yes"), _("&No")) == 0;
+	}
+	return true;
+}
+
+
+void GuiGraphics::on_chooseSamplePB_clicked()
+{
+	string fname = fromqstr(filename->text());
+	FileName dest_fname(FileName(fromqstr(bufferFilePath())), fname);
+	string fmt_name = theFormats().getFormatFromFile(FileName(fname));
+	string filter("Any file (*.*)");
+	if (!fmt_name.empty()) {
+		Format const *fmt = theFormats().getFormat(fmt_name);
+		filter = to_utf8(fmt->prettyname()) + " Files (*." + dest_fname.extension() + ")";
+	}
+	if (fname.empty() || dest_fname.isDirectory()) {
+		frontend::Alert::warning(_("Invalid destination file name!"), _("Invalid destination file name!"));
+		return;
+	}
+
+	QString const samplesDir = toqstr(addPath(package().user_support().absFileName(), "samples"));
+	string sample_name = fromqstr(QFileDialog::getOpenFileName(this, toqstr("Please, select sample template"), samplesDir, toqstr(filter)));
+	if (sample_name.empty())
+		// User pressed Cancel
+		return;
+	FileName sample_fname = FileName(sample_name);
+
+	//FileName sample_fname = libFileSearch(toqstr("samples"), toqstr(sample_name));
+	if (sample_fname.isDirectory() || !sample_fname.exists()) {
+		frontend::Alert::warning(_("Invalid sample file name"), _("Invalid sample file name"));
+		return;
+	}
+
+	string sample_fmt_name = theFormats().getFormatFromFile(sample_fname);
+	if (fmt_name.empty() && !sample_fmt_name.empty()) {
+		fmt_name = sample_fmt_name;
+		string ext = theFormats().getFormat(fmt_name)->extension();
+		if (!ext.empty()) {
+			fname = fname + "." + ext;
+			dest_fname.set(FileName(fromqstr(bufferFilePath())), fname);
+			filename->setText(toqstr(fname));
+		}
+	}
+
+	if (fname.empty() || dest_fname.isDirectory()) {
+		frontend::Alert::warning(_("Invalid destination file name!"), _("Cannot copy sample file on an invalid destination file!"));
+		return;
+	}
+
+	if (!dest_fname.exists() || (dest_fname.exists() &&
+		frontend::Alert::prompt(
+			_("Overwrite?"), bformat(_("File '%1$s' already exists. Overwrite with sample from template?"), from_utf8(dest_fname.absFileName())),
+			0, 1, _("&Yes"), _("&No")) == 0)) {
+		sample_fname.copyTo(dest_fname);
+		dest_fname.refresh();
+		change_adaptor();
+	}
+}
+
+
+void GuiGraphics::on_editPB_clicked()
+{
+	string const fname = fromqstr(filename->text());
+	FileName dest_fname(FileName(fromqstr(bufferFilePath())), fname);
+	string fmt_name = theFormats().getFormatFromFile(FileName(fname));
+	if (checkFileExists())
+		theFormats().edit(buffer(), dest_fname, fmt_name);
+}
+
+
+void GuiGraphics::on_okPB_clicked()
+{
+	if (checkFileExists())
+		applyView();
 }
 
 
