@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-10-10 10:33-0400\n"
-"PO-Revision-Date: 2016-02-01 09:20+0200\n"
+"PO-Revision-Date: 2016-10-11 19:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -1191,6 +1191,8 @@ msgstr "Переглянути &журнал повністю…"
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
 msgstr ""
+"Намагатися показати результати, навіть якщо під час компіляції виявлено "
+"помилки"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:96
 msgid "Show Output &Anyway"
@@ -1201,6 +1203,9 @@ msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
 msgstr ""
+"Позначення пункту помилки призведе до показу повідомлення щодо помилки на "
+"нижній панелі і переведення курсора до місця у документі, де було виявлено "
+"помилку."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1526,7 +1531,7 @@ msgstr "Форма"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
 msgid "Float Type:"
-msgstr "Тип плаваючого об’єкта:"
+msgstr "Тип рухомого об’єкта:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
@@ -1554,7 +1559,7 @@ msgstr "&Якщо можливо, не переміщувати"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
-msgstr "&Сторінка плаваючих об'єктів"
+msgstr "&Сторінка рухомих об'єктів"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:90
 msgid "&Bottom of page"
@@ -2265,11 +2270,11 @@ msgstr "&Вбудований текст програми"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Перевірка плаваючих текстів програм"
+msgstr "Перевірка рухомих текстів програм"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "&Плаваючі"
+msgstr "&Рухомі"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2277,7 +2282,7 @@ msgstr "Р&озташування:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Визначте розташування (htbp) плаваючих текстів програм"
+msgstr "Визначте розташування (htbp) рухомих текстів програм"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -2696,9 +2701,8 @@ msgid "De&fault output format:"
 msgstr "Типовий &формат виводу:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
-#, fuzzy
 msgid "LyX Format"
-msgstr "&Формат:"
+msgstr "Формат LyX"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -2708,10 +2712,16 @@ msgid ""
 "directory path). Disabling this option plays nicer in\n"
 "collaborative settings and with version control systems."
 msgstr ""
+"Зберегти усі параметри до файла LyX, включаючи параметри,\n"
+"які часто змінюються або є специфічними для користувача\n"
+"(зокрема виведення змін, за якими ведеться стеження, або\n"
+"шлях до каталогу документа). Вимикання збереження таких\n"
+"параметрів покращить роботу з документами, які мають\n"
+"багато авторів, та системами керування версіями."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr ""
+msgstr "Зберегти &проміжні властивості"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -6244,9 +6254,8 @@ msgid "Proof."
 msgstr "Доведення."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
-msgstr "Заголовок (звичайна вставка)"
+msgstr "Зміни у заголовку і преамбулі"
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6258,16 +6267,22 @@ msgid ""
 "in title-related material. (If you put these in a Standard layout, this "
 "signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
+"Забезпечує роботу двох нових стилів: 1. Стилю «У вступі», який вставляє увесь "
+"свій вміст до вступу документа TeX. Цим стилем можна скористатися для "
+"додавання коду вступу до самого документа LyX. 2. Стилю «У заголовку», який "
+"вставляє увесь свій вміст до тіла документа LaTeX, але до команди "
+"\\maketitle. Цим  стилем можна скористатися для створення варіантів та "
+"нотаток у матеріалі, пов’язаному із заголовком. (Якщо ці дані розмістити у "
+"стандартному форматуванні, LyX вважатиме, що слід додати \\maketitle, що може "
+"бути зарано.)"
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Вступ"
+msgstr "У вступі"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Заголовок"
+msgstr "У заголовку"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -6625,9 +6640,8 @@ msgid "List"
 msgstr "Список"
 
 #: lib/layouts/aastex.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "Американське астрономічне товариство (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/agu_stdtitle.inc:128 lib/layouts/aguplus.inc:65
@@ -6796,31 +6810,28 @@ msgid "Separate the dataset ID from text"
 msgstr "Відокремити ідентифікатор набору даних від тексту"
 
 #: lib/layouts/aastex6.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "Американське астрономічне товариство (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
-msgstr ""
+msgstr "Програмне забезпечення"
 
 #: lib/layouts/aastex6.layout:66
 msgid "Software:"
-msgstr ""
+msgstr "Програмне забезпечення:"
 
 #: lib/layouts/aastex6.layout:99
 msgid "APPENDIX"
-msgstr ""
+msgstr "ДОДАТОК"
 
 #: lib/layouts/aastex6.layout:103
-#, fuzzy
 msgid "References-"
-msgstr "Посилання"
+msgstr "Посилання-"
 
 #: lib/layouts/aastex6.layout:110
-#, fuzzy
 msgid "Note-"
-msgstr "Примітка"
+msgstr "Примітка-"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -6974,9 +6985,8 @@ msgid "ACM SIG Proceedings (SP)"
 msgstr "ACM SIG Proceedings (SP)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92"
-msgstr "ACM SIGGRAPH"
+msgstr "ACM SIGGGRAPH 0.92"
 
 #: lib/layouts/acmsiggraph-0-92.layout:69 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -7153,7 +7163,7 @@ msgstr "Подяки"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
-msgstr ""
+msgstr "ACM SIGGRAPH (старіше за 0.91, застаріле)"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
@@ -17440,7 +17450,7 @@ msgstr "Параметри TeX коду…|X"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Float Settings...|a"
-msgstr "Налаштування плаваючих об'єктів|л"
+msgstr "Налаштування рухомих об'єктів|л"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Text Wrap Settings...|W"
@@ -17816,7 +17826,7 @@ msgstr "Списки та зміст|С"
 
 #: lib/ui/stdmenus.inc:365
 msgid "Float|a"
-msgstr "Плаваючий об'єкт|о"
+msgstr "Рухомий об'єкт|о"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Note|N"
@@ -17996,11 +18006,11 @@ msgstr "Нумерована формула|Н"
 
 #: lib/ui/stdmenus.inc:465
 msgid "Figure Wrap Float|F"
-msgstr "Плаваючий рисунок з обрізкою|о"
+msgstr "Рухомий рисунок з обрізкою|о"
 
 #: lib/ui/stdmenus.inc:466
 msgid "Table Wrap Float|T"
-msgstr "Плаваюча таблиця з обрізкою|р"
+msgstr "Рухома таблиця з обрізкою|р"
 
 #: lib/ui/stdmenus.inc:470
 msgid "Table of Contents|C"
@@ -18412,11 +18422,11 @@ msgstr "Зменшити"
 
 #: lib/ui/stdtoolbars.inc:120
 msgid "Insert figure float"
-msgstr "Вставити широкий плаваючий об'єкт"
+msgstr "Вставити широкий рухомий об'єкт"
 
 #: lib/ui/stdtoolbars.inc:121
 msgid "Insert table float"
-msgstr "Вставити плаваючий об'єкт"
+msgstr "Вставити рухомий об'єкт"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Insert label"
@@ -23152,9 +23162,8 @@ msgid "SVG"
 msgstr "SVG"
 
 #: lib/configure.py:585
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Стиснутий|т"
+msgstr "SVG (стиснутий)"
 
 #: lib/configure.py:588
 msgid "BMP"
@@ -23322,13 +23331,12 @@ msgid "Excel spreadsheet"
 msgstr "ел. таблиця Excel"
 
 #: lib/configure.py:635
-#, fuzzy
 msgid "MS Excel Office Open XML"
-msgstr "MS Word Office Open XML"
+msgstr "MS Excel Office Open XML"
 
 #: lib/configure.py:636
 msgid "HTML Table (for spreadsheets)"
-msgstr ""
+msgstr "Таблиця HTML (для електронних таблиць)"
 
 #: lib/configure.py:637
 msgid "OpenDocument spreadsheet"
@@ -23572,9 +23580,9 @@ msgid "LyX Archive (tar.gz)"
 msgstr "Архів LyX (tar.gz)"
 
 #: src/Author.cpp:57
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "Зібрано %1$s[[date]], %2$s[[time]]"
+msgstr "%1$s[[name]] (%2$s[[email]])"
 
 #: src/BiblioInfo.cpp:302 src/frontends/qt4/GuiDocument.cpp:2343
 #, c-format
@@ -26272,7 +26280,7 @@ msgstr "[Змінити слідкування] "
 #: src/Text.cpp:1909
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr ""
+msgstr "Змінено %1$s[[author]], %2$s[[date]]. "
 
 #: src/Text.cpp:1919 src/mathed/InsetMathFont.cpp:213
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -26857,9 +26865,8 @@ msgid "Advanced Find and Replace"
 msgstr "Складний пошук з заміною"
 
 #: src/frontends/qt4/FloatPlacement.h:38
-#, fuzzy
 msgid "Float Settings"
-msgstr "Налаштування плаваючих об'єктів|л"
+msgstr "Параметри рухомих об’єктів"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -27169,9 +27176,8 @@ msgstr ""
 "і перевірте, чи належний файл інтерфейсу користувача використовує програма."
 
 #: src/frontends/qt4/GuiBibitem.h:36
-#, fuzzy
 msgid "Bibliography Item Settings"
-msgstr "Налаштування бібліографії"
+msgstr "Параметри пункту бібліографії"
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
@@ -27312,18 +27318,16 @@ msgid "Merge Changes"
 msgstr "Об'єднати зміни"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Зміна %1$s\n"
+"Змінено %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
-#, fuzzy
 msgid "Change made on %1\n"
-msgstr "Змінено у %1$s\n"
+msgstr "Зміни внесено %1$s\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83 src/frontends/qt4/GuiCharacter.cpp:124
@@ -27838,7 +27842,7 @@ msgstr "Параметри математики"
 
 #: src/frontends/qt4/GuiDocument.cpp:1424
 msgid "Float Placement"
-msgstr "Розташування плаваючих об'єктів"
+msgstr "Розташування рухомих об'єктів"
 
 #: src/frontends/qt4/GuiDocument.cpp:1426
 msgid "Bullets"
@@ -28056,9 +28060,8 @@ msgstr ""
 "головний документ, '%1$s'."
 
 #: src/frontends/qt4/GuiERT.h:33
-#, fuzzy
 msgid "TeX Mode Inset Settings"
-msgstr "Параметри LaTeX"
+msgstr "Параметри вставки режиму TeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:46 src/frontends/qt4/GuiLog.cpp:255
 msgid "Literate"
@@ -28301,9 +28304,8 @@ msgid "Horizontal Space Settings"
 msgstr "Параметри горизонтального проміжку"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
-#, fuzzy
 msgid "Hyperlink Settings"
-msgstr "Гіперпосилання: "
+msgstr "Параметри гіперпосилань"
 
 #: src/frontends/qt4/GuiInclude.cpp:122 src/frontends/qt4/GuiInclude.cpp:184
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:377
@@ -28389,9 +28391,8 @@ msgid "lyxinfo"
 msgstr "lyxinfo"
 
 #: src/frontends/qt4/GuiInfo.h:36
-#, fuzzy
 msgid "Info Inset Settings"
-msgstr "Параметри покажчика"
+msgstr "Параметри інформаційних вставок"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
@@ -28410,14 +28411,12 @@ msgid "Command-"
 msgstr "Command-"
 
 #: src/frontends/qt4/GuiLabel.h:35
-#, fuzzy
 msgid "Label Settings"
-msgstr "Налаштування таблиці"
+msgstr "Параметри мітки"
 
 #: src/frontends/qt4/GuiLine.h:34
-#, fuzzy
 msgid "Line Settings"
-msgstr "&Основні параметри"
+msgstr "Параметри рядка"
 
 #: src/frontends/qt4/GuiListings.cpp:60
 msgid "No language"
@@ -28512,7 +28511,6 @@ msgid "Math Matrix"
 msgstr "Математична Матриця"
 
 #: src/frontends/qt4/GuiNomenclature.h:36
-#, fuzzy
 msgid "Nomenclature Settings"
 msgstr "Параметри номенклатури"
 
@@ -29230,9 +29228,8 @@ msgid "Symbols"
 msgstr "Символи"
 
 #: src/frontends/qt4/GuiTabular.h:45
-#, fuzzy
 msgid "Tabular Settings"
-msgstr "Налаштування таблиці"
+msgstr "Параметри таблиці"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
@@ -29347,7 +29344,7 @@ msgstr "Невідома панель інструментів \"%1$s\""
 
 #: src/frontends/qt4/GuiView.cpp:1996
 msgid "Zoom level cannot be less than 10%."
-msgstr ""
+msgstr "Масштаб не може бути меншим за 10%."
 
 #: src/frontends/qt4/GuiView.cpp:2087
 msgid "Select template file"
@@ -29727,7 +29724,7 @@ msgstr "%1$s невідома команда!"
 
 #: src/frontends/qt4/GuiView.cpp:3948
 msgid "Zoom level is now %1$d%"
-msgstr ""
+msgstr "Поточний масштаб — %1$d%"
 
 #: src/frontends/qt4/GuiView.cpp:3995
 msgid "Please, preview the document first."
@@ -29784,7 +29781,7 @@ msgstr "Закрити вкладку"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Параметри огортання плаваючих об'єктів"
+msgstr "Параметри огортання рухомих об'єктів"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
@@ -30331,12 +30328,12 @@ msgstr "Зовнішній шаблон %1$s не встановлено"
 
 #: src/insets/InsetFloat.cpp:130 src/insets/InsetFloat.cpp:469
 msgid "float: "
-msgstr "плаваючий об'єкт: "
+msgstr "рухомий об'єкт: "
 
 #: src/insets/InsetFloat.cpp:132
 #, c-format
 msgid "ERROR: Unknown float type: %1$s"
-msgstr "ПОМИЛКА: Плаваючий об'єкт невідомого типу: %1$s."
+msgstr "ПОМИЛКА: рухомий об'єкт невідомого типу: %1$s."
 
 #: src/insets/InsetFloat.cpp:401
 msgid "float"
@@ -30344,7 +30341,7 @@ msgstr "float"
 
 #: src/insets/InsetFloat.cpp:472
 msgid "subfloat: "
-msgstr "плаваючий підоб'єкт: "
+msgstr "рухомий підоб'єкт: "
 
 #: src/insets/InsetFloat.cpp:482
 msgid " (sideways)"
@@ -30352,7 +30349,7 @@ msgstr " (сторони)"
 
 #: src/insets/InsetFloatList.cpp:81
 msgid "ERROR: Nonexistent float type!"
-msgstr "ПОМИЛКА: Плаваючий об'єкт неіснуючого типу!"
+msgstr "ПОМИЛКА: рухомий об'єкт неіснуючого типу!"
 
 #: src/insets/InsetFloatList.cpp:151
 #, c-format
@@ -30922,9 +30919,8 @@ msgid "Reference to Name"
 msgstr "Посилання на назву"
 
 #: src/insets/InsetRef.cpp:357
-#, fuzzy
 msgid "NameRef: "
-msgstr "Посилання на назву:"
+msgstr "Посилання на назву: "
 
 #: src/insets/InsetScript.cpp:343
 msgid "subscript"
@@ -31340,9 +31336,8 @@ msgstr ""
 "%1$s."
 
 #: src/output_latex.cpp:1198
-#, fuzzy
 msgid "Error in latexParagraphs"
-msgstr "Поточний абзац"
+msgstr "Помилка у latexParagraphs"
 
 #: src/output_latex.cpp:1199
 #, c-format
@@ -31350,6 +31345,9 @@ msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
 "non-title layouts. This could lead to missing or incorrect output."
 msgstr ""
+"Вами використано принаймні одне форматування (%1$s), яке призначено для "
+"заголовка, після використання фрагментів коду, які не є заголовком. Це може "
+"призвести до пропусків тексту або помилкових результатів."
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
