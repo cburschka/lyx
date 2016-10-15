@@ -418,21 +418,57 @@ bool lyxreplace(BufferView * bv,
 }
 
 
-bool findNextChange(DocIterator & cur)
+bool findNextChange(BufferView * bv, Cursor & cur, bool const check_wrap)
 {
 	for (; cur; cur.forwardPos())
 		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos()))
 			return true;
+
+	if (check_wrap) {
+		DocIterator cur_orig(bv->cursor());
+		docstring q = _("End of file reached while searching forward.\n"
+			  "Continue searching from the beginning?");
+		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
+			q, 0, 1, _("&Yes"), _("&No"));
+		if (wrap_answer == 0) {
+			bv->cursor().clear();
+			bv->cursor().push_back(CursorSlice(bv->buffer().inset()));
+			bv->clearSelection();
+			cur.setCursor(bv->cursor().selectionBegin());
+			if (findNextChange(bv, cur, false))
+				return true;
+		}
+		bv->cursor().setCursor(cur_orig);
+	}
+
 	return false;
 }
 
 
-bool findPreviousChange(DocIterator & cur)
+bool findPreviousChange(BufferView * bv, Cursor & cur, bool const check_wrap)
 {
 	for (cur.backwardPos(); cur; cur.backwardPos()) {
 		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos()))
 			return true;
 	}
+
+	if (check_wrap) {
+		DocIterator cur_orig(bv->cursor());
+		docstring q = _("Beginning of file reached while searching backward.\n"
+			  "Continue searching from the end?");
+		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
+			q, 0, 1, _("&Yes"), _("&No"));
+		if (wrap_answer == 0) {
+			bv->cursor().setCursor(doc_iterator_end(&bv->buffer()));
+			bv->cursor().backwardPos();
+			bv->clearSelection();
+			cur.setCursor(bv->cursor().selectionBegin());
+			if (findPreviousChange(bv, cur, false))
+				return true;
+		}
+		bv->cursor().setCursor(cur_orig);
+	}
+
 	return false;
 }
 
@@ -477,7 +513,7 @@ bool findChange(BufferView * bv, bool forward)
 	Cursor cur(*bv);
 	cur.setCursor(forward ? bv->cursor().selectionEnd()
 		      : bv->cursor().selectionBegin());
-	forward ? findNextChange(cur) : findPreviousChange(cur);
+	forward ? findNextChange(bv, cur, true) : findPreviousChange(bv, cur, true);
 	return selectChange(cur, forward);
 }
 
