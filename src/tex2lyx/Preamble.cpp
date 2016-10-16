@@ -52,17 +52,17 @@ namespace {
  */
 const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
 "american", "arabic", "arabtex", "australian", "austrian", "bahasa", "bahasai",
-"bahasam", "basque", "belarusian", "brazil", "brazilian", "breton", "british",
+"bahasam", "basque", "belarusian", "bosnian", "brazil", "brazilian", "breton", "british",
 "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "francais",
-"french", "frenchb", "frenchle", "frenchpro", "galician", "german", "germanb",
+"french", "frenchb", "frenchle", "frenchpro", "friulan", "galician", "german", "germanb",
 "georgian", "greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian",
 "interlingua", "irish", "italian", "japanese", "kazakh", "kurmanji", "latin",
-"latvian", "lithuanian", "lowersorbian", "lsorbian", "magyar", "malay", "meyalu",
+"latvian", "lithuanian", "lowersorbian", "lsorbian", "macedonian", "magyar", "malay", "meyalu",
 "mongolian", "naustrian", "newzealand", "ngerman", "ngermanb", "norsk", "nswissgerman",
-"nynorsk", "polutonikogreek", "polish", "portuges", "portuguese", "romanian", "russian",
-"russianb", "samin", "scottish", "serbian", "serbian-latin", "slovak",
-"slovene", "spanish", "swedish", "swissgerman", "thai", "turkish", "turkmen",
+"nynorsk", "piedmontese", "polutonikogreek", "polish", "portuges", "portuguese",
+"romanian", "romansh", "russian", "russianb", "samin", "scottish", "serbian", "serbian-latin",
+"slovak", "slovene", "spanish", "swedish", "swissgerman", "thai", "turkish", "turkmen",
 "ukraineb", "ukrainian", "uppersorbian", "UKenglish", "USenglish", "usorbian",
 "vietnam", "welsh",
 0};
@@ -73,17 +73,17 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
  */
 const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "american", "arabic_arabi", "arabic_arabtex", "australian", "austrian", "bahasa", "bahasa",
-"bahasam", "basque", "belarusian", "brazilian", "brazilian", "breton", "british",
+"bahasam", "basque", "belarusian", "bosnian", "brazilian", "brazilian", "breton", "british",
 "bulgarian", "canadian", "canadien", "catalan", "croatian", "czech", "danish",
 "dutch", "english", "esperanto", "estonian", "farsi", "finnish", "french",
-"french", "french", "french", "french", "galician", "german", "german",
+"french", "french", "french", "french", "friulan", "galician", "german", "german",
 "georgian", "greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa",
 "interlingua", "irish", "italian", "japanese", "kazakh", "kurmanji", "latin",
-"latvian", "lithuanian", "lowersorbian", "lowersorbian", "magyar", "bahasam", "bahasam",
+"latvian", "lithuanian", "lowersorbian", "lowersorbian", "macedonian", "magyar", "bahasam", "bahasam",
 "mongolian", "naustrian", "newzealand", "ngerman", "ngerman", "norsk", "german-ch",
-"nynorsk", "polutonikogreek", "polish", "portuguese", "portuguese", "romanian", "russian",
-"russian", "samin", "scottish", "serbian", "serbian-latin", "slovak",
-"slovene", "spanish", "swedish", "german-ch-old", "thai", "turkish", "turkmen",
+"nynorsk", "piedmontese", "polutonikogreek", "polish", "portuguese", "portuguese",
+"romanian", "romansh", "russian", "russian", "samin", "scottish", "serbian", "serbian-latin",
+"slovak", "slovene", "spanish", "swedish", "german-ch-old", "thai", "turkish", "turkmen",
 "ukrainian", "ukrainian", "uppersorbian", "english", "english", "uppersorbian",
 "vietnamese", "welsh",
 0};
@@ -99,18 +99,19 @@ const char * const known_english_quotes_languages[] = {"american", "australian",
 
 /// languages with french quotes (.lyx names)
 const char * const known_french_quotes_languages[] = {"albanian",
-"arabic_arabi", "arabic_arabtex", "basque", "canadien", "catalan", "french",
-"galician", "greek", "italian", "norsk", "nynorsk", "polutonikogreek",
+"arabic_arabi", "arabic_arabtex", "basque", "canadien", "catalan", "french", "friulan",
+"galician", "greek", "italian", "norsk", "nynorsk", "piedmontese", "polutonikogreek",
 "russian", "spanish", "spanish-mexico", "turkish", "turkmen", "ukrainian",
 "vietnamese", 0};
 
 /// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
-"czech", "german", "georgian", "icelandic", "lithuanian", "lowersorbian", "naustrian",
-"ngerman", "serbian", "serbian-latin", "slovak", "slovene", "uppersorbian", 0};
+"czech", "german", "georgian", "icelandic", "lithuanian", "lowersorbian", "macedonian",
+"naustrian", "ngerman", "romansh", "serbian", "serbian-latin", "slovak", "slovene",
+"uppersorbian", 0};
 
 /// languages with polish quotes (.lyx names)
-const char * const known_polish_quotes_languages[] = {"afrikaans", "croatian",
+const char * const known_polish_quotes_languages[] = {"afrikaans", "bosnian", "croatian",
 "dutch", "estonian", "magyar", "polish", "romanian", 0};
 
 /// languages with swedish quotes (.lyx names)

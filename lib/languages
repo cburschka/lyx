@@ -256,6 +256,15 @@ Language belarusian
 	AsBabelOptions   true
 End
 
+# not yet supported by polyglossia
+Language bosnian
+	GuiName          "Bosnian"
+	BabelName        bosnian
+	QuoteStyle       polish
+	Encoding         iso8859-2
+	LangCode         bs_BA
+End
+
 Language brazilian
 	GuiName          "Portuguese (Brazil)"
 	HasGuiSupport    true
@@ -478,6 +487,16 @@ Language french
 	   \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
 	}
 	EndPostBabelPreamble
+End
+
+Language friulan
+	GuiName          "Friulian"
+	HasGuiSupport    true
+	BabelName        friulan
+	PolyglossiaName  friulan
+	QuoteStyle       french
+	Encoding         iso8859-15
+	LangCode         fur_IT
 End
 
 Language galician
@@ -768,6 +787,16 @@ Language magyar
 	LangCode         hu_HU
 End
 
+# not yet supported by polyglossia
+Language macedonian
+	GuiName          "Macedonian"
+	BabelName        macedonian
+	QuoteStyle       german
+	Encoding         cp1251
+	FontEncoding     T2A
+	LangCode         mk_MK
+End
+
 # not supported by babel
 Language marathi
 	GuiName          "Marathi"
@@ -837,6 +866,16 @@ End
 # 	LangCode         ru_petr1708
 # End
 
+Language piedmontese
+	GuiName          "Piedmontese"
+	HasGuiSupport    true
+	BabelName        piedmontese
+	PolyglossiaName  piedmontese
+	QuoteStyle       french
+	Encoding         iso8859-15
+	LangCode         pms_IT
+End
+
 Language polish
 	GuiName          "Polish"
 	HasGuiSupport    true
@@ -866,6 +905,16 @@ Language romanian
 	QuoteStyle       polish
 	Encoding         iso8859-16
 	LangCode         ro_RO
+End
+
+Language romansh
+	GuiName          "Romansh"
+	HasGuiSupport    true
+	BabelName        romansh
+	PolyglossiaName  romansh
+	QuoteStyle       german
+	Encoding         iso8859-15
+	LangCode         rm_CH
 End
 
 Language russian

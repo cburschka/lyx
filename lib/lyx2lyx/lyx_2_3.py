@@ -261,6 +261,101 @@ def convert_beamer_article_styles(document):
         return
 
 
+def revert_bosnian(document):
+    "Set the document language to English but assure Bosnian output"
+
+    if document.language == "bosnian":
+        document.language = "english"
+        i = find_token(document.header, "\\language bosnian", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options bosnian,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options bosnian")
+
+
+def revert_friulan(document):
+    "Set the document language to English but assure Friulan output"
+
+    if document.language == "friulan":
+        document.language = "english"
+        i = find_token(document.header, "\\language friulan", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options friulan,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options friulan")
+
+
+def revert_macedonian(document):
+    "Set the document language to English but assure Macedonian output"
+
+    if document.language == "macedonian":
+        document.language = "english"
+        i = find_token(document.header, "\\language macedonian", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options macedonian,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options macedonian")
+
+
+def revert_piedmontese(document):
+    "Set the document language to English but assure Piedmontese output"
+
+    if document.language == "piedmontese":
+        document.language = "english"
+        i = find_token(document.header, "\\language piedmontese", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options piedmontese,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options piedmontese")
+
+
+def revert_romansh(document):
+    "Set the document language to English but assure Romansh output"
+
+    if document.language == "romansh":
+        document.language = "english"
+        i = find_token(document.header, "\\language romansh", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options romansh,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options romansh")
+
+
 ##
 # Conversion hub
 #
@@ -270,10 +365,12 @@ convert = [
            [509, [convert_microtype]],
            [510, [convert_dateinset]],
            [511, [convert_ibranches]],
-           [512, [convert_beamer_article_styles]]
+           [512, [convert_beamer_article_styles]],
+           [513, []]
           ]
 
 revert =  [
+           [512, [revert_bosnian, revert_friulan, revert_macedonian, revert_piedmontese, revert_romansh]],
            [511, [revert_beamer_article_styles]],
            [510, [revert_ibranches]],
            [509, []],
