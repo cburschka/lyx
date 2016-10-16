@@ -348,7 +348,7 @@ SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
- AddSize 1490
+ AddSize 1568
 SectionEnd
 
 Section /o "Româna" SecDRomanian
@@ -428,7 +428,7 @@ SectionEnd
 
 Section /o "Ukrainian" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
- AddSize 3077
+ AddSize 5298
 SectionEnd
 
 Section /o "Urdu" SecDUrdu
@@ -476,12 +476,17 @@ Section /o "Deutsch (CH)" SecTGermanCH
  AddSize 14600
 SectionEnd
 
+Section /o "English (AU)" SecTEnglishAU
+ StrCpy $ThesCodes "en_AU,$ThesCodes"
+ AddSize 21642
+SectionEnd
+
 Section /o "English (GB)" SecTEnglishGB
  StrCpy $ThesCodes "en_GB,$ThesCodes"
  AddSize 14300
 SectionEnd
 
-Section /o "English (US/AU)" SecTEnglishUSAU
+Section /o "English (US)" SecTEnglishUS
  StrCpy $ThesCodes "en_US,$ThesCodes"
  AddSize 22095
 SectionEnd
@@ -543,7 +548,7 @@ SectionEnd
 
 Section /o "Português" SecTPortuguese
  StrCpy $ThesCodes "pt_PT,$ThesCodes"
- AddSize 860
+ AddSize 3950
 SectionEnd
 
 Section /o "Româna" SecTRomanian
@@ -573,7 +578,7 @@ SectionEnd
 
 Section /o "Ukrainian" SecTUkrainian
  StrCpy $ThesCodes "uk_UA,$ThesCodes"
- AddSize 1309
+ AddSize 1339
 SectionEnd
 
 SectionGroupEnd
@@ -1262,6 +1267,13 @@ Function .onInit
    SectionSetFlags ${SecTGermanCH} $0
    SectionSetSize ${SecTGermanCH} 0
   ${endif}
+  StrCpy $Search "en_AU"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTEnglishAU} $0
+   SectionSetSize ${SecTEnglishAU} 0
+  ${endif}
   StrCpy $Search "en_GB"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1273,8 +1285,8 @@ Function .onInit
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
-   SectionSetFlags ${SecTEnglishUSAU} $0
-   SectionSetSize ${SecTEnglishUSAU} 0
+   SectionSetFlags ${SecTEnglishUS} $0
+   SectionSetSize ${SecTEnglishUS} 0
   ${endif}
   StrCpy $Search "es_ES"
   Call StrPoint

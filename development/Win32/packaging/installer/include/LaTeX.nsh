@@ -214,7 +214,6 @@ FunctionEnd
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
    MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
-   MessageBox MB_OK|MB_ICONINFORMATION "${MiKTeXInstall} --shared"
    ${if} $MultiUser.Privileges != "Admin"
    ${andif} $MultiUser.Privileges != "Power"
     # call the non-admin version
@@ -278,16 +277,11 @@ Function ConfigureMiKTeX
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
   ${endif}
-  # Belarusian support
-  ${ifnot} ${FileExists} "$PathLaTeXLocal\tex\generic\babel\belarusian.ldf"
-   SetOutPath "$PathLaTeXLocal\tex\generic\babel"
-   File "${FILES_DVIPOST_PKG}\belarusian.ldf"
-   File "${FILES_DVIPOST_PKG}\belarusian.sty"
-  ${endif}
   # Hungarian support
+  # The following seems to be unnecesary since 2015, therefore it is commented
   # this is a replacement therefore do this in every case
-  SetOutPath "$PathLaTeXLocal\tex\generic\babel"
-  File "${FILES_DVIPOST_PKG}\magyar.ldf"
+  #SetOutPath "$PathLaTeXLocal\tex\generic\babel"
+  #File "${FILES_DVIPOST_PKG}\magyar.ldf"
   
   # install a Perl interpreter for splitindex and pdfcrop
   SetOutPath "$INSTDIR"
