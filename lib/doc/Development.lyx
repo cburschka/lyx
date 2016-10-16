@@ -2027,13 +2027,17 @@ src/tex2lyx/test
 \end_layout
 
 \begin_layout Itemize
-In the appearing MSVC program right-click on the project 
+In the appearing MSVC program assure that you build the 
+\emph on
+release
+\emph default
+ version and then right-click on the project 
 \family sans
 updatetex2lyxtests
 \family default
  in the project explorer and chose 
 \family sans
-Create
+Build
 \family default
 .
 \end_layout
