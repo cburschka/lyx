@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,7 +25,6 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 1
@@ -460,30 +459,6 @@ src/version.h
 \end_layout
 
 \begin_layout Enumerate
-Update the range of file formats in the array 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-format_relation
-\end_layout
-
-\end_inset
-
- in 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-lib/lyx2lyx/LyX.py
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
 \begin_inset CommandInset label
 LatexCommand label
 name "enu:Add-an-entry"
@@ -613,7 +588,8 @@ name "enu:updatefiles"
 
 \end_inset
 
-Update LyX's .lyx documentation files to the new format.
+Test your lyx2lyx code by updating LyX's .lyx documentation files to the
+ new format.
  The developer who makes the change knows best what changes to expect when
  inspecting the resulting diff.
  Because of this, you might be able to catch a bug in the lyx2lyx code that
@@ -687,7 +663,52 @@ gen_lfuns.py
 \end_inset
 
  before being converted to the latest format.
- Finally, commit using 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Only commit file format changes in the doc files if these files are using
+ the new feature of the new file format.
+ The reason is rule
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:The-fileformat-of"
+
+\end_inset
+
+ of the documentation policies described in sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Documentation-policies"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Finally, commit using 
 \begin_inset Flex Code
 status collapsed
 
@@ -5184,6 +5205,12 @@ No.
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Documentation-policies"
+
+\end_inset
+
 Documentation policies
 \end_layout
 
@@ -5258,6 +5285,12 @@ reference "enu:If-you-are"
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:The-fileformat-of"
+
+\end_inset
+
 The fileformat of a file must not be changed unless you document a new feature
  in LyX that requires a new fileformat.
  The reason for this rule is to keep it easy for the doc maintainers to
