@@ -154,6 +154,10 @@ public:
 	bool inFloat() const { return in_float_; }
 	/// are we in a float?
 	void inFloat(bool const b) { in_float_ = b; }
+	/// are we in a deleted inset?
+	bool inDeletedInset() const { return in_deleted_inset_; }
+	/// are we in a deleted inset?
+	void inDeletedInset(bool const b) { in_deleted_inset_ = b; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
 	/// Resolve alternatives like "esint|amsmath|wasysym"
@@ -208,6 +212,8 @@ private:
 	OutputParams const & runparams_;
 	///
 	bool in_float_;
+	///
+	bool in_deleted_inset_;
 	///
 	docstring htmltitle_;
 };

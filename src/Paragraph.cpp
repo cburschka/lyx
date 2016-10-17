@@ -1439,7 +1439,9 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	InsetList::const_iterator iend = insetlist_.end();
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
+			features.inDeletedInset(owner_->isDeleted(icit->pos));
 			icit->inset->validate(features);
+			features.inDeletedInset(false);
 			if (layout_->needprotect &&
 			    icit->inset->lyxCode() == FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
