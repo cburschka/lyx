@@ -17,14 +17,12 @@ Sublabel: todo
 # Error in Japanese document if LyX-logo is preceded by foreign language
 export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 
-# Missing characters with Latin Modern Unicode:
-# 0000 NULL           (where does this come from?)
-# 212B ANGSTROM SIGN  (literal character in the source, replace with 00C5)
-# The following are due to ERT commands for characters missing in LM
-# in chapter 16.2 "Accents in Text":
-# \t   -> 0361 COMBINING DOUBLE INVERTED BREVE
-# \c e -> 0229 LATIN SMALL LETTER E WITH CEDILLA
+# Missing characters with Unicode fonts
+# (the "hidden" replacement with FreeSerif does not help and results in bad
+# typography for mathematical content):
+# For details see the file "systemfonts-Math-missingchars.lyx"
 export/doc/(|de/|es/|fr/)Math.*systemF
+export/export/latex/systemfonts-Math-missingchars.*systemF
 
 # missing character: There is no ^^A in font [lmroman12-regular]
 # and all the line down to ^^Z and beyond...
