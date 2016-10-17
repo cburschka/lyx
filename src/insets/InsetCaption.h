@@ -56,6 +56,8 @@ private:
 	void drawBackground(PainterInfo & pi, int x, int y) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
+	/// Strike out the inset when deleted.
+	bool canPaintChange(BufferView const &) const { return true; }
 	///
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
 	///
