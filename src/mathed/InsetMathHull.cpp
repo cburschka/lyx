@@ -1021,8 +1021,10 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	case hullEquation:
-		if (os.strikeoutMath())
-			os << "\\\\\\\\\n\\lyxmathsout{\\parbox{\\columnwidth}{";
+		if (os.strikeoutMath()) {
+			os << "\\\\\\mbox{}\\\\\n"
+			   << "\\lyxmathsout{\\parbox{\\columnwidth}{";
+		}
 		os << "\n";
 		os.startOuterRow();
 		if (n)
@@ -1036,8 +1038,10 @@ void InsetMathHull::header_write(WriteStream & os) const
 	case hullFlAlign:
 	case hullGather:
 	case hullMultline:
-		if (os.strikeoutMath())
-			os << "\\\\\\\\\n\\lyxmathsout{\\parbox{\\columnwidth}{";
+		if (os.strikeoutMath()) {
+			os << "\\\\\\mbox{}\\\\\n"
+			   << "\\lyxmathsout{\\parbox{\\columnwidth}{";
+		}
 		os << "\n";
 		os.startOuterRow();
 		os << "\\begin{" << hullName(type_) << star(n) << "}\n";
