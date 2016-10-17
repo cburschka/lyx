@@ -1045,7 +1045,10 @@ def checkConverterEntries():
         rc_entry = [ r'''\converter svg        png        "%%"    "",
 \converter svgz       png        "%%"    ""'''],
         path = ['', inkscape_path])
-
+    #
+    checkProg('Gnuplot', ['gnuplot'], 
+        rc_entry = [ r'''\Format gnuplot     "gp, gnuplot"    "Gnuplot"     "" "" ""  "vector"	"text/plain"
+\converter gnuplot      pdf6      "python -tt $$s/scripts/gnuplot2pdf.py $$i $$o"    ""''' ])
     #
     # gnumeric/xls/ods to tex
     checkProg('a spreadsheet -> latex converter', ['ssconvert'],

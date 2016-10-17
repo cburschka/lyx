@@ -2332,6 +2332,7 @@ dist_scripts_DATA += \
 	scripts/svg2pdftex.py \
 	scripts/svg2pstex.py \
 	scripts/fig_copy.py \
+	scripts/gnuplot2pdf.py \
 	scripts/html2latexwrapper.py \
 	scripts/include_bib.py \
 	scripts/layout2layout.py \
