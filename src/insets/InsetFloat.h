@@ -18,7 +18,7 @@
 
 namespace lyx {
 
-class TexString;
+struct TexString;
 
 
 class InsetFloatParams

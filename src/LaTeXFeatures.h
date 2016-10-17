@@ -27,7 +27,7 @@ class Buffer;
 class BufferParams;
 class InsetLayout;
 class Language;
-class TexString;
+struct TexString;
 
 /** The packages and commands that a buffer needs. This class
  *  contains a list<string>.  Each of the LaTeX packages that a buffer needs

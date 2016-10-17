@@ -46,7 +46,7 @@ class ParagraphMetrics;
 class Point;
 class TexRow;
 class Text;
-class TextEntry;
+struct TextEntry;
 class TextMetrics;
 
 enum CursorStatus {

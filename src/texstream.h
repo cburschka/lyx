@@ -18,7 +18,7 @@
 namespace lyx {
 
 class TexRow;
-class TexString;
+struct TexString;
 
 
 /** Wrapper class for odocstream.
