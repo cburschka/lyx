@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-09-17 16:00+0200\n"
-"PO-Revision-Date: 2016-09-17 14:36+0000\n"
+"POT-Creation-Date: 2016-10-17 20:29+0200\n"
+"PO-Revision-Date: 2016-10-17 18:46+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -11882,6 +11882,10 @@ msgstr "Fólia na výšku:"
 msgid "Slide*"
 msgstr "Fólia*"
 
+#: lib/layouts/seminar.layout:122
+msgid "List/TOC"
+msgstr "Listina/Obsah"
+
 #: lib/layouts/seminar.layout:132
 msgid "[List Of Slides]"
 msgstr "[Zoznam Fólií]"
@@ -14070,21 +14074,29 @@ msgstr ""
 "glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
 "linguistics.lyx v príkladoch."
 
+#: lib/layouts/linguistics.module:14
+msgid "(\\arabic{example})"
+msgstr "(\\arabic{example})"
+
+#: lib/layouts/linguistics.module:19
+msgid "(\\arabic{examplei})"
+msgstr "(\\arabic{examplei})"
+
+#: lib/layouts/linguistics.module:24
+msgid "\\theexamplei (\\alph{subexample})"
+msgstr "\\theexamplei (\\alph{subexample})"
+
+#: lib/layouts/linguistics.module:29
+msgid "\\theexamplei (\\alph{subexamplei})"
+msgstr "\\theexamplei (\\alph{subexamplei})"
+
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
 msgstr "Číslovaný príklad (viacriadkový)"
 
-#: lib/layouts/linguistics.module:27
-msgid "Example:"
-msgstr "Príklad:"
-
 #: lib/layouts/linguistics.module:38
 msgid "Numbered Examples (consecutive)"
 msgstr "Číslované príklady (postupne)"
-
-#: lib/layouts/linguistics.module:42
-msgid "Examples:"
-msgstr "Príklady:"
 
 #: lib/layouts/linguistics.module:44
 msgid "Custom Numbering|s"
@@ -14097,10 +14109,6 @@ msgstr "Prispôsobiť číslovanie"
 #: lib/layouts/linguistics.module:51
 msgid "Subexample"
 msgstr "Podpríklad"
-
-#: lib/layouts/linguistics.module:54
-msgid "Subexample:"
-msgstr "Podpríklad:"
 
 #: lib/layouts/linguistics.module:68 lib/layouts/linguistics.module:70
 msgid "Glosse"
@@ -15686,6 +15694,10 @@ msgstr "Baskitsky"
 msgid "Belarusian"
 msgstr "Bielorusky"
 
+#: lib/languages:261
+msgid "Bosnian"
+msgstr "Bosňansky"
+
 #: lib/languages:260
 msgid "Portuguese (Brazil)"
 msgstr "Portugalsky (Brazília)"
@@ -15769,6 +15781,10 @@ msgstr "Fínsky"
 #: lib/languages:468
 msgid "French"
 msgstr "Francúzsky"
+
+#: lib/languages:493
+msgid "Friulian"
+msgstr "Friulsky"
 
 #: lib/languages:484
 msgid "Galician"
@@ -15867,6 +15883,10 @@ msgstr "Srbsky (Dolnolužicky)"
 msgid "Hungarian"
 msgstr "Maďarsky"
 
+#: lib/languages:792
+msgid "Macedonian"
+msgstr "Macedónsky"
+
 #: lib/languages:773
 msgid "Marathi"
 msgstr "Máráthčinsky"
@@ -15891,6 +15911,11 @@ msgstr "Nórsky (Nynorsk)"
 msgid "Occitan"
 msgstr "Okcitánčinsky"
 
+# Nenašiel som v slovníku, pravdepodobne 'Piemont' na severozápade Talianska.
+#: lib/languages:870
+msgid "Piedmontese"
+msgstr "Piemontsky"
+
 #: lib/languages:841
 msgid "Polish"
 msgstr "Poľsky"
@@ -15902,6 +15927,10 @@ msgstr "Portugalsky"
 #: lib/languages:862
 msgid "Romanian"
 msgstr "Rumunsky"
+
+#: lib/languages:911
+msgid "Romansh"
+msgstr "Rétorománsky"
 
 #: lib/languages:872
 msgid "Russian"
@@ -17777,8 +17806,8 @@ msgid "Outline Pane|u"
 msgstr "Osnova"
 
 #: lib/ui/stdmenus.inc:339
-msgid "Source Pane|S"
-msgstr "Zdrojový Text"
+msgid "Code Preview Pane|P"
+msgstr "Náhľady Kódu"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Messages Pane|g"
@@ -18054,7 +18083,7 @@ msgstr "Vložiť Novú Vetvu…|V"
 
 #: lib/ui/stdmenus.inc:524
 msgid "Change Tracking|C"
-msgstr "Zmeniť sledovanie|s"
+msgstr "Sledovať Zmeny|S"
 
 #: lib/ui/stdmenus.inc:525
 msgid "Build Program|B"
@@ -22999,6 +23028,31 @@ msgstr "Xfig obrázok"
 msgid "An Xfig figure.\n"
 msgstr "Jeden Xfig obrázok.\n"
 
+#: lib/external_templates:293
+msgid "Inkscape"
+msgstr "Inkscape"
+
+#: lib/external_templates:294 lib/external_templates:303
+msgid "Inkscape figure"
+msgstr "Inkscape obrázok"
+
+#: lib/external_templates:296
+msgid ""
+"An Inkscape figure.\n"
+"This template should work flawlessly with Inkscape 0.48. \n"
+"For Inkscape 0.91, there is a (reported) bug in the \n"
+"LaTeX + PDF output which makes a workaround necessary, \n"
+"see Embedded Objects manual.\n"
+"Note that using this template automatically uses the \n"
+"document text in the image (like with the Xfig template).\n"
+msgstr ""
+"Obrázok inkscapu.\n"
+"Táto šablóna by mala pracovať bezchybne s inkscape 0.48. \n"
+"Pre inkscape 0.91 je (reportovaná) vada vo výstupoch pre LaTeX + PDF\n"
+"ktoré nútia robiť obchvaty, viď manuál Vložené Objekty.\n"
+"Všimnite si, že používaním tejto šablóny sa automaticky používa\n"
+"text dokumentu v obrázku (podobne ako s Xfig šablónou).\n"
+
 #: lib/external_templates:270
 msgid "ChessDiagram"
 msgstr "Šachovnica"
@@ -23519,17 +23573,25 @@ msgstr "CJK LyX 1.4.x (euc-kr)"
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:730
-msgid "PDFTEX"
-msgstr "PDFTEX"
+#: lib/configure.py:715
+msgid "pdf_tex"
+msgstr "pdf_tex"
+
+#: lib/configure.py:715
+msgid "pdf_tex|PDFTEX"
+msgstr "pdf_tex|PDFTEX"
 
 #: lib/configure.py:731
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:732
-msgid "PSTEX"
-msgstr "PSTEX"
+#: lib/configure.py:717
+msgid "ps_tex"
+msgstr "ps_tex"
+
+#: lib/configure.py:717
+msgid "ps_tex|PSTEX"
+msgstr "ps_tex|PSTEX"
 
 #: lib/configure.py:733 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Windows Metafile"
@@ -24437,13 +24499,13 @@ msgstr "Vetva už existuje"
 msgid "Inverse Search Failed"
 msgstr "Spiatočné Hľadanie Zlyhalo"
 
-#: src/BufferView.cpp:2359
+#: src/BufferView.cpp:2353
 msgid ""
 "Invalid position requested by inverse search.\n"
-"You need to update the viewed document."
+"You may need to update the viewed document."
 msgstr ""
 "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
-"Treba aktualizovať prehliadaný dokument."
+"Možno je potrebné aktualizovať prehliadaný dokument."
 
 #: src/BufferView.cpp:2744
 #, c-format
@@ -29319,9 +29381,9 @@ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznáma lišta nástrojov \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1994
-msgid "Zoom level cannot be less than 10%."
-msgstr "Stupeň lupy nesmie byť menší ako 10%."
+#: src/frontends/qt4/GuiView.cpp:2039
+msgid "Zoom level cannot be less than %1$d%."
+msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2078
 msgid "Select template file"
@@ -29705,18 +29767,14 @@ msgstr "Prehliadnite najprv dokument prosím."
 msgid "Couldn't proceed."
 msgstr "Nemôžem postupovať."
 
-#: src/frontends/qt4/GuiViewSource.cpp:398
-#: src/frontends/qt4/GuiViewSource.cpp:443
-msgid "LaTeX Source"
-msgstr "LaTeX Zdroj"
+#: src/frontends/qt4/GuiViewSource.cpp:413
+#: src/frontends/qt4/GuiViewSource.cpp:458
+msgid "Code Preview"
+msgstr "Náhľad Kódu"
 
-#: src/frontends/qt4/GuiViewSource.cpp:445
-msgid "DocBook Source"
-msgstr "DocBook Zdroj"
-
-#: src/frontends/qt4/GuiViewSource.cpp:447
-msgid "Literate Source"
-msgstr "Zdroj Dokumentácie"
+#: src/frontends/qt4/GuiViewSource.cpp:459
+msgid "%1[[preview format name]] Preview"
+msgstr "%1 Náhľad"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1570
 msgid "Close File"
@@ -31504,7 +31562,7 @@ msgstr "Konverzia grafiky a načítanie"
 
 #: src/support/debug.cpp:65
 msgid "Change tracking"
-msgstr "Zmeniť sledovanie"
+msgstr "Sledovať zmeny"
 
 #: src/support/debug.cpp:66
 msgid "External template/inset messages"
@@ -31619,6 +31677,27 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Example:"
+#~ msgstr "Príklad:"
+
+#~ msgid "Examples:"
+#~ msgstr "Príklady:"
+
+#~ msgid "Subexample:"
+#~ msgstr "Podpríklad:"
+
+#~ msgid "Source Pane|S"
+#~ msgstr "Zdrojový Text"
+
+#~ msgid "LaTeX Source"
+#~ msgstr "LaTeX Zdroj"
+
+#~ msgid "DocBook Source"
+#~ msgstr "DocBook Zdroj"
+
+#~ msgid "Literate Source"
+#~ msgstr "Zdroj Dokumentácie"
 
 #~ msgid "La&bels in:"
 #~ msgstr "&Značky v:"
@@ -35285,3 +35364,13 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Group labels by prefix (e.g. \"sec:\")"
 #~ msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
+
+#~ msgid ""
+#~ "Invalid position requested by inverse search.\n"
+#~ "You need to update the viewed document."
+#~ msgstr ""
+#~ "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
+#~ "Treba aktualizovať prehliadaný dokument."
+
+#~ msgid "Zoom level cannot be less than 10%."
+#~ msgstr "Stupeň lupy nesmie byť menší ako 10%."
