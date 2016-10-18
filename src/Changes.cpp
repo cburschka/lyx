@@ -459,7 +459,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 		if (os.afterParbreak())
 			str += from_ascii("\\\\\\noindent\n");
 		else
-			str += from_ascii("\\\\\\mbox{}\\\\\n");
+			str += from_ascii("\\\\\\\\\n");
 	}
 
 	os << str;
