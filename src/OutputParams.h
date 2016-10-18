@@ -185,6 +185,11 @@ public:
 	*/
 	std::shared_ptr<ExportData> exportdata;
 
+	/** Whether we are inside a display math inset.
+	 *  Needed to correctly strike out deleted math in change tracking.
+	 */
+	mutable bool inDisplayMath;
+
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal
 	 *  may only write the usual output and must not attempt to do

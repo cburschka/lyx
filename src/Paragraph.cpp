@@ -53,6 +53,8 @@
 #include "insets/InsetLabel.h"
 #include "insets/InsetSpecialChar.h"
 
+#include "mathed/InsetMathHull.h"
+
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
@@ -2398,6 +2400,24 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			basefont = getLayoutFont(bparams, outerfont);
 			running_font = basefont;
+
+			// Check whether a display math inset follows
+			if (d->text_[i] == META_INSET
+			    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
+				InsetMath const * im = getInset(i)->asInsetMath();
+				if (im && im->asHullInset()) {
+					switch (im->asHullInset()->getType()) {
+					case hullEquation:
+					case hullEqnArray:
+					case hullAlign:
+					case hullFlAlign:
+					case hullGather:
+					case hullMultline:
+						runparams.inDisplayMath = true;
+						break;
+					}
+				}
+			}
 
 			column += Changes::latexMarkChange(os, bparams, runningChange,
 							   change, runparams);
