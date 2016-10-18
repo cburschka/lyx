@@ -206,7 +206,7 @@ static docstring const changetracking_tikz_math_sout_def = from_ascii(
 	"%% Strike out display math with tikz\n"
 	"\\usepackage{tikz}\n"
 	"\\usetikzlibrary{calc}\n"
-	"\\newcommand{\\lyxmathsout}[1]{\n"
+	"\\newcommand{\\lyxmathsout}[1]{%\n"
 	"  \\tikz[baseline=(math.base)]{\n"
 	"    \\node[inner sep=0pt,outer sep=0pt](math){#1};\n"
 	"    \\draw($(math.south west)+(2em,.5em)$)--($(math.north east)-(2em,.5em)$);\n"
