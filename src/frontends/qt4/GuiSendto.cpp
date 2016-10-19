@@ -71,17 +71,17 @@ void GuiSendTo::changed_adaptor()
 
 void GuiSendTo::updateContents()
 {
-	all_formats_ = buffer().params().exportableFormats(false);
-	sort(all_formats_.begin(), all_formats_.end(), Format::formatSorter);
+	vector<Format const *> const & all_formats = 
+	    buffer().params().exportableFormats(false);
 	// Save the current selection if any
 	Format const * current_format = nullptr;
 	int const line = formatLW->currentRow();
-	if (line >= 0 && static_cast<unsigned int>(line) < all_formats_.size()
+	if (line >= 0 && static_cast<unsigned int>(line) < all_formats.size()
 	    && formatLW->selectedItems().size() > 0)
-		current_format = all_formats_[line];
+		current_format = all_formats[line];
 	// Reset the list widget
 	formatLW->clear();
-	for (Format const * f : all_formats_) {
+	for (Format const * f : all_formats) {
 		formatLW->addItem(toqstr(translateIfPossible(f->prettyname())));
 		// Restore the selection
 		if (current_format && f->prettyname() == current_format->prettyname())
@@ -101,7 +101,9 @@ void GuiSendTo::applyView()
 	if (line < 0 || line > formatLW->count())
 		return;
 
-	format_ = all_formats_[line];
+	vector<Format const *> const & all_formats = 
+	    buffer().params().exportableFormats(false);
+	format_ = all_formats[line];
 	command_ = command;
 }
 

@@ -47,8 +47,6 @@ private:
 	void updateContents();
 
 	///
-	std::vector<Format const *> all_formats_;
-	///
 	bool initialiseParams(std::string const & data);
 	///
 	void paramsToDialog(Format const * format, QString const & command);
