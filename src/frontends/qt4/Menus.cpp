@@ -323,8 +323,6 @@ public:
 	///
 	size_t size() const { return items_.size(); }
 	///
-	MenuItem const & operator[](size_t) const;
-	///
 	const_iterator begin() const { return items_.begin(); }
 	///
 	const_iterator end() const { return items_.end(); }
@@ -683,12 +681,6 @@ void MenuDefinition::read(Lexer & lex)
 		}
 	}
 	lex.popTable();
-}
-
-
-MenuItem const & MenuDefinition::operator[](size_type i) const
-{
-	return items_[i];
 }
 
 

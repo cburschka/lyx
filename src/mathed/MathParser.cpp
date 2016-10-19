@@ -400,8 +400,6 @@ public:
 	bool parse1(InsetMathGrid & grid, unsigned flags, mode_type mode,
 		bool numbered);
 	///
-	MathData parse(unsigned flags, mode_type mode);
-	///
 	int lineno() const { return lineno_; }
 	///
 	void putback();
@@ -433,8 +431,6 @@ private:
 	void skipSpaceTokens(idocstream & is, char_type c);
 	///
 	void push_back(Token const & t);
-	///
-	void pop_back();
 	///
 	Token const & prevToken() const;
 	///
@@ -497,12 +493,6 @@ Parser::Parser(docstring const & str, parse_mode mode, Buffer * buf)
 void Parser::push_back(Token const & t)
 {
 	tokens_.push_back(t);
-}
-
-
-void Parser::pop_back()
-{
-	tokens_.pop_back();
 }
 
 
@@ -782,14 +772,6 @@ docstring Parser::parse_verbatim_item()
 		}
 	}
 	return res;
-}
-
-
-MathData Parser::parse(unsigned flags, mode_type mode)
-{
-	MathData ar(buffer_);
-	parse(ar, flags, mode);
-	return ar;
 }
 
 
