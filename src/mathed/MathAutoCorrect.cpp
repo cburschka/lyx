@@ -75,13 +75,6 @@ bool Correction::read(idocstream & is)
 }
 
 
-void Correction::write(odocstream & os) const
-{
-	os << "from: '" << from1_ << "' and '" << from2_
-	   << "' to '" << to_ << '\'' << endl;
-}
-
-
 bool Correction::correct(MathAtom & at, char_type c) const
 {
 	//LYXERR(Debug::MATHED,
@@ -98,6 +91,13 @@ bool Correction::correct(MathAtom & at, char_type c) const
 
 
 #if 0
+void Correction::write(odocstream & os) const
+{
+	os << "from: '" << from1_ << "' and '" << from2_
+	   << "' to '" << to_ << '\'' << endl;
+}
+
+
 idocstream & operator>>(idocstream & is, Correction & corr)
 {
 	corr.read(is);
