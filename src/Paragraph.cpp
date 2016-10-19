@@ -2405,18 +2405,9 @@ void Paragraph::latex(BufferParams const & bparams,
 			if (d->text_[i] == META_INSET
 			    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
 				InsetMath const * im = getInset(i)->asInsetMath();
-				if (im && im->asHullInset()) {
-					switch (im->asHullInset()->getType()) {
-					case hullEquation:
-					case hullEqnArray:
-					case hullAlign:
-					case hullFlAlign:
-					case hullGather:
-					case hullMultline:
-						runparams.inDisplayMath = true;
-						break;
-					}
-				}
+				if (im && im->asHullInset()
+				    && im->asHullInset()->outerDisplay())
+					runparams.inDisplayMath = true;
 			}
 
 			column += Changes::latexMarkChange(os, bparams, runningChange,

@@ -898,6 +898,29 @@ bool InsetMathHull::ams() const
 }
 
 
+bool InsetMathHull::outerDisplay() const
+{
+	switch (type_) {
+	case hullEquation:
+	case hullEqnArray:
+	case hullAlign:
+	case hullFlAlign:
+	case hullGather:
+	case hullMultline:
+		return true;
+	case hullNone:
+	case hullSimple:
+	case hullAlignAt:
+	case hullXAlignAt:
+	case hullXXAlignAt:
+	case hullUnknown:
+	case hullRegexp:
+		break;
+	}
+	return false;
+}
+
+
 Inset::DisplayType InsetMathHull::display() const
 {
 	switch (type_) {
@@ -953,26 +976,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 		if (ams())
 			features.require("amsmath");
 
-		switch(type_) {
-		case hullNone:
-		case hullSimple:
-		case hullAlignAt:
-		case hullXAlignAt:
-		case hullXXAlignAt:
-		case hullUnknown:
-			break;
-
-		case hullEquation:
-		case hullEqnArray:
-		case hullAlign:
-		case hullFlAlign:
-		case hullGather:
-		case hullMultline:
-			if (features.inDeletedInset() && !features.mustProvide("ct-dvipost"))
-				features.require("ct-tikz-math-sout");
-			break;
-
-		case hullRegexp:
+		if (type_ == hullRegexp) {
 			features.require("color");
 			docstring frcol = from_utf8(lcolor.getLaTeXName(Color_regexpframe));
 			docstring bgcol = from_ascii("white");
@@ -982,7 +986,9 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 				+ bgcol + "}{\\ensuremath{\\mathtt{#1}}}}");
 			features.addPreambleSnippet(
 				from_ascii("\\newcommand{\\endregexp}{}"));
-			break;
+		} else if (outerDisplay() && features.inDeletedInset()
+			   && !features.mustProvide("ct-dvipost")) {
+				features.require("ct-tikz-math-sout");
 		}
 
 		// Validation is necessary only if not using AMS math.
