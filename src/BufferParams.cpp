@@ -355,11 +355,17 @@ public:
 	VSpace defskip;
 	PDFOptions pdfoptions;
 	LayoutFileIndex baseClass_;
+	/// Caching for exportableFormats, which seems to be slow.
+	std::vector<Format const *> exportableFormatList;
+	std::vector<Format const *> viewableFormatList;
+	bool isViewCacheValid;
+	bool isExportCacheValid;
 };
 
 
 BufferParams::Impl::Impl()
-	: defskip(VSpace::MEDSKIP), baseClass_(string(""))
+	: defskip(VSpace::MEDSKIP), baseClass_(string("")),
+	  isViewCacheValid(false), isExportCacheValid(false)
 {
 	// set initial author
 	// FIXME UNICODE
@@ -2251,6 +2257,7 @@ void BufferParams::setDocumentClass(DocumentClassConstPtr tc)
 {
 	// evil, but this function is evil
 	doc_class_ = const_pointer_cast<DocumentClass>(tc);
+	invalidateConverterCache();
 }
 
 
@@ -2309,6 +2316,7 @@ void BufferParams::makeDocumentClass(bool const clone)
 	if (!baseClass())
 		return;
 
+	invalidateConverterCache();
 	LayoutModuleList mods;
 	LayoutModuleList::iterator it = layout_modules_.begin();
 	LayoutModuleList::iterator en = layout_modules_.end();
@@ -2395,8 +2403,15 @@ bool BufferParams::isExportable(string const & format) const
 }
 
 
-vector<Format const *> BufferParams::exportableFormats(bool only_viewable) const
+vector<Format const *> const & BufferParams::exportableFormats(bool only_viewable) const
 {
+	vector<Format const *> & cached = only_viewable ?
+			pimpl_->viewableFormatList : pimpl_->exportableFormatList;
+	bool & valid = only_viewable ? 
+			pimpl_->isViewCacheValid : pimpl_->isExportCacheValid;
+	if (valid)
+		return cached;
+
 	vector<string> const backs = backends();
 	set<string> excludes;
 	if (useNonTeXFonts) {
@@ -2411,15 +2426,16 @@ vector<Format const *> BufferParams::exportableFormats(bool only_viewable) const
 			theConverters().getReachable(*it, only_viewable, false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
-	return result;
+	cached = result;
+	valid = true;
+	return cached;
 }
 
 
 bool BufferParams::isExportableFormat(string const & format) const
 {
 	typedef vector<Format const *> Formats;
-	Formats formats;
-	formats = exportableFormats(true);
+	Formats const & formats = exportableFormats(true);
 	Formats::const_iterator fit = formats.begin();
 	Formats::const_iterator end = formats.end();
 	for (; fit != end ; ++fit) {
@@ -2516,7 +2532,7 @@ string BufferParams::getDefaultOutputFormat() const
 		return default_output_format;
 	if (isDocBook()
 	    || encoding().package() == Encoding::japanese) {
-		vector<Format const *> const formats = exportableFormats(true);
+		vector<Format const *> const & formats = exportableFormats(true);
 		if (formats.empty())
 			return string();
 		// return the first we find
@@ -3282,6 +3298,12 @@ vector<CitationStyle> BufferParams::citeStyles() const
 	if (styles.empty())
 		styles.push_back(default_style);
 	return styles;
+}
+
+void BufferParams::invalidateConverterCache() const
+{
+	pimpl_->isExportCacheValid = false;
+	pimpl_->isViewCacheValid = false;
 }
 
 } // namespace lyx

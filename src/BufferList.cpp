@@ -249,6 +249,15 @@ void BufferList::emergencyWriteAll()
 }
 
 
+void BufferList::invalidateConverterCache() const
+{
+	BufferStorage::const_iterator it = bstore.begin();
+	BufferStorage::const_iterator const en = bstore.end();
+	for (; it != en; ++it)
+		(*it)->params().invalidateConverterCache();
+}
+
+
 bool BufferList::exists(FileName const & fname) const
 {
 	return getBuffer(fname) != 0;

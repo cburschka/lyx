@@ -180,7 +180,7 @@ public:
 	///
 	bool isExportable(std::string const & format) const;
 	///
-	std::vector<Format const *> exportableFormats(bool only_viewable) const;
+	std::vector<const Format *> const & exportableFormats(bool only_viewable) const;
 	///
 	bool isExportableFormat(std::string const & format) const;
 	/// the backends appropriate for use with this document.
@@ -505,6 +505,8 @@ public:
 	/// Return true if language could be set to lang,
 	/// otherwise return false and do not change language
 	bool setLanguage(std::string const & lang);
+	///
+	void invalidateConverterCache() const;
 
 private:
 	///
@@ -553,7 +555,7 @@ private:
 	 *  mathdots, stackrel, stmaryrd and undertilde.
 	 */
 	PackageMap use_packages;
-
+	
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.
 	 */
