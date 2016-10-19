@@ -399,6 +399,8 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathBox.cpp \
 	mathed/InsetMathBrace.cpp \
 	mathed/InsetMath.cpp \
+	mathed/InsetMathCancel.cpp \
+	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathCases.cpp \
 	mathed/InsetMathChar.cpp \
 	mathed/InsetMathColor.cpp \
@@ -420,8 +422,6 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathKern.cpp \
 	mathed/InsetMathLefteqn.cpp \
 	mathed/InsetMathLim.cpp \
-	mathed/InsetMathCancel.cpp \
-	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathMatrix.cpp \
 	mathed/InsetMathNest.cpp \
 	mathed/InsetMathNumber.cpp \
