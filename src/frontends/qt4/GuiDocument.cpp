@@ -2561,8 +2561,8 @@ void GuiDocument::updateDefaultFormat()
 	outputModule->defaultFormatCO->clear();
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
-	vector<Format const *> formats = param_copy.exportableFormats(true);
-	sort(formats.begin(), formats.end(), Format::formatSorter);
+	vector<Format const *> const & formats =
+				param_copy.exportableFormats(true);
 	for (Format const * f : formats)
 		outputModule->defaultFormatCO->addItem
 			(toqstr(translateIfPossible(f->prettyname())),
