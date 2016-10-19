@@ -1180,12 +1180,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 
 	if (buf.lyxvc().inUse()) {
 		version_control_->show();
-		if (buf.lyxvc().locking())
-			version_control_->setText(
-				toqstr(bformat(_("%1$s lock"),
-				               from_ascii(buf.lyxvc().vcname()))));
-		else
-			version_control_->setText(toqstr(buf.lyxvc().vcname()));
+		version_control_->setText(toqstr(buf.lyxvc().vcstatus()));
 	} else
 		version_control_->hide();
 }

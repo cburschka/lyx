@@ -47,7 +47,6 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/FileName.h"
 #include "support/lassert.h"
 #include "support/TempFile.h"
 
@@ -246,11 +245,12 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), screen_(0), buffer_view_(0), read_only_(false), lyx_view_(0),
-cursor_visible_(false), cursor_(0),
-need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
-pixel_ratio_(1.0),
-completer_(new GuiCompleter(p, p)), dialog_mode_(false)
+: p(parent), screen_(0), buffer_view_(0), lyx_view_(0),
+  cursor_visible_(false), cursor_(0),
+  need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
+  pixel_ratio_(1.0),
+  completer_(new GuiCompleter(p, p)), dialog_mode_(false),
+  read_only_(false), clean_(true)
 {
 }
 
@@ -1373,8 +1373,15 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 
 void GuiWorkArea::updateWindowTitle()
 {
-	d->lyx_view_->updateWindowTitle(this);
-	titleChanged(this);
+	Buffer const & buf = bufferView().buffer();
+	if (buf.fileName() != d->file_name_ || buf.isReadonly() != d->read_only_
+	    || buf.lyxvc().vcstatus() != d->vc_status_ || buf.isClean() != d->clean_) {
+		d->file_name_ = buf.fileName();
+		d->read_only_ = buf.isReadonly();
+		d->vc_status_ = buf.lyxvc().vcstatus();
+		d->clean_ = buf.isClean();
+		titleChanged(this);
+	}
 }
 
 

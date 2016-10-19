@@ -15,6 +15,7 @@
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
+#include "support/FileName.h"
 #include "support/Timeout.h"
 
 #include <QMouseEvent>
@@ -150,8 +151,6 @@ struct GuiWorkArea::Private
 	QPaintDevice * screen_;
 	///
 	BufferView * buffer_view_;
-	/// Read only Buffer status cache.
-	bool read_only_;
 	///
 	GuiView * lyx_view_;
 	/// is the cursor currently displayed
@@ -187,6 +186,17 @@ struct GuiWorkArea::Private
 	/// when the menu is actually shown (after releasing on Windows)
 	/// and after the DEPM has done its job.
 	std::string context_menu_name_;
+
+	/// stuff related to window title
+	///
+	support::FileName file_name_;
+	///
+	bool read_only_;
+	///
+	docstring vc_status_;
+	///
+	bool clean_;
+
 }; // GuiWorkArea
 
 } // namespace frontend

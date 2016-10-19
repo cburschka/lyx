@@ -14,6 +14,8 @@
 
 #include <boost/scoped_ptr.hpp>
 
+#include "support/docstring.h"
+
 #include <string>
 
 
@@ -50,8 +52,8 @@ public:
 	LyXVC();
 	///
 	~LyXVC();
-	/// Name of the underlying VCS
-	std::string vcname() const;
+	/// Status of the underlying VCS
+	docstring vcstatus() const;
 	/// Is \p fn under version control?
 	static bool fileInVC(support::FileName const & fn);
 	/** Not a good name perhaps. This function should be called whenever

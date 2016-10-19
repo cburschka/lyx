@@ -46,9 +46,14 @@ LyXVC::~LyXVC()
 {}
 
 
-string LyXVC::vcname() const
+docstring LyXVC::vcstatus() const
 {
-	return vcs->vcname();
+	if (!vcs)
+		return docstring();
+	if (locking())
+		return bformat(_("%1$s lock"), from_ascii(vcs->vcname()));
+	else
+		return from_ascii(vcs->vcname());
 }
 
 
