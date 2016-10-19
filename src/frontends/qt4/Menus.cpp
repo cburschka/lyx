@@ -1026,8 +1026,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 	if (!buf && kind != MenuItem::ImportFormats)
 		return;
 
-	typedef vector<Format const *> Formats;
-	Formats formats;
+	FormatList formats;
 	FuncCode action = LFUN_NOACTION;
 
 	switch (kind) {

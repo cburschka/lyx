@@ -194,7 +194,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		case TO_IMPORTFORMATS:
 		case TO_UPDATEFORMATS:
 		case TO_VIEWFORMATS: {
-			vector<Format const *> formats = (code == TO_IMPORTFORMATS) ?
+			FormatList formats = (code == TO_IMPORTFORMATS) ?
 				theConverters().importableFormats() :
 				theConverters().exportableFormats(true);
 			sort(formats.begin(), formats.end());

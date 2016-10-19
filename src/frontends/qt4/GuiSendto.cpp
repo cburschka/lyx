@@ -16,6 +16,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Converter.h"
 #include "Format.h"
 #include "FuncRequest.h"
 
@@ -71,7 +72,7 @@ void GuiSendTo::changed_adaptor()
 
 void GuiSendTo::updateContents()
 {
-	vector<Format const *> const & all_formats = 
+	FormatList const & all_formats = 
 	    buffer().params().exportableFormats(false);
 	// Save the current selection if any
 	Format const * current_format = nullptr;
@@ -101,7 +102,7 @@ void GuiSendTo::applyView()
 	if (line < 0 || line > formatLW->count())
 		return;
 
-	vector<Format const *> const & all_formats = 
+	FormatList const & all_formats = 
 	    buffer().params().exportableFormats(false);
 	format_ = all_formats[line];
 	command_ = command;

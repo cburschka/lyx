@@ -31,6 +31,7 @@
 #include "BufferView.h"
 #include "Color.h"
 #include "ColorCache.h"
+#include "Converter.h"
 #include "Cursor.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
@@ -2561,7 +2562,7 @@ void GuiDocument::updateDefaultFormat()
 	outputModule->defaultFormatCO->clear();
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
-	vector<Format const *> const & formats =
+	FormatList const & formats =
 				param_copy.exportableFormats(true);
 	for (Format const * f : formats)
 		outputModule->defaultFormatCO->addItem

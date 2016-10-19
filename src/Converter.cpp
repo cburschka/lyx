@@ -717,14 +717,13 @@ void Converters::buildGraph()
 }
 
 
-vector<Format const *> const
-Converters::intToFormat(vector<int> const & input)
+FormatList const Converters::intToFormat(vector<int> const & input)
 {
-	vector<Format const *> result(input.size());
+	FormatList result(input.size());
 
 	vector<int>::const_iterator it = input.begin();
 	vector<int>::const_iterator const end = input.end();
-	vector<Format const *>::iterator rit = result.begin();
+	FormatList::iterator rit = result.begin();
 	for ( ; it != end; ++it, ++rit) {
 		*rit = &formats.get(*it);
 	}
@@ -732,8 +731,8 @@ Converters::intToFormat(vector<int> const & input)
 }
 
 
-vector<Format const *> const
-Converters::getReachableTo(string const & target, bool const clear_visited)
+FormatList const Converters::getReachableTo(string const & target, 
+		bool const clear_visited)
 {
 	vector<int> const & reachablesto =
 		G_.getReachableTo(formats.getNumber(target), clear_visited);
@@ -742,9 +741,9 @@ Converters::getReachableTo(string const & target, bool const clear_visited)
 }
 
 
-vector<Format const *> const
-Converters::getReachable(string const & from, bool const only_viewable,
-			 bool const clear_visited, set<string> const & excludes)
+FormatList const Converters::getReachable(string const & from, 
+		bool const only_viewable, bool const clear_visited, 
+		set<string> const & excludes)
 {
 	set<int> excluded_numbers;
 
@@ -777,29 +776,28 @@ Graph::EdgePath Converters::getPath(string const & from, string const & to)
 }
 
 
-vector<Format const *> Converters::importableFormats()
+FormatList Converters::importableFormats()
 {
 	vector<string> l = loaders();
-	vector<Format const *> result = getReachableTo(l[0], true);
+	FormatList result = getReachableTo(l[0], true);
 	vector<string>::const_iterator it = l.begin() + 1;
 	vector<string>::const_iterator en = l.end();
 	for (; it != en; ++it) {
-		vector<Format const *> r = getReachableTo(*it, false);
+		FormatList r = getReachableTo(*it, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;
 }
 
 
-vector<Format const *> Converters::exportableFormats(bool only_viewable)
+FormatList Converters::exportableFormats(bool only_viewable)
 {
 	vector<string> s = savers();
-	vector<Format const *> result = getReachable(s[0], only_viewable, true);
+	FormatList result = getReachable(s[0], only_viewable, true);
 	vector<string>::const_iterator it = s.begin() + 1;
 	vector<string>::const_iterator en = s.end();
 	for (; it != en; ++it) {
-		vector<Format const *> r =
-			getReachable(*it, only_viewable, false);
+		 FormatList r = getReachable(*it, only_viewable, false);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	return result;
