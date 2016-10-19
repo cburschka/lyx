@@ -31,6 +31,8 @@ class Format;
 class Formats;
 class OutputParams;
 
+typedef std::vector<Format const *> FormatList;
+
 
 ///
 class Converter {
@@ -132,16 +134,16 @@ public:
 	//
 	void erase(std::string const & from, std::string const & to);
 	///
-	std::vector<Format const *> const
-	getReachableTo(std::string const & target, bool clear_visited);
+	FormatList const 
+		getReachableTo(std::string const & target, bool clear_visited);
 	///
-	std::vector<Format const *> const
-	getReachable(std::string const & from, bool only_viewable,
-	       bool clear_visited,
-	       std::set<std::string> const & excludes = std::set<std::string>());
+	FormatList const
+		getReachable(std::string const & from, bool only_viewable,
+		    bool clear_visited,
+		    std::set<std::string> const & excludes = std::set<std::string>());
 
-	std::vector<Format const *> importableFormats();
-	std::vector<Format const *> exportableFormats(bool only_viewable);
+	FormatList importableFormats();
+	FormatList exportableFormats(bool only_viewable);
 
 	std::vector<std::string> loaders() const;
 	std::vector<std::string> savers() const;
@@ -182,7 +184,7 @@ public:
 	void buildGraph();
 private:
 	///
-	std::vector<Format const *> const
+	FormatList const
 	intToFormat(std::vector<int> const & input);
 	///
 	bool scanLog(Buffer const & buffer, std::string const & command,

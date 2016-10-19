@@ -354,9 +354,8 @@ public:
 	VSpace defskip;
 	PDFOptions pdfoptions;
 	LayoutFileIndex baseClass_;
-	/// Caching for exportableFormats, which seems to be slow.
-	std::vector<Format const *> exportableFormatList;
-	std::vector<Format const *> viewableFormatList;
+	FormatList exportableFormatList;
+	FormatList viewableFormatList;
 	bool isViewCacheValid;
 	bool isExportCacheValid;
 };
@@ -2413,9 +2412,9 @@ bool BufferParams::isExportable(string const & format) const
 }
 
 
-vector<Format const *> const & BufferParams::exportableFormats(bool only_viewable) const
+FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 {
-	vector<Format const *> & cached = only_viewable ?
+	FormatList & cached = only_viewable ?
 			pimpl_->viewableFormatList : pimpl_->exportableFormatList;
 	bool & valid = only_viewable ? 
 			pimpl_->isViewCacheValid : pimpl_->isExportCacheValid;
@@ -2428,12 +2427,12 @@ vector<Format const *> const & BufferParams::exportableFormats(bool only_viewabl
 		excludes.insert("latex");
 		excludes.insert("pdflatex");
 	}
-	vector<Format const *> result =
+	FormatList result =
 		theConverters().getReachable(backs[0], only_viewable, true, excludes);
 	for (vector<string>::const_iterator it = backs.begin() + 1;
 	     it != backs.end(); ++it) {
-		vector<Format const *>  r =
-			theConverters().getReachable(*it, only_viewable, false, excludes);
+		FormatList r = theConverters().getReachable(*it, only_viewable, 
+				false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
 	sort(result.begin(), result.end(), Format::formatSorter);
@@ -2445,10 +2444,9 @@ vector<Format const *> const & BufferParams::exportableFormats(bool only_viewabl
 
 bool BufferParams::isExportableFormat(string const & format) const
 {
-	typedef vector<Format const *> Formats;
-	Formats const & formats = exportableFormats(true);
-	Formats::const_iterator fit = formats.begin();
-	Formats::const_iterator end = formats.end();
+	FormatList const & formats = exportableFormats(true);
+	FormatList::const_iterator fit = formats.begin();
+	FormatList::const_iterator end = formats.end();
 	for (; fit != end ; ++fit) {
 		if ((*fit)->name() == format)
 			return true;
@@ -2543,7 +2541,7 @@ string BufferParams::getDefaultOutputFormat() const
 		return default_output_format;
 	if (isDocBook()
 	    || encoding().package() == Encoding::japanese) {
-		vector<Format const *> const & formats = exportableFormats(true);
+		FormatList const & formats = exportableFormats(true);
 		if (formats.empty())
 			return string();
 		// return the first we find

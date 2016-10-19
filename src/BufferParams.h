@@ -554,7 +554,7 @@ private:
 	 *  mathdots, stackrel, stmaryrd and undertilde.
 	 */
 	PackageMap use_packages;
-	
+
 	/** Use the Pimpl idiom to hide those member variables that would otherwise
 	 *  drag in other header files.
 	 */

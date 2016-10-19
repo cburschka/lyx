@@ -1030,8 +1030,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 	if (!buf && kind != MenuItem::ImportFormats)
 		return;
 
-	typedef vector<Format const *> Formats;
-	Formats formats;
+	FormatList formats;
 	FuncCode action = LFUN_NOACTION;
 
 	switch (kind) {
@@ -1067,8 +1066,8 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 	MenuItem item(MenuItem::Submenu, smenue);
 	item.setSubmenu(MenuDefinition(smenue));
 
-	Formats::const_iterator fit = formats.begin();
-	Formats::const_iterator end = formats.end();
+	FormatList::const_iterator fit = formats.begin();
+	FormatList::const_iterator end = formats.end();
 	for (; fit != end ; ++fit) {
 		if ((*fit)->dummy())
 			continue;

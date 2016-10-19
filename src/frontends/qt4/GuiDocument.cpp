@@ -31,6 +31,7 @@
 #include "BufferView.h"
 #include "Color.h"
 #include "ColorCache.h"
+#include "Converter.h"
 #include "Cursor.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
@@ -2545,9 +2546,9 @@ void GuiDocument::updateDefaultFormat()
 	outputModule->defaultFormatCO->clear();
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
-	vector<Format const *> const & formats = param_copy.exportableFormats(true);
-	vector<Format const *>::const_iterator cit = formats.begin();
-	vector<Format const *>::const_iterator end = formats.end();
+	FormatList const & formats = param_copy.exportableFormats(true);
+	FormatList::const_iterator cit = formats.begin();
+	FormatList::const_iterator end = formats.end();
 	for (; cit != end; ++cit)
 		outputModule->defaultFormatCO->addItem(qt_((*cit)->prettyname()),
 				QVariant(toqstr((*cit)->name())));

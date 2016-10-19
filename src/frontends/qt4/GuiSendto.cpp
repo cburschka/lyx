@@ -16,6 +16,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "Converter.h"
 #include "Format.h"
 #include "FuncRequest.h"
 
