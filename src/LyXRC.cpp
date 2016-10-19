@@ -18,6 +18,7 @@
 
 #include "LyXRC.h"
 
+#include "BufferList.h"
 #include "ColorSet.h"
 #include "Converter.h"
 #include "FontEnums.h"
@@ -1226,6 +1227,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 	/// Update converters data-structures
 	theConverters().update(formats);
 	theConverters().buildGraph();
+	theBufferList().invalidateConverterCache();
 
 	return ReadOK;
 }

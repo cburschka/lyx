@@ -3412,7 +3412,8 @@ void GuiPreferences::dispatchParams()
 	theConverters() = converters_;
 	theConverters().update(lyx::formats);
 	theConverters().buildGraph();
-
+	theBufferList().invalidateConverterCache();
+	
 	theMovers() = movers_;
 
 	vector<string>::const_iterator it = colors_.begin();

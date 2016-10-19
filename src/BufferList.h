@@ -124,6 +124,8 @@ public:
 	void emergencyWriteAll();
 	/// FIXME
 	void updateIncludedTeXfiles(std::string const &, OutputParams const &);
+	///
+	void invalidateConverterCache() const;
 	//@}
 
 private:
