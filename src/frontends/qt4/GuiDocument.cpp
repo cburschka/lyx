@@ -2545,11 +2545,9 @@ void GuiDocument::updateDefaultFormat()
 	outputModule->defaultFormatCO->clear();
 	outputModule->defaultFormatCO->addItem(qt_("Default"),
 				QVariant(QString("default")));
-	typedef vector<Format const *> Formats;
-	Formats formats = param_copy.exportableFormats(true);
-	sort(formats.begin(), formats.end(), Format::formatSorter);
-	Formats::const_iterator cit = formats.begin();
-	Formats::const_iterator end = formats.end();
+	vector<Format const *> const & formats = param_copy.exportableFormats(true);
+	vector<Format const *>::const_iterator cit = formats.begin();
+	vector<Format const *>::const_iterator end = formats.end();
 	for (; cit != end; ++cit)
 		outputModule->defaultFormatCO->addItem(qt_((*cit)->prettyname()),
 				QVariant(toqstr((*cit)->name())));

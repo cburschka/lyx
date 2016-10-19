@@ -2436,6 +2436,7 @@ vector<Format const *> const & BufferParams::exportableFormats(bool only_viewabl
 			theConverters().getReachable(*it, only_viewable, false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
+	sort(result.begin(), result.end(), Format::formatSorter);
 	cached = result;
 	valid = true;
 	return cached;
