@@ -1179,14 +1179,22 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 	if (file_format != LYX_FORMAT) {
 		FileName tmpFile;
 		ReadStatus ret_clf = convertLyXFormat(fn, tmpFile, file_format);
-		if (ret_clf != ReadSuccess)
-			return ret_clf;
-		ret_clf = readFile(tmpFile);
 		if (ret_clf == ReadSuccess) {
-			d->file_format = file_format;
-			d->need_format_backup = true;
+			ret_clf = readFile(tmpFile);
+			if (ret_clf == ReadSuccess) {
+				d->file_format = file_format;
+				d->need_format_backup = true;
+				return ret_clf;
+			}
 		}
-		return ret_clf;
+		if (ret_clf != ReadSuccess) {
+			int const ret = Alert::prompt(_("Document format failure"),
+				_("Fileformat unrecognized by lyx2lyx. Trying to load anyway, "
+				  "but some contents might be lost and LyX might crash!\n"
+				  "Would you like to proceed ?"), 0, 1, _("&No"), _("&Yes"));
+			if (ret == 0)
+				return ret_clf;
+		}
 	}
 
 	// FIXME: InsetInfo needs to know whether the file is under VCS
