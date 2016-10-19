@@ -1435,7 +1435,7 @@ bool SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 		    + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		    FileName(owner_->filePath()));
 
-	// Lock error messages go unfortunately on stderr and are unreachible this way.
+	// Lock error messages go unfortunately on stderr and are unreachable this way.
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
 	string line;
 	while (ifs) {
