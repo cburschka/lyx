@@ -297,36 +297,36 @@ string process_keyval_opt(vector<string> & options, string name)
  * FIXME: support spelling=old for german variants (german vs. ngerman LyX names etc)
  */
 const char * const Preamble::polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "tibetan", "urdu",
-"brazil", "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton",
-"french", "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar",
-"slovak", "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish", "austrian",
-"american", "ancient", "australian", "british", "monotonic", "newzealand",
-"polytonic", 0};
+"albanian", "american", "ancient", "arabic", "armenian",  "australian",
+"bahasai", "bahasam", "basque", "bengali", "brazil", "brazilian", "breton", "british", "bulgarian",
+"catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"english", "esperanto", "estonian", "farsi", "finnish", "french", "galician", "greek", "monotonic",
+"hebrew", "hindi", "icelandic", "interlingua", "irish", "italian",
+"lao", "latin", "latvian", "lithuanian", "lsorbian", "magyar", "malayalam", "marathi",
+"austrian", "newzealand", "german", "norsk", "nynorsk", "occitan",
+"polish", "polytonic", "portuges", "romanian", "russian",
+"samin", "sanskrit", "scottish", "serbian", "slovak", "slovenian", "spanish", "swedish",
+"tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
+"ukrainian", "usorbian", "vietnamese", "welsh", 0};
+// not yet supported by LyX: "amharic", "asturian", "syriac", "urdu"
 
 /**
  * the same as polyglossia_languages with .lyx names
  * please keep this in sync with polyglossia_languages line by line!
  */
 const char * const Preamble::coded_polyglossia_languages[] = {
-"albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
-"nynorsk", "syriac", "arabic_arabi", "danish", "icelandic", "occitan", "tamil",
-"armenian", "divehi", "interlingua", "polish", "telugu", "asturian", "dutch",
-"irish", "portuges", "thai", "bahasa", "english", "italian", "romanian", "turkish",
-"bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
-"samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "tibetan", "urdu",
-"brazilian", "brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton",
-"french", "lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar",
-"slovak", "welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish", "naustrian",
-"american", "ancientgreek", "australian", "british", "greek", "newzealand",
-"polutonikogreek", 0};
+"albanian", "american", "ancientgreek", "arabic_arabi", "armenian",  "australian",
+"bahasa", "bahasam", "basque", "bengali", "brazilian", "brazilian", "breton", "british", "bulgarian",
+"catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
+"english", "esperanto", "estonian", "farsi", "finnish", "french", "galician", "greek", "greek",
+"hebrew", "hindi", "icelandic", "interlingua", "irish", "italian",
+"lao", "latin", "latvian", "lithuanian", "lowersorbian", "magyar", "malayalam", "marathi",
+"naustrian","newzealand", "ngerman", "norsk", "nynorsk", "occitan",
+"polish", "polutonikogreek", "portuges", "romanian", "russian",
+"samin", "sanskrit", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish",
+"tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
+"ukrainian", "uppersorbian", "vietnamese", "welsh", 0};
+// not yet supported by LyX: "amharic", "asturian", "syriac", "urdu"
 
 
 bool Preamble::usePolyglossia() const
