@@ -2389,6 +2389,24 @@ void Paragraph::latex(BufferParams const & bparams,
 							    runparams);
 		}
 
+		runparams.inDisplayMath = false;
+		bool deleted_display_math = false;
+
+		// Check whether a display math inset follows
+		if (d->text_[i] == META_INSET
+		    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
+			InsetMath const * im = getInset(i)->asInsetMath();
+			if (im && im->asHullInset()
+			    && im->asHullInset()->outerDisplay()) {
+				runparams.inDisplayMath = true;
+				// runparams.inDeletedInset will be set by
+				// latexInset later, but we need this info
+				// before it is called. On the other hand, we
+				// cannot set it here because it is a counter.
+				deleted_display_math = isDeleted(i);
+			}
+		}
+
 		Change const & change = runparams.inDeletedInset
 			? runparams.changeOfDeletedInset : lookupChange(i);
 
@@ -2400,16 +2418,6 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			basefont = getLayoutFont(bparams, outerfont);
 			running_font = basefont;
-
-			// Check whether a display math inset follows
-			if (d->text_[i] == META_INSET
-			    && i >= start_pos && (end_pos == -1 || i < end_pos)) {
-				InsetMath const * im = getInset(i)->asInsetMath();
-				if (im && im->asHullInset()
-				    && im->asHullInset()->outerDisplay())
-					runparams.inDisplayMath = true;
-			}
-
 			column += Changes::latexMarkChange(os, bparams, runningChange,
 							   change, runparams);
 			runningChange = change;
@@ -2471,6 +2479,19 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		char_type const c = d->text_[i];
 
+		// A display math inset inside an ulem command will be output
+		// as a box of width \columnwidth, so we have to either disable
+		// indentation if the inset starts a paragraph, or start a new
+		// line to accommodate such box. This has to be done before
+		// writing any font changing commands.
+		if (runparams.inDisplayMath && !deleted_display_math
+		    && runparams.inulemcmd) {
+			if (os.afterParbreak())
+				os << "\\noindent";
+			else
+				os << "\\\\\n";
+		}
+
 		// Do we need to change font?
 		if ((current_font != running_font ||
 		     current_font.language() != running_font.language()) &&
@@ -2480,6 +2501,15 @@ void Paragraph::latex(BufferParams const & bparams,
 			column += current_font.latexWriteStartChanges(ods, bparams,
 							      runparams, basefont,
 							      last_font);
+			// Check again for display math in ulem commands as a
+			// font change may also occur just before a math inset.
+			if (runparams.inDisplayMath && !deleted_display_math
+			    && runparams.inulemcmd) {
+				if (os.afterParbreak())
+					os << "\\noindent";
+				else
+					os << "\\\\\n";
+			}
 			running_font = current_font;
 			open_font = true;
 			docstring fontchange = ods.str();
@@ -2555,6 +2585,11 @@ void Paragraph::latex(BufferParams const & bparams,
 		// Set the encoding to that returned from latexSpecialChar (see
 		// comment for encoding member in OutputParams.h)
 		runparams.encoding = rp.encoding;
+
+		// Also carry on the info on a closed ulem command for insets
+		// such as Note that do not produce any output, so that no
+		// command is ever executed but its opening was recorded.
+		runparams.inulemcmd = rp.inulemcmd;
 	}
 
 	// If we have an open font definition, we have to close it

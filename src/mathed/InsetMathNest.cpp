@@ -411,6 +411,14 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 			 && (!LaTeXFeatures::isAvailable("dvipost")
 				|| (runparams.flavor != OutputParams::LATEX
 			            && runparams.flavor != OutputParams::DVILUATEX)));
+	if (runparams.inulemcmd) {
+		wi.ulemCmd(WriteStream::UNDERLINE);
+		if (runparams.local_font) {
+			FontInfo f = runparams.local_font->fontInfo();
+			if (f.strikeout() == FONT_ON)
+				wi.ulemCmd(WriteStream::STRIKEOUT);
+		}
+	}
 	wi.canBreakLine(os.canBreakLine());
 	Changer dummy = wi.changeRowEntry(TexRow::textEntry(runparams.lastid,
 	                                                    runparams.lastpos));

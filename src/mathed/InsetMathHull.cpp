@@ -1020,6 +1020,8 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	case hullSimple:
+		if (os.ulemCmd())
+			os << "\\mbox{";
 		os << '$';
 		os.startOuterRow();
 		if (cell(0).empty())
@@ -1027,8 +1029,14 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	case hullEquation:
-		if (os.strikeoutMath())
+		if (os.strikeoutMath()) {
+			if (os.ulemCmd() == WriteStream::UNDERLINE)
+				os << "\\raisebox{1ex}{";
 			os << "\\lyxmathsout{\\parbox{\\columnwidth}{";
+		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+			os << "\\raisebox{-1ex}{\\parbox[b]{\\columnwidth}{";
+		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+			os << "\\parbox{\\columnwidth}{";
 		os << "\n";
 		os.startOuterRow();
 		if (n)
@@ -1042,8 +1050,14 @@ void InsetMathHull::header_write(WriteStream & os) const
 	case hullFlAlign:
 	case hullGather:
 	case hullMultline:
-		if (os.strikeoutMath())
+		if (os.strikeoutMath()) {
+			if (os.ulemCmd() == WriteStream::UNDERLINE)
+				os << "\\raisebox{1ex}{";
 			os << "\\lyxmathsout{\\parbox{\\columnwidth}{";
+		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+			os << "\\raisebox{-1ex}{\\parbox[b]{\\columnwidth}{";
+		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+			os << "\\parbox{\\columnwidth}{";
 		os << "\n";
 		os.startOuterRow();
 		os << "\\begin{" << hullName(type_) << star(n) << "}\n";
@@ -1088,6 +1102,8 @@ void InsetMathHull::footer_write(WriteStream & os) const
 
 	case hullSimple:
 		os << '$';
+		if (os.ulemCmd())
+			os << "}";
 		break;
 
 	case hullEquation:
@@ -1097,8 +1113,14 @@ void InsetMathHull::footer_write(WriteStream & os) const
 			os << "\\end{equation" << star(n) << "}\n";
 		else
 			os << "\\]\n";
-		if (os.strikeoutMath())
+		if (os.strikeoutMath()) {
+			if (os.ulemCmd() == WriteStream::UNDERLINE)
+				os << "}";
 			os << "}}\\\\\n";
+		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+			os << "}}\\\\\n";
+		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+			os << "}\\\\\n";
 		break;
 
 	case hullEqnArray:
@@ -1109,8 +1131,14 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		os << "\n";
 		os.startOuterRow();
 		os << "\\end{" << hullName(type_) << star(n) << "}\n";
-		if (os.strikeoutMath())
+		if (os.strikeoutMath()) {
+			if (os.ulemCmd() == WriteStream::UNDERLINE)
+				os << "}";
 			os << "}}\\\\\n";
+		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
+			os << "}}\\\\\n";
+		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
+			os << "}\\\\\n";
 		break;
 
 	case hullAlignAt:

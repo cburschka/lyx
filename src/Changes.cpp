@@ -428,10 +428,8 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 		// close \lyxadded or \lyxdeleted
 		os << '}';
 		column++;
-		if (oldChange.type == Change::DELETED) {
+		if (oldChange.type == Change::DELETED)
 			--runparams.inulemcmd;
-			runparams.inDisplayMath = false;
-		}
 	}
 
 	docstring chgTime;
