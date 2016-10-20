@@ -1,0 +1,13 @@
+#!/bin/bash
+# at first try the well known location
+DIR="/Applications/Maxima.app/Contents/Resources"
+test -f "${DIR}"/maxima.sh -a -x "${DIR}"/maxima.sh && exec "${DIR}"/maxima.sh "$@"
+# this failed... so try PATH expansion to start the maxima shell wrapper
+IFS=":" read -ra DIRLIST <<< "${PATH}"
+for DIR in "${DIRLIST[@]}" ; do
+	test -f "${DIR}"/maxima.sh -a -x "${DIR}"/maxima.sh && exec "${DIR}"/maxima.sh "$@"
+done
+# report error and exit with failure status
+exec 1>&2
+echo Maxima shell wrapper not found.
+exit 1
