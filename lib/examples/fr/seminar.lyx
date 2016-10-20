@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -528,7 +528,7 @@ Vous pouvez spécifier une famille sans empattements et une police adéquate
  via 
 \family sans
 Document\SpecialChar menuseparator
-Paramètres...\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Polices
 \family default
 .
@@ -596,8 +596,7 @@ target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/semina
 \end_layout
 
 \begin_layout Section
-En cas de problèmes\SpecialChar ldots
-
+En cas de problèmes
 \end_layout
 
 \begin_layout Itemize
@@ -608,11 +607,11 @@ Lyx-2.2.0 échoue avec l'erreur
 
 \lang english
 missing characters in font nullfont
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
-
-\lang french
 .
  Cette erreur provient d'un bogue PGF et peut être ignorée.
 \end_layout
