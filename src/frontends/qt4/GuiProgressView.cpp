@@ -152,7 +152,7 @@ void GuiProgressView::debugMessageActivated(QTreeWidgetItem * item, int)
 
 void GuiProgressView::levelChanged()
 {
-	int level = Debug::NONE;
+	unsigned int level = Debug::NONE;
 	QTreeWidgetItemIterator it(widget_->debugMessagesTW);
 	while (*it) {
 		if ((*it)->text(1) == qt_("Yes"))
@@ -165,7 +165,7 @@ void GuiProgressView::levelChanged()
 
 void GuiProgressView::debugSelectionChanged()
 {
-	int level = Debug::NONE;
+	unsigned int level = Debug::NONE;
 	if (widget_->debugAnyRB->isChecked())
 		level = Debug::ANY;
 	else if (widget_->debugSelectedRB->isChecked()) {
