@@ -2561,12 +2561,12 @@ void Paragraph::latex(BufferParams const & bparams,
 						basefont, outerfont, open_font,
 						runningChange, style, i, column);
 			}
-		} else {
-			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
-				try {
-					d->latexSpecialChar(os, bparams, rp, running_font, runningChange,
-							    style, i, end_pos, column);
-				} catch (EncodingException & e) {
+		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
+			try {
+				d->latexSpecialChar(os, bparams, rp,
+						    running_font, runningChange,
+						    style, i, end_pos, column);
+			} catch (EncodingException & e) {
 				if (runparams.dryrun) {
 					os << "<" << _("LyX Warning: ")
 					   << _("uncodable character") << " '";
@@ -2579,7 +2579,6 @@ void Paragraph::latex(BufferParams const & bparams,
 					throw(e);
 				}
 			}
-		}
 		}
 
 		// Set the encoding to that returned from latexSpecialChar (see
