@@ -122,6 +122,7 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 2089657418 "Usti"
 \end_header
 
@@ -11385,6 +11386,59 @@ status collapsed
 
 , this argument will be inserted with a copy of the co-text (either selected
  text or the whole paragraph) as content.
+\change_inserted -712698321 1477038290
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1477038425
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1477038295
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1477038311
+
+\emph on
+inherited
+\emph default
+, true, false
+\end_layout
+
+\end_inset
+
+] Whether the contents of this argument should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ By default, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1477038356
+PassThru
+\end_layout
+
+\end_inset
+
+ status is inherited by the inset or paragraph layout the argument belongs
+ to, true and false change the status for the given argument only.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize

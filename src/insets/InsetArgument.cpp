@@ -41,7 +41,8 @@ namespace lyx {
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsable(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
-      pass_thru_(false), pass_thru_chars_(docstring())
+      pass_thru_context_(false), pass_thru_local_(false), pass_thru_(false),
+      pass_thru_chars_(docstring())
 {}
 
 
@@ -62,11 +63,11 @@ void InsetArgument::read(Lexer & lex)
 void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Layout::LaTeXArgMap args = it.paragraph().layout().args();
-	pass_thru_ = it.paragraph().layout().pass_thru;
+	pass_thru_context_ = it.paragraph().layout().pass_thru;
 	bool const insetlayout = args.empty();
 	if (insetlayout) {
 		args = it.inset().getLayout().args();
-		pass_thru_ = it.inset().getLayout().isPassThru();
+		pass_thru_context_ = it.inset().getLayout().isPassThru();
 	}
 
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
@@ -115,6 +116,19 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		labelfont_ = (*lait).second.labelfont;
 		decoration_ = (*lait).second.decoration;
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
+		pass_thru_local_ = false;
+		switch ((*lait).second.passthru) {
+			case PT_INHERITED:
+				pass_thru_ = pass_thru_context_;
+				break;
+			case PT_TRUE:
+				pass_thru_ = true;
+				pass_thru_local_ = true;
+				break;
+			case PT_FALSE:
+				pass_thru_ = false;
+				break;
+		}
 	} else {
 		labelstring_ = _("Unknown Argument");
 		tooltip_ = _("Argument not known in this Layout. Will be supressed in the output.");
@@ -165,12 +179,7 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// with (inherited) pass_thru to avoid call for
 		// fixParagraphsFont(), which does not play nicely with
 		// inherited pass_thru (see #8471).
-		// FIXME: Once we have implemented genuine pass_thru
-		// option for InsetArgument (not inherited pass_thru),
-		// we should probably directly call
-		// InsetCollapsable::doDispatch(cur, cmd) for that
-		// case as well
-		if (pass_thru_)
+		if (pass_thru_ && !pass_thru_local_)
 			text().dispatch(cur, cmd);
 		else
 			InsetCollapsable::doDispatch(cur, cmd);
@@ -281,6 +290,7 @@ void InsetArgument::latexArgument(otexstream & os,
 	OutputParams runparams = runparams_in;
 	if (!pass_thru_chars_.empty())
 		runparams.pass_thru_chars += pass_thru_chars_;
+	runparams.pass_thru = isPassThru();
 	InsetText::latex(ots, runparams);
 	TexString ts = ots.release();
 	bool const add_braces = ldelim != "{" && support::contains(ts.str, rdelim);

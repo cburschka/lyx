@@ -981,6 +981,7 @@ void Layout::readArgument(Lexer & lex)
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
 	arg.is_toc_caption = false;
+	arg.passthru = PT_INHERITED;
 	string id;
 	lex >> id;
 	bool const itemarg = prefixIs(id, "item:");
@@ -1041,6 +1042,15 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();
+		} else if (tok == "passthru") {
+			lex.next();
+			docstring value = lex.getDocString();
+			if (value == "true" || value == "1")
+				arg.passthru = PT_TRUE;
+			else if (value == "false" || value == "0")
+				arg.passthru = PT_FALSE;
+			else
+				arg.passthru = PT_INHERITED;
 		} else if (tok == "istoccaption") {
 			lex.next();
 			arg.is_toc_caption = lex.getBool();
@@ -1095,6 +1105,17 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		lyxWrite(os, arg.font, "Font", 2);
 	if (arg.labelfont != inherit_font)
 		lyxWrite(os, arg.labelfont, "LabelFont", 2);
+	switch (arg.passthru) {
+		case PT_TRUE:
+			os << "\t\tPassThru true\n";
+			break;
+		case PT_FALSE:
+			os << "\t\tPassThru false\n";
+			break;
+		case PT_INHERITED:
+			os << "\t\tPassThru inherited\n";
+			break;
+	}
 	if (!arg.pass_thru_chars.empty())
 		os << "\t\tPassThruChars \"" << to_utf8(arg.pass_thru_chars) << "\"\n";
 	os << "\tEndArgument\n";

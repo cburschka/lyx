@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 61
+currentFormat = 62
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -204,6 +204,9 @@ currentFormat = 61
 
 # Incremented to format 61, 14 October 2016 by spitz
 # New Layout tags "ResumeCounter", "StepMasterCounter"
+
+# Incremented to format 62, 21 October 2016 by spitz
+# New Layout argument tag "PassThru"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -448,7 +451,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format == 60:
+        if format >= 60 and format <= 61:
             # nothing to do.
             i += 1
             continue

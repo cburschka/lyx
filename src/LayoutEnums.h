@@ -150,6 +150,16 @@ enum EndLabelType {
 	END_LABEL_STATIC
 };
 
+///
+enum ArgPassThru {
+	///
+	PT_INHERITED,
+	///
+	PT_FALSE,
+	///
+	PT_TRUE
+};
+
 } // namespace lyx
 
 #endif

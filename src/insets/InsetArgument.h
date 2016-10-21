@@ -97,7 +97,11 @@ private:
 	FontInfo labelfont_;
 	///
 	std::string decoration_;
-	///
+	/// Are we in a pass-thru context?
+	bool pass_thru_context_;
+	/// Is the argument itself have an explicitly pass-thru?
+	bool pass_thru_local_;
+	/// Effective pass-thru setting (inherited or local)
 	bool pass_thru_;
 	///
 	docstring pass_thru_chars_;

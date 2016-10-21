@@ -105,6 +105,7 @@ public:
 		FontInfo labelfont;
 		bool autoinsert;
 		bool insertcotext;
+		ArgPassThru passthru;
 		docstring pass_thru_chars;
 		bool is_toc_caption;
 	};

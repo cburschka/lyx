@@ -584,6 +584,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	arg.font = inherit_font;
 	arg.labelfont = inherit_font;
 	arg.is_toc_caption = false;
+	arg.passthru = PT_INHERITED;
 	string nr;
 	lex >> nr;
 	bool const postcmd = prefixIs(nr, "post:");
@@ -642,6 +643,15 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "passthruchars") {
 			lex.next();
 			arg.pass_thru_chars = lex.getDocString();
+		} else if (tok == "passthru") {
+			lex.next();
+			docstring value = lex.getDocString();
+			if (value == "true" || value == "1")
+				arg.passthru = PT_TRUE;
+			else if (value == "false" || value == "0")
+				arg.passthru = PT_FALSE;
+			else
+				arg.passthru = PT_INHERITED;
 		} else if (tok == "istoccaption") {
 			lex.next();
 			arg.is_toc_caption = lex.getBool();
