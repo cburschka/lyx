@@ -9,6 +9,29 @@
 
 Format 60
 
+# These are no real counters, but they are needed
+# to get proper labels for the enumerate-like
+# example styles.
+Counter example
+	Within               chapter
+	LabelString          "Examples:"
+End
+
+Counter examplei
+	Within               chapter
+	LabelString          "Examples:"
+End
+
+Counter subexample
+	Within               examplei
+	LabelString          "Subexample:"
+End
+
+Counter subexamplei
+	Within               examplei
+	LabelString          "Subexample:"
+End
+
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
 	LatexType             Environment
@@ -46,7 +69,8 @@ Style Numbered_Examples_(consecutive)
 	CopyStyle	      Numbered_Example_(multiline)
 	LatexType             Item_Environment
 	LatexName             covexamples
-	LabelString           "Examples:"
+	LabelType             Enumerate
+	LabelCounter          "example"
 	Argument item:1
 		LabelString   "Custom Numbering|s"
 		Tooltip       "Customize the numeration"
@@ -65,7 +89,7 @@ End
 Style Subexample
 	CopyStyle	      Numbered_Examples_(consecutive)
 	LatexName             subexample
-	LabelString           "Subexample:"
+	LabelCounter          "subexample"
 	Requires	      covington,enumitem
 	Preamble
 		\newenvironment{subexample}{%
