@@ -343,10 +343,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.
-	if (bits_.number() == FONT_ON && prev.fontInfo().number() != FONT_ON
-		&& (language()->lang() == "hebrew"
-			|| language()->lang() == "farsi" 
-			|| language()->lang() == "arabic_arabi")) {
+	if (!runparams.pass_thru && bits_.number() == FONT_ON
+	    && prev.fontInfo().number() != FONT_ON
+	    && (language()->lang() == "hebrew"
+		|| language()->lang() == "farsi" 
+		|| language()->lang() == "arabic_arabi")) {
 		os << "{\\beginL ";
 		count += 9;
 	}
@@ -521,10 +522,11 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	// the numbers are written Left-to-Right. ArabTeX package
 	// reorders the number automatically but the packages used
 	// for Hebrew and Farsi (Arabi) do not.
-	if (bits_.number() == FONT_ON && next.fontInfo().number() != FONT_ON
-		&& (language()->lang() == "hebrew"
-			|| language()->lang() == "farsi"
-			|| language()->lang() == "arabic_arabi")) {
+	if (!runparams.pass_thru && bits_.number() == FONT_ON
+	    && next.fontInfo().number() != FONT_ON
+	    && (language()->lang() == "hebrew"
+		|| language()->lang() == "farsi"
+		|| language()->lang() == "arabic_arabi")) {
 		os << "\\endL}";
 		count += 6;
 	}
