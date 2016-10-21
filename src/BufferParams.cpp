@@ -1647,7 +1647,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		   << from_ascii(fonts_default_family) << "}\n";
 
 	// set font encoding
-	// XeTeX and LuaTeX (with OS fonts) do not need fontenc
+	// XeTeX and LuaTeX with Unicode fonts do not need fontenc
 	if (!useNonTeXFonts && !features.isProvided("fontenc")
 	    && font_encoding() != "default") {
 		// get main font encodings
@@ -2942,7 +2942,7 @@ vector<string> const BufferParams::font_encodings() const
 
 	vector<string> fontencs;
 
-	// "default" means "no explicit font encoding"
+	// "default" means "no explicit font encoding, don't load fontenc.sty"
 	if (doc_fontenc != "default") {
 		fontencs = getVectorFromString(doc_fontenc);
 		if (!language->fontenc().empty()

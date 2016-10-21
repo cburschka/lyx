@@ -859,9 +859,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
 
-	fontModule->fontencCO->addItem(qt_("Default"), QString("global"));
+	fontModule->fontencCO->addItem(qt_("Global Default"), QString("global"));
 	fontModule->fontencCO->addItem(qt_("Custom"), QString("custom"));
-	fontModule->fontencCO->addItem(qt_("None (no fontenc)"), QString("default"));
+	fontModule->fontencCO->addItem(qt_("TeX default (OT1, no fontenc)"), QString("default"));
+	fontModule->fontencCO->setToolTip(
+			qt_("Select LaTeX font encoding(s).\n"
+			    "The standard [Global Default] is "
+				"\"T1 via 'fontenc' package\" (see Tools>Preferences>Output>LaTeX).\n"
+				"Notes:\n"
+				"TeX's default fonts (Computer Modern) are not available "
+				"in T1 encoding, Latin Modern is the recommended lookalike.\n"
+				"Font encodings for Greek and Cyrillic are automatically added if required."
+			   ));
 
 	for (int n = 0; GuiDocument::fontfamilies_gui[n][0]; ++n)
 		fontModule->fontsDefaultCO->addItem(
@@ -3060,7 +3069,7 @@ void GuiDocument::paramsToDialog()
 	biblioChanged_ = false;
 
 	// indices
-	// We may be called when there is no Buffer, e.g., when 
+	// We may be called when there is no Buffer, e.g., when
 	// the last view has just been closed.
 	bool const isReadOnly = isBufferAvailable() ? buffer().isReadonly() : false;
 	indicesModule->update(bp_, isReadOnly);
@@ -3392,7 +3401,7 @@ void GuiDocument::paramsToDialog()
 			toqstr(bp_.fonts_cjk));
 	else
 		fontModule->cjkFontLE->setText(QString());
-	
+
 	fontModule->microtypeCB->setChecked(bp_.use_microtype);
 
 	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
