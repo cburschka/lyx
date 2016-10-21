@@ -2403,11 +2403,13 @@ string BufferParams::bufferFormat() const
 
 bool BufferParams::isExportable(string const & format) const
 {
-	vector<string> backs = backends();
-	for (vector<string>::const_iterator it = backs.begin();
-	     it != backs.end(); ++it)
-		if (theConverters().isReachable(*it, format))
+	FormatList const & formats = exportableFormats(false);
+	FormatList::const_iterator fit = formats.begin();
+	FormatList::const_iterator end = formats.end();
+	for (; fit != end ; ++fit) {
+		if ((*fit)->name() == format)
 			return true;
+	}
 	return false;
 }
 
