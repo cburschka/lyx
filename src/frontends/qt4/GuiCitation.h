@@ -17,6 +17,7 @@
 
 #include "DialogView.h"
 #include "ui_CitationUi.h"
+#include "FancyLineEdit.h"
 
 #include "insets/InsetCommandParams.h"
 
@@ -44,19 +45,19 @@ public:
 	~GuiCitation();
 
 private Q_SLOTS:
-	void on_citationTB_currentChanged(int i);
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
 	void on_applyPB_clicked();
-	void on_searchPB_clicked();
-	void on_findLE_textChanged(const QString & text);
+	void filterPressed();
+	void filterChanged(const QString & text);
 	void on_fieldsCO_currentIndexChanged(int index);
 	void on_entriesCO_currentIndexChanged(int index);
 	void on_citationStyleCO_currentIndexChanged(int index);
-	void on_caseCB_stateChanged(int);
-	void on_regexCB_stateChanged(int);
-	void on_asTypeCB_stateChanged(int);
+	void resetFilter();
+	void caseChanged();
+	void regexChanged();
+	void instantChanged(bool checked);
 	void changed();
 	/// set the citation keys, mark as changed
 	void setCitedKeys();
@@ -106,6 +107,8 @@ private:
 	void updateFormatting(CitationStyle currentStyle);
 	///
 	void updateControls(BiblioInfo const & bi);
+	/// Set the appropriate hinting text on the filter bar
+	void updateFilterHint();
 	///
 	void init();
 	/// Clear selected keys
@@ -150,6 +153,16 @@ private:
 	/// Calls to this method will lead to checks of modification times and
 	/// the like, so it should be avoided.
 	BiblioInfo const & bibInfo() const;
+
+	/// contains the search box
+	FancyLineEdit * filter_;
+
+	/// Regexp action
+	QAction * regexp_;
+	/// Case sensitive action
+	QAction * casesense_;
+	/// Search as you type action
+	QAction * instant_;
 
 	/// last used citation style
 	int style_;
