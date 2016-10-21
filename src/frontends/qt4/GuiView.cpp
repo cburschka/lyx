@@ -1803,7 +1803,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		string format = to_utf8(cmd.argument());
 		if (cmd.argument().empty())
 			format = doc_buffer->params().getDefaultOutputFormat();
-		enable = doc_buffer->params().isExportableFormat(format);
+		enable = doc_buffer->params().isExportable(format, true);
 		break;
 	}
 

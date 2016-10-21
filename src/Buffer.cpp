@@ -2527,7 +2527,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		size_t pos = format.find(' ');
 		if (pos != string::npos)
 			format = format.substr(0, pos);
-		enable = params().isExportable(format);
+		enable = params().isExportable(format, false);
 		if (!enable)
 			flag.message(bformat(
 					     _("Don't know how to export to format: %1$s"), arg));
@@ -2539,7 +2539,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUILD_PROGRAM:
-		enable = params().isExportable("program");
+		enable = params().isExportable("program", false);
 		break;
 
 	case LFUN_BRANCH_ACTIVATE:
