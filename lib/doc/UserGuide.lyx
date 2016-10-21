@@ -134,12 +134,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 1414654397 "Richard Heck"
 \end_header
 
 \begin_body
@@ -6729,13 +6728,7 @@ reference "sec:TeX-Code"
 \emph on
  enumi
 \emph default
- is 
-\change_inserted 1414654397 1468603336
-the LaTeX name of 
-\change_deleted 1414654397 1468603338
-hereby 
-\change_unchanged
-the first level counter of the enumeration.
+ is hereby the first level counter of the enumeration.
  The command 
 \series bold
 
