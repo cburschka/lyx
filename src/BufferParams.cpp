@@ -2391,9 +2391,9 @@ string BufferParams::bufferFormat() const
 }
 
 
-bool BufferParams::isExportable(string const & format) const
+bool BufferParams::isExportable(string const & format, bool need_viewable) const
 {
-	FormatList const & formats = exportableFormats(false);
+	FormatList const & formats = exportableFormats(need_viewable);
 	FormatList::const_iterator fit = formats.begin();
 	FormatList::const_iterator end = formats.end();
 	for (; fit != end ; ++fit) {
@@ -2431,19 +2431,6 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 	cached = result;
 	valid = true;
 	return cached;
-}
-
-
-bool BufferParams::isExportableFormat(string const & format) const
-{
-	FormatList const & formats = exportableFormats(true);
-	FormatList::const_iterator fit = formats.begin();
-	FormatList::const_iterator end = formats.end();
-	for (; fit != end ; ++fit) {
-		if ((*fit)->name() == format)
-			return true;
-	}
-	return false;
 }
 
 
