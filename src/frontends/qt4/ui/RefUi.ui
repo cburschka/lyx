@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>RefUi</class>
  <widget class="QDialog" name="RefUi">
@@ -6,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>435</width>
-    <height>500</height>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,45 +16,80 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="refsL">
-     <property name="text">
-      <string>La&amp;bels in:</string>
-     </property>
-     <property name="buddy">
-      <cstring>bufferCO</cstring>
-     </property>
-    </widget>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="findKeysLA">
+         <property name="text">
+          <string>&amp;Filter:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="refsL">
+         <property name="text">
+          <string>&amp;In[[buffer]]:</string>
+         </property>
+         <property name="buddy">
+          <cstring>bufferCO</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="filterBarL"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="csFindCB">
+           <property name="toolTip">
+            <string>Filter case-sensitively</string>
+           </property>
+           <property name="text">
+            <string>Case Sensiti&amp;ve</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QComboBox" name="bufferCO">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>The (sub-)document from which the available labels are displayed</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="2">
-    <widget class="QComboBox" name="bufferCO">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="3">
+   <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>&amp;References</string>
+      <string>Available &amp;Labels:</string>
      </property>
      <property name="buddy">
       <cstring>refsTW</cstring>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
+   <item row="2" column="0">
     <widget class="QTreeWidget" name="refsTW">
      <column>
       <property name="text">
@@ -62,120 +98,97 @@
      </column>
     </widget>
    </item>
-   <item row="4" column="0" colspan="3">
+   <item row="3" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="findKeysLA">
+      <widget class="QLabel" name="SortLA">
        <property name="text">
-        <string>Fil&amp;ter:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <string>So&amp;rt:</string>
        </property>
        <property name="buddy">
-        <cstring>findLE</cstring>
+        <cstring>sortingCO</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="findLE">
+      <widget class="QComboBox" name="sortingCO">
        <property name="toolTip">
-        <string>Enter string to filter the label list</string>
+        <string>Sorting of the list of available labels</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="groupCB">
+       <property name="toolTip">
+        <string>Group the list of available labels by prefix (e.g. &quot;sec:&quot;)</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Grou&amp;p</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="csFindCB">
-       <property name="toolTip">
-        <string>Filter case-sensitively</string>
-       </property>
-       <property name="text">
-        <string>Case-sensiti&amp;ve</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="5" column="0" colspan="3">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
-     <item>
-      <layout class="QHBoxLayout">
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <property name="margin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QCheckBox" name="sortCB">
-         <property name="toolTip">
-          <string>Sort labels in alphabetical order (case-insensitively unless the Case-sensitive option is checked)</string>
-         </property>
-         <property name="text">
-          <string>&amp;Sort</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="caseSensitiveCB">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="toolTip">
-          <string>Sort labels case-sensitively in alphabetical order</string>
-         </property>
-         <property name="text">
-          <string>Cas&amp;e-sensitive</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="groupCB">
-         <property name="toolTip">
-          <string>Group labels by prefix (e.g. &quot;sec:&quot;)</string>
-         </property>
-         <property name="text">
-          <string>Grou&amp;p</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer>
+      <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
+         <width>40</width>
          <height>20</height>
         </size>
        </property>
       </spacer>
      </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="referenceL">
+       <property name="text">
+        <string>Sele&amp;cted Label:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy">
+        <cstring>referenceED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="referenceED">
+       <property name="toolTip">
+        <string>Select a label from the list above or enter a label manually</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="gotoPB">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Jump to the selected label</string>
        </property>
        <property name="text">
         <string>&amp;Go to Label</string>
@@ -184,105 +197,119 @@
      </item>
     </layout>
    </item>
+   <item row="5" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="typeLA">
+       <property name="text">
+        <string>Reference For&amp;mat:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy">
+        <cstring>typeCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="typeCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Adjust the style of the cross-reference</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>&lt;reference&gt;</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>(&lt;reference&gt;)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>&lt;page&gt;</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>on page &lt;page&gt;</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>&lt;reference&gt; on page &lt;page&gt;</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Formatted reference</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Textual reference</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="6" column="0">
-    <widget class="QLabel" name="referenceL">
-     <property name="text">
-      <string>&amp;Label:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>referenceED</cstring>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="nameL">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>&amp;Name:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="buddy">
+        <cstring>nameED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="nameED">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="6" column="1" colspan="2">
-    <widget class="QLineEdit" name="referenceED"/>
-   </item>
-   <item row="7" column="1" colspan="2">
-    <widget class="QComboBox" name="typeCO">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string>Cross-reference as it appears in output</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>&lt;reference&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>(&lt;reference&gt;)</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>&lt;page&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>on page &lt;page&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>&lt;reference&gt; on page &lt;page&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Formatted reference</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Textual reference</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="nameL">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="text">
-      <string>&amp;Name:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>nameED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1" colspan="2">
-    <widget class="QLineEdit" name="nameED">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="3">
+   <item row="7" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
       <widget class="QPushButton" name="updatePB">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -349,30 +376,12 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="typeLA">
-     <property name="text">
-      <string>&amp;Format:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>typeCO</cstring>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>bufferCO</tabstop>
   <tabstop>refsTW</tabstop>
-  <tabstop>findLE</tabstop>
   <tabstop>csFindCB</tabstop>
-  <tabstop>sortCB</tabstop>
-  <tabstop>caseSensitiveCB</tabstop>
   <tabstop>groupCB</tabstop>
-  <tabstop>gotoPB</tabstop>
   <tabstop>referenceED</tabstop>
   <tabstop>typeCO</tabstop>
   <tabstop>nameED</tabstop>
