@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-10 10:33-0400\n"
-"PO-Revision-Date: 2016-10-05 17:28+0000\n"
+"POT-Creation-Date: 2016-10-21 22:32+0200\n"
+"PO-Revision-Date: 2016-10-21 22:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -868,13 +868,17 @@ msgstr "&Použiť"
 msgid "Close"
 msgstr "Zavrieť"
 
+#: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:27
+msgid "&Filter:"
+msgstr "&Filter:"
+
+#: src/frontends/qt4/ui/CitationUi.ui:48
+msgid "Select the fields on which the filter applies"
+msgstr "Vyberte políčka na ktoré chcete použiť filter"
+
 #: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
 msgstr "Do&stupné Citácie:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:56
-msgid "S&elected Citations:"
-msgstr "&Vybrané Citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:81
 msgid "Click or press Enter to add the selected citation to the list"
@@ -892,37 +896,21 @@ msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:212
-msgid "&Search Citation"
-msgstr "Hľadať &citáciu"
+#: src/frontends/qt4/ui/CitationUi.ui:229
+msgid "Selected &Citations:"
+msgstr "&Vybrané Citácie:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:221
-msgid "Searc&h:"
-msgstr "Hľ&adať:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:234
-msgid ""
-"Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"Vložte text na hľadanie a stlačte Enter alebo kliknite tlačidlo aby hľadanie "
-"začalo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:247
-msgid "Click or press Enter in the search box to search"
-msgstr ""
-"Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie začalo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:250
-msgid "&Search"
-msgstr "Hľada&j"
-
-#: src/frontends/qt4/ui/CitationUi.ui:260
-msgid "Search &field:"
-msgstr "P&riestor hľadania:"
+#: src/frontends/qt4/ui/CitationUi.ui:273
+msgid "Formatting"
+msgstr "Formátovanie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:286 src/frontends/qt4/GuiCitation.cpp:316
 msgid "All fields"
 msgstr "Všetky políčka"
+
+#: src/frontends/qt4/ui/CitationUi.ui:75
+msgid "Select the entry types on which the filter applies"
+msgstr "Vyberte typy záznamov na ktoré chcete použiť filter"
 
 #: src/frontends/qt4/ui/CitationUi.ui:307
 msgid "Regular e&xpression"
@@ -932,61 +920,62 @@ msgstr "Re&gulárny výraz"
 msgid "Case se&nsitive"
 msgstr "Roz&lišovať veľkosť písmen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:321
-msgid "Entry t&ypes:"
-msgstr "&Typy záznamov:"
-
 #: src/frontends/qt4/ui/CitationUi.ui:344 src/frontends/qt4/GuiCitation.cpp:331
 msgid "All entry types"
 msgstr "Všetky typy záznamov"
+
+#: src/frontends/qt4/ui/CitationUi.ui:93
+msgid "Click for more filter options"
+msgstr "Kliknite sem na viac volieb pre filter"
+
+#: src/frontends/qt4/ui/CitationUi.ui:96
+msgid "O&ptions"
+msgstr "&Možnosti"
 
 #: src/frontends/qt4/ui/CitationUi.ui:365
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
-#: src/frontends/qt4/ui/CitationUi.ui:373
-msgid "For&matting"
-msgstr "&Formátovanie"
-
 #: src/frontends/qt4/ui/CitationUi.ui:382
 msgid "Citation st&yle:"
 msgstr "Štý&l citácie:"
-
-#: src/frontends/qt4/ui/CitationUi.ui:392
-msgid "Natbib citation style to use"
-msgstr "Ktorý natbib štýl citátov použiť"
 
 #: src/frontends/qt4/ui/CitationUi.ui:399
 msgid "Text &before:"
 msgstr "&Text pred:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:409
-msgid "Text to place before citation"
-msgstr "Text, umiestnený pred citátom"
+#: src/frontends/qt4/ui/CitationUi.ui:313
+msgid "Citation style to use, if different styles are provided"
+msgstr "Použitý štýl citácie, v prípade keď je viacej štýlov prístupných"
+
+#: src/frontends/qt4/ui/CitationUi.ui:322
+msgid "Text that precedes the reference (e.g., \"cf.\")"
+msgstr "Text predchádzajúci referencie (napr., \"por.\") "
 
 #: src/frontends/qt4/ui/CitationUi.ui:416
 msgid "&Text after:"
 msgstr "Te&xt za:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:426
-msgid "Text to place after citation"
-msgstr "Text, umiestnený za citátom"
+#: src/frontends/qt4/ui/CitationUi.ui:339
+msgid "Text that follows the reference (e.g., pages)"
+msgstr "Text nasledujúci referencie (napr., strany)"
 
-#: src/frontends/qt4/ui/CitationUi.ui:454
-msgid "List all authors"
-msgstr "Vypísať všetkých autorov"
+#: src/frontends/qt4/ui/CitationUi.ui:382
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+msgstr ""
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
 
-#: src/frontends/qt4/ui/CitationUi.ui:457
-msgid "&Full author list"
-msgstr "Výpis všetkých a&utorov"
+#: src/frontends/qt4/ui/CitationUi.ui:385
+msgid "Force upcas&ing"
+msgstr "Vynútiť v&eľké písmo"
 
-#: src/frontends/qt4/ui/CitationUi.ui:464
-msgid "Force upper case in citation"
-msgstr "Vnútiť veľké písmená do citácie"
+#: src/frontends/qt4/ui/CitationUi.ui:392
+msgid "Always list all authors (rather than using \"et al.\")"
+msgstr "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\")"
 
-#: src/frontends/qt4/ui/CitationUi.ui:467
-msgid "Force u&pper case"
-msgstr "Vnútiť v&eľké písmo"
+#: src/frontends/qt4/ui/CitationUi.ui:395
+msgid "All aut&hors"
+msgstr "Každý a&utor"
 
 #: src/frontends/qt4/ui/CitationUi.ui:488 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:682
@@ -4232,65 +4221,65 @@ msgstr "Ukázať správy v stavovom pruhu?"
 msgid "&Statusbar messages"
 msgstr "Správy v &stavovom pruhu"
 
-#: src/frontends/qt4/ui/RefUi.ui:22
-msgid "La&bels in:"
-msgstr "&Značky v:"
-
-#: src/frontends/qt4/ui/RefUi.ui:49
-msgid "&References"
-msgstr "&Referencie"
-
-#: src/frontends/qt4/ui/RefUi.ui:76
-msgid "Fil&ter:"
-msgstr "Fil&ter:"
-
-#: src/frontends/qt4/ui/RefUi.ui:89
-msgid "Enter string to filter the label list"
-msgstr "Zadajte reťazec na výber z listiny značiek"
+#: src/frontends/qt4/ui/RefUi.ui:37
+msgid "&In[[buffer]]:"
+msgstr "&V:"
 
 #: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
 msgstr "Filtrovať aj podľa veľkosti písmen"
 
-#: src/frontends/qt4/ui/RefUi.ui:102
-msgid "Case-sensiti&ve"
-msgstr "R&ozlišovať veľkosť písmen"
+#: src/frontends/qt4/ui/RefUi.ui:59
+msgid "Case Sensiti&ve"
+msgstr "R&ozlišovať Veľkosť Písmen"
 
-#: src/frontends/qt4/ui/RefUi.ui:127
-msgid ""
-"Sort labels in alphabetical order (case-insensitively unless the Case-"
-"sensitive option is checked)"
-msgstr ""
-"Triediť značky podľa abecedy (bez ohľadu na veľkosť písmen, ibaže je vybrané "
-"rozlišovanie)"
+#: src/frontends/qt4/ui/RefUi.ui:74
+msgid "The (sub-)document from which the available labels are displayed"
+msgstr "Ten (pod-)dokument z ktorého sa dostupné heslá majú zobraziť"
 
-#: src/frontends/qt4/ui/RefUi.ui:130
-msgid "&Sort"
-msgstr "&Triediť"
+#: src/frontends/qt4/ui/RefUi.ui:85
+msgid "Available &Labels:"
+msgstr "Dostupné &Heslá:"
 
-#: src/frontends/qt4/ui/RefUi.ui:140
-msgid "Sort labels case-sensitively in alphabetical order"
-msgstr "Triediť značky s ohľadom na veľkosť písmen v abecednom poradí"
+#: src/frontends/qt4/ui/RefUi.ui:121
+msgid "So&rt:"
+msgstr "Por&adie:"
 
-#: src/frontends/qt4/ui/RefUi.ui:143
-msgid "Cas&e-sensitive"
-msgstr "Rozlišovať veľkosť písm&en"
+#: src/frontends/qt4/ui/RefUi.ui:131
+msgid "Sorting of the list of available labels"
+msgstr "Triedenie listiny dostupných hesiel"
 
-#: src/frontends/qt4/ui/RefUi.ui:150
-msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
+#: src/frontends/qt4/ui/RefUi.ui:138
+msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
+msgstr "Zoskupiť zoznam dostupných hesiel podľa prefixu (napr. \"sec:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
 msgstr "Zo&skupiť"
 
+#: src/frontends/qt4/ui/RefUi.ui:165
+msgid "Sele&cted Label:"
+msgstr "V&ybrané Heslo:"
+
+#: src/frontends/qt4/ui/RefUi.ui:178
+msgid "Select a label from the list above or enter a label manually"
+msgstr "Vyberte si heslo z listiny hore alebo vložte heslo manuálne"
+
+#: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/GuiRef.cpp:351
+msgid "Jump to the selected label"
+msgstr "Skok na vybrané heslo"
+
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:323
 msgid "&Go to Label"
 msgstr "Pre&jsť na heslo"
 
-#: src/frontends/qt4/ui/RefUi.ui:212
-msgid "Cross-reference as it appears in output"
-msgstr "Krížová referencia, ako sa objaví vo výstupe"
+#: src/frontends/qt4/ui/RefUi.ui:205
+msgid "Reference For&mat:"
+msgstr "Štýl &Referencie:"
+
+#: src/frontends/qt4/ui/RefUi.ui:224
+msgid "Adjust the style of the cross-reference"
+msgstr "Upravte štýl krížovej referencie"
 
 #: src/frontends/qt4/ui/RefUi.ui:216
 msgid "<reference>"
@@ -27272,6 +27261,24 @@ msgstr "Štýl Textu"
 msgid "Keys"
 msgstr "Kľúče"
 
+#: src/frontends/qt4/GuiCitation.cpp:372
+msgid "Displays a sketchy preview if a citation is selected above"
+msgstr "Zobrazí náčrtkovitý náhľad hore vybranej citácie"
+
+#: src/frontends/qt4/GuiCitation.cpp:376
+msgid "Sketchy preview of the selected citation"
+msgstr "Zobrazí náčrtkovitý náhľad vybranej citácie"
+
+#: src/frontends/qt4/GuiCitation.cpp:485
+msgid "Enter string to filter the list of available citations"
+msgstr "Zadajte reťazec na výber z listiny dostupných citácií"
+
+#: src/frontends/qt4/GuiCitation.cpp:486
+msgid ""
+"Enter string to filter the list of available citations and press <Enter>"
+msgstr ""
+"Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
+
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "LinkBack PDF"
 msgstr "LinkBack PDF"
@@ -28702,17 +28709,33 @@ msgstr "Nastaviť"
 msgid "Cross-reference"
 msgstr "Krížová referencia"
 
+#: src/frontends/qt4/GuiRef.cpp:62
+msgid "All available labels"
+msgstr "Všetky dostupné heslá"
+
+#: src/frontends/qt4/GuiRef.cpp:64
+msgid "Enter string to filter the list of available labels"
+msgstr "Zadajte reťazec na výber z listiny dostupných hesiel"
+
+#: src/frontends/qt4/GuiRef.cpp:69
+msgid "By Occurrence"
+msgstr "Podľa Výskytu"
+
+#: src/frontends/qt4/GuiRef.cpp:70
+msgid "Alphabetically (Case-Insensitive)"
+msgstr "Abecedne (Nerozlišujúc Veľké a Malé Písmená) "
+
+#: src/frontends/qt4/GuiRef.cpp:71
+msgid "Alphabetically (Case-Sensitive)"
+msgstr "Abecedne (Rozlišujúc Veľké a Malé Písmená)"
+
 #: src/frontends/qt4/GuiRef.cpp:315
 msgid "&Go Back"
 msgstr "Choď s&päť"
 
-#: src/frontends/qt4/GuiRef.cpp:317
-msgid "Jump back"
-msgstr "Skok späť"
-
-#: src/frontends/qt4/GuiRef.cpp:325
-msgid "Jump to label"
-msgstr "Skok na značku"
+#: src/frontends/qt4/GuiRef.cpp:344
+msgid "Jump back to the original cursor location"
+msgstr "Skoč naspäť ku pôvodnej polohe kurzora"
 
 #: src/frontends/qt4/GuiRef.cpp:390 src/frontends/qt4/GuiRef.cpp:409
 msgid "<No prefix>"
@@ -29205,6 +29228,11 @@ msgstr "Skončiť LyX"
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 
+#: src/frontends/qt4/GuiView.cpp:1185
+#, c-format
+msgid "%1$s lock"
+msgstr "%1$s blokovaný"
+
 #: src/frontends/qt4/GuiView.cpp:1240
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
@@ -29625,22 +29653,6 @@ msgstr "DocBook Zdroj"
 msgid "Literate Source"
 msgstr "Zdroj Dokumentácie"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1386
-msgid " (version control, locking)"
-msgstr " (kontrola verzií, blokovanie)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1388
-msgid " (version control)"
-msgstr " (kontrola verzií)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1391
-msgid " (changed)"
-msgstr " (zmenený)"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1395
-msgid " (read only)"
-msgstr " (iba pre čítanie)"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:1569
 msgid "Close File"
 msgstr "Zavrieť Súbor"
@@ -29826,6 +29838,10 @@ msgstr "Hľadať"
 #: src/frontends/qt4/PanelStack.cpp:80
 msgid "Clear text"
 msgstr "Text vyprázdniť"
+
+#: src/frontends/qt4/GuiCitation.cpp:107
+msgid "All avail. citations"
+msgstr "Všetky dostupné citácie"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -31532,6 +31548,95 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Search Citation"
+#~ msgstr "Hľadať &citáciu"
+
+#~ msgid "Searc&h:"
+#~ msgstr "Hľ&adať:"
+
+#~ msgid ""
+#~ "Enter the text to search for and press Enter or click the button to search"
+#~ msgstr ""
+#~ "Vložte text na hľadanie a stlačte Enter alebo kliknite tlačidlo aby "
+#~ "hľadanie začalo"
+
+#~ msgid "Click or press Enter in the search box to search"
+#~ msgstr ""
+#~ "Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie začalo"
+
+#~ msgid "&Search"
+#~ msgstr "Hľada&j"
+
+#~ msgid "Search &field:"
+#~ msgstr "P&riestor hľadania:"
+
+#~ msgid "Entry t&ypes:"
+#~ msgstr "&Typy záznamov:"
+
+#~ msgid "For&matting"
+#~ msgstr "&Formátovanie"
+
+#~ msgid "Natbib citation style to use"
+#~ msgstr "Ktorý natbib štýl citátov použiť"
+
+#~ msgid "Text to place before citation"
+#~ msgstr "Text, umiestnený pred citátom"
+
+#~ msgid "Text to place after citation"
+#~ msgstr "Text, umiestnený za citátom"
+
+#~ msgid "List all authors"
+#~ msgstr "Vypísať všetkých autorov"
+
+#~ msgid "&Full author list"
+#~ msgstr "Výpis všetkých a&utorov"
+
+#~ msgid "Force upper case in citation"
+#~ msgstr "Vnútiť veľké písmená do citácie"
+
+#~ msgid "La&bels in:"
+#~ msgstr "&Značky v:"
+
+#~ msgid "&References"
+#~ msgstr "&Referencie"
+
+#~ msgid ""
+#~ "Sort labels in alphabetical order (case-insensitively unless the Case-"
+#~ "sensitive option is checked)"
+#~ msgstr ""
+#~ "Triediť značky podľa abecedy (bez ohľadu na veľkosť písmen, ibaže je "
+#~ "vybrané rozlišovanie)"
+
+#~ msgid "&Sort"
+#~ msgstr "&Triediť"
+
+#~ msgid "Sort labels case-sensitively in alphabetical order"
+#~ msgstr "Triediť značky s ohľadom na veľkosť písmen v abecednom poradí"
+
+#~ msgid "Cas&e-sensitive"
+#~ msgstr "Rozlišovať veľkosť písm&en"
+
+#~ msgid "Cross-reference as it appears in output"
+#~ msgstr "Krížová referencia, ako sa objaví vo výstupe"
+
+#~ msgid "Jump back"
+#~ msgstr "Skok späť"
+
+#~ msgid "Jump to label"
+#~ msgstr "Skok na značku"
+
+#~ msgid " (version control, locking)"
+#~ msgstr " (kontrola verzií, blokovanie)"
+
+#~ msgid " (version control)"
+#~ msgstr " (kontrola verzií)"
+
+#~ msgid " (changed)"
+#~ msgstr " (zmenený)"
+
+#~ msgid " (read only)"
+#~ msgstr " (iba pre čítanie)"
 
 #~ msgid "Format"
 #~ msgstr "Formát"
@@ -34797,9 +34902,6 @@ msgstr "Neznámy používateľ"
 #~ "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
 #~ "Titul'."
 
-#~ msgid "Formatting"
-#~ msgstr "Formátovanie"
-
 #~ msgid "Text a&fter:"
 #~ msgstr "Te&xt za:"
 
@@ -34895,3 +34997,18 @@ msgstr "Neznámy používateľ"
 #~ "\\maketitle. Je to vhodné pre tvorbu vetiev a poznámok v titulnom "
 #~ "materiáli. (Vložením do 'Štandardné rozloženie' signalizujete LyXu vložiť "
 #~ "\\maketitle do výstupu, čo by mohlo byť predčasné.)"
+
+#~ msgid "S&elected Citations:"
+#~ msgstr "&Vybrané Citácie:"
+
+#~ msgid "Force u&pper case"
+#~ msgstr "Vnútiť v&eľké písmo"
+
+#~ msgid "Enter string to filter the label list"
+#~ msgstr "Zadajte reťazec na výber z listiny značiek"
+
+#~ msgid "Case-sensiti&ve"
+#~ msgstr "R&ozlišovať veľkosť písmen"
+
+#~ msgid "Group labels by prefix (e.g. \"sec:\")"
+#~ msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
