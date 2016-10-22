@@ -33,7 +33,8 @@ from parser_tools import find_end_of#, find_token, find_tokens, \
 from parser_tools import find_token, find_end_of_inset, get_value, \
      get_bool_value
 
-#from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
+#  get_ert, lyx2latex, \
 #  lyx2verbatim, length_in_bp, convert_info_insets
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
@@ -356,6 +357,90 @@ def revert_romansh(document):
     	    document.header.insert(l + 1, "\\options romansh")
 
 
+def revert_amharic(document):
+    "Set the document language to English but assure Amharic output"
+
+    if document.language == "amharic":
+        document.language = "english"
+        i = find_token(document.header, "\\language amharic", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{amharic}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{amharic}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
+def revert_asturian(document):
+    "Set the document language to English but assure Asturian output"
+
+    if document.language == "asturian":
+        document.language = "english"
+        i = find_token(document.header, "\\language asturian", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{asturian}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{asturian}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
+def revert_kannada(document):
+    "Set the document language to English but assure Kannada output"
+
+    if document.language == "kannada":
+        document.language = "english"
+        i = find_token(document.header, "\\language kannada", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{kannada}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{kannada}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
+def revert_khmer(document):
+    "Set the document language to English but assure Khmer output"
+
+    if document.language == "khmer":
+        document.language = "english"
+        i = find_token(document.header, "\\language khmer", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{khmer}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{khmer}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
 ##
 # Conversion hub
 #
@@ -366,10 +451,12 @@ convert = [
            [510, [convert_dateinset]],
            [511, [convert_ibranches]],
            [512, [convert_beamer_article_styles]],
-           [513, []]
+           [513, []],
+           [514, []]
           ]
 
 revert =  [
+           [513, [revert_amharic, revert_asturian, revert_kannada, revert_khmer]],
            [512, [revert_bosnian, revert_friulan, revert_macedonian, revert_piedmontese, revert_romansh]],
            [511, [revert_beamer_article_styles]],
            [510, [revert_ibranches]],

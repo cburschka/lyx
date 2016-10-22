@@ -129,6 +129,14 @@ Language american
 	LangCode         en_US
 End
 
+# not supported by babel
+Language amharic
+	GuiName          "Amharic"
+	PolyglossiaName  amharic
+	Encoding         utf8
+	LangCode         am_ET
+End
+
 # In Babel, this is supported since v. 1.8a of babel-greek (2013-12-03)
 # We introduce it with LyX 2.2 to give the support time to settle.
 Language ancientgreek
@@ -178,6 +186,15 @@ Language armenian
 	QuoteStyle       french
 	Encoding         utf8
 	LangCode         hy_AM
+End
+
+# not supported by babel
+Language asturian
+	GuiName          "Asturian"
+	PolyglossiaName  asturian
+	QuoteStyle       french
+	Encoding         iso8859-15
+	LangCode         ast_ES
 End
 
 Language australian
@@ -695,6 +712,14 @@ Language japanese-cjk
 	Requires        CJK
 End
 
+# not supported by babel
+Language kannada
+	GuiName          "Kannada"
+	PolyglossiaName  kannada
+	Encoding         utf8
+	LangCode         kn_IN
+End
+
 # not yet supported by polyglossia
 # not supported by babel
 Language kazakh
@@ -705,6 +730,14 @@ Language kazakh
 	\input{t2aenc.def}
 	\AtBeginDocument{\fontencoding{T2A}\selectfont}
 	EndPostBabelPreamble
+End
+
+# not supported by babel
+Language khmer
+	GuiName          "Khmer"
+	PolyglossiaName  khmer
+	Encoding         utf8
+	LangCode         km_KH
 End
 
 Language korean

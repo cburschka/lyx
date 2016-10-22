@@ -99,10 +99,10 @@ const char * const known_english_quotes_languages[] = {"american", "australian",
 
 /// languages with french quotes (.lyx names)
 const char * const known_french_quotes_languages[] = {"albanian",
-"arabic_arabi", "arabic_arabtex", "basque", "canadien", "catalan", "french", "friulan",
-"galician", "greek", "italian", "norsk", "nynorsk", "piedmontese", "polutonikogreek",
-"russian", "spanish", "spanish-mexico", "turkish", "turkmen", "ukrainian",
-"vietnamese", 0};
+"arabic_arabi", "arabic_arabtex", "asturian", "basque", "canadien", "catalan",
+"french", "friulan", "galician", "greek", "italian", "norsk", "nynorsk",
+"piedmontese", "polutonikogreek", "russian", "spanish", "spanish-mexico",
+"turkish", "turkmen", "ukrainian", "vietnamese", 0};
 
 /// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
@@ -297,38 +297,38 @@ string process_keyval_opt(vector<string> & options, string name)
  * FIXME: support spelling=old for german variants (german vs. ngerman LyX names etc)
  */
 const char * const Preamble::polyglossia_languages[] = {
-"albanian", "american", "ancient", "arabic", "armenian",  "australian",
+"albanian", "american", "amharic", "ancient", "arabic", "armenian", "asturian", "australian",
 "bahasai", "bahasam", "basque", "bengali", "brazil", "brazilian", "breton", "british", "bulgarian",
 "catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "monotonic", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian",
+"icelandic", "interlingua", "irish", "italian", "kannada", "khmer",
 "lao", "latin", "latvian", "lithuanian", "lsorbian", "magyar", "malayalam", "marathi",
 "austrian", "newzealand", "german", "norsk", "nynorsk", "occitan",
 "piedmontese", "polish", "polytonic", "portuges", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovenian", "spanish", "swedish",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
 "ukrainian", "usorbian", "vietnamese", "welsh", 0};
-// not yet supported by LyX: "amharic", "asturian", "syriac", "urdu"
+// not yet supported by LyX: "korean", "nko", "syriac", "urdu"
 
 /**
  * the same as polyglossia_languages with .lyx names
  * please keep this in sync with polyglossia_languages line by line!
  */
 const char * const Preamble::coded_polyglossia_languages[] = {
-"albanian", "american", "ancientgreek", "arabic_arabi", "armenian",  "australian",
+"albanian", "american", "amharic", "ancientgreek", "arabic_arabi", "armenian", "asturian", "australian",
 "bahasa", "bahasam", "basque", "bengali", "brazilian", "brazilian", "breton", "british", "bulgarian",
 "catalan", "coptic", "croatian", "czech", "danish", "divehi", "dutch",
 "english", "esperanto", "estonian", "farsi", "finnish", "french", "friulan",
 "galician", "greek", "greek", "hebrew", "hindi",
-"icelandic", "interlingua", "irish", "italian",
+"icelandic", "interlingua", "irish", "italian", "kannada", "khmer",
 "lao", "latin", "latvian", "lithuanian", "lowersorbian", "magyar", "malayalam", "marathi",
 "naustrian","newzealand", "ngerman", "norsk", "nynorsk", "occitan",
 "piedmontese", "polish", "polutonikogreek", "portuges", "romanian", "romansh", "russian",
 "samin", "sanskrit", "scottish", "serbian", "slovak", "slovene", "spanish", "swedish",
 "tamil", "telugu", "thai", "tibetan", "turkish", "turkmen",
 "ukrainian", "uppersorbian", "vietnamese", "welsh", 0};
-// not yet supported by LyX: "amharic", "asturian", "syriac", "urdu"
+// not yet supported by LyX: "korean-polyglossia", "nko", "syriac", "urdu"
 
 
 bool Preamble::usePolyglossia() const
