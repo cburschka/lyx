@@ -48,6 +48,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix LaTeX output of fixed-width cells with decimal separator (bug 9568).
+
 - Do not hardcode required packages for Note inset.
 
 - Make *-lyxformat-* backup files use .lyx~ extension.

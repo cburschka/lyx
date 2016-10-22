@@ -1032,7 +1032,7 @@ bool Tabular::updateColumnWidths()
 			idx_type const i = cellIndex(r, c);
 			if (columnSpan(i) == 1) {
 				if (getAlignment(i) == LYX_ALIGN_DECIMAL
-					&& cell_info[r][c].decimal_width!=0)
+					&& cell_info[r][c].decimal_width != 0)
 					new_width = max(new_width, cellInfo(i).width
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
 				else
@@ -2735,6 +2735,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << column_info[c].align_special;
 		} else {
 			if (!column_info[c].p_width.zero()) {
+				bool decimal = false;
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
 					os << ">{\\raggedright}";
@@ -2749,24 +2750,49 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 				case LYX_ALIGN_BLOCK:
 				case LYX_ALIGN_LAYOUT:
 				case LYX_ALIGN_SPECIAL:
+					break;
 				case LYX_ALIGN_DECIMAL:
+					os << ">{\\raggedleft}";
+					decimal = true;
 					break;
 				}
 
+				char valign = 'p';
 				switch (column_info[c].valignment) {
 				case LYX_VALIGN_TOP:
-					os << 'p';
+					// this is the default
 					break;
 				case LYX_VALIGN_MIDDLE:
-					os << 'm';
+					valign = 'm';
 					break;
 				case LYX_VALIGN_BOTTOM:
-					os << 'b';
+					valign = 'b';
 					break;
-			}
-				os << '{'
-				   << from_ascii(column_info[c].p_width.asLatexString())
-				   << '}';
+				}
+				os << valign;
+
+				// Fixed-width cells with alignment at decimal separator
+				// are output as two cells of half the width with the decimal
+				// separator as column sep. This effectively puts the content
+				// centered, which differs from the normal decimal sep alignment
+				// and is not ideal, but we cannot do better ATM (see #9568).
+				// FIXME: Implement proper decimal sep alignment, e.g. via siunitx.
+				if (decimal) {
+					docstring const halffixedwith =
+						from_ascii(Length(column_info[c].p_width.value() / 2,
+								  column_info[c].p_width.unit()).asLatexString());
+					os << '{'
+					   << halffixedwith
+					   << '}'
+					   << "@{\\extracolsep{0pt}" << column_info[c].decimal_point << "}"
+					   << valign
+					   << '{'
+					   << halffixedwith
+					   << '}';
+				} else
+					os << '{'
+					   << from_ascii(column_info[c].p_width.asLatexString())
+					   << '}';
 			} else {
 				switch (column_info[c].alignment) {
 				case LYX_ALIGN_LEFT:
