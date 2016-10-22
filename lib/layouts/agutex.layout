@@ -4,7 +4,7 @@
 # AGUTeX textclass definition file.
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 60
+Format 62
 
 Columns			1
 Sides			1
@@ -123,6 +123,7 @@ Style "Author affiliation"
 	  Mandatory	1
 	  LabelString	"Number"
 	  Tooltip	"Consecutive number for the author affiliations"
+	  PassThru	1
 	EndArgument
 	LabelSep	xx
 	LabelType	Static

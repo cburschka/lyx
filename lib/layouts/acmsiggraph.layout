@@ -11,13 +11,13 @@
 # ACM style files can be obtained at
 # http://www.acm.org/sigs/pubs/proceed/template.html
 
-Format 60
+Format 62
 
-Columns                 1
-Sides                   1
+Columns			1
+Sides			1
 SecNumDepth		3
 TocDepth		3
-DefaultStyle            Standard
+DefaultStyle	Standard
 
 ClassOptions
   FontSize		9|10|11|12
@@ -33,15 +33,15 @@ EndFont
 
 
 Style Standard
-  Category              MainText
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
+  Category		MainText
+  Margin		Static
+  LatexType		Paragraph
+  LatexName		dummy
   ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+  ParSkip		0.4
+  Align			Block
+  AlignPossible Block, Left, Right, Center
+  LabelType		No_Label
 End
 
 
@@ -259,16 +259,19 @@ InsetLayout "Flex:CRcat"
 		Mandatory	1
 		LabelString	"CR-number"
 		Tooltip		"Number of the category"
+		PassThru	1
 	EndArgument
 	Argument 2
 		Mandatory	1
 		LabelString	"Subcategory"
 		Tooltip		"Subcategory"
+		PassThru	1
 	EndArgument
 	Argument 3
 		Mandatory	1
 		LabelString	"Third-level"
 		Tooltip		"Third-level of the category"
+		PassThru	1
 	EndArgument
 End
 

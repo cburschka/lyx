@@ -42,7 +42,7 @@
 # 	The new "aastex6.layout" depends on aastex6.cls but inputs this
 #       file for the definitions (cf. LyX ticket #10027)
 
-Format 60
+Format 62
 Columns			1
 Sides			1
 #SecNumDepth		3
@@ -184,6 +184,7 @@ Style Altaffilation
 	  Mandatory	1
 	  LabelString	"Number"
 	  Tooltip	"Consecutive number for the alternative affiliations"
+	  PassThru	1
 	EndArgument
 	LabelSep	xx
 	LabelType	Static

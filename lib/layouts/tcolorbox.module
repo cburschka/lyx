@@ -6,7 +6,7 @@
 #Authors: Jürgen Spitzmüller
 #         Uwe Stöhr <uwestoehr@lyx.org>
 
-Format 60
+Format 62
 
 InsetLayout Flex:Color_Box
   LyXType               custom
@@ -134,12 +134,13 @@ Style New_Color_Box_Type
     LabelString    "Name"
     Tooltip        "Name of the new box type"
     Mandatory      1
-    AutoInsert     1    
+    AutoInsert     1
   EndArgument
   Argument 3
     LabelString    "Arguments"
     Tooltip        "Number of arguments (remove this inset if none!)"
     Requires       4
+    PassThru       1
   EndArgument
   Argument 4
     LabelString    "Default Value"

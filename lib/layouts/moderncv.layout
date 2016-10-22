@@ -7,7 +7,7 @@
 
 
 # General textclass parameters
-Format 60
+Format 62
 	Columns		1
 	Sides		1
 	SecNumDepth	-1
@@ -209,10 +209,12 @@ Style Photo
 	Argument 1
 	  LabelString	"Height"
 	  Tooltip	"Height the photo is resized to"
+	  PassThru	1
 	EndArgument
 	Argument 2
 	  LabelString	"Thickness"
 	  Tooltip	"Thickness of the surrounding frame"
+	  PassThru	1
 	EndArgument
 End
 
@@ -307,6 +309,7 @@ InsetLayout Flex:Column
 	Argument 1
 	  LabelString	"Width"
 	  Tooltip	"Optional width"
+	  PassThru	1
 	EndArgument
 	Argument 2
 	  Mandatory	1

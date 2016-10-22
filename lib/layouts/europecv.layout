@@ -6,7 +6,7 @@
 
 
 # General textclass parameters
-Format 60
+Format 62
 	Columns		1
 	Sides		1
 	SecNumDepth	-1
@@ -110,6 +110,7 @@ Style Picture
 	Argument 1
 	  LabelString	"Size"
 	  Tooltip	"Size the photo is resized to"
+	  PassThru	1
 	EndArgument
 End
 
@@ -159,6 +160,7 @@ Style Item
 	Argument 1
 	  LabelString	"Vertical Space"
 	  Tooltip	"Additional vertical space"
+	  PassThru	1
 	EndArgument
 	Argument 2
 	  Mandatory	1
@@ -218,6 +220,7 @@ Style MotherTongue
 	Argument 1
 	  LabelString	"Vertical Space"
 	  Tooltip	"Additional vertical space"
+	  PassThru	1
 	EndArgument
 	ParSkip		0.4
 	Align		Block

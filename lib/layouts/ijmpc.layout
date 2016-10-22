@@ -12,7 +12,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 
-Format 60
+Format 62
 
 Sides		1
 Columns		1
@@ -309,6 +309,7 @@ Style RomanList
   Argument 1
     LabelString	"Numbering Scheme"
     Tooltip	"Use the largest item number in your list, e.g. '(iv)' for 4 Roman numbered items"
+    PassThru	1
   EndArgument
   NextNoIndent	1
   LeftMargin	MMN
