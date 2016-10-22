@@ -29,6 +29,7 @@
 #define TEXROW_H
 
 #include "support/debug.h"
+#include "support/docstring.h"
 #include "support/types.h"
 
 #include <vector>
