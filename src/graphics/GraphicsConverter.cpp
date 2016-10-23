@@ -229,7 +229,7 @@ static string const move_file(string const & from_file, string const & to_file)
 static void build_conversion_command(string const & command, ostream & script)
 {
 	// Store in the python script
-	script << "\nif os.system(r'" << command << "') != 0:\n";
+	script << "\nif os.system(r'" << commandPrep(command) << "') != 0:\n";
 
 	// Test that this was successful. If not, remove
 	// ${outfile} and exit the python script
