@@ -1,107 +1,113 @@
+/*
+LyX Installer Language File
+Language: Arabic
+Author: Hatim Alahmady
+*/
+
 !insertmacro LANGFILE_EXT "Arabic"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "( —ян» ббг” ќѕг «бЌ«бн)"
 
-${LangFileString} TEXT_WELCOME "” виѕг «д»—ж«ећ ќд«д ўедк…  —гк» »—ж«ећ дкг »к”— и”зид….$\r$\n\
+${LangFileString} TEXT_WELCOME "е–« «бг”«Џѕ ”жЁ н—‘ѕя ќб«б  —ян» $(^NameDA), $\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
-${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+${LangFileString} TEXT_CONFIGURE_LYX "÷»Ў бня ($LaTeXInstalled —»г« нд“б «бЌ“г «бгЁёжѕ…, же–« ”н” џ—ё »Џ÷ «бжё ) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "»д«Ѕ ”я—» «  »«нЋжд..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
-${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
+${LangFileString} TEXT_FINISH_DESKTOP "≈д‘«Ѕ «ќ ’«— ”ЎЌ «бгя »"
+${LangFileString} TEXT_FINISH_WEBSITE "“н«—… lyx.org бг‘«еѕ… ¬ќ— «б«ќ»«—, «бѕЏг ж«б√Ёя«—"
 
-${LangFileString} FileTypeTitle "е” жѕ-дкг"
+#${LangFileString} FileTypeTitle "LyX-Document"
 
 ${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle " —гк» дгд «де” ќѕекжњ"
-${LangFileString} SecFileAssocTitle "едб«  е— »„…"
-${LangFileString} SecDesktopTitle "—е“ ”„Ќ «дег »"
+#${LangFileString} SecAllUsersTitle "Install for all users?"
+${LangFileString} SecFileAssocTitle "File associations"
+${LangFileString} SecDesktopTitle "—г“ ”ЎЌ «бгя »"
 
-${LangFileString} SecCoreDescription "едб«  дкг."
-${LangFileString} SecInstJabRefDescription "еѕк— иЌ—— «д»диЏ—«бк« «дќ«’… »едб«  BibTeX."
-${LangFileString} SecAllUsersDescription " —гк» »—ж«ећ дкг дгд «де” ќѕекж √е дде” ќѕе «дЌ«дк бв„."
-${LangFileString} SecFileAssocDescription "«дедб«  –«  «д«е ѕ«ѕ .lyx ”к е б Ќз«  дв«∆к«л »»—ж«ећ дкг."
-${LangFileString} SecDesktopDescription "—е“ дкг ўдй ”„Ќ «дег »."
+${LangFileString} SecCoreDescription "гбЁ«  бня."
+${LangFileString} SecInstJabRefDescription "≈ѕ«—… Ћ»  «бг—«ћЏ жгЌ—— гбЁ«  bibtex."
+#${LangFileString} SecAllUsersDescription " —ян» бня бе–« «бг” ќѕг √г бћгнЏ «бг” ќѕгнд."
+${LangFileString} SecFileAssocDescription "«бгбЁ«  »б«Ќё… .lyx ”жЁ  Ё Ќ  бЁ«∆н« »»—д«гћ бня."
+${LangFileString} SecDesktopDescription "—г“ бнг Џбм ”ЎЌ «бгя »."
+${LangFileString} SecDictionariesDescription "ёж«гн” «бгѕёё «б≈гб«∆н «б н нгяд  д“нбе« ж —ян»е«."
+${LangFileString} SecThesaurusDescription "ёж«гн” «бгЁ—ѕ«  «б н нгяд  д“нбе« ж —ян»е«."
 
-${LangFileString} EnterLaTeXHeader1 ' и“кў…-д кг'
-${LangFileString} EnterLaTeXHeader2 '«ћўд  и“кў…-д кг «д и“кў… «де” ќѕе бк дкг.'
-${LangFileString} EnterLaTeXFolder 'кегжг зж« «ќ к«— «де”«— ддедб  $\"latex.exe$\" иЌѕѕ д–дг  \
-					 и“кў…-д кг «д–к кћ» «” ќѕ«ез бк дкг.\r\n\
-					«–« гж  д«  ” ќѕе д кг б«ж дкг д« к” „кў «ќ—«ћ «де” жѕ« !\r\n\
+${LangFileString} EnterLaTeXHeader1 ' ж“нЏ… - б ня'
+${LangFileString} EnterLaTeXHeader2 ' Џннд  ж“нЏ… б ня «б н нћ» Џбм бня «” ќѕ«ге«.'
+${LangFileString} EnterLaTeXFolder ' ” ЎнЏ ед«  Џннд г”«— «бгбЁ $\"latex.exe$\" ж»Џѕ –бя  Џннд \
+					 ж“нЏ… б ня «б н нћ» «” ќѕ«ге« гЏ бня.\r\n\
+					≈–« бг  ” ќѕг б ня, бня бд н” ЎнЏ «” ќ—«ћ «бг” дѕ« !\r\n\
 					\r\n\
-					 е «дўЋи— ўдй  и“кў…-д кг \
-					$\"$LaTeXName$\" бк жЎ«ег и ћѕ е”«—з бк «д«”бд.'
-${LangFileString} EnterLaTeXFolderNone 'бке« дк е”«— «дедб  $\"latex.exe$\". иЌѕѕ д–дг \
-					 и“кў…-д кг «д–к кћ» «” ќѕ«ез бк дкг.\r\n\
-					«–« гж  д«  ” ќѕе д кг б≈ж дкг д« к” „кў «ќ—«ћ «де” жѕ« !\r\n\
+					»—д«гћ «б —ян» нЁЌ’  ж“нЏ… б ня \
+					$\"$LaTeXName$\" Ён дў«гя. жнЏ—÷ г”«—е« Ён «б«”Ёб.'
+${LangFileString} EnterLaTeXFolderNone 'Џнд Ён «б«”Ёб г”«— «бгбЁ $\"latex.exe$\". ж»Џѕ –бя Џнд \
+					 ж“нЏ… б ня «б н ” ” ќѕг гЏ бня.\r\n\
+					≈–« бг  ” ќѕг б ня, бня бд н” ЎнЏ «” ќ—«ћ «бг” дѕ« !\r\n\
 					\r\n\
-					де к е «дўЋи— ўдй  и“кў…-д кг бк жЎ«ег.'
-${LangFileString} PathName 'е”«— «дедб  $\"latex.exe$\"'
-${LangFileString} DontUseLaTeX "д«  ” ќѕе д кг"
-${LangFileString} InvalidLaTeXFolder '«дедб $\"latex.exe$\" дк”  бк «де”«— «деЌѕѕ.'
+					»—д«гћ «б —ян» бг нЏЋ— Џбм  ж“нЏ… б ня Ён дў«гя.'
+${LangFileString} PathName 'г”«— «бгбЁ $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "б«  ” ќћг б ня"
+${LangFileString} InvalidLaTeXFolder '«бгбЁ $\"latex.exe$\" бн” Ён «бг”«— «бгЌѕѕ.'
 
-${LangFileString} LatexInfo '”к е «д»ѕЅ » —гк»  и“кў…-д кг »»—ж«ећ $\"MiKTeX$\".$\r$\n\
-				«жв— ўдй “— «д «дк дд≈” е—«— бк ўедк… «д —гк».$\r$\n\
+${LangFileString} LatexInfo '»—д«гћ  —ян»  ж“нЏ… б ня $\"MiKTeX$\" ”жЁ н»ѕ√ «б¬д.$\r$\n\
+				Ён  —ян» «б»—д«гћ Ё÷б« «дё— “— $\"Next$\"  Ён д«Ё–… «б —ян» Џдѕг«  »ѕ√.$\r$\n\
 				$\r$\n\
-				!!! б÷д«л «” ќѕе ћекў «дќк«—«  «д«б —«÷к… ўжѕ  —гк» MiKTeX !!!'
-${LangFileString} LatexError1 'де к е «дўЋи— ўдй  и“кў…-д кг!$\r$\n\
-				д« кегж «” ќѕ«е дкг »ѕиж  и“кў… д кг еЋд MiKTeX!$\r$\n\
-				”к е «ћз«÷ «д —гк».'
+				!!! Ё÷б« ≈ќ — яб «бќн«—«  «б«Ё —«÷н… Ён MiKTeX-installer !!!'
+${LangFileString} LatexError1 'бг н г «бЏЋж— Џбм  ж“нЏ… б ня!$\r$\n\
+				б« нгяд «” ќѕ«г бня »ѕжд жћжѕ  ж“нЏ… б ня гЋб $\"MiKTeX$\"!$\r$\n\
+				ж”жЁ  бџм Џгбн… «б —ян».'
 
-${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
-${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
+${LangFileString} HunspellFailed 'Ё‘б  д“нб ё«гж” «ббџ… $\"$R3$\" .'
+${LangFileString} ThesaurusFailed 'Ё‘б  д“нб ё«гж” гЁ—ѕ«  «ббџ… $\"$R3$\" .'
 
-${LangFileString} JabRefInfo '”к е «д¬ж  —гк» »—ж«ећ JabRef.$\r$\n\
-				 ” „кў «ќ к«— гд «дќк«—«  «Ћж«Ѕ  —гк» »—ж«ећ JabRef.'
-${LangFileString} JabRefError 'де кжћЌ  —гк» »—ж«ећ JabRef!$\r$\n\
-				” ” е— ўедк… «д —гк».$\r$\n\
-				Ќ«ид  —гк» JabRef д«Ќв«л.'
+${LangFileString} JabRefInfo '»—д«гћ  —ян» «б»—д«гћ $\"JabRef$\" ”н»ѕ√.$\r$\n\
+				нгядя ≈ќ н«— ћгнЏ «бќн«—«  «б«Ё —«÷н… Ён JabRef-installer.'
+${LangFileString} JabRefError '«б»—д«гћ $\"JabRef$\" бг ндћЌ  —ян»е!$\r$\n\
+				≈” г—«— «б —ян» Џбм √н Ќ«б.$\r$\n\
+				Ќ«жб  —ян» JabRef б«Ќё«.'
 
-${LangFileString} LatexConfigInfo "«дўедк… «д «дк… ” ” Џ—в »ў÷ «див ."
+#${LangFileString} LatexConfigInfo "÷»Ў бня ”н” џ—ё жЁ ."
 
-${LangFileString} MiKTeXPathInfo "дгк кгиж гд е” ќѕе в«ѕ—« ўдй  ќ’к’ miktex д«Ќв«л Ќ”» «Ќ к«ћ« з $\r$\n\
-					еж «д÷—и—к г «»… ’д«Ќк«  «де” ќѕекж бк ећдѕ  —гк» MiKTeX$\r$\n\
-					$MiKTeXPath $\r$\n\
-					ибк «дећдѕ«  «дб—ўк…."
-${LangFileString} MiKTeXInfo ' и“кў…-д кг MiKTeX  ” ќѕе «к÷«л еж в»д дкг.$\r$\n\
-				иеж «деи’й »з д Ћ»к  «д ЌѕкЋ«  «де «Ќ… да miktex - ≈” ќѕ«е »—ж«ећ $\"еў«дћ  ЌѕкЋ miktex$\"$\r$\n\
-				в»д «” ќѕ«е дкг д√ид е—….$\r$\n\
-				зд  —Џ» »«д Ќвв еж «д ЌѕкЋ«  «д¬жњ'
+#${LangFileString} MiKTeXPathInfo "гд √ћб  ќ’н’ MiKTeX бяб г” ќѕг нћ»$\r$\n\
+#					нћ» ≈ЏЎ«Ѕ ’б«Ќн… «бя «»… бяб «бг” ќѕгнд Ён гћбѕ  —ян» MiKTeX$\'s  $\r$\n\
+#					$MiKTeXPath $\r$\n\
+#					ж«бгћбѕ«  «бЁ—Џн…."
+${LangFileString} MiKTeXInfo ' ж“нЏ… б ня $\"MiKTeX$\"  ж“нЏ… бня ”жЁ  ” ќѕг √н÷« гЏ бня.$\r$\n\
+				нЁ÷б  —ян»  ЌѕнЋ г«ня  ня” »«” ќѕ«г $\"MiKTeX Update Wizard$\"$\r$\n\
+				ё»б «” ќѕ«г бня Ён √жб г—….$\r$\n\
+				еб  —џ» »ЁЌ’ MiKTeX updates?'
 
-${LangFileString} ModifyingConfigureFailed "Could not set 'path_prefix' in the configure script"
-${LangFileString} RunConfigureFailed "д« кегж  жбк– «да configure script"
-${LangFileString} NotAdmin "кћ» √ж  гиж »’д«Ќк… «деѕк— дгк ддвк«е »ўедк… «д —гк»!"
-${LangFileString} InstallRunning " е »«дбўд «д»ѕЅ »ўедк… «д —гк»!"
-${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is already installed!$\r$\n\
-				Installing over existing installations is not recommended if the installed version$\r$\n\
-				is a test release or if you have problems with your existing LyX installation.$\r$\n\
-				In these cases better reinstall LyX.$\r$\n\
-				Dou you nevertheles want to install LyX over the existing version?"
-${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
-				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
+${LangFileString} ModifyingConfigureFailed "бг  Џнд 'path_prefix' Ён ”я—н»  «б÷»Ў"
+#${LangFileString} RunConfigureFailed "бг ндЁ– ”я—н»  «б÷»Ў"
+${LangFileString} InstallRunning "«бг—я» нЏгб Ќ«бн«!"
+${LangFileString} AlreadyInstalled "бня ${APP_SERIES_KEY2}  г  —ян»е »«бЁЏб!$\r$\n\
+				«б —ян» Џбм «бд”ќ… «бЌ«бн… џн— гЁ÷б ≈–« я«д  «бд”ќ… «бЌ«бн…$\r$\n\
+				 ћ—н»н… √ж »е« г‘«яб.$\r$\n\
+				Ён е–е «бЌ«б… гд «б√Ё÷б ≈Џ«ѕ… «б —ян».$\r$\n\
+				еб  —нѕ »«б—џг гд –бя  —ян» бня Џбм «бд”ќ… «бЌ«бн…њ"
+${LangFileString} NewerInstalled " Ќ«жб  —ян» д”ќ… бня √ёѕг гд «бгжћжѕ… Ќ«бн«.$\r$\n\
+				  ≈–« яд   —нѕе« »«б √янѕ, Џбня Ќ–Ё «бд”ќ… «бЌ«бн… $OldVersionNumber √жб«."
 
-${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
-						MiKTeX was installed with administrator privileges but you are installing LyX without them."
+${LangFileString} MultipleIndexesNotAvailable "ѕЏг «бЁе«—” «бг Џѕѕ… Ён «бг” дѕ бд  яжд г жЁ—… б√д $\r$\n\
+						MiKTeX  г  —ян»е »’б«Ќн«  «бгѕн— »ндг« бня  г  —ян»е »ѕжде«."
 
-${LangFileString} FinishPageMessage " з«жкж«!  е  —гк» дкг »жћ«Ќ.$\r$\n\
-					$\r$\n\
-					( ‘Џкд дкг д√ид е—… вѕ к√ќ– ўѕ… Ћи«жк.)"
-${LangFileString} FinishPageRun " ‘Џкд дкг"
+#${LangFileString} FinishPageMessage "г»—жя!  г  —ян» бня »дћ«Ќ.$\r$\n\
+#					$\r$\n\
+#					(«б»ѕЅ «б√жб ббня —»г« н” џ—ё Ћж«д.)"
+${LangFileString} FinishPageRun "»ѕЅ бня"
 
-${LangFileString} UnNotInRegistryLabel "де к е «дўЋи— ўдй дкг бк «д—кћ” —к.$\r$\n\
-					де к е Ќ–б «ќ ’«—«  дкг еж ”„Ќ «дег » ив«∆е… «д»—«ећ."
-${LangFileString} UnInstallRunning "кћ» «Џд«в дкг «ид«л!"
-${LangFileString} UnNotAdminLabel "кћ» √ж  едг ’д«Ќк«  «деѕк— дд»ѕЅ »ўедк… «дЌ–б!"
-${LangFileString} UnReallyRemoveLabel "зд  —Џ» »Ќ–б »—ж«ећ дкг »«дг«ед еў гд «дге»ижж  «дќ«’ »зњ"
-${LangFileString} UnLyXPreferencesTitle 'LyX$\'s  б÷кд«  «де” ќѕе'
+${LangFileString} UnNotInRegistryLabel "бг н г «бЏЋж— Џбм бня Ён ”ћб «бдў«г.$\r$\n\
+					≈ќ ’«—«  ”ЎЌ «бгя » жё«∆г… «б»ѕЅ бг н г Ќ–Ёе«."
+${LangFileString} UnInstallRunning "нћ» ≈џб«ё бня √жб«!"
+${LangFileString} UnNotAdminLabel "нћ» √д няжд бѕня ’б«Ќн«  «бгѕн— бян  Ќ–Ё бня!"
+${LangFileString} UnReallyRemoveLabel "еб  —џ» »≈“«б… бня гЏ яб гяжд« ењ"
+${LangFileString} UnLyXPreferencesTitle ' Ё÷нб«  г” ќѕг бня'
 
-${LangFileString} SecUnMiKTeXDescription " е «“«д…  и“ў- д кг MiKTeX."
-${LangFileString} SecUnJabRefDescription " е «“«д… еѕк— «д»«»диЏ—«бк« JabRef."
-${LangFileString} SecUnPreferencesDescription 'Ќ–б ећдѕ  ‘гкд дкг$\r$\n\
-						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-						дгд «де” ќѕекж.'
-${LangFileString} SecUnProgramFilesDescription "«“«д… дкг игд «дге»ижж  «дќ«’… »з."
-
+${LangFileString} SecUnMiKTeXDescription "≈“«б…  ж“нЏ… б ня MiKTeX."
+${LangFileString} SecUnJabRefDescription "≈“«б… гѕн— Ћ»  «бг—«ћЏ JabRef."
+${LangFileString} SecUnPreferencesDescription 'Ќ–Ё LyX$\'s ÷»Ў$\r$\n\
+						(гћбѕ $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						бя «ж бяб «бг” ќѕгнд (≈–« яд  «бгѕн—).'
+${LangFileString} SecUnProgramFilesDescription "≈“«б… бня гЏ яб гяжд« е."
