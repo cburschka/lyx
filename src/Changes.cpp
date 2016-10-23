@@ -428,7 +428,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 		// close \lyxadded or \lyxdeleted
 		os << '}';
 		column++;
-		if (oldChange.type == Change::DELETED)
+		if (oldChange.type == Change::DELETED && !runparams.wasDisplayMath)
 			--runparams.inulemcmd;
 	}
 
@@ -440,7 +440,8 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	docstring macro_beg;
 	if (change.type == Change::DELETED) {
 		macro_beg = from_ascii("\\lyxdeleted{");
-		++runparams.inulemcmd;
+		if (!runparams.inDisplayMath)
+			++runparams.inulemcmd;
 	}
 	else if (change.type == Change::INSERTED)
 		macro_beg = from_ascii("\\lyxadded{");

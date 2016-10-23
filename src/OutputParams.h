@@ -187,10 +187,15 @@ public:
 	*/
 	std::shared_ptr<ExportData> exportdata;
 
-	/** Whether we are inside a display math inset.
+	/** Whether we are entering a display math inset.
 	 *  Needed to correctly strike out deleted math in change tracking.
 	 */
 	mutable bool inDisplayMath;
+
+	/** Whether we are leaving a display math inset.
+	 *  Needed to correctly track nested ulem commands in change tracking.
+	 */
+	mutable bool wasDisplayMath;
 
 	/** Whether we are inside a comment inset. Insets that are including
 	 *  external files like InsetGraphics, InsetInclude and InsetExternal

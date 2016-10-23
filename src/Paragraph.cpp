@@ -2389,6 +2389,7 @@ void Paragraph::latex(BufferParams const & bparams,
 							    runparams);
 		}
 
+		runparams.wasDisplayMath = runparams.inDisplayMath;
 		runparams.inDisplayMath = false;
 		bool deleted_display_math = false;
 
