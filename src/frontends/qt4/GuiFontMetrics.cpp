@@ -146,7 +146,16 @@ int GuiFontMetrics::width(docstring const & s) const
 	int * pw = strwidth_cache_[qba];
 	if (pw)
 		return *pw;
-	int w = metrics_.width(toqstr(s));
+	// For some reason QMetrics::width returns a wrong value with Qt5
+	// int w = metrics_.width(toqstr(s));
+	QTextLayout tl;
+	tl.setText(toqstr(s));
+	tl.setFont(font_);
+	tl.beginLayout();
+	QTextLine line = tl.createLine();
+	tl.endLayout();
+	int w = int(line.naturalTextWidth());
+
 	strwidth_cache_.insert(qba, new int(w), qba.size());
 	return w;
 }
@@ -196,8 +205,6 @@ GuiFontMetrics::getTextLayout(docstring const & s, QFont font,
 int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
                           double const wordspacing) const
 {
-	QFont copy = font_;
-	copy.setWordSpacing(wordspacing);
 	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
 	return static_cast<int>(tl.lineForTextPosition(pos).cursorToX(pos));
 }
@@ -228,10 +235,27 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	*/
 	// Unicode character ZERO WIDTH NO-BREAK SPACE
 	QChar const zerow_nbsp(0xfeff);
-	tl.setText(zerow_nbsp + toqstr(s) + zerow_nbsp);
-	tl.setFont(font_);
+	QString str = zerow_nbsp + toqstr(s) + zerow_nbsp;
+#if 1
+	/* Use unicode override characters to enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	if (rtl)
+		// Right-to-left override: forces to draw text right-to-left
+		str = QChar(0x202E) + str;
+	else
+		// Left-to-right override: forces to draw text left-to-right
+		str =  QChar(0x202D) + str;
+	int const offset = 2;
+#else
+	// Alternative version that breaks with Qt5 and arabic text (#10436)
 	// Note that both setFlags and the enums are undocumented
 	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	int const offset = 1;
+#endif
+
+	tl.setText(str);
+	tl.setFont(font_);
 	QTextOption to;
 	to.setWrapMode(force ? QTextOption::WrapAnywhere : QTextOption::WordWrap);
 	tl.setTextOption(to);
@@ -240,11 +264,11 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	line.setLineWidth(x);
 	tl.createLine();
 	tl.endLayout();
-	if ((force && line.textLength() == 1) || int(line.naturalTextWidth()) > x)
+	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
 		return false;
 	x = int(line.naturalTextWidth());
-	// The -1 is here to account for the leading zerow_nbsp.
-	s = s.substr(0, line.textLength() - 1);
+	// The offset is here to account for the extra leading characters.
+	s = s.substr(0, line.textLength() - offset);
 	return true;
 }
 
