@@ -1395,7 +1395,7 @@ void GuiWorkArea::updateWindowTitle()
 		d->read_only_ = buf.isReadonly();
 		d->vc_status_ = buf.lyxvc().vcstatus();
 		d->clean_ = buf.isClean();
-		titleChanged(this);
+		Q_EMIT titleChanged(this);
 	}
 }
 
