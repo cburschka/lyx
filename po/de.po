@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-21 22:08+0200\n"
-"PO-Revision-Date: 2016-10-21 22:10+0100\n"
+"POT-Creation-Date: 2016-10-23 08:47+0200\n"
+"PO-Revision-Date: 2016-10-23 08:48+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -690,7 +690,7 @@ msgstr "A&lle hinzufügen"
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2150 src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3157
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3166
 #: src/frontends/qt4/GuiView.cpp:2376 src/frontends/qt4/GuiView.cpp:2526
 #: src/frontends/qt4/GuiView.cpp:2550 src/frontends/qt4/GuiView.cpp:2564
 #: src/frontends/qt4/GuiView.cpp:2677 src/frontends/qt4/GuiView.cpp:2721
@@ -740,7 +740,7 @@ msgstr "&Größe:"
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2334 src/frontends/qt4/GuiPrefs.cpp:2447
 #: src/frontends/qt4/GuiPrintNomencl.cpp:47
-#: src/frontends/qt4/GuiViewSource.cpp:327
+#: src/frontends/qt4/GuiViewSource.cpp:341
 msgid "Default"
 msgstr "Standard"
 
@@ -4291,8 +4291,7 @@ msgstr "&Verfügbare Indexe:"
 msgid "Select the index that shall be printed at this place of the document."
 msgstr "Wählen Sie, welcher Index an dieser Stelle ausgegeben werden soll."
 
-#: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1428 src/frontends/qt4/GuiPrefs.cpp:254
+#: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
 msgstr "Ausgabe"
 
@@ -4507,7 +4506,7 @@ msgstr ""
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
 #: src/frontends/qt4/GuiSpellchecker.cpp:251
 #: src/frontends/qt4/GuiSpellchecker.cpp:258
-#: src/frontends/qt4/GuiSpellchecker.cpp:539
+#: src/frontends/qt4/GuiSpellchecker.cpp:541
 msgid "Spell Checker"
 msgstr "Rechtschreibprüfung"
 
@@ -17880,8 +17879,8 @@ msgid "Outline Pane|u"
 msgstr "Gliederung des Dokuments|G"
 
 #: lib/ui/stdmenus.inc:339
-msgid "Source Pane|S"
-msgstr "Quelltext-Panel|Q"
+msgid "Code Preview Pane|P"
+msgstr "Quelltext-Vorschau|Q"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Messages Pane|g"
@@ -23694,16 +23693,16 @@ msgstr "%1$s und %2$s"
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/BiblioInfo.cpp:493 src/BiblioInfo.cpp:536 src/BiblioInfo.cpp:547
-#: src/BiblioInfo.cpp:598 src/BiblioInfo.cpp:602
+#: src/BiblioInfo.cpp:503 src/BiblioInfo.cpp:546 src/BiblioInfo.cpp:557
+#: src/BiblioInfo.cpp:608 src/BiblioInfo.cpp:612
 msgid "ERROR!"
 msgstr "FEHLER!"
 
-#: src/BiblioInfo.cpp:860
+#: src/BiblioInfo.cpp:924
 msgid "No year"
 msgstr "Kein Jahr"
 
-#: src/BiblioInfo.cpp:870
+#: src/BiblioInfo.cpp:934
 msgid "Bibliography entry not found!"
 msgstr "Literaturverzeichnis-Eintrag nicht gefunden!"
 
@@ -24486,7 +24485,7 @@ msgstr "Dokument ist schreibgeschützt"
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1082 src/BufferView.cpp:2019
+#: src/BufferView.cpp:1082 src/BufferView.cpp:2003
 #: src/frontends/qt4/GuiView.cpp:3634 src/frontends/qt4/GuiView.cpp:3712
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
@@ -24504,86 +24503,86 @@ msgstr "Nichts mehr rückgängig zu machen"
 msgid "No further redo information"
 msgstr "Nichts mehr zu wiederholen"
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1570
 msgid "Mark off"
 msgstr "Marke aus"
 
-#: src/BufferView.cpp:1592
+#: src/BufferView.cpp:1576
 msgid "Mark on"
 msgstr "Marke ein"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1583
 msgid "Mark removed"
 msgstr "Marke entfernt"
 
-#: src/BufferView.cpp:1602
+#: src/BufferView.cpp:1586
 msgid "Mark set"
 msgstr "Marke gesetzt"
 
-#: src/BufferView.cpp:1658
+#: src/BufferView.cpp:1642
 msgid "Statistics for the selection:"
 msgstr "Statistik für die Auswahl:"
 
-#: src/BufferView.cpp:1660
+#: src/BufferView.cpp:1644
 msgid "Statistics for the document:"
 msgstr "Statistik für das Dokument:"
 
-#: src/BufferView.cpp:1663
+#: src/BufferView.cpp:1647
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d Wörter"
 
-#: src/BufferView.cpp:1665
+#: src/BufferView.cpp:1649
 msgid "One word"
 msgstr "Ein Wort"
 
-#: src/BufferView.cpp:1668
+#: src/BufferView.cpp:1652
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1655
 msgid "One character (including blanks)"
 msgstr "Ein Zeichen (inklusive Leerzeichen)"
 
-#: src/BufferView.cpp:1674
+#: src/BufferView.cpp:1658
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1677
+#: src/BufferView.cpp:1661
 msgid "One character (excluding blanks)"
 msgstr "Ein Zeichen (ohne Leerzeichen)"
 
-#: src/BufferView.cpp:1679
+#: src/BufferView.cpp:1663
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1874
+#: src/BufferView.cpp:1858
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 "'inset-forall' wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:1876
+#: src/BufferView.cpp:1860
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:1884
+#: src/BufferView.cpp:1868
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:1891 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1875 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits."
 
-#: src/BufferView.cpp:2376
+#: src/BufferView.cpp:2360
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/BufferView.cpp:2377
+#: src/BufferView.cpp:2361
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -24591,22 +24590,22 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/BufferView.cpp:2758
+#: src/BufferView.cpp:2742
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2769
+#: src/BufferView.cpp:2753
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2771
+#: src/BufferView.cpp:2755
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3177
+#: src/BufferView.cpp:3161
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -24617,11 +24616,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3179
+#: src/BufferView.cpp:3163
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3186
+#: src/BufferView.cpp:3170
 #, c-format
 msgid ""
 "%1$s\n"
@@ -24630,15 +24629,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3187 src/output.cpp:39
+#: src/BufferView.cpp:3171 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3194
+#: src/BufferView.cpp:3178
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3195
+#: src/BufferView.cpp:3179
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -26817,12 +26816,14 @@ msgstr ""
 "Fortfahren?"
 
 #: src/VCBackend.cpp:1520 src/VCBackend.cpp:1524
-#: src/frontends/qt4/FindAndReplace.cpp:380 src/frontends/qt4/GuiSearch.cpp:140
+#: src/frontends/qt4/FindAndReplace.cpp:380 src/lyxfind.cpp:163
+#: src/lyxfind.cpp:431 src/lyxfind.cpp:459
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1520 src/VCBackend.cpp:1524
-#: src/frontends/qt4/FindAndReplace.cpp:380 src/frontends/qt4/GuiSearch.cpp:140
+#: src/frontends/qt4/FindAndReplace.cpp:380 src/lyxfind.cpp:163
+#: src/lyxfind.cpp:431 src/lyxfind.cpp:459
 msgid "&No"
 msgstr "&Nein"
 
@@ -27019,7 +27020,8 @@ msgstr "Erweiterte Suche läuft (drücken Sie ESC, um abzubrechen) ..."
 msgid "Advanced search cancelled by user"
 msgstr "Erweiterte Suche durch den Benutzer abgebrochen"
 
-#: src/frontends/qt4/FindAndReplace.cpp:379 src/frontends/qt4/GuiSearch.cpp:139
+#: src/frontends/qt4/FindAndReplace.cpp:379 src/lyxfind.cpp:162
+#: src/lyxfind.cpp:430 src/lyxfind.cpp:458
 msgid "Wrap search?"
 msgstr "Von vorne suchen?"
 
@@ -27161,7 +27163,7 @@ msgstr "LyX: %1$s"
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:664 src/frontends/qt4/GuiPrefs.cpp:3265
+#: src/frontends/qt4/GuiApplication.cpp:664 src/frontends/qt4/GuiPrefs.cpp:3274
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -27269,16 +27271,16 @@ msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2178
-#: src/frontends/qt4/GuiApplication.cpp:2193
+#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2219
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2661
+#: src/frontends/qt4/GuiApplication.cpp:2687
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2671
+#: src/frontends/qt4/GuiApplication.cpp:2697
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -27290,12 +27292,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2675
-#: src/frontends/qt4/GuiApplication.cpp:2681
+#: src/frontends/qt4/GuiApplication.cpp:2701
+#: src/frontends/qt4/GuiApplication.cpp:2707
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2679
+#: src/frontends/qt4/GuiApplication.cpp:2705
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -27303,12 +27305,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:2971
-#: src/frontends/qt4/GuiApplication.cpp:2983
+#: src/frontends/qt4/GuiApplication.cpp:2997
+#: src/frontends/qt4/GuiApplication.cpp:3009
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2972
+#: src/frontends/qt4/GuiApplication.cpp:2998
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27319,13 +27321,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2978
+#: src/frontends/qt4/GuiApplication.cpp:3004
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2979
+#: src/frontends/qt4/GuiApplication.cpp:3005
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27334,7 +27336,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2984
+#: src/frontends/qt4/GuiApplication.cpp:3010
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -28068,6 +28070,10 @@ msgstr "Auflistungszeichen"
 #: src/frontends/qt4/GuiDocument.cpp:1427 src/frontends/qt4/qt_helpers.cpp:637
 msgid "Branches"
 msgstr "Zweige"
+
+#: src/frontends/qt4/GuiDocument.cpp:1428
+msgid "Formats[[output]]"
+msgstr "Formate"
 
 #: src/frontends/qt4/GuiDocument.cpp:1429
 msgid "LaTeX Preamble"
@@ -28835,7 +28841,7 @@ msgid "Give a filename for the LyX server pipe"
 msgstr "Geben Sie einen Dateinamen für die LyX-Server-Weiterleitung an"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1495
-#: src/frontends/qt4/GuiSpellchecker.cpp:592
+#: src/frontends/qt4/GuiSpellchecker.cpp:594
 msgid "Spellchecker"
 msgstr "Rechtschreibprüfung"
 
@@ -28949,8 +28955,8 @@ msgstr "System und Verschiedenes"
 msgid "Res&tore"
 msgstr "Zurüc&ksetzen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3128 src/frontends/qt4/GuiPrefs.cpp:3134
-#: src/frontends/qt4/GuiPrefs.cpp:3197
+#: src/frontends/qt4/GuiPrefs.cpp:3128 src/frontends/qt4/GuiPrefs.cpp:3137
+#: src/frontends/qt4/GuiPrefs.cpp:3143 src/frontends/qt4/GuiPrefs.cpp:3206
 msgid "Failed to create shortcut"
 msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 
@@ -28958,11 +28964,17 @@ msgstr "Erstellen des Tastenkürzels fehlgeschlagen"
 msgid "Unknown or invalid LyX function"
 msgstr "Unbekannte oder ungültige LyX-Funktion."
 
-#: src/frontends/qt4/GuiPrefs.cpp:3135
+#: src/frontends/qt4/GuiPrefs.cpp:3138
+msgid "This LyX function is hidden and cannot be bound."
+msgstr ""
+"Dies ist eine versteckte LyX-Funktion. Sie kann nicht mit einer "
+"Tastenkombination belegt werden."
+
+#: src/frontends/qt4/GuiPrefs.cpp:3144
 msgid "Invalid or empty key sequence"
 msgstr "Ungültige oder leere Tastensequenz"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3150
+#: src/frontends/qt4/GuiPrefs.cpp:3159
 #, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
@@ -28972,43 +28984,43 @@ msgstr ""
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3156
+#: src/frontends/qt4/GuiPrefs.cpp:3165
 msgid "Redefine shortcut?"
 msgstr "Tastenkürzel neu definieren?"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3157
+#: src/frontends/qt4/GuiPrefs.cpp:3166
 msgid "&Redefine"
 msgstr "&Neu Definieren"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3198
+#: src/frontends/qt4/GuiPrefs.cpp:3207
 msgid "Can not insert shortcut to the list"
 msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3229
+#: src/frontends/qt4/GuiPrefs.cpp:3238
 msgid "Identity"
 msgstr "Identität"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3453
+#: src/frontends/qt4/GuiPrefs.cpp:3462
 msgid "Choose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3454
+#: src/frontends/qt4/GuiPrefs.cpp:3463
 msgid "LyX bind files (*.bind)"
 msgstr "LyX-Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3460
+#: src/frontends/qt4/GuiPrefs.cpp:3469
 msgid "Choose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3461
+#: src/frontends/qt4/GuiPrefs.cpp:3470
 msgid "LyX UI files (*.ui)"
 msgstr "LyX-UI-Dateien (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3467
+#: src/frontends/qt4/GuiPrefs.cpp:3476
 msgid "Choose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3468
+#: src/frontends/qt4/GuiPrefs.cpp:3477
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
@@ -29076,26 +29088,6 @@ msgstr "<Ohne Präfix>"
 msgid "Find and Replace"
 msgstr "Suchen und Ersetzen"
 
-#: src/frontends/qt4/GuiSearch.cpp:134
-msgid ""
-"End of file reached while searching forward.\n"
-"Continue searching from the beginning?"
-msgstr ""
-"Das Ende des Dokuments wurde bei der Vorwärtssuche erreicht.\n"
-"Suche am Anfang fortsetzen?"
-
-#: src/frontends/qt4/GuiSearch.cpp:137
-msgid ""
-"Beginning of file reached while searching backward.\n"
-"Continue searching from the end?"
-msgstr ""
-"Der Anfang des Dokuments wurde bei der Rückwärtssuche erreicht.\n"
-"Suche am Ende fortsetzen?"
-
-#: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:368 src/lyxfind.cpp:386
-msgid "String not found."
-msgstr "Die Zeichenkette wurde nicht gefunden."
-
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
 msgstr "Dokument exportieren oder senden"
@@ -29119,7 +29111,7 @@ msgid ""
 msgstr ""
 "Das Ende des Dokuments wurde erreicht. Möchten Sie am Anfang weitermachen?"
 
-#: src/frontends/qt4/GuiSpellchecker.cpp:540
+#: src/frontends/qt4/GuiSpellchecker.cpp:542
 msgid "Spell checker has no dictionaries."
 msgstr "Das Rechtschreibprogramm findet keine Wörterbücher."
 
@@ -29977,32 +29969,28 @@ msgstr "Bitte geben Sie das Dokument zunächst aus."
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiViewSource.cpp:398
-#: src/frontends/qt4/GuiViewSource.cpp:443
-msgid "LaTeX Source"
-msgstr "LaTeX-Quelle"
+#: src/frontends/qt4/GuiViewSource.cpp:412
+#: src/frontends/qt4/GuiViewSource.cpp:457
+msgid "Code Preview"
+msgstr "Quelltext-Vorschau"
 
-#: src/frontends/qt4/GuiViewSource.cpp:445
-msgid "DocBook Source"
-msgstr "DocBook-Quelle"
+#: src/frontends/qt4/GuiViewSource.cpp:458
+msgid "%1[[preview format name]] Preview"
+msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiViewSource.cpp:447
-msgid "Literate Source"
-msgstr "Literarische Quelle"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:1550
+#: src/frontends/qt4/GuiWorkArea.cpp:1575
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2005
+#: src/frontends/qt4/GuiWorkArea.cpp:2030
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2024
+#: src/frontends/qt4/GuiWorkArea.cpp:2049
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2026
+#: src/frontends/qt4/GuiWorkArea.cpp:2051
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
@@ -31230,22 +31218,22 @@ msgstr "Programm-Listings"
 msgid "Unknown TOC type"
 msgstr "Unbekannter Inhaltsverzeichnis-Typ"
 
-#: src/insets/InsetTabular.cpp:4565
+#: src/insets/InsetTabular.cpp:4591
 msgid "Selections not supported."
 msgstr ""
 "Gleichzeitiges Verschieben mehrerer Zeilen/Spalten ist leider nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4587
+#: src/insets/InsetTabular.cpp:4613
 msgid "Multi-column in current or destination column."
 msgstr ""
 "Diese oder die Zielspalte ist eine Mehrfachspalte. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:4599
+#: src/insets/InsetTabular.cpp:4625
 msgid "Multi-row in current or destination row."
 msgstr ""
 "Diese oder die Zielzeile ist eine Mehrfachzeile. Verschieben nicht möglich."
 
-#: src/insets/InsetTabular.cpp:5033
+#: src/insets/InsetTabular.cpp:5059
 msgid "Selection size should match clipboard content."
 msgstr ""
 "Die Anzahl der ausgewählten Zellen stimmt nicht mit dem Inhalt der "
@@ -31379,28 +31367,48 @@ msgstr "Fehler beim Suchen"
 msgid "Search string is empty"
 msgstr "Die Such-Zeichenkette ist leer"
 
-#: src/lyxfind.cpp:371
+#: src/lyxfind.cpp:157 src/lyxfind.cpp:428
+msgid ""
+"End of file reached while searching forward.\n"
+"Continue searching from the beginning?"
+msgstr ""
+"Das Ende des Dokuments wurde bei der Vorwärtssuche erreicht.\n"
+"Suche am Anfang fortsetzen?"
+
+#: src/lyxfind.cpp:160 src/lyxfind.cpp:456
+msgid ""
+"Beginning of file reached while searching backward.\n"
+"Continue searching from the end?"
+msgstr ""
+"Der Anfang des Dokuments wurde bei der Rückwärtssuche erreicht.\n"
+"Suche am Ende fortsetzen?"
+
+#: src/lyxfind.cpp:396 src/lyxfind.cpp:414
+msgid "String not found."
+msgstr "Die Zeichenkette wurde nicht gefunden."
+
+#: src/lyxfind.cpp:399
 msgid "String found."
 msgstr "Zeichenkette gefunden."
 
-#: src/lyxfind.cpp:373
+#: src/lyxfind.cpp:401
 msgid "String has been replaced."
 msgstr "Die Zeichenkette wurde ersetzt."
 
-#: src/lyxfind.cpp:376
+#: src/lyxfind.cpp:404
 #, c-format
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1450
+#: src/lyxfind.cpp:1514
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1455
+#: src/lyxfind.cpp:1519
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1459
+#: src/lyxfind.cpp:1523
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -31901,6 +31909,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Source Pane|S"
+#~ msgstr "Quelltext-Panel|Q"
+
+#~ msgid "LaTeX Source"
+#~ msgstr "LaTeX-Quelle"
+
+#~ msgid "DocBook Source"
+#~ msgstr "DocBook-Quelle"
+
+#~ msgid "Literate Source"
+#~ msgstr "Literarische Quelle"
 
 #~ msgid "&Search Citation"
 #~ msgstr "Verweis &suchen"
