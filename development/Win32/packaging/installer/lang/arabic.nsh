@@ -12,18 +12,18 @@ ${LangFileString} TEXT_WELCOME "Â–« «·„”«⁄œ ”Ê› Ì—‘œﬂ Œ·«·  —ﬂÌ» $(^NameDA), $\r
 				$\r$\n\
 				$_CLICK"
 
-#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB " ÕœÌÀ ﬁ«⁄œ… »Ì«‰«  MiKTeX..."
 ${LangFileString} TEXT_CONFIGURE_LYX "÷»ÿ ·Ìﬂ ($LaTeXInstalled —»„« Ì‰“· «·Õ“„ «·„›ﬁÊœ…, ÊÂ–« ”Ì” €—ﬁ »⁄÷ «·Êﬁ ) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "»‰«¡ ”ﬂ—» «  »«ÌÀÊ‰..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "≈‰‘«¡ «Œ ’«— ”ÿÕ «·„ﬂ »"
 ${LangFileString} TEXT_FINISH_WEBSITE "“Ì«—… lyx.org ·„‘«Âœ… ¬Œ— «·«Œ»«—, «·œ⁄„ Ê«·√›ﬂ«—"
 
-#${LangFileString} FileTypeTitle "LyX-Document"
+#${LangFileString} FileTypeTitle "„” ‰œ - ·Ìﬂ"
 
 ${LangFileString} SecInstJabRefTitle "JabRef"
-#${LangFileString} SecAllUsersTitle "Install for all users?"
-${LangFileString} SecFileAssocTitle "File associations"
+#${LangFileString} SecAllUsersTitle " —ﬂÌ» ·ﬂ· «·„” Œœ„Ì‰ø"
+${LangFileString} SecFileAssocTitle "«ﬁ —«‰ «·„·›"
 ${LangFileString} SecDesktopTitle "—„“ ”ÿÕ «·„ﬂ »"
 
 ${LangFileString} SecCoreDescription "„·›«  ·Ìﬂ."
