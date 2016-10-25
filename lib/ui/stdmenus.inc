@@ -336,7 +336,7 @@ Menuset
 		Item "Fold Math Macro|d" "math-macro-fold"
 		Separator
 		Item "Outline Pane|u" "dialog-toggle toc"
-		Item "Code Preview Pane|P" "dialog-toggle view-source"
+		Item "Source Pane|S" "dialog-toggle view-source"
 		Item "Messages Pane|g" "dialog-toggle progress"
 		Submenu "Toolbars|b" "toolbars"
 		Separator
