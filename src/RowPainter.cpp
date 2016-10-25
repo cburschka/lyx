@@ -617,11 +617,6 @@ void RowPainter::paintSelection() const
 	if ((row_.begin_margin_sel && !rtl) || (row_.end_margin_sel && rtl))
 		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
 		                       Color_selection);
-	if ((row_.begin_margin_sel && rtl) || (row_.end_margin_sel && !rtl))
-		pi_.pain.fillRectangle(int(xo_ + row_.width()), y1,
-		                       text_metrics_.width() - row_.width(), y2 - y1,
-		                       Color_selection);
-
 	// go through row and draw from RTL boundary to RTL boundary
 	int x = xo_ + row_.left_margin;
 	for (auto const & e : row_) {
@@ -647,6 +642,11 @@ void RowPainter::paintSelection() const
 		}
 		x += e.full_width();
 	}
+
+	if ((row_.begin_margin_sel && rtl) || (row_.end_margin_sel && !rtl))
+		pi_.pain.fillRectangle(x, y1, int(xo_) + text_metrics_.width() - x, y2 - y1,
+		                       Color_selection);
+
 }
 
 
