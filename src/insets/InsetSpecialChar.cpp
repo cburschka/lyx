@@ -139,8 +139,10 @@ namespace {
 // helper function: draw text and update x.
 void drawChar(PainterInfo & pi, int & x, int const y, char_type ch)
 {
-	pi.pain.text(x, y, ch, pi.base.font);
-	x += theFontMetrics(pi.base.font).width(ch);
+	FontInfo font = pi.base.font;
+	font.setPaintColor(pi.textColor(font.realColor()));
+	pi.pain.text(x, y, ch, font);
+	x += theFontMetrics(font).width(ch);
 }
 
 
