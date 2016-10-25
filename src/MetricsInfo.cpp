@@ -244,7 +244,8 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name,
 		ColorCode oldcolor = save_.font.color();
 		docstring const oldname = from_ascii(save_.fontname);
 		mb.fontname = name;
-		mb.font = sane_font;
+		if (isMathFont(from_ascii(name)) || isMathFont(oldname))
+			mb.font = sane_font;
 		augmentFont(mb.font, from_ascii(name));
 		mb.font.setSize(oldsize);
 		if (string(name) != "lyxtex"
@@ -264,7 +265,8 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name,
 		ColorCode oldcolor = save_.font.color();
 		docstring const oldname = from_ascii(save_.fontname);
 		mb.fontname = to_utf8(name);
-		mb.font = sane_font;
+		if (isMathFont(name) || isMathFont(oldname))
+			mb.font = sane_font;
 		augmentFont(mb.font, name);
 		mb.font.setSize(oldsize);
 		if (name != "lyxtex"

@@ -87,6 +87,9 @@ What's new
 
 - Do not issue an error on missing characters in 'nullfont' (bug 10394).
 
+- Fix on-screen display of font changes for text-in-math, so that now
+  $\textbf{\textsc{a}}$ is also boldened on screen other than in output.
+
 
 * INTERNALS
 
