@@ -58,6 +58,10 @@ dist_clipartdoc_DATA = \
 	clipart/with_fntright.pdf \
 	clipart/workaround.png
 
+ardocdir = $(docdir)/ar
+dist_ardoc_DATA = \
+	ar/Shortcuts.lyx
+	
 cadocdir = $(docdir)/ca
 dist_cadoc_DATA = \
 	ca/Intro.lyx
