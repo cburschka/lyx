@@ -75,11 +75,6 @@ Other changes are only clean-ups.
 
 This will avoid to pass a Paragraph object to methods that do not need it.
 
-** Rewrite RowPainter::paintSelection using row information
-
-Currently it uses some very complicated code. It should be possible to
-reuse the logic of paintStringAndSel.
-
 ** Set inset position during metrics phase
 
 In order to do that, a no-paint drawing will be initiated after every
