@@ -647,97 +647,56 @@ void RowPainter::paintSelection() const
 {
 	if (!row_.selection())
 		return;
-	Cursor const & curs = pi_.base.bv->cursor();
-	DocIterator beg = curs.selectionBegin();
-	beg.pit() = pit_;
-	beg.pos() = row_.sel_beg;
 
-	DocIterator end = curs.selectionEnd();
-	end.pit() = pit_;
-	end.pos() = row_.sel_end;
-
-	bool const begin_boundary = beg.pos() >= row_.endpos();
-	bool const end_boundary = row_.sel_end == row_.endpos();
-
-	DocIterator cur = beg;
-	cur.boundary(begin_boundary);
-	int x1 = text_metrics_.cursorX(beg.top(), begin_boundary);
-	int x2 = text_metrics_.cursorX(end.top(), end_boundary);
 	int const y1 = yo_ - row_.ascent();
 	int const y2 = y1 + row_.height();
-
-	int const rm = text_.isMainText() ? pi_.base.bv->rightMargin() : 0;
-	int const lm = text_.isMainText() ? pi_.base.bv->leftMargin() : 0;
+	bool const rtl = text_.isRTL(par_);
 
 	// draw the margins
-	if (row_.begin_margin_sel) {
-		if (text_.isRTL(beg.paragraph())) {
-			pi_.pain.fillRectangle(int(xo_ + x1), y1,
-				text_metrics_.width() - rm - x1, y2 - y1, Color_selection);
-		} else {
-			pi_.pain.fillRectangle(int(xo_ + lm), y1, x1 - lm, y2 - y1,
-				Color_selection);
-		}
-	}
-
-	if (row_.end_margin_sel) {
-		if (text_.isRTL(beg.paragraph())) {
-			pi_.pain.fillRectangle(int(xo_ + lm), y1, x2 - lm, y2 - y1,
-				Color_selection);
-		} else {
-			pi_.pain.fillRectangle(int(xo_ + x2), y1, text_metrics_.width() - rm - x2,
-				y2 - y1, Color_selection);
-		}
-	}
-
-	// if we are on a boundary from the beginning, it's probably
-	// a RTL boundary and we jump to the other side directly as this
-	// segement is 0-size and confuses the logic below
-	if (cur.boundary())
-		cur.boundary(false);
+	if (rtl ? row_.end_margin_sel : row_.begin_margin_sel)
+		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
+		                       Color_selection);
 
 	// go through row and draw from RTL boundary to RTL boundary
-	while (cur < end) {
-		bool draw_now = false;
+	double x = xo_ + row_.left_margin;
+	Row::const_iterator cit = row_.begin();
+	Row::const_iterator const & end = row_.end();
+	for ( ; cit != end ; ++cit) {
+		Row::Element const & e = *cit;
+		// These are the same tests as in paintStringAndSel, except
+		// that all_sel has an additional clause that triggers for end
+		// of paragraph markers. The clause was not used in
+		// paintStringAndSel to avoid changing the drawing color.
+		// at least part of text selected?
+		bool const some_sel = (e.endpos >= row_.sel_beg && e.pos < row_.sel_end)
+			|| pi_.selected;
+		// all the text selected?
+		bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
+		    || (e.isVirtual() && e.pos == row_.endpos() && row_.end_margin_sel)
+		    || pi_.selected;
 
-		// simplified cursorForward code below which does not
-		// descend into insets and which does not go into the
-		// next line. Compare the logic with the original cursorForward
-
-		// if left of boundary -> just jump to right side, but
-		// for RTL boundaries don't, because: abc|DDEEFFghi -> abcDDEEF|Fghi
-		if (cur.boundary()) {
-			cur.boundary(false);
-		}	else if (text_metrics_.isRTLBoundary(cur.pit(), cur.pos() + 1)) {
-			// in front of RTL boundary -> Stay on this side of the boundary
-			// because:  ab|cDDEEFFghi -> abc|DDEEFFghi
-			++cur.pos();
-			cur.boundary(true);
-			draw_now = true;
-		} else {
-			// move right
-			++cur.pos();
-
-			// line end?
-			if (cur.pos() == row_.endpos())
-				cur.boundary(true);
+		if (all_sel) {
+			// the 3rd argument is written like that to avoid rounding issues
+			pi_.pain.fillRectangle(int(x), y1,
+			                       int(x + e.full_width()) - int(x), y2 - y1,
+			                       Color_selection);
+		} else if (some_sel) {
+			pos_type const from = min(max(row_.sel_beg, e.pos), e.endpos);
+			pos_type const to = max(min(row_.sel_end, e.endpos), e.pos);
+			double x1 = e.pos2x(from);
+			double x2 = e.pos2x(to);
+			if (x1 > x2)
+				swap(x1, x2);
+			pi_.pain.fillRectangle(int(x + x1), y1, int(x2 - x1), y2 - y1,
+			                       Color_selection);
 		}
-
-		if (x1 == -1) {
-			// the previous segment was just drawn, now the next starts
-			x1 = text_metrics_.cursorX(cur.top(), cur.boundary());
-		}
-
-		if (!(cur < end) || draw_now) {
-			x2 = text_metrics_.cursorX(cur.top(), cur.boundary());
-			pi_.pain.fillRectangle(int(xo_ + min(x1, x2)), y1, abs(x2 - x1),
-				y2 - y1, Color_selection);
-
-			// reset x1, so it is set again next round (which will be on the
-			// right side of a boundary or at the selection end)
-			x1 = -1;
-		}
+		x += e.full_width();
 	}
+
+	if (rtl ? row_.begin_margin_sel : row_.end_margin_sel)
+		pi_.pain.fillRectangle(x, y1, int(xo_) + text_metrics_.width() - x, y2 - y1,
+		                       Color_selection);
+
 }
 
 
