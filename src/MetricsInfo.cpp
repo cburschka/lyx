@@ -67,7 +67,8 @@ Changer MetricsBase::changeFontSet(string const & name, bool cond)
 		ColorCode oldcolor = font.color();
 		string const oldname = fontname;
 		fontname = name;
-		font = sane_font;
+		if (isMathFont(name) || isMathFont(oldname))
+			font = sane_font;
 		augmentFont(font, name);
 		font.setSize(rc->old.font.size());
 		if (name != "lyxtex"
