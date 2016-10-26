@@ -136,7 +136,8 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 namespace {
 
 void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
-	FontInfo const & font = pi.base.font;
+	FontInfo font = pi.base.font;
+	font.setPaintColor(pi.textColor(font.realColor()));
 	int const em = theFontMetrics(font).em();
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
