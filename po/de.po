@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-23 08:47+0200\n"
+"POT-Creation-Date: 2016-10-26 10:10+0200\n"
 "PO-Revision-Date: 2016-10-23 08:48+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -17879,8 +17879,8 @@ msgid "Outline Pane|u"
 msgstr "Gliederung des Dokuments|G"
 
 #: lib/ui/stdmenus.inc:339
-msgid "Code Preview Pane|P"
-msgstr "Quelltext-Vorschau|Q"
+msgid "Source Pane|S"
+msgstr "Quelltext-Panel|Q"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Messages Pane|g"
@@ -25442,11 +25442,11 @@ msgstr "BibTeX wird ausgeführt."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex wird für nomencl ausgeführt."
 
-#: src/LaTeX.cpp:1299 src/LaTeX.cpp:1305 src/LaTeX.cpp:1314
+#: src/LaTeX.cpp:1301 src/LaTeX.cpp:1307 src/LaTeX.cpp:1316
 msgid "BibTeX error: "
 msgstr "BibTeX-Fehler: "
 
-#: src/LaTeX.cpp:1321
+#: src/LaTeX.cpp:1323
 msgid "Biber error: "
 msgstr "Biber-Fehler: "
 
@@ -31910,8 +31910,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
-#~ msgid "Source Pane|S"
-#~ msgstr "Quelltext-Panel|Q"
+#~ msgid "Code Preview Pane|P"
+#~ msgstr "Quelltext-Vorschau|Q"
 
 #~ msgid "LaTeX Source"
 #~ msgstr "LaTeX-Quelle"
