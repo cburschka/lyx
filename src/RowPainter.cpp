@@ -614,21 +614,29 @@ void RowPainter::paintSelection() const
 	bool const rtl = text_.isRTL(par_);
 
 	// draw the margins
-	if ((row_.begin_margin_sel && !rtl) || (row_.end_margin_sel && rtl))
+	if (rtl ? row_.end_margin_sel : row_.begin_margin_sel)
 		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
 		                       Color_selection);
+
 	// go through row and draw from RTL boundary to RTL boundary
 	double x = xo_ + row_.left_margin;
 	for (auto const & e : row_) {
+		// These are the same tests as in paintStringAndSel, except
+		// that all_sel has an additional clause that triggers for end
+		// of paragraph markers. The clause was not used in
+		// paintStringAndSel to avoid changing the drawing color.
 		// at least part of text selected?
-		bool const some_sel = (e.endpos >= row_.sel_beg && e.pos <= row_.sel_end)
+		bool const some_sel = (e.endpos >= row_.sel_beg && e.pos < row_.sel_end)
 			|| pi_.selected;
 		// all the text selected?
-		bool const all_sel = (e.pos >= row_.sel_beg && e.endpos <= row_.sel_end)
-			|| pi_.selected;
+		bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
+		    || (e.isVirtual() && e.pos == row_.endpos() && row_.end_margin_sel)
+		    || pi_.selected;
 
 		if (all_sel) {
-			pi_.pain.fillRectangle(int(x), y1, int(e.full_width()), y2 - y1,
+			// the 3rd argument is written like that to avoid rounding issues
+			pi_.pain.fillRectangle(int(x), y1,
+			                       int(x + e.full_width()) - int(x), y2 - y1,
 			                       Color_selection);
 		} else if (some_sel) {
 			pos_type const from = min(max(row_.sel_beg, e.pos), e.endpos);
@@ -643,7 +651,7 @@ void RowPainter::paintSelection() const
 		x += e.full_width();
 	}
 
-	if ((row_.begin_margin_sel && rtl) || (row_.end_margin_sel && !rtl))
+	if (rtl ? row_.begin_margin_sel : row_.end_margin_sel)
 		pi_.pain.fillRectangle(x, y1, int(xo_) + text_metrics_.width() - x, y2 - y1,
 		                       Color_selection);
 
