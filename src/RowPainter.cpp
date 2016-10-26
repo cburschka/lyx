@@ -618,7 +618,7 @@ void RowPainter::paintSelection() const
 		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
 		                       Color_selection);
 	// go through row and draw from RTL boundary to RTL boundary
-	int x = xo_ + row_.left_margin;
+	double x = xo_ + row_.left_margin;
 	for (auto const & e : row_) {
 		// at least part of text selected?
 		bool const some_sel = (e.endpos >= row_.sel_beg && e.pos <= row_.sel_end)
@@ -628,16 +628,16 @@ void RowPainter::paintSelection() const
 			|| pi_.selected;
 
 		if (all_sel) {
-			pi_.pain.fillRectangle(x, y1, e.full_width(), y2 - y1,
+			pi_.pain.fillRectangle(int(x), y1, int(e.full_width()), y2 - y1,
 			                       Color_selection);
 		} else if (some_sel) {
 			pos_type const from = min(max(row_.sel_beg, e.pos), e.endpos);
 			pos_type const to = max(min(row_.sel_end, e.endpos), e.pos);
-			int x1 = e.pos2x(from);
-			int x2 = e.pos2x(to);
+			double x1 = e.pos2x(from);
+			double x2 = e.pos2x(to);
 			if (x1 > x2)
 				swap(x1, x2);
-			pi_.pain.fillRectangle(x + x1, y1, x2 - x1, y2 - y1,
+			pi_.pain.fillRectangle(int(x + x1), y1, int(x2 - x1), y2 - y1,
 			                       Color_selection);
 		}
 		x += e.full_width();
