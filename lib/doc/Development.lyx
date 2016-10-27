@@ -2029,15 +2029,24 @@ src/tex2lyx/test
 \begin_layout Itemize
 In the appearing MSVC program assure that you build the 
 \emph on
-release
+Release
 \emph default
- version and then right-click on the project 
+ version, then right-click on the project 
 \family sans
 updatetex2lyxtests
 \family default
- in the project explorer and chose 
+ in the project explorer and choose then 
 \family sans
-Build
+Project
+\begin_inset space ~
+\end_inset
+
+Only\SpecialChar menuseparator
+Rebuild
+\begin_inset space ~
+\end_inset
+
+only
 \family default
 .
 \end_layout
