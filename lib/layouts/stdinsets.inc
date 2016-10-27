@@ -355,6 +355,7 @@ InsetLayout Index
 	CustomPars            false
 	ForcePlain            true
 	ContentAsLabel        true
+	PassThruChars         @|!
 End
 
 InsetLayout Box
