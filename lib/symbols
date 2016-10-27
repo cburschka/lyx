@@ -11,6 +11,13 @@
 # Note that the first argument of \def must not uses braces, and the second
 # must use braces.
 #
+# syntax: Either
+# \def\macroname{definition}
+# or
+# \def\macroname{definition} requires
+# or
+# \def\macroname{definition} extra xmlname requires
+#
 # If you put any symbol with a requirement inside an iffont clause, you
 # must put an alternative definition with the same requirement in the
 # corresponding else clause. Otherwise the LaTeX output would depend on the
