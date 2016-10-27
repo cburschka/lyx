@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-17 20:29+0200\n"
-"PO-Revision-Date: 2016-10-17 18:46+0000\n"
+"POT-Creation-Date: 2016-10-27 10:39+0200\n"
+"PO-Revision-Date: 2016-10-27 08:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -892,7 +892,7 @@ msgstr "&Filter:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
-msgstr "Vyberte políčka na ktoré chcete použiť filter "
+msgstr "Vyberte políčka na ktoré chcete použiť filter"
 
 #: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
@@ -970,7 +970,7 @@ msgstr "Použitý štýl citácie, v prípade keď je viacej štýlov prístupn�
 
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Text that precedes the reference (e.g., \"cf.\")"
-msgstr "Text predchádzajúci referencie (napr., \"por.\") "
+msgstr "Text predchádzajúci referencie (napr., \"por.\")"
 
 #: src/frontends/qt4/ui/CitationUi.ui:432
 msgid "&Text after:"
@@ -2404,7 +2404,7 @@ msgstr "&Dialekt:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:372
 msgid "Select the dialect of the programming language, if available"
-msgstr "Vyberte dialekt programovacieho jazyka"
+msgstr "Vyberte dostupný dialekt programovacieho jazyka"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Range"
@@ -3480,7 +3480,7 @@ msgstr "Formát d&okumentu"
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
 msgstr ""
-"Vyberte toto na zobrazenie aktuálneho formátu v menu Súbor > Exportovať"
+"Vyberte toto na zobrazenie aktuálneho formátu v menu Súbor -> Exportovať"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
@@ -3868,7 +3868,7 @@ msgstr "Iné Voľby"
 msgid "Output &line length:"
 msgstr "&Dĺžka výstupného riadku:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:2894
+#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:2883
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3876,7 +3876,7 @@ msgid ""
 msgstr ""
 "Maximálna dĺžka riadkov exportovaných text/LaTeX/SGML súborov.\n"
 "Keď nastavené 0, odstavce sú na výstupe v jednom riadku;\n"
-"keď je dĺžka >0, odstavce sú oddelené prázdnym riadkom."
+"keď je dĺžka > 0, odstavce sú oddelené prázdnym riadkom."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:200
 msgid "&Date format:"
@@ -4328,7 +4328,7 @@ msgstr "V&ybrané Heslo:"
 
 #: src/frontends/qt4/ui/RefUi.ui:178
 msgid "Select a label from the list above or enter a label manually"
-msgstr "Vyberte si heslo z listiny hore alebo vložte heslo manuálne "
+msgstr "Vyberte si heslo z listiny hore alebo vložte heslo manuálne"
 
 #: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/GuiRef.cpp:349
 msgid "Jump to the selected label"
@@ -13447,8 +13447,8 @@ msgid ""
 "Page Layout to 'fancy'!"
 msgstr ""
 "Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
-"použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument-"
-">Nastavenia…->Formát Stránky na 'pestrý' (fancy)!"
+"použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument -> "
+"Nastavenia… -> Formát Stránky na 'pestrý' (fancy)!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -15650,6 +15650,10 @@ msgstr "Albánsky"
 msgid "English (USA)"
 msgstr "Anglicky (USA)"
 
+#: lib/languages:134
+msgid "Amharic"
+msgstr "amharsky"
+
 #: lib/languages:135
 msgid "Greek (ancient)"
 msgstr "Grécky (antický)"
@@ -15665,6 +15669,10 @@ msgstr "Arabsky (Arabi)"
 #: lib/languages:176 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Armenian"
 msgstr "Arménsky"
+
+#: lib/languages:193
+msgid "Asturian"
+msgstr "Astúrsky"
 
 #: lib/languages:184
 msgid "English (Australia)"
@@ -15854,6 +15862,10 @@ msgstr "Japonsky (CJK)"
 #: lib/languages:682
 msgid "Kazakh"
 msgstr "Kazachsky"
+
+#: lib/languages:737
+msgid "Khmer"
+msgstr "Khmérsky"
 
 #: lib/languages:692
 msgid "Korean"
@@ -23061,7 +23073,7 @@ msgstr "Šachovnica"
 msgid "Chess diagram"
 msgstr "Šachový diagram"
 
-#: lib/external_templates:273
+#: lib/external_templates:341
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -23088,10 +23100,10 @@ msgstr ""
 "Uistite sa, že má príponu '.fen'\n"
 "a nezabudnite dať relatívnu cestu\n"
 "k súboru do dokumentu LyX-a.\n"
-"Vnútri XBoard-u, použite 'Edit->Edit Position'\n"
+"Vnútri XBoard-u, použite 'Edit -> Edit Position'\n"
 "pre obecnú editáciu šachovnice.\n"
 "Možno chcete aj použiť voľbu\n"
-"'Voľby->Test legality' a\n"
+"'Voľby -> Test legality' a\n"
 "nezabudnite na pravé a prostredné tlačidlo myši\n"
 "pre vloženie nového materiálu na hraciu dosku.\n"
 "Aby to fungovalo musíte\n"
@@ -23362,7 +23374,7 @@ msgstr "MS-Excel Office-Open XML"
 
 #: lib/configure.py:641
 msgid "HTML Table (for spreadsheets)"
-msgstr "HTML Tabuľka (pre tabuľkové procesory) "
+msgstr "HTML Tabuľka (pre tabuľkové procesory)"
 
 #: lib/configure.py:658
 msgid "OpenDocument spreadsheet"
@@ -23952,6 +23964,41 @@ msgstr ""
 "\n"
 "V prípade problémov vyberte vhodné kódovanie dokumentu\n"
 "(ako napr. utf8) alebo zmeňte meno cesty."
+
+#: src/Buffer.cpp:1892
+#, c-format
+msgid "The languages %1$s are only supported by Babel."
+msgstr "Jazyky %1$s sú podporované len cez balík Babel."
+
+#: src/Buffer.cpp:1893
+#, c-format
+msgid "The language %1$s is only supported by Babel."
+msgstr "Jazyk %1$s je podporovaný len cez balík Babel."
+
+#: src/Buffer.cpp:1903
+#, c-format
+msgid "The languages %1$s are only supported by Polyglossia."
+msgstr "Jazyky %1$s sú podporované len cez balík Polyglossia."
+
+#: src/Buffer.cpp:1904
+#, c-format
+msgid "The language %1$s is only supported by Polyglossia."
+msgstr "Jazyk %1$s je podporovaný len cez balík Polyglossia."
+
+#: src/Buffer.cpp:1910
+msgid "Incompatible Languages!"
+msgstr "Inkompatibilné Jazyky!"
+
+#: src/Buffer.cpp:1912
+#, c-format
+msgid ""
+"You cannot use the following languages together in one LaTeX document "
+"because they require conflicting language packages:\n"
+"%1$s%2$s"
+msgstr ""
+"Nie je možné používať nasledovné jazyky spolu v jednom LaTeX dokumente lebo "
+"požadujú konfliktné jazykové balíky:\n"
+"%1$s%2$s"
 
 #: src/Buffer.cpp:2172
 msgid "Running chktex..."
@@ -25462,7 +25509,7 @@ msgstr ""
 "Zachytený signál SIGFPE!\n"
 "Ahoj."
 
-#: src/LyX.cpp:667
+#: src/LyX.cpp:672
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -25472,7 +25519,7 @@ msgid ""
 msgstr ""
 "Zachytený signál SIGSEGV!\n"
 "Ľutujem, našli ste chybu v LyXe, dúfam že ste nestratili žiadne dáta.\n"
-"Prečítajte si prosím údaje pre oznámenie chyby v 'Pomocník->Úvod' a keď "
+"Prečítajte si prosím údaje pre oznámenie chyby v 'Pomocník -> Úvod' a keď "
 "treba, pošlite nám to oznámenie. Ďakujem!\n"
 "Ahoj."
 
@@ -25601,8 +25648,8 @@ msgstr ""
 "                  spustí lyx-príkaz príkaz.\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportný formát. Pozrite si\n"
-"                  Nástroje->Preferencie…->Obsluha súborov->Formáty Súborov-"
-">Skratka\n"
+"                  Nástroje -> Preferencie… -> Obsluha súborov -> Formáty "
+"Súborov -> Skratka\n"
 "                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
 "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
@@ -26283,7 +26330,7 @@ msgstr "[Zmeniť Sledovanie] "
 #: src/Text.cpp:1883
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr "Zmenené %2$s od %1$s."
+msgstr "Zmenené %2$s od %1$s. "
 
 #: src/Text.cpp:1908 src/mathed/InsetMathFont.cpp:207
 #: src/mathed/InsetMathFontOld.cpp:103
@@ -27161,7 +27208,7 @@ msgstr ""
 "LyX nenašiel predvolený UI súbor!\n"
 "Skontrolujte prosím vašu inštaláciu."
 
-#: src/frontends/qt4/GuiApplication.cpp:2975
+#: src/frontends/qt4/GuiApplication.cpp:3045
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -27173,7 +27220,7 @@ msgstr ""
 "Chyba pri čítaní konfiguračného súboru\n"
 "%1$s.\n"
 "Ustupujem na predvolené (default).\n"
-"Preskúmajte pod Nástroje->Preferencie…->Vzhľad->Užívateľské rozhranie a\n"
+"Preskúmajte pod Nástroje->Preferencie… -> Vzhľad -> Užívateľské rozhranie a\n"
 "skontrolujte ktorý užívateľský súbor používate."
 
 #: src/frontends/qt4/GuiBibitem.h:36
@@ -27563,7 +27610,7 @@ msgstr "11"
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:839
+#: src/frontends/qt4/GuiDocument.cpp:864
 msgid "None (no fontenc)"
 msgstr "Žiadne (bez fontenc)"
 
@@ -28322,7 +28369,7 @@ msgstr "Nastavenia Horizontálnej Medzery"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
-msgstr "Nastavenia Hyperlinky "
+msgstr "Nastavenia Hyperlinky"
 
 #: src/frontends/qt4/GuiInclude.cpp:122 src/frontends/qt4/GuiInclude.cpp:184
 #: src/frontends/qt4/GuiListings.cpp:239 src/frontends/qt4/GuiListings.cpp:377
@@ -28752,7 +28799,7 @@ msgstr "Neznáma alebo neplatná LyX funkcia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3171
 msgid "This LyX function is hidden and cannot be bound."
-msgstr "Táto funkcia LyXu je tajná a nedá sa viazať. "
+msgstr "Táto funkcia LyXu je tajná a nedá sa viazať."
 
 #: src/frontends/qt4/GuiPrefs.cpp:3122
 msgid "Invalid or empty key sequence"
@@ -28850,7 +28897,7 @@ msgstr "Podľa Výskytu"
 
 #: src/frontends/qt4/GuiRef.cpp:70
 msgid "Alphabetically (Case-Insensitive)"
-msgstr "Abecedne (Nerozlišujúc Veľké a Malé Písmená) "
+msgstr "Abecedne (Nerozlišujúc Veľké a Malé Písmená)"
 
 #: src/frontends/qt4/GuiRef.cpp:71
 msgid "Alphabetically (Case-Sensitive)"
@@ -28860,9 +28907,9 @@ msgstr "Abecedne (Rozlišujúc Veľké a Malé Písmená)"
 msgid "&Go Back"
 msgstr "Choď s&päť"
 
-#: src/frontends/qt4/GuiRef.cpp:342
+#: src/frontends/qt4/GuiRef.cpp:340
 msgid "Jump back to the original cursor location"
-msgstr "Skoč naspäť ku pôvodnej polohe kurzora "
+msgstr "Skoč naspäť ku pôvodnej polohe kurzora"
 
 #: src/frontends/qt4/GuiRef.cpp:380 src/frontends/qt4/GuiRef.cpp:399
 msgid "<No prefix>"
@@ -29579,7 +29626,7 @@ msgstr "Premenovať a uložiť ?"
 msgid "&Retry"
 msgstr "Z&opakuj"
 
-#: src/frontends/qt4/GuiView.cpp:2727
+#: src/frontends/qt4/GuiView.cpp:2759
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -29595,10 +29642,10 @@ msgstr ""
 "Chcete ho zavrieť alebo len skryť?\n"
 "\n"
 "Skryté dokumenty možno zase vidieť cez\n"
-"menu: Zobraziť->Skryté->…\n"
+"menu: Zobraziť -> Skryté -> …\n"
 "\n"
 "Na zbavenie sa tejto otázky, nastavte preferenciu v:\n"
-"  Nástroje Preferencie…->Vz&hľad->Užívateľské Rozhranie\n"
+"  Nástroje -> Preferencie… -> Vz&hľad -> Užívateľské Rozhranie\n"
 
 #: src/frontends/qt4/GuiView.cpp:2736
 msgid "Close or hide document?"
@@ -30640,7 +30687,7 @@ msgstr ""
 msgid "Uncodable characters in listings inset"
 msgstr "Nekódovateľné znaky vo výpise zdrojového kódu"
 
-#: src/insets/InsetListings.cpp:250
+#: src/insets/InsetListings.cpp:252
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -30656,7 +30703,7 @@ msgstr ""
 "%1$s.\n"
 "Je to kvôli reštrikcii balíka listings, ktorý nepodporuje\n"
 "vaše kódovanie '%2$s'.\n"
-"Prepnutím 'Použiť fonty mimo TeXu' v Dokument -> Nastavenia ... -> Písma\n"
+"Prepnutím 'Použiť fonty mimo TeXu' v Dokument -> Nastavenia… -> Písma\n"
 "sa to možno zlepší."
 
 #: src/insets/InsetListings.cpp:259
@@ -30777,25 +30824,25 @@ msgstr "Očakávam číslo s voliteľným * pred ním"
 msgid "auto, last or a number"
 msgstr "auto, posledné alebo číslo"
 
-#: src/insets/InsetListingsParams.cpp:430
+#: src/insets/InsetListingsParams.cpp:432
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
 "(when using the child document dialog) or menu Insert->Caption (when "
 "defining a listing inset)"
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
-"dialógu pre dokument potomka) alebo cez menu Vložiť->Popisok (pri definícii "
-"výpisu programu)"
+"dialógu pre dokument potomka) alebo cez menu Vložiť -> Popisok (pri "
+"definícii výpisu programu)"
 
-#: src/insets/InsetListingsParams.cpp:436
+#: src/insets/InsetListingsParams.cpp:438
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
 "(when using the child document dialog) or menu Insert->Label (when defining "
 "a listing inset)"
 msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
-"dialógu pre dokument potomka) alebo cez menu Vložiť->Návestie (pri definícii "
-"výpisu zdrojového kódu)"
+"dialógu pre dokument potomka) alebo cez menu Vložiť -> Návestie (pri "
+"definícii výpisu zdrojového kódu)"
 
 #: src/insets/InsetListingsParams.cpp:639
 msgid "Invalid (empty) listing parameter name."
@@ -31677,6 +31724,30 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Global Default"
+#~ msgstr "Globálny Štandard"
+
+#~ msgid "TeX default (OT1, no fontenc)"
+#~ msgstr "TeX štandard (OT1, bez fontenc)"
+
+#~ msgid ""
+#~ "Select LaTeX font encoding(s).\n"
+#~ "The standard [Global Default] is \"T1 via 'fontenc' package\" (see "
+#~ "Tools>Preferences>Output>LaTeX).\n"
+#~ "Notes:\n"
+#~ "TeX's default fonts (Computer Modern) are not available in T1 encoding, "
+#~ "Latin Modern is the recommended lookalike.\n"
+#~ "Font encodings for Greek and Cyrillic are automatically added if required."
+#~ msgstr ""
+#~ "Vyberte LaTeX-ove kódovanie fontu.\n"
+#~ "Štandardne [Globálny Štandard] je to \"T1 cez balík 'fontenc'\" (viď "
+#~ "Nástroje -> Preferencie… -> Výstup -> LaTeX).\n"
+#~ "Poznámky:\n"
+#~ "Štandardné fonty TeX-u (Computer Modern) nie sú dostupné v kódovaní T1. "
+#~ "Latin Modern je doporučený ako podobne vyzerajúci.\n"
+#~ "Kódovanie gréckych a cyrilských fontov je, keď požadované, pridané "
+#~ "automaticky. "
 
 #~ msgid "Example:"
 #~ msgstr "Príklad:"
