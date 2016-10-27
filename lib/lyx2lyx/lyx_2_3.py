@@ -441,6 +441,48 @@ def revert_khmer(document):
                                 "\\end_layout", ""]
 
 
+def revert_urdu(document):
+    "Set the document language to English but assure Urdu output"
+
+    if document.language == "urdu":
+        document.language = "english"
+        i = find_token(document.header, "\\language urdu", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{urdu}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{urdu}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
+def revert_syriac(document):
+    "Set the document language to English but assure Syriac output"
+
+    if document.language == "syriac":
+        document.language = "english"
+        i = find_token(document.header, "\\language syriac", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package default"
+        add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{syriac}}"])
+        document.body[2 : 2] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "resetdefaultlanguage{syriac}",
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+
+
 ##
 # Conversion hub
 #
@@ -452,10 +494,12 @@ convert = [
            [511, [convert_ibranches]],
            [512, [convert_beamer_article_styles]],
            [513, []],
-           [514, []]
+           [514, []],
+           [515, []]
           ]
 
 revert =  [
+           [514, [revert_urdu, revert_syriac]],
            [513, [revert_amharic, revert_asturian, revert_kannada, revert_khmer]],
            [512, [revert_bosnian, revert_friulan, revert_macedonian, revert_piedmontese, revert_romansh]],
            [511, [revert_beamer_article_styles]],

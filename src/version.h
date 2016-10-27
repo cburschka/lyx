@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 514 // uwestoehr: support for Amharic etc.
-#define LYX_FORMAT_TEX2LYX 514
+#define LYX_FORMAT_LYX 515 // uwestoehr: support for Urdu and Syriac
+#define LYX_FORMAT_TEX2LYX 515
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER
