@@ -2978,7 +2978,7 @@ GuiApplication::ReturnValues GuiApplication::readUIFile(FileName ui_path)
 			QString const file = toqstr(lex.getString());
 			bool const success = readUIFile(file, true);
 			if (!success) {
-				LYXERR0("Failed to read inlcuded file: " << fromqstr(file));
+				LYXERR0("Failed to read included file: " << fromqstr(file));
 				return ReadError;
 			}
 			break;
