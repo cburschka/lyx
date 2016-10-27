@@ -47,6 +47,9 @@ What's new
 - When using Return in an empty paragraph and the depth is reduced,
   the layout of the paragraph is now changed accordingly.
 
+- Issue an error message if incompatible languages (in terms of language package
+  requirements) are used (bug 10456).
+
 
 * DOCUMENTATION AND LOCALIZATION
 

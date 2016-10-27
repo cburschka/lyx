@@ -44,6 +44,12 @@ bool Language::isPolyglossiaExclusive() const
 }
 
 
+bool Language::isBabelExclusive() const
+{
+	return !babel().empty() && polyglossia().empty() && requires().empty();
+}
+
+
 docstring const Language::translateLayout(string const & m) const
 {
 	if (m.empty())
