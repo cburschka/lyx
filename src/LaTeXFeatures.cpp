@@ -736,6 +736,42 @@ bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
 }
 
 
+vector<string> LaTeXFeatures::getPolyglossiaExclusiveLanguages() const
+{
+	vector<string> result;
+	// first the main language
+	if (params_.language->isPolyglossiaExclusive())
+		result.push_back(params_.language->display());
+	// now the secondary languages
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end();
+	     ++cit) {
+		if ((*cit)->isPolyglossiaExclusive())
+			result.push_back((*cit)->display());
+	}
+	return result;
+}
+
+
+vector<string> LaTeXFeatures::getBabelExclusiveLanguages() const
+{
+	vector<string> result;
+	// first the main language
+	if (params_.language->isBabelExclusive())
+		result.push_back(params_.language->display());
+	// now the secondary languages
+	LanguageList::const_iterator const begin = UsedLanguages_.begin();
+	for (LanguageList::const_iterator cit = begin;
+	     cit != UsedLanguages_.end();
+	     ++cit) {
+		if ((*cit)->isBabelExclusive())
+			result.push_back((*cit)->display());
+	}
+	return result;
+}
+
+
 string LaTeXFeatures::getBabelLanguages() const
 {
 	ostringstream languages;

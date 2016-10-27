@@ -1874,6 +1874,47 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		// Write the preamble
 		runparams.use_babel = params().writeLaTeX(os, features,
 							  d->filename.onlyPath());
+		
+		if (!runparams.dryrun && features.hasPolyglossiaExclusiveLanguages()
+		    && !features.hasOnlyPolyglossiaLanguages()) {
+			docstring blangs;
+			docstring plangs;
+			vector<string> bll = features.getBabelExclusiveLanguages();
+			vector<string> pll = features.getPolyglossiaExclusiveLanguages();
+			if (!bll.empty()) {
+				docstring langs;
+				for (vector<string>::const_iterator it = bll.begin(); it != bll.end(); ++it) {
+					if (!langs.empty())
+						langs += ", ";
+					langs += _(*it);
+				}
+				blangs = bll.size() > 1 ?
+					    support::bformat(_("The languages %1$s are only supported by Babel."), langs)
+					  : support::bformat(_("The language %1$s is only supported by Babel."), langs);
+			}
+			if (!pll.empty()) {
+				docstring langs;
+				for (vector<string>::const_iterator it = pll.begin(); it != pll.end(); ++it) {
+					if (!langs.empty())
+						langs += ", ";
+					langs += _(*it);
+				}
+				plangs = pll.size() > 1 ?
+					    support::bformat(_("The languages %1$s are only supported by Polyglossia."), langs)
+					  : support::bformat(_("The language %1$s is only supported by Polyglossia."), langs);
+				if (!blangs.empty())
+					plangs += "\n"; 
+			}
+
+			frontend::Alert::warning(
+				_("Incompatible Languages!"),
+				support::bformat(
+				  _("You cannot use the following languages "
+				    "together in one LaTeX document because "
+				    "they require conflicting language packages:\n"
+				    "%1$s%2$s"),
+				  plangs, blangs));
+		}
 
 		// Japanese might be required only in some children of a document,
 		// but once required, we must keep use_japanese true.

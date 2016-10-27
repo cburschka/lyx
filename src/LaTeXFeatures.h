@@ -124,6 +124,10 @@ public:
 	bool hasOnlyPolyglossiaLanguages() const;
 	/// check if a language is supported only by polyglossia
 	bool hasPolyglossiaExclusiveLanguages() const;
+	/// A vector of all used languages supported only by polyglossia
+	std::vector<std::string> getPolyglossiaExclusiveLanguages() const;
+	/// A vector of all used languages supported only by babel
+	std::vector<std::string> getBabelExclusiveLanguages() const;
 	///
 	std::string getBabelLanguages() const;
 	///
