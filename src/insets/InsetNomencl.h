@@ -45,6 +45,9 @@ public:
 	///
 	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///
+	int plaintext(odocstringstream & ods, OutputParams const & op,
+	              size_t max_length = INT_MAX) const;
+	///
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
