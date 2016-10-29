@@ -2445,6 +2445,8 @@ void Paragraph::latex(BufferParams const & bparams,
 							running_lang);
 				os << from_ascii(end_tag);
 				column += end_tag.length();
+				if (runparams.use_polyglossia)
+					popPolyglossiaLang();
 		}
 
 		// Switch file encoding if necessary (and allowed)

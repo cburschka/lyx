@@ -63,6 +63,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix nested language handling with polyglossia (bug 9633).
+
 - Fix LaTeX output of fixed-width cells with decimal separator (bug 9568).
 
 - Do not hardcode required packages for Note inset.

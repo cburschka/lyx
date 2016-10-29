@@ -286,6 +286,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			tmp += "{";
 			os << from_ascii(tmp);
 			count += tmp.length();
+			pushPolyglossiaLang(language()->polyglossia(), true);
 		} else if (language()->encoding()->package() != Encoding::CJK) {
 			os << '{';
 			count += 1;
@@ -544,6 +545,8 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	    && language()->encoding()->package() != Encoding::CJK) {
 		os << '}';
 		++count;
+		if (runparams.use_polyglossia)
+			popPolyglossiaLang();
 	}
 
 	return count;
