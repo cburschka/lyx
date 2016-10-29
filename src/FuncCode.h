@@ -463,13 +463,15 @@ enum FuncCode
 	LFUN_SERVER_GET_STATISTICS,     // brokenclock 20141010
 	LFUN_BUFFER_VIEW_CACHE,         // skostysh 20150401
 	LFUN_BUFFER_MOVE_NEXT,          // skostysh 20150408
-	// 340
+	// 360
 	LFUN_BUFFER_MOVE_PREVIOUS,      // skostysh 20150408
 	LFUN_TABULAR_FEATURE,           // gm, 20151210
 	LFUN_BRANCH_INVERT,             // rgheck, 20160712
 	LFUN_LYX_ACTIVATE,              // skostysh, 20160804
 	LFUN_ICON_SIZE,                 // daniel, 20160712
+	// 365
 	LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR,// gm, 20170302
+	LFUN_BUFFER_ZOOM,               // daniel, 20161028
 	LFUN_LASTACTION                 // end of the table
 };
 

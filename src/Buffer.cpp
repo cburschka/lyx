@@ -729,7 +729,7 @@ BufferParams const & Buffer::masterParams() const
 double Buffer::fontScalingFactor() const
 {
 	return isExporting() ? 75.0 * params().html_math_img_scale
-		: 0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor * params().display_pixel_ratio;
+		: 0.01 * lyxrc.dpi * lyxrc.currentZoom * lyxrc.preview_scale_factor * params().display_pixel_ratio;
 }
 
 

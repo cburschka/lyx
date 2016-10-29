@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PrefScreenFontsUi</class>
- <widget class="QWidget" name="PrefScreenFontsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="PrefScreenFontsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,53 +10,78 @@
     <height>454</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="0" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <layout class="QGridLayout" >
-       <property name="margin" >
+      <layout class="QGridLayout">
+       <property name="leftMargin">
         <number>0</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
         <number>6</number>
        </property>
-       <item row="1" column="1" >
-        <widget class="QComboBox" name="screenSansCO" >
-         <property name="maxVisibleItems" >
+       <item row="1" column="1">
+        <widget class="QComboBox" name="screenSansCO">
+         <property name="maxVisibleItems">
           <number>20</number>
          </property>
-         <property name="duplicatesEnabled" >
+         <property name="duplicatesEnabled">
           <bool>false</bool>
          </property>
         </widget>
        </item>
-       <item row="1" column="2" >
-        <widget class="GuiFontExample" native="1" name="screenSansFE" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>5</vsizetype>
+       <item row="1" column="2">
+        <widget class="GuiFontExample" name="screenSansFE" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize" >
+         <property name="minimumSize">
           <size>
            <width>60</width>
            <height>0</height>
@@ -63,27 +89,25 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="screenSansLA" >
-         <property name="text" >
+       <item row="1" column="0">
+        <widget class="QLabel" name="screenSansLA">
+         <property name="text">
           <string>Sans Seri&amp;f:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>screenSansCO</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="2" >
-        <widget class="GuiFontExample" native="1" name="screenRomanFE" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>5</vsizetype>
+       <item row="0" column="2">
+        <widget class="GuiFontExample" name="screenRomanFE" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize" >
+         <property name="minimumSize">
           <size>
            <width>60</width>
            <height>0</height>
@@ -91,54 +115,52 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <widget class="QComboBox" name="screenRomanCO" >
-         <property name="maxVisibleItems" >
+       <item row="0" column="1">
+        <widget class="QComboBox" name="screenRomanCO">
+         <property name="maxVisibleItems">
           <number>20</number>
          </property>
-         <property name="duplicatesEnabled" >
+         <property name="duplicatesEnabled">
           <bool>false</bool>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="screenTypewriterLA" >
-         <property name="text" >
+       <item row="2" column="0">
+        <widget class="QLabel" name="screenTypewriterLA">
+         <property name="text">
           <string>T&amp;ypewriter:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>screenTypewriterCO</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="screenRomanLA" >
-         <property name="text" >
+       <item row="0" column="0">
+        <widget class="QLabel" name="screenRomanLA">
+         <property name="text">
           <string>R&amp;oman:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>screenRomanCO</cstring>
          </property>
         </widget>
        </item>
-       <item row="2" column="2" >
-        <widget class="GuiFontExample" native="1" name="screenTypewriterFE" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>3</hsizetype>
-           <vsizetype>5</vsizetype>
+       <item row="2" column="2">
+        <widget class="GuiFontExample" name="screenTypewriterFE" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
         </widget>
        </item>
-       <item row="2" column="1" >
-        <widget class="QComboBox" name="screenTypewriterCO" >
-         <property name="maxVisibleItems" >
+       <item row="2" column="1">
+        <widget class="QComboBox" name="screenTypewriterCO">
+         <property name="maxVisibleItems">
           <number>20</number>
          </property>
-         <property name="duplicatesEnabled" >
+         <property name="duplicatesEnabled">
           <bool>false</bool>
          </property>
         </widget>
@@ -147,35 +169,53 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <layout class="QGridLayout" >
-       <property name="margin" >
+      <layout class="QGridLayout">
+       <property name="leftMargin">
         <number>0</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
         <number>6</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="screenZoomLA" >
-         <property name="text" >
-          <string>&amp;Zoom %:</string>
+       <item row="0" column="0">
+        <widget class="QLabel" name="screenZoomLA">
+         <property name="text">
+          <string>Default &amp;zoom %:</string>
          </property>
-         <property name="buddy" >
+         <property name="buddy">
           <cstring>screenZoomSB</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
-        <widget class="QSpinBox" name="screenZoomSB" >
-         <property name="maximum" >
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="screenZoomSB">
+         <property name="maximum">
           <number>999</number>
          </property>
         </widget>
@@ -184,13 +224,13 @@
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -200,144 +240,153 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
-    <widget class="QGroupBox" name="GroupBox3" >
-     <property name="title" >
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="GroupBox3">
+     <property name="title">
       <string>Font Sizes</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <layout class="QGridLayout">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="1" >
-       <widget class="QLineEdit" name="screenTinyED" />
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="screenTinyED"/>
       </item>
-      <item row="4" column="3" >
-       <widget class="QLineEdit" name="screenHugerED" />
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="screenHugerED"/>
       </item>
-      <item row="1" column="1" >
-       <widget class="QLineEdit" name="screenSmallestED" />
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="screenSmallestED"/>
       </item>
-      <item row="2" column="1" >
-       <widget class="QLineEdit" name="screenSmallerED" />
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="screenSmallerED"/>
       </item>
-      <item row="3" column="1" >
-       <widget class="QLineEdit" name="screenSmallED" />
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="screenSmallED"/>
       </item>
-      <item row="4" column="1" >
-       <widget class="QLineEdit" name="screenNormalED" />
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="screenNormalED"/>
       </item>
-      <item row="0" column="3" >
-       <widget class="QLineEdit" name="screenLargeED" />
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="screenLargeED"/>
       </item>
-      <item row="1" column="3" >
-       <widget class="QLineEdit" name="screenLargerED" />
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="screenLargerED"/>
       </item>
-      <item row="2" column="3" >
-       <widget class="QLineEdit" name="screenLargestED" />
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="screenLargestED"/>
       </item>
-      <item row="0" column="2" >
-       <widget class="QLabel" name="screenLargeLA" >
-        <property name="text" >
+      <item row="0" column="2">
+       <widget class="QLabel" name="screenLargeLA">
+        <property name="text">
          <string>&amp;Large:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenLargeED</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="2" >
-       <widget class="QLabel" name="screenLargerLA" >
-        <property name="text" >
+      <item row="1" column="2">
+       <widget class="QLabel" name="screenLargerLA">
+        <property name="text">
          <string>&amp;Larger:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenLargerED</cstring>
         </property>
        </widget>
       </item>
-      <item row="2" column="2" >
-       <widget class="QLabel" name="screenLargestLA" >
-        <property name="text" >
+      <item row="2" column="2">
+       <widget class="QLabel" name="screenLargestLA">
+        <property name="text">
          <string>&amp;Largest:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenLargestED</cstring>
         </property>
        </widget>
       </item>
-      <item row="3" column="3" >
-       <widget class="QLineEdit" name="screenHugeED" />
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="screenHugeED"/>
       </item>
-      <item row="3" column="2" >
-       <widget class="QLabel" name="screenHugeLA" >
-        <property name="text" >
+      <item row="3" column="2">
+       <widget class="QLabel" name="screenHugeLA">
+        <property name="text">
          <string>&amp;Huge:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenHugeED</cstring>
         </property>
        </widget>
       </item>
-      <item row="4" column="2" >
-       <widget class="QLabel" name="screenHugestLA" >
-        <property name="text" >
+      <item row="4" column="2">
+       <widget class="QLabel" name="screenHugestLA">
+        <property name="text">
          <string>&amp;Hugest:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenHugerED</cstring>
         </property>
        </widget>
       </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="screenSmallestLA" >
-        <property name="text" >
+      <item row="1" column="0">
+       <widget class="QLabel" name="screenSmallestLA">
+        <property name="text">
          <string>S&amp;mallest:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenSmallestED</cstring>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="screenSmallerLA" >
-        <property name="text" >
+      <item row="2" column="0">
+       <widget class="QLabel" name="screenSmallerLA">
+        <property name="text">
          <string>S&amp;maller:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenSmallerED</cstring>
         </property>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="screenSmallLA" >
-        <property name="text" >
+      <item row="3" column="0">
+       <widget class="QLabel" name="screenSmallLA">
+        <property name="text">
          <string>S&amp;mall:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenSmallED</cstring>
         </property>
        </widget>
       </item>
-      <item row="4" column="0" >
-       <widget class="QLabel" name="screenNormalLA" >
-        <property name="text" >
+      <item row="4" column="0">
+       <widget class="QLabel" name="screenNormalLA">
+        <property name="text">
          <string>&amp;Normal:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenNormalED</cstring>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="screenTinyLA" >
-        <property name="text" >
+      <item row="0" column="0">
+       <widget class="QLabel" name="screenTinyLA">
+        <property name="text">
          <string>&amp;Tiny:</string>
         </property>
-        <property name="buddy" >
+        <property name="buddy">
          <cstring>screenTinyED</cstring>
         </property>
        </widget>
@@ -345,12 +394,12 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="1" >
+   <item row="2" column="1">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>40</width>
        <height>20</height>
@@ -358,22 +407,22 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0" >
-    <widget class="QCheckBox" name="pixmapCacheCB" >
-     <property name="toolTip" >
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="pixmapCacheCB">
+     <property name="toolTip">
       <string>Checking this improves performance, but might decrease the on-screen quality of fonts</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Use pixmap cache to speed up font rendering</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" >
+   <item row="4" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>6</height>
@@ -407,7 +456,7 @@
   <tabstop>screenHugerED</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

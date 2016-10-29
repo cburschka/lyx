@@ -41,19 +41,19 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
 	  textwidth(w), macro_nesting(0),
 	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
 {
-	if (lyxrc.zoom >= 200) {
+	if (lyxrc.currentZoom >= 200) {
 		// derive the line thickness from zoom factor
 		// the zoom is given in percent
 		// (increase thickness at 250%, 450% etc.)
-		solid_line_thickness_ = (lyxrc.zoom + 150) / 200;
+		solid_line_thickness_ = (lyxrc.currentZoom + 150) / 200;
 		// adjust line_offset_ too
 		solid_line_offset_ = 1 + solid_line_thickness_ / 2;
 	}
-	if (lyxrc.zoom >= 100) {
+	if (lyxrc.currentZoom >= 100) {
 		// derive the line thickness from zoom factor
 		// the zoom is given in percent
 		// (increase thickness at 150%, 250% etc.)
-		dotted_line_thickness_ = (lyxrc.zoom + 50) / 100;
+		dotted_line_thickness_ = (lyxrc.currentZoom + 50) / 100;
 	}
 }
 

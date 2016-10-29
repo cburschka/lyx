@@ -293,7 +293,9 @@ public:
 	/// Scrolling speed of the mouse wheel
 	double mouse_wheel_speed;
 	/// Zoom factor for screen fonts
-	unsigned int zoom;
+	int zoom;
+	/// Current zoom factor for screen fonts
+	int currentZoom;
 	/// Screen font sizes in points for each font size
 	std::string font_sizes[10];
 	/// Allow the use of scalable fonts? Default is yes.

@@ -889,6 +889,16 @@ void LyXAction::init()
 		  "buffer-external-modification-clear", ReadOnly, Buffer },
 
 /*!
+* \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM
+* \li Action: Sets the zoom of the screen fonts.
+* \li Syntax: buffer-zoom [<ZOOM>]
+* \li Params: <ZOOM>: The zoom in % points (neg. or pos.), the default is to reset to zoom savd in preferences.
+* \li Origin: daniel, 28 Oct 2016
+* \endvar
+*/
+		{ LFUN_BUFFER_ZOOM, "buffer-zoom", ReadOnly, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN
  * \li Action: Increases the zoom of the screen fonts.
  * \li Syntax: buffer-zoom-in [<ZOOM>]

@@ -363,7 +363,7 @@ QFont makeQFont(FontInfo const & f)
 
 	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
 
-	font.setPointSizeF(f.realSize() * lyxrc.zoom / 100.0);
+	font.setPointSizeF(f.realSize() * lyxrc.currentZoom / 100.0);
 
 	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 

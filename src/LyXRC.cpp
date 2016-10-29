@@ -244,6 +244,7 @@ void LyXRC::setDefaults()
 	dpi = 75;
 	// Because a screen is typically wider than a piece of paper:
 	zoom = 150;
+	currentZoom = zoom;
 	allow_geometry_session = true;
 	// Default LaTeX font size:
 	font_sizes[FONT_SIZE_TINY] = "5.0";

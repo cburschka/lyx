@@ -202,7 +202,7 @@ bool Length::empty() const
 int Length::inPixels(int text_width, int em_width_base) const
 {
 	// Zoom factor specified by user in percent
-	double const zoom = lyxrc.zoom / 100.0; // [percent]
+	double const zoom = lyxrc.currentZoom / 100.0; // [percent]
 
 	// DPI setting for monitor: pixels/inch
 	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]

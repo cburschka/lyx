@@ -213,7 +213,7 @@ public:
 	void recomputeWidth() {
 		cursor_width_ = lyxrc.cursor_width
 			? lyxrc.cursor_width 
-			: 1 + int((lyxrc.zoom + 50) / 200.0);
+			: 1 + int((lyxrc.currentZoom + 50) / 200.0);
 	}
 
 	QRect const & rect() { return rect_; }

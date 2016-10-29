@@ -14,7 +14,7 @@ using namespace std;
 void test_inPixels()
 {
 	// want to see non-zero SP
-	lyxrc.zoom = 100000;
+	lyxrc.currentZoom = 100000;
 	lyxrc.dpi = 72;
 	for (int i = Length::BP; i <= Length::UNIT_NONE; ++i) {
 		Length const l(2342, static_cast<Length::UNIT>(i));
