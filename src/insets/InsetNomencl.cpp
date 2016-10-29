@@ -93,6 +93,14 @@ docstring InsetNomencl::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/)
 }
 
 
+int InsetNomencl::plaintext(odocstringstream & os,
+        OutputParams const &, size_t) const
+{
+	docstring s = "[" + getParam("symbol") + ": " + getParam("description") + "]";
+	os << s;
+	return s.size();
+}
+
 
 int InsetNomencl::docbook(odocstream & os, OutputParams const &) const
 {
