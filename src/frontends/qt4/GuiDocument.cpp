@@ -4209,10 +4209,6 @@ void GuiDocument::dispatchParams()
 			docstring const str = current_branch + ' ' + from_ascii(x11hexname);
 			dispatch(FuncRequest(LFUN_SET_COLOR, str));
 		}
-
-		// Open insets of selected branches, close deselected ones
-		dispatch(FuncRequest(LFUN_INSET_FORALL,
-			"Branch inset-toggle assign"));
 	}
 	// rename branches in the document
 	executeBranchRenaming();
