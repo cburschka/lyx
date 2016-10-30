@@ -292,7 +292,7 @@ ColorSet::ColorSet()
 	{ Color_bottomarea, N_("bottom area"), "bottomarea", grey40, "bottomarea" },
 	{ Color_newpage, N_("new page"), "newpage", "Blue", "newpage" },
 	{ Color_pagebreak, N_("page break / line break"), "pagebreak", "RoyalBlue", "pagebreak" },
-	{ Color_buttonframe, N_("frame of button"), "buttonframe", "#dcd2c8", "buttonframe" },
+	{ Color_buttonframe, N_("button frame"), "buttonframe", "#dcd2c8", "buttonframe" },
 	{ Color_buttonbg, N_("button background"), "buttonbg", "#dcd2c8", "buttonbg" },
 	{ Color_buttonhoverbg, N_("button background under focus"), "buttonhoverbg", "#C7C7CA", "buttonhoverbg" },
 	{ Color_paragraphmarker, N_("paragraph marker"), "paragraphmarker", grey80, "paragraphmarker"},
