@@ -4072,7 +4072,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_SPELLING_CONTINUOUSLY:
 			lyxrc.spellcheck_continuously = !lyxrc.spellcheck_continuously;
-			dr.screenUpdate(Update::Force | Update::FitCursor);
+			dr.screenUpdate(Update::Force);
 			break;
 
 		default:
