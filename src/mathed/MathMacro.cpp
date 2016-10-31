@@ -539,7 +539,8 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	}
 	// get definition for list edit mode
 	docstring const & display = d->macro_->display();
-	asArray(display.empty() ? d->macro_->definition() : display, d->definition_);
+	asArray(display.empty() ? d->macro_->definition() : display,
+		d->definition_, Parse::QUIET);
 }
 
 
