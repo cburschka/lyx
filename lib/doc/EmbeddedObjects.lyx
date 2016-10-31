@@ -646,10 +646,6 @@ reference "sec:Image-Formats"
 \end_inset
 
  within a separate, horizontally centered paragraph:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -667,10 +663,6 @@ reference "sec:Image-Formats"
 
 \begin_layout Standard
 This is the same image like the one above but in draft mode:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1705,10 +1697,6 @@ The default table has lines around any cell and the first row appears separated
  have a line below them and the cells of the second row have a line above
  them.
  Here is an example table:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3315,10 +3303,6 @@ reference "subsec:Multi-page-Table-Captions"
 \begin_layout Standard
 You can also specify a row where the table is split.
  See the following multi-page table to see how it works:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -7705,10 +7689,6 @@ reference "tab:DiffCaptions"
 
  is an example of a multi-page table with different heading where the second
  caption does not include the table number.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9880,10 +9860,6 @@ must be inserted as \SpecialChar TeX
  Code at the beginning of the cell.
  This ensures that the part of the cell that will be displayed on the new
  page appears with the full width.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -11688,10 +11664,6 @@ Multicolumns have their own cell settings.
  the multicolumn.
  Here is an example table with a multicolumn cell in the first row and one
  in the last row without the upper border:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12465,10 +12437,6 @@ Multirow
 
 \begin_layout Standard
 Here is an example table with a multirow in the first column:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12647,10 +12615,6 @@ mm and is in a 3
 \end_inset
 
 cm wide column:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -12828,10 +12792,6 @@ arg   "newline-insert newline"
 \end_inset
 
 ) but this will not respect the cell lines as demonstrated in this table:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13240,10 +13200,6 @@ Crystal Clear Pro
 \begin_layout Standard
 The 3-argument scheme is for example useful for cross-tables of sports leagues
  or distances:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13463,10 +13419,6 @@ Falcons
 \begin_layout Standard
 For larger cross-tables one might use split cells in 2 or every corner of
  the table like in this example:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -13954,10 +13906,6 @@ is used.
 The necessary width of split cells is automatically calculated.
  Thus if you set a fixed column width smaller than the calculated one, the
  cell's content will protrude the cell borders:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14179,10 +14127,6 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 in the first cell:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14280,10 +14224,6 @@ Perfect Green
 Note that the split cell needs to be the widest one in the column.
  Otherwise the length of the diagonal line cannot be calculated correctly
  like in this table:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14395,10 +14335,6 @@ tabcolsep because the cell width is now the width of the column.
 \end_inset
 
 cm is used:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14545,10 +14481,6 @@ Ctrl+Return
  is only possible when the column has a fixed width.
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -33150,10 +33082,6 @@ Inner
 Box
 \family default
 , you can align the box content horizontally in the box dialog.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -34169,10 +34097,6 @@ Boxes ! Parboxes
 \begin_layout Standard
 Parboxes are very similar to minipages with the difference that they cannot
  have footnotes.
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -36584,10 +36508,6 @@ reference "sec:Wrap-Floats"
 \end_inset
 
  have these positions in the paragraph:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -37709,10 +37629,6 @@ No optional argument, the initial is the letter 'I' in the math font
 \end_inset
 
 :
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -37756,10 +37672,6 @@ t
 \begin_layout Enumerate
 Only one line is surrounding the initial, which is formed by two letters
  in standard font and no text is printed in small caps:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -37919,12 +37831,6 @@ white
 {
 \backslash
 usepackage{color}}{}
-\series default
-
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -39108,10 +39014,6 @@ Note:
 \begin_layout Description
 Input This method is very similar to the Include method.
  The differences are:
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
