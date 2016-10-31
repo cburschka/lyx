@@ -1,0 +1,1882 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/ar/
+\textclass article
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+% the pages of the TOC is numbered roman
+% and a pdf-bookmark for the TOC is added
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language arabic_arabi
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "Scheherazade"
+\font_sans "helvet" "Scheherazade"
+\font_typewriter "courier" "Scheherazade"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Introduction to LyX"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Intro"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+مدخل إلى ليك LYX
+\end_layout
+
+\begin_layout Author
+بواسطة فريق ليك
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+إذا كان لديك تعليقات أو تصويبات على هذه الوثائق، يرجى إرسالها إلى القائمة
+ البريدية لوثائق ليك:
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+فلسفة ليك LYX
+\end_layout
+
+\begin_layout Subsection
+ما هو ليك
+\end_layout
+
+\begin_layout Standard
+ليك هو نظام لإعداد الوثائق.
+ ويبرع في السماح لك بإنشاء مقالات تقنية وعلمية معقدة مع الرياضيات، والإشارات
+ المرجعية وثبت المراجع، والفهارس، وما إلى ذلك، انه جيد جدا للعمل مع الوثائق
+ من أي طول والتي تتطلب قدرات المعالجة المعتادة مثل: التقسيم التلقائي وترقيم
+ الصفحات، ووالتدقيق الاملائي ..
+ الخ.
+ ويمكن أيضا أن يستخدم في كتابة الرسائل إلى أمك، وعلى الرغم من مميزاته، هناك
+ برامج ربما أبسط منه متاحة لذلك.
+ أنه بالتأكيد ليس أفضل وسيلة لإنشاء اللافتات، والنشرات، أو الإعلانات (سنوضح
+ لماذا في وقت لاحق)، ولكن مع بعض الجهد كل ذلك يمكن القيام به أيضا.
+ وفيما يلي بعض الامثلة على ما يمكن استخدامه له: المذكرات والرسائل والأطروحات
+ والرسائل الجامعية، والمحاضرات، والدفاتر الدراسية ووقائع المؤتمرات، بالاضافة
+ إلى وثائق البرامج والكتب والمقالات في المجلات العلمية المحكمة، وسيناريو
+ المسرحيات والأفلام، والعروض التجارية والعروض التقديمية ...
+\end_layout
+
+\begin_layout Standard
+ليك هو برنامج يوفر نهجا حديثا لكتابة الوثائق بالكمبيوتر باستخدام نموذج لغة
+ الترميز، وهو نهج يتقاطع مع التقليد الذي عفا عليه الزمن "مفهوم الآلة الكاتبة".
+ وهو مصمم للمؤلفين الذين يريدون إخراجا مهنيا، بسرعة مع الحد الأدنى من الجهد
+ ودون أن يصبحوا متخصصين في التنضيد.
+ ويتم العمل على التنضيد بواسطة الكمبيوتر غالبا، وليس المؤلف، مع ليك طبعا.
+ بحيث يمكن للمؤلف التركيز على محتويات كتاباته.
+\end_layout
+
+\begin_layout Standard
+جزء من التحدي الأولي في استخدام ليك يأتي من التغيير في تفكير المستخدم، لجعل
+ العمل.
+ يتم في وقت واحد، وبذل الجهد لإنشاء وكتابة الوثائق، لذلك علينا جميعا تعلم
+ بعض الحيل للالتفاف على القيود المفروضة عليها.
+ مثل التسطير، الذي يعني وضع "_" تحت الحرف، كوسيلة لتأكيد النص.
+ وكذلك إجبار الصورة على البقاء في المكان المناسب داخل عمود الجدول، وتثبيتها
+ فيه، قبل إنشاء الجدول.
+ وينطبق ذلك على الرسائل وغيرها من النصوص التي تحتاج لضبط.
+ والفواصل في نهايات الاسطر التي تتطلب عين دقيقة والكثير من التبصر.
+\end_layout
+
+\begin_layout Standard
+وبعبارة أخرى، لقد تدربنا جميعا على القلق بشأن التفاصيل الصغيرة.
+ ونتيجة لذلك، أصبحت معظم برامج معالجة النصوص تفكر بهذه العقلية.
+ أنها لا تزال تستخدم علامات الجدولة لإضافة مسافة بيضاء.
+ ما زلت تشعر بالقلق بشأن المكان الذي ستظهر فيه بعض الاشياء في الصفحة.
+ تأكيد النص يعني تغيير الخط، على غرار تغيير عجلة الآلة الكاتبة.
+ هذه هي الفلسفة الكامنة وراء معالج النصوص WYSIWYG: "ما تراه هو ما تحصل عليه".
+ للأسف، هذا النموذج غالبا ما يؤدي إلى "ما تراه هو كل ما تحصل عليه".
+\end_layout
+
+\begin_layout Standard
+هنا يكون اختلاف ليك عن معالجات النصوص الأخرى.
+ لا تشغل نفسك بأين سيكون هذا الحرف.
+ فقط اخبر ليك بما تريده ثم خذ قسطا من الراحة، تابع تعيين القواعد التي تسمى
+ الانماط.
+ لنكن منصفين، أحدث الإصدارات من البرامج المكتبية الأكثر شعبية لديها الآن
+ أنواع من اساليب الاوراق التي تتبع طرق ترميز مماثلة.
+ ومع ذلك، تجربتنا هي أنها لا تزال نادرا ما تستخدم في الممارسة العملية.
+ 
+\end_layout
+
+\begin_layout Standard
+دعونا ننظر لمثال بسيط:
+\end_layout
+
+\begin_layout Standard
+لنفترض انك تريد كتابة تقرير.
+ للبدء في التقرير الخاص بك، تحتاج لقسم يسمى "مقدمة".
+ لذا، تذهب لقائمة ما في معالج النصوص الخاص بك لتعدل حجم الخط وتقرر حجم الخط
+ الجديد.
+ ثم تجعله بحروف ثخينه.
+ ثم تكتب "1.
+ المقدمة".
+ بالطبع، إذا قررت لاحقا أن هذا القسم ينتمي لمكان آخر في المستند أو إذا إدراجت
+ قسم جديد قبله، فأنت بحاجة إلى تغيير ترقيم هذا القسم وجميع الأقسام الأخرى،
+ فضلا عن أي إدخالات في جدول المحتويات.
+\end_layout
+
+\begin_layout Standard
+في ليك، تذهب إلى القائمة المنسدلة في أقصى يمين شريط الازرار وتختار القسم،
+ وتختار "مقدمة".
+ نعم، هذا كل شيء.
+ وإذا قمت بقص ولصق القسم، سيتم تلقائيا ترقيمه في المكان الذي وضع فيه.
+ وإذا قمت بإدخال مراجع لهذا القسم بشكل صحيح (عن طريق إدراج علامات الاسناد
+ المرجعي)، ليك سيحدث كل ما في الملف تلقائيا ولهذا ليس عليك، أبدا كتابة رقم
+ القسم.
+\end_layout
+
+\begin_layout Standard
+الآن دعونا ننظر إلى مشكلة الاتساق.
+ بعد خمسة أيام، قمت بإعادة فتح التقرير الخاص بك والبدء في القسم 4.
+ ومع ذلك، كنت قد نسيت أنك تستخدم سمك
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+18
+\numeric off
+ نقطة بدلا من
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+16
+\numeric off
+ نقطة، لذلك كتبت القسم 4 بخط مختلف عن ذلك الذي استخدمته للقسم 1 .
+ لا وجود تلك المشكلة في ليك.
+ الحاسب يريحك من كل هذه الامور السخيفة، ، نعم هذا ما يجيده الحاسب.
+\end_layout
+
+\begin_layout Standard
+وهنا مثال آخر.
+ لنفترض أنك تصنع قائمة.
+ في معالجات النصوص الأخرى، القائمة هي مجرد حفنة من علامات الجدولة والأسطر
+ الجديدة.
+ أنت بحاجة لمعرفة أين تضع تسمية كل عنصر بالقائمة، ما ينبغي أن تكون عليه
+ تلك التسمية، وكم سطر فارغ يجب وضعه بين كل عنصرين، وهلم جرا.
+ في ليك، لديك فقط شاغلين: ما نوع القائمة، وماذا تريد أن تضع فيها؟ هذا هو
+ كل شيء.
+\end_layout
+
+\begin_layout Standard
+لذلك، فإن الفكرة الأساسية وراء ليك هي: تحديد ما تريد فعله، وليس كيف تقوم
+ بفعله.
+ بدلا من "ما تراه هو ما تحصل عليه"، نموذج ليك هو "ما تراه هو ما تريده" أو
+ "WYSIWYM." انها فكرة قوية أن يبسط إلى حد كبير آليات كتابة الوثائق.
+ هذا أيضا هو السبب في ان ليك ليست جيدة جدا لانشاء الملصقات والنشرات.
+ ففي هذه الحالة، عليك العمل على تعيين موضع كل شيء، لأنه لا توجد وحدات وظيفية
+ مثل الفقرات والأقسام، وما إلى ذلك.
+ وهذا لا يعني افتقاد ليك لبعض الوظائف الجميلة.
+ ولكن يعني ببساطة أنه ليس الأداة المناسبة لهذا العمل- لا تستخدم مفك السيارة
+ في تقليم الأظافر.
+\end_layout
+
+\begin_layout Subsection
+الفروق بين ليك ومحررات المستندات الأخرى
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
+ليك
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{LyX}
+\end_layout
+
+\end_inset
+
+ ومحررات المستندات الاخرى
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+هذه قائمة بأشياء لن تجدها في ليك :
+\end_layout
+
+\begin_layout Itemize
+مسطرة المستند
+\end_layout
+
+\begin_layout Itemize
+التنقل بمفتاح تاب Tab
+\end_layout
+
+\begin_layout Itemize
+المسافات الكبيرة (بنقر إنتر أو مفتاح المسافة مرتين أو أكثر، الخ)
+\end_layout
+
+\begin_layout Standard
+علامات الجدولة، جنبا إلى جنب مع المسطرة تظهر لك موضع الأشياء على الصفحة،
+ وهي عديمة الفائدة في ليك.
+ المسافات البيضاء هي أيضا غير مهمة.
+ إن ليك يضيفها عندما يكون ذلك ضروريا، وهذا يتوقف على السياق.
+ كما لا يمكن ترك سطرين فارغين في بداية النص لأن ذلك سيكون مزعج، ولكن اجعل
+ الامر منطقي أكثر بالتفكير بطريقة WYSIWYM.
+\end_layout
+
+\begin_layout Standard
+وإليك بعض الأشياء التي توجد في ليك، ولكن لا يتم استخدامها كما قد تعتقد:
+\end_layout
+
+\begin_layout Itemize
+التحكم بالمسافة البادئة
+\end_layout
+
+\begin_layout Itemize
+فاصل الصفحة
+\end_layout
+
+\begin_layout Itemize
+ارتفاع السطر (مفرد، مزدوج، إلخ)
+\end_layout
+
+\begin_layout Itemize
+المسافة الفارغة، الرأسية والأفقية
+\end_layout
+
+\begin_layout Itemize
+الخطوط وحجمها
+\end_layout
+
+\begin_layout Itemize
+مظهر الخط (عادي، سميك، تحته خط، إلخ)
+\end_layout
+
+\begin_layout Standard
+على الرغم من وجودها حاليا في ليك، إلا أنك لن تحتاج إليها بالعموم، فليك سوف
+ يراعي هذه الأشياء نيابة عنك، إعتمادا على تفعله، فالجزء المختلف في المستند
+ يعطى أليا تنسيق وحجم خط مختلف.
+ فالمسافة البادئة في الفقرة خاضعة لسياق الكلام، بحيث يعطى بكل نوع فقرة مسافة
+ بادئة مناسبة لها، كذلك فواصل الصفحات تعالج بشكل ألي.
+ بالعموم المسافة بين الأسطر، وبين الكلمات، وبين الفقرات تتغير، حسب ليك.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+هناك طرق لضبط كل ذلك (البعض منها فقط تتطلب معرفة لتيك)، إما لوثيقة كاملة
+ أو لموقع معين في المستند.
+ راجع دليل المستخدم و / أو دليل ميزات إضافية للحصول على التفاصيل.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+وأخيرا، هناك عدد قليل من المناطق التي نعتقد أن ليك (أو لتيك) يتفوق فيها
+ كثيرا على معالجات النصوص الأخرى:
+\end_layout
+
+\begin_layout Itemize
+الفواصل
+\end_layout
+
+\begin_layout Itemize
+قوائم من كل نوع
+\end_layout
+
+\begin_layout Itemize
+الرياضيات
+\end_layout
+
+\begin_layout Itemize
+الجداول
+\end_layout
+
+\begin_layout Itemize
+الإسناد الترافقي
+\end_layout
+
+\begin_layout Standard
+من الواجب الاعتراف، أن العديد من معالجات النصوص الحديثة تستطيع التعامل مع
+ الرموز الرياضية، والجداول، وعلامات الترقيم، وكثير انتقلوا نحو تعريف وأسلوب
+ ومفهوم WYSIWYM.
+ ومع ذلك، لقد أصبحت في الآونة الأخيرة فقط قادرة على القيام بذلك، في حين
+ تم بناء ليك على نظام إعداد الوثائق لتيك.
+ الذي يعمل على هذه المقهوم منذ عام 1985.
+\end_layout
+
+\begin_layout Subsection
+ما هي لتيك LATEX
+\end_layout
+
+\begin_layout Standard
+لتيك هو نظام إعداد وثائق صممه ليزلي لامبورت في عام 1985
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+مصدر معلومات هذا القسم من دليل لLaTeX2، بواسطة هيلموت كوبكا وباتريك دالي،
+ التي لديها دخول إلى ثبت مراجع دليل المستخدم.
+\end_layout
+
+\end_inset
+
+.
+ وقد بني على لغة تنضيد تدعلى تكس tex، التي أنشأتها دونالد نث في عام 1984.
+ تكس تأخذ سلسلة من أوامر التنضيد، مكتوبة كبرنامج النصي في ملف ASCII، ثم
+ تنفذ.
+ كثير من الحيل الطباعية التي كتبها كانوث تم نمذجتها إلى خوارزميات للحاسوب
+ ودمجها تكس، وبالتالي حصلنا على مظهر طباعي ممتاز.
+ وما ينتج من تكس هو شكل وثيقة محمولة بصيغة PDF أو ما يسمى بـ "الاداة الحرة"
+ بتنسيق DVI.
+ وغالبا ما يستخدم تنسيق DVI للمعاينات ويمكن بعد ذلك أن يتم تحويله إلى أشكال
+ أخرى مثل بوستسكريبت.
+\end_layout
+
+\begin_layout Standard
+تكس ليس فقط محرك تنضيد.
+ أنه إيضا يسمح لك بتعيين وحدات الماكرو.
+ معظم الناس الذين يستخدمون تكس هم في الواقع يستخدمون حزمة الماكرو التي إنشأها
+ كانوث لإخفاء الكثير من تفاصيل التنضيد.
+ هذا هو المكان الذي يدخل من خلاله ليزلي لامبورت قصتنا.
+ لقد أراد حزمة ماكرو تحتوي معظم ما يريده المستخدم والمنضد، مع مجموعة من
+ أوامر التنضيد التي يحتاجها باستمرار، أشياء مثل الأقسام والجداول أو المعادلات
+ الرياضية في هيئة موحدة، وشكل منسق للطباعة.
+ هذه هي الطريقة التي ولدت بها لتيك.
+\end_layout
+
+\begin_layout Standard
+الآن، بالتوازي مع تطور ونمو لتيك، قام الناس الآخرين بإنشاء مجموعات ماكرو
+ مخصصة لتكس، منها للشرائح أو ومقالات مجلات الرياضيات ..
+ الخ.
+ البعض يستخدم أكواد تكس لفعل ذلك، لكن البعض الآخر بدأ باستخدام لتيك.
+ وفي محاولة لتوحيد هذه الفوضى، قام فريق من LaTeX-nicians بالعمل على LaTeX2،
+ الإصدار الحالي من لتيك، صدر في نهاية عام 1980م.
+ هذا الإصدار الجديد من لتيك وفر واجهة أسهل لأوامر إنشاء ماكرو تكس، وساعد
+ في استخدام خطوط جديدة، وهلم جرا.
+ في الواقع، لتيك هو تماما لغة واسعة في حد ذاتها! ولهذا اصبح المستخدمين في
+ جميع أنحاء العالم ينشئون بها إضافات لتيك خاصة بهم خارج تلك المعايير القياسية.
+\end_layout
+
+\begin_layout Standard
+هناك طريقتان لتنسيق لتيك: الانواع والأساليب.
+ النوع هو مجموعة من وحدات الماكرو لتيك تصف نوع جديد من الوثائق، مثل كتاب
+ أو مقال.
+ وهناك أنواع الشرائح التقديمية، للفيزياء ومجلات الرياضيات ...
+ العديد من الجامعات تملك تنسيق خاص لأطروحاتهم العلمية.
+ أما الأسلوب فيختلف عن النوع لأنه لا يعرف نوع جديد من الوثائق، ولكن نوع
+ مختلف من السلوك الذي يمكن أن يستخدم في أي وثيقة.
+ على سبيل المثال، ليكس يتحكم في هوامش الصفحة وتباعد الأسطر باستخدام نوعين
+ مختلفين من اساليب المصممة للملفات المخصصة لذلك.
+ هناك اسلوب ملفات شامل لمجموعة كاملة من الأشياء: ملصقات الطباعة أو المظاريف،
+ وتغيير المسافة البادئة، إضافة خطوط جديدة، التلاعب بالصور، تصميم عناوين
+ فاخرة للصفحة، تخصيص ثبت المراجع، وتغيير موقع ومظهر التذييل، والجداول، والأرقام،
+ وتخصيص القوائم، الخ.
+\end_layout
+
+\begin_layout Standard
+وهنا ملخص:
+\end_layout
+
+\begin_layout Description
+\SpecialChar TeX
+ تكس: لغة تنضيد مع ماكرو كفء.
+\end_layout
+
+\begin_layout Description
+\SpecialChar LaTeX
+ لتيك: حزمة ماكرو مبنية على تكس\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Description
+classes نوع: مواصفات لأنواع من المستندات تستخدم في لتيك.
+\end_layout
+
+\begin_layout Description
+styles الاسلوب: مواصفات للسلوك الافتراضي لعناصر مختلفة في لتيك.
+\end_layout
+
+\begin_layout Description
+\SpecialChar LyX
+ ليك: برنامج بصري, لتحرير النصوص يعتمد على مبدأ 
+\begin_inset Quotes fld
+\end_inset
+
+ما تراه هو ما تريده
+\begin_inset Quotes frd
+\end_inset
+
+ ويستخدم لغة لتيك للتنضيد.
+\end_layout
+
+\begin_layout Standard
+ويهدف هذا القسم لشرح الفرق بين ليك ومعالجات النصوص الاخرى.
+ ببساطة، لاتك تمثل الفرق، ليك يساعدك على التفكير أكثر حول ما تكتب (وليس
+ كيف تكتب).
+ ثم يقوم الحاسب بما ينبغي القيام به.
+\end_layout
+
+\begin_layout Section
+الابحار في التوثيق
+\end_layout
+
+\begin_layout Standard
+لجعل الإجابة على أسئلتكم أسهل حول وصف كل من مميزات ليك، وقد قسمت الوثائق
+ إلى عدة ملفات مختلفة.
+ كل واحد له غرض خاص به، كما هو موضح أدناه.
+ قبل أن تبدأ بالغوص في أي من هذه الملفات، يجب عليك قراءة هذا الفصل بدقة،
+ لأنه يحتوي على الكثير من المعلومات المفيدة والتعليقات التي يمكن أن توفر
+ عليك بعض الوقت.
+\end_layout
+
+\begin_layout Standard
+ونأمل أن لا يتوقف تطوير ليك أبدا.
+ ولهذا بعض من الوثائق قد تكون ناقصة أو غير محدثة قليلا، على الرغم من ذلك
+ أننا نحاول التحديث يوما بيوم.
+ مثل بقية أجزاء ليك، الكتيبات هي من عمل مجموعة من المتطوعين الذين لديهم
+ "وظائف حقيقية"، وعائلات، وأطباق للتنظيف، الخ.
+ فإذا كنت تريد المساعدة، تأكد من قراءة القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:مساهمة"
+
+\end_inset
+
+ بالإضافة إلى ما تبقى من هذه الوثيقة.
+\end_layout
+
+\begin_layout Standard
+أيضا، فضلا اسد لنا معروفا - إذا كان أي شيء في هذه الكتيبات يربكك، أو غير
+ واضح، أو خاطيء، فضلا لا تتردد بإعلامنا به! يمكنك إبلاغنا بالوثيقة التي
+ بها المشكلة عن طريق البريد الإلكتروني
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ إذا كان لديك أسئلة لم يتم الرد الواضح عليها في الوثائق، وبحاجة الى مساعدة
+ سريعة، هناك قائمة بريدية لعدد المستخدمين النشطين ويمكن ان تصل لها هنا 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-users@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+هيئة المستند
+\end_layout
+
+\begin_layout Standard
+البعض منكم قد يطبع الكتيبات.
+ البعض الآخر قد يقرأها في ليك.
+ هناك بعض الاختلافات بين ملفات ليك والنسخة المطبوعة.
+ في ليك، العنوان بسيط في الجزء العلوي من الوثيقة، غير موضوع في صفحة منفصلة
+ كما هو الحال في بعض النسخ المطبوعة.
+ ولا يكون أي من التذييلات أو جدول المحتويات واضحة تماما.
+ لفتح التذييل، والتي تبدو مثل هذا:
+\begin_inset Graphics
+	filename ../clipart/footnote.png
+	scale 50
+
+\end_inset
+
+, أنقر عليها بزر الفارة الايسر.
+ لجدول المحتويات, إما بالنقر على المربع الرمادي أو النقر على قائمة الاستكشاف،
+ حيث يتم عرض محتويات تلقائيا.
+\end_layout
+
+\begin_layout Standard
+في الكتيبات المطبوعة، تظهر كافة الاسنادات الترافقية كأرقام مثل ارقام الفصل،
+ القسم، القسم الفرعي، الخ.
+ بينما في ملف ليك، تظهر الاسنادات الترافقية كصناديق مظللة بالرمادي كما يلي:
+ 
+\begin_inset Graphics
+	filename ../clipart/reference.png
+	scale 75
+
+\end_inset
+
+.إذا نقرت على مثل هذا الصندوق بزر الفارة الأيسر، سوف يظهر مربع حوار يحتوي
+ على قائمة بكافة الإسنادات الترافقية في الوثيقة.
+ يمكنك الذهاب إلى القسم المشار إليه بواسطة النقر بزر الماوس الأيمن على المربع
+ أو عن طريق النقر على زر 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+to
+\begin_inset space ~
+\end_inset
+
+Label
+\family default
+ في النافذة المفتوحة.
+ والعودة إلى المكان الذي جئت منه هو بنفس السهولة.
+ انقر على 
+\family sans
+Go
+\begin_inset space ~
+\end_inset
+
+Back
+\family default
+ للعودة إلى الموقع السابق.
+\end_layout
+
+\begin_layout Standard
+الآن بعد أن قمنا بتوضيح بعض الاختلافات بين الإصدار المطبوع وملف ليك، يمكننا
+ البدء بالنظر في هيئة المستند.
+ وفي بعض الأحيان ملاحظة الاختلاف بين الخطوط:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Emphasized اسلوب يستخدم بالعموم للتأكيد، والبراهين العامة، عناوين الكتب
+ وأسماء أقسام الكتيبات، وملاحظات المؤلفين.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Typewriter
+\family default
+ يستخدم للبرنامج وأسماء الملفات, وأكواد ليك والدوال.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Sans Serif
+\family default
+ يستخدم للقوائم، الأزرار، وأسماء نوافذ البرنامج، وأسماء مفاتيح لوحة المفاتيح.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Noun Style
+\noun default
+ يستخدم لأسماء الناس.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Bold
+\series default
+ يستخدم لأكواد لتيك
+\end_layout
+
+\begin_layout Standard
+عندما نكون بحاجة إلى استخدام لوحة المفاتيح، علينا أن نتفق على التحديدات
+ التالية:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Ctrl+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ يدل على مفتاح التحكم 
+\family sans
+Control
+\family default
+ .
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Shift+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ يدل على مفتاح التحويل 
+\family sans
+Shift
+\family default
+ .
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Alt+
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ يدل على مفتاح التبديل 
+\family sans
+Alt
+\family default
+ (
+\family sans
+Meta
+\family default
+) .
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F1
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar ldots
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+F12
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ هي مفاتيح الدوال.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Esc
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ هو مفتاح الخروج.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Left
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Right
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Up
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Down
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: لا تحتاج إلى شرح.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Insert
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Delete
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Home
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+End
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+: هناك 6 مفاتيح تظهر على ازرار لوحة المفاتيح.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageUp
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ و 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+PageDown
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ تستبدل بـ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Prior
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ و 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+Next
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ في بعض لوحات المفاتيح.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Return
+\family default
+ و 
+\family sans
+Enter
+\family default
+ هما اسمان لمفتاح واحد.
+ بعض لوحات المفاتيح تسميه 
+\family sans
+بـ
+\family default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Return,
+\begin_inset Quotes erd
+\end_inset
+
+ وأخرى تسميه 
+\begin_inset Quotes eld
+\end_inset
+
+Enter,
+\begin_inset Quotes erd
+\end_inset
+
+ بينما بعضها الأخرى تحتوي على المفتاحين.
+ كلاهما يعنيان لليك الشيء نفسه, لهذا نستخدم 
+\family sans
+Return
+\family default
+ و 
+\family sans
+Enter
+\family default
+ للإدخال.
+\end_layout
+
+\begin_layout Standard
+قائمة الاختصارات يمكن التعرف عليها من القائمة الرئيسية < مساعدة < الاختصارات.
+\end_layout
+
+\begin_layout Subsection
+وحدات مقاييس المستند
+\end_layout
+
+\begin_layout Standard
+لفهم المستندات في الوثائق, الجدول
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:الوحدات"
+
+\end_inset
+
+ يشرح كل الوحدات المتاحة في ليك.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:الوحدات"
+
+\end_inset
+
+الوحدات
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+الوحدة
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+الاسم/الوصف
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+مليمتر
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+سنتيمتر
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+انش 
+\begin_inset Formula $1\text{ }in=2.54\text{ }cm$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+نقطة 
+\begin_inset Formula $72.27\text{ }pt=1\text{ }in$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+بيكا 
+\begin_inset Formula $1\text{ }pc=12\text{ }pt$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+نقطة قياسية 
+\begin_inset Formula $65536\text{ }sp=1\text{ }pt$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+نقطة كبيرة 
+\begin_inset Formula $72\text{ }bp=1\text{ }in$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+didot 
+\begin_inset Formula $72\text{ }dd\approx37.6\text{ }mm$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cicero 
+\begin_inset Formula $1\text{ }cc=12\text{ }dd$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من عرض الصورة
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من عرض النص
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من عرض العمود
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من عرض الورقة
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من عرض السطر
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من ارتفاع النص
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% من ارتفاع الورقة
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ارتفاع الحرف في الخط الحالي
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+عرض الحرف في الخط الحالي
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+وحدة رياضية 
+\begin_inset Formula $1\text{ }mu=1/18\text{ }em$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+الكتيبات
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+القائمة التالية تصف محتويات ملفات التوثيق الاساسية التي تجدها في قائمة المساعدة:
+\end_layout
+
+\begin_layout Description
+مقدمة هذا الملف.
+\end_layout
+
+\begin_layout Description
+الدروس إذا كنت مستخدما جديدا لليك, ولم يكن لديك معرفة سابقة بلتيك, يجب عليك
+ أن تبدأ من هنا.
+ إذا كان لديك معرفة سابقة بلتيك, لا زال عليك قراءة الدروس, ابدأ بالقسم 
+\begin_inset Quotes eld
+\end_inset
+
+ليك لمستخدمي لتيك
+\begin_inset Quotes erd
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Description
+دليل المستخدم هو التوثيق الرئيسي.
+ الذي يغطي معظم العمليات الرئيسية والمميزات المتاحة في ليك.
+ على افتراض قرائتك لملف الدروس.
+\end_layout
+
+\begin_layout Description
+كائنات مضمنة ملحق بدليل المستخدم.
+ تفاصيل توضح كيفية التعامل مع الجداول, الصور, التعويم, الملاحظات, القوائم
+ والصناديق.
+ بالاضافة إلى مجموعة من الأفكار الرئيسية في لتيك.
+\end_layout
+
+\begin_layout Description
+رياضيات ملحق بدليل المستخدم.
+ تفاصيل توضح كيفية كتابة أي نوع من المعادلات الرياضية.
+\end_layout
+
+\begin_layout Description
+خصائص إضافية ملحق بدليل المستخدم.
+ مستند يوضح كيفية استخدام أكواد لتيك, بالإضافة للأنساق ومميزات التحرير الخاصة.
+\end_layout
+
+\begin_layout Description
+التخصيص وصف للمميزات المتقدمة في ليك، بما في ذلك كيفية تخصيص السلوك العام
+ لليكس.
+ وهذا يشمل أشياء مثل مفاتيح الوظائف، ملفات الضبط واللغات العالمية.
+ وتتضمن أيضا معلومات حول ملفات النسق، ويتم الاحتياج إليها لإعطاء ليك القدرة
+ على دعم أنواع مستندات لتيك وحزمه.
+\end_layout
+
+\begin_layout Description
+الاختصارات جداول بالاختصارات المعينة حاليا في ليك.
+\end_layout
+
+\begin_layout Description
+ضبط لتيك تقرير ينتجه ليك عن نظامك.
+ ويحتوي هذا الملف على معلومات حصل عليها ليك اثناء عملية التركيب.
+ إذا كنت متخصصا افحصه فربما ترغب بإضافة شيء إليه.
+\end_layout
+
+\begin_layout Standard
+وهذه الملفات مراجع آخرى عند الضرورة.
+ على سبيل المثال، دليل المستخدم يحتوي على بعض المعلومات عن التركيب والتخصيص،
+ ولكن هذه الملفات ترشد القارئ إلى المزيد من المعلومات عن التخصيص اليدوي
+ للبرنامج.
+\end_layout
+
+\begin_layout Standard
+وننبه مرة أخرى لنقطة مهمة:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+إذا كنت جديدا على ليك، اقرأ الدروس هنا
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+خلاف ذلك، ليس عليك أن تشعر بالقلق أوالاحباط.
+\end_layout
+
+\begin_layout Section
+المساهمة في مشروع ليك LYX
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:مساهمة"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+المساهمة في ليك LYX
+\end_layout
+
+\begin_layout Standard
+معظم ليك مكتوب بلغة C++ (لتيك مستورد بلغة بايثون).
+ إنه مشروع كبير, وكنتيجة طبيعية لن يكون خاليا من العيوب, أو الحاجة لتحسين
+ اكواده المصدريه.
+\end_layout
+
+\begin_layout Subsubsection
+تقرير الخلل
+\end_layout
+
+\begin_layout Standard
+أثناء استخدام ليكس وكما في البرامج الأخرى، قد تواجه علة ما.
+ أو انهيار، وإن كان نادر الحدوث.
+ وتعتبر مشاكل واجهة المستخدم هي الخلل الرئيسي الذي يهتم به فريق ليكس: إن
+ المساعدة الحقيقية لنا تكون بالاشارة إلى عناصر واجهة المستخدم التي تجدون
+ أنها مربكة وغير واضحة.
+\end_layout
+
+\begin_layout Standard
+ليك لديه نظام لتتيع العلل, وتجده هنا 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/wiki/BugTrackerHome
+\end_layout
+
+\end_inset
+
+.
+ ونأمل تفحصك لقائمة العلل السابقة, فربما يكون قد تم الابلاغ عن علتك مسبقا.
+ إذا كان لديك تعليق على علة موجودة مسبقا, أو ترغب بإضافة تقرير عن علة جديدة,
+ فنأمل إضافتها في نظام العلل, أو إرسال رسالة إلى القائمة البريدية الخاصة
+ بالمطورين, 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ أرشيف القائمة البريدية متوفر في موقع برنامج ليك, 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+تقرير العلة المفيد سوف يحتوي كحد أدنى على إصدار ليك المستخدم.
+ ويفضل وصفا تفصيليا يسمح للمطورين بمعرفة موقع الكود المسبب للخلل بأسرع وقت،
+ فاستهلاك الوقت في البحث عن المشكلة يجعل لديهم وقت أقل من أجل إدخال تحسينات
+ جديدة للبرنامج.
+ كما يجب ذكر النظام المستخدم وإصداره.
+ وتزويدهم بإصدار المكتبات التي قمت بتثبيتها على نظامك، وإذا كان ذلك ممكنا،
+ إصدارات البرامج الخارجية التي يستخدمها ليك.
+ واذا كان هناك مجموعة من المشاكل أو كان لديك مشكلة في الضبط، فيفضل إرفاق
+ config.log ، وذكر اي برنامج بناء compiler تستخدم.
+\end_layout
+
+\begin_layout Subsubsection
+المساهمة في الاصلاح والمميزات الجديدة
+\end_layout
+
+\begin_layout Standard
+إذا قمت بعمل تعديلات في كود ليك وترى بأنها تستحق أن تضاف إليه, فضلا ارسل
+ تعديلاتك على شكل ملف diff (في هيئة موحدة) إلى قائمة المطورين البريدية المذكورة
+ في الأعلى, مع ملف change log, وتفصيل بالعمل الذي قمت به في الرقعة.
+\end_layout
+
+\begin_layout Subsection
+المساهمة في التوثيق
+\end_layout
+
+\begin_layout Standard
+وثائق ليك شاملة.
+ لكن ليك تحت التطوير المستمر، وفي كل إصدار جديد تضاف ميزات جديدة.
+ فقد تجد بعض الوثائق بحاجة إلى تحسين.
+ يصف هذا القسم ماذا تفعل إذا وجدت خطأ، أو لديك بعض الاقتراحات لتحسين الوثائق.
+\end_layout
+
+\begin_layout Subsubsection
+تقرير الخطأ في الكتيب
+\end_layout
+
+\begin_layout Standard
+إذا وجدت مشكلة في التوثيق, ارسل رسالة للقائمة البريدية 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+.
+ فريق التوثيق سيقوم بأي إصلاحات ضرورية.
+\end_layout
+
+\begin_layout Subsubsection
+الانضمام لفريق التوثيق.
+\end_layout
+
+\begin_layout Standard
+مشروع توثيق ليك, مثل بقية اجزاء مشروع ليك, يحتاج دائما للدعم! إذا كنت ترغب
+ في المساهمة في مشروع توثيق ليك, نرجو تفضلك باتباع الخطوات التالية:
+\end_layout
+
+\begin_layout Enumerate
+احصل على الكود المصدري من هنا 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+ثم اقرأ دليل المستخدم والدروس
+\begin_inset Newline newline
+\end_inset
+
+ان الهدف من هذا التمرين هي إعطائك بعض الافكار.
+ الدروس ودليل المستخدم يتم غالبا تحديثها يوما بيوم.
+ لذا يجب أن تكون قادرا على استخلاص بعض الأفكار حول الكيفية التي نريد أن
+ تقرأ وتبدو عليها المستندات.
+\end_layout
+
+\begin_layout Enumerate
+اتصل بالفريق على:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+لمناقشة التغييرات المطلوبة والحصول على بعض ردود الفعل عليها.
+\end_layout
+
+\begin_layout Standard
+التغييرات التي ترغب بها قد تتراوح من تحسين وضوح النص، إلى القيام بإعادة
+ هيكلة كبرى للوثائق.
+ ونود أن نختم بقولنا إن بعض أو كل التحسينات مرحب بها بسرور.
+\end_layout
+
+\begin_layout Standard
+* لمستخدمي اللغة العربية يفضل تركيب خط شهرزاد المجاني والمفتوح المصدر وهو
+ موجود في مواقع كثيرة منها: 
+\begin_inset CommandInset href
+LatexCommand href
+name "هنا"
+target "https://sourceforge.net/projects/ohodquizgame/files/Books/Scheherazade_font-2.100.zip/download"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

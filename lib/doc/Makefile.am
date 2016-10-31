@@ -59,6 +59,7 @@ dist_clipartdoc_DATA = \
 
 ardocdir = $(docdir)/ar
 dist_ardoc_DATA = \
+	ar/Intro.lyx \
 	ar/Shortcuts.lyx
 
 cadocdir = $(docdir)/ca
