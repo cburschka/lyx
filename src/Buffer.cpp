@@ -3755,7 +3755,7 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			// in order to know if we should output polyglossia
 			// macros (instead of babel macros)
 			LaTeXFeatures features(*this, params(), runparams);
-			params().validate(features);
+			validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
 			texrow.reset(new TexRow());
 			texrow->newline();
