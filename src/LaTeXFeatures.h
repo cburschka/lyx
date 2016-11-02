@@ -131,7 +131,7 @@ public:
 	///
 	std::string getBabelLanguages() const;
 	///
-	std::map<std::string, std::string> getPolyglossiaLanguages() const;
+	std::set<std::string> getPolyglossiaLanguages() const;
 	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///

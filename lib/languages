@@ -30,6 +30,9 @@
 #
 # NOTES:
 #
+# * If we provide Polyglossia languages with different options, the default
+#   options (such as "variant=american", "spelling=modern") should be
+#   explicitely spelled out (in order to provide mixing of such variants).
 # * Omitted elements will be treated as empty (if string) or "false"
 #   (if boolean).
 # * When HasGuiSupport is true, the language is candidate to appear in
@@ -146,7 +149,7 @@ Language ancientgreek
 	\languageattribute{greek}{ancient}
 	EndPostBabelPreamble
 	PolyglossiaName   greek
-	PolyglossiaOpts   variant=ancient
+	PolyglossiaOpts   "variant=ancient"
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
@@ -225,7 +228,7 @@ Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
 	PolyglossiaName  german
-	PolyglossiaOpts  "variant=austrian,babelshorthands=true"
+	PolyglossiaOpts  "variant=austrian,spelling=new,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_AT
@@ -333,6 +336,8 @@ Language canadian
 End
 
 # not yet supported by polyglossia
+# Note: If polyglossia support gets implemented, french needs
+#       PolyglossiaOpts  "variant=french"
 Language canadien
 	GuiName          "French (Canada)"
 	BabelName        canadien
@@ -435,6 +440,7 @@ Language english
 	HasGuiSupport    true
 	BabelName        english
 	PolyglossiaName  english
+	PolyglossiaOpts  "variant=american"
 	QuoteStyle       english
 	Encoding         iso8859-15
 	LangCode         en_US
@@ -543,7 +549,7 @@ Language german
 	GuiName          "German (old spelling)"
 	BabelName        german
 	PolyglossiaName  german
-	PolyglossiaOpts  "spelling=old,babelshorthands=true"
+	PolyglossiaOpts  "variant=german,spelling=old,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de
@@ -555,7 +561,7 @@ Language ngerman
 	HasGuiSupport    true
 	BabelName        ngerman
 	PolyglossiaName  german
-	PolyglossiaOpts  "babelshorthands=true"
+	PolyglossiaOpts  "variant=german,spelling=new,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_DE
@@ -569,7 +575,7 @@ Language german-ch
 	GuiName          "German (Switzerland)"
 	BabelName        nswissgerman
 	PolyglossiaName  german
-	PolyglossiaOpts  "variant=swiss,babelshorthands=true"
+	PolyglossiaOpts  "variant=swiss,spelling=new,babelshorthands=true"
 	QuoteStyle       danish
 	Encoding         iso8859-15
 	LangCode         de_CH
@@ -593,6 +599,7 @@ Language greek
 	HasGuiSupport     true
 	BabelName         greek
 	PolyglossiaName   greek
+	PolyglossiaOpts   "variant=monotonic"
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
@@ -890,10 +897,12 @@ End
 # Currently not supported (file format change!)
 # Russian orthography from the Petrine orthographic reforms of
 # 1708 to the 1917 orthographic reform
+# Note: If this is enabled, russian needs to get
+#       PolyglossiaOpts  "spelling=modern"
 # Language oldrussian
 # 	GuiName          "Russian (Petrine orthography)"
 # 	PolyglossiaName  russian
-# 	PolyglossiaOpts  spelling=old
+# 	PolyglossiaOpts  "spelling=old"
 # 	LangCode         ru_petr1708
 # End
 
@@ -989,6 +998,7 @@ Language serbian
 	HasGuiSupport    true
 	BabelName        serbianc
 	PolyglossiaName  serbian
+	PolyglossiaOpts  "script=cyrillic"
 	QuoteStyle       german
 	Encoding         utf8
 	FontEncoding     T2A
@@ -1000,7 +1010,7 @@ Language serbian-latin
 	GuiName          "Serbian (Latin)"
 	BabelName        serbian
 	PolyglossiaName  serbian
-	PolyglossiaOpts  "script=Latin"
+	PolyglossiaOpts  "script=latin"
 	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         sr_RS-Latin

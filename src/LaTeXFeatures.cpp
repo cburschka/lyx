@@ -793,15 +793,16 @@ string LaTeXFeatures::getBabelLanguages() const
 }
 
 
-std::map<std::string, std::string> LaTeXFeatures::getPolyglossiaLanguages() const
+set<string> LaTeXFeatures::getPolyglossiaLanguages() const
 {
-	std::map<std::string, std::string> languages;
+	set<string> languages;
 
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
 	     ++cit) {
-		languages[(*cit)->polyglossia()] = (*cit)->polyglossiaOpts();
+		// We do not need the variants here
+		languages.insert((*cit)->polyglossia());
 	}
 	return languages;
 }
