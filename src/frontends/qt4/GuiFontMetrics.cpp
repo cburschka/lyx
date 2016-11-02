@@ -206,7 +206,12 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
                           double const wordspacing) const
 {
 	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
-	return static_cast<int>(tl.lineForTextPosition(pos).cursorToX(pos));
+	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
+	 * not be the same when there are high-plan unicode characters
+	 * (bug #10443).
+	 */
+	int const qpos = toqstr(s.substr(0, pos)).length();
+	return static_cast<int>(tl.lineForTextPosition(qpos).cursorToX(qpos));
 }
 
 
@@ -214,10 +219,30 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
 	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
-	int pos = tl.lineForTextPosition(0).xToCursor(x);
+	int const qpos = tl.lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
-	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(pos));
+	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(qpos));
+	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
+	 * not be the same when there are high-plan unicode characters
+	 * (bug #10443).
+	 */
+#if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
+	return qstring_to_ucs4(tl.text().left(qpos)).length();
+#else
+	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
+	 * by QString::toUcs4 (used by qstring_to_ucs4)may have wrong
+	 * length. We work around the problem by trying all docstring
+	 * positions until the right one is found. This is slow only if
+	 * there are many high-plane Unicode characters. It might be
+	 * worthwhile to implement a dichotomy search if this shows up
+	 * under a profiler.
+	 */
+	int pos = min(qpos, static_cast<int>(s.length()));
+	while (pos >= 0 && toqstr(s.substr(0, pos)).length() != qpos)
+		--pos;
+	LASSERT(pos > 0 || qpos == 0, /**/);
 	return pos;
+#endif
 }
 
 
@@ -235,17 +260,17 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	*/
 	// Unicode character ZERO WIDTH NO-BREAK SPACE
 	QChar const zerow_nbsp(0xfeff);
-	QString str = zerow_nbsp + toqstr(s) + zerow_nbsp;
+	QString qs = zerow_nbsp + toqstr(s) + zerow_nbsp;
 #if 1
 	/* Use unicode override characters to enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 */
 	if (rtl)
 		// Right-to-left override: forces to draw text right-to-left
-		str = QChar(0x202E) + str;
+		qs = QChar(0x202E) + qs;
 	else
 		// Left-to-right override: forces to draw text left-to-right
-		str =  QChar(0x202D) + str;
+		qs =  QChar(0x202D) + qs;
 	int const offset = 2;
 #else
 	// Alternative version that breaks with Qt5 and arabic text (#10436)
@@ -254,7 +279,7 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	int const offset = 1;
 #endif
 
-	tl.setText(str);
+	tl.setText(qs);
 	tl.setFont(font_);
 	QTextOption to;
 	to.setWrapMode(force ? QTextOption::WrapAnywhere : QTextOption::WordWrap);
@@ -267,8 +292,30 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
 		return false;
 	x = int(line.naturalTextWidth());
-	// The offset is here to account for the extra leading characters.
-	s = s.substr(0, line.textLength() - offset);
+	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
+	 * not be the same when there are high-plan unicode characters
+	 * (bug #10443).
+	 */
+	// The variable `offset' is here to account for the extra leading characters.
+	// The ending character zerow_nbsp has to be ignored if the line is complete.
+	int const qlen = line.textLength() - offset - (line.textLength() == qs.length());
+#if QT_VERSION < 0x040801 || QT_VERSION >= 0x050100
+	s = qstring_to_ucs4(qs.mid(offset, qlen));
+#else
+	/* Due to QTBUG-25536 in 4.8.1 <= Qt < 5.1.0, the string returned
+	 * by QString::toUcs4 (used by qstring_to_ucs4)may have wrong
+	 * length. We work around the problem by trying all docstring
+	 * positions until the right one is found. This is slow only if
+	 * there are many high-plane Unicode characters. It might be
+	 * worthwhile to implement a dichotomy search if this shows up
+	 * under a profiler.
+	 */
+	int len = min(qlen, static_cast<int>(s.length()));
+	while (len >= 0 && toqstr(s.substr(0, len)).length() != qlen)
+		--len;
+	LASSERT(len > 0 || qlen == 0, /**/);
+	s = s.substr(0, len);
+#endif
 	return true;
 }
 
