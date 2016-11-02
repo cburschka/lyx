@@ -118,6 +118,9 @@ What's new
 
 - Fix selection painting in right-to-left texts (bug 10424).
 
+- Fix cursor movement when the document contains high-plane Unicode
+  characters (bug 10443).
+
 - Allow using colors supported by xcolor inside mathed (bug 10417).
 
 - Change description of "frame of button" color to "button frame" (bug 10135).
