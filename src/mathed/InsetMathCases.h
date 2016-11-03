@@ -56,6 +56,8 @@ public:
 	int leftMargin() const { return 8; } //override
 	///
 	int rightMargin() const { return 0; } //override
+	/// see e.g. https://tex.stackexchange.com/a/133283/87201
+	bool handlesMulticolumn() const { return true; } //override
 
 private:
 	virtual Inset * clone() const;

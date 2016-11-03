@@ -47,6 +47,8 @@ public:
 	void octave(OctaveStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_MATRIX_CODE; }
+	///
+	bool handlesMulticolumn() const { return true; } //override
 
 private:
 	virtual Inset * clone() const;

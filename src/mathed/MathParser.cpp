@@ -1363,7 +1363,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
-		else if (t.cs() == "multicolumn") {
+		else if (t.cs() == "multicolumn" && grid.handlesMulticolumn()) {
 			// if the columns are specified numerically,
 			// extract column count and insert dummy cells,
 			// otherwise parse it as an user macro

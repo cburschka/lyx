@@ -49,6 +49,8 @@ public:
 	int leftMargin() const { return 4; } //override
 	///
 	int rightMargin() const { return 2; } //override
+	///
+	bool handlesMulticolumn() const { return true; } //override
 
 private:
 	Inset * clone() const;
