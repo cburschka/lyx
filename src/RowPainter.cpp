@@ -652,7 +652,8 @@ void RowPainter::paintSelection() const
 	}
 
 	if (rtl ? row_.begin_margin_sel : row_.end_margin_sel)
-		pi_.pain.fillRectangle(x, y1, int(xo_) + text_metrics_.width() - x, y2 - y1,
+		pi_.pain.fillRectangle(int(x), y1,
+		                       int(xo_ + text_metrics_.width()) - int(x), y2 - y1,
 		                       Color_selection);
 
 }
