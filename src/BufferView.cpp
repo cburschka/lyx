@@ -2891,7 +2891,7 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 void BufferView::cursorPosAndHeight(Point & p, int & h) const
 {
 	Cursor const & cur = cursor();
-	Font const font = cur.getFont();
+	Font const font = cur.real_current_font;
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	int const asc = fm.maxAscent();
 	int const des = fm.maxDescent();

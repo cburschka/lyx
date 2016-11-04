@@ -1264,6 +1264,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	GuiPainter pain(d->screen_, pixelRatio());
 	d->buffer_view_->updateMetrics();
 	d->buffer_view_->draw(pain);
+	// FIXME: shall we use real_current_font here? (see #10478)
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();

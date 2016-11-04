@@ -2121,6 +2121,7 @@ Font Cursor::getFont() const
 	// The logic here should more or less match to the
 	// Cursor::setCurrentFont logic, i.e. the cursor height should
 	// give a hint what will happen if a character is entered.
+	// FIXME: this is not the case, what about removing this method ? (see #10478).
 
 	// HACK. far from being perfect...
 
