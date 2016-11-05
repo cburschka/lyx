@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-31 10:27+0100\n"
-"PO-Revision-Date: 2016-10-31 10:29+0100\n"
+"POT-Creation-Date: 2016-11-05 08:00+0100\n"
+"PO-Revision-Date: 2016-11-05 08:01+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2706,7 +2706,7 @@ msgstr "&Löschen"
 msgid "S&elected:"
 msgstr "Ausg&ewählt:"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:13 src/insets/InsetNomencl.cpp:169
+#: src/frontends/qt4/ui/NomenclUi.ui:13 src/insets/InsetNomencl.cpp:177
 msgid "Nomenclature"
 msgstr "Nomenklatur"
 
@@ -2844,7 +2844,7 @@ msgid "Images"
 msgstr "Bilder"
 
 #: src/frontends/qt4/ui/OutputUi.ui:216 lib/layouts/aapaper.layout:63
-#: lib/layouts/egs.layout:639 lib/languages:95
+#: lib/layouts/egs.layout:639 lib/languages:98
 #: src/frontends/qt4/GuiDocument.cpp:1281 src/frontends/qt4/GuiErrorList.cpp:52
 #: src/frontends/qt4/GuiLog.cpp:244 src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
@@ -7052,7 +7052,7 @@ msgid "chemistry"
 msgstr "Chemie"
 
 #: lib/layouts/achemso.layout:299 lib/layouts/achemso.layout:302
-#: lib/languages:719
+#: lib/languages:726
 msgid "Latin"
 msgstr "Latein"
 
@@ -15733,365 +15733,365 @@ msgstr "Max. Breite"
 msgid "Maximum width (default: \\linewidth)"
 msgstr "Maximale Breite (Voreinstellung: \\linewidth)"
 
-#: lib/languages:87 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
+#: lib/languages:90 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
 #: src/Font.cpp:73 src/Font.cpp:76
 msgid "Ignore"
 msgstr "Ignorieren"
 
-#: lib/languages:106
+#: lib/languages:109
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: lib/languages:114
+#: lib/languages:117
 msgid "Albanian"
 msgstr "Albanisch"
 
-#: lib/languages:123
+#: lib/languages:126
 msgid "English (USA)"
 msgstr "Englisch (USA)"
 
-#: lib/languages:135
+#: lib/languages:138
 msgid "Greek (ancient)"
 msgstr "Griechisch (Altgriechisch)"
 
-#: lib/languages:152
+#: lib/languages:155
 msgid "Arabic (ArabTeX)"
 msgstr "Arabisch (ArabTeX)"
 
-#: lib/languages:163
+#: lib/languages:166
 msgid "Arabic (Arabi)"
 msgstr "Arabisch (Arabi)"
 
-#: lib/languages:176 src/frontends/qt4/GuiSymbols.cpp:62
+#: lib/languages:179 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Armenian"
 msgstr "Armenisch"
 
-#: lib/languages:184
+#: lib/languages:187
 msgid "English (Australia)"
 msgstr "Englisch (Australien)"
 
-#: lib/languages:196
+#: lib/languages:199
 msgid "German (Austria, old spelling)"
 msgstr "Deutsch (Österreich, alte Rechtschreibung)"
 
-#: lib/languages:208
+#: lib/languages:211
 msgid "German (Austria)"
 msgstr "Deutsch (Österreich)"
 
-#: lib/languages:218
+#: lib/languages:221
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: lib/languages:228
+#: lib/languages:231
 msgid "Malay"
 msgstr "Malaiisch"
 
-#: lib/languages:237
+#: lib/languages:240
 msgid "Basque"
 msgstr "Baskisch"
 
-#: lib/languages:251
+#: lib/languages:254
 msgid "Belarusian"
 msgstr "Weißrussisch"
 
-#: lib/languages:260
+#: lib/languages:263
 msgid "Portuguese (Brazil)"
 msgstr "Portugiesisch (Brasilien)"
 
-#: lib/languages:270
+#: lib/languages:273
 msgid "Breton"
 msgstr "Bretonisch"
 
-#: lib/languages:279
+#: lib/languages:282
 msgid "English (UK)"
 msgstr "Englisch (Großbritannien)"
 
-#: lib/languages:289
+#: lib/languages:292
 msgid "Bulgarian"
 msgstr "Bulgarisch"
 
-#: lib/languages:300
+#: lib/languages:303
 msgid "English (Canada)"
 msgstr "Englisch (Kanada)"
 
-#: lib/languages:311
+#: lib/languages:316
 msgid "French (Canada)"
 msgstr "Französisch (Kanada)"
 
-#: lib/languages:321
+#: lib/languages:326
 msgid "Catalan"
 msgstr "Katalanisch"
 
-#: lib/languages:333
+#: lib/languages:338
 msgid "Chinese (simplified)"
 msgstr "Chinesisch (vereinfacht)"
 
-#: lib/languages:343
+#: lib/languages:348
 msgid "Chinese (traditional)"
 msgstr "Chinesisch (traditionell)"
 
-#: lib/languages:353
+#: lib/languages:358
 msgid "Coptic"
 msgstr "Koptisch"
 
-#: lib/languages:360
+#: lib/languages:365
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: lib/languages:369
+#: lib/languages:374
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: lib/languages:379
+#: lib/languages:384
 msgid "Danish"
 msgstr "Dänisch"
 
-#: lib/languages:390
+#: lib/languages:395
 msgid "Divehi (Maldivian)"
 msgstr "Dhivehi"
 
-#: lib/languages:397
+#: lib/languages:402
 msgid "Dutch"
 msgstr "Holländisch"
 
-#: lib/languages:408
+#: lib/languages:413
 msgid "English"
 msgstr "Englisch"
 
-#: lib/languages:420
+#: lib/languages:426
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:429
+#: lib/languages:435
 msgid "Estonian"
 msgstr "Estnisch"
 
-#: lib/languages:443
+#: lib/languages:449
 msgid "Farsi"
 msgstr "Persisch"
 
-#: lib/languages:457
+#: lib/languages:463
 msgid "Finnish"
 msgstr "Finnisch"
 
-#: lib/languages:468
+#: lib/languages:474
 msgid "French"
 msgstr "Französisch"
 
-#: lib/languages:484
+#: lib/languages:490
 msgid "Galician"
 msgstr "Galizisch"
 
-#: lib/languages:497 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:503 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: lib/languages:507
+#: lib/languages:513
 msgid "German (old spelling)"
 msgstr "Deutsch (alte Rechtschreibung)"
 
-#: lib/languages:518
+#: lib/languages:524
 msgid "German"
 msgstr "Deutsch"
 
-#: lib/languages:533
+#: lib/languages:539
 msgid "German (Switzerland)"
 msgstr "Deutsch (Schweiz)"
 
-#: lib/languages:547
+#: lib/languages:553
 msgid "German (Switzerland, old spelling)"
 msgstr "Deutsch (Schweiz, alte Rechtschreibung)"
 
-#: lib/languages:558 lib/ui/stdtoolbars.inc:305 lib/ui/stdtoolbars.inc:594
+#: lib/languages:564 lib/ui/stdtoolbars.inc:305 lib/ui/stdtoolbars.inc:594
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Greek"
 msgstr "Griechisch"
 
-#: lib/languages:570
+#: lib/languages:577
 msgid "Greek (polytonic)"
 msgstr "Griechisch (polytonisch)"
 
-#: lib/languages:582 src/frontends/qt4/GuiSymbols.cpp:63
+#: lib/languages:589 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
 msgstr "Hebräisch"
 
-#: lib/languages:598
+#: lib/languages:605
 msgid "Hindi"
 msgstr "Hindi"
 
-#: lib/languages:616
+#: lib/languages:623
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: lib/languages:627
+#: lib/languages:634
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:636
+#: lib/languages:643
 msgid "Irish"
 msgstr "Irisch"
 
-#: lib/languages:645
+#: lib/languages:652
 msgid "Italian"
 msgstr "Italienisch"
 
-#: lib/languages:660
+#: lib/languages:667
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: lib/languages:673
+#: lib/languages:680
 msgid "Japanese (CJK)"
 msgstr "Japanisch (CJK)"
 
-#: lib/languages:682
+#: lib/languages:689
 msgid "Kazakh"
 msgstr "Kasachisch"
 
-#: lib/languages:692
+#: lib/languages:699
 msgid "Korean"
 msgstr "Koreanisch"
 
-#: lib/languages:701
+#: lib/languages:708
 msgid "Kurmanji"
 msgstr "Kurmandschi"
 
-#: lib/languages:710 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:717 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Lao"
 msgstr "Laotisch"
 
-#: lib/languages:729
+#: lib/languages:736
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: lib/languages:742
+#: lib/languages:749
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: lib/languages:753
+#: lib/languages:760
 msgid "Lower Sorbian"
 msgstr "Niedersorbisch"
 
-#: lib/languages:762
+#: lib/languages:769
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: lib/languages:773
+#: lib/languages:780
 msgid "Marathi"
 msgstr "Marathi"
 
-#: lib/languages:783
+#: lib/languages:790
 msgid "Mongolian"
 msgstr "Mongolisch"
 
-#: lib/languages:792
+#: lib/languages:799
 msgid "English (New Zealand)"
 msgstr "Englisch (Neuseeland)"
 
-#: lib/languages:802
+#: lib/languages:809
 msgid "Norwegian (Bokmaal)"
 msgstr "Norwegisch (Bokmål)"
 
-#: lib/languages:812
+#: lib/languages:819
 msgid "Norwegian (Nynorsk)"
 msgstr "Norwegisch (Nynorsk)"
 
-#: lib/languages:823
+#: lib/languages:830
 msgid "Occitan"
 msgstr "Okzitanisch"
 
-#: lib/languages:841
+#: lib/languages:850
 msgid "Polish"
 msgstr "Polnisch"
 
-#: lib/languages:852
+#: lib/languages:861
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: lib/languages:862
+#: lib/languages:871
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: lib/languages:872
+#: lib/languages:881
 msgid "Russian"
 msgstr "Russisch"
 
-#: lib/languages:883
+#: lib/languages:892
 msgid "North Sami"
 msgstr "Nordsamisch"
 
-#: lib/languages:892
+#: lib/languages:901
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: lib/languages:899
+#: lib/languages:908
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: lib/languages:908
+#: lib/languages:917
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: lib/languages:920
+#: lib/languages:930
 msgid "Serbian (Latin)"
 msgstr "Serbisch (latein. Schrift)"
 
-#: lib/languages:930
+#: lib/languages:940
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: lib/languages:940
+#: lib/languages:950
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: lib/languages:949
+#: lib/languages:959
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: lib/languages:963
+#: lib/languages:973
 msgid "Spanish (Mexico)"
 msgstr "Spanisch (Mexiko)"
 
-#: lib/languages:975
+#: lib/languages:985
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: lib/languages:995 src/frontends/qt4/GuiSymbols.cpp:70
+#: lib/languages:1005 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "Tamilisch"
 
-#: lib/languages:1003 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:1013 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Telugu"
 msgstr "Telugu"
 
-#: lib/languages:1010 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:1020 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: lib/languages:1024 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1034 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Tibetan"
 msgstr "Tibetisch"
 
-#: lib/languages:1031
+#: lib/languages:1041
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: lib/languages:1046
+#: lib/languages:1056
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: lib/languages:1056
+#: lib/languages:1066
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: lib/languages:1067
+#: lib/languages:1077
 msgid "Upper Sorbian"
 msgstr "Obersorbisch"
 
-#: lib/languages:1088
+#: lib/languages:1098
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: lib/languages:1099
+#: lib/languages:1109
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -24454,7 +24454,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2261
+#: src/BufferParams.cpp:2264
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -24469,11 +24469,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2267
+#: src/BufferParams.cpp:2270
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2274
+#: src/BufferParams.cpp:2277
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -24488,15 +24488,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2280 src/BufferView.cpp:1302 src/BufferView.cpp:1334
+#: src/BufferParams.cpp:2283 src/BufferView.cpp:1302 src/BufferView.cpp:1334
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2330
+#: src/BufferParams.cpp:2333
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2331 src/TextClass.cpp:1612
+#: src/BufferParams.cpp:2334 src/TextClass.cpp:1612
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -25068,7 +25068,7 @@ msgid "page break / line break"
 msgstr "Seitenumbruch / Zeilenumbruch"
 
 #: src/Color.cpp:295
-msgid "frame of button"
+msgid "button frame"
 msgstr "Knopf (Rahmen)"
 
 #: src/Color.cpp:296
@@ -30013,19 +30013,19 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1575
+#: src/frontends/qt4/GuiWorkArea.cpp:1576
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2030
+#: src/frontends/qt4/GuiWorkArea.cpp:2031
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2049
+#: src/frontends/qt4/GuiWorkArea.cpp:2050
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2051
+#: src/frontends/qt4/GuiWorkArea.cpp:2052
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
@@ -31944,6 +31944,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "frame of button"
+#~ msgstr "Knopf (Rahmen)"
 
 #~ msgid "Code Preview Pane|P"
 #~ msgstr "Quelltext-Vorschau|Q"
