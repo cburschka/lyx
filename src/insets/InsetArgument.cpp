@@ -175,10 +175,12 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_SELECTION_PASTE:
 	case LFUN_PRIMARY_SELECTION_PASTE:
-		// Do not call InsetCollapsable::doDispatch(cur, cmd)
-		// with (inherited) pass_thru to avoid call for
-		// fixParagraphsFont(), which does not play nicely with
-		// inherited pass_thru (see #8471).
+	case LFUN_SELF_INSERT:
+		// With (only) inherited pass_thru, call Text::dispatch()
+		// directly to avoid call for fixParagraphsFont() and/or
+		// forcing to latex_language in InsetText::dispatch(),
+		// since this does not play nicely with inherited pass_thru
+		// (see #8471).
 		if (pass_thru_ && !pass_thru_local_)
 			text().dispatch(cur, cmd);
 		else
