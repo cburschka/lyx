@@ -48,6 +48,7 @@
 #include "Encoding.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "LaTeXFeatures.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "OutputParams.h"
@@ -406,6 +407,18 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 	WriteStream wi(os, runparams.moving_arg, true,
 			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
 			runparams.encoding);
+	wi.strikeoutMath(runparams.inDeletedInset
+			 && (!LaTeXFeatures::isAvailable("dvipost")
+				|| (runparams.flavor != OutputParams::LATEX
+			            && runparams.flavor != OutputParams::DVILUATEX)));
+	if (runparams.inulemcmd) {
+		wi.ulemCmd(WriteStream::UNDERLINE);
+		if (runparams.local_font) {
+			FontInfo f = runparams.local_font->fontInfo();
+			if (f.strikeout() == FONT_ON)
+				wi.ulemCmd(WriteStream::STRIKEOUT);
+		}
+	}
 	wi.canBreakLine(os.canBreakLine());
 	if (runparams.lastid != -1) {
 		wi.pushRowEntry(os.texrow().textEntry(runparams.lastid,

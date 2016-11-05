@@ -191,12 +191,25 @@ static docstring const changetracking_dvipost_def = from_ascii(
 static docstring const changetracking_xcolor_ulem_def = from_ascii(
 	"%% Change tracking with ulem\n"
 	"\\DeclareRobustCommand{\\lyxadded}[3]{{\\color{lyxadded}{}#3}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\sout{#3}}}\n");
+	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\color{lyxdeleted}\\lyxsout{#3}}}\n"
+	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
 
 static docstring const changetracking_xcolor_ulem_hyperref_def = from_ascii(
 	"%% Change tracking with ulem\n"
 	"\\DeclareRobustCommand{\\lyxadded}[3]{{\\texorpdfstring{\\color{lyxadded}{}}{}#3}}\n"
-	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\sout{#3}}{}}}\n");
+	"\\DeclareRobustCommand{\\lyxdeleted}[3]{{\\texorpdfstring{\\color{lyxdeleted}\\lyxsout{#3}}{}}}\n"
+	"\\DeclareRobustCommand{\\lyxsout}[1]{\\ifx\\\\#1\\else\\sout{#1}\\fi}\n");
+
+static docstring const changetracking_tikz_math_sout_def = from_ascii(
+	"%% Strike out display math with tikz\n"
+	"\\usepackage{tikz}\n"
+	"\\usetikzlibrary{calc}\n"
+	"\\newcommand{\\lyxmathsout}[1]{%\n"
+	"  \\tikz[baseline=(math.base)]{\n"
+	"    \\node[inner sep=0pt,outer sep=0pt](math){#1};\n"
+	"    \\draw($(math.south west)+(2em,.5em)$)--($(math.north east)-(2em,.5em)$);\n"
+	"  }\n"
+	"}\n");
 
 static docstring const changetracking_none_def = from_ascii(
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
@@ -388,7 +401,8 @@ static docstring const lyxstrikeout_style = from_ascii(
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p,
 			     OutputParams const & r)
-	: buffer_(&b), params_(p), runparams_(r), in_float_(false)
+	: buffer_(&b), params_(p), runparams_(r), in_float_(false),
+	  in_deleted_inset_(false)
 {}
 
 
@@ -1366,6 +1380,9 @@ docstring const LaTeXFeatures::getMacros() const
 		else
 			macros << changetracking_xcolor_ulem_def;
 	}
+
+	if (mustProvide("ct-tikz-math-sout"))
+			macros << changetracking_tikz_math_sout_def;
 
 	if (mustProvide("ct-none"))
 		macros << changetracking_none_def;

@@ -86,6 +86,8 @@ public:
 	///
 	bool ams() const;
 	///
+	bool outerDisplay() const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies HullInset
 	InsetMathHull const * asHullInset() const { return this; }

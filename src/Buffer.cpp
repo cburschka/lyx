@@ -1932,6 +1932,10 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		// make the body.
 		os << "\\begin{document}\n";
 
+		// mark the start of a new paragraph by simulating a newline,
+		// so that os.afterParbreak() returns true at document start
+		os.lastChar('\n');
+
 		// output the parent macros
 		MacroSet::iterator it = parentMacros.begin();
 		MacroSet::iterator end = parentMacros.end();

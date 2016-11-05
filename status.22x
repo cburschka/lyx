@@ -73,6 +73,9 @@ What's new
 
 - Fix LaTeX output of fixed-width cells with decimal separator (bug 9568).
 
+- Fix strike out of deleted display math with track-changes and pdf
+  output (bug 9678).
+
 - Do not hardcode required packages for Note inset.
 
 - Make *-lyxformat-* backup files use .lyx~ extension.

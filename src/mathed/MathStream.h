@@ -40,6 +40,12 @@ public:
 		wsPreview
 	};
 	///
+	enum UlemCmdType {
+		NONE,
+		UNDERLINE,
+		STRIKEOUT
+	};
+	///
 	WriteStream(otexrowstream & os, bool fragile, bool latex, OutputType output,
 				Encoding const * encoding = 0);
 	///
@@ -66,6 +72,14 @@ public:
 	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
 	/// tell whether we can write an immediately following newline char
 	bool canBreakLine() const { return canbreakline_; }
+	/// record whether we have to take care for striking out display math
+	void strikeoutMath(bool mathsout) { mathsout_ = mathsout; }
+	/// tell whether we have to take care for striking out display math
+	bool strikeoutMath() const { return mathsout_; }
+	/// record which ulem command type we are inside
+	void ulemCmd(UlemCmdType ulemcmd) { ulemcmd_ = ulemcmd; }
+	/// tell which ulem command type we are inside
+	UlemCmdType ulemCmd() const { return ulemcmd_; }
 	/// writes space if next thing is isalpha()
 	void pendingSpace(bool how);
 	/// writes space if next thing is isalpha()
@@ -120,6 +134,10 @@ private:
 	bool ascii_;
 	/// are we allowed to output an immediately following newline?
 	bool canbreakline_;
+	/// should we take care for striking out display math?
+	bool mathsout_;
+	/// what ulem command are we inside (none, underline, strikeout)?
+	UlemCmdType ulemcmd_;
 	///
 	int line_;
 	///
