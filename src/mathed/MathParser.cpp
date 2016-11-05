@@ -1364,35 +1364,40 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "multicolumn") {
-			// extract column count and insert dummy cells
+			// if the columns are specified numerically,
+			// extract column count and insert dummy cells,
+			// otherwise parse it as an user macro
 			MathData count;
 			parse(count, FLAG_ITEM, mode);
-			int cols = 1;
-			if (!extractNumber(count, cols)) {
-				success_ = false;
-				error("can't extract number of multicolumn cells");
-			}
-			// resize the table if necessary
-			size_t first = grid.index(cellrow, cellcol);
-			for (int i = 1; i < cols; ++i) {
-				if (addCol(grid, cellcol)) {
-					size_t const idx = grid.index(cellrow, cellcol);
-					grid.cellinfo(idx).multi_ =
-						InsetMathGrid::CELL_PART_OF_MULTICOLUMN;
+			int cols;
+			if (extractNumber(count, cols)) {
+				// resize the table if necessary
+				size_t first = grid.index(cellrow, cellcol);
+				for (int i = 1; i < cols; ++i) {
+					if (addCol(grid, cellcol)) {
+						size_t const idx = grid.index(cellrow, cellcol);
+						grid.cellinfo(idx).multi_ =
+							InsetMathGrid::CELL_PART_OF_MULTICOLUMN;
+					}
 				}
+
+				// the first cell is the real thing, not a dummy
+				cell = &grid.cell(first);
+				grid.cellinfo(first).multi_ =
+					InsetMathGrid::CELL_BEGIN_OF_MULTICOLUMN;
+
+				// read special alignment
+				MathData align;
+				parse(align, FLAG_ITEM, mode);
+				grid.cellinfo(first).align_ = asString(align);
+
+				// parse the remaining contents into the "real" cell
+				parse(*cell, FLAG_ITEM, mode);
+			} else {
+				MathAtom at = MathAtom(new MathMacro(buf, t.cs()));
+				cell->push_back(at);
+				cell->push_back(MathAtom(new InsetMathBrace(count)));
 			}
-
-			// the first cell is the real thing, not a dummy
-			cell = &grid.cell(first);
-			grid.cellinfo(first).multi_ = InsetMathGrid::CELL_BEGIN_OF_MULTICOLUMN;
-
-			// read special alignment
-			MathData align;
-			parse(align, FLAG_ITEM, mode);
-			grid.cellinfo(first).align_ = asString(align);
-
-			// parse the remaining contents into the "real" cell
-			parse(*cell, FLAG_ITEM, mode);
 		}
 
 		else if (t.cs() == "limits" || t.cs() == "nolimits") {
