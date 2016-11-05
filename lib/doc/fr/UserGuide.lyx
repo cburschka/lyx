@@ -299,50 +299,7 @@ LatexCommand tableofcontents
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Si votre distribution \SpecialChar LaTeX
- est un peu ancienne , 
-\begin_inset Quotes fld
-\end_inset
-
-Affichage
-\begin_inset Quotes frd
-\end_inset
-
- ou 
-\begin_inset Quotes fld
-\end_inset
-
-Exporter
-\begin_inset Quotes frd
-\end_inset
-
- en PDF ne fonctionnera pas du fait d'un conflit entre 
-\family typewriter
-varioref/hyperref
-\family default
- et le caractère 
-\begin_inset Quotes fld
-\end_inset
-
-:
-\begin_inset Quotes frd
-\end_inset
-
- apparaissant dans certaines étiquettes.
- Frank Mittelbach a corrigé complètement ce bogue de 
-\family typewriter
-varioref
-\family default
-, la correction est intégrée à partir de \SpecialChar TeX
-Live 2011.
-\end_layout
-
-\begin_layout Plain Layout
-Pour résoudre ce problème, vous pouvez mettre à jour votre distribution.
-\end_layout
+status open
 
 \begin_layout Plain Layout
 Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
@@ -352,8 +309,7 @@ Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
 
 \family typewriter
 \series bold
-http://wiki.lyx.org/\SpecialChar LyX
-/DocumentationDevelopment#UserGuide
+http://wiki.lyx.org/LyX/Manuals#UserGuide
 \end_layout
 
 \end_inset
@@ -2232,6 +2188,13 @@ Maj-Tab
 \end_inset
 
 2.4.1.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By right-clicking on a section in the outliner you can select the whole
+ section to copy, cut or delete it.
 \end_layout
 
 \begin_layout Subsection
@@ -9053,12 +9016,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9071,6 +9036,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9103,6 +9069,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -17374,7 +17341,7 @@ reference "sec:Formats-de-Fichiers"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -31600,7 +31567,7 @@ Réponses
 
 \begin_layout Standard
 \begin_inset Branch Question
-status collapsed
+status open
 
 \begin_layout Standard
 Question: Qui a été le premier prix Nobel de physique ?
@@ -31786,7 +31753,7 @@ reponse}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
-status collapsed
+status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -39370,7 +39337,7 @@ Format de sortie implicite
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -39600,7 +39567,7 @@ voir section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -39678,7 +39645,7 @@ voir section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Doc-Output"
+reference "sec:Doc-Formats"
 
 \end_inset
 
@@ -44439,10 +44406,10 @@ reference "sec:Branches"
 \end_layout
 
 \begin_layout Section
-Sortie
+Formats
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Doc-Output"
+name "sec:Doc-Formats"
 
 \end_inset
 

@@ -1981,6 +1981,12 @@ Die letzten vier Knöpfe erleichtern das Verschieben von Textteilen, sofern
 \end_layout
 
 \begin_layout Standard
+Klickt man mit rechts auf einen Abschnitt in der Gliederung, kann man den
+ kompletten Abschnitt markieren, um ihn zu kopieren, auszuschneiden oder
+ zu löschen.
+\end_layout
+
+\begin_layout Standard
 Die Gliederung erhalten Sie auch, wenn Sie am Anfang des Dokuments ein Inhalts-,
  Tabellen- oder Abbildungsverzeichnis angelegt haben und darauf klicken.
 \end_layout
@@ -8579,10 +8585,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8595,6 +8603,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8618,6 +8627,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -16372,7 +16382,7 @@ reference "sec:Dateiformate"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokument-Ausgabe"
+reference "sec:Dokument-Formate"
 
 \end_inset
 
@@ -36551,7 +36561,7 @@ Ausgabeformat
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokument-Ausgabe"
+reference "sec:Dokument-Formate"
 
 \end_inset
 
@@ -36787,7 +36797,7 @@ Ausgabeformat
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokument-Ausgabe"
+reference "sec:Dokument-Formate"
 
 \end_inset
 
@@ -36865,7 +36875,7 @@ Ausgabeformat
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dokument-Ausgabe"
+reference "sec:Dokument-Formate"
 
 \end_inset
 
@@ -41523,10 +41533,10 @@ reference "sec:Zweige"
 \end_layout
 
 \begin_layout Section
-Ausgabe
+Formate
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Dokument-Ausgabe"
+name "sec:Dokument-Formate"
 
 \end_inset
 

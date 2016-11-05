@@ -1814,6 +1814,13 @@ Mayúsculas+Tab
 2.4.1.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+By right-clicking on a section in the outliner you can select the whole
+ section to copy, cut or delete it.
+\end_layout
+
 \begin_layout Subsection
 Deslizamiento horizontal
 \begin_inset Index idx
@@ -8537,12 +8544,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8555,6 +8564,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8579,6 +8589,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -16447,7 +16458,7 @@ reference "sec:Formatos-de-archivo"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Salidas"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -37780,7 +37791,7 @@ predeterminado
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Salidas"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -38067,7 +38078,7 @@ predeterminado
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Salidas"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -38176,7 +38187,7 @@ predeterminado
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Salidas"
+reference "sec:Formatos"
 
 \end_inset
 
@@ -42832,10 +42843,10 @@ reference "sec:Ramas"
 \end_layout
 
 \begin_layout Section
-Salidas
+Formatos
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Salidas"
+name "sec:Formatos"
 
 \end_inset
 

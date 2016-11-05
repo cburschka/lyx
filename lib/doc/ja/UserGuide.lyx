@@ -1519,6 +1519,13 @@ Shift+Tab
 )は，節の階層を変更するものです．つまり，例えば第2.5節を，第3節にしたり第2.4.1節にしたりすることができます．
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+By right-clicking on a section in the outliner you can select the whole
+ section to copy, cut or delete it.
+\end_layout
+
 \begin_layout Subsection
 水平スクロール
 \begin_inset Index idx
@@ -35914,7 +35921,11 @@ reference "sec:派生枝"
 \end_layout
 
 \begin_layout Section
-出力
+
+\lang english
+Formats
+\lang japanese
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:出力"
