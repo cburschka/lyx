@@ -14,6 +14,7 @@
 
 #include "GraphicsCacheItem.h"
 
+#include "Buffer.h"
 #include "GraphicsCache.h"
 #include "GraphicsConverter.h"
 #include "GraphicsImage.h"
@@ -42,7 +43,7 @@ class CacheItem::Impl : public boost::signals2::trackable {
 public:
 
 	///
-	Impl(FileName const & file);
+	Impl(FileName const & file, FileName const & doc_file);
 
 	/**
 	 *  If no file conversion is needed, then tryDisplayFormat() calls
@@ -93,6 +94,8 @@ public:
 
 	/// The filename we refer too.
 	FileName const filename_;
+	/// The document filename this graphic item belongs to
+	FileName const & doc_file_;
 	///
 	FileMonitor const monitor_;
 
@@ -125,8 +128,8 @@ public:
 };
 
 
-CacheItem::CacheItem(FileName const & file)
-	: pimpl_(new Impl(file))
+CacheItem::CacheItem(FileName const & file, FileName const & doc_file)
+  : pimpl_(new Impl(file,doc_file))
 {}
 
 
@@ -204,8 +207,8 @@ boost::signals2::connection CacheItem::connect(slot_type const & slot) const
 //------------------------------
 
 
-CacheItem::Impl::Impl(FileName const & file)
-	: filename_(file),
+CacheItem::Impl::Impl(FileName const & file, FileName const & doc_file)
+	: filename_(file), doc_file_(doc_file),
 	  monitor_(file, 2000),
 	  zipped_(false),
 	  remove_loaded_file_(false),
@@ -312,11 +315,10 @@ bool CacheItem::Impl::loadImage()
 }
 
 
-static string const findTargetFormat(string const & from)
-{
-	typedef vector<string> FormatList;
-	FormatList const & formats = Cache::get().loadableFormats();
+typedef vector<string> FormatList;
 
+static string const findTargetFormat(FormatList const & formats, string const & from)
+{
 	 // There must be a format to load from.
 	LASSERT(!formats.empty(), return string());
 
@@ -392,7 +394,7 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 		LYXERR(Debug::GRAPHICS, "\tCould not determine file format.");
 	}
 	LYXERR(Debug::GRAPHICS, "\n\tThe file contains " << from << " format data.");
-	to_ = findTargetFormat(from);
+	to_ = findTargetFormat(Cache::get().loadableFormats(), from);
 
 	if (from == to_) {
 		// No conversion needed!
@@ -438,7 +440,7 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_ = make_unique<Converter>(filename, to_file_base.absFileName(),
+	converter_ = make_unique<Converter>(doc_file_, filename, to_file_base.absFileName(),
 	                                    from, to_);
 	converter_->connect(bind(&Impl::imageConverted, this, _1));
 	converter_->startConversion();

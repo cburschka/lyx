@@ -18,6 +18,7 @@
 #include "GraphicsCache.h"
 
 #include "support/debug.h"
+#include "support/lassert.h"
 #include "support/Timeout.h"
 
 #include "support/bind.h"
@@ -30,6 +31,7 @@ using namespace std;
 using namespace lyx::support;
 
 namespace lyx {
+
 namespace graphics {
 
 
@@ -162,9 +164,10 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 typedef std::shared_ptr<Image> ImagePtr;
 
 class Loader::Impl : public boost::signals2::trackable {
+	friend class Loader;
 public:
 	///
-	Impl();
+	Impl(FileName const & doc_file);
 	///
 	~Impl();
 	///
@@ -178,6 +181,8 @@ public:
 	///
 	Params const & params() const { return params_; }
 
+	///
+	FileName doc_file_;
 	/// The loading status of the image.
 	ImageStatus status_;
 	/** Must store a copy of the cached item to ensure that it is not
@@ -211,27 +216,35 @@ private:
 };
 
 
-Loader::Loader()
-	: pimpl_(new Impl)
+Loader::Loader(FileName const & doc_file)
+	: pimpl_(new Impl(doc_file))
 {}
 
 
-Loader::Loader(FileName const & file, bool display)
-	: pimpl_(new Impl)
+Loader::Loader(FileName const & doc_file, FileName const & file, bool display)
+	: pimpl_(new Impl(doc_file))
 {
 	reset(file, display);
 }
 
 
-Loader::Loader(FileName const & file, Params const & params)
-	: pimpl_(new Impl)
+Loader::Loader(FileName const & doc_file, FileName const & file, Params const & params)
+	: pimpl_(new Impl(doc_file))
 {
 	reset(file, params);
 }
 
 
+Loader::Loader(FileName const & doc_file, Loader const & other)
+	: pimpl_(new Impl(doc_file))
+{
+	Params const & params = other.pimpl_->params();
+	reset(params.filename, params);
+}
+
+
 Loader::Loader(Loader const & other)
-	: pimpl_(new Impl)
+	: pimpl_(new Impl(other.pimpl_->doc_file_))
 {
 	Params const & params = other.pimpl_->params();
 	reset(params.filename, params);
@@ -246,7 +259,10 @@ Loader::~Loader()
 
 Loader & Loader::operator=(Loader const & other)
 {
+  LASSERT(false, /**/);
 	if (this != &other) {
+		delete pimpl_;
+		pimpl_ = new Impl(other.pimpl_->doc_file_);
 		Params const & params = other.pimpl_->params();
 		reset(params.filename, params);
 	}
@@ -359,8 +375,8 @@ Image const * Loader::image() const
 }
 
 
-Loader::Impl::Impl()
-	: status_(WaitingToLoad)
+Loader::Impl::Impl(FileName const & doc_file)
+	: doc_file_(doc_file), status_(WaitingToLoad)
 {
 }
 
@@ -404,7 +420,7 @@ void Loader::Impl::resetFile(FileName const & file)
 
 	Cache & gc = Cache::get();
 	if (!gc.inCache(file))
-		gc.add(file);
+		gc.add(file, doc_file_);
 
 	// We /must/ make a local copy of this.
 	cached_item_ = gc.item(file);

@@ -1610,6 +1610,10 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(maxAgeLE, SIGNAL(textEdited(QString)),
 		this, SIGNAL(changed()));
+	connect(needauthForbiddenCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
+	connect(needauthCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 
 	converterED->setValidator(new NoNewLineValidator(converterED));
 	converterFlagED->setValidator(new NoNewLineValidator(converterFlagED));
@@ -1621,6 +1625,8 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 void PrefConverters::applyRC(LyXRC & rc) const
 {
 	rc.use_converter_cache = cacheCB->isChecked();
+	rc.use_converter_needauth_forbidden = needauthForbiddenCB->isChecked();
+	rc.use_converter_needauth = needauthCB->isChecked();
 	rc.converter_cache_maxage = int(widgetToDouble(maxAgeLE) * 86400.0);
 }
 
@@ -1628,6 +1634,8 @@ void PrefConverters::applyRC(LyXRC & rc) const
 void PrefConverters::updateRC(LyXRC const & rc)
 {
 	cacheCB->setChecked(rc.use_converter_cache);
+	needauthForbiddenCB->setChecked(rc.use_converter_needauth_forbidden);
+	needauthCB->setChecked(rc.use_converter_needauth);
 	QString max_age;
 	doubleToWidget(maxAgeLE, (double(rc.converter_cache_maxage) / 86400.0), 'g', 6);
 	updateGui();
@@ -1785,6 +1793,12 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 	maxAgeLE->setEnabled(state == Qt::Checked);
 	maxAgeLA->setEnabled(state == Qt::Checked);
 	changed();
+}
+
+
+void PrefConverters::on_needauthForbiddenCB_toggled(bool checked)
+{
+	needauthCB->setEnabled(!checked);
 }
 
 

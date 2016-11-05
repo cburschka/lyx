@@ -74,36 +74,6 @@ FileName const unique_tex_filename(FileName const & bufferpath)
 }
 
 
-lyx::Converter const * setConverter(string const & from)
-{
-	typedef vector<string> FmtList;
-	typedef lyx::graphics::Cache GCache;
-	FmtList const & loadableFormats = GCache::get().loadableFormats();
-	FmtList::const_iterator it = loadableFormats.begin();
-	FmtList::const_iterator const end = loadableFormats.end();
-
-	for (; it != end; ++it) {
-		string const to = *it;
-		if (from == to)
-			continue;
-
-		lyx::Converter const * ptr = lyx::theConverters().getConverter(from, to);
-		if (ptr)
-			return ptr;
-	}
-
-	// Show the error only once. This is thread-safe.
-	static nullptr_t no_conv = [&]{
-		LYXERR0("PreviewLoader::startLoading()\n"
-		        << "No converter from \"" << from
-		        << "\" format has been defined.");
-		return nullptr;
-	} ();
-
-	return no_conv;
-}
-
-
 void setAscentFractions(vector<double> & ascent_fractions,
 			FileName const & metrics_file)
 {
@@ -222,6 +192,8 @@ public:
 	boost::signals2::signal<void(PreviewImage const &)> imageReady;
 
 	Buffer const & buffer() const { return buffer_; }
+
+	lyx::Converter const * setConverter(string const & from);
 
 private:
 	/// Called by the ForkedCall process that generated the bitmap files.
@@ -430,6 +402,35 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	delay_refresh_->setSingleShot(true);
 	QObject::connect(delay_refresh_, SIGNAL(timeout()),
 	                 &parent_, SLOT(refreshPreviews()));
+}
+
+
+lyx::Converter const * PreviewLoader::Impl::setConverter(string const & from)
+{
+	typedef vector<string> FmtList;
+	FmtList const & loadableFormats = graphics::Cache::get().loadableFormats();
+	FmtList::const_iterator it = loadableFormats.begin();
+	FmtList::const_iterator const end = loadableFormats.end();
+
+	for (; it != end; ++it) {
+		string const to = *it;
+		if (from == to)
+			continue;
+
+		lyx::Converter const * ptr = lyx::theConverters().getConverter(from, to);
+		if (ptr)
+			return ptr;
+	}
+
+	// Show the error only once. This is thread-safe.
+	static nullptr_t no_conv = [&]{
+		LYXERR0("PreviewLoader::startLoading()\n"
+		        << "No converter from \"" << from
+		        << "\" format has been defined.");
+		return nullptr;
+	} ();
+
+	return no_conv;
 }
 
 

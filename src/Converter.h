@@ -69,6 +69,8 @@ public:
 	bool xml() const { return xml_; }
 	///
 	bool need_aux() const { return need_aux_; }
+	/// Return whether or not the needauth option is set for this converter
+	bool need_auth() const { return need_auth_; }
 	///
 	bool nice() const { return nice_; }
 	///
@@ -77,6 +79,7 @@ public:
 	std::string const result_file() const { return result_file_; }
 	///
 	std::string const parselog() const { return parselog_; }
+
 private:
 	///
 	trivstring from_;
@@ -101,6 +104,8 @@ private:
 	bool need_aux_;
 	/// we need a "nice" file from the backend, c.f. OutputParams.nice.
 	bool nice_;
+	/// Use of this converter needs explicit user authorization
+	bool need_auth_;
 	/// If the converter put the result in a directory, then result_dir
 	/// is the name of the directory
 	trivstring result_dir_;
@@ -181,6 +186,16 @@ public:
 	const_iterator end() const { return converterlist_.end(); }
 	///
 	void buildGraph();
+
+	/// Check whether converter conv is authorized to be run for elements
+	/// within document doc_fname.
+	/// The check succeeds for safe converters, whilst for those potentially
+	/// able to execute arbitrary code, tagged with the 'needauth' option,
+	/// authorization is: always denied if lyxrc.use_converter_needauth_forbidden
+	/// is enabled; always allowed if the lyxrc.use_converter_needauth
+	/// is disabled; user is prompted otherwise
+	bool checkAuth(Converter const & conv, std::string const & doc_fname);
+
 private:
 	///
 	FormatList const
@@ -210,6 +225,8 @@ private:
 		  bool copy);
 	///
 	Graph G_;
+	/// set of document files authorized for external conversion
+	std::set<std::string> auth_files_;
 };
 
 /// The global instance.

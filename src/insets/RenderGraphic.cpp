@@ -14,6 +14,7 @@
 
 #include "insets/Inset.h"
 
+#include "Buffer.h"
 #include "LyX.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -35,6 +36,7 @@ namespace lyx {
 
 
 RenderGraphic::RenderGraphic(Inset const * inset)
+	: loader_(inset->buffer().fileName())
 {
 	loader_.connect(bind(&Inset::updateFrontend, inset));
 }

@@ -334,6 +334,7 @@ private Q_SLOTS:
 	void removeConverter();
 	void changeConverter();
 	void on_cacheCB_stateChanged(int state);
+	void on_needauthForbiddenCB_toggled(bool);
 
 private:
 	void updateButtons();

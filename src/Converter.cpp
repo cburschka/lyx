@@ -21,6 +21,7 @@
 #include "Format.h"
 #include "Language.h"
 #include "LaTeX.h"
+#include "LyXRC.h"
 #include "Mover.h"
 
 #include "frontends/alert.h"
@@ -100,7 +101,7 @@ Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
 	: from_(f), to_(t), command_(c), flags_(l),
 	  From_(0), To_(0), latex_(false), xml_(false),
-	  need_aux_(false), nice_(false)
+	  need_aux_(false), nice_(false), need_auth_(false)
 {}
 
 
@@ -128,6 +129,8 @@ void Converter::readFlags()
 			parselog_ = flag_value;
 		else if (flag_name == "nice")
 			nice_ = true;
+		else if (flag_name == "needauth")
+			need_auth_ = true;
 	}
 	if (!result_dir_.empty() && result_file_.empty())
 		result_file_ = "index." + formats.extension(to_);
@@ -275,6 +278,49 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 }
 
 
+bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
+{
+	if (!conv.need_auth())
+		return true;
+	if (lyxrc.use_converter_needauth_forbidden) {
+		frontend::Alert::warning(
+			_("Potentially harmful external converters disabled"),
+			_("Requested operation needs use of a potentially harmful external converter program,"
+			  "which is forbidden by default.\nThese converters are tagged by the 'needauth' option. "
+			  "In order to unlock execution of these converters,\nplease, go to "
+			  "Preferences->File Handling->Converters and uncheck "
+			  "Security->Forbid needauth converters."), true);
+		return false;
+	}
+	if (!lyxrc.use_converter_needauth)
+		return true;
+	static const docstring security_title = _("Launch of external converter needs user authorization");
+	static const char security_warning[] = "LyX is about to run converter '%1$s' which is launching an external program "
+		"that normally acts as a picture/format converter. However, this external program is known to be able to "
+		"execute arbitrary actions on the system on behalf of the user, including dangerous ones such as deleting "
+		"files, if instructed to do so by a maliciously crafted .lyx document.\n\nWould you like to run the converter?\n\n"
+		"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!";
+	int choice;
+	if (!doc_fname.empty()) {
+		LYXERR(Debug::FILES, "looking up: " << doc_fname);
+		if (auth_files_.find(doc_fname) == auth_files_.end()) {
+			choice = frontend::Alert::prompt(security_title,
+				bformat(_(security_warning), from_utf8(conv.command())),
+				0, 0, _("Do &NOT run"), _("&Run"), _("&Always run for this document"));
+			if (choice == 2)
+				auth_files_.insert(doc_fname);
+		} else {
+			choice = 1;
+		}
+	} else {
+		choice = frontend::Alert::prompt(security_title,
+			bformat(_(security_warning), from_utf8(conv.command())),
+			0, 0, _("Do &NOT run"), _("&Run"));
+	}
+	return choice != 0;
+}
+
+
 bool Converters::convert(Buffer const * buffer,
 			 FileName const & from_file, FileName const & to_file,
 			 FileName const & orig_from,
@@ -401,6 +447,9 @@ bool Converters::convert(Buffer const * buffer,
 				outfile = FileName(addName(package().temp_dir().absFileName(),
 						   "tmpfile.out"));
 		}
+
+		if (!checkAuth(conv, buffer->absFileName()))
+			return false;
 
 		if (conv.latex()) {
 			run_latex = true;

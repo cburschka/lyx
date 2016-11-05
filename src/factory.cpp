@@ -591,7 +591,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 				return 0;
 		}
 		inset->setBuffer(*buf);
-	} else { 
+	} else {
 		// FIXME This branch should be made to use inset codes
 		// as the preceding branch does. Unfortunately, that
 		// will take some doing. It requires converting the

@@ -14,6 +14,7 @@
 
 #include "GuiExternal.h"
 
+#include "Buffer.h"
 #include "FuncRequest.h"
 #include "support/gettext.h"
 #include "Length.h"

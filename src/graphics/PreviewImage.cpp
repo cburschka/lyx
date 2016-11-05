@@ -99,11 +99,17 @@ Image const * PreviewImage::image() const
 }
 
 
+PreviewLoader & PreviewImage::previewLoader() const
+{
+	return pimpl_->ploader_;
+}
+
+
 PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 			 string const & s,
 			 FileName const & bf,
 			 double af)
-	: parent_(p), ploader_(l), iloader_(bf),
+	: parent_(p), ploader_(l), iloader_(l.buffer().fileName(), bf),
 	  snippet_(s), ascent_frac_(af)
 {
 	iloader_.setDisplayPixelRatio(l.displayPixelRatio());

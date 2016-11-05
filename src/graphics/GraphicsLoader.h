@@ -40,13 +40,15 @@ class Params;
 class Loader {
 public:
 	/// Must use the reset methods to make this instance usable.
-	Loader();
+	Loader(support::FileName const & doc_file);
 	/// The image is not transformed, just displayed as-is.
-	Loader(support::FileName const & file_with_path, bool display = true);
+	Loader(support::FileName const & doc_file, support::FileName const & file_with_path, bool display = true);
 	/// The image is transformed before display.
-	Loader(support::FileName const & file_with_path, Params const &);
+	Loader(support::FileName const & doc_file, support::FileName const & file_with_path, Params const &);
 	///
-	Loader(Loader const &);
+	Loader(support::FileName const & doc_file, Loader const &);
+	///
+	Loader(Loader const & other);
 	/// Needed for the pimpl
 	~Loader();
 
@@ -108,7 +110,7 @@ private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;
 	/// The pointer never changes although *pimpl_'s contents may.
-	Impl * const pimpl_;
+	Impl * pimpl_;
 };
 
 } // namespace graphics

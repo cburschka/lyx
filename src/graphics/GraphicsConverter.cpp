@@ -12,9 +12,12 @@
 
 #include "GraphicsConverter.h"
 
+#include "Buffer.h"
 #include "Converter.h"
 #include "Format.h"
+#include "LyXRC.h"
 
+#include "frontends/alert.h"
 #include "support/lassert.h"
 #include "support/convert.h"
 #include "support/debug.h"
@@ -40,7 +43,7 @@ namespace graphics {
 class Converter::Impl : public boost::signals2::trackable {
 public:
 	///
-	Impl(FileName const &, string const &, string const &, string const &);
+	Impl(FileName const &, FileName const &, string const &, string const &, string const &);
 
 	///
 	void startConversion();
@@ -59,6 +62,8 @@ public:
 	///
 	SignalType finishedConversion;
 
+	///
+	FileName const & doc_fname_;
 	///
 	string script_command_;
 	///
@@ -79,9 +84,10 @@ bool Converter::isReachable(string const & from_format_name,
 }
 
 
-Converter::Converter(FileName const & from_file, string const & to_file_base,
+Converter::Converter(FileName const & doc_fname,
+		     FileName const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format)
-	: pimpl_(new Impl(from_file, to_file_base, from_format, to_format))
+	: pimpl_(new Impl(doc_fname, from_file, to_file_base, from_format, to_format))
 {}
 
 
@@ -112,17 +118,20 @@ FileName const & Converter::convertedFile() const
 /** Build the conversion script.
  *  The script is output to the stream \p script.
  */
-static void build_script(string const & from_file, string const & to_file_base,
+static void build_script(string const & doc_fname,
+		  string const & from_file, string const & to_file_base,
 		  string const & from_format, string const & to_format,
 		  ostream & script);
 
 
-Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
+Converter::Impl::Impl(FileName const & doc_fname,
+		      FileName const & from_file, string const & to_file_base,
 		      string const & from_format, string const & to_format)
-	: valid_process_(false), finished_(false)
+	: doc_fname_(doc_fname), valid_process_(false), finished_(false)
 {
 	LYXERR(Debug::GRAPHICS, "Converter c-tor:\n"
-		<< "\tfrom_file:      " << from_file
+		<< "doc_fname:        " << doc_fname
+		<< "\n\tfrom_file:    " << from_file
 		<< "\n\tto_file_base: " << to_file_base
 		<< "\n\tfrom_format:  " << from_format
 		<< "\n\tto_format:    " << to_format);
@@ -134,7 +143,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
-	build_script(from_file.toFilesystemEncoding(),
+	build_script(doc_fname_.absFileName(), from_file.toFilesystemEncoding(),
 		     to_file_.toFilesystemEncoding(),
 		     from_format, to_format, script);
 	LYXERR(Debug::GRAPHICS, "\tConversion script:"
@@ -263,7 +272,8 @@ static string const strip_digit(string const & format)
 }
 
 
-static void build_script(string const & from_file,
+static void build_script(string const & doc_fname,
+		  string const & from_file,
 		  string const & to_file,
 		  string const & from_format,
 		  string const & to_format,
@@ -371,6 +381,9 @@ static void build_script(string const & from_file,
 			tempfile.setAutoRemove(false);
 			outfile = tempfile.name().toFilesystemEncoding();
 		}
+
+		if (!theConverters().checkAuth(conv, doc_fname))
+			return;
 
 		// Store these names in the python script
 		script << "infile = "

@@ -101,7 +101,7 @@ vector<string> const & Cache::loadableFormats() const
 }
 
 
-void Cache::add(FileName const & file) const
+void Cache::add(FileName const & file, FileName const & doc_file) const
 {
 	// Is the file in the cache already?
 	if (inCache(file)) {
@@ -110,7 +110,7 @@ void Cache::add(FileName const & file) const
 		return;
 	}
 
-	pimpl_->cache[file] = ItemPtr(new CacheItem(file));
+	pimpl_->cache[file] = ItemPtr(new CacheItem(file, doc_file));
 }
 
 

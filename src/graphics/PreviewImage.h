@@ -22,6 +22,7 @@ class Dimension;
 
 namespace graphics {
 
+class Cache;
 class PreviewLoader;
 class Image;
 
@@ -48,6 +49,8 @@ public:
 	Image const * image() const;
 	///
 	support::FileName const & filename() const;
+
+	PreviewLoader & previewLoader() const;
 
 private:
 	/// Use the Pimpl idiom to hide the internals.

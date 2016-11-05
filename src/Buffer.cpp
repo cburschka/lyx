@@ -79,6 +79,7 @@
 #include "mathed/MathMacroTemplate.h"
 #include "mathed/MathSupport.h"
 
+#include "graphics/GraphicsCache.h"
 #include "graphics/PreviewLoader.h"
 
 #include "frontends/alert.h"
@@ -421,8 +422,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  ignore_parent(false),  toc_backend(owner), macro_lock(false), timestamp_(0),
 	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
 	  bibfile_cache_valid_(false), cite_labels_valid_(false), preview_error_(false),
-	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer), clone_list_(0),
-	  doing_export(false), parent_buffer(0),
+	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
+	  clone_list_(0), doing_export(false), parent_buffer(0),
 	  word_count_(0), char_count_(0), blank_count_(0)
 {
 	if (!cloned_buffer_) {

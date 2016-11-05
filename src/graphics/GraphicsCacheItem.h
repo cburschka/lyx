@@ -46,7 +46,7 @@ class Converter;
 class CacheItem {
 public:
 	///
-	CacheItem(support::FileName const & file);
+	CacheItem(support::FileName const & file, support::FileName const & doc_file);
 	/// Needed for the pimpl
 	~CacheItem();
 

@@ -167,6 +167,8 @@ public:
 		RC_USER_EMAIL,
 		RC_USER_NAME,
 		RC_USE_CONVERTER_CACHE,
+		RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN,
+		RC_USE_CONVERTER_NEEDAUTH,
 		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
@@ -443,6 +445,12 @@ public:
 	std::string texinputs_prefix;
 	/// Use the cache for file converters?
 	bool use_converter_cache;
+	/// Forbid use of external converters with 'needauth' option
+	bool use_converter_needauth_forbidden;
+	/// Ask user before calling external converters with 'needauth' option
+	bool use_converter_needauth;
+	/// Apply hardening when calling external converters
+	bool use_converter_wrappers;
 	/// The maximum age of cache files in seconds
 	unsigned int converter_cache_maxage;
 	/// Sort layouts alphabetically

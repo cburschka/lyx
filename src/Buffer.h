@@ -74,6 +74,7 @@ class FileNameList;
 
 namespace graphics {
 class PreviewLoader;
+class Cache;
 }
 
 
@@ -587,6 +588,8 @@ public:
 	void updatePreviews() const;
 	/// Remove any previewed LaTeX snippets associated with this buffer
 	void removePreviews() const;
+	///
+	graphics::Cache & graphicsCache() const;
 
 	/// Our main text (inside the top InsetText)
 	Text & text() const;

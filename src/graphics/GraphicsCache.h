@@ -46,7 +46,7 @@ public:
 	std::vector<std::string> const & loadableFormats() const;
 
 	/// Add a graphics file to the cache.
-	void add(support::FileName const & file) const;
+	void add(support::FileName const & file, support::FileName const & doc_file) const;
 
 	/// Remove a file from the cache.
 	void remove(support::FileName const & file) const;

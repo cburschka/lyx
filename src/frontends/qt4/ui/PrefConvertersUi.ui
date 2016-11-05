@@ -304,6 +304,51 @@
      </layout>
     </widget>
    </item>
+   <item row="2" column="0" >
+    <widget class="QGroupBox" name="securityGB" >
+     <property name="title" >
+      <string>Security</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="needauthForbiddenCB" >
+          <property name="text" >
+           <string>&amp;Forbid use of needauth converters</string>
+          </property>
+          <property name="toolTip">
+           <string>When enabled, use of converters with the 'needauth' option is forbidden.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="needauthCB" >
+          <property name="text" >
+           <string>Use need&amp;auth option</string>
+          </property>
+          <property name="toolTip">
+           <string>When enabled, ask user before launching any external converter with the 'needauth' option.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>

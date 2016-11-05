@@ -34,7 +34,8 @@ public:
 	/** One Converter per conversion ensures that the (hidden) signal
 	 *  is always connected to the expected slot.
 	 */
-	Converter(support::FileName const & from_file, std::string const & to_file_base,
+	Converter(support::FileName const & doc_fname,
+		  support::FileName const & from_file, std::string const & to_file_base,
 		  std::string const & from_format, std::string const & to_format);
 
 	/// Needed for the pimpl
