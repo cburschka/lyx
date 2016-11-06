@@ -133,6 +133,9 @@ What's new
 
 - Fix bad painting of collapsable insets sub-label when selecting (bug 10475).
 
+- Always prefer breaking lines at word boundaries even for very long words. This
+  fixes line breaking issues most noticeably in languages where spaces are rare
+  such as Chinese (bug 10299).
 
 * INTERNALS
 

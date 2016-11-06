@@ -282,7 +282,8 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 	tl.setText(qs);
 	tl.setFont(font_);
 	QTextOption to;
-	to.setWrapMode(force ? QTextOption::WrapAnywhere : QTextOption::WordWrap);
+	to.setWrapMode(force ? QTextOption::WrapAtWordBoundaryOrAnywhere
+	                     : QTextOption::WordWrap);
 	tl.setTextOption(to);
 	tl.beginLayout();
 	QTextLine line = tl.createLine();
