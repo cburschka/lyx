@@ -1294,12 +1294,17 @@ void PrefColors::changeSysColor()
 {
 	for (int row = 0 ; row < lyxObjectsLW->count() ; ++row) {
 		// skip colors that are taken from system palette
-		bool const hide = syscolorsCB->isChecked()
+		bool const disable = syscolorsCB->isChecked()
 			&& guiApp->colorCache().isSystem(lcolors_[row]);
 
-		lyxObjectsLW->item(row)->setHidden(hide);
-	}
+		QListWidgetItem * const item = lyxObjectsLW->item(row);
+		Qt::ItemFlags const flags = item->flags();
 
+		if (disable)
+			item->setFlags(flags & ~Qt::ItemIsEnabled);
+		else
+			item->setFlags(flags | Qt::ItemIsEnabled);
+	}
 }
 
 void PrefColors::changeLyxObjectsSelection()
