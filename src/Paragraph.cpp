@@ -3147,6 +3147,11 @@ bool Paragraph::isHfill(pos_type pos) const
 
 bool Paragraph::isNewline(pos_type pos) const
 {
+	// U+2028 LINE SEPARATOR
+	// U+2029 PARAGRAPH SEPARATOR
+	char_type const c = d->text_[pos];
+	if (c == 0x2028 || c == 0x2029)
+		return true;
 	Inset const * inset = getInset(pos);
 	return inset && inset->lyxCode() == NEWLINE_CODE;
 }

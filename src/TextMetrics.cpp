@@ -864,7 +864,23 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
 				     *fi, par.lookupChange(i));
-		else {
+		else if (c == 0x2028 || c == 0x2029) {
+			/**
+			 * U+2028 LINE SEPARATOR
+			 * U+2029 PARAGRAPH SEPARATOR
+
+			 * These are special unicode characters that break
+			 * lines/pragraphs. Not handling them lead to trouble wrt
+			 * Qt QTextLayout formatting. We add a visible character
+			 * on screen so that the user can see that something is
+			 * happening.
+			*/
+			row.finalizeLast();
+			// ⤶ U+2936 ARROW POINTING DOWNWARDS THEN CURVING LEFTWARDS
+			// ¶ U+00B6 PILCROW SIGN
+			char_type const screen_char = (c == 0x2028) ? 0x2936 : 0x00B6;
+			row.add(i, screen_char, *fi, par.lookupChange(i));
+		} else {
 			// FIXME: please someone fix the Hebrew/Arabic parenthesis mess!
 			// see also Paragraph::getUChar.
 			if (fi->language()->lang() == "hebrew") {
@@ -925,6 +941,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		BufferParams const & bparams
 			= text_->inset().buffer().params();
 		f.setLanguage(par.getParLanguage(bparams));
+		// ¶ U+00B6 PILCROW SIGN
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
