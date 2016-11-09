@@ -86,6 +86,8 @@ typedef limited_stack<pair<ParagraphList, DocumentClassConstPtr> > CutStack;
 CutStack theCuts(10);
 // persistent selection, cleared until the next selection
 CutStack selectionBuffer(1);
+// temporary scratch area
+CutStack tempCut(1);
 
 // store whether the tabular stack is newer than the normal copy stack
 // FIXME: this is a workaround for bug 1919. Should be removed for 1.5,
@@ -111,7 +113,7 @@ struct PasteReturnValue {
 
 PasteReturnValue
 pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
-                     DocumentClassConstPtr oldDocClass, Buffer * tmpbuffer,
+                     DocumentClassConstPtr oldDocClass, cap::BranchAction branchAction,
                      ErrorList & errorlist)
 {
 	Buffer const & buffer = *cur.buffer();
@@ -355,12 +357,15 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			    || (is_child && (branchlist.find(name)
 			        || buffer.masterBuffer()->params().branchlist().find(name))))
 				break;
-			if (tmpbuffer) {
+			switch(branchAction) {
+			case cap::BRANCH_ADD: {
 				// This is for a temporary buffer, so simply create the branch.
 				// Must not use lyx::dispatch(), since tmpbuffer has no view.
 				DispatchResult dr;
-				tmpbuffer->dispatch(FuncRequest(LFUN_BRANCH_ADD, name), dr);
-			} else {
+				const_cast<Buffer&>(buffer).dispatch(FuncRequest(LFUN_BRANCH_ADD, name), dr);
+				break;
+			}
+			case cap::BRANCH_ASK: {
 				docstring text = bformat(
 					_("The pasted branch \"%1$s\" is undefined.\n"
 					  "Do you want to add it to the document's branch list?"),
@@ -369,6 +374,10 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 					  text, 0, 1, _("&Add"), _("&Don't Add")) != 0)
 					break;
 				lyx::dispatch(FuncRequest(LFUN_BRANCH_ADD, name));
+				break;
+			}
+			case cap::BRANCH_IGNORE:
+				break;
 			}
 			// We need to update the list of branches.
 			need_update = true;
@@ -521,7 +530,7 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 	// temporary Buffer, since it does a lot of things to fix them up.
 	DocIterator dit = doc_iterator_begin(buffer, &buffer->inset());
 	ErrorList el;
-	pasteSelectionHelper(dit, paragraphs, docclass, buffer, el);
+	pasteSelectionHelper(dit, paragraphs, docclass, cap::BRANCH_ADD, el);
 
 	return buffer;
 }
@@ -839,8 +848,9 @@ size_type numberOfSelections()
 	return theCuts.size();
 }
 
+namespace {
 
-void cutSelection(Cursor & cur, bool doclear, bool realcut)
+void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool doclear, bool realcut, bool putclip)
 {
 	// This doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -868,11 +878,12 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 				*text,
 				begpit, endpit,
 				cur.selBegin().pos(), endpos,
-				bp.documentClassPtr(), theCuts);
+				bp.documentClassPtr(), cuts);
 			// Stuff what we got on the clipboard.
 			// Even if there is no selection.
-			putClipboard(theCuts[0].first, theCuts[0].second,
-				cur.selectionAsString(true));
+			if (putclip)
+				putClipboard(cuts[0].first, cuts[0].second,
+				             cur.selectionAsString(true));
 		}
 
 		if (begpit != endpit)
@@ -920,6 +931,19 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 			copySelection(cur);
 		eraseSelection(cur);
 	}
+}
+
+}
+
+void cutSelection(Cursor & cur, bool doclear, bool realcut)
+{
+	cutSelectionHelper(cur, theCuts, doclear, realcut, true);
+}
+
+
+void cutSelectionToTemp(Cursor & cur, bool doclear, bool realcut)
+{
+	cutSelectionHelper(cur, tempCut, doclear, realcut, false);
 }
 
 
@@ -1066,14 +1090,15 @@ docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
 
 
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClassConstPtr docclass, ErrorList & errorList)
+						DocumentClassConstPtr docclass, ErrorList & errorList,
+						cap::BranchAction branchAction)
 {
 	if (cur.inTexted()) {
 		Text * text = cur.text();
 		LBUFERR(text);
 
 		PasteReturnValue prv =
-			pasteSelectionHelper(cur, parlist, docclass, 0, errorList);
+			pasteSelectionHelper(cur, parlist, docclass, branchAction, errorList);
 		cur.forceBufferUpdate();
 		cur.clearSelection();
 		text->setCursor(cur, prv.pit, prv.pos);
@@ -1092,7 +1117,20 @@ bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index)
 
 	cur.recordUndo();
 	pasteParagraphList(cur, theCuts[sel_index].first,
-			   theCuts[sel_index].second, errorList);
+	                   theCuts[sel_index].second, errorList, BRANCH_ASK);
+	return true;
+}
+
+
+bool pasteFromTemp(Cursor & cur, ErrorList & errorList)
+{
+	// this does not make sense, if there is nothing to paste
+	if (tempCut.empty() || tempCut[0].first.empty())
+		return false;
+
+	cur.recordUndo();
+	pasteParagraphList(cur, tempCut[0].first,
+	                   tempCut[0].second, errorList, BRANCH_IGNORE);
 	return true;
 }
 

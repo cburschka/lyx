@@ -90,7 +90,9 @@ namespace lyx {
 
 using cap::copySelection;
 using cap::cutSelection;
+using cap::cutSelectionToTemp;
 using cap::pasteFromStack;
+using cap::pasteFromTemp;
 using cap::pasteClipboardText;
 using cap::pasteClipboardGraphics;
 using cap::replaceSelection;
@@ -299,7 +301,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 	bool gotsel = false;
 	if (cur.selection()) {
-		cutSelection(cur, false, pastesel);
+		cutSelectionToTemp(cur, false, pastesel);
 		cur.clearSelection();
 		gotsel = true;
 	}
@@ -311,7 +313,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!gotsel || !pastesel)
 		return true;
 
-	pasteFromStack(cur, cur.buffer()->errorList("Paste"), 0);
+	pasteFromTemp(cur, cur.buffer()->errorList("Paste"));
 	cur.buffer()->errors("Paste");
 	cur.clearSelection(); // bug 393
 	cur.finishUndo();

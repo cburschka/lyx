@@ -60,6 +60,9 @@ void replaceSelection(Cursor & cur);
  *                selection.
  */
 void cutSelection(Cursor & cur, bool doclear = true, bool realcut = true);
+/// Like cutSelection, but only put to temporary cut buffer
+void cutSelectionToTemp(Cursor & cur, bool doclear = true, bool realcut = true);
+
 /// Push the current selection to the cut buffer and the system clipboard.
 void copySelection(Cursor const & cur);
 ///
@@ -96,13 +99,23 @@ void pasteClipboardGraphics(Cursor & cur, ErrorList & errorList,
 /// Replace the current selection with cut buffer \c sel_index
 /// Does handle undo. Does only work in text, not mathed.
 bool pasteFromStack(Cursor & cur, ErrorList & errorList, size_t sel_index);
+/// Replace the current selection with temporary cut buffer
+/// Does handle undo. Does only work in text, not mathed.
+bool pasteFromTemp(Cursor & cur, ErrorList & errorList);
 /// Paste the clipboard as simple text, removing any formatting
 void pasteSimpleText(Cursor & cur, bool asParagraphs);
 
+// What to do with unknown branches?
+enum BranchAction {
+	BRANCH_ADD, // add the branch unconditionally
+	BRANCH_IGNORE, // leave the branch undefined
+	BRANCH_ASK // ask the user whether the branch should be added
+};
 /// Paste the paragraph list \p parlist at the position given by \p cur.
 /// Does not handle undo. Does only work in text, not mathed.
 void pasteParagraphList(Cursor & cur, ParagraphList const & parlist,
-			DocumentClassConstPtr textclass, ErrorList & errorList);
+                        DocumentClassConstPtr textclass, ErrorList & errorList,
+                        BranchAction branchAction = BRANCH_ASK);
 
 
 /** Needed to switch between different classes. This works
