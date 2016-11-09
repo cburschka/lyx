@@ -1202,6 +1202,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 	                 this, SLOT(updateWindowTitle(GuiWorkArea *)));
 	QObject::connect(wa, SIGNAL(busy(bool)),
 	                 this, SLOT(setBusy(bool)));
+	// connection of a signal to a signal
 	QObject::connect(wa, SIGNAL(bufferViewChanged()),
 	                 this, SIGNAL(bufferViewChanged()));
 	Q_EMIT updateWindowTitle(wa);
