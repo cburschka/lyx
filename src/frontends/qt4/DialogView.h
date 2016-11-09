@@ -49,7 +49,7 @@ protected:
 	void hideEvent(QHideEvent * ev);
 
 protected Q_SLOTS:
-	void on_bufferViewChanged() {};
+	void onBufferViewChanged() {};
 };
 
 } // namespace frontend

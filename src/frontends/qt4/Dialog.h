@@ -265,7 +265,7 @@ protected:
 	///
 	virtual void apply();
 	/// To be called when the buffer view has changed
-	virtual void on_bufferViewChanged() = 0;
+	virtual void onBufferViewChanged() = 0;
 
 private:
 	/** The Dialog's name is the means by which a dialog identifies

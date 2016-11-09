@@ -423,7 +423,7 @@ GuiViewSource::GuiViewSource(GuiView & parent,
 }
 
 
-void GuiViewSource::on_bufferViewChanged()
+void GuiViewSource::onBufferViewChanged()
 {
 	widget_->setText();
 	widget_->setEnabled((bool)bufferview());

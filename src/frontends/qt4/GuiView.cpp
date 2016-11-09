@@ -513,7 +513,7 @@ GuiView::GuiView(int id)
 	  command_execute_(false), minibuffer_focus_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
-	        this, SLOT(on_bufferViewChanged()));
+	        this, SLOT(onBufferViewChanged()));
 
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
@@ -1210,7 +1210,7 @@ void GuiView::on_currentWorkAreaChanged(GuiWorkArea * wa)
 }
 
 
-void GuiView::on_bufferViewChanged()
+void GuiView::onBufferViewChanged()
 {
 	structureChanged();
 	// Buffer-dependent dialogs must be updated. This is done here because

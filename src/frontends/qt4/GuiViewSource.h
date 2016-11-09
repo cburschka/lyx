@@ -119,7 +119,7 @@ public:
 
 public Q_SLOTS:
 	///
-	void on_bufferViewChanged();//override
+	void onBufferViewChanged();//override
 
 private Q_SLOTS:
 	/// The title displayed by the dialog reflects source type.

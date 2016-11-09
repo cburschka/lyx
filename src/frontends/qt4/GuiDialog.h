@@ -60,7 +60,7 @@ public Q_SLOTS:
 	void closeEvent(QCloseEvent * e);
 
 protected Q_SLOTS:
-	void on_bufferViewChanged() {};//override
+	void onBufferViewChanged() {};//override
 
 public:
 	/** Check whether we may apply our data.

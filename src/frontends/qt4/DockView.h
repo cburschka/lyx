@@ -58,7 +58,7 @@ public:
 	//@}
 
 protected Q_SLOTS:
-	void on_bufferViewChanged() {} //override
+	void onBufferViewChanged() {} //override
 };
 
 } // frontend

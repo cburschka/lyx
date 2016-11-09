@@ -27,7 +27,7 @@ DockView::DockView(GuiView & parent, QString const & name,
 	parent.addDockWidget(area, this);
 	hide();
 	connect(&parent, SIGNAL(bufferViewChanged()),
-	        this, SLOT(on_bufferViewChanged()));
+	        this, SLOT(onBufferViewChanged()));
 }
 
 

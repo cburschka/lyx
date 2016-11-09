@@ -1457,7 +1457,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 }
 
 
-void GuiDocument::on_bufferViewChanged()
+void GuiDocument::onBufferViewChanged()
 {
 	if (isVisibleView())
 		initialiseParams("");

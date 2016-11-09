@@ -233,7 +233,7 @@ private Q_SLOTS:
 	///
 	void on_currentWorkAreaChanged(GuiWorkArea *);
 	///
-	void on_bufferViewChanged();
+	void onBufferViewChanged();
 	///
 	void on_lastWorkAreaRemoved();
 

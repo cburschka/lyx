@@ -29,7 +29,7 @@ GuiDialog::GuiDialog(GuiView & lv, QString const & name, QString const & title)
 	  is_closing_(false)
 {
 	connect(&lv, SIGNAL(bufferViewChanged()),
-	        this, SLOT(on_bufferViewChanged()));
+	        this, SLOT(onBufferViewChanged()));
 
 	// remove question marks from Windows dialogs
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
