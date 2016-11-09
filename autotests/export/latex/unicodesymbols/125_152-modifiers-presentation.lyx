@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -49,7 +49,7 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 1
 \branch na
 \selected 0
@@ -77,23 +77,47 @@
 
 \begin_body
 
+\begin_layout Subsection*
+125 Modifier tone letters
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+A700 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
 \begin_layout Standard
-\paragraph_spacing single
-Greek with utf8 requires 
-\begin_inset Quotes eld
+꜀ ꜁ ꜂ ꜃ ꜄ ꜅ ꜆ ꜇ ꜈ ꜉ ꜊ ꜋ ꜌ ꜍ ꜎ ꜏
+\end_layout
+
 \end_inset
 
-textalpha
-\begin_inset Quotes erd
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+A710 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+꜐ ꜑ ꜒ ꜓ ꜔ ꜕ ꜖ ꜗ ꜘ ꜙ ꜚ 
+\end_layout
+
 \end_inset
 
- (see Document>Settings>Preamble) or setting the language of Greek parts
- to Greek.
- See 
-\begin_inset CommandInset href
-LatexCommand href
-name "#9681"
-target "http://www.lyx.org/trac/ticket/9681"
+ ꜛ ꜜ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ꜝ ꜞ ꜟ
+\end_layout
 
 \end_inset
 
@@ -101,87 +125,87 @@ target "http://www.lyx.org/trac/ticket/9681"
 \end_layout
 
 \begin_layout Subsection*
-69 Greek Extended 
+152 Alphabetic Presentation Forms
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1F00 ἀ ἁ ἂ ἃ ἄ ἅ ἆ ἇ Ἀ Ἁ Ἂ Ἃ Ἄ Ἅ Ἆ Ἇ
+FB00 ﬀ ﬁ ﬂ ﬃ ﬄ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ﬅ ﬆ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1F10 ἐ ἑ ἒ ἓ ἔ ἕ Ἐ Ἑ Ἒ Ἓ Ἔ Ἕ 
+FB10 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ﬓ ﬔ ﬕ ﬖ ﬗ יִ ﬞ ײַ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1F20 ἠ ἡ ἢ ἣ ἤ ἥ ἦ ἧ Ἠ Ἡ Ἢ Ἣ Ἤ Ἥ Ἦ Ἧ
+FB20 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+ﬠ ﬡ ﬢ ﬣ ﬤ ﬥ ﬦ ﬧ ﬨ ﬩ שׁ שׂ שּׁ שּׂ אַ אָ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1F30 ἰ ἱ ἲ ἳ ἴ ἵ ἶ ἷ Ἰ Ἱ Ἲ Ἳ Ἴ Ἵ Ἶ Ἷ
+FB30 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+אּ בּ גּ דּ הּ וּ זּ טּ יּ ךּ כּ לּ מּ
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-1F40 ὀ ὁ ὂ ὃ ὄ ὅ Ὀ Ὁ Ὂ Ὃ Ὄ Ὅ 
+FB40 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+נּ סּ ףּ פּ צּ קּ רּ שּ תּ וֹ בֿ כֿ פֿ ﭏ
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1F50 ὐ ὑ ὒ ὓ ὔ ὕ ὖ ὗ Ὑ Ὓ Ὕ Ὗ
-\end_layout
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1F60 ὠ ὡ ὢ ὣ ὤ ὥ ὦ ὧ Ὠ Ὡ Ὢ Ὣ Ὤ Ὥ Ὦ Ὧ
-\end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1F70 ὰ ά ὲ έ ὴ ή ὶ ί ὸ ό ὺ ύ ὼ ώ 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1F80 ᾀ ᾁ ᾂ ᾃ ᾄ ᾅ ᾆ ᾇ ᾈ ᾉ ᾊ ᾋ ᾌ ᾍ ᾎ ᾏ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1F90 ᾐ ᾑ ᾒ ᾓ ᾔ ᾕ ᾖ ᾗ ᾘ ᾙ ᾚ ᾛ ᾜ ᾝ ᾞ ᾟ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FA0 ᾠ ᾡ ᾢ ᾣ ᾤ ᾥ ᾦ ᾧ ᾨ ᾩ ᾪ ᾫ ᾬ ᾭ ᾮ ᾯ
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FB0 ᾰ ᾱ ᾲ ᾳ ᾴ ᾶ ᾷ Ᾰ Ᾱ Ὰ Ά ᾼ ᾽ ι ᾿
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FC0 ῀ ῁ ῂ ῃ ῄ ῆ ῇ Ὲ Έ Ὴ Ή ῌ ῍ ῎ ῏
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FD0 ῐ ῑ ῒ ΐ ῖ ῗ Ῐ Ῑ Ὶ Ί ῝ ῞ ῟
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FE0 ῠ ῡ ῢ ΰ ῤ ῥ ῦ ῧ Ῠ Ῡ Ὺ Ύ Ῥ ῭ ΅ `
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-1FF0 ῲ ῳ ῴ ῶ ῷ Ὸ Ό Ὼ Ώ ῼ ´ ῾ 
 \end_layout
 
 \end_body

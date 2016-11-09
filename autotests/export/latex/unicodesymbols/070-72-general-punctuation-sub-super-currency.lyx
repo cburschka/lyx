@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -78,40 +78,34 @@
 \begin_body
 
 \begin_layout Subsection*
-87 Miscellaneous Mathematical Symbols-A
+79 General Punctuation
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-27C0 
+1F00                       ​ ‌ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2010 ‐ ‑ ‒ – — ― ‖ ‗ ‘ ’ ‚ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⟀ ⟁
+‛
 \end_layout
 
 \end_inset
 
- ⟂ 
+ “ ” „ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⟃ ⟄
-\end_layout
-
-\end_inset
-
- ⟅ ⟆ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⟇ ⟈ ⟉ ⟊ 
+‟
 \end_layout
 
 \end_inset
@@ -121,13 +115,13 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-27D0 
+2020 † ‡ • ‣ ․ ‥ … 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⟐ ⟑ ⟒ ⟓ ⟔ ⟕ ⟖ ⟗ ⟘ ⟙ ⟚ ⟛ ⟜ ⟝ ⟞ ⟟
+‧     ‪ ‫ ‬ ‭ ‮  
 \end_layout
 
 \end_inset
@@ -137,24 +131,105 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-27E0 
+2030 ‰ ‱ ′ ″ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⟠ ⟡ ⟢ ⟣ ⟤ ⟥
+‴
 \end_layout
 
 \end_inset
 
- ⟦ ⟧ ⟨ ⟩ 
+ ‵ ‶ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+‷
+\end_layout
+
+\end_inset
+
+ ‸ ‹ › ※ ‼ ‽ ‾ ‿
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2040 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+⁀ ⁁ ⁂ ⁃
+\end_layout
+
+\end_inset
+
+ ⁄ ⁅ ⁆ ⁇ ⁈ ⁉ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+⁊ ⁋ ⁌ ⁍ ⁎ ⁏
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2050 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+⁐ ⁑
+\end_layout
+
+\end_inset
+
+ ⁒ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⟪ ⟫ ⟬ ⟭ ⟮ ⟯
+⁓ ⁔ ⁕ ⁖ ⁗ ⁘ ⁙ ⁚ ⁛ ⁜ 
+\end_layout
+
+\end_inset
+
+ ⁝ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⁞  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2060 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+⁠ ⁡ ⁢ ⁣ ⁪ ⁫ ⁬ ⁭ ⁮ ⁯
 \end_layout
 
 \end_inset
@@ -163,116 +238,92 @@ status open
 \end_layout
 
 \begin_layout Subsection*
-88 Supplemental Arrows-A
+71 Superscripts and Subscripts
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-27F0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⟰ ⟱ ⟲ ⟳ ⟴
+2070 ⁰ ⁱ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁼ ⁽ ⁾ ⁿ
 \end_layout
 
-\end_inset
-
- ⟵ ⟶ ⟷ ⟸ ⟹ ⟺ ⟻ ⟼ ⟽ ⟾ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⟿
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2080 ₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2090 ₐ ₑ ₒ ₓ ₔ 
 \end_layout
 
 \begin_layout Subsection*
-89 Braille Patterns
-\end_layout
-
-\begin_layout Standard
-not supported
-\end_layout
-
-\begin_layout Subsection*
-90 Supplemental Arrows-B
+72 Currency Symbols
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2900 
+20A0 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⤀ ⤁ ⤂ ⤃ ⤄ ⤅
+₠
 \end_layout
 
 \end_inset
 
- ⤆ ⤇ 
+ ₡ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⤈ ⤉ ⤊ ⤋ ⤌ ⤍ ⤎ ⤏
+₢ ₣
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2910 
+ ₤ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⤐ ⤑ ⤒ ⤓ ⤔ ⤕ ⤖ ⤗ ⤘ ⤙ ⤚ ⤛ ⤜ ⤝ ⤞ ⤟
+₥
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2920 
+ ₦ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⤠ ⤡ ⤢ ⤣ ⤤ ⤥ ⤦ ⤧ ⤨ ⤩ ⤪ ⤫ ⤬ ⤭ ⤮ ⤯
+₧ ₨
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2930 
+ ₩ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⤰ ⤱ ⤲ ⤳ ⤴ ⤵ ⤶ ⤷ ⤸ ⤹ ⤺ ⤻ ⤼ ⤽ ⤾ ⤿
+₪
+\end_layout
+
+\end_inset
+
+ ₫ € 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+₭ ₮ ₯
 \end_layout
 
 \end_inset
@@ -282,13 +333,24 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2940 
+20B0 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
-⥀ ⥁ ⥂ ⥃ ⥄ ⥅ ⥆ ⥇ ⥈ ⥉ ⥊ ⥋ ⥌ ⥍ ⥎ ⥏
+₰
+\end_layout
+
+\end_inset
+
+ ₱ ₲ 
+\begin_inset Branch na
+inverted 0
+status collapsed
+
+\begin_layout Standard
+₳ ₴ ₵ 
 \end_layout
 
 \end_inset
@@ -298,50 +360,7 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2950 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⥐ ⥑ ⥒ ⥓ ⥔ ⥕ ⥖ ⥗ ⥘ ⥙ ⥚ ⥛ ⥜ ⥝ ⥞ ⥟
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2960 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⥠ ⥡ ⥢ ⥣ ⥤ ⥥ ⥦ ⥧ ⥨ ⥩ ⥪ ⥫ ⥬ ⥭ ⥮ ⥯
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2970 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⥰ ⥱ ⥲ ⥳ ⥴ ⥵ ⥶ ⥷ ⥸ ⥹ ⥺ ⥻ ⥼ ⥽ ⥾ ⥿
-\end_layout
-
-\end_inset
-
- 
+20C0 
 \end_layout
 
 \end_body

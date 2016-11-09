@@ -5,11 +5,11 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\use_default_options true
+\use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -30,7 +30,16 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle true
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -50,13 +59,13 @@
 \paperorientation portrait
 \suppress_date false
 \justification false
-\use_refstyle 1
+\use_refstyle 0
 \branch na
 \selected 0
 \filename_suffix 0
 \color #faf0e6
 \end_branch
-\index Index
+\index Stichwortverzeichnis
 \shortcut idx
 \color #008000
 \end_index
@@ -78,49 +87,40 @@
 \begin_body
 
 \begin_layout Subsection*
-82 Box Drawing
+84 Miscellaneous Symbols
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2500 ─ ━ │ ┃ 
+2600 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋
+☀ ☁ ☂ ☃ ☄
 \end_layout
 
 \end_inset
 
- ┌ ┍ ┎ ┏
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2510 ┐ ┑ ┒ ┓ └ ┕ ┖ ┗ ┘ ┙ ┚ ┛ ├ ┝ ┞ ┟
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2520 ┠ ┡ ┢ ┣ ┤ ┥ ┦ ┧ ┨ ┩ ┪ ┫ ┬ ┭ ┮ ┯
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2530 ┰ ┱ ┲ ┳ ┴ ┵ ┶ ┷ ┸ ┹ ┺ ┻ ┼ ┽ ┾ ┿
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2540 ╀ ╁ ╂ ╃ ╄ ╅ ╆ ╇ ╈ ╉ ╊ ╋ 
+ ★ ☆ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-╌ ╍ ╎ ╏
+☇ ☈
+\end_layout
+
+\end_inset
+
+ ☉ ☊ ☋ ☌ ☍ ☎ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☏
 \end_layout
 
 \end_inset
@@ -130,18 +130,46 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2550 ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2560 ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ 
+2610 ☐ ☑ ☒ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-╭ ╮ ╯
+☓ ☔ 
+\end_layout
+
+\end_inset
+
+ ☕ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☖ ☗ ☘ ☙
+\end_layout
+
+\end_inset
+
+ ☚ ☛ ☜ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☝
+\end_layout
+
+\end_inset
+
+ ☞ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☟
 \end_layout
 
 \end_inset
@@ -151,47 +179,153 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2570 
+2620 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-╰ ╱ ╲ ╳ 
+☠ ☡
 \end_layout
 
 \end_inset
 
- ╴ ╵ ╶ ╷ ╸ ╹ ╺ ╻ ╼ ╽ ╾ ╿ 
-\end_layout
-
-\begin_layout Subsection*
-83 Block Elements
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2580 ▀ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▉ ▊ ▋ ▌ ▍ ▎ ▏
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2590 ▐ ░ ▒ ▓ ▔ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟
-\end_layout
-
-\begin_layout Subsection*
-84 Geometric Shapes
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-25A0 ■ □ 
+ ☢ ☣ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-▢ ▣
+☤
+\end_layout
+
+\end_inset
+
+ ☥ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☦ ☧ ☨ ☩ ☪ ☫ ☬ ☭ ☮
+\end_layout
+
+\end_inset
+
+ ☯
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2630 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+☰ ☱ ☲ ☳ ☴ ☵ ☶ ☷ ☸
+\end_layout
+
+\end_inset
+
+ ☹ ☺ ☻ ☼ ☽ ☾ ☿
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2640 ♀ ♁ ♂ ♃ ♄ ♅ ♆ ♇ ♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2650 ♐ ♑ ♒ ♓ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2660 ♠ ♡ ♢ ♣ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♤
+\end_layout
+
+\end_inset
+
+ ♥ ♦ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♧ ♨
+\end_layout
+
+\end_inset
+
+ ♩ ♪ ♫ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♬
+\end_layout
+
+\end_inset
+
+ ♭ ♮ ♯
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2670 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♰ ♱
+\end_layout
+
+\end_inset
+
+ ♲ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+♳ ♴ ♵ ♶ ♷ ♸ ♹ ♺ ♻ ♼ ♽ ♾
+\end_layout
+
+\end_inset
+
+ ♿
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2680 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⚀ ⚁ ⚂ ⚃ ⚄ ⚅
 \end_layout
 
 \end_inset
@@ -202,18 +336,7 @@ inverted 0
 status open
 
 \begin_layout Standard
-▤ ▥ ▦ ▧ ▨ ▩
-\end_layout
-
-\end_inset
-
- ▪ ▫ ▬ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-▭ ▮ ▯
+⚆ ⚇ ⚈ ⚉ ⚊ ⚋ ⚌ ⚍ ⚎ ⚏
 \end_layout
 
 \end_inset
@@ -223,89 +346,35 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-25B0 
+2690 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-▰ ▱
+⚐ ⚑
 \end_layout
 
 \end_inset
 
- ▲ △ ▴ ▵ ▶ ▷ ▸ ▹ ► 
+ ⚒ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-▻
+⚓ ⚔ ⚕ ⚖ ⚗ ⚘ ⚙ ⚚ ⚛
 \end_layout
 
 \end_inset
 
- ▼ ▽ ▾ ▿
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-25C0 ◀ ◁ ◂ ◃ ◄ 
+ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◅
-\end_layout
-
-\end_inset
-
- ◆ ◇ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-◈ ◉
-\end_layout
-
-\end_inset
-
- ◊ ○ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-◌ ◍ ◎
-\end_layout
-
-\end_inset
-
- ●
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-25D0 ◐ ◑ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-◒ ◓ ◔ ◕
-\end_layout
-
-\end_inset
-
- ◖ ◗ ◘ ◙ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-◚ ◛ ◜ ◝ ◞ ◟
+⚜ ⚝ ⚞ ⚟
 \end_layout
 
 \end_inset
@@ -315,62 +384,126 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-25E0 
+26A0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◠ ◡ ◢ ◣ ◤ ◥
+⚠ ⚡
 \end_layout
 
 \end_inset
 
- ◦ 
+ ⚢ ⚣ ⚤ ⚥ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◧ ◨ ◩ ◪ 
+⚦ ⚧ ⚨ ⚩ 
 \end_layout
 
 \end_inset
 
- ◫ 
+⚪ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◬ ◭ ◮
+⚫ ⚬
 \end_layout
 
 \end_inset
 
- ◯
+ ⚭ ⚮ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⚯
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-25F0 
+26B0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◰ ◱ ◲ ◳ ◴ ◵ ◶ ◷ ◸ ◹ ◺
+⚰ ⚱ ⚲ ⚳ ⚴ ⚵ ⚶ ⚷ ⚸ ⚹ ⚺ ⚻ ⚼ ⚽ ⚾ ⚿
 \end_layout
 
 \end_inset
 
- ◻ ◼ 
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+26C0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-◽ ◾ ◿
+⛀ ⛁ ⛂ ⛃ ⛄ ⛅ ⛆ ⛇ ⛈ ⛉ ⛊ ⛋ ⛌ ⛍ ⛎ ⛏
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+26D0 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⛐ ⛑ ⛒ ⛓ ⛔ ⛕ ⛖ ⛗ ⛘ ⛙ ⛚ ⛛ ⛜ ⛝ ⛞ ⛟
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+26E0 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⛠ ⛡ ⛢ ⛣ ⛤ ⛥ ⛦ ⛧ ⛨ ⛩ ⛪ ⛫ ⛬ ⛭ ⛮ ⛯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+26F0 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⛰ ⛱ ⛲ ⛳ ⛴ ⛵ ⛶ ⛷ ⛸ ⛹ ⛺ ⛻ ⛼ ⛽ ⛾ ⛿
 \end_layout
 
 \end_inset

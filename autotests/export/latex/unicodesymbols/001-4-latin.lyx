@@ -1,15 +1,18 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+\lyxformat 515
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\use_default_options true
+\begin_preamble
+
+\end_preamble
+\use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -36,7 +39,7 @@
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 1
@@ -50,7 +53,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
+\use_refstyle 0
 \branch na
 \selected 0
 \filename_suffix 0
@@ -62,8 +65,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 1

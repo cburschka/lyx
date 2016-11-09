@@ -9,7 +9,7 @@
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding ascii
+\inputencoding utf8
 \fontencoding global
 \font_roman "lmodern" "default"
 \font_sans "lmss" "default"
@@ -78,18 +78,40 @@
 \begin_body
 
 \begin_layout Subsection*
-125 Modifier tone letters
+87 Miscellaneous Mathematical Symbols-A
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-A700 
+27C0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-꜀ ꜁ ꜂ ꜃ ꜄ ꜅ ꜆ ꜇ ꜈ ꜉ ꜊ ꜋ ꜌ ꜍ ꜎ ꜏
+⟀ ⟁
+\end_layout
+
+\end_inset
+
+ ⟂ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⟃ ⟄
+\end_layout
+
+\end_inset
+
+ ⟅ ⟆ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⟇ ⟈ ⟉ ⟊ 
 \end_layout
 
 \end_inset
@@ -99,24 +121,40 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-A710 
+27D0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-꜐ ꜑ ꜒ ꜓ ꜔ ꜕ ꜖ ꜗ ꜘ ꜙ ꜚ 
+⟐ ⟑ ⟒ ⟓ ⟔ ⟕ ⟖ ⟗ ⟘ ⟙ ⟚ ⟛ ⟜ ⟝ ⟞ ⟟
 \end_layout
 
 \end_inset
 
- ꜛ ꜜ 
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+27E0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ꜝ ꜞ ꜟ
+⟠ ⟡ ⟢ ⟣ ⟤ ⟥
+\end_layout
+
+\end_inset
+
+ ⟦ ⟧ ⟨ ⟩ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⟪ ⟫ ⟬ ⟭ ⟮ ⟯
 \end_layout
 
 \end_inset
@@ -125,18 +163,68 @@ status open
 \end_layout
 
 \begin_layout Subsection*
-152 Alphabetic Presentation Forms
+88 Supplemental Arrows-A
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FB00 ﬀ ﬁ ﬂ ﬃ ﬄ 
+27F0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ﬅ ﬆ
+⟰ ⟱ ⟲ ⟳ ⟴
+\end_layout
+
+\end_inset
+
+ ⟵ ⟶ ⟷ ⟸ ⟹ ⟺ ⟻ ⟼ ⟽ ⟾ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⟿
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+89 Braille Patterns
+\end_layout
+
+\begin_layout Standard
+not supported
+\end_layout
+
+\begin_layout Subsection*
+90 Supplemental Arrows-B
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2900 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⤀ ⤁ ⤂ ⤃ ⤄ ⤅
+\end_layout
+
+\end_inset
+
+ ⤆ ⤇ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⤈ ⤉ ⤊ ⤋ ⤌ ⤍ ⤎ ⤏
 \end_layout
 
 \end_inset
@@ -146,13 +234,13 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FB10 
+2910 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ﬓ ﬔ ﬕ ﬖ ﬗ יִ ﬞ ײַ
+⤐ ⤑ ⤒ ⤓ ⤔ ⤕ ⤖ ⤗ ⤘ ⤙ ⤚ ⤛ ⤜ ⤝ ⤞ ⤟
 \end_layout
 
 \end_inset
@@ -162,13 +250,13 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FB20 
+2920 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-ﬠ ﬡ ﬢ ﬣ ﬤ ﬥ ﬦ ﬧ ﬨ ﬩ שׁ שׂ שּׁ שּׂ אַ אָ
+⤠ ⤡ ⤢ ⤣ ⤤ ⤥ ⤦ ⤧ ⤨ ⤩ ⤪ ⤫ ⤬ ⤭ ⤮ ⤯
 \end_layout
 
 \end_inset
@@ -178,13 +266,13 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FB30 
+2930 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-אּ בּ גּ דּ הּ וּ זּ טּ יּ ךּ כּ לּ מּ
+⤰ ⤱ ⤲ ⤳ ⤴ ⤵ ⤶ ⤷ ⤸ ⤹ ⤺ ⤻ ⤼ ⤽ ⤾ ⤿
 \end_layout
 
 \end_inset
@@ -194,18 +282,66 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-FB40 
+2940 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-נּ סּ ףּ פּ צּ קּ רּ שּ תּ וֹ בֿ כֿ פֿ ﭏ
+⥀ ⥁ ⥂ ⥃ ⥄ ⥅ ⥆ ⥇ ⥈ ⥉ ⥊ ⥋ ⥌ ⥍ ⥎ ⥏
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2950 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⥐ ⥑ ⥒ ⥓ ⥔ ⥕ ⥖ ⥗ ⥘ ⥙ ⥚ ⥛ ⥜ ⥝ ⥞ ⥟
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2960 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⥠ ⥡ ⥢ ⥣ ⥤ ⥥ ⥦ ⥧ ⥨ ⥩ ⥪ ⥫ ⥬ ⥭ ⥮ ⥯
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+2970 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+⥰ ⥱ ⥲ ⥳ ⥴ ⥵ ⥶ ⥷ ⥸ ⥹ ⥺ ⥻ ⥼ ⥽ ⥾ ⥿
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_body
