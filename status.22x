@@ -139,6 +139,9 @@ What's new
   fixes line breaking issues most noticeably in languages where spaces are rare
   such as Chinese (bug 10299).
 
+- Do not use the clipboard stack when transforming selection into an
+  inset (bug 6570).
+
 * INTERNALS
 
 
