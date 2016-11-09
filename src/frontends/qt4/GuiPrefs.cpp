@@ -1989,7 +1989,7 @@ void PrefFileformats::updateView()
 	defaultFormatCB->clear();
 	defaultOTFFormatCB->clear();
 	form_->formats().sort();
-	for (Format const & f : formats) {
+	for (Format const & f : form_->formats()) {
 		QString const prettyname = toqstr(translateIfPossible(f.prettyname()));
 		formatsCB->addItem(prettyname,
 		                   QVariant(form_->formats().getNumber(f.name())));
