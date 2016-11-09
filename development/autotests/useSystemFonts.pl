@@ -65,7 +65,7 @@ sub getLangEntry();
 
 # convert lyx file to be compilable with xetex
 
-my ($source, $dest, $format, $fontT, $languageFile, $rest) = @ARGV;
+my ($source, $dest, $format, $fontT, $encodingT, $languageFile, $rest) = @ARGV;
 my %encodings = ();      # Encoding with TeX fonts, depending on language tag
 
 diestack("Too many arguments") if (defined($rest));
@@ -73,6 +73,7 @@ diestack("Sourcefilename not defined") if (! defined($source));
 diestack("Destfilename not defined") if (! defined($dest));
 diestack("Format (e.g. pdf4) not defined") if (! defined($format));
 diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
+diestack("Encoding (e.g. ascii) not defined") if (! defined($encodingT));
 
 $source = File::Spec->rel2abs($source);
 $dest = File::Spec->rel2abs($dest);
@@ -123,6 +124,13 @@ if ($fontT eq "systemF") {
     $font{typewriter} = "FreeMono";
   }
 }
+elsif ($encodingT ne "default") {
+  # set input encoding to the requested value
+  $inputEncoding = {
+        "search" => '.*', # this will be substituted from '\inputencoding'-line
+	"out" => $encodingT,
+    };
+}
 elsif (0) { # set to '1' to enable setting of inputencoding
   # use tex font here
   my %encoding = ();
@@ -165,7 +173,7 @@ my $destdirOfSubdocuments;
 if(-d $destdirOfSubdocuments) {
   rmtree($destdirOfSubdocuments);
 }
-mkdir($destdirOfSubdocuments);	#  for possibly included files
+mkpath($destdirOfSubdocuments);	#  for possibly included files
 
 my %IncludedFiles = ();
 my %type2hash = (

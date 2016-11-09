@@ -23,9 +23,10 @@
 #       -DLYX_FORMAT_NUM=${_lyx_format_num} \
 #       -Dfile=xxx \
 #       -Dinverted=[01] \
-#       -DTOP_SRC_DIR=${TOP_SRC_DIR}
-#       -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
-#       -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
+#       -DTOP_SRC_DIR=${TOP_SRC_DIR} \
+#       -DPERL_EXECUTABLE=${PERL_EXECUTABLE} \
+#       -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE} \
+#       -DENCODING=xxx \
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
 #
 
@@ -36,13 +37,24 @@ set(GetTempDir "${TOP_SRC_DIR}/development/autotests/getTempDir.pl")
 set(_ft ${fonttype})
 execute_process(COMMAND ${PERL_EXECUTABLE} "${GetTempDir}" "${WORKDIR}" OUTPUT_VARIABLE TempDir)
 message(STATUS "using fonttype = ${_ft}")
+if(NOT ENCODING)
+  set(ENCODING "default")
+endif()
+if(ENCODING STREQUAL "default")
+  set(_enc)
+else()
+  set(_enc "_${ENCODING}")
+endif()
 if(format MATCHES "dvi|pdf")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
   message(STATUS "Converting with perl ${Perl_Script}")
-  set(LYX_SOURCE "${TempDir}/${file}_${format}_${_ft}.lyx")
+  set(LYX_SOURCE "${TempDir}/${file}_${format}_${_ft}${_enc}.lyx")
   message(STATUS "Using source \"${LYX_ROOT}/${file}.lyx\"")
   message(STATUS "Using dest \"${LYX_SOURCE}\"")
-  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft} ${LanguageFile}
+  if(NOT "${ENCODING}" STREQUAL "default")
+    # message(STATUS "ENCODING = ${ENCODING}")
+  endif()
+  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft} ${ENCODING} ${LanguageFile}
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)

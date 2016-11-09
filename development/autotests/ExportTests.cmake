@@ -381,31 +381,60 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
         set(fonttypes "defaultF")
       endif()
       foreach(fonttype ${fonttypes})
-        if(fonttype MATCHES "defaultF")
-          set(TestName "export/${libsubfolder}/${f}_${format}")
+        if (format MATCHES "pdf2" AND f MATCHES "Unicode-characters")
+          #message(STATUS "Test ${TestName} matches Unicode encodings")
+          set(test_encodings "default" "ascii" "utf8x" "armscii8" "applemac"
+	    "cp437" "cp437de" "cp850" "cp852"
+	    "cp855" "cp858" "cp862" "cp865"
+	    "cp866" "cp1250" "cp1251" "cp1252"
+	    "cp1255" "cp1256" "cp1257"
+	    "koi8-r" "koi8-u"
+	    "iso8859-1" "iso8859-2" "iso8859-3"
+	    "iso8859-4" "iso8859-5" "iso8859-6"
+	    "iso8859-7" "iso8859-8" "iso8859-9"
+	    "iso8859-13" "iso8859-15" "iso8859-16"
+	    "pt154" "pt254" "big5" "shift-jis"
+	    "euc-cn" "gbk" "jis" "euc-kr"
+	    "utf8-cjk" "euc-tw" "euc-jp"
+	    "euc-jp-platex" "jis-platex"
+	    "shift-jis-platex" "utf8-platex"
+	    "tis620-0")
         else()
-          set(TestName "export/${libsubfolder}/${f}_${format}_${fonttype}")
+          set(test_encodings "default")
         endif()
-        set(mytestlabel ${testlabel})
-        maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
-        if(TestName)
-          add_test(NAME ${TestName}
-            WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-            COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
-            -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
-            -Dlyx=$<TARGET_FILE:${_lyx}>
-            -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
-            -Dformat=${format}
-            -Dfonttype=${fonttype}
-            -Dextension=${format}
-            -Dfile=${f}
-            -Dinverted=${inverted}
-            -DTOP_SRC_DIR=${TOP_SRC_DIR}
-            -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
-            -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
-            -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-          setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
-        endif()
+        foreach (_enc2 ${test_encodings})
+          if ("${_enc2}" STREQUAL "default")
+            set(_enc "")
+          else()
+            set(_enc "_${_enc2}")
+          endif()
+          if(fonttype MATCHES "defaultF")
+            set(TestName "export/${libsubfolder}/${f}${_enc}_${format}")
+          else()
+            set(TestName "export/${libsubfolder}/${f}${_enc}_${format}_${fonttype}")
+          endif()
+          set(mytestlabel ${testlabel})
+          maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
+          if(TestName)
+            add_test(NAME ${TestName}
+              WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+              COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+              -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
+              -Dlyx=$<TARGET_FILE:${_lyx}>
+              -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+              -Dformat=${format}
+              -Dfonttype=${fonttype}
+              -Dextension=${format}
+              -Dfile=${f}
+              -Dinverted=${inverted}
+              -DTOP_SRC_DIR=${TOP_SRC_DIR}
+              -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
+              -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
+              -DENCODING=${_enc2}
+              -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+            setmarkedtestlabel(${TestName} ${mytestlabel}) # check for suspended pdf/dvi exports
+          endif()
+        endforeach()
       endforeach()
     endforeach()
   endforeach()
