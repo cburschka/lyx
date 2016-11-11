@@ -300,8 +300,8 @@ spadesuit          cmsy        127 170 mathord  &spades;
 # We define lyxnot as mathrel in order to have proper alignment
 lyxnot             cmsy         54  47 mathrel  /
 iffont cmsy
-# 9mu = 0.5em which is the extra space added to relation operators
-\def\not{\lyxnot\kern-9mu}
+# 10mu is the extra space added to relation operators
+\def\not{\lyxnot\kern-20mu}
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
 endif
@@ -692,7 +692,7 @@ AC                 wasy          58  0 textmode &#x223F; wasysym,amstext,lyxmath
 \def\HF{\approx}                                         wasysym
 VHF                wasy          64  0 x        &#x224B; # triple tilde
 Square             wasy          50  0 x        &square;
-\def\CheckedBox{\Square\kern-0.8em\checked}              wasysym
+\def\CheckedBox{\Square\kern-13.4mu\checked}              wasysym
 XBox               wasy          52  0 x        &timesb;
 hexagon            wasy          55  0 x        &#x2b21;
 pentagon           wasy          68  0 x        &#x2b20;
@@ -726,8 +726,8 @@ Leftcircle         wasy          73  0 x        x
 LEFTCIRCLE         wasy          71  0 x        &#x25D6;
 Rightcircle        wasy          74  0 x        x
 RIGHTCIRCLE        wasy          72  0 x        &#x25D7;
-\def\LEFTcircle{\LEFTCIRCLE\kern-1em\Circle}             wasysym
-\def\RIGHTcircle{\RIGHTCIRCLE\kern-1em\Circle}           wasysym
+\def\LEFTcircle{\LEFTCIRCLE\kern-13.4mu\Circle}             wasysym
+\def\RIGHTcircle{\RIGHTCIRCLE\kern-13.4mu\Circle}           wasysym
 
 # Defined by amsmath.sty
 
@@ -790,7 +790,7 @@ APLup              wasy          0   0 x        x
 APLdown            wasy          70  0 x        x
 APLinput           wasy          125 0 x        x
 APLcomment         wasy          127 0 x        x
-\def\APLinv{\div\kern-17mu\APLbox}                       wasysym
+\def\APLinv{\div\kern-17.9mu\APLbox}                       wasysym
 APLuparrowbox      wasy         110  0 x        &#x2350;
 APLdownarrowbox    wasy         111  0 x        &#x2357;
 APLleftarrowbox    wasy         112  0 x        &#x2347;
@@ -801,11 +801,11 @@ Bowtie             wasy          49  0 x        &#x22C8;
 leftturn           wasy          34  0 x        &#x27F2;
 rightturn          wasy          33  0 x        &#x27F3;
 # diagrams
-\def\photon{\AC\kern-3mu\AC\kern-3mu\AC\kern-3mu\AC}     wasysym
-lyxgluonelement    wasy          80  0 x        x        notexisting
-lyxgluonbelement   wasy          81  0 x        x        notexisting
-lyxgluoneelement   wasy          82  0 x        x        notexisting
-\def\gluon{\lyxgluonbelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluonelement\kern-3mu\lyxgluoneelement} wasysym
+\def\photon{\AC\AC\AC\AC}     wasysym
+lyxgluonelement    wasy          80  0 x        x        hiddensymbol
+lyxgluonbelement   wasy          81  0 x        x        hiddensymbol
+lyxgluoneelement   wasy          82  0 x        x        hiddensymbol
+\def\gluon{\lyxgluonbelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluonelement\lyxgluoneelement} wasysym
 # special characters
 cent               wasy         103   0 x        &#00A2;
 permil             wasy         104   0 x        &#x2030;
@@ -1110,20 +1110,21 @@ pod                lyxblacktext  0   0 func     x     amsmath
 
 
 # mathtools.sty
-\def\vcentcolon{:}                                              mathrel :        mathtools
-\def\dblcolon{\vcentcolon\kern-8mu\vcentcolon}                  mathrel ::       mathtools
-\def\coloneqq{\vcentcolon\kern-7mu=}                            mathrel &#x2254; mathtools
-\def\Coloneqq{\dblcolon\kern-7mu=}                              mathrel ::=      mathtools
-\def\coloneq{\vcentcolon\kern-7mu-}                             mathrel :-       mathtools
-\def\Coloneq{\dblcolon\kern-7mu-}                               mathrel ::-      mathtools
-\def\eqqcolon{=\kern-8mu\vcentcolon}                            mathrel &#x2255; mathtools
-\def\Eqqcolon{=\kern-8mu\dblcolon}                              mathrel =::      mathtools
-\def\eqcolon{-\kern-8mu\vcentcolon}                             mathrel -:       mathtools
-\def\Eqcolon{-\kern-8mu\dblcolon}                               mathrel -::      mathtools
-\def\colonapprox{\vcentcolon\kern-7mu\approx}                   mathrel :&ap;    mathtools
-\def\Colonapprox{\dblcolon\kern-7mu\approx}                     mathrel ::&ap;   mathtools
-\def\colonsim{\vcentcolon\kern-7mu\sim}                         mathrel :&sim;   mathtools
-\def\Colonsim{\dblcolon\kern-7mu\sim}                           mathrel ::&sim;  mathtools
+vcentcolon         cmr          58  58            mathrel :        mathtools
+ordinarycolon      cmr          58  58            mathrel :        mathtools
+\def\dblcolon{\vcentcolon\kern-10.9mu\vcentcolon} mathrel ::       mathtools
+\def\coloneqq{\vcentcolon\kern-11.2mu=}           mathrel &#x2254; mathtools
+\def\Coloneqq{\dblcolon\kern-11.2mu=}             mathrel ::=      mathtools
+\def\coloneq{\vcentcolon\kern-11.2mu-}            mathrel :-       mathtools
+\def\Coloneq{\dblcolon\kern-11.2mu-}              mathrel ::-      mathtools
+\def\eqqcolon{=\kern-11.2mu\vcentcolon}           mathrel &#x2255; mathtools
+\def\Eqqcolon{=\kern-11.2mu\dblcolon}             mathrel =::      mathtools
+\def\eqcolon{-\kern-11.2mu\vcentcolon}            mathrel -:       mathtools
+\def\Eqcolon{-\kern-11.2mu\dblcolon}              mathrel -::      mathtools
+\def\colonapprox{\vcentcolon\kern-11.2mu\approx}  mathrel :&ap;    mathtools
+\def\Colonapprox{\dblcolon\kern-11.2mu\approx}    mathrel ::&ap;   mathtools
+\def\colonsim{\vcentcolon\kern-11.2mu\sim}        mathrel :&sim;   mathtools
+\def\Colonsim{\dblcolon\kern-11.2mu\sim}          mathrel ::&sim;  mathtools
 
 
 #
@@ -1152,7 +1153,7 @@ iffont cmsy
 \def\impliedby{\Longleftarrow}                                  mathrel &#x27F8; amsmath
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}                    mathrel &#x21A4;
 \def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow} mathrel &#x27FB;
-\def\models{\vert\kern-7mu\lyxeq}                               mathrel &vDash;
+\def\models{\vert\kern-3mu\lyxeq}                               mathrel &vDash;
 else
 \def\implies{=>}                                                mathrel &#x27F9; amsmath
 \def\impliedby{<=}                                              mathrel &#x27F8; amsmath
@@ -1160,7 +1161,7 @@ endif
 iffont cmm
 \def\hookrightarrow{\lhook\kern-12mu\rightarrow}                mathrel &#x21AA;
 \def\hookleftarrow{\leftarrow\kern-12mu\rhook}                  mathrel &#x21A9;
-\def\bowtie{\triangleright\kern-6mu\triangleleft}               mathrel &#x22C8;
+\def\bowtie{\triangleright\kern-10mu\triangleleft}              mathrel &#x22C8;
 endif
 iffont msa
 \def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}                mathrel &#x290F; amssymb
@@ -1171,7 +1172,7 @@ else
 endif
 \def\dasharrow{\dashrightarrow}                                 mathrel &#x290F; amssymb
 iffont msb
-\def\Join{\ltimes\kern-18.5mu\rtimes}                           amssymb
+\def\Join{\ltimes\kern-22mu\rtimes}                             amssymb
 else
 \def\Join{|x|}                                                  amssymb
 endif

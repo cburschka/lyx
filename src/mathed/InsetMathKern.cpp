@@ -49,7 +49,11 @@ void InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
 	dim.des = 0;
+	// match em value used in mathed_*muskip
+	FontInfo const oldfont = mi.base.font;
+	mi.base.font.setFamily(SYMBOL_FAMILY);
 	dim.wid = wid_.inPixels(mi.base);
+	mi.base.font = oldfont;
 }
 
 
