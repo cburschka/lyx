@@ -29,7 +29,7 @@ Style Theorem
 	Margin                First_Dynamic
 	LatexType             Environment
 	LatexName             thm
-	NextNoIndent          1
+	NextNoIndent          0
 	ResetArgs             1
 	AddToToc              thm
 	IsTocCaption          1
