@@ -221,7 +221,7 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 	int nd = ndes(bv);
 	int des = dyb(bv) + max(dimbl.descent(), dimbr.descent());
 	dim.des = max(nd, des);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

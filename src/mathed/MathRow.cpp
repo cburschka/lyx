@@ -37,7 +37,7 @@ namespace lyx {
 
 
 MathRow::Element::Element(Type t, MetricsInfo &mi)
-	: type(t), macro_nesting(mi.macro_nesting),
+	: type(t), macro_nesting(mi.base.macro_nesting),
 	  inset(0), mclass(MC_ORD), before(0), after(0), compl_unique_to(0),
 	  macro(0), color(Color_red)
 {}
@@ -130,7 +130,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 	CoordCache & coords = mi.base.bv->coordCache();
 	for (Element const & e : elements_) {
 		Dimension d;
-		mi.macro_nesting = e.macro_nesting;
+		mi.base.macro_nesting = e.macro_nesting;
 		switch (e.type) {
 		case BEGIN:
 		case END:
@@ -195,6 +195,7 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 {
 	CoordCache & coords = pi.base.bv->coordCache();
 	for (Element const & e : elements_) {
+		pi.base.macro_nesting = e.macro_nesting;
 		switch (e.type) {
 		case INSET: {
 			// This is hackish: the math inset does not know that space

@@ -169,6 +169,15 @@ public:
 	/// Add this inset to a math row. Return true if contents got added
 	virtual bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
+	/// add space for markers
+	void metricsMarkers(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
+	/// add space for markers
+	void metricsMarkers2(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
+
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
 	/// will this get written as a single block in {..}

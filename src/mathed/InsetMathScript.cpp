@@ -333,7 +333,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = max(nd, des);
 	} else
 		dim.des = nd;
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

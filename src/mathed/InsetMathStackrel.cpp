@@ -77,7 +77,7 @@ void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = dim1.ascent() + dim0.height() + 4;
 		dim.des = dim1.descent();
 	}
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

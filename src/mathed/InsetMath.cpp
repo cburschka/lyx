@@ -16,13 +16,15 @@
 #include "MathRow.h"
 #include "MathStream.h"
 
+#include "MetricsInfo.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include "support/lassert.h"
 
 using namespace std;
 
@@ -64,6 +66,36 @@ bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	mrow.push_back(e);
 	return true;
 }
+
+void InsetMath::metricsMarkers(MetricsInfo & mi, Dimension & dim,
+                           int framesize) const
+{
+	if (!mi.base.macro_nesting)
+		Inset::metricsMarkers(dim, framesize);
+}
+
+
+void InsetMath::metricsMarkers2(MetricsInfo & mi, Dimension & dim,
+                            int framesize) const
+{
+	if (!mi.base.macro_nesting)
+		Inset::metricsMarkers2(dim, framesize);
+}
+
+
+void InsetMath::drawMarkers(PainterInfo & pi, int x, int y) const
+{
+	if (!pi.base.macro_nesting)
+		Inset::drawMarkers(pi, x, y);
+}
+
+
+void InsetMath::drawMarkers2(PainterInfo & pi, int x, int y) const
+{
+	if (!pi.base.macro_nesting)
+		Inset::drawMarkers2(pi, x, y);
+}
+
 
 
 void InsetMath::dump() const

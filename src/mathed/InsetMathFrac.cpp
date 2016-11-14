@@ -207,7 +207,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des = dim1.height() + 2 - 5;
 		}
 	}
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 
@@ -582,7 +582,7 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = dim0.height() + 4 + 5;
 	dim.des = dim1.height() + 4 - 5;
 	dim.wid = max(dim0.wid, dim1.wid) + 2 * dw(dim.height()) + 4;
-	metricsMarkers2(dim);
+	metricsMarkers2(mi, dim);
 }
 
 

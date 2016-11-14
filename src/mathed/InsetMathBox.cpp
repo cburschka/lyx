@@ -83,7 +83,7 @@ void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 
@@ -135,7 +135,7 @@ void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
+	metricsMarkers2(mi, dim, 3); // 1 pixel space, 1 frame, 1 space
 }
 
 
@@ -246,7 +246,7 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des += 1;
 	}
 	
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 
@@ -360,7 +360,7 @@ InsetMathBoxed::InsetMathBoxed(Buffer * buf)
 void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers2(dim, 3); // 1 pixel space, 1 frame, 1 space
+	metricsMarkers2(mi, dim, 3); // 1 pixel space, 1 frame, 1 space
 }
 
 

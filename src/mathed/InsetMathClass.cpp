@@ -31,7 +31,7 @@ Inset * InsetMathClass::clone() const
 void InsetMathClass::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

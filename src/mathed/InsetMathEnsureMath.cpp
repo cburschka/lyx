@@ -41,7 +41,7 @@ void InsetMathEnsureMath::metrics(MetricsInfo & mi, Dimension & dim) const
 	bool really_change_font = isTextFont(mi.base.fontname);
 	Changer dummy = mi.base.changeFontSet("mathnormal", really_change_font);
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

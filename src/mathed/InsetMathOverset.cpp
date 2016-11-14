@@ -39,7 +39,7 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.wid) + 4;
 	dim.asc = dim1.asc + dim0.height() + 4;
 	dim.des = dim1.des;
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 
