@@ -381,7 +381,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
         set(fonttypes "defaultF")
       endif()
       foreach(fonttype ${fonttypes})
-        if (format MATCHES "pdf2" AND f MATCHES "Unicode-characters")
+        if (format MATCHES "pdf2" AND f MATCHES "latex/unicodesymbols")
           #message(STATUS "Test ${TestName} matches Unicode encodings")
           set(test_encodings "default" "ascii" "utf8x" "armscii8" "applemac"
 	    "cp437" "cp437de" "cp850" "cp852"
