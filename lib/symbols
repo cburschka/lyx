@@ -300,8 +300,7 @@ spadesuit          cmsy        127 170 mathord  &spades;
 # We define lyxnot as mathrel in order to have proper alignment
 lyxnot             cmsy         54  47 mathrel  /           hiddensymbol
 iffont cmsy
-# 10mu is the extra space added to relation operators
-\def\not{\lyxnot\kern-20mu}
+\def\not{\lyxnot\mathrel{\kern-11mu}}
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
 endif
@@ -669,7 +668,7 @@ hslash             msb         125   0 mathord  &plankv;
 hbar               msb         126   0 mathord  &planck;
 backepsilon        msb         127   0 mathrel  &bepsi;
 
-lyxbar             cmsy        161   0 mathord   &mdash;  hiddensymbol
+lyxbar             cmsy        161   0 mathrel   &mdash;  hiddensymbol
 lyxminus           cmsy        161   0 mathbin   &mdash;  hiddensymbol
 lyxplus            cmr          43  43 mathbin   +        hiddensymbol
 lyxeq              cmr          61  61 mathord   =        hiddensymbol
@@ -795,7 +794,7 @@ APLup              wasy          0   0 x        x
 APLdown            wasy          70  0 x        x
 APLinput           wasy          125 0 x        x
 APLcomment         wasy          127 0 x        x
-\def\APLinv{\div\kern-17.9mu\APLbox}                       wasysym
+\def\APLinv{\mathord{\div\kern-13.9mu\APLbox}}  wasysym
 APLuparrowbox      wasy         110  0 x        &#x2350;
 APLdownarrowbox    wasy         111  0 x        &#x2357;
 APLleftarrowbox    wasy         112  0 x        &#x2347;
@@ -976,15 +975,15 @@ bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenpl
 #Largerrbracketbot  stmry 126   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketbot in the font
 #rrbracketex        stmry 127   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
 
-\def\varcopyright{c\kern-14mu\varbigcirc}                   stmaryrd
-\def\longarrownot{\kern5.5mu\arrownot\kern-5.5mu}           stmaryrd
-\def\Longarrownot{\kern5.5mu\Arrownot\kern-5.5mu}           stmaryrd
-\def\Mapsto{\Mapstochar\kern-9mu\Rightarrow}                stmaryrd
+\def\varcopyright{\mathord{c\kern-11mu\varbigcirc}}         stmaryrd
+\def\longarrownot{\mathrel{\kern5.5mu}\arrownot\mathrel{\kern-5.5mu}} stmaryrd
+\def\Longarrownot{\mathrel{\kern5.5mu}\Arrownot\mathrel{\kern-5.5mu}} stmaryrd
+\def\Mapsto{\Mapstochar\mathrel{\kern-2mu}\Rightarrow}      stmaryrd
 \def\mapsfrom{\leftarrow\kern-9mu\mapsfromchar}             stmaryrd
 \def\Mapsfrom{\Leftarrow\kern-9mu\Mapsfromchar}             stmaryrd
-\def\Longmapsto{\Mapstochar\kern-7mu\Longrightarrow}        stmaryrd
-\def\longmapsfrom{\longleftarrow\kern-7mu\mapsfromchar}     stmaryrd
-\def\Longmapsfrom{\Longleftarrow\kern-7mu\Mapsfromchar}     stmaryrd
+\def\Longmapsto{\Mapstochar\Longrightarrow}                 stmaryrd
+\def\longmapsfrom{\longleftarrow\mapsfromchar}              stmaryrd
+\def\Longmapsfrom{\Longleftarrow\mathrel{\kern1mu}\Mapsfromchar}      stmaryrd
 
 # symbols from the mhchem package, all of them are equivalent to a math symbol
 # mhchem is not loaded because these commands can only be used inside
@@ -1115,21 +1114,21 @@ pod                lyxblacktext  0   0 func     x     amsmath
 
 
 # mathtools.sty
-vcentcolon         cmr          58  58            mathrel :        mathtools
-ordinarycolon      cmr          58  58            mathrel :        mathtools
-\def\dblcolon{\vcentcolon\kern-10.9mu\vcentcolon} mathrel ::       mathtools
-\def\coloneqq{\vcentcolon\kern-11.2mu=}           mathrel &#x2254; mathtools
-\def\Coloneqq{\dblcolon\kern-11.2mu=}             mathrel ::=      mathtools
-\def\coloneq{\vcentcolon\kern-11.2mu-}            mathrel :-       mathtools
-\def\Coloneq{\dblcolon\kern-11.2mu-}              mathrel ::-      mathtools
-\def\eqqcolon{=\kern-11.2mu\vcentcolon}           mathrel &#x2255; mathtools
-\def\Eqqcolon{=\kern-11.2mu\dblcolon}             mathrel =::      mathtools
-\def\eqcolon{-\kern-11.2mu\vcentcolon}            mathrel -:       mathtools
-\def\Eqcolon{-\kern-11.2mu\dblcolon}              mathrel -::      mathtools
-\def\colonapprox{\vcentcolon\kern-11.2mu\approx}  mathrel :&ap;    mathtools
-\def\Colonapprox{\dblcolon\kern-11.2mu\approx}    mathrel ::&ap;   mathtools
-\def\colonsim{\vcentcolon\kern-11.2mu\sim}        mathrel :&sim;   mathtools
-\def\Colonsim{\dblcolon\kern-11.2mu\sim}          mathrel ::&sim;  mathtools
+vcentcolon         cmr          58  58    mathrel :             mathtools
+ordinarycolon      cmr          58  58    mathrel :             mathtools
+\def\dblcolon{\vcentcolon\mathrel{\kern-0.9mu}\vcentcolon}      mathrel ::       mathtools
+\def\coloneqq{\vcentcolon\mathrel{\kern-1.2mu}=}                mathrel &#x2254; mathtools
+\def\Coloneqq{\dblcolon\mathrel{\kern-1.2mu}=}                  mathrel ::=      mathtools
+\def\coloneq{\vcentcolon\mathrel{\kern-1.2mu}\mathrel{-}}       mathrel :-       mathtools
+\def\Coloneq{\dblcolon\mathrel{\kern-1.2mu}\mathrel{-}}         mathrel ::-      mathtools
+\def\eqqcolon{=\mathrel{\kern-1.2mu}\vcentcolon}                mathrel &#x2255; mathtools
+\def\Eqqcolon{=\mathrel{\kern-1.2mu}\dblcolon}                  mathrel =::      mathtools
+\def\eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\vcentcolon}                 mathrel -:       mathtools
+\def\Eqcolon{\mathrel{-}\mathrel{\kern-1.2mu}\dblcolon}                   mathrel -::      mathtools
+\def\colonapprox{\vcentcolon\mathrel{\kern-1.2mu}\approx}       mathrel :&ap;    mathtools
+\def\Colonapprox{\dblcolon\mathrel{\kern-1.2mu}\approx}         mathrel ::&ap;   mathtools
+\def\colonsim{\vcentcolon\mathrel{\kern-1.2mu}\sim}             mathrel :&sim;   mathtools
+\def\Colonsim{\dblcolon\mathrel{\kern-1.2mu}\sim}               mathrel ::&sim;  mathtools
 
 
 #
@@ -1144,50 +1143,53 @@ ordinarycolon      cmr          58  58            mathrel :        mathtools
 \def\notin{\not\in}                                             mathrel &notin;
 \def\slash{/}
 
-\def\longleftrightarrow{\leftarrow\kern-12.5mu\rightarrow}
-\def\Longleftrightarrow{\Leftarrow\kern-12.5mu\Rightarrow}
-\def\iff{\Leftarrow\kern-12.5mu\Rightarrow}
+\def\joinrel{\mathrel{\kern-3mu}}
+\def\relbar{\lyxbar}
+\def\Relbar{\mathrel{=}}
+\def\longleftrightarrow{\leftarrow\joinrel\rightarrow}
+\def\Longleftrightarrow{\Leftarrow\joinrel\Rightarrow}
+\def\iff{\Leftarrow\joinrel\Rightarrow}
 \def\doteq{\stackrel{\cdot}{=}}
 
 iffont cmsy
-\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}               mathrel &xrarr;
-\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}                 mathrel &xlarr;
-\def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}               mathrel &#x27F9;
-\def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}                 mathrel &#x27F8;
+\def\longrightarrow{\relbar\joinrel\rightarrow}                 mathrel &xrarr;
+\def\longleftarrow{\leftarrow\joinrel\relbar}                   mathrel &xlarr;
+\def\Longrightarrow{\Relbar\joinrel\Rightarrow}                 mathrel &#x27F9;
+\def\Longleftarrow{\Leftarrow\joinrel\Relbar}                   mathrel &#x27F8;
 \def\implies{\Longrightarrow}                                   mathrel &#x27F9; amsmath
 \def\impliedby{\Longleftarrow}                                  mathrel &#x27F8; amsmath
-\def\mapsto{\mapstochar\kern-9mu\rightarrow}                    mathrel &#x21A4;
-\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow} mathrel &#x27FB;
-\def\models{\vert\kern-3mu\lyxeq}                               mathrel &vDash;
+\def\mapsto{\mapstochar\mathrel{\kern-2mu}\rightarrow}          mathrel &#x21A4;
+\def\longmapsto{\mapstochar\joinrel\relbar\joinrel\rightarrow}  mathrel &#x27FB;
+\def\models{\mathrel{\vert}\joinrel\Relbar}                     mathrel &vDash;
 else
 \def\implies{=>}                                                mathrel &#x27F9; amsmath
 \def\impliedby{<=}                                              mathrel &#x27F8; amsmath
 endif
 iffont cmm
-\def\hookrightarrow{\lhook\kern-12mu\rightarrow}                mathrel &#x21AA;
-\def\hookleftarrow{\leftarrow\kern-12mu\rhook}                  mathrel &#x21A9;
-\def\bowtie{\triangleright\kern-10mu\triangleleft}              mathrel &#x22C8;
+\def\hookrightarrow{\lhook\joinrel\rightarrow}                  mathrel &#x21AA;
+\def\hookleftarrow{\leftarrow\joinrel\rhook}                    mathrel &#x21A9;
+\def\bowtie{\mathrel\triangleright\joinrel\mathrel\triangleleft} mathrel &#x22C8;
 endif
 iffont msa
-\def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}                mathrel &#x290F; amssymb
-\def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}                  mathrel &#x290E; amssymb
+\def\dashrightarrow{\mathrel{\lyxdabar\lyxdabar\lyxright}}      mathrel &#x290F; amssymb
+\def\dashleftarrow{\mathrel{\lyxleft\lyxdabar\lyxdabar}}        mathrel &#x290E; amssymb
 else
 \def\dashrightarrow{- - \rightarrow}                            mathrel &#x290F; amssymb
 \def\dashleftarrow{\leftarrow{} - -}                            mathrel &#x290E; amssymb
 endif
 \def\dasharrow{\dashrightarrow}                                 mathrel &#x290F; amssymb
 iffont msb
-\def\Join{\ltimes\kern-22mu\rtimes}                             amssymb
+\def\Join{\mathrel{\ltimes\kern-13.5mu\rtimes}}                 amssymb
 else
 \def\Join{|x|}                                                  amssymb
 endif
-# Fixme: latin-1 chars in text file
+# FIXME: UTF-8 chars in text file
 \def\AA{\AA}{Å} textmode &Aring;  amstext,lyxmathsym
 \def\O{\O}{Ø}   textmode &Oslash; amstext,lyxmathsym
 
 iffont cmsy
 # The \sim is placed too high...
-\def\cong{\stackrel{_\sim}{=}}                                  mathrel &cong;
+\def\cong{\stackrel{\sim}{=}}                                   mathrel &cong;
 lyxsurd               cmsy        112 0 mathord  &radic;
 \def\surd{^\lyxsurd}                                            mathord &radic;
 \def\textdegree{\kern-1mu^{\circ}\kern-4mu} textmode &deg; textcomp,amstext,lyxmathsym
