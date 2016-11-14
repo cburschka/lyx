@@ -162,6 +162,13 @@ export/doc/(ru|uk)/Intro_(dvi3|pdf5)_systemF
 # No problem if the table is Slovak, too
 export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 
+# Polyglossia + LuaTeX issue
+# Reported upstream here:
+# https://github.com/reutenauer/polyglossia/issues/163
+# These tests were broken at 3374b854
+# See discussion here:
+# https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
+export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 
 Sublabel: attic
 #
