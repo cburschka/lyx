@@ -7,8 +7,27 @@
 \textclass article
 \begin_preamble
 \usepackage{textalpha}
+
+% definitions for utf8x:
+\DeclareTextAccentDefault{\textdasia}{LGR}
+\DeclareTextAccentDefault{\textpsili}{LGR} 
+\DeclareTextAccentDefault{\texttonos}{LGR} 
+\DeclareTextAccentDefault{\textvaria}{LGR} 
+\DeclareTextAccentDefault{\textperispomeni}{LGR} 
+\DeclareTextAccentDefault{\textdialytika}{LGR}
+\DeclareTextAccentDefault{\textdasiaoxia}{LGR} 
+\DeclareTextAccentDefault{\textdasiavaria}{LGR} 
+\DeclareTextAccentDefault{\textdasiaperispomeni}{LGR} 
+\DeclareTextAccentDefault{\textpsilioxia}{LGR} 
+\DeclareTextAccentDefault{\textpsilivaria}{LGR} 
+\DeclareTextAccentDefault{\textpsiliperispomeni}{LGR} 
+\DeclareTextAccentDefault{\textdialytikatonos}{LGR} 
+\DeclareTextAccentDefault{\textdialytikavaria}{LGR} 
+\DeclareTextAccentDefault{\textdialytikaperispomeni}{LGR}
+% ... does not suffice ...
+% also for subiote required...
 \end_preamble
-\use_default_options false
+\use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -39,7 +58,7 @@
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 0
+\use_package mathdots 1
 \use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 1
@@ -53,7 +72,7 @@
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \branch na
 \selected 0
 \filename_suffix 0
@@ -65,8 +84,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -81,8 +100,17 @@
 \begin_body
 
 \begin_layout Standard
-Currently input encoding utf8 requires setting Cyrillic parts to a language
- using the Cyrillic script (here Russian).
+\paragraph_spacing single
+Greek with utf8 requires 
+\begin_inset Quotes eld
+\end_inset
+
+textalpha
+\begin_inset Quotes erd
+\end_inset
+
+ (see Document>Settings>Preamble) or setting the language of Greek parts
+ to Greek.
  See 
 \begin_inset CommandInset href
 LatexCommand href
@@ -95,272 +123,87 @@ target "http://www.lyx.org/trac/ticket/9681"
 \end_layout
 
 \begin_layout Subsection*
-9) Cyrillic
+69 Greek Extended 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ
+1F00 ἀ ἁ ἂ ἃ ἄ ἅ ἆ ἇ Ἀ Ἁ Ἂ Ἃ Ἄ Ἅ Ἆ Ἇ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-410 А Б В Г Д Е Ж З И Й К Л М Н О П
+1F10 ἐ ἑ ἒ ἓ ἔ ἕ Ἐ Ἑ Ἒ Ἓ Ἔ Ἕ 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-420 Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
+1F20 ἠ ἡ ἢ ἣ ἤ ἥ ἦ ἧ Ἠ Ἡ Ἢ Ἣ Ἤ Ἥ Ἦ Ἧ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-430 а б в г д е ж з и й к л м н о п
+1F30 ἰ ἱ ἲ ἳ ἴ ἵ ἶ ἷ Ἰ Ἱ Ἲ Ἳ Ἴ Ἵ Ἶ Ἷ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-440 р с т у ф х ц ч ш щ ъ ы ь э ю я
+1F40 ὀ ὁ ὂ ὃ ὄ ὅ Ὀ Ὁ Ὂ Ὃ Ὄ Ὅ 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-450 ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ
+1F50 ὐ ὑ ὒ ὓ ὔ ὕ ὖ ὗ Ὑ Ὓ Ὕ Ὗ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-460 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ
-\end_layout
-
-\end_inset
-
-
+1F60 ὠ ὡ ὢ ὣ ὤ ὥ ὦ ὧ Ὠ Ὡ Ὢ Ὣ Ὤ Ὥ Ὦ Ὧ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-470 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ
-\end_layout
-
-\end_inset
-
-
+1F70 ὰ ά ὲ έ ὴ ή ὶ ί ὸ ό ὺ ύ ὼ ώ 
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-480 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҁ ҁ ҂  ҃  ҄  ҅  ҆    ҈  ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ
-\end_layout
-
-\end_inset
-
-
+1F80 ᾀ ᾁ ᾂ ᾃ ᾄ ᾅ ᾆ ᾇ ᾈ ᾉ ᾊ ᾋ ᾌ ᾍ ᾎ ᾏ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-490 Ґ ґ Ғ ғ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҕ ҕ
-\end_layout
-
-\end_inset
-
- Җ җ Ҙ ҙ Қ қ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҝ ҝ Ҟ ҟ
-\end_layout
-
-\end_inset
-
-
+1F90 ᾐ ᾑ ᾒ ᾓ ᾔ ᾕ ᾖ ᾗ ᾘ ᾙ ᾚ ᾛ ᾜ ᾝ ᾞ ᾟ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4A0 Ҡ ҡ Ң ң Ҥ ҥ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҧ ҧ Ҩ ҩ
-\end_layout
-
-\end_inset
-
- Ҫ ҫ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҭ ҭ
-\end_layout
-
-\end_inset
-
- Ү ү
+1FA0 ᾠ ᾡ ᾢ ᾣ ᾤ ᾥ ᾦ ᾧ ᾨ ᾩ ᾪ ᾫ ᾬ ᾭ ᾮ ᾯ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4B0 Ұ ұ Ҳ ҳ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҵ ҵ
-\end_layout
-
-\end_inset
-
- Ҷ ҷ Ҹ ҹ Һ һ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ҽ ҽ Ҿ ҿ
-\end_layout
-
-\end_inset
-
-
+1FB0 ᾰ ᾱ ᾲ ᾳ ᾴ ᾶ ᾷ Ᾰ Ᾱ Ὰ Ά ᾼ ᾽ ι ᾿
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4C0 Ӏ Ӂ ӂ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
- Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ
-\end_layout
-
-\end_inset
-
-
+1FC0 ῀ ῁ ῂ ῃ ῄ ῆ ῇ Ὲ Έ Ὴ Ή ῌ ῍ ῎ ῏
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4D0 Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ
+1FD0 ῐ ῑ ῒ ΐ ῖ ῗ Ῐ Ῑ Ὶ Ί ῝ ῞ ῟
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4E0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ӡ ӡ
-\end_layout
-
-\end_inset
-
- Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ӫ ӫ
-\end_layout
-
-\end_inset
-
- Ӭ ӭ Ӯ ӯ
+1FE0 ῠ ῡ ῢ ΰ ῤ ῥ ῦ ῧ Ῠ Ῡ Ὺ Ύ Ῥ ῭ ΅ `
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-4F0 Ӱ ӱ Ӳ ӳ Ӵ ӵ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ӷ ӷ
-\end_layout
-
-\end_inset
-
- Ӹ ӹ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-Ӻ ӻ Ӽ ӽ Ӿ ӿ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection*
-31 Thai
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-3640 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-ุ ู ฺ
-\end_layout
-
-\end_inset
-
- ฿ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-เ แ
-\end_layout
-
-\end_inset
-
- 
+1FF0 ῲ ῳ ῴ ῶ ῷ Ὸ Ό Ὼ Ώ ῼ ´ ῾ 
 \end_layout
 
 \end_body

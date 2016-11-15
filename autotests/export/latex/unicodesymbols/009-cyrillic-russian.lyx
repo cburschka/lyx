@@ -5,7 +5,10 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\use_default_options true
+\begin_preamble
+\usepackage{textalpha}
+\end_preamble
+\use_default_options false
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -36,7 +39,7 @@
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 1
@@ -49,8 +52,8 @@
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification false
-\use_refstyle 1
+\justification true
+\use_refstyle 0
 \branch na
 \selected 0
 \filename_suffix 0
@@ -62,8 +65,8 @@
 \end_index
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation indent
-\paragraph_indentation default
+\paragraph_separation skip
+\defskip medskip
 \quotes_language english
 \papercolumns 1
 \papersides 1
@@ -77,139 +80,77 @@
 
 \begin_body
 
+\begin_layout Standard
+Currently input encoding utf8 requires setting Cyrillic parts to a language
+ using the Cyrillic script (here Russian).
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "#9681"
+target "http://www.lyx.org/trac/ticket/9681"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
-78 Miscellaneous Technical 
+9) Cyrillic
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2300 ⌀ 
-\begin_inset Branch na
-inverted 0
-status open
 
-\begin_layout Standard
-⌁
-\end_layout
-
-\end_inset
-
- ⌂ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌃ ⌄ ⌅ ⌆ ⌇
-\end_layout
-
-\end_inset
-
- ⌈ ⌉ ⌊ ⌋ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌌ ⌍ ⌎ ⌏
-\end_layout
-
-\end_inset
-
-
+\lang russian
+400 Ѐ Ё Ђ Ѓ Є Ѕ І Ї Ј Љ Њ Ћ Ќ Ѝ Ў Џ
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2310 ⌐ ⌑ 
-\begin_inset Branch na
-inverted 0
-status open
 
-\begin_layout Standard
-⌒ ⌓ ⌔
-\end_layout
-
-\end_inset
-
- ⌕ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌖ ⌗ ⌘ ⌙
-\end_layout
-
-\end_inset
-
- ⌚ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌛
-\end_layout
-
-\end_inset
-
- ⌜ ⌝ ⌞ ⌟
+\lang russian
+410 А Б В Г Д Е Ж З И Й К Л М Н О П
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2320 
-\begin_inset Branch na
-inverted 0
-status open
 
-\begin_layout Standard
-⌠ ⌡
+\lang russian
+420 Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
 \end_layout
 
-\end_inset
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
- ⌢ ⌣ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌤ ⌥
+\lang russian
+430 а б в г д е ж з и й к л м н о п
 \end_layout
 
-\end_inset
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
- ⌦ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌧
+\lang russian
+440 р с т у ф х ц ч ш щ ъ ы ь э ю я
 \end_layout
 
-\end_inset
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
- ⌨ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-〈 〉
+\lang russian
+450 ѐ ё ђ ѓ є ѕ і ї ј љ њ ћ ќ ѝ ў џ
 \end_layout
 
-\end_inset
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 
- ⌫ 
+\lang russian
+460 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⌬ ⌭ ⌮ ⌯
+Ѡ ѡ Ѣ ѣ Ѥ ѥ Ѧ ѧ Ѩ ѩ Ѫ ѫ Ѭ ѭ Ѯ ѯ
 \end_layout
 
 \end_inset
@@ -219,40 +160,15 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2330 
+
+\lang russian
+470 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⌰ ⌱ ⌲ ⌳ ⌴ ⌵ ⌶ ⌷ ⌸
-\end_layout
-
-\end_inset
-
- ⌹ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⌺ ⌻ ⌼ ⌽ ⌾
-\end_layout
-
-\end_inset
-
- ⌿
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2340 ⍀ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⍁ ⍂ ⍃ ⍄ ⍅ ⍆ ⍇ ⍈ ⍉ ⍊ ⍋ ⍌ ⍍ ⍎ ⍏
+Ѱ ѱ Ѳ ѳ Ѵ ѵ Ѷ ѷ Ѹ ѹ Ѻ ѻ Ѽ ѽ Ѿ ѿ
 \end_layout
 
 \end_inset
@@ -262,13 +178,15 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2350 
+
+\lang russian
+480 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⍐ ⍑ ⍒ ⍓ ⍔ ⍕ ⍖ ⍗ ⍘ ⍙ ⍚ ⍛ ⍜ ⍝ ⍞ ⍟
+Ҁ ҁ ҂  ҃  ҄  ҅  ҆    ҈  ҉ Ҋ ҋ Ҍ ҍ Ҏ ҏ
 \end_layout
 
 \end_inset
@@ -278,13 +196,26 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2360 
+
+\lang russian
+490 Ґ ґ Ғ ғ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⍠ ⍡ ⍢ ⍣ ⍤ ⍥ ⍦ ⍧ ⍨ ⍩ ⍪ ⍫ ⍬ ⍭ ⍮ ⍯
+Ҕ ҕ
+\end_layout
+
+\end_inset
+
+ Җ җ Ҙ ҙ Қ қ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ҝ ҝ Ҟ ҟ
 \end_layout
 
 \end_inset
@@ -294,13 +225,57 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2370 
+
+\lang russian
+4A0 Ҡ ҡ Ң ң Ҥ ҥ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⍰ ⍱ ⍲ ⍳ ⍴ ⍵ ⍶ ⍷ ⍸ ⍹ ⍺ ⍻ ⍼ ⍽ ⍾ ⍿
+Ҧ ҧ Ҩ ҩ
+\end_layout
+
+\end_inset
+
+ Ҫ ҫ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ҭ ҭ
+\end_layout
+
+\end_inset
+
+ Ү ү
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang russian
+4B0 Ұ ұ Ҳ ҳ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+
+\lang russian
+Ҵ ҵ
+\end_layout
+
+\end_inset
+
+ Ҷ ҷ Ҹ ҹ Һ һ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ҽ ҽ Ҿ ҿ
 \end_layout
 
 \end_inset
@@ -310,24 +285,15 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2380 
+
+\lang russian
+4C0 Ӏ Ӂ ӂ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⎀ ⎁ ⎂ ⎃ ⎄ ⎅ ⎆ ⎇ ⎈ ⎉ ⎊
-\end_layout
-
-\end_inset
-
- ⎋ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⎌ ⎍ ⎎ ⎏
+ Ӄ ӄ Ӆ ӆ Ӈ ӈ Ӊ ӊ Ӌ ӌ Ӎ ӎ ӏ
 \end_layout
 
 \end_inset
@@ -337,13 +303,62 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-2390 
+
+\lang russian
+4D0 Ӑ ӑ Ӓ ӓ Ӕ ӕ Ӗ ӗ Ә ә Ӛ ӛ Ӝ ӝ Ӟ ӟ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang russian
+4E0 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⎐ ⎑ ⎒ ⎓ ⎔ ⎕ ⎖ ⎗ ⎘ ⎙ ⎚ ⎛ ⎜ ⎝ ⎞ ⎟
+Ӡ ӡ
+\end_layout
+
+\end_inset
+
+ Ӣ ӣ Ӥ ӥ Ӧ ӧ Ө ө 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ӫ ӫ
+\end_layout
+
+\end_inset
+
+ Ӭ ӭ Ӯ ӯ
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang russian
+4F0 Ӱ ӱ Ӳ ӳ Ӵ ӵ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ӷ ӷ
+\end_layout
+
+\end_inset
+
+ Ӹ ӹ 
+\begin_inset Branch na
+inverted 0
+status open
+
+\begin_layout Standard
+Ӻ ӻ Ӽ ӽ Ӿ ӿ
 \end_layout
 
 \end_inset
@@ -351,157 +366,35 @@ status open
 
 \end_layout
 
+\begin_layout Subsection*
+31 Thai
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-23A0 
+3640 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⎠ ⎡ ⎢ ⎣ ⎤ ⎥ ⎦ ⎧ ⎨ ⎩ ⎪ ⎫ ⎬ ⎭ ⎮ ⎯
+ุ ู ฺ
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-23B0 
+ ฿ 
 \begin_inset Branch na
 inverted 0
 status open
 
 \begin_layout Standard
-⎰ ⎱ ⎲ ⎳ ⎴ ⎵ ⎶ ⎷ ⎸ ⎹ ⎺ ⎻ ⎼ ⎽ ⎾ ⎿
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-23C0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⏀ ⏁ ⏂ ⏃ ⏄ ⏅ ⏆ ⏇ ⏈ ⏉ ⏊ ⏋ ⏌ ⏍ ⏎ ⏏
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-23D0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⏐ ⏑ ⏒ ⏓ ⏔ ⏕ ⏖ ⏗ ⏘ ⏙ ⏚ ⏛ ⏜ ⏝ ⏞ ⏟
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-23E0 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-⏠ ⏡ ⏢ ⏣ ⏤ ⏥ ⏦ ⏧
+เ แ
 \end_layout
 
 \end_inset
 
  
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-23F0 
-\end_layout
-
-\begin_layout Subsection*
-79 Control Pictures 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2400 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-␀ ␁ ␂ ␃ ␄ ␅ ␆ ␇ ␈ ␉ ␊ ␋ ␌ ␍ ␎ ␏
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2410 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-␐ ␑ ␒ ␓ ␔ ␕ ␖ ␗ ␘ ␙ ␚ ␛ ␜ ␝ ␞ ␟
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2420 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-␠ ␡
-\end_layout
-
-\end_inset
-
- ␢ ␣ 
-\begin_inset Branch na
-inverted 0
-status open
-
-\begin_layout Standard
-␤ ␥ ␦
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-2430 
 \end_layout
 
 \end_body

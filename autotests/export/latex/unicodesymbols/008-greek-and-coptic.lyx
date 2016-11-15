@@ -1,12 +1,13 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+\lyxformat 515
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-\usepackage{textalpha}
+% Work around #9681
+% \usepackage{textalpha}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -76,7 +77,7 @@
 \begin_body
 
 \begin_layout Standard
-Greek with utf8 requires 
+Currently, Greek with utf8, utf8x or iso-8859-7 requires 
 \begin_inset Quotes eld
 \end_inset
 

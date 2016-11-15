@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+\lyxformat 515
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -86,7 +86,7 @@
 2100 ℀ ℁ ℂ ℃ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℄
@@ -97,7 +97,7 @@ status open
  ℅ ℆ ℉ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℊ
@@ -113,7 +113,7 @@ status open
 2110 ℐ ℑ ℒ ℓ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℔
@@ -124,7 +124,7 @@ status open
  ℕ № ℗ ℘ ℙ ℚ ℛ ℜ ℝ ℞ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℟
@@ -140,7 +140,7 @@ status open
 2120 ℠ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℡
@@ -151,7 +151,7 @@ status open
  ™ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℣
@@ -162,7 +162,7 @@ status open
  ℤ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℥
@@ -203,7 +203,7 @@ The OHM SIGN is normalized to greek letter OMEGA which requires wrapping
  in 
 \backslash
 textgreek (or setting to Greek or loading the textalpha package) to get
- the right font.
+ the right font (see #9681).
 \end_layout
 
 \end_inset
@@ -211,7 +211,7 @@ textgreek (or setting to Greek or loading the textalpha package) to get
  ℧ ℨ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℩
@@ -222,7 +222,7 @@ status open
  K Å ℬ ℭ ℮ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℯ
@@ -238,7 +238,7 @@ status open
 2130 ℰ ℱ Ⅎ ℳ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℴ
@@ -249,7 +249,7 @@ status open
  ℵ ℶ ℷ ℸ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ℹ ℺ ℻ ℼ ℽ ℾ ℿ
@@ -265,7 +265,7 @@ status open
 2140 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⅀
@@ -276,7 +276,7 @@ status open
  ⅁ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⅂ ⅃
@@ -287,7 +287,7 @@ status open
  ⅄ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⅅ ⅆ ⅇ ⅈ ⅉ ⅊
@@ -298,7 +298,7 @@ status open
  ⅋ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⅌
@@ -309,7 +309,7 @@ status open
  ⅍ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⅎ ⅏
@@ -353,7 +353,7 @@ sfrac (see #5220)
 2180 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↀ ↁ ↂ Ↄ ↄ ↅ ↆ ↇ ↈ ↉ ↊ ↋ ↌ ↍ ↎ ↏
@@ -373,7 +373,7 @@ status open
 2190 ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↜
@@ -384,7 +384,7 @@ status open
  ↝ ↞ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↟
@@ -400,7 +400,7 @@ status open
 21A0 ↠ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↡
@@ -411,7 +411,7 @@ status open
  ↢ ↣ ↤ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↥
@@ -422,7 +422,7 @@ status open
  ↦ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↧
@@ -438,7 +438,7 @@ status open
 21B0 ↰ ↱ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↲ ↳ ↴
@@ -449,7 +449,7 @@ status open
  ↵ ↶ ↷ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ↸ ↹
@@ -465,7 +465,7 @@ status open
 21C0 ⇀ ⇁ ⇂ ⇃ ⇄ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇅
@@ -481,7 +481,7 @@ status open
 21D0 ⇐ ⇑ ⇒ ⇓ ⇔ ⇕ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇖ ⇗ ⇘ ⇙
@@ -492,7 +492,7 @@ status open
  ⇚ ⇛ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇜
@@ -508,7 +508,7 @@ status open
 21E0 ⇠ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇡
@@ -519,7 +519,7 @@ status open
  ⇢ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇣
@@ -530,7 +530,7 @@ status open
  ⇤ ⇥ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇦ ⇧
@@ -541,7 +541,7 @@ status open
  ⇨ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇩
@@ -552,7 +552,7 @@ status open
  ⇪ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇫ ⇬ ⇭ ⇮ ⇯
@@ -568,7 +568,7 @@ status open
 21F0 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇰ ⇱ ⇲ ⇳ ⇴ ⇵ ⇶ ⇷ ⇸ ⇹ ⇺ ⇻ ⇼ 
@@ -579,7 +579,7 @@ status open
  ⇽ ⇾ 
 \begin_inset Branch na
 inverted 0
-status open
+status collapsed
 
 \begin_layout Standard
 ⇿

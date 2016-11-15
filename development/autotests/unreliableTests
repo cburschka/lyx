@@ -9,71 +9,6 @@
 #   Use "unfit" or "unapplicable" as better label and name of pattern file?
 
 
-
-Sublabel: inputenc
-##################
-# "uncodable character" LyX Warnings for all ASCII chars!
-# -------------------------------------------------------
-# no longer supported by iconv?
-
-# DOS code page, Western European:
-export/export/latex/unicodesymbols/*_cp858_pdf2
-# Cyrillic
-export/export/latex/unicodesymbols/*_pt254_pdf2
-
-
-# missing forces in unicodesymbols
-# --------------------------------
-
-# Fixed in master
-
-# utf8 extended
-# export/export/latex/unicodesymbols/001-4-latin_utf8x_pdf2
-# Ukrainean: keyboard characters undefined:  NBSP, ©, ·
-# export/export/latex/unicodesymbols/001-4-latin_koi8-u_pdf2
-# Armenian:
-# ! Undefined control sequences: \armquotleft for «, \armquotright for »
-# export/export/latex/unicodesymbols/001-4-latin_armscii8_pdf2
-# Baltic: « undefined in latin7
-# export/export/latex/unicodesymbols/001-4-latin_iso8859-13_pdf2
-
-# Contains symbols only valid in math-mode
-# ----------------------------------------
-#
-# \beta and others defined with \DeclareInputMath
-#
-# DOS code page: ! Missing $ inserted.
-# export/export/latex/unicodesymbols/001-4-latin_cp437_pdf2
-# DOS code page: ! Missing $ inserted.
-# There are symbols only valid in math-mode, (\beta and others
-# cp437 defines with \DeclareInputMath)
-# export/export/latex/unicodesymbols/001-4-latin_cp865_pdf2
-
-
-# Inputenc *.def files missing here [GM]  (which are standard?)
-# -------------------------------------------------------------
-# Hebrew:
-export/export/latex/unicodesymbols/*_cp1255_pdf2
-export/export/latex/unicodesymbols/*_iso8859-8_pdf2
-export/export/latex/unicodesymbols/*_cp862_pdf2
-# Arabic:
-export/export/latex/unicodesymbols/*_iso8859-6_pdf2
-export/export/latex/unicodesymbols/*_cp1256_pdf2
-# CJK:
-export/export/latex/unicodesymbols/*_euc-cn_pdf2
-export/export/latex/unicodesymbols/*_gbk_pdf2
-export/export/latex/unicodesymbols/*_jis_pdf2
-export/export/latex/unicodesymbols/*_euc-kr_pdf2
-export/export/latex/unicodesymbols/*_utf8-cjk_pdf2
-export/export/latex/unicodesymbols/*_euc-tw_pdf2
-export/export/latex/unicodesymbols/*_euc-jp_pdf2
-export/export/latex/unicodesymbols/*_euc-jp-platex_pdf2
-# pLaTeX
-export/export/latex/unicodesymbols/*_jis-platex_pdf2
-export/export/latex/unicodesymbols/*_shift-jis-platex_pdf2
-export/export/latex/unicodesymbols/*_utf8-platex_pdf2
-
-
 Sublabel: nonstandard
 #####################
 # Documents with additional requirements,
@@ -169,3 +104,7 @@ export/export/mixing_inTitle_layouts_(pdf|dvi).*
 # (not expecting much attention because DVI is not given high priority)
 export/doc/es/Customization_dvi3_systemF
 export/examples/(|es/)(europe|modern)CV_dvi3_systemF
+
+#9681 textgreek and textcyr also required for encodable characters
+# -> Latin transcription instead of Greek
+export/export/latex/unicodesymbols/008-greek-and-coptic_iso8859-7_pdf2

@@ -58,6 +58,38 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
+# input encoding tests: please test and correct:
+#
+# not (more?) supported by iconv, "uncodable character" LyX Warnings for all ASCII chars!
+# -> remove from lib/encodings (fileformat change)?
+# DOS code page, Western European:
+export/export/latex/unicodesymbols/.*_cp858_pdf2
+# Cyrillic
+export/export/latex/unicodesymbols/.*_pt254_pdf2
+#
+# Inputenc *.def files missing here [GM]  (which are standard?)
+# Hebrew:
+export/export/latex/unicodesymbols/.*_cp1255_pdf2
+export/export/latex/unicodesymbols/.*_iso8859-8_pdf2
+export/export/latex/unicodesymbols/.*_cp862_pdf2
+# Arabic:
+export/export/latex/unicodesymbols/.*_iso8859-6_pdf2
+export/export/latex/unicodesymbols/.*_cp1256_pdf2
+# CJK:
+export/export/latex/unicodesymbols/.*_euc-cn_pdf2
+export/export/latex/unicodesymbols/.*_gbk_pdf2
+export/export/latex/unicodesymbols/.*_jis_pdf2
+export/export/latex/unicodesymbols/.*_euc-kr_pdf2
+export/export/latex/unicodesymbols/.*_utf8-cjk_pdf2
+export/export/latex/unicodesymbols/.*_euc-tw_pdf2
+export/export/latex/unicodesymbols/.*_euc-jp_pdf2
+export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
+# pLaTeX
+export/export/latex/unicodesymbols/.*_jis-platex_pdf2
+export/export/latex/unicodesymbols/.*_shift-jis-platex_pdf2
+export/export/latex/unicodesymbols/.*_utf8-platex_pdf2
+
+
 
 Sublabel: lyxbugs
 #
@@ -86,6 +118,15 @@ export/doc/(es|fr)/Additional_pdf4_texF
 #6463 font encoding changes and combining accents
 # this leads to failure of ru/Intro with XeTeX (pdf4_texF)
 export/export/latex/ru-accent-ascii.*
+
+#9681 textgreek and textcyr also required for encodable characters
+# Greek fails with utf8 and utf8x,
+# Cyrillic fails with utf8 and cyrillic encodings:
+export/export/latex/unicodesymbols/008-greek-and-coptic(|_utf8x)_pdf2
+export/export/latex/unicodesymbols/009-cyrillic(|_utf8x)_pdf2
+export/export/latex/unicodesymbols/009-cyrillic_(cp855|cp866|cp1251|koi8-r|koi8-u|iso8859-5|pt154)_pdf2
+export/export/latex/unicodesymbols/069-greek-extended(|_utf8x)_pdf2
+export/export/latex/unicodesymbols/069-greek-extended-textalpha_utf8x_pdf2
 
 Sublabel: ert
 #
