@@ -68,6 +68,27 @@ public:
 	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
+	bool addToMathRow(MathRow & mrow, MetricsInfo const & mi) const
+	{
+		MathRow::Element e(MathRow::BEG_ARG);
+		e.macro = mathMacro_;
+		e.ar = &mathMacro_->cell(idx_);
+		mrow.push_back(e);
+
+		mathMacro_->macro()->unlock();
+		bool const has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
+		mathMacro_->macro()->lock();
+
+		e.type = MathRow::END_ARG;
+		mrow.push_back(e);
+
+		if (has_contents)
+			return true;
+		// if there was no contents, then we insert the empty macro inset
+		// instead.
+		return InsetMath::addToMathRow(mrow, mi);
+	}
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
 		mathMacro_->macro()->unlock();
 		mathMacro_->cell(idx_).metrics(mi, dim);
@@ -266,6 +287,34 @@ MathMacro::~MathMacro()
 }
 
 
+bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo const & mi) const
+{
+	// set edit mode for which we will have calculated row.
+	// This is the same as what is done in metrics().
+	d->editing_[mi.base.bv] = editMode(mi.base.bv);
+
+	if (displayMode() == MathMacro::DISPLAY_NORMAL
+	    && !d->editing_[mi.base.bv]) {
+		MathRow::Element e(MathRow::BEG_MACRO);
+		e.macro = this;
+		mrow.push_back(e);
+
+		d->macro_->lock();
+		bool const has_contents = d->expanded_.addToMathRow(mrow, mi);
+		d->macro_->unlock();
+
+		e.type = MathRow::END_MACRO;
+		mrow.push_back(e);
+
+		if (has_contents)
+			return true;
+		// if there was no contents, then we insert the empty macro inset
+		// instead.
+	}
+	return InsetMath::addToMathRow(mrow, mi);
+}
+
+
 Inset * MathMacro::clone() const
 {
 	MathMacro * copy = new MathMacro(*this);
@@ -344,7 +393,7 @@ bool MathMacro::editMode(BufferView const * bv) const {
 }
 
 
-MacroData const * MathMacro::macro()
+MacroData const * MathMacro::macro() const
 {
 	return d->macro_;
 }

@@ -458,6 +458,7 @@ SOURCEFILESMATHED = \
 	mathed/MathMacroArgument.cpp \
 	mathed/MathMacroTemplate.cpp \
 	mathed/MathParser.cpp \
+	mathed/MathRow.cpp \
 	mathed/MathStream.cpp \
 	mathed/MathSupport.cpp \
 	mathed/TextPainter.cpp
@@ -530,6 +531,7 @@ HEADERFILESMATHED = \
 	mathed/MathMacroTemplate.h \
 	mathed/MathParser.h \
 	mathed/MathParser_flags.h \
+	mathed/MathRow.h \
 	mathed/ReplaceData.h \
 	mathed/MathStream.h \
 	mathed/MathSupport.h \

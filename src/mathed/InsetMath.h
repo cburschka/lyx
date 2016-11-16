@@ -53,7 +53,10 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
 
+class Cursor;
 class OutputParams;
+class MetricsInfo;
+
 class InsetMathArray;
 class InsetMathAMSArray;
 class InsetMathBrace;
@@ -72,7 +75,6 @@ class InsetMathSpace;
 class InsetMathSpecialChar;
 class InsetMathSymbol;
 class InsetMathUnknown;
-
 class InsetMathRef;
 
 class HtmlStream;
@@ -87,7 +89,7 @@ class WriteStream;
 class MathData;
 class MathMacroTemplate;
 class MathMacro;
-class Cursor;
+class MathRow;
 class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;
@@ -164,6 +166,8 @@ public:
 
 	/// The class of the math object (used primarily for spacing)
 	virtual MathClass mathClass() const;
+	/// Add this inset to a math row. Return true if contents got added
+	virtual bool addToMathRow(MathRow &, MetricsInfo const & mi) const;
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }

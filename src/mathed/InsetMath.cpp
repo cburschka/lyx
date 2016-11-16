@@ -13,6 +13,7 @@
 
 #include "InsetMath.h"
 #include "MathData.h"
+#include "MathRow.h"
 #include "MathStream.h"
 
 #include "support/debug.h"
@@ -52,6 +53,16 @@ MathData const & InsetMath::cell(idx_type) const
 MathClass InsetMath::mathClass() const
 {
 	return MC_ORD;
+}
+
+
+bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo const &) const
+{
+	MathRow::Element e;
+	e.inset = this;
+	e.mclass = mathClass();
+	mrow.push_back(e);
+	return true;
 }
 
 
