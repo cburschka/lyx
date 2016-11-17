@@ -1,0 +1,72 @@
+#\DeclareLyXModule{Theorems (AMS, Numbered by Type within Chapters)}
+#DescriptionBegin
+#Defines theorem environments and the proof environment using the extended
+#AMS machinery. Both numbered and unnumbered types are provided. Contrary to the
+#plain AMS Theorem module, the different theorem types provided here each have
+#a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, proposition 1.1,
+#theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, theorem 2, lemma 3,
+#proposition 4, ...). The numbering restarts for each chapter: theorem 1.1,
+#theorem 2.1, ...
+#DescriptionEnd
+#Excludes: theorems-std | theorems-starred | theorems-ams | theorems-bytype
+
+# Original Author : David L. Johnson <dlj0@lehigh.edu>
+# Probably broken by Jean-Marc Lasgouttes <Jean-Marc.Lasgouttes@inria.fr>
+# modified and modularized by Emmanuel GUREGHIAN <gureghia@boston.bertin.fr>
+# Tinkered with Sep. '07 by Paul Rubin <rubin@msu.edu>
+# Modularized Jan 08 by Richard Heck <rgheck@comcast.net>
+# Hacked June '09 by Paul Rubin <rubin@msu.edu> to use separate counters
+# Chapter dependence added Oct '16 by Andrew Parsloe <aparsloe@clear.net.nz>
+
+Format 60
+
+Requires	amsmath,amsthm
+
+# The environments defined (regular and starred) are :
+# - theorem
+# - corollary
+# - lemma
+# - proposition
+# - conjecture
+# - fact
+# - definition
+# - example
+# - solution
+# - problem
+# - exercise
+# - remark
+# - claim
+
+# We need separate counters for each theorem-like style.
+Counter theorem
+End
+Counter corollary
+End
+Counter lemma
+End
+Counter proposition
+End
+Counter conjecture
+End
+Counter fact
+End
+Counter definition
+End
+Counter example
+End
+Counter solution
+End
+Counter problem
+End
+Counter exercise
+End
+Counter remark
+End
+Counter claim
+End
+
+
+Input theorems-order.inc
+Input theorems-ams-chap-bytype.inc
+Input theorems-starred.inc
+Input theorems-proof.inc
