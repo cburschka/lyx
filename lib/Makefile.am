@@ -2273,8 +2273,11 @@ dist_layouts_DATA =\
 	layouts/theorems-ams.module \
 	layouts/theorems-ams-bytype.inc \
 	layouts/theorems-ams-bytype.module \
+	layouts/theorems-ams-chap-bytype.inc \
+	layouts/theorems-ams-chap-bytype.module \
 	layouts/theorems-ams-extended.module \
 	layouts/theorems-ams-extended-bytype.module \
+	layouts/theorems-ams-extended-chap-bytype.module \
 	layouts/theorems-case.inc \
 	layouts/theorems-chap.module \
 	layouts/theorems.inc \
