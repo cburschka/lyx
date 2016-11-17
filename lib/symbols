@@ -300,6 +300,7 @@ spadesuit          cmsy        127 170 mathord  &spades;
 # We define lyxnot as mathrel in order to have proper alignment
 lyxnot             cmsy         54  47 mathrel  /           hiddensymbol
 iffont cmsy
+# kerning is slightly imperfect so that one can see when \not is selected
 \def\not{\lyxnot\mathrel{\kern-11mu}}
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
@@ -934,8 +935,8 @@ llfloor            stmry  84   0 mathopen   x  stmaryrd
 rrfloor            stmry  85   0 mathclose  x  stmaryrd
 llceil             stmry  86   0 mathopen   x  stmaryrd
 rrceil             stmry  87   0 mathclose  x  stmaryrd
-arrownot           stmry  88   0 mathrel    x  stmaryrd
-Arrownot           stmry  89   0 mathrel    x  stmaryrd
+lyxarrownot        stmry  88   0 mathrel    x  hiddensymbol #see arrownot defined below
+lyxArrownot        stmry  89   0 mathrel    x  hiddensymbol #see Arrownot defined below
 Mapstochar         stmry  90   0 mathrel    x  stmaryrd
 mapsfromchar       stmry  91   0 mathrel    x  stmaryrd
 Mapsfromchar       stmry  92   0 mathrel    x  stmaryrd
@@ -976,6 +977,9 @@ bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenpl
 #rrbracketex        stmry 127   0 mathclose  x  stmaryrd # only in the font, not the .sty caution: named Hugerrbracketex in the font
 
 \def\varcopyright{\mathord{c\kern-11mu\varbigcirc}}         stmaryrd
+# kerning is slightly imperfect so that one see when \[Aa]rrownot is selected
+\def\arrownot{\lyxarrownot\mathrel{\kern-11mu}}             stmaryrd
+\def\Arrownot{\lyxArrownot\mathrel{\kern-10.5mu}}           stmaryrd
 \def\longarrownot{\mathrel{\kern5.5mu}\arrownot\mathrel{\kern-5.5mu}} stmaryrd
 \def\Longarrownot{\mathrel{\kern5.5mu}\Arrownot\mathrel{\kern-5.5mu}} stmaryrd
 \def\Mapsto{\Mapstochar\mathrel{\kern-2mu}\Rightarrow}      stmaryrd
