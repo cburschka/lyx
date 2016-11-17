@@ -2120,6 +2120,24 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+int InsetMathHull::leftMargin() const
+{
+	return (getType() == hullSimple) ? 0 : InsetMathGrid::leftMargin();
+}
+
+
+int InsetMathHull::rightMargin() const
+{
+	return (getType() == hullSimple) ? 0 : InsetMathGrid::rightMargin();
+}
+
+
+int InsetMathHull::border() const
+{
+	return (getType() == hullSimple) ? 0 : InsetMathGrid::border();
+}
+
+
 /////////////////////////////////////////////////////////////////////
 
 

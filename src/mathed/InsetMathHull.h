@@ -200,6 +200,12 @@ protected:
 	/// do we want to handle this event?
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & status) const;
+	/// override to set to 0 for inline equation
+	int leftMargin() const;
+	/// override to set to 0 for inline equation
+	int rightMargin() const;
+	/// override to set to 0 for inline equation
+	int border() const;
 	///
 	docstring eolString(row_type row, bool fragile, bool latex,
 			bool last_eoln) const;
