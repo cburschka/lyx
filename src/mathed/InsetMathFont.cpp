@@ -86,7 +86,7 @@ void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet(font());
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

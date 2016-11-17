@@ -65,6 +65,8 @@ public:
 	std::string fontname;
 	/// This is the width available in pixels
 	int textwidth;
+	/// count wether the current mathdata is nested in macro(s)
+	int macro_nesting;
 
 	/// Temporarily change a full font.
 	Changer changeFontSet(std::string const & font, bool cond = true);

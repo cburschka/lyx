@@ -51,7 +51,7 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.width()) + 10;
 	dim.asc = dim0.height() + 10;
 	dim.des = dim1.height();
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

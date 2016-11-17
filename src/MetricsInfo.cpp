@@ -38,8 +38,8 @@ namespace lyx {
 
 MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
 	: bv(b), font(move(f)), style(LM_ST_TEXT), fontname("mathnormal"),
-	  textwidth(w), solid_line_thickness_(1), solid_line_offset_(1),
-	  dotted_line_thickness_(1)
+	  textwidth(w), macro_nesting(0),
+	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
 {
 	if (lyxrc.zoom >= 200) {
 		// derive the line thickness from zoom factor

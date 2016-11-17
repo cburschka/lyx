@@ -16,7 +16,9 @@
 #define MATH_DATA_H
 
 #include "Dimension.h"
+
 #include "MathAtom.h"
+#include "MathRow.h"
 
 #include "OutputEnums.h"
 
@@ -24,6 +26,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <map>
 
 
 namespace lyx {
@@ -117,6 +120,10 @@ public:
 	MathAtom & operator[](pos_type);
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
+
+	/// Add this array to a math row. Return true if contents got added
+	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
+
 	/// rebuild cached metrics information
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -176,6 +183,9 @@ protected:
 	mutable int sshift_;
 	mutable int kerning_;
 	Buffer * buffer_;
+
+	/// cached object that describes typeset data
+	mutable std::map<BufferView*, MathRow> mrow_cache_;
 
 private:
 	/// is this an exact match at this position?

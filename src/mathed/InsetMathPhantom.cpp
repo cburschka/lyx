@@ -39,7 +39,7 @@ Inset * InsetMathPhantom::clone() const
 void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

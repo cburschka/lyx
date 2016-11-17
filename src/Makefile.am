@@ -403,6 +403,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathCancelto.cpp \
 	mathed/InsetMathCases.cpp \
 	mathed/InsetMathChar.cpp \
+	mathed/InsetMathClass.cpp \
 	mathed/InsetMathColor.cpp \
 	mathed/InsetMathComment.cpp \
 	mathed/InsetMathDecoration.cpp \
@@ -447,16 +448,18 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathXArrow.cpp \
 	mathed/InsetMathXYMatrix.cpp \
 	mathed/InsetMathDiagram.cpp \
+	mathed/MacroTable.cpp \
 	mathed/MathAtom.cpp \
 	mathed/MathAutoCorrect.cpp \
+	mathed/MathClass.cpp \
 	mathed/MathData.cpp \
 	mathed/MathExtern.cpp \
 	mathed/MathFactory.cpp \
 	mathed/MathMacro.cpp \
 	mathed/MathMacroArgument.cpp \
-	mathed/MacroTable.cpp \
 	mathed/MathMacroTemplate.cpp \
 	mathed/MathParser.cpp \
+	mathed/MathRow.cpp \
 	mathed/MathStream.cpp \
 	mathed/MathSupport.cpp \
 	mathed/TextPainter.cpp
@@ -473,6 +476,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathCancelto.h \
 	mathed/InsetMathCases.h \
 	mathed/InsetMathChar.h \
+	mathed/InsetMathClass.h \
 	mathed/InsetMathColor.h \
 	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \
@@ -518,6 +522,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathDiagram.h \
 	mathed/MathAtom.h \
 	mathed/MathAutoCorrect.h \
+	mathed/MathClass.h \
 	mathed/MathData.h \
 	mathed/MathCompletionList.h \
 	mathed/MathExtern.h \
@@ -528,6 +533,7 @@ HEADERFILESMATHED = \
 	mathed/MathMacroTemplate.h \
 	mathed/MathParser.h \
 	mathed/MathParser_flags.h \
+	mathed/MathRow.h \
 	mathed/ReplaceData.h \
 	mathed/MathStream.h \
 	mathed/MathSupport.h \

@@ -41,7 +41,7 @@ void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += 4;
 	dim.des += 2;
 	dim.wid += 12;
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

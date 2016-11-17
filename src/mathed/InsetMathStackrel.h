@@ -24,6 +24,8 @@ public:
 	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
+	MathClass mathClass() const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -35,7 +37,7 @@ public:
 	void mathmlize(MathStream &) const;
 	///
 	void htmlize(HtmlStream &) const;
-	/// 
+	///
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetCode lyxCode() const { return MATH_STACKREL_CODE; }

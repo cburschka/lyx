@@ -68,7 +68,49 @@ public:
 	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
+	bool addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+	{
+		// macro arguments are in macros
+		LATTEST(mi.base.macro_nesting > 0);
+		if (mi.base.macro_nesting == 1)
+			mi.base.macro_nesting = 0;
+
+		MathRow::Element e_beg(MathRow::BEG_ARG, mi);
+		e_beg.macro = mathMacro_;
+		e_beg.ar = &mathMacro_->cell(idx_);
+		mrow.push_back(e_beg);
+
+		mathMacro_->macro()->unlock();
+		bool has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
+		mathMacro_->macro()->lock();
+
+		// if there was no contents, and the contents is editable,
+		// then we insert a box instead.
+		if (!has_contents && mi.base.macro_nesting == 0) {
+			MathRow::Element e(MathRow::BOX, mi);
+			e.color = Color_mathline;
+			mrow.push_back(e);
+			has_contents = true;
+		}
+
+		if (mi.base.macro_nesting == 0)
+			mi.base.macro_nesting = 1;
+
+		MathRow::Element e_end(MathRow::END_ARG, mi);
+		e_end.macro = mathMacro_;
+		e_end.ar = &mathMacro_->cell(idx_);
+
+		mrow.push_back(e_end);
+
+		return has_contents;
+	}
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
+		// macro arguments are in macros
+		LATTEST(mi.base.macro_nesting > 0);
+		if (mi.base.macro_nesting == 1)
+			mi.base.macro_nesting = 0;
+
 		mathMacro_->macro()->unlock();
 		mathMacro_->cell(idx_).metrics(mi, dim);
 
@@ -77,6 +119,8 @@ public:
 			def_.metrics(mi, dim);
 
 		mathMacro_->macro()->lock();
+		if (mi.base.macro_nesting == 0)
+			mi.base.macro_nesting = 1;
 	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
 	// MathMacro uses the definition and not the expanded cells.
@@ -94,6 +138,10 @@ public:
 	void octave(OctaveStream & os) const { os << mathMacro_->cell(idx_); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
+		LATTEST(pi.base.macro_nesting > 0);
+		if (pi.base.macro_nesting == 1)
+			pi.base.macro_nesting = 0;
+
 		if (mathMacro_->editMetrics(pi.base.bv)) {
 			// The only way a ArgumentProxy can appear is in a cell of the
 			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED
@@ -111,6 +159,9 @@ public:
 			def_.draw(pi, x, y);
 		} else
 			mathMacro_->cell(idx_).draw(pi, x, y);
+
+		if (pi.base.macro_nesting == 0)
+			pi.base.macro_nesting = 1;
 	}
 	///
 	size_t idx() const { return idx_; }
@@ -266,6 +317,45 @@ MathMacro::~MathMacro()
 }
 
 
+bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+{
+	// set edit mode for which we will have calculated row.
+	// This is the same as what is done in metrics().
+	d->editing_[mi.base.bv] = editMode(mi.base.bv);
+
+	if (displayMode() != MathMacro::DISPLAY_NORMAL
+	    || d->editing_[mi.base.bv])
+		return InsetMath::addToMathRow(mrow, mi);
+
+	MathRow::Element e_beg(MathRow::BEG_MACRO, mi);
+	e_beg.macro = this;
+	mrow.push_back(e_beg);
+
+	++mi.base.macro_nesting;
+
+	d->macro_->lock();
+	bool has_contents = d->expanded_.addToMathRow(mrow, mi);
+	d->macro_->unlock();
+
+	// if there was no contents and the array is editable, then we
+	// insert a grey box instead.
+	if (!has_contents && mi.base.macro_nesting == 1) {
+		MathRow::Element e(MathRow::BOX, mi);
+		e.color = Color_mathmacroblend;
+		mrow.push_back(e);
+		has_contents = true;
+	}
+
+	--mi.base.macro_nesting;
+
+	MathRow::Element e_end(MathRow::END_MACRO, mi);
+	e_end.macro = this;
+	mrow.push_back(e_end);
+
+	return has_contents;
+}
+
+
 Inset * MathMacro::clone() const
 {
 	MathMacro * copy = new MathMacro(*this);
@@ -344,7 +434,7 @@ bool MathMacro::editMode(BufferView const * bv) const {
 }
 
 
-MacroData const * MathMacro::macro()
+MacroData const * MathMacro::macro() const
 {
 	return d->macro_;
 }
@@ -358,6 +448,9 @@ bool MathMacro::editMetrics(BufferView const * bv) const
 
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	// the macro contents is not editable (except the arguments)
+	++mi.base.macro_nesting;
+
 	// set edit mode for which we will have calculated metrics. But only
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
@@ -371,7 +464,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += bsdim.width() + 1;
 		dim.asc = max(bsdim.ascent(), dim.ascent());
 		dim.des = max(bsdim.descent(), dim.descent());
-		metricsMarkers(dim);
+		metricsMarkers(mi, dim);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
 		   && d->editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
@@ -411,7 +504,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += 1;
 		dim.des += 1;
 		dim.wid += 2;
-		metricsMarkers2(dim);
+		metricsMarkers2(mi, dim);
 	} else {
 		LBUFERR(d->macro_);
 
@@ -446,6 +539,9 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.des += 2;
 		}
 	}
+
+	// restore macro nesting
+	--mi.base.macro_nesting;
 }
 
 
@@ -614,6 +710,9 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 				  dim.height() - 2, Color_mathmacroframe);
 		drawMarkers2(pi, expx, expy);
 	} else {
+		// the macro contents is not editable (except the arguments)
+		++pi.base.macro_nesting;
+
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
 		bool upshape = currentMode() == TEXT_MODE;
 		Changer dummy = pi.base.font.changeShape(upshape ? UP_SHAPE
@@ -648,8 +747,11 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		} else
 			d->expanded_.draw(pi, expx, expy);
 
+		--pi.base.macro_nesting;
+
 		if (!drawBox)
 			drawMarkers(pi, x, y);
+
 	}
 
 	// edit mode changed?

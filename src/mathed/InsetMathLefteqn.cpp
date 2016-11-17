@@ -34,7 +34,7 @@ void InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += 2;
 	dim.des += 2;
 	dim.wid = 4;
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

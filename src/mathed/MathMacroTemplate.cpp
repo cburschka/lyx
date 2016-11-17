@@ -269,7 +269,7 @@ Inset * InsetMathWrapper::clone() const
 void InsetMathWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	value_->metrics(mi, dim);
-	//metricsMarkers2(dim);
+	//metricsMarkers2(mi, dim);
 }
 
 

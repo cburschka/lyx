@@ -61,7 +61,7 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	Changer dummy = mi.base.changeFontSet(fontname, really_change_font);
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

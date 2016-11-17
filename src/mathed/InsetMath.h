@@ -13,6 +13,8 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
+#include "MathClass.h"
+
 #include "insets/Inset.h"
 
 
@@ -51,7 +53,10 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 */
 
+class Cursor;
 class OutputParams;
+class MetricsInfo;
+
 class InsetMathArray;
 class InsetMathAMSArray;
 class InsetMathBrace;
@@ -70,7 +75,6 @@ class InsetMathSpace;
 class InsetMathSpecialChar;
 class InsetMathSymbol;
 class InsetMathUnknown;
-
 class InsetMathRef;
 
 class HtmlStream;
@@ -85,7 +89,7 @@ class WriteStream;
 class MathData;
 class MathMacroTemplate;
 class MathMacro;
-class Cursor;
+class MathRow;
 class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;
@@ -160,14 +164,22 @@ public:
 	virtual InsetMathRef            * asRefInset()            { return 0; }
 	virtual InsetMathSpecialChar const * asSpecialCharInset() const { return 0; }
 
+	/// The class of the math object (used primarily for spacing)
+	virtual MathClass mathClass() const;
+	/// Add this inset to a math row. Return true if contents got added
+	virtual bool addToMathRow(MathRow &, MetricsInfo & mi) const;
+
+	/// draw four angular markers
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
+	/// draw two angular markers
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
+	/// add space for markers
+	void metricsMarkers(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
+	/// add space for markers
+	void metricsMarkers2(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
+
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }
-	/// identifies a binary operators (used for spacing)
-	virtual bool isMathBin() const { return false; }
-	/// identifies relational operators (used for spacing and splitting equations)
-	virtual bool isMathRel() const { return false; }
-	/// identifies punctuation (used for spacing)
-	virtual bool isMathPunct() const { return false; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
 

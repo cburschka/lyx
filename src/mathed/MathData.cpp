@@ -30,12 +30,10 @@
 
 #include "mathed/InsetMathUnknown.h"
 
+#include "frontends/FontMetrics.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
-
-#include "frontends/FontMetrics.h"
-#include "frontends/Painter.h"
-
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lyxalgo.h"
@@ -218,6 +216,34 @@ void MathData::touch() const
 }
 
 
+bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+{
+	bool has_contents = false;
+	BufferView * bv = mi.base.bv;
+	MathData * ar = const_cast<MathData*>(this);
+	ar->updateMacros(&bv->cursor(), mi.macrocontext,
+	                 InternalUpdate);
+
+	// FIXME: for completion, try to insert the relevant data in the
+	// mathrow (like is done for text rows). We could add a pair of
+	// InsetMathColor inset, but these come with extra spacing of
+	// their own.
+	DocIterator const & inlineCompletionPos = bv->inlineCompletionPos();
+	bool const has_completion = inlineCompletionPos.inMathed()
+		&& &inlineCompletionPos.cell() == this;
+	size_t const compl_pos = has_completion ? inlineCompletionPos.pos() : 0;
+
+	for (size_t i = 0 ; i < size() ; ++i) {
+		has_contents |= (*this)[i]->addToMathRow(mrow, mi);
+		if (i + 1 == compl_pos) {
+			mrow.back().compl_text = bv->inlineCompletion();
+			mrow.back().compl_unique_to = bv->inlineCompletionUniqueChars();
+		}
+	}
+	return has_contents;
+}
+
+
 #if 0
 namespace {
 
@@ -247,64 +273,24 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	mindes_ = (3 * xascent) / 4;
 	slevel_ = (4 * xascent) / 5;
 	sshift_ = xascent / 4;
-	kerning_ = 0;
 
-	if (empty()) {
-		// Cache the dimension.
-		mi.base.bv->coordCache().arrays().add(this, dim);
-		return;
-	}
+	MathRow mrow(mi, this);
+	mrow_cache_[mi.base.bv] = mrow;
+	mrow.metrics(mi, dim);
+	kerning_ = mrow.kerning(mi.base.bv);
 
-	Cursor & cur = mi.base.bv->cursor();
-	const_cast<MathData*>(this)->updateMacros(&cur, mi.macrocontext, InternalUpdate);
-
-	DocIterator const & inlineCompletionPos = mi.base.bv->inlineCompletionPos();
-	MathData const * inlineCompletionData = 0;
-	if (inlineCompletionPos.inMathed())
-		inlineCompletionData = &inlineCompletionPos.cell();
-
-	dim.asc = 0;
-	dim.wid = 0;
-	Dimension d;
-	CoordCache::Insets & coords = mi.base.bv->coordCache().insets();
-	for (pos_type i = 0, n = size(); i != n; ++i) {
-		MathAtom const & at = operator[](i);
-		at->metrics(mi, d);
-		coords.add(at.nucleus(), d);
-		dim += d;
-		if (i == n - 1)
-			kerning_ = at->kerning(mi.base.bv);
-
-		// HACK to draw completion suggestion inline
-		if (inlineCompletionData != this
-		    || size_t(inlineCompletionPos.pos()) != i + 1)
-			continue;
-
-		docstring const & completion = mi.base.bv->inlineCompletion();
-		if (completion.length() == 0)
-			continue;
-
-		FontInfo font = mi.base.font;
-		augmentFont(font, "mathnormal");
-		dim.wid += mathed_string_width(font, completion);
-	}
 	// Cache the dimension.
 	mi.base.bv->coordCache().arrays().add(this, dim);
 }
 
 
-void MathData::draw(PainterInfo & pi, int x, int y) const
+void MathData::draw(PainterInfo & pi, int const x, int const y) const
 {
 	//lyxerr << "MathData::draw: x: " << x << " y: " << y << endl;
 	BufferView & bv  = *pi.base.bv;
 	setXY(bv, x, y);
 
 	Dimension const & dim = bv.coordCache().getArrays().dim(this);
-
-	if (empty()) {
-		pi.pain.rectangle(x, y - dim.ascent(), dim.width(), dim.height(), Color_mathline);
-		return;
-	}
 
 	// don't draw outside the workarea
 	if (y + dim.descent() <= 0
@@ -313,48 +299,8 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 		|| x >= bv. workWidth())
 		return;
 
-	DocIterator const & inlineCompletionPos = bv.inlineCompletionPos();
-	MathData const * inlineCompletionData = 0;
-	if (inlineCompletionPos.inMathed())
-		inlineCompletionData = &inlineCompletionPos.cell();
-
-	CoordCache::Insets & coords = pi.base.bv->coordCache().insets();
-	for (size_t i = 0, n = size(); i != n; ++i) {
-		MathAtom const & at = operator[](i);
-		coords.add(at.nucleus(), x, y);
-		at->drawSelection(pi, x, y);
-		at->draw(pi, x, y);
-		x += coords.dim(at.nucleus()).wid;
-
-		// Is the inline completion here?
-		if (inlineCompletionData != this
-		    || size_t(inlineCompletionPos.pos()) != i + 1)
-			continue;
-		docstring const & completion = bv.inlineCompletion();
-		if (completion.length() == 0)
-			continue;
-		FontInfo f = pi.base.font;
-		augmentFont(f, "mathnormal");
-
-		// draw the unique and the non-unique completion part
-		// Note: this is not time-critical as it is
-		// only done once per screen.
-		size_t uniqueTo = bv.inlineCompletionUniqueChars();
-		docstring s1 = completion.substr(0, uniqueTo);
-		docstring s2 = completion.substr(uniqueTo);
-
-		if (!s1.empty()) {
-			f.setColor(Color_inlinecompletion);
-			pi.pain.text(x, y, s1, f);
-			x += mathed_string_width(f, s1);
-		}
-
-		if (!s2.empty()) {
-			f.setColor(Color_nonunique_inlinecompletion);
-			pi.pain.text(x, y, s2, f);
-			x += mathed_string_width(f, s2);
-		}
-	}
+	MathRow const & mrow = mrow_cache_[pi.base.bv];
+	mrow.draw(pi, x, y);
 }
 
 

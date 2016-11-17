@@ -37,6 +37,10 @@ public:
 	///
 	virtual MathMacro const * asMacro() const { return this; }
 	///
+	/// If the macro is in normal edit mode, dissolve its contents in
+	/// the row. Otherwise, just insert the inset.
+	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
@@ -45,6 +49,8 @@ public:
 	{ drawMarkers2(pi, x, y); }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	/// was the macro in edit mode when computing metrics?
+	bool editMetrics(BufferView const * bv) const;
 	///
 	int kerning(BufferView const * bv) const;
 	/// get cursor position
@@ -117,6 +123,8 @@ public:
 	///
 	docstring name() const;
 	///
+	MacroData const * macro() const;
+	///
 	docstring macroName() const;
 	///
 	bool validName() const;
@@ -151,10 +159,6 @@ protected:
 	/// attach arguments (maybe less than arity at the end of an MathData),
 	/// including the optional ones (even if it can be empty here)
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
-	///
-	MacroData const * macro();
-	///
-	bool editMetrics(BufferView const * bv) const;
 
 private:
 	///

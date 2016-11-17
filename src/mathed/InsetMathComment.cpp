@@ -50,7 +50,7 @@ Inset * InsetMathComment::clone() const
 void InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

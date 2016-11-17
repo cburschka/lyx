@@ -52,6 +52,13 @@ bool InsetMathStackrel::idxUpDown(Cursor & cur, bool up) const
 }
 
 
+MathClass InsetMathStackrel::mathClass() const
+{
+	// FIXME: update this when/if \stackbin is supported
+	return MC_REL;
+}
+
+
 void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim1;
@@ -70,7 +77,7 @@ void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = dim1.ascent() + dim0.height() + 4;
 		dim.des = dim1.descent();
 	}
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

@@ -122,7 +122,7 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des += dh_ + 2;
 	}
 
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 

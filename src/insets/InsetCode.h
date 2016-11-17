@@ -235,6 +235,8 @@ enum InsetCode {
 	///
 	IPADECO_CODE,
 	///
+	MATH_CLASS_CODE,
+	///
 	INSET_CODE_SIZE
 };
 

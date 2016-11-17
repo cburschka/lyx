@@ -273,6 +273,19 @@ int InsetMathScript::nker(BufferView const * bv) const
 }
 
 
+MathClass InsetMathScript::mathClass() const
+{
+	// FIXME: this is a hack, since the class will not be correct if
+	// the nucleus has several elements.
+	// The correct implementation would require to linearize the nucleus.
+	if (nuc().empty())
+		return MC_ORD;
+	else
+		// return the class of last element since this is the one that counts.
+		return nuc().back()->mathClass();
+}
+
+
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0;
@@ -320,7 +333,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = max(nd, des);
 	} else
 		dim.des = nd;
-	metricsMarkers(dim);
+	metricsMarkers(mi, dim);
 }
 
 
