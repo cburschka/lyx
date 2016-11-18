@@ -1383,6 +1383,14 @@ contributors = [
                  "9 March 2014",
                  u"Korean translation"),
 
+     contributor(u'Andrew Parsloe',
+                 "aparsloe () clear ! net ! nz",
+                 "GPL",
+                 "GPL declaration",
+                 "m=147941540519608",
+                 "17 November 2016",
+                 u"Module updates"),
+
      contributor(u'Bo Peng',
                  "ben.bob () gmail ! com",
                  "GPL",
