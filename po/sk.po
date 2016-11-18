@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-10-27 10:39+0200\n"
-"PO-Revision-Date: 2016-10-27 08:57+0000\n"
+"POT-Creation-Date: 2016-11-18 12:47+0100\n"
+"PO-Revision-Date: 2016-11-18 12:18+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -15129,6 +15129,79 @@ msgstr ""
 "štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
 "podľa …)' modulu."
 
+#: lib/layouts/theorems-ams-chap-bytype.inc:82
+msgid "Theorem \\thechapter.\\thetheorem."
+msgstr "Teoréma \\thechapter.\\thetheorem."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:112
+msgid "Corollary \\thechapter.\\thecorollary."
+msgstr "Korolár \\thechapter.\\thecorollary."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:134
+msgid "Lemma \\thechapter.\\thelemma."
+msgstr "Lemma \\thechapter.\\thelemma."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:156
+msgid "Proposition \\thechapter.\\theproposition."
+msgstr "Tvrdenie \\thechapter.\\theproposition."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:178
+msgid "Conjecture \\thechapter.\\theconjecture."
+msgstr "Hypotéza \\thechapter.\\theconjecture."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:200
+msgid "Fact \\thechapter.\\thefact."
+msgstr "Fakt \\thechapter.\\thefact."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:222
+msgid "Definition \\thechapter.\\thedefinition."
+msgstr "Definícia \\thechapter.\\thedefinition."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:251
+msgid "Example \\thechapter.\\theexample."
+msgstr "Príklad \\thechapter.\\theexample."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:274
+msgid "Problem \\thechapter.\\theproblem."
+msgstr "Problém \\thechapter.\\theproblem."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:297
+msgid "Exercise \\thechapter.\\theexercise."
+msgstr "Úloha \\thechapter.\\theexercise."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:320
+msgid "Solution \\thechapter.\\thesolution."
+msgstr "Riešenie \\thechapter.\\thesolution."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:343
+msgid "Remark \\thechapter.\\theremark."
+msgstr "Pripomienka \\thechapter.\\theremark."
+
+#: lib/layouts/theorems-ams-chap-bytype.inc:373
+msgid "Claim \\thechapter.\\theclaim."
+msgstr "Nárok \\thechapter.\\theclaim."
+
+#: lib/layouts/theorems-ams-chap-bytype.module:2
+msgid "Theorems (AMS, Numbered by Type within Chapters)"
+msgstr "Teorémy (AMS, Číslované podľa Typu vnútri Kapitol)"
+
+#: lib/layouts/theorems-ams-chap-bytype.module:11
+msgid ""
+"Defines theorem environments and the proof environment using the extended "
+"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
+"the plain AMS Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, "
+"proposition 1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, "
+"theorem 2, lemma 3, proposition 4, ...). The numbering restarts for each "
+"chapter: theorem 1.1, theorem 2.1, ..."
+msgstr ""
+"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+"dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
+"rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
+"(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
+"1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na začiatku "
+"každej kapitoli: teoréma 1.1, teoréma 2.1, … "
+
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
 msgstr "Teorémy (rozšírenie AMS, číslované podľa typu)"
@@ -15299,6 +15372,74 @@ msgstr "Otázka*"
 #: lib/layouts/theorems-ams-extended.module:398
 msgid "Question."
 msgstr "Otázka."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:2
+msgid "Theorems (AMS-Extended, Numbered by Type within Chapters)"
+msgstr "Teorémy (AMS-Rozšírenie, Číslované podľa Typu vnútri Kapitol)"
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:12
+msgid ""
+"Defines some additional theorem environments for use with the AMS theorems "
+"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
+"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
+"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
+"different theorem types provided here each have a separate counter, "
+"restarted with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom "
+"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed "
+"to criterion 1, criterion 2, axiom 3, assumption 4...)"
+msgstr ""
+"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS-"
+"teorémy. Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, "
+"Notácia, Súhrn, Poďakovania, Záver, Predpoklad, a Prípad v oboch formách "
+"(číslované/neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má tu "
+"každý poskytnutý typ teorémou svoje vlastné číslovanie, reštartované pri "
+"každej novej kapitole (čiže kritérium 1.1, kritérium 1.2, axióma 1.1, "
+"predpoklad 1.1, kritérium 2.1, axióma 2.1, …, oproti kritérium 1.1, "
+"kritérium 1.2, axióma 1.3, predpoklad 1.4, …)"
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:69
+msgid "Criterion \\thechapter.\\thecriterion."
+msgstr "Kritérium \\thechapter.\\thecriterion."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:108
+msgid "Algorithm \\thechapter.\\thealgorithm."
+msgstr "Algoritmus \\thechapter.\\thealgorithm."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:147
+msgid "Axiom \\thechapter.\\theaxiom."
+msgstr "Axióma \\thechapter.\\theaxiom."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:186
+msgid "Condition \\thechapter.\\thecondition."
+msgstr "Podmienka \\thechapter.\\thecondition."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:225
+msgid "Note \\thechapter.\\thenote."
+msgstr "Poznámka \\thechapter.\\thenote."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:264
+msgid "Notation \\thechapter.\\thenotation."
+msgstr "Notácia \\thechapter.\\thenotation."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:303
+msgid "Summary \\thechapter.\\thesummary."
+msgstr "Súhrn \\thechapter.\\thesummary."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:343
+msgid "Acknowledgement \\thechapter.\\theacknowledgement."
+msgstr "Poďakovanie \\thechapter.\\theacknowledgement."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:382
+msgid "Conclusion \\thechapter.\\theconclusion."
+msgstr "Záver \\thechapter.\\theconclusion."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:421
+msgid "Assumption \\thechapter.\\theassumption."
+msgstr "Predpoklad \\thechapter.\\theassumption."
+
+#: lib/layouts/theorems-ams-extended-chap-bytype.module:460
+msgid "Question \\thechapter.\\thequestion."
+msgstr "Otázka \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -15988,6 +16129,10 @@ msgstr "Španielsky (Mexiko)"
 msgid "Swedish"
 msgstr "Švédsky"
 
+#: lib/languages:1068
+msgid "Syriac"
+msgstr "Syriac (stredoveká hebrejčina)"
+
 #: lib/languages:995 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "Tamilsky"
@@ -16019,6 +16164,10 @@ msgstr "Ukrajinsky"
 #: lib/languages:1067
 msgid "Upper Sorbian"
 msgstr "Srbsky (Hornolužicky)"
+
+#: lib/languages:1159
+msgid "Urdu"
+msgstr "Urdsky"
 
 #: lib/languages:1088
 msgid "Vietnamese"
@@ -23997,7 +24146,7 @@ msgid ""
 "%1$s%2$s"
 msgstr ""
 "Nie je možné používať nasledovné jazyky spolu v jednom LaTeX dokumente lebo "
-"požadujú konfliktné jazykové balíky:\n"
+"požadujú nekompatibilné jazykové balíky:\n"
 "%1$s%2$s"
 
 #: src/Buffer.cpp:2172
@@ -24993,16 +25142,16 @@ msgid "page break / line break"
 msgstr "zlom strany / zlom riadku"
 
 #: src/Color.cpp:295
-msgid "frame of button"
-msgstr "rám tlačidla"
+msgid "button frame"
+msgstr "tlačidlo: rám"
 
 #: src/Color.cpp:296
 msgid "button background"
-msgstr "pozadie tlačidla"
+msgstr "tlačidlo: pozadie"
 
 #: src/Color.cpp:297
 msgid "button background under focus"
-msgstr "pozadie tlačidla pod fókusom"
+msgstr "tlačidlo: pozadie pod fókusom"
 
 #: src/Color.cpp:298
 msgid "paragraph marker"
@@ -25803,6 +25952,14 @@ msgid ""
 msgstr ""
 "Definujte ako spustiť chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Pozrite si dokumentáciu k ChkTeX."
+
+#: src/LyXRC.cpp:2944
+msgid ""
+"Apply hardening techniques when calling external converters to prevent "
+"undesired effects."
+msgstr ""
+"Použiť opevňujúce metódy pri spúšťaní externých konvertorov na zabránenie "
+"nežiadúcich efektov. "
 
 #: src/LyXRC.cpp:2943
 msgid ""
@@ -31725,6 +31882,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "frame of button"
+#~ msgstr "rám tlačidla"
+
 #~ msgid "Global Default"
 #~ msgstr "Globálny Štandard"
 
@@ -32451,12 +32611,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Minimum word length for completion"
 #~ msgstr "Minimálna dĺžka slova pre doplňovanie"
-
-#~ msgid "Syriac"
-#~ msgstr "Syriac (stredoveká hebrejčina)"
-
-#~ msgid "Urdu"
-#~ msgstr "Urdsky"
 
 #~ msgid "LyX-1.3.x Documents (*.lyx13)"
 #~ msgstr "LyX-1.3.x dokumenty (*.lyx13)"
