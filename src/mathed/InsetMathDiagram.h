@@ -26,6 +26,8 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	InsetMathDiagram const * asDiagramInset() const { return this; }
 	///
 	virtual int colsep() const;

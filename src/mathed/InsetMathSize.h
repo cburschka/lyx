@@ -53,7 +53,7 @@ private:
 	///
 	latexkeys const * key_;
 	///
-	Styles const style_;
+	MathStyle const style_;
 };
 
 

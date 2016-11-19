@@ -142,5 +142,21 @@ enum FontState {
 	FONT_IGNORE
 };
 
+
+/// Math styles
+enum MathStyle {
+	///
+	LM_ST_SCRIPTSCRIPT = 0,
+	///
+	LM_ST_SCRIPT,
+	///
+	LM_ST_TEXT,
+	///
+	LM_ST_DISPLAY,
+	///
+	NUM_STYLE = LM_ST_DISPLAY
+};
+
+
 } // namespace lyx
 #endif

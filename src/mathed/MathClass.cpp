@@ -146,7 +146,7 @@ int class_spacing(MathClass const mc1, MathClass const mc2,
 	//lyxerr << class_to_string(mc1) << "+" << class_to_string(mc2)
 	//	   << "=" << spc_code << " @" << mb.style << endl;
 	if (spc_code < 0) {
-		switch (mb.style) {
+		switch (mb.font.style()) {
 		case LM_ST_DISPLAY:
 		case LM_ST_TEXT:
 			spc_code = abs(spc_code);

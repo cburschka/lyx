@@ -27,6 +27,8 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	InsetMathXYMatrix const * asXYMatrixInset() const { return this; }
 	///
 	virtual int colsep() const;

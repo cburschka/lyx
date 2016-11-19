@@ -181,6 +181,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		// general cell metrics used for \frac
 		Changer dummy = mi.base.changeFrac();
+		// FIXME: Exponential blowup
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		if (nargs() == 3)
@@ -196,9 +197,9 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			    || kind_ == DFRAC || kind_ == TFRAC) {
 				// \cfrac and \dfrac are always in display size
 				// \tfrac is in always in text size
-				Changer dummy2 = mi.base.changeStyle((kind_ == TFRAC)
-				                                     ? LM_ST_SCRIPT
-				                                     : LM_ST_DISPLAY);
+				Changer dummy2 = mi.base.font.changeStyle((kind_ == TFRAC)
+				                                          ? LM_ST_SCRIPT
+				                                          : LM_ST_DISPLAY);
 				cell(0).metrics(mi, dim0);
 				cell(1).metrics(mi, dim1);
 			}
@@ -252,12 +253,13 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		} else if (kind_ == FRAC || kind_ == ATOP || kind_ == OVER
 		           || kind_ == TFRAC) {
 			// tfrac is in always in text size
-			Changer dummy2 = pi.base.changeStyle(LM_ST_SCRIPT, kind_ == TFRAC);
+			Changer dummy2 = pi.base.font.changeStyle(LM_ST_SCRIPT,
+			                                          kind_ == TFRAC);
 			cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
 		} else {
 			// \cfrac and \dfrac are always in display size
-			Changer dummy2 = pi.base.changeStyle(LM_ST_DISPLAY);
+			Changer dummy2 = pi.base.font.changeStyle(LM_ST_DISPLAY);
 			if (kind_ == CFRAC || kind_ == DFRAC)
 				cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 2 - 5);
 			else if (kind_ == CFRACLEFT)
@@ -574,8 +576,8 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1;
 	Changer dummy =
-		(kind_ == DBINOM) ? mi.base.changeStyle(LM_ST_DISPLAY) :
-		(kind_ == TBINOM) ? mi.base.changeStyle(LM_ST_SCRIPT) :
+		(kind_ == DBINOM) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
+		(kind_ == TBINOM) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
 		                    mi.base.changeFrac();
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
@@ -600,8 +602,8 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	int m = x + dim.width() / 2;
 	{
 		Changer dummy =
-			(kind_ == DBINOM) ? pi.base.changeStyle(LM_ST_DISPLAY) :
-			(kind_ == TBINOM) ? pi.base.changeStyle(LM_ST_SCRIPT) :
+			(kind_ == DBINOM) ? pi.base.font.changeStyle(LM_ST_DISPLAY) :
+			(kind_ == TBINOM) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
 			                    pi.base.changeFrac();
 		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
 		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - 5);

@@ -49,9 +49,18 @@ int InsetMathXYMatrix::rowsep() const
 
 void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (mi.base.style == LM_ST_DISPLAY)
-		mi.base.style = LM_ST_TEXT;
+	FontInfo & f = mi.base.font;
+	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
 	InsetMathGrid::metrics(mi, dim);
+}
+
+
+void InsetMathXYMatrix::draw(PainterInfo & pi, int x, int y) const
+{
+	setPosCache(pi, x, y);
+	FontInfo & f = pi.base.font;
+	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
+	InsetMathGrid::draw(pi, x, y);
 }
 
 

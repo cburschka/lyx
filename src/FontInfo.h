@@ -48,8 +48,8 @@ public:
 		FontState  uwave,
 		FontState  noun,
 		FontState  number)
-		: family_(family), series_(series), shape_(shape), size_(size), 
-		color_(color), background_(background), paint_color_(), emph_(emph),
+		: family_(family), series_(series), shape_(shape), size_(size),
+		style_(LM_ST_TEXT), color_(color), background_(background), emph_(emph),
 		underbar_(underbar), strikeout_(strikeout), uuline_(uuline),
 		uwave_(uwave), noun_(noun), number_(number)
 	{}
@@ -69,6 +69,8 @@ public:
 	void setShape(FontShape s) { shape_ = s; }
 	FontSize size() const { return size_; }
 	void setSize(FontSize s) { size_ = s; }
+	MathStyle style() const {return style_; }
+	void setStyle(MathStyle s) { style_ = s; }
 	FontState emph() const { return emph_; }
 	void setEmph(FontState e) { emph_ = e; }
 	FontState underbar() const { return underbar_; }
@@ -107,6 +109,9 @@ public:
 	/// Sets the color which is used during painting
 	void setPaintColor(Color c) { paint_color_ = c; }
 
+	/// Compute the font size, taking size and math style into account.
+	double realSize() const;
+
 	///
 	docstring asCSS() const;
 
@@ -143,6 +148,8 @@ public:
 	Changer changeColor(ColorCode const color, bool cond = true);
 	/// Temporarily replace the shape with \param shape.
 	Changer changeShape(FontShape const shape, bool cond = true);
+	/// Temporarily replace the style
+	Changer changeStyle(MathStyle style, bool cond = true);
 	/// Temporarily replace the FontInfo with \param font, and optionally
 	/// \param realize the \param font against the current FontInfo.
 	Changer change(FontInfo font, bool realize = false, bool cond = true);
@@ -158,6 +165,8 @@ private:
 	FontShape shape_;
 	///
 	FontSize size_;
+	///
+	MathStyle style_;
 	///
 	ColorCode color_;
 	///

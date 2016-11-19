@@ -36,7 +36,6 @@ extern bool has_math_fonts;
 
 
 namespace {
-
 latexkeys const * makeSubstitute(char_type c)
 {
 	std::string name;

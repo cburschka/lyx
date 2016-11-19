@@ -17,7 +17,9 @@
 #include "ColorSet.h"
 #include "FontInfo.h"
 #include "Lexer.h"
+#include "LyXRC.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
@@ -168,6 +170,29 @@ FontInfo & FontInfo::incSize()
 }
 
 
+double FontInfo::realSize() const
+{
+	double d = convert<double>(lyxrc.font_sizes[size()]);
+	// The following is according to the average of the values in the
+	// definitions of \defaultscriptratio and \defaultscriptscriptratio in LaTeX
+	// font packages. No attempt is made to implement the actual values from
+	// \DefineMathSizes.
+	switch (style()) {
+	case LM_ST_DISPLAY:
+	case LM_ST_TEXT:
+		break;
+	case LM_ST_SCRIPT:
+		d *= .73;
+		break;
+	case LM_ST_SCRIPTSCRIPT:
+		d *= .55;
+		break;
+	}
+	// Never go below the smallest size
+	return max(d, convert<double>(lyxrc.font_sizes[FONT_SIZE_TINY]));
+}
+
+
 /// Reduce font to fall back to template where possible
 void FontInfo::reduce(FontInfo const & tmplt)
 {
@@ -255,6 +280,12 @@ Changer FontInfo::changeColor(ColorCode const color, bool cond)
 Changer FontInfo::changeShape(FontShape const shape, bool cond)
 {
 	return make_change(shape_, shape, cond);
+}
+
+
+Changer FontInfo::changeStyle(MathStyle const new_style, bool cond)
+{
+	return make_change(style_, new_style, cond);
 }
 
 

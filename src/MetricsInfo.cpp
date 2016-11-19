@@ -37,7 +37,7 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////////
 
 MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
-	: bv(b), font(move(f)), style(LM_ST_TEXT), fontname("mathnormal"),
+	: bv(b), font(move(f)), fontname("mathnormal"),
 	  textwidth(w), macro_nesting(0),
 	  solid_line_thickness_(1), solid_line_offset_(1), dotted_line_thickness_(1)
 {
@@ -71,6 +71,7 @@ Changer MetricsBase::changeFontSet(string const & name, bool cond)
 			font = sane_font;
 		augmentFont(font, name);
 		font.setSize(rc->old.font.size());
+		font.setStyle(rc->old.font.style());
 		if (name != "lyxtex"
 		    && ((isTextFont(oldname) && oldcolor != Color_foreground)
 		        || (isMathFont(oldname) && oldcolor != Color_math)))
@@ -153,13 +154,13 @@ Color PainterInfo::textColor(Color const & color) const
 
 Changer MetricsBase::changeScript(bool cond)
 {
-	switch (style) {
+	switch (font.style()) {
 	case LM_ST_DISPLAY:
 	case LM_ST_TEXT:
-		return changeStyle(LM_ST_SCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPT, cond);
 	case LM_ST_SCRIPT:
 	case LM_ST_SCRIPTSCRIPT:
-		return changeStyle(LM_ST_SCRIPTSCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPTSCRIPT, cond);
 	}
 	//remove Warning
 	LASSERT(false, return Changer());
@@ -168,41 +169,17 @@ Changer MetricsBase::changeScript(bool cond)
 
 Changer MetricsBase::changeFrac(bool cond)
 {
-	switch (style) {
+	switch (font.style()) {
 	case LM_ST_DISPLAY:
-		return changeStyle(LM_ST_TEXT, cond);
+		return font.changeStyle(LM_ST_TEXT, cond);
 	case LM_ST_TEXT:
-		return changeStyle(LM_ST_SCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPT, cond);
 	case LM_ST_SCRIPT:
 	case LM_ST_SCRIPTSCRIPT:
-		return changeStyle(LM_ST_SCRIPTSCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPTSCRIPT, cond);
 	}
 	//remove Warning
 	return Changer();
-}
-
-
-Changer MetricsBase::changeStyle(Styles new_style, bool cond)
-{
-	static const int diff[4][4] =
-		{ { 0, 0, -3, -5 },
-		  { 0, 0, -3, -5 },
-		  { 3, 3,  0, -2 },
-		  { 5, 5,  2,  0 } };
-	int t = diff[style][new_style];
-	RefChanger<MetricsBase> rc = make_save(*this);
-	if (!cond)
-		rc->keep();
-	else {
-		if (t > 0)
-			while (t--)
-				font.incSize();
-		else
-			while (t++)
-				font.decSize();
-		style = new_style;
-	}
-	return move(rc);
 }
 
 

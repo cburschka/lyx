@@ -19,7 +19,6 @@
 
 #include "LyXRC.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
@@ -88,7 +87,18 @@ SymbolFont symbol_fonts[] = {
 size_t const nr_symbol_fonts = sizeof(symbol_fonts) / sizeof(symbol_fonts[0]);
 
 /// BUTT ugly !
-static GuiFontInfo * fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE];
+static GuiFontInfo *
+fontinfo_[NUM_FAMILIES][NUM_SERIES][NUM_SHAPE][NUM_SIZE][NUM_STYLE];
+
+
+// returns a reference to the pointer type (GuiFontInfo *) in the
+// fontinfo_ table.
+GuiFontInfo * & fontinfo_ptr(FontInfo const & f)
+{
+	// The display font and the text font are the same
+	size_t const style = (f.style() == LM_ST_DISPLAY) ? LM_ST_TEXT : f.style();
+	return fontinfo_[f.family()][f.series()][f.realShape()][f.size()][style];
+}
 
 
 // Get font info (font + metrics) for the given LyX font.
@@ -106,16 +116,12 @@ GuiFontInfo & fontinfo(FontInfo const & f)
         LYXERR0("Unrealized font!");
         FontInfo f2 = f;
         f2.realize(sane_font);
-        GuiFontInfo * & fi =
-            fontinfo_[f2.family()][f2.series()][f2.realShape()][f2.size()];
+        GuiFontInfo * & fi = fontinfo_ptr(f2);
         if (!fi)
             fi = new GuiFontInfo(f2);
         return *fi;
     }
-	// fi is a reference to the pointer type (GuiFontInfo *) in the
-	// fontinfo_ table.
-	GuiFontInfo * & fi =
-		fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
+    GuiFontInfo * & fi = fontinfo_ptr(f);
 	if (!fi)
 		fi = new GuiFontInfo(f);
 	return *fi;
@@ -248,7 +254,8 @@ FontLoader::FontLoader()
 		for (int i2 = 0; i2 < NUM_SERIES; ++i2)
 			for (int i3 = 0; i3 < NUM_SHAPE; ++i3)
 				for (int i4 = 0; i4 < NUM_SIZE; ++i4)
-					fontinfo_[i1][i2][i3][i4] = 0;
+					for (int i5 = 0; i5 < NUM_STYLE; ++i5)
+						fontinfo_[i1][i2][i3][i4][i5] = 0;
 }
 
 
@@ -257,9 +264,10 @@ void FontLoader::update()
 	for (int i1 = 0; i1 < NUM_FAMILIES; ++i1)
 		for (int i2 = 0; i2 < NUM_SERIES; ++i2)
 			for (int i3 = 0; i3 < NUM_SHAPE; ++i3)
-				for (int i4 = 0; i4 < NUM_SIZE; ++i4) {
-					delete fontinfo_[i1][i2][i3][i4];
-					fontinfo_[i1][i2][i3][i4] = 0;
+				for (int i4 = 0; i4 < NUM_SIZE; ++i4)
+					for (int i5 = 0; i5 < NUM_STYLE; ++i5) {
+					delete fontinfo_[i1][i2][i3][i4][i5];
+					fontinfo_[i1][i2][i3][i4][i5] = 0;
 				}
 }
 
@@ -355,8 +363,7 @@ QFont makeQFont(FontInfo const & f)
 
 	LYXERR(Debug::FONT, "XFLD: " << font.rawName());
 
-	font.setPointSizeF(convert<double>(lyxrc.font_sizes[f.size()])
-			       * lyxrc.zoom / 100.0);
+	font.setPointSizeF(f.realSize() * lyxrc.zoom / 100.0);
 
 	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 

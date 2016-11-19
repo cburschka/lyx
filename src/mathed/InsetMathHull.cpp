@@ -520,9 +520,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 		return;
 	}
 
-	// FIXME: Changing the same object repeatedly is inefficient.
 	Changer dummy1 = mi.base.changeFontSet(standardFont());
-	Changer dummy2 = mi.base.changeStyle(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	Changer dummy2 = mi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	                                                    : LM_ST_TEXT);
 
 	// let the cells adjust themselves
 	InsetMathGrid::metrics(mi, dim);
@@ -617,7 +617,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	bool const really_change_color = pi.base.font.color() == Color_none;
 	Changer dummy0 = pi.base.font.changeColor(color, really_change_color);
 	Changer dummy1 = pi.base.changeFontSet(standardFont());
-	Changer dummy2 = pi.base.changeStyle(display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	Changer dummy2 = pi.base.font.changeStyle(display() ? LM_ST_DISPLAY
+	                                                    : LM_ST_TEXT);
 
 	InsetMathGrid::draw(pi, x + 1, y);
 
