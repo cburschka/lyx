@@ -180,7 +180,7 @@ Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_GB,$DictCodes"
- AddSize 760
+ AddSize 735
 SectionEnd
 
 Section /o "English (NZ)" SecDEnglishNZ
@@ -414,6 +414,11 @@ SectionEnd
 Section /o "Thai" SecDThai
  StrCpy $DictCodes "th_TH,$DictCodes"
  AddSize 351
+SectionEnd
+
+Section /o "Tibetan" SecDTibetan
+ StrCpy $DictCodes "bo_CN,$DictCodes"
+ AddSize 7
 SectionEnd
 
 Section /o "Türkmençe" SecDTurkmen
@@ -1185,6 +1190,13 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDThai} $0
    SectionSetSize ${SecDThai} 0
+  ${endif}
+  StrCpy $Search "bo_CN"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDTibetan} $0
+   SectionSetSize ${SecDTibetan} 0
   ${endif}
   StrCpy $Search "tk_TM"
   Call StrPoint
