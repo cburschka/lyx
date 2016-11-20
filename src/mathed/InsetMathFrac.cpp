@@ -242,8 +242,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		dim.wid = max(dim0.wid, dim1.wid) + 2;
-		dim.asc = dim0.height() + 2 + dy;
-		dim.des = max(0, dim1.height() + 2 - dy);
+		dim.asc = dim0.height() + dy/2 + dy;
+		dim.des = max(0, dim1.height() + dy/2 - dy);
 	}
 	} //switch (kind_)
 	metricsMarkers(mi, dim);
@@ -294,7 +294,8 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		// Diag line:
 		pi.pain.line(xx + dim0.wid + 1, y + dim.des - 2,
 		             xx + dim0.wid + 6, y - dim.asc + 2,
-		             pi.base.font.color());
+		             pi.base.font.color(), pi.pain.line_solid,
+		             pi.base.solidLineThickness());
 	}
 		break;
 
@@ -326,13 +327,18 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			(kind_ == CFRACRIGHT) ? x + dim.wid - dim0.wid - 2 :
 			// center
 			                        m - dim0.wid / 2;
-		cell(0).draw(pi, xx, y - dim0.des - 2 - dy);
+		// take dy/2 for the spacing around the horizontal line. This is
+		// arbitrary. In LaTeX it is more complicated to ensure that displayed
+		// fractions line up next to each other.
+		cell(0).draw(pi, xx, y - dim0.des - dy/2 - dy);
 		// center
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - dy);
+		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + dy/2 - dy);
 		// horizontal line
 		if (kind_ != ATOP)
 			pi.pain.line(x + 1, y - dy,
-			             x + dim.wid - 2, y - dy, pi.base.font.color());
+			             x + dim.wid - 2, y - dy,
+			             pi.base.font.color(), pi.pain.line_solid,
+			             pi.base.solidLineThickness());
 	}
 	} //switch (kind_)
 	drawMarkers(pi, x, y);
@@ -632,8 +638,8 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 		                    mi.base.changeFrac();
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
-	dim.asc = dim0.height() + 4 + dy;
-	dim.des = max(0, dim1.height() + 4 - dy);
+	dim.asc = dim0.height() + 1 + dy/2 + dy;
+	dim.des = max(0, dim1.height() + 1 + dy/2 - dy);
 	dim.wid = max(dim0.wid, dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(mi, dim);
 }
@@ -657,8 +663,10 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 			(kind_ == DBINOM) ? pi.base.font.changeStyle(LM_ST_DISPLAY) :
 			(kind_ == TBINOM) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
 			                    pi.base.changeFrac();
-		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - dy);
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - dy);
+		// take dy both for the vertical alignment and for the spacing between
+		// cells
+		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - dy/2 - dy);
+		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + dy/2 - dy);
 	}
 	// draw the brackets and the marker
 	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()),
