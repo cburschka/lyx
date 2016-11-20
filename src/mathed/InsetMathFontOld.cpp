@@ -59,7 +59,8 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 	// When \cal is used in text mode, the font is not changed
 	bool really_change_font = fontname != "textcal";
 
-	Changer dummy = mi.base.changeFontSet(fontname, really_change_font);
+	Changer dummy = really_change_font ? mi.base.changeFontSet(fontname)
+		: Changer();
 	cell(0).metrics(mi, dim);
 	metricsMarkers(mi, dim);
 }
@@ -76,7 +77,8 @@ void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 	// When \cal is used in text mode, the font is not changed
 	bool really_change_font = fontname != "textcal";
 
-	Changer dummy = pi.base.changeFontSet(fontname, really_change_font);
+	Changer dummy = really_change_font ? pi.base.changeFontSet(fontname)
+		: Changer();
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

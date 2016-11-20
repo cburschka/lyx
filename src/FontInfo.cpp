@@ -271,29 +271,29 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 }
 
 
-Changer FontInfo::changeColor(ColorCode const color, bool cond)
+Changer FontInfo::changeColor(ColorCode const color)
 {
-	return make_change(color_, color, cond);
+	return make_change(color_, color);
 }
 
 
-Changer FontInfo::changeShape(FontShape const shape, bool cond)
+Changer FontInfo::changeShape(FontShape const shape)
 {
-	return make_change(shape_, shape, cond);
+	return make_change(shape_, shape);
 }
 
 
-Changer FontInfo::changeStyle(MathStyle const new_style, bool cond)
+Changer FontInfo::changeStyle(MathStyle const new_style)
 {
-	return make_change(style_, new_style, cond);
+	return make_change(style_, new_style);
 }
 
 
-Changer FontInfo::change(FontInfo font, bool realiz, bool cond)
+Changer FontInfo::change(FontInfo font, bool realiz)
 {
 	if (realiz)
 		font.realize(*this);
-	return make_change(*this, font, cond);
+	return make_change(*this, font);
 }
 
 

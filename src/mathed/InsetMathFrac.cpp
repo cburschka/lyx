@@ -182,7 +182,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			cell(2).metrics(mi, dim2);
 			dim.wid += dim2.wid + 4;
 		}
-		Changer dummy = mi.base.font.changeShape(UP_SHAPE, kind_ == UNITFRAC);
+		Changer dummy = (kind_ == UNITFRAC) ? mi.base.font.changeShape(UP_SHAPE)
+			: Changer();
 		Changer dummy2 = mi.base.changeScript();
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
@@ -253,7 +254,8 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			cell(2).draw(pi, x + 1, y);
 			xx += cell(2).dimension(*pi.base.bv).wid + 4;
 		}
-		Changer dummy = pi.base.font.changeShape(UP_SHAPE, kind_ == UNITFRAC);
+		Changer dummy = (kind_ == UNITFRAC) ? pi.base.font.changeShape(UP_SHAPE)
+			: Changer();
 		// nice fraction
 		// FIXME:
 		// * the solidus should be \kern-2mu/\kern-1mu.

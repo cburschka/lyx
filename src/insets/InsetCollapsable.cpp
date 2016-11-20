@@ -274,8 +274,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		}
 		// Do not draw the cue for INSERTED -- it is already in the button and
 		// that's enough.
-		Changer dummy = make_change(pi.change_, Change(),
-		                            pi.change_.type == Change::INSERTED);
+		Changer dummy = (pi.change_.type == Change::INSERTED)
+			? make_change(pi.change_, Change())
+			: Changer();
 		InsetText::draw(pi, textx, texty);
 		break;
 	}

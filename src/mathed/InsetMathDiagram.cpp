@@ -49,7 +49,8 @@ int InsetMathDiagram::rowsep() const
 void InsetMathDiagram::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontInfo & f = mi.base.font;
-	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
+	Changer dummy = (f.style() == LM_ST_DISPLAY) ? f.changeStyle(LM_ST_TEXT)
+		: Changer();
 	InsetMathGrid::metrics(mi, dim);
 }
 
@@ -58,7 +59,8 @@ void InsetMathDiagram::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 	FontInfo & f = pi.base.font;
-	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
+	Changer dummy = (f.style() == LM_ST_DISPLAY) ? f.changeStyle(LM_ST_TEXT)
+		: Changer();
 	InsetMathGrid::draw(pi, x, y);
 }
 

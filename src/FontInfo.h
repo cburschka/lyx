@@ -145,14 +145,14 @@ public:
 	}
 
 	/// Temporarily replace the color with \param color.
-	Changer changeColor(ColorCode const color, bool cond = true);
+	Changer changeColor(ColorCode const color);
 	/// Temporarily replace the shape with \param shape.
-	Changer changeShape(FontShape const shape, bool cond = true);
+	Changer changeShape(FontShape const shape);
 	/// Temporarily replace the style
-	Changer changeStyle(MathStyle style, bool cond = true);
+	Changer changeStyle(MathStyle style);
 	/// Temporarily replace the FontInfo with \param font, and optionally
 	/// \param realize the \param font against the current FontInfo.
-	Changer change(FontInfo font, bool realize = false, bool cond = true);
+	Changer change(FontInfo font, bool realize = false);
 
 private:
 	friend bool operator==(FontInfo const & lhs, FontInfo const & rhs);

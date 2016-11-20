@@ -53,11 +53,13 @@ public:
 	int macro_nesting;
 
 	/// Temporarily change a full font.
-	Changer changeFontSet(std::string const & font, bool cond = true);
+	Changer changeFontSet(std::string const & font);
 	// Temporarily change to the style suitable for use in fractions
-	Changer changeFrac(bool cond = true);
+	Changer changeFrac();
+	// Temporarily change to the style suitable for use in arrays
+	Changer changeArray();
 	// Temporarily change the style to (script)script style
-	Changer changeScript(bool cond = true);
+	Changer changeScript();
 	///
 	int solidLineThickness() const { return solid_line_thickness_; }
 	///

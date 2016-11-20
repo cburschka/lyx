@@ -66,16 +66,14 @@ template <typename X> RefChanger<X> make_save(X & ref)
 	return make_unique<RevertibleRef<X>>(ref);
 }
 
-/// Temporarily assign value \param val to \param ref. If \param cond is false,
-/// then the assignation does not happen and the RefChanger starts disabled.
+/// Temporarily assign value val to reference ref.
+/// To apply the change conditionnally, one can write:
+///     Changer dummy = (cond) ? make_change(a, b) : Changer();
 template <typename X>
-RefChanger<X> make_change(X & ref, X const val, bool cond = true)
+RefChanger<X> make_change(X & ref, X const val)
 {
 	auto rc = make_save(ref);
-	if (!cond)
-		rc->keep();
-	else
-		ref = val;
+	ref = val;
 	return rc;
 }
 

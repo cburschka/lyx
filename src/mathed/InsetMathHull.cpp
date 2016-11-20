@@ -600,7 +600,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (previewState(bv)) {
 		// Do not draw change tracking cue if taken care of by RowPainter
 		// already.
-		Changer dummy = make_change(pi.change_, Change(), !canPaintChange(*bv));
+		Changer dummy = !canPaintChange(*bv) ? make_change(pi.change_, Change())
+			: Changer();
 		if (previewTooSmall(dim)) {
 			// we have an extra frame
 			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
@@ -615,7 +616,8 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	ColorCode color = pi.selected && lyxrc.use_system_colors
 				? Color_selectiontext : standardColor();
 	bool const really_change_color = pi.base.font.color() == Color_none;
-	Changer dummy0 = pi.base.font.changeColor(color, really_change_color);
+	Changer dummy0 = really_change_color ? pi.base.font.changeColor(color)
+		: Changer();
 	Changer dummy1 = pi.base.changeFontSet(standardFont());
 	Changer dummy2 = pi.base.font.changeStyle(display() ? LM_ST_DISPLAY
 	                                                    : LM_ST_TEXT);

@@ -58,25 +58,21 @@ MetricsBase::MetricsBase(BufferView * b, FontInfo f, int w)
 }
 
 
-Changer MetricsBase::changeFontSet(string const & name, bool cond)
+Changer MetricsBase::changeFontSet(string const & name)
 {
 	RefChanger<MetricsBase> rc = make_save(*this);
-	if (!cond)
-		rc->keep();
-	else {
-		ColorCode oldcolor = font.color();
-		string const oldname = fontname;
-		fontname = name;
-		if (isMathFont(name) || isMathFont(oldname))
-			font = sane_font;
-		augmentFont(font, name);
-		font.setSize(rc->old.font.size());
-		font.setStyle(rc->old.font.style());
-		if (name != "lyxtex"
-		    && ((isTextFont(oldname) && oldcolor != Color_foreground)
-		        || (isMathFont(oldname) && oldcolor != Color_math)))
-			font.setColor(oldcolor);
-	}
+	ColorCode oldcolor = font.color();
+	string const oldname = fontname;
+	fontname = name;
+	if (isMathFont(name) || isMathFont(oldname))
+		font = sane_font;
+	augmentFont(font, name);
+	font.setSize(rc->old.font.size());
+	font.setStyle(rc->old.font.style());
+	if (name != "lyxtex"
+	    && ((isTextFont(oldname) && oldcolor != Color_foreground)
+	        || (isMathFont(oldname) && oldcolor != Color_math)))
+		font.setColor(oldcolor);
 	return move(rc);
 }
 
@@ -152,34 +148,41 @@ Color PainterInfo::textColor(Color const & color) const
 }
 
 
-Changer MetricsBase::changeScript(bool cond)
+Changer MetricsBase::changeScript()
 {
 	switch (font.style()) {
 	case LM_ST_DISPLAY:
 	case LM_ST_TEXT:
-		return font.changeStyle(LM_ST_SCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPT);
 	case LM_ST_SCRIPT:
 	case LM_ST_SCRIPTSCRIPT:
-		return font.changeStyle(LM_ST_SCRIPTSCRIPT, cond);
-	}
-	//remove Warning
-	LASSERT(false, return Changer());
-}
-
-
-Changer MetricsBase::changeFrac(bool cond)
-{
-	switch (font.style()) {
-	case LM_ST_DISPLAY:
-		return font.changeStyle(LM_ST_TEXT, cond);
-	case LM_ST_TEXT:
-		return font.changeStyle(LM_ST_SCRIPT, cond);
-	case LM_ST_SCRIPT:
-	case LM_ST_SCRIPTSCRIPT:
-		return font.changeStyle(LM_ST_SCRIPTSCRIPT, cond);
+		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
 	}
 	//remove Warning
 	return Changer();
+}
+
+
+Changer MetricsBase::changeFrac()
+{
+	switch (font.style()) {
+	case LM_ST_DISPLAY:
+		return font.changeStyle(LM_ST_TEXT);
+	case LM_ST_TEXT:
+		return font.changeStyle(LM_ST_SCRIPT);
+	case LM_ST_SCRIPT:
+	case LM_ST_SCRIPTSCRIPT:
+		return font.changeStyle(LM_ST_SCRIPTSCRIPT);
+	}
+	//remove Warning
+	return Changer();
+}
+
+
+Changer MetricsBase::changeArray()
+{
+	return (font.style() == LM_ST_DISPLAY) ? font.changeStyle(LM_ST_TEXT)
+		: Changer();
 }
 
 

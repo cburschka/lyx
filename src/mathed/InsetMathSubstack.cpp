@@ -45,16 +45,14 @@ Inset * InsetMathSubstack::clone() const
 
 void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	FontInfo & f = mi.base.font;
-	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
+	Changer dummy = mi.base.changeArray();
 	InsetMathGrid::metrics(mi, dim);
 }
 
 
 void InsetMathSubstack::draw(PainterInfo & pi, int x, int y) const
 {
-	FontInfo & f = pi.base.font;
-	Changer dummy = f.changeStyle(LM_ST_TEXT, f.style() == LM_ST_DISPLAY);
+	Changer dummy = pi.base.changeArray();
 	InsetMathGrid::draw(pi, x + 1, y);
 }
 

@@ -107,7 +107,8 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool really_change_font = currentMode() == TEXT_MODE
 				&& isMathFont(mi.base.fontname);
-	Changer dummy = mi.base.changeFontSet("textnormal", really_change_font);
+	Changer dummy = really_change_font ? mi.base.changeFontSet("textnormal")
+		: Changer();
 
 	cell(0).metrics(mi, dim);
 
@@ -130,7 +131,8 @@ void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
 	bool really_change_font = currentMode() == TEXT_MODE
 		                      && isMathFont(pi.base.fontname);
-	Changer dummy = pi.base.changeFontSet("textnormal", really_change_font);
+	Changer dummy = really_change_font ? pi.base.changeFontSet("textnormal")
+		: Changer();
 
 	cell(0).draw(pi, x + 1, y);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
