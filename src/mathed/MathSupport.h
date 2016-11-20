@@ -31,11 +31,13 @@ class latexkeys;
 
 int mathed_font_em(FontInfo const &);
 
-int mathed_thinmuskip(FontInfo font);
+int mathed_mu(FontInfo const & font, double mu);
 
-int mathed_medmuskip(FontInfo font);
+int mathed_thinmuskip(FontInfo const & font);
 
-int mathed_thickmuskip(FontInfo font);
+int mathed_medmuskip(FontInfo const & font);
+
+int mathed_thickmuskip(FontInfo const & font);
 
 int mathed_char_width(FontInfo const &, char_type c);
 

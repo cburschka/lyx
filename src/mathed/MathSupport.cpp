@@ -15,6 +15,7 @@
 
 #include "InsetMathFont.h"
 #include "InsetMathSymbol.h"
+#include "Length.h"
 #include "MathData.h"
 #include "MathParser.h"
 #include "MathStream.h"
@@ -533,25 +534,15 @@ int mathed_font_em(FontInfo const & font)
  * above.
  */
 
-int mathed_thinmuskip(FontInfo font)
+int mathed_mu(FontInfo const & font, double mu)
 {
-	font.setFamily(SYMBOL_FAMILY);
-	return support::iround(3.0 / 18 * theFontMetrics(font).em());
+	MetricsBase mb(nullptr, font);
+	return Length(mu, Length::MU).inPixels(mb);
 }
 
-
-int mathed_medmuskip(FontInfo font)
-{
-	font.setFamily(SYMBOL_FAMILY);
-	return support::iround(4.0 / 18 * theFontMetrics(font).em());
-}
-
-
-int mathed_thickmuskip(FontInfo font)
-{
-	font.setFamily(SYMBOL_FAMILY);
-	return support::iround(5.0 / 18 * theFontMetrics(font).em());
-}
+int mathed_thinmuskip(FontInfo const & font) { return mathed_mu(font, 3.0); }
+int mathed_medmuskip(FontInfo const & font) { return mathed_mu(font, 4.0); }
+int mathed_thickmuskip(FontInfo const & font) { return mathed_mu(font, 5.0); }
 
 
 int mathed_char_width(FontInfo const & font, char_type c)
