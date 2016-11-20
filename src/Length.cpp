@@ -300,7 +300,10 @@ double Length::inInch(double text_width, double em_width) const
 
 int Length::inPixels(MetricsBase const & base) const
 {
-	return inPixels(base.textwidth, theFontMetrics(base.font).em());
+	FontInfo fi = base.font;
+	if (unit_ == Length::MU)
+		fi.setFamily(SYMBOL_FAMILY);
+	return inPixels(base.textwidth, theFontMetrics(fi).em());
 }
 
 
