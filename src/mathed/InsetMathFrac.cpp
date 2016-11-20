@@ -14,11 +14,13 @@
 
 #include "InsetMathFrac.h"
 
-#include "Cursor.h"
-#include "LaTeXFeatures.h"
 #include "MathData.h"
+#include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
+
+#include "Cursor.h"
+#include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 #include "TextPainter.h"
 
@@ -170,6 +172,13 @@ int dy_for_nicefrac(MetricsBase & mb)
 	return big_m - small_m;
 }
 
+
+// symbol for nicefrac solidus
+latexkeys const * slash_symbol()
+{
+	return in_word_set(from_ascii("slash"));
+}
+
 } // anon namespace
 
 
@@ -202,21 +211,32 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	case NICEFRAC: {
 		// \unitfrac, \unitfracthree, \nicefrac
 		dim.wid = 0;
+		dim.asc = 0;
+		dim.des = 0;
 		int const dy = dy_for_nicefrac(mi.base);
 		// is there an extra cell holding the value being given a dimension?
 		// (this is \unitfracthree)
 		if (kind_ == UNITFRAC && nargs() == 3) {
 			cell(2).metrics(mi, dim2);
 			dim.wid += dim2.wid + 4;
+			dim.asc = dim2.asc;
+			dim.des = dim2.des;
 		}
 		Changer dummy = (kind_ == UNITFRAC) ? mi.base.font.changeShape(UP_SHAPE)
 			: Changer();
 		Changer dummy2 = mi.base.changeScript();
+		if (latexkeys const * slash = slash_symbol()) {
+			Dimension dimslash;
+			mathedSymbolDim(mi.base, dimslash, slash);
+			dim.wid += dimslash.wid - mathed_mu(mi.base.font, 3.0);
+			dim.asc = max(dim.asc, dimslash.asc);
+			dim.des = max(dim.des, dimslash.des);
+		}
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
-		dim.wid += dim0.wid + dim1.wid + 5;
-		dim.asc = max(max(dim2.asc, dim0.asc + dy), dim1.asc);
-		dim.des = max(max(dim2.des, dim0.des - dy), dim1.des);
+		dim.wid += dim0.wid + dim1.wid + 2;
+		dim.asc = max(max(dim.asc, dim0.asc + dy), dim1.asc);
+		dim.des = max(max(dim.des, dim0.des - dy), dim1.des);
 	}
 		break;
 
@@ -286,16 +306,18 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		Changer dummy = (kind_ == UNITFRAC) ? pi.base.font.changeShape(UP_SHAPE)
 			: Changer();
 		// nice fraction
-		// FIXME:
-		// * the solidus should be \kern-2mu/\kern-1mu.
 		Changer dummy2 = pi.base.changeScript();
 		cell(0).draw(pi, xx + 2, y - dy);
-		cell(1).draw(pi, xx + dim0.wid + 5, y);
-		// Diag line:
-		pi.pain.line(xx + dim0.wid + 1, y + dim.des - 2,
-		             xx + dim0.wid + 6, y - dim.asc + 2,
-		             pi.base.font.color(), pi.pain.line_solid,
-		             pi.base.solidLineThickness());
+		// reference LaTeX code from nicefrac.sty:
+		//    \mkern-2mu/\mkern-1mu
+		if (latexkeys const * slash = slash_symbol()) {
+			int mkern = mathed_mu(pi.base.font, 2.0);
+			mathedSymbolDraw(pi, xx + 2 + dim0.wid - mkern, y, slash);
+			Dimension dimslash;
+			mathedSymbolDim(pi.base, dimslash, slash);
+			xx += dimslash.wid - mathed_mu(pi.base.font, 3.0);
+		}
+		cell(1).draw(pi, xx + 2 + dim0.wid, y);
 	}
 		break;
 
