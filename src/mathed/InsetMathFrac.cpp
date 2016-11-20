@@ -22,6 +22,7 @@
 #include "MetricsInfo.h"
 #include "TextPainter.h"
 
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/lassert.h"
@@ -148,6 +149,31 @@ MathClass InsetMathFrac::mathClass() const
 }
 
 
+
+namespace {
+
+// align frac to minus character
+int dy_for_frac(MetricsBase & mb)
+{
+	Changer dummy = mb.changeFontSet("mathnormal");
+	return theFontMetrics(mb.font).ascent('-') - 1;
+}
+
+
+// align the top of M in the cell with the top of M in the surrounding font
+int dy_for_nicefrac(MetricsBase & mb)
+{
+	// this is according to nicefrac.sty
+	int big_m = theFontMetrics(mb.font).ascent('M');
+	Changer dummy = mb.changeScript();
+	int small_m = theFontMetrics(mb.font).ascent('M');
+	return big_m - small_m;
+}
+
+} // anon namespace
+
+
+
 void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1, dim2;
@@ -176,6 +202,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	case NICEFRAC: {
 		// \unitfrac, \unitfracthree, \nicefrac
 		dim.wid = 0;
+		int const dy = dy_for_nicefrac(mi.base);
 		// is there an extra cell holding the value being given a dimension?
 		// (this is \unitfracthree)
 		if (kind_ == UNITFRAC && nargs() == 3) {
@@ -188,8 +215,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		dim.wid += dim0.wid + dim1.wid + 5;
-		dim.asc = max(dim2.asc, dim0.height() + 5);
-		dim.des = max(dim2.des, dim1.height() - 5);
+		dim.asc = max(max(dim2.asc, dim0.asc + dy), dim1.asc);
+		dim.des = max(max(dim2.des, dim0.des - dy), dim1.des);
 	}
 		break;
 
@@ -201,6 +228,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	case TFRAC:
 	case OVER:
 	case ATOP: {
+		int const dy = dy_for_frac(mi.base);
 		Changer dummy =
 			// \tfrac is always in text size
 			(kind_ == TFRAC) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
@@ -214,8 +242,8 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		dim.wid = max(dim0.wid, dim1.wid) + 2;
-		dim.asc = dim0.height() + 2 + 5;
-		dim.des = dim1.height() + 2 - 5;
+		dim.asc = dim0.height() + 2 + dy;
+		dim.des = max(0, dim1.height() + 2 - dy);
 	}
 	} //switch (kind_)
 	metricsMarkers(mi, dim);
@@ -248,6 +276,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	case NICEFRAC: {
 		// \unitfrac, \unitfracthree, \nicefrac
 		int xx = x;
+		int const dy = dy_for_nicefrac(pi.base);
 		// is there an extra cell holding the value being given a dimension?
 		// (this is \unitfracthree)
 		if (kind_ == UNITFRAC && nargs() == 3) {
@@ -259,13 +288,9 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		// nice fraction
 		// FIXME:
 		// * the solidus should be \kern-2mu/\kern-1mu.
-		// * the vertical offset of the first cell should be such that the
-		//   top of M in the first cell matches the one of the
-		//   surrounding text.
 		Changer dummy2 = pi.base.changeScript();
-		cell(0).draw(pi, xx + 2, y - dim0.des - 5);
-		Dimension const dim1 = cell(1).dimension(*pi.base.bv);
-		cell(1).draw(pi, xx + dim0.wid + 5, y + dim1.asc / 2);
+		cell(0).draw(pi, xx + 2, y - dy);
+		cell(1).draw(pi, xx + dim0.wid + 5, y);
 		// Diag line:
 		pi.pain.line(xx + dim0.wid + 1, y + dim.des - 2,
 		             xx + dim0.wid + 6, y - dim.asc + 2,
@@ -281,6 +306,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	case TFRAC:
 	case OVER:
 	case ATOP: {
+		int const dy = dy_for_frac(pi.base);
 		Changer dummy =
 			// \tfrac is always in text size
 			(kind_ == TFRAC) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
@@ -300,15 +326,13 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			(kind_ == CFRACRIGHT) ? x + dim.wid - dim0.wid - 2 :
 			// center
 			                        m - dim0.wid / 2;
-		// FIXME: vertical offset should be based on ex
-		//int dy = theFontMetrics(pi.base.font).ex() / 2;
-		cell(0).draw(pi, xx, y - dim0.des - 2 - 5);
+		cell(0).draw(pi, xx, y - dim0.des - 2 - dy);
 		// center
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - 5);
+		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 2 - dy);
 		// horizontal line
 		if (kind_ != ATOP)
-			pi.pain.line(x + 1, y - 5,
-			             x + dim.wid - 2, y - 5, pi.base.font.color());
+			pi.pain.line(x + 1, y - dy,
+			             x + dim.wid - 2, y - dy, pi.base.font.color());
 	}
 	} //switch (kind_)
 	drawMarkers(pi, x, y);
@@ -601,14 +625,15 @@ int InsetMathBinom::dw(int height) const
 void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1;
+	int const dy = dy_for_frac(mi.base);
 	Changer dummy =
 		(kind_ == DBINOM) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
 		(kind_ == TBINOM) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
 		                    mi.base.changeFrac();
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
-	dim.asc = dim0.height() + 4 + 5;
-	dim.des = dim1.height() + 4 - 5;
+	dim.asc = dim0.height() + 4 + dy;
+	dim.des = max(0, dim1.height() + 4 - dy);
 	dim.wid = max(dim0.wid, dim1.wid) + 2 * dw(dim.height()) + 4;
 	metricsMarkers2(mi, dim);
 }
@@ -619,6 +644,7 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	int const dy = dy_for_frac(pi.base);
 	// define the binom brackets
 	docstring const bra = kind_ == BRACE ? from_ascii("{") :
 		kind_ == BRACK ? from_ascii("[") : from_ascii("(");
@@ -631,8 +657,8 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 			(kind_ == DBINOM) ? pi.base.font.changeStyle(LM_ST_DISPLAY) :
 			(kind_ == TBINOM) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
 			                    pi.base.changeFrac();
-		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
-		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - 5);
+		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - dy);
+		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + 3 - dy);
 	}
 	// draw the brackets and the marker
 	mathed_draw_deco(pi, x, y - dim.ascent(), dw(dim.height()),

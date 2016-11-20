@@ -93,7 +93,10 @@ public:
 	void htmlize(HtmlStream &) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-public:
+private:
+	/// vertical displacement
+	int dy(FontInfo & fi) const;
+	///
 	Inset * clone() const;
 	///
 	Kind kind_;
