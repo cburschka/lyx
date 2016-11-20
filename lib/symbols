@@ -261,6 +261,7 @@ varpi              cmm          36 118 mathord  &piv;
 varrho             cmm          37   0 mathord  &rhov;
 varsigma           cmm          38  86 mathord  &sigmav;
 varphi             cmm          39 106 mathord  &phiv;
+slash              cmr          47  47 mathord  /
 Gamma              cmr         161  71 mathalpha  &Gamma;
 Delta              cmr         162  68 mathalpha  &Delta;
 Theta              cmr         163  81 mathalpha  &Theta;
@@ -1145,7 +1146,6 @@ ordinarycolon      cmr          58  58    mathrel :             mathtools
 \def\ne{\not=}                                                  mathrel &ne;
 \def\lnot{\neg}                                                 mathord &not;
 \def\notin{\not\in}                                             mathrel &notin;
-\def\slash{/}
 
 \def\joinrel{\mathrel{\kern-3mu}}
 \def\relbar{\lyxbar}
