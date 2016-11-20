@@ -109,7 +109,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (mathfont && subst_) {
 		// If the char has a substitute, draw the replacement symbol
 		// instead, but only in math mode.
-		mathedSymbolDim(mi, dim, subst_);
+		mathedSymbolDim(mi.base, dim, subst_);
 		kerning_ = mathed_char_kerning(mi.base.font, *subst_->draw.rbegin());
 		return;
 	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {

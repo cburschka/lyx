@@ -61,7 +61,7 @@ docstring InsetMathSymbol::name() const
 void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// set dim
-	mathedSymbolDim(mi, dim, sym_);
+	mathedSymbolDim(mi.base, dim, sym_);
 	// set kerning_
 	kerning_ = mathed_char_kerning(mi.base.font, *sym_->draw.rbegin());
 	// correct height for broken cmex and wasy font
