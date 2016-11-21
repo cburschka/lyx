@@ -993,12 +993,14 @@ Language scottish
 	LangCode         gd_GB
 End
 
+# Note: script option is uppercase, even if the polyglossia
+#       manual states otherwise.
 Language serbian
 	GuiName          "Serbian"
 	HasGuiSupport    true
 	BabelName        serbianc
 	PolyglossiaName  serbian
-	PolyglossiaOpts  "script=cyrillic"
+	PolyglossiaOpts  "script=Cyrillic"
 	QuoteStyle       german
 	Encoding         utf8
 	FontEncoding     T2A
@@ -1006,11 +1008,13 @@ Language serbian
 	AsBabelOptions   true
 End
 
+# Note: script option is uppercase, even if the polyglossia
+#       manual states otherwise.
 Language serbian-latin
 	GuiName          "Serbian (Latin)"
 	BabelName        serbian
 	PolyglossiaName  serbian
-	PolyglossiaOpts  "script=latin"
+	PolyglossiaOpts  "script=Latin"
 	QuoteStyle       german
 	Encoding         iso8859-2
 	LangCode         sr_RS-Latin
