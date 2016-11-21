@@ -1072,6 +1072,7 @@ void clearSelection()
 void clearCutStack()
 {
 	theCuts.clear();
+	tempCut.clear();
 }
 
 
