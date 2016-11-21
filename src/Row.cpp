@@ -337,6 +337,8 @@ bool Row::setExtraWidth(int w)
 	int exp_amount = 0;
 	for (Row::Element const & e : elements_)
 		exp_amount += e.expansionAmount();
+	if (!exp_amount)
+		return false;
 	// extra length per expander per em
 	double extra_per_em = double(w) / exp_amount;
 	if (extra_per_em > MAX_SPACE_STRETCH)
