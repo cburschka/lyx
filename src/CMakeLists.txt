@@ -25,8 +25,10 @@ file(GLOB lyx_sources ${TOP_SRC_DIR}/src/${LYX_CPP_FILES})
 file(GLOB moc_files ${TOP_SRC_DIR}/src/${LYX_MOC_FILES})
 list(REMOVE_ITEM  lyx_sources ${moc_files} .)
 file(GLOB lyx_headers ${TOP_SRC_DIR}/src/${LYX_HPP_FILES})
+set(lyxwrap_sources ${TOP_SRC_DIR}/src/lyxwrap.cpp)
 
 list(REMOVE_ITEM lyx_sources
+	${TOP_SRC_DIR}/src/lyxwrap.cpp
 	${TOP_SRC_DIR}/src/Variables.cpp
 	${TOP_SRC_DIR}/src/Section.cpp
 	${TOP_SRC_DIR}/src/lyxcore.cpp
@@ -187,6 +189,17 @@ if(LYX_BUNDLE)
 
 		set_target_properties(${_lyx} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_BINARY_DIR}/../Info.plist")
 	endif()
+endif()
+
+set(dowrapper ON) # create and install wrapper for external commands
+foreach(_f ${lyxwrap_sources})
+  if(NOT EXISTS "${_f}")
+    set(dowrapper OFF)
+  endif()
+endforeach()
+if(dowrapper AND USE_POSIX_PACKAGING)
+  add_executable(lyxwrap${PROGRAM_SUFFIX} ${lyxwrap_sources})
+  install(TARGETS lyxwrap${PROGRAM_SUFFIX} DESTINATION ${LYX_UTILITIES_INSTALL_PATH})
 endif()
 
 add_subdirectory(tests)
