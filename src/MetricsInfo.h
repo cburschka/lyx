@@ -54,6 +54,8 @@ public:
 
 	/// Temporarily change a full font.
 	Changer changeFontSet(std::string const & font);
+	/// Temporarily change the font to math if needed.
+	Changer changeEnsureMath();
 	// Temporarily change to the style suitable for use in fractions
 	Changer changeFrac();
 	// Temporarily change to the style suitable for use in arrays

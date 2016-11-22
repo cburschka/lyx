@@ -288,6 +288,7 @@ MathClass InsetMathScript::mathClass() const
 
 void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dim0;
 	Dimension dim1;
 	Dimension dim2;
@@ -339,6 +340,7 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy2 = pi.base.changeEnsureMath();
 	BufferView & bv = *pi.base.bv;
 	if (!nuc().empty())
 		nuc().draw(pi, x + dxx(bv), y);

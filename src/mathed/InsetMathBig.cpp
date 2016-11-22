@@ -69,6 +69,7 @@ double InsetMathBig::increase() const
 
 void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	double const h = theFontMetrics(mi.base.font).ascent('I');
 	double const f = increase();
 	dim.wid = 6;
@@ -79,6 +80,7 @@ void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	// mathed_draw_deco does not use the leading backslash, so remove it
 	// (but don't use ltrim if this is the backslash delimiter).

@@ -38,6 +38,7 @@ Inset * InsetMathPhantom::clone() const
 
 void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
 	metricsMarkers(mi, dim);
 }
@@ -45,6 +46,7 @@ void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	static int const arrow_size = 4;
 
 	// We first draw the text and then an arrow

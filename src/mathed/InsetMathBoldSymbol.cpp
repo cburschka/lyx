@@ -14,6 +14,7 @@
 
 #include "MathStream.h"
 #include "MathData.h"
+#include "MetricsInfo.h"
 #include "LaTeXFeatures.h"
 
 #include <ostream>
@@ -49,6 +50,7 @@ docstring InsetMathBoldSymbol::name() const
 
 void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	//Changer dummy = mi.base.changeFontSet("mathbf");
 	cell(0).metrics(mi, dim);
 	metricsMarkers(mi, dim);
@@ -58,6 +60,7 @@ void InsetMathBoldSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBoldSymbol::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	//Changer dummy = pi.base.changeFontSet("mathbf");
 	cell(0).draw(pi, x + 1, y);
 	cell(0).draw(pi, x + 2, y);

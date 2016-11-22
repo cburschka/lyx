@@ -31,6 +31,7 @@ Inset * InsetMathOverset::clone() const
 
 void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dim1;
 	cell(1).metrics(mi, dim1);
 	Changer dummy = mi.base.changeFrac();
@@ -45,6 +46,7 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy2 = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);

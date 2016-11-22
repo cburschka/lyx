@@ -185,6 +185,7 @@ int InsetMathSideset::nker(BufferView const * bv) const
 
 void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dimn;
 	Dimension dimbl;
 	Dimension dimtl;
@@ -227,6 +228,7 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSideset::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy2 = pi.base.changeEnsureMath();
 	BufferView & bv = *pi.base.bv;
 	nuc().draw(pi, x + dxn(bv), y);
 	if (!scriptl_)

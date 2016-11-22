@@ -20,6 +20,7 @@
 #include "FuncStatus.h"
 #include "support/gettext.h"
 #include "LaTeXFeatures.h"
+#include "MetricsInfo.h"
 
 #include "support/lstrings.h"
 
@@ -93,8 +94,17 @@ int InsetMathSplit::displayColSpace(col_type col) const
 
 
 
+void InsetMathSplit::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	Changer dummy = mi.base.changeEnsureMath();
+	InsetMathGrid::metrics(mi, dim);
+}
+
+
+
 void InsetMathSplit::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	InsetMathGrid::draw(pi, x, y);
 	setPosCache(pi, x, y);
 }

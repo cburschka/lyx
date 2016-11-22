@@ -77,6 +77,15 @@ Changer MetricsBase::changeFontSet(string const & name)
 }
 
 
+Changer MetricsBase::changeEnsureMath()
+{
+	// FIXME:
+	//   \textit{\ensuremath{\text{a}}}
+	// should appear in italics
+	return isTextFont(fontname) ? changeFontSet("mathnormal") : Changer();
+}
+
+
 /////////////////////////////////////////////////////////////////////////
 //
 // MetricsInfo

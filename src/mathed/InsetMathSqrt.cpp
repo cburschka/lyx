@@ -37,6 +37,7 @@ Inset * InsetMathSqrt::clone() const
 
 void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
 	dim.asc += 4;
 	dim.des += 2;
@@ -47,6 +48,7 @@ void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	cell(0).draw(pi, x + 10, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	int const a = dim.ascent();

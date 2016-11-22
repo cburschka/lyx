@@ -41,6 +41,7 @@ Inset * InsetMathRoot::clone() const
 
 void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	InsetMathNest::metrics(mi);
 	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);
@@ -53,6 +54,7 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	int const w = dim0.width();
 	// the "exponent"

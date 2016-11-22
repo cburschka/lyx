@@ -16,6 +16,8 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
+#include "MetricsInfo.h"
+
 #include "support/gettext.h"
 #include "support/lstrings.h"
 
@@ -38,6 +40,7 @@ Inset * InsetMathEnv::clone() const
 
 void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
 	metricsMarkers(mi, dim);
 }
@@ -45,6 +48,7 @@ void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathEnv::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

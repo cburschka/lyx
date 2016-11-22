@@ -37,6 +37,7 @@ Inset * InsetMathCancel::clone() const
 
 void InsetMathCancel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
 	metricsMarkers(mi, dim);
 }
@@ -44,6 +45,7 @@ void InsetMathCancel::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	// We first draw the text and then an arrow
 	ColorCode const origcol = pi.base.font.color();
 	cell(0).draw(pi, x + 1, y);

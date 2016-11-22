@@ -45,6 +45,7 @@ Inset * InsetMathSubstack::clone() const
 
 void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Changer dummy = mi.base.changeArray();
 	InsetMathGrid::metrics(mi, dim);
 }
@@ -52,6 +53,7 @@ void InsetMathSubstack::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSubstack::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy2 = pi.base.changeEnsureMath();
 	Changer dummy = pi.base.changeArray();
 	InsetMathGrid::draw(pi, x + 1, y);
 }

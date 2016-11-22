@@ -121,6 +121,7 @@ Inset * InsetMathSpace::clone() const
 
 void InsetMathSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	dim.asc = 4;
 	dim.des = 0;
 	if (space_info[space_].custom)
@@ -132,6 +133,7 @@ void InsetMathSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathSpace::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	// Sadly, HP-UX CC can't handle that kind of initialization.
 	// XPoint p[4] = {{++x, y-3}, {x, y}, {x+width-2, y}, {x+width-2, y-3}};
 	if (!space_info[space_].visible)

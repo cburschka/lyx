@@ -104,6 +104,7 @@ void InsetMathDelim::normalize(NormalStream & os) const
 
 void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeEnsureMath();
 	Dimension dim0;
 	cell(0).metrics(mi, dim0);
 	Dimension t = theFontMetrics(mi.base.font).dimension('I');
@@ -123,6 +124,7 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathDelim::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	int const b = y - dim.asc;
 	cell(0).draw(pi, x + dw_, y);

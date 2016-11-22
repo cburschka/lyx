@@ -186,6 +186,7 @@ latexkeys const * slash_symbol()
 void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1, dim2;
+	Changer dummy3 = mi.base.changeEnsureMath();
 
 	switch (kind_) {
 	case UNIT: {
@@ -259,6 +260,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 			 || kind_ == DFRAC) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
 			// all others
 			                      mi.base.changeFrac();
+		Changer dummy2 = mi.base.changeEnsureMath();
 		cell(0).metrics(mi, dim0);
 		cell(1).metrics(mi, dim1);
 		dim.wid = max(dim0.wid, dim1.wid) + 2;
@@ -274,6 +276,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
+	Changer dummy3 = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);
 	switch (kind_) {
@@ -654,6 +657,7 @@ int InsetMathBinom::dw(int height) const
 
 void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dim0, dim1;
 	int const dy = dy_for_frac(mi.base);
 	Changer dummy =
@@ -671,6 +675,7 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 {
+	Changer dummy2 = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);

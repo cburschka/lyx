@@ -24,6 +24,8 @@ public:
 	explicit InsetMathSplit(Buffer * buf, docstring const & name,
 		char valign = 'c', bool numbered = false);
 	///
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd,

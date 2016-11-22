@@ -49,6 +49,7 @@ int InsetMathXYMatrix::rowsep() const
 
 void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy2 = mi.base.changeEnsureMath();
 	Changer dummy = mi.base.changeArray();
 	InsetMathGrid::metrics(mi, dim);
 }
@@ -57,6 +58,7 @@ void InsetMathXYMatrix::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathXYMatrix::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
+	Changer dummy2 = pi.base.changeEnsureMath();
 	Changer dummy = pi.base.changeArray();
 	InsetMathGrid::draw(pi, x, y);
 }
