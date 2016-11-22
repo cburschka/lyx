@@ -97,6 +97,7 @@ End
 Encoding cp855 cp855 "Cyrillic (CP 855)" CP855 fixed inputenc
 End
 
+# TODO: not supported by iconv (2.24 on Debian)
 Encoding cp858 cp858 "Western European (CP 858)" CP858 fixed inputenc
 End
 
@@ -138,6 +139,7 @@ End
 Encoding pt154 pt154 "Cyrillic (pt 154)" PT154 fixed inputenc
 End
 
+# TODO: not supported by iconv (2.24 on Debian)
 Encoding pt254 pt254 "Cyrillic (pt 254)" PT254 fixed inputenc
 End
 
