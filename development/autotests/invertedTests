@@ -7,9 +7,10 @@
 # they are reported as failing if the export works without error.
 # https://cmake.org/cmake/help/v3.0/prop_test/WILL_FAIL.html
 
+# ======================================================================
 Sublabel: todo
-#
-# LyX bugs and problems with the sample documents that require attention.
+# LyX bugs and problems with the sample documents that require attention
+# ======================================================================
 # * minor issues to explore and properly sort,
 # * easyfix issues,
 # * LyX bugs to report at trac (move pattern to section "lyxbugs" once done).
@@ -58,23 +59,37 @@ export/examples/ko/splash_(dvi||pdf[23]?)
 export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
 check_load/mathmacros/testcases_speed
 
-# input encoding tests: please test and correct:
-#
-# not (more?) supported by iconv, "uncodable character" LyX Warnings for all ASCII chars!
-# -> remove from lib/encodings (fileformat change)?
-# DOS code page, Western European:
-export/export/latex/unicodesymbols/.*_cp858_pdf2
-# Cyrillic
-export/export/latex/unicodesymbols/.*_pt254_pdf2
-#
-# Inputenc *.def files missing here [GM]  (which are standard?)
-# Hebrew:
-export/export/latex/unicodesymbols/.*_cp1255_pdf2
-export/export/latex/unicodesymbols/.*_iso8859-8_pdf2
-export/export/latex/unicodesymbols/.*_cp862_pdf2
+# input encoding tests
+# --------------------
+# Please test and correct!
+
+# Failing for unknown reason
+# Hebrew
+export/export/latex/unicodesymbols/001-4-latin_cp1255_pdf2
+export/export/latex/unicodesymbols/001-4-latin_cp862_pdf2
+export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp862_pdf2
+export/export/latex/unicodesymbols/008-greek-and-coptic_cp862_pdf2
+export/export/latex/unicodesymbols/065-67-phonetic-extensions_cp862_pdf2
+export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1255_pdf2
+export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp862_pdf2
+export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_iso8859-8_pdf2
+export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1255_pdf2
+export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp862_pdf2
+export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_iso8859-8_pdf2
+export/export/latex/unicodesymbols/087-90-misc-math-A-arrows-A-B_cp1255_pdf2
+export/export/latex/unicodesymbols/246-mathematical-alphanumeric_iso8859-8_pdf2
 # Arabic:
-export/export/latex/unicodesymbols/.*_iso8859-6_pdf2
-export/export/latex/unicodesymbols/.*_cp1256_pdf2
+export/export/latex/unicodesymbols/001-4-latin_cp1256_pdf2
+export/export/latex/unicodesymbols/001-4-latin_iso8859-6_pdf2
+export/export/latex/unicodesymbols/005-7-ipa-modifiers-combining_cp1256_pdf2
+export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp1256_pdf2
+export/export/latex/unicodesymbols/008-greek-and-coptic_cp1256_pdf2
+export/export/latex/unicodesymbols/069-greek-extended-textalpha_cp1256_pdf2
+export/export/latex/unicodesymbols/069-greek-extended_cp1256_pdf2
+export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
+export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
+
+# Seems to be a generic problem. Ignore?
 # CJK:
 export/export/latex/unicodesymbols/.*_euc-cn_pdf2
 export/export/latex/unicodesymbols/.*_gbk_pdf2
@@ -83,17 +98,17 @@ export/export/latex/unicodesymbols/.*_euc-kr_pdf2
 export/export/latex/unicodesymbols/.*_utf8-cjk_pdf2
 export/export/latex/unicodesymbols/.*_euc-tw_pdf2
 export/export/latex/unicodesymbols/.*_euc-jp_pdf2
-export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
 # pLaTeX
+export/export/latex/unicodesymbols/.*_euc-jp-platex_pdf2
 export/export/latex/unicodesymbols/.*_jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_shift-jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_utf8-platex_pdf2
 
 
-
+# ================================================
 Sublabel: lyxbugs
-#
 # LyX bugs with a Trac number.
+# ================================================
 
 #8823 documents requiring pre-processing fail with Japanese
 export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
@@ -128,9 +143,15 @@ export/export/latex/unicodesymbols/009-cyrillic_(cp855|cp866|cp1251|koi8-r|koi8-
 export/export/latex/unicodesymbols/069-greek-extended(|_utf8x)_pdf2
 export/export/latex/unicodesymbols/069-greek-extended-textalpha_utf8x_pdf2
 
+#10502 encodings cp858_ and pt254 not supported by iconv
+export/export/latex/cp858_pdf2
+
+
+# ==============================================================
 Sublabel: ert
+# Export failures due to "raw" LaTeX use in ERT or preamble code
+# ==============================================================
 #
-# Export failures due to "raw" LaTeX use in ERT or preamble code.
 # "Wontfix" if demonstrating correct use and OK in the default output format.
 
 # Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
@@ -142,9 +163,12 @@ export/doc/(de|es)/Additional_pdf4_texF
 # or document class file).
 export/export/latex/utf8-plain-with-tex-fonts_.*_texF
 
+
+# ================================================
 Sublabel: texissues
-#
 # Export fails due to LaTeX limitations,
+# ================================================
+#
 # e.g. non-ASCII in verbatim or listings, incompatible packages, ...
 # "Wontfix" if documents demonstrate correct use in the default output format.
 
@@ -211,7 +235,9 @@ export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
 export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 
+# ================================================
 Sublabel: attic
+# ================================================
 #
 # Documents in the attic are kept for reference and format conversion test.
 # However, many problems here are "wontfix".
