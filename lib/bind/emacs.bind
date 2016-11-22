@@ -260,6 +260,7 @@ Format 4
 \bind "S-C-KP_End"              "buffer-end-select"
 \bind "S-C-KP_Prior"            "buffer-move-previous"
 \bind "S-C-KP_Next"             "buffer-move-next"
+\bind "C-x h"			"command-sequence buffer-begin ; buffer-end-select"   # select all
 \bind "M-h"                     "inset-select-all"
 \bind "C-KP_Insert"             "copy"
 \bind "S-KP_Insert"             "paste"
