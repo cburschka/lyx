@@ -25,6 +25,7 @@
 #include "support/lstrings.h"
 #include "support/RefChanger.h"
 
+#include <algorithm>
 #include <ostream>
 #include <sstream>
 
