@@ -456,8 +456,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// calculate new metrics according to display mode
 	if (d->displayMode_ == DISPLAY_INIT || d->displayMode_ == DISPLAY_INTERACTIVE_INIT) {
+		Changer dummy = mi.base.changeFontSet("lyxtex");
 		mathed_string_dim(mi.base.font, from_ascii("\\") + name(), dim);
 	} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
+		Changer dummy = mi.base.changeFontSet("lyxtex");
 		cell(0).metrics(mi, dim);
 		Dimension bsdim;
 		mathed_string_dim(mi.base.font, from_ascii("\\"), bsdim);
@@ -507,6 +509,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		metricsMarkers2(mi, dim);
 	} else {
 		LBUFERR(d->macro_);
+
+		Changer dummy = (currentMode() == TEXT_MODE)
+			? mi.base.font.changeShape(UP_SHAPE)
+			: Changer();
 
 		// calculate metrics, hoping that all cells are seen
 		d->macro_->lock();
@@ -714,9 +720,9 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		++pi.base.macro_nesting;
 
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
-		bool upshape = currentMode() == TEXT_MODE;
-		Changer dummy = pi.base.font.changeShape(upshape ? UP_SHAPE
-							: pi.base.font.shape());
+		Changer dummy = (currentMode() == TEXT_MODE)
+			? pi.base.font.changeShape(UP_SHAPE)
+			: Changer();
 
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
