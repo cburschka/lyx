@@ -285,7 +285,7 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 	if (lyxrc.use_converter_needauth_forbidden) {
 		frontend::Alert::warning(
 			_("Potentially harmful external converters disabled"),
-			_("Requested operation needs use of a potentially harmful external converter program,"
+			_("Requested operation needs use of a potentially harmful external converter program, "
 			  "which is forbidden by default.\nThese converters are tagged by the 'needauth' option. "
 			  "In order to unlock execution of these converters,\nplease, go to "
 			  "Preferences->File Handling->Converters and uncheck "
