@@ -385,7 +385,7 @@ public:
 
 	QSize iconSize(docstring const & icon_size)
 	{
-		int size;
+		unsigned int size;
 		if (icon_size == "small")
 			size = smallIconSize;
 		else if (icon_size == "normal")
@@ -416,7 +416,7 @@ public:
 
 		static string icon_size;
 
-		int size = qsize.width();
+		unsigned int size = qsize.width();
 
 		if (size < smallIconSize)
 			size = smallIconSize;
@@ -3365,7 +3365,7 @@ bool GuiView::goToFileRow(string const & argument)
 }
 
 
-void GuiView::toolBarPopup(const QPoint & pos)
+void GuiView::toolBarPopup(const QPoint & /*pos*/)
 {
 	QMenu * menu = new QMenu;
 	menu = guiApp->menus().menu(toqstr("context-toolbars"), * this);
