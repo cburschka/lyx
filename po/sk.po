@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-11-18 12:47+0100\n"
-"PO-Revision-Date: 2016-11-18 12:18+0000\n"
+"POT-Creation-Date: 2016-11-23 15:55+0100\n"
+"PO-Revision-Date: 2016-11-23 15:03+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3231,6 +3231,32 @@ msgstr "Z&apnutá"
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Maximum a&ge (in days):"
 msgstr "Živo&tnosť (v dňoch):"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:310
+msgid "Security"
+msgstr "Bezpečnosť"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:330
+msgid "&Forbid use of needauth converters"
+msgstr "&Zakázať overujúce konvertory"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:333
+msgid ""
+"When enabled, use of converters with the 'needauth' option is forbidden."
+msgstr ""
+"Keď aktívne, používanie konvertorov s 'needauth' voľbou je neprístupné."
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:340
+msgid "Use need&auth option"
+msgstr "Použi needau&th voľbu"
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:343
+msgid ""
+"When enabled, ask user before launching any external converter with the "
+"'needauth' option."
+msgstr ""
+"Keď aktívne, žiadaj o dovolenie pred každým spustením externého konvertora s "
+"'needauth' voľbou."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &graphics"
@@ -17426,6 +17452,26 @@ msgstr "Vybrať Sekciu"
 msgid "Wrap by Preview|y"
 msgstr "Obtekať pri Náhľade"
 
+#: lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:354
+msgid "Small-sized Icons"
+msgstr "Malé Ikony"
+
+#: lib/ui/stdcontext.inc:669 lib/ui/stdmenus.inc:355
+msgid "Normal-sized Icons"
+msgstr "Normálne Ikony"
+
+#: lib/ui/stdcontext.inc:670 lib/ui/stdmenus.inc:356
+msgid "Big-sized Icons"
+msgstr "Veľké Ikony"
+
+#: lib/ui/stdcontext.inc:671 lib/ui/stdmenus.inc:357
+msgid "Huge-sized Icons"
+msgstr "Obrovské Ikony"
+
+#: lib/ui/stdcontext.inc:672 lib/ui/stdmenus.inc:358
+msgid "Giant-sized Icons"
+msgstr "Gigantické Ikony"
+
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
 msgstr "Upraviť|U"
@@ -25173,6 +25219,42 @@ msgstr "regulárny výraz (rám)"
 msgid "ignore"
 msgstr "ignorovať"
 
+#: src/Converter.cpp:287
+msgid "Potentially harmful external converters disabled"
+msgstr "Potenciálne škodlivý externý konvertor je blokovaný"
+
+#: src/Converter.cpp:288
+msgid ""
+"Requested operation needs use of a potentially harmful external converter "
+"program,which is forbidden by default.\n"
+"These converters are tagged by the 'needauth' option. In order to unlock "
+"execution of these converters,\n"
+"please, go to Preferences->File Handling->Converters and uncheck Security-"
+">Forbid needauth converters."
+msgstr ""
+"Žiadaná operácia používa potenciálne škodlivé externé konvertory, ktoré "
+"štandardne nie sú povolené.\n"
+"Tieto konvertory sú označené voľbou 'needauth'. Keď chcete ich spúšťanie "
+"odblokovať,\n"
+"choďte na Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť-"
+">Zakázať overovacie konvertory. "
+
+#: src/Converter.cpp:297
+msgid "Launch of external converter needs user authorization"
+msgstr "Spúšťanie externého konvertora potrebuje oprávnenie používateľa"
+
+#: src/Converter.cpp:309 src/Converter.cpp:318
+msgid "Do &NOT run"
+msgstr "&Nespustiť"
+
+#: src/Converter.cpp:309 src/Converter.cpp:318
+msgid "&Run"
+msgstr "&Spustiť"
+
+#: src/Converter.cpp:309
+msgid "&Always run for this document"
+msgstr "&Vždy spustiť pre tento dokument"
+
 #: src/Converter.cpp:328 src/Converter.cpp:523 src/Converter.cpp:546
 #: src/Converter.cpp:589
 msgid "Cannot convert file"
@@ -25953,13 +26035,21 @@ msgstr ""
 "Definujte ako spustiť chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Pozrite si dokumentáciu k ChkTeX."
 
-#: src/LyXRC.cpp:2944
+#: src/LyXRC.cpp:2959
 msgid ""
-"Apply hardening techniques when calling external converters to prevent "
+"Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
 msgstr ""
-"Použiť opevňujúce metódy pri spúšťaní externých konvertorov na zabránenie "
-"nežiadúcich efektov. "
+"Blokovať externé konvertori s 'needauth' voľbou na zabránenie nežiadúcich "
+"efektov. "
+
+#: src/LyXRC.cpp:2963
+msgid ""
+"Ask user before calling external converters with 'needauth' option to "
+"prevent undesired effects."
+msgstr ""
+"Žiadať o povolenie pred spustením externého konvertora s 'needauth' voľbou "
+"na zabránenie nežiadúcich efektov."
 
 #: src/LyXRC.cpp:2943
 msgid ""
@@ -29511,26 +29601,6 @@ msgstr "verzia "
 msgid "unknown version"
 msgstr "neznáma verzia"
 
-#: src/frontends/qt4/GuiView.cpp:340
-msgid "Small-sized icons"
-msgstr "Malé ikony"
-
-#: src/frontends/qt4/GuiView.cpp:347
-msgid "Normal-sized icons"
-msgstr "Normálne ikony"
-
-#: src/frontends/qt4/GuiView.cpp:354
-msgid "Big-sized icons"
-msgstr "Veľké ikony"
-
-#: src/frontends/qt4/GuiView.cpp:361
-msgid "Huge-sized icons"
-msgstr "Obrovské ikony"
-
-#: src/frontends/qt4/GuiView.cpp:368
-msgid "Giant-sized icons"
-msgstr "Gigantické ikony"
-
 #: src/frontends/qt4/GuiView.cpp:639
 #, c-format
 msgid "Successful export to format: %1$s"
@@ -29953,6 +30023,11 @@ msgstr "Ukladám všetky dokumenty…"
 #: src/frontends/qt4/GuiView.cpp:3741
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
+
+#: src/frontends/qt4/GuiView.cpp:3745
+#, c-format
+msgid "Icon size set to %1$d"
+msgstr "Rozmer ikon stanovený na %1$d"
 
 #: src/frontends/qt4/GuiView.cpp:3841
 #, c-format
@@ -35599,3 +35674,25 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Zoom level cannot be less than 10%."
 #~ msgstr "Stupeň lupy nesmie byť menší ako 10%."
+
+#~ msgid ""
+#~ "Apply hardening techniques when calling external converters to prevent "
+#~ "undesired effects."
+#~ msgstr ""
+#~ "Použiť opevňujúce metódy pri spúšťaní externých konvertorov na zabránenie "
+#~ "nežiadúcich efektov. "
+
+#~ msgid "Small-sized icons"
+#~ msgstr "Malé ikony"
+
+#~ msgid "Normal-sized icons"
+#~ msgstr "Normálne ikony"
+
+#~ msgid "Big-sized icons"
+#~ msgstr "Veľké ikony"
+
+#~ msgid "Huge-sized icons"
+#~ msgstr "Obrovské ikony"
+
+#~ msgid "Giant-sized icons"
+#~ msgstr "Gigantické ikony"
