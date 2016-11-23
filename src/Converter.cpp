@@ -283,31 +283,28 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 {
 	if (!conv.need_auth())
 		return true;
+	const docstring security_warning = bformat(_("Requested operation needs use of converter '%1$s' from %2$s to %3$s, "
+		"which is tagged with the 'needauth' option. This is an external program normally acting as a picture/format "
+		"converter, but which is known to be able to execute arbitrary actions on the system on behalf of the user, "
+		"including dangerous ones such as deleting files, if instructed to do so by a maliciously crafted .lyx document."),
+		from_utf8(conv.command()), from_utf8(conv.from()), from_utf8(conv.to()));
 	if (lyxrc.use_converter_needauth_forbidden) {
-		frontend::Alert::warning(
-			_("Potentially harmful external converters disabled"),
-			_("Requested operation needs use of a potentially harmful external converter program, "
-			  "which is forbidden by default.\nThese converters are tagged by the 'needauth' option. "
-			  "In order to unlock execution of these converters,\nplease, go to "
-			  "Preferences->File Handling->Converters and uncheck "
-			  "Security->Forbid needauth converters."), true);
+		frontend::Alert::warning(_("Launch of external converter is forbidden"), security_warning + _("\n\n"
+			"This is forbidden by default. In order to unlock execution of these converters, please, go to\n"
+			"Preferences->File Handling->Converters and uncheck Security->Forbid needauth converters."), true);
 		return false;
 	}
 	if (!lyxrc.use_converter_needauth)
 		return true;
 	static const docstring security_title = _("Launch of external converter needs user authorization");
-	static const char security_warning[] = "LyX is about to run converter '%1$s' which is launching an external program "
-		"that normally acts as a picture/format converter. However, this external program is known to be able to "
-		"execute arbitrary actions on the system on behalf of the user, including dangerous ones such as deleting "
-		"files, if instructed to do so by a maliciously crafted .lyx document.\n\nWould you like to run the converter?\n\n"
-		"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!";
 	int choice;
+	const docstring security_warning2 = security_warning + _("\n\nWould you like to run the converter?\n\n"
+		"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!");
 	if (!doc_fname.empty()) {
 		LYXERR(Debug::FILES, "looking up: " << doc_fname);
 		std::set<std::string> & auth_files = theSession().authFiles().authFiles();
 		if (auth_files.find(doc_fname) == auth_files.end()) {
-			choice = frontend::Alert::prompt(security_title,
-				bformat(_(security_warning), from_utf8(conv.command())),
+			choice = frontend::Alert::prompt(security_title, security_warning2,
 				0, 0, _("Do &NOT run"), _("&Run"), _("&Always run for this document"));
 			if (choice == 2)
 				auth_files.insert(doc_fname);
@@ -315,8 +312,7 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 			choice = 1;
 		}
 	} else {
-		choice = frontend::Alert::prompt(security_title,
-			bformat(_(security_warning), from_utf8(conv.command())),
+		choice = frontend::Alert::prompt(security_title, security_warning2,
 			0, 0, _("Do &NOT run"), _("&Run"));
 	}
 	return choice != 0;
