@@ -320,6 +320,27 @@ private:
 };
 
 
+class AuthFilesSection : SessionSection
+{
+public:
+	///
+	explicit AuthFilesSection();
+
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	///
+	std::set<std::string> & authFiles() { return auth_files_; }
+
+private:
+	/// set of document files authorized for external conversion
+	std::set<std::string> auth_files_;
+};
+
+
 class Session
 {
 public:
@@ -348,6 +369,10 @@ public:
 	LastCommandsSection & lastCommands() { return last_commands; }
 	///
 	LastCommandsSection const & lastCommands() const { return last_commands; }
+	///
+	AuthFilesSection & authFiles() { return auth_files; }
+	///
+	AuthFilesSection const & authFiles() const { return auth_files; }
 
 private:
 	friend class LyX;
@@ -375,6 +400,8 @@ private:
 	BookmarksSection bookmarks_;
 	///
 	LastCommandsSection last_commands;
+	///
+	AuthFilesSection auth_files;
 };
 
 /// This is a singleton class. Get the instance.

@@ -23,6 +23,7 @@
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "Mover.h"
+#include "Session.h"
 
 #include "frontends/alert.h"
 
@@ -303,12 +304,13 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 	int choice;
 	if (!doc_fname.empty()) {
 		LYXERR(Debug::FILES, "looking up: " << doc_fname);
-		if (auth_files_.find(doc_fname) == auth_files_.end()) {
+		std::set<std::string> & auth_files = theSession().authFiles().authFiles();
+		if (auth_files.find(doc_fname) == auth_files.end()) {
 			choice = frontend::Alert::prompt(security_title,
 				bformat(_(security_warning), from_utf8(conv.command())),
 				0, 0, _("Do &NOT run"), _("&Run"), _("&Always run for this document"));
 			if (choice == 2)
-				auth_files_.insert(doc_fname);
+				auth_files.insert(doc_fname);
 		} else {
 			choice = 1;
 		}

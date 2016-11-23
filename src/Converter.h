@@ -225,8 +225,6 @@ private:
 		  bool copy);
 	///
 	Graph G_;
-	/// set of document files authorized for external conversion
-	std::set<std::string> auth_files_;
 };
 
 /// The global instance.

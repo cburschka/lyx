@@ -34,6 +34,7 @@ string const sec_bookmarks = "[bookmarks]";
 string const sec_session = "[session info]";
 string const sec_toolbars = "[toolbars]";
 string const sec_lastcommands = "[last commands]";
+string const sec_authfiles = "[auth files]";
 
 } // anon namespace
 
@@ -419,6 +420,8 @@ void Session::readFile()
 			bookmarks().read(is);
 		else if (tmp == sec_lastcommands)
 			lastCommands().read(is);
+		else if (tmp == sec_authfiles)
+			authFiles().read(is);
 
 		else
 			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
@@ -438,9 +441,43 @@ void Session::writeFile() const
 		lastFilePos().write(os);
 		lastCommands().write(os);
 		bookmarks().write(os);
+		authFiles().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
 		       << session_file);
 }
+
+
+AuthFilesSection::AuthFilesSection() {  }
+
+
+void AuthFilesSection::read(istream & is)
+{
+	string tmp;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, tmp);
+		if (tmp.empty() || tmp[0] == '#' || tmp[0] == ' ' || !FileName::isAbsolute(tmp))
+			continue;
+
+		// read lastfiles
+		FileName const file(tmp);
+		if (file.exists() && !file.isDirectory())
+			auth_files_.insert(tmp);
+		else
+			LYXERR(Debug::INIT, "LyX: Warning: Ignore auth file: " << tmp);
+	} while (is.good());
+}
+
+
+void AuthFilesSection::write(ostream & os) const
+{
+	os << '\n' << sec_authfiles << '\n';
+	copy(auth_files_.begin(), auth_files_.end(),
+	     ostream_iterator<std::string>(os, "\n"));
+}
+
 
 }
