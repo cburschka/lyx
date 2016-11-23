@@ -385,7 +385,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           #message(STATUS "Test ${TestName} matches Unicode encodings")
           set(test_encodings "default" "ascii" "utf8x" "armscii8" "applemac"
 	    "cp437" "cp437de" "cp850" "cp852"
-	    "cp855" "cp858" "cp862" "cp865"
+	    "cp855" "cp862" "cp865"
 	    "cp866" "cp1250" "cp1251" "cp1252"
 	    "cp1255" "cp1256" "cp1257"
 	    "koi8-r" "koi8-u"
@@ -393,7 +393,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
 	    "iso8859-4" "iso8859-5" "iso8859-6"
 	    "iso8859-7" "iso8859-8" "iso8859-9"
 	    "iso8859-13" "iso8859-15" "iso8859-16"
-	    "pt154" "pt254" "big5" "shift-jis"
+	    "pt154" "big5" "shift-jis"
 	    "euc-cn" "gbk" "jis" "euc-kr"
 	    "utf8-cjk" "euc-tw" "euc-jp"
 	    "euc-jp-platex" "jis-platex"

@@ -69,15 +69,10 @@ export/export/latex/unicodesymbols/001-4-latin_cp1255_pdf2
 export/export/latex/unicodesymbols/001-4-latin_cp862_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic-with-textalpha_cp862_pdf2
 export/export/latex/unicodesymbols/008-greek-and-coptic_cp862_pdf2
-export/export/latex/unicodesymbols/065-67-phonetic-extensions_cp862_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1255_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp862_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_iso8859-8_pdf2
-export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1255_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp862_pdf2
-export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_iso8859-8_pdf2
-export/export/latex/unicodesymbols/087-90-misc-math-A-arrows-A-B_cp1255_pdf2
-export/export/latex/unicodesymbols/246-mathematical-alphanumeric_iso8859-8_pdf2
 # Arabic:
 export/export/latex/unicodesymbols/001-4-latin_cp1256_pdf2
 export/export/latex/unicodesymbols/001-4-latin_iso8859-6_pdf2
@@ -89,13 +84,15 @@ export/export/latex/unicodesymbols/069-greek-extended_cp1256_pdf2
 export/export/latex/unicodesymbols/070-72-general-punctuation-sub-super-currency_cp1256_pdf2
 export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_pdf2
 
-# Seems to be a generic problem. Ignore?
 # CJK:
+# Unicode-blocks 008 and 009 work fine with utf8-cjk
+# everything else fails (special documentclass required?)
+export/export/latex/unicodesymbols/00[15].*_utf8-cjk_pdf2
+export/export/latex/unicodesymbols/0[^0].*_utf8-cjk_pdf2
 export/export/latex/unicodesymbols/.*_euc-cn_pdf2
 export/export/latex/unicodesymbols/.*_gbk_pdf2
 export/export/latex/unicodesymbols/.*_jis_pdf2
 export/export/latex/unicodesymbols/.*_euc-kr_pdf2
-export/export/latex/unicodesymbols/.*_utf8-cjk_pdf2
 export/export/latex/unicodesymbols/.*_euc-tw_pdf2
 export/export/latex/unicodesymbols/.*_euc-jp_pdf2
 # pLaTeX
