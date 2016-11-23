@@ -1408,7 +1408,6 @@ std::string formatFPNumber(double x)
 }
 
 
-template<>
 docstring bformat(docstring const & fmt, int arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
@@ -1417,7 +1416,6 @@ docstring bformat(docstring const & fmt, int arg1)
 }
 
 
-template<>
 docstring bformat(docstring const & fmt, long arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
@@ -1427,7 +1425,6 @@ docstring bformat(docstring const & fmt, long arg1)
 
 
 #ifdef LYX_USE_LONG_LONG
-template<>
 docstring bformat(docstring const & fmt, long long arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
@@ -1437,7 +1434,6 @@ docstring bformat(docstring const & fmt, long long arg1)
 #endif
 
 
-template<>
 docstring bformat(docstring const & fmt, unsigned int arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
@@ -1446,8 +1442,7 @@ docstring bformat(docstring const & fmt, unsigned int arg1)
 }
 
 
-template<>
-docstring bformat(docstring const & fmt, docstring arg1)
+docstring bformat(docstring const & fmt, docstring const & arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	docstring const str = subst(fmt, from_ascii("%1$s"), arg1);
@@ -1455,7 +1450,6 @@ docstring bformat(docstring const & fmt, docstring arg1)
 }
 
 
-template<>
 docstring bformat(docstring const & fmt, char * arg1)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
@@ -1464,8 +1458,7 @@ docstring bformat(docstring const & fmt, char * arg1)
 }
 
 
-template<>
-docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$s")));
@@ -1475,8 +1468,7 @@ docstring bformat(docstring const & fmt, docstring arg1, docstring arg2)
 }
 
 
-template<>
-docstring bformat(docstring const & fmt, docstring arg1, int arg2)
+docstring bformat(docstring const & fmt, docstring const & arg1, int arg2)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$d")));
@@ -1486,8 +1478,7 @@ docstring bformat(docstring const & fmt, docstring arg1, int arg2)
 }
 
 
-template<>
-docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
+docstring bformat(docstring const & fmt, char const * arg1, docstring const & arg2)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$s")));
@@ -1497,7 +1488,6 @@ docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 }
 
 
-template<>
 docstring bformat(docstring const & fmt, int arg1, int arg2)
 {
 	LATTEST(contains(fmt, from_ascii("%1$d")));
@@ -1508,8 +1498,7 @@ docstring bformat(docstring const & fmt, int arg1, int arg2)
 }
 
 
-template<>
-docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3)
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$s")));
@@ -1521,9 +1510,8 @@ docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstri
 }
 
 
-template<>
 docstring bformat(docstring const & fmt,
-	       docstring arg1, docstring arg2, docstring arg3, docstring arg4)
+	       docstring const & arg1, docstring const & arg2, docstring const & arg3, docstring const & arg4)
 {
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$s")));

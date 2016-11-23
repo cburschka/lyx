@@ -345,33 +345,20 @@ int findToken(char const * const str[], std::string const & search_token);
 std::string formatFPNumber(double);
 
 
-template <class Arg1>
-docstring bformat(docstring const & fmt, Arg1);
-
-template <class Arg1, class Arg2>
-docstring bformat(docstring const & fmt, Arg1, Arg2);
-
-template <class Arg1, class Arg2, class Arg3>
-docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3);
-
-template <class Arg1, class Arg2, class Arg3, class Arg4>
-docstring bformat(docstring const & fmt, Arg1, Arg2, Arg3, Arg4);
-
-
-template<> docstring bformat(docstring const & fmt, int arg1);
-template<> docstring bformat(docstring const & fmt, long arg1);
+docstring bformat(docstring const & fmt, int arg1);
+docstring bformat(docstring const & fmt, long arg1);
 #ifdef LYX_USE_LONG_LONG
-template<> docstring bformat(docstring const & fmt, long long arg1);
+docstring bformat(docstring const & fmt, long long arg1);
 #endif
-template<> docstring bformat(docstring const & fmt, unsigned int arg1);
-template<> docstring bformat(docstring const & fmt, docstring arg1);
-template<> docstring bformat(docstring const & fmt, char * arg1);
-template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2);
-template<> docstring bformat(docstring const & fmt, docstring arg1, int arg2);
-template<> docstring bformat(docstring const & fmt, char const * arg1, docstring arg2);
-template<> docstring bformat(docstring const & fmt, int arg1, int arg2);
-template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3);
-template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3, docstring arg4);
+docstring bformat(docstring const & fmt, unsigned int arg1);
+docstring bformat(docstring const & fmt, docstring const & arg1);
+docstring bformat(docstring const & fmt, char * arg1);
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2);
+docstring bformat(docstring const & fmt, docstring const & arg1, int arg2);
+docstring bformat(docstring const & fmt, char const * arg1, docstring const & arg2);
+docstring bformat(docstring const & fmt, int arg1, int arg2);
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3);
+docstring bformat(docstring const & fmt, docstring const & arg1, docstring const & arg2, docstring const & arg3, docstring const & arg4);
 
 
 } // namespace support
