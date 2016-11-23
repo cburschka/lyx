@@ -383,6 +383,60 @@ public:
 		processing_thread_watcher_.setFuture(f);
 	}
 
+	QSize iconSize(docstring const & icon_size)
+	{
+		int size;
+		if (icon_size == "small")
+			size = smallIconSize;
+		else if (icon_size == "normal")
+			size = normalIconSize;
+		else if (icon_size == "big")
+			size = bigIconSize;
+		else if (icon_size == "huge")
+			size = hugeIconSize;
+		else if (icon_size == "giant")
+			size = giantIconSize;
+		else
+			size = icon_size.empty() ? normalIconSize : convert<int>(icon_size);
+
+		if (size < smallIconSize)
+			size = smallIconSize;
+
+		return QSize(size, size);
+	}
+
+	QSize iconSize(QString const & icon_size)
+	{
+		return iconSize(qstring_to_ucs4(icon_size));
+	}
+
+	string & iconSize(QSize const & qsize)
+	{
+		LATTEST(qsize.width() == qsize.height());
+
+		static string icon_size;
+
+		int size = qsize.width();
+
+		if (size < smallIconSize)
+			size = smallIconSize;
+
+		if (size == smallIconSize)
+			icon_size = "small";
+		else if (size == normalIconSize)
+			icon_size = "normal";
+		else if (size == bigIconSize)
+			icon_size = "big";
+		else if (size == hugeIconSize)
+			icon_size = "huge";
+		else if (size == giantIconSize)
+			icon_size = "giant";
+		else
+			icon_size = convert<string>(size);
+
+		return icon_size;
+	}
+
 public:
 	GuiView * gv_;
 	GuiWorkArea * current_work_area_;
@@ -668,7 +722,7 @@ void GuiView::saveLayout() const
 	settings.setValue("geometry", saveGeometry());
 #endif
 	settings.setValue("layout", saveState(0));
-	settings.setValue("icon_size", iconSize());
+	settings.setValue("icon_size", toqstr(d.iconSize(iconSize())));
 }
 
 
@@ -695,9 +749,7 @@ bool GuiView::restoreLayout()
 		return false;
 
 	//code below is skipped when when ~/.config/LyX is (re)created
-	QSize icon_size = settings.value(icon_key).toSize();
-	// Check whether session size changed.
-	setIconSize(icon_size);
+	setIconSize(d.iconSize(settings.value(icon_key).toString()));
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)
 	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
@@ -1828,11 +1880,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
-	case LFUN_ICON_SIZE: {
-		int const size = cmd.argument().empty() ? d.normalIconSize : convert<int>(cmd.argument());
-		flag.setOnOff(QSize(size, size) == iconSize());
+	case LFUN_ICON_SIZE:
+		flag.setOnOff(d.iconSize(cmd.argument()) == iconSize());
 		break;
-	}
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
 		enable = buf != 0;
@@ -3729,20 +3779,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_ICON_SIZE: {
-			int const size = cmd.argument().empty() ? d.normalIconSize : convert<int>(cmd.argument());
-			setIconSize(QSize(size, size));
-			if (size == d.smallIconSize)
-				dr.setMessage("Icon size set to small");
-			else if (size == d.normalIconSize)
-				dr.setMessage("Icon size set to normal");
-			else if (size == d.bigIconSize)
-				dr.setMessage("Icon size set to big");
-			else if (size == d.hugeIconSize)
-				dr.setMessage("Icon size set to huge");
-			else if (size == d.giantIconSize)
-				dr.setMessage("Icon size set to giant");
-			else
-				dr.setMessage(bformat(_("Icon size set to %1$d"), size));
+			QSize size = d.iconSize(cmd.argument());
+			setIconSize(size);
+			dr.setMessage(bformat(_("Icon size set to %1$dx%2$d."),
+						size.width(), size.height()));
 			break;
 		}
 

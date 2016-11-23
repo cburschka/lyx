@@ -2749,7 +2749,9 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_ICON_SIZE
  * \li Action: Sets icon size of toolbars.
  * \li Syntax: icon-size [<SIZE>]
- * \li Params: <SIZE> : the icon size in px, the default is 20 (normalIconSize).
+ * \li Params: <SIZE> : the icon size in px or one of the logical settings
+                        small|normal|big|huge|giant, the default is normal
+                        (whose size in px is icon set dependent).
  * \li Origin: 11 July 2016
  * \endvar
  */
