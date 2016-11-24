@@ -88,7 +88,7 @@ export/export/latex/unicodesymbols/074-76-letterlike-numberforms-arrows_cp1256_p
 # Unicode-blocks 008 and 009 work fine with utf8-cjk
 # everything else fails (special documentclass required?)
 export/export/latex/unicodesymbols/00[15].*_utf8-cjk_pdf2
-export/export/latex/unicodesymbols/0[^0].*_utf8-cjk_pdf2
+export/export/latex/unicodesymbols/0?[^0].*_utf8-cjk_pdf2
 export/export/latex/unicodesymbols/.*_euc-cn_pdf2
 export/export/latex/unicodesymbols/.*_gbk_pdf2
 export/export/latex/unicodesymbols/.*_jis_pdf2
