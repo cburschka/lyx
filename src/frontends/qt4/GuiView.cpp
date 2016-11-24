@@ -793,6 +793,9 @@ bool GuiView::restoreLayout()
 			initToolbar(cit->name);
 	}
 
+	// update lock (all) toolbars positions
+	updateLockToolbars();
+
 	updateDialogs();
 	return true;
 }
@@ -806,6 +809,17 @@ GuiToolbar * GuiView::toolbar(string const & name)
 
 	LYXERR(Debug::GUI, "Toolbar::display: no toolbar named " << name);
 	return 0;
+}
+
+
+void GuiView::updateLockToolbars()
+{
+	toolbarsMovable = false;
+	for (ToolbarInfo const & info : guiApp->toolbars()) {
+		GuiToolbar * tb = toolbar(info.name);
+		if (tb && tb->isMovable())
+			toolbarsMovable = true;
+	}
 }
 
 
@@ -876,6 +890,8 @@ void GuiView::initToolbar(string const & name)
 
 	if (visibility & Toolbars::ON)
 		tb->setVisible(true);
+
+	tb->setMovable(true);
 }
 
 
@@ -1887,6 +1903,23 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		if (GuiToolbar * t = toolbar(name))
 			flag.setOnOff(t->isVisible());
 		else {
+			enable = false;
+			docstring const msg =
+				bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name));
+			flag.message(msg);
+		}
+		break;
+	}
+
+	case LFUN_TOOLBAR_MOVABLE: {
+		string const name = cmd.getArg(0);
+		// use negation since locked == !movable
+		if (name == "*") {
+			// toolbar name * locks all toolbars
+			flag.setOnOff(!toolbarsMovable);
+		} else if (GuiToolbar * t = toolbar(name)) {
+			flag.setOnOff(!(t->isMovable()));
+		} else {
 			enable = false;
 			docstring const msg =
 				bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name));
@@ -3812,6 +3845,35 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string const name = cmd.getArg(0);
 			if (GuiToolbar * t = toolbar(name))
 				t->toggle();
+			break;
+		}
+
+		case LFUN_TOOLBAR_MOVABLE: {
+			string const name = cmd.getArg(0);
+			if (name == "*") {
+				// toggle (all) toolbars movablility
+				toolbarsMovable = !toolbarsMovable;
+				Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
+				Toolbars::Infos::iterator end = guiApp->toolbars().end();
+				for (; cit != end; ++cit) {
+					GuiToolbar * tb = toolbar(cit->name);
+					if (tb && tb->isMovable() != toolbarsMovable) {
+						// toggle toolbar movablity if it does not fit lock (all) toolbars positions state
+						// silent = true, since status bar notifications are slow
+						tb->movable(true);
+					}
+				}
+				if (toolbarsMovable) {
+					dr.setMessage(_("All toolbars unlocked."));
+				} else {
+					dr.setMessage(_("All toolbars locked."));
+				}
+			} else if (GuiToolbar * t = toolbar(name)) {
+				// toggle current toolbar movablity
+				t->movable();
+				// update lock (all) toolbars positions
+				updateLockToolbars();
+			}
 			break;
 		}
 

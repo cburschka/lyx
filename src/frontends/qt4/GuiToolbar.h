@@ -97,6 +97,9 @@ public:
 	///
 	void toggle();
 
+	/// toggles movability
+	void movable(bool silent = false);
+
 	///
 	GuiCommandBuffer * commandBuffer() { return command_buffer_; }
 

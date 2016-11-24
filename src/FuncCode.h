@@ -472,6 +472,7 @@ enum FuncCode
 	// 365
 	LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR,// gm, 20170302
 	LFUN_BUFFER_ZOOM,               // daniel, 20161028
+	LFUN_TOOLBAR_MOVABLE,           // daniel, 20160712
 	LFUN_LASTACTION                 // end of the table
 };
 

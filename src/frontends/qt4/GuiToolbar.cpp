@@ -61,8 +61,6 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 	connect(&owner, SIGNAL(iconSizeChanged(QSize)), this,
 		SLOT(setIconSize(QSize)));
 
-	// Toolbar dragging is allowed.
-	setMovable(true);
 	// This is used by QMainWindow::restoreState for proper main window state
 	// restauration.
 	setObjectName(toqstr(tbinfo.name));
@@ -357,6 +355,7 @@ void GuiToolbar::saveSession() const
 {
 	QSettings settings;
 	settings.setValue(sessionKey() + "/visibility", visibility_);
+	settings.setValue(sessionKey() + "/movability", isMovable());
 }
 
 
@@ -373,6 +372,9 @@ void GuiToolbar::restoreSession()
 			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
 	}
 	setVisibility(visibility);
+
+	int movability = settings.value(sessionKey() + "/movability", true).toBool();
+	setMovable(movability);
 }
 
 
@@ -406,6 +408,29 @@ void GuiToolbar::toggle()
 
 	owner_.message(bformat(_("Toolbar \"%1$s\" state set to %2$s"),
 		qstring_to_ucs4(windowTitle()), state));
+}
+
+void GuiToolbar::movable(bool silent)
+{
+	// toggle movability
+	setMovable(!isMovable());
+
+	// manual repaint avoids bug in qt that the drag handle is not removed
+	// properly, e.g. in Windows
+	if (isVisible())
+		repaint();
+
+	// silence for toggling of many toolbars for performance
+	if (!silent) {
+		docstring state;
+		if (isMovable()) {
+			state = _("movable");
+		} else {
+			state = _("immovable");
+		}
+		owner_.message(bformat(_("Toolbar \"%1$s\" state set to %2$s"),
+			qstring_to_ucs4(windowTitle()), state));
+	}
 }
 
 } // namespace frontend

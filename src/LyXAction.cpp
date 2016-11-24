@@ -3748,6 +3748,18 @@ void LyXAction::init()
 		{ LFUN_THESAURUS_ENTRY, "thesaurus-entry", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_TOOLBAR_MOVABLE
+ * \li Action: Toggles movability of a given toolbar between true/false.
+ * \li Syntax: toolbar-movable <NAME>
+ * \li Params: <NAME>: *|standard|extra|table|math|mathmacrotemplate|\n
+					   minibuffer|review|view/update|math_panels|vcs|
+					   view-others|update-others
+* \li Origin: daniel, 12 July 2016
+* \endvar
+*/
+		{ LFUN_TOOLBAR_MOVABLE, "toolbar-movable", NoBuffer, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_TOOLBAR_TOGGLE
  * \li Action: Toggles visibility of a given toolbar between on/off/auto.
  * \li Notion: Skipping "auto" when allowauto is false.

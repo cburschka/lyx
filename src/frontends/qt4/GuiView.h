@@ -210,6 +210,9 @@ public:
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
 
+	// movability flag of all toolbars
+	bool toolbarsMovable;
+
 Q_SIGNALS:
 	void closing(int);
 	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
@@ -357,6 +360,8 @@ private:
 	void initToolbars();
 	///
 	void initToolbar(std::string const & name);
+	/// Update lock (all) toolbars position
+	void updateLockToolbars();
 	///
 	bool lfunUiToggle(std::string const & ui_component);
 	///
