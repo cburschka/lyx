@@ -657,6 +657,18 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				Alert::warning(_("Different textclasses"), text, true);
 			}
 
+			string const child_tf = tmp->params().useNonTeXFonts ? "true" : "false";
+			string const master_tf = masterBuffer->params().useNonTeXFonts ? "true" : "false";
+			if (tmp->params().useNonTeXFonts != masterBuffer->params().useNonTeXFonts) {
+				docstring text = bformat(_("Included file `%1$s'\n"
+					"has use-non-TeX-fonts set to `%2$s'\n"
+					"while parent file has use-non-TeX-fonts set to `%3$s'."),
+					included_file.displayName(),
+					from_utf8(child_tf),
+					from_utf8(master_tf));
+				Alert::warning(_("Different use-non-TeX-fonts settings"), text, true);
+			}
+
 			// Make sure modules used in child are all included in master
 			// FIXME It might be worth loading the children's modules into the master
 			// over in BufferParams rather than doing this check.
