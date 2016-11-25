@@ -39,11 +39,6 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_systemF
 #   -> adapt template and style (GM)
 export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 
-# Requires ctex (Chinese).
-# Default output format is XeTeX. -> Only system fonts?
-#    Does (dvi|pdf3_texF|dvi3_texF) produce sensible results?
-export/templates/ctex_(pdf[23]?|pdf4_texF)
-
 # Example for lib/scripts/listerrors
 # Requires noweb. Seems to be restricted to plain "latex".
 # Find out why and whether the script could be improved.
@@ -244,6 +239,14 @@ export/export/latex/TableErrorIfSlovakTextInserted_(dvi|pdf[23]?|.*_texF)
 # See discussion here:
 # https://www.mail-archive.com/search?l=mid&q=1478004223.2367.5.camel%40lyx.org
 export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
+
+# fontspec errors with slides class:
+# LaTeX error: "kernel/command-already-defined"
+# Lines 2684 ... 2690 in fontspec-xetex.sty
+# Lines 2608 ... 2614 in fontspec-luatex.sty
+export/templates/slides_.*_systemF
+
+
 
 # ================================================
 Sublabel: attic
