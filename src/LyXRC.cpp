@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 19; // rgh: remove print support
+static unsigned int const LYXRC_FILEFORMAT = 20; // tommaso: 'needauth' options
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {

@@ -80,6 +80,10 @@
 # Incremented to format 19, by rgh
 #   remove print support
 
+# Incremented to format 20, by tommaso
+#   Add options to forbid/ignore 'needauth' option
+#   No conversion necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -375,5 +379,6 @@ conversions = [
 	[ 16, [remove_force_paint_single_char]],
 	[ 17, [remove_rtl]],
 	[ 18, []],
-	[ 19, [remove_print_support]]
+	[ 19, [remove_print_support]],
+	[ 20, []]
 ]
