@@ -94,6 +94,7 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # delete info that programs were installed together with LyX
   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
+  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX"
   
   # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
   # so we have to remove it now
@@ -121,7 +122,7 @@ SectionEnd
 
 #---------------------------------
 # MiKTeX
-Section /o "un.MiKTeX" un.SecUnMiKTeX
+Section "un.MiKTeX" un.SecUnMiKTeX
 
  ${if} $LaTeXInstalled == "MiKTeX" # only uninstall MiKTeX when it was installed together with LyX 
   ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\MiKTeX ${MiKTeXDeliveredVersion}" "UninstallString"

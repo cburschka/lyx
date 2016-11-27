@@ -3,12 +3,14 @@
   (should fix all compilation errors you might have encountered recently
    with your LyX files)
 - new spell checker for Tibetan
-- correct Arabic translation of the installer (was acidentally in Farsi before)
-- automatically install LaTeX package necessary for XeTeX in combintions with
+- correct Arabic translation of the installer (was accidentally in Farsi before)
+- automatically install LaTeX package necessary for XeTeX in combinations with
   document languages like e.g. Georgian
+- fix bug that thesaurus for English (AU) was not installed
+- fix bug when JabRef was uninstalled together with LyX
 - updated Norwegian, Swedish and Ukrainian translation of the installer
 - updated to JabRef 3.7
-- updated to Imagemagick 7.0.3-7
+- updated to ImageMagick 7.0.3-8
 - updated spell checker dictionary for English (GB)
   (To benefit from it you must uninstall an already installed LyX 2.2.x and
    then use this installer.)
@@ -22,7 +24,7 @@ Changelog for LyX-222-2:
 Changelog for LyX-222-1:
 - installs LyX 2.2.2
 - updated to MiKTeX 2.9 build 6069
-- updated to Imagemagick 7.0.3-3
+- updated to ImageMagick 7.0.3-3
 - updated to JabRef 3.6
 - updated to NSIS 3.0
 - updated to Ghostscript 9.20
@@ -43,7 +45,7 @@ Changelog for LyX-221-1:
 - recompiled LyX using MSVC 2015 update 3
 - updated to Qt 5.6.1-1
 - updated to MiKTeX 2.9 build 6022
-- updated to Imagemagick 6.9.5
+- updated to ImageMagick 6.9.5
 - updated to Python 2.7.12
 - updated to JabRef 3.5
 
@@ -52,20 +54,20 @@ Changelog for LyX-220-3:
 - updated to Qt 5.6.1
 - updated to MiKTeX 2.9 build 5997
 - updated to JabRef 3.4
-- updated to Imagemagick 6.9.4-8
+- updated to ImageMagick 6.9.4-8
 
 
 Changelog for LyX-220-2:
 - remove also the user dependent LyX settings from the registry if the user
   preferences should be uninstalled
 - calculate the required installation size correctly
-- updated to Imagemagick 6.9.4-6 (fixes 2 security issues)
+- updated to ImageMagick 6.9.4-6 (fixes 2 security issues)
 
 
 Changelog for LyX.220-1:
 - installs LyX 2.2.0
 - updated to MiKTeX 2.9 build 5987
-- updated to Imagemagick 6.9.4-4
+- updated to ImageMagick 6.9.4-4
 - updated to JabRef 3.3
 - new thesaurus for Norwegian (Nynorsk)
 - updated thesaurus for English (US) and Norwegian (Bokmal)
@@ -77,7 +79,7 @@ Changelog for LyX.220-1:
 Changelog for LyX.220-RC1-1:
 - installs LyX 2.2.0 RC1
 - updated to Ghostscript 9.19
-- updated to Imagemagick 6.9.3-8
+- updated to ImageMagick 6.9.3-8
 - updated to Perl 5.22.1.3
 - updated to Python 2.7.11
 - updated to Qt 5.6.0
@@ -104,7 +106,7 @@ Changelog for LyX-214-5:
 - enable the usage of 'texindy' as index generation program in LyX
 - updated to JabRef 2.11
 - updated to Perl 5.22
-- updated to Imagemagick 6.9.2-6
+- updated to ImageMagick 6.9.2-6
 
 
 Changelog for LyX-214-4:
@@ -115,7 +117,7 @@ Changelog for LyX-214-4:
 
 Changelog for LyX-214-3:
 - updated to MiKTeX 2.9 build 5721
-- updated to Imagemagick 6.9.2-3
+- updated to ImageMagick 6.9.2-3
 - updated spell-checker dictionaries for English (GB and US)
   (To benefit from them you must uninstall an already installed LyX 2.1.x and
    then use this installer.)
