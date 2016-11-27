@@ -61,7 +61,7 @@ void InsetMathSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 		dim = fm.dimension(char_);
-		kerning_ = fm.rbearing(char_) - dim.wid;
+		kerning_ = mathed_char_kerning(mi.base.font, char_);
 	}
 }
 

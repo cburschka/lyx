@@ -29,6 +29,10 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <algorithm>
+
+using namespace std;
+
 
 namespace lyx {
 
@@ -105,20 +109,38 @@ Inset * InsetMathChar::clone() const
 
 void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool const mathfont = isMathFont(mi.base.fontname);
-	if (mathfont && subst_) {
+	string const & f = mi.base.fontname;
+	if (isMathFont(f) && subst_) {
 		// If the char has a substitute, draw the replacement symbol
 		// instead, but only in math mode.
 		mathedSymbolDim(mi.base, dim, subst_);
 		kerning_ = mathed_char_kerning(mi.base.font, *subst_->draw.rbegin());
 		return;
-	} else if (!slanted(char_) && mi.base.fontname == "mathnormal") {
+	} else if (!slanted(char_) && f == "mathnormal") {
 		Changer dummy = mi.base.font.changeShape(UP_SHAPE);
 		dim = theFontMetrics(mi.base.font).dimension(char_);
+		kerning_ = 0;
 	} else {
 		frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 		dim = fm.dimension(char_);
-		kerning_ = fm.rbearing(char_) - dim.wid;
+		kerning_ = mathed_char_kerning(mi.base.font, char_);
+		// cmmi has almost no left bearing: simulate this
+		if (f == "mathnormal") {
+			dim.wid += max(-fm.lbearing(char_), 0);
+		}
+		// Rule 17 from Appendix G
+		// These are the fonts with fontdimen(2)==0.
+		// To properly handle the case fontdimen(2)!=0 (that is for all other
+		// math fonts), where the italic correction must also be converted into
+		// kerning but only at the end of strings of characters with the same
+		// font, one would need a more elaborate implementation in MathRow. For
+		// now the case fontdimen(2)==0 is the most important.
+		if (f == "mathnormal" || f == "mathscr" || f == "mathcal") {
+			dim.wid += kerning_;
+			// We use a negative value to tell InsetMathScript to move the
+			// subscript leftwards instead of the superscript rightwards
+			kerning_ = -kerning_;
+		}
 	}
 }
 
@@ -137,6 +159,10 @@ void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 			pi.draw(x, y, char_);
 			return;
 		}
+	}
+	// cmmi has almost no left bearing: simulate this
+	if (pi.base.fontname == "mathnormal") {
+		x += max(-theFontMetrics(pi.base.font).lbearing(char_), 0);
 	}
 	pi.draw(x, y, char_);
 }

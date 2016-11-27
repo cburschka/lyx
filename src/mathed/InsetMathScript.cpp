@@ -226,7 +226,8 @@ int InsetMathScript::dx0(BufferView const & bv) const
 {
 	LASSERT(hasDown(), return 0);
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2 : nwid(bv);
+	return hasLimits() ? (dim.wid - down().dimension(bv).width()) / 2
+		: nwid(bv) + min(nker(&bv), 0);
 }
 
 
@@ -234,7 +235,8 @@ int InsetMathScript::dx1(BufferView const & bv) const
 {
 	LASSERT(hasUp(), return 0);
 	Dimension const dim = dimension(bv);
-	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2 : nwid(bv) + nker(&bv);
+	return hasLimits() ? (dim.wid - up().dimension(bv).width()) / 2
+		: nwid(bv) + max(nker(&bv), 0);
 }
 
 
@@ -265,10 +267,8 @@ int InsetMathScript::ndes(BufferView const & bv) const
 
 int InsetMathScript::nker(BufferView const * bv) const
 {
-	if (!nuc().empty()) {
-		int kerning = nuc().kerning(bv);
-		return kerning > 0 ? kerning : 0;
-	}
+	if (!nuc().empty())
+		return nuc().kerning(bv);
 	return 0;
 }
 
@@ -320,9 +320,9 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = max(dim.wid, dimdown.width());
 	} else {
 		if (hasUp())
-			dim.wid = max(dim.wid, nker(mi.base.bv) + dimup.width());
+			dim.wid = max(dim.wid, max(nker(mi.base.bv), 0) + dimup.width());
 		if (hasDown())
-			dim.wid = max(dim.wid, dimdown.width());
+			dim.wid = max(dim.wid, min(nker(mi.base.bv), 0) + dimdown.width());
 		dim.wid += nwid(bv);
 	}
 	int na = nasc(bv);

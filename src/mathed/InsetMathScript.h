@@ -135,7 +135,10 @@ private:
 	int nasc(BufferView const &) const;
 	/// returns descent of nucleus if any
 	int ndes(BufferView const &) const;
-	/// returns superscript kerning of nucleus if any
+	/// Italic correction: amount of displacement between subscript and
+	/// superscript in math mode as per Appendix G, rule 18f.  A positive value
+	/// shifts the superscript to the right, and a negative value shifts the
+	/// subscript to the left.
 	int nker(BufferView const * bv) const;
 	/// where do we have to draw the scripts?
 	bool hasLimits() const;

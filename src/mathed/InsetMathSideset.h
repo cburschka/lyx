@@ -104,7 +104,7 @@ private:
 	int nasc(BufferView const &) const;
 	/// returns descent of nucleus if any
 	int ndes(BufferView const &) const;
-	/// returns subscript and superscript kerning of nucleus if any
+	/// Italic correction as described in InsetMathScript.h
 	int nker(BufferView const * bv) const;
 	/// Whether there are two left scripts or one single cell
 	bool scriptl_; 

@@ -230,7 +230,7 @@ public:
 	/// math stuff usually isn't allowed in text mode
 	virtual bool allowedIn(mode_type mode) const { return mode == MATH_MODE; }
 
-	/// superscript kerning
+	/// Italic correction as described in InsetMathScript.h
 	virtual int kerning(BufferView const *) const { return 0; }
 	///
 	bool isInToc() const { return true; }

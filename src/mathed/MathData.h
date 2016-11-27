@@ -166,7 +166,7 @@ public:
 	int slevel() const { return slevel_; }
 	/// additional super/subscript shift
 	int sshift() const { return sshift_; }
-	/// superscript kerning
+	/// Italic correction as described in InsetMathScript.h
 	int kerning(BufferView const *) const { return kerning_; }
 	///
 	void swap(MathData & ar) { base_type::swap(ar); }

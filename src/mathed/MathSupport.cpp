@@ -556,7 +556,7 @@ int mathed_char_width(FontInfo const & font, char_type c)
 int mathed_char_kerning(FontInfo const & font, char_type c)
 {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
-	return fm.rbearing(c) - fm.width(c);
+	return max(0, fm.rbearing(c) - fm.width(c));
 }
 
 
