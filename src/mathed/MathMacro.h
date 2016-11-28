@@ -126,6 +126,8 @@ public:
 	MacroData const * macro() const;
 	///
 	docstring macroName() const;
+	/// Level of nesting in macros (including this one)
+	int nesting() const;
 	///
 	bool validName() const;
 	///
@@ -152,7 +154,8 @@ protected:
 	/// update macro definition
 	void updateMacro(MacroContext const & mc);
 	/// check if macro definition changed, argument changed etc. and adapt
-	void updateRepresentation(Cursor * cur, MacroContext const & mc, UpdateType);
+	void updateRepresentation(Cursor * cur, MacroContext const & mc,
+	                          UpdateType, int nesting);
 	/// empty macro, put arguments into args, possibly strip arity-attachedArgsNum_ empty ones.
 	/// Includes the optional arguments.
 	void detachArguments(std::vector<MathData> & args, bool strip);

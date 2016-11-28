@@ -3556,7 +3556,7 @@ void Buffer::updateMacroInstances(UpdateType utype) const
 		MacroContext mc = MacroContext(this, it);
 		for (DocIterator::idx_type i = 0; i < n; ++i) {
 			MathData & data = minset->cell(i);
-			data.updateMacros(0, mc, utype);
+			data.updateMacros(0, mc, utype, 0);
 		}
 	}
 }

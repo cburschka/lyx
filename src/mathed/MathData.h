@@ -171,7 +171,7 @@ public:
 
 	/// attach/detach arguments to macros, updating the cur to
 	/// stay visually at the same position (cur==0 is allowed)
-	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType);
+	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType, int nesting);
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 

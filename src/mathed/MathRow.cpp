@@ -36,17 +36,16 @@ using namespace std;
 namespace lyx {
 
 
-MathRow::Element::Element(Type t, MetricsInfo &mi)
-	: type(t), macro_nesting(mi.base.macro_nesting),
-	  inset(0), mclass(MC_ORD), before(0), after(0), compl_unique_to(0),
-	  macro(0), color(Color_red)
+MathRow::Element::Element(Type t)
+	: type(t), inset(0), mclass(MC_ORD), before(0), after(0),
+	  compl_unique_to(0), macro(0), color(Color_red)
 {}
 
 
 MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 {
 	// First there is a dummy element of type "open"
-	push_back(Element(BEGIN, mi));
+	push_back(Element(BEGIN));
 	back().mclass = MC_OPEN;
 
 	// Then insert the MathData argument
@@ -55,13 +54,13 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	// empty arrays are visible when they are editable
 	// we reserve the necessary space anyway (even if nothing gets drawn)
 	if (!has_contents) {
-		Element e(BOX, mi);
-		e.color = Color_mathline;
+		Element e(BOX);
+		e.color = mi.base.macro_nesting == 0 ? Color_mathline : Color_none;
 		push_back(e);
 	}
 
 	// Finally there is a dummy element of type "close"
-	push_back(Element(END, mi));
+	push_back(Element(END));
 	back().mclass = MC_CLOSE;
 
 	/* Do spacing only in math mode. This test is a bit clumsy,
@@ -127,10 +126,13 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 	// arguments, it is necessary to keep track of them.
 	map<MathMacro const *, Dimension> dim_macros;
 	map<MathData const *, Dimension> dim_arrays;
+	// this vector remembers the stack of macro nesting values
+	vector<int> macro_nesting;
+	macro_nesting.push_back(mi.base.macro_nesting);
 	CoordCache & coords = mi.base.bv->coordCache();
 	for (Element const & e : elements_) {
+		mi.base.macro_nesting = macro_nesting.back();
 		Dimension d;
-		mi.base.macro_nesting = e.macro_nesting;
 		switch (e.type) {
 		case BEGIN:
 		case END:
@@ -141,12 +143,14 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			coords.insets().add(e.inset, d);
 			break;
 		case BEG_MACRO:
+			macro_nesting.push_back(e.macro->nesting());
 			e.macro->macro()->lock();
 			// Add a macro to current list
 			dim_macros[e.macro] = Dimension();
 			break;
 		case END_MACRO:
 			LATTEST(dim_macros.find(e.macro) != dim_macros.end());
+			macro_nesting.pop_back();
 			e.macro->macro()->unlock();
 			// Cache the dimension of the macro and remove it from
 			// tracking map.
@@ -155,14 +159,18 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 			// This is basically like macros
 		case BEG_ARG:
-			if (e.macro)
+			if (e.macro) {
+				macro_nesting.push_back(e.macro->nesting());
 				e.macro->macro()->unlock();
+			}
 			dim_arrays[e.ar] = Dimension();
 			break;
 		case END_ARG:
 			LATTEST(dim_arrays.find(e.ar) != dim_arrays.end());
-			if (e.macro)
+			if (e.macro) {
+				macro_nesting.pop_back();
 				e.macro->macro()->lock();
+			}
 			coords.arrays().add(e.ar, dim_arrays[e.ar]);
 			dim_arrays.erase(e.ar);
 			break;
@@ -195,7 +203,6 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 {
 	CoordCache & coords = pi.base.bv->coordCache();
 	for (Element const & e : elements_) {
-		pi.base.macro_nesting = e.macro_nesting;
 		switch (e.type) {
 		case INSET: {
 			// This is hackish: the math inset does not know that space
@@ -229,9 +236,9 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 		case BOX: {
 			Dimension const d = theFontMetrics(pi.base.font).dimension('I');
 			// the box is not visible in non-editable context (except for grey macro boxes).
-			if (e.macro_nesting == 0 || e.color == Color_mathmacroblend)
+			if (e.color != Color_none)
 				pi.pain.rectangle(x + e.before, y - d.ascent(),
-								  d.width(), d.height(), e.color);
+				                  d.width(), d.height(), e.color);
 			x += d.wid;
 			break;
 		}
@@ -290,7 +297,8 @@ ostream & operator<<(ostream & os, MathRow::Element const & e)
 		   << "-" << e.after << ">";
 		break;
 	case MathRow::BEG_MACRO:
-		os << "\\" << to_utf8(e.macro->name()) << "[";
+		os << "\\" << to_utf8(e.macro->name())
+		   << "^" << e.macro->nesting() << "[";
 		break;
 	case MathRow::END_MACRO:
 		os << "]";

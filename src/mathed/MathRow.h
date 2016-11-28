@@ -60,12 +60,10 @@ public:
 	struct Element
 	{
 		///
-		Element(Type t, MetricsInfo & mi);
+		Element(Type t);
 
 		/// Classifies the contents of the object
 		Type type;
-		/// count wether the current mathdata is nested in macro(s)
-		int macro_nesting;
 
 		/// When type is INSET
 		/// the math inset
