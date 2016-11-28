@@ -68,6 +68,14 @@ public:
 	MathMacro const * owner() { return mathMacro_; }
 	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
+	/// The math data to use for display
+	MathData const & displayCell(BufferView const * bv) const
+	{
+		// handle default macro arguments
+		bool use_def_arg = !mathMacro_->editMetrics(bv)
+			&& mathMacro_->cell(idx_).empty();
+		return use_def_arg ? def_ : mathMacro_->cell(idx_);
+	}
 	///
 	bool addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	{
@@ -82,13 +90,7 @@ public:
 		mrow.push_back(e_beg);
 
 		mathMacro_->macro()->unlock();
-		bool has_contents;
-		// handle default macro arguments
-		if (!mathMacro_->editMetrics(mi.base.bv)
-			&& mathMacro_->cell(idx_).empty())
-			has_contents = def_.addToMathRow(mrow, mi);
-		else
-			has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
+		bool has_contents = displayCell(mi.base.bv).addToMathRow(mrow, mi);
 		mathMacro_->macro()->lock();
 
 		// if there was no contents, and the contents is editable,
@@ -137,11 +139,7 @@ public:
 	///
 	int kerning(BufferView const * bv) const
 	{
-		if (mathMacro_->editMetrics(bv)
-		    || !mathMacro_->cell(idx_).empty())
-			return mathMacro_->cell(idx_).kerning(bv);
-		else
-			return def_.kerning(bv);
+		return displayCell(bv).kerning(bv);
 	}
 
 private:
