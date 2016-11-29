@@ -147,28 +147,27 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
     if (foundunreliable)
       set(sublabel "unreliable" ${sublabel} ${sublabel2})
       list(REMOVE_ITEM sublabel "export" "inverted" "templates" "mathmacros" "manuals" "autotests")
+    endif()
+    string(REGEX MATCH "(^check_load|_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$)" _v ${${testname}})
+    # check if test _may_ be in listinverted
+    set(sublabel2 "")
+    if (_v)
+      findexpr(mfound ${testname} ${listinvertedx} sublabel2)
     else()
-      string(REGEX MATCH "(^check_load|_(systemF|texF|pdf3|pdf2|pdf|dvi|lyx[0-9][0-9]|xhtml)$)" _v ${${testname}})
-      # check if test _may_ be in listinverted
-      set(sublabel2 "")
-      if (_v)
-	findexpr(mfound ${testname} ${listinvertedx} sublabel2)
+      set(mfound OFF)
+    endif()
+    if (mfound)
+      set(sublabel3 "")
+      findexpr(foundsuspended ${testname} ${listsuspendedx} sublabel3)
+      set(${inverted} 1)
+      if (foundsuspended)
+	set(sublabel "suspended" ${sublabel} ${sublabel2} ${sublabel3})
+	list(REMOVE_ITEM sublabel "export" "inverted" )
       else()
-	set(mfound OFF)
+	set(sublabel "inverted" ${sublabel} ${sublabel2} ${sublabel3})
       endif()
-      if (mfound)
-	set(sublabel3 "")
-	findexpr(foundsuspended ${testname} ${listsuspendedx} sublabel3)
-	set(${inverted} 1)
-	if (foundsuspended)
-	  set(sublabel "suspended" ${sublabel} ${sublabel2} ${sublabel3})
-	  list(REMOVE_ITEM sublabel "export" "inverted" )
-	else()
-	  set(sublabel "inverted" ${sublabel} ${sublabel2} ${sublabel3})
-	endif()
-      else()
-	set(${inverted} 0)
-      endif()
+    else()
+      set(${inverted} 0)
     endif()
     list(REMOVE_DUPLICATES sublabel)
     if (NOT sublabel STREQUAL "")
@@ -383,7 +382,9 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
       foreach(fonttype ${fonttypes})
         if (format MATCHES "pdf2" AND f MATCHES "latex/unicodesymbols")
           #message(STATUS "Test ${TestName} matches Unicode encodings")
-          set(test_encodings "default" "ascii" "utf8x" "armscii8" "applemac"
+	  # test_encodings does not include "default", since it should be covered
+	  # by one of the supplied encodings
+          set(test_encodings "ascii" "utf8x" "armscii8" "applemac"
 	    "cp437" "cp437de" "cp850" "cp852"
 	    "cp855" "cp862" "cp865"
 	    "cp866" "cp1250" "cp1251" "cp1252"
