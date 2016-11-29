@@ -2459,7 +2459,7 @@ Formato
 \begin_inset Quotes fld
 \end_inset
 
-<referencia> en página <página>
+<referencia>
 \begin_inset Quotes frd
 \end_inset
 
@@ -2468,7 +2468,7 @@ Formato
 \begin_inset Quotes fld
 \end_inset
 
-Referencia+Texto: sec:Acerca-de-este-documento
+Referencia: sec:Acerca-de-este-documento
 \begin_inset Quotes frd
 \end_inset
 
@@ -2518,7 +2518,7 @@ arg   "paste"
 
 ).
  En el documento impreso, cada marcador de referencia será reemplazado por
- el número de página y de sección.
+ el número de sección.
  En el documento de salida, \SpecialChar LaTeX
  habrá hecho su trabajo y verás cómo aparece
  la referencia a la 
@@ -2533,43 +2533,7 @@ sección
 \begin_inset Quotes frd
 \end_inset
 
- 
-\begin_inset Quotes fld
-\end_inset
-
-en esta página
-\begin_inset Quotes frd
-\end_inset
-
-, 
-\begin_inset Quotes fld
-\end_inset
-
-en página anterior
-\begin_inset Quotes frd
-\end_inset
-
- o 
-\begin_inset Quotes fld
-\end_inset
-
-en la página
-\begin_inset space ~
-\end_inset
-
-
-\emph on
-n
-\emph default
-
-\begin_inset Quotes frd
-\end_inset
-
- (donde 
-\emph on
-n
-\emph default
- es el número de la página en la que aparezca el título de la sección 2).
+.
 \end_layout
 
 \begin_layout Standard

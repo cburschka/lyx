@@ -2480,7 +2480,7 @@ Format
 \begin_inset Quotes eld
 \end_inset
 
-<reference> on page <page>
+<reference>
 \begin_inset Quotes erd
 \end_inset
 
@@ -2498,7 +2498,7 @@ sec:About-This-Document
 \begin_inset Quotes eld
 \end_inset
 
-Ref+Text: sec:About-This-Document
+Ref: sec:About-This-Document
 \begin_inset Quotes erd
 \end_inset
 
@@ -2544,7 +2544,7 @@ arg   "paste"
 
 ).
  In the printed document, this reference marker will be replaced with the
- section number and then the page number.
+ section number.
  Preview your document and you will see that \SpecialChar LaTeX
  has been even cleverer than
  that.
@@ -2556,39 +2556,7 @@ Section 2
 \begin_inset Quotes erd
 \end_inset
 
- and depending how much text you have between the start of Section
-\begin_inset space ~
-\end_inset
-
-2 and this cross-reference you may see 
-\begin_inset Quotes eld
-\end_inset
-
-on this page
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-on the previous page
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-on page n
-\begin_inset Quotes erd
-\end_inset
-
- (where 
-\emph on
-n
-\emph default
- is the page number).
+.
 \end_layout
 
 \begin_layout Standard

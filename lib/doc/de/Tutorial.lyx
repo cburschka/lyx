@@ -2658,18 +2658,6 @@ sec:Was-das-Tutorium
 , markieren ihn mit der Maus, wählen bei 
 \family sans
 Format: <Querverweis>
-\begin_inset space \space{}
-\end_inset
-
-auf
-\begin_inset space \space{}
-\end_inset
-
-Seite
-\begin_inset space \space{}
-\end_inset
-
-<Seite>
 \family default
  und klicken auf 
 \family sans
@@ -2680,7 +2668,7 @@ OK
 \begin_inset Quotes gld
 \end_inset
 
-Querverweis+Text: sec:Was-das-Tutorium
+Querverweis: sec:Was-das-Tutorium
 \begin_inset Quotes grd
 \end_inset
 
@@ -2728,18 +2716,18 @@ Strg+V
 \SpecialChar LyX
  stellt die Querverweise in einer grauen Schaltfläche dar, die an der aktuellen
  Cursor-Position eingefügt wird.
- Später, im ausgedruckten Dokument, werden diese Platzhalter durch die tatsächli
-chen Werte von Kapitel und Seitennummer ersetzt.
+ Später, im ausgedruckten Dokument, werden diese Platzhalter durch den tatsächli
+chen Wert des Kapitels ersetzt.
  Sehen Sie sich Ihren Text in der Vorschau an, und Sie werden feststellen,
  dass der Eintrag durch 
 \begin_inset Quotes gld
 \end_inset
 
-1.2 auf Seite 3
+1.2
 \begin_inset Quotes grd
 \end_inset
 
- (oder wo immer sich dieses Kapitel tatsächlich befindet) ersetzt wurde.
+ ersetzt wurde.
 \end_layout
 
 \begin_layout Standard
@@ -2797,7 +2785,7 @@ vor
 \begin_inset Quotes gld
 \end_inset
 
-1.3 auf Seite x
+1.3
 \begin_inset Quotes grd
 \end_inset
 
@@ -2806,7 +2794,7 @@ vor
 \begin_inset Quotes gld
 \end_inset
 
-2 auf Seite y
+2
 \begin_inset Quotes grd
 \end_inset
 

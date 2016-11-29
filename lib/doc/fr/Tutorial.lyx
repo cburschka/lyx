@@ -2965,7 +2965,7 @@ Format
 \begin_inset Quotes fld
 \end_inset
 
-<référence> page <page>
+<référence>
 \begin_inset Quotes frd
 \end_inset
 
@@ -2986,7 +2986,7 @@ Appliquer
 \begin_inset Quotes fld
 \end_inset
 
-Réf+Texte : sec:a-propos-document
+Réf : sec:a-propos-document
 \begin_inset Quotes frd
 \end_inset
 
@@ -3043,14 +3043,9 @@ arg   "paste"
 \SpecialChar LyX
  place les références dans une boîte juste après le curseur.
  Dans la version papier du document, chacun de ces marqueurs est remplacé
- par le numéro de page ou de section (en fonction de ce que vous avez choisi
- dans la fenêtre 
+ par le numéro de section 
 \family sans
-Référence
-\begin_inset space ~
-\end_inset
-
-croisée).
+.
 
 \family default
  Visualisez votre document en PDF pour constater que sur la dernière page,
@@ -3066,24 +3061,7 @@ Section
 \begin_inset Quotes frd
 \end_inset
 
-, 
-\begin_inset Quotes fld
-\end_inset
-
-page
-\begin_inset space ~
-\end_inset
-
-1
-\begin_inset Quotes frd
-\end_inset
-
- (en fait, le numéro de la page sur laquelle se situe effectivement le titre
- de la section
-\begin_inset space ~
-\end_inset
-
-2).
+.
 \end_layout
 
 \begin_layout Standard
@@ -3129,7 +3107,7 @@ Nous disions que \SpecialChar LyX
 
 2.
  Relancez \SpecialChar LaTeX
-
+,
 \begin_inset Foot
 status collapsed
 
@@ -3157,7 +3135,7 @@ PDF
 
 \end_inset
 
-, et – voilà
+ et – voilà!
 \begin_inset Foot
 status collapsed
 
@@ -3167,7 +3145,7 @@ NdT: en français dans le texte.
 
 \end_inset
 
-! – la référence croisée à la section est passée maintenant à
+ – la référence croisée à la section est passée maintenant à
 \begin_inset space ~
 \end_inset
 
