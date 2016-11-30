@@ -266,3 +266,25 @@ export/doc/attic/eu_UserGuide_pdf[25].*
 export/doc/attic/it_(Customization_pdf5|UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
 export/doc/attic/id_UserGuide_.*systemF
+
+
+# ==============================================================
+# this sublabel is overridden anyway
+Sublabel: UNRELIABLE
+# See file unreliableTests for why these exports fail
+# ==============================================================
+
+export/doc/de/EmbeddedObjects_pdf4_texF
+export/doc/es/EmbeddedObjects_.*texF
+export/doc/es/Customization_pdf4_texF
+export/doc/es/UserGuide_(dvi3|pdf5)_texF
+export/examples/aa_sample_(dvi3|pdf[45])_.*
+export/examples/es/linguistics_pdf4_texF
+export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
+export/templates/ACM-siggraph_pdf5_(texF|systemF)
+export/templates/IUCr-article_pdf4_systemF
+export/templates/RJournal_(dvi3|pdf[45])_systemF
+export/templates/aa_(dvi3|pdf[45])_.*
+export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
+export/templates/es_beamer-conference-ornate-20min_pdf4_texF
+export/templates/kluwer_.*_systemF
