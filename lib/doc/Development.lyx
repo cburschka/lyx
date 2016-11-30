@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 515
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,6 +25,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 1
@@ -3917,7 +3918,7 @@ Input Each test which passed 'ignoredTests'
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Output Stop if test selected, gain label 'unreliable'.
+Output Gain label 'unreliable', proceed with checking for 'inverted'.
 \end_layout
 
 \end_deeper
@@ -3932,7 +3933,7 @@ invertedTests
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Input Each test which passed 'unreliableTests'
+Input Each test which passed 'ignoredTests'
 \end_layout
 
 \begin_layout Labeling
@@ -3971,14 +3972,18 @@ The following table may clarify label assignement
 \end_layout
 
 \begin_layout Standard
+\begin_inset space \hspace{}
+\length -3cm
+\end_inset
+
+
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="9">
+<lyxtabular version="3" rows="6" columns="8">
 <features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="left" valignment="top" width="2.5cm">
+<column alignment="left" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2.5cm">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4038,15 +4043,6 @@ Assigned label
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -4071,7 +4067,8 @@ test property
 \begin_inset Text
 
 \begin_layout Plain Layout
-ignoredTests
+ignored\SpecialChar softhyphen
+Tests
 \end_layout
 
 \end_inset
@@ -4080,7 +4077,8 @@ ignoredTests
 \begin_inset Text
 
 \begin_layout Plain Layout
-unreliableTests
+unreliable\SpecialChar softhyphen
+Tests
 \end_layout
 
 \end_inset
@@ -4089,16 +4087,18 @@ unreliableTests
 \begin_inset Text
 
 \begin_layout Plain Layout
-invertedTests
+inverted\SpecialChar softhyphen
+Tests
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-suspendedTests
+suspended\SpecialChar softhyphen
+Tests
 \end_layout
 
 \end_inset
@@ -4108,15 +4108,6 @@ suspendedTests
 
 \begin_layout Plain Layout
 export
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-unreliable
 \end_layout
 
 \end_inset
@@ -4177,7 +4168,7 @@ Yes
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4191,15 +4182,6 @@ Yes
 
 \begin_layout Plain Layout
 -
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -4242,94 +4224,19 @@ No
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Yes
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-+
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multirow="4" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell multirow="3" alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-No
+If Yes,
+\begin_inset Newline newline
+\end_inset
+
+add label
+\begin_inset Newline newline
+\end_inset
+
+'unreliable'
 \end_layout
 
 \end_inset
@@ -4343,7 +4250,7 @@ Yes
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4370,15 +4277,6 @@ Yes
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -4426,7 +4324,7 @@ WILL_FAIL
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4448,15 +4346,6 @@ No
 \begin_inset Text
 
 \begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 +
 \end_layout
 
@@ -4509,7 +4398,7 @@ No
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4523,15 +4412,6 @@ No
 
 \begin_layout Plain Layout
 +
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
 \end_layout
 
 \end_inset
