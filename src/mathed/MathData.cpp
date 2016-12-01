@@ -659,12 +659,15 @@ void MathData::collectOptionalParameters(Cursor * cur,
 		if (operator[](pos)->getChar() != '[')
 			break;
 
-		// found possible optional argument, look for "]"
+		// found possible optional argument, look for pairing "]"
+		int count = 1;
 		size_t right = pos + 1;
 		for (; right < size(); ++right) {
 			MathAtom & cell = operator[](right);
 
-			if (cell->getChar() == ']')
+			if (cell->getChar() == '[')
+				++count;
+			else if (cell->getChar() == ']' && --count == 0)
 				// found right end
 				break;
 
