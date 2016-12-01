@@ -204,12 +204,6 @@ export/examples/H-P-statements_.*_systemF
 # http://tex.stackexchange.com/questions/202142/problems-compiling-tufte-title-page-in-xelatex
 export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 
-# Wasysym - LuaTeX incompatibility
-# Missing character reported for $_\sun$
-# (the sun-character is printed in \normalsize (i.e. not scaled)
-# with any export format -- only LuaTeX reports a missing character).
-export/examples/aas_sample_(dvi3|pdf5)_(texF|systemF)
-
 # These files use packages that are not compatible with the newest LuaTeX. We
 # could potentially fix these by loading the luatex85 package early in the
 # LyX-generated preamble, but it seems it's better to wait until the packages
