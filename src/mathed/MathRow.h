@@ -47,31 +47,30 @@ public:
 	// What row elements can be
 	enum Type {
 		INSET, // this element is a plain inset
+		BOX, // an empty box
 		BEG_MACRO, // a macro begins here
 		END_MACRO, // a macro ends here
 		BEG_ARG, // a macro argument begins here
 		END_ARG, // a macro argument ends here
-		BEGIN, // dummy element before row
-		END, // dummy element after row
-		BOX // an empty box
+		DUMMY // a dummy element (used before or after row)
 	};
 
 	// An elements, together with its spacing
 	struct Element
 	{
 		///
-		Element(Type t);
+		Element(Type t, MathClass mc = MC_UNKNOWN);
 
 		/// Classifies the contents of the object
 		Type type;
+		/// the class of the element
+		MathClass mclass;
+		/// the spacing around the element
+		int before, after;
 
 		/// When type is INSET
 		/// the math inset
 		InsetMath const * inset;
-		/// the class of the inset
-		MathClass mclass;
-		/// the spacing around the inset
-		int before, after;
 		// Non empty when there is a completion to draw
 		docstring compl_text;
 		// the number of characters forming the unique part.

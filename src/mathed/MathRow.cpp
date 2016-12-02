@@ -36,8 +36,8 @@ using namespace std;
 namespace lyx {
 
 
-MathRow::Element::Element(Type t)
-	: type(t), inset(0), mclass(MC_ORD), before(0), after(0),
+MathRow::Element::Element(Type t, MathClass mc)
+	: type(t), mclass(mc), before(0), after(0), inset(0),
 	  compl_unique_to(0), macro(0), color(Color_red)
 {}
 
@@ -45,8 +45,7 @@ MathRow::Element::Element(Type t)
 MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 {
 	// First there is a dummy element of type "open"
-	push_back(Element(BEGIN));
-	back().mclass = MC_OPEN;
+	push_back(Element(DUMMY, MC_OPEN));
 
 	// Then insert the MathData argument
 	bool const has_contents = ar->addToMathRow(*this, mi);
@@ -54,14 +53,13 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	// empty arrays are visible when they are editable
 	// we reserve the necessary space anyway (even if nothing gets drawn)
 	if (!has_contents) {
-		Element e(BOX);
+		Element e(BOX, MC_ORD);
 		e.color = mi.base.macro_nesting == 0 ? Color_mathline : Color_none;
 		push_back(e);
 	}
 
 	// Finally there is a dummy element of type "close"
-	push_back(Element(END));
-	back().mclass = MC_CLOSE;
+	push_back(Element(DUMMY, MC_CLOSE));
 
 	/* Do spacing only in math mode. This test is a bit clumsy,
 	 * but it is used in other places for guessing the current mode.
@@ -71,7 +69,7 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 
 	// update classes
 	for (int i = 1 ; i != static_cast<int>(elements_.size()) - 1 ; ++i) {
-		if (elements_[i].type != INSET)
+		if (elements_[i].mclass == MC_UNKNOWN)
 			continue;
 		update_class(elements_[i].mclass, elements_[before(i)].mclass,
 		             elements_[after(i)].mclass);
@@ -80,7 +78,7 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	// set spacing
 	// We go to the end to handle spacing at the end of equation
 	for (int i = 1 ; i != static_cast<int>(elements_.size()) ; ++i) {
-		if (elements_[i].type != INSET)
+		if (elements_[i].mclass == MC_UNKNOWN)
 			continue;
 		Element & bef = elements_[before(i)];
 		int spc = class_spacing(bef.mclass, elements_[i].mclass, mi.base);
@@ -100,8 +98,7 @@ int MathRow::before(int i) const
 {
 	do
 		--i;
-	while (elements_[i].type != BEGIN
-		   && elements_[i].type != INSET);
+	while (elements_[i].mclass == MC_UNKNOWN);
 
 	return i;
 }
@@ -111,8 +108,7 @@ int MathRow::after(int i) const
 {
 	do
 		++i;
-	while (elements_[i].type != END
-		   && elements_[i].type != INSET);
+	while (elements_[i].mclass == MC_UNKNOWN);
 
 	return i;
 }
@@ -134,8 +130,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 		mi.base.macro_nesting = macro_nesting.back();
 		Dimension d;
 		switch (e.type) {
-		case BEGIN:
-		case END:
+		case DUMMY:
 			break;
 		case INSET:
 			e.inset->metrics(mi, d);
@@ -239,11 +234,10 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			if (e.color != Color_none)
 				pi.pain.rectangle(x + e.before, y - d.ascent(),
 				                  d.width(), d.height(), e.color);
-			x += d.wid;
+			x += d.wid + e.before + e.after;
 			break;
 		}
-		case BEGIN:
-		case END:
+		case DUMMY:
 		case END_MACRO:
 			break;
 		}
@@ -285,11 +279,8 @@ int MathRow::kerning(BufferView const * bv) const
 ostream & operator<<(ostream & os, MathRow::Element const & e)
 {
 	switch (e.type) {
-	case MathRow::BEGIN:
-		os << "{";
-		break;
-	case MathRow::END:
-		os << "}";
+	case MathRow::DUMMY:
+		os << (e.mclass == MC_OPEN ? "{" : "}");
 		break;
 	case MathRow::INSET:
 		os << "<" << e.before << "-"
@@ -310,7 +301,7 @@ ostream & operator<<(ostream & os, MathRow::Element const & e)
 		os << ")";
 		break;
 	case MathRow::BOX:
-		os << "@";
+		os << "<" << e.before << "-[]-" << e.after << ">";
 		break;
 	}
 	return os;

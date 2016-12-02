@@ -96,7 +96,8 @@ public:
 		// if there was no contents, and the contents is editable,
 		// then we insert a box instead.
 		if (!has_contents && mathMacro_->nesting() == 1) {
-			MathRow::Element e(MathRow::BOX);
+			// mathclass is ord because it should be spaced as a normal atom
+			MathRow::Element e(MathRow::BOX, MC_ORD);
 			e.color = Color_mathline;
 			mrow.push_back(e);
 			has_contents = true;
@@ -310,6 +311,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// if there was no contents and the array is editable, then we
 	// insert a grey box instead.
 	if (!has_contents && mi.base.macro_nesting == 1) {
+		// mathclass is unknown because it is irrelevant for spacing
 		MathRow::Element e(MathRow::BOX);
 		e.color = Color_mathmacroblend;
 		mrow.push_back(e);
