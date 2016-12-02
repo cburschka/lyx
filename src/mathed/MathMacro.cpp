@@ -116,6 +116,16 @@ public:
 		// This should never be invoked, since ArgumentProxy insets are linearized
 		LATTEST(false);
 	}
+	///
+	int kerning(BufferView const * bv) const
+	{
+		return displayCell(bv).kerning(bv);
+	}
+	///
+	void draw(PainterInfo &, int, int) const {
+		// This should never be invoked, since ArgumentProxy insets are linearized
+		LATTEST(false);
+	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
 	// MathMacro uses the definition and not the expanded cells.
 	///
@@ -130,18 +140,6 @@ public:
 	void htmlize(HtmlStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
 	void octave(OctaveStream & os) const { os << mathMacro_->cell(idx_); }
-	///
-	void draw(PainterInfo &, int, int) const {
-		// This should never be invoked, since ArgumentProxy insets are linearized
-		LATTEST(false);
-	}
-	///
-	size_t idx() const { return idx_; }
-	///
-	int kerning(BufferView const * bv) const
-	{
-		return displayCell(bv).kerning(bv);
-	}
 
 private:
 	///
