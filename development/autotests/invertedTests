@@ -49,11 +49,6 @@ export/examples/listerrors_(pdf[245]).*
 # (Also fails with Xe/LuaTeX and TeX-fonts -- as expected, see ignoredTests)
 export/examples/ko/splash_(dvi||pdf[23]?)
 
-# Following mathmacros tests fail
-# Why? -> sort and comment
-export/mathmacros/testcases_speed_(lyx16|lyx21|dvi|pdf|pdf[23]|(dvi3|pdf[45])_(texF|systemF))
-check_load/mathmacros/testcases_speed
-
 # input encoding tests
 # --------------------
 # Please test and correct!
