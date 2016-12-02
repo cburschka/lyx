@@ -81,7 +81,13 @@ public:
 		mrow.push_back(e_beg);
 
 		mathMacro_->macro()->unlock();
-		bool has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
+		bool has_contents;
+		// handle default macro arguments
+		if (!mathMacro_->editMetrics(mi.base.bv)
+			&& mathMacro_->cell(idx_).empty())
+			has_contents = def_.addToMathRow(mrow, mi);
+		else
+			has_contents = mathMacro_->cell(idx_).addToMathRow(mrow, mi);
 		mathMacro_->macro()->lock();
 
 		// if there was no contents, and the contents is editable,
