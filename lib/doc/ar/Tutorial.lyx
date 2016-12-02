@@ -1,0 +1,4111 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/ar/
+\textclass book
+\use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
+\maintain_unincluded_children false
+\language arabic_arabi
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "Scheherazade"
+\font_sans "helvet" "Scheherazade"
+\font_typewriter "courier" "Scheherazade"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "The LyX Tutorial"
+\pdf_author "LyX Team"
+\pdf_subject "LyX-documentation Tutorial"
+\pdf_keywords "LyX, documentation"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+دروس ليك LYX
+\end_layout
+
+\begin_layout Author
+بواسطة فريق ليك LYX
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+إذا كان لديك تعليقات أو تصويبات على هذه الوثائق، يرجى إرسالها إلى قائمة
+ القائمة البريدية لوثائق ليك:
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+مدخل
+\end_layout
+
+\begin_layout Section
+أهلا بك مع ليك
+\end_layout
+
+\begin_layout Standard
+صنع هذا الكتيب للذين لم يسمعوا مطلقا بلتيك, أو لا يعرفونها بشكل جيد.
+ لا تقلق فليس عليك تعلم لتيك لتتعامل مع ليك.
+ إن بيت القصيد في ليك: هي توفير واجهة مرئية للتيك.
+ لكن! هناك بعض الأشياء التي سوف تحتاج لتعلمها, من أجل استخدام ليك بشكل فعّال.
+\end_layout
+
+\begin_layout Standard
+ربما حاول بعض منكم فعل بعض الاشياء التي تعود عليها في معالجات النصوص الأخرى
+ مثل وضع فراغين بعد النقطة 
+\begin_inset Quotes eld
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+ أو ترك فراغ لكلمة داخل النص.
+ في الحقيقة , سوف تجد أن معظم الحيل الصغيرة التي تعودت عليها في معالجات
+ النصوص لن تعمل في ليك.
+ لأنها تجعلك تقوم يدويا بوضع المسافات، وتعديل الخطوط، الخ.
+ فينتهي بك المطاف إلى أن تتحول من كاتب إلى منضّد أيضا.
+ لذا يقوم ليك بالتنضيد نيابة عنك، بطريقة متناسقة ويدعك تركز على الاشياء
+ المهمة، مثل محتوى النص الذي تكتبه.
+ لهذا اقرأ للتعلم أكثر عن ليك.
+ إن قراءة هذه الدروس هو بالتأكيد يستحق الوقت الذي تقضيه فيه.
+\end_layout
+
+\begin_layout Section
+
+\emph on
+أما بعد
+\end_layout
+
+\begin_layout Standard
+قبل أن نبدأ بهذا القسم, عليك أن تعرف أن هذه 
+\emph on
+الدروس
+\emph default
+ تستخدم مخطط الترقيم في كتيب 
+\emph on
+المقدمة
+\emph default
+ .إذا اتيت لهذا الكتيب أولا, فضلا إقرأ 
+\emph on
+المقدمة
+\emph default
+ قبل أن تستمر في قراءة الدروس.
+\end_layout
+
+\begin_layout Subsection
+احصل على المزيد من الدروس
+\end_layout
+
+\begin_layout Standard
+تتكون هذا الدروس التعليمية من أمثلة وتمارين.
+ وللحصول على أقصى استفادة من هذه الوثيقة، يجب أن تقرأها بشكل جيد، وتكتب
+ كل الأشياء حتى الصغيرة منها ونحن نقول لك اكتب وحاول الخروج عن التدريبات
+ لمعرفة مدى استفادتك.
+ لراحتك، قد ترغب في طباعة نسخة PDF من هذه الوثيقة.
+\end_layout
+
+\begin_layout Standard
+إذا كنت معتادا على لتيك، سوف تكون على الأرجح قادرة على قراءة الدروس أسرع
+ بعض الشيء، لأن العديد من أفكار ليك هي مجرد أفكار لتيك مع بعض المكياج.
+ ومع ذلك، ليك لديه ميزات سوف ترغب بمعرفتها.
+ وحتى لو كنت لا تشعر برغبة في قراءة بقية الدروس التعليمية، يجب عليك بالتأكيد
+ الرجوع للقسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:latexusers"
+
+\end_inset
+
+, الذي كتب خصيصا لمستخدمي لتيك الخبراء.
+\end_layout
+
+\begin_layout Subsection
+ما الذي لن تجده
+\end_layout
+
+\begin_layout Itemize
+شرح مفصل لكل ميزات ليك.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+إطلع على دليل المستخدم إذا كنت ترغب بذلك.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+شرح مفصل للتيك.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+غير ضروري.
+ إذا كنت ترغب بتعلم بعض الحيل البارعة يمكنك ذلك بإدراج اكواد لتيك في مستندات
+ ليك, كما تستطيع الاطلاع على كتيب الكائنات المضمنة.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+لقد حان الوقت للمضي قدما، والوقت حان لإنشاء المستند الأول ...
+\end_layout
+
+\begin_layout Chapter
+ابدأ مع ليك
+\end_layout
+
+\begin_layout Section
+مستندك الأول في ليك
+\end_layout
+
+\begin_layout Standard
+حسنا.
+ أنت جاهز لبدء الكتابة.
+ قبل أن تفعل ذلك، هناك القليل من الأشياء التي نود الإشارة لها، والتي نأمل
+ أن تجعل الدروس أكثر تعليم وفائدة.
+\end_layout
+
+\begin_layout Standard
+لأن هناك معلومات لا نستطيع أن نقدمها لك في الدروس، أول أمر تحتاج للقيام
+ به هو العثور على ملفات المساعدة الأخرى.
+ هذا بسيط جدا: شغل ليك، اختر دليل المستخدم من قائمة التعليمات.
+ قد تحتاج إلى تحميل الدرس أيضا (إذا كنت لا تريد قراءة الدرس داخل ليك).
+ بهذه الطريقة، يمكنك قراءته أثناء كتابتك لمستندك أو في اي وقت.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+وهو أيضا يعد مثالا ممتازا يحتوي على تطبيق لمجموعة من ميزات ليك
+\end_layout
+
+\end_inset
+
+ لاحظ أنه عند فتح أكثر من مستند، يمكنك استخدام قائمة عرض أو مفتاح Ctrl+Tab
+ للتبديل بينهما.
+\end_layout
+
+\begin_layout Standard
+في هذا الدرس، نحن نفترض أن لديك إصدارة ليك الكاملة، إضافة إلى لتيك ومستعرض
+ pdf.
+ سواء كنت تستخدم لينكس أو BSD أو ويندوز الذي يتم إعداده باستخدام برنامج
+ تركيب.
+\end_layout
+
+\begin_layout Standard
+أخيرا، لقد كتبنا ملف يسمى example_raw.lyx ليمكنك من ممارسة مهاراتك في ليك.
+ تخيل أنه تم كتابته من قبل شخص لا يعرف عن أي من ميزات ليك العظيمة.
+ ولكي تتعلم وظائف ليك جديدة، فإننا سنقترح عليك إصلاح الأجزاء الغير صحيحة
+ في example_raw.lyx.
+ والملف يحتوي على `تلميحات خفية" حول كيفية إصلاح الأمور.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+هذه الحيل توضع على شكل 
+\begin_inset Quotes eld
+\end_inset
+
+ملاحظات
+\begin_inset Quotes erd
+\end_inset
+
+ صفراء.
+ ويتم الاطلاع على النص بالنقر عليها.
+\end_layout
+
+\end_inset
+
+ إذا كنت تريد أن تغش، أو تتحقق مما قمت به، هناك ملف يسمى
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+example_lyxified.lyx
+\family default
+ يحتوي على نفس النص ولكن كتب ونضّد من قبل شخص حاصل على الماجستير في ليك.
+\end_layout
+
+\begin_layout Standard
+ملفات المثال تجدها في مجلد 
+\family typewriter
+examples
+\family default
+ داخل المسار الذي ركبت ليك فيه.
+ افتح المستند 
+\family typewriter
+example_raw.lyx
+\family default
+ واستخدم 
+\family sans
+ملف\SpecialChar menuseparator
+حفظ
+\begin_inset space ~
+\end_inset
+
+بإسم
+\family default
+ لحفظ نسخة تعمل عليها.
+ لإصلاح جزء من مستند raw، تحقق منه بتحويله لـ pdf لمعرفة كيفية تأثير هذه
+ التغييرات على ملف الخرج.
+\end_layout
+
+\begin_layout Standard
+عموما، المجلد 
+\family typewriter
+examples
+\family default
+ يحتوي الكثير من ملفات الامثلة.
+ وسوف نريك كيف تقوم بأشياء جميلة ورائعة باستخدام ليك.
+ بعد أن تقرأ الدروس, و حين تشعر بالارتباك حول القيام بشيئ ما، ألق نظرة على
+ هذه الملفات.
+\end_layout
+
+\begin_layout Subsection
+الكتابة، والعرض، والتصدير
+\end_layout
+
+\begin_layout Itemize
+فتح ملف جديد 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+جديد
+\end_layout
+
+\begin_layout Itemize
+اكتب جملة مثل: 
+\family typewriter
+هذا أول مستند ليك لي!
+\end_layout
+
+\begin_layout Itemize
+حفظ المستند 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+حفظ بإسم
+\series default
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+إنشاء ملف PDF من 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+عرض
+\family default
+\series default
+ أو بزر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+.
+ ليك سيقتح لك ملف PDF بمستعرض PDF ويريك شكل الملف بعد الطباعة.
+\end_layout
+
+\begin_layout Itemize
+تصدير المستند الجاهز للطباعة 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تصدير
+\family default
+\series default
+ للهيئة التي تريد
+\family sans
+.
+\end_layout
+
+\begin_layout Standard
+تهانينا! لقد كتبت مستندك الأول في ليك.
+ كل ما بقي عبارة عن تفاصيل.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+تلميح:
+\series default
+ يمكنك حفظ الوقت بجعل مستعرض PDF يعمل في الخلفية.
+ في ماكنتوش ولينكس استخدم 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تحديث
+\family default
+\series default
+ أو زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
+
+ وسيتم تحديث نافذة مستعرض PDF.
+ أما في ويندوز فنستخدم 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+عرض
+\family default
+\series default
+ أو زر 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ بشكل متتالي.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+تلميح آخر:
+\series default
+ في حالة استخدامك كثافة نقطية عالية للشاشة، ستظهر أزرار شريط الأدوات بشكل
+ صغير جدا.
+ ولتغيير حجمها, إنقر بزر الفارة الأيمن على شريط الأدوات واختر الحجم المناسب
+ لك.
+\end_layout
+
+\begin_layout Subsection
+العمليات البسيطة
+\end_layout
+
+\begin_layout Standard
+ليك بالتأكيد يستطيع القيام بمعظم الأشياء التي تريد القيام بها في معالج النصوص.
+ وسوف يقوم ببعض الأشياء مثل التفاف النص ووضع مسافة بادئة في بداية النص.
+ وهنا وصف بسيط لكيفية القيام ببعض الأشياء الصغيرة.
+\end_layout
+
+\begin_layout Description
+تراجع ليك يملك تراجع متعدد المستويات، ويعني قدرتك على التراجع عن أي شئ قمت
+ به خلال جلسة العمل الحالية، بإختيار 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تراجع
+\family default
+\series default
+ (زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "undo"
+\end_inset
+
+) لأكثر من مرة.
+ إذا تراجعت أكثر من اللازم، فقط إختر 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تكرار
+\family default
+\series default
+ (زر الشريط 
+\begin_inset Info
+type  "icon"
+arg   "redo"
+\end_inset
+
+) للتقدم.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+حاليا، الإعادة محدودة بـ 
+\numeric on
+100
+\numeric off
+ خطوة.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+قص/لصق/نسخ استخدم 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+قص
+\family default
+\series default
+ (زر الشريط 
+\begin_inset Info
+type  "icon"
+arg   "cut"
+\end_inset
+
+)، 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+نسخ
+\family default
+\series default
+ (زر الشريط 
+\begin_inset Info
+type  "icon"
+arg   "copy"
+\end_inset
+
+)، و 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+لصق
+\family default
+\series default
+ (زر الشريط 
+\begin_inset Info
+type  "icon"
+arg   "paste"
+\end_inset
+
+) للقص، النسخ، واللصق.
+ أو اللصق الآلي للنص المحدد (إدراج النص المحدد من برنامج آخر) بزر الفارة
+ الأوسط.
+\end_layout
+
+\begin_layout Description
+بحث/استبدال استخدام 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+بحث
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+استبدال
+\family default
+\series default
+ (زر الشريط 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
+\end_inset
+
+) للبحث.
+ في النافذة، إبحث باستخدام زر 
+\family sans
+بحث
+\begin_inset space ~
+\end_inset
+
+الثالي
+\family default
+ ، واستخدم زر 
+\family sans
+استبدال
+\family default
+ لاستبدال كلمة عثرت عليها.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+إغلق النافذة عند انتهائك أو اتركها مفتوحة إذا وجدت أنه أكثر ملاءمة.
+ معظم نافذات الحوار في ليك يمكن أن تجعلها كذلك.
+ فقط تأكد أن لديك القدرة على التركيز عندما تحاول الكتابة في نافذة ليك الرئيسية
+ أو نافذة حوار ليك.
+\end_layout
+
+\end_inset
+
+ وإذا اردت، يمكنك البحث مع مراعاة حالة الاحرف، أو البحث عن الكالمات الكاملة
+ و تستطيع البحث أيضا باتجاه الخلف .
+\end_layout
+
+\begin_layout Description
+هيئة
+\begin_inset space ~
+\end_inset
+
+الحروف تستطيع تأكيد النص (زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
+\end_inset
+
+, والذي سيجعل الحروف تظهر بشكل مائل)، أو جعله 
+\noun on
+بإسلوب الأسماء
+\noun default
+ (زر شريط الأدوات 
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
+\end_inset
+
+, عادة حروف صغيرة، يستخدم لأسماء الناس)، أو استخدم هيئتك الخاصة عن طريق
+ 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+اسلوب
+\begin_inset space ~
+\end_inset
+
+النص
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تخصيص
+\family default
+\series default
+ (زر شريط الأدوات 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+شريط
+\begin_inset space ~
+\end_inset
+
+الادوات يحتوي أيضا على أزرار تسمح بتنفيذ بعض العمليات الشائعة، مثل 
+\family sans
+إدرارج
+\begin_inset space ~
+\end_inset
+
+
+\family default
+معادلة رياضية، 
+\family sans
+إدرارج
+\begin_inset space ~
+\end_inset
+
+صورة
+\family default
+ و 
+\family sans
+إدراج
+\begin_inset space ~
+\end_inset
+
+
+\family default
+جدول.
+\end_layout
+
+\begin_layout Standard
+وبطبيعة الحال، هو لا يحتوي جميع الوظائف المفيدة.
+ لكننا نسعى لجعله أكثر عملية.
+\end_layout
+
+\begin_layout Subsection
+ما تراه هو ما تحصل عليه: المسافة البيضاء في ليك
+\end_layout
+
+\begin_layout Standard
+من أصعب الاشياء التي قد يواجهها المستخدم الجديد لليك هي طريقة ادراج المسافات
+ البيضاء.
+ تعودت أن النقر على زر ادخال, سوف ينتج سطر جديد.
+ والنقر على زر مسافة، سينتج مسافة بيضاء واحدة.
+ في السطر الفارغ، ليك لن يسمح لك بعمل مسافة.
+ أيضا مفتاح 
+\family sans
+Tab
+\family default
+ سوف لن يعمل داخل ليك لأنه غير مدعوم! أيضا لا توجد مسطرة في أعلى النافذة
+ لتستخدمها في محاذاة الهوامش.
+\end_layout
+
+\begin_layout Standard
+الكثير من معالجات النصوص مبنية على قاعدة WYSIWYG وتعني:
+\begin_inset Quotes eld
+\end_inset
+
+ما تراه هو ما تحصل عليه.
+\begin_inset Quotes erd
+\end_inset
+
+ليك في الجهة المقابلة، مبني على قاعدة 
+\begin_inset Quotes eld
+\end_inset
+
+ما تراه هو ما تريده.
+\begin_inset Quotes erd
+\end_inset
+
+ أنت تكتب ما تريد وسوف يهتم ليك بتنضيد مستندك ولهذا تحصل على منتج نهائي
+ جيد.
+\end_layout
+
+\begin_layout Standard
+ومفتاح ادخال يفصل الفقرات نحويا ومفتاح مسافة يفصل الكلمات نحويا؛ لذلك ليس
+ هناك سبب لوجود عدد منهن في صف واحد.
+ مفتاح التبويب Tab لا يوجد له وظيفة نحوية على الإطلاق - لهذا ليك لا يدعمه.
+ استخدامك لليك، سوف يجعلك تنفق معظم وقتك في التركيز على محتوى مستندك ووقت
+ أقل في القلق حول تنسيقه.
+ انظر في الداخل لمزيد من المعلومات حول مفهوم WYSIWYM.
+\end_layout
+
+\begin_layout Standard
+ليك لا يملك طرق (عديدة) لصقل تنسيق المستند.
+ بعد كل شيء، قد لا يقوم ليك بالضبط كما تريد.
+ إن دليل المستخدم فيه معلومات حول كل ذلك.
+ ويشمل الملء الأفقي والمسافة الرأسية - وهي أكثر قوة وتنوعا من المسافات المتعددة
+ أو الأسطر فارغة - وطرق لتغيير أحجام الخطوط، وأساليب الأحرف، ومحاذاة الفقرة
+ يدويا.
+ الفكرة، هي أنه يمكنك كتابة مستندك بالكامل، مع التركيز على المحتوى، وتقلق
+ فقط حول صقل تنسيقها بعد أن تنتهي.
+ مع معالجات النصوص العادية، سوف تضطر للانتباه لتنسيق المستند في جميع مراحل
+ عملية الكتابة.
+\end_layout
+
+\begin_layout Section
+البيئات
+\end_layout
+
+\begin_layout Standard
+الأجزاء المختلفة في الوثيقة لها أغراض مختلفة.
+ نحن نطلق علىها بيئات الأجزاء.
+ ويتكون معظم الوثيقة من نص عادي.
+ عناوين الأقسام (الفصل، القسم الفرعي، الخ) تتيح للقارئ معرفة إن كان يتم
+ مناقشة موضوع جديد أو موضوع فرعي.
+ أنواع معينة من الوثائق تملك بيئات خاصة.
+ فالمقالة في مجلة ستحتوي عنوان وخلاصة.
+ بينما الرسالة لا تحتوي على ذلك، ولكن قد تحتوي بيئة عنوان الكاتب.
+\end_layout
+
+\begin_layout Standard
+البيئات هي جزء رئيسي من فلسفة ليك "ما تراه هو ما تريده".
+ إن البيئة المطلوبة قد تتطلب هيئة خط معين، وحجم خط، ومسافة بادئة، وتباعد
+ أسطر، الخ.
+ وتتفاقم هذه المشكلة، لأن التنسيق الدقيق لبيئة معينة قد يتغير: إن مجلة واحدة
+ قد تستخدم حروف بارزة،بحجم 18 نقطة، وتوسيط لعناوين الأقسام في حين يستخدم
+ لبعضها الهيئة المائلة،بحجم 15 نقطة، بمحاذاة لليمين.
+ وقد يكون للغات المختلفة معايير مختلفة للمسافة البادئة.
+ وصيغ ثبت المراجع يمكن أن تختلف بشكل كبير.
+ ليك يتيح لك تجنب تعلم جميع أساليب التنسيق المختلفة.
+\end_layout
+
+\begin_layout Standard
+تقع القائمة المنسدلة الخاصة بإختيار البيئة على الطرف الأيمن من شريط الأدوات
+ وتبدو مثل هذه:
+\begin_inset Graphics
+	filename ../clipart/ToolbarEnvBox.png
+	scale 75
+	clip
+
+\end_inset
+
+.
+ إنها تشير إلى البيئة التي تستخدمها في الكتابة حاليا.
+ بينما تكتب وثيقتك الأولى، وتسمى "قياسي"، وهي البيئة الافتراضية للنص.
+ الآن حاول وضع عدد من البيئات في مستندك الجديد، وستعرف في الصفحات القادمة
+ كيف تقوم بذلك.
+\end_layout
+
+\begin_layout Subsection
+الأقسام والأقسام الفرعية
+\end_layout
+
+\begin_layout Standard
+اكتب كلمة 
+\family typewriter
+مقدمة
+\family default
+ في السطر الأول من مستند ليك، واختر 
+\family sans
+قسم
+\family default
+ في صندوق البيئات.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ليس عليك اختيار السطر.
+ إذا لم يتم تحديد أي شيء، ليك سيغير الفقرة الحالية بالبيئة المحددة.
+ بدلا من ذلك، يمكنك تغيير العديد من الفقرات في كبيئات مختلفة عن طريق تحديدها
+ قبل اختيار بيئة.
+\end_layout
+
+\end_inset
+
+ تأكد من استخدامك 
+\family sans
+قسم
+\family default
+ و 
+\emph on
+ليس
+\emph default
+ 
+\family sans
+قسم*
+\family default
+، والذي سيشرح اتحقا.
+ ليك يعطي للقسم الرقم 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ ويكتب (عنوان) القسم بخط كبير.
+ الآن انقر ادخال\SpecialChar endofsentence
+ انتبه لتغيير 
+\family sans
+البيئة
+\family default
+ من 
+\begin_inset Quotes eld
+\end_inset
+
+قسم
+\begin_inset Quotes erd
+\end_inset
+
+ إلى 
+\begin_inset Quotes eld
+\end_inset
+
+قياسي
+\begin_inset Quotes erd
+\end_inset
+
+.
+ عناوين الاقسام، مثل معظم البيئات، يفترض أن تنتهي بمجرد النقر على
+\series bold
+ ادخال
+\series default
+ \SpecialChar endofsentence
+ اكتب مقدمة الوثيقة: 
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+هذه مقدمة لأول مستند ليك لي.
+\end_layout
+
+\begin_layout Standard
+انقر 
+\family sans
+ادخال
+\family default
+ مرة أخرى، وختر 
+\family sans
+قسم
+\family default
+ من صندوق 
+\family sans
+البيئات
+\family default
+ مرة أخرى.
+ ليك سيعطيه الرقم 
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+ وينتظرك لكتابة نص العنوان.
+ اكتب 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+More
+\begin_inset space ~
+\end_inset
+
+Stuff
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+، وسوف ترى أن ليك سينسقه كعنوان قسم.
+\end_layout
+
+\begin_layout Standard
+انه يتحسن.
+ انتقل إلى نهاية القسم 1 مرة أخرى (بعد "مستندي الأول".) وانقر زر ادخال مرة
+ أخرى، واختر قسم من صندوق البيئات مرة أخرى.
+ مرة أخرى، ليك يكتب "2" وينتظر لكتابة العنوان.
+ اكتب حول هذه الوثيقة.
+ القسم "More Stuff"، الذي كان القسم 2، سيتم إعادة ترقيمه تلقائيا إلى القسم
+ 3! بالطريقة الصحيحة WYSIWYM ، عليك فقط تحديد النص الذي يشكل عناوين الأقسام،
+ وليك سيهتم بترقيم الأقسام وتنضيدها.
+\end_layout
+
+\begin_layout Standard
+انقر 
+\family sans
+ادخال
+\family default
+ للعودة للبيئة 
+\family sans
+قياسي
+\family default
+ , الاسطر الخمسة التالية:
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+الأقسام والأقسام الفرعية مشروحة في الاسفل.
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+وصف القسم
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+القسم أكبر من القسم الفرعي.
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+وصف القسم الفرعي
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+القسم الفرعي اصغر من القسم.
+\end_layout
+
+\begin_layout Standard
+انقر على السطر الثاني ثم اختر 
+\family sans
+قسم فرعي
+\family default
+ من صندوق 
+\family sans
+البيئات
+\family default
+.
+ ليك سيعطي القسم الفرعي الرقم 
+\begin_inset Quotes eld
+\end_inset
+
+2.1
+\begin_inset Quotes erd
+\end_inset
+
+، وسيكتب الخط بحجم وسط بين الخط العادي وخط العنوان.
+ غير السطر الرابع إلى 
+\family sans
+قسم فرعي
+\family default
+.
+ كما هو متوقع على الأرجح، ليك يرقم القسم تلقائيا بـ "2.2".
+ وإذا وضعت قسم جديد قبل القسم 2، فإن القسم 2 سيتم إعادة ترقيمه كما إلى القسم
+ 3، وسيتم ترقيم الأقسام الفرعية إلى "3.1" و "3.2".
+\end_layout
+
+\begin_layout Standard
+إضافة للاقسام يمكنك أضافة قسم فرعي، فقرة، وفقرة فرعية.
+ وسوف يتاح لك تجريبها بنفسك.
+ وربما تلاحظ عدم ترقيم الفقرة والفقرة الفرعية افتراضيا، وأن الفقرات الفرعية
+ تحتوي مسافة بادئة؛ انظر دليل المستخدم لشرح وكيفية تغيير هذا الوضع.
+ عناوين الفصول هي في الواقع أعلى مستوى تقسيم، وفوق الأقسام، ولكن يسمح لك
+ فقط باستخدامها في أنواع معينة (نوع النص) من وثائق ليك (انظر القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Document-Classes"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+وأخيرا، قد ترغب في الحصول على أقسام أو أقسام فرعية بدون ترقيم.
+ هناك بيئات لهذا أيضا.
+ إذا قمت بتغيير واحد من عناوين المقطع إلى البيئة قسم* (قد تضطر إلى التمرير
+ لأسفل في قائمة البيئات المنسدلة للعثور عليه)، لكن ليك سيستخدم نفس حجم الخط
+ المستخدم في عنوان القسم العادي، ولكن بدون ترقيم.
+ هناك تطابق بين البيئات "النجمية" القسم الفرعي* والقسم تحت الفرعي*.
+ حاول تغيير بعض الأقسام أو الأقسام الفرعية للبيئات المميزة بنجمة، ولاحظ
+ كيف يتم تحديث أرقام الأقسام الأخرى.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+التدريب: أصلح عنوان القسم والقسم الفرعي في
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+example_raw.lyx
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+القوائم والقوائم الفرعية
+\end_layout
+
+\begin_layout Standard
+ليك لديها العديد من البيئات المختلفة لتنضيد القوائم.
+ مختلف بيئات القوائم تحررك من النقر على زر تبويب مئات المرات عند كتابة الخطوط
+ العريضة، أو من إعادة ترقيم قائمة كاملة عندما تريد إضافة نقطة في منتصف القائمة.
+ إن الأنواع المختلفة من الوثائق تتطلب منطقيا بيئات قوائم مختلفة:
+\end_layout
+
+\begin_layout Itemize
+قد تستخدم الشرائح التقديمية بيئة قوائم نقطية مفصلة لوصف نقاط مختلفة.
+\end_layout
+
+\begin_layout Itemize
+بعض الخطوط العريضة قد تستخدم بيئة قوائم عددية (والقوائم الفرعية بحروف).
+\end_layout
+
+\begin_layout Itemize
+الوثيقة التي تصف عدة حزم برمجية يمكن أن تستخدم بيئة الوصف، حيث يبدأ كل عنصر
+ في القائمة بكلمة بخط ثخين.
+\end_layout
+
+\begin_layout Itemize
+بيئة القائمة تحتلف عن بيئة الوصف.
+\end_layout
+
+\begin_layout Standard
+دعونا نكتب قائمة من الأسباب التي تجعل ليك أفضل من معالجات النصوص الأخرى.
+ في مكان ما في المستند، اكتب:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+ليك أفضل من معالجات النصوص الأخرى لأن:
+\end_layout
+
+\begin_layout Standard
+وانقر ادخال.
+ الآن اختر 
+\family sans
+قائمة نقطية
+\family default
+ من قائمة البيئات المنسدلة (
+\begin_inset Info
+type  "icon"
+arg   "layout Itemize"
+\end_inset
+
+).
+ ليك يضع 
+\begin_inset Quotes eld
+\end_inset
+
+النقاط
+\begin_inset Quotes erd
+\end_inset
+
+ على السطر.
+ أكتب في أسبابك:
+\end_layout
+
+\begin_layout Itemize
+يقوم بالتنضيد نيابة عنك.
+\end_layout
+
+\begin_layout Itemize
+الرياضيات تكون ما تراه هو ما تريد WYSIWYG
+\end_layout
+
+\begin_layout Itemize
+إنشاء القوائم سهل جدا!
+\end_layout
+
+\begin_layout Standard
+بيئة القائمة, لا تشبة بيئة الرؤوس أو العاوين، فهي لا تنتهي بالنقر على زر
+ 
+\series bold
+ادخال
+\series default
+.
+ بدلا من ذلك, ليك يفترض أنك تريد كتابة العنصر التالي.
+ إذا اردت إضافة نص في سطر جديد تحت احد عناصر القائمة، يجب عليك عمل
+\family sans
+\series bold
+ ايقاف
+\begin_inset space ~
+\end_inset
+
+
+\family default
+محمي
+\series default
+، والذي يمكن الحصول عليه بالنقر على 
+\family sans
+Ctrl+Return
+\family default
+.
+ اما إذا اردت انهاء القائمة ، فعليك اختيار بيئة قياسي من القائم المنسدلة
+ الخاصة بالبيئات أو الانماط (أو باستخدام مفاتيج الاختصارات 
+\begin_inset Info
+type  "shortcut"
+arg   "layout Standard"
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+لديك الآن قائمة منسقة.
+ وتريد رؤية شكلها النهائي قبل الطباعة.
+ ولكن ماذا لو كنت ترغب بجعلها مرقمة؟ حسنا, يمكنك القيام بذلك عن طريق تظليل
+ القائمة بالكامل
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ليك سوف لن يسمح لك بتحديد النقطة الأولى (أو العدد الفعلي في ترقيم عنوان
+ القسم) إلا إذا كنت أيضا جددت الفقرة قبل ذلك، والتي ربما كنت لا تريد القيام
+ به.
+ هذا عن قصد لأن النقطي أو الرقم يعتمد على إعدادات المستند أو موضع النص،
+ على التوالي.
+\end_layout
+
+\end_inset
+
+ ثم اختيار قائمة عددية من شريط الادوات (
+\begin_inset Info
+type  "icon"
+arg   "layout Enumerate"
+\end_inset
+
+).
+ ، إذا أضفت أو حذفت عنصر في القائمة، ليك سوف يصلح الترقيم.
+\end_layout
+
+\begin_layout Standard
+القائمة لا زالت مظلله، وتستطيع تغييرها إلى النوعين المتبقيين من أنواع القوائم،
+ 
+\family sans
+قائمة الوصف وقائمة الملصقات
+\family default
+ (
+\begin_inset Info
+type  "icon"
+arg   "layout Description"
+\end_inset
+
+ و 
+\begin_inset Info
+type  "icon"
+arg   "layout List"
+\end_inset
+
+), جرب لترى شكلهما.
+ في كلا البيئتين، كل عنصر في القائمة صنع لتعريف، الكلمة الأولى هي المعرّف،
+ وبقية الفقرة هي التعريف، (حتى تنقر زر
+\series bold
+ ادخال
+\series default
+).
+ في قائمة الوصف يكون المعرّف بخط ثخين أما في قائمة الملصقات يأتي التعريف
+ بعد فاصلة أو 
+\begin_inset Quotes eld
+\end_inset
+
+Tab
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+But a typesetter's tab, which will change to fit the size of the largest
+ term, not a pathetic, rigid, unchangeable typewriter 
+\family sans
+Tab
+\family default
+.
+\end_layout
+
+\end_inset
+
+ .
+ وإذا أردت أن تجعل المعرّف مكون من أكثر من كلمة، يجب أن تضع بينها 
+\family sans
+مسافة
+\begin_inset space ~
+\end_inset
+
+
+\family default
+محمية.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: نسق القائمة في 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Standard
+يمكنك دمج القوائم داخل بعضها البعض متى ما اردت ذلك.
+ مثلا عند كتابتك للخطوط العريضة لموضوع ما.
+ ستحتاج لقوائم مرقمة وتعداد نقطي يختلف فيه شكل القوائم الرئيسية عن القوائم
+ الفرعية.
+ راجع دليل المستخدم لمزيد من التفاصيل عن الأنواع المختلفة من القوائم وللحصول
+ على أمثلة على عملية الدمج بينها.
+\end_layout
+
+\begin_layout Subsection
+أنماط أخرى: الشعر، الاقتباس، وأخرى
+\end_layout
+
+\begin_layout Standard
+هناك نوعان من بيئات علامات التنصيص المحيطة بالنص: الأول هو الاقتباس ويستعمل
+ للنصوص القصيرة والثاني الاقتباس الطويل للنصوص الطويلة.
+ كود-ليك(مستخدم في هذه الدروس لكتابة الامثلة الطويلةt 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+يستخدم في هذه الدروس لكتابة الامثلة الطويلة
+\end_layout
+
+\end_inset
+
+) مع خط الآلة الكاتبة; هذه البيئة هي الوحيدة في ليك التي تسمح لك باستخدام
+ المسافات البيضاء المتعددة داخل النص.
+ يمكنك كتابة الشعر باستخدام أسلوب شعر، مع مراعاة النقر على ادخال في نهاية
+ كل مقطع شعري، وCtrl+Enter لفصل المقاطع الشعرية عن بعضها.
+ أنظر دليل المستخدم للاطلاع أكثر على بيئات ليك المتاحة.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: أصلح تنسيق الاقتباس
+\family sans
+، كود-ليك،
+\family default
+ والشعر في
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Chapter
+كتابة المستندات
+\end_layout
+
+\begin_layout Standard
+نرجو أن يكون الفصل السابق قد منحك القدرة على الكتابة في ليك.
+ إنه يمنحك القدرة على القيام بالعمليات الاساسية، فضلا عن طريقة قوية للكتابة
+ مع البيئات.
+ معظم مستخدمي ليك، رغم ذلك، سوف تحتاج إلى كتابة المستندات: الاوراق العلمية،
+ المقالات، الكتب، الكتيبات، أو الرسائل.
+ هذا الفصل من المفترض أن يأخذك من مجرد كتابة نص بسيط في ليك إلى كتابة وثيقة
+ كاملة.
+ وسوف يطلعك على أنواع النصوص، التي تسمح لك بكتابة أنواع مختلفة من المستندات.
+ ومن ثم سوف تصف العديد من الإضافات التي تحول النص إلى عناوين، تذييلات، اشارات
+ المرجعية، ثبت مراجع، وجدول المحتويات.
+\end_layout
+
+\begin_layout Section
+نوع المستند
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Document-Classes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+الأنواع المختلفة من المستندات يتم تنضيدها بشكل مختلف.
+ مثلا، يتم طباعة الكتب عموما على الوجهين، في حين أن المقالات تكتب على وجه
+ واحد من الورقة.
+ إضافة إلى أن العديد من الوثائق تحتوي على بيئات خاصة: فالرسائل تحتوي على
+ بعض البيئات - مثل عنوان المرسل والتوقيع - التي لا معنى لها في كتاب أو المقال.
+ نوع مستند ليك
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+لمستخدمي لتيك: هذا يساوي نوع مستند ليك
+\end_layout
+
+\end_inset
+
+ يراعي هذه الاختلافات الواسعة النطاق بين الأنواع المختلفة من المستندات.
+ هذا الدرس، مثال، كتب بمستند من نوع 
+\family sans
+كتاب
+\family default
+ .
+ نوع المستند هو جزء رئيسي من فلسفة WYSIWYM ; إنه يخبر ليك بالطريقة التي
+ يجب عليه تنضيد المستند بها، ولهذا ليس عليه أن تتعب نفسك بمعرتها.
+\end_layout
+
+\begin_layout Standard
+وربما تريد أن تنشئ مستندا من نوع مقالة.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+عادة هذا هو نوع المستند الافتراضي
+\end_layout
+
+\end_inset
+
+ حاول تغيير نوع المستند (باستخدام 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+إعدادا
+\series default
+ت
+\family default
+ ) لترى بنفسك كيف سيختلف التنضيد.
+ إذا غيرت مستندك إلى مستند من نوع 
+\family sans
+كتاب
+\family default
+ ونظرت إلى القائمة المنسدلة الخاصة بالبيئات، سترى أن البيئات فيهما متشابهة
+ تقريبا.
+ على كل حال، يمكنك اختيار البيئة 
+\family sans
+فصل
+\family default
+.
+ إذا لم تكن متأكدا في وقت ما عن البيئات التي يمكنك استخدامها في نوع الوثيقة
+ الحالية، فقط ارجع إلى القائمة المنسدلة للبيئات.
+\end_layout
+
+\begin_layout Standard
+حجم الخط, تعدد الأعمدة، وعناوين الصفحة ليست سوى بعض من طرق تنضيد المجلات
+ التي تختلف من واحدة لأخرى.
+ وكما أن الحاسوب يتطور، كذلك المجلات بدأت بالاستجابة للتطورات الإلكترونية،
+ إنشاء ملف لتيك "ملفات اسلوب" لهذا يحصل الكتّاب على مقالات منضدة بشكل صحيح.
+ لقد تم تعيين ليك لدعم هذا أيضا.
+ مثلا،ليك يدعم التنضيد (والبيئات المتقدمة) الخاصة بمجلة مجتمع الرياضيات
+ الامريكي باستخدام مستند من نوع 
+\family sans
+مقالة
+\begin_inset space ~
+\end_inset
+
+(AMS)
+\family default
+ .
+\end_layout
+
+\begin_layout Standard
+هنا مرجع سريع لبعض أنواع المستندات.انظر إلى قسم 
+\emph on
+أنواع مستندات خاصة
+\emph default
+ في كتيب خصائص إضافية لمعرفة تفاصيل أكثر.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+الاسم
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+توضيح
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+مقالة
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+إتجاه واحد، بدون فصول
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+مقالة (AMS)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+نسق & بيئة لمجتمع الرياضيات الامريكي
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+تقرير
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+أطول من المقالة، إتجاهين
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+كتاب
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+تقرير + مادة امامية وخلفية
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+شرائح
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+الشفافيات
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+رسالة
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+الكثيرمن الاشياء مثل العنوان, التوقيع\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+قالب: كتابة الرسالة
+\end_layout
+
+\begin_layout Standard
+افتح ملف جديد لكتابة رسالة, واختر نوع الرسالة من 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+إعدادات
+\family default
+\series default
+ .
+ في حين أن هذا هو الطريق الأكثر وضوحا لكتابة رسالة، ويبدو أن ذلك كعمل متميز.
+ في كل مرة تكتب فيها رسالة عمل، تحتاج إلى كتابة عنوانك، وعنوان المرسل إليه،
+ ومتن الرسالة، والتوقيع، الخ.
+ إن ليك لديه قالب للرسائل، ويحتوي على رسالة بسيطة.
+ حالما يكون لديك قالب، يمكنك فقط استبدال بضع أجزاء من الرسالة بالنص الخاص
+ بك في كل مرة تكتب رسالة.
+\end_layout
+
+\begin_layout Standard
+افتح ملف جديد 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+جديد
+\begin_inset space ~
+\end_inset
+
+من
+\begin_inset space ~
+\end_inset
+
+
+\family default
+قالب
+\series default
+.
+ اختر 
+\family typewriter
+letter.lyx
+\family default
+ كقالب.
+ إحفظ واطبع الملف لترى كيف تنضّد البيئات المختلفة.
+\end_layout
+
+\begin_layout Standard
+عندما تنظر إلى القائمة المنسدلة للبيئات, سوف ترى مجموعة من البيئات, مثل
+ 
+\family sans
+بيئة عنواني
+\family default
+, وهو غير موجود في معظم أنواع المستندات الأخرى.
+ هناك بيئات آخرى، مثل الوصف.
+ يمكنك تجربتها لبعض الوقت لمعرفة كيفية عمل كل واحد من البيئات المختلفة.
+ ستلاحظ مثلا أن بيئة التوقيع بها كلمة "التوقيع:" الحمراء قبل النص الفعلي
+ للتوقيع.
+ ولن تظهر هذه الكلمة في الرسالة النهائية، كما سوف ترى باستخدام عرض / تصدير
+ الملف.
+ إنها فقط لتمكنك من معرفة أين سيكون التوقيع.
+ أيضا، لاحظ أنه لا يهم أين يتم وضع سطر التوقيع في الملف.
+ تذكر, أن ليك يعتند فلسفة WYSIWYM; يمكنك وضع بيئة التوقيع في أي مكان تريد،
+ ولكن ليك يعلم أين يضعه في النسخة المطبوعة، ينبغي أن يكون التوقيع في نهاية
+ الرسالة المطبوعة.
+\end_layout
+
+\begin_layout Standard
+القالب هو مجرد ملف ليك عادي.
+ هذا يعني أنه يمكنك ملء عنوانك وتوقيعك وحفظ الملف كملف قالب جديد.
+ من الآن فصاعدا، في أي وقت تريد إرسال بريد إلكتروني، يمكنك استخدام قالب
+ جديد لتوفير الوقت.
+ ليس لدينا اقتراح لعمل "تدريب" هنا.
+ فقط إرسل رسالة لشخص ما!
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+تحذير واحد، إذا كنت تكتب من قالب.
+ إذا قمت بمسح كل النص في بيئة ما .
+ على سبيل المثال، إذا قمت بمسح كل النص في حقل عنواني لكي يمكنك استبداله
+ بنفسك - وبعد ذلك قمت بنقل المؤشر دون كتابة أي نص، قد تختفي البيئة.
+ وذلك لأن معظم بيئات لا يمكن أن توجد من دون أي نص فيها.
+ لا تهتم كل ما عليك هو إعادة تحديد البيئة من القائمة المنسدلة للبيئات للحصول
+ عليه مرة أخرى.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+القوالب يمكن أن توفر الكثير من الوقت، ونحن نحثكم على استخدامها كلما كان
+ ذلك ممكنا.
+ وبالإضافة إلى ذلك، فإنها يمكن أن تساعد الشخص على تعلم كيفية استخدام بعض
+ أنوع المستندات المتميزة.
+ وأخيرا، قد ربما يكون من المفيد للشخص أن يقوم بضبط ليك لمستخدمي الحاسب القليلي
+ المعرفة.
+ عندما يتعلمون ليك لأول مرة، سيكون وجود قالب رسالة مخصصة لشركتهم مدعاة لتقليل
+ خوفهم من البرنامج الجديد عليهم.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+عنوان المستند
+\end_layout
+
+\begin_layout Standard
+ليك (مثل لتيك) يعتبر أن صفحة العنوان - التي قد تحتوي على العنوان الفعلي،
+ والمؤلف، والتاريخ، وحتى ملخص من ورقة - هي جزء مستقل من المستند.
+\end_layout
+
+\begin_layout Standard
+عد إلى مستندك الأول وتأكد من أن نوع المستند مقالة.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+يجب أن لا تستخدم مستند من نوع رسالة، لأنه لا يحتوي على بيئة عنوان.
+\end_layout
+
+\end_inset
+
+ اكتب العنوان في السطلر الأول، وغير نوع البيئة إلى عنوان.
+ في السطر التالي، اكتب اسمك واجعل نوع البيئة المؤلف.
+ في السطر التالي، اكتب التاريخ واجعل البيئة التالريخ.
+ اكتب سطر أو سطرين على شكل ملخص ثم اجعل البيئة ملخص.
+ لاحظ كيف يتم عرض العنوان عند طباعته في ملف الخرج.
+ إذا قمت بتغيير نوع المستند إلى كتاب، سوف تحصل على عنوان في صفحة مستقلة،
+ مثل الصفحة الأولى في هذا الدرس.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: أصلح العنوان، التاريخ، والمؤلف في 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Section
+الملصقات والاشارات المرجعية
+\end_layout
+
+\begin_layout Standard
+يمكنك وضع الملصقات لعناوين الاقسام, قائمة العناصر، المعادلات، التذييل، والتعويم
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+التعويم مشروح في كتيب دليل المستخدم وكتيب الكائنات المضمنة
+\end_layout
+
+\end_inset
+
+ في مستندك.
+ بمجرد القيام بذلك، يمكنك الرجوع إلى عنصر في جزء آخر من الوثيقة، باستخدام
+ الاشارة المرجعية.
+ يمكنك العودة لرقم قسم ما، أو لبداية قسم ما.
+ كما هو الحال مع ترقيم القسم، ليك يقوم بمراعاة ذلك في الاشارات المرجعية.
+ الإدارة التلقائية للتسميات والإشارات المرجعية هي من بين أهم المزايا الهامة
+ لليك (ولتيك) عن معالجات النصوص التقليدية.
+\end_layout
+
+\begin_layout Subsection
+ملصقك الأول
+\end_layout
+
+\begin_layout Standard
+انتقل للقسم الرابع، الذي عنوانه 
+\begin_inset Quotes eld
+\end_inset
+
+إدراج
+\begin_inset Quotes erd
+\end_inset
+
+، واختر 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+ملصق
+\family default
+\series default
+ أو من الشريط العلوي انقر الزر 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
+.
+ ستظهر لك نافذة تسألك عن اسم الملصق، وتعكيق مقترحا.
+ عندما تنقر موافق، اسم الملصق سيوضع بعد اسم القسم.
+\end_layout
+
+\begin_layout Standard
+إلى الآن أنت لم تفعل شيئا — وملف الخرج لن يظهر عليه أي تغيير، لأن الملصقات
+ لا تظهر في المستند بعد الطباعة.
+ على كل حال، أنت الآن أضفت الملصق، وتستطيع الرجوع له عن طريق إشارة مرجعية.
+ وسوف نفعل ذلك لاحقا.
+\end_layout
+
+\begin_layout Subsection
+إشارتك المرجعية الأولى
+\end_layout
+
+\begin_layout Standard
+شع المؤشر في أي مكان داخل مستندك.
+ واكتب 
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+إذا كنت تريد معلومات أكثر عن هذا المستند,
+\begin_inset Newline newline
+\end_inset
+
+انظر للقسم .
+\end_layout
+
+\begin_layout Standard
+الآن, ضع المؤشر قبل النقطة النهائية، اختر 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+اشارة مرجعية
+\family default
+\series default
+ أو من الشريط العلوي 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+.
+ ستفتح نافذة الإشارة المرجعية.إنها سوف تظهر قائمة ملصقات المراجع المتاحة.
+ في الوقت الحالي، يجب أن يكون هناك واحد فقط، "قسم: حول-هذا-المستند".
+ أولا، اختر من القائمة المنسدلة 
+\begin_inset Quotes eld
+\end_inset
+
+الهيئة
+\begin_inset Quotes erd
+\end_inset
+
+ واختر 
+\begin_inset Quotes eld
+\end_inset
+
+<مرجع> في صفحة <صفحة>
+\begin_inset Quotes erd
+\end_inset
+
+.
+ ثم اختر 
+\begin_inset Quotes eld
+\end_inset
+
+القسم:حول-هذا-المستند
+\begin_inset Quotes erd
+\end_inset
+
+ (ربما تم اختيارها افتراضيا)، ولاشارة المرجعية ستظهر محتوية على 
+\begin_inset Quotes eld
+\end_inset
+
+مرجع+نص: القسم:حول-هذا-المستند
+\begin_inset Quotes erd
+\end_inset
+
+ (ولكي تكون صحيحة, يجب وضع
+\series bold
+ 
+\family sans
+مسافة
+\begin_inset space ~
+\end_inset
+
+محمية
+\family default
+\series default
+ (اختصارها 
+\begin_inset Info
+type  "shortcut"
+arg   "command-alternatives math-space ; space-insert protected"
+\end_inset
+
+) بين كلمة 
+\begin_inset Quotes eld
+\end_inset
+
+القسم
+\begin_inset Quotes erd
+\end_inset
+
+ والمرجع.) وسيلة بديلة لتسمية المرجع هي بنقر زر الفارة الأيمن فوق الملصق
+ واختيار 
+\family sans
+نسح كمرجع
+\family default
+ في النافذة المنبثقة.
+ ثم ننسخ ملصق الإشارة المرجعية إلى الحافظة ويمكن لصقها في موضع المؤشر عن
+ طريق 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+لصق
+\family default
+\series default
+ (الاختصار 
+\begin_inset Info
+type  "shortcut"
+arg   "paste"
+\end_inset
+
+).
+ في المستند المطبوع, ستستبدل علامة المرحع برقم القسم متبوعا برقم الصفحة.
+ عاين المستند وسترى كان أن لتيك حتى أذكى من ذلك.
+ إنه يشير الى "القسم 2" ويعتمد ذلك على مقدار النص بين بداية القسم 2 وهذه
+ الاشارة المرجعية ربما ترى 
+\begin_inset Quotes eld
+\end_inset
+
+على هذه الصفحة
+\begin_inset Quotes erd
+\end_inset
+
+، 
+\begin_inset Quotes eld
+\end_inset
+
+على الصفحة السابقة
+\begin_inset Quotes erd
+\end_inset
+
+ أو 
+\begin_inset Quotes eld
+\end_inset
+
+على صفحة ن
+\begin_inset Quotes erd
+\end_inset
+
+ (حيث 
+\emph on
+ن
+\emph default
+ رقم الصفحة).
+\end_layout
+
+\begin_layout Standard
+لراحتك، الاشارة المرجعية تعمل كارتباط تشعبي عندما تحرر مستند في ليك.
+ وبالنقر عليه ستفتح نافذة منبثقة للاشارة المرجعية، والنقر فوق "انتقل للملصق"
+ سينقل المؤشر إلى ملصق المرجع.
+\end_layout
+
+\begin_layout Subsection
+استمتع أكثر مع الملصقات
+\end_layout
+
+\begin_layout Standard
+قلنا لكم ان ليك يهتم بترقيم الاشارات المرجعية.
+ الآن يمكنك اختبار هذا الادعاء.أضف قسم جديد قبل القسم 2.
+ حدّث المعاينة، وسترى أن رقم قسم الاشارة المرجعية تغير إلى "3"! غير القسم
+ "حول هذا المستند" لقسم فرعي، وسوف ترى أن الإشارة المرجعية تحولت إلى 2.1
+ بدلا من القسم 3.
+ الإشارة إلى رقم الصفحة لم يتغير إلا إذا قمت طبعا بإضافة صفحة كاملة في النص
+ قبل الملصق.
+\end_layout
+
+\begin_layout Standard
+إذا كنت تريد تدريب أكثر على الملصقات، حاول وضع ملصق جديد حيث وضعت الاشارة
+ المرجعية الاولى، واجعله يشير إلى مكان آخر في المستند.
+ أخيرا إذا كنت سوف تقوم بإدراج إشارات مرجعية كثيرة، قد يكون من المريح لك
+ ترك نافذة الاشارات المرجعية مفتوحة.
+\end_layout
+
+\begin_layout Standard
+إذا اردت أن تتأكد من أن الإشارة المرجعية تعمل حتى في المستندات الكبيرة،
+ 
+\family sans
+انسخ
+\family default
+ نص صفحتين من دليل المستخدم إلى الذاكرة، وا
+\family sans
+لصقها
+\family default
+ في مستندك.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+لاحظ, نسخ عنوان الفصل ربما يعطي رسالة خطأ, لأن الفصول غير مسموح بها في الوثيقة
+ من نوع مقال, انظر القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Document-Classes"
+
+\end_inset
+
+.
+ إذا حدث ذلك, فقط احذف عنوان الفصل.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: أصلح الاشارات المرجعية في 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Section
+التذييل والملاحظات الهامشية
+\end_layout
+
+\begin_layout Standard
+التذييل يمكن إضافته من شريط الأدوات 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+ او من القائمة الرئيسية 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\family default
+\series bold
+تذييل
+\series default
+.
+ انقر في نهاية الكلمة التي ترغب بالاشارة لها في التذييل.
+ ثم ضع المؤشر داخل مربع التذييل.
+ واكتب
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+ليك معالج نصوص.
+\end_layout
+
+\begin_layout Standard
+الآن انقر على كلمة 
+\begin_inset Quotes eld
+\end_inset
+
+تذييل
+\begin_inset Quotes erd
+\end_inset
+
+.
+ ليغلق مربع التذييل, ويمكنك النقر عليه لفتحه والتعديل عليه في اي وقت.
+\end_layout
+
+\begin_layout Standard
+يمكن قص التذييل ولصقه مثل أي نص عادي.
+ ابدأ; جرب! قم باختيار التذييل
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+يمكن اختيار التذييل باستخدام لوحة المفاتيح، ويمكن تحديده باستخدام الفارة
+\end_layout
+
+\end_inset
+
+ ثم 
+\family sans
+قصه
+\family default
+ و 
+\family sans
+الصقه
+\family default
+ .
+ إضافة إلى امكانية تحويل النص العادي إلى تذييل باختيار النص ثم النقر على
+ زر 
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+ ; ويمكن تغيير التذييل إلى نص عادي بوضع المؤشر في بداية التذييل ثم النقر
+ على زر 
+\series bold
+مسح خلفي
+\series default
+، أو زر
+\series bold
+ 
+\family sans
+حذف
+\family default
+\series default
+ عندما يكون المؤشر قبل التذييل.
+\end_layout
+
+\begin_layout Standard
+الملاحظة الهامشية يمكن إضافتها من القائمة الرئيسية 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+ملاحظة هامشية
+\family default
+\series default
+ أو من زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
+\end_inset
+
+\SpecialChar endofsentence
+ والملاحظة الهامشية تشبه التذييل باستثناء: 
+\end_layout
+
+\begin_layout Itemize
+يكتب على الصندوق 
+\begin_inset Quotes eld
+\end_inset
+
+هامش
+\begin_inset Quotes erd
+\end_inset
+
+ بدلا من 
+\begin_inset Quotes eld
+\end_inset
+
+تذييل
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+الملاحظة الهامشية تكتب في الهامش الجانبي، بدلا من أسفل النص.
+\end_layout
+
+\begin_layout Itemize
+الملاحظة الهامشية غير مرقمة لكن يمكن إضافة كود لها لتصبح مرقمة.
+\end_layout
+
+\begin_layout Itemize
+الملاحظة الهامشية يمكن أن تحتوي جدول او صورة.
+\end_layout
+
+\begin_layout Standard
+اضف تذييل واكتب به نص, ثم اختر ملاحظة هامشية واكتب بها نص.
+ ثم انتج المستند لتشاهد الفرق بينهما.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: أصلح التذييل في المستند 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Section
+ثبت المراجع
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:bibliographies"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ثبت المراجع يشبه الاشارة المرجعية.
+ ثبت المراجع يحتوي على قائمة بالمراجع في نهاية المستند، ويمكن الرجوع إليها
+ من داخل المستند.
+ مثل عنوان القسم، ليك و لتيك تجعل عملك أسهل بترقيم عناصر ثبت المراجع تلقائيا
+ وتغيير الاستشهادات عند تغيير رقم عنصر الاستشهاد.
+\end_layout
+
+\begin_layout Standard
+اذهب لنهاية المستند ثم انتقل لبيئة ثبت المراجع.
+ الآن، كل فقرة ستكتبها ستكون عبارة عن مرجع.
+ كتبت 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+دروس ليك, بواسطة فريق توثيق ليك
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ كأول مرجع لك.
+ لاحظ أن لايكس سيقوم بوضع رقم داخل مربع قبل كل مرجع.انقر على صندوق رقم المرجع،
+ و 
+\family sans
+عنصر
+\begin_inset space ~
+\end_inset
+
+المراجع
+\family default
+ .
+ المفتاح للعودة إلى هذا المرجع داخل المستند، الملصق سيظهر في ملف الخرج.
+ وإذا لم يتم تعيين ملصق بشكل (افتراضي)، فسترى رقم المرجع في ملف الخرج.
+ الآن غير حقل المفتاح إلى "lyxtutorial" لتجعله سهل التذكر.
+\end_layout
+
+\begin_layout Standard
+الآن اختر مكان في المستند ترغب بإدراج المرجع فيه.
+ وذلك عن طريق
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+استشهاد
+\family default
+\series default
+ أو بزر شريط الأدوات 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
+\end_inset
+
+.
+ عند ظهور نافذة الاستئهادات.
+ سترى في النافذة اليسرى جميع مداهل المراجع المتاحة، ويسمح لك هذا الحقل باختيار
+ الاستشهادات التي تريد.
+ اختر 
+\begin_inset Quotes eld
+\end_inset
+
+lyxtutorial
+\begin_inset Quotes erd
+\end_inset
+
+ ، ثم استخدم زر إضافة لكي ينتقل الاستهاد لقائمة الستشهادات المحددة.
+ (ويمكن أن يكون لديك استشهادات متعددة في نفس المكان عن طريق نقل مفاتيحها
+ بنفس الطريقة.)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+إن استخدام أسماء لتسمية المراجع قد يكون اسهل للتذكر وأسهل للعثور على المدخل
+ في قائمة المراجع.
+\end_layout
+
+\end_inset
+
+ انقر على زر موافق.
+ الآن عاين ملفك وسترى أن رقم الاستشهاد يظهر بين قوسين في النص، في اشارة
+ رقم مرجعك داخل قائمة المراجع الموجودة في نهاية الوثيقة.
+\end_layout
+
+\begin_layout Standard
+النص بعد الحقل في نافذة الاستشهاد توضع بها علامة (مثل إشارة إلى صفحة أو
+ فصل في الكتاب المشار إليه أو المقالة) داخل أقواس بعد المرجع.
+ إذا كنت ترغب في أن تحتوي اشارة المراجع على تسميات بدلا من الأرقام في النسخ
+ المطبوعة (مثلا، بعض المجلات تستخدم "[Smi95]" للإشارة إلى ورقة مكتوبة من
+ قبل سميث في عام 1995)، استخدم حقل التسمية في نافذة قائمة المراجع لذلك.
+ راجع دليل المستخدم للحصول على التفاصيل.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب:
+\series default
+ أصلح ثبت المراجع والاستشهاد في 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Section
+جدول المحتويات
+\end_layout
+
+\begin_layout Standard
+قد تريد وضع جدول المحتويات في بداية المستند.
+ ليك يسهل القيام بذلك.
+ انقر على 
+\family sans
+\series bold
+ادخال
+\family default
+\series default
+ قبل أول فصل واختر 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+قائمة
+\begin_inset space ~
+\end_inset
+
+/
+\begin_inset space ~
+\end_inset
+
+جدول المحتويات
+\series default
+\SpecialChar menuseparator
+
+\series bold
+جدول
+\begin_inset space ~
+\end_inset
+
+
+\family default
+المحتويات
+\series default
+.
+ الجملة 
+\begin_inset Quotes eld
+\end_inset
+
+جدول المحتويات
+\begin_inset Quotes erd
+\end_inset
+
+ ستظهر مكتوبة على زر جدول المحتويات.
+ 
+\end_layout
+
+\begin_layout Standard
+هذا قد لا يبدو أنه مفيد جدا.
+ ومع ذلك، إذا نظرت في المعاينة، سترى أنه تم إنشاء جدول المحتويات، قائمة
+ بكل الأقسام والأقسام الفرعية في المستند.
+ كما جرت العادة، إذا أعدت ترتيب الأقسام أو انشأت قسم جديد، سوف ترى هذه التغييرات
+ في المعاينة عند تحديثه.
+\end_layout
+
+\begin_layout Standard
+لن يتم إظهار جدول المحتويات في نسخة الوثيقة التي تظهر على الشاشة .
+ ولكن يمكنك عرض جدول المحتويات بالنقر على زر جدول محتويات.
+ أو باستخدام 
+\family sans
+\series bold
+عرض
+\series default
+\SpecialChar menuseparator
+
+\series bold
+الخطوط
+\begin_inset space ~
+\end_inset
+
+العريضة
+\family default
+\series default
+ أو شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "dialog-toggle toc"
+\end_inset
+
+.
+ هذه القائمة سوف تعمل حتى لو لم تدرج جدول المحتويات في المستند .
+ هو أداة مفيدة جدا لإعادة ترتيب أجزاء المستند.
+ النقر على عنوان الفصل الفرعي في 
+\family sans
+نافذة الخطوط العريضة
+\family default
+ سيظلل العنوان وينقلك إلى موقع العنوان في المستند (في نافذة التحرير) .
+ وتستطيع استخدام مفاتيح الاسهم للتنقل للاعلى والاسفل في جدول المحتويات.
+ ولذلك قد تجد أنه من المناسب ترك هذه النافذة مفتوحة طوال جلسات التحرير.
+\end_layout
+
+\begin_layout Standard
+وللتخلص من جدول المحتويات، يمكنك حذف زر جدول محتويات تماما مثل أي نص آخر.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: أصلح محتوى الجدول في 
+\family typewriter
+example_raw.lyx
+\end_layout
+
+\begin_layout Chapter
+إستخدام الرياضيات
+\end_layout
+
+\begin_layout Standard
+لتيك يستخدم من قبل العديد من العلماء؛ لأنه يخرج المعادلات بمظهر رائع، ويتجنب
+ أحرف التحكم المستخدمة من قبل معالجات النصوص ومحررات المعادلات الخاصة بها
+ التي جعلت العديد من هؤلاء العلماء يشعرون بالإحباط، بسبب أن كتابة المعادلات
+ تشبه كتابة الأكواد البرمجية أكثر من كتابة النصوص.
+ لحسن الحظ، ليك لديه فلسفة WYSIWYM التي تدعم كتابة المعادلات.
+ إذا كنت تستخدم لتيك، سوف تجد أن كافة أوامر لتيك المعتادة لكتابة الرياضيات
+ يمكن أن تكتب بشكل عادي كأي نص، لكنها لن تظهر في WYSIWYM وانما بعد الخرج.
+ وإذا لم تكتب معادلاتك باستخدام لتيك، فإن 
+\family sans
+لوحة 
+\begin_inset space ~
+\end_inset
+
+الرياضيات الخاصة بليك
+\family default
+ سوف تسمح لك بكتابة الرياضيات بشكل إحترافي وسهل وسريع.
+\end_layout
+
+\begin_layout Section
+نظام الرياضيات
+\end_layout
+
+\begin_layout Standard
+في اي مكان من مستندك, اكتب: 
+\end_layout
+
+\begin_layout LyX-Code
+\align right
+احب مقولة اينشتين, E=mc^2, لأنها
+\begin_inset Newline linebreak
+\end_inset
+
+مبسطة.
+\end_layout
+
+\begin_layout Standard
+الآن، هذه المعادلة لا تبدو جيدة جدا في ليك وفي الخرج؛ لا توجد مسافات بين
+ الحروف أو علامة التساوي، وكنت ترغب في كتابة الأس "2" في الأعلى.
+ إن التنضيد سيئ لأننا لم نخبر ليك أننا نكتب تعبير رياضي، لذلك نضد المعادلة
+ كنص عادي.
+\end_layout
+
+\begin_layout Standard
+لكننا نستطيع إنشاء معادلة يتم تنضيدها بشكل صحيح.
+ ظلل المعادلة وانقر على زر
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
+\end_inset
+
+ في شريط الأدوات أو من القائمة 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+رياضيات
+\series default
+\SpecialChar menuseparator
+
+\series bold
+معادلة
+\begin_inset space ~
+\end_inset
+
+
+\family default
+داخلية
+\series default
+ أو Ctrl+m.
+ إذا لم يتم تظليل شيء سيقوم ليك بإدراج مربع صغير أزرق اللون يحيط به إطار
+ ارجواني.
+ ويختفي هذا المربع الأزرق بمجرد البدء في الكتابة داخله.
+ ويختفي الاطار الأرجواني بعد الخروج من المعادلة، انقرر بالمؤشر على السطر
+ يسار المعادلة.
+ الآن، كل ما تكتبه، سيكون عبارة عن نص عادي.
+\end_layout
+
+\begin_layout Standard
+وعند النظر إلى ملف الخرج الناتج ستلاحظ أن التعبير الرياضي منضّد بشكل لطيف،
+ مع مسافات بين الحروف وعلامة التساوي، والأس "2".
+ إن الحروف في وضع الرياضيات يفترض أن تكون متغيرات، وتأتي بخط مائل.
+ والأرقام طبعا هي مجرد أرقام.
+\end_layout
+
+\begin_layout Standard
+محرر الرياضيات هو مثال آخر على فلسفة WYSIWYM ما تراه هو ما تريده.
+ في لتيك، أنت تكتب التعبير الرياضي باستخدام نص وأوامر مثل 
+\family typewriter
+
+\backslash
+sqrt
+\family default
+; وهذا يمكن أن يكون محبطا، لأنك لا تستطيع رؤية ما سيبدو عليه التعبير الرياضي
+ إلى أن تقوم بتشغيل الملف في لتيك وقد يتسبب ذلك في إضاعة بعض الوقت عليك،
+ مثل، إيجاد قوس مفقود داخل الكود.
+ ليك لا يسعى للحصول على تعبير رياضي يشبه فلسفة (WYSIWYG) ما تراه هو ما تحصل
+ عليه، ولكنه يعطيك فكرة جيدة للغاية لما سيبدوا عليه التعبير الرياضي.
+ ويهتم بجعل التنضيد إحترافي.
+\end_layout
+
+\begin_layout Section
+التنقل في المعادلة
+\end_layout
+
+\begin_layout Standard
+الآن دعنا نغير المعادلة 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ إلى 
+\begin_inset Formula $E=1+mc^{2}$
+\end_inset
+
+.
+ استخدم مفاتيح الاسهم للتحرك بين حروف التعبير الرياضي أو المعادلة.
+ لاحظ أنه عند إدخال التعبير، يظهر إطار أرجواني ليعلمك أنك في وضع تحرير الرياضيات.
+ الآن تستطيع استخدام مفتاح الأسهم 
+\family sans
+يسار
+\family default
+ و 
+\family sans
+يمين
+\family default
+ لنقل المؤشر بعد إشارة التساوي, واكتب 
+\begin_inset Quotes eld
+\end_inset
+
+1+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ مرة أخرى، يمكنك استخدام مفاتيح الاسهم أو مفتاح 
+\family sans
+Esc
+\family default
+ للخروج من المعادلة الرياضية\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Standard
+البعض من المفاتيح الخاصة الموضحة أدناه، تستخدم في وضع الرياضيات مثل ما تستخدم
+ في وضع تحرير النصوص العادية.
+ استعمال
+\family sans
+ 
+\series bold
+حذف
+\family default
+\series default
+ (أو 
+\series bold
+مسح خلفي
+\series default
+) لحذف شيء.
+ تحديد النص إما باستخدام مفاتيح الأسهم أو بالفارة.
+ 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تراجع
+\family default
+\series default
+ تعمل في وضع الرياضيات كما تعمل في وضع النص العادي.
+ شيء واحد يجب أن تكون حذرا منه: إذا كان المؤشر قبل المعادلة ونقرت على 
+\family sans
+\series bold
+حذف
+\family default
+\series default
+ أو كنت بعدها ونقرت على
+\series bold
+ 
+\family sans
+مسح خلفي
+\family default
+\series default
+ ستحذف المعادلة بالكامل.
+ لكن لحسن الحظ، يمكنك اختيار 
+\family sans
+\series bold
+تكرار
+\family default
+\series default
+ لإعادتها.
+\end_layout
+
+\begin_layout Standard
+ماذا إذا كنت تريد تعديل 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ إلى 
+\begin_inset Formula $E=mc^{2.5}+1$
+\end_inset
+
+ ؟ مرة أخرى، يمكنك النقر بالفارة في المكان الذي ستبدأ التعديل عليه.
+ وأيضا، تستطيع استخدام مفاتيح الاسهم.
+ إذا كان المؤشر بين 
+\begin_inset Quotes eld
+\end_inset
+
+c
+\begin_inset Quotes erd
+\end_inset
+
+ و 
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+, ثم نقرت على زر الاسهم 
+\family sans
+\series bold
+فوق
+\family default
+\series default
+ سينتقل المؤشر للأس 
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+.
+ أضف 
+\begin_inset Quotes eld
+\end_inset
+
+.5
+\begin_inset Quotes erd
+\end_inset
+
+.
+ الآن انقر زر الاسهم 
+\family sans
+\series bold
+تحت
+\family default
+\series default
+ عندها سيعود المؤشر إلى مستوى النص العادي قبل الأس.
+ أما لو نقرت على 
+\family sans
+\series bold
+مسافة
+\family default
+\series default
+ بدلا من 
+\series bold
+تحت
+\series default
+، ستجد أن المؤشر نزل إلى مستوى النص العادي ولكن بعد الأس (عندها يمكنك كتابة
+ 
+\begin_inset Quotes eld
+\end_inset
+
++1
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+الأس والأساس
+\end_layout
+
+\begin_layout Standard
+الأس يمكن إدراجه من 
+\family sans
+لوحة
+\begin_inset space ~
+\end_inset
+
+الرياضيات
+\family default
+ (انظر تحت)، لكن يمكن ببساطه إدراجه من shift + 
+\numeric on
+6
+\numeric off
+ في لوحة المفاتيح 
+\begin_inset Quotes eld
+\end_inset
+
+^
+\begin_inset Quotes erd
+\end_inset
+
+.
+ ليك سوف يضع مربع صغير ازرق في مكان الأس، وكل ما تكتبه في المربع سيظهر كأسّ،
+ وبخط صغير.
+\end_layout
+
+\begin_layout Standard
+وكذلك كتابة النص السفلي; إما بكتابة 
+\begin_inset Quotes eld
+\end_inset
+
+_
+\begin_inset Quotes erd
+\end_inset
+
+ من لوحة المفاتيح sheft+- أو بإدراج مربع النص السفلي من لوحة الرياضيات.
+ وستظهر المعادلة بهذا الشكل: 
+\begin_inset Formula $A_{a_{0}+b^{2}}+C^{a_{0}+b^{2}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: ضع المعادلة
+\begin_inset space ~
+\end_inset
+
+1 في 
+\family typewriter
+example_raw.lyx
+\family default
+ بهيئة معادلة مرقمة باستخدام Ctrl+Alt+n بشرط تحويل لوحة المفاتيح للغة الانجليزية.
+\end_layout
+
+\begin_layout Section
+شريط الرياضيات
+\end_layout
+
+\begin_layout Standard
+شريط أدوات الرياضيات هو وسيلة مريحة لإدخال رمز و / أو لتنفيذ صيغة رياضية
+ معقدة.
+ العديد من هذه العمليات يمكن أنجازها من لوحة المفاتيح أو
+\family sans
+ 
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+رياضيات
+\family default
+\series default
+ أو من 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+رياضيات
+\family default
+\series default
+ (الحروف تظهر فقط إذا كنت في وضع الرياضيات).
+ ومع ذلك، ونحن سنركز على استخدام شريط أدوات الرياضيات، فقط لنمكنك من معرفة
+ خفاياه.
+ ويمكنك معرفة اختصارات لوحة المفاتيح والأوامر في وقت لاحق من كتيب دليل الرياضيات.
+\end_layout
+
+\begin_layout Standard
+ويظهر شريط أدوات الرياضيات عندما يكون المؤشر في معادلة ويمكن أيضا أظهاره
+ يدويا من القائمة
+\family sans
+ 
+\series bold
+عرض
+\series default
+\SpecialChar menuseparator
+
+\family default
+\series bold
+أشرطة الأدوات
+\series default
+.
+ عندما تنقر على زر 
+\begin_inset Quotes eld
+\end_inset
+
+شريط الرياضيات
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle math"
+\end_inset
+
+) سيتم عرض شريط الأدوات بشكل دائم في الجزء السفلي; في هذه الحالة ستظهر لنا
+ إشارة صح أمام "رياضيات" في شريط الأدوات.
+ وعند النقر عليه مرة أخرى سيختفي شريط الرياضيات، ولن يظهر إلا إذا كان المؤشر
+ داخل معادلة; وتبدوا لنا هذه الحالة من خلال إعادة تسمية القائمة من 
+\begin_inset Quotes eld
+\end_inset
+
+رياضيات
+\begin_inset Quotes erd
+\end_inset
+
+ إلى 
+\begin_inset Quotes eld
+\end_inset
+
+رياضيات
+\begin_inset space ~
+\end_inset
+
+(آلي)
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+الحروف الإغريقية والرموز
+\end_layout
+
+\begin_layout Standard
+شريط أدوات الرياضيات يتيح لك الاختيار من بين مجموعة كبيرة من الرموز الرياضية:
+ المعاملات، الاسهم، والعلاقات، المحددات، الرموز الخاصة، التفاضل والتكامل.
+ لاحظ أن أزرار سفلي وعلوي تسمح لك بوضع القيم الدنيا والعليا على التفاضل
+ والتكامل.
+\end_layout
+
+\begin_layout Subsection
+الجذور، الرموز الرياضية، والأقواس
+\end_layout
+
+\begin_layout Standard
+لكتابة جذر تربيعي، ننقر على زر 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
+\end_inset
+
+.
+ عند ظهور الجذر التربيعي، نضع المؤشر داخل المربع الأزرق داخل الجذر.
+ يمكنك كتابة المتغيرات والأرقام وغيرها من الجذور التربيعية، والكسور، وكل
+ ما تريد.
+ ليك سوف يحجم الجذر التربيعي بحيث يتناسب مع البيانات داخله.
+\end_layout
+
+\begin_layout Standard
+إضافة 
+\begin_inset Quotes eld
+\end_inset
+
+زينة الحروف
+\begin_inset Quotes erd
+\end_inset
+
+ لحرف (
+\begin_inset Formula $\overrightarrow{a}$
+\end_inset
+
+) أو مجموعة حروف (
+\begin_inset Formula $\overrightarrow{a+b}$
+\end_inset
+
+) يتم تنفيذها بسهولة.
+ الزينة متاحة عن طريق الزر 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
+\end_inset
+
+ في شريط ادوات لوحة الرياضيات.
+ انقر على الزينة المطلوبة، وسيتم ادراج مربع الزينة لكي تكتب داخله، اكتب
+ ما تريد.
+ هناك نوعين من الزينة: والتي يتغير حجمها بتغير النص المكتوب داخلها، بشكل
+ آلي، وهي الأنسب لحرف واحد.
+ 
+\end_layout
+
+\begin_layout Standard
+المحددات مثل الأقواس، والهلالين، والأقواس تعمل على نحو مماثل، ولكن هي قليلا
+ أكثر تعقيدا.
+ انقر على زر المحدد 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
+\end_inset
+
+ لفتح نافذة المحددات.
+ محدداتك ستظهر في الصندوق.
+ إنها زوج من الأقواس الافتراضية، ولكن يمكنك اختيار زوج من الأهلة، أو قوس
+ وهلال، أو اختيار مربع فارغ مثل 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $a=\left\langle 7\right.$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ (المحدد الفارغ يظهر كجزء من السطر، لكنه لن يظهر في ملف الخرج).
+\end_layout
+
+\begin_layout Standard
+إذا كنت كسولا، يمكنك كتابة القوسين الفعلية في وضع الرياضيات، بدلا من استخدام
+ نافذة المحددات.
+ ومع ذلك، هذه الأقواس ستكون بنفس حجم النصوص العادية، والتي سوف تبدو سيئة
+ إذا كان لديك كسر عشري كبير أو مصفوفة داخل الأقواس.
+ ولذلك من الأفضل استخدام واحد من أزرار المحدد الثلاث لإدراجها مباشرة، مثل
+\begin_inset Info
+type  "icon"
+arg   "math-delim ( )"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+يمكنك أيضا وضع المحددات أو علامة الجذر التربيعي أو زخرفة في جزء من المعادلة
+ الرياضية الحالية.
+ حدد جزء من المعادلة التي تريد، ثم انقر على الزر الذي تريد من شريط أدوات
+ الرياضيات.
+ حاول استخدام ذلك لتعديل قانون نيوتن الثاني من قياسي لمتجهي (
+\begin_inset Formula $f=ma$
+\end_inset
+
+ to 
+\begin_inset Formula $\overrightarrow{f}=m\overrightarrow{a}$
+\end_inset
+
+).
+ عندما تتعلم المصفوفات، هذه هي الطريقة التي سوف تضع القوسين أو الأقواس من
+ حولها.
+\end_layout
+
+\begin_layout Subsection
+الكسور
+\end_layout
+
+\begin_layout Standard
+لإنشاء كسر, انقر على زر الكسر 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
+\end_inset
+
+ في 
+\family sans
+شريط
+\begin_inset space ~
+\end_inset
+
+
+\family default
+الرياضيات.
+ ليك يخصص مكانين للكتابة.
+ كالعادة, يمكنك التنقل بين البسط والمقام بالاسهم.
+ انقر في مربع البسط وكتب 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+.
+ انزل بالسهم السفلي واكتب في المقام 
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+.
+ لقد صنعت كسرا! بالطبع يمكنك كتابة أي شئ في البسط أو المقام: المتغيرات مع
+ الأسس والجذور التربيعية، والكسور الأخرى، أيا كان.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: ضع المعادلة
+\begin_inset space ~
+\end_inset
+
+2 في 
+\family typewriter
+example_raw.lyx
+\family default
+ في هيئة معادلة.
+\end_layout
+
+\begin_layout Subsection
+الدوال: كثيرات الحدود، اللوغارتمات، والدوال المثلثية
+\end_layout
+
+\begin_layout Standard
+لأن الحروف تعتبر متغيرات في وضع الرياضيات، لهذا إذا كتبت "sin" في وضع الرياضيات،
+ سيفترض ليك أنك تكتب ثلاثة متغيرات، فيكتب الحروف بخط مائل.
+ وبالإضافة إلى ذلك، سوف لن يضع ليك مسافة بين كلمة "sin" و "x" (النقر على
+ مسافة سيخرجك من المعادلة).
+ إذا كيف يمكنك الحصول على دالة الجيب "sin(x)" بدلا من النص "sin(x)" ؟
+\end_layout
+
+\begin_layout Standard
+انقر على الزر 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
+\end_inset
+
+ في شريط لوحة الرياضيات ثم اختر 
+\begin_inset Quotes eld
+\end_inset
+
+sin
+\begin_inset Quotes erd
+\end_inset
+
+ من قائمة الدوال.
+ الكلمة 
+\begin_inset Quotes eld
+\end_inset
+
+sin
+\begin_inset Quotes erd
+\end_inset
+
+ ستظهر في المستند باللون الاسود، وبخط روماني.
+ ويتم التعامل مع العالم كله كرمز واحد، لهذا اذا نقرت على 
+\series bold
+مسح خلفي
+\series default
+, سيتم حذف الكلمة بكاملها.
+ الآن اكتب 
+\begin_inset Quotes eld
+\end_inset
+
+(x)
+\begin_inset Quotes erd
+\end_inset
+
+, والذي سيكتب بخط مائل, كما هو متوقع في المعادلة.
+ في ملف الخرج، التعبير سيكون مطبوع بشكل صحيح.
+ جربه.
+\end_layout
+
+\begin_layout Standard
+قائمة الدوال تحتوي دوال مثلثية أخرى ومقلوبها، ودوال القطوع، اللوغاريتمات،
+ والنهايات، دوال أخرى.
+ هذه الدوال يمكن أن تحتوي نصوص سفلية أوفوقية، مهمة للكتابة 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\cos^{2}\theta$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ أو 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\lim_{n\rightarrow\infty}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: ضع المعادلة
+\begin_inset space ~
+\end_inset
+
+3 في 
+\family typewriter
+example_raw.lyx
+\family default
+ هيئة معادلة.
+\end_layout
+
+\begin_layout Subsection
+المصفوفات
+\end_layout
+
+\begin_layout Standard
+انقر على زر المصفوفة 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
+\end_inset
+
+ في شريط الرياضيات.
+ ستفتح لك نافذة يمكنك من خلالها اختيار عدد الصفوف والاعمدة التي في المصفوفة.
+ اختر 2 صف و 3 وعمود ثم انقر موافق.
+ ليك سيطبع مصفوفة تحتوي 6 خلايا 
+\begin_inset Formula $2\times3$
+\end_inset
+
+ في المصفوفة.
+ عادة، يمكنك وضع أي نوع من الصيغ الرياضية (الجذر التربيعي، مصفوفة أخرى،
+ وما إلى ذلك) في كل خلية إدراج.
+ يمكنك أيضا ترك بعض خلايا الإدراج فارغة إذا أردت.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+زر التبويب
+\family default
+ يمكن استخدامه للتنقل الافقي بين اعمدة المصفوفة.
+ وكذلك أيضا, يمكن استخدام الاسهم للتنقل داخل المصفوفة.
+\end_layout
+
+\begin_layout Standard
+اذا اردت تغيير عدد الأعمدة أو الصفوف، استخدم 
+\family sans
+\series bold
+تحرير
+\series default
+\SpecialChar menuseparator
+
+\series bold
+صفوف
+\begin_inset space \thinspace{}
+\end_inset
+
+&
+\begin_inset space \thinspace{}
+\end_inset
+
+وأعمد
+\series default
+ة
+\family default
+ أو من ازرار لوحة الرياضيات 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature append-row"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature delete-row"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature append-column"
+\end_inset
+
+, 
+\begin_inset Info
+type  "icon"
+arg   "tabular-feature delete-column"
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+راجع دليل المستخدم للحصول على معلومات حول كيفية تغيير المحاذاة الأفقية لكل
+ عمود، وكيفية تغيير الوضع الرأسي للمصفوفة كاملة.
+ لاحظ أنه إذا كنت تريد أن تضع جدول يحتوي على نص، يجب عليك استخدام جدول ليك
+ العادي، بدلا من محاولة كتابة النص في المصفوفة، فالمصفوفة لم تخصص لذلك.
+\end_layout
+
+\begin_layout Subsection
+نظام العرض
+\end_layout
+
+\begin_layout Standard
+كل من التعابير الرياضية التي كتبناها حتى الآن كانت على نفس سطر النص سواء
+ جائت قبل أوبعده، والمعروف باسم التعبيرات الداخلية.
+ هذا باختصار، عبارات قصيرة وبسيطة، ولكن إذا كنت تريد أن تكتب عبارات أكبر
+ منها، أو إذا كنت تريد عبارات بارزة من النص، فإنك ستحتاج إلى كتابتها في
+ وضع العرض.
+ وبالإضافة إلى ذلك، التعابير في وضع العرض هي فقط التي يمكن أن يوضع لها ملصقات
+ أو ترقيمها (راجع دليل المستخدم)، ويجب أن تكون 
+\begin_inset Quotes fld
+\end_inset
+
+معادلة متعددة الاسطر
+\begin_inset Quotes frd
+\end_inset
+
+ في وضع العرض.
+\end_layout
+
+\begin_layout Standard
+حين البدء بمعادلة، انقر فوق زر العرض
+\begin_inset Info
+type  "icon"
+arg   "math-display"
+\end_inset
+
+ في شريط أدوات الرياضيات أو Ctrl+shift+m .
+ وهذه سيوسط المعادلة ويضع قبلها سطر وبعدها سطر.
+ الآن اكتب داخلها تعبير رياضي وانتج ملف الخرج لرؤية كيف يبدو.
+ زر وضع العرض هو في الواقع مفتاح تبديل.
+ استخدامه الآن لتغيير بضع عبارات لوضع العرض ثم اعدها لوضعها الاصلي.
+ وضع العرض يختلف عن الوضع الداخلي:
+\end_layout
+
+\begin_layout Itemize
+حجم الخط الكبير هو الافتراضي لبعض الرموز, مثل 
+\begin_inset Formula $\sum$
+\end_inset
+
+ و 
+\begin_inset Formula $\int$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+الرموز العلوية والسفلية للحدود و المجموعات (لكن ليس للتكاملات) تكتب أعلى
+ أو أسفل من الرموز التي تليها.
+\end_layout
+
+\begin_layout Itemize
+توسيط النص.
+\end_layout
+
+\begin_layout Standard
+البعض من هذه الاختلافات، على الرغم من، أن العبارات الرياضية متقاربة كثيرا.
+\end_layout
+
+\begin_layout Standard
+ملاحظة أخيرة حول طريقة عرض المعادلات في التنضيد : كن حذرا حول ما إذا كنت
+ تريد وضع المعادلة في فقرة جديدة أم لا.
+ إذا كانت المعادلة الرياضية في منتصف الجملة أو الفقرة، ولم تضغط على زر
+\family sans
+ 
+\family default
+\series bold
+الادخال
+\series default
+.
+ فعل ذلك سوف يتسبب في بدء فقرة جديدة.
+ وهذا النص سيكون ببادئة أو سيتبع سطر فارغ، اعتمادا على إعدادات فقرة المستند،
+ وهو على الارجح ما لا تريد.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: اكتب معادلات منوعة في الملف 
+\family typewriter
+example_raw.lyx
+\family default
+ , وشاهد كيف يختلف تنضيدها.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+تدريب
+\series default
+: باستخدام الأدوات المختلفة التي تعلمتها في هذا القسم، يجب عليك أن تكون
+ قادرا على كتابة معادلة مثل::
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+بعد أن تقوم بذلك, جرب 
+\family sans
+إدراج\SpecialChar menuseparator
+رياضيات\SpecialChar menuseparator
+Cases
+\begin_inset space ~
+\end_inset
+
+Environment
+\family default
+ .
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+f(x)=\left\{ \begin{array}{cc}
+\log_{8}x & x>0\\
+0 & x=0\\
+\sum_{i=1}^{5}\alpha_{i}+\sqrt{-\frac{1}{x}} & x<0
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+أشياء رياضية أخرى
+\end_layout
+
+\begin_layout Standard
+لقد أصبحت الآن ملما بالأساسيات.
+ إن محرر الرياضيات في ليك يستطيع القيام بأشياء أخرى.
+ فمثلا تستطيع الرجوع لكتيب الرياضيات للحصول على نصائح عن:
+\end_layout
+
+\begin_layout Itemize
+التسمية والتعبير الرقمي.
+\end_layout
+
+\begin_layout Itemize
+إنشاء معادلة متعددة الاسطر.
+\end_layout
+
+\begin_layout Itemize
+تغيير المحارف، الخ.
+ لكتابة نص ثخين في عبارة معينة.
+\end_layout
+
+\begin_layout Itemize
+حجم الخط والتباعد في عبارة معينة.
+ (لا تقلق بشأن ذلك حتى المسودة النهائية الخاصة بك!)
+\end_layout
+
+\begin_layout Itemize
+كتابة وحدات الماكرو.
+ هذه هي قوية جدا، لأنك فقط تحتارها مرة واحدة في الجزء العلوي من الوثيقة،
+ وبعد ذلك يمكنك استخدامها في الوثيقة.
+\end_layout
+
+\begin_layout Itemize
+عمل كل ما تريد عمله مع الرياضيات.
+\end_layout
+
+\begin_layout Chapter
+منوعات
+\end_layout
+
+\begin_layout Section
+مميزات أخرى رئيسية في ليك 
+\end_layout
+
+\begin_layout Standard
+لن نستعرض كل مميزات ليك، ولا نخطط لذلك، وانما سنشير لأهمها.وإذا رغبت, انظر
+ دليل المستخدم وكتيب 
+\emph on
+كائنات
+\begin_inset space ~
+\end_inset
+
+مصمنة
+\emph default
+ للحصول على معلومات اضافية.
+ :
+\end_layout
+
+\begin_layout Itemize
+ليك يدعم انشاء الجداول.
+ استخدم 
+\family sans
+\series bold
+ادراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+جدول
+\family default
+\series default
+ (زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
+\end_inset
+
+) للحصول على جدول.
+ انقر على الجدول بزر الفارة الايمن للحصول على الجدول 
+\family sans
+جدول
+\begin_inset space ~
+\end_inset
+
+إعدادات
+\family default
+ والتي تسمح بتحرير خصائص الجدول.
+ بالنقر على زر الجدول 
+\begin_inset Info
+type  "icon"
+arg   "toolbar-toggle table"
+\end_inset
+
+ في شريط الادوات .
+\end_layout
+
+\begin_layout Itemize
+ليك يدعم إدراج الصور في جميع أنواع المستندات.
+ ( 
+\family sans
+\series bold
+ادراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+صورة
+\family default
+\series default
+ (زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+).
+ ثم استعرض الصورة، وادرها أو حجمها، الخ.) والجداول والصور تحتوي على ملصقات
+ مرقمة تحتها، وليك سينتج قائمة بالجداول والصور أليآ في نهاية المستند.
+\end_layout
+
+\begin_layout Itemize
+ليك يمتلك آلية متقدمة للتخصيص .
+ كل شيء من مظهر نافذة ليك إلى ملف الخرج الناتج كلها يمكن ضبطها بعدد من الطرق.
+ ويتم الكثير من الضبط من 
+\family sans
+\series bold
+أدوات
+\series default
+\SpecialChar menuseparator
+
+\family default
+\series bold
+تفضيلات
+\series default
+.
+ لمعلومات أكثر عن ذلك، راجع 
+\family sans
+\series bold
+مساعدة
+\series default
+\SpecialChar menuseparator
+
+\series bold
+التخصيص
+\series default
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+بدأ تطوير ليك من قبل فريق من المبرمجين في خمس قارات.
+ لذلك، ليك لديه أفضل دعم للغات غير الإنجليزية (مثل الهولندية والألمانية
+ والفرنسية واليونانية والتشيكية والتركية، ...) من العديد من معالجات النصوص.
+ حتى اللغات التي تكتب من اليمين لليسار مثل العربية والفارسية والعبرية واللغات
+ الآسيوية اليابانية الصينية والكورية مدعومة.
+ يمكنك كتابة وثائق باللغات الأخرى، ويمكنك أيضا ضبط ليك لعرض القوائم ورسائل
+ الخطأ باللغات أخرى.
+\end_layout
+
+\begin_layout Itemize
+قوائم ليك بها ميزة مفاتيح الربط.
+ هذا يعني أنه يمكنك القيام 
+\series bold
+ب
+\family sans
+ـملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+فتح
+\family default
+\series default
+ بالنقر على 
+\family sans
+Alt+F
+\family default
+ متبوعة بـ 
+\family sans
+O
+\family default
+ أو استخدام (
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
+ افتراضيا).
+ مفاتيح أخرى تم ضبطها.
+ ولمعلومات عنها، راجع 
+\family sans
+\series bold
+مساعدة
+\series default
+\SpecialChar menuseparator
+
+\series bold
+التخصيص
+\series default
+\SpecialChar endofsentence
+
+\end_layout
+
+\begin_layout Itemize
+ليك يستطيع قراءة مستندات لتيك.
+ أنظر القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:tex2lyx"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+التدقيق الاملائي، قاموس، وعد الكلمات متاح.
+\end_layout
+
+\begin_layout Itemize
+دعم انتاج الفهرس و المصطلحات/قواميس المصطلحات.
+\end_layout
+
+\begin_layout Section
+ليك لمستخدمي لتيك 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:latexusers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+إذا كنت لا تعرف أي شيء عن لتيك، ليس عليك أن تقرأ هذا القسم.
+ في الواقع، قد يحسن بك معرفة المزيد عن لتيك، ومن ثم قراءة هذا الفصل.
+ على كل حال، بعض من تلك الاشياء المستخدمة في ليك سوف يكون متعلقة بلتيك.
+ ربما تتسائل إن كان ليك يستطيع القيام بكل ما تستطيع لتيك القيام به.
+ الجواب القصير هو أن ليك يمكنه القيام بما تقوم به لتيك الى حد كبير ، وبالتأكيد
+ هو يسهل عملية كتابة المستندات بشكل أكبر من لتيك.
+\end_layout
+
+\begin_layout Standard
+لأن هذا هو مجرد درس، ونحن نود أن نذكر الأشياء التي يرجح أن يهتم بمعرفتها
+ المستخدم الجديد.
+ وحرصا على الحفاظ على الدروس قصيرة، لهذا سوف نعطي الحد الأدنى من المعلومات
+ هنا.
+ وستحتوي كتيبات الميزات الإضافية والكائنات المضمنة قدر كبير من المعلومات
+ والفروق بين ليك ولتيك، وكيفية القيام بحيل لتيك المختلفة في ليك.
+\end_layout
+
+\begin_layout Subsection
+نظام تكس 
+\end_layout
+
+\begin_layout Standard
+كل ما ستكتبه في وضع تيك سوف يمرر تلقائيا إلى لتيك، وسيتم عرضه باللون الأحمر
+ على الشاشة.
+ ويمكنك استخدام أوامر تيك في ليك باختيار
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تيك
+\begin_inset space ~
+\end_inset
+
+كود
+\family default
+\series default
+ (زر شريط الادوات 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
+\end_inset
+
+) أو Ctrl+L.
+ هذا سيفتح صندوق لتابة كود تيك.
+\end_layout
+
+\begin_layout Standard
+في المعادلات الرياضية، وضع تيك يتعامل بطريقة مختلفة قليلا.
+ حيث يتم بدء كتابة المعادلة في وضع تيك بشرطة مائلة (لا تظهر في ملف الخرج)،
+ وسوف يكون أي شيء تكتبه بعد ذلك باللون الأحمر.
+ أما الخروج من وضع تيك فيكون بإضافة مسافة أو بعض الرموز غير الأبجدية، مثل
+ عدد، شرطة سفلية، أقواس.
+ وبمجرد الخروج من وضع تيك - إذا كان الكود صحيح طبعا - فإنه سيتم تحويله إلى
+ WYSIWYM\SpecialChar endofsentence
+ لهذا اذا كتبت في المعادلة 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+gamma
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ ثم نقرت مفتاح المسافة , فإن ليك سيغير النص 
+\begin_inset Quotes eld
+\end_inset
+
+gamma
+\begin_inset Quotes erd
+\end_inset
+
+ من الاحمر إلى الأزرق 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ وهذا سيعمل بشكل صحيح مع جميع وحدات مايكرو الرياضيات غير المعقدة تقريبا.
+ قد يكون هذا أسرع من استخدام شريط أدوات الرياضيات، وسوف تكون هذه الطريقة
+ مريحة خاصة بالنسبة لمستخدمي لتيك المتمرسين.
+\end_layout
+
+\begin_layout Standard
+في حالة خاصة، إذا كتبت 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+
+\backslash
+{
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ في معادلة، سيتم إدراج أقواس البداية والنهاية باللون الأحمر في حين يتم وضع
+ المؤشر بين الأقواس.
+ هذا يجعلها أكثر ملاءمة لكتابة تلك الأوامر.
+\end_layout
+
+\begin_layout Standard
+ليك لا يستطيع أن يفعل كل شيء تستطيع لتيك القيام به.
+ فهناك بعض الوظائف اللطيفة غير مدعومة في الوقت الحالي، مع أنها قابلة للاضافة
+ لكنها لا تخدم فلسفة WYSIWYM.
+ وضع تيك يسمح للمستخدمين بالحصول على المرونة الكاملة للتيك، إضافة إلى وجود
+ جميع المزايا المريحة في ليك، مثل فلسفة WYSIWYM في وضع الرياضيات، والجداول،
+ والتحرير.
+ إن ليك لا يدعم كل حزم لتيك.
+ ومع ذلك، عن طريق كتابة 
+\family typewriter
+
+\backslash
+usepackage{foo}
+\family default
+ في مقدمة لتيك (انظر القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:preamble"
+
+\end_inset
+
+), يمكنك استخدام أي حزمة تريدها — على الرغم من عدم حصولك على دعم لفلسفة
+ WYSIWYM في ميزات هذه الحزمة.
+\end_layout
+
+\begin_layout Subsection
+استيراد مستند لتيك — 
+\family typewriter
+tex2lyx
+\family default
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:tex2lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+يمكنك استيراد ملف لتيك عن طريق 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+استيراد
+\series default
+\SpecialChar menuseparator
+
+\series bold
+لتيك
+\begin_inset space ~
+\end_inset
+
+(بسيط)
+\family default
+\series default
+ من قائمة ليك.
+ هذا سيستدعي البرنامج 
+\family typewriter
+tex2lyx
+\family default
+ والذي سينشيء ملف بإسم foo.lyx من الملف foo.tex.
+ ثم سيقوم ليك بفتح الملف الناتج .
+ وإذا كانت الترجمة لا تعمل، يمكنك كحاولة استدعاء 
+\family typewriter
+tex2lyx
+\family default
+ عن طريق سطر الأوامر، ربما باستخدام خيارات fancier .
+\end_layout
+
+\begin_layout Standard
+حتى عندما تعمل الترجمة، 
+\family typewriter
+tex2lyx
+\family default
+ ربما لا يترجم كل شيء، على الرغم من أنها يتعامل مع معظم قوانين لتيك.
+ وسوف يترك الأشياء التي لا يفهمها في وضع تيك; لهذا بعد ترجمة الملف بإستخدام
+ 
+\family typewriter
+tex2lyx
+\family default
+،يمكنك البحث عن الاخطاء المكتوبة بالأحمر ثم تحريرها يدويا وتصحيحها.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+tex2lyx
+\family default
+ لها وثيقة اسمها (manpage), والتي يستفيد منها مستخدمي لينكس/يونكس للتعامل
+ معها عن طريق سطر الاوامر 
+\family typewriter
+man
+\begin_inset space ~
+\end_inset
+
+tex2lyx
+\family default
+.
+ تصف وثيقة manpage أوامر لتيك والبيئات الغير مدعومة، والأعطال التي قد تواجهك
+ (وكيفية التغلب عليها)، وكيفية استخدام مختلف الخيارات.
+\end_layout
+
+\begin_layout Standard
+من المهم أن نفهم أن tex2lyx يمكنه ترجمة الملفات التي تحتوي أنوع مستندات
+ "معروفة" من ليك، تقابل ملف اسلوب ليك.
+ وإذا لم يكن هناك ملف اسلوب، فإنك سوف تحصل على رسالة خطأ تقول ان التحويل
+ تعذر تنفيذه.
+ لذلك، إذا لم يكن لديك ملف اسلوب لنوع مستند لتيك الخاص بك، فإن 
+\family typewriter
+tex2lyx
+\family default
+ لن يعرف كيف يترجم ملف لتيك.
+ معلومات أخرى وشرح بالتفصيل عن ملفات الاسلوب سوف تجده في الفصل 5 من كتيب
+ التخصيص.
+\end_layout
+
+\begin_layout Subsection
+تحويل مستند ليك إلى مستند لتيك
+\end_layout
+
+\begin_layout Standard
+ربما ترغب بتحويل مستند ليك إلى ملف لتيك.
+ مثلا، مساعد العمل أو مساعد المؤلف لا يملك ليك ويرغب في الاطلاع على المستند.
+ اختر 
+\family sans
+\series bold
+ملف
+\series default
+\SpecialChar menuseparator
+
+\series bold
+تصدير
+\series default
+\SpecialChar menuseparator
+
+\family default
+\series bold
+لتيك
+\series default
+.
+ وهذا سينشئ ملف بإسم 
+\family typewriter
+whatever.tex
+\family default
+ من الملف 
+\family typewriter
+whatever.lyx
+\family default
+ الذي تحرره.
+\end_layout
+
+\begin_layout Subsection
+مقدمة لتيك
+\end_layout
+
+\begin_layout Subsubsection
+نوع المستند
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+النستند\SpecialChar menuseparator
+خيارات
+\family default
+ تهتم بخيارات واسعة في الوثيقة، مثل تغيير نوع المستند، حجم الخط الافتراضي
+ وحجم الورق.
+ خيارات نوع المستند وأيضا خيارات حزم لتيك التي يمكن استخدامها في خيارات
+ نوع المستند.
+\end_layout
+
+\begin_layout Subsubsection
+مقدمة لتيك
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:preamble"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+إذا كان لديك أوامر خاصة ترغب بإضافتها إلى مقدمة لتيك، يمكنك إستخدام إعدادات
+ مستند للقيام بذلك.
+ اختر 
+\family sans
+\series bold
+مستند
+\series default
+\SpecialChar menuseparator
+
+\series bold
+إعدادات
+\series default
+\SpecialChar menuseparator
+
+\series bold
+مقدمة
+\begin_inset space ~
+\end_inset
+
+لتيك
+\family default
+\series default
+ واكتب الاوامر في النافذة (أو من نافذة إعدادات المستند).
+ كل شئ تكتبه سوف يرسل مباشرة للتيك (كما يخصب في ملفات تيك).
+\end_layout
+
+\begin_layout Subsection
+Bib\SpecialChar TeX
+
+\end_layout
+
+\begin_layout Standard
+ليك يدعم قاعدة البيانات من النوع Bib\SpecialChar TeX
+, والتي تستخدم لتخزين الكتب المستخدمة
+ في ثبت المراجع ويمكن استخدامها من عدة مستندات في نفس الوقت.
+ اختر 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+قائمة
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+ثبت المراجع
+\series default
+\SpecialChar menuseparator
+BibTeX
+\begin_inset space ~
+\end_inset
+
+ثبت مراجع
+\family default
+ لإدراج ملف 
+\family typewriter
+Bib\SpecialChar TeX
+
+\family default
+ .
+ في حقل 
+\family sans
+قاعدة البيانات
+\family default
+ ستحمل ملفات Bib\SpecialChar TeX
+ , في حقل 
+\family sans
+الاسلوب
+\family default
+ تستطيع تحميل ملفا اسلوب Bib\SpecialChar TeX
+.
+\end_layout
+
+\begin_layout Standard
+بعد أن تقوم بذلك، يمكنك إدراج أي استشهاد من ثبت المراجع 
+\family sans
+\series bold
+إدراج
+\series default
+\SpecialChar menuseparator
+
+\series bold
+استشهاد
+\family default
+\series default
+ (انظر القسم
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bibliographies"
+
+\end_inset
+
+).
+ نافذة 
+\family sans
+الاستشهاد
+\family default
+ ستعرض قائمة بجميع المراجع في ملف 
+\family typewriter
+Bib\SpecialChar TeX
+
+\family default
+ .
+\end_layout
+
+\begin_layout Section
+الأخطاء!
+\end_layout
+
+\begin_layout Standard
+بعض الاحيان حين تحاول استعراض مستند ما، تظهر لك رسالة خطأ، بسبب شيء لم يفهمه
+ ليك أو لتيك.
+ إذا حدث ذلك، ليك سيفتح نافذة أخطاء لتيك.
+ وبالنقر على رسالة الخطأ في النافذة ستذهب إلى مكان حدوث الخطأ في مستند ليك
+ وأيضا تشاهد رسالة خطأ لتيك مفصلة.
+\end_layout
+
+\end_body
+\end_document
