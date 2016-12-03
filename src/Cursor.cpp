@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -2066,10 +2067,14 @@ Encoding const * Cursor::getEncoding() const
 {
 	if (empty())
 		return 0;
+	BufferParams const & bp = bv().buffer().params();
+	if (bp.useNonTeXFonts)
+		return encodings.fromLyXName("utf8-plain");
+
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
-	Font font = text.getPar(sl.pit()).getFont(
-		bv().buffer().params(), sl.pos(), text.outerFont(sl.pit()));
+	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
+	                                          text.outerFont(sl.pit()));
 	return font.language()->encoding();
 }
 
