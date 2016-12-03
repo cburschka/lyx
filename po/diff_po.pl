@@ -395,19 +395,19 @@ sub printDiff($$$$)
   print "diffline = " . $rM->{line} . "," . $rnM->{line} . "\n" if ($printlines);
   print "  msgid = \"$k\"\n";
   if ($rM->{fuzzy} eq $rnM->{fuzzy}) {
-    print "  fuzzy = " . $rM->{fuzzy} . "\n" if ($printlines);
+    print "  fuzzy = \"" . $rM->{fuzzy} . "\"\n" if ($printlines);
   }
   else {
-    print RED "< fuzzy = " . $rM->{fuzzy} . "\n", RESET;
+    print RED "< fuzzy = \"" . $rM->{fuzzy} . "\"\n", RESET;
   }
-  print RED "< msgstr = " . $rM->{msgstr} . "\n", RESET;
+  print RED "< msgstr = \"" . $rM->{msgstr} . "\"\n", RESET;
   if ($k ne $nk) {
     print GREEN "> msgid = \"$nk\"\n", RESET;
   }
   if ($rM->{fuzzy} ne $rnM->{fuzzy}) {
-    print GREEN "> fuzzy = " . $rnM->{fuzzy} . "\n", RESET;
+    print GREEN "> fuzzy = \"" . $rnM->{fuzzy} . "\"\n", RESET;
   }
-  print GREEN "> msgstr = " . $rnM->{msgstr} . "\n", RESET;
+  print GREEN "> msgstr = \"" . $rnM->{msgstr} . "\"\n", RESET;
   print "\n";
 }
 
