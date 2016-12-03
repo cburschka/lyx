@@ -3393,7 +3393,7 @@ If the export did not fail previously but led to wrong output (PDF, say),
 status collapsed
 
 \begin_layout Plain Layout
-Non-failing test with wrong output should be labeledas 
+Non-failing test with wrong output should be labeled as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3827,8 +3827,10 @@ erratic Tests depending on local configuration or the phase of the moon.
 \end_layout
 
 \begin_layout Description
-varying_versions Test depending on TeX distribution, package versions or
- OS.
+varying_versions Tests depending on e.g.
+ OS or version of a non-TeX-Live dependency.
+ Note that a full, up-to-date TeX Live installation is required so this
+ sublabel is about versions of other dependencies.
 \end_layout
 
 \begin_layout Description
