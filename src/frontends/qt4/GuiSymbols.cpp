@@ -256,10 +256,8 @@ public:
 	void setSymbols(QList<char_type> const & symbols, Encoding const * encoding)
 	{
 		beginResetModel();
-		beginInsertRows(QModelIndex(), 0, symbols.size() - 1);
 		symbols_ = symbols;
 		encoding_ = encoding;
-		endInsertRows();
 		endResetModel();
 	}
 
@@ -420,8 +418,7 @@ void GuiSymbols::scrollToItem(QString const & category)
 
 void GuiSymbols::updateSymbolList(bool update_combo)
 {
-	QString category = categoryCO->currentText();
-	bool const nocategory = category.isEmpty();
+	QString const category = categoryCO->currentText();
 	char_type range_start = 0x0000;
 	char_type range_end = 0x110000;
 	QList<char_type> s;
@@ -445,11 +442,9 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			}
 	}
 
-	SymbolsList::const_iterator const end = symbols_.end();
 	int numItem = 0;
-	for (SymbolsList::const_iterator it = symbols_.begin(); it != end; ++it) {
-		char_type c = *it;
-		if (!update_combo && !show_all && (c <= range_start || c >= range_end))
+	for (char_type c : symbols_) {
+		if (!update_combo && !show_all && (c < range_start || c > range_end))
 			continue;
 		QChar::Category const cat = QChar::category(uint(c));
 		// we do not want control or space characters
@@ -460,8 +455,6 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 			s.append(c);
 		if (update_combo) {
 			QString block = getBlock(c);
-			if (category.isEmpty())
-				category = block;
 			if (used_blocks.find(block) == used_blocks.end())
 				used_blocks[block] = numItem;
 		}
@@ -479,10 +472,13 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	int old = categoryCO->findText(category);
 	if (old != -1)
 		categoryCO->setCurrentIndex(old);
-	// update again in case the combo has not yet been filled
-	// on first cycle (at dialog initialization)
-	if (nocategory && !category.isEmpty())
-		updateSymbolList();
+	else if (update_combo) {
+		// restart with a non-empty block
+		// this happens when the encoding changes when moving the cursor
+		categoryCO->setCurrentIndex(0);
+		updateSymbolList(false);
+		return;
+	}
 }
 
 
