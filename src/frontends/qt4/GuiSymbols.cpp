@@ -177,10 +177,10 @@ QString getBlock(char_type c)
 	int i = 0;
 	while (i < no_blocks && c > unicode_blocks[i].end)
 		++i;
-	if (i == no_blocks)
+	if (i == no_blocks || c < unicode_blocks[i].start)
 		return QString();
+	// cache the last block for guessing next time
 	lastBlock = i;
-	//LYXERR0("fail: " << int(c) << ' ' << lastBlock);
 	return unicode_blocks[lastBlock].qname;
 }
 
