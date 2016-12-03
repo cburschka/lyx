@@ -259,16 +259,15 @@ vector<char_type> Encoding::symbolsList() const
 	// assure the used encoding is properly initialized
 	init();
 
-	// first all encodable characters
-	vector<char_type> symbols(encodable_.begin(), encodable_.end());
-	// add those below start_encodable_
+	// first all those below start_encodable_
+	vector<char_type> symbols;
 	for (char_type c = 0; c < start_encodable_; ++c)
 		symbols.push_back(c);
+	//add all encodable characters
+	copy(encodable_.begin(), encodable_.end(), back_inserter(symbols));
 	// now the ones from the unicodesymbols file
-	CharInfoMap::const_iterator const end = unicodesymbols.end();
-	CharInfoMap::const_iterator it = unicodesymbols.begin();
-	for (; it != end; ++it)
-		symbols.push_back(it->first);
+	for (pair<char_type, CharInfo> const & elem : unicodesymbols)
+		symbols.push_back(elem.first);
 	return symbols;
 }
 
