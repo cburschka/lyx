@@ -1,4 +1,5 @@
 #! /usr/bin/perl -w
+# -*- mode: perl; -*-
 
 # file pocheck.pl
 #

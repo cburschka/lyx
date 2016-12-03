@@ -1,4 +1,5 @@
 #! /usr/bin/env perl
+# -*- mode: perl; -*-
 
 use strict;
 
