@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-11-23 15:55+0100\n"
-"PO-Revision-Date: 2016-11-23 15:03+0000\n"
+"POT-Creation-Date: 2016-11-24 18:21+0100\n"
+"PO-Revision-Date: 2016-11-24 17:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18578,7 +18578,7 @@ msgstr "Použiť posledné"
 
 #: lib/ui/stdtoolbars.inc:91
 msgid "Insert math"
-msgstr "Vložiť mat."
+msgstr "Vložiť matematiku"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Insert graphics"
@@ -24941,51 +24941,51 @@ msgstr "vybraný text"
 
 #: src/Color.cpp:229
 msgid "LaTeX text"
-msgstr "LaTeX text"
+msgstr "LaTeX: text"
 
 #: src/Color.cpp:230
 msgid "inline completion"
-msgstr "doplňovanie v riadku"
+msgstr "priame doplňovanie"
 
 #: src/Color.cpp:232
 msgid "non-unique inline completion"
-msgstr "nejednoznačné doplňovanie v riadku"
+msgstr "priame doplňovanie: nejednoznačné"
 
 #: src/Color.cpp:234
 msgid "previewed snippet"
-msgstr "útržok (okamžitý náhľad)"
+msgstr "náhľad: útržok"
 
 #: src/Color.cpp:235
 msgid "note label"
-msgstr "návestie poznámky"
+msgstr "poznámka: návestie"
 
 #: src/Color.cpp:236
 msgid "note background"
-msgstr "pozadie poznámky"
+msgstr "poznámka: pozadie"
 
 #: src/Color.cpp:237
 msgid "comment label"
-msgstr "návestie komentáru"
+msgstr "komentár: návestie"
 
 #: src/Color.cpp:238
 msgid "comment background"
-msgstr "pozadie komentáru"
+msgstr "komentár: pozadie"
 
 #: src/Color.cpp:239
 msgid "greyedout inset label"
-msgstr "zosivelá vložka (návestie)"
+msgstr "zosivelá vložka: návestie"
 
 #: src/Color.cpp:240
 msgid "greyedout inset text"
-msgstr "zosivelý text vložky"
+msgstr "zosivelá vložka: text"
 
 #: src/Color.cpp:241
 msgid "greyedout inset background"
-msgstr "pozadie zosivelá vložka"
+msgstr "zosivelá vložka: pozadie"
 
 #: src/Color.cpp:242
 msgid "phantom inset text"
-msgstr "vložka textu fantóm"
+msgstr "fantómová vložka: text"
 
 #: src/Color.cpp:243
 msgid "shaded box"
@@ -24993,39 +24993,39 @@ msgstr "tieňovaný rámik"
 
 #: src/Color.cpp:244
 msgid "listings background"
-msgstr "pozadie výpisov"
+msgstr "výpisy: pozadie"
 
 #: src/Color.cpp:245
 msgid "branch label"
-msgstr "označenie vetvy"
+msgstr "vetva: návestie"
 
 #: src/Color.cpp:246
 msgid "footnote label"
-msgstr "návestie poznámky pod čiarou"
+msgstr "poznámka pod čiarou: návestie"
 
 #: src/Color.cpp:247
 msgid "index label"
-msgstr "návestie hesla registra"
+msgstr "heslo registra: návestie"
 
 #: src/Color.cpp:248
 msgid "margin note label"
-msgstr "návestie okrajovej poznámky"
+msgstr "okrajová poznámka: návestie"
 
 #: src/Color.cpp:249
 msgid "URL label"
-msgstr "URL návestie"
+msgstr "URL: návestie"
 
 #: src/Color.cpp:250
 msgid "URL text"
-msgstr "URL text"
+msgstr "URL: text"
 
 #: src/Color.cpp:251
 msgid "depth bar"
-msgstr "značenie hĺbky"
+msgstr "hĺbkový pruh"
 
 #: src/Color.cpp:252
 msgid "scroll indicator"
-msgstr "Indikátor rolovacieho tlačítka"
+msgstr "rolovacie tlačítko: indikátor"
 
 #: src/Color.cpp:253
 msgid "language"
@@ -25033,15 +25033,15 @@ msgstr "jazyk"
 
 #: src/Color.cpp:254
 msgid "command inset"
-msgstr "vložka - príkaz"
+msgstr "príkazová vložka"
 
 #: src/Color.cpp:255
 msgid "command inset background"
-msgstr "pozadie vložky príkazu"
+msgstr "príkazová vložka: pozadie"
 
 #: src/Color.cpp:256
 msgid "command inset frame"
-msgstr "rám pre vložku príkazu"
+msgstr "príkazová vložka: rám"
 
 #: src/Color.cpp:257
 msgid "special character"
@@ -25053,23 +25053,23 @@ msgstr "matematika"
 
 #: src/Color.cpp:259
 msgid "math background"
-msgstr "pozadie matematiky"
+msgstr "matematika: pozadie"
 
 #: src/Color.cpp:260
 msgid "graphics background"
-msgstr "pozadie obrázku"
+msgstr "grafika: pozadie"
 
 #: src/Color.cpp:261 src/Color.cpp:265
 msgid "math macro background"
-msgstr "pozadie matematického makra"
+msgstr "mat. makro: pozadie"
 
 #: src/Color.cpp:262
 msgid "math frame"
-msgstr "matematika (rám)"
+msgstr "matematika: rám"
 
 #: src/Color.cpp:263
 msgid "math corners"
-msgstr "rožky mat. vzorca"
+msgstr "matematický vzorec: rožky"
 
 #: src/Color.cpp:264
 msgid "math line"
@@ -25077,59 +25077,59 @@ msgstr "matematický riadok"
 
 #: src/Color.cpp:266
 msgid "math macro hovered background"
-msgstr "pozadie mat. makro zdvihnuté"
+msgstr "mat. makro zdvihnuté: pozadie"
 
 #: src/Color.cpp:267
 msgid "math macro label"
-msgstr "návestie mat. makra"
+msgstr "mat. makro: návestie"
 
 #: src/Color.cpp:268
 msgid "math macro frame"
-msgstr "matematické-makro (rám)"
+msgstr "mat. makro: rám"
 
 #: src/Color.cpp:269
 msgid "math macro blended out"
-msgstr "mat. makro vymaskované"
+msgstr "mat. makro: vymaskovanie"
 
 #: src/Color.cpp:270
 msgid "math macro old parameter"
-msgstr "mat. makro starý parameter"
+msgstr "mat. makro: starý parameter"
 
 #: src/Color.cpp:271
 msgid "math macro new parameter"
-msgstr "mat. makro nový parameter"
+msgstr "mat. makro: nový parameter"
 
 #: src/Color.cpp:272
 msgid "collapsable inset text"
-msgstr "zbaliteľná vložka textu"
+msgstr "zbaliteľná vložka: text"
 
 #: src/Color.cpp:273
 msgid "collapsable inset frame"
-msgstr "zbaliteľná vložka (rám)"
+msgstr "zbaliteľná vložka: rám"
 
 #: src/Color.cpp:274
 msgid "inset background"
-msgstr "pozadie vložky"
+msgstr "vložka: pozadie"
 
 #: src/Color.cpp:275
 msgid "inset frame"
-msgstr "vložka (rám)"
+msgstr "vložka: rám"
 
 #: src/Color.cpp:276
 msgid "LaTeX error"
-msgstr "LaTeX chyba"
+msgstr "LaTeX: chyba"
 
 #: src/Color.cpp:277
 msgid "end-of-line marker"
-msgstr "znak koniec-riadku"
+msgstr "koniec-riadku: označenie"
 
 #: src/Color.cpp:278
 msgid "appendix marker"
-msgstr "znak prílohy"
+msgstr "príloha: označenie"
 
 #: src/Color.cpp:279
 msgid "change bar"
-msgstr "značenie zmeny"
+msgstr "revízne označenie"
 
 #: src/Color.cpp:280
 msgid "deleted text"
@@ -25161,19 +25161,19 @@ msgstr "revíza - 5. autor"
 
 #: src/Color.cpp:287
 msgid "deleted text modifier"
-msgstr "zmazaný modifikátor textu"
+msgstr "zmazaný text: modifikátor"
 
 #: src/Color.cpp:288
 msgid "added space markers"
-msgstr "vložené znaky medzier"
+msgstr "vložená medzera: označenia"
 
 #: src/Color.cpp:289
 msgid "table line"
-msgstr "línia tabuľky"
+msgstr "tabuľka: línia"
 
 #: src/Color.cpp:290
 msgid "table on/off line"
-msgstr "Tabuľka zap/vyp linka"
+msgstr "tabuľka: zap/vyp línia"
 
 #: src/Color.cpp:292
 msgid "bottom area"
@@ -25201,11 +25201,11 @@ msgstr "tlačidlo: pozadie pod fókusom"
 
 #: src/Color.cpp:298
 msgid "paragraph marker"
-msgstr "Znak odstavca"
+msgstr "odstavec: označenie"
 
 #: src/Color.cpp:299
 msgid "preview frame"
-msgstr "Náhľad rám"
+msgstr "náhľad: rám"
 
 #: src/Color.cpp:300
 msgid "inherit"
@@ -25213,35 +25213,66 @@ msgstr "zdedené"
 
 #: src/Color.cpp:301
 msgid "regexp frame"
-msgstr "regulárny výraz (rám)"
+msgstr "regulárny výraz: rám"
 
 #: src/Color.cpp:302
 msgid "ignore"
 msgstr "ignorovať"
 
-#: src/Converter.cpp:287
-msgid "Potentially harmful external converters disabled"
-msgstr "Potenciálne škodlivý externý konvertor je blokovaný"
-
-#: src/Converter.cpp:288
+#: src/Converter.cpp:286
+#, c-format
 msgid ""
-"Requested operation needs use of a potentially harmful external converter "
-"program,which is forbidden by default.\n"
-"These converters are tagged by the 'needauth' option. In order to unlock "
-"execution of these converters,\n"
-"please, go to Preferences->File Handling->Converters and uncheck Security-"
-">Forbid needauth converters."
+"Requested operation needs use of converter '%1$s' from %2$s to %3$s, which "
+"is tagged with the 'needauth' option. This is an external program normally "
+"acting as a picture/format converter, but which is known to be able to "
+"execute arbitrary actions on the system on behalf of the user, including "
+"dangerous ones such as deleting files, if instructed to do so by a "
+"maliciously crafted .lyx document."
 msgstr ""
-"Žiadaná operácia používa potenciálne škodlivé externé konvertory, ktoré "
-"štandardne nie sú povolené.\n"
-"Tieto konvertory sú označené voľbou 'needauth'. Keď chcete ich spúšťanie "
-"odblokovať,\n"
-"choďte na Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť-"
-">Zakázať overovacie konvertory. "
+"Žiadaná operácia použije konvertor '%1$s'  z  %2$s na %3$s, ktorý je "
+"označený voľbou 'needauth'. Toto je externý program normálne slúžiac ako "
+"obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
+"užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
+"Keď je napr. inštruované robiť to zlovoľne vyrobeným lyx dokumentom. "
+
+#: src/Converter.cpp:292
+msgid "Launch of external converter is forbidden"
+msgstr "Spúšťanie externého konvertora nie je povolené"
+
+#: src/Converter.cpp:292
+msgid ""
+"\n"
+"\n"
+"This is forbidden by default. In order to unlock execution of these "
+"converters, please, go to\n"
+"Preferences->File Handling->Converters and uncheck Security->Forbid needauth "
+"converters."
+msgstr ""
+"\n"
+"\n"
+"Toto štandardne nie je povolené. Keď chcete ich spúšťanie odblokovať, choďte "
+"na\n"
+"Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť->Zakázať "
+"overovacie konvertory. "
 
 #: src/Converter.cpp:297
 msgid "Launch of external converter needs user authorization"
 msgstr "Spúšťanie externého konvertora potrebuje oprávnenie používateľa"
+
+#: src/Converter.cpp:301
+msgid ""
+"\n"
+"\n"
+"Would you like to run the converter?\n"
+"\n"
+"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!"
+msgstr ""
+"\n"
+"\n"
+"Želáte si spustiť teb konvertor?\n"
+"\n"
+"ODPOVEDZTE SPUSTIŤ LEN KEĎ DÔVERUJETE PÔVODU/ODOSIELATEĽOVI TOHTO LYX "
+"DOKUMENTU! "
 
 #: src/Converter.cpp:309 src/Converter.cpp:318
 msgid "Do &NOT run"
@@ -30024,10 +30055,10 @@ msgstr "Ukladám všetky dokumenty…"
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
 
-#: src/frontends/qt4/GuiView.cpp:3745
+#: src/frontends/qt4/GuiView.cpp:3784
 #, c-format
-msgid "Icon size set to %1$d"
-msgstr "Rozmer ikon stanovený na %1$d"
+msgid "Icon size set to %1$dx%2$d."
+msgstr "Rozmer ikon stanovený na %1$dx%2$d."
 
 #: src/frontends/qt4/GuiView.cpp:3841
 #, c-format
@@ -31956,6 +31987,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Potentially harmful external converters disabled"
+#~ msgstr "Potenciálne škodlivý externý konvertor je blokovaný"
 
 #~ msgid "frame of button"
 #~ msgstr "rám tlačidla"
@@ -35696,3 +35730,18 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Giant-sized icons"
 #~ msgstr "Gigantické ikony"
+
+#~ msgid ""
+#~ "Requested operation needs use of a potentially harmful external converter "
+#~ "program, which is forbidden by default.\n"
+#~ "These converters are tagged by the 'needauth' option. In order to unlock "
+#~ "execution of these converters,\n"
+#~ "please, go to Preferences->File Handling->Converters and uncheck Security-"
+#~ ">Forbid needauth converters."
+#~ msgstr ""
+#~ "Žiadaná operácia používa potenciálne škodlivé externé konvertory, ktoré "
+#~ "štandardne nie sú povolené.\n"
+#~ "Tieto konvertory sú označené voľbou 'needauth'. Keď chcete ich spúšťanie "
+#~ "odblokovať,\n"
+#~ "choďte na Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť-"
+#~ ">Zakázať overovacie konvertory. "
