@@ -1,0 +1,82 @@
+#! /usr/bin/env perl
+# -*- mode: perl; -*-
+
+use strict;
+
+# Syntax: ReplaceValuesprefTest.pl [<var1>=<Subst1> [<var2>=<Subst> ...]] [[ctest parameters]]
+
+my $bindir = "@CMAKE_BINARY_DIR@";
+
+my $userdir = "$bindir/Testing/.lyx";
+
+my %allowedKeys = (
+  "use_converter_needauth_forbidden" => ["true", "false"],
+  "use_converter_needauth" => ["true", "false"],
+    );
+
+chdir($bindir);
+
+# Parse Arguments for strings to substitute
+
+my %Subst = ();
+
+my $ctestparams = 0;
+my @ctestpars = ();
+for my $arg (@ARGV) {
+  if ($ctestparams) {
+    push(@ctestpars, $arg);
+  }
+  else {
+    if ($arg =~ /^([^=]+)=(.*)$/) {
+      my $key = $1;
+      my $value = $2;
+      my $valid = 0;
+      if (defined($allowedKeys{$key})) {
+	for my $val (@{$allowedKeys{$key}}) {
+	  if ($val eq $value) {
+	    $valid = 1;
+	    last;
+	  }
+	}
+      }
+      if ($valid) {
+	$Subst{$key} = [$value, 0];
+      }
+      else {
+	die("invalid key or value specified in \"$arg\"");
+      }
+    }
+    else {
+      $ctestparams = 1;
+      push(@ctestpars, $arg);
+    }
+  }
+}
+if (%Subst) { # Try to do something only if a substitute is requested
+  if (open(FO, '>', "$userdir/preferences.tmp")) {
+    if (open(FI, "$userdir/preferences")) {
+      while (my $l = <FI>) {
+	for my $k (keys %Subst) {
+	  if ($l =~ /^\\$k\b/) {
+	    $l = "\\$k $Subst{$k}->[0]\n";
+	    $Subst{$k}->[1] = 1;
+	  }
+	}
+	print FO $l;
+      }
+    }
+    for my $k (keys %Subst) {
+      if ($Subst{$k}->[1] == 0) {
+	print FO "\\$k $Subst{$k}->[0]\n";
+      }
+    }
+    rename("$userdir/preferences.tmp", "$userdir/preferences");
+  }
+}
+
+my $res = 0;
+if (@ctestpars) {
+  $res = system("ctest", @ctestpars);
+}
+
+exit($res);

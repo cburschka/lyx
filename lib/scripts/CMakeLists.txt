@@ -9,4 +9,5 @@ if (UNIX)
 	set(_project "scripts")
 	# include(../PyCompile)
 endif()
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/prefTest.pl.in" "${CMAKE_BINARY_DIR}/prefTest.pl" @ONLY)
 
