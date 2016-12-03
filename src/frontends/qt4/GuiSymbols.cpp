@@ -221,9 +221,6 @@ public:
 		if (!index.isValid())
 			return QVariant();
 
-		static QString const strCharacter = qt_("Character: ");
-		static QString const strCodePoint = qt_("Code Point: ");
-
 		char_type c = symbols_.at(index.row());
 
 		switch (role) {
@@ -232,10 +229,20 @@ public:
 		case Qt::DisplayRole:
 			return toqstr(c);
 		case Qt::ToolTipRole: {
-			char codeName[10];
-			sprintf(codeName, "0x%04x", c);
-			return strCharacter + toqstr(c) + '\n'
-				+ strCodePoint + QLatin1String(codeName);
+			QString latex;
+			if (encoding_) {
+				// how is the character output in the current encoding?
+				docstring const code = encoding_->latexChar(c).first;
+				// only show it when it is not coded by itself
+				if (code != docstring(1, c))
+					latex = qt_("<p>LaTeX code: %1</p>").arg(toqstr(code));
+			}
+			return formatToolTip(QString("<p align=center><span "
+			                             "style=\"font-size: xx-large;\">%1"
+			                             "</span><br>U+%2</p>%3")
+			                     .arg(toqstr(c))
+			                     .arg(QString("%1").arg(c, 0, 16).toUpper())
+			                     .arg(latex));
 		}
 		case Qt::SizeHintRole:
 			// Fix many symbols not displaying in combination with
@@ -246,11 +253,12 @@ public:
 		}
 	}
 
-	void setSymbols(QList<char_type> const & symbols)
+	void setSymbols(QList<char_type> const & symbols, Encoding const * encoding)
 	{
 		beginResetModel();
 		beginInsertRows(QModelIndex(), 0, symbols.size() - 1);
 		symbols_ = symbols;
+		encoding_ = encoding;
 		endInsertRows();
 		endResetModel();
 	}
@@ -259,6 +267,7 @@ private:
 	friend class GuiSymbols;
 
 	QList<char_type> symbols_;
+	Encoding const * encoding_;
 };
 
 
@@ -422,8 +431,10 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 	}
 	bool const show_all = categoryFilterCB->isChecked();
 
+	Encoding const * const enc = encodings.fromLyXName(encoding_);
+
 	if (symbols_.empty() || update_combo)
-		symbols_ = encodings.fromLyXName(encoding_)->symbolsList();
+		symbols_ = enc->symbolsList();
 
 	if (!show_all) {
 		for (int i = 0 ; i < no_blocks; ++i)
@@ -455,7 +466,7 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 				used_blocks[block] = numItem;
 		}
 	}
-	model_->setSymbols(s);
+	model_->setSymbols(s, enc);
 
 	if (update_combo) {
 		// update category combo
