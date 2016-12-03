@@ -52,6 +52,8 @@ bool ToolTipFormatter::eventFilter(QObject * o, QEvent * e)
 	// on the screen.
 	QPoint pos = static_cast<QHelpEvent *>(e)->pos();
 	QModelIndex item = iv->indexAt(pos);
+	if (!item.isValid())
+		return false;
 	QVariant data = iv->model()->data(item, Qt::ToolTipRole);
 	if (data.isValid() && data.typeName() == toqstr("QString"))
 		// Unchanged if empty or already formatted
