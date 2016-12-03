@@ -218,6 +218,9 @@ public:
 
 	QVariant data(QModelIndex const & index, int role) const
 	{
+		if (!index.isValid())
+			return QVariant();
+
 		static QString const strCharacter = qt_("Character: ");
 		static QString const strCodePoint = qt_("Code Point: ");
 
