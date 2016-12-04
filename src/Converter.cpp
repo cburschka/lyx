@@ -283,29 +283,40 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 {
 	if (!conv.need_auth())
 		return true;
-	const docstring security_warning = bformat(_("Requested operation needs use of converter '%1$s' from %2$s to %3$s, "
-		"which is tagged with the 'needauth' option. This is an external program normally acting as a picture/format "
-		"converter, but which is known to be able to execute arbitrary actions on the system on behalf of the user, "
-		"including dangerous ones such as deleting files, if instructed to do so by a maliciously crafted .lyx document."),
-		from_utf8(conv.command()), from_utf8(conv.from()), from_utf8(conv.to()));
+	const docstring security_warning = bformat(
+	      _("<p>The requested operation requires the use of a converter from "
+	        "%2$s to %3$s:"
+	        "<blockquote><tt>%1$s</tt></blockquote>"
+	        "<p>This external program can execute arbitrary commands on your "
+	        "system, including dangerous ones, if instructed to do so by a "
+	        "maliciously crafted .lyx document.</p>"),
+	      from_utf8(conv.command()), from_utf8(conv.from()),
+	      from_utf8(conv.to()));
 	if (lyxrc.use_converter_needauth_forbidden) {
-		frontend::Alert::warning(_("Launch of external converter is forbidden"), security_warning + _("\n\n"
-			"This is forbidden by default. In order to unlock execution of these converters, please, go to\n"
-			"Preferences->File Handling->Converters and uncheck Security->Forbid needauth converters."), true);
+		frontend::Alert::warning(
+		    _("An external converter is disabled for security reasons"),
+		    security_warning + _(
+		    "<p>Your current settings forbid its execution.</p>"
+		    "<p>(To change this setting, go to <i>Preferences &#x25b9; File "
+		    "Handling &#x25b9; Converters</i> and uncheck <i>Security &#x25b9; "
+		    "Forbid needauth converters</i>.)"), false);
 		return false;
 	}
 	if (!lyxrc.use_converter_needauth)
 		return true;
-	static const docstring security_title = _("Launch of external converter needs user authorization");
+	static const docstring security_title =
+		_("An external converter requires your authorization");
 	int choice;
-	const docstring security_warning2 = security_warning + _("\n\nWould you like to run the converter?\n\n"
-		"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!");
+	const docstring security_warning2 = security_warning +
+		_("<p>Would you like to run this converter?</p>"
+		  "<p><b>Only run if you trust the origin/sender of the LyX "
+		  "document!</b></p>");
 	if (!doc_fname.empty()) {
 		LYXERR(Debug::FILES, "looking up: " << doc_fname);
 		std::set<std::string> & auth_files = theSession().authFiles().authFiles();
 		if (auth_files.find(doc_fname) == auth_files.end()) {
 			choice = frontend::Alert::prompt(security_title, security_warning2,
-				0, 0, _("Do &NOT run"), _("&Run"), _("&Always run for this document"));
+				0, 0, _("Do &not run"), _("&Run"), _("&Always run for this document"));
 			if (choice == 2)
 				auth_files.insert(doc_fname);
 		} else {
@@ -313,7 +324,7 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 		}
 	} else {
 		choice = frontend::Alert::prompt(security_title, security_warning2,
-			0, 0, _("Do &NOT run"), _("&Run"));
+			0, 0, _("Do &not run"), _("&Run"));
 	}
 	return choice != 0;
 }

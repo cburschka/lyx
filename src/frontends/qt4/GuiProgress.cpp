@@ -32,6 +32,9 @@ namespace lyx {
 namespace frontend {
 
 
+// FIXME: This dialog has issues with line breaking and size, in particular with
+// html. But it could easily be reimplemented as a QMessageBox using
+// QMessageBox::setCheckBox() available starting from Qt 5.2
 class GuiToggleWarningDialog : public QDialog, public Ui::ToggleWarningUi
 {
 public:
