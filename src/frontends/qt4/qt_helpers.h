@@ -231,6 +231,11 @@ private:
 #endif
 
 
+// Check if qstr is understood as rich text (Qt HTML) and if so, produce a
+// rendering in plain text.
+QString qtHtmlToPlainText(QString const & qstr);
+
+
 } // namespace lyx
 
 #endif // QTHELPERS_H

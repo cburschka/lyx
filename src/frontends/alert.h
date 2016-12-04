@@ -41,6 +41,8 @@ int prompt(docstring const & title, docstring const & question,
  * Only use this if the user cannot perform some remedial action.
  * \p askshowagain will display a check box where the user can turn off the
  * warning for future cases. Ponder carefully if this is feasible.
+ *
+ * The console output takes care of converting any Qt html to plain text.
  */
 void warning(docstring const & title, docstring const & message,
 	     bool const & askshowagain = false);
@@ -49,6 +51,8 @@ void warning(docstring const & title, docstring const & message,
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
  * On some systems it is possible to show a backtrace.
+ *
+ * The console output takes care of converting any Qt html to plain text.
  */
 void error(docstring const & title, docstring const & message, bool backtrace = false);
 

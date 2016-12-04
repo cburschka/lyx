@@ -683,4 +683,14 @@ QString formatToolTip(QString text, int em)
 }
 
 
+QString qtHtmlToPlainText(QString const & html)
+{
+	if (!Qt::mightBeRichText(html))
+		return html;
+	QTextDocument td;
+	td.setHtml(html);
+	return td.toPlainText();
+}
+
+
 } // namespace lyx

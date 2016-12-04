@@ -69,6 +69,12 @@ void noAppDialog(QString const & title, QString const & msg, QMessageBox::Icon m
 namespace Alert {
 
 
+docstring toPlainText(docstring const & msg)
+{
+	return qstring_to_ucs4(qtHtmlToPlainText(toqstr(msg)));
+}
+
+
 int doPrompt(docstring const & title0, docstring const & question,
 		  int default_button, int cancel_button,
 		  docstring const & b1, docstring const & b2,
@@ -76,9 +82,9 @@ int doPrompt(docstring const & title0, docstring const & question,
 {
 	//lyxerr << "PROMPT" << title0 << "FOCUS: " << qApp->focusWidget() << endl;
 	if (!use_gui || lyxerr.debugging()) {
-		lyxerr << title0 << '\n'
+		lyxerr << toPlainText(title0) << '\n'
 		       << "----------------------------------------\n"
-		       << question << endl;
+		       << toPlainText(question) << endl;
 
 		lyxerr << "Assuming answer is ";
 		switch (default_button) {
@@ -148,9 +154,9 @@ int prompt(docstring const & title0, docstring const & question,
 void doWarning(docstring const & title0, docstring const & message,
 	     bool const & askshowagain)
 {
-	lyxerr << "Warning: " << title0 << '\n'
+	lyxerr << "Warning: " << toPlainText(title0) << '\n'
 	       << "----------------------------------------\n"
-	       << message << endl;
+	       << toPlainText(message) << endl;
 
 	if (!use_gui)
 		return;
@@ -200,9 +206,9 @@ void warning(docstring const & title0, docstring const & message,
 
 void doError(docstring const & title0, docstring const & message, bool backtrace)
 {
-	lyxerr << "Error: " << title0 << '\n'
+	lyxerr << "Error: " << toPlainText(title0) << '\n'
 	       << "----------------------------------------\n"
-	       << message << endl;
+	       << toPlainText(message) << endl;
 
 	QString details;
 	if (backtrace) {
@@ -251,9 +257,9 @@ void error(docstring const & title0, docstring const & message, bool backtrace)
 void doInformation(docstring const & title0, docstring const & message)
 {
 	if (!use_gui || lyxerr.debugging())
-		lyxerr << title0 << '\n'
+		lyxerr << toPlainText(title0) << '\n'
 		       << "----------------------------------------\n"
-		       << message << endl;
+		       << toPlainText(message) << endl;
 
 	if (!use_gui)
 		return;
@@ -298,7 +304,7 @@ bool doAskForText(docstring & response, docstring const & msg,
 {
 	if (!use_gui || lyxerr.debugging()) {
 		lyxerr << "----------------------------------------\n"
-		       << msg << '\n'
+		       << toPlainText(msg) << '\n'
 		       << "Assuming answer is " << dflt << '\n'
 		       << "----------------------------------------" << endl;
 		if (!use_gui) {
