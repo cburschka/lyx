@@ -477,7 +477,6 @@ void GuiSymbols::updateSymbolList(bool update_combo)
 		// this happens when the encoding changes when moving the cursor
 		categoryCO->setCurrentIndex(0);
 		updateSymbolList(false);
-		return;
 	}
 }
 
