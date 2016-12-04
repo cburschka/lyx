@@ -938,6 +938,15 @@ void MathMacro::write(WriteStream & os) const
 	// we should be ok to continue even if this fails.
 	LATTEST(d->macro_);
 
+	// We may already be in the argument of a macro
+	bool const inside_macro = os.insideMacro();
+	os.insideMacro(true);
+
+	// Enclose in braces to avoid latex errors with xargs if we have
+	// optional arguments and are in the optional argument of a macro
+	if (d->optionals_ && inside_macro)
+		os << '{';
+
 	// Always protect macros in a fragile environment
 	if (os.fragile())
 		os << "\\protect";
@@ -976,9 +985,13 @@ void MathMacro::write(WriteStream & os) const
 		first = false;
 	}
 
-	// add space if there was no argument
-	if (first)
+	// Close the opened brace or add space if there was no argument
+	if (d->optionals_ && inside_macro)
+		os << '}';
+	else if (first)
 		os.pendingSpace(true);
+
+	os.insideMacro(inside_macro);
 }
 
 

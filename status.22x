@@ -147,6 +147,9 @@ What's new
 - Do not use the clipboard stack when transforming selection into an
   inset (bug 6570).
 
+- Fix display and output of math macros with optional arguments appearing
+  in the optional argument of another macro.
+
 * INTERNALS
 
 
