@@ -152,16 +152,13 @@ const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 QString getBlock(char_type c)
 {
 	// store an educated guess for the next search
+	// 0 <= lastBlock < no_blocks
 	// FIXME THREAD
 	static int lastBlock = 0;
 
 	// "clever reset"
 	if (c < 0x7f)
 		lastBlock = 0;
-
-	// off the end already
-	if (lastBlock == no_blocks)
-		return QString();
 
 	// c falls into a covered area, and we can guess which
 	if (c >= unicode_blocks[lastBlock].start
@@ -177,8 +174,18 @@ QString getBlock(char_type c)
 	int i = 0;
 	while (i < no_blocks && c > unicode_blocks[i].end)
 		++i;
-	if (i == no_blocks || c < unicode_blocks[i].start)
+
+	if (i == no_blocks)
 		return QString();
+
+	if (c < unicode_blocks[i].start) {
+		// 0 < i < no_blocks
+		// cache the previous block for guessing next time
+		lastBlock = i - 1;
+		return QString();
+	}
+
+	// 0 <= i < no_blocks
 	// cache the last block for guessing next time
 	lastBlock = i;
 	return unicode_blocks[lastBlock].qname;
