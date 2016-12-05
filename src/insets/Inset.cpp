@@ -625,12 +625,6 @@ ColorCode Inset::labelColor() const
 }
 
 
-void Inset::setDimCache(MetricsInfo const & mi, Dimension const & dim) const
-{
-	mi.base.bv->coordCache().insets().add(this, dim);
-}
-
-
 Buffer const * Inset::updateFrontend() const
 {
 	//FIXME (Abdel 03/12/10): see bugs #6814 and #6949

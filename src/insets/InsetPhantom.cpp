@@ -135,15 +135,6 @@ docstring InsetPhantom::layoutName() const
 }
 
 
-void InsetPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCollapsable::metrics(mi, dim);
-
-	// cache the inset dimension
-	setDimCache(mi, dim);
-}
-
-
 void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 {
 	// draw the text

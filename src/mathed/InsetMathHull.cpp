@@ -515,8 +515,6 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			if (display())
 				dim.des += displayMargin();
 		}
-		// Cache the inset dimension.
-		setDimCache(mi, dim);
 		return;
 	}
 
@@ -550,9 +548,6 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	math_font_max_dim(mi.base.font, asc, des);
 	dim.asc = max(dim.asc, asc);
 	dim.des = max(dim.des, des);
-	// Cache the inset dimension.
-	// FIXME: This will overwrite InsetMathGrid dimension, is that OK?
-	setDimCache(mi, dim);
 }
 
 

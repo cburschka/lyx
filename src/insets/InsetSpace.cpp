@@ -260,8 +260,6 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			// shut up compiler
 			break;
 	}
-	// Cache the inset dimension.
-	setDimCache(mi, dim);
 }
 
 

@@ -103,8 +103,6 @@ void InsetNewpage::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = defaultRowHeight();
 	dim.des = defaultRowHeight();
 	dim.wid = mi.base.textwidth;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

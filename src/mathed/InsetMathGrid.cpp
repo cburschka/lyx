@@ -589,8 +589,6 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 */
 	dim.wid += leftMargin() + rightMargin();
 	metricsMarkers2(mi, dim);
-	// Cache the inset dimension.
-	setDimCache(mi, dim);
 }
 
 

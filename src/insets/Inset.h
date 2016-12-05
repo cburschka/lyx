@@ -216,8 +216,6 @@ public:
 	int xo(BufferView const & bv) const;
 	/// last drawn position for 'important' insets
 	int yo(BufferView const & bv) const;
-	///
-	void setDimCache(MetricsInfo const &, Dimension const &) const;
 	/// do we cover screen position x/y?
 	bool covers(BufferView const & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in Cursor.cpp)

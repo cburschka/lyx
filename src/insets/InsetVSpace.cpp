@@ -150,8 +150,6 @@ void InsetVSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = height / 2 + (a - d) / 2; // align cursor with the
 	dim.des = height - dim.asc;         // label text
 	dim.wid = ADD_TO_VSPACE_WIDTH + 2 * vspace_arrow_size + 5 + w;
-	// Cache the inset dimension. 
-	setDimCache(mi, dim);
 }
 
 

@@ -173,9 +173,6 @@ void InsetIPADeco::metrics(MetricsInfo & mi, Dimension & dim) const
 		theFontMetrics(font).rectText(label, w, a, d);
 		dim.des += int(d * 1.5);
 	}
-
-	// cache the inset dimension
-	setDimCache(mi, dim);
 }
 
 
@@ -413,7 +410,6 @@ void InsetIPAChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	docstring ds(s.begin(), s.end());
 	dim.wid = fm.width(ds);
-	setDimCache(mi, dim);
 }
 
 

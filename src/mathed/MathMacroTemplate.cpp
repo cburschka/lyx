@@ -578,8 +578,6 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid += 6;
 	dim.des += 2;
 	dim.asc += 2;
-
-	setDimCache(mi, dim);
 }
 
 

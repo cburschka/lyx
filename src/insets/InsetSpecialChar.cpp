@@ -129,8 +129,6 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 	if (dim.wid == 0)
 		dim.wid = fm.width(s);
-
-	setDimCache(mi, dim);
 }
 
 

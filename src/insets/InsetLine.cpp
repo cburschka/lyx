@@ -132,9 +132,6 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	dim.asc = max(fm.maxAscent(), offset_ + height_);
 	dim.des = max(fm.maxDescent(), - offset_);
-
-	// Cache the inset dimension
-	setDimCache(mi, dim);
 }
 
 

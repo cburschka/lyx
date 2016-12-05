@@ -174,8 +174,6 @@ void InsetPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des += TEXT_TO_INSET_OFFSET;
 		// insert a one pixel gap
 		dim.wid += 1;
-		// Cache the inset dimension.
-		setDimCache(mi, dim);
 		Dimension dim_dummy;
 		MetricsInfo mi_dummy = mi;
 		InsetText::metrics(mi_dummy, dim_dummy);
