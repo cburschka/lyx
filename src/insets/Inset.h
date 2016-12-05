@@ -108,6 +108,8 @@ public:
 
 	/// change associated Buffer
 	virtual void setBuffer(Buffer & buffer);
+	/// reset associated Buffer to null value
+	virtual void resetBuffer();
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;

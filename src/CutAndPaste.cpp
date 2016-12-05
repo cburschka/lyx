@@ -652,7 +652,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	// are not linked to something else.
 	it = copy_pars.begin();
 	for (; it != it_end; ++it) {
-		it->setBuffer(*static_cast<Buffer *>(0));
+		it->resetBuffer();
 		it->setInsetOwner(0);
 	}
 

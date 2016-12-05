@@ -10,17 +10,14 @@
  */
 
 #include <config.h>
-#include <algorithm>
 
 #include "InsetList.h"
 
-#include "Buffer.h"
-#include "BufferParams.h"
-#include "BranchList.h"
-
-#include "insets/InsetBranch.h"
+#include "insets/Inset.h"
 
 #include "support/debug.h"
+
+#include <algorithm>
 
 using namespace std;
 
@@ -81,6 +78,15 @@ void InsetList::setBuffer(Buffer & b)
 	List::iterator end = list_.end();
 	for (; it != end; ++it)
 		it->inset->setBuffer(b);
+}
+
+
+void InsetList::resetBuffer()
+{
+	List::iterator it = list_.begin();
+	List::iterator end = list_.end();
+	for (; it != end; ++it)
+		it->inset->resetBuffer();
 }
 
 

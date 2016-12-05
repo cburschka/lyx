@@ -186,6 +186,12 @@ void Inset::setBuffer(Buffer & buffer)
 }
 
 
+void Inset::resetBuffer()
+{
+	buffer_ = nullptr;
+}
+
+
 Buffer & Inset::buffer()
 {
 	if (!buffer_) {

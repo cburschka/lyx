@@ -3534,6 +3534,12 @@ void Paragraph::setBuffer(Buffer & b)
 }
 
 
+void Paragraph::resetBuffer()
+{
+	d->insetlist_.resetBuffer();
+}
+
+
 Inset * Paragraph::releaseInset(pos_type pos)
 {
 	Inset * inset = d->insetlist_.release(pos);

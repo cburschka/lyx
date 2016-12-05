@@ -36,6 +36,8 @@ public:
 	InsetList(InsetList const &, pos_type beg, pos_type end);
 	///
 	void setBuffer(Buffer &);
+	///
+	void resetBuffer();
 
 	///
 	class InsetTable {
