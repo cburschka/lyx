@@ -609,7 +609,6 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 			// one pixel gap in front
 			preview_->draw(pi, x + 1, y);
 		}
-		setPosCache(pi, x, y);
 		return;
 	}
 
@@ -637,7 +636,6 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	if (canPaintChange(*bv))
 		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc,
 		                    x + dim.wid, y + dim.des);
-	setPosCache(pi, x, y);
 }
 
 

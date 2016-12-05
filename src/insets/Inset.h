@@ -216,8 +216,6 @@ public:
 	int xo(BufferView const & bv) const;
 	/// last drawn position for 'important' insets
 	int yo(BufferView const & bv) const;
-	/// set x/y drawing position cache if available
-	virtual void setPosCache(PainterInfo const &, int, int) const;
 	///
 	void setDimCache(MetricsInfo const &, Dimension const &) const;
 	/// do we cover screen position x/y?

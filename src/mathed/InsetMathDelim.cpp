@@ -131,7 +131,6 @@ void InsetMathDelim::draw(PainterInfo & pi, int x, int y) const
 	mathed_draw_deco(pi, x, b, dw_, dim.height(), left_);
 	mathed_draw_deco(pi, x + dim.width() - dw_,
 		b, dw_, dim.height(), right_);
-	setPosCache(pi, x, y);
 }
 
 

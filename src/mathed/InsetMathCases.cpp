@@ -56,7 +56,6 @@ void InsetMathCases::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	mathed_draw_deco(pi, x + 1, y - dim.ascent(), 6, dim.height(), from_ascii("{"));
 	InsetMathGrid::draw(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 

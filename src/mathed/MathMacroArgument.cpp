@@ -69,7 +69,6 @@ void MathMacroArgument::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
 	drawStrRed(pi, x, y, str_);
-	setPosCache(pi, x, y);
 }
 
 

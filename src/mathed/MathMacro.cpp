@@ -624,7 +624,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	setPosCache(pi, x, y);
 	int expx = x;
 	int expy = y;
 

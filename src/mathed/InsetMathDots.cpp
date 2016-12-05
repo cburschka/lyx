@@ -69,7 +69,6 @@ void InsetMathDots::draw(PainterInfo & pi, int x, int y) const
 		--y;
 	mathed_draw_deco(pi, x + 2, y - dh_, dim.width() - 2, dim.ascent(),
 		key_->name);
-	setPosCache(pi, x, y);
 }
 
 

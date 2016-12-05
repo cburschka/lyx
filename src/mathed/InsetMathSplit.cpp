@@ -106,7 +106,6 @@ void InsetMathSplit::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeEnsureMath();
 	InsetMathGrid::draw(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 

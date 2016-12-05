@@ -152,7 +152,6 @@ void InsetIPA::draw(PainterInfo & pi, int x, int y) const
 {
 	if (previewState(pi.base.bv)) {
 		preview_->draw(pi, x, y);
-		setPosCache(pi, x, y);
 		return;
 	}
 	InsetText::draw(pi, x, y);

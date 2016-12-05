@@ -139,7 +139,6 @@ void InsetPreview::draw(PainterInfo & pi, int x, int y) const
 	if (previewState(pi.base.bv)) {
 		// one pixel gap in front
 		preview_->draw(pi, x + 1, y);
-		setPosCache(pi, x, y);
 	} else
 		InsetText::draw(pi, x, y);
 }

@@ -549,7 +549,6 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 	pi.pain.line(t, d - 3, t, d, pen_color);
 	pi.pain.line(x, d, x + 3, d, pen_color);
 	pi.pain.line(t - 3, d, t, d, pen_color);
-	setPosCache(pi, x, y);
 }
 
 
@@ -566,7 +565,6 @@ void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
 	pi.pain.line(t, a + 3, t, a, pen_color);
 	pi.pain.line(x, a, x + 3, a, pen_color);
 	pi.pain.line(t - 3, a, t, a, pen_color);
-	setPosCache(pi, x, y);
 }
 
 
@@ -624,13 +622,6 @@ ColorCode Inset::backgroundColor(PainterInfo const & /*pi*/) const
 ColorCode Inset::labelColor() const
 {
 	return Color_foreground;
-}
-
-
-void Inset::setPosCache(PainterInfo const & pi, int x, int y) const
-{
-	//LYXERR("Inset: set position cache to " << x << " " << y);
-	pi.base.bv->coordCache().insets().add(this, x, y);
 }
 
 

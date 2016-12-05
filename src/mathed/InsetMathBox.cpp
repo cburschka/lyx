@@ -146,7 +146,6 @@ void InsetMathFBox::draw(PainterInfo & pi, int x, int y) const
 		dim.width() - 2, dim.height() - 2, Color_foreground);
 	Changer dummy = pi.base.changeFontSet("textnormal");
 	cell(0).draw(pi, x + 3, y);
-	setPosCache(pi, x, y);
 }
 
 
@@ -370,7 +369,6 @@ void InsetMathBoxed::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
 		dim.width() - 2, dim.height() - 2, Color_foreground);
 	cell(0).draw(pi, x + 3, y);
-	setPosCache(pi, x, y);
 }
 
 

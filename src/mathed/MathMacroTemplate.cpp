@@ -590,7 +590,6 @@ void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy1 = pi.base.changeFontSet("mathnormal");
 	Changer dummy2 = pi.base.font.changeStyle(LM_ST_TEXT);
 
-	setPosCache(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
 
 	// draw outer frame

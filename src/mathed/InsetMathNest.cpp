@@ -265,14 +265,13 @@ void InsetMathNest::dump() const
 }
 
 
-void InsetMathNest::draw(PainterInfo & pi, int x, int y) const
+void InsetMathNest::draw(PainterInfo &, int, int) const
 {
 #if 0
 	if (lock_)
 		pi.pain.fillRectangle(x, y - ascent(), width(), height(),
 					Color_mathlockbg);
 #endif
-	setPosCache(pi, x, y);
 }
 
 

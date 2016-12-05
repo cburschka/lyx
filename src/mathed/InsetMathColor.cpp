@@ -60,7 +60,6 @@ void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x + 1, y);
 	pi.base.font.setColor(origcol);
 	drawMarkers(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 

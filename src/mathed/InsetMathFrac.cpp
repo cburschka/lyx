@@ -275,7 +275,6 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
 	Changer dummy3 = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const dim0 = cell(0).dimension(*pi.base.bv);

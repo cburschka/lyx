@@ -95,7 +95,6 @@ void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy = pi.base.changeFontSet(font());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 

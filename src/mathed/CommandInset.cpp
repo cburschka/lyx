@@ -58,7 +58,6 @@ Inset * CommandInset::editXY(Cursor & cur, int /*x*/, int /*y*/)
 void CommandInset::draw(PainterInfo & pi, int x, int y) const
 {
 	button_.draw(pi, x, y);
-	setPosCache(pi, x, y);
 }
 
 
