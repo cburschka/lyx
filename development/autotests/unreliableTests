@@ -60,6 +60,11 @@ Sublabel: varying_versions
 # Note that a full, up-to-date TeX Live installation is required so this
 # sublabel is about versions of other dependencies.
 
+# Encoding cp858 only supported by some iconv variants
+# Gnu iconv only supports it, if configured with "--enable-extra-encodings"
+# (see https://www.gnu.org/software/libiconv/)
+export/export/latex/cp858_pdf2
+
 
 Sublabel: wrong_output
 ######################
