@@ -41,7 +41,6 @@ private:
 	/// Inset inherited methods.
 	//@{
 	InsetCode lyxCode() const { return LINE_CODE; }
-	Dimension const dimension(BufferView const &) const;
 	int docbook(odocstream &, OutputParams const &) const;
 	/// Does nothing at the moment.
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;

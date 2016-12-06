@@ -157,7 +157,7 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 	ColorCode const origcol = pi.base.font.color();
 	pi.base.font.setColor(Color_special);
 	pi.base.font.setColor(origcol);
-	Dimension const dim = Inset::dimension(*pi.base.bv);
+	Dimension const dim = dimension(*pi.base.bv);
 
 	if (params_.type == InsetPhantomParams::Phantom ||
 		params_.type == InsetPhantomParams::VPhantom) {

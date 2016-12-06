@@ -138,14 +138,6 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-Dimension const InsetLine::dimension(BufferView const & bv) const
-{
-	// We cannot use InsetCommand::dimension() as this returns the dimension
-	// of the button, which is not used here.
-	return Inset::dimension(bv);
-}
-
-
 void InsetLine::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);

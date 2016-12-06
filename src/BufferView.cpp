@@ -2804,19 +2804,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 		}
 
 		// remember width for the case that sl.inset() is positioned in an RTL inset
-		if (i && dit[i - 1].text()) {
-			// If this Inset is inside a Text Inset, retrieve the Dimension
-			// from the containing text instead of using Inset::dimension() which
-			// might not be implemented.
-			// FIXME (Abdel 23/09/2007): this is a bit messy because of the
-			// elimination of Inset::dim_ cache. This coordOffset() method needs
-			// to be rewritten in light of the new design.
-			Dimension const & dim = coordCache().getInsets().dim(&sl.inset());
-			lastw = dim.wid;
-		} else {
-			Dimension const dim = sl.inset().dimension(*this);
-			lastw = dim.wid;
-		}
+		lastw = sl.inset().dimension(*this).wid;
 
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;

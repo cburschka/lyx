@@ -99,9 +99,6 @@ protected:
 	std::string contextMenuName() const;
 	///
 	bool showInsetDialog(BufferView * bv) const;
-	///
-	Dimension const dimension(BufferView const &) const 
-		{ return button_.dimension(); }
 	//@}
 
 protected:

@@ -209,6 +209,9 @@ public:
 	void metricsMarkers(Dimension & dim, int framesize = 1) const;
 	/// add space for markers
 	void metricsMarkers2(Dimension & dim, int framesize = 1) const;
+
+	/// last metrics computed for the inset
+	Dimension const dimension(BufferView const &) const;
 	/// last drawn position for 'important' insets
 	int xo(BufferView const & bv) const;
 	/// last drawn position for 'important' insets
@@ -218,7 +221,7 @@ public:
 	///
 	void setDimCache(MetricsInfo const &, Dimension const &) const;
 	/// do we cover screen position x/y?
-	virtual bool covers(BufferView const & bv, int x, int y) const;
+	bool covers(BufferView const & bv, int x, int y) const;
 	/// get the screen positions of the cursor (see note in Cursor.cpp)
 	virtual void cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const;
@@ -569,8 +572,6 @@ public:
 	/// reject the changes within the inset
 	virtual void rejectChanges() {}
 
-	///
-	virtual Dimension const dimension(BufferView const &) const;
 	///
 	virtual ColorCode backgroundColor(PainterInfo const &) const;
 	///

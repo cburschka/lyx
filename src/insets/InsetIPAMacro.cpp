@@ -146,7 +146,7 @@ docstring InsetIPADeco::layoutName() const
 void InsetIPADeco::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetText::metrics(mi, dim);
-	
+
 	if (params_.type == InsetIPADecoParams::Toptiebar) {
 		// consider width of the inset label
 		FontInfo font(getLayout().labelfont());
@@ -187,7 +187,7 @@ void InsetIPADeco::draw(PainterInfo & pi, int x, int y) const
 	// draw the inset marker
 	drawMarkers(pi, x, y);
 
-	Dimension const dim = Inset::dimension(*pi.base.bv);
+	Dimension const dim = dimension(*pi.base.bv);
 
 	if (params_.type == InsetIPADecoParams::Toptiebar) {
 		FontInfo font(getLayout().labelfont());
@@ -293,7 +293,7 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());
-	
+
 	if (params_.type == InsetIPADecoParams::Toptiebar) {
 		os << before;
 		os.put(0x0361);

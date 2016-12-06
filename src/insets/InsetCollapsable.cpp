@@ -258,7 +258,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		view_[&bv].button_dim_.y2 = 0;
 	}
 
-	Dimension const textdim = InsetText::dimension(bv);
+	Dimension const textdim = dimensionHelper(bv);
 	int const baseline = y;
 	int textx, texty;
 	Geometry g = geometry(bv);
@@ -366,7 +366,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 		status_ = Open;
 
 	InsetText::cursorPos(bv, sl, boundary, x, y);
-	Dimension const textdim = InsetText::dimension(bv);
+	Dimension const textdim = dimensionHelper(bv);
 
 	switch (geometry(bv)) {
 	case LeftButton:

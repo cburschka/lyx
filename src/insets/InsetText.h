@@ -47,7 +47,7 @@ public:
 	void setBuffer(Buffer &);
 
 	///
-	Dimension const dimension(BufferView const &) const;
+	Dimension const dimensionHelper(BufferView const &) const;
 
 	/// empty inset to empty par
 	void clear();
