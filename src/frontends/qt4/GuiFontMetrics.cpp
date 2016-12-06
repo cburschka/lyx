@@ -205,6 +205,8 @@ GuiFontMetrics::getTextLayout(docstring const & s, QFont font,
 int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
                           double const wordspacing) const
 {
+	if (pos <= 0)
+		return rtl ? width(s) : 0;
 	QTextLayout const & tl = getTextLayout(s, font_, rtl, wordspacing);
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
