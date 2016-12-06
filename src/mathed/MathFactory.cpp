@@ -495,7 +495,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathMakebox(buf, true));
 	if (s == "makebox")
 		return MathAtom(new InsetMathMakebox(buf, false));
-	if (s == "kern")
+	if (s == "kern" || s == "mkern")
 		return MathAtom(new InsetMathKern);
 	if (s.substr(0, 8) == "xymatrix") {
 		char spacing_code = '\0';

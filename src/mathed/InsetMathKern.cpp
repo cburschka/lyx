@@ -61,6 +61,8 @@ void InsetMathKern::write(WriteStream & os) const
 {
 	if (wid_.empty())
 		os << "\\kern" << ' ';
+	else if (wid_.unit() == Length::MU)
+		os << "\\mkern" << from_utf8(wid_.asLatexString()) << ' ';
 	else
 		os << "\\kern" << from_utf8(wid_.asLatexString()) << ' ';
 }

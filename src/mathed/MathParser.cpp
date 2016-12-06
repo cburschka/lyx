@@ -1763,7 +1763,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
-		else if (t.cs() == "kern") {
+		else if (t.cs() == "kern" || t.cs() == "mkern") {
 			// FIXME: A hack...
 			docstring s;
 			int num_tokens = 0;
