@@ -164,7 +164,8 @@ Row::Row()
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
 	  changed_(false), crc_(0),
-	  pit_(0), pos_(0), end_(0), right_boundary_(false), flushed_(false)
+	  pit_(0), pos_(0), end_(0),
+	  right_boundary_(false), flushed_(false), rtl_(false)
 {}
 
 
@@ -565,6 +566,7 @@ void Row::reverseRTL(bool const rtl_par)
 	// If the paragraph itself is RTL, reverse everything
 	if (rtl_par)
 		reverse(elements_.begin(), elements_.end());
+	rtl_ = rtl_par;
 }
 
 } // namespace lyx

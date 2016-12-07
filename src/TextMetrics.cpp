@@ -563,7 +563,7 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 		// justification on screen' setting.
 		if ((row.flushed() && !forced_block)
 		    || !bv_->buffer().params().justification)
-			align = text_->isRTL(par) ? LYX_ALIGN_RIGHT : LYX_ALIGN_LEFT;
+			align = row.isRTL() ? LYX_ALIGN_RIGHT : LYX_ALIGN_LEFT;
 	}
 
 	return align;
@@ -620,7 +620,7 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 		switch (getAlign(par, row)) {
 		case LYX_ALIGN_BLOCK:
 			// Expand expanding characters by a total of w
-			if (!row.setExtraWidth(w) && text_->isRTL(par)) {
+			if (!row.setExtraWidth(w) && row.isRTL()) {
 				// Justification failed and the text is RTL: align to the right
 				row.left_margin += w;
 				row.dimension().wid += w;
@@ -1988,15 +1988,14 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintAppendix();
 		rp.paintDepthBar();
 		rp.paintChangeBar();
-		bool const is_rtl = text_->isRTL(text_->getPar(pit));
-		if (i == 0 && !is_rtl)
+		if (i == 0 && !row.isRTL())
 			rp.paintFirst();
-		if (i == nrows - 1 && is_rtl)
+		if (i == nrows - 1 && row.isRTL())
 			rp.paintLast();
 		rp.paintText();
-		if (i == nrows - 1 && !is_rtl)
+		if (i == nrows - 1 && !row.isRTL())
 			rp.paintLast();
-		if (i == 0 && is_rtl)
+		if (i == 0 && row.isRTL())
 			rp.paintFirst();
 		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
 				      row_x + row.right_x() > bv_->workWidth());

@@ -29,7 +29,6 @@ class Language;
 class PainterInfo;
 class Paragraph;
 class ParagraphList;
-class ParagraphMetrics;
 class Text;
 class TextMetrics;
 
@@ -79,7 +78,7 @@ private:
 
 	/// Text for the row
 	Text const & text_;
-	TextMetrics const & text_metrics_;
+	TextMetrics const & tm_;
 	ParagraphList const & pars_;
 
 	/// The row to paint
@@ -87,7 +86,6 @@ private:
 
 	/// Row's paragraph
 	Paragraph const & par_;
-	ParagraphMetrics const & pm_;
 
 	/// row changed? (change tracking)
 	Change const change_;
@@ -96,7 +94,6 @@ private:
 	double const xo_;
 	int const yo_;    // current baseline
 	double x_;
-	int width_;
 };
 
 } // namespace lyx

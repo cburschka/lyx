@@ -26,7 +26,6 @@
 #include "Row.h"
 #include "MetricsInfo.h"
 #include "Paragraph.h"
-#include "ParagraphMetrics.h"
 #include "ParagraphParameters.h"
 #include "TextMetrics.h"
 #include "VSpace.h"
@@ -58,11 +57,11 @@ using frontend::FontMetrics;
 RowPainter::RowPainter(PainterInfo & pi,
 	Text const & text, Row const & row, int x, int y)
 	: pi_(pi), text_(text),
-	  text_metrics_(pi_.base.bv->textMetrics(&text)),
+	  tm_(pi_.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
 	  row_(row), par_(text.paragraphs()[row.pit()]),
-	  pm_(text_metrics_.parMetrics(row.pit())), change_(pi_.change_),
-	  xo_(x), yo_(y), width_(text_metrics_.width())
+	  change_(pi_.change_),
+	  xo_(x), yo_(y)
 {
 	x_ = row_.left_margin + xo_;
 
@@ -260,7 +259,7 @@ void RowPainter::paintChangeBar() const
 	if (start == end || !par_.isChanged(start, end))
 		return;
 
-	int const height = text_metrics_.isLastRow(row_)
+	int const height = tm_.isLastRow(row_)
 		? row_.ascent()
 		: row_.height();
 
@@ -280,7 +279,7 @@ void RowPainter::paintAppendix() const
 		y += 2 * defaultRowHeight();
 
 	pi_.pain.line(1, y, 1, yo_ + row_.height(), Color_appendix);
-	pi_.pain.line(width_ - 2, y, width_ - 2, yo_ + row_.height(), Color_appendix);
+	pi_.pain.line(tm_.width() - 2, y, tm_.width() - 2, yo_ + row_.height(), Color_appendix);
 }
 
 
@@ -292,7 +291,7 @@ void RowPainter::paintDepthBar() const
 		return;
 
 	depth_type prev_depth = 0;
-	if (!text_metrics_.isFirstRow(row_)) {
+	if (!tm_.isFirstRow(row_)) {
 		pit_type pit2 = row_.pit();
 		if (row_.pos() == 0)
 			--pit2;
@@ -300,7 +299,7 @@ void RowPainter::paintDepthBar() const
 	}
 
 	depth_type next_depth = 0;
-	if (!text_metrics_.isLastRow(row_)) {
+	if (!tm_.isLastRow(row_)) {
 		pit_type pit2 = row_.pit();
 		if (row_.endpos() >= pars_[pit2].size())
 			++pit2;
@@ -340,13 +339,13 @@ void RowPainter::paintAppendixStart(int y) const
 	docstring const label = _("Appendix");
 	theFontMetrics(pb_font).rectText(label, w, a, d);
 
-	int const text_start = int(xo_ + (width_ - w) / 2);
+	int const text_start = int(xo_ + (tm_.width() - w) / 2);
 	int const text_end = text_start + w;
 
 	pi_.pain.rectText(text_start, y + d, label, pb_font, Color_none, Color_none);
 
 	pi_.pain.line(int(xo_ + 1), y, text_start, y, Color_appendix);
-	pi_.pain.line(text_end, y, int(xo_ + width_ - 2), y, Color_appendix);
+	pi_.pain.line(text_end, y, int(xo_ + tm_.width() - 2), y, Color_appendix);
 }
 
 
@@ -394,14 +393,13 @@ void RowPainter::paintLabel() const
 	if (str.empty())
 		return;
 
-	bool const is_rtl = text_.isRTL(par_);
 	Layout const & layout = par_.layout();
 	FontInfo const font = labelFont();
 	FontMetrics const & fm = theFontMetrics(font);
 	double x = x_;
 
-	if (is_rtl)
-		x = width_ - row_.right_margin + fm.width(layout.labelsep);
+	if (row_.isRTL())
+		x = tm_.width() - row_.right_margin + fm.width(layout.labelsep);
 	else
 		x = x_ - fm.width(layout.labelsep) - fm.width(str);
 
@@ -412,7 +410,6 @@ void RowPainter::paintLabel() const
 void RowPainter::paintTopLevelLabel() const
 {
 	BufferParams const & bparams = pi_.base.bv->buffer().params();
-	bool const is_rtl = text_.isRTL(par_);
 	ParagraphParameters const & pparams = par_.params();
 	Layout const & layout = par_.layout();
 	FontInfo const font = labelFont();
@@ -437,10 +434,10 @@ void RowPainter::paintTopLevelLabel() const
 
 	double x = x_;
 	if (layout.labeltype == LABEL_CENTERED) {
-		x = row_.left_margin + (width_ - row_.left_margin - row_.right_margin) / 2;
+		x = row_.left_margin + (tm_.width() - row_.left_margin - row_.right_margin) / 2;
 		x -= fm.width(str) / 2;
-	} else if (is_rtl) {
-		x = width_ - row_.right_margin - fm.width(str);
+	} else if (row_.isRTL()) {
+		x = tm_.width() - row_.right_margin - fm.width(str);
 	}
 	pi_.pain.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 }
@@ -480,7 +477,6 @@ static int getEndLabel(pit_type p, Text const & text)
 
 void RowPainter::paintLast() const
 {
-	bool const is_rtl = text_.isRTL(par_);
 	int const endlabel = getEndLabel(row_.pit(), text_);
 
 	// paint imaginary end-of-paragraph character
@@ -516,11 +512,11 @@ void RowPainter::paintLast() const
 
 		// If needed, move the box a bit to avoid overlapping with text.
 		int x = 0;
-		if (is_rtl) {
+		if (row_.isRTL()) {
 			int const normal_x = nestMargin() + changebarMargin();
 			x = min(normal_x, row_.left_margin - size - Inset::TEXT_TO_INSET_OFFSET);
 		} else {
-			int const normal_x = width_ - row_.right_margin
+			int const normal_x = tm_.width() - row_.right_margin
 				- size - Inset::TEXT_TO_INSET_OFFSET;
 			x = max(normal_x, row_.width());
 		}
@@ -536,7 +532,7 @@ void RowPainter::paintLast() const
 		FontInfo const font = labelFont();
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout().endlabelstring();
-		double const x = is_rtl ? x_ - fm.width(str) : x_;
+		double const x = row_.isRTL() ? x_ - fm.width(str) : x_;
 		pi_.pain.text(int(x), yo_, str, font);
 		break;
 	}
@@ -611,10 +607,9 @@ void RowPainter::paintSelection() const
 
 	int const y1 = yo_ - row_.ascent();
 	int const y2 = y1 + row_.height();
-	bool const rtl = text_.isRTL(par_);
 
 	// draw the margins
-	if (rtl ? row_.end_margin_sel : row_.begin_margin_sel)
+	if (row_.isRTL() ? row_.end_margin_sel : row_.begin_margin_sel)
 		pi_.pain.fillRectangle(int(xo_), y1, row_.left_margin, y2 - y1,
 		                       Color_selection);
 
@@ -651,9 +646,9 @@ void RowPainter::paintSelection() const
 		x += e.full_width();
 	}
 
-	if (rtl ? row_.begin_margin_sel : row_.end_margin_sel)
+	if (row_.isRTL() ? row_.begin_margin_sel : row_.end_margin_sel)
 		pi_.pain.fillRectangle(int(x), y1,
-		                       int(xo_ + text_metrics_.width()) - int(x), y2 - y1,
+		                       int(xo_ + tm_.width()) - int(x), y2 - y1,
 		                       Color_selection);
 
 }

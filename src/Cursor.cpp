@@ -790,7 +790,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 	Row::const_iterator cit = tm.findRowElement(row, pos(), boundary(), dummy);
 	// Handle the case of empty row
 	if (cit == row.end()) {
-		if (paragraph().isRTL(buffer()->params()))
+		if (row.isRTL())
 			right_pos = row.pos();
 		else
 			left_pos = row.pos() - 1;
@@ -864,10 +864,8 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 
 bool Cursor::posVisToNewRow(bool movingLeft)
 {
-	Paragraph const & par = paragraph();
-	Buffer const & buf = *buffer();
 	Row const & row = textRow();
-	bool par_is_LTR = !par.isRTL(buf.params());
+	bool par_is_LTR = !row.isRTL();
 
 	// Inside a table, determining whether to move to the next or
 	// previous row should be done based on the table's direction.
