@@ -88,6 +88,12 @@ char const * const latex_quote_babel[2][5] = {
   { "\\glqq ", "''", "``", "\\flqq{}", "\\frqq{}" }
 };
 
+char const * const latex_quote_html[2][5] = {
+	{ "&sbquo;",  "&rsquo;", "&lsquo;",
+	  "&lsaquo;", "&rsaquo;" },
+  { "&bdquo;", "&rdquo;", "&ldquo;", "&laquo;", "&raquo;" }
+};
+
 } // namespace anon
 
 
@@ -99,10 +105,14 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
 	: Inset(buf), times_(t)
 {
-	if (buf)
+	if (buf) {
 		language_ = buf->params().quotes_language;
-	else
+		fontenc_ = (buf->params().fontenc == "global")
+			? lyxrc.fontenc : buf->params().fontenc;
+	} else {
 		language_ = EnglishQuotes;
+		fontenc_ = lyxrc.fontenc;
+	}
 
 	setSide(c);
 }
@@ -250,7 +260,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
-	} else if (lyxrc.fontenc == "T1" && !runparams.use_polyglossia) {
+	} else if (fontenc_ == "T1" && !runparams.use_polyglossia) {
 		qstr = latex_quote_t1[times_][quoteind];
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
@@ -263,12 +273,14 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		qstr = latex_quote_babel[times_][quoteind];
 	}
 
-	// Always guard against unfortunate ligatures (!` ?`)
+	// Always guard against unfortunate ligatures (!` ?` `` '' ,, << >>)
+	char_type const lastchar = os.lastChar();
 	if (prefixIs(qstr, "`")) {
-		char_type const lastchar = os.lastChar();
 		if (lastchar == '!' || lastchar == '?')
 			qstr.insert(0, "{}");
 	}
+	if (qstr[1] == lastchar)
+		qstr.insert(0, "{}");
 
 	os << from_ascii(qstr);
 }
@@ -284,16 +296,8 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 
 docstring InsetQuotes::getQuoteEntity() const {
-	if (times_ == DoubleQuotes) {
-		if (side_ == LeftQuote)
-			return from_ascii("&ldquo;");
-		else
-			return from_ascii("&rdquo;");
-	}
-	if (side_ == LeftQuote)
-		return from_ascii("&lsquo;");
-	else
-		return from_ascii("&rsquo;");
+	const int quoteind = quote_index[side_][language_];
+	return from_ascii(latex_quote_html[times_][quoteind]);
 }
 
 
@@ -332,7 +336,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 #else
 	if (!features.useBabel()
 #endif
-	    && lyxrc.fontenc != "T1") {
+	    && fontenc_ != "T1") {
 		if (times_ == SingleQuotes)
 			switch (type) {
 			case ',': features.require("quotesinglbase"); break;

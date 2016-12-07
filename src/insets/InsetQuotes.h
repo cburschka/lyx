@@ -116,6 +116,8 @@ private:
 	QuoteSide side_;
 	///
 	QuoteTimes times_;
+	///
+	std::string fontenc_;
 };
 
 } // namespace lyx
