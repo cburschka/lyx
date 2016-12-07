@@ -88,7 +88,7 @@ char const * const latex_quote_babel[2][5] = {
   { "\\glqq ", "''", "``", "\\flqq{}", "\\frqq{}" }
 };
 
-char const * const latex_quote_html[2][5] = {
+char const * const html_quote[2][5] = {
 	{ "&sbquo;",  "&rsquo;", "&lsquo;",
 	  "&lsaquo;", "&rsaquo;" },
   { "&bdquo;", "&rdquo;", "&ldquo;", "&laquo;", "&raquo;" }
@@ -297,7 +297,7 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 docstring InsetQuotes::getQuoteEntity() const {
 	const int quoteind = quote_index[side_][language_];
-	return from_ascii(latex_quote_html[times_][quoteind]);
+	return from_ascii(html_quote[times_][quoteind]);
 }
 
 
