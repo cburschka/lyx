@@ -96,6 +96,15 @@ def convert_dateinset(document):
         continue
 
 
+def convert_inputenc(document):
+    " Replace no longer supported input encoding settings. "
+    i = find_token(document.header, "\\inputenc", 0)
+    if i == -1:
+        return
+    if get_value(document.header, "\\inputencoding", i) == "pt254":
+        document.header[i] = "\\inputencoding pt154"
+    
+
 def convert_ibranches(document):
     ' Add "inverted 0" to branch insets'
     i = 0
@@ -212,21 +221,21 @@ def revert_beamer_article_styles(document):
                                           "Provides geometry 0",
                                           "Provides hyperref 0",
                                           "DefaultFont",
-                                          "	Family                Roman",
-                                          "	Series                Medium",
-                                          "	Shape                 Up",
-                                          "	Size                  Normal",
-                                          "	Color                 None",
+                                          "     Family                Roman",
+                                          "     Series                Medium",
+                                          "     Shape                 Up",
+                                          "     Size                  Normal",
+                                          "     Color                 None",
                                           "EndFont",
                                           "Preamble",
-                                          "	\\usepackage{beamerarticle,pgf}",
-                                          "	% this default might be overridden by plain title style",
-                                          "	\\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
-                                          "	\\AtBeginDocument{",
-                                          "		\\let\\origtableofcontents=\\tableofcontents",
-                                          "		\\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
-                                          "		\\def\\gobbletableofcontents#1{\\origtableofcontents}",
-                                          "	}",
+                                          "     \\usepackage{beamerarticle,pgf}",
+                                          "     % this default might be overridden by plain title style",
+                                          "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
+                                          "     \\AtBeginDocument{",
+                                          "             \\let\\origtableofcontents=\\tableofcontents",
+                                          "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
+                                          "             \\def\\gobbletableofcontents#1{\\origtableofcontents}",
+                                          "     }",
                                           "EndPreamble",
                                           "### End of insertion by lyx2lyx (more [scr]article styles) ###"]
         return
@@ -269,16 +278,16 @@ def revert_bosnian(document):
         document.language = "english"
         i = find_token(document.header, "\\language bosnian", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options bosnian,")
+            document.header[k] = document.header[k].replace("\\options", "\\options bosnian,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options bosnian")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options bosnian")
 
 
 def revert_friulan(document):
@@ -288,16 +297,16 @@ def revert_friulan(document):
         document.language = "english"
         i = find_token(document.header, "\\language friulan", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options friulan,")
+            document.header[k] = document.header[k].replace("\\options", "\\options friulan,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options friulan")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options friulan")
 
 
 def revert_macedonian(document):
@@ -307,16 +316,16 @@ def revert_macedonian(document):
         document.language = "english"
         i = find_token(document.header, "\\language macedonian", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options macedonian,")
+            document.header[k] = document.header[k].replace("\\options", "\\options macedonian,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options macedonian")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options macedonian")
 
 
 def revert_piedmontese(document):
@@ -326,16 +335,16 @@ def revert_piedmontese(document):
         document.language = "english"
         i = find_token(document.header, "\\language piedmontese", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options piedmontese,")
+            document.header[k] = document.header[k].replace("\\options", "\\options piedmontese,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options piedmontese")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options piedmontese")
 
 
 def revert_romansh(document):
@@ -345,16 +354,16 @@ def revert_romansh(document):
         document.language = "english"
         i = find_token(document.header, "\\language romansh", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options romansh,")
+            document.header[k] = document.header[k].replace("\\options", "\\options romansh,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options romansh")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options romansh")
 
 
 def revert_amharic(document):
@@ -364,10 +373,10 @@ def revert_amharic(document):
         document.language = "english"
         i = find_token(document.header, "\\language amharic", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{amharic}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -385,10 +394,10 @@ def revert_asturian(document):
         document.language = "english"
         i = find_token(document.header, "\\language asturian", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{asturian}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -406,10 +415,10 @@ def revert_kannada(document):
         document.language = "english"
         i = find_token(document.header, "\\language kannada", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{kannada}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -427,10 +436,10 @@ def revert_khmer(document):
         document.language = "english"
         i = find_token(document.header, "\\language khmer", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{khmer}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -448,10 +457,10 @@ def revert_urdu(document):
         document.language = "english"
         i = find_token(document.header, "\\language urdu", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{urdu}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -469,10 +478,10 @@ def revert_syriac(document):
         document.language = "english"
         i = find_token(document.header, "\\language syriac", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package default"
+            document.header[j] = "\\language_package default"
         add_to_preamble(document, ["\\AtBeginDocument{\setotherlanguage{syriac}}"])
         document.body[2 : 2] = ["\\begin_layout Standard",
                                 "\\begin_inset ERT", "status open", "",
@@ -495,10 +504,12 @@ convert = [
            [512, [convert_beamer_article_styles]],
            [513, []],
            [514, []],
-           [515, []]
+           [515, []],
+           [516, [convert_inputenc]],
           ]
 
 revert =  [
+           [516, []],
            [514, [revert_urdu, revert_syriac]],
            [513, [revert_amharic, revert_asturian, revert_kannada, revert_khmer]],
            [512, [revert_bosnian, revert_friulan, revert_macedonian, revert_piedmontese, revert_romansh]],
