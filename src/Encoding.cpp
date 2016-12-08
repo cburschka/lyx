@@ -25,8 +25,9 @@
 
 #include <boost/cstdint.hpp>
 
-#include <sstream>
+#include <iterator>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 using namespace lyx::support;
