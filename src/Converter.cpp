@@ -285,8 +285,8 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 		return true;
 	const docstring security_warning = bformat(
 	      _("<p>The requested operation requires the use of a converter from "
-	        "%2$s to %3$s:"
-	        "<blockquote><tt>%1$s</tt></blockquote>"
+	        "%2$s to %3$s:</p>"
+	        "<blockquote><p><tt>%1$s</tt></p></blockquote>"
 	        "<p>This external program can execute arbitrary commands on your "
 	        "system, including dangerous ones, if instructed to do so by a "
 	        "maliciously crafted .lyx document.</p>"),
