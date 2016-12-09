@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-05 00:56+0100\n"
-"PO-Revision-Date: 2016-12-05 02:49+0100\n"
+"POT-Creation-Date: 2016-12-09 15:50+0100\n"
+"PO-Revision-Date: 2016-12-09 16:31+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -2571,7 +2571,7 @@ msgid "A&vailable:"
 msgstr "&Disponibili:"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:103
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:187
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:184
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
 msgstr "A&ggiungi"
@@ -3121,74 +3121,74 @@ msgstr "I suggerimenti lunghi verranno troncati e visualizzati con \"...\"."
 msgid "&Use \"...\" to shorten long completions"
 msgstr "&Usa \"...\" per abbreviare i suggerimenti lunghi"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:25
-msgid "Converter Defi&nitions"
-msgstr "Convertitori defi&niti"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:81
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:82
 msgid "C&onverter:"
-msgstr "C&onvertitore:"
+msgstr "&Convertitore:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:91
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:92
 msgid "E&xtra flag:"
-msgstr "Opzione s&upplementare:"
+msgstr "&Opzione supplementare:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:121
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:122
 msgid "&From format:"
-msgstr "Dal &formato:"
+msgstr "&Dal formato:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:153
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:152
 msgid "&To format:"
-msgstr "&Al formato:"
+msgstr "Al &formato:"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:194
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:191
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 msgid "&Modify"
 msgstr "&Modifica"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:209
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:204
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
 #: src/frontends/qt4/GuiPrefs.cpp:2951 src/frontends/qt4/GuiPrefs.cpp:3038
 msgid "Remo&ve"
 msgstr "&Rimuovi"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:234
-msgid "Converter File Cache"
-msgstr "Cache per i convertitori"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:235
+msgid "Converter Defi&nitions"
+msgstr "Con&vertitori definiti"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:254
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:271
 msgid "&Enabled"
-msgstr "&Abilitata"
+msgstr "A&bilitata"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:274
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:286
 msgid "Maximum a&ge (in days):"
-msgstr "Durata &massima (in giorni):"
+msgstr "D&urata massima (in giorni):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:312
 msgid "Security"
 msgstr "Sicurezza"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:312
-msgid "&Forbid use of needauth converters"
-msgstr "Non usare &convertitori insicuri"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:328
+msgid "Converter File Cache"
+msgstr "Cache per i convertitori"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:315
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:356
 msgid "When enabled, use of converters with the 'needauth' option is forbidden."
 msgstr ""
 "Attivando questa opzione viene impedito l'utilizzo di convertitori esterni "
 "per cui è specificata l'opzione supplementare 'needauth'."
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:322
-msgid "Use need&auth option"
-msgstr "C&hiedi conferma per convertitori insicuri"
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:359
+msgid "&Forbid use of needauth converters"
+msgstr "&Non usare convertitori insicuri"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:325
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:366
 msgid ""
 "When enabled, ask user before launching any external converter with the "
 "'needauth' option."
 msgstr ""
 "Attivando questa opzione viene chiesta conferma prima di eseguire "
 "convertitori esterni per cui è specificata l'opzione supplementare 'needauth'."
+
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:369
+msgid "Use need&auth option"
+msgstr "C&hiedi conferma per convertitori insicuri"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &graphics"
@@ -5197,9 +5197,9 @@ msgstr "Titolo breve"
 #: lib/layouts/ijmpd.layout:98 lib/layouts/ijmpd.layout:116
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
-#: lib/layouts/iopart.layout:62 lib/layouts/iopart.layout:136
-#: lib/layouts/iopart.layout:155 lib/layouts/iopart.layout:180
-#: lib/layouts/iopart.layout:209 lib/layouts/iucr.layout:113
+#: lib/layouts/iopart.layout:63 lib/layouts/iopart.layout:137
+#: lib/layouts/iopart.layout:156 lib/layouts/iopart.layout:181
+#: lib/layouts/iopart.layout:210 lib/layouts/iucr.layout:113
 #: lib/layouts/iucr.layout:178 lib/layouts/jasatex.layout:64
 #: lib/layouts/jasatex.layout:90 lib/layouts/jasatex.layout:110
 #: lib/layouts/jasatex.layout:151 lib/layouts/jasatex.layout:171
@@ -5278,7 +5278,7 @@ msgstr "JEL:"
 #: lib/layouts/apa6.layout:250 lib/layouts/elsart.layout:64
 #: lib/layouts/elsarticle.layout:286 lib/layouts/ijmpc.layout:222
 #: lib/layouts/ijmpc.layout:226 lib/layouts/ijmpd.layout:230
-#: lib/layouts/iopart.layout:205 lib/layouts/isprs.layout:53
+#: lib/layouts/iopart.layout:206 lib/layouts/isprs.layout:53
 #: lib/layouts/jasatex.layout:196 lib/layouts/jss.layout:87
 #: lib/layouts/kluwer.layout:286 lib/layouts/paper.layout:177
 #: lib/layouts/revtex4-1.layout:154 lib/layouts/revtex4.layout:271
@@ -5297,7 +5297,7 @@ msgstr "Parole chiave"
 #: lib/layouts/acmsiggraph.layout:167 lib/layouts/agu_stdtitle.inc:123
 #: lib/layouts/apa6.layout:266 lib/layouts/ectaart.layout:127
 #: lib/layouts/elsarticle.layout:298 lib/layouts/ijmpd.layout:234
-#: lib/layouts/iopart.layout:216 lib/layouts/jasatex.layout:209
+#: lib/layouts/iopart.layout:217 lib/layouts/jasatex.layout:209
 #: lib/layouts/jss.layout:100 lib/layouts/kluwer.layout:293
 #: lib/layouts/paper.layout:180 lib/layouts/revtex4-1.layout:162
 #: lib/layouts/revtex4.layout:276 lib/layouts/sigplanconf.layout:188
@@ -5321,7 +5321,7 @@ msgstr "Parole chiave:"
 #: lib/layouts/elsarticle.layout:257 lib/layouts/elsarticle.layout:274
 #: lib/layouts/entcs.layout:86 lib/layouts/foils.layout:152
 #: lib/layouts/ijmpc.layout:209 lib/layouts/ijmpd.layout:217
-#: lib/layouts/iopart.layout:176 lib/layouts/iopart.layout:193
+#: lib/layouts/iopart.layout:177 lib/layouts/iopart.layout:194
 #: lib/layouts/isprs.layout:26 lib/layouts/jasatex.layout:167
 #: lib/layouts/jasatex.layout:184 lib/layouts/jss.layout:51
 #: lib/layouts/jss.layout:68 lib/layouts/kluwer.layout:263
@@ -5987,7 +5987,7 @@ msgstr "Standard"
 #: lib/layouts/elsarticle.layout:82 lib/layouts/entcs.layout:40
 #: lib/layouts/foils.layout:130 lib/layouts/hollywood.layout:333
 #: lib/layouts/ijmpc.layout:107 lib/layouts/ijmpd.layout:112
-#: lib/layouts/iopart.layout:58 lib/layouts/isprs.layout:94
+#: lib/layouts/iopart.layout:59 lib/layouts/isprs.layout:94
 #: lib/layouts/jasatex.layout:60 lib/layouts/jss.layout:40
 #: lib/layouts/kluwer.layout:113 lib/layouts/latex8.layout:39
 #: lib/layouts/llncs.layout:108 lib/layouts/ltugboat.layout:140
@@ -6029,7 +6029,7 @@ msgstr "minuscolo"
 #: lib/layouts/elsarticle.layout:149 lib/layouts/entcs.layout:51
 #: lib/layouts/foils.layout:138 lib/layouts/hollywood.layout:320
 #: lib/layouts/ijmpc.layout:126 lib/layouts/ijmpd.layout:131
-#: lib/layouts/iopart.layout:132 lib/layouts/isprs.layout:77
+#: lib/layouts/iopart.layout:133 lib/layouts/isprs.layout:77
 #: lib/layouts/jasatex.layout:86 lib/layouts/jss.layout:47
 #: lib/layouts/kluwer.layout:168 lib/layouts/llncs.layout:183
 #: lib/layouts/ltugboat.layout:160 lib/layouts/paper.layout:125
@@ -6139,8 +6139,8 @@ msgstr "Appendici"
 #: lib/layouts/europasscv.layout:425 lib/layouts/europecv.layout:293
 #: lib/layouts/ijmpc.layout:428 lib/layouts/ijmpc.layout:452
 #: lib/layouts/ijmpd.layout:441 lib/layouts/ijmpd.layout:465
-#: lib/layouts/iopart.layout:249 lib/layouts/iopart.layout:271
-#: lib/layouts/iopart.layout:295 lib/layouts/isprs.layout:210
+#: lib/layouts/iopart.layout:250 lib/layouts/iopart.layout:272
+#: lib/layouts/iopart.layout:296 lib/layouts/isprs.layout:210
 #: lib/layouts/iucr.layout:235 lib/layouts/iucr.layout:241
 #: lib/layouts/jasatex.layout:233 lib/layouts/jasatex.layout:273
 #: lib/layouts/kluwer.layout:306 lib/layouts/llncs.layout:270
@@ -6207,8 +6207,8 @@ msgstr "Bibliografia"
 #: lib/layouts/amsdefs.inc:216 lib/layouts/beamer.layout:1078
 #: lib/layouts/cl2emult.layout:122 lib/layouts/egs.layout:593
 #: lib/layouts/elsarticle.layout:322 lib/layouts/ijmpc.layout:464
-#: lib/layouts/ijmpd.layout:477 lib/layouts/iopart.layout:283
-#: lib/layouts/iopart.layout:298 lib/layouts/iucr.layout:239
+#: lib/layouts/ijmpd.layout:477 lib/layouts/iopart.layout:284
+#: lib/layouts/iopart.layout:299 lib/layouts/iucr.layout:239
 #: lib/layouts/iucr.layout:246 lib/layouts/jasatex.layout:285
 #: lib/layouts/kluwer.layout:347 lib/layouts/kluwer.layout:360
 #: lib/layouts/llncs.layout:285 lib/layouts/moderncv.layout:515
@@ -6348,7 +6348,7 @@ msgstr "Sommario."
 #: lib/layouts/europasscv.layout:100 lib/layouts/europecv.layout:65
 #: lib/layouts/g-brief.layout:182 lib/layouts/g-brief2.layout:40
 #: lib/layouts/g-brief2.layout:775 lib/layouts/ijmpc.layout:144
-#: lib/layouts/iopart.layout:151 lib/layouts/isprs.layout:112
+#: lib/layouts/iopart.layout:152 lib/layouts/isprs.layout:112
 #: lib/layouts/jss.layout:74 lib/layouts/kluwer.layout:186
 #: lib/layouts/lyxmacros.inc:44 lib/layouts/moderncv.layout:135
 #: lib/layouts/revtex.layout:122 lib/layouts/revtex4-1.layout:107
@@ -6364,7 +6364,7 @@ msgstr "Indirizzo"
 #: lib/layouts/amsdefs.inc:149 lib/layouts/db_stdcharstyles.inc:76
 #: lib/layouts/db_stdcharstyles.inc:78 lib/layouts/ectaart.layout:73
 #: lib/layouts/elsarticle.layout:243 lib/layouts/europasscv.layout:122
-#: lib/layouts/europecv.layout:71 lib/layouts/iopart.layout:166
+#: lib/layouts/europecv.layout:71 lib/layouts/iopart.layout:167
 #: lib/layouts/iucr.layout:132 lib/layouts/iucr.layout:133
 #: lib/layouts/jasatex.layout:142 lib/layouts/latex8.layout:65
 #: lib/layouts/lettre.layout:50 lib/layouts/lettre.layout:404
@@ -6694,7 +6694,7 @@ msgid "Altaffilation"
 msgstr "Affiliazione alt."
 
 #: lib/layouts/aastex.layout:185 lib/layouts/agutex.layout:124
-#: src/mathed/InsetMathHull.cpp:1783 src/mathed/InsetMathHull.cpp:1792
+#: src/mathed/InsetMathHull.cpp:1776 src/mathed/InsetMathHull.cpp:1785
 msgid "Number"
 msgstr "Numero"
 
@@ -6877,7 +6877,7 @@ msgstr "Articolo ACS (American Chemical Society)"
 #: lib/layouts/beamer.layout:209 lib/layouts/beamer.layout:262
 #: lib/layouts/beamer.layout:321 lib/layouts/beamer.layout:380
 #: lib/layouts/beamer.layout:904 lib/layouts/europecv.layout:137
-#: lib/layouts/iopart.layout:65 lib/layouts/jasatex.layout:74
+#: lib/layouts/iopart.layout:66 lib/layouts/jasatex.layout:74
 #: lib/layouts/memoir.layout:56 lib/layouts/revtex4-1.layout:199
 #: lib/layouts/scrclass.inc:126 lib/layouts/scrclass.inc:137
 #: lib/layouts/scrclass.inc:148 lib/layouts/scrclass.inc:286
@@ -7186,7 +7186,7 @@ msgstr "E-mail"
 #: lib/layouts/acmsiggraph-0-92.layout:341 lib/layouts/acmsiggraph.layout:299
 #: lib/layouts/acmsiggraph.layout:306 lib/layouts/agutex.layout:185
 #: lib/layouts/apa.layout:234 lib/layouts/apa6.layout:302
-#: lib/layouts/iopart.layout:245 lib/layouts/iopart.layout:259
+#: lib/layouts/iopart.layout:246 lib/layouts/iopart.layout:260
 #: lib/layouts/jasatex.layout:230 lib/layouts/jasatex.layout:236
 #: lib/layouts/revtex4-1.layout:212 lib/layouts/revtex4.layout:240
 #: lib/layouts/revtex4.layout:250 lib/layouts/sigplanconf.layout:220
@@ -8031,7 +8031,7 @@ msgstr "Sei affiliazioni"
 
 #: lib/layouts/apa6.layout:206 lib/layouts/beamer.layout:1504
 #: lib/layouts/elsart.layout:407 lib/layouts/fixme.module:107
-#: lib/layouts/iopart.layout:101 lib/layouts/llncs.layout:371
+#: lib/layouts/iopart.layout:102 lib/layouts/llncs.layout:371
 #: lib/layouts/powerdot.layout:206 lib/layouts/slides.layout:169
 #: lib/layouts/stdinsets.inc:137
 #: lib/layouts/theorems-ams-extended-bytype.module:202
@@ -9290,7 +9290,7 @@ msgstr "DinBrief"
 #: lib/layouts/dinbrief.layout:31 lib/layouts/dinbrief.layout:359
 #: lib/layouts/g-brief.layout:18 lib/layouts/g-brief.layout:37
 #: lib/layouts/g-brief.layout:234 lib/layouts/g-brief2.layout:58
-#: lib/layouts/g-brief2.layout:64 lib/layouts/iopart.layout:125
+#: lib/layouts/g-brief2.layout:64 lib/layouts/iopart.layout:126
 #: lib/layouts/moderncv.layout:489 lib/layouts/moderncv.layout:496
 #: lib/layouts/moderncv.layout:528 lib/layouts/scrlettr.layout:42
 #: lib/layouts/scrlettr.layout:43 lib/layouts/scrlettr.layout:74
@@ -11614,66 +11614,66 @@ msgstr "La rimanente parte della parola o testo iniziale"
 msgid "Institute of Physics (IOP)"
 msgstr "Institute of Physics (IOP)"
 
-#: lib/layouts/iopart.layout:66 lib/layouts/jasatex.layout:75
+#: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
 msgstr "Forma breve del titolo che appare nella riga di intestazione"
 
-#: lib/layouts/iopart.layout:83
+#: lib/layouts/iopart.layout:84
 msgid "Review"
 msgstr "Revisioni"
 
-#: lib/layouts/iopart.layout:89
+#: lib/layouts/iopart.layout:90
 msgid "Topical"
 msgstr "Tematico"
 
-#: lib/layouts/iopart.layout:95 lib/layouts/pdfcomment.module:127
+#: lib/layouts/iopart.layout:96 lib/layouts/pdfcomment.module:127
 #: lib/layouts/pdfcomment.module:164 lib/layouts/stdinsets.inc:115
 msgid "Comment"
 msgstr "Commento"
 
-#: lib/layouts/iopart.layout:107
+#: lib/layouts/iopart.layout:108
 msgid "Paper"
 msgstr "Carta"
 
-#: lib/layouts/iopart.layout:113
+#: lib/layouts/iopart.layout:114
 msgid "Prelim"
 msgstr "Prelim"
 
-#: lib/layouts/iopart.layout:119
+#: lib/layouts/iopart.layout:120
 msgid "Rapid"
 msgstr "Rapid"
 
-#: lib/layouts/iopart.layout:224 lib/layouts/jasatex.layout:217
+#: lib/layouts/iopart.layout:225 lib/layouts/jasatex.layout:217
 #: lib/layouts/revtex4-1.layout:170 lib/layouts/revtex4.layout:259
 #: lib/layouts/svglobal3.layout:67 lib/layouts/svglobal3.layout:70
 msgid "PACS"
 msgstr "PACS"
 
-#: lib/layouts/iopart.layout:227
+#: lib/layouts/iopart.layout:228
 msgid "Physics and Astronomy Classification System number:"
 msgstr "Numero del Sistema di Classificazione Fisica ed Astronomica:"
 
-#: lib/layouts/iopart.layout:231
+#: lib/layouts/iopart.layout:232
 msgid "MSC"
 msgstr "MSC"
 
-#: lib/layouts/iopart.layout:234
+#: lib/layouts/iopart.layout:235
 msgid "Mathematics Subject Classification number:"
 msgstr "Numero di Classificazione Soggetto Matematica:"
 
-#: lib/layouts/iopart.layout:238
+#: lib/layouts/iopart.layout:239
 msgid "submitto"
 msgstr "sottoposto"
 
-#: lib/layouts/iopart.layout:241
+#: lib/layouts/iopart.layout:242
 msgid "submit to paper:"
 msgstr "sottoposto a:"
 
-#: lib/layouts/iopart.layout:267
+#: lib/layouts/iopart.layout:268
 msgid "Bibliography (plain)"
 msgstr "Bibliografia (semplice)"
 
-#: lib/layouts/iopart.layout:292
+#: lib/layouts/iopart.layout:293
 msgid "Bibliography heading"
 msgstr "Intestazione bibliografica"
 
@@ -16482,207 +16482,203 @@ msgstr "Minion Pro (New TX)"
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
-#: lib/encodings:31
+#: lib/encodings:50
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
 
-#: lib/encodings:36
+#: lib/encodings:55
 msgid "Unicode (ucs-extended) (utf8x)"
 msgstr "Unicode (ucs-esteso) (utf8x)"
 
-#: lib/encodings:40
+#: lib/encodings:59
 msgid "Armenian (ArmSCII8)"
 msgstr "Armeno (ArmSCII8)"
 
-#: lib/encodings:43
+#: lib/encodings:62
 msgid "Western European (ISO 8859-1)"
 msgstr "Europa occidentale (ISO 8859-1)"
 
-#: lib/encodings:46
+#: lib/encodings:65
 msgid "Central European (ISO 8859-2)"
 msgstr "Europa centrale (ISO 8859-2)"
 
-#: lib/encodings:49
+#: lib/encodings:68
 msgid "South European (ISO 8859-3)"
 msgstr "Europa meridionale (ISO 8859-3)"
 
-#: lib/encodings:52
+#: lib/encodings:71
 msgid "Baltic (ISO 8859-4)"
 msgstr "Baltico (ISO 8859-4)"
 
-#: lib/encodings:55
+#: lib/encodings:75
 msgid "Cyrillic (ISO 8859-5)"
 msgstr "Cirillico (ISO 8859-5)"
 
-#: lib/encodings:59
+#: lib/encodings:79
 msgid "Arabic (ISO 8859-6)"
 msgstr "Arabo (ISO 8859-6)"
 
-#: lib/encodings:63
+#: lib/encodings:83
 msgid "Greek (ISO 8859-7)"
 msgstr "Greco (ISO 8859-7)"
 
-#: lib/encodings:66
+#: lib/encodings:86
 msgid "Hebrew (ISO 8859-8)"
 msgstr "Ebraico (ISO 8859-8)"
 
-#: lib/encodings:69
+#: lib/encodings:89
 msgid "Turkish (ISO 8859-9)"
 msgstr "Turco (ISO 8859-9)"
 
-#: lib/encodings:72
+#: lib/encodings:92
 msgid "Baltic (ISO 8859-13)"
 msgstr "Baltico (ISO 8859-13)"
 
-#: lib/encodings:75
+#: lib/encodings:95
 msgid "Western European (ISO 8859-15)"
 msgstr "Europa occidentale (ISO 8859-15)"
 
-#: lib/encodings:78
+#: lib/encodings:98
 msgid "South-Eastern European (ISO 8859-16)"
 msgstr "Europa sudorientale (ISO 8859-16)"
 
-#: lib/encodings:81
+#: lib/encodings:101
 msgid "Western European (Macintosh Roman)"
 msgstr "Europa occidentale (Macintosh Roman)"
 
-#: lib/encodings:84
+#: lib/encodings:104
 msgid "DOS (CP 437)"
 msgstr "DOS (CP 437)"
 
-#: lib/encodings:88
+#: lib/encodings:108
 msgid "DOS-de (CP 437-de)"
 msgstr "DOS-de (CP 437-de)"
 
-#: lib/encodings:91
+#: lib/encodings:111
 msgid "Western European (CP 850)"
 msgstr "Europa occidentale (CP 850)"
 
-#: lib/encodings:94
+#: lib/encodings:114
 msgid "Central European (CP 852)"
 msgstr "Europa centrale (CP 852)"
 
-#: lib/encodings:97
+#: lib/encodings:118
 msgid "Cyrillic (CP 855)"
 msgstr "Cirillico (CP 855)"
 
-#: lib/encodings:101
+#: lib/encodings:123
 msgid "Western European (CP 858)"
 msgstr "Europa occidentale (CP 858)"
 
-#: lib/encodings:104
+#: lib/encodings:126
 msgid "Hebrew (CP 862)"
 msgstr "Ebraico (CP 862)"
 
-#: lib/encodings:107
+#: lib/encodings:129
 msgid "Nordic languages (CP 865)"
 msgstr "Linguaggi nordici (CP 865)"
 
-#: lib/encodings:110
+#: lib/encodings:133
 msgid "Cyrillic (CP 866)"
 msgstr "Cirillico (CP 866)"
 
-#: lib/encodings:113
+#: lib/encodings:136
 msgid "Central European (CP 1250)"
 msgstr "Europa centrale (CP 1250)"
 
-#: lib/encodings:116
+#: lib/encodings:140
 msgid "Cyrillic (CP 1251)"
 msgstr "Cirillico (CP 1251)"
 
-#: lib/encodings:120
+#: lib/encodings:144
 msgid "Western European (CP 1252)"
 msgstr "Europa occidentale (CP 1252)"
 
-#: lib/encodings:123
+#: lib/encodings:147
 msgid "Hebrew (CP 1255)"
 msgstr "Ebraico (CP 1255)"
 
-#: lib/encodings:127
+#: lib/encodings:151
 msgid "Arabic (CP 1256)"
 msgstr "Arabo (CP 1256)"
 
-#: lib/encodings:130
+#: lib/encodings:154
 msgid "Baltic (CP 1257)"
 msgstr "Baltico (CP 1257)"
 
-#: lib/encodings:133
+#: lib/encodings:158
 msgid "Cyrillic (KOI8-R)"
 msgstr "Cirillico (KOI8-R)"
 
-#: lib/encodings:136
+#: lib/encodings:162
 msgid "Cyrillic (KOI8-U)"
 msgstr "Cirillico (KOI8-U)"
 
-#: lib/encodings:139
+#: lib/encodings:166
 msgid "Cyrillic (pt 154)"
 msgstr "Cirillico (pt 154)"
 
-#: lib/encodings:143
-msgid "Cyrillic (pt 254)"
-msgstr "Cirillico (pt 254)"
-
-#: lib/encodings:154
+#: lib/encodings:177
 msgid "Chinese (traditional) (Big5)"
 msgstr "Cinese (tradizionale) (Big5)"
 
-#: lib/encodings:164
+#: lib/encodings:187
 msgid "Japanese (CJK) (SJIS)"
 msgstr "Giapponese (CJK) (SJIS)"
 
-#: lib/encodings:171
+#: lib/encodings:194
 msgid "Chinese (simplified) (EUC-CN)"
 msgstr "Cinese (semplificato) (EUC-CN)"
 
-#: lib/encodings:175
+#: lib/encodings:198
 msgid "Chinese (simplified) (GBK)"
 msgstr "Cinese (semplificato) (GBK)"
 
-#: lib/encodings:179
+#: lib/encodings:202
 msgid "Japanese (CJK) (JIS)"
 msgstr "Giapponese (CJK) (JIS)"
 
-#: lib/encodings:183
+#: lib/encodings:206
 msgid "Korean (EUC-KR)"
 msgstr "Coreano (EUC-KR)"
 
-#: lib/encodings:187
+#: lib/encodings:210
 msgid "Unicode (CJK) (utf8)"
 msgstr "Unicode (CJK) (utf8)"
 
-#: lib/encodings:191
+#: lib/encodings:214
 msgid "Chinese (traditional) (EUC-TW)"
 msgstr "Cinese (tradizionale) (EUC-TW)"
 
-#: lib/encodings:195
+#: lib/encodings:218
 msgid "Japanese (CJK) (EUC-JP)"
 msgstr "Giapponese (CJK) (EUC-JP)"
 
-#: lib/encodings:202
+#: lib/encodings:225
 msgid "Japanese (pLaTeX) (EUC-JP)"
 msgstr "Giapponese (pLaTeX) (EUC-JP)"
 
-#: lib/encodings:204
+#: lib/encodings:227
 msgid "Japanese (pLaTeX) (JIS)"
 msgstr "Giapponese (pLaTeX) (JIS)"
 
-#: lib/encodings:206
+#: lib/encodings:229
 msgid "Japanese (pLaTeX) (SJIS)"
 msgstr "Giapponese (pLaTeX) (SJIS)"
 
-#: lib/encodings:208
+#: lib/encodings:231
 msgid "Japanese (pLaTeX) (UTF8)"
 msgstr "Giapponese (pLaTeX) (EUC-JP)"
 
-#: lib/encodings:215
+#: lib/encodings:238
 msgid "Thai (TIS 620-0)"
 msgstr "Tailandese (TIS 620-0)"
 
-#: lib/encodings:220
+#: lib/encodings:243
 msgid "Unicode (XeTeX) (utf8)"
 msgstr "Unicode (XeTeX) (utf8)"
 
-#: lib/encodings:224
+#: lib/encodings:247
 msgid "ASCII"
 msgstr "ASCII"
 
@@ -17144,18 +17140,18 @@ msgid "Paragraph Break|B"
 msgstr "Nuovo paragrafo|v"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1359 src/mathed/InsetMathNest.cpp:611
+#: src/Text3.cpp:1359 src/mathed/InsetMathNest.cpp:610
 msgid "Cut"
 msgstr "Taglia"
 
 #: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:105 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1364 src/mathed/InsetMathNest.cpp:620
+#: src/Text3.cpp:1364 src/mathed/InsetMathNest.cpp:619
 msgid "Copy"
 msgstr "Copia"
 
 #: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1305 src/mathed/InsetMathGrid.cpp:1586
-#: src/mathed/InsetMathNest.cpp:590
+#: src/Text3.cpp:1305 src/mathed/InsetMathGrid.cpp:1584
+#: src/mathed/InsetMathNest.cpp:589
 msgid "Paste"
 msgstr "Incolla"
 
@@ -24596,14 +24592,14 @@ msgstr ""
 "rappresentabili nella codifica corrente e sono stati omessi:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2048 src/Encoding.cpp:245 src/Paragraph.cpp:2572
+#: src/BufferParams.cpp:2048 src/Encoding.cpp:246 src/Paragraph.cpp:2572
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:170
 #: src/insets/InsetListings.cpp:178 src/insets/InsetListings.cpp:201
 #: src/mathed/MathExtern.cpp:1479
 msgid "LyX Warning: "
 msgstr "Avviso di LyX: "
 
-#: src/BufferParams.cpp:2049 src/Encoding.cpp:246 src/Paragraph.cpp:2573
+#: src/BufferParams.cpp:2049 src/Encoding.cpp:247 src/Paragraph.cpp:2573
 #: src/insets/InsetListings.cpp:171 src/insets/InsetListings.cpp:179
 #: src/mathed/MathExtern.cpp:1480
 msgid "uncodable character"
@@ -24805,7 +24801,7 @@ msgstr "Documento %1$s inserito."
 msgid "Could not insert document %1$s"
 msgstr "Non riesco ad inserire il documento %1$s"
 
-#: src/BufferView.cpp:3184
+#: src/BufferView.cpp:3172
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -24816,11 +24812,11 @@ msgstr ""
 "%1$s\n"
 "a causa dell'errore: %2$s"
 
-#: src/BufferView.cpp:3186
+#: src/BufferView.cpp:3174
 msgid "Could not read file"
 msgstr "Non riesco a leggere il file"
 
-#: src/BufferView.cpp:3193
+#: src/BufferView.cpp:3181
 #, c-format
 msgid ""
 "%1$s\n"
@@ -24829,15 +24825,15 @@ msgstr ""
 "%1$s\n"
 "non può essere letto."
 
-#: src/BufferView.cpp:3194 src/output.cpp:39
+#: src/BufferView.cpp:3182 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Non riesco ad aprire il file"
 
-#: src/BufferView.cpp:3201
+#: src/BufferView.cpp:3189
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lettura di un file non codificato UTF-8"
 
-#: src/BufferView.cpp:3202
+#: src/BufferView.cpp:3190
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -25264,13 +25260,13 @@ msgstr "ignora"
 #, c-format
 msgid ""
 "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
-"<blockquote><tt>%1$s</tt></blockquote><p>This external program can execute "
-"arbitrary commands on your system, including dangerous ones, if instructed to "
-"do so by a maliciously crafted .lyx document.</p>"
+"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program can "
+"execute arbitrary commands on your system, including dangerous ones, if "
+"instructed to do so by a maliciously crafted .lyx document.</p>"
 msgstr ""
 "<p>L'operazione richiesta necessita l'uso di un convertitore da %2$s a %3$s:</"
-"p><blockquote><tt>%1$s</tt></blockquote><p>Questo programma esterno può "
-"eseguire comandi arbitrari che potrebbero recare danni al sistema se "
+"p><blockquote><p><tt>%1$s</tt></p></blockquote><p>Questo programma esterno "
+"può eseguire comandi arbitrari che potrebbero causare danni se viene "
 "richiesto di farlo da un documento LyX pericoloso.</p>"
 
 #: src/Converter.cpp:297
@@ -25284,9 +25280,9 @@ msgid ""
 "uncheck <i>Security &#x25b9; Forbid needauth converters</i>.)"
 msgstr ""
 "<p>Le impostazioni correnti impediscono la sua esecuzione.</p><p>(Questa "
-"impostazione può essere modificata in <i>Preferenze &#x25b9; Gestione file "
-"&#x25b9; Convertitori</i> togliendo la spunta a <i>Sicurezza &#x25b9; Non "
-"usare convertitori insicuri</i>.)"
+"impostazione può essere modificata in <i>Preferenze</i> &#x25b9; <i>Gestione "
+"file</i> &#x25b9; <i>Convertitori</i> togliendo la spunta a <i>Sicurezza</i> "
+"&#x25b9; <i>Non usare convertitori insicuri</i>.)"
 
 #: src/Converter.cpp:308
 msgid "An external converter requires your authorization"
@@ -25297,8 +25293,8 @@ msgid ""
 "<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
 "origin/sender of the LyX document!</b></p>"
 msgstr ""
-"<p>Devo eseguire questo convertitore?</p><p><b>Eseguitelo solo se l'origine/"
-"mittente del documento LyX è fidato!</b></p>"
+"<p>Devo eseguire questo convertitore?</p><p><b>Si consiglia di eseguirlo solo "
+"se l'origine/mittente del documento LyX è fidato!</b></p>"
 
 #: src/Converter.cpp:319 src/Converter.cpp:327
 msgid "Do &not run"
@@ -26694,7 +26690,7 @@ msgstr "[Tracciamento modifiche] "
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
 msgstr "Modificato da %1$s il %2$s. "
 
-#: src/Text.cpp:1897 src/mathed/InsetMathFont.cpp:240
+#: src/Text.cpp:1897 src/mathed/InsetMathFont.cpp:239
 #: src/mathed/InsetMathFontOld.cpp:113
 #, c-format
 msgid "Font: %1$s"
@@ -26753,7 +26749,7 @@ msgstr "Modalità editore matematico"
 msgid "No valid math formula"
 msgstr "Formula matematica non valida"
 
-#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1062
+#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1061
 msgid "Already in regular expression mode"
 msgstr "Già in modalità espressione regolare"
 
@@ -31208,19 +31204,19 @@ msgstr "Nome del parametro sconosciuto: %1$s"
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr "Parametri che cominciano per '%1$s': %2$s"
 
-#: src/insets/InsetNewpage.cpp:181 src/insets/InsetNewpage.cpp:193
+#: src/insets/InsetNewpage.cpp:179 src/insets/InsetNewpage.cpp:191
 msgid "New Page"
 msgstr "Nuova pagina"
 
-#: src/insets/InsetNewpage.cpp:184
+#: src/insets/InsetNewpage.cpp:182
 msgid "Page Break"
 msgstr "Interruzione di pagina"
 
-#: src/insets/InsetNewpage.cpp:187
+#: src/insets/InsetNewpage.cpp:185
 msgid "Clear Page"
 msgstr "Azzera pagina"
 
-#: src/insets/InsetNewpage.cpp:190
+#: src/insets/InsetNewpage.cpp:188
 msgid "Clear Double Page"
 msgstr "Azzera pagina doppia"
 
@@ -31256,15 +31252,15 @@ msgstr "HPhantom"
 msgid "VPhantom"
 msgstr "VPhantom"
 
-#: src/insets/InsetPhantom.cpp:342 src/insets/InsetPhantom.cpp:351
+#: src/insets/InsetPhantom.cpp:333 src/insets/InsetPhantom.cpp:342
 msgid "phantom"
 msgstr "phantom"
 
-#: src/insets/InsetPhantom.cpp:345
+#: src/insets/InsetPhantom.cpp:336
 msgid "hphantom"
 msgstr "hphantom"
 
-#: src/insets/InsetPhantom.cpp:348
+#: src/insets/InsetPhantom.cpp:339
 msgid "vphantom"
 msgstr "vphantom"
 
@@ -31589,8 +31585,8 @@ msgstr "Nessuna corrispondenza trovata!"
 msgid "Match found!"
 msgstr "Corrispondenza trovata!"
 
-#: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2081
-#: src/mathed/InsetMathSplit.cpp:121 src/mathed/InsetMathSubstack.cpp:70
+#: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2074
+#: src/mathed/InsetMathSplit.cpp:120 src/mathed/InsetMathSubstack.cpp:70
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Non posso aggiungere linee verticali di griglia in '%1$s'"
@@ -31600,22 +31596,22 @@ msgstr "Non posso aggiungere linee verticali di griglia in '%1$s'"
 msgid "Box: %1$s"
 msgstr "Casella: %1$s"
 
-#: src/mathed/InsetMathCases.cpp:95
+#: src/mathed/InsetMathCases.cpp:94
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
 msgstr "Linee verticali di griglia non consentite in 'casi': opzione %1$s"
 
-#: src/mathed/InsetMathCases.cpp:102
+#: src/mathed/InsetMathCases.cpp:101
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Impossibile cambiare il numero di colonne in 'cases': opzione %1$s"
 
-#: src/mathed/InsetMathColor.cpp:120
+#: src/mathed/InsetMathColor.cpp:119
 #, c-format
 msgid "Color: %1$s"
 msgstr "Colore: %1$s"
 
-#: src/mathed/InsetMathDecoration.cpp:168
+#: src/mathed/InsetMathDecoration.cpp:167
 #, c-format
 msgid "Decoration: %1$s"
 msgstr "Decorazione: %1$s"
@@ -31625,41 +31621,41 @@ msgstr "Decorazione: %1$s"
 msgid "Environment: %1$s"
 msgstr "Ambiente: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1742
+#: src/mathed/InsetMathGrid.cpp:1740
 msgid "Cursor not in table"
 msgstr "Il cursore non è all'interno della tabella"
 
-#: src/mathed/InsetMathGrid.cpp:1747
+#: src/mathed/InsetMathGrid.cpp:1745
 msgid "Only one row"
 msgstr "Una sola riga"
 
-#: src/mathed/InsetMathGrid.cpp:1753
+#: src/mathed/InsetMathGrid.cpp:1751
 msgid "Only one column"
 msgstr "Una sola colonna"
 
-#: src/mathed/InsetMathGrid.cpp:1761
+#: src/mathed/InsetMathGrid.cpp:1759
 msgid "No hline to delete"
 msgstr "Nessuna linea orizzontale da cancellare"
 
-#: src/mathed/InsetMathGrid.cpp:1770
+#: src/mathed/InsetMathGrid.cpp:1768
 msgid "No vline to delete"
 msgstr "Nessuna linea verticale da cancellare"
 
-#: src/mathed/InsetMathGrid.cpp:1799
+#: src/mathed/InsetMathGrid.cpp:1797
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "La caratteristica della tabella '%1$s' è sconosciuta"
 
-#: src/mathed/InsetMathHull.cpp:1641
+#: src/mathed/InsetMathHull.cpp:1634
 #, c-format
 msgid "Type: %1$s"
 msgstr "Tipo: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1679
+#: src/mathed/InsetMathHull.cpp:1672
 msgid "Bad math environment"
 msgstr "Contesto matematico errato"
 
-#: src/mathed/InsetMathHull.cpp:1680
+#: src/mathed/InsetMathHull.cpp:1673
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -31667,38 +31663,38 @@ msgstr ""
 "Il calcolo non può essere effettuato in contesti matematici AMS.\n"
 "Occorre cambiare il tipo di formula matematica e riprovare."
 
-#: src/mathed/InsetMathHull.cpp:1783 src/mathed/InsetMathHull.cpp:1792
+#: src/mathed/InsetMathHull.cpp:1776 src/mathed/InsetMathHull.cpp:1785
 msgid "No number"
 msgstr "Nessun numero"
 
-#: src/mathed/InsetMathHull.cpp:2064
+#: src/mathed/InsetMathHull.cpp:2057
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Non posso cambiare il numero di righe in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:2074
+#: src/mathed/InsetMathHull.cpp:2067
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Non posso cambiare il numero di colonne in '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:729 src/mathed/InsetMathNest.cpp:1763
-#: src/mathed/InsetMathNest.cpp:1906
+#: src/mathed/InsetMathNest.cpp:728 src/mathed/InsetMathNest.cpp:1762
+#: src/mathed/InsetMathNest.cpp:1905
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorrezione disattivata ('!' per attivare)"
 
-#: src/mathed/InsetMathNest.cpp:1048
+#: src/mathed/InsetMathNest.cpp:1047
 msgid "create new math text environment ($...$)"
 msgstr "crea un nuovo ambiente di testo matematico ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1051
+#: src/mathed/InsetMathNest.cpp:1050
 msgid "entered math text mode (textrm)"
 msgstr "sono entrato in modalità testo matematico (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1073
+#: src/mathed/InsetMathNest.cpp:1072
 msgid "Regular expression editor mode"
 msgstr "Modalità editor espressione regolare"
 
-#: src/mathed/InsetMathNest.cpp:1768 src/mathed/InsetMathNest.cpp:1908
+#: src/mathed/InsetMathNest.cpp:1767 src/mathed/InsetMathNest.cpp:1907
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorrezione attivata (<spazio> per disattivare)"
 
@@ -31724,7 +31720,7 @@ msgstr "Dimensione: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Non si può modificare l'allineamento orizzontale in '%1$s'"
 
-#: src/mathed/MathMacro.cpp:1163 src/mathed/MathMacro.cpp:1169
+#: src/mathed/MathMacro.cpp:1162 src/mathed/MathMacro.cpp:1168
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Macro: %1$s"
@@ -31733,16 +31729,16 @@ msgstr "Macro: %1$s"
 msgid "optional"
 msgstr "opzionale"
 
-#: src/mathed/MathMacroTemplate.cpp:1276
+#: src/mathed/MathMacroTemplate.cpp:1273
 msgid "math macro"
 msgstr "macro matematica"
 
-#: src/mathed/MathMacroTemplate.cpp:1383
+#: src/mathed/MathMacroTemplate.cpp:1380
 #, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "Macro mat.: \\%1$s"
 
-#: src/mathed/MathMacroTemplate.cpp:1398
+#: src/mathed/MathMacroTemplate.cpp:1395
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr "Macro non valida! \\%1$s"
@@ -32082,6 +32078,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
+
+#~ msgid "Cyrillic (pt 254)"
+#~ msgstr "Cirillico (pt 254)"
 
 #~ msgid "Example:"
 #~ msgstr "Esempio:"
