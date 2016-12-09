@@ -28,6 +28,9 @@
  *      hit: 96%, 4.36usec, count=6849, total=29.89msec
  *     miss: 3%, 60.65usec, count=271, total=16.43msec
  *
+ * * if DISABLE_PMPROF is defined before including pmprof.h, the
+ *   profiler is replaced by empty macros. This is useful for quickly
+ *   checking the overhead.
  *
  * ==== ABOUT PROFILING SCOPE:
  *
@@ -100,6 +103,14 @@
 
 #ifndef PMPROF_H
 #define PMPROF_H
+
+#if defined(DISABLE_PMPROF)
+
+// Make pmprof an empty shell
+#define PROFILE_THIS_BLOCK(a)
+#define PROFILE_CACHE_MISS(a)
+
+#else
 
 #ifdef _WIN32
 #include <windows.h>
@@ -228,5 +239,6 @@ private:
 #define PROFILE_CACHE_MISS(a) \
 	PMPI_##a.hit = false;
 
+#endif // !defined(DISABLE_PMPROF)
 
 #endif
