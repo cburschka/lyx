@@ -356,7 +356,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 #else
 	if (!features.useBabel()
 #endif
-	    && fontenc_ != "T1") {
+	    && !features.usePolyglossia() && fontenc_ != "T1") {
 		if (times_ == SingleQuotes)
 			switch (type) {
 			case ',': features.require("quotesinglbase"); break;
