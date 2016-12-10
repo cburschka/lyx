@@ -90,6 +90,9 @@ public:
 	///
 	void forOutliner(docstring &, size_t const maxlen, bool const) const;
 
+	/// Update the contextual information of this inset
+	void updateBuffer(ParIterator const &, UpdateType);
+
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -118,6 +121,10 @@ private:
 	QuoteTimes times_;
 	///
 	std::string fontenc_;
+	/// Code of the contextual language
+	std::string context_lang_;
+	/// Is this in a pass-thru context?
+	bool pass_thru_;
 };
 
 } // namespace lyx

@@ -768,8 +768,9 @@ ParagraphList & InsetText::paragraphs()
 bool InsetText::insetAllowed(InsetCode code) const
 {
 	switch (code) {
-	// Arguments are also allowed in PassThru insets
+	// Arguments and (plain) quotes are also allowed in PassThru insets
 	case ARG_CODE:
+	case QUOTE_CODE:
 		return true;
 	default:
 		return !isPassThru();

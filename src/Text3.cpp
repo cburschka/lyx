@@ -1548,26 +1548,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		while (pos > 0 && par.isDeleted(pos - 1))
 			--pos;
 
-		BufferParams const & bufparams = bv->buffer().params();
-		bool const hebrew =
-			par.getFontSettings(bufparams, pos).language()->lang() == "hebrew";
-		bool const allow_inset_quote = !(par.isPassThru() || hebrew);
-
 		string const arg = to_utf8(cmd.argument());
-		if (allow_inset_quote) {
-			char_type c = ' ';
-			if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
-				c = par.getChar(pos - 1);
-			InsetQuotes::QuoteTimes const quote_type = (arg == "single")
-				? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes;
-			cur.insert(new InsetQuotes(cur.buffer(), c, quote_type));
-			cur.posForward();
-		} else {
-			// The cursor might have been invalidated by the replaceSelection.
-			cur.buffer()->changed(true);
-			string const quote_string = (arg == "single") ? "'" : "\"";
-			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, quote_string));
-		}
+		char_type c = ' ';
+		if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
+			c = par.getChar(pos - 1);
+		InsetQuotes::QuoteTimes const quote_type = (arg == "single")
+			? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes;
+		cur.insert(new InsetQuotes(cur.buffer(), c, quote_type));
+		cur.buffer()->updateBuffer();
+		cur.posForward();
 		break;
 	}
 
@@ -2860,6 +2849,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_QUOTE_INSERT:
 		// always allow this, since we will inset a raw quote
 		// if an inset is not allowed.
+		allow_in_passthru = true;
 		break;
 	case LFUN_SPECIALCHAR_INSERT:
 		code = SPECIALCHAR_CODE;

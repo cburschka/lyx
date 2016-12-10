@@ -78,7 +78,7 @@ private:
 	///
 	TexString getCaption(OutputParams const &) const;
 	///
-	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE; }
+	bool insetAllowed(InsetCode c) const { return c == CAPTION_CODE || c == QUOTE_CODE; }
 
 	///
 	InsetListingsParams params_;

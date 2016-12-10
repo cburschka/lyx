@@ -158,8 +158,20 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			if (i == 0 && par->isInset(i) && i + 1 == siz)
 				captionline = true;
 			// ignore all struck out text and (caption) insets
-			if (par->isDeleted(i) || par->isInset(i))
+			if (par->isDeleted(i)
+			    || (par->isInset(i) && par->getInset(i)->lyxCode() == CAPTION_CODE))
 				continue;
+			if (par->isInset(i)) {
+				// Currently, this can only be a quote inset
+				// that is output as plain quote here, but
+				// we use more generic code anyway.
+				otexstringstream ots;
+				OutputParams rp = runparams;
+				rp.pass_thru = true;
+				par->getInset(i)->latex(ots, rp);
+				code += ots.str();
+				continue;
+			}
 			char_type c = par->getChar(i);
 			// we can only output characters covered by the current
 			// encoding!

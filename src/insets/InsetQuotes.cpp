@@ -24,6 +24,8 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
+#include "Paragraph.h"
+#include "ParIterator.h"
 #include "texstream.h"
 
 #include "frontends/FontMetrics.h"
@@ -103,7 +105,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 }
 
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
-	: Inset(buf), times_(t)
+	: Inset(buf), times_(t), pass_thru_(false)
 {
 	if (buf) {
 		language_ = buf->params().quotes_language;
@@ -188,17 +190,18 @@ void InsetQuotes::parseString(string const & s)
 }
 
 
-// FIXME: should we add a language or a font parameter member?
 docstring InsetQuotes::displayString() const
 {
-	Language const * loclang =
-		isBufferValid() ? buffer().params().language : 0;
+	// In PassThru and Hebrew, we use straight quotes
+	if (pass_thru_ || context_lang_ == "he_IL")
+		return (times_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
+
 	int const index = quote_index[side_][language_];
 	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
-	// in french, thin spaces are added inside double quotes
+	// in French, thin spaces are added inside double quotes
 	// FIXME: this should be done by a separate quote type.
-	if (times_ == DoubleQuotes && loclang && prefixIs(loclang->code(), "fr")) {
+	if (times_ == DoubleQuotes && prefixIs(context_lang_, "fr")) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
 		if (side_ == LeftQuote)
@@ -253,7 +256,13 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	const int quoteind = quote_index[side_][language_];
 	string qstr;
 
-	if (language_ == FrenchQuotes && times_ == DoubleQuotes
+	// In some context, we output plain quotes
+	bool const force_plain = 
+		runparams.pass_thru
+		|| runparams.local_font->language()->lang() == "hebrew";
+	if (force_plain)
+		qstr = (times_ == DoubleQuotes) ? "\"" : "'";
+	else if (language_ == FrenchQuotes && times_ == DoubleQuotes
 	    && prefixIs(runparams.local_font->language()->code(), "fr")
 	    && !runparams.use_polyglossia) {
 		if (side_ == LeftQuote)
@@ -273,14 +282,16 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		qstr = latex_quote_babel[times_][quoteind];
 	}
 
-	// Always guard against unfortunate ligatures (!` ?` `` '' ,, << >>)
-	char_type const lastchar = os.lastChar();
-	if (prefixIs(qstr, "`")) {
-		if (lastchar == '!' || lastchar == '?')
+	if (!force_plain) {
+		// Always guard against unfortunate ligatures (!` ?` `` '' ,, << >>)
+		char_type const lastchar = os.lastChar();
+		if (prefixIs(qstr, "`")) {
+			if (lastchar == '!' || lastchar == '?')
+				qstr.insert(0, "{}");
+		}
+		if (qstr[1] == lastchar)
 			qstr.insert(0, "{}");
 	}
-	if (qstr[1] == lastchar)
-		qstr.insert(0, "{}");
 
 	os << from_ascii(qstr);
 }
@@ -324,6 +335,14 @@ void InsetQuotes::toString(odocstream & os) const
 void InsetQuotes::forOutliner(docstring & os, size_t const, bool const) const
 {
 	os += displayString();
+}
+
+
+void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
+{
+	BufferParams const & bp = buffer().masterBuffer()->params();
+	pass_thru_ = it.paragraph().isPassThru();
+	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
 }
 
 

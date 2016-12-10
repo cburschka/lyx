@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-12-10 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 517: InsetQuote now works in verbatim
+	  and Hebrew. On reversion, it is replaced by straight quotes
+	  in these contexts.
+
 2016-12-07 Günter Milde <milde@lyx.org>
  	* Format incremented to 516: Removed \inputenc value "pt254"
 
