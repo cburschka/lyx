@@ -25,9 +25,9 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_end_of, find_token_backwards#,
+from parser_tools import find_end_of, find_token_backwards, find_end_of_layout#,
 #  find_token, find_tokens, \
-#  find_token_exact, find_end_of_inset, find_end_of_layout, \
+#  find_token_exact, find_end_of_inset, \
 #  is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value, get_bool_value
 
@@ -502,10 +502,40 @@ def revert_quotes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           ( words[1] in ["ERT", "listings"] or words[2] == "URL" ):
+           ( words[1] in ["ERT", "listings"] or words[2] in ["URL", "Chunk", "Sweave", "S/R"] ):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
+                i += 1
+                continue
+            while True:
+                k = find_token(document.body, '\\begin_inset Quotes', i, j)
+                if k == -1:
+                    i += 1
+                    break
+                l = find_end_of_inset(document.body, k)
+                if l == -1:
+                    document.warning("Malformed LyX document: Can't find end of Quote inset at line " + str(k))
+                    i = k
+                    continue
+                replace = "\""
+                if document.body[k].endswith("s"):
+                    replace = "'"
+                document.body[k:l+1] = [replace]
+        else:
+            i += 1
+            continue
+
+    # Now verbatim layouts
+    i = 0
+    j = 0
+    while i < len(document.body):
+        words = document.body[i].split()
+        if len(words) > 1 and words[0] == "\\begin_layout" and \
+           words[1] in ["Verbatim", "Verbatim*", "Code", "Author_Email", "Author_URL"]:
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of " + words[1] + " layout at line " + str(i))
                 i += 1
                 continue
             while True:
