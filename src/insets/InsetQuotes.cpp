@@ -309,7 +309,19 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 docstring InsetQuotes::getQuoteEntity() const {
 	const int quoteind = quote_index[side_][language_];
-	return from_ascii(html_quote[times_][quoteind]);
+	docstring res = from_ascii(html_quote[times_][quoteind]);
+	// in French, thin spaces are added inside double guillemets
+	// FIXME: this should be done by a separate quote type.
+	if (prefixIs(context_lang_, "fr")
+	    && times_ == DoubleQuotes && language_ == FrenchQuotes) {
+		// THIN SPACE (U+2009)
+		docstring const thin_space = from_ascii("&#x2009;");
+		if (side_ == LeftQuote)
+			res += thin_space;
+		else
+			res = thin_space + res;
+	}
+	return res;
 }
 
 
