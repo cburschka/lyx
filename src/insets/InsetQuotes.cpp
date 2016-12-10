@@ -266,20 +266,27 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	else if (language_ == FrenchQuotes && times_ == DoubleQuotes
 	    && prefixIs(runparams.local_font->language()->code(), "fr")
 	    && !runparams.use_polyglossia) {
+		// Specific guillemets of French babel
+		// including correct French spacing
 		if (side_ == LeftQuote)
 			qstr = "\\og "; //the spaces are important here
 		else
 			qstr = " \\fg{}"; //and here
 	} else if (fontenc_ == "T1" && !runparams.use_polyglossia) {
+		// Quotation marks for T1 font encoding
+		// (using ligatures)
 		qstr = latex_quote_t1[times_][quoteind];
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
-	} else if (!runparams.use_babel) {
+	} else if (!runparams.use_babel || runparams.isFullUnicode()) {
 #endif
-		// these are also used by polyglossia
+		// Standard quotation mark macros
+		// These are also used by polyglossia
+		// and babel without fontenc (XeTeX/LuaTeX)
 		qstr = latex_quote_ot1[times_][quoteind];
 	} else {
+		// Babel shorthand quotation marks (for T1/OT1)
 		qstr = latex_quote_babel[times_][quoteind];
 	}
 
