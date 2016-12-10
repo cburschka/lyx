@@ -199,9 +199,10 @@ docstring InsetQuotes::displayString() const
 	int const index = quote_index[side_][language_];
 	docstring retdisp = docstring(1, display_quote_char[times_][index]);
 
-	// in French, thin spaces are added inside double quotes
+	// in French, thin spaces are added inside double guillemets
 	// FIXME: this should be done by a separate quote type.
-	if (times_ == DoubleQuotes && prefixIs(context_lang_, "fr")) {
+	if (prefixIs(context_lang_, "fr")
+	    && times_ == DoubleQuotes && language_ == FrenchQuotes) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
 		if (side_ == LeftQuote)
