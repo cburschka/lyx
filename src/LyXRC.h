@@ -449,8 +449,6 @@ public:
 	bool use_converter_needauth_forbidden;
 	/// Ask user before calling external converters with 'needauth' option
 	bool use_converter_needauth;
-	/// Apply hardening when calling external converters
-	bool use_converter_wrappers;
 	/// The maximum age of cache files in seconds
 	unsigned int converter_cache_maxage;
 	/// Sort layouts alphabetically
