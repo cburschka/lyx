@@ -59,10 +59,22 @@ void otexrowstream::put(char_type const & c)
 
 void otexstream::put(char_type const & c)
 {
+	bool isprotected = false;
 	if (protectspace_) {
-		if (!canbreakline_ && c == ' ')
+		if (!canbreakline_ && c == ' ') {
 			os() << "{}";
+			isprotected = true;
+		}
 		protectspace_ = false;
+	}
+	if (terminate_command_) {
+		if ((c == ' ' || c == '\0') && !isprotected)
+			// A space follows. Terminate with brackets.
+			os() << "{}";
+		else if (c != '\\' && c != '{' && c != '}')
+			// Non-terminating character follows. Terminate with space.
+			os() << " ";
+		terminate_command_ = false;
 	}
 	otexrowstream::put(c);
 	lastChar(c);
@@ -89,6 +101,7 @@ TexString otexstringstream::release()
 
 BreakLine breakln;
 SafeBreakLine safebreakln;
+TerminateCommand termcmd;
 
 
 otexstream & operator<<(otexstream & ots, BreakLine)
@@ -98,6 +111,7 @@ otexstream & operator<<(otexstream & ots, BreakLine)
 		ots.lastChar('\n');
 	}
 	ots.protectSpace(false);
+	ots.terminateCommand(false);
 	return ots;
 }
 
@@ -110,6 +124,14 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 		ots.lastChar('\n');
 	}
 	ots.protectSpace(false);
+	ots.terminateCommand(false);
+	return ots;
+}
+
+
+otexstream & operator<<(otexstream & ots, TerminateCommand)
+{
+	ots.terminateCommand(true);
 	return ots;
 }
 
@@ -152,10 +174,23 @@ otexstream & operator<<(otexstream & ots, TexString ts)
 		return ots;
 
 	otexrowstream & otrs = ots;
+	bool isprotected = false;
+	char const c = ts.str[0];
 	if (ots.protectSpace()) {
-		if (!ots.canBreakLine() && ts.str[0] == ' ')
+		if (!ots.canBreakLine() && c == ' ') {
 			otrs << "{}";
+			isprotected = true;
+		}
 		ots.protectSpace(false);
+	}
+	if (ots.terminateCommand()) {
+		if ((c == ' ' || c == '\0') && !isprotected)
+			// A space follows. Terminate with brackets.
+			otrs << "{}";
+		else if (c != '\\' && c != '{' && c != '}')
+			// Non-terminating character follows. Terminate with space.
+			otrs << " ";
+		ots.terminateCommand(false);
 	}
 
 	if (len > 1)
@@ -183,10 +218,23 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 	if (len == 0)
 		return ots;
 	otexrowstream & otrs = ots;
+	bool isprotected = false;
+	char const c = s[0];
 	if (ots.protectSpace()) {
-		if (!ots.canBreakLine() && s[0] == ' ')
+		if (!ots.canBreakLine() && c == ' ') {
 			otrs << "{}";
+			isprotected = true;
+		}
 		ots.protectSpace(false);
+	}
+	if (ots.terminateCommand()) {
+		if ((c == ' ' || c == '\0') && !isprotected)
+			// A space follows. Terminate with brackets.
+			otrs << "{}";
+		else if (c != '\\' && c != '{' && c != '}')
+			// Non-terminating character follows. Terminate with space.
+			otrs << " ";
+		ots.terminateCommand(false);
 	}
 
 	if (contains(s, 0xF0000)) {
@@ -290,6 +338,7 @@ otexstream & operator<<(otexstream & ots, Type value)
 	ots.os() << value;
 	ots.lastChar(0);
 	ots.protectSpace(false);
+	ots.terminateCommand(false);
 	return ots;
 }
 

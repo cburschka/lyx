@@ -81,7 +81,8 @@ public:
 	///
 	explicit otexstream(odocstream & os)
 		: otexrowstream(os), canbreakline_(false),
-		  protectspace_(false), parbreak_(true), lastchar_(0) {}
+		  protectspace_(false), terminate_command_(false),
+		  parbreak_(true), lastchar_(0) {}
 	///
 	void put(char_type const & c);
 	///
@@ -94,6 +95,10 @@ public:
 	void protectSpace(bool protectspace) { protectspace_ = protectspace; }
 	///
 	bool protectSpace() const { return protectspace_; }
+	///
+	void terminateCommand(bool terminate) { terminate_command_ = terminate; }
+	///
+	bool terminateCommand() const { return terminate_command_; }
 	///
 	void lastChar(char_type const & c)
 	{
@@ -110,6 +115,8 @@ private:
 	bool canbreakline_;
 	///
 	bool protectspace_;
+	///
+	bool terminate_command_;
 	///
 	bool parbreak_;
 	///
@@ -144,13 +151,21 @@ struct SafeBreakLine {
 	char n;
 };
 
+/// Helper structs for terminating a command
+struct TerminateCommand {
+	char n;
+};
+
 extern BreakLine breakln;
 extern SafeBreakLine safebreakln;
+extern TerminateCommand termcmd;
 
 ///
 otexstream & operator<<(otexstream &, BreakLine);
 ///
 otexstream & operator<<(otexstream &, SafeBreakLine);
+///
+otexstream & operator<<(otexstream &, TerminateCommand);
 ///
 otexstream & operator<<(otexstream &, odocstream_manip);
 ///
