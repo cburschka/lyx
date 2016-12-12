@@ -303,7 +303,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 
 	os << from_ascii(qstr);
 	
-	if (prefixIs(qstr, "\\"))
+	if (prefixIs(qstr, "\\") || prefixIs(qstr, " \\"))
 		// properly terminate the command depending on the context
 		os << termcmd;
 }
