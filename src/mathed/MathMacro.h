@@ -141,6 +141,9 @@ public:
 	size_t appetite() const;
 	///
 	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
+	/// This is not used for display; however whether it is mathrel determines
+	/// how to split equations intelligently.
+	MathClass mathClass() const; //override
 
 protected:
 	friend class MathData;

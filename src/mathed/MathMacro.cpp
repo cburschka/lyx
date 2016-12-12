@@ -821,6 +821,21 @@ size_t MathMacro::appetite() const
 }
 
 
+MathClass MathMacro::mathClass() const
+{
+	// this only affects intelligent splitting since global macros are always
+	// linearised.
+	if (MacroData const * m = macroBackup()) {
+		if (m->symbol()) {
+			MathClass mc = string_to_class(d->macroBackup_.symbol()->extra);
+			if (mc != MC_UNKNOWN)
+				return mc;
+		}
+	}
+	return MC_ORD;
+}
+
+
 InsetMath::mode_type MathMacro::currentMode() const
 {
 	// There is no way to guess the mode of user defined macros, so they are
