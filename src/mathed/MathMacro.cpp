@@ -823,12 +823,34 @@ size_t MathMacro::appetite() const
 
 InsetMath::mode_type MathMacro::currentMode() const
 {
-	// User defined macros are always assumed to be mathmode macros.
-	// Only the global macros defined in lib/symbols may be textmode.
+	// There is no way to guess the mode of user defined macros, so they are
+	// always assumed to be mathmode.  Only the global macros defined in
+	// lib/symbols may be textmode.
+	mode_type mode = modeToEnsure();
+	return (mode == UNDECIDED_MODE) ? MATH_MODE : mode;
+}
 
-	MacroData const * data = MacroTable::globalMacros().get(name());
-	bool textmode = data && data->symbol() && data->symbol()->extra == "textmode";
-	return textmode ? TEXT_MODE : MATH_MODE;
+
+InsetMath::mode_type MathMacro::modeToEnsure() const
+{
+	// User defined macros can be either text mode or math mode for output and
+	// display. There is no way to guess. For global macros defined in
+	// lib/symbols, we ensure textmode if flagged as such, otherwise we ensure
+	// math mode.
+	if (MacroData const * m = macroBackup())
+		if (m->symbol())
+			return (m->symbol()->extra == "textmode") ? TEXT_MODE : MATH_MODE;
+	return UNDECIDED_MODE;
+}
+
+
+MacroData const * MathMacro::macroBackup() const
+{
+	if (macro())
+		return &d->macroBackup_;
+	if (MacroData const * data = MacroTable::globalMacros().get(name()))
+		return data;
+	return nullptr;
 }
 
 
@@ -1009,12 +1031,9 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	MacroData const * data = MacroTable::globalMacros().get(name());
-	bool textmode_macro = data && data->symbol()
-				   && data->symbol()->extra == "textmode";
-	bool needs_mathmode = data && (!data->symbol()
-				       || data->symbol()->extra != "textmode");
-
+	mode_type mode = modeToEnsure();
+	bool textmode_macro = mode == TEXT_MODE;
+	bool needs_mathmode = mode == MATH_MODE;
 	MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
 
 	// non-normal mode
