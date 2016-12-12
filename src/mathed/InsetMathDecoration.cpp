@@ -105,10 +105,7 @@ InsetMath::mode_type InsetMathDecoration::currentMode() const
 
 void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Changer dummy =
-		(currentMode() == MATH_MODE) ? mi.base.changeEnsureMath() :
-		(isMathFont(mi.base.fontname)) ? mi.base.changeFontSet("textnormal")
-		: Changer();
+	Changer dummy = mi.base.changeEnsureMath(currentMode());
 
 	cell(0).metrics(mi, dim);
 
@@ -129,10 +126,7 @@ void InsetMathDecoration::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathDecoration::draw(PainterInfo & pi, int x, int y) const
 {
-	Changer dummy =
-		(currentMode() == MATH_MODE) ? pi.base.changeEnsureMath() :
-		(isMathFont(pi.base.fontname)) ? pi.base.changeFontSet("textnormal")
-		: Changer();
+	Changer dummy = pi.base.changeEnsureMath(currentMode());
 
 	cell(0).draw(pi, x + 1, y);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);

@@ -484,10 +484,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		LBUFERR(d->macro_);
 
-		Changer dummy = (currentMode() == TEXT_MODE)
-			? mi.base.font.changeShape(UP_SHAPE)
-			: Changer();
-
 		// calculate metrics, hoping that all cells are seen
 		d->macro_->lock();
 		d->expanded_.metrics(mi, dim);
@@ -690,9 +686,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		drawMarkers2(pi, expx, expy);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
-		Changer dummy = (currentMode() == TEXT_MODE)
-			? pi.base.font.changeShape(UP_SHAPE)
-			: Changer();
 
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)

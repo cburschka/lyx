@@ -77,12 +77,20 @@ Changer MetricsBase::changeFontSet(string const & name)
 }
 
 
-Changer MetricsBase::changeEnsureMath()
+Changer MetricsBase::changeEnsureMath(Inset::mode_type mode)
 {
-	// FIXME:
-	//   \textit{\ensuremath{\text{a}}}
-	// should appear in italics
-	return isTextFont(fontname) ? changeFontSet("mathnormal") : Changer();
+	switch (mode) {
+	case Inset::UNDECIDED_MODE:
+		return Changer();
+	case Inset::TEXT_MODE:
+		return isMathFont(fontname) ? changeFontSet("textnormal") : Changer();
+	case Inset::MATH_MODE:
+		// FIXME:
+		//   \textit{\ensuremath{\text{a}}}
+		// should appear in italics
+		return isTextFont(fontname) ? changeFontSet("mathnormal"): Changer();
+	}
+	return Changer();
 }
 
 
