@@ -502,7 +502,7 @@ def revert_quotes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           ( words[1] in ["ERT", "listings"] or words[2] in ["URL", "Chunk", "Sweave", "S/R"] ):
+           ( words[1] in ["ERT", "listings"] or ( len(words) > 2 and words[2] in ["URL", "Chunk", "Sweave", "S/R"]) ):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
@@ -560,7 +560,7 @@ def revert_quotes(document):
     i = 0
     j = 0
     while True:
-        k = find_token(document.body, '\\begin_inset Quotes', i, j)
+        k = find_token(document.body, '\\begin_inset Quotes', i)
         if k == -1:
             return
         l = find_end_of_inset(document.body, k)
@@ -580,7 +580,7 @@ def revert_quotes(document):
             if document.body[k].endswith("s"):
                 replace = "'"
             document.body[k:l+1] = [replace]
-        i += 1
+        i = l
     
 
 
