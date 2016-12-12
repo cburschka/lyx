@@ -68,8 +68,8 @@ void otexstream::put(char_type const & c)
 		protectspace_ = false;
 	}
 	if (terminate_command_) {
-		if ((c == ' ' || c == '\0') && !isprotected)
-			// A space follows. Terminate with brackets.
+		if ((c == ' ' || c == '\0' || c == '\n') && !isprotected)
+			// A space or line break follows. Terminate with brackets.
 			os() << "{}";
 		else if (c != '\\' && c != '{' && c != '}')
 			// Non-terminating character follows. Terminate with space.
@@ -107,6 +107,8 @@ TerminateCommand termcmd;
 otexstream & operator<<(otexstream & ots, BreakLine)
 {
 	if (ots.canBreakLine()) {
+		if (ots.terminateCommand())
+			ots << "{}";
 		ots.otexrowstream::put('\n');
 		ots.lastChar('\n');
 	}
@@ -120,6 +122,8 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 {
 	otexrowstream & otrs = ots;
 	if (ots.canBreakLine()) {
+	    if (ots.terminateCommand())
+		    otrs << "{}";
 		otrs << "%\n";
 		ots.lastChar('\n');
 	}
@@ -184,8 +188,8 @@ otexstream & operator<<(otexstream & ots, TexString ts)
 		ots.protectSpace(false);
 	}
 	if (ots.terminateCommand()) {
-		if ((c == ' ' || c == '\0') && !isprotected)
-			// A space follows. Terminate with brackets.
+		if ((c == ' ' || c == '\0' || c == '\n') && !isprotected)
+			// A space or line break follows. Terminate with brackets.
 			otrs << "{}";
 		else if (c != '\\' && c != '{' && c != '}')
 			// Non-terminating character follows. Terminate with space.
@@ -228,8 +232,8 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 		ots.protectSpace(false);
 	}
 	if (ots.terminateCommand()) {
-		if ((c == ' ' || c == '\0') && !isprotected)
-			// A space follows. Terminate with brackets.
+		if ((c == ' ' || c == '\0' || c == '\n') && !isprotected)
+			// A space or line break follows. Terminate with brackets.
 			otrs << "{}";
 		else if (c != '\\' && c != '{' && c != '}')
 			// Non-terminating character follows. Terminate with space.
