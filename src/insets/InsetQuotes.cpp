@@ -297,7 +297,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 			if (lastchar == '!' || lastchar == '?')
 				qstr.insert(0, "{}");
 		}
-		if (qstr[1] == lastchar)
+		if (qstr[0] == lastchar)
 			qstr.insert(0, "{}");
 	}
 
