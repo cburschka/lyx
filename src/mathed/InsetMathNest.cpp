@@ -583,7 +583,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		parseflg |= Parse::VERBATIM;
 		// fall through
 	case LFUN_PASTE: {
-		if (cur.currentMode() <= TEXT_MODE)
+		if (cur.currentMode() != MATH_MODE)
 			parseflg |= Parse::TEXTMODE;
 		cur.recordUndoSelection();
 		cur.message(_("Paste"));
@@ -964,37 +964,37 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FONT_BOLD:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
 			handleFont(cur, cmd.argument(), "mathbf");
 		break;
 	case LFUN_FONT_BOLDSYMBOL:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
 			handleFont(cur, cmd.argument(), "boldsymbol");
 		break;
 	case LFUN_FONT_SANS:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textsf");
 		else
 			handleFont(cur, cmd.argument(), "mathsf");
 		break;
 	case LFUN_FONT_EMPH:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "emph");
 		else
 			handleFont(cur, cmd.argument(), "mathcal");
 		break;
 	case LFUN_FONT_ROMAN:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textrm");
 		else
 			handleFont(cur, cmd.argument(), "mathrm");
 		break;
 	case LFUN_FONT_TYPEWRITER:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "texttt");
 		else
 			handleFont(cur, cmd.argument(), "mathtt");
@@ -1003,13 +1003,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		handleFont(cur, cmd.argument(), "mathfrak");
 		break;
 	case LFUN_FONT_ITAL:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textit");
 		else
 			handleFont(cur, cmd.argument(), "mathit");
 		break;
 	case LFUN_FONT_NOUN:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			// FIXME: should be "noun"
 			handleFont(cur, cmd.argument(), "textsc");
 		else
@@ -1032,7 +1032,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
-		if (currentMode() <= Inset::TEXT_MODE)
+		if (currentMode() != Inset::MATH_MODE)
 			cur.plainInsert(MathAtom(new InsetMathEnsureMath(buffer_)));
 		else
 			cur.plainInsert(createInsetMath("text", buffer_));
@@ -1675,7 +1675,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			// remove the '\\'
 			if (c == '\\') {
 				cur.backspace();
-				if (currentMode() <= InsetMath::TEXT_MODE)
+				if (currentMode() != InsetMath::MATH_MODE)
 					cur.niceInsert(createInsetMath("textbackslash", buf));
 				else
 					cur.niceInsert(createInsetMath("backslash", buf));
@@ -1791,13 +1791,13 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	selClearOrDel(cur);
 
 	if (c == '\n') {
-		if (currentMode() <= InsetMath::TEXT_MODE)
+		if (currentMode() != InsetMath::MATH_MODE)
 			cur.insert(c);
 		return true;
 	}
 
 	if (c == ' ') {
-		if (currentMode() <= InsetMath::TEXT_MODE) {
+		if (currentMode() != InsetMath::MATH_MODE) {
 			// insert spaces in text or undecided mode,
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
