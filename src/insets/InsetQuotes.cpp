@@ -271,7 +271,10 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		if (side_ == LeftQuote)
 			qstr = "\\og";
 		else
-			qstr = " \\fg"; // the space is important here
+			// the preceding space is important here
+			// FIXME: really? (doesn't make a difference
+			//        with recent babel-french)
+			qstr = " \\fg";
 	} else if (fontenc_ == "T1" && !runparams.use_polyglossia) {
 		// Quotation marks for T1 font encoding
 		// (using ligatures)
@@ -302,7 +305,8 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	os << from_ascii(qstr);
-	
+
+	// FIXME Check if the space in " \\fg" is really needed (see above)
 	if (prefixIs(qstr, "\\") || prefixIs(qstr, " \\"))
 		// properly terminate the command depending on the context
 		os << termcmd;
