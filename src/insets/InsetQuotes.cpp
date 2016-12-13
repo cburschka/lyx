@@ -310,7 +310,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 			if (lastchar == '!' || lastchar == '?')
 				qstr.insert(0, "{}");
 		}
-		if (qstr[0] == lastchar)
+		if (contains(from_ascii(",'`<>"), lastchar) && qstr[0] == lastchar)
 			qstr.insert(0, "{}");
 	}
 
