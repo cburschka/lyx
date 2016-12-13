@@ -557,6 +557,9 @@ def revert_quotes(document):
             continue
 
     # Now handle Hebrew
+    if not document.language == "hebrew" and find_token(document.body, '\\lang hebrew', 0) == -1:
+        return
+
     i = 0
     j = 0
     while True:
