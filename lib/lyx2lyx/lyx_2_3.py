@@ -586,6 +586,65 @@ def revert_quotes(document):
         i = l
     
 
+def revert_iopart(document):
+    " Input new styles via local layout "
+    if document.textclass != "iopart":
+        return
+
+    i = find_token(document.header, "\\begin_local_layout", 0)
+    if i == -1:
+        k = find_token(document.header, "\\language", 0)
+        if k == -1:
+            # this should not happen
+            document.warning("Malformed LyX document! No \\language header found!")
+            return
+        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+        i = k-1
+
+    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+    if j == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! Can't find end of local layout!")
+        return
+
+    document.header[i+1 : i+1] = [
+        "### Inserted by lyx2lyx (stdlayouts) ###",
+        "Input stdlayouts.inc",
+        "### End of insertion by lyx2lyx (stdlayouts) ###"
+    ]
+    return
+
+
+def convert_iopart(document):
+    " Remove local layout we added, if it is there "
+    if document.textclass != "iopart":
+        return
+
+    i = find_token(document.header, "\\begin_local_layout", 0)
+    if i == -1:
+        return
+
+    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+    if j == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! Can't find end of local layout!")
+        return
+
+    k = find_token(document.header, "### Inserted by lyx2lyx (stdlayouts) ###", i, j)
+    if k != -1:
+        l = find_token(document.header, "### End of insertion by lyx2lyx (stdlayouts) ###", i, j)
+        if l == -1:
+            # this should not happen
+            document.warning("End of lyx2lyx local layout insertion not found!")
+            return
+        if k == i + 1 and l == j - 1:
+            # that was all the local layout there was
+            document.header[i : j + 1] = []
+        else:
+            document.header[k : l + 1] = []
+
+    return
+
 
 ##
 # Conversion hub
@@ -601,10 +660,12 @@ convert = [
            [514, []],
            [515, []],
            [516, [convert_inputenc]],
-           [517, []]  
+           [517, []],
+           [518, [convert_iopart]]
           ]
 
 revert =  [
+           [517, [revert_iopart]],
            [516, [revert_quotes]],
            [515, []],
            [514, [revert_urdu, revert_syriac]],
