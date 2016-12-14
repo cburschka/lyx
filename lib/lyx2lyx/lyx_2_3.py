@@ -200,46 +200,47 @@ def revert_beamer_article_styles(document):
     if document.textclass == "scrarticle-beamer":
         inclusion = "scrartcl.layout"
 
-    while True:
-        i = find_token(document.header, "\\begin_local_layout", 0)
-        if i == -1:
-            k = find_token(document.header, "\\language", 0)
-            if k == -1:
-                # this should not happen
-                document.warning("Malformed LyX document! No \\language header found!")
-                break
-            document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
-            i = find_token(document.header, "\\begin_local_layout", 0)
-        if i != -1:
-            j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-            if j == -1:
-                # this should not happen
-                break
+    i = find_token(document.header, "\\begin_local_layout", 0)
+    if i == -1:
+        k = find_token(document.header, "\\language", 0)
+        if k == -1:
+            # this should not happen
+            document.warning("Malformed LyX document! No \\language header found!")
+            return
+        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+        i = k - 1
 
-            document.header[i+1 : i+1] = ["### Inserted by lyx2lyx (more [scr]article styles) ###",
-                                          "Input " + inclusion,
-                                          "Input beamer.layout",
-                                          "Provides geometry 0",
-                                          "Provides hyperref 0",
-                                          "DefaultFont",
-                                          "     Family                Roman",
-                                          "     Series                Medium",
-                                          "     Shape                 Up",
-                                          "     Size                  Normal",
-                                          "     Color                 None",
-                                          "EndFont",
-                                          "Preamble",
-                                          "     \\usepackage{beamerarticle,pgf}",
-                                          "     % this default might be overridden by plain title style",
-                                          "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
-                                          "     \\AtBeginDocument{",
-                                          "             \\let\\origtableofcontents=\\tableofcontents",
-                                          "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
-                                          "             \\def\\gobbletableofcontents#1{\\origtableofcontents}",
-                                          "     }",
-                                          "EndPreamble",
-                                          "### End of insertion by lyx2lyx (more [scr]article styles) ###"]
+    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+    if j == -1:
+        # this should not happen
+        document.warning("Malformed LyX document: Can't find end of local layout!")
         return
+
+    document.header[i+1 : i+1] = [
+        "### Inserted by lyx2lyx (more [scr]article styles) ###",
+        "Input " + inclusion,
+        "Input beamer.layout",
+        "Provides geometry 0",
+        "Provides hyperref 0",
+        "DefaultFont",
+        "     Family                Roman",
+        "     Series                Medium",
+        "     Shape                 Up",
+        "     Size                  Normal",
+        "     Color                 None",
+        "EndFont",
+        "Preamble",
+        "     \\usepackage{beamerarticle,pgf}",
+        "     % this default might be overridden by plain title style",
+        "     \\newcommand\makebeamertitle{\\frame{\\maketitle}}%",
+        "     \\AtBeginDocument{",
+        "             \\let\\origtableofcontents=\\tableofcontents",
+        "             \\def\\tableofcontents{\\@ifnextchar[{\\origtableofcontents}{\\gobbletableofcontents}}",
+        "             \\def\\gobbletableofcontents#1{\\origtableofcontents}",
+        "     }",
+        "EndPreamble",
+        "### End of insertion by lyx2lyx (more [scr]article styles) ###"
+    ]
 
 
 def convert_beamer_article_styles(document):
@@ -249,27 +250,29 @@ def convert_beamer_article_styles(document):
     if document.textclass not in beamer_articles:
         return
 
-    while True:
-        i = find_token(document.header, "\\begin_local_layout", 0)
-        if i == -1:
+    i = find_token(document.header, "\\begin_local_layout", 0)
+    if i == -1:
+        return
+
+    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+    if j == -1:
+        # this should not happen
+        document.warning("Malformed LyX document: Can't find end of local layout!")
+        return
+
+    k = find_token(document.header, "### Inserted by lyx2lyx (more [scr]article styles) ###", i, j)
+    if k != -1:
+        l = find_token(document.header, "### End of insertion by lyx2lyx (more [scr]article styles) ###", i, j)
+        if l == -1:
+            # this should not happen
+            document.warning("End of lyx2lyx local layout insertion not found!")
             return
 
-        j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
-        if j == -1:
-            # this should not happen
-            break
-
-        k = find_token(document.header, "### Inserted by lyx2lyx (more [scr]article styles) ###", i, j)
-        if k != -1:
-            l = find_token(document.header, "### End of insertion by lyx2lyx (more [scr]article styles) ###", i, j)
-            if l == -1:
-                # this should not happen
-                document.warning("End of lyx2lyx local layout insertion not found!")
-                break
-
+        if k == i + 1 and l == j - 1:
+            # that was all the local layout there was
+            document.header[i : j + 1] = []
+        else:
             document.header[k : l + 1] = []
-
-        return
 
 
 def revert_bosnian(document):
@@ -612,7 +615,6 @@ def revert_iopart(document):
         "Input stdlayouts.inc",
         "### End of insertion by lyx2lyx (stdlayouts) ###"
     ]
-    return
 
 
 def convert_iopart(document):
@@ -642,8 +644,6 @@ def convert_iopart(document):
             document.header[i : j + 1] = []
         else:
             document.header[k : l + 1] = []
-
-    return
 
 
 ##
