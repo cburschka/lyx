@@ -267,9 +267,13 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
 		qstr = (times_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
+	else if (runparams.use_polyglossia) {
+		// For polyglossia, we directly output the respective unicode chars 
+		// (spacing and kerning is then handled respectively)
+		qstr = docstring(1, display_quote_char[times_][quoteind]);
+	}
 	else if (language_ == FrenchQuotes && times_ == DoubleQuotes
-	    && prefixIs(runparams.local_font->language()->code(), "fr")
-	    && !runparams.use_polyglossia) {
+		 && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		// Specific guillemets of French babel
 		// including correct French spacing
 		if (side_ == LeftQuote)
@@ -277,8 +281,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		else
 			qstr = from_ascii("\\fg");
 	} else if (fontenc_ == "T1"
-		   && !runparams.local_font->language()->internalFontEncoding()
-		   && !runparams.use_polyglossia) {
+		   && !runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for T1 font encoding
 		// (using ligatures)
 		qstr = from_ascii(latex_quote_t1[times_][quoteind]);
@@ -292,8 +295,8 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	} else if (!runparams.use_babel || runparams.isFullUnicode()) {
 #endif
 		// Standard quotation mark macros
-		// These are also used by polyglossia
-		// and babel without fontenc (XeTeX/LuaTeX)
+		// These are also used by babel
+		// without fontenc (XeTeX/LuaTeX)
 		qstr = from_ascii(latex_quote_ot1[times_][quoteind]);
 	} else {
 		// Babel shorthand quotation marks (for T1/OT1)
