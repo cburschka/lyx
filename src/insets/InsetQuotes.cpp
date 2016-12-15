@@ -262,30 +262,30 @@ void InsetQuotes::read(Lexer & lex)
 void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
 	const int quoteind = quote_index[side_][language_];
-	string qstr;
+	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
-		qstr = (times_ == DoubleQuotes) ? "\"" : "'";
+		qstr = (times_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
 	else if (language_ == FrenchQuotes && times_ == DoubleQuotes
 	    && prefixIs(runparams.local_font->language()->code(), "fr")
 	    && !runparams.use_polyglossia) {
 		// Specific guillemets of French babel
 		// including correct French spacing
 		if (side_ == LeftQuote)
-			qstr = "\\og";
+			qstr = from_ascii("\\og");
 		else
-			qstr = "\\fg";
+			qstr = from_ascii("\\fg");
 	} else if (fontenc_ == "T1"
 		   && !runparams.local_font->language()->internalFontEncoding()
 		   && !runparams.use_polyglossia) {
 		// Quotation marks for T1 font encoding
 		// (using ligatures)
-		qstr = latex_quote_t1[times_][quoteind];
+		qstr = from_ascii(latex_quote_t1[times_][quoteind]);
 	} else if (runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for internal font encodings
 		// (ligatures not featured)
-		qstr = latex_quote_noligatures[times_][quoteind];
+		qstr = from_ascii(latex_quote_noligatures[times_][quoteind]);
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
@@ -294,26 +294,29 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// Standard quotation mark macros
 		// These are also used by polyglossia
 		// and babel without fontenc (XeTeX/LuaTeX)
-		qstr = latex_quote_ot1[times_][quoteind];
+		qstr = from_ascii(latex_quote_ot1[times_][quoteind]);
 	} else {
 		// Babel shorthand quotation marks (for T1/OT1)
-		qstr = latex_quote_babel[times_][quoteind];
+		qstr = from_ascii(latex_quote_babel[times_][quoteind]);
 	}
 
 	if (!runparams.pass_thru) {
-		// Always guard against unfortunate ligatures (!` ?` `` '' ,, << >>)
+		// Guard against unwanted ligatures with preceding text
 		char_type const lastchar = os.lastChar();
-		if (prefixIs(qstr, "`")) {
-			if (lastchar == '!' || lastchar == '?')
-				qstr.insert(0, "{}");
-		}
-		if (contains(from_ascii(",'`<>"), lastchar) && qstr[0] == lastchar)
-			qstr.insert(0, "{}");
+		// !` ?` => !{}` ?{}`
+		if (prefixIs(qstr, from_ascii("`"))
+		    && (lastchar == '!' || lastchar == '?'))
+			os << "{}";
+		// ``` ''' ,,, <<< >>>
+		// => `{}`` '{}'' ,{},, <{}<< >{}>>
+		if (contains(from_ascii(",'`<>"), lastchar)
+		    && prefixIs(qstr, lastchar))
+			os << "{}";
 	}
 
-	os << from_ascii(qstr);
+	os << qstr;
 
-	if (prefixIs(qstr, "\\"))
+	if (prefixIs(qstr, from_ascii("\\")))
 		// properly terminate the command depending on the context
 		os << termcmd;
 }
