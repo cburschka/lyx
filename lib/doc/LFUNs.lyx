@@ -3166,27 +3166,27 @@ paragraph-goto
 \end_layout
 
 \begin_layout Description
-Action Jump to a paragraph given by its id number and optionally the desired position within the paragraph.
+Action Jump to a paragraph given by its id number and optionally the desired position within the paragraph. If given four arguments id_start, pos_start, id_end, pos_end, perform a selection from start to end.
 \end_layout
 
 \begin_layout Description
-Notion Note that id number of paragraph is not the sequential number of paragraph seen on the screen. Moreover the id is unique for all opened buffers (documents).
+Notion Note that id number of paragraph is not the sequential number of paragraph seen on the screen. Moreover the id is unique for all opened buffers (documents). Both ids must belong to the same buffer.
 \end_layout
 
 \begin_layout Description
-Syntax paragraph-goto <PAR_ID_NUMBER> <POSITION_IN_PAR>
+Syntax paragraph-goto <PAR_ID> <POS_IN_PAR> [<PAR_ID> <POS_IN_PAR>]
 \end_layout
 
 \begin_layout Description
-Params <PAR_ID_NUMBER>:  paragraph id
+Params <PAR_ID>:  paragraph id
 \begin_inset Newline newline
 \end_inset
 
-<POSITION_IN_PAR>: desired position within the paragraph
+<POS_IN_PAR>: desired position within the paragraph
 \end_layout
 
 \begin_layout Description
-Origin Dekel, 26 Aug 2000
+Origin Dekel, 26 Aug 2000 gmunch, 5 Sep 2016
 \end_layout
 
 \begin_layout Subsection*
@@ -3422,11 +3422,11 @@ Notion Currently English, Swedish, German, Polish, French, Danish quotes are dis
 \end_layout
 
 \begin_layout Description
-Syntax quote-insert [<TYPE>]
+Syntax quote-insert [<TYPE>] [<SIDE>] [<LANG>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: 'single' for single quotes, otherwise double quotes will be used.
+Params <TYPE>: 'single' for single quotes, otherwise double quotes will be used. <SIDE>: 'left' for opening quotes, 'right' for closing quotes, otherwise the side will be guessed from the context. <STYLE>: 'english' for ``English'' quote style 'swedish' for ''Swedish'' quote style 'german' for ,,German`` quote style 'polish' for ,,Polish'' quote style 'french' for <<French>> quote style 'danish' for >>Danish<< quote style If no quote style is specified, the document-wide will be used.
 \end_layout
 
 \begin_layout Subsection*
@@ -6009,6 +6009,26 @@ Params <FILE>: any document from (/usr/share/)doc directory.
 
 \begin_layout Description
 Origin Jug, 27 Jun 1999
+\end_layout
+
+\begin_layout Subsection*
+icon-size
+\end_layout
+
+\begin_layout Description
+Action Sets icon size of toolbars.
+\end_layout
+
+\begin_layout Description
+Syntax icon-size [<SIZE>]
+\end_layout
+
+\begin_layout Description
+Params <SIZE> : the icon size in px or one of the logical settings small|normal|big|huge|giant, the default is normal (whose size in px is icon set dependent).
+\end_layout
+
+\begin_layout Description
+Origin 11 July 2016
 \end_layout
 
 \begin_layout Subsection*
