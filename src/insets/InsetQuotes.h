@@ -64,7 +64,9 @@ public:
 	  */
 	explicit InsetQuotes(Buffer * buf, std::string const & str = "eld");
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(Buffer * buf, char_type c, QuoteTimes t);
+	InsetQuotes(Buffer * buf, char_type c, QuoteTimes t,
+		    std::string const & s = std::string(),
+		    std::string const & l = std::string());
 	///
 	docstring layoutName() const;
 	///
@@ -112,6 +114,8 @@ private:
 	docstring displayString() const;
 	///
 	docstring getQuoteEntity() const;
+	///
+	QuoteLanguage getLanguage(std::string const &);
 
 	///
 	QuoteLanguage language_;

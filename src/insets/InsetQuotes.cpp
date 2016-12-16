@@ -111,19 +111,25 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 	parseString(str);
 }
 
-InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
+InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t,
+			 string const & s, string const & l)
 	: Inset(buf), times_(t), pass_thru_(false)
 {
 	if (buf) {
-		language_ = buf->params().quotes_language;
+		language_ = l.empty() ? buf->params().quotes_language : getLanguage(l);
 		fontenc_ = (buf->params().fontenc == "global")
 			? lyxrc.fontenc : buf->params().fontenc;
 	} else {
-		language_ = EnglishQuotes;
+		language_ = l.empty() ? EnglishQuotes : getLanguage(l);
 		fontenc_ = lyxrc.fontenc;
 	}
 
-	setSide(c);
+	if (s == "left")
+		side_ = LeftQuote;
+	else if (s == "right")
+		side_ = RightQuote;
+	else
+		setSide(c);
 }
 
 
@@ -194,6 +200,26 @@ void InsetQuotes::parseString(string const & s)
 			" bad times specification." << endl;
 		times_ = DoubleQuotes;
 	}
+}
+
+InsetQuotes::QuoteLanguage InsetQuotes::getLanguage(string const & s)
+{
+	QuoteLanguage ql = EnglishQuotes;
+	
+	if (s == "english")
+		ql = EnglishQuotes;
+	else if (s == "swedish")
+		ql = SwedishQuotes;
+	else if (s == "german")
+		ql = GermanQuotes;
+	else if (s == "polish")
+		ql = PolishQuotes;
+	else if (s == "french")
+		ql = FrenchQuotes;
+	else if (s == "danish")
+		ql = DanishQuotes;
+
+	return ql;
 }
 
 
