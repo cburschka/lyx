@@ -285,7 +285,6 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-// In lyxf3 this will be just LaTeX
 void InsetSpecialChar::write(ostream & os) const
 {
 	string command;
@@ -328,7 +327,6 @@ void InsetSpecialChar::write(ostream & os) const
 }
 
 
-// This function will not be necessary when lyx3
 void InsetSpecialChar::read(Lexer & lex)
 {
 	lex.next();
