@@ -1079,7 +1079,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	    // decorations at all
 	    && inset->lyxCode() != ERT_CODE) {
 		if (running_font.language()->lang() == "farsi")
-			os << "\\beginL{}";
+			os << "\\beginL" << termcmd;
 		else
 			os << "\\L{";
 		close = true;
@@ -1135,7 +1135,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 
 	if (close) {
 		if (running_font.language()->lang() == "farsi")
-				os << "\\endL{}";
+				os << "\\endL" << termcmd;
 			else
 				os << '}';
 	}
@@ -1194,19 +1194,19 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	// Otherwise, we use what LaTeX provides us.
 	switch (c) {
 	case '\\':
-		os << "\\textbackslash{}";
+		os << "\\textbackslash" << termcmd;
 		column += 15;
 		break;
 	case '<':
-		os << "\\textless{}";
+		os << "\\textless" << termcmd;
 		column += 10;
 		break;
 	case '>':
-		os << "\\textgreater{}";
+		os << "\\textgreater" << termcmd;
 		column += 13;
 		break;
 	case '|':
-		os << "\\textbar{}";
+		os << "\\textbar" << termcmd;
 		column += 9;
 		break;
 	case '-':
@@ -1223,7 +1223,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		}
 		break;
 	case '\"':
-		os << "\\char`\\\"{}";
+		os << "\\char`\\\"" << termcmd;
 		column += 9;
 		break;
 
@@ -1236,12 +1236,12 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		break;
 
 	case '~':
-		os << "\\textasciitilde{}";
+		os << "\\textasciitilde" << termcmd;
 		column += 16;
 		break;
 
 	case '^':
-		os << "\\textasciicircum{}";
+		os << "\\textasciicircum" << termcmd;
 		column += 17;
 		break;
 
@@ -1339,7 +1339,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 		// but we should avoid ligatures
 		if (i + 1 >= int(text_.size()) || text_[i + 1] != c)
 			return true;
-		os << "\\textcompwordmark{}";
+		os << "\\textcompwordmark" << termcmd;
 		column += 19;
 		return true;
 	case '|':
@@ -1347,7 +1347,7 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 		return true;
 	case '\"':
 		// soul.sty breaks with \char`\"
-		os << "\\textquotedbl{}";
+		os << "\\textquotedbl" << termcmd;
 		column += 14;
 		return true;
 	default:
@@ -1367,7 +1367,7 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 		os.put(c);
 		return true;
 	case '|':
-		os << "\\textvertline{}";
+		os << "\\textvertline" << termcmd;
 		column += 14;
 		return true;
 	default:

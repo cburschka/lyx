@@ -407,7 +407,8 @@ void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in
 		   << from_ascii(getCmdName())
 		   << '['
 		   << from_ascii(width)
-		   << "]{}";
+		   << "]"
+		   << termcmd;
 		return;
 	}
 	// output the command \printnomenclature

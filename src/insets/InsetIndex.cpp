@@ -562,7 +562,7 @@ void InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) 
 {
 	if (!buffer().masterBuffer()->params().use_indices) {
 		if (getParam("type") == from_ascii("idx"))
-			os << "\\printindex{}";
+			os << "\\printindex" << termcmd;
 		return;
 	}
 	OutputParams runparams = runparams_in;

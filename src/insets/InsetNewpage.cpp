@@ -215,21 +215,21 @@ void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 {
 	switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:
-			os << "\\newpage{}";
+			os << "\\newpage" << termcmd;
 			break;
 		case InsetNewpageParams::PAGEBREAK:
 			if (runparams.moving_arg)
 				os << "\\protect";
-			os << "\\pagebreak{}";
+			os << "\\pagebreak" << termcmd;
 			break;
 		case InsetNewpageParams::CLEARPAGE:
-			os << "\\clearpage{}";
+			os << "\\clearpage" << termcmd;
 			break;
 		case InsetNewpageParams::CLEARDOUBLEPAGE:
-			os << "\\cleardoublepage{}";
+			os << "\\cleardoublepage" << termcmd;
 			break;
 		default:
-			os << "\\newpage{}";
+			os << "\\newpage" << termcmd;
 			break;
 	}
 }
