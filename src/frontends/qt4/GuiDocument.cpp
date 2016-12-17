@@ -1068,7 +1068,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	langModule->encodingCO->addItems(encodinglist);
 
 	langModule->quoteStyleCO->addItem(
-		qt_("``text''"),InsetQuotes::EnglishQuotes);
+		qt_("``text''"), InsetQuotes::EnglishQuotes);
 	langModule->quoteStyleCO->addItem(
 		qt_("''text''"), InsetQuotes::SwedishQuotes);
 	langModule->quoteStyleCO->addItem
