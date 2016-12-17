@@ -60,6 +60,7 @@
 #include "insets/Inset.h"
 #include "insets/InsetCitation.h"
 #include "insets/InsetGraphics.h"
+#include "insets/InsetQuotes.h"
 
 #include "support/lassert.h"
 #include "support/convert.h"
@@ -188,7 +189,9 @@ public:
 		in the InsetCaption context menu. */
 		SwitchCaptions,
 		/** Commands to separate environments. */
-		EnvironmentSeparators
+		EnvironmentSeparators,
+		/** This is the list of quotation marks available */
+		SwitchQuotes
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -362,6 +365,7 @@ public:
 	void expandArguments(BufferView const *, bool switcharg = false);
 	void expandCaptions(Buffer const * buf, bool switchcap = false);
 	void expandEnvironmentSeparators(BufferView const *);
+	void expandQuotes(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -474,7 +478,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_switcharguments,
 		md_captions,
 		md_switchcaptions,
-		md_env_separators
+		md_env_separators,
+		md_switchquotes
 	};
 
 	LexerKeyword menutags[] = {
@@ -509,6 +514,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "submenu", md_submenu },
 		{ "switcharguments", md_switcharguments },
 		{ "switchcaptions", md_switchcaptions },
+		{ "switchquotes", md_switchquotes },
 		{ "toc", md_toc },
 		{ "toolbars", md_toolbars },
 		{ "updateformats", md_updateformats },
@@ -654,6 +660,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_env_separators:
 			add(MenuItem(MenuItem::EnvironmentSeparators));
+			break;
+
+		case md_switchquotes:
+			add(MenuItem(MenuItem::SwitchQuotes));
 			break;
 
 		case md_optsubmenu:
@@ -1641,6 +1651,90 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 }
 
 
+void MenuDefinition::expandQuotes(BufferView const * bv)
+{
+	if (!bv)
+		return;
+    
+	if (!bv->cursor().inTexted())
+		return;
+
+	Inset const * inset = bv->cursor().nextInset();
+	if (!inset || inset->lyxCode() != QUOTE_CODE) {
+		add(MenuItem(MenuItem::Command,
+				    qt_("No Quote in Scope!"),
+				    FuncRequest(LFUN_NOACTION)));
+		return;
+	}
+	InsetQuotes const * qinset =
+		static_cast<InsetQuotes const *>(inset);
+
+	map<string, docstring> styles = qinset->getTypes();
+	string const qtype = qinset->getType();
+	
+	map<string, docstring>::const_iterator qq = styles.begin();
+	map<string, docstring>::const_iterator end = styles.end();
+
+	MenuDefinition eqs;
+	MenuDefinition sqs;
+	MenuDefinition gqs;
+	MenuDefinition pqs;
+	MenuDefinition fqs;
+	MenuDefinition aqs;
+	for (; qq != end; ++qq) {
+		docstring const style = from_ascii(qq->first);
+		FuncRequest const cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
+		docstring const desc = contains(style, 'l') ? 
+			bformat(_("%1$stext"), qq->second) : bformat(_("text%1$s"), qq->second);
+		if (prefixIs(style, qtype[0]))
+			add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'e') && !prefixIs(qtype, "e"))
+			eqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 's') && !prefixIs(qtype, "s"))
+			sqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'g') && !prefixIs(qtype, "g"))
+			gqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'p') && !prefixIs(qtype, "p"))
+			pqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'f') && !prefixIs(qtype, "f"))
+			fqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'a') && !prefixIs(qtype, "a"))
+			aqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	}
+
+	if (!eqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("``text''"));
+		item.setSubmenu(eqs);
+		add(item);
+	}
+	if (!sqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("''text''"));
+		item.setSubmenu(sqs);
+		add(item);
+	}
+	if (!gqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_(",,text``"));
+		item.setSubmenu(gqs);
+		add(item);
+	}
+	if (!pqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_(",,text''"));
+		item.setSubmenu(pqs);
+		add(item);
+	}
+	if (!fqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("<<text>>"));
+		item.setSubmenu(fqs);
+		add(item);
+	}
+	if (!aqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_(">>text<<"));
+		item.setSubmenu(aqs);
+		add(item);
+	}
+}
+
+
 void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 {
 	if (!bv)
@@ -2069,6 +2163,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::EnvironmentSeparators:
 			tomenu.expandEnvironmentSeparators(bv);
+			break;
+
+		case MenuItem::SwitchQuotes:
+			tomenu.expandQuotes(bv);
 			break;
 
 		case MenuItem::Submenu: {

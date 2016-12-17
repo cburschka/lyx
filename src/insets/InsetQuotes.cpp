@@ -15,8 +15,11 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Cursor.h"
 #include "Dimension.h"
 #include "Font.h"
+#include "FuncStatus.h"
+#include "FuncRequest.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
@@ -223,6 +226,35 @@ InsetQuotes::QuoteLanguage InsetQuotes::getLanguage(string const & s)
 }
 
 
+map<string, docstring> InsetQuotes::getTypes() const
+{
+	map<string, docstring> res;
+
+	int l, s, t;
+	QuoteLanguage lang;
+	QuoteSide side;
+	QuoteTimes times;
+	string type;
+
+	// get all quote types
+	for (l = 0; l < 6; ++l) {
+		lang = QuoteLanguage(l);
+		for (s = 0; s < 2; ++s) {
+			side = QuoteSide(s);
+			for (t = 0; t < 2; ++t) {
+				type += language_char[lang];
+				type += side_char[s];
+				times = QuoteTimes(t);
+				type += times_char[t];
+				res[type] = docstring(1, display_quote_char[times][quote_index[side][lang]]);
+				type.clear();
+			}
+		}
+	}
+	return res;
+}
+
+
 docstring InsetQuotes::displayString() const
 {
 	// In PassThru, we use straight quotes
@@ -265,14 +297,18 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.text(x, y, displayString(), font);
 }
 
-
-void InsetQuotes::write(ostream & os) const
+string InsetQuotes::getType() const
 {
 	string text;
 	text += language_char[language_];
 	text += side_char[side_];
 	text += times_char[times_];
-	os << "Quotes " << text;
+	return text;
+}
+	
+void InsetQuotes::write(ostream & os) const
+{
+	os << "Quotes " << getType();
 }
 
 
@@ -282,6 +318,52 @@ void InsetQuotes::read(Lexer & lex)
 	lex.next();
 	parseString(lex.getString());
 	lex >> "\\end_inset";
+}
+
+
+void InsetQuotes::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	switch (cmd.action()) {
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		bool const change_type = first_arg == "changetype";
+		if (!change_type) {
+			// not for us
+			// this will not be handled higher up
+			cur.undispatched();
+			return;
+		}
+		cur.recordUndoInset(this);
+		parseString(cmd.getArg(1));
+		cur.buffer()->updateBuffer();
+		break;
+	}
+	default:
+		Inset::doDispatch(cur, cmd);
+		break;
+	}
+}
+
+
+bool InsetQuotes::getStatus(Cursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action()) {
+
+	case LFUN_INSET_MODIFY: {
+		string const first_arg = cmd.getArg(0);
+		if (first_arg == "changetype") {
+			string const type = cmd.getArg(1);
+			flag.setOnOff(type == getType());
+			flag.setEnabled(!pass_thru_);
+			return true;
+		}
+		return Inset::getStatus(cur, cmd, flag);
+	}
+
+	default:
+		return Inset::getStatus(cur, cmd, flag);
+	}
 }
 
 
@@ -437,6 +519,12 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 			default: break;
 			}
 	}
+}
+
+
+string InsetQuotes::contextMenuName() const
+{
+	return "context-quote";
 }
 
 } // namespace lyx

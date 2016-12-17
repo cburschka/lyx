@@ -218,6 +218,14 @@ Menuset
 		Item "Vertical Phantom|V" "inset-modify phantom Phantom VPhantom"
 	End
 
+
+#
+# InsetQuotes context menu
+#
+	Menu "context-quote"
+		SwitchQuotes
+	End
+
 #
 # InsetSpace context menu
 #

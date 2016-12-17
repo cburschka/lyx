@@ -78,6 +78,8 @@ public:
 	///
 	void read(Lexer & lex);
 	///
+	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
+	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
@@ -98,9 +100,16 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 	///
+	std::string contextMenuName() const;
+	///
 	InsetCode lyxCode() const { return QUOTE_CODE; }
 	/// should this inset be handled like a normal character
 	bool isChar() const { return true; }
+	
+	/// Returns the current quote type
+	std::string getType() const;
+	/// Returns a map of quotation marks
+	std::map<std::string, docstring> getTypes() const;
 
 private:
 	///
@@ -129,6 +138,13 @@ private:
 	std::string context_lang_;
 	/// Is this in a pass-thru context?
 	bool pass_thru_;
+
+protected:
+	/// \name Protected functions inherited from Inset class
+	//@{
+	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	//@}
 };
 
 } // namespace lyx
