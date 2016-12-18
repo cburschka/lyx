@@ -295,7 +295,7 @@ ToolbarSet
 
 	Toolbar "math_panels" "Math Panels"
 		PopupMenu "space" "Math spacings"
-		PopupMenu "style" "Styles"
+		PopupMenu "style" "Styles & classes"
 		PopupMenu "frac-square" "Fractions"
 		PopupMenu "font" "Fonts"
 		PopupMenu "functions" "Functions"
@@ -361,12 +361,12 @@ ToolbarSet
 		Item "Phantom	\\phantom" "math-insert \phantom"
 		Item "Horizontal phantom	\\hphantom" "math-insert \hphantom"
 		Item "Vertical phantom	\\vphantom" "math-insert \vphantom"
-		Item "Smash \\smash" "math-insert \smash"
-		Item "Top smash \\smasht" "math-insert \smasht"
-		Item "Bottom smash \\smashb" "math-insert \smashb"
-		Item "Left overlap \\mathllap" "math-insert \mathllap"
-		Item "Center overlap \\mathclap" "math-insert \mathclap"
-		Item "Right overlap \\mathrlap" "math-insert \mathrlap"
+		Item "Smash	\\smash" "math-insert \smash"
+		Item "Top smash	\\smasht" "math-insert \smasht"
+		Item "Bottom smash	\\smashb" "math-insert \smashb"
+		Item "Left overlap	\\mathllap" "math-insert \mathllap"
+		Item "Center overlap	\\mathclap" "math-insert \mathclap"
+		Item "Right overlap	\\mathrlap" "math-insert \mathrlap"
 	End
 
 	Toolbar "sqrt-square" "Roots"
@@ -374,11 +374,15 @@ ToolbarSet
 		Item "Other root	\\root" "math-insert \root"
 	End
 
-	Toolbar "style" "Styles"
+	Toolbar "style" "Styles & Classes"
 		Item "Display style	\\displaystyle" "math-size \displaystyle"
 		Item "Normal text style	\\textstyle" "math-size \textstyle"
 		Item "Script (small) style	\\scriptstyle" "math-size \scriptstyle"
 		Item "Scriptscript (smaller) style	\\scriptscriptstyle" "math-size \scriptscriptstyle"
+		Item "Relation class	\\mathrel" "math-insert \mathrel"
+		Item "Binary operator class	\\mathbin" "math-insert \mathbin"
+		Item "Large operator class	\\mathop" "math-insert \mathop"
+		Item "Ordinary class	\\mathord" "math-insert \mathord"
 	End
 
 	Toolbar "frac-square" "Fractions"

@@ -213,7 +213,7 @@ dist_plexamples_DATA = \
 pt_BRexamplesdir = $(pkgdatadir)/examples/pt_BR
 dist_pt_BRexamples_DATA = \
 	examples/pt_BR/splash.lyx
-	
+
 pt_PTexamplesdir = $(pkgdatadir)/examples/pt_PT
 dist_pt_PTexamples_DATA = \
 	examples/pt_PT/splash.lyx
@@ -1017,6 +1017,7 @@ dist_imagesmath_DATA = \
 	images/math/mathbb_Q.svgz \
 	images/math/mathbb_R.svgz \
 	images/math/mathbb_Z.svgz \
+	images/math/mathbin.svgz \
 	images/math/mathbf.svgz \
 	images/math/mathcal.svgz \
 	images/math/mathcal_F.svgz \
@@ -1029,9 +1030,12 @@ dist_imagesmath_DATA = \
 	images/math/mathfrak.svgz \
 	images/math/mathit.svgz \
 	images/math/mathllap.svgz \
+	images/math/mathop.svgz \
+	images/math/mathord.svgz \
 	images/math/mathparagraph.svgz \
 	images/math/mathscr.svgz \
 	images/math/mathsection.svgz \
+	images/math/mathrel.svgz \
 	images/math/mathring.svgz \
 	images/math/mathrlap.svgz \
 	images/math/mathrm.svgz \
