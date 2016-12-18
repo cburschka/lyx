@@ -957,23 +957,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	LYXERR(Debug::FIND, "After normalization: '" << str << "'");
 
-	if (!use_regexp) {
-		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" 
-		       << par_as_string << "', str='" << str << "'");
-		LYXERR(Debug::FIND, "Searching in normal mode: lead_as_string='" 
-		       << lead_as_string << "', par_as_string_nolead='" 
-		       << par_as_string_nolead << "'");
-		if (at_begin) {
-			LYXERR(Debug::FIND, "size=" << par_as_string.size() 
-			       << ", substr='" << str.substr(0, par_as_string.size()) << "'");
-			if (str.substr(0, par_as_string.size()) == par_as_string)
-				return par_as_string.size();
-		} else {
-			size_t pos = str.find(par_as_string_nolead);
-			if (pos != string::npos)
-				return par_as_string.size();
-		}
-	} else {
+	if (use_regexp) {
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
 		regex const & p_regexp = at_begin ? regexp : regexp2;
 		sregex_iterator re_it(str.begin(), str.end(), p_regexp);
@@ -996,6 +980,22 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			return m[0].second - m[0].first;
 		else
 			return m[m.size() - close_wildcards].first - m[0].first;
+	} else {
+		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" 
+		       << par_as_string << "', str='" << str << "'");
+		LYXERR(Debug::FIND, "Searching in normal mode: lead_as_string='" 
+		       << lead_as_string << "', par_as_string_nolead='" 
+		       << par_as_string_nolead << "'");
+		if (at_begin) {
+			LYXERR(Debug::FIND, "size=" << par_as_string.size() 
+			       << ", substr='" << str.substr(0, par_as_string.size()) << "'");
+			if (str.substr(0, par_as_string.size()) == par_as_string)
+				return par_as_string.size();
+		} else {
+			size_t pos = str.find(par_as_string_nolead);
+			if (pos != string::npos)
+				return par_as_string.size();
+		}
 	}
 	return 0;
 }
