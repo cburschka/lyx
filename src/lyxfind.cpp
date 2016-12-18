@@ -971,27 +971,24 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
 		// Try all possible regexp matches,
 		//until one that verifies the braces match test is found
-		regex const *p_regexp = at_begin ? &regexp : &regexp2;
-		sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
-		sregex_iterator re_it_end;
-		for (; re_it != re_it_end; ++re_it) {
-			match_results<string::const_iterator> const & m = *re_it;
-			// Check braces on the segment that matched the entire regexp expression,
-			// plus the last subexpression, if a (.*?) was inserted in the constructor.
-			if (!braces_match(m[0].first, m[0].second, open_braces))
-				return 0;
-			// Check braces on segments that matched all (.*?) subexpressions,
-			// except the last "padding" one inserted by lyx.
-			for (size_t i = 1; i < m.size() - 1; ++i)
-				if (!braces_match(m[i].first, m[i].second))
-					return false;
-			// Exclude from the returned match length any length
-			// due to close wildcards added at end of regexp
-			if (close_wildcards == 0)
-				return m[0].second - m[0].first;
-			else
-				return m[m.size() - close_wildcards].first - m[0].first;
-		}
+		regex const & p_regexp = at_begin ? regexp : regexp2;
+		sregex_iterator re_it(str.begin(), str.end(), p_regexp);
+		match_results<string::const_iterator> const & m = *re_it;
+		// Check braces on the segment that matched the entire regexp expression,
+		// plus the last subexpression, if a (.*?) was inserted in the constructor.
+		if (!braces_match(m[0].first, m[0].second, open_braces))
+			return 0;
+		// Check braces on segments that matched all (.*?) subexpressions,
+		// except the last "padding" one inserted by lyx.
+		for (size_t i = 1; i < m.size() - 1; ++i)
+			if (!braces_match(m[i].first, m[i].second))
+				return false;
+		// Exclude from the returned match length any length
+		// due to close wildcards added at end of regexp
+		if (close_wildcards == 0)
+			return m[0].second - m[0].first;
+		else
+			return m[m.size() - close_wildcards].first - m[0].first;
 	}
 	return 0;
 }
