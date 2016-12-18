@@ -2506,7 +2506,7 @@ Action Modify some properties of an inset.
 \end_layout
 
 \begin_layout Description
-Notion Used for bibitem, bibtex, box, branch, command, ert, external, floats, graphics, include, index, info, label, listings, newline, newpage, nomencl, note, phantom, ref, space, tabular, vspace, wrap insets.
+Notion Used for argument, bibitem, bibtex, box, branch, caption, citation, command, ert, external, float, graphics, include, index, info, label, line, listings, newline, newpage, nomencl, note, phantom, quotes, ref, script, separator, space, tabular, vspace and wrap insets.
 \end_layout
 
 \begin_layout Description
@@ -2518,11 +2518,39 @@ inset-modify changetype <TYPE>
 \end_layout
 
 \begin_layout Description
-Sample inset-modify note Note Comment
+Sample Change a Note inset into a Comment inset:
 \begin_inset Newline newline
 \end_inset
 
-	       inset-modify changetype Ovalbox
+inset-modify note Note Comment
+\begin_inset Newline newline
+\end_inset
+
+Change a Box into an Ovalbox:
+\begin_inset Newline newline
+\end_inset
+
+inset-modify changetype Ovalbox
+\begin_inset Newline newline
+\end_inset
+
+Change a quotation mark to e[nglish style], l[eft side], s[ingle]
+\begin_inset Newline newline
+\end_inset
+
+inset-modify changetype els
+\begin_inset Newline newline
+\end_inset
+
+Change only the style of a quotation mark, maintaining the other aspects (. = wildcard)
+\begin_inset Newline newline
+\end_inset
+
+inset-modify changetype e..
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*

@@ -2470,10 +2470,11 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
  * \li Action: Modify some properties of an inset.
- * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
-                        floats, graphics, include, index, info, label,
-                        listings, newline, newpage, nomencl, note, phantom,
-                        quote, ref, space, tabular, vspace, wrap insets.
+ * \li Notion: Used for argument, bibitem, bibtex, box, branch, caption, citation,
+                        command, ert, external, float, graphics, include, index,
+                        info, label, line, listings, newline, newpage, nomencl,
+                        note, phantom, quotes, ref, script, separator, space,
+                        tabular, vspace and wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS> \n
                inset-modify changetype <TYPE>
  * \li Sample: Change a Note inset into a Comment inset: \n
