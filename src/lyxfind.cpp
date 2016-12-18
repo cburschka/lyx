@@ -978,24 +978,26 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		// due to close wildcards added at end of regexp
 		if (close_wildcards == 0)
 			return m[0].second - m[0].first;
-		else
-			return m[m.size() - close_wildcards].first - m[0].first;
+
+		return m[m.size() - close_wildcards].first - m[0].first;
+	}
+
+	// else !use_regexp: but all code paths above return
+	LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='"
+				 << par_as_string << "', str='" << str << "'");
+	LYXERR(Debug::FIND, "Searching in normal mode: lead_as_string='"
+				 << lead_as_string << "', par_as_string_nolead='"
+				 << par_as_string_nolead << "'");
+
+	if (at_begin) {
+		LYXERR(Debug::FIND, "size=" << par_as_string.size()
+					 << ", substr='" << str.substr(0, par_as_string.size()) << "'");
+		if (str.substr(0, par_as_string.size()) == par_as_string)
+			return par_as_string.size();
 	} else {
-		LYXERR(Debug::FIND, "Searching in normal mode: par_as_string='" 
-		       << par_as_string << "', str='" << str << "'");
-		LYXERR(Debug::FIND, "Searching in normal mode: lead_as_string='" 
-		       << lead_as_string << "', par_as_string_nolead='" 
-		       << par_as_string_nolead << "'");
-		if (at_begin) {
-			LYXERR(Debug::FIND, "size=" << par_as_string.size() 
-			       << ", substr='" << str.substr(0, par_as_string.size()) << "'");
-			if (str.substr(0, par_as_string.size()) == par_as_string)
-				return par_as_string.size();
-		} else {
-			size_t pos = str.find(par_as_string_nolead);
-			if (pos != string::npos)
-				return par_as_string.size();
-		}
+		size_t pos = str.find(par_as_string_nolead);
+		if (pos != string::npos)
+			return par_as_string.size();
 	}
 	return 0;
 }
