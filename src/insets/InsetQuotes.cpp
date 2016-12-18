@@ -114,6 +114,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 	parseString(str);
 }
 
+
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t,
 			 string const & s, string const & l)
 	: Inset(buf), times_(t), pass_thru_(false)
@@ -204,6 +205,7 @@ void InsetQuotes::parseString(string const & s)
 		times_ = DoubleQuotes;
 	}
 }
+
 
 InsetQuotes::QuoteLanguage InsetQuotes::getLanguage(string const & s)
 {
@@ -297,6 +299,7 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.text(x, y, displayString(), font);
 }
 
+
 string InsetQuotes::getType() const
 {
 	string text;
@@ -305,7 +308,8 @@ string InsetQuotes::getType() const
 	text += times_char[times_];
 	return text;
 }
-	
+
+
 void InsetQuotes::write(ostream & os) const
 {
 	os << "Quotes " << getType();
