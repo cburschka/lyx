@@ -158,7 +158,7 @@ void InsetQuotes::setSide(char_type c)
 }
 
 
-void InsetQuotes::parseString(string const & s)
+void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 {
 	string str = s;
 	if (str.length() != 3) {
@@ -169,40 +169,49 @@ void InsetQuotes::parseString(string const & s)
 
 	int i;
 
-	for (i = 0; i < 6; ++i) {
-		if (str[0] == language_char[i]) {
-			language_ = QuoteLanguage(i);
-			break;
+	// '.' wildcard means: keep current language
+	if (!allow_wildcards || str[0] != '.') {
+		for (i = 0; i < 6; ++i) {
+			if (str[0] == language_char[i]) {
+				language_ = QuoteLanguage(i);
+				break;
+			}
 		}
-	}
-	if (i >= 6) {
-		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-			" bad language specification." << endl;
-		language_ = EnglishQuotes;
+		if (i >= 6) {
+			lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+				" bad language specification." << endl;
+			language_ = EnglishQuotes;
+		}
 	}
 
-	for (i = 0; i < 2; ++i) {
-		if (str[1] == side_char[i]) {
-			side_ = QuoteSide(i);
-			break;
+	// '.' wildcard means: keep current side
+	if (!allow_wildcards || str[1] != '.') {
+		for (i = 0; i < 2; ++i) {
+			if (str[1] == side_char[i]) {
+				side_ = QuoteSide(i);
+				break;
+			}
 		}
-	}
-	if (i >= 2) {
-		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-			" bad side specification." << endl;
-		side_ = LeftQuote;
+		if (i >= 2) {
+			lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+				" bad side specification." << endl;
+			side_ = LeftQuote;
+		}
 	}
 
-	for (i = 0; i < 2; ++i) {
-		if (str[2] == times_char[i]) {
-			times_ = QuoteTimes(i);
-			break;
+	// '.' wildcard means: keep current times
+	if (!allow_wildcards || str[2] != '.') {
+		for (i = 0; i < 2; ++i) {
+			if (str[2] == times_char[i]) {
+				times_ = QuoteTimes(i);
+				break;
+			}
 		}
-	}
-	if (i >= 2) {
-		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-			" bad times specification." << endl;
-		times_ = DoubleQuotes;
+		if (i >= 2) {
+			lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
+				" bad times specification." << endl;
+			times_ = DoubleQuotes;
+		}
 	}
 }
 
@@ -338,7 +347,7 @@ void InsetQuotes::doDispatch(Cursor & cur, FuncRequest & cmd)
 			return;
 		}
 		cur.recordUndoInset(this);
-		parseString(cmd.getArg(1));
+		parseString(cmd.getArg(1), true);
 		cur.buffer()->updateBuffer();
 		break;
 	}

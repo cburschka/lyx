@@ -118,7 +118,8 @@ private:
 	/// Decide whether we need left or right quotation marks
 	void setSide(char_type c);
 	///
-	void parseString(std::string const &);
+	void parseString(std::string const &,
+			 bool const allow_wildcards = false);
 	///
 	docstring displayString() const;
 	///
