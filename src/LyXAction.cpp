@@ -2473,11 +2473,17 @@ void LyXAction::init()
  * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
                         floats, graphics, include, index, info, label,
                         listings, newline, newpage, nomencl, note, phantom,
-                        ref, space, tabular, vspace, wrap insets.
+                        quote, ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS> \n
                inset-modify changetype <TYPE>
- * \li Sample: inset-modify note Note Comment \n
-	       inset-modify changetype Ovalbox
+ * \li Sample: Change a Note inset into a Comment inset: \n
+                   inset-modify note Note Comment \n
+               Change a Box into an Ovalbox: \n
+                   inset-modify changetype Ovalbox \n
+               Change a quotation mark to e[nglish style], l[eft side], s[ingle] \n
+                   inset-modify changetype els \n
+               Change only the style of a quotation mark, maintaining the other aspects (. = wildcard) \n
+                   inset-modify changetype e.. \n
  * \endvar
  */
 		{ LFUN_INSET_MODIFY, "inset-modify", AtPoint, Edit },
