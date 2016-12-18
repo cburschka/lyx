@@ -81,9 +81,9 @@
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
 0x00bb "\\guillemotright"         "" "force=armscii8" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-0x00bc "\\textonequarter"         "textcomp" "" "\\frac14" "" # 1/4 FRACTION
-0x00bd "\\textonehalf"            "textcomp" "" "\\frac12" "" # 1/2 FRACTION
-0x00be "\\textthreequarters"      "textcomp" "" "\\frac34" "" # 3/4 FRACTION
+0x00bc "\\textonequarter"         "textcomp" "" "\\sfrac{1}{4}" "xfrac" # 1/4 FRACTION
+0x00bd "\\textonehalf"            "textcomp" "" "\\sfrac{1}{2}" "xfrac" # 1/2 FRACTION
+0x00be "\\textthreequarters"      "textcomp" "" "\\sfrac{3}{4}" "xfrac" # 3/4 FRACTION
 0x00bf "\\textquestiondown"       "" "" # INVERTED QUESTION MARK
 0x00c0 "\\`{A}"                   "" "mathalpha" "\\grave{A}" # LATIN CAPITAL LETTER A WITH GRAVE
 0x00c1 "\\'{A}"                   "" "mathalpha" "\\acute{A}" # LATIN CAPITAL LETTER A WITH ACUTE
@@ -1851,22 +1851,16 @@
 0x20b1 "\\textpeso"               "textcomp" "force=utf8x" # PESO SIGN
 0x20b2 "\\textguarani"            "textcomp" "force=utf8;utf8x" # GUARANI SIGN
 0x20b9 "\\rupee"                  "tfrupee" "" "" "" # INDIAN RUPEE SIGN
-
 #
 # 74 Letterlike Symbols
 #
-# use the following macro for the character ACCOUNT OF
-0x2100 "\\LyXaccountof"
-"\\newcommand*\\LyXaccountof{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{c}}}" "force=utf8;utf8x"
-# use the following macro for the character ADRESSED TO THE SUBJECT
-0x2101 "\\LyXaddressed" "\\newcommand*\\LyXaddressed{\\mbox{\\raisebox{.8ex}{a}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{s}}}" "force=utf8;utf8x"
+0x2100 "\\smallLetterFrac{a}{c}" "smallLetterFrac" "force=utf8;utf8x" "" ""# ACCOUNT OF
+0x2101 "\\smallLetterFrac{a}{s}" "smallLetterFrac" "force=utf8;utf8x" "" ""# ADRESSED TO THE SUBJECT
 0x2102 ""                         "" "force=utf8" "\\mathbb{C}" "amssymb" # DOUBLE-STRUCK CAPITAL C
 0x2103 "\\textcelsius"            "textcomp" "force=utf8x" "" "" # DEGREE CELSIUS
 #0x2104 ""                         "" "" "" "" # CENTRE LINE SYMBOL
-# use the following macro for the character CARE OF
-0x2105 "\\LyXcareof" "\\newcommand*\\LyXcareof{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{o}}}" "force=utf8;utf8x"
-# use the following macro for the character CADA UNA
-0x2106 "\\LyXcadauna" "\\newcommand*\\LyXcadauna{\\mbox{\\raisebox{.8ex}{c}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{u}}}" "force=utf8;utf8x"
+0x2105 "\\smallLetterFrac{c}{o}" "smallLetterFrac" "force=utf8;utf8x" "" "" # CARE OF
+0x2106 "\\smallLetterFrac{c}{u}" "smallLetterFrac" "force=utf8;utf8x" "" "" # CADA UNA
 #0x2107 ""                         "" "" "" "" # EULER CONSTANT
 #0x2108 ""                         "" "" "" "" # SCRUPLE
 0x2109 "\\textdegree{}F"          "" "force,notermination=text" "" "" # DEGREE FAHRENHEIT
@@ -1940,41 +1934,28 @@
 #0x214a ""                         "" "" "" "" # PROPERTY LINE
 0x214b ""                         "" "force=utf8;utf8x" "\\bindnasrepma" "stmaryrd" # TURNED AMPERSAND
 #0x214c ""                         "" "" "" "" # PER SIGN
-0x214d "\\LyXaktieselskap" "\\newcommand*\\LyXaktieselskap{\\mbox{\\raisebox{.8ex}{\\footnotesize A}\\kern-.18em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\footnotesize S}}}" "force=utf8;utf8x" # ⅍ AKTIESELSKAB
+0x214d "\\sfrac{A}{\\kern-.08em S}" "xfrac" "force=utf8;utf8x" "" "" # ⅍ AKTIESELSKAB
 #0x214e ""                         "" "" "" "" # TURNED SMALL F
 #0x214f ""                         "" "" "" "" # SYMBOL FOR SAMARITAN SOURCE
 #
 # 75 Number Forms
 #
-#0x2150 ""                         "" "" "" "" # VULGAR FRACTION ONE SEVENTH
-#0x2151 ""                         "" "" "" "" # VULGAR FRACTION ONE NINTH
-#0x2152 ""                         "" "" "" "" # VULGAR FRACTION ONE TENTH
-# use the following macro for the character VULGAR FRACTION ONE THIRD
-0x2153 "\\LyXonethird" "\\newcommand*\\LyXonethird{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION TWO THIRDS
-0x2154 "\\LyXtwothirds" "\\newcommand*\\LyXtwothirds{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{3}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION ONE FIFTH
-0x2155 "\\LyXonefifth" "\\newcommand*\\LyXonefifth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION TWO FIFTHS
-0x2156 "\\LyXtwofifths" "\\newcommand*\\LyXtwofifths{\\mbox{\\raisebox{.8ex}{2}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION THREE FIFTHS
-0x2157 "\\LyXthreefifths" "\\newcommand*\\LyXthreefifths{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION FOUR FIFTHS
-0x2158 "\\LyXfourfifths" "\\newcommand*\\LyXfourfifths{\\mbox{\\raisebox{.8ex}{4}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{5}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION ONE SIXTH
-0x2159 "\\LyXonesixth" "\\newcommand*\\LyXonesixth{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION FIVE SIXTHS
-0x215a "\\LyXfivesixths" "\\newcommand*\\LyXfivesixths{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{6}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION ONE EIGHT
-0x215b "\\LyXoneeight" "\\newcommand*\\LyXoneeight{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION THREE EIGHTS
-0x215c "\\LyXthreeeights" "\\newcommand*\\LyXthreeeights{\\mbox{\\raisebox{.8ex}{3}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION FIVE EIGHTS
-0x215d "\\LyXfiveeights" "\\newcommand*\\LyXfiveeights{\\mbox{\\raisebox{.8ex}{5}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8;utf8x"
-# use the following macro for the character VULGAR FRACTION SEVEN EIGHTS
-0x215e "\\LyXseveneights" "\\newcommand*\\LyXseveneights{\\mbox{\\raisebox{.8ex}{7}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{8}}}" "force=utf8;utf8x"
-# use the following macro for the character FRACTION NUMERATOR ONE
-0x215f "\\LyXnumeratorone" "\\newcommand*\\LyXnumeratorone{\\mbox{\\raisebox{.8ex}{1}\\kern-.175em\\raisebox{.2ex}{/}\\kern-.18em\\raisebox{-.2ex}{\\kern-.18em}}}" "force=utf8;utf8x"
+0x2150 "\\sfrac{1}{7}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{7}" "xfrac" # VULGAR FRACTION ONE SEVENTH
+0x2151 "\\sfrac{1}{9}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{9}" "xfrac" # VULGAR FRACTION ONE NINTH
+0x2152 "\\sfrac{1}{10}"           "xfrac" "force=utf8;utf8x" "\\sfrac{1}{10}" "xfrac" # VULGAR FRACTION ONE TENTH
+0x2153 "\\sfrac{1}{3}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{3}" "xfrac" # VULGAR FRACTION ONE THIRD
+0x2154 "\\sfrac{2}{3}"            "xfrac" "force=utf8;utf8x" "\\sfrac{2}{3}" "xfrac" # VULGAR FRACTION TWO THIRDS
+0x2155 "\\sfrac{1}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{5}" "xfrac" # VULGAR FRACTION ONE FIFTH
+0x2156 "\\sfrac{2}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{2}{5}" "xfrac" # VULGAR FRACTION TWO FIFTHS
+0x2157 "\\sfrac{3}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{3}{5}" "xfrac" # VULGAR FRACTION THREE FIFTHS
+0x2158 "\\sfrac{4}{5}"            "xfrac" "force=utf8;utf8x" "\\sfrac{4}{5}" "xfrac" # VULGAR FRACTION FOUR FIFTHS
+0x2159 "\\sfrac{1}{6}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{6}" "xfrac" # VULGAR FRACTION ONE SIXTH
+0x215a "\\sfrac{5}{6}"            "xfrac" "force=utf8;utf8x" "\\sfrac{5}{6}" "xfrac" # VULGAR FRACTION FIVE SIXTHS
+0x215b "\\sfrac{1}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{1}{8}" "xfrac" # VULGAR FRACTION ONE EIGHT
+0x215c "\\sfrac{3}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{3}{8}" "xfrac" # VULGAR FRACTION THREE EIGHTS
+0x215d "\\sfrac{5}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{5}{8}" "xfrac" # VULGAR FRACTION FIVE EIGHTS
+0x215e "\\sfrac{7}{8}"            "xfrac" "force=utf8;utf8x" "\\sfrac{7}{8}" "xfrac" # VULGAR FRACTION SEVEN EIGHTS
+0x215f "\\sfrac{1}{}"             "xfrac" "force=utf8;utf8x" "\\sfrac{1}{}"  "xfrac" # FRACTION NUMERATOR ONE
 0x2160 "\\mbox{I}"                "" "force=utf8;utf8x" # ROMAN NUMERAL ONE
 0x2161 "\\mbox{II}"               "" "force=utf8;utf8x" # ROMAN NUMERAL TWO
 0x2162 "\\mbox{III}"              "" "force=utf8;utf8x" # ROMAN NUMERAL THREE

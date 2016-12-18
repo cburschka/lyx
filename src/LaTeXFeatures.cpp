@@ -327,6 +327,23 @@ static docstring const textbaltic_def = from_ascii(
         "\\DeclareTextCompositeCommand{\\c}{T1}{r}{\\textcommabelow{r}}\n"
         "\\DeclareTextCompositeCommand{\\c}{T1}{R}{\\textcommabelow{R}}\n");
 
+// split-level fractions
+static docstring const xfrac_def = from_ascii(
+	   "\\usepackage{xfrac}\n");
+static docstring const smallLetterFrac_def = from_ascii(
+        "\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{default}{text}\n"
+		"  {phantom=c, scale-factor=1.0, slash-left-kern=-.05em}\n"
+		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmr}{text}\n"
+		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{lmss}{text}\n"
+		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmr}{text}\n"
+		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+		"\\DeclareCollectionInstance{smallLetterFrac}{xfrac}{cmss}{text}\n"
+		"  {slash-symbol-font=ptm, phantom=c, scale-factor=1, slash-left-kern=-.05em}\n"
+		"\\newcommand{\\smallLetterFrac}[2]{%\n"
+		"  {\\UseCollection{xfrac}{smallLetterFrac}\\sfrac{#1}{#2}}}\n");
+
 static docstring const lyxref_def = from_ascii(
 		"\\RS@ifundefined{subsecref}\n"
 		"  {\\newref{subsec}{name = \\RSsectxt}}\n"
@@ -914,7 +931,7 @@ char const * simplefeatures[] = {
 	"fixme",
 	"todonotes",
 	"forest",
-	"varwidth"
+	"varwidth",
 };
 
 char const * bibliofeatures[] = {
@@ -1273,7 +1290,7 @@ TexString LaTeXFeatures::getMacros() const
 		macros << lyxarrow_def << '\n';
 
 	if (!usePolyglossia() && mustProvide("textgreek")) {
-	        // ensure LGR font encoding is defined also if fontenc is not loaded by LyX
+	    // ensure LGR font encoding is defined also if fontenc is not loaded by LyX
 	   	if (params_.font_encoding() == "default")
 			macros << textgreek_LGR_def;
 		macros << textgreek_def << '\n';
@@ -1286,7 +1303,7 @@ TexString LaTeXFeatures::getMacros() const
 		macros << textcyr_def << '\n';
 	}
 
-        // non-standard text accents:
+	// non-standard text accents:
 	if (mustProvide("textcommaabove") || mustProvide("textcommaaboveright") ||
 	    mustProvide("textcommabelow") || mustProvide("textbaltic"))
 		macros << lyxaccent_def;
@@ -1302,6 +1319,13 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (mustProvide("textbaltic"))
 		macros << textbaltic_def << '\n';
+
+	// split-level fractions
+	if (mustProvide("xfrac") || mustProvide("smallLetterFrac"))
+		macros << xfrac_def << '\n';
+
+	if (mustProvide("smallLetterFrac"))
+		macros << smallLetterFrac_def << '\n';
 
 	if (mustProvide("lyxmathsym"))
 		macros << lyxmathsym_def << '\n';
