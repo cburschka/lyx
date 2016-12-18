@@ -123,7 +123,7 @@ otexstream & operator<<(otexstream & ots, SafeBreakLine)
 	otexrowstream & otrs = ots;
 	if (ots.canBreakLine()) {
 	    if (ots.terminateCommand())
-		    otrs << "{}";
+			otrs << "{}";
 		otrs << "%\n";
 		ots.lastChar('\n');
 	}
@@ -179,7 +179,7 @@ otexstream & operator<<(otexstream & ots, TexString ts)
 
 	otexrowstream & otrs = ots;
 	bool isprotected = false;
-	char const c = ts.str[0];
+	char_type const c = ts.str[0];
 	if (ots.protectSpace()) {
 		if (!ots.canBreakLine() && c == ' ') {
 			otrs << "{}";
@@ -223,7 +223,7 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 		return ots;
 	otexrowstream & otrs = ots;
 	bool isprotected = false;
-	char const c = s[0];
+	char_type const c = s[0];
 	if (ots.protectSpace()) {
 		if (!ots.canBreakLine() && c == ' ') {
 			otrs << "{}";
