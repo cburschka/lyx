@@ -223,14 +223,9 @@ void ViewSourceWidget::realUpdateView()
 	if (changed && !texrow_.get()) {
 		// position-to-row is unavailable
 		// we jump to the first modification
-		const QChar * oc = old.constData();
-		const QChar * nc = qcontent.constData();
+		int length = min(old.length(), qcontent.length());
 		int pos = 0;
-		while (*oc != '\0' && *nc != '\0' && *oc == *nc) {
-			++oc;
-			++nc;
-			++pos;
-		}
+		for (; pos < length && old.at(pos) == qcontent.at(pos); ++pos) {}
 		QTextCursor c = QTextCursor(viewSourceTV->document());
 		//get some space below the cursor
 		c.setPosition(pos);
