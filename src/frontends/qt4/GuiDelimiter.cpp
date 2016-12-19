@@ -24,6 +24,7 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <QPixmap>
 #include <QCheckBox>
@@ -52,9 +53,9 @@ static char const *  latex_delimiters[] = {
 static int const nr_latex_delimiters =
 	sizeof(latex_delimiters) / sizeof(char const *);
 
-static QString const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
+static string const bigleft[]  = {"", "bigl", "Bigl", "biggl", "Biggl"};
 
-static QString const bigright[] = {"", "bigr", "Bigr", "biggr", "Biggr"};
+static string const bigright[] = {"", "bigr", "Bigr", "biggr", "Biggr"};
 
 static char const * const biggui[] = {
 	N_("big[[delimiter size]]"),
@@ -67,15 +68,15 @@ static char const * const biggui[] = {
 
 // FIXME: It might be better to fix the big delim LFUN to not require
 // additional '\' prefix.
-static QString fix_name(QString const & str, bool big)
+static docstring fix_name(string const & str, bool big)
 {
-	if (str.isEmpty())
-		return ".";
+	if (str.empty())
+		return from_ascii(".");
 	if (!big || str == "(" || str == ")" || str == "[" || str == "]"
 	    || str == "|" || str == "/")
-		return str;
+		return from_ascii(str);
 
-	return "\\" + str;
+	return "\\" + from_ascii(str);
 }
 
 struct MathSymbol {
@@ -163,6 +164,19 @@ string const & texName(char_type math_symbol)
 	return it->second;
 }
 
+
+void setDelimiterName(QListWidgetItem * lwi, string const & name)
+{
+	lwi->setData(Qt::UserRole, toqstr(name));
+}
+
+
+string getDelimiterName(QListWidgetItem const * lwi)
+{
+	return fromqstr(lwi->data(Qt::UserRole).toString());
+}
+
+
 } // anon namespace
 
 
@@ -204,6 +218,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		lyxfont.setFamily(ms.fontfamily);
 		QFont font = frontend::getFont(lyxfont);
 		lwi->setFont(font);
+		setDelimiterName(lwi, delim);
 		lwi->setToolTip(toqstr(delim));
 		lwi->setSizeHint(item_size);
 		switch (ms.fontfamily) {
@@ -221,8 +236,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	}
 
 	for (int i = 0; i != leftLW->count(); ++i) {
-		MathSymbol const & ms =	mathSymbol(
-			fromqstr(leftLW->item(i)->toolTip()));
+		MathSymbol const & ms =	mathSymbol(getDelimiterName(leftLW->item(i)));
 		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
 	}
 
@@ -275,15 +289,17 @@ void GuiDelimiter::updateTeXCode(int size)
 {
 	bool const bigsize = size != 0;
 
-	QString left_str = fix_name(leftLW->currentItem()->toolTip(), bigsize);
-	QString right_str = fix_name(rightLW->currentItem()->toolTip(), bigsize);
+	docstring left_str = fix_name(getDelimiterName(leftLW->currentItem()),
+	                              bigsize);
+	docstring right_str = fix_name(getDelimiterName(rightLW->currentItem()),
+	                               bigsize);
 
 	if (!bigsize)
 		tex_code_ = left_str + ' ' + right_str;
 	else {
-		tex_code_ = bigleft[size] + ' '
+		tex_code_ = from_ascii(bigleft[size]) + ' '
 			+ left_str + ' '
-			+ bigright[size] + ' '
+			+ from_ascii(bigright[size]) + ' '
 			+ right_str;
 	}
 
@@ -292,33 +308,35 @@ void GuiDelimiter::updateTeXCode(int size)
 	// FIXME: retrieve the LateX code directly from mathed.
 	// In all cases, we want the '\' prefix if needed, so we pass 'true'
 	// to fix_name.
-	left_str = fix_name(leftLW->currentItem()->toolTip(), true);
-	right_str = fix_name(rightLW->currentItem()->toolTip(), true);
-	QString code_str;
+	left_str = fix_name(getDelimiterName(leftLW->currentItem()),
+	                    true);
+	right_str = fix_name(getDelimiterName(rightLW->currentItem()),
+	                     true);
+	docstring code_str;
 	if (!bigsize)
 		code_str = "\\left" + left_str + " \\right" + right_str;
 	else {
 		// There should be nothing in the TeX-code when the delimiter is "None".
 		if (left_str != ".")
-			code_str = "\\" + bigleft[size] + left_str + ' ';
+			code_str = "\\" + from_ascii(bigleft[size]) + left_str + ' ';
 		if (right_str != ".")
-			code_str += "\\" + bigright[size] + right_str;
+			code_str += "\\" + from_ascii(bigright[size]) + right_str;
 	}
 
-	texCodeL->setText(qt_("TeX Code: ") + code_str);
+	texCodeL->setText(qt_("TeX Code: ") + toqstr(code_str));
 }
 
 
 void GuiDelimiter::on_insertPB_clicked()
 {
 	if (sizeCO->currentIndex() == 0)
-		dispatch(FuncRequest(LFUN_MATH_DELIM, fromqstr(tex_code_)));
+		dispatch(FuncRequest(LFUN_MATH_DELIM, tex_code_));
 	else {
-		QString command = '"' + tex_code_ + '"';
-		command.replace(' ', "\" \"");
-		dispatch(FuncRequest(LFUN_MATH_BIGDELIM, fromqstr(command)));
+		docstring command = '"' + tex_code_ + '"';
+		command = support::subst(command, from_ascii(" "), from_ascii("\" \""));
+		dispatch(FuncRequest(LFUN_MATH_BIGDELIM, command));
 	}
- }
+}
 
 
 void GuiDelimiter::on_sizeCO_activated(int index)
