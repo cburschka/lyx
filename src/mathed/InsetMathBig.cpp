@@ -78,18 +78,26 @@ void InsetMathBig::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
+docstring InsetMathBig::word() const
 {
-	Changer dummy = pi.base.changeEnsureMath();
-	Dimension const dim = dimension(*pi.base.bv);
 	// mathed_draw_deco does not use the leading backslash, so remove it
 	// (but don't use ltrim if this is the backslash delimiter).
 	// Replace \| by \Vert (equivalent in LaTeX), since mathed_draw_deco
 	// would treat it as |.
-	docstring const delim = (delim_ == "\\|") ?  from_ascii("Vert") :
-		(delim_ == "\\\\") ? from_ascii("\\") : support::ltrim(delim_, "\\");
+	if (delim_ == "\\|")
+		return from_ascii("Vert");
+	if (delim_ == "\\\\")
+		return from_ascii("\\");
+	return support::ltrim(delim_, "\\");
+}
+
+
+void InsetMathBig::draw(PainterInfo & pi, int x, int y) const
+{
+	Changer dummy = pi.base.changeEnsureMath();
+	Dimension const dim = dimension(*pi.base.bv);
 	mathed_draw_deco(pi, x + 1, y - dim.ascent(), 4, dim.height(),
-			 delim);
+	                 word());
 }
 
 
@@ -146,6 +154,7 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 		"<", ">", "\\\\", "\\backslash",
 		"\\langle", "\\lceil", "\\lfloor",
 		"\\rangle", "\\rceil", "\\rfloor",
+		"\\llbracket", "\\rrbracket",
 		"\\downarrow", "\\Downarrow",
 		"\\uparrow", "\\Uparrow",
 		"\\updownarrow", "\\Updownarrow", ""
@@ -156,6 +165,7 @@ bool InsetMathBig::isBigInsetDelim(docstring const & delim)
 
 void InsetMathBig::validate(LaTeXFeatures & features) const
 {
+	validate_math_word(features, word());
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet(
 			"span.bigsymbol{font-size: 150%;}\n"

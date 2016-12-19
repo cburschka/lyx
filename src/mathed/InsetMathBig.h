@@ -50,6 +50,8 @@ private:
 	size_type size() const;
 	///
 	double increase() const;
+	/// name with leading backslash stripped
+	docstring word() const;
 
 	/// \\bigl or what?
 	docstring const name_;

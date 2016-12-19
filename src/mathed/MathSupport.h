@@ -27,6 +27,7 @@ class MathData;
 class MathAtom;
 class InsetMath;
 class latexkeys;
+class LaTeXFeatures;
 
 
 int mathed_font_em(FontInfo const &);
@@ -83,6 +84,8 @@ void asArray(docstring const &, MathData &, Parse::flags f = Parse::NORMAL);
 
 // simulate axis height (font dimension sigma 22)
 int axis_height(MetricsBase & mb);
+
+void validate_math_word(LaTeXFeatures & features, docstring const & word);
 
 } // namespace lyx
 

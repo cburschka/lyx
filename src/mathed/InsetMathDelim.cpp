@@ -69,21 +69,8 @@ void InsetMathDelim::validate(LaTeXFeatures & features) const
 	// The delimiters may be used without \left or \right as well.
 	// Therefore they are listed in lib/symbols, and if they have
 	// requirements, we need to add them here.
-	MathWordList const & words = mathedWordList();
-	MathWordList::const_iterator it = words.find(left_);
-	if (it != words.end())
-	{
-		string const req = it->second.requires;
-		if (!req.empty())
-			features.require(req);
-	}
-	it = words.find(right_);
-	if (it != words.end())
-	{
-		string const req = it->second.requires;
-		if (!req.empty())
-			features.require(req);
-	}
+	validate_math_word(features, left_);
+	validate_math_word(features, right_);
 }
 
 

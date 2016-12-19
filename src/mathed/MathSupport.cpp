@@ -17,9 +17,11 @@
 #include "InsetMathSymbol.h"
 #include "Length.h"
 #include "MathData.h"
+#include "MathFactory.h"
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
 
 #include "frontends/FontLoader.h"
@@ -989,6 +991,18 @@ int axis_height(MetricsBase & mb)
 {
 	Changer dummy = mb.changeFontSet("mathnormal");
 	return theFontMetrics(mb.font).ascent('-') - 1;
+}
+
+
+void validate_math_word(LaTeXFeatures & features, docstring const & word)
+{
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(word);
+	if (it != words.end()) {
+		string const req = it->second.requires;
+		if (!req.empty())
+			features.require(req);
+	}
 }
 
 
