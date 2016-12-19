@@ -459,6 +459,8 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 			return MathAtom(new InsetMathDecoration(buf, l));
 		if (inset == "space")
 			return MathAtom(new InsetMathSpace(to_ascii(l->name), ""));
+		if (inset == "class")
+			return MathAtom(new InsetMathClass(buf, string_to_class(s)));
 		if (inset == "dots")
 			return MathAtom(new InsetMathDots(l));
 		if (inset == "mbox")
@@ -665,10 +667,6 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathSpace(" ", ""));
 	if (s == "regexp")
 		return MathAtom(new InsetMathHull(buf, hullRegexp));
-
-	MathClass const mc = string_to_class(s);
-	if (mc != MC_UNKNOWN)
-		return MathAtom(new InsetMathClass(buf, mc));
 
 	return MathAtom(new MathMacro(buf, s));
 }

@@ -203,6 +203,16 @@ textstyle         style       2
 scriptstyle       style       1
 scriptscriptstyle style       0
 
+# math classes
+mathord           class    none
+mathop            class    none
+mathbin           class    none
+mathrel           class    none
+mathopen          class    none
+mathclose         class    none
+mathpunct         class    none
+mathinner         class    none
+
 # misc
 # The commented lines in this block get misparsed as MathSymbolInset because
 # createMathInset() does not know them. I don't know if this is old cruft
