@@ -50,6 +50,7 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 	ColorCode const origcol = pi.base.font.color();
 	cell(0).draw(pi, x + 1, y);
 	Dimension const dim = dimension(*pi.base.bv);
+	int const t = pi.base.solidLineThickness();
 
 	/*
 	 * y1 \    /
@@ -67,12 +68,12 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 	int const y2 = y + dim.des;
 
 	if (kind_ == cancel)
-		pi.pain.line(x2, y1, x1, y2, origcol);
+		pi.pain.line(x2, y1, x1, y2, origcol, pi.pain.line_solid, t);
 	else if (kind_ == bcancel)
-		pi.pain.line(x2, y2, x1, y1, origcol);
+		pi.pain.line(x2, y2, x1, y1, origcol, pi.pain.line_solid, t);
 	else if (kind_ == xcancel) {
-		pi.pain.line(x2, y1, x1, y2, origcol);
-		pi.pain.line(x2, y2, x1, y1, origcol);
+		pi.pain.line(x2, y1, x1, y2, origcol, pi.pain.line_solid, t);
+		pi.pain.line(x2, y2, x1, y1, origcol, pi.pain.line_solid, t);
 	}
 
 	drawMarkers(pi, x, y);
