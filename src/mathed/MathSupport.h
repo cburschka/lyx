@@ -81,6 +81,9 @@ docstring asString(MathAtom const &);
 // converts string to single cell
 void asArray(docstring const &, MathData &, Parse::flags f = Parse::NORMAL);
 
+// simulate axis height (font dimension sigma 22)
+int axis_height(MetricsBase & mb);
+
 } // namespace lyx
 
 #endif

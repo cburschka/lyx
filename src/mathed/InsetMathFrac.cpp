@@ -154,14 +154,6 @@ MathClass InsetMathFrac::mathClass() const
 
 namespace {
 
-// align frac to minus character
-int dy_for_frac(MetricsBase & mb)
-{
-	Changer dummy = mb.changeFontSet("mathnormal");
-	return theFontMetrics(mb.font).ascent('-') - 1;
-}
-
-
 // align the top of M in the cell with the top of M in the surrounding font
 int dy_for_nicefrac(MetricsBase & mb)
 {
@@ -249,7 +241,7 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 	case TFRAC:
 	case OVER:
 	case ATOP: {
-		int const dy = dy_for_frac(mi.base);
+		int const dy = axis_height(mi.base);
 		Changer dummy =
 			// \tfrac is always in text size
 			(kind_ == TFRAC) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
@@ -332,7 +324,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 	case TFRAC:
 	case OVER:
 	case ATOP: {
-		int const dy = dy_for_frac(pi.base);
+		int const dy = axis_height(pi.base);
 		Changer dummy =
 			// \tfrac is always in text size
 			(kind_ == TFRAC) ? pi.base.font.changeStyle(LM_ST_SCRIPT) :
@@ -658,7 +650,7 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy2 = mi.base.changeEnsureMath();
 	Dimension dim0, dim1;
-	int const dy = dy_for_frac(mi.base);
+	int const dy = axis_height(mi.base);
 	Changer dummy =
 		(kind_ == DBINOM) ? mi.base.font.changeStyle(LM_ST_DISPLAY) :
 		(kind_ == TBINOM) ? mi.base.font.changeStyle(LM_ST_SCRIPT) :
@@ -678,7 +670,7 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 	Dimension const dim = dimension(*pi.base.bv);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
-	int const dy = dy_for_frac(pi.base);
+	int const dy = axis_height(pi.base);
 	// define the binom brackets
 	docstring const bra = kind_ == BRACE ? from_ascii("{") :
 		kind_ == BRACK ? from_ascii("[") : from_ascii("(");

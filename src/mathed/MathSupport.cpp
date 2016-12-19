@@ -985,4 +985,11 @@ docstring asString(MathAtom const & at)
 }
 
 
+int axis_height(MetricsBase & mb)
+{
+	Changer dummy = mb.changeFontSet("mathnormal");
+	return theFontMetrics(mb.font).ascent('-') - 1;
+}
+
+
 } // namespace lyx
