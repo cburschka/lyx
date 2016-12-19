@@ -3450,11 +3450,11 @@ Notion Currently English, Swedish, German, Polish, French, Danish quotes are dis
 \end_layout
 
 \begin_layout Description
-Syntax quote-insert [<TYPE>] [<SIDE>] [<LANG>]
+Syntax quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
 \end_layout
 
 \begin_layout Description
-Params <TYPE>: 'single' for single quotes, otherwise double quotes will be used. <SIDE>: 'left' for opening quotes, 'right' for closing quotes, otherwise the side will be guessed from the context. <STYLE>: 'english' for ``English'' quote style 'swedish' for ''Swedish'' quote style 'german' for ,,German`` quote style 'polish' for ,,Polish'' quote style 'french' for <<French>> quote style 'danish' for >>Danish<< quote style If no quote style is specified, the document-wide will be used.
+Params <LEVEL>: 'single' for single (i.e., inner or secondary) quotes, otherwise double quotes will be used. <SIDE>:  'left' for opening quotes, 'right' for closing quotes, otherwise the side will be guessed from the context. <STYLE>: 'english' for ``English'' quote style 'swedish' for ''Swedish'' quote style 'german' for ,,German`` quote style 'polish' for ,,Polish'' quote style 'french' for <<French>> quote style 'danish' for >>Danish<< quote style If no quote style is specified, the document-wide will be used.
 \end_layout
 
 \begin_layout Subsection*

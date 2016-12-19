@@ -403,10 +403,11 @@ void LyXAction::init()
  * \li Action: Inserts quotes according to the type and quote-language preference.
  * \li Notion: Currently English, Swedish, German, Polish, French, Danish quotes
                are distinguished.
- * \li Syntax: quote-insert [<TYPE>] [<SIDE>] [<LANG>]
- * \li Params: <TYPE>: 'single' for single quotes, otherwise double quotes will be used.
- *             <SIDE>: 'left' for opening quotes, 'right' for closing quotes, otherwise
- *                     the side will be guessed from the context.
+ * \li Syntax: quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
+ * \li Params: <LEVEL>: 'single' for single (i.e., inner or secondary) quotes, otherwise
+ *                      double quotes will be used.
+ *             <SIDE>:  'left' for opening quotes, 'right' for closing quotes, otherwise
+ *                      the side will be guessed from the context.
  *             <STYLE>: 'english' for ``English'' quote style
  *                      'swedish' for ''Swedish'' quote style
  *                      'german' for ,,German`` quote style
