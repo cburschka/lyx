@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 515
+\lyxformat 518
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31250,7 +31250,7 @@ The normal text on the page goes here.
  The running header is above the text, and the footer is below (including
  footnotes).
  Headers/footers typically contain things like the page number, title of
- the chapter, company logo but your can use almost anything, except of floats.
+ the chapter, company logo but you can use almost anything, except of floats.
 \end_layout
 
 \end_inset
@@ -31580,8 +31580,8 @@ Several header/footer lines
 \begin_layout Standard
 In case you need more than one text line as a header/footer, you can do
  this by adding a ragged line break in the style definition.
- However, the default height of the header/footer is only the one of one
- text line.
+ However, the default height of the header/footer is only the height of
+ one text line.
  To expand the height, redefine the \SpecialChar LaTeX
  length 
 \series bold
