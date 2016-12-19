@@ -457,7 +457,7 @@ bool Converters::convert(Buffer const * buffer,
 						   "tmpfile.out"));
 		}
 
-		if (!checkAuth(conv, buffer->absFileName()))
+		if (!checkAuth(conv, buffer ? buffer->absFileName() : string()))
 			return false;
 
 		if (conv.latex()) {
