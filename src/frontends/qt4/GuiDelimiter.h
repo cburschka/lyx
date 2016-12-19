@@ -49,7 +49,7 @@ private:
 	void updateTeXCode(int size);
 
 	/// TeX code that will be inserted.
-	QString tex_code_;
+	docstring tex_code_;
 };
 
 } // namespace frontend
