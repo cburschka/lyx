@@ -39,6 +39,8 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_XARROW_CODE; }
+	///
+	MathClass mathClass() const { return MC_REL; }
 
 private:
 	virtual Inset * clone() const;
