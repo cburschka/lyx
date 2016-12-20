@@ -646,6 +646,26 @@ def convert_iopart(document):
             document.header[k : l + 1] = []
 
 
+def convert_quotestyle(document):
+    " Convert \\quotes_language to \\quotes_style "
+    i = find_token(document.header, "\\quotes_language", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Can't find \\quotes_language!")
+        return
+    val = get_value(document.header, "\\quotes_language", i)
+    document.header[i] = "\\quotes_style " + val
+
+
+def revert_quotestyle(document):
+    " Revert \\quotes_style to \\quotes_language "
+    i = find_token(document.header, "\\quotes_style", 0)
+    if i == -1:
+        document.warning("Malformed LyX document! Can't find \\quotes_style!")
+        return
+    val = get_value(document.header, "\\quotes_style", i)
+    document.header[i] = "\\quotes_language " + val
+
+
 ##
 # Conversion hub
 #
@@ -661,10 +681,12 @@ convert = [
            [515, []],
            [516, [convert_inputenc]],
            [517, []],
-           [518, [convert_iopart]]
+           [518, [convert_iopart]],
+           [519, [convert_quotestyle]]
           ]
 
 revert =  [
+           [518, [revert_quotestyle]],
            [517, [revert_iopart]],
            [516, [revert_quotes]],
            [515, []],
