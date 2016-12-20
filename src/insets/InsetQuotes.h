@@ -26,7 +26,7 @@ class InsetQuotes : public Inset
 {
 public:
 	///
-	enum QuoteLanguage {
+	enum QuoteStyle {
 		///
 		EnglishQuotes,
 		///
@@ -48,7 +48,7 @@ public:
 		RightQuote
 	};
 	///
-	enum QuoteTimes {
+	enum QuoteLevel {
 		///
 		SingleQuotes,
 		///
@@ -64,9 +64,9 @@ public:
 	  */
 	explicit InsetQuotes(Buffer * buf, std::string const & str = "eld");
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(Buffer * buf, char_type c, QuoteTimes t,
-		    std::string const & s = std::string(),
-		    std::string const & l = std::string());
+	InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
+		    std::string const & side = std::string(),
+		    std::string const & style = std::string());
 	///
 	docstring layoutName() const;
 	///
@@ -125,14 +125,14 @@ private:
 	///
 	docstring getQuoteEntity() const;
 	///
-	QuoteLanguage getLanguage(std::string const &);
+	QuoteStyle getStyle(std::string const &);
 
 	///
-	QuoteLanguage language_;
+	QuoteStyle style_;
 	///
 	QuoteSide side_;
 	///
-	QuoteTimes times_;
+	QuoteLevel level_;
 	///
 	std::string fontenc_;
 	/// Code of the contextual language

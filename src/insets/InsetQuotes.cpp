@@ -55,9 +55,9 @@ namespace {
  * a    >>danish<<
  */
 
-char const * const language_char = "esgpfa";
+char const * const style_char = "esgpfa";
 char const * const side_char = "lr" ;
-char const * const times_char = "sd";
+char const * const level_char = "sd";
 
 // List of known quote chars
 char const * const quote_char = ",'`<>";
@@ -68,7 +68,7 @@ char_type const display_quote_char[2][5] = {
 	{ 0x201e, 0x201d, 0x201c, 0x00ab, 0x00bb}
 };
 
-// Index of chars used for the quote. Index is [side, language]
+// Index of chars used for the quote. Index is [side, style]
 int quote_index[2][6] = {
 	{ 2, 1, 0, 0, 3, 4 },    // "'',,<>"
 	{ 1, 1, 2, 1, 4, 3 }     // "`'`'><"
@@ -115,22 +115,22 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 }
 
 
-InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t,
-			 string const & s, string const & l)
-	: Inset(buf), times_(t), pass_thru_(false)
+InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
+			 string const & side, string const & style)
+	: Inset(buf), level_(level), pass_thru_(false)
 {
 	if (buf) {
-		language_ = l.empty() ? buf->params().quotes_language : getLanguage(l);
+		style_ = style.empty() ? buf->params().quotes_style : getStyle(style);
 		fontenc_ = (buf->params().fontenc == "global")
 			? lyxrc.fontenc : buf->params().fontenc;
 	} else {
-		language_ = l.empty() ? EnglishQuotes : getLanguage(l);
+		style_ = style.empty() ? EnglishQuotes : getStyle(style);
 		fontenc_ = lyxrc.fontenc;
 	}
 
-	if (s == "left")
+	if (side == "left")
 		side_ = LeftQuote;
-	else if (s == "right")
+	else if (side == "right")
 		side_ = RightQuote;
 	else
 		setSide(c);
@@ -169,18 +169,18 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 
 	int i;
 
-	// '.' wildcard means: keep current language
+	// '.' wildcard means: keep current stylee
 	if (!allow_wildcards || str[0] != '.') {
 		for (i = 0; i < 6; ++i) {
-			if (str[0] == language_char[i]) {
-				language_ = QuoteLanguage(i);
+			if (str[0] == style_char[i]) {
+				style_ = QuoteStyle(i);
 				break;
 			}
 		}
 		if (i >= 6) {
 			lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-				" bad language specification." << endl;
-			language_ = EnglishQuotes;
+				" bad style specification." << endl;
+			style_ = EnglishQuotes;
 		}
 	}
 
@@ -199,41 +199,41 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 		}
 	}
 
-	// '.' wildcard means: keep current times
+	// '.' wildcard means: keep current level
 	if (!allow_wildcards || str[2] != '.') {
 		for (i = 0; i < 2; ++i) {
-			if (str[2] == times_char[i]) {
-				times_ = QuoteTimes(i);
+			if (str[2] == level_char[i]) {
+				level_ = QuoteLevel(i);
 				break;
 			}
 		}
 		if (i >= 2) {
 			lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-				" bad times specification." << endl;
-			times_ = DoubleQuotes;
+				" bad level specification." << endl;
+			level_ = DoubleQuotes;
 		}
 	}
 }
 
 
-InsetQuotes::QuoteLanguage InsetQuotes::getLanguage(string const & s)
+InsetQuotes::QuoteStyle InsetQuotes::getStyle(string const & s)
 {
-	QuoteLanguage ql = EnglishQuotes;
+	QuoteStyle qs = EnglishQuotes;
 	
 	if (s == "english")
-		ql = EnglishQuotes;
+		qs = EnglishQuotes;
 	else if (s == "swedish")
-		ql = SwedishQuotes;
+		qs = SwedishQuotes;
 	else if (s == "german")
-		ql = GermanQuotes;
+		qs = GermanQuotes;
 	else if (s == "polish")
-		ql = PolishQuotes;
+		qs = PolishQuotes;
 	else if (s == "french")
-		ql = FrenchQuotes;
+		qs = FrenchQuotes;
 	else if (s == "danish")
-		ql = DanishQuotes;
+		qs = DanishQuotes;
 
-	return ql;
+	return qs;
 }
 
 
@@ -241,23 +241,23 @@ map<string, docstring> InsetQuotes::getTypes() const
 {
 	map<string, docstring> res;
 
-	int l, s, t;
-	QuoteLanguage lang;
+	int sty, sid, lev;
+	QuoteStyle style;
 	QuoteSide side;
-	QuoteTimes times;
+	QuoteLevel level;
 	string type;
 
 	// get all quote types
-	for (l = 0; l < 6; ++l) {
-		lang = QuoteLanguage(l);
-		for (s = 0; s < 2; ++s) {
-			side = QuoteSide(s);
-			for (t = 0; t < 2; ++t) {
-				type += language_char[lang];
-				type += side_char[s];
-				times = QuoteTimes(t);
-				type += times_char[t];
-				res[type] = docstring(1, display_quote_char[times][quote_index[side][lang]]);
+	for (sty = 0; sty < 6; ++sty) {
+		style = QuoteStyle(sty);
+		for (sid = 0; sid < 2; ++sid) {
+			side = QuoteSide(sid);
+			for (lev = 0; lev < 2; ++lev) {
+				type += style_char[style];
+				type += side_char[sid];
+				level = QuoteLevel(lev);
+				type += level_char[lev];
+				res[type] = docstring(1, display_quote_char[level][quote_index[side][style]]);
 				type.clear();
 			}
 		}
@@ -270,15 +270,15 @@ docstring InsetQuotes::displayString() const
 {
 	// In PassThru, we use straight quotes
 	if (pass_thru_)
-		return (times_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
+		return (level_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
 
-	int const index = quote_index[side_][language_];
-	docstring retdisp = docstring(1, display_quote_char[times_][index]);
+	int const index = quote_index[side_][style_];
+	docstring retdisp = docstring(1, display_quote_char[level_][index]);
 
 	// in French, thin spaces are added inside double guillemets
 	// FIXME: this should be done by a separate quote type.
 	if (prefixIs(context_lang_, "fr")
-	    && times_ == DoubleQuotes && language_ == FrenchQuotes) {
+	    && level_ == DoubleQuotes && style_ == FrenchQuotes) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
 		if (side_ == LeftQuote)
@@ -312,9 +312,9 @@ void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 string InsetQuotes::getType() const
 {
 	string text;
-	text += language_char[language_];
+	text += style_char[style_];
 	text += side_char[side_];
-	text += times_char[times_];
+	text += level_char[level_];
 	return text;
 }
 
@@ -382,18 +382,18 @@ bool InsetQuotes::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
-	const int quoteind = quote_index[side_][language_];
+	const int quoteind = quote_index[side_][style_];
 	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
-		qstr = (times_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
+		qstr = (level_ == DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
 	else if (runparams.use_polyglossia) {
 		// For polyglossia, we directly output the respective unicode chars 
 		// (spacing and kerning is then handled respectively)
-		qstr = docstring(1, display_quote_char[times_][quoteind]);
+		qstr = docstring(1, display_quote_char[level_][quoteind]);
 	}
-	else if (language_ == FrenchQuotes && times_ == DoubleQuotes
+	else if (style_ == FrenchQuotes && level_ == DoubleQuotes
 		 && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		// Specific guillemets of French babel
 		// including correct French spacing
@@ -405,11 +405,11 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		   && !runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for T1 font encoding
 		// (using ligatures)
-		qstr = from_ascii(latex_quote_t1[times_][quoteind]);
+		qstr = from_ascii(latex_quote_t1[level_][quoteind]);
 	} else if (runparams.local_font->language()->internalFontEncoding()) {
 		// Quotation marks for internal font encodings
 		// (ligatures not featured)
-		qstr = from_ascii(latex_quote_noligatures[times_][quoteind]);
+		qstr = from_ascii(latex_quote_noligatures[level_][quoteind]);
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	} else if (doclang == "default") {
 #else
@@ -418,10 +418,10 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// Standard quotation mark macros
 		// These are also used by babel
 		// without fontenc (XeTeX/LuaTeX)
-		qstr = from_ascii(latex_quote_ot1[times_][quoteind]);
+		qstr = from_ascii(latex_quote_ot1[level_][quoteind]);
 	} else {
 		// Babel shorthand quotation marks (for T1/OT1)
-		qstr = from_ascii(latex_quote_babel[times_][quoteind]);
+		qstr = from_ascii(latex_quote_babel[level_][quoteind]);
 	}
 
 	if (!runparams.pass_thru) {
@@ -456,12 +456,12 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 
 docstring InsetQuotes::getQuoteEntity() const {
-	const int quoteind = quote_index[side_][language_];
-	docstring res = from_ascii(html_quote[times_][quoteind]);
+	const int quoteind = quote_index[side_][style_];
+	docstring res = from_ascii(html_quote[level_][quoteind]);
 	// in French, thin spaces are added inside double guillemets
 	// FIXME: this should be done by a separate quote type.
 	if (prefixIs(context_lang_, "fr")
-	    && times_ == DoubleQuotes && language_ == FrenchQuotes) {
+	    && level_ == DoubleQuotes && style_ == FrenchQuotes) {
 		// THIN SPACE (U+2009)
 		docstring const thin_space = from_ascii("&#x2009;");
 		if (side_ == LeftQuote)
@@ -509,7 +509,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
-	char type = quote_char[quote_index[side_][language_]];
+	char type = quote_char[quote_index[side_][style_]];
 
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	if (features.bufferParams().language->lang() == "default"
@@ -517,7 +517,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	if (!features.useBabel()
 #endif
 	    && !features.usePolyglossia() && fontenc_ != "T1") {
-		if (times_ == SingleQuotes)
+		if (level_ == SingleQuotes)
 			switch (type) {
 			case ',': features.require("quotesinglbase"); break;
 			case '<': features.require("guilsinglleft");  break;

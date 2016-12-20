@@ -2658,7 +2658,7 @@ void GuiDocument::applyView()
 		}
 	}
 
-	bp_.quotes_language = (InsetQuotes::QuoteLanguage) langModule->quoteStyleCO->itemData(
+	bp_.quotes_style = (InsetQuotes::QuoteStyle) langModule->quoteStyleCO->itemData(
 		langModule->quoteStyleCO->currentIndex()).toInt();
 
 	QString const langname = langModule->languageCO->itemData(
@@ -3071,7 +3071,7 @@ void GuiDocument::paramsToDialog()
 	langModule->languageCO->setCurrentIndex(pos);
 
 	langModule->quoteStyleCO->setCurrentIndex(
-		bp_.quotes_language);
+		bp_.quotes_style);
 
 	bool default_enc = true;
 	if (bp_.inputenc != "auto") {

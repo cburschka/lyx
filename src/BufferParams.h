@@ -106,7 +106,7 @@ public:
 	 */
 	ParagraphSeparation paragraph_separation;
 	///
-	InsetQuotes::QuoteLanguage quotes_language;
+	InsetQuotes::QuoteStyle quotes_style;
 	///
 	std::string fontsize;
 	/// Get the LayoutFile this document is using.
@@ -201,7 +201,7 @@ public:
 	Font const getFont() const;
 
 	/// translate quote style string to enum value
-	InsetQuotes::QuoteLanguage getQuoteStyle(std::string const & qs) const;
+	InsetQuotes::QuoteStyle getQuoteStyle(std::string const & qs) const;
 
 	/* these are for the PaperLayout */
 	/// the papersize

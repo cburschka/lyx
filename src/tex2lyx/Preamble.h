@@ -195,7 +195,7 @@ private:
 	std::string h_pdf_pdfusetitle;
 	std::string h_pdf_pagemode;
 	std::string h_pdf_quoted_options;
-	std::string h_quotes_language;
+	std::string h_quotes_style;
 	std::string h_secnumdepth;
 	std::string h_shortcut[99];
 	std::string h_spacing;

@@ -533,7 +533,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_pdf_pdfusetitle         = "0";
 	//h_pdf_pagemode;
 	//h_pdf_quoted_options;
-	h_quotes_language         = "english";
+	h_quotes_style         = "english";
 	h_secnumdepth             = "3";
 	h_shortcut[0]             = "idx";
 	h_spacing                 = "single";
@@ -1079,22 +1079,22 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	// (quotes for kazakh and interlingua are unknown)
 	// danish
 	if (is_known(h_language, known_danish_quotes_languages))
-		h_quotes_language = "danish";
+		h_quotes_style = "danish";
 	// french
 	else if (is_known(h_language, known_french_quotes_languages))
-		h_quotes_language = "french";
+		h_quotes_style = "french";
 	// german
 	else if (is_known(h_language, known_german_quotes_languages))
-		h_quotes_language = "german";
+		h_quotes_style = "german";
 	// polish
 	else if (is_known(h_language, known_polish_quotes_languages))
-		h_quotes_language = "polish";
+		h_quotes_style = "polish";
 	// swedish
 	else if (is_known(h_language, known_swedish_quotes_languages))
-		h_quotes_language = "swedish";
+		h_quotes_style = "swedish";
 	//english
 	else if (is_known(h_language, known_english_quotes_languages))
-		h_quotes_language = "english";
+		h_quotes_style = "english";
 
 	if (contains(h_float_placement, "H"))
 		registerAutomaticallyLoadedPackage("float");
@@ -1253,7 +1253,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		os << "\\defskip " << h_defskip << "\n";
 	else
 		os << "\\paragraph_indentation " << h_paragraph_indentation << "\n";
-	os << "\\quotes_language " << h_quotes_language << "\n"
+	os << "\\quotes_language " << h_quotes_style << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n";

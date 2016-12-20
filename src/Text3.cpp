@@ -1551,9 +1551,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		char_type c = ' ';
 		if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
 			c = par.getChar(pos - 1);
-		InsetQuotes::QuoteTimes const quote_type = (cmd.getArg(0) == "single")
+		InsetQuotes::QuoteLevel const quote_level = (cmd.getArg(0) == "single")
 			? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes;
-		cur.insert(new InsetQuotes(cur.buffer(), c, quote_type, cmd.getArg(1), cmd.getArg(2)));
+		cur.insert(new InsetQuotes(cur.buffer(), c, quote_level, cmd.getArg(1), cmd.getArg(2)));
 		cur.buffer()->updateBuffer();
 		cur.posForward();
 		break;
