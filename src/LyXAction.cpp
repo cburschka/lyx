@@ -414,6 +414,7 @@ void LyXAction::init()
  *                      'polish' for ,,Polish'' quote style
  *                      'french' for <<French>> quote style
  *                      'danish' for >>Danish<< quote style
+ *                      'plain' for "Plain" quote style
  *                      If no quote style is specified, the document-wide will be used.
  * \endvar
  */

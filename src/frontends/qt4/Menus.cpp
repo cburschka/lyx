@@ -1681,6 +1681,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	MenuDefinition pqs;
 	MenuDefinition fqs;
 	MenuDefinition aqs;
+	MenuDefinition qqs;
 	for (; qq != end; ++qq) {
 		docstring const style = from_ascii(qq->first);
 		FuncRequest const cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
@@ -1700,6 +1701,8 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 			fqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 		else if (prefixIs(style, 'a') && !prefixIs(qtype, "a"))
 			aqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'q') && !prefixIs(qtype, "q"))
+			qqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 	}
 
 	if (!eqs.empty()) {
@@ -1730,6 +1733,11 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	if (!aqs.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_(">>text<<"));
 		item.setSubmenu(aqs);
+		add(item);
+	}
+	if (!qqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("\"text\""));
+		item.setSubmenu(qqs);
 		add(item);
 	}
 }

@@ -38,7 +38,9 @@ public:
 		///
 		FrenchQuotes,
 		///
-		DanishQuotes
+		DanishQuotes,
+		///
+		PlainQuotes
 	};
 	///
 	enum QuoteSide {

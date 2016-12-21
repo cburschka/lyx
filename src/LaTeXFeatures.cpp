@@ -118,6 +118,25 @@ static docstring const guilsinglright_def = from_ascii(
 	"  {\\usefont{U}{lasy}{m}{n}\\char'51}%\n"
 	"}");
 
+static docstring const textquotedbl_def = from_ascii(
+	"\\DeclareTextSymbolDefault{\\textquotedbl}{T1}");
+
+static docstring const textquotedblp_xetex_def = from_ascii(
+	"\\providecommand\\textquotedblplain{%\n"
+	"  \\bgroup\\addfontfeatures{Mapping=}\\textquotedbl\\egroup}");
+
+static docstring const textquotedblp_luatex_def = from_ascii(
+	"\\providecommand\\textquotedblplain{%\n"
+	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\textquotedbl\\egroup}");
+
+static docstring const textquotesinglep_xetex_def = from_ascii(
+	"\\providecommand\\textquotesingleplain{%\n"
+	"  \\bgroup\\addfontfeatures{Mapping=}\\textquotesingle\\egroup}");
+
+static docstring const textquotesinglep_luatex_def = from_ascii(
+	"\\providecommand\\textquotesingleplain{%\n"
+	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\textquotesingle\\egroup}");
+
 static docstring const paragraphleftindent_def = from_ascii(
 	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
 	"{\n"
@@ -1373,6 +1392,20 @@ TexString LaTeXFeatures::getMacros() const
 		macros << guillemotleft_def << '\n';
 	if (mustProvide("guillemotright"))
 		macros << guillemotright_def << '\n';
+	if (mustProvide("textquotedbl"))
+		macros << textquotedbl_def << '\n';
+	if (mustProvide("textquotesinglep")) {
+		if (runparams_.flavor == OutputParams::XETEX)
+			macros << textquotesinglep_xetex_def << '\n';
+		else
+			macros << textquotesinglep_luatex_def << '\n';
+	}
+	if (mustProvide("textquotedblp")) {
+		if (runparams_.flavor == OutputParams::XETEX)
+			macros << textquotedblp_xetex_def << '\n';
+		else
+			macros << textquotedblp_luatex_def << '\n';
+	}
 
 	// Math mode
 	if (mustProvide("binom") && !isRequired("amsmath"))

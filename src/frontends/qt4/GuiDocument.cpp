@@ -1079,6 +1079,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		qt_("<<text>>"), InsetQuotes::FrenchQuotes);
 	langModule->quoteStyleCO->addItem(
 		qt_(">>text<<"), InsetQuotes::DanishQuotes);
+	langModule->quoteStyleCO->addItem(
+		qt_("\"text\""), InsetQuotes::PlainQuotes);
 
 	langModule->languagePackageCO->addItem(
 		qt_("Default"), toqstr("default"));

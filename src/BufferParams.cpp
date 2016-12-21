@@ -72,7 +72,7 @@ static char const * const string_paragraph_separation[] = {
 
 
 static char const * const string_quotes_style[] = {
-	"english", "swedish", "german", "polish", "french", "danish", ""
+	"english", "swedish", "german", "polish", "french", "danish", "plain", ""
 };
 
 
@@ -140,6 +140,7 @@ QuotesStyleTranslator const init_quotesstyletranslator()
 	translator.addPair(string_quotes_style[3], InsetQuotes::PolishQuotes);
 	translator.addPair(string_quotes_style[4], InsetQuotes::FrenchQuotes);
 	translator.addPair(string_quotes_style[5], InsetQuotes::DanishQuotes);
+	translator.addPair(string_quotes_style[6], InsetQuotes::PlainQuotes);
 	return translator;
 }
 

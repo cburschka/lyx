@@ -83,6 +83,9 @@ Format LaTeX feature                        LyX feature
        \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
        \item[]<>                             InsetArgument
        \begin{enumerate|itemize|...}[]       InsetArgument
+520    Plain InsetQuote Style:
+       \textquotesingle                      \begin_inset Quotes qls, \begin_inset Quotes qrs
+       \textquotedbl                         \begin_inset Quotes qld, \begin_inset Quotes qrd
 
 General
 

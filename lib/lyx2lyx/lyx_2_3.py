@@ -666,6 +666,33 @@ def revert_quotestyle(document):
     document.header[i] = "\\quotes_language " + val
 
 
+def revert_plainquote(document):
+    " Revert plain quote inset "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style plain", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style english"
+
+    # now the insets
+    i = 0
+    j = 0
+    while True:
+        k = find_token(document.body, '\\begin_inset Quotes q', i)
+        if k == -1:
+            return
+        l = find_end_of_inset(document.body, k)
+        if l == -1:
+            document.warning("Malformed LyX document: Can't find end of Quote inset at line " + str(k))
+            i = k
+            continue
+        replace = "\""
+        if document.body[k].endswith("s"):
+            replace = "'"
+        document.body[k:l+1] = [replace]
+        i = l
+
+
 ##
 # Conversion hub
 #
@@ -682,10 +709,12 @@ convert = [
            [516, [convert_inputenc]],
            [517, []],
            [518, [convert_iopart]],
-           [519, [convert_quotestyle]]
+           [519, [convert_quotestyle]],
+           [520, []]
           ]
 
 revert =  [
+           [519, [revert_plainquote]],
            [518, [revert_quotestyle]],
            [517, [revert_iopart]],
            [516, [revert_quotes]],

@@ -11,6 +11,13 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-12-21 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 520: Introduce plain quote style:
+          \begin_inset Quotes qls => \textquotesingle
+          \begin_inset Quotes qld => \textquotesingle
+          \begin_inset Quotes qrs => \textquotedbl
+          \begin_inset Quotes qrd => \textquotedbl
+
 2016-12-20 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 519: rename \quotes_language to \quotes_style.
 
