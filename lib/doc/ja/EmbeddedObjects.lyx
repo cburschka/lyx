@@ -18340,8 +18340,9 @@ arrayrulewidth}{1.2pt}
 
 \lang english
 To color only some of the table lines another strategy is necessary.
- To color all following horizontal lines, insert this command as TeX code
- as last thing in the row that should be above the first colored line:
+ To color all following horizontal lines, insert this command as \SpecialChar TeX
+ code as
+ last thing in the row that should be above the first colored line:
 \end_layout
 
 \begin_layout Standard
@@ -18374,7 +18375,7 @@ arrayrulecolor{black}
 \begin_layout Standard
 
 \lang english
-With this one can color tables like the one in Table
+With this one can color table lines like in Table
 \begin_inset space ~
 \end_inset
 
@@ -18938,7 +18939,8 @@ arrayrulecolor{blue}%
 
 \lang english
 as above.
- Finally one inserts this command as TeX code to ever cell in the row where
+ Finally one inserts this command as \SpecialChar TeX
+ code to every cell in the row where
  one needs a vertical line in a different color:
 \end_layout
 
@@ -18961,7 +18963,7 @@ vline}}{
 \begin_layout Standard
 
 \lang english
-This adds a vertical line to both sides of the table.
+This adds a vertical line to both sides of the cell.
  The left one will be green, the right one red.
  If no color change is necessary one can omit the 
 \series bold
@@ -19025,7 +19027,8 @@ After this command insert the cell content the normal way and end the cell
 \series bold
 }
 \series default
- in TeX code.
+ in \SpecialChar TeX
+ code.
 \end_layout
 
 \begin_layout Standard

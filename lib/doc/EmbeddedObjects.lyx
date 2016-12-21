@@ -18625,7 +18625,7 @@ sd
 \begin_inset VSpace bigskip
 \end_inset
 
-To color horizontal lines for example with red, as in Table
+To color all horizontal lines for example with red, as in Table
 \begin_inset space ~
 \end_inset
 
@@ -18637,7 +18637,7 @@ reference "tab:Table-with-horizontal-colored"
 \end_inset
 
 , insert these commands in \SpecialChar TeX
- Code before the table or table float:
+ code before the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -18856,7 +18856,7 @@ sd
 
 \begin_layout Standard
 To return to the default line color black, insert this command in \SpecialChar TeX
- Code
+ code
  after the table or table float:
 \end_layout
 
@@ -19059,8 +19059,9 @@ arrayrulewidth}{1.2pt}
 
 \begin_layout Standard
 To color only some of the table lines another strategy is necessary.
- To color all following horizontal lines, insert this command as TeX code
- as last thing in the row that should be above the first colored line:
+ To color all following horizontal lines, insert this command as \SpecialChar TeX
+ code as
+ last thing in the row that should be above the first colored line:
 \end_layout
 
 \begin_layout Standard
@@ -19089,7 +19090,7 @@ arrayrulecolor{black}
 \end_layout
 
 \begin_layout Standard
-With this one can color tables like the one in Table
+With this one can color table lines like in Table
 \begin_inset space ~
 \end_inset
 
@@ -19647,7 +19648,8 @@ arrayrulecolor{blue}%
 
 \begin_layout Standard
 as above.
- Finally one inserts this command as TeX code to ever cell in the row where
+ Finally one inserts this command as \SpecialChar TeX
+ code to every cell in the row where
  one needs a vertical line in a different color:
 \end_layout
 
@@ -19668,7 +19670,7 @@ vline}}{
 \end_layout
 
 \begin_layout Standard
-This adds a vertical line to both sides of the table.
+This adds a vertical line to both sides of the cell.
  The left one will be green, the right one red.
  If no color change is necessary one can omit the 
 \series bold
@@ -19728,7 +19730,8 @@ After this command insert the cell content the normal way and end the cell
 \series bold
 }
 \series default
- in TeX code.
+ in \SpecialChar TeX
+ code.
 \end_layout
 
 \begin_layout Standard
