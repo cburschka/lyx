@@ -504,6 +504,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	pass_thru_ = it.paragraph().isPassThru();
 	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
+	fontenc_ = (bp.fontenc == "global") ? lyxrc.fontenc : bp.fontenc;
 }
 
 
