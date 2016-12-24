@@ -5,6 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Jean-Marc Lasgouttes
+ *  \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -22,8 +23,7 @@ namespace lyx {
 /** Quotes.
   Used for the various quotes. German, English, French, all either
   double or single **/
-class InsetQuotes : public Inset
-{
+class InsetQuotesParams {
 public:
 	///
 	enum QuoteStyle {
@@ -56,7 +56,30 @@ public:
 		///
 		DoubleQuotes
 	};
+	/// Returns the unicode character of a given quote
+	char_type getQuoteChar(QuoteStyle const &, QuoteLevel const &,
+			       QuoteSide const &) const;
+	/// Returns a map of quotation marks
+	std::map<std::string, docstring> getTypes() const;
+	///
+	docstring getLaTeXQuote(char_type c, std::string const &) const;
+	///
+	docstring getHTMLQuote(char_type c) const;
+	/// Returns a label suitable for dialog and menu
+	docstring const getGuiLabel(QuoteStyle const & qs);
+	///
+	int stylescount() const;
+};
 
+///
+extern InsetQuotesParams quoteparams;
+
+/** Quotes.
+  Used for the various quotes. German, English, French, all either
+  double or single **/
+class InsetQuotes : public Inset
+{
+public:
 	/** The constructor works like this:
 	  \begin{itemize}
 	    \item fls <- french single quote left
@@ -66,7 +89,7 @@ public:
 	  */
 	explicit InsetQuotes(Buffer * buf, std::string const & str = "eld");
 	/// Direct access to inner/outer quotation marks
-	InsetQuotes(Buffer * buf, char_type c, QuoteLevel level,
+	InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
 		    std::string const & side = std::string(),
 		    std::string const & style = std::string());
 	///
@@ -107,11 +130,9 @@ public:
 	InsetCode lyxCode() const { return QUOTE_CODE; }
 	/// should this inset be handled like a normal character
 	bool isChar() const { return true; }
-	
+
 	/// Returns the current quote type
 	std::string getType() const;
-	/// Returns a map of quotation marks
-	std::map<std::string, docstring> getTypes() const;
 
 private:
 	///
@@ -127,20 +148,22 @@ private:
 	///
 	docstring getQuoteEntity() const;
 	///
-	QuoteStyle getStyle(std::string const &);
+	InsetQuotesParams::QuoteStyle getStyle(std::string const &);
 
 	///
-	QuoteStyle style_;
+	InsetQuotesParams::QuoteStyle style_;
 	///
-	QuoteSide side_;
+	InsetQuotesParams::QuoteSide side_;
 	///
-	QuoteLevel level_;
+	InsetQuotesParams::QuoteLevel level_;
 	///
 	std::string fontenc_;
 	/// Code of the contextual language
 	std::string context_lang_;
 	/// Is this in a pass-thru context?
 	bool pass_thru_;
+	///
+	friend class InsetQuotesParams;
 
 protected:
 	/// \name Protected functions inherited from Inset class

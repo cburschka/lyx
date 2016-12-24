@@ -1669,7 +1669,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	InsetQuotes const * qinset =
 		static_cast<InsetQuotes const *>(inset);
 
-	map<string, docstring> styles = qinset->getTypes();
+	map<string, docstring> styles = quoteparams.getTypes();
 	string const qtype = qinset->getType();
 	
 	map<string, docstring>::const_iterator qq = styles.begin();
@@ -1706,37 +1706,44 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	}
 
 	if (!eqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("``text''"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::EnglishQuotes)));
 		item.setSubmenu(eqs);
 		add(item);
 	}
 	if (!sqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("''text''"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwedishQuotes)));
 		item.setSubmenu(sqs);
 		add(item);
 	}
 	if (!gqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_(",,text``"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::GermanQuotes)));
 		item.setSubmenu(gqs);
 		add(item);
 	}
 	if (!pqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_(",,text''"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::PolishQuotes)));
 		item.setSubmenu(pqs);
 		add(item);
 	}
 	if (!fqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("<<text>>"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchQuotes)));
 		item.setSubmenu(fqs);
 		add(item);
 	}
 	if (!aqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_(">>text<<"));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::DanishQuotes)));
 		item.setSubmenu(aqs);
 		add(item);
 	}
 	if (!qqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("\"text\""));
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::PlainQuotes)));
 		item.setSubmenu(qqs);
 		add(item);
 	}

@@ -128,19 +128,19 @@ ParSepTranslator const & parseptranslator()
 
 
 // Quotes style
-typedef Translator<string, InsetQuotes::QuoteStyle> QuotesStyleTranslator;
+typedef Translator<string, InsetQuotesParams::QuoteStyle> QuotesStyleTranslator;
 
 
 QuotesStyleTranslator const init_quotesstyletranslator()
 {
 	QuotesStyleTranslator translator
-		(string_quotes_style[0], InsetQuotes::EnglishQuotes);
-	translator.addPair(string_quotes_style[1], InsetQuotes::SwedishQuotes);
-	translator.addPair(string_quotes_style[2], InsetQuotes::GermanQuotes);
-	translator.addPair(string_quotes_style[3], InsetQuotes::PolishQuotes);
-	translator.addPair(string_quotes_style[4], InsetQuotes::FrenchQuotes);
-	translator.addPair(string_quotes_style[5], InsetQuotes::DanishQuotes);
-	translator.addPair(string_quotes_style[6], InsetQuotes::PlainQuotes);
+		(string_quotes_style[0], InsetQuotesParams::EnglishQuotes);
+	translator.addPair(string_quotes_style[1], InsetQuotesParams::SwedishQuotes);
+	translator.addPair(string_quotes_style[2], InsetQuotesParams::GermanQuotes);
+	translator.addPair(string_quotes_style[3], InsetQuotesParams::PolishQuotes);
+	translator.addPair(string_quotes_style[4], InsetQuotesParams::FrenchQuotes);
+	translator.addPair(string_quotes_style[5], InsetQuotesParams::DanishQuotes);
+	translator.addPair(string_quotes_style[6], InsetQuotesParams::PlainQuotes);
 	return translator;
 }
 
@@ -395,7 +395,7 @@ BufferParams::BufferParams()
 	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
-	quotes_style = InsetQuotes::EnglishQuotes;
+	quotes_style = InsetQuotesParams::EnglishQuotes;
 	fontsize = "default";
 
 	/*  PaperLayout */
@@ -2548,7 +2548,7 @@ Font const BufferParams::getFont() const
 }
 
 
-InsetQuotes::QuoteStyle BufferParams::getQuoteStyle(string const & qs) const
+InsetQuotesParams::QuoteStyle BufferParams::getQuoteStyle(string const & qs) const
 {
 	return quotesstyletranslator().find(qs);
 }
