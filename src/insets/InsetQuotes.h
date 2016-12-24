@@ -36,25 +36,35 @@ public:
 		///
 		PolishQuotes,
 		///
-		FrenchQuotes,
+		SwissQuotes,
 		///
 		DanishQuotes,
 		///
-		PlainQuotes
+		PlainQuotes,
+		///
+		BritishQuotes,
+		///
+		SwedishGQuotes,
+		///
+		FrenchQuotes,
+		///
+		FrenchINQuotes,
+		///
+		RussianQuotes
 	};
 	///
 	enum QuoteSide {
 		///
-		LeftQuote,
+		OpeningQuote,
 		///
-		RightQuote
+		ClosingQuote
 	};
 	///
 	enum QuoteLevel {
 		///
-		SingleQuotes,
+		SecondaryQuotes,
 		///
-		DoubleQuotes
+		PrimaryQuotes
 	};
 	/// Returns the unicode character of a given quote
 	char_type getQuoteChar(QuoteStyle const &, QuoteLevel const &,

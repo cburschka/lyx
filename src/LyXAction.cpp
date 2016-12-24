@@ -404,17 +404,22 @@ void LyXAction::init()
  * \li Notion: Currently English, Swedish, German, Polish, French, Danish quotes
                are distinguished.
  * \li Syntax: quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
- * \li Params: <LEVEL>: 'single' for single (i.e., inner or secondary) quotes, otherwise
- *                      double quotes will be used.
- *             <SIDE>:  'left' for opening quotes, 'right' for closing quotes, otherwise
- *                      the side will be guessed from the context.
- *             <STYLE>: 'english' for ``English'' quote style
- *                      'swedish' for ''Swedish'' quote style
- *                      'german' for ,,German`` quote style
- *                      'polish' for ,,Polish'' quote style
- *                      'french' for <<French>> quote style
- *                      'danish' for >>Danish<< quote style
- *                      'plain' for "Plain" quote style
+ * \li Params: <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise
+ *                       outer (i.e., primary, usually double) quotes will be used.
+ *             <SIDE>:  'opening' for opening quotes, 'closing' for closing quotes,
+ *                       otherwise the side will be guessed from the context.
+ *             <STYLE>: 'british' for `British' quote style (with ``inner quotation'')
+ *                      'danish' for >>Danish<< quote style (with >inner quotation<)
+ *                      'english' for ``English'' quote style (with `inner quotation')
+ *                      'french' for <<french>> quote style (with ``inner quotation'')
+ *                      'frenchin' for <<frenchin>> quote style (with <<inner quotation>>) ["in" = Imprimerie Nationale]
+ *                      'german' for ,,German`` quote style (with ,inner quotation`)
+ *                      'plain' for "Plain" quote style (with 'inner quotation')
+ *                      'polish' for ,,Polish'' quote style (with ,inner quotation')
+ *                      'swedish' for ''Swedish'' quote style (with 'inner quotation')
+ *                      'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets]
+ *                      'swiss' for <<Swiss>> quote style (with <inner quotation>)
+ *                      'russian' for <<Russian>> quote style (with ,,inner quotation``)
  *                      If no quote style is specified, the document-wide will be used.
  * \endvar
  */
@@ -2483,7 +2488,7 @@ void LyXAction::init()
                    inset-modify note Note Comment \n
                Change a Box into an Ovalbox: \n
                    inset-modify changetype Ovalbox \n
-               Change a quotation mark to e[nglish style], l[eft side], s[ingle] \n
+               Change a quotation mark to e[nglish style], l[eft side = opening], s[ingle = inner, secondary] \n
                    inset-modify changetype els \n
                Change only the style of a quotation mark, maintaining the other aspects (. = wildcard) \n
                    inset-modify changetype e.. \n

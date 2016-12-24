@@ -86,6 +86,17 @@ Format LaTeX feature                        LyX feature
 520    Plain InsetQuote Style:
        \textquotesingle                      \begin_inset Quotes qls, \begin_inset Quotes qrs
        \textquotedbl                         \begin_inset Quotes qld, \begin_inset Quotes qrd
+521    New Quote Styles                      InsetQuote
+       - british                             \begin_inset Quotes b..
+       - swiss                               \begin_inset Quotes c..
+       - swedishg                            \begin_inset Quotes w..
+       - frenchin                            \begin_inset Quotes i..
+       - russian                             \begin_inset Quotes r..
+       Change default behavior               \begin_inset Quotes f..
+       of French quote style:
+       - Inner quotes are now ``..''.
+       - Former french style is now
+         called "swiss"
 
 General
 

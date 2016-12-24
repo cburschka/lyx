@@ -72,7 +72,8 @@ static char const * const string_paragraph_separation[] = {
 
 
 static char const * const string_quotes_style[] = {
-	"english", "swedish", "german", "polish", "french", "danish", "plain", ""
+	"english", "swedish", "german", "polish", "swiss", "danish", "plain",
+	"british", "swedishg", "french", "frenchin", "russian", ""
 };
 
 
@@ -138,9 +139,14 @@ QuotesStyleTranslator const init_quotesstyletranslator()
 	translator.addPair(string_quotes_style[1], InsetQuotesParams::SwedishQuotes);
 	translator.addPair(string_quotes_style[2], InsetQuotesParams::GermanQuotes);
 	translator.addPair(string_quotes_style[3], InsetQuotesParams::PolishQuotes);
-	translator.addPair(string_quotes_style[4], InsetQuotesParams::FrenchQuotes);
+	translator.addPair(string_quotes_style[4], InsetQuotesParams::SwissQuotes);
 	translator.addPair(string_quotes_style[5], InsetQuotesParams::DanishQuotes);
 	translator.addPair(string_quotes_style[6], InsetQuotesParams::PlainQuotes);
+	translator.addPair(string_quotes_style[7], InsetQuotesParams::BritishQuotes);
+	translator.addPair(string_quotes_style[8], InsetQuotesParams::SwedishGQuotes);
+	translator.addPair(string_quotes_style[9], InsetQuotesParams::FrenchQuotes);
+	translator.addPair(string_quotes_style[10], InsetQuotesParams::FrenchINQuotes);
+	translator.addPair(string_quotes_style[11], InsetQuotesParams::RussianQuotes);
 	return translator;
 }
 

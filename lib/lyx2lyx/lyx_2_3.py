@@ -667,7 +667,7 @@ def revert_quotestyle(document):
 
 
 def revert_plainquote(document):
-    " Revert plain quote inset "
+    " Revert plain quote insets "
 
     # First, revert style setting
     i = find_token(document.header, "\\quotes_style plain", 0)
@@ -693,6 +693,162 @@ def revert_plainquote(document):
         i = l
 
 
+def convert_frenchquotes(document):
+    " Convert french quote insets to swiss "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style french", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style swiss"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes f', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        newval = val.replace("f", "c", 1)
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_swissquotes(document):
+    " Revert swiss quote insets to french "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style swiss", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style french"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes c', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        newval = val.replace("c", "f", 1)
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_britishquotes(document):
+    " Revert british quote insets to english "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style british", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style english"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes b', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        newval = val.replace("b", "e", 1)
+        if val[2] == "d":
+            # opening mark
+            newval = newval.replace("d", "s")
+        else:
+            # inner marks
+            newval = newval.replace("s", "d")
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_swedishgquotes(document):
+    " Revert swedish quote insets "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style swedishg", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style danish"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes w', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        if val[2] == "d":
+            # outer marks
+            newval = val.replace("w", "a", 1).replace("r", "l")
+        else:
+            # inner marks
+            newval = val.replace("w", "s", 1)
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_frenchquotes(document):
+    " Revert french inner quote insets "
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes f', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        if val[2] == "s":
+            # inner marks
+            newval = val.replace("f", "e", 1).replace("s", "d")
+            document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_frenchinquotes(document):
+    " Revert inner frenchin quote insets "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style frenchin", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style french"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes i', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        newval = val.replace("i", "f", 1)
+        if val[2] == "s":
+            # inner marks
+            newval = newval.replace("s", "d")
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
+def revert_russianquotes(document):
+    " Revert russian quote insets "
+
+    # First, revert style setting
+    i = find_token(document.header, "\\quotes_style russian", 0)
+    if i != -1:
+        document.header[i] = "\\quotes_style french"
+
+    # now the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes r', i)
+        if i == -1:
+            return
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        newval = val
+        if val[2] == "s":
+            # inner marks
+            newval = val.replace("r", "g", 1).replace("s", "d")
+        else:
+            # outer marks
+            newval = val.replace("r", "f", 1)
+        document.body[i] = document.body[i].replace(val, newval)
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -710,10 +866,12 @@ convert = [
            [517, []],
            [518, [convert_iopart]],
            [519, [convert_quotestyle]],
-           [520, []]
+           [520, []],
+           [521, [convert_frenchquotes]]
           ]
 
 revert =  [
+           [520, [revert_britishquotes, revert_swedishgquotes, revert_frenchquotes, revert_frenchinquotes, revert_russianquotes, revert_swissquotes]],
            [519, [revert_plainquote]],
            [518, [revert_quotestyle]],
            [517, [revert_iopart]],

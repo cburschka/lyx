@@ -56,12 +56,17 @@ namespace {
  * s    ''swedish''  ('inner quotation')
  * g    ,,german``   (,inner quotation`)
  * p    ,,polish''   (,inner quotation')
- * f    <<french>>   (<inner quotation>)
+ * c    <<swiss>>    (<inner quotation>)
  * a    >>danish<<   (>inner quotation<)
  * q    "plain"      ('inner quotation')
+ * b    `british'    (``inner quotation'')
+ * w    >>swedishg>> ('inner quotation') ["g" = Guillemets]
+ * f    <<french>>   (``inner quotation'')
+ * i    <<frenchin>> (<<inner quotation>>) ["in" = Imprimerie Nationale]
+ * r    <<russian>>  (,,inner quotation``)
  */
 
-char const * const style_char = "esgpfaq";
+char const * const style_char = "esgpcaqbwfir";
 char const * const side_char = "lr" ;
 char const * const level_char = "sd";
 
@@ -124,7 +129,7 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 		right_secondary = 0x2019; // '
 		break;
 	}
-	case FrenchQuotes: {
+	case SwissQuotes: {
 		left_primary = 0x00ab; // <<
 		right_primary = 0x00bb; // >>
 		left_secondary = 0x2039; // <
@@ -145,6 +150,41 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 		right_secondary = 0x0027; // '
 		break;
 	}
+	case BritishQuotes: {
+		left_primary = 0x2018; // `
+		right_primary = 0x2019; // '
+		left_secondary = 0x201c; // ``
+		right_secondary = 0x201d; // ''
+		break;
+	}
+	case SwedishGQuotes: {
+		left_primary = 0x00bb; // >>
+		right_primary = 0x00bb; // >>
+		left_secondary = 0x2019; // '
+		right_secondary = 0x2019; // '
+		break;
+	}
+	case FrenchQuotes: {
+		left_primary = 0x00ab; // <<
+		right_primary = 0x00bb; // >>
+		left_secondary = 0x201c; // ``
+		right_secondary = 0x201d; // ''
+		break;
+	}
+	case FrenchINQuotes:{
+		left_primary = 0x00ab; // <<
+		right_primary = 0x00bb; // >>
+		left_secondary =  0x00ab; // <<
+		right_secondary = 0x00bb; // >>
+		break;
+	}
+	case RussianQuotes:{
+		left_primary = 0x00ab; // <<
+		right_primary = 0x00bb; // >>
+		left_secondary =  0x201e; // ,,
+		right_secondary = 0x201c; // ``
+		break;
+	}
 	default:
 		// should not happen
 		left_primary = 0x003f; // ?
@@ -155,10 +195,10 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 	}
 
 	switch (level) {
-	case SingleQuotes:
-		return (side == LeftQuote) ? left_secondary : right_secondary;
-	case DoubleQuotes:
-		return (side == LeftQuote) ? left_primary : right_primary;
+	case SecondaryQuotes:
+		return (side == OpeningQuote) ? left_secondary : right_secondary;
+	case PrimaryQuotes:
+		return (side == OpeningQuote) ? left_primary : right_primary;
 	default:
 		break;
 	}
@@ -346,10 +386,10 @@ map<string, docstring> InsetQuotesParams::getTypes() const
 docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs)
 {
 	return bformat(_("%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"),
-		docstring(1, quoteparams.getQuoteChar(qs, DoubleQuotes, LeftQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, DoubleQuotes, RightQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, SingleQuotes, LeftQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, SingleQuotes, RightQuote))
+		docstring(1, quoteparams.getQuoteChar(qs, PrimaryQuotes, OpeningQuote)),
+		docstring(1, quoteparams.getQuoteChar(qs, PrimaryQuotes, ClosingQuote)),
+		docstring(1, quoteparams.getQuoteChar(qs, SecondaryQuotes, OpeningQuote)),
+		docstring(1, quoteparams.getQuoteChar(qs, SecondaryQuotes, ClosingQuote))
 		);
 }
 
@@ -379,10 +419,10 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 		fontenc_ = lyxrc.fontenc;
 	}
 
-	if (side == "left")
-		side_ = InsetQuotesParams::LeftQuote;
-	else if (side == "right")
-		side_ = InsetQuotesParams::RightQuote;
+	if (side == "left" || side == "opening")
+		side_ = InsetQuotesParams::OpeningQuote;
+	else if (side == "right" || side == "closing")
+		side_ = InsetQuotesParams::ClosingQuote;
 	else
 		setSide(c);
 }
@@ -396,15 +436,15 @@ docstring InsetQuotes::layoutName() const
 
 void InsetQuotes::setSide(char_type c)
 {
-	// Decide whether left or right
+	// Decide whether opening or closing quote
 	switch (c) {
 	case ' ':
 	case '(':
 	case '[':
-		side_ = InsetQuotesParams::LeftQuote;   // left quote
+		side_ = InsetQuotesParams::OpeningQuote;// opening quote
 		break;
 	default:
-		side_ = InsetQuotesParams::RightQuote;  // right quote
+		side_ = InsetQuotesParams::ClosingQuote;// closing quote
 	}
 }
 
@@ -446,7 +486,7 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 		if (i >= 2) {
 			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
 				" bad side specification.");
-			side_ = InsetQuotesParams::LeftQuote;
+			side_ = InsetQuotesParams::OpeningQuote;
 		}
 	}
 
@@ -461,7 +501,7 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 		if (i >= 2) {
 			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
 				" bad level specification.");
-			level_ = InsetQuotesParams::DoubleQuotes;
+			level_ = InsetQuotesParams::PrimaryQuotes;
 		}
 	}
 }
@@ -479,12 +519,20 @@ InsetQuotesParams::QuoteStyle InsetQuotes::getStyle(string const & s)
 		qs = InsetQuotesParams::GermanQuotes;
 	else if (s == "polish")
 		qs = InsetQuotesParams::PolishQuotes;
-	else if (s == "french")
-		qs = InsetQuotesParams::FrenchQuotes;
+	else if (s == "swiss")
+		qs = InsetQuotesParams::SwissQuotes;
 	else if (s == "danish")
 		qs = InsetQuotesParams::DanishQuotes;
 	else if (s == "plain")
 		qs = InsetQuotesParams::PlainQuotes;
+	else if (s == "british")
+		qs = InsetQuotesParams::BritishQuotes;
+	else if (s == "swedishg")
+		qs = InsetQuotesParams::SwedishGQuotes;
+	else if (s == "french")
+		qs = InsetQuotesParams::FrenchQuotes;
+	else if (s == "frenchin")
+		qs = InsetQuotesParams::FrenchINQuotes;
 
 	return qs;
 }
@@ -494,18 +542,20 @@ docstring InsetQuotes::displayString() const
 {
 	// In PassThru, we use straight quotes
 	if (pass_thru_)
-		return (level_ == InsetQuotesParams::DoubleQuotes) ?
+		return (level_ == InsetQuotesParams::PrimaryQuotes) ?
 					from_ascii("\"") : from_ascii("'");
 
 	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style_, level_, side_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
-	    && level_ == InsetQuotesParams::DoubleQuotes
-	    && style_ == InsetQuotesParams::FrenchQuotes) {
+	    && level_ == InsetQuotesParams::PrimaryQuotes
+	    && (style_ == InsetQuotesParams::SwissQuotes
+		|| style_ == InsetQuotesParams::FrenchQuotes
+		|| style_ == InsetQuotesParams::FrenchINQuotes)) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
-		if (side_ == InsetQuotesParams::LeftQuote)
+		if (side_ == InsetQuotesParams::OpeningQuote)
 			retdisp += thin_space;
 		else
 			retdisp = thin_space + retdisp;
@@ -611,11 +661,11 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
-		qstr = (level_ == InsetQuotesParams::DoubleQuotes) ? from_ascii("\"") : from_ascii("'");
+		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ? from_ascii("\"") : from_ascii("'");
 	else if (style_ == InsetQuotesParams::PlainQuotes && runparams.isFullUnicode()) {
 		// For XeTeX and LuaTeX,we need to disable mapping to get straight
 		// quotes. We define our own commands that do this
-		qstr = (level_ == InsetQuotesParams::DoubleQuotes) ?
+		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ?
 			from_ascii("\\textquotedblplain") : from_ascii("\\textquotesingleplain");
 	}
 	else if (runparams.use_polyglossia) {
@@ -624,11 +674,11 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		qstr = docstring(1, quotechar);
 	}
 	else if (style_ == InsetQuotesParams::FrenchQuotes
-		 && level_ == InsetQuotesParams::DoubleQuotes
+		 && level_ == InsetQuotesParams::PrimaryQuotes
 		 && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		// Specific guillemets of French babel
 		// including correct French spacing
-		if (side_ == InsetQuotesParams::LeftQuote)
+		if (side_ == InsetQuotesParams::OpeningQuote)
 			qstr = from_ascii("\\og");
 		else
 			qstr = from_ascii("\\fg");
@@ -690,11 +740,11 @@ docstring InsetQuotes::getQuoteEntity() const {
 	docstring res = quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style_, level_, side_));
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
-	    && level_ == InsetQuotesParams::DoubleQuotes
+	    && level_ == InsetQuotesParams::PrimaryQuotes
 	    && style_ == InsetQuotesParams::FrenchQuotes) {
 		// THIN SPACE (U+2009)
 		docstring const thin_space = from_ascii("&#x2009;");
-		if (side_ == InsetQuotesParams::LeftQuote)
+		if (side_ == InsetQuotesParams::OpeningQuote)
 			res += thin_space;
 		else
 			res = thin_space + res;

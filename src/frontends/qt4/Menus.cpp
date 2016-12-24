@@ -1679,9 +1679,14 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	MenuDefinition sqs;
 	MenuDefinition gqs;
 	MenuDefinition pqs;
-	MenuDefinition fqs;
+	MenuDefinition cqs;
 	MenuDefinition aqs;
 	MenuDefinition qqs;
+	MenuDefinition bqs;
+	MenuDefinition wqs;
+	MenuDefinition fqs;
+	MenuDefinition iqs;
+	MenuDefinition rqs;
 	for (; qq != end; ++qq) {
 		docstring const style = from_ascii(qq->first);
 		FuncRequest const cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
@@ -1697,12 +1702,22 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 			gqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 		else if (prefixIs(style, 'p') && !prefixIs(qtype, "p"))
 			pqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'f') && !prefixIs(qtype, "f"))
-			fqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'c') && !prefixIs(qtype, "c"))
+			cqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 		else if (prefixIs(style, 'a') && !prefixIs(qtype, "a"))
 			aqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 		else if (prefixIs(style, 'q') && !prefixIs(qtype, "q"))
 			qqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'b') && !prefixIs(qtype, "b"))
+			bqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'w') && !prefixIs(qtype, "w"))
+			wqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'f') && !prefixIs(qtype, "f"))
+			fqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'i') && !prefixIs(qtype, "i"))
+			iqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'r') && !prefixIs(qtype, "r"))
+			rqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 	}
 
 	if (!eqs.empty()) {
@@ -1729,10 +1744,10 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		item.setSubmenu(pqs);
 		add(item);
 	}
-	if (!fqs.empty()) {
+	if (!cqs.empty()) {
 		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchQuotes)));
-		item.setSubmenu(fqs);
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwissQuotes)));
+		item.setSubmenu(cqs);
 		add(item);
 	}
 	if (!aqs.empty()) {
@@ -1745,6 +1760,36 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		MenuItem item(MenuItem::Submenu,
 			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::PlainQuotes)));
 		item.setSubmenu(qqs);
+		add(item);
+	}
+	if (!bqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::BritishQuotes)));
+		item.setSubmenu(bqs);
+		add(item);
+	}
+	if (!wqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwedishGQuotes)));
+		item.setSubmenu(wqs);
+		add(item);
+	}
+	if (!fqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchQuotes)));
+		item.setSubmenu(fqs);
+		add(item);
+	}
+	if (!iqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchINQuotes)));
+		item.setSubmenu(iqs);
+		add(item);
+	}
+	if (!rqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::RussianQuotes)));
+		item.setSubmenu(rqs);
 		add(item);
 	}
 }

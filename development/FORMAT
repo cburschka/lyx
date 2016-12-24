@@ -11,6 +11,18 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-12-24 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 521:
+          Introduce new quote styles:
+          - british \begin_inset Quotes b..
+          - swiss \begin_inset Quotes c..
+          - swedishg \begin_inset Quotes w..
+          - frenchin \begin_inset Quotes i..
+          - russian \begin_inset Quotes r..
+          Change default behavior of French quote style:
+          - Inner quotes are now ``..''.
+          - Former french style is now called "swiss"
+
 2016-12-21 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 520: Introduce plain quote style:
           \begin_inset Quotes qls => \textquotesingle
