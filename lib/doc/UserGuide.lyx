@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 518
+\lyxformat 522
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -131,7 +131,8 @@ enumitem
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -140,6 +141,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 274215730 "scott"
 \author 424524441 "rgheck"
 \end_header
@@ -16926,22 +16928,40 @@ Additional Features
 \end_layout
 
 \begin_layout Subsubsection
-Quotes
+Quot
+\change_deleted -712698321 1482667523
+es
+\change_inserted -712698321 1482669265
+ation Marks
+\change_unchanged
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Quotes
+Typography ! Quot
+\change_deleted -712698321 1482669122
+es
+\change_inserted -712698321 1482669123
+ation marks
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Quotes | see
+Quot
+\change_deleted -712698321 1482669129
+es
+\change_inserted -712698321 1482669204
+ation marks
+\change_unchanged
+ | see
 \begin_inset ERT
 status collapsed
 
@@ -16973,9 +16993,32 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
- usually sets quotes correctly.
- Specifically, it will use an opening quote at the beginning of quoted text,
- and use a closing quote at the end.
+ usually sets quot
+\change_deleted -712698321 1482666231
+es
+\change_inserted -712698321 1482666233
+ation marks
+\change_unchanged
+ correctly.
+ Specifically, it will 
+\change_deleted -712698321 1482667043
+use
+\change_inserted -712698321 1482667044
+insert
+\change_unchanged
+ an opening 
+\change_deleted -712698321 1482666244
+quote
+\change_inserted -712698321 1482666245
+mark
+\change_unchanged
+ at the beginning of quoted text, and use a closing 
+\change_deleted -712698321 1482666248
+quote
+\change_inserted -712698321 1482666249
+mark
+\change_unchanged
+ at the end.
  For example, 
 \begin_inset Quotes eld
 \end_inset
@@ -16997,7 +17040,15 @@ You can specify what character the
 \family sans
 "
 \family default
- key produces using the submenu 
+ key produces 
+\change_inserted -712698321 1482669340
+by 
+\change_unchanged
+using the sub
+\change_inserted -712698321 1482667059
+-
+\change_unchanged
+menu 
 \family sans
 Language
 \family default
@@ -17016,16 +17067,36 @@ Document ! Settings
 
 \end_inset
 
- dialog in the box 
+ dialog 
+\change_deleted -712698321 1482667133
+in the box
+\change_inserted -712698321 1482669342
+and switching the
+\change_unchanged
+ 
 \family sans
 Quote Style
+\change_inserted -712698321 1482667108
+
 \family default
+ (note that \SpecialChar LyX
+ makes a sensible proposal for the selected main language)
+\change_unchanged
 .
- There are six choices:
+ There are 
+\change_deleted -712698321 1482666221
+six
+\change_inserted -712698321 1482666222
+twelve
+\change_unchanged
+ choices:
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+\noindent
+
+\change_deleted -712698321 1482666593
 
 \family sans
 \begin_inset Quotes eld
@@ -17036,20 +17107,82 @@ Text
 \end_inset
 
 
-\family default
- Use quotes like 
+\change_inserted -712698321 1482666647
+
 \begin_inset Quotes eld
 \end_inset
 
-this
+Outer
 \begin_inset Quotes erd
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes els
+\end_inset
+
+inner
+\begin_inset Quotes ers
+\end_inset
+
+
+\change_unchanged
+
+\family default
+ 
+\change_deleted -712698321 1482666593
+Use quotes like
+\change_inserted -712698321 1482665592
+Produces
+\change_unchanged
+ 
+\begin_inset Quotes eld
+\end_inset
+
+th
+\change_inserted -712698321 1482665595
+e
+\change_deleted -712698321 1482666593
+i
+\change_unchanged
+s
+\change_inserted -712698321 1482665605
+e outer
+\change_unchanged
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\change_inserted -712698321 1482665637
+ and 
+\begin_inset Quotes els
+\end_inset
+
+these inner
+\begin_inset Quotes ers
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in the US)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_deleted -712698321 1482666660
 
 \family sans
 \begin_inset Quotes sld
@@ -17060,12 +17193,68 @@ Text
 \end_inset
 
 
+\change_inserted -712698321 1482666671
+
+\begin_inset Quotes sld
+\end_inset
+
+Outer
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes sls
+\end_inset
+
+inner
+\begin_inset Quotes srs
+\end_inset
+
+
+\change_unchanged
+
 \family default
- Use quotes like ”this”
+ 
+\change_deleted -712698321 1482666660
+Use quotes like ”this”
+\change_inserted -712698321 1482665692
+Produces 
+\begin_inset Quotes sld
+\end_inset
+
+these outer
+\begin_inset Quotes sld
+\end_inset
+
+ and 
+\begin_inset Quotes sls
+\end_inset
+
+these inner
+\begin_inset Quotes srs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Sweden)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_deleted -712698321 1482666683
 
 \family sans
 \begin_inset Quotes gld
@@ -17076,8 +17265,38 @@ Text
 \end_inset
 
 
+\change_inserted -712698321 1482666696
+
+\begin_inset Quotes gld
+\end_inset
+
+Outer
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes gls
+\end_inset
+
+inner
+\begin_inset Quotes grs
+\end_inset
+
+
+\change_unchanged
+
 \family default
- Use quotes like 
+ 
+\change_deleted -712698321 1482666683
+Use quotes like 
 \begin_inset Quotes gld
 \end_inset
 
@@ -17086,10 +17305,36 @@ this
 \end_inset
 
 
+\change_inserted -712698321 1482665749
+Produces 
+\begin_inset Quotes gld
+\end_inset
+
+these outer
+\begin_inset Quotes grd
+\end_inset
+
+ and 
+\begin_inset Quotes gls
+\end_inset
+
+these inner
+\begin_inset Quotes grs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Germany)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_deleted -712698321 1482666707
 
 \family sans
 \begin_inset Quotes pld
@@ -17100,8 +17345,38 @@ Text
 \end_inset
 
 
+\change_inserted -712698321 1482666716
+
+\begin_inset Quotes pld
+\end_inset
+
+Outer
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes pls
+\end_inset
+
+inner
+\begin_inset Quotes prs
+\end_inset
+
+
+\change_unchanged
+
 \family default
- Use quotes like 
+ 
+\change_deleted -712698321 1482666707
+Use quotes like 
 \begin_inset Quotes pld
 \end_inset
 
@@ -17110,34 +17385,116 @@ this
 \end_inset
 
 
+\change_inserted -712698321 1482665786
+Produces 
+\begin_inset Quotes pld
+\end_inset
+
+these outer
+\begin_inset Quotes prd
+\end_inset
+
+ and 
+\begin_inset Quotes pls
+\end_inset
+
+these inner
+\begin_inset Quotes prs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Poland)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_deleted -712698321 1482666725
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Text
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
+\change_inserted -712698321 1482666730
+
+\begin_inset Quotes cld
+\end_inset
+
+Outer
+\begin_inset Quotes crd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes cls
+\end_inset
+
+inner
+\begin_inset Quotes crs
+\end_inset
+
+
+\change_unchanged
+
 \family default
- Use quotes like 
-\begin_inset Quotes fld
+ 
+\change_deleted -712698321 1482666725
+Use quotes like 
+\begin_inset Quotes cld
 \end_inset
 
 this
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
+
+\change_inserted -712698321 1482665816
+Produces 
+\begin_inset Quotes cld
+\end_inset
+
+these outer
+\begin_inset Quotes crd
+\end_inset
+
+ and 
+\begin_inset Quotes cls
+\end_inset
+
+these inner
+\begin_inset Quotes crs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Switzerland)
+\change_unchanged
 
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_deleted -712698321 1482666741
 
 \family sans
 \begin_inset Quotes ald
@@ -17148,8 +17505,38 @@ Text
 \end_inset
 
 
+\change_inserted -712698321 1482666747
+
+\begin_inset Quotes ald
+\end_inset
+
+Outer
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes als
+\end_inset
+
+inner
+\begin_inset Quotes ars
+\end_inset
+
+
+\change_unchanged
+
 \family default
- Use quotes like 
+ 
+\change_deleted -712698321 1482666741
+Use quotes like 
 \begin_inset Quotes ald
 \end_inset
 
@@ -17157,17 +17544,501 @@ this
 \begin_inset Quotes ard
 \end_inset
 
+
+\change_inserted -712698321 1482665851
+Produces 
+\begin_inset Quotes ald
+\end_inset
+
+these outer
+\begin_inset Quotes ard
+\end_inset
+
+ and 
+\begin_inset Quotes als
+\end_inset
+
+these inner
+\begin_inset Quotes ars
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Denmark)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482666768
+
+\family sans
+\begin_inset Quotes qrd
+\end_inset
+
+Outer
+\begin_inset Quotes qrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes qls
+\end_inset
+
+inner
+\begin_inset Quotes qls
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes qrd
+\end_inset
+
+these outer
+\begin_inset Quotes qrd
+\end_inset
+
+ and 
+\begin_inset Quotes qls
+\end_inset
+
+these inner
+\begin_inset Quotes qls
+\end_inset
+
+ quotation marks (so-called plain or non-typographical quotation marks)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482666784
+
+\family sans
+\begin_inset Quotes bld
+\end_inset
+
+Outer
+\begin_inset Quotes brd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes bls
+\end_inset
+
+inner
+\begin_inset Quotes brs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes bld
+\end_inset
+
+these outer
+\begin_inset Quotes brd
+\end_inset
+
+ and 
+\begin_inset Quotes bls
+\end_inset
+
+these inner
+\begin_inset Quotes brs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Great Britain)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482666803
+
+\family sans
+\begin_inset Quotes fld
+\end_inset
+
+Outer
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes fls
+\end_inset
+
+inner
+\begin_inset Quotes frs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes fld
+\end_inset
+
+these outer
+\begin_inset Quotes frd
+\end_inset
+
+ and 
+\begin_inset Quotes fls
+\end_inset
+
+these inner
+\begin_inset Quotes frs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in France)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482668207
+
+\family sans
+\begin_inset Quotes ild
+\end_inset
+
+Outer
+\begin_inset Quotes ird
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes ils
+\end_inset
+
+inner
+\begin_inset Quotes irs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes ild
+\end_inset
+
+these outer
+\begin_inset Quotes ird
+\end_inset
+
+ and 
+\begin_inset Quotes ils
+\end_inset
+
+these inner
+\begin_inset Quotes irs
+\end_inset
+
+ quotation marks (another style common in France)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1482668407
+Maybe you wonder why one does not simply use only outer marks in this case,
+ since these look identical to the inner marks.
+ The answer is that you cannot easily switch to another style then (where
+ the inner marks differ).
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482666837
+
+\family sans
+\begin_inset Quotes rld
+\end_inset
+
+Outer
+\begin_inset Quotes rrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes rls
+\end_inset
+
+inner
+\begin_inset Quotes rrs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes rld
+\end_inset
+
+these outer
+\begin_inset Quotes rrd
+\end_inset
+
+ and 
+\begin_inset Quotes rls
+\end_inset
+
+these inner
+\begin_inset Quotes rrs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Russia)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482666852
+
+\family sans
+\begin_inset Quotes wld
+\end_inset
+
+Outer
+\begin_inset Quotes wrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes wls
+\end_inset
+
+inner
+\begin_inset Quotes wrs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes wld
+\end_inset
+
+these outer
+\begin_inset Quotes wrd
+\end_inset
+
+ and 
+\begin_inset Quotes wls
+\end_inset
+
+these inner
+\begin_inset Quotes wrs
+\end_inset
+
+ quotation marks (another style common in Sweden)
+\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
-For single quotes you have to use the shortcut 
+
+\change_deleted -712698321 1482667281
+For single
+\change_inserted -712698321 1482667281
+Inner
+\change_unchanged
+ quot
+\change_deleted -712698321 1482666272
+es
+\change_inserted -712698321 1482667398
+ation marks
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1482668512
+In many writing cultures, these are single quotation marks.
+ But as the British and French styles show, this is not necessarily the
+ case (and specifically the British style shows that 
+\begin_inset Quotes eld
+\end_inset
+
+outer
+\begin_inset Quotes erd
+\end_inset
+
+ does not necessarily mean 
+\begin_inset Quotes eld
+\end_inset
+
+double
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This is why we call them 
+\begin_inset Quotes els
+\end_inset
+
+inner
+\begin_inset Quotes ers
+\end_inset
+
+ as opposed to 
+\begin_inset Quotes eld
+\end_inset
+
+outer
+\begin_inset Quotes erd
+\end_inset
+
+ quotation marks.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ 
+\change_inserted -712698321 1482668702
+for quotations inside quotations (and other tasks in some languages, such
+ as 
+\begin_inset Quotes els
+\end_inset
+
+scare quotes
+\begin_inset Quotes ers
+\end_inset
+
+) 
+\change_deleted -712698321 1482667343
+you have to use
+\change_inserted -712698321 1482667350
+can be obtained by means of
+\change_unchanged
+ the shortcut 
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert single"
 \end_inset
 
+
+\change_inserted -712698321 1482668731
+ and via the 
+\family sans
+Insert\SpecialChar menuseparator
+Special Characters
+\family default
+ menu
+\change_unchanged
 .
+\change_inserted -712698321 1482667602
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1482668992
+By default, the quotation mark styles are persistent.
+ That is to say, a quotation mark maintains the style that was current when
+ it was inserted, even if the document-wide style changes.
+ This allows you to enter marks of different style.
+ If you check the setting 
+\family sans
+Use dynamic quotation marks
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Language
+\family default
+, however, special quotation marks will be inserted (in the LyX window,
+ they appear in a special color).
+ These marks will automatically adapt to the main style (and its changes).
+ Such quotation marks make it easy to alter the quotation mark style in
+ one step (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., if your publisher requests a different style).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1482667904
+Individual quotation marks (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., their level [inner, outer], side [opening, closing], and style) can be
+ easily switched by a context menu that pops up if you right-click on a
+ mark.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -17338,7 +18209,13 @@ fest
 \begin_layout Subsection
 \SpecialChar LyX
  and \SpecialChar LaTeX
- logos
+ 
+\change_deleted -712698321 1482669270
+l
+\change_inserted -712698321 1482669270
+L
+\change_unchanged
+ogos
 \begin_inset Index idx
 status collapsed
 
