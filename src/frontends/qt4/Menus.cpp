@@ -1687,10 +1687,41 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	MenuDefinition fqs;
 	MenuDefinition iqs;
 	MenuDefinition rqs;
+	MenuDefinition xqs;
+	InsetQuotesParams::QuoteStyle globalqs = bv->buffer().params().quotes_style;
+	FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xld"));
+	docstring desc = bformat(_("%1$stext (dynamic)"), docstring(1, quoteparams.getQuoteChar(globalqs, InsetQuotesParams::PrimaryQuotes,
+										   InsetQuotesParams::OpeningQuote)));
+	if (prefixIs(qtype, "x"))
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	else
+		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xls"));
+	desc = bformat(_("%1$stext (dynamic)"), docstring(1, quoteparams.getQuoteChar(globalqs, InsetQuotesParams::SecondaryQuotes,
+										 InsetQuotesParams::OpeningQuote)));
+	if (prefixIs(qtype, "x"))
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	else
+		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xrd"));
+	desc = bformat(_("text%1$s (dynamic)"), docstring(1, quoteparams.getQuoteChar(globalqs, InsetQuotesParams::PrimaryQuotes,
+										 InsetQuotesParams::ClosingQuote)));
+	if (prefixIs(qtype, "x"))
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	else
+		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xrs"));
+	desc = bformat(_("text%1$s (dynamic)"), docstring(1, quoteparams.getQuoteChar(globalqs, InsetQuotesParams::SecondaryQuotes,
+										 InsetQuotesParams::ClosingQuote)));
+	if (prefixIs(qtype, "x"))
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+	else
+		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+
 	for (; qq != end; ++qq) {
 		docstring const style = from_ascii(qq->first);
-		FuncRequest const cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
-		docstring const desc = contains(style, 'l') ? 
+		cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
+		desc = contains(style, 'l') ? 
 			bformat(_("%1$stext"), qq->second) : bformat(_("text%1$s"), qq->second);
 		if (prefixIs(style, qtype[0]))
 			add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
@@ -1720,6 +1751,11 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 			rqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 	}
 
+	if (!xqs.empty()) {
+		MenuItem item(MenuItem::Submenu, qt_("Dynamic Quotation Marks"));
+		item.setSubmenu(xqs);
+		add(item);
+	}
 	if (!eqs.empty()) {
 		MenuItem item(MenuItem::Submenu,
 			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::EnglishQuotes)));

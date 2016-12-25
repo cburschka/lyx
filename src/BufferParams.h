@@ -108,6 +108,8 @@ public:
 	///
 	InsetQuotesParams::QuoteStyle quotes_style;
 	///
+	bool dynamic_quotes;
+	///
 	std::string fontsize;
 	/// Get the LayoutFile this document is using.
 	LayoutFile const * baseClass() const;

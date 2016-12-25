@@ -849,6 +849,58 @@ def revert_russianquotes(document):
         i += 1
 
 
+def revert_dynamicquotes(document):
+    " Revert dynamic quote insets "
+
+    # First, revert header
+    i = find_token(document.header, "\\dynamic_quotes", 0)
+    if i != -1:
+        del document.header[i]
+
+    # Get global style
+    style = "english"
+    i = find_token(document.header, "\\quotes_style", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\quotes_style")
+    else:
+        style = get_value(document.header, "\\quotes_style", i)
+
+    s = ""
+    if style == "english":
+        s = "e"
+    elif style == "swedish":
+        s = "s"
+    elif style == "german":
+        s = "g"
+    elif style == "polish":
+        s = "p"
+    elif style == "swiss":
+        s = "c"
+    elif style == "danish":
+        s = "a"
+    elif style == "plain":
+        s = "q"
+    elif style == "british":
+        s = "b"
+    elif style == "swedishg":
+        s = "w"
+    elif style == "french":
+        s = "f"
+    elif style == "frenchin":
+        s = "i"
+    elif style == "russian":
+        s = "r"
+
+    # now transform the insets
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Quotes x', i)
+        if i == -1:
+            return
+        document.body[i] = document.body[i].replace("x", s)
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -867,10 +919,12 @@ convert = [
            [518, [convert_iopart]],
            [519, [convert_quotestyle]],
            [520, []],
-           [521, [convert_frenchquotes]]
+           [521, [convert_frenchquotes]],
+           [522, []]
           ]
 
 revert =  [
+           [521, [revert_dynamicquotes]],
            [520, [revert_britishquotes, revert_swedishgquotes, revert_frenchquotes, revert_frenchinquotes, revert_russianquotes, revert_swissquotes]],
            [519, [revert_plainquote]],
            [518, [revert_quotestyle]],

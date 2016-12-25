@@ -64,9 +64,10 @@ namespace {
  * f    <<french>>   (``inner quotation'')
  * i    <<frenchin>> (<<inner quotation>>) ["in" = Imprimerie Nationale]
  * r    <<russian>>  (,,inner quotation``)
+ * x    dynamic style (inherits document settings)
  */
 
-char const * const style_char = "esgpcaqbwfir";
+char const * const style_char = "esgpcaqbwfirx";
 char const * const side_char = "lr" ;
 char const * const level_char = "sd";
 
@@ -185,6 +186,7 @@ char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel c
 		right_secondary = 0x201c; // ``
 		break;
 	}
+	case DynamicQuotes:
 	default:
 		// should not happen
 		left_primary = 0x003f; // ?
@@ -367,6 +369,8 @@ map<string, docstring> InsetQuotesParams::getTypes() const
 	// get all quote types
 	for (sty = 0; sty < stylescount(); ++sty) {
 		style = QuoteStyle(sty);
+		if (style == DynamicQuotes)
+			continue;
 		for (sid = 0; sid < 2; ++sid) {
 			side = QuoteSide(sid);
 			for (lev = 0; lev < 2; ++lev) {
@@ -402,6 +406,11 @@ docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs)
 
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 {
+	if (buf)
+		global_style_ = buf->masterBuffer()->params().quotes_style;
+	else
+		global_style_ = InsetQuotesParams::EnglishQuotes;
+
 	parseString(str);
 }
 
@@ -410,14 +419,20 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 			 string const & side, string const & style)
 	: Inset(buf), level_(level), pass_thru_(false)
 {
+	bool dynamic = false;
 	if (buf) {
-		style_ = style.empty() ? buf->params().quotes_style : getStyle(style);
-		fontenc_ = (buf->params().fontenc == "global")
+		global_style_ = buf->masterBuffer()->params().quotes_style;
+		fontenc_ = (buf->masterBuffer()->params().fontenc == "global")
 			? lyxrc.fontenc : buf->params().fontenc;
+		dynamic = buf->masterBuffer()->params().dynamic_quotes;
 	} else {
-		style_ = style.empty() ? InsetQuotesParams::EnglishQuotes : getStyle(style);
+		global_style_ = InsetQuotesParams::EnglishQuotes;
 		fontenc_ = lyxrc.fontenc;
 	}
+	if (style.empty())
+		style_ = dynamic ? InsetQuotesParams::DynamicQuotes : global_style_;
+	else
+		style_ = getStyle(style);
 
 	if (side == "left" || side == "opening")
 		side_ = InsetQuotesParams::OpeningQuote;
@@ -533,6 +548,8 @@ InsetQuotesParams::QuoteStyle InsetQuotes::getStyle(string const & s)
 		qs = InsetQuotesParams::FrenchQuotes;
 	else if (s == "frenchin")
 		qs = InsetQuotesParams::FrenchINQuotes;
+	else if (s == "dynamic")
+		qs = InsetQuotesParams::DynamicQuotes;
 
 	return qs;
 }
@@ -545,14 +562,17 @@ docstring InsetQuotes::displayString() const
 		return (level_ == InsetQuotesParams::PrimaryQuotes) ?
 					from_ascii("\"") : from_ascii("'");
 
-	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style_, level_, side_));
+	InsetQuotesParams::QuoteStyle style =
+			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
+
+	docstring retdisp = docstring(1, quoteparams.getQuoteChar(style, level_, side_));
 
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
 	    && level_ == InsetQuotesParams::PrimaryQuotes
-	    && (style_ == InsetQuotesParams::SwissQuotes
-		|| style_ == InsetQuotesParams::FrenchQuotes
-		|| style_ == InsetQuotesParams::FrenchINQuotes)) {
+	    && (style == InsetQuotesParams::SwissQuotes
+		|| style == InsetQuotesParams::FrenchQuotes
+		|| style == InsetQuotesParams::FrenchINQuotes)) {
 		// THIN SPACE (U+2009)
 		char_type const thin_space = 0x2009;
 		if (side_ == InsetQuotesParams::OpeningQuote)
@@ -578,7 +598,10 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetQuotes::draw(PainterInfo & pi, int x, int y) const
 {
 	FontInfo font = pi.base.font;
-	font.setPaintColor(pi.textColor(font.realColor()));
+	if (style_ == InsetQuotesParams::DynamicQuotes)
+		font.setPaintColor(Color_special);
+	else
+		font.setPaintColor(pi.textColor(font.realColor()));
 	pi.pain.text(x, y, displayString(), font);
 }
 
@@ -656,13 +679,15 @@ bool InsetQuotes::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 {
-	char_type quotechar = quoteparams.getQuoteChar(style_, level_, side_);
+	InsetQuotesParams::QuoteStyle style =
+			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
+	char_type quotechar = quoteparams.getQuoteChar(style, level_, side_);
 	docstring qstr;
 
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
 		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ? from_ascii("\"") : from_ascii("'");
-	else if (style_ == InsetQuotesParams::PlainQuotes && runparams.isFullUnicode()) {
+	else if (style == InsetQuotesParams::PlainQuotes && runparams.isFullUnicode()) {
 		// For XeTeX and LuaTeX,we need to disable mapping to get straight
 		// quotes. We define our own commands that do this
 		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ?
@@ -673,7 +698,9 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// (spacing and kerning is then handled respectively)
 		qstr = docstring(1, quotechar);
 	}
-	else if (style_ == InsetQuotesParams::FrenchQuotes
+	else if ((style == InsetQuotesParams::SwissQuotes
+		 || style == InsetQuotesParams::FrenchQuotes
+		 || style == InsetQuotesParams::FrenchINQuotes)
 		 && level_ == InsetQuotesParams::PrimaryQuotes
 		 && prefixIs(runparams.local_font->language()->code(), "fr")) {
 		// Specific guillemets of French babel
@@ -737,11 +764,15 @@ int InsetQuotes::plaintext(odocstringstream & os,
 
 
 docstring InsetQuotes::getQuoteEntity() const {
-	docstring res = quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style_, level_, side_));
+	InsetQuotesParams::QuoteStyle style =
+			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
+	docstring res = quoteparams.getHTMLQuote(quoteparams.getQuoteChar(style, level_, side_));
 	// in French, thin spaces are added inside double guillemets
 	if (prefixIs(context_lang_, "fr")
 	    && level_ == InsetQuotesParams::PrimaryQuotes
-	    && style_ == InsetQuotesParams::FrenchQuotes) {
+	    && (style == InsetQuotesParams::FrenchQuotes
+		|| style == InsetQuotesParams::FrenchINQuotes
+		|| style == InsetQuotesParams::SwissQuotes)) {
 		// THIN SPACE (U+2009)
 		docstring const thin_space = from_ascii("&#x2009;");
 		if (side_ == InsetQuotesParams::OpeningQuote)
@@ -785,12 +816,15 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 	pass_thru_ = it.paragraph().isPassThru();
 	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
 	fontenc_ = (bp.fontenc == "global") ? lyxrc.fontenc : bp.fontenc;
+	global_style_ = bp.quotes_style;
 }
 
 
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
-	char_type type = quoteparams.getQuoteChar(style_, level_, side_);
+	InsetQuotesParams::QuoteStyle style =
+			(style_ == InsetQuotesParams::DynamicQuotes) ? global_style_ : style_;
+	char_type type = quoteparams.getQuoteChar(style, level_, side_);
 
 	// Handle characters that are not natively supported by
 	// specific font encodings (we roll our own definitions)

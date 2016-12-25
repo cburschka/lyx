@@ -50,7 +50,9 @@ public:
 		///
 		FrenchINQuotes,
 		///
-		RussianQuotes
+		RussianQuotes,
+		///
+		DynamicQuotes
 	};
 	///
 	enum QuoteSide {
@@ -166,6 +168,8 @@ private:
 	InsetQuotesParams::QuoteSide side_;
 	///
 	InsetQuotesParams::QuoteLevel level_;
+	///
+	InsetQuotesParams::QuoteStyle global_style_;
 	///
 	std::string fontenc_;
 	/// Code of the contextual language

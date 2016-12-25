@@ -420,6 +420,8 @@ void LyXAction::init()
  *                      'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets]
  *                      'swiss' for <<Swiss>> quote style (with <inner quotation>)
  *                      'russian' for <<Russian>> quote style (with ,,inner quotation``)
+ *                      'dynamic' for Dynamic quotation marks which inherit the global
+ *                                document style
  *                      If no quote style is specified, the document-wide will be used.
  * \endvar
  */

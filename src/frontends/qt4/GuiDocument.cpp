@@ -1046,6 +1046,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(languagePackageChanged(int)));
+	connect(langModule->dynamicQuotesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 
 	langModule->languagePackageLE->setValidator(new NoNewLineValidator(
 		langModule->languagePackageLE));
@@ -2652,6 +2654,7 @@ void GuiDocument::applyView()
 
 	bp_.quotes_style = (InsetQuotesParams::QuoteStyle) langModule->quoteStyleCO->itemData(
 		langModule->quoteStyleCO->currentIndex()).toInt();
+	bp_.dynamic_quotes = langModule->dynamicQuotesCB->isChecked();
 
 	QString const langname = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
@@ -3064,6 +3067,7 @@ void GuiDocument::paramsToDialog()
 
 	langModule->quoteStyleCO->setCurrentIndex(
 		bp_.quotes_style);
+	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
 	bool default_enc = true;
 	if (bp_.inputenc != "auto") {

@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-12-25 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 522: Implement dynamic quotation marks.
+          \begin_inset Quotes x..
+          New buffer param \dynamic_quotation true|false
+
 2016-12-24 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 521:
           Introduce new quote styles:
