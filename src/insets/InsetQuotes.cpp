@@ -548,6 +548,8 @@ InsetQuotesParams::QuoteStyle InsetQuotes::getStyle(string const & s)
 		qs = InsetQuotesParams::FrenchQuotes;
 	else if (s == "frenchin")
 		qs = InsetQuotesParams::FrenchINQuotes;
+	else if (s == "russian")
+		qs = InsetQuotesParams::RussianQuotes;
 	else if (s == "dynamic")
 		qs = InsetQuotesParams::DynamicQuotes;
 
