@@ -401,14 +401,15 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_QUOTE_INSERT
  * \li Action: Inserts quotes according to the type and quote-language preference.
- * \li Notion: Currently English, Swedish, German, Polish, French, Danish quotes
-               are distinguished.
+ * \li Notion: Currently 15 different quote styles are distinguished (see params).
  * \li Syntax: quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
  * \li Params: <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise
  *                       outer (i.e., primary, usually double) quotes will be used.
  *             <SIDE>:  'opening' for opening quotes, 'closing' for closing quotes,
  *                       otherwise the side will be guessed from the context.
  *             <STYLE>: 'british' for `British' quote style (with ``inner quotation'')
+ *                      'cjk' for Chinese/Japanese/Korean corner bracket quotation marks
+ *                      'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks
  *                      'danish' for >>Danish<< quote style (with >inner quotation<)
  *                      'english' for ``English'' quote style (with `inner quotation')
  *                      'french' for <<french>> quote style (with ``inner quotation'')

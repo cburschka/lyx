@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 522
+\lyxformat 523
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -101,7 +101,7 @@ enumitem
 \use_package mathtools 0
 \use_package mhchem 1
 \use_package stackrel 0
-\use_package stmaryrd 0
+\use_package stmaryrd 1
 \use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
@@ -17086,8 +17086,8 @@ Quote Style
  There are 
 \change_deleted -712698321 1482666221
 six
-\change_inserted -712698321 1482666222
-twelve
+\change_inserted -712698321 1482756786
+14
 \change_unchanged
  choices:
 \end_layout
@@ -17851,7 +17851,7 @@ g., in Russia)
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_inserted -712698321 1482666852
+\change_inserted -712698321 1482756796
 
 \family sans
 \begin_inset Quotes wld
@@ -17896,6 +17896,158 @@ these inner
 \end_inset
 
  quotation marks (another style common in Sweden)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482757086
+\begin_inset Quotes jld
+\end_inset
+
+
+\family sans
+Outer
+\family default
+
+\begin_inset Quotes jrd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes jls
+\end_inset
+
+
+\family sans
+inner
+\family default
+
+\begin_inset Quotes jrs
+\end_inset
+
+ Produces 
+\begin_inset Quotes jld
+\end_inset
+
+these outer
+\begin_inset Quotes jrd
+\end_inset
+
+ and 
+\begin_inset Quotes jls
+\end_inset
+
+these inner
+\begin_inset Quotes jrs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Japan)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1482757158
+Note that these characters are just emulated with similar-looking math symbols
+ in many encodings that do not cover these glyphs.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\change_inserted -712698321 1482757171
+\begin_inset Quotes kld
+\end_inset
+
+
+\family sans
+Outer
+\family default
+
+\begin_inset Quotes krd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes kls
+\end_inset
+
+
+\family sans
+inner
+\family default
+
+\begin_inset Quotes krs
+\end_inset
+
+ Produces 
+\begin_inset Quotes kld
+\end_inset
+
+these outer
+\begin_inset Quotes krd
+\end_inset
+
+ and 
+\begin_inset Quotes kls
+\end_inset
+
+these inner
+\begin_inset Quotes krs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in North Korea and China)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1482757171
+Note that these characters are just emulated with similar-looking math symbols
+ in many encodings that do not cover these glyphs.
+\end_layout
+
+\end_inset
+
+
 \change_unchanged
 
 \end_layout

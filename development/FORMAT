@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2016-12-26 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 523: Implement cjk quotation marks.
+          - cjk (corner marks): \begin_inset Quotes j..
+          - cjkangle (angle brackets): \begin_inset Quotes k..
+
 2016-12-25 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 522: Implement dynamic quotation marks.
           \begin_inset Quotes x..

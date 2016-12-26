@@ -1687,6 +1687,8 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	MenuDefinition fqs;
 	MenuDefinition iqs;
 	MenuDefinition rqs;
+	MenuDefinition jqs;
+	MenuDefinition kqs;
 	MenuDefinition xqs;
 	InsetQuotesParams::QuoteStyle globalqs =
 			bv->buffer().masterBuffer()->params().quotes_style;
@@ -1758,6 +1760,10 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 			iqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 		else if (prefixIs(style, 'r') && !prefixIs(qtype, "r"))
 			rqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'j') && !prefixIs(qtype, "j"))
+			jqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		else if (prefixIs(style, 'k') && !prefixIs(qtype, "k"))
+			kqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 	}
 
 	if (!xqs.empty()) {
@@ -1835,6 +1841,18 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		MenuItem item(MenuItem::Submenu,
 			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::RussianQuotes)));
 		item.setSubmenu(rqs);
+		add(item);
+	}
+	if (!jqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::CJKQuotes)));
+		item.setSubmenu(jqs);
+		add(item);
+	}
+	if (!kqs.empty()) {
+		MenuItem item(MenuItem::Submenu,
+			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::CJKAngleQuotes)));
+		item.setSubmenu(kqs);
 		add(item);
 	}
 }

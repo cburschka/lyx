@@ -44,19 +44,21 @@
 #   (UK) -- try to select the entry that is most generic -- here
 #   English.
 # * The QuoteStyle arguments correspond to the following styles:
-# 		PRIMARY		SECONDARY
-#   - british:	`text'		``text''	(6_9 -- 66_99)
-#   - danish:	>>text<<	>text<		(inward guillemets)
-#   - english:	``text''	`text'		(66_99 -- 6_9)
-#   - french:	<<text>>	``text''	(outward guillemets -- 66_99)
-#   - frenchin: <<text>>	<<text>>	(French Imprimerie Nationale style)
-#   - german:	,,text``	,text`		(99/66 -- 9/6)
-#   - polish:	,,text''	,text'		(99/99 -- 9/9)
-#   - russian:  <<text>>        ,,text``       (outward guillemets -- 99/66)
-#   - swedish:	''text''	'text'		(99_99 -- 9_9)
-#   - swedishg: >>text>>	'text'		(Swedish Guillemets)
-#   - swiss:	<<text>>	<text>		(outward guillemets)
-#   - plain:	"text"		'text'		(non-typographical quotes)
+# 		   PRIMARY		SECONDARY
+#   - british:	  `text'		``text''	(6_9 -- 66_99)
+#   - cjk:        corner brackets	white corner br.
+#   - cjk-angle:  double angle br.	angle br.
+#   - danish:	  >>text<<		>text<		(inward guillemets)
+#   - english:	  ``text''		`text'		(66_99 -- 6_9)
+#   - french:	  <<text>>		``text''	(outward guillemets -- 66_99)
+#   - frenchin:   <<text>>		<<text>>	(French Imprimerie Nationale style)
+#   - german:	  ,,text``		,text`		(99/66 -- 9/6)
+#   - polish:	  ,,text''		,text'		(99/99 -- 9/9)
+#   - russian:    <<text>>		,,text``       	(outward guillemets -- 99/66)
+#   - swedish:	  ''text''		'text'		(99_99 -- 9_9)
+#   - swedishg:   >>text>>		'text'		(Swedish Guillemets)
+#   - swiss:	  <<text>>		<text>		(outward guillemets)
+#   - plain:	  "text"		'text'		(non-typographical quotes)
 #   Note that the option names have been selected (rather arbitrarily)
 #   because the respective styles are common in the respective countries.
 #   Of course this does not imply any fixed relation to those countries.
@@ -381,9 +383,9 @@ End
 Language chinese-traditional
 	GuiName         "Chinese (traditional)"
 	HasGuiSupport    true
-	QuoteStyle       english
-	Encoding        utf8-cjk
-	LangCode        zh_TW
+	QuoteStyle       cjk
+	Encoding         utf8-cjk
+	LangCode         zh_TW
 	Requires         CJK
 End
 
@@ -718,6 +720,7 @@ Language japanese
 	Requires         japanese
 	InternalEncoding true
 	FontEncoding     None
+	QuoteStyle       cjk
 End
 
 # uses CJK package
@@ -726,6 +729,7 @@ Language japanese-cjk
 	Encoding        euc-jp
 	LangCode        ja_JP
 	Requires        CJK
+	QuoteStyle      cjk
 End
 
 # not supported by babel
@@ -759,7 +763,7 @@ End
 Language korean
 	GuiName         "Korean"
 	Encoding        euc-kr
-	QuoteStyle      english
+	QuoteStyle      cjkangle
 	LangCode        ko_KR
 	Requires        CJK
 End

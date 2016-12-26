@@ -753,7 +753,7 @@ def revert_britishquotes(document):
             # opening mark
             newval = newval.replace("d", "s")
         else:
-            # inner marks
+            # closing mark
             newval = newval.replace("s", "d")
         document.body[i] = document.body[i].replace(val, newval)
         i += 1
@@ -865,7 +865,7 @@ def revert_dynamicquotes(document):
     else:
         style = get_value(document.header, "\\quotes_style", i)
 
-    s = ""
+    s = "e"
     if style == "english":
         s = "e"
     elif style == "swedish":
@@ -901,6 +901,140 @@ def revert_dynamicquotes(document):
         i += 1
 
 
+def revert_cjkquotes(document):
+    " Revert cjk quote insets "
+
+    # Get global style
+    style = "english"
+    i = find_token(document.header, "\\quotes_style", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\quotes_style")
+    else:
+        style = get_value(document.header, "\\quotes_style", i)
+
+    global_cjk = style.find("cjk") != -1
+
+    if global_cjk:
+        document.header[i] = "\\quotes_style english"
+        # transform dynamic insets
+        s = "j"
+        if style == "cjkangle":
+            s = "k"
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Quotes x', i)
+            if i == -1:
+                break
+            document.body[i] = document.body[i].replace("x", s)
+            i += 1
+
+    cjk_langs = ["chinese-simplified", "chinese-traditional", "japanese", "japanese-cjk", "korean"]
+
+    i = 0
+    j = 0
+    while True:
+        k = find_token(document.body, '\\begin_inset Quotes j', i)
+        if k == -1:
+            break
+        l = find_end_of_inset(document.body, k)
+        if l == -1:
+            document.warning("Malformed LyX document: Can't find end of Quote inset at line " + str(k))
+            i = k
+            continue
+        cjk = False
+        parent = get_containing_layout(document.body, k)
+        ql = find_token_backwards(document.body, "\\lang", k)
+        if ql == -1 or ql < parent[1]:
+            cjk = document.language in cjk_langs
+        elif document.body[ql].split()[1] in cjk_langs:
+            cjk = True
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        replace = []
+        if val[2] == "s":
+            # inner marks
+            if val[1] == "l":
+                # inner opening mark
+                if cjk:
+                    replace = [u"\u300E"]
+                else:
+                    replace = ["\\begin_inset Formula $\\llceil$", "\\end_inset"]
+            else:
+                # inner closing mark
+                if cjk:
+                    replace = [u"\u300F"]
+                else:
+                    replace = ["\\begin_inset Formula $\\rrfloor$", "\\end_inset"]
+        else:
+            # outer marks
+            if val[1] == "l":
+                # outer opening mark
+                if cjk:
+                    replace = [u"\u300C"]
+                else:
+                    replace = ["\\begin_inset Formula $\\lceil$", "\\end_inset"]
+            else:
+                # outer closing mark
+                if cjk:
+                    replace = [u"\u300D"]
+                else:
+                    replace = ["\\begin_inset Formula $\\rfloor$", "\\end_inset"]
+
+        document.body[k:l+1] = replace
+        i = l
+
+    i = 0
+    j = 0
+    while True:
+        k = find_token(document.body, '\\begin_inset Quotes k', i)
+        if k == -1:
+            return
+        l = find_end_of_inset(document.body, k)
+        if l == -1:
+            document.warning("Malformed LyX document: Can't find end of Quote inset at line " + str(k))
+            i = k
+            continue
+        cjk = False
+        parent = get_containing_layout(document.body, k)
+        ql = find_token_backwards(document.body, "\\lang", k)
+        if ql == -1 or ql < parent[1]:
+            cjk = document.language in cjk_langs
+        elif document.body[ql].split()[1] in cjk_langs:
+            cjk = True
+        val = get_value(document.body, "\\begin_inset Quotes", i)[7:]
+        replace = []
+        if val[2] == "s":
+            # inner marks
+            if val[1] == "l":
+                # inner opening mark
+                if cjk:
+                    replace = [u"\u3008"]
+                else:
+                    replace = ["\\begin_inset Formula $\\langle$", "\\end_inset"]
+            else:
+                # inner closing mark
+                if cjk:
+                    replace = [u"\u3009"]
+                else:
+                    replace = ["\\begin_inset Formula $\\rangle$", "\\end_inset"]
+        else:
+            # outer marks
+            if val[1] == "l":
+                # outer opening mark
+                if cjk:
+                    replace = [u"\u300A"]
+                else:
+                    replace = ["\\begin_inset Formula $\\langle\\kern -2.5pt\\langle$$", "\\end_inset"]
+            else:
+                # outer closing mark
+                if cjk:
+                    replace = [u"\u300B"]
+                else:
+                    replace = ["\\begin_inset Formula $\\rangle\\kern -2.5pt\\rangle$", "\\end_inset"]
+
+        document.body[k:l+1] = replace
+        i = l
+
+
 ##
 # Conversion hub
 #
@@ -920,10 +1054,12 @@ convert = [
            [519, [convert_quotestyle]],
            [520, []],
            [521, [convert_frenchquotes]],
-           [522, []]
+           [522, []],
+           [523, []]
           ]
 
 revert =  [
+           [522, [revert_cjkquotes]],
            [521, [revert_dynamicquotes]],
            [520, [revert_britishquotes, revert_swedishgquotes, revert_frenchquotes, revert_frenchinquotes, revert_russianquotes, revert_swissquotes]],
            [519, [revert_plainquote]],

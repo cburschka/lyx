@@ -52,6 +52,10 @@ public:
 		///
 		RussianQuotes,
 		///
+		CJKQuotes,
+		///
+		CJKAngleQuotes,
+		///
 		DynamicQuotes
 	};
 	///
