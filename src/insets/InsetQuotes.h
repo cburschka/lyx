@@ -180,6 +180,8 @@ private:
 	std::string context_lang_;
 	/// Is this in a pass-thru context?
 	bool pass_thru_;
+	/// Do we use fontspec?
+	bool fontspec_;
 	///
 	friend class InsetQuotesParams;
 

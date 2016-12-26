@@ -474,10 +474,14 @@ docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs)
 
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 {
-	if (buf)
+	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
-	else
+		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
+	}
+	else {
 		global_style_ = InsetQuotesParams::EnglishQuotes;
+		fontspec_ = false;
+	}
 
 	parseString(str);
 }
@@ -485,7 +489,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
 			 string const & side, string const & style)
-	: Inset(buf), level_(level), pass_thru_(false)
+	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false)
 {
 	bool dynamic = false;
 	if (buf) {
@@ -493,9 +497,11 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 		fontenc_ = (buf->masterBuffer()->params().fontenc == "global")
 			? lyxrc.fontenc : buf->params().fontenc;
 		dynamic = buf->masterBuffer()->params().dynamic_quotes;
+		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
 	} else {
 		global_style_ = InsetQuotesParams::EnglishQuotes;
 		fontenc_ = lyxrc.fontenc;
+		fontspec_ = false;
 	}
 	if (style.empty())
 		style_ = dynamic ? InsetQuotesParams::DynamicQuotes : global_style_;
@@ -761,7 +767,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	// In pass-thru context, we output plain quotes
 	if (runparams.pass_thru)
 		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ? from_ascii("\"") : from_ascii("'");
-	else if (style == InsetQuotesParams::PlainQuotes && runparams.isFullUnicode()) {
+	else if (style == InsetQuotesParams::PlainQuotes && fontspec_) {
 		// For XeTeX and LuaTeX,we need to disable mapping to get straight
 		// quotes. We define our own commands that do this
 		qstr = (level_ == InsetQuotesParams::PrimaryQuotes) ?
@@ -897,6 +903,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
 	fontenc_ = (bp.fontenc == "global") ? lyxrc.fontenc : bp.fontenc;
 	global_style_ = bp.quotes_style;
+	fontspec_ = bp.useNonTeXFonts;
 }
 
 
@@ -941,14 +948,14 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	// in most output formats
 	switch (type) {
 	case 0x0027: {
-		if (features.runparams().isFullUnicode())
+		if (features.runparams().isFullUnicode() && fontspec_)
 				features.require("textquotesinglep");
 			else
 				features.require("textcomp");
 			break;
 	}
 	case 0x0022: {
-		if (features.runparams().isFullUnicode())
+		if (features.runparams().isFullUnicode() && fontspec_)
 			features.require("textquotedblp");
 		else if (fontenc_ != "T1")
 			features.require("textquotedbl");
