@@ -1071,6 +1071,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	for (int i = 0; i < quoteparams.stylescount(); ++i) {
 		InsetQuotesParams::QuoteStyle qs = InsetQuotesParams::QuoteStyle(i);
+		if (qs == InsetQuotesParams::DynamicQuotes)
+			continue;
 		langModule->quoteStyleCO->addItem(toqstr(quoteparams.getGuiLabel(qs)), qs);
 	}
 
