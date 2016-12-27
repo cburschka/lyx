@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-11-24 18:21+0100\n"
-"PO-Revision-Date: 2016-11-24 17:53+0000\n"
+"POT-Creation-Date: 2016-12-27 00:44+0100\n"
+"PO-Revision-Date: 2016-12-27 11:17+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1462,7 +1462,7 @@ msgstr "Nas&tavenia"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:188
 msgid "The scope to which the search horizon is restricted"
-msgstr "Rozsah v ktorom sa má hľadať"
+msgstr "Oblasť v ktorom sa má hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
 msgid "Scope"
@@ -2210,21 +2210,34 @@ msgstr "&Použiť refstyle (nie prettyref) pre krížové referencie"
 msgid "&Quote style:"
 msgstr "&Typ úvodzoviek:"
 
+#: src/frontends/qt4/ui/LanguageUi.ui:84
+msgid "Language pa&ckage:"
+msgstr "Jazykový balí&k:"
+
 #: src/frontends/qt4/ui/LanguageUi.ui:66
 msgid "Encoding"
 msgstr "Kódovanie"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:81
-msgid "Language &default"
+#: src/frontends/qt4/ui/LanguageUi.ui:147
+msgid "Lan&guage default"
 msgstr "Štan&dardné pre daný jazyk"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:104
-msgid "&Other:"
+#: src/frontends/qt4/ui/LanguageUi.ui:170
+msgid "Othe&r:"
 msgstr "&Iné:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:126
-msgid "Language pac&kage:"
-msgstr "Jazykový balí&k:"
+#: src/frontends/qt4/ui/LanguageUi.ui:190
+msgid ""
+"Output quotation marks that automatically adapt to the style selected above. "
+"If this is not selected, the quotation marks will stick with the style they "
+"have been inserted with."
+msgstr ""
+"Vytvor úvodzovky ktoré sa automaticky prispôsobia ku vybranému štýlu. Bez "
+"výberu sa úvodzovky držia štýlu v akom boli vložené. "
+
+#: src/frontends/qt4/ui/LanguageUi.ui:193
+msgid "Use d&ynamic quotation marks"
+msgstr "Použiť d&ynamické úvodzovky"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:136
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
@@ -7005,7 +7018,7 @@ msgstr "Latinsky"
 
 #: lib/layouts/acm-sigs-alt.layout:3
 msgid "ACM SIGS ('Alternate' Style)"
-msgstr "ACM SIGS  ('Alternate' štýl)"
+msgstr "ACM SIGS ('Alternate' štýl)"
 
 #: lib/layouts/acm-sigs.layout:3
 msgid "ACM SIG Proceedings (SP)"
@@ -10214,7 +10227,7 @@ msgstr "VNÚTORNÁ"
 
 #: lib/layouts/hollywood.layout:114 lib/layouts/hollywood.layout:124
 msgid "EXT."
-msgstr "VONKAJŠIA"
+msgstr "VONKAJŠOK"
 
 #: lib/layouts/hollywood.layout:186
 msgid "Continuing"
@@ -16569,10 +16582,6 @@ msgstr "Cyrilika (KOI8-U)"
 msgid "Cyrillic (pt 154)"
 msgstr "Cyrilika (pt 154)"
 
-#: lib/encodings:142
-msgid "Cyrillic (pt 254)"
-msgstr "Cyrilika (pt 254)"
-
 #: lib/encodings:153
 msgid "Chinese (traditional) (Big5)"
 msgstr "Čínsky (tradičná) (Big5)"
@@ -18144,13 +18153,13 @@ msgstr "Vypustenie"
 msgid "End of Sentence|E"
 msgstr "Koniec vety|K"
 
-#: lib/ui/stdmenus.inc:397
-msgid "Ordinary Quote|Q"
-msgstr "Dvojitá Úvodzovka|D"
+#: lib/ui/stdmenus.inc:403
+msgid "Plain Quotation Mark|Q"
+msgstr "Prosté Úvodzovky"
 
-#: lib/ui/stdmenus.inc:398
-msgid "Single Quote|S"
-msgstr "Jednoduchá Úvodzovka|J"
+#: lib/ui/stdmenus.inc:404
+msgid "Inner Quotation Mark|n"
+msgstr "Vnútorná Úvodzovka"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Protected Hyphen|y"
@@ -25219,63 +25228,49 @@ msgstr "regulárny výraz: rám"
 msgid "ignore"
 msgstr "ignorovať"
 
-#: src/Converter.cpp:286
+#: src/Converter.cpp:287
 #, c-format
 msgid ""
-"Requested operation needs use of converter '%1$s' from %2$s to %3$s, which "
-"is tagged with the 'needauth' option. This is an external program normally "
-"acting as a picture/format converter, but which is known to be able to "
-"execute arbitrary actions on the system on behalf of the user, including "
-"dangerous ones such as deleting files, if instructed to do so by a "
-"maliciously crafted .lyx document."
+"<p>The requested operation requires the use of a converter from %2$s to %3$s:"
+"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
+"can execute arbitrary commands on your system, including dangerous ones, if "
+"instructed to do so by a maliciously crafted .lyx document.</p>"
 msgstr ""
-"Žiadaná operácia použije konvertor '%1$s'  z  %2$s na %3$s, ktorý je "
-"označený voľbou 'needauth'. Toto je externý program normálne slúžiac ako "
+"<p>Žiadaná operácia použije konvertor </p><blockquote><p><tt>%1$s</tt></p></"
+"blockquote><p> z %2$s na %3$s. Toto je externý program normálne slúžiac ako "
 "obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
 "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
-"Keď je napr. inštruované robiť to zlovoľne vyrobeným lyx dokumentom. "
-
-#: src/Converter.cpp:292
-msgid "Launch of external converter is forbidden"
-msgstr "Spúšťanie externého konvertora nie je povolené"
-
-#: src/Converter.cpp:292
-msgid ""
-"\n"
-"\n"
-"This is forbidden by default. In order to unlock execution of these "
-"converters, please, go to\n"
-"Preferences->File Handling->Converters and uncheck Security->Forbid needauth "
-"converters."
-msgstr ""
-"\n"
-"\n"
-"Toto štandardne nie je povolené. Keď chcete ich spúšťanie odblokovať, choďte "
-"na\n"
-"Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť->Zakázať "
-"overovacie konvertory. "
+"Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
 
 #: src/Converter.cpp:297
-msgid "Launch of external converter needs user authorization"
-msgstr "Spúšťanie externého konvertora potrebuje oprávnenie používateľa"
+msgid "An external converter is disabled for security reasons"
+msgstr "Spúšťanie externého konvertora je z bezpečnostných dôvodov blokované"
 
-#: src/Converter.cpp:301
+#: src/Converter.cpp:299
 msgid ""
-"\n"
-"\n"
-"Would you like to run the converter?\n"
-"\n"
-"ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!"
+"<p>Your current settings forbid its execution.</p><p>(To change this "
+"setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; Converters</i> "
+"and uncheck <i>Security &#x25b9; Forbid needauth converters</i>.)"
 msgstr ""
-"\n"
-"\n"
-"Želáte si spustiť teb konvertor?\n"
-"\n"
-"ODPOVEDZTE SPUSTIŤ LEN KEĎ DÔVERUJETE PÔVODU/ODOSIELATEĽOVI TOHTO LYX "
-"DOKUMENTU! "
+"<p>Vaše súčasné nastavenie blokuje jeho vykonávanie.</p><p> (Keď chcete ich "
+"spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… &#x25b9; "
+"Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať overovacie "
+"konvertory</i>.) "
 
-#: src/Converter.cpp:309 src/Converter.cpp:318
-msgid "Do &NOT run"
+#: src/Converter.cpp:308
+msgid "An external converter requires your authorization"
+msgstr "Spúšťanie externého konvertora potrebuje vaše oprávnenie"
+
+#: src/Converter.cpp:311
+msgid ""
+"<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
+"origin/sender of the LyX document!</b></p>"
+msgstr ""
+"<p>Chcete tento konvertor spustiť?</p><p><b>Spustite len keď dôverujete "
+"pôvodu/odosielateľovi tohto LyX dokumentu!</b></p> "
+
+#: src/Converter.cpp:319 src/Converter.cpp:327
+msgid "Do &not run"
 msgstr "&Nespustiť"
 
 #: src/Converter.cpp:309 src/Converter.cpp:318
@@ -28042,30 +28037,6 @@ msgstr "JIS B6"
 msgid "Language Default (no inputenc)"
 msgstr "Štandardné pre daný jazyk (bez inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1046
-msgid "``text''"
-msgstr "“text”"
-
-#: src/frontends/qt4/GuiDocument.cpp:1048
-msgid "''text''"
-msgstr "”text”"
-
-#: src/frontends/qt4/GuiDocument.cpp:1050
-msgid ",,text``"
-msgstr "„text“"
-
-#: src/frontends/qt4/GuiDocument.cpp:1052
-msgid ",,text''"
-msgstr "„text”"
-
-#: src/frontends/qt4/GuiDocument.cpp:1054
-msgid "<<text>>"
-msgstr "«text»"
-
-#: src/frontends/qt4/GuiDocument.cpp:1056
-msgid ">>text<<"
-msgstr "»text«"
-
 #: src/frontends/qt4/GuiDocument.cpp:1102
 msgid "Numbered"
 msgstr "Číslované"
@@ -29575,13 +29546,9 @@ msgstr "Dodatok, priv. oblasť A"
 msgid "Supplementary Private Use Area-B"
 msgstr "Dodatok, priv. oblasť B"
 
-#: src/frontends/qt4/GuiSymbols.cpp:221
-msgid "Character: "
-msgstr "Znak: "
-
-#: src/frontends/qt4/GuiSymbols.cpp:222
-msgid "Code Point: "
-msgstr "Kódový bod: "
+#: src/frontends/qt4/GuiSymbols.cpp:238
+msgid "<p>LaTeX code: %1</p>"
+msgstr "<p>LaTeX kód: %1</p"
 
 #: src/frontends/qt4/GuiSymbols.cpp:269
 msgid "Symbols"
@@ -30236,9 +30203,9 @@ msgstr "Register(%1$s)"
 msgid "Index Entry (%1$s)"
 msgstr "Heslo Registra (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1534
+#: src/frontends/qt4/Menus.cpp:1528
 msgid "No Citation in Scope!"
-msgstr "Žiadna citácia nablízku!"
+msgstr "Žiadna Citácia v Oblasti!"
 
 #: src/frontends/qt4/Menus.cpp:1547 src/insets/InsetCitation.cpp:165
 #: src/insets/InsetCitation.cpp:257
@@ -30249,6 +30216,34 @@ msgstr "Žiadna citácia nie je vybraná!"
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Popis (%1$s)"
+
+#: src/frontends/qt4/Menus.cpp:1665
+msgid "No Quote in Scope!"
+msgstr "Žiadne Úvodzovky v Oblasti!"
+
+#: src/frontends/qt4/Menus.cpp:1696 src/frontends/qt4/Menus.cpp:1705
+#, c-format
+msgid "%1$stext (dynamic)"
+msgstr "%1$stext (dynamická)"
+
+#: src/frontends/qt4/Menus.cpp:1714 src/frontends/qt4/Menus.cpp:1723
+#, c-format
+msgid "text%1$s (dynamic)"
+msgstr "text%1$s (dynamická)"
+
+#: src/frontends/qt4/Menus.cpp:1688
+#, c-format
+msgid "%1$stext"
+msgstr "%1$stext"
+
+#: src/frontends/qt4/Menus.cpp:1688
+#, c-format
+msgid "text%1$s"
+msgstr "text%1$s"
+
+#: src/frontends/qt4/Menus.cpp:1770
+msgid "Dynamic Quotation Marks"
+msgstr "Dynamické Úvodzovky"
 
 #: src/frontends/qt4/Menus.cpp:1699
 #, c-format
@@ -31196,6 +31191,11 @@ msgstr "hfantóm"
 msgid "vphantom"
 msgstr "vfantóm"
 
+#: src/insets/InsetQuotes.cpp:460
+#, c-format
+msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
+msgstr "%1$svonkajšie%2$s a %3$svnútorné%4$s"
+
 #: src/insets/InsetRef.cpp:310
 msgid "BROKEN: "
 msgstr "NEPLATNÝ: "
@@ -31987,6 +31987,53 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Ordinary Quote|Q"
+#~ msgstr "Dvojitá Úvodzovka|D"
+
+#~ msgid "Single Quote|S"
+#~ msgstr "Jednoduchá Úvodzovka|J"
+
+#~ msgid "``text''"
+#~ msgstr "“text”"
+
+#~ msgid "''text''"
+#~ msgstr "”text”"
+
+#~ msgid ",,text``"
+#~ msgstr "„text“"
+
+#~ msgid ",,text''"
+#~ msgstr "„text”"
+
+#~ msgid "<<text>>"
+#~ msgstr "«text»"
+
+#~ msgid ">>text<<"
+#~ msgstr "»text«"
+
+#~ msgid "Cyrillic (pt 254)"
+#~ msgstr "Cyrilika (pt 254)"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Would you like to run the converter?\n"
+#~ "\n"
+#~ "ANSWER RUN ONLY IF YOU TRUST THE ORIGIN/SENDER OF THE LYX DOCUMENT!"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Želáte si spustiť teb konvertor?\n"
+#~ "\n"
+#~ "ODPOVEDZTE SPUSTIŤ LEN KEĎ DÔVERUJETE PÔVODU/ODOSIELATEĽOVI TOHTO LYX "
+#~ "DOKUMENTU! "
+
+#~ msgid "Character: "
+#~ msgstr "Znak: "
+
+#~ msgid "Code Point: "
+#~ msgstr "Kódový bod: "
 
 #~ msgid "Potentially harmful external converters disabled"
 #~ msgstr "Potenciálne škodlivý externý konvertor je blokovaný"
@@ -35745,3 +35792,62 @@ msgstr "Neznámy používateľ"
 #~ "odblokovať,\n"
 #~ "choďte na Nástroje->Preferencie…->Obsluha Súborov-> a zrušte  Bezpečnosť-"
 #~ ">Zakázať overovacie konvertory. "
+
+#~ msgid ""
+#~ "Requested operation needs use of converter '%1$s' from %2$s to %3$s, which "
+#~ "is tagged with the 'needauth' option. This is an external program normally "
+#~ "acting as a picture/format converter, but which is known to be able to "
+#~ "execute arbitrary actions on the system on behalf of the user, including "
+#~ "dangerous ones such as deleting files, if instructed to do so by a "
+#~ "maliciously crafted .lyx document."
+#~ msgstr ""
+#~ "Žiadaná operácia použije konvertor '%1$s' z %2$s na %3$s, ktorý je "
+#~ "označený voľbou 'needauth'. Toto je externý program normálne slúžiac ako "
+#~ "obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
+#~ "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
+#~ "Keď je napr. inštruované robiť to zlovoľne vyrobeným lyx dokumentom. "
+
+#~ msgid "Launch of external converter is forbidden"
+#~ msgstr "Spúšťanie externého konvertora nie je povolené"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "This is forbidden by default. In order to unlock execution of these "
+#~ "converters, please, go to\n"
+#~ "Preferences->File Handling->Converters and uncheck Security->Forbid needauth "
+#~ "converters."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Toto štandardne nie je povolené. Keď chcete ich spúšťanie odblokovať, choďte "
+#~ "na\n"
+#~ "Nástroje->Preferencie…->Obsluha Súborov-> a zrušte Bezpečnosť->Zakázať "
+#~ "overovacie konvertory. "
+
+#~ msgid "Launch of external converter needs user authorization"
+#~ msgstr "Spúšťanie externého konvertora potrebuje oprávnenie používateľa"
+
+#~ msgid "Do &NOT run"
+#~ msgstr "&Nespustiť"
+
+#~ msgid ""
+#~ "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
+#~ "<blockquote><tt>%1$s</tt></blockquote><p>This external program can execute "
+#~ "arbitrary commands on your system, including dangerous ones, if instructed "
+#~ "to do so by a maliciously crafted .lyx document.</p>"
+#~ msgstr ""
+#~ "<p>Žiadaná operácia použije konvertor <blockquote><tt>%1$s</tt></blockquote> "
+#~ "z %2$s na %3$s. Toto je externý program normálne slúžiac ako obrázok/formát "
+#~ "konvertor, ale je známe že je schopný vykonávať v mene užívateľa ľubovoľné "
+#~ "akcie, vrátane nebezpečné ako napr. zmazanie súborov. Keď je napr. "
+#~ "inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
+
+#~ msgid "Language &default"
+#~ msgstr "Štan&dardné pre daný jazyk"
+
+#~ msgid "&Other:"
+#~ msgstr "&Iné:"
+
+#~ msgid "Language pac&kage:"
+#~ msgstr "Jazykový balí&k:"
