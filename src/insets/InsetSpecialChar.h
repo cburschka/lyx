@@ -89,11 +89,13 @@ public:
 	void validate(LaTeXFeatures &) const;
 
 	/// should this inset be handled like a normal character?
-	bool isChar() const { return true; }
+	bool isChar() const;
 	/// is this equivalent to a letter?
 	bool isLetter() const;
 	/// should we break lines after this inset?
 	bool isLineSeparator() const;
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	bool isPartOfTextSequence() const { return isChar(); }
 private:
 	Inset * clone() const { return new InsetSpecialChar(*this); }
 

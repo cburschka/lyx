@@ -41,6 +41,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <string.h>
 
@@ -526,15 +527,10 @@ docstring InsetQuotes::layoutName() const
 void InsetQuotes::setSide(char_type c)
 {
 	// Decide whether opening or closing quote
-	switch (c) {
-	case ' ':
-	case '(':
-	case '[':
+	if (lyx::isSpace(c) || isOpenPunctuation(c))
 		side_ = InsetQuotesParams::OpeningQuote;// opening quote
-		break;
-	default:
+	else
 		side_ = InsetQuotesParams::ClosingQuote;// closing quote
-	}
 }
 
 

@@ -83,6 +83,8 @@ private:
 	std::string contextMenuName() const;
 	///
 	Inset * clone() const { return new InsetIndex(*this); }
+	/// Is the content of this inset part of the immediate text sequence?
+	bool isPartOfTextSequence() const { return false; }
 
 	///
 	friend class InsetIndexParams;

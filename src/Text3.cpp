@@ -1548,11 +1548,40 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		while (pos > 0 && par.isDeleted(pos - 1))
 			--pos;
 
+		bool const inner = (cmd.getArg(0) == "single" || cmd.getArg(0) == "inner");
+
+		// Guess quote side.
+		// A space triggers an opening quote. This is passed if the preceding
+		// char/inset is a space or at paragraph start.
 		char_type c = ' ';
-		if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
-			c = par.getChar(pos - 1);
-		InsetQuotesParams::QuoteLevel const quote_level =
-				(cmd.getArg(0) == "single" || cmd.getArg(0) == "inner")
+		if (pos > 0 && !par.isSpace(pos - 1)) {
+			if (cur.prevInset() && cur.prevInset()->lyxCode() == QUOTE_CODE) {
+				// If an opening double quotation mark precedes, and this
+				// is a single quote, make it opening as well
+				InsetQuotes & ins =
+					static_cast<InsetQuotes &>(*cur.prevInset());
+				string const type = ins.getType();
+				if (!suffixIs(type, "ld") || !inner)
+					c = par.getChar(pos - 1);
+			}
+			else if (!cur.prevInset()
+			    || (cur.prevInset() && cur.prevInset()->isChar()))
+				// If a char precedes, pass that and let InsetQuote decide
+				c = par.getChar(pos - 1);
+			else {
+				while (pos > 0) {
+					if (par.getInset(pos - 1)
+					    && !par.getInset(pos - 1)->isPartOfTextSequence()) {
+						// skip "invisible" insets
+						--pos;
+						continue;
+					}
+					c = par.getChar(pos - 1);
+					break;
+				}
+			}
+		}
+		InsetQuotesParams::QuoteLevel const quote_level = inner
 				? InsetQuotesParams::SecondaryQuotes : InsetQuotesParams::PrimaryQuotes;
 		cur.insert(new InsetQuotes(cur.buffer(), c, quote_level, cmd.getArg(1), cmd.getArg(2)));
 		cur.buffer()->updateBuffer();

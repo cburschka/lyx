@@ -115,6 +115,8 @@ protected:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	Inset * clone() const { return new InsetArgument(*this); }
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	bool isPartOfTextSequence() const { return false; }
 	//@}
 };
 

@@ -89,6 +89,8 @@ private:
 	docstring layoutName() const;
 	///
 	Inset * clone() const { return new InsetWrap(*this); }
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	bool isPartOfTextSequence() const { return false; }
 
 	///
 	InsetWrapParams params_;

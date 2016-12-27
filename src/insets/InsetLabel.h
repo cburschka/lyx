@@ -59,6 +59,8 @@ public:
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype) const;
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	bool isPartOfTextSequence() const { return false; }
 	//@}
 
 	/// \name Static public methods obligated for InsetCommand derived classes

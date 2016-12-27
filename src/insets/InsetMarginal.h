@@ -38,6 +38,8 @@ public:
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype) const;
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	bool isPartOfTextSequence() const { return false; }
 private:
 	///
 	Inset * clone() const { return new InsetMarginal(*this); }

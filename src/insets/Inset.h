@@ -411,6 +411,8 @@ public:
 
 	/// Is the content of this inset part of the output document?
 	virtual bool producesOutput() const { return true; }
+	/// Is the content of this inset part of the immediate (visible) text sequence?
+	virtual bool isPartOfTextSequence() const { return producesOutput(); }
 
 	/// \return Tool tip for this inset.
 	/// This default implementation returns an empty string. This can be

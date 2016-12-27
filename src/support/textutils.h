@@ -53,6 +53,9 @@ bool isAlnumASCII(char_type c);
 /// return whether \p c is in the ASCII range
 bool isASCII(char_type c);
 
+/// return whether \p c is in the 'Punctuation, Open' unicode category
+bool isOpenPunctuation(char_type c);
+
 } // namespace lyx
 
 #endif // TEXTUTILS_H
