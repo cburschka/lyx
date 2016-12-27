@@ -404,25 +404,25 @@ void LyXAction::init()
  * \li Notion: Currently 15 different quote styles are distinguished (see params).
  * \li Syntax: quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
  * \li Params: <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise
- *                       outer (i.e., primary, usually double) quotes will be used.
+ *                       outer (i.e., primary, usually double) quotes will be used.\n
  *             <SIDE>:  'opening' for opening quotes, 'closing' for closing quotes,
- *                       otherwise the side will be guessed from the context.
- *             <STYLE>: 'british' for `British' quote style (with ``inner quotation'')
- *                      'cjk' for Chinese/Japanese/Korean corner bracket quotation marks
- *                      'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks
- *                      'danish' for >>Danish<< quote style (with >inner quotation<)
- *                      'english' for ``English'' quote style (with `inner quotation')
- *                      'french' for <<french>> quote style (with ``inner quotation'')
- *                      'frenchin' for <<frenchin>> quote style (with <<inner quotation>>) ["in" = Imprimerie Nationale]
- *                      'german' for ,,German`` quote style (with ,inner quotation`)
- *                      'plain' for "Plain" quote style (with 'inner quotation')
- *                      'polish' for ,,Polish'' quote style (with ,inner quotation')
- *                      'swedish' for ''Swedish'' quote style (with 'inner quotation')
- *                      'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets]
- *                      'swiss' for <<Swiss>> quote style (with <inner quotation>)
- *                      'russian' for <<Russian>> quote style (with ,,inner quotation``)
+ *                       otherwise the side will be guessed from the context.\n
+ *             <STYLE>: 'british' for `British' quote style (with ``inner quotation'')\n
+ *                      'cjk' for Chinese/Japanese/Korean corner bracket quotation marks\n
+ *                      'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks\n
+ *                      'danish' for >>Danish<< quote style (with >inner quotation<)\n
+ *                      'english' for ``English'' quote style (with `inner quotation')\n
+ *                      'french' for <<french>> quote style (with ``inner quotation'')\n
+ *                      'frenchin' for <<frenchin>> quote style (with <<inner quotation>>) ["in" = Imprimerie Nationale]\n
+ *                      'german' for ,,German`` quote style (with ,inner quotation`)\n
+ *                      'plain' for "Plain" quote style (with 'inner quotation')\n
+ *                      'polish' for ,,Polish'' quote style (with ,inner quotation')\n
+ *                      'swedish' for ''Swedish'' quote style (with 'inner quotation')\n
+ *                      'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets]\n
+ *                      'swiss' for <<Swiss>> quote style (with <inner quotation>)\n
+ *                      'russian' for <<Russian>> quote style (with ,,inner quotation``)\n
  *                      'dynamic' for Dynamic quotation marks which inherit the global
- *                                document style
+ *                                document style\n
  *                      If no quote style is specified, the document-wide will be used.
  * \endvar
  */

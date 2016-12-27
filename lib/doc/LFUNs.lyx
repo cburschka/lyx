@@ -3454,7 +3454,75 @@ Syntax quote-insert [<LEVEL>] [<SIDE>] [<STYLE>]
 \end_layout
 
 \begin_layout Description
-Params <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise outer (i.e., primary, usually double) quotes will be used. <SIDE>:  'opening' for opening quotes, 'closing' for closing quotes, otherwise the side will be guessed from the context. <STYLE>: 'british' for `British' quote style (with ``inner quotation'') 'cjk' for Chinese/Japanese/Korean corner bracket quotation marks 'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks 'danish' for >>Danish<< quote style (with >inner quotation<) 'english' for ``English'' quote style (with `inner quotation') 'french' for <<french>> quote style (with ``inner quotation'') 'frenchin' for <<frenchin>> quote style (with <<inner quotation>>) ["in" = Imprimerie Nationale] 'german' for ,,German`` quote style (with ,inner quotation`) 'plain' for "Plain" quote style (with 'inner quotation') 'polish' for ,,Polish'' quote style (with ,inner quotation') 'swedish' for ''Swedish'' quote style (with 'inner quotation') 'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets] 'swiss' for <<Swiss>> quote style (with <inner quotation>) 'russian' for <<Russian>> quote style (with ,,inner quotation``) 'dynamic' for Dynamic quotation marks which inherit the global document style If no quote style is specified, the document-wide will be used.
+Params <LEVEL>: 'inner' for (i.e., secondary, usually single) quotes, otherwise outer (i.e., primary, usually double) quotes will be used.
+\begin_inset Newline newline
+\end_inset
+
+<SIDE>:  'opening' for opening quotes, 'closing' for closing quotes, otherwise the side will be guessed from the context.
+\begin_inset Newline newline
+\end_inset
+
+<STYLE>: 'british' for `British' quote style (with ``inner quotation'')
+\begin_inset Newline newline
+\end_inset
+
+'cjk' for Chinese/Japanese/Korean corner bracket quotation marks
+\begin_inset Newline newline
+\end_inset
+
+'cjk-angle' for Chinese/Japanese/Korean angle bracket quotation marks
+\begin_inset Newline newline
+\end_inset
+
+'danish' for >>Danish<< quote style (with >inner quotation<)
+\begin_inset Newline newline
+\end_inset
+
+'english' for ``English'' quote style (with `inner quotation')
+\begin_inset Newline newline
+\end_inset
+
+'french' for <<french>> quote style (with ``inner quotation'')
+\begin_inset Newline newline
+\end_inset
+
+'frenchin' for <<frenchin>> quote style (with <<inner quotation>>) ["in" = Imprimerie Nationale]
+\begin_inset Newline newline
+\end_inset
+
+'german' for ,,German`` quote style (with ,inner quotation`)
+\begin_inset Newline newline
+\end_inset
+
+'plain' for "Plain" quote style (with 'inner quotation')
+\begin_inset Newline newline
+\end_inset
+
+'polish' for ,,Polish'' quote style (with ,inner quotation')
+\begin_inset Newline newline
+\end_inset
+
+'swedish' for ''Swedish'' quote style (with 'inner quotation')
+\begin_inset Newline newline
+\end_inset
+
+'swedishg' for >>swedishg>> quote style (with 'inner quotation') ["g" = Guillemets]
+\begin_inset Newline newline
+\end_inset
+
+'swiss' for <<Swiss>> quote style (with <inner quotation>)
+\begin_inset Newline newline
+\end_inset
+
+'russian' for <<Russian>> quote style (with ,,inner quotation``)
+\begin_inset Newline newline
+\end_inset
+
+'dynamic' for Dynamic quotation marks which inherit the global document style
+\begin_inset Newline newline
+\end_inset
+
+If no quote style is specified, the document-wide will be used.
 \end_layout
 
 \begin_layout Subsection*
