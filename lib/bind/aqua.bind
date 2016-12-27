@@ -40,7 +40,7 @@ Format 4
 \bind "M-~S-i s e"		"specialchar-insert end-of-sentence"
 \bind "M-~S-i s q"		"self-insert \""
 # FIXME: find a binding for single quotes
-# \bind "M-~S-i s q"		"quote-insert single"
+# \bind "M-~S-i s q"		"quote-insert inner"
 \bind "M-~S-i s m"		"specialchar-insert menu-separator"
 
 \bind "M-~S-i h i"		"math-mode"

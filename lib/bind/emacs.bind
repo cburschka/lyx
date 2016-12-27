@@ -73,8 +73,8 @@ Format 4
 \bind "C-~S-slash"             "undo"
 \bind "C-~S-underscore"        "undo"
 
-\bind "~S-M-quotedbl"		"quote-insert single"
-\bind "~S-C-quotedbl"		"self-insert \""
+\bind "~S-M-quotedbl"		"quote-insert inner"
+\bind "~S-C-quotedbl"		"quote-insert outer auto plain"
 
 \bind "C-x a"                  "buffer-auto-save"
 #\bind "C-x b"                 "buffer-previous"

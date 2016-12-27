@@ -257,8 +257,8 @@ Format 4
 \bind "C-M-S-D"                      "command-alternatives master-buffer-update dvi; buffer-update dvi"
 
 \bind "C-S-E"                        "changes-track" # it's what MS Word uses
-\bind "~S-M-quotedbl"                "quote-insert single"
-\bind "~S-C-quotedbl"                "self-insert \""
+\bind "~S-M-quotedbl"                "quote-insert inner"
+\bind "~S-C-quotedbl"                "quote-insert outer auto plain"
 \bind "C-S-underscore"               "command-alternatives math-macro-fold;specialchar-insert hyphenation"
 \bind "C-M-minus"                    "specialchar-insert nobreakdash"
 \bind "M-C-Right"                    "depth-increment"
