@@ -77,4 +77,12 @@ void InsetMathKern::normalize(NormalStream & os) const
 }
 
 
+void InsetMathKern::infoize2(odocstream & os) const
+{
+	os << "Kern";
+	if (!wid_.empty())
+		os << ": " << from_utf8(wid_.asLatexString());
+}
+
+
 } // namespace lyx

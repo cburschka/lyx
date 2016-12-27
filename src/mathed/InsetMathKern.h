@@ -43,6 +43,8 @@ public:
 	///
 	void htmlize(HtmlStream &) const { }
 	///
+	void infoize2(odocstream & os) const;
+	///
 	InsetCode lyxCode() const { return MATH_KERN_CODE; }
 
 private:
