@@ -432,9 +432,9 @@ void GuiDelimiter::on_swapPB_clicked()
 		QChar(nrms.fontcode) : toqstr(docstring(1, nrms.unicode)));
 
 	// Handle unencoded "symbol" of "(None)".
-	if (lqs.toStdString() == "?")
+	if (lqs == "?")
 		lqs = qt_("(None)");
-	if(rqs.toStdString() == "?")
+	if(rqs == "?")
 		rqs = qt_("(None)");
 
 	// Locate matching QListWidgetItem.
