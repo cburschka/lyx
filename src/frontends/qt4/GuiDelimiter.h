@@ -40,6 +40,7 @@ public Q_SLOTS:
 	void on_rightLW_currentRowChanged(int);
 	void on_matchCB_stateChanged(int);
 	void on_insertPB_clicked();
+	void on_swapPB_clicked();
 	void on_sizeCO_activated(int);
 
 private:

@@ -207,7 +207,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	int const end = nr_latex_delimiters - 1;
 	for (int i = 0; i < end; ++i) {
 		string const delim = latex_delimiters[i];
-		MathSymbol const & ms =	mathSymbol(delim);
+		MathSymbol const & ms = mathSymbol(delim);
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
@@ -232,7 +232,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	}
 
 	for (int i = 0; i != leftLW->count(); ++i) {
-		MathSymbol const & ms =	mathSymbol(getDelimiterName(leftLW->item(i)));
+		MathSymbol const & ms = mathSymbol(getDelimiterName(leftLW->item(i)));
 		rightLW->addItem(list_items[doMatch(ms.unicode)]->clone());
 	}
 
@@ -318,6 +318,12 @@ void GuiDelimiter::updateTeXCode(int size)
 	}
 
 	texCodeL->setText(qt_("TeX Code: ") + toqstr(code_str));
+
+	// Enable the Swap button with non-matched pairs
+	bool const allow_swap =
+		(doMatch(mathSymbol(getDelimiterName(leftLW->currentItem())).unicode)
+		 != mathSymbol(getDelimiterName(rightLW->currentItem())).unicode);
+	swapPB->setEnabled(allow_swap);
 }
 
 
@@ -381,6 +387,43 @@ void GuiDelimiter::on_matchCB_stateChanged(int state)
 {
 	if (state == Qt::Checked)
 		on_leftLW_currentRowChanged(leftLW->currentRow());
+
+	updateTeXCode(sizeCO->currentIndex());
+}
+
+void GuiDelimiter::on_swapPB_clicked()
+{
+	// Get current math symbol for each side.
+	MathSymbol const & lms =
+		mathSymbol(getDelimiterName(leftLW->currentItem()));
+	MathSymbol const & rms =
+		mathSymbol(getDelimiterName(rightLW->currentItem()));
+
+	// Swap and match.
+	char_type const lc = doMatch(rms.unicode);
+	char_type const rc = doMatch(lms.unicode);
+
+	// Convert back to QString to locate them in the widget.
+	MathSymbol const & nlms = mathSymbol(texName(lc));
+	MathSymbol const & nrms = mathSymbol(texName(rc));
+	QString lqs(nlms.fontcode ?
+		QChar(nlms.fontcode) : toqstr(docstring(1, nlms.unicode)));
+	QString rqs(nrms.fontcode ?
+		QChar(nrms.fontcode) : toqstr(docstring(1, nrms.unicode)));
+
+	// Handle unencoded "symbol" of "(None)".
+	if (lqs.toStdString() == "?")
+		lqs = qt_("(None)");
+	if(rqs.toStdString() == "?")
+		rqs = qt_("(None)");
+
+	// Locate matching QListWidgetItem.
+	QList<QListWidgetItem *> lwi = leftLW->findItems(lqs, Qt::MatchExactly);
+	QList<QListWidgetItem *> rwi = rightLW->findItems(rqs, Qt::MatchExactly);
+
+	// Select.
+	leftLW->setCurrentItem(lwi.first());
+	rightLW->setCurrentItem(rwi.first());
 
 	updateTeXCode(sizeCO->currentIndex());
 }
