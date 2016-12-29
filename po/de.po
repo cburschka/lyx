@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-04 11:21+0100\n"
-"PO-Revision-Date: 2016-12-04 11:23+0100\n"
+"POT-Creation-Date: 2016-12-29 08:50+0100\n"
+"PO-Revision-Date: 2016-12-29 08:57+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -131,7 +131,7 @@ msgid "Release Notes"
 msgstr "Versionshinweise"
 
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
-#: src/frontends/qt4/ui/DelimiterUi.ui:286
+#: src/frontends/qt4/ui/DelimiterUi.ui:83
 #: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
@@ -713,6 +713,7 @@ msgid "&Font:"
 msgstr "&Schrift:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:44 src/frontends/qt4/ui/CharacterUi.ui:212
+#: src/frontends/qt4/ui/DelimiterUi.ui:100
 msgid "Si&ze:"
 msgstr "&Größe:"
 
@@ -1175,30 +1176,38 @@ msgstr ""
 msgid "Enable &change tracking features in the output"
 msgstr "Änderungs&verfolgung in der Ausgabe"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:143
-#: src/frontends/qt4/GuiDelimiter.cpp:302
-msgid "TeX Code: "
-msgstr "TeX-Code: "
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:167
-msgid "Match delimiter types"
-msgstr "Wähle zusammengehörige Trennzeichen"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:170
-msgid "&Keep matched"
-msgstr "&Zusammenpassend"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:196
-msgid "&Size:"
-msgstr "&Größe:"
-
-#: src/frontends/qt4/ui/DelimiterUi.ui:268 src/frontends/qt4/ui/SymbolsUi.ui:56
+#: src/frontends/qt4/ui/DelimiterUi.ui:67 src/frontends/qt4/ui/SymbolsUi.ui:56
 msgid "Insert the delimiters"
 msgstr "Füge die Trennzeichen ein"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:271
+#: src/frontends/qt4/ui/DelimiterUi.ui:70
 msgid "&Insert"
 msgstr "&Einfügen"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:144
+#: src/frontends/qt4/GuiDelimiter.cpp:320
+msgid "TeX Code: "
+msgstr "TeX-Code: "
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:243
+msgid "Match delimiter types"
+msgstr "Wähle zusammengehörige Trennzeichen"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:246
+msgid "&Keep matched"
+msgstr "&Zusammenpassend"
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:262
+msgid ""
+"Swap left and right delimiter type (while reversing to the appropriate "
+"direction)"
+msgstr ""
+"Vertauscht den linken und rechten Trennzeichentyp und dreht sie gleichzeitig"
+" in die passende Richtung."
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:265
+msgid "S&wap && Reverse"
+msgstr "&Tauschen && Drehen"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
@@ -2059,7 +2068,8 @@ msgstr "Include"
 msgid "Input"
 msgstr "Input"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:76
+#: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/iopart.layout:368
+#: lib/layouts/stdlayouts.inc:76
 msgid "Verbatim"
 msgstr "Unformatiert"
 
@@ -5523,6 +5533,8 @@ msgstr "Abbildungsanmerkungen"
 #: lib/layouts/g-brief2.layout:32 lib/layouts/hollywood.layout:282
 #: lib/layouts/ijmpc.layout:24 lib/layouts/ijmpd.layout:29
 #: lib/layouts/initials.module:27 lib/layouts/iopart.layout:36
+#: lib/layouts/iopart.layout:302 lib/layouts/iopart.layout:325
+#: lib/layouts/iopart.layout:348 lib/layouts/iopart.layout:369
 #: lib/layouts/iucr.layout:21 lib/layouts/jasatex.layout:37
 #: lib/layouts/kluwer.layout:35 lib/layouts/llncs.layout:25
 #: lib/layouts/ltugboat.layout:32 lib/layouts/lyxmacros.inc:13
@@ -8753,19 +8765,20 @@ msgid "TitleGraphic"
 msgstr "Titelgrafik"
 
 #: lib/layouts/beamer.layout:1091 lib/layouts/db_stdlayouts.inc:19
-#: lib/layouts/egs.layout:102 lib/layouts/powerdot.layout:379
-#: lib/layouts/stdlayouts.inc:12
+#: lib/layouts/egs.layout:102 lib/layouts/iopart.layout:301
+#: lib/layouts/powerdot.layout:379 lib/layouts/stdlayouts.inc:12
 msgid "Quotation"
 msgstr "Zitat (lang)"
 
 #: lib/layouts/beamer.layout:1117 lib/layouts/egs.layout:121
-#: lib/layouts/moderncv.layout:219 lib/layouts/powerdot.layout:401
-#: lib/layouts/stdlayouts.inc:34
+#: lib/layouts/iopart.layout:324 lib/layouts/moderncv.layout:219
+#: lib/layouts/powerdot.layout:401 lib/layouts/stdlayouts.inc:34
 msgid "Quote"
 msgstr "Zitat (kurz)"
 
 #: lib/layouts/beamer.layout:1141 lib/layouts/egs.layout:224
-#: lib/layouts/powerdot.layout:421 lib/layouts/stdlayouts.inc:54
+#: lib/layouts/iopart.layout:345 lib/layouts/powerdot.layout:421
+#: lib/layouts/stdlayouts.inc:54
 msgid "Verse"
 msgstr "Gedicht"
 
@@ -11820,6 +11833,10 @@ msgstr "Literaturverzeichnis (einfach)"
 msgid "Bibliography heading"
 msgstr "Überschrift des Literaturverzeichnisses"
 
+#: lib/layouts/iopart.layout:392 lib/layouts/stdlayouts.inc:99
+msgid "Verbatim*"
+msgstr "Unformatiert*"
+
 #: lib/layouts/isprs.layout:3
 msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
 msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
@@ -14589,10 +14606,6 @@ msgstr "ohne Marke"
 #: lib/layouts/stdinsets.inc:603
 msgid "Preview"
 msgstr "Vorschau"
-
-#: lib/layouts/stdlayouts.inc:99
-msgid "Verbatim*"
-msgstr "Unformatiert*"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -27993,32 +28006,34 @@ msgstr "Unterschiede"
 msgid "Compare different revisions"
 msgstr "Vergleiche verschiedene Überarbeitungen"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:59
+#: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "big[[delimiter size]]"
 msgstr "big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:60
+#: src/frontends/qt4/GuiDelimiter.cpp:61
 msgid "Big[[delimiter size]]"
 msgstr "Big"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:61
+#: src/frontends/qt4/GuiDelimiter.cpp:62
 msgid "bigg[[delimiter size]]"
 msgstr "bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:62
+#: src/frontends/qt4/GuiDelimiter.cpp:63
 msgid "Bigg[[delimiter size]]"
 msgstr "Bigg"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:169
+#: src/frontends/qt4/GuiDelimiter.cpp:183
 msgid "Math Delimiter"
 msgstr "Mathe-Trennzeichen"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:226
-#: src/frontends/qt4/GuiDelimiter.cpp:227
+#: src/frontends/qt4/GuiDelimiter.cpp:240
+#: src/frontends/qt4/GuiDelimiter.cpp:241
+#: src/frontends/qt4/GuiDelimiter.cpp:416
+#: src/frontends/qt4/GuiDelimiter.cpp:418
 msgid "(None)"
 msgstr "(Kein)"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:231
+#: src/frontends/qt4/GuiDelimiter.cpp:245
 msgid "Variable"
 msgstr "Variabel"
 
@@ -31848,7 +31863,7 @@ msgstr "Größe: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Die horizontale Ausrichtung kann in '%1$s' nicht geändert werden"
 
-#: src/mathed/MathMacro.cpp:1051 src/mathed/MathMacro.cpp:1057
+#: src/mathed/MathMacro.cpp:1064 src/mathed/MathMacro.cpp:1070
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
@@ -32208,6 +32223,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "&Size:"
+#~ msgstr "&Größe:"
 
 #~ msgid "frame of button"
 #~ msgstr "Knopf (Rahmen)"
