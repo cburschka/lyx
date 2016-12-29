@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-27 00:44+0100\n"
-"PO-Revision-Date: 2016-12-27 11:17+0000\n"
+"POT-Creation-Date: 2016-12-28 23:56+0100\n"
+"PO-Revision-Date: 2016-12-28 23:11+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1128,9 +1128,15 @@ msgstr "Vyberte príslušné typy oddeľovačov"
 msgid "&Keep matched"
 msgstr "&Držať spárované"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:196
-msgid "&Size:"
-msgstr "&Veľkosť:"
+#: src/frontends/qt4/ui/DelimiterUi.ui:262
+msgid ""
+"Swap left and right delimiter type (while reversing to the appropriate "
+"direction)"
+msgstr "Vymení ľavý a pravý typ oddeľovača (keď sa otáča na vhodný smer) "
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:265
+msgid "S&wap && Reverse"
+msgstr "Vymeniť && Obrátiť"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
 #: src/frontends/qt4/ui/SymbolsUi.ui:56
@@ -31987,6 +31993,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Size:"
+#~ msgstr "&Veľkosť:"
 
 #~ msgid "Ordinary Quote|Q"
 #~ msgstr "Dvojitá Úvodzovka|D"
