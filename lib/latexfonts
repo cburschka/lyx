@@ -124,6 +124,20 @@ Font charter
 	Package          charter
 EndFont
 
+Font cochineal
+	GuiName          "Crimson (Cochineal)"
+	Family           rm
+	OsfOption        "proportional,osf"
+	Package          cochineal
+	AltFonts         crimson
+EndFont
+
+AltFont crimson
+	GuiName          "Crimson"
+	Family           rm
+	Package          crimson
+EndFont
+
 Font cmr
 	GuiName          "Computer Modern Roman"
 	Family           rm
@@ -614,6 +628,14 @@ EndFont
 #
 # MATH FONTS
 #
+
+Font cochineal-ntxm
+	GuiName          "Crimson (New TX)"
+	Family           math
+	Package          newtxmath
+	PackageOption    cochineal
+	Provides         amssymb,amsfonts
+EndFont
 
 Font eulervm
 	GuiName          "Euler VM"

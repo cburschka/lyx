@@ -100,6 +100,11 @@ Format LaTeX feature                        LyX feature
 523    CJK Quote Styles                      InsetQuote
        - cjk (corner brackets)               \begin_inset Quotes j..
        - cjkangle (angle brackets)           \begin_inset Quotes k..
+524    Crimson/Cochineal fonts               \font_roman, \font_math
+       \usepackage{cochineal}                \font_roman cochineal
+	- [osf]                              \font_osf true
+       \usepackage{crimson}                  \font_roman cochineal
+       \usepackage[cochineal]{newtxmath}     \font_math cochineal-ntxm
 
 General
 

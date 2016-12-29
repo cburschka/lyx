@@ -1035,6 +1035,36 @@ def revert_cjkquotes(document):
         i = l
 
 
+def revert_crimson(document):
+    " Revert native Cochineal/Crimson font definition to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        preamble = ""
+        i = find_token(document.header, "\\font_roman \"cochineal\"", 0)
+        if i != -1:
+            osf = False
+            j = find_token(document.header, "\\font_osf true", 0)
+            if j != -1:
+                osf = True
+            preamble = "\\usepackage"
+            if osf:
+                document.header[j] = "\\font_osf false"
+                preamble += "[proportional,osf]"
+            preamble += "{cochineal}"
+            add_to_preamble(document, [preamble])
+            document.header[i] = document.header[i].replace("cochineal", "default")
+
+
+def revert_cochinealmath(document):
+    " Revert cochineal newtxmath definitions to LaTeX " 
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+        i = find_token(document.header, "\\font_math \"cochineal-ntxm\"", 0)
+        if i != -1:
+            add_to_preamble(document, "\\usepackage[cochineal]{newtxmath}")
+            document.header[i] = document.header[i].replace("cochineal-ntxm", "auto")
+
+
 ##
 # Conversion hub
 #
@@ -1055,10 +1085,12 @@ convert = [
            [520, []],
            [521, [convert_frenchquotes]],
            [522, []],
-           [523, []]
+           [523, []],
+           [524, []]
           ]
 
 revert =  [
+           [523, [revert_crimson, revert_cochinealmath]],
            [522, [revert_cjkquotes]],
            [521, [revert_dynamicquotes]],
            [520, [revert_britishquotes, revert_swedishgquotes, revert_frenchquotes, revert_frenchinquotes, revert_russianquotes, revert_swissquotes]],
