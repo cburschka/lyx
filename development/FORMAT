@@ -13,11 +13,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2016-12-29 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 524: Support Crimson/Cochineal fonts
-	  - \usepackage{cochineal} > \font_roman cochineal
+	  - \usepackage{cochineal} > \font_roman "cochineal" "<nontexfont>"
 	     - [osf] > \font_osf true
-	  - \usepackage{crimson} > \font_roman cochineal
-          - \usepackage[cochineal]{newtxmath} > \font_math cochineal-ntxm
-
+	  - \usepackage{crimson} > \font_roman "cochineal" "<nontexfont>"
+          - \usepackage[cochineal]{newtxmath} 
+             > \font_math "cochineal-ntxm" "<nontexfont>"
 
 2016-12-26 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 523: Implement cjk quotation marks.
@@ -38,7 +38,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
           - frenchin \begin_inset Quotes i..
           - russian \begin_inset Quotes r..
           Change default behavior of French quote style:
-          - Inner quotes are now ``..''.
+          - Inner quotes are now ``...''.
           - Former french style is now called "swiss"
 
 2016-12-21 Jürgen Spitzmüller <spitz@lyx.org>

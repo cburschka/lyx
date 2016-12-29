@@ -94,17 +94,17 @@ Format LaTeX feature                        LyX feature
        - russian                             \begin_inset Quotes r..
        Change default behavior               \begin_inset Quotes f..
        of French quote style:
-       - Inner quotes are now ``..''.
+       - Inner quotes are now ``...''.
        - Former french style is now
          called "swiss"
 523    CJK Quote Styles                      InsetQuote
        - cjk (corner brackets)               \begin_inset Quotes j..
        - cjkangle (angle brackets)           \begin_inset Quotes k..
 524    Crimson/Cochineal fonts               \font_roman, \font_math
-       \usepackage{cochineal}                \font_roman cochineal
+       \usepackage{cochineal}                \font_roman "cochineal" "<nontexfont>"
 	- [osf]                              \font_osf true
-       \usepackage{crimson}                  \font_roman cochineal
-       \usepackage[cochineal]{newtxmath}     \font_math cochineal-ntxm
+       \usepackage{crimson}                  \font_roman "cochineal" "<nontexfont>"
+       \usepackage[cochineal]{newtxmath}     \font_math "cochineal-ntxm" "<nontexfont>"
 
 General
 
