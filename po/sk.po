@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-04 17:24+0100\n"
-"PO-Revision-Date: 2016-12-04 16:25+0000\n"
+"POT-Creation-Date: 2016-12-29 09:18+0100\n"
+"PO-Revision-Date: 2016-12-29 08:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1107,9 +1107,15 @@ msgstr "Vyberte príslušné typy oddeľovačov"
 msgid "&Keep matched"
 msgstr "&Držať spárované"
 
-#: src/frontends/qt4/ui/DelimiterUi.ui:196
-msgid "&Size:"
-msgstr "&Veľkosť:"
+#: src/frontends/qt4/ui/DelimiterUi.ui:262
+msgid ""
+"Swap left and right delimiter type (while reversing to the appropriate "
+"direction)"
+msgstr "Vymení ľavý a pravý typ oddeľovača (keď sa otáča na vhodný smer) "
+
+#: src/frontends/qt4/ui/DelimiterUi.ui:265
+msgid "S&wap && Reverse"
+msgstr "Vymeniť && Obrátiť"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:268 src/frontends/qt4/ui/SymbolsUi.ui:56
 msgid "Insert the delimiters"
@@ -1437,7 +1443,7 @@ msgstr "Nas&tavenia"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:188
 msgid "The scope to which the search horizon is restricted"
-msgstr "Rozsah v ktorom sa má hľadať"
+msgstr "Oblasť v ktorom sa má hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
 msgid "Scope"
@@ -6921,7 +6927,7 @@ msgstr "Latinsky"
 
 #: lib/layouts/acm-sigs-alt.layout:3
 msgid "ACM SIGS ('Alternate' Style)"
-msgstr "ACM SIGS  ('Alternate' štýl)"
+msgstr "ACM SIGS ('Alternate' štýl)"
 
 #: lib/layouts/acm-sigs.inc:31 lib/layouts/sigplanconf.layout:177
 msgid "Terms"
@@ -11273,7 +11279,7 @@ msgstr "VNÚTORNÁ"
 
 #: lib/layouts/hollywood.layout:114 lib/layouts/hollywood.layout:124
 msgid "EXT."
-msgstr "VONKAJŠIA"
+msgstr "VONKAJŠOK"
 
 #: lib/layouts/hollywood.layout:186
 msgid "Continuing"
@@ -29988,9 +29994,9 @@ msgstr "Register(%1$s)"
 msgid "Index Entry (%1$s)"
 msgstr "Heslo Registra (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1534
+#: src/frontends/qt4/Menus.cpp:1526
 msgid "No Citation in Scope!"
-msgstr "Žiadna citácia nablízku!"
+msgstr "Žiadna Citácia v Oblasti!"
 
 #: src/frontends/qt4/Menus.cpp:1547 src/insets/InsetCitation.cpp:165
 #: src/insets/InsetCitation.cpp:257
@@ -31733,6 +31739,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "&Size:"
+#~ msgstr "&Veľkosť:"
 
 #~ msgid "frame of button"
 #~ msgstr "rám tlačidla"
