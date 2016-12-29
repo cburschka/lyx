@@ -162,6 +162,12 @@ What's new
 - Fix display and output of math macros with optional arguments appearing
   in the optional argument of another macro.
 
+- Do not prematurely cut selected text when inserting a Hyperref (bug 10306).
+
+- Consider the argument of the hyperref-insert function even if there is a
+  selection.
+
+
 * INTERNALS
 
 

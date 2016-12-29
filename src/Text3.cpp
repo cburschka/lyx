@@ -1756,13 +1756,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_HREF_INSERT: {
-		// FIXME If we're actually given an argument, shouldn't
-		// we use it, whether or not we have a selection?
 		docstring content = cmd.argument();
-		if (cur.selection()) {
+		if (content.empty() && cur.selection())
 			content = cur.selectionAsString(false);
-			cutSelection(cur, true, false);
-		}
 
 		InsetCommandParams p(HYPERLINK_CODE);
 		if (!content.empty()){
