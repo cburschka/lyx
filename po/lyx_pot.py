@@ -91,6 +91,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     ListName = re.compile(r'^\s*ListName\s+(.*\S)\s*$', re.IGNORECASE)
     CategoryName = re.compile(r'^\s*Category\s+(.*\S)\s*$', re.IGNORECASE)
     NameRE = re.compile(r'^\s*#\s*\\DeclareLyXModule.*{(.*)}$', re.IGNORECASE)
+    CiteNameRE = re.compile(r'^\s*#\s*\\DeclareLyXCiteEngine.*{(.*)}$', re.IGNORECASE)
     InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?\s*$', re.IGNORECASE)
     FlexCheck = re.compile(r'^Flex:(.*)', re.IGNORECASE)
     CaptionCheck = re.compile(r'^Caption:(.*)', re.IGNORECASE)
@@ -229,6 +230,12 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 readingI18nPreamble = True
                 continue
             res = NameRE.search(line)
+            if res != None:
+                string = res.group(1)
+                if not layouttranslations:
+                    writeString(out, src, base, lineno + 1, string)
+                continue
+            res = CiteNameRE.search(line)
             if res != None:
                 string = res.group(1)
                 if not layouttranslations:

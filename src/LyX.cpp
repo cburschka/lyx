@@ -22,6 +22,7 @@
 #include "Buffer.h"
 #include "BufferList.h"
 #include "CmdDef.h"
+#include "CiteEnginesList.h"
 #include "ColorSet.h"
 #include "ConverterCache.h"
 #include "Converter.h"
@@ -935,8 +936,10 @@ bool LyX::init()
 	LYXERR(Debug::INIT, "Reading layouts...");
 	// Load the layouts
 	LayoutFileList::get().read();
-	//...and the modules
+	//... the modules
 	theModuleList.read();
+	//... and the cite engines
+	theCiteEnginesList.read();
 
 	// read keymap and ui files in batch mode as well
 	// because InsetInfo needs to know these to produce
@@ -1020,7 +1023,8 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 		return configFileNeedsUpdate("lyxrc.defaults")
 			|| configFileNeedsUpdate("lyxmodules.lst")
 			|| configFileNeedsUpdate("textclass.lst")
-			|| configFileNeedsUpdate("packages.lst");
+			|| configFileNeedsUpdate("packages.lst")
+			|| configFileNeedsUpdate("lyxciteengines.lst");
 	}
 
 	first_start = !explicit_userdir;

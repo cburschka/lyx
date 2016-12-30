@@ -1,11 +1,10 @@
-# \DeclareLyXModule[jurabib.sty]{Jurabib}
+# \DeclareLyXCiteEngine[jurabib.sty]{Jurabib}
 # DescriptionBegin
 #   Loads the LaTeX package jurabib, a citation engine. Jurabib supports annotations,
 #   author-year style citations and hyphenation patterns for bibliography entries in
 #   English, German, French, Dutch, Spanish and Italian.
 # DescriptionEnd
 # Excludes: basic | natbib
-# Category: Citation engine
 
 # Author: Julien Rioux <jrioux@lyx.org>
 

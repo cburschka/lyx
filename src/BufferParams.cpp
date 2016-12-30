@@ -2333,6 +2333,7 @@ void BufferParams::makeDocumentClass(bool const clone)
 
 	invalidateConverterCache();
 	LayoutModuleList mods;
+	LayoutModuleList ces;
 	LayoutModuleList::iterator it = layout_modules_.begin();
 	LayoutModuleList::iterator en = layout_modules_.end();
 	for (; it != en; ++it)
@@ -2341,9 +2342,9 @@ void BufferParams::makeDocumentClass(bool const clone)
 	it = cite_engine_.begin();
 	en = cite_engine_.end();
 	for (; it != en; ++it)
-		mods.push_back(*it);
+		ces.push_back(*it);
 
-	doc_class_ = getDocumentClass(*baseClass(), mods, clone);
+	doc_class_ = getDocumentClass(*baseClass(), mods, ces, clone);
 
 	TextClass::ReturnValues success = TextClass::OK;
 	if (!forced_local_layout_.empty())
