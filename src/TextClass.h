@@ -151,6 +151,7 @@ public:
 		BASECLASS, //>This is a base class, i.e., top-level layout file
 		MERGE, //>This is a file included in a layout file
 		MODULE, //>This is a layout module
+		CITE_ENGINE, //>This is a cite engine
 		VALIDATION //>We're just validating
 	};
 	/// return values for read()
@@ -498,6 +499,7 @@ private:
 	/// The only way to make a DocumentClass is to call this function.
 	friend DocumentClassPtr
 		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
+				 LayoutModuleList const &,
 				 bool const clone);
 };
 
@@ -508,6 +510,7 @@ private:
 /// on the CutStack.
 DocumentClassPtr getDocumentClass(LayoutFile const & baseClass,
 			LayoutModuleList const & modlist,
+			LayoutModuleList const & celist,
 			bool const clone = false);
 
 /// convert page sides option to text 1 or 2
