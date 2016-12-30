@@ -2107,7 +2107,6 @@ dist_layouts_DATA =\
 	layouts/arab-article.layout \
 	layouts/article.layout \
 	layouts/article-beamer.layout \
-	layouts/basic.module \
 	layouts/beamer.layout \
 	layouts/beamerposter.layout \
 	layouts/bicaption.module \
@@ -2185,7 +2184,6 @@ dist_layouts_DATA =\
 	layouts/jsarticle.layout \
 	layouts/jsbook.layout \
 	layouts/jss.layout \
-	layouts/jurabib.module \
 	layouts/kluwer.layout \
 	layouts/knitr.module \
 	layouts/latex8.layout \
@@ -2205,7 +2203,6 @@ dist_layouts_DATA =\
 	layouts/mwart.layout \
 	layouts/mwbk.layout \
 	layouts/mwrep.layout \
-	layouts/natbib.module \
 	layouts/natbibapa.module \
 	layouts/noweb.module \
 	layouts/numarticle.inc \
@@ -2301,6 +2298,12 @@ dist_layouts_DATA =\
 	layouts/tufte-book.layout \
 	layouts/tufte-handout.layout \
 	layouts/varwidth.module
+
+citeenginesdir = $(pkgdatadir)/citeengines
+dist_citeengines_DATA = \
+	citeengines/basic.citeengine \
+        citeengines/jurabib.citeengine \
+        citeengines/natbib.citeengine
 
 scriptsdir = $(pkgdatadir)/scripts
 dist_scripts_DATA = \

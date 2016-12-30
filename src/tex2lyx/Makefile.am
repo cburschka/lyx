@@ -83,6 +83,7 @@ updatetests: tex2lyx
 
 LINKED_FILES = \
 	../Author.cpp \
+	../CiteEnginesList.cpp \
 	../Color.cpp \
 	../Counters.cpp \
 	../Encoding.cpp \

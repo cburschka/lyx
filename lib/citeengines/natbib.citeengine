@@ -1,4 +1,4 @@
-# \DeclareLyXModule[natbib.sty]{Natbib}
+# \DeclareLyXCiteEngine[natbib.sty]{Natbib}
 # DescriptionBegin
 #   Loads the LaTeX package natbib, a citation engine. Natbib supports
 #   both author-year and numerical styles for citations, automatic sorting
@@ -6,7 +6,6 @@
 #   `van' part of author names, shortened and full author lists, and more.
 # DescriptionEnd
 # Excludes: basic | jurabib
-# Category: Citation engine
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
