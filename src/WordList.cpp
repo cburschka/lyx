@@ -16,6 +16,7 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lassert.h"
+#include "support/unique_ptr.h"
 #include "support/weighted_btree.h"
 
 #include <QThreadStorage>
@@ -27,7 +28,7 @@ using namespace std;
 namespace lyx {
 
 ///
-typedef map<string, WordList *> GlobalWordList;
+typedef map<string, unique_ptr<WordList>> GlobalWordList;
 // Each thread uses its own word list, but only the one of the GUI thread is
 // used to do real work. The others are only neded to prevent simultanous
 // write access e.g. from a cloned buffer and a true document buffer.
@@ -38,27 +39,12 @@ WordList & theWordList(string const & lang)
 {
 	if (!theGlobalWordList.hasLocalData())
 		theGlobalWordList.setLocalData(new GlobalWordList);
-	GlobalWordList * globalWordList = theGlobalWordList.localData();
-	GlobalWordList::iterator it = globalWordList->find(lang);
-	if (it != globalWordList->end())
+	GlobalWordList & globalWordList = *theGlobalWordList.localData();
+	GlobalWordList::iterator it = globalWordList.find(lang);
+	if (it != globalWordList.end())
 		return *it->second;
-	else {
-		WordList * wl = new WordList;
-		(*globalWordList)[lang] = wl;
-		return *wl;
-	}
-}
-
-
-void WordList::cleanupWordLists()
-{
-	if (!theGlobalWordList.hasLocalData())
-		return;
-	GlobalWordList * globalWordList = theGlobalWordList.localData();
-	GlobalWordList::const_iterator it = globalWordList->begin();
-	for (; it != globalWordList->end(); ++it)
-		delete it->second;
-	globalWordList->clear();
+	else
+		return *(globalWordList[lang] = make_unique<WordList>());
 }
 
 
@@ -73,7 +59,7 @@ struct WordList::Impl {
 };
 
 
-WordList::WordList() : d(new Impl)
+WordList::WordList() : d(make_unique<Impl>())
 {
 	d->c_ = 0;
 

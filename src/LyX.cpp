@@ -234,7 +234,6 @@ LyX::~LyX()
 {
 	delete pimpl_;
 	singleton_ = 0;
-	WordList::cleanupWordLists();
 }
 
 
