@@ -75,6 +75,8 @@ public:
 	void updateFontsize(std::string const &, std::string const &);
 	void updateFontlist();
 	void updateDefaultFormat();
+	void updateCiteStyles(std::vector<std::string> const &,
+			      CiteEngineType const & sel = ENGINE_TYPE_AUTHORYEAR);
 	void updateEngineType(std::string const &, CiteEngineType const &);
 	void updatePagestyle(std::string const &, std::string const &);
 	bool isChildIncluded(std::string const &);
@@ -113,6 +115,7 @@ private Q_SLOTS:
 	void classChanged_adaptor();
 	void languagePackageChanged(int);
 	void biblioChanged();
+	void citeEngineChanged(int);
 	void bibtexChanged(int);
 	void setAuthorYear(bool);
 	void setNumerical(bool);
