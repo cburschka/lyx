@@ -29,6 +29,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "CiteEnginesList.h"
 #include "Color.h"
 #include "ColorCache.h"
 #include "Converter.h"
@@ -1126,21 +1127,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	// biblio
 	biblioModule = new UiWidget<Ui::BiblioUi>;
-	connect(biblioModule->citeDefaultRB, SIGNAL(toggled(bool)),
-		this, SLOT(setNumerical(bool)));
-	connect(biblioModule->citeJurabibRB, SIGNAL(toggled(bool)),
-		this, SLOT(setAuthorYear(bool)));
-	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
-		biblioModule->citationStyleL, SLOT(setEnabled(bool)));
-	connect(biblioModule->citeNatbibRB, SIGNAL(toggled(bool)),
-		biblioModule->citeStyleCO, SLOT(setEnabled(bool)));
-	connect(biblioModule->citeDefaultRB, SIGNAL(clicked()),
-		this, SLOT(biblioChanged()));
-	connect(biblioModule->citeNatbibRB, SIGNAL(clicked()),
-		this, SLOT(biblioChanged()));
+	connect(biblioModule->citeEngineCO, SIGNAL(activated(int)),
+		this, SLOT(citeEngineChanged(int)));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
-		this, SLOT(biblioChanged()));
-	connect(biblioModule->citeJurabibRB, SIGNAL(clicked()),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
 		this, SLOT(biblioChanged()));
@@ -1151,14 +1140,18 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(biblioModule->bibtexStyleLE, SIGNAL(textChanged(QString)),
 		this, SLOT(biblioChanged()));
 
+	biblioModule->citeEngineCO->clear();
+	for (LyXCiteEngine const & cet : theCiteEnginesList) {
+		biblioModule->citeEngineCO->addItem(qt_(cet.getName()), toqstr(cet.getID()));
+		int const i = biblioModule->citeEngineCO->findData(toqstr(cet.getID()));
+		biblioModule->citeEngineCO->setItemData(i, qt_(cet.getDescription()),
+							Qt::ToolTipRole);
+	}
+
 	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
 		biblioModule->bibtexOptionsLE));
 	biblioModule->bibtexStyleLE->setValidator(new NoNewLineValidator(
 		biblioModule->bibtexStyleLE));
-
-	biblioModule->citeStyleCO->addItem(qt_("Author-year"));
-	biblioModule->citeStyleCO->addItem(qt_("Numerical"));
-	biblioModule->citeStyleCO->setCurrentIndex(0);
 
 	// NOTE: we do not provide "custom" here for security reasons!
 	biblioModule->bibtexCO->clear();
@@ -2278,6 +2271,19 @@ void GuiDocument::biblioChanged()
 }
 
 
+void GuiDocument::citeEngineChanged(int n)
+{
+	QString const engine = biblioModule->citeEngineCO->itemData(n).toString();
+
+	vector<string> const engs =
+		theCiteEnginesList[fromqstr(engine)]->getEngineType();
+
+	updateCiteStyles(engs);
+
+	biblioChanged();
+}
+
+
 void GuiDocument::bibtexChanged(int n)
 {
 	biblioModule->bibtexOptionsLE->setEnabled(
@@ -2289,7 +2295,8 @@ void GuiDocument::bibtexChanged(int n)
 void GuiDocument::setAuthorYear(bool authoryear)
 {
 	if (authoryear)
-		biblioModule->citeStyleCO->setCurrentIndex(0);
+		biblioModule->citeStyleCO->setCurrentIndex(
+			biblioModule->citeStyleCO->findData(ENGINE_TYPE_AUTHORYEAR));
 	biblioChanged();
 }
 
@@ -2297,8 +2304,36 @@ void GuiDocument::setAuthorYear(bool authoryear)
 void GuiDocument::setNumerical(bool numerical)
 {
 	if (numerical)
-		biblioModule->citeStyleCO->setCurrentIndex(1);
+		biblioModule->citeStyleCO->setCurrentIndex(
+			biblioModule->citeStyleCO->findData(ENGINE_TYPE_NUMERICAL));
 	biblioChanged();
+}
+
+
+void GuiDocument::updateCiteStyles(vector<string> const & engs, CiteEngineType const & sel)
+{
+	biblioModule->citeStyleCO->clear();
+
+	vector<string>::const_iterator it  = engs.begin();
+	vector<string>::const_iterator end = engs.end();
+	for (; it != end; ++it) {
+		if (*it == "default")
+			biblioModule->citeStyleCO->addItem(qt_("Basic numerical"),
+							   ENGINE_TYPE_DEFAULT);
+		else if (*it == "authoryear")
+			biblioModule->citeStyleCO->addItem(qt_("Author-year"),
+							   ENGINE_TYPE_AUTHORYEAR);
+		else if (*it == "numerical")
+			biblioModule->citeStyleCO->addItem(qt_("Author-number"),
+							   ENGINE_TYPE_NUMERICAL);
+	}
+	int i = biblioModule->citeStyleCO->findData(sel);
+	if (biblioModule->citeStyleCO->findData(sel) == -1)
+		i = 0;
+	biblioModule->citeStyleCO->setCurrentIndex(i);
+
+	biblioModule->citationStyleL->setEnabled(engs.size() > 1);
+	biblioModule->citeStyleCO->setEnabled(engs.size() > 1);
 }
 
 
@@ -2314,28 +2349,7 @@ void GuiDocument::updateEngineType(string const & items, CiteEngineType const & 
 		engine_types_.push_back(style);
 	}
 
-	switch (sel) {
-		case ENGINE_TYPE_AUTHORYEAR:
-			biblioModule->citeStyleCO->setCurrentIndex(0);
-			break;
-		case ENGINE_TYPE_NUMERICAL:
-		case ENGINE_TYPE_DEFAULT:
-			biblioModule->citeStyleCO->setCurrentIndex(1);
-			break;
-	}
-
-	biblioModule->citationStyleL->setEnabled(nn > 1);
-	biblioModule->citeStyleCO->setEnabled(nn > 1);
-
-	if (nn != 1)
-		return;
-
-	// If the textclass allows only one of authoryear or numerical,
-	// we have no choice but to force that engine type.
-	if (engine_types_[0] == "authoryear")
-		biblioModule->citeStyleCO->setCurrentIndex(0);
-	else
-		biblioModule->citeStyleCO->setCurrentIndex(1);
+	updateCiteStyles(engine_types_, sel);
 }
 
 
@@ -2588,19 +2602,17 @@ void GuiDocument::applyView()
 	bp_.use_refstyle  = latexModule->refstyleCB->isChecked();
 
 	// biblio
-	if (biblioModule->citeNatbibRB->isChecked())
-		bp_.setCiteEngine("natbib");
-	else if (biblioModule->citeJurabibRB->isChecked())
-		bp_.setCiteEngine("jurabib");
-	if (biblioModule->citeDefaultRB->isChecked()) {
-		bp_.setCiteEngine("basic");
+	string const engine =
+		fromqstr(biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString());
+	bp_.setCiteEngine(engine);
+
+	CiteEngineType const style = CiteEngineType(biblioModule->citeStyleCO->itemData(
+		biblioModule->citeStyleCO->currentIndex()).toInt());
+	if (theCiteEnginesList[engine]->hasEngineType(style))
+		bp_.setCiteEngineType(style);
+	else
 		bp_.setCiteEngineType(ENGINE_TYPE_DEFAULT);
-	}
-	else
-	if (biblioModule->citeStyleCO->currentIndex())
-		bp_.setCiteEngineType(ENGINE_TYPE_NUMERICAL);
-	else
-		bp_.setCiteEngineType(ENGINE_TYPE_AUTHORYEAR);
 
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
@@ -3016,20 +3028,14 @@ void GuiDocument::paramsToDialog()
 	// biblio
 	string const cite_engine = bp_.citeEngine().list().front();
 
-	biblioModule->citeDefaultRB->setChecked(
-		cite_engine == "basic");
-
-	biblioModule->citeJurabibRB->setChecked(
-		cite_engine == "jurabib");
-
-	biblioModule->citeNatbibRB->setChecked(
-		cite_engine == "natbib");
-
-	biblioModule->citeStyleCO->setCurrentIndex(
-		bp_.citeEngineType() & ENGINE_TYPE_NUMERICAL);
+	biblioModule->citeEngineCO->setCurrentIndex(
+		biblioModule->citeEngineCO->findData(toqstr(cite_engine)));
 
 	updateEngineType(documentClass().opt_enginetype(),
 		bp_.citeEngineType());
+
+	biblioModule->citeStyleCO->setCurrentIndex(
+		biblioModule->citeStyleCO->findData(bp_.citeEngineType()));
 
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);

@@ -14,6 +14,7 @@
 
 #include "CiteEnginesList.h"
 
+#include "Citation.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
 
@@ -22,6 +23,7 @@
 #include "support/gettext.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/Translator.h"
 
 #include <algorithm>
 
@@ -76,6 +78,13 @@ bool LyXCiteEngine::isAvailable() const
 }
 
 
+bool LyXCiteEngine::hasEngineType(CiteEngineType const & et) const
+{
+	return std::find(engine_types_.begin(), engine_types_.end(),
+			 theCiteEnginesList.getTypeAsString(et)) != engine_types_.end();
+}
+
+
 bool LyXCiteEngine::isCompatible(string const & cename) const
 {
 	// do we exclude it?
@@ -117,6 +126,43 @@ public:
 		return _(ce1.getName()) < _(ce2.getName());
 	}
 };
+
+
+// Local translators
+namespace {
+
+typedef Translator<string, CiteEngineType> CiteEngineTypeTranslator;
+
+
+CiteEngineTypeTranslator const init_citeenginetypetranslator()
+{
+	CiteEngineTypeTranslator translator("authoryear", ENGINE_TYPE_AUTHORYEAR);
+	translator.addPair("numerical", ENGINE_TYPE_NUMERICAL);
+	translator.addPair("default", ENGINE_TYPE_DEFAULT);
+	return translator;
+}
+
+
+CiteEngineTypeTranslator const & citeenginetypetranslator()
+{
+	static CiteEngineTypeTranslator const translator =
+		init_citeenginetypetranslator();
+	return translator;
+}
+
+} // namespace anon
+
+
+string CiteEnginesList::getTypeAsString(CiteEngineType const & et) const
+{
+	return citeenginetypetranslator().find(et);
+}
+
+
+CiteEngineType CiteEnginesList::getType(string const & et) const
+{
+	return citeenginetypetranslator().find(et);
+}
 
 
 // Much of this is borrowed from LayoutFileList::read()

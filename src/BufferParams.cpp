@@ -23,6 +23,7 @@
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "Bullet.h"
+#include "CiteEnginesList.h"
 #include "Color.h"
 #include "ColorSet.h"
 #include "Converter.h"
@@ -268,27 +269,6 @@ PackageTranslator const & packagetranslator()
 {
 	static PackageTranslator const translator =
 		init_packagetranslator();
-	return translator;
-}
-
-
-// Cite engine
-typedef Translator<string, CiteEngineType> CiteEngineTypeTranslator;
-
-
-CiteEngineTypeTranslator const init_citeenginetypetranslator()
-{
-	CiteEngineTypeTranslator translator("authoryear", ENGINE_TYPE_AUTHORYEAR);
-	translator.addPair("numerical", ENGINE_TYPE_NUMERICAL);
-	translator.addPair("default", ENGINE_TYPE_DEFAULT);
-	return translator;
-}
-
-
-CiteEngineTypeTranslator const & citeenginetypetranslator()
-{
-	static CiteEngineTypeTranslator const translator =
-		init_citeenginetypetranslator();
 	return translator;
 }
 
@@ -863,7 +843,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\cite_engine_type") {
 		string engine_type;
 		lex >> engine_type;
-		cite_engine_type_ = citeenginetypetranslator().find(engine_type);
+		cite_engine_type_ = theCiteEnginesList.getType(engine_type);
 	} else if (token == "\\biblio_style") {
 		lex.eatLine();
 		biblio_style = lex.getString();
@@ -1234,7 +1214,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "basic";
 	}
 
-	os << "\n\\cite_engine_type " << citeenginetypetranslator().find(cite_engine_type_)
+	os << "\n\\cite_engine_type " << theCiteEnginesList.getTypeAsString(cite_engine_type_)
 	   << "\n\\biblio_style " << biblio_style
 	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
