@@ -1652,6 +1652,10 @@ void GuiView::updateTocItem(string const & type, DocIterator const & dit)
 
 void GuiView::structureChanged()
 {
+	// This is called from the Buffer, which has no way to ensure that cursors
+	// in BufferView remain valid.
+	if (documentBufferView())
+		documentBufferView()->cursor().sanitize();
 	// FIXME: This is slightly expensive, though less than the tocBackend update
 	// (#9880). This also resets the view in the Toc Widget (#6675).
 	d.toc_models_.reset(documentBufferView());
