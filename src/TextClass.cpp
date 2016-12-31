@@ -221,6 +221,7 @@ enum TextClassTags {
 	TC_CITEENGINE,
 	TC_CITEENGINETYPE,
 	TC_CITEFORMAT,
+	TC_CITEFRAMEWORK,
 	TC_DEFAULTBIBLIO,
 	TC_FULLAUTHORLIST,
 	TC_OUTLINERNAME
@@ -236,6 +237,7 @@ LexerKeyword textClassTags[] = {
 	{ "citeengine",        TC_CITEENGINE },
 	{ "citeenginetype",    TC_CITEENGINETYPE },
 	{ "citeformat",        TC_CITEFORMAT },
+	{ "citeframework",     TC_CITEFRAMEWORK },
 	{ "classoptions",      TC_CLASSOPTIONS },
 	{ "columns",           TC_COLUMNS },
 	{ "counter",           TC_COUNTER },
@@ -756,6 +758,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_CITEFORMAT:
 			error = !readCiteFormat(lexrc);
+			break;
+
+		case TC_CITEFRAMEWORK:
+			lexrc.next();
+			citeframework_ = rtrim(lexrc.getString());
 			break;
 
 		case TC_DEFAULTBIBLIO:

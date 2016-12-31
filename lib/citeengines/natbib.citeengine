@@ -5,7 +5,7 @@
 #   numerical citations, annotations, capitalization of the `van' part of 
 #   author names, shortened and full author lists, and more.
 # DescriptionEnd
-# Excludes: basic | jurabib
+# Excludes: basic | jurabib | biblatex
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
@@ -13,6 +13,7 @@ Format 62
 
 Requires natbib
 
+CiteFramework bibtex
 CiteEngineType authoryear|numerical
 DefaultBiblio  authoryear:plainnat|numerical:plainnat
 

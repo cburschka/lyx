@@ -258,6 +258,8 @@ protected:
 	mutable std::string prerequisites_;
 	/// The possible cite engine types
 	std::string opt_enginetype_;
+	/// The cite framework (bibtex, biblatex)
+	std::string citeframework_;
 	///
 	std::string opt_fontsize_;
 	///
@@ -420,6 +422,8 @@ public:
 	Counters & counters() const { return counters_; }
 	///
 	std::string const & opt_enginetype() const { return opt_enginetype_; }
+	///
+	std::string const & citeFramework() const { return citeframework_; }
 	///
 	std::string const & opt_fontsize() const { return opt_fontsize_; }
 	///
