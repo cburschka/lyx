@@ -138,10 +138,15 @@ string LyXCiteEngine::getDefaultBiblio(CiteEngineType const & cet) const
 
 bool LyXCiteEngine::isDefaultBiblio(string const & bf) const
 {
-	if (find(default_biblios_.begin(), default_biblios_.end(), bf) != default_biblios_.end())
-		return true;
-	string const bfp = ":" + bf;
-	return find(default_biblios_.begin(), default_biblios_.end(), bfp) != default_biblios_.end();
+	string const bfs = ":" + bf;
+	vector<string>::const_iterator it  = default_biblios_.begin();
+	vector<string>::const_iterator end = default_biblios_.end();
+	for (; it != end; ++it) {
+		string const s = *it;
+		if (suffixIs(s, bfs) || bf == s)
+			return true;
+	}
+	return false;
 }
 
 
