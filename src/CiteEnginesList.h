@@ -51,6 +51,7 @@ public:
 	///
 	LyXCiteEngine(std::string const & name, std::string const & id,
 		      std::vector<std::string> const & enginetypes,
+		      std::string const & cfm,
 		      std::vector<std::string> const & defaultbiblios,
 		      std::string const & description,
 		      std::vector<std::string> const & packagelist,
@@ -66,6 +67,8 @@ public:
 	std::string const & getID() const { return id_; }
 	///
 	std::string const & getFilename() const { return filename_; }
+	///
+	std::string const & getCiteFramework() const { return cite_framework_; }
 	///
 	std::vector<std::string> const & getEngineType() const { return engine_types_; }
 	///
@@ -102,6 +105,8 @@ private:
 	std::string filename_;
 	/// the engine type(s)
 	std::vector<std::string> engine_types_;
+	/// cite framework (bibtex, biblatex)
+	std::string cite_framework_;
 	/// default bibliography styles
 	std::vector<std::string> default_biblios_;
 	/// a short description for use in the ui
@@ -160,9 +165,10 @@ public:
 	void operator=(CiteEnginesList const &);
 	/// add an engine to the list
 	void addCiteEngine(std::string const &, std::string const &,
+		std::vector<std::string> const &, std::string const &,
+		std::vector<std::string> const &, std::string const &,
 		std::vector<std::string> const &, std::vector<std::string> const &,
-		std::string const &, std::vector<std::string> const &,
-		std::vector<std::string> const &, std::vector<std::string> const &);
+		std::vector<std::string> const &);
 	///
 	std::vector<LyXCiteEngine> englist_;
 };

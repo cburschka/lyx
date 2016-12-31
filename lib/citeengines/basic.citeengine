@@ -3,12 +3,13 @@
 #   The basic citation capabilities provided by BibTeX.
 #   Mainly simple numeric styles primarily suitable for science and maths.
 # DescriptionEnd
-# Excludes: jurabib | natbib
+# Excludes: jurabib | natbib | biblatex
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
 Format 62
 
+CiteFramework bibtex
 CiteEngineType default
 DefaultBiblio  plain
 
