@@ -3705,11 +3705,11 @@ void Paragraph::deregisterWords()
 	Private::LangWordsMap::const_iterator itl = d->words_.begin();
 	Private::LangWordsMap::const_iterator ite = d->words_.end();
 	for (; itl != ite; ++itl) {
-		WordList * wl = theWordList(itl->first);
+		WordList & wl = theWordList(itl->first);
 		Private::Words::const_iterator it = (itl->second).begin();
 		Private::Words::const_iterator et = (itl->second).end();
 		for (; it != et; ++it)
-			wl->remove(*it);
+			wl.remove(*it);
 	}
 	d->words_.clear();
 }
@@ -3785,11 +3785,11 @@ void Paragraph::registerWords()
 	Private::LangWordsMap::const_iterator itl = d->words_.begin();
 	Private::LangWordsMap::const_iterator ite = d->words_.end();
 	for (; itl != ite; ++itl) {
-		WordList * wl = theWordList(itl->first);
+		WordList & wl = theWordList(itl->first);
 		Private::Words::const_iterator it = (itl->second).begin();
 		Private::Words::const_iterator et = (itl->second).end();
 		for (; it != et; ++it)
-			wl->insert(*it);
+			wl.insert(*it);
 	}
 }
 

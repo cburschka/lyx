@@ -34,18 +34,18 @@ typedef map<string, WordList *> GlobalWordList;
 QThreadStorage<GlobalWordList *> theGlobalWordList;
 
 
-WordList * theWordList(string const & lang)
+WordList & theWordList(string const & lang)
 {
 	if (!theGlobalWordList.hasLocalData())
 		theGlobalWordList.setLocalData(new GlobalWordList);
 	GlobalWordList * globalWordList = theGlobalWordList.localData();
 	GlobalWordList::iterator it = globalWordList->find(lang);
 	if (it != globalWordList->end())
-		return it->second;
+		return *it->second;
 	else {
 		WordList * wl = new WordList;
 		(*globalWordList)[lang] = wl;
-		return wl;
+		return *wl;
 	}
 }
 

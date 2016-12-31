@@ -38,7 +38,7 @@ private:
 	std::unique_ptr<Impl> d;
 };
 
-WordList * theWordList(std::string const & lang);
+WordList & theWordList(std::string const & lang);
 
 } // namespace lyx
 
