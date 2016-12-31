@@ -38,11 +38,11 @@ CiteEnginesList theCiteEnginesList;
 
 
 LyXCiteEngine::LyXCiteEngine(string const & n, string const & i,
-			     vector<string> const & cet, string const & d,
-			     vector<string> const & p,
+			     vector<string> const & cet, vector<string> const & dbs,
+			     string const & d, vector<string> const & p,
 			     vector<string> const & r, vector<string> const & e):
-	name_(n), id_(i), engine_types_(cet), description_(d), package_list_(p),
-	required_engines_(r), excluded_engines_(e),
+	name_(n), id_(i), engine_types_(cet), default_biblios_(dbs), description_(d),
+	package_list_(p), required_engines_(r), excluded_engines_(e),
 	checked_(false), available_(false)
 {
 	filename_ = id_ + ".citeengine";
@@ -115,6 +115,33 @@ bool LyXCiteEngine::areCompatible(string const & eng1, string const & eng2)
 		return lm2->isCompatible(eng1);
 	// Can't check it either way.
 	return true;
+}
+
+
+string LyXCiteEngine::getDefaultBiblio(CiteEngineType const & cet) const
+{
+	string res;
+	string const etp = theCiteEnginesList.getTypeAsString(cet) + ":";
+	//check whether all of the required packages are available
+	vector<string>::const_iterator it  = default_biblios_.begin();
+	vector<string>::const_iterator end = default_biblios_.end();
+	for (; it != end; ++it) {
+		string const s = *it;
+		if (prefixIs(s, etp))
+			res = split(s, ':');
+		else if (!contains(s, ':') && res.empty())
+			res = s;
+	}
+	return res;
+}
+
+
+bool LyXCiteEngine::isDefaultBiblio(string const & bf) const
+{
+	if (find(default_biblios_.begin(), default_biblios_.end(), bf) != default_biblios_.end())
+		return true;
+	string const bfp = ":" + bf;
+	return find(default_biblios_.begin(), default_biblios_.end(), bfp) != default_biblios_.end();
 }
 
 
@@ -219,6 +246,16 @@ bool CiteEnginesList::read()
 			}
 			if (!lex.next(true))
 				break;
+			string db = lex.getString();
+			LYXERR(Debug::TCLASS, "Default Biblio: " << db);
+			vector<string> dbs;
+			while (!db.empty()) {
+				string p;
+				db = split(db, p, '|');
+				dbs.push_back(p);
+			}
+			if (!lex.next(true))
+				break;
 			string const desc = lex.getString();
 			LYXERR(Debug::TCLASS, "Description: " << desc);
 			//FIXME Add packages
@@ -254,7 +291,7 @@ bool CiteEnginesList::read()
 			}
 			// This code is run when we have
 			// cename, fname, desc, pkgs, req and exc
-			addCiteEngine(cename, fname, cets, desc, pkgs, req, exc);
+			addCiteEngine(cename, fname, cets, dbs, desc, pkgs, req, exc);
 		} // end switch
 	} //end while
 
@@ -267,11 +304,12 @@ bool CiteEnginesList::read()
 
 
 void CiteEnginesList::addCiteEngine(string const & cename,
-	string const & filename, vector<string> const & cets, string const & description,
+	string const & filename, vector<string> const & cets,
+	vector<string> const & dbs, string const & description,
 	vector<string> const & pkgs, vector<string> const & req,
 	vector<string> const & exc)
 {
-	LyXCiteEngine ce(cename, filename, cets, description, pkgs, req, exc);
+	LyXCiteEngine ce(cename, filename, cets, dbs, description, pkgs, req, exc);
 	englist_.push_back(ce);
 }
 

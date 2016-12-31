@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>418</width>
+    <width>475</width>
     <height>394</height>
    </rect>
   </property>
@@ -46,7 +46,7 @@
            <string/>
           </property>
           <property name="text">
-           <string>Sty&amp;le Engine:</string>
+           <string>Sty&amp;le engine:</string>
           </property>
           <property name="buddy">
            <cstring>citeEngineCO</cstring>
@@ -116,27 +116,6 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout_1">
-      <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_1">
-        <item>
-         <widget class="QLabel" name="bibtexStyleLA">
-          <property name="text">
-           <string>Default st&amp;yle:</string>
-          </property>
-          <property name="buddy">
-           <cstring>bibtexStyleLE</cstring>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="bibtexStyleLE">
-          <property name="toolTip">
-           <string>Define the default BibTeX style</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="1" column="0">
        <widget class="QCheckBox" name="bibtopicCB">
         <property name="toolTip">
@@ -146,6 +125,63 @@
          <string>S&amp;ectioned bibliography</string>
         </property>
        </widget>
+      </item>
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_1">
+        <item>
+         <widget class="QLabel" name="bibtexStyleLA">
+          <property name="text">
+           <string>Default BibTeX st&amp;yle:</string>
+          </property>
+          <property name="buddy">
+           <cstring>defaultBiblioCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="defaultBiblioCO">
+          <property name="toolTip">
+           <string>Here, you can define a BibTeX style that is suggested in the BibTeX dialog by default</string>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="rescanBibliosPB">
+          <property name="toolTip">
+           <string>Rescan style files</string>
+          </property>
+          <property name="text">
+           <string>Re&amp;scan</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resetDefaultBiblioPB">
+          <property name="toolTip">
+           <string>Reset to the preset default</string>
+          </property>
+          <property name="text">
+           <string>&amp;Reset</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

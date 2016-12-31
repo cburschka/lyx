@@ -328,7 +328,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (style == "default")
-		style = buffer().params().biblio_style;
+		style = buffer().params().defaultBiblioStyle();
 
 	if (!style.empty() && !buffer().params().use_bibtopic) {
 		string base = normalizeName(buffer(), runparams, style, ".bst");

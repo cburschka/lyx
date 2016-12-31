@@ -1130,15 +1130,23 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(biblioModule->citeEngineCO, SIGNAL(activated(int)),
 		this, SLOT(citeEngineChanged(int)));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
-		this, SLOT(biblioChanged()));
+		this, SLOT(citeStyleChanged()));
 	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtexCO, SIGNAL(activated(int)),
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(biblioChanged()));
-	connect(biblioModule->bibtexStyleLE, SIGNAL(textChanged(QString)),
+	connect(biblioModule->defaultBiblioCO, SIGNAL(activated(int)),
 		this, SLOT(biblioChanged()));
+	connect(biblioModule->defaultBiblioCO, SIGNAL(editTextChanged(QString)),
+		this, SLOT(biblioChanged()));
+	connect(biblioModule->defaultBiblioCO, SIGNAL(editTextChanged(QString)),
+		this, SLOT(updateResetDefaultBiblio()));
+	connect(biblioModule->rescanBibliosPB, SIGNAL(clicked()),
+		this, SLOT(rescanBibFiles()));
+	connect(biblioModule->resetDefaultBiblioPB, SIGNAL(clicked()),
+		this, SLOT(resetDefaultBibfile()));
 
 	biblioModule->citeEngineCO->clear();
 	for (LyXCiteEngine const & cet : theCiteEnginesList) {
@@ -1150,8 +1158,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	biblioModule->bibtexOptionsLE->setValidator(new NoNewLineValidator(
 		biblioModule->bibtexOptionsLE));
-	biblioModule->bibtexStyleLE->setValidator(new NoNewLineValidator(
-		biblioModule->bibtexStyleLE));
+	biblioModule->defaultBiblioCO->lineEdit()->setValidator(new NoNewLineValidator(
+		biblioModule->defaultBiblioCO->lineEdit()));
 
 	// NOTE: we do not provide "custom" here for security reasons!
 	biblioModule->bibtexCO->clear();
@@ -2271,14 +2279,49 @@ void GuiDocument::biblioChanged()
 }
 
 
+void GuiDocument::rescanBibFiles()
+{
+	rescanTexStyles("bst");
+}
+
+
+void GuiDocument::resetDefaultBibfile()
+{
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+
+	CiteEngineType const cet =
+		CiteEngineType(biblioModule->citeStyleCO->itemData(
+							  biblioModule->citeStyleCO->currentIndex()).toInt());
+
+	updateDefaultBiblio(theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet));
+}
+
+
 void GuiDocument::citeEngineChanged(int n)
 {
-	QString const engine = biblioModule->citeEngineCO->itemData(n).toString();
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(n).toString();
 
 	vector<string> const engs =
 		theCiteEnginesList[fromqstr(engine)]->getEngineType();
 
 	updateCiteStyles(engs);
+	resetDefaultBibfile();
+
+	biblioChanged();
+}
+
+
+void GuiDocument::citeStyleChanged()
+{
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+	if (theCiteEnginesList[fromqstr(engine)]->isDefaultBiblio(
+				fromqstr(biblioModule->defaultBiblioCO->currentText())))
+		resetDefaultBibfile();
 
 	biblioChanged();
 }
@@ -2288,24 +2331,6 @@ void GuiDocument::bibtexChanged(int n)
 {
 	biblioModule->bibtexOptionsLE->setEnabled(
 		biblioModule->bibtexCO->itemData(n).toString() != "default");
-	biblioChanged();
-}
-
-
-void GuiDocument::setAuthorYear(bool authoryear)
-{
-	if (authoryear)
-		biblioModule->citeStyleCO->setCurrentIndex(
-			biblioModule->citeStyleCO->findData(ENGINE_TYPE_AUTHORYEAR));
-	biblioChanged();
-}
-
-
-void GuiDocument::setNumerical(bool numerical)
-{
-	if (numerical)
-		biblioModule->citeStyleCO->setCurrentIndex(
-			biblioModule->citeStyleCO->findData(ENGINE_TYPE_NUMERICAL));
 	biblioChanged();
 }
 
@@ -2617,7 +2642,7 @@ void GuiDocument::applyView()
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
 
-	bp_.biblio_style = fromqstr(biblioModule->bibtexStyleLE->text());
+	bp_.biblio_style = fromqstr(biblioModule->defaultBiblioCO->currentText());
 
 	string const bibtex_command =
 		fromqstr(biblioModule->bibtexCO->itemData(
@@ -3040,7 +3065,7 @@ void GuiDocument::paramsToDialog()
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);
 
-	biblioModule->bibtexStyleLE->setText(toqstr(bp_.biblio_style));
+	updateDefaultBiblio(bp_.defaultBiblioStyle());
 
 	string command;
 	string options =
@@ -3623,6 +3648,59 @@ void GuiDocument::updateIncludeonlys()
 	// If all are included, we need to update again.
 	if (!has_unincluded)
 		updateIncludeonlys();
+}
+
+
+void GuiDocument::updateDefaultBiblio(string const & style)
+{
+	QString const bibstyle = toqstr(style);
+	biblioModule->defaultBiblioCO->clear();
+
+	int item_nr = -1;
+
+	QStringList str = texFileList("bstFiles.lst");
+	// test whether we have a valid list, otherwise run rescan
+	if (str.isEmpty()) {
+		rescanTexStyles("bst");
+		str = texFileList("bstFiles.lst");
+	}
+	for (int i = 0; i != str.size(); ++i)
+		str[i] = onlyFileName(str[i]);
+	// sort on filename only (no path)
+	str.sort();
+
+	for (int i = 0; i != str.count(); ++i) {
+		QString item = changeExtension(str[i], "");
+		if (item == bibstyle)
+			item_nr = i;
+		biblioModule->defaultBiblioCO->addItem(item);
+	}
+
+	if (item_nr == -1 && !bibstyle.isEmpty()) {
+		biblioModule->defaultBiblioCO->addItem(bibstyle);
+		item_nr = biblioModule->defaultBiblioCO->count() - 1;
+	}
+
+	if (item_nr != -1)
+		biblioModule->defaultBiblioCO->setCurrentIndex(item_nr);
+	else
+		biblioModule->defaultBiblioCO->clearEditText();
+
+	updateResetDefaultBiblio();
+}
+
+
+void GuiDocument::updateResetDefaultBiblio()
+{
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+	CiteEngineType const cet =
+		CiteEngineType(biblioModule->citeStyleCO->itemData(
+							  biblioModule->citeStyleCO->currentIndex()).toInt());
+	biblioModule->resetDefaultBiblioPB->setEnabled(
+		theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet)
+			!= fromqstr(biblioModule->defaultBiblioCO->currentText()));
 }
 
 
