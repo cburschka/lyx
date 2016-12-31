@@ -33,17 +33,12 @@ namespace lyx {
 namespace frontend {
 
 GuiToc::GuiToc(GuiView & parent, Qt::DockWidgetArea area, Qt::WindowFlags flags)
-	: DockView(parent, "toc", qt_("Outline"), area, flags), is_closing_(false)
+	: DockView(parent, "toc", qt_("Outline"), area, flags),
+	  widget_(new TocWidget(parent, this)),
+	  is_closing_(false)
 {
-	widget_ = new TocWidget(parent, this);
 	setWidget(widget_);
 	setFocusProxy(widget_);
-}
-
-
-GuiToc::~GuiToc()
-{
-	delete widget_;
 }
 
 

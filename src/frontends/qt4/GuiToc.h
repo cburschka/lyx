@@ -34,8 +34,6 @@ public:
 		Qt::DockWidgetArea area = Qt::LeftDockWidgetArea, ///< Position of the dock (and also drawer)
 		Qt::WindowFlags flags = 0);
 
-	~GuiToc();
-
 	///
 	bool initialiseParams(std::string const & data);
 	void updateView();
