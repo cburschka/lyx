@@ -123,10 +123,7 @@ string LyXCiteEngine::getDefaultBiblio(CiteEngineType const & cet) const
 	string res;
 	string const etp = theCiteEnginesList.getTypeAsString(cet) + ":";
 	//check whether all of the required packages are available
-	vector<string>::const_iterator it  = default_biblios_.begin();
-	vector<string>::const_iterator end = default_biblios_.end();
-	for (; it != end; ++it) {
-		string const s = *it;
+	for (string const &s: default_biblios_) {
 		if (prefixIs(s, etp))
 			res = split(s, ':');
 		else if (!contains(s, ':') && res.empty())
@@ -139,13 +136,10 @@ string LyXCiteEngine::getDefaultBiblio(CiteEngineType const & cet) const
 bool LyXCiteEngine::isDefaultBiblio(string const & bf) const
 {
 	string const bfs = ":" + bf;
-	vector<string>::const_iterator it  = default_biblios_.begin();
-	vector<string>::const_iterator end = default_biblios_.end();
-	for (; it != end; ++it) {
-		string const s = *it;
+	for (string const &s: default_biblios_)
 		if (suffixIs(s, bfs) || bf == s)
 			return true;
-	}
+
 	return false;
 }
 
