@@ -16,17 +16,20 @@
 # TeX style files 	-> option sty
 # bibtex style files 	-> option bst
 # bibtex database files -> option bib
+# biblatex bibstyles 	-> option bbx
+# biblatex citestyles 	-> option cbx
 #
 # with the help
 # of kpsewhich and creates a
-# bstFiles.lst, clsFiles.lst, styFiles.lst, bibFiles.lst
+# bstFiles.lst, clsFiles.lst, styFiles.lst, bibFiles.lst,
+# bbxFiles.lst, cbxFiles.lst
 # without any parameter all files are created.
 #
 # Herbert Voss <voss@perce.org>
 #
 # Updates from Jean-Marc Lasgouttes.
 #
-# bib support added by Juergen Spitzmueller (v0.3)
+# bib, bbx and cbx support added by Juergen Spitzmueller (v0.4)
 #
 # translated to python by Bo Peng, so that the script only 
 # relies on python and kpsewhich (no shell command is used).
@@ -38,6 +41,8 @@ cls_stylefile = 'clsFiles.lst'
 sty_stylefile = 'styFiles.lst'
 bst_stylefile = 'bstFiles.lst'
 bib_files = 'bibFiles.lst'
+bbx_files = 'bbxFiles.lst'
+cbx_files = 'cbxFiles.lst'
 
 def cmdOutput(cmd):
     '''utility function: run a command and get its output as a string
@@ -51,19 +56,19 @@ def cmdOutput(cmd):
 # processing command line options
 if len(sys.argv) > 1:
     if sys.argv[1] in ['--help', '-help']:
-        print '''Usage: TeXFiles.py [-version | cls | sty | bst | bib ]
+        print '''Usage: TeXFiles.py [-version | cls | sty | bst | bib | bbx| cbx ]
             Default is without any Parameters,
             so that all files will be created'''
         sys.exit(0)
     else:
         types = sys.argv[1:]
         for type in types:
-            if type not in ['cls', 'sty', 'bst', 'bib']:
+            if type not in ['cls', 'sty', 'bst', 'bib', 'bbx', 'cbx']:
                 print 'ERROR: unknown type', type
                 sys.exit(1)
 else:
     # if no parameter is specified, assume all
-    types = ['cls', 'sty', 'bst', 'bib']
+    types = ['cls', 'sty', 'bst', 'bib', 'bbx', 'cbx']
 
 #
 # MS-DOS and MS-Windows define $COMSPEC or $ComSpec and use `;' to separate
@@ -92,6 +97,12 @@ for type in types:
     elif type == 'bib':
         outfile = bib_files
         kpsetype = '.bib'
+    elif type == 'bbx':
+        outfile = bbx_files
+        kpsetype = '.tex'
+    elif type == 'cbx':
+        outfile = cbx_files
+        kpsetype = '.tex'
 
     dirs = cmdOutput('kpsewhich --show-path=' + kpsetype).replace('!!', '').strip()
     # remove excessive //
