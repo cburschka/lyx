@@ -121,7 +121,8 @@ public:
 	///
 	QAbstractItemModel * nameModel();
 	///
-	QModelIndex currentIndex(QString const & type) const;
+	QModelIndex currentIndex(QString const & type,
+	                         DocIterator const & dit) const;
 	///
 	void goTo(QString const & type, QModelIndex const & index) const;
 	///
@@ -141,8 +142,6 @@ private:
 	typedef QHash<QString, TocModel *>::iterator iterator;
 	///
 	void clear();
-	///
-	BufferView const * bv_;
 	///
 	QHash<QString, TocModel *> models_;
 	///

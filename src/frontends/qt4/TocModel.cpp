@@ -248,7 +248,6 @@ int TocModel::modelDepth() const
 ///////////////////////////////////////////////////////////////////////////////
 
 TocModels::TocModels()
-	: bv_(0)
 {
 	names_ = new TocTypeModel(this);
 	names_sorted_ = new TocModelSortProxyModel(this);
@@ -272,7 +271,7 @@ void TocModels::clear()
 int TocModels::depth(QString const & type)
 {
 	const_iterator it = models_.find(type);
-	if (!bv_ || it == models_.end())
+	if (it == models_.end())
 		return 0;
 	return it.value()->modelDepth();
 }
@@ -280,8 +279,6 @@ int TocModels::depth(QString const & type)
 
 QAbstractItemModel * TocModels::model(QString const & type)
 {
-	if (!bv_)
-		return 0;
 	iterator it = models_.find(type);
 	if (it != models_.end())
 		return it.value()->model();
@@ -296,12 +293,13 @@ QAbstractItemModel * TocModels::nameModel()
 }
 
 
-QModelIndex TocModels::currentIndex(QString const & type) const
+QModelIndex TocModels::currentIndex(QString const & type,
+                                    DocIterator const & dit) const
 {
 	const_iterator it = models_.find(type);
-	if (!bv_ || it == models_.end())
+	if (it == models_.end())
 		return QModelIndex();
-	return it.value()->modelIndex(bv_->cursor());
+	return it.value()->modelIndex(dit);
 }
 
 
@@ -341,9 +339,8 @@ void TocModels::updateItem(QString const & type, DocIterator const & dit)
 
 void TocModels::reset(BufferView const * bv)
 {
-	bv_ = bv;
 	clear();
-	if (!bv_) {
+	if (!bv) {
 		iterator end = models_.end();
 		for (iterator it = models_.begin(); it != end;  ++it)
 			it.value()->reset();
@@ -354,7 +351,7 @@ void TocModels::reset(BufferView const * bv)
 	names_->blockSignals(true);
 	names_->beginResetModel();
 	names_->insertColumns(0, 1);
-	TocList const & tocs = bv_->buffer().masterBuffer()->tocBackend().tocs();
+	TocList const & tocs = bv->buffer().masterBuffer()->tocBackend().tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator toc_end = tocs.end();
 	for (; it != toc_end; ++it) {

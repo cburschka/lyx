@@ -456,7 +456,11 @@ void TocWidget::finishUpdateView()
 		if (!persistent_)
 			setTreeDepth(depth_);
 		persistentCB->setChecked(persistent_);
-		select(gui_view_.tocModels().currentIndex(current_type_));
+		// select the item at current cursor location
+		if (gui_view_.documentBufferView()) {
+			DocIterator const & dit = gui_view_.documentBufferView()->cursor();
+			select(gui_view_.tocModels().currentIndex(current_type_, dit));
+		}
 	}
 	filterContents();
 }
