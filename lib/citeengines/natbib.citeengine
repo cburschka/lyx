@@ -14,7 +14,7 @@ Format 62
 Requires natbib
 
 CiteEngineType authoryear|numerical
-DefaultBiblio  plainnat
+DefaultBiblio  authoryear:plainnat|numerical:plainnat
 
 CiteEngine authoryear
 	Citet*[][]

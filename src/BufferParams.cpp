@@ -3240,7 +3240,8 @@ bool BufferParams::addCiteEngine(vector<string> const & engine)
 
 string const & BufferParams::defaultBiblioStyle() const
 {
-	return documentClass().defaultBiblioStyle();
+	map<string, string> bs = documentClass().defaultBiblioStyle();
+	return bs[documentClass().opt_enginetype()];
 }
 
 

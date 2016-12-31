@@ -759,8 +759,21 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 
 		case TC_DEFAULTBIBLIO:
-			if (lexrc.next())
-				cite_default_biblio_style_ = rtrim(lexrc.getString());
+			if (lexrc.next()) {
+				vector<string> const dbs =
+					getVectorFromString(rtrim(lexrc.getString()), "|");
+				vector<string>::const_iterator it  = dbs.begin();
+				vector<string>::const_iterator end = dbs.end();
+				for (; it != end; ++it) {
+					if (!contains(*it, ':'))
+						cite_default_biblio_style_[opt_enginetype_] = *it;
+					else {
+						string eng;
+						string const db = split(*it, eng, ':');
+						cite_default_biblio_style_[eng] = db;
+					}
+				}
+			}
 			break;
 
 		case TC_FULLAUTHORLIST:

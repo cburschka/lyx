@@ -115,10 +115,12 @@ private Q_SLOTS:
 	void classChanged_adaptor();
 	void languagePackageChanged(int);
 	void biblioChanged();
+	void rescanBibFiles();
+	void resetDefaultBibfile();
 	void citeEngineChanged(int);
+	void citeStyleChanged();
 	void bibtexChanged(int);
-	void setAuthorYear(bool);
-	void setNumerical(bool);
+	void updateResetDefaultBiblio();
 	void updateModuleInfo();
 	void modulesChanged();
 	void changeBackgroundColor();
@@ -181,6 +183,8 @@ private:
 	void updateSelectedModules();
 	///
 	void updateIncludeonlys();
+	///
+	void updateDefaultBiblio(std::string const & style);
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
