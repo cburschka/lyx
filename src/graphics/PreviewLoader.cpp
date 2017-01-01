@@ -718,12 +718,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 
 	cs << latexparam;
-	if (buffer_.params().bibtex_command != "default")
-		cs << " --bibtex=" << quoteName(buffer_.params().bibtex_command);
-	else if (buffer_.params().encoding().package() == Encoding::japanese)
-		cs << " --bibtex=" << quoteName(lyxrc.jbibtex_command);
-	else
-		cs << " --bibtex=" << quoteName(lyxrc.bibtex_command);
+	cs << " --bibtex=" << quoteName(buffer_.params().bibtexCommand());
 	if (buffer_.params().bufferFormat() == "lilypond-book")
 		cs << " --lilypond";
 

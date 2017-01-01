@@ -462,6 +462,9 @@ public:
 	/// the available citation styles
 	std::vector<CitationStyle> citeStyles() const;
 
+	/// Return the actual bibtex command (lyxrc or buffer param)
+	std::string const & bibtexCommand() const;
+
 	/// Set the default BibTeX style file for the document
 	void setDefaultBiblioStyle(std::string const & s){ biblio_style = s; }
 	/// Get the default BibTeX style file from the TextClass

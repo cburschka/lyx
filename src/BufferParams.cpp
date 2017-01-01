@@ -3286,6 +3286,18 @@ vector<CitationStyle> BufferParams::citeStyles() const
 	return styles;
 }
 
+
+string const & BufferParams::bibtexCommand() const
+{
+	if (bibtex_command != "default")
+		return bibtex_command;
+	else if (encoding().package() == Encoding::japanese)
+		return lyxrc.jbibtex_command;
+	else
+		return lyxrc.bibtex_command;
+}
+
+
 void BufferParams::invalidateConverterCache() const
 {
 	pimpl_->isExportCacheValid = false;
