@@ -91,7 +91,7 @@ void GuiTexInfo::rescanClicked()
 void GuiTexInfo::viewClicked()
 {
 	// takes advantage of enum order
-	static QString const ext[] = { "cls", "sty", "bst", "bib" };
+	static QString const ext[] = { "cls", "sty", "bst", "bib", "bbx", "cbx" };
 	int const fitem = fileListLW->currentRow();
 	QStringList const & data = texdata_[activeStyle_];
 	QString file = data[fitem];
@@ -118,7 +118,8 @@ void GuiTexInfo::enableViewPB()
 void GuiTexInfo::updateStyles(TexFileType type)
 {
 	static QString const filenames[] = {
-		"clsFiles.lst", "styFiles.lst", "bstFiles.lst", "bibFiles.lst"
+		"clsFiles.lst", "styFiles.lst", "bstFiles.lst", "bibFiles.lst",
+		"bbxFiles.lst", "cbxFiles.lst"
 	};
 
 	QString const filename = filenames[type];
