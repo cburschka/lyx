@@ -2642,7 +2642,7 @@ void GuiDocument::applyView()
 	bp_.use_bibtopic =
 		biblioModule->bibtopicCB->isChecked();
 
-	bp_.biblio_style = fromqstr(biblioModule->defaultBiblioCO->currentText());
+	bp_.setDefaultBiblioStyle(fromqstr(biblioModule->defaultBiblioCO->currentText()));
 
 	string const bibtex_command =
 		fromqstr(biblioModule->bibtexCO->itemData(

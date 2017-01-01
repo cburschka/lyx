@@ -462,9 +462,9 @@ public:
 	/// the available citation styles
 	std::vector<CitationStyle> citeStyles() const;
 
-	/// the default BibTeX style file for the document
-	std::string biblio_style;
-	/// the default BibTeX style file from the TextClass
+	/// Set the default BibTeX style file for the document
+	void setDefaultBiblioStyle(std::string const & s){ biblio_style = s; }
+	/// Get the default BibTeX style file from the TextClass
 	std::string const & defaultBiblioStyle() const;
 	/// whether the BibTeX style supports full author lists
 	bool const & fullAuthorList() const;
@@ -535,6 +535,8 @@ private:
 	LayoutModuleList cite_engine_;
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType cite_engine_type_;
+	/// the default BibTeX style file for the document
+	std::string biblio_style;
 	///
 	DocumentClassPtr doc_class_;
 	///
