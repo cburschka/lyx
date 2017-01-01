@@ -614,11 +614,7 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 			continue;
 		result = true;
 
-		string tmp = runparams.use_japanese ?
-			lyxrc.jbibtex_command : lyxrc.bibtex_command;
-
-		if (!runparams.bibtex_command.empty())
-			tmp = runparams.bibtex_command;
+		string tmp = runparams.bibtex_command;
 		tmp += " ";
 		// onlyFileName() is needed for cygwin
 		tmp += quoteName(onlyFileName(removeExtension(

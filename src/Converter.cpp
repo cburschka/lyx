@@ -398,8 +398,7 @@ bool Converters::convert(Buffer const * buffer,
 			buffer->params().bufferFormat() == "latex"
 			&& buffer->params().encoding().package() == Encoding::japanese;
 		runparams.use_indices = buffer->params().use_indices;
-		runparams.bibtex_command = (buffer->params().bibtex_command == "default") ?
-			string() : buffer->params().bibtex_command;
+		runparams.bibtex_command = buffer->params().bibtexCommand();
 		runparams.index_command = (buffer->params().index_command == "default") ?
 			string() : buffer->params().index_command;
 		runparams.document_language = buffer->params().language->babel();
