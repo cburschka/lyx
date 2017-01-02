@@ -278,7 +278,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable support::FileNameList bibfiles_cache_;
+	mutable support::FileNamePairList bibfiles_cache_;
 
 	// FIXME The caching mechanism could be improved. At present, we have a
 	// cache for each Buffer, that caches all the bibliography info for that
@@ -2302,7 +2302,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset = static_cast<InsetBibtex const &>(*it);
-			support::FileNameList const bibfiles = inset.getBibFiles();
+			support::FileNamePairList const bibfiles = inset.getBibFiles();
 			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -2311,7 +2311,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 			Buffer const * const incbuf = inset.getChildBuffer();
 			if (!incbuf)
 				continue;
-			support::FileNameList const & bibfiles =
+			support::FileNamePairList const & bibfiles =
 					incbuf->getBibfilesCache(UpdateChildOnly);
 			if (!bibfiles.empty()) {
 				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
@@ -2349,7 +2349,7 @@ void Buffer::invalidateBibfileCache() const
 }
 
 
-support::FileNameList const & Buffer::getBibfilesCache(UpdateScope scope) const
+support::FileNamePairList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
 	// FIXME This is probably unnecessary, given where we call this.
 	// If this is a child document, use the master's cache instead.
@@ -2383,16 +2383,17 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 	}
 
 	// compare the cached timestamps with the actual ones.
-	FileNameList const & bibfiles_cache = getBibfilesCache();
-	FileNameList::const_iterator ei = bibfiles_cache.begin();
-	FileNameList::const_iterator en = bibfiles_cache.end();
+	FileNamePairList const & bibfiles_cache = getBibfilesCache();
+	FileNamePairList::const_iterator ei = bibfiles_cache.begin();
+	FileNamePairList::const_iterator en = bibfiles_cache.end();
 	for (; ei != en; ++ ei) {
-		time_t lastw = ei->lastModified();
-		time_t prevw = d->bibfile_status_[*ei];
+		FileName const fn = ei->second;
+		time_t lastw = fn.lastModified();
+		time_t prevw = d->bibfile_status_[fn];
 		if (lastw != prevw) {
 			d->bibinfo_cache_valid_ = false;
 			d->cite_labels_valid_ = false;
-			d->bibfile_status_[*ei] = lastw;
+			d->bibfile_status_[fn] = lastw;
 		}
 	}
 }

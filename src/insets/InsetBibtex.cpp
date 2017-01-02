@@ -402,12 +402,15 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-support::FileNameList InsetBibtex::getBibFiles() const
+support::FileNamePairList InsetBibtex::getBibFiles() const
 {
 	FileName path(buffer().filePath());
 	support::PathChanger p(path);
 
-	support::FileNameList vec;
+	// We need to store both the real FileName and the way it is entered
+	// (with full path, rel path or as a single file name).
+	// The latter is needed for biblatex's central bibfile macro.
+	support::FileNamePairList vec;
 
 	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
 	vector<docstring>::const_iterator it = bibfilelist.begin();
@@ -416,7 +419,7 @@ support::FileNameList InsetBibtex::getBibFiles() const
 		FileName const file = getBibTeXPath(*it, buffer());
 
 		if (!file.empty())
-			vec.push_back(file);
+			vec.push_back(make_pair(*it, file));
 		else
 			LYXERR0("Couldn't find " + to_utf8(*it) + " in InsetBibtex::getBibFiles()!");
 	}
@@ -695,11 +698,11 @@ void InsetBibtex::parseBibTeXFiles() const
 
 	BiblioInfo keylist;
 
-	support::FileNameList const files = getBibFiles();
-	support::FileNameList::const_iterator it = files.begin();
-	support::FileNameList::const_iterator en = files.end();
+	support::FileNamePairList const files = getBibFiles();
+	support::FileNamePairList::const_iterator it = files.begin();
+	support::FileNamePairList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
-		ifdocstream ifs(it->toFilesystemEncoding().c_str(),
+		ifdocstream ifs(it->second.toFilesystemEncoding().c_str(),
 			ios_base::in, buffer().params().encoding().iconvName());
 
 		char_type ch;

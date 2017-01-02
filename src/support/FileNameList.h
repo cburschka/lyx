@@ -28,6 +28,16 @@ class FileNameList: public std::vector<FileName>
 {
 };
 
+
+/**
+ * List of filename with additional information. Used by the Bibfiles cache,
+ * which needs to store, next to the real filename, the way it was entered
+ * in the BibTeX inset (as abspath, relpath or texmf file)
+ */
+class FileNamePairList: public std::vector<std::pair<docstring, FileName>>
+{
+};
+
 } // namespace support
 } // namespace lyx
 

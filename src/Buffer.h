@@ -69,7 +69,7 @@ class WorkAreaManager;
 namespace support {
 class DocFileName;
 class FileName;
-class FileNameList;
+class FileNamePairList;
 }
 
 namespace graphics {
@@ -790,7 +790,7 @@ private:
 	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
-	support::FileNameList const &
+	support::FileNamePairList const &
 		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;
