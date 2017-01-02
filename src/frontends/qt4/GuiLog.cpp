@@ -23,6 +23,7 @@
 #include "support/docstring.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <QDesktopServices>
 #include <QTextBrowser>
@@ -244,8 +245,12 @@ bool GuiLog::initialiseParams(string const & data)
 		logTypeCO->addItem(qt_("LaTeX"), toqstr(logtype));
 		FileName tmp = log;
 		tmp.changeExtension("blg");
-		if (tmp.exists())
-			logTypeCO->addItem(qt_("BibTeX"), QString("bibtex"));
+		if (tmp.exists()) {
+			if (support::contains(tmp.fileContents("UTF-8"), from_ascii("This is Biber")))
+				logTypeCO->addItem(qt_("Biber"), QString("bibtex"));
+			else
+				logTypeCO->addItem(qt_("BibTeX"), QString("bibtex"));
+		}
 		tmp.changeExtension("ilg");
 		if (tmp.exists())
 			logTypeCO->addItem(qt_("Index"), QString("index"));
