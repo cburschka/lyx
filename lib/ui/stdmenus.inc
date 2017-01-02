@@ -478,7 +478,7 @@ Menuset
 		IndicesLists
 		Item "List of Listings|L" "inset-insert toc CommandInset toc LatexCommand lstlistoflistings \end_inset"
 		Item "Nomenclature|N" "nomencl-print"
-		Item "BibTeX Bibliography...|B" "dialog-show-new-inset bibtex"
+		Item "Bib(la)TeX Bibliography...|B" "dialog-show-new-inset bibtex"
 	End
 
 	Menu "insert_file"
