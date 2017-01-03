@@ -929,9 +929,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cat() == catParameter) {
-			Token const & n	= getToken();
-			if (n.character())
-				cell->push_back(MathAtom(new MathMacroArgument(n.character()-'0')));
+			Token const & n	= nextToken();
+			char_type c = n.character();
+			if (c && '0' < c && c <= '9') {
+				cell->push_back(MathAtom(new MathMacroArgument(c - '0')));
+				getToken();
+			} else
+				cell->push_back(MathAtom(new InsetMathHash()));
 		}
 
 		else if (t.cat() == catActive)
