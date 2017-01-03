@@ -19,27 +19,36 @@ CiteEngine default
 End
 
 CiteFormat default
-	# translatable bits
+	# Translatable bits
 	_notcited not cited
 	_addtobib Add to bibliography only.
 
-	# macros
+	# Macros
 	!open [
 	!sep ,
 	!close ]
 
+	# A link that lets us jump to the bibliography entry in LyXHTML
+	# %clean:key% will be substituted by the cite key to give a unique id
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
-	!cite %!startlink%{%label%[[%label%]][[{%numericallabel%[[%numericallabel%]][[#%key%]]}]]}%!endlink%%!nextcite%
+	# Start citation: ID...
+	!makecite %!startlink%{%label%[[%label%]][[{%numericallabel%[[%numericallabel%]][[#%key%]]}]]}%!endlink%%!nextcite%
 
-	!nextcite {%next%[[%!sep% %!cite%]]}
+	# Follow-up citations: ..., NextID...
+	!nextcite {%next%[[%!sep% %!makecite%]]}
+	# FIXME: what is this?
 	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}
+	# Simply the cite key(s): Key, NextKey, ...
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
 
+	# Postnote: ", p. xx"
 	!textafter {%textafter%[[, %textafter%]]}
 
-	# cite styles
-	cite %!open%{%dialog%[[#ID]][[%!cite%]]}%!textafter%%!close%
+	## The actual cite styles ##
+	# \cite: [ID, NextID, ..., p. xx]
+	cite %!open%{%dialog%[[#ID]][[%!makecite%]]}%!textafter%%!close%
+	# \nocite: "Add to bibliography only." (dialog) / "Key, Nextkey (not cited)" (inset)
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
 End
