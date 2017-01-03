@@ -1548,7 +1548,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 
 	size_t const n = cmd.size();
 	bool const force = isUpperCase(cmd[0]);
-	bool const full = cmd[n] == '*';
+	bool const star = cmd[n] == '*';
 
 	vector<docstring> const keys = getVectorFromString(key);
 
@@ -1565,7 +1565,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		docstring label = *cit;
 		CitationStyle cs = citeStyleList[ii - 1];
 		cs.forceUpperCase &= force;
-		cs.fullAuthorList &= full;
+		cs.hasStarredVersion &= star;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_INSET_MODIFY,
 						"changetype " + from_utf8(citationStyleToString(cs)))));

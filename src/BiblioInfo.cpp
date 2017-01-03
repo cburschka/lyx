@@ -1197,7 +1197,7 @@ CitationStyle citationStyleFromString(string const & command,
 
 	size_t const n = command.size() - 1;
 	if (command[n] == '*') {
-		cs.fullAuthorList = true;
+		cs.hasStarredVersion = true;
 		if (suffixIs(cmd, '*'))
 			cmd = cmd.substr(0, cmd.size() - 1);
 	}
@@ -1212,7 +1212,7 @@ string citationStyleToString(const CitationStyle & cs, bool const latex)
 	string cmd = latex ? cs.cmd : cs.name;
 	if (cs.forceUpperCase)
 		cmd[0] = uppercase(cmd[0]);
-	if (cs.fullAuthorList)
+	if (cs.hasStarredVersion)
 		cmd += '*';
 	return cmd;
 }

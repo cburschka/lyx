@@ -214,9 +214,9 @@ CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 {
 	CitationStyle cs = valid_styles[0];
 	cs.forceUpperCase = false;
-	cs.fullAuthorList = false;
 	if (!InsetCitation::isCompatibleCommand(input))
 		return cs;
+	cs.hasStarredVersion = false;
 
 	string normalized_input = input;
 	string::size_type const n = input.size() - 1;
@@ -240,7 +240,7 @@ CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 	}
 
 	cs.forceUpperCase &= input[0] == uppercase(input[0]);
-	cs.fullAuthorList &= input[n] == '*';
+	cs.hasStarredVersion &= input[n] == '*';
 
 	return cs;
 }

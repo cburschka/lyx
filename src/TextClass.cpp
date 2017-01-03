@@ -1053,19 +1053,24 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 		 *     the given LyX name in the current engine
 		 *  3. The actual LaTeX command that is output
 		 *  (2) and (3) are optional.
+		 *  Also, the GUI string for the starred version can
+		 *  be changed
 		 *  The syntax is:
-		 *  LyXName|alias,nextalias*[][]=latexcmd
+		 *  LyXName|alias,nextalias*<!stardesc!stardesctooltip>[][]=latexcmd
 		 */
 		enum ScanMode {
 			LyXName,
 			Alias,
-			LaTeXCmd
+			LaTeXCmd,
+			StarDesc
 		};
 
 		ScanMode mode = LyXName;
+		ScanMode oldmode = LyXName;
 		string lyx_cmd;
 		string alias;
 		string latex_cmd;
+		string stardesc;
 		size_t const n = def.size();
 		for (size_t i = 0; i != n; ++i) {
 			ichar = def[i];
@@ -1073,10 +1078,17 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 				mode = Alias;
 			else if (ichar == '=')
 				mode = LaTeXCmd;
+			else if (ichar == '<') {
+				oldmode = mode;
+				mode = StarDesc;
+			} else if (ichar == '>')
+				mode = oldmode;
 			else if (mode == LaTeXCmd)
 				latex_cmd += ichar;
+			else if (mode == StarDesc)
+				stardesc += ichar;
 			else if (ichar == '*')
-				cs.fullAuthorList = true;
+				cs.hasStarredVersion = true;
 			else if (ichar == '[' && cs.textAfter)
 				cs.textBefore = true;
 			else if (ichar == '[')
@@ -1095,6 +1107,12 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 			for (string const &s: aliases)
 				cite_command_aliases_[s] = lyx_cmd;
 		}
+		vector<string> const stardescs = getVectorFromString(stardesc, "!");
+		int size = stardesc.size();
+		if (size > 0)
+			cs.stardesc = stardescs[0];
+		if (size > 1)
+			cs.startooltip = stardescs[1];
 		if (type & ENGINE_TYPE_AUTHORYEAR)
 			cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
 		if (type & ENGINE_TYPE_NUMERICAL)

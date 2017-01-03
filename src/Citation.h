@@ -31,16 +31,20 @@ class CitationStyle
 public:
 	///
 	CitationStyle() : name("cite"), cmd("cite"), forceUpperCase(false),
-		fullAuthorList(false), textAfter(false), textBefore(false) {}
+		hasStarredVersion(false), textAfter(false), textBefore(false) {}
 
 	/// the LyX name
 	std::string name;
 	/// the LaTeX command (might differ from the LyX name)
 	std::string cmd;
+	/// Optional alternative description what the starred version does (for the GUI)
+	std::string stardesc;
+	/// Optional tooltip for the starred version
+	std::string startooltip;
 	/// upper casing author prefixes (van -> Van)
 	bool forceUpperCase;
-	/// expanding the full author list
-	bool fullAuthorList;
+	/// starred version (full author list by default)
+	bool hasStarredVersion;
 	/// supports text after the citation
 	bool textAfter;
 	/// supports text before the citation

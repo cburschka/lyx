@@ -387,7 +387,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="fulllistCB">
+         <widget class="QCheckBox" name="starredCB">
           <property name="toolTip">
            <string>Always list all authors (rather than using &quot;et al.&quot;)</string>
           </property>
@@ -492,7 +492,7 @@
   <tabstop>textBeforeED</tabstop>
   <tabstop>textAfterED</tabstop>
   <tabstop>forceuppercaseCB</tabstop>
-  <tabstop>fulllistCB</tabstop>
+  <tabstop>starredCB</tabstop>
   <tabstop>restorePB</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
