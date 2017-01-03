@@ -21,22 +21,14 @@
 namespace lyx {
 
 
-/// A macro argument.
-class MathMacroArgument : public InsetMath {
+// A # that failed to parse
+class InsetMathHash : public InsetMath {
 public:
-	///
-	explicit MathMacroArgument(int number);
+	InsetMathHash(docstring const & str = docstring()) : str_('#' + str) {};
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	///
-	int number() const { return number_; }
-	///
-	void setNumber(int n);
-	///
-	InsetCode lyxCode() const { return MATH_MACROARG_CODE; }
-
 	///
 	void normalize(NormalStream &) const;
 	///
@@ -44,10 +36,32 @@ public:
 
 private:
 	Inset * clone() const;
-	/// A number between 1 and 9
-	int number_;
+
+protected:
 	///
 	docstring str_;
+};
+
+
+/// A macro argument.
+class MathMacroArgument : public InsetMathHash {
+public:
+	/// Assumes 0 < number <= 9
+	explicit MathMacroArgument(int number);
+	///
+	int number() const { return number_; }
+	/// Assumes 0 < n <= 9
+	void setNumber(int n);
+	///
+	InsetCode lyxCode() const { return MATH_MACROARG_CODE; }
+
+	///
+	void normalize(NormalStream &) const;
+
+private:
+	Inset * clone() const;
+	/// A number between 1 and 9
+	int number_;
 };
 
 

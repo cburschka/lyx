@@ -20,6 +20,8 @@
 #include "support/strfwd.h"
 #include "support/Changer.h"
 
+#include "insets/Inset.h"
+
 
 #include <string>
 
@@ -28,7 +30,6 @@ namespace lyx {
 
 namespace frontend { class Painter; }
 class BufferView;
-class Inset;
 class MacroContext;
 
 
@@ -55,7 +56,7 @@ public:
 	/// Temporarily change a full font.
 	Changer changeFontSet(std::string const & font);
 	/// Temporarily change the font to math if needed.
-	Changer changeEnsureMath();
+	Changer changeEnsureMath(Inset::mode_type mode = Inset::MATH_MODE);
 	// Temporarily change to the style suitable for use in fractions
 	Changer changeFrac();
 	// Temporarily change to the style suitable for use in arrays

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 523
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -27524,7 +27524,15 @@ fig
 \begin_inset Quotes erd
 \end_inset
 
-) can be done with this command
+) can be done
+\change_inserted 424524441 1483414614
+, for refstyle,
+\change_unchanged
+ with this command
+\change_inserted 424524441 1483414616
+:
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -27549,6 +27557,18 @@ key "prettyref,refstyle"
 \end_inset
 
 .
+\change_inserted 424524441 1483414624
+
+\begin_inset Newline newline
+\end_inset
+
+The `Plural' and `Capitalized' options will be available with formatted
+ references only if you are using the 
+\series bold
+refstyle
+\series default
+ package.
+ See its documentation, again, for more information.
 \end_layout
 
 \begin_layout Description
@@ -27563,6 +27583,23 @@ reference "fig:Two-distorted-images"
 
 \end_inset
 
+
+\change_inserted 424524441 1483414460
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 424524441 1483414501
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference.
+ This allows for customization, using ERT, if you want to issue a command
+ that LyX does not support.
+\change_deleted 424524441 1483414539
 
 \end_layout
 
@@ -27672,6 +27709,87 @@ Embedded
 Objects
 \emph default
  manual.
+\change_inserted 424524441 1483414754
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 424524441 1483414754
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1483414754
+
+\series bold
+Note:
+\series default
+ It is recommended to use the \SpecialChar LaTeX
+-package 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1483414754
+\SpecialChar LaTeX
+-packages ! refstyle
+\end_layout
+
+\end_inset
+
+ because 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1483414754
+\SpecialChar LaTeX
+-packages ! prettyref
+\end_layout
+
+\end_inset
+
+ does not know all of \SpecialChar LyX
+'s possible label shortcuts
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 424524441 1483414754
+\begin_inset Quotes eld
+\end_inset
+
+fig:
+\begin_inset Quotes erd
+\end_inset
+
+ is for example \SpecialChar LyX
+'s shortcut for labels in figure captions.
+\end_layout
+
+\end_inset
+
+ and is not internationalized.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

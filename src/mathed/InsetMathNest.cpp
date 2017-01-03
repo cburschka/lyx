@@ -583,7 +583,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		parseflg |= Parse::VERBATIM;
 		// fall through
 	case LFUN_PASTE: {
-		if (cur.currentMode() <= TEXT_MODE)
+		if (cur.currentMode() != MATH_MODE)
 			parseflg |= Parse::TEXTMODE;
 		cur.recordUndoSelection();
 		cur.message(_("Paste"));
@@ -642,21 +642,42 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
+	case LFUN_WORD_RIGHT:
+	case LFUN_WORD_LEFT:
+	case LFUN_WORD_BACKWARD:
+	case LFUN_WORD_FORWARD:
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_FORWARD:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
+	case LFUN_WORD_RIGHT_SELECT:
+	case LFUN_WORD_LEFT_SELECT:
+	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_LEFT_SELECT:
 	case LFUN_CHAR_BACKWARD_SELECT:
 	case LFUN_CHAR_FORWARD_SELECT: {
 		// are we in a selection?
-		bool select = (act == LFUN_CHAR_RIGHT_SELECT
+		bool select = (act == LFUN_WORD_RIGHT_SELECT
+					   || act == LFUN_WORD_LEFT_SELECT
+					   || act == LFUN_WORD_BACKWARD_SELECT
+					   || act == LFUN_WORD_FORWARD_SELECT
+		               || act == LFUN_CHAR_RIGHT_SELECT
 					   || act == LFUN_CHAR_LEFT_SELECT
 					   || act == LFUN_CHAR_BACKWARD_SELECT
 					   || act == LFUN_CHAR_FORWARD_SELECT);
+		// select words
+		bool word = (act == LFUN_WORD_RIGHT_SELECT
+		             || act == LFUN_WORD_LEFT_SELECT
+		             || act == LFUN_WORD_BACKWARD_SELECT
+		             || act == LFUN_WORD_FORWARD_SELECT
+		             || act == LFUN_WORD_RIGHT
+		             || act == LFUN_WORD_LEFT
+		             || act == LFUN_WORD_BACKWARD
+		             || act == LFUN_WORD_FORWARD);
 		// are we moving forward or backwards?
 		// If the command was RIGHT or LEFT, then whether we're moving forward
 		// or backwards depends on the cursor movement mode (logical or visual):
@@ -669,18 +690,24 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		FuncCode finish_lfun;
 
 		if (act == LFUN_CHAR_FORWARD
-				|| act == LFUN_CHAR_FORWARD_SELECT) {
+		    || act == LFUN_CHAR_FORWARD_SELECT
+		    || act == LFUN_WORD_FORWARD
+		    || act == LFUN_WORD_FORWARD_SELECT) {
 			forward = true;
 			finish_lfun = LFUN_FINISHED_FORWARD;
 		}
 		else if (act == LFUN_CHAR_BACKWARD
-				|| act == LFUN_CHAR_BACKWARD_SELECT) {
+		         || act == LFUN_CHAR_BACKWARD_SELECT
+		         || act == LFUN_WORD_BACKWARD
+		         || act == LFUN_WORD_BACKWARD_SELECT) {
 			forward = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
 		else {
 			bool right = (act == LFUN_CHAR_RIGHT_SELECT
-						  || act == LFUN_CHAR_RIGHT);
+						  || act == LFUN_CHAR_RIGHT
+			              || act == LFUN_WORD_RIGHT_SELECT
+			              || act == LFUN_WORD_RIGHT);
 			if (lyxrc.visual_cursor || !cur.reverseDirectionNeeded())
 				forward = right;
 			else
@@ -696,7 +723,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.clearTargetX();
 		cur.macroModeClose();
 		// try moving forward or backwards as necessary...
-		if (!(forward ? cursorMathForward(cur) : cursorMathBackward(cur))) {
+		if (!(forward ? cur.mathForward(word) : cur.mathBackward(word))) {
 			// ... and if movement failed, then finish forward or backwards
 			// as necessary
 			cmd = FuncRequest(finish_lfun);
@@ -707,10 +734,14 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_DOWN:
 	case LFUN_UP:
+	case LFUN_PARAGRAPH_UP:
+	case LFUN_PARAGRAPH_DOWN:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
 	case LFUN_DOWN_SELECT:
-	case LFUN_UP_SELECT: {
+	case LFUN_UP_SELECT:
+	case LFUN_PARAGRAPH_UP_SELECT:
+	case LFUN_PARAGRAPH_DOWN_SELECT: {
 		// close active macro
 		if (cur.inMacroMode()) {
 			cur.macroModeClose();
@@ -718,8 +749,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// stop/start the selection
-		bool select = act == LFUN_DOWN_SELECT ||
-			act == LFUN_UP_SELECT;
+		bool select = act == LFUN_DOWN_SELECT
+			|| act == LFUN_UP_SELECT
+			|| act == LFUN_PARAGRAPH_DOWN_SELECT
+			|| act == LFUN_PARAGRAPH_UP_SELECT;
 		cur.selHandle(select);
 
 		// handle autocorrect:
@@ -729,7 +762,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		// go up/down
-		bool up = act == LFUN_UP || act == LFUN_UP_SELECT;
+		bool up = act == LFUN_UP || act == LFUN_UP_SELECT
+			|| act == LFUN_PARAGRAPH_UP || act == LFUN_PARAGRAPH_UP_SELECT;
 		bool successful = cur.upDownInMath(up);
 		if (successful)
 			break;
@@ -763,22 +797,10 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.bv().cursor() = cur;
 		break;
 
-	case LFUN_PARAGRAPH_UP:
-	case LFUN_PARAGRAPH_DOWN:
-		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
-		// fall through
-	case LFUN_PARAGRAPH_UP_SELECT:
-	case LFUN_PARAGRAPH_DOWN_SELECT:
-		break;
-
 	case LFUN_LINE_BEGIN:
-	case LFUN_WORD_BACKWARD:
-	case LFUN_WORD_LEFT:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
 	case LFUN_LINE_BEGIN_SELECT:
-	case LFUN_WORD_BACKWARD_SELECT:
-	case LFUN_WORD_LEFT_SELECT:
 		cur.selHandle(act == LFUN_WORD_BACKWARD_SELECT ||
 				act == LFUN_WORD_LEFT_SELECT ||
 				act == LFUN_LINE_BEGIN_SELECT);
@@ -797,13 +819,9 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORD_FORWARD:
-	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
-	case LFUN_WORD_FORWARD_SELECT:
-	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
 		cur.selHandle(act == LFUN_WORD_FORWARD_SELECT ||
 				act == LFUN_WORD_RIGHT_SELECT ||
@@ -964,37 +982,37 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_FONT_BOLD:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
 			handleFont(cur, cmd.argument(), "mathbf");
 		break;
 	case LFUN_FONT_BOLDSYMBOL:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textbf");
 		else
 			handleFont(cur, cmd.argument(), "boldsymbol");
 		break;
 	case LFUN_FONT_SANS:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textsf");
 		else
 			handleFont(cur, cmd.argument(), "mathsf");
 		break;
 	case LFUN_FONT_EMPH:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "emph");
 		else
 			handleFont(cur, cmd.argument(), "mathcal");
 		break;
 	case LFUN_FONT_ROMAN:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textrm");
 		else
 			handleFont(cur, cmd.argument(), "mathrm");
 		break;
 	case LFUN_FONT_TYPEWRITER:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "texttt");
 		else
 			handleFont(cur, cmd.argument(), "mathtt");
@@ -1003,13 +1021,13 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		handleFont(cur, cmd.argument(), "mathfrak");
 		break;
 	case LFUN_FONT_ITAL:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			handleFont(cur, cmd.argument(), "textit");
 		else
 			handleFont(cur, cmd.argument(), "mathit");
 		break;
 	case LFUN_FONT_NOUN:
-		if (currentMode() <= TEXT_MODE)
+		if (currentMode() != MATH_MODE)
 			// FIXME: should be "noun"
 			handleFont(cur, cmd.argument(), "textsc");
 		else
@@ -1032,7 +1050,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.macroModeClose();
 		docstring const save_selection = grabAndEraseSelection(cur);
 		selClearOrDel(cur);
-		if (currentMode() <= Inset::TEXT_MODE)
+		if (currentMode() != Inset::MATH_MODE)
 			cur.plainInsert(MathAtom(new InsetMathEnsureMath(buffer_)));
 		else
 			cur.plainInsert(createInsetMath("text", buffer_));
@@ -1675,7 +1693,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			// remove the '\\'
 			if (c == '\\') {
 				cur.backspace();
-				if (currentMode() <= InsetMath::TEXT_MODE)
+				if (currentMode() != InsetMath::MATH_MODE)
 					cur.niceInsert(createInsetMath("textbackslash", buf));
 				else
 					cur.niceInsert(createInsetMath("backslash", buf));
@@ -1791,13 +1809,13 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	selClearOrDel(cur);
 
 	if (c == '\n') {
-		if (currentMode() <= InsetMath::TEXT_MODE)
+		if (currentMode() != InsetMath::MATH_MODE)
 			cur.insert(c);
 		return true;
 	}
 
 	if (c == ' ') {
-		if (currentMode() <= InsetMath::TEXT_MODE) {
+		if (currentMode() != InsetMath::MATH_MODE) {
 			// insert spaces in text or undecided mode,
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
@@ -2080,43 +2098,6 @@ void InsetMathNest::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Point xy = cur.bv().coordCache().insets().xy(inset);
 	x = xy.x_;
 	y = xy.y_;
-}
-
-
-bool InsetMathNest::cursorMathForward(Cursor & cur)
-{
-	if (cur.pos() != cur.lastpos() && cur.openable(cur.nextAtom())) {
-		cur.pushBackward(*cur.nextAtom().nucleus());
-		cur.inset().idxFirst(cur);
-		return true;
-	}
-	if (cur.posForward() || idxForward(cur))
-		return true;
-	// try to pop forwards --- but don't pop out of math! leave that to
-	// the FINISH lfuns
-	int s = cur.depth() - 2;
-	if (s >= 0 && cur[s].inset().asInsetMath())
-		return cur.popForward();
-	return false;
-}
-
-
-bool InsetMathNest::cursorMathBackward(Cursor & cur)
-{
-	if (cur.pos() != 0 && cur.openable(cur.prevAtom())) {
-		cur.posBackward();
-		cur.push(*cur.nextAtom().nucleus());
-		cur.inset().idxLast(cur);
-		return true;
-	}
-	if (cur.posBackward() || idxBackward(cur))
-		return true;
-	// try to pop backwards --- but don't pop out of math! leave that to
-	// the FINISH lfuns
-	int s = cur.depth() - 2;
-	if (s >= 0 && cur[s].inset().asInsetMath())
-		return cur.popBackward();
-	return false;
 }
 
 

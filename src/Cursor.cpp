@@ -1742,6 +1742,77 @@ bool Cursor::upDownInMath(bool up)
 }
 
 
+InsetMath & Cursor::nextMath()
+{
+	return *nextAtom().nucleus();
+}
+
+
+InsetMath & Cursor::prevMath()
+{
+	return *prevAtom().nucleus();
+}
+
+
+bool Cursor::mathForward(bool word)
+{
+	LASSERT(inMathed(), return false);
+	if (pos() < lastpos()) {
+		if (word) {
+			// word: skip a group of insets with same math class
+			MathClass mc = nextMath().mathClass();
+			do
+				posForward();
+			while (pos() < lastpos() && mc == nextMath().mathClass());
+		} else if (openable(nextAtom())) {
+			// single step: try to enter the next inset
+			pushBackward(nextMath());
+			inset().idxFirst(*this);
+		} else
+			posForward();
+		return true;
+	}
+	if (inset().idxForward(*this))
+		return true;
+	// try to pop forwards --- but don't pop out of math! leave that to
+	// the FINISH lfuns
+	int s = depth() - 2;
+	if (s >= 0 && operator[](s).inset().asInsetMath())
+		return popForward();
+	return false;
+}
+
+
+bool Cursor::mathBackward(bool word)
+{
+	LASSERT(inMathed(), return false);
+	if (pos() > 0) {
+		if (word) {
+			// word: skip a group of insets with same math class
+			MathClass mc = prevMath().mathClass();
+			do
+				posBackward();
+			while (pos() > 0 && mc == prevMath().mathClass());
+		} else if (openable(prevAtom())) {
+			// single step: try to enter the preceding inset
+			posBackward();
+			push(nextMath());
+			inset().idxLast(*this);
+		} else
+			posBackward();
+		return true;
+	}
+	if (inset().idxBackward(*this))
+		return true;
+	// try to pop backwards --- but don't pop out of math! leave that to
+	// the FINISH lfuns
+	int s = depth() - 2;
+	if (s >= 0 && operator[](s).inset().asInsetMath())
+		return popBackward();
+	return false;
+}
+
+
 bool Cursor::atFirstOrLastRow(bool up)
 {
 	TextMetrics const & tm = bv_->textMetrics(text());

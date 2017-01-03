@@ -889,6 +889,20 @@ int MathData::yo(BufferView const & bv) const
 }
 
 
+MathClass MathData::mathClass() const
+{
+	MathClass res = MC_UNKNOWN;
+	for (MathAtom const & at : *this) {
+		MathClass mc = at->mathClass();
+		if (res == MC_UNKNOWN)
+			res = mc;
+		else if (mc != MC_UNKNOWN && res != mc)
+			return MC_ORD;
+	}
+	return res == MC_UNKNOWN ? MC_ORD : res;
+}
+
+
 ostream & operator<<(ostream & os, MathData const & ar)
 {
 	odocstringstream oss;

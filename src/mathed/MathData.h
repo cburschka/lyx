@@ -137,6 +137,8 @@ public:
 	void drawT(TextPainter & pi, int x, int y) const;
 	/// mark cell for re-drawing
 	void touch() const;
+	/// approximate the math class of the data
+	MathClass mathClass() const;
 
 	/// access to cached x coordinate of last drawing
 	int xo(BufferView const & bv) const;

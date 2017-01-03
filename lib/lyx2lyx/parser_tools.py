@@ -64,7 +64,7 @@ get_value(lines, token, start[, end[, default]):
   and is what is returned if we do not find anything. So you
   can use that to set a default.
   
-get_quoted_value(lines, token, start[, end[, default]):
+get_quoted_value(lines, token, start[, end[, default]]):
   Similar to get_value, but it will strip quotes off the
   value, if they are present. So use this one for cases
   where the value is normally quoted.
@@ -73,6 +73,9 @@ get_option_value(line, option):
   This assumes we have a line with something like:
       option="value"
   and returns value. Returns "" if not found.
+
+get_bool_value(lines, token, start[, end[, default]]):
+  Like get_value, but returns a boolean.
 
 del_token(lines, token, start[, end]):
   Like find_token, but deletes the line if it finds one.
@@ -325,7 +328,7 @@ def get_bool_value(lines, token, start, end = 0, default = None):
     False if bool_value is 0 or false
     """
 
-    val = get_value(lines, token, start, end, "")
+    val = get_quoted_value(lines, token, start, end, "")
 
     if val == "1" or val == "true":
         return True

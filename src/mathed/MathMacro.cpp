@@ -140,6 +140,15 @@ public:
 	void htmlize(HtmlStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
 	void octave(OctaveStream & os) const { os << mathMacro_->cell(idx_); }
+	///
+	MathClass mathClass() const
+	{
+		return MC_UNKNOWN;
+		// This can be refined once the pointer issues are fixed. I did not
+		// notice any immediate crash with the following code, but it is risky
+		// nevertheless:
+		//return mathMacro_->cell(idx_).mathClass();
+	}
 
 private:
 	///
@@ -484,10 +493,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 	} else {
 		LBUFERR(d->macro_);
 
-		Changer dummy = (currentMode() == TEXT_MODE)
-			? mi.base.font.changeShape(UP_SHAPE)
-			: Changer();
-
 		// calculate metrics, hoping that all cells are seen
 		d->macro_->lock();
 		d->expanded_.metrics(mi, dim);
@@ -690,9 +695,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		drawMarkers2(pi, expx, expy);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
-		Changer dummy = (currentMode() == TEXT_MODE)
-			? pi.base.font.changeShape(UP_SHAPE)
-			: Changer();
 
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
@@ -828,14 +830,56 @@ size_t MathMacro::appetite() const
 }
 
 
+MathClass MathMacro::mathClass() const
+{
+	// This can be just a heuristic, since it is only considered for display
+	// when the macro is not linearised. Therefore it affects:
+	// * The spacing of the inset while being edited,
+	// * Intelligent splitting
+	// * Cursor word movement (Ctrl-Arrow).
+	if (MacroData const * m = macroBackup()) {
+		// If it is a global macro and is defined explicitly
+		if (m->symbol()) {
+			MathClass mc = string_to_class(d->macroBackup_.symbol()->extra);
+			if (mc != MC_UNKNOWN)
+				return mc;
+		}
+	}
+	// Otherwise guess from the expanded macro
+	return d->expanded_.mathClass();
+}
+
+
 InsetMath::mode_type MathMacro::currentMode() const
 {
-	// User defined macros are always assumed to be mathmode macros.
-	// Only the global macros defined in lib/symbols may be textmode.
+	// There is no way to guess the mode of user defined macros, so they are
+	// always assumed to be mathmode.  Only the global macros defined in
+	// lib/symbols may be textmode.
+	mode_type mode = modeToEnsure();
+	return (mode == UNDECIDED_MODE) ? MATH_MODE : mode;
+}
 
-	MacroData const * data = MacroTable::globalMacros().get(name());
-	bool textmode = data && data->symbol() && data->symbol()->extra == "textmode";
-	return textmode ? TEXT_MODE : MATH_MODE;
+
+InsetMath::mode_type MathMacro::modeToEnsure() const
+{
+	// User defined macros can be either text mode or math mode for output and
+	// display. There is no way to guess. For global macros defined in
+	// lib/symbols, we ensure textmode if flagged as such, otherwise we ensure
+	// math mode.
+	if (MacroData const * m = macroBackup())
+		if (m->symbol())
+			return (m->symbol()->extra == "textmode") ? TEXT_MODE : MATH_MODE;
+	return UNDECIDED_MODE;
+}
+
+
+MacroData const * MathMacro::macroBackup() const
+{
+	if (macro())
+		return &d->macroBackup_;
+	if (MacroData const * data = MacroTable::globalMacros().get(name()))
+		return data;
+	return nullptr;
 }
 
 
@@ -1016,12 +1060,9 @@ bool MathMacro::folded() const
 
 void MathMacro::write(WriteStream & os) const
 {
-	MacroData const * data = MacroTable::globalMacros().get(name());
-	bool textmode_macro = data && data->symbol()
-				   && data->symbol()->extra == "textmode";
-	bool needs_mathmode = data && (!data->symbol()
-				       || data->symbol()->extra != "textmode");
-
+	mode_type mode = modeToEnsure();
+	bool textmode_macro = mode == TEXT_MODE;
+	bool needs_mathmode = mode == MATH_MODE;
 	MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
 
 	// non-normal mode

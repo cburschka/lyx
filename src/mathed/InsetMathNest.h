@@ -191,9 +191,9 @@ private:
 	/// afterwards if found
 	bool findMacroToFoldUnfold(Cursor & searchCur, bool fold) const;
 	/// move cursor forward
-	bool cursorMathForward(Cursor & cur);
+	bool cursorMathForward(Cursor & cur, bool enter = true);
 	/// move cursor backwards
-	bool cursorMathBackward(Cursor & cur);
+	bool cursorMathBackward(Cursor & cur, bool enter = true);
 
 protected:
 	/// we store the cells in a vector

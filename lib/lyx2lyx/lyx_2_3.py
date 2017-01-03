@@ -25,22 +25,17 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_end_of, find_token_backwards, find_end_of_layout#,
-#  find_token, find_tokens, \
-#  find_token_exact, find_end_of_inset, \
-#  is_in_inset, get_value, get_quoted_value, \
-#  del_token, check_token, get_option_value, get_bool_value
-
-from parser_tools import find_token, find_end_of_inset, get_value, \
-     get_bool_value, get_containing_layout
+from parser_tools import find_end_of, find_token_backwards, find_end_of_layout, \
+    find_token, find_end_of_inset, get_value,  get_bool_value, \
+    get_containing_layout, get_quoted_value, del_token
+#  find_tokens, find_token_exact, is_in_inset, \
+#  check_token, get_option_value
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 #  get_ert, lyx2latex, \
 #  lyx2verbatim, length_in_bp, convert_info_insets
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
-
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
 
 ####################################################################
 # Private helper functions
@@ -1065,6 +1060,74 @@ def revert_cochinealmath(document):
             document.header[i] = document.header[i].replace("cochineal-ntxm", "auto")
 
 
+def revert_labelonly(document):
+    " Revert labelonly tag for InsetRef "
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand labelonly", i, j)
+        if k == -1:
+            i = j
+            continue
+        label = get_quoted_value(document.body, "reference", i, j)
+        if not label:
+            document.warning("Can't find label for reference at line %d!" %(i))
+            i = j + 1
+            continue
+        document.body[i:j+1] = put_cmd_in_ert([label])
+        i = j + 1
+
+
+def revert_plural_refs(document):
+    " Revert plural and capitalized references "
+    i = find_token(document.header, "\\use_refstyle 1", 0)
+    use_refstyle = (i != 0)
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" %(i))
+            i += 1
+            continue
+
+        plural = caps = label = False
+        if use_refstyle:
+            plural = get_bool_value(document.body, "plural", i, j, False)
+            caps   = get_bool_value(document.body, "caps", i, j, False)
+            label  = get_quoted_value(document.body, "reference", i, j)
+            if label:
+                (prefix, suffix) = label.split(":", 1)
+            else:
+                document.warning("Can't find label for reference at line %d!" % (i))
+
+        # this effectively tests also for use_refstyle
+        if not ((plural or caps) and label):
+            del_token(document.body, "plural", i, j)
+            del_token(document.body, "caps", i, j - 1) # since we deleted a line
+            i = j - 1
+            continue
+
+        if caps:
+            prefix = prefix[0].title() + prefix[1:]
+        cmd = "\\" + prefix + "ref"
+        if plural:
+            cmd += "[s]"
+        cmd += "{" + suffix + "}"
+        document.body[i:j+1] = put_cmd_in_ert([cmd])
+        i = j + 1
+    
+
 ##
 # Conversion hub
 #
@@ -1086,10 +1149,14 @@ convert = [
            [521, [convert_frenchquotes]],
            [522, []],
            [523, []],
-           [524, []]
+           [524, []],
+           [525, []],
+           [526, []]
           ]
 
 revert =  [
+           [525, [revert_plural_refs]],
+           [524, [revert_labelonly]],
            [523, [revert_crimson, revert_cochinealmath]],
            [522, [revert_cjkquotes]],
            [521, [revert_dynamicquotes]],

@@ -1579,7 +1579,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		parseflg |= Parse::VERBATIM;
 		// fall through
 	case LFUN_PASTE: {
-		if (cur.currentMode() <= TEXT_MODE)
+		if (cur.currentMode() != MATH_MODE)
 			parseflg |= Parse::TEXTMODE;
 		cur.message(_("Paste"));
 		cap::replaceSelection(cur);
@@ -1669,13 +1669,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_LINE_BEGIN:
-	case LFUN_WORD_BACKWARD:
-	case LFUN_WORD_LEFT:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
 	case LFUN_LINE_BEGIN_SELECT:
-	case LFUN_WORD_BACKWARD_SELECT:
-	case LFUN_WORD_LEFT_SELECT:
 		cur.selHandle(act == LFUN_WORD_BACKWARD_SELECT ||
 				act == LFUN_WORD_LEFT_SELECT ||
 				act == LFUN_LINE_BEGIN_SELECT);
@@ -1694,13 +1690,9 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_WORD_FORWARD:
-	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
 		// fall through
-	case LFUN_WORD_FORWARD_SELECT:
-	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
 		cur.selHandle(act == LFUN_WORD_FORWARD_SELECT ||
 				act == LFUN_WORD_RIGHT_SELECT ||

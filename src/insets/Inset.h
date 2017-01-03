@@ -527,7 +527,7 @@ public:
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual InsetCode lyxCode() const { return NO_CODE; }
 
-	/// -1: text mode, 1: math mode, 0 undecided
+	///
 	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
 	/// return text or mathmode if that is possible to determine
 	virtual mode_type currentMode() const { return UNDECIDED_MODE; }

@@ -122,7 +122,7 @@ public:
 
 	///
 	docstring name() const;
-	///
+	/// FIXME: Often dangling.
 	MacroData const * macro() const;
 	///
 	docstring macroName() const;
@@ -141,6 +141,9 @@ public:
 	size_t appetite() const;
 	///
 	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
+	/// This is not used for display; however whether it is mathrel determines
+	/// how to split equations intelligently.
+	MathClass mathClass() const; //override
 
 protected:
 	friend class MathData;
@@ -164,6 +167,14 @@ protected:
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 
 private:
+	/// Math mode for output and display. UNDECIDED for user macros: they could
+	/// be either.
+	mode_type modeToEnsure() const;
+	/// This function is needed for now because of two shortfalls of the current
+	/// implementation: the macro() pointer is often dangling, in which case we
+	/// fall back to a backup copy, and the macro is not known at inset
+	/// creation, in which case we fall back to the global macro with this name.
+	MacroData const * macroBackup() const;
 	///
 	virtual Inset * clone() const;
 	///
