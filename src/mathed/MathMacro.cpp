@@ -140,6 +140,15 @@ public:
 	void htmlize(HtmlStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
 	void octave(OctaveStream & os) const { os << mathMacro_->cell(idx_); }
+	///
+	MathClass mathClass() const
+	{
+		return MC_UNKNOWN;
+		// This can be refined once the pointer issues are fixed. I did not
+		// notice any immediate crash with the following code, but it is risky
+		// nevertheless:
+		//return mathMacro_->cell(idx_).mathClass();
+	}
 
 private:
 	///
@@ -823,16 +832,21 @@ size_t MathMacro::appetite() const
 
 MathClass MathMacro::mathClass() const
 {
-	// this only affects intelligent splitting since global macros are always
-	// linearised.
+	// This can be just a heuristic, since it is only considered for display
+	// when the macro is not linearised. Therefore it affects:
+	// * The spacing of the inset while being edited,
+	// * Intelligent splitting
+	// * Cursor word movement (Ctrl-Arrow).
 	if (MacroData const * m = macroBackup()) {
+		// If it is a global macro and is defined explicitly
 		if (m->symbol()) {
 			MathClass mc = string_to_class(d->macroBackup_.symbol()->extra);
 			if (mc != MC_UNKNOWN)
 				return mc;
 		}
 	}
-	return MC_ORD;
+	// Otherwise guess from the expanded macro
+	return d->expanded_.mathClass();
 }
 
 
