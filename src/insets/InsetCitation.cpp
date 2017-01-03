@@ -21,6 +21,7 @@
 #include "DispatchResult.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "output_xhtml.h"
 #include "ParIterator.h"
@@ -124,6 +125,29 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
+bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	switch (cmd.action()) {
+	// Handle the alias case
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype") {
+			string cmdname = getCmdName();
+			string const alias = buffer().params().getCiteAlias(cmdname);
+			if (!alias.empty())
+				cmdname = alias;
+			string const newtype = cmd.getArg(1);
+			status.setEnabled(isCompatibleCommand(newtype));
+			status.setOnOff(newtype == cmdname);
+		}
+		status.setEnabled(true);
+		return true;
+	default:
+		return InsetCommand::getStatus(cur, cmd, status);
+	}
+}
+
+
 bool InsetCitation::addKey(string const & key)
 {
 	docstring const ukey = from_utf8(key);
@@ -185,7 +209,8 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 namespace {
 
 
-CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> const & valid_styles)
+CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
+				  vector<CitationStyle> const & valid_styles)
 {
 	CitationStyle cs = valid_styles[0];
 	cs.forceUpperCase = false;
@@ -200,11 +225,15 @@ CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> co
 	if (input[n] == '*')
 		normalized_input = normalized_input.substr(0, n);
 
+	string const alias = bp.getCiteAlias(normalized_input);
+	if (!alias.empty())
+		normalized_input = alias;
+
 	vector<CitationStyle>::const_iterator it  = valid_styles.begin();
 	vector<CitationStyle>::const_iterator end = valid_styles.end();
 	for (; it != end; ++it) {
 		CitationStyle this_cs = *it;
-		if (this_cs.cmd == normalized_input) {
+		if (this_cs.name == normalized_input) {
 			cs = *it;
 			break;
 		}
@@ -266,6 +295,11 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	if (cite_type[cite_type.size() - 1] == '*')
 		// and this would mean FULL
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
+
+	// handle alias
+	string const alias = buf.params().getCiteAlias(cite_type);
+	if (!alias.empty())
+		cite_type = alias;
 
 	docstring const & before = getParam("before");
 	docstring const & after = getParam("after");
@@ -414,10 +448,10 @@ void InsetCitation::forOutliner(docstring & os, size_t const, bool const) const
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
 	vector<CitationStyle> citation_styles = buffer().params().citeStyles();
-	CitationStyle cs = asValidLatexCommand(getCmdName(), citation_styles);
+	CitationStyle cs = asValidLatexCommand(buffer().params(), getCmdName(), citation_styles);
 	BiblioInfo const & bi = buffer().masterBibInfo();
 	// FIXME UNICODE
-	docstring const cite_str = from_utf8(citationStyleToString(cs));
+	docstring const cite_str = from_utf8(citationStyleToString(cs, true));
 
 	if (runparams.inulemcmd > 0)
 		os << "\\mbox{";

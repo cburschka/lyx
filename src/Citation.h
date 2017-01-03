@@ -30,10 +30,12 @@ class CitationStyle
 {
 public:
 	///
-	CitationStyle() : cmd("cite"), forceUpperCase(false), fullAuthorList(false),
-		textAfter(false), textBefore(false) {}
+	CitationStyle() : name("cite"), cmd("cite"), forceUpperCase(false),
+		fullAuthorList(false), textAfter(false), textBefore(false) {}
 
-	/// the LaTeX command
+	/// the LyX name
+	std::string name;
+	/// the LaTeX command (might differ from the LyX name)
 	std::string cmd;
 	/// upper casing author prefixes (van -> Van)
 	bool forceUpperCase;

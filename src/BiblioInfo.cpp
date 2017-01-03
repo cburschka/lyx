@@ -1019,7 +1019,7 @@ vector<docstring> const BiblioInfo::getCiteStrings(
 	string style;
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
-		style = styles[i].cmd;
+		style = styles[i].name;
 		vec[i] = getLabel(keys, buf, style, false, max_size, before, after, dialog);
 	}
 
@@ -1181,32 +1181,35 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 //////////////////////////////////////////////////////////////////////
 
 
-CitationStyle citationStyleFromString(string const & command)
+CitationStyle citationStyleFromString(string const & command,
+				      BufferParams const & params)
 {
 	CitationStyle cs;
 	if (command.empty())
 		return cs;
 
-	string cmd = command;
-	if (isUpperCase(cmd[0])) {
+	string const alias = params.getCiteAlias(command);
+	string cmd = alias.empty() ? command : alias;
+	if (isUpperCase(command[0])) {
 		cs.forceUpperCase = true;
 		cmd[0] = lowercase(cmd[0]);
 	}
 
-	size_t const n = cmd.size() - 1;
-	if (cmd[n] == '*') {
+	size_t const n = command.size() - 1;
+	if (command[n] == '*') {
 		cs.fullAuthorList = true;
-		cmd = cmd.substr(0, n);
+		if (suffixIs(cmd, '*'))
+			cmd = cmd.substr(0, cmd.size() - 1);
 	}
 
-	cs.cmd = cmd;
+	cs.name = cmd;
 	return cs;
 }
 
 
-string citationStyleToString(const CitationStyle & cs)
+string citationStyleToString(const CitationStyle & cs, bool const latex)
 {
-	string cmd = cs.cmd;
+	string cmd = latex ? cs.cmd : cs.name;
 	if (cs.forceUpperCase)
 		cmd[0] = uppercase(cmd[0]);
 	if (cs.fullAuthorList)

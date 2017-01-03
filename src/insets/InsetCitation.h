@@ -46,6 +46,8 @@ public:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+	///
 	InsetCode lyxCode() const { return CITE_CODE; }
 	///
 	void latex(otexstream &, OutputParams const &) const;

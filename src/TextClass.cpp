@@ -1036,7 +1036,6 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 			getout = true;
 			continue;
 		}
-		string cmd;
 		CitationStyle cs;
 		char ichar = def[0];
 		if (ichar == '#')
@@ -1046,20 +1045,56 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 			def[0] = lowercase(ichar);
 		}
 
+		/** For portability reasons (between different
+		 *  cite engines such as natbib and biblatex),
+		 *  we distinguish between:
+		 *  1. The LyX name as output in the LyX file
+		 *  2. Possible aliases that might fall back to
+		 *     the given LyX name in the current engine
+		 *  3. The actual LaTeX command that is output
+		 *  (2) and (3) are optional.
+		 *  The syntax is:
+		 *  LyXName|alias,nextalias*[][]=latexcmd
+		 */
+		enum ScanMode {
+			LyXName,
+			Alias,
+			LaTeXCmd
+		};
+
+		ScanMode mode = LyXName;
+		string lyx_cmd;
+		string alias;
+		string latex_cmd;
 		size_t const n = def.size();
 		for (size_t i = 0; i != n; ++i) {
 			ichar = def[i];
-			if (ichar == '*')
+			if (ichar == '|')
+				mode = Alias;
+			else if (ichar == '=')
+				mode = LaTeXCmd;
+			else if (mode == LaTeXCmd)
+				latex_cmd += ichar;
+			else if (ichar == '*')
 				cs.fullAuthorList = true;
 			else if (ichar == '[' && cs.textAfter)
 				cs.textBefore = true;
 			else if (ichar == '[')
 				cs.textAfter = true;
-			else if (ichar != ']')
-				cmd += ichar;
+			else if (ichar != ']') {
+				if (mode == Alias)
+					alias += ichar;
+				else
+					lyx_cmd += ichar;
+			}
 		}
-
-		cs.cmd = cmd;
+		cs.name = lyx_cmd;
+		cs.cmd = latex_cmd.empty() ? lyx_cmd : latex_cmd;
+		if (!alias.empty()) {
+			vector<string> const aliases = getVectorFromString(alias);
+			for (string const &s: aliases)
+				cite_command_aliases_[s] = lyx_cmd;
+		}
 		if (type & ENGINE_TYPE_AUTHORYEAR)
 			cite_styles_[ENGINE_TYPE_AUTHORYEAR].push_back(cs);
 		if (type & ENGINE_TYPE_NUMERICAL)
@@ -1792,7 +1827,7 @@ vector<string> const DocumentClass::citeCommands(
 	vector<string> cmds;
 	for (; it != end; ++it) {
 		CitationStyle const cite = *it;
-		cmds.push_back(cite.cmd);
+		cmds.push_back(cite.name);
 	}
 	return cmds;
 }

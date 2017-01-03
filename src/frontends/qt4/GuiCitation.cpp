@@ -555,7 +555,8 @@ void GuiCitation::init()
 
 	// Initialize the citation formatting
 	string const & cmd = params_.getCmdName();
-	CitationStyle const cs = citationStyleFromString(cmd);
+	CitationStyle const cs =
+		citationStyleFromString(cmd, documentBuffer().params());
 	forceuppercaseCB->setChecked(cs.forceUpperCase);
 	fulllistCB->setChecked(cs.fullAuthorList &&
 		documentBuffer().params().fullAuthorList());
@@ -576,7 +577,7 @@ void GuiCitation::init()
 		// Find the citation style
 		vector<string> const & cmds = citeCmds_;
 		vector<string>::const_iterator cit =
-			std::find(cmds.begin(), cmds.end(), cs.cmd);
+			std::find(cmds.begin(), cmds.end(), cs.name);
 		int i = 0;
 		if (cit != cmds.end())
 			i = int(cit - cmds.begin());

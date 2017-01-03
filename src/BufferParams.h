@@ -471,6 +471,8 @@ public:
 	std::string const & defaultBiblioStyle() const;
 	/// whether the BibTeX style supports full author lists
 	bool const & fullAuthorList() const;
+	/// Check if a citation style is an alias to another style
+	std::string getCiteAlias(std::string const & s) const;
 
 	/// options for pdf output
 	PDFOptions & pdfoptions();

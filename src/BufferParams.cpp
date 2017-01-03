@@ -3251,6 +3251,15 @@ bool const & BufferParams::fullAuthorList() const
 }
 
 
+string BufferParams::getCiteAlias(string const & s) const
+{
+	map<string,string> aliases = documentClass().citeCommandAliases();
+	if (aliases.find(s) != aliases.end())
+		return aliases[s];
+	return string();
+}
+
+
 void BufferParams::setCiteEngine(string const & engine)
 {
 	clearCiteEngine();
@@ -3271,7 +3280,7 @@ vector<string> BufferParams::citeCommands() const
 	vector<string> commands =
 		documentClass().citeCommands(citeEngineType());
 	if (commands.empty())
-		commands.push_back(default_style.cmd);
+		commands.push_back(default_style.name);
 	return commands;
 }
 
