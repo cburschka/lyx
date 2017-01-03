@@ -80,7 +80,7 @@ public:
 	///
 	static std::string defaultCommand() { return "cite"; }
 	///
-	static bool isCompatibleCommand(std::string const & cmd);
+	static bool isCompatibleCommand(std::string const &);
 	//@}
 
 private:

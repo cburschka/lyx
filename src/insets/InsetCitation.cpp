@@ -61,8 +61,8 @@ InsetCitation::~InsetCitation()
 
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
-	// standard cite does only take one argument if jurabib is
-	// not used, but jurabib extends this to two arguments, so
+	// standard cite does only take one argument, but biblatex, jurabib
+	// and natbib extend this to two arguments, so
 	// we have to allow both here. InsetCitation takes care that
 	// LaTeX output is nevertheless correct.
 	if (param_info_.empty()) {
@@ -74,44 +74,11 @@ ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 }
 
 
-namespace {
-
-vector<string> const init_possible_cite_commands()
+// We allow any command here, since we fall back to cite
+// anyway if a command is not allowed by a style
+bool InsetCitation::isCompatibleCommand(string const &)
 {
-	char const * const possible[] = {
-		"cite", "nocite", "citet", "citep", "citealt", "citealp",
-		"citeauthor", "citeyear", "citeyearpar",
-		"citet*", "citep*", "citealt*", "citealp*", "citeauthor*",
-		"Citet",  "Citep",  "Citealt",  "Citealp",  "Citeauthor",
-		"Citet*", "Citep*", "Citealt*", "Citealp*", "Citeauthor*",
-		"fullcite",
-		"footcite", "footcitet", "footcitep", "footcitealt",
-		"footcitealp", "footciteauthor", "footciteyear", "footciteyearpar",
-		"citefield", "citetitle", "cite*"
-	};
-	size_t const size_possible = sizeof(possible) / sizeof(possible[0]);
-
-	return vector<string>(possible, possible + size_possible);
-}
-
-
-vector<string> const & possibleCiteCommands()
-{
-	static vector<string> const possible = init_possible_cite_commands();
-	return possible;
-}
-
-
-} // anon namespace
-
-
-// FIXME: use the citeCommands provided by the TextClass
-// instead of possibleCiteCommands defined in this file.
-bool InsetCitation::isCompatibleCommand(string const & cmd)
-{
-	vector<string> const & possibles = possibleCiteCommands();
-	vector<string>::const_iterator const end = possibles.end();
-	return find(possibles.begin(), end, cmd) != end;
+	return true;
 }
 
 
@@ -214,8 +181,6 @@ CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 {
 	CitationStyle cs = valid_styles[0];
 	cs.forceUpperCase = false;
-	if (!InsetCitation::isCompatibleCommand(input))
-		return cs;
 	cs.hasStarredVersion = false;
 
 	string normalized_input = input;
