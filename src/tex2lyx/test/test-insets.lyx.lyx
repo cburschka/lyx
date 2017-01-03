@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 525
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -184,6 +184,8 @@ name "lab:test"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -208,6 +210,8 @@ Of course there are other kind of references, like page reference
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -220,6 +224,8 @@ reference "lab:test"
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -232,6 +238,8 @@ reference "lab:test"
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -244,6 +252,8 @@ reference "lab:test"
 \begin_inset CommandInset ref
 LatexCommand vpageref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -256,6 +266,8 @@ reference "lab:test"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -268,6 +280,8 @@ reference "lab:test"
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "lab:test"
+plural "false"
+caps "false"
 
 \end_inset
 

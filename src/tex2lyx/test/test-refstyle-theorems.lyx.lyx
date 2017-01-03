@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 525
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -95,6 +95,8 @@ name "part:part"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "part:part"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -117,6 +119,8 @@ name "chap:chapter"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "chap:chapter"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -139,6 +143,8 @@ name "sec:Section"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Section"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -161,6 +167,8 @@ Ref to
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "subsec:subsection"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -183,6 +191,8 @@ Ref to
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "subsec:Subsubsection"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -205,6 +215,8 @@ name "par:paragraph"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "par:paragraph"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -227,6 +239,8 @@ name "par:subparagraph"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "par:subparagraph"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -283,6 +297,8 @@ name "fig:figure"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:figure"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -339,6 +355,8 @@ name "tab:table"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "tab:table"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -395,6 +413,8 @@ name "alg:algorithm"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "alg:algorithm"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -428,6 +448,8 @@ name "fn:foot"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fn:foot"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -461,6 +483,8 @@ name "margin"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "margin"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -483,6 +507,8 @@ name "enu:item"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "enu:item"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -504,6 +530,8 @@ A=B\label{eq:A=00003DB}
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:A=00003DB"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -526,6 +554,8 @@ name "lem:lemma"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lem:lemma"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -548,6 +578,8 @@ name "thm:theorem"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "thm:theorem"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -570,6 +602,8 @@ name "cor:corollary"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "cor:corollary"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -592,6 +626,8 @@ name "prop:proposition"
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "prop:proposition"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -614,6 +650,8 @@ name "conjecture"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "conjecture"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -636,6 +674,8 @@ name "fact"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fact"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -658,6 +698,8 @@ name "definition"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "definition"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -680,6 +722,8 @@ name "example"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "example"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -702,6 +746,8 @@ name "problem"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "problem"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -724,6 +770,8 @@ name "exercise"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "exercise"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -746,6 +794,8 @@ name "remark"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "remark"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -768,6 +818,8 @@ name "claim"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "claim"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -790,6 +842,8 @@ name "proof"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "proof"
+plural "false"
+caps "false"
 
 \end_inset
 

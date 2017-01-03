@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 525
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -423,6 +423,8 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:mysection"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -430,6 +432,8 @@ reference "sec:mysection"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:mysection"
+plural "false"
+caps "false"
 
 \end_inset
 
