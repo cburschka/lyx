@@ -3253,6 +3253,11 @@ bool const & BufferParams::fullAuthorList() const
 
 string BufferParams::getCiteAlias(string const & s) const
 {
+	vector<string> commands =
+		documentClass().citeCommands(citeEngineType());
+	// If it is a real command, don't treat it as an alias
+	if (find(commands.begin(), commands.end(), s) != commands.end())
+		return string();
 	map<string,string> aliases = documentClass().citeCommandAliases();
 	if (aliases.find(s) != aliases.end())
 		return aliases[s];
