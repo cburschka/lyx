@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 518
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -224,7 +224,8 @@ graphicboxes
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -234,6 +235,7 @@ graphicboxes
 \html_css_as_file 0
 \html_be_strict false
 \author 227574939 "Kyttj"
+\author 424524441 "rgheck"
 \author 2047637253 "Guillaume Munch"
 \end_header
 
@@ -26290,6 +26292,20 @@ key "prettyref,refstyle"
 \end_inset
 
 .
+\change_inserted 424524441 1483414725
+
+\begin_inset Newline newline
+\end_inset
+
+The `Plural' and `Capitalized' options will be available with formatted
+ references only if you are using the 
+\series bold
+refstyle
+\series default
+ package.
+ See its documentation, again, for more information.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -26304,6 +26320,23 @@ reference "fig:Two-distorted-images"
 
 \end_inset
 
+
+\change_inserted 424524441 1483414735
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 424524441 1483414742
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference.
+ This allows for customization, using ERT, if you want to issue a command
+ that LyX does not support.z
+\change_unchanged
 
 \end_layout
 
