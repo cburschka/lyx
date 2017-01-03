@@ -1041,9 +1041,9 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 		char ichar = def[0];
 		if (ichar == '#')
 			continue;
-		if (ichar == 'C') {
+		if (isUpperCase(ichar)) {
 			cs.forceUpperCase = true;
-			def[0] = 'c';
+			def[0] = lowercase(ichar);
 		}
 
 		size_t const n = def.size();

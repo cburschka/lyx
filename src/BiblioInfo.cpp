@@ -1188,9 +1188,9 @@ CitationStyle citationStyleFromString(string const & command)
 		return cs;
 
 	string cmd = command;
-	if (cmd[0] == 'C') {
+	if (isUpperCase(cmd[0])) {
 		cs.forceUpperCase = true;
-		cmd[0] = 'c';
+		cmd[0] = lowercase(cmd[0]);
 	}
 
 	size_t const n = cmd.size() - 1;

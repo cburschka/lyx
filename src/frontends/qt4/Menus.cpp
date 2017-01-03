@@ -1547,7 +1547,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	docstring const & after = citinset->getParam("after");
 
 	size_t const n = cmd.size();
-	bool const force = cmd[0] == 'C';
+	bool const force = isUpperCase(cmd[0]);
 	bool const full = cmd[n] == '*';
 
 	vector<docstring> const keys = getVectorFromString(key);

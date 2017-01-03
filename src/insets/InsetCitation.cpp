@@ -167,7 +167,7 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 	vector<docstring> keys = getVectorFromString(key);
 	if (keys.size() == 1)
-		return  bi.getInfo(keys[0], buffer(), true);
+		return bi.getInfo(keys[0], buffer(), true);
 
 	docstring tip;
 	tip += "<ol>";
@@ -195,8 +195,8 @@ CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> co
 
 	string normalized_input = input;
 	string::size_type const n = input.size() - 1;
-	if (input[0] == 'C')
-		normalized_input[0] = 'c';
+	if (isUpperCase(input[0]))
+		normalized_input[0] = lowercase(input[0]);
 	if (input[n] == '*')
 		normalized_input = normalized_input.substr(0, n);
 
@@ -210,7 +210,7 @@ CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> co
 		}
 	}
 
-	cs.forceUpperCase &= input[0] == 'C';
+	cs.forceUpperCase &= input[0] == uppercase(input[0]);
 	cs.fullAuthorList &= input[n] == '*';
 
 	return cs;
@@ -260,9 +260,9 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 
 	// We don't currently use the full or forceUCase fields.
 	string cite_type = getCmdName();
-	if (cite_type[0] == 'C')
+	if (isUpperCase(cite_type[0]))
 		// If we were going to use them, this would mean ForceUCase
-		cite_type = string(1, 'c') + cite_type.substr(1);
+		cite_type[0] = lowercase(cite_type[0]);
 	if (cite_type[cite_type.size() - 1] == '*')
 		// and this would mean FULL
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
