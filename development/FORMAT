@@ -5,11 +5,17 @@ Please keep the entries informative enough, i.e. try to indicate what
 changes happened in particular if possible. A good example would be
 2010-01-10 entry.
 
-Please also indicate the revision at which your change was committed.
-This will help later people understand what you did, especially as
-adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
-
 -----------------------
+
+2017-01-02 Richard Heck <rgheck@lyx.org>
+	* Format incremented to 526: Support plural and capitalize options
+	  for refstyle-based references
+	  - plural "bool"
+	  - caps "bool"
+
+2017-01-02 Richard Heck <rgheck@lyx.org>
+	* Format incremented to 525: Label only option for references
+	  - LaTeXCommand labelonly
 
 2016-12-29 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 524: Support Crimson/Cochineal fonts
