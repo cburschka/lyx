@@ -13,10 +13,57 @@ Format 62
 
 Requires natbib
 
+# The framework (biblatex|bibtex)
 CiteFramework bibtex
+
+# Cite style variants (default|authoryear|natbib)
+# We provide both authoryear and numerical citations
 CiteEngineType authoryear|numerical
+
+# Default style files for either engine type
 DefaultBiblio  authoryear:plainnat|numerical:plainnat
 
+
+# The syntax of the cite command definitions below is:
+# LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
+# 
+# * LyXName:  The LyX name as output in the LyX file. For
+#             portability reasons, we try to use the same
+#             name for same-formatted commands in the
+#             different engines (thus many names stem from
+#             natbib).
+# * Alias:    A (comma-separated) list of commands that fall
+#             back to the given LyX name in the current engine.
+#             This is a bit like "ObsoletedBy" in the layouts.
+# * latexcmd: The actual LaTeX command that is output.
+#
+# Alias and latexcmd are optional. If no latexcmd is given, the
+# LyXName will be output to LaTeX.
+#
+# Note further:
+#
+# * Capitalization indicates that the command also has a capitalized
+#   form (\Latexcmd vs. \latexcmd). These usually enforce upcasing of
+#   name prefixes (von Goethe => Von Goethe).
+# * Brackets [] indicate the number of optional arguments (0, 1, 2).
+# * The star * indicates there is a starred version of the command
+#   (\latexcmd* vs. \latexcmd). By default, the starred version means:
+#   Expand the author list even if the maxnames setting would cause
+#   BibTeX/Biber to shorten it with "et al.".
+#   If the star has a different meaning for a command, it can be
+#   specified in angle brackets: <!_stardesc!_stardesctooltip>.
+#   Maximal two translatable macro keywords, marked by the prefix '!_',
+#   can be given. The first points to the string that replaces the
+#   "Full aut&hor list" checkbox label in the Citation dialog, the
+#   second one an optional tooltip for this checkbox. Note that these
+#   two macros have to be defined in the CiteFormat section (see below),
+#   dropping the '!' from the prefix (see below), e.g.:
+#   _stardesc Starred command label
+#   _stardesctooltip Tooltip for the starred command checkbox.
+
+#
+# CITE COMMAND DEFINITIONS for either engine type
+#
 CiteEngine authoryear
 	Citet*[][]
 	Citep*[][]
@@ -39,113 +86,151 @@ CiteEngine numerical
 	nocite
 End
 
+
+#
+# CITE FORMAT
+#
+
+# The following defines how the commands are represented in the GUI
+# (inset button and citation dialog) as well as in XHTML, docbook and
+# plain text output.
+#
+# There are common definitions (default) and specific definitions for
+# either cite engine type (which overwrite existing defaults.
+#
 CiteFormat default
-	# Translatable bits
+	#
+	# MACROS
+	#
+	# 1. Translatable bits (need to be marked by _ prefix)
+	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
 
+	#
+	# 2. Macros re-used in the style definitions
+	#
 	# A link that lets us jump to the bibliography entry in LyXHTML
 	# %clean:key% will be substituted by the cite key to give a unique id
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
-	# Abbreviated author (with et al.) or "??" if there is no author
+	# "Author et al." or "??"
 	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
-	# Prenote: "cf. "
+	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
-	# Postnote: ", p. xx"
+	# ", postnote"
 	!textafter {%textafter%[[, %textafter%]]}
 	# Add a year if it exists (else "??") and possibly a modifier (as in 2017a)
 	!year {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 
-	# ...; Author...
+	# "...; Author..."
 	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
-	# ..., CiteKey...
+	# "..., CiteKey..."
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
-	# ..., Year...
+	# "..., Year..."
 	!nextyear {%next%[[%!sep% %!startlink%%!year%%!endlink%%!nextyear%]]}
 
-	## The actual cite styles (identical in authoryear and numerical except for the separator) ##
-	# (cf. Year; NextYear, p. xx) [Authoryear] / (cf. Year, NextYear, p. xx) [Numerical]
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (identical in authoryear and numerical)
+	#
+
+	# "(cf. Year; NextYear, p. xx)" [Authoryear] / "(cf. Year, NextYear, p. xx)" [Numerical]
 	citeyearpar %!open%%!textbefore%%!startlink%%!year%%!endlink%%!nextyear%%!textafter%%!close%
-	# Add to bibliography only. / [ID] (not cited)
+	# "Add to bibliography only." (dialog) / "[ID] (not cited)" (button)
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
 End
 
 CiteFormat authoryear
-	# Macros
+	#
+	# MACROS
+	#
 	!open (
 	!sep ;
 	!close )
 
-	# Author et al. (cf. Year...
+	# "Author et al. (cf. Year..."
 	!makecitet %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nextcitet%
-	# Author et al. cf. Year... [sic!]
+	# "Author et al. cf. Year..." [sic!]
 	!makecitealt %!startlink%%!abbrvauthor% %!textbefore%%!year%%!endlink%%!nextcitealt%
-	# Author et al., Year...
+	# "Author et al., Year..."
 	!makecitealp %!startlink%%!abbrvauthor%, %!year%%!endlink%%!nextcitealp%
 
-	# ...); Nextauthor (Year...
+	# "...); Nextauthor (Year..."
 	!nextcitet {%next%[[%!close%%!sep% %!startlink%%!abbrvauthor%%!endlink% %!open%%!year%%!nextcitet%]]}
-	# ...; NextAuthor et al. Year...
+	# "...; NextAuthor et al. Year..."
 	!nextcitealt {%next%[[%!sep% %!makecitealt%]]}
-	# ...; NextAuthor et al., Year...
+	# "...; NextAuthor et al., Year..."
 	!nextcitealp {%next%[[%!sep% %!makecitealp%]]}
 
-	## The actual cite styles (additions and modifications to default) ##
-	# Author (cf. Year); NextAuthor (Year, p. xx)
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (additions and modifications to default)
+	#
+
+	# "Author (cf. Year); NextAuthor (Year, p. xx)"
 	citet %!makecitet%%!textafter%%!close%
-	# (cf. Author et al., Year; NextAuthor et al., Year, p. xx)
+	# "(cf. Author et al., Year; NextAuthor et al., Year, p. xx)"
 	citep %!open%%!textbefore%%!makecitealp%%!textafter%%!close%
-	# cf. Author et al., Year; NextAuthor et al., Year, p. xx
+	# "cf. Author et al., Year; NextAuthor et al., Year, p. xx"
 	citealp %!textbefore%%!makecitealp%%!textafter%
-	# Author cf. Year; NextAuthor Year, p. xx [sic!]
+	# "Author cf. Year; NextAuthor Year, p. xx" [sic!]
 	citealt %!makecitealt%%!textafter%
-	# Author; NextAuthor, p. xx
+	# "Author; NextAuthor, p. xx"
 	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%%!textafter%
-	# Year; NextYear, p. xx
+	# "Year; NextYear, p. xx"
 	citeyear %!startlink%%!year%%!endlink%%!nextyear%%!textafter%
 
-	# Fallback style: Author (cf. Year); NextAuthor (Year, p. xx)
+	# Fallback style: "Author (cf. Year); NextAuthor (Year, p. xx)"
 	cite %!makecitet%%!textafter%%!close%
 End
 
 CiteFormat numerical
-	# Macros
+	#
+	# MACROS
+	#
 	!open [
 	!sep ,
 	!close ]
 
-	# Author [cf. ID...
+	# "Author [cf. ID..."
 	!makecitet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
-	# Author cf. ID...
+	# "Author cf. ID..."
 	!makecitealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
-	# ID...
+	# "ID..."
 	!hashkey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
-	# ...], NextAuthor [ID...
+	# "...], NextAuthor [ID..."
 	!nextcitet {%next%[[%!close%%!sep% %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
-	# ..., NextAuthor ID...
+	# "..., NextAuthor ID..."
 	!nextcitealt {%next%[[%!sep% %!abbrvauthor% {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%]]}
 	# FIXME: What is this?
 	!nexthashid {%next%[[%!sep% #ID%!nexthashid%]]}
-	# ..., NextID...
+	# "..., NextID..."
 	!nexthashkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
-	## The actual cite styles (additions and modifications to default) ##
-	# [cf. ID, NextID, p. xx]
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (additions and modifications to default)
+	#
+
+	# "[cf. ID, NextID, p. xx]"
 	citep %!open%%!textbefore%%!hashkey%%!textafter%%!close%
-	# Author [cf. ID], Nextauthor [NextID, p. xx]
+	# "Author [cf. ID], Nextauthor [NextID, p. xx]"
 	citet %!makecitet%%!textafter%%!close%
-	# cf. ID, NextID, p. xx
+	# "cf. ID, NextID, p. xx"
 	citealp %!textbefore%%!hashkey%%!textafter%
-	# Author cf. ID, NextAuthor ID, p. xx
+	# "Author cf. ID, NextAuthor ID, p. xx"
 	citealt %!makecitealt%%!textafter%
-	# Author, NextAuthor
+	# "Author, NextAuthor"
 	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%
-	# Year, NextYear
+	# "Year, NextYear"
 	citeyear %!startlink%%!year%%!endlink%%!nextyear%
 
-	# Fallback style: [cf. ID, NextID, p. xx]
+	# Fallback style: "[cf. ID, NextID, p. xx]"
 	cite %!open%%!textbefore%%!hashkey%%!textafter%%!close%
 End

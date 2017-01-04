@@ -9,21 +9,47 @@
 
 Format 62
 
+# The framework (biblatex|bibtex)
 CiteFramework bibtex
+
+# Cite style variants (default|authoryear|natbib)
+# We provide only default citations
 CiteEngineType default
+
+# Default style file
 DefaultBiblio  plain
+
+#
+# CITE COMMAND DEFINITIONS for either engine type
+#
+# (cf. natbib.citeengine for a decription of the syntax)
 
 CiteEngine default
 	cite[]
 	nocite
 End
 
+
+#
+# CITE FORMAT
+#
+
+# The following defines how the commands are represented in the GUI
+# (inset button and citation dialog) as well as in XHTML, docbook and
+# plain text output.
+#
 CiteFormat default
-	# Translatable bits
+	#
+	# MACROS
+	#
+	# 1. Translatable bits (need to be marked by _ prefix)
+	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
 
-	# Macros
+	#
+	# 2. Macros re-used in the style definitions
+	#
 	!open [
 	!sep ,
 	!close ]
@@ -33,22 +59,25 @@ CiteFormat default
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
-	# Start citation: ID...
+	# "ID..."
 	!makecite %!startlink%{%label%[[%label%]][[{%numericallabel%[[%numericallabel%]][[#%key%]]}]]}%!endlink%%!nextcite%
 
-	# Follow-up citations: ..., NextID...
+	# "..., NextID..."
 	!nextcite {%next%[[%!sep% %!makecite%]]}
 	# FIXME: what is this?
 	!nexthashkey {%next%[[%!sep% #%key%%!nexthashkey%]]}
-	# Simply the cite key(s): Key, NextKey, ...
+	# "..., NextKey..."
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
 
-	# Postnote: ", p. xx"
+	# ", postnote"
 	!textafter {%textafter%[[, %textafter%]]}
 
-	## The actual cite styles ##
-	# \cite: [ID, NextID, ..., p. xx]
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+
+	# "[ID, NextID, ..., p. xx]"
 	cite %!open%{%dialog%[[#ID]][[%!makecite%]]}%!textafter%%!close%
-	# \nocite: "Add to bibliography only." (dialog) / "Key, Nextkey (not cited)" (inset)
+	# "Add to bibliography only." (dialog) / "[ID] (not cited)" (button)
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
 End
