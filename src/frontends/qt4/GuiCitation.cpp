@@ -270,21 +270,20 @@ void GuiCitation::updateFormatting(CitationStyle currentStyle)
 	if (starred && !currentStyle.stardesc.empty()) {
 		string val =
 			bp.documentClass().getCiteMacro(bp.citeEngineType(), currentStyle.stardesc);
+		docstring guistring;
 		if (!val.empty()) {
-			docstring const trans =
-				translateIfPossible(from_utf8(val));
-			starredCB->setText(toqstr(trans));
+			guistring = translateIfPossible(from_utf8(val));
+			starredCB->setText(toqstr(guistring));
 			starredCB->setEnabled(haveSelection);
 		}
 		if (!currentStyle.startooltip.empty()) {
 			val = bp.documentClass().getCiteMacro(bp.citeEngineType(),
 							      currentStyle.startooltip);
-			if (!val.empty()) {
-				docstring const trans =
-					translateIfPossible(from_utf8(val));
-				starredCB->setToolTip(toqstr(trans));
-			}
+			if (!val.empty())
+				guistring = translateIfPossible(from_utf8(val));
 		}
+		// Tooltip might also be empty
+		starredCB->setToolTip(toqstr(guistring));
 	} else {
 		// This is the default meaning of the starred commands
 		starredCB->setText(qt_("All aut&hors"));
