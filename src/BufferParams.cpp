@@ -3241,7 +3241,7 @@ bool BufferParams::addCiteEngine(vector<string> const & engine)
 string const & BufferParams::defaultBiblioStyle() const
 {
 	map<string, string> bs = documentClass().defaultBiblioStyle();
-	return bs[documentClass().opt_enginetype()];
+	return bs[theCiteEnginesList.getTypeAsString(citeEngineType())];
 }
 
 

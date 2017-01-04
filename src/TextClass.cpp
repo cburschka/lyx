@@ -772,9 +772,12 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				vector<string>::const_iterator it  = dbs.begin();
 				vector<string>::const_iterator end = dbs.end();
 				for (; it != end; ++it) {
-					if (!contains(*it, ':'))
-						cite_default_biblio_style_[opt_enginetype_] = *it;
-					else {
+					if (!contains(*it, ':')) {
+						vector<string> const enginetypes =
+							getVectorFromString(opt_enginetype_, "|");
+						for (string const &s: enginetypes)
+							cite_default_biblio_style_[s] = *it;
+					} else {
 						string eng;
 						string const db = split(*it, eng, ':');
 						cite_default_biblio_style_[eng] = db;
