@@ -385,6 +385,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout9">
      <item>
       <widget class="QCheckBox" name="pluralCB">
+        <property name="toolTip">
+          <string>Use plural form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
+       </property>
        <property name="text">
         <string>Plural</string>
        </property>
@@ -392,6 +395,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="capsCB">
+       <property name="toolTip">
+        <string>Use capitalized form of formatted reference. (Works only for formatted references, and only if you are using refstyle.)</string>
+       </property>
        <property name="text">
         <string>Capitalized</string>
        </property>

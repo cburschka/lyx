@@ -276,13 +276,16 @@ int InsetMathScript::nker(BufferView const * bv) const
 MathClass InsetMathScript::mathClass() const
 {
 	// FIXME: this is a hack, since the class will not be correct if
-	// the nucleus has several elements.
+	// the nucleus has several elements or if the last element is a math macro
+	// or a macro argument proxy.
 	// The correct implementation would require to linearize the nucleus.
 	if (nuc().empty())
 		return MC_ORD;
-	else
+	else {
 		// return the class of last element since this is the one that counts.
-		return nuc().back()->mathClass();
+		MathClass mc = nuc().back()->mathClass();
+		return (mc == MC_UNKNOWN) ? MC_ORD : mc;
+	}
 }
 
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 526
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -51,6 +51,7 @@ shapepar
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -103,7 +104,8 @@ shapepar
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language german
+\quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -777,8 +779,10 @@ tex2lyx
 -Datei einsetzen
  wollen, lesen Sie Abschnitt 
 \begin_inset CommandInset ref
-LatexCommand vref
+LatexCommand formatted
 reference "sec:LaTeX-Code"
+plural "false"
+caps "false"
 
 \end_inset
 
@@ -8281,7 +8285,6 @@ aa.cls
 
 \begin_layout Standard
 \align center
-
 \begin_inset Flex URL
 status collapsed
 
@@ -14066,8 +14069,6 @@ Unsichtbarer Text
 
 \family sans
 SichtbarerText
-\family default
-
 \end_layout
 
 \begin_deeper
@@ -15951,8 +15952,6 @@ Left
 \end_inset
 
 Header
-\family default
-
 \end_layout
 
 \begin_deeper
