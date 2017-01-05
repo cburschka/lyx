@@ -59,7 +59,7 @@ public:
 	struct Element
 	{
 		///
-		Element(Type t, MathClass mc = MC_UNKNOWN);
+		Element(MetricsInfo const & mi, Type t, MathClass mc = MC_UNKNOWN);
 
 		/// Classifies the contents of the object
 		Type type;
@@ -67,6 +67,8 @@ public:
 		MathClass mclass;
 		/// the spacing around the element
 		int before, after;
+		/// count wether the current mathdata is nested in macro(s)
+		int macro_nesting;
 
 		/// When type is INSET
 		/// the math inset

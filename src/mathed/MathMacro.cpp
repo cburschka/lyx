@@ -85,7 +85,7 @@ public:
 		Changer chg = make_change(mi.base.macro_nesting,
 		                          mathMacro_->nesting() == 1 ? 0 : mathMacro_->nesting());
 
-		MathRow::Element e_beg(MathRow::BEG_ARG);
+		MathRow::Element e_beg(mi, MathRow::BEG_ARG);
 		e_beg.macro = mathMacro_;
 		e_beg.ar = &mathMacro_->cell(idx_);
 		mrow.push_back(e_beg);
@@ -98,13 +98,13 @@ public:
 		// then we insert a box instead.
 		if (!has_contents && mathMacro_->nesting() == 1) {
 			// mathclass is ord because it should be spaced as a normal atom
-			MathRow::Element e(MathRow::BOX, MC_ORD);
+			MathRow::Element e(mi, MathRow::BOX, MC_ORD);
 			e.color = Color_mathline;
 			mrow.push_back(e);
 			has_contents = true;
 		}
 
-		MathRow::Element e_end(MathRow::END_ARG);
+		MathRow::Element e_end(mi, MathRow::END_ARG);
 		e_end.macro = mathMacro_;
 		e_end.ar = &mathMacro_->cell(idx_);
 
@@ -308,7 +308,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	    || d->editing_[mi.base.bv])
 		return InsetMath::addToMathRow(mrow, mi);
 
-	MathRow::Element e_beg(MathRow::BEG_MACRO);
+	MathRow::Element e_beg(mi, MathRow::BEG_MACRO);
 	e_beg.macro = this;
 	mrow.push_back(e_beg);
 
@@ -320,13 +320,13 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// insert a grey box instead.
 	if (!has_contents && mi.base.macro_nesting == 1) {
 		// mathclass is unknown because it is irrelevant for spacing
-		MathRow::Element e(MathRow::BOX);
+		MathRow::Element e(mi, MathRow::BOX);
 		e.color = Color_mathmacroblend;
 		mrow.push_back(e);
 		has_contents = true;
 	}
 
-	MathRow::Element e_end(MathRow::END_MACRO);
+	MathRow::Element e_end(mi, MathRow::END_MACRO);
 	e_end.macro = this;
 	mrow.push_back(e_end);
 
