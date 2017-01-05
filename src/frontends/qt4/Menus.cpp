@@ -1675,186 +1675,106 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 	map<string, docstring>::const_iterator qq = styles.begin();
 	map<string, docstring>::const_iterator end = styles.end();
 
-	MenuDefinition eqs;
-	MenuDefinition sqs;
-	MenuDefinition gqs;
-	MenuDefinition pqs;
-	MenuDefinition cqs;
 	MenuDefinition aqs;
-	MenuDefinition qqs;
-	MenuDefinition bqs;
-	MenuDefinition wqs;
-	MenuDefinition fqs;
-	MenuDefinition iqs;
-	MenuDefinition rqs;
-	MenuDefinition jqs;
-	MenuDefinition kqs;
-	MenuDefinition xqs;
-	InsetQuotesParams::QuoteStyle globalqs =
-			bv->buffer().masterBuffer()->params().quotes_style;
-	FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xld"));
-	docstring desc = bformat(_("%1$stext (dynamic)"),
-				 docstring(1, quoteparams.getQuoteChar(globalqs,
-								       InsetQuotesParams::PrimaryQuotes,
-								       InsetQuotesParams::OpeningQuote)));
-	if (prefixIs(qtype, "x"))
-		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	else
-		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xls"));
-	desc = bformat(_("%1$stext (dynamic)"),
-		       docstring(1, quoteparams.getQuoteChar(globalqs, 
-							     InsetQuotesParams::SecondaryQuotes,
-							     InsetQuotesParams::OpeningQuote)));
-	if (prefixIs(qtype, "x"))
-		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	else
-		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xrd"));
-	desc = bformat(_("text%1$s (dynamic)"),
-		       docstring(1, quoteparams.getQuoteChar(globalqs,
-							     InsetQuotesParams::PrimaryQuotes,
-							     InsetQuotesParams::ClosingQuote)));
-	if (prefixIs(qtype, "x"))
-		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	else
-		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype xrs"));
-	desc = bformat(_("text%1$s (dynamic)"),
-		       docstring(1, quoteparams.getQuoteChar(globalqs,
-							     InsetQuotesParams::SecondaryQuotes,
-							     InsetQuotesParams::ClosingQuote)));
-	if (prefixIs(qtype, "x"))
-		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-	else
-		xqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
 
+	BufferParams const & bp = bv->buffer().masterBuffer()->params();
+
+	// The global setting
+	InsetQuotesParams::QuoteStyle globalqs = bp.quotes_style;
+	char const globalqsc = quoteparams.getStyleChar(globalqs);
+
+	// The current language's default
+	InsetQuotesParams::QuoteStyle langdefqs =
+		bp.getQuoteStyle(bv->cursor().current_font.language()->quoteStyle());
+	char const langqs = quoteparams.getStyleChar(langdefqs);
+
+	bool main_global_qs = false;
+	bool main_langdef_qs = false;
+	bool main_dynamic_qs = false;
+	docstring const subcmd = from_ascii("changetype ");
+	docstring const wildcards = from_ascii("..");
+	// Add the items
+	// First the top level menu (all glyphs of the current style) ...
+	// Begin with dynamic (if they are current style),
+	if (qtype[0] == 'x') {
+		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + from_ascii("xld"));
+		docstring desc = bformat(_("%1$s (dynamic)"),
+			quoteparams.getShortGuiLabel(globalqsc + from_ascii("ld")));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + from_ascii("xls"));
+		desc = bformat(_("%1$s (dynamic)"),
+			quoteparams.getShortGuiLabel(globalqsc + from_ascii("ls")));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + from_ascii("xrd"));
+		desc = bformat(_("%1$s (dynamic)"),
+			quoteparams.getShortGuiLabel(globalqsc + from_ascii("rd")));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + from_ascii("xrs"));
+		desc = bformat(_("%1$s (dynamic)"),
+			quoteparams.getShortGuiLabel(globalqsc + from_ascii("rs")));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		main_dynamic_qs = true;
+	}
+	// now traverse through the static styles ...
 	for (; qq != end; ++qq) {
 		docstring const style = from_ascii(qq->first);
-		cmd = FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + style);
-		desc = contains(style, 'l') ? 
-			bformat(_("%1$stext"), qq->second) : bformat(_("text%1$s"), qq->second);
-		if (prefixIs(style, qtype[0]))
+		bool langdef = (style[0] == langqs);
+		bool globaldef = (style[0] == globalqsc);
+		
+		if (prefixIs(style, qtype[0])) {
+			FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + style);
+			docstring const desc = quoteparams.getShortGuiLabel(style);
 			add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'e') && !prefixIs(qtype, "e"))
-			eqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 's') && !prefixIs(qtype, "s"))
-			sqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'g') && !prefixIs(qtype, "g"))
-			gqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'p') && !prefixIs(qtype, "p"))
-			pqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'c') && !prefixIs(qtype, "c"))
-			cqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'a') && !prefixIs(qtype, "a"))
+			main_global_qs = globaldef;
+			main_langdef_qs = langdef;
+		}
+		else if (!langdef && !globaldef && suffixIs(style, from_ascii("ld"))) {
+			docstring const desc =
+				quoteparams.getGuiLabel(quoteparams.getQuoteStyle(to_ascii(style)));
+			FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + style[0] + "..");
 			aqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'q') && !prefixIs(qtype, "q"))
-			qqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'b') && !prefixIs(qtype, "b"))
-			bqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'w') && !prefixIs(qtype, "w"))
-			wqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'f') && !prefixIs(qtype, "f"))
-			fqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'i') && !prefixIs(qtype, "i"))
-			iqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'r') && !prefixIs(qtype, "r"))
-			rqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'j') && !prefixIs(qtype, "j"))
-			jqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		else if (prefixIs(style, 'k') && !prefixIs(qtype, "k"))
-			kqs.add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		}
 	}
 
-	if (!xqs.empty()) {
-		MenuItem item(MenuItem::Submenu, qt_("Dynamic Quotation Marks"));
-		item.setSubmenu(xqs);
-		add(item);
+	add(MenuItem(MenuItem::Separator));
+
+	bool have_section = false;
+	bool display_static = false;
+	// ... then potentially items to reset to the defaults and to dynamic style ...
+	if (!main_dynamic_qs && globalqsc != 'x') {
+		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + 'x' + wildcards);
+		docstring const desc = bformat(_("Use dynamic quotes (%1$s)|d"),
+						quoteparams.getGuiLabel(globalqs));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		have_section = true;
+		display_static = true;
 	}
-	if (!eqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::EnglishQuotes)));
-		item.setSubmenu(eqs);
-		add(item);
+	if (!main_global_qs && langdefqs != globalqs) {
+		docstring const variant = main_dynamic_qs ? _("dynamic[[Quotes]]") : _("static[[Quotes]]");
+		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + globalqsc + wildcards);
+		docstring const desc = bformat(_("Reset to document default (%1$s, %2$s)|o"),
+						quoteparams.getGuiLabel(globalqs), variant);
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		have_section = true;
 	}
-	if (!sqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwedishQuotes)));
-		item.setSubmenu(sqs);
-		add(item);
+	if (!main_langdef_qs) {
+		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + globalqsc + wildcards);
+		docstring const desc = (main_dynamic_qs || display_static) 
+					? bformat(_("Reset to language default (%1$s, %2$s)|l"),
+						  quoteparams.getGuiLabel(langdefqs), _("static[[Quotes]]"))
+					: bformat(_("Reset to language default (%1$s)|l"),
+						  quoteparams.getGuiLabel(langdefqs));
+		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
+		have_section = true;
 	}
-	if (!gqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::GermanQuotes)));
-		item.setSubmenu(gqs);
-		add(item);
-	}
-	if (!pqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::PolishQuotes)));
-		item.setSubmenu(pqs);
-		add(item);
-	}
-	if (!cqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwissQuotes)));
-		item.setSubmenu(cqs);
-		add(item);
-	}
-	if (!aqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::DanishQuotes)));
-		item.setSubmenu(aqs);
-		add(item);
-	}
-	if (!qqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::PlainQuotes)));
-		item.setSubmenu(qqs);
-		add(item);
-	}
-	if (!bqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::BritishQuotes)));
-		item.setSubmenu(bqs);
-		add(item);
-	}
-	if (!wqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::SwedishGQuotes)));
-		item.setSubmenu(wqs);
-		add(item);
-	}
-	if (!fqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchQuotes)));
-		item.setSubmenu(fqs);
-		add(item);
-	}
-	if (!iqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::FrenchINQuotes)));
-		item.setSubmenu(iqs);
-		add(item);
-	}
-	if (!rqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::RussianQuotes)));
-		item.setSubmenu(rqs);
-		add(item);
-	}
-	if (!jqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::CJKQuotes)));
-		item.setSubmenu(jqs);
-		add(item);
-	}
-	if (!kqs.empty()) {
-		MenuItem item(MenuItem::Submenu,
-			      toqstr(quoteparams.getGuiLabel(InsetQuotesParams::CJKAngleQuotes)));
-		item.setSubmenu(kqs);
-		add(item);
-	}
+
+	if (have_section)
+		add(MenuItem(MenuItem::Separator));
+
+	// ... and a subitem with the rest
+	MenuItem item(MenuItem::Submenu, qt_("Change Style|y"));
+	item.setSubmenu(aqs);
+	add(item);
 }
 
 

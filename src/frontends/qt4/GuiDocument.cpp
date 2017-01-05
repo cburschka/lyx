@@ -1069,13 +1069,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 	encodinglist.sort();
 	langModule->encodingCO->addItems(encodinglist);
 
-	for (int i = 0; i < quoteparams.stylescount(); ++i) {
-		InsetQuotesParams::QuoteStyle qs = InsetQuotesParams::QuoteStyle(i);
-		if (qs == InsetQuotesParams::DynamicQuotes)
-			continue;
-		langModule->quoteStyleCO->addItem(toqstr(quoteparams.getGuiLabel(qs)), qs);
-	}
-
 	langModule->languagePackageCO->addItem(
 		qt_("Default"), toqstr("default"));
 	langModule->languagePackageCO->addItem(
@@ -1760,6 +1753,38 @@ void GuiDocument::deleteBoxBackgroundColor()
 }
 
 
+void GuiDocument::updateQuoteStyles(bool const set)
+{
+	Language const * lang = lyx::languages.getLanguage(
+		fromqstr(langModule->languageCO->itemData(
+			langModule->languageCO->currentIndex()).toString()));
+
+	InsetQuotesParams::QuoteStyle def = bp_.getQuoteStyle(lang->quoteStyle());
+
+	langModule->quoteStyleCO->clear();
+
+	bool has_default = false;
+	for (int i = 0; i < quoteparams.stylescount(); ++i) {
+		InsetQuotesParams::QuoteStyle qs = InsetQuotesParams::QuoteStyle(i);
+		if (qs == InsetQuotesParams::DynamicQuotes)
+			continue;
+		bool const langdef = (qs == def);
+		if (langdef) {
+			// add the default style on top
+			langModule->quoteStyleCO->insertItem(0,
+				toqstr(quoteparams.getGuiLabel(qs, langdef)), qs);
+			has_default = true;
+		}
+		else
+			langModule->quoteStyleCO->addItem(
+				toqstr(quoteparams.getGuiLabel(qs, langdef)), qs);
+	}
+	if (set && has_default)
+		// (re)set to the default style
+		langModule->quoteStyleCO->setCurrentIndex(0);
+}
+
+
 void GuiDocument::languageChanged(int i)
 {
 	// some languages only work with polyglossia
@@ -1784,10 +1809,7 @@ void GuiDocument::languageChanged(int i)
 	}
 
 	// set appropriate quotation mark style
-	if (!lang->quoteStyle().empty()) {
-		langModule->quoteStyleCO->setCurrentIndex(
-			bp_.getQuoteStyle(lang->quoteStyle()));
-	}
+	updateQuoteStyles(true);
 }
 
 
@@ -3066,6 +3088,8 @@ void GuiDocument::paramsToDialog()
 	int const pos = langModule->languageCO->findData(toqstr(
 		bp_.language->lang()));
 	langModule->languageCO->setCurrentIndex(pos);
+
+	updateQuoteStyles();
 
 	langModule->quoteStyleCO->setCurrentIndex(
 		bp_.quotes_style);

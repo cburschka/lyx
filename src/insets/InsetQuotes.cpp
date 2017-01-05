@@ -93,6 +93,111 @@ int InsetQuotesParams::stylescount() const
 }
 
 
+char InsetQuotesParams::getStyleChar(QuoteStyle const & style) const
+{
+	return style_char[style];
+}
+
+
+InsetQuotesParams::QuoteStyle InsetQuotesParams::getQuoteStyle(string const & s,
+			    bool const allow_wildcards, QuoteStyle fb)
+{
+	QuoteStyle res = fb;
+
+	string str = s;
+	if (str.length() != 3) {
+		LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+			" bad string length.");
+		str = "eld";
+	}
+
+	int i;
+
+	// '.' wildcard means: keep current style
+	if (!allow_wildcards || str[0] != '.') {
+		for (i = 0; i < stylescount(); ++i) {
+			if (str[0] == style_char[i]) {
+				res = QuoteStyle(i);
+				break;
+			}
+		}
+		if (i >= stylescount()) {
+			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+				" bad style specification.");
+			res = EnglishQuotes;
+		}
+	}
+
+	return res;
+}
+
+
+InsetQuotesParams::QuoteSide InsetQuotesParams::getQuoteSide(string const & s,
+			bool const allow_wildcards, QuoteSide fb)
+{
+	QuoteSide res = fb;
+
+	string str = s;
+	if (str.length() != 3) {
+		LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+			" bad string length.");
+		str = "eld";
+	}
+
+	int i;
+
+	// '.' wildcard means: keep current side
+	if (!allow_wildcards || str[1] != '.') {
+		for (i = 0; i < 2; ++i) {
+			if (str[1] == side_char[i]) {
+				res = InsetQuotesParams::QuoteSide(i);
+				break;
+			}
+		}
+		if (i >= 2) {
+			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+				" bad side specification.");
+			res = OpeningQuote;
+		}
+	}
+
+	return res;
+}
+
+
+InsetQuotesParams::QuoteLevel InsetQuotesParams::getQuoteLevel(string const & s,
+			bool const allow_wildcards, QuoteLevel fb)
+{
+	QuoteLevel res = fb;
+
+	string str = s;
+	if (str.length() != 3) {
+		LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+			" bad string length.");
+		str = "eld";
+	}
+
+	int i;
+
+	// '.' wildcard means: keep current level
+	if (!allow_wildcards || str[2] != '.') {
+		for (i = 0; i < 2; ++i) {
+			if (str[2] == level_char[i]) {
+				res = InsetQuotesParams::QuoteLevel(i);
+				break;
+			}
+		}
+		if (i >= 2) {
+			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
+				" bad level specification.");
+			res = InsetQuotesParams::PrimaryQuotes;
+		}
+	}
+
+	return res;
+}
+
+
 char_type InsetQuotesParams::getQuoteChar(QuoteStyle const & style, QuoteLevel const & level,
 				    QuoteSide const & side) const
 {
@@ -456,14 +561,36 @@ map<string, docstring> InsetQuotesParams::getTypes() const
 }
 
 
-docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs)
+docstring const InsetQuotesParams::getGuiLabel(QuoteStyle const & qs, bool langdef)
 {
-	return bformat(_("%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"),
-		docstring(1, quoteparams.getQuoteChar(qs, PrimaryQuotes, OpeningQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, PrimaryQuotes, ClosingQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, SecondaryQuotes, OpeningQuote)),
-		docstring(1, quoteparams.getQuoteChar(qs, SecondaryQuotes, ClosingQuote))
-		);
+	docstring const styledesc =
+		bformat(_("%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"),
+		    	docstring(1, getQuoteChar(qs, PrimaryQuotes, OpeningQuote)),
+			docstring(1, getQuoteChar(qs, PrimaryQuotes, ClosingQuote)),
+			docstring(1, getQuoteChar(qs, SecondaryQuotes, OpeningQuote)),
+			docstring(1, getQuoteChar(qs, SecondaryQuotes, ClosingQuote))
+			);
+
+	if (!langdef)
+		return styledesc;
+
+	return bformat(_("%1$s[[quot. mark description]] (language default)"),
+			styledesc);
+}
+
+
+docstring const InsetQuotesParams::getShortGuiLabel(docstring const string)
+{
+	std::string const s = to_ascii(string);
+	QuoteStyle const style = getQuoteStyle(s);
+	QuoteSide const side = getQuoteSide(s);
+	QuoteLevel const level = getQuoteLevel(s);
+
+	return (side == OpeningQuote) ?
+		bformat(_("%1$stext"),
+		       docstring(1, getQuoteChar(style, level, side))) :
+		bformat(_("text%1$s"),
+		       docstring(1, getQuoteChar(style, level, side)));
 }
 
 
@@ -536,59 +663,9 @@ void InsetQuotes::setSide(char_type c)
 
 void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 {
-	string str = s;
-	if (str.length() != 3) {
-		lyxerr << "ERROR (InsetQuotes::InsetQuotes):"
-			" bad string length." << endl;
-		str = "eld";
-	}
-
-	int i;
-
-	// '.' wildcard means: keep current stylee
-	if (!allow_wildcards || str[0] != '.') {
-		for (i = 0; i < quoteparams.stylescount(); ++i) {
-			if (str[0] == style_char[i]) {
-				style_ = InsetQuotesParams::QuoteStyle(i);
-				break;
-			}
-		}
-		if (i >= quoteparams.stylescount()) {
-			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
-				" bad style specification.");
-			style_ = InsetQuotesParams::EnglishQuotes;
-		}
-	}
-
-	// '.' wildcard means: keep current side
-	if (!allow_wildcards || str[1] != '.') {
-		for (i = 0; i < 2; ++i) {
-			if (str[1] == side_char[i]) {
-				side_ = InsetQuotesParams::QuoteSide(i);
-				break;
-			}
-		}
-		if (i >= 2) {
-			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
-				" bad side specification.");
-			side_ = InsetQuotesParams::OpeningQuote;
-		}
-	}
-
-	// '.' wildcard means: keep current level
-	if (!allow_wildcards || str[2] != '.') {
-		for (i = 0; i < 2; ++i) {
-			if (str[2] == level_char[i]) {
-				level_ = InsetQuotesParams::QuoteLevel(i);
-				break;
-			}
-		}
-		if (i >= 2) {
-			LYXERR0("ERROR (InsetQuotes::InsetQuotes):"
-				" bad level specification.");
-			level_ = InsetQuotesParams::PrimaryQuotes;
-		}
-	}
+	style_ = quoteparams.getQuoteStyle(s, allow_wildcards, style_);
+	side_ = quoteparams.getQuoteSide(s, allow_wildcards, side_);
+	level_ = quoteparams.getQuoteLevel(s, allow_wildcards, level_);
 }
 
 
