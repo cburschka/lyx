@@ -1101,18 +1101,24 @@ def revert_plural_refs(document):
             i += 1
             continue
 
-        plural = caps = label = False
-        if use_refstyle:
+        plural = caps = suffix = False
+        k = find_token(document.body, "LaTeXCommand formatted", i, j)
+        if k != -1 and use_refstyle:
             plural = get_bool_value(document.body, "plural", i, j, False)
             caps   = get_bool_value(document.body, "caps", i, j, False)
             label  = get_quoted_value(document.body, "reference", i, j)
             if label:
-                (prefix, suffix) = label.split(":", 1)
+                try:
+                    (prefix, suffix) = label.split(":", 1)
+                except:
+                    document.warning("No `:' separator in formatted reference at line %d!" % (i))
             else:
                 document.warning("Can't find label for reference at line %d!" % (i))
 
-        # this effectively tests also for use_refstyle
-        if not ((plural or caps) and label):
+        # this effectively tests also for use_refstyle and a formatted reference
+        # we do this complicated test because we would otherwise do this erasure
+        # over and over and over
+        if not ((plural or caps) and suffix):
             del_token(document.body, "plural", i, j)
             del_token(document.body, "caps", i, j - 1) # since we deleted a line
             i = j - 1
