@@ -39,7 +39,6 @@ void InsetMathCancel::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -48,7 +47,7 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy = pi.base.changeEnsureMath();
 	// We first draw the text and then an arrow
 	ColorCode const origcol = pi.base.font.color();
-	cell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	int const t = pi.base.solidLineThickness();
 
@@ -75,8 +74,6 @@ void InsetMathCancel::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(x2, y1, x1, y2, origcol, pi.pain.line_solid, t);
 		pi.pain.line(x2, y2, x1, y1, origcol, pi.pain.line_solid, t);
 	}
-
-	drawMarkers(pi, x, y);
 }
 
 

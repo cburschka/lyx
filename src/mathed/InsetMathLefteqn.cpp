@@ -34,14 +34,12 @@ void InsetMathLefteqn::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += 2;
 	dim.des += 2;
 	dim.wid = 4;
-	metricsMarkers(mi, dim);
 }
 
 
 void InsetMathLefteqn::draw(PainterInfo & pi, int x, int y) const
 {
-	cell(0).draw(pi, x + 2, y);
-	drawMarkers(pi, x, y);
+	cell(0).draw(pi, x + 1, y);
 }
 
 

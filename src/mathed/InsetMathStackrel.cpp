@@ -78,7 +78,6 @@ void InsetMathStackrel::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = dim1.ascent() + dim0.height() + 4;
 		dim.des = dim1.descent();
 	}
-	metricsMarkers(mi, dim);
 }
 
 
@@ -98,7 +97,6 @@ void InsetMathStackrel::draw(PainterInfo & pi, int x, int y) const
 		int y2 = y + dim1.descent() + dim2.ascent() + 1;
 		cell(2).draw(pi, m - dim2.width() / 2, y2);
 	}
-	drawMarkers(pi, x, y);
 }
 
 

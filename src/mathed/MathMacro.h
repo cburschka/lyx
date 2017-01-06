@@ -37,6 +37,7 @@ public:
 	///
 	virtual MathMacro const * asMacro() const { return this; }
 	///
+	marker_type marker() const;
 	/// If the macro is in normal edit mode, dissolve its contents in
 	/// the row. Otherwise, just insert the inset.
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
@@ -44,9 +45,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
-	/// draw decorations.
-	void drawDecoration(PainterInfo & pi, int x, int y) const
-	{ drawMarkers2(pi, x, y); }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// was the macro in edit mode when computing metrics?

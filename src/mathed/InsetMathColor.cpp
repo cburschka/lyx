@@ -49,7 +49,6 @@ Inset * InsetMathColor::clone() const
 void InsetMathColor::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -57,9 +56,8 @@ void InsetMathColor::draw(PainterInfo & pi, int x, int y) const
 {
 	ColorCode origcol = pi.base.font.color();
 	pi.base.font.setColor(lcolor.getFromLaTeXName(to_utf8(color_)));
-	cell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x, y);
 	pi.base.font.setColor(origcol);
-	drawMarkers(pi, x, y);
 }
 
 

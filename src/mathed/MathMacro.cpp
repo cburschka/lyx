@@ -67,6 +67,8 @@ public:
 	///
 	MathMacro const * owner() { return mathMacro_; }
 	///
+	marker_type marker() const { return NO_MARKER; }
+	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	/// The math data to use for display
 	MathData const & displayCell(BufferView const * bv) const
@@ -301,15 +303,17 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// This is the same as what is done in metrics().
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
-	/// The macro nesting can change display of insets. Change it locally.
-	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
-
 	if (displayMode() != MathMacro::DISPLAY_NORMAL
 	    || d->editing_[mi.base.bv])
 		return InsetMath::addToMathRow(mrow, mi);
 
+	/// The macro nesting can change display of insets. Change it locally.
+	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
+
 	MathRow::Element e_beg(mi, MathRow::BEG_MACRO);
+	e_beg.inset = this;
 	e_beg.macro = this;
+	e_beg.marker = d->nesting_ == 1 ? marker() : NO_MARKER;
 	mrow.push_back(e_beg);
 
 	d->macro_->lock();
@@ -430,6 +434,27 @@ bool MathMacro::editMetrics(BufferView const * bv) const
 }
 
 
+Inset::marker_type MathMacro::marker() const
+{
+	switch (d->displayMode_) {
+	case DISPLAY_INIT:
+	case DISPLAY_INTERACTIVE_INIT:
+		return NO_MARKER;
+	case DISPLAY_UNFOLDED:
+		return MARKER;
+	default:
+		switch (lyxrc.macro_edit_style) {
+		case LyXRC::MACRO_EDIT_LIST:
+			return MARKER2;
+		case LyXRC::MACRO_EDIT_INLINE_BOX:
+			return NO_MARKER;
+		default:
+			return MARKER;
+		}
+	}
+}
+
+
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	/// The macro nesting can change display of insets. Change it locally.
@@ -450,7 +475,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += bsdim.width() + 1;
 		dim.asc = max(bsdim.ascent(), dim.ascent());
 		dim.des = max(bsdim.descent(), dim.descent());
-		metricsMarkers(mi, dim);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
 		   && d->editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
@@ -490,7 +514,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += 1;
 		dim.des += 1;
 		dim.wid += 2;
-		metricsMarkers2(mi, dim);
 	} else {
 		LBUFERR(d->macro_);
 
@@ -641,16 +664,15 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.text(x, y, from_ascii("\\"), pi.base.font);
 		x += mathed_string_width(pi.base.font, from_ascii("\\")) + 1;
 		cell(0).draw(pi, x, y);
-		drawMarkers(pi, expx, expy);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
-		   && d->editing_[pi.base.bv]) {
+	           && d->editing_[pi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
 		CoordCache const & coords = pi.base.bv->coordCache();
 		FontInfo const & labelFont = sane_font;
 
-		// markers and box needs two pixels
-		x += 2;
+		// box needs one pixel
+		x += 1;
 
 		// get maximal font height
 		Dimension fontDim;
@@ -674,7 +696,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			// position of label
 			Dimension const & cdim = coords.getArrays().dim(&cell(i));
-			x = expx + 2;
+			x = expx + 1;
 			y += max(fontDim.asc, cdim.asc) + 1;
 
 			// draw label
@@ -691,9 +713,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			y += max(fontDim.des, cdim.des);
 		}
 
-		pi.pain.rectangle(expx + 1, expy - dim.asc + 1, dim.wid - 3,
+		pi.pain.rectangle(expx, expy - dim.asc + 1, dim.wid - 3,
 				  dim.height() - 2, Color_mathmacroframe);
-		drawMarkers2(pi, expx, expy);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
 
@@ -725,10 +746,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 						  dim.height(), Color_mathmacroframe);
 		} else
 			d->expanded_.draw(pi, expx, expy);
-
-		if (!drawBox)
-			drawMarkers(pi, x, y);
-
 	}
 
 	// edit mode changed?

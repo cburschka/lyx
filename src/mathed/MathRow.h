@@ -12,6 +12,7 @@
 #ifndef MATH_ROW_H
 #define MATH_ROW_H
 
+#include "InsetMath.h"
 #include "MathClass.h"
 
 #include "ColorCode.h"
@@ -69,6 +70,8 @@ public:
 		int before, after;
 		/// count wether the current mathdata is nested in macro(s)
 		int macro_nesting;
+		/// Marker type
+		InsetMath::marker_type marker;
 
 		/// When type is INSET
 		/// the math inset

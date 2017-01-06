@@ -48,7 +48,6 @@ void InsetMathCancelto::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = max(dim0.ascent() + 2, dim0.ascent() + dim1.ascent()) + 2 + 8;
 	dim.des = max(dim0.descent() - 2, dim1.descent()) + 2;
 	dim.wid = dim0.width() + dim1.width() + 10;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -59,11 +58,11 @@ void InsetMathCancelto::draw(PainterInfo & pi, int x, int y) const
 
 	// We first draw the text and then an arrow
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
-	cell(0).draw(pi, x + 1, y);
-	cell(1).draw(pi, x + dim0.wid + 2 + 8, y - dim0.asc - 8);
-		
+	cell(0).draw(pi, x, y);
+	cell(1).draw(pi, x + dim0.wid + 1 + 8, y - dim0.asc - 8);
+
 	//Dimension const dim = dimension(*pi.base.bv);
-	
+
 	// y3____ ___
   	//          /|
 	// y2_     / |
@@ -86,8 +85,6 @@ void InsetMathCancelto::draw(PainterInfo & pi, int x, int y) const
 	// the arrow bars
 	pi.pain.line(x3, y3, x2 + 2, y3, origcol);
 	pi.pain.line(x3, y3, x3 - 2, y2 - 2, origcol);
-
-	drawMarkers(pi, x, y);
 }
 
 

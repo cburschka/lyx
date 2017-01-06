@@ -38,7 +38,8 @@ namespace lyx {
 
 MathRow::Element::Element(MetricsInfo const & mi, Type t, MathClass mc)
 	: type(t), mclass(mc), before(0), after(0), macro_nesting(mi.base.macro_nesting),
-	  inset(0), compl_unique_to(0), macro(0), color(Color_red)
+	  marker(InsetMath::NO_MARKER), inset(0), compl_unique_to(0),
+	  macro(0), color(Color_red)
 {}
 
 
@@ -64,28 +65,40 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	/* Do spacing only in math mode. This test is a bit clumsy,
 	 * but it is used in other places for guessing the current mode.
 	 */
-	if (!isMathFont(mi.base.fontname))
-		return;
+	bool const dospacing = isMathFont(mi.base.fontname);
 
 	// update classes
-	for (int i = 1 ; i != static_cast<int>(elements_.size()) - 1 ; ++i) {
-		if (elements_[i].mclass == MC_UNKNOWN)
-			continue;
-		update_class(elements_[i].mclass, elements_[before(i)].mclass,
-		             elements_[after(i)].mclass);
+	if (dospacing) {
+		for (int i = 1 ; i != static_cast<int>(elements_.size()) - 1 ; ++i) {
+			if (elements_[i].mclass != MC_UNKNOWN)
+				update_class(elements_[i].mclass, elements_[before(i)].mclass,
+							 elements_[after(i)].mclass);
+		}
 	}
 
 	// set spacing
 	// We go to the end to handle spacing at the end of equation
 	for (int i = 1 ; i != static_cast<int>(elements_.size()) ; ++i) {
-		if (elements_[i].mclass == MC_UNKNOWN)
+		Element & e = elements_[i];
+
+		if (e.mclass == MC_UNKNOWN)
 			continue;
+
 		Element & bef = elements_[before(i)];
-		int spc = class_spacing(bef.mclass, elements_[i].mclass, mi.base);
-		bef.after = spc / 2;
-		// this is better than spc / 2 to avoid rounding problems
-		elements_[i].before = spc - spc / 2;
+		if (dospacing) {
+			int spc = class_spacing(bef.mclass, e.mclass, mi.base);
+			bef.after += spc / 2;
+			// this is better than spc / 2 to avoid rounding problems
+			e.before += spc - spc / 2;
+		}
+
+		// finally reserve space for markers
+		if (bef.marker != Inset::NO_MARKER)
+			bef.after = max(bef.after, 1);
+		if (e.marker != Inset::NO_MARKER)
+			e.before = max(e.before, 1);
 	}
+
 	// Do not lose spacing allocated to extremities
 	if (!elements_.empty()) {
 		elements_[after(0)].before += elements_.front().after;
@@ -166,6 +179,18 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		}
 
+		// handle vertical space for markers
+		switch(e.marker) {
+		case InsetMath::NO_MARKER:
+			break;
+		case InsetMath::MARKER:
+			++d.des;
+			break;
+		case InsetMath::MARKER2:
+			++d.asc;
+			++d.des;
+		}
+
 		if (!d.empty()) {
 			dim += d;
 			// Now add the dimension to current macros and arguments.
@@ -185,6 +210,43 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+namespace {
+
+void drawMarkers(PainterInfo const & pi, MathRow::Element const & e, int const x, int const y)
+{
+	if (e.marker == InsetMath::NO_MARKER)
+		return;
+
+	CoordCache const & coords = pi.base.bv->coordCache();
+	Dimension const dim = coords.getInsets().dim(e.inset);
+
+	// the marker is before/after the inset. Normally some space has been reserved already.
+	int const l = x + e.before - 1;
+	int const r = x + dim.width() - e.after;
+
+	// Duplicated from Inset.cpp and adapted. It is believed that the
+	// Inset version should die eventually
+	ColorCode pen_color = e.inset->mouseHovered(pi.base.bv) || e.inset->editing(pi.base.bv)?
+		Color_mathframe : Color_mathcorners;
+
+	int const d = y + dim.descent();
+	pi.pain.line(l, d - 3, l, d, pen_color);
+	pi.pain.line(r, d - 3, r, d, pen_color);
+	pi.pain.line(l, d, l + 3, d, pen_color);
+	pi.pain.line(r - 3, d, r, d, pen_color);
+
+	if (e.marker == InsetMath::MARKER)
+		return;
+
+	int const a = y - dim.ascent();
+	pi.pain.line(l, a + 3, l, a, pen_color);
+	pi.pain.line(r, a + 3, r, a, pen_color);
+	pi.pain.line(l, a, l + 3, a, pen_color);
+	pi.pain.line(r - 3, a, r, a, pen_color);
+}
+
+}
+
 void MathRow::draw(PainterInfo & pi, int x, int const y) const
 {
 	CoordCache & coords = pi.base.bv->coordCache();
@@ -202,11 +264,14 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			e.inset->draw(pi, x + e.before, y);
 			coords.insets().add(e.inset, x, y);
 			coords.insets().add(e.inset, d);
+			drawMarkers(pi, e, x, y);
 			x += d.wid;
 			break;
 		}
 		case BEG_MACRO:
 			coords.insets().add(e.macro, x, y);
+
+			drawMarkers(pi, e, x, y);
 			break;
 		case BEG_ARG:
 			coords.arrays().add(e.ar, x, y);

@@ -40,7 +40,6 @@ void InsetMathOverset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.wid) + 4;
 	dim.asc = dim1.asc + dim0.height() + 4;
 	dim.des = dim1.des;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -55,7 +54,6 @@ void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - dim1.wid / 2, y);
 	Changer dummy = pi.base.changeFrac();
 	cell(0).draw(pi, m - dim0.width() / 2, yo);
-	drawMarkers(pi, x, y);
 }
 
 

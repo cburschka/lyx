@@ -83,7 +83,6 @@ void InsetMathBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -91,12 +90,11 @@ void InsetMathBox::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeFontSet("textnormal");
 	cell(0).draw(pi, x, y);
-	drawMarkers(pi, x, y);
 }
 
 
 void InsetMathBox::infoize(odocstream & os) const
-{	
+{
 	os << bformat(_("Box: %1$s"), name_);
 }
 
@@ -135,7 +133,10 @@ void InsetMathFBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers2(mi, dim, 3); // 1 pixel space, 1 frame, 1 space
+	// 1 pixel space, 1 frame, 1 space
+	dim.wid += 2 * 3;
+	dim.asc += 3;
+	dim.des += 3;
 }
 
 
@@ -219,23 +220,23 @@ InsetMathMakebox::InsetMathMakebox(Buffer * buf, bool framebox)
 void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeFontSet("textnormal");
-	
+
 	Dimension wdim;
 	static docstring bracket = from_ascii("[");
 	metricsStrRedBlack(mi, wdim, bracket);
 	int w = wdim.wid;
-	
+
 	Dimension dim0;
 	Dimension dim1;
 	Dimension dim2;
 	cell(0).metrics(mi, dim0);
 	cell(1).metrics(mi, dim1);
 	cell(2).metrics(mi, dim2);
-	
+
 	dim.wid = w + dim0.wid + w + w + dim1.wid + w + 2 + dim2.wid;
-	dim.asc = std::max(std::max(wdim.asc, dim0.asc), std::max(dim1.asc, dim2.asc)); 
+	dim.asc = std::max(std::max(wdim.asc, dim0.asc), std::max(dim1.asc, dim2.asc));
 	dim.des = std::max(std::max(wdim.des, dim0.des), std::max(dim1.des, dim2.des));
-	
+
 	if (framebox_) {
 		dim.wid += 4;
 		dim.asc += 3;
@@ -244,26 +245,22 @@ void InsetMathMakebox::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc += 1;
 		dim.des += 1;
 	}
-	
-	metricsMarkers(mi, dim);
 }
 
 
 void InsetMathMakebox::draw(PainterInfo & pi, int x, int y) const
 {
-	drawMarkers(pi, x, y);
-	
 	Changer dummy = pi.base.changeFontSet("textnormal");
 	BufferView const & bv = *pi.base.bv;
 	int w = mathed_char_width(pi.base.font, '[');
-	
+
 	if (framebox_) {
 		Dimension const dim = dimension(*pi.base.bv);
 		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
 				  dim.width() - 2, dim.height() - 2, Color_foreground);
 		x += 2;
 	}
-	
+
 	drawStrBlack(pi, x, y, from_ascii("["));
 	x += w;
 	cell(0).draw(pi, x, y);
@@ -359,7 +356,10 @@ InsetMathBoxed::InsetMathBoxed(Buffer * buf)
 void InsetMathBoxed::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers2(mi, dim, 3); // 1 pixel space, 1 frame, 1 space
+	// 1 pixel space, 1 frame, 1 space
+	dim.wid += 2 * 3;
+	dim.asc += 3;
+	dim.des += 3;
 }
 
 
