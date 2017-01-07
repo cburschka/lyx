@@ -840,7 +840,7 @@ MathClass MathMacro::mathClass() const
 	if (MacroData const * m = macroBackup()) {
 		// If it is a global macro and is defined explicitly
 		if (m->symbol()) {
-			MathClass mc = string_to_class(d->macroBackup_.symbol()->extra);
+			MathClass mc = string_to_class(m->symbol()->extra);
 			if (mc != MC_UNKNOWN)
 				return mc;
 		}
