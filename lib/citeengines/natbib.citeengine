@@ -106,9 +106,15 @@ CiteFormat default
 	# MACROS
 	#
 	# 1. Translatable bits (need to be marked by _ prefix)
+	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
+	# The following are handled by BiblioInfo
+	_etal  et al.
+	_namesep , [[separate author names in citation, except for last name]]
+	_lastnamesep , and [[separate name of last author in citation]]
+	_pairnamesep  and [[separate two authors in citation]]
 
 	#
 	# 2. Macros re-used in the style definitions
@@ -120,6 +126,10 @@ CiteFormat default
 
 	# "Author et al." or "??"
 	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	# "Author, ..." or "??"
+	!fullauthor {%fullauthor%[[%fullauthor%]][[??]]}
+	# Handle starred command: abbr. or full author list
+	!makeauthor {%ifstar%[[%!fullauthor%]][[%!abbrvauthor%]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# ", postnote"
@@ -129,6 +139,8 @@ CiteFormat default
 
 	# "...; Author..."
 	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
+	# Handle starred command: abbr. or full author list
+	!makenextauthor {%next%[[%!sep% %!startlink%%!makeauthor%%!endlink%%!makenextauthor%]]}
 	# "..., CiteKey..."
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
 	# "..., Year..."
@@ -155,14 +167,14 @@ CiteFormat authoryear
 	!close )
 
 	# "Author et al. (cf. Year..."
-	!makecitet %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nextcitet%
+	!makecitet %!startlink%%!makeauthor%%!endlink% %!open%%!textbefore%%!year%%!nextcitet%
 	# "Author et al. cf. Year..." [sic!]
-	!makecitealt %!startlink%%!abbrvauthor% %!textbefore%%!year%%!endlink%%!nextcitealt%
+	!makecitealt %!startlink%%!makeauthor% %!textbefore%%!year%%!endlink%%!nextcitealt%
 	# "Author et al., Year..."
-	!makecitealp %!startlink%%!abbrvauthor%, %!year%%!endlink%%!nextcitealp%
+	!makecitealp %!startlink%%!makeauthor%, %!year%%!endlink%%!nextcitealp%
 
 	# "...); Nextauthor (Year..."
-	!nextcitet {%next%[[%!close%%!sep% %!startlink%%!abbrvauthor%%!endlink% %!open%%!year%%!nextcitet%]]}
+	!nextcitet {%next%[[%!close%%!sep% %!startlink%%!makeauthor%%!endlink% %!open%%!year%%!nextcitet%]]}
 	# "...; NextAuthor et al. Year..."
 	!nextcitealt {%next%[[%!sep% %!makecitealt%]]}
 	# "...; NextAuthor et al., Year..."
@@ -183,7 +195,7 @@ CiteFormat authoryear
 	# "Author cf. Year; NextAuthor Year, p. xx" [sic!]
 	citealt %!makecitealt%%!textafter%
 	# "Author; NextAuthor, p. xx"
-	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%%!textafter%
+	citeauthor %!startlink%%!makeauthor%%!endlink%%!makenextauthor%%!textafter%
 	# "Year; NextYear, p. xx"
 	citeyear %!startlink%%!year%%!endlink%%!nextyear%%!textafter%
 
@@ -200,16 +212,16 @@ CiteFormat numerical
 	!close ]
 
 	# "Author [cf. ID..."
-	!makecitet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
+	!makecitet %!makeauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
 	# "Author cf. ID..."
-	!makecitealt %!abbrvauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
+	!makecitealt %!makeauthor% %!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
 	# "ID..."
 	!hashkey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
 	# "...], NextAuthor [ID..."
-	!nextcitet {%next%[[%!close%%!sep% %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
+	!nextcitet {%next%[[%!close%%!sep% %!makeauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
 	# "..., NextAuthor ID..."
-	!nextcitealt {%next%[[%!sep% %!abbrvauthor% {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%]]}
+	!nextcitealt {%next%[[%!sep% %!makeauthor% {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%]]}
 	# FIXME: What is this?
 	!nexthashid {%next%[[%!sep% #ID%!nexthashid%]]}
 	# "..., NextID..."
@@ -230,7 +242,7 @@ CiteFormat numerical
 	# "Author cf. ID, NextAuthor ID, p. xx"
 	citealt %!makecitealt%%!textafter%
 	# "Author, NextAuthor"
-	citeauthor %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%
+	citeauthor %!startlink%%!makeauthor%%!endlink%%!makenextauthor%
 	# "Year, NextYear"
 	citeyear %!startlink%%!year%%!endlink%%!nextyear%
 

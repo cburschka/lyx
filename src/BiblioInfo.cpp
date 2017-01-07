@@ -256,9 +256,13 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAbbreviatedAuthor(
-    Buffer const * buf, bool jurabib_style) const
+docstring const BibTeXInfo::getAuthorList(
+    Buffer const * buf, bool full, bool forceshort) const
 {
+	// Maxnames treshold depend on engine
+	size_t maxnames = buf ?
+		buf->params().documentClass().max_citenames() : 2;
+
 	if (!is_bibtex_) {
 		docstring const opt = label();
 		if (opt.empty())
@@ -295,21 +299,51 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(
 			shortauthor += "/" + familyName(authors[2]);
 		return convertLaTeXCommands(shortauthor);
 	}
+	docstring retval;
 
-	docstring retval = familyName(authors[0]);
+	CiteEngineType const engine_type = buf ? buf->params().citeEngineType()
+					       : ENGINE_TYPE_DEFAULT;
 
-	if (authors.size() == 2 && authors[1] != "others") {
-		docstring const dformat = buf ? 
-			buf->B_("%1$s and %2$s") : from_ascii("%1$s and %2$s");
-		retval = bformat(dformat, familyName(authors[0]), familyName(authors[1]));
-	} else if (authors.size() >= 2) {
-		// we get here either if the author list is longer than two names
-		// or if the second 'name' is "others". we do the same thing either
-		// way.
-		docstring const dformat = buf ? 
-			buf->B_("%1$s et al.") : from_ascii("%1$s et al.");
-		retval = bformat(dformat, familyName(authors[0]));
+	// These are defined in the styles
+	string const etal =
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_etal")
+		    : " et al.";
+	string const namesep =
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_namesep")
+		   : ", ";
+	string const lastnamesep =
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_lastnamesep")
+		    : ", and ";
+	string const pairnamesep =
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_pairnamesep")
+		     : " and ";
+
+	// Shorten the list (with et al.) if forceshort is set
+	// and the list can actually be shorten, else if maxcitenames
+	// is passed and full is not set.
+	bool shorten = forceshort && authors.size() > 1;
+	vector<docstring>::const_iterator it = authors.begin();
+	vector<docstring>::const_iterator en = authors.end();
+	for (size_t i = 0; it != en; ++it, ++i) {
+		if (i >= maxnames && !full) {
+			shorten = true;
+			break;
+		}
+		if (*it == "others") {
+			retval += buf ? buf->B_(etal) : from_ascii(etal);
+			break;
+		}
+		if (i > 0 && i == authors.size() - 1) {
+			if (authors.size() == 2)
+				retval += buf ? buf->B_(pairnamesep) : from_ascii(pairnamesep);
+			else
+				retval += buf ? buf->B_(lastnamesep) : from_ascii(lastnamesep);
+		} else if (i > 0)
+			retval += buf ? buf->B_(namesep) : from_ascii(namesep);
+		retval += familyName(*it);
 	}
+	if (shorten)
+		retval = familyName(authors[0]) + (buf ? buf->B_(etal) : from_ascii(etal));
 
 	return convertLaTeXCommands(retval);
 }
@@ -717,6 +751,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		// FIXME: dialog, textbefore and textafter have nothing to do with this
 		if (key == "dialog" && ci.context == CiteItem::Dialog)
 			ret = from_ascii("x"); // any non-empty string will do
+		else if (key == "ifstar" && ci.Starred)
+			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "entrytype")
 			ret = entry_type_;
 		else if (key == "key")
@@ -727,9 +763,6 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = modifier_;
 		else if (key == "numericallabel")
 			ret = cite_number_;
-		else if (key == "abbrvauthor")
-			// Special key to provide abbreviated author names.
-			ret = getAbbreviatedAuthor(&buf, false);
 		else if (key == "shortauthor")
 			// When shortauthor is not defined, jurabib automatically
 			// provides jurabib-style abbreviated author names. We do
@@ -744,6 +777,21 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 					+ " [" + operator[]("year") + "]";
 			else
 				ret = operator[]("title");
+		else if (key == "abbrvauthor") {
+			// Special key to provide abbreviated author names,
+			// with respect to maxcitenames.
+			ret = getAuthorList(&buf, false, false);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (key == "fullauthor") {
+			// Return a full author list
+			ret = getAuthorList(&buf, true, false);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (key == "forceabbrvauthor") {
+			// Special key to provide abbreviated author names,
+			// irrespective of maxcitenames.
+			ret = getAuthorList(&buf, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "bibentry") {
@@ -866,13 +914,13 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAbbreviatedAuthor(docstring const & key, Buffer const & buf) const
+docstring const BiblioInfo::getAuthorList(docstring const & key, Buffer const & buf) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAbbreviatedAuthor(&buf, false);
+	return data.getAuthorList(&buf, false);
 }
 
 
@@ -1038,8 +1086,8 @@ namespace {
 // used in xhtml to sort a list of BibTeXInfo objects
 bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
 {
-	docstring const lauth = lhs->getAbbreviatedAuthor();
-	docstring const rauth = rhs->getAbbreviatedAuthor();
+	docstring const lauth = lhs->getAuthorList();
+	docstring const rauth = rhs->getAuthorList();
 	docstring const lyear = lhs->getYear();
 	docstring const ryear = rhs->getYear();
 	docstring const ltitl = lhs->operator[]("title");
@@ -1127,7 +1175,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			// the first test.
 			// coverity[FORWARD_NULL]
 			if (it != cited_entries_.begin()
-			    && entry.getAbbreviatedAuthor() == last->second.getAbbreviatedAuthor()
+			    && entry.getAuthorList() == last->second.getAuthorList()
 			    // we access the year via getYear() so as to get it from the xref,
 			    // if we need to do so
 			    && getYear(entry.key()) == getYear(last->second.key())) {
@@ -1159,7 +1207,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 		if (numbers) {
 			entry.label(entry.citeNumber());
 		} else {
-			docstring const auth = entry.getAbbreviatedAuthor(&buf, false);
+			docstring const auth = entry.getAuthorList(&buf, false);
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
 			docstring const year = getYear(*it, buf, true);

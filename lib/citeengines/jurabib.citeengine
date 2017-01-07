@@ -109,6 +109,7 @@ CiteFormat authoryear
 	# MACROS
 	#
 	# 1. Translatable bits (need to be marked by _ prefix)
+	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
@@ -116,6 +117,11 @@ CiteFormat authoryear
 	_bibentry Bibliography entry.
 	_before before
 	_shorttitle short title
+	# The following are handled by BiblioInfo
+	_etal  et al.
+	_namesep /
+	_lastnamesep /
+	_pairnamesep /
 
 	#
 	# 2. Macros re-used in the style definitions

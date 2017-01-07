@@ -1554,6 +1554,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	ci.textBefore = citinset->getParam("before");
 	ci.textAfter = citinset->getParam("after");
 	ci.forceUpperCase = force;
+	ci.Starred = star;
 	ci.context = CiteItem::Dialog;
 	ci.max_size = 40;
 	vector<docstring> citeStrings =

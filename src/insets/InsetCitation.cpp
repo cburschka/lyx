@@ -177,7 +177,6 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 namespace {
 
-
 CitationStyle asValidLatexCommand(BufferParams const & bp, string const & input,
 				  vector<CitationStyle> const & valid_styles)
 {
@@ -254,13 +253,12 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	if (key.empty())
 		return _("No citations selected!");
 
-	// We don't currently use the full or forceUCase fields.
 	string cite_type = getCmdName();
 	bool const uppercase = isUpperCase(cite_type[0]);
 	if (uppercase)
 		cite_type[0] = lowercase(cite_type[0]);
-	if (cite_type[cite_type.size() - 1] == '*')
-		// and this would mean FULL
+	bool const starred = (cite_type[cite_type.size() - 1] == '*');
+	if (starred)
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	// handle alias
@@ -279,6 +277,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	ci.textBefore = getParam("before");
 	ci.textAfter = getParam("after");
 	ci.forceUpperCase = uppercase;
+	ci.Starred = starred;
 	ci.max_size = UINT_MAX;
 	if (for_xhtml) {
 		ci.max_key_size = UINT_MAX;
