@@ -82,13 +82,69 @@ bool InsetCitation::isCompatibleCommand(string const &)
 }
 
 
+CitationStyle InsetCitation::getCitationStyle(BufferParams const & bp, string const & input,
+				  vector<CitationStyle> const & valid_styles) const
+{
+	CitationStyle cs = valid_styles[0];
+	cs.forceUpperCase = false;
+	cs.hasStarredVersion = false;
+
+	string normalized_input = input;
+	string::size_type const n = input.size() - 1;
+	if (isUpperCase(input[0]))
+		normalized_input[0] = lowercase(input[0]);
+	if (input[n] == '*')
+		normalized_input = normalized_input.substr(0, n);
+
+	string const alias = bp.getCiteAlias(normalized_input);
+	if (!alias.empty())
+		normalized_input = alias;
+
+	vector<CitationStyle>::const_iterator it  = valid_styles.begin();
+	vector<CitationStyle>::const_iterator end = valid_styles.end();
+	for (; it != end; ++it) {
+		CitationStyle this_cs = *it;
+		if (this_cs.name == normalized_input) {
+			cs = *it;
+			break;
+		}
+	}
+
+	return cs;
+}
+
+
 void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	if (cmd.action() == LFUN_INSET_MODIFY) {
+	switch (cmd.action()) {
+	case LFUN_INSET_MODIFY: {
 		buffer().removeBiblioTempFiles();
 		cache.recalculate = true;
+		if (cmd.getArg(0) == "toggleparam") {
+			string cmdname = getCmdName();
+			string const alias =
+				buffer().params().getCiteAlias(cmdname);
+			if (!alias.empty())
+				cmdname = alias;
+			string const par = cmd.getArg(1);
+			string newcmdname = cmdname;
+			if (par == "star") {
+				if (suffixIs(cmdname, "*"))
+					newcmdname = rtrim(cmdname, "*");
+				else
+					newcmdname = cmdname + "*";
+			} else if (par == "casing") {
+				if (isUpperCase(cmdname[0]))
+					newcmdname[0] = lowercase(cmdname[0]);
+				else
+					newcmdname[0] = uppercase(newcmdname[0]);
+			}
+			cmd = FuncRequest(LFUN_INSET_MODIFY, "changetype " + newcmdname);
+		}
 	}
-	InsetCommand::doDispatch(cur, cmd);
+	default:
+		InsetCommand::doDispatch(cur, cmd);
+	}
 }
 
 
@@ -100,14 +156,35 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype") {
 			string cmdname = getCmdName();
-			string const alias = buffer().params().getCiteAlias(cmdname);
+			string const alias =
+				buffer().params().getCiteAlias(cmdname);
 			if (!alias.empty())
 				cmdname = alias;
+			if (suffixIs(cmdname, "*"))
+				cmdname = rtrim(cmdname, "*");
 			string const newtype = cmd.getArg(1);
 			status.setEnabled(isCompatibleCommand(newtype));
 			status.setOnOff(newtype == cmdname);
 		}
-		status.setEnabled(true);
+		if (cmd.getArg(0) == "toggleparam") {
+			string cmdname = getCmdName();
+			string const alias =
+				buffer().params().getCiteAlias(cmdname);
+			if (!alias.empty())
+				cmdname = alias;
+			vector<CitationStyle> citation_styles =
+				buffer().params().citeStyles();
+			CitationStyle cs = getCitationStyle(buffer().params(),
+							    cmdname, citation_styles);
+			if (cmd.getArg(1) == "star") {
+				status.setEnabled(cs.hasStarredVersion);
+				status.setOnOff(suffixIs(cmdname, "*"));
+			}
+			else if (cmd.getArg(1) == "casing") {
+				status.setEnabled(cs.forceUpperCase);
+				status.setOnOff(isUpperCase(cmdname[0]));
+			}
+		}
 		return true;
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);

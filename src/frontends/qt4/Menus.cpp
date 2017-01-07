@@ -1529,10 +1529,11 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 				    FuncRequest(LFUN_NOACTION)));
 		return;
 	}
-	InsetCommand const * citinset =
-				static_cast<InsetCommand const *>(inset);
+	InsetCitation const * citinset =
+				static_cast<InsetCitation const *>(inset);
 
 	Buffer const * buf = &bv->buffer();
+	BufferParams const & bp = buf->params();
 	string const cmd = citinset->params().getCmdName();
 
 	docstring const & key = citinset->getParam("key");
@@ -1571,6 +1572,45 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_INSET_MODIFY,
 						"changetype " + from_utf8(citationStyleToString(cs)))));
+	}
+
+	// Extra features of the citation styles
+	CitationStyle cs = citinset->getCitationStyle(bp, cmd, citeStyleList);
+
+	if (cs.hasStarredVersion) {
+		docstring starred = _("All authors|h");
+		// Check if we have a custom string/tooltip for the starred version
+		if (!cs.stardesc.empty()) {
+			string val =
+				bp.documentClass().getCiteMacro(buf->params().citeEngineType(), cs.stardesc);
+			if (!val.empty())
+				starred = translateIfPossible(from_utf8(val));
+			// Transform qt-style accelerators to menu-style
+			int const amps = count_char(starred, '&');
+			if (amps > 0) {
+				if (amps > 1)
+					starred = subst(starred, from_ascii("&&"), from_ascii("<:amp:>"));
+				size_t n = starred.find('&');
+				char_type accel = char_type();
+				if (n != docstring::npos && n < starred.size() - 1)
+					accel = starred[n + 1];
+				starred = subst(starred, from_ascii("&"), from_ascii(""));
+				if (amps > 1)
+					starred = subst(starred, from_ascii("<:amp:>"), from_ascii("&&"));
+				if (accel != char_type())
+					starred = starred + '|' + accel;
+			}
+		}
+		add(MenuItem(MenuItem::Separator));
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(starred),
+				    FuncRequest(LFUN_INSET_MODIFY, "toggleparam star")));
+	}
+
+	if (cs.forceUpperCase) {
+		if (!cs.hasStarredVersion)
+			add(MenuItem(MenuItem::Separator));
+		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(_("Force upper case|u")),
+				    FuncRequest(LFUN_INSET_MODIFY, "toggleparam casing")));
 	}
 }
 

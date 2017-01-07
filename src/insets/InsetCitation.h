@@ -14,6 +14,7 @@
 #define INSET_CITATION_H
 
 #include "InsetCommand.h"
+#include "Citation.h"
 
 namespace lyx {
 
@@ -82,6 +83,9 @@ public:
 	///
 	static bool isCompatibleCommand(std::string const &);
 	//@}
+	///
+	CitationStyle getCitationStyle(BufferParams const & bp, std::string const & input,
+				       std::vector<CitationStyle> const & valid_styles) const;
 
 private:
 	/// tries to make a pretty label and makes a basic one if not
