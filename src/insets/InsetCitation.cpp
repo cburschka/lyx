@@ -241,11 +241,21 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 
 	docstring tip;
 	tip += "<ol>";
+	int count = 0;
 	for (docstring const & key : keys) {
 		docstring const key_info = bi.getInfo(key, buffer(), ci);
+		// limit to reasonable size.
+		if (count > 9 && keys.size() > 11) {
+			tip.push_back(0x2026);// HORIZONTAL ELLIPSIS
+			tip += "<p>"
+				+ bformat(_("+ %1$d more entries."), int(keys.size() - count))
+				+ "</p>";
+			break;
+		}
 		if (key_info.empty())
 			continue;
 		tip += "<li>" + key_info + "</li>";
+		++count;
 	}
 	tip += "</ol>";
 	return tip;
