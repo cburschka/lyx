@@ -512,9 +512,10 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 	static int const max_passes = 5000;
 	// the use of overly large keys can lead to performance problems, due
 	// to eventual attempts to convert LaTeX macros to unicode. See bug
-	// #8944. This is perhaps not the best solution, but it will have to
-	// do for now.
-	static size_t const max_keysize = 128;
+	// #8944. By default, the size is limited to 128 (in CiteItem), but
+	// for specific purposes (such as XHTML export), it needs to be enlarged
+	// This is perhaps not the best solution, but it will have to do for now.
+	size_t const max_keysize = ci.max_key_size;
 	odocstringstream ret; // return value
 	string key;
 	bool scanning_key = false;
