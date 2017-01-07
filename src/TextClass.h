@@ -335,6 +335,8 @@ protected:
 	std::map<std::string, std::string> cite_default_biblio_style_;
 	/// Citation command aliases
 	std::map<std::string, std::string> cite_command_aliases_;
+	/// The maximum number of citations before "et al."
+	size_t maxcitenames_;
 	/// Whether full author lists are supported
 	bool cite_full_author_list_;
 	/// The possible citation styles
@@ -498,6 +500,8 @@ public:
 	///
 	std::map<std::string, std::string> const & citeCommandAliases() const
 	{ return cite_command_aliases_; }
+	/// The maximum number of citations before "et al."
+	size_t max_citenames() const { return maxcitenames_; }
 	///
 	bool const & fullAuthorList() const { return cite_full_author_list_; }
 protected:

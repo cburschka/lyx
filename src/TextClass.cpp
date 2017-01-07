@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 62; //spitz PassThru for arguments.
+int const LAYOUT_FORMAT = 63; //spitz: new tags CiteFramework, MaxCiteNames, extended InsetCite syntax.
 
 
 // Layout format for the current lyx file format. Controls which format is
@@ -155,7 +155,7 @@ TextClass::TextClass()
 	  outputType_(LATEX), outputFormat_("latex"),
 	  defaultfont_(sane_font),
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
-	  min_toclevel_(0), max_toclevel_(0),
+	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
 	  cite_full_author_list_(true)
 {
 }
@@ -222,6 +222,7 @@ enum TextClassTags {
 	TC_CITEENGINETYPE,
 	TC_CITEFORMAT,
 	TC_CITEFRAMEWORK,
+	TC_MAXCITENAMES,
 	TC_DEFAULTBIBLIO,
 	TC_FULLAUTHORLIST,
 	TC_OUTLINERNAME
@@ -256,6 +257,7 @@ LexerKeyword textClassTags[] = {
 	{ "input",             TC_INPUT },
 	{ "insetlayout",       TC_INSETLAYOUT },
 	{ "leftmargin",        TC_LEFTMARGIN },
+	{ "maxcitenames",      TC_MAXCITENAMES },
 	{ "modifystyle",       TC_MODIFYSTYLE },
 	{ "nocounter",         TC_NOCOUNTER },
 	{ "nofloat",           TC_NOFLOAT },
@@ -763,6 +765,11 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		case TC_CITEFRAMEWORK:
 			lexrc.next();
 			citeframework_ = rtrim(lexrc.getString());
+			break;
+
+		case TC_MAXCITENAMES:
+			lexrc.next();
+			maxcitenames_ = size_t(lexrc.getInteger());
 			break;
 
 		case TC_DEFAULTBIBLIO:

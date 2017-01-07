@@ -9,7 +9,7 @@
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
-Format 62
+Format 63
 
 Requires natbib
 
@@ -22,6 +22,9 @@ CiteEngineType authoryear|numerical
 
 # Default style files for either engine type
 DefaultBiblio  authoryear:plainnat|numerical:plainnat
+
+# Maximum number of names before "et al." chimes in
+MaxCiteNames 2
 
 
 # The syntax of the cite command definitions below is:

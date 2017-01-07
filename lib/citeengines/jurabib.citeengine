@@ -8,7 +8,7 @@
 
 # Author: Julien Rioux <jrioux@lyx.org>
 
-Format 62
+Format 63
 
 Requires jurabib
 
@@ -21,6 +21,9 @@ CiteEngineType authoryear
 
 # Default style file
 DefaultBiblio  jurabib
+
+# Maximum number of names before "et al." chimes in
+MaxCiteNames 3
 
 
 # The syntax of the cite command definitions below is:
