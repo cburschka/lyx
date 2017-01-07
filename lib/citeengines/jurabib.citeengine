@@ -129,16 +129,24 @@ CiteFormat authoryear
 	!open (
 	!sep ;
 	!close )
+	!obracket [
+	!cbracket ]
 
 	# A link that lets us jump to the bibliography entry in LyXHTML
 	# %clean:key% will be substituted by the cite key to give a unique id
 	!startlink {!<a href='#LyXCite-%clean:key%'>!}
 	!endlink {!</a>!}
 
-	# "ShortAuthor" or "??"
-	!shortauthor {%shortauthor%[[%shortauthor%]][[??]]}
-	# "... ShortTitle" (button) / "... ShortTitle <short title>" (dialog)
-	!shorttitle {%shorttitle%[[ %shorttitle%]][[{%dialog%[[ <%_shorttitle%>]]}]]}
+	# "ShortAuthor", "Author" or "??"
+	!shortauthor {%shortauthor%[[%shortauthor%]][[{%abbrvauthor%[[%abbrvauthor%]][[??]]}]]}
+	# "... ShortTitle"
+	!shorttitle {%shorttitle%[[ %shorttitle%]][[{%dialog%[[ <%_shorttitle%>]][[%!makejurashorttitle%]]}]]}
+	# Title or "??"
+	!maketitle {%title%[[ %title%]][[ ??]]}
+	# "Journal Volume [Year]"
+	!jurashorttitle {%journal%[[ %journal%]]}{%volume%[[ %volume%]]}{%year%[[ %!obracket%%year%%!cbracket%]]}
+	# Handle short title fallback
+	!makejurashorttitle {%ifentrytype:article%[[%!jurashorttitle%]][[{%ifentrytype:periodical%[[%!jurashorttitle%]][[ %!maketitle%]]}]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# "/prenote" (button) / "/prenote/<before>" (dialog)

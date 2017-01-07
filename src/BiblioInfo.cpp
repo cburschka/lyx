@@ -292,13 +292,6 @@ docstring const BibTeXInfo::getAuthorList(
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
 
-	if (jurabib_style && (authors.size() == 2 || authors.size() == 3)) {
-		docstring shortauthor = familyName(authors[0])
-			+ "/" + familyName(authors[1]);
-		if (authors.size() == 3)
-			shortauthor += "/" + familyName(authors[2]);
-		return convertLaTeXCommands(shortauthor);
-	}
 	docstring retval;
 
 	CiteEngineType const engine_type = buf ? buf->params().citeEngineType()
@@ -763,20 +756,6 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = modifier_;
 		else if (key == "numericallabel")
 			ret = cite_number_;
-		else if (key == "shortauthor")
-			// When shortauthor is not defined, jurabib automatically
-			// provides jurabib-style abbreviated author names. We do
-			// this as well.
-			ret = getAbbreviatedAuthor(&buf, true);
-		else if (key == "shorttitle") {
-			// When shorttitle is not defined, jurabib uses for `article'
-			// and `periodical' entries the form `journal volume [year]'
-			// and for other types of entries it uses the `title' field.
-			if (entry_type_ == "article" || entry_type_ == "periodical")
-				ret = operator[]("journal") + " " + operator[]("volume")
-					+ " [" + operator[]("year") + "]";
-			else
-				ret = operator[]("title");
 		else if (key == "abbrvauthor") {
 			// Special key to provide abbreviated author names,
 			// with respect to maxcitenames.
