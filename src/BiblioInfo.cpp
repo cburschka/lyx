@@ -588,7 +588,11 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 						getValueForKey(optkey, buf, ci, xrefs);
 					if (optkey == "next" && next)
 						ret << ifpart; // without expansion
-					else if (!val.empty()) {
+					else if (optkey == "second" && second) {
+						int newcounter = 0;
+						ret << expandFormat(ifpart, xrefs, newcounter, buf,
+							ci, next);
+					} else if (!val.empty()) {
 						int newcounter = 0;
 						ret << expandFormat(ifpart, xrefs, newcounter, buf,
 							ci, next);
@@ -744,10 +748,15 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		// FIXME: dialog, textbefore and textafter have nothing to do with this
 		if (key == "dialog" && ci.context == CiteItem::Dialog)
 			ret = from_ascii("x"); // any non-empty string will do
+		else if (key == "export" && ci.context == CiteItem::Export)
+			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "ifstar" && ci.Starred)
 			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "entrytype")
 			ret = entry_type_;
+		else if (prefixIs(key, "ifentrytype:")
+			 && from_ascii(key.substr(12)) == entry_type_)
+			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "key")
 			ret = bib_key_;
 		else if (key == "label")
@@ -994,7 +1003,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 	docstring ret = format;
 	vector<docstring>::const_iterator key = keys.begin();
 	vector<docstring>::const_iterator ken = keys.end();
-	for (; key != ken; ++key) {
+	for (int i = 0; key != ken; ++key, ++i) {
 		BiblioInfo::const_iterator it = find(*key);
 		BibTeXInfo empty_data;
 		empty_data.key(*key);
