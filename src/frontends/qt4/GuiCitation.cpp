@@ -127,7 +127,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(starredCB, SIGNAL(clicked()),
 		this, SLOT(changed()));
 	connect(forceuppercaseCB, SIGNAL(clicked()),
-		this, SLOT(changed()));
+		this, SLOT(updateStyles()));
 	connect(textBeforeED, SIGNAL(textChanged(QString)),
 		this, SLOT(updateStyles()));
 	connect(textAfterED, SIGNAL(textChanged(QString)),
@@ -685,6 +685,7 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 	CiteItem ci;
 	ci.textBefore = qstring_to_ucs4(textBeforeED->text());
 	ci.textAfter = qstring_to_ucs4(textAfterED->text());
+	ci.forceUpperCase = forceuppercaseCB->isChecked();
 	ci.context = CiteItem::Dialog;
 	ci.max_size = max_size;
 	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);

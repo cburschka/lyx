@@ -256,8 +256,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 
 	// We don't currently use the full or forceUCase fields.
 	string cite_type = getCmdName();
-	if (isUpperCase(cite_type[0]))
-		// If we were going to use them, this would mean ForceUCase
+	bool const uppercase = isUpperCase(cite_type[0]);
+	if (uppercase)
 		cite_type[0] = lowercase(cite_type[0]);
 	if (cite_type[cite_type.size() - 1] == '*')
 		// and this would mean FULL
@@ -278,6 +278,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	CiteItem ci;
 	ci.textBefore = getParam("before");
 	ci.textAfter = getParam("after");
+	ci.forceUpperCase = uppercase;
 	ci.max_size = UINT_MAX;
 	if (for_xhtml) {
 		ci.max_key_size = UINT_MAX;

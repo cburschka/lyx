@@ -744,6 +744,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 					+ " [" + operator[]("year") + "]";
 			else
 				ret = operator[]("title");
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
 		} else if (key == "bibentry") {
 			// Special key to provide the full bibliography entry: see getInfo()
 			CiteEngineType const engine_type = buf.params().citeEngineType();
