@@ -947,6 +947,10 @@ int InsetBibtex::plaintext(odocstringstream & os,
 	docstring refoutput;
 	refoutput += reflabel + "\n\n";
 
+	// Tell BiblioInfo our purpose
+	CiteItem ci;
+	ci.context = CiteItem::Export;
+
 	// Now we loop over the entries
 	vector<docstring>::const_iterator vit = cites.begin();
 	vector<docstring>::const_iterator const ven = cites.end();
@@ -961,7 +965,7 @@ int InsetBibtex::plaintext(odocstringstream & os,
 		// FIXME Right now, we are calling BibInfo::getInfo on the key,
 		// which will give us all the cross-referenced info. But for every
 		// entry, so there's a lot of repitition. This should be fixed.
-		refoutput += bibinfo.getInfo(entry.key(), buffer(), false) + "\n\n";
+		refoutput += bibinfo.getInfo(entry.key(), buffer(), ci) + "\n\n";
 	}
 	os << refoutput;
 	return refoutput.size();
@@ -979,6 +983,12 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 	    all_entries ? bibinfo.getKeys() : bibinfo.citedEntries();
 
 	docstring const reflabel = buffer().B_("References");
+
+	// tell BiblioInfo our purpose
+	CiteItem ci;
+	ci.context = CiteItem::Export;
+	ci.richtext = true;
+	ci.max_key_size = UINT_MAX;
 
 	xs << html::StartTag("h2", "class='bibtex'")
 		<< reflabel
@@ -1010,7 +1020,7 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 		// entry, so there's a lot of repitition. This should be fixed.
 		xs << html::StartTag("span", "class='bibtexinfo'")
 		   << XHTMLStream::ESCAPE_AND
-		   << bibinfo.getInfo(entry.key(), buffer(), true)
+		   << bibinfo.getInfo(entry.key(), buffer(), ci)
 		   << html::EndTag("span")
 		   << html::EndTag("div")
 		   << html::CR();

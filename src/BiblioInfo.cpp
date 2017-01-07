@@ -17,6 +17,7 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
+#include "Citation.h"
 #include "Encoding.h"
 #include "InsetIterator.h"
 #include "Language.h"
@@ -478,7 +479,7 @@ bit of work, however.
 */
 docstring BibTeXInfo::expandFormat(docstring const & format,
 		BibTeXInfoList const xrefs, int & counter, Buffer const & buf,
-		docstring before, docstring after, docstring dialog, bool next) const
+		CiteItem const & ci, bool next, bool second) const
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int const max_passes = 5000;
@@ -526,7 +527,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 					ret << trans;
 				} else {
 					docstring const val =
-						getValueForKey(key, buf, before, after, dialog, xrefs, max_keysize);
+						getValueForKey(key, buf, ci, xrefs, max_keysize);
 					if (!scanning_rich)
 						ret << from_ascii("{!<span class=\"bib-" + key + "\">!}");
 					ret << val;
@@ -557,17 +558,17 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 						return _("ERROR!");
 					fmt = newfmt;
 					docstring const val =
-						getValueForKey(optkey, buf, before, after, dialog, xrefs);
+						getValueForKey(optkey, buf, ci, xrefs);
 					if (optkey == "next" && next)
 						ret << ifpart; // without expansion
 					else if (!val.empty()) {
 						int newcounter = 0;
 						ret << expandFormat(ifpart, xrefs, newcounter, buf,
-							before, after, dialog, next);
+							ci, next);
 					} else if (!elsepart.empty()) {
 						int newcounter = 0;
 						ret << expandFormat(elsepart, xrefs, newcounter, buf,
-							before, after, dialog, next);
+							ci, next);
 					}
 					// fmt will have been shortened for us already
 					continue;
@@ -616,8 +617,10 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 
 
 docstring const & BibTeXInfo::getInfo(BibTeXInfoList const xrefs,
-	Buffer const & buf, bool richtext) const
+	Buffer const & buf, CiteItem const & ci) const
 {
+	bool const richtext = ci.richtext;
+
 	if (!richtext && !info_.empty())
 		return info_;
 	if (richtext && !info_richtext_.empty())
@@ -635,7 +638,7 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const xrefs,
 		from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 	int counter = 0;
 	info_ = expandFormat(format, xrefs, counter, buf,
-		docstring(), docstring(), docstring(), false);
+		ci, false, false);
 
 	if (info_.empty()) {
 		// this probably shouldn't happen
@@ -653,18 +656,16 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfoList const xrefs,
 
 
 docstring const BibTeXInfo::getLabel(BibTeXInfoList const xrefs,
-	Buffer const & buf, docstring const & format, bool richtext,
-	docstring const & before, docstring const & after, 
-	docstring const & dialog, bool next) const
+	Buffer const & buf, docstring const & format,
+	CiteItem const & ci, bool next, bool second) const
 {
 	docstring loclabel;
 
 	int counter = 0;
-	loclabel = expandFormat(format, xrefs, counter, buf,
-		before, after, dialog, next);
+	loclabel = expandFormat(format, xrefs, counter, buf, ci, next, second);
 
 	if (!loclabel.empty() && !next) {
-		loclabel = processRichtext(loclabel, richtext);
+		loclabel = processRichtext(loclabel, ci.richtext);
 		loclabel = convertLaTeXCommands(loclabel);
 	}
 
@@ -689,8 +690,7 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 
 docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
-	docstring const & before, docstring const & after, docstring const & dialog,
-	BibTeXInfoList const xrefs, size_t maxsize) const
+	CiteItem const & ci, BibTeXInfoList const xrefs, size_t maxsize) const
 {
 	// anything less is pointless
 	LASSERT(maxsize >= 16, maxsize = 16);
@@ -715,8 +715,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	if (ret.empty()) {
 		// some special keys
 		// FIXME: dialog, textbefore and textafter have nothing to do with this
-		if (key == "dialog")
-			ret = dialog;
+		if (key == "dialog" && ci.context == CiteItem::Dialog)
+			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "entrytype")
 			ret = entry_type_;
 		else if (key == "key")
@@ -751,12 +751,11 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			docstring const & format =
 				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
 			int counter = 0;
-			ret = expandFormat(format, xrefs, counter, buf,
-				docstring(), docstring(), docstring(), false);
+			ret = expandFormat(format, xrefs, counter, buf, ci, false, false);
 		} else if (key == "textbefore")
-			ret = before;
+			ret = ci.textBefore;
 		else if (key == "textafter")
-			ret = after;
+			ret = ci.textAfter;
 		else if (key == "year")
 			ret = getYear();
 	}
@@ -927,7 +926,7 @@ docstring const BiblioInfo::getYear(docstring const & key, Buffer const & buf, b
 
 
 docstring const BiblioInfo::getInfo(docstring const & key,
-	Buffer const & buf, bool richtext) const
+	Buffer const & buf, CiteItem const & ci) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
@@ -944,15 +943,14 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 				xrefptrs.push_back(&(xrefit->second));
 		}
 	}
-	return data.getInfo(xrefptrs, buf, richtext);
+	return data.getInfo(xrefptrs, buf, ci);
 }
 
 
 docstring const BiblioInfo::getLabel(vector<docstring> keys,
-	Buffer const & buf, string const & style, bool for_xhtml,
-	size_t max_size, docstring const & before, docstring const & after,
-	docstring const & dialog) const
+	Buffer const & buf, string const & style, CiteItem const & ci) const
 {
+	size_t max_size = ci.max_size;
 	// shorter makes no sense
 	LASSERT(max_size >= 16, max_size = 16);
 
@@ -986,8 +984,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 				}
 			}
 		}
-		ret = data.getLabel(xrefptrs, buf, ret, for_xhtml,
-			before, after, dialog, key + 1 != ken);
+		ret = data.getLabel(xrefptrs, buf, ret, ci, key + 1 != ken, i == 1);
 	}
 
 	if (too_many_keys)
@@ -1010,8 +1007,7 @@ bool BiblioInfo::isBibtex(docstring const & key) const
 
 vector<docstring> const BiblioInfo::getCiteStrings(
 	vector<docstring> const & keys, vector<CitationStyle> const & styles,
-	Buffer const & buf, docstring const & before,
-	docstring const & after, docstring const & dialog, size_t max_size) const
+	Buffer const & buf, CiteItem const & ci) const
 {
 	if (empty())
 		return vector<docstring>();
@@ -1020,7 +1016,7 @@ vector<docstring> const BiblioInfo::getCiteStrings(
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
 		style = styles[i].name;
-		vec[i] = getLabel(keys, buf, style, false, max_size, before, after, dialog);
+		vec[i] = getLabel(keys, buf, style, ci);
 	}
 
 	return vec;

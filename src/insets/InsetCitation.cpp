@@ -156,14 +156,16 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 	if (key.empty())
 		return _("No citations selected!");
 
+	CiteItem ci;
+	ci.richtext = true;
 	vector<docstring> keys = getVectorFromString(key);
 	if (keys.size() == 1)
-		return bi.getInfo(keys[0], buffer(), true);
+		return bi.getInfo(keys[0], buffer(), ci);
 
 	docstring tip;
 	tip += "<ol>";
 	for (docstring const & key : keys) {
-		docstring const key_info = bi.getInfo(key, buffer(), true);
+		docstring const key_info = bi.getInfo(key, buffer(), ci);
 		if (key_info.empty())
 			continue;
 		tip += "<li>" + key_info + "</li>";
@@ -266,9 +268,6 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	if (!alias.empty())
 		cite_type = alias;
 
-	docstring const & before = getParam("before");
-	docstring const & after = getParam("after");
-
 	// FIXME: allow to add cite macros
 	/*
 	buffer().params().documentClass().addCiteMacro("!textbefore", to_utf8(before));
@@ -276,7 +275,16 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	*/
 	docstring label;
 	vector<docstring> keys = getVectorFromString(key);
-	label = biblist.getLabel(keys, buffer(), cite_type, for_xhtml, UINT_MAX, before, after);
+	CiteItem ci;
+	ci.textBefore = getParam("before");
+	ci.textAfter = getParam("after");
+	ci.max_size = UINT_MAX;
+	if (for_xhtml) {
+		ci.max_key_size = UINT_MAX;
+		ci.context = CiteItem::Export;
+	}
+	ci.richtext = for_xhtml;
+	label = biblist.getLabel(keys, buffer(), cite_type, ci);
 	return label;
 }
 

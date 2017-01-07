@@ -397,8 +397,10 @@ void GuiCitation::updateInfo(BiblioInfo const & bi, QModelIndex const & idx)
 	}
 
 	infoML->setToolTip(qt_("Sketchy preview of the selected citation"));
+	CiteItem ci;
+	ci.richtext = true;
 	QString const keytxt = toqstr(
-		bi.getInfo(qstring_to_ucs4(idx.data().toString()), documentBuffer(), true));
+		bi.getInfo(qstring_to_ucs4(idx.data().toString()), documentBuffer(), ci));
 	infoML->document()->setHtml(keytxt);
 }
 
@@ -678,13 +680,14 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 
 QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 {
-	docstring const before = qstring_to_ucs4(textBeforeED->text());
-	docstring const after = qstring_to_ucs4(textAfterED->text());
 	vector<docstring> const keys = to_docstring_vector(cited_keys_);
 	vector<CitationStyle> styles = citeStyles_;
-	// FIXME: pass a dictionary instead of individual before, after, dialog, etc.
-	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(),
-		before, after, from_utf8("dialog"), max_size);
+	CiteItem ci;
+	ci.textBefore = qstring_to_ucs4(textBeforeED->text());
+	ci.textAfter = qstring_to_ucs4(textAfterED->text());
+	ci.context = CiteItem::Dialog;
+	ci.max_size = max_size;
+	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);
 	return to_qstring_list(ret);
 }
 

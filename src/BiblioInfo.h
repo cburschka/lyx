@@ -65,12 +65,11 @@ public:
 	/// \return formatted BibTeX data suitable for framing.
 	/// \param vector of pointers to crossref/xdata information
 	docstring const & getInfo(BibTeXInfoList const xrefs,
-			Buffer const & buf, bool richtext) const;
+			Buffer const & buf, CiteItem const & ci) const;
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfoList const xrefs,
-		Buffer const & buf, docstring const & format, bool richtext,
-		const docstring & before, const docstring & after,
-		const docstring & dialog, bool next = false) const;
+		Buffer const & buf, docstring const & format,
+		CiteItem const & ci, bool next = false, bool second = false) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
@@ -116,8 +115,7 @@ private:
 	/// to get the data from xref BibTeXInfo objects, which would normally
 	/// be the one referenced in the crossref or xdata field.
 	docstring getValueForKey(std::string const & key, Buffer const & buf,
-		docstring const & before, docstring const & after, docstring const & dialog,
-		BibTeXInfoList const xrefs, size_t maxsize = 4096) const;
+		CiteItem const & ci, BibTeXInfoList const xrefs, size_t maxsize = 4096) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
@@ -136,9 +134,8 @@ private:
 	/// so that things like "pp." and "vol." can be translated.
 	docstring expandFormat(docstring const & fmt,
 		BibTeXInfoList const xrefs, int & counter,
-		Buffer const & buf, docstring before = docstring(),
-		docstring after = docstring(), docstring dialog = docstring(),
-		bool next = false) const;
+		Buffer const & buf, CiteItem const & ci,
+		bool next = false, bool second = false) const;
 	/// true if from BibTeX; false if from bibliography environment
 	bool is_bibtex_;
 	/// the BibTeX key for this entry
@@ -208,16 +205,15 @@ public:
 	/// \return formatted BibTeX data associated with a given key.
 	/// Empty if no info exists.
 	/// Note that this will retrieve data from the crossref or xdata as needed.
-	/// If \param richtext is true, then it will output any richtext tags
-	/// marked in the citation format and escape < and > elsewhere.
+	/// \param ci contains further context information, such as if it should
+	/// output any richtext tags marked in the citation format and escape < and >
+	/// elsewhere, and the general output context.
 	docstring const getInfo(docstring const & key, Buffer const & buf,
-			bool richtext = false) const;
+			CiteItem const & ci) const;
 	/// \return formatted BibTeX data for citation labels.
 	/// Citation labels can have more than one key.
-	docstring const getLabel(std::vector<docstring> keys,
-		Buffer const & buf, std::string const & style, bool for_xhtml,
-		size_t max_size, docstring const & before, docstring const & after,
-		docstring const & dialog = docstring()) const;
+	docstring const getLabel(std::vector<docstring> keys, Buffer const & buf,
+				 std::string const & style, CiteItem const & ci) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
 	bool isBibtex(docstring const & key) const;
@@ -226,8 +222,7 @@ public:
 	/// upon the active engine.
 	std::vector<docstring> const getCiteStrings(std::vector<docstring> const & keys,
 		std::vector<CitationStyle> const & styles, Buffer const & buf,
-		docstring const & before, docstring const & after, docstring const & dialog,
-	  size_t max_size) const;
+		CiteItem const & ci) const;
 	/// A list of BibTeX keys cited in the current document, sorted by
 	/// the last name of the author.
 	/// Make sure you have called collectCitedEntries() before you try to

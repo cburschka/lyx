@@ -1543,9 +1543,6 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 		return;
 	}
 
-	docstring const & before = citinset->getParam("before");
-	docstring const & after = citinset->getParam("after");
-
 	size_t const n = cmd.size();
 	bool const force = isUpperCase(cmd[0]);
 	bool const star = cmd[n] == '*';
@@ -1553,10 +1550,13 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	vector<docstring> const keys = getVectorFromString(key);
 
 	vector<CitationStyle> const citeStyleList = buf->params().citeStyles();
-	static const size_t max_length = 40;
+	CiteItem ci;
+	ci.textBefore = citinset->getParam("before");
+	ci.textAfter = citinset->getParam("after");
+	ci.context = CiteItem::Dialog;
+	ci.max_size = 40;
 	vector<docstring> citeStrings =
-		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(),
-		before, after, from_utf8("dialog"), max_length);
+		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(), ci);
 
 	vector<docstring>::const_iterator cit = citeStrings.begin();
 	vector<docstring>::const_iterator end = citeStrings.end();
