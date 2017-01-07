@@ -71,6 +71,7 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 				ParamInfo::HANDLING_ESCAPE);
 		param_info_.add("plural", ParamInfo::LYX_INTERNAL);
 		param_info_.add("caps", ParamInfo::LYX_INTERNAL);
+		param_info_.add("noprefix", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -110,7 +111,7 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 
 	// we have to have xxx:xxxxx...
 	if (label.empty()) {
-		LYXERR0("Label `" << ref << "' contains no prefix.");
+		LYXERR0("Label `" << ref << "' contains no `:' separator.");
 		label = ref;
 		prefix = from_ascii("");
 		return defcmd;
@@ -181,7 +182,19 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		os << '{' << label << '}';
 	}
 	else if (cmd == "labelonly") {
-		os << getParam("reference");
+		docstring const & ref = getParam("reference");
+		if (getParam("noprefix") != "true")
+			os << ref;
+		else {
+			docstring prefix;
+			docstring suffix = split(ref, prefix, ':');
+			if (suffix.empty()) {
+		    LYXERR0("Label `" << ref << "' contains no `:' separator.");
+				os << ref;
+			} else {
+				os << suffix;
+			}
+		}
 	}
 	else {
 		// We don't want to output p_["name"], since that is only used 
@@ -303,13 +316,29 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 	buffer().addReference(ref, this, it);
 
 	docstring label;
+	string const & cmd = getCmdName();
 	for (int i = 0; !types[i].latex_name.empty(); ++i) {
-		if (getCmdName() == types[i].latex_name) {
+		if (cmd == types[i].latex_name) {
 			label = _(types[i].short_gui_name);
 			break;
 		}
 	}
-	label += ref;
+
+	if (cmd != "labelonly")
+		label += ref;
+	else {
+		if (getParam("noprefix") != "true")
+			label += ref;
+		else {
+			docstring prefix;
+			docstring suffix = split(ref, prefix, ':');
+			if (suffix.empty()) {
+				label += ref;
+			} else {
+				label += suffix;
+			}
+		}
+	}
 	
 	if (!buffer().params().isLatex() && !getParam("name").empty()) {
 		label += "||";

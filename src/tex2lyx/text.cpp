@@ -3498,6 +3498,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << "\"\n";
 			os << "plural \"false\"\n";
 			os << "caps \"false\"\n";
+			os << "noprefix \"false\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("refstyle");
 		}
@@ -3516,6 +3517,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				   << "\"\n";
 				os << "plural \"false\"\n";
 				os << "caps \"false\"\n";
+				os << "noprefix \"false\"\n";
 				end_inset(os);
 				if (t.cs() == "vref" || t.cs() == "vpageref")
 					preamble.registerAutomaticallyLoadedPackage("varioref");
