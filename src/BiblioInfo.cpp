@@ -788,7 +788,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			CiteEngineType const engine_type = buf.params().citeEngineType();
 			DocumentClass const & dc = buf.params().documentClass();
 			docstring const & format =
-				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_)));
+				from_utf8(dc.getCiteFormat(engine_type, to_utf8(entry_type_), false));
 			int counter = 0;
 			ret = expandFormat(format, xrefs, counter, buf, ci, false, false);
 		} else if (key == "textbefore")
@@ -1000,7 +1000,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, "cite"));
+	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, true, "cite"));
 	docstring ret = format;
 	vector<docstring>::const_iterator key = keys.begin();
 	vector<docstring>::const_iterator ken = keys.end();

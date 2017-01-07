@@ -485,8 +485,9 @@ public:
 	/// returns true if the class has a ToC structure
 	bool hasTocLevels() const;
 	///
-	std::string const & getCiteFormat(CiteEngineType const & type,
-		std::string const & entry, std::string const & fallback = "") const;
+	std::string const getCiteFormat(CiteEngineType const & type,
+		std::string const & entry, bool const punct = true,
+		std::string const & fallback = "") const;
 	///
 	std::string const & getCiteMacro(CiteEngineType const & type,
 		std::string const & macro) const;

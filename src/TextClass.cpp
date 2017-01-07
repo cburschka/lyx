@@ -1815,10 +1815,12 @@ Layout const & DocumentClass::htmlTOCLayout() const
 }
 
 
-string const & DocumentClass::getCiteFormat(CiteEngineType const & type,
-	string const & entry, string const & fallback) const
+string const DocumentClass::getCiteFormat(CiteEngineType const & type,
+	string const & entry, bool const punct, string const & fallback) const
 {
-	static string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}.";
+	string default_format = "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]][[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, %pages%]]}";
+	if (punct)
+		default_format += ".";
 
 	map<CiteEngineType, map<string, string> >::const_iterator itype = cite_formats_.find(type);
 	if (itype == cite_formats_.end())
@@ -1828,6 +1830,8 @@ string const & DocumentClass::getCiteFormat(CiteEngineType const & type,
 		it = itype->second.find(fallback);
 	if (it == itype->second.end())
 		return default_format;
+	if (punct)
+		return it->second + ".";
 	return it->second;
 }
 
