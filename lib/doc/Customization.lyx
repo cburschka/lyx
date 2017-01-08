@@ -1,4 +1,4 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -123,6 +123,7 @@ logicalmkup
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
+\author 2047637253 "Guillaume Munch"
 \author 2089657418 "Usti"
 \end_header
 
@@ -9378,6 +9379,76 @@ status collapsed
 \end_inset
 
 ] Deletes an existing style.
+\change_inserted 2047637253 1483900342
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 2047637253 1483900479
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900346
+OutlinerName
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900369
+<type>
+\end_layout
+
+\end_inset
+
+] [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900418
+<string>
+\end_layout
+
+\end_inset
+
+] Define a new table of contents with type 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900414
+<type>
+\end_layout
+
+\end_inset
+
+ and name 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900419
+<string>
+\end_layout
+
+\end_inset
+
+.
+ See also the AddToToc commands.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -10643,6 +10714,38 @@ where the following commands are allowed:
 \end_layout
 
 \begin_layout Description
+
+\change_inserted 2047637253 1483963019
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483901753
+AddToToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483963007
+string
+\end_layout
+
+\end_inset
+
+=""] This paragraph will appear in the table of contents of the given type.
+ An empty string disables.
+ See also the OutlinerName and the IsTocCaption commands.
+ Default: disabled.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -11472,6 +11575,59 @@ Defines individual characters that should be output in raw form, meaning
  arguments.
  That is, arguments do not inherit PassThruChars from their parent inset
  or layout.
+\change_inserted 2047637253 1483899840
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 2047637253 1483900841
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900841
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900841
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900841
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1, the argument will output its content in the corresponding
+ item in the table of contents.
+ See AddToToc.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -12330,6 +12486,55 @@ TitleLatexName
 \end_inset
 
  global entries).
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 2047637253 1483902824
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483902211
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483902211
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483902211
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1 and AddToToc is enabled, the paragraph adds a summary
+ of its contents in its item in the table of contents.
+ Otherwise, only the label, if it exists, appears.
 \end_layout
 
 \begin_layout Description
@@ -17283,6 +17488,39 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
+
+\change_inserted 2047637253 1483963036
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900123
+AddToToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483962897
+string
+\end_layout
+
+\end_inset
+
+=""] This inset will appear in the table of contents of the given type.
+ An empty string disables.
+ See also the OutlinerName and the IsTocCaption commands.
+ This is only implemented for Flex insets.
+ Default: disabled.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -18142,11 +18380,68 @@ status collapsed
 \end_inset
 
 ] Whether to include the contents of this inset in the strings generated
- for the `Outline' pane.
+ for the `Outline' pane
+\change_inserted 2047637253 1483900773
+ for all table of contents, regardless of the AddToToc setting
+\change_unchanged
+.
  One would not, for example, want the content of a footnote in a section
  header to be included in the TOC displayed in the outline, but one would
  normally want the content of a character style displayed.
  Default is false: not to include.
+\change_inserted 2047637253 1483900609
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 2047637253 1483901257
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900725
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900620
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483900620
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1 and AddToToc is enabled, the inset adds a summary
+ of its contents in its item in the table of contents.
+ Otherwise, only the label appears.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
