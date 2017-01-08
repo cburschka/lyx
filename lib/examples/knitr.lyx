@@ -1,4 +1,4 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -69,11 +69,12 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -203,6 +204,31 @@ knitr
 \series default
 ; many of the examples have links to the \SpecialChar LyX
  source documents.
+\change_inserted 2047637253 1483899260
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2047637253 1483899275
+Since \SpecialChar LyX
+ 2.3, it is necessary to enable the use of 
+\emph on
+needauth
+\emph default
+ converters in
+\family sans
+ Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\family default
+ in order to compile with 
+\series bold
+knitr
+\series default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -216,6 +242,64 @@ knitr
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 2047637253 1483899195
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483899204
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483899200
+show-off
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483899204
+
+rnorm(5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483899204
+
+df=data.frame(y=rnorm(100), x=1:100)
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483899204
+
+summary(lm(y~x, data=df))
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 2047637253 1483899208
 \begin_inset ERT
 status open
 
@@ -246,6 +330,8 @@ summary(lm(y~x, data=df))
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
