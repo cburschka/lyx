@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 526
+\lyxformat 527
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26327,7 +26327,7 @@ reference "fig:Two-distorted-images"
 
 \begin_layout Description
 
-\change_inserted 424524441 1483414742
+\change_inserted 424524441 1483817911
 Label
 \begin_inset space ~
 \end_inset
@@ -26335,7 +26335,34 @@ Label
 only: prints only the \SpecialChar LaTeX
  label for the reference.
  This allows for customization, using ERT, if you want to issue a command
- that LyX does not support.z
+ that LyX does not support.
+ If you are using 
+\series bold
+refstyle
+\series default
+, then you may want to use the 
+\begin_inset Quotes eld
+\end_inset
+
+No prefix
+\begin_inset Quotes erd
+\end_inset
+
+ option, which will output only the part of the reference following the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+:
+\begin_inset Quotes erd
+\end_inset
+
+ separator.
+ This is the form needed for, e.g., 
+\series bold
+refstyle
+\series default
+'s range commands.
 \change_unchanged
 
 \end_layout

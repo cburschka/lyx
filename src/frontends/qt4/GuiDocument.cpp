@@ -3123,7 +3123,7 @@ void GuiDocument::paramsToDialog()
 	updateQuoteStyles();
 
 	langModule->quoteStyleCO->setCurrentIndex(
-		bp_.quotes_style);
+		langModule->quoteStyleCO->findData(bp_.quotes_style));
 	langModule->dynamicQuotesCB->setChecked(bp_.dynamic_quotes);
 
 	bool default_enc = true;

@@ -1082,7 +1082,7 @@ def revert_labelonly(document):
             i = j + 1
             continue
         document.body[i:j+1] = put_cmd_in_ert([label])
-        i = j + 1
+        i += 1
 
 
 def revert_plural_refs(document):
@@ -1131,8 +1131,46 @@ def revert_plural_refs(document):
             cmd += "[s]"
         cmd += "{" + suffix + "}"
         document.body[i:j+1] = put_cmd_in_ert([cmd])
-        i = j + 1
-    
+        i += 1
+
+
+def revert_noprefix(document):
+    " Revert labelonly tags with 'noprefix' set "
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of reference inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand labelonly", i, j)
+        if k == -1:
+            i = j
+            continue
+        noprefix = get_bool_value(document.body, "noprefix", i, j)
+        if not noprefix:
+            del_token(document.body, "noprefix", i, j)
+            i = j
+            continue
+        label = get_quoted_value(document.body, "reference", i, j)
+        if not label:
+            document.warning("Can't find label for reference at line %d!" %(i))
+            i = j + 1
+            continue
+        try:
+            (prefix, suffix) = label.split(":", 1)
+        except:
+            document.warning("No `:' separator in formatted reference at line %d!" % (i))
+            # we'll leave this as an ordinary labelonly reference
+            del_token(document.body, "noprefix", i, j)
+            i = j
+            continue
+        document.body[i:j+1] = put_cmd_in_ert([suffix])
+        i += 1
+
 
 ##
 # Conversion hub
@@ -1157,10 +1195,12 @@ convert = [
            [523, []],
            [524, []],
            [525, []],
-           [526, []]
+           [526, []],
+           [527, []]
           ]
 
 revert =  [
+           [526, [revert_noprefix]],
            [525, [revert_plural_refs]],
            [524, [revert_labelonly]],
            [523, [revert_crimson, revert_cochinealmath]],

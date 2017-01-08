@@ -403,6 +403,16 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QCheckBox" name="noprefixCB">
+       <property name="toolTip">
+        <string>Do not output part of label before &quot;:&quot;</string>
+       </property>
+       <property name="text">
+        <string>No Prefix</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>

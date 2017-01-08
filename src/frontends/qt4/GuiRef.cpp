@@ -110,6 +110,8 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(capsCB, SIGNAL(clicked()),
 		this, SLOT(changed_adaptor()));
+	connect(noprefixCB, SIGNAL(clicked()),
+		this, SLOT(changed_adaptor()));
 
 	enableBoxes();
 
@@ -137,9 +139,12 @@ void GuiRef::enableBoxes()
 {
 	bool const isFormatted = 
 	    (InsetRef::getName(typeCO->currentIndex()) == "formatted");
+	bool const isLabelOnly = 
+	    (InsetRef::getName(typeCO->currentIndex()) == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
 	pluralCB->setEnabled(isFormatted && usingRefStyle);
-	capsCB->setEnabled (isFormatted && usingRefStyle);
+	capsCB->setEnabled(isFormatted && usingRefStyle);
+	noprefixCB->setEnabled(isLabelOnly);
 }
 
 
@@ -301,6 +306,7 @@ void GuiRef::updateContents()
 
 	pluralCB->setChecked(params_["plural"] == "true");
 	capsCB->setChecked(params_["caps"] == "true");
+	noprefixCB->setChecked(params_["noprefix"] == "true");
 
 	// insert buffer list
 	bufferCO->clear();
@@ -341,6 +347,8 @@ void GuiRef::applyView()
 	params_["plural"] = pluralCB->isChecked() ? 
 	      from_ascii("true") : from_ascii("false");
 	params_["caps"] = capsCB->isChecked() ? 
+	      from_ascii("true") : from_ascii("false");
+	params_["noprefix"] = noprefixCB->isChecked() ? 
 	      from_ascii("true") : from_ascii("false");
 	restored_buffer_ = bufferCO->currentIndex();
 }
