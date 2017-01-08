@@ -1018,7 +1018,7 @@ def revert_cjkquotes(document):
                 if cjk:
                     replace = [u"\u300A"]
                 else:
-                    replace = ["\\begin_inset Formula $\\langle\\kern -2.5pt\\langle$$", "\\end_inset"]
+                    replace = ["\\begin_inset Formula $\\langle\\kern -2.5pt\\langle$", "\\end_inset"]
             else:
                 # outer closing mark
                 if cjk:
