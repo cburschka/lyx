@@ -1000,7 +1000,7 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
-	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, true, "cite"));
+	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, false, "cite"));
 	docstring ret = format;
 	vector<docstring>::const_iterator key = keys.begin();
 	vector<docstring>::const_iterator ken = keys.end();
