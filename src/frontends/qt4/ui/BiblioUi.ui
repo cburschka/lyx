@@ -6,16 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>475</width>
-    <height>394</height>
+    <width>534</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
+  <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
     <widget class="QGroupBox" name="CiteStyleBG">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="title">
       <string>Citation Style</string>
      </property>
@@ -104,30 +110,155 @@
         </property>
        </spacer>
       </item>
+      <item row="1" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="citePackageOptionsL">
+          <property name="text">
+           <string>Opt&amp;ions:</string>
+          </property>
+          <property name="buddy">
+           <cstring>citePackageOptionsLE</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="citePackageOptionsLE">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Here you can enter further options of the biblatex package</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="biblatexCbxLA">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="text">
+           <string>&amp;Biblatex citation style:</string>
+          </property>
+          <property name="buddy">
+           <cstring>biblatexCbxCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="biblatexCbxCO">
+          <property name="toolTip">
+           <string>The style that determines the layout of the citations</string>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resetCbxPB">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Reset to the preset default</string>
+          </property>
+          <property name="text">
+           <string>Rese&amp;t</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QGroupBox" name="BiblioStyleBG">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="title">
       <string>Bibliography Style</string>
      </property>
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout_1">
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="bibtopicCB">
-        <property name="toolTip">
-         <string>Select this if you want to split your bibliography into sections</string>
-        </property>
-        <property name="text">
-         <string>S&amp;ectioned bibliography</string>
-        </property>
-       </widget>
-      </item>
+     <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="biblatexBbxLA">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="text">
+           <string>Biblate&amp;x bibliography style:</string>
+          </property>
+          <property name="buddy">
+           <cstring>biblatexBbxCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="biblatexBbxCO">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>The style that determines the layout of the biblatex-generated bibliography</string>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="resetBbxPB">
+          <property name="toolTip">
+           <string>Reset to the preset default</string>
+          </property>
+          <property name="text">
+           <string>R&amp;eset</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="matchBbxPB">
+          <property name="toolTip">
+           <string>Match biblatex bibliography with citation style</string>
+          </property>
+          <property name="text">
+           <string>&amp;Match</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QLabel" name="bibtexStyleLA">
           <property name="text">
@@ -140,21 +271,17 @@
         </item>
         <item>
          <widget class="QComboBox" name="defaultBiblioCO">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
            <string>Here, you can define a BibTeX style that is suggested in the BibTeX dialog by default</string>
           </property>
           <property name="editable">
            <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="rescanBibliosPB">
-          <property name="toolTip">
-           <string>Rescan style files</string>
-          </property>
-          <property name="text">
-           <string>Re&amp;scan</string>
           </property>
          </widget>
         </item>
@@ -170,24 +297,54 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QCheckBox" name="bibtopicCB">
+          <property name="toolTip">
+           <string>Select this if you want to split your bibliography into sections</string>
+          </property>
+          <property name="text">
+           <string>Secti&amp;oned bibliography</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>189</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="rescanBibliosPB">
+          <property name="toolTip">
+           <string>Rescan style files</string>
+          </property>
+          <property name="text">
+           <string>Re&amp;scan</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QGroupBox" name="bibtexGB">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="toolTip">
       <string>Here you can define an alternative program to or specific options of BibTeX.</string>
      </property>
@@ -219,7 +376,7 @@
         </item>
        </layout>
       </item>
-      <item row="0" column="1" rowspan="2">
+      <item row="0" column="1">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -232,7 +389,7 @@
         </property>
        </spacer>
       </item>
-      <item row="1" column="0">
+      <item row="1" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="bibtexOptionsLA">
@@ -246,6 +403,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="bibtexOptionsLE">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
            <string>Define options such as --min-crossrefs (see the documentation of BibTeX)</string>
           </property>

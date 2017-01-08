@@ -7,6 +7,23 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-01-08 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 528: Biblatex support
+	  - New buffer param options:
+            \cite_engine biblatex | biblatex-natbib
+	  - New buffer params:
+	    \biblatex_bibstyle > biblatex bibliography style
+	                         (package option bibstyle=)
+	    \biblatex_citestyle > biblatex citation style
+	                         (package option citestyle=)
+	    \biblio_options > further biblatex package options
+          - \begin_inset CommandInset bibtex:
+            New param "biblatexopts" > options to \printbibliography
+	  - \begin_inset CommandInset citation
+	    New LatexCommand values: citebyear[][], Footcite[][],
+		Autocite[][], citetitle*[][], footfullcite[][],
+		supercite, Citeauthor*[][]
+
 2017-01-02 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 526: Support plural and capitalize options
 	  for refstyle-based references

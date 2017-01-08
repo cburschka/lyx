@@ -1172,6 +1172,203 @@ def revert_noprefix(document):
         i += 1
 
 
+def revert_biblatex(document):
+    " Revert biblatex support "
+
+    #
+    # Header
+    #
+
+    # 1. Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # 2. Store biblatex state and revert to natbib
+    biblatex = False
+    if engine in ["biblatex", "biblatex-natbib"]:
+        biblatex = True
+        document.header[i] = "\cite_engine natbib"
+
+    # 3. Store and remove new document headers
+    bibstyle = ""
+    i = find_token(document.header, "\\biblatex_bibstyle", 0)
+    if i != -1:
+        bibstyle = get_value(document.header, "\\biblatex_bibstyle", i)
+        del document.header[i]
+
+    citestyle = ""
+    i = find_token(document.header, "\\biblatex_citestyle", 0)
+    if i != -1:
+        citestyle = get_value(document.header, "\\biblatex_citestyle", i)
+        del document.header[i]
+
+    biblio_options = ""
+    i = find_token(document.header, "\\biblio_options", 0)
+    if i != -1:
+        biblio_options = get_value(document.header, "\\biblio_options", i)
+        del document.header[i]
+
+    if biblatex:
+        bbxopts = "[natbib=true"
+        if bibstyle != "":
+            bbxopts += ",bibstyle=" + bibstyle
+        if citestyle != "":
+            bbxopts += ",citestyle=" + citestyle
+        if biblio_options != "":
+            bbxopts += "," + biblio_options
+        bbxopts += "]"
+        add_to_preamble(document, "\\usepackage" + bbxopts + "{biblatex}")
+
+    #
+    # Body
+    #
+
+    # 1. Bibtex insets
+    i = 0
+    bibresources = []
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+            i += 1
+            continue
+        bibs = get_quoted_value(document.body, "bibfiles", i, j)
+        opts = get_quoted_value(document.body, "biblatexopts", i, j)
+        # store resources
+        if bibs:
+            bibresources += bibs.split(",")
+        else:
+            document.warning("Can't find bibfiles for bibtex inset at line %d!" %(i))
+        # remove biblatexopts line
+        k = find_token(document.body, "biblatexopts", i, j)
+        if k != -1:
+            del document.body[k]
+        # Re-find inset end line
+        j = find_end_of_inset(document.body, i)
+        # Insert ERT \\printbibliography and wrap bibtex inset to a Note
+        if biblatex:
+            pcmd = "printbibliography"
+            if opts:
+                pcmd += "[" + opts + "]"
+            repl = ["\\begin_inset ERT", "status open", "", "\\begin_layout Plain Layout",\
+                    "", "", "\\backslash", pcmd, "\\end_layout", "", "\\end_inset", "", "",\
+                    "\\end_layout", "", "\\begin_layout Standard", "\\begin_inset Note Note",\
+                    "status open", "", "\\begin_layout Plain Layout" ]
+            repl += document.body[i:j+1]
+            repl += ["", "\\end_layout", "", "\\end_inset", "", ""]
+            document.body[i:j+1] = repl
+            j += 27
+
+        i = j + 1
+
+    if biblatex:
+        for b in bibresources:
+            add_to_preamble(document, "\\addbibresource{" + b + ".bib}")
+
+    # 2. Citation insets
+
+    # Specific citation insets used in biblatex that need to be reverted to ERT
+    new_citations = {
+        "Cite" : "Cite",
+        "citebyear" : "citeyear",
+        "citeyear" : "cite*",
+        "Footcite" : "Smartcite",
+        "footcite" : "smartcite",
+        "Autocite" : "Autocite",
+        "autocite" : "autocite",
+        "citetitle" : "citetitle",
+        "citetitle*" : "citetitle*",
+        "fullcite" : "fullcite",
+        "footfullcite" : "footfullcite",
+        "supercite" : "supercite",
+        "citeauthor" : "citeauthor",
+        "citeauthor*" : "citeauthor*",
+        "Citeauthor" : "Citeauthor",
+        "Citeauthor*" : "Citeauthor*"
+        }
+
+    # All commands accepted by LyX < 2.3. Everything else throws an error.
+    old_citations = [ "cite", "nocite", "citet", "citep", "citealt", "citealp",\
+		      "citeauthor", "citeyear", "citeyearpar", "citet*", "citep*",\
+                      "citealt*", "citealp*", "citeauthor*", "Citet",  "Citep",\
+                      "Citealt",  "Citealp",  "Citeauthor", "Citet*", "Citep*",\
+                      "Citealt*", "Citealp*", "Citeauthor*", "fullcite", "footcite",\
+                      "footcitet", "footcitep", "footcitealt", "footcitealp",\
+                      "footciteauthor", "footciteyear", "footciteyearpar",\
+		      "citefield", "citetitle", "cite*" ]
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
+            i = j + 1
+            continue
+        cmd = get_value(document.body, "LatexCommand", k)
+        if biblatex and cmd in list(new_citations.keys()):
+            pre = get_quoted_value(document.body, "before", i, j)
+            post = get_quoted_value(document.body, "after", i, j)
+            key = get_quoted_value(document.body, "key", i, j)
+            if not key:
+                document.warning("Citation inset at line %d does not have a key!" %(i))
+                key = "???"
+            # Replace known new commands with ERT
+            res = "\\" + new_citations[cmd]
+            if pre:
+                res += "[" + pre + "]"
+            elif post:
+                res += "[]"
+            if post:
+                res += "[" + post + "]"
+            res += "{" + key + "}"
+            document.body[i:j+1] = put_cmd_in_ert([res])
+        elif cmd not in old_citations:
+            # Reset unknown commands to cite. This is what LyX does as well
+            # (but LyX 2.2 would break on unknown commands)
+            document.body[k] = "LatexCommand cite"
+            document.warning("Reset unknown cite command '%s' with cite" % cmd)
+        i = j + 1
+
+    # Emulate the old biblatex-workaround (pretend natbib in order to use the styles)
+    if biblatex:
+        i = find_token(document.header, "\\begin_local_layout", 0)
+        if i == -1:
+            k = find_token(document.header, "\\language", 0)
+            if k == -1:
+                # this should not happen
+                document.warning("Malformed LyX document! No \\language header found!")
+                return
+            document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+            i = k-1
+
+        j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+        if j == -1:
+            # this should not happen
+            document.warning("Malformed LyX document! Can't find end of local layout!")
+            return
+
+        document.header[i+1 : i+1] = [
+            "### Inserted by lyx2lyx (biblatex emulation) ###",
+            "Provides natbib 1",
+            "### End of insertion by lyx2lyx (biblatex emulation) ###"
+        ]
+
+
 ##
 # Conversion hub
 #
@@ -1196,10 +1393,12 @@ convert = [
            [524, []],
            [525, []],
            [526, []],
-           [527, []]
+           [527, []],
+           [528, []]
           ]
 
 revert =  [
+           [527, [revert_biblatex]],
            [526, [revert_noprefix]],
            [525, [revert_plural_refs]],
            [524, [revert_labelonly]],

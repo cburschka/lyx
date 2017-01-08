@@ -79,6 +79,8 @@ private:
 	bool usingBibtopic() const;
 	/// should we put the bibliography to the TOC?
 	bool bibtotoc() const;
+	/// do we use biblatex?
+	bool usingBiblatex() const;
 	/// which stylefile do we use?
 	QString styleFile() const;
 

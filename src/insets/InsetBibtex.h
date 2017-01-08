@@ -85,6 +85,8 @@ private:
 	void editDatabases() const;
 	///
 	void parseBibTeXFiles() const;
+	///
+	bool usingBiblatex() const;
 
 	/// \name Private functions inherited from Inset class
 	//@{

@@ -107,6 +107,34 @@ Format LaTeX feature                        LyX feature
        \usepackage[cochineal]{newtxmath}     \font_math "cochineal-ntxm" "<nontexfont>"
 526
        Plural and capitalized refstyles      InsetRef
+528    Biblatex
+       \usepackage{biblatex}                 \cite_engine biblatex
+       ...[...natbib=true...]...             \cite_engine biblatex-natbib
+       ...[...style=<val>...]...             \biblatex_bibstyle <val>
+                                             \biblatex_citestyle <val>
+       ...[...bibstyle=<val>...]...          \biblatex_bibstyle <val>
+       ...[...citestyle=<val>...]...         \biblatex_citestyle <val>
+       ...[...<any other opt>...]...         \biblio_options <any other opt>
+       \printbibliography[<opts>]            \begin_inset CommandInset bibtex
+                                              biblatexopts "<opts>"
+       \addbibresource{file.bib}            \begin_inset CommandInset bibtex
+         [multiple possible!]                 bibfiles "...,file,..."         [NB: strip ext!]
+       \bibliography{file1,file2,...}      \begin_inset CommandInset bibtex
+                                              bibfiles "...,file1,file2,..."
+                                           \begin_inset CommandInset citation
+       \Cite                                LatexCmd Cite
+       \cite*                               LatexCmd citeyear
+       \citeyear                            LatexCmd citebyear
+       \{T,t}extcite                        LatexCmd {C,c}itet
+       \{P,p}arencite                       LatexCmd {C,c}itep
+       \parencite*                          LatexCmd citeyearpar
+       \{S,s}martcite                       LatexCmd {F,f}ootcite
+       \{F,f}ootcite                        LatexCmd {F,f}ootcite
+       \{A,a}utocite                        LatexCmd {A,a}utocite
+       \citecite[*]                         LatexCmd citecite[*]
+       \fullcite                            LatexCmd fullcite
+       \footfullcite                        LatexCmd footfullcite
+       \supercite                           LatexCmd supercite 
 
 
 General

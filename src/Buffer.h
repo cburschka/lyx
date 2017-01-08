@@ -417,6 +417,18 @@ public:
 	 */
 	support::DocFileName getReferencedFileName(std::string const & fn) const;
 
+	/// Format a file name for LaTeX output (absolute or relative or filename only,
+	/// depending on file and context)
+	std::string const prepareFileNameForLaTeX(std::string const &,
+					std::string const &, bool nice) const;
+
+	/** Returns a vector of bibliography (*.bib) file paths suitable for the
+	 *  output in the respective BibTeX/Biblatex macro
+	 */
+	std::vector<docstring> const prepareBibFilePaths(OutputParams const &,
+				    support::FileNamePairList const bibfilelist,
+				    bool const extension = true) const;
+
 	/** Returns the path where a local layout file lives.
 	 *  An empty string is returned for standard system and user layouts.
 	 *  If possible, it is always relative to the buffer path.

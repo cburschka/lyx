@@ -116,11 +116,15 @@ private Q_SLOTS:
 	void languagePackageChanged(int);
 	void biblioChanged();
 	void rescanBibFiles();
-	void resetDefaultBibfile();
+	void resetDefaultBibfile(std::string const & which = std::string());
+	void resetDefaultBbxBibfile();
+	void resetDefaultCbxBibfile();
 	void citeEngineChanged(int);
 	void citeStyleChanged();
 	void bibtexChanged(int);
 	void updateResetDefaultBiblio();
+	void matchBiblatexStyles();
+	void updateEngineDependends();
 	void updateModuleInfo();
 	void modulesChanged();
 	void changeBackgroundColor();
@@ -184,7 +188,8 @@ private:
 	///
 	void updateIncludeonlys();
 	///
-	void updateDefaultBiblio(std::string const & style);
+	void updateDefaultBiblio(std::string const & style,
+				 std::string const & which = std::string());
 	/// save as default template
 	void saveDocDefault();
 	/// reset to default params
@@ -280,6 +285,8 @@ private:
 	bool noMathFont() const;
 	///
 	void allPackages(int);
+	///
+	bool isBiblatex() const;
 	///
 	BufferParams bp_;
 	/// List of names of available modules

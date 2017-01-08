@@ -465,6 +465,9 @@ public:
 	/// Return the actual bibtex command (lyxrc or buffer param)
 	std::string const & bibtexCommand() const;
 
+	/// Are we using biblatex?
+	bool useBiblatex() const;
+
 	/// Set the default BibTeX style file for the document
 	void setDefaultBiblioStyle(std::string const & s){ biblio_style = s; }
 	/// Get the default BibTeX style file from the TextClass
@@ -473,6 +476,13 @@ public:
 	bool const & fullAuthorList() const;
 	/// Check if a citation style is an alias to another style
 	std::string getCiteAlias(std::string const & s) const;
+
+	/// Options of the bibiography package
+	std::string biblio_opts;
+	/// The biblatex bibliography style
+	std::string biblatex_bibstyle;
+	/// The biblatex citation style
+	std::string biblatex_citestyle;
 
 	/// options for pdf output
 	PDFOptions & pdfoptions();

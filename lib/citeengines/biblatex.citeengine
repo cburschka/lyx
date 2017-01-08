@@ -1,0 +1,302 @@
+# \DeclareLyXCiteEngine[biblatex.sty]{Biblatex}
+# DescriptionBegin
+#   Biblatex supports many author-year and numerical styles. It is mainly
+#   aimed at the Humanities. It is highly customizable, fully localized
+#   and provides many features that are not possible with BibTeX.
+#   The use of 'biber' as bibliography processor is advised.
+# DescriptionEnd
+# Excludes: basic | jurabib | natbib | biblatex-natbib
+
+# Author: Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 63
+
+Requires biblatex
+
+# The framework (biblatex|bibtex)
+CiteFramework biblatex
+
+# Cite style variants (default|authoryear|natbib)
+# We provide both authoryear and numerical citations
+CiteEngineType authoryear|numerical
+
+# Default style files for either engine type
+DefaultBiblio  authoryear:authoryear|numerical:numeric
+
+# Maximum number of names before "et al." chimes in
+MaxCiteNames 3
+
+
+# The syntax of the cite command definitions below is:
+# LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
+# 
+# * LyXName:  The LyX name as output in the LyX file. For
+#             portability reasons, we try to use the same
+#             name for same-formatted commands in the
+#             different engines (thus many names stem from
+#             natbib).
+# * Alias:    A (comma-separated) list of commands that fall
+#             back to the given LyX name in the current engine.
+#             This is a bit like "ObsoletedBy" in the layouts.
+# * latexcmd: The actual LaTeX command that is output.
+#
+# Alias and latexcmd are optional. If no latexcmd is given, the
+# LyXName will be output to LaTeX.
+#
+# Note further:
+#
+# * Capitalization indicates that the command also has a capitalized
+#   form (\Latexcmd vs. \latexcmd). These usually enforce upcasing of
+#   name prefixes (von Goethe => Von Goethe).
+# * Brackets [] indicate the number of optional arguments (0, 1, 2).
+# * The star * indicates there is a starred version of the command
+#   (\latexcmd* vs. \latexcmd). By default, the starred version means:
+#   Expand the author list even if the maxnames setting would cause
+#   BibTeX/Biber to shorten it with "et al.".
+#   If the star has a different meaning for a command, it can be
+#   specified in angle brackets: <!_stardesc!_stardesctooltip>.
+#   Maximal two translatable macro keywords, marked by the prefix '!_',
+#   can be given. The first points to the string that replaces the
+#   "Full aut&hor list" checkbox label in the Citation dialog, the
+#   second one an optional tooltip for this checkbox. Note that these
+#   two macros have to be defined in the CiteFormat section, dropping
+#   the '!' from the prefix (see below), e.g.:
+#   _stardesc Starred command label
+#   _stardesctooltip Tooltip for the starred command checkbox.
+
+#
+# CITE COMMAND DEFINITIONS for either engine type
+#
+CiteEngine authoryear
+	Cite|citealt,citealp[][]
+	Citet[][]=textcite
+	Citep[][]=parencite
+	Citeauthor*<!_citeauthorstar!_citeauthorstartooltip>[][]
+	citeyearpar[][]=parencite*
+	citeyear[][]=cite*
+	citebyear[][]=citeyear
+	Footcite[][]=smartcite
+	Autocite[][]
+	citetitle*<!_citetitlestar!_citetitlestartooltip>[][]
+	fullcite[][]
+	footfullcite[][]
+	nocite
+End
+
+CiteEngine numerical
+	cite|parencite,citep,citealt,citealp[][]
+	Citet[][]=textcite
+	supercite
+	Footcite[][]=smartcite
+	Autocite[][]
+	Citeauthor*<!_citeauthorstar!_citeauthorstartooltip>[][]
+	citeyear|parencite*,citebyear[][]=citeyear*
+	citetitle*<!_citetitlestar!_citetitlestartooltip>[][]
+	fullcite[][]
+	footfullcite[][]
+	nocite
+End
+
+
+#
+# CITE FORMAT
+#
+
+# The following defines how the commands are represented in the GUI
+# (inset button and citation dialog) as well as in XHTML, docbook and
+# plain text output.
+#
+# There are common definitions (default) and specific definitions for
+# either cite engine type (which overwrite existing defaults.
+#
+CiteFormat default
+	#
+	# MACROS
+	#
+	# 1. Translatable bits (need to be marked by _ prefix)
+	#    Note that preceding and trailing spaces matter.
+	#
+	_notcited not cited
+	_addtobib Add to bibliography only.
+	_footnote Footnote
+	_foot Foot
+	_fullcite bibliography entry
+	_bibentry Full bibliography entry.
+	_autocite Autocite
+	_auto Auto
+	# GUI strings for the starred commands
+	_citeauthorstar S&horten author list[[Possible substitute to All aut&hors]]
+	_citeauthorstartooltip Force a short author list (using et al.)
+	_citetitlestar F&orce full title[[Possible substitute to All aut&hors]]
+	_citetitlestartooltip Use full title even if shorttitle exists
+	# The following are handled by BiblioInfo
+	_etal  et al.
+	_namesep , [[separate author names in citation, except for last name]]
+	_lastnamesep , and [[separate name of last author in citation]]
+	_pairnamesep  and [[separate two authors in citation]]
+
+	#
+	# 2. Macros re-used in the style definitions
+	#
+	# A link that lets us jump to the bibliography entry in LyXHTML
+	# %clean:key% will be substituted by the cite key to give a unique id
+	!startlink {!<a href='#LyXCite-%clean:key%'>!}
+	!endlink {!</a>!}
+
+	# Add " , and " before the last item (but " and " if there are only two), else ", "
+	!smartsep {%second%[[{%next%[[%_namesep%]][[%_pairnamesep%]]}]][[{%next%[[%_namesep%]][[%_lastnamesep%]]}]]}
+
+	# A dummy year modifier. This just indicates that a modifier might be output,
+	# to differentiate \cite* and \citeyear
+	!dummymod [a]
+
+	# "...; Nextauthor ..."
+	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
+	# Handle starred command: abbr. or full author list
+	!makenextauthor {%next%[[%!sep% %!startlink%%!makeauthor%%!endlink%%!makenextauthor%]]}
+	# "...; [NextID] ..."
+	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
+	# "...; Nextyear ..." (including extra label, as in 2017a)
+	!nextyear {%next%[[%!sep% %!startlink%%!year%%!endlink%%!nextyear%]]}
+	# "...; Nextyear ..." (including emulated extra label, as in 2017[a])
+	!nextmyear {%next%[[%!sep% %!startlink%%!myear%%!endlink%%!nextmyear%]]}
+	# "...; Nextyear ..." (without any extra label)
+	!nextbyear {%next%[[%!sep% %!startlink%%!byear%%!endlink%%!nextbyear%]]}
+	# "...; Nexttitle ..." 
+	!makenexttitle {%next%[[%!sep% %!startlink%%!maketitle%%!endlink%%!makenexttitle%]]}
+	# "...; NextKey..."
+	!nextfullcite {%next%[[%!sep% %bibentry%%!nextfullcite%]]}
+
+	# "Author et al." (if > 3 authors) or "??"
+	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	# "Author et al." (always) or "??"
+	!forceabbrvauthor {%forceabbrvauthor%[[%forceabbrvauthor%]][[??]]}
+	# Handle starred command: force of abbr. author list, independent of maxcitenames
+	!makeauthor {%ifstar%[[%!forceabbrvauthor%]][[%!abbrvauthor%]]}
+	# "prenote "
+	!textbefore {%textbefore%[[%textbefore% ]]}
+	# ", postnote"
+	!textafter {%textafter%[[, %textafter%]]}
+	# Add a year if it exists (else "??") and possibly a modifier (as in 2017a)
+	!year {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
+	# Add a year if it exists (else "??") and indicate a possible modifier (as in 2017[a])
+	!myear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}
+	# Add a year if it exists (else "??") without any modifier at all
+	!byear {%year%[[%year%]][[??]]}
+	# Add a shorttitle or title if it exists (else "??")
+	!makeshorttitle {%shorttitle%[[%shorttitle%]][[{%title%[[%title%]][[??]]}]]}
+	# Add a title (or "??")
+	!maketitle {%ifstar%[[{%title%[[%title%]][[??]]}]][[%!makeshorttitle%]]}
+	# "cf. Key..."
+	!fullcite %!startlink%%bibentry%%!endlink%%!nextfullcite%
+
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (identical in authoryear and numerical)
+	#
+
+	# "cf. Author; Nextautor, p. xx"
+	citeauthor %!textbefore%%!startlink%%!makeauthor%%!endlink%%!makenextauthor%%!textafter%
+	# "cf. Year; Nextyear, p. xx" (including extra label, as in 2017a)
+	citeyear %!textbefore%%!startlink%%!myear%%!endlink%%!nextyear%%!textafter%
+	# "cf. Year; Nextyear, p. xx" (without any extra label)
+	citebyear %!textbefore%%!startlink%%!byear%%!endlink%%!nextbyear%%!textafter%
+	# "cf. Year; Nextyear, p. xx" (without any extra label)
+	citetitle %!textbefore%%!startlink%%!maketitle%%!endlink%%!makenexttitle%%!textafter%
+	# "Bibliography entry." (dialog) / "cf. Key; NextKey..., p. xx (bibliography entry)" (button)
+	fullcite {%dialog%[[%_bibentry%]][[%!textbefore%{%label%[[%!fullcite%]][[%key%%!nextkey% (%_fullcite%)]]}%!textafter%}]]}
+	# "Footnote: Full bibliography entry." (dialog) / "Foot: Key (bibliography entry)"
+	footfullcite {%dialog%[[%_footnote%]][[%_foot%]]}: {%dialog%[[%_bibentry%]][[{%label%[[%!fullcite%]][[%key%%!nextkey% (%_fullcite%)]]}]]}
+	# "Add to bibliography only." (dialog) / "[ID] (not cited)" (button)
+	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+End
+
+CiteFormat authoryear
+	#
+	# MACROS
+	#
+	!open (
+	!sep ;
+	!close )
+
+	# "cf. Author et. al Year..."
+	!makecite %!startlink%%!abbrvauthor% %!year%%!endlink%%!nextcite%
+	# Author et al. (cf. Year...
+	!maketextcite %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nexttextcite%
+
+	# "...; Nextauthor Year..."
+	!nextcite {%next%[[%!sep% %!makecite%]]}
+	# "...); Nextauthor (Year..."
+	!nexttextcite {%next%[[%!close%%!smartsep%%!startlink%%!abbrvauthor%%!endlink% %!open%%!year%%!nexttextcite%]]}
+
+	# Add a year if it exists (else title, else "??") and possibly a modifier (as in 2017a)
+	!yeartitle {%year%[[%year%{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}]][[{%title%[[%title%]][[??]]}]]}
+	# "...; Nextyear ..." (including extra label, as in 2017a)
+	!nextyeartitle {%next%[[%!sep% %!startlink%%!yeartitle%%!endlink%%!nextyeartitle%]]}
+
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (additions and modifications to default)
+	#
+
+	# "cf. Author A Year; Author B Year, p. xx"
+	cite %!textbefore%%!makecite%%!textafter%
+	# "cf. Author A (Year),[ and] Author B (Year), p. xx"
+	citet %!maketextcite%%!close%%!textafter%
+	# "(cf. Author A Year; Author B Year, p. xx)"
+	citep %!open%%!textbefore%%!makecite%%!textafter%%!close%
+	# This prints year or title, if year is missing
+	citeyear %!textbefore%%!startlink%%!yeartitle%%!endlink%%!nextyeartitle%%!textafter%
+	# "(cf. Year; Nextyear, p. xx)"
+	citeyearpar %!open%%!textbefore%%!startlink%%!myear%%!endlink%%!nextmyear%%!textafter%%!close%
+	# "Footnote: cf. Author A Year; Author B Year, p. xx."
+	footcite {%dialog%[[%_footnote%]][[%_foot%]]}: %!textbefore%%!makecite%%!textafter%.
+	# "Auto: (cf. Author A Year; Author B Year, p. xx)"
+	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makecite%%!textafter%%!close%
+End
+
+CiteFormat numerical
+	#
+	# MACROS
+	#
+	# 1. Translatable bits (need to be marked by _ prefix)
+	#
+	_super Super
+	_superscript Superscript
+
+	#
+	# 2. Macros re-used in the style definitions
+	#
+	!open [
+	!sep ,
+	!close ]
+
+	# "Author [cf. ID..."
+	!maketextcite %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%
+	# "ID"
+	!makekey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nextkey%]]}
+
+	# "...); Nextauthor [ID..."
+	!nexttextcite {%next%[[%!close%%!smartsep%%!abbrvauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%]]}
+	# "..., NextID..."
+	!nextkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nextkey%]]}
+
+	#
+	# ACTUAL STYLE DEFINITIONS
+	#
+	# (additions and modifications to default)
+	#
+
+	# "[cf. ID, NextID, p. xx]"
+	cite %!open%%!textbefore%%!makekey%%!textafter%%!close%
+	# "Author [cf. ID],[ and] Nextauthor [NextID, p. xx]"
+	citet %!maketextcite%%!textafter%%!close%
+	# "Footnote: cf. ID, NextID, p. xx."
+	footcite {%dialog%[[%_footnote%]][[%_foot%]]}: %!textbefore%%!makekey%%!textafter%.
+	# "Auto: (cf. Author A Year; Author B Year, p. xx)"
+	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makekey%%!textafter%%!close%
+	# "Superscript: ID" (dialog) / "Super: ID" (button) 
+	supercite {%dialog%[[%_superscript%]][[%_super%]]}: %!makekey%
+End

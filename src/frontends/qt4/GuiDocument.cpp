@@ -1130,16 +1130,32 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(biblioChanged()));
+	connect(biblioModule->citePackageOptionsLE, SIGNAL(textChanged(QString)),
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->defaultBiblioCO, SIGNAL(activated(int)),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->defaultBiblioCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->defaultBiblioCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(updateResetDefaultBiblio()));
+	connect(biblioModule->biblatexBbxCO, SIGNAL(activated(int)),
+		this, SLOT(biblioChanged()));
+	connect(biblioModule->biblatexBbxCO, SIGNAL(editTextChanged(QString)),
+		this, SLOT(updateResetDefaultBiblio()));
+	connect(biblioModule->biblatexCbxCO, SIGNAL(activated(int)),
+		this, SLOT(biblioChanged()));
+	connect(biblioModule->biblatexCbxCO, SIGNAL(editTextChanged(QString)),
+		this, SLOT(updateResetDefaultBiblio()));
 	connect(biblioModule->rescanBibliosPB, SIGNAL(clicked()),
 		this, SLOT(rescanBibFiles()));
 	connect(biblioModule->resetDefaultBiblioPB, SIGNAL(clicked()),
 		this, SLOT(resetDefaultBibfile()));
+	connect(biblioModule->resetCbxPB, SIGNAL(clicked()),
+		this, SLOT(resetDefaultCbxBibfile()));
+	connect(biblioModule->resetBbxPB, SIGNAL(clicked()),
+		this, SLOT(resetDefaultBbxBibfile()));
+	connect(biblioModule->matchBbxPB, SIGNAL(clicked()),
+		this, SLOT(matchBiblatexStyles()));
 
 	biblioModule->citeEngineCO->clear();
 	for (LyXCiteEngine const & cet : theCiteEnginesList) {
@@ -2303,11 +2319,14 @@ void GuiDocument::biblioChanged()
 
 void GuiDocument::rescanBibFiles()
 {
-	rescanTexStyles("bst");
+	if (isBiblatex())
+		rescanTexStyles("bbx cbx");
+	else
+		rescanTexStyles("bst");
 }
 
 
-void GuiDocument::resetDefaultBibfile()
+void GuiDocument::resetDefaultBibfile(string const & which)
 {
 	QString const engine =
 		biblioModule->citeEngineCO->itemData(
@@ -2317,7 +2336,19 @@ void GuiDocument::resetDefaultBibfile()
 		CiteEngineType(biblioModule->citeStyleCO->itemData(
 							  biblioModule->citeStyleCO->currentIndex()).toInt());
 
-	updateDefaultBiblio(theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet));
+	updateDefaultBiblio(theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet), which);
+}
+
+
+void GuiDocument::resetDefaultBbxBibfile()
+{
+	resetDefaultBibfile("bbx");
+}
+
+
+void GuiDocument::resetDefaultCbxBibfile()
+{
+	resetDefaultBibfile("cbx");
 }
 
 
@@ -2330,9 +2361,32 @@ void GuiDocument::citeEngineChanged(int n)
 		theCiteEnginesList[fromqstr(engine)]->getEngineType();
 
 	updateCiteStyles(engs);
+	updateEngineDependends();
 	resetDefaultBibfile();
-
 	biblioChanged();
+}
+
+
+void GuiDocument::updateEngineDependends()
+{
+	bool const biblatex = isBiblatex();
+
+	// These are only useful with BibTeX
+	biblioModule->defaultBiblioCO->setEnabled(!biblatex);
+	biblioModule->bibtexStyleLA->setEnabled(!biblatex);
+	biblioModule->resetDefaultBiblioPB->setEnabled(!biblatex);
+	biblioModule->bibtopicCB->setEnabled(!biblatex);
+
+	// These are only useful with Biblatex
+	biblioModule->citePackageOptionsLE->setEnabled(biblatex);
+	biblioModule->citePackageOptionsL->setEnabled(biblatex);
+	biblioModule->biblatexBbxCO->setEnabled(biblatex);
+	biblioModule->biblatexBbxLA->setEnabled(biblatex);
+	biblioModule->biblatexCbxCO->setEnabled(biblatex);
+	biblioModule->biblatexCbxLA->setEnabled(biblatex);
+	biblioModule->resetBbxPB->setEnabled(biblatex);
+	biblioModule->resetCbxPB->setEnabled(biblatex);
+	biblioModule->matchBbxPB->setEnabled(biblatex);
 }
 
 
@@ -2341,8 +2395,10 @@ void GuiDocument::citeStyleChanged()
 	QString const engine =
 		biblioModule->citeEngineCO->itemData(
 				biblioModule->citeEngineCO->currentIndex()).toString();
-	if (theCiteEnginesList[fromqstr(engine)]->isDefaultBiblio(
-				fromqstr(biblioModule->defaultBiblioCO->currentText())))
+	QString const currentDef = isBiblatex() ?
+		biblioModule->biblatexBbxCO->currentText()
+		: biblioModule->defaultBiblioCO->currentText();
+	if (theCiteEnginesList[fromqstr(engine)]->isDefaultBiblio(fromqstr(currentDef)))
 		resetDefaultBibfile();
 
 	biblioChanged();
@@ -2665,6 +2721,10 @@ void GuiDocument::applyView()
 		biblioModule->bibtopicCB->isChecked();
 
 	bp_.setDefaultBiblioStyle(fromqstr(biblioModule->defaultBiblioCO->currentText()));
+
+	bp_.biblatex_bibstyle = fromqstr(biblioModule->biblatexBbxCO->currentText());
+	bp_.biblatex_citestyle = fromqstr(biblioModule->biblatexCbxCO->currentText());
+	bp_.biblio_opts = fromqstr(biblioModule->citePackageOptionsLE->text());
 
 	string const bibtex_command =
 		fromqstr(biblioModule->bibtexCO->itemData(
@@ -3087,7 +3147,15 @@ void GuiDocument::paramsToDialog()
 	biblioModule->bibtopicCB->setChecked(
 		bp_.use_bibtopic);
 
-	updateDefaultBiblio(bp_.defaultBiblioStyle());
+	updateEngineDependends();
+
+	if (isBiblatex()) {
+		updateDefaultBiblio(bp_.biblatex_bibstyle, "bbx");
+		updateDefaultBiblio(bp_.biblatex_citestyle, "cbx");
+	} else
+		updateDefaultBiblio(bp_.defaultBiblioStyle());
+
+	biblioModule->citePackageOptionsLE->setText(toqstr(bp_.biblio_opts));
 
 	string command;
 	string options =
@@ -3675,40 +3743,117 @@ void GuiDocument::updateIncludeonlys()
 }
 
 
-void GuiDocument::updateDefaultBiblio(string const & style)
+bool GuiDocument::isBiblatex() const
+{
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+
+	return theCiteEnginesList[fromqstr(engine)]->getCiteFramework() == "biblatex";
+}
+
+
+void GuiDocument::updateDefaultBiblio(string const & style,
+				      string const & which)
 {
 	QString const bibstyle = toqstr(style);
 	biblioModule->defaultBiblioCO->clear();
+	biblioModule->biblatexBbxCO->clear();
+	biblioModule->biblatexCbxCO->clear();
 
 	int item_nr = -1;
 
-	QStringList str = texFileList("bstFiles.lst");
-	// test whether we have a valid list, otherwise run rescan
-	if (str.isEmpty()) {
-		rescanTexStyles("bst");
-		str = texFileList("bstFiles.lst");
-	}
-	for (int i = 0; i != str.size(); ++i)
-		str[i] = onlyFileName(str[i]);
-	// sort on filename only (no path)
-	str.sort();
+	if (isBiblatex()) {
+		if (which != "cbx") {
+			// First the bbx styles
+			QStringList str = texFileList("bbxFiles.lst");
+			// test whether we have a valid list, otherwise run rescan
+			if (str.isEmpty()) {
+				rescanTexStyles("bbx");
+				str = texFileList("bbxFiles.lst");
+			}
+			for (int i = 0; i != str.size(); ++i)
+				str[i] = onlyFileName(str[i]);
+			// sort on filename only (no path)
+			str.sort();
 
-	for (int i = 0; i != str.count(); ++i) {
-		QString item = changeExtension(str[i], "");
-		if (item == bibstyle)
-			item_nr = i;
-		biblioModule->defaultBiblioCO->addItem(item);
-	}
+			for (int i = 0; i != str.count(); ++i) {
+				QString item = changeExtension(str[i], "");
+				if (item == bibstyle)
+					item_nr = i;
+				biblioModule->biblatexBbxCO->addItem(item);
+			}
 
-	if (item_nr == -1 && !bibstyle.isEmpty()) {
-		biblioModule->defaultBiblioCO->addItem(bibstyle);
-		item_nr = biblioModule->defaultBiblioCO->count() - 1;
-	}
+			if (item_nr == -1 && !bibstyle.isEmpty()) {
+				biblioModule->biblatexBbxCO->addItem(bibstyle);
+				item_nr = biblioModule->biblatexBbxCO->count() - 1;
+			}
 
-	if (item_nr != -1)
-		biblioModule->defaultBiblioCO->setCurrentIndex(item_nr);
-	else
-		biblioModule->defaultBiblioCO->clearEditText();
+			if (item_nr != -1)
+				biblioModule->biblatexBbxCO->setCurrentIndex(item_nr);
+			else
+				biblioModule->biblatexBbxCO->clearEditText();
+		}
+
+		if (which != "bbx") {
+			// now the cbx styles
+			QStringList str = texFileList("cbxFiles.lst");
+			// test whether we have a valid list, otherwise run rescan
+			if (str.isEmpty()) {
+				rescanTexStyles("cbx");
+				str = texFileList("cbxFiles.lst");
+			}
+			for (int i = 0; i != str.size(); ++i)
+				str[i] = onlyFileName(str[i]);
+			// sort on filename only (no path)
+			str.sort();
+
+			for (int i = 0; i != str.count(); ++i) {
+				QString item = changeExtension(str[i], "");
+				if (item == bibstyle)
+					item_nr = i;
+				biblioModule->biblatexCbxCO->addItem(item);
+			}
+
+			if (item_nr == -1 && !bibstyle.isEmpty()) {
+				biblioModule->biblatexCbxCO->addItem(bibstyle);
+				item_nr = biblioModule->biblatexCbxCO->count() - 1;
+			}
+
+			if (item_nr != -1)
+				biblioModule->biblatexCbxCO->setCurrentIndex(item_nr);
+			else
+				biblioModule->biblatexCbxCO->clearEditText();
+		}
+	} else {// BibTeX
+		QStringList str = texFileList("bstFiles.lst");
+		// test whether we have a valid list, otherwise run rescan
+		if (str.isEmpty()) {
+			rescanTexStyles("bst");
+			str = texFileList("bstFiles.lst");
+		}
+		for (int i = 0; i != str.size(); ++i)
+			str[i] = onlyFileName(str[i]);
+		// sort on filename only (no path)
+		str.sort();
+
+		for (int i = 0; i != str.count(); ++i) {
+			QString item = changeExtension(str[i], "");
+			if (item == bibstyle)
+				item_nr = i;
+			biblioModule->defaultBiblioCO->addItem(item);
+		}
+
+		if (item_nr == -1 && !bibstyle.isEmpty()) {
+			biblioModule->defaultBiblioCO->addItem(bibstyle);
+			item_nr = biblioModule->defaultBiblioCO->count() - 1;
+		}
+
+		if (item_nr != -1)
+			biblioModule->defaultBiblioCO->setCurrentIndex(item_nr);
+		else
+			biblioModule->defaultBiblioCO->clearEditText();
+	}
 
 	updateResetDefaultBiblio();
 }
@@ -3722,9 +3867,25 @@ void GuiDocument::updateResetDefaultBiblio()
 	CiteEngineType const cet =
 		CiteEngineType(biblioModule->citeStyleCO->itemData(
 							  biblioModule->citeStyleCO->currentIndex()).toInt());
-	biblioModule->resetDefaultBiblioPB->setEnabled(
-		theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet)
-			!= fromqstr(biblioModule->defaultBiblioCO->currentText()));
+
+	string const defbib = theCiteEnginesList[fromqstr(engine)]->getDefaultBiblio(cet);
+	if (isBiblatex()) {
+		QString const bbx = biblioModule->biblatexBbxCO->currentText();
+		QString const cbx = biblioModule->biblatexCbxCO->currentText();
+		biblioModule->resetCbxPB->setEnabled(defbib != fromqstr(cbx));
+		biblioModule->resetBbxPB->setEnabled(defbib != fromqstr(bbx));
+		biblioModule->matchBbxPB->setEnabled(bbx != cbx && !cbx.isEmpty()
+			&& biblioModule->biblatexBbxCO->findText(cbx) != -1);
+	} else
+		biblioModule->resetDefaultBiblioPB->setEnabled(
+			defbib != fromqstr(biblioModule->defaultBiblioCO->currentText()));
+}
+
+
+void GuiDocument::matchBiblatexStyles()
+{
+	updateDefaultBiblio(fromqstr(biblioModule->biblatexCbxCO->currentText()), "bbx");
+	biblioChanged();
 }
 
 

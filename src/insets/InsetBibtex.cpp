@@ -5,6 +5,7 @@
  *
  * \author Alejandro Aguilar Sierra
  * \author Richard Heck (BibTeX parser improvements)
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -16,6 +17,7 @@
 #include "BiblioInfo.h"
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "CiteEnginesList.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Encoding.h"
@@ -79,6 +81,7 @@ ParamInfo const & InsetBibtex::findInfo(string const & /* cmdName */)
 		param_info_.add("btprint", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("bibfiles", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("options", ParamInfo::LYX_INTERNAL);
+		param_info_.add("biblatexopts", ParamInfo::LATEX_OPTIONAL);
 	}
 	return param_info_;
 }
@@ -146,9 +149,10 @@ void InsetBibtex::editDatabases() const
 
 	int nr_databases = bibfilelist.size();
 	if (nr_databases > 1) {
-			docstring message = bformat(_("The BibTeX inset includes %1$s databases.\n"
+			docstring const engine = usingBiblatex() ? _("Biblatex") : _("BibTex");
+			docstring message = bformat(_("The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 						       "If you proceed, all of them will be opened."),
-							convert<docstring>(nr_databases));
+							engine, convert<docstring>(nr_databases));
 			int const ret = Alert::prompt(_("Open Databases?"),
 				message, 0, 1, _("&Cancel"), _("&Proceed"));
 
@@ -166,9 +170,16 @@ void InsetBibtex::editDatabases() const
 }
 
 
+bool InsetBibtex::usingBiblatex() const
+{
+	return buffer().params().useBiblatex();
+}
+
+
 docstring InsetBibtex::screenLabel() const
 {
-	return _("BibTeX Generated Bibliography");
+	return usingBiblatex() ? _("Biblatex Generated Bibliography")
+			       : _("BibTeX Generated Bibliography");
 }
 
 
@@ -195,130 +206,51 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			style = split(style, bibtotoc, char_type(','));
 	}
 
-	tip += _("Style File:");
-	tip += "<ul><li>" + (style.empty() ? _("none") : style) + "</li></ul>";
+	if (!usingBiblatex()) {
+		tip += _("Style File:");
+		tip += "<ul><li>" + (style.empty() ? _("none") : style) + "</li></ul>";
 
-	tip += _("Lists:") + " ";
-	docstring btprint = getParam("btprint");
+		tip += _("Lists:") + " ";
+		docstring btprint = getParam("btprint");
 		if (btprint == "btPrintAll")
 			tip += _("all references");
 		else if (btprint == "btPrintNotCited")
 			tip += _("all uncited references");
 		else
 			tip += _("all cited references");
-
-	if (toc) {
-		tip += ", ";
-		tip += _("included in TOC");
+		if (toc) {
+			tip += ", ";
+			tip += _("included in TOC");
+		}
+	} else {
+		if (toc)
+			tip += _("Included in TOC");
+		if (!getParam("biblatexopts").empty()) {
+			if (toc)
+				tip += "<br />";
+			tip += _("Options: ") + getParam("biblatexopts");
+		}
 	}
 
 	return tip;
 }
 
 
-static string normalizeName(Buffer const & buffer,
-	OutputParams const & runparams, string const & name, string const & ext)
-{
-	string const fname = makeAbsPath(name, buffer.filePath()).absFileName();
-	if (FileName::isAbsolute(name) || !FileName(fname + ext).isReadableFile())
-		return name;
-	if (!runparams.nice)
-		return fname;
-
-	// FIXME UNICODE
-	return to_utf8(makeRelPath(from_utf8(fname),
-					 from_utf8(buffer.masterBuffer()->filePath())));
-}
-
-
 void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 {
-	// the sequence of the commands:
+	// The sequence of the commands:
+	// With normal BibTeX:
 	// 1. \bibliographystyle{style}
 	// 2. \addcontentsline{...} - if option bibtotoc set
 	// 3. \bibliography{database}
-	// and with bibtopic:
+	// With bibtopic:
 	// 1. \bibliographystyle{style}
 	// 2. \begin{btSect}{database}
 	// 3. \btPrint{Cited|NotCited|All}
 	// 4. \end{btSect}
+	// With Biblatex:
+	// \printbibliography[biblatexopts]
 
-	// Database(s)
-	// If we are processing the LaTeX file in a temp directory then
-	// copy the .bib databases to this temp directory, mangling their
-	// names in the process. Store this mangled name in the list of
-	// all databases.
-	// (We need to do all this because BibTeX *really*, *really*
-	// can't handle "files with spaces" and Windows users tend to
-	// use such filenames.)
-	// Otherwise, store the (maybe absolute) path to the original,
-	// unmangled database name.
-	vector<docstring> bibfilelist = getVectorFromString(getParam("bibfiles"));
-	vector<docstring>::const_iterator it = bibfilelist.begin();
-	vector<docstring>::const_iterator en = bibfilelist.end();
-	odocstringstream dbs;
-	bool didone = false;
-
-	// determine the export format
-	string const tex_format = flavor2format(runparams.flavor);
-
-	for (; it != en; ++it) {
-		string utf8input = to_utf8(*it);
-		string database =
-			normalizeName(buffer(), runparams, utf8input, ".bib");
-		FileName const try_in_file =
-			makeAbsPath(database + ".bib", buffer().filePath());
-		bool const not_from_texmf = try_in_file.isReadableFile();
-
-		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
-		    not_from_texmf) {
-			// mangledFileName() needs the extension
-			DocFileName const in_file = DocFileName(try_in_file);
-			database = removeExtension(in_file.mangledFileName());
-			FileName const out_file = makeAbsPath(database + ".bib",
-					buffer().masterBuffer()->temppath());
-			bool const success = in_file.copyTo(out_file);
-			if (!success) {
-				lyxerr << "Failed to copy '" << in_file
-				       << "' to '" << out_file << "'"
-				       << endl;
-			}
-		} else if (!runparams.inComment && runparams.nice && not_from_texmf) {
-			runparams.exportdata->addExternalFile(tex_format, try_in_file, database + ".bib");
-			if (!isValidLaTeXFileName(database)) {
-				frontend::Alert::warning(_("Invalid filename"),
-				         _("The following filename will cause troubles "
-					       "when running the exported file through LaTeX: ") +
-					     from_utf8(database));
-			}
-			if (!isValidDVIFileName(database)) {
-				frontend::Alert::warning(_("Problematic filename for DVI"),
-				         _("The following filename can cause troubles "
-					       "when running the exported file through LaTeX "
-						   "and opening the resulting DVI: ") +
-					     from_utf8(database), true);
-			}
-		}
-
-		if (didone)
-			dbs << ',';
-		else
-			didone = true;
-		// FIXME UNICODE
-		dbs << from_utf8(latex_path(database));
-	}
-	docstring const db_out = dbs.str();
-
-	// Post this warning only once.
-	static bool warned_about_spaces = false;
-	if (!warned_about_spaces &&
-	    runparams.nice && db_out.find(' ') != docstring::npos) {
-		warned_about_spaces = true;
-		Alert::warning(_("Export Warning!"),
-			       _("There are spaces in the paths to your BibTeX databases.\n"
-					      "BibTeX will be unable to find them."));
-	}
-	// Style-Options
 	string style = to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
 	if (prefixIs(style, "bibtotoc")) {
@@ -327,77 +259,93 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			style = split(style, bibtotoc, ',');
 	}
 
-	if (style == "default")
-		style = buffer().params().defaultBiblioStyle();
-
-	if (!style.empty() && !buffer().params().use_bibtopic) {
-		string base = normalizeName(buffer(), runparams, style, ".bst");
-		FileName const try_in_file =
-			makeAbsPath(base + ".bst", buffer().filePath());
-		bool const not_from_texmf = try_in_file.isReadableFile();
-		// If this style does not come from texmf and we are not
-		// exporting to .tex copy it to the tmp directory.
-		// This prevents problems with spaces and 8bit charcaters
-		// in the file name.
-		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
-		    not_from_texmf) {
-			// use new style name
-			DocFileName const in_file = DocFileName(try_in_file);
-			base = removeExtension(in_file.mangledFileName());
-			FileName const out_file = makeAbsPath(base + ".bst",
-					buffer().masterBuffer()->temppath());
-			bool const success = in_file.copyTo(out_file);
-			if (!success) {
-				lyxerr << "Failed to copy '" << in_file
-				       << "' to '" << out_file << "'"
-				       << endl;
-			}
-		}
-		// FIXME UNICODE
-		os << "\\bibliographystyle{"
-		   << from_utf8(latex_path(normalizeName(buffer(), runparams, base, ".bst")))
-		   << "}\n";
-	}
-
-	// Post this warning only once.
-	static bool warned_about_bst_spaces = false;
-	if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
-		warned_about_bst_spaces = true;
-		Alert::warning(_("Export Warning!"),
-			       _("There are spaces in the path to your BibTeX style file.\n"
-					      "BibTeX will be unable to find it."));
-	}
-
-	if (!db_out.empty() && buffer().params().use_bibtopic) {
-		os << "\\begin{btSect}";
-		if (!style.empty())
-			os << "[" << style << "]";
-		os << "{" << db_out << "}\n";
+	if (usingBiblatex()) {
+		// Options
+		string opts = to_utf8(getParam("biblatexopts"));
+		// bibtotoc-Option
+		if (!bibtotoc.empty())
+			opts = opts.empty() ? "heading=bibintoc" : "heading=bibintoc," + opts;
+		// The bibliography command
 		docstring btprint = getParam("btprint");
-		if (btprint.empty())
-			// default
-			btprint = from_ascii("btPrintCited");
-		os << "\\" << btprint << "\n"
-		   << "\\end{btSect}\n";
-	}
-
-	// bibtotoc-Option
-	if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
-		// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
-		if (buffer().params().pdfoptions().use_hyperref)
-				os << "\\phantomsection";
-		if (buffer().params().documentClass().hasLaTeXLayout("chapter"))
-			os << "\\addcontentsline{toc}{chapter}{\\bibname}";
-		else if (buffer().params().documentClass().hasLaTeXLayout("section"))
-			os << "\\addcontentsline{toc}{section}{\\refname}";
-	}
-
-	if (!db_out.empty() && !buffer().params().use_bibtopic) {
-		docstring btprint = getParam("btprint");
-		if (btprint == "btPrintAll") {
+		if (btprint == "btPrintAll")
 			os << "\\nocite{*}\n";
+		os << "\\printbibliography";
+		if (!opts.empty())
+			os << "[" << opts << "]";
+		os << "\n";
+	} else {// using BibTeX
+		// Database(s)
+		vector<docstring> const db_out =
+			buffer().prepareBibFilePaths(runparams, getBibFiles(), false);
+		// Style options
+		if (style == "default")
+			style = buffer().params().defaultBiblioStyle();
+		if (!style.empty() && !buffer().params().use_bibtopic) {
+			string base = buffer().prepareFileNameForLaTeX(style, ".bst", runparams.nice);
+			FileName const try_in_file =
+				makeAbsPath(base + ".bst", buffer().filePath());
+			bool const not_from_texmf = try_in_file.isReadableFile();
+			// If this style does not come from texmf and we are not
+			// exporting to .tex copy it to the tmp directory.
+			// This prevents problems with spaces and 8bit characters
+			// in the file name.
+			if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
+			    not_from_texmf) {
+				// use new style name
+				DocFileName const in_file = DocFileName(try_in_file);
+				base = removeExtension(in_file.mangledFileName());
+				FileName const out_file = makeAbsPath(base + ".bst",
+						buffer().masterBuffer()->temppath());
+				bool const success = in_file.copyTo(out_file);
+				if (!success) {
+					LYXERR0("Failed to copy '" << in_file
+					       << "' to '" << out_file << "'");
+				}
+			}
+			// FIXME UNICODE
+			os << "\\bibliographystyle{"
+			   << from_utf8(latex_path(buffer().prepareFileNameForLaTeX(base, ".bst", runparams.nice)))
+			   << "}\n";
 		}
-		os << "\\bibliography{" << db_out << "}\n";
+		// Warn about spaces in bst path. Warn only once.
+		static bool warned_about_bst_spaces = false;
+		if (!warned_about_bst_spaces && runparams.nice && contains(style, ' ')) {
+			warned_about_bst_spaces = true;
+			Alert::warning(_("Export Warning!"),
+				       _("There are spaces in the path to your BibTeX style file.\n"
+						      "BibTeX will be unable to find it."));
+		}
+		// Handle the bibtopic case
+		if (!db_out.empty() && buffer().params().use_bibtopic) {
+			os << "\\begin{btSect}";
+			if (!style.empty())
+				os << "[" << style << "]";
+			os << "{" << getStringFromVector(db_out) << "}\n";
+			docstring btprint = getParam("btprint");
+			if (btprint.empty())
+				// default
+				btprint = from_ascii("btPrintCited");
+			os << "\\" << btprint << "\n"
+			   << "\\end{btSect}\n";
+		}
+		// bibtotoc option
+		if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
+			// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
+			if (buffer().params().pdfoptions().use_hyperref)
+					os << "\\phantomsection";
+			if (buffer().params().documentClass().hasLaTeXLayout("chapter"))
+				os << "\\addcontentsline{toc}{chapter}{\\bibname}";
+			else if (buffer().params().documentClass().hasLaTeXLayout("section"))
+				os << "\\addcontentsline{toc}{section}{\\refname}";
+		}
+		// The bibliography command
+		if (!db_out.empty() && !buffer().params().use_bibtopic) {
+			docstring btprint = getParam("btprint");
+			if (btprint == "btPrintAll") {
+				os << "\\nocite{*}\n";
+			}
+			os << "\\bibliography{" << getStringFromVector(db_out) << "}\n";
+		}
 	}
 }
 

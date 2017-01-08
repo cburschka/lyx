@@ -847,6 +847,15 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\biblio_style") {
 		lex.eatLine();
 		biblio_style = lex.getString();
+	} else if (token == "\\biblio_options") {
+		lex.eatLine();
+		biblio_opts = lex.getString();
+	} else if (token == "\\biblatex_bibstyle") {
+		lex.eatLine();
+		biblatex_bibstyle = lex.getString();
+	} else if (token == "\\biblatex_citestyle") {
+		lex.eatLine();
+		biblatex_citestyle = lex.getString();
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
 	} else if (token == "\\use_indices") {
@@ -1214,9 +1223,18 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "basic";
 	}
 
-	os << "\n\\cite_engine_type " << theCiteEnginesList.getTypeAsString(cite_engine_type_)
-	   << "\n\\biblio_style " << biblio_style
-	   << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
+	os << "\n\\cite_engine_type " << theCiteEnginesList.getTypeAsString(cite_engine_type_);
+
+	if (!biblio_style.empty())
+		os << "\n\\biblio_style " << biblio_style;
+	if (!biblio_opts.empty())
+		os << "\n\\biblio_options " << biblio_opts;
+	if (!biblatex_bibstyle.empty())
+		os << "\n\\biblatex_bibstyle " << biblatex_bibstyle;
+	if (!biblatex_citestyle.empty())
+		os << "\n\\biblatex_citestyle " << biblatex_citestyle;
+
+	os << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << "\n\\suppress_date " << convert<string>(suppress_date)
@@ -2165,7 +2183,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	    && useNonTeXFonts)
 		os << "\\usepackage{xunicode}\n";
 
-	// Polyglossia must be loaded last
+	// Polyglossia must be loaded last ...
 	if (use_polyglossia) {
 		// call the package
 		os << "\\usepackage{polyglossia}\n";
@@ -2188,6 +2206,42 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			os << "{" << from_ascii(*mit) << "}\n";
 		}
 	}
+
+	// ... but before biblatex (see #7065)
+	if (features.mustProvide("biblatex")) {
+		string delim = "";
+		string opts;
+		os << "\\usepackage";
+		if (!biblatex_bibstyle.empty()
+		    && (biblatex_bibstyle == biblatex_citestyle)) {
+			opts = "style=" + biblatex_bibstyle;
+			delim = ",";
+		} else {
+			if (!biblatex_bibstyle.empty()) {
+				opts = "bibstyle=" + biblatex_bibstyle;
+				delim = ",";
+			}
+			if (!biblatex_citestyle.empty()) {
+				opts += delim + "citestyle=" + biblatex_citestyle;
+				delim = ",";
+			}
+		}
+		if (bibtexCommand() == "bibtex8"
+		    || prefixIs(bibtexCommand(), "bibtex8 ")) {
+			opts += delim + "backend=bibtex8";
+			delim = ",";
+		} else if (bibtexCommand() == "bibtex"
+			   || prefixIs(bibtexCommand(), "bibtex ")) {
+			opts += delim + "backend=bibtex";
+			delim = ",";
+		}
+		if (!biblio_opts.empty())
+			opts += delim + biblio_opts;
+		if (!opts.empty())
+			os << "[" << opts << "]";
+		os << "{biblatex}\n";
+	}
+
 
 	// Load custom language package here
 	if (features.langPackage() == LaTeXFeatures::LANG_PACK_CUSTOM) {
@@ -3309,6 +3363,13 @@ string const & BufferParams::bibtexCommand() const
 		return lyxrc.jbibtex_command;
 	else
 		return lyxrc.bibtex_command;
+}
+
+
+bool BufferParams::useBiblatex() const
+{
+	return theCiteEnginesList[citeEngine().list().front()]
+			->getCiteFramework() == "biblatex";
 }
 
 
