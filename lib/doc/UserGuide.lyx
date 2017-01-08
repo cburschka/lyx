@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 527
+\lyxformat 528
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -8320,12 +8320,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8338,6 +8340,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8361,6 +8364,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -28278,8 +28282,16 @@ name "sec:Bibliography"
 
 \begin_layout Standard
 There are two ways of generating the bibliography in a \SpecialChar LyX
--document.
+
+\change_inserted -712698321 1483880152
+ 
+\change_deleted -712698321 1483880151
+-
+\change_unchanged
+document.
  You can include a bibliography database,
+\change_deleted -712698321 1483880276
+
 \begin_inset Foot
 status collapsed
 
@@ -28298,12 +28310,48 @@ Bib\SpecialChar TeX
 
 \end_inset
 
- which is explained in the next subsection, or you can insert the bibliography
- manually, using the paragraph environment 
+
+\change_unchanged
+ which is explained in 
+\change_deleted -712698321 1483883190
+the next subsection
+\change_inserted -712698321 1483890955
+sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Bibliography-databases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\change_unchanged
+, or you can insert the bibliography manually, using the paragraph environment
+ 
 \family sans
 Bibliography
 \family default
-, which was described in section
+, which 
+\change_deleted -712698321 1483883190
+wa
+\change_inserted -712698321 1483883190
+i
+\change_unchanged
+s described in 
+\change_inserted -712698321 1483883197
+the following 
+\change_unchanged
+section
+\change_inserted -712698321 1483890942
+ (but see also sec.
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -28314,16 +28362,71 @@ reference "subsec:Biblio_environment"
 
 \end_inset
 
+
+\change_inserted -712698321 1483883212
+)
+\change_unchanged
 .
  If you want anything other than the numerical citations that are used in
- this document, like author-year citations, then you must
+ this document, 
+\change_deleted -712698321 1483883190
+like
+\change_inserted -712698321 1483880176
+such as
+\change_unchanged
+ author-year citations, 
+\change_inserted -712698321 1483883518
+and if you have more than a handful of references, 
+\change_unchanged
+then you 
+\change_deleted -712698321 1483883190
+must
+\change_inserted -712698321 1483883526
+should seriously consider
+\change_unchanged
+
 \emph on
  
 \emph default
-use a bibliography database.
+us
+\change_inserted -712698321 1483880298
+ing
+\change_deleted -712698321 1483883190
+e
+\change_unchanged
+ a bibliography database.
+\change_inserted -712698321 1483883092
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483883578
+In order to demonstrate the difference between these two approaches, we
+ use two bibliographies in this document, a 
+\family sans
+Bibliography
+\family default
+ environment and a database-generated bibliography.
+ As you can see, the bibliography that is created from a database lists
+ only the database entries that are referenced in the document.
+ In other words, the database approach relieves you, amongst other things,
+ from the burden to check which entries you have actually cited.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted -712698321 1483885645
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:The-Bibliography-Environment"
+
+\end_inset
+
+
+\change_unchanged
 The Bibliography Environment
 \end_layout
 
@@ -28345,9 +28448,15 @@ Label
 .
  The key is the symbolic name by which you will refer to this bibliography
  entry.
- For example, our second entry in the bibliography is a book about \SpecialChar LaTeX
- and
- we used 
+ 
+\change_inserted -712698321 1483880726
+Each entry needs to be given a unique key, which is one word consisting
+ of ASCII characters only.
+ 
+\change_unchanged
+For example, our second entry in the bibliography is a book about \SpecialChar LaTeX
+ and we
+ used 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28356,6 +28465,8 @@ latexcompanion
 \end_inset
 
 , a short form of its title, as the key.
+\change_inserted -712698321 1483880732
+
 \end_layout
 
 \begin_layout Standard
@@ -28434,6 +28545,79 @@ key "lyxcredit"
 \end_inset
 
 
+\change_inserted -712698321 1483880908
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483881419
+You can also produce author-year or author-number citations, using 
+\family sans
+natbib
+\family default
+.
+ In order to do so, the label needs to be given the form 
+\begin_inset Quotes eld
+\end_inset
+
+Author(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Author A and Author B(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+without
+\emph default
+ a blank between the author(s) and the opening parenthesis that delimits
+ the year.
+ Then, if you select 
+\family sans
+Natbib
+\family default
+ in the 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483881295
+Document ! Settings
+\end_layout
+
+\end_inset
+
+ dialog under 
+\family sans
+Bibliography\SpecialChar menuseparator
+Style engines
+\family default
+ (see below 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-Format"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), you can select between different author-year or author-number styles.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -28458,8 +28642,12 @@ arg   "layout-paragraph"
 \end_layout
 
 \begin_layout Subsection
-Bibliography databases (Bib\SpecialChar TeX
+Bibliography databases
+\change_deleted -712698321 1483882661
+ (Bib\SpecialChar TeX
 )
+\change_unchanged
+
 \begin_inset Index idx
 status collapsed
 
@@ -28469,6 +28657,8 @@ Bibliography ! Databases
 
 \end_inset
 
+
+\change_deleted -712698321 1483882653
 
 \begin_inset Index idx
 status collapsed
@@ -28481,6 +28671,8 @@ Bibliography ! Bib\SpecialChar TeX
 \end_inset
 
 
+\change_unchanged
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Bibliography-databases"
@@ -28491,8 +28683,13 @@ name "subsec:Bibliography-databases"
 \end_layout
 
 \begin_layout Standard
-Bibliography databases are useful if you use the same bibliography in different
- documents.
+Bibliography databases are useful if you use the same 
+\change_deleted -712698321 1483881524
+bibliography
+\change_inserted -712698321 1483881525
+references
+\change_unchanged
+ in different documents.
 \begin_inset Foot
 status collapsed
 
@@ -28561,10 +28758,104 @@ http://wiki.lyx.org/BibTeX/Programs
 \end_inset
 
 .
+\change_inserted -712698321 1483881708
+
 \end_layout
 
 \begin_layout Standard
-To use a database, use the menu 
+
+\change_inserted -712698321 1483885542
+\SpecialChar LyX
+ supports two different approaches to use bibliography databases in a document.
+ Bib\SpecialChar TeX
+ is the classic technique that has been the only way to use such databases
+ for a long time.
+ It is quite established and mature, and there is a huge range of existing
+ styles available, but it has its drawbacks, especially when it comes to
+ more complex bibliographic needs and support for specific languages and
+ scripts.
+ Those are addressed by a rather new and ambitious approach, 
+\family sans
+Biblatex
+\family default
+.
+ 
+\family sans
+Biblatex
+\family default
+ reads the same database format than Bib\SpecialChar TeX
+ (although it has been significantly
+ extended beyond Bib\SpecialChar TeX
+'s scope
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483882543
+Meaning: While 
+\family sans
+Biblatex
+\family default
+ can handle any classic Bib\SpecialChar TeX
+ database, Bib\SpecialChar TeX
+ might conversely fail to correctly
+ handle databases that use specific 
+\family sans
+Biblatex
+\family default
+ features.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+), but it uses a different framework to generate citations and references
+ from it.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483882638
+Both approaches are described in turn.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1483882655
+Bib\SpecialChar TeX
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483882655
+Bibliography ! Bib\SpecialChar TeX
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+To 
+\change_deleted -712698321 1483882678
+use
+\change_inserted -712698321 1483882681
+access
+\change_unchanged
+ a database
+\change_inserted -712698321 1483882690
+ via Bib\SpecialChar TeX
+
+\change_unchanged
+, use the menu 
 \family sans
 Insert\SpecialChar menuseparator
 List
@@ -28572,7 +28863,11 @@ List
 /
 \family sans
 TOC\SpecialChar menuseparator
-BibTeX
+Bib
+\change_inserted -712698321 1483882685
+(la)
+\change_unchanged
+TeX
 \begin_inset space ~
 \end_inset
 
@@ -28581,7 +28876,12 @@ Bibliography
 .
  A gray box will be inserted and a window appears.
  In this window you can add one or more databases and select a 
+\change_inserted -712698321 1483882797
+Bib\SpecialChar TeX
+
 \family sans
+ 
+\change_unchanged
 style
 \family default
  file.
@@ -28599,7 +28899,12 @@ Content
 \end_layout
 
 \begin_layout Standard
-The style file is a text file with the file extension 
+The 
+\change_inserted -712698321 1483882781
+Bib\SpecialChar TeX
+ 
+\change_unchanged
+style file is a text file with the file extension 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28639,26 +28944,267 @@ target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
 \end_inset
 
 
+\change_inserted -712698321 1483883972
+ In this document, we used the Bib\SpecialChar TeX
+ style 
+\family sans
+alphadin.bst
+\family default
+, which provides an alpha-numeric style in accordance with the German Standards
+ Institute (DIN).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Inserting a citation reference works as described in the previous section.
+\change_inserted -712698321 1483883993
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1483883999
+Biblatex
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483884003
+Bibliography ! Biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-To generate the bibliography from a database, \SpecialChar LyX
- uses the program Bib\SpecialChar TeX
-.
- You can choose which of its variants should be used by \SpecialChar LyX
- as the 
+
+\change_inserted -712698321 1483884100
+Accessing a database via 
 \family sans
-Processor
+Biblatex
 \family default
- either in 
+ is almost identical to Bib\SpecialChar TeX
+: use the menu 
+\family sans
+Insert\SpecialChar menuseparator
+List
+\family default
+/
+\family sans
+TOC\SpecialChar menuseparator
+Bib(la)TeX
+\begin_inset space ~
+\end_inset
+
+Bibliography
+\family default
+.
+ A gray box will be inserted and a window appears.
+ In this window you can add one or more databases, but as opposed to Bib\SpecialChar TeX
+,
+ you cannot select a 
+\family sans
+style
+\family default
+ file (we will explain later, why).
+ As with Bib\SpecialChar TeX
+, the option 
+\family sans
+Add bibliography to TOC
+\family default
+ adds a table of contents entry for the bibliography.
+ In the 
+\family sans
+Content
+\family default
+ drop box you can select whether to include all the entries in the database
+ in the document or just the cited references.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483884492
+
+\family sans
+Biblatex
+\family default
+ has two different style files: a bibliography style file (a text file with
+ the file extension 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.bbx
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) controls how the bibliography entries will look like, and a citation style
+ file (extension 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family sans
+.cbx
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) controls the look of the citation references in the text.
+ Usually, such style files come in pairs, and it makes most sense to use
+ matching styles, but it is possible to mix any citation style with any
+ bibliography style.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483891283
+
+\family sans
+Biblatex
+\family default
+ styles are not set in the 
+\family sans
+Bib(la)TeX
+\begin_inset space ~
+\end_inset
+
+Bibliography
+\family default
+ dialog, but in the 
+\family sans
+Document Settings
+\family default
+ dialog (in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Bibliography
+\family default
+).
+ However, in the former dialog (in the 
+\family sans
+Options
+\family default
+ field which is only visible if you use 
+\family sans
+Biblatex
+\family default
+), you can enter options that change the way the bibliography is displayed
+ (for instance concerning its heading).
+ These options are detailed in the 
+\family sans
+Biblatex
+\family default
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Biblatex"
+
+\end_inset
+
+.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483885667
+Inserting a citation reference works as described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Bibliography-Environment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1483885726
+Bibliography Processors
+\end_layout
+
+\begin_layout Standard
+To generate the bibliography from a database, \SpecialChar LyX
+ uses
+\change_inserted -712698321 1483885808
+ a bibliography processor, that is an external program that reads a database,
+ sorts the citations and processes the data in a way it can be included
+ in the document.
+
+\change_unchanged
+ 
+\change_inserted -712698321 1483885822
+The classic 
+\change_deleted -712698321 1483885823
+the 
+\change_unchanged
+program 
+\change_inserted -712698321 1483885903
+is called 
+\family sans
+bibtex
+\family default
+.
+ As the whole approach, it has the advantage that it is very mature and
+ widespread, but the disadvantage that it has severe limitations, due to
+ its age.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483885977
+Meanwhile, some alternatives have been developed that address (some of)
+ these limitations.
+ LyX natively supports some of them and lets you select a custom processor.
+\change_deleted -712698321 1483885997
+Bib\SpecialChar TeX
+.
+
+\change_unchanged
+ You can 
+\change_inserted -712698321 1483886029
+do this on a general level in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+LaTeX
+\family default
+, or for individual documents 
+\change_deleted -712698321 1483886038
+choose which of its variants should be used by \SpecialChar LyX
+ as the 
+\family sans
+Processor
+\family default
+ either 
+\change_unchanged
+in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\change_deleted -712698321 1483886043
+
 \family default
  or in 
 \family sans
@@ -28666,14 +29212,37 @@ Tools\SpecialChar menuseparator
 Preferences\SpecialChar menuseparator
 Output\SpecialChar menuseparator
 LaTeX
+\change_unchanged
+
 \family default
 .
- The following variants are possible:
+ The following variants are 
+\change_deleted -712698321 1483886168
+possible
+\change_inserted -712698321 1483886173
+available by default
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Description
-biber provides full Unicode support, unlimited memory, but does not work
- with other bibliography packages (e.
+biber 
+\change_inserted -712698321 1483886257
+a specific, modern processor developed exclusively for 
+\family sans
+Biblatex
+\family default
+ (it does not work with Bib\SpecialChar TeX
+!).
+ 
+\family sans
+Biber
+\family default
+ 
+\change_unchanged
+provides full Unicode support, unlimited memory
+\change_deleted -712698321 1483886272
+, but does not work with other bibliography packages (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28688,49 +29257,181 @@ natbib
 ), only with the package 
 \series bold
 biblatex
+\change_inserted -712698321 1483886347
+
 \series default
-; recommended for multilingual texts and for languages that don't use Latin
+ and many specific features 
+\family sans
+Biblatex
+\family default
+ makes use of
+\change_unchanged
+; 
+\change_deleted -712698321 1483886353
+recommended for multilingual texts and for languages that don't use Latin
  letters
+\change_inserted -712698321 1483886386
+if you use the 
+\family sans
+Biblatex
+\family default
+ approach, it is strongly recommended to use 
+\family sans
+biber
+\family default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 bibtex the standard; does not allow special characters in bibliography entries
  that are not possible to encode in a 7-bit encoding, limited memory, works
- with all bibliography packages, except 
-\series bold
-biblatex
+ with all bibliography packages, 
+\change_deleted -712698321 1483886412
+except
+\change_inserted -712698321 1483886414
+although
+\change_unchanged
+ 
+\change_inserted -712698321 1483886476
+it will probably fail with even moderately sized 
+\change_deleted -712698321 1483886506
+b
+\change_inserted -712698321 1483886506
+
+\family sans
+B
+\change_unchanged
+iblatex
+\change_inserted -712698321 1483886524
+
+\family default
+ bibliographies, due to the limited memory.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-bibtex8 allows all characters that are possible to encode in an 8-bit encoding,
- larger memory than 
+bibtex8 allows all characters that are possible to encode in an 8-bit encoding
+\change_inserted -712698321 1483886652
+ (but no Unicode support)
+\change_unchanged
+, larger memory than 
 \family sans
 bibtex
 \family default
 , works with all bibliography packages
+\change_inserted -712698321 1483887200
+, although more complex 
+\family sans
+Biblatex
+\family default
+ bibliographies will exceed its limits, and not all 
+\family sans
+Biblatex
+\family default
+ features are supported.
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1483887384
+In addition to these, you can set a specific processor for Japanese documents
+ in 
+\family sans
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+LaTeX
+\family default
+.
+ By default, this is 
+\family sans
+pbibtex
+\family default
+, a 
+\family sans
+bibtex
+\family default
+ variant specifically aimed at Japanese.
+ It is automatically used, instead of 
+\family sans
+bibtex
+\family default
+, in Japanese documents.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1483886683
 Bib\SpecialChar TeX
+
+\change_inserted -712698321 1483887395
+The selected processor
+\change_unchanged
  can be controlled with options that you can add below the specification
  of the variants.
  Before adding options, it is strongly recommended that you read the manual
- of 
+ 
+\change_inserted -712698321 1483886810
+pages 
+\change_unchanged
+of 
+\change_deleted -712698321 1483886842
+
 \family sans
 Bib\SpecialChar TeX
 
+\change_inserted -712698321 1483886842
+bibtex
+\change_unchanged
+
 \family default
  
+\change_deleted -712698321 1483886972
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX"
 
 \end_inset
 
+
+\change_inserted -712698321 1483886836
+ or 
+\family sans
+bibtex8
+\family default
+, or the 
+\family sans
+biber
+\family default
+ manual
+\change_unchanged
 .
+\change_inserted -712698321 1483887134
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1483887497
+Customizing
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1483887548
+\SpecialChar LyX
+ supports some specific tasks such as sectioned bibliographies and multiple
+ bibliographies.
+ 
+\change_deleted -712698321 1483887556
 When you select the option 
 \family sans
 Sectioned bibliography
@@ -28742,7 +29443,23 @@ Settings\SpecialChar menuseparator
 Bibliography
 \family default
  dialog, it is possible to have multiple and sectioned bibliographies.
- This and other options are explained in detail in section 
+ 
+\change_unchanged
+Th
+\change_deleted -712698321 1483887559
+i
+\change_inserted -712698321 1483887559
+e
+\change_unchanged
+s
+\change_inserted -712698321 1483887560
+e
+\change_unchanged
+ 
+\change_deleted -712698321 1483887564
+and other options 
+\change_unchanged
+are explained in detail in section 
 \emph on
 Customizing Bibliographies
 \emph default
@@ -28759,6 +29476,8 @@ Additional Features
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1483882904
 We use two bibliographies in this document to show the difference between
  the two methods of creating them.
  As you can see, the bibliography that is created from a database lists
@@ -28768,6 +29487,8 @@ We use two bibliographies in this document to show the difference between
 alphadin.bst
 \family default
  to get the complicated German reference key scheme in the bibliography.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -28782,10 +29503,339 @@ Bibliography ! Citation format
 \end_inset
 
 
+\change_inserted -712698321 1483881374
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Citation-Format"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-In the citation reference dialog you can set a special citation format.
+
+\change_inserted -712698321 1483888028
+Many different citation formats are common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ numerical citation (as used in this document), alpha-numerical citations
+ (as 
+\begin_inset Quotes eld
+\end_inset
+
+Mil08
+\begin_inset Quotes erd
+\end_inset
+
+) or author-year citations (as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller (2008a)
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ supports these formats via specific citation packages and their style
+ files.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483888432
+By default, a simple numeric citation style (as in this document) is used.
+ In 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483888079
+Document ! Settings
+\end_layout
+
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Bibliography
+\family default
+, however, you have a range of other options, depending on your preferred
+ bibliography approach.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483888408
+With the 
+\family sans
+Bibliography
+\family default
+ environment, your only choice besides manual formatting of the bibliography
+ labels, is 
+\family sans
+Natbib
+\family default
+, which gives you author-year and author-numerical citations (see above
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:The-Bibliography-Environment"
+
+\end_inset
+
+ for details).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483888505
+All other choices require a database approach, either Bib\SpecialChar TeX
+ or 
+\family sans
+Biblatex
+\family default
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Bibliography-databases"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Currently, the following options are available:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483888574
+
+\family sans
+Basic (BibTeX)
+\family default
+: the default 
+\family sans
+BibTeX-based approached without any additional packages (simple numeric
+ citations)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483889266
+
+\family sans
+Biblatex
+\family default
+: loads the 
+\family sans
+Biblatex
+\family default
+ package and lets you select a style in the combo boxes 
+\family sans
+Biblatex citation style
+\family default
+ and 
+\family sans
+Biblatex bibliography style
+\family default
+ below.
+ Many different style variants are supported.
+ Options to the 
+\family sans
+Biblatex
+\family default
+ package can be entered in the 
+\family sans
+Options
+\family default
+ field.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483889302
+
+\family sans
+Biblatex (natbib mode)
+\family default
+: loads the 
+\family sans
+Biblatex
+\family default
+ package with 
+\begin_inset Quotes eld
+\end_inset
+
+natbib compatibility mode
+\begin_inset Quotes erd
+\end_inset
+
+ enabled.
+ This is a specific variant that is aimed at users who switch an existing
+ document that used 
+\family sans
+Natbib
+\family default
+ (see below) or want to emulate 
+\family sans
+Natbib
+\family default
+ behavior very closely.
+ Compared to normal 
+\family sans
+Biblatex
+\family default
+, this option has some additional styles.
+ Style selection and option handling are identical.
+ All 
+\family sans
+Biblatex
+\family default
+ styles are also supported by this variant.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483889321
+
+\family sans
+Jurabib (BibTeX)
+\family default
+: loads the 
+\family sans
+Jurabib
+\family default
+ package which provides author-year styles particularly suited for law studies.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483891582
+
+\family sans
+Natbib (BibTeX)
+\family default
+: loads the 
+\family sans
+Natbib
+\family default
+ package which provides citation styles particularly suited for the Humanities.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483891665
+The 
+\family sans
+Biblatex
+\family default
+ variants and 
+\family sans
+Natbib
+\family default
+ furthermore provide the choice between author-year and author-numerical
+ citation styles.
+ You have to select either of it in the dialog.
+ Note that in the 
+\family sans
+Biblatex
+\family default
+ case, this only affects the appearance in the \SpecialChar LyX
+ workarea.
+ Whether the output uses numerical, author-year or another format such as
+ alpha-numerical depends only on the selected style (however, when switching
+ between 
+\begin_inset Quotes eld
+\end_inset
+
+author-year
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+author-numerical
+\begin_inset Quotes erd
+\end_inset
+
+, a suitable style is proposed).
+ With 
+\family sans
+Natbib
+\family default
+, on the other hand, the dialog selection will ultimately determine the
+ style.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483890338
+For any author-year and author-numerical selection, multiple style variants
+ are available 
+\change_deleted -712698321 1483890143
+I
+\change_inserted -712698321 1483890144
+i
+\change_unchanged
+n the citation reference dialog
+\change_deleted -712698321 1483890163
+ you can set a special citation format
+\change_unchanged
+.
+
+\change_inserted -712698321 1483891709
+ Some selections also provide further options, such as the option to uppercase
+ a name prefix such as 
+\begin_inset Quotes eld
+\end_inset
+
+van Beethoven
+\begin_inset Quotes erd
+\end_inset
+
+ (to 
+\begin_inset Quotes eld
+\end_inset
+
+Van Beethoven
+\begin_inset Quotes erd
+\end_inset
+
+) or to expand or reduce the number of displayed others (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., use or don't use 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
+\change_deleted -712698321 1483890219
  For this feature you need to enable the option 
 \family sans
 Natbib
@@ -28814,12 +29864,56 @@ Bibliography
  For the global citation format use the Bib\SpecialChar TeX
  style files as explained in
  the previous section.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-You can also set text to appear before or after a citation reference, in
- the citation reference window.
- Here is an example where the text 
+
+\change_inserted -712698321 1483890476
+In the citation dialog, 
+\change_deleted -712698321 1483890481
+Y
+\change_inserted -712698321 1483890482
+y
+\change_unchanged
+ou can also set text to appear 
+\change_deleted -712698321 1483890531
+before or 
+\change_unchanged
+after a citation reference, 
+\change_deleted -712698321 1483890545
+in the citation reference window
+\change_inserted -712698321 1483890583
+e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ page numbers, which will then be formatted according to the style's needs
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ with or without 
+\begin_inset Quotes eld
+\end_inset
+
+pp.
+\begin_inset Quotes erd
+\end_inset
+
+)
+\change_unchanged
+.
+ Here is a
+\change_deleted -712698321 1483890682
+n
+\change_inserted -712698321 1483890683
+ simple
+\change_unchanged
+ example where the text 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28834,7 +29928,7 @@ Chapter
  appears after the reference:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 Have a look at 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -28844,6 +29938,30 @@ key "latexcompanion"
 \end_inset
 
 .
+\change_inserted -712698321 1483890690
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483891777
+All styles except for 
+\family sans
+Basic
+\family default
+ also provide a means to add text that precedes the reference (such as 
+\begin_inset Quotes eld
+\end_inset
+
+cf.
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This text is then also included in the parentheses, if the style requires
+ this.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -43381,8 +44499,33 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-Here you can specify if a citation style using the \SpecialChar LaTeX
- packages 
+Here you can specify if a 
+\change_inserted -712698321 1483887883
+specific 
+\change_unchanged
+citation style using the \SpecialChar LaTeX
+ packages
+\change_inserted -712698321 1483887840
+ 
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483887846
+\SpecialChar LaTeX
+-packages ! biblatex
+\end_layout
+
+\end_inset
+
+,
+\change_unchanged
+ 
 \series bold
 natbib
 \series default
@@ -43413,7 +44556,14 @@ status collapsed
 \end_inset
 
  should be used.
- You can enable a 
+ 
+\change_inserted -712698321 1483887869
+If you use Bib\SpecialChar TeX
+, y
+\change_deleted -712698321 1483887870
+Y
+\change_unchanged
+ou can enable a 
 \family sans
 Sectioned bibliography
 \family default
@@ -43433,12 +44583,33 @@ status collapsed
 
 \end_inset
 
- and you can select a 
+
+\change_inserted -712698321 1483887945
+.
+ If you use Biblatex, you can select the style files and specify further
+ options.
+
+\change_unchanged
+ 
+\change_inserted -712698321 1483887949
+Finally,
+\change_deleted -712698321 1483887950
+and
+\change_unchanged
+ you can select a
+\change_inserted -712698321 1483887962
+ document-specific
+\change_unchanged
+ 
 \family sans
 Processor
 \family default
  for the generation of the bibliography.
- For a further description see section
+ For a further description 
+\change_inserted -712698321 1483887970
+of all this, 
+\change_unchanged
+see section
 \begin_inset space ~
 \end_inset
 
@@ -48189,6 +49360,51 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 
 \end_inset
 
+
+\change_inserted -712698321 1483884806
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted -712698321 1483884882
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Biblatex"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Manual"
+target "http://www.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf"
+
+\end_inset
+
+ of the 
+\family sans
+Biblatex
+\family default
+ package:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483884888
+
+http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
