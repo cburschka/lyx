@@ -120,13 +120,15 @@ class TocBuilder
 {
 public:
 	TocBuilder(std::shared_ptr<Toc> const toc);
-	/// When entering a float
+	/// When entering a float or flex (AddToToc)
 	void pushItem(DocIterator const & dit, docstring const & s,
 	              bool output_active, bool is_captioned = false);
-	/// When encountering a caption
+	/// When encountering a float caption
 	void captionItem(DocIterator const & dit, docstring const & s,
 	                 bool output_active);
-	/// When exiting a float
+	/// When encountering an argument (isTocCaption)
+	void argumentItem(docstring const & arg_str);
+	/// When exiting a float or flex
 	void pop();
 private:
 	TocBuilder(){}

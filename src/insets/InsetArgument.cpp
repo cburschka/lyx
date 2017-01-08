@@ -26,6 +26,7 @@
 #include "ParIterator.h"
 #include "TexRow.h"
 #include "texstream.h"
+#include "TocBackend.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -106,6 +107,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		}
 	}
 	Layout::LaTeXArgMap::const_iterator const lait = args.find(name_);
+	caption_of_toc_ = string();
 	if (lait != args.end()) {
 		docstring label = translateIfPossible((*lait).second.labelstring);
 		docstring striplabel;
@@ -117,6 +119,12 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		decoration_ = (*lait).second.decoration;
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
 		pass_thru_local_ = false;
+		if (lait->second.is_toc_caption)
+			// empty if AddToToc is not set
+			caption_of_toc_ = insetlayout
+				? it.inset().getLayout().tocType()
+				: it.paragraph().layout().tocType();
+
 		switch ((*lait).second.passthru) {
 			case PT_INHERITED:
 				pass_thru_ = pass_thru_context_;
@@ -306,6 +314,20 @@ void InsetArgument::latexArgument(otexstream & os,
 	if (add_braces)
 		os << '}';
 	os << rdelim;
+}
+
+
+
+void InsetArgument::addToToc(DocIterator const & dit, bool output_active,
+                             UpdateType utype) const
+{
+	if (!caption_of_toc_.empty()) {
+		docstring str;
+		text().forOutliner(str, TOC_ENTRY_LENGTH);
+		buffer().tocBackend().builder(caption_of_toc_).argumentItem(str);
+	}
+	// Proceed with the rest of the inset.
+	InsetText::addToToc(dit, output_active, utype);
 }
 
 

@@ -27,7 +27,7 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
-#include "insets/InsetArgument.h"
+#include "insets/InsetText.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -191,6 +191,18 @@ void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
 		pushItem(captionable_dit, s, output_active, true);
 		(*toc_)[stack_.top().pos].setAction(func);
 	}
+}
+
+void TocBuilder::argumentItem(docstring const & arg_str)
+{
+	if (stack_.empty() || arg_str.empty())
+		return;
+	TocItem & item = (*toc_)[stack_.top().pos];
+	docstring const & str = item.str();
+	string const & delim =
+		str.empty() ? "" : stack_.top().is_captioned ? ", " : ": ";
+	item.str(str + from_ascii(delim) + arg_str);
+	stack_.top().is_captioned = true;
 }
 
 void TocBuilder::pop()
