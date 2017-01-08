@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 528
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -56,6 +56,7 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -113,7 +114,8 @@ logicalmkup
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -224,6 +226,7 @@ This manual covers the customization features present in \SpecialChar LyX
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -587,6 +590,53 @@ $LANG_xxx.bind
 \end_inset
 
 , that will be used first.
+\change_inserted -712698321 1483535138
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1483874001
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483535144
+citeengines/
+\end_layout
+
+\end_inset
+
+ contains files with the extension 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483869840
+.citeengine
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ which define the diverse citation possibilities (natbib, biblatex etc.).
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -3519,6 +3569,7 @@ If you ever find an error in the original document, fix it and notify the
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Section
@@ -7528,6 +7579,176 @@ LyXDir
 \begin_layout Standard
 Note that manual conversion does not affect included files, so these will
  have to be converted separately.
+\change_inserted -712698321 1483873435
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1483875083
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Cite-Engine-Files"
+
+\end_inset
+
+Cite engine files
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483874213
+A specific form of layout files are the so-called 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483873546
+*.citeengine
+\end_layout
+
+\end_inset
+
+ files that are located in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483873546
+citeengines/
+\end_layout
+
+\end_inset
+
+ sub-directory.
+ Their purpose is to define the specifics of \SpecialChar LaTeX
+ packages aimed at bibliography
+ generation, such as 
+\family sans
+natbib
+\family default
+,
+\family sans
+ jurabib
+\family default
+ or 
+\family sans
+biblatex
+\family default
+, but also the way how normal Bib\SpecialChar TeX
+ citations (without additional packages)
+ are handled in \SpecialChar LyX
+ is defined in such a file.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483874969
+More specifically, it is defined which packages \SpecialChar LyX
+ needs to load, which citation
+ commands are available, how these are to be displayed in \SpecialChar LyX
+ (in the workarea,
+ the dialogs, the context menus) as well as in the XHTML and plain text
+ output.
+ Furthermore, the files specify available style variants (author-year, numerical
+, etc.) and their specifics.
+ The cite engine files are also used to generate the options that are available
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Bibliography\SpecialChar menuseparator
+Style engine
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483875180
+Even though a cite engine file is essentially a normal layout file that
+ could theoretically include any layout information, it usually primarily
+ includes some specific parameters such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483874688
+MaxCiteNames
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483875180
+CiteFramework
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483874477
+CiteEngine
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483874482
+CiteFormat
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ blocks.
+ The syntax of the latter two is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-format-description"
+
+\end_inset
+
+, as well as in the files themselves.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -8352,6 +8573,139 @@ somemodule.module
 \end_inset
 
 .
+\change_inserted -712698321 1483873000
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1483873010
+The CiteEngine file declaration
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483873022
+A cite engine file must begin with a line like the following:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873047
+#
+\backslash
+DeclareLyXCiteEngineModule[biblatex.sty]{Biblatex}
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483873077
+The mandatory argument, in curly brackets, is the name of the module, as
+ it should appear in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483873068
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\end_layout
+
+\end_inset
+
+.
+ The argument in square brackets is optional: It declares any \SpecialChar LaTeX
+ packages
+ on which the cite engine depends.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483873102
+The cite engine declaration should then be followed by lines like the following
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483873000
+Preferably in English if the module should be published with \SpecialChar LyX
+.
+ This description will appear in the list of messages to be translated and
+ will be thus translated with the next interface update.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873128
+# DescriptionBegin
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873140
+#   Biblatex supports many author-year and numerical styles.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873152
+#   It is mainly aimed at the Humanities.
+ It is highly
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873160
+#   customizable, fully localized and provides many features
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873170
+#   that are not possible with BibTeX.
+ The use of 'biber' as
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873174
+#   bibliography processor is advised.
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483873224
+# DescriptionEnd
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483873207
+The description is used in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483873194
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\end_layout
+
+\end_inset
+
+ to provide the user with information about the cite engine.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -8543,6 +8897,70 @@ EndPreamble
 \end_inset
 
 .
+\change_inserted -712698321 1483872509
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1483874560
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872558
+CiteEngine <engine>
+\end_layout
+
+\end_inset
+
+ Defines the possibilities for displaying citation references.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872548
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -8583,6 +9001,86 @@ End
 \end_inset
 
 .
+
+\change_inserted -712698321 1483875199
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1483874578
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872820
+CiteFramework
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872852
+
+\emph on
+bibtex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872857
+biblatex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] Determines whether 
+\family sans
+Biblatex
+\family default
+ or Bib\SpecialChar TeX
+ is used to generate a Bibliography.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -9264,6 +9762,59 @@ MMMMM
 \end_inset
 
 .)
+\change_inserted -712698321 1483872681
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1483874598
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872687
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872692
+integer
+\end_layout
+
+\end_inset
+
+] An integer that determines the maximal number of names displayed in an
+ author-year citation before the citation switches to 
+\begin_inset Quotes eld
+\end_inset
+
+FirstAuthor et al.
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -20514,6 +21065,700 @@ giant
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted -712698321 1483869872
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Citation-engine-description"
+
+\end_inset
+
+Citation engine description
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483875281
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483869913
+CiteEngine
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ blocks, as used mainly in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), define the citation commands provided by a specific 
+\begin_inset Quotes eld
+\end_inset
+
+cite engine
+\begin_inset Quotes erd
+\end_inset
+
+.
+ A cite engine, in \SpecialChar LyX
+ terms, is way specific way to format citations, using
+ numbers, author names and/or years.
+ Currently, \SpecialChar LyX
+ supports three such engine types, namely:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483875764
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483870430
+default
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: the default Bib\SpecialChar TeX
+ way to format citations, a simple numeric style (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+[1]
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483875766
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483870434
+authoryear
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Harvard-styled citations using author names and publication year (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+Smith and Miller (2017b)
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483875769
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483870457
+numerical
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: extended numerical citations that also allow for author or title next
+ to the number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+Smith and Miller [1]
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483870566
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483870552
+CiteEngine
+\end_layout
+
+\end_inset
+
+ blocks look like this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870590
+CiteEngine default
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870615
+ cite
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870633
+ Citep*[][]
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870652
+ citeyearpar[][]=parencite*
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870652
+ ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870668
+End
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483871113
+The tag following 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871085
+CiteEngine
+\end_layout
+
+\end_inset
+
+ denotes the engine.
+ The individual lines respectively define a cite command or cite command
+ paradigm supported by this engine.
+ The line can be as simple as a cite command that is used both to name the
+ respective \SpecialChar LyX
+ command and the \SpecialChar LaTeX
+ output or more complex in order to differentiate
+ things.
+ 
+\change_deleted -712698321 1483871114
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483871119
+The full syntax is:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483870927
+LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871222
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871181
+LyXName
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: The name as used in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871216
+*.lyx
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ file.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1483871487
+For portability reasons, we try to use the same name for same-formatted
+ commands in different cite packages (thus many names stem from natbib,
+ and thus we need to differentiate a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871402
+latexcmd
+\end_layout
+
+\end_inset
+
+ sometimes, if the \SpecialChar LaTeX
+ command names differ).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871583
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871186
+alias
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: a (comma-separated) list of commands that fall back to the given 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871257
+LyXName
+\end_layout
+
+\end_inset
+
+ in the current engine.
+ This eases the switch of citation packages and engines.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871559
+alias
+\end_layout
+
+\end_inset
+
+ can be compared to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871278
+ObsoletedBy
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ in layout definitions.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871307
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871296
+latexcmd
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: The actual \SpecialChar LaTeX
+ command that is output.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483871348
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871316
+Alias
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871321
+latexcmd
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ are optional.
+ If no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871333
+latexcmd
+\end_layout
+
+\end_inset
+
+ is given, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871340
+LyXName
+\end_layout
+
+\end_inset
+
+ will be output to \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483871604
+Note further:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871664
+Capitalization indicates that the command also has a capitalized form (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871622
+
+\backslash
+Latexcmd
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ vs.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871626
+
+\backslash
+latexcmd
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ These usually enforce up-casing of name prefixes (
+\emph on
+von Goethe
+\emph default
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+Von Goethe
+\emph default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871690
+Brackets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871670
+[]
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ indicate the number of optional arguments (there can be 0–2).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483871747
+A star 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871698
+*
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ indicates there is a starred version of the command (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871718
+
+\backslash
+latexcmd*
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ vs.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871724
+
+\backslash
+latexcmd
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1483871864
+By default, the starred version means: Output all authors even if it should
+ be shortened with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+ due to the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871835
+MaxCiteNames
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ threshold.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483872045
+If the star has a different meaning for a given command, it can be specified
+ in angle brackets: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871856
+<!_stardesc!_stardesctooltip>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ Maximal two translatable macro keywords, marked by the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872014
+!_
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, can be given.
+ The first points to the string that replaces the 
+\begin_inset Quotes eld
+\end_inset
+
+Full aut&hor list
+\begin_inset Quotes erd
+\end_inset
+
+ checkbox label in the citation dialog, the second one to an optional tool
+ tip for this checkbox.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483872164
+Note that these two macros have to be defined in a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483871983
+CiteFormat
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (see next section), dropping the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483872023
+!
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ from the prefix, like this: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483872092
+_stardesc Sta&rred command label
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483872184
+_stardesctooltip Tooltip for the starred command checkbox.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Citation-format-description"
@@ -20555,12 +21800,74 @@ CiteFormat
 
 \begin_layout LyX-Code
 End
+\change_inserted -712698321 1483867197
+
 \end_layout
 
 \begin_layout Standard
-The individual lines define how the bibliographic information associated
+
+\change_inserted -712698321 1483867200
+or
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483867195
+CiteFormat
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483867204
+ cite ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483867359
+ citet*[][] ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1483867195
+End
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483867269
+In the first case, 
+\change_deleted -712698321 1483867270
+T
+\change_inserted -712698321 1483867270
+t
+\change_unchanged
+he individual lines define how the bibliographic information associated
  with an article or book, respectively, is to be displayed, and such a definitio
-n can be given for any `entry type' that might be present in a Bib\SpecialChar TeX
+n can be given for any 
+\change_deleted -712698321 1483867550
+`
+\change_inserted -712698321 1483867550
+
+\begin_inset Quotes els
+\end_inset
+
+
+\change_unchanged
+entry type
+\change_deleted -712698321 1483867552
+'
+\change_inserted -712698321 1483867552
+
+\begin_inset Quotes ers
+\end_inset
+
+
+\change_unchanged
+ that might be present in a Bib\SpecialChar TeX
  file.
  \SpecialChar LyX
  defines a default format in the source code that will be used if no specific
@@ -20578,6 +21885,82 @@ stdciteformats.inc
 
 , which is included in most of \SpecialChar LyX
 's document classes.
+\change_inserted -712698321 1483867288
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483875512
+In the second case, the lines define how a specific citation command (in
+ the example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483867674
+
+\backslash
+cite
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483867679
+
+\backslash
+citet
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+) is to be displayed on the citation inset label, in the citation dialog,
+ menu or XHTML output.
+ \SpecialChar LyX
+ defines such formats for the citation style variants it supports via 
+\family sans
+Document\SpecialChar menuseparator
+Setting\SpecialChar menuseparator
+Bibliography\SpecialChar ldots
+
+\family default
+ in specific 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483875503
+*.citeengine
+\end_layout
+
+\end_inset
+
+ files that are shipped with \SpecialChar LyX
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -20755,6 +22138,241 @@ status collapsed
 
 .
  There must be no space between any of these.
+\change_inserted -712698321 1483867855
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483867910
+Next to the entry keys, there are some special keys that can be used for
+ these conditionals:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868049
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483867962
+{%dialog%[[true]][[false]]}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for dialogs and menus, the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part for other contexts (workarea, export)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868068
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868052
+{%export%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for export and menus, the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part for other contexts (workarea, dialog)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868138
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868076
+{%next%[[true]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part if another item follows (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in a citation with multiple keys)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868174
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868144
+{%second%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if this is the second of multiple items, else the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868321
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868259
+{%ifstar%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for starred citation commands (such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868310
+
+\backslash
+cite*
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+), the false part for unstarred
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483868404
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868330
+{%ifentrytype:<type>%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if the current entry type matches 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868364
+<type>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, else the false part (e.g., in a citation definition: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868420
+{%ifentrytype:book%[[this is a book]][[this is no book]]}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+)
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -20881,7 +22499,11 @@ _pptext pp.
 
 \begin_layout Standard
 This defines a translatable piece of text, which allows relevant parts of
- the bibliography to be translated.
+ the bibliography 
+\change_inserted -712698321 1483868477
+or citation 
+\change_unchanged
+to be translated.
  It can be included in a definition by treating it as a key: 
 \begin_inset Flex Code
 status collapsed
@@ -20903,6 +22525,24 @@ stdciteformats.inc
 
 \end_inset
 
+
+\change_inserted -712698321 1483868503
+ and the diverse 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483868503
+*.citeengine
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ files
+\change_unchanged
 .
  Note that these are not macros, in the sense just defined.
  They will not be expanded.

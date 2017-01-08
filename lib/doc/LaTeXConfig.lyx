@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 528
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,7 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -58,7 +59,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -5541,6 +5543,44 @@ natbib
 \end_layout
 
 \begin_layout Subsection
+biblatex
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "biblatex"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/biblatex/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+biblatex
+\family default
+ is needed by \SpecialChar LyX
+ to produce a flexible interface to most of the available
+ bibliographic styles (you can also use 
+\family sans
+natbib
+\family default
+ or 
+\family sans
+jurabib
+\family default
+ instead).
+\end_layout
+
+\begin_layout Subsection
 bibtopic
 \end_layout
 
@@ -5703,9 +5743,15 @@ http://sourceforge.net/projects/jurabib/
 
 ) can be used as an alternative to 
 \family sans
+\color inherit
+biblatex
+\family default
+ or 
+\family sans
+\color none
 natbib
 \family default
-, to get flexible bibliographic styles with \SpecialChar LyX
+ to get flexible bibliographic styles with \SpecialChar LyX
 .
  It supports cite styles which are common in human sciences and law studies,
  footcites, ibidems, and more.
@@ -5815,6 +5861,10 @@ natbib
  is needed by \SpecialChar LyX
  to produce a flexible interface to most of the available
  bibliographic styles (you can also use 
+\family sans
+biblatex
+\family default
+ or 
 \family sans
 jurabib
 \family default
