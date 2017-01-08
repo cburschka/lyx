@@ -47,6 +47,8 @@ InsetLayout "Flex:Sweave Options"
 	Spellcheck	      0
 	FreeSpacing           true
 	ForceLTR              true
+	AddToToc              literate
+	IsTocCaption          0
 End
 
 InsetLayout "Flex:S/R expression"
@@ -91,4 +93,6 @@ InsetLayout "Flex:Sweave Input File"
 	Spellcheck	      0
 	FreeSpacing           true
 	ForceLTR              true
+	AddToToc              literate
+	IsTocCaption          1
 End

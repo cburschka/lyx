@@ -47,6 +47,7 @@ InsetLayout "Flex:Chunk"
             LeftDelim     <<
             RightDelim    >>=<br/>
 			IsTocCaption  1
+			AutoInsert    1
     EndArgument
     ResetsFont            false
     ForceOwnlines         true
