@@ -99,7 +99,8 @@ TempName::~TempName()
 TempName & TempName::operator=(TempName const & other)
 {
 	if (this != &other) {
-		tempname_.removeFile();
+		if (!tempname_.empty())
+			tempname_.removeFile();
 		support::TempFile f("lyxextXXXXXX.tmp");
 		f.setAutoRemove(false);
 		tempname_ = f.name(); 
