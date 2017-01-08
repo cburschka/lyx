@@ -2023,7 +2023,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 		if (! tclass.class_header().empty())
 			os << from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
-			os << "PUBLIC \"-//OASIS//DTD DocBook XML//EN\" "
+			os << "PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" "
 			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
