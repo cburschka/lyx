@@ -56,6 +56,7 @@ enum TocType {
 	MATH_MACRO,//"math-macro"
 	EXTERNAL,//"external"
 	SENSELESS,//"senseless"
+	USER_DEFINED,//any value defined in the layouts
 	TOC_TYPE_COUNT
 }
  */
@@ -119,16 +120,16 @@ private:
 class TocBuilder
 {
 public:
-	TocBuilder(std::shared_ptr<Toc> const toc);
-	/// When entering a float or flex (AddToToc)
+	TocBuilder(std::shared_ptr<Toc> toc);
+	/// When entering a float or flex or paragraph (with AddToToc)
 	void pushItem(DocIterator const & dit, docstring const & s,
 	              bool output_active, bool is_captioned = false);
 	/// When encountering a float caption
 	void captionItem(DocIterator const & dit, docstring const & s,
 	                 bool output_active);
-	/// When encountering an argument (isTocCaption)
+	/// When encountering an argument (with isTocCaption) for flex or paragraph
 	void argumentItem(docstring const & arg_str);
-	/// When exiting a float or flex
+	/// When exiting a float or flex or paragraph
 	void pop();
 private:
 	TocBuilder(){}

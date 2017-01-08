@@ -3333,11 +3333,11 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 
 
 void Paragraph::forOutliner(docstring & os, size_t const maxlen,
-							bool const shorten) const
+                            bool const shorten, bool const label) const
 {
 	size_t tmplen = shorten ? maxlen + 1 : maxlen;
-	if (!d->params_.labelString().empty())
-		os += d->params_.labelString() + ' ';
+	if (label && !labelString().empty())
+		os += labelString() + ' ';
 	for (pos_type i = 0; i < size() && os.length() < tmplen; ++i) {
 		if (isDeleted(i))
 			continue;

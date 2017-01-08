@@ -175,7 +175,8 @@ void InsetFlex::addToToc(DocIterator const & cpit, bool output_active,
 		// Cursor inside the inset
 		DocIterator pit = cpit;
 		pit.push_back(CursorSlice(const_cast<InsetFlex &>(*this)));
-		b.pushItem(pit, getLabel(), output_active);
+		docstring const label = getLabel();
+		b.pushItem(pit, label + (label.empty() ? "" : ": "), output_active);
 		// Proceed with the rest of the inset.
 		InsetCollapsable::addToToc(cpit, output_active, utype);
 		if (layout.isTocCaption()) {

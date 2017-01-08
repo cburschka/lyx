@@ -240,6 +240,21 @@ bool Text::isFirstInSequence(pit_type par_offset) const
 }
 
 
+pit_type Text::lastInSequence(pit_type pit) const
+{
+	depth_type const depth = pars_[pit].getDepth();
+	pit_type newpit = pit;
+
+	while (size_t(newpit + 1) < pars_.size() &&
+	       (pars_[newpit + 1].getDepth() > depth ||
+	        (pars_[newpit + 1].getDepth() == depth &&
+	         pars_[newpit + 1].layout() == pars_[pit].layout())))
+		++newpit;
+
+	return newpit;
+}
+
+
 int Text::getTocLevel(pit_type par_offset) const
 {
 	Paragraph const & par = pars_[par_offset];
@@ -2042,20 +2057,36 @@ docstring Text::asString(pit_type beg, pit_type end, int options) const
 void Text::shortenForOutliner(docstring & str, size_t const maxlen)
 {
 	support::truncateWithEllipsis(str, maxlen);
-	docstring::iterator it = str.begin();
-	docstring::iterator end = str.end();
-	for (; it != end; ++it)
-		if ((*it) == L'\n' || (*it) == L'\t')
-			(*it) = L' ';	
+	for (char_type & c : str)
+		if (c == L'\n' || c == L'\t')
+			c = L' ';
 }
 
 
 void Text::forOutliner(docstring & os, size_t const maxlen,
-					   bool const shorten) const
+                       bool const shorten) const
+{
+	pit_type end = pars_.size() - 1;
+	if (0 <= end && !pars_[0].labelString().empty())
+		os += pars_[0].labelString() + ' ';
+	forOutliner(os, maxlen, 0, end, shorten);
+}
+
+
+void Text::forOutliner(docstring & os, size_t const maxlen,
+                       pit_type pit_start, pit_type pit_end,
+                       bool const shorten) const
 {
 	size_t tmplen = shorten ? maxlen + 1 : maxlen;
-	for (size_t i = 0; i != pars_.size() && os.length() < tmplen; ++i)
-		pars_[i].forOutliner(os, tmplen, false);
+	pit_type end = min(size_t(pit_end), pars_.size() - 1);
+	bool first = true;
+	for (pit_type i = pit_start; i <= end && os.length() < tmplen; ++i) {
+		if (!first)
+			os += ' ';
+		// This function lets the first label be treated separately
+		pars_[i].forOutliner(os, tmplen, false, !first);
+		first = false;
+	}
 	if (shorten)
 		shortenForOutliner(os, maxlen);
 }

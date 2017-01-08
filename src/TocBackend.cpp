@@ -200,7 +200,7 @@ void TocBuilder::argumentItem(docstring const & arg_str)
 	TocItem & item = (*toc_)[stack_.top().pos];
 	docstring const & str = item.str();
 	string const & delim =
-		str.empty() ? "" : stack_.top().is_captioned ? ", " : ": ";
+		(str.empty() || !stack_.top().is_captioned) ? "" :  ", ";
 	item.str(str + from_ascii(delim) + arg_str);
 	stack_.top().is_captioned = true;
 }
