@@ -112,6 +112,10 @@ What's new
     set to [None] or OT1 but the global default is T1.
   # Quote type ignored for LyXHTML: always "English" quotes used. 
 
+- Output correct identifier for DocBook XML.
+
+- Correctly escape hyperlinks for DocBook output.
+
 
 * LYX2LYX
 
