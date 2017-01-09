@@ -1,106 +1,154 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>BibtexAddUi</class>
- <widget class="QDialog" name="BibtexAddUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="BibtexAddUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>221</width>
-    <height>321</height>
+    <width>328</width>
+    <height>377</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>1</vsizetype>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>LyX: Add BibTeX Database</string>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="rescanPB" >
-     <property name="toolTip" >
-      <string>Scan for new databases and styles</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Rescan</string>
-     </property>
-    </widget>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="bibLA">
+       <property name="text">
+        <string>&amp;Databases found by LaTeX:</string>
+       </property>
+       <property name="buddy">
+        <cstring>bibLW</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QListWidget" name="bibLW">
+       <property name="toolTip">
+        <string>This list consists of all databases that are indexed by LaTeX and thus are found without a file path. This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. If you want to reuse your own database, this is the place you should store it.</string>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>162</width>
+         <height>29</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="rescanPB">
+       <property name="toolTip">
+        <string>Rescan LaTeX's index for new databases and styles</string>
+       </property>
+       <property name="text">
+        <string>&amp;Rescan</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="2" column="0" >
-    <widget class="QPushButton" name="browsePB" >
-     <property name="text" >
-      <string>&amp;Browse...</string>
-     </property>
-     <property name="autoDefault" >
-      <bool>false</bool>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="localLA">
+       <property name="toolTip">
+        <string>Here you can enter a local BibTeX database name or browse your directory.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Local databases:</string>
+       </property>
+       <property name="buddy">
+        <cstring>bibED</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="bibED">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>Here you can enter a local BibTeX database name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="browsePB">
+         <property name="toolTip">
+          <string>Browse your local directory</string>
+         </property>
+         <property name="text">
+          <string>&amp;Browse...</string>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="2" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>6</number>
      </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>21</width>
-       <height>29</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QLineEdit" name="bibED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip" >
-      <string>Enter BibTeX database name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="3" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
+     <property name="leftMargin">
       <number>0</number>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
      </property>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -109,36 +157,29 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="addPB" >
-       <property name="text" >
+      <widget class="QPushButton" name="addPB">
+       <property name="text">
         <string>&amp;Add</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
-       <property name="default" >
+       <property name="default">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="closePB">
+       <property name="text">
         <string>Cancel</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0" colspan="3" >
-    <widget class="QListWidget" name="bibLW" >
-     <property name="selectionMode" >
-      <enum>QAbstractItemView::ExtendedSelection</enum>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
@@ -150,7 +191,7 @@
   <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
