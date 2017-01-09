@@ -162,7 +162,11 @@ CiteFormat default
 	!smartsep {%second%[[{%next%[[%_namesep%]][[%_pairnamesep%]]}]][[{%next%[[%_namesep%]][[%_lastnamesep%]]}]]}
 
 	# "Author et al." or "??"
-	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	!abbrvciteauthor {%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}
+	# "Author, ..." or "??"
+	!fullciteauthor {%fullciteauthor%[[%fullciteauthor%]][[??]]}
+	# Handle starred command: abbr. or full author list
+	!makeauthor {%ifstar%[[%!fullciteauthor%]][[%!abbrvciteauthor%]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# ", postnote"
@@ -181,7 +185,7 @@ CiteFormat default
 	!fullcite %bibentry%%!nextfullcite%
 
 	# "...; Author..."
-	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
+	!nextauthor {%next%[[%!sep% %!startlink%%!makeauthor%%!endlink%%!nextauthor%]]}
 	# "..., CiteKey..."
 	!nextkey {%next%[[%!sep% %key%%!nextkey%]]}
 	# ".., Year..." (including extra label, as in 2017a)
@@ -202,7 +206,7 @@ CiteFormat default
 	#
 
 	# "cf. Author; NextAuthor, p. xx"
-	citeauthor %!textbefore%%!startlink%%!abbrvauthor%%!endlink%%!nextauthor%%!textafter%
+	citeauthor %!textbefore%%!startlink%%!makeauthor%%!endlink%%!nextauthor%%!textafter%
 	# "cf. Year; NextYear, S. xx" [Authoryear] / "cf. Year, NextYear, S. xx" [Numerical]
 	citeyear %!textbefore%%!startlink%%!myear%%!endlink%%!nextmyear%%!textafter%
 	# "cf. Year; Nextyear, p. xx" (without any extra label)
@@ -228,16 +232,16 @@ CiteFormat authoryear
 	!close )
 
 	# "Author et al. (cf. Year..."
-	!makecitet %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!makeyear%%!nextcitet%
+	!makecitet %!startlink%%!makeauthor%%!endlink% %!open%%!textbefore%%!makeyear%%!nextcitet%
 	# "cf. Author et al. Year..."
-	!makecitealt  %!textbefore%%!startlink%%!abbrvauthor% %!makeyear%%!endlink%%!nextcitealt%
+	!makecitealt  %!textbefore%%!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%
 	# "Author et al., Year..."
-	!makecitealp %!startlink%%!abbrvauthor%, %!makeyear%%!endlink%%!nextcitealp%
+	!makecitealp %!startlink%%!makeauthor%, %!makeyear%%!endlink%%!nextcitealp%
 
 	# "...), [and] Nextauthor (Year..."
-	!nextcitet {%next%[[%!close%%!smartsep%%!startlink%%!abbrvauthor%%!endlink% %!open%%!makeyear%%!nextcitet%]]}
+	!nextcitet {%next%[[%!close%%!smartsep%%!startlink%%!makeauthor%%!endlink% %!open%%!makeyear%%!nextcitet%]]}
 	# "...; NextAuthor et al. Year..."
-	!nextcitealt {%next%[[%!sep% %!startlink%%!abbrvauthor% %!makeyear%%!endlink%%!nextcitealt%]]}
+	!nextcitealt {%next%[[%!sep% %!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%]]}
 	# "...; NextAuthor et al., Year..."
 	!nextcitealp {%next%[[%!sep% %!makecitealp%]]}
 
@@ -281,14 +285,14 @@ CiteFormat numerical
 	!close ]
 
 	# "Author [cf. ID..."
-	!makecitet %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
+	!makecitet %!makeauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%
 	# "ID..."
 	!makecitealt {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
 	# "ID..."
 	!hashkey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 
 	# "...], [and] NextAuthor [ID..."
-	!nextcitet {%next%[[%!close%%!smartsep%%!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
+	!nextcitet {%next%[[%!close%%!smartsep%%!makeauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
 	# "..., ID..."
 	!nextcitealt {%next%[[%!sep% %!makecitealt%]]}
 	# FIXME: What is this?
@@ -296,7 +300,7 @@ CiteFormat numerical
 	# "..., NextID..."
 	!nexthashkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 	# "...); Nextauthor [ID..."
-	!nextcitet {%next%[[%!close%%!smartsep%%!abbrvauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
+	!nextcitet {%next%[[%!close%%!smartsep%%!makeauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
 
 	#
 	# ACTUAL STYLE DEFINITIONS

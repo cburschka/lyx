@@ -137,7 +137,7 @@ CiteFormat authoryear
 	!endlink {!</a>!}
 
 	# "ShortAuthor", "Author" or "??"
-	!shortauthor {%shortauthor%[[%shortauthor%]][[{%abbrvauthor%[[%abbrvauthor%]][[??]]}]]}
+	!shortauthor {%shortauthor%[[%shortauthor%]][[{%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}]]}
 	# "... ShortTitle"
 	!shorttitle {%shorttitle%[[ %shorttitle%]][[{%dialog%[[ <%_shorttitle%>]][[%!makejurashorttitle%]]}]]}
 	# Title or "??"

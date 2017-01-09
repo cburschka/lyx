@@ -124,11 +124,11 @@ CiteFormat default
 	!endlink {!</a>!}
 
 	# "Author et al." or "??"
-	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	!abbrvciteauthor {%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}
 	# "Author, ..." or "??"
-	!fullauthor {%fullauthor%[[%fullauthor%]][[??]]}
+	!fullciteauthor {%fullciteauthor%[[%fullciteauthor%]][[??]]}
 	# Handle starred command: abbr. or full author list
-	!makeauthor {%ifstar%[[%!fullauthor%]][[%!abbrvauthor%]]}
+	!makeauthor {%ifstar%[[%!fullciteauthor%]][[%!abbrvciteauthor%]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# ", postnote"

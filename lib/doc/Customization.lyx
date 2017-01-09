@@ -22322,7 +22322,7 @@ cite*
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1483868404
+\change_inserted -712698321 1483978485
 \begin_inset Flex Code
 status collapsed
 
@@ -22358,7 +22358,7 @@ status collapsed
 
 , else the false part (e.g., in a citation definition: 
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -22371,6 +22371,600 @@ status open
 \end_inset
 
 )
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483978548
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483978499
+{%ifmultiple:<authortype>%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if the current author type (author, editor etc.) has multiple authors, else
+ the false part (e.g., in a bibliography definition: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483978571
+{%ifmultiple:editor%[[eds.]][[ed.]]}
+\end_layout
+
+\end_inset
+
+)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483978958
+We said that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483978693
+%author%
+\end_layout
+
+\end_inset
+
+ prints the author key as it is recorded in the bibliography file.
+ This might not be what you want, since it will result in a string such
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, Peter and Smith, Mary and White, Jane
+\begin_inset Quotes erd
+\end_inset
+
+ (since 
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+ is used by Bib\SpecialChar TeX
+ to delimit authors).
+ \SpecialChar LyX
+ therefore provides some methods to get properly formatted name lists (which
+ will also get translated).
+ The following keys are provided:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483979807
+For name lists with pre- and surname, suitable for the main authors/editors
+ of a bibliography item.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979800
+<nametype>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ part denotes the kind of list that is requested (e.g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979807
+<nametype:author>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979186
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979743
+%abbrvnames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979186
+MaxCiteNames
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ is reached.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979527
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979748
+%fullnames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979553
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980138
+%forceabbrvnames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979535
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483979413
+Alternative name lists with pre- and surname, if the order of pre- and surname
+ inside the bibliography item differs (as in: 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, John: Some text, in: Mary Smith, ed.: A volume
+\begin_inset Quotes erd
+\end_inset
+
+):
+\change_unchanged
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979565
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979751
+%abbrvbynames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979565
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ is reached.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979570
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979753
+%fullbynames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979576
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980143
+%forceabbrvbynames:<nametype>%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979574
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\change_inserted -712698321 1483980219
+And finally name lists which consist of family names only, as used in author-yea
+r citation labels.
+ these do not take a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979871
+<nametype>
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ part, but always return either an author list or, if this does not exist,
+ an editor list (as common in author-year labels):
+\change_unchanged
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979715
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979700
+%abbrvciteauthor%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979715
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ is reached.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483979721
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979703
+%fullciteauthor%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483980272
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979705
+%forceabbrvciteauthor%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483979726
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\change_inserted -712698321 1483980314
+The order of pre- and surname in the former two lists can be adjusted by
+ these macros:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483980535
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980354
+!firstnameform %surname%, %prename%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (first author in lists of type 1)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483980557
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980367
+!othernameform %surname%, %prename%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (other authors in lists of type 1)
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483980550
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980373
+!firstbynameform %prename% %surname%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (first author in lists of type 2)
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1483980570
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1483980381
+!otherbynameform %prename% %surname%
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (other authors in lists of type 2)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1483980643
+This allows you to configure namings like 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, Peter and Mary Smith: \SpecialChar ldots
+, in: John Doe and Pat Green, eds.:\SpecialChar ldots
+
+\begin_inset Quotes erd
+\end_inset
+
+.
 \change_unchanged
 
 \end_layout

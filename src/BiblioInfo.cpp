@@ -7,6 +7,7 @@
  * \author Herbert Voß
  * \author Richard Heck
  * \author Julien Rioux
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -45,51 +46,82 @@ namespace lyx {
 
 namespace {
 
-// gets the "family name" from an author-type string
-docstring familyName(docstring const & name)
+// gets the "prename" and "family name" from an author-type string
+pair<docstring, docstring> nameParts(docstring const & name)
 {
 	if (name.empty())
-		return docstring();
+		return make_pair(docstring(), docstring());
 
 	// first we look for a comma, and take the last name to be everything
 	// preceding the right-most one, so that we also get the "jr" part.
-	docstring::size_type idx = name.rfind(',');
-	if (idx != docstring::npos)
-		return ltrim(name.substr(0, idx));
+	vector<docstring> pieces = getVectorFromString(name);
+	if (pieces.size() > 1)
+		// whether we have a jr. part or not, it's always
+		// the first and last item (reversed)
+		return make_pair(pieces.back(), pieces.front());
 
 	// OK, so now we want to look for the last name. We're going to
 	// include the "von" part. This isn't perfect.
 	// Split on spaces, to get various tokens.
-	vector<docstring> pieces = getVectorFromString(name, from_ascii(" "));
+	pieces = getVectorFromString(name, from_ascii(" "));
 	// If we only get two, assume the last one is the last name
 	if (pieces.size() <= 2)
-		return pieces.back();
+		return make_pair(pieces.front(), pieces.back());
 
-	// Now we look for the first token that begins with a lower case letter.
+	// Now we look for the first token that begins with
+	// a lower case letter or an opening group {.
+	docstring prename;
 	vector<docstring>::const_iterator it = pieces.begin();
 	vector<docstring>::const_iterator en = pieces.end();
+	bool first = true;
 	for (; it != en; ++it) {
 		if ((*it).empty())
 			continue;
 		char_type const c = (*it)[0];
-		if (isLower(c))
+		if (isLower(c) || c == '{')
 			break;
-	}
-
-	if (it == en) // we never found a "von"
-		return pieces.back();
-
-	// reconstruct what we need to return
-	docstring retval;
-	bool first = true;
-	for (; it != en; ++it) {
 		if (!first)
-			retval += " ";
+			prename += " ";
 		else
 			first = false;
-		retval += *it;
+		prename += *it;
 	}
-	return retval;
+
+	if (it == en) // we never found a "von" or group
+		return make_pair(prename, pieces.back());
+
+	// reconstruct the family name
+	docstring surname;
+	first = true;
+	for (; it != en; ++it) {
+		if (!first)
+			surname += " ";
+		else
+			first = false;
+		surname += *it;
+	}
+	return make_pair(prename, surname);
+}
+
+
+docstring constructName(docstring const & name, string const scheme)
+{
+	// re-constructs a name from name parts according
+	// to a given scheme
+	docstring const prename = nameParts(name).first;
+	docstring const surname = nameParts(name).second;
+	docstring result = from_ascii(scheme);
+	result = subst(result, from_ascii("%prename%"), prename);
+	result = subst(result, from_ascii("%surname%"), surname);
+	return result;
+}
+
+
+bool multipleAuthors(docstring const author)
+{
+	vector<docstring> const authors =
+		getVectorFromString(author, from_ascii(" and "));
+	return authors.size() > 1;
 }
 
 
@@ -256,8 +288,20 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
-docstring const BibTeXInfo::getAuthorList(
-    Buffer const * buf, bool full, bool forceshort) const
+docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
+					  bool full, bool forceshort) const
+{
+	docstring author = operator[]("author");
+	if (author.empty())
+		author = operator[]("editor");
+
+	return getAuthorList(buf, author, full, forceshort);
+}
+
+
+docstring const BibTeXInfo::getAuthorList(Buffer const * buf, docstring author,
+					  bool full, bool forceshort, bool allnames,
+					  bool beginning) const
 {
 	// Maxnames treshold depend on engine
 	size_t maxnames = buf ?
@@ -277,12 +321,8 @@ docstring const BibTeXInfo::getAuthorList(
 		return authors;
 	}
 
-	docstring author = operator[]("author");
-	if (author.empty()) {
-		author = operator[]("editor");
-		if (author.empty())
-			return author;
-	}
+	if (author.empty())
+		return author;
 
 	// FIXME Move this to a separate routine that can
 	// be called from elsewhere.
@@ -310,6 +350,17 @@ docstring const BibTeXInfo::getAuthorList(
 	string const pairnamesep =
 		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_pairnamesep")
 		     : " and ";
+	string firstnameform =
+			buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstnameform")
+			     : "%surname%, %prename%";
+	if (!beginning)
+		firstnameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstbynameform")
+					     : "%prename% %surname%";
+	string othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!othernameform")
+			     : "%surname%, %prename%";
+	if (!beginning)
+		othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!otherbynameform")
+					     : "%prename% %surname%";
 
 	// Shorten the list (with et al.) if forceshort is set
 	// and the list can actually be shorten, else if maxcitenames
@@ -333,10 +384,18 @@ docstring const BibTeXInfo::getAuthorList(
 				retval += buf ? buf->B_(lastnamesep) : from_ascii(lastnamesep);
 		} else if (i > 0)
 			retval += buf ? buf->B_(namesep) : from_ascii(namesep);
-		retval += familyName(*it);
+		if (allnames)
+			retval += (i == 0) ? constructName(*it, firstnameform)
+				: constructName(*it, othernameform);
+		else
+			retval += nameParts(*it).second;
 	}
-	if (shorten)
-		retval = familyName(authors[0]) + (buf ? buf->B_(etal) : from_ascii(etal));
+	if (shorten) {
+		if (allnames)
+			retval = constructName(authors[0], firstnameform) + (buf ? buf->B_(etal) : from_ascii(etal));
+		else
+			retval = nameParts(authors[0]).second + (buf ? buf->B_(etal) : from_ascii(etal));
+	}
 
 	return convertLaTeXCommands(retval);
 }
@@ -766,21 +825,75 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = modifier_;
 		else if (key == "numericallabel")
 			ret = cite_number_;
-		else if (key == "abbrvauthor") {
-			// Special key to provide abbreviated author names,
+		else if (prefixIs(key, "ifmultiple:")) {
+			// Return whether we have multiple authors
+			docstring const kind = operator[](from_ascii(key.substr(11)));
+			if (multipleAuthors(kind))
+				ret = from_ascii("x"); // any non-empty string will do
+		}
+		else if (prefixIs(key, "abbrvnames:")) {
+			// Special key to provide abbreviated name list,
+			// with respect to maxcitenames. Suitable for Bibliography
+			// beginnings.
+			docstring const kind = operator[](from_ascii(key.substr(11)));
+			ret = getAuthorList(&buf, kind, false, false, true);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (prefixIs(key, "fullnames:")) {
+			// Return a full name list. Suitable for Bibliography
+			// beginnings.
+			docstring const kind = operator[](from_ascii(key.substr(10)));
+			ret = getAuthorList(&buf, kind, true, false, true);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (prefixIs(key, "forceabbrvnames:")) {
+			// Special key to provide abbreviated name lists,
+			// irrespective of maxcitenames. Suitable for Bibliography
+			// beginnings.
+			docstring const kind = operator[](from_ascii(key.substr(15)));
+			ret = getAuthorList(&buf, kind, false, true, true);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (prefixIs(key, "abbrvbynames:")) {
+			// Special key to provide abbreviated name list,
+			// with respect to maxcitenames. Suitable for further names inside a
+			// bibliography item // (such as "ed. by ...")
+			docstring const kind = operator[](from_ascii(key.substr(11)));
+			ret = getAuthorList(&buf, kind, false, false, true, false);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (prefixIs(key, "fullbynames:")) {
+			// Return a full name list. Suitable for further names inside a
+			// bibliography item // (such as "ed. by ...")
+			docstring const kind = operator[](from_ascii(key.substr(10)));
+			ret = getAuthorList(&buf, kind, true, false, true, false);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (prefixIs(key, "forceabbrvbynames:")) {
+			// Special key to provide abbreviated name lists,
+			// irrespective of maxcitenames. Suitable for further names inside a
+			// bibliography item // (such as "ed. by ...")
+			docstring const kind = operator[](from_ascii(key.substr(15)));
+			ret = getAuthorList(&buf, kind, false, true, true, false);
+			if (ci.forceUpperCase && isLowerCase(ret[0]))
+				ret[0] = uppercase(ret[0]);
+		} else if (key == "abbrvciteauthor") {
+			// Special key to provide abbreviated author or
+			// editor names (suitable for citation labels),
 			// with respect to maxcitenames.
-			ret = getAuthorList(&buf, false, false);
+			ret = getAuthorOrEditorList(&buf, false, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
-		} else if (key == "fullauthor") {
-			// Return a full author list
-			ret = getAuthorList(&buf, true, false);
+		} else if (key == "fullciteauthor") {
+			// Return a full author or editor list (for citation labels)
+			ret = getAuthorOrEditorList(&buf, true, false);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
-		} else if (key == "forceabbrvauthor") {
-			// Special key to provide abbreviated author names,
+		} else if (key == "forceabbrvciteauthor") {
+			// Special key to provide abbreviated author or
+			// editor names (suitable for citation labels),
 			// irrespective of maxcitenames.
-			ret = getAuthorList(&buf, false, true);
+			ret = getAuthorOrEditorList(&buf, false, true);
 			if (ci.forceUpperCase && isLowerCase(ret[0]))
 				ret[0] = uppercase(ret[0]);
 		} else if (key == "bibentry") {
@@ -903,13 +1016,13 @@ vector<docstring> const BiblioInfo::getEntries() const
 }
 
 
-docstring const BiblioInfo::getAuthorList(docstring const & key, Buffer const & buf) const
+docstring const BiblioInfo::getAuthorOrEditorList(docstring const & key, Buffer const & buf) const
 {
 	BiblioInfo::const_iterator it = find(key);
 	if (it == end())
 		return docstring();
 	BibTeXInfo const & data = it->second;
-	return data.getAuthorList(&buf, false);
+	return data.getAuthorOrEditorList(&buf, false);
 }
 
 
@@ -1075,8 +1188,8 @@ namespace {
 // used in xhtml to sort a list of BibTeXInfo objects
 bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
 {
-	docstring const lauth = lhs->getAuthorList();
-	docstring const rauth = rhs->getAuthorList();
+	docstring const lauth = lhs->getAuthorOrEditorList();
+	docstring const rauth = rhs->getAuthorOrEditorList();
 	docstring const lyear = lhs->getYear();
 	docstring const ryear = rhs->getYear();
 	docstring const ltitl = lhs->operator[]("title");
@@ -1164,7 +1277,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			// the first test.
 			// coverity[FORWARD_NULL]
 			if (it != cited_entries_.begin()
-			    && entry.getAuthorList() == last->second.getAuthorList()
+			    && entry.getAuthorOrEditorList() == last->second.getAuthorOrEditorList()
 			    // we access the year via getYear() so as to get it from the xref,
 			    // if we need to do so
 			    && getYear(entry.key()) == getYear(last->second.key())) {
@@ -1196,7 +1309,7 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 		if (numbers) {
 			entry.label(entry.citeNumber());
 		} else {
-			docstring const auth = entry.getAuthorList(&buf, false);
+			docstring const auth = entry.getAuthorOrEditorList(&buf, false);
 			// we do it this way so as to access the xref, if necessary
 			// note that this also gives us the modifier
 			docstring const year = getYear(*it, buf, true);

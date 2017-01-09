@@ -150,7 +150,7 @@ CiteFormat default
 	!dummymod [a]
 
 	# "...; Nextauthor ..."
-	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvauthor%%!endlink%%!nextauthor%]]}
+	!nextauthor {%next%[[%!sep% %!startlink%%!abbrvciteauthor%%!endlink%%!nextauthor%]]}
 	# Handle starred command: abbr. or full author list
 	!makenextauthor {%next%[[%!sep% %!startlink%%!makeauthor%%!endlink%%!makenextauthor%]]}
 	# "...; [NextID] ..."
@@ -167,11 +167,11 @@ CiteFormat default
 	!nextfullcite {%next%[[%!sep% %bibentry%%!nextfullcite%]]}
 
 	# "Author et al." (if > 3 authors) or "??"
-	!abbrvauthor {%abbrvauthor%[[%abbrvauthor%]][[??]]}
+	!abbrvciteauthor {%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}
 	# "Author et al." (always) or "??"
-	!forceabbrvauthor {%forceabbrvauthor%[[%forceabbrvauthor%]][[??]]}
+	!forceabbrvciteauthor {%forceabbrvciteauthor%[[%forceabbrvciteauthor%]][[??]]}
 	# Handle starred command: force of abbr. author list, independent of maxcitenames
-	!makeauthor {%ifstar%[[%!forceabbrvauthor%]][[%!abbrvauthor%]]}
+	!makeauthor {%ifstar%[[%!forceabbrvciteauthor%]][[%!abbrvciteauthor%]]}
 	# "prenote "
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# ", postnote"
@@ -220,14 +220,14 @@ CiteFormat authoryear
 	!close )
 
 	# "cf. Author et. al Year..."
-	!makecite %!startlink%%!abbrvauthor% %!year%%!endlink%%!nextcite%
+	!makecite %!startlink%%!abbrvciteauthor% %!year%%!endlink%%!nextcite%
 	# Author et al. (cf. Year...
-	!maketextcite %!startlink%%!abbrvauthor%%!endlink% %!open%%!textbefore%%!year%%!nexttextcite%
+	!maketextcite %!startlink%%!abbrvciteauthor%%!endlink% %!open%%!textbefore%%!year%%!nexttextcite%
 
 	# "...; Nextauthor Year..."
 	!nextcite {%next%[[%!sep% %!makecite%]]}
 	# "...); Nextauthor (Year..."
-	!nexttextcite {%next%[[%!close%%!smartsep%%!startlink%%!abbrvauthor%%!endlink% %!open%%!year%%!nexttextcite%]]}
+	!nexttextcite {%next%[[%!close%%!smartsep%%!startlink%%!abbrvciteauthor%%!endlink% %!open%%!year%%!nexttextcite%]]}
 
 	# Add a year if it exists (else title, else "??") and possibly a modifier (as in 2017a)
 	!yeartitle {%year%[[%year%{%modifier%[[%modifier%]][[{%export%[[]][[%!dummymod%]]}]]}]][[{%title%[[%title%]][[??]]}]]}
@@ -273,12 +273,12 @@ CiteFormat numerical
 	!close ]
 
 	# "Author [cf. ID..."
-	!maketextcite %!abbrvauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%
+	!maketextcite %!abbrvciteauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%
 	# "ID"
 	!makekey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nextkey%]]}
 
 	# "...); Nextauthor [ID..."
-	!nexttextcite {%next%[[%!close%%!smartsep%%!abbrvauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%]]}
+	!nexttextcite {%next%[[%!close%%!smartsep%%!abbrvciteauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nexttextcite%]]}
 	# "..., NextID..."
 	!nextkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nextkey%]]}
 

@@ -55,12 +55,16 @@ public:
 	BibTeXInfo(bool ib) : is_bibtex_(ib), modifier_(0) {}
 	/// constructor that sets the entryType
 	BibTeXInfo(docstring const & key, docstring const & type);
-	/// \return the an authorlist (short form by default),
+	/// \return an author or editor list (short form by default),
 	/// used for sorting.
 	/// This will be translated to the UI language if buf is null
 	/// otherwise, it will be translated to the buffer language.
-	docstring const getAuthorList(Buffer const * buf = 0, bool full = false,
+	docstring const getAuthorOrEditorList(Buffer const * buf = 0, bool full = false,
 				      bool forceshort = false) const;
+	/// Same for a specific author role (editor, author etc.)
+	docstring const getAuthorList(Buffer const * buf = 0, docstring author = docstring(),
+				      bool full = false, bool forceshort = false,
+				      bool allnames = false, bool beginning = true) const;
 	///
 	docstring const getYear() const;
 	/// \return formatted BibTeX data suitable for framing.
@@ -179,8 +183,8 @@ public:
 	std::vector<docstring> const getFields() const;
 	/// \return a sorted vector of BibTeX entry types in use
 	std::vector<docstring> const getEntries() const;
-	/// \return authorlist (abbreviated form by default)
-	docstring const getAuthorList(docstring const & key, Buffer const & buf) const;
+	/// \return author or editor list (abbreviated form by default)
+	docstring const getAuthorOrEditorList(docstring const & key, Buffer const & buf) const;
 	/// \return the year from the bibtex data record for \param key
 	/// if \param use_modifier is true, then we will also append any
 	/// modifier for this entry (e.g., 1998b).
