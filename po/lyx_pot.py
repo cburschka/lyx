@@ -78,7 +78,7 @@ def ui_l10n(input_files, output, base):
 
 
 def layouts_l10n(input_files, output, base, layouttranslations):
-    '''Generate pot file from lib/layouts/*.{layout,inc,module}'''
+    '''Generate pot file from lib/layouts/*.{layout,inc,module} and lib/citeengines/*.citeengine'''
     ClassDescription = re.compile(r'^\s*#\s*\\Declare(LaTeX|DocBook)Class.*\{(.*)\}$', re.IGNORECASE)
     ClassCategory = re.compile(r'^\s*#\s*\\DeclareCategory\{(.*)\}$', re.IGNORECASE)
     Style = re.compile(r'^\s*Style\s+(.*\S)\s*$', re.IGNORECASE)
@@ -91,7 +91,7 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     ListName = re.compile(r'^\s*ListName\s+(.*\S)\s*$', re.IGNORECASE)
     CategoryName = re.compile(r'^\s*Category\s+(.*\S)\s*$', re.IGNORECASE)
     NameRE = re.compile(r'^\s*#\s*\\DeclareLyXModule.*{(.*)}$', re.IGNORECASE)
-    CiteNameRE = re.compile(r'^\s*#\s*\\DeclareLyXCiteEngine.*{(.*)}$', re.IGNORECASE)
+    CiteNameRE = re.compile(r'^\s*#\s*\\DeclareLyXCiteEngine.*\{(.*)\}$', re.IGNORECASE)
     InsetLayout = re.compile(r'^InsetLayout\s+\"?(.*)\"?\s*$', re.IGNORECASE)
     FlexCheck = re.compile(r'^Flex:(.*)', re.IGNORECASE)
     CaptionCheck = re.compile(r'^Caption:(.*)', re.IGNORECASE)
@@ -103,7 +103,8 @@ def layouts_l10n(input_files, output, base, layouttranslations):
     I18nString = re.compile(r'_\(([^\)]+)\)')
     CounterFormat = re.compile(r'^\s*PrettyFormat\s+"?(.*)"?\s*$', re.IGNORECASE)
     CiteFormat = re.compile(r'^\s*CiteFormat', re.IGNORECASE)
-    KeyVal = re.compile(r'^\s*_\w+\s+(.*\S)\s*$')
+    # Note: preceding and trailing space in the val below matters
+    KeyVal = re.compile(r'^\s*_\w+\s(.*\S)*$')
     Float = re.compile(r'^\s*Float\s*$', re.IGNORECASE)
     UsesFloatPkg = re.compile(r'^\s*UsesFloatPkg\s+(.*\S)\s*$', re.IGNORECASE)
     IsPredefined = re.compile(r'^\s*IsPredefined\s+(.*\S)\s*$', re.IGNORECASE)
