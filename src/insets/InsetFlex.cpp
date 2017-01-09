@@ -23,7 +23,6 @@
 #include "Lexer.h"
 #include "ParIterator.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -163,30 +162,6 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 	InsetCollapsable::updateBuffer(it, utype);
 	if (save_counter)
 		cnts.restoreLastCounter();
-}
-
-
-void InsetFlex::addToToc(DocIterator const & cpit, bool output_active,
-                         UpdateType utype) const
-{
-	InsetLayout const & layout = getLayout();
-	if (layout.addToToc()) {
-		TocBuilder & b = buffer().tocBackend().builder(layout.tocType());
-		// Cursor inside the inset
-		DocIterator pit = cpit;
-		pit.push_back(CursorSlice(const_cast<InsetFlex &>(*this)));
-		docstring const label = getLabel();
-		b.pushItem(pit, label + (label.empty() ? "" : ": "), output_active);
-		// Proceed with the rest of the inset.
-		InsetCollapsable::addToToc(cpit, output_active, utype);
-		if (layout.isTocCaption()) {
-			docstring str;
-			text().forOutliner(str, TOC_ENTRY_LENGTH);
-			b.argumentItem(str);
-		}
-		b.pop();
-	} else
-		InsetCollapsable::addToToc(cpit, output_active, utype);
 }
 
 

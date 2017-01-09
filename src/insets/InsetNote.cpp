@@ -208,26 +208,6 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::addToToc(DocIterator const & cpit, bool output_active,
-						 UpdateType utype) const
-{
-	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
-
-	InsetLayout const & il = getLayout();
-	docstring str;
-	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	str = translateIfPossible(il.labelstring()) + ": " + str;
-
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("note");
-	toc->push_back(TocItem(pit, 0, str, output_active));
-
-	// Proceed with the rest of the inset.
-	bool doing_output = output_active && producesOutput();
-	InsetCollapsable::addToToc(cpit, doing_output, utype);
-}
-
-
 bool InsetNote::isMacroScope() const
 {
 	// LyX note has no latex output

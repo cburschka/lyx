@@ -385,22 +385,10 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 }
 
 
-void InsetBranch::addToToc(DocIterator const & cpit, bool output_active,
-						   UpdateType utype) const
+void InsetBranch::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(const_cast<InsetBranch &>(*this)));
-
-	docstring str;
-	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	str = params_.branch + (params_.inverted ? " (-):" : ": ") + str;
-
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("branch");
-	toc->push_back(TocItem(pit, 0, str, output_active));
-
-	// Proceed with the rest of the inset.
-	bool const doing_output = output_active && producesOutput();
-	InsetCollapsable::addToToc(cpit, doing_output, utype);
+	setLabel(params_.branch + (params_.inverted ? " (-)" : ""));
+	InsetCollapsable::updateBuffer(it, utype);
 }
 
 

@@ -38,26 +38,31 @@ class Buffer;
  * I leave this for documentation purposes for the moment.
  *
 enum TocType {
+// Non-customizable (does not use TocBuilder)
+	//The following is used for XHTML output
 	TABLE_OF_CONTENTS,//"tableofcontents"
+	CHANGE,//"change"
+	//The following is used for XHTML output
+	CITATION,//"citation"
+	LABEL,//"label"
+	SENSELESS,//"senseless"
+// Built-in but customizable
 	CHILD,//"child"
 	GRAPHICS,//"graphics"
-	NOTE,//"note"
-	BRANCH,//"branch"
-	CHANGE,//"change"
-	LABEL,//"label"
-	CITATION,//"citation"
 	EQUATION,//"equation"
-	FOOTNOTE,//"footnote"
-	MARGINAL_NOTE,//"marginalnote"
 	INDEX,//"index", "index:<user-str>" (from interface)
 	NOMENCL,//"nomencl"
 	LISTING,//"listings"
+	//The following are used for XHTML output
 	FLOAT,//"figure", "table", "algorithm", user-defined (from layout?)
 	MATH_MACRO,//"math-macro"
 	EXTERNAL,//"external"
-	SENSELESS,//"senseless"
-	USER_DEFINED,//any value defined in the layouts
-	TOC_TYPE_COUNT
+// Defined in layouts
+	NOTE,//"note"
+	FOOTNOTE,//"footnote"
+	MARGINAL_NOTE,//"marginalnote"
+	BRANCH,//"branch"
+	USER_DEFINED //any value defined in the layouts
 }
  */
 

@@ -598,9 +598,18 @@ QStringList fileFilters(QString const & desc)
 
 QString guiName(string const & type, BufferParams const & bp)
 {
-	// FIXME: hardcoded
+	// Hardcoded types
 	if (type == "tableofcontents")
 		return qt_("Table of Contents");
+	if (type == "change")
+		return qt_("Changes");
+	if (type == "senseless")
+		return qt_("Senseless");
+	if (type == "citation")
+		return qt_("Citations");
+	if (type == "label")
+		return qt_("Labels and References");
+	// Customizable, but the corresponding insets have no layout definition
 	if (type == "child")
 		return qt_("Child Documents");
 	if (type == "graphics")
@@ -609,30 +618,11 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Equations");
 	if (type == "external")
 		return qt_("External material");
-	if (type == "footnote")
-		return qt_("Footnotes");
-	if (type == "listing")
-		return qt_("Listings");
-	if (type == "index")
-		return qt_("Index Entries");
-	if (type == "marginalnote")
-		return qt_("Marginal notes");
 	if (type == "math-macro")
 		return qt_("Math macros");
 	if (type == "nomencl")
 		return qt_("Nomenclature Entries");
-	if (type == "note")
-		return qt_("Notes");
-	if (type == "citation")
-		return qt_("Citations");
-	if (type == "label")
-		return qt_("Labels and References");
-	if (type == "branch")
-		return qt_("Branches");
-	if (type == "change")
-		return qt_("Changes");
-	if (type == "senseless")
-		return qt_("Senseless");
+
 	if (prefixIs(type, "index:")) {
 		string const itype = split(type, ':');
 		IndicesList const & indiceslist = bp.indiceslist();
@@ -642,10 +632,6 @@ QString guiName(string const & type, BufferParams const & bp)
 			indextype = index->index();
 		return toqstr(bformat(_("Index Entries (%1$s)"), indextype));
 	}
-
-	FloatList const & floats = bp.documentClass().floats();
-	if (floats.typeExist(type))
-		return qt_(floats.getType(type).listName());
 
 	return toqstr(bp.documentClass().outlinerName(type));
 }
