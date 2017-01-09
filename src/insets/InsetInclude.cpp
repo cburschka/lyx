@@ -1143,37 +1143,33 @@ void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
 void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 							UpdateType utype) const
 {
-	TocBackend & backend = buffer().tocBackend();
-
 	if (isListings(params())) {
 		if (label_)
 			label_->addToToc(cpit, output_active, utype);
-
+		TocBuilder & b = buffer().tocBackend().builder("listing");
+		b.pushItem(cpit, screenLabel(), output_active);
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
-		string caption = p.getParamValue("caption");
-		if (caption.empty())
-			return;
-		shared_ptr<Toc> toc = backend.toc("listing");
-		docstring str = convert<docstring>(toc->size() + 1)
-			+ ". " +  from_utf8(caption);
-		DocIterator pit = cpit;
-		toc->push_back(TocItem(pit, 0, str, output_active));
+		b.argumentItem(from_utf8(p.getParamValue("caption")));
+		b.pop();
 	} else {
 		Buffer const * const childbuffer = getChildBuffer();
+
+		TocBuilder & b = buffer().tocBackend().builder("child");
+		docstring str = childbuffer ? childbuffer->fileName().displayName()
+			: from_ascii("?");
+		b.pushItem(cpit, str, output_active);
+		b.pop();
+
 		if (!childbuffer)
 			return;
 
-		shared_ptr<Toc> toc = backend.toc("child");
-		docstring str = childbuffer->fileName().displayName();
-		toc->push_back(TocItem(cpit, 0, str, output_active));
-
+		// Include Tocs from children
 		childbuffer->tocBackend().update(output_active, utype);
-		TocList const & childtoclist = childbuffer->tocBackend().tocs();
-		TocList::const_iterator it = childtoclist.begin();
-		TocList::const_iterator const end = childtoclist.end();
-		for(; it != end; ++it) {
-			shared_ptr<Toc> toc = backend.toc(it->first);
-			toc->insert(toc->end(), it->second->begin(), it->second->end());
+		for(auto const & pair : childbuffer->tocBackend().tocs()) {
+			string const & type = pair.first;
+			shared_ptr<Toc> child_toc = pair.second;
+			shared_ptr<Toc> toc = buffer().tocBackend().toc(type);
+			toc->insert(toc->end(), child_toc->begin(), child_toc->end());
 		}
 	}
 }
