@@ -30,40 +30,23 @@ namespace lyx {
 
 class Buffer;
 
-
-/* FIXME: toc types are currently identified by strings. It cannot be converted
- * into an enum because of the user-configurable indexing categories and
- * the user-definable float types provided by layout files.
+/* Toc types are described by strings. They cannot be converted into an enum
+ * because of the user-configurable categories for index and the user-definable
+ * toc types provided in layout files.
  *
- * I leave this for documentation purposes for the moment.
+ * Here is a summary of built-in toc types
  *
-enum TocType {
-// Non-customizable (does not use TocBuilder)
-	//The following is used for XHTML output
-	TABLE_OF_CONTENTS,//"tableofcontents"
-	CHANGE,//"change"
-	//The following is used for XHTML output
-	CITATION,//"citation"
-	LABEL,//"label"
-	SENSELESS,//"senseless"
-// Built-in but customizable
-	CHILD,//"child"
-	GRAPHICS,//"graphics"
-	EQUATION,//"equation"
-	INDEX,//"index", "index:<user-str>" (from interface)
-	NOMENCL,//"nomencl"
-	LISTING,//"listings"
-	//The following are used for XHTML output
-	FLOAT,//"figure", "table", "algorithm", user-defined (from layout?)
-	MATH_MACRO,//"math-macro"
-	EXTERNAL,//"external"
-// Defined in layouts
-	NOTE,//"note"
-	FOOTNOTE,//"footnote"
-	MARGINAL_NOTE,//"marginalnote"
-	BRANCH,//"branch"
-	USER_DEFINED //any value defined in the layouts
-}
+ * Non-customizable (used without TocBuilder): "tableofcontents", "change",
+ * "citation", "label", "senseless".
+ *
+ * Built-in but customizable (used with TocBuilder): "child", "graphics",
+ * "equation", "index", "index:<user-str>", "nomencl", "listings", "math-macro",
+ * "external", any float type (as defined in the layouts).
+ *
+ * The following are used for XHTML output: "tableofcontents" (InsetText),
+ * "citation" (InsetCitation), any float type.
+ *
+ * Other types are defined in the layouts.
  */
 
 ///

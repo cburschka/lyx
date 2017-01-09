@@ -353,7 +353,6 @@ docstring TocBackend::outlinerName(string const & type) const
 
 bool TocBackend::isOther(std::string const & type)
 {
-	// This is where having an Enum of types would have been more elegant...
 	return type == "graphics"
 		|| type == "note"
 		|| type == "branch"
