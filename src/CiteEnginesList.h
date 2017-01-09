@@ -54,9 +54,7 @@ public:
 		      std::string const & cfm,
 		      std::vector<std::string> const & defaultbiblios,
 		      std::string const & description,
-		      std::vector<std::string> const & packagelist,
-		      std::vector<std::string> const & requires,
-		      std::vector<std::string> const & excludes);
+		      std::vector<std::string> const & packagelist);
 	/// whether the required packages are available
 	bool isAvailable() const;
 	/// the missing prerequisites, if any
@@ -82,19 +80,6 @@ public:
 	///
 	std::vector<std::string> const & getPackageList() const
 		{ return package_list_; }
-	///
-	std::vector<std::string> const & getRequiredEngines() const
-		{ return required_engines_; }
-	/// Engines this one excludes: the list should be treated disjunctively
-	std::vector<std::string> const & getExcludedEngines() const
-		{ return excluded_engines_; }
-	/// \return true if the engine is compatible with this one, i.e.,
-	/// it does not exclude us and we do not exclude it.
-	/// this will also return true if cename is unknown and we do not
-	/// exclude it, since in that case we cannot check its exclusions.
-	bool isCompatible(std::string const & cename) const;
-	///
-	static bool areCompatible(std::string const & eng1, std::string const & eng2);
 private:
 	/// what appears in the ui
 	std::string name_;
@@ -113,10 +98,6 @@ private:
 	std::string description_;
 	/// the LaTeX packages on which this depends, if any
 	std::vector<std::string> package_list_;
-	/// Engines this one requires: at least one
-	std::vector<std::string> required_engines_;
-	/// Engines this one excludes: none of these
-	std::vector<std::string> excluded_engines_;
 	// these are mutable because they are used to cache the results
 	// or an otherwise const operation.
 	///
@@ -167,7 +148,6 @@ public:
 	void addCiteEngine(std::string const &, std::string const &,
 		std::vector<std::string> const &, std::string const &,
 		std::vector<std::string> const &, std::string const &,
-		std::vector<std::string> const &, std::vector<std::string> const &,
 		std::vector<std::string> const &);
 	///
 	std::vector<LyXCiteEngine> englist_;

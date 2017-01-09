@@ -40,11 +40,9 @@ CiteEnginesList theCiteEnginesList;
 LyXCiteEngine::LyXCiteEngine(string const & n, string const & i,
 			     vector<string> const & cet, string const & cfm,
 			     vector<string> const & dbs,
-			     string const & d, vector<string> const & p,
-			     vector<string> const & r, vector<string> const & e):
+			     string const & d, vector<string> const & p):
 	name_(n), id_(i), engine_types_(cet), cite_framework_(cfm), default_biblios_(dbs),
-	description_(d), package_list_(p), required_engines_(r), excluded_engines_(e),
-	checked_(false), available_(false)
+	description_(d), package_list_(p), checked_(false), available_(false)
 {
 	filename_ = id_ + ".citeengine";
 }
@@ -83,39 +81,6 @@ bool LyXCiteEngine::hasEngineType(CiteEngineType const & et) const
 {
 	return std::find(engine_types_.begin(), engine_types_.end(),
 			 theCiteEnginesList.getTypeAsString(et)) != engine_types_.end();
-}
-
-
-bool LyXCiteEngine::isCompatible(string const & cename) const
-{
-	// do we exclude it?
-	if (find(excluded_engines_.begin(), excluded_engines_.end(), cename) !=
-			excluded_engines_.end())
-		return false;
-
-	LyXCiteEngine const * const lm = theCiteEnginesList[cename];
-	if (!lm)
-		return true;
-
-	// does it exclude us?
-	vector<string> const excengs = lm->getExcludedEngines();
-	if (find(excengs.begin(), excengs.end(), id_) != excengs.end())
-		return false;
-
-	return true;
-}
-
-
-bool LyXCiteEngine::areCompatible(string const & eng1, string const & eng2)
-{
-	LyXCiteEngine const * const lm1 = theCiteEnginesList[eng1];
-	if (lm1)
-		return lm1->isCompatible(eng2);
-	LyXCiteEngine const * const lm2 = theCiteEnginesList[eng2];
-	if (lm2)
-		return lm2->isCompatible(eng1);
-	// Can't check it either way.
-	return true;
 }
 
 
@@ -273,29 +238,9 @@ bool CiteEnginesList::read()
 				str = split(str, p, ',');
 				pkgs.push_back(p);
 			}
-			if (!lex.next())
-				break;
-			str = lex.getString();
-			LYXERR(Debug::TCLASS, "Required: " << str);
-			vector<string> req;
-			while (!str.empty()) {
-				string p;
-				str = split(str, p, '|');
-				req.push_back(p);
-			}
-			if (!lex.next())
-				break;
-			str = lex.getString();
-			LYXERR(Debug::TCLASS, "Excluded: " << str);
-			vector<string> exc;
-			while (!str.empty()) {
-				string p;
-				str = split(str, p, '|');
-				exc.push_back(p);
-			}
 			// This code is run when we have
-			// cename, fname, desc, pkgs, req and exc
-			addCiteEngine(cename, fname, cets, citeframework, dbs, desc, pkgs, req, exc);
+			// cename, fname, cets, citeframework, dbs, desc, pkgs
+			addCiteEngine(cename, fname, cets, citeframework, dbs, desc, pkgs);
 		} // end switch
 	} //end while
 
@@ -310,10 +255,9 @@ bool CiteEnginesList::read()
 void CiteEnginesList::addCiteEngine(string const & cename,
 	string const & filename, vector<string> const & cets,
 	string const & citeframework, vector<string> const & dbs,
-	string const & description, vector<string> const & pkgs,
-	vector<string> const & req, vector<string> const & exc)
+	string const & description, vector<string> const & pkgs)
 {
-	LyXCiteEngine ce(cename, filename, cets, citeframework, dbs, description, pkgs, req, exc);
+	LyXCiteEngine ce(cename, filename, cets, citeframework, dbs, description, pkgs);
 	englist_.push_back(ce);
 }
 
