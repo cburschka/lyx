@@ -82,7 +82,8 @@ public:
 		// macro arguments are in macros
 		LATTEST(mathMacro_->nesting() > 0);
 		/// The macro nesting can change display of insets. Change it locally.
-		Changer chg = make_change(mi.base.macro_nesting, mathMacro_->nesting());
+		Changer chg = make_change(mi.base.macro_nesting,
+		                          mathMacro_->nesting() == 1 ? 0 : mathMacro_->nesting());
 
 		MathRow::Element e_beg(MathRow::BEG_ARG);
 		e_beg.macro = mathMacro_;
