@@ -188,10 +188,7 @@ Linguistik
 
  aus der Liste der verfügbaren Module und drücken auf den Knopf 
 \family sans
-\bar under
-H
-\bar default
-inzufügen
+Hinzufügen
 \family default
  (so wie es für dieses Dokument bereits getan wurde).
 \end_layout
@@ -284,10 +281,6 @@ Bedeutung
 .
  Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -469,11 +462,6 @@ Das Linguistikmodul stellt zwei Arten von Glossen zur Verfügung.
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen
-\begin_inset space ~
-\end_inset
-
-\SpecialChar ldots
-
 \family default
  zugänglich.
  Die einfache 

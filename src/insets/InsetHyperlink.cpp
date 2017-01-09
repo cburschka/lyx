@@ -22,6 +22,7 @@
 #include "LaTeXFeatures.h"
 #include "OutputParams.h"
 #include "output_xhtml.h"
+#include "sgml.h"
 #include "texstream.h"
 
 #include "support/docstream.h"
@@ -233,7 +234,7 @@ int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 	os << "<ulink url=\""
 	   << subst(getParam("target"), from_ascii("&"), from_ascii("&amp;"))
 	   << "\">"
-	   << getParam("name")
+	   << sgml::escapeString(getParam("name"))
 	   << "</ulink>";
 	return 0;
 }
