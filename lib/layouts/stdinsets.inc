@@ -8,6 +8,13 @@ Format 62
 
 Provides stdinsets 1
 
+OutlinerName marginalnote "Marginal notes"
+OutlinerName footnote     "Footnotes"
+OutlinerName note         "Notes"
+OutlinerName branch       "Branches"
+OutlinerName index        "Index Entries" #no AddToToc (built-in)
+OutlinerName listing      "Listings" #no AddToToc (built-in)
+
 InsetLayout Marginal
 	LabelString           margin
 	LatexType             command
@@ -35,6 +42,8 @@ InsetLayout Marginal
 			font-style: normal;
 		}
 	EndHTMLStyle
+	AddToToc              marginalnote
+	IsTocCaption          true
 End
 
 InsetLayout Foot
@@ -76,6 +85,8 @@ InsetLayout Foot
 			padding: 1em;
 		}
 	EndHTMLStyle
+	AddToToc              footnote
+	IsTocCaption          true
 End
 
 InsetLayout Foot:InTitle
@@ -130,6 +141,8 @@ InsetLayout Note:Comment
 		display: none;
 	}
 	EndHTMLStyle
+	AddToToc              note
+	IsTocCaption          true
 End
 
 
@@ -144,6 +157,8 @@ InsetLayout Note:Note
 	EndFont
 	MultiPar              true
 	# Not output for XHTML
+	AddToToc              note
+	IsTocCaption          true
 End
 
 
@@ -172,6 +187,8 @@ InsetLayout Note:Greyedout
 		}
 	EndHTMLStyle
 	HTMLIsBlock           false
+	AddToToc              note
+	IsTocCaption          true
 End
 
 InsetLayout ERT
@@ -338,6 +355,8 @@ InsetLayout Branch
 	MultiPar              true
 	InToc                 true
 	HTMLIsBlock           false
+	AddToToc              branch
+	IsTocCaption          true
 End
 
 InsetLayout Index

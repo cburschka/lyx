@@ -38,25 +38,31 @@ class Buffer;
  * I leave this for documentation purposes for the moment.
  *
 enum TocType {
+// Non-customizable (does not use TocBuilder)
+	//The following is used for XHTML output
 	TABLE_OF_CONTENTS,//"tableofcontents"
+	CHANGE,//"change"
+	//The following is used for XHTML output
+	CITATION,//"citation"
+	LABEL,//"label"
+	SENSELESS,//"senseless"
+// Built-in but customizable
 	CHILD,//"child"
 	GRAPHICS,//"graphics"
-	NOTE,//"note"
-	BRANCH,//"branch"
-	CHANGE,//"change"
-	LABEL,//"label"
-	CITATION,//"citation"
 	EQUATION,//"equation"
-	FOOTNOTE,//"footnote"
-	MARGINAL_NOTE,//"marginalnote"
 	INDEX,//"index", "index:<user-str>" (from interface)
 	NOMENCL,//"nomencl"
 	LISTING,//"listings"
+	//The following are used for XHTML output
 	FLOAT,//"figure", "table", "algorithm", user-defined (from layout?)
 	MATH_MACRO,//"math-macro"
 	EXTERNAL,//"external"
-	SENSELESS,//"senseless"
-	TOC_TYPE_COUNT
+// Defined in layouts
+	NOTE,//"note"
+	FOOTNOTE,//"footnote"
+	MARGINAL_NOTE,//"marginalnote"
+	BRANCH,//"branch"
+	USER_DEFINED //any value defined in the layouts
 }
  */
 
@@ -119,14 +125,16 @@ private:
 class TocBuilder
 {
 public:
-	TocBuilder(std::shared_ptr<Toc> const toc);
-	/// When entering a float
+	TocBuilder(std::shared_ptr<Toc> toc);
+	/// When entering a float or flex or paragraph (with AddToToc)
 	void pushItem(DocIterator const & dit, docstring const & s,
 	              bool output_active, bool is_captioned = false);
-	/// When encountering a caption
+	/// When encountering a float caption
 	void captionItem(DocIterator const & dit, docstring const & s,
 	                 bool output_active);
-	/// When exiting a float
+	/// When encountering an argument (with isTocCaption) for flex or paragraph
+	void argumentItem(docstring const & arg_str);
+	/// When exiting a float or flex or paragraph
 	void pop();
 private:
 	TocBuilder(){}
@@ -180,6 +188,9 @@ public:
 	        odocstringstream & os, size_t max_length) const;
 	///
 	docstring outlinerName(std::string const & type) const;
+	/// Whether a toc type is less important and appears in the "Other lists"
+	/// submenu
+	static bool isOther(std::string const & type);
 
 private:
 	///

@@ -141,7 +141,9 @@ void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active,
 							UpdateType) const
 {
 	docstring const str = getParam("symbol");
-	buffer().tocBackend().toc("nomencl")->push_back(TocItem(cpit, 0, str, output_active));
+	TocBuilder & b = buffer().tocBackend().builder("nomencl");
+	b.pushItem(cpit, str, output_active);
+	b.pop();
 }
 
 

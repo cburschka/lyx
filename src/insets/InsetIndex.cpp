@@ -361,9 +361,11 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active,
 		type += ":" + to_utf8(params_.index);
 	// this is unlikely to be terribly long
 	text().forOutliner(str, INT_MAX);
-	buffer().tocBackend().toc(type)->push_back(TocItem(pit, 0, str, output_active));
+	TocBuilder & b = buffer().tocBackend().builder(type);
+	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit, output_active, utype);
+	b.pop();
 }
 
 

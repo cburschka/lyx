@@ -35,9 +35,6 @@ public:
 	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;
-	///
-	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
 	/// Is the content of this inset part of the immediate (visible) text sequence?
 	bool isPartOfTextSequence() const { return false; }
 private:

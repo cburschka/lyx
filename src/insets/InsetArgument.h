@@ -81,6 +81,9 @@ public:
 	///
 	void setButtonLabel();
 	//@}
+	///
+	void addToToc(DocIterator const & dit, bool output_active,
+	              UpdateType utype) const; //override
 
 private:
 	///
@@ -105,6 +108,8 @@ private:
 	bool pass_thru_;
 	///
 	docstring pass_thru_chars_;
+	/// The type of Toc this is the caption of, empty otherwise.
+	std::string caption_of_toc_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

@@ -344,15 +344,42 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 		return;
 	}
 
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("equation");
-
+	TocBuilder & b = buffer().tocBackend().builder("equation");
+	// compute first and last item
+	row_type first = nrows();
+	for (row_type row = 0; row != nrows(); ++row)
+		if (numbered(row)) {
+			first = row;
+			break;
+		}
+	if (first == nrows())
+		// no equation
+		return;
+	row_type last = nrows() - 1;
+	for (; last != 0; --last)
+		if (numbered(last))
+			break;
+	// add equation numbers
+	b.pushItem(pit, docstring(), output_active);
+	if (first != last)
+		b.argumentItem(bformat(from_ascii("(%1$s-%2$s)"),
+		                       numbers_[first], numbers_[last]));
 	for (row_type row = 0; row != nrows(); ++row) {
 		if (!numbered(row))
 			continue;
 		if (label_[row])
 			label_[row]->addToToc(pit, output_active, utype);
-		toc->push_back(TocItem(pit, 0, nicelabel(row), output_active));
+		docstring label = nicelabel(row);
+		if (first == last)
+			// this is the only equation
+			b.argumentItem(label);
+		else {
+			// insert as sub-items
+			b.pushItem(pit, label, output_active);
+			b.pop();
+		}
 	}
+	b.pop();
 }
 
 

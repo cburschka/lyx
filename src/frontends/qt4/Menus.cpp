@@ -351,6 +351,7 @@ public:
 	void expandFloatListInsert(Buffer const * buf);
 	void expandFloatInsert(Buffer const * buf);
 	void expandFlexInsert(Buffer const * buf, InsetLayout::InsetLyXType type);
+	void expandTocSubmenu(std::string const & type, Toc const & toc_list);
 	void expandToc2(Toc const & toc_list, size_t from, size_t to, int depth, string toc_type);
 	void expandToc(Buffer const * buf);
 	void expandPasteRecent(Buffer const * buf);
@@ -1310,7 +1311,6 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-	FloatList const & floatlist = buf->params().documentClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
 	TocList::const_iterator end = toc_list.end();
@@ -1319,16 +1319,11 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (cit->first == "tableofcontents" || cit->second->empty())
 			continue;
 		MenuDefinition submenu;
-		// "Open outliner..." entry
-		FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
-		submenu.add(MenuItem(MenuItem::Command, qt_("Open Outliner..."), f));
-		submenu.add(MenuItem(MenuItem::Separator));
-		// add entries
-		submenu.expandToc2(*cit->second, 0, cit->second->size(), 0, cit->first);
+		submenu.expandTocSubmenu(cit->first, *cit->second);
 		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
-		if (floatlist.typeExist(cit->first) || cit->first == "child")
+		if (!TocBackend::isOther(cit->first))
 			add(item);
 		else
 			other_lists.add(item);
@@ -1350,6 +1345,17 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		else
 			add(MenuItem(MenuItem::Info, qt_("(Empty Table of Contents)")));
 	}
+}
+
+
+void MenuDefinition::expandTocSubmenu(std::string const & type, Toc const & toc)
+{
+	// "Open outliner..." entry
+	FuncRequest f(LFUN_DIALOG_SHOW, "toc " + type);
+	add(MenuItem(MenuItem::Command, qt_("Open Outliner..."), f));
+	add(MenuItem(MenuItem::Separator));
+	// add entries
+	expandToc2(toc, 0, toc.size(), 0, type);
 }
 
 

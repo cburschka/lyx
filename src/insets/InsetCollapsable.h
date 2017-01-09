@@ -75,6 +75,8 @@ public:
 	///
 	void setLabel(docstring const & l);
 	///
+	docstring getLabel() const;
+	///
 	virtual void setButtonLabel() {}
 	///
 	virtual docstring const buttonLabel(BufferView const &) const;
@@ -148,6 +150,10 @@ public:
 	std::string contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	std::string contextMenuName() const;
+	///
+	void addToToc(DocIterator const & dit, bool output_active,
+	              UpdateType utype) const; //override
+
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

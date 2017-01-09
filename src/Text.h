@@ -130,9 +130,13 @@ public:
 		
 	/// Appends a possibly abbreviated representation of our text to \param os,
 	/// where \param maxlen defines the maximum size of \param os. If \param
-	/// shorten is true, then os is shortened as above
-	void forOutliner(docstring & os, size_t const maxlen,
-					 bool const shorten = true) const;
+	/// shorten is true, then os is shortened as above.
+	void forOutliner(docstring & os, size_t maxlen, bool shorten = true) const;
+	/// Appends a possibly abbreviated representation of our text, from
+	/// start to end, to \param os, where \param maxlen defines the
+	/// maximum size of \param os. Omits the label of the first paragraph.
+	void forOutliner(docstring & os, size_t maxlen, pit_type start, pit_type end,
+	                 bool shorten = true) const;
 
 	/// insert a character at cursor position
 	/// FIXME: replace Cursor with DocIterator.
@@ -329,6 +333,9 @@ public:
 	pit_type outerHook(pit_type pit) const;
 	/// Is it the first par with same depth and layout?
 	bool isFirstInSequence(pit_type pit) const;
+	/// Return the last paragraph with same depth and layout, or a strictly
+	/// greater depth
+	pit_type lastInSequence(pit_type pit) const;
 	/// Is this paragraph in the table of contents?
 	int getTocLevel(pit_type pit) const;
 	/// Get the font of the "environment" of paragraph \p par_offset in \p pars.

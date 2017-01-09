@@ -24,6 +24,7 @@
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
+#include "TocBackend.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -576,11 +577,18 @@ void InsetCollapsable::setLabel(docstring const & l)
 }
 
 
+docstring InsetCollapsable::getLabel() const
+{
+	InsetLayout const & il = getLayout();
+	return labelstring_.empty() ?
+		translateIfPossible(il.labelstring()) : labelstring_;
+}
+
+
 docstring const InsetCollapsable::buttonLabel(BufferView const & bv) const
 {
 	InsetLayout const & il = getLayout();
-	docstring const label = labelstring_.empty() ?
-		translateIfPossible(il.labelstring()) : labelstring_;
+	docstring const label = getLabel();
 	if (!il.contentaslabel() || geometry(bv) != ButtonOnly)
 		return label;
 	return getNewLabel(label);
@@ -651,6 +659,32 @@ bool InsetCollapsable::canPaintChange(BufferView const & bv) const
 	}
 	return true;
 }
+
+
+void InsetCollapsable::addToToc(DocIterator const & cpit, bool output_active,
+                                UpdateType utype) const
+{
+	bool doing_output = output_active && producesOutput();
+	InsetLayout const & layout = getLayout();
+	if (layout.addToToc()) {
+		TocBuilder & b = buffer().tocBackend().builder(layout.tocType());
+		// Cursor inside the inset
+		DocIterator pit = cpit;
+		pit.push_back(CursorSlice(const_cast<InsetCollapsable &>(*this)));
+		docstring const label = getLabel();
+		b.pushItem(pit, label + (label.empty() ? "" : ": "), output_active);
+		// Proceed with the rest of the inset.
+		InsetText::addToToc(cpit, doing_output, utype);
+		if (layout.isTocCaption()) {
+			docstring str;
+			text().forOutliner(str, TOC_ENTRY_LENGTH);
+			b.argumentItem(str);
+		}
+		b.pop();
+	} else
+		InsetText::addToToc(cpit, doing_output, utype);
+}
+
 
 
 } // namespace lyx

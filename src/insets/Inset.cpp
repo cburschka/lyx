@@ -31,6 +31,7 @@
 #include "output_xhtml.h"
 #include "Text.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "frontends/Application.h"
 #include "frontends/Painter.h"

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 515
+\lyxformat 527
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -78,7 +78,8 @@ logicalmkup
 \tocdepth 4
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -766,7 +767,7 @@ updatedocs.py
 \end_layout
 
 \begin_layout Standard
-Note that we do not automatically any local layout used in the 
+Note that we do not automatically update any local layout used in the 
 \begin_inset Flex Code
 status collapsed
 

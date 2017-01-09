@@ -88,8 +88,7 @@ private:
 	///
 	std::string contextMenuName() const;
 	///
-	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+	void updateBuffer(ParIterator const & it, UpdateType utype);
 	///
 	void setParams(InsetBranchParams const & params) { params_ = params; }
 

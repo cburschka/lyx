@@ -75,24 +75,6 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetFoot::addToToc(DocIterator const & cpit, bool output_active,
-						 UpdateType utype) const
-{
-	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(const_cast<InsetFoot &>(*this)));
-	
-	docstring str;
-	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	str = custom_label_ + ": " + str;
-	
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("footnote");
-	toc->push_back(TocItem(pit, 0, str, output_active));
-	
-	// Proceed with the rest of the inset.
-	InsetFootlike::addToToc(cpit, output_active, utype);
-}
-
-
 docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (isOpen(bv))

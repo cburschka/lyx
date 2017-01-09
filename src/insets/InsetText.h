@@ -223,6 +223,13 @@ protected:
 	void iterateForToc(DocIterator const & cdit, bool output_active,
 					   UpdateType utype) const;
 private:
+	/// Open the toc item for paragraph pit. Returns the paragraph index where
+	/// it should end.
+	pit_type openAddToTocForParagraph(pit_type pit,
+	                                  DocIterator const & dit,
+	                                  bool output_active) const;
+	/// Close a toc item opened in start and closed in end
+	void closeAddToTocForParagraph(pit_type start, pit_type end) const;
 	///
 	bool drawFrame_;
 	///

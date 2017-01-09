@@ -39,9 +39,6 @@ private:
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
-	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	Inset * clone() const { return new InsetFoot(*this); }

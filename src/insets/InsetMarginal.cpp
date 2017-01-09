@@ -52,19 +52,4 @@ int InsetMarginal::docbook(odocstream & os,
 }
 
 
-void InsetMarginal::addToToc(DocIterator const & cpit, bool output_active,
-				  UpdateType utype) const
-{
-	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(const_cast<InsetMarginal &>(*this)));
-
-	docstring str;
-	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	std::shared_ptr<Toc> toc = buffer().tocBackend().toc("marginalnote");
-	toc->push_back(TocItem(pit, 0, str, output_active));
-
-	// Proceed with the rest of the inset.
-	InsetFootlike::addToToc(cpit, output_active, utype);
-}
-
 } // namespace lyx

@@ -1,4 +1,4 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 508
 \begin_document
 \begin_header
@@ -81,28 +81,44 @@ sweave
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897614
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-%
-\backslash
-SweaveOpts{prefix=TRUE,prefix.string=sweave-prefix,keep.source=FALSE}
+\change_inserted 2047637253 1483897614
+\begin_inset Flex Sweave Options
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897614
+
+prefix=TRUE,prefix.string=sweave-prefix,keep.source=FALSE
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -239,6 +255,27 @@ https://github.com/downloads/yihui/lyx/sweave.pdf
 \end_inset
 
 .
+\change_inserted 2047637253 1483898587
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2047637253 1483899123
+Since \SpecialChar LyX
+ 2.3, it is necessary to enable the use of 
+\emph on
+needauth
+\emph default
+ converters in
+\family sans
+ Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters
+\family default
+ in order to compile with Sweave.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -306,26 +343,40 @@ bin
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897627
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<where-is-R-bin,eval=FALSE>>=
-\end_layout
+\change_inserted 2047637253 1483897627
+
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-R.home('bin')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
+\change_inserted 2047637253 1483897627
+where-is-R-bin,eval=FALSE
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897627
+
+R.home('bin')
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -361,26 +412,40 @@ Sweave.sty
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897639
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<sweave-sty,eval=FALSE>>=
-\end_layout
+\change_inserted 2047637253 1483897639
+
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-file.path(R.home('share'), 'texmf', 'tex', 'latex')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
+\change_inserted 2047637253 1483897639
+sweave-sty,eval=FALSE
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897639
+
+file.path(R.home('share'), 'texmf', 'tex', 'latex')
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -455,15 +520,54 @@ echo=FALSE
 
 \begin_layout Standard
 To write R code in \SpecialChar LyX
-, you can first switch to the 
+, you can first 
+\change_inserted 2047637253 1483898412
+insert 
+\change_deleted 2047637253 1483898419
+switch to the 
+\change_unchanged
+
 \family typewriter
 Chunk
 \family default
- environment in the layout styles list (droplist in the top-left corner
- in the toolbar), or you can simply open a \SpecialChar TeX
- code environment and write Sweave
- code chunks in it.
- The latter approach is recommended since it is more stable.
+ 
+\change_inserted 2047637253 1483898437
+insets from 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+Chunk
+\change_deleted 2047637253 1483898459
+
+\family default
+environment in the layout styles list (droplist in the top-left corner in
+ the toolbar)
+\change_unchanged
+, or you can simply open a \SpecialChar TeX
+ code environment and write Sweave code chunks
+ in it.
+ 
+\change_deleted 2047637253 1483898024
+The latter approach is recommended since it is more stable.
+\change_inserted 2047637253 1483961753
+However, \SpecialChar LyX
+ provides a summary of all the 
+\family typewriter
+Chunk
+\family default
+ insets in the document in the 
+\family sans
+Navigate\SpecialChar menuseparator
+Literate Programming
+\family default
+ and 
+\family sans
+View\SpecialChar menuseparator
+Outline Pane
+\family default
+ menus.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -483,51 +587,90 @@ useFancyQuotes
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897653
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<setup, keep.source=TRUE>>=
+\change_inserted 2047637253 1483897653
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897653
+setup, keep.source=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897653
 
 ## the option 'digits' can set the (approximate) number of digits
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897653
+
 options(width = 70, useFancyQuotes = FALSE, digits = 4)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2047637253 1483897653
+\begin_inset Flex Chunk
+status open
+
 \begin_layout Plain Layout
 
-@
+\change_inserted 2047637253 1483897653
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897653
+sweave-manual, eval=FALSE, keep.source=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
-<<sweave-manual, eval=FALSE, keep.source=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
+\change_inserted 2047637253 1483897653
 
 ## view the Sweave vignette (requires R >= 2.13.0)
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897653
+
 vignette("Sweave", package = "utils")
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -536,51 +679,90 @@ A simple example that will run in any S engine:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897659
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<print-integers, keep.source=TRUE>>=
+\change_inserted 2047637253 1483897659
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897659
+print-integers, keep.source=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897659
 
 ## the integers from 1 to 10 are
 \end_layout
 
 \begin_layout Plain Layout
 
-1:10 
+\change_inserted 2047637253 1483897659
+
+1:10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 2047637253 1483897659
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897659
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897659
+hide-results, results=hide
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-<<hide-results, results=hide>>=
-\end_layout
-
-\begin_layout Plain Layout
+\change_inserted 2047637253 1483897659
 
 ## intentionally hide the output by setting results=hide
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897659
+
 print(1:20)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -589,31 +771,47 @@ We can also emulate a simple calculator:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897665
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<calculator>>=
+\change_inserted 2047637253 1483897665
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897665
+calculator
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897665
 
 1 + pi
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897665
+
 sin(pi/6)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -622,41 +820,61 @@ Now we look at some Gaussian data:
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897670
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<rnorm>>=
+\change_inserted 2047637253 1483897670
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897670
+rnorm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897670
 
 set.seed(123)  # for reproducibility
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897670
+
 x <- rnorm(20)
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897670
 
 print(x)
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897670
+
 t1 <- t.test(x)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -753,26 +971,40 @@ iris
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897677
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-summary>>=
-\end_layout
+\change_inserted 2047637253 1483897677
+
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-summary(iris[,-5])
-\end_layout
-
-\begin_layout Plain Layout
-
-@
+\change_inserted 2047637253 1483897677
+iris-summary
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897677
+
+summary(iris[,-5])
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -803,45 +1035,59 @@ name "tab:xtable-demo"
 \end_inset
 
 
-\end_layout
+\change_inserted 2047637253 1483897685
 
-\begin_layout Plain Layout
-\align center
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897698
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897692
+xtable-demo,results=tex,echo=FALSE
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
-<<xtable-demo,results=tex,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
+\change_inserted 2047637253 1483897699
 
 if (require('xtable')) {
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897699
+
 print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897699
+
 } else cat('the xtable package is not available! please install.packages("xtable"
 )')
-\end_layout
+\change_unchanged
 
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -925,26 +1171,48 @@ Both eps and pdf are set to true so that both latex and pdflatex work.
 \end_inset
 
 
-\begin_inset ERT
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 2047637253 1483897765
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE>>=
-\end_layout
+\change_inserted 2047637253 1483897772
+
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-pairs(iris, col = iris$Species)
-\end_layout
+\change_inserted 2047637253 1483897770
+iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE
+\change_unchanged
 
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897776
+
+pairs(iris, col = iris$Species)
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -984,31 +1252,47 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
+
+\change_inserted 2047637253 1483897883
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T>>=
+\change_inserted 2047637253 1483897883
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897883
+iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 2047637253 1483897883
 
 par(mar=c(4,5,.1,.3), las=1)
 \end_layout
 
 \begin_layout Plain Layout
 
+\change_inserted 2047637253 1483897883
+
 boxplot(Sepal.Length~Species,data=iris,horizontal=TRUE,xlab='Sepal.Length')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -1049,6 +1333,8 @@ R/S code
 R CMD Stangle
 \family default
 .
+\change_inserted 2047637253 1483898877
+
 \end_layout
 
 \begin_layout Section
@@ -1408,8 +1694,17 @@ label=
 \end_layout
 
 \begin_layout Standard
-Another known issue is the Sweave code chunk may fail when we change the
- alignment of the chunk paragraph in \SpecialChar LyX
+Another 
+\change_deleted 2047637253 1483899012
+known
+\change_unchanged
+ issue 
+\change_inserted 2047637253 1483898966
+with the \SpecialChar TeX
+ code environment 
+\change_unchanged
+is the Sweave code chunk may fail when we change the alignment of the chunk
+ paragraph in \SpecialChar LyX
  (using 
 \family sans
 Paragraph settings
@@ -1461,7 +1756,16 @@ This is not a legitimate Sweave code chunk, since
 <<>>=
 \family default
  must start in a new line with nothing before it.
- Therefore we recommend you to double check the real source code via 
+
+\change_inserted 2047637253 1483899083
+ This does not happen when using the Chunk inset instead of the \SpecialChar TeX
+ code environmen
+t.
+
+\change_unchanged
+ 
+\change_deleted 2047637253 1483898988
+Therefore we recommend you to double check the real source code via 
 \family sans
 View\SpecialChar menuseparator
 View Source
@@ -1480,6 +1784,8 @@ reference "tab:xtable-demo"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

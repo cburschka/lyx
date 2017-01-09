@@ -27,7 +27,7 @@
 #include "ParIterator.h"
 #include "TextClass.h"
 
-#include "insets/InsetArgument.h"
+#include "insets/InsetText.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -193,6 +193,18 @@ void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
 	}
 }
 
+void TocBuilder::argumentItem(docstring const & arg_str)
+{
+	if (stack_.empty() || arg_str.empty())
+		return;
+	TocItem & item = (*toc_)[stack_.top().pos];
+	docstring const & str = item.str();
+	string const & delim =
+		(str.empty() || !stack_.top().is_captioned) ? "" :  ", ";
+	item.str(str + from_ascii(delim) + arg_str);
+	stack_.top().is_captioned = true;
+}
+
 void TocBuilder::pop()
 {
 	if (!stack_.empty())
@@ -336,6 +348,28 @@ docstring TocBackend::outlinerName(string const & type) const
 {
 	return translateIfPossible(
 	    buffer_->params().documentClass().outlinerName(type));
+}
+
+
+bool TocBackend::isOther(std::string const & type)
+{
+	// This is where having an Enum of types would have been more elegant...
+	return type == "graphics"
+		|| type == "note"
+		|| type == "branch"
+		|| type == "change"
+		|| type == "label"
+		|| type == "citation"
+		|| type == "equation"
+		|| type == "footnote"
+		|| type == "marginalnote"
+		|| type == "nomencl"
+		|| type == "listings"
+		|| type == "math-macro"
+		|| type == "external"
+		|| type == "senseless"
+		|| type == "index"
+		|| type.substr(0,6) == "index:";
 }
 
 
