@@ -19,11 +19,10 @@
 #include "FuncRequest.h"
 #include "OutputEnums.h"
 #include "Toc.h"
+#include "TocBuilder.h"
 
 #include "support/strfwd.h"
 #include "support/unique_ptr.h"
-
-#include <stack>
 
 
 namespace lyx {
@@ -54,9 +53,6 @@ class Buffer;
 */
 class TocItem
 {
-	friend class TocBackend;
-	friend class TocBuilder;
-
 public:
 	/// Default constructor for STL containers.
 	TocItem() : dit_(0), depth_(0), output_(false) {}
@@ -68,31 +64,28 @@ public:
 		FuncRequest action = FuncRequest(LFUN_UNKNOWN_ACTION)
 		);
 	///
-	~TocItem() {}
-	///
-	int id() const;
+	DocIterator const & dit() const { return dit_; }
 	///
 	int depth() const { return depth_; }
 	///
 	docstring const & str() const { return str_; }
 	///
 	void str(docstring const & s) { str_ = s; }
-	/// String for display, e.g. it has a mark if output is inactive
-	docstring const asString() const;
-	///
-	DocIterator const & dit() const { return dit_; }
 	///
 	bool isOutput() const { return output_; }
 	///
 	void setAction(FuncRequest a) { action_ = a; }
+
 	/// custom action, or the default one (paragraph-goto) if not customised
 	FuncRequest action() const;
-
-protected:
-	/// Current position of item.
-	DocIterator dit_;
+	///
+	int id() const;
+	/// String for display, e.g. it has a mark if output is inactive
+	docstring const asString() const;
 
 private:
+	/// Current position of item.
+	DocIterator dit_;
 	/// nesting depth
 	int depth_;
 	/// Full item string
@@ -101,35 +94,6 @@ private:
 	bool output_;
 	/// Custom action
 	FuncRequest action_;
-};
-
-
-/// Caption-enabled TOC builders
-class TocBuilder
-{
-public:
-	TocBuilder(std::shared_ptr<Toc> toc);
-	/// When entering a float or flex or paragraph (with AddToToc)
-	void pushItem(DocIterator const & dit, docstring const & s,
-	              bool output_active, bool is_captioned = false);
-	/// When encountering a float caption
-	void captionItem(DocIterator const & dit, docstring const & s,
-	                 bool output_active);
-	/// When encountering an argument (with isTocCaption) for flex or paragraph
-	void argumentItem(docstring const & arg_str);
-	/// When exiting a float or flex or paragraph
-	void pop();
-private:
-	TocBuilder(){}
-	///
-	struct frame {
-		Toc::size_type pos;
-		bool is_captioned;
-	};
-	///
-	std::shared_ptr<Toc> const toc_;
-	///
-	std::stack<frame> stack_;
 };
 
 

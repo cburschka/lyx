@@ -17,19 +17,12 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
-#include "Cursor.h"
-#include "FloatList.h"
-#include "FuncRequest.h"
 #include "InsetList.h"
-#include "Layout.h"
-#include "LyXAction.h"
 #include "Paragraph.h"
-#include "ParIterator.h"
 #include "TextClass.h"
 
 #include "insets/InsetText.h"
 
-#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/gettext.h"
@@ -74,22 +67,11 @@ docstring const TocItem::asString() const
 	return prefix + str_;
 }
 
-namespace {
-
-// convert a DocIterator into an argument to LFUN_PARAGRAPH_GOTO 
-docstring paragraph_goto_arg(DocIterator const & dit)
-{
-	CursorSlice const & s = dit.innerTextSlice();
-	return convert<docstring>(s.paragraph().id()) + ' ' +
-		convert<docstring>(s.pos());
-}
-
-} // namespace anon
 
 FuncRequest TocItem::action() const
 {
 	if (action_.action() == LFUN_UNKNOWN_ACTION) {
-		return FuncRequest(LFUN_PARAGRAPH_GOTO, paragraph_goto_arg(dit_));
+		return FuncRequest(LFUN_PARAGRAPH_GOTO, dit_.paragraphGotoArgument());
 	} else
 		return action_;
 }
@@ -97,7 +79,7 @@ FuncRequest TocItem::action() const
 
 ///////////////////////////////////////////////////////////////////////////
 //
-// Toc implementation
+// TocBackend implementation
 //
 ///////////////////////////////////////////////////////////////////////////
 
@@ -115,9 +97,9 @@ Toc::const_iterator TocBackend::findItem(Toc const & toc,
 		// We verify that we don't compare contents of two
 		// different document. This happens when you
 		// have parent and child documents.
-		if (&it->dit_[0].inset() != &dit_text[0].inset())
+		if (&it->dit()[0].inset() != &dit_text[0].inset())
 			continue;
-		if (it->dit_ <= dit_text)
+		if (it->dit() <= dit_text)
 			return it;
 	}
 
@@ -139,85 +121,6 @@ Toc::iterator TocBackend::findItem(Toc & toc, int depth, docstring const & str)
 	return it;
 }
 
-
-///////////////////////////////////////////////////////////////////////////
-//
-// TocBuilder implementation
-//
-///////////////////////////////////////////////////////////////////////////
-
-TocBuilder::TocBuilder(shared_ptr<Toc> toc)
-	: toc_(toc ? toc : make_shared<Toc>()),
-	  stack_()
-{
-	LATTEST(toc);
-}
-
-void TocBuilder::pushItem(DocIterator const & dit, docstring const & s,
-                          bool output_active, bool is_captioned)
-{
-	toc_->push_back(TocItem(dit, stack_.size(), s, output_active));
-	frame f = {
-		toc_->size() - 1, //pos
-		is_captioned, //is_captioned
-	};
-	stack_.push(f);
-}
-
-void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
-                             bool output_active)
-{
-	// first show the float before moving to the caption
-	docstring arg = "paragraph-goto " + paragraph_goto_arg(dit);
-	if (!stack_.empty())
-		arg = "paragraph-goto " +
-			paragraph_goto_arg((*toc_)[stack_.top().pos].dit_) + ";" + arg;
-	FuncRequest func(LFUN_COMMAND_SEQUENCE, arg);
-
-	if (!stack_.empty() && !stack_.top().is_captioned) {
-		// The float we entered has not yet been assigned a caption.
-		// Assign the caption string to it.
-		TocItem & captionable = (*toc_)[stack_.top().pos];
-		captionable.str(s);
-		captionable.setAction(func);
-		stack_.top().is_captioned = true;
-	} else {
-		// This is a new entry.
-		pop();
-		// the dit is at the float's level, e.g. for the contextual menu of
-		// outliner entries
-		DocIterator captionable_dit = dit;
-		captionable_dit.pop_back();
-		pushItem(captionable_dit, s, output_active, true);
-		(*toc_)[stack_.top().pos].setAction(func);
-	}
-}
-
-void TocBuilder::argumentItem(docstring const & arg_str)
-{
-	if (stack_.empty() || arg_str.empty())
-		return;
-	TocItem & item = (*toc_)[stack_.top().pos];
-	docstring const & str = item.str();
-	string const & delim =
-		(str.empty() || !stack_.top().is_captioned) ? "" :  ", ";
-	item.str(str + from_ascii(delim) + arg_str);
-	stack_.top().is_captioned = true;
-}
-
-void TocBuilder::pop()
-{
-	if (!stack_.empty())
-		stack_.pop();
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////
-//
-// TocBackend implementation
-//
-///////////////////////////////////////////////////////////////////////////
 
 shared_ptr<Toc const> TocBackend::toc(string const & type) const
 {
@@ -276,7 +179,7 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 	//
 	// FIXME: This is supposed to accomplish the same as the body of
 	// InsetText::iterateForToc(), probably
-	Paragraph & par = toc_item->dit_.paragraph();
+	Paragraph & par = toc_item->dit().paragraph();
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
@@ -290,8 +193,8 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 		}
 	}
 
-	int const toclevel = toc_item->dit_.text()->
-		getTocLevel(toc_item->dit_.pit());
+	int const toclevel = toc_item->dit().text()->
+		getTocLevel(toc_item->dit().pit());
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
 		par.forOutliner(tocstring, TOC_ENTRY_LENGTH);
