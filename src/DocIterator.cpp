@@ -26,6 +26,7 @@
 
 #include "insets/InsetTabular.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"
@@ -207,7 +208,7 @@ FontSpan DocIterator::locateWord(word_location const loc) const
 	return f;
 }
 
-	
+
 CursorSlice const & DocIterator::innerTextSlice() const
 {
 	LBUFERR(!empty());
@@ -223,6 +224,14 @@ CursorSlice const & DocIterator::innerTextSlice() const
 	// Squash warning
 	static const CursorSlice c;
 	return c;
+}
+
+
+docstring DocIterator::paragraphGotoArgument() const
+{
+	CursorSlice const & s = innerTextSlice();
+	return convert<docstring>(s.paragraph().id()) + ' ' +
+		convert<docstring>(s.pos());
 }
 
 

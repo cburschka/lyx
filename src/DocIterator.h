@@ -165,6 +165,8 @@ public:
 	Paragraph & innerParagraph() const;
 	/// return the inner text slice.
 	CursorSlice const & innerTextSlice() const;
+	// convert a DocIterator into an argument to LFUN_PARAGRAPH_GOTO
+	docstring paragraphGotoArgument() const;
 	/// returns a DocIterator for the containing text inset
 	DocIterator getInnerText() const;
 	/// the first and last positions of a word at top cursor slice
