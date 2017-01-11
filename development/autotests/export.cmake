@@ -24,12 +24,14 @@
 #       -Dfile=xxx \
 #       -Dinverted=[01] \
 #       -DTOP_SRC_DIR=${TOP_SRC_DIR} \
+#       -DIgnoreErrorMessage=(ON/OFF) \
 #       -DPERL_EXECUTABLE=${PERL_EXECUTABLE} \
 #       -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE} \
 #       -DENCODING=xxx \
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
 #
 
+message(STATUS "IgnoreErrorMessage = ${IgnoreErrorMessage}")
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
 set(Structure_Script "${TOP_SRC_DIR}/development/autotests/beginEndStructureCheck.pl")
 set(LanguageFile "${TOP_SRC_DIR}/lib/languages")
@@ -139,14 +141,20 @@ if (extension MATCHES "\\.lyx$")
   endforeach()
 else()
   if ($ENV{LYX_DEBUG_LATEX})
-    set(LatexDebugParam -dbg latex)
+    set(LyXExtraParams -dbg latex)
   else()
-    set(LatexDebugParam)
+    set(LyXExtraParams)
   endif()
-  message(STATUS "Executing ${lyx} ${LatexDebugParam} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
+  if(IgnoreErrorMessage)
+    foreach (_em ${IgnoreErrorMessage})
+      list(APPEND LyXExtraParams --ignore-error-message ${_em})
+    endforeach()
+  endif()
+  string(REGEX REPLACE ";" " " _LyXExtraParams "${LyXExtraParams}")
+  message(STATUS "Executing ${lyx} ${_LyXExtraParams} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
   file(REMOVE ${result_file_name})
   execute_process(
-    COMMAND ${lyx} ${LatexDebugParam} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
+    COMMAND ${lyx} ${LyXExtraParams} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
     RESULT_VARIABLE _err)
 
   #check if result file created
