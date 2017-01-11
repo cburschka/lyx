@@ -186,7 +186,7 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
   endif()
 endmacro()
 
-macro(loadTestList filename resList depth)
+macro(loadTestList filename resList depth splitlangs)
   # Create list of strings from a file without comments
   # ENCODING parameter is a new feature in cmake 3.1
   initLangVars(${resList})
@@ -218,8 +218,12 @@ macro(loadTestList filename resList depth)
         list(REMOVE_DUPLICATES mylabels)
         set(sublabel ${_newl})
       else()
-        string(REGEX REPLACE "(\\/|\\||\\(|\\))" "  " _vxx ${_newl})
-        string(REGEX MATCHALL " ([a-z][a-z](_[A-Z][A-Z])?) " _vx ${_vxx})
+	if (splitlangs)
+	  string(REGEX REPLACE "(\\/|\\||\\(|\\))" "  " _vxx ${_newl})
+	  string(REGEX MATCHALL " ([a-z][a-z](_[A-Z][A-Z])?) " _vx ${_vxx})
+	else()
+	  set(_vx OFF)
+	endif()
         if(_vx)
           foreach(_v ${_vx})
             string(REGEX REPLACE " " "" _v ${_v})
@@ -276,10 +280,11 @@ assignLabelDepth(1 "unreliable" "inverted")
 assignLabelDepth(2 "suspended")
 assignLabelDepth(-1 "examples" "manuals" "mathmacros" "templates" "autotests")
 
-loadTestList(invertedTests invertedTests 7)
-loadTestList(ignoredTests ignoredTests 0)
-loadTestList(suspendedTests suspendedTests 6)
-loadTestList(unreliableTests unreliableTests 5)
+loadTestList(invertedTests invertedTests 7 ON)
+loadTestList(ignoredTests ignoredTests 0 ON)
+loadTestList(suspendedTests suspendedTests 6 ON)
+loadTestList(unreliableTests unreliableTests 5 ON)
+loadTestList(ignoreLatexErrorsTests ignoreLatexErrorsTests 8 OFF)
 
 foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autotests/mathmacros)
   set(testlabel "export")
@@ -417,6 +422,8 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           set(mytestlabel ${testlabel})
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
           if(TestName)
+	    set(missingLabels )
+	    findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
             add_test(NAME ${TestName}
               WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
               COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
@@ -429,6 +436,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
               -Dfile=${f}
               -Dinverted=${inverted}
               -DTOP_SRC_DIR=${TOP_SRC_DIR}
+	      "-DIgnoreErrorMessage=${missingLabels}"
               -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
               -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
               -DENCODING=${_enc2}

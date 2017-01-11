@@ -72,7 +72,7 @@ def cmdOutput(cmd, async = False):
             cmd = 'cmd /d /c pushd ' + shortPath(os.getcwd()) + '&' + cmd
     else:
         b = True
-    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE, \
+    pipe = subprocess.Popen(cmd, shell=b, close_fds=b, stdin=subprocess.PIPE,
                             stdout=subprocess.PIPE, universal_newlines=True)
     pipe.stdin.close()
     if async:
@@ -110,16 +110,16 @@ def setEnviron():
 
 def copy_tree(src, dst, preserve_symlinks=False, level=0):
     ''' Copy an entire directory tree 'src' to a new location 'dst'.
- 
+
     Code inspired from distutils.copy_tree.
-	 Copying ignores non-regular files and the cache directory.
+         Copying ignores non-regular files and the cache directory.
     Pipes may be present as leftovers from LyX for lyx-server.
 
     If 'preserve_symlinks' is true, symlinks will be
     copied as symlinks (on platforms that support them!); otherwise
     (the default), the destination of the symlink will be copied.
     '''
- 
+
     if not os.path.isdir(src):
         raise FileError("cannot copy tree '%s': not a directory" % src)
     try:
@@ -127,12 +127,12 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
     except os.error as oserror:
         (errno, errstr) = oserror.args
         raise FileError("error listing files in '%s': %s" % (src, errstr))
- 
+
     if not os.path.isdir(dst):
         os.makedirs(dst)
- 
+
     outputs = []
- 
+
     for name in names:
         src_name = os.path.join(src, name)
         dst_name = os.path.join(dst, name)
@@ -150,7 +150,7 @@ def copy_tree(src, dst, preserve_symlinks=False, level=0):
             outputs.append(dst_name)
         else:
             logger.info("Ignore non-regular file %s", src_name)
- 
+
     return outputs
 
 
@@ -176,7 +176,7 @@ def checkUpgrade():
 
 def createDirectories():
     ''' Create the build directories if necessary '''
-    for dir in ['bind', 'clipart', 'doc', 'examples', 'images', 'kbd', \
+    for dir in ['bind', 'clipart', 'doc', 'examples', 'images', 'kbd',
         'layouts', 'scripts', 'templates', 'ui' ]:
         if not os.path.isdir( dir ):
             try:
@@ -210,9 +210,11 @@ def checkTeXPaths():
         inpname = inpname.replace('~', '\\string~')
         os.write(fd, r'\relax')
         os.close(fd)
-        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"' % inpname)
+        latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"'
+                              % inpname)
         if 'Error' in latex_out:
-            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}\makeatletter\@@end"' % inpname)
+            latex_out = cmdOutput(r'latex "\nonstopmode\input{\"%s\"}\makeatletter\@@end"'
+                                  % inpname)
         if 'Error' in latex_out:
             logger.warning("configure: TeX engine needs posix-style paths in latex files")
             windows_style_tex_paths = 'false'
@@ -252,7 +254,8 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     '''
     # one rc entry for each progs plus not_found entry
     if len(rc_entry) > 1 and len(rc_entry) != len(progs) + 1:
-        logger.error("rc entry should have one item or item for each prog and not_found.")
+        logger.error("rc entry should have one item or item "
+                     "for each prog and not_found.")
         sys.exit(2)
     logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
@@ -279,13 +282,17 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
                     logger.info(msg + ' yes')
                     # deal with java and perl
                     if ac_word.endswith('.class'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"' % (java, os.path.join(ac_dir, ac_word[:-6])))
+                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"'
+                                    % (java, os.path.join(ac_dir, ac_word[:-6])))
                     elif ac_word.endswith('.jar'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"'
+                                    % (java, os.path.join(ac_dir, ac_word)))
                     elif ac_word.endswith('.pl'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"'
+                                    % (perl, os.path.join(ac_dir, ac_word)))
                     elif ac_dir in additional_path:
-                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"' % (os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"'
+                                    % (os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if len(rc_entry) == 1:
                         addToRC(rc_entry[0].replace('%%', ac_prog))
@@ -300,7 +307,8 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
     return ['', not_found]
 
 
-def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], path = [], not_found = ''):
+def checkProgAlternatives(description, progs, rc_entry = [],
+                          alt_rc_entry = [], path = [], not_found = ''):
     '''
         The same as checkProg, but additionally, all found programs will be added
         as alt_rc_entries
@@ -340,13 +348,17 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
                     m = None
                     # deal with java and perl
                     if ac_word.endswith('.class'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"' % (java, os.path.join(ac_dir, ac_word[:-6])))
+                        ac_prog = ac_prog.replace(ac_word, r'%s \"%s\"'
+                                    % (java, os.path.join(ac_dir, ac_word[:-6])))
                     elif ac_word.endswith('.jar'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"' % (java, os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'%s -jar \"%s\"'
+                                    % (java, os.path.join(ac_dir, ac_word)))
                     elif ac_word.endswith('.pl'):
-                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"' % (perl, os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'%s -w \"%s\"'
+                                    % (perl, os.path.join(ac_dir, ac_word)))
                     elif ac_dir in additional_path:
-                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"' % (os.path.join(ac_dir, ac_word)))
+                        ac_prog = ac_prog.replace(ac_word, r'\"%s\"'
+                                    % (os.path.join(ac_dir, ac_word)))
                     # write rc entries for this command
                     if found_prime == False:
                         if len(rc_entry) == 1:
@@ -438,33 +450,38 @@ def listAlternatives(progs, alt_type, rc_entry = []):
 def checkViewer(description, progs, rc_entry = [], path = []):
     ''' The same as checkProgAlternatives, but for viewers '''
     alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
-    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+    return checkProgAlternatives(description, progs, rc_entry,
+                                 alt_rc_entry, path, not_found = 'auto')
 
 
 def checkEditor(description, progs, rc_entry = [], path = []):
     ''' The same as checkProgAlternatives, but for editors '''
     alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
-    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+    return checkProgAlternatives(description, progs, rc_entry,
+                                 alt_rc_entry, path, not_found = 'auto')
 
 
 def checkViewerNoRC(description, progs, rc_entry = [], path = []):
     ''' The same as checkViewer, but do not add rc entry '''
     alt_rc_entry = listAlternatives(progs, 'viewer', rc_entry)
     rc_entry = []
-    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+    return checkProgAlternatives(description, progs, rc_entry,
+                                 alt_rc_entry, path, not_found = 'auto')
 
 
 def checkEditorNoRC(description, progs, rc_entry = [], path = []):
     ''' The same as checkViewer, but do not add rc entry '''
     alt_rc_entry = listAlternatives(progs, 'editor', rc_entry)
     rc_entry = []
-    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+    return checkProgAlternatives(description, progs, rc_entry,
+                                 alt_rc_entry, path, not_found = 'auto')
 
 
 def checkViewerEditor(description, progs, rc_entry = [], path = []):
     ''' The same as checkProgAlternatives, but for viewers and editors '''
     alt_rc_entry = listAlternatives(progs, ['editor', 'viewer'], rc_entry)
-    return checkProgAlternatives(description, progs, rc_entry, alt_rc_entry, path, not_found = 'auto')
+    return checkProgAlternatives(description, progs, rc_entry,
+                                 alt_rc_entry, path, not_found = 'auto')
 
 
 def checkDTLtools():
@@ -606,10 +623,10 @@ def checkFormatEntries(dtl_tools):
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""	"image/x-xpixmap"'''
     path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'], rc_entry = [imageformats])
     path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'], rc_entry = [imageformats])
-    addToRC(imageformats % \
+    addToRC(imageformats %
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
-    checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
+    checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
         'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
@@ -645,25 +662,29 @@ def checkFormatEntries(dtl_tools):
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"	"application/xhtml+xml"'])
  #
-    checkEditor('a BibTeX editor', ['jabref', 'JabRef', \
-        'pybliographic', 'bibdesk', 'gbib', 'kbib', \
-        'kbibtex', 'sixpack', 'bibedit', 'tkbibtex' \
-        'xemacs', 'gvim', 'kedit', 'kwrite', 'kate', \
-        'jedit', 'TeXnicCenter', 'WinEdt', 'WinShell', 'PSPad', \
+    checkEditor('a BibTeX editor', ['jabref', 'JabRef',
+        'pybliographic', 'bibdesk', 'gbib', 'kbib',
+        'kbibtex', 'sixpack', 'bibedit', 'tkbibtex'
+        'xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
+        'jedit', 'TeXnicCenter', 'WinEdt', 'WinShell', 'PSPad',
         'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
         rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""	"text/x-bibtex"''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
-    checkViewer('a Postscript previewer', ['kghostview', 'okular', 'qpdfview --unique', 'evince', 'gv', 'ghostview -swap', 'gsview64', 'gsview32'],
+    checkViewer('a Postscript previewer', ['kghostview', 'okular', 'qpdfview --unique',
+                                           'evince', 'gv', 'ghostview -swap',
+                                           'gsview64', 'gsview32'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
 \Format eps3       eps    "EPS (cropped)"         "" "%%"	""	"document"	""
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
-    checkViewer('a PDF previewer', ['pdfview', 'kpdf', 'okular', 'qpdfview --unique', 'evince', 'kghostview', 'xpdf', 'SumatraPDF', 'acrobat', 'acroread', 'mupdf', \
-		    'gv', 'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
+    checkViewer('a PDF previewer', ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
+                                    'evince', 'kghostview', 'xpdf', 'SumatraPDF',
+                                    'acrobat', 'acroread', 'mupdf', 'gv',
+                                    'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"	""
@@ -776,7 +797,7 @@ def checkConverterEntries():
 \converter knitr   luatex     "%%"	"needauth"
 \converter knitr   dviluatex  "%%"	"needauth"'''])
     #
-    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'], 
+    checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'],
         rc_entry = [ r'\converter sweave      r      "%%"    "needauth"' ])
     #
     checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'],
@@ -784,9 +805,9 @@ def checkConverterEntries():
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
-        rc_entry = [ r'\converter html       latex      "%%"	""', \
-                     r'\converter html       latex      "python -tt $$s/scripts/html2latexwrapper.py %% $$i $$o"	""', \
-                     r'\converter html       latex      "%%"	""', \
+        rc_entry = [ r'\converter html       latex      "%%"	""',
+                     r'\converter html       latex      "python -tt $$s/scripts/html2latexwrapper.py %% $$i $$o"	""',
+                     r'\converter html       latex      "%%"	""',
                      r'\converter html       latex      "%%"	""', '' ])
     #
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
@@ -811,16 +832,16 @@ def checkConverterEntries():
     else:
       # search for HTML converters other than eLyXer
       # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
-      path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i', \
-          '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o', \
+      path, htmlconv = checkProg('a LaTeX -> HTML converter', ['htlatex $$i', 'htlatex.sh $$i',
+          '/usr/share/tex4ht/htlatex $$i', 'tth  -t -e2 -L$$b < $$i > $$o',
           'latex2html -no_subdir -split 0 -show_section_numbers $$i', 'hevea -s $$i'],
           rc_entry = [ r'\converter latex      html       "%%"	"needaux"' ])
       if htmlconv.find('htlatex') >= 0 or htmlconv == 'latex2html':
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,css $$i $$o"''')
       else:
         addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py $$i $$o"''')
-      path, htmlconv = checkProg('a LaTeX -> HTML (MS Word) converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'", \
-          "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'", \
+      path, htmlconv = checkProg('a LaTeX -> HTML (MS Word) converter', ["htlatex $$i 'html,word' 'symbol/!' '-cvalidate'",
+          "htlatex.sh $$i 'html,word' 'symbol/!' '-cvalidate'",
           "/usr/share/tex4ht/htlatex $$i 'html,word' 'symbol/!' '-cvalidate'"],
           rc_entry = [ r'\converter latex      wordhtml   "%%"	"needaux"' ])
       if htmlconv.find('htlatex') >= 0:
@@ -873,7 +894,7 @@ def checkConverterEntries():
     #
     checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
-    # Do not define a converter to pdf6, ps is a pure export format 
+    # Do not define a converter to pdf6, ps is a pure export format
     checkProg('a PS to PDF converter', ['ps2pdf $$i $$o'],
         rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
     #
@@ -1145,15 +1166,19 @@ def checkOtherEntries():
     ''' entries other than Format and Converter '''
     checkProg('ChkTeX', ['chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38'],
         rc_entry = [ r'\chktex_command "%%"' ])
-    checkProgAlternatives('BibTeX or alternative programs', ['bibtex', 'bibtex8', 'biber'],
+    checkProgAlternatives('BibTeX or alternative programs',
+        ['bibtex', 'bibtex8', 'biber'],
         rc_entry = [ r'\bibtex_command "%%"' ],
         alt_rc_entry = [ r'\bibtex_alternatives "%%"' ])
-    checkProg('a specific Japanese BibTeX variant', ['pbibtex', 'jbibtex', 'bibtex'],
+    checkProg('a specific Japanese BibTeX variant',
+        ['pbibtex', 'jbibtex', 'bibtex'],
         rc_entry = [ r'\jbibtex_command "%%"' ])
-    checkProgAlternatives('available index processors', ['texindy', 'makeindex -c -q', 'xindy'],
+    checkProgAlternatives('available index processors',
+        ['texindy', 'makeindex -c -q', 'xindy'],
         rc_entry = [ r'\index_command "%%"' ],
         alt_rc_entry = [ r'\index_alternatives "%%"' ])
-    checkProg('an index processor appropriate to Japanese', ['mendex -c -q', 'jmakeindex -c -q', 'makeindex -c -q'],
+    checkProg('an index processor appropriate to Japanese',
+        ['mendex -c -q', 'jmakeindex -c -q', 'makeindex -c -q'],
         rc_entry = [ r'\jindex_command "%%"' ])
     checkProg('the splitindex processor', ['splitindex.pl', 'splitindex',
         'splitindex.class'], rc_entry = [ r'\splitindex_command "%%"' ])
@@ -1177,19 +1202,19 @@ def processLayoutFile(file, bool_docbook):
         Declare lines look like this:
 
         \DeclareLaTeXClass[<requirements>]{<description>}
-        
+
         Optionally, a \DeclareCategory line follows:
-        
+
         \DeclareCategory{<category>}
-        
+
         So for example (article.layout, scrbook.layout, svjog.layout)
-        
+
         \DeclareLaTeXClass{article}
         \DeclareCategory{Articles}
-        
+
         \DeclareLaTeXClass[scrbook]{book (koma-script)}
         \DeclareCategory{Books}
-        
+
         \DeclareLaTeXClass[svjour,svjog.clo]{article (Springer - svjour/jog)}
 
         we'd expect this output:
@@ -1226,7 +1251,8 @@ def processLayoutFile(file, bool_docbook):
                 prereq_latex = ','.join(prereq_list)
             prereq_docbook = {'true':'', 'false':'docbook'}[bool_docbook]
             prereq = {'LaTeX':prereq_latex, 'DocBook':prereq_docbook}[classtype]
-            classdeclaration = '"%s" "%s" "%s" "%s" "%s"' % (classname, opt, desc, avai, prereq)
+            classdeclaration = ('"%s" "%s" "%s" "%s" "%s"'
+                               % (classname, opt, desc, avai, prereq))
             if categorydeclaration != '""':
                 return classdeclaration + " " + categorydeclaration
         if qres != None:
@@ -1265,8 +1291,8 @@ def checkLatexConfig(check_config, bool_docbook):
         # build the list of available layout files and convert it to commands
         # for chkconfig.ltx
         foundClasses = []
-        for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
-            glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
+        for file in (glob.glob(os.path.join('layouts', '*.layout'))
+                     + glob.glob(os.path.join(srcdir, 'layouts', '*.layout'))):
             # valid file?
             if not os.path.isfile(file):
                 continue
@@ -1307,8 +1333,8 @@ def checkLatexConfig(check_config, bool_docbook):
     category = re.compile(r'^\s*#\s*\\DeclareCategory{(.*)}\s*$')
     empty = re.compile(r'^\s*$')
     testclasses = list()
-    for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
-        glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) :
+    for file in (glob.glob( os.path.join('layouts', '*.layout') )
+                 + glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) ):
         nodeclaration = False
         if not os.path.isfile(file):
             continue
@@ -1318,7 +1344,8 @@ def checkLatexConfig(check_config, bool_docbook):
         for line in open(file).readlines():
             if not empty.match(line) and line[0] != '#':
                 if decline == "":
-                    logger.warning("Failed to find valid \Declare line for layout file `" + file + "'.\n\t=> Skipping this file!")
+                    logger.warning("Failed to find valid \Declare line "
+                        "for layout file `%s'.\n\t=> Skipping this file!" % file)
                     nodeclaration = True
                 # A class, but no category declaration. Just break.
                 break
@@ -1326,7 +1353,8 @@ def checkLatexConfig(check_config, bool_docbook):
                 decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
                 testclasses.append(decline)
             elif category.search(line) != None:
-                catline = "\\DeclareCategory{%s}{%s}" % (classname, category.search(line).groups()[0])
+                catline = ("\\DeclareCategory{%s}{%s}"
+                           % (classname, category.search(line).groups()[0]))
                 testclasses.append(catline)
             if catline == "" or decline == "":
                 continue
@@ -1368,8 +1396,10 @@ def checkLatexConfig(check_config, bool_docbook):
         pass
     # if configure successed, move textclass.lst.tmp to textclass.lst
     # and packages.lst.tmp to packages.lst
-    if os.path.isfile('textclass.lst.tmp') and len(open('textclass.lst.tmp').read()) > 0 \
-        and os.path.isfile('packages.lst.tmp') and len(open('packages.lst.tmp').read()) > 0:
+    if (os.path.isfile('textclass.lst.tmp')
+          and len(open('textclass.lst.tmp').read()) > 0
+        and os.path.isfile('packages.lst.tmp')
+          and len(open('packages.lst.tmp').read()) > 0):
         shutil.move('textclass.lst.tmp', 'textclass.lst')
         shutil.move('packages.lst.tmp', 'packages.lst')
     return ret
@@ -1391,8 +1421,8 @@ def checkModulesConfig():
   seen = []
   # note that this searches the local directory first, then the
   # system directory. that way, we pick up the user's version first.
-  for file in glob.glob( os.path.join('layouts', '*.module') ) + \
-      glob.glob( os.path.join(srcdir, 'layouts', '*.module' ) ) :
+  for file in (glob.glob( os.path.join('layouts', '*.module') )
+               + glob.glob( os.path.join(srcdir, 'layouts', '*.module' ) ) ):
       # valid file?
       logger.info(file)
       if not os.path.isfile(file):
@@ -1499,7 +1529,8 @@ def processModuleFile(file, filename, bool_docbook):
             cm.write(line + '\n')
         cm.close()
 
-    return '"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n' % (modname, filename, desc, pkgs, req, excl, catgy)
+    return ('"%s" "%s" "%s" "%s" "%s" "%s" "%s"\n'
+            % (modname, filename, desc, pkgs, req, excl, catgy))
 
 
 def checkCiteEnginesConfig():
@@ -1653,7 +1684,8 @@ def rescanTeXFiles():
     interpreter = sys.executable
     if interpreter == '':
         interpreter = "python"
-    tfp = cmdOutput(interpreter + " -tt " + '"' + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
+    tfp = cmdOutput(interpreter + " -tt " + '"'
+                    + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
     logger.info(tfp)
     logger.info("\tdone")
 

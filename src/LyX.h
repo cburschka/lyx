@@ -52,6 +52,7 @@ enum OverwriteFiles {
 
 extern bool use_gui;
 extern bool verbose;
+extern bool ignore_missing_glyphs;
 extern RunMode run_mode;
 extern OverwriteFiles force_overwrite;
 

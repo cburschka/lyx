@@ -3446,7 +3446,7 @@ unreliable:nonstandard
 \begin_layout Itemize
 Check the log file Testing/Temporary/LastTest.log.
  In case of latex-errors rerun the failing test with environment variable
- 'LAX_DEBUG_LATEX' set to '1'.
+ 'LYX_DEBUG_LATEX' set to '1'.
  This will include latex messages in LastTest.log, so it should be easier
  to interpret the fail-reason.
 \end_layout
